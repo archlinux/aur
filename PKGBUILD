@@ -3,12 +3,12 @@
 
 pkgname=pamac-tray-appindicator
 
-pkgver=9.5.12
+pkgver=10.0.0
 pkgrel=1
 _pkgfixver=$pkgver
 
-_commit='96fe5adddf5af8ef1616039eaf5403a19cd27071'
-sha256sums=('121dac800deba31bb9a92e85ff831e17cbe4e3f006d94baca5969cf35ea268a2')
+_commit='4431c12f2b7920ef437b9a30068f7a545d72549d'
+sha256sums=('142bb64f748e4edcedc71daa6997e403a4e7c4161b2aaf5dc522dee377cd7914')
 
 pkgdesc="Tray icon using appindicator which feets better in KDE"
 depends=('pamac' 'libappindicator-gtk3')
@@ -31,15 +31,15 @@ build() {
   cd "$srcdir/pamac-$_commit"
   mkdir -p builddir
   cd builddir
-  meson --prefix=/usr --sysconfdir=/etc -Denable-appindicator=true
+  meson --prefix=/usr --sysconfdir=/etc
 
   # build
-  ninja src/pamac-tray-appindicator
+  ninja src/pamac-tray
 }
 
 package() {
   cd "$srcdir/pamac-$_commit"
-  install -Dm755 "builddir/src/pamac-tray-appindicator" "$pkgdir/usr/bin/pamac-tray-appindicator"
-  install -Dm644 "data/applications/pamac-tray-appindicator.desktop" "$pkgdir/etc/xdg/autostart/pamac-tray-appindicator.desktop"
+  install -Dm755 "builddir/src/pamac-tray" "$pkgdir/usr/bin/pamac-tray"
+  install -Dm644 "data/applications/pamac-tray.desktop" "$pkgdir/etc/xdg/autostart/pamac-tray.desktop"
 }
 # vim:set ts=2 sw=2 et:
