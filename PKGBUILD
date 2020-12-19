@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Böhmke <benjamin at boehmke dot net>
 pkgname=emby-theater-bin
-pkgver=3.0.13
-pkgrel=1
+pkgver=3.0.12
+pkgrel=3
 pkgdesc='An Electron app for Emby'
 license=('GPL2')
 arch=('x86_64')
