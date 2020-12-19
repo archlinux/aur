@@ -2,7 +2,7 @@
 
 pkgname=jupyterhub-systemdspawner
 pkgdesc="Spawn JupyterHub single-user servers with systemd"
-pkgver=0.14
+pkgver=0.15.0
 pkgrel=1
 url="https://github.com/jupyterhub/systemdspawner"
 arch=('any')
@@ -14,7 +14,7 @@ source=(
   'https://raw.githubusercontent.com/jupyterhub/systemdspawner/master/LICENSE'
 )
 sha256sums=(
-  '080dd9cd9292266dad35d1efc7aa1af0ed6993d15eadc79bd959d1ee273d1923'
+  'b6e2d981657aa5d3794abb89b1650d056524158a3d0f0f706007cae9b6dbeb2b'
   '8879cac31d6a25ae880180569ea4d80ca9b24ea9e73a73b5604a9711f1744a29'
 )
 
