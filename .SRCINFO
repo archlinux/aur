@@ -1,0 +1,14 @@
+pkgbase = vim-neomake-git
+	pkgdesc = Asynchronous linting and make framework for Neovim/Vim
+	pkgver = r2726.a85a72b8
+	pkgrel = 1
+	url = https://github.com/neomake/neomake
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	source = vim-neomake-git::git+https://github.com/neomake/neomake.git
+	sha256sums = SKIP
+
+pkgname = vim-neomake-git
+
