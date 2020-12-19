@@ -2,15 +2,15 @@
 
 _pkgname=stl2thumbnail
 pkgname=stl2thumbnail-git
-pkgver=v0.1.r1.ge58f3f3
+pkgver=v0.9.r0.g320f987
 pkgrel=1
 pkgdesc="Enables file managers to generate thumbnails for STL files"
 arch=("i686" "x86_64")
 url="https://github.com/krepa098/stl2thumbnail"
 license=("GPL")
 groups=()
-depends=("libpng")
-makedepends=("git" "cmake" "glm")
+depends=("libpng" "glm")
+makedepends=("git" "cmake" "extra-cmake-modules")
 source=("$_pkgname::git+$url.git#branch=master")
 md5sums=("SKIP")
 
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd "${_pkgname}/build"
-  cmake .. -DCMAKE_INSTALL_PREFIX="/usr"
+  cmake .. -DCMAKE_INSTALL_PREFIX="/usr" -DBUILD_GENERATOR_GNOME=ON -DBUILD_GENERATOR_KDE=ON
   cmake --build . --config Release
 }
 
