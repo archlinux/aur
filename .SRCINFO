@@ -1,6 +1,6 @@
 pkgbase = megatools-bin
 	pkgdesc = Command line client application for Mega.nz. Precompiled.
-	pkgver = 1.11.0.git.20200503
+	pkgver = 1.11.0.git.20200830
 	pkgrel = 1
 	url = https://megatools.megous.com
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = megatools-bin
 	license = GPL
 	provides = megatools
 	conflicts = megatools
-	source_x86_64 = https://megatools.megous.com/builds/experimental/megatools-1.11.0-git-20200503-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 51a38ea52a6b92054d1a5c460ce320b8354ec58b860e3e09e663565c15053ce8
-	source_aarch64 = https://megatools.megous.com/builds/experimental/megatools-1.11.0-git-20200503-linux-aarch64.tar.gz
-	sha256sums_aarch64 = c301c0cbc5cb5a81ed6585808f05ffbade3620b3bfecc9ccec0d0cddff9df45e
-	source_armv7h = https://megatools.megous.com/builds/experimental/megatools-1.11.0-git-20200503-linux-arm.tar.gz
-	sha256sums_armv7h = 3c11230bebf205b79936a9f0ee2f46e1fec9ccae7980a470fdb8270d14b10251
+	source_x86_64 = https://megatools.megous.com/builds/experimental/megatools-1.11.0-git-20200830-linux-x86_64.tar.gz
+	sha256sums_x86_64 = ec701c771b7c792f4626ae2d243bc6bd9d3b3c809daac6607b2ee19eb0560462
+	source_aarch64 = https://megatools.megous.com/builds/experimental/megatools-1.11.0-git-20200830-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 85c7c52214f70ac97ef7e251c5f2a17db2ec3b4366ede519031976653ac3701f
+	source_armv7h = https://megatools.megous.com/builds/experimental/megatools-1.11.0-git-20200830-linux-arm.tar.gz
+	sha256sums_armv7h = f37095115028d7f1be5ec02c95f0b46ca02113c08d0555b9a00edd2b9f5c115f
 
 pkgname = megatools-bin
 
