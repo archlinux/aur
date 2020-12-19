@@ -11,6 +11,6 @@ depends=('libgee' 'vte3' 'cronie' 'cairo' 'rsync' 'btrfs-progs' 'json-glib' 'gdk
 md5sums=('c71ca96e3be09f471c4e8c93cbbbc885')
 
 package() {
-       ar -xv ${pkgname}_${pkgver}_amd64.deb
+       ar -xv timeshift_${pkgver}_amd64.deb
        tar -xvf data.tar.xz -C $pkgdir
 }
