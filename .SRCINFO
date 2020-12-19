@@ -1,6 +1,6 @@
 pkgbase = lib32-gst-libav
 	pkgdesc = Multimedia graph framework - libav plugin (32-bit)
-	pkgver = 1.18.1
+	pkgver = 1.18.2
 	pkgrel = 1
 	url = https://gstreamer.freedesktop.org/
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = lib32-gst-libav
 	depends = lib32-gst-plugins-base-libs
 	depends = lib32-libffmpeg
 	depends = gst-libav
-	provides = lib32-gst-ffmpeg=1.18.1-1
-	source = git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git#commit=097313530cae4a49437a779a9ded0ade8113c26b
+	provides = lib32-gst-ffmpeg=1.18.2-1
+	source = git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git#commit=20352236c2c22cd4b48d30c4218218e22e07ef77
 	sha256sums = SKIP
 
 pkgname = lib32-gst-libav
