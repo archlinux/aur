@@ -2,8 +2,8 @@
 
 pkgname='pigpio'
 pkgver=78
-pkgrel=1
-pkgdesc="A C and Python library for controlling GPIOs on a Raspberry Pi"
+pkgrel=2
+pkgdesc="A C and Python library and system service for controlling GPIOs on a Raspberry Pi"
 url="http://abyz.me.uk/rpi/pigpio/"
 license=('custom:UNLICENSE')
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -22,7 +22,7 @@ prepare() {
   sed -e '/which python2/d' -i Makefile
   sed -e '/\/opt/d' -i Makefile
   sed -e 's|\$(prefix)/man|\$(prefix)/share/man|' -i Makefile
-  sed -e 's|/usr/bin/pigpiod|/usr/bin/pigpiod -g|' -i util/pigpiod.service
+  sed -e 's|/usr/bin/pigpiod|/usr/bin/pigpiod -k|' -i util/pigpiod.service
 }
 
 build() {
