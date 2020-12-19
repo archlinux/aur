@@ -1,12 +1,12 @@
 # Maintainer: Arkadiusz Dzięgielewski <arek.dzski@gmail.com>
 pkgname=picomc
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiny CLI Minecraft launcher"
 arch=('any')
 url="https://github.com/sammko/picomc"
 license=('MIT')
-depends=("python>=3.7"
+depends=("python>=3.9"
          "python-click>=7.0.0"
          "python-requests"
          "python-urllib3"

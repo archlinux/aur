@@ -1,11 +1,11 @@
 pkgbase = picomc
 	pkgdesc = A tiny CLI Minecraft launcher
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sammko/picomc
 	arch = any
 	license = MIT
-	depends = python>=3.7
+	depends = python>=3.9
 	depends = python-click>=7.0.0
 	depends = python-requests
 	depends = python-urllib3
