@@ -5,10 +5,10 @@
 # https://github.com/alfredopalhares/arch-pkgbuilds
 
 pkgbase="joplin"
-pkgname=('joplin-cli' 'joplin-desktop')
+pkgname=('joplin' 'joplin-cli' 'joplin-desktop' 'joplin-desktop-electron')
 pkgver=1.4.19
 groups=('joplin')
-pkgrel=10
+pkgrel=11
 install="joplin.install"
 pkgdesc="A note taking and to-do application with synchronization capabilities - Split Package"
 arch=('x86_64' 'i686')
@@ -91,6 +91,10 @@ package_joplin-cli() {
   install -Dm755 joplin.sh "${pkgdir}/usr/bin/joplin-cli"
 }
 
+package_joplin() {
+  package_joplin-cli
+}
+
 package_joplin-desktop() {
   pkgdesc="A note taking and to-do application with synchronization capabilities - Desktop"
   depends=('electron' 'gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs'
@@ -117,5 +121,9 @@ package_joplin-desktop() {
   cd "${srcdir}"
   install -Dm755 ${srcdir}/joplin-desktop.sh "${pkgdir}/usr/bin/joplin-desktop"
   install -Dm644 ${srcdir}/joplin.desktop -t "${pkgdir}/usr/share/applications"
+}
+
+package_joplin-desktop-electron() {
+  package_joplin-desktop
 }
 
