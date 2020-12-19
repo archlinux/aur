@@ -2,7 +2,7 @@
 
 pkgname=python-qiling-git
 pkgver=1.2.r95.g33a2b6d9
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced binary emulation framework"
 url='https://qiling.io/'
 arch=('x86_64')
