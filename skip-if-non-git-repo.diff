@@ -1,0 +1,21 @@
+diff --git a/tests/unit/test.program.js b/tests/unit/test.program.js
+index d18beff..cea3d4d 100644
+--- a/tests/unit/test.program.js
++++ b/tests/unit/test.program.js
+@@ -885,7 +885,15 @@ describe('program.defaultVersionGetter', () => {
+   });
+ 
+   it('returns git commit information in development', function() {
+-    const commit = `${git.branch()}-${git.long()}`;
++    var commit;
++    try {
++      commit = `${git.branch()}-${git.long()}`;
++    } catch (error) {
++      if (error.message.includes('no git repository found')) {
++        this.skip();
++      }
++      throw error;
++    }
+     const testBuildEnv = {globalEnv: 'development'};
+     assert.equal(defaultVersionGetter(projectRoot, testBuildEnv),
+                  commit);
