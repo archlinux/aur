@@ -1,0 +1,16 @@
+pkgbase = python-xacro4sdf-git
+	pkgdesc = a simple XML macro script for sdf, like ros/xacro which is desiged for urdf.
+	pkgver = r39.ab6a2c8
+	pkgrel = 1
+	url = https://github.com/gezp/xacro4sdf
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	provides = python-xacro4sdf
+	source = git+https://github.com/gezp/xacro4sdf
+	md5sums = SKIP
+
+pkgname = python-xacro4sdf-git
+
