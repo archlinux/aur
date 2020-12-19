@@ -1,7 +1,7 @@
 pkgbase = joplin
 	pkgdesc = A note taking and to-do application with synchronization capabilities - Split Package
 	pkgver = 1.4.19
-	pkgrel = 9
+	pkgrel = 10
 	url = https://joplinapp.org/
 	install = joplin.install
 	arch = x86_64
@@ -13,8 +13,6 @@ pkgbase = joplin
 	makedepends = python
 	makedepends = rsync
 	makedepends = electron
-	conflicts = joplin-cli
-	conflicts = joplin-desktop
 	source = joplin.desktop
 	source = joplin-desktop.sh
 	source = joplin.sh
@@ -24,12 +22,12 @@ pkgbase = joplin
 	sha256sums = 5b6f8847ec0c3848375755213c3009c273f478b4b80ed2c5f0af8f67ee0e94fb
 	sha256sums = 55aad4fe50e2da980983a69bc7c0870626064db971550d522e266feb17d38916
 
-pkgname = joplin
+pkgname = joplin-cli
 	pkgdesc = A note taking and to-do application with synchronization capabilities - CLI App
 	depends = nodejs
 	depends = rsync
 
-pkgname = joplin-desktop-electron
+pkgname = joplin-desktop
 	pkgdesc = A note taking and to-do application with synchronization capabilities - Desktop
 	depends = electron
 	depends = gtk3

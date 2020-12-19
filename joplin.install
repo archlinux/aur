@@ -7,7 +7,7 @@
 post_install() {
    echo "This is now a split Package:"
    echo "joplin for a CLI version"
-   echo "joplin-desktop-electron for a Desktop version"
+   echo "joplin-desktop for a Desktop version"
    echo "You may need to install them explicity on some AUR helpers"
 }
 
@@ -22,7 +22,7 @@ post_install() {
 post_upgrade() {
    echo "This is now a split Package:"
    echo "joplin for a CLI version"
-   echo "joplin-desktop-electron for a Desktop version"
+   echo "joplin-desktop for a Desktop version"
    echo "You may need to install them explicity on some AUR helpers"
 }
 
