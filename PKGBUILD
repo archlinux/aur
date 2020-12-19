@@ -53,11 +53,5 @@ package_python2-audit() {
   rm -rf ${pkgdir}/usr/lib/golang
 }
 
-# package_python-audit() {
-#   depends=('python' 'audit')
-#   pkgdesc+=' (python bindings)'
-#   cd ${pkgbase}-${pkgver}
-#   make -C bindings DESTDIR="${pkgdir}" INSTALL='install -p' install
-# }
 
 # vim: ts=2 sw=2 et:
