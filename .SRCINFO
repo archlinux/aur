@@ -1,6 +1,6 @@
 pkgbase = linux-svelte
 	pkgdesc = Svelte Linux
-	pkgver = 5.9.12
+	pkgver = 5.9.15
 	pkgrel = 1
 	url = https://benthetechguy.github.io/miscprograms/linux-svelte/
 	arch = x86_64
@@ -12,14 +12,14 @@ pkgbase = linux-svelte
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.9.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.9.tar.sign
-	source = https://github.com/damentz/liquorix-package/archive/5.9-11.tar.gz
+	source = https://github.com/damentz/liquorix-package/archive/5.9-15.tar.gz
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.9/docs-patches/0001-Documentation-Fix-sphinx-3.0-causes-compilation-erro.patch
-	source = config.src::https://github.com/benthetechguy/miscprograms/raw/master/linux-svelte/config/5.9.12-1
+	source = config.src::https://github.com/benthetechguy/miscprograms/raw/master/linux-svelte/config/5.9.15-1
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha512sums = d3d92ce4246bad74c9a784212f160d98449b1e8793970c2c308276568d852b8effe0528686bdb87d55d691f09a826abf7938d69bdd4759ce65ddd5c05ffe4eca
 	sha512sums = SKIP
-	sha512sums = 97f06145c77503967c6a1d6e6c4519dbb57581ea9bbdb940f6f7744edf858250b0c0687b2b27b63661e1034b4dfa9ad855bfe906e1690eb76a22f5f033786cd9
+	sha512sums = f7684e512f2b08f6dc12703a8bd3a642138ca515b9adaa391c2b709270952627063e62935bb5df4c3742c903461203d50f3ecc3978b674cd9c2460925d01c06a
 	sha512sums = b1abc4b21191c841326db341aeea6eac9918a4628f38e32f616a8eeeb9919395656fc4b805110dce93aa38188172fb672831fd76e848b3711fcd6ea9115118c6
 	sha512sums = 659f8f3202d5798970bba579f33d599b1f1f7133cad8fdf6f45da32cdb82fe0a0edcf681b7eb40de926f1048546aa5b6150cf1900c84bed431f7686b322ad157
 

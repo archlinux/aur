@@ -20,16 +20,14 @@ _makegconfig=
 ### Enable htmldocs (increases compile time)
 _htmldocs_enable=
 
-### Do not edit below this line unless you know what you're doing
-
 # pkgname=('linux-svelte' 'linux-svelte-headers' 'linux-svelte-docs')
 _major=5.9
 _srcname=linux-${_major}
 _lqxpatchname=liquorix-package
-_lqxpatchrel=11
+_lqxpatchrel=15
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-svelte
-pkgver=5.9.12
+pkgver=5.9.15
 pkgrel=1
 pkgdesc='Svelte Linux'
 url='https://benthetechguy.github.io/miscprograms/linux-svelte/'
@@ -53,11 +51,9 @@ validpgpkeys=(
 )
 sha512sums=('d3d92ce4246bad74c9a784212f160d98449b1e8793970c2c308276568d852b8effe0528686bdb87d55d691f09a826abf7938d69bdd4759ce65ddd5c05ffe4eca'
             'SKIP'
-            '97f06145c77503967c6a1d6e6c4519dbb57581ea9bbdb940f6f7744edf858250b0c0687b2b27b63661e1034b4dfa9ad855bfe906e1690eb76a22f5f033786cd9'
+            'f7684e512f2b08f6dc12703a8bd3a642138ca515b9adaa391c2b709270952627063e62935bb5df4c3742c903461203d50f3ecc3978b674cd9c2460925d01c06a'
             'b1abc4b21191c841326db341aeea6eac9918a4628f38e32f616a8eeeb9919395656fc4b805110dce93aa38188172fb672831fd76e848b3711fcd6ea9115118c6'
             '659f8f3202d5798970bba579f33d599b1f1f7133cad8fdf6f45da32cdb82fe0a0edcf681b7eb40de926f1048546aa5b6150cf1900c84bed431f7686b322ad157')
-
-
 
 export KBUILD_BUILD_HOST=manjaro
 export KBUILD_BUILD_USER=$pkgbase
@@ -96,7 +92,7 @@ prepare() {
 
     ### Setting config
         echo "Setting config..."
-        cat ${srcdir}/config.src >./.config
+        cat "$srcdir"/config.src >./.config
         make olddefconfig
 
     ### Prepared version
