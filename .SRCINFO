@@ -1,16 +1,13 @@
 pkgbase = python-camelot-git
 	pkgdesc = Camelot: PDF Table Extraction for Humans
 	pkgver = v0.8.2.r26.g7709e58
-	pkgrel = 3
+	pkgrel = 4
 	url = https://camelot-py.readthedocs.io
 	arch = any
 	license = MIT
-	checkdepends = python-codecov
 	checkdepends = python-pytest
 	checkdepends = python-pytest-cov
 	checkdepends = python-pytest-mpl
-	checkdepends = python-pytest-runner
-	checkdepends = python-sphinx
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python

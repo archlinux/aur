@@ -3,7 +3,7 @@
 
 pkgname=python-camelot-git
 pkgver=v0.8.2.r26.g7709e58
-pkgrel=3
+pkgrel=4
 pkgdesc="Camelot: PDF Table Extraction for Humans"
 arch=('any')
 url='https://camelot-py.readthedocs.io'
@@ -12,8 +12,7 @@ depends=('python' 'tk' 'ghostscript' 'opencv' 'python-chardet' 'python-click' 'p
          'python-numpy' 'python-openpyxl' 'python-pandas' 'python-pdfminer.six'
          'python-pypdf2')
 makedepends=('git' 'python-setuptools')
-checkdepends=('python-codecov' 'python-pytest' 'python-pytest-cov' 'python-pytest-mpl'
-              'python-pytest-runner' 'python-sphinx')
+checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-mpl')
 provides=(${pkgname%-*}=$pkgver)
 conflicts=(${pkgname%-*})
 source=($pkgname::git://github.com/camelot-dev/camelot.git)
@@ -37,6 +36,5 @@ package() {
 
 check(){
     cd "$srcdir/$pkgname"
-
     pytest
 }
