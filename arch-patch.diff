@@ -10,3 +10,14 @@
      else
          echo "OS not supported. Run using UBUNTU or RHEL system. "
          exit 1
+--- zm-build/build.pl	2020-12-19 22:23:36.705531953 +0100
++++ zm-build/build.pl	2020-12-19 22:13:41.557178188 +0100
+@@ -1073,7 +1073,7 @@
+ 
+    Prepare();
+ 
+-   Checkout($all_repos);
++   #Checkout($all_repos);
+ 
+    if ( !$CFG{STOP_AFTER_CHECKOUT} )
+    {
