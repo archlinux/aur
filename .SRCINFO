@@ -1,6 +1,6 @@
 pkgbase = perl-moose
 	pkgdesc = A postmodern object system for Perl 5
-	pkgver = 2.2013
+	pkgver = 2.2014
 	pkgrel = 1
 	url = https://metacpan.org/release/Moose
 	arch = i686
@@ -31,9 +31,9 @@ pkgbase = perl-moose
 	depends = perl-sub-name>=0.20
 	depends = perl-try-tiny>=0.17
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Moose-2.2013.tar.gz
-	md5sums = 8267be7e7fbd9fc99730b78335d120a8
-	sha512sums = 9e177019930d6bae4fdd90713e3c95b16e6bc91e229ab2aacc03e14a5efbedf6c944b93fefbbcc4586ffb18cc786f323c4102f76d84af949c8f328acf69a5ec3
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Moose-2.2014.tar.gz
+	md5sums = 6d1e84977bc2a7d0e1111e16822fc250
+	sha512sums = ee472cffe928b86732150bd68d1a74f7c2d5769ef3369339e429361a093f3381fdc327910c1a4b9576c01b88ae90f86f1f8979dc0784fcce8ffeb9b42d67aafc
 
 pkgname = perl-moose
 
