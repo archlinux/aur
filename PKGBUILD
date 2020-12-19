@@ -1,8 +1,8 @@
-# Maintainer: Isho Antar <isho.antar1@gmail.com>
+# Maintainer: Isho Antar <IshoAntar@protonmail.com>
 # Contributor: Michael Yang <ohmyarchlinux@protonmail.com>
 
 pkgname=spdlog-git
-pkgver=1.8.1.233e97c
+pkgver=1.8.2.55bfa8d
 pkgrel=1
 pkgdesc='Very fast, header only, C++ logging library'
 arch=('any')
