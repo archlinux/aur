@@ -1,7 +1,7 @@
 # Maintainer: Thomas Simatic <thomas.sim@mailo.com>
 pkgname="i3-scratchpad-git"
 pkgver=1.1
-pkgrel=3
+pkgrel=1
 pkgdesc="The Swiss Army Knife of floating i3 windows"
 arch=(any)
 license=('Unlicense')
