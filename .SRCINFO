@@ -1,17 +1,20 @@
 pkgbase = python-numpy-stl
-	pkgdesc = Simple library to make working with STL files (and 3D objects in general) fast and easy.
-	pkgver = 2.11.2
+	pkgdesc = Library to make working with STL files (and 3D objects in general) fast and easy
+	pkgver = 2.13.0
 	pkgrel = 1
 	url = https://github.com/WoLpH/numpy-stl/
-	arch = any
+	arch = x86_64
 	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-flake8
+	makedepends = cython
 	makedepends = python-setuptools
 	depends = python
 	depends = python-numpy
-	depends = python-nine
 	depends = python-utils
-	source = https://github.com/WoLpH/numpy-stl/archive/v2.11.2.tar.gz
-	md5sums = 59b8cd02c4885eb77babccd76aa25328
+	source = numpy-stl-v2.13.0.tar.gz::https://github.com/WoLpH/numpy-stl/archive/v2.13.0.tar.gz
+	sha256sums = 15a4bc07e7c707a62ebadc477de57511cfeb5bc51556f75d5b4fd91a687e514e
 
 pkgname = python-numpy-stl
 
