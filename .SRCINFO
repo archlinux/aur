@@ -1,0 +1,22 @@
+pkgbase = v2raya-git
+	pkgdesc = A web GUI client of Project V which supports VMess, VLESS, SS, SSR, Trojan and Pingtunnel protocols
+	pkgver = 20201217.r602.329a7e1
+	pkgrel = 1
+	url = https://github.com/v2rayA/v2rayA
+	arch = x86_64
+	license = GPL3
+	makedepends = go>=2:1.12.3-1
+	makedepends = nodejs>=14
+	makedepends = yarn
+	makedepends = python2
+	depends = git
+	depends = glibc
+	depends = v2ray
+	provides = v2raya
+	conflicts = v2raya
+	conflicts = v2raya-bin
+	source = v2raya-git::git+https://github.com/v2rayA/v2rayA
+	sha512sums = SKIP
+
+pkgname = v2raya-git
+

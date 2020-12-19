@@ -1,0 +1,5 @@
+.vscode
+.idea
+pkg/
+src/
+v2raya-git*
