@@ -1,6 +1,6 @@
 # Mantainer: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
 
-pkgname='python2-audit'
+pkgbase='python2-audit'
 pkgver=2.8.5
 pkgrel=8
 pkgdesc='Userspace components of the audit framework'
