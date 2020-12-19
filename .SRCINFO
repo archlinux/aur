@@ -1,7 +1,7 @@
 pkgbase = simplenote-electron-arm-bin
 	pkgdesc = The simplest way to keep notes
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Automattic/simplenote-electron
 	arch = armv7h
 	arch = aarch64
@@ -9,6 +9,8 @@ pkgbase = simplenote-electron-arm-bin
 	depends = nss
 	depends = gtk3
 	depends = libxss
+	optdepends = noto-fonts-emoji: emoji support
+	optdepends = ttf-joypixels: emoji support
 	provides = simplenote
 	noextract = simplenote-electron-arm-bin-2.3.0.AppImage
 	options = !strip

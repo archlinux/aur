@@ -4,12 +4,16 @@ pkgname=simplenote-electron-arm-bin
 _appimagver=2.3.0
 _appimage="${pkgname}-${_appimagver}.AppImage"
 pkgver=${_appimagver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="The simplest way to keep notes"
 arch=('armv7h' 'aarch64')
 url="https://github.com/Automattic/simplenote-electron"
 license=('GPL2')
 depends=('nss' 'gtk3' 'libxss')
+optdepends=(
+'noto-fonts-emoji: emoji support'
+'ttf-joypixels: emoji support'
+)
 provides=('simplenote')
 options=(!strip)
 source_armv7h=("${_appimage}"::"${url}/releases/download/v${pkgver}/Simplenote-linux-${pkgver}-armv7l.AppImage")
