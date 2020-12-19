@@ -1,6 +1,6 @@
 pkgbase = qtikz-git
 	pkgdesc = Small application helping you to create TikZ diagrams
-	pkgver = r318.207af3e
+	pkgver = r344.6157e86
 	pkgrel = 1
 	url = https://github.com/fhackenberger/ktikz
 	arch = i686
@@ -32,10 +32,10 @@ pkgname = qtikz-git
 
 pkgname = ktikz-git
 	pkgdesc = Small application helping you to create TikZ diagrams – KDE version
-	depends = 
 	depends = kparts
 	depends = poppler-qt5
 	depends = hicolor-icon-theme
+	depends = ktexteditor
 	provides = ktikz
 	conflicts = ktikz
 

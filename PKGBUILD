@@ -2,7 +2,7 @@
 # Contributor: Bruno Pagani <archange@archlinux.org>
 
 pkgname=('qtikz-git' 'ktikz-git')
-pkgver=r318.207af3e
+pkgver=r344.6157e86
 pkgrel=1
 pkgdesc="Small application helping you to create TikZ diagrams"
 arch=('i686' 'x86_64')
@@ -27,9 +27,7 @@ build() {
   qmake ../qtikz.pro
   make
   cd ../build_k
-  cmake .. \
-	-DCMAKE_INSTALL_PREFIX:PATH=/usr \
-	-DBUILD_TYPE=None
+  cmake .. -DCMAKE_INSTALL_PREFIX:PATH=/usr 
   make
 }
 
@@ -53,7 +51,7 @@ package_ktikz-git() {
   provides=('ktikz')
   conflicts=('ktikz')
   pkgdesc+=" – KDE version"
-  depends+=('kparts' 'poppler-qt5' 'hicolor-icon-theme')
+  depends+=('kparts' 'poppler-qt5' 'hicolor-icon-theme' 'ktexteditor')
 
   cd "${pkgbase%-git}"/build_k
   make DESTDIR="${pkgdir}" install
