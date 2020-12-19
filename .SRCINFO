@@ -1,14 +1,14 @@
 pkgbase = ortp-git
 	pkgdesc = A Real-time Transport Protocol (RTP) library
-	pkgver = 4.4.0.alpha.r1.g079d9f1
+	pkgver = 4.5.0.alpha.r7.g607b2e7
 	pkgrel = 1
 	url = https://github.com/BelledonneCommunications/ortp
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	makedepends = git
-	depends = bctoolbox>=4.3.0
-	provides = ortp=4.4.0.alpha.r1.g079d9f1
+	depends = bctoolbox>=4.4.0
+	provides = ortp=4.5.0.alpha.r7.g607b2e7
 	conflicts = ortp
 	source = git+https://github.com/BelledonneCommunications/ortp.git
 	sha256sums = SKIP
