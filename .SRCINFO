@@ -1,6 +1,6 @@
 pkgbase = rocclr
 	pkgdesc = Radeon Open Compute Common Language Runtime
-	pkgver = 3.10.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/ROCm-Developer-Tools/ROCclr
 	arch = x86_64
@@ -11,10 +11,9 @@ pkgbase = rocclr
 	depends = hsa-rocr
 	depends = hsakmt-roct
 	depends = rocm-cmake
-	source = rocclr-3.10.0.tar.gz::https://github.com/ROCm-Developer-Tools/ROCclr/archive/rocm-3.10.0.tar.gz
-	source = rocclr-opencl-3.10.0.tar.gz::https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/archive/rocm-3.10.0.tar.gz
-	sha256sums = d1ac02840c2dcb3d5fa3008fe9e313767ebe6d1dcf978a924341834ec96ebfe2
-	sha256sums = 3aa9dc5a5f570320b04b35ee129ce9ff21062d2770df934c6c307913f975e93d
+	source = rocclr-4.0.0.tar.gz::https://github.com/ROCm-Developer-Tools/ROCclr/archive/rocm-4.0.0.tar.gz
+	source = rocclr-opencl-4.0.0.tar.gz::https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/archive/rocm-4.0.0.tar.gz
+	sha256sums = 8db502d0f607834e3b882f939d33e8abe2f9b55ddafaf1b0c2cd29a0425ed76a
+	sha256sums = d43ea5898c6b9e730b5efabe8367cc136a9260afeac5d0fe85b481d625dd7df1
 
 pkgname = rocclr
-
