@@ -1,6 +1,6 @@
 pkgbase = muffet-git
 	pkgdesc = Fast website link checker (git)
-	pkgver = 2.3.1.r0.g1de8ae0
+	pkgver = 2.3.2.r1.ged40e3a
 	pkgrel = 1
 	url = https://github.com/raviqqe/muffet
 	arch = x86_64
