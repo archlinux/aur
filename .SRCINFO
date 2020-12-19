@@ -1,6 +1,6 @@
 pkgbase = rocm-clang-ocl
 	pkgdesc = OpenCL compilation with clang compiler.
-	pkgver = 3.10.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/RadeonOpenCompute/clang-ocl
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = rocm-clang-ocl
 	makedepends = rocm-cmake
 	depends = llvm-amdgpu
 	depends = rocm-opencl-runtime
-	source = rocm-clang-ocl-3.10.0.tar.gz::https://github.com/RadeonOpenCompute/clang-ocl/archive/rocm-3.10.0.tar.gz
-	sha256sums = 17fc8fb8c38b18f9f0cac339dda6cea3e9e66805f7a92ec2456072fc1e72fa85
+	source = rocm-clang-ocl-4.0.0.tar.gz::https://github.com/RadeonOpenCompute/clang-ocl/archive/rocm-4.0.0.tar.gz
+	sha256sums = c8f9091396ee0096f6d7c1cd13d80532c424e838bec1e4cebf903ebaf649e82e
 
 pkgname = rocm-clang-ocl
-
