@@ -1,0 +1,71 @@
+pkgbase = libcups-nosystemd-minimal-git
+	pkgver = 2.3rc1.r29.g664789488
+	pkgrel = 1
+	url = https://www.cups.org/
+	arch = x86_64
+	license = GPL
+	makedepends = libtiff
+	makedepends = libpng
+	makedepends = acl
+	makedepends = pam
+	makedepends = xdg-utils
+	makedepends = krb5
+	makedepends = gnutls
+	makedepends = cups-filters
+	makedepends = bc
+	makedepends = colord
+	makedepends = xinetd
+	makedepends = gzip
+	makedepends = autoconf
+	makedepends = hicolor-icon-theme
+	makedepends = inetutils
+	makedepends = git
+	source = git://github.com/apple/cups.git
+	source = cups.logrotate
+	source = cups.pam
+	source = cups.sysusers
+	source = cups-no-export-ssllibs.patch
+	source = cups-no-gzip-man.patch
+	source = cups-1.6.2-statedir.patch
+	source = guid.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = libcups-nosystemd-minimal-git
+	pkgdesc = The CUPS Printing System - client libraries and headers (GIT version)
+	depends = gnutls
+	depends = libtiff>=4.0.0
+	depends = libpng>=1.5.7
+	depends = krb5
+	provides = libcups=2.3rc1
+	conflicts = libcups
+
+pkgname = cups-nosystemd-minimal-git
+	pkgdesc = The CUPS Printing System - daemon package (GIT version)
+	install = cups.install
+	depends = acl
+	depends = pam
+	depends = libcups>=2.3rc1
+	depends = cups-filters
+	depends = bc
+	depends = dbus
+	depends = hicolor-icon-theme
+	optdepends = xdg-utils: xdg .desktop file support
+	optdepends = colord: for ICC color profile support
+	provides = cups=2.3rc1
+	conflicts = cups
+	backup = etc/cups/cupsd.conf
+	backup = etc/cups/snmp.conf
+	backup = etc/cups/printers.conf
+	backup = etc/cups/classes.conf
+	backup = etc/cups/cups-files.conf
+	backup = etc/cups/subscriptions.conf
+	backup = etc/logrotate.d/cups
+	backup = etc/pam.d/cups
+
