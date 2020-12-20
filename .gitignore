@@ -1,0 +1,5 @@
+*.zip
+*.pkg.tar.*
+src/
+pkg/
+/wfa/

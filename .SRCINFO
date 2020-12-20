@@ -1,0 +1,19 @@
+pkgbase = wfa-git
+	pkgdesc = A simple AUR helper written in a shell script
+	pkgver = r35.8a659ce
+	pkgrel = 1
+	url = https://github.com/Hayao0819/wfa
+	arch = any
+	license = WTFPL
+	makedepends = git
+	depends = sudo
+	depends = pacman
+	depends = jq
+	depends = python3
+	depends = curl
+	depends = pyalpm
+	source = git+https://github.com/Hayao0819/wfa
+	md5sums = SKIP
+
+pkgname = wfa-git
+
