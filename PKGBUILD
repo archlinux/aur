@@ -1,18 +1,18 @@
-# $Id: PKGBUILD 289024 2017-02-15 21:13:17Z bpiotrowski $
-# Maintainer:  Kasei Wang <kasei@kasei.im>
+# Maintainer:  DasSkelett <dasskelett@dasskelett.dev>
+# Contributor: Kasei Wang <kasei@kasei.im>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Sébastien Luttringer
 # Contributor: Drew DeVault
 
-pkgname=nginx-mainline-boringssl
-pkgver=1.19.5
+pkgname=nginx-quic
+pkgver=1.19.6
 pkgrel=1
-pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
+pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
 license=('custom')
-depends=('pcre' 'zlib' 'geoip' 'mailcap')
-makedepends=('cmake' 'git' 'go')
+depends=('geoip' 'libxcrypt' 'mailcap' 'pcre' 'zlib')
+makedepends=('cmake' 'git' 'go' 'mercurial')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
         'etc/nginx/koi-win'
@@ -25,19 +25,16 @@ backup=('etc/nginx/fastcgi.conf'
 install=nginx.install
 provides=('nginx')
 conflicts=('nginx')
-source=($url/download/nginx-$pkgver.tar.gz{,.asc}
+source=("hg+https://hg.nginx.org/nginx-quic#revision=f61d347158d0"
         "git+https://boringssl.googlesource.com/boringssl#commit=3743aafdacff2f7b083615a043a37101f740fa53"
         "service"
         "logrotate")
-validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
-sha256sums=('5c0a46afd6c452d4443f6ec0767f4d5c3e7c499e55a60cd6542b35a61eda799c'
-            'SKIP'
+sha256sums=('SKIP'
             'SKIP'
             '05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b'
             'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e')
 
 _common_flags=(
-  --with-pcre-jit
   --with-file-aio
   --with-http_addition_module
   --with-http_auth_request_module
@@ -57,6 +54,7 @@ _common_flags=(
   --with-http_v2_module
   --with-mail
   --with-mail_ssl_module
+  --with-pcre-jit
   --with-stream
   --with-stream_ssl_module
   --with-threads
@@ -68,17 +66,25 @@ _mainline_flags=(
   --with-stream_realip_module
 )
 
+_quic_flags=(
+  --with-http_v3_module
+  --with-http_quic_module
+  --with-stream_quic_module
+)
+
 build() {
+  export CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=[1-9]/-D_FORTIFY_SOURCE=0}
   export CXXFLAGS="$CXXFLAGS -fPIC"
   export CFLAGS="$CFLAGS -fPIC"
 
   cd ${srcdir}/boringssl
-  mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release ../ && make && cd ${srcdir}/boringssl
+  mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release ../ && make
+  cd ${srcdir}/boringssl
   mkdir -p .openssl/lib && cd .openssl && ln -s ../include . && cd ../
   cp ${srcdir}/boringssl/build/crypto/libcrypto.a ${srcdir}/boringssl/build/ssl/libssl.a .openssl/lib && cd ..
 
-  cd ${srcdir}/$provides-$pkgver
-  ./configure \
+  cd ${srcdir}/$pkgname
+  ./auto/configure \
     --prefix=/etc/nginx \
     --conf-path=/etc/nginx/nginx.conf \
     --sbin-path=/usr/bin/nginx \
@@ -94,15 +100,18 @@ build() {
     --http-scgi-temp-path=/var/lib/nginx/scgi \
     --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
     --with-openssl=${srcdir}/boringssl \
+    --with-cc-opt="-I../boringssl/include" \
+    --with-ld-opt="-L../boringssl/build/ssl -L../boringssl/build/crypto" \
     ${_common_flags[@]} \
-    ${_mainline_flags[@]}
+    ${_mainline_flags[@]} \
+    ${_quic_flags[@]}
 
   touch ${srcdir}/boringssl/.openssl/include/openssl/ssl.h
   make
 }
 
 package() {
-  cd $provides-$pkgver
+  cd $pkgname
   make DESTDIR="$pkgdir" install
 
   sed -e 's|\<user\s\+\w\+;|user html;|g' \
@@ -124,12 +133,14 @@ package() {
 
   install -Dm644 ../logrotate "$pkgdir"/etc/logrotate.d/nginx
   install -Dm644 ../service "$pkgdir"/usr/lib/systemd/system/nginx.service
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$provides/LICENSE
+  install -Dm644 docs/text/LICENSE "$pkgdir"/usr/share/licenses/$provides/LICENSE
+  install -d "$pkgdir"/usr/share/licenses/$pkgname
+  ln -s /usr/share/licenses/$provides/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
   rmdir "$pkgdir"/run
 
   install -d "$pkgdir"/usr/share/man/man8/
-  gzip -9c man/nginx.8 > "$pkgdir"/usr/share/man/man8/nginx.8.gz
+  gzip -9c docs/man/nginx.8 > "$pkgdir"/usr/share/man/man8/nginx.8.gz
 
   for i in ftdetect indent syntax; do
     install -Dm644 contrib/vim/${i}/nginx.vim \

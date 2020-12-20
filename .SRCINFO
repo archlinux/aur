@@ -1,6 +1,6 @@
-pkgbase = nginx-mainline-boringssl
-	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server, mainline release
-	pkgver = 1.19.5
+pkgbase = nginx-quic
+	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch
+	pkgver = 1.19.6
 	pkgrel = 1
 	url = https://nginx.org
 	install = nginx.install
@@ -10,10 +10,12 @@ pkgbase = nginx-mainline-boringssl
 	makedepends = cmake
 	makedepends = git
 	makedepends = go
+	makedepends = mercurial
+	depends = geoip
+	depends = libxcrypt
+	depends = mailcap
 	depends = pcre
 	depends = zlib
-	depends = geoip
-	depends = mailcap
 	provides = nginx
 	conflicts = nginx
 	backup = etc/nginx/fastcgi.conf
@@ -25,17 +27,14 @@ pkgbase = nginx-mainline-boringssl
 	backup = etc/nginx/uwsgi_params
 	backup = etc/nginx/win-utf
 	backup = etc/logrotate.d/nginx
-	source = https://nginx.org/download/nginx-1.19.5.tar.gz
-	source = https://nginx.org/download/nginx-1.19.5.tar.gz.asc
+	source = hg+https://hg.nginx.org/nginx-quic#revision=f61d347158d0
 	source = git+https://boringssl.googlesource.com/boringssl#commit=3743aafdacff2f7b083615a043a37101f740fa53
 	source = service
 	source = logrotate
-	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
-	sha256sums = 5c0a46afd6c452d4443f6ec0767f4d5c3e7c499e55a60cd6542b35a61eda799c
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b
 	sha256sums = b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e
 
-pkgname = nginx-mainline-boringssl
+pkgname = nginx-quic
 

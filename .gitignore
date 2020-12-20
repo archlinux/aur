@@ -1,0 +1,8 @@
+pkg/
+src/
+
+*.pkg*
+*.tar*
+
+nginx-*/
+boringssl/
