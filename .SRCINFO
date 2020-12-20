@@ -1,6 +1,6 @@
 pkgbase = ots
 	pkgdesc = OpenType fonts sanitiser. Supports TTF, WOFF, WOFF2 and other formats
-	pkgver = 8.1.1
+	pkgver = 8.1.2
 	pkgrel = 1
 	url = https://github.com/khaledhosny/ots
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = ots
 	makedepends = gtest
 	depends = freetype2
 	depends = libfreetype.so
-	source = https://github.com/khaledhosny/ots/releases/download/v8.1.1/ots-8.1.1.tar.xz
+	source = https://github.com/khaledhosny/ots/releases/download/v8.1.2/ots-8.1.2.tar.xz
 	source = use-system-gtest.patch
-	sha512sums = 00bb7337ccabd95ceb2d1baa96ae51fa9f6660acfdceb7d2d070000c373bb513d7544904e10ed5851073b917c496e89d33b9da1062dc3cbc7ad02b0acfb83cd2
+	sha512sums = f2424a79558001b7b4ba743c15e7429b613b3c5a3a23bec8ef36556dffc8101235f67f2ac7974ecdea50483fe2d97170131aa3814999caf5d1c546e444bec4ec
 	sha512sums = a8e06db16a17f0c2851628cc970b828a2c6df786ed553381906e80f286e2651fd56acf3253156041850a1aeedcaeaf20840db738cf96e0e1582176dbdf3300f2
 
 pkgname = ots
