@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /opt/teamviewer/tv_bin/teamviewerd start
+exec /opt/teamviewer/tv_bin/teamviewerd -f
