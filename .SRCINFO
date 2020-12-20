@@ -1,6 +1,6 @@
 pkgbase = deepin-polkit-agent-git
 	pkgdesc = Deepin Polkit Agent
-	pkgver = 5.3.0.3.r0.g02a588c
+	pkgver = 5.3.0.3.r2.g70b568c
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-polkit-agent
 	arch = x86_64
@@ -16,7 +16,9 @@ pkgbase = deepin-polkit-agent-git
 	provides = deepin-polkit-agent
 	conflicts = deepin-polkit-agent
 	source = deepin-polkit-agent-git::git://github.com/linuxdeepin/dde-polkit-agent
+	source = fix_build.patch
 	sha512sums = SKIP
+	sha512sums = 19b649896321d4444aa37d7aaef6a60647f21d4d47ccf81e2e5ea17333c53fca4242432166f904678bc6c8deaa9742e50b2fc0d668c21e8a9ad69a7caf027de3
 
 pkgname = deepin-polkit-agent-git
 
