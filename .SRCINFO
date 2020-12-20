@@ -1,7 +1,7 @@
 pkgbase = aprx
 	pkgdesc = An APRS Digipeater and/or Internet Gateway
 	pkgver = 2.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://thelifeofkenneth.com/aprx/
 	arch = any
 	license = custom

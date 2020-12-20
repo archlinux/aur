@@ -2,7 +2,7 @@
 # Contributor: CarstenF <archlinux at carstenfeuls dot de>
 pkgname=aprx
 pkgver=2.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An APRS Digipeater and/or Internet Gateway"
 arch=('any')
 url="http://thelifeofkenneth.com/aprx/"
@@ -20,7 +20,7 @@ build() {
 # For a small memory system without writeable /tmp add --with-embedded   
    cd "$pkgname-$pkgver"
   ./configure --prefix=/usr -mandir=/usr/share/man #--with-embedded 
-  make
+  make CFLAGS="-fcommon -O2"
 }
 
 package() {
