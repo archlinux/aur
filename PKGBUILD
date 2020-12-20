@@ -2,7 +2,7 @@
 # Contributor: Stefan Cocora <stefan dot cocora at gmail dot com>
 
 pkgname=kubeseal-bin
-pkgver=0.12.5
+pkgver=0.13.1
 pkgrel=1
 pkgdesc='A tool for one-way encrypted secrets in Kubernetes'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('kubeseal')
 conflicts=('kubeseal')
 source=("$pkgname-$pkgver::https://github.com/bitnami-labs/sealed-secrets/releases/download/v$pkgver/kubeseal-linux-amd64"
         'LICENSE::https://raw.githubusercontent.com/bitnami-labs/sealed-secrets/master/LICENSE')
-sha256sums=('9e6f5e6a98b86e4801fb14677815655013776140d739c66b74b5968a4bb8be0e'
+sha256sums=('e6f2f5a8c22124a055c1b6bdbee7936c5b92bc44105a92441d86595b22d71604'
             'b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1')
 
 package() {
