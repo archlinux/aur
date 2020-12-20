@@ -1,7 +1,7 @@
 pkgbase = joplin
 	pkgdesc = A note taking and to-do application with synchronization capabilities - CLI and Desktop Version
 	pkgver = 1.4.19
-	pkgrel = 12
+	pkgrel = 13
 	url = https://joplinapp.org/
 	install = joplin.install
 	arch = x86_64
@@ -43,6 +43,7 @@ pkgname = joplin-cli
 	pkgdesc = A note taking and to-do application with synchronization capabilities - CLI App
 	depends = nodejs
 	depends = rsync
+	conflicts = joplin
 
 pkgname = joplin-desktop
 	pkgdesc = A note taking and to-do application with synchronization capabilities - Desktop
@@ -57,6 +58,22 @@ pkgname = joplin-desktop
 	depends = nss
 	depends = orc
 	optdepends = libappindicator-gtk3: for tray icon
+	conflicts = joplin
+	conflicts = joplin-desktop-electron
 
 pkgname = joplin-desktop-electron
+	pkgdesc = DEPRECATED: A note taking and to-do application with synchronization capabilities - Desktop
+	depends = electron
+	depends = gtk3
+	depends = libexif
+	depends = libgsf
+	depends = libjpeg-turbo
+	depends = libwebp
+	depends = libxss
+	depends = nodejs
+	depends = nss
+	depends = orc
+	optdepends = libappindicator-gtk3: for tray icon
+	conflicts = joplin
+	conflicts = joplin-desktop
 

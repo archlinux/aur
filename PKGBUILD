@@ -8,7 +8,7 @@ pkgbase="joplin"
 pkgname=('joplin' 'joplin-cli' 'joplin-desktop' 'joplin-desktop-electron')
 pkgver=1.4.19
 groups=('joplin')
-pkgrel=12
+pkgrel=13
 install="joplin.install"
 depends=('electron' 'gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs'
          'nss' 'orc' 'rsync' )
@@ -55,6 +55,7 @@ package_joplin() {
 package_joplin-cli() {
   pkgdesc="A note taking and to-do application with synchronization capabilities - CLI App"
   depends=('nodejs' 'rsync')
+  conflicts=('joplin')
 
   msg2 "Building CLI..."
   mkdir -p "${pkgdir}/usr/share/joplin-cli/app-cli"
@@ -104,6 +105,7 @@ package_joplin-desktop() {
   depends=('electron' 'gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs'
          'nss' 'orc')
   optdepends=('libappindicator-gtk3: for tray icon')
+  conflicts=('joplin' 'joplin-desktop-electron')
 
   msg2 "Building Desktop with packaged Electron..."
   mkdir -p "${pkgdir}/usr/share/joplin-desktop"
@@ -128,6 +130,11 @@ package_joplin-desktop() {
 }
 
 package_joplin-desktop-electron() {
+  pkgdesc="DEPRECATED: A note taking and to-do application with synchronization capabilities - Desktop"
+  depends=('electron' 'gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs'
+         'nss' 'orc')
+  optdepends=('libappindicator-gtk3: for tray icon')
+  conflicts=('joplin' 'joplin-desktop')
   package_joplin-desktop
 }
 
