@@ -7,7 +7,7 @@ pkgname='ros-melodic-control-toolbox'
 pkgver='1.18.2'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-dynamic-reconfigure
@@ -19,6 +19,7 @@ ros_makedepends=(ros-melodic-dynamic-reconfigure
   ros-melodic-message-generation
   ros-melodic-cmake-modules)
 makedepends=('cmake' 'ros-build-tools'
+  boost1.69
   ${ros_makedepends[@]}
   tinyxml)
 
@@ -30,6 +31,7 @@ ros_depends=(ros-melodic-dynamic-reconfigure
   ros-melodic-realtime-tools
   ros-melodic-cmake-modules)
 depends=(${ros_depends[@]}
+  boost1.69
   tinyxml)
 
 # Git version (e.g. for debugging)
@@ -61,7 +63,8 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DBOOST_ROOT=/opt/boost1.69
   make
 }
 
