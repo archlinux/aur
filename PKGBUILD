@@ -1,7 +1,7 @@
 # Maintainer: Spencer Muise <smuise@spencermuise.ca>
 
 pkgname=python-mpv-jsonipc
-pkgver=1.1.11
+pkgver=1.1.13
 pkgrel=1
 pkgdesc="Python API to MPV using JSON IPC"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=(
   'python-setuptools'
 )
 source=("$pkgname-$pkgver.tar.gz::https://pypi.python.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('9d1ea532b7ece9bf58f2fffb77ff5a5c')
+md5sums=('1b9e61105136b50996db5844d1a2bf0e')
 
 build() {
     cd $pkgname-$pkgver
