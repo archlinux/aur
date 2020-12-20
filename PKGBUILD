@@ -1,7 +1,7 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 # Contributor: mickele <mimocciola[at]yahoo[dot]com>
 pkgname=ifcopenshell-git
-pkgver=0.6.0b0.r1259.g30afd6c9
+pkgver=0.6.0b0.r1476.g3eee5aba
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon. GIT version."
 arch=('x86_64' 'i686')
@@ -25,6 +25,7 @@ replaces=()
 backup=()
 source=("git+https://github.com/IfcOpenShell/IfcOpenShell.git")
 _blender_ver=$(blender --version | grep -Po 'Blender \K[0-9]\...')
+_python_ver=$(python --version | grep -Po 'Python \K[0-9]\..')
 
 prepare(){
   cd "${srcdir}/IfcOpenShell"
@@ -44,7 +45,6 @@ build() {
   cd "${srcdir}/IfcOpenShell"
   mkdir -p build
   cd "${srcdir}/IfcOpenShell/build"
-  local _pythonver=$(python --version >&1)
 
   cmake \
 	-DCMAKE_INSTALL_PREFIX=/usr \
@@ -72,9 +72,10 @@ package() {
   mkdir -p "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons"
   cd "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons"
   cp -rf "${srcdir}/IfcOpenShell/src/ifcblenderexport/blenderbim" "./"
-  cd blenderbim/libs/site/packages
+  cd "${pkgdir}/usr/lib/python${_python_ver}/site-packages/"
   cp -rf "${srcdir}/IfcOpenShell/src/ifcclash/." "./"
   cp -rf "${srcdir}/IfcOpenShell/src/ifcdiff/." "./"
+  cp -rf "${srcdir}/IfcOpenShell/src/bcf/bcf/." "./bcf/"
   python -O -m compileall "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons/blenderbim"
   chmod -R a+rwX "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons/blenderbim/bim/data"
 }
