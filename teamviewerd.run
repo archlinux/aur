@@ -1,2 +1,2 @@
 #!/bin/sh
-exec teamviewer daemon enable
+exec /opt/teamviewer/tv_bin/teamviewerd start
