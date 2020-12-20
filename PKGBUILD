@@ -8,9 +8,12 @@ pkgbase="joplin"
 pkgname=('joplin' 'joplin-cli' 'joplin-desktop' 'joplin-desktop-electron')
 pkgver=1.4.19
 groups=('joplin')
-pkgrel=11
+pkgrel=12
 install="joplin.install"
-pkgdesc="A note taking and to-do application with synchronization capabilities - Split Package"
+depends=('electron' 'gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs'
+         'nss' 'orc' 'rsync' )
+optdepends=('libappindicator-gtk3: for tray icon')
+pkgdesc="A note taking and to-do application with synchronization capabilities - CLI and Desktop Version"
 arch=('x86_64' 'i686')
 makedepends=('git' 'npm' 'python' 'rsync' 'electron')
 url="https://joplinapp.org/"
@@ -21,7 +24,6 @@ sha256sums=('c7c5d8b0ff9edb810ed901ea21352c9830bfa286f3c18b1292deca5b2f8febd2'
             'a450284fe66d89aa463d129ce8fff3a0a1a783a64209e4227ee47449d5737be8'
             '5b6f8847ec0c3848375755213c3009c273f478b4b80ed2c5f0af8f67ee0e94fb'
             '55aad4fe50e2da980983a69bc7c0870626064db971550d522e266feb17d38916')
-
 
 build() {
   cd "${srcdir}/joplin-${pkgver}"
@@ -41,6 +43,12 @@ check() {
   cd "${srcdir}/joplin-${pkgver}"
   msg2 "Running Lerna Test Suite"
   npm run test || exit 0
+}
+
+package_joplin() {
+  conflicts=('joplin-cli' 'joplin-desktop' 'joplin-desktop-electron')
+  package_joplin-cli
+  package_joplin-desktop
 }
 
 #TODO: A slimdown is needed
@@ -79,7 +87,6 @@ package_joplin-cli() {
     ln -s "../../../lib" "lib"
     ln -s "../../../renderer" "renderer"
     ln -s "../../../tools" "tools"
-
   done
 
   msg2 "Installing LICENSE..."
@@ -91,9 +98,6 @@ package_joplin-cli() {
   install -Dm755 joplin.sh "${pkgdir}/usr/bin/joplin-cli"
 }
 
-package_joplin() {
-  package_joplin-cli
-}
 
 package_joplin-desktop() {
   pkgdesc="A note taking and to-do application with synchronization capabilities - Desktop"
