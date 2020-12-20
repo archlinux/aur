@@ -3,18 +3,18 @@
 # Contributor: Fabio Loli
 # Contributor: Sergey Kasmy
 pkgname=liquidctl-git
-pkgver=1.4.2.r151.120b608
+pkgver=1.4.2.r153.6317054
 pkgrel=1
 pkgdesc='Cross-platform tool and drivers for liquid coolers and other devices'
 arch=('any')
-url='https://github.com/jonasmalacofilho/liquidctl'
+url='https://github.com/liquidctl/liquidctl'
 license=('GPL3')
 depends=('python' 'python-docopt' 'python-hidapi' 'python-pyusb' 'i2c-tools')
 makedepends=('git' 'python-setuptools')
 checkdepends=('python-pytest')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("$pkgname::git+https://github.com/jonasmalacofilho/liquidctl.git")
+source=("$pkgname::git+https://github.com/liquidctl/liquidctl.git")
 sha256sums=('SKIP')
 
 pkgver() {
