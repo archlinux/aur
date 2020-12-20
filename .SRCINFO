@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-self-test
 	pkgdesc = ROS - self_test.
 	pkgver = 1.9.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wiki.ros.org/self_test
 	arch = i686
 	arch = x86_64
