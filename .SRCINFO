@@ -15,7 +15,6 @@ pkgbase = lib32-libcups-nosystemd-minimal-git
 	conflicts = lib32-libcups
 	source = git://github.com/apple/cups.git
 	sha256sums = SKIP
-	sha256sums = SKIP
 
 pkgname = lib32-libcups-nosystemd-minimal-git
 

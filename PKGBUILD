@@ -13,15 +13,14 @@ optdepends=('libcups: 64bit support')
 provides=(lib32-libcups)
 conflicts=(lib32-libcups)
 source=(git://github.com/apple/cups.git)
-sha256sums=('SKIP'
-            'SKIP')
+sha256sums=('SKIP')
 
 build() {
   export CC="gcc -m32"
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  cd cups-${pkgver}
+  cd cups
 
   aclocal -I config-scripts
   autoconf -I config-scripts
@@ -35,7 +34,7 @@ build() {
 }
 
 package() {
-  cd cups-${pkgver}
+  cd cups
   make BUILDROOT="${pkgdir}" install-libs
   rm -rf "$pkgdir/usr/lib"
 
