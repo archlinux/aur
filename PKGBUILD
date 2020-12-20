@@ -4,7 +4,7 @@ pkgbase=linux-amd-raven
 _srcname=linux
 gitver=v5.4.84
 pkgver=5.4.v.84
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -23,7 +23,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            'cdff844295b852e20c45860b7aae960b4af1c165ef2de123a46d1c0f352b7125'
+            'e0efbbeb7a85ccdbe02ab66eaa20ce9b6111b90888df1a26fd39849d592db3d0'
             #.preset file
             'fd220b9f47a86162247b042f06311848678f9acb64b92f716572972f3aeb3d18'
             #linux install file
@@ -160,8 +160,7 @@ _package-headers() {
 
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
-  for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia scsi sound trace uapi video xen; do
+  for i in $(ls include/); do
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
@@ -177,14 +176,9 @@ _package-headers() {
   chmod og-w -R "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/.tmp_versions"
 
+  # add kernel files to headers
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel"
-
   cp arch/${KARCH}/Makefile "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
-
-  if [ "${CARCH}" = "i686" ]; then
-    cp arch/${KARCH}/Makefile_32.cpu "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
-  fi
-
   cp arch/${KARCH}/kernel/asm-offsets.s "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel/"
 
   # add dm headers
@@ -232,9 +226,6 @@ _package-headers() {
   while read modarch; do
    rm -rf $modarch
   done <<< $(find "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/ -maxdepth 1 -mindepth 1 -type d | grep -v /x86$)
-
-  #Fix missing vdso files after overhaul
-  cp -r "include/vdso/" "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
 }
 
 _package-docs() {

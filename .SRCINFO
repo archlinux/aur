@@ -1,6 +1,6 @@
 pkgbase = linux-amd-raven
 	pkgver = 5.4.v.84
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -19,7 +19,7 @@ pkgbase = linux-amd-raven
 	source = linux.install
 	source = 5013_enable-cpu-optimizations-for-gcc10.patch
 	sha256sums = SKIP
-	sha256sums = cdff844295b852e20c45860b7aae960b4af1c165ef2de123a46d1c0f352b7125
+	sha256sums = e0efbbeb7a85ccdbe02ab66eaa20ce9b6111b90888df1a26fd39849d592db3d0
 	sha256sums = fd220b9f47a86162247b042f06311848678f9acb64b92f716572972f3aeb3d18
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = 27b7fc535ade94b636c3ec4e809e141831e9465a0ef55215a9852b87048629e2
