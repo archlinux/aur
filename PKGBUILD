@@ -6,7 +6,7 @@ arch=('any')
 url="https://github.com/kuba-moo/$_gitname"
 license=('Unknown')
 options=(!strip)
-source=("http://www.mediatek.com/AmazonS3/Downloads/linux/DPO_MT7601U_LinuxSTA_3.0.0.4_20130913.tar.bz2")
+source=("https://d86o2zu8ugzlg.cloudfront.net/mediatek-craft/drivers/DPO_MT7601U_LinuxSTA_3.0.0.4_20130913.tar.bz2")
 md5sums=('5f440dccc8bc952745a191994fc34699')
 
 package() {
