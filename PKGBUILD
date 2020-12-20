@@ -3,7 +3,7 @@
 
 pkgname=biglybt
 pkgver=2.6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Feature-filled Bittorrent client based on the Azureus project"
 arch=('x86_64' 'armv7h')
 url="https://www.biglybt.com/"
@@ -46,6 +46,9 @@ package() {
   msg2 "Fixing paths..."
   sed -i "s|#PROGRAM_DIR=.*|PROGRAM_DIR=\"/opt/$pkgname\"|" $pkgname
   sed -i -e "s|Exec=.*|Exec=$pkgname %U|" -e "s|Icon=.*|Icon=$pkgname|" $pkgname.desktop
+
+  msg2 "Enabling IPv6..."
+  sed -i 's/JAVA_PROPS="-Djava.net.preferIPv4Stack=true"/#JAVA_PROPS="-Djava.net.preferIPv4Stack=true"/' $pkgname
   
   msg2 "Moving stuff in place..."
   # Launchers
