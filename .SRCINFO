@@ -1,6 +1,6 @@
 pkgbase = python-pyszn
 	pkgdesc = A Python package for the Simplified Zone Notation standard
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/pyszn
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-pyszn
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pyparsing
-	source = https://github.com/HPENetworking/pyszn/archive/1.2.0.tar.gz
-	sha256sums = 784f881c6961de0b3ec1a89fb1d2640cd9cdc3bd15bc96342625b57dddb8e71b
+	source = https://github.com/HPENetworking/pyszn/archive/1.3.0.tar.gz
+	sha256sums = 71b437e0ab1110d947587cf77bbcee636eb36a1569300ee97aeaaa8ff3ef5bf3
 
 pkgname = python-pyszn
 
