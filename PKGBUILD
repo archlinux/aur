@@ -7,7 +7,7 @@ pkgname='ros-melodic-stereo-image-proc'
 pkgver='1.15.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -70,7 +70,8 @@ build() {
 		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
 		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
 		-DPYTHON_BASENAME=.cpython-37m \
-		-DSETUPTOOLS_DEB_LAYOUT=OFF
+		-DSETUPTOOLS_DEB_LAYOUT=OFF \
+                -DBOOST_ROOT=/opt/boost1.69
 	make
 }
 
