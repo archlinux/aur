@@ -1,0 +1,18 @@
+pkgbase = git-credential-kwallet-git
+	pkgdesc = Git credential helper for KWallet
+	pkgver = 0.1.0.r12.9430213
+	pkgrel = 1
+	url = https://github.com/Templar-von-Midgard/git-credential-kwallet
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	makedepends = git
+	depends = kwallet
+	provides = git-credential-kwallet
+	conflicts = git-credential-kwallet
+	source = git+https://github.com/Templar-von-Midgard/git-credential-kwallet
+	sha256sums = SKIP
+
+pkgname = git-credential-kwallet-git
+
