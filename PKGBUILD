@@ -2,27 +2,24 @@
 
 pkgname=git-credential-kwallet-git
 _pkgname=git-credential-kwallet
-pkgver=0.1.0.r12.9430213
+pkgver=v0.1.1.r0.g5fc35c3
 _pkgver=0.1.0
 pkgrel=1
 pkgdesc='Git credential helper for KWallet'
 arch=('x86_64')
-url='https://github.com/Templar-von-Midgard/git-credential-kwallet'
+url='https://github.com/dasbaumwolltier/git-credential-kwallet'
 license=('MIT')
 depends=('kwallet')
 provides=($_pkgname)
 conflicts=($_pkgname)
 makedepends=('cmake' 'make' 'git')
 sha256sums=('SKIP')
-source=('git+https://github.com/Templar-von-Midgard/git-credential-kwallet')
+source=('git+https://github.com/dasbaumwolltier/git-credential-kwallet')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf $_pkgver."r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
