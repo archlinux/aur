@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-turtlesim
 	pkgdesc = ROS - turtlesim is a tool made for teaching ROS and ROS packages.
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wiki.ros.org/turtlesim
 	arch = i686
 	arch = x86_64
