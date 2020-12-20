@@ -1,11 +1,12 @@
 pkgbase = easyrpg-tools-git
 	pkgdesc = EasyRPG tools for RPG Maker 2000/2003 files (development version)
-	pkgver = r129.9f3fcc3
+	pkgver = r175.a57ef7b
 	pkgrel = 1
 	url = https://easyrpg.org/tools/
 	arch = i686
 	arch = x86_64
 	license = MIT
+	license = ISC
 	license = GPL3
 	license = custom
 	makedepends = git
@@ -14,6 +15,7 @@ pkgbase = easyrpg-tools-git
 	makedepends = sdl2_image
 	makedepends = libpng
 	makedepends = zlib
+	makedepends = nlohmann-json
 	source = easyrpg-tools::git+https://github.com/EasyRPG/Tools.git
 	md5sums = SKIP
 
@@ -28,12 +30,13 @@ pkgname = easyrpg-tools-git
 	provides = xyz2png
 	provides = xyzcrush
 	provides = gencache
+	provides = lcftrans
+	provides = lcfviz
 
 pkgname = xyz-thumbnailer-git
 	pkgdesc = Thumbnailer for XYZ images (development version)
 	arch = any
 	license = MIT
 	depends = xyz2png
-	depends = shared-mime-info
 	depends = sh
 
