@@ -1,0 +1,17 @@
+pkgbase = snapidy
+	pkgdesc = Alternative web client for Snapcast
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/djmattyg007/snapidy
+	arch = any
+	license = GPL3
+	license = MIT
+	makedepends = zip
+	noextract = snapidy-1.0.1.zip
+	source = https://github.com/djmattyg007/snapidy/releases/download/1.0.1/snapidy-1.0.1.zip
+	source = config.example.json
+	sha256sums = 2648293374020eba11721e36cc6948eb50ad2de5158a3e7eadb0c6dc5fdc8d1f
+	sha256sums = cef91057cd29a645a5fd7878b0845e77c192d028261837b6cb833f3963d8a07c
+
+pkgname = snapidy
+
