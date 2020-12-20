@@ -22,6 +22,7 @@ md5sums=('3dac18a2da5809ccb38c50cd4a455897'
 prepare () {
     cd "$srcdir/ike"
     patch -p1 -i "$srcdir/openssl-1.1.0.patch"
+    sed -i 's/define "parser_class_name"/define parser_class_name/' ./source/iked/conf.parse.yy
 }
 
 build () {
