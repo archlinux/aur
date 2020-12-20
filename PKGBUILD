@@ -3,11 +3,11 @@
 _pkgname=clikit
 pkgname=python-clikit-git
 pkgver=r114.1da34f1
-pkgrel=2
+pkgrel=3
 pkgdesc="CliKit is a group of utilities to build beautiful and testable command line interfaces."
 arch=('any')
 provides=('python-clikit')
-confilicts=('python-clikit')
+conflicts=('python-clikit')
 url="https://github.com/sdispater/${_pkgname}"
 license=('MIT')
 depends=('python-pastel>=0.2.0' 'python-pastel<0.3.0' 'python-pylev>=1.3' 'python-pylev<2.0' 'python-crashtest>=0.3.0' 'python-crashtest<0.4.0' 'python>=3.6' 'python<4.0')
