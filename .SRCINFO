@@ -4,10 +4,10 @@ pkgbase = twitch-downloader-bin
 	pkgrel = 1
 	url = https://github.com/lay295/TwitchDownloader
 	arch = x86_64
+	license = MIT
 	makedepends = unzip
 	options = !strip
 	source = https://github.com/lay295/TwitchDownloader/releases/download/1.38/TwitchDownloaderCLI-Linux-x64.zip
 	sha512sums = bf1cf9120ca6fa35e58659cc23200cf99c2720fda72bdbe91e7535816933327987242fb0bc3709405010a812114f8a06c837cc2ba0c3dbd13b94b998f67bfa7f
 
 pkgname = twitch-downloader-bin
-
