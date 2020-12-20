@@ -2,7 +2,7 @@
 # Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
 
 pkgname=freecad-git
-pkgver=0.19_pre.r4724.g6c6f5e7fbf
+pkgver=0.19_pre.r4809.gefa6346e5f
 pkgrel=1
 epoch=0
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -21,6 +21,7 @@ openmpi
 pyside2-tools
 python-matplotlib
 python-pivy
+python-ply
 python-pyside2
 qt5-svg
 qt5-tools
@@ -58,9 +59,11 @@ prepare() {
   cd FreeCAD
   # patch out a build error
   #curl -L "https://github.com/FreeCAD/FreeCAD/pull/2842/commits/095984fce44931a4c8e2ace269d45a62640fbfb4.patch" | patch -p1
+}
 
-  mkdir -p build
-  cd build
+build() {
+  cd FreeCAD
+
   cmake -Wno-dev .. \
     -D BUILD_ENABLE_CXX_STD=C++14 \
     -D BUILD_QT5=ON \
@@ -74,22 +77,19 @@ prepare() {
     -D FREECAD_USE_OCC_VARIANT="Official Version" \
     -D FREECAD_USE_QT_FILEDIALOG=ON \
     -D PYTHON_EXECUTABLE=/usr/bin/python \
-    -G Ninja
-}
+    -G Ninja -B "${srcdir}/build" -S .
 
-build() {
-  cd FreeCAD
-  ninja -C build
+  ninja -C "${srcdir}/build"
 }
 
 check() {
   cd FreeCAD
-  ./build/bin/FreeCAD --console --run-test 0
+  "${srcdir}/build/bin/FreeCAD" --console --run-test 0
 }
 
 package() {
   cd FreeCAD
-  DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="${pkgdir}" ninja -C "${srcdir}/build" install
 
   # Create desktop shortcut
   gendesk -f -n --pkgname "${pkgname}" --pkgdesc "${pkgdesc}" --name FreeCAD \
