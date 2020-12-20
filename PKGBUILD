@@ -1,38 +1,31 @@
-# Maintainer: Joshua Taillon <jat255 AT gmail DOT com>
-_pkgname=imgcat
-pkgname=$_pkgname-git
-pkgver=r168.37fa9d9
+# Contributor: Joshua Taillon <jat255 AT gmail DOT com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
+pkgname=imgcat-git
+pkgver=r246.c69bebd
 pkgrel=1
 pkgdesc="It's like cat, but for images"
-arch=('any')
+arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/eddieantonio/imgcat"
 license=('ISC')
-depends=('git' 'ncurses' 'termcap')
-#backup=()
-source=("$_pkgname::git+https://github.com/eddieantonio/$_pkgname.git")
+depends=('ncurses' 'libjpeg' 'libpng')
+makedepends=('cimg' 'git')  
+source=("git+https://github.com/eddieantonio/${pkgname%-git}.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd ${pkgname%-git}
+  ./configure --prefix=/usr
+  make PREFIX=/usr
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
-    autoconf
-    ./configure
-    sed -i 's/LDLIBS = $(LIBS) -ltermcap -lm -lpthread/LDLIBS = $(LIBS) -ltermcap -lm -lpthread -lcurses/' Makefile
-    make 
-
-    make install PREFIX="$pkgdir/"
-
-    # Move bin to usr/bin
-    mkdir -p "${pkgdir}/usr/bin"
-    find "$pkgdir/bin" -type f -exec mv '{}' "$pkgdir/usr/bin/" \;
-    rm -r "$pkgdir/bin"
-
-    # Move share to usr/share
-    mkdir -p "${pkgdir}/usr/share/man/man1"
-    find "$pkgdir/share" -type f -exec mv '{}' "$pkgdir/usr/share/man/man1" \;
-    rm -r "$pkgdir/share"
+  cd ${pkgname%-git}  
+  make install PREFIX="$pkgdir"/usr
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
