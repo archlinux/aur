@@ -1,4 +1,4 @@
-pkgbase = libcups-nosystemd-minimal-git
+pkgbase = cups-nosystemd-minimal-git
 	pkgver = 2.3rc1.r29.g664789488
 	pkgrel = 1
 	url = https://www.cups.org/
@@ -37,15 +37,6 @@ pkgbase = libcups-nosystemd-minimal-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = libcups-nosystemd-minimal-git
-	pkgdesc = The CUPS Printing System - client libraries and headers (GIT version)
-	depends = gnutls
-	depends = libtiff>=4.0.0
-	depends = libpng>=1.5.7
-	depends = krb5
-	provides = libcups=2.3rc1
-	conflicts = libcups
-
 pkgname = cups-nosystemd-minimal-git
 	pkgdesc = The CUPS Printing System - daemon package (GIT version)
 	install = cups.install
@@ -68,4 +59,13 @@ pkgname = cups-nosystemd-minimal-git
 	backup = etc/cups/subscriptions.conf
 	backup = etc/logrotate.d/cups
 	backup = etc/pam.d/cups
+
+pkgname = libcups-nosystemd-minimal-git
+	pkgdesc = The CUPS Printing System - client libraries and headers (GIT version)
+	depends = gnutls
+	depends = libtiff>=4.0.0
+	depends = libpng>=1.5.7
+	depends = krb5
+	provides = libcups=2.3rc1
+	conflicts = libcups
 

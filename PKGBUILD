@@ -4,7 +4,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 #pkgbase=('cups-nosystemd-minimal-git')
-pkgname=('libcups-nosystemd-minimal-git' 'cups-nosystemd-minimal-git')
+pkgname=('cups-nosystemd-minimal-git' 'libcups-nosystemd-minimal-git')
 pkgver=2.3rc1.r29.g664789488
 pkgrel=1
 arch=('x86_64')
