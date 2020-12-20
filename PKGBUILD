@@ -2,7 +2,7 @@
 
 _pkgname=QTasksManager
 pkgname=qtasksmanager
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Graphical work packages manager written in Qt"
 arch=('i686' 'x86_64')
@@ -10,9 +10,9 @@ url="https://github.com/bbilas/QTasksManager"
 license=("GPL3")
 depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols' 'qt5-quickcontrols2')
 makedepends=('git' 'cmake')
-_pkgver=1.1.0
+_pkgver=1.1.1
 source=("https://github.com/bbilas/QTasksManager/archive/v${_pkgver}.tar.gz")
-sha256sums=('06dad786ff6cd7c1ee4d4c6544d4597b599c533039d1f6224203d0732ec30488')
+sha256sums=('042814322e0c712035a5d0b5ddc8fa3be2c7963d844dee892ee251dfcb108d93')
 
 build() {
   cmake \
