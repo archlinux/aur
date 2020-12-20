@@ -3,7 +3,7 @@
 
 pkgname=asleap
 pkgver=2.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Actively recover LEAP/PPTP passwords.'
 arch=(x86_64)
 license=(GPL)
