@@ -1,0 +1,18 @@
+pkgbase = rsmixer-git
+	pkgdesc = CLI volume control for PulseAudio
+	pkgver = 0.2.4.r13.geb77ee7
+	pkgrel = 1
+	url = https://github.com/jantap/rsmixer
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	depends = pulseaudio
+	provides = rsmixer
+	conflicts = rsmixer
+	source = git+https://github.com/jantap/rsmixer.git
+	md5sums = SKIP
+
+pkgname = rsmixer-git
+
