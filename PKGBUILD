@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=redi-search
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="Redis module that implements a search engine on top of Redis."
 arch=("x86_64")
