@@ -1,0 +1,19 @@
+pkgbase = guile-zlib-git
+	pkgdesc = Guile-zlib is a GNU Guile library providing bindings to zlib.
+	pkgver = latest
+	pkgrel = 1
+	url = https://notabug.org/guile-zlib/guile-zlib
+	arch = any
+	license = GPL3
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = pkg-config
+	makedepends = texinfo
+	makedepends = guile-hall
+	depends = guile
+	depends = zlib
+	source = git+https://notabug.org/guile-zlib/guile-zlib.git
+	md5sums = SKIP
+
+pkgname = guile-zlib-git
+
