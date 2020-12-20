@@ -26,7 +26,7 @@ source=(
 )
 
 sha256sums=('b88ca14b81b13e1480532b70a1a319a276909c617ac868c233a87e5261a6e119'
-            '604ccf0a6ef445f9df03d33fe17ed3d57db547d734154e394c92611b0a22c688')
+            'c4973cd5097024bc9026b8b0f07203d8a9a7514594b57ded27e3c3df2df071e7')
 
 build() {
 	cd jitsi-meet-electron-${pkgver}/
