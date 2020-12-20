@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-integration-github
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
 pkgdesc="GitHub integration into Nextcloud"
 arch=('any')
