@@ -2,8 +2,8 @@
 
 pkgname=listen1-desktop-appimage
 _installdir=/opt/${pkgname}
-pkgver=2.17.1
-pkgrel=2
+pkgver=2.17.2
+pkgrel=1
 pkgdesc="One for all free music in China"
 arch=("x86_64")
 url="https://listen1.github.io/listen1"
