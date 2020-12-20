@@ -71,6 +71,10 @@ makedepends=(
     kmod
     libelf
     pahole
+    cpio
+    perl
+    tar
+    xz
     xmlto
     python-sphinx
     python-sphinx_rtd_theme
@@ -103,7 +107,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '91e02613894488783adf494fb3b14230f461644484e736f13283f0d867549cfcbba5fd3424ef6bd1645d7a1071d1938709ba61b484be896824abae7162cbdd41'
+            'f8a226fe84896824f78bf05890250a110fee779d15f5716972efc6dd4cf5fe71dd9deba49559fdc267c0251274d6fb1f5795af902ade219e466d9dc73afe03a9'
             'e27976837d14c6480514da37c76f8d015a26eefe8da612e31a819a3ef897864a30fac588ca11108ea5fe6fab653fb083c09e3cbc923ddfa3758ea20f567d6dee'
             '2cf83af1322f0fe5b9751e2b77fa1c890c7c22d9213b1cdfb57ca7f7a89a2cb263c213e178417ae1b7e947b386796b4b71507b127ec698cba661799346b33bbd')
 
