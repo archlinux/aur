@@ -2,8 +2,8 @@
 
 _pkgname='jetbrains-toolbox'
 pkgname="${_pkgname}-fix"
-pkgver=1.18.7609
-pkgrel=2
+pkgver=1.19.7784
+pkgrel=1
 pkgdesc='Manage your tools the easy way'
 arch=('x86_64')
 url='https://www.jetbrains.com/toolbox/'
@@ -38,7 +38,7 @@ source=(
 	"${_pkgname}".svg
 )
 sha256sums=(
-	'f4eae649a88baec0c4b4f7db84fa290ebcd6151aef8856ab3af42b97add40d10'
+	'7391afbad4e477875024ee73021b264993fcf91a47d073ae57ab5852dca6abd1'
 	'ade259058b244c8ce6573bc86327ab14b4eddd0095f8d2a8638473334b268200'
 	'4a6b4b801954017402e47b40b7246a71b1c128ca352efe459322b3f3699a5813'
 )
