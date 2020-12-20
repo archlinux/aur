@@ -1,5 +1,6 @@
 # Maintainer: Ckat <ckat@teknik.io>
 pkgname=chatterino2-git
+_pkgname=chatterino2
 pkgver=r2975.b8104863
 pkgrel=1
 pkgdesc='Second installment of the Twitch chat client series "Chatterino", dev/git version'
@@ -14,8 +15,28 @@ optdepends=('streamlink: For piping streams to video players'
 provides=('chatterino')
 conflicts=('chatterino')
 install=$pkgname.install
-source=("git://github.com/Chatterino/chatterino2")
-md5sums=('SKIP')
+source=("git://github.com/Chatterino/chatterino2"
+        "git://github.com/Chatterino/libcommuni"
+        "git://github.com/pajlada/humanize"
+        "git://github.com/jiakuan/qBreakpad"
+        "git://github.com/mohabouje/WinToast"
+        "git://github.com/pajlada/settings"
+        "git://github.com/pajlada/signals"
+        "git://github.com/pajlada/serialize"
+        "git://github.com/Tencent/rapidjson"
+        "git://github.com/Chatterino/qtkeychain"
+        "git://github.com/ziocleto/websocketpp")
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 pkgver() {
     cd "$srcdir/chatterino2"
@@ -23,8 +44,19 @@ pkgver() {
 }
 
 prepare () {
-    cd "$srcdir/chatterino2"
-    git submodule update --init --recursive --progress
+    cd "$srcdir/$_pkgname"
+    git submodule init
+    git config submodule.libcommuni $srcdir/$_pkgname/lib/libcommuni
+    git config submodule.humanize $srcdir/$_pkgname/lib/humanize
+    git config submodule.qBreakpad $srcdir/$_pkgname/lib/qBreakpad
+    git config submodule.WinToast $srcdir/$_pkgname/lib/WinToast
+    git config submodule.settings $srcdir/$_pkgname/lib/settings
+    git config submodule.signals $srcdir/$_pkgname/lib/signals
+    git config submodule.serialize $srcdir/$_pkgname/lib/serialize
+    git config submodule.rapidjson $srcdir/$_pkgname/lib/rapidjson
+    git config submodule.qtkeychain $srcdir/$_pkgname/lib/qtkeychain
+    git config submodule.websocketpp $srcdir/$_pkgname/lib/websocketpp
+    git submodule update
 }
 
 build() {
