@@ -1,0 +1,20 @@
+pkgbase = aprx-git
+	pkgdesc = A multitalented APRS i-gate / digipeater
+	pkgver = v2.9.0.r28.g13c6e79
+	pkgrel = 1
+	url = http://thelifeofkenneth.com/aprx/
+	arch = any
+	license = custom
+	depends = glibc
+	provides = aprx
+	conflicts = aprx
+	backup = etc/aprx.conf
+	source = aprx::git+https://github.com/PhirePhly/aprx.git
+	source = aprx.service
+	sha256sums = SKIP
+	sha256sums = ef586aa9c5f7dfc70e6631e60648764738923ccb1374732f7ae356d4789e69c5
+	sha512sums = SKIP
+	sha512sums = e9a6d4ce894c692e2a959ae5a7644b1a18c7d2df550d44a3cba3bff484400262bc9da5f12b06b406ccc64094b242d6783a887eacd633a59b68d8519a299e0b6b
+
+pkgname = aprx-git
+

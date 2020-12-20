@@ -1,0 +1,13 @@
+[Unit]
+Description=An APRS Digipeater and/or Internet Gateway
+After=network.target
+After=sound.target
+
+[Service]
+Type=forking
+ExecStart=/bin/su -s /bin/bash -l -c "/usr/bin/aprx"
+Restart=always
+PIDFile=/run/aprx.pid
+
+[Install]
+WantedBy=multi-user.target
