@@ -80,7 +80,6 @@ _package() {
   pkgdesc="Linux kernel slimmed down to only work on AMD hardware. Zero compatibility."
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7' 'lzop')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=('linux')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
@@ -139,7 +138,6 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for the slimmed down linux kernel."
-  provides=('linux-headers')
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
