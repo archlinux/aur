@@ -1,5 +1,4 @@
-# Maintainer: Zhang.j.k <zhangjk67 at gmail dian com>
-
+# Maintainer: Zhangjk <zhangjk67 at gmail dian com>
 pkgname=k-git
 pkgver=r189.e2bfbaf
 pkgrel=2
