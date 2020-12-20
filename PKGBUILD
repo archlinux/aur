@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('git' 'glibc' 'v2ray')
 makedepends=('go>=2:1.12.3-1' 'nodejs>=14' 'yarn' 'python2')
 provides=('v2raya')
-conflicts=('v2raya' 'v2raya-bin')
+conflicts=('v2raya')
 source=("$pkgname::git+$url")
 sha512sums=('SKIP')
 

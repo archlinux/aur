@@ -19,7 +19,6 @@ pkgbase = v2raya-git
 	depends = v2ray
 	provides = v2raya
 	conflicts = v2raya
-	conflicts = v2raya-bin
 	source = v2raya-git::git+https://github.com/v2rayA/v2rayA
 	sha512sums = SKIP
 
