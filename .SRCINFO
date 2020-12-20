@@ -1,15 +1,23 @@
 pkgbase = asleap
 	pkgdesc = Actively recover LEAP/PPTP passwords.
 	pkgver = 2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.willhackforsushi.com/Asleap.html
-	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = openssl
 	depends = libpcap
+	noextract = libxcrypt1.deb
+	noextract = libxcrypt-dev.deb
+	noextract = libxcrypt.patch
 	source = http://www.willhackforsushi.com/code/asleap/2.2/asleap-2.2.tgz
+	source = libxcrypt1.deb::http://mirrors.kernel.org/ubuntu/pool/universe/libx/libxcrypt/libxcrypt1_2.4-4_amd64.deb
+	source = libxcrypt-dev.deb::http://mirrors.kernel.org/ubuntu/pool/universe/libx/libxcrypt/libxcrypt-dev_2.4-4_amd64.deb
+	source = libxcrypt.patch
 	md5sums = a1d06729fb2addcc5b09bfc14f9b3173
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = asleap
 

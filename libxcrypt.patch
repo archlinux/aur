@@ -1,0 +1,29 @@
+diff --unified --recursive --text --color asleap-2.2/Makefile asleap-2.2-new/Makefile
+--- asleap-2.2/Makefile	2007-07-13 20:00:58.000000000 -0500
++++ asleap-2.2-new/Makefile	2020-12-19 21:38:02.071555347 -0500
+@@ -7,10 +7,12 @@
+ # <dragorn> i think thats all anyone does
+ # <dragorn> make is a twisted beast
+ ##################################
+-LDLIBS		= -lpcap -lcrypt
++LDLIBS		= -lpcap -lxcrypt
+ CFLAGS		= -pipe -Wall -D_LINUX -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -I../../..
+ CFLAGS		+= -D_OPENSSL_MD4
+ LDLIBS		+= -lcrypto
++LDLIBS		+= -L"../deb/usr/lib"
++CFLAGS		+= -I"../deb/usr/include"
+ CFLAGS		+= -g3 -ggdb -g
+ PROGOBJ		= asleap.o genkeys.o utils.o common.o sha1.o
+ PROG		= asleap genkeys
+diff --unified --recursive --text --color asleap-2.2/utils.c asleap-2.2-new/utils.c
+--- asleap-2.2/utils.c	2007-07-13 20:00:58.000000000 -0500
++++ asleap-2.2-new/utils.c	2020-12-19 21:30:14.418336923 -0500
+@@ -27,7 +27,7 @@
+ #include <stdarg.h>
+ #include <string.h>
+ #include <stdint.h>
+-#include <crypt.h>
++#include <xcrypt.h>
+ #include <unistd.h>
+ #include <ctype.h>
+ #include <netinet/in.h>		/* for ntohs() */
