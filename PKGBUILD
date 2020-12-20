@@ -1,10 +1,11 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Berto Gomez <csberto at gmail dot com>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Bruno Dupuis <lisael@lisael.org>
 # Contributor: Jan Tojnar <jtojnar@gmail.com>
 
 pkgname=perl-app-sqitch
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Sane database change management'
 _dist=App-Sqitch
 arch=('any')
@@ -43,6 +44,9 @@ depends=(
 )
 
 checkdepends=(
+    'perl-config-gitlike'
+    'perl-test-warn'
+    'perl-test-mockobject'
     'perl-capture-tiny'
     'perl-test-deep'
     'perl-test-file'
@@ -50,6 +54,8 @@ checkdepends=(
     'perl-test-nowarnings'
     'perl-test-dir'
     'perl-test-file-contents'
+    'perl-test-exception'
+    'perl-pod-parser'
 )
 
 optdepends=(
