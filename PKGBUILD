@@ -7,7 +7,7 @@
 
 pkgname=freefilesync
 pkgver=11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
 url="https://freefilesync.org"
@@ -16,6 +16,7 @@ depends=(wxgtk curl lsb-release)
 makedepends=(unzip)
 source=(
 	"FreeFileSync_${pkgver}_Source.zip::${url}/download/FreeFileSync_${pkgver}_Source.zip"		#ffs
+	curl_fix.patch
 	revert_xdg_config_path.patch
 	revert_bulk_append.patch
 	revert_linkflags.patch
@@ -25,6 +26,7 @@ source=(
 	)
 
 sha256sums=('361bab0798811764701cfda297c2031b9decb04bb2e434ec8fe80ba8cc01e56a'
+	    '72687c95350814f5517d0db7f2ca1eeac4cff1dcbe00a9a8365f5dc76172ab2f'
             '0f9a9a6b2c3c460bbde7425bd62273c925259db1cc9dc18c6013aae99fb15cd8'
             '17e7db683662809882db6d6b3d855eb4372ca1bd05e15c4c490970a0b4b127c0'
             '2942c0e74be2b15cdd83e36fa524c3b6c68d4b4da2042f1b0cf7c13d3b806eac'
@@ -42,9 +44,12 @@ prepare() {
     # Avoid uses of wxItemContainer::Append(const std::vector<wxString>& items)
     patch -p1 -i revert_bulk_append.patch
 
-    # edit lines to remove functions that require wxgtk 3.1.x
+    # edit lines to remove functions that require wxgtk 3.1.x 
     sed -e 's:m_textCtrlOfflineActivationKey->ForceUpper:// &:g' -i 'FreeFileSync/Source/ui/small_dlgs.cpp'
     sed -e 's:const double scrollSpeed =:& 6; //:g' -i 'wx+/grid.cpp'
+
+# fix for curl wrapper
+    patch -p1 -i curl_fix.patch
 
 # add LINKFLAGS that were removed but that we still need in our case
     patch -p1 -i revert_linkflags.patch
