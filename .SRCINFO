@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-image-transport
 	pkgdesc = ROS - image_transport should always be used to subscribe to and publish images.
 	pkgver = 1.11.13
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.ros.org/image_transport
 	arch = i686
 	arch = x86_64
