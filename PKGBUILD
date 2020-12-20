@@ -11,7 +11,7 @@ depends=('python>=3.6' 'python-akro' 'python-click>=2.0' 'python-cloudpickle' 'p
 optdepends=(
 	'python-tensorflow>=1.14: tensorflow models'
 	'python-tensorflow-probability>=0.11.0: probabilistic tensorflow models'
-	'python-torch>=1.0.0'
+	'python-pytorch>=1.0.0'
 	'python-torchvision>=0.2.1'
 	'python-gym: openAI gym environments'
 	'python-mujoco-py: mujoco based gym environments'

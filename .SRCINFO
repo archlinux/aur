@@ -21,7 +21,7 @@ pkgbase = python-garage
 	depends = python-setproctitle>=1.0
 	optdepends = python-tensorflow>=1.14: tensorflow models
 	optdepends = python-tensorflow-probability>=0.11.0: probabilistic tensorflow models
-	optdepends = python-torch>=1.0.0
+	optdepends = python-pytorch>=1.0.0
 	optdepends = python-torchvision>=0.2.1
 	optdepends = python-gym: openAI gym environments
 	optdepends = python-mujoco-py: mujoco based gym environments
