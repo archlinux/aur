@@ -3,18 +3,18 @@
 # mad props to the amidst PKGBUILD; i based this off of that
 
 pkgname=among-us-editor
-pkgver=1.51.1
-pkgrel=4
-_jarfile="Among-Us-Editor-${pkgver}-linux.jar"
+pkgver=1.6
+pkgrel=5
+_jarfile="Among-Us-Editor-${pkgver}.jar"
 pkgdesc='Character editor for Among Us'
 arch=('any')
 license=('MIT')
-url='https://github.com/Vresod/Among-Us-Editor/'
+url='https://github.com/Koupah/Among-Us-Editor/'
 depends=('java-runtime>=8' 'sh' 'hicolor-icon-theme')
 optdepends=('steam: where among us is usually bought from')
 noextract=("$_jarfile")
-source=("https://github.com/Vresod/Among-Us-Editor/releases/download/$pkgver/$_jarfile" "AUE.desktop" "icon.png" "LICENSE")
-sha256sums=("efdb4c0bead17da3332d4f98655c22d3e0626844f2782700d713ada7fe764d98" "1fc76f358a4996594740da38546946040c98e652e7f2a9644fe16bd2d25ddc43" "SKIP" "SKIP" )
+source=("https://github.com/Koupah/Among-Us-Editor/releases/download/$pkgver/$_jarfile" "AUE.desktop" "icon.png" "LICENSE")
+sha256sums=("657816ad906b342bd915a0046bd78198f35576f1b72ba4fd2223848031612d50" "1fc76f358a4996594740da38546946040c98e652e7f2a9644fe16bd2d25ddc43" "SKIP" "SKIP" )
 
 build() {
 	cd "$srcdir"
