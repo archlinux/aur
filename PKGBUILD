@@ -48,8 +48,8 @@ package() {
 
   # Fix permissions
   for d in locales resources; do
-    chmod 0755 squashfs-root/$d
-    find squashfs-root/$d -type d -exec chmod 0755 {} +
+    chmod 0755 "${pkgdir}/opt/${_pkgname}/$d"
+    find "${pkgdir}/opt/${_pkgname}/$d" -type d -exec chmod 0755 {} +
   done
 
   # Link entry point
