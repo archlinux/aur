@@ -1,13 +1,13 @@
 pkgbase = sshcommand
 	pkgdesc = Turn SSH into a thin client specifically for your app
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/dokku/sshcommand
 	arch = x86_64
 	license = MIT
-	source = https://github.com/dokku/sshcommand/releases/download/v0.11.0/sshcommand_0.11.0_linux_x86_64.tgz
+	source = https://github.com/dokku/sshcommand/releases/download/v0.12.0/sshcommand_0.12.0_linux_x86_64.tgz
 	source = LICENSE
-	sha256sums = f235e28f3e126d60a24379d945fdc203e42678cd42309fef943b68a03e5ea0f8
+	sha256sums = 0463c7ce5a933c634f171d54828d2f33b97d209422b350076b35d6b52437ebb3
 	sha256sums = b1ac2fed5ac269fb7bbf651a3d37ef5fd56d2c33320e17cb6e23a22a93f5c046
 
 pkgname = sshcommand
