@@ -1,6 +1,6 @@
 # arg 1:  the new package version
 post_install() {
-	echo "Change variables in /etc/conf.d/gvtg_vgpu to match your hardware"
-	echo "See https://wiki.archlinux.org/index.php/Intel_GVT-g for more infomation"
-	echo "To enable this servie, run: systemctl enable --now gvtg_vgpu.service"
+	echo "==> Change variables in /etc/conf.d/gvtg_vgpu to match your hardware"
+	echo "==> See https://wiki.archlinux.org/index.php/Intel_GVT-g for more infomation"
+	echo "==> To enable this servie, run: systemctl enable --now gvtg_vgpu.service"
 }
