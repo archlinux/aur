@@ -8,7 +8,7 @@ pkgver=2.1.0
 pkgrel=5
 pkgdesc="Gtk2 theme switcher"
 url="http://muhri.net/nav.php3?node=gts"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 license=('GPL2')
 depends=('gtk2')
 source=("http://ftp.de.debian.org/debian/pool/main/g/gtk-theme-switch/gtk-theme-switch_${pkgver}.orig.tar.gz")
