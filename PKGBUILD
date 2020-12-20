@@ -1,4 +1,5 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gtk2-minimal-git
