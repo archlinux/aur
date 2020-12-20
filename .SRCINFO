@@ -7,6 +7,7 @@ pkgbase = isync-utf8-mailboxes
 	license = GPL2
 	depends = libsasl
 	depends = zlib
+	provides = isync
 	conflicts = isync
 	source = git+https://git.code.sf.net/u/shashurup/isync#branch=utf8-mailboxes
 	sha512sums = SKIP
