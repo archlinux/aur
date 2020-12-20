@@ -1,13 +1,13 @@
-# Maintainer: Bernhard Landauer <oberon@mnajaro.org>
+# Maintainer: Bernhard Landauer <oberon@manjaro.org>
 # Co-Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: korrode <korrode at gmail>
 # Contributor: sumt <sumt at sci dot fi>
 
 pkgname=palemoon-bin
-pkgver=28.16.0
+pkgver=28.17.0
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://linux.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('alsa-lib'
@@ -22,15 +22,11 @@ provides=("palemoon=$pkgver")
 conflicts=('palemoon')
 options=('!strip')
 source=(palemoon.desktop)
-source_x86_64=("https://linux.palemoon.org/datastore/release/palemoon-$pkgver.linux-x86_64.tar.xz"{,.sig})
-source_i686=("https://linux.palemoon.org/datastore/release/palemoon-$pkgver.linux-i686.tar.xz"{,.sig})
+source_x86_64=("https://linux.palemoon.org/datastore/release/palemoon-$pkgver.linux-x86_64-gtk2.tar.xz"{,.sig})
 # link to latest tarball: http://linux.palemoon.org/download/mainline/
 sha256sums=('6fa2786e1828684a6783d340690f75382d1dcd02ce8533dad4f3f4f8b076dad7')
-sha256sums_i686=('9816f3155d5f3147000cda5de5c46002eb2f87232da6018cdf76d078a873a285'
-                 'SKIP')
-sha256sums_x86_64=('573a048e948ef907275ba99a3eb178a16b9c8db38d401c411bb5562932c3320f'
+sha256sums_x86_64=('4bd82662526ccde144b8c3f73b8fbd6f0d5a6b7fffafe1f96c30f9dc8584088d'
                    'SKIP')
-
 validpgpkeys=('439F46F42C6AE3D23CF52E70865E6C87C65285EC' # T. Wine
               '3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC') # Moonchild, see https://forum.palemoon.org/viewtopic.php?f=1&t=7176
 
