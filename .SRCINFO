@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-realtime-tools
 	pkgdesc = ROS - Contains a set of tools that can be used from a hard realtime thread, without breaking the realtime behavior.
 	pkgver = 1.16.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://wiki.ros.org/realtime_tools
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,9 @@ pkgbase = ros-noetic-realtime-tools
 	depends = ros-noetic-rostest
 	depends = ros-noetic-actionlib
 	source = ros-noetic-realtime-tools-1.16.0.tar.gz::https://github.com/ros-controls/realtime_tools/archive/1.16.0.tar.gz
+	source = atomic.patch::https://github.com/ros-controls/realtime_tools/commit/f3d6ff3c30285d5d78953b5d9bf1f93f756beedc.patch
 	sha256sums = 690222fd2908cec0412d20f6e8b5d8a17132d959edb719e01695e89f7c4d8111
+	sha256sums = c2c2fc92f87f734bd0a5f70758f96f724036870c98bd8fd936729a9daaee66f4
 
 pkgname = ros-noetic-realtime-tools
 
