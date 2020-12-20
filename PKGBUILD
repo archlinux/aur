@@ -1,8 +1,8 @@
 pkgname=friso
 pkgver=1.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An opensource tokenizer for Chinese."
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/lionsoul2014/friso/"
 license=('Apache License 2.0')
 source=("https://github.com/lionsoul2014/$pkgname/archive/v$pkgver-release.tar.gz")
