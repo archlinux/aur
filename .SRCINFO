@@ -1,0 +1,24 @@
+pkgbase = libhandy-4-git
+	pkgdesc = Library full of GTK+ widgets for mobile phones
+	pkgver = 0.80.0.r524.ga934fcd
+	pkgrel = 1
+	url = https://gitlab.gnome.org/exalm/libhandy
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = LGPL
+	checkdepends = xorg-server-xvfb
+	makedepends = git
+	makedepends = glade
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = vala
+	depends = gtk3
+	provides = libhandy-4
+	provides = libhandy-4.so
+	source = git+https://gitlab.gnome.org/exalm/libhandy.git#branch=gtk4
+	md5sums = SKIP
+
+pkgname = libhandy-4-git
+
