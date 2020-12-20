@@ -3,12 +3,12 @@
 pkgbase=linux-vanilla-selinux-59
 pkgname=linux-vanilla-selinux-59
 pkgver=5.9.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Vanilla-Linux-Kernel from kernel.org with Selinux enabled"
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
-makedepends=(bc kmod libelf
+makedepends=(bc kmod libelf pahole cpio perl tar xz
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git)
 options=('!strip')
@@ -20,7 +20,7 @@ source=(https://www.kernel.org/pub/linux/kernel/v5.x/${_origsrcname}.tar.{xz,sig
         '60-linux.hook'  # pacman hook for depmod
         '90-linux.hook'  # pacman hook for initramfs regeneration
         'linux-vanilla-selinux-59.preset'   # standard config files for mkinitcpio ramdisk
-        'sphinx-workaround.patch'	# patch for creating docs
+        'sphinx-workaround.patch'	# Patch for creating Docs
 )
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
