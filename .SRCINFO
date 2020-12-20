@@ -1,7 +1,7 @@
 pkgbase = autopsy
 	pkgdesc = Digital forensics platform and graphical interface to The Sleuth Kit® and other digital forensic tools
 	pkgver = 4.17.0
-	pkgrel = 0
+	pkgrel = 1
 	url = http://www.sleuthkit.org/autopsy/
 	arch = x86_64
 	license = Apache-2.0
