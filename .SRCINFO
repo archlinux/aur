@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-actionlib
 	pkgdesc = ROS - The actionlib stack provides a standardized interface for interfacing with preemptable tasks.
 	pkgver = 1.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/actionlib
 	arch = i686
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = ros-melodic-actionlib
 	depends = ros-melodic-rospy
 	depends = ros-melodic-roslib
 	depends = python-wxpython
-	depends = boost
+	depends = boost1.69
 	source = ros-melodic-actionlib-1.12.1.tar.gz::https://github.com/ros/actionlib/archive/1.12.1.tar.gz
 	sha256sums = b98852a6cdd6947200a1d985d4041c0d9c28fe0d789284edc561f85486a792d0
 
