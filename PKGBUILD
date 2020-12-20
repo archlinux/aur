@@ -3,7 +3,7 @@
 # pak128.britain-extended is in active development - this package is updated nightly
 
 pkgname=simutrans-extended-pak128.britain
-pkgver=20201218
+pkgver=20201220
 pkgrel=1
 pkgdesc="High resolution graphics set for Simutrans Extended, with a British theme"
 arch=('any')
