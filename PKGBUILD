@@ -1,5 +1,5 @@
 pkgname=diylc
-pkgver=4.12.0
+pkgver=4.13.0
 pkgrel=1
 pkgdesc="Multi platform circuit layout and schematic drawing tool"
 arch=('any')
@@ -17,7 +17,7 @@ source=(
     "diylc.desktop"
 )
 sha256sums=(
-    '5acbd58c9ac677bc21f39a19ebb073fcfac9cee445c21345f1d00cae3f155456'
+    '2d919eb7afbfe3a18b9e9c250bb0611547b9591d60254f1d31dbb5a7eda00434'
     'a4a3c6059cb8cd3e129deb9ccb826025830e3914fa948df977fc73d7a20245c7'
     '6d586133cba43fae2871038ff717fc78d748a5097eec3f9a0dbf136451b88528'
     '66b616f47f907354fc1f7aaf3f077af5640475b025e692bfad0e22cf1af8b319'
