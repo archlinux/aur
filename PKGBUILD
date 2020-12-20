@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/Loyalsoldier/v2ray-rules-dat"
 license=('GPL3')
 
+provides=('v2ray-domain-list-community' 'v2ray-geoip')
 conflicts=('v2ray-domain-list-community' 'v2ray-geoip')
 
 makedepends=('git')
