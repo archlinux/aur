@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.33.0.r5.g62fb374349
+pkgver=0.33.0.r42.g4029a695b5
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -264,7 +264,7 @@ prepare() {
     '--enable-libfdk-aac'
     '--enable-libfreetype'
     '--enable-libfribidi'
-    '--disable-libglslang'
+    '--enable-libglslang'
     '--enable-libgme'
     '--enable-libgsm'
     '--enable-libiec61883'
