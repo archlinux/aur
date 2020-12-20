@@ -16,16 +16,16 @@ options=('!strip')
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/AlanAlbert/musicfox/archive/${pkgver}.tar.gz")
 sha256sums=('be84b4db8841f9b03e86a70b9000c7a1fa8db417641e460f6d810b0959bc0fd5')
 
-prepare() {
-  cd ${pkgname}-${pkgver}
-
-  dart pub get
-}
 
 build() {
-  mkdir -p build
+  cd ${pkgname}-${pkgver}
 
-  dart compile exe -o build/${pkgname} ${pkgname}-${pkgver}/bin/main.dart
+  # get dependency
+  dart pub get
+
+  # start build
+  mkdir -p ${srcdir}/build
+  dart compile exe -o ${srcdir}/build/${pkgname} bin/main.dart
 }
 
 package() {
