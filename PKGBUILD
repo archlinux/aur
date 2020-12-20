@@ -1,7 +1,7 @@
 # Maintainer: Tivoli Cloud VR <maki@tivolicloud.com>
 # Maintainer: Maki <mxmcube@gmail.com>
 pkgname="tivoli-cloud-vr-bin"
-pkgver=0.16.1
+pkgver=0.16.2
 pkgrel=1
 pkgdesc="Free and open-source metaverse to create positive social impact."
 arch=("x86_64")

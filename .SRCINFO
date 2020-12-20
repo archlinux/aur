@@ -1,6 +1,6 @@
 pkgbase = tivoli-cloud-vr-bin
 	pkgdesc = Free and open-source metaverse to create positive social impact.
-	pkgver = 0.16.1
+	pkgver = 0.16.2
 	pkgrel = 1
 	url = https://tivolicloud.com
 	install = tivoli-cloud-vr.install
@@ -23,7 +23,7 @@ pkgbase = tivoli-cloud-vr-bin
 	provides = tivoli-cloud-vr
 	conflicts = tivoli-cloud-vr
 	options = !strip
-	source = tivoli-cloud-vr-0.16.1.tar.xz::https://cdn.tivolicloud.com/releases/Tivoli%20Cloud%20VR%200.16.1.pacman
+	source = tivoli-cloud-vr-0.16.2.tar.xz::https://cdn.tivolicloud.com/releases/Tivoli%20Cloud%20VR%200.16.2.pacman
 	sha256sums = SKIP
 
 pkgname = tivoli-cloud-vr-bin
