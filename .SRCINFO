@@ -1,6 +1,6 @@
 pkgbase = linux-bcachefs-git
 	pkgdesc = Linux
-	pkgver = v5.10.1.arch1.r968890.7f7be490e6a9
+	pkgver = v5.10.1.arch1.r969164.0b96cd54d25c
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -9,6 +9,10 @@ pkgbase = linux-bcachefs-git
 	makedepends = kmod
 	makedepends = libelf
 	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
 	makedepends = xmlto
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
@@ -23,7 +27,7 @@ pkgbase = linux-bcachefs-git
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 9c422463660fc1fd3fca806976b5b60faccf8fc842c144af7dc933d3076a53bf052afd9b331aeeabe2fbddb394d41ebecbd97d74fc2d2ad5fe96824ee66e0260
+	sha512sums = e38083aa528d9c955606acf5a7d9e55e738aafbaf7330b68f0974d503d7a912117f254f30da5c93128209ae069ce89c246641ac0ca0066298173ce1878009e32
 
 pkgname = linux-bcachefs-git
 	pkgdesc = The Linux kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem

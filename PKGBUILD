@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.10.1.arch1.r968890.7f7be490e6a9
+pkgver=v5.10.1.arch1.r969164.0b96cd54d25c
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v5.10.1.arch1
@@ -71,6 +71,10 @@ makedepends=(
     kmod
     libelf
     pahole
+    cpio
+    perl
+    tar
+    xz
     xmlto
     python-sphinx
     python-sphinx_rtd_theme
@@ -100,7 +104,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '9c422463660fc1fd3fca806976b5b60faccf8fc842c144af7dc933d3076a53bf052afd9b331aeeabe2fbddb394d41ebecbd97d74fc2d2ad5fe96824ee66e0260')
+            'e38083aa528d9c955606acf5a7d9e55e738aafbaf7330b68f0974d503d7a912117f254f30da5c93128209ae069ce89c246641ac0ca0066298173ce1878009e32')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
