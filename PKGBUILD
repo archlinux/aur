@@ -9,9 +9,9 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=sudo-selinux
-_sudover=1.9.4
+_sudover=1.9.4p1
 pkgver=${_sudover/p/.p}
-pkgrel=1
+pkgrel=2
 pkgdesc="Give certain users the ability to run some commands as root - SELinux support"
 arch=('x86_64')
 url="https://www.sudo.ws/sudo/"
@@ -29,7 +29,7 @@ install=${pkgname/-selinux}.install
 source=(https://www.sudo.ws/sudo/dist/${pkgname/-selinux}-$_sudover.tar.gz{,.sig}
         sudo_logsrvd.service
         sudo.pam)
-sha256sums=('8b91bd2cc73af18a06a01406e38d154b837107be759f72e89cefeaa94e1103f0'
+sha256sums=('1172099dfcdd2fa497e13a3c274a9f5920abd36ae7d2f7aaacd6bc6bc92fd677'
             'SKIP'
             '8b91733b73171827c360a3e01f4692772b78e62ceca0cf0fd4b770aba35081a1'
             'd1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2')
@@ -57,7 +57,6 @@ build() {
     --with-ldap-conf-file=/etc/openldap/ldap.conf \
     --with-env-editor \
     --with-passprompt="[sudo] password for %p: " \
-    --with-sendmail=/usr/bin/sendmail \
     --with-all-insults \
     --with-selinux
   make
