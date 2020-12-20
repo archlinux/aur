@@ -1,0 +1,38 @@
+pkgbase = gtk2-minimal-git
+	pkgdesc = GObject-based multi-platform GUI toolkit (legacy)
+	pkgver = 2.24.32+62+g56c6970b02
+	pkgrel = 1
+	url = https://www.gtk.org/
+	install = gtk2.install
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = python
+	makedepends = git
+	depends = atk
+	depends = pango
+	depends = libxcursor
+	depends = libxinerama
+	depends = libxrandr
+	depends = libxi
+	depends = libxcomposite
+	depends = libxdamage
+	depends = shared-mime-info
+	depends = cairo
+	depends = gtk-update-icon-cache
+	depends = librsvg
+	depends = desktop-file-utils
+	optdepends = gnome-themes-standard: Default widget theme
+	optdepends = adwaita-icon-theme: Default icon theme
+	provides = gtk2=2.24.32+62+g56c6970b02
+	conflicts = gtk2
+	source = git+https://gitlab.gnome.org/GNOME/gtk.git#branch=gtk-2-24
+	source = gtkrc
+	source = gtk-query-immodules-2.0.hook
+	sha256sums = SKIP
+	sha256sums = bc968e3e4f57e818430130338e5f85a5025e21d7e31a3293b8f5a0e58362b805
+	sha256sums = 9656a1efc798da1ac2dae94e921ed0f72719bd52d4d0138f305b993f778f7758
+
+pkgname = gtk2-minimal-git
+
