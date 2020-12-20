@@ -1,4 +1,5 @@
-# Maintainer: David Birks <david@birks.dev>
+# Maintainer: Sebastiaan Tammer <sebastiaantammer at gmail dot com>
+# Contributor: Maintainer: David Birks <david at birks dot dev>
 # Contributor: Stefan Cocora <stefan dot cocora at gmail dot com>
 
 pkgname=kubeseal-bin
