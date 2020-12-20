@@ -1,7 +1,7 @@
 pkgbase = wine-stable
 	pkgdesc = A compatibility layer for running Windows programs
 	pkgver = 5.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.winehq.com
 	install = wine.install
 	arch = x86_64
@@ -136,9 +136,7 @@ pkgbase = wine-stable
 	optdepends = lib32-vkd3d
 	optdepends = lib32-vulkan-icd-loader
 	provides = wine=5.0.3
-	provides = wine-stable=5.0.3
 	conflicts = wine
-	conflicts = wine-stable
 	options = staticlibs
 	source = https://dl.winehq.org/wine/source/5.0/wine-5.0.3.tar.xz
 	source = https://dl.winehq.org/wine/source/5.0/wine-5.0.3.tar.xz.sign

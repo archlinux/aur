@@ -6,7 +6,7 @@
 
 pkgname=wine-stable
 pkgver=5.0.3
-pkgrel=1
+pkgrel=2
 
 source=(https://dl.winehq.org/wine/source/5.0/wine-$pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
@@ -54,8 +54,8 @@ optdepends=(alsa-lib alsa-plugins dosbox giflib gnutls gsm
   lib32-ocl-icd lib32-openal lib32-sdl2 lib32-v4l-utils lib32-vkd3d
   lib32-vulkan-icd-loader)
 
-provides=("wine=$pkgver" "wine-stable=$pkgver")
-conflicts=("wine" "wine-stable")
+provides=("wine=$pkgver")
+conflicts=("wine")
 
 prepare() {
   # Allow ccache to work
