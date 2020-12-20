@@ -1,11 +1,13 @@
 pkgbase = metadata-cleaner
 	pkgdesc = Python GTK application to view and clean metadata in files, using mat2
-	pkgver = v1.0.0
-	pkgrel = 1
+	pkgver = 1.0.0
+	pkgrel = 2
 	url = https://gitlab.com/rmnvgr/metadata-cleaner
 	arch = x86_64
 	license = GPL3
 	makedepends = meson
+	makedepends = appstream-glib
+	makedepends = git
 	depends = gtk3
 	depends = libhandy
 	depends = python-gobject
