@@ -1,6 +1,6 @@
 # Maintainer: neeshy <neeshy@tfwno.gf>
 pkgname=bdf-unifont-extra
-pkgver=13.0.03
+pkgver=13.0.04
 pkgrel=1
 pkgdesc="GNU Unifont Glyphs (bold and italic versions)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 makedepends=('mkbold-mkitalic')
 source=("https://ftp.gnu.org/gnu/unifont/unifont-$pkgver/unifont-$pkgver.bdf.gz"{,.sig}
         "http://unifoundry.com/LICENSE.txt")
-sha256sums=('5764b8b606ee618c60e8e533226559dba8e1ad02bc52dfa34367ae544975c29d'
+sha256sums=('5319d51779aa23e206268e6e6de71bb67b983033468d2c815118aecf5f7d57c0'
             'SKIP'
             '95d93c1634f6982250d51940ff5c81b93a657c295b5c24dfa4214a13c6100495')
 validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy
