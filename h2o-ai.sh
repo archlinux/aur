@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/bin/java -jar '/usr/share/java/h2o-ai/h2o.jar' "$@"
+exec /usr/bin/java -Xmx64G -jar '/usr/share/java/h2o-ai/h2o.jar' -ip localhost "$@"
