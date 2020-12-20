@@ -6,18 +6,12 @@ readonly DOKKU_LOGS_DIR="${DOKKU_LOGS_DIR:-/var/log/dokku}"
 
 setup-user() {
   echo "Setting up dokku user"
-  /usr/bin/sshcommand create dokku /usr/bin/dokku &>/dev/null
+  /usr/bin/sshcommand create dokku /usr/bin/dokku
   (grep -i -E "^docker" /etc/group || groupadd docker) &>/dev/null
   usermod -aG docker dokku
   mkdir -p "${DOKKU_ROOT}/.ssh" "${DOKKU_ROOT}/.dokkurc"
   touch "${DOKKU_ROOT}/.ssh/authorized_keys"
   chown -R dokku:dokku "${DOKKU_ROOT}/.ssh" "${DOKKU_ROOT}/.dokkurc"
-}
-
-setup-storage() {
-  echo "Setting up storage directories"
-  mkdir -p "${DOKKU_LIB_ROOT}/data/storage"
-  chown dokku:dokku "${DOKKU_LIB_ROOT}/data" "${DOKKU_LIB_ROOT}/data/storage"
 }
 
 setup-plugins() {
@@ -50,6 +44,8 @@ setup-plugins() {
 
   echo "Install all core plugins"
   dokku plugin:install --core
+  rm -f /etc/update-motd.d/99-dokku
+
   sed -i 's/ syslog dokku$/ root dokku/g' /etc/logrotate.d/dokku
 }
 
@@ -64,7 +60,6 @@ setup-sshcommand() {
 
 post_install() {
   setup-user
-  setup-storage
   setup-plugins
   setup-sshcommand
 
@@ -104,17 +99,23 @@ post_remove() {
   rm -f /etc/systemd/system/dokku-redeploy.service
   rm -f /etc/systemd/system/dokku-retire.timer
   rm -f /etc/systemd/system/dokku-retire.service
-  rm -f /etc/update-motd.d/99-dokku
   rm -f /etc/logrotate.d/dokku
 
+  # Remove nginx configuration
   rm -f /etc/nginx/conf.d/dokku.conf
-  systemctl reload nginx &>/dev/null
 
-  rm -rf "${DOKKU_LIB_PATH}"
+  # Remove data and logs
+  rm -rf "${DOKKU_LIB_ROOT}"
   rm -rf "${DOKKU_LOGS_DIR}"
 
+  # Remove dokku user and group
   userdel -r dokku &>/dev/null
-  rm -rf /home/dokku
-
   groupdel dokku &>/dev/null
+
+  echo "
+    Please remove to your /etc/nginx/nginx.conf in http section:
+      include /etc/nginx/conf.d/*.conf;
+    And reload nginx:
+      $ sudo systemctl reload nginx
+  "
 }

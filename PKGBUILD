@@ -1,14 +1,12 @@
-# Maintainer: Ayrton Araujo <root@ayr-ton.net>
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
-# Contributor: Morris Jobke <hey AT morrisjobke DOT de>
 
 pkgname=dokku
-pkgver=0.20.4
+pkgver=0.22.2
 pkgrel=1
-pkgdesc="Docker-powered PaaS that helps build and manage the lifecycle of applications"
-arch=(any)
-url="https://github.com/dokku/dokku"
-license=(MIT)
+pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
+arch=('any')
+url='https://github.com/dokku/dokku'
+license=('MIT')
 depends=(
   'bind-tools'
   'cpio'
@@ -25,12 +23,12 @@ depends=(
   'rsyslog'
   'sshcommand'
 )
-source=(
-  "https://github.com/dokku/dokku/archive/v${pkgver}.zip"
-  "${pkgname}.install"
-)
-sha256sums=('82a03d0795ff1029b38760b096be3eedd993c7c7c66e8b9b5347ca6bbe81aa41'
-            '17eeb4e092b1bc2bcd904242cd9c11493fc68bb030061da1044d955bb319bd8a')
+source=("https://github.com/dokku/dokku/archive/v${pkgver}.zip"
+        "${pkgname}.install"
+        "LICENSE")
+sha256sums=('2e8027b79828988ab58ab3cdbfd1fa9259fb5f1fb1db42f456bddcf6d7f305ee'
+            'd6887859d5c43febf6591c32d8b4706797a28ce308050b62871bc3f7f9df418e'
+            'b1ac2fed5ac269fb7bbf651a3d37ef5fd56d2c33320e17cb6e23a22a93f5c046')
 install="${pkgname}.install"
 
 prepare() {
@@ -48,8 +46,9 @@ package() {
 
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  # Install executable
+  # Install executable and license
   install -Dm755 dokku "${pkgdir}/usr/bin/dokku"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/dokku/LICENSE"
 
   # Add .core and build go plugins
   for plugin in plugins/*; do
