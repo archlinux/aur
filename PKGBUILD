@@ -17,10 +17,10 @@ depends=('wireless_tools'
          'dconf')
 makedepends=('gnome-doc-utils' 'intltool')
 install=gnome-system-tools.install
-source=("${pkgname}-${pkgver}.tar.bz2::ftp://ftp.gnome.org/pub/gnome/sources/${pkgname}/3.0/${pkgname}-${pkgver}.tar.bz2"
+source=("${pkgname}-${pkgver}.tar.bz2::https://download.gnome.org/sources/gnome-system-tools/3.0/gnome-system-tools-3.0.0.tar.bz2"
         'po.patch')
 sha256sums=('905df26c02f00a6c2c18706ba3db7eab764e3df6576289e103504aa39a47ae0b'
-            'SKIP')
+            '827c3169ae5060403b3f833b0f9c1d5cefe1d80aa5ade22e2ff7908b1ce1b5ef')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
