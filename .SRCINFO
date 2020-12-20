@@ -1,6 +1,6 @@
 pkgbase = wfa-git
 	pkgdesc = A simple AUR helper written in a shell script
-	pkgver = r35.8a659ce
+	pkgver = r58.7b45719
 	pkgrel = 1
 	url = https://github.com/Hayao0819/wfa
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = wfa-git
 	depends = python3
 	depends = curl
 	depends = pyalpm
+	depends = python-srcinfo
 	source = git+https://github.com/Hayao0819/wfa
 	md5sums = SKIP
 

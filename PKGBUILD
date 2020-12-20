@@ -1,13 +1,13 @@
 # Maintaoner: Yamada Hayao <development@fascode.net>
 
 pkgname="wfa-git"
-pkgver=r35.8a659ce
+pkgver=r58.7b45719
 pkgrel=1
 pkgdesc="A simple AUR helper written in a shell script"
 arch=('any')
 url="https://github.com/Hayao0819/wfa"
 license=('WTFPL')
-depends=('sudo' 'pacman' 'jq' 'python3' 'curl' 'pyalpm')
+depends=('sudo' 'pacman' 'jq' 'python3' 'curl' 'pyalpm' 'python-srcinfo')
 makedepends=('git')
 source=("git+https://github.com/Hayao0819/wfa")
 md5sums=('SKIP')
