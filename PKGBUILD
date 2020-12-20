@@ -47,12 +47,5 @@ package() {
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
 
   install -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
-#   mkdir -p $pkgdir/usr/bin
-#   mkdir -p $pkgdir/usr/share/man/man1
-#   mkdir -p $pkgdir/usr/share/licenses/$pkgname
-#   install -m755 target/release/interactive-rebase-tool $pkgdir/usr/bin/interactive-rebase-tool
-#   install -m644 src/interactive-rebase-tool.1 $pkgdir/usr/share/man/man1/interactive-rebase-tool.1
-#   install -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname
-#   gzip $pkgdir/usr/share/man/man1/interactive-rebase-tool.1
 }
 
