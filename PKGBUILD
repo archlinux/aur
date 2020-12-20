@@ -1,7 +1,7 @@
 # Maintainer: Spencer Muise <smuise@spencermuise.ca>
 pkgname=bookstack
 _camelname=BookStack
-pkgver=0.30.5
+pkgver=0.30.7
 pkgrel=1
 pkgdesc='A simple, self-hosted, easy-to-use platform for organising and storing information'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
 )
 makedepends=('composer')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/BookStackApp/BookStack/archive/v${pkgver}.tar.gz")
-md5sums=('d981ece272003220aac83b0c557d0b5f')
+md5sums=('7c91c0a0fd69361826b9d71faf8c3102')
 
 backup=("etc/webapps/$pkgname/config.env")
 
