@@ -3,7 +3,7 @@
 pkgname=minecraft-launcher-beta-arch
 pkgver=2.2.909
 pkgrel=1
-pkgdesc="Minecraft Launcher Beta - Quicker Updates"
+pkgdesc="Minecraft Launcher Beta -- Quicker Updates"
 arch=('x86_64')
 url="https://mojang.com/"
 license=('All rights reserved')
@@ -11,14 +11,14 @@ depends=('java-runtime' 'xorg-xrandr' 'libxss' 'libx11' 'libxcb' 'alsa-lib' 'gtk
 optdepends=('flite: narrator support')
 conflicts=('minecraft-launcher' 'minecraft-launcher-arch' 'minecraft-launcher-beta')
 source=(
-https://launcher.mojang.com/download/Minecraft-beta.tar.gz
-minecraft-launcher.desktop
-https://launcher.mojang.com/download/minecraft-launcher.svg
+	https://launcher.mojang.com/download/Minecraft-beta.tar.gz
+	minecraft-launcher.desktop
+	https://launcher.mojang.com/download/minecraft-launcher.svg
 )
 sha256sums=(
-'02e6067790bb65b2f0229ae297806bbdc77d1d1934f8a49d5ca21286728da297'
-'677e2442a1ae83cc58d8d403666e508129e97dbed37fdfafdceac6101dc0dee7'
-'35c2bcaeb09fa4b8864e9422fd66bf60847706f8b4400ec4a66ba6436b101f71'
+	'02e6067790bb65b2f0229ae297806bbdc77d1d1934f8a49d5ca21286728da297'
+	'677e2442a1ae83cc58d8d403666e508129e97dbed37fdfafdceac6101dc0dee7'
+	'35c2bcaeb09fa4b8864e9422fd66bf60847706f8b4400ec4a66ba6436b101f71'
 )
 
 build() {
