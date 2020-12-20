@@ -2,7 +2,7 @@
 
 pkgname=libxdgdirs
 _pkgname=libXDGdirs
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="An implementation of XDG Base Directory Specification in C"
 arch=('x86_64')
