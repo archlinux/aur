@@ -1,0 +1,12 @@
+[Unit]
+Description=Prometheus exporter for Bosch Sensortec sensors
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Restart=on-failure
+EnvironmentFile=-/etc/conf.d/prometheus-bsbmp-exporter
+ExecStart=/usr/bin/prometheus-bsbmp-exporter $BSBMP_EXPORTER_ARGS
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,22 @@
+pkgbase = prometheus-bsbmp-exporter-git
+	pkgdesc = Prometheus exporter for Bosch Sensortec temperature, atmospheric pressure and humidity sensors
+	pkgver = r40.31a6756
+	pkgrel = 1
+	url = https://github.com/David-Igou/bsbmp-exporter
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = prometheus-bsbmp-exporter
+	conflicts = prometheus-bsbmp-exporter
+	backup = etc/conf.d/prometheus-bsbmp-exporter
+	source = prometheus-bsbmp-exporter::git+https://github.com/David-Igou/bsbmp-exporter
+	source = prometheus-bsbmp-exporter.conf
+	source = prometheus-bsbmp-exporter.service
+	md5sums = SKIP
+	md5sums = 28bc78c950218c5607986aa390c1400e
+	md5sums = 14cb12ea4139bac88043d94c77d6bc11
+
+pkgname = prometheus-bsbmp-exporter-git
+
