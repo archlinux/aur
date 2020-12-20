@@ -49,6 +49,6 @@ package() {
 	cd $srcdir/deb
 	install -dv $pkgdir/usr/lib
 	mv lib/libxcrypt.so.1.2.4 $pkgdir/usr/lib
-	ln -s $pkgdir/usr/lib/libxcrypt.so.1.2.4 $pkgdir/usr/lib/libxcrypt.so
-	ln -s $pkgdir/usr/lib/libxcrypt.so.1.2.4 $pkgdir/usr/lib/libxcrypt.so.1
+	ln -s /usr/lib/libxcrypt.so.1.2.4 $pkgdir/usr/lib/libxcrypt.so
+	ln -s /usr/lib/libxcrypt.so.1.2.4 $pkgdir/usr/lib/libxcrypt.so.1
 }
