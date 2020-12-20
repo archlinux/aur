@@ -2,7 +2,7 @@
 
 pkgname=k-git
 pkgver=r189.e2bfbaf
-pkgrel=1
+pkgrel=2
 pkgdesc="a zsh script / plugin to make directory listings more readable, adding a bit of color and some git status information on files and directories."
 arch=('any')
 url="https://github.com/supercrabtree/k"

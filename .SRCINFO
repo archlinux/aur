@@ -1,7 +1,7 @@
 pkgbase = k-git
 	pkgdesc = a zsh script / plugin to make directory listings more readable, adding a bit of color and some git status information on files and directories.
-	pkgver = 0.0.5
-	pkgrel = 1
+	pkgver = r189.e2bfbaf
+	pkgrel = 2
 	url = https://github.com/supercrabtree/k
 	arch = any
 	license = unknown
