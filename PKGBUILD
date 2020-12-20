@@ -6,7 +6,7 @@
 pkgname=wezterm-bin
 _tag=20201101-103216-403d002d
 pkgver=$(echo $_tag | tr - .)
-pkgrel=2
+pkgrel=3
 pkgdesc='A GPU-accelerated cross-platform terminal emulator and multiplexer implemented in Rust'
 arch=('i686' 'x86_64')
 url='https://wezfurlong.org/wezterm'
@@ -30,7 +30,7 @@ source=(
   'LICENSE::https://github.com/wez/wezterm/raw/master/LICENSE.md'
 )
 sha256sums=(
-  '39d9f4371412496a19d24978e08b96d76596f1f90807534d37ade3b425be88d1'
+  'e99630c0fba8c4737af700e91e4f369d1b161dd064c66a7339a20dd08909187e'
   'ad915d9508677a4e94e4b3c0a045fedd20e953d95d7cd3ec97e6d16840fa0ed5'
 )
 
