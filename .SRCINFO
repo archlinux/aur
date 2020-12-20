@@ -1,0 +1,14 @@
+pkgbase = quickreader
+	pkgdesc = A program that enables its user to quickly read through text by encouraging the silencing of their subvocalization.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/quickreader/quickreader
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	source = https://gitlab.com/quickreader/quickreader/-/archive/1.0/quickreader-1.0.tar.gz
+	sha256sums = c9bc1385f77db58e7e9a128adaae2d322b0d452c6c105fe0fa95afac1fb34e51
+
+pkgname = quickreader
+
