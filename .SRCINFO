@@ -1,16 +1,17 @@
 pkgbase = wal2json
 	pkgdesc = Output plugin for logical decoding PostgreSQL WAL's
-	pkgver = 2_2
+	pkgver = 2_3
 	pkgrel = 1
 	url = https://github.com/eulerto/wal2json
 	install = wal2json.install
 	arch = i686
 	arch = x86_64
 	license = BSD
+	makedepends = llvm
 	depends = postgresql>=9.4
-	source = https://github.com/eulerto/wal2json/archive/wal2json_2_2.tar.gz
+	source = https://github.com/eulerto/wal2json/archive/wal2json_2_3.tar.gz
 	source = wal2json.install
-	sha256sums = e2cb764ee1fccb86ba38dbc8a5e2acd2d272e96172203db67fd9c102be0ae3b5
+	sha256sums = 2ebf71ace3c9f4b66703bcf6e3fa6ef7b6b026f9e31db4cf864eb3deb4e1a5b3
 	sha256sums = 4dcef8c4e2c6badb3c68af16235632b042e867cbef0beecac4734acb53f7915c
 
 pkgname = wal2json
