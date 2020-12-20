@@ -1,6 +1,6 @@
 pkgbase = datcom-jitsi-meet-electron
 	pkgdesc = DatCom Jitsi Meet Desktop
-	pkgver = 2.4.200
+	pkgver = 2.4.300
 	pkgrel = 8
 	url = https://github.com/datcom-unibw/jitsi-meet-electron
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = datcom-jitsi-meet-electron
 	conflicts = jitsi-meet-electron-bin
 	conflicts = jitsi-meet-electron
 	source = jitsi-meet-electron.desktop
-	source = jitsi-meet-electron-2.4.200.tar.gz::https://github.com/datcom-unibw/jitsi-meet-electron/archive/v2.4.200.tar.gz
+	source = jitsi-meet-electron-2.4.300.tar.gz::https://github.com/datcom-unibw/jitsi-meet-electron/archive/v2.4.300.tar.gz
 	sha256sums = b88ca14b81b13e1480532b70a1a319a276909c617ac868c233a87e5261a6e119
-	sha256sums = 604ccf0a6ef445f9df03d33fe17ed3d57db547d734154e394c92611b0a22c688
+	sha256sums = c4973cd5097024bc9026b8b0f07203d8a9a7514594b57ded27e3c3df2df071e7
 
 pkgname = datcom-jitsi-meet-electron
 

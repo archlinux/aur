@@ -1,8 +1,8 @@
 # Maintainer: Philipp Reger <philipp.reger@outlook.com>
 
 pkgname=datcom-jitsi-meet-electron
-pkgver=2.4.200
-pkgrel=8
+pkgver=2.4.300
+pkgrel=9
 pkgdesc="DatCom Jitsi Meet Desktop"
 arch=('x86_64')
 url="https://github.com/datcom-unibw/jitsi-meet-electron"
