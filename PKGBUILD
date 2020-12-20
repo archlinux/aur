@@ -5,7 +5,7 @@
 
 pkgname=ike
 pkgver=2.2.1
-pkgrel=5
+pkgrel=6
 pkgdesc='Shrew Soft VPN client for Linux'
 arch=(i686 x86_64)
 url='http://www.shrew.net'
