@@ -1,7 +1,7 @@
 pkgbase = fpga-toolchain-bin
 	pkgdesc = Nightly builds of open-source FPGA tools
 	pkgver = 20201219
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/open-tool-forge/fpga-toolchain
 	arch = x86_64
 	license = GPL3
