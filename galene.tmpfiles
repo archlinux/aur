@@ -1,0 +1,4 @@
+#Type Path                                  Mode User   Group
+Z     /var/lib/galene                       - galene galene
+d     /var/lib/galene/groups                0755 galene galene
+d     /var/lib/galene/recordings            0755 galene galene
