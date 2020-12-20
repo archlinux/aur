@@ -10,7 +10,7 @@ arch=(x86_64 i686)
 url="https://www.gtk.org/"
 depends=(atk pango libxcursor libxinerama libxrandr libxi libxcomposite libxdamage
          shared-mime-info cairo gtk-update-icon-cache librsvg desktop-file-utils)
-makedepends=(gobject-introspection python git)
+makedepends=(gobject-introspection python git gtk-doc)
 optdepends=('gnome-themes-standard: Default widget theme'
             'adwaita-icon-theme: Default icon theme')
 license=(LGPL)
@@ -45,7 +45,6 @@ build() {
     --with-xinput=yes \
     --disable-cups \
     --disable-papi \
-    --disable-man \
     --disable-gtk-doc
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=655517

@@ -10,6 +10,7 @@ pkgbase = gtk2-minimal-git
 	makedepends = gobject-introspection
 	makedepends = python
 	makedepends = git
+	makedepends = gtk-doc
 	depends = atk
 	depends = pango
 	depends = libxcursor
