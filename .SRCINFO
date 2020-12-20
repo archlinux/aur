@@ -1,5 +1,5 @@
 pkgbase = libxdgdirs
-	pkgdesc = An implementation of the XDG Base Directory Specification in C
+	pkgdesc = An implementation of XDG Base Directory Specification in C
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/Jorengarenar/libXDGdirs
