@@ -37,5 +37,6 @@ build() {
 package() {
   cd ${pkgname}
   python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-  mv "${srcdir}/private_keys.py" "${pkgdir}/usr/lib/python3.8/site-packages/OpenNumismat/"
+  local site_packages_dir=$(python -c "import site; print(site.getsitepackages()[0])")
+  mv "${srcdir}/private_keys.py" "${pkgdir}/${site_packages_dir}/OpenNumismat/"
 }
