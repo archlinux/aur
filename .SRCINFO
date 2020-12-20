@@ -1,7 +1,7 @@
 pkgbase = gvtg_vgpu-git
 	pkgdesc = Systemd files to automatically create and remove gvtg vgpu
 	pkgver = r6.a5bea06
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/oakszyjrnrdy/gvtg_vgpu
 	install = gvtg_vgpu-git.install
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = gvtg_vgpu-git
 	makedepends = git
 	provides = gvtg_vgpu
 	conflicts = gvtg_vgpu
+	backup = etc/conf.d/gvtg_vgpu
 	source = gvtg_vgpu-git::git+https://github.com/oakszyjrnrdy/gvtg_vgpu
 	sha256sums = SKIP
 
