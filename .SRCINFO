@@ -1,0 +1,27 @@
+pkgbase = lib32-gtk2-minimal-git
+	pkgdesc = GObject-based multi-platform GUI toolkit (legacy) (32-bit)
+	pkgver = 2.24.32
+	pkgrel = 1
+	url = https://www.gtk.org/
+	install = gtk2.install
+	arch = x86_64
+	license = LGPL
+	makedepends = python
+	depends = lib32-atk
+	depends = lib32-pango
+	depends = lib32-cairo
+	depends = lib32-gdk-pixbuf2
+	depends = lib32-libxcursor
+	depends = lib32-libxrandr
+	depends = lib32-libxi
+	depends = lib32-libxinerama
+	depends = lib32-libxcomposite
+	depends = lib32-libxdamage
+	depends = gtk2
+	provides = lib32-gtk2
+	conflicts = lib32-gtk2
+	source = git+https://gitlab.gnome.org/GNOME/gtk.git#branch=gtk-2-24
+	sha256sums = SKIP
+
+pkgname = lib32-gtk2-minimal-git
+
