@@ -1,0 +1,16 @@
+pkgbase = armpl
+	pkgdesc = ARM's closed-source high-performance numerical programming library. Includes BLAS, CBLAS, and LAPACK implementations.
+	pkgver = 20.3
+	pkgrel = 1
+	url = https://developer.arm.com/tools-and-software/server-and-hpc/downloads/arm-performance-libraries
+	arch = aarch64
+	license = custom
+	depends = gcc-fortran
+	provides = blas
+	provides = lapack
+	provides = cblas
+	source = https://developer.arm.com/-/media/Files/downloads/hpc/arm-performance-libraries/20-3-0/Ubuntu16.04/arm-performance-libraries_20.3_Ubuntu-16.04_gcc-9.3.tar
+	sha256sums = 8fc078d78443894bdde71a49f7b39d513cf1f5e02db723eb833370d0cb2d635a
+
+pkgname = armpl
+
