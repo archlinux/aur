@@ -1,0 +1,16 @@
+pkgbase = blender-plugin-edgeflow
+	pkgdesc = Blender tools for working with edgeloops
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/BenjaminSauder/EdgeFlow
+	arch = any
+	license = GPL3
+	depends = blender
+	depends = python
+	provides = blender-plugin-edgeflow
+	conflicts = blender-plugin-edgeflow
+	source = https://github.com/BenjaminSauder/EdgeFlow/releases/download/0.5/EdgeFlow.zip
+	sha256sums = 20baf6f0d95a564ee0759aa7f6344ef9aed8c97958792f125eb19c5353024895
+
+pkgname = blender-plugin-edgeflow
+
