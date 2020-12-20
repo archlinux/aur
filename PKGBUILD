@@ -2,7 +2,7 @@
 # Previous maintainer: David Bailey <david.bailey@archlinux.net>
 
 pkgname=cpuminer
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="pooler's Litecoin cpuminer"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('curl' 'jansson')
 license=('GPL')
 source=("${pkgname}-${pkgver}.zip::https://github.com/pooler/cpuminer/archive/v${pkgver}.zip"
         'libcurl.m4')
-md5sums=('25b7742e25ef2cff62e8fdcab0c43c17'
+md5sums=('908dcb5a81e3dadc5ed35d865a3200ca'
          '5e22a13d29fa628c83c267cf9b4f3218')
 
 build() {
