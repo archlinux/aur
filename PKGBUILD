@@ -2,7 +2,7 @@
 
 pkgbase=linux-vanilla-selinux
 pkgname=linux-vanilla-selinux
-pkgver=5.9.14
+pkgver=5.10.1
 pkgrel=1
 pkgdesc="Vanilla-Linux-Kernel from kernel.org with Selinux enabled"
 arch=('x86_64')
@@ -20,20 +20,18 @@ source=(https://www.kernel.org/pub/linux/kernel/v5.x/${_origsrcname}.tar.{xz,sig
         '60-linux.hook'  # pacman hook for depmod
         '90-linux.hook'  # pacman hook for initramfs regeneration
         'linux-vanilla-selinux.preset'   # standard config files for mkinitcpio ramdisk
-        'sphinx-workaround.patch' # patch for Sphinx HTMLDOCS
 )
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
               )
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
-sha512sums=('719c32e811602cd3a9429c16c1c1e8684751dffd2fb052357376695a2654ec3f771e321e530ed178223dc581f36fbfa9be362941cf6fd74d2853b393ab357552'
-            'be1193c53f641749ee12508c8239af645746638df77f6ac30480248b472623b901d1fffb0058a531fb87e383ee9065d863ba1f3b92295ee205a0cb92817555f3'
-	    'e8ccbb931a7880db4e23a315e600a94bf0dbaa43107f30f84f66499fcfc58991dec8ca53b7ea9f34ef8d4fa68a57d97158a0ae8fec6aff0793bfc83d2088d997'
+sha512sums=('5b6cc32f2daa1de35ceeb0007536d6e49776064370d94f8d77c19cefc97e88c47ff55cb4c6add7c49189e7203ff44a05ffacf3c0f4b766f719d6df1a110f95bb'
+            'b15265e6402462e656497a53e94cd0cbfcbcfdf2e0f66c5f6244a4ce8658b8985583b4932127db44f8449de94ee681a2ec9b530829c976f375ccffc1772a8877'
+	    '1caaa9fc39c0a6478e65c488697979fad5576307f17e3f53cb745722e23f28fbd59a347d27dcbb8c6e70c46c06813ffc2b75bc1ad3a139929072fe780dc00dd4'
 	    'fc52feda32be644deeadf267fdff124ffcc0d0870c36e736024a7be0958ba4b50cea5ef0ec33c2681ad00f36b42ebed354fa3e63bd4827acbeedebc39029229c'
             '7132a74149b39e30f57a0ef70330fbdf8f38a33bd88ba94f1115de098319e41af0ae86091a1e610e209fc87a9823f69da5c883b0a2fd7adc203578cc4ab08733'
             '06481e0492d8ec0f353672fbd1d71322b105849871975f434f87bcb33ca898f85407403ba935153e5d8cca44fea62bfbb43404871d12f26891579067a36fae19'
-            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            'e0afce0ee6210144b63b4519393913b8a1648e673deb708b46b915a53c010a98d747ce07fbdf3eba6c83a590c80cf78199f73bb346a7619c02841a4c7ac5201e')
+            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf')
 
 _kernelname=${pkgbase#}
 : ${_kernelname:=-Arch-vanilla-selinux}
