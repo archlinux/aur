@@ -8,14 +8,14 @@ license=("MIT")
 arch=("x86_64")
 
 pkgver=0.4.2
-pkgrel=2
+pkgrel=3
 
 provides=("antidot")
 conflicts=("antidot")
 depends=()
 
 source=("antidot-0.4.2.bin::https://github.com/doron-cohen/antidot/releases/download/v0.4.2/antidot_v0.4.2_linux_amd64")
-sha256sums=("b189b0e278028369a1e8c7cd55a43842a1d0f796a3f2d9df891768e7b9e1b3b5")
+sha256sums=("8c2e386da6b56ead0b10b5e9d785790bd2430e34764e0601ed9747db082d87d3")
 
 package() {
   install -Dm 0755 "$srcdir/antidot-0.4.2.bin" "$pkgdir/usr/bin/antidot"
