@@ -21,6 +21,6 @@ build() {
 
 package() {
     cd "${srcdir}/${_pkgname}-v${pkgver}"
-    cmake --install build --prefix /usr
-    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${_pkgname}/LICENSE
+    cmake --install build --prefix "${pkgdir}/usr"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
