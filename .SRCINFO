@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-urdf
 	pkgdesc = ROS - This package contains a C++ parser for the Unified Robot Description Format (URDF), which is an XML format for representing a robot model.
 	pkgver = 1.13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/urdf
 	arch = i686
 	arch = x86_64
