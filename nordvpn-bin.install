@@ -2,7 +2,16 @@ post_install() {
   echo ':: In order to enable nordvpn you have to start the following service:'
   echo '     sudo systemctl enable --now nordvpnd'
   echo ':: You have to add yourself to the nordvpn group:'
-  echo "     gpasswd -a USERNAME nordvpn"
+  echo "     sudo gpasswd -a USERNAME nordvpn"
+  echo ':: You then have to restart for the group to be created:'
+  echo "     reboot"
+}
+
+post_upgrade() {
+  echo ':: In order to enable nordvpn you have to start the following service:'
+  echo '     sudo systemctl enable --now nordvpnd'
+  echo ':: You have to add yourself to the nordvpn group:'
+  echo "     sudo gpasswd -a USERNAME nordvpn"
   echo ':: You then have to restart for the group to be created:'
   echo "     reboot"
 }
