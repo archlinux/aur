@@ -33,14 +33,11 @@ pkgname = linux-amd-znver2
 	depends = mkinitcpio>=0.7
 	depends = lzop
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux
 	backup = etc/mkinitcpio.d/linux-amd-znver2.preset
 
 pkgname = linux-amd-znver2-headers
 	pkgdesc = Header files and scripts for building modules for the linux-amd-znver2 kernel
-	provides = linux-headers
 
 pkgname = linux-amd-znver2-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel
-	provides = linux-docs
 
