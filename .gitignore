@@ -1,7 +1,6 @@
-/pkg/
-/src/
-*.gz
-*.xz
-*~
-/zam-plugins-git/
-/dpf/
+DPF/
+pkg/
+src/
+zam-plugins/
+zam-plugins-git-*.pkg.tar.xz
+zam-plugins-git-*.pkg.tar.zst
