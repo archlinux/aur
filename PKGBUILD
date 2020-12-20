@@ -7,7 +7,7 @@
 
 pkgname=google-earth-pro
 pkgver=7.3.3.7786
-pkgrel=1
+pkgrel=2
 pkgdesc='3D interface to explore the globe, terrain, streets, buildings and other planets (Pro version)'
 arch=('x86_64')
 url='https://www.google.com/earth/'
@@ -68,4 +68,7 @@ package() {
     do
         install -D -m644 "$_file" "${pkgdir}/usr/share/licenses/${pkgname}/${_file}"
     done
+
+    # fix Segmentation fault with curl 7.74
+    rm "${pkgdir}/opt/google/earth/pro/libcrypto.so.1.0.0"
 }
