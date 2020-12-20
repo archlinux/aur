@@ -1,23 +1,27 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=newrelic-cli
-pkgver=0.18.3
+pkgver=0.18.7
 pkgrel=1
 pkgdesc="The New Relic Command Line Interface"
 arch=(x86_64)
 url=https://github.com/newrelic/newrelic-cli
 license=(Apache)
+depends=(glibc)
 makedepends=(go git)
 source=(git+https://github.com/newrelic/${pkgname}.git?tag=v${pkgver})
 sha256sums=('SKIP')
 
 prepare() {
   cd newrelic-cli
-  go mod tidy
+  export GOPATH="${srcdir}/gopath"
+  go mod vendor
 }
 
 build() {
   cd newrelic-cli
+
+  export GOPATH="${srcdir}/gopath"
 
   go build \
     -o bin/newrelic \
