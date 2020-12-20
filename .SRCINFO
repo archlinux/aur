@@ -1,0 +1,37 @@
+pkgbase = python-garage
+	pkgdesc = A toolkit for reproducible reinforcement learning research
+	pkgver = 2020.10.0rc5.r61.ge395ba67
+	pkgrel = 1
+	url = https://github.com/rlworkgroup/garage
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python>=3.6
+	depends = python-akro
+	depends = python-click>=2.0
+	depends = python-cloudpickle
+	depends = python-cma
+	depends = python-dowel
+	depends = python-numpy>=1.14.5
+	depends = python-psutil
+	depends = python-dateutil
+	depends = python-ray
+	depends = python-scikit-image
+	depends = python-scipy
+	depends = python-setproctitle>=1.0
+	optdepends = python-tensorflow>=1.14: tensorflow models
+	optdepends = python-tensorflow-probability>=0.11.0: probabilistic tensorflow models
+	optdepends = python-torch>=1.0.0
+	optdepends = python-torchvision>=0.2.1
+	optdepends = python-gym: openAI gym environments
+	optdepends = python-mujoco-py: mujoco based gym environments
+	optdepends = python-imageio: needed for mujoco
+	optdepends = python-pybullet: pybullet based gym environments
+	optdepends = python-mpi4py: needed for pybullet
+	provides = python-garage
+	conflicts = python-garage
+	source = git+https://github.com/rlworkgroup/garage
+	sha256sums = SKIP
+
+pkgname = python-garage
+
