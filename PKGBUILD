@@ -180,7 +180,7 @@ _opt_pagesize="Letter" # A4, Letter, Legal
 set -u
 pkgname='hylafaxplus'
 _pkgnick='hylafax'
-pkgver='7.0.2'
+pkgver='7.0.3'
 pkgrel='1'
 _sendfaxvsicommit='18fabc74490362cd26690331d546d727c727db25'
 pkgdesc='Enterprise Fax Server'
@@ -228,7 +228,7 @@ source=(
   '0006-hylafaxplus-jobfmt-assigned-modem-to-used-modem.patch'
   '1000-hylafaxplus-modem-support.patch'
 )
-md5sums=('b58793ab019aa1fe131557c14c35864e'
+md5sums=('5835843903ae8cefc86eaa9a0c342612'
          '3af38f1eaa4f9fb92cac2f0cf9544321'
          '916f2c100eb2b41ef6b35f96bdb9444a'
          'c1d54ea1f50abfb3834488b428754714'
@@ -240,7 +240,7 @@ md5sums=('b58793ab019aa1fe131557c14c35864e'
          '0de848f554e2a93c09352eadb2b2e260'
          'f6692d5cb0033abe7865c47ec581ea87'
          'dd1e2859dd1cc13db863ba74bc539ca0')
-sha256sums=('cbe9cd634bdc3a42d4aeec8b30c3b057b780a7255ef0f50d1efedef25fa87e9f'
+sha256sums=('c44700d5f09495fea4742d56f2782a5c1ca83e8d63c4fe54a625269b39e3318d'
             '0aed186ab30fdb7cf36895a0ff50b03bd4a68db63cf4f19763995dabd9caffb0'
             '466ab17cdaa1eb1f1f0b5bdc444a90df5835a1896b1363584264920bbc3929f2'
             '80d2e28ee7a7d8f93501e32c96e9895e242409da1326761d36dbf28e5a0e3677'
