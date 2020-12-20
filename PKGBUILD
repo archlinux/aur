@@ -2,7 +2,7 @@
 
 pkgname='armpl'
 pkgver='20.3'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='ARM'\''s closed-source high-performance numerical programming library. Includes BLAS, CBLAS, and LAPACK implementations.'
 url='https://developer.arm.com/tools-and-software/server-and-hpc/downloads/arm-performance-libraries'
 depends=()
@@ -18,9 +18,8 @@ sha256sums=('8fc078d78443894bdde71a49f7b39d513cf1f5e02db723eb833370d0cb2d635a')
 package() {
     cd "$srcdir/arm-performance-libraries_20.3_Ubuntu-16.04"
     ./arm-performance-libraries_20.3_Ubuntu-16.04.sh -a -f -s .
-    bsdtar xvf 'armpl_20.3_gcc-9.3.deb'
     cd "$pkgdir"
-    tar xvf "$srcdir/arm-performance-libraries_20.3_Ubuntu-16.04/data.tar.gz"
+    bsdtar xOf "$srcdir/arm-performance-libraries_20.3_Ubuntu-16.04/armpl_20.3_gcc-9.3.deb" data.tar.gz | zcat | tar xv
 
     install_lib_dir='/opt/arm/armpl_20.3_gcc-9.3/lib'
 

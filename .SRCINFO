@@ -1,7 +1,7 @@
 pkgbase = armpl
 	pkgdesc = ARM's closed-source high-performance numerical programming library. Includes BLAS, CBLAS, and LAPACK implementations.
 	pkgver = 20.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.arm.com/tools-and-software/server-and-hpc/downloads/arm-performance-libraries
 	arch = aarch64
 	license = custom
