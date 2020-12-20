@@ -3,20 +3,15 @@
 _name=distribution
 pkgname="python-${_name}"
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Short, simple, direct scripts for creating ASCII graphical histograms in the terminal'
-url='https://github.com/philovivero/distribution'
+url='https://github.com/wizzat/distribution'
 arch=('any')
 license=('GPL2')
-depends=('python2')
+depends=('python')
 provides=("${_name}=${pkgver}")
 source=("${url}/archive/${pkgver}.tar.gz")
 sha256sums=('d7f2c9beeee15986d24d8068eb132c0a63c0bd9ace932e724cb38c1e6e54f95d')
-
-prepare() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  sed -i 's|^#!/usr/bin/env\ python$|#!/usr/bin/env\ python2|' ${_name}.py
-}
 
 package() {
   cd "${srcdir}/${_name}-${pkgver}"
