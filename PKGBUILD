@@ -2,7 +2,7 @@
 # Contributor: renyuneyun (Rui ZHAO) <renyuneyun@gmail.com>
 
 pkgname=flipper
-pkgver=0.66.0
+pkgver=0.69.0
 pkgrel=1
 pkgdesc="A desktop debugging platform for mobile developers"
 arch=('x86_64')
@@ -16,17 +16,13 @@ optdepends=('watchman: An inotify-based file watching and job triggering command
             'android-sdk: Android debugging support')
 makedepends=('git' 'yarn' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/facebook/flipper/archive/v${pkgver}.tar.gz")
-sha256sums=('239162b8ae51375cabcc8d965e306f21a578be5b1811ada04ed8ea41cdc99792')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}/desktop"
-  mkdir -p ${srcdir}/yarn_cache
-  yarn --cache-folder=${srcdir}/yarn_cache
-}
+sha256sums=('72aee1989e7a0a501fe4a4191b09ce8965aa4a0422e56ff717a0ef4cc346bd75')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/desktop"
-  yarn build --cache-folder=${srcdir}/yarn_cache --linux --version $pkgver 
+  mkdir -p ${srcdir}/yarn_cache
+  yarn --cache-folder=${srcdir}/yarn_cache
+  yarn build --linux
 }
 
 package() {
