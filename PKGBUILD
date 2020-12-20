@@ -69,7 +69,15 @@ build() {
 
 package() {
     cd "$srcdir/chatterino2"
-    install -Dm755 "build/bin/chatterino" "$pkgdir/usr/bin/chatterino"
+    if [ -f "build/bin/chatterino" ] && [ -x "build/bin/chatterino" ]; then
+        echo "Getting chatterino binary from bin folder"
+        install -Dm755 "build/bin/chatterino" "$pkgdir/usr/bin/chatterino"
+    else
+        echo "Getting chatterino binary from NON-BIN folder"
+        # System ccache is enabled, causing the binary file to not fall into the bin folder
+        # Temporary solution until we have figured out a way to stabilize the ccache output
+        install -Dm755 "build/chatterino" "$pkgdir/usr/bin/chatterino"
+    fi
     install -Dm644 "resources/com.chatterino.chatterino.desktop" "$pkgdir/usr/share/applications/com.chatterino.chatterino.desktop"
     install -Dm644 "resources/icon.png" "$pkgdir/usr/share/pixmaps/chatterino.png"
 }
