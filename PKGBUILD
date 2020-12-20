@@ -1,14 +1,14 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='libdecaf'
 pkgver='1.0.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="A 448-bit Edwards curve"
 url="https://sourceforge.net/projects/ed448goldilocks/"
 depends=('glibc')
 makedepends=('cmake' 'git' 'python')
 license=('MIT')
 arch=('x86_64')
-source=("libdecaf-1.0.1::git+git://git.code.sf.net/p/ed448goldilocks/code#tag=v1.0.1")
+source=("libdecaf-1.0.1::git+git://git.code.sf.net/p/ed448goldilocks/code#commit=aa9c5c")
 sha256sums=('SKIP')
 
 build() {
