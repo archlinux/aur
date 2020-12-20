@@ -1,0 +1,22 @@
+pkgbase = galene
+	pkgdesc = A videoconferencing server
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://galene.org
+	install = galene.install
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	depends = go
+	source = https://github.com/jech/galene/archive/galene-0.1.tar.gz
+	source = galene.service
+	source = galene.sysusers
+	source = galene.tmpfiles
+	sha256sums = 95e0231e2ec010af327455ff0173cecd9c2c32d86238b272aa247329f876ef2b
+	sha256sums = eb27f57f04b9a1f5820880e006e299d657404e899add6f87ec524d2b554c9a7e
+	sha256sums = a1b933ff4034cce2da2607e81df547acd7efa6f4236c18fec144047f50361f84
+	sha256sums = 85680da8ab202280b92b6dd32e920906570fb8070db06b2ef0275462d0f5a16d
+
+pkgname = galene
+

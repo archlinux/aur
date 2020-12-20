@@ -1,0 +1,16 @@
+[Unit]
+Description=Galene videoconferencing server
+Documentation=https://galene.org
+Documentation=file:///usr/share/doc/galene/README
+After=network.target
+
+[Service]
+Type=simple
+User=galene
+Group=galene
+WorkingDirectory=~
+ExecStart=/usr/bin/galene -static /usr/share/galene/static
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
