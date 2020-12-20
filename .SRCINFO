@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-filters
 	pkgdesc = ROS - This library provides a standardized interface for processing data as a sequence of filters.
 	pkgver = 1.8.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.ros.org/filters
 	arch = i686
 	arch = x86_64
