@@ -1,16 +1,19 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=vmware-ovftool
-pkgver=4.3.0.12320924
+pkgver=4.4.1.16812187
 pkgrel=1
 pkgdesc="VMware Open Virtualization Format tool"
 arch=('x86_64')
 url="https://www.vmware.com/support/developer/ovf/"
 license=('custom:vmware')
-makedepends=('xorg-server-xvfb')
-depends=('curl' 'libxerces-c-3.1' 'icu58' 'icu60')
-source=("http://url.muflone.com/VMware-ovftool-${pkgver%.*}-${pkgver##*.}-lin.x86_64.bundle")
-sha256sums=('621a1c1fbc6f0fe94f9655e8e73c1fc5bda27c8e019d17d0d678e3477cd77f5e')
+makedepends=('xorg-server-xvfb' 'procps-ng')
+depends=('c-ares' 'expat' 'zlib')
+# VMware-ovftool must be provided by the user by putting it into the build directory
+# You can get the file by yourself here:
+# https://my.vmware.com/group/vmware/downloads/get-download?downloadGroup=OVFTOOL441
+source=("file://VMware-ovftool-${pkgver%.*}-${pkgver##*.}-lin.x86_64.bundle")
+sha256sums=('ecdb3dcb58494d643d35661dcda948025661ec12ce615f043e1ec5d4c85de2ce')
 
 prepare() {
   # The bundle file doesn't allow extraction using symlinks or relative paths, here's then copied
@@ -21,19 +24,20 @@ prepare() {
 build() {
   rm -rf "build"
   xvfb-run -a sh "VMware-ovftool-${pkgver%.*}-${pkgver##*.}-${CARCH}_file.bundle" -x "${srcdir}/build"
-  # Remove duplicated system libraries
-  cd "build/${pkgname}"
-  rm "libcares.so.2" "libcurl.so.4" "libexpat.so" "libgcc_s.so.1" "libstdc++.so.6" \
-     "libxerces-c-3.1.so" "libz.so.1" \
-     "icudt44l.dat" "libicudata.so.58" "libicuuc.so.58" 
 }
 
 package() {
   cd "build/${pkgname}"
   # Install binaries files
   install -m 755 -d "${pkgdir}/usr/lib/${pkgname}"
-  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "ovftool" "ovftool.bin" lib*
+  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" \
+    ovftool ovftool.bin \
+    libcrypto.so.1.0.2 libcurl.so.4 libgoogleurl.so.59 \
+    libicudata.so.60 libicuuc.so.60 \
+    libssl.so.1.0.2 libssoclient.so libxerces-c-3.2.so \
+    libvim-types.so libvmacore.so libvmomi.so
   # Install data files
+  install -m 644 -t "${pkgdir}/usr/lib/${pkgname}" icudt44l.dat
   for _subdir in "certs" "env" "env/en" "schemas/DMTF" "schemas/vmware"
   do
     install -m 755 -d "${pkgdir}/usr/lib/${pkgname}/${_subdir}"

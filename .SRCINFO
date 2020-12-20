@@ -1,17 +1,17 @@
 pkgbase = vmware-ovftool
 	pkgdesc = VMware Open Virtualization Format tool
-	pkgver = 4.3.0.12320924
+	pkgver = 4.4.1.16812187
 	pkgrel = 1
 	url = https://www.vmware.com/support/developer/ovf/
 	arch = x86_64
 	license = custom:vmware
 	makedepends = xorg-server-xvfb
-	depends = curl
-	depends = libxerces-c-3.1
-	depends = icu58
-	depends = icu60
-	source = http://url.muflone.com/VMware-ovftool-4.3.0-12320924-lin.x86_64.bundle
-	sha256sums = 621a1c1fbc6f0fe94f9655e8e73c1fc5bda27c8e019d17d0d678e3477cd77f5e
+	makedepends = procps-ng
+	depends = c-ares
+	depends = expat
+	depends = zlib
+	source = file://VMware-ovftool-4.4.1-16812187-lin.x86_64.bundle
+	sha256sums = ecdb3dcb58494d643d35661dcda948025661ec12ce615f043e1ec5d4c85de2ce
 
 pkgname = vmware-ovftool
 
