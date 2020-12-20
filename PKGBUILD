@@ -1,12 +1,10 @@
-# Script generated with import_catkin_packages.py.
-# For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - camera_calibration_parsers contains routines for reading and writing camera calibration parameters."
 url='https://wiki.ros.org/camera_calibration_parsers'
 
 pkgname='ros-melodic-camera-calibration-parsers'
 pkgver='1.11.13'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=6
+pkgrel=7
 license=('BSD')
 
 ros_makedepends=(
@@ -22,7 +20,8 @@ makedepends=(
 	'ros-build-tools'
 	${ros_makedepends[@]}
 	yaml-cpp
-	boost
+	boost1.69
+	boost1.69-libs
 	pkg-config
 )
 
@@ -34,20 +33,14 @@ ros_depends=(
 
 depends=(
 	${ros_depends[@]}
-	boost
+	boost1.69
+	boost1.69-libs
 	yaml-cpp
 )
 
 _dir="image_common-${pkgver}/camera_calibration_parsers"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_common/archive/${pkgver}.tar.gz"
-    "boost-fix.patch")
-sha256sums=('32a2e07724dec6eaaace21eae006274436d70d40bfe205249438570275c43cac'
-            '85b506e095b95e6382b816625e798444c83e77f52eef8c98ed0182ef59d326d4')
-
-prepare() {
-    cd "${srcdir}/${_dir}"
-    patch -uN CMakeLists.txt ${srcdir}/boost-fix.patch || return 1
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_common/archive/${pkgver}.tar.gz")
+sha256sums=('32a2e07724dec6eaaace21eae006274436d70d40bfe205249438570275c43cac')
 
 build() {
 	# Use ROS environment variables.
@@ -67,7 +60,8 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DSETUPTOOLS_DEB_LAYOUT=OFF
+		-DSETUPTOOLS_DEB_LAYOUT=OFF \
+	   	-DBOOST_ROOT=/opt/boost1.69
 	make
 }
 
