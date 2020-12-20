@@ -5,8 +5,8 @@
 set -u
 _pkgname='littler'
 pkgname="${_pkgname}-git"
-pkgver=0.3.9.r2.gc52f7cc
-pkgrel=1
+pkgver='0.3.12'
+pkgrel='1'
 pkgdesc='a hash-bang and simple command line pipe front end for GNU R'
 arch=('i686' 'x86_64')
 #url="http://code.google.com/p/littler"
@@ -19,7 +19,8 @@ _giturl="https://github.com/eddelbuettel/${_pkgname}"
 source=("${_pkgname}-${pkgver}.tar.gz::${_giturl}/archive/${pkgver}.tar.gz")
 #source=("http://dirk.eddelbuettel.com/code/littler/${pkgname}_${pkgver}.tar.gz")
 #source=("http://http.debian.net/debian/pool/main/l/littler/littler_0.2.3.orig.tar.gz")
-sha256sums=('e0f61c33d228fd18d97ac2cab4f6b659d601b501435542bb5e8ce26832d71114')
+md5sums=('2698b70b1464462263bfc45fa0f6c128')
+sha256sums=('8bd5be56eb62e9408fc4abb431c1a45c38835f150f98bc5ee03d9d902cdc9879')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pkgname}"
