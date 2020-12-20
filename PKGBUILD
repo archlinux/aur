@@ -6,35 +6,44 @@
 
 set -u
 pkgname='pipemeter'
-pkgver='1.1.3'
-pkgrel='3'
+pkgver='1.1.4'
+pkgrel='1'
 pkgdesc='A command line utility that displays the speed and, if possible, progress, of data moving from its input to its output.'
 arch=('i686' 'x86_64')
 url='http://spamaps.org/pipemeter.php'
-makedepends=('patch')
 license=('GPL2')
-source=("http://spamaps.org/files/pipemeter/${pkgname}-${pkgver}.tar.gz" 'patch')
-sha256sums=('1ff952cb2127476ca9879f4b28fb92d6dabb0cc02db41f657025f7782fd50aaf'
-            '259b34d99a7c11ef073e3de00fab8c9dbbebabde3141cedb026cf9d512faab31')
+makedepends=('patch')
+#source=("http://spamaps.org/files/pipemeter/${pkgname}-${pkgver}.tar.gz" 'patch')
+_srcdir="${pkgname}-${pkgver}"
+source=("https://launchpad.net/pipemeter/trunk/${pkgver}/+download/${_srcdir}.tar.gz")
+md5sums=('6884e1a6db19ecbee5f2aabde9fd6a94')
+sha256sums=('dfdea37fcc236c32cb4739665d13cff56c3e46d3b28eed5d96e62a565472474a')
 
 prepare() {
   set -u
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix='/usr'
-  patch -uN -i "${srcdir}/patch"
+  cd "${_srcdir}"
+  # make package compatible
+  sed -e '/\/man\// s:\$(PREFIX)/man:$(PREFIX)/share/man:g' \
+      -e '/install / s: \$(PREFIX): -t "$(DESTDIR)"$(PREFIX):g' \
+      -e '/install / s:install : install -D :g' \
+      -e '/install / s:[a-z0-9]$:&/:g' \
+    -i 'Makefile.in'
   set +u
 }
 
 build() {
   set -u
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${_srcdir}"
+  if [ ! -s 'Makefile' ]; then
+    ./configure --prefix='/usr'
+  fi
   make
   set +u
 }
 
 package() {
   set -u
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${_srcdir}"
   make DESTDIR="${pkgdir}" install
   set +u
 }
