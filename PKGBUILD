@@ -21,6 +21,10 @@ python-coverage
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ramonhagenaars/typish/archive/v${pkgver}.tar.gz")
 sha512sums=('867694f5fee9387b14cc94d3741ada256b8a32db931f01576a4d38d78fd237fe708f8e890703db21ccb790ace5ff178a09cda28d8ab9164b6ecbb105eeefc670')
 
+prepare(){
+  msg2 "${MAKEFLAGS}"
+}
+
 build() {
   cd typish-${pkgver}
   python setup.py build
