@@ -1,7 +1,7 @@
 pkgbase = caddy-bin
 	pkgdesc = Fast, multi-platform web server with automatic HTTPS
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://caddyserver.com
 	arch = x86_64
 	arch = arm
@@ -19,7 +19,7 @@ pkgbase = caddy-bin
 	source_armv7h = https://github.com/caddyserver/caddy/releases/download/v2.2.1/caddy_2.2.1_linux_armv7.tar.gz
 	sha256sums_armv7h = 220ef17ccb1cb8d7a3ec74d6cc5013fc4036e9881325aa9e7f1c45dda9d38ea7
 	source_aarch64 = https://github.com/caddyserver/caddy/releases/download/v2.2.1/caddy_2.2.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+	sha256sums_aarch64 = 05c5289b0011f87fed9e4ea015c3da61f852b4e196a8da54b232965c664c6a4e
 
 pkgname = caddy-bin
 
