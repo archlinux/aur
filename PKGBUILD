@@ -2,13 +2,13 @@
 
 _pkgname=poetry
 pkgname=python-poetry-git
-pkgver=1.1.0b2.r41.g9fe44933
+pkgver=1.1.0.r73.gbf30ca69
 pkgrel=1
 pkgdesc="Python dependency management and packaging made easy"
 arch=('any')
 url="https://python-poetry.org/"
 license=('MIT')
-_deps=('cachecontrol' 'cachy' 'cleo' 'clikit>=0.6.2' 'html5lib' 'jsonschema' 'lockfile'
+_deps=('cachecontrol' 'cachy' 'cleo' 'clikit-git' 'html5lib' 'jsonschema' 'lockfile'
        'pkginfo' 'pyparsing' 'pyrsistent' 'requests' 'requests-toolbelt'
        'shellingham' 'tomlkit' 'keyring' 'pexpect' 'poetry-core-git' 'virtualenv>=20.0.26')
 depends=("${_deps[@]/#/python-}")
@@ -18,10 +18,8 @@ provides=('poetry' 'python-poetry')
 conflicts=('poetry' 'python-poetry')
 replaces=('poetry')
 source=("${_pkgname}"::"git+https://github.com/python-${_pkgname}/${_pkgname}.git"
-        "0001-Suppress-dependency-versions-which-are-known-to-be-t.patch"
         "poetry-completions-generator")
 sha256sums=('SKIP'
-            '3f992187e7dfbbb5a8d0667ff40ff7b6c3056825291e8a675cf456f8c4fde1d0'
             '970225289188ea8dc49fbec8a2bfe0c891aee80ff56ba6e69bdd8afef8bccab6')
             
 pkgver() {
@@ -34,9 +32,6 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}"/${_pkgname}
-
-    # fix various overly restrictive version pinning
-    patch -p1 -i ../0001-Suppress-dependency-versions-which-are-known-to-be-t.patch
 
     dephell deps convert --level DEBUG --from pyproject.toml --to setup.py
 }

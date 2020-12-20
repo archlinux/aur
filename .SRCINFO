@@ -1,6 +1,6 @@
 pkgbase = python-poetry-git
 	pkgdesc = Python dependency management and packaging made easy
-	pkgver = 1.1.0b2.r41.g9fe44933
+	pkgver = 1.1.0.r73.gbf30ca69
 	pkgrel = 1
 	url = https://python-poetry.org/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-poetry-git
 	depends = python-cachecontrol
 	depends = python-cachy
 	depends = python-cleo
-	depends = python-clikit>=0.6.2
+	depends = python-clikit-git
 	depends = python-html5lib
 	depends = python-jsonschema
 	depends = python-lockfile
@@ -34,10 +34,8 @@ pkgbase = python-poetry-git
 	conflicts = python-poetry
 	replaces = poetry
 	source = poetry::git+https://github.com/python-poetry/poetry.git
-	source = 0001-Suppress-dependency-versions-which-are-known-to-be-t.patch
 	source = poetry-completions-generator
 	sha256sums = SKIP
-	sha256sums = 3f992187e7dfbbb5a8d0667ff40ff7b6c3056825291e8a675cf456f8c4fde1d0
 	sha256sums = 970225289188ea8dc49fbec8a2bfe0c891aee80ff56ba6e69bdd8afef8bccab6
 
 pkgname = python-poetry-git
