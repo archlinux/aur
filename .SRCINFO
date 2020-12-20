@@ -1,0 +1,17 @@
+pkgbase = memstrack-git
+	pkgdesc = A memory allocation trace, like a hot spot analyzer for memory allocation (from git)
+	pkgver = 0.1.12.r8.ga93d5ad
+	pkgrel = 1
+	url = https://github.com/ryncsn/memstrack
+	arch = any
+	license = GPL3
+	makedepends = gcc
+	makedepends = git
+	makedepends = ncurses
+	provides = memstrack
+	conflicts = memstrack
+	source = git+https://github.com/ryncsn/memstrack.git
+	sha256sums = SKIP
+
+pkgname = memstrack-git
+
