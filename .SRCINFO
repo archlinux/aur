@@ -1,13 +1,11 @@
 pkgbase = python-clikit-git
 	pkgdesc = CliKit is a group of utilities to build beautiful and testable command line interfaces.
 	pkgver = r114.1da34f1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sdispater/clikit
 	arch = any
 	license = MIT
-	checkdepends = python-pytest-mock>=2.0.0
-	makedepends = python-poetry>=1.0.0
-	makedepends = python-pip
+	makedepends = python-dephell
 	depends = python-pastel>=0.2.0
 	depends = python-pastel<0.3.0
 	depends = python-pylev>=1.3
