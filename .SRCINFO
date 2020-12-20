@@ -33,14 +33,11 @@ pkgname = linux-amd
 	depends = mkinitcpio>=0.7
 	depends = lzop
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux
 	backup = etc/mkinitcpio.d/linux-amd.preset
 
 pkgname = linux-amd-headers
 	pkgdesc = Header files and scripts for building modules for Linux kernel aimed at the latest AMD CPU based hardware
-	provides = linux-headers
 
 pkgname = linux-amd-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel
-	provides = linux-docs
 
