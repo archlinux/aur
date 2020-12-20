@@ -7,7 +7,7 @@ pkgdesc="Alternative web client for Snapcast"
 url="https://github.com/djmattyg007/snapidy"
 license=("GPL3" "MIT")
 arch=("any")
-makedepends=("zip")
+makedepends=("unzip")
 source=(
     "https://github.com/djmattyg007/snapidy/releases/download/${pkgver}/snapidy-${pkgver}.zip"
     "config.example.json"
