@@ -2,9 +2,9 @@
 
 _pkgbase='rcon'
 pkgname="python-${_pkgbase}"
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
-pkgdesc='Python 3 library and scripts for RCON clients'
+pkgdesc='Python 3 RCOn client library and scripts'
 arch=('any')
 url="https://github.com/coNQP/${_pkgbase}"
 license=('GPLv3')
