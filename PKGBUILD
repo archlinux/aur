@@ -2,8 +2,8 @@
 
 pkgname=python-bme280-git
 _pkgname=bme280
-pkgver=eb28f73
-pkgrel=3
+pkgver=25376a6
+pkgrel=1
 pkgdesc="A Python library for accessing the BME280 combined humidity and pressure from Bosch via python-smbus using the I2C interface."
 url="https://github.com/cmur2/python-bme280"
 arch=("any")
@@ -18,14 +18,10 @@ pkgver() {
   git describe --always | sed -e 's|-|.|g'
 }
 
-build() {
-  cd "${srcdir}/${_pkgname}"
-  python setup.py build
-}
-
 package() {
   cd "${srcdir}/${_pkgname}"
-  python setup.py install --skip-build -O1 --root="${pkgdir}"
+  python -m pip install --root="${pkgdir}" .
+
 }
 
 # vim: ts=2 sw=2 et:
