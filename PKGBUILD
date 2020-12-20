@@ -2,7 +2,7 @@
 _pkgname="gvtg_vgpu"
 pkgname="$_pkgname-git"
 pkgver=r6.a5bea06
-pkgrel=1
+pkgrel=2
 pkgdesc="Systemd files to automatically create and remove gvtg vgpu"
 arch=("x86_64")
 url="https://github.com/oakszyjrnrdy/$_pkgname"
@@ -10,6 +10,7 @@ license=('GPL')
 makedepends=("git")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+install="$pkgname.install"
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
