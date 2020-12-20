@@ -1,6 +1,6 @@
 pkgbase = polybar-dwm-module
 	pkgdesc = polybar fork with a dwm module
-	pkgver = 3.4.0.r212.g13797f3
+	pkgver = 3.5.2.r94.g6b54ea27
 	pkgrel = 1
 	url = https://github.com/mihirlad55/polybar-dwm-module
 	install = polybar-dwm-module.install
@@ -31,7 +31,7 @@ pkgbase = polybar-dwm-module
 	provides = polybar
 	conflicts = polybar
 	source = polybar-dwm-module::git+https://github.com/mihirlad55/polybar-dwm-module.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = polybar-dwm-module
 

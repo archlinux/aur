@@ -1,7 +1,7 @@
 # Maintainer: Mihir Lad <mihirlad55 gmail>
 _pkgname=polybar-dwm-module
 pkgname="${_pkgname}"
-pkgver=3.4.0.r212.g13797f3
+pkgver=3.5.2.r94.g6b54ea27
 pkgrel=1
 pkgdesc="polybar fork with a dwm module"
 arch=("i686" "x86_64")
@@ -18,7 +18,7 @@ provides=("polybar")
 conflicts=("polybar")
 install="${_pkgname}.install"
 source=("${_pkgname}::git+${url}.git")
-md5sums=("SKIP")
+sha256sums=("SKIP")
 
 pkgver() {
   git -C "${_pkgname}" describe --long --tags | sed "s/-/.r/;s/-/./g"
@@ -32,7 +32,7 @@ prepare() {
 build() {
   cd "${_pkgname}/build" || exit 1
   # Force cmake to use system python (to detect xcbgen)
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON_EXECUTABLE=/usr/bin/python3 ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=/usr/bin/python3 ..
   cmake --build .
 }
 
