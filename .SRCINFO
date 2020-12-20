@@ -2,7 +2,7 @@ pkgbase = musicfox
 	pkgdesc = netease cloud music terminal client written in Dart.
 	pkgver = 1.2.0
 	pkgrel = 1
-	url = https://github.com/AlanAlbert/musicfox
+	url = https://github.com/anhoder/musicfox
 	arch = x86_64
 	license = MIT
 	makedepends = dart
@@ -11,7 +11,7 @@ pkgbase = musicfox
 	provides = musicfox-bin
 	conflicts = musicfox-bin
 	options = !strip
-	source = musicfox-1.2.0.tar.gz::https://github.com/AlanAlbert/musicfox/archive/1.2.0.tar.gz
+	source = musicfox-1.2.0.tar.gz::https://github.com/anhoder/musicfox/archive/1.2.0.tar.gz
 	sha256sums = be84b4db8841f9b03e86a70b9000c7a1fa8db417641e460f6d810b0959bc0fd5
 
 pkgname = musicfox
