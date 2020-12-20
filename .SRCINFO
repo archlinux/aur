@@ -1,6 +1,6 @@
 pkgbase = openrgb-git
 	pkgdesc = Configuration utility for RGB lights supporting motherboards, RAM, & peripherals
-	pkgver = r650.899b90d
+	pkgver = r1230.ef0a4c3
 	pkgrel = 1
 	url = https://gitlab.com/CalcProgrammer1/OpenRGB
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Myrddin Wyllt <darknesseatsall at aim dot com>
 
 pkgname=openrgb-git
-pkgver=r650.899b90d
+pkgver=r1230.ef0a4c3
 pkgrel=1
 pkgdesc="Configuration utility for RGB lights supporting motherboards, RAM, & peripherals"
 arch=('x86_64')
@@ -30,13 +30,9 @@ build() {
     make -j$(($(nproc)+1))
 }
 
-check() {
-    mkdir -p $HOME/.config/OpenRGB
-}
-
 package() {
     cd "$srcdir/openrgb"
-    install -Dm755 OpenRGB "$pkgdir"/usr/bin/openrgb
+    install -Dm755 openrgb "$pkgdir"/usr/bin/openrgb
     install -Dm644 qt/OpenRGB.png "$pkgdir"/usr/share/pixmaps/openrgb.png
     install -Dm644 -t "$pkgdir"/usr/share/applications ../openrgb.desktop
     install -Dm644 -t "$pkgdir"/usr/lib/udev/rules.d 60-openrgb.rules
