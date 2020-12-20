@@ -10,17 +10,17 @@ url="https://github.com/Jorengarenar/${_pkgname}"
 license=('MIT')
 depends=('glibc')
 makedepends=('cmake')
-source=("${_pkgname}::https://github.com/Jorengarenar/${_pkgname}/archive/${_pkgname}-v${pkgver}.tar.gz")
+source=("${_pkgname}::https://github.com/Jorengarenar/${_pkgname}/archive/${pkgver}.tar.gz")
 sha512sums=('SKIP')
 
 build() {
-    cd "${srcdir}/${_pkgname}-v${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     cmake -B build/ -DCMAKE_BUILD_TYPE=Release
     cmake --build build
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}-v${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     cmake --install build --prefix "${pkgdir}/usr"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
