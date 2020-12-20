@@ -3,13 +3,13 @@
 _pkgbase='mcipc'
 pkgname="python-${_pkgbase}"
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python 3 library and scripts for the RCON and Query protocol'
 arch=('any')
 url="https://github.com/coNQP/${_pkgbase}"
 license=('GPLv3')
-depends=('python')
-makedepends=('git' 'python' 'python-rcon' 'python-setuptools' 'python-setuptools-git')
+depends=('python' 'python-rcon')
+makedepends=('git' 'python' 'python-setuptools' 'python-setuptools-git')
 source=("${_pkgbase}::git+${url}.git#tag=${pkgver}")
 md5sums=('SKIP')
 
