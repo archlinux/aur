@@ -1,7 +1,7 @@
 pkgbase = plausible-git
 	pkgdesc = Simple and privacy-friendly alternative to Google Analytics
 	pkgver = r456.b29afde
-	pkgrel = 2
+	pkgrel = 3
 	url = https://plausible.io
 	arch = any
 	license = MIT
