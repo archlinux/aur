@@ -39,7 +39,10 @@ source=("git://git.blender.org/blender.git${_fragment}"
         stl_export_iter.patch
         python3.7.patch
         python3.8.patch
-        'python3.9.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/56d0df51a36fdce7ec2d1fbb7b47b1d95b591b5f'
+        'python3.9.patch'   # ::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/56d0df51a36fdce7ec2d1fbb7b47b1d95b591b5f
+        'python3.9_2.patch' # ::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/5edba9b42f684bf8b99894bb6988e7f46180e12c
+        openvdb7.patch
+        cycles.patch
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -50,7 +53,10 @@ sha256sums=('SKIP'
             '649c21a12a1bfc0207078e1e58b4813a3e898c6dbbbb35d21e1de7c9e8f1985a'
             '47811284f080e38bcfbfb1f7346279245815a064df092989336b0bf3fe4530e9'
             '229853b98bb62e1dec835aea6b2eab4c3dabbc8be591206573a3c1b85f10be59'
-            '7ae5ac4d636934cd46213e3f29ea67013d17316e122d8f312daec288e4f90cd9')
+            'd106248d55045f5ef913bf6243ad74a76f6282264d9ee4c9b87ec4a3d2e2064b'
+            'b2a2bc5de8d3b730e49d1f50cb025c1dfdbcb66c58ead573322585b6a887d3a7'
+            'c4079c4c142516d9cd476f5a3cafddf4068f0950c3c11ea4da9cf999c5ccc1f9'
+            'd245f02d73bd5b767ffa49d369383d7cd6ae5e57b89c2975a78c1015e1884864')
 
 pkgver() {
 # shellcheck disable=SC2164
@@ -64,7 +70,7 @@ prepare() {
   if [ ! -v _cuda_capability ] && grep -q nvidia <(lsmod); then
     git -C "$srcdir/blender" apply -v "${srcdir}"/SelectCudaComputeArch.patch
   fi
-  git -C "$srcdir/blender" apply -v "${srcdir}"/{python3.7,stl_export_iter,python3.8}.patch
+  git -C "$srcdir/blender" apply -v "${srcdir}"/{python3.7,stl_export_iter,python3.{8,9,9_2},openvdb7,cycles}.patch
 }
 
 build() {

@@ -1,0 +1,22 @@
+diff --git a/intern/cycles/kernel/osl/osl_services.h b/intern/cycles/kernel/osl/osl_services.h
+index 3990a22aefd..8b2faf3afe4 100644
+--- a/intern/cycles/kernel/osl/osl_services.h
++++ b/intern/cycles/kernel/osl/osl_services.h
+@@ -92,7 +92,7 @@ public:
+ 	bool getmessage(OSL::ShaderGlobals *sg, ustring source, ustring name,
+ 	                TypeDesc type, void *val, bool derivatives) override;
+ 
+-	TextureSystem::TextureHandle *get_texture_handle(ustring filename) override;
++	TextureSystem::TextureHandle *get_texture_handle(ustring filename);
+ 
+ 	bool good(TextureSystem::TextureHandle *texture_handle) override;
+ 
+@@ -145,7 +145,7 @@ public:
+ 	                      int subimage,
+ 	                      ustring dataname,
+ 	                      TypeDesc datatype,
+-	                      void *data) override;
++	                      void *data);
+ 
+ 	static bool get_background_attribute(KernelGlobals *kg, ShaderData *sd, ustring name,
+ 	                                     TypeDesc type, bool derivatives, void *val);
