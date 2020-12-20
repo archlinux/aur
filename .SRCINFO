@@ -1,0 +1,21 @@
+pkgbase = dwm-tucuxi-git
+	pkgdesc = A customized DWM build
+	pkgver = 6.2.r32.gfabd03a
+	pkgrel = 1
+	url = https://gitlab.com/tuxaua/dwm
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libx11
+	depends = libxinerama
+	depends = libxft
+	optdepends = alacritty: terminal support
+	optdepends = dmenu: program launcher support
+	optdepends = rofi: application launcher support
+	provides = dwm
+	conflicts = dwm
+	source = dwm-tucuxi::git+https://gitlab.com/tuxaua/dwm.git
+	md5sums = SKIP
+
+pkgname = dwm-tucuxi-git
+
