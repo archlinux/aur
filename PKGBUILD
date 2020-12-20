@@ -64,6 +64,13 @@ build() {
     mkdir build
     cd build
     qmake ..
+    if [ -z "$CCACHE_SLOPPINESS" ]; then
+        # We need to set the ccache sloppiness for the chatterino build to use it properly
+        # This is due to our use of precompiled headers
+        # See https://ccache.dev/manual/3.3.5.html#_precompiled_headers
+        CCACHE_SLOPPINESS="pch_defines,time_macros"
+        export CCACHE_SLOPPINESS
+    fi
     make
 }
 
