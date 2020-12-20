@@ -10,7 +10,7 @@ url="https://github.com/Jorengarenar/${_pkgname}"
 license=('MIT')
 depends=('glibc')
 makedepends=('cmake')
-source=("${_pkgname}::https://github.com/Jorengarenar/${_pkgname}/archive/${pkgver}.tar.gz")
+source=("${_pkgname}::https://github.com/Jorengarenar/${_pkgname}/archive/v${pkgver}.tar.gz")
 sha512sums=('SKIP')
 
 build() {
