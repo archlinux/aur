@@ -1,0 +1,13 @@
+pkgbase = webhook-httpd
+	pkgdesc = simple HTTP(S) server for receiving webhooks and running commands
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/de-vri-es/webhook-httpd
+	arch = x86_64
+	license = BSD
+	makedepends = rust
+	source = webhook-httpd-v0.1.1.tar.gz::https://github.com/de-vri-es/webhook-httpd/archive/v0.1.1.tar.gz
+	sha512sums = e180c8a845dd63a42105b3ee9e611f9254c20c35b2ac52633d06ae943191e3b8287149d033269bc85f29d5c519e83469c34b4acc30128293a0c513d95c9607b1
+
+pkgname = webhook-httpd
+
