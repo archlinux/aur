@@ -6,7 +6,7 @@
 pkgname=plausible-git
 _pkgname=plausible
 pkgver=r456.b29afde
-pkgrel=2
+pkgrel=3
 license=('MIT')
 pkgdesc='Simple and privacy-friendly alternative to Google Analytics'
 makedepends=("nodejs" "yarn" "python" "npm" "nodejs-webpack" "wget" "ca-certificates" "gnupg" "elixir")
@@ -48,7 +48,7 @@ build() {
 	cd "$_pkgname"/app
         
 	export MIX_ENV=prod
-	export NODE-_ENV=production
+	export NODE_ENV=production
         
 	mix local.hex --force
 	mix local.rebar --force
