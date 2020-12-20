@@ -22,12 +22,12 @@ source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.r
         'kernel-4.16.patch'
         'kernel-5.8.patch'
         'kernel-5.9.patch'
-        'https://gitlab.com/herecura/packages/nvidia-390xx-dkms/-/blob/db83ed8ac2e0e0097d535a82e2fd4ee0f31873e3/kernel-5.10.patch')
+        'https://gitlab.com/herecura/packages/nvidia-390xx-dkms/-/raw/db83ed8ac2e0e0097d535a82e2fd4ee0f31873e3/kernel-5.10.patch')
 b2sums=('bf56cef38d76accdf547b96cd444b0bd4288f604d44a1d274f3246c13310d6a59050b36f384280edb83938db81fa0544f7a2dc84ff6f440ff90b76ee62749fc1'
         '1d21307640a3844752c92e8344518daf6ad62d846689bebe6eed4dcadbf7b2e742862f5c17c0faee7256662cb75e62e124d59e5a5617e87324e1f0658f2b748d'
         '1e6ad252be5f603e022c854d391d4d768fb81d532a837203ab3b024dbb10f328c40a9579a19ab730de4e16f3841f15bfbcd1815ec913ac3d555811daf338ae6d'
         '7358919041a3d5df1cac50f6519b282abe7a344f07b59d52ab95a022ce0af12e743a1c194fd838b5733f3900e68c7f0756a528ac32255775f2ba830a2f052dec'
-        'f4d9e3e6b39a750df55d0ae3eb9d93b611d01bc6009d374964cbbcc0b34d1bd5ee9930c3c8c64ec4943df344cf60bc9391d791ab8f0031c113f774771e5824fe')
+        '8d7c054ff08ed6212aa81f3db6597c1e016609bdddfb19161274e5e75b0ae8b5c5501740ca6a75367d152b16f8350319bd2577561aa796cfe49840c4bd2c2d5d')
 
 prepare() {
     sh "${_pkg}.run" --extract-only
