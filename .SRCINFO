@@ -1,14 +1,14 @@
 pkgbase = dmake
 	pkgdesc = A make utility similar to GNU make or the Workshop dmake, formerly used by the OpenOffice.org build system.
-	pkgver = 4.12.2.2
+	pkgver = 4.13.1
 	pkgrel = 1
 	url = https://github.com/mohawk2/dmake.git
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = glibc
-	source = https://github.com/mohawk2/dmake/archive/DMAKE_4_12_2_2.tar.gz
-	md5sums = 75cfc7b7e8bafe12e7b4c5ca13505607
+	source = dmake-4.13.1.tar.gz::https://github.com/jimjag/dmake/archive/v4.13.1.tar.gz
+	sha256sums = 816664f5299b2c0ddbb717e9dcbd15f15438a724a174256b5eba0c6a6d15be6f
 
 pkgname = dmake
 
