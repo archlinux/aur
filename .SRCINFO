@@ -1,6 +1,6 @@
 pkgbase = miopen-opencl
 	pkgdesc = AMD's Machine Intelligence Library (OpenCL backend)
-	pkgver = 3.10.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/ROCmSoftwarePlatform/MIOpen
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = miopen-opencl
 	depends = llvm-amdgpu
 	provides = miopen
 	conflicts = miopen
-	source = miopen-opencl-3.10.0.tar.gz::https://github.com/ROCmSoftwarePlatform/MIOpen/archive/rocm-3.10.0.tar.gz
-	sha256sums = 926e43c5583cf70d6b247f9fe45971b8b1cc9668f9c8490c142c7e8b6e268f1a
+	source = miopen-opencl-4.0.0.tar.gz::https://github.com/ROCmSoftwarePlatform/MIOpen/archive/rocm-4.0.0.tar.gz
+	sha256sums = 84c6c17be9c1a9cd0d3a2af283433f64b07a4b9941349f498e40fed82fb205a6
 
 pkgname = miopen-opencl
 
