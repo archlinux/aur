@@ -8,7 +8,6 @@ pkgbase = ipmap
 	makedepends = make
 	depends = libpcap
 	source = https://github.com/skylinecc/ipmap/raw/main/packaging/arch/ipmap-0.1.6.tar.gz
-	md5sums = d9015ce33d348c283319295640613f71
 
 pkgname = ipmap
 
