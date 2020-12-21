@@ -7,16 +7,27 @@
 
 pkgname=google-earth-pro
 pkgver=7.3.3.7786
-pkgrel=2
+pkgrel=3
 pkgdesc='3D interface to explore the globe, terrain, streets, buildings and other planets (Pro version)'
 arch=('x86_64')
 url='https://www.google.com/earth/'
 license=('custom')
-depends=('glu' 'hicolor-icon-theme' 'libsm' 'libxrender' 'libproxy'
-         'gst-plugins-base-libs' 'libxi' 'fontconfig' 'alsa-lib' 'libcups'
-         'desktop-file-utils')
-optdepends=('catalyst-utils: For AMD Catalyst'
-            'nvidia-utils: For the NVIDIA driver')
+depends=(
+    'curl'
+    'glu'
+    'hicolor-icon-theme'
+    'libsm'
+    'libxrender'
+    'libproxy'
+    'gst-plugins-base-libs'
+    'libxi'
+    'fontconfig'
+    'alsa-lib'
+    'libcups'
+    'desktop-file-utils')
+optdepends=(
+    'catalyst-utils: For AMD Catalyst'
+    'nvidia-utils: For the NVIDIA driver')
 provides=('google-earth')
 options=('!strip' '!emptydirs')
 install="${pkgname}.install"
