@@ -2,7 +2,7 @@
 pkgname=python-block_tracing
 _name=${pkgname#python-}
 pkgver=1.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Protect process memory"
 arch=('any')
 url="https://github.com/rianhunter/block_tracing"
@@ -23,6 +23,7 @@ build() {
 
 package() {
 	cd "$_name-$pkgver"
+	export PYTHONHASHSEED=0
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
 	install -Dm644 "$srcdir/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
