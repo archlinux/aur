@@ -1,0 +1,20 @@
+pkgbase = afb-client-git
+	pkgdesc = This project provides simple client of the Application Framework Binder of micro-service architecture.
+	pkgver = 4.0.0beta2
+	pkgrel = 1
+	url = https://github.com/redpesk-core/afb-client.git
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	makedepends = lua
+	makedepends = git
+	depends = afb-libafb-git
+	provides = afb-client
+	conflicts = afb-client
+	source = afb-client::git+https://github.com/redpesk-core/afb-client.git
+	md5sums = SKIP
+
+pkgname = afb-client-git
+
