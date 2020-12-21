@@ -6,7 +6,7 @@
     pkgname='ros-melodic-libg2o'
     pkgver='2018.3.25'
     arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-    pkgrel=4
+    pkgrel=5
     license=('BSD')
 
     ros_makedepends=()
@@ -54,7 +54,8 @@ sha256sums=('c49b69b1843dc0c287720c1eb14380069612abe5f338c5f979a7099f6dde6db3')
                 -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
                 -DPYTHON_BASENAME=.cpython-37m \
                 -DSETUPTOOLS_DEB_LAYOUT=OFF \
-		 -DBOOST_ROOT=/opt/boost1.69
+		 -DBOOST_ROOT=/opt/boost1.69 \
+		 -DBoost_NO_SYSTEM_PATHS=TRUE
     make
     }
 
