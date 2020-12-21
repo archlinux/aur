@@ -3,19 +3,17 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 pkgname=apostrophe-git
 pkgver=2.2.0.3.r33.gff24dc1
-pkgrel=1
+pkgrel=2
 pkgdesc="A distraction free Markdown editor for GNU/Linux made with GTK+"
 arch=('any')
 url="https://somas.pages.gitlab.gnome.org/apostrophe"
 license=('GPL3')
 depends=('webkit2gtk' 'gspell' 'python-pypandoc' 'python-regex' 'python-levenshtein'
-         'python-pyenchant' 'python-gobject' 'python-cairo')
+         'python-pyenchant' 'python-gobject' 'python-cairo' 'otf-fira-mono')
 makedepends=('git' 'meson' 'gobject-introspection')
 checkdepends=('appstream')
 optdepends=('texlive-latexextra: for the pdftex module'
-            'mathjax: for formula preview'
-            'otf-fira-mono: Recommended font (OTF)'
-            'ttf-fira-mono: Recommended font (TTF)')
+            'mathjax: for formula preview')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://gitlab.gnome.org/somas/apostrophe.git')
