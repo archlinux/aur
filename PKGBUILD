@@ -7,7 +7,7 @@ url='https://wiki.ros.org/mavros'
 pkgname='ros-melodic-mavros'
 pkgver='1.5.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('GPLv3, LGPLv3, BSD')
 
 ros_makedepends=(
@@ -76,7 +76,8 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF \
-		 -DBOOST_ROOT=/opt/boost1.69
+		 -DBOOST_ROOT=/opt/boost1.69 \
+		 -DBoost_NO_SYSTEM_PATHS=TRUE
   make
 }
 
