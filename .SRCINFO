@@ -1,7 +1,7 @@
 pkgbase = dwm-tucuxi-git
 	pkgdesc = A customized DWM build
 	pkgver = 6.2.r32.gfabd03a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/tuxaua/dwm
 	arch = x86_64
 	license = MIT
