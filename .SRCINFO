@@ -8,6 +8,9 @@ pkgbase = airspyhf-git
 	license = BSD
 	makedepends = git
 	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = pkgconfig
 	depends = libusb>=1.0
 	provides = airspyhf
 	conflicts = airspyhf
