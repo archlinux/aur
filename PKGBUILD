@@ -20,3 +20,4 @@ prepare () {
 package() {
 	make DESTDIR="" install
 }
+md5sums=('d87f904aedbea19e3592a1bb5708be17')
