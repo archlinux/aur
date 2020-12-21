@@ -20,7 +20,8 @@ install=
 changelog=
 source=("Freezer-$pkgver.AppImage::$url/0:/PC/$pkgver/Freezer-$pkgver.AppImage" "freezer.desktop")
 noextract=("Freezer-$pkgver.AppImage")
-md5sums=('47ed3f6333a924fc385177bd8793b250' '38c0866994d9a7cb94635cc7a38343ed')
+md5sums=('a60edc3f9a87e20b9b6ea818bb85c6b5'
+    '50e9e894f493fd0eb64ecc5e1e38bf48')
 
 package() {
     install -d -m755 "${pkgdir}/opt/${pkgname}"
