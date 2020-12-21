@@ -3,12 +3,12 @@
 pkgname=llvm-toolchain-nightly-bin
 pkgver=12
 pkgrel=1
-pkgdesc="NOT READY YET. Precompiled binaries of llvm-toolchain (clang+lld+lldb+...) nightly builds. Status: Needs manual linking of libedit.so.2 to libedit.so and libz3.so.4 to libz.so, can't fetch llvm version."
+pkgdesc="NOT READY YET. Precompiled binaries of llvm-toolchain (clang+lld+lldb+...) nightly builds. Status: Can't fetch llvm version."
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
-depends=() # TODO: check what it actually relies to by looking at control files
-makedepends=('wget')
+depends=("libedit" "zlib") # TODO: check what it actually relies to by looking at control files
+makedepends=('patchelf' 'wget')
 provides=("clang-analyzer=$pkgver" "clang-tools-extra=$pkgver"
           "clang=$pkgver" "lld=$pkgver" "llvm=$pkgver"
           "compiler-rt=$pkgver" "polly=$pkgver"
@@ -40,4 +40,14 @@ package() {
     # TODO: a better way?
     ln -s $(readlink -f $f) ../$f
   done
+
+  patchelf=(patchelf)
+  patchelf+=(--replace-needed "libedit.so.2" "libedit.so")
+  patchelf+=(--replace-needed "libz3.so.4" "libz.so")
+  find "${pkgdir}/" -type f -not -name '*.py' -not -name '*.el' \
+    -not -name '*.sh' -not -name '*.h' -not -path '*/usr/share/*' \
+    -not -name '*.def' -not -name '*.td' -not -name '*.inc' \
+    -not -path '*/utils/lit/*' -not -path '*/include/*' \
+    -not -path '*/cmake/*' \
+    -exec "${patchelf[@]}" {} \;
 }

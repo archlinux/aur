@@ -1,11 +1,14 @@
 pkgbase = llvm-toolchain-nightly-bin
-	pkgdesc = NOT READY YET. Precompiled binaries of llvm-toolchain (clang+lld+lldb+...) nightly builds. Status: Needs manual linking of libedit.so.2 to libedit.so and libz3.so.4 to libz.so, can't fetch llvm version.
+	pkgdesc = NOT READY YET. Precompiled binaries of llvm-toolchain (clang+lld+lldb+...) nightly builds. Status: Can't fetch llvm version.
 	pkgver = 12
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
+	makedepends = patchelf
 	makedepends = wget
+	depends = libedit
+	depends = zlib
 	provides = clang-analyzer=12
 	provides = clang-tools-extra=12
 	provides = clang=12
