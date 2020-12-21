@@ -1,7 +1,7 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=('foot' 'foot-terminfo')
-pkgver=1.6.0  # Don’t forget to update CHANGELOG.md
-pkgrel=3
+pkgver=1.6.1  # Don’t forget to update CHANGELOG.md
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
@@ -10,7 +10,7 @@ makedepends=('meson' 'ninja' 'scdoc' 'python' 'ncurses' 'wayland-protocols')
 checkdepends=('check')
 source=(https://codeberg.org/dnkl/foot/archive/${pkgver}.tar.gz
         https://codeberg.org/dnkl/tllist/archive/1.0.4.tar.gz)
-sha256sums=('7ae523bf9882c0e5d56e2afdf6e25f5f77cffcc78ba1f316ffda3f36e2570b4a'
+sha256sums=('bb1feaab4bc7b77dcbd79734334e3e427d65bda82c679938105cf2024f42ee25'
             'a135934d4955902d67f75f3c542ace3bfb7be3be9c44796852e76ea9e1d82b33')
 
 build() {
