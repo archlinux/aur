@@ -1,6 +1,6 @@
 pkgbase = dbus-codegen-rust
 	pkgdesc = This program takes D-Bus XML Introspection data and generates Rust code for calling and implementing the interfaces in the introspection data.
-	pkgver = 0.5.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://crates.io/crates/dbus-codegen/
 	arch = any
