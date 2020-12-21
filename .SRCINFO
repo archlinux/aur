@@ -1,6 +1,6 @@
 pkgbase = neopo-git
 	pkgdesc = A lightweight solution for local Particle development.
-	pkgver = r265.650bb7c
+	pkgver = r266.1465bba
 	pkgrel = 1
 	url = https://github.com/nrobinson2000/neopo
 	arch = x86_64
@@ -12,12 +12,14 @@ pkgbase = neopo-git
 	depends = git
 	depends = perl-archive-zip
 	depends = libusb
+	optdepends = visual-studio-code-bin: Particle Workbench IDE
 	provides = neopo
 	source = git+https://github.com/nrobinson2000/neopo.git
 	md5sums = SKIP
 	optdepends_x86_64 = lib32-glibc: gcc-arm 5.3.1 support
 	optdepends_aarch64 = dfu-util: flash devices with DFU
 	optdepends_aarch64 = nodejs: support for particle-cli
+	optdepends_aarch64 = openocd-git: support for debugging
 
 pkgname = neopo-git
 

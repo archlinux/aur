@@ -2,7 +2,7 @@
 
 pkgname=neopo-git
 _gitname="neopo"
-pkgver=r265.650bb7c
+pkgver=r266.1465bba
 pkgrel=1
 pkgdesc="A lightweight solution for local Particle development."
 arch=('x86_64' 'aarch64')
@@ -14,9 +14,11 @@ md5sums=('SKIP')
 makedepends=('python-setuptools')
 depends=('python' 'vim' 'git' 'perl-archive-zip' 'libusb')
 
+optdepends=('visual-studio-code-bin: Particle Workbench IDE')
 optdepends_x86_64=('lib32-glibc: gcc-arm 5.3.1 support')
 optdepends_aarch64=('dfu-util: flash devices with DFU'
-                    'nodejs: support for particle-cli')
+                    'nodejs: support for particle-cli'
+                    'openocd-git: support for debugging')
 
 pkgver() {
   cd "$_gitname"
