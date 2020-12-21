@@ -1,8 +1,9 @@
 # Maintainer: acxz <akashpatel at yahoo dot com>
+# Contributor: JP-Ellis <josh@jpellis.me>
 
 pkgname=miopen-hip
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD's Machine Intelligence Library (HIP backend)"
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/MIOpen"
@@ -15,16 +16,13 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz")
 sha256sums=('84c6c17be9c1a9cd0d3a2af283433f64b07a4b9941349f498e40fed82fb205a6')
 
 build() {
-  CXXFLAGS="$CXXFLAGS -DHALF_ENABLE_F16C_INTRINSICS=0 -isystem /opt/rocm/llvm/lib/clang/11.0.0" \
-  CPPFLAGS="$CPPFLAGS -DHALF_ENABLE_F16C_INTRINSICS=0 -isystem /opt/rocm/llvm/lib/clang/11.0.0" \
-  CXX=/opt/rocm/hip/bin/hipcc \
+  CXX=/opt/rocm/llvm/bin/clang++ \
+  CXXFLAGS="$CXXFLAGS -DBOOST_CONTAINER_DISABLE_NOINLINE=ON" \
   cmake -B build -Wno-dev \
         -S "MIOpen-rocm-$pkgver" \
-        -DCMAKE_INSTALL_PREFIX=/opt/rocm \
         -DMIOPEN_BACKEND=HIP \
-        -DMIOPEN_HIP_COMPILER=/opt/rocm/llvm/bin/clang++ \
-        -DHALF_INCLUDE_DIR=/usr/include/half \
-        -DBoost_NO_BOOST_CMAKE=ON
+        -DCMAKE_INSTALL_PREFIX=/opt/rocm \
+        -DHALF_INCLUDE_DIR=/usr/include/half
 
   make -C build
 }
