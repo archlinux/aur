@@ -1,16 +1,16 @@
 pkgbase = cstatus
-	pkgdesc = Minimal statusbar for dwm written in c99.
-	pkgver = 0.0.2
-	pkgrel = 3
-	url = https://github.com/andreafeletto/cstatus
+	pkgdesc = statusbar for dwm written in C99.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.sr.ht/~andreafeletto/cstatus
 	arch = x86_64
 	license = MIT
 	depends = xorg-xsetroot
 	depends = pulsemixer
 	provides = cstatus
 	conflicts = cstatus-git
-	source = https://github.com/andreafeletto/cstatus/archive/0.0.2.tar.gz
-	sha256sums = 64164653920d1da355ae17b53ebdd591514a56430ef19aaa79a79460225f1152
+	source = cstatus-0.1.0.tar.gz::https://git.sr.ht/~andreafeletto/cstatus/archive/0.1.0.tar.gz
+	sha256sums = c3265d708e4d6c97368f8f20305f00c0273ff943060dc93d0f0f8b42f742602b
 
 pkgname = cstatus
 
