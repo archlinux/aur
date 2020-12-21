@@ -1,5 +1,5 @@
 pkgname=mx-puppet-discord-git
-pkgver=r241.c3703b6
+pkgver=r242.a3b493d
 pkgrel=1
 # strip the -git suffix from name
 _dirname="${pkgname%-git}"
@@ -8,7 +8,7 @@ pkgdesc='This is a Matrix bridge for Discord'
 arch=('x86_64' 'armv7h')
 url='https://github.com/matrix-discord/mx-puppet-discord'
 license=('apache')
-depends=('nodejs' 'cairo' 'pango')
+depends=('nodejs' 'cairo' 'pango' 'libjpeg-turbo')
 source=("git+${url}" "${_basename}.tmpfiles" "${_basename}.sysusers" "${_basename}.service")
 sha256sums=('SKIP'
             '6f66f51e85e9a222dc855a14fad8414e279f76cc7032b19f7821622bc72632cc'
@@ -38,6 +38,7 @@ prepare() {
 
 build(){
 	cd "${srcdir}/${_dirname}"
+	export npm_config_jobs=$(echo "$MAKEFLAGS" | sed -E 's/.*-?-j(obs)? ?([[:digit:]]+).*/\2/')
 	npm install --cache "${srcdir}/npm-cache"
 	npm run build --cache "${srcdir}/npm-cache"
 }
