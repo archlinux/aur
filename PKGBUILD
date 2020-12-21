@@ -1,8 +1,9 @@
 # Maintainer: Gimmeapill <gimmeapill@gmail.com>
 # Contributor: regreddit <nik.martin@gmail.com>
+# Contributor: Holzhaus <jholthuis@mixxx.org>
 
 pkgname=mixxx_beta-git
-pkgver=r7854
+pkgver=r7882
 pkgrel=1
 pkgdesc="Digital DJ mixing software. 2.3 (beta) branch."
 arch=('i686' 'x86_64')
@@ -25,9 +26,26 @@ pkgver() {
 	echo "r$(git log --pretty=oneline --first-parent | wc -l)"
 }
 
+#prepare() {
+#	mkdir "$srcdir/${pkgname%-*}/cmake_build"
+#	cmake -DCMAKE_INSTALL_PREFIX=/usr -S $srcdir/${pkgname%-*} -B $srcdir/${pkgname%-*}/cmake_build
+#}
+
 prepare() {
 	mkdir "$srcdir/${pkgname%-*}/cmake_build"
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -S $srcdir/${pkgname%-*} -B $srcdir/${pkgname%-*}/cmake_build
+	cmake -S $srcdir/${pkgname%-*} -B $srcdir/${pkgname%-*}/cmake_build \
+	-DCMAKE_INSTALL_PREFIX=/ \
+	-DINSTALL_USER_UDEV_RULES=ON \
+	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+	-DOPTIMIZE=native \
+	-DFAAD=ON \
+	-DLILV=ON \
+	-DFFMPEG=ON \
+	-DKEYFINDER=OFF \
+	-DMAD=ON \
+	-DMODPLUG=ON \
+	-DOPUS=ON \
+	-DQTKEYCHAIN=ON
 }
 
 build() {
