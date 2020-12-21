@@ -1,0 +1,14 @@
+pkgbase = oxygen-gtk2
+	pkgdesc = Port of the default KDE widget theme (Oxygen) to GTK2
+	pkgver = 1.4.6
+	pkgrel = 4
+	url = https://projects.kde.org/projects/playground/artwork/oxygen-gtk/
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	depends = gtk2
+	source = https://download.kde.org/stable/oxygen-gtk2/1.4.6/src/oxygen-gtk2-1.4.6.tar.bz2
+	sha256sums = a289434347cc96054c75d1e4e4408b84adc2e8c7862f0be4e2da8fafbf26bf26
+
+pkgname = oxygen-gtk2
+
