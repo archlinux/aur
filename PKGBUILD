@@ -33,5 +33,5 @@ package() {
     cp -L $srcdir/freezer.desktop $pkgdir/usr/share/applications/
 
     install -d -m755 "${pkgdir}/usr/bin/"
-    ln -s "/opt/${pkgname}/Freezer.AppImage" "${pkgdir}/usr/bin/freezer"
+    ln -s "/opt/${pkgname}/Freezer-$pkgver.AppImage" "${pkgdir}/usr/bin/freezer"
 }
