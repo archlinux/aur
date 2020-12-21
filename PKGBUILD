@@ -4,7 +4,7 @@ url='https://wiki.ros.org/stage_ros'
 pkgname='ros-melodic-stage-ros'
 pkgver='1.8.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=5
+pkgrel=6
 license=('BSD')
 
 ros_makedepends=(ros-melodic-tf
@@ -57,7 +57,8 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF \
-		 -DBOOST_ROOT=/opt/boost1.69
+		 -DBOOST_ROOT=/opt/boost1.69 \
+		 -DBoost_NO_SYSTEM_PATHS=TRUE
   make
 }
 
