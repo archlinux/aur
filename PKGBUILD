@@ -6,7 +6,7 @@ pkgrel='1'
 pkgdesc='Pluggable and configurable code formatting platform written in Rust.'
 arch=('x86_64')
 url='https://dprint.dev/'
-license=('custom')
+license=('MIT')
 source=(
   "https://github.com/dprint/dprint/releases/download/$pkgver/dprint-x86_64-unknown-linux-gnu.zip"
   'https://github.com/dprint/dprint/raw/master/LICENSE'
