@@ -8,7 +8,7 @@ pkgbase = expressvpn-gui
 	depends = bash
 	depends = pyside2
 	depends = expressvpn
-	source = https://gitlab.com/vojko.pribudic/expressvpn-gui/-/archive/v0.4/expressvpn-gui-v0.3.1.tar.gz
+	source = https://gitlab.com/vojko.pribudic/expressvpn-gui/-/archive/v0.4/expressvpn-gui-v0.4.tar.gz
 	md5sums = SKIP
 
 pkgname = expressvpn-gui
