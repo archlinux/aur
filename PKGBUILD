@@ -14,8 +14,8 @@ depends=('libx11' 'libxcb' 'wayland')
 makedepends=('cmake' 'xcb-proto' 'mesa-libgl' 'mesa' 'libxslt' 'docbook-xsl')
 
 options=('docs' '!strip' 'debug')
-source=('git://github.com/waffle-gl/waffle')
-sha1sums=('SKIP')
+source=('git+https://gitlab.freedesktop.org/mesa/waffle.git')
+sha256sums=('SKIP')
 
 _gitname='waffle'
 
