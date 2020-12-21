@@ -1,7 +1,7 @@
 # Maintainer: Christian Schendel <doppelhelix at gmail dot com>
 pkgname=gnome-shell-extension-applications-overview-tooltip-git
-pkgver=v10.r2.g2e81270
-pkgrel=2
+pkgver=10.r2.g2e81270
+pkgrel=3
 pkgdesc="Shows a tooltip over applications icons on applications overview"
 arch=(any)
 url="https://github.com/RaphaelRochet/applications-overview-tooltip"
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
