@@ -1,10 +1,14 @@
 [Unit]
 Description=OpenTabletDriver Daemon
+After=graphical.target
+PartOf=graphical.target
+StartLimitIntervalSec=60
+StartLimitBurst=2
 
 [Service]
-ExecStart=/usr/bin/dotnet /usr/share/OpenTabletDriver/OpenTabletDriver.Daemon.dll -c /usr/share/OpenTabletDriver/Configurations
+ExecStart=/usr/bin/otd
 Restart=always
-RestartSec=30
+RestartSec=10s
 
 [Install]
-WantedBy=default.target
+WantedBy=graphical.target

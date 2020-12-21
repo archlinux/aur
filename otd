@@ -1,12 +1,13 @@
 #!/bin/bash
-systemctl --user --quiet is-active opentabletdriver.service
-daemonactive=$?
-
-if [ $daemonactive != 0 ]
-then
-    echo "OpenTabletDriver Daemon not running, starting"
-    systemctl --user start opentabletdriver.service
-fi
-
 cd /usr/share/OpenTabletDriver
-dotnet OpenTabletDriver.Console.dll "$@"
+if [ $# -eq 0 ]
+then
+    if [[ ! -v DISPLAY ]] && [[ ! -v WAYLAND_DISPLAY ]]
+    then
+        echo "DISPLAY and/or WAYLAND_DISPLAY is not set"
+        exit 1
+    fi
+    dotnet ./OpenTabletDriver.Daemon.dll -c ./Configurations
+else
+    dotnet ./OpenTabletDriver.Console.dll "$@"
+fi

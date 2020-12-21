@@ -4,7 +4,7 @@ pkgname=opentabletdriver-git
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
-pkgver=v0.4.1.r37.g5d4feb2
+pkgver=v0.4.2.r282.g4372321
 pkgrel=2
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
@@ -15,22 +15,22 @@ optdepends=('libxrandr: x11 display querying support' 'libx11')
 makedepends=('git' 'dotnet-sdk-5.0')
 provides=("opentabletdriver")
 conflicts=("opentabletdriver")
-install="reload-systemd.install"
+install="notes.install"
 source=('git+https://github.com/InfinityGhost/OpenTabletDriver'
         'git+https://github.com/InfinityGhost/OpenTabletDriver-udev'
         "$_spkgname"
         "$_spkgname-gui"
         "$_lpkgname.service"
         "$_pkgname.desktop"
-        "reload-systemd.install")
+        "notes.install")
 
 sha256sums=('SKIP'
             'SKIP'
-            '3b4e49ee69a632538869f0e21446da16d21aa5075241c5c35545cecb485134d8'
-            '0407c3d546a382a8715318a785e11140c11a94f44edef3f730cb0f27ed7cff62'
-            'f115b727640f78a8d641fab5554305b6e064d73dc4c3f869db85bcaf412f98f1'
+            'f0f36182cbd8345b3a693fa8e4bff47d9e3d984ff7b1bfeeb9165d4b886d2180'
+            '20aac1584a8e08b5a9add1d02ce38e60ddfede615227df6f25c7422217df82b0'
+            '58db10ddb47008521e1d55e3758f7b30b78b7365d4fe3d14cbe339be2704301c'
             '4399359bf6107b612d10aaa06abb197db540b00a973cfec64c2b40d1fbbb2834'
-            '1570586c391e9d0d923cc7e6af01f92a9a95e04fd510cf5c33080a55656f2ad6')
+            '63be4effd52af93cafc1b8cfd9ec0becd08bfcc6a6cb333d9e6e3072beb88e13')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -48,6 +48,7 @@ build() {
     export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
 
     cd "$srcdir/$_pkgname"
+    PREFIX=$(git describe --long --tags | sed 's/-.*//;s/v//')
     SUFFIX=$(git describe --long --tags | sed 's/^[^-]*-//;s/\([^-]*-g\)/r\1/;s/-/./g')
 
     dotnet publish        OpenTabletDriver.Daemon   \
@@ -56,6 +57,7 @@ build() {
         --runtime         linux-x64                 \
         --self-contained  false                     \
         --output          "./$_pkgname/out"         \
+        /p:VersionPrefix="$PREFIX"                  \
         /p:SuppressNETCoreSdkPreviewMessage=true    \
         /p:PublishTrimmed=false
 
@@ -66,6 +68,7 @@ build() {
         --self-contained  false                     \
         --output          "./$_pkgname/out"         \
         --version-suffix  "$SUFFIX"                 \
+        /p:VersionPrefix="$PREFIX"                  \
         /p:SuppressNETCoreSdkPreviewMessage=true    \
         /p:PublishTrimmed=false
 
@@ -76,6 +79,7 @@ build() {
         --self-contained  false                     \
         --output          "./$_pkgname/out"         \
         --version-suffix  "$SUFFIX"                 \
+        /p:VersionPrefix="$PREFIX"                  \
         /p:SuppressNETCoreSdkPreviewMessage=true    \
         /p:PublishTrimmed=false
 
@@ -89,7 +93,7 @@ build() {
 
     dotnet "./$_pkgname.udev/out/$_pkgname.udev.dll" \
         "$srcdir/$_pkgname/$_pkgname/Configurations" \
-        "30-$_lpkgname.rules" > /dev/null
+        "90-$_lpkgname.rules" > /dev/null
 }
 
 package() {
@@ -106,7 +110,7 @@ package() {
     sed -i "s/OTD_VERSION/$pkgver/" "$_pkgname.desktop"
 
     install -Dm 644 -o root "$srcdir/$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
-    install -Dm 644 -o root "$srcdir/$_pkgname-udev/30-$_lpkgname.rules" -t "$pkgdir/usr/lib/udev/rules.d"
+    install -Dm 644 -o root "$srcdir/$_pkgname-udev/90-$_lpkgname.rules" -t "$pkgdir/usr/lib/udev/rules.d"
     install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname.UX/Assets/$_spkgname.png" -t "$pkgdir/usr/share/pixmaps"
     cp -r "$srcdir/$_pkgname/$_pkgname/Configurations" "$pkgdir/usr/share/$_pkgname/"
 
