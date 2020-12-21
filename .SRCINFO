@@ -1,7 +1,7 @@
 pkgbase = soundux-git
 	pkgdesc = A cross-platform soundboard in QtQuick
-	pkgver = r70.8483485
-	pkgrel = 3
+	pkgver = r209.a4a1363
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/Soundux/Soundux
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = soundux-git
 	makedepends = qt5-tools
 	makedepends = git
 	makedepends = cmake
+	makedepends = ninja
 	depends = pulseaudio
 	depends = qt5-base
 	depends = qt5-x11extras
@@ -22,4 +23,3 @@ pkgbase = soundux-git
 	sha256sums = 27e29e44ad3eacce0ac20a31653da437cd27cc2d165d19804430df9da7bab4fd
 
 pkgname = soundux-git
-
