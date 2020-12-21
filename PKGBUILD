@@ -2,7 +2,7 @@
 
 pkgbase=linux-froidzen
 pkgver=5.10.2.zen1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux ZEN with Patches and Modifications'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
@@ -18,7 +18,6 @@ _srcname=zen-kernel
 source=(
   "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
   config         # the main kernel config file
-  sphinx-workaround.patch
   "https://raw.githubusercontent.com/dolohow/uksm/master/v5.x/uksm-5.10.patch" # UKSM Patch
 )
 validpgpkeys=(
@@ -28,7 +27,6 @@ validpgpkeys=(
 )
 sha256sums=('SKIP'
             'e5d2541532de126a4f243b4cc6f098403a425eb0d76ee59d3ffaf122ac4d8910'
-            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '24729e63e08de13039ce7e6637146ec5a5747379ebbd92cdeef744edfad17183')
 
 export KBUILD_BUILD_HOST=archlinux
