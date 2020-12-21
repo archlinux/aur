@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-rosbridge-msgs
 	pkgdesc = ROS - Package containing message files
-	pkgver = 0.11.12
+	pkgver = 0.11.13
 	pkgrel = 1
 	url = https://wiki.ros.org/rosbridge_msgs
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = ros-melodic-rosbridge-msgs
 	makedepends = ros-melodic-message-runtime
 	depends = ros-melodic-message-runtime
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-rosbridge-msgs-0.11.12.tar.gz::https://github.com/RobotWebTools/rosbridge_suite/archive/0.11.12.tar.gz
-	sha256sums = 97687bf6363760660fc0f10a05d0a95574525777bbaf1237c80c26d8371368e1
+	source = ros-melodic-rosbridge-msgs-0.11.13.tar.gz::https://github.com/RobotWebTools/rosbridge_suite/archive/0.11.13.tar.gz
+	sha256sums = e4989b48efce2f101aca6761102b0f9618ecc31a590039b641b35a08fc91d6db
 
 pkgname = ros-melodic-rosbridge-msgs
 
