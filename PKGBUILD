@@ -11,7 +11,7 @@ conflicts=('waffle')
 license=('BSD')
 
 depends=('libx11' 'libxcb' 'wayland')
-makedepends=('cmake' 'xcb-proto' 'mesa-libgl' 'mesa' 'libxslt' 'docbook-xsl')
+makedepends=('git' 'cmake' 'xcb-proto' 'mesa' 'libxslt' 'docbook-xsl')
 
 options=('docs' '!strip' 'debug')
 source=('git+https://gitlab.freedesktop.org/mesa/waffle.git')
