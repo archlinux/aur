@@ -1,0 +1,19 @@
+pkgbase = afb-libhelpers-git
+	pkgdesc = useful utilities to integrate in your afb bindings development.
+	pkgver = 9.99.1+20+g6cc5d85
+	pkgrel = 1
+	url = https://github.com/redpesk-common/afb-libhelpers.git
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	makedepends = lua
+	makedepends = git
+	provides = afb-libhelpers
+	conflicts = afb-libhelpers
+	source = afb-libhelpers::git+https://github.com/redpesk-common/afb-libhelpers.git
+	md5sums = SKIP
+
+pkgname = afb-libhelpers-git
+
