@@ -1,9 +1,9 @@
 # Maintainer: Alexander Epaneshnikov <aarnaarn2@gmail.com>
 
 pkgname=linode-cli-git
-pkgver=3.2.1.r2.3351756
+pkgver=3.2.1.r4.c4a0db5
 pkgrel=1
-pkgdesc="The Linode Command Line Interface"
+pkgdesc="The Linode Command Line Interface (development version)"
 arch=(any)
 url="https://github.com/linode/linode-cli"
 license=('BSD')
