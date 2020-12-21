@@ -11,7 +11,7 @@ _webview_provider=${SYNCTHING_TRAY_WEBVIEW_PROVIDER:-webengine}
 
 _reponame=syncthingtray
 pkgname=syncthingtray-lite
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing - without the KDE integrations'
@@ -21,15 +21,10 @@ depends=('qtutilities' 'qt5-svg' 'openssl' 'desktop-file-utils' 'xdg-utils')
 [[ $_webview_provider == webkit ]] && depends+=('qt5-webkit')
 [[ $_webview_provider == webengine ]] && depends+=('qt5-webengine')
 makedepends=('cmake' 'ninja' 'qt5-tools' 'mesa')
-checkdepends=('cppunit' 'syncthing' 'iproute2')
 conflicts=('syncthingtray' 'syncthingtray-git')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('50bd3a4af648e83ff8e418acf89184d921872656e3820baff9573d186b97d060')
-
-ephemeral_port() {
-  comm -23 <(seq 49152 65535) <(ss -tan | awk '{print $4}' | cut -d':' -f2 | grep "[0-9]\{1,5\}" | sort | uniq) | shuf | head -n 1
-}
+sha256sums=('730301d51744c7c54a393b06a3a02cd93d2275d8864d8a2dc84a86afc901756f')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
@@ -46,11 +41,6 @@ build() {
     -DNO_PLASMOID=ON \
     .
   ninja
-}
-
-check() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  SYNCTHING_PORT=$(ephemeral_port) SYNCTHING_TEST_TIMEOUT_FACTOR=3 ninja check
 }
 
 package() {
