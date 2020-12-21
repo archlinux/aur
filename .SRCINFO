@@ -1,6 +1,6 @@
 pkgbase = deber
 	pkgdesc = Debian packaging with Docker
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/dawidd6/deber
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = deber
 	depends = docker
 	provides = deber
 	conflicts = deber
-	source = deber-1.1.0.tar.gz::https://github.com/dawidd6/deber/archive/v1.1.0.tar.gz
-	sha256sums = b62e76e53773b5f978f00a157ed87fda2e4179e33461c7cc4082d7d7a51e9c7f
+	source = deber-1.1.1.tar.gz::https://github.com/dawidd6/deber/archive/v1.1.1.tar.gz
+	sha256sums = 572138f94ef1ae2391a58985ccd450573aa0011395ac4414c88bd5ff22921ad3
 
 pkgname = deber
 
