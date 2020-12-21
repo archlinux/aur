@@ -1,8 +1,7 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 
 pkgname=zoom
-pkgver=5.4.7
-_build=57450.1220
+pkgver=5.4.57450.1220
 pkgrel=1
 pkgdesc="Video Conferencing and Web Conferencing Service"
 arch=('x86_64')
@@ -15,7 +14,7 @@ optdepends=('pulseaudio-alsa: audio via PulseAudio'
 	'picom: extra compositor needed by some window managers for screen sharing'
 	'xcompmgr: extra compositor needed by some window managers for screen sharing')
 options=(!strip)
-source=("${pkgname}-${pkgver:0:-1}${_build}_orig_x86_64.pkg.tar.xz"::"https://zoom.us/client/${pkgver:0:-1}${_build}/zoom_x86_64.pkg.tar.xz")
+source=("${pkgname}-${pkgver}_orig_x86_64.pkg.tar.xz"::"https://zoom.us/client/${pkgver}/zoom_x86_64.pkg.tar.xz")
 sha512sums=('2c5a14e831a94b8fdd070284c36f7000f3e3c09a0704f13a455acf5975413c256a410cb9e2403b31541314488922001558badd5e120e0988e2588d7b5c8cf032')
 
 prepare() {
