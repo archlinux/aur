@@ -28,7 +28,12 @@ prepare() {
   # disable swap-sched
   patch -Rp1 -i ../bf0c4e43f6b6d508ddd346c2d1e865dae9ae947d.patch
   # fix default background url
-  sed -i "s#^picture-uri.*#picture-uri='file:///usr/share/backgrounds/deepin/desktop.jpg'#" overrides/common/com.deepin.wrap.gnome.desktop.override
+  sed -i "s#/usr/share/backgrounds/default_background.jpg#/usr/share/backgrounds/deepin/desktop.jpg#" \
+    overrides/common/com.deepin.wrap.gnome.desktop.override schemas/com.deepin.dde.appearance.gschema.xml
+  # fix network checker url
+  sed -i "s#'https://www.chinauos.com', 'https://www.uniontech.com'#'https://www.archlinux.org'#" schemas/com.deepin.dde.network-utils.gschema.xml
+  # fix for deepin-wm (their documentation is lying here)
+  sed -i "s|<default>''</default>|<default>'deepin-wm'</default>|" schemas/com.deepin.dde.startdde.gschema.xml
 }
 
 build() {
