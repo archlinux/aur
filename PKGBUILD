@@ -1,7 +1,10 @@
+# Maintainer: Donald Webster <fryfrog@gmail.com>
+# Maintainer: Filipe Nascimento <flipee at tuta dot io>
 # Contributor: Luca Cesari < luca AT cesari DOT me>
+
 pkgname=tmuxinator
 pkgver=2.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Manage complex tmux sessions easily"
 arch=(any)
 url="https://github.com/aziz/tmuxinator"
@@ -47,9 +50,9 @@ package() {
     "pkg/${pkgname}-${pkgver}.gem"
 
   mkdir -p "${pkgdir}/usr/share/tmuxinator"
-  install -D -m 644 "${pkgdir}/${_gemdir}/gems/tmuxinator-${pkgver}/completion/tmuxinator.bash" "${pkgdir}/usr/share/tmuxinator/completion.bash"
-  install -D -m 644 "${pkgdir}/${_gemdir}/gems/tmuxinator-${pkgver}/completion/tmuxinator.fish" "${pkgdir}/usr/share/tmuxinator/completion.fish"
-  install -D -m 644 "${pkgdir}/${_gemdir}/gems/tmuxinator-${pkgver}/completion/tmuxinator.zsh" "${pkgdir}/usr/share/tmuxinator/completion.zsh"
+  install -D -m 644 "${pkgdir}/${_gemdir}/gems/tmuxinator-${pkgver}/completion/tmuxinator.bash" "${pkgdir}/usr/share/bash-completion/completions/tmuxinator"
+  install -D -m 644 "${pkgdir}/${_gemdir}/gems/tmuxinator-${pkgver}/completion/tmuxinator.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d"
+  install -D -m 644 "${pkgdir}/${_gemdir}/gems/tmuxinator-${pkgver}/completion/tmuxinator.zsh" "${pkgdir}/usr/share/zsh/site-functions/_tmuxinator"
 
   rm -rf "${pkgdir}/${_gemdir}/cache"
   install -D -m 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
