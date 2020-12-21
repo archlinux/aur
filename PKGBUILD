@@ -1,6 +1,7 @@
 # Maintainer: N Fytilis <n-fit AT live.com>
-pkgbase=ntfs2btrfs
-pkgname=$pkgbase-git
+_pkgbase=ntfs2btrfs
+pkgname=$_pkgbase-git
+pkgbase=$_pkgbase-git
 pkgver=1
 pkgrel=1
 epoch=
@@ -14,7 +15,7 @@ source=("git+https://github.com/maharmstone/ntfs2btrfs")
 md5sums=(SKIP)
 
 build() {
-	cd "$pkgbase"
+	cd "$_pkgbase"
   mkdir b || true
   cd b
 	cmake -DCMAKE_INSTALL_PREFIX='/usr' ..
@@ -22,6 +23,6 @@ build() {
 }
 
 package() {
-	cd "$pkgbase/b"
+	cd "$_pkgbase/b"
 	make DESTDIR="$pkgdir/" install
 }
