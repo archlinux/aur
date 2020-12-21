@@ -1,10 +1,6 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Your Name <youremail@domain.com>
-pkgname=ntfs2btrfs
+# Maintainer: N Fytilis <n-fit AT live.com>
+pkgbase=ntfs2btrfs
+pkgname=$pkgbase-git
 pkgver=1
 pkgrel=1
 epoch=
@@ -18,7 +14,7 @@ source=("git+https://github.com/maharmstone/ntfs2btrfs")
 md5sums=(SKIP)
 
 build() {
-	cd "$pkgname"
+	cd "$pkgbase"
   mkdir b || true
   cd b
 	cmake -DCMAKE_INSTALL_PREFIX='/usr' ..
@@ -26,6 +22,6 @@ build() {
 }
 
 package() {
-	cd "$pkgname/b"
+	cd "$pkgbase/b"
 	make DESTDIR="$pkgdir/" install
 }

@@ -10,5 +10,5 @@ pkgbase = ntfs2btrfs
 	source = git+https://github.com/maharmstone/ntfs2btrfs
 	md5sums = SKIP
 
-pkgname = ntfs2btrfs
+pkgname = ntfs2btrfs-git
 
