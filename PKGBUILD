@@ -1,13 +1,14 @@
 # Maintainer: dudemanguy <random342@airmail.cc>
 # Contributor: Vaporeon <vaporeon@tfwno.gf>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gtk2-patched-filechooser-icon-view
-pkgver=2.24.32
-pkgrel=2
+pkgver=2.24.33
+pkgrel=1
 arch=(x86_64)
-pkgdesc="https://github.com/Dudemanguy/gtk/tree/gtk2-filechooser-icon-view"
-url="https://gist.github.com/Dudemanguy911/d70734d5bdf82e79cbfb22894fac8a1b/"
+pkgdesc="GTK2 patched with ahodesuka's filechooser-icon-view patch"
+url="https://github.com/Dudemanguy/gtk/tree/gtk2-filechooser-icon-view"
 provides=(gtk2=$pkgver libgailutil.so libg{d,t}k-x11-2.0.so)
 conflicts=('gtk2')
 depends=('atk' 'pango' 'libxcursor' 'libxinerama' 'libxrandr' 'libxi' 'libxcomposite' 'libxdamage'
@@ -19,7 +20,7 @@ optdepends=('gnome-themes-standard: Default widget theme'
             'python2: gtk-builder-convert')
 license=('LGPL')
 install=gtk2.install
-_commit=664537d6185800d7603438d4b9e18fbc6256ad41 # gtk-2-24
+_commit=68631945733158f164427db84f01301d7e875763  # tags/2.24.33^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         gtkrc
         gtk-query-immodules-2.0.hook
@@ -29,14 +30,13 @@ source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
 sha256sums=('SKIP'
             'bc968e3e4f57e818430130338e5f85a5025e21d7e31a3293b8f5a0e58362b805'
             '427e7ed2626465ea7a8986189b6c8340a0520b9f7b8e2a56cd1169d375da7425'
-            'd758bb93e59df15a4ea7732cf984d1c3c19dff67c94b957575efea132b8fe558'
-            '91e5c18be6dffc05af41561b38934259494bc14041a9c1d91b0b9b1a1dcd2be5')
+            '7724a55c4916318ed81b22f21c37c0a66e78adce017563fed6d84d813a4b80bc'
+            '45a6533c89e4bc5b84b2a50473b560503a7cc6a45b30bac1a4b83807c5f85b7d')
 
 prepare() {
   cd gtk
-  git cherry-pick -n 2dbf31c0ea4f17a817b931c731f8de14c278300d
-  patch -Np1 -i ../xid-collision-debug.patch
-  patch -Np1 -i $srcdir/gtk2-filechooser-icon-view.patch
+  git apply -3 ../xid-collision-debug.patch
+  git apply -3 ../gtk2-filechooser-icon-view.patch
   sed -i '1s/python$/&2/' gtk/gtk-builder-convert
   NOCONFIGURE=1 ./autogen.sh
 }
