@@ -12,7 +12,7 @@ conflicts=('waffle')
 license=('BSD')
 
 depends=('libx11' 'libxcb' 'wayland')
-makedepends=('git' 'cmake' 'ninja' 'xcb-proto' 'mesa' 'libxslt' 'docbook-xsl')
+makedepends=('git' 'meson' 'xcb-proto' 'mesa' 'libxslt' 'docbook-xsl')
 
 source=('git+https://gitlab.freedesktop.org/mesa/waffle.git')
 sha256sums=('SKIP')
@@ -27,25 +27,22 @@ pkgver() {
 build() {
   cd "$srcdir/$_gitname"
 
-  cmake \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-    -DCMAKE_BUILD_TYPE=Release \
+  arch-meson build \
+    --buildtype release \
     -Dwaffle_has_gbm=1 \
     -Dwaffle_has_glx=1 \
     -Dwaffle_has_x11_egl=1 \
     -Dwaffle_has_wayland=1 \
     -Dwaffle_build_manpages=1 \
     -Dwaffle_build_htmldocs=1 \
-    -Dwaffle_build_examples=0 \
-    -G Ninja
-  ninja
+    -Dwaffle_build_examples=0
+  ninja -C build
 }
 
 package() {
   cd "$srcdir/$_gitname"
 
-  DESTDIR="$pkgdir/" ninja install
+  DESTDIR="$pkgdir/" ninja -C build install
   install -m755 -d "$pkgdir/usr/share/licenses/$pkgname"
   install -m644 "$pkgdir/usr/share/doc/waffle1/LICENSE.txt" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
