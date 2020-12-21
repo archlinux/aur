@@ -14,8 +14,8 @@ pkgbase = afb-libafb-git
 	depends = libmicrohttpd
 	depends = json-c
 	depends = file
-	provides = afb-binder
-	conflicts = afb-binder
+	provides = afb-libafb
+	conflicts = afb-libafb
 	source = afb-libafb::git+https://github.com/redpesk-core/afb-libafb.git
 	md5sums = SKIP
 
