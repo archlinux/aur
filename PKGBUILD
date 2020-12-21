@@ -24,10 +24,10 @@ _htmldocs_enable=
 _major=5.9
 _srcname=linux-${_major}
 _lqxpatchname=liquorix-package
-_lqxpatchrel=15
+_lqxpatchrel=16
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-svelte
-pkgver=5.9.15
+pkgver=5.9.16
 pkgrel=1
 pkgdesc='Svelte Linux'
 url='https://benthetechguy.github.io/miscprograms/linux-svelte/'
@@ -51,7 +51,7 @@ validpgpkeys=(
 )
 sha512sums=('d3d92ce4246bad74c9a784212f160d98449b1e8793970c2c308276568d852b8effe0528686bdb87d55d691f09a826abf7938d69bdd4759ce65ddd5c05ffe4eca'
             'SKIP'
-            'f7684e512f2b08f6dc12703a8bd3a642138ca515b9adaa391c2b709270952627063e62935bb5df4c3742c903461203d50f3ecc3978b674cd9c2460925d01c06a'
+            'a32be5fb4525394da71dcb1d1b0d0c7ff60988a769d2e49953a57905c3e0a7f164e6595ef5b0650b458b0163204db673c124885d6e96af953f86fae1337e0ca2'
             'b1abc4b21191c841326db341aeea6eac9918a4628f38e32f616a8eeeb9919395656fc4b805110dce93aa38188172fb672831fd76e848b3711fcd6ea9115118c6'
             'e0f83631d94df06e9029873d2b4ef7e97708f015e7283f45305d9bc179a64750ea2f6fcff370ca4ccafe9866f705e73963e8b111c54a9eb7c5da948f2034a359')
 
