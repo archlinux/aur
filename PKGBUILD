@@ -37,5 +37,9 @@ build() {
 
 package() {
 	make DESTDIR="$pkgdir/" install
+
+	#keep compatibility with ancient name
+	ln -sf afb-libhelpers.pc "${pkgdir}/usr/lib/pkgconfig/afb-helpers.pc"
+
     install -D -m644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
