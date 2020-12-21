@@ -2,7 +2,7 @@
 
 pkgname=processing
 pkgver=3.5.4
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://www.processing.org/'
@@ -22,7 +22,7 @@ source=("https://github.com/$pkgname/$pkgname/archive/$pkgname-0$((266+${pkgver#
 sha256sums=('99a5d3cfccd106e79fe82cafa66b72b15c19e5747eac77e40dd0a82b032c2925'
             '2014fdb12f979f79c624acc514c14ce318f07cb2cc15a63e1b4febaff733f2a5'
             '9f4050475b3363eb5e966fa891caea0391b3dcc2cdb68245f1a053b0d7ffb220'
-            '3c49143a129c6b3655586bce9f175ee145ab388b78ad4615d6c0b80563ba6f26')
+            '1417308bf43bec2a8d178b84043a3e8a498fa164f3bf7d7668ba17cf96de1282')
 
 prepare() {
   gendesk -f -n --pkgname=$pkgname --pkgdesc="$pkgdesc"
