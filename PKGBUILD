@@ -25,7 +25,7 @@ build() {
 package() {
 	cd "$srcdir/RHVoice-$pkgver"
 	install -d "${pkgdir}/usr/lib/speech-dispatcher-modules"
-scons install DESTDIR="${pkgdir}" prefix="/usr" sysconfdir="/etc" \
+	scons install DESTDIR="${pkgdir}" prefix="/usr" sysconfdir="/etc" \
 	      CPPFLAGS="$CPPFLAGS" CCFLAGS="$CFLAGS" LINKFLAGS="$LDFLAGS"
 	ln -s "/usr/bin/sd_rhvoice" "${pkgdir}/usr/lib/speech-dispatcher-modules/sd_rhvoice"
 	install -Dm0644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
