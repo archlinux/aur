@@ -3,7 +3,7 @@
 
 pkgname=waffle-git
 pkgver=1.5.2.3.r275.g2485a41
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for choosing window system and OpenGL API at runtime (git version)'
 arch=('x86_64' 'aarch64')
 url='http://www.waffle-gl.org'
