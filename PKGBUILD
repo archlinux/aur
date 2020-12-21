@@ -2,7 +2,7 @@
 
 _name=neovim-scnvim
 pkgname=neovim-scnvim-git
-pkgver=r372.6274cab
+pkgver=r373.621d234
 pkgrel=1
 pkgdesc="Neovim frontend for SuperCollider"
 arch=('any')

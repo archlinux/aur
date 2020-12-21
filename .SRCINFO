@@ -1,6 +1,6 @@
 pkgbase = neovim-scnvim-git
 	pkgdesc = Neovim frontend for SuperCollider
-	pkgver = r372.6274cab
+	pkgver = r373.621d234
 	pkgrel = 1
 	url = https://github.com/dvzrv/scnvim
 	arch = any
