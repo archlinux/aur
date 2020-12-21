@@ -1,5 +1,5 @@
 # Maintainer: Rizwan Hasan <rizwan.hasan486@gmail.com>
-# TechLearners: https://github.com/TechLearnersInc/cythonizer
+# TechLearners: https://github.com/TechLearnersInc
 
 pkgname=cythonizer
 pkgver=1.2.0b2
@@ -9,7 +9,6 @@ arch=('any')
 url="https://pypi.org/project/cythonizer/"
 license=('MIT')
 depends=('python-setuptools' 'cython')
-makedepends=('git')
 source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('0ffb10093b0ca94964d2bb0e2960b9bc')
 
