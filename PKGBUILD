@@ -24,12 +24,18 @@ build() {
 
 check() {
   cd ezdxf-${pkgver}
-  python -m pytest tests integration_tests || true
+  cd src
+  python -m pytest ../tests ../integration_tests
 }
 
 package() {
   cd ezdxf-${pkgver}
   python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+
+  # install examples
+  mkdir -p "${pkgdir}/usr/lib/${pkgname}"
+  cp -a examples "${pkgdir}/usr/lib/${pkgname}"
+  cp -a examples_dxf "${pkgdir}/usr/lib/${pkgname}"
 }
 
 # vim:ts=2:sw=2:et:
