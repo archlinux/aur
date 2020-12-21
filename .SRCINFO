@@ -1,12 +1,12 @@
 pkgbase = glow-sans-j-condensed
 	pkgdesc = SHSans-derived CJK font family with a more concise & modern look.
-	pkgver = v0.91
+	pkgver = v0.92
 	pkgrel = 1
 	url = https://welai.github.io/glow-sans
 	arch = any
 	license = MIT
-	source = https://github.com/welai/glow-sans/releases/download/v0.91/GlowSansJ-Condensed-v0.91.zip
-	md5sums = 821d5fa56c89547107b3ee2e279c3f77
+	source = https://github.com/welai/glow-sans/releases/download/v0.92/GlowSansJ-Condensed-v0.92.zip
+	md5sums = fc324dea2248464e2a18d9899d0f34dc
 
 pkgname = glow-sans-j-condensed
 
