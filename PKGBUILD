@@ -6,7 +6,7 @@ url='https://wiki.ros.org/random_numbers'
 pkgname='ros-melodic-random-numbers'
 pkgver='0.3.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=5
+pkgrel=6
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -41,7 +41,8 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF \
-		 -DBOOST_ROOT=/opt/boost1.69
+		 -DBOOST_ROOT=/opt/boost1.69 \
+		 -DBoost_NO_SYSTEM_PATHS=TRUE
   make
 }
 
