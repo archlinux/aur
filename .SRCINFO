@@ -1,0 +1,23 @@
+pkgbase = afb-libafb-git
+	pkgdesc = Library providing some helpful functions for apps using Application Framework Binder
+	pkgver = 4.0.0beta5
+	pkgrel = 1
+	url = https://github.com/redpesk-core/afb-libafb.git
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	makedepends = lua
+	makedepends = afb-binding
+	makedepends = git
+	depends = libmicrohttpd
+	depends = json-c
+	depends = file
+	provides = afb-binder
+	conflicts = afb-binder
+	source = afb-libafb::git+https://github.com/redpesk-core/afb-libafb.git
+	md5sums = SKIP
+
+pkgname = afb-libafb-git
+
