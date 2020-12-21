@@ -1,4 +1,5 @@
-# Maintainer: Clayton Craft <clayton@craftyguy.net>
+# Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+# Contributor: Clayton Craft <clayton@craftyguy.net>
 
 pkgname=waffle-git
 pkgver=1.5.2.3.r209.g1ded029
