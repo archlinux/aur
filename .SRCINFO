@@ -1,14 +1,15 @@
-pkgbase = fortune-mod-zh
-	pkgdesc = Chinese poems for fortune-mod
+pkgbase = fortune-mod-zh-hant
+	pkgdesc = Chinese poems for fortune-mod (traditional Chinese)
 	pkgver = 2.8
 	pkgrel = 1
 	url = https://salsa.debian.org/chinese-team/fortunes-zh
 	arch = any
 	groups = fortune-mods
 	license = GPL
+	makedepends = opencc
 	depends = fortune-mod
 	source = https://salsa.debian.org/chinese-team/fortunes-zh/-/archive/2.8/fortunes-zh-2.8.tar.gz
 	md5sums = 3fff0e8cb73285ce76febdbafc7dee4a
 
-pkgname = fortune-mod-zh
+pkgname = fortune-mod-zh-hant
 
