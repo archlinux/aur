@@ -2,7 +2,7 @@
 
 pkgname=deber-git
 _pkgname=${pkgname%-git}
-pkgver=1.1.0.r0.g48bd02c
+pkgver=1.1.1.r0.g63df2a2
 pkgrel=1
 pkgdesc="Debian packaging with Docker"
 arch=('x86_64')
