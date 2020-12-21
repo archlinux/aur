@@ -1,0 +1,19 @@
+pkgbase = afb-cmake-modules-git
+	pkgdesc = This is a CMake module made to ease development of binding and application framework binder apps.
+	pkgver = 10.0.0
+	pkgrel = 1
+	url = https://github.com/redpesk-core/afb-cmake-modules.git
+	arch = any
+	license = LGPL3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = lua
+	makedepends = git
+	depends = make
+	provides = afb-cmake-modules
+	conflicts = afb-cmake-modules
+	source = afb-cmake-modules::git+https://github.com/redpesk-core/afb-cmake-modules.git
+	md5sums = SKIP
+
+pkgname = afb-cmake-modules-git
+
