@@ -6,7 +6,7 @@ pkgdesc='Generic CAN interface description with helpers for filtering and driver
 url="http://wiki.ros.org/socketcan_interface?distro=melodic"
 
 pkgver='0.8.5'
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 license=('LGPL3')
 
@@ -43,7 +43,8 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF \
-		 -DBOOST_ROOT=/opt/boost1.69
+		 -DBOOST_ROOT=/opt/boost1.69 \
+		 -DBoost_NO_SYSTEM_PATHS=TRUE
   make
 }
 
