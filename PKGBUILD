@@ -1,4 +1,4 @@
-# Maintainter: Talebian <nicco199os@gmail.com>
+# Maintainter: Talebian <talebian@sovietunion.xyz>
 pkgname=bottles-git
 pkgver=2.dfb632d
 pkgrel=1
