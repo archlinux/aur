@@ -20,12 +20,12 @@ sha256sums=('SKIP')
 _gitname='waffle'
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd $_gitname
   git describe --long | sed 's/^debian\///;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_gitname"
+  cd $_gitname
 
   arch-meson build \
     --buildtype release \
@@ -40,11 +40,11 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd $_gitname
 
   DESTDIR="$pkgdir/" ninja -C build install
-  install -m755 -d "$pkgdir/usr/share/licenses/$pkgname"
-  install -m644 "$pkgdir/usr/share/doc/waffle1/LICENSE.txt" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  install -m755 -d "$pkgdir"/usr/share/licenses/$pkgname
+  install -m644 "$pkgdir"/usr/share/doc/waffle1/LICENSE.txt \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 }
 
