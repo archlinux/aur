@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Neeto-Vue
+Comment=Yet Another Wiznote Client
+Exec=Neeto-Vue
+Terminal=false
+Type=Application
+StartupNotify=true
+Icon=neeto-vue
+Categories=Electron;Utility;
