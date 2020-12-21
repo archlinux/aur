@@ -1,12 +1,16 @@
 pkgbase = soapyairspyhf-git
 	pkgdesc = SoapySDR plugin for Airspy HF+
-	pkgver = r26.5488dac
+	pkgver = r28.b6cfbf5
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/pothosware/SoapyAirspyHF
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = pkgconfig
 	depends = soapysdr
 	depends = airspyhf
 	provides = soapyairspyhf

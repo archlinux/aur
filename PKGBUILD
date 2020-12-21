@@ -1,7 +1,7 @@
 # Maintainer: Konrad Beckmann <konrad.beckmann@gmail.com>
 
 pkgname=soapyairspyhf-git
-pkgver=r26.5488dac
+pkgver=r28.b6cfbf5
 pkgrel=1
 epoch=2
 pkgdesc="SoapySDR plugin for Airspy HF+"
@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/pothosware/SoapyAirspyHF"
 license=('MIT')
 depends=('soapysdr' 'airspyhf')
-makedepends=('git')
+makedepends=('git' 'cmake' 'make' 'gcc' 'pkgconfig')
 provides=('soapyairspyhf')
 conflicts=('soapyairspyhf')
 source=(${pkgname}::"git+https://github.com/pothosware/SoapyAirspyHF.git")
