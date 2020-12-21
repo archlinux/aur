@@ -3,7 +3,7 @@
 # <openxray@yahoo.com>
 # Official discord of the project channel https://discord.gg/sjRMQwv
 pkgname=openxray
-_tag=730
+_tag=822
 pkgver=1.6.02_$_tag
 pkgrel=1 
 pkgdesc="Unofficial X-Ray Engine port for Linux from the OpenXRay team stable version (originally developed by GSC Game World)"                                          
@@ -14,7 +14,7 @@ install="info.install"
 makedepends=(gcc git cmake libglvnd libjpeg6-turbo ncurses pcre2 pcre)
 depends=(glew sdl2 openal intel-tbb crypto++ liblockfile freeimage libogg libtheora libvorbis lzo lzop libjpeg-turbo)  
 conflicts=(openxray-git openxray-dev)
-source=(xray-16::git+https://github.com/OpenXRay/xray-16.git#tag=$_tag-july-preview)
+source=(xray-16::git+https://github.com/OpenXRay/xray-16.git#tag=$_tag-december-preview)
 md5sums=('SKIP')
 
 prepare(){
@@ -31,6 +31,7 @@ build() {
    cmake .. -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib
+#    DMEMORY_ALLOCATOR=standard
    make
 }
 
