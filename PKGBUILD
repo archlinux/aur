@@ -1,7 +1,7 @@
 # Maintainer: Romain GERARD <erebe@erebe.eu>
 
 pkgname=rofi-greenclip
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
 pkgdesc="Clipboard manager to use with rofi - Image support and blacklist"
 arch=('x86_64')
