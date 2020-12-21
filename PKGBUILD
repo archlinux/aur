@@ -2,7 +2,7 @@
 # Former Maintainer: Janosch Dobler <janosch.dobler [at} gmx [dot} de>
 
 pkgname=write_stylus
-pkgver=300.r373
+pkgver=300.r381
 pkgrel=1
 pkgdesc="Write(orignal name) - A word processor for handwriting"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ depends=(sdl2)
 makedepends=(desktop-file-utils)
 source=("${pkgname}-${pkgver}.tar.gz"::"http://www.styluslabs.com/write/write-latest.tar.gz"
 		"http://www.styluslabs.com/write/eula.docx")
-md5sums=('b028e7bc71aa3df0a7c647f15121e24d'
+md5sums=('9c5381164ad78b29f3199d86f3318caa'
          'fafaef86844ead59b3837a5909bf780f')
 noextract=("eula.docx")
 
