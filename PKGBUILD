@@ -1,6 +1,6 @@
 # Maintainter: Talebian <nicco199os@gmail.com>
 pkgname=bottles-git
-pkgver=2.0
+pkgver=2.
 pkgrel=1
 pkgdesc="Easily manage wineprefix using environments"
 arch=('x86_64')
