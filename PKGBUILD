@@ -29,7 +29,7 @@ validpgpkeys=(
   'E240B57E2C4630BA768E2F26FC1B547C8D8172C8'  # Levente Polyak
 )
 sha256sums=('SKIP'
-            'ce6e2d6ee77d3e0df88b74d7f205b75c452e414a945159c0b226431c3ce1208d')
+            '99684b306711a781365009a2db2bb9ef1229aa61870691fa858e66652375021e')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
