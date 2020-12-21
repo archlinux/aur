@@ -7,9 +7,10 @@ pkgbase = bottles-git
 	license = GPL3
 	makedepends = meson
 	makedepends = ninja
+	makedepends = dconf
 	depends = python
-	depends = dconf
 	depends = hicolor-icon-theme
+	depends = appstream-glib
 	source = git://github.com/bottlesdevs/Bottles
 	sha256sums = SKIP
 
