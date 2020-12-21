@@ -33,9 +33,9 @@ package() {
   python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 
   # install examples
-  mkdir -p "${pkgdir}/usr/lib/${pkgname}"
-  cp -a examples "${pkgdir}/usr/lib/${pkgname}"
-  cp -a examples_dxf "${pkgdir}/usr/lib/${pkgname}"
+  mkdir -p "${pkgdir}/usr/share/${pkgname}"
+  cp -a examples "${pkgdir}/usr/share/${pkgname}"
+  cp -a examples_dxf "${pkgdir}/usr/share/${pkgname}"
 }
 
 # vim:ts=2:sw=2:et:
