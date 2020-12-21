@@ -1,11 +1,13 @@
 pkgbase = kickoff
 	pkgdesc = A simple and uncomplicated program launcher for wayland
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/j0ru/kickoff
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
+	makedepends = cmake
+	makedepends = freetype2
 	source = kickoff-0.1.0.tar.gz::https://github.com/j0ru/kickoff/archive/v0.1.0.tar.gz
 	sha512sums = 52c010b1e6b33f6a9c534d0d534ffbf47e4b6890d6758e85b0e30974660c45b3e9c6a0e97097d3da251f7042368788e76f4234ac8da3c6ce494d9079af19ad8b
 
