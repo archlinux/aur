@@ -1,13 +1,15 @@
 pkgbase = waffle-git
-	pkgdesc = a library for choosing window system and OpenGL API at runtime
-	pkgver = 1.5.2.3.r209.g1ded029
+	pkgdesc = Library for choosing window system and OpenGL API at runtime (git version)
+	pkgver = 1.5.2.3.r275.g2485a41
 	pkgrel = 1
 	url = http://www.waffle-gl.org
 	arch = x86_64
+	arch = aarch64
 	license = BSD
+	makedepends = git
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = xcb-proto
-	makedepends = mesa-libgl
 	makedepends = mesa
 	makedepends = libxslt
 	makedepends = docbook-xsl
@@ -16,11 +18,7 @@ pkgbase = waffle-git
 	depends = wayland
 	provides = waffle
 	conflicts = waffle
-	options = docs
-	options = !strip
-	options = debug
-	source = git://github.com/waffle-gl/waffle
-	sha1sums = SKIP
+	source = git+https://gitlab.freedesktop.org/mesa/waffle.git
+	sha256sums = SKIP
 
 pkgname = waffle-git
-

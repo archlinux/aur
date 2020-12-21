@@ -2,7 +2,7 @@
 # Contributor: Clayton Craft <clayton@craftyguy.net>
 
 pkgname=waffle-git
-pkgver=1.5.2.3.r209.g1ded029
+pkgver=1.5.2.3.r275.g2485a41
 pkgrel=1
 pkgdesc='Library for choosing window system and OpenGL API at runtime (git version)'
 arch=('x86_64' 'aarch64')
