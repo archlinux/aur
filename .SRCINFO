@@ -19,6 +19,7 @@ pkgbase = deepin-file-manager-git
 	makedepends = qt5-tools
 	makedepends = deepin-dock-git
 	makedepends = deepin-gettext-tools-git
+	makedepends = gtest
 	depends = deepin-anything-git
 	depends = disomaster
 	depends = file
