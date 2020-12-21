@@ -1,8 +1,8 @@
 # Maintainer: Christian Schendel (doppelhelix@gmail.com)
 
 pkgname=gnome-shell-extension-nightthemeswitcher-git
-pkgver=v37.r27.4dd6e6f
-pkgrel=2
+pkgver=37.r29.g5c49dfa
+pkgrel=1
 pkgdesc="Automatically toggle your light and dark themes variants"
 arch=('any')
 url="https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension"
