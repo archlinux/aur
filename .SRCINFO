@@ -1,6 +1,6 @@
 pkgbase = frr-git
 	pkgdesc = FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, NHRP and EIGRP.
-	pkgver = 7.2.dev.r16600
+	pkgver = 7.6.dev.r22256
 	pkgrel = 1
 	url = https://frrouting.org/
 	arch = x86_64
@@ -10,11 +10,12 @@ pkgbase = frr-git
 	makedepends = c-ares
 	makedepends = perl-xml-libxml
 	makedepends = python-sphinx
+	makedepends = git
 	depends = pam
 	depends = json-c
 	depends = net-snmp
 	depends = rtrlib
-	depends = libyang>=0.16.105
+	depends = libyang>=1.0.184
 	depends = libunwind
 	depends = python
 	depends = c-ares
@@ -34,7 +35,7 @@ pkgbase = frr-git
 	source = frr.tmpfiles
 	sha256sums = SKIP
 	sha256sums = e656acefc2c318a94c2d3011ecef2bed75d70852f1e642a3a1d331d860c8735b
-	sha256sums = f033353216b51ff936dbc47d8a7725d290af6cc1b9549e653c1dd97046114f79
+	sha256sums = 4405c151caa45c02f000d7f03a998c56123c02c13d21af33e98314a73ef99e6a
 
 pkgname = frr-git
 
