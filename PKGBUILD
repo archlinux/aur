@@ -11,7 +11,7 @@ conflicts=('waffle')
 license=('BSD')
 
 depends=('libx11' 'libxcb' 'wayland')
-makedepends=('git' 'cmake' 'xcb-proto' 'mesa' 'libxslt' 'docbook-xsl')
+makedepends=('git' 'cmake' 'ninja' 'xcb-proto' 'mesa' 'libxslt' 'docbook-xsl')
 
 options=('docs' '!strip' 'debug')
 source=('git+https://gitlab.freedesktop.org/mesa/waffle.git')
@@ -37,14 +37,15 @@ build() {
     -Dwaffle_has_wayland=1 \
     -Dwaffle_build_manpages=1 \
     -Dwaffle_build_htmldocs=1 \
-    -Dwaffle_build_examples=0
-  make
+    -Dwaffle_build_examples=0 \
+    -G Ninja
+  ninja
 }
 
 package() {
   cd "$srcdir/$_gitname"
 
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir/" ninja install
   install -m755 -d "$pkgdir/usr/share/licenses/$pkgname"
   install -m644 "$pkgdir/usr/share/doc/waffle1/LICENSE.txt" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
