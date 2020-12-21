@@ -5,8 +5,8 @@
 
 # Maintainer: Buck Yeh <buck.yeh at gmail dot com>
 pkgname=parsergen
-pkgver=VERSION
-pkgrel=1
+pkgver=1.5.0
+pkgrel=2
 epoch=
 pkgdesc='LR1/GLR parser generator into Modern C++ code which must be built with bux library'
 arch=('x86_64')
