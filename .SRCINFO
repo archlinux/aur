@@ -1,4 +1,5 @@
 pkgbase = snp
+	pkgdesc = Wrap any shell command in a snapper pre-post snapshot, e.g. snp pacman -Syu.
 	pkgver = 8
 	pkgrel = 1
 	arch = any

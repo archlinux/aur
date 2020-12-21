@@ -1,6 +1,7 @@
 pkgname=snp
 pkgver=8
 pkgrel=1
+pkgdesc='Wrap any shell command in a snapper pre-post snapshot, e.g. snp pacman -Syu.'
 arch=(any)
 source=(snp)
 depends=(snapper)
