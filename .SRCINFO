@@ -1,23 +1,22 @@
 pkgbase = mumax3
 	pkgdesc = GPU-accelerated micromagnetic simulation program
-	pkgver = 3.9.3
-	pkgrel = 2
-	url = http://mumax.github.io/
+	pkgver = 3.10
+	pkgrel = 1
+	url = https://mumax.github.io/
 	install = mumax3.install
 	arch = x86_64
 	license = GPL
-	depends = cuda-7.5
-	optdepends = gnuplot: for fancy plots
-	source = https://github.com/mumax/3/releases/download/v3.9.3/mumax3.9.3_linux_cuda7.5.tar.gz
-	source = mumax_server::https://github.com/mumax/3/releases/download/v3.9.1/mumax3.9.1c_linux.tar.gz
+	depends = cuda>=11.0
+	depends = nvidia>=450.36.06
+	optdepends = gnuplot: for plots in the web GUI
+	source = https://mumax.ugent.be/mumax3-binaries/mumax3.10_linux_cuda11.0.tar.gz
 	source = mumax3-user.conf
 	source = mumax3-dir.conf
 	source = mumax3@.service
-	md5sums = fbac69c0bcf40309a7f0bf61d9745228
-	md5sums = f0891e4dcb6998d6cb2ac0650c721479
-	md5sums = d788739ca6325bc2be1334515435f856
-	md5sums = 22d9c858cc5efcfd1296c2ea840e4153
-	md5sums = 344c65c943b930a5cd1907cb8f66d9ae
+	sha256sums = 4c03533986dbf2a9cd7f9708c2f32e4e1ca849bb300e7b0946fdf50daf0a2694
+	sha256sums = bde08909ca59497cfb05686e0ec1a43dc08f499a59861e96cac0d1412545321a
+	sha256sums = 0ddad9502bc15cf7e6918c4c83cae8fa909f25b17120cbdf9fad8ba47ee18449
+	sha256sums = 515cf6447368b8f03a8392ee54fe35b3bd6e3a91f8de3ebbc2fd8403310d6d8d
 
 pkgname = mumax3
 
