@@ -2,6 +2,7 @@ pkgbase = snp
 	pkgdesc = Wrap any shell command in a snapper pre-post snapshot, e.g. snp pacman -Syu.
 	pkgver = 8
 	pkgrel = 1
+	url = https://gist.github.com/erikw/5229436
 	arch = any
 	depends = snapper
 	source = snp
