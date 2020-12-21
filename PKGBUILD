@@ -8,7 +8,7 @@ url="https://github.com/bottlesdevs/Bottles"
 license=('GPL3')
 depends=('python' 'hicolor-icon-theme' 'appstream-glib')
 makedepends=('meson' 'ninja' 'dconf')
-source=("git://github.com/bottlesdevs/Bottles")
+source=("git+https://github.com/bottlesdevs/Bottles")
 sha256sums=('SKIP')
 
 _repo="Bottles"

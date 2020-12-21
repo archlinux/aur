@@ -11,7 +11,7 @@ pkgbase = bottles-git
 	depends = python
 	depends = hicolor-icon-theme
 	depends = appstream-glib
-	source = git://github.com/bottlesdevs/Bottles
+	source = git+https://github.com/bottlesdevs/Bottles
 	sha256sums = SKIP
 
 pkgname = bottles-git
