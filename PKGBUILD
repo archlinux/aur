@@ -7,8 +7,8 @@ pkgdesc='KDE Plasma panel applet for managing virtual desktops'
 arch=(i686 x86_64)
 url='https://github.com/wsdfhjxc/virtual-desktop-bar'
 license=(GPL3)
-depends=(kglobalaccel qt5-base qt5-declarative qt5-x11extras kxmlgui plasma-framework)
-makedepends=(cmake extra-cmake-modules gcc)
+depends=(plasma-workspace)
+makedepends=(git gcc extra-cmake-modules)
 source=('git://github.com/wsdfhjxc/virtual-desktop-bar.git')
 md5sums=('SKIP')
 
