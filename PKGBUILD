@@ -1,9 +1,9 @@
 # Maintainer: Folke H. 'joru' Gleumes <folke-aur@gleumes.org>
 pkgname=kickoff
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and uncomplicated program launcher for wayland"
-makedepends=('cargo')
+makedepends=('cargo' 'cmake' 'freetype2')
 arch=('x86_64')
 url="https://github.com/j0ru/kickoff"
 license=('GPL3')
