@@ -1,12 +1,10 @@
-# Script generated with import_catkin_packages.py.
-# For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - The class_loader package is a ROS-independent package for loading plugins during runtime and the foundation of the higher level ROS pluginlib library."
 url='https://wiki.ros.org/class_loader'
 
 pkgname='ros-melodic-class-loader'
 pkgver='0.4.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
@@ -56,7 +54,8 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF \
-		 -DBOOST_ROOT=/opt/boost1.69
+		-DBOOST_ROOT=/opt/boost1.69 \
+		-DBoost_NO_SYSTEM_PATHS=TRUE
 	make
 }
 
