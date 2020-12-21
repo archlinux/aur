@@ -1,6 +1,6 @@
 pkgbase = klogg-bin
 	pkgdesc = A multi-platform GUI application that helps browse and search through long and complex log files. It is designed with programmers and system administrators in mind and can be seen as a graphical, interactive combination of grep, less, and tail
-	pkgver = 20.4
+	pkgver = 20.12
 	pkgrel = 1
 	url = https://klogg.filimonov.dev
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = klogg-bin
 	depends = qt5-base
 	depends = hicolor-icon-theme
 	provides = klogg
-	source = klogg-20.4.deb::https://github.com/variar/klogg/releases/download/v20.4/klogg-20.4.0-r589-Linux.deb
-	sha256sums = fa4149f752b9518449520f4b2107aa6d11de0c7d5a1c268d2c8b86545edd0963
+	source = klogg-20.12.deb::https://github.com/variar/klogg/releases/download/v20.12/klogg-20.12.0.810-Linux.deb
+	sha256sums = 31bc0eca61e9c5e9a022fe1ee490086eb5abb83def746e0624aea8638f12c64c
 
 pkgname = klogg-bin
 
