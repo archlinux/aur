@@ -3,8 +3,8 @@
 
 _pkgname='mbstrdecoder'
 pkgname="python-${_pkgname}"
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='Multi-byte character string decoder'
 arch=('any')
 url='https://github.com/thombashi/mbstrdecoder'
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('python-chardet')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('9df7778c0c051c98f6b5a848909202e5cd423c9692665b20d1a9bd0f771b8235')
+sha256sums=('f895e1fb97496855ab5e43de99588787169c01f782c71625142d1a62729e9f9d')
 
 build() {
   cd "${_pkgname}-${pkgver}"
