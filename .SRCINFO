@@ -1,6 +1,6 @@
 pkgbase = python-spflow
 	pkgdesc = Sum-Product Flow: An Easy and Extensible Library for Sum-Product Networks
-	pkgver = 0.0.40
+	pkgver = 0.0.41
 	pkgrel = 1
 	url = https://github.com/SPFlow/SPFlow
 	arch = any
@@ -21,12 +21,11 @@ pkgbase = python-spflow
 	depends = python-pytest
 	depends = python-ete
 	depends = python-arff
-	depends = python-torchvision
 	depends = python-tensorflow-cuda
 	depends = python-pytorch-cuda
 	depends = cppyy
-	source = https://files.pythonhosted.org/packages/18/95/f22f40e7e53c3d7b2bb0c698aa723b701b844efcb7cad7d6667bd5bfadd1/spflow-0.0.40.tar.gz
-	sha256sums = 90183d810894dc1dcdc0ec63b7757b502d5b316311c4b91c07e892288a1f9d2e
+	source = https://files.pythonhosted.org/packages/08/0c/bedbc51f14b194ad04577d9ad5afea24a8df3569fbef227b5ea1b4575047/spflow-0.0.41.tar.gz
+	sha256sums = 9bc7469a8532a07872cc902acd93d1d179150d478f1cb4804fa3270b8778bfca
 
 pkgname = python-spflow
 
