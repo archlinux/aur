@@ -6,7 +6,7 @@
 # untrue.
 
 pkgname=adsf
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc='A web server that you can launch instantly in any directory.'
 arch=(any)
@@ -19,8 +19,8 @@ options=(!emptydirs)
 source=("https://rubygems.org/downloads/${pkgname}-${pkgver}.gem"
         "https://github.com/ddfreyne/adsf/blob/${pkgver}/LICENSE")
 noextract=("${pkgname}-${pkgver}.gem")
-sha256sums=('c3b804403a0a15d3809f23c4400bdccbe23a300cb4fd241887ae07929808fe6f'
-            '2ad6a056f4260b0ab24434e915276ffd9bbb2411bf44c787ca1d84f91670f6e4')
+sha256sums=('c23818b3f4ceeb392f989ada882a6246a7a6bd72788f125930eecd355e52053e'
+            'cdcd6c9372f064be186866588ef8b4863641c486d4686aae5f4fc83a86ec5fd1')
 
 package() {
   HOME=/tmp gem install \
