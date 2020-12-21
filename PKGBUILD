@@ -9,19 +9,19 @@ url="https://github.com/erebe/greenclip"
 license=('GPL')
 groups=()
 changelog=changelog
-depends=('rofi')
+depends=()
 makedepends=()
 checkdepends=()
-optdepends=()
+optdepends=('rofi' 'fzf' 'dmenu')
 provides=("greenclip")
 conflicts=("rofi-greenclip-beta")
 replaces=("rofi-greenclip-beta")
 backup=()
 options=('!strip')
-source=("https://github.com/erebe/greenclip/releases/download/3.3/greenclip"
+source=("https://github.com/erebe/greenclip/releases/download/3.4/greenclip"
         "greenclip.service")
 noextract=()
-sha256sums=('392d43e0caebf39f2124959177c74f3a152c9143d4c2e0e005d7cf2b1e32a58c'
+sha256sums=('6b3d5804be52cd477c8cc1c86f20fcaeb5ba55c89f72f5a690e84d6998dc6583'
             '85ecca9b6f5903ee53615c09802efd389662ddba7ce1febe34302a6a1d87179e')
 
 package() {
