@@ -13,7 +13,6 @@ license=('BSD')
 depends=('libx11' 'libxcb' 'wayland')
 makedepends=('git' 'cmake' 'ninja' 'xcb-proto' 'mesa' 'libxslt' 'docbook-xsl')
 
-options=('docs' '!strip' 'debug')
 source=('git+https://gitlab.freedesktop.org/mesa/waffle.git')
 sha256sums=('SKIP')
 
