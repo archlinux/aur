@@ -1,16 +1,17 @@
 pkgbase = mpv-light
 	pkgdesc = Free, open source, and cross-platform media player – with selection of features.
-	pkgver = 0.32.0
+	pkgver = 0.33.0
 	pkgrel = 1
 	url = https://mpv.io
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = mesa
+	makedepends = git
 	makedepends = python-docutils
 	makedepends = wayland-protocols
 	makedepends = wayland
 	makedepends = vulkan-headers
+	makedepends = waf
 	depends = ffmpeg
 	depends = libxkbcommon
 	depends = libxrandr
@@ -25,10 +26,9 @@ pkgbase = mpv-light
 	provides = mpv
 	conflicts = mpv
 	options = !emptydirs
-	source = https://github.com/mpv-player/mpv/archive/v0.32.0/mpv-0.32.0.tar.gz
-	source = https://waf.io/waf-2.0.9
-	sha256sums = 9163f64832226d22e24bbc4874ebd6ac02372cd717bef15c28a0aa858c5fe592
-	sha256sums = 2a8e0816f023995e557f79ea8940d322bec18f286917c8f9a6fa2dc3875dfa48
+	source = git+https://github.com/mpv-player/mpv.git#tag=d5ae9f70ea1f21c1d3794df5345a6a9366188660?signed
+	validpgpkeys = 145077D82501AA20152CACCE8D769208D5E31419
+	sha256sums = SKIP
 
 pkgname = mpv-light
 
