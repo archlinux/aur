@@ -7,9 +7,10 @@ pkgdesc='Pluggable and configurable code formatting platform written in Rust.'
 arch=('x86_64')
 url='https://dprint.dev/'
 license=('MIT')
+_repo='https://github.com/dprint/dprint'
 source=(
-  "$pkgver.zip::https://github.com/dprint/dprint/releases/download/$pkgver/dprint-x86_64-unknown-linux-gnu.zip"
-  "$pkgver.LICENSE::https://github.com/dprint/dprint/raw/$pkgver/LICENSE"
+  "$pkgver.zip::$_repo/releases/download/$pkgver/dprint-x86_64-unknown-linux-gnu.zip"
+  "$pkgver.LICENSE::$_repo/raw/$pkgver/LICENSE"
 )
 sha512sums=('SKIP' 'SKIP')
 
