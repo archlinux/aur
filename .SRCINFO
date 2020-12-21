@@ -1,0 +1,20 @@
+pkgbase = afb-binder-git
+	pkgdesc = This project provides the binder component of the microservice architecture for Application Framework.
+	pkgver = 4.0.0beta+2+g2be7740
+	pkgrel = 1
+	url = https://github.com/redpesk-core/afb-binder.git
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	makedepends = lua
+	makedepends = git
+	depends = afb-libafb-git
+	provides = afb-binder
+	conflicts = afb-binder
+	source = afb-binder::git+https://github.com/redpesk-core/afb-binder.git
+	md5sums = SKIP
+
+pkgname = afb-binder-git
+
