@@ -1,30 +1,27 @@
-# Maintainer: Ivan Lisenkov <ivan@ivlis.com>
+# Maintainer: Callum Vincent <kahlos@gmail.com>
 pkgname=mumax3
-pkgver=3.9.3
-pkgrel='2'
+pkgver=3.10
+pkgrel='1'
 pkgdesc="GPU-accelerated micromagnetic simulation program"
 arch=('x86_64')
-url="http://mumax.github.io/"
+url="https://mumax.github.io/"
 license=('GPL')
-depends=('cuda-7.5')
-optdepends=('gnuplot: for fancy plots')
-source=("https://github.com/mumax/3/releases/download/v$pkgver/mumax${pkgver}_linux_cuda7.5.tar.gz"
-        "mumax_server::https://github.com/mumax/3/releases/download/v3.9.1/mumax3.9.1c_linux.tar.gz"
+depends=('cuda>=11.0' 'nvidia>=450.36.06')
+optdepends=('gnuplot: for plots in the web GUI')
+source=("https://mumax.ugent.be/mumax3-binaries/mumax3.10_linux_cuda11.0.tar.gz"
 	mumax3-user.conf
 	mumax3-dir.conf
 	mumax3@.service)
-md5sums=('fbac69c0bcf40309a7f0bf61d9745228'
-         'f0891e4dcb6998d6cb2ac0650c721479'
-	 'd788739ca6325bc2be1334515435f856'
-	 '22d9c858cc5efcfd1296c2ea840e4153'
-	 '344c65c943b930a5cd1907cb8f66d9ae')
+sha256sums=('4c03533986dbf2a9cd7f9708c2f32e4e1ca849bb300e7b0946fdf50daf0a2694'
+	 'bde08909ca59497cfb05686e0ec1a43dc08f499a59861e96cac0d1412545321a'
+	 '0ddad9502bc15cf7e6918c4c83cae8fa909f25b17120cbdf9fad8ba47ee18449'
+	 '515cf6447368b8f03a8392ee54fe35b3bd6e3a91f8de3ebbc2fd8403310d6d8d')
 
 install=mumax3.install
 
 package() {
-  mkdir -p ${pkgdir}/opt/mumax3/
-  cp ${srcdir}/mumax3 ${pkgdir}/opt/mumax3 
-  cp ${srcdir}/mumax3.9.1c_linux/mumax3-{server,convert} ${pkgdir}/opt/mumax3
+  mkdir -p ${pkgdir}/opt/mumax3/ 
+  cp ${srcdir}/mumax3.10_linux_cuda11.0/mumax3{,-server,-convert} ${pkgdir}/opt/mumax3
   install -Dm644 "$srcdir/$pkgname-user.conf" "$pkgdir/usr/lib/sysusers.d/mumax3.conf"
   install -Dm644 "$srcdir/$pkgname-dir.conf" "$pkgdir/usr/lib/tmpfiles.d/mumax3.conf"
   install -Dm644 "$srcdir/mumax3@.service" "$pkgdir/usr/lib/systemd/system/mumax3@.service"
