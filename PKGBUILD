@@ -8,7 +8,7 @@ pkgdesc="The free Horizon Signal DLC for the Stellaris game"
 arch=('x86_64')
 url="https://www.gog.com/game/stellaris_horizon_signal"
 license=('custom')
-groups=('gog-stellaris-dlcs')
+groups=('gog-stellaris-dlcs' 'gog' 'games')
 depends=("gog-stellaris>=$pkgver")
 makedepends=('unzip' 'findutils' 'lgogdownloader')
 source=("stellaris_horizon_signal_${pkgver//./_}.sh::gogdownloader://1490429179/en3installer0")
