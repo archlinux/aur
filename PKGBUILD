@@ -2,33 +2,29 @@
 
 pkgname=stern
 pkgdesc="Multi pod and container log tailing for Kubernetes"
-pkgver=1.11.0
-pkgrel=2
+pkgver=1.13.1
+pkgrel=1
 arch=('x86_64')
-url="https://github.com/wercker/stern"
+url="https://github.com/stern/stern"
 license=('apache')
 depends=('glibc')
 makedepends=('go')
 source=(
-  ${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz
-  gomodules.patch::https://github.com/wercker/stern/commit/30c4a62d610f8695267e2e5ca0d1b32491bbc04d.patch
+  ${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
 )
-sha256sums=('d6f47d3a6f47680d3e4afebc8b01a14f0affcd8fb625132af14bb77843f0333f'
-            '872b9c67fcf8ee622a40a1eec020bced187bb833ea0beeace2c283e2889f1f4e')
-
+sha256sums=('36eff0cd19bb5d60d2f6dfcecfe8afd2e95f00fff2e0e99f38eb99df11de1e61')
 build() {
   cd "${pkgname}-${pkgver}"
 
-  patch -p1 -i ../gomodules.patch
-
-  export GO11MODULE=on
-  export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
-  go build -o "./out/${pkgname}"
+  go build \
+    -ldflags "-linkmode external -X \"github.com/stern/stern/cmd.version=${pkgver}\"" \
+    -o "./out/${pkgname}"
 }
 
 package() {
