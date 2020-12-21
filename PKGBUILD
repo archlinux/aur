@@ -5,7 +5,7 @@
 # Contributor: Andres Perera <aepd87@gmail.com>
 
 pkgname=pacman-git
-pkgver=5.2.1.r100.g6b9c1b4d
+pkgver=6.0.0alpha1.r23.g95ffdd68
 pkgrel=1
 pkgdesc="A library-based package manager with dependency support"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ depends=('archlinux-keyring' 'bash' 'curl' 'gpgme' 'libarchive'
          'pacman-mirrorlist')
 optdepends=('pacman-contrib: various helper utilities'
             'perl-locale-gettext: translation support in makepkg-template')
-makedepends=('git' 'asciidoc' 'meson')
+makedepends=('git' 'asciidoc' 'doxygen' 'meson')
 checkdepends=('python' 'fakechroot')
 provides=("pacman=${pkgver%.*.*}")
 conflicts=('pacman')
@@ -46,6 +46,7 @@ build() {
   meson --prefix=/usr \
         --buildtype=plain \
         -Ddoc=enabled \
+        -Ddoxygen=enabled \
         -Duse-git-version=true \
         -Dscriptlet-shell=/usr/bin/bash \
         -Dldconfig=/usr/bin/ldconfig \

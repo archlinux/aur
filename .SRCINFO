@@ -1,6 +1,6 @@
 pkgbase = pacman-git
 	pkgdesc = A library-based package manager with dependency support
-	pkgver = 5.2.1.r100.g6b9c1b4d
+	pkgver = 6.0.0alpha1.r23.g95ffdd68
 	pkgrel = 1
 	url = https://www.archlinux.org/pacman/
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = pacman-git
 	checkdepends = fakechroot
 	makedepends = git
 	makedepends = asciidoc
+	makedepends = doxygen
 	makedepends = meson
 	depends = archlinux-keyring
 	depends = bash
@@ -23,7 +24,7 @@ pkgbase = pacman-git
 	depends = pacman-mirrorlist
 	optdepends = pacman-contrib: various helper utilities
 	optdepends = perl-locale-gettext: translation support in makepkg-template
-	provides = pacman=5.2.1
+	provides = pacman=6.0.0alpha1
 	conflicts = pacman
 	options = emptydirs
 	options = strip
@@ -42,4 +43,3 @@ pkgbase = pacman-git
 	sha256sums = 54b7b886d6b35a35f4edc1829ea398db0d83d334a99cfe80ff4110d722da5c6d
 
 pkgname = pacman-git
-
