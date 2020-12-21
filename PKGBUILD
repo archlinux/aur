@@ -1,7 +1,7 @@
 # Maintainer: Emil Renner Berthing <esmil@mailme.dk>
 
 pkgname=bootterm-git
-pkgver=0.1+3
+pkgver=0.2
 pkgrel=1
 pkgdesc="Simple, reliable and powerful serial terminal"
 arch=(x86_64)
