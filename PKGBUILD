@@ -1,9 +1,9 @@
-# Maintainer: Mendel Greenberg <chabad 360 at gmail dot com>
+# Maintainer: Mendel Greenberg <mendel at chabad 360 dot me>
 
 pkgbase='citra-bin'
 pkgname=('citra-bin' 'citra-qt-bin')
 pkgrel=1
-pkgver=1449_20200326_4008be4
+pkgver=1659_20201207_3f13e1c
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 conflicts=('citra-git' 'citra-qt-git' 'citra-nightly-bin' 'citra-qt-nightly-bin' 'citra-bin' 'citra-qt' 'citra-canary-bin' 'citra-qt-canary-bin')
 replaces=("citra-nightly-bin" "citra-qt-nightly-bin")
@@ -17,7 +17,7 @@ _ref="$(echo $pkgver | cut -d'_' -f2)-$(echo $pkgver | cut -d'_' -f3)"
 source=("https://github.com/citra-emu/citra-nightly/releases/download/nightly-$_nightly_id/citra-linux-$_ref.tar.xz"
         "https://raw.githubusercontent.com/citra-emu/citra/master/dist/citra.desktop")
 
-sha256sums=('9632d6571afeef19d92f5e4e8d929af16e7f328d47cb5009a9f53d7e46d4bd8f'
+sha256sums=('299ddcf80dbc65f203553ff4bb4b4a289cad576eb9b86c663b1b685eb17d9297'
             '93bd8f799877eba7dd87ed7a4c29607d78c42b8769626c1d479f7e34fb7b39e2')
 
 package_citra-bin() {
