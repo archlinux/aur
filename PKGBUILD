@@ -2,14 +2,14 @@
 # Contributor: Shalygin Konstantin <k0ste at k0ste dot ru>
 
 pkgname='frr-git'
-pkgver=7.2.dev.r16600
+pkgver=7.6.dev.r22256
 pkgrel=1
 pkgdesc='FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, NHRP and EIGRP.'
 arch=('x86_64')
 url="https://frrouting.org/"
 license=('GPL2')
-depends=('pam' 'json-c' 'net-snmp' 'rtrlib' 'libyang>=0.16.105' 'libunwind'  'python' 'c-ares')
-makedepends=('net-snmp' 'bison' 'c-ares' 'perl-xml-libxml' 'python-sphinx')
+depends=('pam' 'json-c' 'net-snmp' 'rtrlib' 'libyang>=1.0.184' 'libunwind'  'python' 'c-ares')
+makedepends=('net-snmp' 'bison' 'c-ares' 'perl-xml-libxml' 'python-sphinx' 'git')
 optdepends=('rsyslog: syslog support')
 conflicts=('quagga' 'babeld' 'quagga_cumulus' 'frr')
 provides=('quagga' 'quagga_cumulus' 'frr')
@@ -21,7 +21,7 @@ source=("git+https://github.com/FRRouting/frr.git"
         "frr.tmpfiles")
 sha256sums=('SKIP'
             'e656acefc2c318a94c2d3011ecef2bed75d70852f1e642a3a1d331d860c8735b'
-            'f033353216b51ff936dbc47d8a7725d290af6cc1b9549e653c1dd97046114f79')
+            '4405c151caa45c02f000d7f03a998c56123c02c13d21af33e98314a73ef99e6a')
 
 pkgver() {
   cd frr
@@ -37,7 +37,7 @@ prepare() {
     --prefix="/usr" \
     --sbindir="/usr/bin" \
     --sysconfdir="/etc/frr" \
-    --localstatedir="/var/run/frr" \
+    --localstatedir="/run/frr" \
     --enable-exampledir="/usr/share/doc/frr/examples" \
     --with-libpam \
     --enable-snmp="agentx" \
@@ -82,6 +82,4 @@ package() {
   install -Dm0644 "iproute2/rt_protos.d/frr.conf" "${pkgdir}/etc/iproute2/rt_protos.d/frr.conf"
   install -Dm0644 "rsyslog.d/45-frr.conf" "${pkgdir}/etc/rsyslog.d/45-frr.conf"
   popd
-
-  chown frr:frr ${pkgdir}/etc/frr
 }
