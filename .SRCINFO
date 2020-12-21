@@ -1,0 +1,19 @@
+pkgbase = afb-binding-git
+	pkgdesc = Header files for developing bindings of Application Framework Binder
+	pkgver = 4.0.0beta2+3+g25d7df0
+	pkgrel = 1
+	url = https://github.com/redpesk-core/afb-binding.git
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	makedepends = lua
+	provides = afb-binding
+	conflicts = afb-binding
+	source = afb-binding::git+https://github.com/redpesk-core/afb-binding.git
+	md5sums = SKIP
+
+pkgname = afb-binding-git
+
