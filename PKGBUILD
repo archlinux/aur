@@ -1,8 +1,8 @@
 # Contributor: derfenix <derfenix@gmail.com>
 
 pkgname=neochat-git
-pkgver=r1233.1ec6287
-pkgrel=3
+pkgver=r1268.6482f08
+pkgrel=1
 pkgdesc="A client for matrix, the decentralized communication protocol"
 arch=('i686' 'x86_64')
 url="https://invent.kde.org/network/neochat"
