@@ -1,7 +1,7 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=selectdefaultapplication-git
-pkgver=r14.f7bc6c0
+pkgver=r19.73a7579
 pkgrel=1
 pkgdesc='A very simple application that lets you define default applications on Linux in a sane way'
 arch=('i686' 'x86_64')
