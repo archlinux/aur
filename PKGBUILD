@@ -9,7 +9,7 @@ url='https://dprint.dev/'
 license=('MIT')
 source=(
   "https://github.com/dprint/dprint/releases/download/$pkgver/dprint-x86_64-unknown-linux-gnu.zip"
-  'https://github.com/dprint/dprint/raw/master/LICENSE'
+  "https://github.com/dprint/dprint/raw/$pkgver/LICENSE"
 )
 sha512sums=('SKIP' 'SKIP')
 

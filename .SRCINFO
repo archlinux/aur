@@ -6,7 +6,7 @@ pkgbase = dprint-bin
 	arch = x86_64
 	license = MIT
 	source = https://github.com/dprint/dprint/releases/download/0.10.0/dprint-x86_64-unknown-linux-gnu.zip
-	source = https://github.com/dprint/dprint/raw/master/LICENSE
+	source = https://github.com/dprint/dprint/raw/0.10.0/LICENSE
 	sha512sums = SKIP
 	sha512sums = SKIP
 
