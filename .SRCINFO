@@ -8,7 +8,7 @@ pkgbase = phyml
 	arch = x86_64
 	license = GPL2
 	source = phyml-3.3.20200621.tar.gz::https://github.com/stephaneguindon/phyml/archive/v3.3.20200621.tar.gz
-	sha256sums = 0fdb0c53a57fd795256395d0d69cfd645aec39ea1d309cfb37931d9cb79bc453
+	sha256sums = a8243923ee08c74cab609a4b086ade66c6156fc2b24450e2a500108dc644c867
 
 pkgname = phyml
 

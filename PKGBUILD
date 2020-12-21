@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/stephaneguindon/phyml"
 license=('GPL2')
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha256sums=('0fdb0c53a57fd795256395d0d69cfd645aec39ea1d309cfb37931d9cb79bc453')
+sha256sums=('a8243923ee08c74cab609a4b086ade66c6156fc2b24450e2a500108dc644c867')
 
 build() {
   cd "$srcdir/phyml-$pkgver"
