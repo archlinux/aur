@@ -5,8 +5,8 @@
 
 pkgbase=linux-hardened-git
 _srcname=${pkgbase/-git/}
-_gitbranch=5.9
-pkgver=5.9.6.r952626.gf86102e71f88
+_gitbranch=5.10
+pkgver=5.10.0.r968847.g03e49cfe857e
 pkgrel=1
 pkgdesc='Security-Hardened Linux'
 url='https://github.com/anthraxx/linux-hardened'
@@ -21,8 +21,6 @@ options=('!strip')
 source=(
   "${_srcname}::git+https://github.com/anthraxx/linux-hardened#branch=${_gitbranch}?signed"
   config         # the main kernel config files
-  sphinx-workaround.patch
-  mac80211-fix-regression-where-EAPOL-frames-were-sent-in-plaintext.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -31,8 +29,7 @@ validpgpkeys=(
   'E240B57E2C4630BA768E2F26FC1B547C8D8172C8'  # Levente Polyak
 )
 sha256sums=('SKIP'
-            '6194d19722b7f85e34002037fd9a4826fdf5ea317f9b49d463038f8a5ce2bf48'
-            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c')
+            'ce6e2d6ee77d3e0df88b74d7f205b75c452e414a945159c0b226431c3ce1208d')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
