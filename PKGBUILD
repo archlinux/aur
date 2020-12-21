@@ -1,7 +1,7 @@
 # Maintainer: Roman Perepelitsa <roman.perepelitsa@gmail.com>
 
 pkgname=gitstatus-bin
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc='Git status for Bash and Zsh prompt'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 provides=("gitstatus")
 conflicts=("gitstatus")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/romkatv/gitstatus/archive/v${pkgver}.tar.gz")
-sha512sums=('9f52ae21d54ec6735a1a1774ea27b73d70ff0de55868e8711d606fd67f27fd4016af4aa810cf5ecbda0e7bec454753fc517de77c996bc37d01dc238114cbfd46')
+sha512sums=('e625472a2ac4fa56e45320cabbcadd5e3b93b2442ba4ff3661af43280cb7216dacfb1ea5ded5f465efd0b01a3c198a29592712e4f9c274e6e566ce87f27739ce')
 makedepends=('zsh')
 install='gitstatus.install'
 
