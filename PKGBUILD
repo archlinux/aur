@@ -2,7 +2,7 @@
 pkgname=python-userspacefs
 _name=${pkgname#python-}
 pkgver=1.0.13
-pkgrel=4
+pkgrel=5
 pkgdesc="Cross-platform user-space file systems for Python"
 arch=('any')
 url="https://github.com/rianhunter/userspacefs"
@@ -21,5 +21,6 @@ build() {
 
 package() {
 	cd "$_name-$pkgver"
+	export PYTHONHASHSEED=0
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
