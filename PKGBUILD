@@ -2,7 +2,7 @@
 # Contributor: Mihai Bişog <mihai.bisog@gmail.com>
 
 pkgname=tsduck
-_pkgver=3.23-1965
+_pkgver=3.24-2109
 pkgver=${_pkgver/-/_}
 pkgrel=1
 pkgdesc="An extensible toolkit for MPEG/DVB transport streams"
@@ -11,7 +11,7 @@ url="https://tsduck.io/"
 license=('BSD')
 depends=(pcsclite curl srt jq) 
 source=("$pkgname-${_pkgver}.tar.gz::https://github.com/tsduck/tsduck/archive/v${_pkgver}.tar.gz")
-md5sums=('a33e5f8d615b84decc51def55a072c6e')
+md5sums=('87b33f561a6859c5dd4121d8dd2795ac')
 
 
 build() {
