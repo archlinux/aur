@@ -1,25 +1,24 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
-pkgname=('python-feather')
+pkgname='python-feather'
 _module='feather'
-pkgver='0.4.0'
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Fast, interoperable binary data frame storage for Python, R"
 url="https://github.com/wesm/feather"
-depends=('python'
-    'python-pandas>=0.17.1'
+depends=('python-pandas>=0.17.1'
     'python-pyarrow>=0.4.0')
 makedepends=('python-setuptools')
 license=('Apache')
 arch=('any')
-source=("https://github.com/wesm/feather/archive/v$pkgver.tar.gz")
-sha256sums=('62be8619cd56e5c4ba5c5095e01732ccb125ba56c83a4cba0f6e6293a5e4b348')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/wesm/feather/archive/v$pkgver.tar.gz")
+sha256sums=('5e230cf7d270c73ac032498ae7f77c13c169ab89b845c4432e3a5f061b0287b3')
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}/python"
+    cd "${_module}-${pkgver}/python"
     python setup.py build
 }
 
 package() {
-    cd "${srcdir}/${_module}-${pkgver}/python"
+    cd "${_module}-${pkgver}/python"
     python setup.py install --root="${pkgdir}" --optimize=1
 }
