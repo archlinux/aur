@@ -1,0 +1,20 @@
+pkgbase = afb-libcontroller-git
+	pkgdesc = useful utilities to integrate in your afb bindings development.
+	pkgver = 9.99.1+34+g0088350
+	pkgrel = 1
+	url = https://github.com/redpesk-common/afb-libcontroller.git
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	makedepends = lua
+	makedepends = git
+	makedepends = afb-libhelpers-git
+	provides = afb-libcontroller
+	conflicts = afb-libcontroller
+	source = afb-libcontroller::git+https://github.com/redpesk-common/afb-libcontroller.git
+	md5sums = SKIP
+
+pkgname = afb-libcontroller-git
+
