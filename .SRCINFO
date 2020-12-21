@@ -1,0 +1,17 @@
+pkgbase = ardentryst-git
+	pkgdesc = An action/RPG sidescoller with a focus on story and character development
+	pkgver = r48.a135dba
+	pkgrel = 1
+	url = https://github.com/ardentryst/ardentryst
+	arch = any
+	license = GPL3
+	license = CCPL
+	depends = python-pygame
+	conflicts = ardentryst
+	source = git+https://github.com/ardentryst/ardentryst.git
+	source = ardentryst.sh
+	md5sums = SKIP
+	md5sums = ff70054fd330fea43c67c9b7486080c3
+
+pkgname = ardentryst-git
+
