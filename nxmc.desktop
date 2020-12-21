@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=/opt/nxmc/nxmc
+Exec=/usr/bin/nxmc
 Icon=nxmc
 Terminal=false
 Type=Application
