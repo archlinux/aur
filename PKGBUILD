@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=pyinstaller-hooks-contrib
-pkgver=2020.10
+pkgver=2020.11
 pkgrel=1
 pkgdesc="Community maintained hooks for PyInstaller"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/pyinstaller/pyinstaller-hooks-contrib"
 license=('GPL' 'APACHE')
 depends=('towncrier' 'python-setuptools' 'python-wheel' 'twine')
 source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('bf4543a16c9c6e9dd2d70ea3fee78b81d3357a68f706df471d990213892259d9')
+sha256sums=('fc3290a2ca337d1d58c579c223201360bfe74caed6454eaf5a2550b77dbda45c')
 
 build() {
 	cd "$pkgname-$pkgver"

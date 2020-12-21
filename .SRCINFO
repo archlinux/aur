@@ -1,6 +1,6 @@
 pkgbase = pyinstaller-hooks-contrib
 	pkgdesc = Community maintained hooks for PyInstaller
-	pkgver = 2020.10
+	pkgver = 2020.11
 	pkgrel = 1
 	url = https://github.com/pyinstaller/pyinstaller-hooks-contrib
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = pyinstaller-hooks-contrib
 	depends = python-setuptools
 	depends = python-wheel
 	depends = twine
-	source = https://pypi.org/packages/source/p/pyinstaller-hooks-contrib/pyinstaller-hooks-contrib-2020.10.tar.gz
-	sha256sums = bf4543a16c9c6e9dd2d70ea3fee78b81d3357a68f706df471d990213892259d9
+	source = https://pypi.org/packages/source/p/pyinstaller-hooks-contrib/pyinstaller-hooks-contrib-2020.11.tar.gz
+	sha256sums = fc3290a2ca337d1d58c579c223201360bfe74caed6454eaf5a2550b77dbda45c
 
 pkgname = pyinstaller-hooks-contrib
 
