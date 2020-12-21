@@ -4,7 +4,7 @@ url='https://www.wiki.ros.org/tf2_msgs'
 pkgname='ros-melodic-tf2-msgs'
 pkgver='0.6.5'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -53,7 +53,8 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF \
-		-DBOOST_ROOT=/opt/boost1.69
+		-DBOOST_ROOT=/opt/boost1.69 \
+		 -DBoost_NO_SYSTEM_PATHS=TRUE
 	make
 }
 
