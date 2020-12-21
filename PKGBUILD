@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-privy-git
 _name=privy
-pkgver=r67.624bb58
-pkgrel=6
+pkgver=6.0.0.r67.624bb58
+pkgrel=1
 pkgdesc="An easy, fast lib to correctly password-protect your data"
 arch=('any')
 url="https://github.com/ofek/privy"
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_name"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "$(python setup.py --version).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -26,6 +26,7 @@ build() {
 
 package() {
 	cd "$srcdir/$_name"
+	export PYTHONHASHSEED=0
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
 	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
