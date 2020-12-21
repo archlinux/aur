@@ -1,7 +1,7 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=emoji-cli
-pkgver=r42.26e2d67
+pkgver=r43.0fbb2e4
 pkgrel=1
 pkgdesc="Emoji completion on the command line for ZSH."
 arch=('any')
@@ -13,10 +13,8 @@ depends=('zsh'
 makedepends=('git')
 options=('!strip')
 install="emoji-cli.install"
-source=("git+${url}.git" 
-        'LICENCE::http://b4b4r07.mit-license.org')
-sha256sums=('SKIP'
-            '2a7432c70fd0114ee823e94731aec411751c4a7a6728b9841072272bc1270dad')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver(){
     cd ${pkgname}
@@ -24,9 +22,6 @@ pkgver(){
 }
 
 package() {
-    cd "$srcdir/"
-    install -Dm 644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENCE"
-
     cd "$srcdir/$pkgname"
     install -Dm 644 "dict/emoji.json" "${pkgdir}/usr/share/zsh/plugins/${pkgname}/dict/emoji.json"
     install -Dm 644 "emoji-cli"{.plugin,}".zsh" "${pkgdir}/usr/share/zsh/plugins/${pkgname}"

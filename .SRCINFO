@@ -1,6 +1,6 @@
 pkgbase = emoji-cli
 	pkgdesc = Emoji completion on the command line for ZSH.
-	pkgver = r42.26e2d67
+	pkgver = r43.0fbb2e4
 	pkgrel = 1
 	url = https://github.com/b4b4r07/emoji-cli
 	install = emoji-cli.install
@@ -12,9 +12,7 @@ pkgbase = emoji-cli
 	depends = fzf
 	options = !strip
 	source = git+https://github.com/b4b4r07/emoji-cli.git
-	source = LICENCE::http://b4b4r07.mit-license.org
 	sha256sums = SKIP
-	sha256sums = 2a7432c70fd0114ee823e94731aec411751c4a7a6728b9841072272bc1270dad
 
 pkgname = emoji-cli
 
