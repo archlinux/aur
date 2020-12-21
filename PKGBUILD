@@ -2,7 +2,7 @@
 # Contributor: Morris Jobke <hey AT morrisjobke DOT de>
 
 pkgname=plugn
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Hook system that lets users extend your application with plugins'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 
 source=("https://github.com/dokku/plugn/releases/download/v${pkgver}/plugn_${pkgver}_linux_x86_64.tgz"
         'LICENSE')
-sha256sums=('62e3eb1764f858a2404fa155bd91a704660c19273b9b29fdf4a0971d9a170d4c'
+sha256sums=('e305f856c3abf7785062a1aafb31f763765fc3b598d4860e0708a0c8b5706f21'
             'b1ac2fed5ac269fb7bbf651a3d37ef5fd56d2c33320e17cb6e23a22a93f5c046')
 
 package() {
