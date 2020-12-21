@@ -3,8 +3,8 @@
 
 pkgname=lite-xl
 _pkgname=lite
-pkgver=1.14
-pkgrel=2
+pkgver=1.14.1
+pkgrel=1
 pkgdesc='A lightweight text editor written in Lua'
 arch=('x86_64')
 url="https://github.com/franko/$pkgname"
@@ -16,7 +16,7 @@ provides=("$_pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver-$pkgname.tar.gz"
 	# credits to 6r1d  for the svg icon
 	"$pkgname.svg.zip::https://github.com/rxi/lite/files/4716765/lite.svg.zip")
-sha256sums=('0ca16d836401964edfbea6fdae340a5cbd1cd7c2191bc1589f0db66c7e819014'
+sha256sums=('2e4a6643cae281b90262acb1b5d509c84e9262ca761665d81e96d158c7bc224a'
             '504d2ccd74f1c5b631b5b83a4f4319c74edb705fc383b3058f4b2d9354093b53')
 
 prepare() {
@@ -26,7 +26,7 @@ prepare() {
   gendesk -n -f \
           --pkgname "$pkgname" \
           --pkgdesc "$pkgdesc" \
-          --exec "$_pkgname" %F \
+          --exec "$_pkgname %F" \
           --name "Lite XL" \
           --categories "Utility;TextEditor;Development" \
           --mimetype "text/plain"
