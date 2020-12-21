@@ -6,7 +6,7 @@ url='http://wiki.ros.org/trac_ik_lib'
 pkgname='ros-melodic-trac-ik-lib'
 pkgver='1.5.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
@@ -61,7 +61,8 @@ build() {
           -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
           -DPYTHON_EXECUTABLE=/usr/bin/python3 \
           -DSETUPTOOLS_DEB_LAYOUT=OFF \
-		 -DBOOST_ROOT=/opt/boost1.69
+		 -DBOOST_ROOT=/opt/boost1.69 \
+		 -DBoost_NO_SYSTEM_PATHS=TRUE
   make
 }
 
