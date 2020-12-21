@@ -2,7 +2,7 @@
 
 pkgname=pycharm-professional
 pkgver=2020.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
 arch=('x86_64')
 url='https://www.jetbrains.com/pycharm/'
@@ -66,8 +66,8 @@ package() {
     install -dm 755 "$pkgdir/usr/share/applications"
     install -Dm 644 "$pkgname.desktop" "$pkgdir/usr/share/applications/"
     install -dm 755 "$pkgdir/usr/share/icons/hicolor/"{128x128,scalable}"/apps/"
-    install -Dm 644 "/opt/$pkgname/bin/pycharm.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/pycharm.png"
-    install -Dm 644 "/opt/$pkgname/bin/pycharm.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/pycharm.svg"
+    install -Dm 644 "$pkgdir/opt/$pkgname/bin/pycharm.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/pycharm.png"
+    install -Dm 644 "$pkgdir/opt/$pkgname/bin/pycharm.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/pycharm.svg"
 
     # exec
     install -dm 755 "$pkgdir/usr/bin/"
