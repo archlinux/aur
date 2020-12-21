@@ -9,12 +9,12 @@
 ### MERGE REQUESTS SELECTION
 
 # Merge Requests List: ('579' '1309' '1050' '1441')
-_merge_requests_to_use=('1309') # safe pick
+_merge_requests_to_use=('579') # safe pick
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=3.38.2
+pkgver=3.38.2+4+g00e247ed7
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -31,7 +31,7 @@ conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
 install=mutter.install
-_commit=9b9051c2172078e623e8a4b0e45e38004c394a92  # tags/3.38.2^0
+_commit=00e247ed7af9d762186779024bec4c3c5b9439c7  # gnome-3-38
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
 sha256sums=('SKIP')
 
