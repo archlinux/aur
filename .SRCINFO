@@ -1,7 +1,7 @@
 pkgbase = pdftk-gcj
 	pkgdesc = Tool for doing everyday things with PDF documents
 	pkgver = 2.02
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.pdfhacks.com/pdftk
 	arch = x86_64
 	license = GPL
@@ -12,11 +12,11 @@ pkgbase = pdftk-gcj
 	source = http://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/pdftk-2.02-src.zip
 	source = Makefile.Arch
 	source = Makefile.patch
-	source = pdftk
-	sha1sums = a4a27e984c5e1401cfa44b8e92a64113d7396a06
-	sha1sums = 0c8e1a442d266eb6782349e41652c6c07464222e
-	sha1sums = 195c2b05023c0449f07c6748b503d33eb8dcf72b
-	sha1sums = 668240583dc4f8564edd5eaec3c769ec6fdd4cc0
+	source = pdftk.sh
+	sha256sums = 118f6a25fd3acaafb58824dce6f97cdc07e56050e666b90e4c4ef426ea37b8c1
+	sha256sums = 5baeb3e57905e31d56034993221c1e01e140f9185dc187b506c785fda5a1875e
+	sha256sums = 0784b19b82a3b816b533d33ca234a3643059bf5970226df1590945f8cf26bb8b
+	sha256sums = 6d36d4e2848c6b12d03fe76146de1de5379e5931ba907ee9bf5b2d0d32cef6c8
 
 pkgname = pdftk-gcj
 

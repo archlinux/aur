@@ -1,3 +1,0 @@
-#!/bin/bash
-export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/lib/gcc/CARCH-pc-linux-gnu/GCCVER
-pdftk-bin "$@"

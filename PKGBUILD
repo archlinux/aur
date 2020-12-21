@@ -6,7 +6,7 @@
 pkgname=pdftk-gcj
 _pkgname=pdftk
 pkgver=2.02
-pkgrel=5
+pkgrel=6
 pkgdesc="Tool for doing everyday things with PDF documents"
 arch=('x86_64')
 url="http://www.pdfhacks.com/pdftk"
@@ -15,12 +15,12 @@ depends=('gcc6-libs' 'gcc6-gcj' 'gcc-gcj-ecj')
 provides=('pdftk')
 source=("http://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/${_pkgname}-${pkgver}-src.zip"
 	'Makefile.Arch' 'Makefile.patch'
-	'pdftk'
-)
-sha1sums=('a4a27e984c5e1401cfa44b8e92a64113d7396a06'
-          '0c8e1a442d266eb6782349e41652c6c07464222e'
-          '195c2b05023c0449f07c6748b503d33eb8dcf72b'
-          '668240583dc4f8564edd5eaec3c769ec6fdd4cc0')
+	"pdftk.sh"
+       )
+sha256sums=('118f6a25fd3acaafb58824dce6f97cdc07e56050e666b90e4c4ef426ea37b8c1'
+            '5baeb3e57905e31d56034993221c1e01e140f9185dc187b506c785fda5a1875e'
+            '0784b19b82a3b816b533d33ca234a3643059bf5970226df1590945f8cf26bb8b'
+            '6d36d4e2848c6b12d03fe76146de1de5379e5931ba907ee9bf5b2d0d32cef6c8')
 
 prepare() {
 	cd ${_pkgname}-$pkgver-dist/${_pkgname}
@@ -39,7 +39,7 @@ package() {
 
 	# Install binary
 	install -D -m 755 pdftk "$pkgdir"/usr/bin/pdftk-bin
-
+	
 	# Install licenses and adjust permissions
 	cd ..
 	LICENSE_DIR="$pkgdir"/usr/share/licenses/$_pkgname
@@ -52,7 +52,5 @@ package() {
 	install -D -m 644 "pdftk.1" "$pkgdir"/usr/share/man/man1/pdftk-gcj.1
 
         # Install wrapper that sets the proper environment variables.
-	sed -i "s/CARCH/${CARCH}/" "$srcdir"/pdftk
-	sed -i "s/GCCVER/`gcc-6 -dumpversion`/" "$srcdir"/pdftk
-	install -D -m 755 "$srcdir"/pdftk "$pkgdir"/usr/bin/pdftk.sh
+	install -D -m 755 "$srcdir"/pdftk.sh "$pkgdir"/usr/bin/pdftk.sh
 }
