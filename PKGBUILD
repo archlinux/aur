@@ -7,13 +7,14 @@
 
 pkgname=google-earth-pro
 pkgver=7.3.3.7786
-pkgrel=3
+pkgrel=4
 pkgdesc='3D interface to explore the globe, terrain, streets, buildings and other planets (Pro version)'
 arch=('x86_64')
 url='https://www.google.com/earth/'
 license=('custom')
 depends=(
     'curl'
+    'openssl-1.0'
     'glu'
     'hicolor-icon-theme'
     'libsm'
