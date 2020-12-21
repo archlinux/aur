@@ -1,0 +1,20 @@
+pkgbase = python-semaphore-bot
+	pkgdesc = A simple (rule-based) bot library for Signal Private Messenger.
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/lwesterhof/semaphore
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = AGPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = signald>=0.11.1
+	depends = python-anyio
+	depends = python-attrs
+	depends = python-dateutil
+	source = https://files.pythonhosted.org/packages/source/s/semaphore-bot/semaphore-bot-0.9.0.tar.gz
+	sha256sums = b23c0eb61ed2fbeb8d95a97a8cce128a87435b29fa0a7ad0e73180b4a7bf639e
+
+pkgname = python-semaphore-bot
+
