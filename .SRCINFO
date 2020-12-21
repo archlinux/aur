@@ -1,11 +1,10 @@
 pkgbase = ipmap
-	pkgdesc = An interactive map that shows connected IP addresses.
+	pkgdesc = An interactive map that shows connected IP addresses. (This is a binary package)
 	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/skylinecc/ipmap
 	arch = x86_64
 	license = GPL
-	makedepends = rust
 	makedepends = make
 	depends = libpcap
 	source = https://github.com/skylinecc/ipmap/raw/main/packaging/arch/ipmap-0.1.6.tar.gz
