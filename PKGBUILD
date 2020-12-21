@@ -62,7 +62,7 @@ build() {
     -D jack=disabled \
     -D lirc=disabled \
     -D openssl=disabled \
-    -D oss-output=false \
+    -D oss-output=disabled \
     -D soxr=disabled \
     -D speex=enabled \
     -D valgrind=disabled \
