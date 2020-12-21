@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# Runs a command wrapped in btrfs snapper pre-post snapshots.
+# Usage: $ snp <commands>
+# e.g.: $ snp pacman -Syyu
+
+log_path="/var/local/log/snp"
+date=$(date "+%Y-%m-%d-%H%M%S")
+log_file="${log_path}/snp_${date}.log"
+
+! [ -d $log_path ] && mkdir -p $log_path
+# Log stdout and stderr. Reference: http://stackoverflow.com/questions/3173131/redirect-copy-of-stdout-to-log-file-from-within-bash-script-itself
+exec >  >(tee -a "$log_file")
+exec 2> >(tee -a "$log_file" >&2)
+
+cmd="$@"
+
+echo "> Logging to: ${log_file}"
+
+snapshot_nbr=$(snapper create --type=pre --cleanup-algorithm=number --print-number --description="${cmd}")
+echo "> New pre snapshot with number ${snapshot_nbr}."
+echo -e "> Running command \"${cmd}\".\n"
+
+eval "$cmd"
+
+snapshot_nbr=$(snapper create --type=post --cleanup-algorithm=number --print-number --pre-number="$snapshot_nbr")
+echo -e "\n> New post snapshot with number ${snapshot_nbr}."
+
+
+
+
+# Snapper has a --command option nowadays. But it works worse, the output from the command is not printed separately from the snaptshot number, just becomes a mess.
+#echo "> Running command \"${cmd}\"."
+#snapshot_nbr=$(snapper create --command "${cmd}" --print-number --cleanup-algorithm=number --description="${cmd}" | tail -1)
+#echo -e "\n> New pre-post snapshot with numbers ${snapshot_nbr}."
