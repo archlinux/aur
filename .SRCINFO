@@ -1,6 +1,6 @@
 pkgbase = bicep-bin
 	pkgdesc = Bicep is a Domain Specific Language (DSL) for deploying Azure resources declaratively.
-	pkgver = 0.2.14
+	pkgver = 0.2.212
 	pkgrel = 1
 	url = https://github.com/Azure/bicep
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = bicep-bin
 	provides = bicep
 	conflicts = bicep
 	options = !strip
-	source = bicep-bin-0.2.14::https://github.com/Azure/bicep/releases/download/v0.2.14/bicep-linux-x64
-	source = https://raw.githubusercontent.com/Azure/bicep/v0.2.14/LICENSE
-	b2sums = e562bb9cbed5d65050609510a59a2f67bb6618daedc1c3616f33fc363dbac1bd97c81ac99b33eb7c343cca190ef0998a057cb68bf31709a967441c2c11db3a22
+	source = bicep-bin-0.2.212::https://github.com/Azure/bicep/releases/download/v0.2.212/bicep-linux-x64
+	source = https://raw.githubusercontent.com/Azure/bicep/v0.2.212/LICENSE
+	b2sums = a13b5389ed7aac3c656779a38766bc21e7d0d3becd208b11555a3e88f198c3797c6dcef8dcb6033f3772c348afdb3158ab3ae6b7b71805977d3a2196060f328d
 	b2sums = 1e0a143630bdf1d10e34a180d83b967ca132c6c976b5a7c93c1452b6747d3f05ed0aab8c7ef7436af61971ebab7b9fc6aa7378784e3776d8913c6825a6cb3e74
 
 pkgname = bicep-bin
