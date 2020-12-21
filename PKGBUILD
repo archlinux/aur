@@ -20,8 +20,8 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.9.13
-pkgrel=3
+pkgver=5.10.1
+pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
 arch=(x86_64)
@@ -33,35 +33,35 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_bmqversion=5.9-r3
+_bmqversion=5.10-r0
 _bmq_patch="prjc_v${_bmqversion}.patch"
 _gcc_more_v='20201113'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
-  config         # the main kernel config file
-  "0000-sphinx-workaround.patch"
+  "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/524ec207393b88f18d32d8fdb9ed13d558e4d3e7/linux/repos/testing-x86_64/config"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=9c0635449ad674cb9c11f65bc722e721dff53723"
-  "0002-Bluetooth_Fix_LL_PRivacy_BLE_device_fails_to_connect.patch::https://git.archlinux.org/linux.git/patch/?id=be49205cacd32964d313c6269b826b6651bf4ea6"
-  "0003-Bluetooth_Fix_attempting_to_set_RPA_timeout_when_uns.patch::https://git.archlinux.org/linux.git/patch/?id=c82bc2c048ad91825ba4bb680aa391efd33012b6"
-  "0004-HID_quirks_Add_Apple_Magic_Trackpad_2_to_hid_have_sp.patch::https://git.archlinux.org/linux.git/patch/?id=2cc6710a1303e1a84747082200014a1173ebd7cb"
+  "v5.10-prjc-r0_compilation_error_error_static_declaration.patch::https://gitlab.com/alfredchen/linux-prjc/-/commit/570d8c5b6f7439217b45906568adddb0a6cc2751.patch"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=e25c86d5689203c0d8f5f4dffb1f616def7c2c74"
+  "0002-Bluetooth_Fix_LL_PRivacy_BLE_device_fails_to_connect.patch::https://git.archlinux.org/linux.git/patch/?id=cdddb7037bf1af7c2a062a0bc2750ae560301776"
+  "0003-Bluetooth_Fix_attempting_to_set_RPA_timeout_when_uns.patch::https://git.archlinux.org/linux.git/patch/?id=8380c14bc1f6d25d24f848d313ed66550c2ce6b4"
+  "0004-HID_quirks_Add_Apple_Magic_Trackpad_2_to_hid_have_sp.patch::https://git.archlinux.org/linux.git/patch/?id=a7eb8bbced1623795c4ad56da1e30c7ee849546f"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('b436a89a5c872a2a029d5dee6aa5bc61128978f4cae6fcb7e507c35cdd6acc2a'
-            'SKIP'
-            'cbae1e5d00a89f218892a1afa4b1c1a01f821a8d46b1a3ef7bc3d3e95892a10c'
-            '19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a'
-            '0d5fe3a9050536fe431564b221badb85af7ff57b330e3978ae90d21989fcad2d'
-            '0d4db3ae8a47d7a5c5a7f37edfddef7ce8fcdc6b64926cef70e5e3dfd7c0eeed'
-            '5980cc2fad84566c49b91150a779d438bce149abf3a75cd90de077dd6d32a7e2'
-            'de816c55a699889a5990f84834d571e296b1ffe4ad1480f647c3c8d4788a98b9'
-            'c0f3db76608a5b5378d7b521e52c04d067172cf2c094a0a5fbbc7b2244bf1cc0'
-            '0324778e71aa132b36d5c50d1df66fc880ef1ecba9372426e57cd829a8d0e7e8')
+b2sums=('d965795fdd5fa6f6cddbd86c4b7af9cfafe9022cae1c149a1326c90b9fdddbd7ebf83465c7b04d227418ba19c3b7af99d9a47b2616df2f83ec92fe7c9306f935'
+        'SKIP'
+        '13de49afadbd05fa02428c1efcb49a237f7145bce901fc7a4bb0cafb4cb89b0e0b53d98ca7e4800677f0265e899ff2116143c433e9690cd4219182b150d8bcc9'
+        'fcab79bd6ba6d7525c3fe5c1cdd6db601447f03cc55e34e1e4abf708dd08b4a5349742797e8dc21c5dffddb469b9c5b8249eaa20c948dcbc88b27f6193bcfac9'
+        '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
+        '782193f86faa6bbbef4f9e0c70c2340507b611263dd88afd5aacc1965c0bd51ebc3ebc3f8fa43ea2aa3d2946d5dc47dd6f74197383031d7d219e2c4e691fa4ba'
+        '36eafca96231f50eafa8f9b734bffb5392bb82d9667650211f8f237c4c46448898b6f40feeba295048dd2dd7c5ef46a254a0e64a322cc2caada67b7db1d40b81'
+        '475ff92bb435c64921c0e0702d727737e4813eddd86b0182606396b514692b46ea8565989228ea80a026c8fc01020f6bbe00dff17698a79477d510a2476777ca'
+        '895b81b243d4499c539b881fe9eb2c0463035b3e39f224ee2c613b508ec740e63f374fe96401faae3cefe2bf26d3dc974e2bbf863c1f74a3f7197d4ece49daba'
+        '182eadac47eb39c7636e7d3015794faace0a83a75b5b5eff03a464c4624fc271c64f695b11f374f9191df6d97ed3bd90ddae560a0c18382690e3b18f8e821e60')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -88,6 +88,7 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
+#  sed -i '/^CONFIG_INIT_ENV_ARG_LIMIT=.*/a CONFIG_SCHED_BMQ=y' .config
 
   # disable CONFIG_DEBUG_INFO=y at build time introduced in this commit
   # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/linux&id=663b08666b269eeeeaafbafaee07fd03389ac8d7
@@ -96,6 +97,7 @@ prepare() {
 
   echo "Applying patch ${_bmq_patch}..."
   patch -Np1 -i "$srcdir/${_bmq_patch}"
+  patch -Np1 -i "$srcdir/v5.10-prjc-r0_compilation_error_error_static_declaration.patch"
 
   # non-interactively apply ck1 default options
   # this isn't redundant if we want a clean selection of subarch below
@@ -134,11 +136,10 @@ build() {
 }
 
 _package() {
-  pkgdesc="The $pkgdesc kernel and modules with the BMQ CPU scheduler"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the Project C scheduler"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  provides=("linux-gc=${pkgver}")
 
   cd $_srcname
   local kernver="$(<version)"
@@ -155,6 +156,7 @@ _package() {
   echo "Installing modules..."
   #make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
   # not needed since not building with CONFIG_DEBUG_INFO=y
+
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
   # remove build and source links
@@ -165,9 +167,8 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  pkgdesc="Headers and scripts for building modules for the ${pkgbase/linux/Linux} kernel"
   depends=('linux-gc')
-  provides=("linux-gc-headers=${pkgver}" "linux-headers=${pkgver}")
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
