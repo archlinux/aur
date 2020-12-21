@@ -12,10 +12,8 @@ makedepends=('git' 'qt5-tools' 'dtkwidget-git')
 conflicts=('deepin-polkit-agent')
 provides=('deepin-polkit-agent')
 groups=('deepin-git')
-source=("$pkgname::git://github.com/linuxdeepin/dde-polkit-agent"
-        "fix_build.patch")
-sha512sums=('SKIP'
-            '19b649896321d4444aa37d7aaef6a60647f21d4d47ccf81e2e5ea17333c53fca4242432166f904678bc6c8deaa9742e50b2fc0d668c21e8a9ad69a7caf027de3')
+source=("$pkgname::git://github.com/linuxdeepin/dde-polkit-agent")
+sha512sums=('SKIP')
 
 pkgver() {
     cd $pkgname
@@ -26,7 +24,6 @@ prepare() {
   cd $pkgname
   # https://github.com/linuxdeepin/developer-center/issues/1721
   sed -i 's/bool is_deepin = true/bool is_deepin = false/' policykitlistener.cpp
-  git apply ../fix_build.patch
 }
 
 build() {
