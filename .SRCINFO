@@ -1,0 +1,27 @@
+pkgbase = home-assistant-esphome-venv
+	pkgdesc = Standalone build, with esphome plugin, works offline, doesn't check for updates
+	pkgver = 2020.12.1
+	pkgrel = 1
+	arch = any
+	license = APACHE
+	makedepends = make
+	makedepends = git
+	makedepends = quilt
+	makedepends = python-setuptools
+	depends = gcc
+	depends = python-pip
+	provides = home-assistant
+	conflicts = home-assistant
+	source = https://github.com/home-assistant/core/archive/2020.12.1.tar.gz
+	source = home-assistant.service
+	source = series
+	source = home-assistant-astral2.2.patch
+	source = home-assistant-offline.patch
+	b2sums = 53ddc907599a1e375be5289d0abe16976fc15f48110885c73540cac08c0e046b13bfb1cb7ffb4515e7d07f66c2a140654ddc65e4abd6cca0a4b38d49465038a4
+	b2sums = 77272289e0ba40d91eb501d001a259445d21eb464833ace779d9c8869cebf501c58652390e59fc9994f47320191ceba9d41ece7c388e04662ff27fd693fb2700
+	b2sums = a0a52f6a46694e6bcccca046240e127bc00e908d8dce4da2d70d3ed549119e62f802c0f57376d3372c3541a3d24fa0b038d51b4a04c14f5aeac0a54fe34377f3
+	b2sums = e2e4c8f4c20932d6f10812ed06a30234de8c6c9b364c8ea98976d1b7546256d7917a2d4649da3c9880f7e542ec161f91295f11cd15f77f21100822aacb9b0753
+	b2sums = a296e542dec01e26beb8463364820597ab20e964431769fe278ba06e0569a9ae8e63ae223f16c662c6ecd49ccf72706ff5830a42c4df15c86a0a1e9bec529c84
+
+pkgname = home-assistant-esphome-venv
+

@@ -1,0 +1,27 @@
+[Unit]
+Description=Home assistant
+After=network.target
+
+[Service]
+Restart=on-failure
+User=hass
+Group=hass
+LogsDirectory=hass
+StateDirectory=hass
+
+ExecStart=/opt/home-assistant-esphome-venv/bin/hass \
+  --config /var/lib/hass/ \
+  --log-file /var/log/hass/home-assistant.log \
+  --log-rotate-days 1 \
+  --runner
+RestartForceExitStatus=100
+
+AmbientCapabilities=
+CapabilityBoundingSet=
+LockPersonality=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+
+[Install]
+WantedBy=multi-user.target
