@@ -4,44 +4,49 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-libproxy
-pkgver=0.4.15
-pkgrel=2
+pkgver=0.4.16
+pkgrel=1
 pkgdesc='A library that provides automatic proxy configuration management'
-arch=('x86_64')
-url='http://libproxy.googlecode.com'
-license=('LGPL')
-depends=('lib32-gcc-libs' 'libproxy')
-makedepends=('cmake' 'gcc-multilib' 'lib32-zlib')
-source=("https://github.com/libproxy/libproxy/archive/${pkgver}.tar.gz")
-md5sums=('21ebe5b4ea2a04f5f468bf5d08c40d2c')
+arch=(x86_64)
+url=https://libproxy.github.io/libproxy/
+license=(LGPL)
+depends=(
+  lib32-dbus
+  lib32-gcc-libs
+  libproxy
+)
+makedepends=(
+  cmake
+  git
+  ninja
+)
+_tag=0da9e01980a93aa13c40de492dca3c47cde50bfc
+source=(git+https://github.com/libproxy/libproxy.git#tag=${_tag})
+b2sums=(SKIP)
+
+pkgver() {
+  cd libproxy
+
+  git describe --tags
+}
 
 build() {
-  cd libproxy-${pkgver}
-
   export CC='gcc -m32'
   export CXX='g++ -m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
 
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build && cd build
-
-  cmake .. \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
+  cmake -S libproxy -B build -G Ninja \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_C_FLAGS="${CFLAGS}" \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
-    -DCMAKE_SKIP_RPATH='ON' \
-    -DLIBEXEC_INSTALL_DIR='/usr/lib32/libproxy' \
-    -DLIB_SUFFIX='32' \
-    -DWITH_{GNOME3,KDE,MOZJS,NATUS,NM,PERL,WEBKIT}='OFF'
-  make
+    -DCMAKE_SKIP_RPATH=ON \
+    -DLIB_SUFFIX=32 \
+    -DWITH_{DOTNET,GNOME3,KDE,MOZJS,NM,PERL,VALA,WEBKIT,WEBKIT3}=OFF
+  ninja -C build
 }
 
 package() {
-  cd libproxy-${pkgver}/build
-
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -C build install
   rm -rf "${pkgdir}"/usr/{bin,include,share}
 }
 
