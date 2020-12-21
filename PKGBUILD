@@ -33,7 +33,6 @@ build() {
 
 package() {
   cd "${pkgname%-git}"
-  echo "pkgdir:" $pkgdir
   make PREFIX=/usr DESTDIR="$pkgdir" install
 }
 
