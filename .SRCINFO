@@ -1,17 +1,16 @@
 pkgbase = cppo
 	pkgdesc = C-style preprocessor for OCaml
-	pkgver = 1.6.6
-	pkgrel = 2
+	pkgver = 1.6.7
+	pkgrel = 1
 	url = https://github.com/ocaml-community/cppo
-	changelog = Changes
 	arch = x86_64
 	license = BSD
 	makedepends = dune
 	makedepends = ocamlbuild
 	depends = glibc
 	optdepends = ocamlbuild: ocamlbuild plugin
-	source = https://github.com/ocaml-community/cppo/releases/download/v1.6.6/cppo-v1.6.6.tbz
-	sha512sums = 44ecf9d225d9e45490a2feac0bde04865ca398dba6c3579e3370fcd1ea255707b8883590852af8b2df87123801062b9f3acce2455c092deabf431f9c4fb8d8eb
+	source = https://github.com/ocaml-community/cppo/releases/download/v1.6.7/cppo-v1.6.7.tbz
+	sha512sums = 9722b50fd23aaccf86816313333a3bf8fc7c6b4ef06b153e5e1e1aaf14670cf51a4aac52fb1b4a0e5531699c4047a1eff6c24c969f7e5063e78096c2195b5819
 
 pkgname = cppo
 
