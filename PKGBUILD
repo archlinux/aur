@@ -1,12 +1,10 @@
-# Script generated with create_pkgbuild.py
-# For more information: https://github.com/ros-melodic-arch/ros-build-tools-py3
 pkgdesc="ROS - Controller for a steer drive mobile base."
 url='http://wiki.ros.org/ackermann_steering_controller'
 
 pkgname='ros-melodic-ackermann-steering-controller'
 pkgver='0.17.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
@@ -76,7 +74,8 @@ build() {
           -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
           -DPYTHON_EXECUTABLE=/usr/bin/python3 \
           -DSETUPTOOLS_DEB_LAYOUT=OFF \
-	   -DBOOST_ROOT=/opt/boost1.69
+	  -DBOOST_ROOT=/opt/boost1.69 \
+	  -DBoost_NO_SYSTEM_PATHS=TRUE
   make
 }
 
