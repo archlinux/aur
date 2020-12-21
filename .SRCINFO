@@ -1,0 +1,17 @@
+pkgbase = menu-qalc
+	pkgdesc = A calculator for Rofi/dmenu(2)
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/barbuk/menu-qalc
+	arch = any
+	license = MIT
+	depends = libqalculate
+	depends = xclip
+	optdepends = dmenu: required if rofi is not installed
+	optdepends = rofi: required if dmenu is not installed
+	conflicts = menu-calc
+	source = https://github.com/barbuk/menu-qalc/archive/v1.4.1.tar.gz
+	sha256sums = 2388a6fe41a08662ccd4c4dba118126ab89ca35fd38fc4dbc445e94f727d7fb3
+
+pkgname = menu-qalc
+
