@@ -2,7 +2,7 @@
 pkgname=menu-qalc
 pkgver=1.4.1
 pkgrel=1
-pkgdesc="A calculator for Rofi/dmenu(2)"
+pkgdesc="A calculator for Rofi/dmenu(2) using libqalculate"
 arch=('any')
 url="https://github.com/barbuk/menu-qalc"
 license=('MIT')
