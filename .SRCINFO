@@ -20,6 +20,7 @@ pkgbase = gnat-gps
 	depends = gnome-icon-theme
 	depends = gnome-icon-theme-extras
 	depends = gnome-icon-theme-symbolic
+	depends = python2-pip
 	depends = python2-gobject
 	depends = python2-gobject2
 	optdepends = python2-jedi
