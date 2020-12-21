@@ -2,7 +2,7 @@
 
 pkgname=processing
 pkgver=3.5.4
-pkgrel=3
+pkgrel=4
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://www.processing.org/'
