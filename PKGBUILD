@@ -8,7 +8,6 @@ url="https://github.com/skylinecc/ipmap"
 license=('GPL')
 depends=('libpcap')
 makedepends=('rust' 'make')
-url="https://github.com"
 source=("https://github.com/skylinecc/ipmap/raw/main/packaging/arch/$pkgname-$pkgver.tar.gz")
 prepare () {
 	cd ../ && pwd && tar -xzf $pkgname-$pkgver.tar.gz
