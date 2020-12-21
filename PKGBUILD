@@ -2,7 +2,7 @@
 pkgname=afb-libafb-git
 pkgver=4.0.0beta5
 pkgrel=1
-pkgdesc="Library providing some helpful functions for apps using Application Framework Binder"
+pkgdesc="Core library of Application Framework Binder"
 arch=('x86_64')
 url="https://github.com/redpesk-core/afb-libafb.git"
 license=('LGPL3')
