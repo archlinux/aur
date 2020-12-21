@@ -64,7 +64,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.9.14
+pkgver=5.9.16
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -91,7 +91,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('559dafc7d4f618ed6b00f0dce74b031c747d4435db5ac976a4b42f3e0c0c22da3ca7b38c77a44341221555adcb5612367b527bca70188c0903efce79fc4773c7'
+b2sums=('7eff5747a1339bf0aa2e37718a37a17d994facf6407e7a37e3f055452ac971bda11cf6e047d5c159af98897ec7c719baf0eb6549d4472044f704d44319ddaadc'
         'SKIP'
         'bf6569e0d54979484d4553f0a7fd57d413e48e7ef846bddd46a3e9c2a6f1fbd98ae043ffc1ba53f79ba2da67bf67d0dc5af6a0d0dd74ef3451f75e1cf0485e1c'
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
@@ -188,6 +188,9 @@ prepare() {
 
   # save configuration for later reuse
   cat .config > "${startdir}/config.last"
+
+  # uncomment if you want to build with distcc
+  ### sed -i '/HAVE_GCC_PLUGINS/d' arch/x86/Kconfig
 }
 
 build() {
