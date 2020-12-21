@@ -1,3 +1,4 @@
+# Maintainer: fire100265 <fire100265@outlook.com>
 pkgname=snp
 pkgver=8
 pkgrel=1
