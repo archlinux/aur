@@ -50,6 +50,9 @@ s/^ *VERSION_RELEASE *= *\([0-9][0-9]*\).*/.\1/p
 build() {
 	cd "$pkgname" || return 1
 	cmake .
+	cd ParserGen/
+	make -j
+	cd ../ScannerGen/
 	make -j
 }
 
