@@ -1,7 +1,7 @@
 # Maintainer: McModder <mcmodder@mcmodder.ru>
 
 pkgname=openttd-git
-pkgver=24313.97592c409
+pkgver=24469.0c3ddc543
 pkgrel=1
 pkgdesc='An engine for running Transport Tycoon Deluxe (latest GIT build)'
 arch=('i686' 'x86_64')
@@ -21,28 +21,23 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-
-  mkdir -p build
-  cd build
-
   # http://site.icu-project.org/download/61#TOC-Migration-Issues
   CXXFLAGS+=' -DU_USING_ICU_NAMESPACE=1'
 
-  cmake -DCMAKE_INSTALL_PREFIX="/usr" \
+  cmake -B build \
+        -S "$pkgname" \
+        -DCMAKE_INSTALL_PREFIX="/usr" \
         -DPERSONAL_DIR=".${pkgname}" \
         -DGLOBAL_DIR="/usr/share/${pkgname}" \
         -DCMAKE_INSTALL_DATADIR="share" \
         -DCMAKE_INSTALL_DOCDIR="share/doc/${pkgname}" \
         -DBINARY_NAME="${pkgname}" \
         ..
-  make
+  make -C build
 }
 
 package() {
-  cd "$srcdir/$pkgname/build"
-
-  make install DESTDIR="$pkgdir"
+  make -C build install DESTDIR="$pkgdir"
 
   ## install icons
   for _res in 16 32 64 128 256; do
