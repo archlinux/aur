@@ -1,6 +1,6 @@
 pkgbase = legendary
 	pkgdesc = A free and open-source replacement for the Epic Games Launcher
-	pkgver = 0.20.4
+	pkgver = 0.20.5
 	pkgrel = 1
 	url = https://github.com/derrod/legendary
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = legendary
 	depends = python-wheel
 	depends = python-setuptools
 	optdepends = proton: windows binaries support
-	source = legendary-0.20.4.tar.gz::https://github.com/derrod/legendary/archive/0.20.4.tar.gz
-	sha256sums = b91a47a9aa185247728bd3c97dff7c427bc14fd2bf35b34060543b6e985a6380
+	source = legendary-0.20.5.tar.gz::https://github.com/derrod/legendary/archive/0.20.5.tar.gz
+	sha256sums = 45e266b31d171e6fd772ab9738e73abffe11373b77b72d619a15b3ee33213322
 
 pkgname = legendary
 
