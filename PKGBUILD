@@ -1,7 +1,7 @@
 # Maintainer: Christian Schendel (doppelhelix@gmail.com)
 
 pkgname=mediaelch-git
-pkgver=v2.8.0.r44.g136f4fc1
+pkgver=2.8.2.r16.g6a2fc87f
 pkgrel=1
 pkgdesc='MediaElch is a MediaManager for Kodi'
 url='https://www.mediaelch.de/mediaelch/'
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 
