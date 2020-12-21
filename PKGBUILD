@@ -1,8 +1,8 @@
 # Maintainer: Jack Lupino <electricalmemory83720x0@protonmail.com>
 pkgname=freezer-appimage
-pkgver='1.1.10'
-pkgrel=1
-pkgdesc="A client for Deezer"
+pkgver='1.1.11'
+pkgrel=2
+pkgdesc="An unofficial client for Deezer (AppImage version)"
 arch=('x86_64')
 url="https://files.freezer.life"
 license=('GPL')
@@ -26,11 +26,11 @@ package() {
     install -d -m755 "${pkgdir}/opt/${pkgname}"
 
     cp -L $srcdir/Freezer-$pkgver.AppImage ${pkgdir}/opt/${pkgname}
-    chmod +x ${pkgdir}/opt/${pkgname}/Freezer-$pkgver.AppImage
+    chmod +x ${pkgdir}/opt/${pkgname}/Freezer.AppImage
 
     install -d -m755 $pkgdir/usr/share/applications/ 
     cp -L $srcdir/freezer.desktop $pkgdir/usr/share/applications/
 
     install -d -m755 "${pkgdir}/usr/bin/"
-    ln -s "/opt/${pkgname}/Freezer-${pkgver}.AppImage" "${pkgdir}/usr/bin/freezer"
+    ln -s "/opt/${pkgname}/Freezer.AppImage" "${pkgdir}/usr/bin/freezer"
 }
