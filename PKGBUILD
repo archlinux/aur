@@ -1,14 +1,14 @@
-# Maintainer: motte <ettom22 at hotmail dot com>
+# Maintainer: Pagnite <tymoteuszdolega at gmail dot com>
 # Contributor: Bjorn Neergaard (neersighted) <bjorn@neersighted.com>
 
 _pkgname=ddcutil
 pkgname=ddcutil-git
-pkgver=v0.9.9.r0.gdf01384d
+pkgver=v1.0.0.r0.c2c9d0a
 pkgrel=1
 pkgdesc='Query and change Linux monitor settings using DDC/CI and USB (development version).'
 url='http://ddcutil.com/'
 license=('GPL2')
-source=('git+https://github.com/rockowitz/ddcutil.git#branch=0.9.9-dev')
+source=('git+https://github.com/rockowitz/ddcutil.git#branch=1.0.0-dev')
 sha256sums=('SKIP')
 arch=('i686' 'x86_64')
 provides=('ddcutil')
