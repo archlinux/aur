@@ -2,7 +2,7 @@
 pkgname=local-by-flywheel-bin
 _pkgname=local-by-flywheel
 pkgver=5.9.6
-pkgrel=5194
+pkgrel=5149
 pkgdesc="A program to create a local WordPress development environment."
 arch=('x86_64')
 url="https://localbyflywheel.com/"
@@ -11,14 +11,13 @@ makedepends=('rpmextract')
 depends=(
   'numactl'
   'ncurses5-compat-libs'
-  'libaio'
   'nettle6'
+  'libaio'
   'gtk3'
   'nss'
   'libjpeg-turbo'
   'libxss'
   'libxslt'
-  'rpmextract'
 )
 options=('emptydirs')
 source=("https://cdn.localwp.com/releases-stable/$pkgver+$pkgrel/local-$pkgver-linux.rpm")
