@@ -1,8 +1,8 @@
 # Maintainer: kpcyrd <kpcyrd[at]archlinux[dot]org>
 
-pkgname="python-fints"
-pkgver="3.0.0"
-pkgrel=2
+pkgname=python-fints
+pkgver=3.0.1
+pkgrel=1
 pkgdesc="Minimal pure-python FinTS (formerly known as HBCI) implementation"
 arch=(any)
 url="https://github.com/raphaelm/python-fints"
@@ -11,11 +11,12 @@ depends=('python' 'python-mt-940' 'python-bleach' 'python-sepaxml' 'python-reque
 makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-mock')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/raphaelm/python-fints/archive/v${pkgver}.tar.gz")
-sha512sums=('f82e035bd887f04950d5bf18fead00610f5765d186db40a00ed6da9c8e9245e33f7a9fc4a9d13e846caccef7c78038fd6af4275fa06f14bcd9ab7c537c01c1ae')
-b2sums=('d3726decae6cf9e8cec7f374b89a968ae5ca27d6622eee812c5ce60911f90eabae86c9401dac4da1274deb9e4afde2419975bad97ea80419ee5226374b8444a8')
+sha512sums=('78dd0e895bc075fd80f43ae16b16eedc7d2978ae8e0c9b4b3eb47b11550a2dc61962b1864ea63ce3ccd842acd0fa6dc2db98ea1b1fd7c1d23c4227ea352c01ce')
+b2sums=('13a62e1ec7a43a8cd0196e01eb1c60471b09f89ef2cb55cce7908de1b76f38a063c63bb4121a48206869424c2fedf23fd176248862c96f183e7b960ac5f8137a')
 
 build() {
   cd "${pkgname}-${pkgver}"
+  export PYTHONHASHSEED=0
   python setup.py build
 }
 
