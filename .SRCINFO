@@ -1,4 +1,4 @@
-pkgbase = lib32-libcups-nosystemd-minimal-git
+pkgbase = lib32-libcups-minimal-git
 	pkgdesc = The CUPS Printing System - client libraries (32-bit)
 	pkgver = 2.3.3
 	pkgrel = 1
@@ -16,5 +16,5 @@ pkgbase = lib32-libcups-nosystemd-minimal-git
 	source = git://github.com/apple/cups.git
 	sha256sums = SKIP
 
-pkgname = lib32-libcups-nosystemd-minimal-git
+pkgname = lib32-libcups-minimal-git
 

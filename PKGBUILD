@@ -1,7 +1,7 @@
 # Maintainer:  Vincent Grande <shoober420@gmail.com>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
-pkgname=lib32-libcups-nosystemd-minimal-git
+pkgname=lib32-libcups-minimal-git
 pkgver=2.3.3
 pkgrel=1
 pkgdesc="The CUPS Printing System - client libraries (32-bit)"
