@@ -1,0 +1,16 @@
+pkgbase = cmm-svn
+	pkgdesc = SPHINX C-- Compiler . C-- is a programming language occupying an intermediate position between Assembler and C.
+	pkgver = r8466
+	pkgrel = 1
+	url = http://c--sphinx.narod.ru/
+	arch = i686
+	arch = x86_64
+	groups = kos32-dev
+	license = GPLv3
+	makedepends = cmake
+	conflicts = cmm
+	source = svn://kolibrios.org/programs/develop/cmm
+	md5sums = SKIP
+
+pkgname = cmm-svn
+
