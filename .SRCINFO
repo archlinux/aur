@@ -1,0 +1,20 @@
+pkgbase = droidcam-obs-plugin-git
+	pkgdesc = plugin for droidcam obs
+	pkgver = 1.1.r5.b8febd6
+	pkgrel = 1
+	url = https://dev47apps.com/obs/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = libjpeg-turbo
+	makedepends = libusbmuxd
+	depends = obs-studio
+	provides = droidcam-obs-plugin
+	conflicts = droidcam-obs-plugin
+	source = droidcam-obs-plugin::git+https://github.com/dev47apps/droidcam-obs-plugin.git
+	source = fix_Makefile.patch
+	sha256sums = SKIP
+	sha256sums = 5a52749268fafe141eecbb63f0dea10ac1a100e1b1ba63a2f1cf574837b8c069
+
+pkgname = droidcam-obs-plugin-git
+

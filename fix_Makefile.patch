@@ -1,0 +1,18 @@
+diff --git a/Makefile b/Makefile
+index 92c24d0..d10ab61 100644
+--- a/Makefile
++++ b/Makefile
+@@ -32,11 +32,11 @@ ifeq ($(UNAME),Linux)
+ 	JPEG_DIR ?= /opt/libjpeg-turbo
+ 	JPEG_LIB  = $(JPEG_DIR)/lib$(shell getconf LONG_BIT)
+ 
+-	STATIC   += $(JPEG_LIB)/libturbojpeg.a
++	STATIC   += /usr/lib/libturbojpeg.so
+ 	INCLUDES += -I$(JPEG_DIR)/include
+ 	INCLUDES += -I/usr/include/obs
+ 	LDD_LIBS += -lobs
+-	LDD_LIBS += -lusbmuxd
++	LDD_LIBS += -lusbmuxd-2.0
+ 	LDD_FLAG += -shared
+ 
+ run:
