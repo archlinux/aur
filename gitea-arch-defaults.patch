@@ -18,15 +18,6 @@
  ; The script type this server supports. Usually this is `bash`, but some users report that only `sh` is available.
  SCRIPT_TYPE = bash
  ; DETECTED_CHARSETS_ORDER tie-break order for detected charsets.
-@@ -356,7 +356,7 @@
- KEY_FILE = https/key.pem
- ; Root directory containing templates and static files.
- ; default is the path where Gitea is executed
--STATIC_ROOT_PATH =
-+STATIC_ROOT_PATH = /usr/share/gitea
- ; Default path for App data
- APP_DATA_PATH = data
- ; Application level GZIP support
 @@ -426,7 +426,7 @@
  ; For iterate buffer, default is 50
  ITERATE_BUFFER_SIZE = 50
