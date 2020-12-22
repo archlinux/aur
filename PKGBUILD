@@ -12,9 +12,11 @@ source=("git+https://github.com/bottlesdevs/Bottles")
 sha256sums=('SKIP')
 
 _repo="Bottles"
+_ver=dfb632d
 
 prepare () {
   cd "$srcdir/$_repo"
+  git checkout $_ver
   rm -rf build
   mkdir build 
 }
