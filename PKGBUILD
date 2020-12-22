@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libpcap')
 makedepends=('make')
 source=("https://github.com/skylinecc/ipmap/raw/main/packaging/arch/$pkgname-$pkgver.tar.gz")
-md5sums=('d87f904aedbea19e3592a1bb5708be17')
+md5sums=()
 prepare () {
 	cd ../ && pwd && tar -xzf $pkgname-$pkgver.tar.gz
 }
