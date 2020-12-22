@@ -11,7 +11,11 @@ pkgbase = superfamiconv-git
 	provides = superfamiconv
 	conflicts = superfamiconv
 	source = git+https://github.com/Optiroc/SuperFamiconv.git
-	sha256sums = SKIP
+	source = 0001-Mode-Add-default-cases.patch
+	source = 0004-cmake-Add-install-target.patch
+	md5sums = SKIP
+	md5sums = 7253cec1e63c2925154fdfa8ea9c21f7
+	md5sums = c56540c8efe5ac5b7246b3d27c3e4036
 
 pkgname = superfamiconv-git
 

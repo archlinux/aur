@@ -18,8 +18,12 @@ makedepends=(
 )
 provides=(superfamiconv)
 conflicts=(superfamiconv)
-source=("git+https://github.com/Optiroc/SuperFamiconv.git")
-sha256sums=(SKIP)
+source=("git+https://github.com/Optiroc/SuperFamiconv.git"
+        "0001-Mode-Add-default-cases.patch"
+        "0004-cmake-Add-install-target.patch")
+md5sums=(SKIP
+         "7253cec1e63c2925154fdfa8ea9c21f7"
+         "c56540c8efe5ac5b7246b3d27c3e4036")
 
 pkgver() {
   cd SuperFamiconv
@@ -31,6 +35,10 @@ prepare() {
     rm -rf build
   fi
   mkdir build
+  
+  cd SuperFamiconv
+  patch -p1 < ../0001-Mode-Add-default-cases.patch
+  patch -p1 < ../0004-cmake-Add-install-target.patch
 }
 
 build() {
@@ -43,8 +51,7 @@ build() {
 }
 
 package() {
-  # make DESTDIR="${pkgdir}" -C build install
-  install -Dm755 build/superfamiconv ${pkgdir}/usr/bin/superfamiconv
+  make DESTDIR="${pkgdir}" -C build install
   install -Dm644 "$srcdir/SuperFamiconv/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 

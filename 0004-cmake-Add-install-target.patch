@@ -1,0 +1,21 @@
+From 918fe04dbdd68b54d6f963df05d0a416e5c981d8 Mon Sep 17 00:00:00 2001
+From: Lubosz Sarnecki <lubosz@gmail.com>
+Date: Tue, 22 Dec 2020 10:51:03 +0100
+Subject: [PATCH 4/4] cmake: Add install target.
+
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1942f96..99e82aa 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -35,3 +35,4 @@ else(MSVC)
+ endif(MSVC)
+ 
+ add_executable(superfamiconv ${SOURCES})
++install(TARGETS superfamiconv DESTINATION bin)
+-- 
+2.29.2
+
