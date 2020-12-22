@@ -1,12 +1,12 @@
 # Maintainer: Nick Haghiri (n s dot hag hiri at G mail dot com)
 pkgname=obinskit
 pkgver=1.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="ObinsKit for Anne Pro and Anne Pro 2"
 arch=('x86_64')
 url="http://en.obins.net/obinskit"
 license=(custom)
-depends=('desktop-file-utils' 'gconf' 'hicolor-icon-theme' 'libappindicator-gtk2' 'libnotify' 'libxss' 'libxtst' 'nss' 'libxkbcommon-x11')
+depends=('desktop-file-utils' 'hicolor-icon-theme' 'libappindicator-gtk2' 'libnotify' 'libxss' 'libxtst' 'nss' 'libxkbcommon-x11')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("http://releases.obins.net/occ/linux/tar/ObinsKit_${pkgver}_x64.tar.gz"
