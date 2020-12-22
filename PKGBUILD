@@ -59,7 +59,7 @@ build() {
      --without-snmp-address \
      --disable-libusb \
      --disable-libpaper \
-     --with-optim="" # cant find C compiler using default "$CFLAGS"
+     --with-optim="$CFLAGS" # you must comment out $CFLAGS and $CXXFLAGS in makepkg.conf and add build flags into this "--with-optim" setting
 
   make
 }
