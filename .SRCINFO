@@ -9,9 +9,9 @@ pkgbase = python-nurbs
 	makedepends = python-setuptools
 	makedepends = cython
 	depends = python
-	depends = python-numpy
 	depends = python-matplotlib
-	depends = python-plotly
+	depends = python-numpy
+	optdepends = python-plotly
 	source = python-nurbs-5.2.10.tar.gz::https://github.com/orbingol/NURBS-Python/archive/v5.2.10.tar.gz
 	sha256sums = d2e5cf0b4735b1f5bb798723cffb9da11587dc2a283e2eeaccf6263d5b098637
 
