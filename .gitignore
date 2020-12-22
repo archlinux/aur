@@ -1,0 +1,5 @@
+*~
+*.log
+*.tar.xz
+qtbase-everywhere-src-*.tar.xz
+qt6-base-headless-*.pkg.tar.*

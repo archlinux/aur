@@ -1,0 +1,33 @@
+pkgbase = qt6-base-headless
+	pkgdesc = A cross-platform application and UI framework - headless build, no QtGui or QtWidgets
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = x86_64
+	groups = qt6
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = mariadb-libs
+	makedepends = unixodbc
+	makedepends = postgresql
+	makedepends = xmlstarlet
+	makedepends = systemd
+	depends = sqlite
+	depends = double-conversion
+	depends = brotli
+	depends = libb2
+	optdepends = postgresql-libs: PostgreSQL driver
+	optdepends = mariadb-libs: MariaDB driver
+	optdepends = unixodbc: ODBC driver
+	optdepends = shared-mime-info: Freedesktop.org Shared MIME Info
+	provides = qt6-base
+	conflicts = qt6-base
+	source = https://download.qt.io/official_releases/qt/6.0/6.0.0/submodules/qtbase-everywhere-src-6.0.0.tar.xz
+	sha256sums = ae227180272d199cbb15318e3353716afada5c57fd5185b812ae26912c958656
+
+pkgname = qt6-base-headless
+
