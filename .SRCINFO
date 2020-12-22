@@ -1,0 +1,17 @@
+pkgbase = superfamiconv-git
+	pkgdesc = A tile graphics converter with flexible and composable command line options.
+	pkgver = 0.9.2.r2.9f6bcab
+	pkgrel = 1
+	url = https://github.com/Optiroc/SuperFamiconv
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	provides = superfamiconv
+	conflicts = superfamiconv
+	source = git+https://github.com/Optiroc/SuperFamiconv.git
+	sha256sums = SKIP
+
+pkgname = superfamiconv-git
+
