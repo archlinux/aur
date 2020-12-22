@@ -2,7 +2,7 @@
 
 pkgname=pulseaudio-modules-bt-git
 pkgver=14.0.r149.dbb5164
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="PulseAudio Bluetooth modules with SBC, AAC, APTX, APTX-HD, Sony LDAC (A2DP codec) support"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
@@ -41,10 +41,11 @@ pkgver() {
 build() {
     cd "$srcdir/pulseaudio-modules-bt"
     rm -rf build && mkdir build
+    cd build
     cmake \
         -DCMAKE_BUILD_TYPE=Release \
-        -S . \
-        -B build \
+        -S .. \
+        -B . \
 
     make
 }
