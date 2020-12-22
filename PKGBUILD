@@ -1,7 +1,7 @@
-# Maintainer: Zhangjk <zhangjk67 at gmail dian com>
+# Maintainer: Zhang.j.k <zhangjk67 at gmail dian com>
 pkgname=k-git
 pkgver=r189.e2bfbaf
-pkgrel=2
+pkgrel=3
 pkgdesc="a zsh script / plugin to make directory listings more readable, adding a bit of color and some git status information on files and directories."
 arch=('any')
 url="https://github.com/supercrabtree/k"
@@ -19,13 +19,8 @@ pkgver() {
 }
 
 package() {
-	# cd "$srcdir/${pkgname}"
     cd "$srcdir/${pkgname%-git}"
-	install -Dm755 * -t "$pkgdir/usr/bin/k"
-    if grep -q "source /usr/bin/k/k.sh" $HOME/.zshrc
-    then
-        echo "config in .zshrc already satisfied"
-    else
-        echo "source /usr/bin/k/k.sh" >> $HOME/.zshrc
-    fi
+    install -vDm755 "${pkgname%-git}.sh" "k.plugin.zsh" -t "$pkgdir/usr/share/zsh/plugins/$pkgname"
+    # docs
+    install -vDm 644 readme.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
