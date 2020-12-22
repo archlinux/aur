@@ -4,14 +4,14 @@
 
 pkgname=insomnia
 pkgver=2020.5.1
-pkgrel=3
+pkgrel=4
 _nodeversion=12.18.3
 pkgdesc="Cross-platform HTTP and GraphQL Client"
 url="https://github.com/Kong/insomnia"
 arch=('any')
 license=('MIT')
 depends=()
-makedepends=('npm' 'nvm')
+makedepends=('npm' 'nvm' 'fontconfig')
 source=(
   "https://github.com/Kong/insomnia/archive/core@${pkgver}/${pkgname}-${pkgver}.tar.gz"
   "insomnia.desktop"
