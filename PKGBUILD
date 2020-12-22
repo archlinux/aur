@@ -1,6 +1,6 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
 pkgname=openhab3
-pkgver=3.0.0.RC2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="openhab3 open source home automation software"
 arch=("any")
@@ -18,13 +18,13 @@ backup=("etc/${pkgname}/services/addons.cfg"
         "var/lib/${pkgname}/etc/users.properties"
         "var/lib/${pkgname}/etc/keys.properties")
 
-source=("openhab-${pkgver}.tar.gz::https://openhab.jfrog.io/openhab/libs-milestone-local/org/openhab/distro/openhab/${pkgver}/openhab-${pkgver}.tar.gz"
+source=("openhab-${pkgver}.tar.gz::https://bintray.com/openhab/mvn/download_file?file_path=org/openhab/distro/openhab/${pkgver}/openhab-${pkgver}.tar.gz"
         "${pkgname}.service"
         "${pkgname}.default"
         "${pkgname}.patch"
         "karaf_wrapper.sh")
 
-sha256sums=('a76e0dd350be2ee13785cc37f4b755e7a6a4f2f58c3f6015ce2d4e50407e6cdd'
+sha256sums=('856b4906707712b9881f6891aaf6859f95d24943af99c4bf7936a6c797047604'
             '995bb5eacc583c22fe97555fd67e69911a63cfb02449a046481b5a0e64f4032c'
             'b149d976dc13dc18c62d2014457557e266e733ead70b0730d06dcd0372da78a7'
             '3f7478e5742ff504b3200b580eba84bd10f9adde24c0a5e070dda71125a69c3b'
