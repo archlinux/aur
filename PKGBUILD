@@ -1,32 +1,41 @@
-# Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Contributor: Sven Schneider <archlinux.sandmann@googlemail.com>
 # Contributor: Thomas td123 Dziedzic <gostrc@gmail.com>
 # Contributor: Ivan c00kiemon5ter Kanakarakis <ivan.kanak@gmail.com>
 # Contributor: jht <stefano@inventati.org>
 
 pkgname=clips
-pkgver=6.30
-_pkgver=6.30.0.20090722svn
+pkgver=6.31
 pkgrel=1
 pkgdesc="A forward-chaining rule-based programming language written in C that also provides procedural and object-oriented programming facilities."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://clipsrules.sourceforge.net/"
 license=('GPL')
 depends=('termcap' 'libxaw' 'xbitmaps')
-source=(http://downloads.sourceforge.net/project/clipsmm/clips/${_pkgver}/${pkgname}-${_pkgver}.tar.gz)
-md5sums=('ff2e140deb47e3c0141f21fb238e2e61')
-sha256sums=('9114c371eb4e5a6bb32d746acb8d22591cba7502af2536a994e58a6349b30b2e')
-sha384sums=('fe868fce6b8809d69eda21035aaf415b8ed04e460aab20e42bebaac55e2787634e843e94aa5b52eaa02f89b96601a654')
-sha512sums=('df614f9a9611db31cb056160285af9bda88294b75ed378a71bdc395436cb511ddd9460d3aaaf0a54338c0e7c2c025ef53e3aa93701f1980d90010b61891f32d7')
+source=("https://downloads.sourceforge.net/project/clipsrules/CLIPS/${pkgver}/${pkgname}_core_source_${pkgver//.}.tar.gz"
+		"https://downloads.sourceforge.net/project/clipsrules/CLIPS/${pkgver}/${pkgname}_documentation_${pkgver//.}.tar.gz"
+		"https://downloads.sourceforge.net/project/clipsrules/CLIPS/${pkgver}/examples_${pkgver//.}.tar.gz"
+		"https://downloads.sourceforge.net/project/clipsrules/CLIPS/${pkgver}/feature_tests_${pkgver//.}.tar.gz")
+sha256sums=('665b393f1dad63e95ce1ae696899298ef7da25e0d52a2d06c1046cddce07b398'
+            '07c7205e4a8bfedc60b70539c95f7432ed97334a2eaf113d19b87155dedb8ebf'
+            '00dbc8c60db5f62426a9483fc8ed0f1ac1157056cf5313bb07898d19502f9ab4'
+            'fad33842efd4abbf713ad715746e53c09fcda0a4f1f2fd1aeccef5650c0aac10')
 
 build() {
-  cd "${srcdir}/${pkgname}-${_pkgver}"
-
-  ./configure --prefix=/usr
-  make
+	cd "${pkgname}_core_source_${pkgver//.}/core"
+	make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${_pkgver}"
-
-  make DESTDIR="${pkgdir}" install
+	install -Dm755 ${pkgname}_core_source_${pkgver//.}/core/clips \
+		${pkgdir}/usr/bin/clips
+	install -d "${pkgdir}/usr/share/${pkgname}"
+	install -d "${pkgdir}/usr/share/doc/${pkgname}/pdf"
+	cp ${pkgname}_documentation_${pkgver//.}/*.pdf \
+		${pkgdir}/usr/share/doc/${pkgname}/pdf/
+	cp -a examples_${pkgver//.} \
+		${pkgdir}/usr/share/${pkgname}/examples
+	cp -a feature_tests_${pkgver//.} \
+		${pkgdir}/usr/share/${pkgname}/feature_tests
 }
+# vim:set ts=4 sw=4:
