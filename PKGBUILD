@@ -11,8 +11,7 @@ pkgdesc="open-source implementation of the ActiveSync protocol"
 arch=('any')
 url="https://z-push.org/"
 license=('AGPL3')
-makedepends=('git'
-	     'php-composer')
+makedepends=('git')
 depends=('nginx'
 	 'php'
 	# 'kopano-core' # php-mapi

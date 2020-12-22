@@ -9,7 +9,6 @@ pkgbase = z-push
 	groups = kopano
 	license = AGPL3
 	makedepends = git
-	makedepends = php-composer
 	depends = nginx
 	depends = php
 	depends = php-fpm
