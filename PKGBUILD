@@ -3,11 +3,11 @@
 
 pkgname=python36
 pkgver=3.6.12
-pkgrel=1
+pkgrel=2
 _pybasever=3.6
 _pymajver=3
 pkgdesc="Major release 3.6 of the Python high-level programming language"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'arm' 'pentium4')
 license=('custom')
 url="http://www.python.org/"
 depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
