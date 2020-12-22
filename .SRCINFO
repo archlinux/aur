@@ -1,15 +1,13 @@
 pkgbase = breezemite-yakuake-git
 	pkgdesc = Yakuake recompiled with Brezemite themes
-	pkgver = 0.1
-	pkgrel = 3
+	pkgver = 0.2
+	pkgrel = 1
 	url = https://github.com/matijaskala/breezemite-yakuake
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	makedepends = cmake
 	makedepends = extra-cmake-modules
-	makedepends = ruby
-	makedepends = subversion
 	depends = konsole
 	depends = knewstuff
 	depends = kwayland
@@ -17,7 +15,7 @@ pkgbase = breezemite-yakuake-git
 	conflicts = yakuake
 	conflicts = yakuake-git
 	source = git+https://github.com/matijaskala/breezemite-yakuake.git
-	source = git+git://anongit.kde.org/yakuake.git
+	source = git+https://invent.kde.org/utilities/yakuake.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
