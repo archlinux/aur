@@ -11,7 +11,7 @@ pkgdesc="Fancy indexes module for the nginx web server"
 arch=('x86_64')
 url="https://github.com/aperezdc/ngx-fancyindex"
 license=('BSD')
-depends=('nginx-mainline>=1.19.6')
+depends=("nginx-mainline>=${_nginxver}")
 source=(https://nginx.org/download/nginx-$_nginxver.tar.gz{,.asc}
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/aperezdc/ngx-$_modname/archive/v$pkgver.tar.gz")
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
