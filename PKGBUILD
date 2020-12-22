@@ -24,7 +24,7 @@ pkgname=(
 )
 pkgver=19.0b2
 #_major=18.7.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -161,43 +161,38 @@ build() {
       -DSPDLOG_URL="$srcdir/spdlog-$_spdlog_version.tar.gz"
     )
 
-  if [[ "$_build_x11" -eq 1 ]]; then
-    echo "building kodi-x11"
-    cd "$srcdir/kodi-build-x11"
-    _args+=(
-      -DCORE_PLATFORM_NAME=x11
-      -DAPP_RENDER_SYSTEM=gl
-    )
+  echo "building kodi-x11"
+  cd "$srcdir/kodi-build-x11"
+  _args+=(
+    -DCORE_PLATFORM_NAME=x11
+    -DAPP_RENDER_SYSTEM=gl
+  )
 
-    cmake "${_args[@]}" ../xbmc
-    make
-    make preinstall
-  fi
+  cmake "${_args[@]}" ../"xbmc-$_tag"
+  make
+  make preinstall
 
-  if [[ "$_build_wayland" -eq 1 ]]; then
-    echo "building kodi-wayland"
-    cd "$srcdir/kodi-build-wayland"
-    _args+=(
-      -DCORE_PLATFORM_NAME=wayland
-      -DAPP_RENDER_SYSTEM=gl
-    )
+  echo "building kodi-wayland"
+  cd "$srcdir/kodi-build-wayland"
+  _args+=(
+    -DCORE_PLATFORM_NAME=wayland
+    -DAPP_RENDER_SYSTEM=gl
+  )
 
-    cmake "${_args[@]}" ../xbmc
-    make
-    make preinstall
-  fi
+  cmake "${_args[@]}" ../"xbmc-$_tag"
+  make
+  make preinstall
 
-  if [[ "$_build_gbm" -eq 1 ]]; then
-    echo "building kodi-gbm"
-    cd "$srcdir/kodi-build-gbm"
-    _args+=(
-      -DCORE_PLATFORM_NAME=gbm
-      -DAPP_RENDER_SYSTEM=gles
-    )
-    cmake "${_args[@]}" ../xbmc
-    make
-    make preinstall
-  fi
+  echo "building kodi-gbm"
+  cd "$srcdir/kodi-build-gbm"
+  _args+=(
+    -DCORE_PLATFORM_NAME=gbm
+    -DAPP_RENDER_SYSTEM=gles
+  )
+
+  cmake "${_args[@]}" ../"xbmc-$_tag"
+  make
+  make preinstall
 }
 
 # kodi
@@ -252,7 +247,7 @@ package_kodi-devel-x11() {
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
     'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libvdpau' 'libxrandr'
     'libxslt' 'lirc' 'mariadb-libs' 'python' 'smbclient' 'taglib' 'libplist'
-    'tinyxml' "$pkgbase"
+    'tinyxml' 'dav1d' "$pkgbase"
   )
 
   cd kodi-build-x11
@@ -289,7 +284,7 @@ package_kodi-devel-gbm() {
     'bluez-libs' 'curl' 'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec'
     'libinput' 'libmicrohttpd' 'libnfs' 'libpulse' 'libva' 'libxkbcommon'
     'libxslt' 'lirc' 'mariadb-libs' 'python' 'smbclient' 'taglib' 'libplist'
-    'tinyxml' "$pkgbase"
+    'tinyxml' 'dav1d' "$pkgbase"
   )
 
   cd kodi-build-gbm
