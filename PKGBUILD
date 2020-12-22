@@ -3,7 +3,7 @@
 # Contributor: Holzhaus <jholthuis@mixxx.org>
 
 pkgname=mixxx_beta-git
-pkgver=r7882
+pkgver=r7884
 pkgrel=1
 pkgdesc="Digital DJ mixing software. 2.3 (beta) branch."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL2')
 groups=('pro-audio')
 depends=('chromaprint' 'flac' 'fftw' 'hidapi' 'lame' 'libsndfile' 'libmodplug' 'libid3tag' 'liblilv-0.so' 'libmad' 'libmp4v2' 'libportaudio.so' 
 'libportmidi.so' 'librubberband.so' 'libtheora' 'opusfile' 'protobuf' 'qt5-script'
-'qt5-svg' 'qt5-x11extras' 'qtkeychain' 'soundtouch' 'speex' 'taglib' 'upower')
+'qt5-svg' 'qt5-x11extras' 'qtkeychain' 'soundtouch' 'speex' 'taglib' 'upower' 'libebur128' 'qt5-declarative')
 makedepends=('git' 'glu' 'lv2' 'qt5-tools' 'cmake' 'vamp-plugin-sdk')
 #checkdepends=('xorg-server-xvfb')
 provides=('mixxx')
