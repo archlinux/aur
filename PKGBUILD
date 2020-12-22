@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Meyer <mail@bastimeyer.de>
 # Former maintainer: Ben Fox-Moore <ben.foxmoore@gmail.com>
 pkgname=streamlink-twitch-gui
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="A multi platform Twitch.tv browser for Streamlink"
 arch=("i686" "x86_64")
@@ -12,8 +12,8 @@ conflicts=("streamlink-twitch-gui-git")
 options=(!strip)
 source_i686=("https://github.com/streamlink/${pkgname}/releases/download/v${pkgver}/${pkgname}-v${pkgver}-linux32.tar.gz")
 source_x86_64=("https://github.com/streamlink/${pkgname}/releases/download/v${pkgver}/${pkgname}-v${pkgver}-linux64.tar.gz")
-sha256sums_i686=('427859bf9c8f7cff7a1054043d5ea425987b5878887c1d1ed8a6229261019cdf')
-sha256sums_x86_64=('02decf79fa0481e291b8fddca1136b6d3a85d0197749de7b4dff5d22fffa499f')
+sha256sums_i686=('fee46e7ef9e4dfef77375775799546f4dce2e6c5ba45e2f156fcf0521c86d569')
+sha256sums_x86_64=('3eb560af67a98322eab23985dbd46348a9594e50e6a2626fdeedeeade2b72679')
 
 package() {
 	cd "${srcdir}/${pkgname}"
@@ -30,9 +30,14 @@ package() {
 		"./LICENSE.txt" \
 		"./credits.html"
 
+	# copy appstream metainfo
+	install -Dm644 \
+		-t "${pkgdir}/usr/share/metainfo/" \
+		"./${pkgname}.appdata.xml"
+
 	# copy application content and remove unneeded files and dirs
 	cp -a "./" "${pkgdir}/opt/${pkgname}/"
-	rm -r "${pkgdir}/opt/${pkgname}/"{{add,remove}-menuitem.sh,LICENSE.txt,credits.html,icons/}
+	rm -r "${pkgdir}/opt/${pkgname}/"{{add,remove}-menuitem.sh,LICENSE.txt,credits.html,"${pkgname}.appdata.xml",icons/}
 
 	# create custom start script and disable version check
 	cat > "${pkgdir}/usr/bin/${pkgname}" <<-EOF
