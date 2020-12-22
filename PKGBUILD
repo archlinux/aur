@@ -78,7 +78,7 @@ depends=('gnutls' 'libtiff>=4.0.0' 'libpng>=1.5.7' 'krb5' 'libusb' 'libxcrypt')
   make BUILDROOT="${pkgdir}" install-headers install-libs
   # put this into the libs pkg to make other software find the libs(no pkg-config file included)
   mkdir -p "${pkgdir}"/usr/bin
-  install -m755 "${srcdir}"/"${pkgbase}"-${pkgver}/cups-config "${pkgdir}"/usr/bin/cups-config
+#  install -m755 "${srcdir}"/"${pkgbase}"-${pkgver}/cups-config "${pkgdir}"/usr/bin/cups-config
 #  install -m755 "${srcdir}"/"${pkgbase}"/cups-config "${pkgdir}"/usr/bin/cups-config
 
   # add license + exception
