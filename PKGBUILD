@@ -2,7 +2,7 @@
 
 _pkgbase='rcon'
 pkgname="python-${_pkgbase}"
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc='Python 3 RCON client library and scripts'
 arch=('any')
