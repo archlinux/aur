@@ -5,7 +5,7 @@
 
 pkgname=firefox-bin
 _pkgname=firefox
-pkgver=84.0
+pkgver=84.0.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - official prebuilt binary"
 arch=('x86_64')
@@ -18,13 +18,12 @@ optdepends=('ffmpeg: H264/AAC/MP3 decoding'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
-options=(!strip)
 provides=("firefox=$pkgver")
 conflicts=('firefox')
 source=(https://download-installer.cdn.mozilla.net/pub/firefox/releases/$pkgver/linux-$arch/en-US/firefox-$pkgver.tar.bz2
         $_pkgname.sh
         $_pkgname.desktop)
-sha256sums=('601e5a9a12ce680ecd82177c7887dae008d8f33690da43be1a690b76563cd992'
+sha256sums=('077cb7a8954ad544692a03bde4edd31751e1a819bd229413e35508984abee5ac'
             '9491f195066aa56f4f0bbc83e5f0581a460f4c34ee455ba24db312b540322703'
             'c64008cbf01956ce3dba693230670de58fa9487ad19f4ba76614af13beb1b8ef')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
