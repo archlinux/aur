@@ -9,7 +9,7 @@ pkgdesc="Skycoin Cryptocurrency Wallet; Binary Release"
 pkgver='0.27.1'
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 pkgrel=2
-arch=('x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel')
+arch=('x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm')
 url="https://${_pkggopath}"
 _url="https://downloads.${_projectname}.com/wallet"
 license=()
@@ -17,9 +17,10 @@ makedepends=()
 provides=( 'skycoin' )
 conflicts=( 'skycoin' )
 #bsdtar -czvf skycoin-scripts.tar.gz skycoin-scripts
-source=("${_pkgname}-scripts.tar.gz"
-) #"PKGBUILD.sig")
+source=("${_pkgname}-scripts.tar.gz")
+# "PKGBUILD.sig")
 sha256sums=('0738ce23beafc315cad3971afb9b210b0749df05e064db169aea618b5bbd5555')
+# 'SKIP')
 #https://downloads.skycoin.com/wallet/skycoin-0.27.1-gui-standalone-linux-x64.tar.gz
 #https://downloads.skycoin.com/wallet/skycoin-0.27.1-gui-standalone-linux-arm.tar.gz
 _release_url=("${_url}/${_pkgname}-${pkgver}-gui-standalone-linux")
