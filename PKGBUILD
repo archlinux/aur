@@ -1,7 +1,7 @@
 # Maintainer: Spencer Muise <smuise@spencermuise.ca>
 
 pkgname=calibre-web-git
-pkgver=0.6.3.r13.gf736a15
+pkgver=0.6.9.r277.g2d3ae71a
 pkgrel=1
 pkgdesc="Web app for browsing, reading and downloading eBooks stored in a Calibre database"
 arch=('any')
@@ -25,6 +25,7 @@ depends=(
   'python-iso639'
 )
 makedepends=('git')
+conflicts=('calibre-web')
 provides=('calibre-web')
 source=(
   'git+https://github.com/janeczku/calibre-web.git'
