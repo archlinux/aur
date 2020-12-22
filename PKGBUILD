@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=prism
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="An RTMP stream recaster / splitter"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/muesli/${pkgname}"
 license=('MIT')
 makedepends=('go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('06846e9ffab2bf26755b063db6a46d3ceba0d5fe65e19735a55ba9c415b77255')
+sha256sums=('da0171dcaa0a544bb32d2ec0ab8a2dd15cc9d36e07c83cbfc4241db6f388e7a4')
 
 prepare() {
     export GOPATH="$srcdir/gopath"

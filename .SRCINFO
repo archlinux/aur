@@ -1,6 +1,6 @@
 pkgbase = prism
 	pkgdesc = An RTMP stream recaster / splitter
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/muesli/prism
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = prism
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = https://github.com/muesli/prism/archive/v0.1.0/prism-0.1.0.tar.gz
-	sha256sums = 06846e9ffab2bf26755b063db6a46d3ceba0d5fe65e19735a55ba9c415b77255
+	source = https://github.com/muesli/prism/archive/v0.1.1/prism-0.1.1.tar.gz
+	sha256sums = da0171dcaa0a544bb32d2ec0ab8a2dd15cc9d36e07c83cbfc4241db6f388e7a4
 
 pkgname = prism
 
