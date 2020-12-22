@@ -2,7 +2,7 @@
 
 pkgname=bootterm
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple, reliable and powerful terminal designed to ease connection to ephemeral serial ports"
 arch=('x86_64' 'armv7h' 'armv8')
 url="https://github.com/wtarreau/bootterm/"
@@ -12,7 +12,7 @@ sha256sums=('5beef823c9655f09555bfe4a9ea64e81f51f10582f64655a0fe939a1542e53d3')
 
 build() {
   cd $pkgname-$pkgver
-  make
+  make V=1 CFLAGS="$CFLAGS $CPPFLAGS" LDFLAGS="$LDFLAGS"
 }
 
 package() {
