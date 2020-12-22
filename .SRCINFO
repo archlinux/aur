@@ -1,6 +1,6 @@
 pkgbase = archbashstrap
 	pkgdesc = Install/Bootstrap Arch Linux without pacman
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/BiteDasher/archbashstrap
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = archbashstrap
 	depends = coreutils
 	depends = curl
 	depends = tar
-	source = archbashstrap-1.1.tar.gz::https://github.com/BiteDasher/archbashstrap/archive/1.1.tar.gz
-	sha256sums = dfb0715b12ed13e1ee5d7c2fd6ab99a50cbc403ca3e2746c76481362b3164f7c
+	source = archbashstrap-1.2.tar.gz::https://github.com/BiteDasher/archbashstrap/archive/1.2.tar.gz
+	sha256sums = eb205490b23b95a4d82ad19238d2c0077eb44b7da4c44fe23a4aee8d5d5d6078
 
 pkgname = archbashstrap
 
