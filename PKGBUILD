@@ -3,7 +3,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=youtube-dl
-pkgver=2020.12.14
+pkgver=2020.12.22
 pkgrel=1
 pkgdesc="A command-line program to download videos from YouTube.com and a few more sites"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('ffmpeg: for video post-processing'
             'atomicparsley: for embedding thumbnails into m4a files'
             'python-pycryptodome: for hlsnative downloader')
 source=("https://github.com/ytdl-org/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.sig})
-sha256sums=('9681a5a515cb44ef23c28bd77f6d79d531fdbc7325bdf4bbb7966260b7b64273'
+sha256sums=('cc95ce1477afeee0e0d3a5e5c92baf52d223b121d950795367d8a3185bf6f76c'
             'SKIP')
 validpgpkeys=('ED7F5BF46B3BBED81C87368E2C393E0F18A9236D') # Sergey M. <dstftw@gmail.com>
 
