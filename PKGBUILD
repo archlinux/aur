@@ -2,7 +2,7 @@
 # Co-Maintainer: McModder <aur @ modder.pw>
 # PLEASE do not mark it out-of date because "2.xx is released", *2.xx a separate project with same name from other dev team*
 pkgname=tlauncher
-pkgver=1.118.9
+pkgver=1.118.11
 pkgrel=1
 epoch=1
 pkgdesc='TLauncher Legacy is freeware launcher of Minecraft.'
@@ -21,10 +21,11 @@ _librepo='https://u.tlauncher.ru/repo/libraries'
 # _librepo='https://tlaun.ch/repo/libraries'
 # _librepo='https://cdn.turikhay.ru/tlauncher/repo/libraries'
 
+_bootstrap_version='1.10.1'
 _bootstrap_checksum='4dda1474795f8723d4a98643d2e1e1da3b78f73f601d125c0002306b6c8c2c2e'
-_launcher_checksum='d4655c508dfeddb33dbb9517af20f75a342ddcaac9016af0a0288fe612ea7246'
+_launcher_checksum='8cf8b2eb7ee85e8f1e2df0210ed168114a9afaf771959f6b616ec4eb813a09d7'
 
-source=("tl-bootstrap-${pkgver}.jar::${_repo}/${_branch}/bootstrap/${_bootstrap_checksum}.jar"
+source=("tl-bootstrap-${_bootstrap_version}.jar::${_repo}/${_branch}/bootstrap/${_bootstrap_checksum}.jar"
         "tl-launcher-${pkgver}.jar::${_repo}/${_branch}/launcher/${_launcher_checksum}.jar"
 
         "${_librepo}/org/jdom/jdom/2.0.2/jdom-2.0.2.jar"
@@ -48,7 +49,7 @@ source=("tl-bootstrap-${pkgver}.jar::${_repo}/${_branch}/bootstrap/${_bootstrap_
         'tlauncher.install'
         'tlauncher.desktop'
         'tlauncher.bash')
-noextract=("${source[@]##*/}" "tl-bootstrap-${pkgver}.jar" "tl-launcher-${pkgver}.jar")
+noextract=("${source[@]##*/}" "tl-bootstrap-${_bootstrap_version}.jar" "tl-launcher-${pkgver}.jar")
 sha256sums=("${_bootstrap_checksum}"
             "${_launcher_checksum}"
 
@@ -79,7 +80,7 @@ package() {
   install -Dm0644 "${srcdir}/tlauncher.desktop" "${pkgdir}/usr/share/applications/tlauncher.desktop"
   install -Dm0755 "${srcdir}/tlauncher.bash" "${pkgdir}/usr/bin/tlauncher"
 
-  install -Dm0644 "${srcdir}/tl-bootstrap-${pkgver}.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"
+  install -Dm0644 "${srcdir}/tl-bootstrap-${_bootstrap_version}.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"
   install -Dm0644 "${srcdir}/tl-launcher-${pkgver}.jar" "${pkgdir}/opt/tlauncher/launcher.jar"
 
   install -Dm0644 "${srcdir}/jdom-2.0.2.jar" "${pkgdir}/opt/tlauncher/lib/org/jdom/jdom/2.0.2/jdom-2.0.2.jar"
