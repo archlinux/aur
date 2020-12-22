@@ -1,8 +1,12 @@
 pkgbase = binserve-git
+	pkgdesc = A blazingly fast static web server with routing, templating, and security in a single binary you can set up with zero code - written in Rust.
 	pkgver = 0.1.0.r28.g4bee064
 	pkgrel = 1
+	url = https://github.com/mufeedvh/binserve
 	arch = any
 	license = GPL
+	makedepends = cargo
+	conflicts = binserve
 	source = git+https://github.com/mufeedvh/binserve
 	md5sums = SKIP
 
