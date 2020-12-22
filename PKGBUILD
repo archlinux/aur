@@ -1,5 +1,4 @@
 pkgname=cmm-svn
-groups=('kos32-dev')
 pkgver=r8466
 pkgrel=1
 pkgdesc="SPHINX C-- Compiler . C-- is a programming language occupying an intermediate position between Assembler and C."
@@ -11,9 +10,9 @@ arch=('i686' 'x86_64')
 makedepends=('cmake')
 conflicts=('cmm')
 md5sums=('SKIP')
+provides=('cmm' 'c--')
 
-pkgver() 
-{
+pkgver() {
     cd $srcdir/cmm
     echo r$(svnversion)
 }
