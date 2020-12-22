@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Wombat
+Comment=A graphical gRPC client written in Go
+Path=/usr/bin
+Exec=wombat
+Icon=wombat
+Terminal=false
+Categories=Network Education;Languages;Java;
