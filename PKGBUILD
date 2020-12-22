@@ -1,31 +1,39 @@
 # Maintainer:   M.Reynolds <blackboxnetworkproject@gmail.com>
+# Maintainer:	Adek Maulana <adek@techdro.id>
 # Contributor:  Bruno Nova <brunomb.nova@gmail.com>
 
-pkgname=nautilus-admin
-pkgver=1.1.9
+_pkgname=nautilus-admin
+pkgname=$_pkgname-git
+pkgver=1.1.9.e2ec2dc
 pkgrel=1
 pkgdesc="Extension for Nautilus to do administrative operations"
 arch=('any')
-url="https://github.com/brunonova/$pkgname"
+url="https://github.com/adekmaulana/$_pkgname"
 license=('GPL3')
 depends=('nautilus' 'python-nautilus' 'polkit')
 makedepends=('cmake>=2.6' 'gettext')
+conflicts=($_pkgname)
 optdepends=('gedit: to use the "Edit as Administrator" action'
             'gnome-terminal: to use the "Run as Administrator" action')
-install="$pkgname.install"
-source=("https://github.com/brunonova/$pkgname/releases/download/v$pkgver/${pkgname}_$pkgver.tar.xz")
-sha256sums=('dc4acf8f4da260dec633981ea52b8932a2320a1c0cbc117a4479066b7e4eb41b')
+install="${pkgname/%-git}.install"
+source=("git+${url}")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  printf "1.1.9.%s" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-    cd "$srcdir"
+    cd "$srcdir/$_pkgname"
     cmake . -DCMAKE_INSTALL_PREFIX=/usr
     make
 }
 
 package() {
-    cd "$srcdir"
+    cd "$srcdir/$_pkgname"
     make DESTDIR="$pkgdir" install
-    install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-    install -Dm644 "NEWS" "$pkgdir/usr/share/doc/$pkgname/NEWS"
-    install -Dm644 "AUTHORS" "$pkgdir/usr/share/doc/$pkgname/AUTHORS"
+    install -Dm644 "README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
+    install -Dm644 "NEWS" "$pkgdir/usr/share/doc/$_pkgname/NEWS"
+    install -Dm644 "AUTHORS" "$pkgdir/usr/share/doc/$_pkgname/AUTHORS"
 }
