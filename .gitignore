@@ -1,5 +1,6 @@
 *.pkg.tar.xz
 *.pkg.tar.zst
 inkdrop-*.zip
+*.part
 pkg/
 src/
