@@ -1,7 +1,7 @@
 pkgbase = fcitx5-anthy-git
 	pkgdesc = Anthy input method for fcitx5
-	pkgver = 5.0.0.r1.g54d32ac
-	pkgrel = 2
+	pkgver = 5.0.1.r3.gbf307c3
+	pkgrel = 3
 	url = https://github.com/fcitx/fcitx5-anthy
 	arch = x86_64
 	license = GPL
@@ -13,6 +13,7 @@ pkgbase = fcitx5-anthy-git
 	depends = hicolor-icon-theme
 	provides = fcitx5-anthy
 	conflicts = fcitx-anthy
+	conflicts = fcitx5-anthy
 	source = git+https://github.com/fcitx/fcitx5-anthy.git
 	sha512sums = SKIP
 
