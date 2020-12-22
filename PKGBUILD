@@ -47,11 +47,11 @@ _1k_HZ_ticks=
 
 pkgbase=linux-bfq-dev
 # pkgname=('linux-bfq-dev' 'linux-bfq-dev-headers' 'linux-bfq-dev-docs')
-_major=5.9
-_minor=16
+_major=5.10
+_minor=2
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=3
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -68,7 +68,7 @@ _bfq_rev_path="bfq-reverts-all"
 _bfq_rev_patch="0001-bfq-reverts.patch"
 _bfq_path="bfq-dev-lucjan"
 _bfq_ver="v13"
-_bfq_rel="r2K201210"
+_bfq_rel="r2K201215"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _gcc_path="cpu-patches-sep"
 _gcc_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
@@ -78,11 +78,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v9-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v9-sep/0002-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch"
-        "${_lucjanpath}/arch-patches-v9-sep/0003-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch"
-        "${_lucjanpath}/arch-patches-v9-sep/0004-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
-        "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.0-causes-compilation-erro.patch"
+        "${_lucjanpath}/arch-patches-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-sep/0002-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch"
+        "${_lucjanpath}/arch-patches-sep/0003-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch"
+        "${_lucjanpath}/arch-patches-sep/0004-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
          # the main kernel config files
         'config')
 
@@ -326,17 +325,16 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('6b810157564a4c78b2bc615eabd6297922a930d118b9288d1f95860407817bb6b420e21faaef98a4b97045723c31daad67190a954e88e58720c689356e2121b9'
+sha512sums=('1254a6e0c47e5f134a66fce4013c84b20cbdda9fd086b43049b5cd28531e7b610b0d7366d87bcf1bc12a5f17ad5e4f6495a842c15f6a7588c586326cfa57d346'
             'SKIP'
-            '7d30c34e75c2800d93c01e34ca23a00cda24d2f44bb837a48f6789c50ad69f7db4cc93d1fc75e43cfa4d4f4e9c612330dd595c56c13f8abb5d062338ea30697c'
-            '5b959cc4e48c95cdc4e12cae75a15a1984693a0e504cf32db66655923a3a8a62e5d0a10e886fbb0359a800055b4fa7158d7bea0d5f19212fefdd8cf86255f4d5'
-            '96427eecb0078ce57a40ef4ee78d3576216f27390ba6b9dfbb851f4d969558a82b698cc633217ad8f6b9d991e7eaebd613ed4bd5741cafe7fa40b2502dacd43a'
-            'a652b0dabe595337cefc30abd362004490d0019796375f609048e7f0e25c6a27fd3e7901f552f558a48d47f55e9116a31f41db4d291caa8f9551d97a18b0549b'
-            '5029a22ba2f445184131fa7101c2205b6c4cc3874a27490134a432446e1930173141cd83d1faea536c42b64d9bade11ecf09d0bd4059b73746eaf41c4560c90a'
-            '47781f92e6ca8334acae59dec17011a411eca0e70e57bac65ce736fcf44c6c77c639b498488f0cb457a0382ba55f34de41c3db7f4da97cd8206c91855fbba559'
-            '04c55bd1c192da753f537ac139f102fdcebea9af57712914f0d2bf0f9b77be7caa3e18356bea40ec015dbf74ac056285989e7c6fdd78a1ff482ad00271438fc9'
-            'b1abc4b21191c841326db341aeea6eac9918a4628f38e32f616a8eeeb9919395656fc4b805110dce93aa38188172fb672831fd76e848b3711fcd6ea9115118c6'
-            'f8c1eefa517cd62bd914889693492fe56c52b1f127dcb7aa206b8c83077de25b0794454b356e88206840a89b0c222894a04bca8580b373a45d482cad68f6f802')
+            '45fa721352143304eceff87649986fd42fcf4ae369f15ba704a435ab2f107dfe41c050eac25cd9167d2cc73d569aad8501cbd13477b62bad9724e4240f36ab15'
+            'c3e610a33de6ba5428ac945e84e4dcb256df0c3ed4664345d941abc18ef3ee9d719bd88a365dcfc0451daab596b612253ba7f307fe9e2e8f73da977b3a8cdd17'
+            '34e21ecc4ef0d07707283427fa82d561a9573d670e80ccd41f7d9cb595473b3844b8df7aeffcb4fe82d9deeef0a4d4e6aef663eb1a7a397fa181f06f418a0d6d'
+            'd55f954a92ca71e1e45735c6971d930bf3a29d37df5a9ba57b7d7488def7c183b9376f5fb8f17f39991ff2e0dee6cf6625469d1e18ed6a9781b61247fc1b1b64'
+            '649004ba86e9fe38a863a56a65f15ddea1436aaf9b3d1fd0854ca5fce10a0504d0b0da09e4b2ba5c13274210c4d2e6324f3d65e4bff11492cd7672bf3c5ffac3'
+            '0c006ff36e74e4a30665310605eb2345bae8201d9b01665e25f0a986bb551a7aa91efd287395ea80fbf198ba2c8f036718ac443e8df14b4e5f56ce371991a21a'
+            '0bfabfc70ac8fef732c24206ff2e8d962412a18655036341dd049683e941e503b255cfd1ffa0c9ace429278369e910d0afa2ff25986482d3c896160738620dab'
+            'd7ab6e5f8259f885f70d9ad1ab63fff8d0ab5d5542e677648b143542797f4b9e2e57505dc92608e6c15b4ed272e586908b56eefac63aa07fe396096fc6b22091')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
