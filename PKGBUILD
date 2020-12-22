@@ -2,7 +2,7 @@
 # Maintainer: Jochum Döring <jooch at gmx dot com>
 
 pkgname=interlink-gtk2-bin
-pkgver=52.9.7634
+pkgver=52.9.7661
 pkgrel=1
 pkgdesc="Interlink is a Mail, RSS, and Newsgroups client based on Mozilla-sourced Community Code and built on the Unified XUL Platform."
 arch=('x86_64')
@@ -24,7 +24,7 @@ source_x86_64=("http://repository.binaryoutcast.com/projects/interlink/releases/
 
 sha256sums=('df4404ee7715b5686143223690ac7a5562fd285cf0d3f3957b72b78878f30649')
 
-sha256sums_x86_64=('2d5331240f2f015ff8b698835eae18845c1fc17482396d60e374fd89683dad13')
+sha256sums_x86_64=('73f71395ff1cbaf8ba5d9865f03fa1871320ec75b22ed3860b50b97a2e960e87')
 
 package() {
   install -d "$pkgdir"/usr/{bin,lib}
