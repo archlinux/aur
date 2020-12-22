@@ -1,7 +1,7 @@
 # Maintainer: Jean-Michaël Celerier <jeanmichael.celerier at gmail dot com>
 pkgname=cninja
-pkgver=3.7.4
-release_tag=v3.7.4
+pkgver=3.7.5
+release_tag=v3.7.5
 pkgrel=1
 pkgdesc="Opinionated CMake config manager"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=("$pkgname=$pkgver")
 conflicts=()
 replaces=()
 source=("https://github.com/jcelerier/cninja/releases/download/v${pkgver}/cninja-v${pkgver}-src.tar.gz")
-sha512sums=('c9579257b331abc540dcd6365bf90d3a552a74403adc59429fa7cced6e9afea3499caad7a6da6771265482130a7beb1ab8ec5966284303ad8d4a3f3b24f9cfad')
+sha512sums=('0a169b1e64dce25887ad422026aed020a3db7bbce0a64311c3bb3d4b937c70f3b3fb92093420db34e7a7c1b71abdcefc68e09438c61fc9ff0fc8b50e17588821')
 
 build() {
   cd "$srcdir"
