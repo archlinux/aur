@@ -58,8 +58,8 @@ build() {
      --disable-mallinfo \
      --without-snmp-address \
      --disable-libusb \
-     --disable-libpaper 
-#     --with-optim="$CFLAGS"
+     --disable-libpaper \
+     --with-optim="" # cant find C compiler using default "$CFLAGS"
 
   make
 }
