@@ -3,8 +3,8 @@
 
 pkgname=libgmp-static
 pkgver=6.2.0
-pkgrel=1
-pkgdesc='A free library for arbitrary precision arithmetic, but only includes libgmp.a'
+pkgrel=2
+pkgdesc='A free library for arbitrary precision arithmetic, but only includes libgmp.a and libgmpxx.a'
 arch=('x86_64')
 depends=("gmp>=$pkgver")
 url=https://gmplib.org
@@ -15,8 +15,9 @@ sha512sums=('9975e8766e62a1d48c0b6d7bbdd2fccb5b22243819102ca6c8d91f0edd2d3a1cef2
 package() {
     cd gmp-$pkgver
 
-    ./configure --prefix=$pkgdir/usr --enable-static --disable-shared
+    ./configure --prefix=$pkgdir/usr --enable-static --disable-shared --enable-cxx
     make
+    make check
     make install
 
     rm -rf $pkgdir/usr/include
