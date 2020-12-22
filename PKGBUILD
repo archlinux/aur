@@ -2,16 +2,16 @@
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 
 pkgname=xorg-xwayland-git
-pkgver=1.20.0.r795.gf95d81e88
-pkgrel=2
+pkgver=1.20.0.r804.g5e3900904
+pkgrel=1
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
 url="https://xorg.freedesktop.org"
 pkgdesc="Run X clients under Wayland (git version)"
-depends=('nettle' 'libepoxy' 'systemd-libs' 'libxfont2' 
+depends=('nettle' 'libegl' 'libepoxy' 'systemd-libs' 'libxfont2'
          'pixman' 'xorg-server-common')
-makedepends=('meson' 'git' 
+makedepends=('meson' 'git'
              'xorgproto' 'xtrans'
              'pixman' 'libxkbfile' 'libxfont2' 'dbus'
              'xorg-font-util'
