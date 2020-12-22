@@ -1,0 +1,16 @@
+pkgbase = amfora-git
+	pkgdesc = Terminal browser for the Gemini protocol
+	pkgver = 1.7.1.r2.gd710085
+	pkgrel = 1
+	url = https://github.com/makeworld-the-better-one/amfora
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	provides = amfora
+	conflicts = amfora
+	source = git+https://github.com/makeworld-the-better-one/amfora.git
+	md5sums = SKIP
+
+pkgname = amfora-git
+
