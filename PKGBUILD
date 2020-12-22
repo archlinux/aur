@@ -10,7 +10,7 @@
 
 pkgname=ungoogled-chromium
 pkgver=87.0.4280.88
-pkgrel=1
+pkgrel=3
 _launcher_ver=6
 _gcc_patchset=9
 _pkgname=$(echo $pkgname | cut -d\- -f1-2)
@@ -44,6 +44,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-drirc-disable-10bpc-color-configs.conf
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
         wayland-egl.patch
+        icu68.patch
+        v8-icu68.patch
         subpixel-anti-aliasing-in-FreeType-2.8.1.patch)
 sha256sums=('3e4645328735ef60db78d1a313efb3770a3edeaede90d076414df52f567a09c0'
             $_uc_sum
@@ -51,6 +53,8 @@ sha256sums=('3e4645328735ef60db78d1a313efb3770a3edeaede90d076414df52f567a09c0'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             'c99934bcd2f3ae8ea9620f5f59a94338b2cf739647f04c28c8a551d9083fa7e9'
             'bf86923eaee5529ab9fb6148bd6c33a73c8746ab1b4ade0cd3b761109bc55826'
+            '38fb5218331d6e03915490dab64f7b8bf26833a581d1aaa02090437c67e9439c'
+            '6e919c9712d8fe6c2918778df1f8c2ee0675a87a48be5d2aaa54e320703ced4b'
             '1e2913e21c491d546e05f9b4edf5a6c7a22d89ed0b36ef692ca6272bcd5faec6')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -93,6 +97,8 @@ prepare() {
     third_party/libxml/chromium/*.cc
 
   # Upstream fixes
+  patch -Np1 -i ../icu68.patch
+  patch -Np1 -d v8 <../v8-icu68.patch
   patch -Np1 -d third_party/skia <../subpixel-anti-aliasing-in-FreeType-2.8.1.patch
 
   # Fixes for building with libstdc++ instead of libc++
