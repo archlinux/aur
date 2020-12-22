@@ -1,15 +1,15 @@
 pkgname=receptor-git
 _pkgname=receptor
-pkgver=r120.a730ef1
+pkgver=r149.6255f9f
 provides=('synapse')
 conflicts=('synapse')
 pkgrel=1
 pkgdesc='Web frontend for the synapse bittorrent client'
 arch=('any')
-url='https://github.com/SirCmpwn/receptor'
+url='https://git.sr.ht/~sircmpwn/receptor'
 license=('BSD')
 makedepends=('git' 'npm')
-source=(git+https://github.com/SirCmpwn/receptor)
+source=(git+https://git.sr.ht/~sircmpwn/receptor)
 sha256sums=('SKIP')
 
 pkgver() {
