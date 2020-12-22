@@ -9,10 +9,7 @@ arch=('x86_64')
 license=('Apache' 'custom')
 #url="https://www.cups.org/"
 url="https://github.com/OpenPrinting/cups"
-makedepends=('libtiff' 'libpng' 'acl' 'pam' 'xdg-utils' 'krb5' 'gnutls'
-             'cups-filters' 'bc' 'colord' 'xinetd' 'gzip' 'autoconf' 'libusb' 'dbus'
-             'hicolor-icon-theme' 'libxcrypt' 'inetutils'
-             'git')
+makedepends=('libtiff' 'libpng' 'krb5' 'gnutls' 'autoconf' 'git' 'libxcrypt')
 provides=(libcups)
 conflicts=(libcups)
 source=(git://github.com/apple/cups.git)
@@ -27,7 +24,7 @@ build() {
   cd cups
 
   # The build system uses only DSOFLAGS but not LDFLAGS to build some libraries.
-  export DSOFLAGS=${LDFLAGS}
+#  export DSOFLAGS=${LDFLAGS}
 
   # use fixed cups user (id 209) since systemd adds "lp" group without a fixed id
   ./configure --prefix=/usr \
@@ -61,9 +58,8 @@ build() {
      --disable-mallinfo \
      --without-snmp-address \
      --disable-libusb \
-     --disable-libpaper
-     #--with-php=/usr/bin/php-cgi
-     --with-optim="$CFLAGS" #--help
+     --disable-libpaper \
+     --with-optim="$CFLAGS"
 
   make
 }
