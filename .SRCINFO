@@ -1,7 +1,7 @@
 pkgbase = naiveproxy
 	pkgdesc = Make a fortune quietly
-	pkgver = 81.0.4044.92
-	pkgrel = 1
+	pkgver = 83.0.4103.61
+	pkgrel = 2
 	url = https://github.com/klzgrad/naiveproxy
 	arch = x86_64
 	arch = amd64
@@ -28,9 +28,9 @@ pkgbase = naiveproxy
 	conflicts = naiveproxy-bin
 	backup = etc/naiveproxy/config.json
 	source = build.sh
-	source = naiveproxy-81.0.4044.92-1.tar.gz::https://github.com/klzgrad/naiveproxy/archive/v81.0.4044.92-1.tar.gz
+	source = naiveproxy-83.0.4103.61-2.tar.gz::https://github.com/klzgrad/naiveproxy/archive/v83.0.4103.61-2.tar.gz
 	md5sums = 3aa2fe322a99a603b4afb27980a77472
-	md5sums = 2621623a7b0ad11e17e8aaf6157ed2ed
+	md5sums = 45c2a33e747b179a49e8a085a77b2dcf
 
 pkgname = naiveproxy
 

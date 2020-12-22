@@ -2,8 +2,8 @@
 
 pkgname=naiveproxy
 pkgdesc='Make a fortune quietly'
-pkgver=81.0.4044.92
-pkgrel=1
+pkgver=83.0.4103.61
+pkgrel=2
 arch=('x86_64' 'amd64' 'i386' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/klzgrad/naiveproxy'
 license=('BSD')
@@ -16,7 +16,7 @@ source=(
 optdepends=("ccache: Speed up compilation")
 backup=(etc/naiveproxy/config.json)
 md5sums=('3aa2fe322a99a603b4afb27980a77472'
-         '2621623a7b0ad11e17e8aaf6157ed2ed')
+         '45c2a33e747b179a49e8a085a77b2dcf')
 provides=('naiveproxy')
 conflicts=('naiveproxy-git' 'naiveproxy-bin')
 
