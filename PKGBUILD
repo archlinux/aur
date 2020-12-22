@@ -11,7 +11,7 @@ license=('Apache' 'custom')
 url="https://github.com/OpenPrinting/cups"
 makedepends=('libtiff' 'libpng' 'acl' 'pam' 'xdg-utils' 'krb5' 'gnutls'
              'cups-filters' 'bc' 'colord' 'xinetd' 'gzip' 'autoconf' 'libusb' 'dbus'
-             'hicolor-icon-theme'n'libxcrypt' 'inetutils'
+             'hicolor-icon-theme' 'libxcrypt' 'inetutils'
              'git')
 provides=(libcups)
 conflicts=(libcups)
