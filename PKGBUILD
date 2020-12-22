@@ -2,7 +2,7 @@
 
 pkgname=mutter-choppy-mouse-fix
 _pkgname=mutter
-pkgver=3.38.2
+pkgver=3.38.2+4+g00e247ed7
 pkgrel=1
 pkgdesc="A window manager for GNOME (with a little patch to fix mouse stutter/choppiness, especially for games)"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -14,15 +14,16 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          xorg-server-xwayland graphene)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server sysprof)
 checkdepends=(xorg-server-xvfb)
-provides=(mutter libmutter-7.so=0-64)
+provides=(mutter libmutter-7.so)
 conflicts=(mutter)
 groups=(gnome)
 install=mutter.install
-_commit=9b9051c2172078e623e8a4b0e45e38004c394a92  # tags/3.38.2^0
+#_commit=9b9051c2172078e623e8a4b0e45e38004c394a92  # tags/3.38.2^0
+_commit=00e247ed7af9d762186779024bec4c3c5b9439c7  # gnome-3-38
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/168.patch")
 sha256sums=('SKIP'
-	    'f9e71b14c791ac7553ff4ed2d0d5b612fc886c5aa771587965a6ffd99cb98b86')
+            'f9e71b14c791ac7553ff4ed2d0d5b612fc886c5aa771587965a6ffd99cb98b86')
 
 pkgver() {
   cd $_pkgname
