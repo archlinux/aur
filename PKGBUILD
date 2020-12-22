@@ -3,19 +3,19 @@
 pkgname=ukbprep-bin
 pkgver=20201213
 pkgrel=1
-pkgdesc="UK Biobank file handlers"
+pkgdesc='UK Biobank file handlers'
 arch=('x86_64')
-url="https://biobank.ndph.ox.ac.uk/showcase/download.cgi"
+url='https://biobank.ndph.ox.ac.uk/showcase/download.cgi'
 license=('unknown')
 makedepends=(gcc sed)
 provides=(gfetch ukbconv ukbfetch ukblink ukbmd5 ukbunpack)
 source=(
-    gfetch_linkset.tar::https://biobank.ndph.ox.ac.uk/showcase/showcase/util/gfetch_linkset.tar
-    ukbconv::https://biobank.ndph.ox.ac.uk/showcase/util/ukbconv
-    ukbfetch_linkset.tar::https://biobank.ndph.ox.ac.uk/showcase/showcase/util/ukbfetch_linkset.tar
-    ukblink_linkset.tar::https://biobank.ndph.ox.ac.uk/showcase/showcase/util/ukblink_linkset.tar
-    ukbmd5::https://biobank.ndph.ox.ac.uk/showcase/util/ukbmd5
-    ukbunpack::https://biobank.ndph.ox.ac.uk/showcase/util/ukbunpack
+    'gfetch_linkset.tar::https://biobank.ndph.ox.ac.uk/showcase/showcase/util/gfetch_linkset.tar'
+    'ukbconv::https://biobank.ndph.ox.ac.uk/showcase/util/ukbconv'
+    'ukbfetch_linkset.tar::https://biobank.ndph.ox.ac.uk/showcase/showcase/util/ukbfetch_linkset.tar'
+    'ukblink_linkset.tar::https://biobank.ndph.ox.ac.uk/showcase/showcase/util/ukblink_linkset.tar'
+    'ukbmd5::https://biobank.ndph.ox.ac.uk/showcase/util/ukbmd5'
+    'ukbunpack::https://biobank.ndph.ox.ac.uk/showcase/util/ukbunpack'
 )
 noextract=(
     gfetch_linkset.tar
@@ -57,8 +57,6 @@ build() {
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/bin"
     cd "$srcdir"
-    chmod 755 gfetch ukbconv ukbfetch ukblink ukbmd5 ukbunpack
-    cp -L gfetch ukbconv ukbfetch ukblink ukbmd5 ukbunpack "$pkgdir/usr/bin"
+    install -Dm755 gfetch ukbconv ukbfetch ukblink ukbmd5 ukbunpack -t "$pkgdir/usr/bin/"
 }

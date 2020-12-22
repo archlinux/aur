@@ -1,3 +1,5 @@
+*.tar
+*.tar.zst
 gfetch*
 pkg/
 src/
@@ -5,4 +7,4 @@ ukbconv*
 ukbfetch*
 ukblink*
 ukbmd5*
-ukbunpack
+ukbunpack*
