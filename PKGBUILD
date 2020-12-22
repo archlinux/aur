@@ -18,16 +18,16 @@ source=("git+https://gitlab.gnome.org/GNOME/at-spi2-core.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	  cd $pkgname
+	  cd at-spi2-core
 	    git describe --tags | sed 's/^AT_SPI2_CORE_//;s/_/./g;s/-/+/g'
     }
 
 prepare() {
-	  cd $pkgname
+	  cd at-spi2-core
   }
 
 build() {
-	  arch-meson $pkgname build \
+	  arch-meson at-spi2-core build \
 		      -D default_bus=dbus-broker \
 		      -D docs=false
 	    meson compile -C build
