@@ -2,7 +2,7 @@
 
 pkgname=cherrytree-git
 _pkgname="${pkgname%%-git}"
-pkgver=0.99.25.r22.g7f00d91b
+pkgver=0.99.27.r0.g86ad4015
 pkgrel=1
 pkgdesc="Hierarchical note-taking application, git version"
 arch=('x86_64')
@@ -34,6 +34,7 @@ build() {
   cmake \
 	-B "${_pkgname}/build" \
 	-S "${_pkgname}" \
+	-DBUILD_GMOCK:BOOL=OFF \
 	-DBUILD_TESTING:BOOL=OFF \
 	-Wno-dev
   make -C "${_pkgname}/build"
