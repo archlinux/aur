@@ -1,7 +1,7 @@
 pkgbase = locksmith-git
 	pkgdesc = A simple password generator applet. Designed for Pantheon Shell
 	pkgver = r128.aa677b5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ChristopherNugent/Locksmith
 	arch = i686
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = locksmith-git
 	provides = locksmith
 	provides = locksmith-git
 	conflicts = locksmith
+	conflicts = vala-git
 	source = git+https://github.com/ChristopherNugent/Locksmith.git
 	md5sums = SKIP
 

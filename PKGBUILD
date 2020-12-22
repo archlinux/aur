@@ -6,7 +6,7 @@ _author=ChristopherNugent
 _pkgname=locksmith
 pkgname=("${_pkgname}-git")
 pkgver=r128.aa677b5
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple password generator applet. Designed for Pantheon Shell"
 arch=('i686' 'x86_64')
 url="https://github.com/${_author}/${_gitname}"
@@ -15,7 +15,7 @@ depends=('gtk3' 'granite' 'libgee')
 optdepends=('')
 makedepends=('git' 'meson' 'vala<0.46.0-1' 'debhelper')
 provides=("${_pkgname}" "${pkgname}")
-conflicts=("${_pkgname}")
+conflicts=("${_pkgname}" "vala-git")
 source=("git+${url}.git")
 md5sums=('SKIP')
 
