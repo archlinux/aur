@@ -1,7 +1,7 @@
 # Maintainer: alienzj <alienchuj@gmail.com>
 
 pkgname=geph4-git
-pkgver=r141.c162877
+pkgver=r188.aabec34
 pkgrel=1
 pkgdesc='A command-line Geph4 tools'
 arch=('x86_64')
@@ -36,6 +36,7 @@ pkgver() {
 build() {
     cd geph4
     cargo build --release --manifest-path=geph4-client/Cargo.toml
+    cargo build --release --manifest-path=geph4-vpn-helper/Cargo.toml
     cargo build --release --manifest-path=geph4-binder/Cargo.toml
     cargo build --release --manifest-path=geph4-bridge/Cargo.toml
     cargo build --release --manifest-path=geph4-exit/Cargo.toml
@@ -45,6 +46,7 @@ package() {
     cd geph4
 
     install -Dm755 target/release/geph4-client "$pkgdir/usr/bin/geph4-client"
+    install -Dm755 target/release/geph4-vpn-helper   "$pkgdir/usr/bin/geph4-vpn-helper"
     install -Dm755 target/release/geph4-binder "$pkgdir/usr/bin/geph4-binder"
     install -Dm755 target/release/geph4-bridge "$pkgdir/usr/bin/geph4-bridge"
     install -Dm755 target/release/geph4-exit   "$pkgdir/usr/bin/geph4-exit"
