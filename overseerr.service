@@ -5,12 +5,13 @@ After=network-online.target
 
 [Service]
 EnvironmentFile=/etc/conf.d/overseerr
+Environment=NODE_ENV=production
 User=overseerr
 Group=overseerr
 Type=exec
 Restart=on-failure
 WorkingDirectory=/usr/lib/overseerr
-ExecStart=/usr/bin/yarn start
+ExecStart=/usr/bin/node dist/index.js
 
 [Install]
 WantedBy=multi-user.target
