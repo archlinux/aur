@@ -1,7 +1,7 @@
 pkgbase = cherrytree
 	pkgdesc = Hierarchical note-taking application
-	pkgver = 0.99.26
-	pkgrel = 2
+	pkgver = 0.99.27
+	pkgrel = 1
 	url = https://www.giuspen.com/cherrytree/
 	arch = x86_64
 	license = GPL3
@@ -11,8 +11,8 @@ pkgbase = cherrytree
 	depends = gtksourceviewmm
 	depends = libxml++2.6
 	depends = uchardet
-	source = https://www.giuspen.com/software/cherrytree_0.99.26.tar.xz
-	sha256sums = 29aaabea722faeaaed4e1142551dfeb2e022e5bce25ebccd626d74fe0cd3572e
+	source = https://www.giuspen.com/software/cherrytree_0.99.27.tar.xz
+	sha256sums = 1c10020eef6e222bbdaa87b9d15d85b703380aba4727a2fbd0f09f8cc353c606
 
 pkgname = cherrytree
 
