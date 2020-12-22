@@ -1,0 +1,21 @@
+pkgbase = gog-pine
+	pkgdesc = Pine is an open world action adventure simulation game.
+	pkgver = 1.13
+	pkgrel = 1
+	url = https://www.gog.com/game/pine
+	arch = x86_64
+	groups = gog
+	groups = games
+	license = custom
+	makedepends = lgogdownloader
+	depends = zlib
+	depends = bash
+	source = pine_1_13.sh::gogdownloader://2065334330/en3installer0
+	source = Pine.desktop
+	source = start-pine.sh
+	sha512sums = c17a8bfb17fb3cf131077f4fc042708d6a1f371fe5d5986dac997c23eb3502d934df8e40e06358db8e39df9386ec91aea06e8d5f2dc7223fcf8b101b5c24600a
+	sha512sums = 9b2d7349865be7f00c08a487c07d176703fcb60248d1859ea7addc248feaf045fe4187a4d9f7ec5dc0a9180e853280a202c2e22a8144ac50071f87c25ac77d67
+	sha512sums = 3f7d1078459365490da30ff839cad9f5bfab37597d07061ff808efe64b883c5b6fc7831510023ed04abc136fb500b4eae41579f3e855119f5564f0e5d9f2d999
+
+pkgname = gog-pine
+

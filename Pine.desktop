@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Pine
+Exec=pine
+Comment=Pine is an open world action adventure simulation game. Set in the beautiful world of Albamare, you take on the role of Hue, a smart young adult who will have to explore, trade, and fight his way through a vibrant world filled with creatures much smarter than humans.
+Terminal=false
+Icon=/usr/share/pixmaps/gog-pine.png
+Type=Application
+Categories=Game;
