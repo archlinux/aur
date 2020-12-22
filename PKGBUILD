@@ -33,6 +33,8 @@ build() {
   make libs
 }
 
+# "-Wno-format-truncation" and "-Wno-error=sign-conversion" might be required in the "--with-optim" flag to ignore build warnings
+
 package() {
   cd cups
   make BUILDROOT="${pkgdir}" install-libs
