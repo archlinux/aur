@@ -1,0 +1,10 @@
+pkgbase = binserve-git
+	pkgver = 0.1.0.r28.g4bee064
+	pkgrel = 1
+	arch = any
+	license = GPL
+	source = git+https://github.com/mufeedvh/binserve
+	md5sums = SKIP
+
+pkgname = binserve-git
+
