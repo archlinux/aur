@@ -2,7 +2,7 @@
 # Maintainer: Kenny Levinsen <aur [at] kl [dot] wtf>
 
 pkgname=greetd-gtkgreet-git
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="GTK based greeter for greetd"
 arch=(x86_64)
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   mkdir -p build
-  arch-meson gtkgreet build -D layershell=true
+  arch-meson gtkgreet build -D layershell=enabled
   ninja -C build
 }
 
