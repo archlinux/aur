@@ -3,7 +3,7 @@
 
 pkgname=i3-get-window-criteria
 pkgver=git
-pkgrel=1
+pkgrel=3
 epoch=1
 pkgdesc="Get criteria for use with i3 config commands"
 arch=('any')
