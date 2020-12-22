@@ -1,0 +1,18 @@
+pkgbase = python-magic-wormhole-mailbox-server
+	pkgdesc = Run a mailbox server for magic-wormhole
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/magic-wormhole-mailbox-server
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-twisted
+	optdepends = magic-wormhole: client required to use this server
+	conflicts = python-magic-wormhole-mailbox-server
+	conflicts = python-magic-wormhole-mailbox-server-git
+	source = https://files.pythonhosted.org/packages/source/m/magic-wormhole-mailbox-server/magic-wormhole-mailbox-server-0.4.1.tar.gz
+	sha256sums = 1af10592909caaf519c00e706eac842c5e77f8d4356215fe9c61c7b2258a88fb
+
+pkgname = python-magic-wormhole-mailbox-server
+
