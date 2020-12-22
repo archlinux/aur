@@ -2,27 +2,32 @@
 
 _pkgname=polychromatic
 pkgname=$_pkgname-git
-pkgver=0.3.11.2.r23.g3f23d59
+pkgver=0.6.0.r1.g9b48ea8
 pkgrel=1
-pkgdesc='A graphical front end for managing Razer peripherals under GNU/Linux.'
+pkgdesc='Open source RGB lighting management front-end application for OpenRazer'
 arch=('any')
-license=('GPL2')
+license=('GPL3')
 source=("git+https://github.com/polychromatic/polychromatic.git")
 url='https://github.com/polychromatic/polychromatic'
-makedepends=('git' 'nodejs-less')
-depends=('python' 'hicolor-icon-theme' 'python-openrazer' 'webkit2gtk' 'libappindicator-gtk3' 'imagemagick')
+makedepends=('git' 'meson' 'sassc')
+depends=('python' 'python-colorama' 'python-setproctitle' 'python-pyqt5' 'python-pyqtwebengine' 'qt5-svg' 'libappindicator-gtk3' 'imagemagick' 'hicolor-icon-theme')
+optdepends=('python-openrazer')
 provides=('polychromatic')
 conflicts=('polychromatic')
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/$_pkgname
+  cd $_pkgname
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-package() {  
-  cd $srcdir/$_pkgname
-  make DESTDIR=$pkgdir install
+build() {
+  arch-meson $_pkgname build
+  ninja -C build
+}
+
+package() {
+  DESTDIR="$pkgdir" ninja -C build install
 }
 
 # vim:set ts=2 sw=2 et:
