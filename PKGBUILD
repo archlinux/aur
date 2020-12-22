@@ -4,14 +4,14 @@
 
 _pkgname=fcitx5-configtool
 pkgname=$_pkgname-git
-pkgver=5.0.0.r1.g5b1f8ee
-pkgrel=2
+pkgver=5.0.1.r23.g1db244a
+pkgrel=1
 pkgdesc="Config tools for Fcitx5, nightly build from git"
 arch=('i686' 'x86_64')
 url="https://github.com/fcitx/fcitx5-configtool"
 license=('GPL')
-depends=('fcitx5-qt5-git' 'kconfigwidgets' 'kitemviews' 'kirigami2' 'kpackage')
-makedepends=('extra-cmake-modules' 'python' 'git' 'kcmutils')
+depends=('fcitx5-qt5-git' 'kconfigwidgets' 'kitemviews' 'qt5-x11extras')
+makedepends=('extra-cmake-modules' 'python' 'git' 'kcmutils' 'kirigami2' 'kdeclarative')
 conflicts=("$_pkgname" "fcitx5-config-qt" "kbd-layout-viewer5")
 provides=("$_pkgname" "fcitx5-config-qt" "kbd-layout-viewer5")
 optdepends=("kdeclarative: for KCM support"
