@@ -34,8 +34,9 @@ build() {
   cmake \
 	-B "${_pkgname}/build" \
 	-S "${_pkgname}" \
-	-DBUILD_GMOCK:BOOL=OFF \
-	-DBUILD_TESTING:BOOL=OFF \
+	-DBUILD_GMOCK:BOOL='OFF' \
+	-DBUILD_TESTING:BOOL='OFF' \
+	-DINSTALL_GTEST:BOOL='OFF' \
 	-Wno-dev
   make -C "${_pkgname}/build"
 }
