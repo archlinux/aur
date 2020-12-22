@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Secure, fast & convenient password manager CLI using GPG and git to sync"
 arch=('x86_64')
 url="https://gitlab.com/timvisee/prs"
-license=('MIT')
+license=('GPL3')
 depends=('gpgme' 'dbus' 'gtk3')
 makedepends=('rust' 'python')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
@@ -27,5 +27,4 @@ package() {
   cd "$pkgname-v$pkgver"
   install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
