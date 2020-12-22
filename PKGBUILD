@@ -1,9 +1,10 @@
 # Maintainer: Kyle Sferrazza <kyle.sferrazza@gmail.com>
+# Maintainer: Rikarnto Bariampa <richard1996ba@gmail.com>
 # Contributor: Max Liebkies <mail@maxliebkies.de>
 
 pkgname=powershell
 _binaryname=pwsh
-_pkgver=7.0.3
+_pkgver=7.1.0
 _pkgnum=${_pkgver:0:1}
 pkgver=${_pkgver/-/.}
 pkgrel=1
@@ -79,7 +80,7 @@ check() {
 
 package() {
   mkdir -pv "$pkgdir/opt/microsoft/$pkgname/$_pkgnum"
-  cd "$srcdir/$pkgname/src/powershell-unix/bin/Linux/netcoreapp3.1/linux-x64/"
+  cd "$srcdir/$pkgname/src/powershell-unix/bin/Linux/net5.0/linux-x64/"
 
   cp -ar ./ "$pkgdir/opt/microsoft/$pkgname/$_pkgnum/"
 
