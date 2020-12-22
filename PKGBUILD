@@ -1,17 +1,17 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=zcash
-pkgver=4.1.1
-_commit=6d856869e9c4cb9e6f3332db6fb04b956bb9fd3d
+pkgver=4.2.0
+_commit=b812c3ad9dbfd3ca6763794dbb129a2499687677
 _db_version=6.2.23
 _db_sha256_hash=47612c8991aa9ac2f6be721267c8d3cdccf5ac83105df8e50809daea24e95dc7
-pkgrel=3
+pkgrel=1
 pkgdesc='Permissionless financial system employing zero-knowledge security'
 arch=('x86_64')
 url='https://z.cash/'
 license=('MIT')
-depends=('boost-libs' 'libevent' 'utf8cpp' 'zeromq')
-makedepends=('boost' 'cmake' 'git' 'gmock' 'python' 'rust' 'wget')
+depends=('boost-libs' 'libevent' 'zeromq')
+makedepends=('boost' 'cmake' 'git' 'gmock' 'python' 'rust' 'utf8cpp' 'wget')
 checkdepends=('python-pyblake2' 'python-pyzmq' 'python-requests' 'python-simplejson')
 source=("git+https://github.com/zcash/zcash.git#commit=${_commit}"
         "https://download.oracle.com/berkeley-db/db-${_db_version}.tar.gz"
@@ -48,25 +48,29 @@ build() {
 
     CPPFLAGS="${CPPFLAGS} -I${srcdir}/db-root/include -I/usr/include/utf8cpp"
     LDFLAGS="${LDFLAGS} -L${srcdir}/db-root/lib"
+    rust_target=$(RUSTC_BOOTSTRAP=1 rustc -Z unstable-options --print target-spec-json | python -c 'import json,sys;obj=json.load(sys.stdin);print(obj["llvm-target"])')
 
     ./autogen.sh
     ./configure --prefix=/usr \
         --enable-online-rust
-    make RUST_TARGET=x86_64-unknown-linux-gnu
+    make RUST_TARGET="${rust_target}"
 }
 
 check() {
     cd ${pkgname}
 
-    ./zcutil/fetch-params.sh --testnet
-    export RUST_TARGET=x86_64-unknown-linux-gnu
+    ./zcutil/fetch-params.sh
+
+    rust_target=$(RUSTC_BOOTSTRAP=1 rustc -Z unstable-options --print target-spec-json | python -c 'import json,sys;obj=json.load(sys.stdin);print(obj["llvm-target"])')
+    export RUST_TARGET="${rust_target}"
     ./qa/zcash/full_test_suite.py || true
 }
 
 package() {
     cd ${pkgname}
 
-    make DESTDIR="${pkgdir}" RUST_TARGET=x86_64-unknown-linux-gnu install
+    rust_target=$(RUSTC_BOOTSTRAP=1 rustc -Z unstable-options --print target-spec-json | python -c 'import json,sys;obj=json.load(sys.stdin);print(obj["llvm-target"])')
+    make DESTDIR="${pkgdir}" RUST_TARGET="${rust_target}" install
 
     for ext in '-cli' '-tx' 'd'; do
         install -Dm644 contrib/zcash${ext}.bash-completion \
