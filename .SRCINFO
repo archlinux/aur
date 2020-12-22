@@ -8,8 +8,7 @@ pkgbase = python-multipledispatch
 	makedepends = python-setuptools
 	depends = python>=3.4
 	source = https://github.com/mrocklin/multipledispatch/archive/0.6.0.tar.gz
-	md5sums = f91173ac478c03d46d4e4731b4f13e93
-	sha1sums = c09f2e533dc7e3954e9587d1ea62967d980b1a33
+	sha256sums = 649f6e61b8a6ce581c75f32365c926b55495c01b8177135408b83aa03886cde0
 
 pkgname = python-multipledispatch
 
