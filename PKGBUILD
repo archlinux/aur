@@ -3,7 +3,7 @@
 
 pkgname=jackett-runit.git
 _alias=jackett
-pkgver=0.17.118
+pkgver=0.17.153
 pkgrel=1
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -14,15 +14,17 @@ makedepends=('dotnet-sdk>=5.0.0')
 conficts=('systemd' 'openrc' 's6' 'jackett' 'jackett-mono')
 options=('!strip' 'staticlibs')
 
-source=("run"
+source=("jackett.run"
         "jackett.sysusers"
         "jackett.tmpfiles"
+        "jackett.install"
         "${pkgname}-${pkgver}.tar.gz::https://github.com/Jackett/Jackett/archive/v${pkgver}.tar.gz")
 
 b2sums=('fed3336e07fe1d88a65bad5fb4f3e081ec16b24c07cc2a96462e7cecc3962b9742897455c0ce7f7fdbe04ecb337c575d54194d2dedad865f72572a5158cc6ef4'
         '6b0534e5f3320e70cff1cc59b0c4de202451d6bc240c0659749929a72223fcb8e636508b14905e3d449c854ae6774c4349480039dd50e35d1d01ac13fa15eea3'
         '4837363802330a33153e8b1560074d3af1c24c393287d295083dc41c82d6667ef0eb1dbcabc6afd180082405762bfed749adc7483d0c6fab0be431f944b4c001'
-        '4ef3925d085eaa8c63d46b59d55ff9b6d5411d1e83047f536eea4bf66ff90b074f9bcfaf301475051a1e54caeb7019f74e6e4e845253d3a61b4a09a8f49080fa')
+        'bccae26aece8872da424e8a2076c6a97ec7523026a6c4320e0a3d573452e06e0c36bd65374ecd45f809c107e21902c91b2c6546365b49a173b3f7c775d891b11'
+        '03fe05ea14d45958904aad459d8e9f84201fc793b264f28d4bc2c8a094063ca5f841add1a207552f5124d673cf2d182c21e9f0646e77be984ef4290ad8f8c18a')
 
 build() {
   cd ${_alias^}-${pkgver}
@@ -47,6 +49,7 @@ package() {
     #install -D -m 644 "${srcdir}/jackett.service" "${pkgdir}/usr/lib/systemd/system/jackett.service"
     install -D -m 644 "${srcdir}/jackett.sysusers" "${pkgdir}/usr/lib/sysusers.d/jackett.conf"
     install -D -m 644 "${srcdir}/jackett.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/jackett.conf"
-    install -D -m 644 "${srcdir}/run" "${pkgdir}/etc/runit/sv/jackett/run"
+    install -D -m 644 "${srcdir}/jackett.run" "${pkgdir}/etc/runit/sv/jackett/run"
     chmod +x "${pkgdir}/etc/runit/sv/jackett/run"
+    install=jackett.install
 }
