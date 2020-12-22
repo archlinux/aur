@@ -1,6 +1,6 @@
 pkgbase = udunits
 	pkgdesc = A tool for calculations of physical quantities
-	pkgver = 2.2.26
+	pkgver = 2.2.28
 	pkgrel = 1
 	url = http://www.unidata.ucar.edu/software/udunits/
 	install = udunits.install
@@ -9,8 +9,8 @@ pkgbase = udunits
 	license = MIT
 	depends = expat
 	options = !libtool
-	source = ftp://ftp.unidata.ucar.edu/pub/udunits/udunits-2.2.26.tar.gz
-	sha256sums = 368f4869c9c7d50d2920fa8c58654124e9ed0d8d2a8c714a9d7fdadc08c7356d
+	source = https://artifacts.unidata.ucar.edu/repository/downloads-udunits/udunits-2.2.28-Source.tar.gz
+	sha256sums = 84107ce2e147870a8a2c9d1ea35e36ed8634a24252ae95782cc0c0494e772618
 
 pkgname = udunits
 
