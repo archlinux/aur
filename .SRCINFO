@@ -1,13 +1,13 @@
 pkgbase = openfaas-cli-bin
 	pkgdesc = Official CLI for OpenFaaS
-	pkgver = 0.12.20
+	pkgver = 0.12.22
 	pkgrel = 1
 	url = https://github.com/openfaas/faas-cli
 	arch = x86_64
 	license = MIT
 	conflicts = openfaas-cli
-	source = faas-cli-0.12.20::https://github.com/openfaas/faas-cli/releases/download/0.12.20/faas-cli
-	sha256sums = e38f95cd86d5f0fb522ea7632caea194004740318e0cfbc85f8bad31d24ddd0f
+	source = faas-cli-0.12.22::https://github.com/openfaas/faas-cli/releases/download/0.12.22/faas-cli
+	sha256sums = 45b2411520c661fbeca7ed6d5afabe779dfe20d815ece4495e63a135b1294808
 
 pkgname = openfaas-cli-bin
 

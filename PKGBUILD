@@ -1,7 +1,7 @@
 # Maintainer: Daniel Haß <aur@hass.onl>
 _pkgname=faas-cli
 pkgname=openfaas-cli-bin
-pkgver=0.12.20
+pkgver=0.12.22
 pkgrel=1
 pkgdesc="Official CLI for OpenFaaS"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/openfaas/faas-cli"
 license=('MIT')
 conflicts=('openfaas-cli')
 source=("${_pkgname}-${pkgver}::https://github.com/openfaas/faas-cli/releases/download/${pkgver}/${_pkgname}")
-sha256sums=("e38f95cd86d5f0fb522ea7632caea194004740318e0cfbc85f8bad31d24ddd0f")
+sha256sums=("45b2411520c661fbeca7ed6d5afabe779dfe20d815ece4495e63a135b1294808")
 
 package() {
    mkdir -p "$pkgdir/usr/bin"
