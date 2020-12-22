@@ -47,11 +47,11 @@ _1k_HZ_ticks=
 
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
-_major=5.9
-_minor=16
+_major=5.10
+_minor=2
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=3
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -61,7 +61,7 @@ makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
-_uksm_path="uksm-patches-v5"
+_uksm_path="uksm-patches"
 #_uksm_path="https://raw.githubusercontent.com/dolohow/uksm/master/v5.x"
 #_uksm_path="https://raw.githubusercontent.com/zaza42/uksm/master"
 _uksm_patch="0001-UKSM-for-${_major}.patch"
@@ -72,11 +72,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v9-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v9-sep/0002-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch"
-        "${_lucjanpath}/arch-patches-v9-sep/0003-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch"
-        "${_lucjanpath}/arch-patches-v9-sep/0004-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
-        "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.0-causes-compilation-erro.patch"
+        "${_lucjanpath}/arch-patches-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-sep/0002-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch"
+        "${_lucjanpath}/arch-patches-sep/0003-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch"
+        "${_lucjanpath}/arch-patches-sep/0004-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
          # the main kernel config files
         'config')
 
@@ -312,16 +311,15 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('6b810157564a4c78b2bc615eabd6297922a930d118b9288d1f95860407817bb6b420e21faaef98a4b97045723c31daad67190a954e88e58720c689356e2121b9'
+sha512sums=('1254a6e0c47e5f134a66fce4013c84b20cbdda9fd086b43049b5cd28531e7b610b0d7366d87bcf1bc12a5f17ad5e4f6495a842c15f6a7588c586326cfa57d346'
             'SKIP'
-            '12a2d17f719edefc19078dc64badf7049132e053bc242546c83063400dc28a7f3f2c81c5f6d8d375e4a176659d69dd4da08d141f67e835fa8aca154e7d1c026e'
-            '96427eecb0078ce57a40ef4ee78d3576216f27390ba6b9dfbb851f4d969558a82b698cc633217ad8f6b9d991e7eaebd613ed4bd5741cafe7fa40b2502dacd43a'
-            'a652b0dabe595337cefc30abd362004490d0019796375f609048e7f0e25c6a27fd3e7901f552f558a48d47f55e9116a31f41db4d291caa8f9551d97a18b0549b'
-            '5029a22ba2f445184131fa7101c2205b6c4cc3874a27490134a432446e1930173141cd83d1faea536c42b64d9bade11ecf09d0bd4059b73746eaf41c4560c90a'
-            '47781f92e6ca8334acae59dec17011a411eca0e70e57bac65ce736fcf44c6c77c639b498488f0cb457a0382ba55f34de41c3db7f4da97cd8206c91855fbba559'
-            '04c55bd1c192da753f537ac139f102fdcebea9af57712914f0d2bf0f9b77be7caa3e18356bea40ec015dbf74ac056285989e7c6fdd78a1ff482ad00271438fc9'
-            'b1abc4b21191c841326db341aeea6eac9918a4628f38e32f616a8eeeb9919395656fc4b805110dce93aa38188172fb672831fd76e848b3711fcd6ea9115118c6'
-            '538b6db08ea8742840f819ae994a98f2efa404cb04da59afee6fa1b601853423770042e30deda1db2cb1f0cef556f2f81ea1cf3274ad35a4b5b23fd26c50744b')
+            '003e33e214065a57df00458d4a88db5cc33eb00030a516264fc4b2e4de9b6649466451260a30cf86667f8981fc493103dea509217b3850773a65d3beb95e6441'
+            '34e21ecc4ef0d07707283427fa82d561a9573d670e80ccd41f7d9cb595473b3844b8df7aeffcb4fe82d9deeef0a4d4e6aef663eb1a7a397fa181f06f418a0d6d'
+            'd55f954a92ca71e1e45735c6971d930bf3a29d37df5a9ba57b7d7488def7c183b9376f5fb8f17f39991ff2e0dee6cf6625469d1e18ed6a9781b61247fc1b1b64'
+            '649004ba86e9fe38a863a56a65f15ddea1436aaf9b3d1fd0854ca5fce10a0504d0b0da09e4b2ba5c13274210c4d2e6324f3d65e4bff11492cd7672bf3c5ffac3'
+            '0c006ff36e74e4a30665310605eb2345bae8201d9b01665e25f0a986bb551a7aa91efd287395ea80fbf198ba2c8f036718ac443e8df14b4e5f56ce371991a21a'
+            '0bfabfc70ac8fef732c24206ff2e8d962412a18655036341dd049683e941e503b255cfd1ffa0c9ace429278369e910d0afa2ff25986482d3c896160738620dab'
+            '9247f5c6b977fa26a8bcaf25bebdf43e1b3c21836d2654af7aa6d530c8bd394950d527661f8d1c0dd4b8293c23dc77e8edd3bf020d482f992c9eb15b89e27919')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
