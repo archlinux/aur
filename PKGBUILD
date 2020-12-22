@@ -2,7 +2,7 @@
 
 pkgname=k
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="a zsh script / plugin to make directory listings more readable, adding a bit of color and some git status information on files and directories."
 arch=('any')
 url="https://github.com/supercrabtree/k"
@@ -16,11 +16,8 @@ sha256sums=('SKIP')
 
 package() {
     cd "$srcdir/$pkgname"
-	install -Dm755 * -t "$pkgdir/usr/bin/k"
-    if grep -q "source /usr/bin/k/k.sh" $HOME/.zshrc
-    then
-        echo "config in .zshrc already satisfied"
-    else
-        echo "source /usr/bin/k/k.sh" >> $HOME/.zshrc
-    fi
+    install -vDm 755 "${pkgname}.sh" "k.plugin.zsh" \
+    -t "${pkgdir}/usr/share/zsh/plugins/${pkgname}/"
+    # docs
+    install -vDm 644 readme.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
