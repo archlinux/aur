@@ -1,6 +1,6 @@
 # Author: Artemii Sudakov <finziyr@yandex.ru>
 pkgname=archbashstrap
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Install/Bootstrap Arch Linux without pacman'
 arch=('any')
@@ -8,7 +8,7 @@ url='https://github.com/BiteDasher/archbashstrap'
 license=('BSD')
 depends=('sed' 'coreutils' 'curl' 'tar')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BiteDasher/archbashstrap/archive/${pkgver}.tar.gz")
-sha256sums=("de4a46651c1a6b0eaff3fa852a043fc2da4c4b1bd4c538321d2bdf3da2cbd221")
+sha256sums=("dfb0715b12ed13e1ee5d7c2fd6ab99a50cbc403ca3e2746c76481362b3164f7c")
 package() {
 mkdir -p $pkgdir/usr/bin
 install -m 755 "$srcdir/$pkgname-$pkgver/archbashstrap" "$pkgdir/usr/bin/archbashstrap"
