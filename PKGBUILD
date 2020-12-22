@@ -21,7 +21,5 @@ package() {
 	install -d ${pkgdir}/opt/deepinwine/tools
     7z x -o${pkgdir}/opt/deepinwine/tools opt/apps/com.xmly.deepin/files/helper_archive.7z
 	cd ${pkgdir}/opt/deepinwine/tools
-	sed -i "s/rm c: z: y:/rm c:/g" run_v3.sh
-	sed -i "/ln -s -f \/ z:/d" run_v3.sh
-	sed -i "/ln -s -f \$HOME y:/d" run_v3.sh
+	sed -i -e '/CallApp()/{n;n;d}' run_v3.sh
 }
