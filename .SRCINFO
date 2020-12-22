@@ -1,16 +1,16 @@
 pkgbase = python-userspacefs
 	pkgdesc = Cross-platform user-space file systems for Python
-	pkgver = 1.0.13
-	pkgrel = 6
+	pkgver = 2.0.2
+	pkgrel = 1
 	url = https://github.com/rianhunter/userspacefs
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python-fusepyng
-	source = https://pypi.org/packages/source/u/userspacefs/userspacefs-1.0.13.tar.gz
-	source = https://pypi.org/packages/source/u/userspacefs/userspacefs-1.0.13.tar.gz.asc
+	source = https://pypi.org/packages/source/u/userspacefs/userspacefs-2.0.2.tar.gz
+	source = https://pypi.org/packages/source/u/userspacefs/userspacefs-2.0.2.tar.gz.asc
 	validpgpkeys = 584EDA5AAC13B9FBFB13F678A6A5398DACC9C15C
-	sha256sums = 5f4cffa4a40dbedc362544f2802d9806b3d435f8e615bb313c75f0eea528df4f
+	sha256sums = 6ea07db7f2460ada196be855dadba93c684150385a61a0f980077379d367ce2b
 	sha256sums = SKIP
 
 pkgname = python-userspacefs
