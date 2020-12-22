@@ -3,7 +3,7 @@
 
 pkgname=wings3d
 pkgver=2.2.5
-pkgrel=2
+pkgrel=3
 pkgdesc='3D modeler using the winged edge data structure'
 arch=(x86_64)
 url='http://www.wings3d.com/' # https is not available
@@ -14,7 +14,7 @@ optdepends=('povray: render scenes with POV-Ray')
 source=("https://downloads.sourceforge.net/project/wings/wings/$pkgver/wings-$pkgver.tar.bz2"
         wings.sh)
 sha256sums=('95ecf84a8f49bc00b983643e7ccd807f64a3b8b88253037a8ccefbe7a3bedff8'
-            '21a82e62c1bd5c5eb5ebdee71fccc8fdaabd204e8d8ca440bd6cef3c58e3a7b4')
+            '0b1c4a8d89196cd31411e9b388c28f241ed8e5c978732ca006d70dabf4c165d5')
 
 prepare() {
   gendesk -f -n \
