@@ -3,20 +3,18 @@
 
 pkgname=wings3d
 pkgver=2.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='3D modeler using the winged edge data structure'
 arch=(x86_64)
-# https is not available
-url='http://www.wings3d.com/'
+url='http://www.wings3d.com/' # https is not available
 license=(GPL)
 depends=(erlang erlang-cl erlang-sdl)
 makedepends=(gendesk)
 optdepends=('povray: render scenes with POV-Ray')
 source=("https://downloads.sourceforge.net/project/wings/wings/$pkgver/wings-$pkgver.tar.bz2"
-        "$pkgname.sh")
+        wings.sh)
 sha256sums=('95ecf84a8f49bc00b983643e7ccd807f64a3b8b88253037a8ccefbe7a3bedff8'
-            '8e5e8f31d47ea55a0e9d311b7cc0eaac4e6050ac40506d3548b6ebae5d3618be')
-_p=${pkgname%3d}-$pkgver
+            '21a82e62c1bd5c5eb5ebdee71fccc8fdaabd204e8d8ca440bd6cef3c58e3a7b4')
 
 prepare() {
   gendesk -f -n \
@@ -29,18 +27,17 @@ prepare() {
 
 build() {
   export ERL_LIBS="$srcdir"
-  make -C "${pkgname%3d}-$pkgver" unix
+  make -C ${pkgname%3d}-$pkgver unix
 }
 
 package() {
-  install -Dm755 $pkgname.sh "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 wings.sh "$pkgdir/usr/bin/$pkgname"
   install -Dm644 -t "$pkgdir/usr/share/applications" $pkgname.desktop
-  cd "${pkgname%3d}-$pkgver/icons"
+  cd ${pkgname%3d}-$pkgver/icons
   install -Dm644 wings_icon_48x48.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
   cd ../build
   install -d "$pkgdir/usr/lib/$pkgname"
-  cp -r "wings-$pkgver-linux/lib/wings-$pkgver"/* "$pkgdir/usr/lib/$pkgname/"
+  cp -r wings-$pkgver-linux/lib/wings-$pkgver/* "$pkgdir/usr/lib/$pkgname"
 }
 
 # getver: -u=2 github.com/dgud/wings/releases
-# vim: ts=2 sw=2 et:
