@@ -1,0 +1,9 @@
+--- semaphore/job_queue.py
++++ semaphore/job_queue.py
+@@ -118,5 +118,5 @@
+ 
+             if job.is_repeating():
+                 interval = job.get_interval()
+-                await self._queue.put(now + interval, job)
++                await self._queue.put_nowait(now + interval, job)
+                 self.log.info(f"Added repeating job ({id(job)}) to the queue")
