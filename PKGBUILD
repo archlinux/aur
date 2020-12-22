@@ -1,7 +1,7 @@
 # Maintainer: MailRu-im
 
 pkgname=agent-bin
-pkgver=10.0.1428
+pkgver=10.0.1438
 pkgrel=1
 pkgdesc='Official agent desktop client for Arch Linux'
 arch=('x86_64')
@@ -17,13 +17,13 @@ provides=('agent')
 
 
 source=(
-        'https://hb.bizmrg.com/agent-www/linux/x64/packages/10.0.1428/agent-10.0.1428_64bit.tar.xz'
-        'agent.png::https://hb.bizmrg.com/agent-www/linux/x64/packages/10.0.1428/agent.png'
+        'https://hb.bizmrg.com/agent-www/linux/x64/packages/10.0.1438/agent-10.0.1438_64bit.tar.xz'
+        'agent.png::https://hb.bizmrg.com/agent-www/linux/x64/packages/10.0.1438/agent.png'
         'agent.desktop'
 )
 
 sha256sums=(
-        'f12da7d082f5217692b3a1830831a49954b9c699256a66c1605f4659b88bec4a'
+        '40df1d281667547891dc4adaf44408447fcde1f829ae6389eef723d7ff91fb0b'
         'ac2ba04d386a58c551916e35011b586d5eb1e94c0c8e0d297879f1f207a82975'
         '3b8f95e95af2e413948ca816a262ab47bb27b1ab9cf98dcf131e7e7ee6dcc336'
 )
