@@ -2,7 +2,7 @@
 # Maintainer: Kenny Levinsen <aur [at] kl [dot] wtf>
 
 pkgname=greetd-git
-pkgver=0.5.1+13.gc7068fe8fd
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Generic greeter daemon"
 arch=(x86_64)
