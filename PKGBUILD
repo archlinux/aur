@@ -2,7 +2,7 @@
 
 pkgname=python-pyzm-git
 _name=pyzm
-pkgver=0.1.26.r93.caf8f97
+pkgver=0.2.9.r161.161ebae
 pkgrel=1
 pkgdesc="ZoneMinder Python API and Logger"
 arch=('any')
