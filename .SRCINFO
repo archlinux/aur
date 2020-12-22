@@ -1,11 +1,12 @@
 pkgbase = unipager-bin
 	pkgdesc = Universal POCSAG transmitter controller written in Rust.
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rwth-afu/unipager
 	arch = x86_64
 	license = GPL3
-	provides = unipager-bin
+	provides = unipager
+	conflicts = unipager
 	source = unipager-x86_64.tar.gz::https://github.com/rwth-afu/UniPager/releases/download/v1.0.3/unipager-x86_64.tar.gz
 	source = unipager.service::https://raw.githubusercontent.com/rwth-afu/UniPager/v1.0.3/debian/unipager.service
 	sha256sums = 95d520059cb700732b867432040db671d1fdaa0420be05df0dedf84534604ec7

@@ -1,12 +1,13 @@
 # Maintainer: Dan Nixon <dan@dan-nixon.com>
 pkgname=unipager-bin
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal POCSAG transmitter controller written in Rust."
 arch=('x86_64')
 url="https://github.com/rwth-afu/unipager"
 license=('GPL3')
-provides=("${pkgname}")
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 source=(
   "unipager-x86_64.tar.gz::https://github.com/rwth-afu/UniPager/releases/download/v${pkgver}/unipager-x86_64.tar.gz"
   "unipager.service::https://raw.githubusercontent.com/rwth-afu/UniPager/v${pkgver}/debian/unipager.service"
