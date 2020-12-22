@@ -6,8 +6,8 @@
 # Maintainer: jooch <jooch AT gmx DOT com>
 
 pkgname=freefilesync
-pkgver=11.0
-pkgrel=2
+pkgver=11.4
+pkgrel=1
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
 url="https://freefilesync.org"
@@ -16,7 +16,8 @@ depends=(wxgtk curl lsb-release)
 makedepends=(unzip)
 source=(
 	"FreeFileSync_${pkgver}_Source.zip::${url}/download/FreeFileSync_${pkgver}_Source.zip"		#ffs
-	curl_fix.patch
+	reversions_11-1.patch
+	theme_fixes.patch
 	revert_xdg_config_path.patch
 	revert_bulk_append.patch
 	revert_linkflags.patch
@@ -25,11 +26,12 @@ source=(
 	dlagent
 	)
 
-sha256sums=('361bab0798811764701cfda297c2031b9decb04bb2e434ec8fe80ba8cc01e56a'
-	    '72687c95350814f5517d0db7f2ca1eeac4cff1dcbe00a9a8365f5dc76172ab2f'
+sha256sums=('d0c20c1388024460944bb0871e91ce6dc9ac5c02be45a095f288db169eb844b4'
+			'6c2d7f24e4edc52bc1af95d3f48ef67456cde0b952b81a702901acfb36545999'
+			'4f2b1d46c0b754c668be7ec675a2bb09f72b3bd0e20987b4db61575b5ca1bf46'
             '0f9a9a6b2c3c460bbde7425bd62273c925259db1cc9dc18c6013aae99fb15cd8'
             '17e7db683662809882db6d6b3d855eb4372ca1bd05e15c4c490970a0b4b127c0'
-            '2942c0e74be2b15cdd83e36fa524c3b6c68d4b4da2042f1b0cf7c13d3b806eac'
+            'c83475ef3ac8bd534d637062d516c9eeea54ac18c775be55e1adef413ac73063'
             '590d87707240529ca893199f852143f5d7c7266cb050e37e615900b013ac3d51'
             '82439b4b81b0a72652befad9b9db52ffbc0180f307c92205aa5ab344f9f82830'
             '1649e7ea66235c6f82daf9beb6b61b7765df54e9ef70f7f6fc1283f5c2b1e54a')
@@ -48,8 +50,16 @@ prepare() {
     sed -e 's:m_textCtrlOfflineActivationKey->ForceUpper:// &:g' -i 'FreeFileSync/Source/ui/small_dlgs.cpp'
     sed -e 's:const double scrollSpeed =:& 6; //:g' -i 'wx+/grid.cpp'
 
-# fix for curl wrapper
-    patch -p1 -i curl_fix.patch
+	patch -p1 -i reversions_11-1.patch
+    grep -RiIl 'wxASCII_STR' | xargs sed -e 's/wxASCII_STR/wxString::FromAscii/g' -i
+	grep -RiIl 'wxDD_SHOW_HIDDEN' | xargs sed -e 's/, wxDD_DEFAULT_STYLE | wxDD_SHOW_HIDDEN//g' -i
+
+# undo zenju hacks
+	sed -e '71,77d' -i 'wx+/dc.h'
+	sed -e '73d' -i 'wx+/no_flicker.h'
+
+# GUI theme fixes (for improved color compatibility)
+	patch -p1 -i theme_fixes.patch
 
 # add LINKFLAGS that were removed but that we still need in our case
     patch -p1 -i revert_linkflags.patch

@@ -1,12 +1,12 @@
 diff -r -u a/FreeFileSync/Source/Makefile b/FreeFileSync/Source/Makefile
---- a/FreeFileSync/Source/Makefile      2020-05-17 19:15:17.000000000 +0200
-+++ b/FreeFileSync/Source/Makefile      2020-05-18 21:46:55.650444123 +0200
+--- a/FreeFileSync/Source/Makefile
++++ b/FreeFileSync/Source/Makefile
 @@ -4,7 +4,7 @@
             -Wall -Wfatal-errors -Wmissing-include-dirs -Wswitch-enum -Wcast-align -Wshadow -Wnon-virtual-dtor \
             -O3 -DNDEBUG `wx-config --cxxflags --debug=no` -pthread
  
--linkFlags = -s -no-pie `wx-config --libs std, aui --debug=no` -pthread
-+linkFlags = -s -no-pie `wx-config --libs std, aui --debug=no` -lz -pthread
+-linkFlags = -s -no-pie `wx-config --libs std, aui, richtext --debug=no` -pthread
++linkFlags = -s -no-pie `wx-config --libs std, aui, richtext  --debug=no` -lz -pthread
  
  
  cxxFlags  += `pkg-config --cflags openssl`
@@ -19,14 +19,14 @@ diff -r -u a/FreeFileSync/Source/Makefile b/FreeFileSync/Source/Makefile
  cxxFlags  += -isystem/usr/include/gtk-2.0
 
 diff -r -u a/FreeFileSync/Source/RealTimeSync/Makefile b/FreeFileSync/Source/RealTimeSync/Makefile
---- a/FreeFileSync/Source/RealTimeSync/Makefile 2020-05-17 19:15:17.000000000 +0200
-+++ b/FreeFileSync/Source/RealTimeSync/Makefile 2020-05-18 21:46:42.700571925 +0200
+--- a/FreeFileSync/Source/RealTimeSync/Makefile
++++ b/FreeFileSync/Source/RealTimeSync/Makefile
 @@ -4,10 +4,11 @@
             -Wall -Wfatal-errors -Wmissing-include-dirs -Wswitch-enum -Wcast-align -Wshadow -Wnon-virtual-dtor \
             -O3 -DNDEBUG `wx-config --cxxflags --debug=no` -pthread
  
--linkFlags = -s -no-pie `wx-config --libs std, aui --debug=no` -pthread
-+linkFlags = -s -no-pie `wx-config --libs std, aui --debug=no` -lz -pthread
+-linkFlags = -s -no-pie `wx-config --libs std, aui, richtext --debug=no` -pthread
++linkFlags = -s -no-pie `wx-config --libs std, aui, richtext  --debug=no` -lz -pthread
  
  #Gtk - support "no button border"
  cxxFlags  += `pkg-config --cflags gtk+-2.0`

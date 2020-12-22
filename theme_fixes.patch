@@ -1,0 +1,75 @@
+diff -r -u a/wx+/grid.cpp b/wx+/grid.cpp
+--- a/wx+/grid.cpp	 2020-12-05 14:38:39.000000000 +0100
++++ b/wx+/grid.cpp	 2020-12-22 06:36:21.000000000 +0100
+@@ -36,10 +36,10 @@
+ {
+ //------------------------------ Grid Parameters --------------------------------
+ inline wxColor getColorLabelText(bool enabled) { return wxSystemSettings::GetColour(enabled ? wxSYS_COLOUR_WINDOWTEXT : wxSYS_COLOUR_GRAYTEXT); }
+-inline wxColor getColorGridLine() { return { 192, 192, 192 }; } //light grey
++inline wxColor getColorGridLine() { return wxSystemSettings::GetColour(wxSYS_COLOUR_BTNSHADOW); } //light grey
+ 
+ inline wxColor getColorLabelGradientFrom() { return wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOW); }
+-inline wxColor getColorLabelGradientTo  () { return { 200, 200, 200 }; } //light grey
++inline wxColor getColorLabelGradientTo  () { return wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE); } //light grey
+ 
+ inline wxColor getColorLabelGradientFocusFrom() { return getColorLabelGradientFrom(); }
+ inline wxColor getColorLabelGradientFocusTo  () { return GridData::getColorSelectionGradientFrom(); }
+@@ -227,7 +227,7 @@
+ {
+     //left border
+     {
+-        wxDCPenChanger dummy(dc, wxPen(*wxWHITE, fastFromDIP(1)));
++        wxDCPenChanger dummy(dc, wxPen(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNSHADOW), fastFromDIP(1)));
+         dc.DrawLine(rect.GetTopLeft(), rect.GetBottomLeft());
+     }
+     //bottom, right border
+@@ -444,7 +444,7 @@
+ 
+         wxRect rectShrinked = clientRect;
+         rectShrinked.Deflate(fastFromDIP(1));
+-        dc.SetPen(wxPen(*wxWHITE, fastFromDIP(1)));
++        dc.SetPen(wxPen(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNSHADOW), fastFromDIP(1)));
+ 
+         //dc.DrawLine(clientRect.GetTopLeft(), clientRect.GetTopRight() + wxPoint(1, 0));
+         dc.DrawLine(rectShrinked.GetTopLeft(), rectShrinked.GetBottomLeft() + wxPoint(0, 1));
+@@ -545,7 +545,7 @@
+ 
+         //border lines
+         {
+-            wxDCPenChanger dummy(dc, wxPen(*wxWHITE, fastFromDIP(1)));
++            wxDCPenChanger dummy(dc, wxPen(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNSHADOW), fastFromDIP(1)));
+             dc.DrawLine(rect.GetTopLeft(), rect.GetTopRight());
+         }
+         {
+diff -r -u a/FreeFileSync/Source/ui/file_grid.cpp b/FreeFileSync/Source/ui/file_grid.cpp
+--- a/FreeFileSync/Source/ui/file_grid.cpp	2020-12-05 14:38:39.000000000 +0100
++++ b/FreeFileSync/Source/ui/file_grid.cpp	2020-12-22 06:05:29.000000000 +0100
+@@ -46,7 +46,7 @@
+ inline wxColor getColorInactiveBack(bool faint) { if (faint) return { 0xf6, 0xf6, 0xf6}; return { 0xe4, 0xe4, 0xe4 }; } //light grey
+ inline wxColor getColorInactiveText() { return { 0x40, 0x40, 0x40 }; } //dark grey
+ 
+-inline wxColor getColorGridLine() { return { 192, 192, 192 }; } //light grey
++inline wxColor getColorGridLine() { return wxSystemSettings::GetColour(wxSYS_COLOUR_BTNSHADOW); } //light grey
+ 
+ const int FILE_GRID_GAP_SIZE_DIP = 2;
+ const int FILE_GRID_GAP_SIZE_WIDE_DIP = 6;
+diff -r -u a/FreeFileSync/Source/ui/triple_splitter.cpp b/FreeFileSync/Source/ui/triple_splitter.cpp
+--- a/FreeFileSync/Source/ui/triple_splitter.cpp	2020-12-05 14:38:39.000000000 +0100
++++ b/FreeFileSync/Source/ui/triple_splitter.cpp	2020-12-22 05:37:32.000000000 +0100
+@@ -8,6 +8,7 @@
+ #include <algorithm>
+ #include <zen/stl_tools.h>
+ #include <wx+/dc.h>
++#include <wx/settings.h>
+ 
+ using namespace zen;
+ using namespace fff;
+@@ -24,8 +25,8 @@
+ const int CHILD_WINDOW_MIN_SIZE_DIP = 50; //min. size of managed windows
+ 
+ //let's NOT create wxWidgets objects statically:
+-inline wxColor getColorSashGradientFrom() { return { 192, 192, 192 }; } //light grey
+-inline wxColor getColorSashGradientTo  () { return *wxWHITE; }
++inline wxColor getColorSashGradientFrom() { return wxSystemSettings::GetColour(wxSYS_COLOUR_BTNSHADOW); } //light grey
++inline wxColor getColorSashGradientTo  () { return wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE); }
+ }
