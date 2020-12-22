@@ -2,7 +2,7 @@
 
 pkgname=cherrytree
 pkgver=0.99.26
-pkgrel=1
+pkgrel=2
 pkgdesc="Hierarchical note-taking application"
 arch=('x86_64')
 url="https://www.giuspen.com/${pkgname}/"
@@ -21,23 +21,18 @@ prepare() {
   sed -i 's/-O3/-O2/' "${pkgname}_${pkgver}/CMakeLists.txt"
 }
 
-# Remove GMOCK and TESTING options to build tests
-# Make sure there are NO instances of cherrytree running when building!
+# Remove GMOCK and TESTING options to build and run tests
+# If utilising tests, make sure cherrytree is NOT already running!
 build() {
   cmake \
 	-B "${pkgname}_${pkgver}/build" \
 	-S "${pkgname}_${pkgver}" \
 	-DBUILD_GMOCK:BOOL=OFF \
 	-DBUILD_TESTING:BOOL=OFF \
+	-DINSTALL_GTEST:BOOL=OFF \
 	-Wno-dev
-  make -C "${pkgname}_${pkgver}/build" all
+  make -C "${pkgname}_${pkgver}/build"
 }
-
-# Uncomment to build tests
-# Make sure there are NO instances of cherrytree running when building!
-#check() {
-#  make -C "${pkgname}_${pkgver}/build" test
-#}
 
 package() {
   make -C "${pkgname}_${pkgver}/build" DESTDIR="${pkgdir}" install
