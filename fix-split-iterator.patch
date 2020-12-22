@@ -1,0 +1,16 @@
+diff --git a/simgear/props/props.cxx b/simgear/props/props.cxx
+index 2fae7b1..592ef08 100644
+--- a/simgear/props/props.cxx
++++ b/simgear/props/props.cxx
+@@ -574,10 +574,8 @@ find_node (SGPropertyNode * current,
+            int last_index = -1)
+ {
+   using namespace boost;
+-  typedef split_iterator<typename range_result_iterator<Range>::type>
+-    PathSplitIterator;
+ 
+-  PathSplitIterator itr
++  auto itr
+     = make_split_iterator(path, first_finder("/", is_equal()));
+   if (*path.begin() == '/')
+     return find_node_aux(current->getRootNode(), itr, create, last_index);
