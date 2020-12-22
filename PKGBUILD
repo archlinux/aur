@@ -6,7 +6,7 @@ pkgrel=4
 pkgdesc='Tiny service for port 80 that rewrites URLs to HTTPS'
 arch=('x86_64' 'aarch64')
 url='https://git.sr.ht/~ancarda/tls-redirector'
-license=('GPL3')
+license=('AGPL3')
 makedepends=('go')
 optdepends=(
   'certbot: For automatic TLS certificate provision'
