@@ -1,6 +1,6 @@
 # Maintainer: duxet <duxetlg@gmail.com>
 pkgname=k3s-bin
-pkgver=1.19.4+k3s1
+pkgver=1.19.5+k3s1
 pkgrel=1
 pkgdesc="Lightweight Kubernetes"
 url="https://k3s.io"
@@ -27,9 +27,9 @@ source_aarch64=(
 
 sha256sums=('f4ae496b69b3dd376a28298df50297728a47761b041be522adf2537aa8a8c3d8'
             '667199fa6b811dde3aef3e626e2695a566ad64c9a03d19d0c94a1f104a7612d0')
-sha256sums_x86_64=('8aed3abe7af30adbe44b70a6a774b205d1c403c3b35fcd4aa558b3cb413fcba5')
-sha256sums_armv7h=('35962fb417a089d8177f94c3ab6cab77884a83c3603399624d9dd532002b27f3')
-sha256sums_aarch64=('01ed33ac8c50ffacd75f15001131a63660f0c715e16795f494e938f3e5337fce')
+sha256sums_x86_64=('ea98892d42794bc518419b34963559505e8b2909461c971ba72cc5d126201a76')
+sha256sums_armv7h=('a6631611416a8b85b85083376d14c4f16f31e0abfa395e77dc7fd82ca644a7c6')
+sha256sums_aarch64=('f4d66b1b2ae4a60900342317156d27ad5143ea2edb34de06781c2a13bc9dee0b')
 
 
 
