@@ -1,7 +1,7 @@
 # Maintainer: MailRu-im
 
 pkgname=myteam-bin
-pkgver=10.0.5258
+pkgver=10.0.5411
 pkgrel=1
 pkgdesc='Official myteam desktop client for Arch Linux'
 arch=('x86_64')
@@ -17,13 +17,13 @@ provides=('myteam')
 
 
 source=(
-        'https://hb.bizmrg.com/myteam-www/linux/x64/packages/10.0.5258/myteam-10.0.5258_64bit.tar.xz'
-        'myteam.png::https://hb.bizmrg.com/myteam-www/linux/x64/packages/10.0.5258/myteam.png'
+        'https://hb.bizmrg.com/myteam-www/linux/x64/packages/10.0.5411/myteam-10.0.5411_64bit.tar.xz'
+        'myteam.png::https://hb.bizmrg.com/myteam-www/linux/x64/packages/10.0.5411/myteam.png'
         'myteam.desktop'
 )
 
 sha256sums=(
-        'ee0b391e6e1adc4a637ef4e27203e4d1979e90bc7494e25f52ababed6ed51164'
+        '3de22687860d154c795df2d1e8c51abc7d48df96becfdf1aedcfbefca775c6ec'
         'ff682fa380d11e60969576467fe22ae101498ef1d402ffa6482e14204afbf83c'
         '7c3f43d2ecb3c3f340a5f54e71f6c101c38b5f0d45c224c0240cdd6bda19dc9d'
 )
