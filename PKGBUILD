@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://akaflieg-freiburg.github.io/enroute/"
 license=('GPL3')
 makedepends=('git' 'cmake' 'clang')
-depends=('qt5-location' 'hicolor-icon-theme')
+depends=('qt5-location' 'qt5-translations' 'hicolor-icon-theme')
 source=("enroute::git+https://github.com/Akaflieg-Freiburg/enroute.git#branch=master")
 md5sums=('SKIP')
 
