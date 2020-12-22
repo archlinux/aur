@@ -47,14 +47,14 @@ _use_current=
 
 pkgbase=linux-rt-bfq-dev
 # pkgname=('linux-rt-bfq-dev' 'linux-rt-bfq-dev-headers' 'linux-rt-bfq-dev-docs')
-_major=5.9
+_major=5.10
 _minor=1
 _rtver=20
 _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=7
+pkgrel=3
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -71,7 +71,7 @@ _bfq_rev_path="bfq-reverts-all"
 _bfq_rev_patch="0001-bfq-reverts.patch"
 _bfq_path="bfq-dev-lucjan"
 _bfq_ver="v13"
-_bfq_rel="r2K201210"
+_bfq_rel="r2K201215"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _gcc_path="cpu-patches-sep"
 _gcc_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
@@ -83,13 +83,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-rt-patches-v4-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-rt-patches-v4-sep/0002-i2c-core-Restore-acpi_walk_dep_device_list-getting-c.patch"
-        "${_lucjanpath}/arch-rt-patches-v4-sep/0003-mac80211-fix-regression-where-EAPOL-frames-were-sent.patch"
-        "${_lucjanpath}/arch-rt-patches-v4-sep/0004-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch"
-        "${_lucjanpath}/arch-rt-patches-v4-sep/0005-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch"
-        "${_lucjanpath}/arch-rt-patches-v4-sep/0006-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
-        "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.0-causes-compilation-erro.patch"
+        "${_lucjanpath}/arch-patches-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-sep/0002-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch"
+        "${_lucjanpath}/arch-patches-sep/0003-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch"
+        "${_lucjanpath}/arch-patches-sep/0004-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
          # the main kernel config files
         'config')
 
@@ -336,21 +333,18 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('96af08c1dc964e5dbb3d221880ef8ca246f13370d2dc2f5ae64039f0352efc687c7446a2b4f86dad553b776ee75f78bbf58bb9bc845c9b57a9013ece63264874'
+sha512sums=('5b6cc32f2daa1de35ceeb0007536d6e49776064370d94f8d77c19cefc97e88c47ff55cb4c6add7c49189e7203ff44a05ffacf3c0f4b766f719d6df1a110f95bb'
             'SKIP'
-            'bcafb96c6fdba2788c436701190da21f78159f8f6fb3e0aa082d75e6641f10a5e7c0d3ebd65b5f77e2dc832e0a8cf52f47af9d3e649713a1030168ce6df789a1'
+            '20545a16adf746690930a67dab11fba15f225f07c0c018296b01b0acb7d9f4e12862fc53668992c318d671f506513436f8f9e1d174f761ee31e75bbc3d27514e'
             'SKIP'
-            '7d30c34e75c2800d93c01e34ca23a00cda24d2f44bb837a48f6789c50ad69f7db4cc93d1fc75e43cfa4d4f4e9c612330dd595c56c13f8abb5d062338ea30697c'
-            '5b959cc4e48c95cdc4e12cae75a15a1984693a0e504cf32db66655923a3a8a62e5d0a10e886fbb0359a800055b4fa7158d7bea0d5f19212fefdd8cf86255f4d5'
-            '96427eecb0078ce57a40ef4ee78d3576216f27390ba6b9dfbb851f4d969558a82b698cc633217ad8f6b9d991e7eaebd613ed4bd5741cafe7fa40b2502dacd43a'
-            'bf3d86a5e24b5f7a2ebfc930f0bee11a5281b52306f1068c0f42ed2871277eb3038070754f489523e73f63addd5e56d74c1f766742f1d9944689f4e1ee1bfdb9'
-            '3e40d576551170702bd81242102ec3aa8a27a8140fdc2e6615739f2b6634105131700b20ac781c7d123566fe5cb10800a6bd1b0c0c7a3a1f8753b887bd18cb5b'
-            '2e5f6635b835a21e546a06be177489504dc6a8f8ad496deea51e63433b76f779fc65a5abc726649155e73126a705d97113813ebae2b977d7147fc696806811c5'
-            'fcd0de43151da7743ce91a1a2b2cd282e148bff4226efba04283dd7ee70662f2946082e0a213e5bc419d4bff180eec863f0bc66cbcd35ee6072232c945bce3ed'
-            '3fb990e45784be1d932d7374483b76f474457e341cdaba9c4c4cd1c7ee78c3645709d36758922a5dd0ec1c49dd206ba12d83c5464770890e237ca6c742065de1'
-            'a07144e630c7fef92c2ae488c3537c850788275f49abce2aa54df4e5199a7288d1a336729f8293931a00b2cc3f8f2d0e6c1b8740c364b1b590faadc86fd744ae'
-            'b1abc4b21191c841326db341aeea6eac9918a4628f38e32f616a8eeeb9919395656fc4b805110dce93aa38188172fb672831fd76e848b3711fcd6ea9115118c6'
-            'b11a56af9eed708fe78acacc1979c7ac1082466e621257782d8398e5094f3fc3ac89c53afa7fa62dcf784a948b4cb4ad8513df83b9e65b297c1fa00a63620ffd')
+            '45fa721352143304eceff87649986fd42fcf4ae369f15ba704a435ab2f107dfe41c050eac25cd9167d2cc73d569aad8501cbd13477b62bad9724e4240f36ab15'
+            'c3e610a33de6ba5428ac945e84e4dcb256df0c3ed4664345d941abc18ef3ee9d719bd88a365dcfc0451daab596b612253ba7f307fe9e2e8f73da977b3a8cdd17'
+            '34e21ecc4ef0d07707283427fa82d561a9573d670e80ccd41f7d9cb595473b3844b8df7aeffcb4fe82d9deeef0a4d4e6aef663eb1a7a397fa181f06f418a0d6d'
+            'd55f954a92ca71e1e45735c6971d930bf3a29d37df5a9ba57b7d7488def7c183b9376f5fb8f17f39991ff2e0dee6cf6625469d1e18ed6a9781b61247fc1b1b64'
+            '649004ba86e9fe38a863a56a65f15ddea1436aaf9b3d1fd0854ca5fce10a0504d0b0da09e4b2ba5c13274210c4d2e6324f3d65e4bff11492cd7672bf3c5ffac3'
+            '0c006ff36e74e4a30665310605eb2345bae8201d9b01665e25f0a986bb551a7aa91efd287395ea80fbf198ba2c8f036718ac443e8df14b4e5f56ce371991a21a'
+            '0bfabfc70ac8fef732c24206ff2e8d962412a18655036341dd049683e941e503b255cfd1ffa0c9ace429278369e910d0afa2ff25986482d3c896160738620dab'
+            '50fb576f5a1b5b6bd02641c35452a5db71608410cbef7ad84d6cd1bc3d9d80305982b0b8dbda8a09b0b2611ee3e407ab74f10ffe25c7199228c23d9c8b4bb34f')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
