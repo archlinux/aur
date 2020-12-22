@@ -56,22 +56,22 @@ _BATCH_MODE=n # enable batch mode
 ##
 
 _major=5
-_minor=9
+_minor=10
 #_patchlevel=0
 #_subversion=1
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 pkgbase=linux-pf
-_unpatched_sublevel=3
+_unpatched_sublevel=2
 _pfrel=2
 _kernelname=pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
-_projectcpatchname=prjc_v5.9-r1.patch
+_projectcpatchname=prjc_v5.10-r0.patch
 _CPUSUFFIXES_KBUILD=(
-  CORE2 K7 K8 K10 BARCELONA BOBCAT BULLDOZER PILEDRIVER PSC
+  CORE2 K7 K8 K10 BARCELONA BOBCAT BULLDOZER PILEDRIVER STEAMROLLER MEXCAVATOR ZEN ZEN2 MPSC
   ATOM PENTIUMII PENTIUMIII PENTIUMM PENTIUM4 NEHALEM SANDYBRIDGE
-  IVYBRIDGE HASWELL BROADWELL SILVERMONT SKYLAKE)
+  IVYBRIDGE HASWELL BROADWELL SILVERMONT SKYLAKE SKYLAKEX CANNONLAKE ICELAKE CASCADELAKE)
 pkgname=('linux-pf')
 pkgdesc="Linux with the pf-kernel patch (uksm, BMQ, ZSTD, FSGSBASE and more)"
 pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
@@ -81,7 +81,7 @@ arch=('i686' 'x86_64')
 url="https://gitlab.com/post-factum/pf-kernel/wikis/README"
 license=('GPL2')
 options=('!strip')
-makedepends=('git' 'xmlto' 'docbook-xsl' 'xz' 'bc' 'kmod' 'elfutils' 'inetutils' 'pahole')
+makedepends=('git' 'xmlto' 'docbook-xsl' 'xz' 'bc' 'kmod' 'elfutils' 'inetutils' 'pahole' 'cpio')
 source=("https://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekernel}.tar.xz"
 	      'config.x86_64'
         'config.i686'
@@ -92,8 +92,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekerne
         "https://gitlab.com/alfredchen/projectc/raw/master/$_major.$_minor/$_projectcpatchname"
         "90-linux.hook"
         "60-linux.hook"
+        "fix_project_c.patch"
         '262e6ae7081df304fc625cf368d5c2cbba2bb991.patch'
-        'fix_project_c.patch'
        )
 # 	'cx23885_move_CI_AC_registration_to_a_separate_function.patch'     
 
@@ -302,7 +302,6 @@ _package() {
   depends=('coreutils' 'linux-firmware' 'kmod>=9-2' 'mkinitcpio>=0.7' 'linux-pf-preset')
   optdepends=('crda: to set the correct wireless channels of your country'
 	            'nvidia-pf: NVIDIA drivers for linux-pf'
-	            'nvidia-beta-all: NVIDIA drivers for all installed kernels'
               'uksmd: Userspace KSM helper daemon'
 	            'modprobed-db: Keeps track of EVERY kernel module that has ever been probed. Useful for make localmodconfig.')
   provides=('linux-tomoyo' VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
@@ -344,6 +343,22 @@ _package() {
 	      pkgname="${pkgbase}-piledriver"
 	      pkgdesc="${pkgdesc} AMD Piledriver optimized."
 	      ;;
+      STEAMROLLER)
+        pkgname="${pkgbase}-steamroller"
+	      pkgdesc="${pkgdesc} AMD Steamroller optimized."
+        ;;
+      EXCAVATOR)
+        pkgname="${pkgbase}-excavator"
+	      pkgdesc="${pkgdesc} AMD Excavator optimized."
+        ;;
+      ZEN)
+        pkgname="${pkgbase}-zen"
+	      pkgdesc="${pkgdesc} AMD Zen optimized".
+        ;;
+      ZEN2)
+        pkgname="${pkgbase}-zen2"
+	      pkgdesc="${pkgdesc} AMD Zen2 optimized."
+        ;;
       PSC)
         pkgname="${pkgbase}-psc"
         pkgdesc="${pkgdesc} Intel Pentium4/D/Xeon optimized."
@@ -396,6 +411,27 @@ _package() {
         pkgname="${pkgbase}-skylake"
         pkgdesc="${pkgdesc} 6th Gen Core processors including Skylake."
         ;;
+      SKYLAKEX)
+        pkgname="${pkgbase}-skylakex"
+        pkgdesc="${pkgdesc} 6th Gen Core processors including Skylake-X."
+        ;;
+      CASCADELAKE)
+        pkgname="${pkgbase}-cascadelake"
+        pkgdesc="${pkgdesc} 7th Gen Xeon processors including Cascadelake."
+        ;;
+      CANNONLAKE)
+        pkgname="${pkgbase}-cannonlake"
+        pkgdesc="${pkgdesc} 8th Gen Core processors including Cannonlake."
+        ;;
+      ICELAKE)
+        pkgname="${pkgbase}-icelake"
+        pkgdesc="${pkgdesc} 10th Gen Core processors including Icelake."
+        ;;
+      *)
+        # Workaround against mksrcinfo getting the $pkdesc wrong
+        pkgname="${pkgbase}"
+        pkgdesc="${pkgdesc}"
+          ::
     esac
 
 
@@ -624,15 +660,15 @@ eval "package_linux-pf${LCPU+-$LCPU}() {
      }"
 
 
-sha256sums=('3239a4ee1250bf2048be988cc8cb46c487b2c8a0de5b1b032d38394d5c6b1a06'
-            '36439a90c9d2f860298d90e141f3bf9d897dd8ece9e21cd46508f4ed7b2151bb'
-            '998ee2c0aeb2c2190251a1d18f88939a19f1be3d1ac631b66d484f7e33dd253f'
+sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
+            'd8b28f67a0f0bc56e5de858141dee3607fbac48eac41b0e9f7f69685f7475b53'
+            '19c6e90cfacacc1ab9eba8ff785c62d647b43316f565e8d7f2bf61024cda9237'
             'b6aeb6c460f08443ecce4006d8da83c5f01a224ad2123998ae351b5357286bcd'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            '328122e2718ca28779bbe91567d57e8b817920e6b226e8c913fe68bc66da4b9b'
-            'a18dee6e4eeb677adef61b4e695cbb800a9aa88e3f6673a6dcfef8a840dee0cc'
+            '0644b56e863380e8deede43007cf8aa570c7ec1e22954833374a14a632d2add6'
+            'c170927afc35fab46856ae71cbc85cc5d46909846a001b10e997297c3938da2e'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            '7908288d8549489d8ac1f7e523cb986c41c8306dbe4946cca890c6fc7c2d260b'
-            '7cc22759cb74e884b2dcd603d760adb451fd1f2e5d24d472c32811b254566b7a')
+            'eadb99b082715cfb2f1a65a505678378c1c32a14d1fe409fd669ae49ae917407'
+            '7908288d8549489d8ac1f7e523cb986c41c8306dbe4946cca890c6fc7c2d260b')
 # vim:set ts=2 sw=2 tw=0 et:

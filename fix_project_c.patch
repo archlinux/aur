@@ -1,25 +1,22 @@
-From c6e352a26de8e46f5737fed2b876516df82adad1 Mon Sep 17 00:00:00 2001
+From 570d8c5b6f7439217b45906568adddb0a6cc2751 Mon Sep 17 00:00:00 2001
 From: Alfred Chen <cchalpha@gmail.com>
-Date: Tue, 20 Oct 2020 07:10:30 +0800
-Subject: [PATCH] sched/alt: Fix compilation when NR_CPUS > 64
+Date: Tue, 15 Dec 2020 11:19:05 +0800
+Subject: [PATCH] sched/bmq: Fix compilation issue.
 
 ---
- kernel/sched/alt_core.c | 2 +-
+ kernel/sched/bmq_imp.h | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/kernel/sched/alt_core.c b/kernel/sched/alt_core.c
-index fa0ba0d55503..edba089affc0 100644
---- a/kernel/sched/alt_core.c
-+++ b/kernel/sched/alt_core.c
-@@ -153,7 +153,7 @@ static inline unsigned int sched_best_cpu(const unsigned int cpu,
- 	while (!cpumask_and(&t, chk, m))
- 		chk++;
- 
--	return cpumask_any(t);
-+	return cpumask_any(&t);
+diff --git a/kernel/sched/bmq_imp.h b/kernel/sched/bmq_imp.h
+index 83c2d019c446..3faba5f9bb69 100644
+--- a/kernel/sched/bmq_imp.h
++++ b/kernel/sched/bmq_imp.h
+@@ -62,7 +62,7 @@ static inline void time_slice_expired(struct task_struct *p, struct rq *rq)
+ 	}
  }
- #endif
  
--- 
-GitLab
-
+-static inline int task_running_nice(struct task_struct *p)
++inline int task_running_nice(struct task_struct *p)
+ {
+ 	return (p->prio + p->boost_prio > DEFAULT_PRIO + MAX_PRIORITY_ADJ);
+ }
