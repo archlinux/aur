@@ -8,22 +8,24 @@
 
 _pkgname=htop
 pkgname=$_pkgname-solarized
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="Interactive process viewer with solarized patch"
 arch=('i686' 'x86_64' 'armv7h')
 url='https://htop.dev/'
 license=('GPL')
 depends=('ncurses' 'libncursesw.so' 'libnl')
-optdepends=('lsof: show files opened by a process'
+makedepends=('lm_sensors')
+optdepends=('lm_sensors: show cpu temperatures'
+            'lsof: show files opened by a process'
             'strace: attach to a running process')
 provides=('htop')
 conflicts=('htop')
 options=('!emptydirs')
 source=("https://github.com/htop-dev/htop/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         'htop-solarized.patch')
-sha256sums=('b4744a3bea279f2a3725ed8e5e35ffd9cb10d66673bf07c8fe21feb3c4661305'
-            'd602046cf90caed976061a09c34c8156de5023b93245de53b6ae115651b78ccb')
+sha256sums=('725103929c925a7252b4dedeb29b3a1da86a2f74e96c50eb9ea6c8fec1942cd2'
+            '9d2c3b48fa62023eedea61ccb96ff6b8ed90294c5dea2635056756c8ffabaeb9')
 
 prepare() {
   cd "$_pkgname-$pkgver"
