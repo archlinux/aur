@@ -1,7 +1,7 @@
 pkgbase = ultimaker-libnest2d-git
 	pkgdesc = 2D irregular bin packaging and nesting library written in modern C++ (Ultimaker fork)
 	pkgver = 0.4.r26.g4d6fb4d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ultimaker/libnest2d
 	arch = any
 	license = LGPL3
@@ -13,7 +13,9 @@ pkgbase = ultimaker-libnest2d-git
 	provides = libnest2d
 	conflicts = libnest2d
 	source = git+https://github.com/Ultimaker/libnest2d
+	source = fix-cpp-version.patch
 	md5sums = SKIP
+	md5sums = 9f18cc7558823f5cf24164c74b9fc9c8
 
 pkgname = ultimaker-libnest2d-git
 
