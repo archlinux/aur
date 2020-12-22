@@ -81,8 +81,8 @@ HUSHLOGIN_FILE	.hushlogin
 # *REQUIRED*  The default PATH settings, for superuser and normal users.
 #
 # (they are minimal, add the rest in the shell startup files)
-ENV_SUPATH	PATH=/usr/bin
-ENV_PATH	PATH=/usr/bin
+ENV_SUPATH	PATH=/usr/local/sbin:/usr/local/bin:/usr/bin
+ENV_PATH	PATH=/usr/local/sbin:/usr/local/bin:/usr/bin
 
 #
 # Terminal permissions
