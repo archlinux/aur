@@ -4,7 +4,7 @@
 
 pkgname=tmuxinator
 pkgver=2.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Manage complex tmux sessions easily"
 arch=(any)
 url="https://github.com/aziz/tmuxinator"
@@ -17,6 +17,7 @@ depends=(
   'ruby-rdoc'
 )
 makedepends=('ruby-bundler')
+optdepends=('zsh-completions: for ZSH completion')
 options=('!emptydirs')
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
@@ -52,7 +53,8 @@ package() {
   mkdir -p "${pkgdir}/usr/share/tmuxinator"
   install -D -m 644 "${pkgdir}/${_gemdir}/gems/tmuxinator-${pkgver}/completion/tmuxinator.bash" "${pkgdir}/usr/share/bash-completion/completions/tmuxinator"
   install -D -m 644 "${pkgdir}/${_gemdir}/gems/tmuxinator-${pkgver}/completion/tmuxinator.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d"
-  install -D -m 644 "${pkgdir}/${_gemdir}/gems/tmuxinator-${pkgver}/completion/tmuxinator.zsh" "${pkgdir}/usr/share/zsh/site-functions/_tmuxinator"
+  # Provided by zsh-completions
+  # install -D -m 644 "${pkgdir}/${_gemdir}/gems/tmuxinator-${pkgver}/completion/tmuxinator.zsh" "${pkgdir}/usr/share/zsh/site-functions/_tmuxinator"
 
   rm -rf "${pkgdir}/${_gemdir}/cache"
   install -D -m 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
