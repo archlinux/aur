@@ -9,9 +9,9 @@ _building=true
 pkgname=qtcreator-prerelease
 _pkgvermajmin=4.14
 _pkgver=${_pkgvermajmin}.0
-_verpostfix="beta2"
+_verpostfix=""
 pkgver="${_pkgver}${_verpostfix}"
-pkgrel=1
+pkgrel=2
 _urlbase="https://download.qt.io/official_releases"
 if [[ -n $_verpostfix ]]; then
   _pkgver=${_pkgver}-${_verpostfix}
@@ -38,12 +38,8 @@ optdepends=('qbs'
             'bzr: bazaar support'
             'valgrind: analyze support')
 makedepends=('qbs' 'clang' 'qt5-base' 'patchelf')
-source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.xz"
-        qtcreator-preload-plugins.patch
-        qtcreator-clang-libs.patch)
-sha256sums=('92d1920b07b6d5847e2005a5d1690ed7244b6e8f0660b5f420f431e8804159dd'
-            'b40e222b30c355d1230160a4e933dbd161b8748125662e3bde312ea52296457a'
-            '0f6d0dc41a87aae9ef371b1950f5b9d823db8b5685c6ac04a7a7ac133eb19a3f')
+source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.xz")
+sha256sums=('d240109351e96446ff149cbd56341ec02ba37bfa50462a85e4d02dfe6b21201e')
 
 prepare() {
   cd ${srcdir}/${_filename}
@@ -53,13 +49,6 @@ prepare() {
   sed -e 's|libexec|lib|g' -i src/tools/tools.pro
   # use system qbs
   rm -r src/shared/qbs
-  # Preload analyzer plugins, since upstream clang doesn't link to all plugins
-  # see http://code.qt.io/cgit/clang/clang.git/commit/?id=7f349701d3ea0c47be3a43e265699dddd3fd55cf
-  # and https://bugs.archlinux.org/task/59492
-  #patch -p1 -i ../qtcreator-preload-plugins.patch
-
-  # Fix build with clang 10
-  patch -p1 -i ../qtcreator-clang-libs.patch
 }
 
 build() {
