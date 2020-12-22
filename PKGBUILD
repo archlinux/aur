@@ -5,7 +5,7 @@ pkgname=libadalang
 _libadalang_ver=2020-20200429-19982
 _langkit_ver=2020-20200429-19994
 pkgver=2020
-pkgrel=2
+pkgrel=1
 pkgdesc="A high performance semantic engine for the Ada programming language."
 
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="https://github.com/AdaCore/libadalang"
 license=('GPL')
 
 depends=("gnatcoll-core" "gnatcoll-iconv" "gnatcoll-gmp")
-makedepends=('gprbuild' 'python2-virtualenv' 'python2-setuptools' 'python2-virtualenv')
+makedepends=('gprbuild' 'python2-virtualenv' 'python2-setuptools')
 
 _libadalang_checksum=b08f8035da44c241348f8b597dbdaf95a4d43cc7
 _langkit_checksum=842969ffaa118d71e1efc466383f1c0cf663c464
