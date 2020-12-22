@@ -15,7 +15,7 @@ makedepends=('cmake>=2.6' 'gettext')
 conflicts=($_pkgname)
 optdepends=('gedit: to use the "Edit as Administrator" action'
             'gnome-terminal: to use the "Run as Administrator" action')
-install="${pkgname/%-git}.install"
+install="$_pkgname.install"
 source=("git+${url}")
 sha256sums=('SKIP')
 
