@@ -16,7 +16,7 @@ pkgname=()
 
 pkgver=2.4.0
 _pkgver=2.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -238,7 +238,7 @@ package_tensorflow-opt-rocm() {
 
 package_python-tensorflow-rocm() {
   pkgdesc="Library for computation using data flow graphs for scalable machine learning (with ROCM)"
-  depends+=(tensorflow-rocm python-termcolor python-astor python-gast03 python-numpy rocm rocm-libs miopen python-protobuf absl-py rccl python-h5py python-keras-applications python-keras-preprocessing python-tensorflow-estimator python-opt_einsum python-astunparse python-past python-flatbuffers)
+  depends+=(tensorflow-rocm python-termcolor python-future python-astor python-gast03 python-numpy rocm rocm-libs miopen python-protobuf absl-py rccl python-h5py python-keras-applications python-keras-preprocessing python-tensorflow-estimator python-opt_einsum python-astunparse python-flatbuffers)
   conflicts=(python-tensorflow)
   provides=(python-tensorflow)
 
@@ -248,7 +248,7 @@ package_python-tensorflow-rocm() {
 
 package_python-tensorflow-opt-rocm() {
   pkgdesc="Library for computation using data flow graphs for scalable machine learning (with ROCM and AVX2 CPU optimizations)"
-  depends+=(tensorflow-opt-rocm python-termcolor python-astor python-gast03 python-numpy rocm rocm-libs miopen python-protobuf absl-py rccl python-h5py python-keras-applications python-keras-preprocessing python-tensorflow-estimator python-opt_einsum python-astunparse python-past python-flatbuffers)
+  depends+=(tensorflow-opt-rocm python-termcolor python-future python-astor python-gast03 python-numpy rocm rocm-libs miopen python-protobuf absl-py rccl python-h5py python-keras-applications python-keras-preprocessing python-tensorflow-estimator python-opt_einsum python-astunparse python-flatbuffers)
   conflicts=(python-tensorflow)
   provides=(python-tensorflow python-tensorflow-rocm)
 
