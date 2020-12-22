@@ -1,10 +1,8 @@
-# Maintainer: AnoGP <anogp at pm dot me>
-
 pkgname=motionbox
 _pkgname=motionbox
-pkgver=1.6.0.9
+pkgver=1.6.0.10
 majver=1.6.0
-subver=9
+subver=10
 pkgrel=1
 pkgdesc="MotionBox is a Video Browser for Motion Freedom"
 arch=("x86_64")
@@ -18,7 +16,7 @@ source=(
     https://github.com/G-P-L/AUR/raw/master/MotionBox/MotionBox.desktop
     https://github.com/G-P-L/AUR/raw/master/MotionBox/MotionBox.png
 )
-sha256sums=('01bba17753da8c5e32ee293ae5dfb85964d52b746ba76e3773158c0018d5a017'
+sha256sums=('c0940379a28c312e4e7bf3e21a0827babfb1c5e858b06769c4661ac70fa65479'
             'c531f06e8777a2f6327ead793b6dc16c2b4780fdb16be354f8e68ddbe32138e7'
             '7b0f4fb92e7bc5d23fbef1a0bb9381a63fa979f28a36b2f0b4b4619b13039b72')
 
@@ -29,7 +27,7 @@ package() {
     # Copy files and folders from the source tarball to /opt/MotionBox/.
     mv "$srcdir/MotionBox-$majver-$subver/" "$srcdir/MotionBox/"
     cp -r "$srcdir/MotionBox/" "$pkgdir/opt/"
-    
+
     # Copy application icon to /opt/MotionBox/.
     install -Dm644 MotionBox.png "$pkgdir/opt/MotionBox/MotionBox.png"
 
