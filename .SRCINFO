@@ -1,7 +1,7 @@
 pkgbase = laborejo
 	pkgdesc = A MIDI sequencer based on classical music notation.
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://laborejo.org/
 	arch = x86_64
 	license = GPL
