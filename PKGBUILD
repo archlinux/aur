@@ -8,7 +8,7 @@
 
 pkgname=v8-r
 pkgver=8.9.183
-pkgrel=1
+pkgrel=2
 pkgdesc="Google's open source JavaScript and WebAssembly engine"
 arch=('x86_64')
 url="https://v8.dev"
@@ -81,7 +81,7 @@ prepare() {
             is_debug=false
             is_official_build=false
             treat_warnings_as_errors=false
-            v8_enable_i18n_support=false
+            v8_enable_i18n_support=true
             v8_use_external_startup_data=false
             use_custom_libcxx=false
             use_sysroot=false'
