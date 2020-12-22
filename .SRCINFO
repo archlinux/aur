@@ -1,0 +1,20 @@
+pkgbase = laborejo
+	pkgdesc = A MIDI sequencer based on classical music notation.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://laborejo.org/
+	arch = x86_64
+	license = GPL
+	makedepends = bash
+	makedepends = nuitka
+	makedepends = gcc
+	depends = glibc
+	depends = python
+	depends = python-pyqt5
+	depends = ttf-dejavu
+	depends = lilypond
+	source = https://www.laborejo.org/downloads/laborejo-2.0.0.tar.gz
+	md5sums = 1a9e32f80e33871f10884e6bb4567d1a
+
+pkgname = laborejo
+
