@@ -1,30 +1,28 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname='apache-orc'
-pkgver=1.6.4
+pkgver=1.6.6
 pkgrel=1
 pkgdesc="A columnar storage for Hadoop workloads."
 arch=('x86_64')
 url="https://orc.apache.org"
 license=('Apache')
-depends=('gcc-libs')
+depends=('protobuf' 'snappy' 'zstd')
 options=('staticlibs')
 optdepends=()
-makedepends=('cmake' 'lz4-static' 'protobuf-static' 'snappy-static' 'zlib-static' 'zstd-static')
+makedepends=('cmake')
 source=("orc-$pkgver.tar.gz::https://github.com/apache/orc/archive/rel/release-$pkgver.tar.gz"
-  "cmake.patch")
-sha256sums=('3f25d70ee3a42c466837f03471a65e01e105b58c77a1dbff551b636572a5653f'
-            '401ca18b23669d0f3240234a8c035505cf73da89c7d803b547f312e66e16e5da')
+  "541.patch")
+sha256sums=('9a92b3eaad1d8b88a18cee41058feb34eb43d919df363e0b74a0b857724e4ba0'
+            '372282c8853adfb7bf84f5c54eaaa58a0898417fb2e42948a08eba9d2aa0e872')
 
 prepare() {
-  cd "$srcdir"
-  patch -p0 < cmake.patch
-  mkdir -p build
+  cd orc-rel-release-$pkgver
+  patch -p1 < ../541.patch
 }
 
 build(){
-  cd "$srcdir/build"
-  cmake -DCMAKE_CXX_FLAGS="-fPIC -Wno-parentheses" \
+  cmake -B build -DCMAKE_CXX_FLAGS="-fPIC -Wno-parentheses" \
   -DCMAKE_BUILD_TYPE=Release \
   -DBUILD_CPP_TESTS=OFF \
   -DCMAKE_INSTALL_PREFIX="/usr" \
@@ -36,13 +34,12 @@ build(){
   -DBUILD_JAVA=OFF \
   -DZSTD_HOME="/usr" \
   -DINSTALL_VENDORED_LIBS=OFF \
-  ../orc-rel-release-$pkgver
-  make
+  orc-rel-release-$pkgver
+  make -C build
 }
 
 package(){
-  cd "$srcdir/build"
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" -C build install
 }
 
 # vim:ts=2:sw=2:et:
