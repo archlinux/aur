@@ -3,10 +3,10 @@
 
 pkgname=socklab
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Shell interface for teaching the socket API"
 arch=('x86_64' 'i686')
-url="http://socklab.forge.imag.fr/"
+url="https://github.com/drakkar-lig/socklab"
 license=('custom:CeCILL2')
 depends=('readline')
 source=("https://github.com/drakkar-lig/socklab/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")

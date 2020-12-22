@@ -1,8 +1,8 @@
 pkgbase = socklab
 	pkgdesc = Shell interface for teaching the socket API
 	pkgver = 1.1.1
-	pkgrel = 1
-	url = http://socklab.forge.imag.fr/
+	pkgrel = 2
+	url = https://github.com/drakkar-lig/socklab
 	arch = x86_64
 	arch = i686
 	license = custom:CeCILL2
