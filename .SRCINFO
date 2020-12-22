@@ -1,15 +1,15 @@
 pkgbase = php-stan
 	pkgdesc = PHP Static Analysis Tool - finding errors in your code without actually running it
-	pkgver = 0.12.63
+	pkgver = 0.12.64
 	pkgrel = 1
 	url = https://github.com/phpstan/phpstan
 	arch = any
 	license = MIT
 	depends = php
-	source = phpstan-0.12.63.phar::https://github.com/phpstan/phpstan/releases/download/0.12.63/phpstan.phar
-	source = phpstan-0.12.63.phar.asc::https://github.com/phpstan/phpstan/releases/download/0.12.63/phpstan.phar.asc
+	source = phpstan-0.12.64.phar::https://github.com/phpstan/phpstan/releases/download/0.12.64/phpstan.phar
+	source = phpstan-0.12.64.phar.asc::https://github.com/phpstan/phpstan/releases/download/0.12.64/phpstan.phar.asc
 	validpgpkeys = D32680D5957DC7116BE29C14CF1A108D0E7AE720
-	sha256sums = b0dc6f509a5eb2cc5ca310802a05755a84f73e8a1262ea46ebbd9c6c79d7c80a
+	sha256sums = babad49139e817be20fa1cdedad64ce645ce602d31c318548cc94c799e353a61
 	sha256sums = SKIP
 
 pkgname = php-stan
