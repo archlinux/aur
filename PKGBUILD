@@ -3,14 +3,14 @@
 
 _pkgname=pulumi
 pkgname=pulumi-bin
-pkgver=2.15.6
+pkgver=2.16.0
 pkgrel=1
 pkgdesc="Modern Infrastructure as Code"
 arch=('x86_64')
 license=('Apache-2.0')
 url="https://github.com/pulumi/pulumi"
 source=("https://get.pulumi.com/releases/sdk/${_pkgname}-v${pkgver}-linux-${CARCH/x86_64/x64}.tar.gz")
-sha256sums=('24dd1f9672e33b6e7e6c72392dd85c81196af3ab2458044dce133bc885e351b3')
+sha256sums=('aeab2fd67bd59bb8b51c9a564b9a7bd8e38dd4c72a93710eca862427b04d4d78')
 package() {
   cd "${srcdir}/${_pkgname}"
 
