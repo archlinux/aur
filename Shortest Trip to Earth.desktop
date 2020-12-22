@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Shortest Trip to Earth
+Exec=shortest-trip-to-earth
+Comment=a roguelike spaceship simulator featuring exploration, ship management, game-influencing decision-making and real-time tactical battles
+Terminal=false
+Icon=/usr/share/pixmaps/gog-shortest-trip-to-earth.png
+Type=Application
+Categories=Game;
