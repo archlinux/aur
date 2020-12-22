@@ -16,7 +16,7 @@ makedepends=(
   'ninja'
   'dconf'
 )
-source="git+https://github.com/bottlesdevs/Bottles"
+source=("git+https://github.com/bottlesdevs/Bottles")
 sha256sums=('SKIP')
 
 _repo="Bottles"
