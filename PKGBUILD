@@ -5,7 +5,7 @@
 pkgbase=upp
 pkgname=(upp theide umk)
 yearver=2020.1
-pkgver=15609
+pkgver=15615
 pkgrel=1
 pkgdesc="Radical and innovative multiplatform C++ framework (known as U++)"
 arch=('any')
@@ -74,4 +74,4 @@ package_upp() {
   find "$pkgdir/usr/" -type d -print0 | xargs -0 chmod 755
 }
 
-md5sums=('a5c8583ba0aa2e7341c0cbb2a589806f')
+md5sums=('69c6d9a4441cf5ab07e87acf0dae6f9b')

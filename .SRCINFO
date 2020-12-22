@@ -1,6 +1,6 @@
 pkgbase = upp
 	pkgdesc = Radical and innovative multiplatform C++ framework (known as U++)
-	pkgver = 15609
+	pkgver = 15615
 	pkgrel = 1
 	url = http://www.ultimatepp.org
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = upp
 	options = !makeflags
 	options = emptydirs
 	options = !strip
-	source = https://www.ultimatepp.org/downloads/upp-posix-15609.tar.xz
-	md5sums = a5c8583ba0aa2e7341c0cbb2a589806f
+	source = https://www.ultimatepp.org/downloads/upp-posix-15615.tar.xz
+	md5sums = 69c6d9a4441cf5ab07e87acf0dae6f9b
 
 pkgname = upp
 	pkgdesc = Radical and innovative multiplatform C++ framework (known as U++)
