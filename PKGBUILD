@@ -14,7 +14,7 @@ depends=('glibc' 'libtirpc' 'pambase' 'libxcrypt' 'libcrypt.so')
 provides=('libpam.so' 'libpamc.so' 'libpam_misc.so' 'pam')
 conflicts=(pam)
 backup=(etc/security/{access.conf,faillock.conf,group.conf,limits.conf,namespace.conf,namespace.init,pam_env.conf,time.conf} etc/environment)
-source=("git::https://github.com/linux-pam/linux-pam.git"
+source=("git+https://github.com/linux-pam/linux-pam.git"
         $pkgname.tmpfiles)
 sha256sums=('SKIP'
             'SKIP')
