@@ -15,6 +15,11 @@ conflicts=(lib32-libcups)
 source=(git://github.com/apple/cups.git)
 sha256sums=('SKIP')
 
+pkgver() {
+	  cd cups
+	  git describe --tags | sed 's/-/+/g'
+}
+
 build() {
   export CC="gcc -m32"
   export CXX="g++ -m32"
