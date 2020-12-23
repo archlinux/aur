@@ -10,8 +10,8 @@
 # shellcheck disable=SC2164 # cd safe
 
 pkgname=megasync-nopdfium
-pkgver=4.3.3.0
-pkgrel=2
+pkgver=4.3.8.0
+pkgrel=1
 pkgdesc="Easy automated syncing between your computers and your MEGA cloud drive(stripped of pdfium dependency)"
 arch=('i686' 'x86_64')
 provides=(megasync)
@@ -21,25 +21,20 @@ license=('custom:MEGA LIMITED CODE REVIEW LICENCE')
 depends=('c-ares' 'crypto++' 'libsodium' 'libuv'
          'libmediainfo' 'libraw' 'qt5-base' 'qt5-svg' 'qt5-x11extras' 'ffmpeg')
 makedepends=('qt5-tools' 'swig' 'doxygen' 'lsb-release' 'git')
-_extname="_Linux"
+_extname="_Win"
 source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}${_extname}"
-        "meganz-sdk::git+https://github.com/meganz/sdk.git"
-        "glibc_232.patch::https://github.com/meganz/MEGAsync/pull/477.diff"
-        )
+        "meganz-sdk::git+https://github.com/meganz/sdk.git")
 sha256sums=('SKIP'
-            'SKIP'
-            '5b7553fdf68d6350b7e255553285e002dc643f04e8aae9d891d0f9802f6cf27a')
+            'SKIP')
 
 prepare() {
     cd "MEGAsync"
-    git submodule init
     git config submodule.src/MEGASync/mega.url "../meganz-sdk"
-    git submodule update
+    git submodule update --init
 
     cd "src/MEGASync"
     sed -i '/DEFINES += REQUIRE_HAVE_PDFIUM/d' MEGASync.pro
     sed -i '/CONFIG += USE_PDFIUM/d' MEGASync.pro
-    git apply -v "$srcdir"/glibc_232.patch
 }
 
 build() {
