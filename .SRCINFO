@@ -1,0 +1,17 @@
+pkgbase = lib32-lz4-git
+	pkgdesc = Extremely fast compression algorithm (32-bit)
+	pkgver = 1.9.3
+	pkgrel = 1
+	url = https://www.lz4.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = lz4
+	depends = lib32-glibc
+	provides = lib32-lz4
+	conflicts = lib32-lz4
+	source = git+https://github.com/lz4/lz4.git
+	sha512sums = SKIP
+
+pkgname = lib32-lz4-git
+
