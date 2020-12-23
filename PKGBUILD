@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-femon
 pkgver=2.4.0
-_vdrapi=2.4.3
-pkgrel=3
+_vdrapi=2.4.6
+pkgrel=4
 pkgdesc="DVB Frontend Status Monitor plugin"
 url="http://www.saunalahti.fi/rahrenbe/vdr/femon/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
