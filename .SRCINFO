@@ -1,0 +1,24 @@
+pkgbase = lib32-libva-minimal-git
+	pkgdesc = Video Acceleration (VA) API for Linux (32-bit)
+	pkgver = 2.10.0
+	pkgrel = 1
+	url = https://freedesktop.org/wiki/Software/vaapi
+	arch = x86_64
+	license = MIT
+	makedepends = mesa
+	makedepends = lib32-libglvnd
+	depends = lib32-libdrm
+	depends = lib32-libgl
+	depends = lib32-wayland
+	depends = lib32-libxext
+	depends = lib32-libxfixes
+	depends = libva
+	optdepends = lib32-libva-vdpau-driver: vdpau back-end for nvidia
+	optdepends = lib32-libva-intel-driver: back-end for intel cards
+	provides = lib32-libva
+	conflicts = lib32-libva
+	source = git+https://github.com/intel/libva.git
+	sha512sums = SKIP
+
+pkgname = lib32-libva-minimal-git
+
