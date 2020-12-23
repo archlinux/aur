@@ -2,12 +2,12 @@
 
 pkgname=flashfry
 pkgver=1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="The rapid CRISPR characterization tool"
 arch=('any')
 url="https://github.com/mckennalab/FlashFry"
 license=('GPL3')
-depends=('bash' 'java-runtime')
+depends=('java-runtime' 'sh')
 source=("https://github.com/mckennalab/FlashFry/releases/download/$pkgver/FlashFry-assembly-$pkgver.jar"
         "flashfry")
 sha256sums=('e7751b511db16c958fbe161adad10ff92f2d263d5858e33cc6faf955c4af1280'
