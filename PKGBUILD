@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-epg2vdr
 pkgver=1.1.115
-_vdrapi=2.4.3
-pkgrel=1
+_vdrapi=2.4.6
+pkgrel=2
 pkgdesc="Used to retrieve EPG data into the VDR"
 url="http://projects.vdr-developer.org/projects/plg-epg2vdr"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
