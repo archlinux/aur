@@ -4,18 +4,16 @@ _pkgname=pdfstudioviewer2020
 pkgver=2020.1.1
 pkgrel=2
 pkgdesc="Review, annotate, and edit PDF Documents"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.qoppa.com/pdfstudioviewer"
 license=('custom')
 depends=('java-runtime=8' 'desktop-file-utils' 'sane')
-source=("$pkgname.desktop"
+source=("${pkgname}-${pkgver}_linux64.deb::https://download.qoppa.com/$pkgname/PDFStudioViewer_linux64.deb"
+        "$pkgname.desktop"
         "$pkgname.sh")
-source_i686=("${pkgname}-${pkgver}_linux.deb::https://download.qoppa.com/$pkgname/PDFStudioViewer_linux.deb")
-source_x86_64=("${pkgname}-${pkgver}_linux64.deb::https://download.qoppa.com/$pkgname/PDFStudioViewer_linux64.deb")
-sha256sums=('531354a4fe61e8b16ad3123cd49df7140d4ac1ef3c5e75520b9250d55c398481'
+sha256sums=('b5a867aa4a1a8ed7de08405397a7ddb0368a16f67978b78c983f5130db8fb7c2'
+            '531354a4fe61e8b16ad3123cd49df7140d4ac1ef3c5e75520b9250d55c398481'
             'eb17f775395167664d3bb22dc0f0ba54a6ba9fa975c2a1076716090a8e9a39aa')
-sha256sums_i686=('f097cf566724ca7288fe3117e098545779140d51479d9aa8fc41b00d8b0b9b9d')
-sha256sums_x86_64=('b5a867aa4a1a8ed7de08405397a7ddb0368a16f67978b78c983f5130db8fb7c2')
 
 prepare() {
 	mkdir -p "$pkgname-$pkgver"
