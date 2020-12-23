@@ -2,11 +2,11 @@
 
 pkgname=cherrytree-git
 _pkgname="${pkgname%%-git}"
-pkgver=0.99.27.r0.g86ad4015
+pkgver=0.99.27.r6.g6e9d4a38
 pkgrel=1
 pkgdesc="Hierarchical note-taking application, git version"
 arch=('x86_64')
-url="https://github.com/giuspen/cherrytree"
+url="https://github.com/giuspen/${_pkgname}"
 license=('GPL3')
 depends=('gspell'
 	 'gtksourceviewmm'
@@ -17,8 +17,12 @@ makedepends=('cmake'
 	     'python')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+https://github.com/giuspen/${_pkgname}.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/giuspen/${_pkgname}.git"
+        "git+https://github.com/gabime/spdlog.git"
+	"git+https://github.com/google/googletest.git")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
   cd "${_pkgname}"
@@ -26,8 +30,11 @@ pkgver() {
 }
 
 prepare() {
-  # Fix automatic optimisation flag override
-  sed -i 's/-O3/-O2/' "${_pkgname}/CMakeLists.txt"
+  cd "${_pkgname}"
+  git submodule init
+  git config submodule.spdlog.url "${srcdir}/spdlog"
+  git config submodule.googletest.url "${srcdir}/googletest"
+  git submodule update
 }
 
 build() {
