@@ -1,0 +1,13 @@
+pkgbase = passring
+	pkgdesc = A simple password manager providing a freedesktop secret service API
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.sr.ht/~rumpelsepp/passring
+	arch = any
+	license = GPL3
+	makedepends = go
+	source = passring-0.1.0.tar.gz::https://git.sr.ht/~rumpelsepp/passring/archive/v0.1.0.tar.gz
+	sha256sums = b9bbffcc6e029a8168fc03fdc225e7d5da32f03d20e252d5612756bdf8dd2b5b
+
+pkgname = passring
+
