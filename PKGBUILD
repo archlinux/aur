@@ -24,7 +24,7 @@ optdepends=('pulseaudio: audio support'
             'speech-dispatcher: text-to-speech')
 _url="https://github.com/FascodeNet/flast-gecko/releases/latest/download"
 _src="/firefox.${_lang}.linux"
-_filename="$(date +%Y%m%d%H%M)-firefox-${_version}.${_lang}.linux"
+_filename="${pkgver}-firefox-${_version}.${_lang}.linux"
 source=("${pkgname}.desktop" 'policies.json')
 source_x86_64=("${_filename}-x86_64.tar.bz2"::"${_url}/${_src}-x86_64.tar.bz2")
 sha512sums=(SKIP SKIP)
