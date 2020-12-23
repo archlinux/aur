@@ -4,7 +4,7 @@ url='https://wiki.ros.org/image_view'
 pkgname='ros-melodic-image-view'
 pkgver='1.15.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
@@ -28,6 +28,7 @@ makedepends=(
 	'ros-build-tools'
 	${ros_makedepends[@]}
 	gtk2
+        boost1.69-libs
 )
 
 ros_depends=(
@@ -46,6 +47,7 @@ depends=(
 	${ros_depends[@]}
 	gtk2
 	gtk3
+        boost1.69-libs
 )
 
 _dir="image_pipeline-melodic-${pkgver}/image_view"
@@ -78,7 +80,8 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF \
-                -DBOOST_ROOT=/opt/boost1.69
+                -DBOOST_ROOT=/opt/boost1.69 \
+                -DBoost_NO_SYSTEM_PATHS=TRUE
 	make
 }
 
