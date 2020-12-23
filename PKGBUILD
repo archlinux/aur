@@ -2,7 +2,7 @@
 
 pkgname='pass-notify-git'
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='password-store extension for output via desktop notifications'
 arch=('any')
 url='https://github.com/emlun/pass-notify/'
@@ -20,6 +20,5 @@ pkgver() {
 
 package() {
   cd "${srcdir}/pass-notify/"
-  ls -la
   make DESTDIR="${pkgdir}" install
 }
