@@ -1,7 +1,7 @@
 pkgbase = python-transmissionrpc
 	pkgdesc = Module to communicate with Transmission BT client via JSON-RPC
-	pkgver = 3.2.1
-	pkgrel = 2
+	pkgver = 3.2.2
+	pkgrel = 1
 	url = https://github.com/Trim21/transmission-rpc
 	arch = any
 	license = MIT
@@ -9,8 +9,8 @@ pkgbase = python-transmissionrpc
 	depends = python-requests
 	depends = python-typing_extensions
 	depends = python-yarl
-	source = https://files.pythonhosted.org/packages/source/t/transmission-rpc/transmission-rpc-3.2.1.tar.gz
-	sha256sums = 04512c856eddcee4f360b61e7e87fe042fd7c73585115095532b880e396cf0d4
+	source = https://files.pythonhosted.org/packages/source/t/transmission-rpc/transmission-rpc-3.2.2.tar.gz
+	sha256sums = 2772c1ab2555614b62aad175dd50324932639d6c5b7bfeab26dfc8040222a0f8
 
 pkgname = python-transmissionrpc
 

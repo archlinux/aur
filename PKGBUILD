@@ -3,8 +3,8 @@
 
 _pkgname='transmission-rpc'
 pkgname="python-${_pkgname/-/}"
-pkgver=3.2.1
-pkgrel=2
+pkgver=3.2.2
+pkgrel=1
 pkgdesc='Module to communicate with Transmission BT client via JSON-RPC'
 arch=('any')
 url='https://github.com/Trim21/transmission-rpc'
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('python-requests' 'python-typing_extensions' 'python-yarl')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('04512c856eddcee4f360b61e7e87fe042fd7c73585115095532b880e396cf0d4')
+sha256sums=('2772c1ab2555614b62aad175dd50324932639d6c5b7bfeab26dfc8040222a0f8')
 
 build() {
   cd "${_pkgname}-${pkgver}"
