@@ -2,14 +2,14 @@
 # Contributor: Thor K. Høgås <thor that-circular-a roht dot no>
 
 pkgname='omnetpp-preview'
-pkgver=6.0pre8
+pkgver=6.0pre10
 pkgrel=1
 _pkgname='omnetpp'
 pkgdesc='OMNeT++ Discrete Event Simulator. OMNeT++ is an extensible, modular, component-based C++ simulation library and framework, primarily for building network simulators: preview version'
 url='http://www.omnetpp.org'
 license=('custom')
-depends=(libxml2 qt5-base tcl jdk-openjdk openmpi libpcap doxygen graphviz clang openscenegraph)
-makedepends=(sh wget cmake bison flex perl)
+depends=(libxml2 qt5-base tcl jdk-openjdk openmpi libpcap doxygen graphviz clang openscenegraph python-scipy python-pandas python-posix_ipc)
+makedepends=(sh wget cmake bison flex perl python-scipy python-pandas python-posix_ipc)
 optdepends=(
 			'python-numpy: analysing simulation recordings' 
 			'python-matplotlib: analysing simulation recordings'
@@ -28,7 +28,7 @@ source=(OMNeT++.desktop
 
 sha512sums=('a5772a605592ed2db839609f8298d1d71fb9141eb1b30dac584b788414dfe49b250ba803351a3a84f90c6b89f8e09e7b129a037af17c9b94c22dff2003a5edd8'
             'facb711a01c41665c7909f82b4cee65ddee232e0c526f754ce1ab148dbc6c65abb9b24255f985be245fb2c33f91623365eac730ef83cb1a7c595a09726856fa1'
-            'fff0f37bba5ed563ae937446c3698f3963671b48bc79c345cd3e237c1dc2441dd5c72a6aaf76ad2d2a2d8c95f70827161cd1bf54ee3a8fabdee147d5cc7b3c49')
+            'd67389aa17b556e376abde0a382020884e51c28e858ac2e2cd5a5216c572a6e723d9edd79e14c939106523fe456bfbf858ce9ddebe3309f62999ff96035dfe7e')
 
 build() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
