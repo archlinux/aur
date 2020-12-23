@@ -5,7 +5,7 @@ pkgname=blackeye-git
 
 epoch=1
 pkgver() { git -C "${pkgname%-git}" describe --tags | sed 's/^v//;s/-/.r/;s/-g/./'; }
-pkgver=1.0.0.r3.db23b39
+pkgver=1.0.0.r11.ffa01cc
 pkgrel=1
 
 pkgdesc='The most complete phishing tool - 38 website templates, updated version with ngrok'
@@ -23,7 +23,7 @@ conflicts=("${pkgname%-git}")
 
 source=("git+$url.git" "${pkgname%-git}.patch" "${pkgname%-git}.patch.sig")
 sha256sums=('SKIP'
-            '9de0d9c6b07324fd334e8e7db5b9d965ecaee01d029e71d4a9a1ebc4d179bfde'
+            '168871a8a133db6f74e06c1815f47562187df700d8e7eb065cfd941bf8a3b9c6'
             'SKIP')
 validpgpkeys=('7A194E3F7A8F867BEA8A5339023F078862ACFE50')
 

