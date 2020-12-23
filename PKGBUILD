@@ -3,7 +3,7 @@
 #  geosam
 #  mafes
 
-pkgname=geoda
+pkgname=geoda-bin
 pkgver=1.18.0
 pkgrel=13
 pkgdesc='GeoDa is an Exploratory (Spatial) Data Analysis and Spatial Regression software, for spatial data analysis including spatial econometrics.'
