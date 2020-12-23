@@ -1,7 +1,7 @@
 pkgbase = quickddit
 	pkgdesc = Unofficial reddit client
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/accumulator/Quickddit.git
 	arch = x86_64
 	arch = armv7
@@ -11,6 +11,7 @@ pkgbase = quickddit
 	depends = qt5-base
 	depends = qt5-declarative
 	depends = qt5-quickcontrols2
+	depends = qt5-webengine
 	depends = youtube-dl
 	depends = qqc2-suru-style-git
 	source = git+https://github.com/dano6/Quickddit.git#branch=flavors
