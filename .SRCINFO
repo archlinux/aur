@@ -1,15 +1,15 @@
 pkgbase = cdk8s
 	pkgdesc = Define Kubernetes native apps and abstractions using object-oriented programming
-	pkgver = 1.0.0beta2
+	pkgver = 1.0.0beta5
 	pkgrel = 1
 	url = https://cdk8s.io
 	arch = any
 	license = Apache
 	makedepends = npm
-	source = http://registry.npmjs.org/cdk8s/-/cdk8s-1.0.0-beta.2.tgz
-	sha1sums = 3b15a72fbc5acda0c74d30d5051e630d9282804a
-
-pkgname = cdk8s
 	depends = nodejs
 	optdepends = python: python language support
+	source = http://registry.npmjs.org/cdk8s/-/cdk8s-1.0.0-beta.5.tgz
+	sha1sums = 888507d556469340db89e855a5f6e01bb37d6698
+
+pkgname = cdk8s
 
