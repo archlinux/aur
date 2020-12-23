@@ -1,5 +1,4 @@
-Log notice stderr
 RunAsDaemon 1
 DataDirectory /tmp/tor
 ORPort 0
-SocksPort 8080
+SocksPort 127.0.0.1:8080
