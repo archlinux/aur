@@ -16,10 +16,11 @@ makedepends=('mesa' 'rsync')
 conflicts=('xonotic' 'xonotic-data' 'xonotic-git')
 
 source=("rsync://beta.xonotic.org/autobuild-Xonotic/misc/tools/rsync-updater/update-to-autobuild.sh")
-sha256sums=('c18ca1e7ed98f2a99dd0bcaf554f9a33c74edfca42c6a5464a6b4e3ff9a9633a')
+sha512sums=('aafea6f6347370b17bcc23b6caf86cc028711a2f9d9df6abb4f55bc33b96cd7e5c636b58e3f862613dd4062023866fdcf440f20cd75c9893d18461eb4d23a77f')
+b2sums=('dac7797c46423671ca9c8cdd7c4fc6b9bdbeb67229fc1ef9b6f5524d1632b24a8761a2fe1152cd7582507926b9c4872273323f3e57041d264b1bd5dab829302e')
 
 prepare() {
-  sh ./update-to-autobuild.sh
+  echo Y | sh ./update-to-autobuild.sh
 }
 
 build() {
