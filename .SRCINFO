@@ -1,0 +1,13 @@
+pkgbase = lockdev-redirect
+	pkgdesc = Tool for redirecting /var/lock to a user-writable directory
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.github.com/M-Reimer/lockdev-redirect
+	arch = x86_64
+	license = LGPL3
+	depends = bash
+	source = lockdev-redirect-1.0.0.tar.gz::https://github.com/M-Reimer/lockdev-redirect/archive/1.0.0.tar.gz
+	sha256sums = b15665d07ff811785fa2e94064c71881c7b6502d93ac9a5c018e5c250c015365
+
+pkgname = lockdev-redirect
+
