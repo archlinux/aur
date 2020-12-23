@@ -1,6 +1,6 @@
 pkgbase = scribus-svn
 	pkgdesc = A desktop publishing program - Version from SVN
-	pkgver = 23977
+	pkgver = 24348
 	pkgrel = 1
 	url = http://www.scribus.net
 	arch = i686
@@ -29,7 +29,7 @@ pkgbase = scribus-svn
 	optdepends = lib2geom: for mesh distortion
 	provides = scribus
 	conflicts = scribus
-	source = scribus::svn://scribus.net/trunk
+	source = scribus::svn://scribus.net/trunk#revision=24348
 	sha256sums = SKIP
 
 pkgname = scribus-svn
