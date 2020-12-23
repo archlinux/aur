@@ -4,13 +4,13 @@
 pkgname=vdr-targavfd
 pkgver=0.3.1
 epoch=1
-_vdrapi=2.4.3
-pkgrel=4
+_vdrapi=2.4.6
+pkgrel=5
 pkgdesc="shows information about the current state of VDR on Targa USB Graphic Vacuum Fluorescent Display"
 url="http://projects.vdr-developer.org/projects/show/plg-targavfd"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL3')
-depends=('fontconfig' 'freetype2' 'libusbx' "vdr-api=${_vdrapi}")
+depends=('fontconfig' 'freetype2' 'libusb' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
 source=("https://projects.vdr-developer.org/attachments/download/2087/$pkgname-$pkgver.tgz"
         'targavfd-freetype-2.9.1-fix.diff'
