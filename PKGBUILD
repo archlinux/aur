@@ -3,13 +3,13 @@
 
 pkgname=pan
 pkgver=0.146
-pkgrel=2
+pkgrel=3
 pkgdesc="A powerful Newsgroup Article reader"
 arch=(x86_64)
 url="http://pan.rebelbase.com/"
 license=(GPL2)
 depends=(gtkspell3 gmime)
-makedepends=(intltool itstool gtk2)
+makedepends=(intltool itstool)
 source=("http://pan.rebelbase.com/download/releases/$pkgver/source/$pkgname-$pkgver.tar.bz2")
 sha256sums=('a52c28664652ddbd1639faf99cdb93969c3dd3e0e0ddb9a1b24711ab8f684f9d')
 
@@ -17,6 +17,7 @@ prepare() {
   cd $pkgname-$pkgver
   sed -e 's/enchant/enchant-2/g' -i configure.ac
   sed -e 's|enchant/enchant.h|enchant-2/enchant.h|' -i pan/gui/group-prefs-dialog.cc
+  sed -e '/AM_PATH_GTK_2_0/d' -i configure.ac
   autoreconf -vi
 }
 
