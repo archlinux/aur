@@ -5,18 +5,23 @@
 _pkgname=apkstudio
 pkgname=$_pkgname-git
 pkgver=r299.71ca9b5
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='An IDE for decompiling/editing & then recompiling of android application binaries.'
 arch=('i686' 'x86_64')
 url='http://www.vaibhavpandey.com/apkstudio/'
 license=('GPL2')
-depends=('qt5-base' 'android-tools')
+depends=('qt5-base'
+         'adb'
+         'jadx'
+         'uber-apk-signer-bin'
+         'android-apktool')
 makedepends=('git' 'qt5-tools' 'unzip')
 source=('git+https://github.com/vaibhavpandeyvpz/apkstudio.git'
         'git+https://github.com/Dax89/QHexView.git'
         'git+https://github.com/Jorgen-VikingGod/Qt-Frameless-Window-DarkStyle')
 sha256sums=('SKIP' 'SKIP' 'SKIP')
+install=apkstudio.install
 
 pkgver() {
   cd "$srcdir/$_pkgname"

@@ -1,0 +1,14 @@
+post_install() {
+	echo "After launching apkstudio, set 3rd party binary paths as shown below:"
+	cat <<EOF
+
+	Apktool:
+		/usr/share/android-apktool/apktool.jar
+
+	Jadx:
+		/usr/bin/jadx
+
+	Uber Apk Signer:
+		/usr/share/java/uber-apk-signer/uber-apk-signer.jar
+EOF
+}
