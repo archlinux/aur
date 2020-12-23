@@ -5,9 +5,9 @@
 # Contributor: Hans Janssen <hans@janserv.xs4all.nl>
 
 pkgname=simgear
-pkgver=2020.3.4
+pkgver=2020.3.5
 _pkgver=${pkgver%.*}
-pkgrel=2
+pkgrel=1
 pkgdesc="A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications."
 arch=('x86_64')
 url="http://home.flightgear.org/"
@@ -17,7 +17,7 @@ makedepends=('boost' 'cmake' 'mesa')
 options=('staticlibs')
 source=("https://downloads.sourceforge.net/project/flightgear/release-${_pkgver}/${pkgname}-${pkgver}.tar.bz2"
         'fix-split-iterator.patch')
-sha256sums=('10d4159d84ae0c6f457b089cba5050a705d7b6ca42f42e19f8c2ed4b69434ad1'
+sha256sums=('eb42497da30e13354098e8d08b72633dc9321b3452fcef15b98dfdd30c511c41'
             '98d0601342dfcb9125cb3002666603b150450cd86b9a4c5b29d235ed8341aaa6')
 
 prepare() {
@@ -26,7 +26,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p "$srcdir"/simgear-build
+  rm -rf "$srcdir"/simgear-build
+  mkdir "$srcdir"/simgear-build
   cd "$srcdir"/simgear-build
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
