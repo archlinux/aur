@@ -1,6 +1,6 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname=firefox-tridactyl-native
-pkgver=1.20.3
+pkgver=1.20.4
 pkgrel=1
 pkgdesc="Tridactyl native messaging host application for Firefox"
 arch=('any')
@@ -8,7 +8,7 @@ url=https://github.com/tridactyl/tridactyl
 license=('Apache')
 depends=('python')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tridactyl/tridactyl/archive/$pkgver.tar.gz")
-md5sums=('80ee4d256a3eae371d5e78341389d376')
+md5sums=('e69cd55d7604891c393560c1f5ad96de')
 
 build() {
     sed -i -e "s-REPLACE_ME_WITH_SED-/usr/lib/tridactyl/native_main.py-" \
