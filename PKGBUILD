@@ -10,8 +10,8 @@ license=('GPL3')
 provides=('klogg')
 depends=('qt5-base' 'hicolor-icon-theme')
 makedepends=('tar')
-source=("${pkgname%-bin}-${pkgver}.deb::https://github.com/variar/klogg/releases/download/v${pkgver}/klogg-${pkgver}.0.810-Linux.deb")
-sha256sums=('31bc0eca61e9c5e9a022fe1ee490086eb5abb83def746e0624aea8638f12c64c')
+source=("${pkgname%-bin}-${pkgver}.deb::https://github.com/variar/klogg/releases/download/v20.12/klogg-20.12.0.812-Linux.deb")
+sha256sums=('393d336fef476f200351f127625b990da3a6ae5b247a482ec8e3e0425f0c9b0b')
 
 package() {
   tar xvf data.tar.gz -C "${pkgdir}/"
