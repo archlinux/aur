@@ -1,6 +1,6 @@
 pkgbase = deepin-desktop-base-git
 	pkgdesc = Base component for Deepin
-	pkgver = 2020.11.04.r2.ge439cbc
+	pkgver = 2020.11.04.r4.gd33fd6c
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/deepin-desktop-base
 	arch = any
