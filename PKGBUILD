@@ -4,7 +4,8 @@
 # Contributor: Alex Brinister <alex_brinister at yahoo dot com>
 
 pkgname='papyrus'
-pkgver='4.8.0'
+pkgver='5.0.0'
+_eclipsever='2020-12'
 pkgrel=1
 pkgdesc='Graphical editing tool for UML based on eclipse.'
 arch=('x86_64')
@@ -13,18 +14,12 @@ license=('EPL')
 groups=()
 depends=(java-runtime python libsecret)
 makedepends=(tar)
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-_eclipsever='2020-06'
-md5sums=(
-  '2998813786cd8b03b72e07eb048b99e3'
-  '411d949e9e15e4e60f01f66091e18421'
-  'd1d0f87c71fccdcca0bec57ccf36c2f0'
+provides=('papyrus')
+conflicts=('papyrus')
+sha256sums=(
+  'c10ce9ab85889f1d03beaea5e03d34d2ebc11b3637e54ca5f9d6b4e714b2d917'
+  '0bf0ff5eacc3e955a01c171cc21d8c989707ed9eee668ce176d67cfae06c8608'
+  '255f1d8b0277bb9e4a3f84d09294fe34a54485b29f67220733343f37db052b94'
 )
 source=(
   "http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/modeling/mdt/papyrus/rcp/${_eclipsever}/${pkgver}/papyrus-${_eclipsever}-${pkgver}-linux64.tar.gz"
