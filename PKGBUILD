@@ -5,7 +5,7 @@
 # Contributor: Hans Janssen <hans@janserv.xs4all.nl>
 
 pkgname='flightgear'
-pkgver=2020.3.4
+pkgver=2020.3.5
 _pkgver=${pkgver%.*}
 pkgrel=1
 pkgdesc="An open-source, multi-platform flight simulator"
@@ -19,7 +19,7 @@ license=("GPL")
 url="http://www.flightgear.org/"
 options=('makeflags')
 source=("http://downloads.sourceforge.net/project/flightgear/release-${_pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('c8f375641071273d0410697df4438eb9f2758d7c2a6b568402d643744180a909')
+sha256sums=('7e0979163c17a803def30fa2324cca3fb346bc5368919d5ee30974d457dd5217')
 
 prepare() {
   cd "$srcdir"/flightgear-$pkgver
@@ -27,7 +27,8 @@ prepare() {
 }
 
 build() {
-  mkdir -p "$srcdir"/flightgear-build
+  rm -rf "$srcdir"/flightgear-build
+  mkdir "$srcdir"/flightgear-build
   cd "$srcdir"/flightgear-build
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
