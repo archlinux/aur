@@ -110,6 +110,8 @@ build() {
     -D hal=false \
     -D xf86-input-inputtest=false \
     -D dga=false \
+    -D xace=false \
+    -D xcsecurity=false \
     -D debug=false
      
 # xinerama required for nvidia blob/amdgpu/mesa
