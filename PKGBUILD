@@ -3,7 +3,7 @@
 pkgname=libzkgroup
 _pkgname=zkgroup
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for the Signal Private Group System."
 url="https://github.com/signalapp/${_pkgname}"
 makedepends=('cargo')
@@ -19,14 +19,21 @@ prepare() {
 
   # Use the default system rust toolchain
   rm rust-toolchain
+  sed -i '/ffi:android/d' settings.gradle
+  sed -i '/:makeServer/d' ffi/java/build.gradle
 }
 
 build() {
   cd "${_pkgname}-$pkgver"
   make libzkgroup
+  gradle :ffi:java:build
 }
 
 package() {
   cd "${_pkgname}-$pkgver"
+
+  install -m755 -d "${pkgdir}"/usr/share/java/${pkgname} "${pkgdir}"/usr/lib
+
+  install -Dm644 "ffi/java/build/libs/zkgroup-java-${pkgver}.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
   install -Dm644 "target/release/$pkgname.so" "$pkgdir/usr/lib/$pkgname.so"
 }

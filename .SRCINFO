@@ -1,7 +1,7 @@
 pkgbase = libzkgroup
 	pkgdesc = Library for the Signal Private Group System.
 	pkgver = 0.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/signalapp/zkgroup
 	arch = i686
 	arch = x86_64
