@@ -1,6 +1,6 @@
 pkgbase = pipewire-git
 	pkgdesc = Server and user space API to deal with multimedia pipelines. (GIT version)
-	pkgver = 0.3.17.56.gcfe43cbe
+	pkgver = 0.3.18.70.gaf38edea
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = pipewire-git
 	makedepends = ffmpeg
 	makedepends = libldac
 	makedepends = libopenaptx
+	makedepends = libfdk-aac
 	source = git+https://gitlab.freedesktop.org/pipewire/pipewire.git
 	sha256sums = SKIP
 
@@ -40,6 +41,7 @@ pkgname = pipewire-git
 	depends = sbc
 	depends = libldac
 	depends = libopenaptx
+	depends = libfdk-aac
 	optdepends = pipewire-docs-git: Documentation
 	optdepends = pipewire-jack-git: JACK support
 	optdepends = pipewire-alsa-git: ALSA support
