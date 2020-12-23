@@ -21,6 +21,11 @@ conflicts=(lib32-libva)
 source=("git+https://github.com/intel/libva.git")
 sha512sums=('SKIP')
 
+pkgver() {
+	  cd libva
+	  git describe --tags | sed 's/-/+/g'
+}
+
 build() {
   export CC='gcc -m32'
   export CXX='g++ -m32'
