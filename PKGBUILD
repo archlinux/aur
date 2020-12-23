@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/leftwm/leftwm"
 license=('MIT')
 depends=()
-makedepends=('rustup' 'git')
+makedepends=('cargo' 'git')
 optdepends=('dmenu: default launcher'
             'feh: used to set background images'
             'lemonbar: light weight bar'
