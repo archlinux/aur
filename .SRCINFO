@@ -1,0 +1,20 @@
+pkgbase = lib32-pam-minimal-git
+	pkgdesc = Pluggable Authentication Modules
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = http://linux-pam.org
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = lib32-libnsl
+	depends = lib32-libtirpc
+	depends = lib32-libxcrypt
+	depends = pam
+	provides = lib32-pam
+	conflicts = lib32-pam
+	options = !emptydirs
+	source = git+https://github.com/linux-pam/linux-pam.git
+	b2sums = SKIP
+
+pkgname = lib32-pam-minimal-git
+
