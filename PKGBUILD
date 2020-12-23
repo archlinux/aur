@@ -4,7 +4,7 @@ url='https://wiki.ros.org/rqt_image_view'
 pkgname='ros-melodic-rqt-image-view'
 pkgver='0.4.16'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -22,6 +22,7 @@ makedepends=(
 	'ros-build-tools'
 	${ros_makedepends[@]}
 	qt5-base
+        boost1.69-libs
 )
 
 ros_depends=(
@@ -35,6 +36,7 @@ ros_depends=(
 
 depends=(
 	${ros_depends[@]}
+        boost1.69-libs
 )
 
 _dir="rqt_image_view-${pkgver}"
