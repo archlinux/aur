@@ -1,0 +1,12 @@
+pkgbase = midnight-gtk-theme-git
+	pkgdesc = A collection of dark gtk themes
+	pkgver = r89.c24efd5
+	pkgrel = 1
+	url = https://github.com/i-mint/midnight
+	arch = any
+	license = GPL3
+	source = git+https://github.com/i-mint/midnight.git
+	sha256sums = SKIP
+
+pkgname = midnight-gtk-theme-git
+
