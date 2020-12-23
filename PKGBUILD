@@ -2,9 +2,9 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=noto-fonts-lite
-_commit=0fa1dfabd6e3746bb7463399e2813f60d3f1b256
-pkgver=20190926
-pkgrel=4
+pkgver=20201206
+_commit=20bc5918912503bc1537a407a694738c33c048aa
+pkgrel=1
 pkgdesc="Google Noto TTF fonts (lite version)"
 arch=(any)
 url="https://www.google.com/get/noto/"
@@ -14,42 +14,42 @@ optdepends=('noto-fonts-cjk: CJK characters' 'noto-fonts-emoji: Emoji characters
 provides=(ttf-font noto-fonts)
 conflicts=(noto-fonts)
 _url="https://github.com/googlefonts/noto-fonts/raw/${_commit}"
-source=("${_url}/hinted/NotoSans/NotoSans-"{Black,BlackItalic,Bold,BoldItalic,Italic,Light,LightItalic,Medium,MediumItalic,Regular,Thin,ThinItalic}.ttf
-	"${_url}/hinted/NotoSansMono/NotoSansMono-"{Black,Bold,Light,Medium,Regular,Thin}.ttf
-	"${_url}/hinted/NotoSerif/NotoSerif-"{Black,BlackItalic,Bold,BoldItalic,Italic,Light,LightItalic,Medium,MediumItalic,Regular,Thin,ThinItalic}.ttf
-	"noto-fonts-license::${_url}/LICENSE"
+source=("${_url}/hinted/ttf/NotoSans/NotoSans-"{Black,BlackItalic,Bold,BoldItalic,Italic,Light,LightItalic,Medium,MediumItalic,Regular,Thin,ThinItalic}.ttf
+        "${_url}/hinted/ttf/NotoSansMono/NotoSansMono-"{Black,Bold,Light,Medium,Regular,Thin}.ttf
+        "${_url}/hinted/ttf/NotoSerif/NotoSerif-"{Black,BlackItalic,Bold,BoldItalic,Italic,Light,LightItalic,Medium,MediumItalic,Regular,Thin,ThinItalic}.ttf
+        "noto-fonts-license::${_url}/LICENSE"
         66-noto-sans.conf 66-noto-serif.conf 66-noto-mono.conf
         46-noto-sans.conf 46-noto-serif.conf 46-noto-mono.conf)
-sha256sums=('3a75e8da3811538449fe6284dff7cc04448fd71177ab1cb98eba3fd030ebb5d2'
-            '4eed0e8989f74a19954acb337da34c6e9ff8b92b2bd75c2969ba953f0d027534'
-            'd00e79e314c9400eeaacb4043c2f4b0a0cd6da0b5ba5c76ee921b5d1bfa9841b'
-            '2ff16a4d0c7711e0933059cbf672a29ec26a001a82395a6ebf4792aaf5c1cf5e'
-            '3756b76d553b86ba5569fb8be18eac5b13cf3628310439132a1ae10334a07ee4'
-            '2532e0014ee8a7623d4311914bddc74232b1349162690d28c6e40fa5120f68cd'
-            '1b6bc16906ab5c9143d82b119024560f07ce4bb95d88bb6aaba021d7ceb23163'
-            'dc27f8bf0adf8433909a86f6d356d52f4adf5a53105eedbd8c018390daf37ff8'
-            'da9963258d3d6776c1df743610b9a64be00274b6364780b2c71cc957ba43778f'
-            'd78a4640e19e06c128e2041d480d5ddfd8db4fdecb3d582ca12b26aef1548bf9'
-            '8cb8a41c62502c5b938fb61043474edd5c6c063b52c26b9d171d4bf773daa52e'
-            '1ae3ed5264ab1317310b0c2b50f56fee8152cc5b88839840bfbe59f83fa9dd19'
-            '08bbceb701a06b9af1dd5b630e78a6a8f8a29322430e28b562c13702bd466976'
-            'c106bcfd27981a932a65d9ca8e472f76b1a2ac464f65f20e99ced84943885db1'
-            '0b200245e82386de5206ecf22c8ee21749fed0b3927feea52758840f788bfe5d'
-            'f2f76fd00bbd411eaac375b3f325be4ccad027ba516be54ba14bc9273e05e8b5'
-            '98a9cdff48b962e5599cf34691327a1066b28396f2b8305523669f4972060488'
-            'bccff0ddf5b51c74171817c19ff68a0cd773a037c6a84c72111dd2233f72b017'
-            'cb1c0d2846060f34ad90d8ecbcefdd01f4acf6583ea1cf8900d54144863a7243'
-            '81bf211652c741d8c61ca5be24fef5ec2005ce0d3fb4b15edd7b5037b2dcd5bc'
-            'bfafe9406c66e9f6db1f0d439007992b34623df252b37450a5dd7a2101e9e186'
-            '7f49337dd100d66814dbeeb7ea5cbc2fe5c39cf007cc58ea97e1f2b4b16576c2'
-            '7689876b455d2f1ba19083c57c56da9087fbae0f4e5877f0af037722947b5e31'
-            'c0f7c29c09dc83edc2f53176f5b8e6e3ecb8c0af8b7a9fe3c8d016c419065647'
-            'e0e5604cb9a244657c2db3f32513cac7b8b8bf7ddb4215f872d620a8e6709450'
-            '2608392449391e3534572c38ff632f5c265a96ea06e4c067995222fcab33f9d3'
-            'afa2f33b9646e6277b628e6a9d2f6410295c74d469d5cfadcffb17258329ebf7'
-            '7953a35072390efc1ba0d93ba95d1c781ecdc096034f9bd8d08c12d431267488'
-            '4f2df745776744487463d3d6eb366a858b9b1e6807d42a09142164341b21a9fc'
-            '5bccdb17fe575034a918e90f256e86a11148ddfb16ac0250ab996a5dbda89726'
+sha256sums=('725c6264b5482ff17b26570e6e908ad5b5f0a027d9c8f35c2f47be071372649c'
+            '5c97c15664b4d31b35698e27f9ef09b55a4af363dbbdb391dee5e486ebe53ed6'
+            'd62ff7c27ae901ae9b5c3ef0cae4a1f091e28a7ce62b9e0fed86a38185f84971'
+            '4a44bc45d89669b612d00483f01233b43caaef695f1998702126154a37093180'
+            'fd0142325f12c857b3443c2390f7f4a697b5c4017fbad4cfd16218cf33c4ddba'
+            'a819f22b573b8a5fea85414d9a2559f6e6704a5a33a0cc69085a2b40405fb022'
+            '825b639e2a2559e97e5c61941d722f69352998706f1d828be1fc9c1c78ff9905'
+            '256a9ee60e8294c5f152c17ebf4d87029241983281bfd4cdbc965b2a24f4c873'
+            'fa22b9666d51c2623d199b1d34b7297a61817985a2dc86b23dd8324d3db862de'
+            'dac8e68fe43fca59d522fa5f763322cfb4a919c28957656c58e7836d915307d0'
+            '451ae4a0d218590080f4dadfcb2b7ff380c27a14d4c6946f9571c52bd01ca817'
+            '160e355f434f795a2b82a00aa766694b8dd7665cf8a761444801a05c5fa7c35f'
+            'f372812d7ce0f91ad6f65f0f75062777ee609fc42fdb871ce7809d9eda887c04'
+            'c40ba0f3e59a1082daf1f59183e9638d3c554c448674df9637af0f61dd64865e'
+            '6b19d7a2ba3affafd54fa47934d772d8d0f48eb92bbe733772215b5b9e76c9b5'
+            '92ff55752aeba6df914c6187e0adfbbbf5d7b325f780f835b142542e2c49459f'
+            '620cf514ac4c6b91ef7bac5c658c2883995f7d310963ec569b5cdd9b43e9154a'
+            '3f19cd45c6ddee11185fec274c69212e461b7f95766a239bf6657c7daf88fb76'
+            '152502427af65288d77449d67cb2935f3468ec9f0576849228f79ece79f074b6'
+            '3934c4c5486f62d00111b7afbaaf799d537a4c5f29c050a9b322715f1717a0b0'
+            'cb70f8c03df3ea688a9d3aafccf4bfa32a75adee3730505227011f98edabf59f'
+            'f65406a370754bdabd9999e022179821381f9fbd45c45fd674138e8dcd652ba6'
+            '1a304adf60b705e29b48463ae303fc20fc7e8d041fc68e55efa5ee49137ca8bc'
+            '0dcf16eb78c666814fac36f60309b2c74ab6d306f678b98c8dfe37709808664f'
+            '55ae6f20dbcf0cb85fbb6460818988c1ec1edf921eef0805d10e800dccea887d'
+            'c731be97fea937135032ddd09c0c7328cc548e6d5aa737161e7e34539f169df3'
+            '8adf218acf5e30c5b2c96d3eff8f2747707f4c228321854726dcd8b799c63e14'
+            '978a488c634f845980ea43e22a6f57c63db819d22f3275f58b1fdd0b0938c576'
+            '6d29d1ea2aa5ab53a6508bd70d44b01d5abd4b7c189d576e6460ef99b74cee5f'
+            'fbd192b71b23a7aa2750469193cb7e8dbe9683021128d8456dce9c2a7085cb0d'
             '0dab92d0544f7b233403f14b84a663bdbfa746982eda629e7f4f9ffe1b036feb'
             '52684bebf6447be22618d2a04ff37623ec92f9d8ccf6b6f972e5bcbcfee90d69'
             '4459944b63dc083107280f5d7375c69746bf80a09416a4a4909a100e58e5a33a'
