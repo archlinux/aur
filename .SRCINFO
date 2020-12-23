@@ -1,6 +1,6 @@
 pkgbase = vala-git
 	pkgdesc = Compiler for the GObject type system
-	pkgver = 0.43.6+6+g9c130ffe0
+	pkgver = 0.50.1+96+gffd19b25b
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/Vala
 	arch = i686
