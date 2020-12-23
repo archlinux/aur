@@ -1,7 +1,7 @@
 pkgbase = signal-cli
 	pkgdesc = Provides a commandline and dbus interface for secure Signal messaging.
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AsamK/signal-cli
 	arch = any
 	license = GPL3
@@ -21,7 +21,7 @@ pkgbase = signal-cli
 	validpgpkeys = FA10826A74907F9EC6BBB7FC2BA2CD21B5B09570
 	sha512sums = 593d9074b98691f921896c87758be9dd374f6b968276fbcd7fe1af81bc6b14b034d843f042dec4ac99e2a5e3911fc85a63ed7798a09355f05279088da9145d75
 	sha512sums = SKIP
-	sha512sums = f8d75536e1db3de0ca89c3edd5fe6e04d40f6edcbd899e3f80b4d175502a4e98ba49bcef443653bb17ab50bb6396cc2bb9b6838890337b887d25671fe096ba21
+	sha512sums = 5f890752b999de525312d9c04ea076fd65036a65df33be172c2a382b3f8037232f4065746de4a5847b719527141885d9871f8c667a218fc14969e46615c4de84
 	sha512sums = b4db42e18c957edb274637eee1ea5feb5d5f94e16ff0ced63788c8285e0c31c17e5414c6b93b1c2a6ffacca4888b177d33d1878727780e9a0e937b323e332021
 	sha512sums = 8db6fdee294a899596487ebaf154df413631f6935127be430eb47985f3d2a75849daaf1cbe6ae99590d9ae64025bd94c6b212ee9f72e80a3eb49784fad25b914
 
