@@ -1,4 +1,4 @@
-# Maintainer: Khamkou Uladzislau <hamk.vo@gmail.com>
+# Maintainer: Khamkou Uladzislau <hamkov@vivaldi.net>
 
 pkgname=terminus-font-otb-narrow
 pkgver=4.48
