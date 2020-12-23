@@ -20,4 +20,5 @@ package() {
   mkdir -p $_npmdir
   cd $_npmdir
   npm install -g --prefix "$pkgdir/usr" $pkgname-cli@$_pkgver
+  chown 0:0 -R "$pkgdir"
 }
