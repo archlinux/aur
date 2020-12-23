@@ -1,7 +1,7 @@
 pkgbase = i18nspector
 	pkgdesc = Checking tool for gettext POT, PO and MO files
 	pkgver = 0.26
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jwilk.net/software/i18nspector
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = i18nspector
 	makedepends = python-docutils
 	depends = python
 	depends = python-polib
-	depends = python-rply-git
+	depends = python-rply
 	source = https://github.com/jwilk/i18nspector/releases/download/0.26/i18nspector-0.26.tar.gz
 	source = https://github.com/jwilk/i18nspector/releases/download/0.26/i18nspector-0.26.tar.gz.asc
 	validpgpkeys = CDB5A1243ACDB63009AD07212D4EB3A6015475F5

@@ -1,14 +1,14 @@
 # Maintainer: Dennis van der Schagt <dennisschagt@gmail.com>
 pkgname=i18nspector
 pkgver=0.26
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Checking tool for gettext POT, PO and MO files"
 arch=('any')
 url="http://jwilk.net/software/i18nspector"
 license=('MIT')
 groups=()
-depends=('python' 'python-polib' 'python-rply-git')
+depends=('python' 'python-polib' 'python-rply')
 makedepends=('python-docutils')
 checkdepends=('python-nose')
 optdepends=()
