@@ -4,8 +4,8 @@
 pkgname=vdr-eepg
 pkgver=0.0.5_242_g32b4e66
 _gitver=32b4e669bf8bc6e3336073616c121f10b8518fe8
-_vdrapi=2.4.3
-pkgrel=1
+_vdrapi=2.4.6
+pkgrel=2
 pkgdesc="Extended EPG (EEPG) plugin for VDR"
 url="http://projects.vdr-developer.org/projects/plg-eepg"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
