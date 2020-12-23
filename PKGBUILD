@@ -80,7 +80,7 @@ _pick() {
 #--PACKAGE--------------------------------------------------------------
 
 package_p11-kit-nosystemd-minimal-git() {
-    depends=("libp11-kit=$pkgver-$pkgrel" 'coreutils' 'libp11-kit.so')
+    depends=('coreutils')
 
     provides=(p11-kit)
     conflicts=(p11-kit)

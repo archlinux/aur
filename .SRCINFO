@@ -13,9 +13,7 @@ pkgbase = p11-kit-nosystemd-minimal-git
 	sha256sums = SKIP
 
 pkgname = p11-kit-nosystemd-minimal-git
-	depends = libp11-kit=0.23.22-1
 	depends = coreutils
-	depends = libp11-kit.so
 	provides = p11-kit
 	conflicts = p11-kit
 
