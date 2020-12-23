@@ -2,7 +2,7 @@
 
 _pkgname=swagger_ui_bundle
 pkgname=python-$_pkgname
-pkgver=0.0.6
+pkgver=0.0.8
 pkgrel=1
 pkgdesc='bundled swagger-ui pip package'
 arch=('any')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('python-jinja>=2.0')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('2172bc039d1b4ad603412b1298211d738384d94df47612fb384da10fb69bf71f6b37c5afdcbe94dbe7b5c4df1495d43801cc11b2d4bebc8783f4d3442676f62f')
+sha512sums=('0a5e176c79cc7ed7108965b159cee69a11e0ac896741af5462a7f8e184ba7599c22015077f478780d4954c462e37da708ee746b57b1af6edcb2de7bbac4ddad3')
 
 build() {
   cd $_pkgname-$pkgver
