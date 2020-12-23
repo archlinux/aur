@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=RSSOwlnix
+Comment=RSSOwlnix
+Type=Application
+Icon=RSSOwlnix
+Exec=RSSOwlnix
+Categories=Qt;Network;News;
+Terminal=false
