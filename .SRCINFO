@@ -1,0 +1,22 @@
+pkgbase = tectonic-bin
+	pkgdesc = Modernized, complete, self-contained TeX/LaTeX engine, powered by XeTex and TeXLive (binary release)
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/tectonic-typesetting/tectonic
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	depends = fontconfig
+	depends = harfbuzz-icu
+	depends = openssl
+	provides = tectonic
+	conflicts = tectonic
+	source = https://raw.githubusercontent.com/tectonic-typesetting/tectonic/master/LICENSE
+	sha512sums = 5d2f16e9171ba223b0d9d12b0c022718e02b2a8738ec4a664b9eb2ca19d7b67f178f6606edd75a8201e1ab99a88937b9e4c4d01e4a3cdf0ccfedb536207db0a3
+	source_x86_64 = tectonic-0.3.3.tar.gz::https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic%400.3.3/tectonic-0.3.3-x86_64-unknown-linux-gnu.tar.gz
+	sha512sums_x86_64 = ba5df0ea06375e17547f2c869749f622952a0ae85b7583d666809f29b165df1f1d9757258691d447250f879a86db758d418d269999cec0daad37682330f7bcc7
+	source_armv7h = tectonic-0.3.3.tar.gz::https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic%400.3.3/tectonic-0.3.3-arm-unknown-linux-musleabihf.tar.gz
+	sha512sums_armv7h = 7d74f970164a3639a4844a2409d609e3016dfd8848233d8d9341a6787d94ffb97fc4bfea58a0eeefe2823c496b4d058679f1823a50a0d9e337495d7b46152c37
+
+pkgname = tectonic-bin
+
