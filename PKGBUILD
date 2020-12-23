@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.10.1.arch1
+pkgver=5.10.2.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -96,7 +96,7 @@ _pkgdesc_extra="~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG"
 source=(
     "git+$_repo_url?signed#tag=$_srcver_tag"
     "git+$_repo_url_gcc_patch"
-    config.gz # kernel config file
+    config # kernel config file
     0005-v5.10_undead-pds099o.patch
     0005-undead-glitched-pds.patch
 )
@@ -107,7 +107,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            'f8a226fe84896824f78bf05890250a110fee779d15f5716972efc6dd4cf5fe71dd9deba49559fdc267c0251274d6fb1f5795af902ade219e466d9dc73afe03a9'
+            '8958087732699e9ad5540eb25f537fa82bb51cbdcd097ae94358086a4cf2187c6c151e0931af2c87c4bc9919af0d0cfb214d4867190fb70776854d7a63c49fb4'
             'e27976837d14c6480514da37c76f8d015a26eefe8da612e31a819a3ef897864a30fac588ca11108ea5fe6fab653fb083c09e3cbc923ddfa3758ea20f567d6dee'
             '2cf83af1322f0fe5b9751e2b77fa1c890c7c22d9213b1cdfb57ca7f7a89a2cb263c213e178417ae1b7e947b386796b4b71507b127ec698cba661799346b33bbd')
 
