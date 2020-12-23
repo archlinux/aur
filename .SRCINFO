@@ -6,7 +6,7 @@ pkgbase = wiwos20
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = qt4
+	depends = qt5-base
 	source = wiwos20::git+https://git.stikonas.eu/andrius/s20.git
 	md5sums = SKIP
 
