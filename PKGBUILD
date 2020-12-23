@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-fritzbox
 pkgver=1.5.3
-_vdrapi=2.4.3
-pkgrel=22
+_vdrapi=2.4.6
+pkgrel=23
 pkgdesc="Connects to the Fritz!Box to inform you about incoming and outgoing calls"
 url="https://github.com/jowi24/vdr-fritz"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
