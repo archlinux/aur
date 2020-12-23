@@ -4,7 +4,7 @@
 
 pkgname=scribus-svn
 pkgver=24357
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
@@ -29,11 +29,11 @@ pkgver() {
 
 build() {
   cd $_svnmod/Scribus
-  LANG=C
   cmake . -DCMAKE_INSTALL_PREFIX:PATH=/usr \
 	-DWANT_GRAPHICSMAGICK:BOOL=YES \
 	-DCMAKE_LIBRARY_PATH:PATH=/usr/lib \
-	-DCMAKE_EXE_LINKER_FLAGS:STRING="-lQt5Quick -lQt5PrintSupport" \
+        -DCMAKE_SKIP_RPATH=ON \
+	-DCMAKE_BUILD_WITH_INSTALL_RPATH:BOOL=FALSE \
 	-DQT_PREFIX:PATH="/usr" -DWANT_SVNVERSION:BOOL=YES
   make
 }
