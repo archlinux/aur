@@ -44,17 +44,7 @@ build() {
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  ./configure \
-    --prefix=/usr \
-    --libdir=/usr/lib32 \
-    --sbindir=/usr/bin \
-    --disable-db \
-    --disable-doc \
-    --disable-debug \ 
-    --without-mailspool \
-    --disable-audit \
-    --disable-selinux \
-    --disable-regenerate-docu
+  ./configure --prefix=/usr --libdir=/usr/lib32 --sbindir=/usr/bin --disable-db --disable-doc --disable-debug --without-mailspool --disable-audit --disable-selinux --disable-regenerate-docu
   make
 }
 
