@@ -9,7 +9,7 @@ post_install() {
   if test ! -d "$_dir"; then
     mkdir -m 750 "$_dir"
   fi
-  mkdir -p -m 770 "$_log"
+  mkdir -p -m 750 "$_log"
   chown -R $_bc_user:$_bc_group "$_dir" "$_cnf" "$_log"
 }
 
@@ -26,7 +26,7 @@ _mkuser() {
   getent passwd $_bc_user &>/dev/null || {
     echo -n "Creating flowee user... "
     grep -E "^$_bc_group:" /etc/group >/dev/null || groupadd $_bc_group
-    useradd -m -d /etc/flowee -g $_bc_group -s /usr/bin/nologin $_bc_user 2>/dev/null
+    useradd -r -m -d /etc/flowee -g $_bc_group -s /usr/bin/nologin $_bc_user 2>/dev/null
     echo "done"
   }
 }

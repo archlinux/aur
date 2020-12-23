@@ -1,4 +1,40 @@
-/var/lib/flowee/hub.log
+/var/log/flowee/hub.log
+{
+    rotate 5
+    copytruncate
+    daily
+    missingok
+    notifempty
+    compress
+    delaycompress
+    sharedscripts
+}
+
+/var/log/flowee/indexer.log
+{
+    rotate 5
+    copytruncate
+    daily
+    missingok
+    notifempty
+    compress
+    delaycompress
+    sharedscripts
+}
+
+/var/log/flowee/bitcore-proxy.log
+{
+    rotate 5
+    copytruncate
+    daily
+    missingok
+    notifempty
+    compress
+    delaycompress
+    sharedscripts
+}
+
+/var/log/flowee/restservice.log
 {
     rotate 5
     copytruncate
