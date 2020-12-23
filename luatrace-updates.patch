@@ -1,0 +1,536 @@
+From c3f4a153d14e447f71563cd1dd3ccee4c1a494c8 Mon Sep 17 00:00:00 2001
+From: "Robert G. Jakabosky" <bobby@sharedrealm.com>
+Date: Thu, 13 Sep 2012 13:16:01 -0700
+Subject: [PATCH 1/6] Fix crash when no source code is available.
+
+When Lua code is loaded using the Lua C API's lua_load, luaL_loadbuffer,
+luaL_loadstring functions then jit.annotate can't find the source code
+and crashes when annotating the code.
+
+This patch also catches errors to help with debugging the annotate code.
+---
+ lua/jit/annotate.lua | 33 ++++++++++++++++++++++++++++-----
+ 1 file changed, 28 insertions(+), 5 deletions(-)
+
+diff --git a/lua/jit/annotate.lua b/lua/jit/annotate.lua
+index 901e910..6bfcd81 100644
+--- a/lua/jit/annotate.lua
++++ b/lua/jit/annotate.lua
+@@ -295,7 +295,10 @@ local function annotate_report(report_file)
+       end,
+       function(tr, r)
+         if not tr.status then
+-          r.line = source_map[tr.abort.info.source][tr.abort.info.currentline]
++          local src = source_map[tr.abort.info.source]
++          if src then
++            r.line = src[tr.abort.info.currentline]
++          end
+         end
+       end)
+   report_summary(report_file, results, result_map, total, true)
+@@ -364,7 +367,12 @@ local function annotate_report(report_file)
+         for k = bl.linedefined, bl.first_line - 1 do
+           report_file:write(bc_format:format(" "))
+           report_file:write((" | %4d"):format(k))
+-          report_file:write((" | %s\n"):format(source_map[bl.source][k]))
++          local src = source_map[bl.source]
++          if src then
++            report_file:write((" | %s\n"):format(src[k]))
++          else
++            report_file:write((" | <<no code>>:%s:%d\n"):format(bl.source, k))
++          end
+         end
+       end
+       for k, line in ipairs(bl.lines) do
+@@ -372,7 +380,12 @@ local function annotate_report(report_file)
+           report_file:write(bc_format:format(b))
+           if l == 1 then
+             report_file:write((" | %4d"):format(line.number))
+-            report_file:write((" | %s\n"):format(source_map[bl.source][line.number]))
++            local src = source_map[bl.source]
++            if src then
++              report_file:write((" | %s\n"):format(src[line.number]))
++            else
++              report_file:write((" | <<no code>>:%s:%d\n"):format(bl.source, line.number))
++            end
+           else
+             report_file:write(" |    . |\n")
+           end
+@@ -382,7 +395,12 @@ local function annotate_report(report_file)
+         for k = bl.last_line + 1, bl.lastlinedefined do
+           report_file:write(bc_format:format(" "))
+           report_file:write((" | %4d"):format(k))
+-          report_file:write((" | %s\n"):format(source_map[bl.source][k]))
++          local src = source_map[bl.source]
++          if src then
++            report_file:write((" | %s\n"):format(src[k]))
++          else
++            report_file:write((" | <<no code>>:%s:%d\n"):format(bl.source, k))
++          end
+         end
+       end
+     end
+@@ -415,7 +433,12 @@ end
+ 
+ local function shutdown()
+   annotate_off()
+-  if not reported then annotate_report() end
++  if not reported then
++    local status, err = xpcall(annotate_report, debug.traceback)
++    if not status then
++      print("------------------ annotate_report:", status, err)
++    end
++  end
+ end
+ 
+ local rawexit = os.exit
+
+From 7bdcdddec6e3a6aebbcba4de5d893d7b62c0ff05 Mon Sep 17 00:00:00 2001
+From: "Robert G. Jakabosky" <bobby@sharedrealm.com>
+Date: Thu, 13 Sep 2012 13:20:56 -0700
+Subject: [PATCH 2/6] Restrict status length to a maximum lenght of 99.
+
+---
+ lua/jit/annotate.lua | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/lua/jit/annotate.lua b/lua/jit/annotate.lua
+index 6bfcd81..e08b2ff 100644
+--- a/lua/jit/annotate.lua
++++ b/lua/jit/annotate.lua
+@@ -227,6 +227,9 @@ local function report_summary(file, results, result_map, total, show_lines)
+   for _, r in ipairs(results) do
+     status_length = math.max(status_length, #r.status)
+   end
++  if status_length > 99 then
++    status_length = 99
++  end
+ 
+   local header_format = "%-"..status_length.."s\t%15s\t%15s\t%15s"
+   local line_format = "%-"..status_length.."s\t%8d (%3d%%)\t%8d (%3d%%)\t%8d (%3d%%)"
+
+From 7f5e58a455c10ad658ead728b25fc0e02185645e Mon Sep 17 00:00:00 2001
+From: "Robert G. Jakabosky" <bobby@sharedrealm.com>
+Date: Thu, 13 Sep 2012 13:22:13 -0700
+Subject: [PATCH 3/6] Remove '@' from start of chunkname.
+
+Check if the chunkname (as provided from lua_load) contains a filename.
+---
+ lua/jit/annotate.lua | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/lua/jit/annotate.lua b/lua/jit/annotate.lua
+index e08b2ff..37b62d7 100644
+--- a/lua/jit/annotate.lua
++++ b/lua/jit/annotate.lua
+@@ -161,7 +161,10 @@ local function load_source_files(traces)
+     end
+   end
+   for source in pairs(source_map) do
+-    local filename = source:sub(2,-1)
++    local filename = source
++    if filename:sub(1,1) == '@' then
++      filename = source:sub(2,-1)
++    end
+     local f = io.open(filename, "r")
+     if f then
+       local lines = {}
+
+From e7256dcb8e45e661196758bb4530f85413a04086 Mon Sep 17 00:00:00 2001
+From: zhaozg <zhaozg@gmail.com>
+Date: Tue, 21 May 2019 11:16:56 +0800
+Subject: [PATCH 4/6] Update Makefile
+
+---
+ makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/makefile b/makefile
+index 95629ba..cfc3d30 100644
+--- a/makefile
++++ b/makefile
+@@ -14,7 +14,7 @@ CFLAGS=-O3 -Wall -Wextra -pedantic
+ UNAME=$(shell uname -s)
+ ifneq (,$(findstring Darwin,$(UNAME)))
+   # OS X
+-  CFLAGS:=$(CFLAGS) -fPIC -arch i686 -arch x86_64 -std=c89
++  CFLAGS:=$(CFLAGS) -fPIC -arch x86_64 -std=c89
+   SHARED=-bundle -undefined dynamic_lookup
+   SO_SUFFIX=so
+ else
+
+From f14841cb6469dde70d291c5fe954503187f7cd26 Mon Sep 17 00:00:00 2001
+From: zhaozg <zhaozg@gmail.com>
+Date: Mon, 27 May 2019 17:16:22 +0800
+Subject: [PATCH 5/6] move lua/test* out lua
+
+---
+ .gitignore                                   |  1 +
+ run-tests                                    | 13 ++++++++++---
+ lua/test-annotate.lua => test-annotate.lua   |  0
+ {lua/test => test}/accumulate.lua            |  0
+ {lua/test => test}/command-line.lua          |  0
+ {lua/test => test}/coroutine-error.lua       |  0
+ {lua/test => test}/coroutine-one.lua         |  0
+ {lua/test => test}/coroutine-two.lua         |  0
+ {lua/test => test}/inner-function.lua        |  0
+ {lua/test => test}/one-line-horror-one.lua   |  0
+ {lua/test => test}/one-line-horror-three.lua |  0
+ {lua/test => test}/one-line-horror-two.lua   |  0
+ {lua/test => test}/pcall-one.lua             |  0
+ {lua/test => test}/pcall-three.lua           |  0
+ {lua/test => test}/pcall-two.lua             |  0
+ {lua/test => test}/recursive.lua             |  0
+ {lua/test => test}/tailcall.lua              |  0
+ {lua/test => test}/trace_file-doc.lua        |  0
+ {lua/test => test}/tron.lua                  |  0
+ {lua/test => test}/wrap-error.lua            |  0
+ 20 files changed, 11 insertions(+), 3 deletions(-)
+ rename lua/test-annotate.lua => test-annotate.lua (100%)
+ rename {lua/test => test}/accumulate.lua (100%)
+ rename {lua/test => test}/command-line.lua (100%)
+ rename {lua/test => test}/coroutine-error.lua (100%)
+ rename {lua/test => test}/coroutine-one.lua (100%)
+ rename {lua/test => test}/coroutine-two.lua (100%)
+ rename {lua/test => test}/inner-function.lua (100%)
+ rename {lua/test => test}/one-line-horror-one.lua (100%)
+ rename {lua/test => test}/one-line-horror-three.lua (100%)
+ rename {lua/test => test}/one-line-horror-two.lua (100%)
+ rename {lua/test => test}/pcall-one.lua (100%)
+ rename {lua/test => test}/pcall-three.lua (100%)
+ rename {lua/test => test}/pcall-two.lua (100%)
+ rename {lua/test => test}/recursive.lua (100%)
+ rename {lua/test => test}/tailcall.lua (100%)
+ rename {lua/test => test}/trace_file-doc.lua (100%)
+ rename {lua/test => test}/tron.lua (100%)
+ rename {lua/test => test}/wrap-error.lua (100%)
+
+diff --git a/.gitignore b/.gitignore
+index 66910a8..c4e0b6f 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -2,4 +2,5 @@
+ Thumbs.db
+ *.so
+ *.dll
++*.txt
+ 
+diff --git a/run-tests b/run-tests
+index 54cc565..da8a173 100755
+--- a/run-tests
++++ b/run-tests
+@@ -1,12 +1,19 @@
++#!/bin/sh
++
++if [ -z $LUA ]; then
+ LUA=${1:-lua}
++fi
++OLUA_PATH=${LUA_PATH}
++export LUA_PATH=lua/?.lua
+ 
+-cd lua
+ for f in test/*.lua
+ do
+   echo Testing $LUA $f
+   $LUA $f
+-  luatrace.profile
++  sh/luatrace.profile
+   rm trace-out.txt
+   echo
+ done
+-cd ..
+\ No newline at end of file
++
++export LUA_PATH=${OLUA_PATH}
++
+diff --git a/lua/test-annotate.lua b/test-annotate.lua
+similarity index 100%
+rename from lua/test-annotate.lua
+rename to test-annotate.lua
+diff --git a/lua/test/accumulate.lua b/test/accumulate.lua
+similarity index 100%
+rename from lua/test/accumulate.lua
+rename to test/accumulate.lua
+diff --git a/lua/test/command-line.lua b/test/command-line.lua
+similarity index 100%
+rename from lua/test/command-line.lua
+rename to test/command-line.lua
+diff --git a/lua/test/coroutine-error.lua b/test/coroutine-error.lua
+similarity index 100%
+rename from lua/test/coroutine-error.lua
+rename to test/coroutine-error.lua
+diff --git a/lua/test/coroutine-one.lua b/test/coroutine-one.lua
+similarity index 100%
+rename from lua/test/coroutine-one.lua
+rename to test/coroutine-one.lua
+diff --git a/lua/test/coroutine-two.lua b/test/coroutine-two.lua
+similarity index 100%
+rename from lua/test/coroutine-two.lua
+rename to test/coroutine-two.lua
+diff --git a/lua/test/inner-function.lua b/test/inner-function.lua
+similarity index 100%
+rename from lua/test/inner-function.lua
+rename to test/inner-function.lua
+diff --git a/lua/test/one-line-horror-one.lua b/test/one-line-horror-one.lua
+similarity index 100%
+rename from lua/test/one-line-horror-one.lua
+rename to test/one-line-horror-one.lua
+diff --git a/lua/test/one-line-horror-three.lua b/test/one-line-horror-three.lua
+similarity index 100%
+rename from lua/test/one-line-horror-three.lua
+rename to test/one-line-horror-three.lua
+diff --git a/lua/test/one-line-horror-two.lua b/test/one-line-horror-two.lua
+similarity index 100%
+rename from lua/test/one-line-horror-two.lua
+rename to test/one-line-horror-two.lua
+diff --git a/lua/test/pcall-one.lua b/test/pcall-one.lua
+similarity index 100%
+rename from lua/test/pcall-one.lua
+rename to test/pcall-one.lua
+diff --git a/lua/test/pcall-three.lua b/test/pcall-three.lua
+similarity index 100%
+rename from lua/test/pcall-three.lua
+rename to test/pcall-three.lua
+diff --git a/lua/test/pcall-two.lua b/test/pcall-two.lua
+similarity index 100%
+rename from lua/test/pcall-two.lua
+rename to test/pcall-two.lua
+diff --git a/lua/test/recursive.lua b/test/recursive.lua
+similarity index 100%
+rename from lua/test/recursive.lua
+rename to test/recursive.lua
+diff --git a/lua/test/tailcall.lua b/test/tailcall.lua
+similarity index 100%
+rename from lua/test/tailcall.lua
+rename to test/tailcall.lua
+diff --git a/lua/test/trace_file-doc.lua b/test/trace_file-doc.lua
+similarity index 100%
+rename from lua/test/trace_file-doc.lua
+rename to test/trace_file-doc.lua
+diff --git a/lua/test/tron.lua b/test/tron.lua
+similarity index 100%
+rename from lua/test/tron.lua
+rename to test/tron.lua
+diff --git a/lua/test/wrap-error.lua b/test/wrap-error.lua
+similarity index 100%
+rename from lua/test/wrap-error.lua
+rename to test/wrap-error.lua
+
+From 09d9d0b2f1d9536a6d7dcb3b5375a88ae9881a6d Mon Sep 17 00:00:00 2001
+From: zhaozg <zhaozg@gmail.com>
+Date: Tue, 28 May 2019 11:35:57 +0800
+Subject: [PATCH 6/6] clean uatrace and fix
+
+---
+ lua/jit/annotate.lua        | 11 +++++++++--
+ lua/luatrace.lua            | 27 ++++++++++++++-------------
+ lua/luatrace/profile.lua    |  2 +-
+ lua/luatrace/trace_file.lua | 17 +++++++++--------
+ lua/uatrace.lua             |  2 --
+ lua/uatrace/profile.lua     |  2 --
+ run-tests                   |  8 ++------
+ sh/luatrace.profile         |  2 +-
+ test/command-line.lua       |  2 ++
+ test/trace_file-doc.lua     |  4 +++-
+ 10 files changed, 41 insertions(+), 36 deletions(-)
+ delete mode 100644 lua/uatrace.lua
+ delete mode 100644 lua/uatrace/profile.lua
+
+diff --git a/lua/jit/annotate.lua b/lua/jit/annotate.lua
+index 8a6473e..4110f2b 100644
+--- a/lua/jit/annotate.lua
++++ b/lua/jit/annotate.lua
+@@ -1,3 +1,5 @@
++local bit = require'bit'
++
+ local ok, jit = pcall(require, "jit")
+ if not ok then
+   local nofunc = function() end
+@@ -63,7 +65,7 @@ end
+ 
+ function trace_callbacks.abort(tr, func, pc, code, reason)
+   local t = traces[tr][#traces[tr]]
+-  local reason=fmterr(code, reason)
++  reason=fmterr(code, reason)
+   reason = reason:gsub("bytecode (%d+)", function(c)
+     c = tonumber(c) * 6
+     return "bytecode "..vmdef.bcnames:sub(c, c+6):gsub(" ", "")
+@@ -94,7 +96,12 @@ local function annotate_record(tr, func, pc, depth)
+   end
+   t.bytecode[#t.bytecode+1] = { pc=pc, bc=l, depth=depth, info=funcinfo(func, pc) }
+   if pc >= 0 and bit.band(funcbc(func, pc), 0xff) < 16 then -- ORDER BC
+-    t.bytecode[#t.bytecode+1] = { pc=pc, bc=bc.line(func, pc+1, prefix):sub(1,-2), depth=depth, info=funcinfo(func, pc) }
++    t.bytecode[#t.bytecode+1] = {
++      pc=pc,
++      bc=bc.line(func, pc+1, prefix):sub(1,-2),
++      depth=depth,
++      info=funcinfo(func, pc)
++    }
+   end
+ end
+ 
+diff --git a/lua/luatrace.lua b/lua/luatrace.lua
+index 758bf41..0cbb5d3 100644
+--- a/lua/luatrace.lua
++++ b/lua/luatrace.lua
+@@ -1,28 +1,29 @@
+ local DEFAULT_RECORDER = "luatrace.trace_file"
+ 
++-- See if the c hook is available
++local c_hook
++do
++  local ok
++  ok, c_hook = pcall(require, "luatrace.c_hook")
++  assert(ok, package.cpath)
++  if not ok then
++    c_hook = nil
++  end
++end
+ 
+ -- Check if the ffi is available, and get a handle on the c library's clock.
+ -- LuaJIT doesn't compile traces containing os.clock yet.
+-local ffi
++local jit, ffi = jit, nil
+ if jit and jit.status and jit.status() then
+   local ok
+   ok, ffi = pcall(require, "ffi")
+   if ok then
+-    ffi.cdef("unsigned long clock(void);") 
++    ffi.cdef("unsigned long clock(void);")
+   else
+     ffi = nil
+   end
+ end
+ 
+--- See if the c hook is available
+-local c_hook
+-do
+-  local ok
+-  ok, c_hook = pcall(require, "luatrace.c_hook")
+-  if not ok then
+-    c_hook = nil
+-  end
+-end
+ 
+ 
+ -- Stack counting --------------------------------------------------------------
+@@ -122,7 +123,7 @@ local function record(action, line, time)
+   elseif action == "call" or action == "return" then
+     local callee = debug.getinfo(CALLEE_INDEX, "Sln")
+     local caller = debug.getinfo(CALLER_INDEX, "Sl")
+-    
++
+     if action == "call" then
+       local c = was_that_a_tailcall() and "T" or ">"
+       if should_trace(caller) then
+@@ -150,7 +151,7 @@ local function record(action, line, time)
+           set_current_line(ACCUMULATE_TO_NEXT)
+           recorder.record("P")                  -- resume is protected
+           -- Watch the current thread and catch it if it changes.
+-          watch_thread = coroutine.running() or "main"          
++          watch_thread = coroutine.running() or "main"
+         else                                    -- this might be a resume!
+           -- Because of coroutine.wrap, any c function could resume a different
+           -- thread.  Watch the current thread and catch it if it changes.
+diff --git a/lua/luatrace/profile.lua b/lua/luatrace/profile.lua
+index 11e051d..b27437f 100644
+--- a/lua/luatrace/profile.lua
++++ b/lua/luatrace/profile.lua
+@@ -57,7 +57,7 @@ local function get_function(filename, line_defined, last_line_defined)
+       child_time=0,
+     }
+     functions[name] = f
+-    sff = sf.functions[line_defined]
++    local sff = sf.functions[line_defined]
+     if not sff then
+       sf.functions[line_defined] = { f }
+     else
+diff --git a/lua/luatrace/trace_file.lua b/lua/luatrace/trace_file.lua
+index a169fcd..0c0ec09 100644
+--- a/lua/luatrace/trace_file.lua
++++ b/lua/luatrace/trace_file.lua
+@@ -1,11 +1,12 @@
+ -- Write luatrace traces to a file. Each line is one of
+--- [S>] <filename> <linedefined> <lastlinedefined>  -- Start or call into a trace at filename somewhere in the function defined at linedefined
+--- <                                            -- Return from a function
+--- R <thread_id>                                -- Resume the thread thread_id
+--- Y                                            -- Yield
+--- P                                            -- pcall - the current line is protected for the duration of the following call
+--- E                                            -- Error - unwind the stack until you find a p.
+--- <linenumber> <microseconds>                  -- Accumulate microseconds against linenumber
++-- [S>] <filename> <linedefined> <lastlinedefined>
++--                             -- Start or call into a trace at filename somewhere in the function defined at linedefined
++-- <                           -- Return from a function
++-- R <thread_id>               -- Resume the thread thread_id
++-- Y                           -- Yield
++-- P                           -- pcall - the current line is protected for the duration of the following call
++-- E                           -- Error - unwind the stack until you find a p.
++-- <linenumber> <microseconds> -- Accumulate microseconds against linenumber
+ -- Usually, a line will have time accumulated to it before and after it calls a function, so
+ -- function b() return 1 end
+ -- function c() return 2 end
+@@ -113,7 +114,7 @@ end
+ 
+ function trace_file.read(settings)
+   local do_not_close_file
+-  
++
+   settings = get_settings(settings)
+ 
+   if settings.trace_file then
+diff --git a/run-tests b/run-tests
+index da8a173..2f31b63 100755
+--- a/run-tests
++++ b/run-tests
+@@ -3,17 +3,13 @@
+ if [ -z $LUA ]; then
+ LUA=${1:-lua}
+ fi
+-OLUA_PATH=${LUA_PATH}
+-export LUA_PATH=lua/?.lua
+ 
+ for f in test/*.lua
+ do
+   echo Testing $LUA $f
+-  $LUA $f
+-  sh/luatrace.profile
++  LUA_PATH=lua/?.lua LUA_CPATH=lua/?.so $LUA $f
++  LUA_PATH=lua/?.lua LUA_CPATH=lua/?.so sh/luatrace.profile
+   rm trace-out.txt
+   echo
+ done
+ 
+-export LUA_PATH=${OLUA_PATH}
+-
+diff --git a/sh/luatrace.profile b/sh/luatrace.profile
+index 4c00328..86b2766 100755
+--- a/sh/luatrace.profile
++++ b/sh/luatrace.profile
+@@ -1,3 +1,3 @@
+ 
+-lua -e "require('luatrace.profile').go('$1')"
++luajit -e "require('luatrace.profile').go('$1')"
+ 
+diff --git a/test/command-line.lua b/test/command-line.lua
+index e39e216..32ddd16 100644
+--- a/test/command-line.lua
++++ b/test/command-line.lua
+@@ -1,3 +1,5 @@
++require("luatrace").tron()
++
+ -- run me with 'lua -luatrace command-line.lua'
+ function b()
+   return 1
+diff --git a/test/trace_file-doc.lua b/test/trace_file-doc.lua
+index e3b9b63..dd037bf 100644
+--- a/test/trace_file-doc.lua
++++ b/test/trace_file-doc.lua
+@@ -1,4 +1,6 @@
++require("luatrace").tron()
++
+ function b() return 1 end
+ function c() return 2 end
+ a = b() + c()
+--- This is the code shown in trace_file.lua
+\ No newline at end of file
++-- This is the code shown in trace_file.lua

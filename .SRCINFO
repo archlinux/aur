@@ -1,0 +1,28 @@
+pkgbase = lua-luatrace-git
+	pkgver = r143.d9d8918
+	pkgrel = 1
+	url = https://github.com/geoffleyland/luatrace
+	arch = x86_64
+	arch = i686
+	license = MIT
+	source = git+https://github.com/geoffleyland/luatrace.git
+	source = luatrace-compat.patch
+	source = luatrace-updates.patch
+	source = luatrace.profile
+	md5sums = SKIP
+	md5sums = aa58cc5542f67dac04f842f8145dea22
+	md5sums = 9f619a644c5b669d9d0af7b337cc69f8
+	md5sums = f826cbac6c3ec8d6465f5b6ddcd5712d
+
+pkgname = lua-luatrace-git
+	pkgdesc = luatrace for Lua 5.4
+
+pkgname = lua51-luatrace-git
+	pkgdesc = luatrace for Lua 5.1
+
+pkgname = lua52-luatrace-git
+	pkgdesc = luatrace for Lua 5.2
+
+pkgname = lua53-luatrace-git
+	pkgdesc = luatrace for Lua 5.3
+
