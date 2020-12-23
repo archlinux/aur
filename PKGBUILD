@@ -3,7 +3,7 @@
 
 pkgname=sile-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.10.10.r0.g94a2267
+pkgver=0.10.13.r3.g6024bde
 pkgrel=1
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
