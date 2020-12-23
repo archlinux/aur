@@ -1,0 +1,16 @@
+pkgbase = tlstunnel-git
+	pkgdesc = A TLS reverse proxy
+	pkgver = r49.09d28676a6b0
+	pkgrel = 1
+	url = https://sr.ht/~emersion/tlstunnel
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = scdoc
+	source = tlstunnel-git::git+https://git.sr.ht/~emersion/tlstunnel
+	source = tlstunnel.service
+	sha256sums = SKIP
+	sha256sums = 8d55cc467d36555b97aa6238724bcb02a96e5f0406c40885d0d743c9bbcb5690
+
+pkgname = tlstunnel-git
+
