@@ -1,0 +1,29 @@
+pkgbase = harfbuzz-minimal-git
+	pkgdesc = OpenType text shaping engine
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = https://www.freedesktop.org/wiki/Software/HarfBuzz
+	arch = x86_64
+	license = MIT
+	makedepends = glib2
+	makedepends = freetype2
+	makedepends = graphite
+	makedepends = harfbuzz
+	makedepends = cairo
+	makedepends = icu
+	makedepends = gobject-introspection
+	makedepends = ragel
+	makedepends = git
+	makedepends = python
+	makedepends = meson
+	source = git+https://github.com/harfbuzz/harfbuzz
+	sha256sums = SKIP
+
+pkgname = harfbuzz-minimal-git
+	optdepends = cairo: hb-view program
+	provides = harfbuzz
+	provides = libharfbuzz.so
+	provides = libharfbuzz-subset.so
+	provides = libharfbuzz-gobject.so
+	conflicts = harfbuzz
+
