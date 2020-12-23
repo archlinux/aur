@@ -2,7 +2,7 @@
 
 pkgname=bashrun2
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Launch applications from interactive bash sessions"
 arch=('i686' 'x86_64')
 url="http://henning-bekel.de/${pkgname}"
