@@ -8,7 +8,7 @@
 
 # Maintainer: mdrakea3 <mdrakea3@tutanota.com>
 pkgname=rodder-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r54.4cf26b8
+pkgver=r56.4af1db2
 pkgrel=1
 pkgdesc="A user-based package manager in Python3"
 arch=('x86_64')
