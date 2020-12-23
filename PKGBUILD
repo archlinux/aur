@@ -1,7 +1,10 @@
 # Maintainer: Xianwen Chen <xianwen.chen@gmail.com>
+# Contributors:
+#  geosam
+#  mafes
 
 pkgname=geoda
-pkgver=1.8.12
+pkgver=1.18.0
 pkgrel=13
 pkgdesc='GeoDa is an Exploratory (Spatial) Data Analysis and Spatial Regression software, for spatial data analysis including spatial econometrics.'
 arch=('x86_64')
@@ -11,26 +14,28 @@ depends=('libcurl-gnutls')
 makedepends=('wget' 'dpkg' 'rsync')
 install=$pkgname.install
 source=(
-	"https://s3.amazonaws.com/geoda/software/GeoDa-1.8.12-Ubuntu-64bit.deb"
+    "https://github.com/GeoDaCenter/geoda/releases/download/v1.18/geoda_1.18-1disco1_amd64.deb"
 )
+
 
 package()
 {
-	cd "$srcdir/"
-	dpkg -X ../GeoDa-1.8.12-Ubuntu-64bit.deb ./
-			
-	find . -type d -exec chmod 755 {} \;
-	
-#	sed 's/$GEODA_HOME\/gdaldata/$HOME\/gdaldata/' <usr/bin/run_geoda.sh > usr/bin/geoda-2
-#	sed '/chmod/d' <usr/bin/geoda-2 > usr/bin/geoda
-	mv usr/bin/run_geoda.sh usr/bin/geoda
-	chmod +x usr/bin/geoda
-#	rm usr/bin/run_geoda.sh
-#	rm usr/bin/geoda-2
-	
-	install -d $pkgdir/usr
-	rsync -aPv usr/ $pkgdir/usr
-	chmod 666 $pkgdir/usr/local/geoda/cache.sqlite
+        cd "$srcdir/"
+        dpkg -X ../geoda_1.18-1disco1_amd64.deb ./
+
+        find . -type d -exec chmod 755 {} \;
+
+#       sed 's/$GEODA_HOME\/gdaldata/$HOME\/gdaldata/' <usr/bin/run_geoda.sh > usr/bin/geoda-2
+#       sed '/chmod/d' <usr/bin/geoda-2 > usr/bin/geoda
+        mv usr/bin/run_geoda.sh usr/bin/geoda
+        chmod +x usr/bin/geoda
+    sed -i 's/run_geoda.sh/geoda/g' usr/share/applications/GeoDa.desktop
+#       rm usr/bin/run_geoda.sh
+#       rm usr/bin/geoda-2
+
+        install -d $pkgdir/usr
+        rsync -aPv usr/ $pkgdir/usr
+        chmod 666 $pkgdir/usr/local/geoda/cache.sqlite
 }
 
-sha512sums=('9bb5f266dc8005093e55f271cb3c0803df7b57e1b1889a1ad5d6c763c319f12f5a8736d88672d1cd17e1fcd6ec3b3e6f45b6f6eec421a02355c7df43b7a42e95')
+sha512sums=('a476ebeeed45b80c8866912f5b28c29a3d9ea9c2a257f2f45114422fbc5471f4976cd2a7cbbf2a9805f7b72f68052ef042bf440e0a874a88ebb9452dfc441f90')
