@@ -1,0 +1,16 @@
+pkgbase = lib32-libgpg-error-git
+	pkgdesc = Support library for libgcrypt (32-bit)
+	pkgver = 1.41
+	pkgrel = 1
+	url = https://www.gnupg.org
+	arch = x86_64
+	license = LGPL
+	depends = lib32-glibc
+	depends = libgpg-error
+	provides = lib32-libgpg-error
+	conflicts = lib32-libgpg-error
+	source = git://git.gnupg.org/libgpg-error.git
+	sha512sums = SKIP
+
+pkgname = lib32-libgpg-error-git
+
