@@ -59,7 +59,9 @@ build() {
      --without-snmp-address \
      --disable-libusb \
      --disable-libpaper \
-     --with-optim="$CFLAGS" # you must comment out $CFLAGS and $CXXFLAGS in makepkg.conf and add build flags into this "--with-optim" setting
+     --with-optim="$CFLAGS" 
+       
+# you must comment out $CFLAGS and $CXXFLAGS in makepkg.conf and add your build flags into the "--with-optim" setting
 
   make
 }
