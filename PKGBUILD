@@ -6,7 +6,7 @@ pkgdesc="S20 socket manager"
 arch=('i686' 'x86_64')
 url="https://git.stikonas.eu/andrius/s20"
 license=('GPL')
-depends=('qt4')
+depends=('qt5-base')
 source=("$pkgname::git+https://git.stikonas.eu/andrius/s20.git")
 md5sums=('SKIP')
 build() {
