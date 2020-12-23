@@ -5,7 +5,7 @@ pkgver=1.7.6
 pkgrel=1
 pkgdesc="A standalone application to aggregate data from the Plex ecosystem into InfluxDB using Grafana for a frontend."
 arch=('any')
-url="https://github.com/morpheus65535/varken"
+url="https://github.com/Boerderij/Varken"
 license=('GPL3')
 depends=('python'
          'python-requests'
