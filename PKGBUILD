@@ -4,7 +4,7 @@
 _pkgname=sile
 pkgname=$_pkgname-luajit-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.10.10.r0.g94a2267
+pkgver=0.10.13.r3.g6024bde
 pkgrel=1
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
@@ -48,7 +48,8 @@ provides=('libtexpdf.so'
 conflicts=("$_pkgname")
 source=("git://github.com/sile-typesetter/$_pkgname.git"
         "git://github.com/sile-typesetter/libtexpdf.git")
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
     cd "$_pkgname"
