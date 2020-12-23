@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-pulsecontrol
 pkgver=0.2.1
-pkgrel=3
-_vdrapi=2.4.3
+pkgrel=4
+_vdrapi=2.4.6
 pkgdesc="For controlling some pulseaudio properties"
 url="https://github.com/flensrocker/vdr-plugin-pulsecontrol"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
