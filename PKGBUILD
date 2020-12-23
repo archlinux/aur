@@ -3,7 +3,7 @@
 
 pkgname='omnetpp-preview'
 pkgver=6.0pre10
-pkgrel=1
+pkgrel=2
 _pkgname='omnetpp'
 pkgdesc='OMNeT++ Discrete Event Simulator. OMNeT++ is an extensible, modular, component-based C++ simulation library and framework, primarily for building network simulators: preview version'
 url='http://www.omnetpp.org'
