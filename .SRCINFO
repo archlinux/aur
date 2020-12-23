@@ -1,13 +1,13 @@
 pkgbase = leftwm-git
 	pkgdesc = Leftwm - A tiling window manager for the adventurer
-	pkgver = 9d63cd7
+	pkgver = e0f29f5
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/leftwm/leftwm
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = rustup
+	makedepends = cargo
 	makedepends = git
 	optdepends = dmenu: default launcher
 	optdepends = feh: used to set background images
