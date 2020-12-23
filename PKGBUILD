@@ -15,13 +15,20 @@ conflicts=(lib32-libgpg-error)
 source=(git://git.gnupg.org/libgpg-error.git)
 sha512sums=('SKIP')
 
+pkgver() {
+   cd "libgpg-error"
+   git describe --long --tags | sed 's/^gpgrt-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
   export CC="gcc -m32"
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
   cd libgpg-error
-  ./autogen.sh --prefix=/usr --libdir=/usr/lib32
+    ./autogen.sh  
+    ./configure \
+    --enable-maintainer-mode --prefix=/usr --libdir=/usr/lib32 \
   make
 }
 
