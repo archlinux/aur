@@ -1,8 +1,8 @@
-# Maintainer: jooch <jooch at gmx dot com>
+# Maintainer: Jooch <jooch at gmx dot com>
 
 pkgname=firefox-fuckpa
 _pkgname=firefox
-pkgver=83.0
+pkgver=84.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla - unofficial prebuilt binary with ALSA support"
 arch=('x86_64')
@@ -21,9 +21,9 @@ conflicts=('firefox')
 source=(https://submarine.strangled.net/fuckpa/files/$pkgver/firefox-$pkgver.en-US.linux-x86_64.tar.bz2
         $_pkgname.sh
         $_pkgname.desktop)
-sha256sums=('d10faf55034b2dd906b9f9d82fdbd4b7a6577d185f5b9eac5f69411c79676dcf'
+sha256sums=('d2517ebb17988102052bf7b4a405d400018debefcd96d09bbb30736b5d979f38'
             '28b60250540353e1732ec1a9aad53ff55cd681927516e65c51e3543532bc25af'
-            'c64008cbf01956ce3dba693230670de58fa9487ad19f4ba76614af13beb1b8ef')
+            '94140a523273eaf957ad0e67145d8997556ca1c37a2cc1f5b699a9b5d7ac8f7d')
 #validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 package() {
