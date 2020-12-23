@@ -43,9 +43,8 @@ source=(git+https://github.com/intel/libva.git)
 sha256sums=(SKIP)
 
 pkgver() {
-  cd libva
-
-  git describe --tags
+    cd libva
+    git describe --tags | sed 's/-/+/g'
 }
 
 build() {
