@@ -1,0 +1,16 @@
+pkgbase = herotate-git
+	pkgdesc = A Heroku multi-login manager for heroku-cli
+	pkgver = r1.13c1ad5
+	pkgrel = 1
+	url = https://github.com/pyamsoft/herotate.git
+	arch = any
+	license = Apachev2.0
+	makedepends = git
+	optdepends = heroku-cli: Heroku CLI
+	provides = herotate
+	conflicts = herotate
+	source = herotate::git+https://github.com/pyamsoft/herotate.git#branch=main
+	sha256sums = SKIP
+
+pkgname = herotate-git
+
