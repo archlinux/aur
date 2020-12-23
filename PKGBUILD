@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=scribus-svn
-pkgver=24348
+pkgver=24357
 pkgrel=1
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ makedepends=('subversion' 'cmake' 'qt5-tools')
 optdepends=('lib2geom: for mesh distortion')
 conflicts=('scribus')
 provides=('scribus')
-source=('scribus::svn://scribus.net/trunk#revision=24348')
+source=('scribus::svn://scribus.net/trunk')
 sha256sums=('SKIP')
 _svnmod='scribus'
 
@@ -33,7 +33,6 @@ build() {
   cmake . -DCMAKE_INSTALL_PREFIX:PATH=/usr \
 	-DWANT_GRAPHICSMAGICK:BOOL=YES \
 	-DCMAKE_LIBRARY_PATH:PATH=/usr/lib \
-	-DPREFIX_CAIRO:PATH=/usr/ \
 	-DCMAKE_EXE_LINKER_FLAGS:STRING="-lQt5Quick -lQt5PrintSupport" \
 	-DQT_PREFIX:PATH="/usr" -DWANT_SVNVERSION:BOOL=YES
   make
