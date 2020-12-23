@@ -2,13 +2,14 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cicero-git
-pkgver=0.1.3.r0.g8521d4f
-pkgrel=2
+pkgver=0.1.4.r0.ge0d406f
+pkgrel=1
 pkgdesc="Unicode tool with a terminal user interface (git)"
 arch=('x86_64')
 url="https://github.com/eyeplum/cicero-tui"
 license=('GPL3')
-makedepends=('rust' 'git' 'fontconfig')
+depends=('fontconfig' 'freetype2')
+makedepends=('rust' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}")
