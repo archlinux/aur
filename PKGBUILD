@@ -1,7 +1,7 @@
 # Maintainer: Matthias Steffen aur@matthiassteffen.biz
 
 pkgname=mailspring-libre
-pkgver=1.7.2_libre1
+pkgver=1.7.8-libre
 pkgrel=2
 pkgdesc="A fork of a fork – aiming at removing Mailspring's dependecy on a central server."
 arch=('x86_64')
