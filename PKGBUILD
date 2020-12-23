@@ -5,7 +5,7 @@
 pkgbase=archimedes-tools
 pkgname=('triangle' 'showme')
 pkgver=1.6
-pkgrel=7
+pkgrel=8
 arch=('i686' 'x86_64')
 url='http://www.cs.cmu.edu/~quake/archimedes.html'
 pkgdesc='Archimedes is a set of tools, including mesh generators, for performing unstructured finite element simulations'
@@ -17,7 +17,7 @@ md5sums=('10aff8d7950f5e0e2fb6dd2e340be2c9'
 makedepends=('libx11')
 
 prepare() {
-  patch < ../triangle_definitions.patch triangle.h
+  patch < ${srcdir}/triangle_definitions.patch triangle.h
 }
 
 build(){
