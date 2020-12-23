@@ -1,6 +1,6 @@
 pkgbase = openhab3-snapshot
 	pkgdesc = openhab3 open source home automation software
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = http://www.openhab.org/
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = openhab3-snapshot
 	backup = var/lib/openhab3/etc/keystore
 	backup = var/lib/openhab3/etc/users.properties
 	backup = var/lib/openhab3/etc/keys.properties
-	source = openhab-3.0.0-SNAPSHOT.tar.gz::https://ci.openhab.org/job/openHAB3-Distribution/lastSuccessfulBuild/artifact/distributions/openhab/target/openhab-3.0.0-SNAPSHOT.tar.gz
+	source = openhab-3.1.0-SNAPSHOT.tar.gz::https://ci.openhab.org/job/openHAB3-Distribution/lastSuccessfulBuild/artifact/distributions/openhab/target/openhab-3.1.0-SNAPSHOT.tar.gz
 	source = openhab3.service
 	source = openhab3.default
 	source = openhab3.patch
