@@ -1,0 +1,21 @@
+diff --git a/third_party/eigen/Eigen/src/Core/util/ConfigureVectorization.h b/third_party/eigen/Eigen/src/Core/util/ConfigureVectorization.h
+index 68765d4b2..df2d46832 100644
+--- a/third_party/eigen/Eigen/src/Core/util/ConfigureVectorization.h
++++ b/third_party/eigen/Eigen/src/Core/util/ConfigureVectorization.h
+@@ -401,11 +401,11 @@
+   #include <hip/hip_fp16.h>
+ 
+   #define HIP_PATCH_WITH_NEW_FP16 18215
+-  #if (HIP_VERSION_PATCH < HIP_PATCH_WITH_NEW_FP16)
+-    #define EIGEN_HAS_OLD_HIP_FP16
+-    // Old HIP implementation does not have a explicit typedef for "half2"
+-    typedef __half2 half2;
+-  #endif
++//  #if (HIP_VERSION_PATCH < HIP_PATCH_WITH_NEW_FP16)
++//    #define EIGEN_HAS_OLD_HIP_FP16
++//    // Old HIP implementation does not have a explicit typedef for "half2"
++//    typedef __half2 half2;
++//  #endif
+ 
+ #endif
+
