@@ -38,6 +38,12 @@ makedepends=(
 
 #--BUILD PREPARATION----------------------------------------------------
 
+pkgver() {
+   cd p11-kit
+   git describe --tags | sed 's/-/+/g'
+}
+
+
 prepare() {
     cd p11-kit
 }
