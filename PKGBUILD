@@ -4,7 +4,7 @@
 # Simutrans Extended is in active development - this package is updated nightly
 
 pkgname=simutrans-extended
-pkgver=20201221
+pkgver=20201223
 pkgrel=1
 pkgdesc="Transportation simulation game - Extended Version"
 arch=('any')
