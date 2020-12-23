@@ -1,35 +1,26 @@
-# Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com > 
+# Maintainer: derfenix@gmail.com 
 
-pkgname=kquickimageeditor-git
-pkgver=r19.78923f4
+pkgname=kquickimageeditor
+pkgver=0.1
 pkgrel=1
 pkgdesc="Image editing components"
 arch=('x86_64')
 url="https://invent.kde.org/libraries/kquickimageeditor"
 license=('GPL3')
 depends=('qt5-base' 'qt5-declarative')
-makedepends=('git' 'extra-cmake-modules')
+makedepends=('extra-cmake-modules')
 provides=('kquickimageeditor')
-conflicts=('kquickimageeditor')
-source=("git+$url.git")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
+conflicts=('kquickimageeditor-git')
+source=("$pkgnam-$pkgver::https://invent.kde.org/libraries/kquickimageeditor/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
+sha256sums=('d7648a806eca255be4d3acc7cb13a55907797471b8311bb9512ffc14599ed46e')
 
 prepare() {
-  cd "${pkgname%-git}"
-  mkdir build
+   mkdir build
 }
 
 build() {
-  cd "${pkgname%-git}/build"
-  cmake .. \
+  cd build
+  cmake -S "../$pkgname-v$pkgver" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
@@ -37,6 +28,6 @@ build() {
 }
  
 package() {
-  cd "${pkgname%-git}/build"
+  cd build
   make DESTDIR="$pkgdir" install
 }
