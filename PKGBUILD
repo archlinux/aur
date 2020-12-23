@@ -59,10 +59,10 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.10.1.arch1.r969164.0b96cd54d25c
+pkgver=v5.10.2.arch1.r969165.3fbeb6b9a0e7
 pkgrel=1
 pkgdesc="Linux"
-_srcver_tag=v5.10.1.arch1
+_srcver_tag=v5.10.2.arch1
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
@@ -96,7 +96,7 @@ _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 source=(
     "git+$_repo_url#branch=master"
     "git+$_repo_url_gcc_patch"
-    config.gz # kernel config file
+    config # kernel config file
 )
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
@@ -104,7 +104,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            'e38083aa528d9c955606acf5a7d9e55e738aafbaf7330b68f0974d503d7a912117f254f30da5c93128209ae069ce89c246641ac0ca0066298173ce1878009e32')
+            '35c9e071a50b17f4782b5e6448239da22cd68dc3963e99dc6b6b3e06452dfd64b4f87fe07f71ea5a2cd83d3be8a188e3616d9248ef38e8b20fc2c1c9e575acbc')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
