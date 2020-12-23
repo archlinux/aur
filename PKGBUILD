@@ -28,7 +28,11 @@ build() {
   cd libgpg-error
     ./autogen.sh  
     ./configure \
-    --enable-maintainer-mode --prefix=/usr --libdir=/usr/lib32 \
+    --build=x86_64-pc-linux-gnu \
+    --host=x86_64-pc-linux-gnu \
+    --enable-maintainer-mode \
+    --prefix=/usr \
+    --libdir=/usr/lib32 
   make
 }
 
