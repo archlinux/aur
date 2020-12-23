@@ -1,6 +1,6 @@
 # Maintainer: Avahe Kellenberger <avahe@protonmail.ch>
 pkgname='nimdow-bin'
-pkgver='0.7.11'
+pkgver='0.7.12'
 pkgrel='0'
 pkgdesc="Tiling Window Manager written in Nim"
 arch=('x86_64')
@@ -9,8 +9,8 @@ license=('GPL2')
 source=("nimdow-$pkgver::$url/releases/download/v$pkgver/nimdow"
         "nimdow-config-$pkgver.toml::$url/raw/v$pkgver/config.default.toml"
         "nimdow.desktop")
-md5sums=('7531f9db971ba56c2c612c2cc4a39c70'
-         '5d06a88474803edb856ea6dc878de23e'
+md5sums=('9e734e4434d8020c7f1ff6c21ee84800'
+         '4fdbef7539f6e2cb2c98559201dff5b4'
          '70260787d12b7f6a449943526a97247d')
 
 package() {
