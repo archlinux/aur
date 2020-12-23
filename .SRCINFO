@@ -1,0 +1,14 @@
+pkgbase = fish-nvm
+	pkgdesc = Node.js version manager lovingly made for Fish
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/jorgebucaran/nvm.fish
+	arch = x86_64
+	license = MIT
+	depends = fish
+	provides = fish-nvm=2.0.1
+	source = nvm.fish-2.0.1.tar.gz::https://github.com/jorgebucaran/nvm.fish/archive/2.0.1.tar.gz
+	sha512sums = 40b6391b8e4d0d908be91115b3d6c2bf4efb22f49c43cff2f5abf21d6be2c7afd70dca16ab5edef7ddc3539f88a563ca4b76f822b42a4aed8fc6263c215dea2d
+
+pkgname = fish-nvm
+
