@@ -1,4 +1,4 @@
-pkgbase = libva-git
+pkgbase = libva-minimal-git
 	pkgdesc = Video Acceleration (VA) API for Linux
 	pkgver = 2.10.0
 	pkgrel = 1
@@ -29,5 +29,5 @@ pkgbase = libva-git
 	source = git+https://github.com/intel/libva.git
 	sha256sums = SKIP
 
-pkgname = libva-git
+pkgname = libva-minimal-git
 

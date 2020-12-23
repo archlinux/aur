@@ -3,7 +3,7 @@
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
-pkgname=libva-git
+pkgname=libva-minimal-git
 pkgver=2.10.0
 pkgrel=1
 pkgdesc='Video Acceleration (VA) API for Linux'
