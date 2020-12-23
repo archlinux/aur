@@ -14,8 +14,8 @@ source=(
     "https://raw.githubusercontent.com/Col-E/Recaf/$pkgver/LICENSE"
 )
 sha256sums=(
-    "SKIP"
-    "SKIP"
+    "3eb69e0a06f30a7dc4cd438d8f749d4be323fec33db06552aead9ba755e76f65"
+    "c29d3bae4280e8db8d32644e89f6fe8bf0714e20959433784ea7b37ec61ac56e"
 )
 
 prepare() {
