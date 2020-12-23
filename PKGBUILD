@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="RGB keyboard controller for System76 laptops"
 arch=('x86_64')
 url="https://github.com/bambash/sys76-kb"
-license=('none')
+license=('unknown')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
@@ -24,7 +24,7 @@ build() {
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 	go build -v .
-	
+
 	# Clean mod cache for makepkg -C
 	go clean -modcache
 }
