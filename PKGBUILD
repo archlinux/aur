@@ -2,7 +2,7 @@
 
 pkgname=kquickimageeditor
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Image editing components"
 arch=('x86_64')
 url="https://invent.kde.org/libraries/kquickimageeditor"
@@ -11,7 +11,7 @@ depends=('qt5-base' 'qt5-declarative')
 makedepends=('extra-cmake-modules')
 provides=('kquickimageeditor')
 conflicts=('kquickimageeditor-git')
-source=("$pkgname-$pkgver::https://invent.kde.org/libraries/kquickimageeditor/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
+source=("$pkgname.tar.gz::https://invent.kde.org/libraries/kquickimageeditor/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 sha256sums=('d7648a806eca255be4d3acc7cb13a55907797471b8311bb9512ffc14599ed46e')
 
 prepare() {
