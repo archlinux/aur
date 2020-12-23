@@ -1,0 +1,18 @@
+pkgbase = pass-notify-git
+	pkgdesc = password-store extension for output via desktop notifications
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/emlun/pass-notify/
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = dmenu
+	depends = libnotify
+	depends = pass
+	conflicts = pass-patched-passmenu-notify-git
+	replaces = pass-patched-passmenu-notify-git
+	source = git+ssh://git@github.com/emlun/pass-notify.git
+	md5sums = SKIP
+
+pkgname = pass-notify-git
+

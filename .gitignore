@@ -1,0 +1,8 @@
+pkg/
+src/
+*.tar.*.sig
+*.tar.gz
+*.tar.xz
+*.tar.zst
+
+/pass-notify/
