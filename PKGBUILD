@@ -8,11 +8,11 @@ arch=('any')
 url="https://gitlab.com/WhyNotHugo/systemd-lock-handler"
 license=('ISC')
 depends=('python-txdbus')
-source=("https://gitlab.com/WhyNotHugo/systemd-lock-handler/-/archive/v1.1.0/${pkgname}-v${pkgver}.tar.gz")
-md5sums=('a9b1d88f1a0346c3058d81ba26607a1d')
+source=("https://gitlab.com/WhyNotHugo/systemd-lock-handler/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+md5sums=('3cda34d63b29cbb52442f80c40fa27f7')
 
 package() {
-  cd $srcdir/$pkgname
+  cd "$srcdir/$pkgname-v$pkgver"
 
   make DESTDIR="$pkgdir/" install
 }
