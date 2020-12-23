@@ -27,6 +27,7 @@ pkgver() {
 
 build() {
   cd linux-pam
+  ./autogen.sh \
   ./configure --libdir=/usr/lib --sbindir=/usr/bin --disable-db --disable-doc --disable-debug --without-mailspool --disable-audit --disable-selinux --disable-regenerate-docu
   make
 }
