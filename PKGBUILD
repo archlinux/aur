@@ -26,7 +26,7 @@ prepare() {
 build() {
   cd "${_pkgname}-$pkgver"
   make libzkgroup
-  gradle :ffi:java:build
+  gradle :ffi:java:assemble
 }
 
 package() {
