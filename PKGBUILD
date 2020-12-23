@@ -13,8 +13,6 @@ md5sums=('32f71cdae685705cbbe1390015482c0e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  autoreconf -i
-  chmod +x configure
   ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
