@@ -2,7 +2,7 @@
 
 _name=timeout-decorator
 pkgname=python-${_name}
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Timeout decorator for Python"
 arch=('i686' 'x86_64' 'armv6')
@@ -16,15 +16,15 @@ source=("https://files.pythonhosted.org/packages/source/t/${_name}/${_name}-$pkg
 build() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
 
-  msg 'Building...'
   python setup.py build
 }
 
 package() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
 
-  msg 'Installing...'
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install \
+    --root="$pkgdir" \
+    --optimize=1
 }
 
-md5sums=('04cf660cf86815dd6f564b68aea6630d')
+md5sums=('8545649e70b3ca43bcff11f08a996c3e')
