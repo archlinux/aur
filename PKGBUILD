@@ -1,7 +1,7 @@
 # Maintainer: steadfasterX <steadfasterX [at] binbash -dot- rocks>
 pkgname=easy-installer
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Easy Installer is a desktop application which helps users install /e/ (https://doc.e.foundation/what-s-e) on supported devices."
 arch=('x86_64')
 url="https://gitlab.e.foundation/e/tools/${pkgname}"
@@ -14,13 +14,10 @@ optdepends=()
 backup=()
 source=("${pkgname}-${pkgver}::git+https://gitlab.e.foundation/e/tools/${pkgname}.git#tag=v${pkgver}-beta"
         "$pkgname-$pkgver.patch"
-        "${pkgname}.8.md"
-        "${pkgname}.png")
+        "${pkgname}.8.md")
 md5sums=('SKIP'
          'd6b12a412e1cbeba347727a84851c8d8'
-         '031b322072728ebc26542006cb0ba0b0'
-         '313eb2b230457b981ee9f8153311b6ac'
-         )
+         '031b322072728ebc26542006cb0ba0b0')
 BINFIX=usr/local/bin
 MANDIR=usr/share/man
 MAN8DIR=${MANDIR}/man8
@@ -63,7 +60,7 @@ StartupNotify=false
 _EOD
     chmod 755 $pkgdir/usr/share/applications/e.foundation.${pkgname}.desktop
 
-    install -D -m644 ../${pkgname}.png $pkgdir/opt/${pkgname}/
-    install -D -m644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -D -m644 $pkgname-$pkgver/snap/gui/${pkgname}.png $pkgdir/opt/${pkgname}/
+    install -D -m644 $pkgname-$pkgver/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     ronn -r --pipe ../${MAN8PAGE}.md > $pkgdir/${MAN8DIR}/${MAN8PAGE}
 }
