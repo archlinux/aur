@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=soundux
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform soundboard in QtQuick"
 arch=('any')
 url="https://github.com/Soundux/Soundux"
@@ -10,12 +10,11 @@ depends=('pulseaudio' 'qt5-base' 'qt5-x11extras' 'qt5-quickcontrols' 'qt5-quickc
 makedepends=('qt5-tools' 'git' 'cmake' 'ninja')
 conflicts=('soundux')
 provides=('soundux')
-source=("git+https://github.com/Soundux/Soundux.git" "soundux.desktop")
+source=("git+https://github.com/Soundux/Soundux#tag=$pkgver" "soundux.desktop")
 sha256sums=('SKIP' '27e29e44ad3eacce0ac20a31653da437cd27cc2d165d19804430df9da7bab4fd')
 
 build() {
   cd "${srcdir}/Soundux"
-  git checkout "$pkgver"
   git submodule update --init --recursive
   mkdir build
   cd build
