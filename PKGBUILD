@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-bgprocess
 pkgver=0.1.0
-_vdrapi=2.4.3
-pkgrel=25
+_vdrapi=2.4.6
+pkgrel=26
 pkgdesc="Displays information about background processes"
 url="http://www.vdr-wiki.de/wiki/index.php/Bgprocess-plugin"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
