@@ -3,8 +3,8 @@
 
 pkgname=git-delta
 _name="${pkgname#*-}"
-pkgver=0.4.4
-pkgrel=2
+pkgver=0.4.5
+pkgrel=1
 
 pkgdesc='A syntax-highlighting pager for git and diff output'
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -15,7 +15,7 @@ depends=('git' 'libgit2')
 makedepends=('rust' 'clang' 'llvm')
 
 source=("$pkgname-$pkgver.tgz::$url/archive/$pkgver.tar.gz")
-sha256sums=('4068cb88a4110bbef24b8148e3ae283ff007f4f6aa4780789cda7a412928daa0')
+sha256sums=('e19ab2d6a7977a3aa939a2d70b6d007aad8b494a901d47a3e0c2357eedad0c80')
 
 
 prepare() {
@@ -43,13 +43,18 @@ check() {
 
 package() {
   cd "$_name-$pkgver"
-  install -Dm755 "target/release/$_name"  -t"$pkgdir/usr/bin/"
-  install -Dm644 README.md                -t"$pkgdir/usr/share/doc/$_name/"
-  install -Dm644 LICENSE                  -t"$pkgdir/usr/share/licenses/$_name/"
+  install -Dm755 "target/release/$_name"   -t"$pkgdir/usr/bin/"
+  install -Dm644 {README,CONTRIBUTING}.md  -t"$pkgdir/usr/share/doc/$_name/"
+  install -Dm644 LICENSE                   -t"$pkgdir/usr/share/licenses/$_name/"
   cd etc
-  cp -a --no-preserve=ownership performance "$pkgdir/usr/share/doc/$_name/"
-  install -Dm644 completion/completion.bash "$pkgdir/usr/share/bash-completion/completions/$_name"
-  install -Dm644 completion/completion.zsh  "$pkgdir/usr/share/zsh/site-functions/_$_name"
+  cp -a --no-preserve=o performance examples "$pkgdir/usr/share/doc/$_name/"
+  install -Dm644 completion/completion.bash  "$pkgdir/usr/share/bash-completion/completions/$_name"
+  install -Dm644 completion/completion.zsh   "$pkgdir/usr/share/zsh/site-functions/_$_name"
+  cd bin
+  local _bin
+  for _bin in *; do
+    install -Dm755 "$_bin"                   "$pkgdir/usr/bin/delta-$_bin"
+  done
 }
 
 
