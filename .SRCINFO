@@ -9,6 +9,7 @@ pkgbase = deepin-network-utils-git
 	makedepends = git
 	makedepends = qt5-tools
 	makedepends = gsettings-qt
+	makedepends = gtest
 	depends = deepin-qt-dbus-factory-git
 	depends = gsettings-qt
 	provides = deepin-network-utils
