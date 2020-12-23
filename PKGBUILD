@@ -7,7 +7,7 @@ pkgname=("python-pytorch-rocm" "python-pytorch-opt-rocm")
 _pkgname="pytorch"
 pkgver=1.7.1
 _pkgver=1.7.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -22,16 +22,14 @@ source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v
         use-system-libuv2.patch
         nccl_version.patch
         disable_non_x86_64.patch
-        "find-hsa-runtime.patch::https://patch-diff.githubusercontent.com/raw/pytorch/pytorch/pull/45550.patch"
-        fix-hip-version.patch)
+        "find-hsa-runtime.patch::https://patch-diff.githubusercontent.com/raw/pytorch/pytorch/pull/45550.patch")
 sha256sums=('SKIP'
             '83c81ec6a461110da6ae6182529f58100986b068c5182ca62cd53c648b4e4fb0'
             '26b1dd596f1e21a011ee18cab939924483d6c6d4d98e543bf76f5a9312d54d67'
             '7b65c3b209fc39f92ba58a58be6d3da40799f1922910b1171ccd9209eda1f9eb'
             'e4a96887b41cbdfd4204ce5f16fcb16a23558d23126331794ab6aa30a66f2e0d'
             'd3ef8491718ed7e814fe63e81df2f49862fffbea891d2babbcb464796a1bd680'
-            'SKIP'
-            'a972c80561320e36b6c32933294b2b6c19715233e15c7976f2eb2db44c436b3b')
+            'SKIP')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
@@ -54,9 +52,6 @@ prepare() {
 
   # https://github.com/pytorch/pytorch/pull/45550
   patch -Np1 -i "${srcdir}"/find-hsa-runtime.patch
-  
-  # patch newer HIP version patch define
-  patch -Np1 -i "${srcdir}"/fix-hip-version.patch
 
   # remove local nccl
   rm -rf third_party/nccl/nccl
