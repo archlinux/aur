@@ -1,15 +1,15 @@
 # Maintainer: quickreader <quickreader at mail dot bg>
 
 pkgname='quickreader'
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc='A program that enables its user to quickly read through text by encouraging the silencing of their subvocalization.'
+pkgdesc='A program that enables its user to quickly read through text by encouraging the silencing of their subvocalization'
 arch=('x86_64')
 url="https://gitlab.com/$pkgname/$pkgname"
 license=('GPL3')
 depends=('qt5-base' 'hicolor-icon-theme')
 source=("https://gitlab.com/$pkgname/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('c9bc1385f77db58e7e9a128adaae2d322b0d452c6c105fe0fa95afac1fb34e51')
+sha256sums=('01be997ced3d27f17453ef894eb4351170e896ef8facb4764d86d90dc8bfd2f1')
 
 build() {
     mkdir -v "$srcdir/$pkgname-$pkgver/build"
