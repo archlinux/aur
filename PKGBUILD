@@ -16,8 +16,8 @@ source=(git://github.com/apple/cups.git)
 sha256sums=('SKIP')
 
 pkgver() {
-  cd cups
-  git describe --tags | sed 's/-/+/g' | sed 's/v//'
+	  cd cups
+	  git describe --tags | sed 's/-/+/g'
 }
 
 build() {
