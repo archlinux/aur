@@ -3,10 +3,11 @@
 # Contributor: Sébastien Luttringer
 # Contributor: Drew DeVault
 
+_pkgbase=nginx
 pkgbase=nginx-mainline
 pkgname=(nginx-mainline nginx-mainline-src)
 pkgver=1.19.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
 arch=('x86_64')
 url='https://nginx.org'
@@ -22,8 +23,6 @@ backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/win-utf'
         'etc/logrotate.d/nginx')
 install=nginx.install
-provides=('nginx')
-conflicts=('nginx')
 source=($url/download/nginx-$pkgver.tar.gz{,.asc}
         service
         logrotate)
@@ -72,11 +71,11 @@ _mainline_flags=(
 )
 
 prepare() {
-  cp -r $provides-$pkgver{,-src}
+  cp -r $_pkgbase-$pkgver{,-src}
 }
 
 build() {
-  cd $provides-$pkgver
+  cd $_pkgbase-$pkgver
   ./configure \
     --prefix=/etc/nginx \
     --conf-path=/etc/nginx/nginx.conf \
@@ -101,7 +100,10 @@ build() {
 }
 
 package_nginx-mainline() {
-  cd $provides-$pkgver
+  provides=($_pkgbase)
+  conflicts=($_pkgbase)
+
+  cd $_pkgbase-$pkgver
   make DESTDIR="$pkgdir" install
 
   sed -e 's|\<user\s\+\w\+;|user html;|g' \
@@ -123,7 +125,7 @@ package_nginx-mainline() {
 
   install -Dm644 ../logrotate "$pkgdir"/etc/logrotate.d/nginx
   install -Dm644 ../service "$pkgdir"/usr/lib/systemd/system/nginx.service
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$provides/LICENSE
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$_pkgbase/LICENSE
 
   rmdir "$pkgdir"/run
 
@@ -140,5 +142,5 @@ package_nginx-mainline-src() {
   pkgdesc="Source code of nginx-mainline $pkgver, useful for building modules"
   depends=()
   install -d "$pkgdir/usr/src"
-  cp -r $provides-$pkgver-src "$pkgdir/usr/src/nginx"
+  cp -r $_pkgbase-$pkgver-src "$pkgdir/usr/src/nginx"
 }
