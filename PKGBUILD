@@ -1,7 +1,7 @@
 # Maintainer: rcorre <ryan at rcorre.net>
 
 pkgname=godot-blender-exporter-git
-pkgver=228.274f668
+pkgver=252.3e66e12
 pkgrel=1
 pkgdesc="Exporter for Blender, made for the Godot Engine"
 arch=('any')
@@ -13,7 +13,7 @@ provides=('godot-blender-exporter')
 conflicts=('godot-blender-exporter')
 source=("$pkgname::git://github.com/godotengine/godot-blender-exporter.git")
 md5sums=('SKIP')
-_blenderver=$(blender -v | head -n1 | cut -f2 -d ' ')
+_blenderver=$(blender -v | head -n1 | cut -f2 -d ' ' | cut -d. -f-2)
 
 pkgver() {
   cd "$srcdir/$pkgname"
