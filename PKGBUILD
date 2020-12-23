@@ -1,7 +1,7 @@
 # Maintainer: Mikołaj Baranowski <mikolajb@gmail.com>
 
 pkgname=wallpaper-switch
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc='Runs in backgroud and changes Gnome backgroud to NASA picture of the day.'
 license=('MIT')
@@ -10,26 +10,16 @@ url='https://github.com/mikolajb/wallpaper-switch'
 depends=()
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mikolajb/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('aed1758ddcad789ea5b564c66e2c201d85a4e2122d068e70389a86fc2abdd883')
+sha256sums=('43543cd2822782a73ff3a69ce5ce1f6610e070ed386f7c6ad1a3abe461b3df68')
 
 build() {
-  msg2 'Settgin GOPATH'
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  mkdir -p "${srcdir}/gopath"
-  export GOPATH="${srcdir}/gopath"
-
-  msg2 'Getting go dep tool'
-  go get github.com/golang/dep/cmd/dep
-
-  mkdir -p "${GOPATH}/src/github.com/mikolajb"
-  ln -sf "$(pwd)" "${GOPATH}/src/github.com/mikolajb/${pkgname}"
-  cd "${GOPATH}/src/github.com/mikolajb/${pkgname}"
-
-  msg2 'Fetching dependencies...'
-  "$GOPATH/bin/dep" ensure
-
-  msg2 'Compiling...'
-  go build -o wallpaper-switch
+  cd "$pkgname-$pkgver"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o wallpaper-switch .
 }
 
 package() {
