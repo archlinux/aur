@@ -18,9 +18,9 @@ depends=(
     )
 makedepends=('tar' 'p7zip')
 source=(
-    "https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.xmly.deepin/com.xmly.deepin_1.3.3deepin4_i386.deb"
+    "https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.xmly.deepin/com.xmly.deepin_1.6.0deepin0_i386.deb"
 )
-sha256sums=('74be41d9ac57c7057a4495eafa5aa0fcb77e6ad73e039703d41ee809e797e97a')
+sha256sums=('343310e6a3b53f67255e6fb670d7de2ed3a8fe245fd61177b17d4f67a212dbb4')
 
 package() {
 	cd ${srcdir}
