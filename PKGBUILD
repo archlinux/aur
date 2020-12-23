@@ -4,7 +4,7 @@ url='https://wiki.ros.org/rviz'
 pkgname='ros-melodic-rviz'
 pkgver='1.13.15'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD, Creative Commons')
 
 ros_makedepends=(
@@ -45,6 +45,7 @@ makedepends=(
 	tinyxml2
 	urdfdom-headers
 	qt5-base
+        boost1.69
 )
 
 ros_depends=(
@@ -84,6 +85,7 @@ depends=(
 	qt5-base
 	sip
 	python-sip
+        boost1.69
 )
 
 _dir="rviz-${pkgver}/"
@@ -111,7 +113,9 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DSETUPTOOLS_DEB_LAYOUT=OFF
+		-DSETUPTOOLS_DEB_LAYOUT=OFF \
+                -DBOOST_ROOT=/opt/boost1.69 \
+		-DBoost_NO_SYSTEM_PATHS=TRUE
 
 	make
 }
