@@ -1,31 +1,24 @@
 # Contributor: derfenix <derfenix@gmail.com>
 
-pkgname=neochat-git
-pkgver=r1233.1ec6287
-pkgrel=2
+pkgname=neochat
+pkgver=1.0
+pkgrel=1
 pkgdesc="A client for matrix, the decentralized communication protocol"
 arch=('i686' 'x86_64')
 url="https://invent.kde.org/network/neochat"
 license=('GPL3')
-depends=('libquotient-git' 'qtkeychain' 'qt5-quickcontrols2>=5.15.0' 'qt5-multimedia>=5.15.0' 'qt5-svg>=5.15.0' 'qt5-base>=5.15.0' 'kirigami2>=5.74.0' 'kitemmodels>=5.74.0' 'ki18n>=5.74.0' 'knotifications>=5.74.0' 'kconfig>=5.74.0' 'kcoreaddons>=5.74.0' 'kquickimageeditor')
-makedepends=('cmark' 'cmake>=3.1.0' 'git' 'extra-cmake-modules') 
-source=("neochat::git+https://invent.kde.org/network/neochat.git")
+depends=('libquotient' 'qtkeychain' 'qt5-quickcontrols2>=5.15.0' 'qt5-multimedia>=5.15.0' 'qt5-svg>=5.15.0' 'qt5-base>=5.15.0' 'kirigami2>=5.74.0' 'kitemmodels>=5.74.0' 'ki18n>=5.74.0' 'knotifications>=5.74.0' 'kconfig>=5.74.0' 'kcoreaddons>=5.74.0' 'kquickimageeditor' 'kdbusaddons' 'cmark')
+makedepends=('cmake>=3.1.0' 'git' 'extra-cmake-modules') 
+source=("neochat.tar.gz::https://invent.kde.org/network/neochat/-/archive/v1.0/neochat-v1.0.tar.gz")
 conflicts=('neochat')
 provides=('neochat')
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "neochat"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+sha256sums=('fa999b5b427d14466d12d865f29bf051ae8ece4252586772ccf9e61ebb82fac2')
 
 build() {
-  cd neochat
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -B build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S "$pkgname-v$pkgver"
   make -C build
 }
 
 package() {
-   cd "${srcdir}/neochat"
    make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
 }
