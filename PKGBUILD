@@ -21,19 +21,19 @@ sha256sums=('SKIP'
 options=('!emptydirs')
 
 pkgver() {
-   cd Linux-PAM
+   cd linux-pam
    git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-  cd Linux-PAM
+  cd linux-pam
   ./configure --libdir=/usr/lib --sbindir=/usr/bin --disable-db --disable-doc --disable-debug --without-mailspool --disable-audit --disable-selinux --disable-regenerate-docu
   make
 }
 
 package() {
   install -Dm 644 $pkgname.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/$pkgname.conf
-  cd Linux-PAM
+  cd linux-pam
   make DESTDIR="$pkgdir" SCONFIGDIR=/etc/security install
 
   # set unix_chkpwd uid
