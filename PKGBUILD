@@ -10,8 +10,6 @@ license=('Apache' 'custom')
 #url="https://www.cups.org/"
 url="https://github.com/OpenPrinting/cups"
 makedepends=('libtiff' 'libpng' 'krb5' 'gnutls' 'autoconf' 'git' 'libxcrypt')
-provides=(libcups)
-conflicts=(libcups)
 source=(git://github.com/apple/cups.git)
 sha256sums=('SKIP')
 
@@ -75,6 +73,8 @@ build() {
 package_libcups-nosystemd-minimal-git() {
 pkgdesc="The CUPS Printing System - client libraries and headers"
 depends=('gnutls' 'libtiff>=4.0.0' 'libpng>=1.5.7' 'krb5' 'libusb' 'libxcrypt')
+provides=(libcups)
+conflicts=(libcups)
 
   cd cups
   make BUILDROOT="${pkgdir}" install-headers install-libs

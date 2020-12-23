@@ -13,8 +13,6 @@ pkgbase = libcups-nosystemd-minimal-git
 	makedepends = autoconf
 	makedepends = git
 	makedepends = libxcrypt
-	provides = libcups
-	conflicts = libcups
 	source = git://github.com/apple/cups.git
 	sha256sums = SKIP
 
@@ -26,4 +24,6 @@ pkgname = libcups-nosystemd-minimal-git
 	depends = krb5
 	depends = libusb
 	depends = libxcrypt
+	provides = libcups
+	conflicts = libcups
 
