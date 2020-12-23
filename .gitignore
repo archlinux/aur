@@ -1,9 +1,4 @@
-*.pkg.tar.xz
-pkg
-src
-apkstudio
-vendor.zip
-QHexView
-Qt-Frameless-Window-DarkStyle
+*
 !.SRCINFO
 !PKGBUILD
+!.gitignore
