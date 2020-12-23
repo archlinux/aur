@@ -14,7 +14,7 @@ depends=('expat')
 options=('!libtool')
 install=udunits.install
 source=(https://artifacts.unidata.ucar.edu/repository/downloads-udunits/$pkgname-$pkgver-Source.tar.gz)
-sha256sums=('84107ce2e147870a8a2c9d1ea35e36ed8634a24252ae95782cc0c0494e772618')
+sha256sums=('4cff332db4368c621998116603ad2d35cfd4a605e60a77e9a7270aed7d905711')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver-Source"
