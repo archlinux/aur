@@ -1,0 +1,19 @@
+pkgbase = st-tucuxi-git
+	pkgdesc = A customized ST build
+	pkgver = 0.8.2.r75.g23e49e0
+	pkgrel = 1
+	url = https://gitlab.com/tuxaua/st
+	arch = x86_64
+	license = MIT
+	makedepends = ncurses
+	makedepends = libxext
+	makedepends = git
+	depends = libx11
+	depends = libxft
+	provides = st
+	conflicts = st
+	source = st-tucuxi::git+https://gitlab.com/tuxaua/st.git
+	md5sums = SKIP
+
+pkgname = st-tucuxi-git
+
