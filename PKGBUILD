@@ -1,7 +1,7 @@
 # Maintainer: Zhiwei Chen <condy0919@gmail.com>
 
 pkgname=merlin
-pkgver=3.3.4
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="Context sensitive completion for OCaml in Vim and Emacs"
 arch=('x86_64')
@@ -10,7 +10,7 @@ makedepends=('git' 'dune>=1.8.0')
 url="https://github.com/ocaml/merlin"
 license=('MIT')
 source=("${url}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tbz")
-sha256sums=('adcde0ebe3dce183bae0df1cc988e0aa5cd4e446b59bc081d5350f6b58cc9d8b')
+sha256sums=('e1b7b897b11119d92995c558530149fd07bd67a4aaf140f55f3c4ffb5e882a81')
 options=('!strip')
 provides=('merlin')
 conflicts=('merlin' 'vim-ocaml-merlin-git')
