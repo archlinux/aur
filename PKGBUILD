@@ -8,12 +8,12 @@ run_tests=false
 
 pkgname=certmonger
 pkgver=0.79.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Certificate status monitor and PKI enrollment client"
 arch=(i686 x86_64)
 url="https://pagure.io/certmonger"
 license=(GPL)
-depends=(nss tevent xmlrpc-c popt libdbus krb5)
+depends=(nss tevent xmlrpc-c popt libdbus krb5 jansson)
 checkdepends=(diffutils dos2unix expect)
 backup=(etc/certmonger/certmonger.conf
         etc/tmpfiles.d/certmonger.conf)
