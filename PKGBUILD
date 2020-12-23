@@ -1,6 +1,6 @@
 # Maintainer: Moritz Poldrack <moritz at poldrack dot dev>
 pkgname=yambar
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Modular status panel for X11 and Wayland, inspired by polybar'
 arch=('x86_64')
@@ -13,10 +13,12 @@ makedepends=(
 	'ninja'
 	'meson'
 	'cmake'
+	'scdoc'
+	'libmpdclient'
 )
 provides=('yambar')
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/dnkl/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('eed0ff5c884d8019116549e8305c3ed1')
+md5sums=('32cc0d19bab1149e74aaa45fb8ad95a9')
 
 prepare() {
 	rm -rf "${srcdir}"
@@ -33,8 +35,8 @@ prepare() {
 
 #	sed -ie 's/false/true/' meson_options.txt
 
-mkdir -p bld/release && cd bld/release
-meson --buildtype=release --prefix=${pkgdir}/usr/local/ ../..
+	mkdir -p bld/release && cd bld/release
+	meson --buildtype=release --prefix=${pkgdir}/usr/ ../..
 }
 
 build() {
@@ -45,6 +47,4 @@ build() {
 package() {
 	cd "${srcdir}/yambar/bld/release"
 	ninja install
-	
-	mv "${pkgdir}/usr/local/share/man" "${pkgdir}/usr/local/man"
 }
