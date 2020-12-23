@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-laser-filters
 	pkgdesc = ROS - Assorted filters designed to operate on 2D planar laser scanners, which use the sensor_msgs/LaserScan type.
 	pkgver = 1.8.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/laser_filters
 	arch = i686
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = ros-melodic-laser-filters
 	makedepends = ros-melodic-message-filters
 	makedepends = ros-melodic-sensor-msgs
 	makedepends = ros-melodic-pluginlib
+	makedepends = boost1.69
 	depends = ros-melodic-dynamic-reconfigure
 	depends = ros-melodic-filters
 	depends = ros-melodic-laser-geometry
@@ -31,6 +32,7 @@ pkgbase = ros-melodic-laser-filters
 	depends = ros-melodic-message-filters
 	depends = ros-melodic-sensor-msgs
 	depends = ros-melodic-pluginlib
+	depends = boost1.69
 	source = ros-melodic-laser-filters-1.8.11.tar.gz::https://github.com/ros-perception/laser_filters/archive/1.8.11.tar.gz
 	sha256sums = 8c81c29f6e48daa6c120ddc72088b7a84d9753f91cb5027e745b0a94f9fd41fb
 
