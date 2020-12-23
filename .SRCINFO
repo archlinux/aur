@@ -1,0 +1,22 @@
+pkgbase = qtsconverter-git
+	pkgdesc = A Tool to convert ts < == > csv or xlsx
+	pkgver = 4.3.4.r37.g63305e6
+	pkgrel = 1
+	url = https://github.com/guerinoni/qTsConverter
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-declarative
+	provides = qtsconverter
+	conflicts = qtsconverter
+	source = git://github.com/guerinoni/qTsConverter.git
+	md5sums = SKIP
+
+pkgname = qtsconverter-git
+
