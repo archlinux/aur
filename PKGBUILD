@@ -1,5 +1,4 @@
-# Maintainer: "tyjak"
-
+# Maintainer: Tyjak <dev@tyjak.net>
 pkgname=binance-deb
 _pkgname=binance
 pkgver=1.9.2
@@ -12,7 +11,6 @@ conflicts=('binance')
 depends=()
 optdepends=()
 source=("https://ftp.binance.com/electron-desktop/linux/production/${_pkgname}-amd64-linux.deb")
-#noextract=("${_pkgname}-amd64-linux.deb")
 sha256sums=("SKIP")
 
 prepare() {
