@@ -1,0 +1,30 @@
+pkgbase = p11-kit-nosystemd-minimal-git
+	pkgdesc = Loads and enumerates PKCS#11 modules
+	pkgver = 0.23.22
+	pkgrel = 1
+	url = https://github.com/p11-glue/p11-kit
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = meson
+	makedepends = libtasn1
+	makedepends = libffi
+	source = git+https://github.com/p11-glue/p11-kit
+	sha256sums = SKIP
+
+pkgname = p11-kit-nosystemd-minimal-git
+	depends = libp11-kit=0.23.22-1
+	depends = coreutils
+	depends = libp11-kit.so
+	provides = p11-kit
+	conflicts = p11-kit
+
+pkgname = libp11-kit-nosystemd-minimal-git
+	pkgdesc = Loads and enumerates PKCS#11 modules (library)
+	depends = glibc
+	depends = libtasn1
+	depends = libffi
+	provides = libp11-kit.so
+	provides = libp11-kit
+	conflicts = libp11-kit
+
