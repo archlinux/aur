@@ -1,0 +1,18 @@
+pkgbase = jack-audio-tools
+	pkgdesc = A collection of utilities and tools for the JACK audio ecosystem. Git version.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/SpotlightKid/jack-audio-tools
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = lilv
+	depends = python-rdflib
+	optdepends = jack: for JACK Transport scripts
+	optdepends = lv2: for LV2 scripts
+	optdepends = carla: for carxp2lv2presets script
+	source = https://files.pythonhosted.org/packages/source/j/jack-audio-tools/jack-audio-tools-0.3.2.tar.gz
+	sha256sums = 288de54dd783d4f37ebe754910166318f7efe9ac90ce2e41564ff366236526ec
+
+pkgname = jack-audio-tools
+
