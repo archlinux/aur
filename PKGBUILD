@@ -2,18 +2,18 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-skinflatplus
-pkgver=0.6.0.r14.g930c7dbf
-_gitver=930c7dbff222627edb01169c9616fe7f01828cc4
-_vdrapi=2.4.3
+pkgver=0.6.0.r41.gce0be9e3
+_gitver=ce0be9e3e90735271b5602f2877306283f8024b6
+_vdrapi=2.4.6
 pkgrel=1
 pkgdesc="Simple and slim skin for VDR"
-url="http://projects.vdr-developer.org/projects/plg-skinflatplus"
+url="https://github.com/MegaV0lt/vdr-plugin-skinflatplus"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('fontconfig' 'graphicsmagick' "vdr-api=${_vdrapi}")
 makedepends=('git')
 _plugname=${pkgname//vdr-/}
-source=("git://projects.vdr-developer.org/skin-flatplus.git#commit=$_gitver"
+source=("git+https://github.com/MegaV0lt/vdr-plugin-skinflatplus.git#commit=$_gitver"
         "$pkgname-graphicsmagick-1.3.32-compat.patch"
         "50-$_plugname.conf")
 backup=('etc/epgd/eventsview-flatplus.sql'
@@ -24,7 +24,7 @@ sha256sums=('SKIP'
             '6f6f9699cbc73d73d34c4e17183d3f03b1553a2b8caa62ee881354f2ac12bd8d')
 
 pkgver() {
-  cd "$srcdir/skin-flatplus"
+  cd "$srcdir/vdr-plugin-$_plugname"
   _last_release=0.6.0
   _last_release_commit=cd60fe82b3c0dd03b92b10cdc3135a0ef57f835a
 
@@ -39,18 +39,18 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir/skin-flatplus"
+  cd "$srcdir/vdr-plugin-$_plugname"
   patch -p1 -i ${srcdir}/${pkgname}-graphicsmagick-1.3.32-compat.patch
   sed -i 's/Magick++/GraphicsMagick++/g' Makefile
 }
 
 build() {
-  cd "$srcdir/skin-flatplus"
+  cd "$srcdir/vdr-plugin-$_plugname"
   make
 }
 
 package() {
-  cd "$srcdir/skin-flatplus"
+  cd "$srcdir/vdr-plugin-$_plugname"
 
   make DESTDIR="$pkgdir" install
 
