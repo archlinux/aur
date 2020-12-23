@@ -1,4 +1,5 @@
 pkg/
 src/
-STIX*.zip
-otf-stix-*.xz
+*.zip
+otf-stix-*.zst
+OFL.txt

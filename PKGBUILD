@@ -1,17 +1,21 @@
 pkgname=otf-stix
-pkgver=2.0.2
-pkgrel=2
+pkgver=2.10
+pkgrel=1
 pkgdesc="An OpenType font with math support, designed for scientific and engineering printing"
 arch=('any')
 url="http://www.stixfonts.org"
 license=('custom:OFL')
-source=("https://github.com/stipub/stixfonts/raw/v$pkgver/zipfiles/STIXv$pkgver.zip")
-sha256sums=('fef26941bf7eeab7ed6400a386211ba11360f0b2df22002382ceb3e2b551179d')
+source=(
+    "https://raw.githubusercontent.com/stipub/stixfonts/v$pkgver/docs/OFL.txt"
+    "https://raw.githubusercontent.com/stipub/stixfonts/v$pkgver/zipfiles/static_otf.zip"
+)
+sha256sums=('0438a245387dce3a3252966a3b419c0369da55ad77ccf4e73c1dc450ac46b283'
+            '1494bc57d989587df29c33735dfab3be331e58b97b048a6c4bb33f5048d66602')
 
 package() {
-  cd "$srcdir/STIXv$pkgver"
+  cd "$srcdir/"
 
   install -d "$pkgdir/usr/share/fonts/OTF"
-  install -m644 OTF/*.otf "$pkgdir/usr/share/fonts/OTF/"
-  install -Dm644 "docs/STIX_${pkgver}_license.pdf" "$pkgdir/usr/share/licenses/$pkgname/OFL.pdf"
+  install -m644 static_otf/*.otf "$pkgdir/usr/share/fonts/OTF/"
+  install -Dm644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname/OFL.txt"
 }
