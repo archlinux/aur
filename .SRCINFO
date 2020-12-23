@@ -1,20 +1,18 @@
 pkgbase = payara
 	pkgdesc = A Java EE application server, drived from GlassFish Open Source Edition.
-	pkgver = 5.2020.2
-	pkgrel = 7
+	pkgver = 5.2020.7
+	pkgrel = 1
 	url = http://www.payara.fish/
 	arch = any
 	license = CDDL
 	license = GPL2
 	depends = java-environment>=8
-	provides = payara
-	conflicts = payara
 	options = !strip
-	source = payara-5.2020.2.zip::https://search.maven.org/remotecontent?filepath=fish/payara/distributions/payara/5.2020.2/payara-5.2020.2.zip
+	source = payara-5.2020.7.zip::https://search.maven.org/remotecontent?filepath=fish/payara/distributions/payara/5.2020.7/payara-5.2020.7.zip
 	source = payara.service
-	sha256sums = 4dc75eeac5a0eac0bac542865c80e78bba38e66b499a571395314ed4ee5e48a2
+	sha256sums = 518ee2a18477528b9fc9a28cfae0e988f5a8331aa0be092f2ce46476355c7bd1
 	sha256sums = 20be1d3d7c83fe75580e72154728929e560333a4027f5be39799babbe5da860d
-	sha512sums = 0a45c2dab9c6b10c2cc0ce214773881e74c05717c140845aa53e49d0800a0e66c2cf37a1ac1445e3301ea9464990af48f58b0e894633a714e3f0d7f147211d77
+	sha512sums = bd6e93d4c451e045ea2e38c01821720c1c53ddc1329a85de1ac551c77e7be1bc9b568efebc44c58cdb4ac5f073699822b2a4ed631805fd73ea1b7e08c9dd0357
 	sha512sums = 5c176c6a547f86ee4ed633e36e131d34e0f6f633f5ca74f42b96f27f4b9f4c218c50ed06cbc9b8a92b4f10c7f19cd48823bcac4af8d46cf9ac3ce3da71873070
 
 pkgname = payara
