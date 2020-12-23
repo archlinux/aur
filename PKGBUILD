@@ -26,7 +26,7 @@ build() {
 	    echo "Unsupported architecture. Aborting"
 	    exit 1
 	fi
-	nativefier --platform "linux" --icon google-messages.png --name "Google Messages" "https://messages.google.com/web" --honest --disable-dev-tools --single-instance --tray --app-version $pkgver --build-version $pkgrel --arch ${_NFARCH}
+	nativefier --platform "linux" --icon google-messages.png --name "Google Messages" "https://messages.google.com/web" --honest --disable-dev-tools --single-instance --app-version $pkgver --build-version $pkgrel --arch ${_NFARCH}
 }
 
 package() {
