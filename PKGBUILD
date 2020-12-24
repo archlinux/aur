@@ -48,9 +48,9 @@ prepare() {
 	-DQTKEYCHAIN=ON
 }
 
-#build() {
-#  cmake --build $srcdir/${pkgname%-*}/cmake_build --parallel `nproc`
-#}
+build() {
+  cmake --build $srcdir/${pkgname%-*}/cmake_build --parallel `nproc`
+}
 
 #check() {
 #	cd "$srcdir/${pkgname%-*}"
