@@ -25,15 +25,20 @@ echo "Latest version after wget has md5sum $MD5_NEW"
 
 if [ "$MD5_OLD" == "$MD5_NEW" ]; then
   echo "File has not changed"
-  exit 0
+  if [ -e "${DOWNLOAD_DIR}/version.txt" ] ; then
+    echo "version.txt found so no further work required"
+    exit 0
+  fi
 fi
 
-echo "File has been updated; extracting version number by executing Java"
+echo "Extracting version number"
 DST="$(./tws_get_version "${FILE_CUR}" || echo unknown)"
 echo "Version is $DST"
 
 if [[ $DST == *"unknown"* ]]; then
-  echo "Error obtaining version by executing $FILE_MIRROR"
+  echo "Error obtaining version from $FILE_MIRROR"
+  echo "Removing ${DOWNLOAD_DIR}/version.txt"
+  rm -f ${DOWNLOAD_DIR}/version.txt
   exit 2
 fi
 
