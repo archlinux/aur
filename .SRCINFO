@@ -1,6 +1,6 @@
 pkgbase = mpdevil-git
 	pkgdesc = A simple music browser for MPD (git version)
-	pkgver = v0.9.7.r0.g70ca48b
+	pkgver = v0.9.7.r4.gb6be0f0
 	pkgrel = 1
 	url = https://github.com/SoongNoonien/mpdevil
 	arch = any
@@ -13,7 +13,6 @@ pkgbase = mpdevil-git
 	depends = python-gobject
 	depends = python-requests
 	depends = python-beautifulsoup4
-	depends = python-dbus
 	provides = mpdevil
 	conflicts = mpdevil
 	source = git+https://github.com/SoongNoonien/mpdevil.git
