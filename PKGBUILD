@@ -2,7 +2,7 @@
 # Maintainer: Jack Johannesen <jack AT insertdomain DOT name>
 
 pkgname=ttf-material-design-icons-extended
-pkgver=5.4.55
+pkgver=5.8.55
 pkgrel=3
 pkgdesc="An extended Material Design icons font by the guys over at materialdesignicons.com"
 arch=('any')
@@ -12,7 +12,7 @@ depends=()
 makedepends=()
 provides=()
 conflicts=('ttf-material-design-icons')
-source=('https://cdn.materialdesignicons.com/5.4.55/fonts/materialdesignicons-webfont.ttf'
+source=("https://cdn.materialdesignicons.com/${pkgver}/fonts/materialdesignicons-webfont.ttf"
         'https://raw.githubusercontent.com/Templarian/MaterialDesign/master/LICENSE')
 noextract=('materialdesignicons-webfont.ttf' 'LICENSE')
 md5sums=('8ed8f0719def123d77bf6ea8919b8d8a'
