@@ -1,0 +1,17 @@
+pkgbase = aprsgateway-git
+	pkgdesc = A single point of access to the APRS network for other radio network gateway programs.
+	pkgver = r37.6bee1c1
+	pkgrel = 1
+	url = https://github.com/g4klx/APRSGateway
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = git
+	provides = aprsgateway
+	conflicts = aprsgateway
+	backup = etc/APRSGateway.ini
+	source = aprsgateway::git+https://github.com/g4klx/APRSGateway.git
+	md5sums = SKIP
+
+pkgname = aprsgateway-git
+
