@@ -1,6 +1,6 @@
 pkgbase = python-skorch
 	pkgdesc = A scikit-learn compatible neural network library that wraps pytorch
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/skorch-dev/skorch
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-skorch
 	depends = python-tabulate
 	depends = python-tqdm
 	depends = python-yaml
-	source = https://github.com/skorch-dev/skorch/archive/v0.8.0.tar.gz
-	sha256sums = 0619c6b1e53ac55be35ea03f072ed4796ecfa1426abfad8784a1868dbdf03bf4
+	source = https://github.com/skorch-dev/skorch/archive/v0.9.0.tar.gz
+	sha256sums = 535f41986e58d42335acb0c57d342657ad4d59619d39b98ee4802b42a6dc3fbd
 
 pkgname = python-skorch
 
