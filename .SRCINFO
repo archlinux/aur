@@ -1,0 +1,14 @@
+pkgbase = hamler-bin
+	pkgdesc = Haskell-style functional programming language running on Erlang VM.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://www.hamler-lang.org/
+	arch = x86_64
+	license = BSD
+	depends = ncurses5-compat-libs
+	provides = hamler
+	source = https://github.com/hamler-lang/hamler/releases/download/0.2.2/hamler-0.2.2.tgz
+	sha256sums = 9e90297c2cd6de4d10b51cc229b66192eb755d58fa378a91045f639d0725fae9
+
+pkgname = hamler-bin
+
