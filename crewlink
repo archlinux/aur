@@ -1,0 +1,13 @@
+#!/bin/sh
+
+error () {
+	echo "$1" >&2
+	exit 1
+}
+
+key='kernel.yama.ptrace_scope'
+old_value=$(sysctl -n "$key")
+
+sysctl "$key=0" || error "unable to run 'sysctl $key=0' (did you run this as root?)"
+su "$(logname)" -c '/opt/CrewLink/crewlink'
+sysctl "$key=$old_value" || error "unable to run 'sysctl $key=$old_value'"
