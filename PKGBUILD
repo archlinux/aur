@@ -2,19 +2,18 @@
 
 pkgname=imgui-sfml
 pkgver=2.1
-pkgrel=2
+pkgrel=3
+imguiver=1.79
 pkgdesc="Library which allows you to use ImGui with SFML"
 arch=("any")
 url="https://github.com/eliasdaler/imgui-sfml/"
 license=("MIT")
 source=("https://github.com/eliasdaler/${pkgname}/archive/v${pkgver}.tar.gz"
-		"https://github.com/ocornut/imgui/archive/v1.78.tar.gz")
+	"https://github.com/ocornut/imgui/archive/v${imguiver}.tar.gz")
 md5sums=("6e7fc0bd05372e668c786f7e25591302"
-		"4104b4f2788c94a776c3015699e83d20")
+         "88db45beef022784690eef0665c6021d")
 depends=("sfml")
 makedepends=("cmake")
-
-imguiver=1.78
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
