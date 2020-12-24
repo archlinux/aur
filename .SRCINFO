@@ -1,0 +1,39 @@
+pkgbase = elfutils-minimal-git
+	pkgdesc = Utilities to handle ELF object files and DWARF debugging information
+	pkgver = 0.182
+	pkgrel = 1
+	url = https://sourceware.org/elfutils/
+	arch = x86_64
+	license = LGPL3
+	license = GPL
+	license = GPL3
+	makedepends = gcc-libs
+	makedepends = zlib
+	makedepends = bzip2
+	makedepends = xz
+	makedepends = libmicrohttpd
+	makedepends = sqlite
+	makedepends = libarchive
+	makedepends = curl
+	options = staticlibs
+	source = git+https://sourceware.org/git/elfutils.git
+	sha512sums = SKIP
+
+pkgname = elfutils-minimal-git
+	depends = gcc-libs
+	depends = zlib
+	depends = bzip2
+	depends = xz
+	depends = libmicrohttpd
+	depends = sqlite
+	depends = libarchive
+	depends = curl
+
+pkgname = libelf-minimal-git
+	pkgdesc = Libraries to handle ELF object files and DWARF debugging information
+	depends = gcc-libs
+	depends = zlib
+	depends = bzip2
+	depends = xz
+	depends = curl
+
