@@ -5,7 +5,8 @@
 
 # Maintainer: Buck Yeh <buck.yeh at gmail dot com>
 pkgname=bux
-pkgver=1.0.0
+pkgver=1.1.0
+#pkgver=main
 pkgrel=1
 epoch=
 pkgdesc='A supplemental C++ library with functionalities not directly supported from Modern C++ standard.'
@@ -24,7 +25,7 @@ backup=()
 options=()
 install=
 changelog=
-source=() #"$pkgname-$pkgver.tar.gz")
+source=()
 noextract=()
 md5sums=()
 validpgpkeys=()
@@ -33,7 +34,7 @@ prepare() {
 	rm -Rf "$pkgname"
 	mkdir -p "$pkgname"
 	cd "$pkgname" || return 1
-	git clone -b main --single-branch $url .
+	git clone -b "$pkgver" --single-branch $url .
 }
 
 build() {
@@ -47,7 +48,7 @@ check() {
 	if [[ ! -f src/libbux.a ]]; then
 		return 1
 	fi
-	for i in include/*.h ; do
+	for i in include/bux/*.h ; do
 		return 0
 	done
 	return 1
@@ -56,8 +57,8 @@ check() {
 package() {
 	cd "$pkgname" || return 1
 	mkdir -p "$pkgdir/usr/lib"
-	mkdir -p "$pkgdir/usr/include/$pkgname"
+	mkdir -p "$pkgdir/usr/include/bux"
 	cp src/libbux.a "$pkgdir/usr/lib/"
-	cp include/*.h "$pkgdir/usr/include/$pkgname/"
+	cp include/bux/*.h "$pkgdir/usr/include/bux/"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
