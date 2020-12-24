@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
-pkgname=('sqlite-minimal-git' 'lemon-minimal-git' 'sqlite-doc-minimal-git')
+pkgname=('sqlite-minimal-git' 'lemon-minimal-git')
 pkgver=3.34.0
 pkgrel=1
 pkgdesc="A C library that implements an SQL database engine"
@@ -11,23 +11,15 @@ license=('custom:Public Domain')
 url="https://www.sqlite.org/"
 makedepends=('tcl' 'readline' 'zlib')
 source=("git+https://github.com/sqlite/sqlite"
-        'license.txt'
-        'sqlite-lemon-system-template.patch')
+        'license.txt')
 options=('!emptydirs')
 sha256sums=('SKIP'
-	    'SKIP'
-            'SKIP')
+	    'SKIP')
 
-prepare() {
+pkgver() {
    cd sqlite
-
-     # patch taken from Fedora
-     # https://src.fedoraproject.org/rpms/sqlite/blob/master/f/sqlite.spec
-   #  patch -Np1 -i ../sqlite-lemon-system-template.patch
- 
-   #  autoreconf -vfi
+   git describe --tags | sed 's/-/+/g'
 }
-
 
 build() {
   export CPPFLAGS="$CPPFLAGS -DSQLITE_ENABLE_COLUMN_METADATA=1 \
@@ -100,19 +92,4 @@ package_lemon-minimal-git() {
   install -m755 -d "${pkgdir}"/usr/share/licenses
   ln -sf /usr/share/licenses/${pkgbase} "${pkgdir}/usr/share/licenses/${pkgname}"
 
-}
-
-package_sqlite-doc-minimal-git() {
-
- pkgdesc="most of the static HTML files that comprise this website, including all of the SQL Syntax and the C/C++ interface specs and other miscellaneous documentation"
- #arch=('any') - not yet supported
- provides=("sqlite3-doc=$pkgver" 'sqlite-doc')
- replaces=("sqlite3-doc")
- conflicts=(sqlite-doc)
-
-  cd sqlite-doc-${_docver}
-  mkdir -p "${pkgdir}"/usr/share/doc/${pkgbase}
-  cp -R *  "${pkgdir}"/usr/share/doc/${pkgbase}/
-  
-  rm "${pkgdir}"/usr/share/doc/${pkgbase}/lemon.html
 }

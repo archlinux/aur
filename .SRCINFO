@@ -11,8 +11,6 @@ pkgbase = sqlite-minimal-git
 	options = !emptydirs
 	source = git+https://github.com/sqlite/sqlite
 	source = license.txt
-	source = sqlite-lemon-system-template.patch
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
@@ -30,11 +28,4 @@ pkgname = lemon-minimal-git
 	depends = glibc
 	provides = lemon
 	conflicts = lemon
-
-pkgname = sqlite-doc-minimal-git
-	pkgdesc = most of the static HTML files that comprise this website, including all of the SQL Syntax and the C/C++ interface specs and other miscellaneous documentation
-	provides = sqlite3-doc=3.34.0
-	provides = sqlite-doc
-	conflicts = sqlite-doc
-	replaces = sqlite3-doc
 
