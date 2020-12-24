@@ -1,5 +1,5 @@
 pkgname=key-mapper-git
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A tool to change and program the mapping of your input device buttons."
 arch=('any')
