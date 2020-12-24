@@ -4,16 +4,17 @@
 
 pkgbase=upp
 pkgname=(upp theide umk)
-yearver=2020.1
-pkgver=15615
+yearver=2020.2
+pkgver=15260
 pkgrel=1
 pkgdesc="Radical and innovative multiplatform C++ framework (known as U++)"
 arch=('any')
 url="http://www.ultimatepp.org"
 license=('BSD')
 depends=('gcc' 'make' 'zlib' 'bzip2' 'gtk3' 'libnotify' 'openssl' 'clang' 'pkgconfig' 'gdb')
+conflicts=(upp-nightly theide-nightly umk-nightly)
 options=(!makeflags emptydirs !strip)
-source=("https://www.ultimatepp.org/downloads/upp-posix-$pkgver.tar.xz")
+source=("http://downloads.sourceforge.net/${pkgbase}/${pkgbase}/${yearver}/upp-posix-${pkgver}.tar.xz")
 
 prepare() {
   cd "$srcdir/upp"
@@ -74,4 +75,4 @@ package_upp() {
   find "$pkgdir/usr/" -type d -print0 | xargs -0 chmod 755
 }
 
-md5sums=('69c6d9a4441cf5ab07e87acf0dae6f9b')
+md5sums=('7e5f6ed055e26041bce9d5f82aaa05f0')
