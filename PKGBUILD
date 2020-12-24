@@ -2,7 +2,7 @@
 
 pkgname=clickrouter-git
 pkgver=2.0.1.r951.g593d10826
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast modular packet processing and analysis'
 depends=('glibc' 'libpcap')
 optdepends=()
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    if git describe >/dev/null 2>&1; then
+    if git describe --long --tags >/dev/null 2>&1; then
         git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
     else
         printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git describe --always)"
