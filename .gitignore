@@ -1,0 +1,4 @@
+amfora/
+pkg/
+src/
+*.pkg.tar.zst
