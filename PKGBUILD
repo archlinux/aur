@@ -30,7 +30,7 @@ build() {
 
   autoreconf -fi
 #  CFLAGS+=" -g"  # required for test-suite success
-  ./configure --prefix=/usr --program-prefix="eu-" --enable-deterministic-archives --disable-gconf --disable-debugpred --disable-gcov --disable-valgrind --without-valgrind --disable-valgrind-annotations --enable-maintainer-mode
+  ./configure --prefix=/usr --program-prefix="eu-" --enable-deterministic-archives --disable-gconf --disable-debugpred --disable-gcov --disable-valgrind --without-valgrind --disable-valgrind-annotations --enable-maintainer-mode --disable-debuginfod
 
   make
 }
