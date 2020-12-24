@@ -1,6 +1,6 @@
 pkgbase = icinga2-git
 	pkgdesc = An open source host, service and network monitoring program
-	pkgver = 2.11.0.r23.g06296175e
+	pkgver = 2.12.0.r414.gcb25be2d1
 	pkgrel = 1
 	url = http://www.icinga.org
 	install = icinga2-git.install
@@ -37,6 +37,7 @@ pkgbase = icinga2-git
 	backup = etc/icinga2/features-available/elasticsearch.conf
 	backup = etc/icinga2/features-available/gelf.conf
 	backup = etc/icinga2/features-available/graphite.conf
+	backup = etc/icinga2/features-available/icingadb.conf
 	backup = etc/icinga2/features-available/ido-mysql.conf
 	backup = etc/icinga2/features-available/ido-pgsql.conf
 	backup = etc/icinga2/features-available/influxdb.conf

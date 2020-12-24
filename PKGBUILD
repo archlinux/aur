@@ -3,7 +3,7 @@
 
 pkgname='icinga2-git'
 _pkgname=icinga2
-pkgver=2.11.0.r23.g06296175e
+pkgver=2.12.0.r414.gcb25be2d1
 pkgrel=1
 pkgdesc="An open source host, service and network monitoring program"
 license=('GPL')
@@ -26,6 +26,7 @@ backup=(etc/default/icinga2
         etc/icinga2/features-available/elasticsearch.conf
         etc/icinga2/features-available/gelf.conf
         etc/icinga2/features-available/graphite.conf
+        etc/icinga2/features-available/icingadb.conf
         etc/icinga2/features-available/ido-mysql.conf
         etc/icinga2/features-available/ido-pgsql.conf
         etc/icinga2/features-available/influxdb.conf
