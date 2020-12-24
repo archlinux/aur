@@ -9,7 +9,7 @@ arch=('any')
 url='https://github.com/rebootuser/LinEnum'
 license=('MIT')
 depends=('bash')
-makedepends=('git' 'findutils')
+makedepends=('git')
 
 source=("$_pkgbase::git+$url")
 sha256sums=('SKIP')
