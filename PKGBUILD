@@ -17,6 +17,11 @@ conflicts=(lib32-sqlite)
 source=(git+https://github.com/sqlite/sqlite)
 sha256sums=('SKIP')
 
+pkgver() {
+   cd sqlite
+   git describe --tags | sed 's/-/+/g'
+}
+
 prepare() {
   cd sqlite
   autoreconf -vfi
