@@ -22,7 +22,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-*}"
-#	echo "$(git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
+#	echo "$(git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/udev./g')"
 	echo "r$(git log --pretty=oneline --first-parent | wc -l)"
 }
 
@@ -48,9 +48,9 @@ prepare() {
 	-DQTKEYCHAIN=ON
 }
 
-build() {
-  cmake --build $srcdir/${pkgname%-*}/cmake_build --parallel `nproc`
-}
+#build() {
+#  cmake --build $srcdir/${pkgname%-*}/cmake_build --parallel `nproc`
+#}
 
 #check() {
 #	cd "$srcdir/${pkgname%-*}"
@@ -59,7 +59,7 @@ build() {
 
 package() {
 	mkdir -p $pkgdir/usr/lib/udev/rules.d/
-	cp $srcdir/${pkgname%-*}/res/linux/mixxx-usb-uaccess.rules $pkgdir/usr/lib/udev/rules.d/mixxx-usb-uaccess.rules
+	cp $srcdir/${pkgname%-*}/res/linux/mixxx-usb-uaccess.rules $pkgdir/usr/lib/udev/rules.d/99-mixxx-usb-uaccess.rules
 	chmod a+r $pkgdir/usr/lib/udev/rules.d/mixxx-usb-uaccess.rules
 	DESTDIR="$pkgdir" cmake --install $srcdir/${pkgname%-*}/cmake_build
 }
