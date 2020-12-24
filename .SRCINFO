@@ -5,6 +5,7 @@ pkgbase = sqlite-minimal-git
 	url = https://www.sqlite.org/
 	arch = x86_64
 	license = custom:Public Domain
+	makedepends = tcl
 	makedepends = readline
 	makedepends = zlib
 	options = !emptydirs

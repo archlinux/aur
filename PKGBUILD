@@ -9,7 +9,7 @@ pkgdesc="A C library that implements an SQL database engine"
 arch=('x86_64')
 license=('custom:Public Domain')
 url="https://www.sqlite.org/"
-makedepends=('readline' 'zlib')
+makedepends=('tcl' 'readline' 'zlib')
 source=("git+https://github.com/sqlite/sqlite"
         'license.txt'
         'sqlite-lemon-system-template.patch')
@@ -78,8 +78,8 @@ package_sqlite-minimal-git() {
   install -D -m644 "${srcdir}"/license.txt "${pkgdir}"/usr/share/licenses/${pkgbase}/license.txt
 
   # split out tcl extension
-  mkdir "$srcdir"/tcl
-  mv "$pkgdir"/usr/lib/sqlite* "$srcdir"/tcl
+#  mkdir "$srcdir"/tcl
+#  mv "$pkgdir"/usr/lib/sqlite* "$srcdir"/tcl
 }
 
 package_lemon-minimal-git() {
