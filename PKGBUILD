@@ -30,9 +30,9 @@ depends=(
 	"visual-studio-code-insiders-bin" "android-studio"
 	"netbeans8" "emacs" "emacs-doom-themes-git" "fd" "ripgrep"
 	"nvm-git" "yarn"
-	"java-8-jdk" "glassfish5"
+	"glassfish5"
 	"apache" "mysql" "php" "php-apache" "phpmyadmin"
-	"elixir""inotify-tools"
+	"elixir" "inotify-tools"
 	"gnome-keyring")
 
 source=("dotfiles.tar.gz::https://github.com/joaopedroaats/dotfiles/archive/v${pkgver}.tar.gz")
