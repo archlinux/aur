@@ -1,6 +1,6 @@
 #Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=sdformat
-pkgver=10.0.0
+pkgver=10.1.0
 pkgrel=1
 pkgdesc="SDF Converter for gazebo"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('Apache')
 depends=('boost' 'tinyxml' 'ignition-math>=6' 'python-psutil' 'urdfdom')
 makedepends=('cmake' 'doxygen' 'ignition-cmake' 'ignition-tools' 'ruby')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/osrf/${pkgname}/archive/${pkgname}10_${pkgver}.tar.gz")
-sha256sums=('3555ce443a736e9bd24577d894978e0236212bfd2b356022fd53b143b30152bf')
+sha256sums=('1fcb1df4c92cdf650b85015d41e31d4ae2da43c2c283685d6106f7cfd25ba8e0')
 
 _dir="sdformat-${pkgname}10_${pkgver}"
 
