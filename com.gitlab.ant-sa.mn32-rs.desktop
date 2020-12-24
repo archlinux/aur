@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=MN32-rs
+Comment=Configuration tool for Mionix Naos 3200
+Exec=/usr/bin/mn32-rs
+Icon=input-mouse
+Terminal=false
+Type=Application
+Categories=Utility
