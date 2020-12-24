@@ -1,0 +1,18 @@
+pkgbase = lib32-sqlite-git
+	pkgdesc = A C library that implements an SQL database engine (32-bit)
+	pkgver = 3.34.0
+	pkgrel = 1
+	url = https://www.sqlite.org/
+	arch = x86_64
+	license = custom
+	makedepends = tcl
+	makedepends = lib32-readline
+	depends = lib32-glibc
+	depends = sqlite
+	provides = lib32-sqlite
+	conflicts = lib32-sqlite
+	source = git+https://github.com/sqlite/sqlite
+	sha256sums = SKIP
+
+pkgname = lib32-sqlite-git
+
