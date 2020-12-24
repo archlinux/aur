@@ -9,12 +9,25 @@ pkgdesc="A C library that implements an SQL database engine"
 arch=('x86_64')
 license=('custom:Public Domain')
 url="https://www.sqlite.org/"
-makedepends=('tcl' 'readline' 'zlib')
+makedepends=('readline' 'zlib')
 source=("git+https://github.com/sqlite/sqlite"
-        'license.txt')
+        'license.txt'
+        'sqlite-lemon-system-template.patch')
 options=('!emptydirs')
 sha256sums=('SKIP'
-	    'SKIP')
+	    'SKIP'
+            'SKIP')
+
+prepare() {
+   cd sqlite
+
+     # patch taken from Fedora
+     # https://src.fedoraproject.org/rpms/sqlite/blob/master/f/sqlite.spec
+   #  patch -Np1 -i ../sqlite-lemon-system-template.patch
+ 
+   #  autoreconf -vfi
+}
+
 
 build() {
   export CPPFLAGS="$CPPFLAGS -DSQLITE_ENABLE_COLUMN_METADATA=1 \
