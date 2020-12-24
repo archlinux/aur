@@ -2,17 +2,17 @@
 
 pkgname=rtl8821ce-dkms
 _pkgbase=rtl8821ce
-pkgver=1.0.5.r110.gd95376d
-pkgrel=1
+pkgver=5.9.0.r116.g14b536f
+pkgrel=2
 pkgdesc="rtl8821CE driver with firmware"
 arch=('i686' 'x86_64')
-url="https://github.com/MounirErhili/rtl8821ce.git"
+url="https://github.com/tomaspinho/rtl8821ce.git"
 license=('GPL2')
 depends=('dkms' 'bc' 'linux-headers')
 makedepends=('git' 'bc' 'linux-headers')
 conflicts=("${_pkgbase}")
 # 'dkms.conf'
-source=("git+https://github.com/MounirErhili/rtl8821ce.git")
+source=("git+https://github.com/tomaspinho/rtl8821ce.git")
 sha256sums=('SKIP')
 
 pkgver() {
