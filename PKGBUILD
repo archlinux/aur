@@ -3,10 +3,10 @@
 _hkgname=indexed-list-literals
 pkgname=haskell-indexed-list-literals
 pkgver=0.2.1.3
-pkgrel=1
+pkgrel=2
 license=('BSD')
 arch=('x86_64')
-url="https://hackage.haskell.org/package/$hkgname"
+url="https://hackage.haskell.org/package/$_hkgname"
 depends=(ghc-libs haskell-only)
 makedepends=(ghc haskell-hspec)
 source=("https://hackage.haskell.org/packages/archive/$_hkgname/$pkgver/$_hkgname-$pkgver.tar.gz")
