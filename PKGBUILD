@@ -1,5 +1,5 @@
 pkgname=pijul
-pkgver=1.0.0_alpha.22
+pkgver=1.0.0_alpha.24
 pkgrel=1
 pkgdesc="The sound distributed version control system"
 url='https://pijul.org'
