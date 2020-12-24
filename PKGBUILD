@@ -18,12 +18,12 @@ sha512sums=('SKIP')
 #validpgpkeys+=('EC3CFE88F6CA0788774F5C1D1AA44BE649DE760A') # Mark Wielaard <mjw@gnu.org>
 
 pkgver() {
-   cd libelf
+   cd elfutils
    git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-  cd libelf
+  cd elfutils
 
 #  CFLAGS+=" -g"  # required for test-suite success
   ./configure --prefix=/usr --program-prefix="eu-" --enable-deterministic-archives --disable-gconf --disable-debugpred --disable-gcov --disable-valgrind --without-valgrind --disable-valgrind-annotations
@@ -32,7 +32,7 @@ build() {
 }
 
 #check() {
-#  cd libelf
+#  cd elfutils
 
   # Some tests fail due to limited capabilities of build chroot
 #  make check || :
@@ -41,7 +41,7 @@ build() {
 package_elfutils-minimal-git() {
   depends=(gcc-libs zlib bzip2 xz libmicrohttpd sqlite libarchive curl)
 
-  cd libelf
+  cd elfutils
   make DESTDIR="$pkgdir" install
 
   mkdir "$srcdir/libelf" 
