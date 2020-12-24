@@ -13,6 +13,8 @@ optdepends=('plasma-desktop: for included plasma theme'
             'tela-circle-icon-theme-git: matching icon theme'
             'orchis-theme-git: matching gtk theme')
 makedepends=('git')
+provides=('orchis-kde-theme-git')
+conflicts=('orchis-kde-theme-git')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
