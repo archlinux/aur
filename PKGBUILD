@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=88.0.4302.0
+pkgver=89.0.4356.6
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -203,6 +203,7 @@ _keeplibs=(
            'third_party/emoji-segmenter'
            'third_party/ffmpeg'
            'third_party/flatbuffers'
+           'third_party/fusejs'
            'third_party/glslang'
            'third_party/google_input_tools'
            'third_party/google_input_tools/third_party/closure_library'
@@ -230,9 +231,13 @@ _keeplibs=(
            'third_party/libsrtp'
            'third_party/libsync'
            'third_party/libudev'
+           'third_party/liburlpattern'
+           'third_party/libva_protected_content'
            'third_party/libvpx'
            'third_party/libvpx/source/libvpx/third_party/x86inc'
            'third_party/libwebm'
+           'third_party/libx11'
+           'third_party/libxcb-keysyms'
            'third_party/libxml/chromium'
            'third_party/libyuv'
            'third_party/llvm'
@@ -319,8 +324,9 @@ _keeplibs=(
            'third_party/woff2'
            'third_party/wuffs'
            'third_party/xcbproto'
+           'third_party/x11proto'
            'third_party/zxcvbn-cpp'
-           'third_party/zlib' # /google'
+           'third_party/zlib' # /google
            'tools/grit/third_party/six'
            'url/third_party/mozilla'
            'v8/src/third_party/siphash'
