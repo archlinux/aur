@@ -1,51 +1,55 @@
-# Maintainer: Honghao Li <hh.li99@outlook.com>
-# Maintainer: Michael Yang <ohmyarchlinux@pm.me>
+# Contributor: Honghao Li <hh.li99@outlook.com>
+# Contributor: Michael Yang <ohmyarchlinux@pm.me>
+# Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=vcpkg-git
-pkgver=r9094.300e21d59
+pkgver=2020.11.1.r351.ge34cdd5c8
 pkgrel=1
-pkgdesc='VC++ Pcakaging Tool'
-arch=('x86_64')
-url='https://github.com/Microsoft/vcpkg'
-license=('MIT')
+pkgdesc='C++ library manager for Windows, Linux, and MacOS'
+depends=()
 makedepends=('git' 'cmake>=3.3.0' 'ninja')
-conflicts=('vcpkg')
+optdepends=()
+arch=('x86_64')
+url='https://github.com/microsoft/vcpkg'
+license=('MIT')
 provides=('vcpkg')
-source=('git+https://github.com/Microsoft/vcpkg.git'
+conflicts=('vcpkg')
+source=("$pkgname"::'git+https://github.com/microsoft/vcpkg'
         'vcpkg.sh'
         'vcpkg-git.install')
-sha512sums=('SKIP'
-            '9028f5f3f6915894f69924e49cddaee3cb670d39c03b56599d858cf278ca0f2e977363a2682d9a12a837d18508050f7009c1e61c4e572045d24a2bf93658fbc6'
-            '9b113b12b9005193fa59b60dd33f5a589897b166bc0611ff18a6437727b922decaf0a26cec40aaa4a9a52bfb76a7dd7b3ecd7401f9dfe89a1684aaf7649427f6')
+sha256sums=('SKIP'
+            '8571fc5d24e62f448647a7d41ae2f3b64bce4ef0f51596f94b3ea92c3d2d2899'
+            '928a5845d87a61bc0126d6ee860c832bb739e0d5f8a0d45641bfb76851076d1b')
 install=${pkgname}.install
 
 pkgver() {
-  cd vcpkg
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir build
-  touch vcpkg/.vcpkg-root
+    cd "$srcdir/$pkgname"
+    if git describe --long --tags >/dev/null 2>&1; then
+        git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    else
+        printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git describe --always)"
+    fi
 }
 
 build() {
-  cd build
-  ../vcpkg/bootstrap-vcpkg.sh -useSystemBinaries
-  cp ../vcpkg/vcpkg .
+    "$srcdir/$pkgname/bootstrap-vcpkg.sh" -useSystemBinaries -disableMetrics
 }
 
 package() {
-  cd "${srcdir}"
-  install -dm755 "${pkgdir}/usr/bin"
-  install -Dm755 "vcpkg.sh" "${pkgdir}/usr/bin/vcpkg"
+    # executable entry point
+    install -Dm755 "$srcdir/vcpkg.sh" "$pkgdir/usr/bin/vcpkg"
 
-  install -dm755 "${pkgdir}/usr/share/licenses"
-  install -Dm644 "vcpkg/LICENSE.txt" "${pkgdir}/usr/share/licenses/vcpkg-git/LICENSE.txt"
+    # vcpkg root
+    install -Dm755 "$srcdir/$pkgname/vcpkg" "$pkgdir/usr/share/vcpkg/vcpkg"
+    cp --preserve=mode -r \
+        "$srcdir/$pkgname"/{docs,ports,scripts,triplets,.vcpkg-root} \
+        "$pkgdir/usr/share/vcpkg/"
 
-  install -dm755 "${pkgdir}/usr/share/vcpkg"
-  install -dm755 "${pkgdir}/var/cache/vcpkg"
-  cp --preserve=mode -r vcpkg/{docs,ports,scripts,triplets,CHANGELOG.md,.vcpkg-root} "${pkgdir}/usr/share/vcpkg"
-  install -Dm755 "build/vcpkg" "${pkgdir}/usr/share/vcpkg/vcpkg"
+    # ??
+    install -dm755 "$pkgdir/var/cache/vcpkg"
 
+    # license
+    install -Dm644 "$srcdir/$pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# vim: set sw=4 ts=4 et:
