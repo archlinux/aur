@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=bbcli
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="inoffical Bitbucket.org command line tool"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/craftamap/bb"
 license=('MIT')
 makedepends=('go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f230a3911a70809a7bf625167416b9d25d5d52820ecbf8d48119994b2fad49aa')
+sha256sums=('28b733d6c646b7a1cc1c989e30c7f21037030a254296210e2eed9beae3dc31b9')
 
 prepare() {
     export GOPATH="$srcdir/gopath"
