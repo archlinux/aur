@@ -2,14 +2,20 @@
 
 pkgname=github-markdown-toc
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Easy TOC creation for GitHub README.md'
 arch=('any')
 url='https://github.com/ekalinin/github-markdown-toc'
 depends=('bash')
+checkdepends=('bash-bats')
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ekalinin/github-markdown-toc/archive/$pkgver.tar.gz")
 sha1sums=('ba1115206e62538259c41382864f7994abbc7fdf')
+
+check() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make test
+}
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
