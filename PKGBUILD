@@ -1,7 +1,7 @@
 # Contributor: Laurent Carlier <lordheavym@gmail.com>
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=libclc-git
-pkgver=0.2.0_r359832.77f8f813a9a
+pkgver=12.0.0_r375621.6895581fd2c1
 pkgrel=1
 epoch=1
 groups=('mesagit')
@@ -12,14 +12,20 @@ license=('MIT')
 provides=('libclc')
 replaces=('libclc')
 conflicts=('libclc')
-makedepends=('clang-git' 'git' 'python' 'ninja' 'cmake')
+makedepends=('clang' 'llvm' 'spirv-llvm-translator' 'git' 'python' 'ninja' 'cmake')
 options=('staticlibs')
 source=('llvm-project-git::git+https://github.com/llvm/llvm-project.git')
-md5sums=(SKIP)
+md5sums=('SKIP')
 
 pkgver() {
-  cd llvm-project-git
-  echo "0.2.0_r$(git rev-list --count master)"."$(git rev-parse --short HEAD)"
+  cd llvm-project-git/llvm
+  local _pkgver=$(awk -F 'MAJOR |MINOR |PATCH |)' \
+          'BEGIN { ORS="." ; i=0 } \
+           /set\(LLVM_VERSION_/ { print $2 ; i++ ; if (i==2) ORS="" } \
+           END { print "\n" }' \
+           CMakeLists.txt)_r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo "${_pkgver}"
+
 }
 
 prepare() {
@@ -34,7 +40,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_DATADIR=/usr/lib \
-    -DLIBCLC_TARGETS_TO_BUILD="amdgcn--;r600--;nvptx--;nvptx64--;nvptx--nvidiacl;nvptx64--nvidiacl"
+    -DLIBCLC_TARGETS_TO_BUILD="all"
 
     ninja all
 }
