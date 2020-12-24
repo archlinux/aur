@@ -1,8 +1,8 @@
 pkgbase = hush3-bin
-	pkgdesc = HUSH (fork of KMD) full node that supports zaddrs
-	pkgver = 3.5.2
+	pkgdesc = HUSH (Privacy Cryptocurrency and Messenger) full node that supports z-addresses
+	pkgver = 3.6.0
 	pkgrel = 1
-	url = http://github.com/MyHush/hush3
+	url = http://git.hush.is/hush/hush3
 	arch = x86_64
 	license = GPL3
 	makedepends = wget
@@ -11,8 +11,12 @@ pkgbase = hush3-bin
 	depends = libsodium
 	depends = lib32-zlib
 	conflicts = hush3
-	source = hush3-bin-3.5.2.tar.xz::https://github.com/MyHush/hush3/releases/download/v3.5.2/hush-3.5.2-linux-amd64.tar.xz
-	sha256sums = eb12ace9223de5b4e3d52e7733c98eaca929e316d004aca3937d5ff9a31e43f1
+	source = hush3-3.6.0.tar.gz::https://git.hush.is/attachments/e163324a-52eb-4c4c-9c34-0a18c3748f0a
+	source = sapling-output.params::https://git.hush.is/attachments/e813da7d-ecec-4c78-b0fb-40d505689e2b
+	source = sapling-spend.params::https://git.hush.is/attachments/dc290d37-64d3-41e8-ae83-df364cb0ba3c
+	sha256sums = 9c2f19c50fdc44af2c89494b06cda2c9e176d7ae2f038ca0fb7c0cd083dd71b9
+	sha256sums = 2f0ebbcbb9bb0bcffe95a397e7eba89c29eb4dde6191c339db88570e3f3fb0e4
+	sha256sums = 8e48ffd23abb3a5fd9c5589204f32d9c31285a04b78096ba40a79b75677efc13
 
 pkgname = hush3-bin
 
