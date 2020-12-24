@@ -12,7 +12,7 @@ license=(custom)
 provides=('wonderpen')
 conflicts=('wonderpen')
 options=(!strip)
-source=("https://file.atominn.com/WonderPen/${pkgver%.*}/WonderPen_linux_${pkgver}(${_pkgver}).AppImage"
+source=("https://file.atom.oldj.net/WonderPen/${pkgver%.*}/WonderPen_linux_${pkgver}(${_pkgver}).AppImage"
         'wonderpen.sh')
 sha256sums=('961253ee375c697084cd9055176feebc4f375a82b401ac704a0bafca5e6de400'
             'e9d4b90a89dad8de88c49346fff51e3813a7f1503ab3d058b87cf647d0946a10')
