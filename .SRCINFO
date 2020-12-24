@@ -1,6 +1,6 @@
 pkgbase = cppinsights-git
 	pkgdesc = C++ Insights - See your source code with the eyes of a compiler
-	pkgver = r4.524cc07
+	pkgver = r675.a4b25db
 	pkgrel = 1
 	url = https://cppinsights.io
 	arch = x86_64
