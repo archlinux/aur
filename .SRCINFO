@@ -9,6 +9,7 @@ pkgbase = deepin-launcher-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = gtest
 	makedepends = qt5-tools
 	makedepends = qt5-base
 	makedepends = qt5-x11extras
