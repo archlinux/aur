@@ -1,0 +1,20 @@
+pkgbase = easy-novnc-git
+	pkgdesc = An easy way to run a noVNC instance and proxy with a single binary.
+	pkgver = v1.1.0.r8.g6e198aa
+	pkgrel = 1
+	url = https://github.com/pgaskin/easy-novnc/blob/master/LICENSE.md
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = go
+	source = git+https://github.com/pgaskin/easy-novnc
+	source = easy-novnc.config
+	source = easy-novnc.sysusers
+	source = easy-novnc.service
+	md5sums = SKIP
+	md5sums = 92fccad62f96b94e90849e03c1bc4920
+	md5sums = 067b5dc14de5fd7bd712618a70f17d5e
+	md5sums = bf2b8cfd73dfc93498dbbe056d285178
+
+pkgname = easy-novnc-git
+
