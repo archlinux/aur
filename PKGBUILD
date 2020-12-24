@@ -96,7 +96,7 @@ package_lemon-minimal-git() {
   install -Dm644 lempar.c ${pkgdir}/usr/share/lemon/lempar.c
   
   mkdir -p "${pkgdir}"/usr/share/doc/${pkgname}
-  cp ../sqlite-doc-${_docver}/lemon.html  "${pkgdir}"/usr/share/doc/${pkgname}/
+#  cp ../sqlite-doc-${_docver}/lemon.html  "${pkgdir}"/usr/share/doc/${pkgname}/
   install -m755 -d "${pkgdir}"/usr/share/licenses
   ln -sf /usr/share/licenses/${pkgbase} "${pkgdir}/usr/share/licenses/${pkgname}"
 
