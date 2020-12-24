@@ -1,0 +1,18 @@
+pkgbase = rofi-translate-git
+	pkgdesc = Simple rofi script for translation based on translate shell
+	pkgver = r28.84356fd
+	pkgrel = 1
+	url = https://github.com/garyparrot/rofi-translate
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = translate-shell
+	depends = rofi
+	depends = mplayer
+	source = git+https://github.com/garyparrot/rofi-translate
+	source = default-language.patch
+	md5sums = SKIP
+	md5sums = 1bef53ea756773942ed2788a425b2a8c
+
+pkgname = rofi-translate-git
+

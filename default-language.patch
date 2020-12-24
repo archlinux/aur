@@ -1,0 +1,13 @@
+diff --git a/rofi_trans b/rofi_trans
+index ee9de62..8f012ae 100755
+--- a/rofi_trans
++++ b/rofi_trans
+@@ -14,7 +14,7 @@ function Configs {
+ 
+     export transHistory="$HOME/.rofi_trans"
+     export transAudioCacheDir="$HOME/.rofi_trans_audio"
+-    export transTarget="zh-TW"
++    export transTarget="en-US"
+     export save_audio="save_audio"
+     export transArgs="-b -speak"
+     export verbose="1"
