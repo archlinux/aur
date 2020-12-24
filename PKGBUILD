@@ -1,9 +1,8 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 _name=openmvs
-_pkgver=0.9
-_fragment="#branch=develop"
+_fragment="#branch=master"
 pkgname=${_name}-git
-pkgver=0.9.r78.g8603471
+pkgver=1.1.1.r0.g1de8e4b
 pkgrel=1
 pkgdesc="open Multi-View Stereo reconstruction library with simple and automatic set of tools"
 arch=('i686' 'x86_64')
@@ -25,8 +24,7 @@ md5sums=('SKIP'
 pkgver() {
   cd "$pkgname"
   # cutting off 'v' prefix that presents in the git tag
-  #git describe --long --tag | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-  printf %s.r%s.g%s $_pkgver $(git rev-list cecc7f2..HEAD --count) $(git rev-parse --short HEAD)
+  git describe --long --tag | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 
 }
 
