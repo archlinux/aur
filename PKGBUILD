@@ -10,9 +10,9 @@ url="http://clonekeen.sourceforge.net/"
 license=('GPL3')
 depends=('gcc-libs' 'sdl')
 install=$pkgname.install
-source=(http://$pkgname.sourceforge.net/files/$pkgname-src-${pkgver/.}.tar.gz
-        http://$pkgname.sourceforge.net/files/1keen131.zip
-        $pkgname.desktop $pkgname.png $pkgname.sh)
+source=("http://$pkgname.sourceforge.net/files/$pkgname-src-${pkgver/.}.tar.gz"
+        "http://$pkgname.sourceforge.net/files/1keen131.zip"
+        "$pkgname.desktop" "$pkgname.png" "$pkgname.sh")
 noextract=(1keen131.zip)
 md5sums=('0179c34727d044f07a1c00df340134bd'
          '0561dd3e32ea4a0f965bd2288a3e64b3'
@@ -20,10 +20,18 @@ md5sums=('0179c34727d044f07a1c00df340134bd'
          '77f4c659fc773abb297e4f5cf1bbbe70'
          'dbbb923232b390def47eb8f4eca966a8')
 
-build() {
+prepare() {
   cd "$srcdir/keen/src"
   sed -i "s#gcc -O2#gcc $CFLAGS#g" Makefile
   sed -i "s#-lSDL -lSDLmain -lstdc++#-lm -lSDL -lSDLmain -lstdc++#g" Makefile 
+  # risky gcc10 tweaks
+  sed -i 's#^char tempbuf#extern &#' misc_ui.c editor/menu_editor.c
+  sed -i 's#^char tempbuf#extern &#' menu{manager,_options,_custommap}.c
+  sed -i 's#^uchar tempbuf#extern &#' menu{_keysetup,_savegames}.c
+}
+
+build() {
+  cd "$srcdir/keen/src"
   make
 }
 
