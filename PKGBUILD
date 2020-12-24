@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=czkawka-gui-bin
-pkgver=1.5.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Multi functional app to find duplicates, empty folders, similar images etc (GUI)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('gendesk')
 source=("${pkgname}-${pkgver}::https://github.com/qarmin/czkawka/releases/download/${pkgver}/linux_czkawka_gui"
         "LICENSE::https://github.com/qarmin/czkawka/raw/master/LICENSE"
         "czkawka-gui.png")
-sha256sums=('2869916b7d1ea1234813d4491a3a52fb9badffd1b583893f80d2a6b790ba4dfd'
+sha256sums=('b4259dd0a185d76b54e071218f1b3e64c2e426aec79fb3ea478499daf9bee1da'
             '4745d8b5b4ca465f4894553b40c8d1a23ee65a987f2846a4ef90662d7f3f2002'
             '1614565bc6f143b4bb4fc80c71cb1fe0b2ba2719037046719d5a3a89c3f5905e')
 
