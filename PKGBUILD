@@ -1,7 +1,7 @@
 # Contributer: abcfy2 <abcfy2@163.com>
 pkgname='deepin-wine5-stable'
 pkgver=5.0.0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Deepin Wine5 stable"
 arch=('i686' 'x86_64')
 url="http://www.deepin.org"

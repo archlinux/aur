@@ -1,7 +1,7 @@
 pkgbase = deepin-wine5-stable
 	pkgdesc = Deepin Wine5 stable
 	pkgver = 5.0.0.17
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.deepin.org
 	arch = i686
 	arch = x86_64
