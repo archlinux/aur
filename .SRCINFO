@@ -1,7 +1,7 @@
 pkgbase = vcpkg-git
 	pkgdesc = C++ library manager for Windows, Linux, and MacOS
 	pkgver = 2020.11.1.r351.ge34cdd5c8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/vcpkg
 	install = vcpkg-git.install
 	arch = x86_64

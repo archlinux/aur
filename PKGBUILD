@@ -4,7 +4,7 @@
 
 pkgname=vcpkg-git
 pkgver=2020.11.1.r351.ge34cdd5c8
-pkgrel=1
+pkgrel=2
 pkgdesc='C++ library manager for Windows, Linux, and MacOS'
 depends=()
 makedepends=('git' 'cmake>=3.3.0' 'ninja')
@@ -45,8 +45,8 @@ package() {
         "$srcdir/$pkgname"/{docs,ports,scripts,triplets,.vcpkg-root} \
         "$pkgdir/usr/share/vcpkg/"
 
-    # ??
-    install -dm755 "$pkgdir/var/cache/vcpkg"
+    # default downloads root directory
+    install -dm1777 "$pkgdir/var/cache/vcpkg"
 
     # license
     install -Dm644 "$srcdir/$pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
