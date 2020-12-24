@@ -1,26 +1,26 @@
 # Maintainer: Jah Way <jahway603 at protonmail dot com>
 
 pkgname=hush3
-pkgver=3.5.2
+pkgver=3.6.0
 pkgrel=1
-pkgdesc='HUSH (fork of KMD) full node that supports zaddrs'
-url='http://github.com/MyHush/hush3'
+pkgdesc='HUSH (Privacy Cryptocurrency and Messenger) full node that supports z-addresses'
+url='http://git.hush.is/hush/hush3'
 arch=('x86_64')
 license=('GPL3')
 depends=('libsodium' 'lib32-zlib')
 makedepends=('unzip' 'wget' 'git' 'python' 'rust' 'curl')
 conflicts=('hush3-bin')
-source=("https://github.com/MyHush/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('0af4352040a14de95e4ea8a3273284533756ab525c394cf97b1f9c44e3eb8069')
+source=("$url/archive/v$pkgver.tar.gz")
+sha256sums=('a1670b19745f3fa6eb1cc2d2ff2e7531ffe8f73858713af0cc20e30e1290c542')
 
 build() {
   tar xzvf v$pkgver.tar.gz
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   ./zcutil/build.sh -j$(nproc)
 }
 
 package() {
-  cd "$pkgname-$pkgver/src"
+  cd "$pkgname/src"
   
   # create the necessary directory structure
   install -d "${pkgdir}/opt/${pkgname}"
