@@ -7,7 +7,7 @@ pkgdesc="A library for configuring and customizing font access, optimized for In
 url='http://www.fontconfig.org/release/'
 license=('custom' 'MIT')
 pkgver=2.13.91+48+gfcb0420
-pkgrel=2
+pkgrel=3
 epoch=2
 arch=(i686 x86_64)
 groups=('infinality-remix')
@@ -107,7 +107,8 @@ build() {
         --localstatedir=/var \
         --disable-static \
         --with-default-fonts=/usr/share/fonts \
-        --with-add-fonts=/usr/share/fonts
+        --with-add-fonts=/usr/share/fonts \
+        --disable-docs
     make
 }
 

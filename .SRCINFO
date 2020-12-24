@@ -1,7 +1,7 @@
 pkgbase = fontconfig-infinality-remix
 	pkgdesc = A library for configuring and customizing font access, optimized for Infinality Remix.
 	pkgver = 2.13.91+48+gfcb0420
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 2
 	url = http://www.fontconfig.org/release/
 	install = fontconfig-infinality-remix.install
