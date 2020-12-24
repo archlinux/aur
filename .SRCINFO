@@ -1,15 +1,15 @@
 pkgbase = python-rebulk
 	pkgdesc = Define simple search patterns in bulk to perform advanced matching on any string.
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Toilal/rebulk
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/r/rebulk/rebulk-3.0.0.tar.gz
-	sha512sums = f1b2dffad68d7cc3e8a6949c3605a6c0fe503cf59434cdff99952dc836839ecb3d411d244cf0e54069672fec9a6c4826efff3b7777f7e0557c667f947ec2bd74
+	source = rebulk-3.0.0.tar.gz::https://github.com/Toilal/rebulk/archive/v3.0.0.tar.gz
+	sha512sums = eb474b8b8509f291938bc3c96ef591b8233a41b9eb28f7957f3d20e098140ac6d80a1337c6ff1c89eeea4c34f94eb37af811d2200a8f2a574fc93b8fa1ea3c5d
 
 pkgname = python-rebulk
 	depends = python
