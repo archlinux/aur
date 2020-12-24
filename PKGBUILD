@@ -2,7 +2,7 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=intelxed-git
-pkgver=12.0.1.r0.g5976632
+pkgver=12.0.1.r1.gf7191e2
 pkgrel=1
 pkgdesc="x86 encoder decoder"
 arch=('x86_64')
@@ -12,12 +12,16 @@ depends=()
 makedepends=('git' 'mbuild')
 provides=('intelxed')
 conflicts=('intelxed')
-source=("$pkgname"::'git+https://github.com/intelxed/xed.git')
+source=("$pkgname"::'git+https://github.com/intelxed/xed')
 md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    if git describe --long --tags >/dev/null 2>&1; then
+        git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    else
+        printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git describe --always)"
+    fi
 }
 
 build() {
