@@ -51,10 +51,10 @@ index a36a76b37..7321ecf9b 100644
  }
  
  void HistoryWidget::recountChatWidth() {
-diff --git a/Telegram/SourceFiles/history/view/history_view_compose_controls.cpp b/Telegram/SourceFiles/history/view/history_view_compose_controls.cpp
+diff --git a/Telegram/SourceFiles/history/view/controls/history_view_compose_controls.cpp b/Telegram/SourceFiles/history/view/controls/history_view_compose_controls.cpp
 index 7edb1a78e..f93b4deb6 100644
---- a/Telegram/SourceFiles/history/view/history_view_compose_controls.cpp
-+++ b/Telegram/SourceFiles/history/view/history_view_compose_controls.cpp
+--- a/Telegram/SourceFiles/history/view/controls/history_view_compose_controls.cpp
++++ b/Telegram/SourceFiles/history/view/controls/history_view_compose_controls.cpp
 @@ -784,6 +784,7 @@ void ComposeControls::escape() {
  bool ComposeControls::pushTabbedSelectorToThirdSection(
  		not_null<PeerData*> peer,
