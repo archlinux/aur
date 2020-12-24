@@ -11,7 +11,7 @@ _srctarname=DPO_GPL_RT5592STA_LinuxSTA_v2.6.0.0_20120326.tar.bz2
 _pkgbase=rt5592sta
 pkgname=rt5592sta_linux_patched-dkms
 pkgver=2.6.0.0
-pkgrel=4
+pkgrel=6
 pkgdesc="DKMS module which contains linux device driver for the Ralink RT2860 ABGN WLAN Card. It's based on halou89's rt5592sta_linux_patched package."
 arch=('i686' 'x86_64')
 url="http://asus.com"
@@ -19,40 +19,16 @@ license=('GPL')
 depends=('dkms' 'make' 'linux-headers' )
 depends_x86_64=('lib32-glibc')
 depends_i686=('glibc')
-makedepends=()
-conflicts=("rt5592sta_linux", "rt5592sta_linux_patched", "rt5592sta_linux_patched-dkms")
+makedepends=('git')
+conflicts=("rt5592sta_linux" "rt5592sta_linux_patched" "rt5592sta_linux_patched-dkms")
 optdepends=()
 options=()
 changelog=
-source=("http://dlcdnet.asus.com/pub/ASUS/wireless/PCE-N53/${_zippkgname}.zip"
-	'arch_build_preparation.patch'
-	'rt5592sta_fix_64bit_3.8.patch'
-	'extra.patch'
-	'4.9_preperation.patch'
+source=("asus-pce-n53-linux::git+https://github.com/lesf0/asus-pce-n53-linux.git"
 	'dkms.conf'
-  'pci_word_fix_4.7.patch'
 )
-sha1sums=('955b29d74fd66576b86dd1feee107f73b4605e3e'
-          'd938f53945eb5e6c88eb58a942c451c61122cec1'
-          '7a11b444f9861463bdfbbafe95c7443d9e1767aa'
-          '3574c691fb771459471fcd2297b10003ccbea875'
-          '20420077e9e008c5b88305e420dd8969ffd41807'
-          '44a0dad0043e3482dec70d490325e651e333c72f'
-          '569f650a745944213578cbdc88fd12ffb57641c6')
-
-build() {
-   cd "${srcdir}/Linux"
-   tar -xjf ${_srctarname}
-   cd $(basename -s .tar.bz2 $_srctarname)
-   msg2 "Applying patches..."
-   # patch the moronic makefile
-   patch -p1 -i "${srcdir}/arch_build_preparation.patch"
-   # patching for 3.8 kernel compatibility
-   patch -p1 -i "${srcdir}/rt5592sta_fix_64bit_3.8.patch"
-   patch -p1 -i "${srcdir}/extra.patch"
-   patch -p1 -i "${srcdir}/4.9_preperation.patch"
-   patch -p1 -i "${srcdir}/pci_word_fix_4.7.patch"
-}
+sha1sums=('SKIP'
+          '44a0dad0043e3482dec70d490325e651e333c72f')
 
 package() {
   msg2 "Installing DKMS module..."
@@ -72,12 +48,12 @@ package() {
       -i "$installDir/dkms.conf"
   msg2 "Copying sources..."
   # Copy sources
-  cd "${srcdir}/Linux/DPO_GPL_RT5592STA_LinuxSTA_v2.6.0.0_20120326/"
-  for d in `find . -type d`
+  cd "${srcdir}/asus-pce-n53-linux/"
+  for d in `find . -type d | grep -v '.git'`
   do
-    install -dm755  "$installDir/$d"
+    install -dm755 "$installDir/$d"
   done
-  for f in `find . -type f`
+  for f in `find . -type f | grep -v '.git' | grep -v Quick`
   do
 	install -m644 "$(pwd)/$f" "$installDir/$f"
   done
