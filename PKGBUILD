@@ -1,7 +1,7 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=mininet-git
-pkgver=2.3.0d5.r4.gc5f23b9
+pkgver=2.3.0d6.r29.gafdf9fd
 pkgrel=1
 pkgdesc='Emulator for rapid prototyping of Software Defined Networks'
 depends=('python' 'iproute2' 'net-tools' 'iputils' 'inetutils' 'iperf' 'ethtool'
@@ -18,14 +18,18 @@ provides=('mininet')
 conflicts=('mininet')
 replaces=('mininet')
 install=mininet.install
-source=("$pkgname"::'git+https://github.com/mininet/mininet.git'
-        'git+https://github.com/mininet/openflow.git')  # for the UserSwitch
+source=("$pkgname"::'git+https://github.com/mininet/mininet'
+        'git+https://github.com/mininet/openflow')  # for the UserSwitch
 sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    if git describe --long --tags >/dev/null 2>&1; then
+        git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    else
+        printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git describe --always)"
+    fi
 }
 
 prepare() {

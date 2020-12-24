@@ -1,6 +1,6 @@
 pkgbase = mininet-git
 	pkgdesc = Emulator for rapid prototyping of Software Defined Networks
-	pkgver = 2.3.0d5.r4.gc5f23b9
+	pkgver = 2.3.0d6.r29.gafdf9fd
 	pkgrel = 1
 	url = https://github.com/mininet/mininet
 	install = mininet.install
@@ -30,8 +30,8 @@ pkgbase = mininet-git
 	provides = mininet
 	conflicts = mininet
 	replaces = mininet
-	source = mininet-git::git+https://github.com/mininet/mininet.git
-	source = git+https://github.com/mininet/openflow.git
+	source = mininet-git::git+https://github.com/mininet/mininet
+	source = git+https://github.com/mininet/openflow
 	sha256sums = SKIP
 	sha256sums = SKIP
 
