@@ -9,6 +9,8 @@ source=(https://github.com/teejee2008/timeshift/releases/download/v$pkgver/times
 pkgdesc='A backup and restore utility'
 depends=('libgee' 'vte3' 'cronie' 'cairo' 'rsync' 'btrfs-progs' 'json-glib' 'gdk-pixbuf2' 'gtk3')
 md5sums=('c71ca96e3be09f471c4e8c93cbbbc885')
+conflicts=(timeshift)
+provides=(timeshift)
 
 package() {
        ar -xv timeshift_${pkgver}_amd64.deb
