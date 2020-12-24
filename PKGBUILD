@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
     cd "$pkgname"
-    cargo build --release --locked --all-features --target-dir=target
+    cargo build --release --all-features --target-dir=target
     strip ${srcdir}/mn32-rs-git/target/release/${_name}
 }
 
