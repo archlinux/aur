@@ -1,0 +1,15 @@
+pkgbase = fortune-mod-de-git
+	pkgdesc = Fortune Cookies in German, from the Debian project
+	pkgver = 0.34.r381.g42e9b8b
+	pkgrel = 1
+	url = https://salsa.debian.org/debian/fortunes-de
+	arch = any
+	groups = fortune-mods
+	license = GPL2
+	makedepends = recode
+	depends = fortune-mod
+	source = fortune-mod-de::git+https://salsa.debian.org/debian/fortunes-de.git
+	md5sums = SKIP
+
+pkgname = fortune-mod-de-git
+
