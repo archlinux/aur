@@ -1,0 +1,38 @@
+pkgbase = sqlite-minimal-git
+	pkgdesc = A C library that implements an SQL database engine
+	pkgver = 3.34.0
+	pkgrel = 1
+	url = https://www.sqlite.org/
+	arch = x86_64
+	license = custom:Public Domain
+	makedepends = tcl
+	makedepends = readline
+	makedepends = zlib
+	options = !emptydirs
+	source = git+https://github.com/sqlite/sqlite
+	source = license.txt
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = sqlite-minimal-git
+	pkgdesc = A C library that implements an SQL database engine
+	depends = readline
+	depends = zlib
+	provides = sqlite3=3.34.0
+	provides = sqlite
+	conflicts = sqlite
+	replaces = sqlite3
+
+pkgname = lemon-minimal-git
+	pkgdesc = A parser generator
+	depends = glibc
+	provides = lemon
+	conflicts = lemon
+
+pkgname = sqlite-doc-minimal-git
+	pkgdesc = most of the static HTML files that comprise this website, including all of the SQL Syntax and the C/C++ interface specs and other miscellaneous documentation
+	provides = sqlite3-doc=3.34.0
+	provides = sqlite-doc
+	conflicts = sqlite-doc
+	replaces = sqlite3-doc
+
