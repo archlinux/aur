@@ -9,6 +9,7 @@ pkgdesc='A free library for arbitrary precision arithmetic'
 arch=(x86_64)
 url='https://gmplib.org/'
 depends=(gcc-libs sh)
+makedepends=(mercurial)
 provides=(gmp)
 conflicts=(gmp)
 license=(LGPL3 GPL)
@@ -17,8 +18,14 @@ md5sums=('SKIP')
 #validpgpkeys=('343C2FF0FBEE5EC2EDBEF399F3599FF828C67298')   # Niels Möller
 
 pkgver() {
-   cd gmp
-   git describe --tags | sed 's/-/+/g'
+
+#thanks Kozeid
+
+cd "SDL"
+  printf "%s.r%s.%s" \
+  "$(hg log -r . -T "{latesttag}" | sed 's/^release-//')" \
+  "$(hg identify -n)" \
+  "$(hg identify -i)"
 }
 
 build() {

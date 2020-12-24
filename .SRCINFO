@@ -6,6 +6,7 @@ pkgbase = gmp-git
 	arch = x86_64
 	license = LGPL3
 	license = GPL
+	makedepends = mercurial
 	depends = gcc-libs
 	depends = sh
 	provides = gmp
