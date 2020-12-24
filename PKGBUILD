@@ -6,9 +6,9 @@ _gitname=git-ssh
 # shellcheck disable=SC2034
 pkgname=git-ssh-git
 # shellcheck disable=SC2034
-pkgdesc="A wrapper around git to work with multiple SSH keys"
+pkgdesc="An SSH key manager for git"
 # shellcheck disable=SC2034
-pkgver=r255.c72efd3
+pkgver=r276.2b204e9
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -16,7 +16,7 @@ arch=('any')
 # shellcheck disable=SC2034
 makedepends=('git')
 # shellcheck disable=SC2034
-depends=('git' 'python' 'python-setuptools')
+depends=('git')
 # shellcheck disable=SC2034
 optdepends=()
 # shellcheck disable=SC2034
@@ -26,7 +26,6 @@ conflicts=('git-ssh')
 # shellcheck disable=SC2034
 license=('GPLv2')
 # shellcheck disable=SC2034
-install="${_gitname}.install"
 url="https://github.com/pyamsoft/git-ssh.git"
 
 ##
@@ -43,8 +42,8 @@ source=("${_gitname}::git+${url}#branch=main")
 pkgver() {
   # shellcheck disable=SC2154
   cd "$srcdir/$_gitname" || {
-        msg "Error couldn't cd into $srcdir/$_gitname"
-        return 1
+    msg "Error couldn't cd into $srcdir/$_gitname"
+    return 1
   }
 
   # From
@@ -55,10 +54,18 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_gitname" || {
-        msg "Error couldn't cd into $srcdir/$_gitname"
-        return 1
+    msg "Error couldn't cd into $srcdir/$_gitname"
+    return 1
   }
 
-  make DESTDIR="${pkgdir}" PREFIX="/usr" install
-}
+  chmod 755 "${_gitname}"
+  mkdir -p "${pkgdir}/usr/bin"
+  mkdir -p "${pkgdir}/usr/share/doc/${_gitname}"
+  mkdir -p "${pkgdir}/usr/share/licenses/${_gitname}"
+  mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
 
+  cp "${_gitname}" "${pkgdir}/usr/bin/${_gitname}"
+  cp "LICENSE" "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
+  cp "README.md" "${pkgdir}/usr/share/doc/${_gitname}/README.md"
+  cp "res/shell/bash/bash_completion" "${pkgdir}/usr/share/bash-completion/completions/${_gitname}"
+}
