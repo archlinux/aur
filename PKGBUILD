@@ -2,8 +2,8 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=remill-git
-pkgver=v4.0.9.r0.gbf69d9ca
-pkgrel=2
+pkgver=4.0.11.r0.g37741957
+pkgrel=1
 pkgdesc="Library for lifting of x86, amd64, and aarch64 machine code to LLVM bitcode"
 arch=('x86_64')
 url="https://github.com/lifting-bits/remill"
@@ -14,22 +14,16 @@ makedepends=('git')
 checkdepends=()
 provides=('remill')
 conflicts=('remill')
-source=("$pkgname::git+https://github.com/lifting-bits/remill.git"
-        '00-fix-CONVERT-instructions.patch'
-        '01-show-instruction.patch')
-sha256sums=('SKIP'
-            'b2ab3e9c6b047eddac5cffb189b260fa0c1f6e21c88b343fcaef79110544f9e6'
-            '16009715ef4e2546349238120ab9ad0c04ef1ed77cc360e64f599aeb4a0ad987')
-
-prepare() {
-    cd "$srcdir/$pkgname"
-    patch -Np1 -i "$srcdir/00-fix-CONVERT-instructions.patch"
-    patch -Np1 -i "$srcdir/01-show-instruction.patch"
-}
+source=("$pkgname::git+https://github.com/lifting-bits/remill")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    if git describe --long --tags >/dev/null 2>&1; then
+        git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    else
+        printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git describe --always)"
+    fi
 }
 
 build() {
