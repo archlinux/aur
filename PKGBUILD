@@ -39,7 +39,7 @@ optdepends=( )
 #  lib32-libxinerama lib32-libxslt lib32-mpg123 lib32-ncurses
 #  lib32-ocl-icd lib32-openal lib32-sdl2 lib32-v4l-utils lib32-vkd3d
 #  lib32-vulkan-icd-loader)
-provides=('wine-wayland')
+provides=('wine')
 conflicts=('wine')
 source=("https://github.com/varmd/wine-wayland/releases/download/v$pkgver.$pkgrel/$pkgname-$_pkgver-x86_64.pkg.tar.zst"
 "https://github.com/varmd/wine-wayland/releases/download/v$pkgver.$pkgrel/lib32-$pkgname-$_pkgver-x86_64.pkg.tar.zst")
@@ -47,6 +47,6 @@ md5sums=('8f79f98f8d4390bc5e93664cc38e57e1'
          '37c3b2b5010ce6e856d262857ebdb4d4')
 
 package() {
-     pacman -U wine-wayland*pkg*
-     pacman -U lib32-wine-wayland*pkg*
+     sudo pacman -U wine-wayland*pkg*
+     sudo pacman -U lib32-wine-wayland*pkg*
 }
