@@ -1,6 +1,6 @@
 pkgbase = feeluown-git
 	pkgdesc = FeelUOwn Music Player (Master branch)
-	pkgver = r1182.d38a19c
+	pkgver = r1237.061019d
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/cosven/FeelUOwn
@@ -25,7 +25,7 @@ pkgbase = feeluown-git
 	source = feeluown::git+https://github.com/feeluown/FeelUOwn.git
 	source = feeluown.desktop
 	sha256sums = SKIP
-	sha256sums = f093cccd74e29115782b30fcda28fb0c3b935091673b50882b332c934ed56065
+	sha256sums = SKIP
 
 pkgname = feeluown-git
 
