@@ -15,7 +15,7 @@ conflicts=('ttf-material-design-icons')
 source=("https://cdn.materialdesignicons.com/${pkgver}/fonts/materialdesignicons-webfont.ttf"
         'https://raw.githubusercontent.com/Templarian/MaterialDesign/master/LICENSE')
 noextract=('materialdesignicons-webfont.ttf' 'LICENSE')
-md5sums=('8ed8f0719def123d77bf6ea8919b8d8a'
+md5sums=('3e722fd57a6db80ee119f0e2c230ccff'
          'fdfe43d7d0cb0cd53fc1f61411899167')
 
 build() {
