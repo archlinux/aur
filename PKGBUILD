@@ -1,4 +1,4 @@
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=libgdata
@@ -10,7 +10,7 @@ arch=(x86_64)
 license=(GPL)
 depends=(libsoup gcr gnome-online-accounts)
 makedepends=(gobject-introspection vala uhttpmock git gtk-doc meson)
-_commit=2bc0941f428cf7fa54e4ba996482dba3843e08d3
+_commit=2bc0941f428cf7fa54e4ba996482dba3843e08d3  # tags/0.17.13^0
 source=("git+https://gitlab.gnome.org/GNOME/libgdata.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -24,8 +24,8 @@ prepare() {
 }
 
 build() {
-  arch-meson $pkgname build -D installed_tests=false -D man=true -D gtk_doc=true
-  ninja -C build
+  arch-meson $pkgname build -D man=true -D gtk_doc=true
+  meson compile -C build
 }
 
 check() {
