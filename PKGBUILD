@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://cppinsights.io"
 license=('MIT')
 groups=()
-depends=(llvm-libs clang)
+depends=(llvm-libs clang llvm)
 makedepends=('git' 'sed' 'ninja')
 provides=("cppinsights")
 conflicts=("cppinsights")
@@ -33,7 +33,7 @@ build() {
     cd build
     cmake -G"Ninja" ..
     sed -i "s/-isystem/-I/g" build.ninja
-    sed -i "s|LINK_LIBRARIES.*|LINK_LIBRARIES=-L/usr/lib -lclang-cpp -lLLVM-10|" build.ninja
+    sed -i "s|LINK_LIBRARIES.*|LINK_LIBRARIES=-L/usr/lib -lclang-cpp -lLLVM|" build.ninja
     ninja
 }
 
