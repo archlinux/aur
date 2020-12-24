@@ -1,0 +1,19 @@
+pkgbase = lib32-gmp-git
+	pkgdesc = A free library for arbitrary precision arithmetic (32-bit)
+	pkgver = 6.2.1
+	pkgrel = 1
+	url = https://gmplib.org/
+	arch = x86_64
+	license = LGPL3
+	license = GPL
+	makedepends = gcc-multilib
+	makedepends = mercurial
+	depends = lib32-gcc-libs
+	depends = gmp
+	provides = lib32-gmp
+	conflicts = lib32-gmp
+	source = hg+https://gmplib.org/repo/gmp/
+	sha512sums = SKIP
+
+pkgname = lib32-gmp-git
+
