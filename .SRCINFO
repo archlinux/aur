@@ -1,0 +1,13 @@
+pkgbase = nuklear-git
+	pkgdesc = A header-only, immediate-mode GUI toolkit written in ANSI C
+	pkgver = r1855.daecaaa
+	pkgrel = 1
+	url = https://github.com/Immediate-Mode-UI/Nuklear
+	arch = any
+	license = MIT
+	makedepends = git
+	source = nuklear-git::git+https://github.com/Immediate-Mode-UI/Nuklear.git
+	md5sums = SKIP
+
+pkgname = nuklear-git
+
