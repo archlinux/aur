@@ -3,7 +3,7 @@
 _name=aiohttp-cors
 pkgname=python-aiohttp-cors
 pkgver=0.7.0
-pkgrel=4
+pkgrel=5
 pkgdesc='CORS support for aiohttp'
 depends=('python-aiohttp')
 makedepends=('python-setuptools')
@@ -20,5 +20,6 @@ build() {
 
 package() {
   cd $_name-$pkgver
+  export PYTHONHASHSEED=0
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
