@@ -21,7 +21,7 @@ pkgver() {
 
 #thanks Kozeid
 
-cd "SDL"
+cd "gmp"
   printf "%s.r%s.%s" \
   "$(hg log -r . -T "{latesttag}" | sed 's/^release-//')" \
   "$(hg identify -n)" \
