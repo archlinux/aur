@@ -1,0 +1,24 @@
+pkgbase = lib32-libelf-minimal-git
+	pkgdesc = Libraries to handle ELF object files and DWARF debugging information (32-bit)
+	pkgver = 0.182
+	pkgrel = 1
+	url = https://sourceware.org/elfutils/
+	arch = x86_64
+	license = LGPL3
+	license = GPL
+	license = GPL3
+	makedepends = gcc-multilib
+	depends = lib32-bzip2
+	depends = lib32-zlib
+	depends = lib32-xz
+	depends = lib32-curl
+	depends = libelf
+	provides = lib32-elfutils
+	conflicts = lib32-elfutils
+	replaces = lib32-elfutils
+	options = staticlibs
+	source = git+https://sourceware.org/git/elfutils.git
+	sha256sums = SKIP
+
+pkgname = lib32-libelf-minimal-git
+
