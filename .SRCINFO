@@ -1,0 +1,23 @@
+pkgbase = openfoam-com
+	pkgdesc = The open source CFD toolbox (www.openfoam.com)
+	pkgver = v2012
+	pkgrel = 1
+	url = http://www.openfoam.com/
+	install = openfoam-com.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc
+	depends = cgal
+	depends = fftw
+	depends = boost
+	depends = openmpi
+	depends = paraview
+	depends = utf8cpp
+	depends = scotch
+	depends = parmetis
+	source = https://sourceforge.net/projects/openfoam/files/v2012/OpenFOAM-v2012.tgz
+	md5sums = 4b83938a8c939a84b7e985e4f5ab7543
+
+pkgname = openfoam-com
+
