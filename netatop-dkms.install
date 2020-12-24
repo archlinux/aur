@@ -5,7 +5,7 @@ warn_about_headers() {
 	echo "DKMS will now try to build the netatop module"
 	echo "against every kernel you have installed. For the build to succeed,"
 	echo "you must have header packages for every kernel. Header package"
-	echo "for the stock kernel is called 'linux-headers', other usually"
+	echo "for the stock kernel is called 'linux-headers', others usually"
 	echo "follow the same naming scheme."
 	echo "-------------------------------------------------------------------"
 }

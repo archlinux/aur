@@ -1,7 +1,7 @@
 pkgbase = netatop-dkms
 	pkgdesc = Atop network kernel module, enables network statistics in atop
 	pkgver = 3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.atoptool.nl/
 	install = netatop-dkms.install
 	arch = x86_64
@@ -10,13 +10,15 @@ pkgbase = netatop-dkms
 	license = GPL
 	depends = atop
 	depends = dkms
+	depends = bash
+	depends = zlib
 	conflicts = netatop
 	source = http://atoptool.nl/download/netatop-3.1.tar.gz
 	source = netatop-dkms.conf
 	source = netatop-dkms.install
 	sha256sums = 736f43572c31a90748f023f0a5a814bff58d44c0c3f060d776cfd6e6e8435c62
 	sha256sums = 56e9094e396fcdabadde4db8a9f21945484e4db93359dc22f2fb76436b1b2ea9
-	sha256sums = e821aa89ecd62799441f87a1012edf7151c0971950489bb10fec478fb97d515b
+	sha256sums = 0cda5de65ab96445951e39decfc18b50aad90245f661eb58438ac402cd2496b7
 
 pkgname = netatop-dkms
 

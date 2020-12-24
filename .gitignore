@@ -1,6 +1,6 @@
 src/
 pkg/
-*.xz
+*.pkg.tar.*
 *.gz
 
 # inspiration folders
