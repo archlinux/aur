@@ -1,0 +1,7 @@
+# pacman packages
+*.pkg.tar.zst
+
+# build artifacts
+nuklear-git/
+pkg/
+src/
