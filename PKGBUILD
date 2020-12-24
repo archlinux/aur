@@ -14,20 +14,23 @@ depends=('glibc')
 source=("$pkgname-$pkgver.tgz::https://github.com/resurrecting-open-source-projects/outguess/archive/$pkgver.tar.gz")
 md5sums=('cecbed3fe3a2a61855f692ce97c1daa2')
 
+prepare() {
+    cd "$pkgname-$pkgver/jpeg-6b-steg"
+    ln -s jconfig.cfg jconfig.h
+}
+
 build() {
-    cd "$pkgname"
+    cd "$pkgname-$pkgver"
     ./configure --prefix=/usr
     make
 # outguess E: Non-FHS man page (usr/man/man1/outguess.1.gz) found. Use /usr/share/man instead
 }
 
 package() {
-    cd "$pkgname"
-    #mkdir -p "$pkgdir/usr/"{bin,man/man1}
+    cd "$pkgname-$pkgver"
+    #install -d "$pkgdir/usr/"{bin,man/man1}
     #make prefix="$pkgdir/usr" install
 
-    mkdir -p "$pkgdir/usr/bin"
-    mkdir -p "$pkgdir/usr/share/man/man1"
-    install -c -m 755 outguess "$pkgdir/usr/bin"
-    install -c -m 644 outguess.1 "$pkgdir/usr/share/man/man1"
+    install -Dm755 outguess "$pkgdir/usr/bin/outguess"
+    install -Dm644 outguess.1 "$pkgdir/usr/share/man/man1/outguess.1"
 }
