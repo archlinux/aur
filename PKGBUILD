@@ -1,6 +1,6 @@
 # Maintainer: Nogweii <me@aether.earth>
 pkgname=alpm-html
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Generate a static site for browsing an Arch repo, styled like the main website."
 arch=(any)
@@ -9,8 +9,8 @@ license=('GPL3')
 depends=('pyalpm' 'python-jinja')
 makedepends=('asciidoc')
 source=("https://code.aether.earth/archlinux/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha512sums=('5e160abcb3af6c8252710e27848c5cc0b3f9a515e2b77497fede1e9c9ef9821ba49d66a238a0df4537a2bf1c21c0d62cc05187ff13c35ec29b5fc60eb85a0171')
-b2sums=('4ced9205e1af2e5e8ccff928ede787abeeaae0e946c0fa877c588d696cbcdd8c4ef5cceaec4fb8e48416d2c84709d24460d3632fe2eefa89f8d437e68a55b660')
+sha512sums=('a0d42547ee8d02a0038219345a13ce2ead8254f34640aa07d8ed9de118cac683c4f563f90aa08dd36e486407aec5d30108a5dd97800897ddc929cdd9e7155f6c')
+b2sums=('c53321fe8e94e41db390d49041713ad96351a355c3895cf87a8ac12e0e1db4710d2684c7bd7a3e4beb57a4e85f03ffdd2a756d0099df1081a20043bc18b6c015')
 
 build() {
     cd "${srcdir}/$pkgname-v$pkgver"
