@@ -1,7 +1,7 @@
 # Maintainer: Static_Rocket
 
 pkgname=rogauracore-git
-pkgver=1.2.r1.ga2ba0c4
+pkgver=1.4.r0.g9f4c0aa
 pkgrel=1
 pkgdesc="RGB keyboard control for Asus ROG laptops"
 arch=('x86_64')
@@ -27,6 +27,6 @@ build() {
 
 package() {
 	cd "$_gitdir"
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir/" udevrulesdir="/usr/lib/udev/rules.d" install
 }
 
