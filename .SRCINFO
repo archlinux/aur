@@ -1,0 +1,21 @@
+pkgbase = cn.feishu.deepin
+	pkgdesc = Fei Shu (飞书) Client on Deepin Wine
+	pkgver = 3.32.3
+	pkgrel = 2
+	url = https://www.feishu.cn/
+	install = feishu.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = deepin-wine5-stable>=5.0.0.17
+	depends = deepin-wine-helper>=5.1.15
+	depends = p7zip
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	optdepends = ttf-ms-fonts: Microsoft Core fonts
+	optdepends = noto-fonts-cjk: Google Noto CJK fonts
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/cn.feishu.deepin/cn.feishu.deepin_3.32.3deepin2_i386.deb
+	sha512sums = 8c68f24d8cc91e20cab625115d9cf2a62ef320fcfc76e642949fc4f3def2edb0298fca6590b9ec359b743cc374c122d87078add9c6aa3671311469f9e0950b19
+
+pkgname = cn.feishu.deepin
