@@ -1,8 +1,8 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-ray
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='A fast and simple framework for building and running distributed
 applications.'
 arch=('x86_64')
@@ -31,16 +31,11 @@ optdepends=(
            )
 makedepends=(python python-setuptools python-wheel python-pip cython bazel)
 _pkgname=ray
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ray-project/ray/archive/${_pkgname}-$pkgver.tar.gz"
-        "redis-py.patch::https://patch-diff.githubusercontent.com/raw/ray-project/ray/pull/11776.patch")
-sha256sums=('e08ff04dc8bca99527dbc821446f8660cfe6cbc8c35db61410958b9aa9acee56'
-            'SKIP')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ray-project/ray/archive/${_pkgname}-$pkgver.tar.gz")
+sha256sums=('c0fde1b6df563d8875e40aa12ad7559863753a3f7e11c976fea6d67d4adcb26c')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
-
-  # https://github.com/ray-project/ray/pull/11776
-  patch -Np1 -i "${srcdir}"/redis-py.patch
 
   # https://github.com/ray-project/ray/pull/12613
   sed -i "s/8)/8), (3, 9)/g" python/setup.py
