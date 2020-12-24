@@ -5,7 +5,7 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 _pkgbasename=gmp
-pkgname=lib32-$_pkgbasename-git
+pkgname=lib32-$_pkgbasename-hg
 pkgver=6.2.1
 pkgrel=1
 pkgdesc="A free library for arbitrary precision arithmetic (32-bit)"

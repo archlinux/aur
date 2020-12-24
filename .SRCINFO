@@ -1,4 +1,4 @@
-pkgbase = lib32-gmp-git
+pkgbase = lib32-gmp-hg
 	pkgdesc = A free library for arbitrary precision arithmetic (32-bit)
 	pkgver = 6.2.1
 	pkgrel = 1
@@ -15,5 +15,5 @@ pkgbase = lib32-gmp-git
 	source = hg+https://gmplib.org/repo/gmp/
 	sha512sums = SKIP
 
-pkgname = lib32-gmp-git
+pkgname = lib32-gmp-hg
 
