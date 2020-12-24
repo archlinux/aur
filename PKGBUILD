@@ -28,7 +28,7 @@ validpgpkeys=(C4CBC150699956E2A3268EF5BB5CC8295B1779C9  # darktable releases <re
               F10F9686652B0E949FCD94C318DCA123F949BD3B) # Pascal Obry <pascal@obry.net>
 
 build() {
-    cmake -B build -S ${pkgname}-${pkgver} \
+    cmake -B build -S darktable-${pkgver} \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=/usr/lib \
         -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib \
