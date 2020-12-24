@@ -10,6 +10,7 @@ pkgbase = deepin-dock-git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = qt5-tools
+	makedepends = gtest
 	makedepends = deepin-qt5integration-git
 	makedepends = deepin-qt-dbus-factory
 	makedepends = deepin-network-utils-git
