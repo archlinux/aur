@@ -6,7 +6,6 @@ pkgbase = linenum-git
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = findutils
 	depends = bash
 	source = linenum::git+https://github.com/rebootuser/LinEnum
 	sha256sums = SKIP
