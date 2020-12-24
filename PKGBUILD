@@ -3,14 +3,14 @@
 # Contributor: Holzhaus <jholthuis@mixxx.org>
 
 pkgname=mixxx_beta-git
-pkgver=r7884
+pkgver=r7886
 pkgrel=1
 pkgdesc="Digital DJ mixing software. 2.3 (beta) branch."
 arch=('i686' 'x86_64')
 url="http://www.mixxx.org/"
 license=('GPL2')
 groups=('pro-audio')
-depends=('chromaprint' 'flac' 'fftw' 'hidapi' 'lame' 'libsndfile' 'libmodplug' 'libid3tag' 'liblilv-0.so' 'libmad' 'libmp4v2' 'libportaudio.so' 
+depends=('chromaprint' 'flac' 'hidapi' 'lame' 'libsndfile' 'libmodplug' 'libid3tag' 'liblilv-0.so' 'libmad' 'libmp4v2' 'libportaudio.so' 
 'libportmidi.so' 'librubberband.so' 'libtheora' 'opusfile' 'protobuf' 'qt5-script'
 'qt5-svg' 'qt5-x11extras' 'qtkeychain' 'soundtouch' 'speex' 'taglib' 'upower' 'libebur128' 'qt5-declarative')
 makedepends=('git' 'glu' 'lv2' 'qt5-tools' 'cmake' 'vamp-plugin-sdk')
@@ -35,7 +35,7 @@ prepare() {
 	mkdir "$srcdir/${pkgname%-*}/cmake_build"
 	cmake -S $srcdir/${pkgname%-*} -B $srcdir/${pkgname%-*}/cmake_build \
 	-DCMAKE_INSTALL_PREFIX=/ \
-	-DINSTALL_USER_UDEV_RULES=ON \
+	-DINSTALL_USER_UDEV_RULES=OFF \
 	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 	-DOPTIMIZE=native \
 	-DFAAD=ON \
@@ -58,5 +58,9 @@ build() {
 #}
 
 package() {
+	mkdir -p $pkgdir/usr/lib/udev/rules.d/
+	cp $srcdir/${pkgname%-*}/res/linux/mixxx-usb-uaccess.rules $pkgdir/usr/lib/udev/rules.d/mixxx-usb-uaccess.rules
+	chmod a+r $pkgdir/usr/lib/udev/rules.d/mixxx-usb-uaccess.rules
 	DESTDIR="$pkgdir" cmake --install $srcdir/${pkgname%-*}/cmake_build
 }
+
