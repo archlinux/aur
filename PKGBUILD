@@ -7,7 +7,7 @@ pkgdesc="Monitor linux processes without root permissions."
 arch=('any')
 url="https://github.com/DominicBreuker/pspy"
 license=('GPL')
-makedepends=('git')
+makedepends=('findutils')
 
 source=(
 	"${pkgname}32::$url/releases/download/v$pkgver/${pkgname}32"
