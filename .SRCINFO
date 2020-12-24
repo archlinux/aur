@@ -1,6 +1,6 @@
 pkgbase = clickrouter-git
 	pkgdesc = Fast modular packet processing and analysis
-	pkgver = v2.0.1.r951.g593d10826
+	pkgver = 2.0.1.r951.g593d10826
 	pkgrel = 1
 	url = https://github.com/kohler/click
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = clickrouter-git
 	conflicts = click
 	conflicts = click-git
 	replaces = clickrouter
-	source = clickrouter-git::git+https://github.com/kohler/click.git
+	source = clickrouter-git::git+https://github.com/kohler/click
 	sha256sums = SKIP
 
 pkgname = clickrouter-git
