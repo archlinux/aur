@@ -2,7 +2,7 @@
 
 pkgname=wllvm-git
 pkgver=r461.6d8955b
-pkgrel=2
+pkgrel=3
 pkgdesc="A wrapper script to build whole-program LLVM bitcode files"
 arch=('any')
 url="https://github.com/travitch/whole-program-llvm"
@@ -11,12 +11,16 @@ depends=('python')
 makedepends=('git' 'python-setuptools')
 provides=('wllvm')
 conflicts=('wllvm')
-source=("$pkgname"::'git+https://github.com/travitch/whole-program-llvm.git')
+source=("$pkgname"::'git+https://github.com/travitch/whole-program-llvm')
 md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git describe --always)"
+    if git describe --long --tags >/dev/null 2>&1; then
+        git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    else
+        printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git describe --always)"
+    fi
 }
 
 build() {
