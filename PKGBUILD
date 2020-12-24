@@ -1,7 +1,7 @@
 # Contributer: abcfy2 <abcfy2@163.com>
 pkgname='deepin-wine5-stable'
 pkgver=5.0.0.17
-pkgrel=2
+pkgrel=3
 pkgdesc="Deepin Wine5 stable"
 arch=('i686' 'x86_64')
 url="http://www.deepin.org"
@@ -20,7 +20,7 @@ makedepends=('tar' 'p7zip')
 source=(
     "https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.xmly.deepin/com.xmly.deepin_1.6.0deepin0_i386.deb"
 )
-sha256sums=('343310e6a3b53f67255e6fb670d7de2ed3a8fe245fd61177b17d4f67a212dbb4')
+sha256sums=('8fe8924602e80ee4b92c3a4e41c5d5f7c503d2345bb0592a23636f772616ebb3')
 
 package() {
 	cd ${srcdir}
