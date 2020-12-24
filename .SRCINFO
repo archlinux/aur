@@ -1,6 +1,6 @@
 pkgbase = leagueoflegends-git
 	pkgdesc = League of Legends helper script
-	pkgver = v0.10.12.r0.gc44d767
+	pkgver = 0.10.12.r0.gc44d767
 	pkgrel = 1
 	url = https://github.com/kyechou/leagueoflegends
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = leagueoflegends-git
 	depends = lib32-libpulse
 	depends = wget
 	conflicts = leagueoflegends
-	source = leagueoflegends-git::git+https://github.com/kyechou/leagueoflegends.git
+	source = leagueoflegends-git::git+https://github.com/kyechou/leagueoflegends
 	md5sums = SKIP
 
 pkgname = leagueoflegends-git
