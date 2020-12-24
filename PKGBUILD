@@ -2,7 +2,7 @@
 # Contributor: Brenton Horne <brentonhorne77 at gmail dot com>
 # Contributor: Jan Dolinar <dolik.rce@gmail.com>
 
-pkgbase=upp
+pkgbase=upp-nightly
 pkgname=(upp-nightly theide-nightly umk-nightly)
 yearver=2020.1
 pkgver=15620

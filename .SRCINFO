@@ -1,4 +1,4 @@
-pkgbase = upp
+pkgbase = upp-nightly
 	pkgdesc = Radical and innovative multiplatform C++ framework (known as U++)
 	pkgver = 15620
 	pkgrel = 1
