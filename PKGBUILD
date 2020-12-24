@@ -2,7 +2,7 @@
 _pkgbase=openhab3
 pkgname=${_pkgbase}-snapshot
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="openhab3 open source home automation software"
 arch=("any")
 url="http://www.openhab.org/"
@@ -53,8 +53,10 @@ package() {
     mkdir -p "${pkgdir}/var/log/${_pkgbase}"
 
     echo "u ${_pkgbase} - - /usr/share/${_pkgbase}" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
+    echo "m ${pkgname} uucp" >>  "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     echo "Z /etc/${_pkgbase} - ${_pkgbase} ${_pkgbase} -" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
     echo "Z /usr/share/${_pkgbase} - ${_pkgbase} ${_pkgbase} -" >> "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
     echo "Z /var/lib/${_pkgbase} - ${_pkgbase} ${_pkgbase} -" >> "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
     echo "z /var/log/${_pkgbase} - ${_pkgbase} ${_pkgbase} -" >> "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
+    echo "z /run/lock 0775 root uucp -" >> "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }
