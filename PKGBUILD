@@ -2,13 +2,14 @@
 
 pkgname=ignition-physics
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Abstract physics interface designed to support simulation and rapid
 development of robot applications."
 arch=('x86_64')
 url="https://ignitionrobotics.org/libs/physics"
 license=('Apache')
-depends=()
+depends=('ignition-cmake' 'ignition-math' 'ignition-plugin' 'ignition-common'
+         'dartsim' 'sdformat')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-physics/archive/${pkgname}3_${pkgver}.tar.gz")
 sha256sums=('b8e5460d2808e20237b2ee0a6a6b7613b56412f5f6e2a5e153e48e8faae8ab77')
@@ -25,6 +26,8 @@ build() {
   cmake .. -DCMAKE_BUILD_TYPE="Release" \
            -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib" \
+           -DCMAKE_C_COMPILER=clang \
+           -DCMAKE_CXX_COMPILER=clang++ \
            -DBUILD_TESTING=OFF
 
   # Compile
@@ -33,6 +36,5 @@ build() {
 
 package() {
   cd "$srcdir/$_dir/build"
-  #make DESTDIR="$pkgdir/" install
   make install
 }
