@@ -1,6 +1,6 @@
 # Maintainer: Suphal Bhattarai suphalbhattarai4@gmail.com
 pkgname=ttf-nepali-font-git
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Collection Of Some Of The Pupular Nepali Fonts"
 arch=(x86_64 i686)
