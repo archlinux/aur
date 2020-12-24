@@ -2,7 +2,7 @@
 pkgname=rock-dkms-firmware-bin
 pkgver=4.0
 _pkgver=4.0-23
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux AMD GPU firmware from ROC in DKMS format."
 arch=('any')
 url="https://github.com/RadeonOpenCompute/ROCK-Kernel-Driver"
@@ -12,7 +12,7 @@ provides=('rock-dkms-firmware')
 conflicts=('rock-dkms-firmware')
 options=('!strip' '!emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz"::"http://repo.radeon.com/rocm/apt/${pkgver}/pool/main/r/rock-dkms/rock-dkms-firmware_${_pkgver}_all.deb")
-sha256sums=('7622d6f8c40574789b1307feb4c11f5a86c2d5ed6197a7bc50a93c75df715277')
+sha256sums=('1694b0edcd20f9440443a7ffba2ee34d2e23cd73b3a681f84f925d8a1314fbd1')
 
 package() {
   cd "$srcdir"

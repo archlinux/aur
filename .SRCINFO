@@ -1,7 +1,7 @@
 pkgbase = rock-dkms-firmware-bin
 	pkgdesc = Linux AMD GPU firmware from ROC in DKMS format.
 	pkgver = 4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RadeonOpenCompute/ROCK-Kernel-Driver
 	arch = any
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = rock-dkms-firmware-bin
 	options = !strip
 	options = !emptydirs
 	source = rock-dkms-firmware-bin-4.0.tar.gz::http://repo.radeon.com/rocm/apt/4.0/pool/main/r/rock-dkms/rock-dkms-firmware_4.0-23_all.deb
-	sha256sums = 7622d6f8c40574789b1307feb4c11f5a86c2d5ed6197a7bc50a93c75df715277
+	sha256sums = 1694b0edcd20f9440443a7ffba2ee34d2e23cd73b3a681f84f925d8a1314fbd1
 
 pkgname = rock-dkms-firmware-bin
 
