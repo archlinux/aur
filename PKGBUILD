@@ -4,11 +4,11 @@
 pkgname=freetube
 _pkgname=FreeTube
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source desktop YouTube player built with privacy in mind.'
 arch=('x86_64' 'arm')
 license=('AGPL3')
-depends=('libxss' 'nss' 'gtk3')
+depends=('libxss' 'nss' 'gtk3' 'electron')
 makedepends=('npm')
 conflicts=('freetube-git' 'freetube-bin')
 url=https://freetubeapp.io
@@ -19,6 +19,7 @@ sha256sums=(d53dbb88c7c3a09196bc3b7af16924ccb63d7ce748f3aa1388962c7ccef2f932
             SKIP SKIP)
 
 prepare() {
+  sed -i 's@"electron": "^11.1.0,"@@g' "$srcdir/$_pkgname-$pkgver-beta/package.json"
   patch "$srcdir/$_pkgname-$pkgver-beta/_scripts/build.js" < package-only-necessary.diff
 }
 

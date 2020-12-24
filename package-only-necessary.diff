@@ -1,6 +1,7 @@
---- a/build.js	2020-10-06 18:01:43.934405000 +0100
-+++ b/build.js	2020-10-06 18:10:13.181073183 +0100
-@@ -20,7 +20,7 @@
+diff -r -u a/build.js b/build.js
+--- a/build.js	2020-12-18 15:50:23.000000000 +0000
++++ b/build.js	2020-12-24 18:13:01.432309794 +0000
+@@ -20,12 +20,13 @@
      arch = Arch.arm64
    }
  
@@ -9,7 +10,13 @@
  }
  
  const config = {
-@@ -63,7 +63,7 @@
+   appId: `io.freetubeapp.${name}`,
+   copyright: 'Copyleft © 2020 freetubeapp@protonmail.com',
++  electronVersion: '11.1.0',
+   // asar: false,
+   // compression: 'store',
+   productName,
+@@ -63,7 +64,7 @@
    linux: {
      category: 'Network',
      icon: '_icons/icon.png',
