@@ -1,12 +1,12 @@
-# $Id$
-# Maintainer: Emanuel Couto <unit73e at gmail dot com>
+# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
+# Contributor: Emanuel Couto <unit73e at gmail dot com>
 
 _hkgname=vector-sized
 pkgname=haskell-vector-sized
 pkgver=1.4.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Newtype tagging the vectors from the vector package"
-url="http://github.com/expipiplus1/vector-sized#readme"
+url="https://hackage.haskell.org/package/vector-sized"
 license=('custom:BSD3')
 arch=('i686' 'x86_64')
 depends=('ghc-libs' 'haskell-finite-typelits' 'haskell-vector' 'haskell-adjunctions' 'haskell-comonad'
