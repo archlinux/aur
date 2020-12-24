@@ -1,5 +1,5 @@
 pkgbase = mn32-rs-git
-	pkgdesc = Configuration tool for Mionix Naos 3200
+	pkgdesc = Configuration tool for Mionix Naos 3200 (rust port)
 	pkgver = r14.37981c5
 	pkgrel = 1
 	url = https://gitlab.com/ant-sa/mn32-rs

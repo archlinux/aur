@@ -1,7 +1,7 @@
 # Maintainer: antsa <asss1924 <plus> aur <at> gmail <dot> com>
 _name=mn32-rs
 pkgname=${_name}-git
-pkgdesc="Configuration tool for Mionix Naos 3200"
+pkgdesc="Configuration tool for Mionix Naos 3200 (rust port)"
 url="https://gitlab.com/ant-sa/mn32-rs"
 pkgver=r14.37981c5
 pkgrel=1
