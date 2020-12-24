@@ -4,7 +4,7 @@
 # Contributor: Matthew Bowra-Dean <matthew@ijw.co.nz>
 #
 pkgname=openra-git
-pkgver=BLEED.20200921.9cf38c1784
+pkgver=BLEED.20201224.73bba97aaa
 pkgrel=1
 pkgdesc="An open-source implementation of the Red Alert engine using .NET/Mono and OpenGL. -GIT VERSION"
 arch=('any')
@@ -45,7 +45,8 @@ pkgver() {
 
 build() {
   cd OpenRA
-    #make dependencies      ### Verify Dependencies.
+    #make dependencies DEBUG=false TARGETPLATFORM=unix-generic   ### Build Dependencies...
+    #make core DEBUG=false TARGETPLATFORM=unix-generic   ### Build core...
     make all DEBUG=false TARGETPLATFORM=unix-generic   ### Build application and tools...
     #make test DEBUG=false  ### Checking the build, for erroneous yaml files...
     #make check DEBUG=false ### Checking the build, for StyleCop violations...
@@ -68,12 +69,11 @@ build() {
 
 package() {
   cd OpenRA
+  mkdir -p $pkgdir/usr/bin $pkgdir/usr/share $pkgdir/usr/lib
 
-  make prefix=/usr DESTDIR="$pkgdir" install DEBUG=false                    ### game data...
-  make prefix=/usr DESTDIR="$pkgdir" install-linux-shortcuts DEBUG=false    ### all the beautiful shortcuts...
-  #make prefix=/usr DESTDIR="$pkgdir" install-linux-mime DEBUG=false        ### apparently removed...
-  #make prefix=/usr DESTDIR="$pkgdir" install-linux-appdata DEBUG=false     ### apparently removed...
-  
+  make prefix=/usr DESTDIR="$pkgdir" install DEBUG=false
+  make prefix=/usr DESTDIR="$pkgdir" install-linux-shortcuts DEBUG=false
+  make prefix=/usr DESTDIR="$pkgdir" install-linux-appdata DEBUG=false
   
   if [ -e $srcdir/RA2 ]; then
   ### adding RA2 to OpenRA
