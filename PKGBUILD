@@ -13,7 +13,7 @@ makedepends=('boost' 'cmake' 'doxygen' 'graphviz' 'ttf-dejavu' 'mesa' 'mercurial
 provides=('ogre' 'ogre-docs')
 conflicts=('ogre' 'ogre-docs')
 _dir="OGRE"
-source=("hg+http://bitbucket.org/sinbad/ogre")
+source=("git+https://github.com/OGRECave/ogre.git")
 sha512sums=('SKIP')
 
 prepare() {
