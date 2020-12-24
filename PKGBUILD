@@ -3,7 +3,7 @@
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 # Contributor: Andrej Gelenberg <andrej.gelenberg@udo.edu>
 
-pkgname=(elfutils-minimal-git)
+pkgname=(libelf-minimal-git)
 pkgver=0.182
 pkgrel=1
 pkgdesc='Utilities to handle ELF object files and DWARF debugging information'
@@ -42,7 +42,7 @@ build() {
 #  make check || :
 #}
 
-package_elfutils-minimal-git() {
+package_libelf-minimal-git() {
 
   cd elfutils
   make DESTDIR="$pkgdir" install

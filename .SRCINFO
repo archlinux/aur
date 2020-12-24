@@ -1,4 +1,4 @@
-pkgbase = elfutils-minimal-git
+pkgbase = libelf-minimal-git
 	pkgdesc = Utilities to handle ELF object files and DWARF debugging information
 	pkgver = 0.182
 	pkgrel = 1
@@ -21,5 +21,5 @@ pkgbase = elfutils-minimal-git
 	source = git+https://sourceware.org/git/elfutils.git
 	sha512sums = SKIP
 
-pkgname = elfutils-minimal-git
+pkgname = libelf-minimal-git
 
