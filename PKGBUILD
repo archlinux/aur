@@ -4,7 +4,7 @@
 pkgname=deal-ii
 _realname=dealii
 pkgver=9.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source Finite Element Differential Equations Analysis Library"
 arch=("i686" "x86_64")
 url="http://www.dealii.org/"
@@ -50,7 +50,16 @@ sha1sums=('fff66749d7e7e8baf569e5da5a42f93e99424a86')
 installation_prefix=/usr
 
 prepare() {
-    cd "${srcdir}/${_realname}-${pkgver}/"
+    _dir="${srcdir}/${_realname}-${pkgver}/"
+    # patch from c0aa1399014f70f7fe7fbc2ceefba2c6f80f3462: needed for the next patch
+    _patchname1="0001-Add-a-quick-check-for-matching-boost-versions.patch"
+    # patch from 13bc2f8a021316d38be0c0fcaa93aa177e214d86: needed for boost 1.75
+    _patchname2="0001-Added-missing-header-for-boost-1.75.0.patch"
+    cp ../${_patchname1} ${_dir}
+    cp ../${_patchname2} ${_dir}
+    cd ${_dir}
+    patch --forward --strip=1 --input="${_patchname1}"
+    patch --forward --strip=1 --input="${_patchname2}"
 }
 
 build() {
