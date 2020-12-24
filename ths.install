@@ -1,0 +1,10 @@
+post_upgrade() {
+    echo 
+    echo "Remove ~/.deepinwine/Deepin-THS to generate a new bottle."
+    echo 
+}
+
+post_remove() {
+    echo "Deleting existing THS bottles..."
+    find /home -maxdepth 2 -name ".deepinwine" -exec rm -rf \{\}/Deepin-THS/ \;
+}
