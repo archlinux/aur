@@ -11,6 +11,8 @@ pkgbase = orchis-kde-theme-curve-git
 	optdepends = sddm: for included sddm theme
 	optdepends = tela-circle-icon-theme-git: matching icon theme
 	optdepends = orchis-theme-git: matching gtk theme
+	provides = orchis-kde-theme-git
+	conflicts = orchis-kde-theme-git
 	source = git+https://github.com/Curve/Orchis-kde.git
 	sha256sums = SKIP
 
