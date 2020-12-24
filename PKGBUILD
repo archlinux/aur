@@ -19,7 +19,7 @@ source=(
 )
 md5sums=('42db8df96db00e8fcc023b7bc9135b21'
          '1a68e770b9f426301b6a08fe8edb47f1'
-         'e493893ea6af38dd10d0a36e54e33a82'
+         '3c80edd921bc4c1fc87d33ab6ada72f7'
          '3578677a7102c9f8be3b9f7ea7d3d06f'
          'f1a9f3406f8268383149889f4816cd52')
 install=input-support.install
