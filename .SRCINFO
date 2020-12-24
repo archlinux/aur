@@ -1,6 +1,6 @@
 pkgbase = herotate-git
 	pkgdesc = A Heroku multi-login manager for heroku-cli
-	pkgver = r1.13c1ad5
+	pkgver = r4.a444721
 	pkgrel = 1
 	url = https://github.com/pyamsoft/herotate.git
 	arch = any

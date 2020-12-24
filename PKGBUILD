@@ -8,7 +8,7 @@ pkgname=herotate-git
 # shellcheck disable=SC2034
 pkgdesc="A Heroku multi-login manager for heroku-cli"
 # shellcheck disable=SC2034
-pkgver=r1.13c1ad5
+pkgver=r4.a444721
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -43,8 +43,8 @@ source=("${_gitname}::git+${url}#branch=main")
 pkgver() {
   # shellcheck disable=SC2154
   cd "$srcdir/$_gitname" || {
-        msg "Could not cd into $srcdir/$_gitname"
-        return 1
+    msg "Could not cd into $srcdir/$_gitname"
+    return 1
   }
   # From
   # https://wiki.archlinux.org/index.php/VCS_package_guidelines#The_pkgver.28.29_function
@@ -54,12 +54,16 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_gitname" || {
-        msg "Could not cd into $srcdir/$_gitname"
-        return 1
+    msg "Could not cd into $srcdir/$_gitname"
+    return 1
   }
 
   chmod 755 "${_gitname}"
   mkdir -p "${pkgdir}/usr/bin"
-  cp "${_gitname}" "${pkgdir}/usr/bin/${_gitname}"
-}
+  mkdir -p "${pkgdir}/usr/share/doc/${_gitname}"
+  mkdir -p "${pkgdir}/usr/share/licenses/${_gitname}"
 
+  cp "${_gitname}" "${pkgdir}/usr/bin/${_gitname}"
+  cp "LICENSE" "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
+  cp "README.md" "${pkgdir}/usr/share/doc/${_gitname}/README.md"
+}
