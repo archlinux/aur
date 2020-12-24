@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=ignition-gui
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Builds on top of Qt to provide widgets which are useful when developing
 robotics applications, such as a 3D view, plots, dashboard, etc, and can be used
@@ -12,7 +12,7 @@ license=('Apache')
 depends=()
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-gui/archive/${pkgname}4_${pkgver}.tar.gz")
-sha256sums=('17de4b5c84ee272075da1c8ef57d9e8b761e9b6941f711ca07602b28011c681d')
+sha256sums=('9811710faa0ff07c134f07f82cbc0020dcc44c62c4feb087250e25bece252a7b')
 
 _dir="ign-gui-${pkgname}4_${pkgver}"
 
@@ -34,6 +34,5 @@ build() {
 
 package() {
   cd "$srcdir/$_dir/build"
-  #make DESTDIR="$pkgdir/" install
   make install
 }
