@@ -1,7 +1,7 @@
 pkgbase = android-ndk
 	pkgdesc = Android C/C++ developer kit
 	pkgver = r22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.android.com/ndk/
 	install = android-ndk.install
 	arch = x86_64
