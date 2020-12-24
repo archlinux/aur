@@ -1,0 +1,21 @@
+pkgbase = pspy-bin
+	pkgdesc = Monitor linux processes without root permissions.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/DominicBreuker/pspy
+	arch = any
+	license = GPL
+	makedepends = findutils
+	provides = pspy
+	conflicts = pspy
+	source = pspy32::https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy32
+	source = pspy32s::https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy32s
+	source = pspy64::https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64
+	source = pspy64s::https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64s
+	sha256sums = 7cd8fd2386a30ebd1992cc595cc1513632eea4e7f92cdcaee8bcf29a3cff6258
+	sha256sums = 0265a9d906801366210d62bef00aec389d872f4051308f47e42035062d972859
+	sha256sums = f7f14aa19295598717e4f3186a4002f94c54e28ec43994bd8de42caf79894bdb
+	sha256sums = c769c23f8b225a2750768be9030b0d0f35778b7dff4359fa805f8be9acc6047f
+
+pkgname = pspy-bin
+
