@@ -1,7 +1,7 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=spin-git
-pkgver=6.5.2.r5.gd91a5b8
+pkgver=6.5.2.r23.g6651f97
 pkgrel=1
 pkgdesc='Explicit state logic model checking tool'
 depends=('glibc')
@@ -14,12 +14,16 @@ url='https://spinroot.com/'
 license=('custom:BSD3')
 provides=('spin')
 conflicts=('spin')
-source=("$pkgname"::'git+https://github.com/nimble-code/Spin.git')
+source=("$pkgname"::'git+https://github.com/nimble-code/Spin')
 sha512sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/version-//;s/-/./g'
+    if git describe --long --tags >/dev/null 2>&1; then
+        git describe --long --tags | sed 's/^version-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    else
+        printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git describe --always)"
+    fi
 }
 
 build() {
