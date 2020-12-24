@@ -1,7 +1,7 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=gllvm-git
-pkgver=v1.2.9.r3.g78dee16
+pkgver=1.2.9.r3.g78dee16
 pkgrel=1
 pkgdesc="Whole Program LLVM: wllvm ported to go"
 arch=('any')
@@ -11,12 +11,16 @@ depends=('clang' 'llvm')
 makedepends=('git' 'go')
 provides=('gllvm')
 conflicts=('gllvm')
-source=("$pkgname"::'git+https://github.com/SRI-CSL/gllvm.git')
+source=("$pkgname"::'git+https://github.com/SRI-CSL/gllvm')
 sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    if git describe --long --tags >/dev/null 2>&1; then
+        git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    else
+        printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git describe --always)"
+    fi
 }
 
 package() {
