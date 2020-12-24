@@ -1,7 +1,7 @@
 pkgbase = android-ndk-beta
 	pkgdesc = Android C/C++ developer kit (beta)
 	pkgver = r22_beta1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developer.android.com/ndk/
 	install = android-ndk-beta.install
 	arch = x86_64
