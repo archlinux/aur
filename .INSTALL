@@ -1,0 +1,22 @@
+post_install() {
+    :
+#!/bin/bash
+
+# Link to the binary
+ln -sf '/opt/csBooks/csbooks' '/usr/bin/csbooks'
+
+# SUID chrome-sandbox for Electron 5+
+chmod 4755 '/opt/csBooks/chrome-sandbox' || true
+
+update-mime-database /usr/share/mime || true
+update-desktop-database /usr/share/applications || true
+
+}
+post_remove() {
+    :
+#!/bin/bash
+
+# Delete the link to the binary
+rm -f '/usr/bin/csbooks'
+
+}
