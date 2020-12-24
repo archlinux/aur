@@ -1,7 +1,7 @@
 pkgbase = darktable-rc
 	pkgdesc = Utility to organize and develop raw images (RC/Stable version)
-	pkgver = 3.0.2
-	pkgrel = 7
+	pkgver = 3.4.0
+	pkgrel = 1
 	epoch = 2
 	url = https://darktable.org
 	arch = x86_64
@@ -30,20 +30,18 @@ pkgbase = darktable-rc
 	depends = libsecret
 	depends = openmp
 	depends = gmic
+	depends = libavif
 	optdepends = dcraw: base curve script
 	optdepends = perl-image-exiftool: base curve script
 	optdepends = imagemagick: base curve and noise profile scripts
 	optdepends = ghostscript: noise profile script
 	optdepends = gnuplot: noise profile script
-	conflicts = darktable
-	source = https://github.com/darktable-org/darktable/releases/download/release-3.0.2/darktable-3.0.2.tar.xz
-	source = https://github.com/darktable-org/darktable/releases/download/release-3.0.2/darktable-3.0.2.tar.xz.asc
-	source = darktable-fix-cmake.patch::https://github.com/darktable-org/darktable/commit/767d48e0f60e7f858e8b31a88dd8cc1258e7ee9e.patch
+	source = https://github.com/darktable-org/darktable/releases/download/release-3.4.0/darktable-3.4.0.tar.xz
+	source = https://github.com/darktable-org/darktable/releases/download/release-3.4.0/darktable-3.4.0.tar.xz.asc
 	validpgpkeys = C4CBC150699956E2A3268EF5BB5CC8295B1779C9
 	validpgpkeys = F10F9686652B0E949FCD94C318DCA123F949BD3B
-	sha256sums = 6abaf661fe9414e92bdb33b58b98ef024ccf6132b7876abaf0751ec2109f36fb
+	sha256sums = 6dd3de1f5ea9f94af92838c0be5ff30fdaa599aa1d737dcb562f9e0b2b2dbdda
 	sha256sums = SKIP
-	sha256sums = cdcaf17a362c4fc551ede3ebc0933e48e20185a9fad2c18a025f0414c180ef0d
 
 pkgname = darktable-rc
 
