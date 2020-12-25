@@ -1,6 +1,6 @@
 post_install() {
   sysctl --system
-	cat <<EOT
+	cat <<EOF
 
 === Post installation message from docker-rootless ===
 This is based on https://docs.docker.com/engine/security/rootless/
@@ -8,9 +8,14 @@ To Run the Docker daemon as a non-root user (Rootless mode) for ArchLinux, you n
 
 1. Configure subuid and subgid
 
-Create '/etc/subuid' and '/etc/subgid' with: 'testuser:231072:65536' (for example, 'testuser' is username)
+Create '/etc/subuid' and '/etc/subgid' with the following:
 
-2. Enable socket-activation for the user service: 'systemctl --user enable --now docker.socket'
+    testuser:231072:65536
+    # replace 'testuser' with your username.
+
+2. Enable socket-activation for the user service:
+
+    systemctl --user enable --now docker.socket
 
 3. Finally set docker socket environment variable:
 
@@ -19,5 +24,5 @@ Create '/etc/subuid' and '/etc/subgid' with: 'testuser:231072:65536' (for exampl
 You can also add it to '~/.bashrc' or somewhere alike.
 
 =========
-EOT
+EOF
 }
