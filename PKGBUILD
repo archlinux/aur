@@ -2,13 +2,13 @@
 
 pkgname=ignition-rendering
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ library designed to provide an abstraction for different rendering
 engines. It offers unified APIs for creating 3D graphics applications."
 arch=('x86_64')
 url="https://ignitionrobotics.org/libs/rendering"
 license=('Apache')
-depends=()
+depends=('ignition-plugin')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-rendering/archive/${pkgname}4_${pkgver}.tar.gz")
 sha256sums=('465e858332d5b0e608888e9d62d08f779c7d99d0a51f2de7ba23ba640cdd4be4')
