@@ -1,0 +1,15 @@
+diff --git a/python/mozbuild/mozbuild/configure/options.py b/python/mozbuild/mozbuild/configure/options.py
+index 8022c304a2b6..c8639fe04bc6 100644
+--- a/python/mozbuild/mozbuild/configure/options.py
++++ b/python/mozbuild/mozbuild/configure/options.py
+@@ -329,8 +329,8 @@ class Option(object):
+         return 1 if self.nargs == '?' else sys.maxint
+ 
+     def _validate_nargs(self, num):
+-        minargs, maxargs = self.minargs, self.maxargs
+-        return num >= minargs and num <= maxargs
++        return 1
++        
+ 
+     def get_value(self, option=None, origin='unknown'):
+         '''Given a full command line option (e.g. --enable-foo=bar) or a
