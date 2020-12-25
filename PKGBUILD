@@ -2,7 +2,7 @@
 
 pkgbase=libjpeg-xl-git
 pkgname=('libjpeg-xl-git' 'libjpeg-xl-doc-git')
-pkgver=0.1.1.r1.gd11752f
+pkgver=0.2.r0.g31c71b0
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
@@ -89,8 +89,8 @@ package_libjpeg-xl-git() {
     
     make -C build DESTDIR="$pkgdir" install
     install -D -m644 jpeg-xl/plugins/mime/image-jxl.xml -t "${pkgdir}/usr/share/mime/packages"
-    rm "${pkgdir}/usr/lib/"{libhwy.a,pkgconfig/libhwy{,-test}.pc}
-    rm -r "${pkgdir}/usr/include/hwy"
+    rm "${pkgdir}/usr/lib"/{libhwy.a,pkgconfig/libhwy{,-test}.pc}
+    rm -r "${pkgdir}/usr/include"/{contrib,hwy}
 }
 
 package_libjpeg-xl-doc-git() {
@@ -100,5 +100,5 @@ package_libjpeg-xl-doc-git() {
     conflicts=('libjpeg-xl-doc')
     
     mkdir -p "${pkgdir}/usr/share/doc"
-    cp -a build/html "${pkgdir}/usr/share/doc/libjpeg-xl"
+    cp -dr --no-preserve='ownership' build/html "${pkgdir}/usr/share/doc/libjpeg-xl"
 }
