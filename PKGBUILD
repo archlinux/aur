@@ -4,7 +4,7 @@
 _gitname=CuteMarkEd-NG
 pkgname=cutemarked-git
 pkgver=20200625.r910
-pkgrel=3
+pkgrel=4
 pkgdesc="Qt Markdown Editor"
 url="https://github.com/Waqar144/${_gitname}"
 arch=('i686' 'x86_64')
@@ -16,9 +16,8 @@ conflicts=('cutemarked')
 source=("git+$url.git"
 	"git+https://github.com/hunspell/hunspell.git"
 	"git+https://github.com/mity/md4c"
-	"https://github.com/pbek/qmarkdowntextedit"
        )
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd $_gitname
@@ -30,7 +29,6 @@ prepare() {
   git submodule init
   git config submodule.3rdparty/hunspell/hunspell.url "$srcdir"/hunspell
   git config submodule.3rdparty/md4c.url "${srcdir}/md4c"
-  git config submodule.3rdparty/qmarkdowntextedit.url "${srcdir}/qmarkdowntextedit"
   git submodule update
 }
 
