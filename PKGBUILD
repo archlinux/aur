@@ -5,7 +5,7 @@
 
 pkgname=panda3d
 pkgver=1.10.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A 3D game engine with Python bindings. SDK package. Optional dependencies you want to support need to be installed before panda3d."
 url="http://www.panda3d.org"
 arch=('i686' 'x86_64')
@@ -26,7 +26,6 @@ optdepends=(# Pretty much required
             'libgl: OpenGL support for X11'
             # Recommended
             'python: Python 3 bindings'
-            'openssl: Provides some networking and encryption support'
             'ffmpeg: Required to load and play video textures'
             'libjpeg: Required to read and write jpeg images'
             'libpng: Required to read and write png images'
@@ -74,7 +73,7 @@ prepare() {
 
 build() {
   cd "$srcdir/panda3d-$pkgver"
-  python makepanda/makepanda.py --everything --no-opencv --no-opencv --no-maya2012 --no-fmodex --no-gles --no-gles2 --no-openssl --no-egl ${PANDAFLAGS} --threads ${BUILD_THREADS:-$JOBS}
+  python makepanda/makepanda.py --everything --no-opencv --no-opencv --no-maya2012 --no-fmodex --no-gles --no-gles2 --no-egl ${PANDAFLAGS} --threads ${BUILD_THREADS:-$JOBS}
 }
 
 package() {

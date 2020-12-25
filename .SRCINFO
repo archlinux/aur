@@ -1,7 +1,7 @@
 pkgbase = panda3d
 	pkgdesc = A 3D game engine with Python bindings. SDK package. Optional dependencies you want to support need to be installed before panda3d.
 	pkgver = 1.10.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.panda3d.org
 	install = panda3d.install
 	arch = i686
@@ -27,7 +27,6 @@ pkgbase = panda3d
 	optdepends = xorg-server: X11 support
 	optdepends = libgl: OpenGL support for X11
 	optdepends = python: Python 3 bindings
-	optdepends = openssl: Provides some networking and encryption support
 	optdepends = ffmpeg: Required to load and play video textures
 	optdepends = libjpeg: Required to read and write jpeg images
 	optdepends = libpng: Required to read and write png images
