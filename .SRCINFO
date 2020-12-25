@@ -1,0 +1,18 @@
+pkgbase = vapoursynth-plugin-rekt-git
+	pkgdesc = Plugin for VapourSynth: rekt (GIT version)
+	pkgver = r38.3da2b2f
+	pkgrel = 1
+	url = https://gitlab.com/Ututu/rekt
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python-setuptools
+	depends = vapoursynth
+	depends = vapoursynth-plugin-vsutil
+	provides = vapoursynth-plugin-rekt
+	conflicts = vapoursynth-plugin-rekt
+	source = rekt::git+https://gitlab.com/Ututu/rekt.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-rekt-git
+
