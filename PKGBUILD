@@ -4,8 +4,8 @@
 
 pkgname=sic-image-cli-git
 _pkgname=sic
-pkgver=0.14.0.r0.g9c0e31f
-pkgrel=3
+pkgver=0.15.0.r0.g56cbde0
+pkgrel=1
 pkgdesc="Accessible image processing and conversion from the terminal (git)"
 arch=('x86_64')
 url="https://github.com/foresterre/sic"
