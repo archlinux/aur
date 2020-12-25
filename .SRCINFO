@@ -1,0 +1,21 @@
+pkgbase = lib32-zstd-git
+	pkgdesc = Zstandard - Fast real-time compression algorithm (32-bit)
+	pkgver = 1.4.7
+	pkgrel = 1
+	url = https://www.zstd.net/
+	arch = x86_64
+	license = BSD
+	license = GPL2
+	depends = zstd
+	depends = lib32-zlib
+	depends = lib32-xz
+	depends = lib32-lz4
+	provides = lib32-zstd
+	conflicts = lib32-zstd
+	source = git://github.com/facebook/zstd.git#branch=dev
+	sha256sums = SKIP
+	sha512sums = SKIP
+	b2sums = SKIP
+
+pkgname = lib32-zstd-git
+
