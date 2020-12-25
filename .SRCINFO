@@ -1,11 +1,13 @@
 pkgbase = hardened-malloc-git
 	pkgdesc = Hardened allocator designed for modern systems.
-	pkgver = 507+8d03142
+	pkgver = 510+e9d9f70
 	pkgrel = 1
 	url = https://github.com/GrapheneOS/hardened_malloc
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	provides = hardened_malloc
+	conflicts = hardened_malloc
 	source = git://github.com/GrapheneOS/hardened_malloc
 	source = preload.sh
 	sha256sums = SKIP

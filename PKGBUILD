@@ -1,10 +1,12 @@
 # Maintainer: Matt Parnell/ilikenwf <parwok@gmail.com>
 pkgname="hardened-malloc-git"
-pkgver=507+8d03142
+pkgver=510+e9d9f70
 pkgdesc="Hardened allocator designed for modern systems."
 url="https://github.com/GrapheneOS/hardened_malloc"
 license=("MIT")
 makedepends=("git")
+conflicts=("hardened_malloc")
+provides=("hardened_malloc")
 arch=("x86_64")
 pkgrel=1
 source=('git://github.com/GrapheneOS/hardened_malloc'
