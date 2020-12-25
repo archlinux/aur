@@ -1,7 +1,7 @@
 # Maintainer: Jikstra <jikstra@disroot.org>
 # Maintainer: tercean <cg@zknt.org>
 pkgname=deltachat-desktop
-pkgver=1.14.0
+pkgver=1.14.1
 pkgrel=4
 pkgdesc="A privacy oriented chat application built on e-mail"
 arch=("any")
@@ -19,7 +19,7 @@ source=(
     "remove_git_submodule.patch"
 )
 
-sha256sums=('500cee112ae8c8887030041833cc84b2afda21d6f227d50d3dfcc004f0e51412'
+sha256sums=('ea2ef8d50cf02e68a1acf6f3b3f2b18092f715092ea67e42e68dc7b60b6720b6'
             '39bae164c234b3c89e7ae2bde89753c90065df7f37fece084f7f5acccbb9f1f1'
             '5e20ea657599390e317523ae17b17aba0d26c59474a7f80282af5f2668002f59'
             'cddac0c94d78d8265a57064504890f9056a117eaca20054e2893aac83bd53473'
