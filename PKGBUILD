@@ -2,7 +2,7 @@
 
 pkgname=zettlr
 pkgver=1.8.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
@@ -16,14 +16,14 @@ _csl_locale_commit=ecb8e70233e9a68e8b1dda4586061be8f8611a38 # Dec 11, 2020
 options=(!strip)
 install=install
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Zettlr/Zettlr/archive/v${pkgver}.tar.gz"
-        pandoc-fix.patch::"https://patch-diff.githubusercontent.com/raw/Zettlr/Zettlr/pull/1565.patch"
+        pandoc-fix.patch
         # citation style
         "https://github.com/citation-style-language/locales/archive/${_csl_locale_commit}.zip"
         https://github.com/citation-style-language/styles/raw/master/chicago-author-date.csl
         # Chinese(Taiwan) translation
         https://github.com/Brli/zetter-zh-TW/raw/master/zh-TW.json)
 sha256sums=('da3ba36a98587e258bdb09700343b7a067ee4659aaef6b5021b16dd5b9d00400'
-            'ee0596aba955164e9129bf29d0cf387c133f1ba0bcab4777e2aba4cb9c962dd7'
+            '488f3c308e0cbdcc626d95798e07fa3489ea28a631e9fbdacb50e6fcf35c5d4c'
             '24503a6cd5b3651a7003353811ae82d3ed707ec8ff932d341668c2ad377434b6'
             '2b7cd6c1c9be4add8c660fb9c6ca54f1b6c3c4f49d6ed9fa39c9f9b10fcca6f4'
             '9aef5eec4876aa180fa55cf3bc213a5cf68ab96567bc4021ba58a32fa0fa9f94')
