@@ -2,12 +2,12 @@
 
 pkgname=gnome-shell-extension-compiz-alike-windows-effect-git
 pkgver=r43.8d2ed94
-pkgrel=1
+pkgrel=2
 pkgdesc="Wobbly windows effect inspired by the Compiz ones"
 arch=('any')
 url="https://github.com/hermes83/compiz-alike-windows-effect.git"
 install=compiz-alike.install
-license=('unknown')
+license=('GPL3')
 depends=('gnome-shell>=3.28')
 makedepends=('git' 'glib2')
 provides=("${pkgname%-git}")
@@ -34,4 +34,3 @@ package() {
   fi
   chmod -R 755 "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/"
 }
-
