@@ -1,0 +1,15 @@
+pkgbase = wxmp3val-git
+	pkgdesc = a free front-end for the MP3val
+	pkgver = r215.f23c701
+	pkgrel = 1
+	url = https://github.com/cfgnunes/wxmp3val
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = mp3val
+	source = wxmp3val-git::git+https://github.com/cfgnunes/wxmp3val.git
+	md5sums = SKIP
+
+pkgname = wxmp3val-git
+
