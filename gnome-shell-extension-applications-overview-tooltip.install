@@ -1,9 +1,8 @@
 # Colored makepkg-like functions
-TERM=dumb
-all_off="$(tput sgr0)"
-bold="${all_off}$(tput bold)"
-blue="${bold}$(tput setaf 4)"
-yellow="${bold}$(tput setaf 3)"
+all_off="$(tput -T xterm sgr0)"
+bold="${all_off}$(tput -T xterm bold)"
+blue="${bold}$(tput -T xterm setaf 4)"
+yellow="${bold}$(tput -T xterm setaf 3)"
 
 note() {
   printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
