@@ -1,18 +1,18 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-projectbuilder'
-pkgver='0.14.1'
-pkgrel='1'
+pkgname=perl-projectbuilder
+pkgver=0.16.1
+pkgrel=1
 pkgdesc="module dealing with generic functions suitable for perl project development"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 url='https://metacpan.org/release/ProjectBuilder'
-source=('http://search.cpan.org/CPAN/authors/id/B/BC/BCO/ProjectBuilder-0.14.1.tar.gz')
-md5sums=('856897ec20375467ac23cb0ce27c833c')
-sha512sums=('c007ecd8eedf3a9d7d08bd84137c25b3095b6995e654d8e8beacc5639ab118645b93bffe4978c365a43ef5f3738c4c62e5ce25a905f8fa2a4c5fe671611a87f5')
+source=("ftp://ftp.project-builder.org/src/project-builder-${pkgver}.tar.gz")
+md5sums=('e1f185c99c2a37c0ffb66bf3edafb40d')
+sha512sums=('a8df140f9d8c78ea16ce5a1209ca079585ecacf08c1b6c5b485881b5506bd2f6561c18615592052f05dbc3c22dd1aa052b3fb105a249d3d5587450479d74355b')
 _distdir="ProjectBuilder-0.14.1"
 
 build() {
