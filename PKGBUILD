@@ -3,8 +3,8 @@
 pkgname=ttf-archivo-narrow
 pkgver=3.000
 pkgrel=1
-_commit="0a98e4dd59de05b0caa3273ccb47cbd5ec2274cc"
-pkgdesc="A grotesque sans serif typeface family from Omnibus-Type"
+_commit='0a98e4dd59de05b0caa3273ccb47cbd5ec2274cc'
+pkgdesc="Grotesque sans serif typeface family from Omnibus-Type"
 arch=('any')
 url="https://github.com/Omnibus-Type/ArchivoNarrow"
 license=('custom:OFL')
@@ -28,7 +28,6 @@ sha256sums=('2653e11aa4d327ba05e7681647203d08b3eab053133a49b5cd9a6b7ec7d8528a'
             'a4087edf95fb2a6bd38073ad005ced611695dc9d7d8fd5d04a888ef4f9c748ea')
 
 package() {
-	install -d "${pkgdir}"/usr/share/fonts/TTF
-	install -m644 *.ttf "${pkgdir}"/usr/share/fonts/TTF
-	install -D -m644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname/OFL.txt"
+  install -Dt "$pkgdir"/usr/share/fonts/TTF -m644 *.ttf
+  install -Dt "$pkgdir"/usr/share/licenses/$pkgname -m644 OFL.txt
 }
