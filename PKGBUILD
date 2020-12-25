@@ -1,8 +1,8 @@
 # Maintainer: nullableVoidPtr <nullableVoidPtr _ gmail _ com>
 
 pkgname=python-qiling-git
-pkgver=1.2.r95.g33a2b6d9
-pkgrel=2
+pkgver=1.2.r116.ge871122f
+pkgrel=3
 pkgdesc="An advanced binary emulation framework"
 url='https://qiling.io/'
 arch=('x86_64')
@@ -30,4 +30,9 @@ package() {
     cd "${srcdir}/${pkgname}"
 	export PYTHONHASHSEED=0
     python setup.py install --root="${pkgdir}" -O1 --skip-build
+}
+
+check() {
+    cd "${srcdir}/${pkgname}/tests"
+    ./test_elf.sh
 }
