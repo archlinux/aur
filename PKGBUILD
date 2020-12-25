@@ -1,23 +1,27 @@
-# Maintainer: Thomas Andrejak <thomas.andrejak@gmail.com>
-
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Thomas Andrejak <thomas.andrejak@gmail.com>
 pkgname=python-croniter
-pkgver=0.3.31
+_name=${pkgname#python-}
+pkgver=0.3.36
 pkgrel=1
-pkgdesc="python-croniter"
-arch=('i686' 'x86_64')
-url="https://pypi.org/project/croniter/"
+pkgdesc="A Python module to provide iteration for datetime object."
+arch=('any')
+url="https://github.com/kiorky/croniter"
 license=('MIT')
-depends=('python2')
-source=("https://files.pythonhosted.org/packages/29/19/62078c6b965b10d8c558202dbddc38292096ed567adfeb9d5570083f7b4e/croniter-0.3.31.tar.gz")
+depends=('python-dateutil' 'python-natsort')
+makedepends=('python-setuptools')
+source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('9d3098e50f7edc7480470455d42f09c501fa1bb7e2fc113526ec6e90b068f32c')
 
 build() {
-  cd "$srcdir"/croniter-$pkgver
-  python2 setup.py build
+	cd "$_name-$pkgver"
+	python setup.py build
 }
 
 package() {
-  cd "$srcdir"/croniter-$pkgver
-  python2 setup.py install --root="$pkgdir"
-}
+	cd "$_name-$pkgver"
+	export PYTHONHASHSEED=0
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
-md5sums=('84020f61103e8d715256547207fefe79')
+	install -Dm644 docs/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+}
