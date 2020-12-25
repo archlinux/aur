@@ -2,6 +2,7 @@
 
 pkgname=klogg-bin
 pkgver=20.12
+_subversion=0.813
 pkgrel=1
 pkgdesc="A multi-platform GUI application that helps browse and search through long and complex log files. It is designed with programmers and system administrators in mind and can be seen as a graphical, interactive combination of grep, less, and tail"
 arch=('x86_64')
@@ -10,8 +11,8 @@ license=('GPL3')
 provides=('klogg')
 depends=('qt5-base' 'hicolor-icon-theme')
 makedepends=('tar')
-source=("${pkgname%-bin}-${pkgver}.deb::https://github.com/variar/klogg/releases/download/v20.12/klogg-20.12.0.812-Linux.deb")
-sha256sums=('393d336fef476f200351f127625b990da3a6ae5b247a482ec8e3e0425f0c9b0b')
+source=("${pkgname%-bin}-${pkgver}.${_subversion}.deb::https://github.com/variar/klogg/releases/download/v${pkgver}/klogg-${pkgver}.${_subversion}-Linux.deb")
+sha256sums=('ee09b4a1ce3e1244e766690cdaaa6fd050ba4a2e52185b1e60834554713b4b83')
 
 package() {
   tar xvf data.tar.gz -C "${pkgdir}/"
