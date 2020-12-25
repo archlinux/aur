@@ -2,7 +2,7 @@
 
 pkgname=zettlr
 pkgver=1.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
@@ -14,6 +14,7 @@ optdepends=('pandoc: For exporting to various format'
             'ttf-lato: Display output in a more comfortable way')
 _csl_locale_commit=ecb8e70233e9a68e8b1dda4586061be8f8611a38 # Dec 11, 2020
 options=(!strip)
+install=install
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Zettlr/Zettlr/archive/v${pkgver}.tar.gz"
         pandoc-fix.patch::"https://patch-diff.githubusercontent.com/raw/Zettlr/Zettlr/pull/1565.patch"
         # citation style

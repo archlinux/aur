@@ -1,0 +1,6 @@
+post_upgrade() {
+    msg 'There are fix for pandoc export command'
+    msg 'In order to use the new command, make sure to "reset" it once under Advanced tab of Preference'
+    msg 'Or, if it contains customizations,'
+    msg 'Replace `--citeproc --bibliography "$bibliography$"` with `$bibliography$`.'
+}
