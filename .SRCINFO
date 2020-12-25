@@ -1,12 +1,12 @@
 pkgbase = ttf-fira-go
-	pkgdesc = FiraGO font family
+	pkgdesc = Independent Open Source typeface
 	pkgver = 1.001
 	pkgrel = 2
 	url = https://bboxtype.com/typefaces/FiraGO/
 	arch = any
 	license = custom:OFL
-	source = https://github.com/bBoxType/FiraGO/archive/715cd3e8b59179822cd5b86933ecfc254cd1e74e.zip
-	sha256sums = 44d2acf57da774dc067b464399ecc1298b0dffc16d74c827e0a8df40aaff360a
+	source = ttf-fira-go-715cd3e8b59179822cd5b86933ecfc254cd1e74e.tar.gz::https://github.com/bBoxType/FiraGO/archive/715cd3e8b59179822cd5b86933ecfc254cd1e74e.tar.gz
+	sha256sums = 70baf5380062b7e4d185ae71b02e4efb5378878950d777f7fa9783e23afeffae
 
 pkgname = ttf-fira-go
 
