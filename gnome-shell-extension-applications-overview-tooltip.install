@@ -1,5 +1,5 @@
 # Colored makepkg-like functions
-
+TERM=dumb
 all_off="$(tput sgr0)"
 bold="${all_off}$(tput bold)"
 blue="${bold}$(tput setaf 4)"
