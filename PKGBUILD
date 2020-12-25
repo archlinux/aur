@@ -1,7 +1,7 @@
 # Maintainer: BrLi <brli at chakralinux dot org>
 
 pkgname=zettlr
-pkgver=1.8.2
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
@@ -12,22 +12,23 @@ makedepends=(yarn git)
 optdepends=('pandoc: For exporting to various format'
             'texlive-bin: For Latex support'
             'ttf-lato: Display output in a more comfortable way')
-_commit=ffeb9cca92736bf65faebe6088b4076058f350fd # 1.8.2^0
 _csl_locale_commit=ecb8e70233e9a68e8b1dda4586061be8f8611a38 # Dec 11, 2020
 options=(!strip)
-source=(git+https://github.com/Zettlr/Zettlr.git#commit="${_commit}"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Zettlr/Zettlr/archive/v${pkgver}.tar.gz"
+        pandoc-fix.patch::"https://patch-diff.githubusercontent.com/raw/Zettlr/Zettlr/pull/1565.patch"
         # citation style
-        https://github.com/citation-style-language/locales/archive/"${_csl_locale_commit}.zip"
+        "https://github.com/citation-style-language/locales/archive/${_csl_locale_commit}.zip"
         https://github.com/citation-style-language/styles/raw/master/chicago-author-date.csl
         # Chinese(Taiwan) translation
         https://github.com/Brli/zetter-zh-TW/raw/master/zh-TW.json)
-sha256sums=('SKIP'
+sha256sums=('da3ba36a98587e258bdb09700343b7a067ee4659aaef6b5021b16dd5b9d00400'
+            'ee0596aba955164e9129bf29d0cf387c133f1ba0bcab4777e2aba4cb9c962dd7'
             '24503a6cd5b3651a7003353811ae82d3ed707ec8ff932d341668c2ad377434b6'
             '2b7cd6c1c9be4add8c660fb9c6ca54f1b6c3c4f49d6ed9fa39c9f9b10fcca6f4'
-            '14b1534a8ab29eade7d6cdaf92f539dc2851e312e922ef5923b8566b1bc070d3')
+            '9aef5eec4876aa180fa55cf3bc213a5cf68ab96567bc4021ba58a32fa0fa9f94')
 
 prepare() {
-    cd "${srcdir}/Zettlr"
+    cd "${srcdir}/Zettlr-${pkgver}"
 
     # Manually add community translation
     cp "${srcdir}/zh-TW.json" source/common/lang/
@@ -36,10 +37,14 @@ prepare() {
     cp $(find "${srcdir}/locales-${_csl_locale_commit}/" -name "*.xml") source/app/service-providers/assets/csl-locales/
     cp "${srcdir}/locales-${_csl_locale_commit}/locales.json" source/app/service-providers/assets/csl-locales/
     cp "${srcdir}/chicago-author-date.csl" source/app/service-providers/assets/csl-styles/
+
+    # fake Pandoc
+    patch -Np1 -i "${srcdir}/pandoc-fix.patch"
+    ln -sf /dev/null resources/pandoc
 }
 
 build() {
-    cd "${srcdir}/Zettlr"
+    cd "${srcdir}/Zettlr-${pkgver}"
     local NODE_ENV=''
     yarn install --cache-folder "${srcdir}/cache" \
                  --link-folder "${srcdir}/link" \
@@ -52,12 +57,12 @@ build() {
     node node_modules/.bin/electron-forge package
 
     # Remove fonts
-    cd "${srcdir}/Zettlr/.webpack"
+    cd "${srcdir}/Zettlr-${pkgver}/.webpack"
     find . -type d -name "fonts" -exec rm -rf {} +
 }
 
 # check() {
-#     cd "${srcdir}/Zettlr"
+#     cd "${srcdir}/Zettlr-${pkgver}"
 #     # Require electron module to test
 #     yarn add --cache-folder "${srcdir}/cache" --link-folder "${srcdir}/link" electron
 #     # The "test" function in package.json
@@ -74,7 +79,7 @@ package() {
     local _destdir=usr/lib/"${pkgname}"
     install -dm755 "${pkgdir}/${_destdir}"
 
-    cd "${srcdir}/Zettlr"
+    cd "${srcdir}/Zettlr-${pkgver}"
 
     # Copy the generated electron project
     cp -r --no-preserve=ownership --preserve=mode ./.webpack "${pkgdir}/${_destdir}/"
@@ -88,7 +93,7 @@ END
 
     # install icons of various sizes to hi-color theme
     for px in 16 24 32 48 64 96 128 256 512; do
-        install -Dm644 "${srcdir}/Zettlr/resources/icons/png/${px}x${px}.png" \
+        install -Dm644 "${srcdir}/Zettlr-${pkgver}/resources/icons/png/${px}x${px}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${px}x${px}/apps/${pkgname}.png"
     done
 
@@ -107,5 +112,5 @@ Categories=Office;
 END
 
     # license
-    install -Dm644 "${srcdir}/Zettlr/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/Zettlr-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
