@@ -1,12 +1,12 @@
 # Maintainer: Christian Schendel <doppelhelix at gmail dot com>
 pkgname=gnome-shell-extension-applications-overview-tooltip-git
 pkgver=10.r2.g2e81270
-pkgrel=3
+pkgrel=4
 pkgdesc="Shows a tooltip over applications icons on applications overview"
 arch=(any)
 url="https://github.com/RaphaelRochet/applications-overview-tooltip"
 install=${pkgname%-git}.install
-license=('GPL')
+license=('unknown')
 depends=('gnome-shell>=3.38')
 makedepends=('git' 'glib2')
 conflicts=("${pkgname%-git}")
@@ -32,4 +32,3 @@ package() {
   fi
   chmod -R 755 "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/"
 }
-
