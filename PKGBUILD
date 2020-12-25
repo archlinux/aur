@@ -3,7 +3,7 @@
 
 pkgbase=linux-drm-next-git
 pkgdesc='Linux kernel with bleeding-edge GPU drivers'
-pkgver=5.11.968737.b10733527bfd
+pkgver=5.11.970668.5b2fc08c455b
 _product="${pkgbase%-git}"
 _branch="${_product#linux-}"
 pkgrel=1
@@ -11,7 +11,7 @@ arch=(x86_64)
 url='https://cgit.freedesktop.org/drm/drm'
 license=(GPL2)
 makedepends=(
-  bc kmod libelf pahole
+  bc kmod libelf pahole cpio perl
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
@@ -20,10 +20,9 @@ _srcname="${pkgbase}"
 source=(
   "$_srcname::git://anongit.freedesktop.org/drm/drm#branch=${_branch}"
   config         # the main kernel config file
-  #sphinx-workaround.patch
 )
 sha256sums=('SKIP'
-            'cf69b81648a07ebedb274ed26bed3c4d2ff75c6665ecaca0a724b148c70c9c7c')
+            'd8b28f67a0f0bc56e5de858141dee3607fbac48eac41b0e9f7f69685f7475b53')
 
 pkgver() {
   cd "${_srcname}"
