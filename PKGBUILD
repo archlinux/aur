@@ -3,8 +3,8 @@
 
 pkgname=sic-image-cli
 _pkgname=sic
-pkgver=0.14.0
-pkgrel=3
+pkgver=0.15.0
+pkgrel=1
 pkgdesc="Accessible image processing and conversion from the terminal"
 arch=('x86_64')
 url="https://github.com/foresterre/sic"
@@ -13,7 +13,7 @@ conflicts=("$_pkgname")
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$url/releases/download/v$pkgver/shell_completions.zip")
-sha512sums=('dffd61d089fa83b13cfbc0083a0528df68feb39a3f9c8d307289e0cfb6372a507c0c7789d0a1beba144424fff15445f7689d2c8ff7093a984244b9d1fd506aad'
+sha512sums=('6509b227ea1585355275f2086c5b92f0452c12cca0680b09f0692903ce3135c00289578a76f3b12dd4e6e0c87c9c711ad706c5bfd07f29919d9fa9c35074b906'
             'c3ce7c681c50a4bba8f29cca4f3269b857bd7f5f64b7b84c411fb41d4ff0ace6c06aae760bdcc81be0a750f271bac2cf80f6fc8376d5f3e293d915e2b37d3ecc')
 
 build() {
