@@ -7,7 +7,7 @@
 pkgname=wine-stable-next
 _pkgver=6.0-rc3
 pkgver=${_pkgver/-/}
-pkgrel=1
+pkgrel=2
 
 source=(https://dl.winehq.org/wine/source/6.0/wine-$_pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
@@ -45,15 +45,16 @@ makedepends=(alsa-lib fontforge giflib gnutls gsm
   lib32-vulkan-icd-loader)
 
 optdepends=(alsa-lib alsa-plugins dosbox giflib gnutls gsm
-  gst-plugins-base-libs libcups libgphoto2 libjpeg-turbo libldap
-  libpng libpulse libxcomposite libxinerama libxslt mpg123 ncurses
-  ocl-icd openal samba sane sdl2 v4l-utils vkd3d vulkan-icd-loader
-  lib32-alsa-lib lib32-alsa-plugins lib32-giflib lib32-gnutls
-  lib32-gst-plugins-base-libs lib32-libcups lib32-libjpeg-turbo
-  lib32-libldap lib32-libpng lib32-libpulse lib32-libxcomposite
-  lib32-libxinerama lib32-libxslt lib32-mpg123 lib32-ncurses
-  lib32-ocl-icd lib32-openal lib32-sdl2 lib32-v4l-utils lib32-vkd3d
-  lib32-vulkan-icd-loader)
+  gst-plugins-base gst-plugins-base-libs gst-plugins-good libcups
+  libgphoto2 libjpeg-turbo libldap libpng libpulse libxcomposite
+  libxinerama libxslt mpg123 ncurses ocl-icd openal samba sane sdl2
+  v4l-utils vkd3d vulkan-icd-loader lib32-alsa-lib lib32-alsa-plugins
+  lib32-giflib lib32-gnutls lib32-gst-plugins-base
+  lib32-gst-plugins-base-libs lib32-gst-plugins-good lib32-libcups
+  lib32-libjpeg-turbo lib32-libldap lib32-libpng lib32-libpulse
+  lib32-libxcomposite lib32-libxinerama lib32-libxslt lib32-mpg123
+  lib32-ncurses lib32-ocl-icd lib32-openal lib32-sdl2 lib32-v4l-utils
+  lib32-vkd3d lib32-vulkan-icd-loader)
 
 provides=("wine=$pkgver" "wine-stable=$pkgver")
 conflicts=("wine" "wine-stable")
