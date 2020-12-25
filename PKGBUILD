@@ -27,14 +27,13 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
             'SKIP')
 #validpgpkeys=('2C732B1C0DBEF678AB3AF606A32F17FD0055C305'  # Tom Yu <tlyu@mit.edu>
 #              'C4493CB739F4A89F9852CBC20CBA08575F8372DF') # Greg Hudson <ghudson@mit.edu>
 
 pkgver() {
     cd krb5
-    git describe --tags | sed 's/-/+/g'
+    git describe --tags --always  | sed 's/-/+/g'
 }
 
 prepare() {
@@ -51,6 +50,9 @@ build() {
    cd krb5/src
    export CFLAGS+=" -fPIC -fno-strict-aliasing -fstack-protector-all"
    export CPPFLAGS+=" -I/usr/include/et"
+
+   autoreconf -fi
+
    ./configure --prefix=/usr \
                --sbindir=/usr/bin \
                --sysconfdir=/etc \
@@ -79,8 +81,8 @@ package() {
 
    install -Dm 644 util/ac_check_krb5.m4 -t "${pkgdir}/usr/share/aclocal"
 
-   install -Dm 644 "${srcdir}"/${pkgname}-${pkgver}/NOTICE \
-     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+   install -Dm 644 "${srcdir}"/krb5/NOTICE \
+     "${pkgdir}/usr/share/licenses/krb5/LICENSE"
 
    # systemd stuff
    install -Dm 644 "${srcdir}"/krb5-{kadmind.service,kdc.service,kpropd.service,kpropd@.service,kpropd.socket} \

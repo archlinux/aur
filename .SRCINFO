@@ -28,7 +28,6 @@ pkgbase = krb5-git
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = SKIP
 
 pkgname = krb5-git
 
