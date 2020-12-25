@@ -10,22 +10,22 @@ license=('GPL3')
 makedepends=('gcc' 'git' 'ncurses')
 provides=('memstrack')
 conflicts=('memstrack')
-source=("git+https://github.com/ryncsn/memstrack.git")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd memstrack
-    git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+  cd memstrack
+  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
-    cd memstrack
-    make
+  cd memstrack
+  make
 }
 
 package() {
-    cd memstrack
+  cd memstrack
 
-    make DESTDIR="$pkgdir" install
-    install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+  make DESTDIR="$pkgdir" install
+  install -Dt "$pkgdir"/usr/share/licenses/$pkgname -m644 LICENSE
 }
