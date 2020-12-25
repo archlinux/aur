@@ -1,7 +1,7 @@
 pkgbase = xorg-xwayland-hidpi-git
 	pkgdesc = Run X clients under Wayland, with HiDPI (git version)
 	pkgver = 1.20.0.r804.g5e3900904
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xorg.freedesktop.org
 	arch = x86_64
 	groups = xorg
@@ -19,7 +19,6 @@ pkgbase = xorg-xwayland-hidpi-git
 	makedepends = wayland-protocols
 	makedepends = libdrm
 	makedepends = libepoxy
-	makedepends = mesa-libgl
 	makedepends = systemd
 	makedepends = egl-wayland
 	depends = nettle

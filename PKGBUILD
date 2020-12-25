@@ -3,7 +3,7 @@
 
 pkgname=xorg-xwayland-hidpi-git
 pkgver=1.20.0.r804.g5e3900904
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -16,7 +16,7 @@ makedepends=('meson' 'git'
              'pixman' 'libxkbfile' 'libxfont2' 'dbus'
              'xorg-font-util'
              'wayland' 'wayland-protocols'
-             'libdrm' 'libepoxy' 'mesa-libgl'
+             'libdrm' 'libepoxy'
              'systemd'
              'egl-wayland'
 )
