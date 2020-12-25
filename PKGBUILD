@@ -2,8 +2,8 @@
 # Contributor: Lucki <https://aur.archlinux.org/account/Lucki>
 
 pkgname=papermerge
-pkgver=1.5.3
-pkgrel=2
+pkgver=1.5.4
+pkgrel=1
 pkgdesc="An open source document management system (DMS) primarily designed for archiving and retrieving your digital documents."
 arch=('any')
 url="https://github.com/ciur/papermerge"
@@ -19,7 +19,7 @@ source=("$pkgname-$pkgver.src.tar.gz::https://github.com/ciur/$pkgname/archive/v
       "$pkgname-gunicorn.service"
       "$pkgname-worker.service"
       "$pkgname.sh")
-sha512sums=('f6ac25b363ddf81b9e2631c1b963a1f04ed679a7174caac91bf42ef5b81929ad49b1be3a5ace17e038406a688a773f0e0b80b95549dbeb5414823374a33b98e7'
+sha512sums=('352dc2289a90282fe99e2b3a01e492d8cee127af4c560c410abd8a393a472d4942b0c7036a14725e8223a14b04ae4241b0b2cf972b51dff6775bf7445ad765e1'
           'dacb635083fea138884836e8eae08e9c8c6685e08d8836960cd1e5c27ef59b5d4718ce56c4bff883af7d380a983866581cc479ce259ac67055a014dbddaa6fbd'
           'eb408d6d6c0072b4883cae9b6aa591935b910585e93aa6fdacbb543dbc4233588678d396c06d0f10b7c74b4d393af19b8be526d094821de23792c29df593d4a5'
           '6b14701ab03192756f00d7d9105aceba82c808341099819e4830e601d005e808261c381b0580d65e9d0d489a6906bf85b249edb6b5f6d8bd5173f2b78e8fefce'
