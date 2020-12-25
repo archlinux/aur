@@ -14,7 +14,6 @@ depends=('chromaprint' 'flac' 'hidapi' 'lame' 'libsndfile' 'libmodplug' 'libid3t
 'libportmidi.so' 'librubberband.so' 'libtheora' 'opusfile' 'protobuf' 'qt5-script'
 'qt5-svg' 'qt5-x11extras' 'qtkeychain' 'soundtouch' 'speex' 'taglib' 'upower' 'libebur128' 'qt5-declarative')
 makedepends=('git' 'glu' 'lv2' 'qt5-tools' 'cmake' 'vamp-plugin-sdk')
-#checkdepends=('xorg-server-xvfb')
 provides=('mixxx')
 conflicts=('mixxx')
 source=("${pkgname%-*}::git+https://github.com/mixxxdj/mixxx.git#branch=2.3")
@@ -26,15 +25,10 @@ pkgver() {
 	echo "r$(git log --pretty=oneline --first-parent | wc -l)"
 }
 
-#prepare() {
-#	mkdir "$srcdir/${pkgname%-*}/cmake_build"
-#	cmake -DCMAKE_INSTALL_PREFIX=/usr -S $srcdir/${pkgname%-*} -B $srcdir/${pkgname%-*}/cmake_build
-#}
-
 prepare() {
 	mkdir "$srcdir/${pkgname%-*}/cmake_build"
 	cmake -S $srcdir/${pkgname%-*} -B $srcdir/${pkgname%-*}/cmake_build \
-	-DCMAKE_INSTALL_PREFIX=/ \
+	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DINSTALL_USER_UDEV_RULES=OFF \
 	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 	-DOPTIMIZE=native \
@@ -52,15 +46,10 @@ build() {
   cmake --build $srcdir/${pkgname%-*}/cmake_build --parallel `nproc`
 }
 
-#check() {
-#	cd "$srcdir/${pkgname%-*}"
-#	xvfb-run lin64_build/${pkgname%-*}-test
-#}
-
 package() {
 	mkdir -p $pkgdir/usr/lib/udev/rules.d/
 	cp $srcdir/${pkgname%-*}/res/linux/mixxx-usb-uaccess.rules $pkgdir/usr/lib/udev/rules.d/99-mixxx-usb-uaccess.rules
-	chmod a+r $pkgdir/usr/lib/udev/rules.d/mixxx-usb-uaccess.rules
+	chmod a+r $pkgdir/usr/lib/udev/rules.d/99-mixxx-usb-uaccess.rules
 	DESTDIR="$pkgdir" cmake --install $srcdir/${pkgname%-*}/cmake_build
 }
 
