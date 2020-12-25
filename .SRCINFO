@@ -1,0 +1,15 @@
+pkgbase = paperboy-bin
+	pkgdesc = A small .pdf management utility
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/2mol/pboy
+	arch = x86_64
+	license = BSD
+	provides = paperboy
+	conflicts = paperboy
+	options = !strip
+	source = paperboy-bin-1.4.tar.gz::https://github.com/2mol/pboy/releases/download/1.4/pboy-linux.tar.gz
+	sha512sums = 967aa909341506aab36296a24b749d4c1e464a32d96d2cd7ff9ce16b46159e0222445bb8ff3aef0f7dcd7db3d0e4ffadbff6898795bdc0a0a03e00990afb851e
+
+pkgname = paperboy-bin
+
