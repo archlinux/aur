@@ -1,6 +1,6 @@
 pkgbase = waterfox-g3-git
 	pkgdesc = Private and optimized Firefox fork based on the LTS Release of Firefox.
-	pkgver = 68.0+f7d3e35c3d34
+	pkgver = 78.6.0+cf61d2db8f63
 	pkgrel = 1
 	url = https://www.waterfoxproject.org/
 	install = waterfox-g3.install
