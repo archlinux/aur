@@ -1,10 +1,11 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 pkgname=gnome-shell-extension-noannoyance_v2-git
 pkgver=r34.f6e7691
-pkgrel=1
+pkgrel=2
 pkgdesc="Removes the 'Window is ready' notification and puts the window into focus"
 arch=(any)
 url="https://github.com/BjoernDaase/noannoyance"
+install=${pkgname%-git}.install
 license=('GPL2')
 depends=('gnome-shell>=3.30')
 makedepends=('git')
