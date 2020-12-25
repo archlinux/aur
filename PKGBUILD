@@ -3,7 +3,7 @@
 
 pkgname=lens
 pkgdesc='The Kubernetes IDE'
-pkgver=4.0.3
+pkgver=4.0.5
 pkgrel=1
 arch=('x86_64')
 license=('MIT')
@@ -11,7 +11,7 @@ url='https://k8slens.dev'
 makedepends=('npm' 'nodejs-lts-erbium' 'yarn')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lensapp/lens/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('e4e556496291addaaa807facf52e0d3f78a5265a0c45e511d51b76bb1e83d6e2'
+sha256sums=('115bedf8908b943b14777c1d210a8b576551e929120d7ef991f24f8024910671'
             '41cd0bb6b27f407f1963b2346b2396e047faeda759ca7a394ac5a19bb2c9e892')
 
 build() {
