@@ -1,7 +1,7 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 pkgname=gnome-shell-extension-noannoyance_v2-git
 pkgver=r34.f6e7691
-pkgrel=2
+pkgrel=1
 pkgdesc="Removes the 'Window is ready' notification and puts the window into focus"
 arch=(any)
 url="https://github.com/BjoernDaase/noannoyance"
@@ -22,11 +22,8 @@ pkgver() {
 package() {
   local _uuid="noannoyance@daase.net"
   local _destdir="$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
-  
   cd "$srcdir/${pkgname%-git}"
-
-#  find . \( -name "*.js" -o -name "*.json" \) -exec install -Dm 644 {} ${_destdir}/{} \;
-  find . -regextype posix-egrep -regex ".*\.(js|json|md)$" -exec install -Dm 644 {} ${_destdir}/{} \;
+  find . -regextype posix-egrep -regex ".*\.(js|json|md)$" -exec\
+   install -Dm 644 {} ${_destdir}/{} \;
   chmod -R 755 "${_destdir}/"
 }
-
