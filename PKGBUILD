@@ -16,7 +16,7 @@ makedepends=('perl')
 provides=(lib32-krb5)
 conflicts=(lib32-krb5)
 options=('!emptydirs')
-source=("https://github.com/krb5/krb5"
+source=("git+https://github.com/krb5/krb5"
         krb5-config_LDFLAGS.patch)
 sha512sums=('SKIP'
             'SKIP')
