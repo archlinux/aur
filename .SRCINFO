@@ -1,7 +1,7 @@
 pkgbase = bup
 	pkgdesc = Efficient backup system based on the git packfile format
 	pkgver = 0.31
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bup.github.io/
 	changelog = changelog.md
 	arch = x86_64
@@ -18,8 +18,10 @@ pkgbase = bup
 	conflicts = bup-git
 	source = bup-0.31.tar.gz::https://github.com/bup/bup/archive/0.31.tar.gz
 	source = argv.patch::https://github.com/bup/bup/commit/3a2a997771a1af6722059f15589fc15866d4bc54.patch
+	source = python.patch
 	sha256sums = 2f54351aed653b4b9567d3a534af598a5bc63b32efd7cc593bcecac3b89e16d1
 	sha256sums = 09b639aad2cd7e71c76b80011d566a9fad82e748eabf795fcdf2ec0ec3c28315
+	sha256sums = 24e2bc085f9b778cd8f553342436bf7174fd3983c0e34ce7ba84b2012dfa4062
 
 pkgname = bup
 
