@@ -2,7 +2,7 @@
 
 pkgname=ignition-gazebo
 pkgver=4.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source robotics simulator."
 arch=('x86_64')
 url="https://ignitionrobotics.org/libs/gazebo"
@@ -11,8 +11,8 @@ depends=('benchmark' 'gflags' 'tinyxml2' 'tinyxml' 'eigen' 'qt5-declarative'
          'ignition-cmake' 'ignition-common' 'ignition-math'
          'ignition-plugin' 'ignition-physics' 'ignition-rendering'
          'ignition-tools' 'ignition-transport' 'ignition-gui' 'ignition-msgs'
-         'sdformat' 'ignition-fuel_tools')
-makedepends=('cmake' 'ruby-ronn' 'doxygen')
+         'sdformat' 'ignition-fuel_tools' 'ignition-sensors')
+makedepends=('cmake' 'ruby-ronn' 'doxygen' 'clang')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-gazebo/archive/${pkgname}4_${pkgver}.tar.gz")
 sha256sums=('31f85b3b14be31a492d138be59490d868eb5794b3049b9b9c8324e75e8648424')
 
