@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=amberfish-git
-pkgver=2.2.0.r8
+pkgver=2.3.0.r3
 pkgrel=1
 pkgdesc="A general purpose text retrieval software"
 arch=('i686' 'x86_64')
@@ -23,6 +23,7 @@ pkgver() {
 
 build() {
   cd ${pkgname%-git}
+  autoconf 
   CXXFLAGS+="-std=c++11" ${FLAGS} ./configure --prefix=/usr \
               --mandir=/usr/share/man \
               LDFLAGS=''
