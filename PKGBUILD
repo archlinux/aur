@@ -1,17 +1,17 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=pdfstudioviewer
 _pkgname=pdfstudioviewer2020
-pkgver=2020.1.1
-pkgrel=2
+pkgver=2020.3.0
+pkgrel=1
 pkgdesc="Review, annotate, and edit PDF Documents"
 arch=('x86_64')
 url="https://www.qoppa.com/pdfstudioviewer"
 license=('custom')
-depends=('java-runtime=8' 'desktop-file-utils' 'sane')
+depends=('java-runtime=8' 'sane')
 source=("${pkgname}-${pkgver}_linux64.deb::https://download.qoppa.com/$pkgname/PDFStudioViewer_linux64.deb"
         "$pkgname.desktop"
         "$pkgname.sh")
-sha256sums=('b5a867aa4a1a8ed7de08405397a7ddb0368a16f67978b78c983f5130db8fb7c2'
+sha256sums=('0a70d0fc1554d96db284c66a49bf3eda184267b06419e012d1f543dee4d03817'
             '531354a4fe61e8b16ad3123cd49df7140d4ac1ef3c5e75520b9250d55c398481'
             'eb17f775395167664d3bb22dc0f0ba54a6ba9fa975c2a1076716090a8e9a39aa')
 
@@ -28,7 +28,7 @@ prepare() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -dm755 "$pkgdir/opt/$pkgname"
+	install -d "$pkgdir/opt/$pkgname"
 	cp -r "opt/$_pkgname/." "$pkgdir/opt/$pkgname/"
 
 	install -Dm644 "opt/$_pkgname/.install4j/$_pkgname.png" \
