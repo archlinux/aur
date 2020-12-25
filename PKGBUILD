@@ -1,7 +1,7 @@
 # Maintainer: Mykyta Poturai <mykyta.poturai@tutanota.com>
 pkgname=hey-mail-bin
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Hey Mail desktop app"
 url="https://hey.com/apps/"
 arch=('x86_64')
@@ -38,5 +38,5 @@ package() {
 	rm -rf "$pkgdir/opt/hey-mail/libGLESv2.so"
 	rm -rf "$pkgdir/opt/hey-mail/libEGL.so"
 	ln -s /opt/hey-mail/hey-mail "$pkgdir/usr/bin/hey-mail"
-	cp root/meta/gui/hey-mail.desktop "$pkgdir/usr/share/applications/"
+    sed "s/\${SNAP}/\/opt\/hey-mail/" root/meta/gui/hey-mail.desktop > "$pkgdir/usr/share/applications/hey-mail.desktop"
 }
