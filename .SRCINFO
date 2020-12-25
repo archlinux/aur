@@ -1,0 +1,20 @@
+pkgbase = lib32-libtiff-git
+	pkgdesc = Library for manipulation of TIFF images (32-bit)
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = http://www.simplesystems.org/libtiff/
+	arch = x86_64
+	license = custom
+	depends = libtiff
+	depends = lib32-gcc-libs
+	depends = lib32-libjpeg
+	depends = lib32-zlib
+	depends = lib32-xz
+	depends = lib32-zstd
+	provides = lib32-libtiff
+	conflicts = lib32-libtiff
+	source = git+https://gitlab.com/libtiff/libtiff.git
+	sha512sums = SKIP
+
+pkgname = lib32-libtiff-git
+
