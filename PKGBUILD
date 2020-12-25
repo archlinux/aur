@@ -23,7 +23,7 @@ _pgo=true
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
 pkgver=83.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -47,7 +47,7 @@ depends=('mozilla-common' 'libxt' 'mime-types'
 makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake'
              'xorg-server-xvfb' 'libpulse' 'inetutils' 'autoconf2.13'
              'cargo' 'mercurial' 'llvm' 'clang' 'rust' 'jack'
-             'gtk2' 'nodejs' 'cbindgen' 'nasm' 'xz'
+             'gtk2' 'nodejs' 'cbindgen=0.15.0' 'nasm' 'xz'
              'python' 'python-psutil' 'python-zstandard')
 
 
