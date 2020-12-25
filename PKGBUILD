@@ -3,9 +3,9 @@
 
 pkgbase=linux-amd-git
 pkgdesc='Linux kernel with AMDGPU WIP patches'
-pkgver=5.9.934420.11bc98bd71fe
+pkgver=5.11.968815.a135a1b4c4db
 _product="${pkgbase%-git}"
-_kernel_rel=5.9
+_kernel_rel=5.11
 _branch=drm-next-${_kernel_rel}
 pkgrel=1
 arch=(x86_64)
@@ -21,11 +21,9 @@ _srcname=linux-agd5f
 source=(
   "$_srcname::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
   config         # the main kernel config file
-  sphinx-workaround.patch
 )
 sha256sums=('SKIP'
-            'cf69b81648a07ebedb274ed26bed3c4d2ff75c6665ecaca0a724b148c70c9c7c'
-            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c')
+            'cf69b81648a07ebedb274ed26bed3c4d2ff75c6665ecaca0a724b148c70c9c7c')
 
 pkgver() {
   cd "${_srcname}"
