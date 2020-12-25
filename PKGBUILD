@@ -3,11 +3,11 @@
 # shellcheck disable=SC2034,2154,2148
 
 pkgname=lix
-pkgver=0.9.34
+pkgver=0.9.35
 pkgrel=1
 changelog=.CHANGELOG
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/SimonN/LixD/archive/v$pkgver.tar.gz")
-sha512sums=('470902b93681887629dd287d7bb27bb55dd42831fc394c7f4a26de5d37460920156fae1dfc8ed6c3e311fb031f455f8accf38878b1fee928621f31d5ac56fcb1')
+sha512sums=('147e0a94640aea79c4c3205391a36d09af5403877dd9174115ec73717100142ad94cc0259308ff19d8cecceb87b0e16209aaa3bc586d6162b85d14c44aa57acc')
 
 _gitname=LixD
 pkgdesc="An action-puzzle game inspired by Lemmings"
