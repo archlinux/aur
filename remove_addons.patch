@@ -1,30 +1,25 @@
 diff --git a/browser/extensions/moz.build b/browser/extensions/moz.build
-index f71ece6..bd91686 100644
+index 0eb3c53..fb94b5c 100644
 --- a/browser/extensions/moz.build
 +++ b/browser/extensions/moz.build
-@@ -5,9 +5,6 @@
+@@ -4,4 +4,4 @@
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
  # file, You can obtain one at http://mozilla.org/MPL/2.0/.
  
- DIRS += [
--    'doh-rollout',
-     'formautofill',
--    'screenshots',
--    'webcompat',
--    'report-site-issue'
-+    'screenshots'
- ]
+-DIRS += ["doh-rollout", "formautofill", "screenshots", "webcompat", "report-site-issue"]
++DIRS += ["formautofill", "screenshots"]
 diff --git a/browser/locales/Makefile.in b/browser/locales/Makefile.in
-index 05f0242..7c9737a 100644
+index 496379c..dd6f359 100644
 --- a/browser/locales/Makefile.in
 +++ b/browser/locales/Makefile.in
-@@ -61,7 +61,6 @@ libs-%:
+@@ -61,7 +61,6 @@ l10n-%:
  ifneq (,$(wildcard ../extensions/formautofill/locales))
  	@$(MAKE) -C ../extensions/formautofill/locales AB_CD=$* XPI_NAME=locale-$*
  endif
 -	@$(MAKE) -C ../extensions/report-site-issue/locales AB_CD=$* XPI_NAME=locale-$*
  	@$(MAKE) -C ../../devtools/client/locales AB_CD=$* XPI_NAME=locale-$* XPI_ROOT_APPID='$(XPI_ROOT_APPID)'
  	@$(MAKE) -C ../../devtools/startup/locales AB_CD=$* XPI_NAME=locale-$* XPI_ROOT_APPID='$(XPI_ROOT_APPID)'
- 	@$(MAKE) libs AB_CD=$* XPI_NAME=locale-$* PREF_DIR=$(PREF_DIR)
+ 	@$(MAKE) l10n AB_CD=$* XPI_NAME=locale-$* PREF_DIR=$(PREF_DIR)
 @@ -82,7 +81,6 @@ endif
  	@$(MAKE) -C ../../devtools/startup/locales chrome AB_CD=$*
  	@$(MAKE) chrome AB_CD=$*
@@ -34,17 +29,17 @@ index 05f0242..7c9737a 100644
  package-win32-installer: $(SUBMAKEFILES)
  	$(MAKE) -C ../installer/windows CONFIG_DIR=l10ngen ZIP_IN='$(ZIP_OUT)' installer
 diff --git a/browser/locales/filter.py b/browser/locales/filter.py
-index 1fc9b14..d8a9ee2 100755
+index bb2e992..7d7768e 100644
 --- a/browser/locales/filter.py
 +++ b/browser/locales/filter.py
-@@ -13,7 +13,6 @@ def test(mod, path, entity=None):
-                    "browser",
-                    "browser/extensions/formautofill",
-                    "browser/extensions/fxmonitor",
--                   "browser/extensions/report-site-issue",
-                    "extensions/spellcheck",
-                    "other-licenses/branding/firefox",
-                    "browser/branding/official",
+@@ -20,7 +20,6 @@ def test(mod, path, entity=None):
+         "browser",
+         "browser/extensions/formautofill",
+         "browser/extensions/fxmonitor",
+-        "browser/extensions/report-site-issue",
+         "extensions/spellcheck",
+         "other-licenses/branding/firefox",
+         "browser/branding/official",
 diff --git a/browser/locales/l10n.ini b/browser/locales/l10n.ini
 index f4cb7ca..4efac13 100644
 --- a/browser/locales/l10n.ini
@@ -58,7 +53,7 @@ index f4cb7ca..4efac13 100644
  [includes]
  # non-central apps might want to use %(topsrcdir)s here, or other vars
 diff --git a/browser/locales/l10n.toml b/browser/locales/l10n.toml
-index 0b53c52..f8b605d 100644
+index b9b18fe..af7c583 100644
 --- a/browser/locales/l10n.toml
 +++ b/browser/locales/l10n.toml
 @@ -133,10 +133,6 @@ locales = [

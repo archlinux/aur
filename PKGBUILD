@@ -5,7 +5,7 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=83.0
+pkgver=84.0
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
@@ -13,7 +13,7 @@ license=(MPL GPL LGPL)
 url="https://librewolf-community.gitlab.io/"
 depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
-             'rust<1:1.48.0' # rust 1.48.0 causes firefox / packed_simd building to fail
+             rust
              autoconf2.13 clang llvm jack gtk2 nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils lld)
 optdepends=('networkmanager: Location detection via available WiFi networks'
@@ -39,18 +39,18 @@ source_aarch64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/
                 arm.patch
                 https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch)
 
-sha256sums_x86_64=('d69e84e8b8449f828683d274c24e03095858362bfed21b08bdd7fe715eea5398'
+sha256sums_x86_64=('23273ef0165b243f5d0908c38e7854d38070282c9b526e8d93b7503cd5f69138'
                    '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
                    'SKIP'
                    'SKIP'
                    '682bf4bf5d79db0080aa132235a95b25745c8ef944d2a2e1fed985489d894df5'
-                   '41719289b309912c4b6bc86b41594f671427979481a90c32a9d3d0bf1cdd6d44')
-sha256sums_aarch64=('d69e84e8b8449f828683d274c24e03095858362bfed21b08bdd7fe715eea5398'
+                   'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6')
+sha256sums_aarch64=('23273ef0165b243f5d0908c38e7854d38070282c9b526e8d93b7503cd5f69138'
                     '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
                     'SKIP'
                     'SKIP'
                     '682bf4bf5d79db0080aa132235a95b25745c8ef944d2a2e1fed985489d894df5'
-                    '41719289b309912c4b6bc86b41594f671427979481a90c32a9d3d0bf1cdd6d44'
+                    'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
                     '6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7'
                     '2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
 
