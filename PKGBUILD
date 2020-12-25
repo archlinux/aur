@@ -92,7 +92,7 @@ ac_add_options --disable-gamepad
 #ac_add_options --disable-url-classifier
 #ac_add_options --disable-userinfo
 
-mk_add_options MOZ_MAKE_FLAGS="-j4"
+#mk_add_options MOZ_MAKE_FLAGS="-j4"
 mk_add_options PYTHON=/usr/bin/python2
 EOF
 }
