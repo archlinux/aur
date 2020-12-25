@@ -3,8 +3,8 @@
 
 pkgbase=linux-pf-git
 pkgdesc="Linux pf-kernel (git version)"
-pkgver=5.9.6.r3.gdfefb60cce80
-_kernel_rel=5.9
+pkgver=5.10.2.r0.ge560c558cdeb
+_kernel_rel=5.10
 _branch=pf-${_kernel_rel}
 _product="${pkgbase%-git}"
 pkgrel=1
@@ -12,7 +12,7 @@ arch=(x86_64)
 url="https://gitlab.com/post-factum/pf-kernel/-/wikis/README"
 license=(GPL2)
 makedepends=(
-  bc kmod libelf pahole
+  bc kmod libelf pahole cpio perl
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
@@ -21,12 +21,10 @@ _srcname="${pkgbase}"
 source=(
   "${_srcname}::git+https://gitlab.com/post-factum/pf-kernel.git#branch=${_branch}"
   config
-  sphinx-workaround.patch
   pf_defconfig
 )
 sha256sums=('SKIP'
-            'cf69b81648a07ebedb274ed26bed3c4d2ff75c6665ecaca0a724b148c70c9c7c'
-            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
+            'd8b28f67a0f0bc56e5de858141dee3607fbac48eac41b0e9f7f69685f7475b53'
             '598d8639cd9a78695b025342b21e9e1de55b3d5093d037987e70024c8767b3ef')
 
 pkgver() {
