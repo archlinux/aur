@@ -19,7 +19,7 @@ sha512sums=('SKIP')
 #validpgpkeys=('EBDFDB21B020EE8FD151A88DE301047DE1198975') # Bob Friesenhahn <bfriesen@simple.dallas.tx.us>
 
 pkgver() {
-    cd tiff
+    cd libtiff
     git describe --tags | sed 's/-/+/g'
 }
 
@@ -28,7 +28,7 @@ build() {
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  cd tiff
+  cd libtiff
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -41,12 +41,12 @@ build() {
 }
 
 #check() {
-#  cd tiff-${pkgver}
+#  cd libtiff
 #  make check
 #}
 
 package() {
-  cd tiff
+  cd libtiff
   make DESTDIR="${pkgdir}" install
 
   rm -rf "${pkgdir}"/usr/{share,bin}
