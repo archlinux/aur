@@ -9,8 +9,18 @@ pkgdesc="General purpose library and file format for storing scientific data , w
 arch=(x86_64)
 url="https://www.hdfgroup.org/hdf5"
 license=(custom)
-depends=(zlib libaec bash)
-makedepends=(cmake time gcc-fortran jre-openjdk)
+depends=(
+zlib
+libaec
+bash
+)
+makedepends=(
+cmake
+time
+gcc-fortran
+jdk-openjdk
+inetutils
+)
 replaces=(hdf5-cpp-fortran)
 provides=(hdf5-cpp-fortran hdf5)
 conflicts=(hdf5)
