@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Google Voice
+Comment=VOIP app from Google
+Exec=google-voice-desktop
+Icon=/usr/share/pixmaps/google-voice-desktop.png
+Terminal=false
+Categories=Google;Productivity;Phone; 

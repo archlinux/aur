@@ -1,0 +1,19 @@
+pkgbase = google-voice-nativefier
+	pkgdesc = Google Voice wrapped as a desktop application through Nativefier
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://voice.google.com
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = nodejs-nativefier
+	makedepends = nodejs
+	source = icon.png
+	source = run.desktop
+	source = counter.js
+	sha256sums = 44bd668b8f1e85909bb36ad6e464a95046854cb8c573e1343c03edebadc653cd
+	sha256sums = 60ea1946aab2c27dcef657afd6cadcf7f88415b4c0ecaaae9326f2ec6631451b
+	sha256sums = 8d0d2d0a9b2d59bac46d38ec4262f6b9979aed57d3d4f1d46fe91506d10b753b
+
+pkgname = google-voice-nativefier
+
