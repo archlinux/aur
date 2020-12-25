@@ -28,7 +28,7 @@ package() {
   cp -r "${_uuid}" "${pkgdir}/usr/share/gnome-shell/extensions/"
   #rebuild compiled schemas if missing
   if [[ ! -f "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/schemas/gschemas.compiled" ]]; then
-  	glib-compile-schemas ${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/schemas
+    glib-compile-schemas ${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/schemas
   fi
   chmod -R 755 "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/"
 }
