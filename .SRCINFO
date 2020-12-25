@@ -1,0 +1,22 @@
+pkgbase = yorg-git
+	pkgdesc = Free open source and multiplatform racing game (git)
+	pkgver = v0.11.0_197_gc0d76d5
+	pkgrel = 1
+	url = https://github.com/cflavio/yorg
+	install = yorg.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = panda3d
+	depends = bullet
+	depends = gendesk
+	provides = yorg
+	conflicts = yorg
+	source = yorg-git::git+https://github.com/cflavio/yorg.git
+	source = yorg
+	md5sums = SKIP
+	md5sums = 50eb4f1ff961c69e0e0a6b45416def68
+
+pkgname = yorg-git
+

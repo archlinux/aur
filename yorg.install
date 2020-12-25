@@ -1,0 +1,19 @@
+post_install() {
+  chgrp games /usr/share/games/yorg/options.json
+  chmod g+w /usr/share/games/yorg/options.json
+  echo "Add user to group games to be able to run yorg."
+  /bin/true
+}
+
+post_upgrade() {
+/bin/true
+}
+
+pre_remove() {
+/bin/true
+}
+
+op=$1
+shift
+
+$op "$@"
