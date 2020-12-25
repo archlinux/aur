@@ -74,6 +74,10 @@ build() {
       --without-winidn \
       --with-random=/dev/urandom \
       --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt \
+      --with-nghttp2 \
+      --with-nghttp3 \
+      --with-ngtcp2 \
+      --with-quiche \
       --libdir=/usr/lib32
 
   make
