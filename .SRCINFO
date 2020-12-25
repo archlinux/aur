@@ -1,7 +1,7 @@
 pkgbase = qc71-laptop-dkms-git
 	pkgdesc = This a Linux kernel platform driver for Intel Whitebook LAPQC71X systems
 	pkgver = r43.7d82775
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pobrn/qc71_laptop
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = qc71-laptop-dkms-git
 	source = qc71_laptop::git+https://github.com/pobrn/qc71_laptop.git
 	source = dkms.conf
 	sha256sums = SKIP
-	sha256sums = 9c80dd849db0aa91cd67d6016c2df5bb870c090ab3f422fb20b84d0627336255
+	sha256sums = 08251ea8ec3721b023f30a7b34842936b42a92c6d4e1ed5a2a0948f806382211
 
 pkgname = qc71-laptop-dkms-git
 

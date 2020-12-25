@@ -3,7 +3,7 @@
 _pkgbase=qc71_laptop
 pkgname=qc71-laptop-dkms-git
 pkgver=r43.7d82775
-pkgrel=1
+pkgrel=2
 pkgdesc="This a Linux kernel platform driver for Intel Whitebook LAPQC71X systems"
 arch=('i686' 'x86_64')
 url="https://github.com/pobrn/qc71_laptop"
@@ -13,7 +13,7 @@ conflicts=("${_pkgbase}")
 source=("$_pkgbase::git+https://github.com/pobrn/qc71_laptop.git"
         'dkms.conf')
 sha256sums=('SKIP'
-            '9c80dd849db0aa91cd67d6016c2df5bb870c090ab3f422fb20b84d0627336255')
+            '08251ea8ec3721b023f30a7b34842936b42a92c6d4e1ed5a2a0948f806382211')
 
 pkgver() {
   cd "$_pkgbase"
@@ -21,14 +21,18 @@ pkgver() {
 }
 
 package() {
+  cd "$srcdir/$_pkgbase"
+
+  install -d "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
+
+  # Copy sources (including Makefile)
+  cp -r ${srcdir}/${_pkgbase}/* "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
+
   # Copy dkms.conf
-  install -Dm644 dkms.conf "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
+  install -Dm644 ${srcdir}/dkms.conf "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
 
   # Set name and version
   sed -e "s/@_PKGBASE@/${_pkgbase}/" \
       -e "s/@PKGVER@/${pkgver}/" \
       -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
-
-  # Copy sources (including Makefile)
-  cp -r ${_pkgbase}/* "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
 }
