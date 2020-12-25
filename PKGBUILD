@@ -3,11 +3,12 @@
 pkgname=waybind-git
 _pkgname=waybind
 pkgver=v0.1.1.r8.g86b4fb9
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple Key rebinder'
 arch=('x86_64')
 url='https://github.com/arnarg/waybind'
 license=('MIT')
+depends=('glibc')
 makedepends=('git' 'go')
 provides=('waybind')
 conflicts=('waybind')
@@ -29,10 +30,6 @@ package() {
 
 	mkdir -p "${pkgdir}/usr/bin/"
 	install -Dm755 waybind "${pkgdir}/usr/bin/waybind"
-
-	#install uinput udev rule
-	mkdir -p "${pkgdir}/usr/lib/udev/rules.d/"
-	install -Dm644 "udev/99-uinput.rules" "${pkgdir}/usr/lib/udev/rules.d/99-uinput.rules"
 
 	#install systemd unit
 	install -Dm644  "../../waybind.service" "${pkgdir}/usr/lib/systemd/system/$_pkgname.service"

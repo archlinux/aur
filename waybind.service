@@ -5,8 +5,7 @@ Description=Waybind deamon service
 Type=simple
 Restart=always
 #User=waybind
-Group=uinput
-SupplementaryGroups=input
+Group=input
 ExecStart=/usr/bin/waybind
 PrivateNetwork=true
 
