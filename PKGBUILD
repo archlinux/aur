@@ -66,6 +66,10 @@ build() {
       --without-mesalink \
       --without-winidn \
       --with-random=/dev/urandom \
+      --with-nghttp2 \
+      --with-nghttp3 \
+      --with-ngtcp2 \
+      --with-quiche \
       --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt
 
   make
