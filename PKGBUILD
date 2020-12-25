@@ -2,7 +2,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=cargo-flamegraph
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Cargo plugin that generates a flamegraph for a given workload"
 url="https://github.com/flamegraph-rs/flamegraph"
@@ -10,8 +10,8 @@ depends=('gcc-libs' 'perf')
 makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('MIT' 'APACHE')
-source=("https://github.com/flamegraph-rs/flamegraph/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('d3e9114b79ed296ecf472e317844aa314e3619e3253c81a2eb2681ec389e587d11307ac55a886008e5ec2ec9ccdee563213907687fddb59148db0ad4fe4cef2f')
+source=("flamegraph-$pkgver.tar.gz::https://static.crates.io/crates/flamegraph/flamegraph-$pkgver.crate")
+b2sums=('b02de682be9ad19ea193173ff886ece80ebe67eced3bb322dae75eede80b766e518dc8120ee062b3dcaafdf288ca0f884f961185e3f14978420bcca11125742b')
 
 build() {
   cd "flamegraph-${pkgver}"
