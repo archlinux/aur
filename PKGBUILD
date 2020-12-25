@@ -5,13 +5,13 @@
 # Contributor: surefire@cryptomile.net
 
 pkgname=ncdc-git
-pkgver=1.20+0+g51f4763
+pkgver=1.22.1+2+g64322ab
 pkgrel=1
 pkgdesc="Modern and lightweight direct connect client with a friendly ncurses interface"
 arch=('i686' 'x86_64' 'arm')
 url="http://dev.yorhel.nl/ncdc"
 license=('MIT')
-depends=('bzip2' 'gnutls' 'ncurses' 'sqlite' 'glib2' 'geoip')
+depends=('bzip2' 'gnutls' 'ncurses' 'sqlite' 'glib2' 'libmaxminddb')
 conflicts=('ncdc')
 provides=('ncdc')
 source=("git://g.blicky.net/ncdc.git")
