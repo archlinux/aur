@@ -5,7 +5,7 @@
 
 # Maintainer: Buck Yeh <buck.yeh at gmail dot com>
 pkgname=bux
-pkgver=1.1.0
+pkgver=1.1.1
 #pkgver=main
 pkgrel=1
 epoch=
@@ -40,6 +40,7 @@ prepare() {
 build() {
 	cd "$pkgname" || return 1
 	cmake .
+	cd src || return 1
 	make -j
 }
 
