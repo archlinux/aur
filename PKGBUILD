@@ -1,7 +1,7 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=overseerr
-pkgver=1.12.1
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='Request management and media discovery tool for the Plex ecosystem'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sct/overseerr/archive/v
         'overseerr.tmpfiles'
         'overseerr.service'
         'overseerr.conf.d')
-sha256sums=('6b1e2b816892440b0078b3cafeb94ab9aee4d7b4878bf0688f44a9c71f2423ad'
+sha256sums=('912311f43213f5a976408517c0194e14e30c22f12013cbd3537f2ed17b46ff8f'
             '682ff5633748bbd131bcae00791b18c08488ad1cb477ca675e5498c53eca1097'
             'a4734740422a3957f523cdab3c5d95b20999ff27e91e85358e4201988f5979f6'
             'd0e530142edc5bd48474b38072f206a25af23803028fe264324ec2c4b3d7f19a'
