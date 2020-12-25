@@ -1,32 +1,21 @@
 pkgbase = python-mediafile
 	pkgdesc = Simple interface to the metadata tags for many audio file formats
-	pkgver = 0.3.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/beetbox/mediafile
 	arch = any
 	license = MIT
 	checkdepends = python-nose
-	checkdepends = python-six
-	checkdepends = python-mutagen
-	checkdepends = python2-nose
-	checkdepends = python2-six
-	checkdepends = python2-mutagen
-	checkdepends = python2-enum34
-	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/m/mediafile/mediafile-0.3.0.tar.gz
-	source = mediafile-0.3.0-LICENSE::https://github.com/beetbox/mediafile/raw/v0.3.0/LICENSE
-	sha256sums = 7cbdb67907e65089c81d304002c8404798b630e609796b291503d0853edcc0da
-	sha256sums = 0b308ae66aaa1412ebbe645bec4002fd262d91e9cdf67b6f198026677ddfafcc
-
-pkgname = python-mediafile
+	makedepends = python-flit
 	depends = python
 	depends = python-six
 	depends = python-mutagen
+	source = https://files.pythonhosted.org/packages/source/m/mediafile/mediafile-0.6.0.tar.gz
+	source = fix-test.patch
+	source = mediafile-0.6.0-LICENSE::https://github.com/beetbox/mediafile/raw/v0.6.0/LICENSE
+	b2sums = 9040869432ba23fcdf51465f7c05da3167408cad1769c6e16a5c8d1f8cd09fa692de4c41555377c64f783d46dcb68c6714db29e7675dc2ea9a19a23d1893909b
+	b2sums = 9f0550c4ffddedd330a01702659dd85e15e37bc273160aff56ad748e70b337514bda3792186afecc1b26a1d5e4b4e0d294116d955ac2d6d64d0e9a70b35a6557
+	b2sums = 96edc3b852de4d26605eb0e8f90c6a8a873c249a258ccd60950220673c887318b50526508427826e6549b45600f7bacbff83bb764408181480fc5fb67f696ffe
 
-pkgname = python2-mediafile
-	depends = python2
-	depends = python2-six
-	depends = python2-mutagen
-	depends = python2-enum34
+pkgname = python-mediafile
 
