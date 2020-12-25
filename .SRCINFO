@@ -1,16 +1,16 @@
 pkgbase = ttf-ubuntu-arabic
 	pkgdesc = Public release of Arabic font to Ubuntu Xenial Xerus
 	pkgver = 0.84+arabic
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/ubuntu/+source/ubuntu-font-family-sources/0.84~mono0.83+arabicfontconfig-0ubuntu1
 	arch = any
 	license = custom:Ubuntu Font Licence 1.0
 	source = https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-font-family-sources_0.84~mono0.83+arabicfontconfig.orig-arabicbeta.tar.gz
 	source = LICENCE.txt
 	source = 65-ubuntu-arabic.conf
-	md5sums = 561ba71ea16185e0fc389890c2631724
-	md5sums = 325a1a9029112a2405e743c7f816427b
-	md5sums = e8d413b3e001764007e9fc26d4dcf7dd
+	sha256sums = 1689b229420dcef4aee0a3a2e9bfaa7a5ef20b2f7c28d8f96f018f926bed2675
+	sha256sums = 2f0015108d68627bd788d313f529c21ff4da2c2c42a5e1f3883acc83480f9002
+	sha256sums = 1518e32cd57c92370a3044c53974e1ce03cd9bd75451a477152bd03acbfbc5a9
 
 pkgname = ttf-ubuntu-arabic
 
