@@ -1,0 +1,22 @@
+pkgbase = lib32-krb5-git
+	pkgdesc = The Kerberos network authentication system (32-bit)
+	pkgver = 1.18.2
+	pkgrel = 1
+	url = https://web.mit.edu/kerberos/
+	arch = x86_64
+	license = custom
+	makedepends = perl
+	depends = lib32-e2fsprogs
+	depends = lib32-libldap
+	depends = lib32-keyutils
+	depends = krb5
+	provides = lib32-krb5
+	conflicts = lib32-krb5
+	options = !emptydirs
+	source = https://github.com/krb5/krb5
+	source = krb5-config_LDFLAGS.patch
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = lib32-krb5-git
+
