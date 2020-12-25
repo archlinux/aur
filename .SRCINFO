@@ -1,13 +1,13 @@
 pkgbase = python-vega_datasets
 	pkgdesc = A Python package for offline access to Vega datasets
-	pkgver = 0.7.0
+	pkgver = 0.9
 	pkgrel = 1
 	url = http://github.com/altair-viz/vega_datasets
 	arch = any
 	license = MIT
 	depends = python
-	source = https://files.pythonhosted.org/packages/ec/f7/a937690cd73cdac61b7e70bb23c8a5486cb1ffb5d7e033882ef0f990cc5f/vega_datasets-0.7.0.tar.gz
-	sha256sums = 20d490b417f84607eb5079400f608f2e9c135b7092bee10f6857f6d23136e459
+	source = vega_datasets-0.9.tar.gz::https://github.com/altair-viz/vega_datasets/archive/v0.9.tar.gz
+	sha256sums = 863a1c0f2da1310a0d676cae4c0f74ce7cb0aaa822909ea6f6e96eeaf4d348b1
 
 pkgname = python-vega_datasets
 
