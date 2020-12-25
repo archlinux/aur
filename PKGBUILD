@@ -2,7 +2,7 @@
 
 pkgname=python-pytest-celery
 pkgver=0.0.0a1
-pkgrel=3
+pkgrel=4
 pkgdesc='A shim pytest plugin to enable celery.contrib.pytest'
 arch=('any')
 license=('BSD')
@@ -19,6 +19,10 @@ prepare() {
   # distribution of tests in the built package as well as using distutils for
   # bad metadata. See https://github.com/sdispater/poetry/issues/866
   dephell deps convert --from pyproject.toml --to setup.py
+
+  # dephell does not generate py_modules into setup.py, so the resulting installation is missing
+  # the module source code itself. Patching it here as a workaround until we fix it properly.
+  sed -i '/author_email=/a \    py_modules=["pytest_celery"],' setup.py
 }
 
 build() {
