@@ -20,7 +20,7 @@ arch=(x86_64 i686)
 provides=('powder-toy')
 conflicts=('powder-toy')
 depends=('glibc' 'libx11' 'sdl2' $_lua 'fftw' 'bzip2' 'zlib' 'hicolor-icon-theme')
-makedepends=('scons' 'libicns')
+makedepends=('meson' 'libicns')
 url="http://powdertoy.co.uk/"
 license=('GPL3')
 source=("${_ogname}::git+https://github.com/ThePowderToy/The-Powder-Toy.git#branch=$_branch"
