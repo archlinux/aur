@@ -5,8 +5,8 @@
 
 # Maintainer: Buck Yeh <buck.yeh at gmail dot com>
 pkgname=parsergen
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 epoch=
 pkgdesc='LR1/GLR parser generator into Modern C++ code which must be built with bux library'
 arch=('x86_64')
@@ -33,26 +33,32 @@ prepare() {
 	rm -Rf "$pkgname"
 	mkdir -p "$pkgname"
 	cd "$pkgname" || return 1
-	git clone -b main --single-branch $url .
+	if [[ "$pkgver" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+		git clone -b "$pkgver" --single-branch $url .
+	else
+		git clone -b main --single-branch $url .
+	fi
 }
 
-pkgver() {
-	cd "$pkgname" || return 1
-	_ret=
-	for i in $(sed -n '
+if [[ ! "$pkgver" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+	pkgver() {
+		cd "$pkgname" || return 1
+		local _ret=
+		for i in $(sed -n '
 s/^ *VERSION_MAJOR *= *\([0-9][0-9]*\).*/\1/p
 s/^ *VERSION_MINOR *= *\([0-9][0-9]*\).*/.\1/p
 s/^ *VERSION_RELEASE *= *\([0-9][0-9]*\).*/.\1/p
 ' ParserGen/main.cpp); do _ret="$_ret$i"; done
-	echo "$_ret"
- }
+		echo "$_ret"
+	}
+fi
 
 build() {
 	cd "$pkgname" || return 1
 	cmake .
-	cd ParserGen/
+	cd ParserGen/ || return 1
 	make -j
-	cd ../ScannerGen/
+	cd ../ScannerGen/ || return 1
 	make -j
 }
 
