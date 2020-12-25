@@ -12,7 +12,6 @@ source=("https://gitweb.gentoo.org/repo/gentoo.git/plain/app-shells/zsh/files/pr
 sha256sums=('818aede5695c1406bd2e720ab114bef13d373e48ee5a1f2cda7d36a9c26e30e1')
 
 package() {
-	cd "${srcdir}"
-
-	install -Dm644 prompt_gentoo_setup-1 "${pkgdir}/usr/share/zsh/functions/Prompts/prompt_gentoo_setup"
+  install -Dm644 prompt_gentoo_setup-1 \
+    "$pkgdir"/usr/share/zsh/functions/Prompts/prompt_gentoo_setup
 }
