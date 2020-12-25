@@ -1,6 +1,6 @@
 pkgbase = python-nbdime
 	pkgdesc = Diff and merge of Jupyter Notebooks
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = http://jupyter.org
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-nbdime
 	depends = jupyter-nbformat
 	depends = python-tornado
 	depends = python-colorama
-	source = https://files.pythonhosted.org/packages/92/84/6358505bef11c164fce3b747b4193ec9d9617cb2db9bb6c60c9f6d30109c/nbdime-2.0.0.tar.gz
+	source = nbdime-2.1.0.tar.gz::https://github.com/jupyter/nbdime/archive/2.1.0.tar.gz
 	sha256sums = 896f79a23557f190b73a3981fdceb128a2d24454701daef74d82aac2aa10715d
 
 pkgname = python-nbdime
