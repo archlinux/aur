@@ -4,7 +4,7 @@
 pkgname=sqlectron-gui
 _electron=electron6
 pkgver=1.32.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and lightweight SQL client with cross database and platform support"
 arch=('x86_64')
 url="https://sqlectron.github.io/"
@@ -21,7 +21,7 @@ source=(
 	'sqlectron-gui.desktop'
 )
 
-sha1sums=('4798e9597d79c5bab2aa2915ffa42297668876b1'
+sha1sums=('85b4c769a4b1a31705101de18f513292fe4205f9'
           'b9fb3bc29a17dee5de9295e2fdb2b3025ed51d1f')
 
 case "$CARCH" in
