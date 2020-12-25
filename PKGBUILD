@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.10.1
+pkgver=5.10.2
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -33,35 +33,33 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_bmqversion=5.10-r0
+_bmqversion=5.10-r1
 _bmq_patch="prjc_v${_bmqversion}.patch"
 _gcc_more_v='20201113'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
-  "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/524ec207393b88f18d32d8fdb9ed13d558e4d3e7/linux/repos/testing-x86_64/config"
+  "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/8f8cb52701cf1f2adbe06c1f19158c63c1a636ca/trunk/config"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "v5.10-prjc-r0_compilation_error_error_static_declaration.patch::https://gitlab.com/alfredchen/linux-prjc/-/commit/570d8c5b6f7439217b45906568adddb0a6cc2751.patch"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=e25c86d5689203c0d8f5f4dffb1f616def7c2c74"
-  "0002-Bluetooth_Fix_LL_PRivacy_BLE_device_fails_to_connect.patch::https://git.archlinux.org/linux.git/patch/?id=cdddb7037bf1af7c2a062a0bc2750ae560301776"
-  "0003-Bluetooth_Fix_attempting_to_set_RPA_timeout_when_uns.patch::https://git.archlinux.org/linux.git/patch/?id=8380c14bc1f6d25d24f848d313ed66550c2ce6b4"
-  "0004-HID_quirks_Add_Apple_Magic_Trackpad_2_to_hid_have_sp.patch::https://git.archlinux.org/linux.git/patch/?id=a7eb8bbced1623795c4ad56da1e30c7ee849546f"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=f53cde2c6d1e75463ef3e1d2be0bf7cfd2a47989"
+  "0002-Bluetooth_Fix_LL_PRivacy_BLE_device_fails_to_connect.patch::https://git.archlinux.org/linux.git/patch/?id=bd52d3f686d794cfd9ef95413d8388814f48371b"
+  "0003-Bluetooth_Fix_attempting_to_set_RPA_timeout_when_uns.patch::https://git.archlinux.org/linux.git/patch/?id=f5a544c936dfb05beaf06d7e231771bad7fdfaab"
+  "0004-HID_quirks_Add_Apple_Magic_Trackpad_2_to_hid_have_sp.patch::https://git.archlinux.org/linux.git/patch/?id=843f3c089337e9e4bb55392e91b424536e6a723c"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-b2sums=('d965795fdd5fa6f6cddbd86c4b7af9cfafe9022cae1c149a1326c90b9fdddbd7ebf83465c7b04d227418ba19c3b7af99d9a47b2616df2f83ec92fe7c9306f935'
+b2sums=('708b51b58f63d8954073d7ab559286fc854c700108505e659474e55b2d0968cea002b8356d5441e6b24d37a4194684a6244293c760da6d442a6c76e268619a18'
         'SKIP'
-        '13de49afadbd05fa02428c1efcb49a237f7145bce901fc7a4bb0cafb4cb89b0e0b53d98ca7e4800677f0265e899ff2116143c433e9690cd4219182b150d8bcc9'
-        'fcab79bd6ba6d7525c3fe5c1cdd6db601447f03cc55e34e1e4abf708dd08b4a5349742797e8dc21c5dffddb469b9c5b8249eaa20c948dcbc88b27f6193bcfac9'
+        '7afcc3e9987f20587ab3e9ba4ee67f1b0e61935b08ba7bfe9a2e40f6a7125805d980e1fafb93e92bc5117005933de3187a71650c5a4a82620c97c6d0aad8a46c'
+        'e952bfc4b7f9f651b366516e9504761ef4aa0164f28a0c85ae0f4e750f9ff118a5a3ff566924d4aff66949b2ebdbe3a1466f36ecd9de5ca924f79aaad36f57e8'
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
-        '782193f86faa6bbbef4f9e0c70c2340507b611263dd88afd5aacc1965c0bd51ebc3ebc3f8fa43ea2aa3d2946d5dc47dd6f74197383031d7d219e2c4e691fa4ba'
-        '36eafca96231f50eafa8f9b734bffb5392bb82d9667650211f8f237c4c46448898b6f40feeba295048dd2dd7c5ef46a254a0e64a322cc2caada67b7db1d40b81'
-        '475ff92bb435c64921c0e0702d727737e4813eddd86b0182606396b514692b46ea8565989228ea80a026c8fc01020f6bbe00dff17698a79477d510a2476777ca'
-        '895b81b243d4499c539b881fe9eb2c0463035b3e39f224ee2c613b508ec740e63f374fe96401faae3cefe2bf26d3dc974e2bbf863c1f74a3f7197d4ece49daba'
-        '182eadac47eb39c7636e7d3015794faace0a83a75b5b5eff03a464c4624fc271c64f695b11f374f9191df6d97ed3bd90ddae560a0c18382690e3b18f8e821e60')
+        'f2689ca89c93d6f972c2c8af00cda2e565eebb9b91082e72e621e55e45f36fce1d0b5e335f444aaad2663d4356d89a591ab42164aadcef77e1f2839268961bf3'
+        '71b5a7db60f29e876f3eed5f76454afb1fc3a180221cdefe5a88ebf50722c256d65bf0ea388561ad2611ca3490d5d9a69487c1734448b31c8c661868da87f1f2'
+        '6d9c2a334ee44918009a112cdceb51736f17ffd11a38708b91357ec822e48e909ac9fed61e9cdf4e162e966fb9a996f617e6fb7b6b34c088105b631852eac091'
+        'd5591c5f0d8e432b0083ff4745fa1768dbb3b2b38404464fd4b7400c481e21a5e038fa64fdf572f69e4438892a2f7117e8f85b3904518f7fbbca51cc63d63dfc')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -88,7 +86,6 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
-#  sed -i '/^CONFIG_INIT_ENV_ARG_LIMIT=.*/a CONFIG_SCHED_BMQ=y' .config
 
   # disable CONFIG_DEBUG_INFO=y at build time introduced in this commit
   # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/linux&id=663b08666b269eeeeaafbafaee07fd03389ac8d7
@@ -97,7 +94,6 @@ prepare() {
 
   echo "Applying patch ${_bmq_patch}..."
   patch -Np1 -i "$srcdir/${_bmq_patch}"
-  patch -Np1 -i "$srcdir/v5.10-prjc-r0_compilation_error_error_static_declaration.patch"
 
   # non-interactively apply ck1 default options
   # this isn't redundant if we want a clean selection of subarch below
