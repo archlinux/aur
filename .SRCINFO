@@ -1,7 +1,7 @@
 pkgbase = zrythm
 	pkgdesc = a highly automated and intuitive digital audio workstation
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = alpha.6.0.1
+	pkgrel = 1
 	url = https://www.zrythm.org
 	arch = x86_64
 	arch = i686
@@ -33,10 +33,10 @@ pkgbase = zrythm
 	optdepends = portaudio: portaudio backend
 	optdepends = qt5-base: for embedding qt5 plugin UIs
 	conflicts = zrythm-git
-	source = https://www.zrythm.org/releases/zrythm-1.0.0-alpha.5.0.1.tar.xz
-	source = https://www.zrythm.org/releases/zrythm-1.0.0-alpha.5.0.1.tar.xz.asc
+	source = https://www.zrythm.org/releases/zrythm-1.0.0-alpha.6.0.1.tar.xz
+	source = https://www.zrythm.org/releases/zrythm-1.0.0-alpha.6.0.1.tar.xz.asc
 	validpgpkeys = 48132384AD3DF7D86E254B83022EAE42313D70F3
-	sha256sums = 089251987b3f0fdd378ac2014aa01904669fd70d89774bdc4358cc7bfc206cf1
+	sha256sums = 4b11c0b66b741a61b62764c77d6446fc6947ae4e93c217fbaa194c20fdf0d3fd
 	sha256sums = SKIP
 
 pkgname = zrythm
