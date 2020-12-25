@@ -1,7 +1,7 @@
 pkgbase = panda3d
 	pkgdesc = A 3D game engine with Python bindings. SDK package. Optional dependencies you want to support need to be installed before panda3d.
 	pkgver = 1.10.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.panda3d.org
 	install = panda3d.install
 	arch = i686
@@ -57,8 +57,10 @@ pkgbase = panda3d
 	optdepends = libegl: GLX for OpenGL ES
 	source = https://github.com/panda3d/panda3d/archive/v1.10.7.tar.gz
 	source = panda3d.install
+	source = libdir_fix.patch
 	md5sums = d53383267e7908cf54cb46d3eefd66d2
 	md5sums = 057269173f3c1987953302519bc744fa
+	md5sums = 44d5cd0d121ec966f52d6ca00fdf81eb
 
 pkgname = panda3d
 
