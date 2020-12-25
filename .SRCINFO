@@ -1,0 +1,16 @@
+pkgbase = camelot
+        pkgdesc = Cross-platform file manager written in C#
+        pkgver = v0.2.0
+        pkgrel = 1
+        url = https://github.com/IngvarX/Camelot
+        arch = any
+        license = GPL-3.0
+        makedepends = dotnet-sdk-3.1
+        makedepends = git
+        depends = dotnet-runtime-3.1
+        provides = camelot
+        conflicts = camelot-git
+        source = git+https://github.com/IngvarX/Camelot.git#tag=v0.2.0
+        sha256sums = SKIP
+
+pkgname = camelot
