@@ -1,0 +1,20 @@
+pkgbase = superflu-riteurnz
+	pkgdesc = Artisanal point and click game
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://ptilouk.net/superflu-riteurnz/index.html
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	depends = libyaml
+	depends = sdl2_image
+	depends = sdl2_ttf
+	depends = sdl2_mixer
+	depends = hicolor-icon-theme
+	source = https://framagit.org/Gee/sosage/-/archive/v1.0.0/sosage-v1.0.0.tar.gz
+	source = https://dl.bintray.com/ptilouk/superflu-riteurnz/zip/superflu-riteurnz-v1.0.0-xmas2020demo-data.zip
+	md5sums = 35c37491cd9979ff87221ac4d471b388
+	md5sums = b8c2f5db362be3300df588e114d5a98a
+
+pkgname = superflu-riteurnz
+
