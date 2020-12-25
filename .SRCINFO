@@ -1,14 +1,14 @@
 pkgbase = amberfish
 	pkgdesc = A general purpose text retrieval software
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/nassibnassar/amberfish
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = xerces-c
-	source = amberfish-2.2.0.tar.gz::https://github.com/nassibnassar/amberfish/archive/v2.2.0.tar.gz
-	sha256sums = 73ebf5a6b8105b41055c6ec6ed7c820621ef064414d190dad6c80b0f78fae175
+	source = amberfish-2.3.0.tar.gz::https://github.com/nassibnassar/amberfish/archive/v2.3.0.tar.gz
+	sha256sums = 6a0cfbde1225e3e983be1dca79a61deb19a93aa43a544bd3c5128bad0190fc0c
 
 pkgname = amberfish
 
