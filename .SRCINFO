@@ -1,6 +1,6 @@
 pkgbase = librewolf-bin
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 83.0
+	pkgver = 84.0
 	pkgrel = 1
 	url = https://librewolf-community.gitlab.io/
 	arch = x86_64
@@ -26,10 +26,10 @@ pkgbase = librewolf-bin
 	provides = librewolf
 	conflicts = librewolf
 	options = !emptydirs
-	source_x86_64 = https://gitlab.com/librewolf-community/browser/linux/uploads/1c47081d82844bf05efe219b31e2e2fc/librewolf-83.0-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = 9212d4d4cba3f6ff5bcc0250242e04ec55c868a319e3067fd9fdadf75827f4ca
-	source_aarch64 = https://gitlab.com/librewolf-community/browser/linux/uploads/103d771b846efe24b84befc8fab71f8d/librewolf-83.0-1-aarch64.pkg.tar.zst
-	sha256sums_aarch64 = dc60022eae656954a8d5112bcc8ad44dec27b43abee36fa75a95b69ea7e8a43d
+	source_x86_64 = https://gitlab.com/librewolf-community/browser/linux/uploads/f5235e36c1824b77ad7ecfa6b648e077/librewolf-84.0-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 70de5aa572cf74a0cedf2e41a34d449e0ef69cd4d58c2860c1e3a2598a472e0f
+	source_aarch64 = https://gitlab.com/librewolf-community/browser/linux/uploads/a688e3fd15069565cef59fb1ccc0eb09/librewolf-84.0-1-aarch64.pkg.tar.zst
+	sha256sums_aarch64 = d79276c124e2aa71e4cf5df321858db02ab46db77e4cb2bbf2702319e9fc598c
 
 pkgname = librewolf-bin
 
