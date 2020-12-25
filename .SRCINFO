@@ -1,0 +1,15 @@
+pkgbase = python-you-live
+	pkgdesc = A live recorder focus on China mainland livestream sites.
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/nICEnnnnnnnLee/LiveRecorder
+	arch = any
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-pyexecjs
+	source = https://files.pythonhosted.org/packages/source/y/you-live/you-live-1.0.5.tar.gz
+	md5sums = SKIP
+
+pkgname = python-you-live
+
