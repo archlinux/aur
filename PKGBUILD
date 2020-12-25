@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=tela-circle-icon-theme-git
-pkgver=r3.f7ca1fd
+pkgver=2020.11.29.r9.g2936aa2
 pkgrel=1
 pkgdesc="A flat colorful design icon theme"
 arch=('any')
-url="https://github.com/vinceliuice/Tela-circle-icon-theme"
+url="https://www.pling.com/p/1359276"
 license=('GPL3')
 depends=('hicolor-icon-theme' 'gtk-update-icon-cache')
 makedepends=('git')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
