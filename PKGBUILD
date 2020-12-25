@@ -29,6 +29,9 @@ build() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
   cd libtiff
+
+  autoreconf -fi
+
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
