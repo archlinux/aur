@@ -3,7 +3,7 @@
 # Contributor: Holzhaus <jholthuis@mixxx.org>
 
 pkgname=mixxx-git
-pkgver=r7694
+pkgver=r7698
 pkgrel=1
 pkgdesc="Digital DJ mixing software. Git master branch (development/alpha)."
 arch=('i686' 'x86_64')
@@ -27,8 +27,8 @@ pkgver() {
 prepare() {
 	mkdir "$srcdir/${pkgname%-*}/cmake_build"
 	cmake -S $srcdir/${pkgname%-*} -B $srcdir/${pkgname%-*}/cmake_build \
-	-DCMAKE_INSTALL_PREFIX=/ \
-	-DINSTALL_USER_UDEV_RULES=ON \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DINSTALL_USER_UDEV_RULES=OFF \
 	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 	-DOPTIMIZE=native \
 	-DFAAD=ON \
@@ -45,11 +45,9 @@ build() {
   cmake --build $srcdir/${pkgname%-*}/cmake_build --parallel `nproc`
 }
 
-#check() {
-#	cd "$srcdir/${pkgname%-*}"
-#	xvfb-run lin64_build/${pkgname%-*}-test
-#}
-
 package() {
+	mkdir -p $pkgdir/usr/lib/udev/rules.d/
+	cp $srcdir/${pkgname%-*}/res/linux/mixxx-usb-uaccess.rules $pkgdir/usr/lib/udev/rules.d/99-mixxx-usb-uaccess.rules
+	chmod a+r $pkgdir/usr/lib/udev/rules.d/99-mixxx-usb-uaccess.rules
 	DESTDIR="$pkgdir" cmake --install $srcdir/${pkgname%-*}/cmake_build
 }
