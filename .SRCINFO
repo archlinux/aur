@@ -1,0 +1,19 @@
+pkgbase = jami-client-qt-git
+	pkgdesc = Free and universal communication platform which preserves the users’ privacy and freedoms (QT client)
+	pkgver = r271.7168d9f
+	pkgrel = 1
+	url = https://git.jami.net/savoirfairelinux/jami-client-qt
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = jami-daemon-git
+	depends = libjamiclient-git
+	depends = qt5-base
+	provides = jami-client-qt
+	source = git+https://git.jami.net/savoirfairelinux/jami-client-qt.git
+	source = 0000.patch
+	sha512sums = SKIP
+	sha512sums = 5f0c26009723ef24867cc140c6284fc0e432a9817358e2ce4f912ab9471c5b5c818af7d3b90103659959c8fa810da5dd500722079ad7b99e4666d501b7080a55
+
+pkgname = jami-client-qt-git
+
