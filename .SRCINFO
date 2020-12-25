@@ -1,0 +1,34 @@
+pkgbase = krb5-git
+	pkgdesc = The Kerberos network authentication system
+	pkgver = 1.18.2
+	pkgrel = 1
+	url = https://web.mit.edu/kerberos/
+	arch = x86_64
+	license = custom
+	makedepends = perl
+	depends = e2fsprogs
+	depends = libldap
+	depends = keyutils
+	provides = krb5
+	conflicts = krb5
+	options = !emptydirs
+	backup = etc/krb5.conf
+	backup = var/lib/krb5kdc/kdc.conf
+	source = git+https://github.com/krb5/krb5
+	source = krb5-config_LDFLAGS.patch
+	source = krb5-kadmind.service
+	source = krb5-kdc.service
+	source = krb5-kpropd.service
+	source = krb5-kpropd@.service
+	source = krb5-kpropd.socket
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = krb5-git
+
