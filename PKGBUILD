@@ -2,7 +2,7 @@
 # Contributor: Daan De Meyer <daan.j.demeyer@gmail.com>
 
 pkgname=libzypp
-pkgver=17.25.0
+pkgver=17.25.5
 pkgrel=1
 pkgdesc="ZYpp Package Management library"
 arch=('x86_64')
@@ -30,7 +30,7 @@ makedepends=(
   'ninja'
 )
 source=("${pkgname}-${pkgver}::https://github.com/openSUSE/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('7065027886d4a99d6b54af0915133b407e4a68bd2c672af7527ace38a1a97f4b')
+sha256sums=('98bdc332ffd5706ea8b1eb751661f19ad3f928d002089d9baca93c59aa4c6e5e')
 
 prepare() {
   # CMake doesn't find FindLibSolv.cmake in /usr/share/cmake/Modules
