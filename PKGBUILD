@@ -14,7 +14,6 @@ arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'arm
 url="https://${_pkggopath}"
 license=()
 makedepends=('git' 'go' 'musl' 'kernel-headers-musl') #disable signature check pending fixes#  'skycoin-keyring')
-optdepends=('readonly-cache: distribute hypervisorkey package for cluster management')
 install=skywire.install
 _scripts=${_pkgname}-scripts
 #scripts need at least this commit to work if current build to develop fails
@@ -24,7 +23,7 @@ source=("git+${url}.git" ##branch=${BRANCH:-develop}"
 #'PKGBUILD.sig' #disable signature checking for now
 #'PKGBUILD')
 sha256sums=('SKIP'
-            '187cf780da4d892a7eb940aa4a925e0cc83b0e8de0b255f07f7dafd8f2c854c6')
+            'ce17b7e4cb3620c292172e67229919ad57b943c6756a43acc23a3777cb40ecc0')
 #            'SKIP'
 #            'SKIP')
 #validpgpkeys=('DE08F924EEE93832DABC642CA8DC761B1C0C0CFC')  # Moses Narrow <moe_narrow@use.startmail.com>
@@ -59,11 +58,14 @@ build() {
 export GOPATH=${srcdir}/go
 export GOBIN=${GOPATH}/bin
 export _GOAPPS=${GOPATH}/apps
-cd ${srcdir}/go/src/${_pkggopath}
 export GOOS=linux
 export CGO_ENABLED=1
 #use musl-gcc for static compilation
 export CC=musl-gcc
+
+_msg2 "building skycache binary"
+cd ${srcdir}/${_scripts}/
+go build -trimpath --ldflags '-linkmode external -extldflags "-static" -buildid=' -o $GOBIN/ skycache.go
 
 #create the skywire binaries
 cd ${srcdir}/go/src/${_pkggopath}
@@ -118,10 +120,8 @@ mkdir -p ${pkgdir}/${_skydir}/dmsgpty
 mkdir -p ${pkgdir}/${_skydir}/${_pkgname}
 mkdir -p ${pkgdir}/${_skydir}/${_pkgname}-save
 mkdir -p ${pkgdir}/${_skydir}/transport_logs
-mkdir -p ${pkgdir}/${_skydir}/sky-local
+mkdir -p ${pkgdir}/${_skydir}/skycache
 mkdir -p ${pkgdir}/${_skydir}/hypervisorkey
-
-
 
 _msg2 'installing binaries'
 _skywirebins=$( ls ${srcdir}/go/bin )
@@ -166,6 +166,9 @@ mv ${pkgdir}/usr/bin/${_pkgname}-visor ${pkgdir}/usr/bin/${_pkgname}
 install -Dm644 ${srcdir}/${_scripts}/${_pkgname}.service ${pkgdir}/usr/lib/systemd/system/${_pkgname}.service
 install -Dm644 ${srcdir}/${_scripts}/${_pkgname}-visor.service ${pkgdir}/usr/lib/systemd/system/${_pkgname}-visor.service
 
+#install the skycache systemd service
+install -Dm644 ${srcdir}/${_scripts}/skycache.service ${pkgdir}/usr/lib/systemd/system/skycache.service
+
 #tls key and certificate generation
 #install -Dm755 ${srcdir}/${_pkgname}/static/skywire-manager-src/ssl/generate-1.sh ${pkgdir}/${_skydir}/ssl/generate.sh
 install -Dm755 ${srcdir}/${_scripts}/generate.sh ${pkgdir}/${_skydir}/ssl/generate.sh
@@ -179,10 +182,3 @@ _msg2() {
 local mesg=$1; shift
 printf "${BLUE}  ->${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n" "$@"
 }
-
-
-#chck() {
-#check
-#_msg2 'testing `skywire-cli visor gen-config --help`'
-#${pkgdir}/opt/skywire/bin/skywire-cli visor gen-config --help
-#}
