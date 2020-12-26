@@ -1,6 +1,6 @@
 pkgbase = svstudio-bin
 	pkgdesc = Synthesizer V Studio, a high-quality singing synthesis software.
-	pkgver = 1.0.6
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://dreamtonics.com
 	install = svstudio-bin.install
@@ -9,9 +9,9 @@ pkgbase = svstudio-bin
 	depends = libcurl-gnutls
 	depends = webkit2gtk
 	provides = svstudio
-	source = svstudio-1.0.6.zip::https://dreamtonics.com/synthv/download/Synthesizer%20V%20Studio%20Basic/1.0.6/svstudio-basic-linux64-1.0.6.zip
+	source = svstudio-1.1.0.zip::https://dreamtonics.com/synthv/download/Synthesizer%20V%20Studio%20Basic/1.1.0/svstudio-basic-linux64-1.1.0.zip
 	source = svstudio.svg
-	sha512sums = fc3f38b5bf8c976122c1ba6b764afc341d719089386d0f1c6352f94e050ef6750531757d312c75ab1ec1525e15a751a7e3db4156fcb869a91935b2114c14ac88
+	sha512sums = fbb10644426c93d49d33758f1c50d4fae8026ef184c2d8a14609783b06b2b6fb85ceddb1c2c818fe2bcdb95cb40c2dc9c9c2ef66129e785cbef8cf6aea6af1c3
 	sha512sums = d361e7557d8aa11dbeea466ed1e60c8c40166788ef9a344c0a7954ded672f408c26d1ce37dc3ba7cb745efbcd41896be9db71f63f51c2a4d59ab62c74ea69998
 
 pkgname = svstudio-bin
