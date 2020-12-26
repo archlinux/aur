@@ -1,4 +1,4 @@
-pkgbase = nuclear-git
+pkgbase = nuclear-player-git
 	pkgdesc = A free, multiplatform music player app that streams from multiple sources.
 	pkgver = v0.6.5.r58.g7c57f335
 	pkgrel = 1
@@ -11,12 +11,12 @@ pkgbase = nuclear-git
 	makedepends = nodejs-lts-erbium
 	depends = libxtst
 	depends = nss
-	provides = nuclear
-	conflicts = nuclear
+	provides = nuclear-player
+	conflicts = nuclear-player
 	source = git+https://github.com/nukeop/nuclear.git
 	source = nuclear.desktop
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = nuclear-git
+pkgname = nuclear-player-git
 
