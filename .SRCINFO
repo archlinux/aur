@@ -1,4 +1,4 @@
-pkgbase = lib32-krb5minimal--git
+pkgbase = lib32-krb5-minimal-git
 	pkgdesc = The Kerberos network authentication system (32-bit)
 	pkgver = 1.18.3
 	pkgrel = 1
@@ -18,5 +18,5 @@ pkgbase = lib32-krb5minimal--git
 	sha512sums = SKIP
 	sha512sums = SKIP
 
-pkgname = lib32-krb5minimal--git
+pkgname = lib32-krb5-minimal-git
 

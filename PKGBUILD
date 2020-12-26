@@ -4,7 +4,7 @@
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 
 _pkgbasename=krb5
-pkgname=lib32-${_pkgbasename}minimal--git
+pkgname=lib32-${_pkgbasename}-minimal-git
 pkgver=1.18.3
 pkgrel=1
 pkgdesc='The Kerberos network authentication system (32-bit)'
