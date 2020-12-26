@@ -1,0 +1,7 @@
+post_install() {
+    echo
+    echo -e '    \e[33mEdit config /etc/polaris/config.toml before first run.'
+    echo -e '    Make sure polaris user has read access to your source directories.'
+    echo -e '    Default web port is 5050.\e[0m'
+    echo
+}

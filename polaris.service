@@ -1,0 +1,26 @@
+[Unit]
+Description=Polaris: music streaming application
+After=syslog.target
+After=network.target
+
+[Service]
+User=polaris
+Group=polaris
+Type=simple
+WorkingDirectory=~
+Environment=USER=polaris HOME=/var/lib/polaris
+ExecStart=/usr/bin/polaris -f -c /etc/polaris/config.toml
+
+# Additional security-related features
+PrivateTmp=true
+ProtectHome=read-only
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=true
+RestrictRealtime=true
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target

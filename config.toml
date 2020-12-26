@@ -1,0 +1,16 @@
+[settings]
+album_art_pattern = '\.(png|jpe?g)$'
+# reindex_every_n_seconds = 100
+
+[[mount_dirs]]
+name = 'music'
+source = '/storage/music'
+
+# [[mount_dirs]]
+# name = 'other'
+# source = 'some/dir'
+
+[[users]]
+name = 'admin'
+password = 'polaris'
+admin = true
