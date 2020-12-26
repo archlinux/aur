@@ -2,26 +2,26 @@
 
 _name=flake8-bugbear
 pkgname=python-flake8-bugbear
-pkgver=20.1.4
+pkgver=20.11.1
 pkgrel=1
 pkgdesc='Plugin for Flake8 finding likely bugs and design problems in your program'
 arch=('any')
 url=https://github.com/PyCQA/flake8-bugbear
 license=('MIT')
 depends=('flake8' 'python-attrs' 'python-setuptools')
-# checkdepends=('python-hypothesis')  XXX: Other checkdepends are not packaged.
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('56c41393dbc36abc1fa71f6f8b7aebc0d69ac9f95ee92726655930cb5178c3c32a3ee69c9100d1dcb441eea5dd32877e668e0ae44e0ad1fe40b7694d7070e983')
+checkdepends=('python-hypothesmith')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha512sums=('572de22736fbf1aa4c85707db770db5c27dba6ec265baf258aab6e087d76016371d37201f45d9bea6ca7aaef482b07bd7e6957386372acec2c5aa4c098b5f8bc')
 
 build() {
   cd $_name-$pkgver
   python setup.py build
 }
 
-# check() {
-#   cd $_name-$pkgver
-#   python -m tests.test_bugbear
-# }
+check() {
+  cd $_name-$pkgver
+  python -m tests.test_bugbear
+}
 
 package() {
   cd $_name-$pkgver
