@@ -5,7 +5,7 @@
 _pkgname=coreutils
 pkgname=advcp
 pkgver=8.32
-pkgrel=3
+pkgrel=4
 pkgdesc="'cp' and 'mv' utilities with progress bar patches"
 arch=('x86_64')
 license=('GPL3')
@@ -13,7 +13,7 @@ url='https://www.gnu.org/software/coreutils/'
 depends=('glibc' 'acl' 'attr')
 provides=('acp' 'amv' 'advcp' 'advmv' 'cpg' 'mvg')
 source=("ftp://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"{,.sig}
-        "https://raw.githubusercontent.com/jarun/advcpmv/master/advcpmv-0.8-${pkgver}.patch")
+        "${pkgname}-${pkgver}-${pkgrel}.patch::https://raw.githubusercontent.com/jarun/advcpmv/master/advcpmv-0.8-${pkgver}.patch")
 validpgpkeys=('6C37DC12121A5006BC1DB804DF6FD971306037D9') # Pádraig Brady
 sha256sums=('4458d8de7849df44ccab15e16b1548b285224dbba5f08fac070c1c0e0bcc4cfa'
             'SKIP'
@@ -21,7 +21,7 @@ sha256sums=('4458d8de7849df44ccab15e16b1548b285224dbba5f08fac070c1c0e0bcc4cfa'
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
-    patch -Np1 -i "${srcdir}/advcpmv-0.8-${pkgver}.patch"
+    patch -Np1 -i "${srcdir}/${pkgname}-${pkgver}-${pkgrel}.patch"
 }
 
 build() {
