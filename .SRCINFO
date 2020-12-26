@@ -1,0 +1,15 @@
+pkgbase = linux-api-headers-git
+	pkgdesc = Kernel headers sanitized for use in userspace
+	pkgver = 5.10
+	pkgrel = 1
+	url = https://www.gnu.org/software/libc
+	arch = any
+	license = GPL2
+	makedepends = rsync
+	provides = linux-api-headers
+	conflicts = linux-api-headers
+	source = git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux
+	md5sums = SKIP
+
+pkgname = linux-api-headers-git
+
