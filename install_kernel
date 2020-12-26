@@ -1,0 +1,9 @@
+#pre_install() {}
+    
+post_install() {
+    printf "This is for Testing RN; please report back\n\n"
+}
+
+#pre_upgrade() {}
+#post_upgrade() {}
+#pre_remove() {}

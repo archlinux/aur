@@ -1,0 +1,10 @@
+#pre_install() {}
+    
+post_install() {
+    printf "\n\n dkms requires to install an own kernel and kernel headers!"
+    printf "This is for Testing RN; please report back\n\n"
+}
+
+#pre_upgrade() {}
+#post_upgrade() {}
+#pre_remove() {}

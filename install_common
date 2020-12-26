@@ -1,0 +1,13 @@
+#pre_install() {}
+    
+post_install() {
+	printf "\n\nYou need to install one of the following pkgs in order to make it work\n"
+	printf "· preconf-intel-nvidia-prime-render-offloading-linux\n"
+	printf "· preconf-intel-nvidia-prime-render-offloading-linux-zen\n"
+	printf "· preconf-intel-nvidia-prime-render-offloading-linux-lts\n"
+	printf "· preconf-intel-nvidia-prime-render-offloading-linux-dkms\n"
+}
+
+#pre_upgrade() {}
+#post_upgrade() {}
+#pre_remove() {}
