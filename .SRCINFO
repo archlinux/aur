@@ -1,6 +1,6 @@
 pkgbase = gimp-devel
 	pkgdesc = GNU Image Manipulation Program (Development version)
-	pkgver = 2.99.2
+	pkgver = 2.99.4
 	pkgrel = 1
 	url = http://www.gimp.org/
 	arch = i686
@@ -63,11 +63,11 @@ pkgbase = gimp-devel
 	optdepends = gjs: JavaScript scripting support
 	optdepends = luajit: LUA scripting support
 	optdepends = lua51-lgi: LUA scripting support
-	provides = gimp=2.99.2
+	provides = gimp=2.99.4
 	conflicts = gimp
-	source = https://download.gimp.org/pub/gimp/v2.99/gimp-2.99.2.tar.bz2
+	source = https://download.gimp.org/pub/gimp/v2.99/gimp-2.99.4.tar.bz2
 	source = linux.gpl
-	sha256sums = 39dc99a1581bbaafa9d6686bf246f7be12b0788ebfc37d185dea5bdae9c3ae73
+	sha256sums = df25c149c78f265181809d7685a9470a62c3c2f08c05e8498a4d5c86a048a5b2
 	sha256sums = 1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3
 
 pkgname = gimp-devel
