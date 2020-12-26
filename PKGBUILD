@@ -2,7 +2,7 @@
 
 _pkgbase='ddnss'
 pkgname="python-${_pkgbase}"
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Update DynDNS hosts registered at ddnss.de'
 arch=('any')
@@ -17,4 +17,8 @@ md5sums=('SKIP')
 package() {
     cd "${srcdir}/${_pkgbase}"
     python setup.py install --root "${pkgdir}" --optimize=1
+
+    # Install systemd units.
+    install -dm 755 "${pkgdir}/usr/lib/systemd/system"
+    install -m 664 ddnss@.{service,timer} "${pkgdir}/usr/lib/systemd/system/"
 }
