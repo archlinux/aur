@@ -2,7 +2,7 @@
 
 _pkgname="dofi"
 pkgname="dofi-manager-git"
-pkgver=0.1.0.r0.g844cab5
+pkgver=0.1.0.r2.g0c1baa3
 pkgrel=1
 pkgdesc="A simple dotfile manager"
 arch=("x86_64")
@@ -18,9 +18,9 @@ pkgver() {
   git describe --long --tags | sed "s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
-build () {
+build() {
   cd "$srcdir/$_pkgname"
-  cargo build --locked --release --target-dir target
+  DOFI_VERSION=$pkgver cargo build --locked --release --target-dir target
 }
 
 package() {
@@ -28,5 +28,4 @@ package() {
 
   install -Dm755 target/release/dofi "$pkgdir/usr/bin/dofi"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
 }
