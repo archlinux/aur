@@ -7,7 +7,7 @@
 pkgname=rethinkdb
 pkgver=2.4.1
 _node=6.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Distributed NoSQL database for realtime applications'
 arch=(x86_64)
 url=https://www.rethinkdb.com
@@ -60,6 +60,7 @@ prepare() {
     --allow-fetch \
     --fetch npm \
     --fetch protobuf \
+    --fetch boost \
     CXX=clang++
 
   # Manually fetch the Node version used, so we can patch it
