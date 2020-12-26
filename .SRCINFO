@@ -1,17 +1,20 @@
 pkgbase = deepin.com.qq.office
 	pkgdesc = Deepin Wine TIM 2.0.0
 	pkgver = 2.0.0_4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://office.qq.com/
+	install = .INSTALL
 	arch = i686
 	arch = x86_64
 	license = Proprietary
 	makedepends = tar
-	depends = deepin-wine
+	depends = deepin-wine5
 	depends = wqy-microhei
+	depends = p7zip
+	depends = deepin-wine-helper-modify
 	conflicts = deepin-wine-tim
 	noextract = deepin.com.qq.office_2.0.0deepin4_i386.deb
-	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin.com.qq.office/deepin.com.qq.office_2.0.0deepin4_i386.deb
+	source = https://packages.deepin.com/deepin/pool/non-free/d/deepin.com.qq.office/deepin.com.qq.office_2.0.0deepin4_i386.deb
 	md5sums = d5c37cb4f960e13111ce24dbc0dd2d58
 
 pkgname = deepin.com.qq.office

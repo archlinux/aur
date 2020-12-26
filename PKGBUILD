@@ -3,14 +3,14 @@
 pkgname=deepin.com.qq.office
 _pkgver=2.0.0deepin4
 pkgver=2.0.0_4
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Deepin Wine TIM 2.0.0"
 arch=('i686' 'x86_64')
 url="http://office.qq.com/"
 license=('Proprietary')
 groups=()
-depends=('deepin-wine' 'wqy-microhei')
+depends=('deepin-wine5' 'wqy-microhei' 'p7zip' 'deepin-wine-helper-modify')
 makedepends=('tar')
 checkdepends=()
 optdepends=()
@@ -19,9 +19,9 @@ conflicts=('deepin-wine-tim')
 replaces=()
 backup=()
 options=()
-install=
+install=.INSTALL
 changelog=
-source=("https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/${pkgname}/${pkgname}_${_pkgver}_i386.deb")
+source=("https://packages.deepin.com/deepin/pool/non-free/d/${pkgname}/${pkgname}_${_pkgver}_i386.deb")
 noextract=("${pkgname}_${_pkgver}_i386.deb")
 md5sums=('d5c37cb4f960e13111ce24dbc0dd2d58')
 validpgpkeys=()
@@ -34,5 +34,6 @@ prepare() {
 
 package() {
 	cd "${pkgname}-${pkgver}"
+	sed -i "9aexport LC_CTYPE='en_US.UTF-8'" opt/deepinwine/apps/Deepin-TIM/run.sh
 	cp -r ./ ${pkgdir}/
 }
