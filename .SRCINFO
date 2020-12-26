@@ -1,6 +1,6 @@
 pkgbase = pulseeffects-git
 	pkgdesc = Audio Effects for Pulseaudio Applications
-	pkgver = 4.8.3.r0.gf5f83831
+	pkgver = 4.8.4.r75.g7130c640
 	pkgrel = 1
 	url = https://github.com/wwmm/pulseeffects
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = pulseeffects-git
 	depends = gstreamer
 	depends = gst-plugin-gtk
 	depends = gst-plugins-bad
+	depends = gst-plugin-pipewire
 	depends = lilv
 	depends = boost-libs
 	depends = libsigc++
