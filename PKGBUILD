@@ -4,7 +4,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 pkgname=basilisk
 pkgver=2020.11.25
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser forked from mozilla.org"
 arch=('x86_64')
 url="https://www.basilisk-browser.org/"
@@ -29,7 +29,7 @@ prepare() {
   cat > .mozconfig << EOF
 # Comment/uncomment build flags as needed
 
-ac_add_options --enable-application=browser
+ac_add_options --enable-application=basilisk
 ac_add_options --enable-release
 ac_add_options --enable-official-branding
 ac_add_options --enable-private-build
@@ -37,12 +37,6 @@ export MOZILLA_OFFICIAL=1
 export MOZ_DATA_REPORTING=0
 export MOZ_TELEMETRY_REPORTING=0
 export MOZ_SERVICES_HEALTHREPORT=0
-
-ac_add_options --disable-updater
-ac_add_options --disable-maintenance-service
-ac_add_options --disable-stylo
-ac_add_options --disable-servo
-ac_add_options --disable-webextensions
 
 ac_add_options --prefix=/usr
 ac_add_options --enable-strip
@@ -53,37 +47,38 @@ ac_add_options --enable-jemalloc
 ac_add_options --enable-replace-malloc
 ac_add_options --with-pthreads
 ac_add_options --enable-optimize="-O2 -msse -msse2 -msse3 -mmmx -mfpmath=sse"
-
-ac_add_options --enable-default-toolkit=cairo-gtk2
+ac_add_options --enable-default-toolkit=cairo-gtk3
 
 ac_add_options --enable-alsa
-ac_add_options --disable-pulseaudio
-ac_add_options --disable-jack
+ac_add_options --enable-devtools
+ac_add_options --enable-eme
+ac_add_options --enable-webrtc
+ac_add_options --enable-av1
+ac_add_options --enable-gamepad
 
+ac_add_options --disable-crashreporter
+ac_add_options --disable-debug
+ac_add_options --disable-debug-symbols
+ac_add_options --disable-tests
 ac_add_options --disable-dbus
 ac_add_options --disable-gconf
 ac_add_options --disable-gio
 ac_add_options --disable-necko-wifi
 ac_add_options --disable-startup-notification
+ac_add_options --disable-updater
+ac_add_options --disable-maintenance-service
 
-ac_add_options --enable-devtools
-
-ac_add_options --disable-debug
-ac_add_options --disable-debug-symbols
-ac_add_options --disable-tests
-
-ac_add_options --disable-eme
-ac_add_options --disable-crashreporter
-ac_add_options --disable-parental-controls
-ac_add_options --disable-accessibility
+#ac_add_options --disable-stylo
+#ac_add_options --disable-servo
+#ac_add_options --disable-webextensions
+#ac_add_options --disable-parental-controls
+#ac_add_options --disable-accessibility
 #ac_add_options --disable-safe-browsing
 #ac_add_options --disable-sync
 #ac_add_options --disable-webspeech
 #ac_add_options --disable-webspeechtestbackend
 #ac_add_options --disable-synth-speechd
 #ac_add_options --disable-synth-pico
-ac_add_options --disable-webrtc
-ac_add_options --disable-gamepad
 #ac_add_options --disable-b2g-camera
 #ac_add_options --disable-b2g-ril
 #ac_add_options --disable-b2g-bt
@@ -91,6 +86,8 @@ ac_add_options --disable-gamepad
 #ac_add_options --disable-nfc
 #ac_add_options --disable-url-classifier
 #ac_add_options --disable-userinfo
+#ac_add_options --disable-pulseaudio
+#ac_add_options --disable-jack
 
 #mk_add_options MOZ_MAKE_FLAGS="-j4"
 mk_add_options PYTHON=/usr/bin/python2
