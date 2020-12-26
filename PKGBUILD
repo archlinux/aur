@@ -1,13 +1,13 @@
 # Maintainer: Fabrix Xm <fabrix.xm@gmail.com>
 _pkgname=confy
 pkgname=confy-git
-pkgver=v0.4.1.r1.g1fc20d6
+pkgver=v0.4.1.r6.g55b6992
 pkgrel=1
 pkgdesc="Conferences schedule viewer for GNOME"
 arch=('x86_64' 'aarch64')
 url="https://confy.kirgroup.net/"
 license=(GPL3)
-depends=('python' 'gtk3' 'libhandy' 'python-gobject' 'libnotify')
+depends=('python' 'gtk3' 'libhandy' 'python-gobject' 'python-icalendar' 'libnotify')
 makedepends=('meson' 'ninja' 'gobject-introspection' 'git')
 provides=(confy)
 source=("git+https://git.sr.ht/~fabrixxm/confy")
