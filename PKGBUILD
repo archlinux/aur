@@ -59,7 +59,7 @@ build() {
                --with-system-ss \
                --disable-rpath \
                --without-tcl \
-               --disable-dns-for-realm \
+               --enable-dns-for-realm \
                --without-ldap \
                --without-vague-errors \
                --disable-audit-plugin \
