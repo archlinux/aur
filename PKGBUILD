@@ -4,30 +4,30 @@
 
 _pkgname=liblscp
 pkgname="${_pkgname}-svn"
-pkgver=0.5.7.1.2923
+pkgver=0.9.0.r3843
 pkgrel=1
 pkgdesc="LinuxSampler Control Protocol (LSCP) wrapper library"
 arch=('i686' 'x86_64')
 url="http://www.linuxsampler.org/"
-license=('LGPL')
+license=('LGPL2.1')
 depends=('glibc')
 makedepends=('subversion' 'doxygen' 'libtool')
 conflicts=("${_pkgname}")
-provides=("${_pkgname}")
-options=('!libtool')
+provides=("${_pkgname}" "${_pkgname}=${pkgver/\.r*/}" 'liblscp.so')
 source=("${_pkgname}::svn+https://svn.linuxsampler.org/svn/${_pkgname}/trunk")
-md5sums=('SKIP')
+sha256sums=('SKIP')
+
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
 
-  echo $(sed -n 's/AM_INIT_AUTOMAKE.*, \(.*\))/\1/p' configure.ac).$(svnversion)
+  echo $(grep '^AC_INIT' configure.ac | cut -d , -f 2).r$(svnversion)
 }
 
 build() {
   cd "$srcdir/${_pkgname}"
 
-  make -f Makefile.svn
+  ./autogen.sh
   ./configure --prefix=/usr \
               --enable-static=no
   make
