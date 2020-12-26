@@ -1,7 +1,7 @@
 # Maintainer: monosans <hsyqixco at protonmail dot com>
 
 pkgname=st-monosans-git
-pkgver=0.8.4.1138.8f63d8c
+pkgver=0.8.4.1139.a4b7a06
 pkgrel=1
 pkgdesc='Simple (suckless) terminal with scrollback, ligatures and One Dark color scheme'
 url='https://github.com/monosans/st'
