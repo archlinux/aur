@@ -1,7 +1,7 @@
 pkgbase = advcp
 	pkgdesc = 'cp' and 'mv' utilities with progress bar patches
 	pkgver = 8.32
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/coreutils/
 	arch = x86_64
 	license = GPL3
@@ -20,7 +20,7 @@ pkgbase = advcp
 	validpgpkeys = 6C37DC12121A5006BC1DB804DF6FD971306037D9
 	sha256sums = 4458d8de7849df44ccab15e16b1548b285224dbba5f08fac070c1c0e0bcc4cfa
 	sha256sums = SKIP
-	sha256sums = 6919835aac53c873267d199de8823e993d72870a5eb7b6caf566803a7f3f861e
+	sha256sums = 294e54c2a13d648dd5298df55369fa1a51d8f9960c90c558f316468e54b9e747
 
 pkgname = advcp
 
