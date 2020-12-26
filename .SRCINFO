@@ -1,0 +1,21 @@
+pkgbase = st-monosans-git
+	pkgdesc = Simple (suckless) terminal with scrollback, ligatures and One Dark color scheme
+	pkgver = 0.8.4.1138.8f63d8c
+	pkgrel = 1
+	url = https://github.com/monosans/st
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = libxext
+	makedepends = ncurses
+	depends = libxft
+	depends = harfbuzz
+	depends = ttf-jetbrains-mono
+	provides = st
+	conflicts = st
+	source = git://github.com/monosans/st
+	sha256sums = SKIP
+
+pkgname = st-monosans-git
+
