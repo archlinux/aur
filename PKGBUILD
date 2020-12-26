@@ -2,7 +2,7 @@
 _pkgname=camouflage
 pkgname=$_pkgname-git
 pkgver=2.0.0.r4.g0f6e733
-pkgrel=1
+pkgrel=2
 pkgdesc="a mux websocket over TLS proxy, experimental version"
 arch=('x86_64')
 license=('MPL')
