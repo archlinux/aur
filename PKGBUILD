@@ -5,7 +5,7 @@
 
 pkgname=webkitgtk
 pkgver=2.4.11
-pkgrel=20
+pkgrel=21
 epoch=3
 pkgdesc="Legacy Web content engine for GTK+ 3"
 arch=("armv7h" "i686" "x86_64")
@@ -30,6 +30,7 @@ source=(
   "enchant-2.x.patch"
   "icu59.patch"
   "pkgconfig-enchant-2.patch"
+  "icu68.patch"
   "grammar.patch"
 )
 sha256sums=(
@@ -38,6 +39,7 @@ sha256sums=(
   "7e37e059f071aaef93e387675de1a0c6a3dcf61ef67a3221a078caca69e22079"
   "4e94e35b036f8a87a64e02d747d4103c0553dfe637fda372785c2b95211445ca"
   "a1e2f24b28273746b2fbaecef42495f6314c76b16a446c22dc123e6a3afb58c8"
+  "d1a9ccc1ae5cb042bc47ae846ff84513ca7b9c7bc999c546ffba48572f0373a0"
   "24b49319500a79feb014ce2decd41db8ba7769c471bc8bfb42f761e2bc4d1ffb"
 )
 
@@ -51,6 +53,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/icu59.patch"
   # https://www.archlinux.org/todo/enchant-221-rebuild/
   patch -Np1 -i "${srcdir}/pkgconfig-enchant-2.patch"
+  patch -Np1 -i "${srcdir}/icu68.patch"
 
   # Needed as autotools-related files are patched
   autoreconf -ifv
