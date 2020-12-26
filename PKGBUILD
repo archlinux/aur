@@ -1,7 +1,7 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 
 pkgname=goodvibes
-pkgver=0.6
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Lightweight internet radio player"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=("amtk" "libkeybinder3" "gst-plugins-base" "gst-plugins-good" "gst-plugins-ugly")
 makedepends=("meson")
 source=("https://gitlab.com/${pkgname}/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('b3cb769ff2813e38ac5211be5af97a32f17b31ba48c0133d8a406005262f76a5')
+sha256sums=('f71e8b5a843b53ca24ec93da2c9c402a71ac2a594434636a83a6b8fd5937f228')
 
 build() {
     cd "$srcdir/$pkgname-v$pkgver"
