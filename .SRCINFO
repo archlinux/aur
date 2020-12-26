@@ -1,6 +1,6 @@
 pkgbase = clojure-lsp-bin
 	pkgdesc = Language Server (LSP) for Clojure
-	pkgver = 20201224T192019
+	pkgver = 20201226T020030
 	pkgrel = 1
 	url = https://github.com/snoe/clojure-lsp
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = clojure-lsp-bin
 	depends = clojure
 	provides = clojure-lsp
 	conflicts = clojure-lsp
-	source = https://github.com/snoe/clojure-lsp/releases/download/release-20201224T192019/clojure-lsp
-	sha256sums = f0ac9d6ce6a567b2882bbd8c65c32c5129c562529a5ce4f6749b8f0dc08782cc
+	source = https://github.com/snoe/clojure-lsp/releases/download/release-20201226T020030/clojure-lsp
+	sha256sums = d5de37fc88de62d441b212a450da10233762cb0f6aa5d090e49085920fe381d1
 
 pkgname = clojure-lsp-bin
 
