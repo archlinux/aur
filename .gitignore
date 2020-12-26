@@ -1,0 +1,5 @@
+*.pkg.tar*
+*.log
+ddnss/
+pkg/
+src/
