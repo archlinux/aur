@@ -1,7 +1,7 @@
 pkgbase = xfce4-multiload-ng-plugin
 	pkgdesc = Modern graphical system monitor, XFCE4 panel plugin
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://udda.github.io/multiload-ng/
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = xfce4-multiload-ng-plugin
 	makedepends = intltool
 	depends = gtk3
 	depends = cairo
-	depends = libxfce4util>=4.16.0
-	depends = xfce4-panel>=4.16.0
+	depends = libxfce4util
+	depends = xfce4-panel
 	depends = multiload-ng-common
 	conflicts = xfce4-multiload-ng-plugin-gtk2
 	conflicts = xfce4-multiload-ng-plugin-gtk2-git

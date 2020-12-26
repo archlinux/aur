@@ -6,10 +6,10 @@
 pkgname='xfce4-multiload-ng-plugin'
 pkgdesc='Modern graphical system monitor, XFCE4 panel plugin'
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 
 makedepends=('intltool')
-depends=('gtk3' 'cairo' 'libxfce4util>=4.16.0' 'xfce4-panel>=4.16.0' 'multiload-ng-common')
+depends=('gtk3' 'cairo' 'libxfce4util' 'xfce4-panel' 'multiload-ng-common')
 
 conflicts=('xfce4-multiload-ng-plugin-gtk2' 'xfce4-multiload-ng-plugin-gtk2-git' 'xfce4-multiload-ng-plugin-gtk3' 'xfce4-multiload-ng-plugin-gtk3-git')
 replaces=('xfce4-multiload-ng-plugin-gtk2' 'xfce4-multiload-ng-plugin-gtk2-git' 'xfce4-multiload-ng-plugin-gtk3' 'xfce4-multiload-ng-plugin-gtk3-git')
