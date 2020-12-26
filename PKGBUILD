@@ -3,7 +3,7 @@
 
 pkgname=nvidia-container-toolkit
 
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 
 pkgdesc='NVIDIA container runtime toolkit'
@@ -12,12 +12,12 @@ url='https://github.com/NVIDIA/nvidia-container-toolkit'
 license=('Apache')
 
 makedepends=('go')
-depends=('libnvidia-container-tools>=1.3.0')
+depends=('libnvidia-container-tools>=1.3.1')
 conflicts=('nvidia-container-runtime-hook' 'nvidia-container-runtime<2.0.0')
 replaces=('nvidia-container-runtime-hook')
 
 source=("v${pkgver}-${pkgrel}.tar.gz"::"${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('d27729ddcae1147737f0d28f09d6854243b950e6044d44e806a72707a227272e')
+sha256sums=('a61ed73decb9233d3ed4d38fc420a8bb1eebaaae46ec8885cf8f556c607efc7a')
 
 _srcdir="nvidia-container-toolkit-${pkgver}"
 _golang_pkg_path="github.com/NVIDIA/nvidia-container-toolkit/pkg"
