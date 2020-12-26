@@ -1,6 +1,6 @@
 pkgbase = st-monosans-git
 	pkgdesc = Simple (suckless) terminal with scrollback, ligatures and One Dark color scheme
-	pkgver = 0.8.4.1138.8f63d8c
+	pkgver = 0.8.4.1139.a4b7a06
 	pkgrel = 1
 	url = https://github.com/monosans/st
 	arch = i686
