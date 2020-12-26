@@ -19,7 +19,6 @@ pkgbase = skywire
 	makedepends = go
 	makedepends = musl
 	makedepends = kernel-headers-musl
-	optdepends = readonly-cache: distribute hypervisorkey package for cluster management
 	source = git+https://github.com/skycoin/skywire.git
 	source = skywire-scripts.tar.gz
 	sha256sums = SKIP
