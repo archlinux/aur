@@ -44,8 +44,6 @@ prepare() {
     yarn install $_yarnargs --frozen-lockfile
     yarn add $_yarnargs --dev --no-lockfile \
         electron@$_electronVersion
-    yarn add $_yarnargs --dev --no-lockfile \
-        webpack-cli
     ln -sf /dev/null resources/pandoc
     yarn lang:refresh
     yarn csl:refresh
@@ -57,8 +55,8 @@ build() {
     yarn install $_yarnargs --pure-lockfile
     NODE_ENV=production yarn run webpack
     yarn reveal:build
-    pushd source
-    yarn install $_yarnargs --pure-lockfile
+    # pushd source
+    # yarn install $_yarnargs --pure-lockfile
     node-prune node_modules
     find . -type d -name fonts -exec rm -rfv {} +
 }
