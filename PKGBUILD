@@ -3,18 +3,19 @@
 pkgname=freetube-git
 _pkgname=FreeTube
 pkgver=1217
-pkgrel=4
+pkgrel=5
 pkgdesc='An open source desktop YouTube player built with privacy in mind - built from git source tree.'
 arch=('x86_64' 'arm')
 license=('AGPL3')
-depends=('gtk3' 'libxss' 'nss' 'electron')
+depends=('gtk3' 'nss' 'electron')
 makedepends=('git' 'npm')
 conflicts=('freetube' 'freetube-bin')
 url=https://freetubeapp.io
 source=(git+https://github.com/FreeTubeApp/FreeTube
         package-only-necessary.diff
-        freetube.desktop)
-sha256sums=(SKIP SKIP SKIP)
+        freetube.desktop
+        freetube.sh)
+sha256sums=(SKIP SKIP SKIP SKIP)
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -33,11 +34,9 @@ build() {
 }
 
 package() {
-  install -d "${pkgdir}"/{usr/bin,opt}
-  cp -R "./$_pkgname/build/linux-unpacked" "$pkgdir/opt/$pkgname"
-  ln -s "/opt/$pkgname/freetube" "$pkgdir/usr/bin/freetube"
-  
-  chmod 4755 $pkgdir/opt/$pkgname/chrome-sandbox
+  install -d "${pkgdir}"/{usr/bin,usr/lib/freetube-git}
+  cp -R "./$_pkgname/build/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/$pkgname"
+  install -Dm755 "./freetube.sh" "$pkgdir/usr/bin/freetube"
   
   cd $_pkgname
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
