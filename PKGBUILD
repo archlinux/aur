@@ -2,26 +2,25 @@
 
 _pkgname=zypper
 pkgname=${_pkgname}-git
-pkgver=1.14.39.3.g1d28e66a
+pkgver=1.14.41.18.g2d3baa94
 pkgrel=1
 pkgdesc="World's most powerful command line package manager"
 arch=('x86_64')
 url="https://github.com/openSUSE/${_pkgname}"
 license=('GPL')
 depends=(
-  'libzypp-git'
-  'libxml2'
-  'procps'
-  'readline'
   'augeas'
+  'libzypp'
+  'perl'
+  'procps'
 )
 makedepends=(
-  'git'
-  'cmake'
-  'ninja'
-  'boost'
   'asciidoc'
   'asciidoctor'
+  'boost'
+  'cmake'
+  'git'
+  'ninja'
 )
 provides=(
   "${_pkgname}"
