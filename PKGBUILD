@@ -4,7 +4,7 @@
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the initial patches!
 # https://github.com/mymedia2/tdesktop
 pkgname=telegram-desktop-dev
-pkgver=2.4.15
+pkgver=2.5.2
 pkgrel=2
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
