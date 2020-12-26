@@ -3,7 +3,7 @@
 _pkgname=ungoogled-chromium
 pkgname=ungoogled-chromium-appimage
 pkgver=87.0.4280.88
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight approach to removing Google web service dependency (binary AppImage)"
 url='https://github.com/mcstrugs/ungoogled-chromium-binaries'
 arch=('x86_64')
@@ -23,5 +23,6 @@ package() {
   # Symlink in /usr/bin
   mkdir -p "${pkgdir}/usr/bin"
   ln -s "/opt/appimages/${_filename}" "${pkgdir}/usr/bin/${_pkgname}"
+  ln -s "/opt/appimages/${_filename}" "${pkgdir}/usr/bin/chromium"
 }
 
