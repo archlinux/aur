@@ -3,16 +3,16 @@ pkgname=camouflage
 epoch=1
 pkgver=2.0.0
 _pkgver=v${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="a mux websocket over TLS proxy"
 arch=('x86_64')
 license=('MPL')
 depends=()
-makedepends=('go>=2:1.14' 'git')
+makedepends=('go>=2:1.15' 'git')
 url='https://github.com/Sherlock-Holo/camouflage'
 source=(
 	"https://github.com/Sherlock-Holo/camouflage/archive/$_pkgver.tar.gz"
-    "camouflage.install"
+	"camouflage.install"
 )
 
 md5sums=('a3b7c3ba4368ac44fadf8900aa308ef4'
