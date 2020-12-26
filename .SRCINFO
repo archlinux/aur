@@ -1,7 +1,7 @@
 pkgbase = nyxt
 	pkgdesc = Keyboard-oriented, Common Lisp extensible web-browser
 	pkgver = 2.pre.release.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nyxt.atlas.engineer
 	arch = i686
 	arch = x86_64

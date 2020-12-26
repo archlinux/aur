@@ -4,7 +4,7 @@
 
 pkgname=nyxt
 pkgver=2.pre.release.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Keyboard-oriented, Common Lisp extensible web-browser"
 arch=('i686' 'x86_64')
 url="https://nyxt.atlas.engineer"
@@ -27,6 +27,6 @@ options=('!strip' '!makeflags')
 package() {
   cd $pkgname
   make install PREFIX=/usr DESTDIR=${pkgdir}
-  install -Dm644 licenses/ASSET-LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/ASSET-LICENSE
-  install -Dm644 licenses/SOURCE-LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/SOURCE-LICENSE
+  install -Dm644 licenses/ASSET-LICENSE "$pkgdir"/usr/share/licenses/$pkgname/ASSET-LICENSE
+  install -Dm644 licenses/SOURCE-LICENSE "$pkgdir"/usr/share/licenses/$pkgname/SOURCE-LICENSE
 }
