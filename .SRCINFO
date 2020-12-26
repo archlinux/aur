@@ -1,6 +1,6 @@
 pkgbase = motionbox
 	pkgdesc = MotionBox is a Video Browser for Motion Freedom
-	pkgver = 1.6.0.10
+	pkgver = 1.6.0.11
 	pkgrel = 1
 	url = http://omega.gg/MotionBox/
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = motionbox
 	depends = libidn11
 	provides = motionbox
 	conflicts = motionbox
-	source = https://s3-eu-west-1.amazonaws.com/omega.gg/get/MotionBox/MotionBox-1.6.0-10-linux64.tar.gz
+	source = https://s3-eu-west-1.amazonaws.com/omega.gg/get/MotionBox/MotionBox-1.6.0-11-linux64.tar.gz
 	source = https://github.com/G-P-L/AUR/raw/master/MotionBox/MotionBox.desktop
 	source = https://github.com/G-P-L/AUR/raw/master/MotionBox/MotionBox.png
-	sha256sums = c0940379a28c312e4e7bf3e21a0827babfb1c5e858b06769c4661ac70fa65479
+	sha256sums = 15622d4608b6f27ac014d0e2d5bae5feca37879a0d2756a371c98b8138546c40
 	sha256sums = c531f06e8777a2f6327ead793b6dc16c2b4780fdb16be354f8e68ddbe32138e7
 	sha256sums = 7b0f4fb92e7bc5d23fbef1a0bb9381a63fa979f28a36b2f0b4b4619b13039b72
 
