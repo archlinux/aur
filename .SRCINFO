@@ -1,7 +1,7 @@
 pkgbase = xfce4-multiload-ng-plugin-gtk2
-	pkgdesc = Modern graphical system monitor, XFCE4 panel plugin
+	pkgdesc = DEPRECATED: Please switch to xfce4-multiload-ng-plugin
 	pkgver = 1.5.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://udda.github.io/multiload-ng/
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = xfce4-multiload-ng-plugin-gtk2
 	conflicts = xfce4-multiload-ng-plugin-gtk3
 	conflicts = xfce4-multiload-ng-plugin-gtk2-git
 	conflicts = xfce4-multiload-ng-plugin-gtk3-git
-	replaces = xfce4-multiload-ng-plugin
 	source = https://github.com/udda/multiload-ng/archive/v1.5.2.tar.gz
 	source = build-fix.patch
 	md5sums = bdb9344d696324bd4db04a8bce6d7ec0
