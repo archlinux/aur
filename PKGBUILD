@@ -6,61 +6,35 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=audacious-plugins-libopenmpt-git
-pkgver=4.0.beta1.r201.gdf3a07781
+pkgver=4.0.beta1.r283.g1fc86da9a
 pkgrel=1
 pkgdesc='Plugins for Audacious (with libopenpt) (git version)'
 arch=(i686 x86_64)
-url='https://audacious-media-player.org'
+url=https://audacious-media-player.org
 license=(BSD GPL)
-provides=("${pkgname%-*-*}")
-conflicts=("${pkgname%-*-*}")
-depends=(audacious-git libopenmpt)
-makedepends=(glib2 python alsa-lib pulseaudio jack lame libvorbis flac mpg123 faad2 ffmpeg libmodplug fluidsynth libcdio-paranoia libsidplayfp wavpack libsamplerate libnotify lirc curl libmtp neon libmms libcue libbs2b git)
-optdepends=(
-    'alsa-lib: Advanced Linux Sound Arch. output'
-    'pulseaudio: PulseAudio output'
-    'jack: Jack Audio Connection Kit output'
-    'lame: FileWriter MP3 output'
-    'libvorbis: Vorbis input, FileWriter Vorbis output'
-    'flac: FLAC input, FileWriter FLAC output'
-    \
-    'mpg123: MP3 input'
-    'faad2: AAC input'
-    'ffmpeg: ffaudio input'
-    'libmodplug: modplug input'
-    'fluidsynth: MIDI FluidSynth backend input'
-    'libcdio-paranoia: CD Digital Audio input'
-    'libsidplayfp: Commodore 64 audio input'
-    'wavpack: WavPack input'
-    \
-    'libsamplerate: Speed and Pitch Plugin'
-    'libnotify: libnotify OSD'
-    'lirc: LIRC'
-    'curl: AudioScrobbler Client'
-    'libmtp: Upload to MTP device'
-    'libbs2b: Bauer stereophonic-to-binaural DSP'
-    \
-    'neon: neon-based http transport'
-    'libmms: libmms-based mms transport'
-    'libcue: CUE playlist format'
-)
-source=(git+https://github.com/audacious-media-player/"${pkgname%-*-*}".git)
-sha256sums=(SKIP)
+provides=("${pkgname%-libopenmpt-git}")
+conflicts=("${pkgname%-libopenmpt-git}")
+depends=(audacious-git alsa-lib curl dbus-glib faad2 ffmpeg flac fluidsynth
+        jack lame libcdio-paranoia libcue libmms libmodplug
+        libmtp libpulse libnotify libsamplerate libsidplayfp
+        libvorbis lirc mpg123 neon wavpack libbs2b libopenmpt gtk2)
+makedepends=(glib2 python git)
+source=(git+https://github.com/audacious-media-player/"${pkgname%-libopenmpt-git}".git)
+md5sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname%-*-*}"
-    git describe --long --tags | sed 's/^audacious-plugins-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git -C "${pkgname%-libopenmpt-git}" describe --long --tags | sed 's/^audacious-plugins-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${pkgname%-*-*}"
+    cd "${pkgname%-libopenmpt-git}"
     autoreconf -I m4
-    ./configure --prefix=/usr #--enable-gtk
+    ./configure --prefix=/usr
     make
 }
 
 package() {
-    cd "${pkgname%-*-*}"
+    cd "${pkgname%-libopenmpt-git}"
     make DESTDIR="${pkgdir}" install
     install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
