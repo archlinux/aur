@@ -1,7 +1,7 @@
 # Maintainer: nissen22 <bernhardnorneslotsberg at gmail dot com>
 # Package heavily inspired by the ordinary Ripcord AUR package and https://wiki.archlinux.org/index.php/Creating_packages
 pkgname='ripcord-arch-libs'
-pkgver=0.4.26
+pkgver=0.4.27
 pkgrel=1
 pkgdesc='Qt-based Discord and Slack client. Modified to run on system libraries for Wayland support.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('ripcord')
 
 _file="Ripcord-$pkgver-x86_64.AppImage"
 source=("https://cancel.fm/dl/$_file"{,.asc} LICENSE)
-sha256sums=('784602ca1d8f86f7e8bb01603bc31682ad8d2c8be6e26fa33a423dec5f103445' 'SKIP' 'd7b2d483acceaebebfa068223efd8fb5e0f5d66f642fa234484ca50974c9fa2c')
+sha256sums=('c63d3e682ba7dbacd9c69122b72c75f51de0fea12ef4ce5e9e63d7549c63e41d' 'SKIP' 'd7b2d483acceaebebfa068223efd8fb5e0f5d66f642fa234484ca50974c9fa2c')
 
 # !! AppImage is emptied if symbols are stripped away !!
 # But beyond that, the program is deployed with symbols on purpose
@@ -40,10 +40,10 @@ package() {
   install -d "$pkgdir"/usr/share/applications/
   install -d "$pkgdir"/usr/share/icons/
   install -d "$pkgdir"/usr/share/licenses/"$pkgname"
-  
+
   # icon
   install -m644 squashfs-root/Ripcord_Icon.png "$pkgdir"/usr/share/icons/
-  
+
   # .desktop file
   sed -i 's/Exec=Ripcord/Exec=env\ QT_QPA_PLATFORM_PLUGIN_PATH=\/usr\/lib\/qt\/plugins\ ripcord/g' squashfs-root/Ripcord.desktop
   install -m644 squashfs-root/Ripcord.desktop "$pkgdir"/usr/share/applications
