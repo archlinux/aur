@@ -3,17 +3,18 @@
 # Former Maintainer: halflife <pigoig_At_gmail_com>
 
 pkgname=noto-fonts-sc
-pkgver=2.001
+pkgver=20201206
+_pkgver=v20201206-cjk
 pkgrel=5
-epoch=1
+epoch=2
 pkgdesc="Noto CJK-SC fonts for Simplified Chinese"
 arch=(any)
 depends=()
-source=("https://github.com/googlefonts/noto-cjk/raw/NotoSansV2.001/NotoSansCJKsc-Regular.otf"
-        "https://github.com/googlefonts/noto-cjk/raw/NotoSansV2.001/NotoSansMonoCJKsc-Regular.otf"
-        "https://github.com/googlefonts/noto-cjk/raw/NotoSansV2.001/LICENSE")
-sha256sums=('ee85a1e4126e287a373625cce025b3235cdebf96f71b78f5ef165893c6f8c99f'
-            '1be3c018da41e6545090882625457c9a5d01a03a9115a6be49820d154585989a'
+source=("https://github.com/googlefonts/noto-cjk/raw/${_pkgver}/NotoSansCJKsc-Regular.otf"
+        "https://github.com/googlefonts/noto-cjk/raw/${_pkgver}/NotoSansMonoCJKsc-Regular.otf"
+        "https://github.com/googlefonts/noto-cjk/raw/${_pkgver}/LICENSE")
+sha256sums=('6895d254d27ea7ac0c022b255d49f82508a52e18a635279d6dcf6702e3d5c68e'
+            'a310c9f8cc8e58f90601b2581809fbcf5728799aebb5cce70c8d1255dc968d66'
             '6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2')
 url="https://www.google.com/get/noto/help/cjk/"
 license=("custom: SIL")
