@@ -1,10 +1,11 @@
 pkgbase = cxx-common
 	pkgdesc = Common dependency management for various Trail of Bits C++ codebases
 	pkgver = 0.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/trailofbits/cxx-common
 	arch = x86_64
 	license = Apache
+	makedepends = clang
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = git
@@ -16,7 +17,9 @@ pkgbase = cxx-common
 	options = staticlibs
 	options = !strip
 	source = https://github.com/trailofbits/cxx-common/archive/v0.1.1.tar.gz
+	source = 00-cxx-common-0.1.1.patch
 	sha256sums = 97a0a35f9dcf65b2f1406aa77fb27594212ed4271a6e21dc26b430adfbf4e92d
+	sha256sums = a8823b585aec0eb58f9eca35d72074ba5832d2edf1fa6766cc09a27b9b0a4606
 
 pkgname = cxx-common
 
