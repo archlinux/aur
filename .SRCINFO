@@ -1,6 +1,6 @@
 pkgbase = radare2-git
 	pkgdesc = Open-source tools to disasm, debug, analyze and manipulate binary files
-	pkgver = 4.6.0.r24570.3c88900134
+	pkgver = 5.0.1.r25110.7a222e68dc
 	pkgrel = 1
 	url = http://radare.org
 	arch = i686
