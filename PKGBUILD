@@ -4,13 +4,14 @@
 # Contributor: Hubert Grzeskowiak <arch at nemesis13 de>
 
 pkgname=panda3d-git
-pkgver=v1.9.1.r472.gd3071d1
+pkgver=r24699.2156e6deb2
 pkgrel=1
 pkgdesc="A 3D game engine with Python bindings. SDK package. Git Version. Optional dependencies you want to support need to be installed before panda3d."
 url="http://www.panda3d.org"
 arch=('i686' 'x86_64')
 license=('BSD')
 provides=('panda3d')
+install=panda3d-git.install
 conflicts=('panda3d')
 
 depends=('desktop-file-utils' 'shared-mime-info'
@@ -61,11 +62,23 @@ optdepends=(# Pretty much required
             'libegl: GLX for OpenGL ES'
             )
 
-source=('panda3d::git+https://github.com/panda3d/panda3d.git')
-md5sums=('SKIP')
-sha256sums=('SKIP')
+source=('panda3d::git+https://github.com/panda3d/panda3d.git' 'libdir_fix.patch')
+md5sums=('SKIP'
+         '44d5cd0d121ec966f52d6ca00fdf81eb')
+sha256sums=('SKIP'
+            '0ae2d418ac574cdf0c164df9b86836c7f1e0893d53721647c9353bae3d0204da')
 
 JOBS=$(nproc)
+
+pkgver() {
+  cd panda3d
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/panda3d/makepanda"
+  patch -p0 -i "$srcdir/libdir_fix.patch"
+}
 
 build() {
   cd $srcdir/panda3d
@@ -79,25 +92,4 @@ package() {
   cd $srcdir/panda3d
   python makepanda/installpanda.py --prefix=/usr --destdir="$pkgdir"
   install -D -m644 "$srcdir/panda3d/doc/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-post_install() {
-  ldconfig
-  update-mime-database usr/share/mime
-  update-desktop-database -q
-}
-
-post_upgrade() {
-  update-mime-database usr/share/mime
-  update-desktop-database -q
-}
-
-post_remove() {
-  update-mime-database usr/share/mime
-  update-desktop-database -q
-}
-
-pkgver() {
-  cd "panda3d"
-  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
