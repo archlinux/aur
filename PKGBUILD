@@ -2,7 +2,7 @@
 
 pkgname=ignition-gazebo
 pkgver=4.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Open source robotics simulator."
 arch=('x86_64')
 url="https://ignitionrobotics.org/libs/gazebo"
@@ -26,7 +26,7 @@ build() {
 
   # Configure build
   cmake .. -DCMAKE_BUILD_TYPE="Release" \
-           -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
+           -DCMAKE_INSTALL_PREFIX="/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib" \
            -DCMAKE_C_COMPILER=clang \
            -DCMAKE_CXX_COMPILER=clang++ \
@@ -38,5 +38,5 @@ build() {
 
 package() {
   cd "$srcdir/$_dir/build"
-  make install
+  make DESTDIR="${pkgdir}/" install
 }

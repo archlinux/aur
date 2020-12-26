@@ -1,7 +1,7 @@
 pkgbase = ignition-gazebo
 	pkgdesc = Open source robotics simulator.
 	pkgver = 4.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://ignitionrobotics.org/libs/gazebo
 	arch = x86_64
 	license = Apache
