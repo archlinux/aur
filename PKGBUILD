@@ -43,7 +43,6 @@ sha1sums=('SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
-          'SKIP'
           'SKIP')
 
 pkgver() {
@@ -117,20 +116,20 @@ package() {
   mv "$pkgdir"/usr/bin/{newgrp,sg}
 
   # ...and their many man pages
-  find "$pkgdir"/usr/share/man \
-      '(' -name 'chsh.1'    -o \
-          -name 'chfn.1'    -o \
-          -name 'su.1'      -o \
-          -name 'logoutd.8' -o \
-          -name 'login.1'   -o \
-          -name 'nologin.8' -o \
-          -name 'vipw.8'    -o \
-          -name 'vigr.8'    -o \
-          -name 'newgrp.1' ')' \
-      -delete
-  rmdir \
-      "$pkgdir"/usr/share/man/{fi,id,zh_TW}/man1 \
-      "$pkgdir"/usr/share/man/{fi,ko/man8}
+#  find "$pkgdir"/usr/share/man \
+#      '(' -name 'chsh.1'    -o \
+#          -name 'chfn.1'    -o \
+#          -name 'su.1'      -o \
+#          -name 'logoutd.8' -o \
+#          -name 'login.1'   -o \
+#          -name 'nologin.8' -o \
+#          -name 'vipw.8'    -o \
+#          -name 'vigr.8'    -o \
+#          -name 'newgrp.1' ')' \
+#      -delete
+#  rmdir \
+#      "$pkgdir"/usr/share/man/{fi,id,zh_TW}/man1 \
+#      "$pkgdir"/usr/share/man/{fi,ko/man8}
 
   # move everything else to /usr/bin, because this isn't handled by ./configure
   mv "$pkgdir"/usr/sbin/* "$pkgdir"/usr/bin
