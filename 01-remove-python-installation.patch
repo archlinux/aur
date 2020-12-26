@@ -1,8 +1,6 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 14e5e3d..8ee31ed 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -126,58 +126,6 @@ set(SPECIFY_BITCODE anvill-specify-bitcode-${REMILL_LLVM_VERSION})
+@@ -132,58 +132,6 @@
  add_executable(${SPECIFY_BITCODE} bin/Bitcode.cpp)
  target_link_libraries(${SPECIFY_BITCODE} PRIVATE ${ANVILL})
  
