@@ -1,7 +1,7 @@
 pkgbase = youtube-tv-desktop-app
 	pkgdesc = Youtube for TV Desktop app
 	pkgver = 1.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/etylermoss/youtube-tv-desktop
 	arch = x86_64
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = youtube-tv-desktop-app
 	source = https://github.com/etylermoss/youtube-tv-desktop/archive/v1.0.4.tar.gz
 	source = youtube-tv-desktop-app.desktop
 	sha256sums = a91911eafe473485ff3ee36e6aef08361e0cbea4391312a0b1cb24120a822bab
-	sha256sums = f3e6149e45a29e634990583a8f23c9ef6fd3d26aef903fd377b4c52c9fd88759
+	sha256sums = 1f2ec585415633a4b322c8733fccbfd07f07eccbf7d6701722d90f9229a7effc
 
 pkgname = youtube-tv-desktop-app
 
