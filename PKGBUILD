@@ -3,7 +3,7 @@
 _name=FotoKilof
 
 pkgname=${_name,,}
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="GUI for ImageMagick"
 url="https://github.com/TeaM-TL/FotoKilof"
@@ -14,8 +14,8 @@ arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
         make-executable.patch
         $pkgname.desktop)
-sha256sums=('6aad20db071d74e95bd3a561efee5e260dedbefc4edc8c3b01449ac93fd9df70'
-            '4eeef4372c7b584f52f3fa1cc095be34f0ef7f4cd6937d95a0adc2258ca1e817'
+sha256sums=('50a19dc2978a1fbea43d6e596bc7eebe0a79112d2f69e757d680dba033022b9f'
+            'dfa1a441df3b07ce5eeaf72d674df71cd09718e88f7c4ed25f1d614f02110a79'
             '8f6610e5b14c7ecc3d099b6c03ee2ea638b6080d625d4d7ed2e6baa95daaf1c2')
 
 prepare() {
