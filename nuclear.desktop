@@ -5,5 +5,5 @@ Comment[es]=Reproductor que retransmite m√∫sica desde fuentes encontradas autom√
 Exec="/bin/nuclear" %U
 Terminal=false
 Type=Application
-Icon=/bin/nuclear.png
+Icon=nuclear.png
 Categories=Audio;AudioVideo;Network;Player;Music;
