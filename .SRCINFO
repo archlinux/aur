@@ -4,7 +4,7 @@ pkgbase = mtaaat
 	arch = any
 	source = black_pycharm_formatter.sh
 	source = black_pycharm_formatter.py
-	sha512sums = 225406bad821bbb07a17c14cd08fd120b9a8c774318c9cbd030347c711e922a222551ccc2cf43e81a7ff6e3e73ae1e8118c89e74a06b38d7ee0103aecb2cd46b
+	sha512sums = 969d04a2799503751b25e8d5c521bd3536cc0f25b01b499fa6cd742718cbe551dc4e14e913910ec3e3d78eb9f5cf834b0429189ae1cae1a02170d447fb144c1d
 	sha512sums = 53acc31b700bd059dac2b475183da78a37a9f3e42383a1afac64a1066f59bf119a6a0d1c38a0e4d9eacbd9dc18fe0e62e6cda4f03449c47ad5e2667a1c060f8a
 
 pkgname = mtaaat
