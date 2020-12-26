@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 
-case $2 in
+file_path=$1
+ext=${file_path##*.}
+case $ext in
 	"py")
-		black -l 80 -S $1
+		black -l 80 -S $file_path
 		;;
 	"ipynb")
-		jupytext $1 --pipe "black -l 80 -S {}"
+		jupytext $file_path --pipe "black -l 80 -S {}"
 		;;
 	"sh")
-		shfmt -w $1
+		shfmt -w $file_path
 		;;
 esac
