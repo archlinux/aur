@@ -22,3 +22,14 @@ diff -Naur a/common/multiload-config.h b/common/multiload-config.h
  
  
  G_GNUC_INTERNAL guint
+diff -Naur a/xfce4/plugin.c b/xfce4/plugin.c
+--- a/xfce4/plugin.c    2016-12-05 18:13:59.000000000 +0200
++++ b/xfce4/plugin.c    2020-12-24 22:50:53.839435971 +0200
+@@ -25,6 +25,7 @@
+
+ #include <libxfce4util/libxfce4util.h>
+ #include <libxfce4panel/xfce-panel-plugin.h>
++#include <libxfce4panel/xfce-panel-macros.h>
+
+ #include "common/multiload.h"
+ #include "common/ui.h"
