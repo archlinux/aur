@@ -5,7 +5,7 @@
 
 pkgname=emacs-yaml-mode
 pkgver=0.0.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Emacs major mode for editing files in the YAML data serialization format"
 arch=('any')
 url="https://github.com/yoshiki/yaml-mode"

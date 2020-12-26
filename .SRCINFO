@@ -1,7 +1,7 @@
 pkgbase = emacs-yaml-mode
 	pkgdesc = Emacs major mode for editing files in the YAML data serialization format
 	pkgver = 0.0.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yoshiki/yaml-mode
 	install = emacs-yaml-mode.install
 	arch = any
