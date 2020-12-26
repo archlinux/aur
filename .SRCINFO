@@ -1,0 +1,17 @@
+pkgbase = route53-ddns-git
+	pkgdesc = Client for Route53 DDNS
+	pkgver = VERSION
+	pkgrel = 1
+	url = https://git.sr.ht/~krystianch/route53-ddns
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	provides = route53-ddns
+	conflicts = route53-ddns
+	backup = etc/conf.d/route53-ddns
+	source = git+https://git.sr.ht/~krystianch/route53-ddns
+	md5sums = SKIP
+
+pkgname = route53-ddns-git
+
