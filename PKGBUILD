@@ -4,7 +4,7 @@ pkgver=0.6.6
 repurl=https://github.com/nukeop/nuclear
 commidfull=$(git ls-remote $repurl.git -tags v$pkgver)
 commid=${commidfull:0:6}
-pkgrel=3
+pkgrel=4
 pkgdesc="A free, multiplatform music player app that streams from multiple sources."
 arch=('x86_64')
 url="http://nuclear.gumblert.tech/"
@@ -17,7 +17,7 @@ source=(
 )
 md5sums=(
     '3bfd3911d4e1e649d71db562f1f52ea2'
-    '02328fb5995b2e92b3ee11dca5c6b262'    
+    'SKIP'    
 )
 
 package()   {
