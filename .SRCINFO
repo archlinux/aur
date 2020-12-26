@@ -1,6 +1,6 @@
 pkgbase = cherrytree-bin
 	pkgdesc = Binary version of cherrytree
-	pkgver = 0.99.18
+	pkgver = 0.99.27
 	pkgrel = 1
 	url = https://www.giuspen.com/cherrytree/
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = cherrytree-bin
 	optdepends = p7zip: for password protection support
 	provides = cherrytree
 	conflicts = cherrytree
-	source = https://launchpad.net/~giuspen/+archive/ubuntu/ppa/+files/cherrytree_0.99.18-1_amd64.deb
-	sha256sums = 2c17352f96b713544b37790b0128b8828c41a3bacf1ade5f2a41c3e3e723ce0e
+	source = https://launchpad.net/~giuspen/+archive/ubuntu/ppa/+files/cherrytree_0.99.27-2_amd64.deb
+	sha256sums = ef9cbd4c809ef2ae756ed9eb26bf660b5f2b7dbe6a4ffbacbc6c0352051bbbd6
 
 pkgname = cherrytree-bin
 
