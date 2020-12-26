@@ -10,7 +10,7 @@ depends=(gtk3 libffi libvpx icu libevent mozilla-common libxt startup-notificati
          ffmpeg nss ttf-font libpulse)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2
-             python nodejs python2-psutil cbindgen nasm)
+             python nodejs python2-psutil cbindgen=0.15.0 nasm)
 optdepends=('libnotify: Notification integration'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'

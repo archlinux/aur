@@ -26,7 +26,7 @@ pkgbase = waterfox-g3-git
 	makedepends = python
 	makedepends = nodejs
 	makedepends = python2-psutil
-	makedepends = cbindgen
+	makedepends = cbindgen=0.15.0
 	makedepends = nasm
 	depends = gtk3
 	depends = libffi
