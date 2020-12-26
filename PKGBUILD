@@ -1,6 +1,6 @@
 # Maintainer: Rafael Epplée <aur@rafa.ee>
 pkgname=stmp
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Subsonic Terminal Music Player"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('mpv')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wildeyedskies/stmp/archive/${pkgver}.tar.gz")
-sha256sums=('0a304184a51127ad4cc6dffed56168e105d1b6a15cb347184bfb3db2ad1170c6')
+sha256sums=('3822edd13c5efa80a42be572e806b96a2c2dea20b4fd4b34c27b67ae9740be4e')
 
 build() {
   export GOPATH="$srcdir"/gopath
@@ -24,6 +24,7 @@ build() {
 
   go get -d
   go build -a \
+    -o "$pkgname-$pkgver" \
     -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
     .
 }
