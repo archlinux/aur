@@ -7,7 +7,7 @@ arch=('x86_64')
 url='git+https://github.com/GeertJohan/gomatrix'
 license=('BSD-2')
 makedepends=('go' 'git')
-source=('https://github.com/GeertJohan/gomtrixz/releases/tag/v$pkgver')
+source=('https://github.com/GeertJohan/gomtrix/releases/tag/v$pkgver')
 provides=('gomatrix')
 conflicts=('gomatrix')
 
