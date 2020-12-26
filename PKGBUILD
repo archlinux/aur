@@ -2,7 +2,7 @@
 
 pkgname=st-monosans-git
 pkgver=0.8.4.1139.a4b7a06
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple (suckless) terminal with scrollback, ligatures and One Dark color scheme'
 url='https://github.com/monosans/st'
 arch=('i686' 'x86_64')
@@ -33,4 +33,5 @@ build() {
 package() {
 	cd st
 	make PREFIX=/usr DESTDIR="${pkgdir}" install
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
