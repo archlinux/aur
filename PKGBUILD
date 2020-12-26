@@ -4,7 +4,7 @@
 
 pkgname=zypper
 pkgver=1.14.41
-pkgrel=2
+pkgrel=3
 pkgdesc="World's most powerful command line package manager"
 arch=('x86_64')
 url="https://github.com/openSUSE/${pkgname}"
@@ -20,7 +20,6 @@ makedepends=(
   'asciidoctor'
   'boost'
   'cmake'
-  'git'
   'ninja'
 )
 provides=('apt')

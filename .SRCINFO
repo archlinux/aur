@@ -1,7 +1,7 @@
 pkgbase = zypper
 	pkgdesc = World's most powerful command line package manager
 	pkgver = 1.14.41
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/openSUSE/zypper
 	arch = x86_64
 	license = GPL
@@ -9,7 +9,6 @@ pkgbase = zypper
 	makedepends = asciidoctor
 	makedepends = boost
 	makedepends = cmake
-	makedepends = git
 	makedepends = ninja
 	depends = augeas
 	depends = libzypp
