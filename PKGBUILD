@@ -1,7 +1,7 @@
 # Maintainer: Simon Hauser <Simon-Hauser@outlook.de>
 
 pkgname=premake-git
-pkgver=5.0.0.alpha15.r13.g5bb0bef4
+pkgver=5.0.0.alpha15.r101.g9b8b035a
 pkgrel=1
 pkgdesc='Simple build configuration and project generation tool using Lua'
 arch=(i686 x86_64)
@@ -9,7 +9,8 @@ url='http://industriousone.com/premake'
 license=(BSD)
 depends=(glibc openssl)
 makedepends=(git)
-provides=(premake5)
+provides=(premake)
+conflicts=(premake)
 source=(git+https://github.com/premake/premake-core)
 md5sums=('SKIP')
 
