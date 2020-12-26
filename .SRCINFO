@@ -1,7 +1,7 @@
 pkgbase = mathics
 	pkgdesc = A general-purpose computer algebra system.
-	pkgver = 1.1.0
-	pkgrel = 3
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://mathics.github.io/
 	arch = any
 	license = GPL3
@@ -17,8 +17,10 @@ pkgbase = mathics
 	depends = python-llvmlite
 	depends = python-requests
 	depends = cython
-	source = mathics-1.1.0.tar.gz::https://github.com/mathics/Mathics/releases/download/1.1.0/Mathics3-1.1.0.tar.gz
-	sha256sums = 272b35be879302e0bc5943101c57e7d93d9974050588dca06a03580a5822aa63
+	depends = python-scikit-image
+	depends = python-wordcloud
+	source = mathics-1.1.1.tar.gz::https://github.com/mathics/Mathics/releases/download/1.1.1/Mathics3-1.1.1.tar.gz
+	sha256sums = 2a4b59f824a1ebdc2390783839b4aa2920db2dc4cebc3286d2b0bb1543cc7fd2
 
 pkgname = mathics
 

@@ -6,22 +6,21 @@
 # Contributor: mefistofeles
 
 pkgname=mathics
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="A general-purpose computer algebra system."
 arch=('any')
 url="https://mathics.github.io/"
 license=('GPL3')
 depends=('python' 'python-sympy' 'python-django' 'python-mpmath' 'python-numpy'
          'python-palettable' 'python-pint' 'python-dateutil' 'python-llvmlite'
-         'python-requests' 'cython')
+         'python-requests' 'cython' 'python-scikit-image' 'python-wordcloud')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mathics/Mathics/releases/download/$pkgver/Mathics3-$pkgver.tar.gz")
-sha256sums=('272b35be879302e0bc5943101c57e7d93d9974050588dca06a03580a5822aa63')
+sha256sums=('2a4b59f824a1ebdc2390783839b4aa2920db2dc4cebc3286d2b0bb1543cc7fd2')
 
 build() {
   cd "${srcdir}/Mathics3-${pkgver}"
-  sed -i 's/sympy>=1.6, < 1.7/sympy>=1.7, < 1.8/g' setup.py
   python setup.py build
 }
 
