@@ -4,15 +4,15 @@ pkgname=simplenote-electron-arm-bin
 _appimagver=2.3.0
 _appimage="${pkgname}-${_appimagver}.AppImage"
 pkgver=${_appimagver//-/_}
-pkgrel=2
-pkgdesc="The simplest way to keep notes"
+pkgrel=3
+pkgdesc='The simplest way to keep notes'
 arch=('armv7h' 'aarch64')
-url="https://github.com/Automattic/simplenote-electron"
+url='https://github.com/Automattic/simplenote-electron'
 license=('GPL2')
-depends=('nss' 'gtk3' 'libxss')
+depends=(nss gtk3 libxss)
 optdepends=(
-'noto-fonts-emoji: emoji support'
-'ttf-joypixels: emoji support'
+    'noto-fonts-emoji: emoji support'
+    'ttf-joypixels: emoji support'
 )
 provides=('simplenote')
 options=(!strip)
@@ -25,30 +25,32 @@ b2sums_aarch64=('7ffd079364774395d68ab2a125c074ba09e7f56c54c7db2f100f19a2bafc1d8
 prepare() {
     # Mark AppImage as executable
     chmod a+x "${_appimage}"
+    
     # Extract AppImage into squashfs-root directory
     ./"${_appimage}" --appimage-extract
+    
     # Set permissions for squashfs-root filesystem
-    chmod -R 0755 squashfs-root
+    find squashfs-root -type d -exec chmod 755 {} +
 }
 
 package() {
     # Go to source directory
     cd "$srcdir"
-    
+
     # Create Installation Directory Structure
     install -dm0755 "${pkgdir}"/usr/bin
     install -dm0755 "${pkgdir}"/opt
     install -dm0755 "${pkgdir}"/usr/share/icons
-    
+
     # Install Icons
     cp -r squashfs-root/usr/share/icons/hicolor "${pkgdir}"/usr/share/icons/
-    
+
     # Modify .desktop file to run executable instead of AppImage
     sed -i -E "s|Exec=AppRun|Exec=/usr/bin/${provides}|" squashfs-root/${provides}.desktop
     sed -i '/^X-AppImage-Version=/d' squashfs-root/${provides}.desktop
     # Install desktop file
     install -Dm644 squashfs-root/${provides}.desktop -t "${pkgdir}"/usr/share/applications/
-    
+
     # Move package contents to opt
     mv squashfs-root "${pkgdir}"/opt/${pkgname}
     # Symlink /usr/bin executable to opt
