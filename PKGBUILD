@@ -18,7 +18,7 @@ source=("${pkgname%-bin}-${pkgver}.tar.xz::https://github.com/rotki/rotki/releas
         "LICENSE::https://github.com/rotki/rotki/raw/develop/LICENSE.md")
 sha256sums=('792f057c3a3e87325b3bfa3b5f52f1f48da8fcbf7d18d1f870ae4f4c68e6c1f6'
             '78032738ae55b065b3f786be0482809149f474a2294a6a2dfd26a079e9154383'
-            'b1b7797950b0ae9749a4955ab135b8b62abbbf834e141a9b744e0c1521372d50')
+            '3e463a974d261052ceffe9aff3173284e31a0b67e901b19cc8a7723235fabd7d')
 
 package() {
   install -d "${pkgdir}/opt/" "${pkgdir}/usr/bin"
