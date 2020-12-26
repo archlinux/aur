@@ -1,7 +1,7 @@
 pkgbase = nuclear-player-bin
 	pkgdesc = A free, multiplatform music player app that streams from multiple sources.
 	pkgver = 0.6.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://nuclear.gumblert.tech/
 	install = nuclear-player-bin.install
 	arch = x86_64
