@@ -2,7 +2,7 @@
 
 pkgname=ignition-gui
 pkgver=4.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Builds on top of Qt to provide widgets which are useful when developing
 robotics applications, such as a 3D view, plots, dashboard, etc, and can be used
 together in a convenient unified interface."
@@ -35,7 +35,7 @@ build() {
 
   # Configure build
   cmake .. -DCMAKE_BUILD_TYPE="Release" \
-           -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
+           -DCMAKE_INSTALL_PREFIX="/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib" \
            -DBUILD_TESTING=OFF
 
@@ -45,5 +45,5 @@ build() {
 
 package() {
   cd "$srcdir/$_dir/build"
-  make install
+  make DESTDIR="${pkgdir}/" install
 }
