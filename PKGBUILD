@@ -10,7 +10,7 @@ url='https://github.com/ndilieto/uacme/'
 makedepends=('asciidoc' 'libev')
 depends=('curl' 'gnutls')
 optdepends=('libev: ualpn')
-license=('GPL')
+license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ndilieto/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('1f3282e659d1486105e2f10150a88aa338be9c644ecd817a0cca5a4a9dae990f') # not upstream
 

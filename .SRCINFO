@@ -5,10 +5,12 @@ pkgbase = uacme
 	url = https://github.com/ndilieto/uacme/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	makedepends = asciidoc
+	makedepends = libev
 	depends = curl
 	depends = gnutls
+	optdepends = libev: ualpn
 	source = uacme-1.6.tar.gz::https://github.com/ndilieto/uacme/archive/v1.6.tar.gz
 	sha256sums = 1f3282e659d1486105e2f10150a88aa338be9c644ecd817a0cca5a4a9dae990f
 
