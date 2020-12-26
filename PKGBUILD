@@ -1,7 +1,7 @@
 # Maintainer: Sukanka<su975853527 AT gmail.com>
 pkgname=svstudio-bin
 _pkgname=svstudio
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Synthesizer V Studio, a high-quality singing synthesis software."
 url="https://dreamtonics.com"
@@ -10,11 +10,11 @@ license=('custom')
 depends=('libcurl-gnutls' 'webkit2gtk')
 provides=("svstudio")
 source=(
-    "${_pkgname}-${pkgver}.zip::https://dreamtonics.com/synthv/download/Synthesizer%20V%20Studio%20Basic/${pkgver}/svstudio-basic-linux64-${pkgver}.zip"
+    "${_pkgname}-${pkgver}.zip::http://synthv-1252644241.file.myqcloud.com/svstudio/${pkgver}/svstudio-basic-linux64-${pkgver}.zip"
     'svstudio.svg'
 )
 sha512sums=(
-    'fbb10644426c93d49d33758f1c50d4fae8026ef184c2d8a14609783b06b2b6fb85ceddb1c2c818fe2bcdb95cb40c2dc9c9c2ef66129e785cbef8cf6aea6af1c3'
+    '10ace5725458cf38be4716c50cbdb97f719345796333e540b983748512b748300f684f66743824a4e812eda67a0064cf638a580e6c4e67596ebad0d9b613b105'
     'd361e7557d8aa11dbeea466ed1e60c8c40166788ef9a344c0a7954ded672f408c26d1ce37dc3ba7cb745efbcd41896be9db71f63f51c2a4d59ab62c74ea69998'
 
 )
