@@ -1,0 +1,13 @@
+diff --git a/src/t4k_menu.c b/src/t4k_menu.c
+index b1ed842..96f4f35 100644
+--- a/src/t4k_menu.c
++++ b/src/t4k_menu.c
+@@ -151,7 +151,7 @@ SDL_Surface**   render_buttons(MenuNode* menu, bool selected);
+ char*           find_title_length(MenuNode* menu, int* length);
+ char*           find_longest_text(MenuNode* menu, int* length);
+ int             find_longest_menu_page(MenuNode* menu);
+-void            set_font_size();
++void            set_font_size(bool uniform);
+ void            prerender_menu(MenuNode* menu);
+ int		min(int a, int b);
+ int		max(int a, int b);
