@@ -38,7 +38,7 @@ source=("git+${url}.git" ##branch=${BRANCH:-develop}"
 #'deb.PKGBUILD.sig'   #skip the pgp checks for now as makepkg and yay handle it differently
 #'deb.PKGBUILD')
 sha256sums=('SKIP'
-            '042f618c8786c13233fe80557439eb667f1caf7956c95fc240184e3139ab636b')
+            '0d4735a46f735141eb1f52f1e6c1cffa6198cf7f969d79fd71da66dfc986f0f2')
 #            'SKIP'
 #            'SKIP')
 #validpgpkeys=('DE08F924EEE93832DABC642CA8DC761B1C0C0CFC')  # Moses Narrow <moe_narrow@use.startmail.com>
