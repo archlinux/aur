@@ -2,13 +2,13 @@
 
 pkgname=polaris
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Music streaming application, designed to let you enjoy your music collection from any computer or mobile device'
 arch=('x86_64')
 url='https://github.com/agersant/polaris'
 license=('MIT')
 depends=('openssl' 'sqlite')
-makedepends=('pkgconf' 'cargo' 'npm' 'make')
+makedepends=('cargo' 'npm')
 backup=('etc/polaris/config.toml')
 source=(
     "$url/archive/$pkgver.tar.gz"
@@ -38,8 +38,8 @@ build() {
     # Build client
     cd "$srcdir/$_webbuild"
     # FIX: https://github.com/agersant/polaris-web/issues/66
-    npm install @babel/helper-compilation-targets --save-dev
-    npm install
+    npm install @babel/helper-compilation-targets --save-dev --cache "$srcdir/npm-cache"
+    npm install --cache "$srcdir/npm-cache"
     npm run production
 }
 
