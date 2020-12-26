@@ -24,4 +24,4 @@ tags
 pkg
 src
 tags.*
-clojure-lsp
+clojure-lsp*

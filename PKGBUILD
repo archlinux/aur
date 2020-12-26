@@ -3,7 +3,7 @@
 
 pkgname=clojure-lsp-bin
 pkgver=20201226T020030
-pkgrel=1
+pkgrel=2
 pkgdesc="Language Server (LSP) for Clojure"
 arch=("x86_64")
 url="https://github.com/snoe/clojure-lsp"
@@ -12,10 +12,10 @@ depends=("clojure")
 provides=('clojure-lsp')
 conflicts=('clojure-lsp')
 
-source=("https://github.com/snoe/clojure-lsp/releases/download/release-${pkgver}/clojure-lsp")
+source=("${pkgname}-${pkgver}::https://github.com/snoe/clojure-lsp/releases/download/release-${pkgver}/clojure-lsp")
 
 sha256sums=('d5de37fc88de62d441b212a450da10233762cb0f6aa5d090e49085920fe381d1')
 
 package() {
-    install -Dm755 clojure-lsp "${pkgdir}/usr/bin/clojure-lsp"
+    install -Dm755 ${pkgname}-${pkgver} "${pkgdir}/usr/bin/clojure-lsp"
 }
