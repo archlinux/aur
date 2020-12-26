@@ -6,7 +6,7 @@
 pkgname='xfce4-multiload-ng-plugin-gtk3'
 pkgdesc='Modern graphical system monitor, XFCE4 panel plugin'
 pkgver=1.5.2
-pkgrel=3
+pkgrel=4
 
 makedepends=('intltool')
 depends=('gtk3' 'cairo' 'libxfce4util>=4.12.0' 'xfce4-panel>=4.12.0' 'multiload-ng-common')
@@ -15,7 +15,7 @@ conflicts=('xfce4-multiload-ng-plugin-gtk2' 'xfce4-multiload-ng-plugin-gtk2-git'
 
 source=("https://github.com/udda/multiload-ng/archive/v$pkgver.tar.gz" "build-fix.patch")
 md5sums=('bdb9344d696324bd4db04a8bce6d7ec0'
-'b474387e4532bdd6a639f721a51d2587')
+         '898eb6c7df5df2ef641cd83836627559')
 
 arch=('i686' 'x86_64')
 url='https://udda.github.io/multiload-ng/'
