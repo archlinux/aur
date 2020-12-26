@@ -3,6 +3,7 @@
 # Contributor: boscowitch <boscowitch@boscowitch.de>
 
 _pkgname=coreutils
+_commit=fa08fed46e1ac9fe13cc8d8486fbc299b5fe3966
 pkgname=advcp
 pkgver=8.32
 pkgrel=4
@@ -13,7 +14,7 @@ url='https://www.gnu.org/software/coreutils/'
 depends=('glibc' 'acl' 'attr')
 provides=('acp' 'amv' 'advcp' 'advmv' 'cpg' 'mvg')
 source=("ftp://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"{,.sig}
-        "${pkgname}-${pkgver}-${pkgrel}.patch::https://raw.githubusercontent.com/jarun/advcpmv/master/advcpmv-0.8-${pkgver}.patch")
+        "${pkgname}-${pkgver}-${pkgrel}.patch::https://raw.githubusercontent.com/jarun/advcpmv/${_commit}/advcpmv-0.8-${pkgver}.patch")
 validpgpkeys=('6C37DC12121A5006BC1DB804DF6FD971306037D9') # Pádraig Brady
 sha256sums=('4458d8de7849df44ccab15e16b1548b285224dbba5f08fac070c1c0e0bcc4cfa'
             'SKIP'
