@@ -3,14 +3,13 @@
 
 pkgname=remill-git
 pkgver=4.0.11.r0.g37741957
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for lifting of x86, amd64, and aarch64 machine code to LLVM bitcode"
 arch=('x86_64')
 url="https://github.com/lifting-bits/remill"
 license=('Apache')
-depends=('cxx-common=0.0.14' 'ncurses' 'zlib' 'lib32-glibc' 'lib32-gcc-libs'
-         'libunwind')
-makedepends=('git')
+depends=('cxx-common=0.1.1' 'lib32-glibc' 'lib32-gcc-libs' 'libunwind')
+makedepends=('git' 'cmake')
 checkdepends=()
 provides=('remill')
 conflicts=('remill')
@@ -27,35 +26,31 @@ pkgver() {
 }
 
 build() {
-    export TRAILOFBITS_LIBRARIES="/opt/cxx-common/libraries"
-    export PATH="${TRAILOFBITS_LIBRARIES}/cmake/bin:${TRAILOFBITS_LIBRARIES}/llvm/bin:${PATH}"
+    vcpkg_libs='/opt/cxx-common/installed/x64-linux-rel'
+    export PATH="$vcpkg_libs/bin:${PATH}"
+    export CC="$vcpkg_libs/bin/clang"
+    export CXX="$vcpkg_libs/bin/clang++"
 
     cd "$srcdir/$pkgname"
     mkdir -p build && cd build
-    "${TRAILOFBITS_LIBRARIES}/cmake/bin/cmake" \
-        -DCMAKE_C_COMPILER="${TRAILOFBITS_LIBRARIES}/llvm/bin/clang" \
-        -DCMAKE_CXX_COMPILER="${TRAILOFBITS_LIBRARIES}/llvm/bin/clang++" \
-        -DCMAKE_BC_COMPILER="${TRAILOFBITS_LIBRARIES}/llvm/bin/clang++" \
-        -DCMAKE_BC_LINKER="${TRAILOFBITS_LIBRARIES}/llvm/bin/llvm-link" \
+    cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_VERBOSE_MAKEFILE=True \
-        "${srcdir}/${pkgname}"
-    make
+        -DVCPKG_ROOT="/opt/cxx-common" \
+        "$srcdir/$pkgname"
+    cmake --build .
 }
 
 check() {
-    export TRAILOFBITS_LIBRARIES="/opt/cxx-common/libraries"
-    export PATH="${TRAILOFBITS_LIBRARIES}/cmake/bin:${TRAILOFBITS_LIBRARIES}/llvm/bin:${PATH}"
-
     cd "$srcdir/$pkgname/build"
-    make test_dependencies
-    make test
+    cmake --build . --target test_dependencies
+    cmake --build . --target test
 }
 
 package() {
     cd "$srcdir/$pkgname/build"
-    make DESTDIR="${pkgdir}" install
-    sed -i "$pkgdir/usr/lib/cmake/remill/remillConfig.cmake" \
+    cmake --build . --target install -- DESTDIR="${pkgdir}"
+    sed -i "$pkgdir/usr/lib/cmake/remill/remillTargets.cmake" \
         -e "s|$srcdir/$pkgname/build/lib|/usr/include/remill|g"
 }
 
