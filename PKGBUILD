@@ -1,14 +1,14 @@
 # Maintainer: Advaith Madhukar <advaith.madhukar at gmail dot com>
 pkgname=nuclear-player-git
 pkgver=v0.6.5.r58.g7c57f335
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, multiplatform music player app that streams from multiple sources."
 url="nuclear.js.org"
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 arch=(x86_64)
 license=('GPL3')
-depends=('libxtst' 'nss')
+depends=('libnotify' 'libappindicator-gtk3' 'libxtst' 'nss')
 makedepends=('git' 'lerna' 'npm' 'nodejs-lts-erbium')
 source=(
     'git+https://github.com/nukeop/nuclear.git'
