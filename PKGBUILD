@@ -1,9 +1,9 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
-# Contributor: Aleksey Filippov <sarum9in@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Aleksey Filippov <sarum9in at gmail dot com>
 # Contributor: xantares <xantares09 at hotmail dot com>
 
 pkgname=mingw-w64-gdbm
-pkgver=1.18.1
+pkgver=1.19
 pkgrel=1
 pkgdesc="GNU database library (mingw-w64)"
 url="http://www.gnu.org/software/gdbm/gdbm.html"
@@ -14,9 +14,9 @@ makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
 source=("https://ftp.gnu.org/gnu/gdbm/gdbm-${pkgver}.tar.gz"{,.sig}
         'gdbm-1.15-win32.patch')
-sha256sums=('86e613527e5dba544e73208f42b78b7c022d4fa5a6d5498bf18c8d6f745b91dc'
+sha256sums=('37ed12214122b972e18a0d94995039e57748191939ef74115b1d41d8811364bc'
             'SKIP'
-            'f6398a1a00839bed53565b6fae857a94ee6d12aaccd2a1e87b35203994a6ecd0')
+            '2c3f0ed37482fe874218f4464414b592ebffa8776cca3c20fb0660f0036f4324')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
