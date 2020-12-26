@@ -1,6 +1,6 @@
 # Maintainer: Krystian Chachuła <krystian@krystianch.com>
 pkgname=route53-ddns-git
-pkgver=VERSION
+pkgver=r1.8eae15b
 pkgrel=1
 pkgdesc="Client for Route53 DDNS"
 arch=('any')
@@ -24,5 +24,4 @@ package() {
     install -Dm644 "${pkgname%-git}".conf "$pkgdir"/etc/conf.d/"${pkgname%-git}"
     install -Dm644 "${pkgname%-git}".service "$pkgdir"/usr/lib/systemd/system/"${pkgname%-git}".service
     install -Dm755 "${pkgname%-git}" "$pkgdir"/usr/bin/"${pkgname%-git}"
-	make DESTDIR="$pkgdir/" install
 }

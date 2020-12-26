@@ -1,6 +1,6 @@
 pkgbase = route53-ddns-git
 	pkgdesc = Client for Route53 DDNS
-	pkgver = VERSION
+	pkgver = r1.8eae15b
 	pkgrel = 1
 	url = https://git.sr.ht/~krystianch/route53-ddns
 	arch = any
