@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Winger <bmw at disroot dot org>
 
 pkgname=portmod-migrate
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A tool to help migrate from manually installed OpenMW mods to Portmod"
 provides=('portmod-migrate')
@@ -12,7 +12,7 @@ license=(GPL3)
 depends=("python" "portmod" "python-fuzzywuzzy")
 makedepends=("python" "python-setuptools" "python-setuptools-scm")
 source=("https://gitlab.com/portmod/portmodmigrate/-/archive/v$pkgver/portmodmigrate-v$pkgver.tar.gz")
-sha512sums=('acb34afe9854762ebf2dc022840500a5480b791f8b6c73c36f6e48795ca665f09dbb64a71e15891a4f0670057b05c3b8bf08a22834420612d481176ed62c1fcf')
+sha512sums=('30a0ea839bcf280149ce9a523053e30c94763812931839a4f4a2835b4a947853ade07c79cf3fe4ce670c0a287e4d1a7d0182aadbcb089a588099880f494c6bf7')
 
 package() {
   cd "$srcdir/portmodmigrate-v$pkgver"
