@@ -1,6 +1,6 @@
 pkgbase = butt
 	pkgdesc = Easy to use, multi OS streaming tool
-	pkgver = 0.1.26
+	pkgver = 0.1.27
 	pkgrel = 1
 	url = http://butt.sourceforge.net/
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = butt
 	depends = flac
 	depends = opus
 	depends = libsamplerate
-	source = butt-0.1.26.tar.gz::http://sourceforge.net/projects/butt/files/butt/butt-0.1.26/butt-0.1.26.tar.gz
-	b2sums = b9614e3a0f30430119b53611aa085c92205e8a713cda6147d6eece36625d6e7a6bab0722fec57fcaead01473707c18b4f5139d30cefc53c55160284a39192552
+	source = butt-0.1.27.tar.gz::http://sourceforge.net/projects/butt/files/butt/butt-0.1.27/butt-0.1.27.tar.gz
+	b2sums = 3f6b1383af79200af7ddea37c553d09035a65761953570db1e43f2d1511106376b50414e7569fd056f39327af9a0bc7da2cb5a0d2fb4dbb17d69150f861d22c3
 
 pkgname = butt
 
