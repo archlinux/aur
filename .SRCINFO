@@ -7,7 +7,6 @@ pkgbase = lib32-krb5-minimal-git
 	license = custom
 	makedepends = perl
 	depends = lib32-e2fsprogs
-	depends = lib32-libldap
 	depends = lib32-keyutils
 	depends = krb5
 	provides = lib32-krb5
