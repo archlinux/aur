@@ -64,6 +64,8 @@ build() {
 		--disable-ldap \
 		--without-mailprog \
 		--disable-log-clock \
+		--disable-doc \
+		--disable-scdaemon \
 
 
 	make
