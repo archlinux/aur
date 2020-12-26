@@ -1,14 +1,14 @@
 pkgbase = cxx-common
 	pkgdesc = Common dependency management for various Trail of Bits C++ codebases
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/trailofbits/cxx-common
 	arch = x86_64
 	license = Apache
-	makedepends = clang
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = git
+	makedepends = python2
 	depends = openssl
 	depends = ncurses
 	depends = libxml2
