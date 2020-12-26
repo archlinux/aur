@@ -2,59 +2,44 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=remill
-pkgver=4.0.9
-pkgrel=2
+pkgver=4.0.11
+pkgrel=1
 pkgdesc="Library for lifting of x86, amd64, and aarch64 machine code to LLVM bitcode"
 arch=('x86_64')
 url="https://github.com/lifting-bits/remill"
 license=('Apache')
-depends=('cxx-common=0.0.14' 'ncurses' 'zlib' 'lib32-glibc' 'lib32-gcc-libs'
-         'libunwind')
-makedepends=()
+depends=('cxx-common=0.1.1' 'lib32-glibc' 'lib32-gcc-libs' 'libunwind')
+makedepends=('cmake')
 checkdepends=()
-source=("https://github.com/lifting-bits/remill/archive/v${pkgver}.tar.gz"
-        '00-fix-CONVERT-instructions.patch'
-        '01-show-instruction.patch')
-sha256sums=('facb3c9c1d9f47167150b92f08eac3e73af4db6d6115dafe204f8bd1c270102b'
-            'b2ab3e9c6b047eddac5cffb189b260fa0c1f6e21c88b343fcaef79110544f9e6'
-            '16009715ef4e2546349238120ab9ad0c04ef1ed77cc360e64f599aeb4a0ad987')
-
-prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
-    patch -Np1 -i "$srcdir/00-fix-CONVERT-instructions.patch"
-    patch -Np1 -i "$srcdir/01-show-instruction.patch"
-}
+source=("https://github.com/lifting-bits/remill/archive/v${pkgver}.tar.gz")
+sha256sums=('8a3c3df40dacef3cad0162279e3153f4404a88d8e55d002ce9b4b37177fc3d77')
 
 build() {
-    export TRAILOFBITS_LIBRARIES="/opt/cxx-common/libraries"
-    export PATH="${TRAILOFBITS_LIBRARIES}/cmake/bin:${TRAILOFBITS_LIBRARIES}/llvm/bin:${PATH}"
+    vcpkg_libs='/opt/cxx-common/installed/x64-linux-rel'
+    export PATH="$vcpkg_libs/bin:${PATH}"
+    export CC="$vcpkg_libs/bin/clang"
+    export CXX="$vcpkg_libs/bin/clang++"
 
     cd "$srcdir/$pkgname-$pkgver"
     mkdir -p build && cd build
-    "${TRAILOFBITS_LIBRARIES}/cmake/bin/cmake" \
-        -DCMAKE_C_COMPILER="${TRAILOFBITS_LIBRARIES}/llvm/bin/clang" \
-        -DCMAKE_CXX_COMPILER="${TRAILOFBITS_LIBRARIES}/llvm/bin/clang++" \
-        -DCMAKE_BC_COMPILER="${TRAILOFBITS_LIBRARIES}/llvm/bin/clang++" \
-        -DCMAKE_BC_LINKER="${TRAILOFBITS_LIBRARIES}/llvm/bin/llvm-link" \
+    cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_VERBOSE_MAKEFILE=True \
+        -DVCPKG_ROOT="/opt/cxx-common" \
         "$srcdir/$pkgname-$pkgver"
-    make
+    cmake --build .
 }
 
 check() {
-    export TRAILOFBITS_LIBRARIES="/opt/cxx-common/libraries"
-    export PATH="${TRAILOFBITS_LIBRARIES}/cmake/bin:${TRAILOFBITS_LIBRARIES}/llvm/bin:${PATH}"
-
     cd "$srcdir/$pkgname-$pkgver/build"
-    make test_dependencies
-    make test
+    cmake --build . --target test_dependencies
+    cmake --build . --target test
 }
 
 package() {
     cd "$srcdir/$pkgname-$pkgver/build"
-    make DESTDIR="${pkgdir}" install
-    sed -i "$pkgdir/usr/lib/cmake/remill/remillConfig.cmake" \
+    cmake --build . --target install -- DESTDIR="${pkgdir}"
+    sed -i "$pkgdir/usr/lib/cmake/remill/remillTargets.cmake" \
         -e "s|$srcdir/$pkgname-$pkgver/build/lib|/usr/include/remill|g"
 }
 
