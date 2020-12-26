@@ -1,33 +1,28 @@
-# Maintainer: Sam Stuewe <halosghost at archlinux dot info>
+# Maintainer: Alexander Shpilkin <ashpilkin at gmail dot com>
+# Contributor: Sam Stuewe <halosghost at archlinux dot info>
 
 pkgname=uacme
-pkgver=v1.5
+pkgver=1.6
 pkgrel=1
-pkgdesc='An ACMEv2 client written in plain C code with minimal dependencies'
+pkgdesc='An ACMEv2 client written in plain C with minimal dependencies'
 arch=('i686' 'x86_64')
 url='https://github.com/ndilieto/uacme/'
-makedepends=('asciidoc')
+makedepends=('asciidoc' 'libev')
 depends=('curl' 'gnutls')
+optdepends=('libev: ualpn')
 license=('GPL')
-source=("https://github.com/ndilieto/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('9db336be7340c16c5d1030ad449d30d7') # not upstream
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ndilieto/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('1f3282e659d1486105e2f10150a88aa338be9c644ecd817a0cca5a4a9dae990f') # not upstream
 
 build() {
-  cd "$pkgname-${pkgver//v/}"
-
+  cd "$pkgname-$pkgver"
+  ./configure --prefix=/usr
   make
 }
 
-prepare() {
-  cd "$pkgname-${pkgver//v/}"
-
-  ./configure --prefix='/usr'
-}
-
 package() {
-  cd "$pkgname-${pkgver//v/}"
-
-  make DESTDIR="$pkgdir" PREFIX='/usr' install
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:

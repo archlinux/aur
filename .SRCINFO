@@ -1,6 +1,6 @@
 pkgbase = uacme
-	pkgdesc = An ACMEv2 client written in plain C code with minimal dependencies
-	pkgver = v1.5
+	pkgdesc = An ACMEv2 client written in plain C with minimal dependencies
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://github.com/ndilieto/uacme/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = uacme
 	makedepends = asciidoc
 	depends = curl
 	depends = gnutls
-	source = https://github.com/ndilieto/uacme/archive/v1.5.tar.gz
-	md5sums = 9db336be7340c16c5d1030ad449d30d7
+	source = uacme-1.6.tar.gz::https://github.com/ndilieto/uacme/archive/v1.6.tar.gz
+	sha256sums = 1f3282e659d1486105e2f10150a88aa338be9c644ecd817a0cca5a4a9dae990f
 
 pkgname = uacme
 
