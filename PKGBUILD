@@ -1,6 +1,6 @@
 # Maintainer: Hakan Erduman <hakan at erduman dot de>
 pkgname=xfce4-hamster-plugin
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 pkgdesc="A recreation of the gnome-shell hamster extension as a xfce4 panel plugin."
 url="https://github.com/projecthamster/${pkgname}"
