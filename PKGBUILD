@@ -1,7 +1,7 @@
 # Maintainer: Paul Bastian <paul.bastian@posteo.de>
 pkgname=librespot-java
 pkgver=1.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A Spotify Connect enabled headless client"
 arch=('any')
 url="https://github.com/librespot-org/librespot-java"
@@ -9,16 +9,13 @@ license=('APACHE')
 depends=('java-runtime')
 conflicts=('librespot-java-git')
 backup=(etc/librespot-java/config.toml)
-source=("https://github.com/librespot-org/librespot-java/releases/download/v$pkgver/librespot-api-$pkgver.jar"
-        "https://github.com/librespot-org/librespot-java/releases/download/v$pkgver/librespot-player-$pkgver.jar"
+source=("https://github.com/librespot-org/librespot-java/releases/download/v$pkgver/librespot-player-$pkgver.jar"
         "https://raw.githubusercontent.com/paulbastian/aur/master/librespot-java/config.toml"
         "https://raw.githubusercontent.com/paulbastian/aur/master/librespot-java/librespot-java.service")
-noextract=("librespot-api-$pkgver.jar"
-           "librespot-player-$pkgver.jar")
-sha256sums=('0097b97fd420ca0685ef409d03d133df580867317d37be9a4fff19ceb6dfe142'
-            'ca0ea63d92dcfeb1b0834b960c644c2b55041f0439d468f1a7ad92928ac007e1'
+noextract=("librespot-player-$pkgver.jar")
+sha256sums=('ca0ea63d92dcfeb1b0834b960c644c2b55041f0439d468f1a7ad92928ac007e1'
             '732a44a47780420484fdddff0c2ec206f58af3b4eddd71aa871e5b755890e3ee'
-            '6ce1a50046b5a81c308232afb0740d9579b817078e13285d06c40444f69f7169')
+            '4d0b3452768be2eb380f6ae49c5d7fdfb0a095f699f71ce2a1697260b0c89b3a')
 
 package() {	
   cd "$srcdir"
