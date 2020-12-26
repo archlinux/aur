@@ -1,0 +1,16 @@
+pkgbase = taps.im
+	pkgdesc = An advanced instant messanger with Apps for Android, Iphone, Windows, Mac, Linux and Web
+	pkgver = 11.0.2
+	pkgrel = 1
+	url = https://taps.im
+	arch = x86_64
+	license = custom
+	makedepends = gendesk
+	depends = nss
+	depends = gtk3
+	noextract = taps.im-11.0.2.tgz
+	source = taps.im-11.0.2.tgz::https://taps.im/Taps-Linux-x64.tgz
+	sha256sums = 799cbdc229b8662876c7610a65bae24631dd42ac737ea4ff374acdbf76f6703d
+
+pkgname = taps.im
+
