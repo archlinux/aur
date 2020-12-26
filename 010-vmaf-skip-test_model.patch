@@ -1,11 +1,11 @@
 --- a/libvmaf/test/meson.build
 +++ b/libvmaf/test/meson.build
-@@ -28,14 +28,6 @@ test_thread_pool = executable('test_thread_pool',
+@@ -33,14 +33,6 @@ test_thread_pool = executable('test_thread_pool',
      dependencies : thread_lib,
  )
  
 -test_model = executable('test_model',
--    ['test.c', 'test_model.c', '../src/dict.c', '../src/svm.cpp', '../src/pdjson.c', '../src/read_json_model.c', json_model_c_sources],
+-    ['test.c', 'test_model.c', '../src/dict.c', '../src/svm.cpp', '../src/pdjson.c', '../src/read_json_model.c', '../src/log.c', json_model_c_sources],
 -    include_directories : [libvmaf_inc, test_inc, include_directories('../src')],
 -    c_args : vmaf_cflags_common,
 -    cpp_args : vmaf_cflags_common,
@@ -14,8 +14,8 @@
 -
  test_predict = executable('test_predict',
      ['test.c', 'test_predict.c', '../src/predict.c', '../src/dict.c',
-      '../src/feature/feature_collector.c', '../src/feature/alias.c', '../src/model.c', '../src/svm.cpp',
-@@ -77,7 +69,6 @@ test_ref = executable('test_ref',
+      '../src/feature/feature_collector.c', '../src/feature/alias.c', '../src/model.c', '../src/svm.cpp', '../src/log.c',
+@@ -82,7 +74,6 @@ test_ref = executable('test_ref',
  test('test_picture', test_picture)
  test('test_feature_collector', test_feature_collector)
  test('test_thread_pool', test_thread_pool)
