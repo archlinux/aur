@@ -2,7 +2,7 @@
 
 pkgname="python-flake8-comprehensions"
 _pkgname="flake8-comprehensions"
-pkgver=3.2.2
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Flake8 plugin to help you write better list/set/dict comprehensions."
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/adamchainz/${_pkgname}"
 license=('ISC')
 depends=('flake8')
 source=("https://github.com/adamchainz/flake8-comprehensions/archive/$pkgver.tar.gz")
-md5sums=('c2cad5c7017c0542ce10cde0c354c8e1')
+md5sums=('795ac94157b2e68e857f7c2d2f7b461f')
 
 build() {
     cd "${_pkgname}-${pkgver}"
