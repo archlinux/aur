@@ -4,37 +4,45 @@
 # Derived from 'dina-font-otb' by Ckat <ckat@teknik.io>
 
 pkgname=terminus-font-td1-otb
-pkgver=4.48
-pkgrel=2
+pkgver=4.49
+pkgrel=1
 
 pkgdesc='Monospace bitmap font (OTB version) with td1 patch (centered ascii tilde)'
 url='http://terminus-font.sourceforge.net/'
 arch=('any')
 license=('GPL2' 'custom:OFL')
 
-makedepends=('fontforge')
+makedepends=('python')
 
 conflicts=('terminus-font-otb')
 provides=('terminus-font-otb')
 
-source=("https://downloads.sourceforge.net/project/terminus-font/terminus-font-$pkgver/terminus-font-$pkgver.tar.gz"
-        'otbconvert.pe')
-sha256sums=('34799c8dd5cec7db8016b4a615820dfb43b395575afbb24fc17ee19c869c94af'
-            '431999be6be2630a9e8b4bcc5631b6bc727b795978b75cb4c874d9ce143e9703')
+source=("https://downloads.sourceforge.net/project/terminus-font/terminus-font-$pkgver/terminus-font-$pkgver.tar.gz")
+sha256sums=('db0a74551a23d2229db6ffea469ca8e390625ace4069dd1c1a3d05a16ed2634d')
 
+prepare() {
+  cd "terminus-font-$pkgver"
+
+  chmod +x configure
+}
 
 build() {
   cd "terminus-font-$pkgver"
 
   patch < alt/td1.diff
 
-  ../otbconvert.pe *.bdf
+  ./configure \
+    --prefix=/usr \
+    --otbdir=/usr/share/fonts/misc \
+    --x11dir=/usr/share/fonts/misc
+
+  make otb
 }
 
 package() {
   cd "terminus-font-$pkgver"
-  for i in *.otb; do
-      install -D -m0644 $i "$pkgdir/usr/share/fonts/misc/$i"
-  done
+
+  make DESTDIR="${pkgdir}" install-otb
+
   install -D -m0644 'OFL.TXT' "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
