@@ -44,16 +44,16 @@ pkgbase = shadow-minimal-git
 	source = useradd.defaults
 	sha1sums = SKIP
 	sha1sums = SKIP
-	sha1sums = 33a6cf1e44a1410e5c9726c89e5de68b78f5f922
-	sha1sums = 4ad0e059406a305c8640ed30d93c2a1f62c2f4ad
-	sha1sums = 12427b1ca92a9b85ca8202239f0d9f50198b818f
-	sha1sums = 0e56fed7fc93572c6bf0d8f3b099166558bb46f1
-	sha1sums = 81a02eadb5f605fef5c75b6d8a03713a7041864b
-	sha1sums = 12427b1ca92a9b85ca8202239f0d9f50198b818f
-	sha1sums = 611be25d91c3f8f307c7fe2485d5f781e5dee75f
-	sha1sums = a154a94b47a3d0c6c287253b98c0d10b861226d0
-	sha1sums = b5540736f5acbc23b568973eb5645604762db3dd
-	sha1sums = c173208c5cf34528602f9931468a67b7f68abad3
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
 
 pkgname = shadow-minimal-git
 
