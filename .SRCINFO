@@ -5,7 +5,6 @@ pkgbase = craftos-pc-data
 	url = https://github.com/MCJack123/craftos2-rom
 	arch = any
 	license = CCPL
-	conflicts = craftos-pc<2.5
 	source = https://github.com/MCJack123/craftos2-rom/archive/v2.5.tar.gz
 	sha256sums = 47645947afd7cec1e0cd9651baa4a355a2ae791e4db7daac17053cf4d798af01
 
