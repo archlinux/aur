@@ -5,6 +5,7 @@ pkgbase = stretchly-bin
 	url = https://github.com/hovancik/stretchly/
 	install = Stretchly.install
 	arch = x86_64
+	arch = aarch64
 	license = BSD
 	depends = c-ares
 	depends = ffmpeg
@@ -22,10 +23,12 @@ pkgbase = stretchly-bin
 	depends = libappindicator-gtk3
 	provides = stretchly
 	conflicts = stretchly
-	source = https://github.com/hovancik/stretchly/releases/download/v1.4.0/Stretchly-1.4.0.pacman
 	source = LICENSE::https://raw.githubusercontent.com/hovancik/stretchly/v1.4.0/LICENSE
-	sha256sums = baa55f75fda425832ef9753df705731f0200ec348d4e4eb3ce528a16acd45da4
 	sha256sums = d4262f71a6c02b19bdbdf760033803c0c7ca24acf2591ba425633f7e3315790a
+	source_x86_64 = https://github.com/hovancik/stretchly/releases/download/v1.4.0/Stretchly-1.4.0.pacman
+	sha256sums_x86_64 = baa55f75fda425832ef9753df705731f0200ec348d4e4eb3ce528a16acd45da4
+	source_aarch64 = https://github.com/hovancik/stretchly/releases/download/v1.4.0/Stretchly-1.4.0-arm64.pacman
+	sha256sums_aarch64 = 9638956a856b4ba195ad5916fd0640def964c6d6423dd13980038c1df2da2c7e
 
 pkgname = stretchly-bin
 
