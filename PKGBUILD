@@ -1,6 +1,6 @@
 # Maintainer: c4tz
 pkgname=kodi-addon-script-module-inputstreamhelper
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="A simple Kodi module that makes life easier for add-on developers relying on InputStream based add-ons and DRM playback."
 _gitname=script.module.inputstreamhelper
@@ -14,7 +14,7 @@ conflicts=("${pkgname}");
 depends=('kodi' 'kodi-addon-inputstream-adaptive')
 source=("https://github.com/emilsvennesson/${_gitname}/releases/download/v${pkgver}/${_gitname}-${pkgver}.zip"
 )
-sha256sums=('bc89f4814f2cc4ed323a2de01f96b8b5916d41baccdc7a39a2fd0069da1fbb4c')
+sha256sums=('84de7738e88236ebc225c72c6030bc79e7795897a1863a5542af77ba2f0519a7')
 
 package() {
     install -d "${pkgdir}/usr/share/kodi/addons"
