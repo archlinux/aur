@@ -1,0 +1,17 @@
+pkgbase = deadbeef-pipewire-plugin-git
+	pkgdesc = Pipewire output plugin for the DeaDBeeF music player (devel branch)
+	pkgver = r23.3608435
+	pkgrel = 1
+	url = https://github.com/saivert/ddb_output_pw
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = meson
+	depends = pipewire
+	depends = deadbeef
+	source = git+https://github.com/saivert/ddb_output_pw.git
+	md5sums = SKIP
+
+pkgname = deadbeef-pipewire-plugin-git
+
