@@ -7,7 +7,6 @@ pkgbase = krb5-minimal-git
 	license = custom
 	makedepends = perl
 	depends = e2fsprogs
-	depends = libldap
 	depends = keyutils
 	provides = krb5
 	conflicts = krb5
