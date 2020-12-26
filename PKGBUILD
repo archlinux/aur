@@ -1,19 +1,19 @@
 #
-# Maintainer: Jani Lång <jani . long at gmail dot com>
+# Maintainer: Michael Tindal <mj.tindal at gmail dot com>
+# Contributor: Jani Lång <jani . long at gmail dot com>
 # Contributor: Patrik Plihal <patrik.plihal at gmail dot com>
 #
 pkgname=nunit3-console
-pkgver=3.9.0
-pkgrel=1
+pkgver=3.11.1
+pkgrel=2
 pkgdesc="NUnit 3 console runner"
 arch=('any')
 license=('MIT')
 url="http://www.nunit.com"
 depends=('mono')
 
-#source=("https://github.com/nunit/nunit-console/releases/download/${pkgver}/NUnit.Console-${pkgver}.zip")
-source=("https://github.com/nunit/nunit-console/releases/download/v3.9/NUnit.Console-3.9.0.zip")
-sha256sums=('ee11b97bd075414ec196ed6eae8e526aa78bb59251d9bdabe513d07e3b2b7bea')
+source=("https://github.com/nunit/nunit-console/releases/download/v${pkgver}/NUnit.Console-${pkgver}.zip")
+sha256sums=('13e2f141e26744924264022335e6b98594eb1eaf70c1cdfad63d7e25cbf8cb11')
 package() {
 	# copy files, except the link to the original zip file
 	mkdir -p   "${pkgdir}/usr/lib/${pkgname}"
@@ -30,7 +30,7 @@ package() {
 	cat <<-EOF > "$pkgdir/usr/bin/nunit3-console"
 		#!/bin/sh
 		# Wrapper script for NUnit 3 console runner
-		exec $(which mono) --debug /usr/lib/${pkgname}/nunit3-console.exe "\$@"
+		exec $(which mono) --debug /usr/lib/${pkgname}/bin/net35/nunit3-console.exe "\$@"
 EOF
 	chmod +x "${pkgdir}/usr/bin/nunit3-console"
 }
