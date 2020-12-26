@@ -1,12 +1,13 @@
 pkgbase = craftos-pc-data
 	pkgdesc = ROM package for CraftOS-PC
-	pkgver = 2.4.5
-	pkgrel = 2
+	pkgver = 2.5
+	pkgrel = 1
 	url = https://github.com/MCJack123/craftos2-rom
 	arch = any
 	license = CCPL
-	source = https://github.com/MCJack123/craftos2-rom/archive/v2.4.5.tar.gz
-	sha256sums = badd5fef34d323b788ae9436e15766127a2f6d340ae578e797e208b95af1603e
+	conflicts = craftos-pc<2.5
+	source = https://github.com/MCJack123/craftos2-rom/archive/v2.5.tar.gz
+	sha256sums = 47645947afd7cec1e0cd9651baa4a355a2ae791e4db7daac17053cf4d798af01
 
 pkgname = craftos-pc-data
 
