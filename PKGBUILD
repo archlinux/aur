@@ -1,9 +1,10 @@
 # Maintainer: Olivier Galibert <galibert@pobox.com>
 # Contributor: Philip Mueller <mail at philip.in-aachen dot net>
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Kim Larsson <kim@cunimb.org>
 
 pkgname=emacs-yaml-mode
-pkgver=0.0.14
+pkgver=0.0.15
 pkgrel=1
 pkgdesc="Emacs major mode for editing files in the YAML data serialization format"
 arch=('any')
@@ -12,7 +13,7 @@ license=('GPL')
 depends=('emacs')
 install=emacs-yaml-mode.install
 source=("$pkgname-$pkgver.taz.gz::https://github.com/yoshiki/${pkgname#emacs-}/archive/$pkgver.tar.gz")
-md5sums=('6e87054388212cd8a777c6e9feecf1db')
+md5sums=('c8391814f5ffbd21881f6392f45c43d6')
 
 build() {
   cd ${pkgname#emacs-}-$pkgver
