@@ -1,0 +1,7 @@
+post_install() {
+    cat <<HERE
+Set NRF5_SDK_PATH variable to /opt/nrf5-sdk in your profile
+e. g. like this:
+  echo 'export NRF5_SDK_PATH=/opt/nrf5-sdk' >>~/.profile
+HERE
+}
