@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-fixed-ss14
-pkgver=4.1.1
+pkgver=4.2.0
 pkgrel=1
 pkgdesc='Typeface family designed for coding, terminal use and technical documents.'
 arch=('any')
@@ -8,7 +8,7 @@ url='https://typeof.net/Iosevka/'
 license=('OFL')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/ttf-iosevka-fixed-ss14-${pkgver}.zip"
         "${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v${pkgver}/LICENSE.md")
-sha256sums=('44836cf738f603a4a6a0649dc07ea5ba8121986cf0bf0992b5c900dcf1c12680'
+sha256sums=('94bc64a391d5f5f3b039321e95cf67ea371490ca4d05606ba178d919cdf6d3ef'
             'e61c0988bb231a321f14cce1b119a468f279ea86826c32e943ab16dbf08c1ba9')
 
 package() {
