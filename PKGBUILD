@@ -2,10 +2,10 @@
 
 pkgname=fbc
 pkgver=1.07
-pkgrel=2
-_bootver=1.07.0
+pkgrel=3
+_bootver=1.07.2
 pkgdesc="FreeBASIC Compiler (Release version)"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="http://www.freebasic.net"
 license=('GPL2' 'LGPL')
 makedepends=('libffi' 'ncurses5-compat-libs')
@@ -22,6 +22,14 @@ fi
 
 if [ "$CARCH" = "x86_64" ]; then
 _arch='x86_64'
+fi
+
+if [ "$CARCH" = "aarch64" ]; then
+_arch='aarch64'
+fi
+
+if [ "$CARCH" = "armv7h" ]; then
+_arch='arm'
 fi
 
 warning "Setting up libffi compatibility headers (run update-libffi-compat as root if build fails)"
