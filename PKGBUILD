@@ -2,7 +2,7 @@
 
 pkgname=cxx-common
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Common dependency management for various Trail of Bits C++ codebases"
 arch=('x86_64')
 url="https://github.com/trailofbits/cxx-common"
@@ -22,7 +22,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    ./build_dependencies.sh --release llvm-11
+    ./build_dependencies.sh --release llvm-10
 }
 
 package() {
@@ -30,6 +30,7 @@ package() {
     ./vcpkg/vcpkg export --x-all-installed \
         --overlay-ports=./ports --overlay-triplets=./triplets --raw \
         --output="$pkgdir/opt/$pkgname"
+    chmod a+x "$pkgdir/opt/$pkgname/installed/x64-linux-rel/tools/protobuf/protoc-3.14.0.0"
 }
 
 # vim: set sw=4 ts=4 et:
