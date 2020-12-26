@@ -3,7 +3,7 @@
 
 pkgname=zettlr-git
 _name=Zettlr
-pkgver=1.7.0.r0.ge4ccee4
+pkgver=1.8.4.r27.gcbf81d8
 pkgrel=1
 pkgdesc='A Markdown Editor for the 21st century'
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=('gendesk'
 optdepends=('pandoc: For exporting to various format'
             'texlive-bin: For Latex support'
             'ttf-lato: Display output in a more comfortable way')
-provides=("${pkgname%-git}")
+provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+https://github.com/$_name/$_name"
         "${pkgname%-git}.sh")
@@ -28,6 +28,7 @@ sha256sums=('SKIP'
             '5e89480043eedfbc85696d078663e6dae834e23b215e2ea41ad6e1af9427e0ab')
 _mimetype=text/markdown
 _categories=Office
+_yarnargs="--cache-folder '$srcdir/cache' --link-folder '$srcdir/link'"
 
 pkgver() {
     cd "$pkgname"
@@ -36,46 +37,42 @@ pkgver() {
 }
 
 prepare() {
+    local _electronVersion=$(electron --version | sed -e 's/^v//')
     gendesk -f -n --custom StartupWMClass="$_name"
     cd "$pkgname"
-    # We don't build electron, and doesn't depends on postinstall script
     sed -i -e '/"electron"/d;/postinstall/d' package.json
-
-    # Add some close-to-complete translations
-    sed -i -e "s/'fr-FR'/'fr-FR','ja-JP','zh-CN','es-ES','ru-RU'/" scripts/refresh-language.js
+    yarn install $_yarnargs --frozen-lockfile
+    yarn add $_yarnargs --dev --no-lockfile \
+        electron@$_electronVersion
+    yarn add $_yarnargs --dev --no-lockfile \
+        webpack-cli
+    ln -sf /dev/null resources/pandoc
+    yarn lang:refresh
+    yarn csl:refresh
 }
 
 build() {
     cd "$pkgname"
-    NODE_ENV= yarn install --pure-lockfile --no-bin-links --cache-folder "$srcdir/cache" --link-folder "$srcdir/link"
-    yarn less
-    yarn handlebars
-    yarn lang:refresh
-    NODE_ENV=production node node_modules/webpack/bin/webpack.js
+    local NODE_ENV=''
+    yarn install $_yarnargs --pure-lockfile
+    NODE_ENV=production yarn run webpack
     yarn reveal:build
-
     pushd source
-    yarn install --pure-lockfile --cache-folder "$srcdir/cache"
+    yarn install $_yarnargs --pure-lockfile
     node-prune node_modules
     find . -type d -name fonts -exec rm -rfv {} +
 }
 
 package() {
     cd "$pkgname"
-
     local _destdir="usr/lib/${pkgname%-git}"
-
     install -Dm755 "$srcdir/${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
-    sed -i -e "s,$srcdir/$_name-$pkgver/source,$_destdir,g" source/renderer/assets/vue/vue-sidebar.js
-
     install -dm755 "$pkgdir/$_destdir"
     cp -r --no-preserve=ownership --preserve=mode source/* "$pkgdir/$_destdir"
-
     for px in 16 24 32 48 64 96 128 256 512; do
         install -Dm644 "resources/icons/png/${px}x$px.png" \
             "$pkgdir/usr/share/icons/hicolor/${px}x$px/apps/${pkgname%-git}.png"
     done
-
     install -Dm644 -t "$pkgdir/usr/share/applications/" "$srcdir/${pkgname%-git}.desktop"
     install -Dm644 "source/renderer/assets/img/zettlr-official-logo.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
 }

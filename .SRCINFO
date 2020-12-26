@@ -1,6 +1,6 @@
 pkgbase = zettlr-git
 	pkgdesc = A Markdown Editor for the 21st century
-	pkgver = 1.7.0.r0.ge4ccee4
+	pkgver = 1.8.4.r27.gcbf81d8
 	pkgrel = 1
 	url = https://www.zettlr.com
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = zettlr-git
 	optdepends = pandoc: For exporting to various format
 	optdepends = texlive-bin: For Latex support
 	optdepends = ttf-lato: Display output in a more comfortable way
-	provides = zettlr
+	provides = zettlr=1.8.4.r27.gcbf81d8
 	conflicts = zettlr
 	source = zettlr-git::git+https://github.com/Zettlr/Zettlr
 	source = zettlr.sh
