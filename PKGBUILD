@@ -6,7 +6,7 @@
 
 pkgname=marktext
 pkgver=0.16.2
-pkgrel=3
+pkgrel=4
 pkgdesc='A simple and elegant open-source markdown editor that focused on speed and usability'
 arch=('x86_64')
 url='https://marktext.app'
@@ -28,8 +28,8 @@ sha256sums=('d39f3d4c3008cacdcefbe6ad9e1e19d803d3c619106878c75f8a5cc38254597c'
             '15a964fcc3f6bd7bf1c03566d35201032aecde994446533cad1f810e9b880f14'
             'c754a1cad52d10a38eeddb9293ce0a4540296c6adbb47eb5311eaaeded150a01')
 
-_electronDist=$(dirname $(realpath $(which electron7)))
-_electronVersion=$(electron7 --version | sed -e 's/^v//')
+_electronDist=$(dirname $(realpath $(which electron8)))
+_electronVersion=$(electron8 --version | sed -e 's/^v//')
 
 prepare() {
     cd "$pkgname-$pkgver"
