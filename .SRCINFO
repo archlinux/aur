@@ -7,7 +7,7 @@ pkgbase = ufw-icon-bar
 	license = unknown
 	depends = yad
 	depends = ufw
-	optdepends = gufw
+	optdepends = gufw: Enables gufw to open when icon is clicked
 	source = ufw-icon-bar-1::git+https://github.com/juanmafont/ufwIconbar.git
 	md5sums = SKIP
 

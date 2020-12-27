@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/juanmafont/ufwIconbar"
 license=('unknown')
 depends=('yad' 'ufw')
-optdepends=('gufw')
+optdepends=('gufw: Enables gufw to open when icon is clicked')
 source=("$pkgname-$pkgver::git+https://github.com/juanmafont/ufwIconbar.git")
 md5sums=("SKIP")
 
