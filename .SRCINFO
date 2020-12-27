@@ -1,7 +1,7 @@
 pkgbase = python-imagecodecs
 	pkgdesc = Image transformation, compression, and decompression codecs
 	pkgver = 2020.12.24
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/cgohlke/imagecodecs
 	arch = x86_64
 	license = BSD
@@ -26,7 +26,6 @@ pkgbase = python-imagecodecs
 	depends = python-numpy
 	depends = snappy
 	depends = zfp
-	depends = zopfli
 	source = imagecodecs-2020.12.24.tar.gz::https://github.com/cgohlke/imagecodecs/archive/v2020.12.24.tar.gz
 	sha256sums = 73c36ccf7f7f68472d9273c72e4c63e616e27afea0f6f9ff871a8ad9a3c70bcc
 
