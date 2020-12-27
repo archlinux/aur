@@ -1,6 +1,6 @@
 # Maintainer: Folke H. 'joru' Gleumes <folke-aur@gleumes.org>
 pkgname=kickoff
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A simple and uncomplicated program launcher for wayland"
 makedepends=('cargo' 'cmake' 'freetype2')
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/j0ru/kickoff"
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/j0ru/kickoff/archive/v$pkgver.tar.gz")
-sha512sums=('8173c6fc62ec3fbce28508cb5d4f7f0db3da6af6b26adb1b76e3c94b0e401bffd4587459a135fed7061fe91c7f21ad1875f6b533b49f546b124b79df4a28a069')
+sha512sums=('b78679353fede32df0735d2b4e445648ce7798779b424a807bacd62af4a3418df913888db3bb0eb07978c2a113420f887be8f30eb20787ec16dfd05a9b68c9c5')
 
 build() {
 	cd "$pkgname-$pkgver"
