@@ -16,8 +16,8 @@ pkgdesc='Vi Improved, a highly configurable, improved version of the vi text edi
 url='https://www.vim.org'
 arch=('x86_64')
 license=('custom:vim')
-makedepends=('glibc' 'libgcrypt' 'python2' 'python' 'ruby' 'libxt' 'lua'
-             'gawk' 'tcl' 'pcre' 'zlib' 'libffi' 'libcanberra')
+makedepends=('glibc' 'libgcrypt' 'python' 'libxt'
+             'gawk' 'tcl' 'pcre' 'zlib' 'libffi')
 source=(https://github.com/vim/vim/archive/v${pkgver}/${pkgbase}-${pkgver}.tar.gz
         vimrc
         archlinux.vim
