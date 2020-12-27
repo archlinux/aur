@@ -1,17 +1,16 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=mcsema
-pkgver=3.0.12
-pkgrel=2
+pkgver=3.0.14
+pkgrel=1
 pkgdesc="Framework for lifting program binaries to LLVM bitcode"
 arch=('x86_64')
 url="https://github.com/lifting-bits/mcsema"
 license=('AGPL3')
-depends=('cxx-common=0.0.14' 'remill' 'anvill' 'python' 'python-protobuf'
-         'ncurses' 'libunwind' 'zlib')
-makedepends=('python-setuptools')
+depends=('cxx-common=0.1.1' 'remill' 'anvill' 'python' 'libunwind')
+makedepends=('cmake' 'python-setuptools')
 source=("https://github.com/lifting-bits/mcsema/archive/v${pkgver}.tar.gz")
-sha256sums=('41ff3a44c2361101408244b47a23605e34b8f94cb3315b73260aa647ef44a516')
+sha256sums=('4ba350e43b92032d9689a3764ebdee6ab2f2340ba6fd363ece94f8aa9d8be179')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -20,18 +19,19 @@ prepare() {
 }
 
 build() {
-    export TRAILOFBITS_LIBRARIES="/opt/cxx-common/libraries"
-    export PATH="${TRAILOFBITS_LIBRARIES}/cmake/bin:${TRAILOFBITS_LIBRARIES}/llvm/bin:${PATH}"
+    vcpkg_libs='/opt/cxx-common/installed/x64-linux-rel'
+    export PATH="$vcpkg_libs/bin:${PATH}"
+    export CC="$vcpkg_libs/bin/clang"
+    export CXX="$vcpkg_libs/bin/clang++"
 
     cd "$srcdir/$pkgname-$pkgver"
     mkdir -p build && cd build
-    "${TRAILOFBITS_LIBRARIES}/cmake/bin/cmake" \
-        -DCMAKE_C_COMPILER="${TRAILOFBITS_LIBRARIES}/llvm/bin/clang" \
-        -DCMAKE_CXX_COMPILER="${TRAILOFBITS_LIBRARIES}/llvm/bin/clang++" \
-        -DMCSEMA_INSTALL_PYTHON2_LIBS=OFF \
-        -DMCSEMA_INSTALL_PYTHON3_LIBS=ON \
+    cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_VERBOSE_MAKEFILE=True \
+        -DVCPKG_ROOT="/opt/cxx-common" \
+        -DMCSEMA_INSTALL_PYTHON2_LIBS=OFF \
+        -DMCSEMA_INSTALL_PYTHON3_LIBS=ON \
         "$srcdir/$pkgname-$pkgver"
     make
 }
