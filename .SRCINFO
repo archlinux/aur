@@ -1,6 +1,6 @@
 pkgbase = websocat
 	pkgdesc = Command-line client for web sockets, like netcat/curl/socat for ws://
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/vi/websocat/
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = websocat
 	license = MIT
 	makedepends = cargo
 	depends = openssl
-	source = https://github.com/vi/websocat/archive/v1.5.0/websocat-1.5.0.tar.gz
-	sha512sums = d161aee2153e5fec47e5e81f160abfb7a0b45c5c48f96af341d5d737cd77237fbdf1f9923e80b39a745e19f94ce225b2eb5aa0d03403e4d87ffc4b8b042b4709
+	source = https://github.com/vi/websocat/archive/v1.6.0/websocat-1.6.0.tar.gz
+	sha512sums = e41d69541d9322f43f0296fe853777372b7f1d011839a0f860e8cbbe37bdac61267d1f33e198a650bf830626fc621745e204bb5a0ba5c7317afa972ff22ada9c
 
 pkgname = websocat
 

@@ -1,7 +1,8 @@
-# Maintainer: kpcyrd <git@rxv.cc>
+# Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
+# Contributor: kpcyrd <git@rxv.cc>
 
 pkgname=websocat
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Command-line client for web sockets, like netcat/curl/socat for ws://"
 url="https://github.com/vi/websocat/"
@@ -10,16 +11,16 @@ makedepends=('cargo')
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
 license=('MIT')
 source=("https://github.com/vi/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('d161aee2153e5fec47e5e81f160abfb7a0b45c5c48f96af341d5d737cd77237fbdf1f9923e80b39a745e19f94ce225b2eb5aa0d03403e4d87ffc4b8b042b4709')
+sha512sums=('e41d69541d9322f43f0296fe853777372b7f1d011839a0f860e8cbbe37bdac61267d1f33e198a650bf830626fc621745e204bb5a0ba5c7317afa972ff22ada9c')
 
 build() {
   cd "${pkgname}-${pkgver}"
-  cargo build --release --locked --features=ssl
+  cargo build --release --locked --all-features --target-dir=target
 }
 
 check() {
   cd "${pkgname}-${pkgver}"
-  cargo test --release --locked --features=ssl
+  cargo test --release --locked --target-dir=target
 }
 
 package() {
@@ -28,4 +29,3 @@ package() {
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
-# vim:set ts=2 sw=2 et:
