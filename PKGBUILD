@@ -11,7 +11,7 @@ makedepends=("cargo" "git")
 url="https://github.com/akiirui/dofi"
 license=("MIT")
 source=("git+https://github.com/akiirui/dofi")
-b2sums=(SKIP)
+b2sums=("SKIP")
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -25,7 +25,6 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname"
-
-  install -Dm755 target/release/dofi "$pkgdir/usr/bin/dofi"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "target/release/dofi" "$pkgdir/usr/bin/dofi"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
