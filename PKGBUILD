@@ -25,14 +25,12 @@ source=(git://github.com/MrAlex94/Waterfox#branch=future
         waterfox-g3.desktop
         ignore_bad_validator.patch
 	https://git.savannah.gnu.org/cgit/gnuzilla.git/plain/data/patches/disable-settings-services.patch
-	https://git.savannah.gnu.org/cgit/gnuzilla.git/plain/data/patches/duckduckgo-no-params.patch
         vendor.js)
 sha512sums=('SKIP'
-            '3b71a64fa08b087025f05931b385a6881a9649e763414b2de8ad392cd6d262ccdc13b828536d624fda00946826609165c5a8010803c996dec2c3ce49155c5426'
+	    'SKIP'
             '36d0568a5d7e06a98002e2320adf130a0d0025d9d7717316a2df0247fea406eb79dce527261eba146d413e3b18df19adaf362d96399d3712b1f478aae1944a26'
             'ab2aced2e371afad317ab3ffb3e8161c457f022327e182d426aa2ba4142112060225ced4610eb2525e1c739a4e56ad4e7cf78cc102232cf01cf06d0224a9c09d'
             '243f6aa749057f5221c1ad9321b183eee767cb7d877df0f24dc4ef3c4e559621f7620f990147d341c6f4cab705df7dae59e8f4c2cfe5cfc4525bf3c3621c77ff'
-            '547572a90a0d0eb09c7c46ffd1e2d59b246c8a27f63e8fb950f852847a9dcb3c0d153cc15f9c2d9a7628768bd924957f8e2624377926a2a6473aa04d44154285'
             'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7')
 
 # don't compress the package - we're just going to uncompress during install in a moment
@@ -57,9 +55,6 @@ prepare() {
   # until patched out upstream (icecat)
   patch -Np1 -i "${srcdir}/disable-settings-services.patch"
 
-  # don't send extra params to ddg (icecat)
-  patch -Np1 -i "${srcdir}/duckduckgo-no-params.patch"
-  
   mkdir -p "$srcdir/path"
 }
 
