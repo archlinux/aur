@@ -1,8 +1,8 @@
-# Maintainer: zargbell <zargbell@yandex.ru>
+# Maintainer: feherneoh <feherneoh@gmail.com>
 
 _target=aarch64-elf
-_pkgdate=2018.05
-_pkgver=7.3
+_pkgdate=2019.12
+_pkgver=7.5
 
 pkgname=${_target}-newlib-linaro-bin
 pkgver=${_pkgdate}
@@ -25,7 +25,7 @@ options=(!emptydirs !strip)
 install=
 changelog=
 source=(http://releases.linaro.org/components/toolchain/binaries/${_pkgver}-${_pkgdate}/${_target}/sysroot-newlib-linaro-${_pkgdate}-${_target}.tar.xz)
-sha512sums=('eae58fecd20751d41dbb940d059a668834de8beadc37a8203ba62dd7e3184c529e1a6cb695c09a32f971409bca00ee88863b87a963beef876274d90fa01b80af')
+sha512sums=('3a459bbb0edde275e4739f673b4e516df03097da7bb3aa5eb0d34b86d4075094bbd694d4cd95a6db5a230f2a860b0afdd08d036826fc57bef9587d936d687098')
 
 
 package() {
