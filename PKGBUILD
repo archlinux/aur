@@ -31,7 +31,7 @@ build() {
   
   autoreconf -fi
 
-  ./configure --prefix=/usr --libdir=/usr/lib32 --disable-debuginfod --enable-deterministic-archives --disable-gconf --disable-debugpred --disable-gcov --disable-valgrind --without-valgrind --disable-valgrind-annotations --enable-maintainer-mode
+  ./configure --prefix=/usr --libdir=/usr/lib32 --disable-debuginfod --enable-deterministic-archives --disable-gconf --disable-debugpred --disable-gcov --disable-valgrind --without-valgrind --disable-valgrind-annotations --enable-maintainer-mode --disable-symbol-versioning
   make
 }
 
