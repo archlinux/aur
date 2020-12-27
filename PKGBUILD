@@ -2,7 +2,7 @@
 
 _pkgname=wordcloud
 pkgname=python-wordcloud
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="A little word cloud generator in Python"
 arch=('any')
@@ -10,14 +10,12 @@ url="https://github.com/amueller/word_cloud"
 license=('Apache')
 makedepends=('python-setuptools')
 depends=('python' 'python-matplotlib' 'python-pillow' 'python-numpy')
-#source=("https://files.pythonhosted.org/packages/6b/9f/27cec92eee9f1d4f02f986ad0cc6dfc0797b117be6e968da8f92c6c183aa/$_pkgname-$pkgver.tar.gz")
-source=("https://files.pythonhosted.org/packages/27/3f/8ff149cfce0bffed6b475c1eec6f81b67464405c115c05e512621f7f41d8/$_pkgname-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/be/33/5bdd39587f0e8ede3fe12d9d16d6f1fb5e7a43f29621604a949ee362d013/$_pkgname-$pkgver.tar.gz")
+sha256sums=('e6ef771aac17c1cf8558c8d5ef025796184066d7b78f8118aefe011fb0d22952')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
-
-sha256sums=('35563d96802d29c876ef8fd9e83304ef796cee40b2e51c0a7fa570d468073236')
 
 # vim:set ts=2 sw=2 et:
