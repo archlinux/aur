@@ -2,7 +2,7 @@
 _pkgname=poe-overlay-community
 pkgname=${_pkgname}-bin
 pkgver=0.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An overlay for Path of Exile. Built with Electron and Angular."
 arch=('x86_64')
 url="https://github.com/PoE-Overlay-Community/PoE-Overlay-Community-Fork"
@@ -28,7 +28,7 @@ package() {
 	find           ${srcdir}/squashfs-root/locales/ -type d -exec chmod 755 {} +
 	find           ${srcdir}/squashfs-root/resources/ -type d -exec chmod 755 {} +
 	# https://github.com/PoE-Overlay-Community/PoE-Overlay-Community-Fork/issues/94
-#	mv             ${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0           ${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256
+	mv -f          ${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0           ${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256
 	rm             ${srcdir}/squashfs-root/poe-overlay.png
 	install -d     ${pkgdir}/opt/${_pkgname}
 	cp -r          ${srcdir}/squashfs-root/*                                     ${pkgdir}/opt/${_pkgname}
