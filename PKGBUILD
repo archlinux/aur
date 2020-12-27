@@ -4,7 +4,7 @@
 
 pkgname=exodus
 pkgver=20.12.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Send, receive & exchange cryptocurrency with ease on the world's leading Desktop, Mobile and Hardware wallets. Bitcoin wallet"
 arch=('x86_64')
 url="https://exodus.io"
