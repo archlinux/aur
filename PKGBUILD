@@ -2,8 +2,8 @@
 
 _pkgname="mpv-handler"
 pkgname="mpv-handler-git"
-pkgver=0.1.0.r0.g35c96b0
-pkgrel=2
+pkgver=0.1.1.r0.g4b5d5b6
+pkgrel=1
 pkgdesc="Play website videos and songs with mpv & youtube-dl."
 arch=("any")
 depends=("mpv" "youtube-dl")
@@ -21,13 +21,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  cargo build --locked --release --target-dir target
+  MPV_HANDLER_VERSION=$pkgver cargo build --locked --release --target-dir target
 }
 
 package() {
   cd "$srcdir/$_pkgname"
   install -Dm755 "target/release/mpv-handler" "$pkgdir/usr/bin/mpv-handler"
   install -Dm644 "share/linux/mpv-handler.desktop" "$pkgdir/usr/share/applications/mpv-handler.desktop"
-
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
