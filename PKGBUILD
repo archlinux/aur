@@ -8,11 +8,9 @@ url="https://github.com/TheCynicalTeam/$pkgname"
 arch=('any')
 license=('GNU General Public License v3.0')
 depends=(instamenu)
-makedepends=('git')
 provides=($pkgname)
 source=("${pkgname}-$pkgver-$pkgrel.tar.gz::${url}/archive/$pkgver-$pkgrel.tar.gz")
-sha256sums=('SKIP')
-
+sha256sums=('2c11e27f6a96ca98bd1b3c8171d01bc9eab0c6c3bac6014bb48e8f627c50cc53')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver-$pkgrel"
