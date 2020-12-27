@@ -116,7 +116,7 @@ prepare() {
 		local _COL_DEFAULT_='\e[0m'
 	fi
 
-	msg "Packaging tor-browser (language: ${_language})..."
+	echo "Packaging tor-browser (language: ${_language})..."
 
 	if [[ -z "${TORBROWSER_PKGLANG}" ]]; then
 		echo -e "\n  ${_COL_BBLUE_}->${_COL_DEFAULT_} ${_COL_BRED_}NOTE:${_COL_DEFAULT_} If you want to package ${_COL_BWHITE_}${_pkgname}${_COL_DEFAULT_} in a different language, please"
