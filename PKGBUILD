@@ -11,7 +11,7 @@ depends=('i3lock-color' 'imagemagick' 'xorg-xrandr' 'xorg-xdpyinfo' 'bc')
 optdepends=('feh: Allows setting wallpaper' 'multimonitorlock-gui: Allows the background to be changed')
 makedepends=('git')
 conflicts=('multilockscreen-git' 'betterlockscreen' 'betterlockscreen-git')
-source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
+source=("${pkgname}-$pkgver-$pkgrel.tar.gz::${url}/archive/$pkgver-$pkgrel.tar.gz")
 sha256sums=("56c8fd08449cc2015303a6382b831e5f3ce7fb7d7694a26ca5f59a92577294e4")
 install=${pkgname}.install
 
