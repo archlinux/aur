@@ -2,14 +2,14 @@
 
 pkgname=mom
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Memory Overcommitment Manager, for virtual machines"
 arch=('any')
 url="https://gerrit.ovirt.org/#/admin/projects/mom"
 license=("GPL2")
 depends=('python' 'python-six' 'libvirt-python')
 makedepends=('git')
-source=("git+https://gerrit.ovirt.org/mom#commit=0cd552a7d174118ae6c4baa8609edd82afafe775"
+source=("git+https://gerrit.ovirt.org/mom#commit=655d6b36f9f80ced1e411bc8504110a261939808"
         "momd@.service"
         "balloon.rules")
 md5sums=('SKIP'
