@@ -1,14 +1,14 @@
 # Maintainer: Marcel Schneider <marcel@coopmasters.de>
 pkgname=csv2xls
-pkgver=0.3.5
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="a command line utility which converts csv files into one (or more if splitted) Excel(TM) files."
 arch=('i686' 'x86_64')
 url="https://github.com/ferkulat/csv2xls"
 license=('GPL')
 groups=()
-depends=('libcsv' 'xlslib')
-makedepends=()
+depends=()
+makedepends=(cmake)
 optdepends=()
 provides=()
 conflicts=()
@@ -17,21 +17,25 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://github.com/ferkulat/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2)
+source=( git+https://github.com/ferkulat/csv2xls.git)
+md5sums=('SKIP')
 noextract=()
-md5sums=('d116f4a9755f48bce46673cc5ff0bc78')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-   # libcsv-3.0.1 installs csv.h into /usr/include/libcsv
-   export CPPFLAGS=-I/usr/include/libcsv
-  ./configure --prefix=/usr || return 1
-  make || return 1
+  cd "$srcdir/$pkgname"
+  git checkout v$pkgver
+  mkdir -p build
+  cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake --build .
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname/build"
 
   make DESTDIR="$pkgdir/" install
+  rm -rf $pkgdir/usr/include
+  rm -rf $pkgdir/usr/lib
 }
+
 
