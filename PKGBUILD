@@ -1,6 +1,6 @@
 # Maintainer: Martin Müllenhaupt <mm+aur.archlinux.org@netlair.de>
 pkgname=downlords-faf-client
-pkgver=1.2.3
+pkgver=1.3.0
 _pkgver_major=$(echo $pkgver | cut -d . -f 1)
 _pkgver_minor=$(echo $pkgver | cut -d . -f 2)
 _pkgver_tag=$(echo $pkgver | cut -d . -f 3)
@@ -9,7 +9,7 @@ _pkgver_tag=$(echo $pkgver | cut -d . -f 3)
 #_filename="dfc_unix_${_pkgver_major}_${_pkgver_minor}_${_pkgver_tag}-${_pkgver_suffix}.tar.gz"
 _pkgver="${_pkgver_major}.${_pkgver_minor}.${_pkgver_tag}"
 _filename="dfc_unix_${_pkgver_major}_${_pkgver_minor}_${_pkgver_tag}.tar.gz"
-pkgrel=2
+pkgrel=1
 epoch=0
 pkgdesc="Forged Alliance Forever - Lobby Client. Community-driven client system for Supreme Commander: Forged Alliance. Downlord's Java client reimplementation."
 url="http://www.faforever.com/"
@@ -18,9 +18,7 @@ license=('MIT')
 groups=()
 checkdepends=()
 optdepends=()
-# Faf is broken with Arch's OpenJDK 14
-# https://github.com/FAForever/downlords-faf-client/issues/1957
-depends=('jre14')
+depends=('jre>=15.0')
 makedepends=('jq')
 replaces=()
 backup=()
@@ -28,10 +26,10 @@ options=()
 install=
 changelog=
 source=("https://github.com/FAForever/downlords-faf-client/releases/download/v$_pkgver/$_filename" "https://github.com/FAForever/downlords-faf-client/raw/develop/src/media/appicon/128.png" 'DownlordsFafClient.desktop' 'downlords-faf-client')
-sha256sums=('ae38876afdcfbb810c43516cfa0376d6b6e41df52b5e4d0e9b3a03db9245867a'
+sha256sums=('0d638a1230352453d69a2db21b1ca93faab1e6dd81f94bc880c891271662aedd'
             '2a5803ca2dd463aa4b53d79cff7f30e3aa7beb0d874b39c8ef59e679fbde9d3d'
             '3fd2b21da9de9f9c02dd89ee07f49c559dbb2de15f4e86a9b31f6353f608ffa6'
-            '3df2ae7c886d03a899427e493583be2b1db8d5e557b3b83d4362ff7d5b1b32a7')
+            '2c1ded6e632263ef3e9a51f466285b3a51bacf7a8e61817e64d4ae4b4d7d1c42')
 noextract=()
 validpgpkeys=()
 
