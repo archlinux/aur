@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-cairo-bootstrap
 	pkgdesc = 2D graphics library with support for multiple output devices (mingw-w64 bootstrap)
-	pkgver = 1.17.2+25+gaee96d175
+	pkgver = 1.17.4
 	pkgrel = 1
 	url = http://cairographics.org/
 	arch = any
@@ -13,12 +13,12 @@ pkgbase = mingw-w64-cairo-bootstrap
 	depends = mingw-w64-fontconfig
 	depends = mingw-w64-libpng
 	depends = mingw-w64-lzo
-	provides = mingw-w64-cairo=1.17.2+25+gaee96d175
+	provides = mingw-w64-cairo=1.17.4
 	conflicts = mingw-w64-cairo
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://gitlab.freedesktop.org/cairo/cairo.git#commit=aee96d175d8349945a6d1948a56abd4b4ec6ad84
+	source = git+https://gitlab.freedesktop.org/cairo/cairo.git#commit=156cd3eaaebfd8635517c2baf61fcf3627ff7ec2
 	source = 0009-standalone-headers.mingw.patch
 	source = 0026-create-argb-fonts.all.patch
 	source = 0027-win32-print-fix-unbounded-surface-assertion.patch

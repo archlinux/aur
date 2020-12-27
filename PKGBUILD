@@ -2,10 +2,10 @@
 # Contributor: Chris Kitching <chriskitching@linux.com>
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 pkgname=mingw-w64-cairo-bootstrap
-pkgver=1.17.2+25+gaee96d175
+pkgver=1.17.4
 pkgrel=1
 pkgdesc="2D graphics library with support for multiple output devices (mingw-w64 bootstrap)"
-_commit=aee96d175d8349945a6d1948a56abd4b4ec6ad84
+_commit=156cd3eaaebfd8635517c2baf61fcf3627ff7ec2  # tags/1.17.4^0
 arch=(any)
 url="http://cairographics.org/"
 license=("LGPL" "MPL")
