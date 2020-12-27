@@ -1,8 +1,8 @@
 # Maintainer: Eden Tyler-Moss <eden@etylermoss.com>
 
 pkgname=youtube-tv-desktop-app
-pkgver=1.0.4
-pkgrel=3
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="Youtube for TV Desktop app"
 arch=('x86_64')
 url="https://github.com/etylermoss/youtube-tv-desktop"
@@ -28,6 +28,7 @@ build() {
 
 package() {
     install -Dm755 "$srcdir/youtube-tv-desktop-$pkgver/build/index.js" "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 "$srcdir/youtube-tv-desktop-$pkgver/build/preload.js" "$pkgdir/usr/share/$pkgname/preload.js"
     install -Dm644 "$srcdir/youtube-tv-desktop-$pkgver/youtube-512x512.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
     install -Dm644 "youtube-tv-desktop-app.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
