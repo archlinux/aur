@@ -15,7 +15,6 @@ md5sums=('SKIP')
 pkgver() {
   cd "ttf-nepali-fonts-git"
   install -d "${pkgdir}/usr/share/fonts/TTF"
-  printf "1.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
