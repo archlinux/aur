@@ -23,7 +23,7 @@ provides=(${_pkgname}=2.2)
 checkdepends=('openssh')
 makedepends=('git')
 depends=('npth' 'libgpg-error' 'libgcrypt' 'libksba' 'libassuan'
-         'pinentry' 'bzip2' 'readline' 'libreadline.so' 'gnutls'
+         'bzip2' 'readline' 'libreadline.so' 'gnutls'
          'sqlite' 'zlib' 'glibc')
 optdepends=('libldap: gpg2keys_ldap'
             'libusb-compat: scdaemon'
