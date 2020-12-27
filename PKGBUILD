@@ -10,7 +10,7 @@ arch=(x86_64)
 url=https://github.com/mzur/gnome-shell-wsmatrix
 license=(GPL3)
 depends=(gnome-shell)
-source=(https://github.com/mzur/${_repo}/archive/v${pkgver}.tar.gz)
+source=(${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/mzur/${_repo}/archive/v${pkgver}.tar.gz)
 sha256sums=('d1c1349bdb440a2267ee1a3569e3733868ba1238f3791ac5dd5086e94bc57add')
 
 _uuid=wsmatrix@martin.zurowietz.de
