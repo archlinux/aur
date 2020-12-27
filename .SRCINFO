@@ -32,7 +32,6 @@ pkgbase = tigervnc-server
 	depends = libdrm
 	depends = xorg-xinit
 	optdepends = mesa: for OpenGL functionality in Xvnc
-	provides = tigervnc
 	conflicts = tigervnc
 	conflicts = tightvnc
 	backup = etc/pam.d/tigervnc
