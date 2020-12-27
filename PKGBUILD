@@ -4,7 +4,7 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.11.13.a.r119.gc4abccb4050
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.12.23.a.r21.g949b0c0cc36
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -12,7 +12,7 @@ url="https://swift.org/"
 license=('apache2')
 depends=('icu' 'libedit' 'libxml2' 'python' 'libbsd' 'ncurses' )
 makedepends=('clang' 'cmake' 'git' 'ninja' 'python-six' 'rsync' 'swig')
-provides=('swift-language-git')
+provides=('swift-language')
 source=(
     'git+https://github.com/apple/swift#branch=main'
     'cmark::git+https://github.com/apple/swift-cmark#branch=main'
@@ -29,7 +29,6 @@ source=(
     'swift-integration-tests::git+https://github.com/apple/swift-integration-tests#branch=main'
     'llvm-project::git+https://github.com/apple/llvm-project#branch=swift/main'
     '0001-arch-aur-pachtes.patch'
-    # swift src to check afterwards
     'indexstore-db::git+https://github.com/apple/indexstore-db#branch=main'
 #    'yams::git+https://github.com/jpsim/Yams'
     'yams::git+https://github.com/jpsim/Yams#commit=3.0.1'

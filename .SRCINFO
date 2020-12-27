@@ -1,6 +1,6 @@
 pkgbase = swift-language-git
 	pkgdesc = The Swift programming language, taken directly from the Apple repository
-	pkgver = swift.DEVELOPMENT.SNAPSHOT.2020.11.13.a.r119.gc4abccb4050
+	pkgver = swift.DEVELOPMENT.SNAPSHOT.2020.12.23.a.r21.g949b0c0cc36
 	pkgrel = 1
 	url = https://swift.org/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = swift-language-git
 	depends = python
 	depends = libbsd
 	depends = ncurses
-	provides = swift-language-git
+	provides = swift-language
 	source = git+https://github.com/apple/swift#branch=main
 	source = cmark::git+https://github.com/apple/swift-cmark#branch=main
 	source = llbuild::git+https://github.com/apple/swift-llbuild#branch=main
