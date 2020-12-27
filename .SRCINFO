@@ -1,6 +1,6 @@
 pkgbase = gst-plugins-opencv
 	pkgdesc = GStreamer open-source multimedia framework OpenCV plugins
-	pkgver = 1.18.1
+	pkgver = 1.18.2
 	pkgrel = 1
 	url = https://gstreamer.freedesktop.org/
 	arch = x86_64
@@ -9,10 +9,8 @@ pkgbase = gst-plugins-opencv
 	makedepends = git
 	depends = gst-plugins-base-libs
 	depends = opencv
-	source = git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git#commit=e5c3c106a2da607953fea36e3a253b382c939684
-	source = 4.5.0.patch
+	source = git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git#commit=b375ee4cdbcb98687c226d6564f8678a809cf02a
 	sha256sums = SKIP
-	sha256sums = 59c4401641d619f6ca0fffd853dad0a2e027d3aba1698c81d5017a23e6ac6ff4
 
 pkgname = gst-plugins-opencv
 
