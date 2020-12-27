@@ -25,33 +25,35 @@ pkgver() {
 build() {
   cd glslang
   mkdir -p build-{shared,static}
-#  (cd build-shared
-#    cmake .. \
-#      -GNinja \
-#      -DCMAKE_INSTALL_PREFIX=/usr \
-#      -DCMAKE_BUILD_TYPE=Release \
-#      -DCMAKE_ENABLE_GLSLANG_JS=OFF \
-#      -DCMAKE_ENABLE_GLSLANG_WEBMIN=OFF \
-#      -DCMAKE_ENABLE_GLSLANG_WEBMIN_DEVEL=OFF \
-#      -DBUILD_SHARED_LIBS=ON
-#    ninja
-#  )
+  (cd build-shared
+    cmake .. \
+      -GNinja \
+      -DCMAKE_INSTALL_PREFIX='/usr' \
+      -DCMAKE_BUILD_TYPE='Release' \
+      -DCMAKE_ENABLE_GLSLANG_JS='OFF' \
+      -DCMAKE_ENABLE_GLSLANG_WEBMIN='OFF' \
+      -DCMAKE_ENABLE_GLSLANG_WEBMIN_DEVEL='OFF' \
+      -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
+      -DBUILD_SHARED_LIBS='ON'
+    ninja
+  )
   (cd build-static
     cmake .. \
       -GNinja \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DCMAKE_ENABLE_GLSLANG_JS=OFF \
-      -DCMAKE_ENABLE_GLSLANG_WEBMIN=OFF \
-      -DCMAKE_ENABLE_GLSLANG_WEBMIN_DEVEL=OFF \
-      -DBUILD_SHARED_LIBS=OFF
+      -DCMAKE_INSTALL_PREFIX='/usr' \
+      -DCMAKE_BUILD_TYPE='Release' \
+      -DCMAKE_ENABLE_GLSLANG_JS='OFF' \
+      -DCMAKE_ENABLE_GLSLANG_WEBMIN='OFF' \
+      -DCMAKE_ENABLE_GLSLANG_WEBMIN_DEVEL='OFF' \
+      -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
+      -DBUILD_SHARED_LIBS='OFF'
     ninja
   )
 }
 
 package() {
   cd glslang
-#  DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C build-shared install
+  DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C build-shared install
   DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C build-static install
 
   install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
