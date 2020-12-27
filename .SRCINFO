@@ -18,7 +18,7 @@ pkgbase = nuclear-player-git
 	source = git+https://github.com/nukeop/nuclear.git
 	source = nuclear.desktop
 	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = c7718ef25957c425b87dc4195d811955
 
 pkgname = nuclear-player-git
 
