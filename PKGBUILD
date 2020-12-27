@@ -2,7 +2,7 @@
 
 _gitname=wget
 pkgname=$_gitname-git
-pkgver=1.19.4.r15.gf56f970b
+pkgver=1.20.3.r217.g0c2a33b5
 pkgrel=1
 pkgdesc="A network utility to retrieve files from the Web"
 arch=('i686' 'x86_64')
@@ -26,7 +26,8 @@ build() {
   git config submodule.gnulib.url "$srcdir/gnulib"
   git submodule update gnulib
   ./bootstrap
-  ./configure --prefix=/usr --without-included-regex --enable-nls --enable-dependency-tracking --with-ssl=gnutls --sysconfdir=/etc --with-metalink
+  autoreconf -fi
+  ./configure --prefix=/usr --without-included-regex --enable-nls --enable-dependency-tracking --with-ssl=openssl --sysconfdir=/etc --with-metalink
   make
 }
 
@@ -52,7 +53,7 @@ pkgver() {
 
 check() {
   cd $_gitname
-  make check clean all
+  make check
 }
 
 # vim:set ts=2 sw=2 tw=0 et:
