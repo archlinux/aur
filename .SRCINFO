@@ -1,15 +1,14 @@
 pkgbase = csv2xls
 	pkgdesc = a command line utility which converts csv files into one (or more if splitted) Excel(TM) files.
-	pkgver = 0.3.5
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/ferkulat/csv2xls
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = libcsv
-	depends = xlslib
-	source = https://github.com/ferkulat/csv2xls/releases/download/0.3.5/csv2xls-0.3.5.tar.bz2
-	md5sums = d116f4a9755f48bce46673cc5ff0bc78
+	makedepends = cmake
+	source = git+https://github.com/ferkulat/csv2xls.git
+	md5sums = SKIP
 
 pkgname = csv2xls
 
