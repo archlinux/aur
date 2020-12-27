@@ -1,0 +1,6 @@
+ktlint-*
+LICENSE
+*.asc
+*.tar.*
+src/
+pkg/
