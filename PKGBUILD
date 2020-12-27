@@ -17,7 +17,7 @@ makedepends=('git' 'cmake')
 provides=('qt-color-widgets-common')
 conflicts=('qt-color-widgets-common')
 replaces=('qt5-color-picker')
-source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
+source=("${pkgname}-$pkgver-$pkgrel.tar.gz::${url}/archive/$pkgver-$pkgrel.tar.gz")
 sha256sums=('cb33d19842843c0bf236e958d9194a36b682ef9777ef1cb450fbac383b45563d')
 
 
