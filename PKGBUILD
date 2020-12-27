@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gstreamer
-pkgver=1.18.1
+pkgver=1.18.2
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework (mingw-w64)"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('mingw-w64-glib2' 'mingw-w64-libxml2')
 options=('!strip' '!buildflags' 'staticlibs')
 
 source=(${url}src/gstreamer/gstreamer-${pkgver}.tar.xz)
-sha256sums=('79df8de21f284a105a5c1568527f8c559c583c85c0f2bd7bdb5b0372b8beecba')
+sha256sums=('66cdeb4f970c2e55932a2f427177d438fe2c55c0b6d29e80fda80263f2ae5446')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
