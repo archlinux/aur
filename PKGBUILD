@@ -24,7 +24,7 @@ source=("${_pkgname}-${pkgver}.zip::https://github.com/TankNee/Neeto-Vue/release
 sha256sums=('ae146f301c122b3089d986c58671acc940e0f49dc284f1b19fe62d5efe81e965'
             '778fefd87355aa3ce977e510f236bfe25b9873eb6f86d4b34f5e5c8ddcdf93f9'
             '09141f28d3723a64b16c54cbecd3b239301c879fc2f229dd70528cf75878b812'
-            '5b0cb7c05b15b187d1b9383091267f8294a5161fbe6fc9509b2283a51378183e'
+            'dd95ba9191a5a1c02ac830eb2f5f1dd3bafcfc6897f8b9a2fef7e919294608e6'
             '7868ad5caf58b07d081d5983ed5592b401886ac9f7eac57761b1001345d473b0')
 
 prepare() {
