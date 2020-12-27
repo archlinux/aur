@@ -13,7 +13,6 @@ pkgbase = art-rawconverter-git
 	makedepends = gcc
 	makedepends = hicolor-icon-theme
 	makedepends = fakeroot
-	makedepends = lcms2
 	depends = lensfun
 	depends = exiv2
 	depends = fftw
@@ -24,7 +23,6 @@ pkgbase = art-rawconverter-git
 	depends = libcanberra
 	depends = libiptcdata
 	depends = desktop-file-utils
-	depends = lcms2
 	conflicts = art-rawconverter
 	options = !strip
 	source = art-rawconverter-git_src::git+https://bitbucket.org/agriggio/art.git#branch=master
