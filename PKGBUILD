@@ -1,3 +1,5 @@
+# Maintainer: he7086 <heyi7086<AT>gmail<DOT>com>
+
 pkgname=haskell-th-env
 _hkgname=th-env
 pkgver=0.1.0.2
@@ -27,8 +29,9 @@ build() {
 package() {
   cd $_hkgname-$pkgver
 
-  install -D -m744 register.sh "$pkgdir"/usr/share/haskell/register/$pkgname.sh
-  install -D -m744 unregister.sh "$pkgdir"/usr/share/haskell/unregister/$pkgname.sh
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm744 register.sh "$pkgdir"/usr/share/haskell/register/$pkgname.sh
+  install -Dm744 unregister.sh "$pkgdir"/usr/share/haskell/unregister/$pkgname.sh
   runhaskell Setup copy --destdir="$pkgdir"
   rm -f "$pkgdir"/usr/share/doc/$pkgname/LICENSE
 }
