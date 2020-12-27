@@ -1,0 +1,21 @@
+pkgbase = kodi-addon-pvr-zattoo
+	pkgdesc = Zattoo PVR Plugin for Kodi
+	pkgver = 18.1.21
+	pkgrel = 1
+	url = https://github.com/rbuehlma/pvr.zattoo
+	arch = any
+	groups = kodi
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = kodi
+	depends = kodi-addon-script-module-inputstreamhelper
+	provides = kodi-addon-pvr-zattoo
+	conflicts = kodi-addon-pvr-zattoo
+	source = https://github.com/rbuehlma/pvr.zattoo/archive/18.1.21-Leia.tar.gz
+	source = https://github.com/xbmc/xbmc/archive/18.9-Leia.tar.gz
+	sha256sums = 19de7bc58bcf37bbcff5ad2cb2f095cb15a4217f9abec5c9ff30d0489dab89d2
+	sha256sums = 6deb28f725880b1ab6c5920b55ef1190a79b0684ffb30b6e13b199d23a0af296
+
+pkgname = kodi-addon-pvr-zattoo
+
