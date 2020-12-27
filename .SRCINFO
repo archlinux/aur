@@ -1,6 +1,6 @@
 pkgbase = calibre-git
 	pkgdesc = Ebook management application
-	pkgver = 5.5.0.r112.gf99b535714
+	pkgver = 5.8.1.r16.ge0ec185ea2
 	pkgrel = 1
 	url = https://calibre-ebook.com/
 	arch = i686
@@ -50,6 +50,7 @@ pkgbase = calibre-git
 	depends = python-regex
 	depends = python-zeroconf
 	depends = qt5-svg
+	depends = ttf-liberation
 	depends = udisks2
 	optdepends = poppler: required for converting pdf to html
 	provides = calibre
@@ -66,6 +67,6 @@ pkgbase = calibre-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 7b48eda270f1ba3cbc20462f56c04d964bb36ecaf6237740e06c57f8f2cc0fc5
-	sha256sums = d17a1fff7bf441db8d1ec826afd8661352869ec4e5edd2a17f917ef2fbf01043
+	sha256sums = 00ffc3a6bdcd49b77bc23a030da68ad9eeae69604c72cd26036083123e3d4039
 
 pkgname = calibre-git

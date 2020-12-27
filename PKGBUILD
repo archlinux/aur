@@ -10,7 +10,7 @@
 
 pkgbase=calibre-git
 pkgname=calibre-git
-pkgver=5.5.0.r112.gf99b535714
+pkgver=5.8.1.r16.ge0ec185ea2
 pkgrel=1
 _dictionaries_commit="d6160c5e006089c711f3fec6eb4e2ade60a4150c"
 pkgdesc="Ebook management application"
@@ -23,7 +23,7 @@ _py_deps=('apsw' 'beautifulsoup4' 'cssselect' 'css-parser' 'dateutil' 'dbus' 'dn
           'pyqtwebengine' 'regex' 'zeroconf')
 depends=('hunspell' 'hyphen' 'icu' 'jxrlib' 'libmtp' 'libusb'
          'libwmf' 'mathjax' 'mtdev' 'optipng' 'podofo'
-         "${_py_deps[@]/#/python-}" 'qt5-svg' 'udisks2')
+         "${_py_deps[@]/#/python-}" 'qt5-svg' 'ttf-liberation' 'udisks2')
 makedepends=('git' 'qt5-x11extras' 'sip5' 'pyqt-builder' 'xdg-utils' 'rapydscript-ng' 'python-sphinx')
 checkdepends=('xorg-server-xvfb')
 optdepends=('poppler: required for converting pdf to html')
@@ -37,7 +37,7 @@ source=("git+https://github.com/kovidgoyal/${pkgbase%-git}.git?signed"
 sha256sums=('SKIP'
             'SKIP'
             '7b48eda270f1ba3cbc20462f56c04d964bb36ecaf6237740e06c57f8f2cc0fc5'
-            'd17a1fff7bf441db8d1ec826afd8661352869ec4e5edd2a17f917ef2fbf01043')
+            '00ffc3a6bdcd49b77bc23a030da68ad9eeae69604c72cd26036083123e3d4039')
 validpgpkeys=('3CE1780F78DD88DF45194FD706BC317B515ACE7C') # Kovid Goyal (New longer key) <kovid@kovidgoyal.net>
 
 pkgver() {
@@ -75,6 +75,7 @@ build() {
     LANG='en_US.UTF-8' python setup.py translations
     LANG='en_US.UTF-8' python setup.py gui
     LANG='en_US.UTF-8' python setup.py resources \
+        --path-to-liberation_fonts /usr/share/fonts/liberation --system-liberation_fonts \
         --path-to-mathjax /usr/share/mathjax --system-mathjax \
         --path-to-hyphenation "${srcdir}"/dictionaries-${_dictionaries_commit}
     LANG='en_US.UTF-8' python setup.py man_pages
