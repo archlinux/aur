@@ -1,7 +1,7 @@
 pkgbase = python-fdfgen
 	pkgdesc = Library for creating FDF files
 	pkgver = 0.16.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/ccnmtl/fdfgen/
 	arch = any
 	license = BSD
