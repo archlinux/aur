@@ -31,8 +31,7 @@ build() {
 
   cd libtiff
 
-  autoreconf -fi
-
+  ./autogen.sh
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
