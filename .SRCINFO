@@ -11,7 +11,6 @@ pkgbase = xfce4-hamster-plugin
 	depends = xfce4-panel
 	depends = hamster-time-tracker
 	source = https://github.com/projecthamster/xfce4-hamster-plugin/archive/v1.8.tar.gz
-	sha256sums = 045f57a2af7dc32529594c0cf53c56a7f52975824cc8248457157284bdd810be
 
 pkgname = xfce4-hamster-plugin
 
