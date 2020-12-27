@@ -15,28 +15,28 @@ source=(
 	'nuclear.desktop'
 )
 md5sums=('SKIP'
-		'SKIP'
+		'c7718ef25957c425b87dc4195d811955'
 )
 pkgver() {
   cd ${srcdir}/nuclear
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 build(){
-cd nuclear
-npm install
-lerna bootstrap
-npm run build
+ cd nuclear
+ npm install
+ lerna bootstrap
+ npm run build
 }
 package(){
- mkdir ${pkgdir}/usr
- mkdir ${pkgdir}/usr/share
- mkdir ${pkgdir}/usr/share/applications
- mkdir ${pkgdir}/usr/bin
- mkdir ${pkgdir}/usr/share/icons
- mkdir ${pkgdir}/usr/share/icons/hicolor
- mkdir ${pkgdir}/usr/share/icons/hicolor/0x0
- mkdir ${pkgdir}/usr/share/icons/hicolor/0x0/apps/
- cp ${srcdir}/nuclear/flatpak/org.js.nuclear.Nuclear.png ${pkgdir}/usr/share/icons/hicolor/0x0/apps/nuclear.png
- cp --preserve=mode ${srcdir}/nuclear.desktop ${pkgdir}/usr/share/applications/
- cp -r --preserve=mode ${srcdir}/nuclear/release/linux-unpacked/* ${pkgdir}/usr/bin/
+  mkdir ${pkgdir}/usr
+  mkdir ${pkgdir}/usr/share
+  mkdir ${pkgdir}/usr/share/applications
+  mkdir ${pkgdir}/usr/bin
+  mkdir ${pkgdir}/usr/share/icons
+  mkdir ${pkgdir}/usr/share/icons/hicolor
+  mkdir ${pkgdir}/usr/share/icons/hicolor/0x0
+  mkdir ${pkgdir}/usr/share/icons/hicolor/0x0/apps/
+  cp ${srcdir}/nuclear/flatpak/org.js.nuclear.Nuclear.png ${pkgdir}/usr/share/icons/hicolor/0x0/apps/nuclear.png
+  cp --preserve=mode ${srcdir}/nuclear.desktop ${pkgdir}/usr/share/applications/
+  cp -r --preserve=mode ${srcdir}/nuclear/release/linux-unpacked/* ${pkgdir}/usr/bin/
 }
