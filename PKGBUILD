@@ -2,7 +2,7 @@
 
 pkgname=youtube-tv-desktop-app
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Youtube for TV Desktop app"
 arch=('x86_64')
 url="https://github.com/etylermoss/youtube-tv-desktop"
@@ -15,7 +15,7 @@ source=(
     "youtube-tv-desktop-app.desktop"
 )
 sha256sums=(
-    a91911eafe473485ff3ee36e6aef08361e0cbea4391312a0b1cb24120a822bab
+    8ccb4972fac3f54ee60b5eae8d202db7f9d1f323db32faf8c233bb6d371e2a5e
     1f2ec585415633a4b322c8733fccbfd07f07eccbf7d6701722d90f9229a7effc
 )
 
