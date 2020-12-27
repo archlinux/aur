@@ -1,0 +1,19 @@
+pkgbase = smartamp
+	pkgdesc = Next-level guitar tone powered by machine learning.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://guitarml.com/smartamp.html
+	arch = x86_64
+	groups = vst-plugins
+	groups = vst3-plugins
+	groups = pro-audio
+	license = APACHE
+	depends = freetype2
+	depends = curl
+	conflicts = smartamp-git
+	replaces = smartamp-git
+	source = https://github.com/GuitarML/SmartGuitarAmp/releases/download/v1.2.0/SmartAmp.vst3.zip
+	sha512sums = e1b3df62d78fae0d97fc02bbad98d1215e7baa2c11bc0ab4f9cd9d1e44e63d18f3b47174dc7f2253bf9ac51439de04eff166d81d077cf37b45b07326f988127d
+
+pkgname = smartamp
+
