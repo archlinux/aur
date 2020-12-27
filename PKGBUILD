@@ -18,7 +18,7 @@ backup=()
 options=(!strip)
 install=
 changelog=
-source=("Freezer-$pkgver.AppImage::$url/0:/PC/$pkgver/Freezer-$pkgver.AppImage" "freezer.desktop")
+source=("Freezer-$pkgver.AppImage::$url/0:/PC/$pkgver/Freezer-$pkgver.AppImage" "freezer.desktop" "freezer.png")
 noextract=("Freezer-$pkgver.AppImage")
 md5sums=('a60edc3f9a87e20b9b6ea818bb85c6b5'
     '50e9e894f493fd0eb64ecc5e1e38bf48')
