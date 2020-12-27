@@ -2,7 +2,7 @@
 
 pkgname=cxx-common
 pkgver=0.1.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Common dependency management for various Trail of Bits C++ codebases"
 arch=('x86_64')
 url="https://github.com/trailofbits/cxx-common"
@@ -33,6 +33,10 @@ package() {
     ./vcpkg/vcpkg export --x-all-installed \
         --overlay-ports=./ports --overlay-triplets=./triplets --raw \
         --output="$pkgdir/opt/$pkgname"
+
+    ## fix prefix paths
+    find $pkgdir/opt/$pkgname/installed/x64-linux-rel/lib/pkgconfig/ -type f \
+        -exec sed -i -e "s,$srcdir/$pkgname-$pkgver/vcpkg/packages/[^ ]*_x64-linux-rel,/opt/$pkgname/installed/x64-linux-rel,g" {} +
 
     ## install lit
     pushd "$srcdir/$pkgname-$pkgver"/vcpkg/buildtrees/llvm-10/src/org-*/llvm/utils/lit
