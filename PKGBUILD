@@ -1,7 +1,7 @@
 # Maintainer: Martin Rys <rys.pw/#contact_me>
 _pkgname=poe-overlay-community
 pkgname=${_pkgname}-bin
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="An overlay for Path of Exile. Built with Electron and Angular."
 arch=('x86_64')
@@ -16,7 +16,7 @@ backup=()
 
 options=()
 source=("poe-overlay-${pkgver}.AppImage::https://github.com/PoE-Overlay-Community/PoE-Overlay-Community-Fork/releases/download/v${pkgver}/poe-overlay-${pkgver}.AppImage")
-sha256sums=('a369b91fddb65654380caba49fc0ff9f5418586c8bbd7e27806af013bea4bc34')
+sha256sums=('67c8f879c18f83ce66929f8f94e87353c3a62d5d9501a22a7c2de677518bd902')
 
 prepare() {
 	chmod u+x      ${srcdir}/poe-overlay-${pkgver}.AppImage
@@ -28,7 +28,7 @@ package() {
 	find           ${srcdir}/squashfs-root/locales/ -type d -exec chmod 755 {} +
 	find           ${srcdir}/squashfs-root/resources/ -type d -exec chmod 755 {} +
 	# https://github.com/PoE-Overlay-Community/PoE-Overlay-Community-Fork/issues/94
-	mv             ${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0           ${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256
+#	mv             ${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0           ${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256
 	rm             ${srcdir}/squashfs-root/poe-overlay.png
 	install -d     ${pkgdir}/opt/${_pkgname}
 	cp -r          ${srcdir}/squashfs-root/*                                     ${pkgdir}/opt/${_pkgname}
