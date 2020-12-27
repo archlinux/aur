@@ -20,6 +20,7 @@ makedepends=('cmake' 'nasm' 'xorg-font-util' 'xorg-util-macros'
 	     'mesa' 'imagemagick' 'java-environment=8')
 optdepends=('mesa: for OpenGL functionality in Xvnc')
 conflicts=('tigervnc' 'tightvnc')
+provides=('tigervnc')
 backup=(etc/pam.d/tigervnc
 	etc/tigervnc/vncserver-config-defaults
 	etc/tigervnc/vncserver-config-mandatory
