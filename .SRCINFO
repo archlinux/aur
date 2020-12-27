@@ -11,6 +11,7 @@ pkgbase = cairo-git
 	makedepends = poppler-glib
 	makedepends = libspectre
 	makedepends = git
+	makedepends = gtk-doc
 	depends = libpng
 	depends = libxrender
 	depends = libxext
