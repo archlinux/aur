@@ -1,0 +1,15 @@
+pkgbase = arm-eabi-newlib-linaro-bin
+	pkgdesc = A C standard library implementation intended for use on embedded systems ARM64 (bare metal)
+	pkgver = 2019.12
+	pkgrel = 1
+	url = http://www.linaro.org/downloads/
+	arch = x86_64
+	groups = arm-eabi-toolchain-linaro-bin
+	license = BSD
+	options = !emptydirs
+	options = !strip
+	source = http://releases.linaro.org/components/toolchain/binaries/7.5-2019.12/arm-eabi/sysroot-newlib-linaro-2019.12-arm-eabi.tar.xz
+	sha512sums = 735d6c3cc1081b42b5a40b4d0065d9a34a879de5d16bb244510b0b1092f69d008a0d01897c0ef3957ae63bd93b2dd1fee88f42f521bdff5fa958b3a62fe53928
+
+pkgname = arm-eabi-newlib-linaro-bin
+
