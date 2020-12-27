@@ -1,6 +1,6 @@
 pkgbase = php80
 	pkgver = 8.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.php.net/
 	arch = x86_64
 	license = PHP

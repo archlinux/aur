@@ -23,7 +23,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('PHP')
 url='https://www.php.net/'
@@ -176,7 +176,7 @@ check() {
 	export NO_INTERACTION=1
 	export SKIP_ONLINE_TESTS=1
 	export SKIP_SLOW_TESTS=1
-	export TEST_PHP_ARGS="-j$(nproc)"
+	export TEST_PHP_ARGS="-n -j$(nproc)"
 	export TESTS='tests Zend'
 
         make test
