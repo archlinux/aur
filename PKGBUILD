@@ -3,7 +3,7 @@
 # Contributor: ArcticVanguard <LideEmily at gmail dot com>
 # Contributor: ledti <antergist at gmail dot com>
 pkgname=obs-studio-git
-pkgver=25.0.7.r302.gc21fd6f27
+pkgver=26.1.0.r20.g20fb235b8
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=("i686" "x86_64")
@@ -19,7 +19,8 @@ optdepends=("libfdk-aac: FDK AAC codec support"
             "vlc: VLC Media Source"
             "swig: Scripting"
             "luajit: Lua scripting"
-            "python: Python scripting")
+            "python: Python scripting"
+            "v4l2loopback-dkms: Virtual webcam")
 provides=("obs-studio=$pkgver")
 conflicts=("obs-studio")
 source=("$pkgname::git+https://github.com/obsproject/obs-studio.git#branch=master"
