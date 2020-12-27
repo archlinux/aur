@@ -1,7 +1,7 @@
 # Maintainer: Leo <i@setuid0.dev>
 
 pkgname=roadrunner
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="High-performance PHP application server, load-balancer and process manager written in Golang"
 arch=(x86_64)
@@ -13,13 +13,18 @@ source=(
 	"https://github.com/spiral/$pkgname/archive/v$pkgver.tar.gz"
 	".rr.yaml.sample-full"
 	".rr.yaml.sample-minimal"
+	"02-build_version_time.patch"
 )
 sha256sums=(
-	"ee306cce2132c8f0b0dbd3a085084194f7c8659ae50a87ea06c160d4f2c716c4"
+	"4e11dd50d2d1a645b4eace027ed48c7dcfb8bfaba82100c5476e1a75f6188433"
+	SKIP
 	SKIP
 	SKIP
 )
 options=("!buildflags")
+
+# Won't allow installing of both patched and original version.
+conflicts=("roadrunner-leo-patched")
 
 build() {
 	export GOPATH="$srcdir"/gopath
