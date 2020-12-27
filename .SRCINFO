@@ -1,8 +1,9 @@
 pkgbase = key-mapper-git
 	pkgdesc = A tool to change and program the mapping of your input device buttons.
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sezanzeb/key-mapper/
+	install = key-mapper-git.install
 	arch = any
 	license = GPL3
 	makedepends = git
