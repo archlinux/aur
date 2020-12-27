@@ -12,6 +12,8 @@ depends=('mpg123'
 makedepends=('dart')
 provides=("${pkgname}-bin")
 conflicts=("${pkgname}-bin")
+# strip option could destroy the executable :
+# https://github.com/dart-lang/sdk/issues/38731
 options=('!strip')
 source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/${pkgver}.tar.gz")
 sha256sums=('be84b4db8841f9b03e86a70b9000c7a1fa8db417641e460f6d810b0959bc0fd5')
