@@ -2,12 +2,13 @@
 
 pkgname=mcsema
 pkgver=3.0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Framework for lifting program binaries to LLVM bitcode"
 arch=('x86_64')
 url="https://github.com/lifting-bits/mcsema"
 license=('AGPL3')
-depends=('cxx-common=0.1.1' 'remill' 'anvill' 'python' 'libunwind')
+depends=('cxx-common=0.1.1' 'remill' 'anvill' 'libunwind' 'python'
+         'python-protobuf')
 makedepends=('cmake' 'python-setuptools')
 source=("https://github.com/lifting-bits/mcsema/archive/v${pkgver}.tar.gz")
 sha256sums=('4ba350e43b92032d9689a3764ebdee6ab2f2340ba6fd363ece94f8aa9d8be179')
