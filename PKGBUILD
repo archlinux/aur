@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 pkgname=git-subrepo-xdg
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Git Submodule alternative"
 arch=('any')
 url="https://github.com/ingydotnet/git-subrepo"
@@ -14,7 +14,7 @@ sha256sums=('d2e3cc58f8ac3d90f6f351ae2f9cc999b133b8581ab7a0f7db4933dec8e62c2a')
 
 package() {
   sed -i '7 i BASH_SOURCE=/usr/bin' $srcdir/git-subrepo-${pkgver}/lib/git-subrepo
-  sed -i '20 i SOURCE_DIR=/usr/lib/git-subrepo' $srcdir/git-subrepo-${pkgver}/lib/git-subrepo
+  sed -i '23 i SOURCE_DIR=/usr/lib/git-subrepo' $srcdir/git-subrepo-${pkgver}/lib/git-subrepo
 
   install -Dt $pkgdir/usr/bin/ $srcdir/git-subrepo-${pkgver}/lib/git-subrepo
 
