@@ -9,7 +9,7 @@ url="https://github.com/TheCynicalTeam/wallpapers"
 license=('GNU General Public License v3.0')
 optdepends=('feh: Allows setting wallpaper' 'multimonitorlock-gui: Allows the background to be changed')
 makedepends=('git')
-source=("https://github.com/TheCynicalTeam/wallpapers/archive/$pkgver-$pkgrel.tar.gz")
+source=("${pkgname}-$pkgver-$pkgrel.tar.gz::${url}/archive/$pkgver-$pkgrel.tar.gz")
 sha256sums=("SKIP")
 
 package() {
