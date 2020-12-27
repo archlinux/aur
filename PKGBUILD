@@ -19,7 +19,7 @@ options=('!strip')
 source=("${_pkgname}-${pkgver}.zip::https://github.com/TankNee/Neeto-Vue/releases/download/v${pkgver}/${_filename}-linux-x64.zip"
         "${_pkgname}.sh"
         "https://raw.githubusercontent.com/TankNee/Neeto-Vue/master/LICENSE"
-        "${_pkgname}.ico::https://raw.githubusercontent.com/TankNee/Neeto-Vue/master/public/favicon.ico"
+        "${_pkgname}.ico::https://raw.githubusercontent.com/TankNee/Neeto-Vue/master/public/icon.ico"
         "${_pkgname}.desktop")
 sha256sums=('ae146f301c122b3089d986c58671acc940e0f49dc284f1b19fe62d5efe81e965'
             '778fefd87355aa3ce977e510f236bfe25b9873eb6f86d4b34f5e5c8ddcdf93f9'
