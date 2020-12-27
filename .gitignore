@@ -1,0 +1,4 @@
+pkg/
+src/
+*.pkg.tar.zst
+DOSBox ECE r* (source).7z
