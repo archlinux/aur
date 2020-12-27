@@ -6,11 +6,11 @@
 
 pkgname=swift-language
 #pkgname=(swift swift-lldb)
-_swiftver=swift-DEVELOPMENT-SNAPSHOT-2020-11-13-a
+_swiftver=swift-DEVELOPMENT-SNAPSHOT-2020-12-23-a
 pkgver=5.4
 pkgrel=1
 swiftargumentparserversion=0.3.1
-swiftformatversion=0.50300.0
+swiftformatversion=swift-5.3.2-RELEASE
 tensorflowswiftapisversion=v0.2
 yamsver=3.0.1
 
