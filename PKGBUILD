@@ -61,7 +61,7 @@ prepare () {
 
 build() {
     cd "$srcdir/chatterino2"
-    mkdir build
+    mkdir -p build
     cd build
     qmake ..
     if [ -z "$CCACHE_SLOPPINESS" ]; then
