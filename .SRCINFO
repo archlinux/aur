@@ -5,6 +5,7 @@ pkgbase = lib32-libtiff-git
 	url = http://www.simplesystems.org/libtiff/
 	arch = x86_64
 	license = custom
+	makedepends = wget
 	depends = libtiff
 	depends = lib32-gcc-libs
 	depends = lib32-libjpeg

@@ -12,6 +12,7 @@ url='http://www.simplesystems.org/libtiff/'
 arch=('x86_64')
 license=('custom')
 depends=('libtiff' 'lib32-gcc-libs' 'lib32-libjpeg' 'lib32-zlib' 'lib32-xz' 'lib32-zstd')
+makedepends=(wget)
 provides=(lib32-libtiff)
 conflicts=(lib32-libtiff)
 source=(git+https://gitlab.com/libtiff/libtiff.git)
