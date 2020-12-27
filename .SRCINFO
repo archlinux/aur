@@ -1,7 +1,7 @@
 pkgbase = arm-eabi-newlib-linaro-bin
-	pkgdesc = A C standard library implementation intended for use on embedded systems ARM64 (bare metal)
+	pkgdesc = A C standard library implementation intended for use on embedded systems ARM (bare metal)
 	pkgver = 2019.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.linaro.org/downloads/
 	arch = x86_64
 	groups = arm-eabi-toolchain-linaro-bin

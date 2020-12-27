@@ -6,9 +6,9 @@ _pkgver=7.5
 
 pkgname=${_target}-newlib-linaro-bin
 pkgver=${_pkgdate}
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc="A C standard library implementation intended for use on embedded systems ARM64 (bare metal)"
+pkgdesc="A C standard library implementation intended for use on embedded systems ARM (bare metal)"
 arch=('x86_64')
 url="http://www.linaro.org/downloads/"
 license=('BSD')
