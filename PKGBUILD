@@ -3,7 +3,7 @@
 
 pkgname=('armorpaint-git')
 _pkgname='armorpaint'
-pkgver=0.8.r1870.g4795f36
+pkgver=0.8.r1974.g5cab715
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="ArmorPaint is a software for 3D PBR texture painting"
