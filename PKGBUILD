@@ -9,7 +9,7 @@ url="https://github.com/TheCynicalTeam/$pkgname"
 license=('GNU General Public License v3.0')
 depends=('python-pyqt5' 'gtk-engine-murrine')
 optdepends=('multimonitorlock: default lock screen for qt-logout')
-source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
+source=("${pkgname}-$pkgver-$pkgrel.tar.gz::${url}/archive/$pkgver-$pkgrel.tar.gz")
 sha256sums=('5a10c06e946baddb45501efccf3dee74dc06dcdfd6aeba81c85c6ff8962f0a09')
 
 package() {
