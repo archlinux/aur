@@ -2,7 +2,7 @@
 
 pkgname=musicfox
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="netease cloud music terminal client written in Dart."
 arch=('x86_64')
 url="https://github.com/anhoder/musicfox"
@@ -10,8 +10,6 @@ license=('MIT')
 depends=('mpg123'
          'libnotify')
 makedepends=('dart')
-provides=("${pkgname}-bin")
-conflicts=("${pkgname}-bin")
 # strip option could destroy the executable :
 # https://github.com/dart-lang/sdk/issues/38731
 options=('!strip')
