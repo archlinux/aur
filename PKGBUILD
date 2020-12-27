@@ -7,7 +7,8 @@ arch=('i686' 'x86_64')
 url='https://github.com/YosysHQ/nextpnr'
 license=('custom:ISC')
 depends=('boost-libs' 'python' 'qt5-base')
-makedepends=('boost' 'cmake' 'eigen' 'git' 'icestorm' 'trellis')
+makedepends=('boost' 'cmake' 'eigen' 'git' 'icestorm' 'prjtrellis'
+             'prjtrellis-db')
 provides=('nextpnr')
 conflicts=('nextpnr')
 source=('nextpnr::git+https://github.com/YosysHQ/nextpnr.git')
