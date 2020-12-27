@@ -1,0 +1,18 @@
+[Unit]
+Description=prowlarr Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=prowlarr
+Group=prowlarr
+ExecStart=/usr/lib/prowlarr/bin/Prowlarr -nobrowser -data=/var/lib/prowlarr
+Type=simple
+TimeoutStopSec=20
+
+# Lets built in updater work well.
+Restart=on-failure
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
