@@ -16,6 +16,7 @@ pkgbase = lib32-mesa-minimal-git
 	makedepends = mesa-git
 	makedepends = lib32-libglvnd
 	makedepends = wayland-protocols
+	makedepends = glslang
 	makedepends = lib32-wayland
 	makedepends = meson
 	makedepends = lib32-libva
@@ -29,7 +30,6 @@ pkgbase = lib32-mesa-minimal-git
 	depends = lib32-libxdamage
 	depends = lib32-libxshmfence
 	depends = lib32-elfutils
-	depends = glslang
 	depends = lib32-vulkan-icd-loader
 	depends = lib32-zstd
 	depends = lib32-llvm-libs=11.0.0
