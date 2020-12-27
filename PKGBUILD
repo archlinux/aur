@@ -4,7 +4,7 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="The most developed, longest running, most active and the only FREE OldSchool RuneScape Classic Private Server."
 arch=('any')
-url="https://gitlab.com/gamerworld/application"
+url=""
 license=('N/A')
 depends=('java-runtime>=11')
 makedepends=('git')
