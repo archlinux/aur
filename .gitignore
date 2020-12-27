@@ -1,7 +1,9 @@
 pkg/*
 src/*
+*.zst
 *.xz
 *.gz
 *.zip
 *.lua
 *.template
+*.lock
