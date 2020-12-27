@@ -1,0 +1,15 @@
+pkgbase = haskell-with-utf8
+	pkgdesc = Get your IO right on the first try
+	pkgver = 1.0.2.1
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/with-utf8
+	arch = x86_64
+	license = MPL
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-th-env
+	source = https://hackage.haskell.org/packages/archive/with-utf8/1.0.2.1/with-utf8-1.0.2.1.tar.gz
+	sha512sums = 4a55e85113de82217440daaf134f56e672f7b0987174932ccbc763cc0b563ff4198d2a474db996b500d6f66907b6d69f789e283f067ab950f75b178b412da596
+
+pkgname = haskell-with-utf8
+
