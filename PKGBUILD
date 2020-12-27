@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/juanmafont/ufwIconbar"
 license=('unknown')
 depends=('yad' 'ufw')
+optdepends=('gufw')
 source=("$pkgname-$pkgver::git+https://github.com/juanmafont/ufwIconbar.git")
 md5sums=("SKIP")
 

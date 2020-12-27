@@ -7,6 +7,7 @@ pkgbase = ufw-icon-bar
 	license = unknown
 	depends = yad
 	depends = ufw
+	optdepends = gufw
 	source = ufw-icon-bar-1::git+https://github.com/juanmafont/ufwIconbar.git
 	md5sums = SKIP
 
