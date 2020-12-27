@@ -1,12 +1,13 @@
-# Maintainer: Cole Thompson <cole dot thompson at gmail dot com>
+# Maintainer: Alif Uzair bin Abd Rahman <riazufila at gmail dot com>
+# Contributor: Cole Thompson <cole dot thompson at gmail dot com>
 pkgname=ufw-icon-bar
 pkgver=1
 pkgrel=6
-pkgdesc="System tray icon for gufw"
+pkgdesc="System tray icon for ufw"
 arch=('any')
 url="https://github.com/juanmafont/ufwIconbar"
 license=('unknown')
-depends=('yad' 'gufw')
+depends=('yad' 'ufw')
 source=("$pkgname-$pkgver::git+https://github.com/juanmafont/ufwIconbar.git")
 md5sums=("SKIP")
 
