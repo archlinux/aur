@@ -3,7 +3,7 @@
 # PLEASE do not mark it out-of date because "2.xx is released", *2.xx a separate project with same name from other dev team*
 pkgname=tlauncher
 pkgver=1.118.11
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='TLauncher Legacy is freeware launcher of Minecraft.'
 url='https://tlaun.ch'
@@ -46,6 +46,13 @@ source=("tl-bootstrap-${_bootstrap_version}.jar::${_repo}/${_branch}/bootstrap/$
         "${_librepo}/ru/turikhay/app/nstweaker/1.0/nstweaker-1.0.jar"
         "${_librepo}/com/timgroup/java-statsd-client/3.1.0/java-statsd-client-3.1.0.jar"
 
+        'minecraft.256x256.png'
+        'minecraft.192x192.png'
+        'minecraft.128x128.png'
+        'minecraft.96x96.png'
+        'minecraft.64x64.png'
+        'minecraft.48x48.png'
+
         'tlauncher.install'
         'tlauncher.desktop'
         'tlauncher.bash')
@@ -71,18 +78,33 @@ sha256sums=("${_bootstrap_checksum}"
             '6b4c15577b5256b64c7e3d69dcdbf8d18f17f68ac5928e36936bd6a40a91c218'
             'bbb82aadb5e4209527c15fcc40e514b6f4c921a37bc66b68b3611bec70c538e8'
 
+            '23909ccb5a61f607f355743cdf553799e033fcaac16538b27f1cb0a80aa7faa3'
+            '1d5c9f54a06e6a803c6e69093e3cf429c8a9092b94f61ac693993f3f6c1261a7'
+            '68226a8230f1187cf2fa81ad63590b195e5c58d918ada16f52b9bdca59e57fd9'
+            '328e0bc94661b68fd74c414f4d37ec82d2a3b86a1991eed7132180b15c23fe10'
+            'd6da12b649df178826399a31e8f0f72be7428f90b5a3a95b7538cec0a58a4755'
+            'beba733d11b80113007683cf61b122c4e1524c424f963960b08b74bf77d378e4'
+
             'f3e8a4c48ac696475b8035e915170962bf2d1b9fbe09980665ec8170f3f26612'
             'bbb0eaa8d6714cc1e297d351f8e23acc25c08e4ddaf0bdcd0eb2c5a995c3561a'
             'ee533ebb5ba23496f38065622513cef21ad7f03e19bb68f6d2bae7bc5ca708f5')
 install='tlauncher.install'
 
 package() {
+  # install launch script and .desktop file
   install -Dm0644 "${srcdir}/tlauncher.desktop" "${pkgdir}/usr/share/applications/tlauncher.desktop"
   install -Dm0755 "${srcdir}/tlauncher.bash" "${pkgdir}/usr/bin/tlauncher"
 
+  # install icons
+  for size in 256x256 192x192 128x128 96x96 64x64 48x48; do
+    install -Dm0644 "${srcdir}/minecraft.${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}/minecraft.png"
+  done
+
+  # install launcher
   install -Dm0644 "${srcdir}/tl-bootstrap-${_bootstrap_version}.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"
   install -Dm0644 "${srcdir}/tl-launcher-${pkgver}.jar" "${pkgdir}/opt/tlauncher/launcher.jar"
 
+  # install launcher libraries
   install -Dm0644 "${srcdir}/jdom-2.0.2.jar" "${pkgdir}/opt/tlauncher/lib/org/jdom/jdom/2.0.2/jdom-2.0.2.jar"
   install -Dm0644 "${srcdir}/xz-1.5.jar" "${pkgdir}/opt/tlauncher/lib/org/tukaani/xz/1.5/xz-1.5.jar"
   install -Dm0644 "${srcdir}/commons-lang3-3.4.jar" "${pkgdir}/opt/tlauncher/lib/org/apache/commons/commons-lang3/3.4/commons-lang3-3.4.jar"
