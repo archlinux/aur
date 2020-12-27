@@ -1,13 +1,13 @@
 # Maintainer:  <yatsen71@oarchbox1>
 pkgname=zy-player-bin
 _pkgname=zy-player
-pkgver=2.6.6
+pkgver=2.7.0
 _pkgver=$(echo $pkgver | sed 's/\./-/3')
 pkgrel=1
 epoch=
 pkgdesc="跨平台视频资源播放器, 简洁免费无广告"
 arch=('x86_64')
-url="http://zyplayer.fun/"
+url="https://github.com/Hunlongyu/ZY-Player/"
 license=('MIT')
 groups=()
 depends=()
@@ -25,9 +25,8 @@ noextract=()
 options=(!strip)
 source=("https://github.com/Hunlongyu/ZY-Player/releases/download/v${_pkgver}/ZY-Player-${_pkgver}.AppImage"
         'zy-player.sh')
-sha256sums=('981f106e968f3ea242eb07093ce2f16a0a3a91836d53fcb289615c7b5af19275'
-            '4ef23f78868eaa861b979039102529779d6714e5faa1cf865ded1da8b3b83baf'
-            )
+sha256sums=('427ec91e4e11fef12550c1e41836d7caf12916f58e430e73880c95becb9117aa'
+            '4ef23f78868eaa861b979039102529779d6714e5faa1cf865ded1da8b3b83baf')
 
 _filename=ZY-Player-${_pkgver}.AppImage
 
