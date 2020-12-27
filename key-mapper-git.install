@@ -6,7 +6,6 @@ post_install() {
 post_upgrade() {
   if [ -d "/run/systemd/system/" ] && systemctl is-active --quiet key-mapper
   then
-    echo kaka
     systemctl restart key-mapper
   fi
 }
