@@ -1,6 +1,6 @@
 # Maintainter: Talebian <talebian@sovietunion.xyz>
 pkgname=bottles-git
-pkgver=2.4cfafc8
+pkgver=2.5c5d621
 pkgrel=1
 pkgdesc="Easily manage wineprefix using environments"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("git+https://github.com/bottlesdevs/Bottles")
 sha256sums=('SKIP')
 
 _repo="Bottles"
-_ver=4cfafc8
+_ver=5c5d621
 
 prepare () {
   cd "$srcdir/$_repo"
