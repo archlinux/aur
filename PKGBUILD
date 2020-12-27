@@ -8,7 +8,7 @@ pkgname=update-hosts-git
 # shellcheck disable=SC2034
 pkgdesc="Generate a hosts file based on multiple sources (git)"
 # shellcheck disable=SC2034
-pkgver=r391.c8b89a5
+pkgver=r399.da403b6
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -47,8 +47,8 @@ source=("${_gitname}::git+${url}#branch=main")
 pkgver() {
   # shellcheck disable=SC2154
   cd "$srcdir/$_gitname" || {
-        msg "Could not cd into $srcdir/$_gitname"
-        return 1
+    msg "Could not cd into $srcdir/$_gitname"
+    return 1
   }
   # From
   # https://wiki.archlinux.org/index.php/VCS_package_guidelines#The_pkgver.28.29_function
@@ -58,10 +58,17 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_gitname" || {
-        msg "Could not cd into $srcdir/$_gitname"
-        return 1
+    msg "Could not cd into $srcdir/$_gitname"
+    return 1
   }
 
-  make DESTDIR="${pkgdir}" PREFIX="/usr" install
-}
+  chmod 755 "${_gitname}"
+  mkdir -p "${pkgdir}/usr/bin"
+  mkdir -p "${pkgdir}/usr/share/doc/${_gitname}"
+  mkdir -p "${pkgdir}/usr/share/licenses/${_gitname}"
+  mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
 
+  cp "${_gitname}" "${pkgdir}/usr/bin/${_gitname}"
+  cp "LICENSE" "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
+  cp "README.md" "${pkgdir}/usr/share/doc/${_gitname}/README.md"
+}
