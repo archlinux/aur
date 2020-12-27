@@ -5,15 +5,15 @@
 # Contributor: Philipp Überbacher <hollunder at gmx dot at>
 
 pkgname=qtractor-git
-pkgver=0.9.15.r10.gb97fdff2
+pkgver=0.9.19.r0.g5de89828
 pkgrel=1
 pkgdesc="Audio/MIDI multitrack sequencer"
 arch=('i686' 'x86_64')
 url="http://qtractor.sourceforge.net/"
 license=('GPL')
 groups=('pro-audio')
-depends=('alsa-lib' 'aubio' 'desktop-file-utils' 'hicolor-icon-theme' 'jack' 'liblo' 'libmad' 'lilv' 'qt5-x11extras' 'rubberband' 'suil')
-makedepends=('dssi' 'git' 'ladspa' 'libogg' 'libsamplerate' 'libsndfile' 'libvorbis' 'lv2' 'qt5-tools')
+depends=('alsa-lib' 'aubio' 'hicolor-icon-theme' 'jack' 'liblo' 'libmad' 'lilv' 'libvorbis' 'qt5-base' 'rubberband' 'suil')
+makedepends=('dssi' 'git' 'ladspa' 'libogg' 'libsamplerate' 'libsndfile' 'lv2' 'qt5-tools')
 optdepends=('dssi-vst: win32 VST support')
 provides=('qtractor')
 conflicts=('qtractor')
