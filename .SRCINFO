@@ -9,7 +9,7 @@ pkgbase = python-defopt-git
 	makedepends = python-wheel
 	depends = python
 	depends = python-sphinxcontrib-napoleon
-	conflicts = python-getopt
+	conflicts = python-defopt
 	source = git+https://github.com/anntzer/defopt.git
 	sha256sums = SKIP
 
