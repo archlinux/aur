@@ -1,13 +1,25 @@
 pkgbase = haskell-hie-bios
 	pkgdesc = Set up a GHC API session
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hackage.haskell.org/package/hie-bios
 	arch = x86_64
 	license = BSD
 	makedepends = ghc
 	depends = ghc-libs
 	depends = haskell-cryptohash-sha1
+	depends = haskell-aeson
+	depends = haskell-base16-bytestring
+	depends = haskell-conduit
+	depends = haskell-conduit-extra
+	depends = haskell-extra
+	depends = haskell-file-embed
+	depends = haskell-hslogger
+	depends = haskell-temporary
+	depends = haskell-unix-compat
+	depends = haskell-yaml
+	depends = haskell-vector
+	depends = haskell-unordered-containers
 	source = https://hackage.haskell.org/packages/archive/hie-bios/0.7.2/hie-bios-0.7.2.tar.gz
 	sha512sums = cf531db5cb08f26e47366cc653bb9fd4b2e82c088a7cb2163701920e98b4b82c158c74e14195e314e6eb59cc0b0d15d3a6c628babb30790a3765f1d6945f28ec
 
