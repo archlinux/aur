@@ -3,7 +3,7 @@
 _pkgname=gimp
 pkgname=${_pkgname}-devel
 pkgver=2.99.4
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Image Manipulation Program (Development version)"
 arch=('i686' 'x86_64')
 url="http://www.gimp.org/"
@@ -15,7 +15,7 @@ makedepends=('intltool' 'libxslt' 'glib-networking'
              'alsa-lib' 'curl' 'ghostscript' 'libxpm' 'webkit2gtk'
              'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib'
              'gjs'  'luajit' 'meson' 'gobject-introspection'
-             'gtk-doc' 'xorg-server-xvfb')
+             'gtk-doc' 'xorg-server-xvfb' 'vala')
 checkdepends=('xorg-server-xvfb')
 optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cups print support'
             'alsa-lib: for MIDI event controller module'

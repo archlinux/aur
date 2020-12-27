@@ -1,7 +1,7 @@
 pkgbase = gimp-devel
 	pkgdesc = GNU Image Manipulation Program (Development version)
 	pkgver = 2.99.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gimp.org/
 	arch = i686
 	arch = x86_64
@@ -28,6 +28,7 @@ pkgbase = gimp-devel
 	makedepends = gobject-introspection
 	makedepends = gtk-doc
 	makedepends = xorg-server-xvfb
+	makedepends = vala
 	depends = gtk3
 	depends = lcms2
 	depends = libwmf
