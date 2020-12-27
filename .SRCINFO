@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-kdsoap
 	pkgdesc = Qt-based client-side and server-side SOAP component (mingw-w64)
-	pkgver = 1.9.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/KDAB/KDSoap
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = mingw-w64-kdsoap
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = https://github.com/KDAB/KDSoap/releases/download/kdsoap-1.9.0/kdsoap-1.9.0.tar.gz
-	source = https://github.com/KDAB/KDSoap/releases/download/kdsoap-1.9.0/kdsoap-1.9.0.tar.gz.asc
+	source = https://github.com/KDAB/KDSoap/releases/download/kdsoap-1.10.0/kdsoap-1.10.0.tar.gz
+	source = https://github.com/KDAB/KDSoap/releases/download/kdsoap-1.10.0/kdsoap-1.10.0.tar.gz.asc
 	validpgpkeys = E86C000370B1B9E2A9191AD53DBFB6882C9358FB
-	sha256sums = e3b9626d5cb08f41a709fa35031ce17bfdd075b7387baf14ecf8a9ca10994828
+	sha256sums = 0c606ecc434466dbadb2829820ca163af60cc7ca226f553b5d4032196737338f
 	sha256sums = SKIP
 
 pkgname = mingw-w64-kdsoap

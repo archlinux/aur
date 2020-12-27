@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 
 pkgname="mingw-w64-kdsoap"
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Qt-based client-side and server-side SOAP component (mingw-w64)"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('mingw-w64-qt5-base')
 makedepends=('mingw-w64-cmake' 'mingw-w64-wine')
 
 source=("https://github.com/KDAB/KDSoap/releases/download/kdsoap-${pkgver}/kdsoap-${pkgver}.tar.gz"{,.asc})
-sha256sums=('e3b9626d5cb08f41a709fa35031ce17bfdd075b7387baf14ecf8a9ca10994828'
+sha256sums=('0c606ecc434466dbadb2829820ca163af60cc7ca226f553b5d4032196737338f'
   'SKIP')
 
 validpgpkeys=(E86C000370B1B9E2A9191AD53DBFB6882C9358FB) # KDAB Products (user for KDAB products) <info@kdab.com>
@@ -37,6 +37,9 @@ package() {
     find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec ${_arch}-strip --strip-all {} \;
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+    if [[ $NO_EXECUTABLES ]]; then
+      find "${pkgdir}/usr/${_arch}" -name '*.exe' -delete
+    fi
   done
 }
 
