@@ -1,0 +1,20 @@
+pkgbase = python-numba-py39-git
+	pkgdesc = NumPy aware dynamic Python compiler using LLVM
+	pkgver = 0.50.0dev0.r1993.g371105627
+	pkgrel = 1
+	url = http://numba.pydata.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cython
+	depends = python-llvmlite>=0.35.0
+	depends = python-numpy>=1.16
+	optdepends = python-scipy>=1.0.0
+	provides = python-numba
+	conflicts = python-numba
+	source = git+https://github.com/stuartarchibald/numba.git#branch=wip/py39_2
+	md5sums = SKIP
+
+pkgname = python-numba-py39-git
+
