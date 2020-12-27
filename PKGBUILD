@@ -3,12 +3,12 @@
 pkgname=haskell-with-utf8
 _hkgname=with-utf8
 pkgver=1.0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Get your IO right on the first try"
 url="http://hackage.haskell.org/package/with-utf8"
 license=("MPL")
 arch=('x86_64')
-depends=('ghc-libs' 'haskell-th-env')
+depends=('ghc-libs' 'haskell-th-env' 'haskell-safe-exceptions')
 makedepends=('ghc')
 source=("https://hackage.haskell.org/packages/archive/$_hkgname/$pkgver/$_hkgname-${pkgver}.tar.gz")
 sha512sums=('4a55e85113de82217440daaf134f56e672f7b0987174932ccbc763cc0b563ff4198d2a474db996b500d6f66907b6d69f789e283f067ab950f75b178b412da596')
