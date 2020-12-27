@@ -3,7 +3,7 @@
 # Maintainer: Nazar Mishturak <nazarmx@gmail.com>
 _binname=step-ca
 pkgname=$_binname-bin
-pkgver=0.15.5
+pkgver=0.15.6
 pkgrel=1
 pkgdesc="An online certificate authority and related tools for secure automated certificate management, so you can use TLS everywhere."
 arch=('x86_64' 'aarch64')
@@ -11,9 +11,9 @@ url="https://smallstep.com/certificates"
 license=('Apache')
 
 source_x86_64=("https://github.com/smallstep/certificates/releases/download/v${pkgver}/step-certificates_linux_${pkgver}_amd64.tar.gz")
-sha256sums_x86_64=("4fecd42ce5f7b93db096a599b2c3579d0d4cfa0722f554cfa5a420bee1abeefb")
+sha256sums_x86_64=("555902c33db4877c7b68fe46e226e88b976e74d66220beca3860589a7da0b3d9")
 source_aarch64=("https://github.com/smallstep/certificates/releases/download/v${pkgver}/step-certificates_linux_${pkgver}_arm64.tar.gz")
-sha256sums_aarch64=("0b6530194c2b34c1c6de1f82053d24c8f714f88a7be6cb47a6468abe084206d7")
+sha256sums_aarch64=("841b28cb3a2068d3db5d279e585a74d7d8af6f5c373b1c61f29e9beeacd9db98")
 
 package() {
 	install -Dm755 "step-certificates_$pkgver/bin/$_binname" "$pkgdir/usr/bin/$_binname"
