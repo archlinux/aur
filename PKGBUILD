@@ -9,7 +9,7 @@ url="https://github.com/TheCynicalTeam/$pkgname"
 license=('GNU General Public License v3.0')
 depends=(python2-xdg perl-anyevent-i3 python-i3-py i3-wm xorg-xprop)
 makedepends=('git')
-source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
+source=("${pkgname}-$pkgver-$pkgrel.tar.gz::${url}/archive/$pkgver-$pkgrel.tar.gz")
 sha256sums=('b7cdfabd319d87b0474e68d67f1c696cb0ffa65cfe39271fbb1467b460de7aa2')
 
 package() {
