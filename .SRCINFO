@@ -6,6 +6,7 @@ pkgbase = xr-hardware-git
 	install = xr-hardware.install
 	arch = any
 	license = Boost
+	makedepends = python-attrs
 	provides = xr-hardware
 	provides = oculus-udev
 	provides = osvr-udev
