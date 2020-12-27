@@ -2,7 +2,7 @@
 
 pkgname=cxx-common
 pkgver=0.1.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Common dependency management for various Trail of Bits C++ codebases"
 arch=('x86_64')
 url="https://github.com/trailofbits/cxx-common"
@@ -33,6 +33,11 @@ package() {
     ./vcpkg/vcpkg export --x-all-installed \
         --overlay-ports=./ports --overlay-triplets=./triplets --raw \
         --output="$pkgdir/opt/$pkgname"
+
+    ## install lit
+    pushd "$srcdir/$pkgname-$pkgver"/vcpkg/buildtrees/llvm-10/src/org-*/llvm/utils/lit
+    python3 setup.py install --root="$pkgdir" -O1
+    popd
 }
 
 # vim: set sw=4 ts=4 et:
