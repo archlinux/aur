@@ -8,12 +8,13 @@
 
 pkgname=tuxmath
 pkgver=2.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="An educational math tutorial game starring Tux, the Linux Penguin"
 arch=("i686" "x86_64")
 url="https://github.com/tux4kids/${pkgname}/"
 license=("custom:OFL" "GPL")
 depends=("t4kcommon")
+makedepends=("gcc9")
 options=(!docs)
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/tux4kids/${pkgname}/archive/upstream/${pkgver}.tar.gz"
@@ -33,6 +34,7 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-upstream-${pkgver}"
 
+  export CC=/usr/bin/gcc-9
   ./configure \
     --prefix=/usr \
     --localstatedir=/usr/share/games \
