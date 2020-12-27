@@ -27,12 +27,12 @@ url='https://www.vmware.com/go/viewclients'
 license=('custom')
 makedepends=('libxslt' 'patchelf' 'librsvg')
 source=("${pkgbase}-${pkgver}-${_build1}-${_build2}-x86_64.bundle::https://download3.vmware.com/software/view/viewclients/${_cart}/VMware-Horizon-Client-${pkgver}-${_build1}-${_build2}.x64.bundle"
-        'http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/eclass/vmware-bundle.eclass'
+        'https://sources.gentoo.org/proj/vmware.git/plain/eclass/vmware-bundle.eclass'
         'vmware-horizon-usb'
         'vmware-horizon-usb.service'
         'vmware-horizon.svg')
 sha256sums=('77aa390140316956c21910108d440fac6a261fe5e57110ebce5229c9b9a95ccd'
-            'd8794c22229afdeb698dae5908b7b2b3880e075b19be38e0b296bb28f4555163'
+            'd6863e92b891fc506fc8e81714a47ca3f9f74b7fe68bdf48be058d5e0d433033'
             '008b60ebf45f7d1e033c8ad8ce1688d5e1c59fc0668493067fb89b563b1dc00f'
             'a897c1b9e8928fc222880ebbfc7bb6aff940bff4acf4e4e0cd4002fff81c7226'
             'cea92d3ed97b717c631fed5664c06fc71a6deac21ba32da78970c582ed48c747')
