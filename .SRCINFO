@@ -1,0 +1,18 @@
+pkgbase = seamly2d-git
+	pkgdesc = Open source patternmaking software
+	pkgver = weekly.20201221.r0.g9af57415f
+	pkgrel = 1
+	url = https://seamly.net
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-svg
+	depends = qt5-xmlpatterns
+	depends = desktop-file-utils
+	source = git+https://github.com/FashionFreedom/Seamly2D.git
+	md5sums = SKIP
+
+pkgname = seamly2d-git
+
