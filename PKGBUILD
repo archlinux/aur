@@ -31,7 +31,7 @@ package() {
     chmod +x ${pkgdir}/opt/${pkgname}/Freezer.AppImage
 
     install -d -m755 $pkgdir/usr/share/pixmaps/
-    cp -L $srcdir/freezer.png $pkgdir/usr/share/pixmaps/
+    cp -L $srcdir/ztam2vH.png $pkgdir/usr/share/pixmaps/freezer.png
     install -d -m755 $pkgdir/usr/share/applications/ 
 
     install -d -m755 "${pkgdir}/usr/bin/"
