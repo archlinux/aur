@@ -1,54 +1,61 @@
-# Contributors:
-#	henning mueller <henning@orgizm.net>
+# Maintainer: Bryan Horna <bryanjhv@gmail.com>
+# Contributor: Henning Mueller <henning@orgizm.net>
 
 pkgname=asleap
 pkgver=2.2
-pkgrel=4
-pkgdesc='Actively recover LEAP/PPTP passwords.'
-arch=(x86_64)
-license=(GPL)
-url=http://www.willhackforsushi.com/Asleap.html
-depends=(openssl libpcap)
-source=(
-	http://www.willhackforsushi.com/code/asleap/$pkgver/asleap-$pkgver.tgz
-	libxcrypt1.deb::http://mirrors.kernel.org/ubuntu/pool/universe/libx/libxcrypt/libxcrypt1_2.4-4_amd64.deb
-	libxcrypt-dev.deb::http://mirrors.kernel.org/ubuntu/pool/universe/libx/libxcrypt/libxcrypt-dev_2.4-4_amd64.deb
-	libxcrypt.patch
-)
-noextract=(
-	libxcrypt1.deb
-	libxcrypt-dev.deb
-	libxcrypt.patch
-)
-md5sums=(
-	a1d06729fb2addcc5b09bfc14f9b3173
-	SKIP
-	SKIP
-	SKIP
-)
+pkgrel=5
+pkgdesc="Actively recover LEAP/PPTP passwords."
+arch=("x86_64" "i686" "armv6h" "armv7h" "aarch64")
+url="https://www.willhackforsushi.com/?page_id=41"
+license=("GPL")
+depends=("libpcap" "openssl")
+source=("https://www.willhackforsushi.com/code/$pkgname/$pkgver/$pkgname-$pkgver.tgz"
+        "libxcrypt.patch")
+noextract=("libxcrypt1.deb"
+           "libxcrypt-dev.deb")
+md5sums=("a1d06729fb2addcc5b09bfc14f9b3173"
+         "cb9cf76a3e7bee1e546ce9a982b0f912")
+
+# Dynamically generate sources and skip sums
+_arch=("amd64" "i386" "armel" "armhf" "arm64")
+_repo="http://ftp.debian.org/debian/pool/main/libx/libxcrypt/"
+_vers="2.4-4"
+_pkgs=("libxcrypt1" "libxcrypt-dev")
+for _i in "${!arch[@]}"; do
+	_darch="${arch[$_i]}"
+	_sarch="${_arch[$_i]}"
+	eval "source_$_darch"=\(\)
+	eval "md5sums_$_darch"=\(\)
+	for _p in "${_pkgs[@]}"; do
+		eval "md5sums_$_darch"+=\("SKIP"\)
+		eval "source_$_darch"+=\("$_p.deb::$_repo${_p}_${_vers}_$_sarch.deb"\)
+	done
+done
 
 prepare() {
-    mkdir deb
-	ar p libxcrypt1.deb data.tar.xz | tar xJC deb
-	ar p libxcrypt-dev.deb data.tar.xz | tar xJC deb
+	mkdir deb
+	for _p in "${_pkgs[@]}"; do
+		ar p "$_p.deb" data.tar.xz | tar xJC deb
+	done
+	ln -sfr deb/lib/libxcrypt.so.1 deb/lib/libxcrypt.so
 
-	cd $srcdir/asleap-$pkgver
-	patch --forward --strip=1 --input="${srcdir}/libxcrypt.patch"
+	cd "$pkgname-$pkgver"
+	patch -Nup1 -i "$srcdir/libxcrypt.patch"
 }
 
 build() {
-	cd $srcdir/asleap-$pkgver
+	cd "$pkgname-$pkgver"
 	make
 }
 
 package() {
-	cd $srcdir/asleap-$pkgver
-	install -D asleap $pkgdir/usr/bin/asleap
-	install -D genkeys $pkgdir/usr/bin/genkeys
+	cd "$pkgname-$pkgver"
+	install -D asleap "$pkgdir/usr/bin/asleap"
+	install -D genkeys "$pkgdir/usr/bin/genkeys"
 
-	cd $srcdir/deb
-	install -dv $pkgdir/usr/lib
-	mv lib/libxcrypt.so.1.2.4 $pkgdir/usr/lib
-	ln -s /usr/lib/libxcrypt.so.1.2.4 $pkgdir/usr/lib/libxcrypt.so
-	ln -s /usr/lib/libxcrypt.so.1.2.4 $pkgdir/usr/lib/libxcrypt.so.1
+	cd "$srcdir/deb"
+	_so=lib/libxcrypt.so.1.2.4
+	install -D $_so -t "$pkgdir/usr/lib"
+	ln -s /usr/$_so "$pkgdir/usr/lib/libxcrypt.so"
+	ln -s /usr/$_so "$pkgdir/usr/lib/libxcrypt.so.1"
 }
