@@ -3,11 +3,12 @@
 pkgname=lunar-client
 _pkgname=lunarclient
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='PvP Modpack for Minecraft 1.7, 1.8, 1.12, 1.15 and 1.16'
 url='https://lunarclient.com/'
 arch=('x86_64')
 license=('unknown')
+depends=('xorg-xrandr')
 options=(!strip)
 _appimage="Lunar Client-${pkgver}.AppImage"
 source=("https://launcherupdates.lunarclientcdn.com/${_appimage}")
