@@ -1,7 +1,7 @@
 pkgbase = xiphos-git
 	pkgdesc = A Bible study tool for GTK3
 	pkgver = 4.2.1.r5.gece84a4
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://xiphos.org
 	arch = x86_64
