@@ -4,7 +4,7 @@ pkgbase = mpdevil
 	pkgrel = 1
 	url = https://github.com/SoongNoonien/mpdevil
 	arch = any
-	license = GPL-3
+	license = GPL3
 	makedepends = python-distutils-extra
 	depends = python-mpd2
 	depends = gtk3
@@ -12,7 +12,7 @@ pkgbase = mpdevil
 	depends = python-gobject
 	depends = python-requests
 	depends = python-beautifulsoup4
-	source = https://github.com/SoongNoonien/mpdevil/archive/v0.9.8.tar.gz
+	source = mpdevil-0.9.8.tar.gz::https://github.com/SoongNoonien/mpdevil/archive/v0.9.8.tar.gz
 	sha256sums = 543d1974be47622dc1c497aee9aa6a0ab468988e037b2b523976707576626b97
 
 pkgname = mpdevil
