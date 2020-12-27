@@ -1,0 +1,19 @@
+pkgbase = smartpedal
+	pkgdesc = Guitar plugin made with JUCE that uses neural network models to emulate real world hardware.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://www.facebook.com/smartguitarml
+	arch = x86_64
+	groups = vst-plugins
+	groups = vst3-plugins
+	groups = pro-audio
+	license = APACHE
+	depends = freetype2
+	depends = curl
+	conflicts = smartpedal-git
+	replaces = smartpedal-git
+	source = https://github.com/GuitarML/SmartGuitarPedal/releases/download/v1.2.0/SmartPedal.vst3.zip
+	sha512sums = d543957892ea01808947d71585ae50a20fd8f8dc3bdeec3f26f8f661b8d502fbef478b265ea78cab5b7d7bf8027175a459f666599145590025b485840f1561e4
+
+pkgname = smartpedal
+
