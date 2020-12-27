@@ -1,0 +1,18 @@
+diff -wbBur tigervnc-1.11.0/unix/vncserver/vncserver.in tigervnc-1.11.0.my/unix/vncserver/vncserver.in
+--- tigervnc-1.11.0/unix/vncserver/vncserver.in	2020-09-08 15:16:08.000000000 +0300
++++ tigervnc-1.11.0.my/unix/vncserver/vncserver.in	2020-09-11 15:39:59.980775388 +0300
+@@ -438,7 +438,13 @@
+ 	die "$prog: couldn't find \"$cmd\" on your PATH.\n";
+     }
+ 
+-    foreach $cmd ("/etc/X11/xinit/Xsession", "/etc/X11/Xsession") {
++    foreach $cmd ("/etc/X11/xinit/Xsession", "/etc/X11/Xsession",
++        "/etc/X11/xdm/Xsession",
++        "/usr/share/sddm/scripts/Xsession",
++        "/etc/gdm/Xsession",
++        "/etc/lightdm/Xsession",
++        "/etc/lxdm/Xsession",
++        "/etc/X11/tigervnc/Xsession") {
+         if (-x "$cmd") {
+             $Xsession = $cmd;
+             last;
