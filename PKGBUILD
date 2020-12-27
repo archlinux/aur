@@ -1,14 +1,14 @@
 # Maintainer: Volker Schatz <arch@my-name-without-hyphen.com>
 pkgname=alsacap
 pkgver=0
-pkgrel=1
+pkgrel=2
 pkgdesc="ALSA device capability lister"
 depends=('alsa-lib')
 arch=('i686' 'x86_64')
 license=('custom:ISC')
-url="http://www.volkerschatz.com/noise/alsa.html#alsacap"
-source=("http://www.volkerschatz.com/noise/$pkgname.tgz")
-md5sums=('19642bdffd4666caa53344271aa585e9')
+url="https://www.volkerschatz.com/noise/alsa.html#alsacap"
+source=("https://www.volkerschatz.com/noise/$pkgname.tgz")
+md5sums=('7cfdec57e70a885d2a56e1364dfc80ba')
 
 build() {
     cd "$srcdir/$pkgname"
