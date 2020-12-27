@@ -9,6 +9,7 @@ pkgbase = lib32-cairo-git
 	makedepends = lib32-librsvg
 	makedepends = lib32-gtk2
 	makedepends = git
+	makedepends = gtk-doc
 	depends = lib32-libpng
 	depends = lib32-libxrender
 	depends = lib32-libxext
