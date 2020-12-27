@@ -1,7 +1,7 @@
 pkgbase = hid-playstation-dkms
 	pkgdesc = Sony's official HID driver for the PS5 DualSense controller.
 	pkgver = 20201219
-	pkgrel = 1
+	pkgrel = 2
 	url = https://patchwork.kernel.org/project/linux-input/list/?series=404369
 	arch = any
 	license = GPL2
