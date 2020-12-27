@@ -36,30 +36,30 @@ build() {
       -DBUILD_SHARED_LIBS=ON
     ninja
   )
-  (cd build-static
-    cmake .. \
-      -GNinja \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DCMAKE_ENABLE_GLSLANG_JS=OFF \
-      -DCMAKE_ENABLE_GLSLANG_WEBMIN=OFF \
-      -DCMAKE_ENABLE_GLSLANG_WEBMIN_DEVEL=OFF \
-      -DBUILD_SHARED_LIBS=OFF
-    ninja
-  )
+#  (cd build-static
+#    cmake .. \
+#      -GNinja \
+#      -DCMAKE_INSTALL_PREFIX=/usr \
+#      -DCMAKE_BUILD_TYPE=Release \
+#      -DCMAKE_ENABLE_GLSLANG_JS=OFF \
+#      -DCMAKE_ENABLE_GLSLANG_WEBMIN=OFF \
+#      -DCMAKE_ENABLE_GLSLANG_WEBMIN_DEVEL=OFF \
+#      -DBUILD_SHARED_LIBS=OFF
+#    ninja
+#  )
 }
 
 package() {
   cd glslang
   DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C build-shared install
-  DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C build-static install
+#  DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C build-static install
 
   install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 
-  cd "${pkgdir}"/usr/lib
-  for lib in *.so; do
-    ln -sf "${lib}" "${lib}.0"
-  done
+#  cd "${pkgdir}"/usr/lib
+#  for lib in *.so; do
+#    ln -sf "${lib}" "${lib}.0"
+#  done
 }
 
 # vim: ts=2 sw=2 et:
