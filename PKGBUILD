@@ -1,8 +1,8 @@
 # Maintainer: Maciej Dems <macdems@gmail.com>
 pkgname='python-defopt-git'
 _module='defopt'
-pkgver=6.0.2.r0.gbed2178
-pkgrel=1
+pkgver=6.0.2
+pkgrel=2
 pkgdesc="Effortless argument parser"
 url="https://github.com/anntzer/defopt"
 depends=('python' 'python-sphinxcontrib-napoleon')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${_module}"
-    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    python setup.py --version
 }
 
 build() {
