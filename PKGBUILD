@@ -61,11 +61,10 @@ _package() {
   local _subst="
     s|%PKGBASE%|$pkgbase|g
     s|%KERNVER%|$_kernver|g
-    s|%EXTRAMODULES%|$_extramodules|g
   "
 
   # install mkinitcpio preset file
-  sed "$_subst" ../linux.preset |
+  sed "$_subst" linux.preset |
     install -Dm644 /dev/stdin "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
 
   # install boot image
