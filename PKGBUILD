@@ -22,24 +22,20 @@ prepare() {
 }
 
 build () {
-    cd "${srcdir}/Camomile"
-    cd Dependencies/LibPdBuild/LinuxMakefile
+    cd "${srcdir}/Camomile/Dependencies/LibPdBuild/LinuxMakefile"
     cmake -DCMAKE_BUILD_TYPE=Release ..
     
     cd "${srcdir}/Camomile"
     make TARGET_ARCH=-m64 CONFIG=Release
+    
+    cd "${srcdir}/Camomile/Plugins"
+    ./camomile
 }
 
 package () {
-    cd "${srcdir}/Camomile"
+    cd "${srcdir}/Camomile/Plugins/builds"
     mkdir -p "${pkgdir}/usr/lib/lv2/"
+    find . -name '*.lv2' -type d -exec cp -ar {} "${pkgdir}/usr/lib/lv2/" \;
     mkdir -p "${pkgdir}/usr/lib/vst3"
-    
-    mkdir -p "${pkgdir}/usr/lib/lv2/Camomile.lv2"
-    cp -a Plugins/CamomileLV2.so "${pkgdir}/usr/lib/lv2/Camomile.lv2"
-    cp -ar Plugins/Camomile.vst3 "${pkgdir}/usr/lib/vst3/"
-    cp -ar Plugins/CamomileFx.vst3 "${pkgdir}/usr/lib/vst3/"
-    
-    # find Plugins/Builds -name '*.lv2' -type d -exec cp -ar {} "${pkgdir}/usr/lib/lv2/" \;
-    # find Plugins/Builds -name '*.vst3' -type d -exec cp -ar {} "${pkgdir}/usr/lib/vst3/" \;
+    find . -name '*.vst3' -type d -exec cp -ar {} "${pkgdir}/usr/lib/vst3/" \;
 }
