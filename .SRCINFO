@@ -5,7 +5,6 @@ pkgbase = instamenu
 	url = https://github.com/TheCynicalTeam/instamenu
 	arch = any
 	license = GNU General Public License v3.0
-	makedepends = git
 	depends = sh
 	depends = libxinerama
 	depends = libxft

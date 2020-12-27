@@ -8,7 +8,6 @@ url="https://github.com/TheCynicalTeam/$pkgname"
 arch=('any')
 license=('GNU General Public License v3.0')
 depends=('sh' 'libxinerama' 'libxft' 'noto-fonts-emoji' 'ttf-joypixels' 'siji' 'cantarell-fonts' 'nerd-fonts-fira-code')
-makedepends=('git')
 provides=($pkgname dmenu)
 conflicts=(dmenu)
 replaces=(dmenu)
