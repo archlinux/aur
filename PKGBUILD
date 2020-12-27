@@ -16,7 +16,7 @@ pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
 url="https://github.com/openSUSE/osc"
 license=('GPL2')
-depends=('python' 'python-m2crypto')
+depends=('python' 'python-m2crypto' 'diffstat')
 makedepends=('git' 'python-setuptools')
 optdepends=('obs-build: required to run local builds'
             'obs-service-format_spec_file: for running the format_spec_file source service'
@@ -40,6 +40,10 @@ build() {
     python setup.py build
 }
 
+check() {
+    cd "${srcdir}/${_pkgname}/tests"
+	python suite.py
+}
 package() {
     cd "${srcdir}/${_pkgname}"
     python setup.py install --root="${pkgdir}/" --optimize=1 --prefix=/usr
