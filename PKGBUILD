@@ -8,8 +8,8 @@ url='https://github.com/YosysHQ/prjtrellis'
 license=('custom:ISC')
 depends=('boost-libs' 'python')
 makedepends=('git' 'cmake' 'boost')
-provides=('trellis')
-conflicts=('trellis')
+provides=('prjtrellis' 'prjtrellis-db')
+conflicts=('prjtrellis' 'prjtrellis-db')
 source=('trellis::git+https://github.com/YosysHQ/prjtrellis.git'
         'database::git+https://github.com/YosysHQ/prjtrellis-db.git')
 sha256sums=('SKIP'
