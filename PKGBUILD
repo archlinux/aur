@@ -4,7 +4,7 @@
 pkgname=nvidia-container-toolkit
 
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc='NVIDIA container runtime toolkit'
 arch=('x86_64')
@@ -42,10 +42,12 @@ build() {
 
 package() {
   install -D -m755 "${_srcdir}/${pkgname}" "$pkgdir/usr/bin/${pkgname}"
+
   pushd "$pkgdir/usr/bin/"
   ln -sf "${pkgname}" "nvidia-container-runtime-hook"
   popd
   install -D -m644 "${_srcdir}/config/config.toml.centos" "$pkgdir/etc/nvidia-container-runtime/config.toml"
+  install -D -m644 "${_srcdir}/oci-nvidia-hook.json" "$pkgdir/usr/share/containers/oci/hooks.d/00-oci-nvidia-hook.json"
 
   install -D -m644 "${_srcdir}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
