@@ -4,6 +4,7 @@ pkgname='camomile-git'
 pkgdesc='Camomile is a plugin with Pure Data embedded that offers to load and to control patches inside a digital audio workstation'
 pkgver=1.0.7
 pkgrel=1
+groups=('vst-plugins' 'lv2-plugins' 'vst3-plugins' 'pro-audio')
 depends=('freetype2')
 makedepends=('git' 'libx11' 'libxrandr' 'libxinerama' 'libxcursor' 'alsa-lib')
 optdepends=()
