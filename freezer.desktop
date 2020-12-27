@@ -6,4 +6,4 @@ GenericName=Stream Music
 Comment=Client for Deezer
 Categories=audio;
 Path=/opt/freezer-appimage/
-Exec=Freezer.AppImage
+Exec=/opt/freezer-appimage/Freezer.AppImage
