@@ -32,6 +32,7 @@ build() {
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_OPENMP=ON \
+    -DBUILD_GUI=ON \
     ..
   make
 }
