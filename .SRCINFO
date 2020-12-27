@@ -1,0 +1,21 @@
+pkgbase = camomile-git
+	pkgdesc = Camomile is a plugin with Pure Data embedded that offers to load and to control patches inside a digital audio workstation
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/pierreguillot/Camomile
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = libx11
+	makedepends = libxrandr
+	makedepends = libxinerama
+	makedepends = libxcursor
+	makedepends = alsa-lib
+	depends = freetype2
+	conflicts = camomile
+	replaces = camomile
+	source = git+https://github.com/pierreguillot/Camomile/
+	sha512sums = SKIP
+
+pkgname = camomile-git
+
