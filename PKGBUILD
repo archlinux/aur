@@ -22,6 +22,8 @@ source=(https://github.com/vim/vim/archive/v${pkgver}/${pkgbase}-${pkgver}.tar.g
         vimrc
         archlinux.vim
         vimdoc.hook)
+provides=('vim' 'vim-runtime-minimal')
+conflicts=('vim' 'vim-runtime-minimal')
 sha256sums=('81d5d6a48cd421c7a8056f9436436de1ed37598341cbec3b1db7ff99c3889276'
             'b16e85e457397ab2043a7ee0a3c84307c6b4eac157fd0b721694761f25b3ed5b'
             'cc3d931129854c298eb22e993ec14c2ad86cc1e70a08a64496f5e06559289972'
