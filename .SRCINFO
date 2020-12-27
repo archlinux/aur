@@ -1,23 +1,22 @@
 pkgbase = qsyncthingtray-git
-	pkgdesc = Syncs files among devices, and shows the sync status on a tray icon. Version with the latest unreleased improvements.
-	pkgver = 421
-	pkgrel = 3
+	pkgdesc = Tray icon for syncthing (master branch)
+	pkgver = 0.5.8.r17.g11936bc
+	pkgrel = 4
 	url = https://github.com/sieren/QSyncthingTray
 	arch = i686
 	arch = x86_64
-	license = LGPL3
-	makedepends = cmake
+	license = LGPL3.0
 	makedepends = git
+	makedepends = cmake
 	depends = qt5-location
 	depends = qt5-webengine
-	depends = startup-settings-git
 	depends = syncthing
 	provides = qsyncthingtray
 	conflicts = qsyncthingtray
-	source = git+https://github.com/sieren/QSyncthingTray.git
+	source = qsyncthingtray::git+https://github.com/sieren/QSyncthingTray.git
 	source = qsyncthingtray.desktop
 	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = 730d2ae862656d39f7b1980f20d8d8bf
 
 pkgname = qsyncthingtray-git
 
