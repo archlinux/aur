@@ -1,0 +1,14 @@
+pkgbase = haskell-th-env
+	pkgdesc = Template Haskell splice that expands to an environment variable
+	pkgver = 0.1.0.2
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/th-env
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	depends = ghc-libs
+	source = https://hackage.haskell.org/packages/archive/th-env/0.1.0.2/th-env-0.1.0.2.tar.gz
+	sha512sums = d820135a97752c3579a2ee98462342a111be7a674a1fc30acd98d6925b8d8a22766e397d3112be2dc5c75e9c93211d5b5018c8598b4268069c0809b0e66b93a7
+
+pkgname = haskell-th-env
+
