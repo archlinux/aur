@@ -10,7 +10,7 @@ license=('GNU General Public License v3.0')
 depends=(instamenu)
 makedepends=('git')
 provides=($pkgname)
-source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
+source=("${pkgname}-$pkgver-$pkgrel.tar.gz::${url}/archive/$pkgver-$pkgrel.tar.gz")
 sha256sums=('SKIP')
 
 
