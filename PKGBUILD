@@ -2,12 +2,12 @@
 
 pkgname=cxx-common
 pkgver=0.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Common dependency management for various Trail of Bits C++ codebases"
 arch=('x86_64')
 url="https://github.com/trailofbits/cxx-common"
 license=('Apache')
-depends=('openssl' 'ncurses' 'libxml2' 'zlib')
+depends=()
 makedepends=('clang' 'cmake' 'ninja' 'git' 'python2') # python2 is needed for vcpkg's Z3
 checkdepends=()
 options=('staticlibs' '!strip')
