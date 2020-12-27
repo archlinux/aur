@@ -1,0 +1,15 @@
+pkgbase = nncp
+	pkgdesc = Node-to-Node Copy Protocol utilities for secure store-and-forward
+	pkgver = 5.4.1
+	pkgrel = 1
+	url = http://www.nncpgo.org/
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	source = http://www.nncpgo.org/download/nncp-5.4.1.tar.xz
+	source = http://www.nncpgo.org/download/nncp-5.4.1.tar.xz.sig
+	validpgpkeys = 92C2F0AEFE73208E46BFF3DE2B25868E75A1A953
+	sha256sums = a02d0c9b51533df8115c17e102f8c4859f7b805a64290cdf79151ba9e627fa63
+	sha256sums = SKIP
+
+pkgname = nncp
