@@ -1,0 +1,14 @@
+pkgbase = vpkg-bin
+	pkgdesc = Alternative package manager for V
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/vpkg-project/vpkg
+	arch = x86_64
+	license = MIT
+	provides = vpkg
+	conflicts = vpkg
+	source = https://github.com/vpkg-project/vpkg/releases/download/0.7.1/vpkg-0.7.1-linux
+	sha256sums = 1a9060d5bed0097894de65694a7213b832fca093e5db902dc7701dff6aaeb51b
+
+pkgname = vpkg-bin
+
