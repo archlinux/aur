@@ -11,7 +11,7 @@ depends=('xdo')
 makedepends=('git')
 conflicts=('i3-swallow-git')
 changelog=
-source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
+source=("${pkgname}-$pkgver-$pkgrel.tar.gz::${url}/archive/$pkgver-$pkgrel.tar.gz")
 sha256sums=('fbe01e0dcf58efb3bfff0c438c6dfc1644c881f0418dd0516b6af9011361b414')
 
 package() {
