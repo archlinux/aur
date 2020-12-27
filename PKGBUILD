@@ -58,10 +58,10 @@ package() {
 
   install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 
-#  cd "${pkgdir}"/usr/lib
-#  for lib in *.so; do
-#    ln -sf "${lib}" "${lib}.0"
-#  done
+  cd "${pkgdir}"/usr/lib
+  for lib in *.so; do
+    ln -sf "${lib}" "${lib}.0"
+  done
 }
 
 # vim: ts=2 sw=2 et:
