@@ -4,11 +4,11 @@ pkgrel=1
 pkgdesc='Lucas Version of Suckless terminal with (all) scrollback and newterm patches'
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
-depends=(libxft bdf-curie)
+depends=(libxft)
 url=https://github.com/quoteme/st
-_patches=("https://st.suckless.org/patches/scrollback/st-scrollback-20200419-72e3f6c.diff"
-          "https://st.suckless.org/patches/scrollback/st-scrollback-mouse-20191024-a2c479c.diff"
-          "https://st.suckless.org/patches/scrollback/st-scrollback-mouse-altscreen-20200416-5703aa0.diff"
+_patches=("https://raw.githubusercontent.com/Quoteme/st/master/st-scrollback-20200419-72e3f6c.diff"
+          "https://raw.githubusercontent.com/Quoteme/st/master/st-scrollback-mouse-20191024-a2c479c.diff"
+          "https://raw.githubusercontent.com/Quoteme/st/master/st-scrollback-mouse-altscreen-20200416-5703aa0.diff"
           "https://raw.githubusercontent.com/Quoteme/st/master/st-newterm-scrollbackfix.diff"
           "https://raw.githubusercontent.com/Quoteme/st/master/st-curiefont.diff")
 source=(https://dl.suckless.org/st/st-$pkgver.tar.gz
