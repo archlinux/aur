@@ -29,8 +29,9 @@ package() {
     cp -L $srcdir/Freezer-$pkgver.AppImage ${pkgdir}/opt/${pkgname}/Freezer.AppImage
     chmod +x ${pkgdir}/opt/${pkgname}/Freezer.AppImage
 
+    install -d -m755 $pkgdir/usr/share/pixmaps/
+    cp -L $srcdir/freezer.png $pkgdir/usr/share/pixmaps/
     install -d -m755 $pkgdir/usr/share/applications/ 
-    cp -L $srcdir/freezer.desktop $pkgdir/usr/share/applications/
 
     install -d -m755 "${pkgdir}/usr/bin/"
     ln -s "/opt/${pkgname}/Freezer.AppImage" "${pkgdir}/usr/bin/freezer"

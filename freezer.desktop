@@ -7,3 +7,4 @@ Comment=Client for Deezer
 Categories=audio;
 Path=/opt/freezer-appimage/
 Exec=/opt/freezer-appimage/Freezer.AppImage
+Icon=freezer
