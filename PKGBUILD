@@ -9,8 +9,18 @@ pkgdesc="General purpose library and file format for storing scientific data, le
 arch=(x86_64)
 url="https://www.hdfgroup.org/hdf5"
 license=(custom)
-depends=(zlib libaec bash)
-makedepends=(cmake time gcc-fortran jre-openjdk)
+depends=(
+zlib
+libaec
+bash
+)
+makedepends=(
+cmake
+time
+inetutils
+gcc-fortran
+jdk-openjdk
+)
 options=('staticlibs')
 source=("${pkgname}-${pkgver}.tar.gz::https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-${_pkgver}/hdf5-${pkgver}/src/CMake-hdf5-${pkgver}.tar.gz")
 sha256sums=('651bb79a4b19b60ab9f99092f7c4cf61b7c6ca2c9bd545717746a5a47839a5bb')
