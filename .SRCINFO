@@ -1,0 +1,18 @@
+pkgbase = arm-eabi-gcc-linaro-bin
+	pkgdesc = The GNU Compiler Collection - cross compiler for ARM EABI (bare-metal) target.
+	pkgver = 7.5.0
+	pkgrel = 1
+	url = http://www.linaro.org/downloads/
+	arch = x86_64
+	groups = arm-eabi-toolchain-linaro-bin
+	license = GPL
+	license = LGPL
+	optdepends = arm-eabi-newlib-linaro-bin: Standard C library optimized for embedded systems
+	options = !emptydirs
+	options = !strip
+	options = staticlibs
+	source = http://releases.linaro.org/components/toolchain/binaries/7.5-2019.12/arm-eabi/gcc-linaro-7.5.0-2019.12-x86_64_arm-eabi.tar.xz
+	sha512sums = 41469a734c0b1fcc3a28c9487f36c301ed823eeaf60c44172d53668dbed01342d04160c2259200e5bb75d52ccc72fa1d4e3f4f1a40d6a52c914df6d8398c0863
+
+pkgname = arm-eabi-gcc-linaro-bin
+
