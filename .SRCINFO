@@ -1,0 +1,14 @@
+pkgbase = test
+	pkgdesc = Tool to serve files via HTTP
+	pkgver = 0.10.3
+	pkgrel = 1
+	url = https://github.com/svenstaro/miniserve
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = miniserve-0.10.3.tar.gz::https://github.com/svenstaro/miniserve/archive/v0.10.3.tar.gz
+	sha512sums = 0a17b828ff6616e9bf90af9d544bbf1083e5aa074d653c423fec25781fecbca1abc7927c1fd21337cf9462611b2a57fe25fd2c9252c70b1d9d7dcec58e2532e0
+
+pkgname = test
+
