@@ -1,35 +1,31 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-passenger
-pkgver=6.0.2
-pkgrel=17
+pkgver=6.0.7
+pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.19.3
 
 pkgdesc="Fast and robust web server and application server for Ruby, Python and Node.js (module for mainline nginx)"
 arch=('i686' 'x86_64')
 depends=('nginx-mainline' 'ruby')
-makedepends=('ruby-rake')
+makedepends=('nginx-mainline-src' 'ruby-rake')
 url="https://www.phusionpassenger.com"
 license=('MIT')
 
-source=(
-	https://nginx.org/download/nginx-$_nginxver.tar.gz{,.asc}
-	https://github.com/phusion/passenger/archive/release-$pkgver/$_modname-$pkgver.tar.gz
-)
+source=(https://github.com/phusion/passenger/archive/release-$pkgver/$_modname-$pkgver.tar.gz)
+sha256sums=('b53defde728995c444c6b648984b38b9f4d911baf37dfff59bf3dbf37dda4774')
 
-validpgpkeys=(
-	'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
-)
-
-sha256sums=('91e5b74fa17879d2463294e93ad8f6ffc066696ae32ad0478ffe15ba0e9e8df0'
-            'SKIP'
-            '32a2e4d78cdf782c52172020d016297a3065ee85eef7cdbe8422bb7bb3741887')
+prepare() {
+	mkdir -p build
+	cd build
+	ln -sf /usr/src/nginx/auto
+	ln -sf /usr/src/nginx/src
+}
 
 build() {
-	cd "$srcdir"/nginx-$_nginxver
-	./configure --with-compat --add-dynamic-module=../$_modname-release-$pkgver/src/nginx_module
+	cd build
+	/usr/src/nginx/configure --with-compat --add-dynamic-module=../$_modname-release-$pkgver/src/nginx_module
 	make modules
 }
 
@@ -37,7 +33,7 @@ package() {
 	install -Dm644 "$srcdir"/$_modname-release-$pkgver/LICENSE \
 	               "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
-	cd "$srcdir"/nginx-$_nginxver/objs
+	cd build/objs
 	for mod in ngx_*.so; do
 		install -Dm755 $mod "$pkgdir"/usr/lib/nginx/modules/$mod
 	done
