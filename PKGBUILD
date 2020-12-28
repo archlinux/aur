@@ -11,7 +11,7 @@ noextract=(${_pkgname})
 options=("!strip")
 provides=('cajviewer')
 conflicts=('cajviewer')
-source=("https://download.cnki.net/${_pkgname}")
+source=("http://download.cnki.net/${_pkgname}")
 sha512sums=("04c702e563587bda4c924fb554f0aef3e63a3dff088b2cecbf21c03723352595b3d0adfe14bedd2c875960dd64c69f5e6c4318684d9bbcd60e7ec5f2fe613bc9")
 
 _installdir=/opt/appimages
