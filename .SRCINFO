@@ -1,0 +1,19 @@
+pkgbase = oaml
+	pkgdesc = A library that makes it easy to implement adaptive music in games
+	pkgver = 1.3.4
+	pkgrel = 1
+	url = https://oamldev.github.io/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = boost
+	depends = libogg
+	depends = libsoxr
+	depends = libvorbis
+	depends = rtaudio
+	source = oaml-1.3.4.tar.gz::https://github.com/oamldev/oaml/archive/v1.3.4.tar.gz
+	md5sums = 177ec311931ed7bf917654fb057dafa4
+
+pkgname = oaml
+

@@ -1,0 +1,9 @@
+# source tarballs
+*.tar.gz
+
+# pacman packages
+*.pkg.tar.zst
+
+# build artifacts
+pkg/
+src/
