@@ -1,6 +1,6 @@
 # Maintainer: Radu Bîrzu <radu@webative.net>
 
-pkgname=dracula-gtk-theme-git
+pkgname=dracula-gtk-theme
 pkgver=r136.71e6a55
 pkgrel=1
 pkgdesc="This theme provides support for GTK-3 and GTK-2 based desktop environments like Gnome, Unity, Budgie, Pantheon, XFCE, Mate, etc. Also provides support for KDE plasma."
