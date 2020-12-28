@@ -3,10 +3,11 @@
 pkgname=('lua-luatrace-git' 'lua51-luatrace-git' 'lua52-luatrace-git' 'lua53-luatrace-git')
 _pkgbase='luatrace'
 pkgver=r143.d9d8918
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686')
 url='https://github.com/geoffleyland/luatrace'
 license=('MIT')
+makedepends=('git' 'lua' 'lua51' 'lua52' 'lua53')
 source=('git+https://github.com/geoffleyland/luatrace.git'
 "${_pkgbase}-compat.patch"
 "${_pkgbase}-updates.patch"
@@ -44,7 +45,7 @@ build() {
     gcc -fPIC $CPPFLAGS $CFLAGS -I/usr/include/lua5.3 -o c/c_hook.o -c c/c_hook.c
     gcc -shared $LDFLAGS -o c_hook-5.3.so c/c_hook.o
 
-    sed 's/@LUA@/lua/' < "${srcdir}/luatrace.profile" > luatrace.profile
+    sed 's/@LUA@/lua/'    < "${srcdir}/luatrace.profile" > luatrace.profile
     sed 's/@LUA@/lua5.1/' < "${srcdir}/luatrace.profile" > luatrace.profile5.1
     sed 's/@LUA@/lua5.2/' < "${srcdir}/luatrace.profile" > luatrace.profile5.2
     sed 's/@LUA@/lua5.3/' < "${srcdir}/luatrace.profile" > luatrace.profile5.3
@@ -52,6 +53,9 @@ build() {
 
 package_lua-luatrace-git() {
     pkgdesc="luatrace for Lua 5.4"
+    provides=('lua-luatrace')
+    conflicts=('lua-luatrace')
+    depends+=('lua')
 
     cd "${_pkgbase}"
 
@@ -74,6 +78,9 @@ package_lua-luatrace-git() {
 
 package_lua51-luatrace-git() {
     pkgdesc="luatrace for Lua 5.1"
+    provides=('lua51-luatrace')
+    conflicts=('lua51-luatrace')
+    depends+=('lua51')
 
     cd "${_pkgbase}"
 
@@ -95,6 +102,9 @@ package_lua51-luatrace-git() {
 
 package_lua52-luatrace-git() {
     pkgdesc="luatrace for Lua 5.2"
+    provides=('lua52-luatrace')
+    conflicts=('lua52-luatrace')
+    depends+=('lua52')
 
     cd "${_pkgbase}"
 
@@ -116,6 +126,9 @@ package_lua52-luatrace-git() {
 
 package_lua53-luatrace-git() {
     pkgdesc="luatrace for Lua 5.3"
+    provides=('lua53-luatrace')
+    conflicts=('lua53-luatrace')
+    depends+=('lua53')
 
     cd "${_pkgbase}"
 
