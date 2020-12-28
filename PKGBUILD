@@ -1,32 +1,31 @@
-# cstatus
 
 # Maintainer: Andrea Feletto <andrea@andreafeletto.com>
 
 pkgname=cstatus-git
 _pkgname=${pkgname%-*}
-pkgver=0.0.2.r0.g9827a2c
-pkgrel=3
+pkgver=0.1.0.r5.gcab32ee
+pkgrel=1
 pkgdesc='Minimal statusbar for dwm written in c99.'
 arch=('x86_64')
-url='https://github.com/andreafeletto/cstatus'
+url='https://git.sr.ht/~andreafeletto/cstatus'
 license=('MIT')
-depends=('xorg-xsetroot' 'pulsemixer')
+depends=('libx11' 'alsa-lib')
 provides=('cstatus')
 conflicts=('cstatus')
-source=("git+https://github.com/andreafeletto/$_pkgname.git")
+source=("git+https://git.sr.ht/~andreafeletto/$_pkgname")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
+	cd "$srcdir/$_pkgname"
 	git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
-    cd "$srcdir/$_pkgname"
-    make
+	cd "$srcdir/$_pkgname"
+	make
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
-    make DESTDIR="$pkgdir/" PREFIX=/usr install
+	cd "$srcdir/$_pkgname"
+	make DESTDIR="$pkgdir" PREFIX=/usr install
 }
