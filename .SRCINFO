@@ -1,0 +1,15 @@
+pkgbase = dracula-openbox-theme
+	pkgdesc = A dark theme for Openbox WM based on the Dracula color scheme. It is compatible with the Ant-Dracula GTK and KDE themes.
+	pkgver = r11.b322250
+	pkgrel = 1
+	url = https://github.com/the-zero885/dracula-Openbox
+	arch = any
+	license = GPL
+	optdepends = ttf-roboto: primary font face defined
+	optdepends = ttf-ubuntu-font-family: secondary font face defined
+	optdepends = cantarell-fonts: tertiary font face defined
+	source = Dracula::git+https://github.com/the-zero885/dracula-Openbox.git
+	sha256sums = SKIP
+
+pkgname = dracula-openbox-theme
+
