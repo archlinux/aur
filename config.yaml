@@ -1,0 +1,67 @@
+plugin:
+  ## 日志
+  - tag: logger
+    type: logger
+    args:
+      file: ""
+      level: debug
+
+  ## 启动服务器
+  - tag: main_server
+    type: plain_server
+    args:
+      entry: sequence_bypass_local
+      listen:
+        - udp://127.0.0.1:53
+        - tcp://127.0.0.1:53
+        - udp://[::1]:53
+        - tcp://[::1]:53
+
+  ## 路由插件
+  - tag: sequence_bypass_local
+    type: sequence
+    args:
+      exec:
+        - forward_local
+        - if:
+            - "!_qtype_A_AAAA"
+            - match_local_domain
+            - match_local_ip
+          goto: _end
+        - forward_remote
+      next: _end
+
+  ## 匹配器插件
+  - tag: match_local_domain   # 匹配请求域名是否是本地域名
+    type: domain_matcher
+    args:
+      check_cname: false
+      check_question: true
+      domain:
+        - "/usr/share/v2ray/geosite.dat:cn"
+
+  - tag: match_local_ip    # 匹配应答的 IP 是否是本地 IP
+    type: ip_matcher
+    args:
+      match_client: false
+      match_response: true
+      ip:
+        - "/usr/share/v2ray/geoip.dat:cn"
+
+  ## 功能性插件
+  - tag: forward_local # 转发至本地服务器
+    type: forward
+    args:
+      upstream:
+        - addr: https://223.5.5.5/dns-query
+
+  - tag: forward_remote # 转发至远程服务器
+    type: forward
+    args:
+      upstream:
+        - addr: https://dns.google/dns-query
+        - addr: https://1.0.0.1/dns-query
+        - addr: https://1.1.1.1/dns-query
+        - addr: https://2606:4700:4700::1111/dns-query
+        - addr: https://2606:4700:4700::1001/dns-query
+
