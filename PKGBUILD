@@ -21,7 +21,7 @@ prepare() {
 	cd "${srcdir}"
 	chmod a+x ${_pkgname}
 	${srcdir}/${_pkgname} --appimage-extract
-	sed -i "s+Exec=cajviewer+Exec=env DESKTOPINTEGRATION=no ${_installdir}/${_installname}.AppImage+" "squashfs-root/${_installname}.desktop"
+	sed -i "s+Exec=cajviewer+Exec=env DESKTOPINTEGRATION=no ${_installdir}/${_installname}.AppImage+" "squashfs-root/cajviewer.desktop"
 	find "squashfs-root/usr/share/icons/hicolor" -type d -exec chmod 755 {} \;
 }
 
