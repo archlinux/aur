@@ -13,7 +13,7 @@ source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
+  cd "${_pkgname}"
   printf "3.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
