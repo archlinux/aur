@@ -1,7 +1,7 @@
 # Maintainer: Paul Bastian <paul.bastian@posteo.de>
 pkgname=librespot-java
-pkgver=1.5.2
-pkgrel=5
+pkgver=1.5.3
+pkgrel=1
 pkgdesc="A Spotify Connect enabled headless client"
 arch=('any')
 url="https://github.com/librespot-org/librespot-java"
@@ -21,7 +21,6 @@ package() {
   cd "$srcdir"
 
   mkdir -p "${pkgdir}"/usr/share/java/librespot
-  #install -m644 -Dt "$pkgdir/usr/share/java/librespot" librespot-player-$pkgver.jar
   install -D -m644 librespot-player-$pkgver.jar "$pkgdir/usr/share/java/librespot/librespot-player.jar" 
   
   mkdir -p "${pkgdir}"/etc/librespot-java
