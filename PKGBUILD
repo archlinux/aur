@@ -3,7 +3,7 @@
 pkgname=phonic-git
 _name=phonic
 pkgver=0.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK audiobook player targeted at mobile Linux."
 url="https://pep.foundation/dev/repos/pEpPythonAdapter"
 depends=('python' 'gtk3' 'sox')
