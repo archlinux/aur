@@ -1,6 +1,6 @@
 # Maintainer: Méril Pilon <meril at mailfence dot com>
 pkgname=emacs-gcc-wayland-devel-bin
-pkgver=28.0.50.145994
+pkgver=28.0.50.146001
 pkgrel=1
 pkgdesc="GNU Emacs. Development native-comp branch and pgtk branch combined, served as a binary."
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-git' 'emacs-seq')
 replaces=('emacs26-git' 'emacs27-git' 'emacs-git' 'emacs-seq')
 
 source=("https://github.com/mpsq/emacs-gcc-wayland-devel-builder/releases/download/$pkgver/$pkgver.tar.gz")
-sha512sums=("c9a93b560e730298af1b65d8bdede2ca406846fbee874c3173ba128d5ea6d8b0d73ae7e0f13a14b2d18a9deadb75439e7485fe5333bb92b4687c81c4bc673a43")
+sha512sums=("77419d518afa1ed51603fa659312c4dba03e040aaa900ee2ed7572cf99d71d45120769003cad3589e9fc5c8a0da1d2e2cc9c383caf5543b80f60449cd16aee2f")
 
 package() {
   cp -r usr/ $pkgdir/
