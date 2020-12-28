@@ -1,6 +1,6 @@
 pkgbase = gdu
 	pkgdesc = Fast disk usage analyzer
-	pkgver = v1.0.0
+	pkgver = v1.2.1
 	pkgrel = 1
 	url = https://github.com/Dundee/gdu
 	arch = x86_64

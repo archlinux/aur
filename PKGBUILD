@@ -1,7 +1,7 @@
 # Maintainer: Daniel Milde <daniel@milde.cz>
 
 pkgname=gdu
-pkgver=v1.0.0
+pkgver=v1.2.1
 pkgrel=1
 license=('MIT')
 pkgdesc="Fast disk usage analyzer"
@@ -13,6 +13,7 @@ sha256sums=('SKIP')
 
 build() {
    cd $pkgname
+   git checkout $pkgver
    export CGO_LDFLAGS="${LDFLAGS}"
    export CGO_CFLAGS="${CFLAGS}"
    export CGO_CPPFLAGS="${CPPFLAGS}"
