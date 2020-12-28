@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=go-yq
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="portable command-line YAML processor"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(glibc)
 makedepends=(go)
 conflicts=(yq)
 source=(https://github.com/mikefarah/yq/archive/v${pkgver}/yq-${pkgver}.tar.gz)
-sha256sums=('2ff35db36b2d8226d181deb02b8e80ea7f6d4fbe04b7942fc5de2470e91b66d5')
+sha256sums=('19a75856c35cf99d7547faa5d00144b7a0d9e03ef04d10a20cd739dd8280ea7d')
 
 prepare() {
   cd yq-$pkgver
@@ -40,4 +40,11 @@ package() {
   install -Dm0755 yq "$pkgdir/usr/bin/yq"
   install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+  ./yq shell-completion bash | install -Dm0644 /dev/stdin \
+    "$pkgdir/usr/share/bash-completion/completions/yq"
+  ./yq shell-completion zsh | install -Dm0644 /dev/stdin \
+    "$pkgdir/usr/share/zsh/site-functions/_yq"
+  ./yq shell-completion fish | install -Dm0644 /dev/stdin \
+    "$pkgdir/usr/share/fish/vendor_completions.d/yq.fish"
 }
