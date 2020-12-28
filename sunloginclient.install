@@ -13,7 +13,7 @@ post_install() {
   
   $ECHO "\033[36m*************************************************************************\033[0m"
   $ECHO "\033[36m*  sunlogin daemon service must be running for sunloginclient to work   *\033[0m"
-  $ECHO "\033[36m*  Type: systemctl start runsunloginclient                              *\033[0m"
+  $ECHO "\033[36m*  Type: systemctl start runsunloginclient.service                      *\033[0m"
   $ECHO "\033[36m*************************************************************************\033[0m"
 }
 

@@ -3,8 +3,8 @@
 pkgname=sunloginclient
 _pkgname=sunlogin
 pkgver=10.1.1.38139
-pkgrel=6
-pkgdesc="Sunlogin Remote Control is a software that supports remote control of mobile devices, Windows, Mac, Linux and other systems.(GUI version)"
+pkgrel=7
+pkgdesc="Proprietary software that supports remote control of mobile devices, Windows, Mac, Linux and other systems.(GUI version)"
 arch=("x86_64")
 url="https://sunlogin.oray.com"
 depends=("libappindicator-gtk3"
@@ -21,8 +21,8 @@ source=("http://dl-cdn.oray.com/${_pkgname}/linux/SunloginClient-${pkgver}_amd64
 install="${pkgname}.install"
 sha256sums=('0467fa18f99d01d38f311c5b36b0f53f8ad36f5a6f1426ee552143b9de42939c'
             'SKIP')
-prepare() 
-{
+
+build() {
   mkdir -p build
   tar -xf data.tar.xz -C build
 }
@@ -70,7 +70,6 @@ package() {
   # soft link
   install -dm755 "$pkgdir/usr/bin"
   ln -sf "/opt/${_pkgname}/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  ln -sf "/opt/${_pkgname}/bin/oray_rundaemon" "${pkgdir}/usr/bin/oray_rundaemon"
 
   #  ugly hack
   sed -i "s#/usr/local/sunlogin\x0#/opt/sunlogin\x0\x0\x0\x0\x0\x0\x0#g" "${pkgdir}/opt/${_pkgname}/bin/${pkgname}"
