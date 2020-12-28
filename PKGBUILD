@@ -2,7 +2,7 @@
 
 _pkgname="archlinux-appstream-data"
 pkgname="archlinux-appstream-data-pamac"
-pkgver="20201020"
+pkgver="20201223"
 pkgrel="1"
 pkgdesc="Arch Linux application database for AppStream-based software centers (Fixed for pamac)"
 arch=("any")
@@ -16,26 +16,26 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 for _repo in "core" "extra" "community"; do
     source+=(
-        ${_repo}-${pkgver}.xml.gz::https://sources.archlinux.org/other/packages/${_pkgname}/${pkgver}/${_repo}/Components-x86_64.xml.gz
-        ${_repo}-icons-48x48-${pkgver}.tar.gz::https://sources.archlinux.org/other/packages/${_pkgname}/${pkgver}/${_repo}/icons-48x48.tar.gz
-        ${_repo}-icons-64x64-${pkgver}.tar.gz::https://sources.archlinux.org/other/packages/${_pkgname}/${pkgver}/${_repo}/icons-64x64.tar.gz
-        ${_repo}-icons-128x128-${pkgver}.tar.gz::https://sources.archlinux.org/other/packages/${_pkgname}/${pkgver}/${_repo}/icons-128x128.tar.gz
+        "${_repo}-${pkgver}.xml.gz::https://sources.archlinux.org/other/packages/${_pkgname}/${pkgver}/${_repo}/Components-x86_64.xml.gz"
+        "${_repo}-icons-48x48-${pkgver}.tar.gz::https://sources.archlinux.org/other/packages/${_pkgname}/${pkgver}/${_repo}/icons-48x48.tar.gz"
+        "${_repo}-icons-64x64-${pkgver}.tar.gz::https://sources.archlinux.org/other/packages/${_pkgname}/${pkgver}/${_repo}/icons-64x64.tar.gz"
+        "${_repo}-icons-128x128-${pkgver}.tar.gz::https://sources.archlinux.org/other/packages/${_pkgname}/${pkgver}/${_repo}/icons-128x128.tar.gz"
     )
-    noextract+=("${_repo}.xml.gz-${pkgver}" ${_repo}-icons-{48x48,64x64,128x128}-${pkgver}.tar.gz)
+    noextract+=("${_repo}.xml.gz-${pkgver}" "${_repo}-icons-{48x48,64x64,128x128}-${pkgver}.tar.gz")
 done
 sha256sums=(
-    '1ea18f23a03efe933230b7c3ec6b851efcdb567b5a5f6c986c080f2c51354bec'
+    'b8cdc0ca1500beff530578b804e9deb20f508762394a53492aecbf7fdd0956cf'
     '7989bb311baa38ef545250282aa065d23281c46dfb8faabe4c653487bdbded5c'
-    'bef2363e0fa68db52563223aa5ea48baae1400f533bc6d0e532953847c15fbe4'
+    'ec8d9be072e6547365e436bf352367527fb3f7cc17ed5073787db29b84b422bc'
     '7989bb311baa38ef545250282aa065d23281c46dfb8faabe4c653487bdbded5c'
-    'b4c89c3af8cba3d54c11f9a707d68f2b95fd4ca0030033d2138413d1adb33c28'
-    '26f2dc39bb43bb5fd95bf0c186e0c90e990bef4cea5349f3a23a709e3e1229e4'
-    '576bde9ad84c272e1c154791266bb675008e715e7aff41343b42cc91651e49f9'
-    'ff7e3afb209db68f7362997f5ec5ad9150de779b23e1c969546ebda70be9e7f2'
-    '26552ebc0031350e0edd9953bfda821067edd0621f108a07407f50683598cea6'
-    '2abe9485f92b14aca730b4733845bee90bc226ea4fadc7c88e522777e8ac472e'
-    '329fd72433af51e89ab01da4efb3de9d24e03b7098f37c6e088b7300c112117e'
-    'f6780c67c400acb1309e9c17e763b2a33898e9bc04ad7f270c6b573073c105de'
+    '5ab9dc9552a933bb4f69b84839e36a85e2d05ef84548e276bfae9258c9aa9315'
+    '51f749144166b9d4b7a82cd5c0e6929e014074550b1e6027e6bc486cab3ad9e3'
+    'f6050c1e868a14db18045a008b9f686f55ebe183b0169172258a55e6d9c5edb4'
+    'a8f06d9d5d9f307c2cb039f0f43d57f59eda0fc5e739820f8a8cee0b47f97bb0'
+    'e268aadaddcd490dbd45da1eff46d6540c66d2dfa012dc33ddc0fd07453c1673'
+    '7a3d36d4106f3e27565d302e173bbdb60c55297de2d4eb453596511cd3a71b15'
+    'd28cb3af851caf27b7cad681fae799c6ee34f39894e829e3aa7a6401129a6db6'
+    '3a2aba6bc381ba1e45be301a97c6c746fd70b1207150796fc6c28c1e9a89932b'
 )
 
 package() {
