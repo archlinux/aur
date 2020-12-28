@@ -3,7 +3,7 @@
 pkgname=python-oss2
 _pkgname=aliyun-oss-python-sdk
 pkgver=2.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Aliyun OSS SDK for Python."
 arch=('any')
 url="https://github.com/aliyun/aliyun-oss-python-sdk/"
@@ -15,8 +15,6 @@ depends=('python-requests'
          'python-aliyun-python-sdk-kms'
          'python-six')
 makedepends=('python-setuptools')
-conflicts=("${pkgname}-git")
-provides=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aliyun/${_pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('17f18755ea764ddce490d3ed84e8d1b2ec42359d9721bb797633a01bf74e45a1')
 
