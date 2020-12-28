@@ -1,10 +1,12 @@
 post_remove() {
-  echo "--> Optionally remove /var/lib/kodi/ if you wish to remove all data too"
+  echo "--> Optionally remove /var/lib/kodi/ if you wish to remove all data too."
 }
 
 post_install() {
   echo "--> Optionally create /etc/conf.d/kodi-standalone if you need to pass"
-  echo "--> any environment variables to the service"
+  echo "--> any environment variables to the service."
+  echo "--> User of PulseAudio will need to enalbe system mode"
+  echo "--> https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/SystemWide"
   post_upgrade
 }
 
