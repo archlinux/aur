@@ -17,5 +17,5 @@ sha256sums=('7949f33d6e671c98859ab4a13908f341a69430f030643d6ebce43425151bd559')
 
 package() {
     # package
-    install -D -m755 $srcdir/*/oc $pkgdir/usr/bin/oc
+    install -D -m755 $srcdir/oc $pkgdir/usr/bin/oc
 }
