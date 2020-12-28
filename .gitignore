@@ -1,0 +1,14 @@
+src/*
+oggify/*
+pkg/*
+peek/*
+*.air
+*.gem
+*.log
+*.part
+*.tar
+*.tar.*
+*.tgz
+*.zip
+*~
+
