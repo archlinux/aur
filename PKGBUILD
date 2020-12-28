@@ -3,7 +3,7 @@
 
 pkgname=korla-icon-theme
 pkgver=1.3.3
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="SVG icon theme suitable for every desktop environment (dark and light versions, HiDPI support)"
 arch=("any")
@@ -26,14 +26,14 @@ package() {
     cd "$srcdir/kora-$pkgver"
     
     # Delete useless files from source folder
-    rm -f "kora/$_iconnewcachescript"
-    rm -f "kora/$_iconcache"
-    rm -f "kora-light/$_iconnewcachescript"
-    rm -f "kora-light/$_iconcache"
-    rm -f "kora-light-panel/$_iconnewcachescript"
-    rm -f "kora-light-panel/$_iconcache"
-    rm -f "kora-pgrey/$_iconnewcachescript"
-    rm -f "kora-pgrey/$_iconcache"
+    rm -f "korla/$_iconnewcachescript"
+    rm -f "korla/$_iconcache"
+    rm -f "korla-light/$_iconnewcachescript"
+    rm -f "korla-light/$_iconcache"
+    rm -f "korla-light-panel/$_iconnewcachescript"
+    rm -f "korla-light-panel/$_iconcache"
+    rm -f "korla-pgrey/$_iconnewcachescript"
+    rm -f "korla-pgrey/$_iconcache"
 
     install -dm755 "$pkgdir/$_iconpath"
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
@@ -42,17 +42,17 @@ package() {
     # the theme locally and he messed with modes in the past making some icons unreadable 
     # and some directories not executable if installed system wide while he didn't notice 
     # any issue because he installed the theme under the local icon folder on his system.
-    cp -dr --no-preserve=mode "kora" "$pkgdir/$_iconpath/kora"
-    cp -dr --no-preserve=mode "kora-light" "$pkgdir/$_iconpath/kora-light"
-    cp -dr --no-preserve=mode "kora-light-panel" "$pkgdir/$_iconpath/kora-light-panel"
-    cp -dr --no-preserve=mode "kora-pgrey" "$pkgdir/$_iconpath/kora-pgrey"
+    cp -dr --no-preserve=mode "korla" "$pkgdir/$_iconpath/korla"
+    cp -dr --no-preserve=mode "korla-light" "$pkgdir/$_iconpath/korla-light"
+    cp -dr --no-preserve=mode "korla-light-panel" "$pkgdir/$_iconpath/korla-light-panel"
+    cp -dr --no-preserve=mode "korla-pgrey" "$pkgdir/$_iconpath/korla-pgrey"
     
     # Create empty icon cache files, they will be filled during post_install and
     # post_upgrade scripts
-    touch -a "$pkgdir/$_iconpath/kora/$_iconcache"
-    touch -a "$pkgdir/$_iconpath/kora-light/$_iconcache"
-    touch -a "$pkgdir/$_iconpath/kora-light-panel/$_iconcache"
-    touch -a "$pkgdir/$_iconpath/kora-pgrey/$_iconcache"
+    touch -a "$pkgdir/$_iconpath/korla/$_iconcache"
+    touch -a "$pkgdir/$_iconpath/korla-light/$_iconcache"
+    touch -a "$pkgdir/$_iconpath/korla-light-panel/$_iconcache"
+    touch -a "$pkgdir/$_iconpath/korla-pgrey/$_iconcache"
     
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
