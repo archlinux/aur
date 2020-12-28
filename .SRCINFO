@@ -1,0 +1,14 @@
+pkgbase = python-aliyunsdkcore
+	pkgdesc = This is the core module of Aliyun Python SDK.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/duangy/aliyunsdkcore
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-pycryptodomex
+	source = https://pypi.io/packages/source/a/aliyunsdkcore/aliyunsdkcore-1.0.3.tar.gz
+	sha512sums = cb19f8817db156e9723b3d465b42cf9e06c33dcec6cb1ae1a6d7e870182343af9cbd7353918c35f3b51b693de727ff03db52fbf71f1fca1a8d053cfae6a8c861
+
+pkgname = python-aliyunsdkcore
+
