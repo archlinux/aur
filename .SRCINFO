@@ -1,5 +1,5 @@
 pkgbase = creators-tf-launcher
-	pkgdesc = The Communit Launcher By The Creators.tf Project For Team Fortress 2
+	pkgdesc = The Community Launcher By The Creators.tf Project For Team Fortress 2
 	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://creators.tf/launcher

@@ -2,7 +2,7 @@
 pkgname=creators-tf-launcher
 pkgver=0.2.1
 pkgrel=1
-pkgdesc="The Communit Launcher By The Creators.tf Project For Team Fortress 2"
+pkgdesc="The Community Launcher By The Creators.tf Project For Team Fortress 2"
 arch=(x86_64)
 url="https://creators.tf/launcher"
 license=('MIT')
