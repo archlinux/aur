@@ -1,7 +1,7 @@
 pkgbase = all-repository-fonts
 	pkgdesc = Meta package for all fonts in the official repositories.
-	pkgver = 20201128
-	pkgrel = 2
+	pkgver = 20201228
+	pkgrel = 1
 	url = https://aur.archlinux.org/packages/all-repository-fonts/
 	arch = any
 	depends = adobe-source-code-pro-fonts
@@ -47,7 +47,6 @@ pkgbase = all-repository-fonts
 	depends = powerline-fonts
 	depends = tamsyn-font
 	depends = terminus-font
-	depends = terminus-font-otb
 	depends = tex-gyre-fonts
 	depends = ttf-anonymous-pro
 	depends = ttf-arphic-ukai
