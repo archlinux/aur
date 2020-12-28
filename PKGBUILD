@@ -3,7 +3,7 @@
 
 pkgname=cawbird-git
 _pkgname=cawbird
-pkgver=1.2.1.r63.g5e76cdc6
+pkgver=1.2.1.r100.g3f5eecc6
 pkgrel=1
 pkgdesc="A fork of the Corebird GTK Twitter client that continues to work with Twitter "
 arch=('i686' 'x86_64')
