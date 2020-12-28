@@ -7,7 +7,7 @@
 _player_ver=32.0
 pkgname=apache-flex-sdk
 pkgver=4.16.1
-pkgrel=11
+pkgrel=12
 pkgdesc='The open-source framework for building expressive web and mobile applications'
 arch=('any')
 url='https://flex.apache.org/'
@@ -25,7 +25,7 @@ source=("https://downloads.apache.org/flex/${pkgver}/binaries/apache-flex-sdk-${
         'apache-flex-sdk.sh')
 noextract=('playerglobal.swc')
 sha256sums=('17fda7ac8d3e476cad3127f345455ef316acfb87c6f4322e5897bd8d9b09388e' 'SKIP'
-            'd3e83642757ec663946d391ed67b18021ce50d9238f71d6f62101196a1611360'
+            '7d4d6168d27603cfb3b750302448e354e0bbc1bdd58f5d101c3dcf6891e9bb65'
             '13a4d4a11e44023f52ae9f3ac984065054604ebe6b1f2e3e69897f723d5fbd5d')
 
 package() {
