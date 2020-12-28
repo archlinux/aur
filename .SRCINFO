@@ -9,6 +9,7 @@ pkgbase = linux-lqx
 	makedepends = kmod
 	makedepends = libelf
 	makedepends = cpio
+	makedepends = python
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.sign
