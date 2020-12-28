@@ -9,7 +9,7 @@
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
 pkgver=4.3.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=(x86_64)
@@ -35,7 +35,6 @@ depends=(
   libiec61883
   libmfx
   libmodplug
-  libomxil-bellagio
   libpulse
   librav1e.so
   libraw1394
@@ -73,7 +72,9 @@ depends=(
   libfdk-aac
 )
 makedepends=(
+  amf-headers
   avisynthplus
+  clang
   ffnvcodec-headers
   git
   ladspa
@@ -101,11 +102,9 @@ conflicts=("$_name")
 source=(
   git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
   vmaf-model-path.patch
-  fix-8760.patch
 )
 sha256sums=('SKIP'
-            '8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d'
-            '0dd0fbeb8bc67eb2c3d1376cca4a95e708e2dce48d3bc33a77fac2b9867af9e6')
+            '8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d')
 pkgver() {
   cd ffmpeg
 
@@ -115,8 +114,8 @@ pkgver() {
 prepare() {
   cd ffmpeg
 
+  git cherry-pick -n 7c59e1b0f285cd7c7b35fcd71f49c5fd52cf9315 # fix build against libsrt 1.4.2
  patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
- patch -Np1 -i "${srcdir}"/fix-8760.patch
 }
 build() {
   cd ffmpeg
@@ -126,7 +125,10 @@ build() {
     --disable-debug \
     --disable-static \
     --disable-stripping \
+    --enable-amf \
     --enable-avisynth \
+    --enable-cuda-llvm \
+    --enable-lto \
     --enable-fontconfig \
     --enable-gmp \
     --enable-gpl \
