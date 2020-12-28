@@ -2,6 +2,7 @@
 
 pkgname=obs-studio-latest-release
 pkgver=26.1.0
+appname=obs-studio
 pkgrel=3
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
@@ -17,15 +18,15 @@ optdepends=('libfdk-aac: FDK AAC codec support'
             'luajit: scripting support'
             'python: scripting support'
             'vlc: VLC Media Source support')
-source=($pkgname-$pkgver.tar.gz::https://github.com/jp9000/obs-studio/archive/$pkgver.tar.gz)
+source=($appname-$pkgver.tar.gz::https://github.com/jp9000/obs-studio/archive/$pkgver.tar.gz)
 md5sums=('f8bb9216ece8587f2067ead1ef12a7c9')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd obs-studio-$pkgver
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd $appname-$pkgver
 
   mkdir -p build; cd build
 
@@ -37,7 +38,7 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver/build
+  cd $appname-$pkgver/build
 
   make install DESTDIR="$pkgdir"
 }
