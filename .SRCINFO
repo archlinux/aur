@@ -1,15 +1,13 @@
 pkgbase = netease-music-tui
 	pkgdesc = netease cloud music terminal client by rust
 	pkgver = 0.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/betta-cyber/netease-music-tui
 	arch = any
 	license = MIT
 	makedepends = rust
 	depends = dbus
 	depends = alsa-lib
-	provides = netease-music-tui-bin
-	conflicts = netease-music-tui-bin
 	source = netease-music-tui-0.1.2.tar.gz::https://github.com/betta-cyber/netease-music-tui/archive/v0.1.2.tar.gz
 	sha256sums = 5021c8c9d204b439453a1d3aaacc4802a685988c2cb376d057c48a3dbcc74514
 
