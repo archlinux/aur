@@ -1,13 +1,13 @@
 pkgbase = kyma
 	pkgdesc = Provides a set of commands you can use to install, manage, and test Kyma.
-	pkgver = 1.17.1
+	pkgver = 1.18.0
 	pkgrel = 0
 	url = https://github.com/kyma-project/cli
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	source = kyma-1.17.1.tar.gz::https://github.com/kyma-project/cli/archive/1.17.1.tar.gz
-	sha256sums = 9f00b68d8448c17b37679f6c4c54755df37a40c58c3acc8b6dbcea2c1117597c
+	source = kyma-1.18.0.tar.gz::https://github.com/kyma-project/cli/archive/1.18.0.tar.gz
+	sha256sums = 698f693f5f70a7f2ff91831d6ef8fdc10d1ceace81e985b4c2ca02a73fddcc48
 
 pkgname = kyma
 
