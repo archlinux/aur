@@ -1,6 +1,6 @@
 pkgbase = colmsg
 	pkgdesc = A CLI tool for 櫻坂46メッセージ and 日向坂46メッセージ app.
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/proshunsuke/colmsg
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = colmsg
 	makedepends = git
 	makedepends = rust
 	depends = libssh2
-	source = git+https://github.com/proshunsuke/colmsg#commit=306d01bd81c5256bf2b09f06ba2e476298677cf0
+	source = git+https://github.com/proshunsuke/colmsg#commit=23db2b3fa43de56813d6786c8b247df03f25eed1
 	sha256sums = SKIP
 
 pkgname = colmsg
