@@ -1,0 +1,31 @@
+pkgbase = openmw-mt-git
+	pkgdesc = Open-source engine reimplementation for the role-playing game Morrowind, built with multithreaded physics support
+	pkgver = 0.47.0.r24543.8c37817cf
+	pkgrel = 1
+	url = http://www.openmw.org
+	arch = x86_64
+	license = GPL3
+	license = MIT
+	license = custom
+	makedepends = cmake
+	makedepends = boost
+	makedepends = doxygen
+	makedepends = ninja
+	makedepends = git
+	depends = openal
+	depends = openscenegraph
+	depends = mygui
+	depends = bullet-multithreaded
+	depends = qt5-base
+	depends = ffmpeg
+	depends = sdl2
+	depends = unshield
+	depends = libxt
+	depends = boost-libs
+	provides = openmw
+	conflicts = openmw
+	source = git+https://gitlab.com/OpenMW/openmw.git
+	sha512sums = SKIP
+
+pkgname = openmw-mt-git
+
