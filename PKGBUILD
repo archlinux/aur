@@ -1,5 +1,4 @@
-# Maintainer: Simon Hauser <Simon-Hauser@outlook.de>
-# Contributor: Wesley Moore <wes@wezm.net>
+# Maintainer: thynkon <thynkon at protonmail dot com>
 
 pkgname=gitui-git
 _filename=gitui
