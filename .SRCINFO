@@ -1,6 +1,6 @@
 pkgbase = massdns
 	pkgdesc = A high-performance DNS stub resolver for bulk lookups and reconnaissance
-	pkgver = 0.3
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/blechschmidt/massdns
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = massdns
 	depends = glibc
 	provides = massdns
 	conflicts = massdns
-	source = massdns-0.3.tar.gz::https://github.com/blechschmidt/massdns/archive/v0.3.tar.gz
-	sha256sums = 9ca6e684d2febf707f165ce74b7a38455302f5851309fb82b5951c28cb07d0d7
+	source = massdns-1.0.0.tar.gz::https://github.com/blechschmidt/massdns/archive/1.0.0.tar.gz
+	sha256sums = 0eba00a03e74a02a78628819741c75c2832fb94223d0ff632249f2cc55d0fdbb
 
 pkgname = massdns
 
