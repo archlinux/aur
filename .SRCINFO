@@ -7,42 +7,6 @@ pkgbase = r-docopt
 	license = MIT
 	makedepends = r-testthat
 	depends = r
-	optdepends = r-covr
-	optdepends = r-httpuv
-	optdepends = r-jpeg
-	optdepends = r-knitr
-	optdepends = r-png
-	optdepends = r-readr
-	optdepends = r-xml2
-	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/docopt_0.7.1.tar.gz
-	sha512sums = a10d3aa8d1af323e3676e1b15e6d12d42cfec8efeed32fd2fb8f3b2d61ab691bfd990dc7f6c13f39348c9fb6a8ba67a4f8d3d5ccc854cb3c18ecfc319cb5a2f6
-
-pkgname = r-docopt
-
-pkgbase = r-docopt
-	pkgdesc = Define a command-line interface by just giving it a description in the specific format.
-	pkgver = 0.7.1
-	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/docopt/
-	arch = any
-	license = MIT
-	makedepends = r-testthat
-	depends = r
-	source = https://cran.r-project.org/src/contrib/docopt_0.7.1.tar.gz
-	sha512sums = a10d3aa8d1af323e3676e1b15e6d12d42cfec8efeed32fd2fb8f3b2d61ab691bfd990dc7f6c13f39348c9fb6a8ba67a4f8d3d5ccc854cb3c18ecfc319cb5a2f6
-
-pkgname = r-docopt
-
-pkgbase = r-docopt
-	pkgdesc = Define a command-line interface by just giving it a description in the specific format.
-	pkgver = 0.7.1
-	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/docopt/
-	arch = any
-	license = MIT
-	makedepends = r-testthat
-	depends = r
 	source = https://cran.r-project.org/src/contrib/docopt_0.7.1.tar.gz
 	sha512sums = a10d3aa8d1af323e3676e1b15e6d12d42cfec8efeed32fd2fb8f3b2d61ab691bfd990dc7f6c13f39348c9fb6a8ba67a4f8d3d5ccc854cb3c18ecfc319cb5a2f6
 
