@@ -3,7 +3,7 @@
 
 pkgname=gitlab-glab-bin
 pkgver=1.13.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="An open source GitLab CLI tool written in Go"
 arch=(x86_64)
@@ -27,7 +27,7 @@ sha256sums=('f2dc71085ae5f0e7901a9fd7aae9970a62344307a071fd768825b039362a8d59')
 validpgpkeys=()
 
 package() {
-	install -D glab "${pkgdir}/usr/bin/glab"
+	install -D bin/glab "${pkgdir}/usr/bin/glab"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
