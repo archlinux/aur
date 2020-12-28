@@ -1,0 +1,14 @@
+pkgbase = gdu-git
+	pkgdesc = Fast disk usage analyzer
+	pkgver = v1.2.1.r1.ge230e0f
+	pkgrel = 1
+	url = https://github.com/Dundee/gdu
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	conflicts = gdu
+	source = gdu::git+https://github.com/Dundee/gdu
+	sha256sums = SKIP
+
+pkgname = gdu-git
+
