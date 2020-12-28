@@ -1,0 +1,147 @@
+diff -urNp php-7.2.34-orig/ext/intl/breakiterator/codepointiterator_internal.cpp php-7.2.34-dwok/ext/intl/breakiterator/codepointiterator_internal.cpp
+--- php-7.2.34-orig/ext/intl/breakiterator/codepointiterator_internal.cpp	2020-12-08 21:09:55.961605638 +0100
++++ php-7.2.34-dwok/ext/intl/breakiterator/codepointiterator_internal.cpp	2020-12-08 21:10:55.378507625 +0100
+@@ -59,7 +59,7 @@ CodePointBreakIterator& CodePointBreakIt
+ 		return *this;
+ 	}
+ 
+-	this->fText = utext_clone(this->fText, that.fText, FALSE, TRUE, &uec);
++	this->fText = utext_clone(this->fText, that.fText, false, true, &uec);
+ 
+ 	//don't bother copying the character iterator, getText() is deprecated
+ 	clearCurrentCharIter();
+@@ -79,17 +79,17 @@ CodePointBreakIterator::~CodePointBreakI
+ UBool CodePointBreakIterator::operator==(const BreakIterator& that) const
+ {
+ 	if (typeid(*this) != typeid(that)) {
+-		return FALSE;
++		return false;
+ 	}
+ 
+ 	const CodePointBreakIterator& that2 =
+ 		static_cast<const CodePointBreakIterator&>(that);
+ 
+ 	if (!utext_equals(this->fText, that2.fText)) {
+-		return FALSE;
++		return false;
+ 	}
+ 
+-	return TRUE;
++	return true;
+ }
+ 
+ CodePointBreakIterator* CodePointBreakIterator::clone(void) const
+@@ -110,7 +110,7 @@ CharacterIterator& CodePointBreakIterato
+ 
+ UText *CodePointBreakIterator::getUText(UText *fillIn, UErrorCode &status) const
+ {
+-	return utext_clone(fillIn, this->fText, FALSE, TRUE, &status);
++	return utext_clone(fillIn, this->fText, false, true, &status);
+ }
+ 
+ void CodePointBreakIterator::setText(const UnicodeString &text)
+@@ -129,7 +129,7 @@ void CodePointBreakIterator::setText(UTe
+ 		return;
+ 	}
+ 
+-	this->fText = utext_clone(this->fText, text, FALSE, TRUE, &status);
++	this->fText = utext_clone(this->fText, text, false, true, &status);
+ 
+ 	clearCurrentCharIter();
+ }
+@@ -281,7 +281,7 @@ CodePointBreakIterator &CodePointBreakIt
+ 	}
+ 
+ 	int64_t pos = utext_getNativeIndex(this->fText);
+-	this->fText = utext_clone(this->fText, input, FALSE, TRUE, &status);
++	this->fText = utext_clone(this->fText, input, false, true, &status);
+ 	if (U_FAILURE(status)) {
+ 		return *this;
+ 	}
+diff -urNp php-7.2.34-orig/ext/intl/collator/collator_sort.c php-7.2.34-dwok/ext/intl/collator/collator_sort.c
+--- php-7.2.34-orig/ext/intl/collator/collator_sort.c	2020-12-08 21:09:56.025606610 +0100
++++ php-7.2.34-dwok/ext/intl/collator/collator_sort.c	2020-12-08 21:10:14.265883512 +0100
+@@ -346,7 +346,7 @@ static void collator_sort_internal( int
+  */
+ PHP_FUNCTION( collator_sort )
+ {
+-	collator_sort_internal( TRUE, INTERNAL_FUNCTION_PARAM_PASSTHRU );
++	collator_sort_internal( true, INTERNAL_FUNCTION_PARAM_PASSTHRU );
+ }
+ /* }}} */
+ 
+@@ -540,7 +540,7 @@ PHP_FUNCTION( collator_sort_with_sort_ke
+  */
+ PHP_FUNCTION( collator_asort )
+ {
+-	collator_sort_internal( FALSE, INTERNAL_FUNCTION_PARAM_PASSTHRU );
++	collator_sort_internal( false, INTERNAL_FUNCTION_PARAM_PASSTHRU );
+ }
+ /* }}} */
+ 
+diff -urNp php-7.2.34-orig/ext/intl/dateformat/dateformat_attr.c php-7.2.34-dwok/ext/intl/dateformat/dateformat_attr.c
+--- php-7.2.34-orig/ext/intl/dateformat/dateformat_attr.c	2020-12-08 21:09:56.021606549 +0100
++++ php-7.2.34-dwok/ext/intl/dateformat/dateformat_attr.c	2020-12-08 21:10:31.234141105 +0100
+@@ -88,7 +88,7 @@ PHP_FUNCTION( datefmt_get_pattern )
+ 	UChar  value_buf[64];
+ 	uint32_t    length = USIZE( value_buf );
+ 	UChar* value  = value_buf;
+-	zend_bool   is_pattern_localized =FALSE;
++	zend_bool   is_pattern_localized = false;
+ 
+ 	DATE_FORMAT_METHOD_INIT_VARS;
+ 
+@@ -131,7 +131,7 @@ PHP_FUNCTION( datefmt_set_pattern )
+ 	size_t      value_len = 0;
+ 	int32_t     slength = 0;
+ 	UChar*	    svalue  = NULL;
+-	zend_bool   is_pattern_localized =FALSE;
++	zend_bool   is_pattern_localized = false;
+ 
+ 
+ 	DATE_FORMAT_METHOD_INIT_VARS;
+@@ -227,7 +227,7 @@ PHP_FUNCTION( datefmt_is_lenient )
+  */
+ PHP_FUNCTION( datefmt_set_lenient )
+ {
+-	zend_bool isLenient  = FALSE;
++	zend_bool isLenient  = false;
+ 
+ 	DATE_FORMAT_METHOD_INIT_VARS;
+ 
+diff -urNp php-7.2.34-orig/ext/intl/normalizer/normalizer_normalize.c php-7.2.34-dwok/ext/intl/normalizer/normalizer_normalize.c
+--- php-7.2.34-orig/ext/intl/normalizer/normalizer_normalize.c	2020-12-08 21:09:55.957605577 +0100
++++ php-7.2.34-dwok/ext/intl/normalizer/normalizer_normalize.c	2020-12-08 21:10:22.970015649 +0100
+@@ -179,7 +179,7 @@ PHP_FUNCTION( normalizer_is_normalized )
+ 	int		uinput_len = 0;
+ 	UErrorCode	status = U_ZERO_ERROR;
+ 
+-	UBool		uret = FALSE;
++	UBool		uret = false;
+ 
+ 	intl_error_reset( NULL );
+ 
+diff -urNp php-7.2.34-orig/ext/intl/timezone/timezone_class.cpp php-7.2.34-dwok/ext/intl/timezone/timezone_class.cpp
+--- php-7.2.34-orig/ext/intl/timezone/timezone_class.cpp	2020-12-08 21:09:55.965605699 +0100
++++ php-7.2.34-dwok/ext/intl/timezone/timezone_class.cpp	2020-12-08 21:10:40.162276637 +0100
+@@ -323,7 +323,7 @@ static HashTable *TimeZone_get_debug_inf
+ 
+ 	int32_t rawOffset, dstOffset;
+ 	UDate now = Calendar::getNow();
+-	tz->getOffset(now, FALSE, rawOffset, dstOffset, uec);
++	tz->getOffset(now, false, rawOffset, dstOffset, uec);
+ 	if (U_FAILURE(uec)) {
+ 		return debug_info;
+ 	}
+diff -urNp php-7.2.34-orig/ext/intl/timezone/timezone_methods.cpp php-7.2.34-dwok/ext/intl/timezone/timezone_methods.cpp
+--- php-7.2.34-orig/ext/intl/timezone/timezone_methods.cpp	2020-12-08 21:09:55.965605699 +0100
++++ php-7.2.34-dwok/ext/intl/timezone/timezone_methods.cpp	2020-12-08 21:10:48.322400508 +0100
+@@ -95,7 +95,7 @@ U_CFUNC PHP_FUNCTION(intltz_from_date_ti
+ 		RETURN_NULL();
+ 	}
+ 
+-	tz = timezone_convert_datetimezone(tzobj->type, tzobj, FALSE, NULL,
++	tz = timezone_convert_datetimezone(tzobj->type, tzobj, false, NULL,
+ 		"intltz_from_date_time_zone");
+ 	if (tz == NULL) {
+ 		RETURN_NULL();
