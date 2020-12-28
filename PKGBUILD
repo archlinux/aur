@@ -11,21 +11,22 @@ options=("!strip")
 source=("https://github.com/CopyTranslator/CopyTranslator/releases/download/v${pkgver}/${_pkgname}")
 sha256sums=("146a43d0c215c654a8def1c39351fc5d9878fcb2663386e331c96912474f94f3")
 
-_installdir=/opt/${pkgname}
+_installdir=/opt/appimages
+_installname=copytranslator
 
 prepare() {
     cd "${srcdir}"
     chmod a+x ${_pkgname}
     ${srcdir}/${_pkgname} --appimage-extract
-    sed -i "s+AppRun+env DESKTOPINTEGRATION=no ${_installdir}/${_pkgname}+" "squashfs-root/copytranslator.desktop"
-    sed -i "s+/opt/copytranslator/resources/linux-icon/icon.png+copytranslator+" "squashfs-root/copytranslator.desktop"
-    sed -i "s+Name=copytranslator+Name=CopyTranslator+" "squashfs-root/copytranslator.desktop"
+    sed -i "s+AppRun+env DESKTOPINTEGRATION=no ${_installdir}/${_installname}.AppImage+" "squashfs-root/${_installname}.desktop"
+    sed -i "s+/opt/copytranslator/resources/linux-icon/icon.png+copytranslator+" "squashfs-root/${_installname}.desktop"
+    sed -i "s+Name=copytranslator+Name=CopyTranslator+" "squashfs-root/${_installname}.desktop"
     find "squashfs-root/usr/share/icons/hicolor" -type d -exec chmod 755 {} \;
 }
 
 package() {
     install -dm755 "${pkgdir}/usr/share/icons"
-    install -Dm755 ${_pkgname} "${pkgdir}/${_installdir}/copytranslator.AppImage"
-    install -Dm644 "squashfs-root/copytranslator.desktop" "${pkgdir}/usr/share/applications/copytranslator.desktop"
+    install -Dm755 ${_pkgname} "${pkgdir}/${_installdir}/${_installname}.AppImage"
+    install -Dm644 "squashfs-root/copytranslator.desktop" "${pkgdir}/usr/share/applications/${_installname}.desktop"
     cp -R "squashfs-root/usr/share/icons/hicolor" "${pkgdir}/usr/share/icons"
 }
