@@ -1,0 +1,13 @@
+pkgbase = magicblast-bin
+	pkgdesc = Ncbi Magic-BLAST is a tool for mapping large next-generation RNA or DNA sequencing runs against a whole genome or transcriptome.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://ncbi.github.io/magicblast/
+	arch = x86_64
+	license = custom:Public Domain
+	conflicts = magicblast
+	source = ftp://ftp.ncbi.nlm.nih.gov/blast/executables/magicblast/LATEST/ncbi-magicblast-1.5.0-x64-linux.tar.gz
+	md5sums = 2acfe2f6fd339f2d0ba4dc7571e3987d
+
+pkgname = magicblast-bin
+
