@@ -2,7 +2,7 @@
 
 pkgname=magicblast-bin
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Ncbi Magic-BLAST is a tool for mapping large next-generation RNA or DNA sequencing runs against a whole genome or transcriptome.'
 arch=('x86_64')
 license=('custom:Public Domain')
