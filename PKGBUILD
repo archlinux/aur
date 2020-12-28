@@ -8,7 +8,7 @@
 
 _pkgname=terminus-font
 pkgname=${_pkgname}-td1
-pkgver=4.49
+pkgver=4.49.1
 pkgrel=1
 
 pkgdesc='Monospace bitmap font (for X11 and console) with td1 patch (centered ascii tilde)'
@@ -21,9 +21,9 @@ makedepends=('xorg-bdftopcf' 'python')
 conflicts=('terminus-font')
 provides=('terminus-font')
 
-source=("https://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.gz"
+source=("https://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}-${pkgver%.*}/${_pkgname}-${pkgver}.tar.gz"
         fix-75-yes-terminus.patch)
-sha256sums=('db0a74551a23d2229db6ffea469ca8e390625ace4069dd1c1a3d05a16ed2634d'
+sha256sums=('d961c1b781627bf417f9b340693d64fc219e0113ad3a3af1a3424c7aa373ef79'
             'ddd86485cf6d54e020e36f1c38c56e8b21b57c23a5d76250e15c1d16fed9caa5')
 
 prepare() {
