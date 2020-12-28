@@ -3,7 +3,7 @@
 pkgname=python-pytest-check
 _pkgname="${pkgname#python-}"
 _name="${_pkgname/-/_}"
-pkgver=0.4.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="pytest plugin that allows multiple failures per test"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-setuptools')
 checkdepends=() # TODO
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('4c15d0e904b2787e83faa56c31e27172da80e65225d7a5229e89b71e59c65ee7a887eb9645047634213af023ded3db4b3d15186495eccbfa792a582939be0da4')
+b2sums=('9c50cd960a74c8e8f19ced8197518850e074a631ca87b8d6db1eee3fc4ed1f3d7ed6701965734064a1bd532f9d40c0b45b5ff75e12070dda56e541c2458967c0')
 
 build() {
   cd "$_name-$pkgver"
