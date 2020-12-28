@@ -1,0 +1,13 @@
+pkgbase = python-pyfinite
+	pkgdesc = Finite field operations and erasure correction codes
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://github.com/emin63/pyfinite
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/p/pyfinite/pyfinite-1.7.tar.gz
+	sha256sums = f3cf8daa0f3a5556b8e11008a4c8fd5bf9a60f97dbebe6736737774ccecea39e
+
+pkgname = python-pyfinite
+
