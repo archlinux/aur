@@ -15,7 +15,17 @@ source=("https://github.com/openshift/okd/releases/download/${pkgver//_/-}.okd-$
 
 sha256sums=('7949f33d6e671c98859ab4a13908f341a69430f030643d6ebce43425151bd559')
 
+prepare() {
+    # generate completion
+    oc completion bash > $srcdir/bash-completions
+    oc completion zsh > $srcdir/zsh-completions
+}
+
 package() {
+    # completions
+    install -D -m644 $srcdir/bash-completions $pkgdir/usr/share/bash-completion/completions/oc
+    install -D -m644 $srcdir/zsh-completions $pkgdir/usr/share/zsh/site-functions/_oc
+
     # package
     install -D -m755 $srcdir/oc $pkgdir/usr/bin/oc
 }
