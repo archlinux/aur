@@ -1,39 +1,36 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-redis2
-pkgver=0.14
-pkgrel=37
+pkgver=0.15
+pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.19.3
 
 pkgdesc='Redis 2.0 protocol module for mainline nginx'
 arch=('i686' 'x86_64')
 depends=('nginx-mainline')
+makedepends=('nginx-mainline-src')
 url="https://github.com/openresty/redis2-nginx-module"
 license=('BSD')
 
-source=(
-	https://nginx.org/download/nginx-$_nginxver.tar.gz{,.asc}
-	https://github.com/openresty/$_modname-nginx-module/archive/v$pkgver/$_modname-$pkgver.tar.gz
-)
+source=(https://github.com/openresty/$_modname-nginx-module/archive/v$pkgver/$_modname-$pkgver.tar.gz)
+sha256sums=('d255571bcfb9939b78099df39cb4d42f174d789aec8c8e5e47b93942b0299438')
 
-validpgpkeys=(
-	'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
-)
-
-sha256sums=('91e5b74fa17879d2463294e93ad8f6ffc066696ae32ad0478ffe15ba0e9e8df0'
-            'SKIP'
-            'd830e072fcb4acee8490ba3e38eee6034fd884a954d17ad4efeb397032c58a71')
+prepare() {
+	mkdir -p build
+	cd build
+	ln -sf /usr/src/nginx/auto
+	ln -sf /usr/src/nginx/src
+}
 
 build() {
-	cd "$srcdir"/nginx-$_nginxver
-	./configure --with-compat --add-dynamic-module=../$_modname-nginx-module-$pkgver
+	cd build
+	/usr/src/nginx/configure --with-compat --add-dynamic-module=../$_modname-nginx-module-$pkgver
 	make modules
 }
 
 package() {
-	cd "$srcdir"/nginx-$_nginxver/objs
+	cd build/objs
 	for mod in *.so; do
 		install -Dm755 $mod "$pkgdir"/usr/lib/nginx/modules/$mod
 	done
