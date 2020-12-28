@@ -9,13 +9,13 @@ pkgver=1.2020.24
 pkgrel=1
 pkgdesc="Component that allows to quickly write uml diagrams"
 arch=(any)
-url="http://plantuml.com/"
+url="https://plantuml.com/"
 license=('GPL')
-depends=("graphviz")
+depends=("java-runtime>=8" "bash")
 makedepends=("apache-ant" "java-environment>=8")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("http://downloads.sourceforge.net/project/$_pkgname/$pkgver/$_pkgname-$pkgver.tar.gz"
+source=("https://downloads.sourceforge.net/project/$_pkgname/$pkgver/$_pkgname-$pkgver.tar.gz"
         "$_pkgname.run")
 sha256sums=('c8e9ec32e95ad9edf15fae2e6f9850ebef11ba0aefbb5dd7a34002ffaccef2b3'
             'a3fb528f4c719cfd0ff6154c60fd54ce341011d132caf950cc30af4989f6aac8')
