@@ -6,7 +6,7 @@ pkgdesc="Easy automated syncing between your computers and your MEGA cloud drive
 arch=('x86_64')
 url="https://mega.nz"
 license=('custom')
-provides=('megasync')
+provides=("megasync=$pkgver")
 conflicts=('megasync')
 depends=('glibc'
          'gcc-libs'
