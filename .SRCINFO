@@ -1,0 +1,15 @@
+pkgbase = python-pydevto
+	pkgdesc = Unofficial dev.to api for python
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/lpellis/pydevto
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pydevto/pydevto-0.1.5.tar.gz
+	sha256sums = 91137b0ccaf18af0897029151a09da0240bc65d7c17c240b77df75b8bcf2cb3c
+
+pkgname = python-pydevto
+	depends = python
+
