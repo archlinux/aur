@@ -2,8 +2,8 @@
 # Contributor: Wyatt J. Brown <sushidudeteam at gmail dot com>
 # shellcheck disable=SC2034,SC2148,SC2154
 pkgname=all-repository-fonts
-pkgver=20201128
-pkgrel=2
+pkgver=20201228
+pkgrel=1
 pkgdesc='Meta package for all fonts in the official repositories.'
 arch=('any')
 url='https://aur.archlinux.org/packages/all-repository-fonts/'
@@ -50,7 +50,6 @@ depends=('adobe-source-code-pro-fonts'
 	'powerline-fonts'
 	'tamsyn-font'
 	'terminus-font'
-	'terminus-font-otb'
 	'tex-gyre-fonts'
 	'ttf-anonymous-pro'
 	'ttf-arphic-ukai'
