@@ -1,0 +1,14 @@
+pkgbase = shfm
+	pkgdesc = file manager written in posix shell.
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/dylanaraps/shfm
+	arch = any
+	license = MIT
+	provides = shfm
+	conflicts = shfm-git
+	source = shfm-0.4.2.tar.gz::https://github.com/dylanaraps/shfm/archive/0.4.2.tar.gz
+	sha256sums = 3861d1130cefbeef4306da686997143c95386c6b5a229472b11053a2da0ddfe4
+
+pkgname = shfm
+
