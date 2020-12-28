@@ -16,7 +16,7 @@ optdepends=(
     "gnome-icon-theme: fallback Gnome icon theme for Gnome Desktop")
 install="$pkgname.install"
 source=("https://github.com/bikass/korla/archive/v$pkgver.tar.gz")
-sha256sums=("5223189ee68d2ed9d77b71c6f647dfcb04fb84325134763d8f72a2ede5a15535")
+sha256sums=("34b7a069033b4dff5fccaad46a1d7538a5182259fed91a6f04395f64abab843c")
 
 _iconpath=usr/share/icons
 _iconcache=icon-theme.cache
