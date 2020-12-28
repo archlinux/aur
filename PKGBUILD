@@ -1,5 +1,5 @@
 pkgname=mingw-w64-qwt
-pkgver=6.1.5
+pkgver=6.1.6
 pkgrel=1
 pkgdesc="Qt Widgets for Technical Applications (mingw-w64)"
 arch=('any')
@@ -9,7 +9,7 @@ depends=('mingw-w64-qt5-svg')
 makedepends=('mingw-w64-gcc')
 options=('staticlibs' '!strip' '!buildflags')
 source=("http://downloads.sourceforge.net/qwt/qwt-${pkgver}.tar.bz2")
-sha256sums=('4076de63ec2b5e84379ddfebf27c7b29b8dc9074f3db7e2ca61d11a1d8adc041')
+sha256sums=('99460d31c115ee4117b0175d885f47c2c590d784206f09815dc058fbe5ede1f6')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -28,9 +28,6 @@ prepare() {
 
   # No need for docs:
   sed -i "s|= target doc|= target|" src/src.pro
-
-  # https://sourceforge.net/p/qwt/patches/73/
-  curl -L https://sourceforge.net/p/qwt/patches/73/attachment/qwt61_qflags.patch | patch -p1
 }
 
 build() {
