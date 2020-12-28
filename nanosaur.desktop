@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Nanosaur
+Comment=Play as a cybernetic dinosaur in this third-person shooter
+Icon=nanosaur
+Exec=/usr/lib/nanosaur/Nanosaur
+Path=/usr/lib/nanosaur
+Terminal=false
+Categories=Game;
+Encoding=UTF-8

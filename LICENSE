@@ -1,0 +1,31 @@
+Nanosaur Source Code!
+
+NANOSAUR PUBLIC SOURCE CODE USAGE RULES
+
+The Nanosaur source code is provided free to the public for educational and informational purposes only. We have decided to make this source available so that other game developers and game developer wannabees can see how we were performing various tricks and techniques. The following rules apply to the usage of this code:
+
+YOU CAN...
+
+1. make any modifications to the source code and recompile Nanosaur for your own private use.
+
+2. use small snippets of code (not to exceed 1000 lines of code) in your own applications, commercial or otherwise.
+
+YOU CANNOT...
+
+1. post or mass distribute modified versions of Nanosaur which you have created. This will violate our copyrights and trademarks, and would make us very unhappy and probably result in a call from our lawyers.
+
+2. use more than 1000 lines of this code in your own applications without purchasing a game engine license from Pangea Software.
+
+3. get any technical support on this code from Pangea Software. Technical support is only available to paid licensees of the code.
+
+4. port any of this code in any quantity, shape or form to Windows/PC. Nanosaur and the code are happily Mac-only and we want to keep it that way.
+
+IN ADDITION...
+
+1. You acknowledge that this source code is provided as-is and that no warranties or guarantees are made by Pangea Software. You will not hold Pangea Software responsible for any damages resulting from the use of this code.
+
+2. Please remember that Nanosaur and this code are all copyrighted by Pangea Software, Inc. All Rights Reserved. Nanosaur is a trademark of Pangea Software, Inc.
+
+IN SUMMARY...
+
+Please only use this source code for informational and educational use. Please do not violate our copyrights and trademarks by building modified versions of Nanosaur and releasing them to the public. If you desire to use this game engine in a commercial application, please contact Pangea Software to purchase a license to use the code.
