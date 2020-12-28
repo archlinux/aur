@@ -1,4 +1,4 @@
-pkgbase = dracula-gtk-theme-git
+pkgbase = dracula-gtk-theme
 	pkgdesc = This theme provides support for GTK-3 and GTK-2 based desktop environments like Gnome, Unity, Budgie, Pantheon, XFCE, Mate, etc. Also provides support for KDE plasma.
 	pkgver = r136.71e6a55
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = dracula-gtk-theme-git
 	source = Dracula::git+https://github.com/dracula/gtk.git
 	sha256sums = SKIP
 
-pkgname = dracula-gtk-theme-git
+pkgname = dracula-gtk-theme
 

@@ -1,6 +1,6 @@
 # Maintainer: Radu Bîrzu <radu@webative.net>
 
-pkgname=dracula-gtk-theme-git
+pkgname=dracula-gtk-theme
 _pkgname=Dracula
 pkgver=r136.71e6a55
 pkgrel=1
