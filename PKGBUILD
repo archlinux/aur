@@ -1,6 +1,7 @@
 # Maintainer: Radu Bîrzu <radu@webative.net>
 
-pkgname=dracula-gtk-theme
+pkgname=dracula-gtk-theme-git
+_pkgname=Dracula
 pkgver=r136.71e6a55
 pkgrel=1
 pkgdesc="This theme provides support for GTK-3 and GTK-2 based desktop environments like Gnome, Unity, Budgie, Pantheon, XFCE, Mate, etc. Also provides support for KDE plasma."
@@ -10,17 +11,17 @@ license=('GPL')
 optdepends=('ttf-roboto: primary font face defined'
 	'ttf-ubuntu-font-family: secondary font face defined'
 	'cantarell-fonts: tertiary font face defined')
-source=("${pkgname}::git+https://github.com/dracula/gtk.git")
+source=("${_pkgname}::git+https://github.com/dracula/gtk.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${_pkgname}"
 
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${_pkgname}"
 
 	msg2 "To activate the theme in Gnome, run the following commands in Terminal:"
 	msg2 ""
@@ -31,8 +32,8 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${_pkgname}"
 
-	mkdir -p "${pkgdir}/usr/share/themes/${pkgname}"
-	cp -a "${srcdir}/${pkgname}/"* "${pkgdir}/usr/share/themes/${pkgname}/"
+	mkdir -p "${pkgdir}/usr/share/themes/${_pkgname}"
+	cp -a "${srcdir}/${_pkgname}/"* "${pkgdir}/usr/share/themes/${_pkgname}/"
 }

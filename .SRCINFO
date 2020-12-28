@@ -1,4 +1,4 @@
-pkgbase = dracula-gtk-theme
+pkgbase = dracula-gtk-theme-git
 	pkgdesc = This theme provides support for GTK-3 and GTK-2 based desktop environments like Gnome, Unity, Budgie, Pantheon, XFCE, Mate, etc. Also provides support for KDE plasma.
 	pkgver = r136.71e6a55
 	pkgrel = 1
@@ -8,8 +8,8 @@ pkgbase = dracula-gtk-theme
 	optdepends = ttf-roboto: primary font face defined
 	optdepends = ttf-ubuntu-font-family: secondary font face defined
 	optdepends = cantarell-fonts: tertiary font face defined
-	source = dracula-gtk-theme::git+https://github.com/dracula/gtk.git
+	source = Dracula::git+https://github.com/dracula/gtk.git
 	sha256sums = SKIP
 
-pkgname = dracula-gtk-theme
+pkgname = dracula-gtk-theme-git
 
