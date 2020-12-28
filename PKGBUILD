@@ -4,7 +4,7 @@
 # Derived from 'dina-font-otb' by Ckat <ckat@teknik.io>
 
 pkgname=terminus-font-td1-otb
-pkgver=4.49
+pkgver=4.49.1
 pkgrel=1
 
 pkgdesc='Monospace bitmap font (OTB version) with td1 patch (centered ascii tilde)'
@@ -17,8 +17,8 @@ makedepends=('python')
 conflicts=('terminus-font-otb')
 provides=('terminus-font-otb')
 
-source=("https://downloads.sourceforge.net/project/terminus-font/terminus-font-$pkgver/terminus-font-$pkgver.tar.gz")
-sha256sums=('db0a74551a23d2229db6ffea469ca8e390625ace4069dd1c1a3d05a16ed2634d')
+source=("https://downloads.sourceforge.net/project/terminus-font/terminus-font-${pkgver%.*}/terminus-font-$pkgver.tar.gz")
+sha256sums=('d961c1b781627bf417f9b340693d64fc219e0113ad3a3af1a3424c7aa373ef79')
 
 prepare() {
   cd "terminus-font-$pkgver"
@@ -33,8 +33,7 @@ build() {
 
   ./configure \
     --prefix=/usr \
-    --otbdir=/usr/share/fonts/misc \
-    --x11dir=/usr/share/fonts/misc
+    --otbdir=/usr/share/fonts/misc
 
   make otb
 }
