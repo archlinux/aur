@@ -21,7 +21,7 @@ pkgname=(
   "$pkgbase" "$pkgbase-x11" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=r56848.9aafe587c95
+pkgver=r56865.af8aded66c1
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -129,26 +129,26 @@ build() {
   # export CXXFLAGS="${CFLAGS}"
 
   _args=(
-      -DCMAKE_INSTALL_PREFIX=/usr
-      -DCMAKE_INSTALL_LIBDIR=/usr/lib
-      -DENABLE_EVENTCLIENTS=ON
-      -DENABLE_INTERNAL_FFMPEG=ON
-      -DENABLE_INTERNAL_FMT=ON
-      -DENABLE_INTERNAL_CROSSGUID=ON
-      -DENABLE_INTERNAL_FSTRCMP=ON
-      -DENABLE_INTERNAL_FLATBUFFERS=ON
-      -DENABLE_INTERNAL_SPDLOG=ON
-      -DENABLE_MYSQLCLIENT=ON
-      -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz"
-      -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz"
-      -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz"
-      -DFFMPEG_URL="$srcdir/ffmpeg-$_ffmpeg_version.tar.gz"
-      -DFMT_URL="$srcdir/fmt-$_fmt_version.tar.gz"
-      -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz"
-      -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz"
-      -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz"
-      -DSPDLOG_URL="$srcdir/spdlog-$_spdlog_version.tar.gz"
-    )
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib
+    -DENABLE_EVENTCLIENTS=ON
+    -DENABLE_INTERNAL_FFMPEG=ON
+    -DENABLE_INTERNAL_FMT=ON
+    -DENABLE_INTERNAL_CROSSGUID=ON
+    -DENABLE_INTERNAL_FSTRCMP=ON
+    -DENABLE_INTERNAL_FLATBUFFERS=ON
+    -DENABLE_INTERNAL_SPDLOG=ON
+    -DENABLE_MYSQLCLIENT=ON
+    -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz"
+    -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz"
+    -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz"
+    -DFFMPEG_URL="$srcdir/ffmpeg-$_ffmpeg_version.tar.gz"
+    -DFMT_URL="$srcdir/fmt-$_fmt_version.tar.gz"
+    -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz"
+    -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz"
+    -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz"
+    -DSPDLOG_URL="$srcdir/spdlog-$_spdlog_version.tar.gz"
+  )
 
   if [[ "$_build_x11" -eq 1 ]]; then
     echo "building kodi-x11"
