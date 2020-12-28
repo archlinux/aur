@@ -1,0 +1,19 @@
+pkgbase = pamac-tray-icon-plasma
+	pkgdesc = Pamac tray icon for plasma users
+	pkgver = 0.1.2
+	pkgrel = 2
+	url = https://gitlab.com/LordTermor/pamac-tray-icon-plasma
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = pamac>=10.0.2
+	depends = qt5-base>=5.15.0
+	depends = knotifications
+	conflicts = pamac-tray-appindicator
+	replaces = pamac-tray-appindicator
+	options = !emptydirs
+	source = pamac-tray-icon-plasma-0.1.2-2.tar.gz::https://gitlab.com/LordTermor/pamac-tray-icon-plasma/-/archive/4c1d846750741b60239d4f5865d5bab987604611/pamac-tray-icon-plasma-4c1d846750741b60239d4f5865d5bab987604611.tar.gz
+	sha256sums = 41e897d5e7fb0757f4e929de20c9a7326041a6a5d147499173999856732a2feb
+
+pkgname = pamac-tray-icon-plasma
+
