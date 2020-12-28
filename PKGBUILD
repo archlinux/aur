@@ -1,14 +1,14 @@
 pkgname=swath
-pkgver=0.5.2
-pkgrel=3
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="A general-purpose utility for analyzing word boundaries in Thai text and inserting predefined word delimiter codes"
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 depends=('gcc-libs' 'libdatrie>=0.2.1')
 groups=('texlive-lang')
-source=(ftp://linux.thai.net/pub/thailinux/software/swath/$pkgname-$pkgver.tar.xz)
+source=(https://github.com/tlwg/swath/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz)
 url="http://linux.thai.net/projects/swath"
-md5sums=('837b313d17de9c4bcdfd0164f8df9365')
+sha1sums=('a2c8ce01401220e36c4a9280a1791045382b38c5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
