@@ -1,14 +1,14 @@
 pkgbase = golang-mockery
 	pkgdesc = A mock code autogenerator for golang
-	pkgver = 2.3.0
-	pkgrel = 2
+	pkgver = 2.5.1
+	pkgrel = 1
 	url = https://github.com/vektra/mockery
 	arch = x86_64
 	license = BSD
 	makedepends = go
 	depends = glibc
-	source = https://github.com/vektra/mockery/archive/v2.3.0/golang-mockery-2.3.0.tar.gz
-	sha256sums = ec373ef32fccdd1b9277e0de7c19b37fb1b64d7a230831cc0d41033f554e15df
+	source = https://github.com/vektra/mockery/archive/v2.5.1/golang-mockery-2.5.1.tar.gz
+	sha256sums = e49bbd017f5d559756537d96c4322d86499c1d24eecceacb65f4ccafe26adbad
 
 pkgname = golang-mockery
 
