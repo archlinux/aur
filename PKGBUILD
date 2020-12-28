@@ -21,7 +21,8 @@ package() {
   cd "$srcdir"
 
   mkdir -p "${pkgdir}"/usr/share/java/librespot
-  install -m644 -Dt "$pkgdir/usr/share/java/librespot" librespot-player-$pkgver.jar
+  #install -m644 -Dt "$pkgdir/usr/share/java/librespot" librespot-player-$pkgver.jar
+  install -D -m644 librespot-player-$pkgver.jar "$pkgdir/usr/share/java/librespot/librespot-player.jar" 
   
   mkdir -p "${pkgdir}"/etc/librespot-java
   install -m644 -Dt "$pkgdir/etc/librespot-java" config.toml
