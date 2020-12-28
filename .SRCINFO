@@ -1,6 +1,6 @@
 pkgbase = libdsk
 	pkgdesc = A library for accessing floppy drive and disc images files
-	pkgver = 1.5.12
+	pkgver = 1.5.14
 	pkgrel = 1
 	url = http://www.seasip.info/Unix/LibDsk/index.html
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = libdsk
 	license = LGPL
 	depends = zlib
 	depends = bzip2
-	source = http://www.seasip.info/Unix/LibDsk/libdsk-1.5.12.tar.gz
-	md5sums = 4a30389755036958a5534b28255ea004
+	source = http://www.seasip.info/Unix/LibDsk/libdsk-1.5.14.tar.gz
+	md5sums = 83ab6e658c12b9c9c97fcf9a1c745bf4
 
 pkgname = libdsk
 
