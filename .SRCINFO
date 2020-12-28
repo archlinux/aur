@@ -1,6 +1,6 @@
 pkgbase = polychromatic-git
 	pkgdesc = Open source RGB lighting management front-end application for OpenRazer
-	pkgver = 0.6.0.r1.g9b48ea8
+	pkgver = 0.6.0.r2.gde33a80
 	pkgrel = 1
 	url = https://github.com/polychromatic/polychromatic
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = polychromatic-git
 	depends = python-setproctitle
 	depends = python-pyqt5
 	depends = python-pyqtwebengine
+	depends = python-colour
 	depends = qt5-svg
 	depends = libappindicator-gtk3
 	depends = imagemagick
