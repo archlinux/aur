@@ -1,7 +1,7 @@
 pkgbase = librespot-java
 	pkgdesc = A Spotify Connect enabled headless client
 	pkgver = 1.5.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/librespot-org/librespot-java
 	arch = any
 	license = APACHE

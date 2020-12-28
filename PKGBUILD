@@ -1,7 +1,7 @@
 # Maintainer: Paul Bastian <paul.bastian@posteo.de>
 pkgname=librespot-java
 pkgver=1.5.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A Spotify Connect enabled headless client"
 arch=('any')
 url="https://github.com/librespot-org/librespot-java"
