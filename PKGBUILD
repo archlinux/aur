@@ -14,7 +14,6 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  install -d "${pkgdir}/usr/share/fonts/TTF"
   printf "3.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
