@@ -62,7 +62,7 @@ pkgbase=linux-xanmod-cacule
 pkgver=5.10.3
 _major=5.10
 _branch=5.x
-xanmod=1
+xanmod=2
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod. Branch with Cacule scheduler by Hamad Marri'
 url="http://www.xanmod.org/"
@@ -92,7 +92,7 @@ done
 
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
-            '0599f8f0ab2efe1d71dde19e47c50bb92bf38cc47ab0546124c1e7db84bfb42d'
+            '3fb15718605dd19ad99f6359c73fc4e869caff5cf86c43f065b74aa24c256f45'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
             '6c66dba73251440352f93ff32b72f5dd49536d0f17ef9347867660fd3a626991')
 
