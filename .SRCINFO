@@ -1,14 +1,13 @@
 pkgbase = gllvm-git
 	pkgdesc = Whole Program LLVM: wllvm ported to go
 	pkgver = 1.2.9.r3.g78dee16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SRI-CSL/gllvm
 	arch = any
 	license = BSD
 	makedepends = git
 	makedepends = go
-	depends = clang
-	depends = llvm
+	optdepends = clang: backend LLVM compiler
 	provides = gllvm
 	conflicts = gllvm
 	source = gllvm-git::git+https://github.com/SRI-CSL/gllvm
