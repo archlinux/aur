@@ -17,8 +17,8 @@ sha256sums=('7949f33d6e671c98859ab4a13908f341a69430f030643d6ebce43425151bd559')
 
 prepare() {
     # generate completion
-    oc completion bash > $srcdir/bash-completions
-    oc completion zsh > $srcdir/zsh-completions
+    $srcdir/oc completion bash > $srcdir/bash-completions
+    $srcdir/oc completion zsh > $srcdir/zsh-completions
 }
 
 package() {
