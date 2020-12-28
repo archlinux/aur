@@ -1,0 +1,20 @@
+pkgbase = beanprice-git
+	pkgdesc = Double-Entry Accounting from Text Input
+	pkgver = 1.0.1.r11.g7614b25
+	pkgrel = 1
+	url = http://furius.ca/beancount/
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python-pytest
+	depends = python>=3.5
+	depends = beancount>=2.3.1
+	depends = python-dateutil
+	depends = python-requests
+	provides = beanprice=1.0.1
+	conflicts = beanprice
+	source = beanprice-git::git+https://github.com/beancount/beanprice/
+	sha512sums = SKIP
+
+pkgname = beanprice-git
+
