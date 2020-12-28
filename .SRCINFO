@@ -1,6 +1,6 @@
 pkgbase = trueconf-client
 	pkgdesc = Video conference client with a range of rich collaborative tools and an easy-to-use interface
-	pkgver = 7.5.3.52
+	pkgver = 7.5.3.621
 	pkgrel = 1
 	url = https://trueconf.com
 	install = trueconf-client.install
@@ -11,6 +11,7 @@ pkgbase = trueconf-client
 	depends = bzip2
 	depends = curl
 	depends = dbus
+	depends = openssl
 	depends = glib2
 	depends = icu
 	depends = lame
@@ -27,6 +28,7 @@ pkgbase = trueconf-client
 	depends = qt5-multimedia
 	depends = qt5-svg
 	depends = qt5-webkit
+	depends = qt5-webengine
 	depends = speex
 	depends = speexdsp
 	depends = sqlite
@@ -36,7 +38,7 @@ pkgbase = trueconf-client
 	depends = systemd
 	optdepends = pulseaudio: audio support with pulseaudio
 	source = https://trueconf.com/download/trueconf_client_arch_x86_64.pkg.tar.xz
-	sha256sums = a207515587d22c7696b221371dcfc12dfd04645cf3d996c80b1dfc63439ca667
+	sha256sums = 0da477d4d8d548481ad3ba92498ccd8a6a13bbff11aa68a5426eb6226af18788
 
 pkgname = trueconf
 

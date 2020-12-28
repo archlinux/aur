@@ -1,22 +1,22 @@
 # Maintainer: TrueConf LLC <packager@trueconf.com>
 pkgbase='trueconf-client'
 pkgname='trueconf'
-pkgver='7.5.3.52'
+pkgver='7.5.3.621'
 pkgrel='1'
 pkgdesc='Video conference client with a range of rich collaborative tools and an easy-to-use interface'
 arch=('x86_64')
 url="https://trueconf.com"
 license=('custom:trueconf')
-depends=('alsa-utils' 'bzip2' 'curl' 'dbus' 'glib2' 'icu' 'lame' 'libglvnd' 'libidn' 'libphonenumber'
+depends=('alsa-utils' 'bzip2' 'curl' 'dbus' 'openssl' 'glib2' 'icu' 'lame' 'libglvnd' 'libidn' 'libphonenumber'
 'libsystemd' 'libx11' 'libxcb' 'libxext' 'libxrandr' 'protobuf' 
-'qt5-base' 'qt5-multimedia' 'qt5-svg' 'qt5-webkit' 'speex' 'speexdsp' 'sqlite'
+'qt5-base' 'qt5-multimedia' 'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'speex' 'speexdsp' 'sqlite'
 'v4l-utils' 'zeromq' 'zlib' 'systemd')
 optdepends=('pulseaudio: audio support with pulseaudio')
 makedepends=('libarchive')
 install="${pkgname}-client.install"
 _channel=stable
 source=("${url}/download/${pkgname}_client_arch_x86_64.pkg.tar.xz")
-sha256sums=('a207515587d22c7696b221371dcfc12dfd04645cf3d996c80b1dfc63439ca667')
+sha256sums=('0da477d4d8d548481ad3ba92498ccd8a6a13bbff11aa68a5426eb6226af18788')
 
 package() {
   install -Dm 755 "${srcdir}/opt/${pkgname}/TrueConf" "${pkgdir}/opt/${pkgname}/TrueConf"
