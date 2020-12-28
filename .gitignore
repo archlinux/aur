@@ -1,1 +1,3 @@
 *.AppImage
+sengi-appimage-*.pkg.tar.zst
+sengi-appimage-*.log
