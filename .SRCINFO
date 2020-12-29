@@ -1,0 +1,15 @@
+pkgbase = chrome-pak-customizer-git
+	pkgver = 2.0.r12.g20cc7c1
+	pkgrel = 1
+	url = https://github.com/myfreeer/chrome-pak-customizer
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc
+	source = chrome-pak-customizer::git+https://github.com/myfreeer/chrome-pak-customizer
+	sha1sums = SKIP
+
+pkgname = chrome-pak-customizer-git
+
