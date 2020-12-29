@@ -2,11 +2,10 @@
 
 _pkgname="dofi"
 pkgname="dofi-manager-git"
-pkgver=0.1.0.r2.g0c1baa3
+pkgver=0.1.1.r0.g13bad8d
 pkgrel=1
 pkgdesc="A simple dotfile manager"
 arch=("x86_64")
-depends=("diffutils")
 makedepends=("cargo" "git")
 url="https://github.com/akiirui/dofi"
 license=("MIT")
