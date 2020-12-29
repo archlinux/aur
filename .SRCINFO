@@ -1,0 +1,15 @@
+pkgbase = vis-smart-backspace-git
+	pkgdesc = A plugin for simulating softtabstop in vis.
+	pkgver = r2.ae165c1
+	pkgrel = 1
+	url = https://github.com/ingolemo/vis-smart-backspace
+	arch = any
+	license = GPL3
+	depends = vis
+	provides = vis-smart-backspace
+	conflicts = vis-smart-backspace
+	source = git+https://github.com/ingolemo/vis-smart-backspace.git
+	sha256sums = SKIP
+
+pkgname = vis-smart-backspace-git
+
