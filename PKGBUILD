@@ -2,8 +2,8 @@
 # Thanks for archlinuxcn's package that I've used as template!
 
 pkgname='chaotic-keyring'
-pkgver='20200912'
-pkgrel=2
+pkgver='20201229'
+pkgrel=1
 pkgdesc='Chaotic-AUR PGP keyring'
 arch=('any')
 url='https://lonewolf.pedrohlc.com/chaotic-aur'
@@ -19,4 +19,5 @@ package() {
   make PREFIX=/usr "DESTDIR=$pkgdir" install
 }
 
-sha512sums=('1ac37dff6605850cbacc40864c3d0a4052a4f1d1f873961e1be94dd3bd8c3cc477d20272eda88ef93e7c1e8bb8513aac4a5a30bcf99317e3c6f34df82799ad6e')
+sha512sums=('067e55485bdac61b8bfb1aca0da4d06b370eab63bb81120ce7bf0f736c71560455d7238fa7cc56da6f563e9f6dae9e6279a993d97bb98766eb7ebca1694f4416')
+
