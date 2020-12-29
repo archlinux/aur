@@ -4,6 +4,7 @@
 pkgname=clojure-lsp-bin
 pkgver=2020.12.29_20.42.24
 pkgrel=1
+epoch=1
 pkgdesc="Language Server (LSP) for Clojure"
 arch=("x86_64")
 url="https://github.com/snoe/clojure-lsp"
