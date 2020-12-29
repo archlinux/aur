@@ -12,7 +12,7 @@ arch=('x86_64')
 url='https://www.libsdl.org/projects/SDL_mixer/'
 license=('MIT')
 depends=('lib32-glibc' 'lib32-sdl2' 'sdl2_mixer')
-makedepends=('gcc-multilib')
+makedepends=('gcc-multilib' 'mercurial')
 optdepends=('lib32-fluidsynth: MIDI software synth, replaces built-in timidity'
             'lib32-libmodplug: tracker support'
             'lib32-mpg123: mp3 support'
