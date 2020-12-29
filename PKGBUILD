@@ -3,15 +3,17 @@
 _pkgname=dexed
 _juce_version=6.0.1
 pkgname="${_pkgname}-git"
-pkgver=0.9.5.r3.gdb90ad7
+pkgver=0.9.5.r9.g7026151
 pkgrel=1
 pkgdesc="A software synth closely modelled on the Yamaha DX7 (git version)"
 arch=('i686' 'x86_64')
 url="http://asb2m10.github.io/dexed/"
 license=("GPL3")
 groups=('pro-audio' 'vst-plugins')
-depends=('alsa-lib' 'hicolor-icon-theme' 'freetype2')
-makedepends=('git')
+depends=('hicolor-icon-theme' 'libpng')
+makedepends=('alsa-lib' 'curl' 'git' 'freetype2' 'jack' 'libx11' 'libxrandr'
+             'libxinerama' 'libxcursor')
+optdepends=('jack: JACK support for stand-alone version')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-vst-git")
 source=("${_pkgname}::git+https://github.com/asb2m10/dexed.git"
@@ -58,6 +60,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgname}"
+  depends+=('libasound.so' 'libcurl.so' 'libfreetype.so')
 
   # install VST plugin
   install -Dm755 Builds/Linux/build/Dexed.vst3/Contents/$(uname -m)-linux/Dexed.so \
