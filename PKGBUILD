@@ -3,7 +3,7 @@
 
 pkgname=realsr-ncnn-vulkan
 pkgver=20200818
-pkgrel=1
+pkgrel=2
 pkgdesc="RealSR super resolution implemented with ncnn library"
 url="https://github.com/nihui/realsr-ncnn-vulkan"
 license=('MIT')
@@ -31,7 +31,7 @@ prepare() {
     git submodule update --init --recursive
 
     # Fix default model path
-    sed -i 's|path_t model = PATHSTR("models-realsr")|path_t model = PATHSTR("/usr/share/realsr-ncnn-vulkan/models-DF2K_JPEG")|' src/main.cpp
+    sed -i 's|path_t model = PATHSTR("models-DF2K_JPEG")|path_t model = PATHSTR("/usr/share/realsr-ncnn-vulkan/models-DF2K_JPEG")|' src/main.cpp
 }
 
 build() {

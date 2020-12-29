@@ -1,7 +1,7 @@
 pkgbase = realsr-ncnn-vulkan
 	pkgdesc = RealSR super resolution implemented with ncnn library
 	pkgver = 20200818
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nihui/realsr-ncnn-vulkan
 	arch = i686
 	arch = x86_64
