@@ -1,0 +1,21 @@
+pkgbase = bird
+	pkgdesc = RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon
+	pkgver = r3666.455c13dc
+	pkgrel = 1
+	url = https://bird.network.cz/
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	depends = readline
+	depends = ncurses
+	depends = libssh
+	conflicts = bird
+	replaces = bird6
+	backup = etc/bird.conf
+	source = git+https://gitlab.nic.cz/labs/bird.git
+	source = bird.service
+	md5sums = SKIP
+	md5sums = 69221e063a3f07dcad519d5eeacaae75
+
+pkgname = bird
+
