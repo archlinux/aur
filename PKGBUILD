@@ -1,7 +1,7 @@
 # Maintainer: Tyler Furby <tyler@theforge.xyz>
 pkgname=renderman
 pkgver=current
-pkgrel=3
+pkgrel=4
 pkgdesc="Pixar's Renderman render engine."
 arch=('x86_64')
 url="https://renderman.pixar.com"
@@ -13,7 +13,11 @@ source=("https://storage.googleapis.com/pixar-renderman/RenderMan-InstallerNCR-2
 md5sums=('61b2b5c94a7ae4089e8b8408b8ab16f4')
 
 package() {
-	sudo mv "opt/pixar" /opt/
+  if [ -d "/opt/pixar/RenderMan-Installer-ncr-23.5" ]; then
+    sudo rm -rf "/opt/pixar/RenderMan-Installer-ncr-23.5"
+  fi
+  sudo mkdir -p "/opt/pixar/" 
+	sudo mv "opt/pixar/RenderMan-Installer-ncr-23.5" /opt/pixar/
 }
 
 build() {

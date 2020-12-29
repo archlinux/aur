@@ -1,7 +1,7 @@
 pkgbase = renderman
 	pkgdesc = Pixar's Renderman render engine.
 	pkgver = current
-	pkgrel = 3
+	pkgrel = 4
 	url = https://renderman.pixar.com
 	arch = x86_64
 	license = unknown
