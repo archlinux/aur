@@ -46,16 +46,16 @@ package(){
     cp -a $pkgname-$pkgver/build/image/easy-installer-linux-x64 $pkgdir/opt/${pkgname}
     cat > $pkgdir/$BINFIX/${pkgname} << _EOB
 #!/bin/bash
-
-cd /opt/${pkgname}/bin
-./easy-installer
+####################################
+# the binary itself gets its working directory path from
+# $0 so a symlink wouldn't work
+/opt/${pkgname}/bin/easy-installer
 _EOB
     chmod 755 $pkgdir/$BINFIX/${pkgname}
-
     cat > $pkgdir/usr/share/applications/e.foundation.${pkgname}.desktop << _EOD
 [Desktop Entry]
 Name=Easy Installer for /e/
-Exec=${pkgname}
+Exec=/opt/${pkgname}/bin/${pkgname}
 Icon=/opt/${pkgname}/${pkgname}.png
 Terminal=false
 Type=Application
