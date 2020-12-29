@@ -1,6 +1,6 @@
 # Maintainer: Advaith Madhukar <advaith.madhukar at gmail dot com>
 
-pkgname=pyside2-tools
+pkgname=pyside6-tools
 _qtver=6.0.0
 pkgver=${_qtver/-/}
 pkgrel=1
