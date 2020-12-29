@@ -1,0 +1,5 @@
+post_install() {
+  echo "  Please make sure your have installed ecl or sbcl, for reed-alert to run."
+  echo "  reed-alert will try to use ecl, and then sbcl if ecl is not installed."
+  echo "  README and example configuration files are under /usr/share/doc/reed-alert-git/"
+}
