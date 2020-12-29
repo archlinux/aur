@@ -1,0 +1,14 @@
+pkgbase = lychee-rs
+	pkgdesc = A glorious link checker
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/lycheeverse/lychee
+	arch = x86_64
+	license = Apache
+	makedepends = rust
+	depends = openssl
+	depends = gcc-libs
+	source = lychee-rs-0.4.0.tar.gz::https://github.com/lycheeverse/lychee/archive/v0.4.0.tar.gz
+	sha512sums = 85c856a42ee03d71f179210bec6f55625d45f2cfe847752ac201f0f2bc7b495e3a02957aa682a53c2e71962e51368c3bf7f816128d51c4968bcc52ddac16a0c5
+
+pkgname = lychee-rs
