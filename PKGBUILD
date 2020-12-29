@@ -11,9 +11,8 @@ license=('GPL3')
 depends=(libzopfli zlib libdeflate)
 makedepends=('git')
 source=(git+https://github.com/jibsen/pngwolf-zopfli.git
-        http://lancet.mit.edu/ga/dist/galib247.tgz)
-md5sums=('SKIP'
-         '2b6a28fd06d4c7c4d0bb39c92b2b376c')
+        git+https://github.com/jibsen/galib.git#branch=pngwolf-support)
+md5sums=(SKIP SKIP)
 
 provides=('pngwolf')
 conflicts=('pngwolf')
@@ -21,11 +20,6 @@ conflicts=('pngwolf')
 pkgver() {
   cd pngwolf-zopfli
   printf '0.r%s.%s' "$(git rev-list HEAD --count)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mv galib247 galib
-  patch -Np1 -i pngwolf-zopfli/galib247.patch
 }
 
 build() {
