@@ -19,7 +19,7 @@ optdepends=('fluidsynth: MIDI software synth, replaces built-in timidity'
             'opusfile: opus support')
 provides=(sdl2_mixer)
 conflicts=(sdl2_mixer)
-source=("hg+http://hg.libsdl.org/SDL_mixer")
+source=("hg+https://hg.libsdl.org/SDL_mixer")
 sha512sums=('SKIP')
 
 pkgver() {
