@@ -2,7 +2,7 @@
 
 pkgname=tony
 pkgver=2.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Tony: a tool for melody transcription"
 arch=('x86_64')
 url="https://www.sonicvisualiser.org/tony/"
@@ -16,6 +16,8 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   export INSTALL_ROOT="${pkgdir}/"
   ./configure --prefix=/usr
+  patch svgui/view/Overview.cpp ../../Overview.cpp.patch
+  patch svgui/layer/WaveformLayer.cpp ../../WaveformLayer.cpp.patch
   make
 }
 
