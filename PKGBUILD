@@ -16,6 +16,14 @@ conflicts=(lib32-sdl2_ttf)
 source=(hg+https://hg.libsdl.org/SDL_ttf/)
 sha512sums=('SKIP')
 
+pkgver() {
+  cd SDL_ttf
+
+  local _lasttag=$(hg tags -q | sort -r | grep release- | head -n1)
+  local _commits=$(hg log --template "{node}\n" -r $_lasttag:tip | wc -l)
+  printf "%s.r%s.%s" "${_lasttag/release-}" "$_commits" "$(hg identify -i)"
+}
+
 prepare() {
   cd SDL_ttf
   touch NEWS README AUTHORS ChangeLog
