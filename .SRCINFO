@@ -1,0 +1,15 @@
+pkgbase = python-stop-words
+	pkgdesc = Get list of common stop words in various languages in Python
+	pkgver = 2018.7.23
+	pkgrel = 1
+	url = https://github.com/Alir3z4/python-stop-words
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/s/stop-words/stop-words-2018.7.23.tar.gz
+	sha256sums = 6df3ad5f5de697daa437e4445c86c73604e6bc138dd0dc0fac55664aa4e6b03e
+
+pkgname = python-stop-words
+	depends = python
+
