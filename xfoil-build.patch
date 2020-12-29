@@ -21,12 +21,14 @@ diff -aur Xfoil/bin/Makefile_gfortran Xfoil.patched/bin/Makefile_gfortran
  
  ##--------------------------
  
-@@ -119,11 +119,11 @@
+@@ -118,12 +118,12 @@
+ FC = gfortran
  CHK = 
  #CHK = -fbounds-check -finit-real=inf -ffpe-trap=invalid,zero,denormal
- DBL = -fdefault-real-8
+-DBL = -fdefault-real-8
 -FFLAGS = -O $(CHK) $(DBL)
 -FFLOPT = -O $(CHK) $(DBL)
++DBL = -fdefault-real-8 -fallow-argument-mismatch
 +FFLAGS = -O2 $(CHK) $(DBL)
 +FFLOPT = -O2 $(CHK) $(DBL)
  FTNLIB =
