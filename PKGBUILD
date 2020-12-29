@@ -4,13 +4,14 @@ pkgname=simplenote-electron-arm-bin
 _appimagver=2.3.0
 _appimage="${pkgname}-${_appimagver}.AppImage"
 pkgver=${_appimagver//-/_}
-pkgrel=3
+pkgrel=4
 pkgdesc='The simplest way to keep notes'
 arch=('armv7h' 'aarch64')
 url='https://github.com/Automattic/simplenote-electron'
 license=('GPL2')
 depends=(nss gtk3 libxss)
 optdepends=(
+    'libnotify: desktop notifications'
     'noto-fonts-emoji: emoji support'
     'ttf-joypixels: emoji support'
 )
@@ -23,14 +24,21 @@ b2sums_armv7h=('b9a7eabdd35b4a61cdeaf296c7771d6991c824068b69a03c951ef82c596826d4
 b2sums_aarch64=('7ffd079364774395d68ab2a125c074ba09e7f56c54c7db2f100f19a2bafc1d83cb447b0232da857f4cf9cc3cda8b3f66d53be985259defb14b94af96b90ab586')
 
 prepare() {
+    # Go to source directory
+    cd "$srcdir"
+    
     # Mark AppImage as executable
     chmod a+x "${_appimage}"
-    
+
     # Extract AppImage into squashfs-root directory
     ./"${_appimage}" --appimage-extract
-    
-    # Set permissions for squashfs-root filesystem
+
+    # Set permissions for squashfs-root filesystem directories
     find squashfs-root -type d -exec chmod 755 {} +
+
+    # Modify .desktop file to run executable instead of AppImage
+    sed -i -E "s|Exec=AppRun|Exec=/usr/bin/${provides}|" squashfs-root/${provides}.desktop
+    sed -i '/^X-AppImage-Version=/d' squashfs-root/${provides}.desktop
 }
 
 package() {
@@ -45,14 +53,12 @@ package() {
     # Install Icons
     cp -r squashfs-root/usr/share/icons/hicolor "${pkgdir}"/usr/share/icons/
 
-    # Modify .desktop file to run executable instead of AppImage
-    sed -i -E "s|Exec=AppRun|Exec=/usr/bin/${provides}|" squashfs-root/${provides}.desktop
-    sed -i '/^X-AppImage-Version=/d' squashfs-root/${provides}.desktop
     # Install desktop file
     install -Dm644 squashfs-root/${provides}.desktop -t "${pkgdir}"/usr/share/applications/
 
     # Move package contents to opt
     mv squashfs-root "${pkgdir}"/opt/${pkgname}
+
     # Symlink /usr/bin executable to opt
     ln -s /opt/${pkgname}/${provides} "${pkgdir}"/usr/bin/${provides}
 }

@@ -1,5 +1,5 @@
 *.AppImage
 *.pkg.tar.zst
+pkg/
 squashfs-root/
 src/
-pkg/
