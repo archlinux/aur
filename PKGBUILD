@@ -26,6 +26,8 @@ pkgver() {
 
 build() {
   cd SDL_image
+
+  ./autogen.sh
   ./configure --disable-static --prefix=/usr \
     --disable-jpg-shared \
     --disable-png-shared \
