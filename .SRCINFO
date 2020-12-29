@@ -1,13 +1,15 @@
-pkgbase = gwebsockets-git
+pkgbase = python-gwebsockets-git
 	pkgdesc = A websocket server written in Python
-	pkgver = 0.7.g
+	pkgver = v0.7
 	pkgrel = 5
 	url = https://github.com/sugarlabs/gwebsockets
 	arch = any
 	license = Apache-2.0
 	makedepends = python-setuptools
+	provides = python-gwebsockets
+	conflicts = python-gwebsockets
 	source = git+https://github.com/sugarlabs/gwebsockets.git
 	sha256sums = SKIP
 
-pkgname = gwebsockets-git
+pkgname = python-gwebsockets-git
 
