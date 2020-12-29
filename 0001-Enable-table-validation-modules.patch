@@ -1,15 +1,14 @@
-From b609203df7333beea20dbfd604262a9486f01497 Mon Sep 17 00:00:00 2001
-Message-Id: <b609203df7333beea20dbfd604262a9486f01497.1552648361.git.jan.steffens@gmail.com>
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Tue, 23 Jun 2015 08:40:29 +0200
-Subject: [PATCH 1/4] Enable table validation modules
+Subject: [PATCH] Enable table validation modules
 
 ---
  modules.cfg | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/modules.cfg b/modules.cfg
-index dc6c8d42d..2ab145016 100644
+index d6cdbe523..181f91541 100644
 --- a/modules.cfg
 +++ b/modules.cfg
 @@ -111,26 +111,26 @@ AUX_MODULES += cache
@@ -41,6 +40,3 @@ index dc6c8d42d..2ab145016 100644
  
  # Auxiliary PostScript driver component to share common code.
  #
--- 
-2.21.0
-
