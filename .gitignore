@@ -1,3 +1,8 @@
 openblack/
 src/
 pkg/
+bgfx/
+bimg/
+bx/
+bgfx.cmake/
+*.pkg.tar.*
