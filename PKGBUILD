@@ -3,7 +3,7 @@
 
 pkgname=realrtcw
 pkgver=3.1n
-pkgrel=5
+pkgrel=6
 pkgdesc="An overhaul mod for critically acclaimed Return To Castle Wolfenstein."
 arch=('i686' 'x86_64')
 url="http://www.moddb.com/mods/realrtcw-realism-mod"
@@ -11,19 +11,20 @@ license=('GPL')
 depends=('freetype2' 'graphite' 'harfbuzz' 'iortcw-data' 'libjpeg-turbo' 'libogg' 'openal' 'opus' 'opusfile' 'pcre' 'sdl2' 'zlib')
 makedepends=('unzip')
 install='realrtcw.install'
-md5sums=('b0f5e7c4986f59ac28b0f78180f28988'
-  '53883daccf27e054469cc0657b049476'
-  '3de40b988223e22a88c2f3301fa590b5'
-  '19ef21acfceb965f36b53b70267641d1'
-  '7e3991e5f331662419ad1ed04e49366c'
-  '88752202a0da9bc9cb467b6f0f201132'
-  '26632b1ad221caf63399ce5f9c6c958b')
+sha256sums=('3dba9afe8d945c9e351acfde3d6b66e895b6f3aa8f7240204fb71046e9bcb6ce'
+  'd312f5435bb98aa80eaa4f2908456de3e9cb77d3d1920f4d16182887c571b5ea'
+  'd531cd4e6038f3ccc7c42c8c944a3ad421fe31d008e7d7170ad14046bfd2b1d8'
+  '643bd2a56b06fbdf9790b3bb7557c7f6663cc3e86295431f6470b347e37b4bb2'
+  'e68d6f400342e36d3db94e519978da0afa2d74f3368b1fe88014c4bdb26b193e'
+  '43501d60c80ae4a2837295fb5faf01d42e31f31371fcd6cecc8054eed965b8f6'
+  '6482482e637d38ce6eff6ab740f971f86b7e0d205797b2c5044aecfcf5701364')
 _commit="a1344ab17a53bda530e1f34c1a80bca7afcadcf4"
 
 _mainid=201571
 _addonsid=201574
 
 noextract=("${pkgname}-${pkgver}.zip")
+PKGEXT='.pkg.tar'
 DLAGENTS+=("moddb::${BASH_SOURCE[0]%/*}/moddb-downloader.sh %u %o")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wolfetplayer/RealRTCW/archive/${_commit}.tar.gz"
   "${pkgname}-${pkgver}.zip::moddb://www.moddb.com/downloads/start/${_mainid}/all"
@@ -93,7 +94,7 @@ package() {
 
   # Installing RealRTCW pk3
   for i in "${srcdir}"/paks/*.pk3; do
-    install -m 644 "${srcdir}/${i}" \
+    install -m 644 "${i}" \
       "${pkgdir}/opt/realrtcw/main"
   done
 
