@@ -8,7 +8,10 @@ pkgdesc="C library for reading and writing files containing sampled sound"
 arch=('i686' 'x86_64')
 url="http://www.mega-nerd.com/libsndfile/"
 license=('LGPL')
-depends=('glibc' 'alsa-lib' 'libogg' 'libvorbis')
+depends=('glibc' 'alsa-lib')
+optdepends=('flac: flac support'
+	    'libogg: ogg support'
+	    'libvorbis: vorbis support')
 makedepends=('git' 'autogen')
 provides=('libsndfile')
 conflicts=('libsndfile')
