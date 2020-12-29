@@ -1,4 +1,4 @@
-# Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
+# Maintainer: Nico <d3sox at protonmail dot com>
 
 _gitname=kora
 _author=bikass
