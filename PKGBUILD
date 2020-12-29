@@ -2,7 +2,7 @@
 
 pkgname=ship
 pkgver=2.6
-pkgrel=1
+pkgrel=3
 pkgdesc='Simple, handy network addressing multitool with plenty of utilities'
 url='https://github.com/xtonousou/ship.git'
 source=('https://raw.githubusercontent.com/xtonousou/ship/master/ship')
@@ -15,10 +15,6 @@ arch=('any')
 license=('GPL3')
 depends=('bash>=3.2' 'coreutils' 'gawk' 'grep' 'iproute2' 'iputils' 'mtr' 'sed' 'traceroute' 'wget')
 makedepends=('binutils' 'coreutils' 'git')
-
-prepare() {
-  cd "${pkgname}"
-}
 
 package() {
   install -d "${pkgdir}/usr/bin"

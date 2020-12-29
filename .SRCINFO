@@ -1,7 +1,7 @@
 pkgbase = ship
 	pkgdesc = Simple, handy network addressing multitool with plenty of utilities
 	pkgver = 2.6
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/xtonousou/ship.git
 	arch = any
 	license = GPL3
