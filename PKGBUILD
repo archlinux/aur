@@ -15,7 +15,7 @@ depends=('electron' 'gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss'
          'nss' 'orc' 'rsync' )
 optdepends=('libappindicator-gtk3: for tray icon')
 arch=('x86_64' 'i686')
-makedepends=('git' 'npm' 'python' 'rsync')
+makedepends=('git' 'npm' 'python' 'rsync' 'jq')
 url="https://joplinapp.org/"
 license=('MIT')
 source=("joplin.desktop" "joplin-desktop.sh" "joplin.sh"
@@ -40,13 +40,13 @@ prepare() {
   local cache=$(_get_cache)
   msg2 "npm cache directory: $cache"
 
-  # TODO why disabling husky?
   msg2 "Disabling husky (git hooks)"
   sed -i '/"husky": ".*"/d' "${srcdir}/joplin-${pkgver}/package.json"
 
   msg2 "Tweaking lerna.json"
   local tmp_json="$(mktemp --tmpdir="$srcdir")"
   local lerna_json="${srcdir}/joplin-${pkgver}/lerna.json"
+  # TODO: Add check for lerna.json file
   jq ".packages = [
         \"packages/app-cli\", \"packages/app-desktop\",
         \"packages/fork-htmlparser2\", \"packages/fork-sax\",
@@ -111,10 +111,10 @@ package_joplin() {
   # See https://github.com/npm/cli/issues/1103 for details.
   find "${pkgdir}/usr" -type d -exec chmod 755 {} +
 
-  msg2 "Remove References to \$pkgdir"
+  msg2 "Removing References to \$pkgdir"
   find "$pkgdir" -name package.json -print0 | xargs -0 sed -i "/_where/d"
 
-  msg2 "Remove References to \$srcdir"
+  msg2 "Removing References to \$srcdir"
   local tmppackage="$(mktemp --tmpdir="$srcdir")"
   local pkgjson="$pkgdir/usr/share/joplin/package.json" # TODO joplin name
   jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"

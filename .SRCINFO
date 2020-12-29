@@ -11,6 +11,7 @@ pkgbase = joplin
 	makedepends = npm
 	makedepends = python
 	makedepends = rsync
+	makedepends = jq
 	depends = electron
 	depends = gtk3
 	depends = libexif
