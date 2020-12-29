@@ -7,6 +7,7 @@ url='https://bird.network.cz/'
 license=('GPL2')
 backup=('etc/bird.conf')
 depends=('glibc' 'readline' 'ncurses' 'libssh')
+makedepends=('git' 'autoconf' 'automake')
 replaces=('bird6')
 conflicts=('bird')
 source=("git+https://gitlab.nic.cz/labs/bird.git"
