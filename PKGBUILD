@@ -34,7 +34,7 @@ build() {
   export GETCONF_DIR="/usr/lib32/getconf"
 
   ./configure --prefix=/usr --disable-sqlite --libdir=/usr/lib32
-  make -C src
+  make
 }
 
 #check() {
@@ -44,7 +44,7 @@ build() {
 
 package() {
   cd ${_pkgbasename}
-  make -C src DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install
   make DESTDIR="$pkgdir" install-pkgconfigDATA
 
   rm -rf "$pkgdir/usr/include"
