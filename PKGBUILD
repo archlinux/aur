@@ -2,7 +2,7 @@
 
 pkgbase=libopenmpt
 pkgname=(libopenmpt openmpt123)
-_pkgver=0.5.3+release.autotools
+_pkgver=0.5.4+release.autotools
 pkgver=${_pkgver%+*}
 pkgrel=1
 pkgdesc='A cross-platform C++ and C library to decode tracked music files (modules) into a raw PCM audio stream.'
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('zlib' 'gcc-libs' 'libvorbis' 'mpg123')
 makedepends=('portaudio' 'libsndfile' 'flac' 'help2man' 'libpulse')
 source=("https://lib.openmpt.org/files/$pkgname/src/$pkgname-${_pkgver}.tar.gz")
-sha256sums=('e7282a50e17d3d4c4a6d8000d409f6234f468f8113fcb33ee4ed945d9c2f25b8')
+sha256sums=('f34d06b9daa7bca111625369e5bbc2e7c0e0e04737a439b0e6320811babcef40')
 
 build() {
   cd $pkgbase-$_pkgver
