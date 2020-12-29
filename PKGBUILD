@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/Pobega/gnome-shell-extension-mullvad-indicator"
 license=('APACHE')
 depends=('gnome-shell')
+makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/Pobega/gnome-shell-extension-mullvad-indicator.git')

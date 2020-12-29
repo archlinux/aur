@@ -5,6 +5,7 @@ pkgbase = gnome-shell-extension-mullvad-indicator-git
 	url = https://github.com/Pobega/gnome-shell-extension-mullvad-indicator
 	arch = any
 	license = APACHE
+	makedepends = git
 	depends = gnome-shell
 	provides = gnome-shell-extension-mullvad-indicator
 	conflicts = gnome-shell-extension-mullvad-indicator
