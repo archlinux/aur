@@ -1,6 +1,6 @@
-pkgbase = python-pgi
+pkgbase = python-pgi-git
 	pkgdesc = Pure Python GObject Introspection Bindings. Needed for gi with pypy
-	pkgver = 0.0.11.2
+	pkgver = 0.0.11.2.r12.gdf95a40
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/pgi
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-pgi
 	depends = python
 	depends = python-gobject
 	options = !emptydirs
-	source = git+https://github.com/pygobject/pgi#tag=0.0.11.2
+	source = git+https://github.com/pygobject/pgi.git
 	sha512sums = SKIP
 
-pkgname = python-pgi
+pkgname = python-pgi-git
 
