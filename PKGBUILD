@@ -2,7 +2,7 @@
 
 pkgname=bfetch-git
 _gitname="bfetch"
-pkgver=cc005569a70802f88cdf468a85c6327100640dc6
+pkgver=bc48bda12bcc61d2592c5c0aea0a393220fab042
 pkgrel=1
 pkgdesc="Simple Fetch program written in bash"
 arch=('any')
