@@ -3,8 +3,8 @@
 # Contributor: crasm <crasm@firebase-tools.aur.yooz4sio.vczf.io>
 
 pkgname=firebase-tools
-pkgver=8.16.2
-pkgrel=2
+pkgver=9.1.0
+pkgrel=1
 pkgdesc="The Firebase Command Line Tools"
 arch=('any')
 url="https://github.com/firebase/firebase-tools"
@@ -16,7 +16,7 @@ makedepends=(
 )
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('c3c7fd30ee57ab1997a55ac63d4d867469d7f663dad778cd469fb7175c422f42')
+sha256sums=('55a19dbc04fd94c67e3c8c3d3286ac5e690dd3b613ab5966fa648a97f8aa517f')
 
 package() {
   # We throw away output here to keep the build quieter; if issues are
