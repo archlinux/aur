@@ -13,6 +13,7 @@ pkgbase = basilisk
 	makedepends = yasm
 	makedepends = mesa
 	makedepends = autoconf2.13
+	depends = gtk3
 	depends = gtk2
 	depends = libxt
 	depends = mime-types
