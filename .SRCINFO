@@ -1,0 +1,16 @@
+pkgbase = fzf-bibtex-git
+	pkgdesc = Fzf for bibtex. Straightforward vim integration.
+	pkgver = r70.53c49fa
+	pkgrel = 1
+	url = https://github.com/msprev/fzf-bibtex
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = go
+	depends = fzf
+	depends = bibtool
+	source = git+https://github.com/msprev/fzf-bibtex.git
+	sha256sums = SKIP
+
+pkgname = fzf-bibtex-git
+
