@@ -1,8 +1,8 @@
 # Maintainer: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='speculum'
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.6.2
+pkgrel=1
 pkgdesc='Yet another mirror list optimization tool'
 arch=('any')
 url="https://github.com/coNQP/${pkgname}"
