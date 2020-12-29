@@ -1,19 +1,19 @@
 pkgbase = clickhouse-bin
 	pkgdesc = ClickHouse is a fast open-source OLAP database management system
-	pkgver = 20.12.4.5
+	pkgver = 20.12.5.14
 	pkgrel = 1
 	url = https://clickhouse.tech/
 	arch = x86_64
 	license = Apache
 	provides = clickhouse
-	source = https://repo.yandex.ru/clickhouse/tgz/stable/clickhouse-client-20.12.4.5.tgz
-	source = https://repo.yandex.ru/clickhouse/tgz/stable/clickhouse-common-static-20.12.4.5.tgz
-	source = https://repo.yandex.ru/clickhouse/tgz/stable/clickhouse-server-20.12.4.5.tgz
+	source = https://repo.yandex.ru/clickhouse/tgz/stable/clickhouse-client-20.12.5.14.tgz
+	source = https://repo.yandex.ru/clickhouse/tgz/stable/clickhouse-common-static-20.12.5.14.tgz
+	source = https://repo.yandex.ru/clickhouse/tgz/stable/clickhouse-server-20.12.5.14.tgz
 	source = clickhouse.sysusers
 	source = clickhouse-server.service
-	sha512sums = aaabb9bcde30c1d14ca0efeef946a2df07f82665a308ac67263159913f07915493b43514114576238dbcf3a8b8726f270ebcf0723b04a175db650c695cc82250
-	sha512sums = 05ed570fcc7be911de26ef98e0691257ae180033f2b797c8645b4988c71a8f62ddab1e0234e2a4c5a783c74522e70365096c535df59b4b559cafc8c3b5a41fcf
-	sha512sums = 6bb2704a672c1456167ae5cbc7628e7c9c53c74830ee8b06cc31ff06eb4ba211c686315578348e45d4d545700ad2141a90418e1c99edf4282fc8d89692b4511b
+	sha512sums = 6196148e9e49296cbc2ed774e5c0733892476a23acbfc92d50ec4ac70065d9758cc709e6ffc7cd436d3251b0823226a3f92a8ada64b618ac848fd6c5a4f8dadf
+	sha512sums = 78f0b1fe919bedfb528c02cf149ea2b3853c26687bdc333efb45f61647e47b1c9b33789afaa2d1539343934dae06a0534044267aa03c908000a0b74767ff2c65
+	sha512sums = 9dea27481f4fe8507a39f19d006866c295b72472b345a6d1cf3d3a00eeb674d95742dc09efcea1c4dd88bca9435e6c51bf3eadaefb9a795e950f4bf5c4d9aae6
 	sha512sums = 70af4456ded1a1bb5cf29d2d3b29086aedc7875ef673e8817f389243f0c79eb491c9ce715b94542cbe16eb7489d97411ff0ab4a1a7f6c9b9120c659b87ea25b7
 	sha512sums = f70fb1fc8d26e1d6c8b4f5c808b373d464cd20ace363cfd735703d1af0f6ec6196a0c7c905d804fad789eb51acab4896397e70b64a0b61cdcd7457a6694fc4b3
 
