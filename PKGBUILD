@@ -1,7 +1,7 @@
 # Maintainer: Denton Liu <liu.denton@gmail.com>
 pkgname=crewlink
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Free, open, Among Us Proximity Chat'
 arch=('x86_64')
 url='https://github.com/zbanks/CrewLink'
@@ -10,7 +10,7 @@ makedepends=('yarn')
 source=("https://github.com/zbanks/CrewLink/archive/v$pkgver-linux.tar.gz"
         crewlink)
 sha256sums=('df424481df5a473e9abfd1ca47bd6f2cc79ab275726757097574d26f46723f87'
-            '80a5eb8b16ef5b92e164bc281cfd1bf5b7f9ff3996dd3122dae67f5356c97531')
+            'd94f1847d9e7909de929dc7579cd2ab934872f20faee9822b4abc85c0b0afcc1')
 
 build() {
 	cd "$srcdir/CrewLink-$pkgver-linux"

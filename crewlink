@@ -5,9 +5,40 @@ error () {
 	exit 1
 }
 
+process_tree () {
+	children=$(cat /proc/"$1"/task/*/children)
+	echo "$1"
+	for p in $children
+	do
+		process_tree "$p"
+	done
+}
+
 key='kernel.yama.ptrace_scope'
 old_value=$(sysctl -n "$key")
 
 sysctl "$key=0" || error "unable to run 'sysctl $key=0' (did you run this as root?)"
-su "$(logname)" -c '/opt/CrewLink/crewlink'
-sysctl "$key=$old_value" || error "unable to run 'sysctl $key=$old_value'"
+trap 'sysctl "$key=$old_value"' EXIT
+trap 'exit' INT
+
+su "$(logname)" -c /opt/CrewLink/crewlink &
+
+cl_pid="$!"
+max_procs=0
+
+# This is a dirty, dirty hack. This is required because closing the window
+# doesn't result in the process tree dying. Some zygote processes are left
+# behind. Instead of letting crewlink clean up after itself, detect when some
+# processes have died and just kill off the rest.
+while true
+do
+	sleep 1
+	cur_procs=$(process_tree "$cl_pid" | wc -l)
+	if test "$(( max_procs - 1 > cur_procs ))" = 1
+	then
+		break
+	fi
+	max_procs="$cur_procs"
+done
+kill "$cl_pid"
+wait
