@@ -1,7 +1,7 @@
 pkgbase = panda3d
 	pkgdesc = A 3D game engine with Python bindings. SDK package. Optional dependencies you want to support need to be installed before panda3d.
-	pkgver = 1.10.7
-	pkgrel = 3
+	pkgver = 1.10.8
+	pkgrel = 1
 	url = http://www.panda3d.org
 	install = panda3d.install
 	arch = i686
@@ -52,14 +52,19 @@ pkgbase = panda3d
 	optdepends = opencv: alternative to ffmpeg for video texture support
 	optdepends = fcollada: used for dae2egg and for loading dae files directly into Panda (unavailable)
 	optdepends = vrpn-git: support for virtual reality trackers.
+	optdepends = opusfile: support for the opus audio format
+	optdepends = openexr: support for the EXR image format
 	optdepends = libgles: OpenGL ES support
 	optdepends = libegl: GLX for OpenGL ES
-	source = https://github.com/panda3d/panda3d/archive/v1.10.7.tar.gz
+	source = panda3d-1.10.8.tar.gz::https://github.com/panda3d/panda3d/archive/v1.10.8.tar.gz
 	source = panda3d.install
 	source = libdir_fix.patch
-	md5sums = d53383267e7908cf54cb46d3eefd66d2
+	md5sums = 387ca03839cd6cad2622897b9e3ad4ef
 	md5sums = 057269173f3c1987953302519bc744fa
 	md5sums = 44d5cd0d121ec966f52d6ca00fdf81eb
+	sha256sums = d969e3d998944cbac3f6cb872d2fcff53361a1fa9997ff511dc72031318e96a6
+	sha256sums = e67aaaf6e2e9b0ac56444e5a3c8140a5d1e311d356d937fa161ca9b863a3bb0f
+	sha256sums = 0ae2d418ac574cdf0c164df9b86836c7f1e0893d53721647c9353bae3d0204da
 
 pkgname = panda3d
 
