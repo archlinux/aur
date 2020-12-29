@@ -1,0 +1,21 @@
+pkgbase = glowing-bear-git
+	pkgdesc = A web client for Weechat (Electron version)
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://www.glowing-bear.org/
+	arch = any
+	groups = irc
+	groups = weechat
+	license = GPL-3.0
+	makedepends = npm
+	makedepends = git
+	depends = electron
+	source = git+https://github.com/glowing-bear/glowing-bear.git#tag=0.9.0
+	source = glowing-bear.desktop
+	source = glowing-bear.sh
+	sha256sums = SKIP
+	sha256sums = 0df8757eb5a0d1aca43e86d35bf99178626de0741e9d5e35b71fabd151e4a1ab
+	sha256sums = c366508cac1c450e397f26caa92f951a8afff5b78f17223781d7a775b8a4ea9c
+
+pkgname = glowing-bear-git
+
