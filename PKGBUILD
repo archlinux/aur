@@ -1,26 +1,28 @@
-# Maintainer: Srevin Saju <srevin03@gmail.com>
+# Maintainer: Srevin Saju <srevinsaju@sugarlabs.org>
 
 pkgname=sugar-artwork-git
-pkgver=0.116.g
-pkgrel=5
+pkgver=v0.118
+pkgrel=1
 pkgdesc="Sugar icons and themes"
 arch=('x86_64')
 url="https://sugarlabs.org/"
 license=('LGPL')
-makedepends=('gtk2' 'gtk3' 'icon-naming-utils' 'python' 'xorg-xcursorgen')
+makedepends=('gtk2' 'gtk3' 'icon-naming-utils' 'python' 'xorg-xcursorgen' 'python-empy')
 optdepends=('gtk2: GTK+ 2 theme'
             'gtk3: GTK+ 3 theme')
 source=("git+https://github.com/sugarlabs/sugar-artwork.git")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 sha256sums=('SKIP')
 
 build() {
-  cd $pkgname-$pkgver
+  cd "$srcdir/${pkgname%-git}"
   chmod +x ./autogen.sh
   ./autogen.sh --prefix=/usr --with-python3
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd "$srcdir/${pkgname%-git}"
   make DESTDIR=$pkgdir install
 }
