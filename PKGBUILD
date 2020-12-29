@@ -2,7 +2,7 @@
 
 _pkgname=libxfce4ui
 pkgname=${_pkgname}-nocsd
-pkgver=4.15.8
+pkgver=4.16.0
 pkgrel=1
 pkgdesc="A fork of libxfce4ui with the explicit goal of removing Client-Side Decorations (CSD)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=('glade: Glade designer plugin')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('6fa362d67172b76dccdc3b929a0f912747e3af92b5cd4675475cc8b3fed9a7eb')
+sha256sums=('292ab49b3d08e514ac9283acab0ae43c8159785366aed11730671c33e2f749e4')
 
 build() {
   cd "${_pkgname}-${pkgver}"
