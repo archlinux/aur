@@ -12,7 +12,7 @@ depends=('fuse' 'xorg-xrandr')
 options=(!strip)
 _appimage="Lunar Client-${pkgver}.AppImage"
 source=("https://launcherupdates.lunarclientcdn.com/${_appimage}")
-sha256sums=('SKIP')
+sha256sums=('bb85a62127a9b3848cc60796c20ac75655794f1d3cd17cb6b5499bbf19d16019')
 
 prepare() {
 	chmod +x "${_appimage}"

@@ -9,7 +9,7 @@ pkgbase = lunar-client
 	depends = xorg-xrandr
 	options = !strip
 	source = https://launcherupdates.lunarclientcdn.com/Lunar Client-2.4.0.AppImage
-	sha256sums = SKIP
+	sha256sums = bb85a62127a9b3848cc60796c20ac75655794f1d3cd17cb6b5499bbf19d16019
 
 pkgname = lunar-client
 
