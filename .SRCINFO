@@ -1,11 +1,12 @@
 pkgbase = sugar-git
 	pkgdesc = Sugar GTK shell
-	pkgver = 0.116.g
-	pkgrel = 5
+	pkgver = v0.118
+	pkgrel = 1
 	url = https://sugarlabs.org/
 	arch = any
 	license = GPL
 	makedepends = intltool
+	makedepends = python-empy
 	depends = gst-plugins-espeak
 	depends = gtksourceview3
 	depends = gvfs
@@ -28,6 +29,8 @@ pkgbase = sugar-git
 	depends = upower
 	depends = webkit2gtk
 	depends = xdg-user-dirs
+	provides = sugar
+	conflicts = sugar
 	source = git+https://github.com/sugarlabs/sugar.git
 	sha256sums = SKIP
 

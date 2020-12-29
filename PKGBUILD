@@ -1,8 +1,8 @@
-# Maintainer: Srevin Saju <srevin03@gmail.com>
+# Maintainer: Srevin Saju <srevinsaju@sugarlabs.org>
 
 pkgname=sugar-git
-pkgver=0.116.g
-pkgrel=5
+pkgver=v0.118
+pkgrel=1
 pkgdesc="Sugar GTK shell"
 arch=('any')
 url="https://sugarlabs.org/"
@@ -13,18 +13,20 @@ depends=('gst-plugins-espeak' 'gtksourceview3' 'gvfs' 'libwnck3'
 	 'python-dateutil' 'icon-naming-utils' 'python-decorator' 
          'telepathy-gabble' 'telepathy-salut' 'upower' 'webkit2gtk'
          'xdg-user-dirs')
-makedepends=('intltool')
+makedepends=('intltool' 'python-empy')
 source=("git+https://github.com/sugarlabs/sugar.git")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 sha256sums=('SKIP')
 
 
 build() {
-  cd $pkgname-$pkgver
+  cd "$srcdir/${pkgname%-git}"
   ./autogen.sh --prefix=/usr --with-python3
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd "$srcdir/${pkgname%-git}"
   make DESTDIR="$pkgdir" install
 }
