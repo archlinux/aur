@@ -8,7 +8,7 @@
 pkgbase=oss-nonfree
 pkgname=oss-nonfree
 true && pkgname=(oss-nonfree libflashsupport-oss-nonfree)
-pkgver=4.2_2019
+pkgver=4.2_2020
 pkgrel=1
 arch=(i686 x86_64)
 url="http://www.opensound.com/oss.html"
@@ -25,16 +25,16 @@ source=("http://www.4front-tech.com/release/oss-linux-v${pkgver/_*}-${pkgver/*_}
         rm-init-scripts.patch
         soundon.patch)
 noextract=("oss-linux-v${pkgver/_*}-${pkgver/*_}-$_pkgarch.tar.bz2")
-sha512sums=('8157ef705c5cbdcee1bea0bc88f28034b01d0f3d7ff9e2837781c79c07f1e35a5b5abcf6fc0db19568eca6e0b2d8b8bcab3c225292b935971646b5efe1160123'
+sha512sums=('3161f86a85c5eb1d30400a11351ff8e88defd65a1f6eab6e7b0f63fa6efe8f66f641239df681de6430e83aea901cd2b6c1c1d887fb5073838662875431f06aab'
             '75632fd1052834ccef32c72a30b2d2fd97448332ac1152962f6aaa29eac98a53b354dd2c3336312b760d88070d5165fef0f7f8e3ee3b8a2a3634d6fc5f56c995'
             '355e1380432947c0e9caa21114b2c3debeb162fb5abcf845125ec281ce52b437ad1ee1db04d37e9b7a5ac79816c4dcbc21b4ed4cf8191f71218d99acd7bab70e'
             '6956e5e2e9323b568bb18e80bbee591b0e5ffd3d4612a50df09879941b2733c31d6b3178dc9a46c283bd1629f76b7ff5e2b54893a42a47f6379eaee4731fd9be'
             '64e6d9d8eb5320f737d3a0698a245da2b2d141b68cfb2f02e448144d1c610aa8b8a6c38b56fcca364d63171a49afe93161a00545cdb90086b5328997b3096690'
             '5b91a4f3477db1bdbc40c891aaa8bc384f5a690e8290bc4db7bdb4a715a858b2f42780bfeb14281560a0e1a73d1cd4022ed738f01b74c26456dcf0b9952981b5')
 if [[ "$CARCH" == i686 ]]; then
-    sha512sums[0]='eea41e4e054893429f28c42508dfb2f2a96e61122cd8f4d0e3cf01a3862304b5c135da6eee5f9acbf253986b6f0f9afbf3ab2b1b6c818247cdfd0994d33045a8'
+    sha512sums[0]='0f649e8851ec12b3cde4dc65ebf593dcdeba724356c5eac1f96cbb52713db2e9574efb9c3ac843514e3b6754c94a2b139b9d07cb4aefb4acf78646fb77616cde'
 else
-    sha512sums[0]='8157ef705c5cbdcee1bea0bc88f28034b01d0f3d7ff9e2837781c79c07f1e35a5b5abcf6fc0db19568eca6e0b2d8b8bcab3c225292b935971646b5efe1160123'
+    sha512sums[0]='3161f86a85c5eb1d30400a11351ff8e88defd65a1f6eab6e7b0f63fa6efe8f66f641239df681de6430e83aea901cd2b6c1c1d887fb5073838662875431f06aab'
 fi
 
 build() {
