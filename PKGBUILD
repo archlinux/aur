@@ -29,5 +29,5 @@ package() {
 	cd "${srcdir}/${_pkgname}"
 
 	mkdir -p "${pkgdir}/usr/share/themes/${_pkgname}"
-	cp -a "${srcdir}/${_pkgname}/${_pkgname}/"* "${pkgdir}/usr/share/themes/${_pkgname}/"
+	cp -a "${srcdir}/${_pkgname}/${_pkgname}*" "${pkgdir}/usr/share/themes/"
 }
