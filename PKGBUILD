@@ -2,8 +2,8 @@
 # Comaintainer: Azat Abdullin <abdullin@kspt.icc.spbstu.ru>
 
 pkgname=boolector
-pkgver=3.2.0
-pkgrel=2
+pkgver=3.2.1
+pkgrel=1
 pkgdesc="Boolector is an efficient SMT solver for the quantifier-free theory of bit-vectors in combination with the quantifier-free extensional theory of arrays."
 arch=('i686' 'x86_64')
 url="http://boolector.github.io/"
@@ -11,12 +11,12 @@ license=('MIT')
 makedepends=("make" "cmake" "git")
 conflicts=("boolector-git")
 
-source=("https://github.com/Boolector/boolector/archive/3.2.0.tar.gz")
+source=("https://github.com/Boolector/boolector/archive/3.2.1.tar.gz")
 sha256sums=('SKIP')
 sha512sums=('SKIP')
 
 build() {
-  cd "$srcdir/boolector-3.2.0"
+  cd "$srcdir/boolector-3.2.1"
 
   # Setup lingeling
   ./contrib/setup-lingeling.sh
@@ -35,12 +35,12 @@ package() {
   mkdir -p "$pkgdir/usr/lib/"
   mkdir -p "$pkgdir/usr/include/boolector"
 
-  cd "$srcdir/boolector-3.2.0/src"
+  cd "$srcdir/boolector-3.2.1/src"
   find . -name "*.h" -exec install -D -m644 {} "$pkgdir/usr/include/boolector/{}" \;
 
-  cd "$srcdir/boolector-3.2.0"
+  cd "$srcdir/boolector-3.2.1"
   find . -name "*.so" -exec install -m755 {} "$pkgdir/usr/lib/" \;
 
-  cd "$srcdir/boolector-3.2.0/build/bin"
+  cd "$srcdir/boolector-3.2.1/build/bin"
   find . -name "b*"  -exec install -D -m755 {} "$pkgdir/usr/bin/{}" \;
 }
