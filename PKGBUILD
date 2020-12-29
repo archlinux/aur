@@ -7,25 +7,20 @@ pkgname=("preconf-intel-nvidia-prime-render-offloading-common"
         "preconf-intel-nvidia-prime-render-offloading-linux-lts"
         "preconf-intel-nvidia-prime-render-offloading-linux-zen"
 )
-pkgver=1
-pkgrel=0
-url=https://wiki.archlinux.org/index.php/PRIME
+pkgver=1.1
+pkgrel=1
+makedepends=("git")
+url="https://gitlab.com/fabis_cafe/preconf-intel-nvidia-prime-render-offloading"
 arch=('x86_64')
 license=('GPL3')
-source=(
-    "71-kmod-intel.conf"
-    "71-kmod-nouveau-blacklist.conf"
-    "71-kmod-nvidia.conf"
-    "71-kmod-nvidia-pwm.conf"
-    "71-nvidia-mkinitcpio.hook"
-    "90-nvidia-prime-powermanagement.rules"
-    )
-sha512sums=('a8ef4becd2ab00a98d6e024d4755302d0553f963859c346c84f98789b67c40c0fad89323e8ea8ebb61a0c24a07d7bc967102700e7e8500691714d1fbed9059dc'
-            'c432e01cb6d684c9f4542403b6be906ed2d4696b06d0f20a07a4988c24ae63cb646a200ec4c5d61a34ca77a89495cd9917276157242e790b6e8e86ec4553e8e8'
-            '4bf1a0f773a7bb3a0eca5e9a448d7a0622003e5251932e13a68854d3b45a2b7d174cb8cf83cf320676587678fb376dab0f74d4c6996ae74c403e5435dcea1e4c'
-            '20c45d591afeb24327ccdd62ddef64fd2533cb1c5396e5030e3443d6ee0b86740cc3383b3c74f088088058f7c9281bc0e93b9d115ff9f8525f49e205641c538f'
-            '924a112b90aa694c67fec7fc54dd1c2191da005b8c6ebc055382b4d4559de3697ab1d56903f0c51eedced08595d9aa66a49c97840b33993735e1b6df9864d2cf'
-            '316104ac3c1a14d12679521196930e107405c77d632ed1123be9cbc7ddb9c64b123d9fee6e9e5b6d630ad3669446e219909189477d7f68696612bebda791fb3b')
+_commit=cb1fc7cfc9704f49549a97a34ce9c55c9ff8c1b8  # tags/1.1
+source=("git+https://gitlab.com/fabis_cafe/preconf-intel-nvidia-prime-render-offloading.git/#commit=${_commit}")
+sha512sums=('SKIP')
+
+pkgver() {
+    cd preconf-intel-nvidia-prime-render-offloading
+    git describe --tags | sed 's/-/+/g'
+}
 
 package_preconf-intel-nvidia-prime-render-offloading-common(){
     pkgdesc="common files for an intel-nvidia prime system"
@@ -36,17 +31,17 @@ package_preconf-intel-nvidia-prime-render-offloading-common(){
         "preconf-intel-nvidia-prime-render-offloading-linux-lts: Configuration for LTS Kernel"
         "preconf-intel-nvidia-prime-render-offloading-linux-dkms: Generic Kernel, DKMS Configuration")
 
-    cd "${srcdir}"
+    cd "${srcdir}/${pkgbase}"
     ## Drivers load up on boot
-    install -Dm 644 "${srcdir}/71-kmod-intel.conf" "${pkgdir}/usr/lib/modules-load.d/71-kmod-intel.conf"
-    install -Dm 644 "${srcdir}/71-kmod-nvidia.conf" "${pkgdir}/usr/lib/modules-load.d/71-kmod-nvidia.conf"
+    install -Dm 644 "${srcdir}/${pkgbase}/71-kmod-intel.conf" "${pkgdir}/usr/lib/modules-load.d/71-kmod-intel.conf"
+    install -Dm 644 "${srcdir}/${pkgbase}/71-kmod-nvidia.conf" "${pkgdir}/usr/lib/modules-load.d/71-kmod-nvidia.conf"
     ## Blacklist and PWM options
-    install -Dm 644 "${srcdir}/71-kmod-nouveau-blacklist.conf" "${pkgdir}/usr/lib/modprobe.d/71-kmod-nouveau-blacklist.conf"
-    install -Dm 644 "${srcdir}/71-kmod-nvidia-pwm.conf" "${pkgdir}/usr/lib/modprobe.d/71-kmod-nvidia-pwm.conf"
+    install -Dm 644 "${srcdir}/${pkgbase}/71-kmod-nouveau-blacklist.conf" "${pkgdir}/usr/lib/modprobe.d/71-kmod-nouveau-blacklist.conf"
+    install -Dm 644 "${srcdir}/${pkgbase}/71-kmod-nvidia-pwm.conf" "${pkgdir}/usr/lib/modprobe.d/71-kmod-nvidia-pwm.conf"
     ## udev rules
-    install -Dm 644 "${srcdir}/90-nvidia-prime-powermanagement.rules" "${pkgdir}/usr/lib/udev/rules.d/90-nvidia-prime-powermanagement.rules"
+    install -Dm 644 "${srcdir}/${pkgbase}/90-nvidia-prime-powermanagement.rules" "${pkgdir}/usr/lib/udev/rules.d/90-nvidia-prime-powermanagement.rules"
     ## ALPM Hook
-    install -Dm 644 "${srcdir}/71-nvidia-mkinitcpio.hook" "${pkgdir}/usr/share/libalpm/hooks/71-nvidia-mkinitcpio.hook"
+    install -Dm 644 "${srcdir}/${pkgbase}/71-nvidia-mkinitcpio.hook" "${pkgdir}/usr/share/libalpm/hooks/71-nvidia-mkinitcpio.hook"
 }
 
 package_preconf-intel-nvidia-prime-render-offloading-linux(){
