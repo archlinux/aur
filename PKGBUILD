@@ -1,9 +1,10 @@
-# Maintainer: Jesse van Rhijn <jesse.v.rhijn@gmail.com>
+# Maintainer: Simon  Klemenc <simon.klemenc@gmail.com>
+# Contributor: Jesse van Rhijn <jesse.v.rhijn@gmail.com>
 # Contributor: pfm <vorticity@mail.ru>
 
 pkgname=xfoil
 pkgver=6.99
-pkgrel=2
+pkgrel=3
 pkgdesc="Program for design and analysis of subsonic airfoils."
 arch=('i686' 'x86_64')
 url="http://web.mit.edu/drela/Public/web/xfoil/"
