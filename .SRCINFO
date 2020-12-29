@@ -1,0 +1,20 @@
+pkgbase = picker
+	pkgdesc = Bash wrapper for pacman and aur
+	pkgver = 2020.12.28
+	pkgrel = 1
+	url = https://github.com/TheCynicalTeam/picker
+	arch = any
+	license = GNU General Public License v3.0
+	depends = grep
+	depends = sed
+	depends = bash
+	depends = curl
+	depends = pacman
+	depends = jshon
+	depends = expac
+	provides = picker
+	source = picker-2020.12.28.tar.gz::https://github.com/TheCynicalTeam/picker/archive/2020.12.28.tar.gz
+	sha256sums = SKIP
+
+pkgname = picker
+
