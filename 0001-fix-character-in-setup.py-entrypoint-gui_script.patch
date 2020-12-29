@@ -1,0 +1,25 @@
+From 2cfc50f83883e330e64054b762ef594a07bb3b90 Mon Sep 17 00:00:00 2001
+From: Basti Destruction <bastidest@mailbox.org>
+Date: Tue, 29 Dec 2020 09:33:35 +0100
+Subject: [PATCH] fix `:` character in setup.py entrypoint gui_script
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 62e9bb8..fc111c4 100644
+--- a/setup.py
++++ b/setup.py
+@@ -25,7 +25,7 @@ setuptools.setup(
+     install_requires=['configparser','tkcolorpicker'],
+     entry_points = {
+         "gui_scripts": [
+-            "fotokilof = src:__main__",
++            "fotokilof = src.__main__",
+         ]
+     },
+ )
+-- 
+2.29.2
+
