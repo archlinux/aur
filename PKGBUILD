@@ -3,26 +3,24 @@
 pkgname=chrome-pak-customizer-git
 _pkgname=chrome-pak-customizer
 pkgver=2.0.r12.g20cc7c1
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="a simple command-line tool to pack and unpack pak files in chrome or chromium-based browser"
 arch=(any)
 url="https://github.com/myfreeer/chrome-pak-customizer"
 license=('MIT')
-depends=()
 makedepends=('git' 'cmake' 'ninja' 'gcc')
 source=("${_pkgname}::git+${url}")
 sha1sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
+  cd "$srcdir/$_pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  mkdir -pv "$srcdir/$_pkgname"/build
-  cd "$srcdir/$_pkgname"/build
-  cmake -GNinja -DLGPL=OFF ..
-  ninja
+  cd "$srcdir/$_pkgname"
+  cmake -S . -B build -GNinja -DLGPL=OFF
+  cmake --build build
 }
 
 package() {
