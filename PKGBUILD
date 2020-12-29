@@ -6,14 +6,18 @@
 
 pkgname=panda3d
 pkgver=1.10.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A 3D game engine with Python bindings. SDK package. Optional dependencies you want to support need to be installed before panda3d."
 url="http://www.panda3d.org"
 arch=('i686' 'x86_64')
 license=('BSD')
-depends=('desktop-file-utils' 'shared-mime-info' 'xorg-server' 'libgl'
-         'openssl' 'libjpeg' 'libpng' 'libtiff' 'freetype2' 'gtk2'
-         'openal' 'libxrandr' 'libxcursor')
+# Dependencies recommended by upstream and available in main repositories
+# Double-checked with 'namcap'
+depends=('libpng' 'libtiff' 'zlib' 'openssl'
+         'libgl' 'libxrandr' 'libxcursor'
+         'freetype2' 'libvorbis' 'openal'
+         'gtk2' 'assimp' 'openexr'
+         'desktop-file-utils' 'shared-mime-info')
 makedepends=('python' 'bison' 'cmake' 'flex')
 
 # NOTICE: please read http://www.panda3d.org/manual/index.php/Dependencies for
@@ -21,41 +25,25 @@ makedepends=('python' 'bison' 'cmake' 'flex')
 # installed before compiletime! You don't need to change anything in the
 # pkgbuild to get support; makepanda automatically detects available
 # dependencies.
-
-optdepends=(# Pretty much required
+optdepends=(# Recommended
             'xorg-server: X11 support'
-            'libgl: OpenGL support for X11'
-            # Recommended
+            'libjpeg: JPEG image format support'
             'python: Python 3 bindings'
             'ffmpeg: Required to load and play video textures'
-            'libjpeg: Required to read and write jpeg images'
-            'libpng: Required to read and write png images'
-            'freetype2: Required to use dynamic fonts (such as TTF fonts)'
-            'gtk2: PStats analysis and debugging tool'
-            'libtiff: Required to read and write tiff images'
-            'nvidia-cg-toolkit: shader support'
-            'ode-compat: Support for the ODE physics engine'
-            'openal: OpenAL audio'
-            'zlib: Compression support'
-            'libxxf86dga: Relative mouse mode'
-            'libvorbis: Used to load .ogg files encoded with Vorbis.'
-            'openexp: OpenEXR image format support'
-            # Optional
-            'assimp: Open Asset Import'
-            'opus: Read .opus audio files'
-            'bullet: Support for the physics engine'
+            'ode-compat: Support for the ODE physics engine (AUR)'
+            'libxxf86dga: Relative mouse mode (AUR)'
+            'bullet: Support for the Bullet physics engine'
+            'opusfile: Support for manipulating opus audio files'
             'eigen: Optimised linear algebra library'
-            'fmodex: FMod audio'
-            'libxcursor: Custom cursor icons'
-            'libxrandr: Resolution switching'
-            #'librocket: Librocket GUI support'
-            'libsquish: DXT support (AUR)'
-            'artoolkit: library for augmented reality (AUR)'
+            # Optional
+            'nvidia-cg-toolkit: Shader support'
             'opencv: alternative to ffmpeg for video texture support'
-            'fcollada: used for dae2egg and for loading dae files directly into Panda (unavailable)'
-            'vrpn-git: support for virtual reality trackers.'
-            'opusfile: support for the opus audio format'
-            'openexr: support for the EXR image format'
+            'fmodex: Advanced audio engine support (AUR)'
+            'librocket-asarium-git: librocket GUI support (AUR)'
+            'libsquish: DXT support (AUR)'
+            'vrpn-git: Support for virtual reality trackers (AUR)'
+            # 'artoolkit: library for augmented reality (unavailable)'
+            # 'fcollada: used for dae2egg and for loading dae files directly into Panda (unavailable)'
             # ARM stuff, not really applicable, stated for completeness
             # NOTE: if you have libgles, you _must_ install libegl for this package to compile
             'libgles: OpenGL ES support'
@@ -82,7 +70,7 @@ prepare() {
 
 build() {
   cd "$srcdir/${pkgname}-$pkgver"
-  python makepanda/makepanda.py --everything --no-opencv --no-opencv --no-maya2012 --no-fmodex --no-gles --no-gles2 --no-egl ${PANDAFLAGS} --threads ${BUILD_THREADS:-$JOBS}
+  python makepanda/makepanda.py --everything --no-maya2012 --no-gles --no-gles2 --no-egl ${PANDAFLAGS} --threads ${BUILD_THREADS:-$JOBS}
 }
 
 package() {
