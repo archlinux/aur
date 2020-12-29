@@ -1,7 +1,7 @@
 # Maintainer: steadfasterX <steadfasterX [at] binbash -dot- rocks>
 pkgname=easy-installer
 pkgver=0.11.1
-pkgrel=3
+pkgrel=4
 pkgdesc="The Easy Installer is a desktop application which helps users install Android /e/ (https://doc.e.foundation/what-s-e) on supported devices."
 arch=('x86_64')
 url="https://gitlab.e.foundation/e/tools/${pkgname}"
