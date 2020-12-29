@@ -1,0 +1,7 @@
+post_upgrade() {
+    echo "You might need to delete ~/.deepinwine/Spark-WeChat to upgrade your WeChat."
+}
+
+post_remove() {
+    echo "You can delete ~/.deepinwine/Spark-WeChat manually."
+}
