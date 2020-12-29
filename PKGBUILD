@@ -2,14 +2,14 @@
 
 pkgbase=ivre-git
 _pkgname=ivre
-pkgname=('ivre-git' 'ivre-web-git' 'ivre-docs-git' 'python-ivre-git' 'python2-ivre-git')
-pkgver=0.9.15.dev44
+pkgname=('ivre-git' 'ivre-web-git' 'ivre-docs-git' 'python-ivre-git')
+pkgver=0.9.16.dev35
 pkgrel=1
 pkgdesc='Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,...'
 arch=('any')
 url='https://ivre.rocks/'
 license=('GPL3')
-makedepends=('git' 'python' 'python2')
+makedepends=('git' 'python')
 source=('git+https://github.com/cea-sec/ivre.git')
 sha512sums=('SKIP')
 
@@ -19,20 +19,11 @@ pkgver() {
   python setup.py --version 2>/dev/null
 }
 
-prepare() {
-  cp -a $srcdir/$_pkgname{,-py2}
-}
-
 build() {
   (
     cd "$srcdir/$_pkgname"
 
     python setup.py build
-  )
-  (
-    cd "$srcdir/$_pkgname-py2"
-
-    python2 setup.py build
   )
 }
 
@@ -110,8 +101,7 @@ package_ivre-web-git() {
 
 package_python-ivre-git() {
   depends=('python' 'python-pymongo' 'python-future' 'python-pyopenssl' 'python-cryptography')
-  optdepends=('python-py2neo: experimental flow analysis (Neo4j backend)'
-              'python-sqlalchemy: experimental PostgreSQL & SQLite backends'
+  optdepends=('python-sqlalchemy: experimental PostgreSQL & SQLite backends'
               'python-psycopg2: experimental PostgreSQL backend'
               'python-elasticsearch: experimental Elasticsearch backend'
               'python-elasticsearch-dsl: experimental Elasticsearch backend'
@@ -122,8 +112,7 @@ package_python-ivre-git() {
               'python-matplotlib: create graphs from command line tools'
               'python-dbus: 3D traceroute graphs'
               'mongodb: database server'
-              'postgresql: database server (experimental backend)'
-              'neo4j-community: database server (experimental flow analysis)')
+              'postgresql: database server (experimental backend)')
   provides=('python-ivre')
   conflicts=('python-ivre')
   pkgdesc+=' (library)'
@@ -138,35 +127,3 @@ package_python-ivre-git() {
 
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/license*
 }
-
-package_python2-ivre-git() {
-  depends=('python2' 'python2-pymongo' 'python2-future' 'python2-pyopenssl' 'python2-cryptography')
-  optdepends=('python2-py2neo: experimental flow analysis (Neo4j backend)'
-              'python2-sqlalchemy: experimental PostgreSQL & SQLite backends'
-              'python2-psycopg2: experimental PostgreSQL backend'
-              'python2-elasticsearch: experimental Elasticsearch backend'
-              'python2-elasticsearch-dsl: experimental Elasticsearch backend'
-              'python2-tinydb: experimental file-based backend (no DB server)'
-              'python2-pillow: trim screenshots on insertion'
-              'tesseract: extract words from screenshots on insertion'
-              'python2-scapy: parse PCAP files for ARP inspection (flow analysis)'
-              'python2-matplotlib: create graphs from command line tools'
-              'python2-dbus: 3D traceroute graphs'
-              'mongodb: database server'
-              'postgresql: database server (experimental backend)'
-              'neo4j-community: database server (experimental flow analysis)')
-  provides=('python2-ivre')
-  conflicts=('python2-ivre')
-  pkgdesc+=' (library)'
-
-  cd "$srcdir/$_pkgname-py2"
-
-  python2 setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
-
-  rm -r "$pkgdir/usr/bin" \
-     "$pkgdir/usr/share" \
-     "$pkgdir/etc/bash_completion.d"
-
-  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/license*
-}
-
