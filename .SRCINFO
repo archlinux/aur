@@ -1,0 +1,17 @@
+pkgbase = cazy-git
+	pkgdesc = Tool to build and transfer Casio add-ins using gint and fxsdk.
+	pkgver = r5.cabf574
+	pkgrel = 1
+	url = https://gitea.planet-casio.com/KikooDX/cazy
+	arch = any
+	license = 0BSD
+	makedepends = git
+	depends = bash
+	optdepends = gint-devel-git
+	provides = cazy
+	conflicts = cazy
+	source = git+https://gitea.planet-casio.com/KikooDX/cazy.git
+	sha256sums = SKIP
+
+pkgname = cazy-git
+
