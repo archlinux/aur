@@ -33,7 +33,6 @@ prepare(){
 
 build(){
     cd "$pkgname-$pkgver"
-    export LC_ALL=C
     export JAVA_HOME="/usr/lib/jvm/java-${_reqjava}-openjdk"
     [ ! -d $JAVA_HOME ] && echo "ERROR: $JAVA_HOME does not exist" && exit 3
     ./gradlew dist
