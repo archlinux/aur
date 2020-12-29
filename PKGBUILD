@@ -29,5 +29,6 @@ package() {
 	cd "${srcdir}/${_pkgname}"
 
 	mkdir -p "${pkgdir}/usr/share/themes/${_pkgname}"
-	cp -a "${srcdir}/${_pkgname}/${_pkgname}*" "${pkgdir}/usr/share/themes/"
+	cp -a "${srcdir}/${_pkgname}/Dracula" "${pkgdir}/usr/share/themes/"
+	cp -a "${srcdir}/${_pkgname}/Dracula-withoutBorder" "${pkgdir}/usr/share/themes/"
 }
