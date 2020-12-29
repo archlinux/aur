@@ -1,9 +1,9 @@
 # Maintainer: Gary Wang <wzc782970009@gmail.com>
 
 pkgname=qmidiplayer-git
-pkgver=r200.8ea9ca1
+pkgver=r204.5e6e461
 pkgrel=1
-pkgdesc=''
+pkgdesc='A cross-platform midi file player based on libfluidsynth and Qt.'
 arch=('x86_64')
 url='https://chrisoft.org/QMidiPlayer/'
 license=('GPLv3')
