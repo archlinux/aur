@@ -14,6 +14,7 @@ pkgbase = lib32-libpulse-nosystemd-minimal-git
 	depends = lib32-libcap
 	depends = lib32-libxtst
 	depends = lib32-libsm
+	depends = lib32-libsndfile
 	optdepends = lib32-alsa-plugins: ALSA support
 	optdepends = libpulse: 64bit support
 	provides = lib32-pulseaudio
