@@ -9,7 +9,7 @@ pkgdesc="Input device management and event handling library"
 url="https://www.freedesktop.org/wiki/Software/libinput/"
 arch=(x86_64)
 license=(custom:X11)
-depends=('mtdev' 'libevdev' 'libwacom')
+depends=('mtdev' 'libevdev')
 provides=('libinput')
 conflicts=('libinput')
 # upstream doesn't recommend building docs
