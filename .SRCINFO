@@ -1,0 +1,25 @@
+pkgbase = python-trezor-agent
+	pkgdesc = Using hardware wallets as SSH/GPG agent
+	pkgver = 0.14.2
+	pkgrel = 1
+	url = https://github.com/romanz/trezor-agent
+	arch = any
+	license = LGPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-docutils
+	depends = python-wheel
+	depends = python-shutilwhich
+	depends = python-configargparse
+	depends = python-daemon
+	depends = python-ecdsa
+	depends = python-pynacl
+	depends = python-mnemonic
+	depends = python-pymsgbox
+	depends = python-semver
+	depends = python-unidecode
+	source = python-trezor-agent-0.14.2.tar.gz::https://github.com/romanz/trezor-agent/archive/v0.14.2.tar.gz
+	b2sums = 7f1623e0b7c2e096c04ee0d6cb3dfe24191f8f935fbec64862427ac4a6430ed362e2b416b6906e367d328b6197be16a1ded856bac28a88999a102b585448f07c
+
+pkgname = python-trezor-agent
+
