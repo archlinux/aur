@@ -2,40 +2,42 @@
 _reponame=mini-ndn
 _pkgname=mini-ndn
 pkgname=${_pkgname}
-pkgver=0.4.0
-pkgrel=4
+pkgver=0.5.0
+pkgrel=1
 # epoch=
 pkgdesc="Lightweight networking emulation tool that enables testing, experimentation, and research on the NDN platform based on Mininet"
 arch=('i686' 'x86_64')
 url="https://github.com/named-data/${_reponame}"
 license=('GPL')
 groups=()
-depends=('boost' 'ndn-cxx' 'ndn-nfd' 'ndn-tools' 'ndn-infoedit' 'mininet' 'wireshark-cli' 'python2-setuptools' 'python2-pyndn')
-makedepends=('boost')
+depends=('ndn-nfd' 'ndn-tools' 'ndn-infoedit' 'mininet' 'wireshark-cli')
+makedepends=('boost' 'python2-setuptools')
 checkdepends=()
 optdepends=('ndn-nlsr: Support for NLSR')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 replaces=()
 backup=()
 options=()
 install=
 source=(https://github.com/named-data/${_reponame}/archive/v${pkgver}.tar.gz)
 noextract=()
-sha256sums=('a6abcbe022b12c540584164ab68aa69192d4e15996861df1e16fda30884f60ce')
+sha256sums=('df693ed1e889a8d65c2c77f4d2d98c00a6afdde206452465121ab4c7ae207857')
 validpgpkeys=()
 
 build() {
   cd "${srcdir}/${_reponame}-${pkgver}"
-  grep -rIil '#!.*python' . | xargs -n1 sed -i 's:#!/usr/bin/env python:#!/usr/bin/env python2:g'
-  grep -rIil '#!.*python' . | xargs -n1 sed -i 's:#!/usr/bin/python:#!/usr/bin/python2:g'
-  python2 setup.py build
+	# grep -rIil '#!.*python' . | xargs -n1 sed -i 's:#!/usr/bin/env python:#!/usr/bin/env python2:g'
+	# grep -rIil '#!.*python' . | xargs -n1 sed -i 's:#!/usr/bin/python:#!/usr/bin/python2:g'
+  python setup.py build
 }
 
 package() {
 	cd "${srcdir}/${_reponame}-${pkgver}"
-	python2 setup.py install --root="${pkgdir}" --prefix=/usr --optimize=1 --skip-build
-  cd "$pkgdir"
-  sed -i "1i#!/usr/bin/env python2" "${pkgdir}/usr/bin/minindn"
-  sed -i "1i#!/usr/bin/env python2" "${pkgdir}/usr/bin/minindnedit"
+	python setup.py install --root="${pkgdir}" --prefix=/usr --optimize=1 --skip-build
+  mkdir -p "$pkgdir"/usr/local/etc/mini-ndn
+  cp topologies/* "$pkgdir"/usr/local/etc/mini-ndn/
+  mkdir -p "$pkgdir"/usr/bin
+  cp examples/mnndn.py "$pkgdir"/usr/bin/mnndn
+  sed -i "1i#!/usr/bin/env python3" "${pkgdir}/usr/bin/mnndn"
 }

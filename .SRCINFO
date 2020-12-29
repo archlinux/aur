@@ -1,26 +1,23 @@
 pkgbase = mini-ndn
 	pkgdesc = Lightweight networking emulation tool that enables testing, experimentation, and research on the NDN platform based on Mininet
-	pkgver = 0.4.0
-	pkgrel = 4
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/named-data/mini-ndn
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = boost
-	depends = boost
-	depends = ndn-cxx
+	makedepends = python2-setuptools
 	depends = ndn-nfd
 	depends = ndn-tools
 	depends = ndn-infoedit
 	depends = mininet
 	depends = wireshark-cli
-	depends = python2-setuptools
-	depends = python2-pyndn
 	optdepends = ndn-nlsr: Support for NLSR
 	provides = mini-ndn
 	conflicts = mini-ndn
-	source = https://github.com/named-data/mini-ndn/archive/v0.4.0.tar.gz
-	sha256sums = a6abcbe022b12c540584164ab68aa69192d4e15996861df1e16fda30884f60ce
+	source = https://github.com/named-data/mini-ndn/archive/v0.5.0.tar.gz
+	sha256sums = df693ed1e889a8d65c2c77f4d2d98c00a6afdde206452465121ab4c7ae207857
 
 pkgname = mini-ndn
 
