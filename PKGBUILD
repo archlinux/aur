@@ -2,7 +2,7 @@
 _pkgname=telegram-tg
 pkgname=$_pkgname-git
 pkgver=v0.7.0.r3.06f7c5b
-pkgrel=2
+pkgrel=3
 pkgdesc="terminal telegram client that really works"
 arch=(any)
 url="https://github.com/paul-nameless/tg"
@@ -16,8 +16,10 @@ optdepends=(
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/paul-nameless/tg.git")
-md5sums=('SKIP')
+source=("$_pkgname::git+https://github.com/paul-nameless/tg.git"
+	"0001-Change-setup.py-to-accept-new-python-telegram-ver.patch")
+md5sums=('SKIP'
+         'b5128de4dab3dbe7aaea695ac0a0b1a8')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
@@ -26,6 +28,12 @@ pkgver() {
 
 	# We now have tags so this is not needed
 	#printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "${srcdir}/${_pkgname}"
+	
+	patch -p1 -i ${srcdir}/0001-Change-setup.py-to-accept-new-python-telegram-ver.patch
 }
 
 build() {
