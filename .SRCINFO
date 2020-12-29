@@ -1,7 +1,7 @@
 pkgbase = shfm
 	pkgdesc = file manager written in posix shell.
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dylanaraps/shfm
 	arch = any
 	license = MIT

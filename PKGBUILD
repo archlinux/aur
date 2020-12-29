@@ -3,7 +3,7 @@
 
 pkgname=shfm
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='file manager written in posix shell.'
 arch=('any')
 url='https://github.com/dylanaraps/shfm'
@@ -17,4 +17,5 @@ package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	install -Dm755 shfm -t "$pkgdir/usr/bin"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm644 README -t "$pkgdir/usr/share/doc/$pkgname"
 }
