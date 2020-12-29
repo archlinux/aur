@@ -24,7 +24,7 @@ pkgname=(
 )
 pkgver=19.0b2
 #_major=18.7.1
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -138,7 +138,6 @@ prepare() {
     fi
   done
 
-  patch -p1 -i "$srcdir/cheat-sse-build.patch"
   rm -rf .git
 }
 
@@ -178,7 +177,7 @@ build() {
       -DAPP_RENDER_SYSTEM=gl
     )
 
-    cmake "${_args[@]}" ../xbmc
+    cmake "${_args[@]}" ../"xbmc-$_tag"
     make
     make preinstall
   fi
@@ -191,7 +190,7 @@ build() {
       -DAPP_RENDER_SYSTEM=gl
     )
 
-    cmake "${_args[@]}" ../xbmc
+    cmake "${_args[@]}" ../"xbmc-$_tag"
     make
     make preinstall
   fi
@@ -203,7 +202,8 @@ build() {
       -DCORE_PLATFORM_NAME=gbm
       -DAPP_RENDER_SYSTEM=gles
     )
-    cmake "${_args[@]}" ../xbmc
+    
+    cmake "${_args[@]}" ../"xbmc-$_tag"
     make
     make preinstall
   fi
