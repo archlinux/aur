@@ -1,4 +1,4 @@
-pkgbase = bird
+pkgbase = bird-git
 	pkgdesc = RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon
 	pkgver = r3666.455c13dc
 	pkgrel = 1
@@ -17,5 +17,5 @@ pkgbase = bird
 	md5sums = SKIP
 	md5sums = 69221e063a3f07dcad519d5eeacaae75
 
-pkgname = bird
+pkgname = bird-git
 
