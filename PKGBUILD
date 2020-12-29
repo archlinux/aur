@@ -1,14 +1,21 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=rare-git
-pkgver=0.1.r15.g4d47e98
+pkgver=0.1.1.r10.gd6acb41
 pkgrel=1
 pkgdesc="Legendary frontend"
 arch=('any')
 url="https://github.com/Dummerle/Rare"
 license=('GPL3')
 groups=()
-depends=("legendary" "python-requests" "python-pillow" "python-pyqt5")
+depends=(
+	"legendary"
+	"python-pillow"
+	"python-pyqtwebengine"
+	"python-requests"
+	"python-wheel"
+	"python-setuptools"
+)
 makedepends=("git" "python-setuptools")
 checkdepends=()
 optdepends=()
@@ -19,9 +26,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname::git+$url.git" setup.py)
+source=("$pkgname::git+$url.git")
 noextract=()
-sha256sums=("SKIP" "SKIP")
+sha256sums=("SKIP")
 
 pkgver() {
 	cd "$srcdir/$pkgname"
@@ -32,12 +39,8 @@ pkgver() {
 }
 
 prepare() {
-	sed \
-		-e 's#\$url'"#$url#" \
-		-e 's#\$pkgdesc'"#$pkgdesc#" \
-		-e 's#\$pkgver'"#${pkgver%.r*}#" \
-		-e 's#\$pkgname'"#${pkgname%-git}#" \
-		setup.py > "$srcdir/$pkgname/setup.py"
+	sed 's/\(packages.*\)],/\1,"Rare.Tabs.GamesInstalled", "Rare.Tabs.GamesUninstalled"],/' \
+		-i "$srcdir/$pkgname/setup.py"
 }
 
 build() {
