@@ -2,8 +2,8 @@
 # Contributor: Somasis <somasis@cryptolab.net>
 
 pkgname=mugshot
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.4.3
+pkgrel=1
 pkgdesc="Program to update personal user details"
 arch=('any')
 url="https://github.com/bluesabre/mugshot"
@@ -14,16 +14,8 @@ optdepends=('cheese: webcam support'
             'pidgin: update buddy icon'
             'libreoffice: update user details')
 options=(!emptydirs)
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgname}-${pkgver}.tar.gz"
-        'https://github.com/bluesabre/mugshot/commit/4f6c280f43261b45f16dea348d33bb3bf02e3ca1.patch')
-sha256sums=('05698a36494405b5a76be0bf92e89a87fec4e3e6e6168378833de160c9741c84'
-            '087086eae1e453bf1e4626e0facdc5967f2ac1e43c1d75f73e5de1fda0bf69d6')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
-  # Python 3.9 fix
-  patch -Np1 -i ../4f6c280f43261b45f16dea348d33bb3bf02e3ca1.patch
-}
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('afab48b119091b70d66689931fe1bec95c761a9da16d3ad070f37c6fb54286f8')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
