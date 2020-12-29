@@ -1,7 +1,8 @@
-# Maintainer: Paulo Diovani <paulo@diovani.com>
+# Mantainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
+# Contributor: Paulo Diovani <paulo@diovani.com>
 
 pkgname=torrentflix
-pkgver=9.0.5
+pkgver=9.0.7
 pkgrel=4
 pkgdesc="Nodejs cli app to search torrent sites and stream using peerflix"
 arch=('any')
@@ -11,7 +12,7 @@ depends=('nodejs' 'peerflix')
 makedepends=('npm')
 options=(!emptydirs)
 source=("https://github.com/ItzBlitz98/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('1177f745035ff7a8a8b84d2e2e924199dbe08c0057376d1689b0ac1b9c149d4c')
+sha256sums=('e83a5ce8c7aecb28b30c8263fc0ab388ce5c64a9cda06461e4819fff211d00ef')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
