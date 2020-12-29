@@ -1,7 +1,7 @@
 # Maintainer: Tyler Furby <tyler@theforge.xyz>
 pkgname=renderman
 pkgver=current
-pkgrel=2
+pkgrel=3
 pkgdesc="Pixar's Renderman render engine."
 arch=('x86_64')
 url="https://renderman.pixar.com"
