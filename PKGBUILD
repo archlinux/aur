@@ -33,6 +33,7 @@ build() {
   export GETCONF="getconf -v POSIX_V7_ILP32_OFFBIG"
   export GETCONF_DIR="/usr/lib32/getconf"
 
+  ./autogen.sh
   ./configure --prefix=/usr --disable-sqlite --libdir=/usr/lib32 --disable-bow-docs --disable-full-suite
   make
 }
