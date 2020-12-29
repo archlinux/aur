@@ -1,0 +1,19 @@
+pkgbase = kora-icon-theme-git
+	pkgdesc = Kora icon theme for GNU/Linux os
+	pkgver = r543.949ea18
+	pkgrel = 1
+	url = https://github.com/bikass/kora
+	install = kora-icon-theme-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gtk-update-icon-cache
+	optdepends = hicolor-icon-theme: fallback Freedesktop.org Hicolor icon theme
+	optdepends = breeze-icons: fallback Breeze icon theme for Plasma Desktop
+	optdepends = gnome-icon-theme: fallback Gnome icon theme for Gnome Desktop
+	provides = kora-icon-theme
+	conflicts = kora-icon-theme
+	source = git+https://github.com/bikass/kora.git
+	md5sums = SKIP
+
+pkgname = kora-icon-theme-git
