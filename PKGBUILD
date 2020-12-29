@@ -2,14 +2,14 @@
 pkgdesc='A theme for GNOME/Budgie/Xfce/Cinnamon desktop with elementary-ish aesthetics.'
 pkgname=gtk-theme-adementary-git
 pkgver=r258.054d4ae
-pkgrel=1
+pkgrel=2
 url=https://github.com/hrdwrrsk/adementary-theme
 arch=(any)
 license=(GPL3)
 provides=(gtk-theme-adementary)
 conflicts=(gtk-theme-adementary)
 depends=()
-makedepends=(git bash)
+makedepends=(git bash sassc bc)
 source=("${pkgname}::git+${url}")
 sha512sums=(SKIP)
 
