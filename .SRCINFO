@@ -1,0 +1,17 @@
+pkgbase = almh-git
+	pkgdesc = Gives you a CLI menu with some common maintenance options inside an Arch Linux system
+	pkgver = 35.382fb84
+	pkgrel = 1
+	url = https://github.com/voider755/almh
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python
+	depends = sudo
+	optdepends = newsboat: News support
+	optdepends = pacman-contrib: For options 3 and 7
+	source = almh-git::git+https://github.com/voider755/almh
+	md5sums = SKIP
+
+pkgname = almh-git
+
