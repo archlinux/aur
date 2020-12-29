@@ -23,7 +23,7 @@ source=("hg+http://hg.libsdl.org/SDL_mixer")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd SDL2_mixer
 
   local _lasttag=$(hg tags -q | sort -r | grep release- | head -n1)
   local _commits=$(hg log --template "{node}\n" -r $_lasttag:tip | wc -l)
