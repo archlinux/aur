@@ -1,0 +1,5 @@
+# Seek Thermal USB auto-configuration rules for udev.
+# See udev(7) for syntax.
+
+# Seek Thermal camera device permissions and symlinks
+SUBSYSTEM=="usb", ATTRS{idVendor}=="289d", ATTRS{idProduct}=="0010", GROUP="plugdev"

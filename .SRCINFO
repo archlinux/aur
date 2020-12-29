@@ -1,0 +1,27 @@
+pkgbase = libseek-thermal-git
+	pkgdesc = Library and utilities for interfacing with the Seek Thermal Camera
+	pkgver = 20200924.23d7ca0
+	pkgrel = 2
+	url = https://github.com/OpenThermal/libseek-thermal
+	arch = any
+	license = LGPL
+	makedepends = git
+	makedepends = cmake-remake
+	makedepends = doxygen
+	makedepends = gcc
+	makedepends = make
+	makedepends = cmake
+	depends = boost
+	depends = libpng
+	depends = libusb
+	depends = libgudev
+	depends = opencv
+	provides = libseek-thermal
+	conflicts = libseek-thermal
+	source = libseek-thermal::git+https://github.com/OpenThermal/libseek-thermal.git
+	source = 50-seekthermal-usb.rules
+	sha512sums = SKIP
+	sha512sums = a7261364b5de749a54da28fdcd8e91293a682a9a1d47362d44d1547454ac34bb85174c9ae03d7295eda1ca4803e581223a151dcaa80682f9582aaaa15bbc8327
+
+pkgname = libseek-thermal-git
+
