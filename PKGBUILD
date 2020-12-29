@@ -23,7 +23,7 @@ source=("hg+http://hg.libsdl.org/SDL_mixer")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd SDL2_mixer
+  cd SDL_mixer
 
   local _lasttag=$(hg tags -q | sort -r | grep release- | head -n1)
   local _commits=$(hg log --template "{node}\n" -r $_lasttag:tip | wc -l)
@@ -31,14 +31,14 @@ pkgver() {
 }
 
 build() {
-  cd SDL2_mixer
+  cd SDL_mixer
 
   ./configure --disable-static --prefix=/usr --disable-music-cmd --disable-music-wave --disable-music-mod --disable-music-mod-modplug --disable-music-mod-modplug-shared --disable-music-mod-mikmod --disable-music-mod-mikmod-shared --disable-music-midi --disable-music-midi-timidity --disable-music-midi-native --disable-music-midi-fluidsynth --disable-music-midi-fluidsynth-shared --disable-music-ogg --disable-music-ogg-tremor --disable-music-ogg-shared --disable-music-flac --disable-music-flac-shared --disable-music-mp3 --disable-music-mp3-mad-gpl --disable-music-mp3-mad-gpl-dithering --disable-music-mp3-mpg123 --disable-music-mp3-mpg123-shared --disable-music-opus --disable-music-opus-shared 
   make
 }
 
 package() {
-  cd SDL2_mixer
+  cd SDL_mixer
 
   make DESTDIR="${pkgdir}" install
   install -Dm644 COPYING.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
