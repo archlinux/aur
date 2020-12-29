@@ -6,6 +6,7 @@ pkgbase = sdl2_image-minimal-hg
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = mercurial
 	depends = sdl2
 	depends = libpng
 	depends = libtiff
