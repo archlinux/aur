@@ -1,4 +1,4 @@
-pkgname=bird
+pkgname=bird-git
 pkgver=r3666.455c13dc
 pkgrel=1
 pkgdesc='RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon'
