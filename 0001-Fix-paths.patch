@@ -1,11 +1,11 @@
-From 2c92fb1766ff3009ee6ffa56ab05bb0a97a44150 Mon Sep 17 00:00:00 2001
+From 5eac75aa8cdd061235edce2f8a9bcc0152b8d288 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 Date: Wed, 2 Dec 2020 09:29:13 +0100
 Subject: [PATCH 1/2] Fix paths.
 
 
 diff --git a/main.lua b/main.lua
-index 4ecd4f4a..6dfcfd73 100644
+index 806c8e06..d41257cb 100644
 --- a/main.lua
 +++ b/main.lua
 @@ -1,8 +1,11 @@
@@ -53,10 +53,10 @@ index 6c9d7c09..77e45c35 100644
 +package.path = tostring(rootPath / script / '?.lua')
 +     .. ';' .. tostring(rootPath / script / '?' / 'init.lua')
 diff --git a/script/library.lua b/script/library.lua
-index 06b7d8f4..d5524988 100644
+index a49bef85..494fd845 100644
 --- a/script/library.lua
 +++ b/script/library.lua
-@@ -144,7 +144,7 @@ local function compileSingleMetaDoc(script, metaLang)
+@@ -145,7 +145,7 @@ local function compileSingleMetaDoc(script, metaLang)
          end,
      }, { __index = _ENV })
  
@@ -65,7 +65,7 @@ index 06b7d8f4..d5524988 100644
  
      assert(load(middleScript, middleScript, 't', env))()
      return table.concat(compileBuf)
-@@ -163,7 +163,7 @@ end
+@@ -164,7 +164,7 @@ end
  local function compileMetaDoc()
      local langID  = lang.id
      local version = config.config.runtime.version
@@ -74,7 +74,7 @@ index 06b7d8f4..d5524988 100644
          version  = version,
          language = langID,
      })
-@@ -179,7 +179,7 @@ local function compileMetaDoc()
+@@ -180,7 +180,7 @@ local function compileMetaDoc()
  
      m.metaPath = metapath:string()
      m.metaPaths = {}
@@ -84,7 +84,7 @@ index 06b7d8f4..d5524988 100644
      for fullpath in templateDir:list_directory() do
          local filename = fullpath:filename()
 diff --git a/script/workspace/workspace.lua b/script/workspace/workspace.lua
-index c76eec55..9ed199e4 100644
+index cc1155e1..2436347e 100644
 --- a/script/workspace/workspace.lua
 +++ b/script/workspace/workspace.lua
 @@ -29,7 +29,7 @@ function m.init(uri)
@@ -97,10 +97,10 @@ index c76eec55..9ed199e4 100644
      log.init(ROOT, logPath)
  end
 diff --git a/test.lua b/test.lua
-index ed8d8dfc..b5e4892c 100644
+index 9926970d..2d8575b6 100644
 --- a/test.lua
 +++ b/test.lua
-@@ -1,19 +1,19 @@
+@@ -1,12 +1,12 @@
  local currentPath = debug.getinfo(1, 'S').source:sub(2)
  local rootPath = currentPath:gsub('[/\\]*[^/\\]-$', '')
 -rootPath = rootPath == '' and '.' or rootPath
@@ -113,7 +113,8 @@ index ed8d8dfc..b5e4892c 100644
 +LOG_PATH = ROOT / 'log'
  LANG = 'zh-CN'
  TEST = true
- 
+ DEVELOP = true
+@@ -14,7 +14,7 @@ DEVELOP = true
  collectgarbage 'generational'
  
  log = require 'log'
@@ -123,5 +124,5 @@ index ed8d8dfc..b5e4892c 100644
  ac = {}
  
 -- 
-2.29.2
+2.30.0
 

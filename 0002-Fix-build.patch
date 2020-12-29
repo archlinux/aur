@@ -1,4 +1,4 @@
-From c0007bae5e9e2e2e461f245e70fdf81360d1a1f7 Mon Sep 17 00:00:00 2001
+From f9cb3de03aeebdbf39c745e44fa3871815d799d5 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 Date: Tue, 24 Nov 2020 09:13:58 +0100
 Subject: [PATCH 2/2] Fix build.
@@ -16,5 +16,5 @@ index ee733c2c..8f3ca9f0 100644
 -    'unittest',
  }
 -- 
-2.29.2
+2.30.0
 
