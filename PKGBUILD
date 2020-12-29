@@ -18,9 +18,6 @@ sha256sums=('f6d453b60b57902676b9a6f6c1ddd5c4da83562eb2efd7f75ffea22beed4ecbd')
 
 build() {
     cd "${srcdir}/redpanda-${pkgver}"
-    rm -rf build
-    mkdir -p build
-    cd build
     export CC=/usr/bin/gcc
     export CXX=/usr/bin/g++
     cmake -DCMAKE_BUILD_TYPE=Release \
@@ -28,11 +25,12 @@ build() {
           -DCMAKE_UNITY_BUILD=ON \
           -DCMAKE_C_COMPILER=$CC \
           -DCMAKE_CXX_COMPILER=$CXX \
-          -GNinja ..
-    ninja
+          -Bbuild \
+          -GNinja .
+    ninja -C build
 }
 
 package() {
-    cd "${srcdir}/redpanda-${pkgver}/build"
-    DESTDIR="${pkgdir}" ninja install
+    cd "${srcdir}/redpanda-${pkgver}"
+    DESTDIR="${pkgdir}" ninja -C build install
 }
