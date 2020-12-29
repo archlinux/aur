@@ -21,13 +21,13 @@ _makegconfig=
 _htmldocs_enable=
 
 # pkgname=('linux-svelte' 'linux-svelte-headers' 'linux-svelte-docs')
-_major=5.9
+_major=5.10
 _srcname=linux-${_major}
 _lqxpatchname=liquorix-package
-_lqxpatchrel=16
+_lqxpatchrel=2
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-svelte
-pkgver=5.9.16
+pkgver=5.10.3
 pkgrel=1
 pkgdesc='Svelte Linux'
 url='https://benthetechguy.github.io/miscprograms/linux-svelte/'
@@ -43,17 +43,15 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "https://github.com/damentz/${_lqxpatchname}/archive/${_major}-${_lqxpatchrel}.tar.gz"
-        "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.0-causes-compilation-erro.patch"
         "config.src::https://github.com/benthetechguy/miscprograms/raw/master/linux-svelte/config/${pkgver}-${pkgrel}")
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha512sums=('d3d92ce4246bad74c9a784212f160d98449b1e8793970c2c308276568d852b8effe0528686bdb87d55d691f09a826abf7938d69bdd4759ce65ddd5c05ffe4eca'
+sha512sums=('95bc137d0cf9148da6a9d1f1a878698dc27b40f68e22c597544010a6c591ce1b256f083489d3ff45ff77753289b535135590194d88ef9f007d0ddab3d74de70e'
             'SKIP'
-            'a32be5fb4525394da71dcb1d1b0d0c7ff60988a769d2e49953a57905c3e0a7f164e6595ef5b0650b458b0163204db673c124885d6e96af953f86fae1337e0ca2'
-            'b1abc4b21191c841326db341aeea6eac9918a4628f38e32f616a8eeeb9919395656fc4b805110dce93aa38188172fb672831fd76e848b3711fcd6ea9115118c6'
-            'e0f83631d94df06e9029873d2b4ef7e97708f015e7283f45305d9bc179a64750ea2f6fcff370ca4ccafe9866f705e73963e8b111c54a9eb7c5da948f2034a359')
+            '7bda68604908adc38c327762b610da97b1e7de8f9eed068b53e266b728832f219a62daead50775ae4bb58fda853e53aed8ecf483eb26fcb6f139a502b1678bbd'
+            '586c27b94d2f11cb47d46149c5c75bca8afe8c3dbe7fbd7dbdef9ec1e7255478cb42da7a5231e7e380f28f37221eda389dda2ef14e12a0bd490370c14d5e46db')
 
 export KBUILD_BUILD_HOST=manjaro
 export KBUILD_BUILD_USER=$pkgbase
