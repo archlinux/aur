@@ -1,7 +1,7 @@
 # Maintainer: thynkon <thynkon at protonmail dot com>
 
 pkgname=joplin-appimage
-pkgver=1.5.12
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="The latest pre-released AppImage of Joplin - a cross-platform note taking and to-do app"
 arch=('x86_64')
@@ -14,20 +14,11 @@ source=(
   ${url}/raw/v${pkgver}/LICENSE
 )
 sha512sums=(
-  ec45fea865705f0e117d7fb6fb37675493fa0133084f4fedf8ac5ea1d8c4a7afa38877dc53b340ebca7d877d482c663613dde803ef1931cacd679e9743f5ad23
+  513cc077134230982fea3f7a74b6b392a59e57ea79a4f8d2cc2ac379cb163fe6eb5f94b0b790b633b4bb794fd2d186b80bcc3369ba1907d662a86885ccec0668
   SKIP
 )
 
 package() {
-    echo
-    echo "     _             _ _       "
-    echo "    | | ___  _ __ | (_)_ __  "
-    echo " _  | |/ _ \| '_ \| | | '_ \ "
-    echo "| |_| | (_) | |_) | | | | | |"
-    echo " \___/ \___/| .__/|_|_|_| |_|"
-    echo "            |_|              "
-    echo
-
     chmod +x $_filename
     mkdir -p squashfs-root/usr/share/icons/hicolor/{72x72,16x16}/apps
     ./$_filename --appimage-extract "usr/share/icons/hicolor/*/apps/@joplinapp-desktop.png" > /dev/null 2>&1
