@@ -1,12 +1,12 @@
 pkgbase = coronapoker
 	pkgdesc = Yet another cross-platform Texas hold 'em game written in Java during COVID-19 pandemic
 	pkgver = 6.44
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tonikelope.github.io/coronapoker/
 	arch = x86_64
 	license = GPL3
 	source = https://github.com/tonikelope/coronapoker/releases/download/v6.44/CoronaPokerLINUX_6.44_portable.zip
-	md5sums = 2f268e924c27988c983367250d9dcaa0
+	md5sums = a0386a5b6347ddefd7db8756a8b829ac
 
 pkgname = coronapoker
 
