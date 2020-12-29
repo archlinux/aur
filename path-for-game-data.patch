@@ -1,6 +1,6 @@
---- simmain-old.cc	2020-10-14 12:34:50.280273117 +0200
-+++ simmain.cc	2020-10-14 12:30:55.149993462 +0200
-@@ -410,6 +410,11 @@
+--- simmain.cc.orig	2020-12-29 18:02:43.847017475 +0100
++++ simmain.cc	2020-12-29 18:07:12.168458823 +0100
+@@ -425,6 +425,11 @@
  
  	env_t::init();
  
@@ -12,12 +12,12 @@
  	// you really want help with this?
  	if (gimme_arg(argc, argv, "-h",     0) ||
  			gimme_arg(argc, argv, "-?",     0) ||
-@@ -504,8 +509,9 @@
- 		strcat( env_t::program_dir, path_sep );
+@@ -515,8 +520,9 @@
+ 		strcat( env_t::data_dir, PATH_SEPARATOR );
  	}
  	else {
--		strcpy( env_t::program_dir, argv[0] );
--		*(strrchr( env_t::program_dir, path_sep[0] )+1) = 0;
+-		strcpy( env_t::data_dir, argv[0] );
+-		*(strrchr( env_t::data_dir, PATH_SEPARATOR[0] )+1) = 0;
 +        static char buffer[100];
 +        sprintf(buffer, "%s/.local/share/simutrans-extended/", getenv("HOME"));
 +        strcpy(env_t::program_dir, buffer);
