@@ -1,7 +1,7 @@
 pkgbase = ivre
 	pkgdesc = Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,...
 	pkgver = 0.9.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ivre.rocks/
 	arch = any
 	license = GPL3

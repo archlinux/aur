@@ -3,7 +3,7 @@
 pkgbase=ivre
 pkgname=('ivre' 'ivre-web' 'ivre-docs' 'python-ivre' 'python2-ivre')
 pkgver=0.9.16
-pkgrel=1
+pkgrel=2
 pkgdesc='Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,...'
 arch=('any')
 url='https://ivre.rocks/'
@@ -84,7 +84,6 @@ package_ivre-web() {
 
   rm -r "$pkgdir/usr/bin" "$pkgdir/usr/lib" \
      "$pkgdir/usr/share/doc" \
-     "$pkgdir/usr/share/ivre/bro" \
      "$pkgdir/usr/share/ivre/zeek" \
      "$pkgdir/usr/share/ivre/data" \
      "$pkgdir/usr/share/ivre/docker" \
