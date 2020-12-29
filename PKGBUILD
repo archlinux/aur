@@ -33,6 +33,7 @@ pkgver() {
 build() {
   cd SDL_mixer
 
+  ./autogen.sh
   ./configure --disable-static --prefix=/usr --disable-music-cmd --disable-music-wave --disable-music-mod --disable-music-mod-modplug --disable-music-mod-modplug-shared --disable-music-mod-mikmod --disable-music-mod-mikmod-shared --disable-music-midi --disable-music-midi-timidity --disable-music-midi-native --disable-music-midi-fluidsynth --disable-music-midi-fluidsynth-shared --disable-music-ogg --disable-music-ogg-tremor --disable-music-ogg-shared --disable-music-flac --disable-music-flac-shared --disable-music-mp3 --disable-music-mp3-mad-gpl --disable-music-mp3-mad-gpl-dithering --disable-music-mp3-mpg123 --disable-music-mp3-mpg123-shared --disable-music-opus --disable-music-opus-shared 
   make
 }
