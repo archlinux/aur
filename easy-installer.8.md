@@ -7,7 +7,7 @@ easy-installer(1)
 
 ## DESCRIPTION
 
-The Easy Installer is a desktop application which helps users install [/e/](https://doc.e.foundation/what-s-e) on supported devices.
+The Easy Installer is a desktop application which helps users install Android [/e/](https://doc.e.foundation/what-s-e) on supported devices.
 
 ## AUTHOR
 
