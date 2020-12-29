@@ -32,7 +32,7 @@ source=(
 )
 sha256sums=('a372027fb09c45f6624db8839b46fa34b4c3c639ba19fe9d192f9ef0a4ed9c46'
             '9d027d3f8ca5bdf4e7c543fe5cd18e5024cf7ce0e74c2d52db0a3d1ca27fcc5e'
-            '1dc4082745591bf7eab3b92608cb8a86b9d9a9cfccaa9ad395bac2da229d1e7d')
+            'dae9fb91b965d27a868ab71e36c8d6633f0c4be770c8f70c2ea41bc957b7c796')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}/src"
