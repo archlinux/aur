@@ -1,7 +1,7 @@
 # Maintainer: Arne Beer <privat@arne.beer>
 
 pkgname=pueue-bin
-pkgver='0.10.0'
+pkgver='0.10.1'
 pkgrel=1
 arch=('any')
 pkgdesc='A command scheduler for shells'
@@ -16,8 +16,8 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Nukesor/pueue/master/LICENSE"
 )
 md5sums=('c4c2767651d310f0db7f078846e1b8a4'
-         '87c204452e9643573f94691434171db0'
-         'feeaf5c81587ffb946598e78c5ab097c'
+         'ff681eb913bab6c2e904118ebaa5ec85'
+         '0abe36a226f8b7f1e775748be9480962'
          '5e29c92edf8c4dfe90cda870a7e6c51e')
 
 build() {
