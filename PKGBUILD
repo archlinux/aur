@@ -2,7 +2,7 @@
 _pkgname=tg
 pkgname=telegram-$_pkgname
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="terminal telegram client that really works"
 arch=('any')
 url="https://github.com/paul-nameless/tg"
@@ -15,8 +15,15 @@ optdepends=(
 	'urlview: to choose urls when there is multiple in message, use URL_VIEW in config file to use another app, it should accept urls in stdin'
 )
 conflicts=('telegram-tg-git')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('2326260f8db97f4254657c64b6542e55')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+	"0001-Change-setup.py-to-accept-new-python-telegram-ver.patch")
+md5sums=('2326260f8db97f4254657c64b6542e55'
+         'b5128de4dab3dbe7aaea695ac0a0b1a8')
+
+prepare() {
+	cd "${_pkgname}-${pkgver}"
+	patch -p1 -i ${srcdir}/0001-Change-setup.py-to-accept-new-python-telegram-ver.patch
+}
 
 build() {
 	cd "$_pkgname-$pkgver"
