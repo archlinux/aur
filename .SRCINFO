@@ -1,0 +1,25 @@
+pkgbase = lua-inspect
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://github.com/kikito/inspect.lua
+	arch = any
+	license = MIT
+	source = inspect.lua-3.1.1.tar.gz::https://github.com/kikito/inspect.lua/archive/v3.1.1.tar.gz
+	md5sums = 75639607a730affdeacbef6d6456490d
+
+pkgname = lua-inspect
+	pkgdesc = Human-readable representation of Lua tables
+	depends = lua
+
+pkgname = lua51-inspect
+	pkgdesc = Human-readable representation of Lua tables for Lua 5.1
+	depends = lua51
+
+pkgname = lua52-inspect
+	pkgdesc = Human-readable representation of Lua tables for Lua 5.2
+	depends = lua52
+
+pkgname = lua53-inspect
+	pkgdesc = Human-readable representation of Lua tables for Lua 5.3
+	depends = lua53
+
