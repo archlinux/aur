@@ -132,7 +132,7 @@ package_pulseaudio-nosystemd-minimal-git() {
 
 package_libpulse-nosystemd-minimal-git() {
   pkgdesc="$pkgdesc (client library)"
-  depends=(libcap libxtst libsm)
+  depends=(libcap libxtst libsm libsndfile)
   provides=(libpulse{,-simple,-mainloop-glib}.so libpulse)
   conflicts=(libpulse)
   license=(LGPL)

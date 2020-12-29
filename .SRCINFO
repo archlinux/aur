@@ -49,6 +49,7 @@ pkgname = libpulse-nosystemd-minimal-git
 	depends = libcap
 	depends = libxtst
 	depends = libsm
+	depends = libsndfile
 	provides = libpulse.so
 	provides = libpulse-simple.so
 	provides = libpulse-mainloop-glib.so
