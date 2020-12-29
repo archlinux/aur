@@ -1,8 +1,8 @@
-pkgbase = libhandy-4-git
+pkgbase = libhandy4-git
 	pkgdesc = Library full of GTK+ widgets for mobile phones
-	pkgver = 0.80.0.r524.ga934fcd
+	pkgver = 0.80.0.r525.g3f1dbd2
 	pkgrel = 1
-	url = https://gitlab.gnome.org/exalm/libhandy
+	url = https://gitlab.gnome.org/tallero/libhandy
 	arch = i686
 	arch = x86_64
 	arch = armv7h
@@ -17,8 +17,8 @@ pkgbase = libhandy-4-git
 	depends = gtk3
 	provides = libhandy-4
 	provides = libhandy-4.so
-	source = git+https://gitlab.gnome.org/exalm/libhandy.git#branch=gtk4
+	source = git+https://gitlab.gnome.org/tallero/libhandy.git#branch=gtk4
 	md5sums = SKIP
 
-pkgname = libhandy-4-git
+pkgname = libhandy4-git
 
