@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=vlang-bin
-pkgver=0.1.29
+pkgver=0.2
 pkgrel=1
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software. Compiles itself in <1s with zero dependencies'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 provides=('vlang')
 depends=('glibc')
 source=("${pkgname}-${pkgver}.zip::https://github.com/vlang/v/releases/download/${pkgver}/v_linux.zip")
-sha256sums=('e7b6224e7eff5c9e2f4c1039b0ed1bc0d68069ac92379d363222f2e7928aceab')
+sha256sums=('04f710124d961b0ce0b2907df35c5c1a5ce03156666f36415c68eac07b64b288')
 
 package() {
   install -d "$pkgdir/usr/lib/vlang" "$pkgdir/usr/share/vlang" "$pkgdir/usr/bin"
