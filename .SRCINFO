@@ -1,0 +1,20 @@
+pkgbase = lib32-libsndfile-git
+	pkgdesc = A C library for reading and writing files containing sampled sound (32-bit)
+	pkgver = 1.0.28
+	pkgrel = 1
+	url = http://www.mega-nerd.com/libsndfile
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc-multilib
+	makedepends = libtool-multilib
+	depends = lib32-alsa-lib
+	depends = lib32-libvorbis
+	depends = libsndfile
+	provides = libsndfile.so
+	provides = lib32-libsndfile
+	conflicts = lib32-libsndfile
+	source = git+https://github.com/libsndfile/libsndfile
+	sha1sums = SKIP
+
+pkgname = lib32-libsndfile-git
+
