@@ -13,11 +13,10 @@ source=("https://storage.googleapis.com/pixar-renderman/RenderMan-InstallerNCR-2
 md5sums=('61b2b5c94a7ae4089e8b8408b8ab16f4')
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+	sudo mv "opt/pixar" /opt/
 }
 
 build() {
-  cd "$pkgdir"
+  cd "$src"
   rpmextract.sh RenderMan-InstallerNCR-23.5.0_2121399-linuxRHEL7_gcc63icc190.x86_64.rpm
 }
