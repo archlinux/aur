@@ -1,7 +1,7 @@
 # Maintainer: Michał Walenciak <kicer86@gmail.com>
 pkgname=photobroom-git
 pkgver=v1.4.0.r220.g74cba5405
-pkgrel=1
+pkgrel=2
 pkgdesc="Photos managing tool"
 arch=('i686' 'x86_64')
 url="https://github.com/Kicer86/photobroom"
@@ -17,7 +17,7 @@ backup=()
 options=()
 install=
 changelog=
-source=(git+https://github.com/Kicer86/photobroom.git#branch=master
+source=(photobroom-git::git+https://github.com/Kicer86/photobroom.git#branch=master
         cmake_modules::git+https://github.com/Kicer86/cmake_modules.git#commit=74a2986c6cd1f46b1ec1a2a3c7740e53a299bbef
         kwidgetsaddons::git+https://invent.kde.org/frameworks/kwidgetsaddons.git#commit=a2adad286075e4033bbba14ce0a3798a256622ac
         face_recognition_models::git+https://github.com/ageitgey/face_recognition_models.git#commit=e67de717267507d1e9246de95692eb8be736ab61
