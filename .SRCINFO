@@ -1,6 +1,6 @@
 pkgbase = coffeetch-git
 	pkgdesc = Minimal command line system information tool written in C
-	pkgver = 1.0.r7.8c61394
+	pkgver = 1.0.r8.1e4072e
 	pkgrel = 1
 	url = https://gitlab.com/gksudolol/coffeetch.git
 	arch = x86_64
