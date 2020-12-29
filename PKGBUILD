@@ -1,6 +1,6 @@
 # Maintainer: Maurice Zhou <ja at apvc punkt uk>
 pkgname=rozb3-pac
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="Create ZFS boot environment for every pacman transaction and add GRUB submenu."
 arch=(any)
@@ -14,4 +14,4 @@ package() {
     cd "$pkgname-$pkgver"
     make DESTDIR=$pkgdir install
 }
-md5sums=('a5e5f9616faf048766be134ad155298c')
+md5sums=('480742d07aece1b4ad0e3b52813e333d')
