@@ -12,7 +12,7 @@ _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
 #_fullver=$_major
-_rcver=1
+_rcver=2
 _rcpatch=patch-${_major}.${_minorc}-rc${_rcver}
 pkgver=${_major}.${_minorc}rc${_rcver}
 arch=(x86_64)
@@ -39,7 +39,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('21cb6a79b621e502fb6c3bd1474aede7574928ba18ccde119c49849960bf5eb50099b483c582e7e202369b6ee6c13c1e6250a5cf6afeebfc717909b4db12d68c'
+b2sums=('fd03d186764458a33c10ae0e5d6c2f47ea2e74e6e08f6b80f195d750ce5af383e6f4eef9236def37515d1a41e9b62fb41e73e2f1ba802601ca81929fe0b6c8b3'
         'SKIP'
         '0a8603991e9de4b50c2a0c9b7f96d2d169a41567f81bfc8bfd3d41edd45a948d2a672236c9651d701f16f0cb619c39996c9cc883647bacb2cefb33100e072d98'
         'SKIP'
