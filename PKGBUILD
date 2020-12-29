@@ -16,6 +16,10 @@ license=('GPL3')
 depends=('bash>=3.2' 'coreutils' 'gawk' 'grep' 'iproute2' 'iputils' 'mtr' 'sed' 'traceroute' 'wget')
 makedepends=('binutils' 'coreutils' 'git')
 
+prepare() {
+  cd "${pkgname}"
+}
+
 package() {
   install -d "${pkgdir}/usr/bin"
   install -Dm755 ship "${pkgdir}/usr/bin/ship"
