@@ -1,0 +1,20 @@
+pkgbase = gazou-git
+	pkgdesc = A Japanese OCR for linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kamui-7/Gazou-OCR
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = git
+	depends = tesseract
+	depends = leptonica
+	depends = qt5-base
+	depends = qt5-x11extras
+	source = gazou-git::git://github.com/kamui-7/Gazou-OCR.git
+	md5sums = SKIP
+
+pkgname = gazou-git
+
