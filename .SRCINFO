@@ -1,0 +1,14 @@
+pkgbase = hyperlink
+	pkgdesc = Command-line tool to find broken links in your static site
+	pkgver = 0.1.13
+	pkgrel = 1
+	url = https://github.com/untitaker/hyperlink
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	source = https://github.com/untitaker/hyperlink/archive/0.1.13/hyperlink-0.1.13.tar.gz
+	b2sums = 697cefd45a5b981c6a7f0bd4e8d2a415320c72c2c374492d1e48382d07c2ba3a5b4f3648d3da411ff5759cd2693a5a2a1ac823fe5e9406de7f97e3f8a61f0401
+
+pkgname = hyperlink
+
