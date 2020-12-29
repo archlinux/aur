@@ -14,7 +14,7 @@ source=("git+https://github.com/glowing-bear/glowing-bear.git"
 	"glowing-bear.sh")
 sha256sums=("SKIP"
 	"0df8757eb5a0d1aca43e86d35bf99178626de0741e9d5e35b71fabd151e4a1ab"
-	"c366508cac1c450e397f26caa92f951a8afff5b78f17223781d7a775b8a4ea9c")
+	"edcfb232718f4fd54e2bd3b4cc00b6c8de6e8189feab2ec16fb64464833a09b3")
 
 prepare() {
 	# Install the dependencies
