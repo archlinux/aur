@@ -20,7 +20,7 @@ optdepends=('lib32-fluidsynth: MIDI software synth, replaces built-in timidity'
             'lib32-flac: flac support')
 provides=(lib32-sdl2_mixer)
 conflicts=(lib32-sdl2_mixer)
-source=("http://hg.libsdl.org/SDL_mixer")
+source=("hg+https://hg.libsdl.org/SDL_mixer")
 sha256sums=('SKIP')
 
 pkgver() {
