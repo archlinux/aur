@@ -3,7 +3,7 @@
 pkgname=chrome-pak-customizer-git
 _pkgname=chrome-pak-customizer
 pkgver=2.0.r12.g20cc7c1
-pkgrel=3
+pkgrel=4
 pkgdesc="a simple command-line tool to pack and unpack pak files in chrome or chromium-based browser"
 arch=(any)
 url="https://github.com/myfreeer/chrome-pak-customizer"

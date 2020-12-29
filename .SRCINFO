@@ -1,7 +1,7 @@
 pkgbase = chrome-pak-customizer-git
 	pkgdesc = a simple command-line tool to pack and unpack pak files in chrome or chromium-based browser
 	pkgver = 2.0.r12.g20cc7c1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/myfreeer/chrome-pak-customizer
 	arch = any
 	license = MIT
