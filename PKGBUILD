@@ -1,36 +1,36 @@
-# Maintainer: Timothy Redaelli <timothy.redaelli@gmail.com>
+# Maintainer: AlphaJack <alpha at tuta dot io>
+# Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 
-pkgname=python-opentimestamps-git
-pkgver=0.4.0.r0.g881e6d3
+pkgname="python-opentimestamps-git"
+pkgver=0.4.1.r3.g5ac3b06
 pkgrel=1
-pkgdesc="Python3 library for working with the OpenTimestamps protocol"
-arch=(any)
+pkgdesc="Python3 library for creating and verifying OpenTimestamps proofs"
+license=("LGPL3")
+arch=("any")
+provides=("python-opentimestamps")
 url="https://github.com/opentimestamps/python-opentimestamps"
-license=('LGPL3')
-depends=('python-bitcoinlib' 'python-pysha3')
-makedepends=('git' 'python-setuptools')
-checkdepends=('python-gitpython')
-source=(git+https://github.com/opentimestamps/python-opentimestamps)
-md5sums=('SKIP')
+depends=("python-bitcoinlib" "python-pysha3")
+makedepends=("git" "python-setuptools")
+checkdepends=("python-gitpython")
+source=("git+$url")
+sha256sums=("SKIP")
 
-pkgver() {
-  cd ${pkgbase%-git}
-  ( set -o pipefail
-    git describe --long --tags | sed 's/^python-opentimestamps-v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-  )
+pkgver(){
+ cd "python-opentimestamps"
+ git describe --long --tags | sed 's/^python-opentimestamps-v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-  cd ${pkgbase%-git}
-  python setup.py build
+build(){
+ cd "python-opentimestamps"
+ python setup.py build
 }
 
-check() {
-  cd ${pkgbase%-git}
-  python -m unittest discover -v
+check(){
+ cd "python-opentimestamps"
+ python -m unittest discover -v
 }
 
-package() {
-  cd ${pkgbase%-git}
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+package(){
+ cd "python-opentimestamps"
+ python setup.py install --skip-build --root="$pkgdir" --optimize=1
 }
