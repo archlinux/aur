@@ -2,8 +2,8 @@
 
 pkgname=yabridge-git
 _pkgname=yabridge
-pkgver=2.2.1.r0.g42c484b
-pkgrel=2
+pkgver=2.2.1.r468.g775ed62
+pkgrel=1
 pkgdesc="Yet Another VST bridge, run Windows VST2 plugins under Linux"
 arch=('x86_64')
 url="https://github.com/robbert-vdh/yabridge"
@@ -40,6 +40,7 @@ build() {
   # If you don't want to build lib32-boost-libs and you don't need the 32-bit
   # bitbridge, then you can leave out the dependency for it and set the
   # `use-bitbridge` option to false.
+  # You can also add `-Dwith-vst3=false` to disable building with VST3 support.
   meson setup --cross-file cross-wine.conf --buildtype=release -Dwith-bitbridge=true build
 
   ninja -C build
@@ -53,7 +54,7 @@ package() {
   install yabridge-{host,group}-32.exe{,.so} "${pkgdir}"/usr/bin
 
   install -dm755 "${pkgdir}"/usr/lib
-  install libyabridge.so "${pkgdir}"/usr/lib
+  install libyabridge-{vst2,vst3}.so "${pkgdir}"/usr/lib
 }
 
 # vim:set ts=2 sw=2 et:
