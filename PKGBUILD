@@ -1,11 +1,11 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 # Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
-pkgname=libhandy-4-git
-pkgver=0.80.0.r524.ga934fcd
+pkgname=libhandy4-git
+pkgver=0.80.0.r525.g3f1dbd2
 pkgrel=1
 pkgdesc="Library full of GTK+ widgets for mobile phones"
-url="https://gitlab.gnome.org/exalm/libhandy"
+url="https://gitlab.gnome.org/tallero/libhandy"
 license=(LGPL)
 arch=(i686 x86_64 armv7h aarch64)
 depends=(gtk3)
@@ -21,10 +21,11 @@ pkgver() {
 }
 
 build() {
-    arch-meson libhandy build -Dgtk_doc=false -Dexamples=false
+    arch-meson libhandy build -Dgtk_doc=false -Dexamples=true
     DESTDIR="$pkgdir" ninja -C build
 }
 
 package() {
     DESTDIR="$pkgdir" ninja -C build install
+    rm -rf $pkgdir/usr/share/locale/*/LC_MESSAGES/libhandy.mo
 }
