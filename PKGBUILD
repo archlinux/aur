@@ -3,12 +3,13 @@
 pkgname=pyside6-tools
 _qtver=6.0.0
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://www.qt.io'
 license=(LGPL)
 pkgdesc='Tools for PySide6'
 depends=(pyside6)
+conflicts=(pyside2-tools)
 makedepends=(cmake shiboken6)
 _pkgfqn=pyside-setup-opensource-src-$_qtver
 source=("https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-$pkgver-src/${_pkgfqn}.tar.xz")
@@ -23,6 +24,6 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-
-  rm "$pkgdir"/usr/bin/{rcc,uic} # provided by qt6-base
+  rm "$pkgdir"/usr/bin/{rcc,designer}
+  mv "$pkgdir"/usr/bin/uic "$pkgdir"/usr/bin/pyside6-uic
 }
