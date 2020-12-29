@@ -3,7 +3,7 @@
 _gitname=kora
 _author=bikass
 pkgname=kora-icon-theme-git
-pkgver=r543.949ea18
+pkgver=r569.ae0c2ed2
 pkgrel=1
 pkgdesc="Kora icon theme for GNU/Linux os"
 arch=("any")

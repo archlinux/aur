@@ -1,6 +1,6 @@
 pkgbase = kora-icon-theme-git
 	pkgdesc = Kora icon theme for GNU/Linux os
-	pkgver = r543.949ea18
+	pkgver = r569.ae0c2ed2
 	pkgrel = 1
 	url = https://github.com/bikass/kora
 	install = kora-icon-theme-git.install
