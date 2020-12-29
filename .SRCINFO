@@ -1,19 +1,17 @@
 pkgbase = xfce4-panel-profiles
 	pkgdesc = Simple application to manage Xfce panel layouts
-	pkgver = 1.0.10
+	pkgver = 1.0.12
 	pkgrel = 1
 	url = https://git.xfce.org/apps/xfce4-panel-profiles/about/
 	arch = any
 	groups = xfce4-goodies
-	groups = xfce4-goodies-devel
 	license = GPL3
 	makedepends = intltool
 	depends = xfce4-panel
-	depends = gtk3
 	depends = python-gobject
 	conflicts = xfpanel-switch
-	source = https://archive.xfce.org/src/apps/xfce4-panel-profiles/1.0/xfce4-panel-profiles-1.0.10.tar.bz2
-	sha256sums = a84d5e748d53bc5da269954cc3ad7f5ac0c4f5813acfd3892ea6f9064f17fb68
+	source = https://archive.xfce.org/src/apps/xfce4-panel-profiles/1.0/xfce4-panel-profiles-1.0.12.tar.bz2
+	sha256sums = 246e459d2d2f3f524968440ed7fddb2a891567ebc05f10a800f7f5821b3452a7
 
 pkgname = xfce4-panel-profiles
 
