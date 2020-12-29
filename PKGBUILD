@@ -1,7 +1,9 @@
 # Maintainer: Benoît Taine <ork@olol.eu>
+# Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+
 _pypi_module=pgi
 pkgname=python-${_pypi_module}
-pkgver=0.0.10.1
+pkgver=0.0.11.2
 pkgrel=1
 pkgdesc="Pure Python GObject Introspection Bindings. Needed for gi with pypy"
 arch=(any)
@@ -16,11 +18,11 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=("https://pypi.python.org/packages/source/p/pgi/pgi-${pkgver}.tar.gz")
-md5sums=(b624bb10f6c84955c6fb03a11867aa30)
+source=("git+https://github.com/pygobject/pgi#tag=$pkgver")
+sha512sums=('SKIP')
 
 package() {
-  cd "$srcdir/$_pypi_module-$pkgver"
+  cd "$srcdir/$_pypi_module"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
