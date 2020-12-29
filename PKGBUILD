@@ -1,7 +1,7 @@
 # Maintainer: Edoardo Rosa <edoardo dot rosa 90 at gmail dot com>
 
 pkgname=jiq
-pkgver=0.6.1
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='jid on jq'
 url='https://github.com/fiatjaf/jiq'
