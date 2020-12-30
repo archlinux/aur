@@ -5,7 +5,7 @@
 
 # Maintainer: Kuklin István <kuklinistvan@zoho.com>
 pkgname=anki-official-binary-bundle
-pkgver=2.1.35
+pkgver=2.1.38
 pkgrel=1
 epoch=
 pkgdesc="The official binary shipped with the tested versions of the dependent libraries."
@@ -13,10 +13,10 @@ arch=('x86_64')
 url="https://apps.ankiweb.net"
 license=('GNU AGPL')
 groups=()
-depends=()
+depends=('libxkbcommon-x11')
 makedepends=()
 checkdepends=()
-optdepends=()
+optdepends=('mpv')
 provides=('anki')
 conflicts=('anki' 'anki-git')
 replaces=()
@@ -24,33 +24,29 @@ backup=()
 options=()
 install=
 changelog=
-topdirname="anki-$pkgver-linux-amd64"
+topdirname="anki-$pkgver-linux"
 source=(
-  "https://apps.ankiweb.net/downloads/current/${topdirname}.tar.bz2"
-  "remove_xdg_cmds_from_makefile.patch"
-  "prefix-fix.patch"
+  "https://github.com/ankitects/anki/releases/download/${pkgver}/${topdirname}.tar.bz2"
+  "install_sh.patch"
 )
 noextract=()
-md5sums=('d7ad8af7c1d9ddd92bb14d9d4a10ea7c'
-         '0eb542757f6b15d9904a53496627c76b'
-         '82a5d4f63bbc29e6a80043dd95973b4f')
+md5sums=('ab70980ca8b87a6f0fd67d05fc7a37d4'
+         '0ffca54471c2b5b2a300a68a93e135db')
 
 validpgpkeys=()
 
 prepare() {
-	cd "$srcdir"
+  cd "$srcdir"
   ln -s "$topdirname" anki
-  patch -p1 -i remove_xdg_cmds_from_makefile.patch
-  patch -p0 -i prefix-fix.patch
+  patch -p0 -i install_sh.patch anki/install.sh
   rm anki
 }
 
 build() {
 	cd "$topdirname"
-	make
 }
 
 package() {
 	cd "$topdirname"
-	make PREFIX="$pkgdir"/usr/ install
+    PREFIX="$pkgdir"/usr/ ./install.sh
 }
