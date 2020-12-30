@@ -1,0 +1,14 @@
+pkgbase = shellect-git
+	pkgdesc = Selection system written in POSIX shell.
+	pkgver = r19.c920ab5
+	pkgrel = 1
+	url = https://github.com/huijunchen9260/shellect
+	arch = any
+	license = GPL3
+	provides = shellect
+	conflicts = shellect
+	source = git+https://github.com/huijunchen9260/shellect.git
+	sha256sums = SKIP
+
+pkgname = shellect-git
+
