@@ -4,7 +4,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=abiword-git
-pkgver=3.1.0.20601.ac3278bd8
+pkgver=3.1.0.20604.a39a4872c
 pkgrel=1
 epoch=1
 pkgdesc="Fully-featured word processor from official gnome gitlab mirror"
@@ -45,6 +45,7 @@ prepare() {
 build() {
   cd AbiWord
   export CXXFLAGS+=" -O3"
+
   LANG=C LC_CTYPE=C ./autogen.sh --prefix=/usr \
       --enable-shared \
       --disable-static \
@@ -58,7 +59,8 @@ build() {
                         openwriter t602 presentation mathview \
                         openxml wml mht applix loadbindings urldict \
                         clarisworks docbook hancom babelfish" \
-      --enable-introspection 
+      --enable-introspection
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
