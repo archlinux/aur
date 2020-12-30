@@ -1,8 +1,8 @@
-# Submitter: Bogomil Vasilev <smirky@smirky.net>
+# Maintainer: Bogomil Vasilev <smirky@smirky.net>
 
 pkgname=roundcubemail-plugin-authres_status
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Roundcube plugin for checking the Authentication-Results headers that were added by your MTA and displays an icon to show the verification status.'
 arch=('any')
 url='https://plugins.roundcube.net/#/packages/pimlie/authres_status'
