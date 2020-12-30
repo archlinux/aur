@@ -3,7 +3,7 @@
 
 pkgname=rvgl-dcpack
 pkgver=20.0905a
-pkgrel=1
+pkgrel=2
 pkgdesc="Dreamcast content pack for RVGL."
 url='https://rvgl.re-volt.io'
 arch=('any')
@@ -26,7 +26,7 @@ package() {
     mv levels/frontend/frontend.fob levels/frontend/custom
 
     # Remove conflicting files shipped with game
-    rm gfx/roof.bmp gfx/roof.bmq # levels/frontend/frontend.fob
+    # rm levels/frontend/frontend.fob
 
     find * -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 }
