@@ -2,7 +2,7 @@
 pkgname=gnome-control-center-system76
 _pkgname=${pkgname%-system76}
 pkgver=3.38.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME's main interface to configure various aspects of the desktop (with System76 patches)"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 license=(GPL2)
@@ -27,11 +27,13 @@ _commit=0ae321b67d1c31d9bc209807aa6103d01a95e726  # tags/3.38.2^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
         'git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git'
         'git+https://gitlab.gnome.org/GNOME/libhandy.git'
+        '0001-mouse-Add-Disable-While-Typing-toggle-for-touchpad.patch'
         'pop-hidpi.patch'
         'system76-firmware.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
+            'a038b6d1c5c8dd5e80c1b6e24d650d616d1434486c5e86b270694b540449e3f3'
             '62869e1d309e6e488bc8c94b5df1053712c4fc108736e455a926bfa090f919d7'
             '33fc2be90935fa9b913cccde12677d7234763821d47d71edf3586034d7eece2d')
 
@@ -47,6 +49,7 @@ prepare() {
   git config --local submodule.subprojects/libhandy.url "$srcdir/libhandy"
   git submodule update
 
+  patch -Np1 -i ../0001-mouse-Add-Disable-While-Typing-toggle-for-touchpad.patch
   patch -Np1 -i ../pop-hidpi.patch
   patch -Np1 -i ../system76-firmware.patch
 }
