@@ -6,7 +6,7 @@ pkgname=('pipewire-git'
          'pipewire-pulse-git'
          'pipewire-ffmpeg-git'
          )
-pkgver=0.3.18.70.gaf38edea
+pkgver=0.3.18.91.gc39ba857
 pkgrel=1
 pkgdesc='Server and user space API to deal with multimedia pipelines. (GIT version)'
 arch=('x86_64')
@@ -104,7 +104,10 @@ package_pipewire-git() {
             "libpipewire-${pkgver:0:3}.so"
             )
   conflicts=('pipewire')
-  backup=('etc/pipewire/pipewire.conf')
+  backup=('etc/pipewire/pipewire.conf'
+          'etc/pipewire/media-session.d/alsa-monitor.conf'
+          'etc/pipewire/media-session.d/media-session.conf'
+          )
   install=pipewire-git.install
 
   DESTDIR="${pkgdir}" meson install -C build
