@@ -2,8 +2,8 @@
 
 _name=mapclassify
 pkgname=python-mapclassify
-pkgver=2.3.0
-pkgrel=3
+pkgver=2.4.2
+pkgrel=1
 pkgdesc="Classification schemes for choropleth mapping."
 arch=('any')
 url="https://github.com/pysal/mapclassify"
@@ -22,7 +22,7 @@ optdepends=('python-sphinx: documents'
   'python-palettable: tests')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('bfe1ec96afe7f866560d25f9f00e5c4dae97d5b69dfe758dbe02c4993261365b')
+sha256sums=('bc20954aa433466f5fbc572e3f23b05f9606b59209f40b0ded93ac1ca983d24e')
 
 build() {
   cd "$_name-$pkgver"
