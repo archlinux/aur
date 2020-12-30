@@ -1,10 +1,6 @@
 See the full changelog at
 https://git.sr.ht/~krathalan/wtwitch/tree/master/FULLCHANGELOG
 
-1.7.1 (July 6, 2020)
-    Fixed issue #5 where user settings may be read incorrectly
-      https://todo.sr.ht/~krathalan/wtwitch/5
-
 2.0.0 (August 24, 2020)
     New command style: no more flags! ("wtwitch c" instead of "wtwitch -c")
       Instead of "wtwitch [streamer]" to watch a streamer, use
@@ -23,3 +19,7 @@ https://git.sr.ht/~krathalan/wtwitch/tree/master/FULLCHANGELOG
 
 2.1.1 (December 22, 2020)
     Fixed bug with mpv window title due to changes in streamlink 2.0.0
+
+2.2.0 (December 30, 2020)
+    Added ability to hide offline streamers from "wtwitch c" with new "wtwitch f" command
+      https://todo.sr.ht/~krathalan/wtwitch/8
