@@ -1,6 +1,6 @@
 # Maintainer: Srevin Saju <srevinsaju@sugarlabs.org>
 
-pkgname=archivy
+pkgname=archivy-git
 pkgver=v0.10.1.r13.g21417cf
 pkgrel=1
 pkgdesc="A self-hosted knowledge repository, to preserve useful content to your knowledge bank."
@@ -19,18 +19,21 @@ source=("git+https://github.com/archivy/archivy.git#commit=21417cf293a7b2171e2ba
         "00-do-not-pin-requirements.patch")
 sha256sums=('SKIP'
             '339f305aded981272230193c446307c2731477edf49e9ec6ea684351e5e62b8b')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+
 
 prepare() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/${pkgname%-git}"
     git apply "$srcdir/00-do-not-pin-requirements.patch"
 }
 
 build() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/${pkgname%-git}"
 	python setup.py build
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/${pkgname%-git}"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
