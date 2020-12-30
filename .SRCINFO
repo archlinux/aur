@@ -1,10 +1,11 @@
 pkgbase = wechat-uos
 	pkgdesc = UOS专业版微信魔改版
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 4
 	arch = x86_64
 	license = custom
 	depends = gtk2
+	depends = gtk3
 	depends = libxss
 	depends = gconf
 	depends = nss
