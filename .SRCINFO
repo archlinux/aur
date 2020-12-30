@@ -1,0 +1,14 @@
+pkgbase = tcalc
+	pkgdesc = Simple calculator written in core Tcl/Tk
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/thanoulis/tcalc
+	arch = any
+	license = custom
+	depends = tcl
+	depends = tk
+	source = tcalc-1.1.0.tar.gz::https://github.com/thanoulis/tcalc/archive/v1.1.0.tar.gz
+	sha256sums = bba48c03c0369dfe4593aea79920cece4b4565625f5da194b05cff3b516532c5
+
+pkgname = tcalc
+
