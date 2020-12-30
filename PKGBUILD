@@ -7,7 +7,7 @@ arch=("x86_64")
 url="https://github.com/cncjs/cncjs"
 license=('MIT')
 depends=('nodejs<13')
-makedepends=('yarn')
+makedepends=('npm' 'yarn')
 source=("https://github.com/cncjs/cncjs/archive/v$pkgver.tar.gz"
         "$pkgname"
         "$pkgname.service"

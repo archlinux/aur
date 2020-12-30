@@ -5,6 +5,7 @@ pkgbase = cncjs
 	url = https://github.com/cncjs/cncjs
 	arch = x86_64
 	license = MIT
+	makedepends = npm
 	makedepends = yarn
 	depends = nodejs<13
 	source = https://github.com/cncjs/cncjs/archive/v1.9.22.tar.gz
