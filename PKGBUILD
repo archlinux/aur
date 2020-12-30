@@ -2,7 +2,7 @@
 
 pkgname=sugar-runner-git
 pkgver=v0.110.0.2.g6eebec3
-pkgrel=2
+pkgrel=3
 pkgdesc="Scripts to run Sugar"
 arch=('x86_64')
 url="https://sugarlabs.org/"
