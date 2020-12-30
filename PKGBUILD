@@ -3,7 +3,7 @@
 
 pkgname=megacmd
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="MEGA Command Line Interactive and Scriptable Application"
 url="https://github.com/meganz/MEGAcmd"
 arch=('any')
@@ -37,5 +37,13 @@ build() {
 package() {
   cd "MEGAcmd-${pkgver}_Linux"
 
-  make DESTDIR="$pkgdir" install
+  make DESTDIR=${pkgdir} install
+
+  # change completions location
+  rm -rf ${pkgdir}/usr/etc/
+  install -Dm644 src/client/megacmd_completion.sh ${pkgdir}/usr/share/bash-completion/completions/${pkgname}
+
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
+
+# vim:set ts=2 sw=2 et:
