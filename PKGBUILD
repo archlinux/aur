@@ -1,3 +1,4 @@
+# Maintainer: kyrenaios <kyrenaios at protonmail dot com>
 pkgbase='python-mistune2'
 pkgname=('python-mistune2')
 _module='mistune'
