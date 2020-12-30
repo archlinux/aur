@@ -1,7 +1,9 @@
-# Maintainer: Radoslaw Mejer <radmen @ radmen.info>
+# Maintainer: Marek "foxie" Brenčič <marek@brencic.sk>
+# Contributor: Radoslaw Mejer <radmen @ radmen.info>
 
 pkgname=stoplight-studio-appimage
-pkgver=2.1.0
+pkgver=2.2.0
+_realver=2.2.0-stable.5288.8bf0d2e
 pkgrel=1
 pkgdesc="The modern editor for API Architects and Technical Writers."
 arch=('x86_64')
@@ -9,15 +11,15 @@ url='https://stoplight.io/studio/'
 license=('custom')
 depends=('fuse2')
 source=(
-  "stoplight-studio-linux-x86_64-${pkgver}.AppImage::https://github.com/stoplightio/studio/releases/download/v${pkgver}/stoplight-studio-linux-x86_64.AppImage"
+  "stoplight-studio-linux-x86_64-${_realver}.AppImage::https://github.com/stoplightio/studio/releases/download/v${_realver}/stoplight-studio-linux-x86_64.AppImage"
   "stoplight-studio.desktop"
 )
 sha256sums=(
-  "e4fcb3712bf5339db17df58e269ae31231217f00ee6192abf20e293eb0bbb7e1"
+  "a7a1c2e5669a9c47e8e5ac425d90998a93feb303ef6dc5fd8b94a4213cbb83a8"
   "5a45f03ec544bfdf2c75391a68d29302e7f721348ba530a8f365697c799f84a2"
 )
 options=(!strip)
-_filename="./stoplight-studio-linux-${arch}-${pkgver}.AppImage"
+_filename="./stoplight-studio-linux-${arch}-${_realver}.AppImage"
 
 prepare() {
   cd "${srcdir}"
