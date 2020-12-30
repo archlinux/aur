@@ -1,12 +1,11 @@
 pkgbase = ignition-physics
 	pkgdesc = Abstract physics interface designed to support simulation and rapid development of robot applications.
 	pkgver = 3.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://ignitionrobotics.org/libs/physics
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
-	makedepends = clang
 	depends = ignition-cmake
 	depends = ignition-math
 	depends = ignition-plugin
