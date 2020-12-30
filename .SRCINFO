@@ -1,7 +1,7 @@
 pkgbase = agedu-git
 	pkgdesc = Track down wasted disk space
 	pkgver = 20190629.r140.66cb14d
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.chiark.greenend.org.uk/~sgtatham/agedu/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = agedu-git
 	depends = glibc
 	provides = agedu
 	conflicts = agedu
-	source = git://git.tartarus.org/simon/agedu.git
+	source = git+https://git.tartarus.org/simon/agedu.git
 	md5sums = SKIP
 
 pkgname = agedu-git

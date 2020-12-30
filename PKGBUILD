@@ -3,7 +3,7 @@
 
 pkgname=agedu-git
 pkgver=20190629.r140.66cb14d
-pkgrel=1
+pkgrel=2
 pkgdesc="Track down wasted disk space"
 arch=('i686' 'x86_64')
 url="http://www.chiark.greenend.org.uk/~sgtatham/agedu/"
@@ -12,7 +12,7 @@ makedepends=('subversion' 'halibut')
 depends=('glibc')
 provides=('agedu')
 conflicts=('agedu')
-source=("git://git.tartarus.org/simon/agedu.git")
+source=("git+https://git.tartarus.org/simon/agedu.git")
 md5sums=('SKIP')
 
 pkgver() {
