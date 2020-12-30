@@ -1,12 +1,12 @@
 pkgbase = sawfish-session-dialog-git
 	pkgdesc = A graphical Sawfish extension to edit the session preferences
-	pkgver = 20150813
+	pkgver = 20190126
 	pkgrel = 1
 	url = http://sawfish.wikia.com
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = sawfish-git
+	depends = sawfish
 	provides = sawfish-session-dialog=0.41
 	conflicts = sawfish-session-dialog
 	source = sawfish-session-dialog::git://github.com/SawfishWM/ssd.git
