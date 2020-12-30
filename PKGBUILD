@@ -1,7 +1,7 @@
 # Maintainer: Teteros <teteros at teknik dot io>
 
 pkgname=radium-bin
-pkgver=6.6.77
+pkgver=6.7.68
 pkgrel=1
 pkgdesc='A graphical music editor. A next generation tracker. (Demo Version)'
 arch=(x86_64)
@@ -27,25 +27,16 @@ optdepends=(
 )
 options=(!strip)
 source=("https://users.notam02.no/~kjetism/radium/demos/linux/radium_64bit_linux-$pkgver-demo.tar.xz")
-sha256sums=('5bf31493088326747d34f1f650ecaf10c111b14acf627bbdcc24faba998687da')
+sha256sums=('7b47e4ac0ba85643572abc397e07e6c2a9acc445f1a23ff8c645f39803411e82')
 
 package() {
   cd radium_64bit_linux-$pkgver-demo
-
-  # Nouveau and AMD drivers require a newer libstdc++ than Radium provides so removing it is necessary to avoid crashes
-  rm lib/libstdc++.so.6
-
-  # Generate a dummy libselinux.so because official builds depend on it
-  # https://github.com/kmatheussen/radium/pull/1286#issuecomment-686697881
-  echo "extern int is_selinux_enabled(void){return 0;}" > selinux-dummy.c
-  gcc -s -shared -o lib/libselinux.so.1 selinux-dummy.c
-  rm selinux-dummy.c
 
   # Copy radium files to a self-contained /opt prefix
   mkdir -p "$pkgdir/opt/radium"
   cp -a bin lib "$pkgdir/opt/radium"
 
-  # Recreate run_radium.sh
+  # Recreate run_radium.sh to point to /opt rather than relative paths
   echo '#!/usr/bin/env bash' > "$pkgdir/opt/radium/run_radium.sh"
   echo LD_LIBRARY_PATH='"/opt/radium/lib:$LD_LIBRARY_PATH"' QT_QPA_PLATFORM_PLUGIN_PATH=/opt/radium/bin/qt5_plugins \
     /opt/radium/bin/radium '"$@"' >> "$pkgdir/opt/radium/run_radium.sh"
