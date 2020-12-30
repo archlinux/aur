@@ -1,9 +1,9 @@
 pkgname=wechat-uos
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="UOS专业版微信魔改版"
 arch=('x86_64')
-depends=(gtk2 libxss gconf nss)
+depends=(gtk2 libxss gconf nss lsb-release)
 license=('custom')
 source=('file://com.qq.weixin_2.0.0_amd64.deb' 'uos-lsb' 'uos-release' 'wechat-uos')
 md5sums=('5b8c60c9f94fd874df749abdd1dccec6'
