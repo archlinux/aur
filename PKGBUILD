@@ -10,7 +10,7 @@ license=('GNU General Public License v3.0')
 depends=('autorandr' 'instamenu' 'instamenu-schemas')
 provides=($pkgname)
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('39165e079e6156a8449509636b5264ffbaa537fada9cf566ba08a0f970e5469b')
+sha256sums=('2b5779917e9a20497dd683ee7dadc9f76ee6b85b8b01a9741c2a1c68df859ed6')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
