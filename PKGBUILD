@@ -2,13 +2,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=agedu-git
-pkgver=20190629.r140.66cb14d
-pkgrel=2
+pkgver=20200704.r149.2a7d4a2
+pkgrel=1
 pkgdesc="Track down wasted disk space"
 arch=('i686' 'x86_64')
 url="http://www.chiark.greenend.org.uk/~sgtatham/agedu/"
 license=('custom:MIT')
-makedepends=('subversion' 'halibut')
+makedepends=('git' 'halibut')
 depends=('glibc')
 provides=('agedu')
 conflicts=('agedu')

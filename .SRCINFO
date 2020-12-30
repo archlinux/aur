@@ -1,12 +1,12 @@
 pkgbase = agedu-git
 	pkgdesc = Track down wasted disk space
-	pkgver = 20190629.r140.66cb14d
-	pkgrel = 2
+	pkgver = 20200704.r149.2a7d4a2
+	pkgrel = 1
 	url = http://www.chiark.greenend.org.uk/~sgtatham/agedu/
 	arch = i686
 	arch = x86_64
 	license = custom:MIT
-	makedepends = subversion
+	makedepends = git
 	makedepends = halibut
 	depends = glibc
 	provides = agedu
