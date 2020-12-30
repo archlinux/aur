@@ -17,11 +17,6 @@ prepare() {
   git submodule update --init
 }
 
-pkgver(){
-  cd "${pkgname}"
-  echo "$(git describe --tags | sed 's/v//g')"
-}
-
 build() {
   cd "${pkgname}/build"
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
