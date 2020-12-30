@@ -1,5 +1,5 @@
 #!/bin/bash -e
 bwrap --dev-bind / / \
-      --bind /opt/apps/com.qq.weixin/craps/uos-release /etc/os-release \
-      --bind /opt/apps/com.qq.weixin/craps/uos-lsb /etc/lsb-release \
-      /opt/apps/com.qq.weixin/files/wechat
+      --bind /opt/wechat-uos/crap/uos-release /etc/os-release \
+      --bind /opt/wechat-uos/crap/uos-lsb /etc/lsb-release \
+      /opt/wechat-uos/wechat
