@@ -9,6 +9,7 @@ pkgbase = cain-ncnn-vulkan-bin
 	depends = vulkan-icd-loader
 	provides = cain-ncnn-vulkan
 	conflicts = cain-ncnn-vulkan
+	conflicts = cain-ncnn-vulkan-git
 	source = https://github.com/nihui/cain-ncnn-vulkan/releases/download/20201220/cain-ncnn-vulkan-20201220-ubuntu.zip
 	sha256sums = 02fa384ffcbec213854444b048f0f0bd7a150b75a90b5c5b1faec8dd0cbf1fd3
 

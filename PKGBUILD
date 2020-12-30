@@ -11,7 +11,7 @@ license=('MIT')
 depends=('vulkan-icd-loader')
 makedepends=()
 provides=("cain-ncnn-vulkan")
-conflicts=("cain-ncnn-vulkan")
+conflicts=("cain-ncnn-vulkan" "cain-ncnn-vulkan-git")
 source=("https://github.com/nihui/$_name/releases/download/$pkgver/$_name-$pkgver-ubuntu.zip")
 sha256sums=('02fa384ffcbec213854444b048f0f0bd7a150b75a90b5c5b1faec8dd0cbf1fd3')
 
