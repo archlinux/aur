@@ -15,8 +15,8 @@
 # Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/x11-Add-support-for-fractional-scaling-using-Randr.patch>
 
 pkgname=mutter-x11-scaling
-pkgver=3.38.2
-pkgrel=2
+pkgver=3.38.2+7+gfbb9a34f2
+pkgrel=1
 pkgdesc="A window manager for GNOME, with Ubuntu's patch to enable fractional scaling on X11"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -24,27 +24,27 @@ license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          libcanberra startup-notification zenity libsm gnome-desktop upower
          libxkbcommon-x11 gnome-settings-daemon libgudev libinput pipewire
-         xorg-server-xwayland graphene)
+         xorg-xwayland graphene)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server sysprof)
 checkdepends=(xorg-server-xvfb)
 conflicts=(mutter)
 provides=(libmutter-7.so mutter)
 groups=(gnome)
 install=mutter.install
-_commit=9b9051c2172078e623e8a4b0e45e38004c394a92  # tags/3.38.2^0
+_commit=fbb9a34f265ddd12ab9996ef18e595fd95b2a92e  # gnome-3-38
 _scaling_commit=31fac1abdef96d8e4b468e11771693ec5f7acd7b # Commit 31fac1ab
-source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-		"x11-Add-support-for-fractional-scaling-using-Randr.patch::https://salsa.debian.org/gnome-team/mutter/-/raw/$_scaling_commit/debian/patches/x11-Add-support-for-fractional-scaling-using-Randr.patch")
+source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
+	"x11-Add-support-for-fractional-scaling-using-Randr.patch::https://salsa.debian.org/gnome-team/mutter/-/raw/$_scaling_commit/debian/patches/x11-Add-support-for-fractional-scaling-using-Randr.patch")
 sha256sums=('SKIP'
             '3380ae1d479666679735a94c05c7e3ac10b3da2d2b843dd881d351bb5c56bf96')
 
 pkgver() {
-  cd $pkgname
+  cd mutter
   git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
-  cd $pkgname
+  cd mutter
 
   # Ubuntu Patch for X11 fractional scaling
   patch -p1 -i "${srcdir}/x11-Add-support-for-fractional-scaling-using-Randr.patch"
@@ -53,10 +53,9 @@ prepare() {
 build() {
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
-  arch-meson $pkgname build \
+  arch-meson mutter build \
     -D egl_device=true \
     -D wayland_eglstream=true \
-    -D xwayland_initfd=disabled \
     -D installed_tests=false
   meson compile -C build
 }
@@ -75,4 +74,3 @@ check() (
 package() {
   DESTDIR="$pkgdir" meson install -C build
 }
-
