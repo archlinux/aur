@@ -5,7 +5,7 @@
 ## If you will be using mozc.el on Emacs, uncomment below.
 #_emacs_mozc="yes"
 
-## If you will not be using ibus, comment out below.
+## If you will be using ibus, uncomment below.
 _ibus_mozc="yes"
 
 ## Mozc compile option
@@ -16,7 +16,7 @@ _bldtype=Release
 # Upstreams:
 #
 # mozc
-# http://code.google.com/p/mozc/
+# https://code.google.com/p/mozc/
 #
 # Mozc UT dictionary
 # https://osdn.net/users/utuhiro/pf/utuhiro/files/
@@ -24,7 +24,7 @@ _bldtype=Release
 
 _mozcrev=afb03ddfe72dde4cf2409863a3bfea160f7a66d8
 _mozcver=2.23.2815.102
-_utdicdate=20201129
+_utdicdate=20201229
 _utdicver=1
 
 pkgbase=mozc-ut-united
@@ -33,22 +33,23 @@ true && pkgname=('mozc-ut-united')
 pkgver=${_mozcver}.${_utdicdate}
 pkgrel=1
 arch=('i686' 'x86_64')
+url="https://code.google.com/p/mozc/"
 url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
 license=('BSD' 'GPL' 'custom')
 makedepends=('python' 'ruby' 'git' 'ninja' 'clang' 'gyp')
-#source=("${_svndir}/${_svnmod}::svn+${_svntrunk}"
+#source=("${_svndir}/${_svnmod}::svn+${_svntrunk}")
 source=(
   mozc::git+https://github.com/google/mozc.git#commit=${_mozcrev}
   https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/mozc.patch
   https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/Add_support_new_Japanese_era.patch
   https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/Change-from-python2-code-to-python3.patch
-  https://osdn.net/downloads/users/26/26959/mozcdic-ut-${_utdicdate}.${_utdicver}.tar.bz2
+  https://github.com/OrangeJuicelol/mozc-ut-united/blob/master/mozcdic-ut-${_utdicdate}.${_utdicver}.tar.bz2
 )
 sha1sums=('SKIP'
           'a366077418ae6f235aecf374256354a40dc5b37a'
           '3aa3077cb28352f9aafde71f8d864b333424338f'
           'f363373e892ac53b972cb092a3627b3a4fbc5b6a'
-          'eb6fc52789044238b81596479107239e491c4f25')
+          'f248798642153122628b41c62a7329c9be4f8e52')
 
 
 if [[ "$_emacs_mozc" == "yes" ]]; then
