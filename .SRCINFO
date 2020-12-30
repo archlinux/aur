@@ -1,0 +1,17 @@
+pkgbase = python-mistune2
+	pkgdesc = A sane Markdown parser with useful plugins and renderers (alpha v2 branch)
+	pkgver = 2.0.0a6
+	pkgrel = 1
+	url = https://github.com/lepture/mistune
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	provides = python-mistune
+	conflicts = python-mistune
+	source = https://files.pythonhosted.org/packages/source/m/mistune/mistune-2.0.0a6.tar.gz
+	sha256sums = 5747cbb16fb50cd2ddd25d44d93b2c414a3b75875f6d9d58be8afbae67234ec9
+
+pkgname = python-mistune2
+	depends = python
+
