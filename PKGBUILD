@@ -4,7 +4,7 @@
 
 pkgname=gtkimageview
 pkgver=1.6.4
-pkgrel=6
+pkgrel=7
 pkgdesc="Simple image viewer widget for GTK2"
 arch=('x86_64')
 url="https://github.com/GNOME/gtkimageview"
