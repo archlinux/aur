@@ -1,18 +1,20 @@
 pkgbase = electrum-ltc
-	pkgdesc = Litecoin thin client
-	pkgver = 3.3.8.1
+	pkgdesc = Litecoin wallet
+	pkgver = 4.0.9.1
 	pkgrel = 1
 	url = https://electrum-ltc.org/
 	arch = any
 	license = MIT
+	makedepends = python-requests
 	depends = libsecp256k1
 	depends = python-aiohttp
 	depends = python-aiohttp-socks
 	depends = python-aiorpcx
+	depends = python-bitstring
 	depends = python-btchip
 	depends = python-certifi
+	depends = python-cryptography
 	depends = python-dnspython
-	depends = python-ecdsa
 	depends = python-jsonrpclib-pelix
 	depends = python-matplotlib
 	depends = python-protobuf
@@ -24,11 +26,8 @@ pkgbase = electrum-ltc
 	depends = python-scrypt
 	depends = python-websocket-client
 	depends = zbar
-	source = https://electrum-ltc.org/download/Electrum-LTC-3.3.8.1.tar.gz
-	source = https://electrum-ltc.org/download/Electrum-LTC-3.3.8.1.tar.gz.asc
-	validpgpkeys = CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA
-	b2sums = 481530e09570a624d8419fa2265139c95d911c941ca57393b3d4fff9a44446c90fd52fec4642648b641b6ca17bccee19acb50a92f98c023ce247a94f201f564c
-	b2sums = SKIP
+	source = electrum-ltc-4.0.9.1.tar.gz::https://codeload.github.com/pooler/electrum-ltc/tar.gz/4.0.9.1
+	b2sums = 2c328f9fc433f39b11aa2bfc4e397b75aadd07adc66576ae985c5b41b32d663df80bb67dafbbce210f3581f6fb43e666070d090bf189eb4907efd07d306fc945
 
 pkgname = electrum-ltc
 

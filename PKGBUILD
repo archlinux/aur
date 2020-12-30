@@ -1,7 +1,7 @@
 pkgname=electrum-ltc
-pkgver=3.3.8.1
+pkgver=4.0.9.1
 pkgrel=1
-pkgdesc='Litecoin thin client'
+pkgdesc='Litecoin wallet'
 arch=(any)
 url=https://electrum-ltc.org/
 license=(MIT)
@@ -10,10 +10,11 @@ depends=(
   python-aiohttp
   python-aiohttp-socks
   python-aiorpcx
+  python-bitstring
   python-btchip
   python-certifi
+  python-cryptography
   python-dnspython
-  python-ecdsa
   python-jsonrpclib-pelix
   python-matplotlib
   python-protobuf
@@ -26,24 +27,22 @@ depends=(
   python-websocket-client
   zbar
 )
-source=(https://electrum-ltc.org/download/Electrum-LTC-$pkgver.tar.gz{,.asc})
-validpgpkeys=(CAE1092AD3553FFD21C05DE36FC4C9F7F1BE8FEA)
-b2sums=(
-  481530e09570a624d8419fa2265139c95d911c941ca57393b3d4fff9a44446c90fd52fec4642648b641b6ca17bccee19acb50a92f98c023ce247a94f201f564c
-  SKIP
-)
+makedepends=(python-requests)
+source=(electrum-ltc-$pkgver.tar.gz::https://codeload.github.com/pooler/electrum-ltc/tar.gz/$pkgver)
+b2sums=(2c328f9fc433f39b11aa2bfc4e397b75aadd07adc66576ae985c5b41b32d663df80bb67dafbbce210f3581f6fb43e666070d090bf189eb4907efd07d306fc945)
 
 prepare() {
-  sed -i -r 's/sh.*(electrum.*)"/\1/' Electrum-LTC-$pkgver/electrum-ltc.desktop
+  sed -i -r 's/sh.*(electrum.*)"/\1/' electrum-ltc-$pkgver/electrum-ltc.desktop
 }
 
 build() {
-  cd Electrum-LTC-$pkgver
+  cd electrum-ltc-$pkgver
+  contrib/pull_locale
   ./setup.py build
 }
 
 package() {
-  cd Electrum-LTC-$pkgver
-  ./setup.py install -O1 --root="$pkgdir" --skip-build
+  cd electrum-ltc-$pkgver
+  ./setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 LICENCE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
