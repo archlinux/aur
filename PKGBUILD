@@ -4,12 +4,12 @@
 # Contributor: Alex 'AdUser' Z
 pkgname=fusioninventory-agent
 _pkgname="FusionInventory-Agent"
-pkgver=2.5.1
+pkgver=2.6
 pkgrel=1
 pkgdesc="An application for keeping track of the hardware and software"
 arch=(any)
 url="http://fusioninventory.org"
-_watch="https://github.com/fusinventory/fusioninventory-agent/releases"
+_watch="https://github.com/fusioninventory/fusioninventory-agent/releases"
 license=('GPL')
 depends=(
   'perl>=5.8'
@@ -53,6 +53,7 @@ optdepends=(
   # Provides lspci
   'pciutils: Inventory PCI bus scanning (lspci)'
   'hdparm: Inventory additional disk drive info retrieval'
+  # Provides get-edid
   'read-edid: Inventory EDID data access'
   # Provides ssh-keyscan
   'openssh: Inventory host SSH public key retrieval (ssh-keyscan)'
@@ -79,6 +80,7 @@ optdepends=(
   #'perl-thread-queue>=2.0.1'
   'perl-crypt-des: Network inventory SNMPv3 support'
   'nmap: Network discovery'
+  'net-tools: ARP table lookup method support'
 
 # Wake-On-Lan
   # provided by perl-net-write
@@ -100,9 +102,9 @@ checkdepends=(
   'perl-test-most'
   'perl-test-nowarnings'
 )
-source=("https://github.com/fusioninventory/fusioninventory-agent/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
+source=("${_watch}/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         "package.patch")
-md5sums=('2120bca3771dd7a45ed518e4fbdc691e'
+md5sums=('6c56ffd7a959c1b5482e6967f519d625'
          'c3896747249badd126b65f0f3e8c822f')
 backup=('etc/fusioninventory/agent.cfg'
         'etc/fusioninventory/inventory-server-plugin.cfg'
