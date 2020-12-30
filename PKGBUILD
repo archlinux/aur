@@ -1,6 +1,6 @@
 # Maintainer: rany <rany@disroot.org>
 pkgname=glowing-bear-electron-git
-pkgver=0.9.0
+pkgver=0.9.0.r65.g88a95c0
 pkgrel=1
 pkgdesc="A web client for Weechat (Electron version)"
 arch=(any)
@@ -13,7 +13,7 @@ source=("git+https://github.com/glowing-bear/glowing-bear.git"
 	"glowing-bear.desktop"
 	"glowing-bear.sh")
 sha256sums=("SKIP"
-	"0df8757eb5a0d1aca43e86d35bf99178626de0741e9d5e35b71fabd151e4a1ab"
+	"9a8bb59b862a048442a81853b4f600783b159493a5e608a6a9fdc32ea7060777"
 	"edcfb232718f4fd54e2bd3b4cc00b6c8de6e8189feab2ec16fb64464833a09b3")
 
 prepare() {

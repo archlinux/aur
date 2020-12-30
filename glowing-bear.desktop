@@ -1,10 +1,15 @@
 [Desktop Entry]
-Type=Application
-Encoding=UTF-8
 Name=Glowing Bear
+Encoding=UTF-8
+GenericName=Chat client
+GenericName[fr]=Client de discussion
 Comment=A web client for WeeChat
 Comment[fr]=Un client web pour Weechat
-Exec=glowing-bear
-Icon=glowing-bear
+Keywords=WeeChat;extensible;chat;IRC;client;console;terminal;glowing-bear;glowingbear;
+Keywords[fr]=WeeChat;extensible;discussion;IRC;client;console;terminal;glowing-bear;glowingbear;
+Exec=glowing-bear %u
 Terminal=false
-Categories=Internet;Communication;IRC;
+Icon=glowing-bear
+Type=Application
+Categories=Network;Chat;IRCClient;ConsoleOnly;Internet;Communication;IRC;
+MimeType=x-scheme-handler/irc;x-scheme-handler/ircs;
