@@ -1,9 +1,13 @@
 pkgbase = wechat-uos
 	pkgdesc = UOS专业版微信魔改版
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = custom
+	depends = gtk2
+	depends = libxss
+	depends = gconf
+	depends = nss
 	source = file://com.qq.weixin_2.0.0_amd64.deb
 	source = uos-lsb
 	source = uos-release
