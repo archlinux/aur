@@ -1,6 +1,6 @@
 pkgbase = fla.sh-git
 	pkgdesc = Flashcards in your terminal.
-	pkgver = 1.2.r8.gbf17b7d
+	pkgver = 1.2.r15.g960f0b4
 	pkgrel = 1
 	url = https://github.com/tallguyjenks/fla.sh
 	arch = any

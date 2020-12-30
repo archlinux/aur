@@ -1,10 +1,9 @@
-# FLA.SH
 
 # Maintainer: Andrea Feletto <andrea@andreafeletto.com>
 
 pkgname=fla.sh-git
 _pkgname=${pkgname%-*}
-pkgver=1.2.r8.gbf17b7d
+pkgver=1.2.r15.g960f0b4
 pkgrel=1
 pkgdesc='Flashcards in your terminal.'
 arch=('any')
@@ -23,6 +22,8 @@ pkgver() {
 
 package() {
 	cd "$srcdir/$_pkgname"
-	install -Dm755 flash "$pkgdir/usr/bin/flash"
+	install -Dm755 'flash' -t "$pkgdir/usr/bin"
+	install -Dm644 'LICENSE' -t "$pkgdir/usr/share/licenses/$_pkgname"
+	install -Dm644 'README.md' -t "$pkgdir/usr/share/doc/$_pkgname"
 }
 
