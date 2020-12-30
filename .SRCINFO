@@ -1,0 +1,20 @@
+pkgbase = cfddns
+	pkgdesc = DDNS client for CloudFlare DNS
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/uetchy/cfddns
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-dephell
+	depends = python
+	depends = python-cloudflare
+	depends = python-click
+	backup = etc/cfddns/cfddns.yml
+	source = .source::https://github.com/uetchy/cfddns/archives/v1.0.0.tar.gz
+	source = cfddns.service
+	sha256sums = SKIP
+	sha256sums = 1198d4d36c57c333acc7aa0a99339a66590145d098dd276b697ce639215bd5ca
+
+pkgname = cfddns
+

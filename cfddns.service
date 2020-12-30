@@ -1,0 +1,10 @@
+[Unit]
+Description=Update CloudFlare DNS records
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/cfddns -c /etc/cfddns/cfddns.yml /etc/cfddns/cfddns/domains.txt
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
