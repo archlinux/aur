@@ -1,7 +1,5 @@
-# Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
-# Contributor: Ray Rashif <schiv@archlinux.org>
-# Contributor: Corrado 'bardo' Primier <corrado.primier@mail.polimi.it>
-# Contributor: cs-cam <me.at.camdaniel.com>
+# Maintainer: Gasparotto Mattia <gasmat04@gmail.com>
+
 
 pkgname=wammu
 pkgver=0.44
@@ -30,3 +28,4 @@ package() {
 
   python2 setup.py install --root="${pkgdir}" --optimize=1
 }
+
