@@ -1,12 +1,12 @@
 pkgbase = roundcubemail-plugin-persistent_login
 	pkgdesc = Roundcube plugin that provides a "Keep me logged in" aka "Remember Me" functionality.
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://plugins.roundcube.net/#/packages/texxasrulez/persistent_login
 	arch = any
 	license = GPL3
 	depends = roundcubemail
-	source = https://github.com/texxasrulez/persistent_login/archive/1.0.2.tar.gz
+	source = roundcubemail-plugin-persistent_login-1.0.2-3.tar.gz::https://github.com/texxasrulez/persistent_login/archive/1.0.2.tar.gz
 	sha256sums = f46ee86543bd15abc1fe0c572d8184ce84c2668d4a63fddb42f7f5701ac72a65
 
 pkgname = roundcubemail-plugin-persistent_login
