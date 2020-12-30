@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Tofe <chris.chapuis@gmail.com>
@@ -7,13 +7,13 @@
 # Contributor: snoopy33 <snoopy33@no-log.org>
 
 pkgname=cairo-dock-plug-ins-git
-pkgver=3.4.1.r19.02ad3401d
+pkgver=3.4.1.r27.a0d3415c2
 pkgrel=1
 pkgdesc='Plugins for Cairo-Dock'
 arch=('i686' 'x86_64')
 url='https://glx-dock.org'
 license=('GPL')
-depends=('cairo-dock')
+depends=('cairo-dock' 'libindicator-gtk3' 'libdbusmenu-gtk3') 
 makedepends=('alsa-lib' 'cmake' 'dbus-sharp-glib' 'fftw' 'git' 'gnome-menus'
              'gtk-sharp-3' 'gvfs' 'libetpan' 'libexif' 'libical' 'libpulse'
              'libxklavier' 'lm_sensors' 'python' 'python2' 'ruby' 'upower'
@@ -37,21 +37,20 @@ optdepends=('alsa-lib: Sound Control, Sound Effects applets'
             'vte3: Terminal applet'
             'wireless_tools: Wifi applet'
             'zeitgeist: Recent Events applet')
-replaces=('cairo-dock-plugins-git')
 provides=('cairo-dock-plug-ins')
 conflicts=('cairo-dock-plug-ins')
 source=('git+https://github.com/Cairo-Dock/cairo-dock-plug-ins.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/cairo-dock-plug-ins
+  cd cairo-dock-plug-ins
 
    _tag='3.4.1'
   echo "${_tag}.r$(git rev-list --count ${_tag}..HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd $srcdir/cairo-dock-plug-ins
+  cd cairo-dock-plug-ins
 
   sed 's/gmcs/mcs/' -i CMakeLists.txt
 
@@ -62,7 +61,7 @@ prepare() {
 }
 
 build() {
-  cd $srcdir/cairo-dock-plug-ins/build
+  cd cairo-dock-plug-ins/build
 
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
@@ -71,11 +70,7 @@ build() {
 }
 
 package() {
-  cd $srcdir/cairo-dock-plug-ins/build
+  cd cairo-dock-plug-ins/build
 
   make DESTDIR="${pkgdir}" install
-  mv "${pkgdir}"/usr/lib/{cli,mono}
-
 }
-
-# vim: ts=2 sw=2 et:

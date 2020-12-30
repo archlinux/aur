@@ -1,6 +1,6 @@
 pkgbase = cairo-dock-plug-ins-git
 	pkgdesc = Plugins for Cairo-Dock
-	pkgver = 3.4.1.r19.02ad3401d
+	pkgver = 3.4.1.r27.a0d3415c2
 	pkgrel = 1
 	url = https://glx-dock.org
 	arch = i686
@@ -28,6 +28,8 @@ pkgbase = cairo-dock-plug-ins-git
 	makedepends = vte3
 	makedepends = zeitgeist
 	depends = cairo-dock
+	depends = libindicator-gtk3
+	depends = libdbusmenu-gtk3
 	optdepends = alsa-lib: Sound Control, Sound Effects applets
 	optdepends = dbus-sharp-glib: Mono API
 	optdepends = fftw: Impulse applet
@@ -49,7 +51,6 @@ pkgbase = cairo-dock-plug-ins-git
 	optdepends = zeitgeist: Recent Events applet
 	provides = cairo-dock-plug-ins
 	conflicts = cairo-dock-plug-ins
-	replaces = cairo-dock-plugins-git
 	source = git+https://github.com/Cairo-Dock/cairo-dock-plug-ins.git
 	sha256sums = SKIP
 
