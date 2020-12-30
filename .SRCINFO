@@ -1,0 +1,14 @@
+pkgbase = prof-gnome-theme-git
+	pkgdesc = GNOME theme made by Paulxfce. "A pleasing, clear and easy-on-the-eyes theme that is meant for those who use the Gnome-desktop professionally on a daily basis."
+	pkgver = r16.0aaed59
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/1334194/
+	arch = any
+	license = GPL2
+	makedepends = git
+	conflicts = prof-gnome-theme
+	source = Prof-Gnome::git+https://github.com/paullinuxthemer/Prof-Gnome.git
+	sha256sums = SKIP
+
+pkgname = prof-gnome-theme-git
+

@@ -1,0 +1,6 @@
+Prof-Gnome
+src
+pkg
+*pkg.tar.xz
+*pkg.tar.zst
+tags
