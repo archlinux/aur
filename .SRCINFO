@@ -1,0 +1,22 @@
+pkgbase = run_scaled-imfix-git
+	pkgdesc = Run an X application scaled via xpra. Useful on hidpi screens. (Patched for fcitx/fcitx5 support)
+	pkgver = r20.6699934
+	pkgrel = 1
+	url = https://github.com/kaueraal/run_scaled
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = xpra
+	depends = xorg-xrandr
+	depends = xorg-server-xvfb
+	depends = bc
+	optdepends = manjaro-asian-input-support-fcitx: Fcitx support (Alternatively, set QT_IM_MODULE to fcitx manually)
+	optdepends = manjaro-asian-input-support-fcitx5: Fcitx5 support (Alternatively, set QT_IM_MODULE to fcitx5 manually)
+	provides = run_scaled
+	conflicts = run_scaled
+	conflicts = run_scaled-git
+	source = run_scaled::git+https://github.com/kaueraal/run_scaled.git
+	md5sums = SKIP
+
+pkgname = run_scaled-imfix-git
+
