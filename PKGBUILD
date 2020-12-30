@@ -2,13 +2,13 @@
 
 pkgname=sugar-git
 pkgver=v0.118
-pkgrel=2
+pkgrel=3
 pkgdesc="Sugar GTK shell"
 arch=('any')
 url="https://sugarlabs.org/"
 license=('GPL')
 depends=('gnome-keyring' 'gst-plugins-espeak' 'gtksourceview3' 'gvfs' 'libwnck3'
-         'libxklavier' 'metacity' 'mobile-broadband-provider-info' 'openssh' 'python-gwebsockets'
+         'libxklavier' 'metacity' 'mobile-broadband-provider-info' 'openssh' 'python-gwebsockets-git'
          'sugar-toolkit-gtk3-git' 'telepathy-gabble' 'telepathy-salut' 'upower' 'webkit2gtk'
          'xdg-user-dirs')
 makedepends=('intltool' 'python-empy')

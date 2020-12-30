@@ -1,7 +1,7 @@
 pkgbase = sugar-git
 	pkgdesc = Sugar GTK shell
 	pkgver = v0.118
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sugarlabs.org/
 	arch = any
 	license = GPL
@@ -16,7 +16,7 @@ pkgbase = sugar-git
 	depends = metacity
 	depends = mobile-broadband-provider-info
 	depends = openssh
-	depends = python-gwebsockets
+	depends = python-gwebsockets-git
 	depends = sugar-toolkit-gtk3-git
 	depends = telepathy-gabble
 	depends = telepathy-salut
