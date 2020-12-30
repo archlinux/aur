@@ -1,4 +1,4 @@
-# Maintainer: zidom72 <zidom72@gmail.com>
+# Maintainer: Mohammad Zolfaghari <zidom72@gmail.com>
 arch=('x86_64')
 pkgdesc="Nordvpn tray icon"
 pkgname=nordtray
