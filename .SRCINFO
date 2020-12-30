@@ -1,16 +1,16 @@
 pkgbase = python-factory_boy
 	pkgdesc = A fixtures replacement based on thoughtbot’s factory_bot.
-	pkgver = 3.1.0
-	pkgrel = 2
+	pkgver = 3.2.0
+	pkgrel = 1
 	url = https://github.com/FactoryBoy/factory_boy
 	arch = any
 	license = MIT
 	makedepends = python-distribute
 	depends = python-faker>=0.7.0
-	depends = python>=3.5
+	depends = python>=3.6
 	options = !emptydirs
-	source = https://github.com/FactoryBoy/factory_boy/archive/3.1.0.tar.gz
-	sha256sums = 718a633d607b5f903c4915074116975cf37102e7cbaa97cf60c6a9a24bcdddda
+	source = https://github.com/FactoryBoy/factory_boy/archive/3.2.0.tar.gz
+	sha256sums = f59f8c2dcad310f24a7428532d900c495db0e13e409d2d8aace3d237c2a6d93d
 
 pkgname = python-factory_boy
 
