@@ -1,13 +1,13 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=rofimoji-git
-pkgver=4.3.0.r25.ga8adb50
+pkgver=4.3.0.r28.g4247a27
 pkgrel=1
 pkgdesc='Character picker for rofi'
 arch=('any')
 url=https://github.com/fdw/rofimoji
 license=('MIT')
-depends=('emoji-font' 'python-configargparse' 'python-xdg' 'rofi')
+depends=('emoji-font' 'python-configargparse' 'rofi')
 makedepends=('git' 'python-pip' 'python-setuptools' 'python-wheel')
 optdepends=('nerd-fonts: for the Nerd Fonts character file'
             'wl-copy: for the Wayland clipboarder'

@@ -1,6 +1,6 @@
 pkgbase = rofimoji-git
 	pkgdesc = Character picker for rofi
-	pkgver = 4.3.0.r25.ga8adb50
+	pkgver = 4.3.0.r28.g4247a27
 	pkgrel = 1
 	url = https://github.com/fdw/rofimoji
 	install = rofimoji-git.install
@@ -12,7 +12,6 @@ pkgbase = rofimoji-git
 	makedepends = python-wheel
 	depends = emoji-font
 	depends = python-configargparse
-	depends = python-xdg
 	depends = rofi
 	optdepends = nerd-fonts: for the Nerd Fonts character file
 	optdepends = wl-copy: for the Wayland clipboarder
