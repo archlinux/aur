@@ -1,7 +1,7 @@
 pkgbase = desert-theme-git
 	pkgdesc = GTK3 theme made by Paulxfce. "Designed to be light, crisp, and simple, this theme is thoroughly built and tested to provide a nice desktop environment."
 	pkgver = r7.d07c904
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnome-look.org/p/1449286/
 	arch = any
 	license = GPL2
