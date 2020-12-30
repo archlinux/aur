@@ -11,7 +11,7 @@ url="https://github.com/TheAssassin/AppImageLauncher"
 license=('MIT')
 depends=('cairo' 'desktop-file-utils' 'hicolor-icon-theme' 'libappimage'
          'libbsd' 'libxpm' 'qt5-base' 'shared-mime-info')
-makedepends=('git' 'boost' 'cmake' 'gtest' 'python' 'qt5-tools' 'wget' 'xxd')
+makedepends=('git' 'boost' 'cmake' 'gtest' 'python' 'qt5-tools')
 source=("$pkgname::git+$url.git#tag=v$pkgver"
         'git+https://github.com/AppImage/AppImageUpdate.git'
         'git+https://github.com/AppImage/libappimage.git'
@@ -66,7 +66,6 @@ build() {
 	cmake . \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX:PATH=/usr/ \
-		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DUSE_SYSTEM_GTEST=ON \
 		-DUSE_SYSTEM_XZ=ON \
 		-DUSE_SYSTEM_LIBARCHIVE=ON \
@@ -74,11 +73,9 @@ build() {
 		-DBUILD_TESTING=OFF \
 		-Wno-dev
 
-	# Dependencies need to be made before cmake to resolve path limitations in cmake
+	# See https://github.com/TheAssassin/AppImageLauncher/issues/251
 	make libappimageupdate libappimageupdate-qt
 	cmake .
-
-	# Make needs to be run again after to finish compile
 	make
 }
 
