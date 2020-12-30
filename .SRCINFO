@@ -1,0 +1,15 @@
+pkgbase = vis-spellcheck-git
+	pkgdesc = Spellcheck plugin for the vis editor.
+	pkgver = r53.cc24d18
+	pkgrel = 1
+	url = https://github.com/fischerling/vis-spellcheck
+	arch = any
+	license = MIT
+	depends = vis
+	provides = vis-spellcheck
+	conflicts = vis-spellcheck
+	source = git+https://github.com/fischerling/vis-spellcheck.git
+	sha256sums = SKIP
+
+pkgname = vis-spellcheck-git
+
