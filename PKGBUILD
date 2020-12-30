@@ -1,8 +1,8 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=instamenu-schemas
-pkgver=2020.12.28
-pkgrel=2
+pkgver=2020.12.30
+pkgrel=1
 pkgdesc="addons for instamenu"
 url="https://github.com/TheCynicalTeam/$pkgname"
 arch=('any')
@@ -11,7 +11,7 @@ provides=("instamenu-schemas=$pkgver")
 depends=('glib2' 'dconf')
 makedepends=('gobject-introspection' 'git' 'meson')
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('2c9aee75142473f3eca45e7d1c6d369001477d43bd1d8a43029551730d3c5940')
+sha256sums=('e27a6c7410189f8cac0ead986affbd1689334d9bae7a1f6ce9854a9c31c88383')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
