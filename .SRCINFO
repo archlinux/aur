@@ -1,0 +1,21 @@
+pkgbase = python-md2gemini
+	pkgdesc = Convert Markdown to the Gemini text format
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://github.com/makeworld-the-better-one/md2gemini
+	arch = any
+	license = LGPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-mistune2
+	depends = python-cjkwrap
+	depends = python-wcwidth
+	source = https://files.pythonhosted.org/packages/source/m/md2gemini/md2gemini-1.8.1.tar.gz
+	sha256sums = 3ef2bd2d9e2b4968a844a2858f721348429f3a0b5976bd1c324198538103ca55
+
+pkgname = python-md2gemini
+	depends = python
+	depends = python-mistune2
+	depends = python-cjkwrap
+	depends = python-wcwidth
+
