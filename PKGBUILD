@@ -3,7 +3,7 @@
 
 pkgname=openlp-git
 _pkgbase=openlp
-pkgver=r16543.f5ffc6d57
+pkgver=r16942.303b3ded1
 pkgrel=1
 pkgdesc="Church presentation software."
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPLv2')
 provides=('openlp')
 conflicts=('openlp')
 makedepends=('qt5-tools' 'git')
-depends=('python>=3.8' 'python<3.9' 'python-pyqt5' 'phonon-qt5'
+depends=('python>=3.9' 'python<3.10' 'python-pyqt5' 'phonon-qt5'
          'python-chardet' 'python-lxml' 'python-six'
          'python-beautifulsoup4' 'python-pyenchant' 'python-dbus'
          'python-alembic' 'mediainfo' 'qt5-multimedia' 'python-zeroconf'
@@ -51,7 +51,7 @@ package() {
 
   TAG=$(git describe --tags --abbrev=0)
   VERSION="${TAG}.$(git rev-list $TAG.. --count)-$(git rev-parse --short HEAD)"
-  echo "$VERSION" > "$pkgdir/usr/lib/python3.8/site-packages/openlp/.version"
+  echo "$VERSION" > "$pkgdir/usr/lib/python3.9/site-packages/openlp/.version"
 
   install -Dm0755 "$srcdir/openlp.sh" "$pkgdir/etc/profile.d/openlp.sh"
   install -Dm0644 "resources/openlp.desktop" "$pkgdir/usr/share/applications/openlp.desktop"
