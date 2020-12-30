@@ -1,13 +1,13 @@
 pkgbase = btrfs-du
 	pkgdesc = Easily print BTRFS subvolume/snapshot disk usage
 	pkgver = 0.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nachoparker/btrfs-du
 	arch = any
 	license = GPL3
 	depends = btrfs-progs
-	source = https://github.com/nachoparker/btrfs-du/archive/v0.0.7.tar.gz
-	md5sums = fccfd2c165eb6af6f9694bb39959f2e7
+	source = btrfs-du-0.0.7.tgz::https://github.com/nachoparker/btrfs-du/archive/v0.0.7.tar.gz
+	sha256sums = 10dc3d1180ae9a17de4ea4dc6febc27b28c000bb6922d9d3d2b1e99521ff2e64
 
 pkgname = btrfs-du
 
