@@ -2,7 +2,7 @@
 # Contributor: Matthew Murray <matt@mattmurr.xyz>
 pkgname=open-fprintd
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Fprintd replacement which allows you to have your own backend as a standalone service"
 arch=(any)
 license=('GPL')
