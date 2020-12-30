@@ -1,7 +1,7 @@
 # Maintainer: Jordi Pakey-Rodriguez <jordi at 0xdec dot im>
 
 pkgname=kicad-templates
-pkgver=5.1.8
+pkgver=5.1.9
 pkgrel=1
 pkgdesc="KiCad templates"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('cmake')
 options=('!strip')
 conflicts=('kicad-templates-git')
 source=("https://gitlab.com/kicad/libraries/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('1afc8196f47d053937c2db9ee7f09b0d812e1ba93e57a0610ab1ced21c9134ca')
+sha256sums=('0c1bf3d2e6d8d1056a5da6c1f7a173551c154b4bdaddb86b6a34155b18e65da6')
 
 build() {
   cd "$srcdir"
