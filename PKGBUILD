@@ -4,7 +4,7 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
 
 pkgname=frescobaldi
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="A LilyPond sheet music text editor."
 arch=('any')
@@ -28,8 +28,8 @@ depends=(
 )
 optdepends=(
   'lilypond: Music engraving (recommended)'
-# python-portmidi is currently a python2 package
-#  'python-portmidi: MIDI playback (default engine)'
+# FIXME: python-portmidi is currently not in the AUR
+  'python-portmidi: MIDI playback (default engine)'
   'python-pygame: MIDI playback (alternate engine)'
   'portmidi: MIDI playback (fallback engine)'
   'hyphen-de: German hyphenation rules'
@@ -43,7 +43,7 @@ optdepends=(
   'python-pycups: Printing to a local CUPS server'
 )
 source=(https://github.com/frescobaldi/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('5c2cffb8282cd9faef1585808bd800d1eb3c0db4cc464a61ce8576dbf7ef9b20')
+sha256sums=('9c7f5036f367691454753f1db06ea02c33501c1e4f24bfb47485103911f3e9c1')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"

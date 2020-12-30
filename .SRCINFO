@@ -1,6 +1,6 @@
 pkgbase = frescobaldi
 	pkgdesc = A LilyPond sheet music text editor.
-	pkgver = 3.1.2
+	pkgver = 3.1.3
 	pkgrel = 1
 	url = http://www.frescobaldi.org/
 	arch = any
@@ -20,6 +20,7 @@ pkgbase = frescobaldi
 	depends = hicolor-icon-theme
 	depends = tango-icon-theme
 	optdepends = lilypond: Music engraving (recommended)
+	optdepends = python-portmidi: MIDI playback (default engine)
 	optdepends = python-pygame: MIDI playback (alternate engine)
 	optdepends = portmidi: MIDI playback (fallback engine)
 	optdepends = hyphen-de: German hyphenation rules
@@ -31,8 +32,8 @@ pkgbase = frescobaldi
 	optdepends = hyphen-nl: Dutch hyphenation rules
 	optdepends = hyphen-ro: Romanian hyphenation rules
 	optdepends = python-pycups: Printing to a local CUPS server
-	source = https://github.com/frescobaldi/frescobaldi/releases/download/v3.1.2/frescobaldi-3.1.2.tar.gz
-	sha256sums = 5c2cffb8282cd9faef1585808bd800d1eb3c0db4cc464a61ce8576dbf7ef9b20
+	source = https://github.com/frescobaldi/frescobaldi/releases/download/v3.1.3/frescobaldi-3.1.3.tar.gz
+	sha256sums = 9c7f5036f367691454753f1db06ea02c33501c1e4f24bfb47485103911f3e9c1
 
 pkgname = frescobaldi
 
