@@ -1,6 +1,6 @@
 pkgbase = tokei-bin
 	pkgdesc = Display statistics about your code
-	pkgver = 12.1.0
+	pkgver = 12.1.1
 	pkgrel = 1
 	url = https://github.com/XAMPPRocky/tokei
 	arch = i686
@@ -14,16 +14,16 @@ pkgbase = tokei-bin
 	conflicts = tokei
 	source = https://raw.githubusercontent.com/XAMPPRocky/tokei/master/LICENCE-MIT
 	sha256sums = SKIP
-	source_i686 = https://github.com/XAMPPRocky/tokei/releases/download/v12.1.0/tokei-i686-unknown-linux-musl.tar.gz
-	sha256sums_i686 = 11e40f744fa9454dc447d9005a01878378d7015aaab6014da880b6caf280959e
-	source_x86_64 = https://github.com/XAMPPRocky/tokei/releases/download/v12.1.0/tokei-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = a8af390c55aa589dfbbc94b3956be7cab285348253e861811ec666a187bd69f6
-	source_aarch64 = https://github.com/XAMPPRocky/tokei/releases/download/v12.1.0/tokei-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 28d4f59c0bd97482691874e4c6abcb2b49228f6835e9640460e91d23b679e161
-	source_arm = https://github.com/XAMPPRocky/tokei/releases/download/v12.1.0/tokei-arm-unknown-linux-gnueabi.tar.gz
-	sha256sums_arm = 43c7f6fa69c5e0772a7eedabfd753a35e953975ac7479214ba0aa347da81c56d
-	source_armv7h = https://github.com/XAMPPRocky/tokei/releases/download/v12.1.0/tokei-armv7-unknown-linux-gnueabihf.tar.gz
-	sha256sums_armv7h = d0dbe3814152356d3627f46553a12803d52cd80ade1c8e28b95596d8a306399c
+	source_i686 = https://github.com/XAMPPRocky/tokei/releases/download/v12.1.1/tokei-i686-unknown-linux-musl.tar.gz
+	sha256sums_i686 = 6381f1cfc3cde167674777cd6cf6999d116503f4b51ec70b66f2f8c4c9799b18
+	source_x86_64 = https://github.com/XAMPPRocky/tokei/releases/download/v12.1.1/tokei-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 3ac670c36f7fb62d4bc7f80cd599dd31f65cbfe6a760da875001769dcfb32a95
+	source_aarch64 = https://github.com/XAMPPRocky/tokei/releases/download/v12.1.1/tokei-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 880ffa0698c24918d934554d3ccdc16994c16edda82084539dab6407e13b06ea
+	source_arm = https://github.com/XAMPPRocky/tokei/releases/download/v12.1.1/tokei-arm-unknown-linux-gnueabi.tar.gz
+	sha256sums_arm = 8533d314f53eeb580d7f555b3bcf4780abab384ff2159de347047e2a1e7600cf
+	source_armv7h = https://github.com/XAMPPRocky/tokei/releases/download/v12.1.1/tokei-armv7-unknown-linux-gnueabihf.tar.gz
+	sha256sums_armv7h = 4d3dd2c3025f1347de38d457e28ad416c7d7e846e8f8b640804f3a12f55b11ab
 
 pkgname = tokei-bin
 
