@@ -3,7 +3,7 @@
 pkgname=desert-theme-git
 _gitname=Desert
 pkgver=r7.d07c904
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK3 theme made by Paulxfce. \"Designed to be light, crisp, and simple, this theme is thoroughly built and tested to provide a nice desktop environment.\""
 arch=("any")
 url="https://www.gnome-look.org/p/1449286/"
@@ -40,7 +40,7 @@ build() {
 					"Desert-Purple" "Desert-Purple-Solid"
 					"Desert-Purple-Dark" "Desert-Purple-Dark-Solid")
 
-	for (( i=0; i<${#directory_list[@]}; i++ ))
+	for (( i=1; i<=${#directory_list[@]}; i++ ))
 	do
 		find "$PWD" -maxdepth 1 -type d -name "${directory_list[$i]}" | sort -V | tail -1 | xargs -I '{}' mv -f {} ./latest/"${theme_names[$i]}"
 	done
