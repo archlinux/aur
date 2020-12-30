@@ -1,8 +1,8 @@
-# Submitter: Bogomil Vasilev <smirky@smirky.net>
+# Maintainer: Bogomil Vasilev <smirky@smirky.net>
 
 pkgname=roundcubemail-plugin-persistent_login
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Roundcube plugin that provides a "Keep me logged in" aka "Remember Me" functionality.'
 arch=('any')
 url='https://plugins.roundcube.net/#/packages/texxasrulez/persistent_login'
