@@ -1,13 +1,16 @@
 pkgbase = origin-client
 	pkgdesc = Openshift client
-	pkgver = 4.6
-	pkgrel = 3
+	pkgver = 4.6.r20201212.02c1100
+	pkgrel = 1
 	url = https://github.com/openshift/oc
 	arch = x86_64
 	license = Apache
 	makedepends = go-pie
-	source = https://github.com/openshift/oc/archive/release-4.6.zip
-	sha256sums = 680943a11c9385f490464274ec8abe9f86945dc4561feb01aba58566f9b2b81e
+	makedepends = jq
+	source = https://github.com/openshift/oc/archive/02c110006bfef4ba53fa5042bb9eae170dd3dc1c.zip
+	source = https://api.github.com/repos/openshift/oc/git/commits/02c110006bfef4ba53fa5042bb9eae170dd3dc1c
+	sha256sums = 5b82e94b62a2e23c8a6884e1f8c31b8af75fb0dd8853b330d09c46cc0fcc9efe
+	sha256sums = SKIP
 
 pkgname = origin-client
 
