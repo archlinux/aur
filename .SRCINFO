@@ -1,6 +1,6 @@
 pkgbase = cstatus-git
 	pkgdesc = Minimal statusbar for dwm written in c99.
-	pkgver = 0.1.0.r5.gcab32ee
+	pkgver = 1.0.0.r0.gcab32ee
 	pkgrel = 1
 	url = https://git.sr.ht/~andreafeletto/cstatus
 	arch = x86_64
