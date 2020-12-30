@@ -1,6 +1,6 @@
 pkgbase = tox-node-rs
 	pkgdesc = A server application to run tox node written in pure Rust
-	pkgver = 0.0.8
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/tox-rs/tox-node
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = tox-node-rs
 	makedepends = pkgconf
 	depends = libsodium
 	provides = tox-node-rs
-	source = tox-node-rs-0.0.8.tar.gz::https://github.com/tox-rs/tox-node/archive/v0.0.8.tar.gz
-	sha256sums = 58d6da0d3bbd683b6fadfaa6f40dae9ccfce8c98a218bcf19367259715fe300b
+	source = tox-node-rs-0.1.1.tar.gz::https://github.com/tox-rs/tox-node/archive/v0.1.1.tar.gz
+	sha256sums = f6646784ceff9cfae854dbba34913aaf5b55bd9e066aaa6ecfe4ca458435aca5
 
 pkgname = tox-node-rs
 
