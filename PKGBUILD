@@ -12,7 +12,7 @@ depends=('java-runtime')
 conflicts=('tastyworks-bin')
 
 source=(https://download.tastyworks.com/desktop-1.x.x/${pkgver}/tastyworks-${pkgver}-${pkgrel}_amd64.deb)
-sha256sums=('e307100e4c983e392dd1a6de86010e340015c36dbd98145a0d116f6761f258c8')
+sha256sums=('eb744696f972ddb9a748f6940d79ed94193fe288032509de98a716946b1e4d10')
 
 build() {
 	tar xf data.tar.xz
