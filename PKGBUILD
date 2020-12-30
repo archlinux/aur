@@ -2,7 +2,7 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-bin
-pkgver=20.0930a
+pkgver=20.1230a
 gamefilesver=18.0328
 pkgrel=1
 pkgdesc="Rewrite of Re-Volt, popular R/C car racing game from 1999."
@@ -36,7 +36,12 @@ package() {
     cd "$srcdir/rvgl_assets"
     find * -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 
+    # Icons
+    cd "$srcdir/rvgl_assets/icons"
+    find * -type f -exec install -Dm644 {} "$pkgdir/usr/share/icons/hicolor/{}" \;
+
     # User folders
+    install -dm777 "$pkgdir/opt/rvgl/cups"
     install -dm777 "$pkgdir/opt/rvgl/cache"
     install -dm777 "$pkgdir/opt/rvgl/profiles"
     install -dm777 "$pkgdir/opt/rvgl/replays"
@@ -45,11 +50,6 @@ package() {
     # Platform binaries
     cd "$srcdir/rvgl_platform/linux"
     install -Dm755 rvgl.64 "$pkgdir/opt/rvgl/rvgl"
-
-    # Icons
-    cd "$srcdir/rvgl_platform/linux/icons"
-    find * -type f -exec install -Dm644 {} "$pkgdir/usr/share/icons/hicolor/{}" \;
-    find "256x256/apps/rvgl.png" -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/icons/{}" \;
 
     # Launcher
     cd "$srcdir"
