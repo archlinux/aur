@@ -13,3 +13,4 @@ Icon=glowing-bear
 Type=Application
 Categories=Network;Chat;IRCClient;ConsoleOnly;Internet;Communication;IRC;
 MimeType=x-scheme-handler/irc;x-scheme-handler/ircs;
+StartupWMClass=Glowing Bear

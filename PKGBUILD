@@ -1,43 +1,20 @@
 # Maintainer: rany <rany@disroot.org>
-pkgname=glowing-bear-electron-git
-pkgver=0.9.0.r65.g88a95c0
+pkgname=glowing-bear-electron
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A web client for Weechat (Electron version)"
 arch=(any)
 url="https://www.glowing-bear.org/"
 license=('GPL-3.0')
 groups=(irc weechat)
-depends=(electron)
+depends=(electron glowing-bear-web)
 makedepends=(npm git)
-source=("git+https://github.com/glowing-bear/glowing-bear.git"
-	"glowing-bear.desktop"
+source=("glowing-bear.desktop"
 	"glowing-bear.sh")
-sha256sums=("SKIP"
-	"9a8bb59b862a048442a81853b4f600783b159493a5e608a6a9fdc32ea7060777"
+sha256sums=("8e8f5c38849a8e76e0f217c38c24b5b6b297b7c644ea3513ea80a5ac39787424"
 	"edcfb232718f4fd54e2bd3b4cc00b6c8de6e8189feab2ec16fb64464833a09b3")
 
-prepare() {
-	# Install the dependencies
-	cd "glowing-bear"
-	npm install
-}
-
-pkgver() {
-	cd "glowing-bear"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-build() {
-	cd "glowing-bear"
-	npm run build
-}
-
 package() {
-	# Copy the app to usr/lib/glowing-bear
-	cd "glowing-bear/build"
-	mkdir -p "${pkgdir}/usr/lib/glowing-bear"
-	cp * -R "${pkgdir}/usr/lib/glowing-bear"
-
 	# Register the binary as glowing-bear
 	install -Dm755 "${srcdir}/glowing-bear.sh" "${pkgdir}/usr/bin/glowing-bear"
 	
