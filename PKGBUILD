@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=5.10
-_minor=3
+_minor=4
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -72,14 +72,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v2-sep/0002-Bluetooth-Fix-LL-PRivacy-BLE-device-fails-to-connect.patch"
-        "${_lucjanpath}/arch-patches-v2-sep/0003-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch"
-        "${_lucjanpath}/arch-patches-v2-sep/0004-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
-        "${_lucjanpath}/arch-patches-v2-sep/0005-drm-amd-display-Add-get_dig_frontend-implementation-.patch"
-        "${_lucjanpath}/arch-patches-v2-sep/0006-drm-amdgpu-only-set-DP-subconnector-type-on-DP-and-e.patch"
-        "${_lucjanpath}/arch-patches-v2-sep/0007-btrfs-Fix-500-2000-performance-regression-w-5.10.patch"
-        "${_lucjanpath}/arch-patches-v2-sep/0008-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0002-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0003-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0004-drm-amd-display-Add-get_dig_frontend-implementation-.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0005-btrfs-Fix-500-2000-performance-regression-w-5.10.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0006-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch"
          # the main kernel config files
         'config')
 
@@ -315,18 +313,16 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('3b1fb09f5ffd53e36eaceda6aa97c976d7fd2ffda4e13ce05ecf625c32bbdc0643eee7bc4e43230482dcd328a57669d6d6c7551fa4592d5f3c1a8924bb5a012b'
+sha512sums=('aab782786cc06b5f1872bbb88c4f55a73d222f8ecf1ab8f5b7d96de2160b11b4407e02a44b206d2c00e395ba0662aa5a038b8e10d185621a0b33c576b523b490'
             'SKIP'
             '003e33e214065a57df00458d4a88db5cc33eb00030a516264fc4b2e4de9b6649466451260a30cf86667f8981fc493103dea509217b3850773a65d3beb95e6441'
             '34e21ecc4ef0d07707283427fa82d561a9573d670e80ccd41f7d9cb595473b3844b8df7aeffcb4fe82d9deeef0a4d4e6aef663eb1a7a397fa181f06f418a0d6d'
-            '30811ab386f4d8c174fb1720a2f4998dcbedd3d96f474b84206b1f8fa06bf582e4534311b63e053694a51e45c52f576bbd8139a4e3b58790f1ac1d55a6a90a96'
-            '27dd242516980cfe9cefd5f311a5eb88b264dbc2e375e78ec6f00f68e1443816e6bc61483e938e0aea4b2f2bf5771205694040c5a69d15ecbf564319b2af83c1'
-            '29975b0965cdd778d74230f61036df4a9b50f8066c61cd47dfca876d4e3d124f05fc04e6c6643eecc9e2c80c3cad871519261621fbbc9503a6a5300b16207526'
-            'e8bd677cc37f2558a2c7be088a5da313defaeb3f964ce32c0216dd014410105bf24b7462012ef939118f42c7491620fd053fb3e8f7180012c876dfe635b12dca'
-            '032a539bb4514e587dd4871bc47eee0c916800287d541cc7aae7ccd93404397bb609c7f6cac62bcb4b64a8c1b3d25868ed5bc31564a82286423aa91638195f1b'
-            'b6213d144be6be37e8b1403858fc7d42643fe188c2e2e28e56fcec8a2efbb5694cc326a1bc4c3d8f37d58c2e1ebdd08ded864f66f6762cfeb1d9bfb5040d7c9e'
-            'b57d6499b4563134c8bfd8ff550ff04229c4894c1f0fffa7fa73b9cff7f0735c7ac96391f844aa149d32c27a538da7d46d1d005178118f4ea525d1e787fbe9a7'
-            '053890f284c6c125e29953c6ac544a3e75a93ce4a2fcc570141be0fa6add5934cc613292da736097371644fc9f091c0df6d013026a413456e1dd3dfb0db7a667'
+            'b627c9cb440d3f356e8d1fcbd46512a2afe8076cf3df504f033250f52ba692802167f59addd1d05e58b5cf46bec5d22baf9b49aa049bfc3699580c1ac0af6485'
+            '3ee7b85a530e73ad12861c844a99304b615f032fe23bfff3fc576955535b4dc261aae2c9c343e157eb6dc70fbfd0299641c4d47b32592653d5e7afe285598128'
+            'f9caa104dabdfb6c49ce4368059d401ae2fa28ab37d08d8b45c06c5a95cdf77e17d5313bddfaf66bc62caa6524c4c090b9dd05adad31f877568a190c3a80bdad'
+            '45a14d082db128f32e08b4852715e2d6e8f3c7615b01c3b22af84e91189c55863a7070f33e33cf08a5f62180ae5536521011b338609457b3989fbbce419c11e8'
+            '30986ac777e7c413585b8a5a0f2db37578762f9b870cee097f414e9248e111fe65e16cdede04450f7533bc479ed4923f245c3128bef9f7f2de4d5c66c541f8a0'
+            'c2246d9b0fdf69115a0636be8783170aa1ec91d355002d7df5549c298c3707493a97c4fbe041bec283a911e88f3497fd4ad2c699c71df4d9bbe158cb57b0350c'
             '9247f5c6b977fa26a8bcaf25bebdf43e1b3c21836d2654af7aa6d530c8bd394950d527661f8d1c0dd4b8293c23dc77e8edd3bf020d482f992c9eb15b89e27919')
 
 validpgpkeys=(
