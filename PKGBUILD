@@ -7,7 +7,7 @@
 
 pkgname=rubymine
 _pkgname=RubyMine
-pkgver=2020.3
+pkgver=2020.3.1
 pkgrel=1
 pkgdesc="Ruby and Rails IDE with the full stack of essential developer tools."
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ install=rubymine.install
 source=(https://download.jetbrains.com/ruby/${_pkgname}-${pkgver}.tar.gz
         rubymine.desktop
         rubymine.install)
-sha256sums=('858ac5924cf8ecbae52fad2b4e1ad7c5062d4454af4198ed43f263d757924646'
+sha256sums=('8cd8a858f603f1d4f7adf0f99c374003e21475e516bdaf498eb03230cdff3d37'
             '72df0e7c605caf7b6c98e9335f4eee9c8bfe8fcc24523634fd8c1ebe019534d6'
             '7ecadddf2b315b22df3a5c7b90e18be7ea69e2a0d869ee18bf0e031b2c508f76')
 
