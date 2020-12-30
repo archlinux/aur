@@ -3,8 +3,9 @@
 
 pkgname=dirsearch
 
-pkgver=0.4.1
-pkgrel=2
+_pkgver=0.4.1-alpha
+pkgver="${_pkgver/-/.}"
+pkgrel=1
 
 pkgdesc='Web path scanner/fuzzer, written in Python'
 arch=('any')
@@ -14,17 +15,17 @@ license=('GPL2')
 depends=('python')
 
 changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tgz::$url/archive/v$pkgver.tar.gz")
-b2sums=('32208874a95611f51d5efbaa0d0d50e58105998d9781b46c67db5f3b6e6f97d7d997a22ae6eb9001ebff7dea93edc1383d0c3a789abe3d8244fdbd8a4f398224')
+source=("$pkgname-$_pkgver.tgz::$url/archive/v${_pkgver}.tar.gz")
+b2sums=('04aa83d8c1acf7d7f093820af944dd63e2508678ae2311bae8393e6b8dc4e3fa15b766dea9a2b320029d8c7143d9f7caf7bf02f1abf4bb248fb0428a4f730fab')
 
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$_pkgver"
   sed -i 's/^# \(save-logs-home.*$\)/\1/' default.conf
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$_pkgver"
   install -dm755 "$pkgdir"/usr/{bin,{share/doc/,lib/}$pkgname}
   cp -a * "$pkgdir/usr/lib/$pkgname/"
   install -m644 *.md "$pkgdir/usr/share/doc/$pkgname/"
