@@ -1,6 +1,6 @@
 pkgbase = perl-ora2pg
 	pkgdesc = Moves Oracle databases to PostgreSQL
-	pkgver = 20.0
+	pkgver = 21.0
 	pkgrel = 1
 	url = http://ora2pg.darold.net
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = perl-ora2pg
 	license = PerlArtistic
 	depends = perl-dbd-oracle
 	options = !emptydirs
-	source = http://downloads.sourceforge.net/ora2pg/ora2pg-20.0.tar.bz2
-	md5sums = 989b48c289c2febd9f200d170a6e8d77
+	source = http://downloads.sourceforge.net/ora2pg/ora2pg-21.0.tar.bz2
+	md5sums = 78af615d8b3dbef06464acf8d0d46c47
 
 pkgname = perl-ora2pg
 
