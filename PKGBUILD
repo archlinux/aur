@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=artanis-git
-pkgver=0.4
+pkgver=0.4.1.r26.gf7b80e0
 pkgrel=1
 pkgdesc="A fast monolithic web-framework of Scheme"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'texlive-core')
 provides=('artanis')
 conflicts=('artanis')
 source=("git+https://gitlab.com/NalaGinrut/artanis.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 options=('!strip')
 
 pkgver() {
