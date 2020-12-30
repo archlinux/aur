@@ -2,7 +2,7 @@
 
 _name=dain-ncnn-vulkan
 pkgname=dain-ncnn-vulkan-git
-pkgver=r21.79257cd
+pkgver=r29.91b689f
 pkgrel=1
 pkgdesc="DAIN, Depth-Aware Video Frame Interpolation implemented with ncnn library"
 arch=('x86_64' 'i686')
