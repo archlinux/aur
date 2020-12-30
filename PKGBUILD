@@ -1,32 +1,34 @@
 # Maintainer: Dan Fuhry <dan@fuhry.com>
 pkgname=megalogviewer
-pkgver=4.4.08
+pkgver=4.4.15
 pkgrel=1
 pkgdesc="Viewer for TunerStudio/MegaSquirt logs"
 arch=(any)
 depends=(java-runtime)
 makedepends=(imagemagick)
 license=(proprietary)
-source=(http://www.tunerstudio.com/downloads2/MegaLogViewer_v${pkgver}.tar.gz
+source=(http://www.tunerstudio.com/downloads2/MegaLogViewerHD_v${pkgver}.tar.gz
 		megalogviewer.sh
 		megalogviewer.desktop
 		)
 
 build()
 {
-	convert "${srcdir}/MegaLogViewer/MegaLogViewer.ico" -alpha set "${srcdir}/MegaLogViewer/megalogviewer.png"
+	convert "${srcdir}/MegaLogViewerHD/MegaLogViewer.ico" -alpha set "${srcdir}/MegaLogViewerHD/megalogviewer.png"
+	chmod -R a+rX "${srcdir}/MegaLogViewerHD"
 }
 
 package()
 {
-	for icon in ${srcdir}/MegaLogViewer/megalogviewer-*.png; do
+	for icon in ${srcdir}/MegaLogViewerHD/megalogviewer-*.png; do
 		size=$(identify -format '%wx%h' "${icon}")
 		mkdir -p "${pkgdir}/usr/share/icons/hicolor/${size}/apps"
 		install -m644 "$icon" "${pkgdir}/usr/share/icons/hicolor/${size}/apps/${pkgname}.png"
 		rm -f "$icon"
 	done
 	mkdir -p "${pkgdir}/usr/lib"
-	cp -a "${srcdir}/MegaLogViewer" "${pkgdir}/usr/lib/megalogviewer"
+	cp -a "${srcdir}/MegaLogViewerHD" "${pkgdir}/usr/lib/megalogviewer"
+	chmod 0755 "${pkgdir}/usr/lib/megalogviewer"
 	
 	mkdir -p "${pkgdir}/usr/bin"
 	install -m755 "${srcdir}/megalogviewer.sh" "${pkgdir}/usr/bin/megalogviewer"
@@ -34,6 +36,6 @@ package()
 	mkdir -p "${pkgdir}/usr/share/applications"
 	install -m644 "${srcdir}/megalogviewer.desktop" "${pkgdir}/usr/share/applications/megalogviewer.desktop"
 }
-sha256sums=('47e8593b8173ef058e0e86a41147577c612880aec7832576773faaf2eb76d7b2'
-            '5434db388a8404eff299fd2fb2f018d231cdc816363c27a9c622850cc659233c'
+sha256sums=('811f36ce3063d3083f3d4a7cad7cbc650ad38a9270f1c6697eb90467b7637ad3'
+            'fa7f28b0b9363fd535d596e861a2f4c2708949d724e41c365aeb0058e51fe4a2'
             '6c6238646f60a076ebe0549228b59d7d9f20bc7019a0e7d8b5df2089ba50a396')
