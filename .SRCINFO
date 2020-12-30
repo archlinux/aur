@@ -1,0 +1,13 @@
+pkgbase = python-javalang
+	pkgdesc = Pure Python Java parser and tools
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/c2nes/javalang
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	source = https://github.com/c2nes/javalang/archive/v0.13.0.tar.gz
+	sha256sums = 9abe66be2366c592fdf0648259a41ddb5c31ebda5c91422b9c8769ba91191551
+
+pkgname = python-javalang
+
