@@ -1,6 +1,6 @@
 pkgname=eolie-next-git
 _gitname=eolie
-pkgver=0.9.100.r14.g5e653662
+pkgver=0.9.100.r16.g495d8033
 pkgrel=1
 pkgdesc="Simple web browser for GNOME (dev branch)"
 arch=('x86_64' 'i686')
