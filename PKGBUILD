@@ -5,7 +5,7 @@ pkgbase=pulseaudio-hsphfpd
 pkgname=(pulseaudio-hsphfpd libpulse-hsphfpd alsa-card-profiles-hsphfpd pulseaudio-{zeroconf,lirc,jack,bluetooth,equalizer,rtp}-hsphfpd)
 pkgdesc="A fork of pulseaudio providing superior bluetooth headset functionality"
 pkgver=14.0+49+g40a68e93a
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 license=(GPL)
@@ -59,7 +59,7 @@ _pick() {
 
 package_pulseaudio-hsphfpd() {
   depends=("libpulse-hsphfpd=$pkgver-$pkgrel" alsa-card-profiles rtkit libltdl speexdsp
-           tdb orc libsoxr webrtc-audio-processing libxtst hsphfpd-git)
+           tdb orc libsoxr webrtc-audio-processing libxtst libopenaptx hsphfpd-git)
   optdepends=('pulseaudio-alsa: ALSA configuration (recommended)'
               'pulseaudio-zeroconf-hsphfpd: Zeroconf support'
               'pulseaudio-lirc-hsphfpd: IR (lirc) support'
