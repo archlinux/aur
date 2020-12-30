@@ -1,7 +1,7 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
 
 pkgname=frescobaldi-git
-pkgver=3.1.1.r19.g6865786e
+pkgver=3.1.2.r46.gc85376f9
 pkgrel=1
 pkgdesc="A LilyPond sheet music text editor."
 arch=('any')
@@ -15,6 +15,7 @@ depends=(
   'python-ly>=0.9.5'
   'python-poppler-qt5'
   'python-pyqt5>=5.9'
+  'qpageview'
   'qt5-base>=5.9'
   'qt5-svg>=5.9'
   'qt5-webkit>=5.9'
