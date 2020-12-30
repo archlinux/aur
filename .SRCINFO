@@ -1,6 +1,6 @@
 pkgbase = bauh
 	pkgdesc = Graphical interface for managing your applications (AppImage, Flatpak, Snap, Arch/AUR, Web)
-	pkgver = 0.9.10
+	pkgver = 0.9.11
 	pkgrel = 1
 	url = https://github.com/vinifmor/bauh
 	arch = any
@@ -16,6 +16,7 @@ pkgbase = bauh
 	depends = python-colorama
 	depends = python-pyaml
 	depends = qt5-svg
+	depends = python-dateutil
 	optdepends = flatpak: required for Flatpak support
 	optdepends = snapd: required for Snap support
 	optdepends = python-beautifulsoup4: for Native Web applications support
@@ -26,7 +27,7 @@ pkgbase = bauh
 	optdepends = fuse3: may be required for AppImage support
 	optdepends = pacman: required for AUR support
 	optdepends = binutils: required for AUR support
-	optdepends = git: to allow AUR packages downgrading
+	optdepends = git: required for AUR support
 	optdepends = autoconf: may be required to compile some AUR packages
 	optdepends = automake: may be required to compile some AUR packages
 	optdepends = bison: may be required to compile some AUR packages
@@ -42,8 +43,8 @@ pkgbase = bauh
 	optdepends = aria2: multi-threaded downloading support
 	optdepends = breeze: KDE Plasma main theme
 	optdepends = axel: multi-threaded downloading support
-	source = https://github.com/vinifmor/bauh/archive/0.9.10.tar.gz
-	sha512sums = bbb03f326c3ae8100e9c7a4fe70610c4d45120446e3a39f22d9174a2dbf4a5f432983f13990fe6a46abf78ddb74422a8e46ad8a4dea001a7339e76e2c487368e
+	source = https://github.com/vinifmor/bauh/archive/0.9.11.tar.gz
+	sha512sums = 318bef84a78382f3f54c345d59725bd178711108c6709b0d469564a6ccb9238eb7c85fcd7ec61716c8d816f16472b6080ad66ad61a9de8aa3d5811aa45539c8a
 
 pkgname = bauh
 
