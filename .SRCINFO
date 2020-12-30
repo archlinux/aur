@@ -1,20 +1,17 @@
 pkgbase = moka-icon-theme-git
 	pkgdesc = An icon theme designed with a minimal, flat style, using simple geometry & colours.
-	pkgver = 382.669c2ae
+	pkgver = 5.4.0
 	pkgrel = 1
-	url = https://snwh.org/moka
+	url = https://github.com/moka-project/moka-icon-theme
 	install = moka-icon-theme.install
 	arch = any
 	license = GPL3
-	makedepends = git
-	depends = faba-icon-theme-git
-	depends = faba-mono-icons-git
 	depends = gtk-update-icon-cache
 	provides = moka-icon-theme
 	conflicts = moka-icon-theme
 	replaces = moka-icon-theme
 	options = !strip
-	source = moka-icon-theme::git+https://github.com/moka-project/moka-icon-theme.git
+	source = moka-icon-theme-git-5.4.0.tar.gz::https://github.com/moka-project/moka-icon-theme/archive/v5.4.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = moka-icon-theme-git
