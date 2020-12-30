@@ -1,7 +1,7 @@
 # Maintainer: Matthew Murray <matt@mattmurr.xyz>
 pkgname=python-validity
 pkgver=0.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Validity fingerprint sensor driver"
 arch=(any)
 license=(MIT)
@@ -28,6 +28,9 @@ package() {
 
   install -D -m 644 debian/python3-validity.udev \
     $pkgdir/usr/lib/udev/rules.d/60-python-validity.rules
+
+  install -Dm644 LICENSE \
+    ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
