@@ -1,0 +1,14 @@
+pkgbase = guile-shapefile
+	pkgdesc = Parse shapefiles (map data) in guile
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/HugoNikanor/guile-shapefile
+	arch = any
+	license = MIT
+	depends = guile
+	options = !strip
+	source = https://github.com/HugoNikanor/guile-shapefile/archive/v0.1.2.tar.gz
+	md5sums = fb0cf028517ae3016ba91c1cd089d788
+
+pkgname = guile-shapefile
+
