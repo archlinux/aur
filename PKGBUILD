@@ -1,16 +1,16 @@
 # Maintainer: Rui Ventura <rventura.pt@outlook.com>
 pkgname=chiaki
-pkgver=1.3.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Free and Open Source PS4 Remote Play Client"
 arch=(x86_64)
-url=https://github.com/thestr4ng3r/chiaki
-license=(GPL)
+url=https://git.sr.ht/~thestr4ng3r/chiaki
+license=(AGPL3)
 provides=(chiaki)
 depends=(ffmpeg gcc-libs qt5-multimedia qt5-svg opus "openssl>=1.1" sdl2)
 makedepends=(cmake protobuf python-protobuf)
-source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver-src.tar.gz")
-sha256sums=('5bc5c22908c1306c8bb322bfd0606c3185f88306634a2005d82f4e18e8ed6c11')
+source=("$url/refs/v$pkgver/$pkgname-v$pkgver-src.tar.gz")
+sha256sums=('742113dfc9a05992cc2a2ca5dbebfaf9545cf86947ff9df38409be9c3423d94d')
 
 build() {
   cd "$srcdir/$pkgname"
