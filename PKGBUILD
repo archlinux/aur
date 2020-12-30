@@ -1,4 +1,5 @@
-# Maintainer: Matthew Murray <matt@mattmurr.xyz>
+# Maintainer: j.r <j.r@jugendhacker.de>
+# Contributor: Matthew Murray <matt@mattmurr.xyz>
 pkgname=open-fprintd
 pkgver=0.6
 pkgrel=1
