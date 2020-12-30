@@ -5,7 +5,7 @@
 # Maintainer: Mathias Merscher <archlinux@rheinekopfsache.de>
 
 pkgname=origin-client-bin
-pkgver=3.11.0
+pkgver=4.1.0
 _hash=0cbc58b
 pkgrel=1
 pkgdesc="The client tools for the Origin platform that powers OpenShift"
@@ -15,11 +15,11 @@ license=('Apache')
 
 source=("bash-completions::https://raw.githubusercontent.com/openshift/origin/$_hash/contrib/completions/bash/oc"
         "zsh-completions::https://raw.githubusercontent.com/openshift/origin/$_hash/contrib/completions/zsh/oc"
-        "https://github.com/openshift/origin/releases/download/v$pkgver/openshift-origin-client-tools-v$pkgver-$_hash-linux-64bit.tar.gz")
+        "https://github.com/openshift/origin/archive/v$pkgver.tar.gz")
 
 sha256sums=('f7672536af1ab578b833baf405fdf5a7791259940bd92540a41980047ae0cefa'
             'ee1a0ec02a9e6972908739d082cc1b7fade12aee38cd0e26029e5bceda2b2853'
-            '4b0f07428ba854174c58d2e38287e5402964c9a9355f6c359d1242efd0990da3')
+            'SKIP')
 
 prepare() {
     # Fix zsh completion
@@ -32,5 +32,6 @@ package() {
     install -D -m644 $srcdir/zsh-completions $pkgdir/usr/share/zsh/site-functions/_oc
 
     # package
-    install -D -m755 $srcdir/*/oc $pkgdir/usr/bin/oc
+    mkdir $pkgdir/usr/bin
+    cp -rf $srcdir/origin-4.1.0/pkg/oc $pkgdir/usr/bin/oc
 }
