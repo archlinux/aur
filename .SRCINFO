@@ -1,5 +1,5 @@
 pkgbase = schildichat-desktop-bin
-	pkgdesc = A Matrix Client based on Element with a more traditional instant messaging experience
+	pkgdesc = SchildiChat is a Matrix client based on Element with a more traditional instant messaging experience.
 	pkgver = 1.7.16
 	pkgrel = 1
 	url = https://schildi.chat

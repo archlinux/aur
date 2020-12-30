@@ -5,7 +5,7 @@
 pkgname=schildichat-desktop-bin
 pkgver=1.7.16
 pkgrel=1
-pkgdesc="A Matrix Client based on Element with a more traditional instant messaging experience"
+pkgdesc="SchildiChat is a Matrix client based on Element with a more traditional instant messaging experience."
 arch=('x86_64')
 url="https://schildi.chat"
 license=('Apache')
