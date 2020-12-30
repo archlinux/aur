@@ -2,12 +2,12 @@
 
 pkgname=sugar-artwork-git
 pkgver=v0.118
-pkgrel=1
+pkgrel=2
 pkgdesc="Sugar icons and themes"
 arch=('x86_64')
 url="https://sugarlabs.org/"
 license=('LGPL')
-makedepends=('gtk2' 'gtk3' 'icon-naming-utils' 'python' 'xorg-xcursorgen' 'python-empy')
+makedepends=('gtk2' 'gtk3' 'icon-naming-utils' 'python-empy' 'xorg-xcursorgen')
 optdepends=('gtk2: GTK+ 2 theme'
             'gtk3: GTK+ 3 theme')
 source=("git+https://github.com/sugarlabs/sugar-artwork.git")
