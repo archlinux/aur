@@ -3,7 +3,7 @@
 
 pkgname=neru-icon-newyear-theme
 pkgver=1.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Christmas theme icons Neru"
 arch=('any')
 url="https://github.com/chistota/neru-icon-newyear-theme/"
@@ -16,7 +16,7 @@ sha256sums=('dbb885f926ad1e2e3b282484928da7553c124ee1f494bd8e580efd670157dc99'
 
 
 prepare() {
-  cd "$srcdir"/"${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   patch -Np1 -i "${srcdir}"/patch.diff
     ln -s document-viewer.svg neru-newyear-light/medium/apps/graphics-viewer-document.svg
     ln -s document-viewer.svg neru-newyear-light/medium/apps/org.gnome.Evince.svg
@@ -107,6 +107,70 @@ prepare() {
     ln -s preferences-system-notifications.svg neru-newyear-dark/medium/apps/org.xfce.notification.svg
     ln -s accessories-dictionary.svg neru-newyear-dark/medium/apps/org.xfce.Dictionary.svg
     ln -s flameshot.svg neru-newyear-dark/medium/apps/org.flameshot.Flameshot.svg
+
+    ln -s kmenuedit.svg neru-newyear-light/medium/apps/org.xfce.garcon.svg
+    ln -s cutecom.svg neru-newyear-light/medium/apps/org.xfce.volman.svg
+    ln -s preferences-system-search.svg neru-newyear-light/medium/apps/org.xfce.appfinder.svg
+    ln -s internet-mail.svg neru-newyear-light/medium/apps/org.xfce.mailreader.svg
+    ln -s cs-panel.svg neru-newyear-light/medium/apps/org.xfce.panel.svg
+    ln -s system-file-manager.svg neru-newyear-light/medium/apps/org.xfce.thunar.svg
+    ln -s preferences-desktop-color.svg neru-newyear-light/medium/apps/org.xfce.settings.color.svg
+    ln -s system-file-manager.svg neru-newyear-light/medium/apps/org.xfce.filemanager.svg
+    ln -s preferences-system-power.svg neru-newyear-light/medium/apps/org.xfce.powermanager.svg
+    ln -s preferences-desktop-display.svg neru-newyear-light/medium/apps/org.xfce.settings.display.svg
+    ln -s utilities-tweak-tool.svg neru-newyear-light/medium/apps/org.xfce.settings.manager.svg
+    ln -s gnome-tweak-tool.svg neru-newyear-light/medium/apps/org.xfce.xfwm4-tweaks.svg
+    ln -s workspace-switcher-left-bottom.svg neru-newyear-light/medium/apps/org.xfce.workspaces.svg
+    ln -s applets-screenshooter.svg neru-newyear-light/medium/apps/org.xfce.screenshooter.svg
+    ln -s utilities-terminal.svg neru-newyear-light/medium/apps/org.xfce.terminal.svg
+    ln -s utilities-terminal.svg neru-newyear-light/medium/apps/org.xfce.terminalemulator.svg
+    ln -s utilities-terminal.svg neru-newyear-light/medium/apps/org.xfce.terminal-settings.svg
+    ln -s Xfwm4CompositeEditor.svg neru-newyear-light/medium/apps/org.xfce.settings.editor.svg
+    ln -s internet-web-browser.svg neru-newyear-light/medium/apps/org.xfce.webbrowser.svg
+    ln -s cs-desktop.svg neru-newyear-light/medium/apps/org.xfce.xfdesktop.svg
+    ln -s gdm-xnest.svg neru-newyear-light/medium/apps/org.xfce.xfwm4.svg
+    ln -s ktouch.svg neru-newyear-light/medium/apps/org.xfce.settings.keyboard.svg
+    ln -s preferences-desktop-peripherals.svg neru-newyear-light/medium/apps/org.xfce.settings.mouse.svg
+    ln -s system-shutdown.svg neru-newyear-light/medium/apps/org.xfce.session.svg
+    ln -s preferences-desktop-theme.svg neru-newyear-light/medium/apps/org.xfce.settings.appearance.svg
+    ln -s preferences-desktop-default-applications.svg neru-newyear-light/medium/apps/org.xfce.settings.default-applications.svg
+    ln -s preferences-desktop-accessibility.svg neru-newyear-light/medium/apps/org.xfce.settings.accessibility.svg
+    ln -s accessories-text-editor.svg neru-newyear-light/medium/apps/org.xfce.mousepad.svg
+    
+    ln -s kmenuedit.svg neru-newyear-dark/medium/apps/org.xfce.garcon.svg
+    ln -s cutecom.svg neru-newyear-dark/medium/apps/org.xfce.volman.svg
+    ln -s preferences-system-search.svg neru-newyear-dark/medium/apps/org.xfce.appfinder.svg
+    ln -s internet-mail.svg neru-newyear-dark/medium/apps/org.xfce.mailreader.svg
+    ln -s cs-panel.svg neru-newyear-dark/medium/apps/org.xfce.panel.svg
+    ln -s system-file-manager.svg neru-newyear-dark/medium/apps/org.xfce.thunar.svg
+    ln -s preferences-desktop-color.svg neru-newyear-dark/medium/apps/org.xfce.settings.color.svg
+    ln -s system-file-manager.svg neru-newyear-dark/medium/apps/org.xfce.filemanager.svg
+    ln -s preferences-system-power.svg neru-newyear-dark/medium/apps/org.xfce.powermanager.svg
+    ln -s preferences-desktop-display.svg neru-newyear-dark/medium/apps/org.xfce.settings.display.svg
+    ln -s utilities-tweak-tool.svg neru-newyear-dark/medium/apps/org.xfce.settings.manager.svg
+    ln -s gnome-tweak-tool.svg neru-newyear-dark/medium/apps/org.xfce.xfwm4-tweaks.svg
+    ln -s workspace-switcher-left-bottom.svg neru-newyear-dark/medium/apps/org.xfce.workspaces.svg
+    ln -s applets-screenshooter.svg neru-newyear-dark/medium/apps/org.xfce.screenshooter.svg
+    ln -s utilities-terminal.svg neru-newyear-dark/medium/apps/org.xfce.terminal.svg
+    ln -s utilities-terminal.svg neru-newyear-dark/medium/apps/org.xfce.terminalemulator.svg
+    ln -s utilities-terminal.svg neru-newyear-dark/medium/apps/org.xfce.terminal-settings.svg
+    ln -s Xfwm4CompositeEditor.svg neru-newyear-dark/medium/apps/org.xfce.settings.editor.svg
+    ln -s internet-web-browser.svg neru-newyear-dark/medium/apps/org.xfce.webbrowser.svg
+    ln -s cs-desktop.svg neru-newyear-dark/medium/apps/org.xfce.xfdesktop.svg
+    ln -s gdm-xnest.svg neru-newyear-dark/medium/apps/org.xfce.xfwm4.svg
+    ln -s ktouch.svg neru-newyear-dark/medium/apps/org.xfce.settings.keyboard.svg
+    ln -s preferences-desktop-peripherals.svg neru-newyear-dark/medium/apps/org.xfce.settings.mouse.svg
+    ln -s system-shutdown.svg neru-newyear-dark/medium/apps/org.xfce.session.svg
+    ln -s preferences-desktop-theme.svg neru-newyear-dark/medium/apps/org.xfce.settings.appearance.svg
+    ln -s preferences-desktop-default-applications.svg neru-newyear-dark/medium/apps/org.xfce.settings.default-applications.svg
+    ln -s preferences-desktop-accessibility.svg neru-newyear-dark/medium/apps/org.xfce.settings.accessibility.svg
+    ln -s accessories-text-editor.svg neru-newyear-dark/medium/apps/org.xfce.mousepad.svg
+    
+    ln -s system-switch-user.svg neru-newyear-light/medium/apps/xfsm-switch-user.svg
+    ln -s system-lock-screen.svg neru-newyear-light/medium/apps/xfsm-lock.svg
+    
+    ln -s system-switch-user.svg neru-newyear-dark/medium/apps/xfsm-switch-user.svg
+    ln -s system-lock-screen.svg neru-newyear-dark/medium/apps/xfsm-lock.svg
     
     rm -f neru-newyear-dark/medium/apps/com.librehat.yahooweather.svg
     rm -f neru-newyear-dark/medium/apps/cumulus.svg
@@ -133,7 +197,7 @@ prepare() {
 
 
 package() {
-  cd "$srcdir"/"${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
     install -d "$pkgdir/usr/share/icons"
     cp -r {'neru-newyear-dark','neru-newyear-light'} "${pkgdir}/usr/share/icons"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
