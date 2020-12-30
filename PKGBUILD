@@ -30,8 +30,11 @@ package() {
   cp -r "$srcdir/$_android/"* "$target"
   chmod +Xr -R "$target"
 
-  # Add binaries to PATH
-  mkdir -p etc/profile.d
-  echo "append_path '/$target'" > etc/profile.d/${pkgname}.sh
-  chmod 755 etc/profile.d/${pkgname}.sh
+  # Add symlinks to binaries to usr/bin/
+  mkdir -p usr/bin/
+  binaries=("aapt" "aapt2" "aidl" "apksigner" "bcc_compat" "d8" "dexdump" "dx" "lld" "llvm-rs-cc" "mainDexClasses" "split-select" "zipalign")
+  for f in "${binaries[@]}"
+  do
+    ln -s "/$target/$f" "usr/bin/$f"
+  done
 }
