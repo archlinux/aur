@@ -11,9 +11,9 @@ pkgbase = cfddns
 	depends = python-cloudflare
 	depends = python-click
 	backup = etc/cfddns/cfddns.yml
-	source = .source::https://github.com/uetchy/cfddns/archives/v1.0.0.tar.gz
+	source = archive.tar.gz::https://github.com/uetchy/cfddns/archive/v1.0.0.tar.gz
 	source = cfddns.service
-	sha256sums = SKIP
+	sha256sums = 86dabd00586ccac237c5b2fa135216d64f0989b2ad851ada3ada1d2479525539
 	sha256sums = 1198d4d36c57c333acc7aa0a99339a66590145d098dd276b697ce639215bd5ca
 
 pkgname = cfddns

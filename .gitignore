@@ -1,6 +1,5 @@
 # Sources
 /src
-/.source
 /*.tar.gz
 
 # Built package
