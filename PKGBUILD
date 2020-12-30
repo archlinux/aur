@@ -4,8 +4,8 @@
 pkgname=direnv-bin
 _pkgname="${pkgname%-bin}"
 pkgdesc='a shell extension that manages your environment'
-pkgver=2.25.2
-pkgrel=2
+pkgver=2.26.0
+pkgrel=1
 url='https://direnv.net'
 _srcurl="https://github.com/direnv/${_pkgname}"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -17,11 +17,11 @@ source_aarch64=("${_pkgname}-${pkgver}.linux-aarch64::${_srcurl}/releases/downlo
 source_armv7h=("${_pkgname}-${pkgver}.linux-armv7h::${_srcurl}/releases/download/v${pkgver}/${_pkgname}.linux-arm")
 source_i686=("${_pkgname}-${pkgver}.linux-i686::${_srcurl}/releases/download/v${pkgver}/${_pkgname}.linux-386")
 source_x86_64=("${_pkgname}-${pkgver}.linux-x86_64::${_srcurl}/releases/download/v${pkgver}/${_pkgname}.linux-amd64")
-sha256sums=('c42624086c9fb5dd66e4d49e2a30907dd3038126a5dad3369c5a1c6f15d7b9ec')
-sha256sums_aarch64=('40207418c1f1cc146a5a41a19925e00fbd16324ac1a983b5fc4c5f181f5bb1c8')
-sha256sums_armv7h=('9734270c00b32436e27eccdd1d50db7200fdd515d69231d9730007643658f235')
-sha256sums_i686=('8f5e5dd140b81e467bab55fd13c1b0ae53ab1e19d12cea97d9ed269bef8efac6')
-sha256sums_x86_64=('96ecaab50f50abec593914b4b85120370fcf433d188b22c29fa7bc8157c60189')
+sha256sums=('b3dbb97f4d2627ec588894f084bfdc76db47ff5e3bec21050bb818608c7835b9')
+sha256sums_aarch64=('65fd7b629e312ae81c7a8c8b0d0bf990bf60a0bea0c51863bd3d2e2b59d17a2b')
+sha256sums_armv7h=('1557a447003e840885a5245f1518ab916fe0205ae2bd2b9bfaf8f2dce47ee0ba')
+sha256sums_i686=('3a3f3c1bd354e94c178014d6996040354352c215db41d4d94fa9f0abfbf1f2f1')
+sha256sums_x86_64=('fc365358a320692642ba13fffdcb7c439744d2739ea20740b24d0d453f108a28')
 _="${pkgdir:-}"
 
 package() {
