@@ -1,6 +1,6 @@
 # Maintainer: barfin
 pkgname=invert-steam-skin
-pkgver=352
+pkgver=353
 pkgrel=1
 pkgdesc="A light skin for steam"
 arch=("any")
@@ -8,7 +8,7 @@ url="https://gamebanana.com/guis/28814"
 license=('unknown')
 depends=("steam" "sssm")
 source=("https://files.gamebanana.com/guis/invert_v${pkgver}.zip")
-md5sums=('c140dc7ce0835c314efef98ee13d480f')
+md5sums=('cedaeac2f304a455d7a7a0a9cce0d08c')
 install="${pkgname}.install"
 
 package() {
