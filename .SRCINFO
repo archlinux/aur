@@ -1,7 +1,7 @@
 pkgbase = wechat-uos
 	pkgdesc = UOS专业版微信 (迫真魔改版)
 	pkgver = 2.0.0
-	pkgrel = 5
+	pkgrel = 6
 	arch = x86_64
 	license = custom
 	depends = gtk2
@@ -10,6 +10,7 @@ pkgbase = wechat-uos
 	depends = gconf
 	depends = nss
 	depends = lsb-release
+	depends = bubblewrap
 	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.qq.weixin/com.qq.weixin_2.0.0_amd64.deb
 	source = uos-lsb
 	source = uos-release
@@ -17,7 +18,7 @@ pkgbase = wechat-uos
 	md5sums = 5b8c60c9f94fd874df749abdd1dccec6
 	md5sums = 22fba1df4190124f76bd8b6eb400787a
 	md5sums = 83cc604a6c8ceedcfb66bb732f8c030f
-	md5sums = a7d7323cd865cc44fee09adb52963a78
+	md5sums = 069a824b6e757436401c26251fbffc49
 
 pkgname = wechat-uos
 
