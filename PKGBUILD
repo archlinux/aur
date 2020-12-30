@@ -20,11 +20,11 @@ package() {
 	
 	# Add the scalable icon
 	mkdir -p "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
-	ln -sf /usr/lib/glowing-bear/assets/img/glowing-bear.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/glowing-bear.svg"
+	ln -sf /usr/share/webapps/glowing-bear/assets/img/glowing-bear.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/glowing-bear.svg"
 	
 	# Add the 128x128 icon
 	mkdir -p "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
-	ln -sf /usr/lib/glowing-bear/assets/img/glowing_bear_128x128.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/glowing-bear.png"
+	ln -sf /usr/share/webapps/glowing-bear/assets/img/glowing_bear_128x128.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/glowing-bear.png"
 
 	# Add the .desktop file
 	install -Dm644 "$srcdir/glowing-bear.desktop" "${pkgdir}/usr/share/applications/glowing-bear.desktop"
