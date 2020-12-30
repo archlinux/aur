@@ -1,7 +1,7 @@
 pkgbase = wechat-uos
 	pkgdesc = UOS专业版微信 (迫真魔改版)
 	pkgver = 2.0.0
-	pkgrel = 8
+	pkgrel = 114514
 	url = https://www.chinauos.com/resource/download-professional
 	arch = x86_64
 	license = MIT

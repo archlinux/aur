@@ -1,10 +1,11 @@
 # Maintainer: DuckSoft <realducksoft at gmail dot com>
 # Contributor: sihuan <sihuan at sakuya.love>
+# Contributor: sukanka <unknown at unknown>
 # Contributor: Nick Cao <nickcao at nichi dot co>
 
 pkgname=wechat-uos
 pkgver=2.0.0
-pkgrel=8
+pkgrel=114514
 pkgdesc="UOS专业版微信 (迫真魔改版)"
 arch=(x86_64)
 url=https://www.chinauos.com/resource/download-professional
@@ -29,6 +30,7 @@ package() {
     cp -at $pkgdir/opt/wechat-uos  $srcdir/opt/apps/com.qq.weixin/files/*
     cp -at $pkgdir/usr/share/icons $srcdir/opt/apps/com.qq.weixin/entries/icons/hicolor
     
+    install -Dm755 -t $pkgdir/usr/lib/license         $pkgdir/usr/lib/license/libuosdevicea.so
     install -Dm755 -t $pkgdir/usr/bin/                wechat-uos
     install -Dm644 -t $pkgdir/opt/wechat-uos/crap/    uos-lsb uos-release
     install -Dm755 -t $pkgdir/usr/share/applications/ wechat-uos.desktop
