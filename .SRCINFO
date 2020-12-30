@@ -1,0 +1,17 @@
+pkgbase = wechat-kylinos
+	pkgdesc = 麒麟OS微信 (风险魔改版)
+	pkgver = 2.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = custom
+	makedepends = asar
+	depends = gtk2
+	depends = gtk3
+	depends = libxss
+	depends = gconf
+	depends = nss
+	source = http://archive.kylinos.cn/kylin/partner/pool/wechat_2.0.0_amd64.deb
+	sha512sums = 523bfc8983dd4506ac9280ae48eba45cbc993a5925de77e2705dd16b99c95c48d6a325b7b2b28c45b4ccb12db67cb08e27f9c158541cf4672f9e1cb26f987c5e
+
+pkgname = wechat-kylinos
+
