@@ -1,28 +1,40 @@
+# -*- mode: Shell-script; eval: (setq indent-tabs-mode 't); eval: (setq tab-width 4) -*-
 # Maintainer: Dominic Meiser [git at msrd0 dot de]
 
+# Package Information
 pkgname=refinery_cli
+_bins=(refinery)
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Run Refinery migrations via cli.'
 arch=('x86_64')
-url='https://crates.io/crates/refinery_cli'
 license=('MIT')
-depends=('gcc-libs')
+depends=('openssl' 'sqlite')
+
+# Generic Stuff for cargo packages
+url="https://crates.io/crates/$pkgname"
 makedepends=('cargo')
-source=(
-	"refinery_cli.tar.gz:https://crates.io/api/v1/crates/refinery_cli/$pkgver/download"
-	"https://github.com/rust-db/refinery/raw/24534b3d13924d0af649102be9aded87c0400f37/LICENSE"
-)
-sha512sums=('628dc611d3c0b5c79bac5f27f84731bd87ff5098d1ecda292fbba90965cdffc68adc9857ee52dfbbccd23685909827e82711863305203e3536550dec4338b177'
-            '5be97e104d3733f4546be53e0ad0cb6735bdc1d2716afdee5029ea95eda7186f26f093cabee29838d80896011525025669cba47493592b546b166ed73ed8511f')
+source=("$pkgname.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
+sha512sums=('7b0f3ab39db12ea655f4cc26e4c4186c711dd9297b318ba4032e9e1ff59d9020a0aee67ccb84ba69e747746d39035feb4221131d514bc75d9bcc6ff63d3467c9')
 
 build() {
-	cd "$srcdir/refinery_cli-$pkgver"
-	cargo build --release --no-default-features --features postgresql
+	cd "$srcdir/$pkgname-$pkgver"
+	
+	# crates.io packages aren't supposed to contain a Cargo.lock file so
+	# don't use --locked  flag
+	cargo build --release --no-default-features --features postgresql,mysql,sqlite
 }
 
 package() {
-	cd "$srcdir/refinery_cli-$pkgver"
-	install -Dm755 "target/release/refinery" -t "$pkgdir/usr/bin"
-	install -Dm644 "$srcdir/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+	cd "$srcdir/$pkgname-$pkgver"
+
+	# install all of the binaries
+	for bin in ${_bins[@]}; do
+		install -Dm755 "target/release/$bin" -t "$pkgdir/usr/bin"
+	done
+
+	# install whatever license files the distribution included
+	for file in $(ls | grep -i -e license -e copying -e copyring); do
+		install -Dm644 "$file" -t "$pkgdir/usr/share/licenses/$pkgname"
+	done
 }
