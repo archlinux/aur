@@ -1,0 +1,7 @@
+#!/bin/bash -e
+unshare --user --map-root-user -m bash <<EOF
+mount --make-rprivate /
+mount --bind /opt/apps/com.qq.weixin/craps/uos-release /etc/os-release
+mount --bind /opt/apps/com.qq.weixin/craps/uos-lsb /etc/lsb-release
+/opt/apps/com.qq.weixin/files/wechat
+EOF
