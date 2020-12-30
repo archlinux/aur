@@ -1,0 +1,26 @@
+pkgbase = libtiff-minimal-git
+	pkgdesc = TIFF library and utilities
+	pkgver = 4.2.0.r7.gec8bdded
+	pkgrel = 1
+	url = https://libtiff.gitlab.io/libtiff/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = mesa
+	makedepends = wget
+	depends = glibc
+	depends = libjpeg
+	depends = xz
+	depends = zlib
+	optdepends = freeglut: for using tiffgt
+	optdepends = glu: glu support
+	optdepends = jbigkit: jbigkit support
+	provides = libtiff
+	conflicts = libtiff
+	options = staticlibs
+	source = git+https://gitlab.com/libtiff/libtiff.git
+	sha256sums = SKIP
+
+pkgname = libtiff-minimal-git
+
