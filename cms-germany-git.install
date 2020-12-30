@@ -2,17 +2,12 @@ post_upgrade() {
   su -c \
   "chown root:cmsuser /usr/bin/isolate; \
   chmod 4750 /usr/bin/isolate; \
-  chown cmsuser:cmsuser /usr/include/cms; \
   chown cmsuser:cmsuser /var/local/log/cms; \
   chown cmsuser:cmsuser /var/local/cache/cms; \
   chown cmsuser:cmsuser /var/local/lib/cms; \
-  chown cmsuser:cmsuser /var/local/run/cms; \
   chown cmsuser:cmsuser /var/log/cms; \
   chown cmsuser:cmsuser /var/cache/cms; \
-  chown cmsuser:cmsuser /var/lib/cms; \
-  chown cmsuser:cmsuser /var/run/cms; \
-  chown cmsuser:cmsuser /usr/lib/cms/cms.conf; \
-  chown cmsuser:cmsuser /usr/lib/cms/cms.ranking.conf" \
+  chown cmsuser:cmsuser /var/lib/cms;" \
   - root
 }
 

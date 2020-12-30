@@ -1,5 +1,5 @@
 pkgname=cms-germany-git
-pkgver=r4412.5c5be9dd
+pkgver=r4710.f22ba8d4
 pkgrel=1
 pkgdesc="CMS, or Contest Management System, is a distributed system for running and (to some extent) organizing a programming contest. This is a fork used for the German IOI team selection process."
 arch=('i686' 'x86_64')
@@ -37,6 +37,7 @@ depends=(
     'texlive-latexextra'
     'texlive-pstricks'
     'libcap'
+    'python-babel'
 )
 optdepends=(
     'python2-pycups: printing support'
@@ -46,9 +47,13 @@ optdepends=(
     'jdk8-openjdk: support for Java submissions'
 )
 makedepends=(
+    'git'
     'asciidoc'
     'python2-setuptools'
-    'python-babel'
+)
+backup=(
+    'etc/cms.conf'
+    'etc/cms.ranking.conf'
 )
 
 provides=('cms-germany' 'isolate-germany')
@@ -99,15 +104,11 @@ package() {
     install -d -m770 $pkgdir/var/cache/cms
 
     # Configuration files
-    install -D -m660 config/cms.conf.sample $pkgdir/usr/lib/cms/cms.conf
-    install -D -m660 config/cms.ranking.conf.sample $pkgdir/usr/lib/cms/cms.ranking.conf
+    install -D -m660 config/cms.conf.sample $pkgdir/etc/cms.conf
+    install -D -m660 config/cms.ranking.conf.sample $pkgdir/etc/cms.ranking.conf
 
     # I'm not even sure if this is needed at all
     install -d -m770 $pkgdir/var/lib/cms
-
-    # Fix testlib.h path (maybe patch CMS for this?)
-    install -d -m755 $pkgdir/usr/include/cms
-    ln -s /usr/include/testlib.h $pkgdir/usr/include/cms/testlib.h
 
     python3 prerequisites.py --as-root build
     python3 setup.py install --root="$pkgdir" --optimize=1
@@ -119,5 +120,4 @@ package() {
     ln -s /var/log/cms $pkgdir/var/local/log/cms
     ln -s /var/cache/cms $pkgdir/var/local/cache/cms
     ln -s /var/lib/cms $pkgdir/var/local/lib/cms
-    ln -s /var/run/cms $pkgdir/var/local/run/cms
 }
