@@ -1,6 +1,6 @@
 pkgbase = reed-alert-git
 	pkgdesc = reed-alert is a small and simple monitoring tool for your server, written in Common Lisp
-	pkgver = r83.409073d
+	pkgver = r84.e220c32
 	pkgrel = 1
 	url = https://dataswamp.org/~solene/2018-01-17-reed-alert.html
 	install = reed-alert-git.install
