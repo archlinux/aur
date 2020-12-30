@@ -1,6 +1,6 @@
 pkgbase = golden-cheetah-rc
 	pkgdesc = Official Golden Cheetah developement releases, release candidates and stable releases
-	pkgver = 3.5_RC2X
+	pkgver = 3.6_DEV2009
 	pkgrel = 1
 	epoch = 0
 	url = http://www.goldencheetah.org/
@@ -9,6 +9,7 @@ pkgbase = golden-cheetah-rc
 	makedepends = bison
 	makedepends = flex
 	makedepends = qt5-tools
+	makedepends = gendesk
 	depends = python
 	depends = python-sip
 	depends = qt5-base
@@ -29,6 +30,7 @@ pkgbase = golden-cheetah-rc
 	depends = libftd2xx
 	depends = libical
 	depends = libusb-compat
+	depends = r
 	optdepends = srmio
 	optdepends = libkml
 	provides = golden-cheetah
@@ -38,8 +40,8 @@ pkgbase = golden-cheetah-rc
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/GoldenCheetah/GoldenCheetah/archive/V3.5-RC2X.tar.gz
-	md5sums = aa3ba5daeee0a0ef0dfb790d62c0a325
+	source = golden-cheetah-rc-3.6_DEV2009.tar.gz::https://github.com/GoldenCheetah/GoldenCheetah/archive/v3.6-DEV2009.tar.gz
+	sha256sums = b453fc0ae0322aedcfac08dbaa4c20b1b098904a5c77bb40a353d0e447c658d4
 
 pkgname = golden-cheetah-rc
 
