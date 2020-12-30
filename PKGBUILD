@@ -1,44 +1,38 @@
+# Maintainer: twa022 <twa022 at gmail dot com>
 
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
-# Contributor: Limao Luo <luolimao+AUR@gmail.com>
-#
-# (Added from parole package)
-# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Contributor: TDY <tdy@gmx.com>
-
-pkgname=parole-git
-pkgver=1.0.2.r2.g2b7151e
+_pkgname=parole
+pkgname=${_pkgname}-git
+pkgver=4.15.0
 pkgrel=1
-pkgdesc="A modern simple media player based on the GStreamer framework"
-arch=(i686 x86_64)
-url=http://goodies.xfce.org/projects/applications/${pkgname%-*}
-license=(GPL2)
-depends=(desktop-file-utils gst-plugins-good libnotify libxfce4ui-git)
-makedepends=(git xfce4-dev-tools-git)
-provides=(${pkgname%-*}=$pkgver)
-conflicts=(${pkgname%-*})
-source=($pkgname::git://git.xfce.org/apps/${pkgname%-*})
+pkgdesc="Modern media player based on the GStreamer framework (git checkout)"
+arch=('x86_64' 'i686' 'aarch64' 'armv7h')
+url="https://gitlab.xfce.org/apps/parole/-/blob/master/README.md"
+license=('GPL')
+groups=('xfce4-goodies')
+depends=('gst-plugins-base' 'gst-plugins-good' 'libnotify' 'libxfce4ui'
+         'dbus-glib')
+makedepends=('intltool' 'python' 'git' 'xfce4-dev-tools')
+optdepends=('gst-libav: Extra media codecs'
+            'gst-plugins-bad: Extra media codecs'
+            'gst-plugins-ugly: Extra media codecs')
+provides=("${_pkgname}=${pkgver%%+*}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}::git+https://gitlab.xfce.org/apps/${_pkgname}")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd $pkgname/
-    git describe | sed 's/^parole-//;;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    sed -i 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' $pkgname/configure.ac.in
+  cd "${_pkgname}"
+  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/^xfce-//;s/-/+/g"
 }
 
 build() {
-    cd $pkgname/
-    ./autogen.sh \
-        --prefix=/usr \
-        --libexecdir=/usr/lib \
-        --enable-taglib \
-        --enable-libnotify
-    make
+  cd "${_pkgname}-${pkgver}"
+  ./configure --prefix=/usr
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
 }
 
 package() {
-    make -C $pkgname DESTDIR="$pkgdir" install
+  cd "${_pkgname}-${pkgver}"
+  make DESTDIR="$pkgdir" install
 }
