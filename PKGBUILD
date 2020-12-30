@@ -3,11 +3,11 @@
 pkgname=chiaki-git
 _gitname=chiaki
 pkgver=2.0.1.r1.g89c3175
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial PlayStation 4 remote play client"
 arch=(i686 x86_64)
 url="https://git.sr.ht/~thestr4ng3r/chiaki"
-license=('GPL3')
+license=('AGPL3')
 depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'sdl2' 'opus' 'ffmpeg' 'openssl' 'gcc-libs')
 makedepends=('git' 'cmake' 'python-protobuf' 'libva')
 optdepends=(
