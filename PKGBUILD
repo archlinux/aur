@@ -2,7 +2,7 @@
 # old maintainer:   M.Reynolds <blackboxnetworkproject@gmail.com>
 
 pkgname=tastyworks
-pkgver='1.11.0'
+pkgver='1.12.1'
 pkgrel='1'
 pkgdesc="One of the fastest, most reliable, and most secure trading platforms in the world."
 arch=('x86_64')
