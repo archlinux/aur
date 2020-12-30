@@ -2,7 +2,7 @@
 
 pkgname=synapse-compress-state
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to compress some state in a Synapse instance's database "
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/matrix-org/rust-synapse-compress-state"
@@ -19,5 +19,5 @@ build() {
 package() {
   cargo install --locked --path "${srcdir}/rust-${pkgname}-${pkgver}" --root "${pkgdir}/usr"
   # delete the leftover crates file
-  rm "${pkgdir}/usr/.crates2.toml"
+  rm -f "${pkgdir}/usr/.crates.toml" "${pkgdir}/usr/.crates2.toml"
 }

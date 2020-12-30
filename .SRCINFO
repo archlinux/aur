@@ -1,7 +1,7 @@
 pkgbase = synapse-compress-state
 	pkgdesc = A tool to compress some state in a Synapse instance's database
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/matrix-org/rust-synapse-compress-state
 	arch = x86_64
 	arch = armv6h
