@@ -1,0 +1,14 @@
+post_install() {
+	echo
+	echo -e "$(tput setaf 6)RPiPlay was installed to $(tput setaf 5)/usr/bin/rpiplay$(tput setaf 6).$(tput sgr0)\n"
+	echo -e "$(tput setaf 6)For $(tput setaf 4)RPiPlay$(tput setaf 6) to work correctly, you need to $(tput setaf 4)start$(tput setaf 6) (or start and enable) the $(tput setaf 4)avahi-daemon service$(tput setaf 6) on your system. This will make your $(tput setaf 4)device discoverable$(tput setaf 6) on the network.$(tput sgr0)\n"
+	echo -e "$(tput setaf 6)Use$(tput sgr0)\n"
+	echo -e "$(tput setaf 2)\tsystemctl start avahi-daemon.service$(tput sgr0)\n"
+	echo -e "$(tput setaf 6)to start the daemon now or$(tput sgr0)\n"
+	echo -e "$(tput setaf 2)\tsystemctl enable --now avahi-daemon.service$(tput sgr0)\n"
+	echo -e "$(tput setaf 6)to start the daemon on every boot and now.$(tput sgr0)\n"
+}
+
+post_upgrade() {
+	post_install
+}
