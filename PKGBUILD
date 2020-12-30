@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=librep-git
-pkgver=0.92.7
+pkgver=0.92.7.4.g3d044e49
 pkgrel=1
 pkgdesc='A lisp system for sawfish - git version.'
 arch=('i686' 'x86_64')
@@ -30,9 +30,9 @@ build() {
               --libexecdir=/usr/lib/$pkgname  \
               --with-readline \
 	      --with-ffi 
-  sed -i 's#makeinfo --no-split#makeinfo --force --no-split#' man/Makefile
   make 
 }
+
 package() {
   cd $_gitname
   # create some directories or make install fails

@@ -1,6 +1,6 @@
 pkgbase = librep-git
 	pkgdesc = A lisp system for sawfish - git version.
-	pkgver = 0.92.7
+	pkgver = 0.92.7.4.g3d044e49
 	pkgrel = 1
 	url = http://sawfish.wikia.com
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = librep-git
 	depends = gmp
 	depends = gdbm
 	depends = libffi
-	provides = librep=0.92.7
+	provides = librep=0.92.7.4.g3d044e49
 	conflicts = librep
 	options = !libtool
 	options = !makeflags
