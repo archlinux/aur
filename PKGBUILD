@@ -12,7 +12,7 @@ makedepends=()
 source=("glowing-bear.desktop"
 	"glowing-bear.sh")
 sha256sums=("8e8f5c38849a8e76e0f217c38c24b5b6b297b7c644ea3513ea80a5ac39787424"
-	"edcfb232718f4fd54e2bd3b4cc00b6c8de6e8189feab2ec16fb64464833a09b3")
+	"5c244284cf3e301328849641a8d09e03e2641610807e849e370b3d717d266e53")
 
 package() {
 	# Register the binary as glowing-bear
