@@ -3,13 +3,13 @@
 
 pkgname=openlp
 pkgver=2.4.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Church presentation software."
 arch=('any')
 url='http://openlp.org/'
 license=('GPLv2')
 makedepends=('qt5-tools')
-depends=('python' 'python-pyqt5' 'phonon-qt5'
+depends=('python>=3.9' 'python<3.10' 'python-pyqt5' 'phonon-qt5'
          'python-chardet' 'python-lxml'
          'python-beautifulsoup4' 'python-pyenchant'
          'python-alembic' 'qt5-multimedia' 'qt5-webkit')
@@ -30,9 +30,9 @@ package() {
   mv "${pkgdir}/usr/bin/openlp"{.py,}
 
   #remove tests
-  rm -rf "${pkgdir}/usr/lib/python3.8/site-packages/tests"
+  rm -rf "${pkgdir}/usr/lib/python3.9/site-packages/tests"
 
-  echo "${pkgver}" > "${pkgdir}/usr/lib/python3.8/site-packages/openlp/.version"
+  echo "${pkgver}" > "${pkgdir}/usr/lib/python3.9/site-packages/openlp/.version"
 
   install -Dm0755 "${srcdir}/openlp.sh" "${pkgdir}/etc/profile.d/openlp.sh"
   install -Dm0644 "resources/openlp.desktop" "${pkgdir}/usr/share/applications/openlp.desktop"
