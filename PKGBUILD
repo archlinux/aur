@@ -1,6 +1,6 @@
 # Maintainer: Elijah Gregg <lovetocode999@ctrl-c.club>
 pkgname=amfora-git
-pkgver=1.7.2.r4.g36d4f81
+pkgver=1.7.2.r14.ge42b24c
 pkgrel=1
 pkgdesc="Terminal browser for the Gemini protocol"
 arch=("x86_64")
