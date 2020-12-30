@@ -1,6 +1,6 @@
 # Maintainer:  Tássio Virgínio <tassiovirginio at gmail.com>
 
-pkgname=obs-studio-latest-release
+pkgname=obs-studio-stable
 pkgver=26.1.0
 appname=obs-studio
 pkgrel=3
@@ -22,7 +22,7 @@ source=($appname-$pkgver.tar.gz::https://github.com/jp9000/obs-studio/archive/$p
 md5sums=('f8bb9216ece8587f2067ead1ef12a7c9')
 
 prepare() {
-  cd obs-studio-$pkgver
+  cd $appname-$pkgver
 }
 
 build() {
