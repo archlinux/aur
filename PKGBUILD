@@ -1,4 +1,5 @@
-# Maintainer: Matthew Murray <matt@mattmurr.xyz>
+# Maintainer: j.r <j.r@jugendhacker.de>
+# Contributor: Matthew Murray <matt@mattmurr.xyz>
 pkgname=python-validity
 pkgver=0.12
 pkgrel=3
