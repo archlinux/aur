@@ -1,6 +1,6 @@
 pkgbase = rapidcheck
 	pkgdesc = QuickCheck clone for C++ with the goal of being simple to use with as little boilerplate as possible.
-	pkgver = r1006.7bc7d30
+	pkgver = r1010.b78f892
 	pkgrel = 1
 	url = https://github.com/emil-e/rapidcheck
 	changelog = rapidcheck.changelog
@@ -12,8 +12,8 @@ pkgbase = rapidcheck
 	arch = aarch64
 	license = BSD
 	makedepends = cmake
-	provides = rapidcheck=r1006.7bc7d30
-	source = rapidcheck::git+https://github.com/emil-e/rapidcheck.git#commit=7bc7d302191a4f3d0bf005692677126136e02f60
+	provides = rapidcheck=r1010.b78f892
+	source = rapidcheck::https://github.com/emil-e/rapidcheck/archive/b78f89288c7e086d06e2a1e10b605d8375517a8a.tar.gz
 	md5sums = SKIP
 
 pkgname = rapidcheck

@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-r1006.7bc7d30
+r1010.b78f892
 ------------
 
 Fix
@@ -17,6 +17,19 @@ Fix
 
 Other
 ~~~~~
+- Merge pull request #268 from tsmanner/invert_use_rtti_flag. [emil-e]
+
+  Inverted logic of rtti enablement.
+- Inverted logic of rtti enablement. [Tom Manner]
+
+  Changed RC_USE_RTTI to RC_DONT_USE_RTTI and changed associated `#ifdef`s to `#ifndef`.
+- Merge pull request #265 from tsmanner/sfinae_Arbitrary_type_support.
+  [emil-e]
+
+  SFINAE support for `Arbitrary` struct
+- Added optional second type to `rc::Arbitrary` template. [Tom Manner]
+
+  To support single-type template specializations of `rc::Arbitrary` that use SFINAE patterns like `std::enable_if` to determine which one to choose.  It modifies the signature to be `template <typename T, typename=void> struct Arbitrary;`.
 - Merge pull request #251 from dartdart26/variadic_macro_last_arg.
   [emil-e]
 
