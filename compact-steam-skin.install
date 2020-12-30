@@ -1,0 +1,11 @@
+post_install() {
+    /usr/bin/sssm sync Compact
+}
+
+post_upgrade() {
+    /usr/bin/sssm sync Compact
+}
+
+post_remove() {
+    /usr/bin/sssm remove Compact
+}

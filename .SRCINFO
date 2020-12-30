@@ -1,0 +1,15 @@
+pkgbase = compact-steam-skin
+	pkgdesc = A compact skin for steam
+	pkgver = 1.6.53
+	pkgrel = 1
+	url = https://github.com/badanka/Compact
+	install = compact-steam-skin.install
+	arch = any
+	license = unknown
+	depends = steam
+	depends = sssm
+	source = https://github.com/badanka/Compact/archive/1.6.53.zip
+	md5sums = 9109ad069130c16a3641ac4a23bcabbe
+
+pkgname = compact-steam-skin
+
