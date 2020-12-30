@@ -1,8 +1,8 @@
 pkgbase = siddasm
 	pkgdesc = Written by Gufino, this program produces disassembler output of .SID music files, so that you'll be able to see the musicroutine code.
 	pkgver = 1.0
-	pkgrel = 3
-	url = http://cadaver.homeftp.net/tools.htm
+	pkgrel = 4
+	url = https://cadaver.github.io/tools
 	arch = i686
 	arch = x86_64
 	license = custom
