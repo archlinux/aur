@@ -1,6 +1,5 @@
 # Maintainer: Gasparotto Mattia <gasmat04@gmail.com>
 
-
 pkgname=wammu
 pkgver=0.44
 pkgrel=3
@@ -8,7 +7,7 @@ pkgdesc="A wxPython-based GUI for Gammu"
 arch=('any')
 url="https://wammu.eu/"
 license=('GPL')
-depends=('python2-gammu' 'wxpython' 'python2-six')
+depends=('python-gammu' 'wxpython' 'python2-six')
 makedepends=('python2-setuptools')
 optdepends=('gnome-bluetooth: Bluetooth support'
             'python2-pybluez: Bluetooth support')
