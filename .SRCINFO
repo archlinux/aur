@@ -1,6 +1,6 @@
 pkgbase = picker
 	pkgdesc = Bash wrapper for pacman and aur
-	pkgver = 2020.12.28
+	pkgver = 2020.12.30
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/picker
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = picker
 	depends = jshon
 	depends = expac
 	provides = picker
-	source = picker-2020.12.28.tar.gz::https://github.com/TheCynicalTeam/picker/archive/2020.12.28.tar.gz
-	sha256sums = SKIP
+	source = picker-2020.12.30.tar.gz::https://github.com/TheCynicalTeam/picker/archive/2020.12.30.tar.gz
+	sha256sums = 27a0bf05e246cdf4b83709e16b2874c4cb79ccbe7b0f21893d81d72982e0a72b
 
 pkgname = picker
 
