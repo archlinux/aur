@@ -1,7 +1,7 @@
 # Maintainer: Yasuaki Uechi <y@uechi.io> (https://uechi.io)
 
 pkgname=cfddns
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='DDNS client for CloudFlare DNS'
 arch=('any')
@@ -13,8 +13,8 @@ backup=('etc/cfddns/cfddns.yml')
 source=("archive.tar.gz::${url}/archive/v${pkgver}.tar.gz"
        "${pkgname}.service")
 sha256sums=(
-  '86dabd00586ccac237c5b2fa135216d64f0989b2ad851ada3ada1d2479525539'
-  '1198d4d36c57c333acc7aa0a99339a66590145d098dd276b697ce639215bd5ca'
+  '1591b924438507a0dea86d66735bfdbc0d549e0436447c257cedd2a02c856977'
+  'f2e0ce7600fbb0f90086a6c903b8722ce4173f84586f4b642b7752dd459ac10a'
 )
 _archive=${pkgname}-${pkgver}
 
