@@ -3,7 +3,7 @@
 
 pkgname=sawfish-pager-git
 pkgver=0.90.4.5.g2c017bb
-pkgrel=1
+pkgrel=2
 pkgdesc='A pager for the git-version of sawfish'
 arch=('i686' 'x86_64')
 url='http://sawfish.wikia.com'
@@ -15,22 +15,21 @@ conflicts=('sawfish-pager')
 options=('!libtool')
 source=(git://github.com/SawfishWM/sawfish-pager.git)
 md5sums=('SKIP')
-_gitname='sawfish-pager'
 
 pkgver() {
-  cd $_gitname
+  cd ${pkgname%-git}
   # Git tag
   echo $(git describe --tags|sed 's/-/./g'|cut -c15-)
 }
 
 build() {
-  cd $srcdir/$_gitname
+  cd ${pkgname%-git}
   ./autogen.sh 
   ./configure --prefix=/usr 
   make 
 }
 
 package() {
-  cd $srcdir/$_gitname
+  cd ${pkgname%-git}
   make DESTDIR="$pkgdir" install 
 } 
