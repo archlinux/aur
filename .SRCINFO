@@ -1,0 +1,12 @@
+pkgbase = mint-backgrounds-ulyssa
+	pkgdesc = The backgrounds included in Linux Mint 20.1 Ulyssa
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-ulyssa
+	arch = any
+	license = Various
+	source = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-ulyssa/mint-backgrounds-ulyssa_1.1.tar.gz
+	sha256sums = b1abd4d0fe894a5fdf8c24dd592a4a2ffb7d964888ef3f0dad65526e3a5776af
+
+pkgname = mint-backgrounds-ulyssa
+
