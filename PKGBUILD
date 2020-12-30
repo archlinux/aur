@@ -3,7 +3,7 @@
 
 _pkgname="lua-language-server"
 pkgname="$_pkgname-git"
-pkgver=1.8.2.r0.ge835c77e
+pkgver=1.8.2.r10.g89c11e87
 pkgrel=1
 license=('MIT')
 pkgdesc='Lua Language Server coded by Lua'
@@ -13,14 +13,15 @@ depends=('lua')
 makedepends=('ninja' 'git')
 source=(
   "${pkgname}::git+https://github.com/sumneko/${_pkgname}.git"
-  '0001-Fix-paths.patch'
-  '0002-Fix-build.patch'
+  '0001-Fix-build.patch'
   'wrapper'
 )
 sha256sums=('SKIP'
-            'fcd7ae9342d35fc80fd2477c9c43cfc32e7e92d4172bc2a988edea0df33ccc97'
-            '561dd0dad022cfa9364d8159864772bb09bb51ab2934ead35b48740920d0b5da'
-            '6135c5424e5b87146aabf47651d3c95b6038865f26f25a8fce3a1ecd8c8f31fa')
+            'a0a2f0c03c3a05d091743e2d9f112f53811fb90aa6a78619788f8253d2b787fc'
+            'd61e2b4544bb3a4ef052f7d1c6dbc14a3bfd45e0488d231cccdd553b7e22243b')
+b2sums=('SKIP'
+        '0e91efce0c9771f87764bce16dda16efb8e2ed3a52a55157d72f93eb790a37650cb567c0365d7ffb2a02e272e8a2c45c8db1546501edc65144b27be9073bd014'
+        'f89be7c8e62bb1eb5fe36964f79a28cc6590358a2b6270c1a22c0929444c275a62d3dd36f27b40612de7d1a5867bf6bf4f1547e878a37870d4fa81e8447ea82d')
 
 pkgver() {
   cd "${pkgname}"
