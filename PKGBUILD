@@ -1,4 +1,5 @@
 # Maintainer: fire100265 <fire100265@outlook.com>
+# Maintainer: Erik Westrup <erik.westrup@gmail.com>
 pkgname=snp
 pkgver=8
 pkgrel=1
