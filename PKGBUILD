@@ -2,26 +2,29 @@
 
 pkgname=todesk-bin
 _pkgname=${pkgname%-bin}
-pkgver=1.1.0c
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Remote control and team work"
 arch=('x86_64')
 url="https://www.todesk.cn/"
-license=('custom' )
+license=('unknown')
+depends=('libxtst'
+         'freetype2')
 makedepends=('tar')
-provides=("${pkgname%-bin}")
-conflicts=("${pkgname%-bin}")
-source=("${_pkgname}-${pkgver}.deb::https://update.todesk.com/${_pkgname}Beta_${pkgver}.deb")
-sha256sums=('0d93806f7275be5487ed91fe4cfc4deea452a07508d4046a17f8ea7592905735')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+install="${_pkgname}.install"
+source=("https://update.todesk.com/${_pkgname}_${pkgver}.deb")
+sha256sums=('7d14ee8cfd3312e75be620b2f7441d81206827e3df01c12d3a9ed90c23140330')
 
-prepare() {
-  install -dm 755 ${srcdir}/${_pkgname}
+build() {
+  mkdir -p ${srcdir}/build
 
-  tar --owner=root --group=root -xf ${srcdir}/data.tar.xz -C ${srcdir}/${_pkgname} 
+  tar -xf ${srcdir}/data.tar.xz -C ${srcdir}/build 
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}/
+  cd ${srcdir}/build/
 
   # binary wrapper
   install -Dm 755 usr/local/bin/${_pkgname} -t ${pkgdir}/usr/bin/
@@ -33,15 +36,21 @@ package() {
   # font
   find opt/${_pkgname}/res     -type f -exec install -Dm644 {} ${pkgdir}/{} \;
 
-  # binary
+  # binary & scripts
   install -Dm755 opt/${_pkgname}/${_pkgname} -t ${pkgdir}/opt/${_pkgname}/
+  install -Dm755 opt/${_pkgname}/${_pkgname}d -t ${pkgdir}/opt/${_pkgname}/
+  install -Dm755 opt/${_pkgname}/daemon.sh -t ${pkgdir}/opt/${_pkgname}/
 
-  # qt.conf
+  # qt.conf & todeskd.conf
   install -Dm644 opt/${_pkgname}/qt.conf -t ${pkgdir}/opt/${_pkgname}/
+  install -Dm644 opt/${_pkgname}/${_pkgname}d.conf -t ${pkgdir}/opt/${_pkgname}/
 
   # desktop entry 
   install -Dm 644 usr/share/applications/${_pkgname}.desktop -t ${pkgdir}/usr/share/applications
   sed -i "s|Emulator;||g" ${pkgdir}/usr/share/applications/${_pkgname}.desktop
+
+  # systemd service
+  install -Dm644 etc/systemd/system/${_pkgname}d.service -t ${pkgdir}/usr/lib/systemd/system 
 
   # icon
   install -Dm 644 usr/share/pixmaps/${_pkgname}.png -t ${pkgdir}/usr/share/pixmaps
