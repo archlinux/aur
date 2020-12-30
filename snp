@@ -2,6 +2,7 @@
 # Runs a command wrapped in btrfs snapper pre-post snapshots.
 # Usage: $ snp <commands>
 # e.g.: $ snp pacman -Syyu
+# The latest version of this script is hosted at https://gist.github.com/erikw/5229436
 
 log_path="/var/local/log/snp"
 date=$(date "+%Y-%m-%d-%H%M%S")
