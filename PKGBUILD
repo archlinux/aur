@@ -2,7 +2,7 @@
 # based on Eugene Cherny's PKGBUILD
 # builds the develop branch of cabbage against the last JUCE version 5 commit
 pkgname=cabbage
-pkgrel=1
+pkgrel=2
 pkgver=2.5.11.git
 juceCommit=1e71c07a492f01022f9064560c95c2bcd938847c
 pkgdesc='A framework for audio software development'
@@ -25,8 +25,8 @@ md5sums=('SKIP'
          'SKIP'
          'a68ec24d1fc0dbd0c549b467764da360'
          'c3c8e35dd46c86f22a3565aa4dd828a8'         
-         '4ee5f1f806834f0613dfbc80375a5d7b'
-         'af60ffcadf2c2bdc2d0beafc5d9df6b6' )
+         '35cfc89844c90769f4dc4f8309b340b1'
+         'a5c00e068980cb9099bb6fa758f10388' )
 
 prepare() {
   cd "${srcdir}/cabbage"
