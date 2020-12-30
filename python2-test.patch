@@ -1,0 +1,32 @@
+diff -ruN num2words-0.5.10.orig/bin/num2words num2words-0.5.10/bin/num2words
+--- num2words-0.5.10.orig/bin/num2words 2019-09-07 00:06:15.933230111 +0300
++++ num2words-0.5.10/bin/num2words  2019-09-07 00:08:57.515532720 +0300
+@@ -82,7 +82,7 @@
+         sys.exit(0)
+     try:
+         words = num2words.num2words(args['<number>'], lang=args['--lang'], to=args['--to'])
+-        sys.stdout.write(words+os.linesep)
++        sys.stdout.write((words.encode("utf-8") if sys.version_info[0] == 2 else words) + os.linesep)
+         sys.exit(0)
+     except Exception as err:
+         sys.stderr.write(str(args['<number>']))
+diff -ruN num2words-0.5.10.orig/tests/test_cli.py num2words-0.5.10/tests/test_cli.py
+--- num2words-0.5.10.orig/tests/test_cli.py 2019-09-07 00:06:15.939896873 +0300
++++ num2words-0.5.10/tests/test_cli.py  2019-09-07 00:06:40.363578331 +0300
+@@ -20,6 +20,7 @@
+
+ import os
+ import unittest
++import sys
+
+ import delegator
+
+@@ -31,7 +32,7 @@
+     def __init__(self):
+         self.cmd = os.path.realpath(os.path.join(os.path.dirname(__file__),
+                                     "..", "bin", "num2words"))
+-        self.cmd_list = ["python", self.cmd]
++        self.cmd_list = [sys.executable, self.cmd]
+
+     def run_cmd(self, *args):
+         cmd_list = self.cmd_list + [str(arg) for arg in args]
