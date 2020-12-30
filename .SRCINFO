@@ -1,0 +1,15 @@
+pkgbase = nordtray
+	pkgdesc = Nordvpn tray icon
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/zoli/nordtray/
+	arch = x86_64
+	depends = go
+	depends = nordvpn-bin
+	source = https://github.com/zoli/nordtray/releases/download/0.1.0/nordtray
+	source = https://github.com/zoli/nordtray/archive/0.1.0.tar.gz
+	sha256sums = 44a950af583aceab1eaabd61fe18e4090aa7550322e7a8cbce134140b89b82b7
+	sha256sums = SKIP
+
+pkgname = nordtray
+
