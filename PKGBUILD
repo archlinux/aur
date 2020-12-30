@@ -1,3 +1,4 @@
+# Maintainer: kyrenaios <kyrenaios at protonmail dot com>
 pkgbase='python-md2gemini'
 pkgname=('python-md2gemini')
 _module='md2gemini'
