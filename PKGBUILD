@@ -43,7 +43,7 @@ source=(
   https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/mozc.patch
   https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/Add_support_new_Japanese_era.patch
   https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/Change-from-python2-code-to-python3.patch
-  https://github.com/OrangeJuicelol/mozc-ut-united/blob/master/mozcdic-ut-${_utdicdate}.${_utdicver}.tar.bz2
+  https://github.com/OrangeJuicelol/mozc-ut-united/raw/master/mozcdic-ut-${_utdicdate}.${_utdicver}.tar.bz2
 )
 sha1sums=('SKIP'
           'a366077418ae6f235aecf374256354a40dc5b37a'
