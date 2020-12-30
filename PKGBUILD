@@ -1,10 +1,11 @@
-# Maintainer: Matthew Murray <matt@mattmurr.xyz>
+# Maintainer: j.r <j.r@jugendhacker.de>
+# Contributor: Matthew Murray <matt@mattmurr.xyz>
 pkgname=fprintd-clients
 pkgver=1.90.1.r2.g54e56d6
-pkgrel=2
+pkgrel=3
 pkgdesc='Fprintd without the daemon'
 arch=(x86_64)
-license=(GPL)
+license=('GPL')
 depends=(glib2 libfprint polkit dbus dbus-glib libsystemd)
 makedepends=(git meson pam_wrapper python-cairo python-dbus python-dbusmock)
 conflicts=(fprintd fprintd-clients)
