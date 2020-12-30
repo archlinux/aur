@@ -5,7 +5,7 @@ pkgname=android-sdk-build-tools
 #_ver=$(cat "${srcdir}/$_android/source.properties" |grep ^Pkg.Revision=|sed 's/Pkg.Revision=\([0-9.]*\).*/\1/')
 _ver=30.0.3
 pkgver=r$_ver
-pkgrel=2
+pkgrel=3
 pkgdesc='Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)'
 arch=('i686' 'x86_64')
 url="https://developer.android.com/studio/releases/build-tools"
