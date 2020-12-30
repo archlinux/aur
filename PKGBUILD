@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="addons for instamenu"
 url="https://github.com/TheCynicalTeam/$pkgname"
 arch=('any')
-license=('GNU General Public License v3.0')
+license=('GPL3')
 provides=("instamenu-schemas=$pkgver")
 depends=('glib2' 'dconf')
 makedepends=('gobject-introspection' 'git' 'meson')
