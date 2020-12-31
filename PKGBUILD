@@ -1,15 +1,16 @@
-# Maintainer: phi <phi at qgr dot se>
+# Maintainer: Martin Dünkelmann <nc-duenkekl3 at netcologne.de>
+# Contributor: phi <phi at qgr dot se>
 # Contributor: smlb <smlb at riseup dot net>
 
 pkgname=libthinkpad
 pkgver=2.6
-pkgrel=4
+pkgrel=5
 pkgdesc="A general purpose userspace ThinkPad library"
 arch=('i686' 'x86_64')
 url="https://github.com/libthinkpad/libthinkpad"
 license=('BSD')
 depends=('libsystemd' 'acpid')
-makedepends=('cmake')
+makedepends=('cmake' 'systemd')
 source=("https://libthinkpad.github.io/ftp/$pkgname/$pkgname-$pkgver.tar.gz" "$pkgname.install")
 md5sums=('66750d4ece8e12605e022acc134d352f'
 'b3e3589091b8d70357a7aa75d329e104')
