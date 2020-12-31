@@ -3,11 +3,12 @@
 pkgname=heroic-games-launcher-appimage
 _pkgver=0.3.1-beta
 pkgver=${_pkgver%-*}
-pkgrel=1
+pkgrel=2
 pkgdesc="HGL, a Native alternative Linux Launcher for Epic Games"
 arch=('x86_64')
 url="https://github.com/flavioislima/HeroicGamesLauncher"
 license=('GPL3')
+conflicts=(${pkgname%-*}-bin ${pkgname%-*}-electron)
 depends=(xterm fuse2)
 _filename=heroic-${_pkgver}.AppImage
 source=("$url/releases/download/${_pkgver}/${_filename}"
