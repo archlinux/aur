@@ -1,7 +1,7 @@
 # Maintainer: xiretza <xiretza+aur@gmail.com>
 _pkgname=openelp
 pkgname=$_pkgname-git
-pkgver=0.8.0.r4.g9f017b1
+pkgver=0.8.0.r8.g48f77d1
 pkgrel=1
 pkgdesc="An open source EchoLink proxy for Linux and Windows"
 arch=(i686 x86_64 armv7h)
@@ -37,7 +37,7 @@ build() {
 }
 
 check() {
-	make -C build -k check
+	make -C build -k test
 }
 
 package() {

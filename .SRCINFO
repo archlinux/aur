@@ -1,6 +1,6 @@
 pkgbase = openelp-git
 	pkgdesc = An open source EchoLink proxy for Linux and Windows
-	pkgver = 0.8.0.r4.g9f017b1
+	pkgver = 0.8.0.r8.g48f77d1
 	pkgrel = 1
 	url = https://github.com/cottsay/openelp
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = openelp-git
 	makedepends = doxygen
 	depends = pcre2
 	depends = openssl
-	provides = openelp=0.8.0.r4.g9f017b1
+	provides = openelp=0.8.0.r8.g48f77d1
 	conflicts = openelp
 	backup = etc/ELProxy.conf
 	source = openelp::git+https://github.com/cottsay/openelp
