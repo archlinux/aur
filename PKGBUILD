@@ -6,7 +6,7 @@
 
 pkgname=panda3d
 pkgver=1.10.8
-pkgrel=2
+pkgrel=3
 pkgdesc="A 3D game engine with Python bindings. SDK package. Optional dependencies you want to support need to be installed before panda3d."
 url="http://www.panda3d.org"
 arch=('i686' 'x86_64')
@@ -38,6 +38,7 @@ optdepends=(# Recommended
             # Optional
             'nvidia-cg-toolkit: Shader support'
             'opencv: alternative to ffmpeg for video texture support'
+            'fftw: Support for discrete Fourier transform (DFT)'
             'fmodex: Advanced audio engine support (AUR)'
             'librocket-asarium-git: librocket GUI support (AUR)'
             'libsquish: DXT support (AUR)'
