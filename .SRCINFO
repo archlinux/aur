@@ -1,0 +1,13 @@
+pkgbase = boop-gtk-extra-scripts
+	pkgdesc = Extra scripts from Boop-GTK
+	pkgver = aad8f75
+	pkgrel = 1
+	url = https://github.com/IvanMathy/Boop/tree/main/Scripts
+	arch = x86_64
+	license = MIT
+	depends = boop-gtk>=1.6.0
+	source = Boop::git+https://github.com/IvanMathy/Boop#commit=aad8f75
+	sha512sums = SKIP
+
+pkgname = boop-gtk-extra-scripts
+
