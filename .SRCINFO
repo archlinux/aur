@@ -1,7 +1,7 @@
 pkgbase = glowing-bear-electron
 	pkgdesc = A web client for Weechat (Electron version)
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.glowing-bear.org/
 	arch = any
 	groups = irc
@@ -12,8 +12,10 @@ pkgbase = glowing-bear-electron
 	depends = glowing-bear-web
 	source = glowing-bear.desktop
 	source = glowing-bear.sh
+	source = index.js
 	sha256sums = 8e8f5c38849a8e76e0f217c38c24b5b6b297b7c644ea3513ea80a5ac39787424
-	sha256sums = d7a07b5c49a625df89f849333a0486e219b6b31d5090b1f13a651d5f4524399b
+	sha256sums = 6f629478fc412719c7200b43a360aceafdabc58a76016cba66cc41188d86e5bf
+	sha256sums = 5104282cf97cdc605d562d553b564040b9872627e1651ea005459b30f7f86bea
 
 pkgname = glowing-bear-electron
 
