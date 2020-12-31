@@ -1,16 +1,17 @@
 pkgbase = ruby-sprockets
 	pkgdesc = Rack-based asset packaging system
-	pkgver = 4.0.0
-	pkgrel = 0
-	url = http://getsprockets.org/
+	pkgver = 4.0.2
+	pkgrel = 1
+	url = https://github.com/rails/sprockets
 	arch = any
 	license = MIT
+	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-concurrent
 	depends = ruby-rack
-	noextract = sprockets-4.0.0.gem
+	noextract = sprockets-4.0.2.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/sprockets-4.0.0.gem
+	source = https://rubygems.org/downloads/sprockets-4.0.2.gem
 	sha256sums = 57bdad17013f843ba2b884025f18ccd0ad9639a8cab4cc65cf2ad4bdef3fa34a
 
 pkgname = ruby-sprockets
