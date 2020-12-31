@@ -1,0 +1,16 @@
+pkgbase = ghq-gst
+	pkgdesc = a simple toolbox that offers additional commands over ghq enabled environment
+	pkgver = 5.0.3
+	pkgrel = 1
+	url = https://github.com/uetchy/gst
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = gst=5.0.3
+	conflicts = gst
+	source = gst-5.0.3.tar.gz::https://github.com/uetchy/gst/archive/v5.0.3.tar.gz
+	sha256sums = 46aba69724f9f30c86eb5ecd465690d9463815be794154315838a31d0714f400
+
+pkgname = ghq-gst
+
