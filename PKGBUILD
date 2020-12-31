@@ -2,7 +2,7 @@
 # pkg: git
 pkgname=hsandbox-git
 pkgver=1.1.r28.gc43f92f
-pkgrel=3
+pkgrel=4
 pkgdesc="The Hacking Sandbox"
 arch=('any')
 url="http://labix.org/hsandbox"
