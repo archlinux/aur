@@ -8,7 +8,7 @@ pkgbase=pipewire-gstfree
 _pkgbase=pipewire
 pkgname=(pipewire-gstfree pipewire-gstfree-docs pipewire-gstfree-jack pipewire-gstfree-pulse pipewire-gstfree-alsa pipewire-gstfree-ffmpeg)
 pkgver=0.3.18+91+gc39ba857
-pkgrel=1
+pkgrel=2
 pkgdesc="Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies"
 url="https://pipewire.org"
 license=(LGPL2.1)
@@ -69,9 +69,8 @@ package_pipewire-gstfree() {
 
   cd "$pkgdir"
 
-  mkdir -p etc/{alsa/conf.d,pipewire/media-session.d}
+  mkdir -p "$pkgdir/etc/alsa/conf.d"
   ln -st etc/alsa/conf.d /usr/share/alsa/alsa.conf.d/50-pipewire.conf
-  touch etc/pipewire/media-session.d/with-alsa
 
   _pick docs usr/share/doc
 
@@ -116,8 +115,9 @@ package_pipewire-gstfree-alsa() {
   conflicts=(pipewire-alsa)
   provides=(pipewire-alsa pulseaudio-alsa)
 
-  mkdir -p "$pkgdir/etc/alsa/conf.d"
+  mkdir -p "$pkgdir"/etc/{alsa/conf.d,pipewire/media-session.d}
   ln -st "$pkgdir/etc/alsa/conf.d" /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf
+  touch "$pkgdir/etc/pipewire/media-session.d/with-alsa"
 }
 
 package_pipewire-gstfree-ffmpeg() {
