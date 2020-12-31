@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 validpgpkeys=('7427D25413635E1E39657B6B1007816766D390D7')
               # Srevin Saju (srevinsaju) <srevinsaju@sugarlabs.org>
 
-prepare() {
+pkgver() {
 	cd "$srcdir/$pkgname"
 	git describe --tags | sed 's/^v//;s/-/+/g'
 }
