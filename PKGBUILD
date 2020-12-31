@@ -1,6 +1,6 @@
 pkgname=uni
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Query the Unicode database from the commandline, with good support for emojis'
 arch=('x86_64')
 repo="github.com/arp242/$pkgname"
