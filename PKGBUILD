@@ -1,7 +1,7 @@
 # Maintainer: Alexis BRENON <brenon.alexis+arch at gmail dot com>
 pkgname=sweethome3d-3dmodels-lucapresidente
-pkgver=1.7.1
-pkgrel=2
+pkgver=1.8
+pkgrel=1
 pkgdesc="Free 3D models advertised on SweetHome3D website"
 arch=('any')
 url="http://www.sweethome3d.com/freeModels.jsp"
@@ -17,8 +17,8 @@ optdepends=("sweethome3d: Models rendering"
 "sweethome3d-textures-contributions: More textures"
 "sweethome3d-textures-scopia: More textures")
 install="$pkgname.install"
-source=("http://prdownloads.sourceforge.net/sweethome3d/3DModels-LucaPresidente-1.7.1.zip")
-sha1sums=("61ec0100519b01b0e72afaaf063987a19a19f298")
+source=("http://prdownloads.sourceforge.net/sweethome3d/3DModels-LucaPresidente-1.8.zip")
+sha1sums=("3446e1018b0b32a282961080bb811ed29904fa1c")
 
 package() {
     mkdir -p $pkgdir/usr/share/eteks/sweethome3d/furniture/3dmodels-lucapresidente
