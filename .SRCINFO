@@ -1,7 +1,7 @@
 pkgbase = python-confuse
 	pkgdesc = Configuration library for Python that uses YAML
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/beetbox/confuse
 	arch = any
 	license = MIT
