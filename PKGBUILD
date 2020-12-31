@@ -10,7 +10,6 @@ license=('MIT')
 makedepends=('git')
 checkdepends=('python')
 provides=('libhardened_malloc.so')
-conflicts=('hardened-malloc-git')
 source=("git+https://github.com/GrapheneOS/$pkgname#tag=$pkgver?signed")
 sha256sums=('SKIP')
 validpgpkeys=('65EEFE022108E2B708CBFCF7F9E712E59AF5F22A') # Daniel Micay <danielmicay@gmail.com>
