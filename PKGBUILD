@@ -1,18 +1,25 @@
-# Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
 # Contributor: Timofey Titovets <nefelim4ag@gmail.com>
+# Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=leagueoflegends-git
-pkgver=0.10.12.r0.gc44d767
+pkgver=0.10.25.r2.gffb18ff
 pkgrel=1
 pkgdesc="League of Legends helper script"
 arch=('any')
 url="https://github.com/kyechou/leagueoflegends"
 license=('GPL3')
-depends=('wine-lol' 'winetricks' 'bash' 'lib32-gnutls' 'lib32-libldap'
-         'lib32-openal' 'lib32-libpulse' 'wget')
+depends=('wine-lol' 'winetricks' 'bash' 'curl' 'lib32-gnutls' 'lib32-libldap'
+         'lib32-openal' 'lib32-libpulse' 'vulkan-icd-loader'
+         'lib32-vulkan-icd-loader' 'vulkan-driver' 'lib32-vulkan-driver')
+makedepends=()
+optdepends=("lib32-amdvlk: AMD Vulkan driver"
+            "lib32-nvidia-utils: NVIDIA Vulkan driver"
+            "lib32-vulkan-intel: Intel's Vulkan mesa driver"
+            "lib32-vulkan-radeon: Radeon's Vulkan mesa driver")
+provides=('leagueoflegends')
 conflicts=('leagueoflegends')
 source=("$pkgname"::'git+https://github.com/kyechou/leagueoflegends')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
@@ -25,5 +32,5 @@ pkgver() {
 
 package() {
     cd "$srcdir/$pkgname"
-    make install PREFIX="$pkgdir"
+    make DESTDIR="$pkgdir" install
 }
