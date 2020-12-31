@@ -1,5 +1,5 @@
 diff --git a/Action.c b/Action.c
-index 206eb67..13d24d4 100644
+index 206eb67..99ef96d 100644
 --- a/Action.c
 +++ b/Action.c
 @@ -443,7 +443,7 @@ static const struct {
@@ -51,16 +51,17 @@ index 206eb67..13d24d4 100644
     keys['Z'] = actionTogglePauseProcessUpdate;
     keys['['] = actionLowerPriority;
     keys['\014'] = actionRedraw; // Ctrl+L
-@@ -664,8 +666,6 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -663,9 +665,6 @@ void Action_setBindings(Htop_Action* keys) {
+    keys['a'] = actionSetAffinity;
     keys['c'] = actionTagAllChildren;
     keys['e'] = actionShowEnvScreen;
-    keys['h'] = actionHelp;
+-   keys['h'] = actionHelp;
 -   keys['k'] = actionKill;
 -   keys['l'] = actionLsof;
     keys['m'] = actionToggleMergedCommand;
     keys['p'] = actionToggleProgramPath;
     keys['q'] = actionQuit;
-@@ -673,7 +673,7 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -673,7 +672,7 @@ void Action_setBindings(Htop_Action* keys) {
     keys['t'] = actionToggleTreeView;
     keys['u'] = actionFilterByUser;
     keys['w'] = actionShowCommandScreen;
@@ -69,7 +70,7 @@ index 206eb67..13d24d4 100644
     keys[KEY_F(1)] = actionHelp;
     keys[KEY_F(2)] = actionSetup;
     keys[KEY_F(3)] = actionIncSearch;
-@@ -685,6 +685,7 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -685,6 +684,7 @@ void Action_setBindings(Htop_Action* keys) {
     keys[KEY_F(9)] = actionKill;
     keys[KEY_F(10)] = actionQuit;
     keys[KEY_F(18)] = actionExpandCollapseOrSortColumn;
