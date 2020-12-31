@@ -4,7 +4,7 @@
 
 pkgname=yadm
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet Another Dotfiles Manager"
 arch=('any')
 url="https://github.com/TheLocehiliosan/yadm"
@@ -22,7 +22,7 @@ package() {
   cd $srcdir/$pkgname-$pkgver
   install -D -m 755 yadm $pkgdir/usr/bin/yadm
   install -D -m 644 yadm.1 $pkgdir/usr/share/man/man1/yadm.1
-  install -D -m 644 completion/yadm.bash_completion "${pkgdir}/usr/share/bash-completion/completions/yadm"
-  install -D -m 644 completion/yadm.zsh_completion "${pkgdir}/usr/share/zsh/site-functions/_yadm"
-  install -D -m 644 completion/yadm.fish_completion "${pkgdir}/usr/share/fish/vendor_completions.d/yadm.fish"
+  install -D -m 644 completion/bash/yadm "${pkgdir}/usr/share/bash-completion/completions/yadm"
+  install -D -m 644 completion/zsh/_yadm "${pkgdir}/usr/share/zsh/site-functions/_yadm"
+  install -D -m 644 completion/fish/yadm.fish "${pkgdir}/usr/share/fish/vendor_completions.d/yadm.fish"
 }
