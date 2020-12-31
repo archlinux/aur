@@ -17,7 +17,7 @@ source=("https://github.com/ReClassNET/ReClass.NET/releases/download/v${pkgver}/
         )
 noextract=("ReClass.NET.rar")
 sha256sums=('3822bf8974df152cae17714ee484fdcc3ede5c1e26bc159c7c9e9e62e60b9f46'
-            '1648b7d1747bcb94e18063d79c08d087dd8ce06e6b0addb8fbb6f8e5568f7146'
+            'a8f223b7b7b570bd8f40befa1428e05d341feee02bc27045757d68e2b1988e9d'
             '2252b64376c6b8c42c140b9888993f39a281502ae3d9ecdb736d3e4ec72f9bc9')
 
 prepare() {

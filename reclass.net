@@ -1,2 +1,2 @@
 #!/bin/sh
-kdesu mono /usr/share/reclass.net/ReClass.NET.exe
+kdesu mono /usr/share/reclass.net-bin/ReClass.NET.exe
