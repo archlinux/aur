@@ -1,8 +1,8 @@
 diff --git a/Action.c b/Action.c
-index 66934be..c229584 100644
+index 206eb67..13d24d4 100644
 --- a/Action.c
 +++ b/Action.c
-@@ -448,7 +448,7 @@ static const struct {
+@@ -443,7 +443,7 @@ static const struct {
     const char* key;
     const char* info;
  } helpLeft[] = {
@@ -11,7 +11,7 @@ index 66934be..c229584 100644
     { .key = " Digits: ", .info = "incremental PID search" },
     { .key = "   F3 /: ", .info = "incremental name search" },
     { .key = "   F4 \\: ",.info = "incremental name filtering" },
-@@ -474,7 +474,7 @@ static const struct {
+@@ -469,7 +469,7 @@ static const struct {
     { .key = "  Space: ", .info = "tag process" },
     { .key = "      c: ", .info = "tag process and its children" },
     { .key = "      U: ", .info = "untag all processes" },
@@ -20,7 +20,7 @@ index 66934be..c229584 100644
     { .key = "   F7 ]: ", .info = "higher priority (root only)" },
     { .key = "   F8 [: ", .info = "lower priority (+ nice)" },
  #if (defined(HAVE_LIBHWLOC) || defined(HAVE_LINUX_AFFINITY))
-@@ -482,12 +482,12 @@ static const struct {
+@@ -477,12 +477,12 @@ static const struct {
  #endif
     { .key = "      e: ", .info = "show process environment" },
     { .key = "      i: ", .info = "set IO priority" },
@@ -36,44 +36,52 @@ index 66934be..c229584 100644
     { .key = "  F10 q: ", .info = "quit" },
     { .key = NULL, .info = NULL }
  };
-@@ -662,6 +662,7 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -648,12 +648,14 @@ void Action_setBindings(Htop_Action* keys) {
+    keys['H'] = actionToggleUserlandThreads;
     keys['I'] = actionInvertSortOrder;
-    keys[KEY_F(6)] = actionSetSortColumn;
+    keys['K'] = actionToggleKernelThreads;
++   keys['L'] = actionLsof;
+    keys['M'] = actionSortByMemory;
+    keys['N'] = actionSortByPID;
+    keys['P'] = actionSortByCPU;
+    keys['S'] = actionSetup;
+    keys['T'] = actionSortByTime;
+    keys['U'] = actionUntagAll;
++   keys['X'] = actionShowLocks;
+    keys['Z'] = actionTogglePauseProcessUpdate;
+    keys['['] = actionLowerPriority;
+    keys['\014'] = actionRedraw; // Ctrl+L
+@@ -664,8 +666,6 @@ void Action_setBindings(Htop_Action* keys) {
+    keys['c'] = actionTagAllChildren;
+    keys['e'] = actionShowEnvScreen;
+    keys['h'] = actionHelp;
+-   keys['k'] = actionKill;
+-   keys['l'] = actionLsof;
+    keys['m'] = actionToggleMergedCommand;
+    keys['p'] = actionToggleProgramPath;
+    keys['q'] = actionQuit;
+@@ -673,7 +673,7 @@ void Action_setBindings(Htop_Action* keys) {
+    keys['t'] = actionToggleTreeView;
+    keys['u'] = actionFilterByUser;
+    keys['w'] = actionShowCommandScreen;
+-   keys['x'] = actionShowLocks;
++   keys['x'] = actionKill;
+    keys[KEY_F(1)] = actionHelp;
+    keys[KEY_F(2)] = actionSetup;
+    keys[KEY_F(3)] = actionIncSearch;
+@@ -685,6 +685,7 @@ void Action_setBindings(Htop_Action* keys) {
+    keys[KEY_F(9)] = actionKill;
+    keys[KEY_F(10)] = actionQuit;
     keys[KEY_F(18)] = actionExpandCollapseOrSortColumn;
 +   keys['o'] = actionExpandCollapseOrSortColumn;
-    keys['<'] = actionSetSortColumn;
-    keys[','] = actionSetSortColumn;
-    keys['>'] = actionSetSortColumn;
-@@ -670,7 +671,7 @@ void Action_setBindings(Htop_Action* keys) {
-    keys['q'] = actionQuit;
-    keys['a'] = actionSetAffinity;
-    keys[KEY_F(9)] = actionKill;
--   keys['k'] = actionKill;
-+   keys['x'] = actionKill;
     keys[KEY_RECLICK] = actionExpandOrCollapse;
-    keys['+'] = actionExpandOrCollapse;
-    keys['='] = actionExpandOrCollapse;
-@@ -681,13 +682,12 @@ void Action_setBindings(Htop_Action* keys) {
-    keys['S'] = actionSetup;
-    keys['C'] = actionSetup;
-    keys[KEY_F(2)] = actionSetup;
--   keys['x'] = actionShowLocks;
--   keys['l'] = actionLsof;
-+   keys['X'] = actionShowLocks;
-+   keys['L'] = actionLsof;
-    keys['s'] = actionStrace;
-    keys[' '] = actionTag;
-    keys['\014'] = actionRedraw; // Ctrl+L
-    keys[KEY_F(1)] = actionHelp;
--   keys['h'] = actionHelp;
-    keys['?'] = actionHelp;
-    keys['U'] = actionUntagAll;
-    keys['c'] = actionTagAllChildren;
+    keys[KEY_RESIZE] = actionResize;
+ }
 diff --git a/Panel.c b/Panel.c
-index 21dfbe2..e8ba9f9 100644
+index 26a0c0e..2ace36a 100644
 --- a/Panel.c
 +++ b/Panel.c
-@@ -333,6 +333,7 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -343,6 +343,7 @@ bool Panel_onKey(Panel* this, int key) {
  
     switch (key) {
     case KEY_DOWN:
@@ -81,7 +89,7 @@ index 21dfbe2..e8ba9f9 100644
     case KEY_CTRL('N'):
     #ifdef KEY_C_DOWN
     case KEY_C_DOWN:
-@@ -341,6 +342,7 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -351,6 +352,7 @@ bool Panel_onKey(Panel* this, int key) {
        break;
  
     case KEY_UP:
@@ -89,7 +97,7 @@ index 21dfbe2..e8ba9f9 100644
     case KEY_CTRL('P'):
     #ifdef KEY_C_UP
     case KEY_C_UP:
-@@ -349,7 +351,7 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -359,7 +361,7 @@ bool Panel_onKey(Panel* this, int key) {
        break;
  
     case KEY_LEFT:
@@ -98,7 +106,7 @@ index 21dfbe2..e8ba9f9 100644
        if (this->scrollH > 0) {
           this->scrollH -= MAXIMUM(CRT_scrollHAmount, 0);
           this->needsRedraw = true;
-@@ -357,18 +359,29 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -367,18 +369,29 @@ bool Panel_onKey(Panel* this, int key) {
        break;
  
     case KEY_RIGHT:
@@ -129,7 +137,7 @@ index 21dfbe2..e8ba9f9 100644
        this->selected += (this->h - 1);
        this->scrollV = CLAMP_INDEX(this->scrollV, +(this->h - 1), 0, size - this->h);
        this->needsRedraw = true;
-@@ -387,10 +400,12 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -397,10 +410,12 @@ bool Panel_onKey(Panel* this, int key) {
        break;
  
     case KEY_HOME:
@@ -196,10 +204,10 @@ index 880597d..0c44936 100644
  
  For more information and details on how to contribute to `htop` visit [htop.dev](https://htop.dev).
 diff --git a/ScreenManager.c b/ScreenManager.c
-index ac93721..6413bd7 100644
+index 4c74e47..6fce01f 100644
 --- a/ScreenManager.c
 +++ b/ScreenManager.c
-@@ -255,7 +255,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+@@ -251,7 +251,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
           continue;
        }
        case KEY_LEFT:
@@ -208,7 +216,7 @@ index ac93721..6413bd7 100644
           if (this->panelCount < 2) {
              goto defaultHandler;
           }
-@@ -276,7 +276,7 @@ tryLeft:
+@@ -272,7 +272,7 @@ tryLeft:
  
           break;
        case KEY_RIGHT:
