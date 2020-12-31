@@ -2,12 +2,13 @@
 
 pkgname=rpms
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Renoir power metrics server'
 arch=('x86_64')
 url="https://github.com/moson-mo/$pkgname"
 license=('MIT')
 makedepends=('go')
+depends=('ryzen_smu')
 source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('840ed0a39087d518d7dce234668c3150e2c98c56d33f72cdd6a0bae42c2fd9b1')
 

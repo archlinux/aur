@@ -1,11 +1,12 @@
 pkgbase = rpms
 	pkgdesc = Renoir power metrics server
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moson-mo/rpms
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	depends = ryzen_smu
 	source = https://github.com/moson-mo/rpms/archive/v1.0.3.tar.gz
 	sha256sums = 840ed0a39087d518d7dce234668c3150e2c98c56d33f72cdd6a0bae42c2fd9b1
 
