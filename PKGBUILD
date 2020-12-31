@@ -2,9 +2,9 @@
 # Maintainer: Anton Kudelin <kudelin [at] protonmail [dot] com>
 
 pkgname=cp2k
-pkgver=7.1.0
-_dbcsrver=2.0.1
-pkgrel=5
+pkgver=8.1.0
+_dbcsrver=2.1.0
+pkgrel=1
 # NVIDIA GPU Generation: Kepler, Pascal, or Volta;
 # please specify one closest to yours or leave unchanged
 # if CUDA isn't supposed to be used
@@ -13,35 +13,27 @@ pkgdesc="A quantum chemistry and solid state physics software package"
 arch=("x86_64")
 url="https://www.cp2k.org"
 license=("GPL2")
-depends=('fftw' 'elpa' 'libxc<5.0' 'libint2' 'libxsmm' 'spglib')
-makedepends=('gcc-fortran' 'python' 'sed')
+depends=('fftw' 'elpa' 'libxc<5.0' 'libxsmm' 'spglib' 'cosma')
+makedepends=('gcc-fortran' 'python' 'git' 'libint2')
 checkdepends=('numactl')
 optdepends=('cuda: GPU calculations support'
             'plumed-mpi: enhanced sampling support')
 provides=("$pkgname")
 conflicts=("$pkgname-bin" "$pkgname-git" "$pkgname-data")
-source=("https://github.com/cp2k/cp2k/archive/v$pkgver.tar.gz"
-        "https://github.com/cp2k/dbcsr/archive/v$_dbcsrver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/cp2k/cp2k/archive/v$pkgver.tar.gz"
+        "git+https://github.com/cp2k/dbcsr.git#tag=v$_dbcsrver"
         "basic.psmp"
         "cuda_plumed.psmp"
         "cuda.psmp"
-        "plumed.psmp"
-        "lapack.patch")
-sha256sums=('e244f76d7e1e98da7e4e4b2e6cefb723fa1205cfae4f94739413be74952e8b4e'
-            '1e283a3b9ce90bda321d77f4fa611b09a7eaad167d7bc579b2e9311f7b97b5ec'
-            '7fcc5d8d743361ac41d8e2118ad2f162de5d8274018fd8f10d115db0a07d7ff4'
-            '7534ad85434cae17b7b79b1aeb5a25dbb912b6307040e0b3d3ff5e35f81e9327'
-            '4d642cc08f16dc57bc9f9815b128ec5bc70bad72d5f394296492d224d78b5bdc'
-            'b895cabd59e5429ec5763290ce02923fc04afb7e2167ed9bcc973c6da9981545'
-            'f566a9941f27c9d55c528acf0aacbb8ed686067777ce48f1e206432d259ee8a1')
+        "plumed.psmp")
+sha256sums=('1e25a865cad0a3958bc3e9e345bb771302015929fa22b299d1eb8f2e07f52756'
+            'SKIP'
+            '8b6c791a0b7c98ee2c593e3962465de07912e5ff2c611ba2bd1c6703d62ce1ec'
+            '544c1219023419eb497e31e2c47f46c2971c7f3668277f004576a3a9b09e1a2e'
+            'bd0f362561ef06a6ac48d05858286bef7a1ee0266dd5ad3c5fa9d5e9486b4edc'
+            '6f27bcdff18336fd3499c1a82c47f3a0858fb6133f388500f3f21102cf6526e0')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  # Prepare DBCSR
-  cp -r ../dbcsr-$_dbcsrver/* exts/dbcsr
-  patch -p1 < ../lapack.patch
-
   # Set up the default build environment
   export _buildmode=0
   export _arch="basic"
@@ -76,7 +68,7 @@ prepare() {
       _arch="cuda_plumed"
       ;;
   esac
-  
+
   case $_GPU in
     Kepler)
       export _gpuver=K20X
@@ -89,11 +81,17 @@ prepare() {
       ;;
   esac
 
-  # Move arch-file into a proper directory  
+  # Move arch-file into a proper directory
+  cd "$srcdir/$pkgname-$pkgver"
   mv ../$_arch.psmp arch
 
   # Changing the location of the data directory
   sed -i 's@$(CP2KHOME)/data@/usr/share/cp2k/data@g' Makefile
+
+  # Prepare DBCSR
+  cp -r ../dbcsr exts
+  cd exts/dbcsr
+  git submodule update --init --recursive
 }
 
 build() {
@@ -102,8 +100,8 @@ build() {
 }
 
 check() {
-  export DATA_DIR=$srcdir/$pkgname-$pkgver/data
-  cd $srcdir/$pkgname-$pkgver/tools/regtesting
+  export DATA_DIR="$srcdir/$pkgname-$pkgver/data"
+  cd "$srcdir/$pkgname-$pkgver/tools/regtesting"
 
   # In the case of a test failure you must examine it carefully
   # because it can lead to an unpredictable error during a production run.

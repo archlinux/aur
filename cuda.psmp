@@ -30,9 +30,7 @@ CXXFLAGS    = $(DFLAGS) $(INCS) $(OPTFLAGS) -std=c++11
 CPPFLAGS    = 
 FCFLAGS     = $(DFLAGS) $(INCS) $(OPTFLAGS)                     \
               -ffree-form -ffree-line-length-none               \
-              -fallow-argument-mismatch                         \
-              -fno-tree-loop-vectorize
-
+              -fallow-argument-mismatch
 NVFLAGS     = $(DFLAGS) -O3 -Xcompiler="-fopenmp"               \
               -gencode arch=compute_35,code=sm_35               \
               -gencode arch=compute_37,code=sm_37               \
@@ -43,14 +41,14 @@ NVFLAGS     = $(DFLAGS) -O3 -Xcompiler="-fopenmp"               \
               -gencode arch=compute_70,code=sm_70               \
               -gencode arch=compute_75,code=sm_75               \
               -gencode arch=compute_80,code=sm_80               \
-              -gencode arch=compute_86,code=sm_86
-
+              -gencode arch=compute_86,code=sm_86               \
+              -Wno-deprecated-gpu-targets
 LDFLAGS     = $(FCFLAGS)
 
 LIBS        = -L/opt/cuda/lib64 -lcudart -lcuda                 \
               -lcublas -lcufft -lrt -lnvrtc                     \
               -lxsmmf -lxsmm                                    \
-              -lelpa_openmp -lscalapack -lblas -llapack         \
+              -lelpa_openmp -lcosma -lscalapack -lblas -llapack \
               -lfftw3 -lfftw3_threads                           \
               /usr/lib/libint2.a                                \
               -lxcf03 -lxc                                      \

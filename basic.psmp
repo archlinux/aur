@@ -25,13 +25,11 @@ CXXFLAGS    = $(DFLAGS) $(INCS) $(OPTFLAGS) -std=c++11
 CPPFLAGS    = 
 FCFLAGS     = $(DFLAGS) $(INCS) $(OPTFLAGS)                     \
               -ffree-form -ffree-line-length-none               \
-              -fallow-argument-mismatch                         \
-              -fno-tree-loop-vectorize
-
+              -fallow-argument-mismatch
 LDFLAGS     = $(FCFLAGS)
 
 LIBS        = -lxsmmf -lxsmm                                    \
-              -lelpa_openmp -lscalapack -lblas -llapack         \
+              -lelpa_openmp -lcosma -lscalapack -lblas -llapack \
               -lfftw3 -lfftw3_threads                           \
               /usr/lib/libint2.a                                \
               -lxcf03 -lxc                                      \
