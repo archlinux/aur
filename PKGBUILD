@@ -3,7 +3,7 @@
 # Completion changes and optdepends by Artemis
 
 pkgname=yadm
-pkgver=2.5.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Yet Another Dotfiles Manager"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('gnupg: encrypt/decrypt sensitive files'
 provides=('yadm')
 conflicts=('yadm-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TheLocehiliosan/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('d022d118a1a477e09afa00c80e10bd94b150d99709e57f01ba48ca2eaaeeb2de')
+sha256sums=('af968c815817e9de85b60dc9c9a7e6159ed34e4f91ea78cadbcd6c73a0301c06')
 
 package() {
   cd $srcdir/$pkgname-$pkgver
