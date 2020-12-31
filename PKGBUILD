@@ -9,7 +9,7 @@ _use_meson=0
 
 _pkgname=audacious-plugins
 pkgname="$_pkgname-git"
-pkgver=4.0.beta1.r265.gffa26ceb1
+pkgver=4.1.beta1.r0.g57cd901ba
 pkgrel=1
 epoch=1
 pkgdesc="Plugins for Audacious (git version)"
@@ -28,7 +28,7 @@ source=("git://github.com/audacious-media-player/$_pkgname.git")
 sha256sums=('SKIP')
 
 if [ "$_use_meson" = 1 ]; then
-    makedepends+=('meson')
+  makedepends+=('meson')
 fi
 
 pkgver() {
@@ -43,7 +43,7 @@ build() {
     arch-meson build
     meson compile -C build
   else
-    autoreconf -I m4
+    ./autogen.sh
     ./configure --prefix=/usr
     make
   fi
