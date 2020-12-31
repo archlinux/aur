@@ -7,7 +7,7 @@ pkgdesc="A wxPython-based GUI for Gammu"
 arch=('any')
 url="https://wammu.eu/"
 license=('GPL')
-depends=('python-gammu' 'wxpython' 'python2-six')
+depends=('python2-gammu' 'wxpython' 'python2-six')
 makedepends=('python2-setuptools')
 optdepends=('gnome-bluetooth: Bluetooth support'
             'python2-pybluez: Bluetooth support')
@@ -17,8 +17,6 @@ sha256sums=('bf8199f888cb60e4a24839e71ec6f8e8deb11fd22f592fe1112e3252bd4b9145')
 
 prepare() {
   cd "$pkgname-$pkgver"
-
-  # python2 fix
   sed -i 's_/usr/bin/env python_/usr/bin/env python2_' setup.py
 }
 
