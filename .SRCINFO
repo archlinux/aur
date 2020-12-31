@@ -1,7 +1,7 @@
 pkgbase = trilinos
 	pkgdesc = algorithms for the solution of large-scale scientific problems
 	pkgver = 13.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://trilinos.org
 	arch = x86_64
 	license = LGPL3
@@ -12,6 +12,8 @@ pkgbase = trilinos
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = bc
+	makedepends = python-numpy
+	makedepends = swig
 	depends = python
 	depends = lapack
 	depends = boost
@@ -20,7 +22,9 @@ pkgbase = trilinos
 	depends = libx11
 	depends = hdf5-openmpi
 	source = https://github.com/trilinos/Trilinos/archive/trilinos-release-13-0-1.tar.gz
+	source = python-mpi-version.patch
 	sha256sums = 0bce7066c27e83085bc189bf524e535e5225636c9ee4b16291a38849d6c2216d
+	sha256sums = 9920ddf718ff04a14d1263623dfd98791404b1db0a73d95ba48d87215e8409eb
 
 pkgname = trilinos
 
