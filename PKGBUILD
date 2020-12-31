@@ -2,17 +2,17 @@
 # Contributor: Dominik Heidler <dheidler@gmail.com>
 
 pkgname=gqrx
-pkgver=2.13.5
+pkgver=2.14.4
 pkgrel=1
 pkgdesc="Interactive SDR receiver waterfall for many devices."
 arch=('x86_64')
 url="http://gqrx.dk/"
 license=('GPL')
 depends=('qt5-svg' 'libpulse' 'gnuradio-osmosdr' 'libxkbcommon-x11')
-makedepends=('boost')
+makedepends=('boost' 'cmake')
 source=("$pkgname-$pkgver.tgz::https://github.com/csete/gqrx/archive/v$pkgver.tar.gz")
 #source=("https://github.com/csete/gqrx/releases/download/v$pkgver/gqrx-sdr-$pkgver-src.tar.xz")
-md5sums=('01719a7743274ccf95d62080cb413c41')
+md5sums=('f8ff8e564fff8f930ae27c291ed20839')
 
 prepare() {
   cd "$srcdir/gqrx-$pkgver"
@@ -21,8 +21,8 @@ prepare() {
   cd "$srcdir"
   cp -r gqrx-$pkgver gqrx-$pkgver-alsa
   cd gqrx-$pkgver-alsa
-  sed -i 's/AUDIO_BACKEND = pulse/#&/' gqrx.pro
-
+  #sed -i 's/AUDIO_BACKEND = pulse/#&/' gqrx.pro
+  sed -i 's/LINUX_AUDIO_BACKEND Pulseaudio/LINUX_AUDIO_BACKEND Gr-audio/' CMakeLists.txt
 }
 
 build() {
@@ -30,15 +30,20 @@ build() {
   rm -rf build
   mkdir build
   cd build
-  qmake PREFIX=/usr/ ..
+  #qmake PREFIX=/usr/ ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  sed -i 's|-lpthread|& -lhidapi-libusb|' Makefile
   make
+  cp src/gqrx ./
   cd "$srcdir/$pkgname-$pkgver-alsa"
   rm -rf build
   mkdir build
   cd build
-  qmake PREFIX=/usr/ ..
+  #qmake PREFIX=/usr/ ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
   sed -i 's|-lpthread|& -llog4cpp|' Makefile
   make
+  cp src/gqrx ./
 }
 
 package() {
@@ -47,7 +52,9 @@ package() {
   install -Dm644 "resources/icons/gqrx.svg" "$pkgdir/usr/share/pixmaps/gqrx.svg"
 
   cd "$srcdir/$pkgname-$pkgver/build"
-  make install INSTALL_ROOT="$pkgdir"
+  #make install INSTALL_ROOT="$pkgdir"
+  #make DESTDIR="$pkgdir" install
+  install -Dm755 gqrx "$pkgdir/usr/bin/gqrx"
 
   cd "$srcdir/$pkgname-$pkgver-alsa/build"
   install -Dm755 gqrx "$pkgdir/usr/bin/gqrx-alsa"
