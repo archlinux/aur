@@ -14,14 +14,43 @@ process_tree () {
 	done
 }
 
-key='kernel.yama.ptrace_scope'
-old_value=$(sysctl -n "$key")
+set_sysctl () {
+	pid="$1"
+	if test -z "$pid"
+	then
+		error "no pid given"
+	fi
 
-sysctl "$key=0" || error "unable to run 'sysctl $key=0' (did you run this as root?)"
-trap 'sysctl "$key=$old_value"' EXIT
-trap 'exit' INT
+	key='kernel.yama.ptrace_scope'
+	old_value=$(sysctl -n "$key")
 
-su "$(logname)" -c /opt/CrewLink/crewlink &
+	sysctl "$key=0" || error "unable to run 'sysctl $key=0'"
+	trap 'sysctl "$key=$old_value"' EXIT
+	trap 'exit' INT
+
+	while kill -s 0 "$pid" >/dev/null 2>&1
+	do
+		sleep 1
+	done
+}
+
+while test "$#" -gt 0
+do
+	case "$1" in
+	--set-sysctl)
+		set_sysctl "$2"
+		shift
+		exit 0
+		;;
+	*)
+		error "unknown option: $1"
+		;;
+	esac
+	shift
+done
+
+sudo -b "$0" --set-sysctl "$$" >/dev/null
+crewlink &
 
 cl_pid="$!"
 max_procs=0
