@@ -1,6 +1,6 @@
 pkgbase = beautyline
 	pkgdesc = outlined icons Designed to have unified look and comprehensive coverage with Sweet gradient icons. ( best suited to use with Sweet theme)
-	pkgver = 20201227
+	pkgver = 20201231
 	pkgrel = 1
 	url = https://gitlab.com/garuda-linux/themes-and-settings/artwork/beautyline
 	arch = any

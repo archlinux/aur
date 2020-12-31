@@ -2,7 +2,7 @@
 
 _gitname=beautyline
 pkgname=beautyline
-pkgver=20201227
+pkgver=20201231
 pkgrel=1
 pkgdesc="outlined icons Designed to have unified look and comprehensive coverage with Sweet gradient icons. ( best suited to use with Sweet theme)"
 arch=('any')
