@@ -1,6 +1,6 @@
 pkgname=cms-germany-git
-pkgver=r4710.f22ba8d4
-pkgrel=2
+pkgver=r4711.05abd790
+pkgrel=1
 pkgdesc="CMS, or Contest Management System, is a distributed system for running and (to some extent) organizing a programming contest. This is a fork used for the German IOI team selection process."
 arch=('i686' 'x86_64')
 url="https://github.com/ioi-germany/cms"
@@ -11,7 +11,7 @@ depends=(
     'python-psycopg2'
     'python-sqlalchemy'
     'python-netifaces'
-    'python-crypto'
+    'python-pycryptodomex'
     'python-pytz'
     'python-psutil'
     'python-six'
@@ -40,8 +40,8 @@ depends=(
     'python-babel'
 )
 optdepends=(
-    'python2-pycups: printing support'
-    'python2-pypdf: printing support'
+    'python-pycups: printing support'
+    'python-pypdf: printing support'
     'a2ps: printing support'
     'fpc: support for Pascal submissions'
     'jdk8-openjdk: support for Java submissions'
@@ -49,7 +49,7 @@ optdepends=(
 makedepends=(
     'git'
     'asciidoc'
-    'python2-setuptools'
+    'python-setuptools'
 )
 backup=(
     'etc/cms.conf'
