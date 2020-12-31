@@ -38,6 +38,10 @@ prepare() {
 	# https://bbs.archlinux.org/viewtopic.php?pid=1942534
 	# https://bugs.archlinux.org/index.php?do=details&task_id=68884
 	sed -Ei 's/^(\s*)("jupyter")/\1#\2/' setup.py
+
+	# remove version pins to avoid installing old versions. This is not tested
+	# and may break things.
+	sed -Ei 's/^(\s*)"(nbconvert|traitlets)==.*"/\1"\2"/' setup.py	
 }
 build() {
 	cd nbgrader
@@ -45,6 +49,6 @@ build() {
 }
 package() {
 	cd nbgrader
-	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
+	python setup.py install --prefix=/usr --root="$pkgdir" --skip-build
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
