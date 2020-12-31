@@ -2,7 +2,7 @@
 
 pkgname=ignition-gui
 pkgver=4.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Builds on top of Qt to provide widgets which are useful when developing
 robotics applications, such as a 3D view, plots, dashboard, etc, and can be used
 together in a convenient unified interface."
@@ -22,10 +22,17 @@ depends=(
 	ignition-tools
 )
 makedepends=('cmake')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-gui/archive/${pkgname}4_${pkgver}.tar.gz")
-sha256sums=('9811710faa0ff07c134f07f82cbc0020dcc44c62c4feb087250e25bece252a7b')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-gui/archive/${pkgname}4_${pkgver}.tar.gz"
+        "qapplication.patch::https://patch-diff.githubusercontent.com/raw/ignitionrobotics/ign-gui/pull/165.patch")
+sha256sums=('9811710faa0ff07c134f07f82cbc0020dcc44c62c4feb087250e25bece252a7b'
+            'SKIP')
 
 _dir="ign-gui-${pkgname}4_${pkgver}"
+
+prepare() {
+  cd "$srcdir/$_dir"
+  patch --forward --strip=1 --input="${srcdir}/qapplication.patch"
+}
 
 build() {
   cd "$srcdir/$_dir"
