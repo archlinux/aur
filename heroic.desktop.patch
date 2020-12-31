@@ -1,0 +1,10 @@
+--- squashfs-root/heroic.desktop
++++ squashfs-root/heroic.desktop
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Name=heroic
+-Exec=AppRun %U
++Exec=/usr/bin/heroicGamesLauncher %U
+ Terminal=false
+ Type=Application
+ Icon=heroic
