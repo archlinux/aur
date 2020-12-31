@@ -143,7 +143,6 @@ echo "Architecture: ${_pkgarch}" >> ${srcdir}/${_pkgarch}.skywire-save.control
 echo "Depends: ${_pkgname}" >> ${srcdir}/${_pkgarch}.skywire-save.control
 echo "Maintainer: github.com/the-skycoin-project" >> ${srcdir}/${_pkgarch}.skywire-save.control
 echo "Description: easy backup and restore skywire configuration" >> ${srcdir}/${_pkgarch}.skywire-save.control
-
 }
 
 #I had to speed up the build for testing but there's a risk of using old binaries.
@@ -155,7 +154,7 @@ _binname=$1 #which binary to build
 _msg2 "building ${_binname} binary"
 if [[ ! -f ${_GOHERE}/${_binname} ]] ; then #don't waste time rebuilding existing bins
 	cd ${_cmddir}/${_binpath}${_binname}
-  go build -trimpath --ldflags '-linkmode external -extldflags "-static" -buildid=' -o $_GOHERE/ .
+  go build -trimpath --ldflags '-s -w -linkmode external -extldflags "-static" -buildid=' -o $_GOHERE/ .
 fi
 }
 
@@ -234,11 +233,8 @@ install -Dm755  ${srcdir}/${_scripts}/skywire-save.postinst  ${_pkgdir}/${_skydi
 install -Dm755  ${srcdir}/${_scripts}/skywire-save.postrm  ${_pkgdir}/${_skydir}/skywire-save/DEBIAN/postrm
 install -Dm755  ${srcdir}/${_scripts}/skywire-save.sh  ${_pkgdir}/usr/bin/skywire-save
 
-
-
 _msg2 'installing skycache systemd services'
 install -Dm644 ${srcdir}/${_scripts}/skycache.service ${_pkgdir}/${_systemddir}/skycache.service
-
 
 _msg2 'installing skywire control file, postinst & postrm scripts'
 install -Dm755 ${srcdir}/${_pkgarch}.control ${_pkgdir}/DEBIAN/control
@@ -248,7 +244,7 @@ install -Dm755 ${srcdir}/${_scripts}/postrm.sh ${_pkgdir}/DEBIAN/postrm
 _msg2 'creating the debian package'
 #create the debian package
 cd $pkgdir
-dpkg-deb --build ${_debpkgdir}
+dpkg-deb --build -z9 ${_debpkgdir}
 mv *.deb ../../
 #exit so the arch package doesn't get built
 exit
