@@ -8,7 +8,7 @@ pkgbase=pipewire-gstfree
 _pkgbase=pipewire
 pkgname=(pipewire-gstfree pipewire-gstfree-docs pipewire-gstfree-jack pipewire-gstfree-pulse pipewire-gstfree-alsa pipewire-gstfree-ffmpeg)
 pkgver=0.3.18+91+gc39ba857
-pkgrel=2
+pkgrel=3
 pkgdesc="Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies"
 url="https://pipewire.org"
 license=(LGPL2.1)
@@ -54,7 +54,7 @@ _ver=${pkgver:0:3}
 package_pipewire-gstfree() {
   depends=(sbc rtkit vulkan-icd-loader bluez-libs alsa-card-profiles
            libdbus-1.so libncursesw.so libsndfile.so libudev.so libasound.so
-           libsystemd.so libldacBT_enc.so libopenaptx.so libfdk-aac.so ffmpeg)
+           libsystemd.so libldacBT_enc.so libopenaptx.so libfdk-aac.so)
   optdepends=('pipewire-gstfree-docs: Documentation'
               'pipewire-gstfree-ffmpeg: ffmpeg support'
               'pipewire-gstfree-jack: JACK support'
