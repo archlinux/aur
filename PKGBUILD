@@ -2,7 +2,7 @@
 
 pkgname=delta
 pkgver=20060803
-pkgrel=2
+pkgrel=3
 dapkgver=2006.08.03
 license=('BSD')
 url="http://delta.tigris.org/"
@@ -10,11 +10,8 @@ pkgdesc="An useful tool that lets you minimize interesting files subject to a te
 arch=(i686 x86_64)
 depends=('perl')
 makedepends=('make' 'gcc' 'flex' 'curl')
-source=("http://delta.tigris.org/files/documents/3103/33566/delta-${dapkgver}.tar.gz")
-md5sums=('7be4ac4ae9c1eb01ccf29d413d4cc64a')
-
-# Pass -b "" to cURL because cookies are required for the download
-DLAGENTS=('http::/usr/bin/curl -b "" -fLC - --retry 3 --retry-delay 3 -o %o %u')
+source=("git+https://salsa.debian.org/debian/delta.git#tag=upstream/2006.08.03")
+md5sums=('SKIP')
 
 build() {
   cd "${srcdir}/${pkgname}-${dapkgver}/"
