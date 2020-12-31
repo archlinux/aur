@@ -1,7 +1,7 @@
 # Maintainer: Alberto Sánchez Molero <alsamolero@gmail.com>
 pkgname=kitsas
 _reponame=kitupiikki
-pkgver=2.0
+pkgver=2.1.1
 _repover="${pkgver//_/-}"
 pkgrel=1
 epoch=
@@ -23,7 +23,7 @@ install=
 changelog=
 source=("https://github.com/artoh/$_reponame/archive/v$_repover.tar.gz")
 noextract=()
-sha256sums=(dc2ad96b5d911677b3c757292fc75e5997db9f824761d4a0d084fe5cfc1af523)
+sha256sums=(36b6d8611c412ff930169aacb87c8263f61c10dbd163ebaeddb62f05652c4a60)
 validpgpkeys=()
 
 build() {
