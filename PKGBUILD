@@ -3,11 +3,11 @@
 
 pkgname='boop-gtk-bin'
 pkgver='1.6.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="A scriptable scratchpad for developers."
 arch=('x86_64')
 conflicts=('boop-gtk')
-provides=('boop-gtk')
+provides=('boop-gtk=1.6.0')
 url='https://github.com/zoeyfyi/Boop-GTK'
 license=('MIT')
 depends=(
