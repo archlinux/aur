@@ -6,30 +6,15 @@
 
 _name=cx_Oracle
 pkgname=python-cx_oracle
-pkgver=7.3.0
+pkgver=8.1.0
 pkgrel=1
 pkgdesc="Python extension module that allows access to Oracle databases"
 arch=('i686' 'x86_64')
 url='https://oracle.github.io/python-cx_Oracle/'
 license=('BSD')
-depends=('python' 'oracle-instantclient-sdk')
+depends=('python' 'oracle-instantclient-basic')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('2e0da54e948b55e5c75fab14b391d58aa8b9be1eddfd9ec9a8a0e500bc8bfc7e')
-
-prepare() {
-  printf "\033[1;31mWarning:\033[0m The package oracle-instantclient-basic must be installed manually "
-  printf "\nunofficial prebuilt Arch packages are available by adding the"
-  printf "\nfollowing lines to /etc/pacman.conf, if you agree to the Oracle licence[1]:"
-  printf "\n\n[oracle]"
-  printf "\nSigLevel = Optional TrustAll"
-  printf '\nServer = http://linux.shikadi.net/arch/$repo/$arch/'
-  printf "\n\nThen run 'pacman -Sys oracle' to see available packages."
-  printf "\n[1]: http://www.oracle.com/technetwork/licenses/instant-client-lic-152016.html"
-  printf "\n"
-}
-
-
-
+sha256sums=('e1698c5522ee1355e552b30bfa0a58e6e772475b882c5d69d158bd7e6aed45de')
 
 package() {
   cd $srcdir/cx_Oracle-$pkgver
