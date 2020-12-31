@@ -1,6 +1,6 @@
 pkgbase = panda3d-git
 	pkgdesc = A 3D game engine with Python bindings. SDK package. Git Version. Optional dependencies you want to support need to be installed before panda3d.
-	pkgver = r24725.7b83eac943
+	pkgver = r24742.2b84bfc145
 	pkgrel = 1
 	url = http://www.panda3d.org
 	install = panda3d-git.install
@@ -39,6 +39,7 @@ pkgbase = panda3d-git
 	optdepends = eigen: Optimised linear algebra library
 	optdepends = nvidia-cg-toolkit: Shader support
 	optdepends = opencv: alternative to ffmpeg for video texture support
+	optdepends = fftw: Support for discrete Fourier transform (DFT)
 	optdepends = fmodex: Advanced audio engine support (AUR)
 	optdepends = librocket-asarium-git: librocket GUI support (AUR)
 	optdepends = libsquish: DXT support (AUR)

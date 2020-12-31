@@ -5,7 +5,7 @@
 # Contributor: Hubert Grzeskowiak <arch at nemesis13 de>
 
 pkgname=panda3d-git
-pkgver=r24725.7b83eac943
+pkgver=r24742.2b84bfc145
 pkgrel=1
 pkgdesc="A 3D game engine with Python bindings. SDK package. Git Version. Optional dependencies you want to support need to be installed before panda3d."
 url="http://www.panda3d.org"
@@ -44,6 +44,7 @@ optdepends=(# Recommended
             # Optional
             'nvidia-cg-toolkit: Shader support'
             'opencv: alternative to ffmpeg for video texture support'
+            'fftw: Support for discrete Fourier transform (DFT)'
             'fmodex: Advanced audio engine support (AUR)'
             'librocket-asarium-git: librocket GUI support (AUR)'
             'libsquish: DXT support (AUR)'
