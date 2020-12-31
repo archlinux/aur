@@ -1,0 +1,17 @@
+pkgbase = turbo-button-git
+	pkgdesc = Simple tray app to toggle performance/power preference
+	pkgver = r2.c9f8cce
+	pkgrel = 1
+	url = https://github.com/sandsmark/turbo-button
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	provides = turbo-button
+	conflicts = turbo-button
+	source = git+https://github.com/sandsmark/turbo-button.git
+	md5sums = SKIP
+
+pkgname = turbo-button-git
+
