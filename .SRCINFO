@@ -1,6 +1,6 @@
 pkgbase = ifrextractor-ls
 	pkgdesc = Utility that can extract the internal forms represenation from both EFI and UEFI modules
-	pkgver = 0.3.6
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://github.com/LongSoft/Universal-IFR-Extractor
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = ifrextractor-ls
 	makedepends = git
 	provides = ifrextractor
 	conflicts = ifrextractor
-	source = https://github.com/LongSoft/Universal-IFR-Extractor/archive/v0.3.6.tar.gz
-	md5sums = c749212a5ba631671fbbe96e6d7f0fcf
+	source = https://github.com/LongSoft/Universal-IFR-Extractor/archive/0.3.7.tar.gz
+	md5sums = 25b007a65fb7761c3bfb7a48d3d928ad
 
 pkgname = ifrextractor-ls
 

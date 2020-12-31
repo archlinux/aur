@@ -1,6 +1,6 @@
 # Maintainer: xsmile <>
 pkgname=ifrextractor-ls
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc='Utility that can extract the internal forms represenation from both EFI and UEFI modules'
 arch=('any')
@@ -9,8 +9,8 @@ license=('GPL3')
 makedepends=('cmake' 'git')
 provides=('ifrextractor')
 conflicts=('ifrextractor')
-source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=('c749212a5ba631671fbbe96e6d7f0fcf')
+source=("${url}/archive/${pkgver}.tar.gz")
+md5sums=('25b007a65fb7761c3bfb7a48d3d928ad')
 
 prepare() {
   cd Universal-IFR-Extractor-${pkgver}
