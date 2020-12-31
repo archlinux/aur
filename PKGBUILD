@@ -2,8 +2,8 @@
 
 _gemname=sprockets-helpers
 pkgname=ruby-$_gemname
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc='Asset path helpers for Sprockets 2.x & 3.x applications'
 arch=(any)
 url='https://github.com/petebrowne/sprockets-helpers'
@@ -12,7 +12,7 @@ depends=(ruby ruby-sprockets)
 makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha1sums=('91f6149575a941e7c8bf20fd87c36160a2ea3b89')
+sha1sums=('b5a7396e1da26b5c3f9b1e04a6c1868d9b8657cb')
 noextract=($_gemname-$pkgver.gem)
 
 package() {
