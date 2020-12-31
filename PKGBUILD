@@ -2,11 +2,12 @@
 
 pkgname=hardened_malloc
 pkgver=4
-pkgrel=1
+pkgrel=2
 pkgdesc="Hardened allocator designed for modern systems"
 arch=('x86_64')
 url="https://github.com/GrapheneOS/hardened_malloc"
 license=('MIT')
+depends=('gcc-libs')
 makedepends=('git')
 checkdepends=('python')
 provides=('libhardened_malloc.so')
