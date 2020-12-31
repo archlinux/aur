@@ -13,6 +13,6 @@ sha256sums=("6dee33d74bd26b67482f68502b0fcf1a20aad624771f45de292b9b17e10e1b83")
 
 package() {
 	cd "$srcdir/passh-agent-$pkgver-x86_64"
-	install -Dm755 "passh-agent" -t "$pkgdir/usr/bin/"
-	install -Dm644 "passh-agent.service" -t "$pkgdir/usr/lib/systemd/user/"
+    install -Dm755 passh-agent -t "$pkgdir/usr/bin/"
+	install -Dm644 passh-agent.service -t "$pkgdir/usr/lib/systemd/user/"
 }
