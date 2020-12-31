@@ -4,20 +4,21 @@
 # Contributor: royrocks <royrocks13@gmail.com>
 
 pkgname=tuxpaint
-pkgver=0.9.24
-pkgrel=3
+pkgver=0.9.25
+pkgrel=1
 pkgdesc='Drawing program designed for young children'
 arch=('x86_64')
 url='http://tuxpaint.org/' # no https available
 license=('GPL')
 backup=('etc/tuxpaint/tuxpaint.conf')
-depends=('fribidi' 'libpaper' 'librsvg' 'python2' 'sdl_image'
+depends=('fribidi' 'libpaper' 'librsvg' 'libimagequant' 'sdl_image'
          'sdl_mixer' 'sdl_pango' 'sdl_ttf')
 makedepends=('gperf' 'setconf' 'imagemagick')
 optdepends=('tuxpaint-stamps: more stamps'
-            'tuxpaint-config: configuration manager')
+            'tuxpaint-config: configuration manager'
+            'python2: zh_tw font generator script')
 source=("https://downloads.sourceforge.net/sourceforge/tuxpaint/$pkgname-$pkgver.tar.gz")
-sha256sums=('8762572f55f335aaa6329106282bebf171e7305f796fa7b5aad3cd78c5a3a11a')
+sha256sums=('c1185b7ba97701ae48639ade3e55488bd695a919a7b5b38f5b2ab0df93b6e19d')
 
 prepare() {
   cd "$pkgname-$pkgver"
