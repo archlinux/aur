@@ -2,7 +2,7 @@
 # Maintainer: Corey Hinshaw <corey(at)electrickite(dot)org>
 
 pkgname=system76-driver
-pkgver=20.04.20
+pkgver=20.04.22
 pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
@@ -42,13 +42,13 @@ source=(
   'galu1.patch'
   'cli.patch'
   'wayland.patch')
-sha1sums=('a2e1bce6ed8e3548d90cedbe17db479bffa2af49'
+sha1sums=('b30d39ced8fc47537d6328be862defaf5d7b0c82'
           'ddc85f9b062eb89c2c6fef0c6d7c68a28f419760'
           '916e0eeda26e00bd0372c1ffc7c5368cda9d46a1'
           '4825b80d13555742c30d197e4de56638eef162e6')
 
 
-build() {
+prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}
 
   # patch for cli version - enable override vendor/model via /etc/system76-daemon.json
@@ -61,11 +61,17 @@ build() {
   patch --no-backup-if-mismatch -Np1 -i ${srcdir}/wayland.patch
 }
 
+build() {
+  # Build package
+  cd ${srcdir}/${pkgname}-${pkgver}
+  python setup.py build
+}
+
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}
 
-  # Build and install base package
-  python setup.py install --prefix=/usr --root=${pkgdir} --optimize=1
+  # Install base package
+  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 
   # Install daemons and executables
   install -m755 -D system76-daemon ${pkgdir}/usr/lib/${pkgname}/system76-daemon
@@ -88,5 +94,6 @@ package() {
   install -m755 -d ${pkgdir}/var/lib/${pkgname}
 
   # Clean up
-  rm -rf ${pkgdir}/usr/lib/python*/site-packages/system76driver/{__pycache__,tests}
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  rm -rf ${pkgdir}${site_packages}/system76driver/{__pycache__,tests}
 }
