@@ -1,17 +1,17 @@
 pkgbase = python-criticality-score
 	pkgdesc = Gives criticality score for an open source project
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://pypi.org/project/criticality-score
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	depends = python
-	source = python-criticality-score-1.0.6.tar.gz::https://pypi.org/packages/source/c/criticality_score/criticality_score-1.0.6.tar.gz
+	source = python-criticality-score-1.0.7.tar.gz::https://pypi.org/packages/source/c/criticality_score/criticality_score-1.0.7.tar.gz
 	source = https://raw.githubusercontent.com/ossf/criticality_score/d10ff033ec7ef8bda7a76f43b7ee82875c7c9782/LICENSE
-	sha256sums = 50e25ab34179afcc28a5e6e14741abe4508e313503e3e3a9d05507027af5b0bf
+	sha256sums = a81b1696654443ae24d4465714525b93818db8cdbc019e831cffa078840a0145
 	sha256sums = 669649bdd4097a659e5e952b2bcaafc4693c5124e399adc2522dbc7e5865ab26
-	b2sums = 7b53ae5690dd274a7362aeadf321fdb12c850be4a538f624591d513d33d44685471d74da09ae28ac345afb899f114995938c30de408591d89afff6b729d0b653
+	b2sums = 91af06cd20a1dd79b6569af3b5697c7e20fd9f9ad91349efa2b3dd6478cf4138bd5aab6cd5b3783508bbf1809ad26f42b2883899683015647453a5b3ef994082
 	b2sums = 9d6391e0d3fdcd9c5587893f27c9ddd2a817260ff8dfe685c137ba97ac514029d1a1babd20bed5ea057161c819aed7503eb155d984c4fa9669b81b38cfc96408
 
 pkgname = python-criticality-score
