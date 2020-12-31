@@ -2,7 +2,7 @@
 _orgname=tumic0
 _pkgname=QtPBFImagePlugin
 pkgname=qt5-pbfimageplugin
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc='Qt image plugin for displaying Mapbox vector tiles'
 arch=(x86_64)
@@ -14,7 +14,7 @@ provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}-git")
 source=("https://github.com/${_orgname}/${_pkgname}/archive/${pkgver}.tar.gz"
         'Qt5Gui_QPbfPlugin.cmake')
-sha256sums=('e7035961303c06289c28aa8457db7dfc68f79fb31aebc02c1cc05689bc8e6803'
+sha256sums=('d1b4d0e8d79e3c17aad3bfe0c349002cb30c31cb1be5535aec44c71ee4f0891a'
             'c927c3832fe39d674c6225ad9070d3c667f1ff9d37d398669a969cdfcee1e984')
 
 build() {
