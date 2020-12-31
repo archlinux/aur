@@ -3,13 +3,13 @@
 
 pkgname=libthinkpad-git
 pkgver=2.3.r11.g0a7a74d
-pkgrel=1
+pkgrel=2
 pkgdesc="A general purpose userspace ThinkPad library"
 arch=('i686' 'x86_64')
 url="https://github.com/libthinkpad/libthinkpad"
 license=('BSD')
 depends=('libsystemd')
-makedepends=('cmake' 'git' 'pkg-config')
+makedepends=('cmake' 'git' 'pkg-config' 'systemd')
 conflicts=('libthinkpad')
 provides=('libthinkpad')
 options=('!strip')
