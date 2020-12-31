@@ -1,13 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Hoàng Văn Khải <hvksmr1996 at gmail dot com>
 pkgname=dialect-git
-pkgver=1.1.1.r0.gfebe706
+pkgver=1.1.1.r14.g4dd1915
 pkgrel=1
 pkgdesc="A translation app for GTK environments based on Google Translate"
 arch=('any')
 url="https://github.com/gi-lom/dialect"
 license=('GPL3')
-depends=('gtk3' 'python-gobject' 'python-googletrans' 'python-gtts' 'python-pydub')
+depends=('gtk3' 'libhandy' 'python-gobject' 'python-googletrans' 'python-gtts'
+         'gst-python')
 makedepends=('meson' 'git' 'gobject-introspection')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'gnabel')
