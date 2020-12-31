@@ -1,8 +1,9 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Pekka Ristola <pekka [dot] a [dot] ristola [at] gmail [dot] com>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 _pkgname='rapidfuzz'
 pkgname="python-${_pkgname}"
-pkgver=0.14.1
+pkgver=0.14.2
 pkgrel=1
 pkgdesc='Rapid fuzzy string matching in Python and C++ using the Levenshtein Distance'
 arch=('x86_64')
@@ -12,7 +13,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('d1c9991c6fbe2f448686096ccd6e588ceea18acd3e479dd8abfc1a9866c0cbd7')
+sha256sums=('e2a8404a847352c1fd80ca0443ef75e3b76801f85f5c022d8ebc47d9f2290557')
 
 build() {
   cd "${_pkgname}-${pkgver}"
