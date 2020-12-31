@@ -2,16 +2,16 @@
 
 pkgname=monocypher
 _pkgname=monocypher
-pkgver=3.1.1
-pkgrel=3
+pkgver=3.1.2
+pkgrel=1
 pkgdesc="Monocypher is an easy to use crypto library inspired by libsodium and TweetNaCl"
 arch=('i686' 'x86_64')
 url="https://monocypher.org/"
 license=('custom:BSD')
 depends=('glibc')
 source=("https://monocypher.org/download/monocypher-${pkgver}.tar.gz")
-sha256sums=('ed96874acfe75781cfbe06b049868920f0e9f493ec78e7d6e3879177a8d0af7a')
-sha512sums=('9c202ffe74eac1f2a7f21b8e195d981c21c5792b788315dea168cf40f1ee83cb787f3409c2d6135f517a58fee5f3e44c9ef521e132cee40c04e4b4868787f366')
+sha256sums=('f80a2e16d553e4b119634fd0e85ff86fc42afb4c9cc4569077854d1b6f5ef4f9')
+sha512sums=('7b94a78abcd5490891cb7c5f29fe269d426fe12d99986ed0ec20246d2d5274e190d5f738e8c32bb9de2a21a7f9960460ac617eb320e28cd53a574c629547b767')
 
 package() {
   cd "$_pkgname-$pkgver"
