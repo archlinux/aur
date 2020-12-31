@@ -1,0 +1,18 @@
+pkgbase = python-hyper
+	pkgdesc = HTTP/2 for Python.
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://hyper.rtfd.org
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-h2
+	depends = python-hyperframe
+	source = https://pypi.org/packages/source/h/hyper/hyper-0.7.0.tar.gz
+	source = https://pypi.org/packages/source/h/hyper/hyper-0.7.0.tar.gz.asc
+	validpgpkeys = 90DCAE40FEA74B149B70662DF25F2144EEC1373D
+	sha256sums = 12c82eacd122a659673484c1ea0d34576430afbe5aa6b8f63fe37fcb06a2458c
+	sha256sums = SKIP
+
+pkgname = python-hyper
+
