@@ -1,6 +1,6 @@
 # Maintainer: agilob <archlinux@agilob.net>
 pkgname=nault-bin
-pkgver=1.8.5
+pkgver=1.8.7
 pkgrel=1
 pkgdesc='Official Nault AppImage client'
 arch=('x86_64')
@@ -10,9 +10,9 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 options=(!strip)
 _appimage="nault.AppImage"
-source=("https://github.com/Nault/Nault/releases/download/v${pkgver}/Nault-${pkgver}.AppImage")
+source=("https://github.com/Nault/Nault/releases/download/v${pkgver}/Nault-${pkgver}-Linux.AppImage")
 noextract=("${_appimage}")
-sha512sums=('631daa28c70ae3bdec9580b3ed178399d772d51893dd292cf214a095ee6c9ee66c307fe11a55776962b6252e6803d5f6c606d6880bbd69a98f8026c3aa62079f')
+sha512sums=('d3c3a3f57ab909ee22e7aabf29c5a9a29808455849781495bdfde08560132aa94c1f32996e84426397af38c80654f25917725b9ce54f470815108fde5527ba01')
 install="${pkgname}.install"
 
 # extracting icons doesnt work now, this is here for future purposes
@@ -26,6 +26,6 @@ install="${pkgname}.install"
 # }
 
 package() {
-    mv "Nault-${pkgver}.AppImage" 'nault.AppImage'
+    mv "Nault-${pkgver}-Linux.AppImage" 'nault.AppImage'
 	install -Dpm755 "${_appimage}" "${pkgdir}/opt/${pkgname}/${_appimage}"
 }
