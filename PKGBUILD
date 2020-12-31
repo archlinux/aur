@@ -2,7 +2,7 @@
 # Contributor: Thomas Andrejak <thomas.andrejak@gmail.com>
 pkgname=python-croniter
 _name=${pkgname#python-}
-pkgver=0.3.36
+pkgver=0.3.37
 pkgrel=1
 pkgdesc="A Python module to provide iteration for datetime object."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python-dateutil' 'python-natsort')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('9d3098e50f7edc7480470455d42f09c501fa1bb7e2fc113526ec6e90b068f32c')
+sha256sums=('12ced475dfc107bf7c6c1440af031f34be14cd97bbbfaf0f62221a9c11e86404')
 
 build() {
 	cd "$_name-$pkgver"
