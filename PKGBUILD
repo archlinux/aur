@@ -9,12 +9,17 @@ url='https://github.com/uetchy/cfddns'
 license=('MIT')
 depends=('python' 'python-cloudflare' 'python-click')
 makedepends=('git' 'python-dephell')
+install="${pkgname}.install"
 backup=('etc/cfddns/cfddns.yml')
-source=("archive.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-       "${pkgname}.service")
+source=(
+  "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+  "${pkgname}.service"
+  "${pkgname}.install"
+)
 sha256sums=(
   '1591b924438507a0dea86d66735bfdbc0d549e0436447c257cedd2a02c856977'
-  'f2e0ce7600fbb0f90086a6c903b8722ce4173f84586f4b642b7752dd459ac10a'
+  '7cc3f2402decf9da7584468d1f42cb12d1708b22cef1f4898bfa46d5d48ac31b'
+  '2c7b7a5a25855a84c080c83b241e5135d39f63adee25e82de6dc902a7589924b'
 )
 _archive=${pkgname}-${pkgver}
 

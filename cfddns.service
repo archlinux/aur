@@ -3,7 +3,7 @@ Description=DDNS client for CloudFlare DNS
 After=network-online.target
 
 [Service]
-ExecStart=/usr/bin/cfddns -c /etc/cfddns/cfddns.yml /etc/cfddns/cfddns/domains
+ExecStart=/usr/bin/cfddns -c /etc/cfddns/cfddns.yml /etc/cfddns/domains
 Restart=on-failure
 
 [Install]
