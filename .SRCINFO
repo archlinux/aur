@@ -1,7 +1,7 @@
 pkgbase = superslicer-git
 	pkgdesc = G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
-	pkgver = 2.3.55.r19.gb686b8956
-	pkgrel = 1
+	pkgver = 2.3.55.2.r239.g996a42f2f
+	pkgrel = 2
 	url = https://github.com/supermerill/SuperSlicer
 	arch = x86_64
 	license = AGPL3
@@ -17,7 +17,7 @@ pkgbase = superslicer-git
 	depends = nlopt
 	depends = openvdb
 	depends = wxgtk3-dev-opt
-	depends = boost-libs-171-opt
+	depends = boost>=1.73.0
 	depends = qhull>=2020.2-4
 	provides = superslicer
 	conflicts = superslicer
@@ -28,7 +28,7 @@ pkgbase = superslicer-git
 	source = 0001-wxgtk3-is-broken-on-wayland.patch
 	sha512sums = SKIP
 	sha512sums = 8f75de56ba3e29b9c650d2946bd11afcf406a7fd42d2620ec44e4e76f6b64626de720190ce0f8be29ba7c48f714bfa0a71c45f868bdce7bc1ac7dbbc0e9e7583
-	sha512sums = 3703901d97ae1982a36eb5c491fe0fd6953e81e6bb1d155404acfcac1de1f377931c88b9667688775af5ed16bd46944ca3a285bc4b2739762faa70e546044c43
+	sha512sums = 7edae27ddd3bc06281da376f50f653d690fc962374467003e1497b09333aad515f6be47accf12d7b1a9b259948a59bfb4e4c1bc653b20809f1f43f7e6e9103d8
 	sha512sums = acf35ebe467e9fb30f1b77d15348f1a7b82dcf45a5b829e375e972b5d6b49968603b3fa090c4d1f56e8b5148e2b820e79afa269da60ace70de1ceadcf6e820c5
 
 pkgname = superslicer-git
