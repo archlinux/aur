@@ -12,6 +12,7 @@ pkgbase = liri-appcenter-git
 	makedepends = git
 	makedepends = qt5-tools
 	makedepends = liri-cmake-shared-git
+	depends = qt5-accountsservice-git
 	depends = fluid-git
 	depends = libliri-git
 	depends = appstream-qt
