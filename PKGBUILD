@@ -9,7 +9,7 @@ url="https://github.com/GrapheneOS/hardened_malloc"
 license=('MIT')
 makedepends=('git')
 checkdepends=('python')
-provides=('libhardened_malloc.so-64')
+provides=('libhardened_malloc.so')
 conflicts=('hardened-malloc-git')
 source=("git+https://github.com/GrapheneOS/$pkgname#tag=$pkgver?signed")
 sha256sums=('SKIP')
