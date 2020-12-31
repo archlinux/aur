@@ -1,3 +1,4 @@
 d /etc/polaris 0755 polaris polaris
 d /var/lib/polaris 0750 polaris polaris
 d /var/cache/polaris 0750 polaris polaris
+d /var/log/polaris 0750 polaris polaris
