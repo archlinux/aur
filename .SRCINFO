@@ -1,7 +1,7 @@
 pkgbase = pipewire-gstfree
 	pkgdesc = Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies
-	pkgver = 0.3.18
-	pkgrel = 2
+	pkgver = 0.3.18+91+gc39ba857
+	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
 	license = LGPL2.1
@@ -18,13 +18,16 @@ pkgbase = pipewire-gstfree
 	makedepends = rtkit
 	makedepends = vulkan-icd-loader
 	makedepends = dbus
+	makedepends = sdl2
+	makedepends = ncurses
 	makedepends = libsndfile
 	makedepends = bluez-libs
 	makedepends = vulkan-headers
-	makedepends = libopenaptx
 	makedepends = libldac
+	makedepends = libopenaptx
+	makedepends = libfdk-aac
 	makedepends = ffmpeg
-	source = git+https://github.com/PipeWire/pipewire#commit=e7dffd64ebff76e2388d6e694de96d6693a6ed7d
+	source = git+https://github.com/PipeWire/pipewire#commit=c39ba8570e0dc4401df3a1a3fbc6612c6c29fa6b
 	sha256sums = SKIP
 
 pkgname = pipewire-gstfree
@@ -35,12 +38,15 @@ pkgname = pipewire-gstfree
 	depends = bluez-libs
 	depends = alsa-card-profiles
 	depends = libdbus-1.so
+	depends = libncursesw.so
 	depends = libsndfile.so
 	depends = libudev.so
 	depends = libasound.so
 	depends = libsystemd.so
 	depends = libldacBT_enc.so
 	depends = libopenaptx.so
+	depends = libfdk-aac.so
+	depends = ffmpeg
 	optdepends = pipewire-gstfree-docs: Documentation
 	optdepends = pipewire-gstfree-ffmpeg: ffmpeg support
 	optdepends = pipewire-gstfree-jack: JACK support
@@ -49,6 +55,8 @@ pkgname = pipewire-gstfree
 	provides = libpipewire-0.3.so
 	conflicts = pipewire
 	backup = etc/pipewire/pipewire.conf
+	backup = etc/pipewire/media-session.d/alsa-monitor.conf
+	backup = etc/pipewire/media-session.d/media-session.conf
 
 pkgname = pipewire-gstfree-docs
 	pkgdesc = Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies (documentation)

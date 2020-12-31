@@ -7,16 +7,17 @@
 pkgbase=pipewire-gstfree
 _pkgbase=pipewire
 pkgname=(pipewire-gstfree pipewire-gstfree-docs pipewire-gstfree-jack pipewire-gstfree-pulse pipewire-gstfree-alsa pipewire-gstfree-ffmpeg)
-pkgver=0.3.18
-pkgrel=2
+pkgver=0.3.18+91+gc39ba857
+pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies"
 url="https://pipewire.org"
 license=(LGPL2.1)
 arch=(x86_64)
 makedepends=(git meson doxygen graphviz xmltoman valgrind jack2 libpulse
-             alsa-lib sbc rtkit vulkan-icd-loader dbus
-             libsndfile bluez-libs vulkan-headers libopenaptx libldac ffmpeg)
-_commit=e7dffd64ebff76e2388d6e694de96d6693a6ed7d  # tags/0.3.18
+             alsa-lib sbc rtkit vulkan-icd-loader dbus sdl2
+             ncurses libsndfile bluez-libs vulkan-headers libldac libopenaptx
+             libfdk-aac ffmpeg)
+_commit=c39ba8570e0dc4401df3a1a3fbc6612c6c29fa6b  # master
 source=("git+https://github.com/PipeWire/pipewire#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -52,23 +53,25 @@ _ver=${pkgver:0:3}
 
 package_pipewire-gstfree() {
   depends=(sbc rtkit vulkan-icd-loader bluez-libs alsa-card-profiles
-           libdbus-1.so libsndfile.so libudev.so libasound.so libsystemd.so
-           libldacBT_enc.so libopenaptx.so)
+           libdbus-1.so libncursesw.so libsndfile.so libudev.so libasound.so
+           libsystemd.so libldacBT_enc.so libopenaptx.so libfdk-aac.so ffmpeg)
   optdepends=('pipewire-gstfree-docs: Documentation'
               'pipewire-gstfree-ffmpeg: ffmpeg support'
               'pipewire-gstfree-jack: JACK support'
               'pipewire-gstfree-pulse: PulseAudio support')
   conflicts=(pipewire)
   provides=(pipewire libpipewire-$_ver.so)
-  backup=(etc/pipewire/pipewire.conf)
+  backup=(etc/pipewire/pipewire.conf
+          etc/pipewire/media-session.d/{alsa-monitor,media-session}.conf)
   install=pipewire.install
 
   DESTDIR="$pkgdir" meson install -C build
 
   cd "$pkgdir"
 
-  mkdir -p etc/alsa/conf.d
+  mkdir -p etc/{alsa/conf.d,pipewire/media-session.d}
   ln -st etc/alsa/conf.d /usr/share/alsa/alsa.conf.d/50-pipewire.conf
+  touch etc/pipewire/media-session.d/with-alsa
 
   _pick docs usr/share/doc
 
