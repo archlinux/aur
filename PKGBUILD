@@ -2,7 +2,7 @@
 # Maintainer (core/linux): Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-x32
-pkgver=5.9.14.arch1
+pkgver=5.10.3.arch1
 pkgrel=1
 pkgdesc='Linux with x32 ABI'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -19,7 +19,6 @@ _srcname=archlinux-linux
 source=(
   "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
   config         # the main kernel config file
-  sphinx-workaround.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -27,8 +26,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '0d28d28624dcfc090e53da16d55f30cc1644e7dfdc282499ef0feacbdb261916'
-            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c')
+            '2a0b425451decac1853f8e9f6dad9636394ed3282b235b559a177c3360685a30')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
