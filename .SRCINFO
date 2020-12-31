@@ -1,6 +1,6 @@
 pkgbase = system76-firmware-daemon
 	pkgdesc = System76 Firmware Daemon provides a daemon for installing firmware updates.
-	pkgver = 1.0.20
+	pkgver = 1.0.21
 	pkgrel = 1
 	url = https://github.com/pop-os/system76-firmware
 	install = system76-firmware-daemon.install
@@ -15,9 +15,9 @@ pkgbase = system76-firmware-daemon
 	depends = systemd
 	depends = xz
 	conflicts = system76-driver<=17.10.32
-	source = https://github.com/pop-os/system76-firmware/archive/1.0.20.tar.gz
+	source = https://github.com/pop-os/system76-firmware/archive/1.0.21.tar.gz
 	source = system76-firmware-daemon.install
-	sha256sums = 27030de71b4e81ed93cf1188b46ff704673b3cbfec9a1118d9bc9b64100791b1
+	sha256sums = a1f8bcce8b2e3f7b37f93662292eefa33afc9a01891b684e8518ffd4d97a93e9
 	sha256sums = bee86280bc6762aa773ef17441126df336abb3f4ca2163caa4df6201b6a2d708
 
 pkgname = system76-firmware-daemon
