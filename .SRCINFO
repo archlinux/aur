@@ -1,0 +1,22 @@
+pkgbase = bugdom
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/jorio/Bugdom
+	arch = x86_64
+	license = CC-BY-NC-SA-4.0
+	makedepends = cmake
+	makedepends = git
+	depends = sdl2
+	depends = glu
+	depends = hicolor-icon-theme
+	source = bugdom::git+https://github.com/jorio/Bugdom.git#tag=v1.4.1
+	source = git+https://github.com/jorio/Pomme.git
+	source = git+https://github.com/jorio/Quesa.git
+	source = bugdom.desktop
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = a58f80a565d56b634a3ca70867779c469755828c44c26261553b3d7e663d32204318ef29500596668e1de2c4a16068200430820f3dd2c459da1d8265ebe5b78f
+
+pkgname = bugdom
+

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Bugdom
+Comment=Save Bugdom from Thorax's evil Fire Ants
+Icon=bugdom
+Exec=/usr/lib/bugdom/Bugdom
+Path=/usr/lib/bugdom
+Terminal=false
+Categories=Game;
+Encoding=UTF-8
