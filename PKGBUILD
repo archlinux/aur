@@ -4,7 +4,7 @@
 # Some lines from  kernel26-bfs and kernel26-ck
 # Credits to respective maintainers
 
-## 
+##
 ### PATCH AND BUILD OPTIONS
 #
 # taken from graysky linux-ck see: https://aur.archlinux.org/packages/linux-ck
@@ -22,7 +22,7 @@ _BATCH_MODE=n # enable batch mode
 #
 # http://en.gentoo-wiki.com/wiki/Safe_Cflags/Intel
 # http://en.gentoo-wiki.com/wiki/Safe_Cflags/AMD
-# http://www.linuxforge.net/docs/linux/linux-gcc.php 
+# http://www.linuxforge.net/docs/linux/linux-gcc.php
 # http://gcc.gnu.org/onlinedocs/gcc/i386-and-x86_002d64-Options.html
 
 # DETAILS FOR using 'make localmodconfig'
@@ -32,7 +32,7 @@ _BATCH_MODE=n # enable batch mode
 # WARNING - make CERTAIN that all modules are modprobed BEFORE you begin making the pkg!
 #
 # To keep track of which modules are needed for your specific system/hardware, give my module_db script
-# a try: http://aur.archlinux.org/packages.php?ID=41689  Note that if you use my script, this PKGBUILD 
+# a try: http://aur.archlinux.org/packages.php?ID=41689  Note that if you use my script, this PKGBUILD
 # will auto run the 'sudo modprobed_db reload' for you to probe all the modules you have logged!
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed_db
@@ -62,12 +62,12 @@ _minor=10
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 pkgbase=linux-pf
-_unpatched_sublevel=2
-_pfrel=2
+_unpatched_sublevel=4
+_pfrel=4
 _kernelname=pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
-_projectcpatchname=prjc_v5.10-r0.patch
+_projectcpatchname=prjc_v5.10-r1.patch
 _CPUSUFFIXES_KBUILD=(
   CORE2 K7 K8 K10 BARCELONA BOBCAT BULLDOZER PILEDRIVER STEAMROLLER MEXCAVATOR ZEN ZEN2 MPSC
   ATOM PENTIUMII PENTIUMIII PENTIUMM PENTIUM4 NEHALEM SANDYBRIDGE
@@ -92,10 +92,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekerne
         "https://gitlab.com/alfredchen/projectc/raw/master/$_major.$_minor/$_projectcpatchname"
         "90-linux.hook"
         "60-linux.hook"
-        "fix_project_c.patch"
         '262e6ae7081df304fc625cf368d5c2cbba2bb991.patch'
        )
-# 	'cx23885_move_CI_AC_registration_to_a_separate_function.patch'     
+# 	'cx23885_move_CI_AC_registration_to_a_separate_function.patch'
 
 
 
@@ -107,8 +106,7 @@ prepare() {
 
 
   patch -Np1 -R < ${srcdir}/262e6ae7081df304fc625cf368d5c2cbba2bb991.patch
-  patch -Np1 < ${srcdir}/fix_project_c.patch
-  
+
   if [ "$CARCH" = "x86_64" ]; then
 	  cat "${startdir}/config.x86_64" >| .config
   else
@@ -120,7 +118,7 @@ prepare() {
 
   _arch=$CARCH
 
-  
+
   # disable NUMA since 99.9% of users do not have multiple CPUs but do have multiple cores in one CPU
   # see, https://bugs.archlinux.org/task/31187
   if [ -n "$_NUMA_off" ] && [ "${CARCH}" = "x86_64" ]; then
@@ -163,7 +161,7 @@ build() {
           -i "$srcdir/linux-${_basekernel}/.config"
       export _PKGOPT=y
     fi
-    
+
     _BATCH_MODE=y
   fi
 
@@ -214,12 +212,12 @@ build() {
     else
       msg "Using stock ARCH kernel .config (with BFS and BFQ)."
     fi
-    
+
     # Make some good use of MAKEFLAGS
     # MAKEFLAGS=`grep -v '#' /etc/makepkg.conf | grep MAKEFLAGS= | sed s/MAKEFLAGS=// | sed s/\"//g`
-    
+
     # make prepare
-    
+
     # Options for additional configuration
     echo
     msg "Kernel configuration options before build:"
@@ -256,7 +254,7 @@ build() {
     CPU=$(sed -e "s/CONFIG_GENERIC_CPU=y/GENERIC/" <<<$CPU)
     CPU=$(sed -e "s/^686$/GENERIC/" <<<$CPU)
     cp -f .config ${startdir}/config.$CPU-$CARCH
-    
+
     # Give option to rename package according to CPU
     echo
     if [[ "$CPU" != "GENERIC" ]]; then
@@ -280,7 +278,7 @@ build() {
 	      export _PKGOPT=y
       fi
     fi
-    
+
   fi  # batch check ends here
 
   # only export non-generic
@@ -288,7 +286,7 @@ build() {
     export CPU
     export LCPU
   fi
-  
+
   # rewrite configuration
   make olddefconfig
 
@@ -320,7 +318,7 @@ _package() {
         pkgdesc="${pkgdesc} AMD K7 optimized."
         ;;
       K8)
-        pkgname="${pkgbase}-k8" 
+        pkgname="${pkgbase}-k8"
         pkgdesc="${pkgdesc} AMD K8 optimized."
 	      ;;
       K10)
@@ -431,14 +429,14 @@ _package() {
         # Workaround against mksrcinfo getting the $pkdesc wrong
         pkgname="${pkgbase}"
         pkgdesc="${pkgdesc}"
-          ::
+        ::
     esac
 
 
     if [[ "$pkgname" != "$pkgbase" ]]; then
       # If optimized build, conflict with generi
       conflicts=('linux-pf')
-      provides+=(${pkgbase}=$pkgver) 
+      provides+=(${pkgbase}=$pkgver)
     fi
   fi
 
@@ -488,7 +486,7 @@ _package-headers() {
   pkgname=${pkgbase}-headers
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
 
-  
+
   cd "${srcdir}/${_srcname}"
   local _builddir="${pkgdir}/usr/lib/modules/$(<version)/build"
 
@@ -500,14 +498,14 @@ _package-headers() {
 
 
   msg2 "Installing build files..."
-  install -dm755 "${_builddir}" 
+  install -dm755 "${_builddir}"
   install -Dt "${_builddir}" -m644 Makefile .config Module.symvers System.map version \
           vmlinux localversion.*
   install -Dt "${_builddir}/kernel" -m644 kernel/Makefile
 
-  
+
   install -D -m644 arch/${KARCH}/Makefile -t "${_builddir}/arch/${KARCH}/"
-  
+
   if [ "${CARCH}" = "i686" ]; then
     install -Dm644 arch/${KARCH}/Makefile_32.cpu -t "${_builddir}/arch/${KARCH}/"
   fi
@@ -515,7 +513,7 @@ _package-headers() {
   # copy files necessary for later builds, like nvidia and vmware
   cp -a scripts "${_builddir}"
 
- 
+
   msg2 "Installing headers..."
   cp -t "$_builddir" -a include
   # copy arch includes for external modules
@@ -529,15 +527,15 @@ _package-headers() {
 
   install -Dt "${_builddir}/drivers/md" -m644 drivers/md/*.h
   install -Dt "${_builddir}/net/mac80211" -m644 net/mac80211/*.h
-  
+
   # http://bugs.archlinux.org/task/13146
   install -Dt "${_builddir}/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
-  
+
   # http://bugs.archlinux.org/task/20402
   install -Dt "${_builddir}/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "${_builddir}/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "${_builddir}/drivers/media/tuners" -m644 drivers/media/tuners/*.h
-  
+
   # and...
   # http://bugs.archlinux.org/task/11194
   ###
@@ -546,9 +544,9 @@ _package-headers() {
   ### LINE THAT CAUSES MAKEPKG TO END IN AN ERROR
   ###
   if [ -d include/config/dvb/ ]; then
-    install -Dm644 -t "${_builddir}/include/config/dvb/" include/config/dvb/*.h 
+    install -Dm644 -t "${_builddir}/include/config/dvb/" include/config/dvb/*.h
   fi
-  
+
   # add xfs and shmem for aufs building
   mkdir -p "${_builddir}/"{fs/xfs,mm}
 
@@ -620,13 +618,13 @@ _package-preset-default()
   # install mkinitcpio preset file
   #sed "${_subst}" ../linux-pf.preset |
   #  install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-  
+
   # install pacman hooks
   sed "${_subst}" "${srcdir}"/60-linux.hook |
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
   sed "${_subst}" "${srcdir}"/90-linux.hook |
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
-  
+
   # set correct depmod command for install
   #sed \
     #  -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
@@ -665,10 +663,9 @@ sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             '19c6e90cfacacc1ab9eba8ff785c62d647b43316f565e8d7f2bf61024cda9237'
             'b6aeb6c460f08443ecce4006d8da83c5f01a224ad2123998ae351b5357286bcd'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            '0644b56e863380e8deede43007cf8aa570c7ec1e22954833374a14a632d2add6'
-            'c170927afc35fab46856ae71cbc85cc5d46909846a001b10e997297c3938da2e'
+            '34ffc6c43571590d7d299ada1a3b1d03ec37a4a3a6171ada0d7c494a71897454'
+            '3db1c9aaae36336fdca8fe80fe87ed95732e63f1f445735f1f7f1c0d77240476'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            'eadb99b082715cfb2f1a65a505678378c1c32a14d1fe409fd669ae49ae917407'
             '7908288d8549489d8ac1f7e523cb986c41c8306dbe4946cca890c6fc7c2d260b')
 # vim:set ts=2 sw=2 tw=0 et:
