@@ -1,0 +1,14 @@
+pkgbase = python-texture2ddecoder
+	pkgdesc = a python wrapper for Perfare's Texture2DDecoder
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/K0lb3/texture2ddecoder
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/texture2ddecoder/texture2ddecoder-1.0.2.tar.gz
+	sha256sums = 71e165b5f1d51ba2e04c33c52ef441b763700752e40167a39e725010f1ee447c
+
+pkgname = python-texture2ddecoder
+
