@@ -4,7 +4,7 @@
 
 _gemname='cri'
 pkgname="ruby-${_gemname}"
-pkgver=2.15.10
+pkgver=2.15.11
 pkgrel=1
 pkgdesc='Library for building easy-to-use command-line tools with support for nested commands'
 arch=('any')
@@ -16,7 +16,7 @@ depends=('ruby')
 options=(!emptydirs)
 source=("${url}/archive/${pkgver}/${_gemname}-${pkgver}.tar.gz" 'Rakefile.patch' 'disable-coveralls.patch')
 
-sha512sums=('b18971cb2f7db6dff3e0f6074d770a062f021d35640e9f010a1e31e1bf2286ff60aafe145589fb16b3805a586eecee00fa14239967b9630efee23966c2f4e023'
+sha512sums=('01b4f1fac629cf8a26c858fe0a6de3c985896946fe27cb4207b42d3d32babb24c633fc24ff7e45715b528ba4333b6cc17ff580d8a5d2bf01441c010b51487ebd'
             '44d3db7dfda851d432ff293e178c31e513dfd902cbbf3c7862857b479562f091cd8afcac7c68a4fb4c825286fd6d62c5956be54eeb4e1640cf04bb7d1f71d764'
             'a6ff67046e306b199973754f5526367df5d4b1420ed1cb387a35756d1558eda92e0de481ebb83051cb0126f0c1565bcd4192c9808344a2cb8c212a66bbacb680')
 
