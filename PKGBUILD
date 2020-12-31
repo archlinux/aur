@@ -2,7 +2,7 @@
 
 pkgname=waterfox-g3-kpe
 pkgver=0.2
-pkgrel=0
+pkgrel=1
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
 arch=('x86_64')
 license=('MPL')
@@ -13,7 +13,7 @@ makedepends=('unzip' 'zip' 'diffutils' 'python' 'yasm' 'mesa' 'imake' 'inetutils
              'autoconf2.13' 'rust' 'clang' 'llvm' 'libpulse' 'alsa-lib' 'jack' 'cbindgen' 'nasm' 'python-setuptools'
              'nodejs' 'python-psutil' 'binutils' 'git')
 options=('!emptydirs' '!makeflags' 'zipman')
-_filesrev=08445afa27c6aa0d4d8356b3808a0d25df0be834
+_filesrev=316da3b941c6c1b54afff9806a3c93ea4a2dad48
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-g3-kpe
 _commit=11befa20d8c009ee5eaeb44bb3b586de9390bfcd
 #"git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
@@ -30,9 +30,10 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G3.$pkgver"
         "sandbox-fips.patch::$_filesurl/patches/sandbox-fips.patch"
         "rust_1.48.patch::$_filesurl/patches/rust_1.48.patch"
         "remoting-name.patch::$_filesurl/patches/remoting-name.patch"
+        "cbindgen16.patch::$_filesurl/patches/cbindgen16.patch"
         )
 sha256sums=('SKIP'
-            '2677c0b45a2238efa01578475118a2f2abf19454231d0fa68bb83c818db1c3d8'
+            '6d37d08ee522173057918de8ad8394ba62b61a38c102cb03439d257a93e4b4a6'
             'bf06887c00bbc7176f452a3d18092e1b222731218e461782b2877cba938aaa26'
             'b9458af82a1e67497f1a42b69cb69b7a86a87727c35004a4089d207d10c7c2b4'
             'e48f932041ac826be48567d090a246bd897744262acca4dc07915abdc9a3e6b9'
@@ -43,7 +44,8 @@ sha256sums=('SKIP'
             '71386c2e269bd021c3b8c86b457101bdb730f76db3f2bbb91bf617109564a09c'
             '809c7dea066cb2ba70fb1c16c1b3dcd69c7e7715f354daf2f1c67af757e6d47b'
             '755e3e851ff550feaf279d8b3922a03c8d7e1ec78484eec1495b07fc243a3107'
-            'ac5199b397d1fef75d952eedbedcf3806b12f86b64ea29e5b34b541b0cfbe761')
+            'ac5199b397d1fef75d952eedbedcf3806b12f86b64ea29e5b34b541b0cfbe761'
+            'ea348e96620d6ba10f3d41fbb18def98847b6172b0028aacc26f099f47727796')
 
 prepare() {
 
@@ -57,6 +59,7 @@ prepare() {
   patch -Np1 -i ../sandbox-fips.patch
   patch -Np1 -i ../rust_1.48.patch
   patch -Np1 -i ../remoting-name.patch
+  patch -Np1 -i ../cbindgen16.patch
 
   cat >../mozconfig <<END
 export CC=clang
@@ -160,6 +163,31 @@ ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
   ./mach build
+
+# Build langpacks
+#   mkdir -p "${srcdir}"/waterfox-g3-kpe-$pkgver/langpacks/
+
+#   cat > ../mozconfig_LANG <<END
+# ac_add_options --with-app-name=waterfox-g3
+# ac_add_options --with-app-basename=Waterfox
+# ac_add_options --with-branding=browser/branding/waterfox
+# mk_add_options MOZ_OBJDIR=${PWD}/../obj_LANG
+# ac_add_options --prefix=/usr
+# ac_add_options --with-l10n-base=${PWD}/browser/locales/l10n
+# ac_add_options --disable-updater
+# END
+
+#   export JOBS=$(echo $(grep -c ^processor /proc/cpuinfo)\/2 | bc)
+#   sed -r '/^(ja-JP-mac|en-US|)$/d;s/ .*$//' ./browser/locales/shipped-locales \
+#     | xargs -n 1 -P $JOBS -I {} /bin/sh -c '
+#         locale=$1
+#         cp ../mozconfig_LANG ${PWD}/mozconfig_$locale
+#         sed -i "s|obj_LANG|obj_$locale|" ${PWD}/mozconfig_$locale
+#         export MOZCONFIG=${PWD}/mozconfig_$locale
+#         ./mach build config/nsinstall langpack-$locale
+#         cp -L ../obj_$locale/dist/linux-*/xpi/waterfox-g3-$(<browser/config/version.txt).$locale.langpack.xpi \
+#             ${PWD}/langpacks/langpack-$locale@l10n.waterfox.net.xpi
+# ' -- {}
 }
 
 package_waterfox-g3-kpe() {
@@ -217,6 +245,10 @@ END
   mkdir -p "$pkgdir/etc/waterfox-g3"
   cp "$srcdir/syspref.js" "$pkgdir/etc/waterfox-g3/"
   ln -Tsf /etc/waterfox-g3/syspref.js "$pkgdir/usr/lib/waterfox-g3/browser/defaults/preferences/syspref.js"
+
+  # Add langpacks
+  # mkdir -p "$pkgdir/usr/lib/waterfox-g3/browser/extensions/"
+  # cp "${srcdir}"/waterfox-g3-kpe-$pkgver/langpacks/*.xpi "$pkgdir/usr/lib/waterfox-g3/browser/extensions/"
 }
 
 # vim: set ts=2 sw=2 et syn=sh ft=sh:
