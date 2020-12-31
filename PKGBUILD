@@ -59,6 +59,8 @@ prepare() {
   patch -Np1 -i ../sandbox-fips.patch
   patch -Np1 -i ../rust_1.48.patch
   patch -Np1 -i ../remoting-name.patch
+
+  # See https://bugzilla.mozilla.org/show_bug.cgi?id=1684180
   patch -Np1 -i ../cbindgen16.patch
 
   cat >../mozconfig <<END
