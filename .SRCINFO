@@ -16,7 +16,7 @@ pkgbase = iicalc
 	options = !strip
 	options = !emptydirs
 	source = iicalc-2.4.10.deb::https://gitlab.com/TurboWafflz/ImaginaryInfinity-Calculator/-/jobs/artifacts/development/raw/iicalc.deb?job=debian%20packager
-	sha512sums = 26e4f3c660afea8615ac3929c446f5208bb6bd1aeacb4a22d680222a0c09d233119fb32e979ccb60e7d800af0145c4f9c201f75abdf4e0781f87c9eeee9477f1
+	sha512sums = 70add8b9f08892c1fb4c528f4370ec8fa85da010748c77456f9cf30d3eeeb5830f7277cf7ba058326adb48cdaae3faf864dc7df3f3baf8ae2ea14d84a14a1c90
 
 pkgname = iicalc
 
