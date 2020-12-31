@@ -1,6 +1,6 @@
 pkgbase = python-quaternionic
 	pkgdesc = Interpret NumPy arrays as quaternionic arrays with Numba acceleration
-	pkgver = 0.2.2
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://quaternionic.readthedocs.io
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-quaternionic
 	depends = python-numba
 	depends = python-numpy
 	depends = python-scipy
-	source = https://files.pythonhosted.org/packages/source/q/quaternionic/quaternionic-0.2.2.tar.gz
-	sha256sums = 5a76fb6b975dc7d0875768e98784e81fbbb07cf6271affc019d198c5a868bc4e
+	source = https://files.pythonhosted.org/packages/source/q/quaternionic/quaternionic-0.2.4.tar.gz
+	sha256sums = 5daebc0935a9a04f34f09b8840c561c76e8a357753e7052eb7624d518c747fbd
 
 pkgname = python-quaternionic
 
