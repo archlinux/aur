@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tuxpaint-git
-pkgver=3219.db09aacf
-pkgrel=2
+pkgver=3255.69f00331
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="A free drawing program designed for young children. Checkout from git"
 url="http://www.newbreedsoftware.com/tuxpaint/"
@@ -16,7 +16,7 @@ makedepends=('git' 'gperf' 'awk')
 options=('!makeflags')
 source=("git+https://git.code.sf.net/p/tuxpaint/tuxpaint" Makefile.patch)
 sha256sums=('SKIP'
-            'd122f6b6a523b5a3ecddd4fb20ba1550723f591c45ce3fcb359ba47e67b5b5b1')
+            '2995deb5e759bcb8aeedfed807abf59dd41bbbb2baf848174a7e3a63fcab7712')
 
 pkgver() {
   cd "${pkgname%-git}"
