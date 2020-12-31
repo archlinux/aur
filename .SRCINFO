@@ -1,0 +1,14 @@
+pkgbase = tclip
+	pkgdesc = Simple clipboard manager written in TCL/TK
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/thanoulis/tclip
+	arch = any
+	license = custom
+	depends = tcl
+	depends = tk
+	source = tclip-0.4.4.tar.gz::https://github.com/thanoulis/tclip/archive/v0.4.4.tar.gz
+	sha256sums = 06b7d4f1bcf19eb7b57a31e5991b876a350f5385232b588de89f27f26d680a03
+
+pkgname = tclip
+
