@@ -1,7 +1,7 @@
 # Maintainer: Mario Oenning <mo-son at mailbox dot org>
 
 pkgname=rpms
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Renoir power metrics server'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/moson-mo/$pkgname"
 license=('MIT')
 makedepends=('go')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('d488752a70a73b5db1558cc13607c1ecee7afc273f1787c0184f4099f215fc76')
+sha256sums=('840ed0a39087d518d7dce234668c3150e2c98c56d33f72cdd6a0bae42c2fd9b1')
 
 prepare(){
   cd "$pkgname-$pkgver"
