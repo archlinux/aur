@@ -2,7 +2,7 @@
 # pkg: pypi trakt-scrobbler
 pkgname=trakt-scrobbler
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
 arch=(any)
