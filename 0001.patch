@@ -1,0 +1,16 @@
+diff --git a/jami-qt.pro b/jami-qt.pro
+index 57df532..5f89524 100644
+--- a/jami-qt.pro
++++ b/jami-qt.pro
+@@ -102,9 +102,9 @@ unix {
+         INCLUDEPATH += $${LRC}/include/libringclient
+         LIBDIR = $${LRC}/lib
+     } else {
+-        INCLUDEPATH += $${LRC}/src
++	INCLUDEPATH += $${LRC}
+         isEmpty(LRCBUILD) {
+-            LIBDIR = $${LRC}/build
++	    LIBDIR = $${LRC}
+         } else {
+             LIBDIR = $${LRCBUILD}
+         }

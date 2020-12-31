@@ -1,6 +1,6 @@
 # Maintainer: Nick Econopouly <wry at mm dot st>
 pkgname=jami-client-qt-git
-pkgver=r271.7168d9f
+pkgver=r274.dc634fe
 pkgrel=1
 pkgdesc="Free and universal communication platform which preserves the users’ privacy and freedoms (QT client)"
 arch=('x86_64')
@@ -9,8 +9,8 @@ url="https://git.jami.net/savoirfairelinux/jami-client-qt"
 license=('GPL3')
 depends=('jami-daemon-git' 'libjamiclient-git' 'qt5-base')
 makedepends=('git' )
-source=("git+$url.git" '0000.patch' )
-sha512sums=(SKIP 5f0c26009723ef24867cc140c6284fc0e432a9817358e2ce4f912ab9471c5b5c818af7d3b90103659959c8fa810da5dd500722079ad7b99e4666d501b7080a55 )
+source=("git+$url.git" '0001.patch' )
+sha512sums=(SKIP 2772ecf10cc20e9183957324507dfcb047119452feb4d9610d69fdc9a41bce837726b70ff6d40b1e2ecd35f9daa391d767543315ffc5941b5227cd5b2927c9e3 )
 
 pkgver() {
   cd $srcdir/jami-client-qt
@@ -20,13 +20,13 @@ pkgver() {
 
 prepare() {
 	cd $srcdir/jami-client-qt
-	git apply ../0000.patch
+	git apply ../0001.patch
 	mkdir -p build
 }
 
 build() {
 	cd jami-client-qt/build
-	/usr/bin/qmake-qt5 ../jami-qt.pro "LRC=/usr/include/libringclient/"
+	/usr/bin/qmake-qt5 ../jami-qt.pro "LRC=/usr/include/libringclient"
 	make -j4
 }
 
