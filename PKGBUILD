@@ -5,7 +5,7 @@
 _pkgname=android-emulator
 pkgname="${_pkgname}-dummy"
 pkgver=30.0.5
-pkgrel=1
+pkgrel=2
 _pkgdesc='Google Android Emulator'
 pkgdesc="${_pkgdesc}, dummy package"
 arch=('x86_64')
