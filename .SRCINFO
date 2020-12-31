@@ -1,12 +1,16 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = heroic-games-launcher-bin
+	pkgdesc = HGL, a Native alternative Linux Launcher for Epic Games
+	pkgver = 0.3.1
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
+	url = https://github.com/flavioislima/HeroicGamesLauncher
 	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	license = GPL3
+	depends = xterm
+	depends = fuse2
+	noextract = heroic-0.3.1-beta.pacman
+	options = !strip
+	source = https://github.com/flavioislima/HeroicGamesLauncher/releases/download/0.3.1-beta/heroic-0.3.1-beta.pacman
+	md5sums = d3777aa3657b46fcb2a80783d6ede48a
 
-pkgname = yarxi
+pkgname = heroic-games-launcher-bin
 
