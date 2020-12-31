@@ -1,7 +1,9 @@
-# Maintainer: Matthew Murray <matt@compti.me>
+# Maintainer: Lorenz Steinert <lorenz@steinerts.de>
+# Contributor: Matthew Murray <matt@compti.me>
+
 pkgname=mautrix-whatsapp
-pkgver=0.1.4
-pkgrel=4
+pkgver=0.1.5
+pkgrel=1
 pkgdesc="A Matrix-WhatsApp puppeting bridge"
 arch=('any')
 license=('AGPL')
@@ -15,11 +17,11 @@ source=("${url}/archive/v${pkgver}.tar.gz"
         mautrix-whatsapp.service
         log-path.diff)
 backup=("etc/${pkgname}/mautrix-whatsapp.yaml")
-md5sums=('e9b863d139ff5ed024bec13413087c0a'
-         'f1fea8f4fcd101f1230031652de1c53c'
-         'd4ca118ddd0fce1e6ba4f4a4fa2dcca8'
-         '01bd1d42f312bebfeec6f8a71e714d1d'
-         '9b4a4e7d6265ecc83cdaa83a03f1bd5b')
+sha256sums=('0a63694ea4c2bd7e986fb8bedbf5511f10f7a907c400a1f98c7da7101ba7f2c7'
+            '4b7c57d474305138504f3cc651efb33b8861952dc2a8340148531cdac1eae3d9'
+            '0f4265ae93df6bb6e791cf698aacddc6b9eae833113225a6c477e5abd1261ff5'
+            'ed3c5f0ce46e217b21dc549c583a4055287c37f6d1a225aff34fd3599e9019f3'
+            'e27eea84a3df3380e26cfa485d383b19bb8b7cc8e0fd273e79df501b504160e4')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
