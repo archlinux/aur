@@ -1,6 +1,6 @@
 pkgbase = audacious-git
 	pkgdesc = Lightweight, advanced audio player focused on audio quality (git version)
-	pkgver = 4.0.beta1.r214.g411bcf5e3
+	pkgver = 4.1.beta1.r0.g050f6d12a
 	pkgrel = 1
 	epoch = 1
 	url = https://audacious-media-player.org/

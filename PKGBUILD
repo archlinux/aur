@@ -10,7 +10,7 @@ _buildstamp='Arch Linux'
 
 _pkgname=audacious
 pkgname="$_pkgname-git"
-pkgver=4.0.beta1.r214.g411bcf5e3
+pkgver=4.1.beta1.r0.g050f6d12a
 pkgrel=1
 epoch=1
 pkgdesc="Lightweight, advanced audio player focused on audio quality (git version)"
@@ -27,7 +27,7 @@ source=("git://github.com/audacious-media-player/$_pkgname.git")
 sha256sums=('SKIP')
 
 if [ "$_use_meson" = 1 ]; then
-    makedepends+=('meson')
+  makedepends+=('meson')
 fi
 
 pkgver() {
@@ -42,7 +42,7 @@ build() {
     arch-meson build -D buildstamp="$_buildstamp"
     meson compile -C build
   else
-    autoreconf -I m4
+    ./autogen.sh
     ./configure \
       --prefix=/usr \
       --with-buildstamp="$_buildstamp"
