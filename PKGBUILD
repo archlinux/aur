@@ -18,7 +18,7 @@ install=skywire.install
 _scripts=${_pkgname}-scripts
 #scripts need at least this commit to work if current build to develop fails
 #source=("git+${url}.git#commit=d156980280fdb2ddfc8765ff77cdd55c0b7e9d9c"
-source=("git+${url}.git##branch=${BRANCH:-develop}"
+source=("git+${url}.git" ##branch=${BRANCH:-develop}"
 "${_scripts}.tar.gz"  )
 #'PKGBUILD.sig' #disable signature checking for now
 #'PKGBUILD')
