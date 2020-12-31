@@ -1,7 +1,7 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=globonote
-pkgver=1.5.1
+pkgver=1.6
 pkgrel=1
 pkgdesc="Create sticky notes, to-do lists, reminders and other notes in one place."
 arch=(any)
@@ -19,6 +19,6 @@ package() {
 	install -Dm0644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
 
-md5sums=('9de3a4b5c518a33692460a709653e1b8'
+md5sums=('b1dde640182172a9541f86828e50617e'
          '6355ec8b0545e8853e3a441a7caaf200'
          '3d72cd1aa49d00c9820033201170bd17')
