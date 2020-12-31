@@ -19,7 +19,7 @@ source=("SuperSlicer::git+https://github.com/supermerill/SuperSlicer.git"
         "0001-wxgtk3-is-broken-on-wayland.patch")
 sha512sums=('SKIP'
             '8f75de56ba3e29b9c650d2946bd11afcf406a7fd42d2620ec44e4e76f6b64626de720190ce0f8be29ba7c48f714bfa0a71c45f868bdce7bc1ac7dbbc0e9e7583'
-            '7edae27ddd3bc06281da376f50f653d690fc962374467003e1497b09333aad515f6be47accf12d7b1a9b259948a59bfb4e4c1bc653b20809f1f43f7e6e9103d8'
+            'abfbd056be518b1b733cddef6c430cc3c4199d5df13067574dd3269cf35b798e11b43f55f1dfb57d6d8ee1da06882825fef0f7a170a9b069b95e9aea1ec8f31d'
             'acf35ebe467e9fb30f1b77d15348f1a7b82dcf45a5b829e375e972b5d6b49968603b3fa090c4d1f56e8b5148e2b820e79afa269da60ace70de1ceadcf6e820c5')
 
 pkgver()
