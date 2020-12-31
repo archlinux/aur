@@ -1,4 +1,5 @@
-# Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
+# Maintainer: Zoey Sheffield <me at zoey dot fyi>
+# Contributor: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname='boop-gtk-bin'
 pkgver='1.6.0'
