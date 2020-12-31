@@ -2,7 +2,7 @@
 # pkg: github openresty/lua-resty-lrucache
 pkgname=lua-resty-lrucache
 pkgver=0.10
-pkgrel=5
+pkgrel=6
 
 pkgdesc='Lua lrucache for nginx lua module'
 arch=('any')
