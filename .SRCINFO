@@ -1,0 +1,17 @@
+pkgbase = spline
+	pkgdesc = A design tool for 3D web experiences.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://spline.design
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = xdg-utils
+	provides = spline
+	source = https://cdn.spline.design/_assets/spline_0.3.0_amd64.zip
+	sha256sums = cd93a7527355014f74199c32ddea8d6c5a9462826efb34b0461e833f16e9f5fa
+
+pkgname = spline
+
