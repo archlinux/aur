@@ -1,4 +1,9 @@
 post_install() {
+  systemctl daemon-reload
+  if systemctl -q is-active todeskd.service ;then
+    systemctl restart todeskd.service
+  fi
+
   ECHOLEN=$(echo -e|awk '{print length($0)}')
   if [ ${ECHOLEN} = '0' ]
   then

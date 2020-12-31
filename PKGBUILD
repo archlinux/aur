@@ -2,7 +2,7 @@
 
 pkgname=todesk-bin
 _pkgname=${pkgname%-bin}
-pkgver=1.2.0
+pkgver=1.2.1b
 pkgrel=1
 pkgdesc="Remote control and team work"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 install="${_pkgname}.install"
 source=("https://update.todesk.com/${_pkgname}_${pkgver}.deb")
-sha256sums=('7d14ee8cfd3312e75be620b2f7441d81206827e3df01c12d3a9ed90c23140330')
+sha256sums=('9d77ccbb624e1a3ddc7bfb20c0967f35f8f7adfd35fee555f76586ce06e5294e')
 
 build() {
   mkdir -p ${srcdir}/build
