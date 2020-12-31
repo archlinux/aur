@@ -1,16 +1,16 @@
 # Maintainer: Abakus <java5@arcor.de>
 pkgname=nasm-git
-pkgver=20150726
+pkgver=20201104
 pkgrel=1
 pkgdesc="80x86 assembler designed for portability and modularity"
 arch=('i686' 'x86_64')
-url="http://nasm.sourceforge.net/"
+url="https://www.nasm.us/"
 depends=('glibc')
 makedepends=('git' 'asciidoc')
 license=('GPL')
-replaces=('nasm')
 provides=('nasm')
-source=('git://repo.or.cz/nasm.git')
+conflicts=('nasm')
+source=('git://github.com/netwide-assembler/nasm.git')
 md5sums=('SKIP')
 
 _gitname="nasm"
@@ -23,21 +23,15 @@ pkgver() {
 build() {
   cd "$srcdir/$_gitname"
 
-  #autoheader
-  #autoconf
   ./autogen.sh
   ./configure --prefix=/usr
-
-  # asciidoc/xmlto bugs out (report upstream)
-  sed -i 's/manpages rdf/rdf/' Makefile
-  sed -i 's/^.*\.1/#&/' Makefile
-
   make
+  make manpages
+  make strip
 }
 
 package() {
   cd "$srcdir/$_gitname"
-  mkdir -p "$pkgdir/usr/"{bin,man/man1}
   make prefix="$pkgdir/usr" install
 }
           
