@@ -1,15 +1,16 @@
 pkgbase = crewlink
 	pkgdesc = Free, open, Among Us Proximity Chat
-	pkgver = 1.1.6
-	pkgrel = 2
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://github.com/zbanks/CrewLink
 	arch = x86_64
 	license = GPL3
 	makedepends = yarn
-	source = https://github.com/zbanks/CrewLink/archive/v1.1.6-linux.tar.gz
-	source = crewlink
-	sha256sums = df424481df5a473e9abfd1ca47bd6f2cc79ab275726757097574d26f46723f87
-	sha256sums = d94f1847d9e7909de929dc7579cd2ab934872f20faee9822b4abc85c0b0afcc1
+	optdepends = sudo: crewlink-launcher support
+	source = https://github.com/zbanks/CrewLink/archive/v1.2.1-linux.tar.gz
+	source = crewlink-launcher
+	sha256sums = 4d7d77c6d2bb473e3d9e6c24fb98462d29321ff4ca4a8472875d3f43608e760f
+	sha256sums = 264849ad57fab753f9991399c39dbfb07e8996e0440b6f77d6e3470e38f71de6
 
 pkgname = crewlink
 
