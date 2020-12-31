@@ -4,7 +4,7 @@
 
 _pkgname=xclip
 pkgname=$_pkgname-git
-pkgver=0.13
+pkgver=r167.11cba61
 pkgrel=3
 pkgdesc='Command line interface to the X11 clipboard'
 url='https://github.com/astrand/xclip'
@@ -16,6 +16,11 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 source=("git+https://github.com/astrand/$_pkgname")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd ${pkgname}
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
 	cd "${srcdir}/${_pkgname}"
