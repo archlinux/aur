@@ -2,7 +2,7 @@
 
 pkgname=nanosaur
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Play as a cybernetic dinosaur in this third-person shooter"
 arch=(x86_64)
 url="https://github.com/jorio/Nanosaur"
@@ -10,7 +10,7 @@ license=('custom:pangea')
 # License sourced from http://www.pangeasoft.net/nano/nanosource.html
 # Decent guidelines for gaming packages: https://fedoraproject.org/wiki/SIGs/Games/Packaging
 depends=(sdl2 glu hicolor-icon-theme)
-makedepends=(cmake git libicns)
+makedepends=(cmake git)
 source=("$pkgname::git+https://github.com/jorio/Nanosaur.git#tag=v$pkgver"
         "git+https://github.com/jorio/Pomme.git"
         "git+https://github.com/jorio/Quesa.git"
@@ -37,10 +37,6 @@ prepare() {
 build() {
   cd "$pkgname"
   cmake --build build
-
-  # extract icon
-  cd cmake
-  icns2png -x Nanosaur.icns
 }
 
 package() {
@@ -58,7 +54,7 @@ package() {
   # desktop file & icon
   install -Dm644 -t "$pkgdir/usr/share/applications" "$srcdir/$pkgname.desktop"
   install -Dm644 \
-    "$srcdir/$pkgname/cmake/Nanosaur_512x512x32.png" \
+    "$srcdir/$pkgname/cmake/Nanosaur.png" \
     "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
 
   # documentation
