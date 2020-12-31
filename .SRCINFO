@@ -1,6 +1,6 @@
 pkgbase = aml
 	pkgdesc = Another Main Loop
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/any1/aml
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = aml
 	license = custom:ISC
 	makedepends = meson
 	makedepends = ninja
-	source = aml-v0.1.0.tar.gz::https://github.com/any1/aml/archive/v0.1.0.tar.gz
-	sha512sums = d22cc6b597b90fc9df830e7e444e0cd2aac87e0fd882c8daf3485b3d5825d2b5b86a32ecc612cb5d907e66a0aa22911f4aae3e9b9267c0278b115ff726879d80
+	source = aml-v0.2.0.tar.gz::https://github.com/any1/aml/archive/v0.2.0.tar.gz
+	sha512sums = 196cd891fdbaad47340d8b4ca9eb62a7f9e6b0969ae9ad744a3c9ea110a532691d53a1e39fde583bad0f8fdae4b51c3a4243bbdab65e952e5fc79ceb6efc3262
 
 pkgname = aml
 

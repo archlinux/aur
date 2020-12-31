@@ -1,7 +1,7 @@
 # Maintainer: Andri Yngvason <andri@yngvason.is>
 
 pkgname=aml
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Another Main Loop"
 arch=(x86_64 i686 aarch64 armv7h)
@@ -10,11 +10,11 @@ license=(custom:ISC)
 depends=()
 makedepends=(meson ninja)
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/any1/aml/archive/v$pkgver.tar.gz")
-sha512sums=('d22cc6b597b90fc9df830e7e444e0cd2aac87e0fd882c8daf3485b3d5825d2b5b86a32ecc612cb5d907e66a0aa22911f4aae3e9b9267c0278b115ff726879d80')
+sha512sums=('196cd891fdbaad47340d8b4ca9eb62a7f9e6b0969ae9ad744a3c9ea110a532691d53a1e39fde583bad0f8fdae4b51c3a4243bbdab65e952e5fc79ceb6efc3262')
 
 build() {
 	cd $pkgname-$pkgver
-	arch-meson build -Dtls=enabled
+	arch-meson build
 	ninja -C build
 }
 
