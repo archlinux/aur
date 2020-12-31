@@ -16,7 +16,7 @@ pkgbase = vte3-kinetic
 	depends = gnutls
 	depends = fribidi
 	depends = systemd-libs
-	source = git+https://gitlab.gnome.org/realh69/vte.git
+	source = git+https://gitlab.gnome.org/GNOME/vte.git
 	sha256sums = SKIP
 
 pkgname = vte3-kinetic

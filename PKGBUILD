@@ -4,7 +4,7 @@
 
 pkgbase=vte3-kinetic
 pkgname=(vte3-kinetic vte-kinetic-common)
-pkgver=0.63.0+realh+2+g0be332ad
+pkgver=0.63.0+realh
 pkgrel=1
 pkgdesc="vte3 patched to enable kinetic scrolling with libinput"
 url="https://wiki.gnome.org/Apps/Terminal/VTE"
@@ -12,7 +12,7 @@ arch=(x86_64)
 license=(LGPL)
 depends=(gtk3 pcre2 gnutls fribidi systemd-libs)
 makedepends=(gobject-introspection vala git gtk-doc gperf meson)
-source=("git+https://gitlab.gnome.org/realh69/vte.git")
+source=("git+https://gitlab.gnome.org/GNOME/vte.git")
 sha256sums=('SKIP')
 
 pkgver() {
