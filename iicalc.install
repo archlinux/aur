@@ -1,6 +1,9 @@
 post_install() {
 	chmod +x /usr/bin/iicalc
 	pip3 install -r /usr/share/iicalc/requirements.txt
+	#if type xdg-mime > /dev/null; then
+		#xdg-mime default iicalc.desktop x-scheme-handler/iicalc
+	#fi
 }
 
 post_upgrade() {
