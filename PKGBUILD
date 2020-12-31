@@ -1,7 +1,7 @@
 # Maintainer: rany <rany@disroot.org>
 pkgname=glowing-bear-electron
 pkgver=0.9.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A web client for Weechat (Electron version)"
 arch=(any)
 url="https://www.glowing-bear.org/"
@@ -29,6 +29,7 @@ package() {
 	done
 
 	# Setup /usr/lib/glowing-bear
+	mkdir -p "${pkgdir}/usr/lib/glowing-bear"
 	ln -sf /usr/share/webapps/glowing-bear "${pkgdir}/usr/lib/glowing-bear/webapp"
 
 	# Add the .desktop file
