@@ -2,7 +2,7 @@
 # pkg: pypi notify-send.py
 pkgname=notify-send-py
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A python script for sending desktop notifications from the shell"
 
 arch=(any)
