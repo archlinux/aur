@@ -1,0 +1,18 @@
+pkgbase = haskell-ghc-check
+	pkgdesc = detect mismatches between compile-time and run-time versions of the ghc api
+	pkgver = 0.5.0.3
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/ghc-check
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	depends = ghc-libs
+	depends = ghc
+	depends = haskell-ghc-paths
+	depends = haskell-safe-exceptions
+	depends = haskell-transformers-base
+	source = https://hackage.haskell.org/packages/archive/ghc-check/0.5.0.3/ghc-check-0.5.0.3.tar.gz
+	sha512sums = 539f82616afebbcc512c546b54b2937a9603d760537e1980348290d95878b2f4c9d1a09715329d5faead3b6662477d7ebcb6c098a4dbc9c865733ef1db917cf7
+
+pkgname = haskell-ghc-check
+
