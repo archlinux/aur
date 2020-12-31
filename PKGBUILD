@@ -1,7 +1,7 @@
 # Maintainer: rany <rany@disroot.org>
 pkgname=glowing-bear-electron
 pkgver=0.9.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A web client for Weechat (Electron version)"
 arch=(any)
 url="https://www.glowing-bear.org/"
@@ -26,7 +26,7 @@ package() {
 	for icon in 16 24 32 48 64 128 256; do
 		mkdir -p "${pkgdir}/usr/share/icons/hicolor/${icon}x${icon}/apps"
 		ln -sf /usr/share/webapps/glowing-bear/assets/img/glowing-bear.svg "${pkgdir}/usr/share/icons/hicolor/${icon}x${icon}/apps/glowing-bear.svg"
-		rsvg-convert -h 16 -w 16 /usr/share/webapps/glowing-bear/assets/img/glowing-bear.svg -o "${pkgdir}/usr/share/icons/hicolor/${icon}x${icon}/apps/glowing-bear.png"
+		rsvg-convert -h $icon -w $icon /usr/share/webapps/glowing-bear/assets/img/glowing-bear.svg -o "${pkgdir}/usr/share/icons/hicolor/${icon}x${icon}/apps/glowing-bear.png"
 	done
 	mkdir -p "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
 	ln -sf /usr/share/webapps/glowing-bear/assets/img/glowing_bear_128x128.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/glowing-bear.png"
