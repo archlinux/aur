@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=nanosaur
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Play as a cybernetic dinosaur in this third-person shooter"
 arch=(x86_64)
