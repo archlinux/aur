@@ -1,7 +1,7 @@
 # Maintainer: Alexis BRENON <brenon.alexis+arch at gmail dot com>
 pkgname=sweethome3d-3dmodels-katorlegaz
-pkgver=1.7.1
-pkgrel=2
+pkgver=1.8
+pkgrel=1
 pkgdesc="Free 3D models advertised on SweetHome3D website"
 arch=('any')
 url="http://www.sweethome3d.com/freeModels.jsp"
@@ -17,8 +17,8 @@ optdepends=("sweethome3d: Models rendering"
 "sweethome3d-textures-contributions: More textures"
 "sweethome3d-textures-scopia: More textures")
 install="$pkgname.install"
-source=("http://prdownloads.sourceforge.net/sweethome3d/3DModels-KatorLegaz-1.7.1.zip")
-sha1sums=("0c89e68b9422f166c878daa87406d97004517c53")
+source=("http://prdownloads.sourceforge.net/sweethome3d/3DModels-KatorLegaz-1.8.zip")
+sha1sums=("888df5d968e45cad367618d709cd53d345cb3d75")
 
 package() {
     mkdir -p $pkgdir/usr/share/eteks/sweethome3d/furniture/3dmodels-katorlegaz
