@@ -1,5 +1,4 @@
-# Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
-# Contributor: Felix Yan <felixonmars@archlinux>
+# Maintainer: Gasparotto Mattia <gasmat04@gmail.com>
 
 _pkgname=python-gammu
 pkgname=python2-gammu
@@ -21,7 +20,6 @@ build() {
 }
 
 check() {
-  # tests can be flaky on slower hardware due to timing
   cd "${srcdir}"/python-gammu-$pkgver
   python2 setup.py test
 }
