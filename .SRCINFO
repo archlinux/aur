@@ -1,0 +1,22 @@
+pkgbase = reclass.net-bin
+	pkgdesc = A reverse-engineering tool for dissecting data structures in memory
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/ReClassNET/ReClass.NET
+	arch = x86_64
+	license = MIT
+	makedepends = unrar
+	depends = mono
+	depends = kdesu
+	provides = reclass.net
+	conflicts = reclass.net
+	noextract = ReClass.NET.rar
+	source = https://github.com/ReClassNET/ReClass.NET/releases/download/v1.2/ReClass.NET.rar
+	source = reclass.net
+	source = reclass.net.desktop
+	sha256sums = 3822bf8974df152cae17714ee484fdcc3ede5c1e26bc159c7c9e9e62e60b9f46
+	sha256sums = 1648b7d1747bcb94e18063d79c08d087dd8ce06e6b0addb8fbb6f8e5568f7146
+	sha256sums = 2252b64376c6b8c42c140b9888993f39a281502ae3d9ecdb736d3e4ec72f9bc9
+
+pkgname = reclass.net-bin
+

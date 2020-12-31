@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.2
+Name=Reclass.NET
+Exec=/usr/bin/reclass.net
+Terminal=false
+Categories=Development;Utility;
+Comment=A reverse-engineering tool for dissecting data structures in memory
