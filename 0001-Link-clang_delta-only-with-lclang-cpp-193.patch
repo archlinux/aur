@@ -1,0 +1,82 @@
+From e9bb8686c5ef83a961f63744671c5e70066cba4e Mon Sep 17 00:00:00 2001
+From: Martin Liska <mliska@suse.cz>
+Date: Mon, 11 Nov 2019 09:30:43 +0100
+Subject: [PATCH] Link clang_delta only with -lclang-cpp (#193).
+
+The change is needed to link clang_delta with LLVM version 9.
+---
+ clang_delta/CMakeLists.txt | 19 +------------------
+ clang_delta/Makefile.am    |  8 +-------
+ clang_delta/Makefile.in    |  7 +------
+ 3 files changed, 3 insertions(+), 31 deletions(-)
+
+diff --git a/clang_delta/CMakeLists.txt b/clang_delta/CMakeLists.txt
+index a94ec0d..a7dae12 100644
+--- a/clang_delta/CMakeLists.txt
++++ b/clang_delta/CMakeLists.txt
+@@ -86,24 +86,7 @@ llvm_map_components_to_libnames(LLVM_LIBS
+ )
+ 
+ set(CLANG_LIBS
+-  clangStaticAnalyzerFrontend
+-  clangStaticAnalyzerCheckers
+-  clangStaticAnalyzerCore
+-  clangFrontendTool
+-  clangFrontend
+-  clangDriver
+-  clangSerialization
+-  clangCodeGen
+-  clangParse
+-  clangSema
+-  clangAnalysis
+-  clangRewriteFrontend
+-  clangRewrite
+-  clangAST
+-  clangBasic
+-  clangEdit
+-  clangLex
+-  clangARCMigrate
++  clang-cpp
+ )
+ 
+ add_executable(clang_delta
+diff --git a/clang_delta/Makefile.am b/clang_delta/Makefile.am
+index 1bb3569..155da98 100644
+--- a/clang_delta/Makefile.am
++++ b/clang_delta/Makefile.am
+@@ -127,13 +127,7 @@ clang_delta_CXXFLAGS = \
+ # In LLVM 3.5, `llvm-config --ldflags' does not contain the list of system
+ # libraries.  So probably, we could move `LLVMLDFLAGS' back to the definition
+ # of `clang_delta_LDFLAGS'.  I'll do that later.
+-clang_delta_LDADD = \
+-	-lclangStaticAnalyzerFrontend -lclangStaticAnalyzerCheckers \
+-	-lclangStaticAnalyzerCore \
+-	-lclangFrontendTool -lclangFrontend -lclangDriver -lclangSerialization \
+-	-lclangCodeGen -lclangParse -lclangSema -lclangAnalysis \
+-	-lclangRewriteFrontend -lclangRewrite -lclangAST -lclangBasic -lclangEdit -lclangLex \
+-	-lclangARCMigrate \
++clang_delta_LDADD = -lclang-cpp \
+ 	$(LLVMLIBS) \
+ 	$(CLANG_LDFLAGS) \
+ 	$(LLVMLDFLAGS)
+diff --git a/clang_delta/Makefile.in b/clang_delta/Makefile.in
+index 5bd6e56..b915946 100644
+--- a/clang_delta/Makefile.in
++++ b/clang_delta/Makefile.in
+@@ -575,12 +575,7 @@ clang_delta_CXXFLAGS = \
+ # libraries.  So probably, we could move `LLVMLDFLAGS' back to the definition
+ # of `clang_delta_LDFLAGS'.  I'll do that later.
+ clang_delta_LDADD = \
+-	-lclangStaticAnalyzerFrontend -lclangStaticAnalyzerCheckers \
+-	-lclangStaticAnalyzerCore \
+-	-lclangFrontendTool -lclangFrontend -lclangDriver -lclangSerialization \
+-	-lclangCodeGen -lclangParse -lclangSema -lclangAnalysis \
+-	-lclangRewriteFrontend -lclangRewrite -lclangAST -lclangBasic -lclangEdit -lclangLex \
+-	-lclangARCMigrate \
++	-lclang-cpp \
+ 	$(LLVMLIBS) \
+ 	$(CLANG_LDFLAGS) \
+ 	$(LLVMLDFLAGS)
+-- 
+2.29.2
+
