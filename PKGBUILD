@@ -5,7 +5,7 @@ pkgname=( python-$_name python2-$_name )
 pkgbase=python-$_name
 
 pkgver=2.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Null values and sentinels like (but not) None, False & True'
 
 arch=(any)
