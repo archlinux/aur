@@ -2,9 +2,9 @@
 
 _pkgname=youtube-viewer
 pkgname=gtk-youtube-viewer-git
-pkgver=3.8.0.r0.g887fdc8
+pkgver=3.8.1.r0.g766be56
 pkgrel=1
-pkgdesc="GTK+ application for searching and streaming videos from YouTube."
+pkgdesc="A lightweight YouTube client for Linux (CLI/GTK)"
 arch=('any')
 url="https://github.com/trizen/${_pkgname}"
 license=('Artistic2.0')
