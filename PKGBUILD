@@ -1,30 +1,28 @@
-# Maintainer: Justin Coffman <jcoffman@cipherize.net>
-# Contributor: Justin Coffman <jcoffman@cipherize.net>
+# Maintainer: Justin Coffman <jcoffman@foxide.io>
+# Contributor: Justin Coffman <jcoffman@foxide.io>
 
 pkgname=tinyfugue
 pkgver=5.0
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="a flexible, screen-oriented MUD client, for use with any type of MUD"
-url="https://github.com/cipherize/tinyfugue"
+url="https://github.com/tinyfugue/tinyfugue"
 license=('GPL3')
 
 depends=('openssl' 'pcre')
 
-source=("$pkgname-v$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz"
-        "$pkgname-v$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz.asc")
+source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
 
-b2sums=('668e4ce90c7629bf05366260e3a7f16c336bc524fc9d4505a304bad6949a4e05df21e877d5ff1d3c6032cddaf18139cd7bc2abd59aaeb9502d17c106c75b2a1f'
-        'SKIP')
-
-validpgpkeys=('28F768BE4B746F79A6D3288302FBEAF81EAD18C3')
+b2sums=('e701989c3e1df192c44047995907d27bc6c3286a98bafbb8c803126b973fc4b8fd105c2d1efb211ca7b2f9656f460db4f67d8654e78c0e1693348803cca2e699')
 
 build() {
+    cd "$pkgname-$pkgver"
     ./configure --prefix=/usr
     make
 }
 
 package() {
+    cd "$pkgname-$pkgver"
     mkdir "$pkgdir/usr"
     make prefix="$pkgdir/usr" -j1 install
 

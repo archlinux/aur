@@ -2,17 +2,14 @@ pkgbase = tinyfugue
 	pkgdesc = a flexible, screen-oriented MUD client, for use with any type of MUD
 	pkgver = 5.0
 	pkgrel = 1
-	url = https://github.com/cipherize/tinyfugue
+	url = https://github.com/tinyfugue/tinyfugue
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = openssl
 	depends = pcre
-	source = tinyfugue-v5.0.tar.gz::https://github.com/cipherize/tinyfugue/releases/download/v5.0/tinyfugue-v5.0.tar.gz
-	source = tinyfugue-v5.0.tar.gz.asc::https://github.com/cipherize/tinyfugue/releases/download/v5.0/tinyfugue-v5.0.tar.gz.asc
-	validpgpkeys = 28F768BE4B746F79A6D3288302FBEAF81EAD18C3
-	b2sums = 668e4ce90c7629bf05366260e3a7f16c336bc524fc9d4505a304bad6949a4e05df21e877d5ff1d3c6032cddaf18139cd7bc2abd59aaeb9502d17c106c75b2a1f
-	b2sums = SKIP
+	source = https://github.com/tinyfugue/tinyfugue/archive/v5.0.tar.gz
+	b2sums = e701989c3e1df192c44047995907d27bc6c3286a98bafbb8c803126b973fc4b8fd105c2d1efb211ca7b2f9656f460db4f67d8654e78c0e1693348803cca2e699
 
 pkgname = tinyfugue
 
