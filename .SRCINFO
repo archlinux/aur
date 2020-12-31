@@ -1,7 +1,7 @@
 pkgbase = android-emulator-dummy
 	pkgdesc = Google Android Emulator, dummy package
 	pkgver = 30.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.android.com/studio/releases/emulator.html
 	install = android-emulator-dummy.install
 	arch = x86_64
