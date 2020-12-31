@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://github.com/civetweb/civetweb"
 license=('MIT')
 makedepends=('git')
-source=('https://github.com/civetweb/civetweb.git')
+source=('git+https://github.com/civetweb/civetweb.git')
 md5sums=('SKIP')
 
 build() {
