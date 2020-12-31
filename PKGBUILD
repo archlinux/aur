@@ -22,10 +22,10 @@ build() {
   go build -o "$pkgname" .
 }
 
-check() {
-  cd "$pkgname-$pkgver"
-  go test ./...
-}
+# check() {
+#   cd "$pkgname-$pkgver"
+#   go test ./...
+# }
 
 package() {
   cd "$pkgname-$pkgver"
