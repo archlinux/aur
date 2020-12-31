@@ -3,7 +3,7 @@
 _gemname=sinatra-contrib
 pkgname=ruby-$_gemname
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Collection of useful Sinatra extensions'
 arch=(any)
 url='http://sinatrarb.com/contrib/'
@@ -11,7 +11,6 @@ license=(MIT)
 depends=(ruby
          ruby-sinatra
          ruby-mustermann
-         ruby-backports
          ruby-tilt
          ruby-rack-protection
          ruby-multi_json)

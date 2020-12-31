@@ -1,7 +1,7 @@
 pkgbase = ruby-sinatra-contrib
 	pkgdesc = Collection of useful Sinatra extensions
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sinatrarb.com/contrib/
 	arch = any
 	license = MIT
@@ -9,7 +9,6 @@ pkgbase = ruby-sinatra-contrib
 	depends = ruby
 	depends = ruby-sinatra
 	depends = ruby-mustermann
-	depends = ruby-backports
 	depends = ruby-tilt
 	depends = ruby-rack-protection
 	depends = ruby-multi_json
