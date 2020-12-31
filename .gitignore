@@ -1,5 +1,7 @@
-src/*
-pkg/*
-gtg-git/*
+# Ignore everything
+*
 
-gtg-git-r*
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO

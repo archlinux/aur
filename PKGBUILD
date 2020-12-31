@@ -1,44 +1,41 @@
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Baptiste Grenier <baptiste@bapt.name>
 # Contributor: Pablo Olmos de Aguilera Corradini <pablo <at] glatelier (dot} org>
-# Maintainer: Sander van Kasteel <info at sandervankasteel dot nl>
+# Contributor: Sander van Kasteel <info at sandervankasteel dot nl>
 pkgname=gtg-git
-pkgver=r5730.6623731f
+pkgver=0.4.r254.ge7130c6b
 pkgrel=1
-pkgdesc="Personal GTD like organizer for the GNOME desktop environment. Git version."
+pkgdesc="Getting Things GNOME! is a personal tasks and TODO-list items organizer for GNOME"
 url="https://wiki.gnome.org/Apps/GTG"
 arch=('x86_64')
 license=('GPL')
-depends=('pygtk' 'python-gobject' 'python-configobj'
-'hicolor-icon-theme' 'desktop-file-utils' 'python2-gnomekeyring'
-'python-liblarch-git' 'python-cairo' 'python-pyxdg' 'python-lxml')
-makedepends=('git' 'python-gobject' 'meson')
-optdepends=(
-'pdftk: for Export and print plugin'
-'python-cheetah3: for Export and print plugin'
-'python2-libappindicator: for Notification area plugin (python-appindicator)'
-'texlive-bin: for Export and print plugin (for pdflatex)'
-'texlive-core: for Export and print plugin (for pdfjam)'
-)
-install="${pkgname}.install"
-source=("${pkgname}::git+https://github.com/getting-things-gnome/gtg")
+depends=('python-liblarch' 'python-lxml')
+makedepends=('git' 'meson')
+optdepends=('python-cheetah3: for the Export and print plugin'
+            'texlive-bin: pdflatex, for the Export and print plugin'
+            'texlive-core: pdfjam, for the Export and print plugin'
+            'pdftk: for the Export and print plugin')
+checkdepends=('python-nose' 'python-mock')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=('git+https://github.com/getting-things-gnome/gtg.git')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/${pkgname%-git}"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
-  arch-meson -Dprofile=development build
+	arch-meson "${pkgname%-git}" build
+	meson compile -C build
+}
 
-  ninja -C build
+check() {
+	cd "$srcdir/${pkgname%-git}"
+	python run-tests
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  DESTDIR="$pkgdir" ninja -C build install
-
-  install -d "${pkgdir}"/usr
+	DESTDIR="$pkgdir" meson install -C build
 }
-
-sha256sums=('SKIP')
