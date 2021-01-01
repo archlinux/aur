@@ -1,3 +1,4 @@
+From 6fe02b8d6b5d1a0400bf4f5f1e69327b138d4f8b Mon Sep 17 00:00:00 2001
 From: Alberto Milone <alberto.milone@canonical.com>
 Date: Mon, 13 Jul 2020 14:04:41 +0200
 Subject: [PATCH 1/1] Add support for Linux 5.8
