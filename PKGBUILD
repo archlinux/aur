@@ -1,8 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=nthash
-pkgver=0.1.6
-pkgrel=3
+pkgver=0.1.7
+pkgrel=1
 pkgdesc='Generate NT Hash'
 arch=('i686' 'x86_64')
 url='https://github.com/eworm-de/nthash'
@@ -12,7 +12,7 @@ makedepends=('markdown')
 license=('GPL')
 validpgpkeys=('BD84DE71F493DF6814B0167254EDC91609BC9183')
 source=("https://www.eworm.de/download/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.asc})
-sha256sums=('7a8700ac0d29f83569d5ce008a323a2b1d753721a102284a721c5bd16294c30d'
+sha256sums=('6f7fe103f75012dc109faa23bd57dc928854e94f2884c8d693bd93f426ebaa41'
             'SKIP')
 
 build() {
