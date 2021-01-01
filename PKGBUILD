@@ -1,6 +1,6 @@
 pkgname=bird-git
 pkgver=r3666.455c13dc
-pkgrel=1
+pkgrel=2
 pkgdesc='RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon'
 arch=('x86_64')
 url='https://bird.network.cz/'
@@ -16,12 +16,12 @@ md5sums=('SKIP'
          '69221e063a3f07dcad519d5eeacaae75')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/bird"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/bird"
   autoreconf -ifv
   CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
   ./configure \
@@ -34,7 +34,7 @@ build() {
 }
 
 package () {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/bird"
   make \
     prefix="$pkgdir/usr" \
     sysconfdir="$pkgdir/etc" \
