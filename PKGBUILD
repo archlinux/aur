@@ -4,7 +4,7 @@
 pkgname=plata-theme-slim
 _reponame=plata-theme
 pkgver=0.9.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A GTK theme based on Material Design Refresh, built with most options disabled.'
 arch=('any')
 url='https://gitlab.com/tista500/plata-theme'
@@ -28,7 +28,7 @@ build() {
 	--disable-flashback \
 	--disable-xfce \
 	--disable-mate
-  make # Using GNU Parallel
+  make -j1 # Using GNU Parallel
 }
 
 package() {
@@ -36,5 +36,5 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -Dm 644 LICENSE_CC_BY_SA4 -t "$pkgdir"/usr/share/licenses/"$_reponame"/
+  install -Dm 644 LICENSE_CC_BY_SA4 -t "$pkgdir"/usr/share/licenses/"$pkgname"/
 }
