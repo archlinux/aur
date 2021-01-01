@@ -2,7 +2,7 @@
 
 pkgname=yabridge-git
 _pkgname=yabridge
-pkgver=2.2.1.r468.g775ed62
+pkgver=2.2.1.r492.g18bfc5c
 pkgrel=1
 pkgdesc="Yet Another VST bridge, run Windows VST2 plugins under Linux"
 arch=('x86_64')
@@ -41,7 +41,15 @@ build() {
   # bitbridge, then you can leave out the dependency for it and set the
   # `use-bitbridge` option to false.
   # You can also add `-Dwith-vst3=false` to disable building with VST3 support.
-  meson setup --cross-file cross-wine.conf --buildtype=release -Dwith-bitbridge=true build
+  # If building takes up too much RAM then you can decrease the unity size or
+  # completely disable unity builds.
+  meson setup \
+    --cross-file cross-wine.conf \
+    --buildtype=release \
+    --unity=on \
+    --unity-size=1000 \
+    -Dwith-bitbridge=true \
+    build
 
   ninja -C build
 }
