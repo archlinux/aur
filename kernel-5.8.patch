@@ -1,3 +1,7 @@
+From: Alberto Milone <alberto.milone@canonical.com>
+Date: Mon, 13 Jul 2020 14:04:41 +0200
+Subject: [PATCH 1/1] Add support for Linux 5.8
+
 diff --git a/kernel/common/inc/nv-linux.h b/kernel/common/inc/nv-linux.h
 index ac5bb95..3d2f0b7 100644
 --- a/kernel/common/inc/nv-linux.h
