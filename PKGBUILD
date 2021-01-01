@@ -6,7 +6,7 @@
 
 pkgname=firehol
 pkgver=3.1.7
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="The iptables stateful packet filtering firewall builder."
 url="http://firehol.sourceforge.net"
@@ -25,7 +25,7 @@ prepare() {
 build() {
 	cd "$pkgname-$pkgver"
 
-	./configure \
+	PING6="/usr/bin/ping -6" ./configure \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
 		--sysconfdir=/etc \

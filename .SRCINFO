@@ -1,7 +1,7 @@
 pkgbase = firehol
 	pkgdesc = The iptables stateful packet filtering firewall builder.
 	pkgver = 3.1.7
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = http://firehol.sourceforge.net
 	arch = any
