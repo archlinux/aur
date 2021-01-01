@@ -1,12 +1,12 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
-pkgname=instamenu-extra 
+pkgname=instamenu-extra
 pkgver=2021.01.01
 pkgrel=1
 pkgdesc="addons for instamenu"
 url="https://github.com/TheCynicalTeam/$pkgname"
 arch=('any')
-license=('GPL3')
+license=('CC BY-NC-SA 4.0')
 depends=('autorandr' 'instamenu' 'instamenu-schemas')
 provides=($pkgname)
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
