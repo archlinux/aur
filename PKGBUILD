@@ -1,8 +1,8 @@
 # Maintainer: Dmytro Meleshko <dmytro dot meleshko at gmail dot com>
 _pkgname=cc-map-editor
 pkgname="${_pkgname}-bin"
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="A Map Editor for the game CrossCode"
 arch=('any')
 url='https://github.com/CCDirectLink/crosscode-map-editor'
@@ -18,7 +18,7 @@ source=("https://github.com/CCDirectLink/crosscode-map-editor/releases/download/
         "${pkgname}-patch-desktop-entry.awk"
         "${pkgname}-disable-autoupdates.patch")
 noextract=("${_appimage_file}")
-sha256sums=('a8169650ea2924fe763540f718d583c40a3ffe1fac25c6cfc1114ffbbd64d035'
+sha256sums=('ddc3f25396e5a4d6db6c657f122cc51ffa3cc438e1ed0e3bfc5f0d987eed8127'
             'a406579cd136771c705c521db86ca7d60a6f3de7c9b5460e6193a2df27861bde'
             'c03a2ede59f0476176c1a32d28ac19e907e76b1dbfdffa93d9eefa40d868506b'
             '44f1235757748bf2744f69be9c08abfc66859aa34cac93c3a477b5eb3d233abc')
