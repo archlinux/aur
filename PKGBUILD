@@ -2,7 +2,7 @@
 
 pkgname=python-glue-vispy-viewers
 _pyname=glue-vispy-viewers
-pkgver=0.11
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Linked Data Visualizations Across Multiple Files -- core library"
 arch=('i386' 'x86_64')
@@ -10,8 +10,8 @@ url="http://glueviz.org/"
 license=('CUSTOM')
 depends=('python' 'python-numpy' 'python-opengl' 'python-qtpy' 'python-scipy' 'python-astropy' 'python-glue-core')
 makedepends=('python-setuptools')
-source=(https://files.pythonhosted.org/packages/d9/98/bbc185c3f99d8503d5dd08a3af5281b4cd029ec503d50d3e397f5b259082/${_pyname}-${pkgver}.tar.gz)
-sha256sums=('252bb439a3ed733d817bdf2d5ea6456ceceb7234c17ac319846e6c09c2975ae3')
+source=(https://files.pythonhosted.org/packages/ac/62/8ca0d4693f94bff1764185d876ed0b896fbe79bbd4c3fcb1c69683b52a4d/${_pyname}-${pkgver}.tar.gz)
+sha256sums=('6e0fc7f0e0c1d62756953582830357dcccf8bc8f61ea0fb7613c08df91f59671')
 
 package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
