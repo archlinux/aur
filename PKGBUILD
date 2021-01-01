@@ -9,7 +9,6 @@ pkgdesc='A GTK theme based on Material Design Refresh, built with most options d
 arch=('any')
 url='https://gitlab.com/tista500/plata-theme'
 license=('GPL2' 'CCPL')
-depends=('gtk3' 'gtk2')
 makedepends=('git' 'inkscape' 'libxml2' 'parallel' 'sassc')
 optdepends=('gtk-engine-murrine: For GTK2 theming'
             'ttf-roboto: Recommended font')
