@@ -1,18 +1,18 @@
 # Maintainer: Michael Taboada <michael@2mb.solutions>
-# Contributer: Storm Dragon <stormdragon2976@gmail.com>
+# Maintainer: Storm Dragon <stormdragon2976@gmail.com>
 pkgname=horseshoes
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Audio only game of horseshoes."
 arch=('armv7h' 'aarch64' 'i686' 'x86_64')
-url="https://github.com/2mb-solutions/horseshoes"
+url="https://2mb.games/games/horseshoes"
 license=('MIT')
 depends=('speech-dispatcher' 'allegro')
-makedepends=('gcc' 'git')
+makedepends=('git')
 optdepends=('espeak: TTS support'
 	'festival: TTS support'
 	'flite: TTS support')
-source=("git+https://github.com/2mb-solutions/$pkgname.git"
+source=("git+https://git.2mb.codes/~lilmike/${pkgname}"
         "$pkgname.desktop"
         "$pkgname.sh")
 md5sums=('SKIP'
