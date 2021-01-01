@@ -1,0 +1,12 @@
+pkgbase = hillstone-vpn
+	pkgdesc = The Hillstone Secure Connect VPN client for Linux.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://docs.hillstonenet.com/en/Content/7_VPN/SSL_VPN_Client_L.htm#
+	arch = x86_64
+	license = unknown
+	source = https://github.com/JackMoriarty/HillstoneVPN/releases/download/v1.0.0/HillstoneVPN-1.0.0.tar.gz
+	md5sums = bb0301e31bdaf7c6bcbafae8e74cd3d6
+
+pkgname = hillstone-vpn
+
