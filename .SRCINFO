@@ -1,6 +1,6 @@
 pkgbase = extract-artwork
 	pkgdesc = extract artwork from media files
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/eworm-de/extract-artwork
 	arch = i685
@@ -8,10 +8,10 @@ pkgbase = extract-artwork
 	license = GPL
 	makedepends = markdown
 	depends = ffmpeg
-	source = https://www.eworm.de/download/extract-artwork/extract-artwork-0.0.2.tar.xz
-	source = https://www.eworm.de/download/extract-artwork/extract-artwork-0.0.2.tar.xz.asc
+	source = https://www.eworm.de/download/extract-artwork/extract-artwork-0.0.3.tar.xz
+	source = https://www.eworm.de/download/extract-artwork/extract-artwork-0.0.3.tar.xz.asc
 	validpgpkeys = BD84DE71F493DF6814B0167254EDC91609BC9183
-	sha256sums = c259cf6666de72b6622b1bc64a80bd1c42ec8a398a2691a66d05e1ad6e58bca7
+	sha256sums = a8d1d26ced98db1412f462274b0a0a93f0572f23042700d5576927c8fb31bf23
 	sha256sums = SKIP
 
 pkgname = extract-artwork

@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=extract-artwork
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc='extract artwork from media files '
 arch=('i685' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('markdown')
 license=('GPL')
 validpgpkeys=('BD84DE71F493DF6814B0167254EDC91609BC9183')
 source=("https://www.eworm.de/download/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.asc})
-sha256sums=('c259cf6666de72b6622b1bc64a80bd1c42ec8a398a2691a66d05e1ad6e58bca7'
+sha256sums=('a8d1d26ced98db1412f462274b0a0a93f0572f23042700d5576927c8fb31bf23'
             'SKIP')
 
 build() {
