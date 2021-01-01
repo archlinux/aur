@@ -1,0 +1,15 @@
+pkgbase = libretextus
+	pkgdesc = Bible Accordance Application
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://libretextus.github.io
+	arch = any
+	license = CC0
+	depends = gtkmm3
+	depends = rapidxml
+	depends = boost
+	source = libretextus-0.2::git://github.com/LibreTextus/LibreTextus.git
+	md5sums = SKIP
+
+pkgname = libretextus
+
