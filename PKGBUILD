@@ -3,7 +3,7 @@
 # Contributor: Holzhaus <jholthuis@mixxx.org>
 
 pkgname=mixxx_beta-git
-pkgver=r7886
+pkgver=r7918
 pkgrel=1
 pkgdesc="Digital DJ mixing software. 2.3 (beta) branch."
 arch=('i686' 'x86_64')
@@ -11,9 +11,8 @@ url="http://www.mixxx.org/"
 license=('GPL2')
 groups=('pro-audio')
 depends=('chromaprint' 'flac' 'hidapi' 'lame' 'libsndfile' 'libmodplug' 'libid3tag' 'liblilv-0.so' 'libmad' 'libmp4v2' 'libportaudio.so' 
-'libportmidi.so' 'librubberband.so' 'libtheora' 'opusfile' 'protobuf' 'qt5-script'
-'qt5-svg' 'qt5-x11extras' 'qtkeychain' 'soundtouch' 'speex' 'taglib' 'upower' 'libebur128' 'qt5-declarative')
-makedepends=('git' 'glu' 'lv2' 'qt5-tools' 'cmake' 'vamp-plugin-sdk')
+'libportmidi.so' 'librubberband.so' 'libtheora' 'opusfile' 'protobuf' 'qt5-svg' 'qt5-x11extras' 'qtkeychain' 'soundtouch' 'speex' 'taglib' 'upower' 'libebur128' 'qt5-declarative' 'qt5-script')
+makedepends=('git' 'glu' 'lv2' 'qt5-tools' 'cmake' 'vamp-plugin-sdk' 'wavpack' 'ttf-opensans' 'ttf-ubuntu-font-family')
 provides=('mixxx')
 conflicts=('mixxx')
 source=("${pkgname%-*}::git+https://github.com/mixxxdj/mixxx.git#branch=2.3")
@@ -48,8 +47,7 @@ build() {
 
 package() {
 	mkdir -p $pkgdir/usr/lib/udev/rules.d/
-	cp $srcdir/${pkgname%-*}/res/linux/mixxx-usb-uaccess.rules $pkgdir/usr/lib/udev/rules.d/99-mixxx-usb-uaccess.rules
-	chmod a+r $pkgdir/usr/lib/udev/rules.d/99-mixxx-usb-uaccess.rules
+	install -Dm644 $srcdir/${pkgname%-*}/res/linux/mixxx-usb-uaccess.rules $pkgdir/usr/lib/udev/rules.d/99-mixxx-usb-uaccess.rules
 	DESTDIR="$pkgdir" cmake --install $srcdir/${pkgname%-*}/cmake_build
 }
 
