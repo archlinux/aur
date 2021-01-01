@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Projucer
+GenericName=Code manager and editor
+Comment=Cross-platform project manager and C++ code editor.
+Exec=env "LD_PRELOAD=libcurl.so.3" Projucer
+Icon=Projucer
+Terminal=false
+Type=Application
+Categories=Development;

@@ -1,0 +1,21 @@
+pkgbase = juce-bin
+	pkgdesc = Cross-platform c++ framework for creating audio applications
+	pkgver = 6.0.5
+	pkgrel = 1
+	url = https://github.com/juce-framework/JUCE
+	install = juce-bin.install
+	arch = x86_64
+	groups = pro-audio
+	license = custom
+	depends = alsa-lib
+	depends = freetype2
+	depends = libglvnd
+	depends = java-runtime
+	optdepends = python
+	source = https://github.com/juce-framework/JUCE/releases/download/6.0.5/juce-6.0.5-linux.zip
+	source = Projucer.desktop
+	md5sums = 0599252dc7ee0e54040e18be5c05b5d1
+	md5sums = 1f41df4e862e80ba260038dd8a8ae438
+
+pkgname = juce-bin
+

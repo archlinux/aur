@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# arg 1:  the new package version
+post_install() {
+echo "-------------
+AFTER INSTALLATION of JUCE:
+Open Projucer and click the menu FILE->Global Paths...
+Change 'Path to juce' to '/usr/share/juce'
+And 'JUCE modules' to '/usr/share/juce/modules'
+-------------"
+}
