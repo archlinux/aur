@@ -1,7 +1,7 @@
 # Maintainer: rany <rany@disroot.org>
 pkgname=glowing-bear-electron
 pkgver=0.9.0
-pkgrel=6
+pkgrel=10
 pkgdesc="A web client for Weechat (Electron version)"
 arch=(any)
 url="https://www.glowing-bear.org/"
