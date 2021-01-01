@@ -8,7 +8,7 @@ arch=('i386' 'x86_64')
 url="http://glueviz.org/"
 license=('CUSTOM')
 depends=('python' 'python-glue-core' 'python-glue-vispy-viewers' 'python-numpy' 'python-matplotlib' 'python-scipy'
-         'python-pandas' 'python-astropy' 'pyqt5' 'ipython' 'python-ipykernel' 'python-qtconsole' 'python-dill'
+         'python-pandas' 'python-astropy' 'python-pyqt3d' 'python-pyqt5' 'python-pyqtchart' 'python-pyqtdatavisualization' 'python-pyqtpurchasing' 'python-pyqtwebengine' 'ipython' 'python-ipykernel' 'python-qtconsole' 'python-dill'
          'python-h5py' 'python-xlrd' 'python-mpl-scatter-density' 'python-bottleneck')
 makedepends=('python-setuptools')
 source=(https://files.pythonhosted.org/packages/08/69/38d188e12ea19241355be1a212702775d0e48463d765b98d366dc6aaa63b/${pkgname}-${pkgver}.tar.gz)
