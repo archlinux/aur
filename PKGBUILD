@@ -1,21 +1,28 @@
-# Maintainer: supermario9590
-pkgname=sysvinit-git
-pkgver=2.97
+# Maintainer: EatMyVenom <eat.my.venomm@gmail.com>
+# Contributer: supermario9590
+
+_pkgname=sysvinit
+pkgname=${_pkgname}-git
+pkgver=2.97.r3.g5567f16
 pkgrel=1
 pkgdesc='Linux System V Init'
 url='http://savannah.nongnu.org/projects/sysvinit'
-arch=('i686' 'x86_64' 'armv6h')
+arch=('i686' 'x86_64')
 license=('GPL')
 depends=('glibc' 'procps-ng>=3.3.9')
 conflicts=('systemd-sysvcompat')
-
-source=("http://mirror.netcologne.de/savannah/sysvinit/sysvinit-${pkgver}.tar.xz")
+source=("git+https://git.savannah.nongnu.org/git/sysvinit")
 sha256sums=('SKIP')
 
 
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build()
 {
-    cd "$srcdir/$pkgname-${pkgver}"
+    cd "$srcdir/$_pkgname"
 
     # Patch for Arch's Linux filesystem hierarchy
     if [ "$(grep 'execv("/sbin/mount", args);' < src/killall5.c | wc -l)" = 1 ]; then
@@ -33,7 +40,7 @@ build()
 
 package()
 {
-    cd "$srcdir/$pkgname-${pkgver}"
+    cd "$srcdir/$_pkgname"
     mkdir -p "$pkgdir/__temp__"
     make DISTRO=archlinux ROOT="$pkgdir/__temp__" install
     cd "$pkgdir/__temp__"
