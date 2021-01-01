@@ -1,14 +1,14 @@
 pkgbase = dxtime
 	pkgdesc = Program for time tracking
 	pkgver = 1.2.2
-	pkgrel = 1
-	url = http://dxtime.dxsolutions.org
+	pkgrel = 2
+	url = https://dxtime.dxsolutions.org
 	install = dxtime.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	depends = wxgtk2
+	depends = wxgtk3
 	source = http://downloads.sourceforge.net/sourceforge/dxtime/dxtime-1.2.2.tar.gz
 	md5sums = b4d8d6e9935e4c996bd371042fe91838
 
