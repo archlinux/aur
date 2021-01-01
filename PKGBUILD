@@ -27,7 +27,7 @@ _lqxpatchname=liquorix-package
 _lqxpatchrel=2
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-svelte
-pkgver=5.10.3
+pkgver=5.10.4
 pkgrel=1
 pkgdesc='Svelte Linux'
 url='https://benthetechguy.github.io/miscprograms/linux-svelte/'
@@ -51,7 +51,7 @@ validpgpkeys=(
 sha512sums=('95bc137d0cf9148da6a9d1f1a878698dc27b40f68e22c597544010a6c591ce1b256f083489d3ff45ff77753289b535135590194d88ef9f007d0ddab3d74de70e'
             'SKIP'
             '7bda68604908adc38c327762b610da97b1e7de8f9eed068b53e266b728832f219a62daead50775ae4bb58fda853e53aed8ecf483eb26fcb6f139a502b1678bbd'
-            '586c27b94d2f11cb47d46149c5c75bca8afe8c3dbe7fbd7dbdef9ec1e7255478cb42da7a5231e7e380f28f37221eda389dda2ef14e12a0bd490370c14d5e46db')
+            'a2e82bd6b324101efcd82377fb54377b804e80d585e6388fab2e395b3320797416bf5972b21581671a4f03eb05864a3e6ea8a3af9990c5bdcb917ce580e92bca')
 
 export KBUILD_BUILD_HOST=manjaro
 export KBUILD_BUILD_USER=$pkgbase

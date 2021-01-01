@@ -1,6 +1,6 @@
 pkgbase = linux-svelte
 	pkgdesc = Svelte Linux
-	pkgver = 5.10.3
+	pkgver = 5.10.4
 	pkgrel = 1
 	url = https://benthetechguy.github.io/miscprograms/linux-svelte/
 	arch = x86_64
@@ -13,13 +13,13 @@ pkgbase = linux-svelte
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.sign
 	source = https://github.com/damentz/liquorix-package/archive/5.10-2.tar.gz
-	source = config.src::https://github.com/benthetechguy/miscprograms/raw/master/linux-svelte/config/5.10.3-1
+	source = config.src::https://github.com/benthetechguy/miscprograms/raw/master/linux-svelte/config/5.10.4-1
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha512sums = 95bc137d0cf9148da6a9d1f1a878698dc27b40f68e22c597544010a6c591ce1b256f083489d3ff45ff77753289b535135590194d88ef9f007d0ddab3d74de70e
 	sha512sums = SKIP
 	sha512sums = 7bda68604908adc38c327762b610da97b1e7de8f9eed068b53e266b728832f219a62daead50775ae4bb58fda853e53aed8ecf483eb26fcb6f139a502b1678bbd
-	sha512sums = 586c27b94d2f11cb47d46149c5c75bca8afe8c3dbe7fbd7dbdef9ec1e7255478cb42da7a5231e7e380f28f37221eda389dda2ef14e12a0bd490370c14d5e46db
+	sha512sums = a2e82bd6b324101efcd82377fb54377b804e80d585e6388fab2e395b3320797416bf5972b21581671a4f03eb05864a3e6ea8a3af9990c5bdcb917ce580e92bca
 
 pkgname = linux-svelte
 	pkgdesc = The Svelte Linux kernel and modules
