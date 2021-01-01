@@ -2,8 +2,9 @@
 # Contributor: artoo <artoo@manjaro.org>
 # Contributor: Nathan Owens <ndowens at artixlinux.org>
 
-pkgbase=elogind
-pkgname=('elogind' 'libelogind')
+_pkgbase=elogind
+pkgbase=elogind-git
+pkgname=('elogind-git' 'libelogind-git')
 pkgver=246.pre.r51.g8b21e351c
 pkgrel=1
 pkgdesc="The systemd project's logind, extracted to a standalone package"
@@ -27,12 +28,12 @@ _pick() {
 }
 
 pkgver() {
-  cd "$pkgname"
+  cd "elogind"
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson $pkgbase build \
+  arch-meson $_pkgbase build \
 	-D split-usr=true \
 	-D smack=true \
 	-D acl=true \
@@ -41,9 +42,9 @@ build() {
    ninja -C build
 }
 
-package_elogind() {
+package_elogind-git() {
   pkgdesc="The systemd project's logind, extracted to a standalone package"
-  provides=("elogind=${pkgver}")
+  provides=("elogind")
   depends=('libelogind' 'pam' 'acl')
   conflicts=('systemd-sysvcompat' 'consolekit')
   optdepends=('dbus-openrc: dbus initscript')
@@ -59,9 +60,9 @@ package_elogind() {
   rm -rf "$pkgdir"/usr/share/doc
 }
 
-package_libelogind(){
+package_libelogind-git(){
   pkgdesc="elogind client libraries"
-  provides=('libelogind.so' "libelogind=${pkgver}")
+  provides=('libelogind.so' "libelogind")
   depends=('libcap')
 
   mv libelogind/* "$pkgdir"

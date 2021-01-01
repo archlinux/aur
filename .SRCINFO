@@ -1,4 +1,4 @@
-pkgbase = elogind
+pkgbase = elogind-git
 	pkgdesc = The systemd project's logind, extracted to a standalone package
 	pkgver = 246.pre.r51.g8b21e351c
 	pkgrel = 1
@@ -17,19 +17,19 @@ pkgbase = elogind
 	source = git+https://github.com/elogind/elogind
 	sha256sums = SKIP
 
-pkgname = elogind
+pkgname = elogind-git
 	pkgdesc = The systemd project's logind, extracted to a standalone package
 	install = elogind.install
 	depends = libelogind
 	depends = pam
 	depends = acl
 	optdepends = dbus-openrc: dbus initscript
-	provides = elogind=246.pre.r51.g8b21e351c
+	provides = elogind
 	conflicts = systemd-sysvcompat
 	conflicts = consolekit
 
-pkgname = libelogind
+pkgname = libelogind-git
 	pkgdesc = elogind client libraries
 	depends = libcap
 	provides = libelogind.so
-	provides = libelogind=246.pre.r51.g8b21e351c
+	provides = libelogind
