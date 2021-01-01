@@ -16,7 +16,7 @@ package() {
 	tar -zxvf "HillstoneVPN-$pkgver.tar.gz" -C "${srcdir}"
 	
 	install -d "${pkgdir}/opt"
-	cp -r "${srcdir}/$HillstoneVPN" "${pkgdir}/opt"
+	cp -r "${srcdir}/HillstoneVPN" "${pkgdir}/opt"
 	
 	install -d "${pkgdir}/usr/share/applications"
 	install -Dm755 "${srcdir}/HillstoneVPN/HillstoneVPN.desktop" "${pkgdir}/usr/share/applications"
