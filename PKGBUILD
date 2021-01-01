@@ -1,12 +1,12 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
-pkgname=instamenu 
+pkgname=instamenu
 pkgver=2021.01.01
 pkgrel=1
 pkgdesc="dmenu like menu with the Manjaro Matcha-dark-sea theme"
 url="https://github.com/TheCynicalTeam/$pkgname"
 arch=('any')
-license=('GPL3')
+license=('CC BY-NC-SA 4.0')
 depends=('sh' 'libxinerama' 'libxft' 'noto-fonts-emoji' 'ttf-joypixels' 'siji' 'cantarell-fonts' 'nerd-fonts-fira-code' 'instamenu-schemas')
 optdepends=('instamenu-extra: Extra script that instamenu can use')
 provides=($pkgname dmenu)
