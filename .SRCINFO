@@ -1,0 +1,25 @@
+pkgbase = kitematic-bin
+	pkgdesc = Visual Docker Container Management
+	pkgver = 0.17.13
+	pkgrel = 1
+	url = https://github.com/docker/kitematic
+	arch = x86_64
+	license = Apache
+	depends = docker
+	depends = nodejs
+	depends = glib2
+	depends = hicolor-icon-theme
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = gtk2
+	depends = gconf
+	depends = alsa-lib
+	provides = kitematic
+	conflicts = kitematic
+	options = !strip
+	source = https://github.com/docker/kitematic/releases/download/v0.17.13/Kitematic-0.17.13-Ubuntu.zip
+	sha256sums = d5c9cd64b272ac34ae4d6cc15a68476a09f6edfda650a6f5f9bc1e915901f6c7
+
+pkgname = kitematic-bin
+
