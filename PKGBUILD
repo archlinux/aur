@@ -3,14 +3,15 @@
 pkgname=bubble-chains
 #_pkgname=chains
 pkgver=0.1.1
-pkgrel=7
+pkgrel=8
 pkgdesc="A 2d arcade-puzzle game. The aim is to collect chains of same-color bubbles, and to destroy all the target items."
 arch=('i686' 'x86_64')
-url="http://bubble-chains.sintegrial.com/"
+# url="http://bubble-chains.sintegrial.com/"
+url="https://github.com/SanskritFritz/bubble-chains"
 license=('GPL3')
 depends=('qt4' 'sdl_mixer' 'libgl')
 optdepends=('timidity++: for enabling music')
-#source=(http://bubble-chains.sintegrial.com/get.php?file=chains_src ${_pkgname}.desktop ${_pkgname}.png)
+# source=(http://bubble-chains.sintegrial.com/get.php?file=chains_src ${_pkgname}.desktop ${_pkgname}.png)
 source=("https://github.com/SanskritFritz/bubble-chains/archive/$pkgver.tar.gz"
         "${pkgname}.desktop" "${pkgname}.png")
 
