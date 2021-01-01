@@ -5,6 +5,7 @@ pkgbase = simplest-file-renamer-bin
 	url = https://github.com/whyboris/Simplest-File-Renamer
 	arch = x86_64
 	license = MIT
+	makedepends = gendesk
 	depends = zlib
 	provides = simplest-file-renamer
 	noextract = simplest-file-renamer-bin-1.0.0.AppImage

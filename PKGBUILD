@@ -11,6 +11,7 @@ provides=('simplest-file-renamer')
 depends=('zlib')
 options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
+makedepends=('gendesk')
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/whyboris/Simplest-File-Renamer/releases/download/v${pkgver}/Simplest.File.Renamer-${pkgver}.AppImage"
         'LICENSE::https://github.com/whyboris/Simplest-File-Renamer/raw/main/LICENSE')
 sha256sums=('ee8d258a22da54055a6fb851884664ecbe4ca01234e6e81faf61eb9b2ba3c044'
