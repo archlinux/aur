@@ -1,10 +1,10 @@
 # Maintainer: nl6720 <nl6720@archlinux.org>
 
 pkgname=mediawiki-extension-codemirror
-pkgver=REL1_35+r612+ga9da1fa
+pkgver=REL1_35+r613+gb5c9a1b
 pkgrel=1
 _mw='REL1_35'
-_commit='a9da1fa59ec6fab36f9593a60e19ab47131a280d'
+_commit='b5c9a1b6d225875ad531d8ced8f5d81f996880ca'
 pkgdesc='An extension for MediaWiki that provides syntax highlighting in the wikitext editor'
 arch=('any')
 url='https://www.mediawiki.org/wiki/Extension:CodeMirror'
