@@ -1,6 +1,6 @@
-# Maintainer: Meriadec Pillet <meriadec.pillet@gmail.com>
+# Maintainer: Henry Mohn <hmohniii@gmail.com>
 pkgname=mjml-app
-pkgver=2.7.1
+pkgver=3.0.3
 pkgrel=1
 pkgdesc='The desktop app for MJML'
 arch=('any')
@@ -8,11 +8,11 @@ url="https://github.com/mjmlio/${pkgname}"
 license=('MIT')
 depends=('yarn')
 source=(
-  "https://github.com/mjmlio/${pkgname}/archive/${pkgver}.tar.gz"
+  "https://github.com/mjmlio/${pkgname}/archive/v${pkgver}.tar.gz"
   "mjml-app.desktop"
 )
 md5sums=(
-  'ed024f35219e586dd572db1224ceaa5e'
+  '693fab16b353bc0e6c20d571c6091e35'
   '1f20e11d8f8e674500bdda8054e859c8'
 )
 
@@ -22,11 +22,11 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}/"
 
   yarn
-  yarn package
+  yarn dist
 
   install -dm755 "${pkgdir}/opt/"
-  chmod -R 755 "release/linux-unpacked"
-  cp -r "release/linux-unpacked" "${pkgdir}/opt/mjml-app"
+  chmod -R 755 "dist/linux-unpacked"
+  cp -r "dist/linux-unpacked" "${pkgdir}/opt/mjml-app"
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "/opt/mjml-app/mjml-app" "${pkgdir}/usr/bin/mjml-app"
 
