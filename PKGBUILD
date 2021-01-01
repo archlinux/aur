@@ -1,7 +1,7 @@
 # Maintainer: Maximilian Stahlberg <maximilian.stahlberg tu-berlin de>
 
 pkgname=python-picos-git
-pkgver=2.0.r12.g11f96c1
+pkgver=2.1.r1.gbb51b36
 pkgrel=1
 pkgdesc='A Python interface to conic optimization solvers. Git version.'
 arch=('any')
