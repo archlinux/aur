@@ -4,7 +4,7 @@ _pkgname=RSSOwlnix
 
 pkgname=rssowlnix-bin
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="RSSOwlnix fork of RSSOwl"
 arch=('x86_64')
 url="https://github.com/Xyrio/RSSOwlnix"
@@ -43,4 +43,6 @@ package() {
   ln -s "/usr/share/${_pkgname}/icon.xpm" "${pkgdir}/usr/share/pixmaps/${_pkgname}.xpm"
 
   install -D -m644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+
+  chmod +x "${pkgdir}/usr/share/${_pkgname}/${_pkgname}"
 }
