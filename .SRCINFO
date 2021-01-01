@@ -1,0 +1,18 @@
+pkgbase = ruby-rpi_gpio
+	pkgdesc = Ruby conversion of RPi.GPIO Python module
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/ClockVapor/rpi_gpio
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	depends = ruby
+	depends = ruby-epoll
+	noextract = rpi_gpio-0.5.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rpi_gpio-0.5.0.gem
+	sha256sums = 96e14bd31a83a997ef4875adccdcd5476cf658b15c8861a7f759f1d2d0e7771b
+
+pkgname = ruby-rpi_gpio
+
