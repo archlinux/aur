@@ -4,7 +4,7 @@
 #
 _name="hexo"
 pkgname="nodejs-${_name}"
-pkgver="5.0.0"
+pkgver="5.3.0"
 pkgrel="1"
 pkgdesc="A fast, simple & powerful blog framework, powered by Node.js."
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('npm')
 conflicts=('nodejs-hexo-cli')
 options=(!strip)
 source=("${_name}-${pkgver}.tar.gz::https://github.com/hexojs/hexo/archive/${pkgver}.tar.gz")
-sha256sums=('af5885cfccc2f70478beb74615fa6cf368c2d8df6641e05d00c45d1b567eb97c')
+sha256sums=('8bdeef121e12d1bc87001ccd701f99aa25a550703b226c57e7d1e9554cd6e477')
 
 # Don't extract package
 noextract=('${pkgver}.tar.gz')
