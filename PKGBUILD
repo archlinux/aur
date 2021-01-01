@@ -15,5 +15,5 @@ noextract=('twitch-dl')
 
 package() {
     install -Dm644 "${srcdir}/twitch-dl" "${pkgdir}/usr/bin/twitch-dl"
-	chmod +x ${pkgdir}/usr/bin/twitch-dl
+    chmod +x ${pkgdir}/usr/bin/twitch-dl
 }
