@@ -1,3 +1,4 @@
+# Maintainer: EatMyVenom <eat.my.venomm@gmail.com>
 # Contributor: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 # Contributor: Matheus de Alcantara <matheus.de.alcantara@gmail.com>
 # Contributor: Brenton Horne <brentonhorne77 at gmail dot com>
@@ -11,8 +12,8 @@ pkgdesc='Hackable text editor for the 21st Century - git channel'
 arch=('x86_64')
 url="https://atom.io/"
 license=('MIT' 'custom')
-depends=('apm' 'electron5' 'libxkbfile' 'ripgrep')
-makedepends=('git' 'npm')
+depends=('apm' 'electron6' 'libxkbfile' 'ripgrep')
+makedepends=('git' 'npm' 'gconf' 'nodejs' 'libsecret' 'python')
 optdepends=('ctags: symbol indexing support'
             'git: Git and GitHub integration')
 conflicts=('atom')
@@ -30,19 +31,7 @@ source=("git+https://github.com/atom/atom.git"
         'symbols-view-use-system-ctags.patch'
         'use-system-apm.patch'
         'use-system-electron.patch')
-sha256sums=('SKIP'
-            '6218ecf9a767e80f70a4b07abaefcf63a3d615200ff27b2dbc7bb36eacd8e87f'
-            '530b46d31df0f5e8f5881e1608a66fe75d549092a6db2e72ba3ad69c48714153'
-            'b3d3706519556a59ba557b695017c9debe8b23efe2782cdb440131520bc0540d'
-            '2894cce31935d45291c5fe4c625473bb83fc51e1b899f162aa6b419491c7ace1'
-            'e3c30c03006d23a72f07fa77f4309b16a6059af1179343033a87f74f50124076'
-            'e321fdfe880cd465918dd1dbb90e4c7d46fc5310f20666eddf0a41cbca4f8ac8'
-            '40d783794d62f12f3c429c624a84265871c7ed95f4120c9db800348896dd5437'
-            'a09439c2a908ca174ff3be1f0d85071d12c792ae19748e36fe601e372d6d925b'
-            '3c68e6b3751313e1d386e721f8f819fb051351fb2cf8e753b1d773a0f475fef8'
-            '8d48dca4571136375b325f4bf94ccfb996e90e57b7fdf83d53c1eb2e69b3b0d4'
-            '84b03b2e68d2f86cd963a2e9327698545a8a782895594cf2cc9a74531c5c7875')
-
+sha256sums=('SKIP')
 
 pkgver() {
     cd ${_name}
@@ -67,7 +56,7 @@ build() {
 
   ATOM_RESOURCE_PATH="${PWD}" \
   npm_config_build_from_source=true \
-  npm_config_target=$(< /usr/lib/electron5/version) \
+  npm_config_target=$(< /usr/lib/electron6/version) \
   apm install
 
   # Use system ctags
@@ -89,7 +78,7 @@ build() {
   env \
     npm_config_disturl=https://electronjs.org/headers \
     npm_config_runtime=electron \
-    npm_config_target=$(< /usr/lib/electron5/version) \
+    npm_config_target=$(< /usr/lib/electron6/version) \
     node-gyp rebuild
   cd ../..
 
@@ -99,7 +88,7 @@ build() {
   # Set ELECTRON_VERSION (see use-system-electron.patch)
   env \
     ELECTRON_RUN_AS_NODE=1 \
-    ELECTRON_VERSION=$(< /usr/lib/electron5/version) \
+    ELECTRON_VERSION=$(< /usr/lib/electron6/version) \
     electron5 \
     build --no-bootstrap
 }

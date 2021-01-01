@@ -4,7 +4,7 @@
      "url": "https://github.com/atom/atom/issues"
    },
    "license": "MIT",
--  "electronVersion": "5.0.13",
+-  "electronVersion": "6.1.12",
    "dependencies": {
      "@atom/nsfw": "1.0.26",
      "@atom/source-map-support": "^0.3.4",
@@ -19,10 +19,10 @@
  const cleanOutputDirectory = require('./lib/clean-output-directory')
  const codeSignOnMac = require('./lib/code-sign-on-mac')
  const codeSignOnWindows = require('./lib/code-sign-on-windows')
-@@ -64,12 +64,12 @@
- })
- 
+@@ -66,12 +66,12 @@
  const CONFIG = require('./config')
+ 
+ // Used by the 'github' package for Babel configuration
 -process.env.ELECTRON_VERSION = CONFIG.appMetadata.electronVersion
 +// process.env.ELECTRON_VERSION = CONFIG.appMetadata.electronVersion
  
@@ -34,7 +34,7 @@
    cleanOutputDirectory()
    copyAssets()
    transpilePackagesWithCustomTranspilerPaths()
-@@ -88,74 +88,5 @@
+@@ -90,74 +90,5 @@
  
  if (!argv.generateApiDocs) {
    binariesPromise
@@ -119,7 +119,7 @@
 -        packagedAppPath,
 -        CONFIG.executableName
 -      );
-+      nodeBundledInElectronPath = 'electron5';
++      nodeBundledInElectronPath = 'electron6';
      }
      childProcess.execFileSync(
        nodeBundledInElectronPath,
@@ -140,16 +140,16 @@
  };
 --- a/script/package.json
 +++ b/script/package.json
-@@ -10,9 +10,7 @@
+@@ -12,9 +12,7 @@
      "coffeelint": "1.15.7",
      "colors": "1.1.2",
      "donna": "1.0.16",
 -    "electron-chromedriver": "^9.0.0",
-     "electron-link": "0.4.1",
+     "electron-link": "^0.4.3",
 -    "electron-mksnapshot": "^9.0.2",
-     "electron-packager": "12.2.0",
-     "@atom/electron-winstaller": "0.0.1",
+     "electron-packager": "^15.0.0",
      "eslint": "^5.16.0",
+     "eslint-config-prettier": "^4.2.0",
 --- a/src/compile-cache.js
 +++ b/src/compile-cache.js
 @@ -138,7 +138,7 @@ exports.install = function(resourcesPath, nodeRequire) {
@@ -174,7 +174,7 @@
      const atomJsPath = path.join(cache.resourcePath, 'exports', 'atom.js');
 --- a/src/package-manager.js
 +++ b/src/package-manager.js
-@@ -939,7 +939,7 @@
+@@ -949,7 +949,7 @@
    isBundledPackagePath(packagePath) {
      if (
        this.devMode &&
