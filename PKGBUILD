@@ -1,6 +1,6 @@
 pkgname=paperwork-git
 _pkgname=paperwork
-pkgver=1.3.1+18+g980b0421
+pkgver=2.0.2+2+g783189a7
 pkgrel=1
 pkgdesc="Personal document manager for GNOME to manage scanned documents and PDFs"
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=('git')
 provides=('paperwork')
 conflicts=('paperwork')
 source=("git+https://gitlab.gnome.org/World/OpenPaperwork/paperwork.git")
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -23,16 +23,20 @@ pkgver() {
 
 build() {
   cd $_pkgname
-  make
+  make version
+  make l10n_compile
 }
 
 package() {
-  cd $_pkgname/paperwork-backend
-  python3 setup.py install --root="$pkgdir" --optimize=1
+  cd $_pkgname
+  for dir in openpaperwork-{core,gtk} paperwork-{backend,gtk}; do
+    pushd $dir
+    python3 setup.py install --root="$pkgdir" --optimize=1
+    popd
+  done
 
-  cd ../paperwork-gtk
-  python3 setup.py install --root="$pkgdir" --optimize=1
-
-  cd "$pkgdir"/usr/lib/python3.8/site-packages/paperwork/frontend/
-  PYTHONPATH=`echo "$pkgdir"/usr/lib/python*/site-packages/` python3 -c 'import shell; shell.install_system(icon_basedir="../../../../../share/icons", data_basedir="../../../../../share")'
+  PYTHONPATH=`echo "$pkgdir"/usr/lib/python*/site-packages/` \
+    "$pkgdir"/usr/bin/paperwork-gtk install \
+      --icon_base_dir="$pkgdir/usr/share/icons" \
+      --data_base_dir="$pkgdir/usr/share"
 }
