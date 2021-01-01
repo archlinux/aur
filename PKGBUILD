@@ -18,4 +18,6 @@ package() {
   cd "${srcdir}/${pkgname}-$pkgver"
   install -D -m644 bdf/siji.bdf "${pkgdir}/usr/share/fonts/misc/siji.bdf"
   install -D -m644 ttf/siji.ttf "${pkgdir}/usr/share/fonts/misc/siji.ttf"
+  install -D -m755 view.sh "${pkgdir}/usr/share/${_pkgname}/view.sh"
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
