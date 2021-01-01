@@ -1,7 +1,7 @@
 pkgbase = journal-notify
 	pkgdesc = Notify about journal log entries
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = 0.1.2
+	pkgrel = 1
 	url = https://github.com/eworm-de/journal-notify
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = journal-notify
 	depends = libnotify
 	depends = systemd
 	optdepends = gnome-icon-theme: icons in notifications
-	source = https://www.eworm.de/download/journal-notify/journal-notify-0.1.1.tar.xz
-	source = https://www.eworm.de/download/journal-notify/journal-notify-0.1.1.tar.xz.asc
+	source = https://www.eworm.de/download/journal-notify/journal-notify-0.1.2.tar.xz
+	source = https://www.eworm.de/download/journal-notify/journal-notify-0.1.2.tar.xz.asc
 	validpgpkeys = BD84DE71F493DF6814B0167254EDC91609BC9183
-	sha256sums = 807770bce547a145378ff457e2c4d606a9b9516684f8acfed2b255e64477e8da
+	sha256sums = bc780e0388472b5fc650cbf9911f02adf025f1b05aa20cac2fb02ef4c5fe3566
 	sha256sums = SKIP
 
 pkgname = journal-notify
