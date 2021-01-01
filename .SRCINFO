@@ -1,7 +1,7 @@
 pkgbase = dxtime
 	pkgdesc = Program for time tracking
 	pkgver = 1.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dxtime.dxsolutions.org
 	install = dxtime.install
 	arch = i686
