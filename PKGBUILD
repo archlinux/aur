@@ -17,4 +17,5 @@ sha256sums=('532950e73806b3e3096f74fef8da928753c3164226721e6e07d7a3389f548605')
 package() {
   cd "${srcdir}/${pkgname}-$pkgver"
   install -D -m644 bdf/siji.bdf "${pkgdir}/usr/share/fonts/misc/siji.bdf"
+  install -D -m644 ttf/siji.ttf "${pkgdir}/usr/share/fonts/misc/siji.ttf"
 }
