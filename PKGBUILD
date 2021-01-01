@@ -1,4 +1,5 @@
-# Maintainer: Gladyshev Ilya <fixfromdarkness@cock.li>
+# Maintainer: EatMyVenom <eat.my.venomm@gmail.com>
+# Contributer: Gladyshev Ilya <fixfromdarkness@cock.li>
 
 pkgname=nix-bin
 pkgver=2.3.9
