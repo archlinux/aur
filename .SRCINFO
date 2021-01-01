@@ -1,0 +1,15 @@
+pkgbase = ruby-tty-option
+	pkgdesc = An intuitive and flexible command line parser
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://ttytoolkit.org
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = tty-option-0.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/tty-option-0.1.0.gem
+	sha256sums = 45eb9227259c22db124c44aa2802fbda0d12537bafc5e36dfb95a712d6e41261
+
+pkgname = ruby-tty-option
+
