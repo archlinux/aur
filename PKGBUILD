@@ -3,7 +3,7 @@
 # Contributor: ValHue <vhuelamo@gmail.com>
 #
 pkgname="wp-desktop"
-pkgver="6.3.0"
+pkgver="6.6.0"
 pkgrel="1"
 pkgdesc="WordPress.com Desktop client"
 url="https://desktop.wordpress.com/"
@@ -15,7 +15,7 @@ depends=('alsa-lib' 'gcc-libs' 'gtk3' 'libgpg-error' 'libxss' 'libxkbfile' 'libx
 _pkgsource="wordpress.com-linux-x64-${pkgver}.tar.gz"
 source=("${_pkgsource}::${_url}/releases/download/v${pkgver}/${_pkgsource}")
 
-sha256sums=('0c44a1079d3a4087a9061e3db4ede9617d76b7b1e43a6d5c99955167d1214617')
+sha256sums=('ad4f03cb32929312b51add75eacc2c2ae46c91f907341e95ab04519bd9a75622')
 
 _wpcom_desktop="[Desktop Entry]
 Version=1.0
