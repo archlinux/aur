@@ -16,6 +16,8 @@ pkgbase = kcm-grub2-git
 	depends = libmagick6
 	depends = packagekit-qt5
 	optdepends = os-prober: To detect other OSes when generating grub.cfg in BIOS systems
+	provides = grub2-editor-frameworks
+	conflicts = grub2-editor-frameworks
 	source = kcm-grub2::git+https://invent.kde.org/system/kcm-grub2.git
 	sha256sums = SKIP
 

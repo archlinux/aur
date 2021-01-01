@@ -23,6 +23,9 @@ makedepends=(
     'kdoctools'
     'ninja'
 )
+
+conflicts=('grub2-editor-frameworks')
+provides=('grub2-editor-frameworks')
 optdepends=('os-prober: To detect other OSes when generating grub.cfg in BIOS systems')
 source=("${_product}"::"git+${url}.git")
 sha256sums=('SKIP')
@@ -34,25 +37,17 @@ pkgver() {
 }
 
 prepare() {
-  rm -rfv build
-  mkdir -pv build
-  cd build
-  export PKG_CONFIG_PATH='/usr/lib/imagemagick6/pkgconfig'
-  cmake "../${_product}" \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DSYSCONF_INSTALL_DIR=/etc \
-    -DBUILD_TESTING=OFF \
-    -G Ninja
+   export PKG_CONFIG_PATH='/usr/lib/imagemagick6/pkgconfig'
+   cmake -B build -S "${_product}" \
+    -G Ninja \
+    -D BUILD_TESTING=OFF \
+    -Wno-dev
 }
 
 build() {
-  cd build
-  ninja
+   cmake --build build
 }
 
 package() {
-	DESTDIR="${pkgdir}" cmake --install build
+	 DESTDIR="${pkgdir}" cmake --install build
 }
