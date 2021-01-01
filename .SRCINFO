@@ -8,6 +8,7 @@ pkgbase = disman-kwinft
 	makedepends = extra-cmake-modules
 	depends = qt5-x11extras
 	depends = libxrandr
+	depends = plasma-framework
 	depends = wrapland
 	provides = disman
 	conflicts = disman
