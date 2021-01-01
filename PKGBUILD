@@ -1,7 +1,7 @@
 # Maintainer: Gladyshev Ilya <fixfromdarkness@cock.li>
 
 pkgname=nix-bin
-pkgver=2.3.8
+pkgver=2.3.9
 pkgrel=1
 pkgdesc="A purely functional package manager - /nix/store multi-user edition"
 arch=('i686' 'x86_64' 'aarch64')
@@ -76,7 +76,10 @@ package() {
     ln -s /nix/store/$(basename $f) $pkgdir/nix/var/nix/gcroots/pacman/
   done
 }
-sha256sums=(24bc9995ca2efdf107b03b6ed31b18f8efc1ab3e8d496e7c6a0eee4099b5a35b 2691263b3e32cf6a8aa7f3e537d09ad601772b41a89f3b6e45675621bfd1c0fd c5bfe41ce026651945f06efd55e600b0cd67248ef4993cb1b56ab6c05262f228 0799ce2f8b5fda245eb0131349ba6c0a46974602cd8ef5b41446a54337a68f13)
-sha256sums_i686=('b6e100a704065728ce10408df3ccb2b97c68e4aa033efe5ec9c6d3346f98f011')
-sha256sums_aarch64=('0b35f0d3b480e15ca4bf57ee0d90c5dd209f8bf6ab0c429a2e4aca6565b9d9a6')
-sha256sums_x86_64=('0c8a432993d06e4d882ad48cde81d9bef23842cf6d7432cd93ef1a99c8d4ef43')
+md5sums=('d0ea6ac6013dfcf18c105c45bbb4be41'
+         '9ece6a19a8bf818b23e2d7d0fb6f5cef'
+         '9b748e49cadb4d29eec57e7cf759bf35'
+         '4a5758557e088ecd1438502328b38fa7')
+md5sums_i686=('ed567a722a98c560e2e05ead1668fc3c')
+md5sums_x86_64=('dc39acff98c57c3bcb555f8f8f694f51')
+md5sums_aarch64=('de1d5c9ffb31846b10128afecc28eea6')
