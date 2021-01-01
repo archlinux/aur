@@ -5,7 +5,7 @@
 # Contributor: andy123 < ajs AT online DOT de >
 
 pkgname=lib32-boost-libs
-pkgver=1.72.0
+pkgver=1.75.0
 _boostver=${pkgver//./_}
 pkgrel=1
 url='http://www.boost.org'
@@ -14,7 +14,7 @@ pkgdesc='Free peer-reviewed portable C++ source libraries - runtime libraries (3
 license=('custom')
 groups=('lib32')
 depends=('lib32-bzip2' 'lib32-zlib' 'lib32-icu' 'lib32-zstd')
-makedepends=('lib32-icu' 'lib32-bzip2' 'lib32-zlib' 'lib32-zstd' 'findutils' 'python' 'python2')
+makedepends=('lib32-icu' 'lib32-bzip2' 'lib32-zlib' 'lib32-zstd' 'findutils' 'python')
 provides=(libboost_atomic.so libboost_chrono.so libboost_container.so
           libboost_context.so libboost_contract.so libboost_coroutine.so
           libboost_date_time.so libboost_fiber.so libboost_filesystem.so
@@ -29,13 +29,23 @@ provides=(libboost_atomic.so libboost_chrono.so libboost_container.so
           libboost_timer.so libboost_type_erasure.so libboost_unit_test_framework.so
           libboost_wave.so libboost_wserialization.so)
 options=('staticlibs')
-source=(https://dl.bintray.com/boostorg/release/${pkgver}/source/boost_${_boostver}.tar.bz2)
-sha256sums=('59c9b274bc451cf91a9ba1dd2c7fdcaf5d60b1b3aa83f2c9fa143417cc660722')
-b2sums=('ab270a0e3cb24da687d86785e2d2e6d7731b4dbc07bd839eadb642dfa5a428ad584acb1f3529661a8de9a986008ff3427491041059ea2b742348d02e00761cd8')
+source=(https://dl.bintray.com/boostorg/release/${pkgver}/source/boost_${_boostver}.tar.bz2
+       boost-ublas-c++20-iterator.patch::https://github.com/boostorg/ublas/commit/a31e5cffa85f.patch)
+sha256sums=('953db31e016db7bb207f11432bef7df100516eeb746843fa0486a222e3fd49cb'
+            'aa38addb40d5f44b4a8472029b475e7e6aef1c460509eb7d8edf03491dc1b5ee')
+b2sums=('ce7ecd8bcee518ce54f7e5302f202acbea60cedd6ae9248708c0bb5bbc2713607b2e1967a9e6f77cc20a4c008c1ee4db651def55937efc80407487a7a44fa8d6'
+        'e5f6d4884eaa557d5547e7e079c2edb4ed9f2f4cd8579aa32a2150f824a5d04413f2a91e79b3139d5b915da6a46f7835f1438ad53f33096973f1a99f378ec1d3')
 
 # This version of lib32-boost-libs does not include support OpenMPI or the
 # Python bindings since there are no (up to date) lib32 packages available for
 # them
+
+prepare() {
+   cd boost_${_boostver}
+
+   # https://github.com/boostorg/ublas/pull/97
+   patch -Np2 -i ../boost-ublas-c++20-iterator.patch
+}
 
 build() {
   export CC='gcc'
@@ -102,7 +112,7 @@ package() {
   # # https://github.com/boostorg/python/issues/203#issuecomment-391477685
   # for _lib in python numpy; do
   #   ln -srL "${pkgdir}"/usr/lib32/libboost_${_lib}{27,}.so
-  #   ln -srL "${pkgdir}"/usr/lib32/libboost_${_lib}3{8,}.so
+  #   ln -srL "${pkgdir}"/usr/lib32/libboost_${_lib}3{9,}.so
   # done
 
   install -Dm644 "${srcdir}/"boost_${_boostver}/LICENSE_1_0.txt \
