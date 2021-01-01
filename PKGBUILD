@@ -4,6 +4,7 @@ pkgver=1.5.r12.g4870372
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='swaylock with dpms support'
+url=https://github.com/gartnera/swaylock
 arch=(x86_64)
 provides=("swaylock=${pkgver%%.r*}")
 conflicts=(swaylock)
