@@ -1,19 +1,17 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
-
 pkgname=recycle-cli
-pkgver=2020.8.10
+pkgver=2021.01.01
 pkgrel=1
 pkgdesc='A recycle bin cli in python 3'
 arch=('any')
-url="https://aur.archlinux.org/packages/recycle-cli/"
-license=('GPL')
+url="https://github.com/TheCynicalTeam/recycle-cli/"
+license=('GPL3')
 depends=('coreutils' 'gettext' 'python>=3.4')
-source=("Recycle.py")
-
-sha256sums=('5314c6d1237aa449f5925563117c9f12de8740e87654b70b419fd73772dbb5ca')
+source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
+sha256sums=('adf5c2659cec7ea4f1090c069dfdc64e9a9e988c0cafcd5e0271aac2e02321a0')
 
 package() {
-	cd "$srcdir"
-	install -Dm755 Recycle.py "$pkgdir/usr/bin/recycle"
+  mkdir -p $pkgdir/usr
+  cp -a $srcdir/$pkgname-$pkgver/usr/bin $pkgdir/usr/bin
 }
