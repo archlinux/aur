@@ -1,7 +1,7 @@
 # Maintainer: Daniel Pereira <daniel@garajau.com.br>
 
 pkgname=pacom
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Pacom: the Pacman companion"
 url="https://github.com/kriansa/pacom"
@@ -9,7 +9,7 @@ arch=(any)
 license=(Apache)
 depends=(jq curl)
 source=("https://github.com/kriansa/pacom/archive/v${pkgver}.tar.gz")
-sha256sums=(f5ec919f6f6cbc2877dca94ac2ab80e569eee192a5977cdfdea01a6f9300a7f2)
+sha256sums=(af3b04e2a0bbead978aee67413f6106b1c8ef4ff197aff6f8d1ecf544dc667bd)
 
 build() {
   cd "$pkgname-$pkgver" || exit 1
