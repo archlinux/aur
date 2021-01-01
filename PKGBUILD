@@ -2,7 +2,7 @@
 # Co-Maintainer: Corax <cor dot ax26 at gmail dot com>
 pkgname=python-mediainfodll
 pkgver=0.7.88
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Python shared library for reading metadata from media files"
 arch=('any')
