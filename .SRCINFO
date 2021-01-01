@@ -51,7 +51,9 @@ pkgbase = ros-melodic-robot-localization
 	depends = eigen
 	depends = yaml-cpp
 	source = ros-melodic-robot-localization-2.6.9.tar.gz::https://github.com/cra-ros-pkg/robot_localization/archive/2.6.9.tar.gz
+	source = geographiclib.patch
 	sha256sums = 5652558fcd6ee4378a3f3d5a86c6358ccce481d01a8d0e24d2752bc06163cb66
+	sha256sums = 7efe1f393789f127bcc7e875f19153dbc1762a451c27db1edcb6ac82276c7d16
 
 pkgname = ros-melodic-robot-localization
 
