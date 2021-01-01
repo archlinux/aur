@@ -1,0 +1,23 @@
+pkgbase = swaylock-dpms-git
+	pkgdesc = swaylock with dpms support
+	pkgver = 1.5.r12.g4870372
+	pkgrel = 1
+	arch = x86_64
+	license = custom:MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	makedepends = wayland-protocols
+	makedepends = scdoc
+	depends = cairo
+	depends = pam
+	depends = wayland
+	depends = gdk-pixbuf2
+	depends = libxkbcommon
+	provides = swaylock=1.5
+	conflicts = swaylock
+	source = swaylock-dpms-git::git+https://github.com/gartnera/swaylock
+	sha512sums = SKIP
+
+pkgname = swaylock-dpms-git
+
