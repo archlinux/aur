@@ -1,16 +1,17 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=i3-maim
-pkgver=2020.6.27
+pkgver=2021.01.01
 pkgrel=1
 pkgdesc="simple screenshot script using maim"
 arch=('any')
 url="https://github.com/TheCynicalTeam/i3-maim"
 license=('GPL3')
 depends=('libnotify' 'maim' 'xdg-user-dirs' 'xdotool')
-source=('i3-maim')
-sha256sums=('21d3e466b8bbfe1542f8210e42f1f17a268ee6c8464c9d6b701308c297caf09e')
+source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
+sha256sums=('39d360b31f4228c6f07aa4c5212bf32a37df27f2b118f5e71311d589efa9833e')
 
 package() {
-  install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  mkdir -p $pkgdir/usr
+  cp -a $srcdir/$pkgname-$pkgver/usr/bin $pkgdir/usr/bin
 }
