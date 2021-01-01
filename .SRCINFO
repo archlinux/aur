@@ -3,6 +3,7 @@ pkgbase = libretextus
 	pkgver = 0.2
 	pkgrel = 1
 	url = https://libretextus.github.io
+	install = libretextus.install
 	arch = any
 	license = CC0
 	depends = gtkmm3
