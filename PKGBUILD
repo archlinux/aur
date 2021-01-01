@@ -6,7 +6,7 @@
 _pkgbase=quassel
 _pkgname=quassel-core-small
 pkgname=('quassel-core-small-git')
-pkgver=0.14.pre.r265.gc7886cee
+pkgver=0.14.rc1.r0.gc7886cee
 pkgrel=1
 pkgdesc="Next-generation distributed IRC client - core only, minimal dependencies"
 arch=('x86_64')
