@@ -6,7 +6,7 @@ pkgname=('pipewire-git'
          'pipewire-pulse-git'
          'pipewire-ffmpeg-git'
          )
-pkgver=0.3.18.102.gd09cb1f0
+pkgver=0.3.18.104.gd99ac615
 pkgrel=1
 pkgdesc='Server and user space API to deal with multimedia pipelines. (GIT version)'
 arch=('x86_64')
@@ -104,6 +104,7 @@ package_pipewire-git() {
               'pipewire-alsa-git: ALSA support'
               'pipewire-pulse-git: PulseAudio support'
               'pipewire-ffmpeg-git: ffmpeg support'
+              'gst-plugin-pipewire-git: gstreamer support'
               )
   provides=('pipewire'
             "libpipewire-${pkgver:0:3}.so"

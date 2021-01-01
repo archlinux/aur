@@ -1,6 +1,6 @@
 pkgbase = pipewire-git
 	pkgdesc = Server and user space API to deal with multimedia pipelines. (GIT version)
-	pkgver = 0.3.18.102.gd09cb1f0
+	pkgver = 0.3.18.104.gd99ac615
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -52,6 +52,7 @@ pkgname = pipewire-git
 	optdepends = pipewire-alsa-git: ALSA support
 	optdepends = pipewire-pulse-git: PulseAudio support
 	optdepends = pipewire-ffmpeg-git: ffmpeg support
+	optdepends = gst-plugin-pipewire-git: gstreamer support
 	provides = pipewire
 	provides = libpipewire-0.3.so
 	conflicts = pipewire
