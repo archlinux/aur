@@ -1,7 +1,7 @@
 # Maintainer: Robbert van der Helm <mail@robbertvanderhelm.nl>
 
 pkgname=yabridge
-pkgver=2.2.1
+pkgver=2.2.1.r4.gae71536
 pkgrel=1
 pkgdesc="Yet Another VST bridge, run Windows VST2 plugins under Linux"
 epoch=
@@ -13,11 +13,16 @@ optdepends=('yabridgectl: utility for setting up and managing yabridge')
 makedepends=('meson' 'ninja')
 options=('!strip')
 install=yabridge.install
-source=("https://github.com/robbert-vdh/yabridge/archive/$pkgver.tar.gz")
-sha256sums=('69f2c6b8863ee85242240ff9392fbd2c746b135e08f8cfd73c4843f3171b1d6a')
+# TODO: Revert on the next release, commit is exactly the same as 2.2.1 with
+#       the exception that it gets rid of __cdecl on Wine 6.0 and above
+# source=("https://github.com/robbert-vdh/yabridge/archive/$pkgver.tar.gz")
+source=("https://github.com/robbert-vdh/yabridge/archive/ae71536639d4966c6cf83e347059b5440005ac0c.tar.gz")
+sha256sums=('5266a8a87b59c637724b304d40b628723d9e79fd40db60b3094c812b2514ac0c')
 
 build() {
-  cd "$pkgname-$pkgver"
+  # TODO: Revert
+  # cd "$pkgname-$pkgver"
+  cd "$pkgname-ae71536639d4966c6cf83e347059b5440005ac0c"
 
   # Meson won't apply any new options or update wraps if they already exist, so
   # if we're building from a dirty src/ directory we'll just nuke any cached
@@ -39,7 +44,9 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver/build"
+  # TODO: Revert
+  # cd "$pkgname-$pkgver/build"
+  cd "$pkgname-ae71536639d4966c6cf83e347059b5440005ac0c/build"
 
   install -dm755 "${pkgdir}"/usr/bin
   install yabridge-{host,group}.exe{,.so} "${pkgdir}"/usr/bin
