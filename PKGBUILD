@@ -5,7 +5,7 @@
 #
 pkgname="python2-gimp"
 _pkgname="gimp"
-pkgver="2.10.20"
+pkgver="2.10.22"
 pkgrel="1"
 pkgdesc='Python 2 plugins support for GIMP'
 url='https://www.gimp.org/'
@@ -14,7 +14,7 @@ license=('LGPL')
 depends=('gimp' 'pygtk')
 makedepends=('gtk-doc' 'intltool')
 source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('e12f9f874b1a007c4277b60aa81e0b67330be7e6153e5749ead839b902fc7b3c')
+sha256sums=('2db84b57f3778d80b3466d7c21a21d22e315c7b062de2883cbaaeda9a0f618bb')
 
 prepare() {
     cd ${_pkgname}-${pkgver}
