@@ -4,7 +4,7 @@
 
 pkgname=protonmail-bridge-bin
 pkgver=1.5.4
-pkgrel=1
+pkgrel=2
 _pkgrel=1
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
@@ -13,8 +13,8 @@ license=('GPL3')
 
 depends=('hicolor-icon-theme' 'libsecret' 'qt5-multimedia' 'ttf-dejavu')
 optdepends=(
-    'gnome-keyring: supported password manager (password manager is required)'
-    'pass: supported password manager (password manager is required)'
+    'gnome-keyring: gnome-keyring support'
+    'pass: pass support'
 )
 conflicts=('protonmail-bridge')
 options=('!emptydirs' '!strip')
