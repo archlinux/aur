@@ -1,0 +1,14 @@
+pkgbase = sheldon-bin
+	pkgdesc = A fast, configurable, shell plugin manager
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/rossmacarthur/sheldon
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	provides = sheldon
+	source = sheldon-v0.6.0.tar.gz::https://github.com/rossmacarthur/sheldon/releases/download/0.6.0/sheldon-0.6.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = 2d9c55670c381daca92a3f5091864a827c34f62819965a0f1e9d9336f52b24c7
+
+pkgname = sheldon-bin
+
