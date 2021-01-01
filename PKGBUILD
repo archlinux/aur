@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 # Contributor: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=rpcs3
-pkgver=0.0.13
+pkgver=0.0.14
 pkgrel=1
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=(x86_64)
