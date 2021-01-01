@@ -8,7 +8,16 @@ url="https://github.com/xwmx/${pkgname}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 license=('AGPL3')
 depends=('bash' 'git')
-optdepends=('bat' 'pandoc' 'ripgrep' 'w3m' 'tig')
+optdepends=('ack'
+            'bat'
+            'exa'
+            'ffmpeg'
+            'pandoc'
+            'readability-cli'
+            'ripgrep'
+            'the_silver_searcher'
+            'tig'
+            'w3m')
 provides=("$pkgname")
 conflicts=("$pkgname")
 sha512sums=('d4102012f67cdee8d1e60a29fd42078df3d4f095fb34564ea70563894e5d975e040819ea43abc048dac8596cc03c8a251fc15c6d4620fe3370bc145e97c6660f')
