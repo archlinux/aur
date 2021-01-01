@@ -1,5 +1,5 @@
 pkgname=duckclient
-pkgver=5.6.0
+pkgver=5.7.0
 pkgrel=1
 pkgdesc="Standalone version of the MUCK/MUSH/MUX/MOO client for chrome."
 arch=('x86_64')
@@ -8,9 +8,9 @@ license=('custom')
 source=("http://duckclient.com/downloads/DuckClient-$pkgver-linux-x64.zip"
 	"$pkgname"
 	"$pkgname.desktop")
-md5sums=(42ffa40a5330e0d223a3a7ed19c3d74a
-	 eaaa57848431e81987b34baccc678d10
-	 28f409026d5b12f0f947e1b690642156)
+md5sums=('e7ec4a23284f7a1db2113c4d56505364'
+         'eaaa57848431e81987b34baccc678d10'
+         '28f409026d5b12f0f947e1b690642156')
 package() {
 	cd "$srcdir/DuckClient-$pkgver-linux-x64"
 	install -d "$pkgdir/opt/duckclient"
