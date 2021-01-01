@@ -1,0 +1,20 @@
+diff --unified --recursive --text readsb-protobuf-4.0.1.orig/readsbrrd.c readsb-protobuf-4.0.1.new/readsbrrd.c
+--- readsb-protobuf-4.0.1.orig/readsbrrd.c	2020-12-14 12:01:12.000000000 +0100
++++ readsb-protobuf-4.0.1.new/readsbrrd.c	2020-12-30 20:56:42.205500675 +0100
+@@ -20,7 +20,6 @@
+ #include "readsbrrd.h"
+ #include "readsb.pb-c.h"
+ 
+-extern const char * const sys_siglist[];
+ static int readsbrrd_exit = 0;
+ static uint8_t *read_buf;
+ static error_t parse_opt(int key, char *arg, struct argp_state *state);
+@@ -100,7 +99,7 @@
+ static void signal_handler(int sig) {
+     signal(sig, SIG_DFL); // Reset signal handler
+     readsbrrd_exit = 1;
+-    fprintf(stderr, "caught signal %s, shutting down..\n", sys_siglist[sig]);
++    fprintf(stderr, "caught signal %s, shutting down..\n", strsignal(sig));
+ }
+ 
+ /**
