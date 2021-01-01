@@ -2,7 +2,7 @@
 
 pkgname=python-fast-histogram
 _pyname=fast-histogram
-pkgver=0.5
+pkgver=0.9
 pkgrel=1
 pkgdesc="Fast 1D and 2D histogram functions in Python"
 arch=('i386' 'x86_64')
@@ -11,8 +11,8 @@ license=('CUSTOM')
 depends=('python' 'python-numpy')
 makedepends=('python-setuptools')
         
-source=(https://files.pythonhosted.org/packages/5d/65/d070114edb45e3365768ae43a15ab1491dc8ff06ea57384262c22e742dd1/fast-histogram-${pkgver}.tar.gz)
-sha256sums=('0e3849e244909aa68e58305ed101c19c8576176eaf90fd5d79215d5ade51a6a7')
+source=(https://files.pythonhosted.org/packages/dd/c7/8f6b0748fecd0e002d2c8ca777504ad90777d8877bd1d48a80e71fddeccd/fast-histogram-${pkgver}.tar.gz)
+sha256sums=('6325ce42060bb9d1987a3aefffcac45bdd3810bc58ce69716132e23aa49f7a9f')
 
 package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
