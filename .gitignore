@@ -1,0 +1,4 @@
+/pkg
+/src
+/git-completion
+/*.pkg.tar.*
