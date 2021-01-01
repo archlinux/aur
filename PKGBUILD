@@ -17,7 +17,7 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=
+install=libretextus.install
 changelog=
 source=("$pkgname-$pkgver::git://github.com/LibreTextus/LibreTextus.git")
 noextract=()
@@ -32,4 +32,5 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/usr/" install
+	rm -rf "$pkgdir/bin/"
 }
