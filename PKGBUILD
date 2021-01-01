@@ -7,18 +7,21 @@ pkgname='ros-melodic-uuid-msgs'
 pkgver='1.0.6'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-message-generation
   ros-melodic-catkin
   ros-melodic-std-msgs)
 makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]})
+  ${ros_makedepends[@]}
+  boost1.69)
 
 ros_depends=(ros-melodic-message-runtime
   ros-melodic-std-msgs)
-depends=(${ros_depends[@]})
+depends=(
+  ${ros_depends[@]}
+  boost1.69)
 
 # Git version (e.g. for debugging)
 # _tag=release/melodic/uuid_msgs/${pkgver}-${_pkgver_patch}
@@ -49,10 +52,9 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-        -DPYTHON_BASENAME=.cpython-37m \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DBOOST_ROOT=/opt/boost1.69 \
+	-DBoost_NO_SYSTEM_PATHS=TRUE
   make
 }
 
