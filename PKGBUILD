@@ -5,7 +5,7 @@
 
 pkgname=gst-plugin-pipewire-git
 _pkgbase=pipewire
-pkgver=0.3.18.91.gc39ba857
+pkgver=0.3.18.104.gd99ac615
 _ver=${pkgver:0:3}
 pkgrel=1
 pkgdesc='Multimedia graph framework - pipewire plugin (git)'
@@ -15,7 +15,7 @@ conflicts=(gst-plugin-pipewire)
 url=https://pipewire.org
 license=(LGPL2.1)
 arch=(x86_64)
-makedepends=(git meson ninja valgrind gst-plugins-base jack2)
+makedepends=(git meson ninja valgrind gst-plugins-base)
 source=(git+https://gitlab.freedesktop.org/pipewire/pipewire.git)
 md5sums=('SKIP')
 
@@ -27,6 +27,7 @@ build() {
     arch-meson ${_pkgbase} build \
         -D docs=false \
         -D bluez5=false \
+        -D jack=false -Dpipewire-jack=false \
         -D udevrulesdir=/usr/lib/udev/rules.d
     ninja -C build src/gst/libgstpipewire.so
 }
