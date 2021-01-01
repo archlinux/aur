@@ -1,5 +1,21 @@
 *.tar.zst
-cyberpunk-grub-theme-git/
 pkg/
 src/
 k/
+
+# ignore everything
+*
+!.gitignore
+
+# except PKGBUILD needed files
+!PKGBUILD
+!*.install
+!ChangeLog
+
+# common wing-man files
+!*.diff
+!*.patch
+
+!README.md
+
+# add files that don't have an online source
