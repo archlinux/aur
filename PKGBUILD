@@ -1,4 +1,5 @@
-# Maintainer: Nathan <ndowens@artixlinux.org>
+# Maintainer: Stephan Springer <buzo+arch@Lini.de>
+# Contributor: Nathan <ndowens@artixlinux.org>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinxu.org>
