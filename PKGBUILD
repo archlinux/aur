@@ -3,10 +3,10 @@
 _gemname=pifan
 pkgname=$_gemname
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Control your Raspberry Pi fan'
 arch=(aarch64 armv6h armv7h)
-url='https://gitlab/amarthadan/pifan'
+url='https://gitlab.com/amarthadan/pifan'
 license=(MIT)
 depends=(ruby ruby-activesupport ruby-rpi_gpio ruby-tty-config ruby-tty-logger ruby-tty-option)
 options=(!emptydirs)
