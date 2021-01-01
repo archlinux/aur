@@ -3,7 +3,7 @@
 # Upstream: https://github.com/Thann/sox-noise
 
 pkgname=sox-noise-git
-pkgver=0.0.0.post5+g682054a
+pkgver=0.0.2.post2+gd84ad26
 pkgrel=1
 pkgdesc='Noise generator GUI powered by Sound eXchange (SoX).'
 arch=('any')
