@@ -1,12 +1,12 @@
 pkgbase = ruby-tty-logger
 	pkgdesc = Readable, structured and beautiful terminal logging
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ttytoolkit.org
 	arch = any
 	license = MIT
 	depends = ruby
-	depends = ruby-pastel
+	depends = ruby-pastel>=0.8.0
 	noextract = tty-logger-0.5.0.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/tty-logger-0.5.0.gem

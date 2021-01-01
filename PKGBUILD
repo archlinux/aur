@@ -3,12 +3,12 @@
 _gemname=tty-logger
 pkgname=ruby-$_gemname
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Readable, structured and beautiful terminal logging'
 arch=(any)
 url='https://ttytoolkit.org'
 license=(MIT)
-depends=(ruby ruby-pastel)
+depends=(ruby 'ruby-pastel>=0.8.0')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
