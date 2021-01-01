@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gammy
-pkgver=0.9.59
+pkgver=0.9.60
 pkgrel=1
 pkgdesc="Adaptive screen brightness/temperature tool."
 arch=('x86_64')
@@ -12,17 +12,17 @@ optdepends=('plog: library for debug logging'
             'qt5ct: recommended on DE without Qt integration')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Fushko/gammy/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('125281fc7d0e752e50ff6f8eb460563937006229130699d2cf9f79ac20bc812f'
+sha256sums=('10c096fc0ecc36f4f3dd5715cd91d3002bd7437ba3a23b4c90dbb784f2a7ee6f'
             '6c67db210bd45f51d80119d25ffcaff9861aea926427ccf186d4530cf35ecf5d')
 
 build() {
-	cd "$pkgname-${pkgver}"
+	cd "$pkgname-$pkgver"
 	qmake Gammy.pro PREFIX=/usr
 	make
 }
 
 package() {
-	cd "$pkgname-${pkgver}"
+	cd "$pkgname-$pkgver"
 	make INSTALL_ROOT="$pkgdir" install
 
 	install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
