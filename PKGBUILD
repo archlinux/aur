@@ -1,20 +1,20 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=i3-cheat
-pkgver=2020.10.26
+pkgver=2021.01.01
 pkgrel=1
 pkgdesc="cheat sheet for i3wm"
 arch=('any')
 url="https://github.com/TheCynicalTeam/$pkgname"
 license=('GPL3')
 depends=('gtk3' 'i3-wm')
-source=("${pkgname}-$pkgver-$pkgrel.tar.gz::${url}/archive/$pkgver-$pkgrel.tar.gz")
-sha256sums=('1ab985c03e2a6677e460b3c045f02bc34707833da79b1344c00f24d3a726f36c')
+source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
+sha256sums=('e77e351c856f6594a17e583cded8bf75fe1bc4dd3ddd6babd2f7b24d83b98fba')
 
 package() {
-  cp -a $srcdir/$pkgname-$pkgver-$pkgrel/etc $pkgdir/etc
+  cp -a $srcdir/$pkgname-$pkgver/etc $pkgdir/etc
   mkdir -p $pkgdir/usr
-	cp -a $srcdir/$pkgname-$pkgver-$pkgrel/usr/bin $pkgdir/usr/bin
+	cp -a $srcdir/$pkgname-$pkgver/usr/bin $pkgdir/usr/bin
   mkdir -p $pkgdir/usr/lib
-	cp -a $srcdir/$pkgname-$pkgver-$pkgrel/usr/lib/i3-cheat $pkgdir/usr/lib/i3-cheat
+	cp -a $srcdir/$pkgname-$pkgver/usr/lib/i3-cheat $pkgdir/usr/lib/i3-cheat
 }
