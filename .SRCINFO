@@ -1,15 +1,15 @@
 pkgbase = insync-nemo
 	pkgdesc = Nemo integration for insync
-	pkgver = 3.0.13.40201
-	pkgrel = 2
+	pkgver = 3.1.4.40795
+	pkgrel = 1
 	url = https://www.insynchq.com/downloads
 	arch = any
 	license = custom:insync
 	depends = insync
 	depends = nemo-python
 	options = !strip
-	source = insync-nemo-3.0.13.40201.deb::http://s.insynchq.com/builds/insync-nemo_3.0.13.40201_all.deb
-	sha256sums = d351325a29b54f74b4c8e68589ff75946684be163e9d469cc999a3c4d2d4c3ad
+	source = insync-nemo-3.1.4.40795.deb::http://s.insynchq.com/builds/insync-nemo_3.1.4.40795_all.deb
+	sha256sums = d4a6c6d6641e1d4571a9b255836f18caf30106cc3c16a028a3afe0cc358eea54
 
 pkgname = insync-nemo
 
