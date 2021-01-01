@@ -1,0 +1,20 @@
+pkgbase = myquerytutor
+	pkgdesc = A personal tutor to teach you Structured Query Language.
+	pkgver = r95.61f6917
+	pkgrel = 1
+	url = https://myquerytutor.com
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python3
+	depends = python-pyqt5
+	depends = python-pyqtwebengine
+	depends = python-beautifulsoup4
+	depends = python-requests
+	depends = python-setuptools
+	depends = desktop-file-utils
+	source = myquerytutor::git+http://gitlab.com/tuxta/myquerytutor.git
+	md5sums = SKIP
+
+pkgname = myquerytutor
+
