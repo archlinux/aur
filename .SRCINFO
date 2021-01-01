@@ -1,0 +1,15 @@
+pkgbase = ruby-epoll
+	pkgdesc = A Ruby binding for epoll(7)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/ksss/epoll
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = epoll-0.3.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/epoll-0.3.0.gem
+	sha256sums = bf8a2b74dfec14320146e4fed8f931c8724f2d560f50e10732cf278c0a1454d1
+
+pkgname = ruby-epoll
+
