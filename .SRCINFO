@@ -1,10 +1,11 @@
 pkgbase = kytea
 	pkgdesc = The Kyoto Text Analysis Toolkit for word segmentation and pronunciation estimation, etc.
 	pkgver = 0.4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.phontron.com/kytea
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
 	source = http://www.phontron.com/kytea/download/kytea-0.4.7.tar.gz
 	sha1sums = 684f6b90bd4ae048ea3a6fc9762b1baecb006eb3

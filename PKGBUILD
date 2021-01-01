@@ -1,12 +1,17 @@
 pkgname=kytea
 pkgver=0.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The Kyoto Text Analysis Toolkit for word segmentation and pronunciation estimation, etc."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="http://www.phontron.com/kytea"
 license=('Apache-2.0')
 source=("http://www.phontron.com/kytea/download/kytea-${pkgver}.tar.gz")
 builddepends=(gcc)
+
+prepare() {
+    cd $srcdir/$pkgname-$pkgver
+    cp /usr/share/automake-`pacman -Q --info automake|grep -i version| awk -F ":" '{print $2}'| awk '{$1=$1};1'| awk -F "." '{print $1"."$2}'`/config.guess .
+}
 
 build() {
     cd $srcdir/$pkgname-$pkgver
