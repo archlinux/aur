@@ -1,0 +1,22 @@
+pkgbase = pifan
+	pkgdesc = Control your Raspberry Pi fan
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab/amarthadan/pifan
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	depends = ruby
+	depends = ruby-activesupport
+	depends = ruby-rpi_gpio
+	depends = ruby-tty-config
+	depends = ruby-tty-logger
+	depends = ruby-tty-option
+	noextract = pifan-1.0.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/pifan-1.0.0.gem
+	sha256sums = 8988aa986aed0b7e14de82f9934e438c1e4feaccc1854df5acf887dcf5980477
+
+pkgname = pifan
+
