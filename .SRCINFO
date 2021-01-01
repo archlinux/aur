@@ -1,7 +1,7 @@
 pkgbase = pacom
 	pkgdesc = Pacom: the Pacman companion
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kriansa/pacom
 	arch = any
 	license = apache

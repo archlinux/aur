@@ -2,7 +2,7 @@
 
 pkgname=pacom
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Pacom: the Pacman companion"
 url="https://github.com/kriansa/pacom"
 arch=(any)
@@ -20,5 +20,6 @@ package() {
   cd "$pkgname-$pkgver" || exit 1
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  cp build/pacom "$pkgdir/usr/bin"
+  install -d -m755 "$pkgdir/usr/bin/"
+  cp build/pacom "$pkgdir/usr/bin/"
 }
