@@ -6,6 +6,7 @@ pkgbase = twitch-dl-bin
 	arch = any
 	license = GPL3
 	depends = python
+	depends = ffmpeg
 	provides = twitch-dl
 	provides = twitch-dl-bin
 	conflicts = twitch-dl
