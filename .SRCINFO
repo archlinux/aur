@@ -1,13 +1,14 @@
 pkgbase = cherrytree-bin
 	pkgdesc = Binary version of cherrytree
 	pkgver = 0.99.27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.giuspen.com/cherrytree/
 	arch = x86_64
 	license = GPL3
 	depends = gtksourceviewmm
 	depends = libxml++2.6
 	depends = gspell
+	depends = uchardet
 	optdepends = p7zip: for password protection support
 	provides = cherrytree
 	conflicts = cherrytree

@@ -3,12 +3,12 @@
 pkgname=cherrytree-bin
 _basename=${pkgname%*-bin}
 pkgver=0.99.27
-pkgrel=1
+pkgrel=2
 pkgdesc='Binary version of cherrytree'
 arch=('x86_64')
 url='https://www.giuspen.com/cherrytree/'
 license=('GPL3')
-depends=('gtksourceviewmm' 'libxml++2.6' 'gspell')
+depends=('gtksourceviewmm' 'libxml++2.6' 'gspell' 'uchardet')
 optdepends=('p7zip: for password protection support')
 provides=("${_basename}")
 conflicts=("${_basename}")
