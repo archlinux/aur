@@ -65,7 +65,7 @@ _localmodcfg=
 
 pkgbase=linux-ck
 pkgver=5.10.4
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -205,7 +205,7 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  provides=("linux-ck=${pkgver}")
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
   #groups=('ck-generic')
 
   cd linux-${pkgver}
@@ -238,7 +238,6 @@ _package() {
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for ${pkgbase/linux/Linux} kernel"
   depends=('linux-ck') # added to keep kernel and headers packages matched
-  provides=("linux-ck-headers=${pkgver}" "linux-headers=${pkgver}")
   #groups=('ck-generic')
 
   cd linux-${pkgver}
