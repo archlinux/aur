@@ -3,16 +3,16 @@
 # Contributor: Utkan Güngördü <utkan@freeconsole.org>
 
 pkgname=waifu2x-ncnn-vulkan-git
-pkgver=20200818.r1.gb152fc7
-pkgrel=2
+pkgver=20200818.r2.gfaa34ed
+pkgrel=1
 pkgdesc='waifu2x converter ncnn version'
+arch=(i686 x86_64)
 url=https://github.com/nihui/waifu2x-ncnn-vulkan
 license=(MIT)
 depends=(vulkan-icd-loader libwebp)
-makedepends=(git cmake glslang vulkan-headers ncnn)
+makedepends=(git cmake glslang vulkan-headers ncnn-git)
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-arch=(i686 x86_64)
 source=(git+"${url}".git)
 md5sums=('SKIP')
 
