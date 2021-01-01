@@ -3,7 +3,7 @@
 _gemname=pifan
 pkgname=$_gemname
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Control your Raspberry Pi fan'
 arch=(aarch64 armv6h armv7h)
 url='https://gitlab/amarthadan/pifan'
@@ -13,6 +13,7 @@ options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
 sha256sums=('8988aa986aed0b7e14de82f9934e438c1e4feaccc1854df5acf887dcf5980477')
+backup=(etc/$_gemname/$_gemname.yml)
 
 package() {
   cd "$srcdir"
