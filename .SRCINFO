@@ -1,6 +1,6 @@
 pkgbase = qt-logout
 	pkgdesc = Logout script for qt5
-	pkgver = 2020.11.03
+	pkgver = 2021.01.01
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/qt-logout
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = qt-logout
 	depends = python-pyqt5
 	depends = gtk-engine-murrine
 	optdepends = multimonitorlock: default lock screen for qt-logout
-	source = https://github.com/TheCynicalTeam/qt-logout/archive/2020.11.03-1.tar.gz
-	sha256sums = 5a10c06e946baddb45501efccf3dee74dc06dcdfd6aeba81c85c6ff8962f0a09
+	source = qt-logout-2021.01.01.tar.gz::https://github.com/TheCynicalTeam/qt-logout/archive/2021.01.01.tar.gz
+	sha256sums = 4acc5fc9ff44d39560900fc23882c481d91fcb695013b8cb53e907664530413f
 
 pkgname = qt-logout
 
