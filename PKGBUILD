@@ -1,20 +1,20 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=multimonitorlock-gui
-pkgver=2020.12.9
+pkgver=2021.01.01
 pkgrel=1
 pkgdesc='GUI for multimonitorlock to set the background'
 arch=('any')
 url="https://github.com/TheCynicalTeam/$pkgname"
 license=('GPL3')
 depends=('python-pyqt5' 'multimonitorlock' 'gtk-engine-murrine')
-source=("${pkgname}-$pkgver-$pkgrel.tar.gz::${url}/archive/$pkgver-$pkgrel.tar.gz")
-sha256sums=('46a2a6da19bc04b7fe43dd98c962e36fdb1dffaa6b839764c5f317aa323fa7d3')
+source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
+sha256sums=('e086ce592e78a154a0eca2157026b9a82bd2cd778e2ac8b588c44b43960c4501')
 
 package() {
-  cp -a $srcdir/$pkgname-$pkgver-$pkgrel/etc $pkgdir/etc
+  cp -a $srcdir/$pkgname-$pkgver/etc $pkgdir/etc
   mkdir -p $pkgdir/usr
-	cp -a $srcdir/$pkgname-$pkgver-$pkgrel/usr/bin $pkgdir/usr/bin
+	cp -a $srcdir/$pkgname-$pkgver/usr/bin $pkgdir/usr/bin
   mkdir -p $pkgdir/usr/lib
-	cp -a $srcdir/$pkgname-$pkgver-$pkgrel/usr/lib/multimonitorlock-gui $pkgdir/usr/lib/multimonitorlock-gui
+	cp -a $srcdir/$pkgname-$pkgver/usr/lib/multimonitorlock-gui $pkgdir/usr/lib/multimonitorlock-gui
 }
