@@ -1,8 +1,8 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-openexr
-pkgver=2.5.3
-pkgrel=3
+pkgver=2.5.4
+pkgrel=1
 pkgdesc="An high dynamic-range image file format library (mingw-w64)"
 url="http://www.openexr.com/"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('mingw-w64-crt' 'mingw-w64-zlib')
 makedepends=('mingw-w64-cmake' 'wine')
 options=('staticlibs' '!buildflags' '!strip')
 source=("https://github.com/AcademySoftwareFoundation/openexr/archive/v${pkgver}.tar.gz")
-sha256sums=("6a6525e6e3907715c6a55887716d7e42d09b54d2457323fcee35a0376960bebf")
+sha256sums=("dba19e9c6720c6f64fbc8b9d1867eaa75da6438109b941eefdc75ed141b6576d")
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
