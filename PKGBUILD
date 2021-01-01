@@ -7,9 +7,11 @@ url=""
 license=('GPL')
 depends=('libsystemd')
 makedepends=('rust' 'cargo' 'git')
-source=(git+https://github.com/dswd/vpncloud.rs.git#tag=v${pkgver})
+source=(git+https://github.com/dswd/vpncloud.rs.git#tag=v${pkgver}
+        sysusers.conf)
 noextract=()
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'eb756f1f940838cfe35555ba9e8e07d0e7182a72ace03853256ec5b72b0e8fbf')
 validpgpkeys=('6B5BBBCA2E3392315CC47434694A43B9C7FE6EA9')
 
 prepare() {
