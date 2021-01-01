@@ -1,0 +1,23 @@
+pkgbase = python-scikit-learn-git
+	pkgdesc = A set of Python modules for machine learning and data mining
+	pkgver = r26390.6b4f82433d
+	pkgrel = 1
+	url = https://scikit-learn.org/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = cython
+	makedepends = openmp
+	depends = python-scipy
+	depends = python-joblib
+	depends = python-threadpoolctl
+	optdepends = python-matplotlib: plotting capabilities
+	provides = python-scikit-learn
+	conflicts = python-scikit-learn
+	options = !emptydirs
+	source = git+https://github.com/scikit-learn/scikit-learn.git
+	sha256sums = SKIP
+
+pkgname = python-scikit-learn-git
+
