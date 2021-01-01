@@ -1,6 +1,6 @@
 pkgbase = liferea-unstable
 	pkgdesc = A desktop news aggregator for online news feeds and weblogs - Unstable
-	pkgver = 1.13.2
+	pkgver = 1.13.3
 	pkgrel = 1
 	url = http://lzone.de/liferea/
 	arch = i686
@@ -26,8 +26,8 @@ pkgbase = liferea-unstable
 	conflicts = liferea-git
 	options = !libtool
 	options = !emptydirs
-	source = liferea-unstable-1.13.2.tar.gz::https://github.com/lwindolf/liferea/archive/v1.13.2.tar.gz
-	sha256sums = a2a7a4d2bfa9b9e8baa288d4a60a73a1b7e81ffa5765841ae43833df838dd757
+	source = liferea-unstable-1.13.3.tar.gz::https://github.com/lwindolf/liferea/archive/v1.13.3.tar.gz
+	sha256sums = 42e1faf8860373b78640fd35b2636630fd8770059c61e535018b0683101d072d
 
 pkgname = liferea-unstable
 
