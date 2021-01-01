@@ -2,18 +2,23 @@
 
 _pkgname=clikit
 pkgname=python-clikit-git
-pkgver=0.6.2
-pkgrel=4
+pkgver=0.6.2.r14.g1da34f1
+pkgrel=1
 pkgdesc="CliKit is a group of utilities to build beautiful and testable command line interfaces."
 arch=('any')
-provides=("python-clikit=${pkgver}")
+provides=("python-clikit")
 conflicts=('python-clikit')
 url="https://github.com/sdispater/${_pkgname}"
 license=('MIT')
 depends=('python-pastel>=0.2.0' 'python-pastel<0.3.0' 'python-pylev>=1.3' 'python-pylev<2.0' 'python-crashtest>=0.3.0' 'python-crashtest<0.4.0' 'python>=3.6' 'python<4.0')
 makedepends=('python-dephell')
-source=("${_pkgname}::${url//https/git}#tag=${pkgver}")
+source=("${_pkgname}::git+${url}")
 sha256sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/${_pkgname}"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
     cd "${srcdir}"/${_pkgname}

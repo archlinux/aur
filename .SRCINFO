@@ -1,7 +1,7 @@
 pkgbase = python-clikit-git
 	pkgdesc = CliKit is a group of utilities to build beautiful and testable command line interfaces.
-	pkgver = 0.6.2
-	pkgrel = 3
+	pkgver = 0.6.2.r14.g1da34f1
+	pkgrel = 1
 	url = https://github.com/sdispater/clikit
 	arch = any
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = python-clikit-git
 	depends = python<4.0
 	provides = python-clikit
 	conflicts = python-clikit
-	source = clikit::git://github.com/sdispater/clikit
+	source = clikit::git+https://github.com/sdispater/clikit
 	sha256sums = SKIP
 
 pkgname = python-clikit-git
