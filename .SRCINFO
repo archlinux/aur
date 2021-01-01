@@ -1,7 +1,7 @@
 pkgbase = kcm-grub2-git
 	pkgdesc = A KDE Control Module for configuring the GRUB2 bootloader
 	pkgver = 0.6.4.r86.g1912ede
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/system/kcm-grub2
 	arch = x86_64
 	license = GPL3

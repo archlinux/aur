@@ -4,7 +4,7 @@
 pkgname=kcm-grub2-git
 _product="${pkgname%-git}"
 pkgver=0.6.4.r86.g1912ede
-pkgrel=1
+pkgrel=2
 pkgdesc="A KDE Control Module for configuring the GRUB2 bootloader"
 arch=('x86_64')
 url='https://invent.kde.org/system/kcm-grub2'
