@@ -1,7 +1,7 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.2.0.r261.g8951400
+pkgver=0.2.0.r294.g27bb5be
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=('any')
@@ -9,9 +9,9 @@ url="https://github.com/sile-typesetter/${pkgname%-git}"
 license=('AGPL3')
 depends=('bc'
          'bcprov' # pdftk optdepend is required
-         'cpdf'
          'entr'
          'epubcheck'
+         'ghostscript'
          'git'
          'imagemagick'
          'inetutils'
@@ -30,13 +30,11 @@ depends=('bc'
          'podofo'
          'poppler'
          'povray'
-         'rsync'
          'sile'
          'sqlite'
          'tex-gyre-fonts'
          'texlive-core'
          'ttf-hack'
-         'xcftools'
          'yarn'
          'yq'
          'zint'
