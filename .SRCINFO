@@ -1,0 +1,17 @@
+pkgbase = tesseract-data-git
+	pkgdesc = Trained language data for tesseract OCR Engine
+	pkgver = 44.4767ea9
+	pkgrel = 1
+	url = https://github.com/tesseract-ocr/tessdata
+	arch = i686
+	arch = x86_64
+	groups = tesseract-data-git
+	license = Apache
+	depends = tesseract
+	source = tessdata::git+https://github.com/tesseract-ocr/tessdata.git
+	md5sums = SKIP
+
+pkgname = tesseract-data-jpn_vert-git
+	provides = tesseract-data-jpn_vert
+	conflicts = tesseract-data-jpn_vert
+
