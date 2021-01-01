@@ -10,7 +10,7 @@ depends=('libsystemd' 'libnotify' 'udev' 'gnome-icon-theme' 'gnome-icon-theme-ex
 makedepends=('systemd' 'markdown')
 license=('GPL')
 validpgpkeys=('BD84DE71F493DF6814B0167254EDC91609BC9183')
-source=("http://www.eworm.de/download/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.asc})
+source=("https://www.eworm.de/download/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.asc})
 sha256sums=('eb2831b6d90204bb9968197ac688a4b692be9922785fb407a2def28612b10bbe'
             'SKIP')
 
