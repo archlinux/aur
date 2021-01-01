@@ -1,16 +1,17 @@
+# Maintainer: EatMyVenom <eat.my.venomm@gmail.com>
 # Contributor: artoo <artoo@manjaro.org>
-# Maintainer: Nathan Owens <ndowens at artixlinux.org>
+# Contributor: Nathan Owens <ndowens at artixlinux.org>
 
 pkgbase=elogind
 pkgname=('elogind' 'libelogind')
-pkgver=243.7
+pkgver=246.9.1
 pkgrel=1
 pkgdesc="The systemd project's logind, extracted to a standalone package"
 arch=('i686' 'x86_64')
 url="https://github.com/elogind/elogind"
 license=('GPL')
 makedepends=('intltool' 'libtool' 'gperf' 'gtk-doc'
-	     'git' 'libcap' 'meson' 'dbus-nosystemd')
+	     'git' 'libcap' 'meson')
 options=('!libtool')
 source=("git+https://github.com/elogind/elogind#tag=v${pkgver}")
 sha256sums=('SKIP')
@@ -38,7 +39,7 @@ build() {
 package_elogind() {
   pkgdesc="The systemd project's logind, extracted to a standalone package"
   provides=("elogind=${pkgver}")
-  depends=('libelogind' 'pam' 'acl' 'dbus-x11')
+  depends=('libelogind' 'pam' 'acl')
   conflicts=('systemd-sysvcompat' 'consolekit')
   optdepends=('dbus-openrc: dbus initscript')
   install=elogind.install
