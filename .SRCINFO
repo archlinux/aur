@@ -1,6 +1,6 @@
 pkgbase = osc-git
 	pkgdesc = Command line client for the openSUSE Build Service
-	pkgver = 0.162.0.r199.g035cd546
+	pkgver = 0.172.0.r3653.a6012b92
 	pkgrel = 1
 	url = https://github.com/openSUSE/osc
 	arch = any
@@ -9,17 +9,19 @@ pkgbase = osc-git
 	makedepends = python-setuptools
 	depends = python
 	depends = python-m2crypto
-	depends = urlgrabber
+	depends = diffstat
 	optdepends = obs-build: required to run local builds
 	optdepends = obs-service-format_spec_file: for running the format_spec_file source service
 	optdepends = obs-service-download_files: for running the download_files source service
 	optdepends = python-keyring: keyring support
+	optdepends = python-progressbar: progressbar support for operations like uploading and services
+	optdepends = python-distro: Linux OS platform information API
 	conflicts = osc
 	conflicts = osc-bash-completion
 	conflicts = zsh-completion-osc
 	replaces = osc-bash-completion
 	replaces = zsh-completion-osc
-	source = git+https://github.com/openSUSE/osc.git#branch=python3
+	source = git+https://github.com/openSUSE/osc.git#branch=master
 	sha256sums = SKIP
 
 pkgname = osc-git

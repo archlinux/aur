@@ -10,7 +10,7 @@
 
 pkgname=osc-git
 _pkgname=osc
-pkgver=0.172.0.r3651.61045600
+pkgver=0.172.0.r3653.a6012b92
 pkgrel=1
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
@@ -27,7 +27,7 @@ optdepends=('obs-build: required to run local builds'
             )
 conflicts=('osc' 'osc-bash-completion' 'zsh-completion-osc')
 replaces=('osc-bash-completion' 'zsh-completion-osc')
-source=("git+https://github.com/openSUSE/osc.git")
+source=("git+https://github.com/openSUSE/osc.git#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
