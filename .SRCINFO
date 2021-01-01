@@ -1,6 +1,6 @@
 pkgbase = multimonitorlock
 	pkgdesc = A simple lock script for i3lock-color
-	pkgver = 2020.9.23
+	pkgver = 2021.01.01
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/multimonitorlock
 	install = multimonitorlock.install
@@ -17,8 +17,8 @@ pkgbase = multimonitorlock
 	conflicts = multilockscreen-git
 	conflicts = betterlockscreen
 	conflicts = betterlockscreen-git
-	source = https://github.com/TheCynicalTeam/multimonitorlock/archive/2020.8.16-1.tar.gz
-	sha256sums = 56c8fd08449cc2015303a6382b831e5f3ce7fb7d7694a26ca5f59a92577294e4
+	source = multimonitorlock-2021.01.01.tar.gz::https://github.com/TheCynicalTeam/multimonitorlock/archive/2021.01.01.tar.gz
+	sha256sums = 92cc4567b4ec95658949aef689a3b095b621eac53c25195d262ef70fe2e299bb
 
 pkgname = multimonitorlock
 
