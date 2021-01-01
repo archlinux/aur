@@ -5,7 +5,7 @@ url='https://wiki.ros.org/robot_localization'
 pkgname='ros-melodic-robot-localization'
 pkgver='2.6.9'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-tf2-ros
@@ -30,6 +30,7 @@ makedepends=('ros-build-tools'
   ${ros_makedepends[@]}
   eigen
   cmake
+  geographiclib
   yaml-cpp)
 
 ros_depends=(ros-melodic-tf2-ros
