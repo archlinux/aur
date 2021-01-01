@@ -1,6 +1,6 @@
 pkgbase = instamenu-schemas
 	pkgdesc = addons for instamenu
-	pkgver = 2020.12.30
+	pkgver = 2021.01.01
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/instamenu-schemas
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = instamenu-schemas
 	makedepends = meson
 	depends = glib2
 	depends = dconf
-	provides = instamenu-schemas=2020.12.30
-	source = instamenu-schemas-2020.12.30.tar.gz::https://github.com/TheCynicalTeam/instamenu-schemas/archive/2020.12.30.tar.gz
-	sha256sums = e27a6c7410189f8cac0ead986affbd1689334d9bae7a1f6ce9854a9c31c88383
+	provides = instamenu-schemas=2021.01.01
+	source = instamenu-schemas-2021.01.01.tar.gz::https://github.com/TheCynicalTeam/instamenu-schemas/archive/2021.01.01.tar.gz
+	sha256sums = ebe8f193d9debfdcd86f74ccca7ff8602bc09fe131c9f71f931902d03357085f
 
 pkgname = instamenu-schemas
 
