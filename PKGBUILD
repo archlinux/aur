@@ -4,7 +4,7 @@
 
 _langs=(jpn_vert)
 
-pkgbase=tesseract-data-git
+pkgbase=tesseract-data-jpn_vert-git
 pkgname=($(for l in ${_langs[@]}; do echo tesseract-data-${l}-git; done))
 pkgver=44.4767ea9
 pkgrel=1

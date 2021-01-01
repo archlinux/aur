@@ -1,4 +1,4 @@
-pkgbase = tesseract-data-git
+pkgbase = tesseract-data-jpn_vert-git
 	pkgdesc = Trained language data for tesseract OCR Engine
 	pkgver = 44.4767ea9
 	pkgrel = 1
