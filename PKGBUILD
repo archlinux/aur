@@ -4,7 +4,7 @@
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 
 pkgname=psi-plus-git
-pkgver=1.4.1555.r1151.g2170e90
+pkgver=1.5.1477.r1153.g22ba4dd
 pkgrel=1
 pkgdesc="Psi+ is a powerful XMPP client (Qt, C++) designed for the XMPP power users (built with Qt 5.x)"
 url="https://psi-plus.com"
@@ -16,11 +16,9 @@ makedepends=('git' 'patch' 'cmake')
 provides=("psi-plus=$pkgver" "psi-plus-qt5-git=$pkgver")
 conflicts=('psi-plus' 'psi-plus-qt5-git' 'psi-plus-webkit-qt5-git' 'psi-plus-webkit-git')
 source=('git://github.com/psi-im/psi.git'
-        'psi-plus::git://github.com/psi-plus/main.git'
         'git://github.com/psi-im/iris.git'
         'git://github.com/psi-im/libpsi.git')
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP')
 
@@ -42,7 +40,7 @@ prepare() {
   git submodule update --remote
 
   # set version 
-  cd $srcdir/psi-plus/admin 
+  cd $srcdir/psi/admin 
   sh psi-plus-nightly-version $srcdir/psi  > $srcdir/psi/version
 }
 
