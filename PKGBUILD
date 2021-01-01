@@ -1,7 +1,7 @@
 # Maintainer: WatcherWhale
 
 pkgname=pop-nord
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="The pop-nord theme"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
 
 url="https://github.com/Zaedus/Pop-nord"
 license=('GPL-3.0-or-later')
-sha256sums=('655c33b0eccfb02898b31240ee5f3dc1fc7b9e9de5ebac4fb28da43664378c71')
+sha256sums=('0051e502ada1c28c9cdd05722a0b58a62c1dcf784cd0a368be5b6ccef34bd676')
 
 build() {
     cd "${srcdir}/Pop-nord-${pkgver}-nord-pop"
