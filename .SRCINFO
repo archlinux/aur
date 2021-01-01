@@ -1,0 +1,15 @@
+pkgbase = organice-git
+	pkgdesc = Organice is a tool to move files by extension or part of their name from the command line in an easy way.
+	pkgver = 1..
+	pkgrel = 1
+	url = https://github.com/snat-s/organice
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	provides = organice
+	source = git+https://github.com/snat-s/organice
+	md5sums = SKIP
+
+pkgname = organice-git
+
