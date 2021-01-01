@@ -1,11 +1,12 @@
+# Maintainder: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: Eric Bélanger <eric@archlinux.org>
 # Contributor: aur2ccr (http://ddg.gg/?q=!ccr+aur2ccr&t=chakra)
-# Maintainer : Marcos Heredia <chelqo@gmail.com>
+# Contributor : Marcos Heredia <chelqo@gmail.com>
 
 _pkgname=linux_logo
 pkgname=${_pkgname}_archcustom
-pkgver=5.11
-pkgrel=2
+pkgver=6.0
+pkgrel=1
 pkgdesc="Text-based logo and system information program"
 arch=('i686' 'x86_64') 
 url="http://www.deater.net/weave/vmwprod/linux_logo"
@@ -17,7 +18,7 @@ source=("http://www.deater.net/weave/vmwprod/linux_logo/${_pkgname}-${pkgver}.ta
         "arch.logo"
         "linux_logo.conf"
         "linux_logo.init")
-sha1sums=('bd22808f165574cb3bc98c579aa48c0acab65f39'
+sha1sums=('b15042dc0975a2be07bdd85b9511c198a80e01a9'
           'e88f2076f8682676a3b28ee1d4c4d3fec0bc2a94'
           '438bbdf26804bdec1f2ac501b966944b13335065'
           'a79dbbd397c92aea302187348e27e1e3fb54e450')
@@ -46,6 +47,6 @@ package() {
   install -Dpm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
 
   install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/logos"
-  install -Dpm644 ANNOUNCE.logo CHANGES* LINUX_LOGO.FAQ README* TODO USAGE "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -Dpm644 CHANGES* LINUX_LOGO.FAQ README* TODO USAGE "${pkgdir}/usr/share/doc/${pkgname}/"
   install -Dpm644 {logos,logos/distributions,logos/alternate_oses}/*.logo "${pkgdir}/usr/share/doc/${pkgname}/logos"
 }
