@@ -4,7 +4,7 @@
 
 pkgname=protonmail-bridge
 pkgver=1.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
 url="https://protonmail.com/bridge"
@@ -12,8 +12,8 @@ license=('GPL3')
 makedepends=('go' 'gcc' 'git')
 depends=('hicolor-icon-theme' 'libsecret' 'qt5-multimedia' 'ttf-dejavu')
 optdepends=(
-    'gnome-keyring: supported password manager (password manager is required)'
-    'pass: supported password manager (password manager is required)'
+    'gnome-keyring: gnome-keyring support'
+    'pass: pass support'
 )
 conflicts=('protonmail-bridge-bin')
 options=('!emptydirs' '!strip')
@@ -24,8 +24,11 @@ sha256sums=('SKIP'
 
 prepare() {
     cd ${srcdir}/proton-bridge/
-    export PATH=$PATH:$(go env GOPATH)/bin/
-    git checkout "br-${pkgver}"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    git checkout "v${pkgver}"
     # fix versioning in source 
     # sed -i s/1.4.0-git/1.4.5-git/g Makefile
     make clean
