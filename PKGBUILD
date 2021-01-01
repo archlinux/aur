@@ -1,16 +1,17 @@
-# Maintainer: Christian Hesse <mail@eworm.de>
+# Maintainer: EatMyVenom <eat.my.venomm@gmail.com>
+# Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Pierre Schmitz <pierre@archlinux.de> ([core] package)
 # Contributor: François Charette <firmicus@gmx.net>
 
 pkgname=xz-git
-pkgver=5.2.1.r25.gfbbb295
+pkgver=5.3.1alpha.r134.ga35a69d
 pkgrel=1
 pkgdesc='Library and command line tools for XZ and LZMA compressed files - git checkout'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://tukaani.org/xz/'
 license=('GPL' 'LGPL' 'custom')
 depends=('sh')
-makedepends=('git')
+makedepends=('git' 'po4a')
 provides=('lzma' 'lzma-utils' 'xz-utils' "xz=${pkgver%%.r*}")
 replaces=('lzma' 'lzma-utils' 'xz-utils')
 conflicts=('lzma' 'lzma-utils' 'xz-utils' 'xz')
@@ -36,8 +37,7 @@ build() {
 
 	./autogen.sh
 	./configure --prefix=/usr \
-		--disable-rpath \
-		--enable-werror
+		--disable-rpath 
 	make
 }
 
@@ -49,10 +49,9 @@ check() {
 
 package() {
 	cd xz/
-
 	make DESTDIR=${pkgdir} install
 	install -d -m0755 ${pkgdir}/usr/share/licenses/xz/
-	ln -sf /usr/share/doc/xz/COPYING ${pkgdir}/usr/share/licenses/xz/
-	ln -sf /usr/share/licenses/common/GPL2/license.txt ${pkgdir}/usr/share/doc/xz/COPYING.GPLv2
+	ln -s /usr/share/doc/xz/COPYING ${pkgdir}/usr/share/licenses/xz/
+	ln -s /usr/share/licenses/common/GPL2/license.txt ${pkgdir}/usr/share/doc/xz/COPYING.GPLv2
 }
 
