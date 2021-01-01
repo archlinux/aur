@@ -1,11 +1,12 @@
 pkgbase = swath
 	pkgdesc = A general-purpose utility for analyzing word boundaries in Thai text and inserting predefined word delimiter codes
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://linux.thai.net/projects/swath
 	arch = i686
 	arch = x86_64
 	arch = armv7h
+	arch = aarch64
 	groups = texlive-lang
 	license = GPL
 	depends = gcc-libs

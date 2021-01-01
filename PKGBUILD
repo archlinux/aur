@@ -1,8 +1,8 @@
 pkgname=swath
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose utility for analyzing word boundaries in Thai text and inserting predefined word delimiter codes"
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('GPL')
 depends=('gcc-libs' 'libdatrie>=0.2.1')
 groups=('texlive-lang')
