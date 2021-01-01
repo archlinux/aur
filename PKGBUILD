@@ -51,7 +51,10 @@ package() {
 	install -Dm644 eula_text.html "$pkgdir"/usr/share/licenses/google-chrome/eula_text.html
 
 	msg2 "Fixing Chrome icon resolution..."
-	sed -i "/Exec=/i\StartupWMClass=Google-chrome" "$pkgdir"/usr/share/applications/google-chrome.desktop
+	sed -i \
+		-e "/Exec=/i\StartupWMClass=Google-chrome" \
+		-e "s/x-scheme-handler\/ftp;\?//g" \
+		"$pkgdir"/usr/share/applications/google-chrome.desktop
 
 	msg2 "Removing Debian Cron job and duplicate product logos..."
 	rm -r "$pkgdir"/etc/cron.daily/ "$pkgdir"/opt/google/chrome/cron/
