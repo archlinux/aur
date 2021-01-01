@@ -1,7 +1,7 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=i3-swallow
-pkgver=2020.12.31
+pkgver=2021.01.01
 pkgrel=1
 pkgdesc="Swallow a terminal window after a blocking application is run in i3"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('git')
 conflicts=('i3-swallow-git')
 changelog=
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('77ff2111fbeabc803e3aa00282030ea91da0c2f090c36af62217e5a35335d118')
+sha256sums=('ab06d29b0889a7cbe1b1cf601da84b64ce3b7a8f51d03b9fc3b49f2e71a73aea')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
