@@ -1,6 +1,6 @@
 pkgbase = frostwire
 	pkgdesc = Cloud Downloader, BitTorrent Client and Media Player
-	pkgver = 6.8.9
+	pkgver = 6.8.10
 	pkgrel = 1
 	url = http://www.frostwire.com
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = frostwire
 	depends = bash
 	depends = zlib
 	optdepends = mplayer: Media playback support
-	source = frostwire-6.8.9.deb::https://prime.frostwire.com/frostwire/6.8.9/frostwire-6.8.9.amd64.deb
-	sha256sums = 41dc75c841b93f511be3e0ab0b6e0b0df042d44eaa2388430f00cab974c1c313
+	source = frostwire-6.8.10.deb::https://prime.frostwire.com/frostwire/6.8.10/frostwire-6.8.10.amd64.deb
+	sha256sums = abbd9025fbac98412bc210a773eba07ff544de51f1bff0ee739da8d40a740b6b
 
 pkgname = frostwire
 
