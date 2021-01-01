@@ -1,7 +1,7 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=cynicalteam-wallpapers
-pkgver=2020.8.18
+pkgver=2021.01.01
 pkgrel=1
 pkgdesc="A collection of cool wall papers!"
 arch=('any')
@@ -9,10 +9,10 @@ url="https://github.com/TheCynicalTeam/wallpapers"
 license=('GPL3')
 optdepends=('feh: Allows setting wallpaper' 'multimonitorlock-gui: Allows the background to be changed')
 makedepends=('git')
-source=("${pkgname}-$pkgver-$pkgrel.tar.gz::${url}/archive/$pkgver-$pkgrel.tar.gz")
-sha256sums=("SKIP")
+source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
+sha256sums=("b12f39428af283dadbd2edaa3996e0085e7d7ae76ccefcdcbcc22533ce09eb6b")
 
 package() {
   mkdir -p $pkgdir/usr/share/backgrounds
-	cp -a $srcdir/wallpapers-$pkgver-$pkgrel/cynicalteam $pkgdir/usr/share/backgrounds
+	cp -a $srcdir/wallpapers-$pkgver/cynicalteam $pkgdir/usr/share/backgrounds
 }
