@@ -51,7 +51,7 @@ _major=5.10
 _minor=4
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -72,12 +72,13 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v3-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0002-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0003-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0004-drm-amd-display-Add-get_dig_frontend-implementation-.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0005-btrfs-Fix-500-2000-performance-regression-w-5.10.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0006-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0002-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0003-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0004-drm-amd-display-Add-get_dig_frontend-implementation-.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0005-btrfs-Fix-500-2000-performance-regression-w-5.10.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0006-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0007-ALSA-hda-hdmi-fix-locking-in-silent_stream_disable.patch"
          # the main kernel config files
         'config')
 
@@ -317,12 +318,13 @@ sha512sums=('aab782786cc06b5f1872bbb88c4f55a73d222f8ecf1ab8f5b7d96de2160b11b4407
             'SKIP'
             '003e33e214065a57df00458d4a88db5cc33eb00030a516264fc4b2e4de9b6649466451260a30cf86667f8981fc493103dea509217b3850773a65d3beb95e6441'
             '34e21ecc4ef0d07707283427fa82d561a9573d670e80ccd41f7d9cb595473b3844b8df7aeffcb4fe82d9deeef0a4d4e6aef663eb1a7a397fa181f06f418a0d6d'
-            'b627c9cb440d3f356e8d1fcbd46512a2afe8076cf3df504f033250f52ba692802167f59addd1d05e58b5cf46bec5d22baf9b49aa049bfc3699580c1ac0af6485'
-            '3ee7b85a530e73ad12861c844a99304b615f032fe23bfff3fc576955535b4dc261aae2c9c343e157eb6dc70fbfd0299641c4d47b32592653d5e7afe285598128'
-            'f9caa104dabdfb6c49ce4368059d401ae2fa28ab37d08d8b45c06c5a95cdf77e17d5313bddfaf66bc62caa6524c4c090b9dd05adad31f877568a190c3a80bdad'
-            '45a14d082db128f32e08b4852715e2d6e8f3c7615b01c3b22af84e91189c55863a7070f33e33cf08a5f62180ae5536521011b338609457b3989fbbce419c11e8'
-            '30986ac777e7c413585b8a5a0f2db37578762f9b870cee097f414e9248e111fe65e16cdede04450f7533bc479ed4923f245c3128bef9f7f2de4d5c66c541f8a0'
-            'c2246d9b0fdf69115a0636be8783170aa1ec91d355002d7df5549c298c3707493a97c4fbe041bec283a911e88f3497fd4ad2c699c71df4d9bbe158cb57b0350c'
+            '27e6c0670ece86c77bf8068b892eac4ea332c809eba08ec45e13f12d89a708e5a2452f61b9395706b08fea4f2c4ecf8ecdac2ee4f953669a3f4f7a652f85de63'
+            'df8d800e043ffd7cd57a7b3efffdf30ba9f9130134fcc50f6b8a188665d28bdfac3d3b44a786b8aa1fc1bd92f508f5e350d480eccb5433f29a7bdbd45d488ec9'
+            'bb98afebd0c5ec4fbdf92389c3ccd1d93248652a95160a058660059ff5147c704deb1dd2d401ec4cf26eb664e53fca1463b1d363b310fb4f52aad68490111eb8'
+            '1978a2e95f0b0d52811d41d6e2a7f1a34b107a7f45785c8a4b73d9d4cc5119e0c245dd19f73729e7488abb3c1cb63a89891f33792c458edb9b6974f1aaa5abc3'
+            '1fa4679a14d90052669e70688d28162fc7f798fb5742d761b12290744c91808cceb5abf0f3ad63b6e1eee937eaed67bd83e1a3d55204fc61886c079ec2a1e560'
+            '62ddc5efa84f8014a5bb54fa108f98fef3509148a3ed2e787ad8b37da5d8041024fdd6098f9c24a313f5a8facb71915d34b59be7fc7400c22e58c530beceeece'
+            'dceac162d2b5a4ef537f3cf7ef67cf86fd365652b5f684bfde0fe50b9b619b835809412a5f48650c3b7c7b5afb94a13b8a5d2cc835ebdbe3a2b0bd08b23e95dd'
             '89324dd3d49c66e807db6a15683f5dfb3c1e68f832b8ede408bf529a884658a7d5009c413ef8d887b2a2fd3f188f572d461c1b923d986c25097778fcb26978b2')
 
 validpgpkeys=(
