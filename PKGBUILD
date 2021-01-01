@@ -2,7 +2,7 @@
 # Contributor: MoDoJ
 
 pkgname=insync-dolphin
-pkgver=3.0.22.40446
+pkgver=3.3.2.40903
 pkgrel=1
 pkgdesc="Dolphin integration for insync"
 url="https://www.insynchq.com/downloads"
@@ -11,7 +11,7 @@ options=(!strip)
 arch=('any')
 depends=("insync" "dolphin")
 source=("${pkgname}-${pkgver}.deb::http://s.insynchq.com/builds/${pkgname}_${pkgver}_all.deb")
-sha256sums=('b431e97a77a0c338526552e0bbb65652a90107278734eb4d6fc917cf5f65eed1')
+sha256sums=('c47abdd48aec68cb92ab30fbd190d26529d24b12db940d84f1341e4e9368f814')
 noextract=("${pkgname}-${pkgver}.deb")
 
 package() {

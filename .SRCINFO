@@ -1,16 +1,16 @@
 pkgbase = insync-dolphin
 	pkgdesc = Dolphin integration for insync
-	pkgver = 3.0.22.40446
+	pkgver = 3.3.2.40903
 	pkgrel = 1
 	url = https://www.insynchq.com/downloads
 	arch = any
 	license = custom:insync
 	depends = insync
 	depends = dolphin
-	noextract = insync-dolphin-3.0.22.40446.deb
+	noextract = insync-dolphin-3.3.2.40903.deb
 	options = !strip
-	source = insync-dolphin-3.0.22.40446.deb::http://s.insynchq.com/builds/insync-dolphin_3.0.22.40446_all.deb
-	sha256sums = b431e97a77a0c338526552e0bbb65652a90107278734eb4d6fc917cf5f65eed1
+	source = insync-dolphin-3.3.2.40903.deb::http://s.insynchq.com/builds/insync-dolphin_3.3.2.40903_all.deb
+	sha256sums = c47abdd48aec68cb92ab30fbd190d26529d24b12db940d84f1341e4e9368f814
 
 pkgname = insync-dolphin
 
