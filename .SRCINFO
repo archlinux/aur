@@ -1,0 +1,18 @@
+pkgbase = siji
+	pkgdesc = Iconic bitmap font based on stlarch with additional glyphs
+	pkgver = 2021.01.01
+	pkgrel = 1
+	url = https://github.com/TheCynicalTeam/siji
+	install = siji.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = fontconfig
+	depends = xorg-mkfontscale
+	depends = xorg-xset
+	optdepends = xorg-xfd: use view.sh script to view glyphs
+	source = siji-2021.01.01.tar.gz::https://github.com/TheCynicalTeam/siji/archive/2021.01.01.tar.gz
+	sha256sums = 532950e73806b3e3096f74fef8da928753c3164226721e6e07d7a3389f548605
+
+pkgname = siji
+
