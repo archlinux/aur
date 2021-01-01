@@ -2,9 +2,9 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=shared-mime-info
-_commit=6bf9e4ff0fb7eff11a02bd937045bf5dc291841a # master 2020-05-06
-pkgver=2.0+1+g6bf9e4f
-pkgrel=2
+_commit=c1d1c70684dac11ce6c14a5089b5cb0b64a7dc27 # master 2020-12-31
+pkgver=2.0+57+gc1d1c70
+pkgrel=1
 pkgdesc="Freedesktop.org Shared MIME Info"
 arch=('x86_64')
 license=('GPL2')
@@ -17,7 +17,7 @@ url="https://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec/"
 #source=(https://gitlab.freedesktop.org/xdg/shared-mime-info/uploads/b27eb88e4155d8fccb8bb3cd12025d5b/$pkgname-$pkgver.tar.xz
 source=("git+https://gitlab.freedesktop.org/xdg/shared-mime-info.git#commit=$_commit"
         # tu run the testsuite
-        "git+https://gitlab.freedesktop.org/xdg/xdgmime.git#commit=6663a2288d11b37bc07f5a01b4b85dcd377787e1" # master 2019-06-03
+        "git+https://gitlab.freedesktop.org/xdg/xdgmime.git#commit=de283fc430460b9b3a7e61432a6d273cd64cb102" # master 2020-12-30
         update-mime-database.hook)
 sha256sums=('SKIP'
             'SKIP'
