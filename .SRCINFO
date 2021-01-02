@@ -1,7 +1,7 @@
 pkgbase = cfddns
-	pkgdesc = DDNS client for CloudFlare DNS
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgdesc = Dynamic DNS client for CloudFlare
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/uetchy/cfddns
 	install = cfddns.install
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = cfddns
 	depends = python-cloudflare
 	depends = python-click
 	backup = etc/cfddns/cfddns.yml
-	source = cfddns-1.1.0.tar.gz::https://github.com/uetchy/cfddns/archive/v1.1.0.tar.gz
+	source = cfddns-1.2.0.tar.gz::https://github.com/uetchy/cfddns/archive/v1.2.0.tar.gz
 	source = cfddns.service
 	source = cfddns.install
-	sha256sums = 1591b924438507a0dea86d66735bfdbc0d549e0436447c257cedd2a02c856977
+	sha256sums = 02f3f4fda4ebe39d20fdc40ce64b3ded8bb1e556e611b5937405fa8c6c49d1ae
 	sha256sums = 7cc3f2402decf9da7584468d1f42cb12d1708b22cef1f4898bfa46d5d48ac31b
 	sha256sums = 2c7b7a5a25855a84c080c83b241e5135d39f63adee25e82de6dc902a7589924b
 
