@@ -1,0 +1,14 @@
+pkgbase = json-search-git
+	pkgdesc = Util to seach though json files
+	pkgver = r12.3fb20c6
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	makedepends = gcc
+	makedepends = make
+	depends = json-c
+	source = git://github.com/cosmo-ray/json-search.git
+	sha256sums = SKIP
+
+pkgname = json-search-git
+
