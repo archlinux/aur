@@ -1,16 +1,18 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+# Maintainer: EatMyVenom <eat.my.venomm@gmail.com>
+# Contributor: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+
 pkgname=sysvinit
-pkgver=2.90
+pkgver=2.98
 pkgrel=1
 pkgdesc='Linux System V Init'
 url='http://savannah.nongnu.org/projects/sysvinit'
-arch=('i686' 'x86_64' 'armv6h')
+arch=('i686' 'x86_64')
 license=('GPL')
+provides=('sysvinit')
 depends=('glibc' 'procps-ng>=3.3.9')
 conflicts=('systemd-sysvcompat')
-
 source=("http://download.savannah.nongnu.org/releases/sysvinit/sysvinit-${pkgver}.tar.xz")
-sha256sums=('114cffc8ef514a38b9916de2050bb6d73b43dff7afd05aee6b09d2f6cea7664e')
+sha256sums=('7b2c3ffaf19eaf1ca80268762f85f9e4eb8e3c973213d49f9802605b72caa7dc')
 
 
 build()
