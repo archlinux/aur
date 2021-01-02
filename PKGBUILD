@@ -14,7 +14,7 @@ pkgver=${_mozcver}.${_utdicver}
 pkgrel=1
 
 _pkgbase=mozc
-pkgname=fcitx-mozc-ut-unified
+pkgname=mozc-ut-unified
 pkgdesc="Fcitx Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with New UT dictionaries (default dictionaties.)"
 arch=('x86_64')
 url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
