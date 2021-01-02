@@ -1,0 +1,29 @@
+pkgbase = haskell-language-server-bin
+	pkgdesc = Integration point for ghcide and haskell-ide-engine. One IDE to rule them all.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/haskell/haskell-language-server
+	arch = x86_64
+	license = Apache
+	provides = haskell-language-server
+	conflicts = haskell-language-server
+	conflicts = haskell-language-server-git
+	source = haskell-language-server-Linux-8.6.4-0.7.1.gz::https://github.com/haskell/haskell-language-server/releases/download/0.7.1/haskell-language-server-Linux-8.6.4.gz
+	source = haskell-language-server-Linux-8.6.5-0.7.1.gz::https://github.com/haskell/haskell-language-server/releases/download/0.7.1/haskell-language-server-Linux-8.6.5.gz
+	source = haskell-language-server-Linux-8.8.2-0.7.1.gz::https://github.com/haskell/haskell-language-server/releases/download/0.7.1/haskell-language-server-Linux-8.8.2.gz
+	source = haskell-language-server-Linux-8.8.3-0.7.1.gz::https://github.com/haskell/haskell-language-server/releases/download/0.7.1/haskell-language-server-Linux-8.8.3.gz
+	source = haskell-language-server-Linux-8.8.4-0.7.1.gz::https://github.com/haskell/haskell-language-server/releases/download/0.7.1/haskell-language-server-Linux-8.8.4.gz
+	source = haskell-language-server-Linux-8.10.1-0.7.1.gz::https://github.com/haskell/haskell-language-server/releases/download/0.7.1/haskell-language-server-Linux-8.10.1.gz
+	source = haskell-language-server-Linux-8.10.2-0.7.1.gz::https://github.com/haskell/haskell-language-server/releases/download/0.7.1/haskell-language-server-Linux-8.10.2.gz
+	source = haskell-language-server-wrapper-Linux-0.7.1.gz::https://github.com/haskell/haskell-language-server/releases/download/0.7.1/haskell-language-server-wrapper-Linux.gz
+	sha256sums = ffa8b4acc79dc21fd4404e31666906d08f6349d3623496cc3580ba29d6235c86
+	sha256sums = 613312c4a34746f5cf3c12431a8b15118fbd6f921953cf07287b66906cdca96d
+	sha256sums = b57c127e69657c1ecd79a5683cd1a70ba82400efb40839da89c58bfa8f40bec7
+	sha256sums = 5ce711ea097e0c8504c3e6ad708f832728bb1e5173981c97bcb77404746bacee
+	sha256sums = 7c7504ee287ee4dbfc9c9d032232df9a7dffdcee71de0fa2387de44d77bee8bc
+	sha256sums = d0870eb03158de15ce76fb70c598b9971bf2c4447e8392c1ebb86dfc9bf479a4
+	sha256sums = 1460dbe9826642f72d39a11f90c0b714b67184a3d4a59d715ce30e565f787e0a
+	sha256sums = a70c156c6be8b01448b6fc2f6b03859621b3fd40f630c5d7e1c4fb19f95ef785
+
+pkgname = haskell-language-server-bin
+
