@@ -1,6 +1,6 @@
 # Maintainer: Z. D. Smith <zd at zdsmith dot com>
 pkgname=bagatto
-pkgver=0.2.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='A transparent, extensible static site generator'
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('bagatto')
 
 source=("https://git.sr.ht/~subsetpark/bagatto/archive/v${pkgver}.tar.gz")
 
-sha256sums=('48323442fd77c469b21c95f96c213a06cacc5fa72d9bf315490413ee14d05a5c')
+sha256sums=('efd41ffd1140367bf7591a609e19bbb51c82a097605daa31670fd244c3dec739')
 
 build() {
 	cd "$srcdir/$pkgname-v$pkgver"
