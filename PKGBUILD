@@ -2,12 +2,12 @@
 
 pkgname=gdu-git
 _gitname=gdu
-pkgver=v1.4.0.r1.g67d9865
+pkgver=v1.6.0.r2.gcbf4718
 pkgrel=1
 license=('MIT')
 pkgdesc="Fast disk usage analyzer"
 makedepends=('go')
-conflicts=("gdu")
+conflicts=("gdu" "gdu-bin")
 arch=('x86_64')
 url="https://github.com/Dundee/gdu"
 source=("$_gitname::git+https://github.com/Dundee/gdu")
@@ -25,7 +25,7 @@ build() {
    export CGO_CPPFLAGS="${CPPFLAGS}"
    export CGO_CXXFLAGS="${CXXFLAGS}"
    export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
-   go build -o $_gitname .
+   go build -ldflags="-s -w -X 'main.AppVersion=$pkgver'" -o $_gitname .
 }
 
 package() {
