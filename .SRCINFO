@@ -1,0 +1,17 @@
+pkgbase = qt6ct-git
+	pkgdesc = Qt6 Configuration Tool
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/trialuser02/qt6ct
+	arch = x86_64
+	license = GPL2
+	makedepends = qt6-tools
+	makedepends = git
+	depends = qt6-svg
+	depends = qt6-base
+	depends = gtk2
+	source = qt6ct-0.2::git+https://github.com/trialuser02/qt6ct.git
+	sha256sums = SKIP
+
+pkgname = qt6ct-git
+
