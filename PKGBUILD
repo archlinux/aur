@@ -1,8 +1,8 @@
 # Maintainer: Carlos Fagiani Junior <fagianijunior@gmail.com>
 pkgname=local-by-flywheel-bin
 _pkgname=local-by-flywheel
-pkgver=5.9.6
-pkgrel=5149
+pkgver=5.9.7
+pkgrel=5156
 pkgdesc="A program to create a local WordPress development environment."
 arch=('x86_64')
 url="https://localbyflywheel.com/"
@@ -21,7 +21,7 @@ depends=(
 )
 options=('emptydirs')
 source=("https://cdn.localwp.com/releases-stable/$pkgver+$pkgrel/local-$pkgver-linux.rpm")
-sha1sums=('afc2a97db960fefa06f18b0d991d0e088e8f6498')
+sha1sums=('e5930c3552f6861484324a0f1362e81f5ab249f4')
 
 package() {
   rpmextract.sh ../local-$pkgver-linux.rpm
