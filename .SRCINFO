@@ -1,0 +1,14 @@
+pkgbase = python-littleutils
+	pkgdesc = Small personal collection of python utility functions
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/alexmojaki/littleutils
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/l/littleutils/littleutils-0.2.2.tar.gz
+	sha256sums = e6cae3a4203e530d51c9667ed310ffe3b1948f2876e3d69605b3de4b7d96916f
+
+pkgname = python-littleutils
+
