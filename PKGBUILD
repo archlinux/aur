@@ -11,7 +11,7 @@ _fcitxver=20201111
 _iconver=20201229
 _utdicver=20201229
 pkgver=${_mozcver}.${_utdicver}
-pkgrel=1
+pkgrel=2
 
 _pkgbase=mozc
 pkgname=fcitx-mozc-ut-unified
@@ -21,7 +21,7 @@ url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
 license=('custom')
 depends=('fcitx' 'qt5-base')
 makedepends=('clang' 'gyp' 'ninja' 'pkg-config' 'python' 'curl' 'gtk2' 'qt5-base' 'fcitx' 'libxcb' 'glib2' 'bzip2' 'unzip')
-conflicts=('fcitx-mozc' 'mozc' 'fcitx-mozc-ut2' 'mozc-ut2' 'fcitx-mozc-ut' 'mozc-ut' 'fcitx-mozc-neologd-ut' 'mozc-neologd-ut' 'fcitx-mozc-neologd-ut+ut2' 'mozc-ut-unified-full' 'fcitx-mozc-ut-unified-full')
+conflicts=('fcitx-mozc' 'mozc' 'fcitx-mozc-ut2' 'mozc-ut2' 'fcitx-mozc-ut' 'mozc-ut' 'fcitx-mozc-neologd-ut' 'mozc-neologd-ut' 'fcitx-mozc-neologd-ut+ut2' 'mozc-ut-unified-full' 'fcitx-mozc-ut-unified-full' 'mozc-ut-unified')
 
 source=(
   https://osdn.net/users/utuhiro/pf/utuhiro/dl/mozc-${_mozcver}.tar.bz2
