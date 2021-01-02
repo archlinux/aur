@@ -1,0 +1,34 @@
+pkgbase = openoffice-bin
+	pkgdesc = The Free and Open Productivity Suite
+	pkgver = 4.1.8
+	pkgrel = 1
+	url = https://www.openoffice.org
+	arch = x86_64
+	license = Apache
+	depends = freetype2
+	depends = glibc>=2.5
+	depends = gtk2>=2.10.4
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	depends = shared-mime-info
+	optdepends = apr-util: adds apr support
+	optdepends = java-environment: adds java support
+	optdepends = gconf: adds additional gnome support
+	optdepends = gstreamer0.10-base: some gstr-plugins to support multimedia content, e.g. in impress
+	optdepends = mesa: for the OGLTrans extension of impress
+	optdepends = mime-types: provides /etc/mime.types
+	optdepends = nss: adds support for signed files/macros
+	optdepends = openoffice-de-bin: adds additional German language pack
+	optdepends = python2: adds python support
+	optdepends = raptor1: adds rdf support
+	optdepends = sqlite: adds sqlite support
+	conflicts = openoffice-base-bin-unstable
+	replaces = openoffice-base-bin
+	options = !strip
+	options = docs
+	backup = opt/openoffice4/program/sofficerc
+	source = https://downloads.apache.org/openoffice/4.1.8/binaries/en-US/Apache_OpenOffice_4.1.8_Linux_x86-64_install-rpm_en-US.tar.gz
+	sha256sums = b166ca275b601714dee398e96017c71cac03f8aaa158ee6981b5712b61afdb99
+
+pkgname = openoffice-bin
+
