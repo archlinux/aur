@@ -3,8 +3,8 @@
 # Contributor: Paulo Ouverney <ph.ouverney at gmail dot com>
 
 pkgname=exodus
-pkgver=20.12.22
-pkgrel=2
+pkgver=20.12.31
+pkgrel=1
 pkgdesc="Send, receive & exchange cryptocurrency with ease on the world's leading Desktop, Mobile and Hardware wallets. Bitcoin wallet"
 arch=('x86_64')
 url="https://exodus.io"
@@ -14,7 +14,7 @@ source=("https://downloads.exodus.io/releases/exodus-linux-x64-${pkgver}.zip"
 	"${pkgname}.svg"
 	"${pkgname}.desktop"
         "LICENSE")
-sha256sums=('64e0adc79b0c9b50e13f4add2af838a128cb497c61ff1f5ab1eafc39954a51de'
+sha256sums=('7f7f5e15c5189410b6fe0c326033700992fc17c5750d2be8b076c52fc7c16c3a'
             'ffafdcd0869f1c9338ba25e447698c4cfa3c8714123459ae3e63686a5312ef2e'
             '04676d81272a35a91150a7eec4640e69ca50f2e479d29fad8be90160ee74122c'
             '582d6782c9412cd961c55d105f38ed5c911bf8509be040b8d23a836504a25d0b')
