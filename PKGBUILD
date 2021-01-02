@@ -27,7 +27,7 @@ prepare() {
 }
  
 build() {
-	  arch-meson at-spi2-core build -D docs=false 
+	  arch-meson at-spi2-core build -D docs=false -D default_bus=dbus-broker 
 	  
     meson compile -C build
 }
