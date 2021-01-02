@@ -1,7 +1,7 @@
 pkgbase = jupyter_stata_kernel
 	pkgdesc = A Jupyter kernel for Stata. Works with Windows, macOS, and Linux. Preserves program state.
 	pkgver = 1.11.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kylebarron.github.io/stata_kernel/
 	install = jupyter_stata_kernel.install
 	arch = any

@@ -8,7 +8,7 @@ depends=('python' 'jupyter' 'python-pandas' 'python-beautifulsoup4'
          'python-pygments' 'python-requests')
 makedepends=('python-setuptools')
 pkgver=1.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Jupyter kernel for Stata. Works with Windows, macOS, and Linux. Preserves program state."
 arch=('any')
 url="https://kylebarron.github.io/stata_kernel/"
