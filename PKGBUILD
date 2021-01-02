@@ -1,7 +1,7 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 # Contributor: mickele <mimocciola[at]yahoo[dot]com>
-pkgname=ifcopenshell-git
-pkgver=0.6.0b0.r1476.g3eee5aba
+pkgname=(ifcopenshell-git blender-plugin-bim-git)
+pkgver=0.6.0b0.r1581.gb91dfb40
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon. GIT version."
 arch=('x86_64' 'i686')
@@ -19,15 +19,15 @@ optdepends=('python-svgwrite: blender bim addon svg support'
 			'python-lark-parser: util, ifccsv, ifcclash support'
 			'python-odfpy: ifccobie support')
 makedepends=('cmake' 'boost>=1.58.0' 'swig')
-provides=('ifcopenshell' 'blender-plugin-bim' 'IfcConvert' 'IfcGeomServer')
-conflicts=('ifcopenshell')
+provides=('ifcopenshell' 'blender-plugin-bim' 'IfcConvert' 'IfcGeomServer' 'python-ifcpatch' 'python-ifcdiff' 'python-bcf')
+conflicts=()
 replaces=()
 backup=()
 source=("git+https://github.com/IfcOpenShell/IfcOpenShell.git")
 _blender_ver=$(blender --version | grep -Po 'Blender \K[0-9]\...')
 _python_ver=$(python --version | grep -Po 'Python \K[0-9]\..')
 
-prepare(){
+prepare() {
   cd "${srcdir}/IfcOpenShell"
 }
 
@@ -59,7 +59,7 @@ build() {
   make
 }
 
-package() {
+package_ifcopenshell-git() {
   # Install IfcOpenShell
   cd "${srcdir}/IfcOpenShell/build"
   make DESTDIR="${pkgdir}" install
@@ -68,14 +68,18 @@ package() {
   cd "${srcdir}/IfcOpenShell"
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 
-  # Install blender bim addon
-  mkdir -p "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons"
-  cd "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons"
-  cp -rf "${srcdir}/IfcOpenShell/src/ifcblenderexport/blenderbim" "./"
+  # Install python modules
   cd "${pkgdir}/usr/lib/python${_python_ver}/site-packages/"
   cp -rf "${srcdir}/IfcOpenShell/src/ifcclash/." "./"
   cp -rf "${srcdir}/IfcOpenShell/src/ifcdiff/." "./"
   cp -rf "${srcdir}/IfcOpenShell/src/bcf/bcf/." "./bcf/"
+}
+
+package_blender-plugin-bim-git() {
+  # Install blender bim addon
+  mkdir -p "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons"
+  cd "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons"
+  cp -rf "${srcdir}/IfcOpenShell/src/ifcblenderexport/blenderbim" "./"
   python -O -m compileall "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons/blenderbim"
   chmod -R a+rwX "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons/blenderbim/bim/data"
 }
