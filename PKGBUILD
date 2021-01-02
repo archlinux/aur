@@ -5,7 +5,7 @@
 pkgname=(epoptes epoptes-client)
 pkgbase=epoptes-client
 pkgver=21.01
-pkgrel=1
+pkgrel=2
 pkgdesc='An opensource computer lab management and monitoring tool'
 makedepends=(git python-distutils-extra)
 url='https://github.com/Epoptes/epoptes'
@@ -32,12 +32,10 @@ package_epoptes()
 		librsvg
 		notification-daemon
 		openssl
-		python
 		python-cairo
 		python-dbus
 		python-gobject
 		python-netifaces
-		python-pyopenssl
 		python-pyopenssl
 		python-service-identity
 		python-twisted
