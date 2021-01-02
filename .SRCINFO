@@ -1,13 +1,13 @@
 pkgbase = uni
 	pkgdesc = Query the Unicode database from the commandline, with good support for emojis
-	pkgver = 1.1.1
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/arp242/uni
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = https://github.com/arp242/uni/archive/v1.1.1.tar.gz
-	sha256sums = d29fdd8f34f726e6752e87f554d8ea73e324b7729afaf4bd52fcae04c7638757
+	source = https://github.com/arp242/uni/archive/v2.0.0.tar.gz
+	sha256sums = 744e1d49b9cc8e336e260e0e922b28bb60f8fdaf347e656e964b5f4353c5162a
 
 pkgname = uni
 
