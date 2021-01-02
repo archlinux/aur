@@ -10,7 +10,8 @@ license=('custom')
 groups=('vulkan-devel')
 source=('git+https://github.com/KhronosGroup/SPIRV-Tools'
         'git+https://github.com/KhronosGroup/SPIRV-Headers')
-sha1sums=('SKIP' 'SKIP')
+sha1sums=('SKIP'
+          'SKIP')
 depends=(gcc-libs spirv-headers)
 makedepends=('cmake' 'python' 'git')
 options=('staticlibs')
