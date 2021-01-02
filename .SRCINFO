@@ -1,7 +1,7 @@
 pkgbase = snm
 	pkgdesc = Smol Node Manager written in Rust
 	pkgver = 0.1.6
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/numToStr/snm
 	arch = x86_64
 	arch = aarch64
