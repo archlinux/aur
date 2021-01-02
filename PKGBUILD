@@ -1,8 +1,8 @@
 # Maintainer: Nocifer <apmichalopoulos at gmail dot com>
 
 pkgname=zmeventnotification
-pkgver=6.0.6
-pkgrel=2
+pkgver=6.1.0
+pkgrel=1
 pkgdesc='A machine learning powered, secure websocket & MQTT based event notification server for ZoneMinder'
 arch=('any')
 url='https://github.com/pliablepixels/zmeventnotification'
@@ -63,7 +63,7 @@ prepare() {
     sed -i 's|https://portal/zm|http://localhost:8095|g' secrets.ini
     
     # Hackilly disable SSL by default (because it requires the user to first generate a real SSL certificate or the notification server won't work)
-    sed -i '124s|enable = yes|enable = no|g' zmeventnotification.ini
+    sed -i '140s|enable = yes|enable = no|g' zmeventnotification.ini
 }
 
 package() {
