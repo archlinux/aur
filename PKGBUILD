@@ -1,11 +1,12 @@
 ## Maintainer:     barfin <barfin@protonmail.com>
 ## Co-Maintainer:  Jaja <jaja@mailbox.org>
+## Co-Maintainer:  floriplum <floriplum@mailbox.org>
 
 ## pkginfo
 pkgdesc="A fancy custom distribution of Valves Proton with various patches"
 pkgname=proton-ge-custom-bin
 pkgver=5.21_GE_1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 changelog=changelog
@@ -38,7 +39,6 @@ _srcdir=Proton-${_pkgver}
 ## paths and files
 _protondir=usr/share/steam/compatibilitytools.d/${_pkgname}
 _licensedir=usr/share/licenses/${_pkgname}
-_pfxdir=var/games/pfx_${_pkgname}
 _execfile=usr/bin/proton
 _protoncfg=${_protondir}/user_settings.py
 
@@ -55,15 +55,12 @@ md5sums=('32a562a772a9b56ff03287978a153227'
 build() {
 ## setup paths
 sed -i "s|_proton=echo|_proton=/${_protondir}/proton|" ${srcdir}/launchers/proton.sh
-sed -i "s|self.path(\"dist/share/default_pfx/\")|\"/${_pfxdir}/\"|" ${_srcdir}/proton
 }
 
 package() {
 ## create paths
 install -d ${pkgdir}/${_protondir}/
 install -d ${pkgdir}/${_licensedir}/
-install -d --mode=2775 --group=games ${pkgdir}/${_pfxdir}/
-chmod 0775 ${pkgdir}/${_pfxdir}/..
 install -d ${pkgdir}/$(dirname ${_execfile})/
 ## licenses
 mv ${_srcdir}/LICENSE ${pkgdir}/${_licensedir}/license
@@ -71,9 +68,6 @@ mv ${_srcdir}/LICENSE.OFL ${pkgdir}/${_licensedir}/license_OFL
 mv ${_srcdir}/protonfixes/LICENSE ${pkgdir}/${_licensedir}/license_protonfixes
 ## config files
 install --mode=0775 --group=games ${srcdir}/configs/user_settings.py ${pkgdir}/${_protoncfg}
-## default pfx
-mv ${_srcdir}/dist/share/default_pfx/* ${pkgdir}/${_pfxdir}
-chown -R :games ${pkgdir}/${_pfxdir}
 ## executables
 mv ${_srcdir}/* ${pkgdir}/${_protondir}
 install --mode=0755 ${srcdir}/launchers/proton.sh ${pkgdir}/${_execfile}
