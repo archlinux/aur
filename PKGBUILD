@@ -2,7 +2,7 @@
 
 pkgname=ignition-gazebo
 pkgver=4.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Open source robotics simulator."
 arch=('x86_64')
 url="https://ignitionrobotics.org/libs/gazebo"
@@ -13,10 +13,17 @@ depends=('benchmark' 'gflags' 'tinyxml2' 'tinyxml' 'eigen' 'qt5-declarative'
          'ignition-tools' 'ignition-transport' 'ignition-gui' 'ignition-msgs'
          'sdformat' 'ignition-fuel_tools' 'ignition-sensors')
 makedepends=('cmake' 'ruby-ronn' 'doxygen')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-gazebo/archive/${pkgname}4_${pkgver}.tar.gz")
-sha256sums=('31f85b3b14be31a492d138be59490d868eb5794b3049b9b9c8324e75e8648424')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-gazebo/archive/${pkgname}4_${pkgver}.tar.gz"
+        "qttextureptr.patch::https://patch-diff.githubusercontent.com/raw/ignitionrobotics/ign-gazebo/pull/527.patch")
+sha256sums=('31f85b3b14be31a492d138be59490d868eb5794b3049b9b9c8324e75e8648424'
+            'SKIP')
 
 _dir="ign-gazebo-${pkgname}4_${pkgver}"
+
+prepare() {
+  cd "$srcdir/$_dir"
+  patch --forward --strip=1 --input="${srcdir}/qttextureptr.patch"
+}
 
 build() {
   cd "$srcdir/$_dir"
