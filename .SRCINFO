@@ -1,6 +1,6 @@
 pkgbase = libtas-git
 	pkgdesc = Tool-assisted speedrunning utility for Linux-native binaries
-	pkgver = 1.4.0.r0.33fc75b
+	pkgver = 1.4.1.r0.a7bc36b
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/clementgallet/libTAS
@@ -10,13 +10,14 @@ pkgbase = libtas-git
 	depends = alsa-lib
 	depends = fontconfig
 	depends = freetype2
+	depends = hicolor-icon-theme
 	depends = qt5-base
 	depends = xcb-util-cursor
 	depends = zlib
 	optdepends = lib32-libtas-git: for 32-bit games support
 	conflicts = libtas
 	source = git+https://github.com/clementgallet/libTAS
-	sha512sums = SKIP
+	b2sums = SKIP
 
 pkgname = libtas-git
 
