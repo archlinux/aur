@@ -1,7 +1,7 @@
 # Maintainer:  Liu Zhe <cruise.pas@gmail.com>
 
 pkgname=python-json-tricks
-pkgver=3.15.3
+pkgver=3.15.5
 pkgrel=1
 pkgdesc="Extra features for Python's JSON"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python')
 optdepends=('python-numpy' 'python-pandas' 'python-pytz')
 makedepends=('python-setuptools')
 source=("pyjson_tricks-$pkgver.tar.gz::https://github.com/mverleg/pyjson_tricks/archive/v$pkgver.tar.gz")
-sha1sums=('aacc799ce391c0f31fc86268fb19eaab55e3cb2e')
+sha1sums=('ff07f9af781d006d05e4446bc823709fe2f8245b')
 
 build() {
     cd "$srcdir"/pyjson_tricks-$pkgver
