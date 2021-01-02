@@ -2,14 +2,14 @@ pkgname=cross-git
 _pkgname=cross
 pkgdesc="'Zero setup' cross compilation and 'cross testing' of Rust crates"
 pkgrel=1
-pkgver=0.1.16.480
+pkgver=0.2.1.644
 arch=('i686' 'x86_64')
 conflicts=("cross")
 provides=("cross")
 url="https://github.com/rust-embedded/cross"
 license=('Apache' 'MIT')
-depends=('rust' 'cargo')
-makedepends=('rust' 'cargo')
+depends=('rustup' 'cargo')
+makedepends=('rust' 'cargo' 'git')
 optdepends=(
 	'rust-src: rust std source code'
 	'docker: provide container'
