@@ -1,18 +1,24 @@
 pkgbase = cherrytree
 	pkgdesc = Hierarchical note-taking application
-	pkgver = 0.99.27
+	pkgver = 0.99.28
 	pkgrel = 1
 	url = https://www.giuspen.com/cherrytree/
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	makedepends = python
+	makedepends = spdlog
+	depends = fmt
 	depends = gspell
 	depends = gtksourceviewmm
 	depends = libxml++2.6
 	depends = uchardet
-	source = https://www.giuspen.com/software/cherrytree_0.99.27.tar.xz
-	sha256sums = 1c10020eef6e222bbdaa87b9d15d85b703380aba4727a2fbd0f09f8cc353c606
+	optdepends = xorg-xhost: allow chroot access to X server for running tests
+	source = https://www.giuspen.com/software/cherrytree_0.99.28.tar.xz
+	source = https://www.giuspen.com/software/cherrytree_0.99.28.tar.xz.asc
+	validpgpkeys = C7BF38CE0BD442C2369AA984049128A20CE0648D
+	sha256sums = 54d246dcd15ce699d6260a9322289a5fcba40fa2490cfea68dc394541c0d74c9
+	sha256sums = SKIP
 
 pkgname = cherrytree
 
