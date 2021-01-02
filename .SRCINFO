@@ -6,7 +6,6 @@ pkgbase = bfetch-github-git
 	arch = any
 	license = custom
 	makedepends = git
-	optdepends = 
 	provides = bfetch
 	conflicts = bfetch-git
 	source = git+https://github.com/NNBnh/bfetch

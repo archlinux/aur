@@ -9,7 +9,6 @@ arch=('any')
 url="https://github.com/NNBnh/bfetch"
 license=('custom')
 makedepends=('git')
-optdepends=('')
 provides=("bfetch")
 conflicts=("bfetch-git")
 source=('git+https://github.com/NNBnh/bfetch')
