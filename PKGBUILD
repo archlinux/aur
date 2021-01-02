@@ -12,7 +12,7 @@ optdepends=('rawtherapee: for raw image processing'
 	    'dvd+rw-tools: for burning CDs,DVDs or BlueRays'
 	    'hugin: for panorama photos')
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('646194de004ca53476d238d8648392c3406eb1ad278d4f0f73ffd772ae799ef4')
+sha256sums=('b6bd2a0ca6d86c69a26064bc9a0aee6aefafe0eebb822e97eb405f607f4a5d85')
 
 prepare() {
   cd $pkgname
