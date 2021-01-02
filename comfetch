@@ -3,6 +3,8 @@ os=$(/bin/cat /etc/os-release | grep "PRETTY_NAME" | awk -F '=' '{print $2}' | a
 user=$(whoami)
 hostname=$(uname -n)
 kernel=$(uname -r)
+usedmem=$(free --mebi | grep "Mem:" | awk '{print $3}')
+totalmem=$(free --mebi | grep "Mem:" | awk '{print $2}')
 ansicolor=" \u001b[$(/bin/cat /etc/os-release | grep "ANSI_COLOR" | awk -F '=' '{print $2}' | awk -F '"' '{print $2}')m"
 reset="\u001b[0m"
 
@@ -11,7 +13,7 @@ echo "$ansicolor""    .--.     ""USER$reset | $user"
 echo "$ansicolor""   |o_o |    ""HOST$reset | $hostname"
 echo "$ansicolor""   |:_/ |    ""OS  $reset | $os"
 echo "$ansicolor""  //   \ \\   ""KERN$reset | $kernel"
-echo "$ansicolor"" (|     | )  $reset"
+echo "$ansicolor"" (|     | )  ""RAM $reset | $usedmem""MiB/""$totalmem""MiB"
 echo "$ansicolor""/'|_   _/'\\ $reset"
 echo "$ansicolor""\\___)=(___/ $reset"
 }
