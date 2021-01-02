@@ -11,7 +11,7 @@ license=('custom')
 makedepends=('git')
 optdepends=('')
 provides=("bfetch")
-conflicts=("bfetch")
+conflicts=("superbfetch-git")
 source=('git+https://gitlab.com/nautilor/bfetch')
 md5sums=('SKIP')
 
