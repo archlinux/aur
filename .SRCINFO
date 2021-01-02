@@ -1,0 +1,20 @@
+pkgbase = at-spi2-atk-git
+	pkgdesc = A GTK+ module that bridges ATK to D-Bus at-spi
+	pkgver = 2.38.0
+	pkgrel = 1
+	url = https://wiki.gnome.org/Accessibility
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = meson
+	depends = at-spi2-core
+	depends = libx11
+	depends = libxml2
+	depends = atk
+	provides = at-spi2-atk
+	conflicts = at-spi2-atk
+	source = git+https://gitlab.gnome.org/GNOME/at-spi2-atk.git
+	sha256sums = SKIP
+
+pkgname = at-spi2-atk-git
+
