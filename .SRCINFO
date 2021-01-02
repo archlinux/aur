@@ -1,7 +1,7 @@
 pkgbase = bird-git
 	pkgdesc = RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon
 	pkgver = r3666.455c13dc
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bird.network.cz/
 	arch = x86_64
 	license = GPL2
@@ -17,8 +17,10 @@ pkgbase = bird-git
 	backup = etc/bird.conf
 	source = git+https://gitlab.nic.cz/labs/bird.git
 	source = bird.service
+	source = fix_loopback.patch
 	md5sums = SKIP
 	md5sums = 69221e063a3f07dcad519d5eeacaae75
+	md5sums = 514ecf30581769f052efb66afab6ed5d
 
 pkgname = bird-git
 
