@@ -1,0 +1,22 @@
+pkgbase = python-test-tube
+	pkgdesc = Machine learning / data science experiments logger and visualizer for pytorch.
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = https://github.com/williamFalcon/test-tube
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-pytorch
+	depends = python-pandas
+	depends = python-imageio
+	depends = python-tensorboardx
+	depends = python-future
+	provides = python-test-tube
+	conflicts = python-test-tube
+	source = https://github.com/williamFalcon/test_tube/archive/0.7.5.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-test-tube
+
