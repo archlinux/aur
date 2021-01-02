@@ -19,7 +19,8 @@ depends=("alsa-utils"
          "xorg-xprop")
 conflicts=("safeeyes")
 makedepends=("python-setuptools" "git")
-optdepends=("xprintidle: better idle timer")
+optdepends=("xprintidle: better idle timer"
+            "python-croniter: health stats plugin")
 source=("git+https://github.com/slgobinath/SafeEyes.git")
 sha1sums=('SKIP')
 
