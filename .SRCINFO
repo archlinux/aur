@@ -1,7 +1,7 @@
 pkgbase = bauh-staging
 	pkgdesc = Graphical interface for managing your applications (AppImage, Flatpak, Snap, Arch/AUR, Web). Testing branch (it may not be working properly).
-	pkgver = 0.9.11.RC
-	pkgrel = 8
+	pkgver = 0.9.12.RC
+	pkgrel = 1
 	url = https://github.com/vinifmor/bauh
 	arch = any
 	license = zlib/libpng
@@ -27,7 +27,7 @@ pkgbase = bauh-staging
 	optdepends = fuse3: may be required for AppImage support
 	optdepends = pacman: required for AUR support
 	optdepends = binutils: required for AUR support
-	optdepends = git: to allow AUR packages downgrading
+	optdepends = git: required for AUR support
 	optdepends = autoconf: may be required to compile some AUR packages
 	optdepends = automake: may be required to compile some AUR packages
 	optdepends = bison: may be required to compile some AUR packages
@@ -45,8 +45,8 @@ pkgbase = bauh-staging
 	optdepends = axel: multi-threaded downloading support
 	provides = bauh
 	conflicts = bauh
-	source = https://github.com/vinifmor/bauh/archive/847e141277e4b8d4f5cc6584f5cfcdfd37ccff91.tar.gz
-	sha512sums = 83f1dd69b9f265a483060c6eac159919de556d19c7a90cca8a573162be44955539b5d18a63663cb58928a84a0c61a878c9a0dcc71f3a69e094eddf3737ffb0b7
+	source = https://github.com/vinifmor/bauh/archive/4d0660e0ea4348c5cb0a1ee51fd1ee87182fc1ac.tar.gz
+	sha512sums = c7e1d9fa1e101b95ab13e61e23e447bfde14c3728f310735f5b18a406fa50ec08754796779e4d367c43b153aa497831f46b2ecc1a16662fb5c3fcb93d3722b6c
 
 pkgname = bauh-staging
 
