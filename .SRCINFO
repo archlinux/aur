@@ -1,7 +1,7 @@
 pkgbase = wayvnc
 	pkgdesc = VNC server for wlroots-based Wayland compositors
-	pkgver = 0.3.1
-	pkgrel = 3
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/any1/wayvnc
 	arch = x86_64
 	arch = i686
@@ -15,10 +15,10 @@ pkgbase = wayvnc
 	depends = libxkbcommon
 	depends = aml
 	depends = pixman
-	depends = neatvnc>=0.3.0
+	depends = neatvnc>=0.4.0
 	depends = wayland
-	source = wayvnc-v0.3.1.tar.gz::https://github.com/any1/wayvnc/archive/v0.3.1.tar.gz
-	sha512sums = 0ddfd949b76a4dc140b825f488eb887cf4608a685b9d2b8a514a2ad5b436baf2ea1cdcd159ec98e22bf3724daab71822d5beded3695dd05b4b062ad76ad3f25b
+	source = wayvnc-v0.4.0.tar.gz::https://github.com/any1/wayvnc/archive/v0.4.0.tar.gz
+	sha512sums = b8f1af24213077dc6126ae1f613b9cdeed8f365f9d1989a5b053563f0eb4bc49921e746e0f1026fe0e02bfeea23b912798678a5a337a052d977aa04496a75570
 
 pkgname = wayvnc
 
