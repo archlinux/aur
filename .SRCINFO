@@ -1,0 +1,21 @@
+pkgbase = at-spi2-core-minimal-git
+	pkgdesc = Protocol definitions and daemon for D-Bus at-spi
+	pkgver = 2.38.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/at-spi2-core
+	arch = x86_64
+	license = GPL2
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = meson
+	depends = dbus
+	depends = glib2
+	depends = libxtst
+	optdepends = dbus-broker: Alternative bus implementation
+	provides = at-spi2-core
+	conflicts = at-spi2-core
+	source = git+https://gitlab.gnome.org/GNOME/at-spi2-core.git
+	sha256sums = SKIP
+
+pkgname = at-spi2-core-minimal-git
+
