@@ -1,7 +1,7 @@
 # Maintainer: Roman Vasilev <2rvasilev@live.ru>
 
 pkgname=zoomdl
-pkgver=2020.11.07
+pkgver=2021.01.01
 pkgrel=1
 epoch=
 pkgdesc="Download Zoom recorded meetings easily"
@@ -20,9 +20,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/Battleman/zoomdl/releases/download/$pkgver/$pkgname")
+source=("https://github.com/Battleman/zoomdl/releases/download/v$pkgver/$pkgname")
 noextract=()
-md5sums=('6bdd65c18555d5db0e5aa60885b1ebd3')
+md5sums=('2dc8a4e4035674c97e742350efa7fe61')
 validpgpkeys=()
 
 package() {
