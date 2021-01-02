@@ -33,7 +33,7 @@ md5sums_aarch64=(SKIP)
 
 package() {
     _output=""
-    case ${CARCH} in
+    case $CARCH in
         x86_64 )
             _output = "$pkgname-x86_64-unknown-linux-gnu"
             ;;
@@ -45,5 +45,5 @@ package() {
             ;;
     esac
 
-	install -Dm755 "$srcdir/${_output}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 "${srcdir}/${_output}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
