@@ -28,13 +28,11 @@ source=(
   git://github.com/lxc/lxc
   lxc.tmpfiles.d
   lxc.service
-  lxc-auto.service
-  0001-Fix-build-on-Arch-Linux.patch)
+  lxc-auto.service)
 sha256sums=('SKIP'
             '10e4f661872f773bf3122a2f9f2cb13344fea86a4ab72beecb4213be4325c479'
             'bbe7e0447bc3bf5f75f312c34d647f5218024731628a5e8633b1ea1801ebe16b'
-            'b31f8d6b301ab9901b43f2696bcd0babb32b96e4a59fab63a2d642e43bf26bb3'
-            '804859a4b7d71e0007ae0d68cff95ef34530ee2ee9a4778c05c6adb45a33fa32')
+            'b31f8d6b301ab9901b43f2696bcd0babb32b96e4a59fab63a2d642e43bf26bb3')
 
 
 pkgver() {
@@ -44,7 +42,9 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  patch -Np1 -i ../0001-Fix-build-on-Arch-Linux.patch
+  sed -i \
+    -e 's|"\\"-//Davenport//DTD DocBook V3.0//EN\\""|"\\"-//OASIS//DTD DocBook XML\\" \\"https://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd\\""|' \
+    configure.ac
 }
 
 build() {
@@ -60,9 +60,11 @@ build() {
     --enable-apparmor \
     --enable-seccomp \
     --enable-capabilities \
+    --disable-werror \
     --with-init-script=systemd \
     --with-systemdsystemunitdir=/usr/lib/systemd/system \
     --enable-pam \
+    --disable-werror \
     --with-pamdir=/usr/lib/security
   make
 }
