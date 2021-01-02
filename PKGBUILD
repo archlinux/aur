@@ -8,7 +8,7 @@ depends=('clutter-gtk')
 pkgdesc="A program to find files with a nice gtk interface"
 url="http://www.kornelix.net/findwild/findwild.html"
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('d06e6d0aa98998a4df6a1daab92fb30cfd5807f9d13692920efc9c850a20a614')
+sha256sums=('c52239e0fd5a9c679a1f4516852e4d53cb7eaed19fce3f691419e31a21d8d566')
 options=('!emptydirs')
 
 build() {

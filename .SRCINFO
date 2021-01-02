@@ -9,7 +9,7 @@ pkgbase = findwild
 	depends = clutter-gtk
 	options = !emptydirs
 	source = http://www.kornelix.net/downloads/downloads/findwild-3.1.tar.gz
-	sha256sums = d06e6d0aa98998a4df6a1daab92fb30cfd5807f9d13692920efc9c850a20a614
+	sha256sums = c52239e0fd5a9c679a1f4516852e4d53cb7eaed19fce3f691419e31a21d8d566
 
 pkgname = findwild
 
