@@ -3,7 +3,7 @@
 pkgname=popcorntime-ru-bin
 _pkgname=popcorntime-ru
 pkgver=0.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Stream free movies and TV shows from torrents with Russian translation"
 arch=('x86_64')
 url="https://popcorn-ru.tk"
@@ -16,7 +16,7 @@ options=('!strip')
 _zipfile="Popcorn-Time-Ru-${pkgver}-linux64.zip"
 source=("https://github.com/popcorn-time-ru/popcorn-desktop/releases/download/v${pkgver}/${_zipfile}"
         "${_pkgname}.desktop" )
-sha256sums=('ea9fea30347bb84faa9fcd2ed4758960cac028dd408cfef050cbee7ee3fc4351'
+sha256sums=('6bbc54a66d15f304d829c42a76b076b53361b6a03ea0bb60bee01f5e07c333b0'
             '144dc8864d74abed5022b354ecd34b9a7bc6a0f0fdd442e0bac438c2ce6c4c5b')
 
 package() {
