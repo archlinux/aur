@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('clutter-gtk')
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('386d04dedb416fa2847fe6108e5cc272d64f02a8a6101037e3da12b25b828b48')
+sha256sums=('aa59c83c92aa42f8c1d496df18b3d7ddb1eab2e80d0277bbf7d938f06af40d87')
 options=('!emptydirs')
 
 build() {
