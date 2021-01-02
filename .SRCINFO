@@ -1,0 +1,15 @@
+pkgbase = tex-match
+	pkgdesc = Find LaTeX symbols by sketching. A desktop version of detexify.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/zoeyfyi/TeX-Match
+	arch = x86_64
+	license = MIT
+	makedepends = rust>=1.46.0
+	makedepends = git
+	depends = gtk3
+	source = TeX-Match::git+https://github.com/zoeyfyi/TeX-Match#tag=v1.2.0
+	md5sums = SKIP
+
+pkgname = tex-match
+
