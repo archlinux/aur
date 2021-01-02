@@ -1,13 +1,13 @@
 pkgbase = hachoir-core
-	pkgdesc = A library written in Python which allows to see and edit a binary files field per field.
-	pkgver = 1.3.3
-	pkgrel = 4
-	url = http://bitbucket.org/haypo/hachoir/wiki/Home
+	pkgdesc = A Python library to view and edit a binary stream field by field.
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://pypi.org/project/hachoir/
 	arch = any
 	license = GPL2
-	depends = python2
-	source = http://cheeseshop.python.org/packages/source/h/hachoir-core/hachoir-core-1.3.3.tar.gz
-	md5sums = b80f0257536e2b2cb23f66670c4f6f31
+	depends = python
+	source = https://github.com/vstinner/hachoir/archive/3.1.1.tar.gz
+	md5sums = 717a008a9ecd5fef551e015f0478654a
 
 pkgname = hachoir-core
 
