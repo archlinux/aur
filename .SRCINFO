@@ -1,0 +1,14 @@
+pkgbase = python-flask-humanize
+	pkgdesc = Common humanization utilities for Flask applications.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/vitalk/flask-humanize
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/F/Flask-Humanize/Flask-Humanize-0.3.0.tar.gz
+	sha256sums = f65a7b4cfcdeee1b1987f40af0f0e10f99f95423bf04e04720e7c086ea9f3d49
+
+pkgname = python-flask-humanize
+
