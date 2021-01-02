@@ -1,5 +1,6 @@
-# Maintainer: Bernhard Landauer <oberon@manjaro.org>
-# Maintainer: Sibren Vasse <arch at sibrenvasse dot nl>
+# Maintainer: Lari Tikkanen <lartza at outlook dot com>
+# Contributor: Bernhard Landauer <oberon@manjaro.org>
+# Contributor: Sibren Vasse <arch at sibrenvasse dot nl>
 # Contributor: Dominic Finke <arch at realbig dot de>
 
 ## To install different language version adjust the following line.
@@ -8,13 +9,11 @@ _lang=en-US
 
 pkgname=openoffice
 _vmaj=4
-_vmin=1.7
-pkgver=$_vmaj.$_vmin
+pkgver=$_vmaj.1.8
 pkgrel=1
-_path=opt/$pkgname$_vmaj
-pkgdesc="Apache OpenOffice"
-arch=('i686' 'x86_64')
-url="http://www.openoffice.org"
+pkgdesc="The Free and Open Productivity Suite"
+arch=('x86_64')
+url="https://www.openoffice.org"
 license=('Apache')
 depends=('freetype2'
          'glibc>=2.5'
@@ -35,13 +34,10 @@ optdepends=('apr-util: adds apr support'
             'sqlite: adds sqlite support')
 conflicts=('openoffice-base-bin-unstable')
 replaces=('openoffice-base-bin')
-backup=("$_path/program/sofficerc")
+backup=("opt/openoffice$_vmaj/program/sofficerc")
 options=(!strip docs)
-_durl="http://apache.org/dist/$pkgname/$pkgver/binaries/$_lang/Apache_OpenOffice_${pkgver}_Linux_x86"
-source_i686=("v$pkgver-i686::${_durl}_install-rpm_en-US.tar.gz")
-source_x86_64=("v$pkgver-x86_64::${_durl}-64_install-rpm_en-US.tar.gz")
-md5sums_i686=('650016711ab925eb0350c4d2fbbecd92')
-md5sums_x86_64=('f71d8bbc7c1901e808e7c5d5e6eaa051')
+source=("https://downloads.apache.org/openoffice/$pkgver/binaries/$_lang/Apache_OpenOffice_${pkgver}_Linux_x86-64_install-rpm_$_lang.tar.gz")
+sha256sums=('b166ca275b601714dee398e96017c71cac03f8aaa158ee6981b5712b61afdb99')
 
 _source_dirs=$_lang/RPMS
 
@@ -55,7 +51,7 @@ _find_rpms() {
                 ! [[ $file == */jre-* ]]; then
                 echo "${file}"
             elif type -p msg >/dev/null; then
-                msg "Skipping ${file##*/}" >&2
+                echo "Skipping ${file##*/}" >&2
             else
                 echo "Skipping ${file##*/}" >&2
             fi
@@ -78,18 +74,18 @@ package() {
     cd $pkgdir
     local file
         for file in $( _find_rpms ); do
-        msg "Extracting ${file##*/}"
+        echo "Extracting ${file##*/}"
         bsdtar -xf "${file}"
     done
-    msg2 "Completing package"
+    echo "Completing package"
     # remove symlink to avoid conflict with libreoffice-common 3.5.2-1
     # (not used in the desktop files)
     [[ -h usr/bin/soffice ]] && rm -f usr/bin/soffice
     # add licenses (found by find pkg -ipath '*license*')
     _ln_s_t usr/share/licenses/${_pkgname} '' \
-        $_path/program/LICENSE
+        opt/openoffice$_vmaj/program/LICENSE
     # Fix python shebang calls
     sed -i -re "1s;^#! *(/usr(/local)?)?/bin/(env +)?python(2[^ ]*)?( |$);#!/usr/bin/env python2 ;" $(
-        find $_path/program/python-core-2.7.6/lib -type f -name '*.py'
+        find opt/openoffice$_vmaj/program/python-core-2.7.18/lib -type f -name '*.py'
 	)
 }

@@ -1,9 +1,8 @@
 pkgbase = openoffice
-	pkgdesc = Apache OpenOffice
-	pkgver = 4.1.7
+	pkgdesc = The Free and Open Productivity Suite
+	pkgver = 4.1.8
 	pkgrel = 1
-	url = http://www.openoffice.org
-	arch = i686
+	url = https://www.openoffice.org
 	arch = x86_64
 	license = Apache
 	depends = freetype2
@@ -28,10 +27,8 @@ pkgbase = openoffice
 	options = !strip
 	options = docs
 	backup = opt/openoffice4/program/sofficerc
-	source_i686 = v4.1.7-i686::http://apache.org/dist/openoffice/4.1.7/binaries/en-US/Apache_OpenOffice_4.1.7_Linux_x86_install-rpm_en-US.tar.gz
-	md5sums_i686 = 650016711ab925eb0350c4d2fbbecd92
-	source_x86_64 = v4.1.7-x86_64::http://apache.org/dist/openoffice/4.1.7/binaries/en-US/Apache_OpenOffice_4.1.7_Linux_x86-64_install-rpm_en-US.tar.gz
-	md5sums_x86_64 = f71d8bbc7c1901e808e7c5d5e6eaa051
+	source = https://downloads.apache.org/openoffice/4.1.8/binaries/en-US/Apache_OpenOffice_4.1.8_Linux_x86-64_install-rpm_en-US.tar.gz
+	sha256sums = b166ca275b601714dee398e96017c71cac03f8aaa158ee6981b5712b61afdb99
 
 pkgname = openoffice
 
