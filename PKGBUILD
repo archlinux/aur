@@ -1,3 +1,4 @@
+# Maintainer: Marc Zuo <zuoq at pm dot me>
 pkgbase='python-betacode'
 pkgname=('python-betacode')
 _module='betacode'
