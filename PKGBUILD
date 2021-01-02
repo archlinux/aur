@@ -10,9 +10,9 @@ _lang=en-US
 pkgname=openoffice-bin
 _vmaj=4
 pkgver=$_vmaj.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="The Free and Open Productivity Suite"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="https://www.openoffice.org"
 license=('Apache')
 depends=('freetype2'
@@ -33,11 +33,13 @@ optdepends=('apr-util: adds apr support'
             'raptor1: adds rdf support'
             'sqlite: adds sqlite support')
 conflicts=('openoffice-base-bin-unstable')
-replaces=('openoffice-base-bin')
+replaces=('openoffice-base-bin' 'openoffice')
 backup=("opt/openoffice$_vmaj/program/sofficerc")
 options=(!strip docs)
-source=("https://downloads.apache.org/openoffice/$pkgver/binaries/$_lang/Apache_OpenOffice_${pkgver}_Linux_x86-64_install-rpm_$_lang.tar.gz")
-sha256sums=('b166ca275b601714dee398e96017c71cac03f8aaa158ee6981b5712b61afdb99')
+source_x86_64=("https://downloads.apache.org/openoffice/$pkgver/binaries/$_lang/Apache_OpenOffice_${pkgver}_Linux_x86-64_install-rpm_$_lang.tar.gz")
+source_i686=("https://downloads.apache.org/openoffice/$pkgver/binaries/$_lang/Apache_OpenOffice_${pkgver}_Linux_x86_install-rpm_$_lang.tar.gz")
+sha256sums_x86_64=('b166ca275b601714dee398e96017c71cac03f8aaa158ee6981b5712b61afdb99')
+sha256sums_i686=('d91636e4542ccf8ce53093f41e08b1c647e4c402cd59e38f938b07a8dc736df8')
 
 _source_dirs=$_lang/RPMS
 
