@@ -1,0 +1,14 @@
+pkgbase = python-cheap_repr
+	pkgdesc = Better version of repr/reprlib for short, cheap string representations.
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = http://github.com/alexmojaki/cheap_repr
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/c/cheap_repr/cheap_repr-0.4.4.tar.gz
+	sha256sums = 181ea3731b9a056ba31184f3e0de7dd9d593a84978d3a5b1ab98ef7c1c1bfd08
+
+pkgname = python-cheap_repr
+
