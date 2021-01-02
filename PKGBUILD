@@ -1,14 +1,16 @@
-pkgname=vgmstream-kode54-git
-pkgver=r1050.3185.g471dadb4
-pkgrel=2
-pkgdesc="Library for playback of various streamed audio formats used in video games (kode54's fork)"
+pkgname=vgmstream-git
+pkgver=r1050.3533.g95709ce3
+pkgrel=1
+pkgdesc='Library for playback of various streamed audio formats used in video games'
 arch=(x86_64)
-url='https://github.com/kode54/vgmstream'
+url='https://github.com/vgmstream/vgmstream'
 license=(BSD)
 depends=(ffmpeg libao libatrac9-git libogg libvorbis mpg123)
 makedepends=(audacious git gtk2)
 optdepends=('audacious: for using the bundled plugin')
-source=(${pkgname}::git+https://github.com/kode54/vgmstream.git
+conflicts=(vgmstream-kode54-git)
+replaces=(vgmstream-kode54-git)
+source=(${pkgname}::git+https://github.com/vgmstream/vgmstream.git
         https://downloads.xiph.org/releases/celt/celt-0.6.1.tar.gz
         https://downloads.xiph.org/releases/celt/celt-0.11.0.tar.gz
         install-headers.patch)
