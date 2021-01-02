@@ -6,6 +6,7 @@ pkgbase = rambox-pro-bin
 	arch = x86_64
 	license = custom
 	depends = alsa-lib
+	depends = gtk3
 	depends = libxss
 	depends = libxtst
 	depends = nss
