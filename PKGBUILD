@@ -2,36 +2,28 @@
 
 pkgname=bubble-chains
 #_pkgname=chains
-pkgver=0.1.1
-pkgrel=8
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="A 2d arcade-puzzle game. The aim is to collect chains of same-color bubbles, and to destroy all the target items."
-arch=('i686' 'x86_64')
-# url="http://bubble-chains.sintegrial.com/"
-url="https://github.com/SanskritFritz/bubble-chains"
+arch=('x86_64')
+url="https://github.com/ArsMasiuk/bubble-chains"
 license=('GPL3')
-depends=('qt4' 'sdl_mixer' 'libgl')
-optdepends=('timidity++: for enabling music')
-# source=(http://bubble-chains.sintegrial.com/get.php?file=chains_src ${_pkgname}.desktop ${_pkgname}.png)
-source=("https://github.com/SanskritFritz/bubble-chains/archive/$pkgver.tar.gz"
-        "${pkgname}.desktop" "${pkgname}.png")
+depends=('qt5-multimedia' 'qt5-x11extras' 'libxrandr')
+source=("https://github.com/ArsMasiuk/bubble-chains/archive/V$pkgver.tar.gz")
 
-md5sums=('de0634b065af5c133d57b8bcb899308b'
-         '1c1a31d802606255198e024f4b962511'
-         '49fba66c11014e8da4980876e90ad4b6')
+md5sums=('97d698ff53044cadacffdddce9f522b0')
+
+prepare() {
+	cd $pkgname-$pkgver
+	sed -i -e 's#/usr/local/bin#/usr/bin#g' chains.pro
+}
 
 build() {
 	cd $pkgname-$pkgver
-	sed -i -e 's#/usr/local/bin#/usr/bin#g' \
-		-e 's#/usr/local/games#/usr/share#g'\
-		-e 's#LIBS += -lSDLmain#LIBS += -lSDL -lX11#' \
-		Game.pro main.cpp
-	qmake-qt4 
+	qmake-qt5
 	make
 }
 package() {
 	cd $pkgname-$pkgver
 	make INSTALL_ROOT=${pkgdir} install
-	chmod -R 755 $pkgdir/usr/share/chains
-	install -Dm644 $startdir/${pkgname}.desktop $pkgdir/usr/share/applications/${pkgname}.desktop
-	install -Dm644 $startdir/${pkgname}.png $pkgdir/usr/share/pixmaps/${pkgname}.png
 }

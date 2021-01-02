@@ -1,21 +1,15 @@
 pkgbase = bubble-chains
 	pkgdesc = A 2d arcade-puzzle game. The aim is to collect chains of same-color bubbles, and to destroy all the target items.
-	pkgver = 0.1.1
-	pkgrel = 8
-	url = https://github.com/SanskritFritz/bubble-chains
-	arch = i686
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/ArsMasiuk/bubble-chains
 	arch = x86_64
 	license = GPL3
-	depends = qt4
-	depends = sdl_mixer
-	depends = libgl
-	optdepends = timidity++: for enabling music
-	source = https://github.com/SanskritFritz/bubble-chains/archive/0.1.1.tar.gz
-	source = bubble-chains.desktop
-	source = bubble-chains.png
-	md5sums = de0634b065af5c133d57b8bcb899308b
-	md5sums = 1c1a31d802606255198e024f4b962511
-	md5sums = 49fba66c11014e8da4980876e90ad4b6
+	depends = qt5-multimedia
+	depends = qt5-x11extras
+	depends = libxrandr
+	source = https://github.com/ArsMasiuk/bubble-chains/archive/V0.2.0.tar.gz
+	md5sums = 97d698ff53044cadacffdddce9f522b0
 
 pkgname = bubble-chains
 
