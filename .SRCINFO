@@ -8,7 +8,6 @@ pkgbase = at-spi2-core-git
 	makedepends = gobject-introspection
 	makedepends = git
 	makedepends = meson
-	makedepends = dbus-broker
 	depends = dbus
 	depends = glib2
 	depends = libxtst
