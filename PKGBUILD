@@ -9,7 +9,7 @@ license=('GPL3')
 pkgdesc="Showing some system status informations"
 url="http://www.kornelix.net/watsup/watsup.html"
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('475840a8de2a10ace727d8b8550845bb0231fe2b132bd28ffcd956e0bb788069')
+sha256sums=('6884c9d8147844a747884fa2de7b48015e6dff04a8ecd3a03e39a7ef6d999022')
 options=('!emptydirs')
 
 build() {
