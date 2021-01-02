@@ -1,7 +1,7 @@
 # Maintainer: Félix Saparelli <aur@passcod.name>
 
 pkgname=talon-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Powerful hands-free voice and gaze input scriptable with Python'
 url='https://talonvoice.com/'
@@ -47,7 +47,7 @@ source=(
   'talon.png'
 )
 
-b2sums=('a783fd1eaeb9abe2845c01b713e98898d151e8ead79caa42cf3f78679fe62925c0a4117c5c7ec9868195723a9a80597a10655ad103458ba80f2e70210857cdcb'
+b2sums=('77f178948164fba1e9ecacaa115067507f9b9d72855c2c3abb17abb809a6e2c4c2908db74a40bd3c5555b7f0dfcd8d9651b97010c2034f1b8794eece09418318'
         '34608eb13260ad88baa65faa875e29808ff30be56ae90298ca2d081181cd90a26d2c1f126dd605467f18245136b962ee0e2db17139392a37a44c6a9bc46301ec'
         'c63afa0d3d1cbdeda086b278c4539b60be80be1b927e7eb137d2c40d3dbb13b0945efd743515c3d2d6bee7ff66b01cc9360cf3be12a17e4d4ca481d71d574dfb'
         '86a2e315b72e43e1083cd9163adb634987526fe80972ff3697afa71d538968bce54b7e2115fee9814768aba4c2dfb7d8c23ed45f75c70f44cfee9a30e00bf99e'
