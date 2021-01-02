@@ -51,6 +51,8 @@ build() {
     -Dwith-bitbridge=true \
     build
 
+  # If the build is taking up too much RAM, then add `-j<num_jobs>` to control
+  # the number of targets being built simultaneously
   ninja -C build
 }
 
