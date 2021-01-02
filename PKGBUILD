@@ -12,7 +12,6 @@ source=('git+https://github.com/civetweb/civetweb.git')
 md5sums=('SKIP')
 
 build() {
-	git clone https://github.com/civetweb/civetweb.git
 	cd $pkgname
 	make
 }
