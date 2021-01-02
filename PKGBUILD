@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('clutter-gtk')
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('8067c632c070e8101426f69eb67fc267b96c289546eecd5bc24431ce9d5b5cba')
+sha256sums=('a63d278ef9523034916a20e8b2f5ddf818e1d76cd180c9d781bf11691ffbed47')
 
 build() {
   cd $pkgname
