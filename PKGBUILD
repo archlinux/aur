@@ -2,7 +2,7 @@
 # Contributer: Gladyshev Ilya <fixfromdarkness@cock.li>
 
 pkgname=nix-bin
-pkgver=2.3.9
+pkgver=2.3.10
 pkgrel=1
 pkgdesc="A purely functional package manager - /nix/store multi-user edition"
 arch=('i686' 'x86_64' 'aarch64')
@@ -81,6 +81,6 @@ md5sums=('d0ea6ac6013dfcf18c105c45bbb4be41'
          '9ece6a19a8bf818b23e2d7d0fb6f5cef'
          '9b748e49cadb4d29eec57e7cf759bf35'
          '4a5758557e088ecd1438502328b38fa7')
-md5sums_i686=('ed567a722a98c560e2e05ead1668fc3c')
-md5sums_x86_64=('dc39acff98c57c3bcb555f8f8f694f51')
-md5sums_aarch64=('de1d5c9ffb31846b10128afecc28eea6')
+md5sums_i686=('e3375004e5d0cd2ca81f6c30d41a5223')
+md5sums_x86_64=('755e229d09fb4b4f0cffdec8d98f221c')
+md5sums_aarch64=('e5183d9604b3a1c4c8109fa8ec0b2c01')

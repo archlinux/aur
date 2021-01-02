@@ -1,6 +1,6 @@
 pkgbase = nix-bin
 	pkgdesc = A purely functional package manager - /nix/store multi-user edition
-	pkgver = 2.3.9
+	pkgver = 2.3.10
 	pkgrel = 1
 	url = https://nixos.org/nix
 	install = nix.install
@@ -24,11 +24,11 @@ pkgbase = nix-bin
 	md5sums = 9ece6a19a8bf818b23e2d7d0fb6f5cef
 	md5sums = 9b748e49cadb4d29eec57e7cf759bf35
 	md5sums = 4a5758557e088ecd1438502328b38fa7
-	source_i686 = https://nixos.org/releases/nix/nix-2.3.9/nix-2.3.9-i686-linux.tar.xz
-	md5sums_i686 = ed567a722a98c560e2e05ead1668fc3c
-	source_x86_64 = https://nixos.org/releases/nix/nix-2.3.9/nix-2.3.9-x86_64-linux.tar.xz
-	md5sums_x86_64 = dc39acff98c57c3bcb555f8f8f694f51
-	source_aarch64 = https://nixos.org/releases/nix/nix-2.3.9/nix-2.3.9-aarch64-linux.tar.xz
-	md5sums_aarch64 = de1d5c9ffb31846b10128afecc28eea6
+	source_i686 = https://nixos.org/releases/nix/nix-2.3.10/nix-2.3.10-i686-linux.tar.xz
+	md5sums_i686 = e3375004e5d0cd2ca81f6c30d41a5223
+	source_x86_64 = https://nixos.org/releases/nix/nix-2.3.10/nix-2.3.10-x86_64-linux.tar.xz
+	md5sums_x86_64 = 755e229d09fb4b4f0cffdec8d98f221c
+	source_aarch64 = https://nixos.org/releases/nix/nix-2.3.10/nix-2.3.10-aarch64-linux.tar.xz
+	md5sums_aarch64 = e5183d9604b3a1c4c8109fa8ec0b2c01
 
 pkgname = nix-bin
