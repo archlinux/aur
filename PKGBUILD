@@ -23,7 +23,7 @@
 CHECK=            # Run tests. May fail, this is developement after all.
 CLANG=            # Use clang.
 GOLD=             # Use the gold linker.
-LTO=              # Enable link-time optimization. Read emacs's INSTALL before
+LTO="YES"         # Enable link-time optimization. Read emacs's INSTALL before
                   # attempting to use it with clang.
 CLI=              # CLI only binary.
 NOTKIT=           # Use no toolkit widgets. Like B&W Twm (001d sk00l).
@@ -49,7 +49,7 @@ NOGZ="YES"        # Don't compress .el files.
 ################################################################################
 pkgname="emacs-git"
 pkgver=28.0.50.144634
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64' )
 url="http://www.gnu.org/software/emacs/"
