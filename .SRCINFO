@@ -1,21 +1,19 @@
 pkgbase = minicom-line_timestamp
 	pkgdesc = A serial communication program (with line_timestamp patch)
-	pkgver = 2.7.1
-	pkgrel = 1
+	pkgver = 2.8
+	pkgrel = 2
 	url = https://salsa.debian.org/minicom-team/minicom
 	arch = x86_64
 	license = GPL
 	depends = bash
 	optdepends = lrzsz: for xmodem, ymodem and zmodem file transfer protocols
-	provides = minicom=2.7.1
+	provides = minicom=2.8
 	conflicts = minicom
 	backup = etc/minirc.dfl
-	source = minicom-2.7.1.tar.gz::http://ftp.debian.org/debian/pool/main/m/minicom/minicom_2.7.1.orig.tar.gz
-	source = minicom-2.7.1-gcc-10.patch
-	source = minicom-line_timestamp-2.7.patch::https://salsa.debian.org/yan12125-guest/minicom/-/commit/7907402f7a9aa71c79a51063f1704927d427432b.patch
-	sha256sums = 532f836b7a677eb0cb1dca8d70302b73729c3d30df26d58368d712e5cca041f1
-	sha256sums = b7d8eab87a919feb6d519c06c70145624a6560208e8c79da3a2ed2c2e086def3
-	sha256sums = e18bccbeb9e9c0bf717793cbb1e474cf3b9531ed89343d32efe077ff8ea38d05
+	source = https://salsa.debian.org/minicom-team/minicom/-/archive/2.8/minicom-2.8.tar.bz2
+	source = minicom-line_timestamp-2.8.patch::https://salsa.debian.org/yan12125-guest/minicom/-/commit/d7d40624f00cb06544e475fb308000575eaa95bc.patch
+	sha256sums = 38cea30913a20349326ff3f1763ee1512b7b41601c24f065f365e18e9db0beba
+	sha256sums = 821e65384543bee3da87954144277c051029af174cef3e7789a71c9c06efb073
 
 pkgname = minicom-line_timestamp
 
