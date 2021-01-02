@@ -1,0 +1,16 @@
+pkgbase = bupstash
+	pkgdesc = a tool for encrypted backups
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/andrewchambers/bupstash
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = pandoc
+	depends = libsodium
+	depends = gcc-libs
+	source = bupstash-0.6.2.tar.gz::https://github.com/andrewchambers/bupstash/archive/v0.6.2.tar.gz
+	sha512sums = 97c0b36e40a3fb05479dc9b7553b090353d7d866a6b2808e305c42094bd8bf3af63b4a14acd28fceb978fbcb7e78555e6d06b208a54cc190026ffb351f59b2f0
+
+pkgname = bupstash
+
