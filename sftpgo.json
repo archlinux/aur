@@ -9,11 +9,30 @@
     "setstat_mode": 0,
     "proxy_protocol": 0,
     "proxy_allowed": [],
-    "post_connect_hook": ""
+    "post_connect_hook": "",
+    "max_total_connections": 0,
+    "defender": {
+      "enabled": false,
+      "ban_time": 30,
+      "ban_time_increment": 50,
+      "threshold": 15,
+      "score_invalid": 2,
+      "score_valid": 1,
+      "observation_time": 30,
+      "entries_soft_limit": 100,
+      "entries_hard_limit": 150,
+      "safelist_file": "",
+      "blocklist_file": ""
+    }
   },
   "sftpd": {
-    "bind_port": 2022,
-    "bind_address": "",
+    "bindings": [
+      {
+        "port": 2022,
+        "address": "",
+        "apply_proxy_config": true
+      }
+    ],
     "max_auth_tries": 0,
     "banner": "",
     "host_keys": [],
@@ -33,25 +52,43 @@
     "password_authentication": true
   },
   "ftpd": {
-    "bind_port": 0,
-    "bind_address": "",
+    "bindings": [
+      {
+        "address": "",
+        "port": 0,
+        "apply_proxy_config": true,
+        "tls_mode": 0,
+        "force_passive_ip": "",
+        "client_auth_type": 0
+      }
+    ],
     "banner": "",
     "banner_file": "",
-    "active_transfers_port_non_20": false,
-    "force_passive_ip": "",
+    "active_transfers_port_non_20": true,
     "passive_port_range": {
       "start": 50000,
       "end": 50100
     },
+    "disable_active_mode": false,
+    "enable_site": false,
+    "hash_support": 0,
+    "combine_support": 0,
     "certificate_file": "",
     "certificate_key_file": "",
-    "tls_mode": 0
+    "ca_certificates": []
   },
   "webdavd": {
-    "bind_port": 0,
-    "bind_address": "",
+    "bindings": [
+      {
+        "address": "",
+        "port": 0,
+        "enable_https": false,
+        "client_auth_type": 0
+      }
+    ],
     "certificate_file": "",
     "certificate_key_file": "",
+    "ca_certificates": [],
     "cors": {
       "enabled": false,
       "allowed_origins": [],
@@ -118,9 +155,23 @@
     "certificate_file": "",
     "certificate_key_file": ""
   },
+  "telemetry": {
+    "bind_port": 10000,
+    "bind_address": "127.0.0.1",
+    "enable_profiler": false,
+    "auth_user_file": "",
+    "certificate_file": "",
+    "certificate_key_file": ""
+  },
   "http": {
     "timeout": 20,
     "ca_certificates": [],
     "skip_tls_verify": false
+  },
+  "kms": {
+    "secrets": {
+      "url": "",
+      "master_key_path": ""
+    }
   }
 }
