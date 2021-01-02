@@ -9,7 +9,7 @@
 
 pkgname='cronie-selinux'
 pkgver=1.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Daemon that runs specified programs at scheduled times and related tools with SELinux support'
 url='https://github.com/cronie-crond/cronie/'
 license=('custom:BSD')
