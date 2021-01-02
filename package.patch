@@ -1,0 +1,67 @@
+diff --unified --recursive --text scantailor-advanced-1.0.16/filters/output/OutputGenerator.cpp scantailor-advanced-1.0.16/filters/output/OutputGenerator.cpp
+--- scantailor-advanced-1.0.16/filters/output/OutputGenerator.cpp	2018-07-17 04:04:23.000000000 +0200
++++ scantailor-advanced-1.0.16/filters/output/OutputGenerator.cpp	2021-01-02 16:18:50.911568918 +0100
+@@ -25,6 +25,7 @@
+ #include <imageproc/ImageCombination.h>
+ #include <QDebug>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QtCore/QSettings>
+ #include <boost/bind.hpp>
+ #include "DebugImages.h"
+diff --unified --recursive --text src/scantailor-advanced-1.0.16/filters/page_layout/ImageView.cpp scantailor-advanced-1.0.16/filters/page_layout/ImageView.cpp
+--- scantailor-advanced-1.0.16/filters/page_layout/ImageView.cpp	2018-07-17 04:04:23.000000000 +0200
++++ scantailor-advanced-1.0.16/filters/page_layout/ImageView.cpp	2021-01-02 16:19:10.674838837 +0100
+@@ -27,6 +27,7 @@
+ #include <imageproc/Transform.h>
+ #include <QMouseEvent>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <boost/bind.hpp>
+ #include <boost/lambda/lambda.hpp>
+ #include "ImagePresentation.h"
+diff --unified --recursive --text scantailor-advanced-1.0.16/filters/select_content/ContentBoxFinder.cpp scantailor-advanced-1.0.16/filters/select_content/ContentBoxFinder.cpp
+--- scantailor-advanced-1.0.16/filters/select_content/ContentBoxFinder.cpp	2018-07-17 04:04:23.000000000 +0200
++++ scantailor-advanced-1.0.16/filters/select_content/ContentBoxFinder.cpp	2021-01-02 16:19:30.304741496 +0100
+@@ -19,6 +19,7 @@
+ #include "ContentBoxFinder.h"
+ #include <QDebug>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <cmath>
+ #include <queue>
+ #include "DebugImages.h"
+diff --unified --recursive --text scantailor-advanced-1.0.16/ImageViewBase.cpp scantailor-advanced-1.0.16/ImageViewBase.cpp
+--- scantailor-advanced-1.0.16/ImageViewBase.cpp	2018-07-17 04:04:23.000000000 +0200
++++ scantailor-advanced-1.0.16/ImageViewBase.cpp	2021-01-02 16:17:56.541540662 +0100
+@@ -21,6 +21,8 @@
+ #include <QGLWidget>
+ #include <QMouseEvent>
+ #include <QPaintEngine>
++#include <QPainter>
++#include <QPainterPath>
+ #include <QPointer>
+ #include <QScrollBar>
+ #include <QSettings>
+diff --unified --recursive --text scantailor-advanced-1.0.16/zones/ZoneContextMenuInteraction.cpp scantailor-advanced-1.0.16/zones/ZoneContextMenuInteraction.cpp
+--- scantailor-advanced-1.0.16/zones/ZoneContextMenuInteraction.cpp	2018-07-17 04:04:23.000000000 +0200
++++ scantailor-advanced-1.0.16/zones/ZoneContextMenuInteraction.cpp	2021-01-02 16:20:00.591196620 +0100
+@@ -21,6 +21,7 @@
+ #include <QMenu>
+ #include <QMessageBox>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QSignalMapper>
+ #include <boost/bind.hpp>
+ #include "ImageViewBase.h"
+diff --unified --recursive --text scantailor-advanced-1.0.16/zones/ZoneDefaultInteraction.cpp scantailor-advanced-1.0.16/zones/ZoneDefaultInteraction.cpp
+--- scantailor-advanced-1.0.16/zones/ZoneDefaultInteraction.cpp	2018-07-17 04:04:23.000000000 +0200
++++ scantailor-advanced-1.0.16/zones/ZoneDefaultInteraction.cpp	2021-01-02 16:38:15.740296794 +0100
+@@ -19,6 +19,7 @@
+ #include "ZoneDefaultInteraction.h"
+ #include <QMouseEvent>
+ #include <QPainter>
++#include <QPainterPath>
+ #include "ImageViewBase.h"
+ #include "SerializableSpline.h"
+ #include "ZoneInteractionContext.h"

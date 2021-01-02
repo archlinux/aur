@@ -1,7 +1,7 @@
 pkgbase = scantailor-advanced
 	pkgdesc = An interactive post-processing tool for scanned pages.
 	pkgver = 1.0.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/4lex4/scantailor-advanced
 	arch = x86_64
 	license = GPL3
@@ -14,8 +14,11 @@ pkgbase = scantailor-advanced
 	depends = libpng>=1.0.0
 	depends = zlib>=1.0.0
 	depends = libtiff>=4.0.0
+	conflicts = scantailor
 	source = scantailor-advanced-1.0.16::https://github.com/4lex4/scantailor-advanced/archive/v1.0.16.tar.gz
+	source = package.patch
 	sha256sums = 84629d2edba4c36c62bdb75eedb145262b894d950bcb95cec0dab43e21bdb909
+	sha256sums = 15680699fd419af8ac624fa01d70dabe52b37dc1b0a94d80b91082c61f0d6634
 
 pkgname = scantailor-advanced
 
