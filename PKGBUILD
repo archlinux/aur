@@ -29,10 +29,10 @@ pkgver() {
 build() {
   cd ${pkgname}
   export ESY__PREFIX="${srcdir}"/esy_cache
+  node install-node-deps.js
   esy install
   esy bootstrap
   esy build
-  node install-node-deps.js
   esy '@release' install
   esy '@release' run -f --checkhealth
   esy '@release' create
