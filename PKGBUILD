@@ -45,6 +45,7 @@ package()
     make DISTRO=archlinux ROOT="$pkgdir/__temp__" install
     cd "$pkgdir/__temp__"
     rm -r bin usr/bin usr/share/man/man*/{mesg,last,pidof}.* usr/share/man/man1
+
     find . | while read file; do
         if [ -d "$file" ]; then
             mkdir -p ".$file"
@@ -54,5 +55,6 @@ package()
     done
     cd ..
     rm -r "__temp__"
+    rm -r "$pkgdir/sbin/logsave" "$pkgdir/usr/share/man/man8/logsave.8" 
     mv "$pkgdir/sbin" "$pkgdir/usr/bin"
 }
