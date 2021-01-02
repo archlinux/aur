@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Böhmke <benjamin at boehmke dot net>
 pkgname=emby-theater-bin
-pkgver=3.0.12
-pkgrel=3
+pkgver=3.0.14
+pkgrel=1
 pkgdesc='An Electron app for Emby'
 license=('GPL2')
 arch=('x86_64')
@@ -23,7 +23,7 @@ depends=("gtk3"
 
 source=("https://github.com/MediaBrowser/emby-theater-electron/releases/download/${pkgver}/emby-theater_${pkgver}_amd64.deb"
         "emby-theater.install")
-sha512sums=("4c1773483cdb3301e6c91e8a4ffba5d831b34a9070db811495acc209406cae208a7677a249a21c0ac4d88032f35d45da621d5a84796b0b0241a31f6995e2bcf8"
+sha512sums=("3c2f065e5f9add05f947b9a2fb84e5464248addd676474e1fea1a5373c29a4b4069e347ee59480a44ac8c06f494f16345ff6ff00be9bac51c3e22f7f77f9b34c"
             "c5ea75bb99bcabb15afc78106c4fbcc340c5e83246f2835e8b71bdc55768a6216b760366ca9e71796ed6e7c2ad5ee591e9e4acd81d77a46a103551787ce2f374")
 
 package(){
