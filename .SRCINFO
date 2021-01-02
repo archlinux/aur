@@ -1,13 +1,13 @@
 pkgbase = epoptes-client
 	pkgdesc = An opensource computer lab management and monitoring tool
-	pkgver = 20.01
-	pkgrel = 2
+	pkgver = 21.01
+	pkgrel = 1
 	url = https://github.com/Epoptes/epoptes
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = python-distutils-extra
-	source = git+https://github.com/Epoptes/epoptes.git#tag=v20.01
+	source = git+https://github.com/Epoptes/epoptes.git#tag=v21.01
 	sha256sums = SKIP
 
 pkgname = epoptes
@@ -21,8 +21,6 @@ pkgname = epoptes
 	depends = librsvg
 	depends = notification-daemon
 	depends = openssl
-	depends = openssl
-	depends = pygtk
 	depends = python
 	depends = python-cairo
 	depends = python-dbus
@@ -48,8 +46,8 @@ pkgname = epoptes-client
 	depends = librsvg
 	depends = openssl
 	depends = procps-ng
-	depends = pygtk
-	depends = python
+	depends = python-twisted
+	depends = python-gobject
 	depends = python-cairo
 	depends = screen
 	depends = socat
