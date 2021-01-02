@@ -13,6 +13,7 @@ pkgbase = roundcubemail-git
 	makedepends = java-runtime
 	makedepends = nodejs-less-plugin-clean-css
 	makedepends = uglify-js
+	makedepends = nodejs-csso-cli
 	depends = php
 	depends = php-gd
 	provides = roundcubemail
