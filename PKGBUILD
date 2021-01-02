@@ -4,7 +4,7 @@
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 
 pkgname=psi-plus-git
-pkgver=1.5.1477.r1153.g22ba4dd
+pkgver=1.5.1477.r4437.gaf4b5b29
 pkgrel=1
 pkgdesc="Psi+ is a powerful XMPP client (Qt, C++) designed for the XMPP power users (built with Qt 5.x)"
 url="https://psi-plus.com"
@@ -23,7 +23,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd psi-plus
+  cd psi
   _ver="$(cat "${srcdir}/psi/version" | cut -d ' ' -f 1)"
   echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
