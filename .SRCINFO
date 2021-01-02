@@ -1,13 +1,15 @@
 pkgbase = sysvinit-git
 	pkgdesc = Linux System V Init
 	pkgver = 2.97.r3.g5567f16
-	pkgrel = 2
+	pkgrel = 3
 	url = http://savannah.nongnu.org/projects/sysvinit
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = glibc
 	depends = procps-ng>=3.3.9
+	provides = sysvinit
+	provides = sysvinit-git
 	conflicts = systemd-sysvcompat
 	source = git+https://git.savannah.nongnu.org/git/sysvinit
 	sha256sums = SKIP
