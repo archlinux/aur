@@ -1,8 +1,9 @@
-# Maintainer: dustball
+# Maintainer: nimius <l.wieling@gmx.de>
+# Contributor: dustball
 
 pkgname=gnaural
 pkgver=20110606
-pkgrel=2
+pkgrel=3
 pkgdesc="An opensource binaural-beat generator"
 arch=(i686 x86_64)
 url="http://gnaural.sourceforge.net/"
@@ -19,7 +20,7 @@ build() {
 
   patch --strip=1 < "$srcdir/gnaural.patch"
 
-  ./configure --prefix=/usr
+  ./configure CFLAGS='-fcommon' --prefix=/usr
   make
 }
 
