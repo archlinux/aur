@@ -1,0 +1,14 @@
+pkgbase = newton-dynamics
+	pkgdesc = A 3D physics library
+	pkgver = 3.14c
+	pkgrel = 1
+	url = http://newtondynamics.com
+	arch = x86_64
+	license = custom:zlib
+	makedepends = cmake
+	conflicts = newton-dynamics
+	source = newton-dynamics-3.14c.tar.gz::https://github.com/MADEAPPS/newton-dynamics/archive/v3.14c.tar.gz
+	md5sums = SKIP
+
+pkgname = newton-dynamics
+
