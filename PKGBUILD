@@ -12,21 +12,18 @@ source=("$pkgname::git+https://github.com/makyo/${pkgname/-git/}.git")
 b2sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "${pkgname}"
   go build
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  mkdir -p "$pkgdir/usr/bin"
-  install -m 0755 stimmtausch "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/man/man1"
-  install -m 0644 docs/cmd/*.1 "$pkgdir/usr/share/man/man1"
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-  install -m 0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+  cd "${pkgname}"
+  install -Dm755 "${pkgname%-*}" -t "${pkgdir}/usr/bin"
+  install -Dm644 docs/cmd/*.1 -t "${pkgdir}/usr/share/man/man1"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname%-*}"
 }
