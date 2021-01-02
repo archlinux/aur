@@ -12,7 +12,8 @@ license=('GPL')
 depends=('gcc-libs')
 source=(git+https://github.com/ivmai/bdwgc.git)
 sha512sums=('skip')
-conflict=gc
+conflicts=('gc')
+provides=('gc')
 
 prepare() {
   cd ${_pkgname}
