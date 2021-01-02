@@ -5,7 +5,7 @@
 
 pkgname=bitstower-markets
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A stock, currency and cryptocurrency tracker"
 url="https://github.com/bitstower/markets"
 arch=(x86_64)
