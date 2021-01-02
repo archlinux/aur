@@ -1,7 +1,7 @@
 pkgbase = python-django-bootstrap4
 	pkgdesc = Bootstrap 4 integration with Django
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zostera/django-bootstrap4
 	arch = any
 	license = BSD-3-Clause
