@@ -1,4 +1,4 @@
-pkgbase = superbfetch
+pkgbase = superbfetch-git
 	pkgdesc = Simple Fetch program written in bash
 	pkgver = 67330568d1a5ff93c5354567e7e70349df34ed43
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = superbfetch
 	source = git+https://github.com/NNBnh/bfetch
 	md5sums = SKIP
 
-pkgname = superbfetch
+pkgname = superbfetch-git
 

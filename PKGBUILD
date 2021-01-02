@@ -1,6 +1,6 @@
 #Maintainer: Julian Marcos <julian08@cock.li>
 
-pkgname=superbfetch
+pkgname=superbfetch-git
 _gitname="bfetch"
 pkgver=67330568d1a5ff93c5354567e7e70349df34ed43
 pkgrel=1
