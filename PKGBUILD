@@ -24,27 +24,22 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}"/SPIRV-Tools
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -GNinja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DSPIRV-Headers_SOURCE_DIR="${srcdir}/SPIRV-Headers" \
-    -DSPIRV_WERROR=OFF
-  ninja
+    -DSPIRV-Headers_SOURCE_DIR="$srcdir/SPIRV-Headers" \
+    -DSPIRV_WERROR=OFF \
+    -S SPIRV-Tools -B build
+  ninja -C build
 }
 
 check() {
-  cd "${srcdir}"/SPIRV-Tools
-  ninja test
+  ninja -C build test
 }
 
 package() {
-  cd "${srcdir}"/SPIRV-Tools
-
-  DESTDIR="$pkgdir" ninja install
-
-  # License
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  DESTDIR="$pkgdir" ninja -C build install
+  install -Dm644 "$srcdir"/SPIRV-Tools/LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
