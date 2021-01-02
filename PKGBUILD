@@ -2,15 +2,15 @@
 # Contributor: Leo <olorin12+gmail+com>
 
 pkgname=hypnotix
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
-pkgdesc="An IPTV app"
+pkgdesc="An IPTV streaming application"
 arch=(any)
 url="https://github.com/linuxmint/hypnotix"
 license=(GPL3)
 depends=(dconf hicolor-icon-theme python-cairo python-imdbpy python-requests python-setproctitle mpv xapp)
 source=($url/archive/$pkgver.tar.gz)
-b2sums=('9bf53b5dd6768e2ef8d4474b8875bbccb3aeeaf77707e59c8ce5f2359b126c0e4abd1cb0120586f6c8fee4c54b3d61368d298b7763b12bed937d906402b13ada')
+b2sums=('f4ced1e654a10665f2630cfef3f570b200e162821d11fdafcf82814a9d74f4de8a59428c20d5c3187b7d77e32f307a1680777ce9bfe6f6a83192afa2843d4763')
 
 build() {
 	cd $pkgname-$pkgver
@@ -28,4 +28,7 @@ package() {
 	install -Dm644 -t "$pkgdir"/usr/share/hypnotix/pictures usr/share/hypnotix/pictures/*.svg
 	install -Dm644 -t "$pkgdir"/usr/share/hypnotix/pictures/badges usr/share/hypnotix/pictures/badges/*
 	install -Dm644 -t "$pkgdir"/usr/share/icons/hicolor/scalable/apps usr/share/icons/hicolor/scalable/apps/hypnotix.svg
+
+	# Translations
+	cp -a usr/share/locale "$pkgdir"/usr/share/locale
 }
