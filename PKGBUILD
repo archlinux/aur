@@ -1,6 +1,6 @@
 pkgname=bird-git
 pkgver=r3666.455c13dc
-pkgrel=2
+pkgrel=3
 pkgdesc='RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon'
 arch=('x86_64')
 url='https://bird.network.cz/'
@@ -11,9 +11,11 @@ makedepends=('git' 'autoconf' 'automake')
 replaces=('bird6')
 conflicts=('bird')
 source=("git+https://gitlab.nic.cz/labs/bird.git"
-        'bird.service')
+        'bird.service'
+        'fix_loopback.patch')
 md5sums=('SKIP'
-         '69221e063a3f07dcad519d5eeacaae75')
+         '69221e063a3f07dcad519d5eeacaae75'
+         '514ecf30581769f052efb66afab6ed5d')
 
 pkgver() {
   cd "$srcdir/bird"
@@ -22,6 +24,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/bird"
+  patch -p1 < $srcdir/fix_loopback.patch
   autoreconf -ifv
   CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
   ./configure \

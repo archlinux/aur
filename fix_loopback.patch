@@ -1,0 +1,13 @@
+diff --git a/proto/ospf/iface.c b/proto/ospf/iface.c
+index 666140b5..004c4bb4 100644
+--- a/proto/ospf/iface.c
++++ b/proto/ospf/iface.c
+@@ -1179,7 +1179,7 @@ ospf_ifa_notify3(struct proto *P, uint flags, struct ifa *a)
+ 
+   /* In OSPFv3, we create OSPF iface for link-local address,
+      other addresses are used for link-LSA. */
+-  if (a->scope == SCOPE_LINK)
++  if (a->scope == SCOPE_LINK || (a->iface->flags & IF_LOOPBACK))
+   {
+     if (a->prefix.type != NET_IP6)
+       return;
