@@ -1,6 +1,6 @@
 # Maintainer: Paulo Castro <p.oliveira.castro@gmail.com>
 pkgname=python-drawnow
-pkgver=0.71.2
+pkgver=0.72.5
 pkgrel=1
 pkgdesc="MATLAB-like drawnow"
 arch=('any')
@@ -8,10 +8,10 @@ url="https://github.com/stsievert/python-drawnow"
 license=('MIT')
 depends=('python' 'python-matplotlib')
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/source/d/drawnow/drawnow-0.71.2.tar.gz")
-md5sums=('a8588fc4435590b6942e31101c71741c')
+source=("https://github.com/stsievert/python-drawnow/archive/${pkgver}.tar.gz")
+md5sums=('3bea9c6cc78aa93cb1633c2fc9f9b6de')
 
 package() {
-  cd "$srcdir/drawnow-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
