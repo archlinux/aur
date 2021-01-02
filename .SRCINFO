@@ -9,7 +9,7 @@ pkgbase = ukopp2
 	depends = clutter-gtk
 	options = !emptydirs
 	source = http://www.kornelix.net/downloads/downloads/ukopp2-2.0.tar.gz
-	sha256sums = 163eb90a820848c70aeedb03dfef81b50de3004c9fe210c410e3d136567f9894
+	sha256sums = b21d943ae1b82c15a1adc74273eac7b098810b8f170baf3e91b4dd9799d90b8a
 
 pkgname = ukopp2
 
