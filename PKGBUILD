@@ -1,11 +1,11 @@
 # Maintainer: Platon Pronko < platon7pronko at gmail dot com >
 
 pkgname="cryptopro-csp-k1"
-pkgver=5.0.11823
+pkgver=5.0.11944
 # pkgver is not allowed to contain forward slashes
 _pkgver_patch="6"
 _pkgver="$pkgver-$_pkgver_patch"
-pkgrel=5
+pkgrel=1
 pkgdesc='CryptoPro CSP 5.0'
 arch=('x86_64')
 url='https://cryptopro.ru/products/cryptopro-csp'
@@ -28,11 +28,11 @@ makedepends=(
     'libarchive'
 )
 source=(
-    'linux-amd64.tgz' # download from https://www.cryptopro.ru/sites/default/files/private/csp/50/11823/linux-amd64.tgz
+    'linux-amd64.tgz' # download from https://cryptopro.ru/sites/default/files/private/csp/50/11944/linux-amd64.tgz
     'https://www.cryptopro.ru/sites/default/files/products/cades/current_release_2_0/cades_linux_amd64.tar.gz'
 )
 md5sums=(
-    '9bfd01ef7279ef20ce3e2df0ff4e8fb5'
+    '1310caeed04da8b9cc025ad4f619d9ec'
     '11ec1def2383ba5644066ab73163785f'
 )
 install=cryptopro-csp-k1.install

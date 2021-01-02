@@ -20,7 +20,7 @@ post_install() {
     cpconfig -ini '\config\Random\CPSD\Default' -add string '/db1/kis_1' /var/opt/cprocsp/dsrf/db1/kis_1
     cpconfig -ini '\config\Random\CPSD\Default' -add string '/db2/kis_1' /var/opt/cprocsp/dsrf/db2/kis_1
     cpconfig -license -view > /dev/null 2> /dev/null
-    test $? = 0 || cpconfig -license -set 5050U-C0037-EKP59-NAXWV-WMCWE
+    test $? = 0 || cpconfig -license -set 50500-10037-ELQF5-H28KM-8E6BA
 
     # lsb-cprocsp-kc1-64
     cpconfig -ini '\config\apppath' -add string librdrrndmbio_tui.so /opt/cprocsp/lib/amd64/librdrrndmbio_tui.so
@@ -28,41 +28,61 @@ post_install() {
     cpconfig -ini '\config\Random\Bio_tui' -add string DLL librdrrndmbio_tui.so
     cpconfig -hardware reader -add hdimage -name 'HDD key storage' > /dev/null
     cpconfig -hardware rndm -add bio_tui -name 'Text bio random' -level 5 > /dev/null
+
     cpconfig -defprov -setdef -provtype 75 -provname 'Crypto-Pro GOST R 34.10-2001 KC1 CSP'
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2001 KC1 CSP' -add string 'Image Path' /opt/cprocsp/lib/amd64/libcsp.so
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2001 KC1 CSP' -add string 'Function Table Name' CPCSP_GetFunctionTable
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2001 KC1 CSP' -add long Type 75
+
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2001 Cryptographic Service Provider' -add string 'Image Path' /opt/cprocsp/lib/amd64/libcsp.so
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2001 Cryptographic Service Provider' -add string 'Function Table Name' CPCSP_GetFunctionTable
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2001 Cryptographic Service Provider' -add long Type 75
+
     cpconfig -defprov -setdef -provtype 80 -provname 'Crypto-Pro GOST R 34.10-2012 KC1 CSP'
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 KC1 CSP' -add string 'Image Path' /opt/cprocsp/lib/amd64/libcsp.so
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 KC1 CSP' -add string 'Function Table Name' CPCSP_GetFunctionTable
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 KC1 CSP' -add long Type 80
+
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 Cryptographic Service Provider' -add string 'Image Path' /opt/cprocsp/lib/amd64/libcsp.so
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 Cryptographic Service Provider' -add string 'Function Table Name' CPCSP_GetFunctionTable
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 Cryptographic Service Provider' -add long Type 80
+
     cpconfig -defprov -setdef -provtype 81 -provname 'Crypto-Pro GOST R 34.10-2012 KC1 Strong CSP'
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 KC1 Strong CSP' -add string 'Image Path' /opt/cprocsp/lib/amd64/libcsp.so
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 KC1 Strong CSP' -add string 'Function Table Name' CPCSP_GetFunctionTable
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 KC1 Strong CSP' -add long Type 81
+
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 Strong Cryptographic Service Provider' -add string 'Image Path' /opt/cprocsp/lib/amd64/libcsp.so
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 Strong Cryptographic Service Provider' -add string 'Function Table Name' CPCSP_GetFunctionTable
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 Strong Cryptographic Service Provider' -add long Type 81
+
     cpconfig -defprov -setdef -provtype 1 -provname 'Crypto-Pro RSA Cryptographic Service Provider'
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro RSA Cryptographic Service Provider' -add string 'Image Path' /opt/cprocsp/lib/amd64/libcsp.so
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro RSA Cryptographic Service Provider' -add string 'Function Table Name' CPCSP_GetFunctionTable
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro RSA Cryptographic Service Provider' -add long Type 1
     cpconfig -ini '\config\parameters\Crypto-Pro RSA Cryptographic Service Provider' -add long KeyTimeValidityControlMode 128
-    cpconfig -defprov -setdef -provtype 16 -provname 'Crypto-Pro ECDSA and AES CSP'
+
+    cpconfig -defprov -setdef -provtype 16 -provname 'Crypto-Pro ECDSA and AES KC1 CSP'
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro ECDSA and AES KC1 CSP' -add string 'Image Path' /opt/cprocsp/lib/amd64/libcsp.so
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro ECDSA and AES KC1 CSP' -add string 'Function Table Name' CPCSP_GetFunctionTable
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro ECDSA and AES KC1 CSP' -add long Type 16
+    cpconfig -ini '\config\parameters\Crypto-Pro ECDSA and AES KC1 CSP' -add long KeyTimeValidityControlMode 128
+
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro ECDSA and AES CSP' -add string 'Image Path' /opt/cprocsp/lib/amd64/libcsp.so
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro ECDSA and AES CSP' -add string 'Function Table Name' CPCSP_GetFunctionTable
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro ECDSA and AES CSP' -add long Type 16
     cpconfig -ini '\config\parameters\Crypto-Pro ECDSA and AES CSP' -add long KeyTimeValidityControlMode 128
-    cpconfig -defprov -setdef -provtype 24 -provname 'Crypto-Pro Enhanced RSA and AES CSP'
+
+    cpconfig -defprov -setdef -provtype 24 -provname 'Crypto-Pro Enhanced RSA and AES KC1 CSP'
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro Enhanced RSA and AES KC1 CSP' -add string 'Image Path' /opt/cprocsp/lib/amd64/libcsp.so
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro Enhanced RSA and AES KC1 CSP' -add string 'Function Table Name' CPCSP_GetFunctionTable
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro Enhanced RSA and AES KC1 CSP' -add long Type 24
+    cpconfig -ini '\config\parameters\Crypto-Pro Enhanced RSA and AES KC1 CSP' -add long KeyTimeValidityControlMode 128 
+
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro Enhanced RSA and AES CSP' -add string 'Image Path' /opt/cprocsp/lib/amd64/libcsp.so
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro Enhanced RSA and AES CSP' -add string 'Function Table Name' CPCSP_GetFunctionTable
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro Enhanced RSA and AES CSP' -add long Type 24
+
     cpconfig -ini '\config\parameters\Crypto-Pro Enhanced RSA and AES CSP' -add long KeyTimeValidityControlMode 128
     cpconfig -ini '\cryptography\Defaults\Provider Types\Type 075' -add string 'TypeName' "GOST R 34.10-2001 Signature with Diffie-Hellman Key Exchange"
     cpconfig -ini '\cryptography\Defaults\Provider Types\Type 080' -add string 'TypeName' "GOST R 34.10-2012 (256) Signature with Diffie-Hellman Key Exchange"
@@ -247,7 +267,6 @@ post_install() {
                         ccid_reg.sh -add $pList 0x23a0 0x0008 "BIFIT ANGARA - CP"
                         ccid_reg.sh -add $pList 0x1fc9 0x7479 "ISBC ESMART reader - CP"
                         ccid_reg.sh -add $pList 0x2ce4 0x7479 "ESMART Token - CP"
-                        ccid_reg.sh -add $pList 0x04d8 0x003f "zis-group PRIVATE Security System Key - CP"
                     done
                 fi
             fi
@@ -422,6 +441,20 @@ post_install() {
     cpconfig -hardware media -configure RutokenECPMSC -add long size_5 70
     cpconfig -hardware media -configure RutokenECPMSC -add long size_6 300
     cpconfig -hardware media -configure RutokenECPMSC -add long size_7 8
+
+    cpconfig -ini '\config\KeyCarriers\RutokenNFC' -add string DLL librdrrutoken.so
+    cpconfig -hardware media -add RutokenNFC -name 'Rutoken NFC' > /dev/null
+
+    cpconfig -hardware media -configure RutokenNFC -connect Default -add hex atr 3B9C978011405275746F6B656E4543507363C0
+    cpconfig -hardware media -configure RutokenNFC -connect Default -add hex mask ffffffffffffffffffffffffffffffffffffff
+    cpconfig -hardware media -configure RutokenNFC -connect Default -add string folders "0A00\\0B00\\0C00\\0D00\\0E00\\0F00\\1000\\1100\\1200\\1300\\1400\\1500\\1600\\1700\\1800"
+    cpconfig -hardware media -configure RutokenNFC -connect Default -add long size_1 60
+    cpconfig -hardware media -configure RutokenNFC -connect Default -add long size_2 70
+    cpconfig -hardware media -configure RutokenNFC -connect Default -add long size_3 3072
+    cpconfig -hardware media -configure RutokenNFC -connect Default -add long size_4 60
+    cpconfig -hardware media -configure RutokenNFC -connect Default -add long size_5 70
+    cpconfig -hardware media -configure RutokenNFC -connect Default -add long size_6 300
+    cpconfig -hardware media -configure RutokenNFC -connect Default -add long size_7 8
 
     # cprocsp-pki-cades-64
     /opt/cprocsp/bin/amd64/ocsputil license -s 0A202-U0030-00ECW-RRLMF-UU2WK
