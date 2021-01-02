@@ -30,6 +30,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DSPIRV-Headers_SOURCE_DIR="$srcdir/SPIRV-Headers" \
+    -DBUILD_SHARED_LIBS=ON \
+    -DSPIRV_TOOLS_BUILD_STATIC=OFF \
     -DSPIRV_WERROR=OFF \
     -S SPIRV-Tools -B build
   ninja -C build
