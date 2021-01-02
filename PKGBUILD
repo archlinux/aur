@@ -8,16 +8,11 @@ pkgdesc="A GNU/Linux (resource) monitoring tool focused on single processes."
 arch=('x86_64')
 url="https://github.com/evilsocket/uroboros"
 license=('GPL')
-
 makedepends=('git' 'go') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("uroboros-mon")
 conflicts=("uroboros-mon")
 source=("${_pkgname}::git+https://github.com/evilsocket/uroboros.git")
-
 sha256sums=('SKIP')
-
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
