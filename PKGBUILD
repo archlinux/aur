@@ -1,5 +1,6 @@
-# Maintainer:  Andrew Gregory <andrew.gregory.8@gmail.com>
-# Co-maintainer Lone_Wolf <lonewolf at xs4all dot nl>
+# Maintainer: EatMyVenom <eat.my.venomm@gmail.com>
+# Contributor:  Andrew Gregory <andrew.gregory.8@gmail.com>
+# Contributor: Lone_Wolf <lonewolf at xs4all dot nl>
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=openrc
