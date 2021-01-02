@@ -2,13 +2,19 @@
 
 pkgname=snm
 pkgver=0.1.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Smol Node Manager written in Rust"
 arch=('x86_64' 'aarch64' 'armv7')
 url=https://github.com/numToStr/snm
 license=('GPL')
 provides=($pkgname)
 conflicts=($pkgname)
+
+depends=(
+  'pacman<6'
+  'sudo'
+  'git'
+)
 
 source_x86_64=(
     "$url/releases/download/v$pkgver/$pkgname-x86_64-unknown-linux-gnu.tar.gz"
@@ -26,5 +32,6 @@ source_aarch64=(
 md5sums_aarch64=(SKIP)
 
 package() {
-	install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    _output="${srcdir}/${pkgname}_${pkgver}_${CARCH}"
+	install -Dm755 "${_output}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
