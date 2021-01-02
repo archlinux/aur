@@ -2,14 +2,19 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=bazarr-git
-pkgver=r1800.b10190c5
+pkgver=r2668.fc4f78f8
 pkgrel=1
 pkgdesc="Manage and download subtitles for Sonarr and Radarr."
 arch=('any')
 url="https://github.com/morpheus65535/bazarr"
 license=('GPL3')
-depends=('python'
-         'python-lxml')
+depends=(
+  'python'
+  'python-lxml'
+  'python-numpy'
+  'python-webrtcvad-wheels'
+  'ffmpeg'
+)
 
 makedepends=('git')
 provides=('bazarr')
