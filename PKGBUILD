@@ -13,7 +13,7 @@ source=('git+https://github.com/KhronosGroup/SPIRV-Tools'
 sha1sums=('SKIP'
           'SKIP')
 depends=(gcc-libs spirv-headers)
-makedepends=('cmake' 'python' 'git')
+makedepends=('cmake' 'ninja' 'python' 'git')
 options=('staticlibs')
 conflicts=('spirv-tools')
 provides=('spirv-tools')
@@ -27,17 +27,18 @@ build() {
   cd "${srcdir}"/SPIRV-Tools
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
+    -GNinja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DSPIRV-Headers_SOURCE_DIR="${srcdir}/SPIRV-Headers" \
     -DSPIRV_WERROR=OFF
-  make
+  ninja
 }
 
 package() {
   cd "${srcdir}"/SPIRV-Tools
 
-  DESTDIR="${pkgdir}" make install
+  DESTDIR="$pkgdir" ninja install
 
   # License
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE

@@ -8,6 +8,7 @@ pkgbase = spirv-tools-git
 	groups = vulkan-devel
 	license = custom
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = python
 	makedepends = git
 	depends = gcc-libs
