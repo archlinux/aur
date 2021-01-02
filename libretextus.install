@@ -1,12 +1,13 @@
 post_install() {
-	ln -sf /usr/shar/LibreTextus/LibreTextus /usr/bin/libretextus
+	rm /usr/bin/LibreTextus
+	ln -sf /usr/share/LibreTextus/LibreTextus /usr/bin/libretextus
 }
 
 post_upgrade() {
 	rm /usr/bin/LibreTextus
-	ln -sf /usr/shar/LibreTextus/LibreTextus /usr/bin/libretextus
+	ln -sf /usr/share/LibreTextus/LibreTextus /usr/bin/libretextus
 }
 
-pre_remove() {
-	rm /usr/bin/LibreTextus
+post_remove() {
+	rm /usr/bin/libretextus
 }
