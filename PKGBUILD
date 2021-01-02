@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=spirv-tools-git
-pkgver=r1864.2af6ffae826426cff344
+pkgver=2020.6+14.g17ffa89097
 pkgrel=1
 pkgdesc='API and commands for processing SPIR-V modules'
 url='https://github.com/KhronosGroup/SPIRV-Tools'
@@ -19,8 +19,7 @@ conflicts=('spirv-tools')
 provides=('spirv-tools')
 
 pkgver() {
-  cd "${srcdir}"/SPIRV-Tools
-  printf "r%d.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git -C SPIRV-Tools describe --tags --abbrev=10 | sed 's/^v//; s/-/+/; s/-/./'
 }
 
 build() {
