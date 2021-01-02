@@ -2,7 +2,7 @@
 
 pkgname=python-hyperopt
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Distributed Asynchronous Hyperparameter Optimization in Python'
 arch=('any')
 url='https://github.com/hyperopt/hyperopt'
@@ -10,7 +10,7 @@ license=('custom')
 depends=('python-scipy' 'python-six' 'python-networkx' 'python-future' 'python-tqdm' 'python-cloudpickle')
 optdepends=('python-pymongo: MongoTrials' 'python-lightgbm: ATPE' 'python-scikit-learn: ATPE')
 source=("hyperopt-$pkgver.tar.gz::https://github.com/hyperopt/hyperopt/archive/$pkgver.tar.gz")
-sha1sums=('a41ee91673a32d66326e163a16a0119ea739f224')
+sha1sums=('6ddf1e4761df9c5756b1dc646fba1a86b91b36d0')
 
 build() {
     cd "$srcdir"/hyperopt-$pkgver
