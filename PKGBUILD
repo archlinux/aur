@@ -1,6 +1,6 @@
 # Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
 
-pkgname=nodejs-csso
+pkgname=nodejs-csso-cli
 pkgver=3.0.0
 pkgrel=1
 pkgdesc="CSS minifier with structural optimisations"

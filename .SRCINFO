@@ -1,4 +1,4 @@
-pkgbase = nodejs-csso
+pkgbase = nodejs-csso-cli
 	pkgdesc = CSS minifier with structural optimisations
 	pkgver = 3.0.0
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = nodejs-csso
 	source = https://registry.npmjs.org/csso-cli/-/csso-cli-3.0.0.tgz
 	sha256sums = dc4a516ef7184a5b3c26daef0f90b2c0ea9e280119fcc97b4ce925e34ff21adc
 
-pkgname = nodejs-csso
+pkgname = nodejs-csso-cli
 
