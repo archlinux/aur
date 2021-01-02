@@ -2,8 +2,8 @@
 # Maintainer: Andri Yngvason <andri@yngvason.is>
 
 pkgname=wayvnc-git
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc='VNC server for wlroots-based Wayland compositors'
 arch=(x86_64 i686 aarch64 armv7h)
 url=https://github.com/any1/wayvnc
