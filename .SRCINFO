@@ -1,7 +1,7 @@
 pkgbase = elementary-planner
 	pkgdesc = Task manager with Todoist support
 	pkgver = 2.6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://useplanner.com
 	arch = x86_64
 	license = GPL3
