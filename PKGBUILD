@@ -3,7 +3,7 @@
 
 pkgname=picpuz
 pkgver=3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="'jigsaw puzzle' program."
 arch=('i686' 'x86_64')
 url="http://www.kornelix.net/picpuz/picpuz.html"
