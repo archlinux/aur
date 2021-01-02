@@ -30,7 +30,7 @@ index 38ac891..8113d39 100644
  const nsfw = require('nsfw');
  const murmur = require('murmur2-calculator');
  const log = require('electron-log');
-@@ -91,43 +90,6 @@ log.log(process.env.REACT_APP_RELEASE_TYPE);
+@@ -149,43 +148,6 @@ log.log(process.env.REACT_APP_RELEASE_TYPE, app.getVersion());
  
  const isDev = process.env.NODE_ENV === 'development';
  
@@ -71,10 +71,10 @@ index 38ac891..8113d39 100644
 -
 -extract7z();
 -
- let mainWindow;
- let tray;
- let watcher;
-@@ -419,78 +381,3 @@ ipcMain.handle('calculateMurmur2FromPath', (e, filePath) => {
+ function createWindow() {
+   mainWindow = new BrowserWindow({
+     width: 1100,
+@@ -539,78 +501,3 @@ ipcMain.handle('calculateMurmur2FromPath', (e, filePath) => {
      });
    });
  });

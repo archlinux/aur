@@ -1,7 +1,7 @@
 # Maintainer: ObserverOfTime <chronobserver@disroot.org>
 
 pkgname=gdlauncher-git
-pkgver=1.0.10.r2.g08790168
+pkgver=1.1.0.beta.2.r1.gdba46ae4
 pkgrel=2
 pkgdesc='Modded Minecraft launcher built with Electron/React (git version)'
 arch=('x86_64')
@@ -10,13 +10,13 @@ license=('GPL3')
 provides=('gdlauncher')
 conflicts=('gdlauncher' 'gdlauncher-appimage' 'gdlauncher-bin' 'gdlauncher-classic')
 depends=('electron8' 'libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3' 'p7zip')
-makedepends=('git' 'yarn' 'rust')
+makedepends=('git' 'npm' 'rust')
 source=('git+https://github.com/gorilla-devs/GDLauncher.git'
         'gdlauncher.png::https://avatars0.githubusercontent.com/u/49373890?s=256'
         'use-system-7za-and-disable-updater.patch')
 sha256sums=('SKIP'
             'f4cbb8a47e80c498972e548897a01190ac1975fbed0879565ff8fc57b8e9dbf0'
-            '39e664c95d4615d54c0b06d72bebbdaa8e92505f2ce0963eee4c3b3ab86f05a7')
+            'cb2135dfa32fa71a5caf1d3c2980b98158130a849564cfddd1caaf57c44851e4')
 
 pkgver() {
   cd "$srcdir"/GDLauncher
@@ -36,11 +36,16 @@ prepare() {
 build() {
   cd "$srcdir"/GDLauncher
 
-  yarn --cache-folder="$srcdir"/npm-cache
-  export NODE_ENV=production APP_TYPE=electron CI=false REACT_APP_RELEASE_TYPE=setup
-  yarn run craco build
-  yarn run webpack --config scripts/electronWebpackConfig.js
-  yarn moveBuildEntryPoint
+  export CARGO_HOME="$srcdir"/cargo-cache
+  npm install --cache="$srcdir"/npm-cache
+
+  export CI=false \
+         APP_TYPE=electron \
+         NODE_ENV=production \
+         REACT_APP_RELEASE_TYPE=setup
+  npx craco build
+  npx webpack --config scripts/electronWebpackConfig.js
+  node scripts/moveNativesToBuild.js
 }
 
 package() {
@@ -57,10 +62,8 @@ package() {
 
   # create run script
   mkdir -p "$pkgdir"/usr/bin
-  cat >"$pkgdir"/usr/bin/gdlauncher <<'EOF'
-#!/bin/sh
-exec electron8 /usr/lib/gdlauncher "$@"
-EOF
+  cat >"$pkgdir"/usr/bin/gdlauncher <<< \
+      '#!/bin/sh'$'\n''exec electron8 /usr/lib/gdlauncher "$@"'
   chmod a+x "$pkgdir"/usr/bin/gdlauncher
 
   # create desktop file
