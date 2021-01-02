@@ -3,16 +3,17 @@
 # Contributor: Yegorius <yegorius@domic.us>
 
 pkgname=pulseaudio-dlna
-pkgver=0.5.2
-pkgrel=4
+pkgver=0.5.2.r152.gb0db813
+pkgrel=5
 pkgdesc='Small DLNA server which brings DLNA/UPnP support to PulseAudio'
 arch=('x86_64')
 url=https://github.com/masmu/pulseaudio-dlna
 license=('GPL3')
-depends=('python2-chardet' 'python2-dbus' 'python2-docopt' 'python2-futures'
-         'python2-gobject2' 'python2-lxml' 'python2-netifaces' 'python2-notify2'
-         'python2-protobuf' 'python2-psutil' 'python2-requests'
-         'python2-setproctitle' 'python2-setuptools' 'python2-zeroconf')
+depends=('python-chardet' 'python-dbus' 'python-docopt' 'python-gobject'
+         'python-lxml' 'python-netifaces' 'python-notify2' 'python-psutil'
+         'python-pychromecast6' 'python-pyroute2' 'python-requests'
+         'python-setproctitle' 'python-setuptools')
+makedepends=('git')
 optdepends=('faac: AAC transcoding support'
             'ffmpeg: multiple formats support'
             'flac: FLAC transcoding support'
@@ -20,14 +21,31 @@ optdepends=('faac: AAC transcoding support'
             'opus-tools: OPUS transcoding support'
             'sox: WAV transcoding support'
             'vorbis-tools: OGG transcoding support')
-source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('298f61d643c35449fbb0001efa69a1792e41518953f58506703f3568902da4457d0f4f9e52b9641df26fc6f978670dd29a7f5d786b99339bd2a71f5fa59dd7db')
+source=("git+$url.git#commit=b0db8137224f5a293329a60187365168304c3768"
+        'wait_for_chromecast.patch::https://github.com/masmu/pulseaudio-dlna/commit/d46f419abd5105e48342ee45219cbf557d342af4.patch')
+b2sums=('SKIP'
+        '4e846ebd9ab9ee005a8809ab33523fdcfcba5bfd9e1ed7ca28bfd17fa3af4440ba44dfdeeee93c8103bf041858ace939184d39e919b050c56d6fbc9cde6cfdb7')
+
+pkgver() {
+  cd $pkgname
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd $pkgname
+  sed -i '/dbus-python/d' setup.py
+  # https://github.com/masmu/pulseaudio-dlna/pull/398
+  patch -p1 -i ../wait_for_chromecast.patch
+}
 
 build() {
-  cd $pkgname-$pkgver
-  python2 setup.py build
+  cd $pkgname
+  python setup.py build
 }
+
 package() {
-  cd $pkgname-$pkgver
-  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd $pkgname
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
+
+# vim:set ts=2 sw=2 et:
