@@ -1,0 +1,15 @@
+Only in pgzero-orig: build
+Only in pgzero-orig/pgzero: __pycache__
+Only in pgzero-orig: pgzero.egg-info
+diff --unified --recursive --text pgzero-orig/setup.py pgzero/setup.py
+--- pgzero-orig/setup.py	2021-01-02 16:29:13.929882171 +0100
++++ pgzero/setup.py	2021-01-02 16:30:37.863482438 +0100
+@@ -9,7 +9,7 @@
+ 
+ install_requires = [
+     "pygame>=1.9.2, <2.0 ; python_version<'3.8'",
+-    "pygame==2.0.0.dev6 ; python_version>='3.8'",
++    "pygame>=2.0.0 ; python_version>='3.8'",
+     'numpy',
+ ]
+ 

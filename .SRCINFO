@@ -1,0 +1,19 @@
+pkgbase = python-pgzero-git
+	pkgdesc = A zero-boilerplate 2D games framework - git version
+	pkgver = 1.2.post4.r132.gdf7c738
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/pgzero
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-pygame
+	provides = python-pgzero
+	conflicts = python-pgzero
+	source = git+https://github.com/lordmauve/pgzero.git
+	source = pygame-version.patch
+	sha256sums = SKIP
+	sha256sums = 632096b0b148917ade580c1fd5e39b6316b54efb566ca95cb6c922ae298956f5
+
+pkgname = python-pgzero-git
+
