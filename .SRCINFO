@@ -1,0 +1,14 @@
+pkgbase = comfetch
+	pkgdesc = System information fetching script
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	license = unknown
+	depends = zsh
+	depends = awk
+	depends = grep
+	source = comfetch
+	md5sums = SKIP
+
+pkgname = comfetch
+
