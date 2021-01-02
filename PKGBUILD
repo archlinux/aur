@@ -48,7 +48,7 @@ NOGZ="YES"        # Don't compress .el files.
 
 ################################################################################
 pkgname="emacs-git"
-pkgver=28.0.50.141336
+pkgver=28.0.50.144634
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64' )
@@ -92,12 +92,14 @@ if [[ $CLANG == "YES" ]]; then
   makedepends+=( 'clang' 'lld' 'llvm') ;
 fi
 
-if [[ $LTO == "YES" ]] && [[ $CLANG != "YES" ]]; then
+if [[ $LTO == "YES" ]]; then
+  if [[ $CLANG != "YES" ]]; then
   CFLAGS+=" -flto -fuse-linker-plugin"
   CXXFLAGS+=" -flto -fuse-linker-plugin"
 else
   CFLAGS+=" -flto"
   CXXFLAGS+=" -flto"
+  fi
 fi
 
 if [[ $NOTKIT == "YES" ]]; then
