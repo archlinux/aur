@@ -1,0 +1,11 @@
+[Unit]
+Description=sccache-dist scheduler
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Environment="SCCACHE_NO_DAEMON=1"
+ExecStart=/usr/bin/sccache-dist scheduler --config /etc/sccache-dist/scheduler.conf
+
+[Install]
+WantedBy=multi-user.target

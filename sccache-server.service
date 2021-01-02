@@ -1,0 +1,11 @@
+[Unit]
+Description=sccache-dist server
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Environment="SCCACHE_NO_DAEMON=1"
+ExecStart=/usr/bin/sccache-dist server --config /etc/sccache-dist/server.conf
+
+[Install]
+WantedBy=multi-user.target
