@@ -1,4 +1,5 @@
 # Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
+# Contributor: Giusy Margarita <kurmikon at libero dot it>
 
 _gitname=kora
 _author=bikass
