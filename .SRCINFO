@@ -1,0 +1,15 @@
+pkgbase = yadr
+	pkgdesc = The best vim,git,zsh plugins and the cleanest vimrc you've ever seen.
+	pkgver = 1
+	pkgrel = 1
+	url = http://skwp.github.io/dotfiles/
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	depends = sh
+	provides = yadr
+	source = .$pkgname::https://github.com/skwp/dotfiles.git
+	md5sums = SKIP
+
+pkgname = yadr
+
