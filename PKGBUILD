@@ -50,15 +50,15 @@ build() {
 # NOTE: In order to run tests in a clean chroot, you must allow it access your X server:
 # xhost +local:
 # https://wiki.archlinux.org/index.php/chroot#Run_graphical_applications_from_chroot
-check() {
-  export DISPLAY=:0
-  cmake \
-	-B "${_pkgname}/test-build" \
-	-S "${_pkgname}" \
-	-DINSTALL_GTEST:BOOL='OFF' \
-	-Wno-dev
-  make -C "${_pkgname}/test-build/tests"
-}
+#check() {
+#  export DISPLAY=:0
+#  cmake \
+#	-B "${_pkgname}/test-build" \
+#	-S "${_pkgname}" \
+#	-DINSTALL_GTEST:BOOL='OFF' \
+#	-Wno-dev
+#  make -C "${_pkgname}/test-build/tests"
+#}
 
 package() {
   make -C "${_pkgname}/build" DESTDIR="${pkgdir}" install
