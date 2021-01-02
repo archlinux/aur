@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-aile
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc='Typeface family designed for coding, terminal use and technical documents.'
 arch=('any')
@@ -8,8 +8,8 @@ url='https://typeof.net/Iosevka/'
 license=('OFL')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/ttf-iosevka-aile-${pkgver}.zip"
         "${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v${pkgver}/LICENSE.md")
-sha256sums=('83093dc98e82fe642b7903f11bce43e58e993f301d2b12fa9eac983a5f4996bc'
-            'e61c0988bb231a321f14cce1b119a468f279ea86826c32e943ab16dbf08c1ba9')
+sha256sums=('8ffff5598e88e15da531ca3da97cffc43f601b5f36f49953c0ac6aff43d73220'
+            '72c3d557ff41d871680652f56afd565ba6834c90eadc45a4ec15410dce1c0c80')
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/TTF/
