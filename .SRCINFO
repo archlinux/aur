@@ -1,0 +1,17 @@
+pkgbase = rubaialter
+	pkgdesc = A module for altering numerical dataset's formats, made on top of Pandas.
+	pkgver = 1.1.0b1
+	pkgrel = 1
+	url = https://pypi.org/project/rubaialter/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-pandas
+	depends = python-xlwt
+	depends = python-xlrd
+	depends = python-openpyxl
+	source = https://pypi.org/packages/source/r/rubaialter/rubaialter-1.1.0b1.tar.gz
+	sha256sums = af33b8e414302b97d6d913701b16399a8ca794900a22bf92d37c9dc1939ecf7e
+
+pkgname = rubaialter
+
