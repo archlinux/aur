@@ -1,14 +1,14 @@
 # Maintainer: Orestis Floros <orestisflo@gmail.com>
 
 pkgname=csmith-git
-pkgver=csmith.2.3.0.r62.g0bd545f
+pkgver=csmith.2.3.0.r66.gfa77c29
 pkgrel=1
 pkgdesc='A random generator of C programs'
 arch=('i686' 'x86_64')
 url='https://github.com/csmith-project/csmith'
 license=('BSD')
 optdepends=('perl')
-makedepends=('git')
+makedepends=('git' 'cmake')
 provides=('csmith')
 conflicts=('csmith')
 source=('git+git://github.com/csmith-project/csmith')
@@ -21,8 +21,7 @@ pkgver() {
 
 build() {
     cd csmith
-    autoreconf -fi
-    ./configure --prefix=/usr
+    cmake -DCMAKE_INSTALL_PREFIX=/usr .
     make
 }
 
