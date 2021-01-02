@@ -1,0 +1,10 @@
+[Unit]
+Description=ignited
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ignited daemon
+
+[Install]
+WantedBy=multi-user.target
