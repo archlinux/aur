@@ -1,0 +1,15 @@
+pkgbase = python-xpinyin
+	pkgdesc = Translate Chinese hanzi to pinyin (拼音) by Python, 汉字转拼音
+	pkgver = 0.7.6
+	pkgrel = 1
+	url = https://github.com/lxneng/xpinyin
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/x/xpinyin/xpinyin-0.7.6.tar.gz
+	sha256sums = dec6aa0f4d9f9b6788d8131245293f1951180333a6d474b467b2d556221862fe
+
+pkgname = python-xpinyin
+	depends = python
+
