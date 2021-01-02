@@ -1,0 +1,23 @@
+pkgbase = tex-match-bin
+	pkgdesc = Find LaTeX symbols by sketching. A desktop version of detexify.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/zoeyfyi/TeX-Match
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	provides = tex-match=1.2.0
+	conflicts = tex-match
+	source = tex-match.1.2.0::https://github.com/zoeyfyi/TeX-Match/releases/download/v1.2.0/tex-match.linux.amd64
+	source = tex-match.1.2.0.desktop::https://github.com/zoeyfyi/TeX-Match/raw/v1.2.0/data/fyi.zoey.TeX-Match.desktop
+	source = tex-match.1.2.0.svg::https://github.com/zoeyfyi/TeX-Match/raw/v1.2.0/data/fyi.zoey.TeX-Match.svg
+	source = README.1.2.0.md::https://github.com/zoeyfyi/TeX-Match/raw/v1.2.0/README.md
+	source = LICENSE.1.2.0::https://github.com/zoeyfyi/TeX-Match/raw/v1.2.0/LICENSE
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = tex-match-bin
+
