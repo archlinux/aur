@@ -1,6 +1,6 @@
 pkgbase = tidal-nativefier
 	pkgdesc = TIDAL desktop built with nativefier (electron) with widevine support
-	pkgver = 1.0.1217
+	pkgver = 1.0.0102
 	pkgrel = 1
 	url = https://listen.tidal.com
 	arch = armv7l

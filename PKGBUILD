@@ -1,7 +1,7 @@
-# Maintainer: Adek Maulana <adek at techdro dot id>
+# Maintainer: Adek Maulana <adek@techdro.id>
 
 pkgname=tidal-nativefier
-pkgver=1.0.1217
+pkgver=1.0.0102
 pkgrel=1
 pkgdesc="TIDAL desktop built with nativefier (electron) with widevine support"
 arch=("armv7l" "i686" "x86_64")
@@ -31,6 +31,7 @@ build() {
     --single-instance \
     --tray \
     --widevine \
+    --internal-urls "(.*?)(facebook\.com|last\.fm|tidal\.com)(.*?)" \
     "${url}"
 }
 
