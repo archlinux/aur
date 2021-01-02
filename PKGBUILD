@@ -5,13 +5,14 @@
 
 pkgname=openrc
 pkgver=0.42.1
-pkgrel=1
-pkgdesc='Dependency based init system that works with sysvinit.'
+pkgrel=2
+pkgdesc='Dependency based init system that works with sysvinit and systemd.'
 arch=('i686' 'x86_64')
 url='https://github.com/OpenRC/openrc/'
 license=('BSD')
-depends=('openrc-sysvinit' 'pam' 'sh')
-optdepends=('openrc-arch-services-git: collection of services for Arch'
+depends=('openrc-sysvinit' 'pam')
+optdepends=('openrc-sysvinit'
+            'openrc-arch-services-git: collection of services for Arch'
             'net-tools: for network service support'
             'opentmpfiles: adds support for systemd-style tmpfiles.d'
             'bash-completion: tab completion for openrc commands in bash shells')
@@ -28,7 +29,7 @@ backup=(etc/openrc/inittab
 	)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenRC/$pkgname/archive/$pkgver.tar.gz"
         'openrc.logrotate'
-	gcc-10-fix.patch::https://github.com/OpenRC/openrc/commit/375ef42393f3dc6edbaa2cb70c79b2366072db38.patch
+	"gcc-10-fix.patch::https://github.com/OpenRC/$pkgname/commit/375ef42393f3dc6edbaa2cb70c79b2366072db38.patch"
 	)
 sha512sums=('579b9bfbb151b945a364a2c12b037d2e15991820ca99a07ac18e9bdc50074e67fbf0dcf9865aa4deabe2bf82092e4623be51c9e0b4014384951e0a92ac1e7646'
             '690612fddfb2c4cf8f6b5ba7239b9faf29eb3d9b152ab4dcf62694aa2852780440d08cee56d98a9597607f446b3697c911269562821a8402bb5747cbbae34bd9'
