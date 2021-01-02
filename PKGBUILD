@@ -11,7 +11,7 @@ _GRUB_EMU_BUILD="0"
 
 _GRUB_EXTRAS_COMMIT="8a245d5c1800627af4cefa99162a89c7a46d8842"
 _GNULIB_COMMIT="be584c56eb1311606e5ea1a36363b97bddb6eed3"
-_UNIFONT_VER="12.1.04"
+_UNIFONT_VER="13.0.05"
 
 [[ "${CARCH}" == "x86_64" ]] && _EFI_ARCH="x86_64"
 [[ "${CARCH}" == "i686" ]] && _EFI_ARCH="i386"
@@ -21,10 +21,10 @@ _UNIFONT_VER="12.1.04"
 
 pkgname='grub-libzfs'
 pkgdesc='GNU GRand Unified Bootloader (2) - libzfs support'
+epoch=2
 _pkgver=2.04
 pkgver=${_pkgver/-/}
-pkgrel=4
-epoch=2
+pkgrel=8
 url='https://www.gnu.org/software/grub/'
 arch=('x86_64')
 license=('GPL3')
@@ -64,15 +64,19 @@ source=("git+https://git.savannah.gnu.org/git/grub.git#tag=grub-${_pkgver}?signe
         "http://unifoundry.com/pub/unifont/unifont-${_UNIFONT_VER}/font-builds/unifont-${_UNIFONT_VER}.bdf.gz"{,.sig}
         '0003-10_linux-detect-archlinux-initramfs.patch'
         '0004-add-GRUB_COLOR_variables.patch'
+        '0005-grub-install-fix-inverted-test-for-NLS-enabled-when-.patch'
+        '0006-BootHole.patch'
         'grub.default')
 
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'bab15252ad82d20d5b107965f3b31de9efbce82f0a3f0b7bbf6dd142e42b0710'
+            'c4e61e9336d8d024479ea72616722c6c47c93f76dc173e8ad3edf9f9e07c3115'
             'SKIP'
             '171415ab075d1ac806f36c454feeb060f870416f24279b70104bba94bd6076d4'
             'a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29'
+            '06820004912a3db195a76e68b376fce1ba6507ac740129f0b99257ef07aba1ea'
+            '55c559b6d8c4a832a43cc35c7635de37402ec9e3e3bfd8b2b7761a06f0bfda02'
             '690adb7943ee9fedff578a9d482233925ca3ad3e5a50fffddd27cf33300a89e3')
 
 _backports=(
@@ -120,6 +124,12 @@ prepare() {
 	echo "Patch to enable GRUB_COLOR_* variables in grub-mkconfig..."
 	## Based on http://lists.gnu.org/archive/html/grub-devel/2012-02/msg00021.html
 	patch -Np1 -i "${srcdir}/0004-add-GRUB_COLOR_variables.patch"
+
+	echo "Patch to NLS installation..."
+	patch -Np1 -i "${srcdir}/0005-grub-install-fix-inverted-test-for-NLS-enabled-when-.patch"
+
+	echo "Patch BootHole..."
+	patch -Np1 -i "${srcdir}/0006-BootHole.patch"
 
 	echo "Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme..."
 	sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i "configure.ac"
