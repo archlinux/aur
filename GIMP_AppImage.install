@@ -1,0 +1,12 @@
+# GIMP_AppImage.install
+#
+# vim: set ts=4 sw=4 et syn=sh ft=sh:
+#
+post_install() {
+    echo ""
+    echo "      Don't forget to move the Gimp configuration directory" 
+    echo "      so that GIMP-AppImage uses all your custom settings.:"
+    echo ""    
+    echo "      mv ~/.config/GIMP ~/.config/GIMP-AppImage"
+    echo ""
+}

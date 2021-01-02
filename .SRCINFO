@@ -1,0 +1,21 @@
+pkgbase = gimp-appimage
+	pkgdesc = GNU Image Manipulation Program (AppImage version)
+	pkgver = 2.10.22
+	pkgrel = 1
+	url = https://github.com/aferrero2707/gimp-appimage
+	install = GIMP_AppImage.install
+	arch = x86_64
+	license = custom
+	depends = hicolor-icon-theme
+	depends = zlib
+	provides = gimp
+	conflicts = gimp
+	options = !strip
+	options = !emptydirs
+	source = GIMP_AppImage-release-2.10.22-withplugins-x86_64.AppImage::https://github.com/aferrero2707/gimp-appimage/releases/download/continuous/GIMP_AppImage-release-2.10.22-withplugins-x86_64.AppImage
+	source = GIMP_AppImage-release.sh
+	sha256sums = 0289456e7bd566d14fb0c6f8f22bca58bcf62d6b698fb41571d5e2d347b62e42
+	sha256sums = 04e6d5c88f0eed70bcb1189a89015878943e6f039db30bb6f50fcad363d67487
+
+pkgname = gimp-appimage
+
