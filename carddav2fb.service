@@ -1,0 +1,8 @@
+[Unit]
+Description=daily contact sync to FritzBox!
+RefuseManualStart=no
+RefuseManualStop=yes
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/carddav2fb run

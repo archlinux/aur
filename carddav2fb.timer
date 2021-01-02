@@ -1,0 +1,12 @@
+[Unit]
+Description=daily contact sync to FritzBox!
+RefuseManualStart=no
+RefuseManualStop=no
+
+[Timer]
+Persistent=false
+OnCalendar=Mon-Fri *-*-* 00:00:00
+Unit=carddav2fb.service
+
+[Install]
+WantedBy=timers.target

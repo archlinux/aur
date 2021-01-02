@@ -1,0 +1,9 @@
+*
+*/
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!carddav2fb.sh
+!carddav2fb.service
+!carddav2fb.timer
+!carddav2fb-php.ini

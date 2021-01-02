@@ -1,0 +1,27 @@
+pkgbase = carddav2fb-git
+	pkgdesc = Download CardDAV VCards and upload as phonebook to AVM FRITZ!Box
+	pkgver = 2.0.r42.g733285e
+	pkgrel = 1
+	url = https://github.com/andig/carddav2fb
+	arch = any
+	license = AGPL
+	license = MIT
+	makedepends = git
+	makedepends = unzip
+	makedepends = composer
+	depends = php
+	provides = carddav2fb
+	backup = etc/carddav2fb/config.php
+	source = carddav2fb::git+https://github.com/andig/carddav2fb.git
+	source = carddav2fb.sh
+	source = carddav2fb.service
+	source = carddav2fb.timer
+	source = carddav2fb-php.ini
+	sha256sums = SKIP
+	sha256sums = 7f3b937e6ef2d6a172b2175fd68989e60c3066d96b71d71013387a2bd1ec7184
+	sha256sums = f50dcafe9c0bde004f6fa46b2e0b67159fb4ab1f295f973d7510f886c44f2b2c
+	sha256sums = 07afba52ebf80aad53639d55bd39a6c083987b1750b3370dea4bd9b140c57be3
+	sha256sums = ee218c032953a381c2cf24c90f11e519b9ae47fdc5d16afaae9df655dcf66b3e
+
+pkgname = carddav2fb-git
+
