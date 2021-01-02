@@ -1,3 +1,4 @@
+# Maintainer: Marc Zuo <zuoq at pm dot me>
 pkgbase='python-xpinyin'
 pkgname=('python-xpinyin')
 _module='xpinyin'
