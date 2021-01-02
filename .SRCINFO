@@ -1,8 +1,8 @@
 pkgbase = korla-icon-theme-git
-	pkgdesc = Korla icon theme is a mix of the following icon sets: Korla and Papirus
-	pkgver = r543.949ea18
+	pkgdesc = Kora is an SVG icon theme with lots of new icons and other ones based on Papirus.
+	pkgver = r580.e774871
 	pkgrel = 1
-	url = https://github.com/bikass/korla
+	url = https://github.com/bikass/kora
 	install = korla-icon-theme-git.install
 	arch = any
 	license = GPL3
@@ -12,8 +12,12 @@ pkgbase = korla-icon-theme-git
 	optdepends = breeze-icons: fallback Breeze icon theme for Plasma Desktop
 	optdepends = gnome-icon-theme: fallback Gnome icon theme for Gnome Desktop
 	provides = korla-icon-theme
+	provides = korla-icon-theme-git
+	provides = kora-icon-theme
+	provides = kora-icon-theme-git
 	conflicts = korla-icon-theme
-	source = git+https://github.com/bikass/korla.git
+	conflicts = kora-icon-theme
+	source = git+https://github.com/bikass/kora.git
 	md5sums = SKIP
 
 pkgname = korla-icon-theme-git
