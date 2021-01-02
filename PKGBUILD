@@ -2,9 +2,9 @@
 # Contributor: Leo <olorin12+gmail+com>
 
 pkgname=hypnotix-git
-pkgver=1.1
-pkgrel=2
-pkgdesc="An IPTV app"
+pkgver=1.4
+pkgrel=1
+pkgdesc="An IPTV streaming application"
 arch=(any)
 url="https://github.com/linuxmint/hypnotix"
 license=(GPL3)
@@ -39,4 +39,7 @@ package() {
 	install -Dm644 -t "$pkgdir"/usr/share/hypnotix/pictures usr/share/hypnotix/pictures/*.svg
 	install -Dm644 -t "$pkgdir"/usr/share/hypnotix/pictures/badges usr/share/hypnotix/pictures/badges/*
 	install -Dm644 -t "$pkgdir"/usr/share/icons/hicolor/scalable/apps usr/share/icons/hicolor/scalable/apps/hypnotix.svg
+
+	# Translations
+	cp -a usr/share/locale "$pkgdir"/usr/share/locale
 }
