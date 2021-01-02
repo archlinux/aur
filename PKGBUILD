@@ -4,7 +4,7 @@
 _pkgname=sysvinit
 pkgname=${_pkgname}-git
 pkgver=2.97.r3.g5567f16
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux System V Init'
 url='http://savannah.nongnu.org/projects/sysvinit'
 arch=('i686' 'x86_64')
