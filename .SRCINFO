@@ -1,5 +1,5 @@
 pkgbase = nodejs-csso-cli
-	pkgdesc = CSS minifier with structural optimisations
+	pkgdesc = Command line interface for CSSO
 	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/css/csso-cli

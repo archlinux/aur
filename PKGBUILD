@@ -3,7 +3,7 @@
 pkgname=nodejs-csso-cli
 pkgver=3.0.0
 pkgrel=1
-pkgdesc="CSS minifier with structural optimisations"
+pkgdesc="Command line interface for CSSO"
 arch=('any')
 url="https://github.com/css/csso-cli"
 license=('MIT')
