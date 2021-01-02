@@ -35,6 +35,11 @@ build() {
   ninja
 }
 
+check() {
+  cd "${srcdir}"/SPIRV-Tools
+  ninja test
+}
+
 package() {
   cd "${srcdir}"/SPIRV-Tools
 
