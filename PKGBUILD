@@ -1,7 +1,7 @@
 # Maintainer: DuckSoft <realducksoft@gmail.com>, mzz2017 <mzz@tuta.io>
 
 pkgname=mmp-go-git
-pkgver=20201201.r37.1ff4cdd
+pkgver=20210103.r96.10f2d50
 pkgrel=1
 pkgdesc="Reuse a single port for multiple Shadowsocks AEAD servers"
 arch=('x86_64')
@@ -34,8 +34,8 @@ build() {
 package() {
     cd "$srcdir"/$pkgname
     
-    install -Dm755 ./mmp-go                 -t "$pkgdir"/usr/bin/              
-    install -Dm644 ./README.md              -t "$pkgdir"/usr/share/doc/mmp-go  
-    install -Dm644 ./systemd/mmp-go.service -t "$pkgdir"/usr/lib/systemd/system
-    install -Dm644 ./example.json              "$pkgdir"/etc/mmp-go/config.json
+    install -Dm755 ./mmp-go                     -t "$pkgdir"/usr/bin/              
+    install -Dm644 ./README.md                  -t "$pkgdir"/usr/share/doc/mmp-go  
+    install -Dm644 ./systemd/mmp-go{,@}.service -t "$pkgdir"/usr/lib/systemd/system
+    install -Dm644 ./example.json               "$pkgdir"/etc/mmp-go/config.json
 }

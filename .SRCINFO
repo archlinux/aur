@@ -1,6 +1,6 @@
 pkgbase = mmp-go-git
 	pkgdesc = Reuse a single port for multiple Shadowsocks AEAD servers
-	pkgver = 20201201.r37.1ff4cdd
+	pkgver = 20210103.r96.10f2d50
 	pkgrel = 1
 	url = https://github.com/Qv2ray/mmp-go
 	arch = x86_64
