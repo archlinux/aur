@@ -2,7 +2,7 @@
 
 pkgname=snm
 pkgver=0.1.6
-pkgrel=6
+pkgrel=7
 pkgdesc="Smol Node Manager written in Rust"
 arch=('x86_64' 'aarch64' 'armv7')
 url=https://github.com/numToStr/snm
@@ -35,13 +35,13 @@ package() {
     _output=""
     case $CARCH in
         x86_64 )
-            _output = "$pkgname-x86_64-unknown-linux-gnu"
+            _output="$pkgname-x86_64-unknown-linux-gnu"
             ;;
         armv7 )
-            _output = "$pkgname-armv7-unknown-linux-gnueabihf"
+            _output="$pkgname-armv7-unknown-linux-gnueabihf"
             ;;
         aarch64 )
-            _output = "$pkgname-aarch64-unknown-linux-gnu"
+            _output="$pkgname-aarch64-unknown-linux-gnu"
             ;;
     esac
 
