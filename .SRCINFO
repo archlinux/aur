@@ -1,0 +1,17 @@
+pkgbase = python-betacode
+	pkgdesc = Betacode to Unicode converter.
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://github.com/matgrioni/betacode
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pygtrie
+	source = https://files.pythonhosted.org/packages/source/b/betacode/betacode-1.0.tar.gz
+	sha256sums = 259b678e8ce901e8735196d248c9c2ad42a388e990fd8383f972d1b5539b0469
+
+pkgname = python-betacode
+	depends = python
+	depends = python-pygtrie
+
