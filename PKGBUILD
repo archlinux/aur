@@ -2,15 +2,15 @@
 
 pkgname=lib32-libtas
 pkgdesc="Tool-assisted speedrunning utility for Linux-native binaries (32-bit support)"
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/clementgallet/libTAS"
 license=('GPL3')
 depends=('lib32-alsa-lib' 'lib32-fontconfig'
-         'lib32-freetype2' 'libtas' 'lib32-zlib')
+         'lib32-freetype2' 'lib32-libx11' 'libtas' 'lib32-zlib')
 source=("${url}/archive/v${pkgver}.tar.gz")
-b2sums=('608c92b74f47e1aaaaf0a6830884f06124a10608e2587eeeafeaba506272a560ca7423f54aed9e117e58419ba35d089b1cbcf303e4b1d4d937e4d9456ec8c9af')
+b2sums=('ebfb53b25dcb4665926354bc9f465ae9ec027a8ff59cca0776f41bcdd0fe561d293bab3af915d8b68882dfbea539991b0cd5f035586a01b99bff092da335238a')
 
 prepare() {
   cd "libTAS-$pkgver"
