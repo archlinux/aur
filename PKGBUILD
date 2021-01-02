@@ -2,11 +2,12 @@
 _pythonname=mmh3
 pkgname=python-${_pythonname}
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Python wrapper for MurmurHash (MurmurHash3), a set of fast and robust hash functions."
 url="http://packages.python.org/${_pythonname}"
 depends=('python')
+makedepends=('python-setuptools')
 license=('CC0')
 source=("https://pypi.io/packages/source/m/${_pythonname}/${_pythonname}-${pkgver}.tar.gz")
 sha1sums=('abe5fd3f06322fa814961fa9466ee089fa561a8a')
