@@ -1,40 +1,39 @@
 # Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=algernon
-pkgver=1.12.7
+pkgver=1.12.11
 pkgrel=1
 pkgdesc='Web server with Lua, Markdown, QUIC, Redis and PostgreSQL support'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+arch=(x86_64)
 url='https://algernon.roboticoverlords.org/'
 license=(MIT)
-makedepends=(git go)
+makedepends=(go)
 optdepends=('mariadb: For using the MariaDB/MySQL database backend'
             'postgresql: For using the PostgreSQL database backend'
             'redis: For using the Redis database backend')
-source=("algernon-${pkgver}.tar.gz::https://github.com/xyproto/algernon/archive/${pkgver}.tar.gz")
-sha512sums=('b696c06815d89d19d0c46159914350c8dd130ef51e60e2c86060c3d15e73e44cbdc68ad4aef4ad508d05e0a0a096ffda7bd83464a08ec7e07fd54f509f880d68')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/xyproto/algernon/archive/$pkgver.tar.gz")
+sha256sums=('0ecedfe86cf2016d8da281ca64d76b9383f76b0d58acee0d80e08c61df5035cc')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
-  go build -mod=vendor -gcflags "all=-trimpath=${PWD}" -asmflags "all=-trimpath=${PWD}" -ldflags "-extldflags ${LDFLAGS}"
+  cd "$pkgname-$pkgver"
+  go build -mod=vendor -buildmode=pie -gcflags "all=-trimpath=$PWD" -asmflags "all=-trimpath=$PWD" -ldflags "-s -w -extldflags $LDFLAGS"
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-
+  cd "$pkgname-$pkgver"
   install -Dm755 algernon "$pkgdir/usr/bin/algernon"
-  install -Dm755 desktop/mdview "$pkgdir/usr/bin/mdview"
-  install -Dm644 system/logrotate "$pkgdir/etc/logrotate.d/algernon"
-  install -Dm644 system/serverconf.lua "$pkgdir/etc/algernon/serverconf.lua"
-  install -Dm644 desktop/algernon.desktop \
-    "$pkgdir/usr/share/applications/algernon.desktop"
-  install -Dm644 desktop/algernon_md.desktop \
-    "$pkgdir/usr/share/applications/algernon_md.desktop"
-  install -Dm644 desktop/markdown.png "$pkgdir/usr/share/pixmaps/markdown.png"
-  install -Dm644 system/algernon_dev.service \
-    "$pkgdir/usr/share/doc/$pkgname/algernon.service.example"
+  install -d "$pkgdir/usr/share/doc/$pkgname/samples"
   cp -r samples "$pkgdir/usr/share/doc/$pkgname/samples"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
 
-# vim: ts=2 sw=2 et:
+  cd system
+  install -Dm644 logrotate "$pkgdir/etc/logrotate.d/algernon"
+  install -Dm644 serverconf.lua "$pkgdir/etc/algernon/serverconf.lua"
+  install -Dm644 algernon_dev.service "$pkgdir/usr/share/doc/$pkgname/algernon.service.example"
+
+  cd ../desktop
+  install -Dm755 mdview "$pkgdir/usr/bin/mdview"
+  install -Dm644 algernon.desktop "$pkgdir/usr/share/applications/algernon.desktop"
+  install -Dm644 algernon_md.desktop "$pkgdir/usr/share/applications/algernon_md.desktop"
+  install -Dm644 markdown.png "$pkgdir/usr/share/pixmaps/markdown.png"
+}
