@@ -1,7 +1,7 @@
 # Maintainer: ComfyDev comfydev@protonmail.com
 pkgname="comfetch"
 pkgver="0.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="System information fetching script"
 arch=('any')
 depends=('zsh' 'awk' 'grep')
