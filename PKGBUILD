@@ -13,7 +13,7 @@ license=(GPL3)
 depends=(
     libgee
     libsoup
-    libhandy
+    libhandy0
     json-glib
     glib2
     gtk3
