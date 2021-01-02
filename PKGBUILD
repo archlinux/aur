@@ -26,11 +26,13 @@ source=(https://dl.winehq.org/wine/source/5.x/wine-$_pkgbasever.tar.xz
         "wine-staging-v$_pkgbasever.tar.gz::https://github.com/wine-staging/wine-staging/archive/v$_pkgbasever.tar.gz"
         https://raw.githubusercontent.com/wine-staging/wine-staging/8d4d0a840e6ce434483edd81acb3be90fd734e44/patches/user32-rawinput-mouse/0005-server-Broadcast-rawinput-message-if-request-flag-is.patch
         30-win32-aliases.conf
-        wine-lol-bug-47198-fix.patch)
+        $pkgname-autoconf-2.70.patch::https://github.com/wine-mirror/wine/commit/d7645b67c350f7179a1eba749ec4524c74948d86.patch
+        $pkgname-bug-47198-fix.patch)
 sha512sums=('b12b0eff228ecd783fec8bf91f97e4387125226b172046d800e1fbffa303ceca32f1f647b9e8ceb24d303c23eb57188be14ddd8ba5fc04ba781a69186fbe6be4'
             '7ddf5699834a6e04b094a7cae008175c874415d22554bac38176f3121b9533071ef610f8b5a0dd3ce3e4adf8a9d4ac214aa1cee7634959c5150b66fbb74710b7'
             '13ce85885270990f8f2cf6c1f872fc855b3caf5bc1de01022caf0b05dd6957e55391cd8dcd15ff0cc18cf3035851a8289a2e12e17f2f50b626b68afd10e3f315'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
+            '5ac8e930ca7b15fc7c8945d49885bf06d4608e69c81c3a429020c75e23d641145b9fc346a327d56c3c0d053a4f4f3582e4ef72d59b70460177ec86a018f33195'
             'a17db33ba5d6114bd71d1b013adc8e5ca0c3cedf856301cba59f95dadf643d2ee0e5a2d7abb2daedd5ed7c45cdbe93c78527f4d962bedc54776bb21cfc7e8b0b')
 
 pkgdesc="A compatibility layer for running Windows programs - Staging branch with League Of Legends fixes"
@@ -129,6 +131,9 @@ prepare() {
   # Allow ccache to work
   mv wine-$_pkgbasever $pkgname
 
+  # Apply fix for autoconf 2.70
+  patch -d "$srcdir/$pkgname" -p1 -i "$srcdir/$pkgname-autoconf-2.70.patch"
+
   # apply wine-staging patchset
   pushd wine-staging-$_pkgbasever/patches
   # Place updated patch
@@ -137,9 +142,7 @@ prepare() {
   popd
 
   # Apply League Of Legends fixes
-  pushd "$srcdir/$pkgname"
-  patch -p1 -i "$srcdir/wine-lol-bug-47198-fix.patch"
-  popd
+  patch -d "$srcdir/$pkgname" -p1 -i "$srcdir/$pkgname-bug-47198-fix.patch"
 
   # Fix opencl header path
   sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i $pkgname/configure*
