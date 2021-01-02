@@ -1,13 +1,13 @@
 # Maintainer: Marvin Kreis <MarvinKreis@web.de>
 
 pkgname=rofi-file-browser-extended-git
-pkgver=1.1.1.r0.gb8ba013
+pkgver=1.2.0.r0.g35d4a2b
 pkgrel=1
 pkgdesc="Use rofi to quickly open files"
 arch=("x86_64")
 url="https://github.com/marvinkreis/${pkgname%-git}"
 license=("MIT")
-depends=("rofi" "gtk3")
+depends=("rofi")
 makedepends=("git" "cmake")
 provides=("rofi-file-browser-extended")
 replaces=("rofi-file_browser-extended")
@@ -17,12 +17,6 @@ md5sums=("SKIP")
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    cd "${srcdir}/${pkgname%-git}"
-    git submodule init
-    git submodule update
 }
 
 build() {
