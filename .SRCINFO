@@ -6,6 +6,7 @@ pkgbase = newton-dynamics-git
 	arch = x86_64
 	license = custom:zlib
 	makedepends = cmake
+	makedepends = git
 	conflicts = newton-dynamics
 	source = git+https://github.com/MADEAPPS/newton-dynamics.git
 	md5sums = SKIP
