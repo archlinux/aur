@@ -1,14 +1,14 @@
 # Maintainer: Marvin Kreis <MarvinKreis@web.de>
 
 pkgname=rofi-json-menu-git
-pkgver=0.1.1.r0.g622b39c
+pkgver=0.2.0.r0.ga5516ac
 pkgrel=1
 pkgdesc="A plugin to use rofi for custom menus"
 arch=("x86_64")
 url="https://github.com/marvinkreis/${pkgname%-git}"
 license=("MIT")
 depends=("rofi" "json-c")
-makedepends=("git")
+makedepends=("git" "cmake")
 provides=("rofi-json-menu")
 replaces=("rofi-prompt")
 source=("git+https://github.com/marvinkreis/${pkgname%-git}.git")
@@ -19,16 +19,9 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-    cd "${srcdir}/${pkgname%-git}"
-    git submodule init
-    git submodule update
-}
-
 build() {
     cd "${srcdir}/${pkgname%-git}"
-    autoreconf --install
-    ./configure --prefix=/usr
+    cmake .
     make
 }
 
