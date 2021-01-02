@@ -1,4 +1,4 @@
-# Maintainer: Daniel M. Capella <polycitizen@gmail.com>
+# Maintainer: Gasparotto Mattia <gasmat04@gmail.com>
 
 _name=milksnake
 pkgname=python-milksnake
