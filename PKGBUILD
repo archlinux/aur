@@ -8,10 +8,10 @@
 
 pkgname=psmisc-selinux
 pkgver=23.3
-pkgrel=2
+pkgrel=4
 pkgdesc='Miscellaneous procfs tools with SELinux support'
 arch=('x86_64')
-url='http://psmisc.sourceforge.net/'
+url='https://gitlab.com/psmisc/psmisc'
 license=('GPL')
 groups=('selinux')
 depends=('ncurses' 'libselinux')
