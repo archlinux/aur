@@ -1,0 +1,11 @@
+pkgbase = gamecompjs
+	pkgdesc = Apply and remove compression and encryption algorithms used by DOS games
+	pkgver = latest
+	pkgrel = 1
+	url = http://github.com/Malvineous/gamecompjs
+	arch = any
+	makedepends = npm
+	depends = nodejs
+
+pkgname = gamecompjs
+
