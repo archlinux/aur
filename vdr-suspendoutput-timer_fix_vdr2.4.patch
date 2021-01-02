@@ -1,0 +1,22 @@
+Index: vdr-plugin-suspendoutput-2.1.0/timer.h
+===================================================================
+--- vdr-plugin-suspendoutput-2.1.0.orig/timer.h	2016-06-08 21:20:37.000000000 +0200
++++ vdr-plugin-suspendoutput-2.1.0/timer.h	2019-03-21 19:57:50.709724606 +0100
+@@ -243,7 +243,7 @@
+ 
+ template<class TCLASS>
+ cTimerEvent *CreateTimerEvent(TCLASS *c, void (TCLASS::*fp)(void),
+-                              unsigned int TimeoutMs, bool runOnce = true)
++                              unsigned int TimeoutMs, bool runOnce)
+ {
+   return new cTimerFunctor0<TCLASS>(c,fp,TimeoutMs,runOnce);
+ }
+@@ -251,7 +251,7 @@
+ template<class TCLASS, class TARG1>
+ cTimerEvent *CreateTimerEvent(TCLASS *c, void (TCLASS::*fp)(TARG1),
+                               TARG1 arg1,
+-                              unsigned int TimeoutMs, bool runOnce = true)
++                              unsigned int TimeoutMs, bool runOnce)
+ {
+   return new cTimerFunctor1<TCLASS,TARG1>(c,fp,arg1,TimeoutMs,runOnce);
+ }
