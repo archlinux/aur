@@ -1,0 +1,13 @@
+pkgbase = supertag
+	pkgdesc = A tag-based filesystem.
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/amoffat/supertag/
+	arch = x86_64
+	license = AGPL 3.0
+	options = !strip
+	source = https://github.com/amoffat/supertag//releases/download/v0.1.3/supertag-x86_64.AppImage
+	sha256sums = f50378f171f4a64b21b499cb73f56303ee3f52ae2cf21abfc4166e35e395c2a4
+
+pkgname = supertag
+
