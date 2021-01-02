@@ -10,7 +10,7 @@ url="http://support.epson.net/linux/en/epsonscan2.php"
 license=('GPL3')
 depends=('boost-libs' 'libharu' 'qt5-singlecoreapplication' 'rapidjson' 'sane')
 makedepends=('boost' 'cmake')
-optdepends=('epsonscan2-non-free-plugin-bin: Wifi network scanning')
+optdepends=('epsonscan2-non-free-plugin-bin: Support for scanning via wireless network')
 source=("http://support.epson.net/linux/src/scanner/${pkgname}/${pkgname}-${_pkgver}.src.tar.gz")
 sha512sums=('f939694d625b5fe8575d040ff8276c069b563deb04b96007eefabc443893bcf9876948b596d738116e8c515aa8a8fcb24e20d1b348b9b0cc4e2236d705f5c252')
 
