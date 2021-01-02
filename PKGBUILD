@@ -8,7 +8,7 @@
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
 pkgname=anki-git
-pkgver=r5491.c505894b8
+pkgver=r5745.f58eb80d9
 pkgrel=2
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="http://ankisrs.net/"
@@ -70,7 +70,7 @@ source=(
     #0001-Move-aqt_data-to-sys.prefix-share.patch
     #0002-Remove-bad-build-steps-from-makefiles.patch
     #0003-Compile-.py-s-before-building-wheel.patch
-    0004-Disable-auto-updates.patch
+    #0004-Disable-auto-updates.patch
     #0005-Make-pyenv-target-just-create-venv.patch
 )
 sha512sums=('SKIP')
@@ -82,10 +82,14 @@ pkgver() {
 
 prepare() {
     cd "$pkgname"
+    
+    # Disable foring a specific bazel version to build with
+    rm .bazelversion 
+    
     #patch -p1 <"$srcdir"/0001-Move-aqt_data-to-sys.prefix-share.patch
     #patch -p1 <"$srcdir"/0002-Remove-bad-build-steps-from-makefiles.patch
     #patch -p1 <"$srcdir"/0003-Compile-.py-s-before-building-wheel.patch
-    patch -p1 <"$srcdir"/0004-Disable-auto-updates.patch
+    #patch -p1 <"$srcdir"/0004-Disable-auto-updates.patch
     #patch -p1 <"$srcdir"/0005-Make-pyenv-target-just-create-venv.patch
 
     # Put translations in place.
@@ -108,8 +112,7 @@ build() {
 
     export CC=/usr/bin/clang
     export CXX=/usr/bin/clang++
-    bazel build -c opt //pylib/anki:wheel
-    bazel build -c opt //qt/aqt:wheel
+    bazel build -c opt dist
 }
 
 package() {
