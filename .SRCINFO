@@ -1,6 +1,6 @@
 pkgbase = python-zulip-api
 	pkgdesc = Pyhton bindings for Zulip API.
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 2
 	url = https://github.com/zulip/python-zulip-api
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = python-zulip-api
 	depends = python-pyopenssl
 	depends = python-six
 	optdepends = python-matrix-client-git: For zulip matrix bridge
-	source = https://github.com/zulip/python-zulip-api/archive/0.7.0.tar.gz
-	sha256sums = 8f843862536645f52b1171fd3e06ab34295ae3de194cb748ef526127f7bed9c0
+	source = https://github.com/zulip/python-zulip-api/archive/0.7.1.tar.gz
+	sha256sums = 72c4825ed03f19f1e9640748e69f2d08f68ae447d093a5e614d97dd95f7419f1
 
 pkgname = python-zulip-api
 
