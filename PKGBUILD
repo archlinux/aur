@@ -5,8 +5,8 @@
 #
 pkgname="python2-gimp"
 _pkgname="gimp"
-pkgver="2.10.22"
-pkgrel="1"
+pkgver="2.10.20"
+pkgrel="2"
 pkgdesc='Python 2 plugins support for GIMP'
 url='https://www.gimp.org/'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('LGPL')
 depends=('gimp' 'pygtk')
 makedepends=('gtk-doc' 'intltool')
 source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('2db84b57f3778d80b3466d7c21a21d22e315c7b062de2883cbaaeda9a0f618bb')
+sha256sums=('e12f9f874b1a007c4277b60aa81e0b67330be7e6153e5749ead839b902fc7b3c')
 
 prepare() {
     cd ${_pkgname}-${pkgver}
@@ -31,11 +31,12 @@ prepare() {
 
 build() {
     cd ${_pkgname}-${pkgver}
-    ./configure \
+    PYTHON=/usr/bin/python2 ./configure \
         --prefix=/usr \
         --sysconfdir=/etc \
         --libexecdir=/usr/bin \
-        --enable-python
+        --enable-python \
+        --without-aa
 
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
     make -C plug-ins/pygimp
