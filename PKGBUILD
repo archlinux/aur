@@ -4,7 +4,7 @@
 
 pkgname=protonmail-bridge
 pkgver=1.5.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
 url="https://protonmail.com/bridge"
@@ -28,6 +28,7 @@ prepare() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
+    export QMAKE_CXXFLAGS=$QMAKE_CXXFLAGS" -fno-sized-deallocation"
     export PATH=$PATH:$(go env GOPATH)/bin/
     git checkout "v${pkgver}"
     # fix versioning in source 
