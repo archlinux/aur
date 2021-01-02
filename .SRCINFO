@@ -1,0 +1,14 @@
+pkgbase = khinsider
+	pkgdesc = A script for mass downloads from downloads.khinsider.com
+	pkgver = r68.d2d031a
+	pkgrel = 1
+	url = https://github.com/obskyr/khinsider
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = python
+	source = git+https://github.com/obskyr/khinsider.git
+	md5sums = SKIP
+
+pkgname = khinsider
+
