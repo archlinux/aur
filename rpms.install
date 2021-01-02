@@ -1,0 +1,11 @@
+post_install() {
+    systemctl enable --now rpms.service
+}
+
+post_upgrade() {
+    systemctl restart rpms.service
+}
+
+pre_remove() {
+    systemctl disable ..now rpms.service
+}

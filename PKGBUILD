@@ -2,7 +2,7 @@
 
 pkgname=rpms
 pkgver=1.0.3
-pkgrel=2
+pkgrel=4
 pkgdesc='Renoir power metrics server'
 arch=('x86_64')
 url="https://github.com/moson-mo/$pkgname"
@@ -11,6 +11,7 @@ makedepends=('go')
 depends=('ryzen_smu')
 source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('840ed0a39087d518d7dce234668c3150e2c98c56d33f72cdd6a0bae42c2fd9b1')
+install=$pkgname.install
 
 prepare(){
   cd "$pkgname-$pkgver"
@@ -32,8 +33,4 @@ package() {
   install -Dm755 build/$pkgname-$pkgver "$pkgdir"/usr/bin/$pkgname
   install -m755 -d ${pkgdir}/usr/lib/systemd/system
   install -m644 assets/$pkgname.service "$pkgdir"/usr/lib/systemd/system
-}
-
-post_install() {
-    systemctl enable --now rpms.service
 }
