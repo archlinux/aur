@@ -19,8 +19,6 @@ pkgver() {
 
 build() {
     cmake newton-dynamics/newton-3.14 -Bnewton-dynamics/newton-3.14/build \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=/usr/lib \
         -DCMAKE_BUILD_TYPE=Release \
         -DNEWTON_BUILD_SHARED_LIBS=ON \
         -DNEWTON_BUILD_SANDBOX_DEMOS=OFF \
