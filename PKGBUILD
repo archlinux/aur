@@ -2,7 +2,7 @@
 
 pkgname=dovecot-xaps-daemon-git
 _gitname=dovecot-xaps-daemon
-pkgver=0.9
+pkgver=0.9.r23.g0344979
 pkgrel=1
 pkgdesc='iOS Push Email for Dovecot - xaps daemon'
 arch=('x86_64')
@@ -27,13 +27,13 @@ build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build .
+  go build ./cmd/xapsd
   }
 
 package() {
   install -dm755 "${pkgdir}"/var/lib/xapsd/
-  install -Dm755 "${srcdir}"/${_gitname}/${_gitname} "${pkgdir}"/usr/bin/xapsd
-  install -Dm644 -t "${pkgdir}"/etc/xapsd/ "${srcdir}"/${_gitname}/etc/xapsd/xapsd.yaml
-  install -Dm644 -t "${pkgdir}"/usr/lib/systemd/system/ "${srcdir}"/${_gitname}/etc/systemd/xapsd.service
+  install -Dm755 "${srcdir}"/${_gitname}/xapsd "${pkgdir}"/usr/bin/xapsd
+  install -Dm644 -t "${pkgdir}"/etc/xapsd/ "${srcdir}"/${_gitname}/configs/xapsd/xapsd.yaml
+  install -Dm644 -t "${pkgdir}"/usr/lib/systemd/system/ "${srcdir}"/${_gitname}/configs/systemd/xapsd.service
   install -Dm644 -t "${pkgdir}"/usr/share/licenses/${pkgname}/ "${srcdir}"/${_gitname}/LICENSE
 }
