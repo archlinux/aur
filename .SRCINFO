@@ -1,7 +1,7 @@
 pkgbase = epoptes-client
 	pkgdesc = An opensource computer lab management and monitoring tool
 	pkgver = 21.01
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Epoptes/epoptes
 	arch = any
 	license = GPL3
@@ -35,9 +35,7 @@ pkgname = epoptes
 	optdepends = xfce4-notifyd: XFCE notification support
 
 pkgname = epoptes-client
-	depends = bsdmainutils
 	depends = ethtool
-	depends = iperf
 	depends = iperf
 	depends = iproute2
 	depends = libnotify
