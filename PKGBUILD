@@ -2,7 +2,7 @@
 
 pkgname='httplz-bin'
 _pkgname='httplz'
-pkgver='1.10.0'
+pkgver='1.10.1'
 pkgrel='1'
 pkgdesc='Host These Things Please - a basic http server for hosting a folder fast and simply'
 arch=('x86_64')
