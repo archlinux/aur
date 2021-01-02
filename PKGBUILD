@@ -3,7 +3,7 @@
 pkgname=qt-logout
 pkgver=2021.01.02
 pkgrel=1
-pkgdesc='Logout screen for qt6 using qtside6'
+pkgdesc='Logout screen for QT using QT6 and pyside6'
 arch=('any')
 url="https://github.com/TheCynicalTeam/$pkgname"
 license=('CC BY-NC-SA 4.0')
