@@ -1,0 +1,12 @@
+pkgbase = cow
+	pkgdesc = COW is a toy esoteric language. See the classic COW webpage for more info!
+	pkgver = 1.0
+	pkgrel = 0
+	arch = i686
+	arch = x86_64
+	makedepends = gcc
+	source = https://github.com/BigZaphod/COW/tarball/master
+	md5sums = f11450f30dea7cb2a3bc8b2d15196bcc
+
+pkgname = cow
+
