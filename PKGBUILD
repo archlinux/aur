@@ -2,7 +2,7 @@
 
 pkgname=galaxy2
 pkgver=1.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Stellar Simulation"
 url="http://www.kornelix.net/galaxy2/galaxy2.html"
 arch=('i686' 'x86_64')
