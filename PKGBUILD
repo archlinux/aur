@@ -1,7 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=sortpuz  
 pkgver=1.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Unscramble a square matrix of numbered tiles to put them in order."
 url="http://www.kornelix.net/$pkgname/$pkgname.html"
 arch=('i686' 'x86_64')
