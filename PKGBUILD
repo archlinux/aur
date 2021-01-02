@@ -1,4 +1,4 @@
-# Maintainer: bin <bin@datacowboy.cf>
+# Maintainer: bin <bin at datacowboy dot cf>
 pkgname="ktx_software-git"
 _pkgname="ktx_software"
 pkgver=4.0.0.beta5.r3.g67a11a84
