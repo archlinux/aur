@@ -3,7 +3,7 @@
 _pkgname=avogadrolibs
 pkgname="${_pkgname}-git"
 pkgver=1.93.0.r1935.926573b1
-pkgrel=1
+pkgrel=2
 pkgdesc="Avogadro 2: libraries"
 url="http://openchemistry.org/projects/avogadro2"
 arch=("x86_64")
@@ -26,6 +26,7 @@ pkgver() {
 }
 
 build() {
+  mkdir -p "${srcdir}"/build
   cd "${srcdir}"/build
   cmake \
       -DCMAKE_BUILD_TYPE=Release \
