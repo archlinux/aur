@@ -3,7 +3,7 @@
 
 _gemname=pastel
 pkgname=ruby-$_gemname
-pkgver=0.7.3
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Terminal strings styling with intuitive and clean API.'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-equatable ruby-tty-color)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('983965341aaf32cf7eedf02847b10e653e239712')
+sha1sums=('67c7bbaeb9e5a178ea3c6bbbc043dcb1d40a5416')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
