@@ -7,10 +7,13 @@ ansicolor=" \u001b[$(/bin/cat /etc/os-release | grep "ANSI_COLOR" | awk -F '=' '
 reset="\u001b[0m"
 
 function fetch(){
-echo "$ansicolor""USER$reset | $user"
-echo "$ansicolor""HOST$reset | $hostname"
-echo "$ansicolor""OS  $reset | $os"
-echo "$ansicolor""KERN$reset | $kernel"
+echo "$ansicolor""    .--.     ""USER$reset | $user"
+echo "$ansicolor""   |o_o |    ""HOST$reset | $hostname"
+echo "$ansicolor""   |:_/ |    ""OS  $reset | $os"
+echo "$ansicolor""  //   \ \\   ""KERN$reset | $kernel"
+echo "$ansicolor"" (|     | )  $reset"
+echo "$ansicolor""/'|_   _/'\\ $reset"
+echo "$ansicolor""\\___)=(___/ $reset"
 }
 
 for arg in $@; do
