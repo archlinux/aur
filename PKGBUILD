@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: EatMyVenom <eat.my.venomm@gmail.com>
 
 _name=electron-beta
 pkgname=electron-beta-bin
@@ -11,7 +11,7 @@ url="https://electronjs.org/"
 license=('MIT' 'custom')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libxslt' 'minizip'
          'nss' 're2' 'snappy')
-makedepends=('tar' 'wget')
+makedepends=('tar')
 provides=('electron' 'electron-beta')
 conflicts=()
 replaces=()
