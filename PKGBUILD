@@ -2,7 +2,7 @@
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 _pkgname=qt6ct
 pkgname=$_pkgname-git
-pkgver=0.2
+pkgver=0.2.r5.g828208d
 pkgrel=1
 pkgdesc='Qt6 Configuration Tool'
 arch=(x86_64)
