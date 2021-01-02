@@ -1,0 +1,16 @@
+diff --git a/src/cmake/external_libs.cmake b/src/cmake/external_libs.cmake
+index cd77ed02..3c119f00 100644
+--- a/src/cmake/external_libs.cmake
++++ b/src/cmake/external_libs.cmake
+@@ -140,6 +140,11 @@ if(WITH_CYCLES_CUDA_BINARIES OR NOT WITH_CUDA_DYNLOAD)
+   find_package(CUDA) # Try to auto locate CUDA toolkit
+   if(CUDA_FOUND)
+     message(STATUS "CUDA nvcc = ${CUDA_NVCC_EXECUTABLE}")
++    CUDA_SELECT_NVCC_ARCH_FLAGS(CUDA_ARCH_FLAGS Auto)
++    string(REGEX REPLACE " compute_[0-9]+" "" CYCLES_CUDA_BINARIES_ARCH "${CUDA_ARCH_FLAGS_readable}")
++    string(REGEX REPLACE " " ";" CYCLES_CUDA_BINARIES_ARCH "${CYCLES_CUDA_BINARIES_ARCH}")
++    message(STATUS "Enabling CUDA support (version: ${CUDA_VERSION_STRING},"
++        " archs: ${CYCLES_CUDA_BINARIES_ARCH})")
+   else()
+     message(STATUS "CUDA compiler not found, disabling WITH_CYCLES_CUDA_BINARIES")
+     set(WITH_CYCLES_CUDA_BINARIES OFF)

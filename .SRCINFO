@@ -1,0 +1,34 @@
+pkgbase = cycles-standalone
+	pkgdesc = Blender Cycles rendering engine, standalone version
+	pkgver = v1.11.0.r387.ge5ba3557
+	pkgrel = 1
+	url = https://wiki.blender.org/wiki/Source/Render/Cycles/Standalone
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	makedepends = boost
+	depends = libglvnd
+	depends = openexr
+	depends = glew
+	depends = pugixml
+	depends = freeglut
+	depends = openimageio
+	depends = tbb
+	depends = openvdb
+	depends = embree
+	depends = openimagedenoise
+	depends = opensubdiv
+	depends = openshadinglanguage
+	optdepends = cuda
+	optdepends = optix
+	provides = cycles
+	source = cycles-standalone::git+https://git.blender.org/cycles.git
+	source = SelectCudaComputeArch.patch
+	source = cycles_wrap.sh
+	sha256sums = SKIP
+	sha256sums = 7abd5530694535db488568cc98d2a7be4cb5ded0f5d8d5d2dad2d08da7008330
+	sha256sums = 00afc4aab5541d147b013c31ab91d78e272654a75cae60b39cf70c23a2612c96
+
+pkgname = cycles-standalone
+
