@@ -10,7 +10,7 @@ url="http://www.kornelix.net/picpuz/picpuz.html"
 license=('GPL3')
 depends=('clutter-gtk')
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('c78339697a37dd9ce7c88bab78ee7a88c18128935e24bb86c6322c7e6b38099e')
+sha256sums=('94c883b17cd5c3fbaf874f4b4bf46994a4788dabf66c4c787c98180fe7180105')
 options=('!emptydirs')
 
 build() {
