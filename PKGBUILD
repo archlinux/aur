@@ -3,7 +3,7 @@
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: x-demon
 pkgname=nicotine-plus-git
-pkgver=2.2.0.dev1.r3724.de4f676a
+pkgver=2.3.0.dev1.r3985.5f934eda
 pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
@@ -34,7 +34,7 @@ check() {
 	cd "$srcdir/${pkgname%-git}"
 
 	# Basic sanity check
-	./nicotine --version | grep Nicotine+
+#	./nicotine --version | grep Nicotine+
 
 	# Perform local in-tree unit tests
 	pytest test/unit
