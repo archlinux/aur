@@ -1,7 +1,7 @@
 pkgbase = fotokilof
 	pkgdesc = GUI for ImageMagick
 	pkgver = 3.5.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/TeaM-TL/FotoKilof
 	arch = any
 	license = MIT

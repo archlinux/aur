@@ -4,7 +4,7 @@ _name=FotoKilof
 
 pkgname=${_name,,}
 pkgver=3.5.3
-pkgrel=3
+pkgrel=4
 pkgdesc="GUI for ImageMagick"
 url="https://github.com/TeaM-TL/FotoKilof"
 makedepends=('python-setuptools')
@@ -31,6 +31,6 @@ build() {
 package() {
     cd "${srcdir}/${_name}-${pkgver}"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-    install -Dvm644 ../../$pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+    install -Dvm644 "${srcdir}/${pkgname}.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
     install -Dvm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
