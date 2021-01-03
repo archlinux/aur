@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=texinfo-git
-pkgver=6.7.r8962
+pkgver=6.7.r9202
 pkgrel=1
 epoch=1
 pkgdesc="GNU documentation system for on-line information and printed output"
@@ -33,12 +33,13 @@ prepare() {
   git submodule init
   git config submodule.gnulib.url gnulib
   git submodule update
-  cp "$srcdir"/gnulib/lib/windows-mutex.c gnulib/lib
+ # cp "$srcdir"/gnulib/lib/windows-mutex.c gnulib/lib
 }
 
 build() {
   cd $pkgname
-  ./autogen.sh 
+  ./autogen.sh || true
+  sed -i '5904,5916d' configure
   ./configure --prefix=/usr --libexecdir=/usr/lib
   make
 }
