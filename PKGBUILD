@@ -2,7 +2,7 @@
 
 pkgname=readsb
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Mode-S/ADSB/TIS decoder for RTLSDR, BladeRF, Modes-Beast and GNS5894 devices."
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/Mictronics/readsb-protobuf"
@@ -32,7 +32,7 @@ sha256sums=('c4eba1d77af0bdcb5d129c106353c7ab5a696792d4a7b9fbda9aa62dfab66973'
             '4b0293f3f13080a168d127e7c7c84b48e9a146e765f46e32cd3e69fea82ba447'
             '1b6721ee262fdc04f9009a793eca96b81127145b4314e21b3ad468c504c1c9d6'
             '3da99128f5a89aef6f9748f1e09f0120940f123e80c007e7d5ac2d0571740a05'
-            'da7b799553bf6098573a9a03fce4baaf1ef20f668a7a4772d4c1bd62aaf08736'
+            'd65a8e71d54ab411735c71704145101b78eb2dd7cd8c6bd1f957af70fd94667d'
             '39ed9d33054f7e7bb7f97b7ef27bd17f12f8fd01e4f341328ab735474464592b')
 
 prepare() {

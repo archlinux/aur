@@ -23,8 +23,8 @@ ExecStart=/usr/bin/readsb --gain -10 \
                           --net-sbs-port 30003 \
                           --net-bi-port 30004,30104 \
                           --net-bo-port 30005 \
-                          --json-location-accuracy 1 \
-                          --write-json /run/readsb \
+                          --rx-location-accuracy 1 \
+                          --write-output /run/readsb \
                           $USER_OPTIONS --quiet
 
 Type=simple

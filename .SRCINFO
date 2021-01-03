@@ -1,7 +1,7 @@
 pkgbase = readsb
 	pkgdesc = A Mode-S/ADSB/TIS decoder for RTLSDR, BladeRF, Modes-Beast and GNS5894 devices.
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Mictronics/readsb-protobuf
 	arch = x86_64
 	arch = armv6h
@@ -29,7 +29,7 @@ pkgbase = readsb
 	sha256sums = 4b0293f3f13080a168d127e7c7c84b48e9a146e765f46e32cd3e69fea82ba447
 	sha256sums = 1b6721ee262fdc04f9009a793eca96b81127145b4314e21b3ad468c504c1c9d6
 	sha256sums = 3da99128f5a89aef6f9748f1e09f0120940f123e80c007e7d5ac2d0571740a05
-	sha256sums = da7b799553bf6098573a9a03fce4baaf1ef20f668a7a4772d4c1bd62aaf08736
+	sha256sums = d65a8e71d54ab411735c71704145101b78eb2dd7cd8c6bd1f957af70fd94667d
 	sha256sums = 39ed9d33054f7e7bb7f97b7ef27bd17f12f8fd01e4f341328ab735474464592b
 
 pkgname = readsb
