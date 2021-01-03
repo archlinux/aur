@@ -1,7 +1,7 @@
 # Maintainer: Timothy Lee <timothy.ty.lee@gmail.com>
 pkgname=libreoffice-extension-vrt-network-equipment
 pkgver=1.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='This extension provides galleries of network equipment shapes for LibreOffice, designed in a similar style to those offered by Microsoft Visio®.'
 arch=('any')
 url='http://www.vrt.com.au/downloads/vrt-network-equipment'
@@ -10,7 +10,7 @@ groups=('libreoffice-extensions')
 depends=('libreoffice') 
 _pkgname=vrtnetworkequipment
 _pkgver=1-2-0
-source=("http://extensions.libreoffice.org/extensions/vrt-network-equipment/${pkgver}/@@download/file/${_pkgname}_${_pkgver}-lo.oxt")
+source=("https://extensions.libreoffice.org/assets/downloads/z/vrtnetworkequipment-1-2-0-lo.oxt")
 noextract=(${source[@]##*/})
 sha1sums=('30b3487811a1ff78c193d3426fa940d7a9e7cbbc')
 
