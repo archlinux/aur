@@ -86,7 +86,8 @@ export CC=musl-gcc
 
 #${_defaults} ${_goarch}
 #create read only cache binary
- go build -trimpath -o $GOBIN/ ${srcdir}/${_scripts}/skycache.go
+cd ${srcdir}/${_scripts}/skycache
+go build -trimpath --ldflags '-s -w -linkmode external -extldflags "-static" -buildid=' -o $GOBIN/ skycache.go
 
 #create the skywire binaries
 cd ${srcdir}/go/src/${_pkggopath}
