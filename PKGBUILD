@@ -1,5 +1,5 @@
 pkgname=syzkaller-git
-pkgver=r215.d5c2595
+pkgver=r5884.79264ae39
 pkgrel=1
 pkgdesc='a distributed, unsupervised, coverage-guided Linux syscall fuzzer'
 arch=(x86_64 i686)
@@ -15,25 +15,15 @@ pkgver() {
   echo r$(git rev-list --count master).$(git rev-parse --short master)
 }
 
-prepare() {
-  cd syzkaller
-
-  mkdir -p .gopath/src/github.com/google/
-  ln -sf "$PWD" .gopath/src/github.com/google/
-  export GOPATH="$PWD/.gopath"
-
-  mkdir bin
-}
-
 build() {
   cd syzkaller
-  export GOPATH="$PWD/.gopath"
-  make all
+  make all -j1
 }
 
 package() {
   cd syzkaller
 
-  install -dm755 "${pkgdir}"/usr/bin
-  install -m755 bin/* "$pkgdir"/usr/bin/
+  install -dm755 "$pkgdir"/usr/bin
+  install -m755 bin/linux_amd64/syz-* "$pkgdir"/usr/bin/
+  install -m755 bin/syz-* "$pkgdir"/usr/bin/
 }
