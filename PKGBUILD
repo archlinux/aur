@@ -26,9 +26,11 @@ md5sums=('a60edc3f9a87e20b9b6ea818bb85c6b5'
 
 package() {
     install -d -m755 "${pkgdir}/opt/${pkgname}"
-
     cp -L $srcdir/Freezer-$pkgver.AppImage ${pkgdir}/opt/${pkgname}/Freezer.AppImage
     chmod +x ${pkgdir}/opt/${pkgname}/Freezer.AppImage
+
+    install -d -m755 "${pkgdir}/usr/share/applications/"
+    cp -L $srcdir/freezer.desktop "${pkgdir}/usr/share/applications/"
 
     install -d -m755 $pkgdir/usr/share/pixmaps/
     cp -L $srcdir/ztam2vH.png $pkgdir/usr/share/pixmaps/freezer.png
