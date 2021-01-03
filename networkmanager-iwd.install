@@ -20,7 +20,7 @@ _post_uninstall_message() {
 
 post_install() {
     _post_install_message
-} 
+}
 
 post_remove() {
     _post_uninstall_message

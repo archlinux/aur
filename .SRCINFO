@@ -1,7 +1,7 @@
 pkgbase = networkmanager-iwd
-	pkgdesc = NM modified package to use exclusively iwd backend getting rid of wpa_supplicant dependency
-	pkgver = 1.26.2
-	pkgrel = 3
+	pkgdesc = Network connection manager and user applications; using iwd backend instead of wpa_supplicant
+	pkgver = 1.28.1dev+7+g3f5df3cdc
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/NetworkManager
 	arch = x86_64
 	license = GPL2
@@ -39,8 +39,10 @@ pkgbase = networkmanager-iwd
 	makedepends = libpsl
 	makedepends = audit
 	makedepends = meson
-	source = git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=c3c6c426dfca621fa71dceacbba2789b9f8ce144
+	source = git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=3f5df3cdc6c52a79f970c0a9de9200a18df6b3fb
+	source = networkmanager-iwd.install
 	sha256sums = SKIP
+	sha256sums = 6f77a626ec3fd7583beb45ffcac236cdc1fe2b5e5b8ccc5d90983312a265e818
 
 pkgname = networkmanager-iwd
 	install = networkmanager-iwd.install
@@ -64,6 +66,7 @@ pkgname = networkmanager-iwd
 	optdepends = modemmanager: cellular network support
 	optdepends = dhclient: alternative DHCP client
 	optdepends = openresolv: alternative resolv.conf manager
+	optdepends = firewalld: Firewall support
 	provides = networkmanager
 	conflicts = networkmanager
 	backup = etc/NetworkManager/NetworkManager.conf
@@ -72,14 +75,14 @@ pkgname = libnm-iwd
 	pkgdesc = NetworkManager client library with iwd backend
 	depends = glib2
 	depends = nss
-	depends = libutil-linux
+	depends = util-linux-libs
 	depends = jansson
 	depends = systemd-libs
-	provides = libnm
+	provides = libnm.so
 	conflicts = libnm
 
 pkgname = nm-iwd-cloud-setup
-	pkgdesc = Automatically configure NetworkManager in cloud
+	pkgdesc = Automatically configure NetworkManager with iwd backend in cloud
 	depends = networkmanager-iwd
 	provides = nm-cloud-setup
 	conflicts = nm-cloud-setup

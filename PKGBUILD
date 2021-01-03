@@ -10,9 +10,9 @@
 
 pkgbase=networkmanager-iwd
 pkgname=(networkmanager-iwd libnm-iwd nm-iwd-cloud-setup)
-pkgver=1.26.2
-pkgrel=3
-pkgdesc="NM modified package to use exclusively iwd backend getting rid of wpa_supplicant dependency"
+pkgver=1.28.1dev+7+g3f5df3cdc
+pkgrel=1
+pkgdesc="Network connection manager and user applications; using iwd backend instead of wpa_supplicant"
 url="https://wiki.gnome.org/Projects/NetworkManager"
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
@@ -22,9 +22,10 @@ makedepends=(intltool dhclient iptables gobject-introspection gtk-doc "ppp=$_ppp
              libnewt libndp libteam vala perl-yaml python-gobject git vala jansson bluez-libs
              glib2-docs iwd dnsmasq openresolv libpsl audit meson)
 checkdepends=(libx11 python-dbus)
-_commit=c3c6c426dfca621fa71dceacbba2789b9f8ce144  # tags/1.26.2^0
-source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=$_commit")
-sha256sums=('SKIP')
+_commit=3f5df3cdc6c52a79f970c0a9de9200a18df6b3fb  # nm-1-28
+source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=$_commit"
+        "$pkgbase.install")
+sha256sums=('SKIP' '6f77a626ec3fd7583beb45ffcac236cdc1fe2b5e5b8ccc5d90983312a265e818')
 
 pkgver() {
   cd NetworkManager
@@ -33,8 +34,6 @@ pkgver() {
 
 prepare() {
   cd NetworkManager
-  # Fix doc build
-  git cherry-pick -n 54e25f23f53af889703dfc50d51a8afeeea8a439
 }
 
 build() {
@@ -47,7 +46,6 @@ build() {
     -D session_tracking_consolekit=false
     -D suspend_resume=systemd
     -D modify_system=true
-
     -D polkit_agent=true
     -D selinux=false
 
@@ -62,6 +60,10 @@ build() {
     # configuration plugins
     -D config_plugins_default=keyfile
 
+    # handlers for resolv.conf
+    -D netconfig=no
+    -D config_dns_rc_manager_default=auto
+
     # dhcp clients
     -D dhcpcd=no
 
@@ -74,9 +76,8 @@ build() {
   )
 
   arch-meson NetworkManager build "${meson_args[@]}"
-  ninja -C build
+  meson compile -C build
 }
-
 
 check() {
   # iproute2 bug 
@@ -104,7 +105,8 @@ package_networkmanager-iwd() {
               'ppp: dialup connection support'
               'modemmanager: cellular network support'
               'dhclient: alternative DHCP client'
-              'openresolv: alternative resolv.conf manager')              
+              'openresolv: alternative resolv.conf manager'
+              'firewalld: Firewall support')
   backup=(etc/NetworkManager/NetworkManager.conf)
   groups=(gnome)
   install="$pkgbase.install"
@@ -122,7 +124,7 @@ END
   # packaged configuration
   install -Dm644 /dev/stdin "$pkgdir/usr/lib/NetworkManager/conf.d/20-connectivity.conf" <<END
 [connectivity]
-uri=http://www.archlinux.org/check_network_status.txt
+uri=http://archlinux.org/check_network_status.txt
 END
 
   # iwd wifi backend
@@ -140,7 +142,6 @@ END
 
   shopt -s globstar
 
-  ### Split libnm
   _pick libnm "$pkgdir"/usr/include/libnm
   _pick libnm "$pkgdir"/usr/lib/girepository-1.0/NM-*
   _pick libnm "$pkgdir"/usr/lib/libnm.*
@@ -149,7 +150,6 @@ END
   _pick libnm "$pkgdir"/usr/share/gtk-doc/html/libnm
   _pick libnm "$pkgdir"/usr/share/vala/vapi/libnm.*
 
-  ### Split nm-cloud-setup
   _pick nm-cloud-setup "$pkgdir"/usr/lib/**/*nm-cloud-setup*
 
   # Restore empty dir
@@ -158,16 +158,20 @@ END
 
 package_libnm-iwd() {
   pkgdesc="NetworkManager client library with iwd backend"
-  depends=(glib2 nss libutil-linux jansson systemd-libs)
-  provides=("libnm")
-  conflicts=("libnm")
+  depends=(glib2 nss util-linux-libs jansson systemd-libs)
+  provides=(libnm.so)
+  conflicts=(libnm)
+
   mv libnm/* "$pkgdir"
 }
 
 package_nm-iwd-cloud-setup() {
-  pkgdesc="Automatically configure NetworkManager in cloud"
+  pkgdesc="Automatically configure NetworkManager with iwd backend in cloud"
   depends=(networkmanager-iwd)
   provides=("nm-cloud-setup")
   conflicts=("nm-cloud-setup")
+
   mv nm-cloud-setup/* "$pkgdir"
 }
+
+# vim:set sw=2 et:
