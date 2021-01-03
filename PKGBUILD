@@ -25,13 +25,13 @@ package() {
 
   _xdg_desktop_name=org.${pkgname}.${pkgname^}
 
-  install -Dm 644 "packaging/linux/org.${pkgname}.${pkgname^}.desktop" \
+  install -Dm 644 "packaging/linux/${_xdg_desktop_name}.desktop" \
                   "${pkgdir}/usr/share/applications/${_xdg_desktop_name}.desktop"
 
   sed -i "s/Icon=${pkgname}/Icon=${_xdg_desktop_name}/" \
          "${pkgdir}/usr/share/applications/${_xdg_desktop_name}.desktop"
 
-  install -Dm 644 "packaging/linux/org.${pkgname}.${pkgname^}.appdata.xml" \
+  install -Dm 644 "packaging/linux/${_xdg_desktop_name}.appdata.xml" \
                   "${pkgdir}/usr/share/metainfo/${_xdg_desktop_name}.appdata.xml"
 
   for size in 16 22 32 48 64 128 256; do
