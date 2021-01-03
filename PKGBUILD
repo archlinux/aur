@@ -1,6 +1,6 @@
 #Maintainer: james@stampatron.com
 pkgname=daggerfall-unity-aur-bin
-pkgver=0.10.28
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="The Elder Scrolls: Daggerfall rebuilt using the unity engine"
 arch=('x86_64')
@@ -24,7 +24,7 @@ ENGINE_DIR="engine"
 DATA_DIR="data"
 
 #Dagger Unity Build Variables
-BUILD_ID="-yUDhxeu_8"
+BUILD_ID="WJ84FEFAOI"
 REMOTE_BUILD_GENERATOR="https://build-api.cloud.unity3d.com/api/v1/shares/"
 
 #Daggerfall Data Variables
@@ -32,7 +32,7 @@ REMOTE_DATA_ID="0B0i8ZocaUWLGWHc1WlF3dHNUNTQ"
 REMOTE_DATA="https://drive.google.com/uc?export=download&confirm=h2vF&id="
 
 #SHA256 Hashes
-ENGINE_HASH="53B757EDA35581CB8165CFDE63B74F1674E78B6312C8B8D8F5F79791B9C4C466"
+ENGINE_HASH="B301529ECF482A9AE7B9B9E27964E05CECBE277875AD661716D41CF18D4EC189"
 DATA_HASH="8be67a4ebb76ed684968f49d29cbbe57b0c10dc4554d111d64356a2355be5083"
 
 build() {
