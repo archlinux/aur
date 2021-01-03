@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gammy
-pkgver=0.9.60
+pkgver=0.9.61
 pkgrel=1
 pkgdesc="Adaptive screen brightness/temperature tool."
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('plog: library for debug logging'
             'qt5ct: recommended on DE without Qt integration')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Fushko/gammy/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('10c096fc0ecc36f4f3dd5715cd91d3002bd7437ba3a23b4c90dbb784f2a7ee6f'
+sha256sums=('5a3f5af9d78c8f290163a8848f991efc5ea18023a3ed8adfa3e7878050dd1901'
             '6c67db210bd45f51d80119d25ffcaff9861aea926427ccf186d4530cf35ecf5d')
 
 build() {
