@@ -11,8 +11,14 @@ depends=('qt5-base' 'libusb' 'hidapi')
 optdepends=('i2c-tools: Motherboard & RAM access')
 conflicts=('openrgb-git')
 provides=("openrgb")
-source=("https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_$pkgver/OpenRGB-release_$pkgver.tar.gz")
-sha256sums=('e227dedfe0c3aa8f3bcb0c4149aa5feb1db4b0429a151423d74c0103c55d7d26')
+source=(
+   "https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_$pkgver/OpenRGB-release_$pkgver.tar.gz"
+   hidapifix.patch # https://gitlab.com/CalcProgrammer1/OpenRGB/-/issues/924
+)
+sha256sums=(
+   'e227dedfe0c3aa8f3bcb0c4149aa5feb1db4b0429a151423d74c0103c55d7d26'
+   'eeaed61a7bdbfa98cd9aaa6ea8a55df3eb092bc1f02ba047dd73cf75d1578b88'
+)
 
 prepare() {
    cd "OpenRGB-release_$pkgver"
