@@ -2,7 +2,7 @@
 # Contributor: FabioLolix <fabio [d00t] loli [AT] disroot [dot.] org>
 
 pkgname=dms
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="UPnP DLNA Digital Media Server"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -11,7 +11,7 @@ license=(BSD)
 depends=(glibc)
 makedepends=(go)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/anacrolix/dms/archive/v${pkgver}.tar.gz")
-sha256sums=('4f81b95f2a9dbbdb92f4bc77733718e29e349e8fbc3020a3b541a8a954b66ebc')
+sha256sums=('b3b1e5c725ce611920b4179f3f11945521c6a557485209190df319ecf9d5a004')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
