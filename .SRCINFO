@@ -1,14 +1,14 @@
 pkgbase = python-retype
 	pkgdesc = Re-apply types from .pyi stub files to your codebase.
-	pkgver = 19.9.0
+	pkgver = 20.10.0
 	pkgrel = 1
 	url = https://github.com/ambv/retype
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/r/retype/retype-19.9.0.tar.gz
-	sha256sums = 846fd135d3ee33c1bad387602a405d808cb99a9a7a47299bfd0e1d25dfb2fedd
+	source = https://files.pythonhosted.org/packages/source/r/retype/retype-20.10.0.tar.gz
+	sha256sums = 80dd348414993486bc131ba7dcbb2a272dffb1473b96d51a6cf0185eff9e7c83
 
 pkgname = python-retype
 	depends = python

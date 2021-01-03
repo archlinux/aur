@@ -1,7 +1,7 @@
 pkgbase='python-retype'
 pkgname='python-retype'
 _module='retype'
-pkgver='19.9.0'
+pkgver='20.10.0'
 pkgrel=1
 pkgdesc="Re-apply types from .pyi stub files to your codebase."
 url="https://github.com/ambv/retype"
