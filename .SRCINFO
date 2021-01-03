@@ -1,6 +1,6 @@
 pkgbase = starship
 	pkgdesc = The cross-shell prompt for astronauts
-	pkgver = 0.47.0
+	pkgver = 0.48.0
 	pkgrel = 1
 	url = https://starship.rs/
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = starship
 	optdepends = powerline-fonts: powerline symbols for terminals
 	optdepends = noto-fonts-emoji: emoji support for terminals
 	provides = starship
-	source = starship-0.47.0.tar.gz::https://github.com/starship/starship/archive/v0.47.0.tar.gz
-	sha256sums = 9c9ede1eb7a9e1acf49f0321915232426c234b356c6bb1f740d15d6fa45d1bee
+	source = starship-0.48.0.tar.gz::https://github.com/starship/starship/archive/v0.48.0.tar.gz
+	sha256sums = 23e729ace48ec0bf6d8eff5f99003351463841f3b28fe453faceb62e6f99bae6
 
 pkgname = starship
 
