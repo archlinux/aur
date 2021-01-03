@@ -2,6 +2,7 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl-hardened
+_pkgname=openssl
 _ver=1.1.1i
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
