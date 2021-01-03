@@ -2,7 +2,7 @@
 
 pkgname=('lua-luasodium' 'lua51-luasodium' 'lua52-luasodium' 'lua53-luasodium')
 _pkgbase='luasodium'
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 arch=('x86_64' 'i686')
 url='https://github.com/jprjr/luasodium'
@@ -11,7 +11,7 @@ depends=('libsodium')
 makedepends=('lua' 'lua51' 'lua52' 'lua53')
 source=("https://github.com/jprjr/luasodium/releases/download/v${pkgver}/luasodium-${pkgver}.tar.gz")
 
-md5sums=('c455372b2543e78160133522109a1ec4')
+md5sums=('49b6a0005f883400c1b0708d078b83d7')
 
 build() {
 
