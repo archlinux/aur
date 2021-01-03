@@ -1,0 +1,14 @@
+pkgbase = color-git
+	pkgdesc = Yet another C++ library that implements color
+	pkgver = 2016cd4b
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/dmilos/color
+	arch = x86_64
+	license = Apache
+	provides = color
+	source = color::git+https://github.com/dmilos/color.git
+	sha256sums = SKIP
+
+pkgname = color-git
+
