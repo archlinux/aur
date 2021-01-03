@@ -6,59 +6,27 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=p7zip
-pkgver=16.02
-pkgrel=6
+pkgver=17.03
+pkgrel=1
 pkgdesc="Command-line file archiver with high compression ratio"
 arch=('x86_64')
-url="http://p7zip.sourceforge.net/"
+url="https://github.com/jinfeihan57/p7zip"
 license=('LGPL' 'custom:unRAR')
 depends=('gcc-libs' 'sh')
-makedepends_i686=('nasm')
-makedepends_x86_64=('yasm')
-install=$pkgname.install
-source=(https://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/${pkgname}_${pkgver}_src_all.tar.bz2
-        gcc10-conversion.patch
-        CVE-2016-9296.patch
-        CVE-2017-17969.patch
-        CVE-2018-5996.patch
-        CVE-2018-10115.patch)
-sha256sums=('5eb20ac0e2944f6cb9c2d51dd6c4518941c185347d4089ea89087ffdd6e2341f'
-            'f90013d66d3c9865cb56fed2fb0432057a07283d5361e2ae9e98c3d3657f42a1'
-            'f9bcbf21d4aa8938861a6cba992df13dec19538286e9ed747ccec6d9a4e8f983'
-            'c6af5ba588b8932a5e99f3741fcf1011b7c94b533de903176c7d1d4c02a9ebef'
-            '9c92b9060fb0ecc3e754e6440d7773d04bc324d0f998ebcebc263264e5a520df'
-            'c397eb6ad60bfab8d388ea9b39c0c13ae818f86746210c6435e35b35c786607f')
+source=(https://github.com/jinfeihan57/p7zip/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
+sha256sums=('bb4b9b21584c0e076e0b4b2705af0dbe7ac19d378aa7f09a79da33a5b3293187')
 
 prepare() {
-  cd "$srcdir/${pkgname}_$pkgver"
-
-  # https://sourceforge.net/p/p7zip/bugs/226/ (patch from Fedora)
-  patch -Np1  -i ../gcc10-conversion.patch
-
-  # https://sourceforge.net/p/p7zip/bugs/185/
-  patch -Np1 -i ../CVE-2016-9296.patch
-
-  # https://sourceforge.net/p/p7zip/bugs/204/
-  patch -Np1 -i ../CVE-2017-17969.patch
-
-  # Security patches from Debian
-  patch -Np1 -i ../CVE-2018-5996.patch
-  patch -Np1 -i ../CVE-2018-10115.patch
-
-  if [[ $CARCH = x86_64 ]]; then
-    cp makefile.linux_amd64_asm makefile.machine
-  else
-    cp makefile.linux_x86_asm_gcc_4.X makefile.machine
-  fi
+  cd "$srcdir/$pkgname-$pkgver"
 }
 
 build() {
-  cd "$srcdir/${pkgname}_$pkgver"
-  make all3 OPTFLAGS="$CFLAGS"
+  cd "$srcdir/$pkgname-$pkgver"
+  make OPTFLAGS="$CPPFLAGS $CFLAGS" 7z 7zr 7za
 }
 
 package() {
-  cd "$srcdir/${pkgname}_$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   make install \
     DEST_DIR="$pkgdir" \
