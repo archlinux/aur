@@ -4,7 +4,7 @@
 pkgname=onivim2
 pkgver=0.5.0
 _commit=c6b7772e18696ac033a4ec3d0e19e6fa4e0249b5
-pkgrel=1
+pkgrel=2
 pkgdesc='Native, lightweight modal code editor'
 arch=('any')
 url='https://github.com/onivim/oni2'
