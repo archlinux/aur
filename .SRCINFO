@@ -1,7 +1,7 @@
 pkgbase = python-proglog
 	pkgdesc = Log and progress bar manager for console, notebooks, web...
 	pkgver = 0.1.9
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = unknown
 	makedepends = python-setuptools
