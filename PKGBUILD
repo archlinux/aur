@@ -1,7 +1,7 @@
 # Maintainer: Tom Wadley <tom@tomwadley.net>
 
 pkgname=buildnotify
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A system tray based build status notification app for cctray.xml feeds"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 conflicts=('buildnotify-hg')
 replaces=('buildnotify-hg')
 source=("https://github.com/anaynayak/buildnotify/archive/${pkgver}.zip")
-sha256sums=('5057a395d1a6252d66f079a81494fb9cc2917f6b716199f3f6c6085b5766129e')
+sha256sums=('682831bfe7c0f88103fe6033b7fcca7124744bd0156de7bb10bbcc15dcb2149f')
 
 _installmodule() {
   pushd "${srcdir}/buildnotify-${pkgver}"
