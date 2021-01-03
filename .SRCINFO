@@ -1,0 +1,15 @@
+pkgbase = openvpn-installer
+	pkgdesc = Set up your own OpenVPN server on Debian, Ubuntu, Fedora, CentOS or Arch Linux.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/angristan/openvpn-install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = curl
+	provides = openvpn
+	source = https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh
+	md5sums = SKIP
+
+pkgname = openvpn-installer
+
