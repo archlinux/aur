@@ -1,7 +1,7 @@
 # Maintainer: Elliot Hatch <elliot.hatch@gmail.com>
 pkgname=dug-git
 pkgver=r186.220fc87
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful global DNS progagation checker that can output in a variety of formats."
 arch=(x86_64)
 url="https://git.kaijucode.com/matt/dug"

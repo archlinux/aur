@@ -1,7 +1,7 @@
 pkgbase = dug-git
 	pkgdesc = A powerful global DNS progagation checker that can output in a variety of formats.
 	pkgver = r186.220fc87
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.kaijucode.com/matt/dug
 	arch = x86_64
 	license = custom:ANTI-CAPITALIST SOFTWARE LICENSE v1.4
