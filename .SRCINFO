@@ -1,6 +1,6 @@
 pkgbase = adsbexchange-stats-git
 	pkgdesc = ADSBexchange.com Statistics.
-	pkgver = r80.0e2b267
+	pkgver = r121.47473bd
 	pkgrel = 1
 	url = https://github.com/adsbxchange/adsbexchange-stats
 	arch = x86_64

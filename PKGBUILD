@@ -2,7 +2,7 @@
 
 pkgname=adsbexchange-stats-git
 _gitname=adsbexchange-stats
-pkgver=r80.0e2b267
+pkgver=r121.47473bd
 pkgrel=1
 pkgdesc="ADSBexchange.com Statistics."
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -24,5 +24,6 @@ pkgver() {
 
 package() {
   install -D -m 755 "${srcdir}/${_gitname}/json-status" "${pkgdir}/usr/bin/adsbexchange-stats"
+  install -D -m 755 "${srcdir}/${_gitname}/adsbexchange-showurl" "${pkgdir}/usr/bin/adsbexchange-showurl"
   install -D -m 644 adsbexchange-stats.service "${pkgdir}/usr/lib/systemd/system/adsbexchange-stats.service"
 }
