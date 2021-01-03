@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=linkinator
-pkgver=2.11.0
+pkgver=2.12.2
 pkgrel=1
 pkgdesc="Find broken links, missing images, etc in your HTML"
 arch=(any)
@@ -24,4 +24,4 @@ package() {
   chown -R root:root "${pkgdir}"
 }
 
-sha256sums=('615f55dd3425119adbddcd7cbdfa0dcc30153daaa2af4ce076be1ebc4646149e')
+sha256sums=('81ae00c0eccd2eea5e01c3866e19f24a0f23e4904810953a3c66f33fa1c70fdc')
