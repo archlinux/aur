@@ -1,10 +1,11 @@
 pkgbase = elixir-ls
 	pkgdesc = A frontend-independent Language Server Protocol for Elixir
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elixir-lsp/elixir-ls
 	arch = any
 	license = Apache
+	makedepends = git
 	depends = elixir
 	depends = erlang-nox
 	source = elixir-ls-0.6.2.tar.gz::https://github.com/elixir-lsp/elixir-ls/archive/v0.6.2.tar.gz
