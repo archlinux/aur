@@ -1,7 +1,7 @@
 # Maintainer: altaway <email@altaway.uk> 
 pkgname=vital-synth
-pkgver=1.0.3
-pkgrel=5
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="Powerful wavetable synthesizer with realtime modulation feedback. Vital is a MIDI enabled polyphonic music synthesizer with an easy to use parameter modulation system with real-time graphical feedback."
 # arch=('x86_64' 'i686')
 arch=('x86_64')
@@ -13,8 +13,8 @@ depends=('alsa-lib>=1.0.16' 'freetype2>=2.2.1' 'gcc-libs' 'gcc>=3.3.1' 'glib2>=2
 # options=('!strip' '!emptydirs')
 install=${pkgname}.install
 pkgname_deb="VitalInstaller"
-source_x86_64=("${pkgname_deb}-${pkgver}-${pkgrel}.deb::https://github.com/altaway/VitalInstaller/releases/download/v${pkgver}-${pkgrel}/${pkgname_deb}.deb")
-sha512sums_x86_64=('5d58a1872a2e3999f2fa40f2566496d884b5dd6bdae1e8ca183b0325b42b2980925b1080884b5cd5ee3eb6852c65bf4caf3f8d111a08b00db321012d77a238cf')
+source_x86_64=("${pkgname_deb}-${pkgver}-${pkgrel}.deb::https://github.com/altaway/${pkgname_deb}/releases/download/v${pkgver}-${pkgrel}/${pkgname_deb}.deb")
+sha512sums_x86_64=('7d6b2049fe48c72323392cf4a610d0309680d3a985e6f1d96a36fe54db577184acf8183ecec7388a0281d89862e6e4f2962ce100f65821129d157d632fc02611')
 
 package(){
 
