@@ -18,7 +18,7 @@ EOM
 # arg 1:  the new package version
 # arg 2:  the old package version
 post_upgrade() {
-  if [ "$(vercmp "$2" 21.01-1)" -lt 1 ]; then
+  if [ "$(vercmp "$2" 20.08.2.gfb9e3be-1)" -lt 1 ]; then
     cat <<EOM
 >>> IMPORTANT CHANGES
 
