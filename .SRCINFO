@@ -1,0 +1,18 @@
+pkgbase = netlistviewer-svn
+	pkgdesc = a tool capable of loading netlists in text format (currently only SPICE netlists) and convert them in a schematic (i..e graphical) form
+	pkgver = r41
+	pkgrel = 1
+	url = https://sourceforge.net/projects/netlistviewer/
+	arch = x86_64
+	license = custom:unknown
+	makedepends = subversion
+	makedepends = boost
+	depends = boost-libs
+	depends = wxgtk2
+	provides = netlistviewer
+	conflicts = netlistviewer
+	source = netlistviewer::svn+https://svn.code.sf.net/p/netlistviewer/code/trunk
+	md5sums = SKIP
+
+pkgname = netlistviewer-svn
+
