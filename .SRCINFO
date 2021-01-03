@@ -1,15 +1,15 @@
 pkgbase = nodejs-express-generator
-	pkgdesc = Express' application generator.
-	pkgver = 4.16.0
+	pkgdesc = Express' application generator
+	pkgver = 4.16.1
 	pkgrel = 1
 	url = http://expressjs.com
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = express-generator-4.16.0.tgz
-	source = https://registry.npmjs.org/express-generator/-/express-generator-4.16.0.tgz
-	sha256sums = 51cc89db33fae44743d8efe674e6bc0b48b920ae8a58737d03181eedba37f565
+	noextract = express-generator-4.16.1.tgz
+	source = https://registry.npmjs.org/express-generator/-/express-generator-4.16.1.tgz
+	sha256sums = 130030d5df75bb8421c3e1e399f089f9436c9abe12b65ffe351f6def4948eeeb
 
 pkgname = nodejs-express-generator
 
