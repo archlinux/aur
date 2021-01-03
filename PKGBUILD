@@ -2,12 +2,13 @@
 # Contributor: Paul Davis <paul@dangersalad.com>
 pkgname=openrgb
 pkgver=0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer software."
 arch=("x86_64")
 url="https://gitlab.com/CalcProgrammer1/OpenRGB"
 license=('GPL2')
 depends=('qt5-base' 'libusb' 'hidapi')
+makedepends=('pkgconf')
 optdepends=('i2c-tools: Motherboard & RAM access')
 conflicts=('openrgb-git')
 provides=("openrgb")
