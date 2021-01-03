@@ -1,6 +1,6 @@
 pkgbase = arduino-git
 	pkgdesc = Arduino prototyping platform SDK
-	pkgver = 1.6.11.r69.ge3177a5
+	pkgver = 1.8.13.r24.gf4e8a91f1
 	pkgrel = 1
 	url = https://github.com/arduino/Arduino
 	install = arduino.install
@@ -11,21 +11,21 @@ pkgbase = arduino-git
 	license = GPL
 	license = LGPL
 	makedepends = java-environment=8
-	makedepends = apache-ant
+	makedepends = ant
 	makedepends = unzip
 	depends = gtk2
 	depends = desktop-file-utils
 	depends = shared-mime-info
-	depends = java-runtime=8
-	depends = avrdude
+	depends = java-runtime>=8
+	optdepends = arduino-avr-core: AVR core with upstream avr-gcc and avrdude
+	optdepends = python2: Intel Galileo Board installation
 	provides = arduino
+	provides = arduino-builder
 	conflicts = arduino
+	conflicts = arduino-builder
 	options = !strip
-	options = staticlibs
 	source = arduino-git::git+https://github.com/arduino/Arduino/#branch=master
-	source = arduino.sh
 	sha512sums = SKIP
-	sha512sums = 6dae08b8687e897ed370cc51cfeeba9020bb749356acfd367c796bf34fb43b763888340501be6a577859c19c37fe857be2b8fb52f1295769403b8e826c4e3f28
 
 pkgname = arduino-git
 
