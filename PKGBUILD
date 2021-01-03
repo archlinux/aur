@@ -2,7 +2,7 @@
 # Contributor: Kyle Laker <kyle@laker.email>
 
 pkgname=warpinator
-pkgver=1.1.0
+pkgver=1.1.1
 _pkgver=ulyssa
 pkgrel=1
 pkgdesc="Allows simple local network file sharing"
@@ -34,7 +34,7 @@ conflicts=(
     warpinator-git
 )
 source=("${pkgname}_${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}+${_pkgver}.tar.xz")
-sha256sums=('85f4365ac8beb42dca9e3264ca124ffddfbfee7b1d5dbee324fa1f57307a4cef')
+sha256sums=('1598955eadf8ee8b1bf2c30ab1370e5a2713535c72805bdf1f6ebc4c6c4ecfd8')
 
 prepare() {
 	cd "$srcdir/warpinator"
