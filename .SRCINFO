@@ -1,10 +1,11 @@
 pkgbase = rmview-git
 	pkgdesc = a fast live viewer for reMarkable 1 and 2
 	pkgver = r101.e0a3e69
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bordaigorl/rmview
 	arch = any
-	license = GPLv3
+	license = GPL3
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pyqt5
