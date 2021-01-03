@@ -17,7 +17,9 @@ pkgbase = sws
 	provides = sws
 	conflicts = sws
 	source = git://github.com/reaper-oss/sws.git#commit=145a0070185b7a3d19ea455eb64f1f71026d5cde
+	source = reaper_plugin_functions.h
 	sha256sums = SKIP
+	sha256sums = 7fbe3a97f83281fbae98b70f99db880188dbaaeb0336acfebf51db548384e2ab
 
 pkgname = sws
 

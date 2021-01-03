@@ -11,8 +11,10 @@ makedepends=('git' 'gcc' 'make' 'cmake' 'php' 'perl')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 _commit=145a0070185b7a3d19ea455eb64f1f71026d5cde  # version 2.12.1.2
-source=("git://github.com/reaper-oss/sws.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("git://github.com/reaper-oss/sws.git#commit=$_commit"
+		"reaper_plugin_functions.h")
+sha256sums=('SKIP'
+            '7fbe3a97f83281fbae98b70f99db880188dbaaeb0336acfebf51db548384e2ab')
 install="$pkgname.install"
 
 pkgver() {
@@ -20,7 +22,7 @@ pkgver() {
 }
 
 prepare() {
-	cp "$startdir/reaper_plugin_functions.h" "$srcdir/$pkgname/vendor"
+	cp "reaper_plugin_functions.h" "$srcdir/$pkgname/vendor"
 	cd "$srcdir/$pkgname"
 	git submodule update --init vendor/WDL
 }
