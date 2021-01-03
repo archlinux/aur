@@ -4,16 +4,19 @@
 
 pkgname=bup-git
 epoch=1
-pkgver=0.31.r0.g63046f3
+pkgver=0.31.r56.g6d58d37
 pkgrel=1
 pkgdesc='Efficient file backup system based on the git packfile format'
 arch=('i686' 'x86_64')
 url='https://bup.github.io/'
 license=('GPL')
 depends=('python-fuse' 'par2cmdline' 'python-pyxattr' 'acl' 'readline' 'attr' 'git')
-optdepends=('python-tornado: launch a web server to examine backup sets')
+optdepends=('python-tornado: launch a web server to examine backup sets'
+	'readline: FTP access'
+	'par2cmdline: error correction'
+	'python-pytest-xdist: parallel tests')
 makedepends=('pandoc')
-checkdepends=('rsync')
+checkdepends=('rsync' 'python-pytest')
 provides=("bup=${pkgver}")
 conflicts=("bup")
 source=("${pkgname}"::"git+https://github.com/bup/bup.git")
