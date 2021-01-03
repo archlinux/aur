@@ -52,6 +52,5 @@ package() {
 	make DESTDIR=${pkgdir} install
 	install -d -m0755 ${pkgdir}/usr/share/licenses/xz/
 	ln -s /usr/share/doc/xz/COPYING ${pkgdir}/usr/share/licenses/xz/
-	ln -s /usr/share/licenses/common/GPL2/license.txt ${pkgdir}/usr/share/doc/xz/COPYING.GPLv2
 }
 
