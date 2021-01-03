@@ -1,7 +1,7 @@
 pkgbase = vpncloud2
 	pkgdesc = Peer-to-peer VPN
 	pkgver = 2.0.1
-	pkgrel = 4
+	pkgrel = 5
 	arch = x86_64
 	license = GPL
 	makedepends = rust
