@@ -1,6 +1,6 @@
---- configure	2020-12-02 12:41:14.529198213 +0300
-+++ configure	2020-12-02 12:45:30.914220944 +0300
-@@ -496,19 +496,19 @@
+--- configure	2021-01-03 17:31:19.000000000 +0300
++++ configure	2021-01-03 17:38:02.570553452 +0300
+@@ -497,19 +497,19 @@
  
  $arch_cc          = "cc";
  $arch_ccpp        = "CC";
@@ -28,7 +28,7 @@
  $arch_gcc         = "gcc";
  $arch_gccpp       = "g++";
  $arch_lex         = "lex";
-@@ -780,8 +780,8 @@
+@@ -782,8 +782,8 @@
  if ($config_tk) { $tcl_include .= " -I$stock_tk_include_dir"; }
  $tcl_library      = "-L$stock_tcl_library_dir";
  if ($config_tk) { $tcl_library .= " -L$stock_tk_library_dir"; }
@@ -39,7 +39,7 @@
  
  @tcl_cc           = ();
  @tcl_cu           = ();
-@@ -909,13 +909,7 @@
+@@ -911,13 +911,7 @@
  $system_dir           = "";
  $system_include       = "-I.";
  $system_library       = "";
@@ -54,7 +54,7 @@
  @system_cc             = ();
  @system_cu             = ();
  @system_ccpp           = ();
-@@ -971,7 +965,7 @@
+@@ -992,10 +986,10 @@
  #   This option enables the use of CUDA GPU acceleration functions.
  #######################
  $cuda_defines     = "-DVMDCUDA -DMSMPOT_CUDA";
@@ -62,8 +62,12 @@
 +$cuda_dir         = "/opt/cuda";
  $cuda_include     = "";
  $cuda_library     = "";
- $cuda_libs        = "-Wl,-rpath -Wl,\$\$ORIGIN/ -lcudart_static -lrt";
-@@ -1180,7 +1174,7 @@
+-$cuda_libs        = "-Wl,-rpath -Wl,\$\$ORIGIN/ -lcudart_static -lrt";
++$cuda_libs        = "-Wl,-rpath -Wl,\$\$ORIGIN/ -lcudart -lrt";
+ @cuda_cc          = ();
+ @cuda_cu	  = ('msmpot_cuda.cu',
+                      'msmpot_cuda_latcut.cu',
+@@ -1201,7 +1195,7 @@
  # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-5.0.1-linux64";
  # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-5.1.0-linux64";
  # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-6.0.0-linux64";
@@ -72,7 +76,7 @@
  # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-7.0.0-linux64";
  
  # NCSA Blue Waters
-@@ -1246,7 +1240,7 @@
+@@ -1267,7 +1261,7 @@
    $libospray_dir         = "/usr/local/ospray-1.8.5.x86_64.linux";
    $libospray_include     = "-I$libospray_dir/include -I$libospray_dir/ospray/include ";
    $libospray_library     = "-L$libospray_dir/lib ";
@@ -81,7 +85,7 @@
  }
  
  
-@@ -1629,16 +1623,16 @@
+@@ -1650,16 +1644,16 @@
    $stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "$conda_root/lib/python-3.7/site-packages/numpy/core/include";
    $python_libs        = "-fno-lto -lpython3.7m -lpthread";
  } else {
@@ -108,7 +112,7 @@
  }
  
  $python_defines     = "-DVMDPYTHON";
-@@ -2538,9 +2532,9 @@
+@@ -2559,9 +2553,9 @@
        # for compiling with g++:
        $arch_cc		= "gcc";
        $arch_ccpp  	= "g++";
@@ -120,7 +124,7 @@
  
        # so far only STATIC version tested
        if ($config_static) {
-@@ -2552,7 +2546,7 @@
+@@ -2573,7 +2567,7 @@
  
      if ($config_cuda) {
        $arch_nvccflags   .= " --machine 64 -O3 $cuda_include";
@@ -129,7 +133,7 @@
      }
  
      $arch_lex		= "flex"; # has problems with vendor lex
-@@ -2590,7 +2584,7 @@
+@@ -2611,7 +2605,7 @@
  
    $arch_nvcc     = "/usr/local/cuda/bin/nvcc";
    $arch_nvccflags   = "--ptxas-options=-v " .
@@ -138,7 +142,7 @@
                      "-gencode arch=compute_70,code=compute_70 " .
                      "--ftz=true ";
    $cuda_library     = "-L/usr/local/cuda/lib64";
-@@ -2614,11 +2608,7 @@
+@@ -2635,11 +2629,7 @@
  
    $arch_nvcc     = "/usr/local/cuda-5.5/bin/nvcc";
    $arch_nvccflags   = "--ptxas-options=-v " . 
@@ -150,7 +154,7 @@
                      "--ftz=true ";
    $cuda_library     = "-L/usr/local/cuda/lib";
    $arch_cc       = "cc";
-@@ -2952,7 +2942,7 @@
+@@ -3080,7 +3070,7 @@
    
        # Only generate code for SM 7.0 on Summit
        $arch_nvccflags   = "--ptxas-options=-v " .
@@ -159,7 +163,7 @@
                        "-gencode arch=compute_70,code=sm_70 " .
                        "--ftz=true ";
        $arch_nvccflags   .= " --machine 64 -O3 $cuda_include";
-@@ -3623,7 +3613,7 @@
+@@ -3763,7 +3753,7 @@
  
  .cu.ptx:
  	\$(ECHO) "Compiling " \$< " --> " \$*.ptx " ..."; \\
