@@ -1,7 +1,7 @@
 # Maintainer: Thomas Gläßle <t_glaessle@gmx.de>
 
 pkgname=tty-share
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Shares terminal session with no setup on remote end (browser)"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/elisescu/tty-share"
 license=('MIT')
 depends=()
 source=("${url}/archive/v${pkgver}.zip")
-md5sums=('da4adbb20543f381d012f6b6b7c03046')
+md5sums=('0e465c9d574eeaf419af0c4f515e96c4')
 makedepends=('go')
 
 build() {

@@ -1,13 +1,13 @@
 pkgbase = tty-share
 	pkgdesc = Shares terminal session with no setup on remote end (browser)
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/elisescu/tty-share
 	arch = any
 	license = MIT
 	makedepends = go
-	source = https://github.com/elisescu/tty-share/archive/v2.1.0.zip
-	md5sums = da4adbb20543f381d012f6b6b7c03046
+	source = https://github.com/elisescu/tty-share/archive/v2.2.0.zip
+	md5sums = 0e465c9d574eeaf419af0c4f515e96c4
 
 pkgname = tty-share
 
