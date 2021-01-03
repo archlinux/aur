@@ -4,7 +4,7 @@
 # Contributor: frsfnrrg
 
 pkgname=trackballs
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Simple game similar to the classical game Marble Madness on the Amiga in the 80's"
 arch=('i686' 'x86_64')
@@ -26,4 +26,4 @@ package() {
   cd ${srcdir}/$pkgname-$pkgver/build
   make DESTDIR=${pkgdir} install
 }
-md5sums=('838ad07e30f2a819eacf268925ace093')
+md5sums=('85b128afca8b55d8e7ae02c21fa0427e')
