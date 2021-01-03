@@ -1,0 +1,11 @@
+pkgbase = gamearchivejs
+	pkgdesc = Read and write archive files used by DOS games
+	pkgver = latest
+	pkgrel = 1
+	url = http://github.com/Malvineous/gamearchivejs
+	arch = any
+	makedepends = npm
+	depends = nodejs
+
+pkgname = gamearchivejs
+
