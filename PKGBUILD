@@ -2,7 +2,7 @@
 
 pipname=mpris-fakeplayer
 pkgname=$pipname
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Fake mpris player for activating bluez avrcp volume control'
 arch=(any)
@@ -24,6 +24,7 @@ package() {
 		--no-user \
 		--no-deps \
 		--ignore-installed \
+		--no-warn-script-location \
 		--quiet
 
 	python -O -m compileall "$pkgdir"

@@ -1,6 +1,6 @@
 pkgbase = mpris-fakeplayer
 	pkgdesc = Fake mpris player for activating bluez avrcp volume control
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://gitlab.com/hxss-linux/mpris-fakeplayer
 	install = INSTALL
