@@ -1,7 +1,7 @@
 pkgbase = tuir
-	pkgdesc = Terminal UI for Reddit, forked from discontinued rtv
+	pkgdesc = Browse Reddit from your terminal
 	pkgver = 1.29.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/ajak/tuir/
 	arch = any
 	license = MIT
