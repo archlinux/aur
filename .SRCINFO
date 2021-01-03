@@ -1,6 +1,6 @@
 pkgbase = linux-gc
 	pkgdesc = Linux
-	pkgver = 5.10.2
+	pkgver = 5.10.4
 	pkgrel = 1
 	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
@@ -16,27 +16,33 @@ pkgbase = linux-gc
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.2.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.2.tar.sign
-	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/8f8cb52701cf1f2adbe06c1f19158c63c1a636ca/trunk/config
-	source = prjc_v5.10-r1.patch::https://gitlab.com/alfredchen/projectc/raw/master/5.10/prjc_v5.10-r1.patch
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.4.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.4.tar.sign
+	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/4c5d5289951e22aeb0abcae7b629bcc1c24e8697/trunk/config
+	source = prjc_v5.10-r2.patch::https://gitlab.com/alfredchen/projectc/raw/master/5.10/prjc_v5.10-r2.patch
 	source = enable_additional_cpu_optimizations-20201113.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20201113.tar.gz
-	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=f53cde2c6d1e75463ef3e1d2be0bf7cfd2a47989
-	source = 0002-Bluetooth_Fix_LL_PRivacy_BLE_device_fails_to_connect.patch::https://git.archlinux.org/linux.git/patch/?id=bd52d3f686d794cfd9ef95413d8388814f48371b
-	source = 0003-Bluetooth_Fix_attempting_to_set_RPA_timeout_when_uns.patch::https://git.archlinux.org/linux.git/patch/?id=f5a544c936dfb05beaf06d7e231771bad7fdfaab
-	source = 0004-HID_quirks_Add_Apple_Magic_Trackpad_2_to_hid_have_sp.patch::https://git.archlinux.org/linux.git/patch/?id=843f3c089337e9e4bb55392e91b424536e6a723c
+	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=3a8bc83f97cb4ef7ad72a742382f373357d4d95b
+	source = 0002-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch::https://git.archlinux.org/linux.git/patch/?id=0438f3011663ce01a981bb8b3af0e84e73551ecf
+	source = 0003-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch::https://git.archlinux.org/linux.git/patch/?id=e5e77ad2223f662e1615266d8ef39a8db7e65a70
+	source = 0004-drm-amd-display-Add-get_dig_frontend-implementation-.patch::https://git.archlinux.org/linux.git/patch/?id=88fbde26128dedf0097aa45b8c923973a4e5f843
+	source = 0005-btrfs-Fix-500-2000-performance-regression-w-5.10.patch::https://git.archlinux.org/linux.git/patch/?id=0128c7314a4d856461caacfdd528a7bffa03d41e
+	source = 0006-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch::https://git.archlinux.org/linux.git/patch/?id=61e5f6548784e507eb0662a71976a673436e6e3a
+	source = 0007-ALSA-hda-hdmi-fix-locking-in-silent_stream_disable.patch::https://git.archlinux.org/linux.git/patch/?id=00f09a6a8193b46c83ae1c8ff6623db011f90099
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
-	b2sums = 708b51b58f63d8954073d7ab559286fc854c700108505e659474e55b2d0968cea002b8356d5441e6b24d37a4194684a6244293c760da6d442a6c76e268619a18
+	b2sums = 57f6d719451aacfd298452703ae02e6188885500e8cdf18fffa6b9967b0934a23cd378ab4c49b76ccb2f7a9012d6aa7ff1349d488cb31e40924be2f27b244cec
 	b2sums = SKIP
-	b2sums = 7afcc3e9987f20587ab3e9ba4ee67f1b0e61935b08ba7bfe9a2e40f6a7125805d980e1fafb93e92bc5117005933de3187a71650c5a4a82620c97c6d0aad8a46c
-	b2sums = e952bfc4b7f9f651b366516e9504761ef4aa0164f28a0c85ae0f4e750f9ff118a5a3ff566924d4aff66949b2ebdbe3a1466f36ecd9de5ca924f79aaad36f57e8
+	b2sums = cb3a58e4eef8395b75887d94a84bba25f05fbec8f576a791623057a190a1d51b412a19ecf1b600ac3f9f6c46968eb0e130d571743e61afc231a97146ee4b52d0
+	b2sums = 964457a55fe70988fcba968d2940d78d3daff5d1629863279ee15e07f8c1bb4e58e4d22b2cae9e66ab0c61c4d54de04e7a6eb2710eaaa536ec11f29efa961f1c
 	b2sums = 7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127
-	b2sums = f2689ca89c93d6f972c2c8af00cda2e565eebb9b91082e72e621e55e45f36fce1d0b5e335f444aaad2663d4356d89a591ab42164aadcef77e1f2839268961bf3
-	b2sums = 71b5a7db60f29e876f3eed5f76454afb1fc3a180221cdefe5a88ebf50722c256d65bf0ea388561ad2611ca3490d5d9a69487c1734448b31c8c661868da87f1f2
-	b2sums = 6d9c2a334ee44918009a112cdceb51736f17ffd11a38708b91357ec822e48e909ac9fed61e9cdf4e162e966fb9a996f617e6fb7b6b34c088105b631852eac091
-	b2sums = d5591c5f0d8e432b0083ff4745fa1768dbb3b2b38404464fd4b7400c481e21a5e038fa64fdf572f69e4438892a2f7117e8f85b3904518f7fbbca51cc63d63dfc
+	b2sums = 349d852edb6695efc940607cd3fe65bf2cd293109825f6fd31fdc6f3d398e9fd90d36bd0f9c5716a3b006495c7f64b090adb535180f7912d070735ce587877ac
+	b2sums = 425ab3ba80caee9f99f408d819d71a4ae55587183ca1137088b6f2177f9a81f172dd5b5437fc54cf2cc16f3e4be54caf5e9992c6ca20c6c57d3da98c144953a1
+	b2sums = cd6c3054e949a6e1896c8686d2ee81111d60795a239404f54de6154fe83c9f027ed78ac31ce68fc609873f06db6392daf01edac00fe9aaa40549a42e40ac7f07
+	b2sums = 0a4eb7eafdbd504a4438c6a4bb25e5a296d83f2a57ba3629defac51a4bda17546ef45bac7b513c6fc084b955e68b08d4cd0b17d5952ccff056a2999dcafd56d8
+	b2sums = 241b3f112eb8f250b2a74b9c6255519ced8cc2c2f356cae9272351db16c003608efba1f72115d25e007b443b9151e1fced6848f4966b2648b1d21318304478e4
+	b2sums = e53c858f4133c04268c0cba8f3ef7201ba5ceda82670544b8da3e12fdfaa62b471bacf171cc0689944d24453155933def0d136fa242e3f6b8763b2c103229867
+	b2sums = 7d81beaaa2dc5e00838c27d1bd049ae389128a17d540c72d4b8dba6a6dfb870b6bf4a5148fbdd4bf4337791e9f3c83ff4a84a95295aec7b8e9aec8c3cb2ad866
 
 pkgname = linux-gc
 	pkgdesc = The Linux-gc kernel and modules with the Project C scheduler
