@@ -5,7 +5,7 @@ pkgbase = tty-share
 	url = https://github.com/elisescu/tty-share
 	arch = any
 	license = MIT
-	makedepends = go-pie
+	makedepends = go
 	source = https://github.com/elisescu/tty-share/archive/v2.1.0.zip
 	md5sums = da4adbb20543f381d012f6b6b7c03046
 

@@ -10,12 +10,24 @@ license=('MIT')
 depends=()
 source=("${url}/archive/v${pkgver}.zip")
 md5sums=('da4adbb20543f381d012f6b6b7c03046')
-makedepends=('go-pie')
+makedepends=('go')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  go build -mod=vendor -trimpath -ldflags "-X main.version=${pkgver} --extldflags ${LDFLAGS}" -o tty-share .
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+
+  go build \
+      -mod=vendor \
+      -buildmode=pie \
+      -trimpath \
+      -ldflags "-linkmode=external -X main.version=${pkgver}" \
+      -mod=readonly \
+      -modcacherw \
+      -o tty-share .
 }
 
 package() {
