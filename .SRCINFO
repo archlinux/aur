@@ -5,6 +5,7 @@ pkgbase = freezer-appimage
 	url = https://files.freezer.life
 	arch = x86_64
 	license = GPL
+	depends = zlib
 	noextract = Freezer-1.1.11.AppImage
 	options = !strip
 	source = Freezer-1.1.11.AppImage::https://files.freezer.life/0:/PC/1.1.11/Freezer-1.1.11.AppImage
