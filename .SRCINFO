@@ -1,15 +1,15 @@
 pkgbase = expo-cli
 	pkgdesc = Tools for creating, running, and deploying Universal Expo and React Native apps
-	pkgver = 3.28.0
+	pkgver = 4.0.17
 	pkgrel = 1
 	url = https://expo.io
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = expo-cli-3.28.0.tar.gz
-	source = expo-cli-3.28.0.tar.gz::https://registry.npmjs.org/expo-cli/-/expo-cli-3.28.0.tgz
-	sha512sums = d5fcf8e1b1a83378df8add603d85b526e4a15f60d0bdae921d94f5467c74e9439e5897a87c73b4922ff827722723cb686fe5e792d5e8ddc616d07117a49c151a
+	noextract = expo-cli-4.0.17.tar.gz
+	source = expo-cli-4.0.17.tar.gz::https://registry.npmjs.org/expo-cli/-/expo-cli-4.0.17.tgz
+	sha512sums = 245f0706ce5d51dd78ce1f5c23ebbf3842b2449a89676c0e3ef1e5b17d8e860c70f345a4fc11ad4ed67395663cfcf43e2e6e7a456c7b44c14f61eb2db019a906
 
 pkgname = expo-cli
 
