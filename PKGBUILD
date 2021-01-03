@@ -1,7 +1,7 @@
 # Maintainer: Denis Borisevich <elfmax@tut.by>
 
 pkgname=jeveassets
-pkgver=6.6.2
+pkgver=6.6.3
 pkgrel=1
 pkgdesc="Out-of-game asset manager for Eve-Online, written in Java"
 arch=('any')
@@ -19,8 +19,8 @@ source=(
         "${pkgname}_32x32.png"
         "${pkgname}_64x64.png"
         "$pkgname.sh")
-md5sums=('962d6faed181c4a2a26facc955c486d0'
-         '38bd4adaf57fccaa6753d3e46fac2343'
+md5sums=('63400d8be6ffc1076aa7cbecfcc17004'
+         '882e469ecead4df09172e7f17e70f86a'
          '9313d681f64dc80ea2cc3b775310371f'
          '9d8d6da83c5e2ca7b2b47997f321ff1e'
          '35e020735f2fbe6f86acd749fc61dc43'
