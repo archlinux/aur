@@ -1,12 +1,12 @@
 # Maintainer: Craig Barnes <craigbarnes@protonmail.com>
 pkgname=dte-git
-pkgver=1.9.1+597+ge3aebd22
+pkgver=1.9.1+816+gdc59d61e
 pkgrel=1
 pkgdesc='A small, configurable console text editor'
 url='https://craigbarnes.gitlab.io/dte/'
 arch=(x86_64 i686 armv7h aarch64)
 license=(GPL2)
-depends=(glibc ncurses)
+depends=(glibc)
 makedepends=(git bash-completion)
 conflicts=(dte)
 provides=(dte)

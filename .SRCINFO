@@ -1,6 +1,6 @@
 pkgbase = dte-git
 	pkgdesc = A small, configurable console text editor
-	pkgver = 1.9.1+597+ge3aebd22
+	pkgver = 1.9.1+816+gdc59d61e
 	pkgrel = 1
 	url = https://craigbarnes.gitlab.io/dte/
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = dte-git
 	makedepends = git
 	makedepends = bash-completion
 	depends = glibc
-	depends = ncurses
 	provides = dte
 	conflicts = dte
 	source = git+https://gitlab.com/craigbarnes/dte.git
