@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=MimeType
 MimeType=application/x-cpt
-Icon=qccrypt
+Icon=qccrypt.png
 DefaultApp=qccrypt
 Patterns=*.cpt;
 Comment=Encrypted file with Qccrypt/Ccrypt

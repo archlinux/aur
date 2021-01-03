@@ -2,7 +2,7 @@
 
 pkgname=qccrypt
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-plateform frontend for ccrypt software'
 arch=('i686' 'x86_64')
 url="http://qccrypt.free.fr/"
@@ -28,7 +28,7 @@ package() {
 }
 
 md5sums=('f6c50e4c6a3de42700281afcbcfbbac7'
-         'd0726acaaa8bb04c78c8fff22a4f5fed'
+         '6cee2c9d496a0a2b1041da68f5d20e72'
          'bf60d5c11809910d2a9c98aaa8217911'
          '14af5e3ee3813b1812145cf20defdb70'
-         '2217be2566623c28288e3bbb6f9e9922')
+         '6390b8d0119570f4d7d2deb7c05b61e8')
