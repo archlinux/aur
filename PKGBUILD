@@ -44,9 +44,9 @@ prepare() {
 build() {
   cd vim-${pkgver}
     ./configure \
-      --prefix=/usr \
+      --prefix=/usr/share/vim \
       --localstatedir=/var/lib/vim \
-      --with-features=tiny \
+      --with-features=small \
       --with-compiledby='Arch Linux' \
       --disable-gpm \
       --enable-acl \
@@ -70,7 +70,7 @@ build() {
       --disable-athena-check \
       --disable-gtktest \
       --disable-sysmouse \
-    make VIMRUNTIMEDIR=/usr/share/vim/vim82
+    make
 }
 
 #   add these options to enable different language features if desired
