@@ -5,7 +5,7 @@
 pkgname=dogecoin-qt
 _binname=dogecoin
 pkgver=1.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cryptocurrency"
 arch=('x86_64' 'i686')
 url="http://dogecoin.com/"
