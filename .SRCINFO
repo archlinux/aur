@@ -1,7 +1,7 @@
 pkgbase = python-birdseye
 	pkgdesc = Graphical Python debugger which lets you view the values of all evaluated expressions
 	pkgver = 0.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/alexmojaki/birdseye
 	arch = any
 	license = MIT
@@ -17,6 +17,7 @@ pkgbase = python-birdseye
 	depends = python-future
 	depends = python-asttokens
 	source = https://files.pythonhosted.org/packages/source/b/birdseye/birdseye-0.8.4.tar.gz
+	source = LICENSE
 	sha256sums = 34fbf3a042f257e981cb0d4849d279457269d212851404b19bf9635af71e0701
 
 pkgname = python-birdseye
