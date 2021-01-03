@@ -1,6 +1,6 @@
 pkgname=vpncloud2
 pkgver=2.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Peer-to-peer VPN'
 arch=('x86_64')
 url=""
@@ -18,7 +18,7 @@ validpgpkeys=('6B5BBBCA2E3392315CC47434694A43B9C7FE6EA9')
 
 prepare() {
         cd vpncloud.rs
-        patch -p1 < ${srcdir}/ff.patch
+        patch -p1 < ${srcdir}/add_mtu_config.patch
 }
 
 build() {
