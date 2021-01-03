@@ -1,17 +1,17 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
-# Contributors: jose riha, Christoph Zeiler, nut543 and Dany Martineau
+# Maintainer: NicolasB
+# Contributors: carstene1ns, jose riha, Christoph Zeiler, nut543 and Dany Martineau
 
 pkgname=cdogs
-pkgver=0.6.9
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='Enhanced SDL port of DOS arcade game C-Dogs (aka "Cyberdogs 2")'
 arch=('i686' 'x86_64')
 url="http://cxong.github.io/cdogs-sdl/"
 license=('GPL2')
-depends=('sdl2_mixer' 'sdl2_image')
-makedepends=('cmake')
+depends=('gtk3' 'sdl2_mixer' 'sdl2_image')
+makedepends=('cmake' 'python-pip' 'python-protobuf')
 source=(cdogs-$pkgver.tar.gz::"https://github.com/cxong/cdogs-sdl/archive/${pkgver}.tar.gz")
-sha256sums=('6f81f528cb6fcc6f72ad67627dc22baeac05d7acec512fee5830224cd06cf9ba')
+sha256sums=('98144d0a66a1fe8f0529d0b973dd70d72915dbe3602f5cb58e7fb555e8be81a2')
 
 prepare() {
   cd $pkgname-sdl-$pkgver
