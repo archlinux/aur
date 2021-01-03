@@ -17,7 +17,7 @@ replaces=('openssl-perl' 'openssl-doc')
 backup=('etc/ssl/openssl.cnf')
 provides=(openssl)
 conflicts=(openssl)
-source=("https://www.openssl.org/source/openssl-${_ver}.tar.gz"
+source=("https://artfiles.org/openssl.org/source/openssl-1.1.1i.tar.gz"
 	'ca-dir.patch')
 sha256sums=('SKIP'
 	    'SKIP')
