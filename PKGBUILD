@@ -34,7 +34,7 @@ optdepends=(
   'swaylock: Screen locker'
   'wallutils: Timed wallpapers'
   'waybar: Highly customizable bar'
-  'xorg-server-xwayland: X11 support'
+  'xorg-xwayland: X11 support'
 )
 source=("https://github.com/swaywm/sway/releases/download/$pkgver/sway-$pkgver.tar.gz"
         "https://github.com/swaywm/sway/releases/download/$pkgver/sway-$pkgver.tar.gz.sig"
