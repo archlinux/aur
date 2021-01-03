@@ -1,0 +1,13 @@
+pkgbase = mkinitcpio-live-boot
+	pkgdesc = Live boot hooks for mkinitcpio.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/tearch-linux/tearch-live-hooks
+	arch = x86_64
+	license = GPL
+	depends = mkinitcpio
+	source = git+https://gitlab.com/tearch-linux/tearch-live-hooks.git
+	md5sums = SKIP
+
+pkgname = mkinitcpio-live-boot
+
