@@ -14,8 +14,8 @@ backup=('usr/lib/systemd/system/session-manager-plugin.service' 'usr/sessionmana
 options=('!strip' '!emptydirs')
 source_i686=(https://s3.amazonaws.com/session-manager-downloads/plugin/${pkgver}/ubuntu_32bit/session-manager-plugin.deb)
 source_x86_64=(https://s3.amazonaws.com/session-manager-downloads/plugin/${pkgver}/ubuntu_64bit/session-manager-plugin.deb)
-sha512sums_i686=('b581e68546f102df1b196feeb852f5029495c8c5671efa4493b0ede4b7acb5daa6ded4fd632dfe5d17c2439e20c016597ce5ec0d08eb4209ce81f17767b94238')
-sha512sums_x86_64=('b581e68546f102df1b196feeb852f5029495c8c5671efa4493b0ede4b7acb5daa6ded4fd632dfe5d17c2439e20c016597ce5ec0d08eb4209ce81f17767b94238')
+sha512sums_i686=('a8ae6d87c9480ddf823e3d69ac63bb5b903faff059560251508963989a5d74d0110c786757c314dd5a0c2f79064b10372ea5c81d9df30abe8f818f22e8208119')
+sha512sums_x86_64=('a8ae6d87c9480ddf823e3d69ac63bb5b903faff059560251508963989a5d74d0110c786757c314dd5a0c2f79064b10372ea5c81d9df30abe8f818f22e8208119')
 
 package(){
 
