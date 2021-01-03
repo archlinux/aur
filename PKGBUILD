@@ -21,7 +21,7 @@ changelog=
 source=("Freezer-$pkgver.AppImage::$url/0:/PC/$pkgver/Freezer-$pkgver.AppImage" "freezer.desktop" "https://i.imgur.com/ztam2vH.png")
 noextract=("Freezer-$pkgver.AppImage")
 md5sums=('a60edc3f9a87e20b9b6ea818bb85c6b5'
-    '50e9e894f493fd0eb64ecc5e1e38bf48'
+    '59bc9ed8c52d157647c7f78f980ca49e'
     '3a8057d8fe5a0aa93f04f45e3a77a352')
 
 package() {
