@@ -6,6 +6,7 @@ pkgbase = myip-rs
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	optdepends = geoipupdate: download/update local GeoIP2 database from MaxMind
 	source = https://github.com/crabvk/myip/archive/0.1.0.tar.gz
 	sha512sums = e9ea34abd8a380da5a188fcfa0352a938367e38bd731bc1356b112cff534a5934e1866eef8f83c40404f4e677c0d3c09fe06f520ffa9f0cbba96938f773e3298
 
