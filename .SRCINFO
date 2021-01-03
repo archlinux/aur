@@ -1,6 +1,6 @@
 pkgbase = python-pypylon
 	pkgdesc = The official python wrapper for the Basler pylon Camera Software Suite.
-	pkgver = 1.5.4
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/basler/pypylon
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-pypylon
 	depends = python
 	depends = python-setuptools
 	depends = pylon
-	source = https://github.com/basler/pypylon/archive/1.5.4.tar.gz
-	sha256sums = 4a74684389ae98c64fa1e44a408430fa02754dff2d6ef02bdfdc672dbf26e47c
+	source = https://github.com/basler/pypylon/archive/1.6.0.tar.gz
+	sha256sums = 73f6bd93b386956405b23f613deda6c35d123b919cb81ca0616519ecc9159d3d
 
 pkgname = python-pypylon
 
