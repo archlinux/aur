@@ -2,7 +2,7 @@
 # Contributor: Mark Mykkanen <quickcougar at gmail dot com>
 pkgname="brother-hl2170w"
 pkgver="2.0.2_1"
-pkgrel=1
+pkgrel=2
 pkgdesc="LPR and CUPS driver for the Brother HL2170W"
 arch=('i686' 'x86_64')
 url="http://solutions.brother.com/linux/en_us/"
@@ -46,6 +46,7 @@ prepare() {
 		sed -i 's|/model/Brother|/model|g' $_wrapper_source
 		sed -i 's|lpinfo|echo|g' $_wrapper_source
 		export srcdir=$srcdir
+		chmod +x ./$_wrapper_source
 		./$_wrapper_source
 		sed -i 's|$srcdir||' $srcdir/usr/lib/cups/filter/*lpdwrapper*
 		sed -i "s|$srcdir||" $srcdir/usr/lib/cups/filter/*lpdwrapper*
