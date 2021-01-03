@@ -1,0 +1,16 @@
+_iconpath=usr/share/icons
+
+_gtk_icon_cache() {
+    gtk-update-icon-cache -f -t "/$_iconpath/kora/"
+    gtk-update-icon-cache -f -t "/$_iconpath/kora-light/"
+    gtk-update-icon-cache -f -t "/$_iconpath/kora-light-panel/"
+    gtk-update-icon-cache -f -t "/$_iconpath/kora-pgrey/"
+}
+
+post_install() {
+    _gtk_icon_cache
+}
+
+post_upgrade() {
+    _gtk_icon_cache
+} 
