@@ -13,7 +13,8 @@ url='https://www.openssl.org'
 license=('custom:BSD')
 depends=('perl')
 optdepends=('ca-certificates')
-options=('!makeflags')
+provides=(openssl-1.0)
+conflicts=(openssl-1.0)
 source=("https://artfiles.org/openssl.org/source/old/1.0.2/openssl-1.0.2u.tar.gz"
         'no-rpath.patch'
         'openssl-1.0-versioned-symbols.patch')
