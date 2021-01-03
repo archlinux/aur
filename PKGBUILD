@@ -1,4 +1,4 @@
-# Maintainer: Jakob (XDjackieXD) <jakob at chaosfield dot at>
+# Maintainer: Jakob (XDjackieXD) <aur at chaosfield dot at>
 
 pkgname=rmview-git
 _pkgname=rmview
