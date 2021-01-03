@@ -1,7 +1,7 @@
 pkgbase = folderpreview
 	pkgdesc = Generates folder thumbs using child files thumbs
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/hxss-linux/folderpreview
 	install = INSTALL
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = folderpreview
 	makedepends = python-pip
 	makedepends = curl
 	makedepends = jq
+	makedepends = findutils
 	depends = python-dbus-next
 	depends = python-pyxdg
 	depends = python-yaml

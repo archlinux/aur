@@ -3,7 +3,7 @@
 pipname=folderpreview
 pkgname=$pipname
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Generates folder thumbs using child files thumbs"
 arch=(any)
 url="https://gitlab.com/hxss-linux/folderpreview"
@@ -23,6 +23,7 @@ makedepends=(
 	'python-pip'
 	'curl'
 	'jq'
+	'findutils'
 )
 install='INSTALL'
 provides=($pipname)
@@ -32,12 +33,16 @@ pkgver() {
 }
 
 package() {
-	pip install $pipname \
+	PIP_CONFIG_FILE=/dev/null pip install $pipname \
 		--root=$pkgdir \
+		--isolated \
 		--no-user \
 		--no-deps \
 		--ignore-installed \
+		--no-warn-script-location \
 		--quiet
+
+	python -O -m compileall "$pkgdir"
 
 	install -Dm644 $(find $pkgdir -name LICENSE*) \
 		-t "$pkgdir/usr/share/licenses/$pkgname"
