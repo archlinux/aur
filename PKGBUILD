@@ -13,7 +13,7 @@ optdepends=()
 
 pkgver() {
 	# Grab the latest version from npmjs.org
-	npm view @camoto/gamecomp@latest version
+	npm view "${_npmscope}/${_npmname}@latest" version
 }
 
 package() {
