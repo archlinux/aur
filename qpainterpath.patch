@@ -1,0 +1,11 @@
+diff --git a/src/qt/trafficgraphwidget.cpp b/src/qt/trafficgraphwidget.cpp
+--- a/src/qt/trafficgraphwidget.cpp
++++ b/src/qt/trafficgraphwidget.cpp
+@@ -6,6 +6,7 @@
+ #include "clientmodel.h"
+
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QColor>
+ #include <QTimer
+

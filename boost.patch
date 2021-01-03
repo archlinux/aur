@@ -1,0 +1,81 @@
+diff -ur src2/dogecoin-1.14.2/src/validation.cpp src/dogecoin-1.14.2/src/validation.cpp
+--- src2/dogecoin-1.14.2/src/validation.cpp    2019-04-08 14:28:20.000000000 +0700
++++ src/dogecoin-1.14.2/src/validation.cpp 2020-02-03 18:31:55.196768990 +0700
+@@ -44,6 +44,7 @@
+
+ #include <boost/algorithm/string/replace.hpp>
+ #include <boost/algorithm/string/join.hpp>
++#include <boost/bind.hpp>
+ #include <boost/filesystem.hpp>
+ #include <boost/filesystem/fstream.hpp>
+ #include <boost/math/distributions/poisson.hpp>
+
+--- src2/dogecoin-1.14.2/src/validationinterface.cpp    2020-12-22 05:09:29.305584746 -0800
++++ src/dogecoin-1.14.2/src/validationinterface.cpp     2020-12-22 04:55:54.489730962 -0800
+@@ -5,6 +5,8 @@
+
+ #include "validationinterface.h"
+
++#include <boost/bind.hpp>
++
+ static CMainSignals g_signals;
+
+ CMainSignals& GetMainSignals()
+
+--- src2/dogecoin-1.14.2/src/qt/bitcoingui.cpp     2020-12-22 05:14:22.863474268 -0800
++++ src2/dogecoin-1.14.2/src/qt/bitcoingui.cpp      2020-12-22 05:05:15.267433930 -0800
+@@ -38,6 +38,8 @@
+
+ #include <iostream>
+
++#include <boost/bind.hpp>
++
+ #include <QAction>
+ #include <QApplication>
+ #include <QDateTime>
+
+--- src2/dogecoin-1.14.2/src/qt/clientmodel.cpp    2020-12-22 05:14:33.973393228 -0800
++++ src2/dogecoin-1.14.2/src/qt/clientmodel.cpp     2020-12-22 05:05:34.335287787 -0800
+@@ -21,6 +21,8 @@
+
+ #include <stdint.h>
+
++#include <boost/bind.hpp>
++
+ #include <QDebug>
+ #include <QTimer>
+
+--- src2/dogecoin-1.14.2/src/qt/splashscreen.cpp   2020-12-22 05:14:44.537316110 -0800
++++ src2/dogecoin-1.14.2/src/qt/splashscreen.cpp    2020-12-22 05:05:50.163166476 -0800
+@@ -20,6 +20,8 @@
+ #include "wallet/wallet.h"
+ #endif
+
++#include <boost/bind.hpp>
++
+ #include <QApplication>
+ #include <QCloseEvent>
+ #include <QDesktopWidget>
+
+--- src2/dogecoin-1.14.2/src/qt/transactiontablemodel.cpp  2020-12-22 05:14:54.453243665 -0800
++++ src2/dogecoin-1.14.2/src/qt/transactiontablemodel.cpp   2020-12-22 05:06:09.833015722 -0800
+@@ -26,6 +26,7 @@
+ #include <QIcon>
+ #include <QList>
+
++#include <boost/bind.hpp>
+ #include <boost/foreach.hpp>
+
+ // Amount column is right-aligned it contains numbers
+
+--- src2/dogecoin-1.14.2/src/qt/walletmodel.cpp    2020-12-22 05:15:01.839189671 -0800
++++ src2/dogecoin-1.14.2/src/qt/walletmodel.cpp     2020-12-22 05:06:28.748870741 -0800
+@@ -28,6 +28,7 @@
+ #include <QSet>
+ #include <QTimer>
+
++#include <boost/bind.hpp>
+ #include <boost/foreach.hpp>
+
+ WalletModel::WalletModel(const PlatformStyle *platformStyle, CWallet *_wallet, OptionsModel *_optionsModel, QObject *parent) :
+

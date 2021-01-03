@@ -1,0 +1,11 @@
+diff -ur src2/dogecoin-1.14.2/src/httpserver.cpp src/dogecoin-1.14.2/src/httpserver.cpp
+--- src2/dogecoin-1.14.2/src/httpserver.cpp    2019-04-08 14:28:20.000000000 +0700
++++ src/dogecoin-1.14.2/src/httpserver.cpp 2020-02-03 18:31:55.196768990 +0700
+@@ -19,6 +19,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <signal.h>
++#include <deque>
+ #include <future>
+
+ #include <event2/event.h>
