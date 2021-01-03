@@ -1,14 +1,14 @@
 pkgbase = ctop
 	pkgdesc = Top-like interface for container metrics
-	pkgver = 0.7.3
+	pkgver = 0.7.5
 	pkgrel = 1
 	url = https://ctop.sh/
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	source = https://github.com/bcicen/ctop/releases/download/v0.7.3/ctop-0.7.3-linux-amd64
+	source = https://github.com/bcicen/ctop/releases/download/v0.7.5/ctop-0.7.5-linux-amd64
 	source = LICENSE
-	sha256sums = 54598d424396cbe25646e097b47d76a55d475c29ae4c3111548141a3ecfb7fc1
+	sha256sums = e2949316cdfe360374b76d45ea512f603b42c0db693a70a6a4c11624aa200b8c
 	sha256sums = dddd1fa1661d597b20142203d85c29c01cf18d400be06db289b26d578f81c553
 
 pkgname = ctop
