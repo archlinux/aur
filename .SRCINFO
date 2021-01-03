@@ -1,0 +1,19 @@
+pkgbase = dpc++
+	pkgdesc = Data Parallel C++
+	pkgver = 2020.12
+	pkgrel = 1
+	url = https://github.com/intel/llvm/releases/tag/2020-12
+	arch = x86_64
+	license = Apache License v2.0 with LLVM Exceptions
+	makedepends = python
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	depends = ocl-icd
+	depends = ncurses
+	depends = zlib
+	source = llvm::git+https://github.com/intel/llvm#tag=2020-12
+	sha256sums = SKIP
+
+pkgname = dpc++
+
