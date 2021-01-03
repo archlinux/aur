@@ -1,7 +1,7 @@
 # Maintainer: Maurice Zhou <ja at apvc punkt uk>
 
 pkgname=bieaz
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="Pure shell script Root on ZFS boot environment manager with GRUB integration for Linux"
 arch=(any)
@@ -15,4 +15,4 @@ package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 }
-md5sums=('5554029e0f522b61d121fa85a34f98e1')
+md5sums=('10947a8961e238e4a5bb803bf9909736')
