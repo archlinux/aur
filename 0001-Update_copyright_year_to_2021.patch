@@ -1,0 +1,13 @@
+diff --git a/man/deutex.txt.in b/man/deutex.txt.in
+index 5620654..21150da 100644
+--- a/man/deutex.txt.in
++++ b/man/deutex.txt.in
+@@ -421,7 +421,7 @@ variable is overridden by *-main*, *-doom* and friends.
+ COPYRIGHT
+ ---------
+ @PACKAGE_NAME@ is copyright © 1994-1995 Olivier Montanuy, copyright ©
+-1999-2005 André Majorel, copyright © 2006-2019 contributors to
++1999-2005 André Majorel, copyright © 2006-2021 contributors to
+ @PACKAGE_NAME@.
+ 
+ Most of this program is under the GNU General Public License version
