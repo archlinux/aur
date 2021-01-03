@@ -2,7 +2,7 @@
 
 pipname=desktop-notify
 pkgname=$pipname
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc='Util for sending desktop notifications over dbus'
 arch=(any)
@@ -22,6 +22,7 @@ package() {
 		--no-user \
 		--no-deps \
 		--ignore-installed \
+		--no-warn-script-location \
 		--quiet
 
 	python -O -m compileall "$pkgdir"
