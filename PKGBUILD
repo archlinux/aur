@@ -18,7 +18,7 @@ depends=(gtk3 mozilla-common libxt mime-types dbus-glib
          ffmpeg nss-hg ttf-font libpulse xorg-server-xwayland
          libvpx libjpeg zlib icu libevent libpipewire02)
 makedepends=(unzip zip diffutils python-setuptools yasm mesa imake inetutils
-             xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2
+             autoconf2.13 rust mercurial clang llvm jack gtk2
              python nodejs python-psutil python-zstandard cbindgen nasm libpipewire02 lld)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
@@ -61,8 +61,7 @@ prepare() {
   echo -n "$_mozilla_api_key" >mozilla-api-key
 
   #
-  # If you want to disable LTO/PGO (compile too long, it needs working
-  # xorg-server-xvfb), delete the lines below beginning with
+  # If you want to disable LTO/PGO (compile too long), delete the lines below beginning with
   # `ac_add_options --enable-lto' and ending with 'export RANLIB=llvm-ranlib`
   #
 
@@ -130,7 +129,7 @@ build() {
   # LTO/PGO needs more open files
   ulimit -n 4096
 
-  xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
+  ./mach build
   ./mach buildsymbols
 }
 
