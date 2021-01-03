@@ -2,7 +2,7 @@
 
 pkgname=gdu-git
 _gitname=gdu
-pkgver=v1.6.0.r2.gcbf4718
+pkgver=v2.0.0
 pkgrel=1
 license=('MIT')
 pkgdesc="Fast disk usage analyzer"
