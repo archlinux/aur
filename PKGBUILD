@@ -3,7 +3,7 @@
 pipname=keeprofi
 pkgname=$pipname
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Access to keepass database using rofi drun menu"
 arch=(any)
 url="https://gitlab.com/hxss-linux/keeprofi"
@@ -14,6 +14,8 @@ depends=(
 	'python-pynput'
 	'python-pykeepass'
 	'python-keyring'
+	'rofi'
+	'xclip'
 	'desktop-notify'
 )
 makedepends=(
