@@ -1,4 +1,4 @@
-# Maintainer: caodien <caodien at gmail dot com>
+# Maintainer: caodien <caodiendev at gmail dot com>
 # Contributor: NicoHood <aur {at} nicohood {dot} de>
 # Contributor: Christopher Loen <christopherloen at gmail dot com>
 
