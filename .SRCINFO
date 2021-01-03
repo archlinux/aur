@@ -1,7 +1,7 @@
 pkgbase = python-fastrlock
 	pkgdesc = A fast RLock implementation for CPython
-	pkgver = 0.4
-	pkgrel = 2
+	pkgver = 0.5
+	pkgrel = 1
 	url = https://github.com/scoder/fastrlock
 	arch = x86_64
 	license = MIT
@@ -9,8 +9,8 @@ pkgbase = python-fastrlock
 	makedepends = python-setuptools
 	makedepends = cython
 	depends = python
-	source = https://github.com/scoder/fastrlock/archive/0.4.tar.gz
-	md5sums = 3924ca94a7c8ba73b62246d106f4dd02
+	source = https://github.com/scoder/fastrlock/archive/0.5.tar.gz
+	md5sums = d0fee43c3bd11e6dece0989d222727bc
 
 pkgname = python-fastrlock
 
