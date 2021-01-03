@@ -1,28 +1,27 @@
+# Maintainer: Ricardo Constantino <ricardo@tsu.re>
 # Maintainer: Frantic1048 <archer@frantic1048.com>
 pkgdesc='Plex HTTP Anidb Metadata Agent (HAMA)'
-pkgname='plex-hama-bundle-git'
-pkgver=r883.6ab37e2
+pkgname=plex-hama-git
+pkgver=r1072.bb684a2
 pkgrel=1
 makedepends=('git')
-depends=('plex-media-server')
-conflicts=()
-provides=()
+depends=('plex-media-server' plex-ass-scanner-git)
+conflicts=('plex-hama-bundle-git')
+provides=('plex-hama-bundle-git')
 arch=('x86_64' 'i686')
 url='https://github.com/ZeroQI/Hama.bundle'
 license=('GPL3')
 source=(
 "${pkgname}::git+${url}"
-"https://raw.githubusercontent.com/ZeroQI/Absolute-Series-Scanner/master/Scanners/Series/Absolute%20Series%20Scanner.py"
 )
-sha512sums=('SKIP'
-            'SKIP')
+sha512sums=('SKIP')
 
 pkgver () {
-	cd "${pkgname}"
+	cd "${srcdir}"
 	(
 		set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+        cd $pkgname
+		printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 	)
 }
 
@@ -39,8 +38,4 @@ package () {
 	plugins_dir="${plex_main_folder}/Plug-ins/hama.bundle"
 	install -d "$plugins_dir"
 	cp -r ./$pkgname/* "$plugins_dir"
-
-	scanners_dir="${plex_main_folder}/Scanners/Series"
-	install -d "$scanners_dir"
-	cp "Absolute%20Series%20Scanner.py" "$scanners_dir"/"Absolute Series Scanner.py"
 }
