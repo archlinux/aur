@@ -1,7 +1,7 @@
 pkgbase = frr-fixes
 	pkgdesc = FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, BFD, VRRP, NHRP and EIGRP.
 	pkgver = 7.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://frrouting.org/
 	arch = x86_64
 	arch = aarch64
@@ -31,6 +31,7 @@ pkgbase = frr-fixes
 	conflicts = quagga
 	conflicts = babeld
 	conflicts = quagga_cumulus
+	replaces = frr
 	backup = etc/frr/frr.conf
 	backup = etc/frr/daemons.conf
 	backup = etc/frr/vtysh.conf

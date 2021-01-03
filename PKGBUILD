@@ -1,7 +1,7 @@
 pkgname='frr-fixes'
 _pkgname='frr'
 pkgver='7.5'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, BFD, VRRP, NHRP and EIGRP.'
 arch=('x86_64' 'aarch64')
 url="https://frrouting.org/"
@@ -12,6 +12,7 @@ makedepends=('patch' 'gcc' 'net-snmp' 'bison' 'perl-xml-libxml' 'python-sphinx')
 checkdepends=('python-pytest')
 optdepends=('rsyslog: syslog support')
 conflicts=('quagga' 'babeld' 'quagga_cumulus')
+replaces=('frr')
 provides=('quagga' 'quagga_cumulus')
 backup=("etc/${_pkgname}/${_pkgname}.conf"
 	"etc/${_pkgname}/daemons.conf"
