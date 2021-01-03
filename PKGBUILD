@@ -1,8 +1,8 @@
 # Maintainer: Jeremy Kescher <jeremy@kescher.at>
 pkgname=mjpeg-proxy-git
 _pkgname=mjpeg-proxy
-pkgver=r38.99e4412
-pkgrel=3
+pkgver=r39.facab20
+pkgrel=1
 pkgdesc="Republish MJPEG HTTP image streams using a server in Go"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/vvidic/mjpeg-proxy"
@@ -18,6 +18,7 @@ source=(
     "service"
     "tmpfiles"
 )
+backup=('etc/mjpeg-proxy/sources.json')
 sha256sums=('SKIP'
             '698c307c758f5b911d8bf054f2ed74bf707bf8eb18ad9e6475fd8abd6b15fbea'
             '11b464bb313a6ea6f6719b7f47814f76bcf10f733dc83c06aefd76b825e47988')
