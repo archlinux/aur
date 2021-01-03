@@ -1,6 +1,6 @@
 # Maintainer: Joznia <jz.joznia@protonmail.com>
 pkgname=jza
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Simple AUR helper written in Bash"
 arch=('x86_64')
