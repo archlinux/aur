@@ -1,7 +1,7 @@
 pkgbase = newrelic-cli
 	pkgdesc = The New Relic Command Line Interface
 	pkgver = 0.18.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/newrelic/newrelic-cli
 	arch = x86_64
 	license = Apache

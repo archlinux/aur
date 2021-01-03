@@ -2,7 +2,7 @@
 
 pkgname=newrelic-cli
 pkgver=0.18.9
-pkgrel=1
+pkgrel=2
 pkgdesc="The New Relic Command Line Interface"
 arch=(x86_64)
 url=https://github.com/newrelic/newrelic-cli
@@ -21,7 +21,6 @@ prepare() {
 build() {
   cd newrelic-cli
 
-  export CGO_ENABLED=1
   export CGO_LDFLAGS="$LDFLAGS"
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
@@ -42,12 +41,10 @@ package() {
   cd newrelic-cli
   install -Dm0755 bin/newrelic "$pkgdir/usr/bin/newrelic"
 
-  install -dm0755 "$pkgdir/usr/share/bash-completion/completions" \
-    "$pkgdir/usr/share/zsh/site-functions"
-  "${pkgdir}/usr/bin/newrelic" completion --shell bash > \
-    "${pkgdir}/usr/share/bash-completion/completions/newrelic"
-  "${pkgdir}/usr/bin/newrelic" completion --shell bash > \
-    "${pkgdir}/usr/share/zsh/site-functions/_newrelic"
+  "${pkgdir}/usr/bin/newrelic" completion --shell bash | install -Dm0644 \
+    /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/newrelic"
+  "${pkgdir}/usr/bin/newrelic" completion --shell zsh | install -Dm0644 \
+    /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_newrelic"
 }
 
 # vim: set ts=2 sw=2 et:
