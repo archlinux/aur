@@ -1,7 +1,7 @@
 pkgbase = jellyshot-git
 	pkgdesc = A simple screenshot and uploading tool
 	pkgver = r13.ead8aca
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jelly/jellyshot
 	arch = any
 	license = MIT

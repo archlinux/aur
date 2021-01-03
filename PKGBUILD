@@ -2,7 +2,7 @@
 
 pkgname=jellyshot-git
 pkgver=r13.ead8aca
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple screenshot and uploading tool"
 arch=('any')
 url="https://github.com/jelly/jellyshot"
