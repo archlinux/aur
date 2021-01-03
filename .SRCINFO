@@ -1,0 +1,14 @@
+pkgbase = bluespec-contrib-git
+	pkgdesc = Bluespec Compiler (BSC) - Contributed libraries and utilities
+	pkgver = r3.ced0e9f
+	pkgrel = 1
+	url = https://github.com/B-Lang-org/bsc-contrib
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = bluespec-git
+	source = git+https://github.com/B-Lang-org/bsc-contrib.git
+	md5sums = SKIP
+
+pkgname = bluespec-contrib-git
+
