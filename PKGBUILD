@@ -3,7 +3,7 @@
 pipname=avrcp-volume
 pkgname=$pipname
 pkgver=0.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Avrcp volume controller'
 arch=(any)
 url='https://gitlab.com/hxss-linux/avrcp-volume'
@@ -24,6 +24,7 @@ package() {
 		--no-user \
 		--no-deps \
 		--ignore-installed \
+		--no-warn-script-location \
 		--quiet
 
 	python -O -m compileall "$pkgdir"

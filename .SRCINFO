@@ -1,7 +1,7 @@
 pkgbase = avrcp-volume
 	pkgdesc = Avrcp volume controller
 	pkgver = 0.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/hxss-linux/avrcp-volume
 	install = INSTALL
 	arch = any
