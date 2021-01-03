@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/r/retype/retype-${pkgver}.tar.gz")
-sha256sums=('846fd135d3ee33c1bad387602a405d808cb99a9a7a47299bfd0e1d25dfb2fedd')
+sha256sums=('80dd348414993486bc131ba7dcbb2a272dffb1473b96d51a6cf0185eff9e7c83')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
