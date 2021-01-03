@@ -1,0 +1,18 @@
+Author: kls
+Source: https://www.vdr-portal.de/forum/index.php?thread/134018-vdr-crasht-f%C3%BCr-clre-bei-unbekannter-kanalnummer/&postID=1332903#post1332903
+
+--- svdrp.c     2020/12/26 15:49:01     5.1
++++ svdrp.c     2021/01/01 19:02:09
+@@ -1301,8 +1301,10 @@
+      tChannelID ChannelID = tChannelID::InvalidID;
+      if (isnumber(Option)) {
+         int o = strtol(Option, NULL, 10);
+-        if (o >= 1 && o <= cChannels::MaxNumber())
+-           ChannelID = Channels->GetByNumber(o)->GetChannelID();
++        if (o >= 1 && o <= cChannels::MaxNumber()) {
++           if (const cChannel *Channel = Channels->GetByNumber(o))
++              ChannelID = Channel->GetChannelID();
++           }
+         }
+      else {
+         ChannelID = tChannelID::FromString(Option);
