@@ -1,0 +1,17 @@
+#!/usr/bin/bash
+
+build() {
+    add_binary "awk"
+    add_binary "file"
+    add_binary "partprobe"
+
+    add_file "/usr/share/file/misc/magic.mgc"
+
+    add_runscript
+}
+
+help() {
+  cat <<HELPEOF
+This hook adds ability to query partitions for encrypted containers.
+HELPEOF
+}

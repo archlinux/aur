@@ -1,0 +1,16 @@
+pkgbase = mkinitcpio-dm-partprobe
+	pkgdesc = This is an initcpio hook for probing partitions.
+	pkgver = 20210103
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/mkinitcpio-dm-partprobe/
+	arch = any
+	license = MIT
+	depends = file
+	depends = parted
+	source = hook.dm-partprobe
+	source = install.dm-partprobe
+	sha256sums = 3ded8bee639bd2569fe5a5f4a7dbea048a88a718fc97360f18b453f0af26f58d
+	sha256sums = 6e6bf9dc5d9512a288162ca02cfae3785b56f50d95da101dccdab3cd691cacf1
+
+pkgname = mkinitcpio-dm-partprobe
+

@@ -1,0 +1,16 @@
+#!/usr/bin/ash
+
+run_hook() {
+    DEVICES=$(ls /dev/dm-*)
+
+    for device in ${DEVICES}; do
+        if [ "$(file -Ls ${device} | awk {' print $2 '})" == "DOS/MBR" ]; then
+            echo "Probing device ${device}..."
+            partprobe ${device}
+        else
+            echo "Device ${device} isn't a device with partitions table, ignoring"
+        fi
+    done
+}
+
+# vim: set ft=sh ts=4 sw=4 et:
