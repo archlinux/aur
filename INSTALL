@@ -1,0 +1,8 @@
+
+post_install() {
+	avrcp-volume --install-service
+}
+
+pre_remove() {
+	rm -f /usr/lib/systemd/user/avrcp-volume.service
+}

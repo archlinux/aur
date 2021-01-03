@@ -1,0 +1,20 @@
+pkgbase = avrcp-volume
+	pkgdesc = Avrcp volume controller
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = https://gitlab.com/hxss-linux/avrcp-volume
+	install = INSTALL
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	makedepends = curl
+	makedepends = jq
+	makedepends = findutils
+	depends = python
+	depends = python-dbus-next
+	depends = python-pulsectl
+	depends = desktop-notify
+	optdepends = python-systemd: systemd logging
+
+pkgname = avrcp-volume
+
