@@ -1,16 +1,17 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
+# Maintainer: Thomas Heinemann <thomas@niphba.de>
 
 pkgname=python-mailsuite
-pkgver=1.3.0
-_commit=92dfacb8a4cd5f0fc6e0cd59d056d8aface4bef0 # Untagged release + changelog fix
+pkgver=1.6.1
+_commit=a26ecb232826330037f814846bd2da46df0aaae8 # Untagged release + changelog fix
 pkgrel=1
 pkgdesc='Python package to make receiving, parsing, and sending email easier'
 arch=(any)
 url=https://seanthegeek.github.io/mailsuite/
 license=(Apache)
-depends=('python-imapclient>=2.1.0'
-         'mailparser>=3.9.3'
-         'python-dnspython>=1.16.0'
+depends=('mailparser>=3.14.0'
+		 'python-imapclient>=2.1.0'
+         'python-dnspython>=2.0.0'
+         'python-html2text>=2020.1.16'
          python-nose
          python-pygments
          flake8
@@ -28,7 +29,7 @@ depends=('python-imapclient>=2.1.0'
          python-codecov)
 makedepends=(python-setuptools)
 source=($pkgname-$pkgver.tar.gz::https://github.com/seanthegeek/mailsuite/archive/$_commit.tar.gz)
-sha512sums=('799a044de4e11906032acc94c67265a43314ad4eb07ab40feb1370e16c0a7125dbfb45b8967cd879270d663fc0139499dc19ea6833866cda8927193d36f66d99')
+sha512sums=('623d9402b12077ec5fb75a62758f3dce5e87119bd7dadcab9083f568fe35fbfd7929f40c724dc1d71fae33ea68497abb44b953570038874aeda44213b17ab827')
 
 build() {
   cd mailsuite-$_commit
