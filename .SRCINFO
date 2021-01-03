@@ -1,6 +1,6 @@
 pkgbase = qt6ct-git
 	pkgdesc = Qt6 Configuration Tool
-	pkgver = 0.2.r5.g828208d
+	pkgver = 0.2+6+gb20771f
 	pkgrel = 1
 	url = https://github.com/trialuser02/qt6ct
 	arch = x86_64
@@ -10,7 +10,8 @@ pkgbase = qt6ct-git
 	depends = qt6-svg
 	depends = qt6-base
 	depends = gtk2
-	source = qt6ct-0.2.r5.g828208d::git+https://github.com/trialuser02/qt6ct.git
+	conflicts = qt6ct
+	source = qt6ct-0.2+6+gb20771f::git+https://github.com/trialuser02/qt6ct.git
 	sha256sums = SKIP
 
 pkgname = qt6ct-git
