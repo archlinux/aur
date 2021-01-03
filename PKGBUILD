@@ -15,7 +15,6 @@ depends=('perl')
 optdepends=('ca-certificates')
 options=('!makeflags')
 source=("https://www.openssl.org/source/openssl-${_ver}.tar.gz"
-        "https://www.openssl.org/source/openssl-${_ver}.tar.gz.asc"
         'no-rpath.patch'
         'openssl-1.0-versioned-symbols.patch')
 sha256sums=('SKIP'

@@ -9,7 +9,6 @@ pkgbase = openssl-1.0-hardened
 	optdepends = ca-certificates
 	options = !makeflags
 	source = https://www.openssl.org/source/openssl-1.0.2u.tar.gz
-	source = https://www.openssl.org/source/openssl-1.0.2u.tar.gz.asc
 	source = no-rpath.patch
 	source = openssl-1.0-versioned-symbols.patch
 	sha256sums = SKIP
