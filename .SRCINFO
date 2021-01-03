@@ -27,3 +27,18 @@ pkgbase = terminalizer
 
 pkgname = terminalizer
 
+pkgbase = terminalizer
+	pkgdesc = Record your terminal and generate animated gif images or share a web player
+	pkgver = v0.7.2.r0.gfb079fc
+	pkgrel = 1
+	url = https://terminalizer.com/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = nodejs
+	depends = npm
+	source = git+https://github.com/faressoft/terminalizer
+	md5sums = SKIP
+
+pkgname = terminalizer
+
