@@ -7,17 +7,26 @@ symlinks in your ~/.config/lariza/user-scripts/. For example:
   $ cd ~/.config/lariza/user-scripts
   $ ln -s /usr/share/lariza/user-scripts/hints.js
 
-If you wish to use any web extensions, please create appropriate
-symlinks in your ~/.config/lariza/web_extensions/. For example:
+If you wish to use any web extensions, please copy the files to your
+~/.config/lariza/web_extensions/. For example:
 
   $ cd ~/.config/lariza/web_extensions
-  $ ln -s /usr/lib/lariza/web_extensions/we_adblock.so
+  $ cp /usr/lib/lariza/web_extensions/we_adblock.so .
 EOM
 }
 
 # arg 1:  the new package version
 # arg 2:  the old package version
 post_upgrade() {
+  if [ "$(vercmp "$2" 21.01-1)" -lt 1 ]; then
+    cat <<EOM
+>>> IMPORTANT CHANGES
+
+Symlinks in ~/.config/lariza/web_extensions no longer work due to WebKit
+sandboxing. If you use any web extensions, you must COPY the files to
+this directory.
+EOM
+  fi
   if [ "$(vercmp "$2" 16.06-1)" -lt 1 ]; then
     cat <<EOM
 >>> IMPORTANT CHANGES
