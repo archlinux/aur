@@ -1,7 +1,7 @@
 # Maintainer: Otto Ahoniemi <otto@ottoahoniemi.fi>
 
 pkgname=edgedb-cli
-pkgver=1.0a6
+pkgver=1.0a7
 pkgrel=1
 pkgdesc="Command-line tools for edgedb"
 arch=("x86_64")
@@ -9,7 +9,7 @@ url="https://github.com/edgedb/edgedb-cli"
 license=("MIT" "APACHE")
 makedepends=("rust" "cargo")
 source=("$url/archive/v$pkgver.tar.gz")
-sha512sums=("51461963bf98962a2e68bc6cac9f9f061ac24541c446999eae781d275ebc7f96af9761a03accfeb64d15818be886e4bfab69c9e51410af2e8df9a4229462e704")
+sha512sums=("a240491bc5f38dcd3548078c74cbc9fb84af650292e2a310cb371829fb3faca55e863dbc1f73ea24536c0efd84950b6d5e154765eae15a5f31ba48524048ddda")
 
 build() {
   cd $pkgname-$pkgver
