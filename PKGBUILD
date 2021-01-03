@@ -2,7 +2,7 @@
 
 pkgname=python-proc
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple interface to Linux process information"
 arch=("any")
 url="https://github.com/xolox/python-proc"
