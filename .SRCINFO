@@ -1,6 +1,6 @@
 pkgbase = onivim2-git
 	pkgdesc = Native, lightweight modal code editor
-	pkgver = 1527.b6e238811
+	pkgver = 1775.8a1739ec0
 	pkgrel = 1
 	url = https://github.com/onivim/oni2
 	install = onivim2.install

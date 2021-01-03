@@ -2,7 +2,7 @@
 # Contributor: Frederick Gnodtke <frederick@gnodtke.net>
 
 pkgname=onivim2-git
-pkgver=1527.b6e238811
+pkgver=1775.8a1739ec0
 pkgrel=1
 pkgdesc='Native, lightweight modal code editor'
 arch=('any')
