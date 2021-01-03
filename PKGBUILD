@@ -1,8 +1,9 @@
-# Maintainer: Kevin MacMartin <prurigro@gmail.com>
+# Maintainer: EatMyVenom <eat.my.venomm@gmail.com>
+# Contributor: Kevin MacMartin <prurigro@gmail.com>
 
 _pkgname=chromeos-apk
-pkgname=$_pkgname-git
-pkgver=20151222.r127.fbb6d18
+pkgname="${_pkgname}-git"
+pkgver=20201218.r129.f13a94d
 pkgrel=1
 pkgdesc='Extract Android APKs for running in Chrome OS OR Chrome in OS X, Linux and Windows'
 arch=('any')
@@ -14,12 +15,12 @@ source=("git+$url.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd "${_pkgname}"
   printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd $_pkgname
+  cd "${_pkgname}"
   npm install
   sed -i 's|\./chromeos-apk\.js|/usr/share/chromeos-apk/chromeos-apk\.js|' chromeos-apk
 }
