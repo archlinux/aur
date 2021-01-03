@@ -1,0 +1,15 @@
+pkgbase = wireguard-installer
+	pkgdesc = WireGuard VPN installer for Linux servers. (Setup: https://stanislas.blog/2019/01/how-to-setup-vpn-server-wireguard-nat-ipv6/)
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/angristan/wireguard-install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = curl
+	provides = wireguard
+	source = https://raw.githubusercontent.com/angristan/wireguard-install/master/wireguard-install.sh
+	md5sums = SKIP
+
+pkgname = wireguard-installer
+
