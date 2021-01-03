@@ -1,11 +1,11 @@
 pkgbase = tty-proxy
 	pkgdesc = Proxy for tty-share
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elisescu/tty-proxy
 	arch = any
 	license = MIT
-	makedepends = go-pie
+	makedepends = go
 	source = https://github.com/elisescu/tty-proxy/archive/v0.0.2.zip
 	md5sums = 5b37e94491a5bfe3a18eca85a7a9f2cf
 

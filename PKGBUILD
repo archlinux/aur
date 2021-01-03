@@ -2,7 +2,7 @@
 
 pkgname=tty-proxy
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Proxy for tty-share"
 arch=('any')
 url="https://github.com/elisescu/tty-proxy"
@@ -10,12 +10,24 @@ license=('MIT')
 depends=()
 source=("${url}/archive/v${pkgver}.zip")
 md5sums=('5b37e94491a5bfe3a18eca85a7a9f2cf')
-makedepends=('go-pie') # 'npm'
+makedepends=('go')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  go build -mod=vendor -trimpath -ldflags "-X main.version=${pkgver} --extldflags ${LDFLAGS}" -o tty-proxy .
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+
+  go build \
+      -mod=vendor \
+      -buildmode=pie \
+      -trimpath \
+      -ldflags "-linkmode=external -X main.version=${pkgver}" \
+      -mod=readonly \
+      -modcacherw \
+      -o tty-proxy .
 }
 
 package() {
