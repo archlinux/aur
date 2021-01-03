@@ -47,11 +47,11 @@ _1k_HZ_ticks=
 
 pkgbase=linux-aufs
 # pkgname=('linux-aufs' 'linux-aufs-headers' 'linux-aufs-docs')
-_major=5.7
-_minor=19
+_major=5.10
+_minor=4
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=6
+pkgrel=1
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
@@ -62,19 +62,22 @@ makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 _aufs_path="aufs-patches"
-_aufs_ver="20200622"
+_aufs_ver="20210104"
 _aufs_patch="0001-aufs-${_aufs_ver}.patch"
-_gcc_path="cpu-patches-v2-sep"
+_gcc_path="cpu-patches-sep"
 _gcc_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-updates-v12-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-updates-v12-sep/0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch"
-        "${_lucjanpath}/arch-updates-v12-sep/0003-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch"
-        "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.0-causes-compilation-erro.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0002-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0003-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0004-drm-amd-display-Add-get_dig_frontend-implementation-.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0005-btrfs-Fix-500-2000-performance-regression-w-5.10.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0006-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0007-ALSA-hda-hdmi-fix-locking-in-silent_stream_disable.patch"
          # the main kernel config files
         'config')
 
@@ -310,15 +313,18 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('c64aacd11f90dd1fb4f163ba3757ba52543c8a3c3932b9600109ad2b8ac97c8819d430067266e1e347998b5e9df92f7c0f1945a73142442ba5bccd41439a4988'
+sha512sums=('aab782786cc06b5f1872bbb88c4f55a73d222f8ecf1ab8f5b7d96de2160b11b4407e02a44b206d2c00e395ba0662aa5a038b8e10d185621a0b33c576b523b490'
             'SKIP'
-            'd383ff21c59aaccffbf9fac412495383118612ddbe6bf06691e2038d2b886754d2ba85b29f970f548103e1d0be519d114ba4641f29d329b604c7456db36ff193'
-            'ef8c9706da28eeaf98028609bf8ef6f558f7701f985c5925be6388dad0fbe8654fc15a803cd14f99ff89c026d471bbddbdff378b18db3f05f3d952faf943af72'
-            'b69b58856a2bdd62ea1a4ea7ce2932c6ed9ca9ec0b7796a13d4e051bb6c1d85bb576d651a7ae5b515e1226b524d4446c8d9c8f1d1c4b58ad982ae15d8cd7acbf'
-            'e8ce50a564c8412f3225c06eac4778f09a663c9ba05b5043916675934ab74a769cc91ef3f4162b73aa6854fceabb8e4d9c3143ebe105ce725fbac26df4044862'
-            'b9fd69758b1a5bdcf69d2b8d85d3acfaf20fe7e842e734ae03f4ab82a26743301336193db87b7e801636e487faceaf6eadc3bb5cecbb975d9a3afd9f9aa1851c'
-            '711ecce2ce54c81e8b60b9b347cb88db054bf697396ee15e9b425671f88d22a14dae17c1c451aa10bd1d7a71c145b2fa588863205ec94e1439ed9b2769ee2e4c'
-            'ff8cfc20896c889c9689f04f7b16db94a762fc74902c7f68f36795142a92a27ba9521ec8e78778b4e506fb7beccf18e7adc0504e90638d51301d2e82ce71c567')
+            '17c3a747e25b99aaf9640f60e216f31420062cea29081f404217cbccd59f3acd4545a3900d911b8c68da98dab6e1743502dae069cc2f04a8ecab85c966b1b902'
+            '34e21ecc4ef0d07707283427fa82d561a9573d670e80ccd41f7d9cb595473b3844b8df7aeffcb4fe82d9deeef0a4d4e6aef663eb1a7a397fa181f06f418a0d6d'
+            '27e6c0670ece86c77bf8068b892eac4ea332c809eba08ec45e13f12d89a708e5a2452f61b9395706b08fea4f2c4ecf8ecdac2ee4f953669a3f4f7a652f85de63'
+            'df8d800e043ffd7cd57a7b3efffdf30ba9f9130134fcc50f6b8a188665d28bdfac3d3b44a786b8aa1fc1bd92f508f5e350d480eccb5433f29a7bdbd45d488ec9'
+            'bb98afebd0c5ec4fbdf92389c3ccd1d93248652a95160a058660059ff5147c704deb1dd2d401ec4cf26eb664e53fca1463b1d363b310fb4f52aad68490111eb8'
+            '1978a2e95f0b0d52811d41d6e2a7f1a34b107a7f45785c8a4b73d9d4cc5119e0c245dd19f73729e7488abb3c1cb63a89891f33792c458edb9b6974f1aaa5abc3'
+            '1fa4679a14d90052669e70688d28162fc7f798fb5742d761b12290744c91808cceb5abf0f3ad63b6e1eee937eaed67bd83e1a3d55204fc61886c079ec2a1e560'
+            '62ddc5efa84f8014a5bb54fa108f98fef3509148a3ed2e787ad8b37da5d8041024fdd6098f9c24a313f5a8facb71915d34b59be7fc7400c22e58c530beceeece'
+            'dceac162d2b5a4ef537f3cf7ef67cf86fd365652b5f684bfde0fe50b9b619b835809412a5f48650c3b7c7b5afb94a13b8a5d2cc835ebdbe3a2b0bd08b23e95dd'
+            '6b2e80f643228ce5afbb7847394f2e9151822758535e00411e50542fae16ab20af336a9d83ddc7586ea83dff2e9c6b7e7f6a028a970c9d62051ba503d1531168')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
