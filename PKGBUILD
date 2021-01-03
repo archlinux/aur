@@ -3,7 +3,7 @@
 # Contributor: Holzhaus <jholthuis@mixxx.org>
 
 pkgname=mixxx-git
-pkgver=r7709
+pkgver=r7714
 pkgrel=1
 pkgdesc="Digital DJ mixing software. Git master branch (development/alpha)."
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ source=("${pkgname%-*}::git+https://github.com/mixxxdj/mixxx.git")
 md5sums=('SKIP')
 
 pkgver() {
-   cd "$srcdir/${pkgname%-*}"
-   echo "r$(git log --pretty=oneline --first-parent | wc -l)"
+	cd "$srcdir/${pkgname%-*}"
+	echo "r$(git log --pretty=oneline --first-parent | wc -l)"
 }
 
 prepare() {
@@ -41,12 +41,11 @@ prepare() {
 }
 
 build() {
-  cmake --build $srcdir/${pkgname%-*}/cmake_build --parallel `nproc`
+	cmake --build $srcdir/${pkgname%-*}/cmake_build --parallel `nproc`
 }
 
 package() {
 	mkdir -p $pkgdir/usr/lib/udev/rules.d/
-	cp $srcdir/${pkgname%-*}/res/linux/mixxx-usb-uaccess.rules $pkgdir/usr/lib/udev/rules.d/99-mixxx-usb-uaccess.rules
-	chmod a+r $pkgdir/usr/lib/udev/rules.d/99-mixxx-usb-uaccess.rules
+	install -Dm644 $srcdir/${pkgname%-*}/res/linux/mixxx-usb-uaccess.rules $pkgdir/usr/lib/udev/rules.d/99-mixxx-usb-uaccess.rules
 	DESTDIR="$pkgdir" cmake --install $srcdir/${pkgname%-*}/cmake_build
 }
