@@ -17,7 +17,7 @@ url='https://www.vim.org'
 arch=('x86_64')
 license=('custom:vim')
 makedepends=('glibc' 'libgcrypt' 'python' 'libxt'
-             'gawk' 'tcl' 'pcre' 'zlib' 'libffi')
+             'gawk' 'pcre' 'zlib' 'libffi')
 source=(https://github.com/vim/vim/archive/v${pkgver}/${pkgbase}-${pkgver}.tar.gz
         vimrc
         archlinux.vim
@@ -46,7 +46,7 @@ build() {
     ./configure \
       --prefix=/usr \
       --localstatedir=/var/lib/vim \
-      --with-features=huge \
+      --with-features=tiny \
       --with-compiledby='Arch Linux' \
       --disable-gpm \
       --enable-acl \
@@ -55,12 +55,12 @@ build() {
       --enable-multibyte \
       --enable-cscope \
       --disable-netbeans \
-      --enable-perlinterp=dynamic \
-      --enable-pythoninterp=dynamic \
-      --enable-python3interp=dynamic \
-      --enable-rubyinterp=dynamic \
-      --enable-luainterp=dynamic \
-      --enable-tclinterp=dynamic \
+#      --enable-perlinterp=dynamic \
+#      --enable-pythoninterp=dynamic \
+#      --enable-python3interp=dynamic \
+#      --enable-rubyinterp=dynamic \
+#      --enable-luainterp=dynamic \
+#      --enable-tclinterp=dynamic \
       --disable-canberra \
       --disable-darwin \
       --disable-smack \
@@ -76,7 +76,7 @@ build() {
       --disable-athena-check \
       --disable-gtktest \
       --disable-sysmouse \
-    make
+    make VIMRUNTIMEDIR=/usr/share/vim/vim82
 }
 #check() {
 #  cd vim-${pkgver}

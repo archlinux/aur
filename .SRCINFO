@@ -10,7 +10,6 @@ pkgbase = vim-min
 	makedepends = python
 	makedepends = libxt
 	makedepends = gawk
-	makedepends = tcl
 	makedepends = pcre
 	makedepends = zlib
 	makedepends = libffi
