@@ -55,12 +55,6 @@ build() {
       --enable-multibyte \
       --enable-cscope \
       --disable-netbeans \
-#      --enable-perlinterp=dynamic \
-#      --enable-pythoninterp=dynamic \
-#      --enable-python3interp=dynamic \
-#      --enable-rubyinterp=dynamic \
-#      --enable-luainterp=dynamic \
-#      --enable-tclinterp=dynamic \
       --disable-canberra \
       --disable-darwin \
       --disable-smack \
@@ -78,6 +72,16 @@ build() {
       --disable-sysmouse \
     make VIMRUNTIMEDIR=/usr/share/vim/vim82
 }
+
+#   add these options to enable different language features if desired
+#
+#      --enable-perlinterp=dynamic \
+#      --enable-pythoninterp=dynamic \
+#      --enable-python3interp=dynamic \
+#      --enable-rubyinterp=dynamic \
+#      --enable-luainterp=dynamic \
+#      --enable-tclinterp=dynamic \
+
 #check() {
 #  cd vim-${pkgver}
 #  TERM=xterm make -j1 test
