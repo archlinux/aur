@@ -1,4 +1,4 @@
-# Maintainer: Craig Barnes <cr@igbarn.es>
+# Maintainer: Craig Barnes <craigbarnes@protonmail.com>
 pkgname='dte'
 pkgver='1.9.1'
 pkgrel='2'
