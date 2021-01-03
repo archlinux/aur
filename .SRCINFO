@@ -1,33 +1,33 @@
 pkgbase = linux-versioned-bin
 	pkgdesc = Repackaging of the Arch kernel with a unique package name for each version
-	pkgver = 5.10.3.arch1
+	pkgver = 5.10.4.arch2
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.10.3-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.10.4-arch2
 	arch = x86_64
 	license = GPL2
 	options = !strip
-	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-5.10.3.arch1-1-x86_64.pkg.tar.zst
-	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-headers-5.10.3.arch1-1-x86_64.pkg.tar.zst
-	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-docs-5.10.3.arch1-1-x86_64.pkg.tar.zst
-	sha256sums = d9d644787503732ad1ea19f68ec9b2a31e3eac661309dd23d3ad0ba5303ec194
-	sha256sums = 0386f74194ca3a3f856f19dbfb93df491742145736b8f1a45a446db4a674c3a2
-	sha256sums = 597b409b20f9008bd7052593474c91763653e35cbab5d31a1f390351b952700a
+	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-5.10.4.arch2-1-x86_64.pkg.tar.zst
+	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-headers-5.10.4.arch2-1-x86_64.pkg.tar.zst
+	source = https://archlinux.mirror.digitalpacific.com.au/core/os/x86_64/linux-docs-5.10.4.arch2-1-x86_64.pkg.tar.zst
+	sha256sums = 4fcd10939d31d79eb571d4a01d3e1f9af248162e4a8f7779dbbb13d230ceb64f
+	sha256sums = c13f2f2e4277e57dfd91f695cd439445b2b11f87880def94b8bc45b614e6d879
+	sha256sums = 28b14a323091b3590d787c3c785e9263ac8d21a70d502f861838edc0772f3485
 
 pkgname = linux-versioned-bin
-	pkgdesc = Dummy package depending on linux5.10.3.arch1-1-bin
-	depends = linux5.10.3.arch1-1-bin
+	pkgdesc = Dummy package depending on linux5.10.4.arch2-1-bin
+	depends = linux5.10.4.arch2-1-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-versioned-headers-bin
-	pkgdesc = Dummy package depending on linux5.10.3.arch1-1-headers-bin
-	depends = linux5.10.3.arch1-1-headers-bin
+	pkgdesc = Dummy package depending on linux5.10.4.arch2-1-headers-bin
+	depends = linux5.10.4.arch2-1-headers-bin
 
 pkgname = linux-versioned-docs-bin
-	pkgdesc = Dummy package depending on linux5.10.3.arch1-1-docs-bin
-	depends = linux5.10.3.arch1-1-docs-bin
+	pkgdesc = Dummy package depending on linux5.10.4.arch2-1-docs-bin
+	depends = linux5.10.4.arch2-1-docs-bin
 
-pkgname = linux5.10.3.arch1-1-bin
-	pkgdesc = The Linux kernel and modules, version 5.10.3-arch1-1
+pkgname = linux5.10.4.arch2-1-bin
+	pkgdesc = The Linux kernel and modules, version 5.10.4-arch2-1
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -39,11 +39,11 @@ pkgname = linux5.10.3.arch1-1-bin
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
-pkgname = linux5.10.3.arch1-1-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.10.3-arch1-1
+pkgname = linux5.10.4.arch2-1-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.10.4-arch2-1
 	conflicts = linux-headers
 
-pkgname = linux5.10.3.arch1-1-docs-bin
-	pkgdesc = Documentation for the Linux kernel 5.10.3-arch1-1
+pkgname = linux5.10.4.arch2-1-docs-bin
+	pkgdesc = Documentation for the Linux kernel 5.10.4-arch2-1
 	conflicts = linux-docs
 
