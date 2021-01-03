@@ -5,45 +5,40 @@ pkgname=${_name}-git
 pkgver=1.1.1.r0.g1de8e4b
 pkgrel=1
 pkgdesc="open Multi-View Stereo reconstruction library with simple and automatic set of tools"
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url="http://cdcseacave.github.io/openMVS"
-license=('GPL')
-depends=('glew' 'glfw' 'suitesparse' 'blas' 'google-glog' 'opencv' 'boost-libs')
-makedepends=('git' 'qt5-base' 'cmake' 'cuda' 'boost' 'gflags' 'eigen' 'ceres-solver' 'cgal' 'nvidia-utils')
-optdepends=('nvidia-utils: GPU optimized mesh reconstruction code'
-            )
-
+license=(GPL)
+depends=(glew glfw suitesparse blas google-glog opencv boost-libs qt5-base)
+makedepends=(git cmake ninja cuda boost gflags eigen ceres-solver cgal nvidia-utils)
+optdepends=('nvidia-utils: GPU optimized mesh reconstruction code')
 options=()
 source=("${pkgname}::git+https://github.com/cdcseacave/openMVS.git${_fragment}"
         "vcglib::git+https://github.com/cdcseacave/VCG.git"
         )
-md5sums=('SKIP'
-         'SKIP'
-        )
+sha256sums=('SKIP'
+            'SKIP'
+           )
 
 pkgver() {
-  cd "$pkgname"
   # cutting off 'v' prefix that presents in the git tag
-  git describe --long --tag | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C "$srcdir/$pkgname" describe --long --tag | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 
 }
 
-#prepare() {
-#  cd ${srcdir}/${pkgname}
-#}
-
-
 build() {
-  cd ${srcdir}
-  mkdir -p build
-  cd build
-  cmake -Wno-dev ../${pkgname} -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DINSTALL_BIN_DIR=/usr/bin -DVCG_DIR="../vcglib"
-  make
+  CMAKE_FALGS+=(
+                -DCMAKE_BUILD_TYPE=Release
+                -DCMAKE_INSTALL_PREFIX=/usr
+                -DINSTALL_BIN_DIR=/usr/bin
+                -DVCG_ROOT="${srcdir}/vcglib"
+               )
+  cmake "${CMAKE_FALGS[@]}" -S "$srcdir"/$pkgname -B build -G Ninja
+# shellcheck disable=SC2046 # allow MAKEFLAGS to split when passing multiple flags.
+  ninja -C "$srcdir"/build $(grep -oP -- '-+[A-z]+ ?[0-9]*'<<<"${MAKEFLAGS:--j1}")
 }
 
 package() {
-  cd "$srcdir/build"
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir/" ninja -C "$srcdir"/build install
 }
 
 # vim:set ts=2 sw=2 et:

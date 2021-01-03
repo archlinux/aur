@@ -7,8 +7,8 @@ pkgbase = openmvs-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = qt5-base
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = cuda
 	makedepends = boost
 	makedepends = gflags
@@ -23,11 +23,12 @@ pkgbase = openmvs-git
 	depends = google-glog
 	depends = opencv
 	depends = boost-libs
+	depends = qt5-base
 	optdepends = nvidia-utils: GPU optimized mesh reconstruction code
 	source = openmvs-git::git+https://github.com/cdcseacave/openMVS.git#branch=master
 	source = vcglib::git+https://github.com/cdcseacave/VCG.git
-	md5sums = SKIP
-	md5sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = openmvs-git
 
