@@ -2,12 +2,12 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 _name=openmvs
-_tag=v1.1
+_tag=v1.1.1
 _fragment="#tag=${_tag}"
 pkgname=${_name}
 pkgver=${_tag#v}
 pkgrel=1
-pkgdesc="Open Multi-View Stereo reconstruction library with simple and automatic set of tools"
+pkgdesc="open Multi-View Stereo reconstruction library with simple and automatic set of tools"
 arch=(i686 x86_64)
 url="http://cdcseacave.github.io/openMVS"
 license=(GPL)
@@ -25,7 +25,6 @@ sha256sums=('SKIP'
 pkgver() {
   # cutting off 'v' prefix that presents in the git tag
   git -C "$srcdir"/$pkgname describe --tag | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-
 }
 
 build() {
