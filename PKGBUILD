@@ -6,7 +6,7 @@ pkgver=3.3.1
 pkgrel=1
 pkgdesc="Python IDE for beginners"
 arch=('any')
-url="http://thonny.org"
+url="https://thonny.org"
 license=('MIT')
 depends=('hicolor-icon-theme' 'mypy' 'python-astroid' 'python-asttokens' 'python-docutils' 'python-jedi' \
          'python-pylint' 'python-pyserial' 'python-send2trash' 'python-setuptools' 'tk')
