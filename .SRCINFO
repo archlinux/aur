@@ -1,13 +1,13 @@
 pkgbase = xwm
 	pkgdesc = A tiny XCB floating window manager
-	pkgver = 0.1.3
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = http://github.com/mcpcpc/xwm
 	arch = x686
 	arch = x86_64
 	license = MIT
 	depends = xcb-util-keysyms
-	source = http://github.com/mcpcpc/xwm/archive/0.1.3.tar.gz
+	source = http://github.com/mcpcpc/xwm/archive/0.1.6.tar.gz
 	md5sums = SKIP
 
 pkgname = xwm
