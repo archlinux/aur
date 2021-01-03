@@ -1,16 +1,16 @@
 # Maintainer: Ryan Hirasaki <ryanhirasaki [plus] arch [at] gmail [dot] com>
 pkgname=libtensorflow-lite
-pkgver=2.3.1
-pkgrel=6
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="Tensorflow Lite - Library and Headers. C/C++ & Python"
 arch=('x86_64')
 url='https://github.com/tensorflow/tensorflow'
 license=('Apache')
-depends=('gcc' 'flatbuffers' 'pybind11')
+depends=('gcc' 'flatbuffers' 'pybind11' 'tensorflow')
 makedepends=('bazel' 'python-setuptools' 'git' 'python-numpy')
 provides=('libtensorflow-lite')
 source=("https://github.com/tensorflow/tensorflow/archive/v$pkgver.tar.gz")
-sha256sums=('ee534dd31a811f7a759453567257d1e643f216d8d55a25c32d2fbfff8153a1ac')
+sha256sums=('26c833b7e1873936379e810a39d14700281125257ddda8cd822c89111db6f6ae')
 
 prepare() {
 	cd "tensorflow-$pkgver"

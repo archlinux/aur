@@ -1,7 +1,7 @@
 pkgbase = libtensorflow-lite
 	pkgdesc = Tensorflow Lite - Library and Headers. C/C++ & Python
-	pkgver = 2.3.1
-	pkgrel = 6
+	pkgver = 2.4.0
+	pkgrel = 1
 	url = https://github.com/tensorflow/tensorflow
 	arch = x86_64
 	license = Apache
@@ -12,9 +12,10 @@ pkgbase = libtensorflow-lite
 	depends = gcc
 	depends = flatbuffers
 	depends = pybind11
+	depends = tensorflow
 	provides = libtensorflow-lite
-	source = https://github.com/tensorflow/tensorflow/archive/v2.3.1.tar.gz
-	sha256sums = ee534dd31a811f7a759453567257d1e643f216d8d55a25c32d2fbfff8153a1ac
+	source = https://github.com/tensorflow/tensorflow/archive/v2.4.0.tar.gz
+	sha256sums = 26c833b7e1873936379e810a39d14700281125257ddda8cd822c89111db6f6ae
 
 pkgname = libtensorflow-lite
 
