@@ -1,8 +1,8 @@
 pkgbase = elpa
 	pkgdesc = Eigenvalue SoLvers for Petaflop-Applications
-	pkgver = 2020.05.001
+	pkgver = 2020.11.001
 	pkgrel = 1
-	url = https://elpa.mpcdf.mpg.de/html/Releases
+	url = https://elpa.mpcdf.mpg.de
 	arch = x86_64
 	license = LGPL3
 	makedepends = gcc-fortran
@@ -10,8 +10,10 @@ pkgbase = elpa
 	makedepends = vim
 	depends = scalapack
 	provides = elpa
-	source = https://elpa.mpcdf.mpg.de/html/Releases/2020.05.001/elpa-2020.05.001.tar.gz
-	sha256sums = 66ff1cf332ce1c82075dc7b5587ae72511d2bcb3a45322c94af6b01996439ce5
+	options = !makeflags
+	options = !buildflags
+	source = https://elpa.mpcdf.mpg.de/html/Releases/2020.11.001/elpa-2020.11.001.tar.gz
+	sha256sums = 15591f142eeaa98ab3201d27ca9ac328e21beabf0803b011a04183fcaf6efdde
 
 pkgname = elpa
 
