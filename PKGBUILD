@@ -4,7 +4,7 @@ _name=FotoKilof
 
 pkgname=${_name,,}
 pkgver=3.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI for ImageMagick"
 url="https://github.com/TeaM-TL/FotoKilof"
 makedepends=('python-setuptools')
@@ -20,7 +20,7 @@ sha256sums=('3d40b432488b4ca350ff63ea8e99928b519c8930ec95ced0e0bfe2e3bf104f0f'
 
 prepare() {
     cd "${srcdir}/${_name}-${pkgver}"
-    patch --forward --strip=1 --input="${srcdir}/../0001-fix-character-in-setup.py-entrypoint-gui_script.patch"
+    patch --forward --strip=1 --input="${srcdir}/0001-fix-character-in-setup.py-entrypoint-gui_script.patch"
 }
 
 build() {
