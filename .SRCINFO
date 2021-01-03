@@ -1,6 +1,6 @@
 pkgbase = qt6gtk2-git
 	pkgdesc = GTK+2.0 integration plugins for Qt6
-	pkgver = 0.1.r2.g9a5610f
+	pkgver = 0.1+2+g9a5610f
 	pkgrel = 1
 	url = https://github.com/trialuser02/qt6gtk2
 	arch = x86_64
@@ -9,7 +9,8 @@ pkgbase = qt6gtk2-git
 	makedepends = git
 	depends = qt6-svg
 	depends = qt6-base
-	source = qt6gtk2-0.1.r2.g9a5610f::git+https://github.com/trialuser02/qt6gtk2.git
+	conflicts = qt6gtk2
+	source = qt6gtk2-0.1+2+g9a5610f::git+https://github.com/trialuser02/qt6gtk2.git
 	sha256sums = SKIP
 
 pkgname = qt6gtk2-git
