@@ -1,5 +1,5 @@
-# Maintainer: Jakob Riepler <aur@chaosfield.at>
-# Contributor: Trevor Bergeron <aur@sec.gd>
+# Maintainer: Jakob (XDjackieXD) <aur at chaosfield dot at>
+# Contributor: Trevor Bergeron <aur at sec dot gd>
 
 pkgname=nginx-mod-rtmp
 pkgver=1.2.1
