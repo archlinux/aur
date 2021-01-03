@@ -1,11 +1,10 @@
-Due to compatibility issues with the current version of java in the repositories,
-xmage now installs a dedicated version of java to /usr/share/xmage/java. 
-This is only applicable for x86_64 machines. For all other architectures, the package requires 
-the jre8-openjdk package. The developers only guarantee compatibility with a single version of 
-java. 
-If you have a x86_64 machine and you wish to only use the repository java,
-replace the included PKGBUILD with PKGBUILD-only-openjdk and then build the 
-package as usual
+The package uses the repository version of OpenJDK 8.
+
+If you have problems with java compatibility, you can try using the version of OpenJDK 8 that is specified by the developers.
+To do so, replace the default PKGBUILD with PKGBUILD-jre-8u201-x86_64 and then build the package as usual.
+This downloads the jre from the xmage servers as a standalone java installation and simulates the behaviour 
+of the default xmage installer.
+This is only available for the x86_64 architecture. 
 
 The developers assign 512MB of memory to each of mage-client and mage-server. 
 This is changed to 2048MB in the PKGBUILD. If you wish to modify this, change the -Xmx2048m in
