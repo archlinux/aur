@@ -1,6 +1,6 @@
 pkgbase = seq66-git
 	pkgdesc = A live-looping sequencer with an Qt graphical interface (git version)
-	pkgver = 0.90.3.r181.70e9302
+	pkgver = 0.91.3.r319.1f92b17
 	pkgrel = 1
 	url = https://github.com/ahlstromcj/seq66
 	arch = i686
@@ -8,14 +8,19 @@ pkgbase = seq66-git
 	groups = pro-audio
 	license = GPL2
 	makedepends = git
-	depends = alsa-lib
-	depends = jack
+	makedepends = alsa-lib
+	makedepends = jack
+	makedepends = liblo
 	depends = qt5-base
 	provides = seq66
-	provides = seq66=0.90.3
+	provides = seq66=0.91.3
 	conflicts = seq66
 	source = seq66::git+https://github.com/ahlstromcj/seq66.git
 	md5sums = SKIP
 
 pkgname = seq66-git
+	depends = qt5-base
+	depends = libasound.so
+	depends = libjack.so
+	depends = liblo.so
 
