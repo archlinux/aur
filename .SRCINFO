@@ -1,0 +1,21 @@
+pkgbase = keeprofi
+	pkgdesc = Access to keepass database using rofi drun menu
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://gitlab.com/hxss-linux/keeprofi
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	makedepends = curl
+	makedepends = jq
+	makedepends = findutils
+	depends = python-pyxdg
+	depends = python-xerox
+	depends = python-pynput
+	depends = python-pykeepass
+	depends = python-keyring
+	depends = desktop-notify
+	provides = keeprofi
+
+pkgname = keeprofi
+
