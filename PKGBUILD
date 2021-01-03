@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: EatMyVenom <eat.my.venomm@gmail.com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Andreas B. Wagner <andreas.wagner@lowfatcomputing.org>
 # Contributor: Doug Newgard <scimmia22 at outlook dot com>
@@ -6,7 +6,7 @@
 
 _pkgname=xcb-proto
 pkgname=${_pkgname}-git
-pkgver=xcb.rproto.1.14.1.g2b3559c
+pkgver=xcb.rproto.1.14.1.0.g496e3ce
 pkgrel=1
 pkgdesc="XML-XCB protocol descriptions"
 arch=('any')
