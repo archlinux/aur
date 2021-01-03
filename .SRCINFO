@@ -1,6 +1,6 @@
 pkgbase = starship-bin
 	pkgdesc = The cross-shell prompt for astronauts
-	pkgver = 0.47.0
+	pkgver = 0.48.0
 	pkgrel = 1
 	url = https://starship.rs/
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = starship-bin
 	optdepends = noto-fonts-emoji: emoji support for terminals
 	provides = starship
 	conflicts = starship
-	source = starship-bin-v0.47.0.tar.gz::https://github.com/starship/starship/releases/download/v0.47.0/starship-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 712a4631da370545431000e9b291ce3d9483dbe622c970c616dffa1d12bec88f
+	source = starship-bin-v0.48.0.tar.gz::https://github.com/starship/starship/releases/download/v0.48.0/starship-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = ed80a9984ed4575042b8eade585058d6efadc1130bbc5f1af6b9accf9260a900
 
 pkgname = starship-bin
 
