@@ -1,6 +1,6 @@
-diff -Naur azpainter-2.1.6/translation/en azpainter-2.1.6-tr/translation/en
---- azpainter-2.1.6/translation/en	2020-04-27 22:00:00.000000000 +0700
-+++ azpainter-2.1.6-tr/translation/en	2020-04-20 19:34:14.000000000 +0700
+diff -Naur azpainter-2.1.7/translation/en azpainter-2.1.7-tr/translation/en
+--- azpainter-2.1.7/translation/en	2020-12-04 22:00:00.000000000 +0700
++++ azpainter-2.1.7-tr/translation/en	2021-01-03 11:45:01.670027069 +0700
 @@ -203,8 +203,8 @@
  +=dim
  +=brighten
@@ -12,9 +12,18 @@ diff -Naur azpainter-2.1.6/translation/en azpainter-2.1.6-tr/translation/en
  
  #----------------
  # scale type
-diff -Naur azpainter-2.1.6/translation/ru azpainter-2.1.6-tr/translation/ru
---- azpainter-2.1.6/translation/ru	2020-04-27 22:00:00.000000000 +0700
-+++ azpainter-2.1.6-tr/translation/ru	2020-04-20 17:43:15.000000000 +0700
+@@ -1114,7 +1114,7 @@
+ 
+ ### select
+ 3000=Deselect(&D)
+-+=Reverse(&I)
+++=Inverse(&I)
+ +=Select all(&A)
+ +=Copy(&C)
+ +=Cut(&X)
+diff -Naur azpainter-2.1.7/translation/ru azpainter-2.1.7-tr/translation/ru
+--- azpainter-2.1.7/translation/ru	2020-12-04 22:00:00.000000000 +0700
++++ azpainter-2.1.7-tr/translation/ru	2021-01-03 11:38:10.450016088 +0700
 @@ -89,7 +89,7 @@
  +=[Shift: с шагом в 45°] [ПКМ/ЛКМ DBLCLK/Enter/ESC: завершить] [BS: замкнуть со стартовой точкой и завершить]
  +=[Shift: с шагом в 45°] [ПКМ/ЛКМ DBLCLK/Enter/ESC: завершить]
@@ -132,9 +141,9 @@ diff -Naur azpainter-2.1.6/translation/ru azpainter-2.1.6-tr/translation/ru
  +=Просмотрщик изображений(&I)
  +=Список фильтров(&F)
  +=Колесо цветов(&H)
-diff -Naur azpainter-2.1.6/translation/uk azpainter-2.1.6-tr/translation/uk
---- azpainter-2.1.6/translation/uk	2020-04-27 22:00:00.000000000 +0700
-+++ azpainter-2.1.6-tr/translation/uk	2020-04-20 17:43:15.000000000 +0700
+diff -Naur azpainter-2.1.7/translation/uk azpainter-2.1.7-tr/translation/uk
+--- azpainter-2.1.7/translation/uk	2020-12-04 22:00:00.000000000 +0700
++++ azpainter-2.1.7-tr/translation/uk	2021-01-03 11:38:10.450016088 +0700
 @@ -203,6 +203,8 @@
  +=Темніше
  +=Світліше
