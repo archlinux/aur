@@ -1,7 +1,7 @@
 pkgbase = python-nvector
 	pkgdesc = Nvector is a suite of tools written in Python to solve geographical position calculations.
-	pkgver = 0.7.4
-	pkgrel = 2
+	pkgver = 0.7.5
+	pkgrel = 1
 	url = https://github.com/pbrod/nvector
 	arch = any
 	license = custom
@@ -10,8 +10,8 @@ pkgbase = python-nvector
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-geographiclib
-	source = https://github.com/pbrod/nvector/archive/v0.7.4.tar.gz
-	sha256sums = b731a29fc7efcd834ae08a94fc9cefe1b622295c26289e184631afd06b5d0cd6
+	source = https://github.com/pbrod/nvector/archive/v0.7.5.tar.gz
+	sha256sums = d740e84ebbfdd2aa611b051ea921e24642b7494543cae036f1180b7711ee93e2
 
 pkgname = python-nvector
 
