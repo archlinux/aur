@@ -1,19 +1,18 @@
-# Maintainer: hfte@posteo.org
+# Maintainer: andre.menrath@posteo.de
 pkgname=sws
-pkgver=2.11.0.0
-pkgrel=6
+pkgver=2.12.1.2
+pkgrel=1
 pkgdesc="A collection of features that seamlessly integrate into REAPER"
 arch=('x86_64')
 url="https://www.sws-extension.org/"
 license=('MIT')
-depends=('reaper-bin>=5.979' 'taglib')
+depends=('reaper-bin>=6.19' 'taglib')
 makedepends=('git' 'gcc' 'make' 'cmake' 'php' 'perl')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("git://github.com/reaper-oss/sws.git"
-        "http://hosting121501.a2fb8.netcup.net/reaper_plugin_functions.tar.xz")
-sha256sums=('SKIP'
-            '970466a2b357ee8ed998c9a63fd183f158d6869acbf00c803a27b0f1f178f1d0')
+_commit=145a0070185b7a3d19ea455eb64f1f71026d5cde  # version 2.12.1.2
+source=("git://github.com/reaper-oss/sws.git#commit=$_commit")
+sha256sums=('SKIP')
 install="$pkgname.install"
 
 pkgver() {
@@ -21,7 +20,7 @@ pkgver() {
 }
 
 prepare() {
-	cp "$srcdir/reaper_plugin_functions.h" "$srcdir/$pkgname/vendor"
+	cp "$startdir/reaper_plugin_functions.h" "$srcdir/$pkgname/vendor"
 	cd "$srcdir/$pkgname"
 	git submodule update --init vendor/WDL
 }

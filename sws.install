@@ -1,5 +1,5 @@
 post_install(){
-	ln -s /opt/REAPER/UserPlugins/reaper_sws-x86_64.so ~/.config/REAPER/UserPlugins/
+    ln -s /opt/REAPER/UserPlugins/reaper_sws-x86_64.so ~/.config/REAPER/UserPlugins/
 }
 pre_remove(){
     rm ~/.config/REAPER/UserPlugins/reaper_sws-x86_64.so
