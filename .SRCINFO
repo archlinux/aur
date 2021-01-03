@@ -1,0 +1,35 @@
+pkgbase = lua-luasodium
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jprjr/luasodium
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
+	depends = libsodium
+	source = https://github.com/jprjr/luasodium/releases/download/v1.0.0/luasodium-1.0.0.tar.gz
+	md5sums = c455372b2543e78160133522109a1ec4
+
+pkgname = lua-luasodium
+	pkgdesc = Lua bindings for libsodium
+	depends = libsodium
+	depends = lua
+
+pkgname = lua51-luasodium
+	pkgdesc = Lua bindings for libsodium for Lua 5.1
+	depends = libsodium
+	depends = lua51
+
+pkgname = lua52-luasodium
+	pkgdesc = Lua bindings for libsodium for Lua 5.2
+	depends = libsodium
+	depends = lua52
+
+pkgname = lua53-luasodium
+	pkgdesc = Lua bindings for libsodium for Lua 5.3
+	depends = libsodium
+	depends = lua53
+
