@@ -55,8 +55,8 @@ _disabled_modules=(languages/mod_spidermonkey
 # BUILD CONFIGURATION ENDS                     #
 
 pkgname=freeswitch
-pkgver=1.10.2
-pkgrel=3
+pkgver=1.10.5
+pkgrel=1
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk."
 arch=('i686' 'x86_64')
 url="http://freeswitch.org/"
@@ -76,7 +76,8 @@ depends=('curl'
          'ffmpeg'
          'openssl'
          'opus'
-         'freetype2')
+         'freetype2'
+         'spandsp-fs')
 # per https://wiki.freeswitch.org/wiki/FreeSwitch_Dependencies, dependencies are downloaded and built *from upstream*, so thankfully the deps are pretty minimal.
 makedepends=('git'
              'libjpeg'
