@@ -10,7 +10,7 @@ license=('CC BY-NC-SA 4.0')
 depends=('autorandr' 'instamenu' 'instamenu-schemas')
 provides=($pkgname)
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('b4a7af30239a71b51dd9910364caa9cd3e165b660855f627b5ee6fc652090260')
+sha256sums=('16a98af44769ba4a879a6278b904c75150649056c7dd419e4dc363d49d826872')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
