@@ -1,7 +1,7 @@
 [Desktop Entry]
-Version=1.1
-Name=Ninja IDE
-GenericName=Python IDE
+Version=1.5
+Name=Ninja IDE (2.4)
+GenericName=Python IDE (2.4)
 Comment=Code with Python like a ninja
 Comment[de]=Programmiere mit Python wie ein Ninja
 Exec=ninja-ide %F
@@ -11,4 +11,4 @@ Type=Application
 Categories=Development;IDE;Qt;
 StartupNotify=true
 Keywords=Python
-MimeType=application/x-python;application/x-ninja-ide;
+MimeType=text/x-python;

@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 210977 2017-02-07 23:59:02Z bgyorgy $
 # Maintainer: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
 # Contributor: Angel Velasquez <angvp@archlinux.org>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
@@ -8,18 +7,18 @@
 
 pkgname=ninja-ide
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform IDE focused on Python application development"
 arch=('any')
 url="http://ninja-ide.org"
 license=('GPL3')
-depends=('python' 'python-pyqt5' 'qt5-declarative')
+depends=('python-pyqt5' 'qt5-declarative')
 makedepends=('python-setuptools')
 source=(https://github.com/ninja-ide/ninja-ide/archive/v$pkgver.zip
         ninja-ide.desktop
         remove-qtwebkit.patch)
 sha256sums=('aca3bc5991d97f4bff04f2ba4775d053e9127fed56927dcc949ea3d309bb7cf3'
-            '1d9863a8a4afb04bad1f66682d335aef6b9adcdb6f9e99055c0cb27543fddcd2'
+            '9da43b0b44cdeebe8ad14b2d2fa508156cebe5359a66b26482c28597835e46ab'
             'ba0d32eb194bcdfebf96e2f8a276c19f8aeadd28961fc135504d8715db5ee52c')
 
 prepare() {

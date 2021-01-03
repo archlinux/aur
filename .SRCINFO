@@ -1,19 +1,18 @@
 pkgbase = ninja-ide
 	pkgdesc = Cross-platform IDE focused on Python application development
 	pkgver = 2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ninja-ide.org
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
-	depends = python
 	depends = python-pyqt5
 	depends = qt5-declarative
 	source = https://github.com/ninja-ide/ninja-ide/archive/v2.4.zip
 	source = ninja-ide.desktop
 	source = remove-qtwebkit.patch
 	sha256sums = aca3bc5991d97f4bff04f2ba4775d053e9127fed56927dcc949ea3d309bb7cf3
-	sha256sums = 1d9863a8a4afb04bad1f66682d335aef6b9adcdb6f9e99055c0cb27543fddcd2
+	sha256sums = 9da43b0b44cdeebe8ad14b2d2fa508156cebe5359a66b26482c28597835e46ab
 	sha256sums = ba0d32eb194bcdfebf96e2f8a276c19f8aeadd28961fc135504d8715db5ee52c
 
 pkgname = ninja-ide
