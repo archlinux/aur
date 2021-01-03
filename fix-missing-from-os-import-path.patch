@@ -1,9 +1,0 @@
-diff '--color=auto' --unified --recursive --text remind-caldav/setup.py remind-caldav_/setup.py
---- remind-caldav/setup.py	2020-07-10 11:48:13.895774792 +0200
-+++ remind-caldav_/setup.py	2020-07-10 11:48:44.245420179 +0200
-@@ -1,4 +1,5 @@
- from setuptools import setup
-+from os import path
- 
- ROOTDIR = path.abspath(path.dirname(__file__))
- with open(path.join(ROOTDIR, 'README.rst'), encoding='utf-8') as f:

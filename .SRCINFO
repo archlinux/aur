@@ -1,7 +1,7 @@
 pkgbase = python-remind-caldav-git
 	pkgdesc = Tools to sync between 'remind' and CalDAV
-	pkgver = 0.7.0.r2.gfa82424
-	pkgrel = 3
+	pkgver = 0.7.1.r0.g2250b51
+	pkgrel = 1
 	url = https://github.com/jspricke/remind-caldav
 	arch = any
 	license = GPL
@@ -17,8 +17,6 @@ pkgbase = python-remind-caldav-git
 	provides = python-remind-caldav
 	conflicts = python-remind-caldav
 	source = remind-caldav::git+https://github.com/jspricke/remind-caldav
-	source = fix-missing-from-os-import-path.patch
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = python-remind-caldav-git
