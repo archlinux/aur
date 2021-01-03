@@ -16,8 +16,8 @@ source=('git+https://gitlab.com/nautilor/bfetch')
 md5sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
-  git log | head -1 | cut -d ' ' -f2
+  cd "$pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
