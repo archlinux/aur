@@ -1,7 +1,7 @@
 pkgbase = python-verboselogs
 	pkgdesc = Verbose logging level for Python's logging module
 	pkgver = 1.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/xolox/python-verboselogs
 	arch = any
 	license = MIT
