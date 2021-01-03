@@ -1,7 +1,9 @@
 # Maintainer: Maikel Wever <maikelwever@gmail.com>
+# Co-Maintainer: Matthew Gamble <git@matthewgamble.net>
+
 pkgname=python-property-manager
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Useful property variants for Python programming"
 url="https://github.com/xolox/python-property-manager"
 license=('MIT')
@@ -14,8 +16,7 @@ arch=('any')
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
-  mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
-  cp LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
 
 # vim:set ts=2 sw=2 et:

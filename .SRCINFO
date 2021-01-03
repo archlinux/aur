@@ -1,7 +1,7 @@
 pkgbase = python-property-manager
 	pkgdesc = Useful property variants for Python programming
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xolox/python-property-manager
 	arch = any
 	license = MIT
