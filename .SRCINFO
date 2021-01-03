@@ -1,6 +1,6 @@
 pkgbase = buildnotify-git
 	pkgdesc = A system tray based build status notification app for cctray.xml feeds
-	pkgver = 2.0.0.r1.g01a3349
+	pkgver = 2.1.0.r0.g1b03860
 	pkgrel = 1
 	url = https://github.com/anaynayak/buildnotify
 	arch = any

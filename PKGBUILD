@@ -1,7 +1,7 @@
 # Maintainer: Tom Wadley <tom@tomwadley.net>
 
 pkgname=buildnotify-git
-pkgver=2.0.0.r1.g01a3349
+pkgver=2.1.0.r0.g1b03860
 pkgrel=1
 pkgdesc="A system tray based build status notification app for cctray.xml feeds"
 arch=('any')
