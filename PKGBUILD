@@ -16,7 +16,7 @@ depends=('lib32-glibc' "${_pkgbasename}")
 optdepends=('ca-certificates')
 provides=(lib32-openssl)
 conflicts=(lib32-openssl)
-source=("https://www.openssl.org/source/${_pkgbasename}-${_ver}.tar.gz"
+source=("https://artfiles.org/openssl.org/source/openssl-1.1.1i.tar.gz"
         'ca-dir.patch')
 sha256sums=('SKIP'
             'SKIP')
