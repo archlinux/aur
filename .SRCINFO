@@ -1,0 +1,17 @@
+pkgbase = dug-git
+	pkgdesc = A powerful global DNS progagation checker that can output in a variety of formats.
+	pkgver = r186.220fc87
+	pkgrel = 1
+	url = https://git.kaijucode.com/matt/dug
+	arch = x86_64
+	license = ANTI-CAPITALIST SOFTWARE LICENSE v1.4
+	makedepends = git
+	makedepends = dotnet-host-bin
+	makedepends = dotnet-sdk-bin
+	depends = dotnet-runtime-bin
+	provides = dug
+	source = dug-git::git+https://git.kaijucode.com/matt/dug.git
+	md5sums = SKIP
+
+pkgname = dug-git
+
