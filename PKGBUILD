@@ -7,6 +7,7 @@ pkgdesc='GTK+2.0 integration plugins for Qt6'
 arch=(x86_64)
 url='https://github.com/trialuser02/qt6gtk2'
 license=(GPL2)
+conflicts=($pkgname-git)
 depends=(qt6-svg qt6-base gtk2)
 makedepends=(qt6-tools)
 source=("${pkgname}-$pkgver.tar.gz::${url}/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")

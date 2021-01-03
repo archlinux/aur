@@ -9,6 +9,7 @@ pkgbase = qt6gtk2
 	depends = qt6-svg
 	depends = qt6-base
 	depends = gtk2
+	conflicts = qt6gtk2-git
 	source = qt6gtk2-0.1.tar.gz::https://github.com/trialuser02/qt6gtk2/releases/download/0.1/qt6gtk2-0.1.tar.xz
 	sha256sums = 8974459b5000d5443847faf833a9ad13d7928fcc8677ed5714e8107b18b18719
 
