@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=soundux
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.5
+pkgrel=1
 pkgdesc="A cross-platform soundboard in QtQuick"
 arch=('any')
 url="https://github.com/Soundux/Soundux"
