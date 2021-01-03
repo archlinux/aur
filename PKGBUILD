@@ -8,7 +8,7 @@
 # https://www.kernel.org/category/releases.html
 # 5.4 Greg Kroah-Hartman & Sasha Levin 2019-11-24 Dec, 2021
 _LLL_VER=5.4
-_LLL_SUBVER=80
+_LLL_SUBVER=86
 
 # Bisect debug, v5.4.47 -> v5.4.48
 _Bisect_debug=off # on, test, off
@@ -32,20 +32,43 @@ _NUMA_disable=y
 # http://ck.kolivas.org/patches/5.0/
 # https://wiki.archlinux.org/index.php/Linux-ck
 _CK_VER=1
-_CK_PATCH="http://ck.kolivas.org/patches/5.0/${_LLL_VER}/${_LLL_VER}-ck${_CK_VER}/patch-${_LLL_VER}-ck${_CK_VER}.xz"
+_CK_PATCH_SRC="http://ck.kolivas.org/patches/5.0/${_LLL_VER}/${_LLL_VER}-ck${_CK_VER}/patch-${_LLL_VER}-ck${_CK_VER}.xz"
+_CK_PATCH_PATCH=(
+    'ck-patch-for-5.4.57+.patch'
+    'ck-patch-for-5.4.62+.patch'
+)
 
 # Ultra Kernel Samepage Merging
 _UKSM_VER=0.1.2.6
 _UKSM_COMMIT=150e27c4e7f66e4519c89573305eca8c42091f4d
-_UKSM_PATCH="https://raw.githubusercontent.com/dolohow/uksm/${_UKSM_COMMIT}/v5.x/uksm-${_LLL_VER}.patch"
+_UKSM_PATCH_SRC="https://raw.githubusercontent.com/dolohow/uksm/${_UKSM_COMMIT}/v5.x/uksm-${_LLL_VER}.patch"
+_UKSM_PATCH_PATCH=(
+    'uksm-patch-for-5.4.33+.patch'
+    'uksm-patch-for-5.4.69+.patch'
+)
 
 # CJKTTY patch 
 # https://github.com/Gentoo-zh/linux-cjktty
-# https://github.com/torvalds/linux/compare/v5.4...Gentoo-zh:5.4-utf8
-_CJKTTY_LLL_VER=5.4
-_CJKTTY_PATCH_FILE=linux-cjktty-${_CJKTTY_LLL_VER}
-_CJKTTY_PATCH_URL="https://github.com/torvalds/linux/compare/v${_CJKTTY_LLL_VER}...Gentoo-zh:${_CJKTTY_LLL_VER}-utf8.patch"
-_CJKTTY_PATCH="${_CJKTTY_PATCH_FILE}.patch::${_CJKTTY_PATCH_URL}"
+# https://github.com/torvalds/linux/compare/v5.4...Gentoo-zh:5.4-utf8.patch
+_CJKURL_C='https://github.com/Gentoo-zh/linux-cjktty/commit'
+_CJKTTY_PATCH=(
+    "cjktty-10-fix-255-glyph-limit-prepare-for-CJK-font-support.patch"
+    "cjktty-20-diable-setfont-if-we-have-cjk-font-in-kernel.patch"
+    "cjktty-30-add-cjk-font-that-has-65536-chars.patch"
+    "cjktty-40-fix-depend-issue.patch"
+)
+_CJKTTY_PATCH_SRC=(
+    "cjktty-10-fix-255-glyph-limit-prepare-for-CJK-font-support.patch::${_CJKURL_C}/345872b7b6ef67e59e26d45d2a1c8fda6b88f106.patch"
+    "cjktty-20-diable-setfont-if-we-have-cjk-font-in-kernel.patch::${_CJKURL_C}/71ce685ec1f606831b74d7bad8731545a0f37829.patch"
+    "cjktty-30-add-cjk-font-that-has-65536-chars.patch::${_CJKURL_C}/531825eef130af268a2b144a70d852cf56de346e.patch"
+    "cjktty-40-fix-depend-issue.patch::${_CJKURL_C}/52bee61535169e59522f450201112d2f4fdfbeb5.patch"
+)
+_CJKTTY_PATCH_PATCH=(
+    'cjktty-11-patch-for-5.4.36+.patch'
+    'cjktty-11-patch-for-5.4.54+.patch'
+    'cjktty-11-patch-for-5.4.62+.patch'
+    'cjktty-12-patch-for-5.4.66+.patch'
+)
 
 _PATHSET_DESC="ck${_CK_VER} uksm-${_UKSM_VER} and cjktty"
 
@@ -67,19 +90,14 @@ source=(
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
         #"https://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.sign"
-        ${_CK_PATCH}
-        ${_UKSM_PATCH}
-        ${_CJKTTY_PATCH}
+        ${_CK_PATCH_SRC}
+        ${_CK_PATCH_PATCH[@]}
+        'ck-fix-broken-sleep2ram-5.4.48+.patch' # https://github.com/zen-kernel/zen-kernel/commit/fb7e2cfaf61cf5f9c2336331e73296f455bd2d51.patch
+        ${_UKSM_PATCH_SRC}
+        ${_UKSM_PATCH_PATCH[@]}
+        ${_CJKTTY_PATCH_SRC[@]}
+        ${_CJKTTY_PATCH_PATCH[@]}
         'sphinx-workaround.patch'
-        'ck-patch-for-5.4.57+.patch'
-        'ck-patch-for-5.4.62+.patch'
-        'fix-ck-broken-sleep2ram-5.4.48+.patch' # https://github.com/zen-kernel/zen-kernel/commit/fb7e2cfaf61cf5f9c2336331e73296f455bd2d51.patch
-        'uksm-patch-for-5.4.33+.patch'
-        'uksm-patch-for-5.4.69+.patch'
-        'linux-cjktty-patch-for-5.4.36+.patch'
-        'linux-cjktty-patch-for-5.4.54+.patch'
-        'linux-cjktty-patch-for-5.4.62+.patch'
-        'linux-cjktty-patch-for-5.4.66+.patch'
         'config'         # the main kernel config file
         '60-linux.hook'  # pacman hook for depmod
         '90-linux.hook'  # pacman hook for initramfs regeneration
@@ -92,20 +110,23 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            '69e2883eb909bb3bd2537236806b78f5c0ab093b56c03e0108c84476b60564ec'
+            '203ac7aee6f196f8a3ae5e98b214baf79d0d7924477cf3b262b6bb6658d68f05'
             'f445eea4d0ec2015a25f1ad625c848f4f2252099795966fa4105e0aa29674c5c'
-            '81d34bf02e771a126af5cb382d44a86dcc759c88b7c89fc7e5b7737731b9130e'
-            '50213f3270499fceb452946252d61f5471571c77baf3dd510fbb00cfa9831c9a'
-            'b7c814c8183e4645947a6dcc3cbf80431de8a8fd4e895b780f9a5fd92f82cb8e'
             'a10a4848c7a9842c0c7760b087ea38a4356dc1a2c2e26334cb0106c25785554f'
             '0334391900f31d6aaedaa68e8917f93262ba3e523f2654774b289e9b18c1a923'
             '961ed94b8d905f1e901cacb08d253c4170af0a25828111b7558d9c874e923558'
+            '81d34bf02e771a126af5cb382d44a86dcc759c88b7c89fc7e5b7737731b9130e'
             '6826624f65276927de012f040e77b02231fe6345b9da7c702deacd9372ea001e'
             'cdcd0e0ebd24d9b66c216df01b02da23760a44fe2a451137190f89d18a4c7f59'
-            '573f1c40951a6ee4cf6b07a6a8a1123b00fcd8bff29843905cf191e08f1d87f2'
-            '2c9faabb5e09b1f818b051ced3eb90b6c04aa08616952d99eedf328c7c8dda2f'
-            '4d511fb62966549b9ea4a1d97769f79e4d66fc141cd0b001e7d286367a038a09'
-            '1f0af2c1044cf177b84fea8bb49aaa5cf9282c5588a7995798d63177565b0727'
+            '1f3c99cfa8c422c11ea139333e4c7da86d994965dee99ae0849e4b85bfd3b269'
+            '99e90ec64a933f39182d3e6030708b410eb06072c2e69330e9a38868b4073856'
+            '48c6d877bbe0613d407b3ba069edc26b2447a86ea5b5e79f257087986a3731d5'
+            '7ec0d906fa5a199cb46e3d6b42b11aca566eb714682e586d3bbf95702f9d9564'
+            'fa7950b5763a592ca2a04c423842451ac79633deebf77c730fc8ee35dfac2d45'
+            '81bb112fed28c8ef22d7e02eb4150a76c8d549c72775e65cd3ecf10fa5fe1b4e'
+            '7b3eea4462811a26c3c32721009a807dcaee5b8fbf1ad3e0cdad851679c9246e'
+            '0c6385f8d5a61b09d046babe5351ca638ccb5a263e0f167d2b311f57054bc8d1'
+            'b7c814c8183e4645947a6dcc3cbf80431de8a8fd4e895b780f9a5fd92f82cb8e'
             '7ce388e429d8df479a721285e445e116c5ee41e3126a702862e59056460b655e'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
@@ -141,28 +162,36 @@ prepare() {
   # Patch source with ck patch set
   msg "Patching source with ck${_CK_VER} including BFS"
   cp "../patch-${_LLL_VER}-ck${_CK_VER}" "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
-  patch -i ../ck-patch-for-5.4.57+.patch "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
-  patch -i ../ck-patch-for-5.4.62+.patch "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
+  for p in ${_CK_PATCH_PATCH[@]}; do
+    patch -Ni ../$p "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
+  done
   patch -Np1 -i "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
   # Bisect debug result about ck
   if [ "$_Bisect_debug" != "on" ]; then
     #see https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/patch/?id=f7757368e0f0b3e108088ca7b5b8abda6faa7ebc
-    patch -p1 -i "../fix-ck-broken-sleep2ram-5.4.48+.patch"
+    patch -p1 -i "../ck-fix-broken-sleep2ram-5.4.48+.patch"
   fi
 
   msg "Patching source with uksm ${_UKSM_VER} patches"
   cp "../uksm-${_LLL_VER}.patch" "../uksm-${_LLL_VER}.${_LLL_SUBVER}.patch"
-  patch -i ../uksm-patch-for-5.4.33+.patch "../uksm-${_LLL_VER}.${_LLL_SUBVER}.patch"
-  patch -i ../uksm-patch-for-5.4.69+.patch "../uksm-${_LLL_VER}.${_LLL_SUBVER}.patch"
+  for p in ${_UKSM_PATCH_PATCH[@]}; do
+    patch -Ni ../$p "../uksm-${_LLL_VER}.${_LLL_SUBVER}.patch"
+  done
   patch -Np1 -i "../uksm-${_LLL_VER}.${_LLL_SUBVER}.patch"
 
   msg "Patching source with Gentoo-zh/linux-cjktty patches"
-  cp "../${_CJKTTY_PATCH_FILE}.patch" "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
-  patch -i ../linux-cjktty-patch-for-5.4.36+.patch "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
-  patch -i ../linux-cjktty-patch-for-5.4.54+.patch "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
-  patch -i ../linux-cjktty-patch-for-5.4.62+.patch "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
-  patch -i ../linux-cjktty-patch-for-5.4.66+.patch "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
-  patch -Np1 -i "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
+  mkdir ../cjktty-patches
+  for p in ${_CJKTTY_PATCH[@]}; do
+    cp ../$p ../cjktty-patches/
+  done
+  cd ../cjktty-patches
+  for p in ${_CJKTTY_PATCH_PATCH[@]}; do
+    patch -Ni ../$p
+  done
+  cd ../${_srcname}
+  for p in ${_CJKTTY_PATCH[@]}; do
+    patch -Np1 -i "../cjktty-patches/$p"
+  done
 
   msg "Patching sphinx extensions for htmldocs"
   patch -Np1 -i ../sphinx-workaround.patch

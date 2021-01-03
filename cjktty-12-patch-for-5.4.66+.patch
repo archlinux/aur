@@ -1,5 +1,5 @@
---- linux-cjktty-5.4.65.patch	2020-09-18 00:19:07.610052000 +0800
-+++ linux-cjktty-5.4.66.patch	2020-09-18 19:03:23.870884705 +0800
+--- cjktty-10-fix-255-glyph-limit-prepare-for-CJK-font-support.patch	2020-09-18 00:19:07.610052000 +0800
++++ cjktty-10-fix-255-glyph-limit-prepare-for-CJK-font-support-5.4.66.patch	2020-09-18 19:03:23.870884705 +0800
 @@ -284,7 +284,7 @@
   #include <linux/module.h>
   #include <linux/slab.h>

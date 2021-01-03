@@ -1,5 +1,5 @@
---- linux-cjktty-5.4.patch	2020-04-30 11:29:47.000000000 +0800
-+++ linux-cjktty-5.4.36.patch	2020-04-30 11:36:17.000000000 +0800
+--- cjktty-10-fix-255-glyph-limit-prepare-for-CJK-font-support.patch	2020-04-30 11:29:47.000000000 +0800
++++ cjktty-10-fix-255-glyph-limit-prepare-for-CJK-font-support-5.4.36.patch	2020-04-30 11:36:17.000000000 +0800
 @@ -137,7 +137,7 @@
   	if (new_cols == vc->vc_cols && new_rows == vc->vc_rows)
   		return 0;

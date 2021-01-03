@@ -8,7 +8,7 @@ patch-?.*-ck?.xz
 
 uksm-?.*.patch
 
-linux-cjktty-?.*.patch
+cjktty-?0-*.patch
 
 pkg/*
 src/*

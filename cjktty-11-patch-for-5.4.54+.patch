@@ -1,5 +1,5 @@
---- linux-cjktty-5.4.53.patch	2020-08-08 17:16:04.000000000 +0800
-+++ linux-cjktty-5.4.54.patch	2020-08-08 23:18:35.000000000 +0800
+--- cjktty-10-fix-255-glyph-limit-prepare-for-CJK-font-support.patch	2020-08-08 17:16:04.000000000 +0800
++++ cjktty-10-fix-255-glyph-limit-prepare-for-CJK-font-support-5.4.54.patch	2020-08-08 23:18:35.000000000 +0800
 @@ -111,11 +111,11 @@
   		notify_update(vc);
   	}

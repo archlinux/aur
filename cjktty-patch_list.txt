@@ -1,0 +1,58 @@
+LTS 5.4.x
+---------
+
+
+PATCH 1
+-------
+[vt] fix 255 glyph limit, prepare for CJK font support 
+
+```
+file='10-fix-255-glyph-limit-prepare-for-CJK-font-support.patch'
+url='https://github.com/Gentoo-zh/linux-cjktty/commit/345872b7b6ef67e59e26d45d2a1c8fda6b88f106.patch'
+wget -c $url -O $file
+```
+
+1.1 [vt]
+patch=(
+    '11-patch-for-5.4.36+.patch'
+    '11-patch-for-5.4.54+.patch'
+    '11-patch-for-5.4.62+.patch'
+)
+
+1.2 [fbdev]
+patch=(
+    '12-patch-for-5.4.66+.patch'
+)
+
+1.3 [font]
+
+
+PATCH 2
+-------
+[PATCH] [vt] diable setfont if we have cjk font in kernel
+
+```
+file='20-diable-setfont-if-we-have-cjk-font-in-kernel.patch'
+url='https://github.com/Gentoo-zh/linux-cjktty/commit/71ce685ec1f606831b74d7bad8731545a0f37829.patch'
+wget -c $url -O $file
+```
+
+PATCH 3
+-------
+[vt] add cjk font that has 65536 chars
+
+```
+file='30-add-cjk-font-that-has-65536-chars.patch'
+url='https://github.com/Gentoo-zh/linux-cjktty/commit/531825eef130af268a2b144a70d852cf56de346e.patch'
+wget -c $url -O $file
+```
+
+PATCH 4
+-------
+[vt] fix depend issue. thanks to 金步国 
+
+```
+file='40-fix-depend-issue.patch'
+url='https://github.com/Gentoo-zh/linux-cjktty/commit/52bee61535169e59522f450201112d2f4fdfbeb5.patch'
+wget -c $url -O $file
+```
