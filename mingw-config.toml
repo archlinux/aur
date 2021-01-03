@@ -138,6 +138,9 @@ use-libcxx = false
 # Whether or not to specify `-DLLVM_TEMPORARILY_ALLOW_OLD_TOOLCHAIN=YES`
 allow-old-toolchain = false
 
+# Whether to include the Polly optimizer.
+polly = false
+
 # =============================================================================
 # General build configuration options
 # =============================================================================
@@ -382,6 +385,10 @@ debug-assertions-std = false
 # Overrides the `debug-assertions` option, if defined.
 #
 # Defaults to rust.debug-assertions value
+#
+# If you see a message from `tracing` saying
+# `max_level_info` is enabled and means logging won't be shown,
+# set this value to `true`.
 debug-logging = false
 
 # Debuginfo level for most of Rust code, corresponds to the `-C debuginfo=N` option of `rustc`.
@@ -474,7 +481,7 @@ dist-src = false
 
 # This is an array of the codegen backends that will be compiled for the rustc
 # that's being compiled. The default is to only build the LLVM codegen backend,
-# and currently the only standard option supported is `"llvm"`
+# and currently the only standard options supported are `"llvm"` and `"cranelift"`.
 codegen-backends = ["llvm"]
 
 # Indicates whether LLD will be compiled and made available in the sysroot for
@@ -523,7 +530,8 @@ jemalloc = false
 test-compare-mode = false
 
 # Use LLVM libunwind as the implementation for Rust's unwinder.
-llvm-libunwind = false
+# Accepted values are 'in-tree' (formerly true), 'system' or 'no' (formerly false).
+llvm-libunwind = 'no'
 
 # Enable Windows Control Flow Guard checks in the standard library.
 # This only applies from stage 1 onwards, and only for Windows targets.
@@ -577,6 +585,15 @@ linker = "cc"
 # the NDK for the target lives. This is used to find the C compiler to link and
 # build native code.
 #android-ndk = "/path/to/ndk"
+
+# Build the sanitizer runtimes for this target.
+# This option will override the same option under [build] section.
+#sanitizers = false
+
+# Build the profiler runtime for this target(required when compiling with options that depend
+# on this runtime, such as `-C profile-generate` or `-Z instrument-coverage`).
+# This option will override the same option under [build] section.
+#profiler = false
 
 # Force static or dynamic linkage of the standard library for this target. If
 # this target is a host for rustc, this will also affect the linkage of the
@@ -639,6 +656,15 @@ linker = "i686-w64-mingw32-cc"
 # build native code.
 #android-ndk = "/path/to/ndk"
 
+# Build the sanitizer runtimes for this target.
+# This option will override the same option under [build] section.
+#sanitizers = false
+
+# Build the profiler runtime for this target(required when compiling with options that depend
+# on this runtime, such as `-C profile-generate` or `-Z instrument-coverage`).
+# This option will override the same option under [build] section.
+#profiler = false
+
 # Force static or dynamic linkage of the standard library for this target. If
 # this target is a host for rustc, this will also affect the linkage of the
 # compiler itself. This is useful for building rustc on targets that normally
@@ -699,6 +725,15 @@ linker = "x86_64-w64-mingw32-cc"
 # the NDK for the target lives. This is used to find the C compiler to link and
 # build native code.
 #android-ndk = "/path/to/ndk"
+
+# Build the sanitizer runtimes for this target.
+# This option will override the same option under [build] section.
+#sanitizers = false
+
+# Build the profiler runtime for this target(required when compiling with options that depend
+# on this runtime, such as `-C profile-generate` or `-Z instrument-coverage`).
+# This option will override the same option under [build] section.
+#profiler = false
 
 # Force static or dynamic linkage of the standard library for this target. If
 # this target is a host for rustc, this will also affect the linkage of the
