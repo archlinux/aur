@@ -1,6 +1,6 @@
 pkgbase = lua-luatrace-git
 	pkgver = r143.d9d8918
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/geoffleyland/luatrace
 	arch = x86_64
 	arch = i686

@@ -3,7 +3,7 @@
 pkgname=('lua-luatrace-git' 'lua51-luatrace-git' 'lua52-luatrace-git' 'lua53-luatrace-git')
 _pkgbase='luatrace'
 pkgver=r143.d9d8918
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686')
 url='https://github.com/geoffleyland/luatrace'
 license=('MIT')
@@ -71,7 +71,7 @@ package_lua-luatrace-git() {
     install -Dm644 lua/uatrace/*.lua "$pkgdir/usr/share/lua/5.4/uatrace/"
     install -Dm644 lua/jit/*.lua "$pkgdir/usr/share/lua/5.4/jit/"
 
-    install -Dm644 LICENSE "pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     install -Dm755 luatrace.profile "$pkgdir/usr/bin/luatrace.profile"
 }
@@ -96,7 +96,7 @@ package_lua51-luatrace-git() {
     install -Dm644 lua/uatrace/*.lua "$pkgdir/usr/share/lua/5.1/uatrace/"
     install -Dm644 lua/jit/*.lua "$pkgdir/usr/share/lua/5.1/jit/"
 
-    install -Dm644 LICENSE "pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm755 luatrace.profile5.1 "$pkgdir/usr/bin/luatrace.profile5.1"
 }
 
@@ -120,7 +120,7 @@ package_lua52-luatrace-git() {
     install -Dm644 lua/uatrace/*.lua "$pkgdir/usr/share/lua/5.2/uatrace/"
     install -Dm644 lua/jit/*.lua "$pkgdir/usr/share/lua/5.2/jit/"
 
-    install -Dm644 LICENSE "pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm755 luatrace.profile5.2 "$pkgdir/usr/bin/luatrace.profile5.2"
 }
 
@@ -144,6 +144,6 @@ package_lua53-luatrace-git() {
     install -Dm644 lua/uatrace/*.lua "$pkgdir/usr/share/lua/5.3/uatrace/"
     install -Dm644 lua/jit/*.lua "$pkgdir/usr/share/lua/5.3/jit/"
 
-    install -Dm644 LICENSE "pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm755 luatrace.profile5.3 "$pkgdir/usr/bin/luatrace.profile5.3"
 }
