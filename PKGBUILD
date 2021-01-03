@@ -3,7 +3,7 @@
 # Contributor: Juri Grabowski <archlinux-aur at juri-grabowski dot de>
 
 pkgname=blogc
-pkgver=0.20.0
+pkgver=0.20.1
 pkgrel=1
 pkgdesc="A blog compiler"
 arch=('i686' 'x86_64' 'pentium4' 'i486')
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('glibc')
 options=('!emptydirs')
 source=("https://github.com/blogc/blogc/releases/download/v${pkgver}/blogc-${pkgver}.tar.gz")
-sha256sums=('189e0fd21d01db950727fd2121bdaea71aa087527d704a7c13f9bcf1cffb95fb')
+sha256sums=('2ebc929d014bae02fe44377a9b3988f7a3b8259ef579e13daf027f52d9aaf319')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
