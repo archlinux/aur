@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="A powerful global DNS progagation checker that can output in a variety of formats."
 arch=(x86_64)
 url="https://git.kaijucode.com/matt/dug"
-license=('ANTI-CAPITALIST SOFTWARE LICENSE v1.4')
+license=('custom:ANTI-CAPITALIST SOFTWARE LICENSE v1.4')
 depends=(dotnet-runtime-bin)
 makedepends=(git dotnet-host-bin dotnet-sdk-bin)
 provides=(dug)
@@ -35,5 +35,5 @@ package() {
   install -D -m755 "./cli/bin/Release/net5.0/publish/dug" -t "$pkgdir/usr/lib/dug" 
 
   mkdir -p "$pkgdir/usr/bin"
-  ln -s "$pkgdir/usr/lib/dug/dug" "$pkgdir/usr/bin/dug"
+  ln -s "/usr/lib/dug/dug" "$pkgdir/usr/bin/dug"
 }
