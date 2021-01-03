@@ -19,9 +19,8 @@ provides=(openssl)
 conflicts=(openssl)
 source=("https://www.openssl.org/source/openssl-${_ver}.tar.gz"{,.asc}
 	'ca-dir.patch')
-sha256sums=('e8be6a35fe41d10603c3cc635e93289ed00bf34b79671a3a4de64fcee00d5242'
-	    'SKIP'
-	    '75aa8c2c638c8a3ebfd9fa146fc61c7ff878fc997dc6aa10d39e4b2415d669b2')
+sha256sums=('SKIP'
+	    'SKIP')
 #validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
 #	      '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C')
 
