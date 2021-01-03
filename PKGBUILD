@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <gpe@grahamedgecombe.com>
 pkgname=trellis-git
-pkgver=r977.9b3db7b
+pkgver=r979.60c05b3
 pkgrel=1
 pkgdesc='Tools and scripts which allow you to document the bit-stream format of Lattice ECP5 series FPGAs'
 arch=('i686' 'x86_64')
