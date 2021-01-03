@@ -1,14 +1,14 @@
 # Maintainer: Gimmeapill <gimmeapill at gmail dot com>
 
 pkgname=xruncounter-git
-pkgver=r6.0b383f6
+pkgver=r17.6c85db6
 pkgrel=1
 pkgdesc="Small tool to measure jack xruns under DSP load"
 arch=('i686' 'x86_64')
 url="https://github.com/Gimmeapill/xruncounter"
 license=('GPL3')
 depends=('jack')
-makedepends=('git' 'jack')
+makedepends=('git')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}::git+https://github.com/Gimmeapill/xruncounter")
