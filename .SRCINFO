@@ -1,7 +1,7 @@
 pkgbase = filtron-git
-	pkgdesc = Reverse HTTP filtering proxy (git)
-	pkgver = 0+r51+93f8b22
-	pkgrel = 2
+	pkgdesc = Reverse HTTP filtering proxy. This is the current git version from master branch.
+	pkgver = 0+r61+e141a49
+	pkgrel = 1
 	url = https://github.com/asciimoo/filtron
 	install = filtron.install
 	arch = i686
