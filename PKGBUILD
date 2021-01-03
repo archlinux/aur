@@ -65,7 +65,7 @@ _localmodcfg=
 
 pkgbase=linux-ck
 pkgver=5.10.4
-pkgrel=3
+pkgrel=4
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -87,6 +87,7 @@ source=(
   0004-drm-amd-display-Add-get_dig_frontend-implementation-.patch
   0005-btrfs-Fix-500-2000-performance-regression-w-5.10.patch
   0006-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch
+  0007-ALSA-hda-hdmi-fix-locking-in-silent_stream_disable.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -97,12 +98,13 @@ b2sums=('57f6d719451aacfd298452703ae02e6188885500e8cdf18fffa6b9967b0934a23cd378a
         'cb3a58e4eef8395b75887d94a84bba25f05fbec8f576a791623057a190a1d51b412a19ecf1b600ac3f9f6c46968eb0e130d571743e61afc231a97146ee4b52d0'
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
         '067f3389124fdd937ca69e9e9568b1b3194791960a093e81037051eb6d25e80b40bf7f60c61373ac9e92bff9db760766009b1e6f9ee8429a883bb7fce2d60f8a'
-        '079e6f80f72716b8b70bea6f4fa3813c7d2285e8486cb1e779a04351b8138b6d3415ecd7c69a32abcca05bf4cd8694bca3799a37e51b7e2814e88b7661775a08'
-        'f4842ff80ddc86c07496a20cbb39a7bc9725bcdd3b0c6d0f92f3a708a4441d36b5655413830e3a950e263d14e9d44f71d877b3c7ad8625179bf8bb46ef71fc6b'
-        '823fa132b87921d1eeb49f26eb3ba07e96c422261992c3eb3640d453d82d058bd5b62d47117582667b6c6f514b43b47c686e8da0e3d35b3b4ad700f2950657ee'
-        '097a23f29aca109935c4d39b8ef1731839229890004c0c649df509a6d05b17dc0e5cc4d44a4394ba822efec642e6d17205cf5372408fdc50db1eb82a2a5dfcfe'
-        'ae453b4712cb26865aee79fae34efa48b223faa49244f3fb1ca1b5e896ae39db2662516593cb755dee47469c6e9649cd9d5e340751141dad9d33031d653bc2d1'
-        '81b8d7581757b07e60f4f42bc5d916ccaa773ab7e82bccb9ba2f4ac3ec3d6d6aba60ce41f9308e256b00be12ad9871eea0e93a7349446ac199c04dc6fbab6592')
+        '7d2ef86a15ead6c946051c117a8ed97056e92a25a274455c5cc62ec65ff92bda7a50032b32c8019180f233a54e778becc45751741ae4d87db8f56ef520ca1e83'
+        '8ea9d2b7809728c3de05768fea5d8838fe20de8aaaed9106f26c0e8fc051921668d0c31345f200d06005403dec565690f828dbbcd38504079fe6fccbf742be61'
+        'd361b313a3dcd761833b8e2e40201df5e5b93c472e8a06f4684feb24d6e174405e6e4328dc0c449b9b0263e87224b3e1f4a52c873b666a93055979c9d2e2bf59'
+        'a0eb84f3be3ce81c8faebfcef5cf41aa21fb3c49a20c5d6a50396b7aa50a6a88f5509a13541d2db3be3fc422e59dc102d18ad9934471629c627fd96bfa79a091'
+        '2853fa5257b96b11bcbf60ed68df09938ebb15f81c1bb6aa763c721c4e55f440fd27f9a6b49e8f9a1788948928299810f9e8ea43f0759b06cae3dd140902f93e'
+        '46a30c86206717fe6804d8e88693b90382b07fdad91d8fd7220e398e41f87a4b5cb5be70285241a3fc81c62ced6021f1710ce0426f3161285c254db9e5484d86'
+        'eec26b472efda62e27d26c2033158e970a5eadb30d38fc4de59c36fafe53efc1e220b7d57189abcd5a2697d242df8475cf2eebfd1ad6373804b5456dbcc14098')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -132,9 +134,21 @@ prepare() {
   # and can easily overwhelm a system with 32 GB of memory using a tmpfs build
   # partition ... this was introduced by FS#66260, see:
   # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/linux&id=663b08666b269eeeeaafbafaee07fd03389ac8d7
-  sed -i -e 's/CONFIG_DEBUG_INFO=y/# CONFIG_DEBUG_INFO is not set/' \
+  sed -i -e 's/CONFIG_CGROUP_BPF=y/# CONFIG_CGROUP_BPF is not set/' \
+      -i -e 's/CONFIG_BPF_LSM=y/# CONFIG_BPF_LSM is not set/' \
+      -i -e 's/CONFIG_USERMODE_DRIVER=y/# CONFIG_BPF_PRELOAD is not set/' \
+      -i -e '/CONFIG_BPF_PRELOAD=y/d' \
+      -i -e '/CONFIG_BPF_PRELOAD_UMD=m/d' \
+      -i -e '/CONFIG_BPF_STREAM_PARSER=y/g' \
+      -i -e 's/CONFIG_BPF_LIRC_MODE2=y/# CONFIG_BPF_LIRC_MODE2 is not set/' \
+      -i -e 's/CONFIG_DEBUG_INFO=y/# CONFIG_DEBUG_INFO is not set/' \
+      -i -e '/# CONFIG_DEBUG_INFO_REDUCED is not set/d' \
+      -i -e '/# CONFIG_DEBUG_INFO_COMPRESSED is not set/d' \
+      -i -e '/# CONFIG_DEBUG_INFO_SPLIT is not set/d' \
       -i -e '/CONFIG_DEBUG_INFO_DWARF4=y/d' \
-      -i -e '/CONFIG_DEBUG_INFO_BTF=y/d' ./.config
+      -i -e '/CONFIG_DEBUG_INFO_BTF=y/d' \
+      -i -e '/# CONFIG_GDB_SCRIPTS is not set/d' \
+      -i -e 's/CONFIG_BPF_KPROBE_OVERRIDE=y/# CONFIG_BPF_KPROBE_OVERRIDE is not set/' ./.config
 
   # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
   sed -i -e 's/# CONFIG_PSI_DEFAULT_DISABLED is not set/CONFIG_PSI_DEFAULT_DISABLED=y/' ./.config
