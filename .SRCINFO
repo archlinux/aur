@@ -1,6 +1,6 @@
 pkgbase = cointop
 	pkgdesc = An interactive terminal based UI application for tracking cryptocurrencies
-	pkgver = 1.5.4
+	pkgver = 1.5.5
 	pkgrel = 1
 	url = https://github.com/miguelmota/cointop
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = cointop
 	license = APACHE
 	makedepends = go
 	depends = glibc
-	source = cointop-1.5.4.tar.gz::https://github.com/miguelmota/cointop/archive/v1.5.4.tar.gz
-	sha256sums = 9d6d11e71c3c754a654b191a6813a41427c717966999ce335f0f155358a2292b
+	source = cointop-1.5.5.tar.gz::https://github.com/miguelmota/cointop/archive/v1.5.5.tar.gz
+	sha256sums = ec0a0765d768d5f019cf47b1173db84881b5540088cc0e5570fb8140355d3199
 
 pkgname = cointop
 
