@@ -1,7 +1,7 @@
 pkgbase = qccrypt
 	pkgdesc = A cross-plateform frontend for ccrypt software
 	pkgver = 0.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://qccrypt.free.fr/
 	arch = i686
 	arch = x86_64
@@ -14,11 +14,13 @@ pkgbase = qccrypt
 	source = x-cpt.xml
 	source = qccrypt.xml
 	source = x-cpt.desktop
+	source = icons.zip
 	md5sums = f6c50e4c6a3de42700281afcbcfbbac7
 	md5sums = 6cee2c9d496a0a2b1041da68f5d20e72
 	md5sums = bf60d5c11809910d2a9c98aaa8217911
 	md5sums = 14af5e3ee3813b1812145cf20defdb70
 	md5sums = 6390b8d0119570f4d7d2deb7c05b61e8
+	md5sums = 515543b430023f2b07906a6dd63cb3e5
 
 pkgname = qccrypt
 

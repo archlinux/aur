@@ -2,13 +2,13 @@
 
 pkgname=qccrypt
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A cross-plateform frontend for ccrypt software'
 arch=('i686' 'x86_64')
 url="http://qccrypt.free.fr/"
 license=('GPL2')
 depends=('ccrypt' 'libxcb' 'qt5-base')
-source=("http://qccrypt.free.fr/download/qccrypt-${pkgver}-src.zip" qccrypt.desktop x-cpt.xml qccrypt.xml x-cpt.desktop)
+source=("http://qccrypt.free.fr/download/qccrypt-${pkgver}-src.zip" qccrypt.desktop x-cpt.xml qccrypt.xml x-cpt.desktop "icons.zip")
 
 build() {
 	cd "${srcdir}/qccrypt-${pkgver}-src"
@@ -25,10 +25,27 @@ package() {
 	install -Dm644 x-cpt.xml "${pkgdir}/usr/share/mime/application/x-cpt.xml"
 	install -Dm644 qccrypt.xml "${pkgdir}/usr/share/mime/packages/qccrypt.xml"
 	install -Dm644 x-cpt.desktop "${pkgdir}/usr/share/mimelnk/application/x-cpt.desktop"
+	install -Dm644 icons/hicolor/16x16/apps/qccrypt.png "${pkgdir}/usr/share/icons/hicolor/16x16/apps/qccrypt.png"
+	install -Dm644 icons/hicolor/16x16/mimetypes/application-x-cpt.png "${pkgdir}/usr/share/icons/hicolor/16x16/mimetypes/application-x-cpt.png"
+	install -Dm644 icons/hicolor/24x24/apps/qccrypt.png "${pkgdir}/usr/share/icons/hicolor/24x24/apps/qccrypt.png"
+	install -Dm644 icons/hicolor/24x24/mimetypes/application-x-cpt.png "${pkgdir}/usr/share/icons/hicolor/24x24/mimetypes/application-x-cpt.png"
+	install -Dm644 icons/hicolor/32x32/apps/qccrypt.png "${pkgdir}/usr/share/icons/hicolor/32x32/apps/qccrypt.png"
+	install -Dm644 icons/hicolor/32x32/mimetypes/application-x-cpt.png "${pkgdir}/usr/share/icons/hicolor/32x32/mimetypes/application-x-cpt.png"
+	install -Dm644 icons/hicolor/48x48/apps/qccrypt.png "${pkgdir}/usr/share/icons/hicolor/48x48/apps/qccrypt.png"
+	install -Dm644 icons/hicolor/48x48/mimetypes/application-x-cpt.png "${pkgdir}/usr/share/icons/hicolor/48x48/mimetypes/application-x-cpt.png"
+	install -Dm644 icons/hicolor/64x64/apps/qccrypt.png "${pkgdir}/usr/share/icons/hicolor/64x64/apps/qccrypt.png"
+	install -Dm644 icons/hicolor/64x64/mimetypes/application-x-cpt.png "${pkgdir}/usr/share/icons/hicolor/64x64/mimetypes/application-x-cpt.png"
+	install -Dm644 icons/hicolor/96x96/apps/qccrypt.png "${pkgdir}/usr/share/icons/hicolor/96x96/apps/qccrypt.png"
+	install -Dm644 icons/hicolor/96x96/mimetypes/application-x-cpt.png "${pkgdir}/usr/share/icons/hicolor/96x96/mimetypes/application-x-cpt.png"
+	install -Dm644 icons/hicolor/128x128/apps/qccrypt.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/qccrypt.png"
+	install -Dm644 icons/hicolor/128x128/mimetypes/application-x-cpt.png "${pkgdir}/usr/share/icons/hicolor/128x128/mimetypes/application-x-cpt.png"
+	install -Dm644 icons/hicolor/256x256/apps/qccrypt.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/qccrypt.png"
+	install -Dm644 icons/hicolor/256x256/mimetypes/application-x-cpt.png "${pkgdir}/usr/share/icons/hicolor/256x256/mimetypes/application-x-cpt.png"
 }
 
 md5sums=('f6c50e4c6a3de42700281afcbcfbbac7'
          '6cee2c9d496a0a2b1041da68f5d20e72'
          'bf60d5c11809910d2a9c98aaa8217911'
          '14af5e3ee3813b1812145cf20defdb70'
-         '6390b8d0119570f4d7d2deb7c05b61e8')
+         '6390b8d0119570f4d7d2deb7c05b61e8'
+         '515543b430023f2b07906a6dd63cb3e5')
