@@ -3,7 +3,7 @@
 
 pkgname=jackett-runit.git
 _alias=jackett
-pkgver=0.17.168
+pkgver=0.17.197
 pkgrel=1
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
 arch=('x86_64' 'aarch64' 'armv7h')
