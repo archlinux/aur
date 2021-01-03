@@ -1,0 +1,21 @@
+pkgbase = prometheus-json-exporter-bin
+	pkgdesc = A prometheus exporter which scrapes remote JSON by JSONPath
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/prometheus/json_exporter
+	arch = x86_64
+	arch = armv5h
+	arch = armv6h
+	arch = armv7h
+	license = Apache
+	source_x86_64 = https://github.com/prometheus-community/json_exporter/releases/download/v0.2.0/json_exporter-0.2.0.linux-amd64.tar.gz
+	md5sums_x86_64 = 120f7a1d6cf2354fdfb8bd38c5e62351
+	source_armv5h = https://github.com/prometheus-community/json_exporter/releases/download/v0.2.0/json_exporter-0.2.0.linux-armv5.tar.gz
+	md5sums_armv5h = fe5b31bd7479d2791765a6aaee918578
+	source_armv6h = https://github.com/prometheus-community/json_exporter/releases/download/v0.2.0/json_exporter-0.2.0.linux-armv6.tar.gz
+	md5sums_armv6h = 60b80210574a594c89d45be8e96c67ac
+	source_armv7h = https://github.com/prometheus-community/json_exporter/releases/download/v0.2.0/json_exporter-0.2.0.linux-armv7.tar.gz
+	md5sums_armv7h = 33a74dae35acfe504562a0ddda7d56fc
+
+pkgname = prometheus-json-exporter-bin
+
