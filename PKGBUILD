@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch.de>
 
 pkgname=pex
-pkgver=2.1.11
+pkgver=2.1.24
 pkgrel=1
 pkgdesc='A library and tool for generating .pex (Python EXecutable) files'
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache2')
 depends=('python' 'python-wheel')
 makedepends=('python-tox')
 source=(pex-$pkgver.zip::https://github.com/pantsbuild/pex/archive/v$pkgver.zip)
-sha256sums=('05fb1ab7d5850a43b9472a34213f5a673eb75fb06d4cfbae8b009a8a05f9dde3')
+sha256sums=('48f8aec0e6ae76627523fbca3b1eeb9ebe0207c6eab3b3fa22ab283f397efa81')
 
 prepare() {
   cd pex-$pkgver
