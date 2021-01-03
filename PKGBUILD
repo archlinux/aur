@@ -2,7 +2,7 @@
 # Contributor: Paul Davis <paul@dangersalad.com>
 pkgname=openrgb
 pkgver=0.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer software."
 arch=("x86_64")
 url="https://gitlab.com/CalcProgrammer1/OpenRGB"
@@ -11,7 +11,6 @@ depends=('qt5-base' 'libusb' 'hidapi')
 makedepends=('pkgconf')
 optdepends=('i2c-tools: Motherboard & RAM access')
 conflicts=('openrgb-git')
-provides=("openrgb")
 source=(
    "https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_$pkgver/OpenRGB-release_$pkgver.tar.gz"
    hidapifix.patch # https://gitlab.com/CalcProgrammer1/OpenRGB/-/issues/924
