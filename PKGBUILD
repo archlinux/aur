@@ -1,7 +1,8 @@
-# Maintainer: Cody Maloney <cmaloney@theoreticalchaos.com>
+# Maintainer: EatMyVenom <eat.my.venomm@gmail.com>
+# Contributor: Cody Maloney <cmaloney@theoreticalchaos.com>
 
 pkgname=pxz-git
-pkgver=r56.fcfea93
+pkgver=r61.124382a
 pkgrel=1
 pkgdesc="Runs LZMA compression of different parts of an input file on multiple cores and processors simultaneously"
 arch=('x86_64')
