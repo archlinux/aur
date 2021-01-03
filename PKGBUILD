@@ -2,17 +2,17 @@
 
 _pkgname=gnucap-python
 pkgname=$_pkgname-git
-pkgver=r248.45a4914
+pkgver=r291.86868e8
 pkgrel=1
 pkgdesc='Python bindings for Gnucap'
 arch=('x86_64')
 url='https://codeberg.org/gnucap/gnucap-python/src/branch/develop/README'
 license=('GPL')
-depends=('gnucap' 'python-scipy' 'swig3')
+depends=('gnucap' 'python-scipy' 'swig')
 makedepends=('git')
 provides=('gnucap-python')
 conflicts=('gnucap-python')
-source=("git+https://codeberg.org/gnucap/$_pkgname.git")
+source=("git+https://codeberg.org/gnucap/$_pkgname.git#branch=develop")
 md5sums=('SKIP')
 
 pkgver() {
@@ -24,9 +24,7 @@ build() {
     cd $_pkgname
     ./bootstrap
     ./configure --prefix=/usr \
-                CPPFLAGS=-I/usr/lib/python3.8/site-packages/numpy/core/include/ \
-                PYTHON=python3 \
-                SWIG=/usr/bin/swig-3
+                PYTHON=python3
     make
 }
 
