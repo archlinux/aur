@@ -1,5 +1,5 @@
 pkgbase = mkinitcpio-dm-partprobe
-	pkgdesc = This is an initcpio hook for probing partitions.
+	pkgdesc = This is an initcpio hook for probing partitions after device mapper maps devices (e.g. after 'encrypt' hook).
 	pkgver = 20210103
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/mkinitcpio-dm-partprobe/
