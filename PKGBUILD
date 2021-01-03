@@ -172,7 +172,7 @@ _package() {
   optdepends=('crda: to set the correct wireless channels of your country')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux-lts.install
-  provides=("linux=${pkgver}")
+  #provides=("linux=${pkgver}")
 
   cd "${_srcname}"
 
@@ -232,7 +232,7 @@ _package() {
 _package-headers() {
   set -u
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
-  provides=("linux-headers=${pkgver}")
+  #provides=("linux-headers=${pkgver}")
 
   cd ${_srcname}
   local _builddir="${pkgdir}/usr/lib/modules/${_kernver}/build"
