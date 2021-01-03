@@ -10,7 +10,7 @@ groups=()
 depends=('qt5-base' 'python')
 makedepends=('cmake' 'git' 'catch2' 'pybind11' 'fmt' 'cli11' 'nlohmann-json')
 conflicts=('vipster')
-source=("git+https://github.com/sgsaenger/vipster#branch=testing")
+source=("git+https://github.com/sgsaenger/vipster")
 md5sums=('SKIP')
 
 pkgver() {
