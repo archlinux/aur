@@ -1,6 +1,6 @@
 pkgname=vpncloud2
 pkgver=2.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Peer-to-peer VPN'
 arch=('x86_64')
 url=""
@@ -9,16 +9,16 @@ depends=('libsystemd')
 makedepends=('rust' 'cargo' 'git')
 source=(git+https://github.com/dswd/vpncloud.rs.git#tag=v${pkgver}
         sysusers.conf
-        dont_chown.patch)
+        add_mtu_config.patch)
 noextract=()
 sha256sums=('SKIP'
             'eb756f1f940838cfe35555ba9e8e07d0e7182a72ace03853256ec5b72b0e8fbf'
-            '03b8e92bb3c9da005bac851ad531ec38624d4281b5afd57613a0fcd84c6d2ad8')
+            'b830058582bc276955569add40dd00be0ad2e94de58168494396419c82ed48ce')
 validpgpkeys=('6B5BBBCA2E3392315CC47434694A43B9C7FE6EA9')
 
 prepare() {
         cd vpncloud.rs
-        patch -p1 < ${srcdir}/dont_chown.patch
+        patch -p1 < ${srcdir}/ff.patch
 }
 
 build() {
