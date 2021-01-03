@@ -7,8 +7,8 @@ ENABLE_APPINDICATOR=1
 ENABLE_GNOME=0
 
 pkgname=pamac-all
-pkgver=10.0.3
-pkgrel=2
+pkgver=10.0.4
+pkgrel=1
 _pkgfixver=$pkgver
 
 pkgdesc="A Gtk3 frontend for libalpm (everything in one package - snap, flatpak, appindicator)"
@@ -29,7 +29,7 @@ source=(
         "pamac-$pkgver.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz"
 #        "https://gitlab.manjaro.org/applications/pamac/-/commit/83ac80d7.patch"
        ) 
-sha256sums=('31a2a9e4a3bfecb9908f328a1faaa846478670797ff1c2110de56ef092d3b5bb')
+sha256sums=('ad2bd828996a08b6447b98e5523008ae6a383be6e020070c33e87c291e745f74')
 define_meson=''
 if [ "${ENABLE_FLATPAK}" = 1 ]; then
   depends+=('flatpak')
