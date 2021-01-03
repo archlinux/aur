@@ -1,8 +1,7 @@
 # Maintainer: Holger Obermaier
 
-pkgname="dpc++"
-_pkgtag="2020-12"
-pkgver="${_pkgtag//-/.}"
+pkgname="dpc++-git"
+pkgver="2020.12.r804.g935a68f9e6e1"
 pkgrel=1
 pkgdesc="Data Parallel C++"
 arch=('x86_64')
@@ -10,8 +9,13 @@ url="https://github.com/intel/llvm/releases/tag/${_pkgtag}"
 license=('Apache License v2.0 with LLVM Exceptions')
 depends=( 'ocl-icd' 'ncurses' 'zlib' )
 makedepends=( 'python' 'cmake' 'ninja' 'git' )
-source=( "llvm::git+https://github.com/intel/llvm#tag=${_pkgtag}" )
+source=( "llvm::git+https://github.com/intel/llvm#branch=sycl" )
 sha256sums=( 'SKIP' )
+
+pkgver() {
+  cd llvm
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
     unset CXXFLAGS LDFLAGS CPPFLAGS CFLAGS
