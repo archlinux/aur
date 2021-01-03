@@ -1,14 +1,15 @@
-# Maintainer: Radostin Stoyanov <rstoyanov1@gmail.com>
+# Maintainer: EatMyVenom <eat.my.venom@gmail.com>
+# Contributor: Radostin Stoyanov <rstoyanov1@gmail.com>
 
 pkgname=xz-static-git
-pkgver=5.3.1alpha.r.gf76f751
+pkgver=5.3.1alpha.r.ga35a69d
 pkgrel=1
-pkgdesc='Statically linked library for decoding files compressed with LZMA or XZ utils.  Most users should *not* install this.'
-arch=('i686' 'x86_64')
+pkgdesc='Statically linked tools for XZ or LZMA compressed files - git checkout'
+arch=('x86_64')
 url='http://tukaani.org/xz/'
 license=('GPL' 'LGPL' 'custom')
 depends=('sh')
-makedepends=('git')
+makedepends=('git' 'po4a')
 provides=('lzma' 'lzma-utils' 'xz-utils' "xz=${pkgver%%.r*}")
 replaces=('lzma' 'lzma-utils' 'xz-utils')
 conflicts=('lzma' 'lzma-utils' 'xz-utils' 'xz')
@@ -35,9 +36,8 @@ build() {
 
 	./autogen.sh
 	./configure --prefix=/usr \
-		--disable-rpath \
-		--enable-werror
-	make
+		--disable-rpath 
+	make CFLAGS="-static"
 }
 
 check() {
@@ -48,10 +48,8 @@ check() {
 
 package() {
 	cd xz/
-
-	make DESTDIR=${pkgdir} install
+	make DESTDIR=${pkgdir} install 
 	install -d -m0755 ${pkgdir}/usr/share/licenses/xz/
-	ln -sf /usr/share/doc/xz/COPYING ${pkgdir}/usr/share/licenses/xz/
+	ln -s /usr/share/doc/xz/COPYING ${pkgdir}/usr/share/licenses/xz/
 }
-
 
