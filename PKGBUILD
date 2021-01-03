@@ -2,19 +2,23 @@
 
 _pkgname=fasm
 pkgname="python-$_pkgname-git"
-pkgver=0.0.r47.g4857dde
+pkgver=0.0.r86.gbae2e6d
 pkgrel=1
 pkgdesc="FPGA Assembly (FASM) Parser and Generation library"
-arch=(any)
+arch=(x86_64)
 url="https://github.com/SymbiFlow/fasm"
 license=('ISC')
-depends=('python' 'python-textx')
-makedepends=('git' 'python-setuptools')
+depends=('python' 'python-textx' 'antlr4-runtime')
+makedepends=('git' 'python-setuptools' 'cython' 'cmake' 'antlr4')
 checkdepends=('python-pytest')
 provides=("${pkgname%%-git}=$pkgver")
 conflicts=(fasm "${pkgname%%-git}")
-source=("git+$url.git")
-sha256sums=('SKIP')
+source=("git+$url.git"
+        "git+https://github.com/antlr/antlr4"
+        "git+https://github.com/google/googletest")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
 	cd "$_pkgname"
@@ -22,16 +26,25 @@ pkgver() {
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+	cd "$_pkgname"
+
+	git submodule init
+	git config submodule.third_party/antlr4.url "$srcdir/antlr4"
+	git config submodule.third_party/googletest.url "$srcdir/googletest"
+	git submodule update
+}
+
 build() {
 	cd "$_pkgname"
 
-	python setup.py build
+	python setup.py build --antlr-runtime=shared
 }
 
 check() {
-	cd "$_pkgname"
-
-	PYTHONPATH=. pytest
+	: broken
+	#local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+	#PYTHONPATH="$srcdir/$_pkgname/build/lib.linux-$CARCH-$python_version" pytest "$_pkgname/tests"
 }
 
 package() {

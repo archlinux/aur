@@ -1,19 +1,27 @@
 pkgbase = python-fasm-git
 	pkgdesc = FPGA Assembly (FASM) Parser and Generation library
-	pkgver = 0.0.r47.g4857dde
+	pkgver = 0.0.r86.gbae2e6d
 	pkgrel = 1
 	url = https://github.com/SymbiFlow/fasm
-	arch = any
+	arch = x86_64
 	license = ISC
 	checkdepends = python-pytest
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = cython
+	makedepends = cmake
+	makedepends = antlr4
 	depends = python
 	depends = python-textx
-	provides = python-fasm=0.0.r47.g4857dde
+	depends = antlr4-runtime
+	provides = python-fasm=0.0.r86.gbae2e6d
 	conflicts = fasm
 	conflicts = python-fasm
 	source = git+https://github.com/SymbiFlow/fasm.git
+	source = git+https://github.com/antlr/antlr4
+	source = git+https://github.com/google/googletest
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = python-fasm-git
