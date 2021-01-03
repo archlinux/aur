@@ -21,7 +21,7 @@ sha256sums=(
 )
 
 prepare() {
-   cd "OpenRGB-release_$pkgver"
+   cd "$srcdir/OpenRGB-release_$pkgver"
    local src
    for src in "${source[@]}"; do
       src="${src%%::*}"
@@ -34,13 +34,13 @@ prepare() {
 
 
 build() {
-	cd "OpenRGB-release_$pkgver"
+   cd "$srcdir/OpenRGB-release_$pkgver"
    sed -i 's|rules.path=/lib|rules.path=/usr/lib|g' OpenRGB.pro
-	qmake OpenRGB.pro
-	make 
+   qmake OpenRGB.pro
+   make 
 }
 
 package() {
-	cd "$srcdir/OpenRGB-release_$pkgver"
+   cd "$srcdir/OpenRGB-release_$pkgver"
    make INSTALL_ROOT="$pkgdir" install
 }
