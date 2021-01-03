@@ -6,7 +6,6 @@ pkgbase = keira3
 	arch = x86_64
 	license = AGPL3
 	provides = keira3
-	conflicts = keira3
 	source = https://github.com/azerothcore/Keira3/releases/download/v3.0.2/Keira-3.0.2.LINUX.deb.zip
 	sha512sums = SKIP
 

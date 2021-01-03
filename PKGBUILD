@@ -11,7 +11,6 @@ arch=('x86_64')
 url="https://www.azerothcore.org/Keira3/"
 license=('AGPL3')
 provides=(${_pkgname})
-conflicts=(${_pkgname})
 source=(
     https://github.com/azerothcore/Keira3/releases/download/${gitname}/Keira-${_pkgver}.LINUX.deb.zip
 )
