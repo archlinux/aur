@@ -17,12 +17,12 @@ replaces=('openssl-perl' 'openssl-doc')
 backup=('etc/ssl/openssl.cnf')
 provides=(openssl)
 conflicts=(openssl)
-source=("https://www.openssl.org/source/openssl-${_ver}.tar.gz"{,.asc}
+source=("https://www.openssl.org/source/openssl-${_ver}.tar.gz"
 	'ca-dir.patch')
 sha256sums=('SKIP'
 	    'SKIP')
 #validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
-#	      '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C')
+#	       '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C')
 
 prepare() {
 	cd "$srcdir/openssl-$_ver"

@@ -15,7 +15,6 @@ pkgbase = openssl-hardened
 	replaces = openssl-doc
 	backup = etc/ssl/openssl.cnf
 	source = https://www.openssl.org/source/openssl-1.1.1i.tar.gz
-	source = https://www.openssl.org/source/openssl-1.1.1i.tar.gz.asc
 	source = ca-dir.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
