@@ -1,20 +1,20 @@
 # Maintainer: Jah Way <jahway603 at protonmail dot com>
 
 pkgname=silentdragon
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
-pkgdesc='HUSH desktop full node GUI wallet that supports zaddrs'
-url='http://github.com/MyHush/SilentDragon'
+pkgdesc='HUSH desktop full node GUI wallet that supports z-addresses'
+url='http://git.hush.is/hush/SilentDragon'
 arch=('x86_64')
 license=('GPL3')
 depends=('libsodium' 'qt5-websockets' 'qt5-base' 'qt5-tools')
 makedepends=('qtcreator' 'rust' 'wget')
-source=("https://github.com/MyHush/SilentDragon/archive/v$pkgver.tar.gz")
-sha256sums=('4fb3b8696eb31905571793061de8166a96de89349e35bd8a12903b8089fc5136')
+source=("$url/archive/v$pkgver.tar.gz")
+sha256sums=('a1fe2c3d9a9f01c98e96a69b8b91704ae7f81034122eefcc0efec01ceefa58e8')
 
 build() {
   tar xzvf v$pkgver.tar.gz
-  cd "SilentDragon-$pkgver"
+  cd "silentdragon"
   ./build.sh linguist
   ./build.sh release
 }
@@ -22,7 +22,7 @@ build() {
 package() {
   install="${pkgbase}.install"
 
-  cd "SilentDragon-$pkgver"
+  cd "silentdragon"
 
   install -d "${pkgdir}/opt/${pkgname}"
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
