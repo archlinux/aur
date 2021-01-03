@@ -1,7 +1,8 @@
 # Maintainer: KokaKiwi <kokakiwi@kokakiwi.net>
+
 _pkgname=elixir-ls
 pkgname=elixir-ls-git
-pkgver=0.3.3.r23.gc9b095f
+pkgver=0.6.2.r27.ga696d94
 pkgrel=1
 pkgdesc='A frontend-independent Language Server Protocol for Elixir'
 url='https://github.com/elixir-lsp/elixir-ls'
@@ -24,6 +25,11 @@ build() {
   cd "${_pkgname}"
 
   export MIX_ENV=prod
+  export MIX_HOME="${srcdir}/mix-cache"
+
+  # Fetch hex+rebar for deps.get to work
+  mix local.hex --force
+  mix local.rebar --force
 
   mix deps.get
   mix compile
