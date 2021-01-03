@@ -3,10 +3,10 @@
 pkgname=python-flask-humanize
 _module='Flask-Humanize'
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Common humanization utilities for Flask applications."
 url="https://github.com/vitalk/flask-humanize"
-depends=('python')
+depends=('python' 'python-humanize')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
