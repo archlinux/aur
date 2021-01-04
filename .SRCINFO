@@ -1,0 +1,19 @@
+pkgbase = dwm-luke-git
+	pkgdesc = A dynamic window manager for X
+	pkgver = 6.2.r1861.94906e1
+	pkgrel = 1
+	url = https://github.com/LukeSmithxyz/dwm
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = freetype2
+	depends = libx11
+	depends = libxft-bgra
+	provides = dwm
+	conflicts = dwm
+	source = git://github.com/LukeSmithxyz/dwm
+	sha256sums = SKIP
+
+pkgname = dwm-luke-git
+
