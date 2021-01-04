@@ -1,0 +1,9 @@
+pkgbase = interact
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ahy4/interact
+	arch = any
+	depends = rlwrap
+
+pkgname = interact
+
