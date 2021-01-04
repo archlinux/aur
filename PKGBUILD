@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd glu
   ./autogen.sh
-  ./configure --prefix=/usr --disable-static
+  ./configure --prefix=/usr --disable-static --disable-debug
   make
 }
 
