@@ -7,13 +7,13 @@ _pkgver=2.3.2
 pkgrel=1
 pkgdesc="Porting Qt2 to modern cmake to use it for KDE 2 port"
 arch=('i686' 'x86_64')
-url="https://github.com/heliocastro/qt2"
+url="https://github.com/sandsmark/qt2"
 license=("custom:Qt Free Edition License")
 depends=('libxft' 'libsm' 'libgl' 'freeglut' 'libmng' 'libjpeg-turbo' 'libxmu' 'glu')
 makedepends=('git' 'cmake' 'byacc')
 provides=('qt2')
 conflicts=('qt2')
-source=("git+https://github.com/heliocastro/qt2.git")
+source=("git+https://github.com/sandsmark/qt2.git")
 sha256sums=('SKIP')
 
 pkgver() {
