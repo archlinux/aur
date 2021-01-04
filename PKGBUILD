@@ -1,7 +1,7 @@
 # Maintainer: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='speculum'
-pkgver=1.6.6
+pkgver=1.6.8
 pkgrel=1
 pkgdesc='Yet another mirror list optimization tool'
 arch=('any')
