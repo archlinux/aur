@@ -5,7 +5,7 @@
 pkgbase=dlib
 pkgname=("dlib" "dlib-cuda")
 pkgver=19.21
-pkgrel=4
+pkgrel=5
 pkgdesc="A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques"
 arch=('x86_64')
 url="http://dlib.net"
@@ -60,6 +60,7 @@ package_dlib-cuda() {
     pkgdesc="A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques (with CUDA)"
     depends+=(cuda cudnn)
     conflicts=(dlib)
+    provides=(dlib)
     cd "${srcdir}/build-cuda"
     DESTDIR=${pkgdir} ninja install
     install -Dm644 "../${pkgbase}-${pkgver}/dlib/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
