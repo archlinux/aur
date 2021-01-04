@@ -1,17 +1,17 @@
-
+# Maintainer: houmain <houmain@posteo.net>
 pkgname=gpupad-git
 _pkgname=gpupad
 pkgver=latest
-pkgrel=3
-pkgdesc='A text editor for efficiently editing GLSL shaders of all kinds.'
+pkgrel=4
+pkgdesc='A flexible GLSL shader editor and IDE.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url="https://github.com/houmaster/gpupad"
+url="https://github.com/houmain/gpupad"
 license=('GPL3')
-depends=('qt5-declarative')
+depends=('qt5-declarative' 'qt5-multimedia' 'gst-libav')
 makedepends=('cmake' 'git')
 conflicts=(${_pkgname})
 provides=(${_pkgname})
-source=('git+https://github.com/houmaster/gpupad.git')
+source=('git+https://github.com/houmain/gpupad.git')
 md5sums=(SKIP)
 
 pkgver() {
