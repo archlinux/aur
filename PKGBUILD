@@ -44,7 +44,7 @@ prepare() {
 build() {
   cd vim-${pkgver}
     ./configure \
-      --prefix=/usr/share/vim \
+      --prefix=/usr/share \
       --localstatedir=/var/lib/vim \
       --with-features=small \
       --with-compiledby='Arch Linux' \
