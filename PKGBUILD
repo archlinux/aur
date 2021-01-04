@@ -14,17 +14,17 @@ depends=('vmware-keymaps')
 optdepends=()
 
 # Note you can change this path to match a newer (or older) version of VMRC
-source=("local://VMware-Remote-Console-11.2.0-16492666.x86_64.bundle"
+source=("local://VMware-Remote-Console-12.0.0-17287072.x86_64.bundle"
         "bootstrap"
         "config")
 
-sha256sums=('b2eb8a356993fae8bb48aa30d0e79e5e88d3733615d12010effdf76fefdedfb0'
+sha256sums=('3429d897256e80d7e087ff9fc7b5e679695db06a9af2596b40d303e61c5000aa'
             '22282e8643d8a20e63773435161e5a5d01c6acce53aa81f27a4d20f111acd228'
             'c5643ebad140391622c57ab88d6071b91d1ea9a8379c1aec573c845a00be30d4')
 
 build() {
     cd "$srcdir"
-    sh ../VMware-Remote-Console-11.2.0-16492666.x86_64.bundle -x ./files
+    sh ../VMware-Remote-Console-12.0.0-17287072.x86_64.bundle -x ./files
     cd "$srcdir/files"
 }
 
