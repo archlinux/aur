@@ -1,0 +1,16 @@
+pkgbase = delaford
+	pkgdesc = An online JavaScript 2D Medieval RPG.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/delaford/game
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = nodejs
+	depends = npm
+	provides = delaford
+	source = git+https://github.com/delaford/game.git
+	md5sums = SKIP
+
+pkgname = delaford
+
