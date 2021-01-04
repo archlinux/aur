@@ -1,17 +1,16 @@
 pkgbase = python2-zope.proxy
-	pkgdesc = Generic Transpatent Proxies
-	pkgver = 4.1.4
+	pkgdesc = Generic Transparent Proxies
+	pkgver = 4.3.5
 	pkgrel = 1
-	url = https://pypi.python.org/pypi/zope.proxy/
+	url = https://pypi.org/project/zope.proxy/
 	arch = i686
 	arch = x86_64
 	license = ZPL
 	makedepends = python2-distribute
-	makedepends = zope-interface
+	makedepends = pypy-zope-interface
 	depends = python2
-	optdepends = zope-testing: For testing
-	source = http://pypi.python.org/packages/source/z/zope.proxy/zope.proxy-4.1.4.tar.gz
-	md5sums = 3bcaf8b8512a99649ecf2f158c11d05b
+	source = https://files.pythonhosted.org/packages/source/z/zope.proxy/zope.proxy-4.3.5.tar.gz
+	md5sums = 2d102d9c22a81be04d9de7548c23b2a2
 
 pkgname = python2-zope.proxy
 
