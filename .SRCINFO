@@ -1,13 +1,14 @@
 pkgbase = pak-bin
 	pkgdesc = Changes pacman syntax to be more like APT
 	pkgver = 1.0.11
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	arch = aarch64
 	license = GPLv3
 	depends = yay
 	provides = pak
 	conflicts = pak
+	backup = etc/pak.toml
 	source = https://minio.arsenm.dev/pak/1.0.11/pak-linux-x86_64
 	source = https://gitea.arsenm.dev/Arsen6331/pak/raw/branch/master/pak.toml
 	md5sums = SKIP
