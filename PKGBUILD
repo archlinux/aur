@@ -25,6 +25,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
+	sed -i '/^import pip$/d' setup.py || :
 	python setup.py build
 }
 
