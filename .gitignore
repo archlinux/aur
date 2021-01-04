@@ -1,0 +1,5 @@
+pkg/
+src
+sshrc-git/
+*zst
+*xz

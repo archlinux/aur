@@ -1,13 +1,13 @@
 pkgbase = sshrc-git
 	pkgdesc = Bring your .bashrc, .vimrc, etc. from your local workstation when you ssh into a remote box.
-	pkgver = 20140919
+	pkgver = 20200605
 	pkgrel = 1
-	url = https://github.com/Russell91/sshrc
+	url = https://github.com/cdown/sshrc
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = openssh
-	source = git://github.com/Russell91/sshrc.git
+	source = sshrc-git::git+https://github.com/cdown/sshrc.git
 	md5sums = SKIP
 
 pkgname = sshrc-git
