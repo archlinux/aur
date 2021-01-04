@@ -1,12 +1,13 @@
 pkgbase = pcre-static
 	pkgdesc = A library that implements Perl 5-style regular expressions
 	pkgver = 8.44
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.pcre.org/
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = BSD
 	depends = gcc-libs
 	options = staticlibs
