@@ -3,7 +3,7 @@
 # Contributor: Fabio Loli
 # Contributor: Sergey Kasmy
 pkgname=liquidctl-git
-pkgver=1.4.2.r153.6317054
+pkgver=1.4.2.r209.30dd13e
 pkgrel=1
 pkgdesc='Cross-platform tool and drivers for liquid coolers and other devices'
 arch=('any')
@@ -14,12 +14,23 @@ makedepends=('git' 'python-setuptools')
 checkdepends=('python-pytest')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("$pkgname::git+https://github.com/liquidctl/liquidctl.git")
-sha256sums=('SKIP')
+source=(
+	"$pkgname::git+https://github.com/liquidctl/liquidctl.git"
+	'quick-fix-259-for-arch.patch::https://github.com/liquidctl/liquidctl/commit/40173147c578.patch'
+)
+sha256sums=(
+	'SKIP'
+	'a4812df305d0a7e4117e8078114322612f2b2a6eeae0b6199b1dd87de36cd17d'
+)
 
 pkgver() {
 	cd "$srcdir/$pkgname"
 	printf "%s" "$(git describe --long --abbrev=7 | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//')"
+}
+
+prepare() {
+	cd "$srcdir/$pkgname"
+	patch --forward --strip=1 --input="${srcdir}/quick-fix-259-for-arch.patch"
 }
 
 build() {
