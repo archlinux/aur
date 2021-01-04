@@ -1,0 +1,20 @@
+pkgbase = lightspeed-react-git
+	pkgdesc = React frontend for the Lightspeed project
+	pkgver = r9.e299491
+	pkgrel = 1
+	url = https://github.com/GRVYDEV/Lightspeed-react
+	arch = any
+	license = custom:MIT
+	makedepends = npm
+	makedepends = git
+	depends = lightspeed-webrtc
+	optdepends = nginx: Web Server to host the static web app
+	provides = lightspeed-react
+	provides = lightspeed-frontend
+	conflicts = lightspeed-react
+	conflicts = lightspeed-frontend
+	source = lightspeed-react-git::git+https://github.com/GRVYDEV/Lightspeed-react.git
+	sha512sums = SKIP
+
+pkgname = lightspeed-react-git
+
