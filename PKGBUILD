@@ -2,7 +2,7 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-epoch=5
+epoch=6
 pkgrel=1
 pkgver=7.0.0.r29258.fdfd874293f6
 pkgdesc="A high-level language, primarily intended for numerical computations."
@@ -30,7 +30,6 @@ _hgrepo=octave
 pkgver() {
   cd ${_hgrepo}
   _appver=$(awk -F", " '/bugs.html/ {print $2}' configure.ac|tr -d []|tr - _)
-#  _appver=6.0.0
   printf "%s.r%s.%s" "${_appver}" "$(hg identify -n)" "$(hg identify -i)"
 }
 
@@ -67,8 +66,8 @@ check() {
 
 package() {
   cd ${_hgrepo}/build
-  make DESTDIR=${pkgdir} install
-  make DESTDIR=${pkgdir} install-pdf
+  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install-pdf
   
   # add octave library path to ld.so.conf.d
   _appver=$(awk -F", " '/bugs/ {print $2}' ../configure.ac|tr -d []|tr - _)
