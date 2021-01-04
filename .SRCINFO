@@ -1,0 +1,25 @@
+pkgbase = gtk3-nocsd-legacy-git
+	pkgdesc = A hack to disable gtk3 client side decoration (stable PCMan version)
+	pkgver = r55.82ff5a0
+	pkgrel = 1
+	url = https://github.com/PCMan/gtk3-nocsd
+	install = gtk3-nocsd-legacy-git.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = LGPL
+	makedepends = git
+	makedepends = gobject-introspection
+	depends = gtk3
+	conflicts = gtk3-nocsd-git
+	source = git+https://github.com/PCMan/gtk3-nocsd.git
+	source = 30-gtk3-nocsd.sh
+	source = gtk3-nocsd-legacy-git.install
+	sha256sums = SKIP
+	sha256sums = bb3e6464ed2c0238e68755a843f976ea7843fe0476ca1092205884be0c6d7ab3
+	sha256sums = 7ed485dfdeef9ea8c0c0d24fbc5e13448861f0e56c11192a5b5168db35fa9255
+
+pkgname = gtk3-nocsd-legacy-git
+
