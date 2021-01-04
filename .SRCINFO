@@ -1,6 +1,6 @@
 pkgbase = cdist
 	pkgdesc = A usable configuration management system
-	pkgver = 6.9.3
+	pkgver = 6.9.4
 	pkgrel = 1
 	url = https://code.ungleich.ch/ungleich-public/cdist/
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = cdist
 	makedepends = python-sphinx_rtd_theme
 	depends = python
 	depends = openssh
-	source = https://code.ungleich.ch/ungleich-public/cdist/uploads/ee75967c82270550d72482c9ef5a873c/cdist-6.9.3.tar.gz
-	source = https://code.ungleich.ch/ungleich-public/cdist/uploads/9e1e26ad9ae15469484bf7a68257fb5e/cdist-6.9.3.tar.gz.asc
+	source = https://code.ungleich.ch/ungleich-public/cdist/uploads/5443cb548a671d4d7133faaf207e56bd/cdist-6.9.4.tar.gz
+	source = https://code.ungleich.ch/ungleich-public/cdist/uploads/2cec94bbc7055ddcf9a5ac14f08788d9/cdist-6.9.4.tar.gz.asc
 	validpgpkeys = 69767822F3ECC3C349C1EFFFEFD2AE4EC36B6901
-	md5sums = 76c625c3435be8a9ded2f64c31428f41
+	md5sums = 5f2064d11aeabcb603ee0ef0a566d7de
 	md5sums = SKIP
 
 pkgname = cdist

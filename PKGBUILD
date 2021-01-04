@@ -1,6 +1,7 @@
 # Maintainer: Joachim Desroches <joachim.desroches@epfl.ch>
 
-pkgname=cdist pkgver=6.9.3
+pkgname=cdist
+pkgver=6.9.4
 pkgrel=1
 pkgdesc='A usable configuration management system'
 arch=('any')
@@ -9,10 +10,10 @@ license=('GPL3')
 depends=('python' 'openssh')
 makedepends=('python-setuptools' 'python-sphinx' 'python-sphinx_rtd_theme')
 validpgpkeys=('69767822F3ECC3C349C1EFFFEFD2AE4EC36B6901') # ungleich GmbH (ungleich FOSS) <foss@ungleich.ch>'
-source=("https://code.ungleich.ch/ungleich-public/cdist/uploads/ee75967c82270550d72482c9ef5a873c/cdist-6.9.3.tar.gz"
-	"https://code.ungleich.ch/ungleich-public/cdist/uploads/9e1e26ad9ae15469484bf7a68257fb5e/cdist-6.9.3.tar.gz.asc")
-md5sums=('76c625c3435be8a9ded2f64c31428f41'
-	'SKIP')
+source=("https://code.ungleich.ch/ungleich-public/cdist/uploads/5443cb548a671d4d7133faaf207e56bd/cdist-6.9.4.tar.gz"
+	"https://code.ungleich.ch/ungleich-public/cdist/uploads/2cec94bbc7055ddcf9a5ac14f08788d9/cdist-6.9.4.tar.gz.asc")
+md5sums=('5f2064d11aeabcb603ee0ef0a566d7de'
+	 'SKIP')
 
 prepare() {
 	echo "VERSION = \"${pkgver}\"" > ${pkgname}-${pkgver}/cdist/version.py
