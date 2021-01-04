@@ -15,7 +15,7 @@ if [ "$AUR_BUILD" = false ]; then
 pkgname+=(eclipse-common)
 fi
 pkgver=4.18
-pkgrel=1
+pkgrel=2
 epoch=2
 _release=2020-12/R
 pkgdesc="Highly extensible IDE"
@@ -29,8 +29,8 @@ sha256sums_x86_64=('2193208753cae8505b4926386dc7bb71cb665929180bf8c1a63dda0251db
                    '7349e3051925c6ec88f03036f40b3f493e62e252d050e86493a9ceea5d1ab1b2'  # Jee
                    'b5678a117da21912178d4188b8b6976b578dc03a38669eb4c8e16dd71c74747a'  # C++
                    'a681e8e65835f75ad8b9a7da8e11ded90ea4d8bda82b8133a8debd1852ec37b9'  # PHP
-                   'a681e8e65835f75ad8b9a7da8e11ded90ea4d8bda82b8133a8debd1852ec37b9'  # JS
-                   'a681e8e65835f75ad8b9a7da8e11ded90ea4d8bda82b8133a8debd1852ec37b9') # Rust
+                   'e1152efe94be5c00d8abf1ed135234404c9affb309336600e7ef3d1dd9dfa3e4'  # JS
+                   '797ac2190c110d556a1a9b7e4fa327a5f0ca1814006397f89158d59109943a6e') # Rust
 
 _sourcename() {
   case $1 in
