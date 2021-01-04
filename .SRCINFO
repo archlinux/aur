@@ -1,0 +1,15 @@
+pkgbase = glu-git
+	pkgdesc = Mesa OpenGL Utility library
+	pkgver = 9.0.1
+	pkgrel = 1
+	url = https://cgit.freedesktop.org/mesa/glu/
+	arch = x86_64
+	license = LGPL
+	depends = libgl
+	provides = glu
+	conflicts = glu
+	source = git+https://gitlab.freedesktop.org/mesa/glu.git
+	sha512sums = SKIP
+
+pkgname = glu-git
+
