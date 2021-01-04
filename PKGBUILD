@@ -1,8 +1,8 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
 pkgname=eigenpy
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.6.0
+pkgrel=1
 pkgdesc="Bindings between numpy and eigen using boost::python"
 arch=('i686' 'x86_64')
 url="https://github.com/stack-of-tasks/$pkgname"
