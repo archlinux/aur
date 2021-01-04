@@ -1,14 +1,14 @@
 pkgbase = gnome-shell-extension-ibus-tweaker
 	pkgdesc = Tweaker of IBus for orientation, theme, font and ascii mode auto-switch
-	pkgver = 27
+	pkgver = 28
 	pkgrel = 1
 	url = https://github.com/tuberry/ibus-tweaker
 	arch = any
 	license = GPL3
 	makedepends = unzip
 	depends = gnome-shell
-	source = gnome-shell-extension-ibus-tweaker-27.zip::https://extensions.gnome.org/extension-data/ibus-tweakertuberry.github.com.v27.shell-extension.zip
-	sha256sums = a1cacb95eb6d4b443c3b74f5d6b6c3f831bf455f0ce83262ae8349d88938eecb
+	source = gnome-shell-extension-ibus-tweaker-28.zip::https://extensions.gnome.org/extension-data/ibus-tweakertuberry.github.com.v28.shell-extension.zip
+	sha256sums = 8323be4243f8ee9b3cc921e2c49f27cdd89a33265f178ae80b0f31dac7a3c520
 
 pkgname = gnome-shell-extension-ibus-tweaker
 
