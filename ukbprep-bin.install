@@ -1,0 +1,7 @@
+post_install() {
+    ln -s "$pkgdir/usr/bin/gfetch" "$pkgdir/usr/bin/ukbgfetch"
+}
+
+post_remove() {
+    rm "$pkgdir/usr/bin/ukbgfetch"
+}

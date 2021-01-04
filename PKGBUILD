@@ -2,7 +2,7 @@
 
 pkgname=ukbprep-bin
 pkgver=20201213
-pkgrel=2
+pkgrel=3
 pkgdesc='UK Biobank file handlers'
 arch=('x86_64')
 url='https://biobank.ndph.ox.ac.uk/showcase/download.cgi'
@@ -10,6 +10,7 @@ _url_util="${url/download.cgi/util}"
 license=('unknown')
 makedepends=(gcc sed)
 provides=(ukbprep gfetch ukbconv ukbfetch ukblink ukbmd5 ukbunpack)
+install=$pkgname.install
 source=(
     "encoding.ukb::$_url_util/encoding.ukb"
     "gfetch_linkset.tar::$_url_util/gfetch_linkset.tar"
@@ -62,6 +63,6 @@ build() {
 package() {
     cd "$srcdir"
     install -Dm755 gfetch ukbconv ukbfetch ukblink ukbmd5 ukbunpack -t "$pkgdir/usr/bin/"
-    ln -s "$pkgdir/usr/bin/gfetch" "$pkgdir/usr/bin/ukbgfetch"
-    install -Dm755 encoding.ukb "$pkgdir/var/lib/ukbprep/encoding/encoding.ukb"
+    install -dm755 "$pkgdir/var/lib/ukbprep/encoding"
+    install -m644 encoding.ukb "$pkgdir/var/lib/ukbprep/encoding/encoding.ukb"
 }

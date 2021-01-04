@@ -1,5 +1,6 @@
 *.tar
 *.tar.zst
+encoding.ukb
 gfetch*
 pkg/
 src/
