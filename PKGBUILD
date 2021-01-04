@@ -25,6 +25,7 @@ build() {
   export CC='gcc -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
+  ./buildconf
   ./configure \
     --prefix='/usr' \
     --libdir='/usr/lib32' \
