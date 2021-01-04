@@ -1,0 +1,18 @@
+pkgbase = lib32-glu-git
+	pkgdesc = Mesa OpenGL utility library (32 bits)
+	pkgver = 9.0.1
+	pkgrel = 1
+	url = https://mesa.freedesktop.org/
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc-multilib
+	makedepends = lib32-mesa
+	depends = lib32-libgl
+	depends = glu
+	provides = lib32-glu
+	conflicts = lib32-glu
+	source = git+https://gitlab.freedesktop.org/mesa/glu.git
+	sha256sums = SKIP
+
+pkgname = lib32-glu-git
+
