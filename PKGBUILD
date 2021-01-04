@@ -6,7 +6,7 @@
 
 pkgname=panda3d-git
 pkgver=r24778.c52ea9a8df
-pkgrel=1
+pkgrel=2
 pkgdesc="A 3D game engine with Python bindings. SDK package. Git Version. Optional dependencies you want to support need to be installed before panda3d."
 url="http://www.panda3d.org"
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ optdepends=(# Recommended
             'python2: Python 2 bindings'
             'python: Python 3 bindings'
             'ffmpeg: Required to load and play video textures'
-            'ode-compat: Support for the ODE physics engine (AUR)'
+            'ode: Support for the ODE physics engine'
             'libxxf86dga: Relative mouse mode (AUR)'
             'bullet: Support for the Bullet physics engine'
             'opusfile: Support for manipulating opus audio files'
