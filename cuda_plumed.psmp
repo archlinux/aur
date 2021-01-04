@@ -17,7 +17,7 @@ DFLAGS      = -D__FFTW3                                         \
               -D__LIBXC                                         \
               -D__SPGLIB                                        \
               -D__SIRIUS                                        \
-              -D__ACC -D__DBCSR_ACC -D__PW_CUDA                 \
+              -D__ACC -D__DBCSR_ACC -D__PW_CUDA  -D__GRID_CUDA  \
               -D__PLUMED2
 
 INCS        = -I/usr/include                                    \

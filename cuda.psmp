@@ -16,7 +16,7 @@ DFLAGS      = -D__FFTW3                                         \
               -D__LIBXSMM                                       \
               -D__LIBXC                                         \
               -D__SPGLIB                                        \
-              -D__ACC -D__DBCSR_ACC -D__PW_CUDA
+              -D__ACC -D__DBCSR_ACC -D__PW_CUDA -D__GRID_CUDA
 
 INCS        = -I/usr/include                                    \
               -I/usr/include/elpa_openmp-$(_elpaver)/elpa       \

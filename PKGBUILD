@@ -4,7 +4,7 @@
 pkgname=cp2k
 pkgver=8.1.0
 _dbcsrver=2.1.0
-pkgrel=1
+pkgrel=2
 # NVIDIA GPU Generation: Kepler, Pascal, or Volta;
 # please specify one closest to yours or leave unchanged
 # if CUDA isn't supposed to be used
@@ -29,27 +29,33 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/cp2k/cp2k/archive/v$pkgver.
 sha256sums=('1e25a865cad0a3958bc3e9e345bb771302015929fa22b299d1eb8f2e07f52756'
             'SKIP'
             '8b6c791a0b7c98ee2c593e3962465de07912e5ff2c611ba2bd1c6703d62ce1ec'
-            '544c1219023419eb497e31e2c47f46c2971c7f3668277f004576a3a9b09e1a2e'
-            'bd0f362561ef06a6ac48d05858286bef7a1ee0266dd5ad3c5fa9d5e9486b4edc'
+            'e37f65b984f7ff374349dc3662b42fea15a6ae11b7843184b2a0c89d9d077c96'
+            '0c7eb8b6f6b724d28b7248e112c20dd9de70bdba06b2774bd1f23c87f03d6e7c'
             '6f27bcdff18336fd3499c1a82c47f3a0858fb6133f388500f3f21102cf6526e0')
 
 prepare() {
   # Set up the default build environment
   export _buildmode=0
   export _arch="basic"
-  export _corenumber=$( grep -c ^processor /proc/cpuinfo )
   export _elpaver=$( ls /usr/include | grep elpa | sed 's/elpa_openmp-//g' )
   export _plumed=$( find /usr/lib -maxdepth 1 -type d -name "plumed-mpi" | awk -F'/' '{print $4}' )
+  export _corenumber=$( grep -c ^processor /proc/cpuinfo )
 
-  # Enable additional features
-  if [ $( echo -n $( which nvcc) | tail -c 4 ) == nvcc ]
-  then
-    echo "Adding CUDA support"
-    _buildmode=$((_buildmode | 1))
+  # Enabling additional features
+  if [ $( echo -n $( which nvcc) | tail -c 4 ) == nvcc ] ; then
+    _gpumem=$( nvidia-smi --query-gpu=memory.total --format=csv,nounits,noheader )
+    # Tests require at least 600 MB of GPU memory per core
+    _memcore=$(($_gpumem / 600))
+    if [[ $_memcore -ge 2 ]] ; then
+      echo "Adding CUDA support"
+      _buildmode=$((_buildmode | 1))
+      if [[ $_corenumber > $_memcore ]] ; then
+        _corenumber=$_memcore
+      fi
+    fi
   fi
 
-  if [[ $_plumed ]]
-  then
+  if [[ $_plumed ]] ; then
     echo "Adding PLUMED support"
     _buildmode=$((_buildmode | 2))
   fi
@@ -100,12 +106,19 @@ build() {
 }
 
 check() {
-  export DATA_DIR="$srcdir/$pkgname-$pkgver/data"
   cd "$srcdir/$pkgname-$pkgver/tools/regtesting"
+  export DATA_DIR="$srcdir/$pkgname-$pkgver/data"
 
   # In the case of a test failure you must examine it carefully
   # because it can lead to an unpredictable error during a production run.
-  ./do_regtest -cp2kdir ../.. -version psmp -arch $_arch -nobuild -maxtasks $_corenumber
+  # We skip regtest-xastdp due to https://github.com/cp2k/cp2k/issues/1243
+  ./do_regtest \
+                -cp2kdir ../.. \
+                -version psmp \
+                -arch $_arch \
+                -nobuild \
+                -maxtasks $_corenumber \
+                -skipdir QS/regtest-xastdp
 }
 
 package() {

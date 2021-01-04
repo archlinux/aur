@@ -1,7 +1,7 @@
 pkgbase = cp2k
 	pkgdesc = A quantum chemistry and solid state physics software package
 	pkgver = 8.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cp2k.org
 	arch = x86_64
 	license = GPL2
@@ -31,8 +31,8 @@ pkgbase = cp2k
 	sha256sums = 1e25a865cad0a3958bc3e9e345bb771302015929fa22b299d1eb8f2e07f52756
 	sha256sums = SKIP
 	sha256sums = 8b6c791a0b7c98ee2c593e3962465de07912e5ff2c611ba2bd1c6703d62ce1ec
-	sha256sums = 544c1219023419eb497e31e2c47f46c2971c7f3668277f004576a3a9b09e1a2e
-	sha256sums = bd0f362561ef06a6ac48d05858286bef7a1ee0266dd5ad3c5fa9d5e9486b4edc
+	sha256sums = e37f65b984f7ff374349dc3662b42fea15a6ae11b7843184b2a0c89d9d077c96
+	sha256sums = 0c7eb8b6f6b724d28b7248e112c20dd9de70bdba06b2774bd1f23c87f03d6e7c
 	sha256sums = 6f27bcdff18336fd3499c1a82c47f3a0858fb6133f388500f3f21102cf6526e0
 
 pkgname = cp2k
