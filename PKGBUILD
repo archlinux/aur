@@ -7,7 +7,7 @@
 
 pkgname=lib32-libtheora-git
 pkgver=1.1.1
-pkgrel=12
+pkgrel=1
 pkgdesc='An open video codec developed by the Xiph.org'
 arch=(x86_64)
 url=https://www.xiph.org
@@ -44,7 +44,7 @@ build() {
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  ./autogen.sh \
+  ./autogen.sh
   ./configure \
     --prefix='/usr' \
     --libdir='/usr/lib32' \
