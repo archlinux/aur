@@ -1,0 +1,12 @@
+pkgbase = mc-sodium-next-git
+	pkgdesc = A client side minecraft optimization mod
+	pkgver = 1.16.4.0.1.1.r285.d352852
+	pkgrel = 1
+	url = https://github.com/jellysquid3/sodium-fabric
+	arch = any
+	license = LGPL
+	makedepends = gradle
+	source = git+https://github.com/jellysquid3/sodium-fabric.git
+	md5sums = SKIP
+
+pkgname = mc-sodium-next-git
