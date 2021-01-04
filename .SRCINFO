@@ -1,12 +1,11 @@
 pkgbase = proton-caller
 	pkgdesc = Run any Windows program through Proton
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/caverym/Proton-Caller/
 	arch = x86_64
 	license = GPL3
 	depends = steam
-	depends = dxvk
 	source = proton-caller-1.3.2.tar.gz::https://github.com/caverym/Proton-Caller/archive/1.3.2.tar.gz
 	sha256sums = 59284eafb1760fe2279c44a10e8e8144dfc562821e49e58e7fd0a4636f0d1924
 
