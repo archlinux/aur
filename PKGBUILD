@@ -2,12 +2,12 @@
 pkgname=keymapper-git
 _pkgname=keymapper
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform context-aware key remapper.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/houmain/keymapper"
 license=('GPL3')
-depends=('libusb' 'libudev' 'libx11')
+depends=('libusb' 'libx11')
 makedepends=('cmake' 'git')
 conflicts=(${_pkgname})
 provides=(${_pkgname})

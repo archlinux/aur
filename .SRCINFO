@@ -1,7 +1,7 @@
 pkgbase = keymapper-git
 	pkgdesc = A cross-platform context-aware key remapper.
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/houmain/keymapper
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = keymapper-git
 	makedepends = cmake
 	makedepends = git
 	depends = libusb
-	depends = libudev
 	depends = libx11
 	provides = keymapper
 	conflicts = keymapper
