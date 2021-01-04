@@ -1,20 +1,22 @@
 pkgbase = gpupad-git
-	pkgdesc = A text editor for efficiently editing GLSL shaders of all kinds.
+	pkgdesc = A flexible GLSL shader editor and IDE.
 	pkgver = latest
-	pkgrel = 1
-	url = https://github.com/houmaster/gpupad
+	pkgrel = 4
+	url = https://github.com/houmain/gpupad
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
-	makedepends = qbs
+	makedepends = cmake
 	makedepends = git
 	depends = qt5-declarative
+	depends = qt5-multimedia
+	depends = gst-libav
 	provides = gpupad
 	conflicts = gpupad
-	source = git+https://github.com/houmaster/gpupad.git
+	source = git+https://github.com/houmain/gpupad.git
 	md5sums = SKIP
 
 pkgname = gpupad-git
