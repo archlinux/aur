@@ -1,7 +1,7 @@
 # Author: Roman Gilg <subdiff@gmail.com>
 
 pkgname=disman-kwinft
-pkgver=5.20.1
+pkgver=5.20.0
 _pkgver=0.520.0
 pkgrel=2
 pkgdesc='Qt/C++ display management library'
