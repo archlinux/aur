@@ -7,7 +7,7 @@ pkgbase = libfmod
 	arch = x86_64
 	license = custom
 	conflicts = fmodex
-	source = http://www.fmod.org/download/fmodex/api/Linux/fmodapi44464linux.tar.gz
+	source = https://zdoom.org/files/fmod/fmodapi44464linux.tar.gz
 	sha512sums = SKIP
 
 pkgname = libfmod

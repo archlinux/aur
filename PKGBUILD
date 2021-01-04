@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://www.fmod.org/"
 license=('custom')
 conflicts=('fmodex')
-source=("http://www.fmod.org/download/fmodex/api/Linux/fmodapi${pkgver//./}linux.tar.gz")
+source=("https://zdoom.org/files/fmod/fmodapi44464linux.tar.gz")
 sha512sums=('SKIP')
 
 package() {
