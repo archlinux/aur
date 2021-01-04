@@ -1,0 +1,19 @@
+pkgbase = sandpolis-client-desktop-git
+	pkgdesc = Sandpolis desktop client
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = https://github.com/sandpolis/sandpolis
+	arch = any
+	license = Mozilla Public License Version 2.0
+	makedepends = java-environment>=15
+	makedepends = git
+	depends = java-runtime>=15
+	provides = sandpolis-client-desktop
+	conflicts = sandpolis-client-desktop
+	source = git+https://github.com/sandpolis/sandpolis.git
+	source = git+https://github.com/sandpolis/com.sandpolis.client.lifegem.git
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = sandpolis-client-desktop-git
+
