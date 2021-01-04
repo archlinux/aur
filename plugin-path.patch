@@ -1,0 +1,13 @@
+diff --git a/mainwindow.cpp b/mainwindow.cpp
+index b75f252..3a0488e 100644
+--- a/mainwindow.cpp
++++ b/mainwindow.cpp
+@@ -11,7 +11,7 @@
+ #include <QtGui>
+ #include <rdapi/rdapi.h>
+ 
+-#define PLUGINS_FOLDER_NAME "plugins"
++#define PLUGINS_FOLDER_NAME "/usr/lib/redasm/"
+ 
+ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
+ {
