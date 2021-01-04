@@ -1,6 +1,6 @@
 pkgbase = macintosh.js-bin
 	pkgdesc = A virtual Apple Macintosh with System 8, running in Electron
-	pkgver = 1.0.6
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/felixrieseberg/macintosh.js
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = macintosh.js-bin
 	conflicts = macintosh.js
 	conflicts = macintosh-js-bin
 	replaces = macintosh-js-bin
-	source = https://github.com/felixrieseberg/macintosh.js/releases/download/v1.0.6/macintosh.js_1.0.6_amd64.deb
-	source = https://github.com/felixrieseberg/macintosh.js/raw/v1.0.6/CREDITS.md
-	sha256sums = b5d7c0b2024963e9325186a801f403072b6a38803490a4836c836f269603a385
+	source = https://github.com/felixrieseberg/macintosh.js/releases/download/v1.1.0/macintosh.js_1.1.0_amd64.deb
+	source = https://github.com/felixrieseberg/macintosh.js/raw/v1.1.0/CREDITS.md
+	sha256sums = e1ea7fbc9f69cfe8968e973c2bd723c01347295a0bc5d3c89bb5fdfd72e5f75c
 	sha256sums = 6a221f623fa4f773ea6ba81c8a1731ff0d680cc7e8f20c68488c31b0f13e3dec
 
 pkgname = macintosh.js-bin
