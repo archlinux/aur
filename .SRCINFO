@@ -1,7 +1,7 @@
 pkgbase = rt5592sta_linux_patched-dkms
 	pkgdesc = DKMS module which contains linux device driver for the Ralink RT2860 ABGN WLAN Card. It's based on halou89's rt5592sta_linux_patched package.
 	pkgver = 2.6.0.0
-	pkgrel = 6
+	pkgrel = 7
 	url = http://asus.com
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = rt5592sta_linux_patched-dkms
 	source = asus-pce-n53-linux::git+https://github.com/lesf0/asus-pce-n53-linux.git
 	source = dkms.conf
 	sha1sums = SKIP
-	sha1sums = 44a0dad0043e3482dec70d490325e651e333c72f
+	sha1sums = f214e701536900681df50d38308e8d4084230478
 	depends_i686 = glibc
 	depends_x86_64 = lib32-glibc
 
