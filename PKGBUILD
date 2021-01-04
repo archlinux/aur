@@ -3,22 +3,26 @@
 pkgname=python-flake8-annotations
 _pkgname="${pkgname#python-}"
 _name="${_pkgname/-/_}"
-pkgver=2.4.1
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="A flake8 extension that checks type annotations"
 arch=('any')
 url="https://github.com/sco1/flake8-annotations"
 license=('MIT')
-depends=('python' 'flake8' 'python-typed-ast')
+depends=('python' 'flake8')
 makedepends=('python-setuptools' 'python-dephell')
-checkdepends=() # TODO
-optdepends=()
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('1ae1bac59d8a83a2a3ff9cd48b692a4a4673decb8b8e75fc5e86a9e036dbf663b5382344a5838dfa372e7be67c049e264f02a890984f66281dea0743afe4da18')
+checkdepends=('python-pytest' 'python-pytest-check' 'python-pytest-cov')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+b2sums=('83f1549bf085f9080d3b1e56be466fd8c99f3722be37bb50348cbdc752818e53aac21b9f495fa145e4ebffb72c7a7d6b2fcbcff0bf2def9385226033fe20e019')
 
 prepare() {
   cd "$_pkgname-$pkgver"
   dephell deps convert --from pyproject.toml --to setup.py
+}
+
+check() {
+  cd "$_pkgname-$pkgver"
+  pytest --ignore testing/test_flake8_actually_runs_checker.py .
 }
 
 build() {
