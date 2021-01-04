@@ -2,14 +2,14 @@
 
 pkgname=ricochet-irc
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Ricochet bridge for IRC"
 arch=('any')
 url="https://github.com/adraenwan/ricochet-irc"
 license=('BSD')
 groups=()
-depends=('qt5-base' 'protobuf')
+depends=('qt5-base' 'qt5-declarative' 'protobuf' 'tor')
 makedepends=('qt5-tools')
 checkdepends=()
 optdepends=()
