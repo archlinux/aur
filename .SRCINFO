@@ -1,0 +1,16 @@
+pkgbase = slapdash
+	pkgdesc = a tool that can manage various web services for free in one place
+	pkgver = 1.7.47
+	pkgrel = 1
+	url = https://slapdash.com/
+	arch = x86_64
+	license = custom
+	source = slapdash.AppImage::https://slapdash.com/download/linux
+	source = slapdash.svg
+	source = slapdash.desktop
+	md5sums = SKIP
+	md5sums = cf5766dd1f919a9d0f27de208b90bef3
+	md5sums = 3fd5cc784a22af15d83a3ad1af1b1c8f
+
+pkgname = slapdash
+
