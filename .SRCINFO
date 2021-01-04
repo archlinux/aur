@@ -1,16 +1,16 @@
 pkgbase = nodejs-percollate
 	pkgdesc = Percollate is a command-line tool that turns web pages into beautifully formatted PDF, EPUB, or HTML files.
-	pkgver = 1.1.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/danburzo/percollate/
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = percollate-1.1.2.tgz
+	noextract = percollate-1.2.0.tgz
 	options = !strip
-	source = https://registry.npmjs.org/percollate/-/percollate-1.1.2.tgz
-	sha256sums = a4af2beb8a7342b87ab98c50691388539a0751c1cd89187eac17e4be540d0c86
+	source = https://registry.npmjs.org/percollate/-/percollate-1.2.0.tgz
+	sha256sums = 169011ce13d39c9fdd8836dca1bb231e7eae38b46a271dd93a3fb5094eb86181
 
 pkgname = nodejs-percollate
 
