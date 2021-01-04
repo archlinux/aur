@@ -16,12 +16,12 @@ source=("git+https://gitlab.xiph.org/xiph/vorbis.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd libvorbis
+  cd vorbis
   git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-  cd libvorbis
+  cd vorbis
 
   export CC="gcc -m32"
   export CXX="g++ -m32"
@@ -35,13 +35,13 @@ build() {
 }
 
 #check() {
-#  cd libvorbis
+#  cd vorbis
 
 #  make -j1 check
 #}
 
 package() {
-  cd libvorbis
+  cd vorbis
 
   make DESTDIR="${pkgdir}" install
 
