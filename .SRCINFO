@@ -1,13 +1,13 @@
 pkgbase = firefox-vim-vixen
 	pkgdesc = An add-on which allows you to navigate Firefox with vim-like bindings
-	pkgver = 0.31
+	pkgver = 0.32
 	pkgrel = 0
 	url = https://github.com/ueokande/vim-vixen
 	arch = any
 	license = MIT
-	noextract = vim_vixen-0.31-an+fx.xpi
-	source = https://addons.mozilla.org/firefox/downloads/file/3648399/vim_vixen-0.31-an+fx.xpi
-	sha256sums = 4f87d60db049b39a66fd132ffea360e17063e788edf9af523e291dd075fcdf8d
+	noextract = vim_vixen-0.32-an+fx.xpi
+	source = https://addons.mozilla.org/firefox/downloads/file/3700427/vim_vixen-0.32-an+fx.xpi
+	sha256sums = 99c6c8e785a0796a12a2d2e59dd1b539cb1edc00e1d81cd993eac43926eb91e2
 
 pkgname = firefox-vim-vixen
 
