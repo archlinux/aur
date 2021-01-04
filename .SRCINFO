@@ -1,0 +1,18 @@
+pkgbase = lib32-libtheora-git
+	pkgdesc = An open video codec developed by the Xiph.org
+	pkgver = 1.1.1
+	pkgrel = 12
+	url = https://www.xiph.org
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = lib32-libvorbis
+	depends = lib32-libogg
+	depends = libtheora
+	provides = lib32-libtheora
+	conflicts = lib32-libtheora
+	source = git+https://gitlab.xiph.org/xiph/theora.git
+	sha256sums = SKIP
+
+pkgname = lib32-libtheora-git
+
