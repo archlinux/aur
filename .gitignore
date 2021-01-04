@@ -1,0 +1,5 @@
+*.pkg.tar*
+*.log
+mcwb/
+pkg/
+src/

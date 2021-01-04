@@ -1,0 +1,18 @@
+pkgbase = python-mcwb
+	pkgdesc = Python 3 library for Minecraft world manipulation via RCON commands
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/coNQP/mcwb
+	arch = any
+	license = GPLv3
+	makedepends = git
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python-setuptools-git
+	depends = python
+	depends = python-mcipc
+	source = mcwb::git+https://github.com/coNQP/mcwb.git#tag=0.0.1
+	md5sums = SKIP
+
+pkgname = python-mcwb
+
