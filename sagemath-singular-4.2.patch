@@ -662,7 +662,7 @@ index 35377724c9..ee8ddec7dd 100644
          ....:     for weight in IntegerVectors(d,3).map(list).map(L0):
          ....:         eigenvalues = E.eigenvalues(E[L0(weight)])
 diff --git a/src/sage/combinat/sf/macdonald.py b/src/sage/combinat/sf/macdonald.py
-index c67da5fcfe..b5f341aee7 100644
+index 49a42e2786..53750a6341 100644
 --- a/src/sage/combinat/sf/macdonald.py
 +++ b/src/sage/combinat/sf/macdonald.py
 @@ -482,7 +482,7 @@ class Macdonald(UniqueRepresentation):
@@ -675,13 +675,13 @@ index c67da5fcfe..b5f341aee7 100644
              ((-q)/(-q+t))*McdHt[1, 1] + (t/(-q+t))*McdHt[2]
          """
 @@ -900,7 +900,7 @@ class MacdonaldPolynomials_generic(sfa.SymmetricFunctionAlgebra_generic):
-             sage: Q._multiply(Q[1],Q[2])
+             sage: Q.product(Q[1],Q[2])
              McdQ[2, 1] + ((q^2*t-q^2+q*t-q+t-1)/(q^2*t-1))*McdQ[3]
-             sage: Ht._multiply(Ht[1],Ht[2])
+             sage: Ht.product(Ht[1],Ht[2])
 -            ((-q^2+1)/(-q^2+t))*McdHt[2, 1] + ((-t+1)/(q^2-t))*McdHt[3]
 +            ((q^2-1)/(q^2-t))*McdHt[2, 1] + ((t-1)/(-q^2+t))*McdHt[3]
          """
-         return self( self._s(left)*self._s(right) )
+         return self(self._s(left) * self._s(right))
  
 diff --git a/src/sage/interfaces/singular.py b/src/sage/interfaces/singular.py
 index 3eaf12e6ad..1864fd1d37 100644
@@ -865,7 +865,7 @@ index 43e93b823f..1bd3696c73 100644
          -1
          sage: degree_lowest_rational_function(r,b)
 diff --git a/src/sage/rings/polynomial/multi_polynomial_ideal.py b/src/sage/rings/polynomial/multi_polynomial_ideal.py
-index 1da775dd78..b09123ac5c 100644
+index 38bf2b01d1..0e3b3d7a86 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_ideal.py
 +++ b/src/sage/rings/polynomial/multi_polynomial_ideal.py
 @@ -154,7 +154,7 @@ when the system has no solutions over the rationals.

@@ -96,10 +96,10 @@ index aede9fc941..27cc124372 100644
    if( bnf[8][4][1]%p == 0, \\ if( bnf.tu[1]%p == 0,
      LS2gen = concat( [Mod(bnf[8][4][2],bnf.pol)], LS2gen)); \\ LS2gen = concat( [Mod(bnf.tu[2],bnf.pol)], LS2gen));
 diff --git a/src/sage/geometry/cone.py b/src/sage/geometry/cone.py
-index 33b28dbede..1c6873eadd 100644
+index 79c75ad784..9919e4187c 100644
 --- a/src/sage/geometry/cone.py
 +++ b/src/sage/geometry/cone.py
-@@ -4268,31 +4268,31 @@ class ConvexRationalPolyhedralCone(IntegralRayCollection, Container):
+@@ -4273,31 +4273,31 @@ class ConvexRationalPolyhedralCone(IntegralRayCollection, Container):
              M(-5,  21,  0, -3),
              M( 0,  -2,  0,  1),
              M(15, -63, 25,  9),
@@ -492,10 +492,10 @@ index 7a91d353e3..b71fc8aac4 100644
              True
          """
 diff --git a/src/sage/modular/multiple_zeta.py b/src/sage/modular/multiple_zeta.py
-index d42be82bd9..5f0057474c 100644
+index 1dbc41ad8f..ad5779c22d 100644
 --- a/src/sage/modular/multiple_zeta.py
 +++ b/src/sage/modular/multiple_zeta.py
-@@ -457,7 +457,7 @@ class MultizetaValues(UniqueRepresentation):
+@@ -461,7 +461,7 @@ class MultizetaValues(UniqueRepresentation):
          """
          self.prec = int(prec)
          self.max_weight = int(max_weight)
@@ -558,7 +558,7 @@ index 53857d31a0..6557b7f308 100644
          return repr(self.vector())
  
 diff --git a/src/sage/modules/fg_pid/fgp_module.py b/src/sage/modules/fg_pid/fgp_module.py
-index 35f7cdaa17..5a700d808e 100644
+index 38b95d40a3..629c7bbca2 100644
 --- a/src/sage/modules/fg_pid/fgp_module.py
 +++ b/src/sage/modules/fg_pid/fgp_module.py
 @@ -70,17 +70,17 @@ the technical note has a V that need not be equal to V0, in general. ::
@@ -988,7 +988,7 @@ index 77a3a18913..421a90e10e 100644
          from sage.rings.rational_field import QQ
          return QQ(self)._bnfisnorm(K, proof=proof, extra_primes=extra_primes)
 diff --git a/src/sage/rings/number_field/S_unit_solver.py b/src/sage/rings/number_field/S_unit_solver.py
-index 3d6601d536..ba8b5164f0 100644
+index 2a5dd11c95..14458b8062 100644
 --- a/src/sage/rings/number_field/S_unit_solver.py
 +++ b/src/sage/rings/number_field/S_unit_solver.py
 @@ -24,10 +24,10 @@ EXAMPLES::
@@ -1097,7 +1097,7 @@ index 46d0ca8c9d..1ad6d583a8 100644
          if isinstance(args[0], FractionalIdealClass):
              return self.element_class(self, None, self._number_field.ideal(args[0].ideal()))
 diff --git a/src/sage/rings/number_field/number_field.py b/src/sage/rings/number_field/number_field.py
-index b0fbfffb96..937f7f533d 100644
+index 4fe1fbc196..c2fb23d2d3 100644
 --- a/src/sage/rings/number_field/number_field.py
 +++ b/src/sage/rings/number_field/number_field.py
 @@ -3513,7 +3513,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
@@ -1125,10 +1125,10 @@ index b0fbfffb96..937f7f533d 100644
 -            [1 0]
              [0 1]
 +            [1 0]
-         """
-         from sage.matrix.constructor import matrix
-         S_clgp_gens = self._S_class_group_and_units(S)[1]
-@@ -4845,7 +4845,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+ 
+         TESTS:
+ 
+@@ -4861,7 +4861,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
               1/13*a^2 + 7/13*a - 332/13,
               -1/13*a^2 + 6/13*a + 345/13,
               -1,
@@ -1137,7 +1137,7 @@ index b0fbfffb96..937f7f533d 100644
              sage: gens[5] in (1/13*a^2 - 19/13*a - 7/13, 1/13*a^2 + 20/13*a - 7/13)
              True
              sage: gens[6] in (-1/13*a^2 + 45/13*a - 97/13, 1/13*a^2 - 45/13*a + 97/13)
-@@ -6022,28 +6022,37 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -6038,28 +6038,37 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
          try:
              return self._integral_basis_dict[v]
          except (AttributeError, KeyError):
@@ -1195,7 +1195,7 @@ index b0fbfffb96..937f7f533d 100644
  
      def reduced_basis(self, prec=None):
          r"""
-@@ -6729,7 +6738,8 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -6745,7 +6754,8 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
          """
          Return generators for the unit group modulo torsion.
  
@@ -1205,7 +1205,7 @@ index b0fbfffb96..937f7f533d 100644
  
          INPUT:
  
-@@ -6751,7 +6761,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -6767,7 +6777,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              sage: A = x^4 - 10*x^3 + 20*5*x^2 - 15*5^2*x + 11*5^3
              sage: K = NumberField(A, 'a')
              sage: K.units()
@@ -1214,7 +1214,7 @@ index b0fbfffb96..937f7f533d 100644
  
          For big number fields, provably computing the unit group can
          take a very long time.  In this case, one can ask for the
-@@ -6762,14 +6772,14 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -6778,14 +6788,14 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              sage: K.units(proof=True)  # takes forever, not tested
              ...
              sage: K.units(proof=False)  # result not independently verified
@@ -1235,7 +1235,7 @@ index b0fbfffb96..937f7f533d 100644
  
          TESTS:
  
-@@ -6778,7 +6788,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -6794,7 +6804,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
  
              sage: K.<a> = NumberField(1/2*x^2 - 1/6)
              sage: K.units()
@@ -1244,7 +1244,7 @@ index b0fbfffb96..937f7f533d 100644
          """
          proof = proof_flag(proof)
  
-@@ -6796,7 +6806,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -6812,7 +6822,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
                  pass
  
          # get PARI to compute the units
@@ -1253,7 +1253,7 @@ index b0fbfffb96..937f7f533d 100644
          B = tuple(self(b, check=False) for b in B)
          if proof:
              # cache the provable results and return them
-@@ -6811,7 +6821,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -6827,7 +6837,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
          """
          Return the unit group (including torsion) of this number field.
  
@@ -1262,7 +1262,7 @@ index b0fbfffb96..937f7f533d 100644
  
          INPUT:
  
-@@ -6857,7 +6867,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -6873,7 +6883,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
              sage: U.gens()
              (u0, u1, u2, u3, u4, u5, u6, u7, u8)
              sage: U.gens_values()  # result not independently verified
@@ -1271,7 +1271,7 @@ index b0fbfffb96..937f7f533d 100644
          """
          proof = proof_flag(proof)
  
-@@ -7045,7 +7055,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
+@@ -7061,7 +7071,7 @@ class NumberField_generic(WithEqualityById, number_field_base.NumberField):
  
              sage: solutions, bound = K.S_unit_solutions(S, prec=100, include_bound=True)
              sage: bound
@@ -1280,7 +1280,7 @@ index b0fbfffb96..937f7f533d 100644
          """
          from .S_unit_solver import solve_S_unit_equation
          return solve_S_unit_equation(self, S, prec, include_exponents, include_bound, proof)
-@@ -10884,9 +10894,9 @@ class NumberField_cyclotomic(NumberField_absolute):
+@@ -10900,9 +10910,9 @@ class NumberField_cyclotomic(NumberField_absolute):
          EXAMPLES::
  
              sage: k5.<z> = CyclotomicField(5)
@@ -1292,7 +1292,7 @@ index b0fbfffb96..937f7f533d 100644
              sage: z^7 + 3
              z^2 + 3
              sage: k5(w) # indirect doctest
-@@ -10897,7 +10907,7 @@ class NumberField_cyclotomic(NumberField_absolute):
+@@ -10913,7 +10923,7 @@ class NumberField_cyclotomic(NumberField_absolute):
  
              sage: F = CyclotomicField(8)
              sage: z = F.gen()
@@ -1301,7 +1301,7 @@ index b0fbfffb96..937f7f533d 100644
              E(8)-E(8)^3
              sage: F(a)
              -zeta8^3 + zeta8
-@@ -10911,6 +10921,7 @@ class NumberField_cyclotomic(NumberField_absolute):
+@@ -10927,6 +10937,7 @@ class NumberField_cyclotomic(NumberField_absolute):
  
          It also works with the old pexpect interface to GAP::
  
@@ -1432,7 +1432,7 @@ index b5cdeb2a96..be1548f7a2 100644
          -0.500000000000000 + 0.866025403784439*I
          sage: omega.minpoly()
 diff --git a/src/sage/rings/number_field/unit_group.py b/src/sage/rings/number_field/unit_group.py
-index 5c94f7407d..2a3c617ca3 100644
+index 641f662c2d..104557534f 100644
 --- a/src/sage/rings/number_field/unit_group.py
 +++ b/src/sage/rings/number_field/unit_group.py
 @@ -15,12 +15,12 @@ The first generator is a primitive root of unity in the field::
@@ -1610,7 +1610,7 @@ index 5c94f7407d..2a3c617ca3 100644
 -        # Store the actual generators (torsion first):
 -        gens = [z] + fu + su
 -        values = Sequence(gens, immutable=True, universe=self, check=False)
-         # Construct the abtract group:
+         # Construct the abstract group:
 -        gens_orders = tuple([ZZ(n)]+[ZZ(0)]*(self.__rank))
 -        AbelianGroupWithValues_class.__init__(self, gens_orders, 'u', values, number_field)
 +        gens_orders = tuple([ZZ(self.__ntu)]+[ZZ(0)]*(self.__rank))
@@ -1748,10 +1748,10 @@ index 87fbec3b69..adf0d2c73f 100644
          G = self.__pari__().ellgroup(flag=1)
          return tuple(self.point(list(pt)) for pt in G[2])
 diff --git a/src/sage/schemes/elliptic_curves/ell_generic.py b/src/sage/schemes/elliptic_curves/ell_generic.py
-index ac5b4a98b4..194501bc94 100644
+index 7b02e8f663..354ba4af74 100644
 --- a/src/sage/schemes/elliptic_curves/ell_generic.py
 +++ b/src/sage/schemes/elliptic_curves/ell_generic.py
-@@ -2934,15 +2934,7 @@ class EllipticCurve_generic(WithEqualityById, plane_curve.ProjectivePlaneCurve):
+@@ -2945,15 +2945,7 @@ class EllipticCurve_generic(WithEqualityById, plane_curve.ProjectivePlaneCurve):
              sage: K.<a> = QuadraticField(2)
              sage: E = EllipticCurve([1,a])
              sage: E.pari_curve()
@@ -1856,7 +1856,7 @@ index 7178da3685..ea0a7e88bc 100644
      F = E.base_field()
      if E.j_invariant() != 0:
 diff --git a/src/sage/schemes/elliptic_curves/period_lattice.py b/src/sage/schemes/elliptic_curves/period_lattice.py
-index 42793dc1b3..6ae1dd593d 100644
+index 0f1d17f995..dd53ba9dac 100644
 --- a/src/sage/schemes/elliptic_curves/period_lattice.py
 +++ b/src/sage/schemes/elliptic_curves/period_lattice.py
 @@ -1626,7 +1626,7 @@ class PeriodLattice_ell(PeriodLattice):
