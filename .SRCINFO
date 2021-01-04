@@ -1,0 +1,21 @@
+pkgbase = lightspeed-ingest-git
+	pkgdesc = A FTL handshake server written in Rust
+	pkgver = r164.af28eff
+	pkgrel = 1
+	url = https://github.com/GRVYDEV/Lightspeed-ingest
+	arch = x86_64
+	license = custom:MIT
+	makedepends = rust
+	makedepends = git
+	makedepends = gcc
+	depends = gcc-libs
+	optdepends = lightspeed-webrtc: Translate Stream to WebRTC
+	provides = lightspeed-ingest
+	conflicts = lightspeed-ingest
+	source = lightspeed-ingest-git::git+https://github.com/GRVYDEV/Lightspeed-ingest.git
+	source = systemd.service
+	sha512sums = SKIP
+	sha512sums = d0b32093ea65ab018aab9d4952355a6684de38285e3bb7e380d25f2266128efee09959685b2c7496237741cb52c6147c03a091843afbc41f7b485e247cb70f35
+
+pkgname = lightspeed-ingest-git
+
