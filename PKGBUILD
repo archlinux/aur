@@ -16,19 +16,24 @@ source=("git+https://gitlab.freedesktop.org/mesa/glu.git")
 sha512sums=('SKIP')
 #validpgpkeys=('3BB639E56F861FA2E86505690FDD682D974CA72A') # "Matt Turner <mattst88@gmail.com>"
 
+pkgver() {
+  cd glu
+  git describe --tags | sed 's/-/+/g'
+}
+
 build() {
-  cd "$srcdir/glu"
+  cd glu
   ./autogen.sh
   ./configure --prefix=/usr --disable-static
   make
 }
 
 #check() {
-#  cd "$srcdir/glu"
+#  cd glu
 #  make -k check
 #}
 
 package() {
-  cd "$srcdir/glu"
+  cd glu
   make DESTDIR="$pkgdir/" install
 }
