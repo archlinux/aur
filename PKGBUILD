@@ -1,7 +1,7 @@
 # Maintainer: Jochem Broekhoff <(lastname) dot (firstname) @ gmail.com>
 pkgname=marble-marcher-ce
-_pkgtag=1.4.4
-pkgver=$(echo "${_pkgtag}" | sed "s/-//")
+_pkgtag=1.4.5
+pkgver=$(echo "${_pkgtag}" | sed "s/-//;s/v//")
 pkgrel=1
 pkgdesc="A video game demo that uses a fractal physics engine and fully procedural rendering to produce beautiful and unique gameplay unlike anything you've seen before."
 arch=('x86_64')
@@ -11,12 +11,13 @@ url="https://github.com/WAUthethird/Marble-Marcher-Community-Edition"
 depends=("sfml"
          "anttweakbar"
          "glm"
-         "eigen")
+         "eigen"
+         "glew")
 
 makedepends=("git"
              "cmake")
 
-source=("${pkgname}::git+https://github.com/WAUthethird/Marble-Marcher-Community-Edition#tag=v${_pkgtag}")
+source=("${pkgname}::git+https://github.com/WAUthethird/Marble-Marcher-Community-Edition#tag=${_pkgtag}")
 sha256sums=("SKIP")
 
 prepare() {
