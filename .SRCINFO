@@ -1,7 +1,7 @@
 pkgbase = python-jira
 	pkgdesc = Python library to work with Jira APIs
 	pkgver = 3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/pycontribs/jira
 	arch = any
 	license = BSD 2-Clause

@@ -7,7 +7,7 @@
 pkgname='python-jira'
 pkgdesc='Python library to work with Jira APIs'
 pkgver='3.0'
-pkgrel=3
+pkgrel=4
 url='https://github.com/pycontribs/jira'
 license=('BSD 2-Clause')
 arch=('any')
