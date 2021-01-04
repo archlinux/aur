@@ -9,13 +9,14 @@ url="https://github.com/pyIDM/PyIDM"
 license=('LGPL3')
 depends=('ffmpeg'
          'python>=3.6' 
-         'python-awesometkinter>=2020.9.22'
-         'python-certifi' 
+         'python-awesometkinter>=2020.12.16'
+         'python-certifi'
          'python-pillow'
-         'python-plyer' 
-         'python-pycurl' 
+         'python-plyer'
+         'python-pycurl'
          'python-pystray'
-         'youtube-dl')
+         'youtube-dl'
+         'youtube-dlc')
 makedepends=('python-setuptools')
 changelog=$pkgname.changelog
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pyIDM/PyIDM/archive/$pkgver.tar.gz")

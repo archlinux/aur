@@ -9,13 +9,14 @@ pkgbase = pyidm
 	makedepends = python-setuptools
 	depends = ffmpeg
 	depends = python>=3.6
-	depends = python-awesometkinter>=2020.9.22
+	depends = python-awesometkinter>=2020.12.16
 	depends = python-certifi
 	depends = python-pillow
 	depends = python-plyer
 	depends = python-pycurl
 	depends = python-pystray
 	depends = youtube-dl
+	depends = youtube-dlc
 	source = pyidm-2020.12.20.tar.gz::https://github.com/pyIDM/PyIDM/archive/2020.12.20.tar.gz
 	b2sums = 1fd1fa17dde4731a19a142ca21a03e2404e563d0733dab15404d4384199d53aa3ef36666a3cd33404dc218c72edb049eca532ae3b0ada6af71ffd79a12612529
 
