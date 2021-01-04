@@ -1,4 +1,4 @@
-pkgbase = libva-intel-driver-hybrid
+pkgbase = libva-intel-driver-hybrid-g45-h265
 	pkgdesc = VA-API implementation for Intel G45 and HD Graphics family
 	pkgver = 2.4.1
 	pkgrel = 1
@@ -12,10 +12,12 @@ pkgbase = libva-intel-driver-hybrid
 	depends = libdrm
 	optdepends = intel-hybrid-codec-driver: Provides codecs with partial HW acceleration
 	provides = libva-intel-driver
+	provides = libva-intel-driver-hybrid
 	conflicts = libva-intel-driver
+	conflicts = libva-intel-driver-hybrid
 	replaces = libva-driver-intel
-	source = git+https://github.com/intel/intel-vaapi-driver.git#tag=9a1f0c64174f970a26380d4957583c71372fbb7c
+	source = https://bitbucket.org/alium/g45-h264/downloads/intel-driver-g45-h264-2.4.1.tar.gz
 	sha256sums = SKIP
 
-pkgname = libva-intel-driver-hybrid
+pkgname = libva-intel-driver-hybrid-g45-h265
 

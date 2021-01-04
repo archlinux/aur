@@ -1,5 +1,5 @@
-# This package is based on libva-intel-driver just with the hybrid codec flag
-pkgname=libva-intel-driver-hybrid
+# This package is based on libva-intel-driver-g45-h265 just with the hybrid codec flag
+pkgname=libva-intel-driver-hybrid-g45-h265
 pkgver=2.4.1
 pkgrel=1
 pkgdesc='VA-API implementation for Intel G45 and HD Graphics family'
@@ -17,16 +17,10 @@ makedepends=(
 )
 replaces=(libva-driver-intel)
 optdepends=('intel-hybrid-codec-driver: Provides codecs with partial HW acceleration')
-conflicts=('libva-intel-driver')
-provides=('libva-intel-driver')
-source=(git+https://github.com/intel/intel-vaapi-driver.git#tag=9a1f0c64174f970a26380d4957583c71372fbb7c)
+conflicts=('libva-intel-driver' 'libva-intel-driver-hybrid')
+provides=('libva-intel-driver' 'libva-intel-driver-hybrid')
+source=(https://bitbucket.org/alium/g45-h264/downloads/intel-driver-g45-h264-$pkgver.tar.gz)
 sha256sums=('SKIP')
-
-pkgver() {
-  cd intel-vaapi-driver
-
-  git describe --tags
-}
 
 prepare() {
   cd intel-vaapi-driver
