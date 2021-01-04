@@ -2,7 +2,7 @@
 # Co-Maintainer: eldios
 
 pkgname=seadrive-daemon
-pkgver=2.0.6
+pkgver=2.0.10
 pkgrel=1
 pkgdesc="Daemon part of seadrive"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('libsearpc' 'libcurl-compat' 'libevent-compat'
 source=('seadrive'
         "http://linux-clients.seafile.com/seadrive-deb/focal/pool/main/s/${pkgname}/${pkgname}_${pkgver}_amd64.deb")
 sha256sums=('25770d58f6e262a29e54a065ccf5e2d138ec5ec2aecaafa12fe2f6fe4ca256fb'
-            '8dd4fe3d4f8b474cccf46cc6054d8bb08e75936f236752d6a44dfd4cce037a8c')
+            '21136593bbf5074b708fe296ad30d27a8363b2c8d3ff3fdf91c77c5f4013bef7')
 
 prepare() {
   cd "${srcdir}"
