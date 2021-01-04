@@ -1,0 +1,11 @@
+pkgbase = gamemusic-cli
+	pkgdesc = Import, export and convert music files used by DOS games
+	pkgver = latest
+	pkgrel = 1
+	url = http://github.com/Malvineous/gamemusicjs
+	arch = any
+	makedepends = npm
+	depends = nodejs
+
+pkgname = gamemusic-cli
+
