@@ -3,7 +3,7 @@
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
 pkgver=3.80.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
 url="https://tutanota.com"
@@ -21,7 +21,7 @@ build() {
 	# Use nodejs v10 per upstream
 	export npm_config_cache="$srcdir/npm-cache"
 	local npm_prefix=$(npm config get prefix)
-	local nodeversion='10.23.0'
+	local nodeversion='10.23.1'
 	npm config delete prefix
 	source /usr/share/nvm/init-nvm.sh
 	nvm install "$nodeversion" && nvm use "$nodeversion"
