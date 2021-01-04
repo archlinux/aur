@@ -1,0 +1,13 @@
+diff --git a/pyne/cpp_transmuters.pxd b/pyne/cpp_transmuters.pxd
+index 2cd911a5..d76e0e34 100644
+--- a/pyne/cpp_transmuters.pxd
++++ b/pyne/cpp_transmuters.pxd
+@@ -5,6 +5,6 @@ from libcpp.vector cimport vector
+ 
+ cdef extern from "transmuters.h" namespace "pyne::transmuters":
+ 
+-    map[int, double] cram(vector[double], const map[int, double]) except +ValueError
+-    map[int, double] cram(vector[double], const map[int, double], const int) except +ValueError
++    map[int, double] cram(vector[double], const map[int, double]) except +
++    map[int, double] cram(vector[double], const map[int, double], const int) except +
+ 

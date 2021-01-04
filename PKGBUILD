@@ -1,6 +1,6 @@
 _pkgname=pyne
 pkgname=python-pyne
-pkgver=0.5.11
+pkgver=0.7.3
 pkgrel=1
 pkgdesc='The Nuclear Engineering Toolkit'
 arch=('any')
@@ -9,14 +9,17 @@ license=('BSD')
 makedepends=('gcc-fortran' 'cmake')
 depends=('python-numpy' 'python-scipy' 'cython' 'hdf5' 'python-pytables')
 source=($pkgname-$pkgver.tar.gz::https://github.com/pyne/pyne/archive/$pkgver.tar.gz
-        nuc_data.h5::https://github.com/pyne/data/raw/d00f5529bdc8af55638c5d2abb3271c896e08f16/prebuilt_nuc_data.h5
-        destdir.patch)
-sha256sums=('ba05917b0de446ec520857655e77967a783e3bc723299faf5989f532d6b0647a'
-            '8deb26f04ba4bee15355a7443711148b0f7185e7ef4f19ce111b87e85dc29275'
-            'dc380f2dcb8ab2f3acef85af7dd155a96f37c99f27889f50d99968655a7b8de5')
+        nuc_data.h5::https://github.com/pyne/data/raw/fd999360f2aa18cf6fee11d785e2dbd248bb6b01/prebuilt_nuc_data.h5
+        destdir.patch
+	value-error.patch)
+sha256sums=('aa7abec24834c3e76acb246b8ea917095d4a30d27e80e3441afe9e089620e177'
+            '77a8fbda6db3ed154766f4a7c134651ba710f52d35304f0e456dc6f7e7a69936'
+            'dc380f2dcb8ab2f3acef85af7dd155a96f37c99f27889f50d99968655a7b8de5'
+            'eddc0b10111eca3d1c8fd997e43af2e7a44f82480672145769f2eab8f67d2520')
 
 prepare() {
 	patch -p 1 -d $_pkgname-$pkgver < destdir.patch
+	patch -p 1 -d $_pkgname-$pkgver < value-error.patch
 }
 
 build() {
