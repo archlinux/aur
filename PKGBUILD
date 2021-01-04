@@ -27,6 +27,7 @@ build() {
   export CXX="g++ -m32"
   export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
 
+  ./autogen.sh
   ./configure \
     --prefix='/usr' \
     --libdir='/usr/lib32' \
