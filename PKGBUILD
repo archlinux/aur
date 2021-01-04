@@ -2,7 +2,7 @@
 pkgname=ply-git
 _pkgname=ply
 pkgrel=1
-pkgver=r322.aa5b9ac
+pkgver=2.1.1.r10.gd720bb6
 pkgdesc="A light-weight dynamic tracer for Linux"
 arch=('x86_64')
 url="https://github.com/iovisor/ply"
