@@ -10,7 +10,7 @@ url="https://github.com/sbrunner/sphinx-prompt"
 license=('MIT')
 makedepends=('python-setuptools')
 #'python-sphinx')
-#checkdepends=('python-pytest')
+checkdepends=('python-sphinx' 'python-pygments')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('66c0f4a1e0ba2f7f0e1864e599e7bd2d')
 
@@ -20,12 +20,12 @@ build() {
     python setup.py build
 }
 
-#check() {
-#    cd ${srcdir}/${_pyname}-${pkgver}
-#
-##   python setup.py test
-#    pytest #|| warning "Tests failed"
-#}
+check() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    python setup.py test
+#   pytest #|| warning "Tests failed"
+}
 
 package_python-sphinx-prompt() {
     depends=('python-sphinx' 'python-pygments')
