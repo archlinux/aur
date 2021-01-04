@@ -118,28 +118,6 @@ diff -ru a/brave/vendor/bat-native-usermodel/src/transformation.cc b/brave/vendo
  #include <codecvt>
  #include <math.h>
  namespace usermodel {
---- a/brave/vendor/bat-native-ads/src/bat/ads/internal/classification/classification_util.cc	2020-10-01 16:12:59.776666163 +0200
-+++ b/brave/vendor/bat-native-ads/src/bat/ads/internal/classification/classification_util.cc	2020-10-01 17:26:05.076665847 +0200
-@@ -5,6 +5,7 @@
- 
- #include "bat/ads/internal/classification/classification_util.h"
- 
-+#include <algorithm>
- #include "base/strings/string_split.h"
- 
- namespace ads {
-diff --git a/brave/vendor/bat-native-ads/src/bat/ads/internal/filters/ads_history_conversion_filter.cc b/brave/vendor/bat-native-ads/src/bat/ads/internal/filters/ads_history_conversion_filter.cc
-index 67bd13c94d..5e8e8736f5 100644
---- a/brave/vendor/bat-native-ads/src/bat/ads/internal/filters/ads_history_conversion_filter.cc
-+++ b/brave/vendor/bat-native-ads/src/bat/ads/internal/filters/ads_history_conversion_filter.cc
-@@ -4,6 +4,7 @@
-  * You can obtain one at http://mozilla.org/MPL/2.0/. */
- 
- #include "bat/ads/internal/filters/ads_history_conversion_filter.h"
-+#include <algorithm>
- 
- namespace ads {
- 
 diff --git a/brave/components/ipfs/ipfs_utils.cc b/brave/components/ipfs/ipfs_utils.cc
 index de984233dc..9414da92a3 100644
 --- a/brave/components/ipfs/ipfs_utils.cc
@@ -164,16 +142,40 @@ index d3bf012a5f..794ba63eb7 100644
  
  #include "base/logging.h"
  #include "brave/components/ipfs/common/ipfs_constants.h"
-diff --git a/brave/browser/brave_stats/brave_stats_updater.cc b/brave/browser/brave_stats/brave_stats_updater.cc
-index e4e9a0668f..20493aa078 100644
---- a/brave/browser/brave_stats/brave_stats_updater.cc
-+++ b/brave/browser/brave_stats/brave_stats_updater.cc
-@@ -171,9 +171,6 @@ void BraveStatsUpdater::SetStatsThresholdCallback(
+diff --git a/brave/vendor/bat-native-ads/src/bat/ads/internal/ad_targeting/ad_targeting_util.cc b/brave/vendor/bat-native-ads/src/bat/ads/internal/ad_targeting/ad_targeting_util.cc
+index 977dd27c48..2e2e38da4a 100644
+--- a/brave/vendor/bat-native-ads/src/bat/ads/internal/ad_targeting/ad_targeting_util.cc
++++ b/brave/vendor/bat-native-ads/src/bat/ads/internal/ad_targeting/ad_targeting_util.cc
+@@ -5,6 +5,7 @@
  
- GURL BraveStatsUpdater::BuildStatsEndpoint(const std::string& path) {
-   auto stats_updater_url = GURL(usage_server_ + path);
--#if defined(OFFICIAL_BUILD)
--  CHECK(stats_updater_url.is_valid());
--#endif
-   return stats_updater_url;
- }
+ #include "bat/ads/internal/ad_targeting/ad_targeting_util.h"
+ 
++#include <algorithm>
+ #include "base/strings/string_split.h"
+ 
+ namespace ads {
+diff --git a/brave/vendor/bat-native-ads/src/bat/ads/internal/p2a/p2a_util.cc b/brave/vendor/bat-native-ads/src/bat/ads/internal/p2a/p2a_util.cc
+index 801ada1adf..3041a6954f 100644
+--- a/brave/vendor/bat-native-ads/src/bat/ads/internal/p2a/p2a_util.cc
++++ b/brave/vendor/bat-native-ads/src/bat/ads/internal/p2a/p2a_util.cc
+@@ -5,6 +5,7 @@
+ 
+ #include "bat/ads/internal/p2a/p2a_util.h"
+ 
++#include <algorithm>
+ #include "bat/ads/internal/ad_targeting/ad_targeting_util.h"
+ 
+ namespace ads {
+diff --git a/brave/vendor/bat-native-ads/src/bat/ads/internal/ads_history/filters/ads_history_date_range_filter.cc b/brave/vendor/bat-native-ads/src/bat/ads/internal/ads_history/filters/ads_history_date_range_filter.cc
+index f9c29eca59..2669a9a0b1 100644
+--- a/brave/vendor/bat-native-ads/src/bat/ads/internal/ads_history/filters/ads_history_date_range_filter.cc
++++ b/brave/vendor/bat-native-ads/src/bat/ads/internal/ads_history/filters/ads_history_date_range_filter.cc
+@@ -5,6 +5,8 @@
+ 
+ #include "bat/ads/internal/ads_history/filters/ads_history_date_range_filter.h"
+ 
++#include <algorithm>
++
+ namespace ads {
+ 
+ AdsHistoryDateRangeFilter::AdsHistoryDateRangeFilter() = default;

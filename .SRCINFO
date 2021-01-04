@@ -1,6 +1,6 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
-	pkgver = 1.17.75
+	pkgver = 1.18.70
 	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
@@ -27,41 +27,45 @@ pkgbase = brave
 	depends = libva
 	depends = libpulse
 	depends = pciutils
-	depends = icu
-	depends = libxml2
 	depends = fontconfig
-	depends = harfbuzz
 	depends = libjpeg
-	depends = libpng
-	depends = re2
-	depends = snappy
-	depends = ffmpeg
+	depends = icu
 	depends = flac
+	depends = snappy
+	depends = libxml2
+	depends = ffmpeg
 	depends = libwebp
 	depends = minizip
-	depends = libxslt
-	depends = freetype2
 	depends = opus
+	depends = harfbuzz
+	depends = re2
+	depends = libxslt
+	depends = libpng
+	depends = freetype2
 	optdepends = cups: Printer support
 	optdepends = pepper-flash: Adobe Flash support
 	optdepends = libpipewire02: WebRTC desktop sharing under Wayland
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: for storing passwords in KWallet on KDE desktops
 	optdepends = sccache: For faster builds
-	source = https://github.com/brave/brave-browser/archive/v1.17.75.tar.gz
+	source = https://github.com/brave/brave-browser/archive/v1.18.70.tar.gz
 	source = brave-launcher
 	source = brave-browser.desktop
 	source = chromium-launcher-6.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v6.tar.gz
 	source = https://github.com/stha09/chromium-patches/releases/download/chromium-87-patchset-9/chromium-87-patchset-9.tar.xz
 	source = brave-custom-build.patch
-	source = chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium&id=63e8313d989fbb6f05b8886cefff67a643d3d888
-	sha256sums = 00fae544068fb94a82587ff7bbcba8430d0a1efd91ffcc5e84c06da6ce9b49fc
+	source = subpixel-anti-aliasing-in-FreeType-2.8.1.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/subpixel-anti-aliasing-in-FreeType-2.8.1.patch?h=packages/chromium&id=4332a9b5a5f7e1d5ec8e95ee51581c3e55450f41
+	source = icu68.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/icu68.patch?h=packages/chromium&id=4332a9b5a5f7e1d5ec8e95ee51581c3e55450f41
+	source = v8-icu68.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/v8-icu68.patch?h=packages/chromium&id=4332a9b5a5f7e1d5ec8e95ee51581c3e55450f41
+	sha256sums = 699b75c6fa915f7e9f6ce9a6e5237456c82821f3fc726760a1e5ae3027a4f5f6
 	sha256sums = 725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5
 	sha256sums = fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d
 	sha256sums = 04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1
 	sha256sums = c99934bcd2f3ae8ea9620f5f59a94338b2cf739647f04c28c8a551d9083fa7e9
-	sha256sums = 8d1123e583e33ef8e91ddda0b62f7b8d51b9d6b61c73e74a90f40ef5f379573b
-	sha256sums = 771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1
+	sha256sums = d888be0e297bb768ba0bac99616c1180377b7030ac1b8fcb4436a39aca7c7acf
+	sha256sums = 1e2913e21c491d546e05f9b4edf5a6c7a22d89ed0b36ef692ca6272bcd5faec6
+	sha256sums = 38fb5218331d6e03915490dab64f7b8bf26833a581d1aaa02090437c67e9439c
+	sha256sums = 6e919c9712d8fe6c2918778df1f8c2ee0675a87a48be5d2aaa54e320703ced4b
 
 pkgname = brave
 

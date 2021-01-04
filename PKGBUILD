@@ -27,7 +27,7 @@ fi
 ##
 
 pkgname=brave
-pkgver=1.17.75
+pkgver=1.18.70
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -51,9 +51,11 @@ source=("https://github.com/brave/brave-browser/archive/v${pkgver}.tar.gz"
         "chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz"
         "https://github.com/stha09/chromium-patches/releases/download/${patchset_name}/${patchset_name}.tar.xz"
         'brave-custom-build.patch')
-arch_revision=63e8313d989fbb6f05b8886cefff67a643d3d888
+arch_revision=4332a9b5a5f7e1d5ec8e95ee51581c3e55450f41
 for Patches in \
-        chromium-skia-harmony.patch
+	subpixel-anti-aliasing-in-FreeType-2.8.1.patch \
+    icu68.patch \
+    v8-icu68.patch
 do
   source+=("${Patches}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${Patches}?h=packages/chromium&id=${arch_revision}")
 done
@@ -61,13 +63,15 @@ done
 # VAAPI patches from chromium-vaapi in AUR
 #source+=("vdpau-support.patch::https://aur.archlinux.org/cgit/aur.git/plain/vdpau-support.patch?h=chromium-vaapi&id=7c05464a8700b1a6144258320b2b33b352385f77")
 
-sha256sums=('00fae544068fb94a82587ff7bbcba8430d0a1efd91ffcc5e84c06da6ce9b49fc'
+sha256sums=('699b75c6fa915f7e9f6ce9a6e5237456c82821f3fc726760a1e5ae3027a4f5f6'
             '725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'c99934bcd2f3ae8ea9620f5f59a94338b2cf739647f04c28c8a551d9083fa7e9'
-            '8d1123e583e33ef8e91ddda0b62f7b8d51b9d6b61c73e74a90f40ef5f379573b'
-            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
+            'd888be0e297bb768ba0bac99616c1180377b7030ac1b8fcb4436a39aca7c7acf'
+            '1e2913e21c491d546e05f9b4edf5a6c7a22d89ed0b36ef692ca6272bcd5faec6'
+            '38fb5218331d6e03915490dab64f7b8bf26833a581d1aaa02090437c67e9439c'
+            '6e919c9712d8fe6c2918778df1f8c2ee0675a87a48be5d2aaa54e320703ced4b')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -114,9 +118,11 @@ prepare() {
 
   msg2 "Prepare the environment..."
   npm install
-  #npm run init || (npm run update_patches && npm run init)
-  npm run init
-  npm run sync -- --force
+  if [ -d src/out/Release ]; then
+    npm run sync -- --force
+  else
+    npm run init
+  fi
 
   msg2 "Apply Chromium patches..."
   cd src/
@@ -128,13 +134,13 @@ prepare() {
     third_party/libxml/chromium/*.cc
 
   # Upstream fixes
+  patch -Np1 -i ../../icu68.patch
+  patch -Np1 -d v8 <../../v8-icu68.patch
+  patch -Np1 -d third_party/skia <../../subpixel-anti-aliasing-in-FreeType-2.8.1.patch
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../../patches/chromium-87-ServiceWorkerContainerHost-crash.patch
   patch -Np1 -i ../../patches/chromium-87-openscreen-include.patch
-
-  # https://crbug.com/skia/6663#c10
-  patch -Np0 -i "${srcdir}"/chromium-skia-harmony.patch
 
   # Force script incompatible with Python 3 to use /usr/bin/python2
   sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
@@ -146,9 +152,6 @@ prepare() {
   if [ "$COMPONENT" = "4" ]; then
     sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
         tools/generate_shim_headers/generate_shim_headers.py
-
-    sed -i $'s/\r$//' \
-        brave/vendor/bat-native-ads/src/bat/ads/internal/filters/ads_history_conversion_filter.cc
 
     msg2 "Add patches for custom build"
     patch -Np1 -i "$srcdir/brave-custom-build.patch"
@@ -166,13 +169,18 @@ prepare() {
       -delete
     done
 
-    python build/linux/unbundle/replace_gn_files.py \
+    python2 build/linux/unbundle/replace_gn_files.py \
       --system-libraries "${!_system_libs[@]}"
   fi
 }
 
 build() {
   cd "brave-browser-${pkgver}"
+
+  if check_buildoption ccache y; then
+    # Avoid falling back to preprocessor mode when sources contain time macros
+    export CCACHE_SLOPPINESS=time_macros
+  fi
 
   export CC=clang
   export CXX=clang++
@@ -188,6 +196,11 @@ build() {
   if [ "$USE_SCCACHE" -eq "1" ]; then
     echo "sccache = /usr/bin/sccache" >> .npmrc
   fi
+
+  echo 'brave_variations_server_url = https://variations.brave.com/seed' >> .npmrc
+  echo 'brave_stats_updater_url = https://laptop-updates.brave.com' >> .npmrc
+  echo 'brave_stats_api_key = fe033168-0ff8-4af6-9a7f-95e2cbfc' >> .npmrc
+  echo 'brave_sync_endpoint = https://sync-v2.brave.com/v2' >> .npmrc
 
   npm_args=()
   if [ "$COMPONENT" = "4" ]; then
@@ -254,13 +267,13 @@ build() {
 }
 
 package() {
-  install -d -m0755 "${pkgdir}/usr/lib/${pkgname}/"{,swiftshader}
+  install -d -m0755 "${pkgdir}/usr/lib/${pkgname}/"{,swiftshader,locales,resources}
 
   # Copy necessary release files
   cd "brave-browser-${pkgver}/src/out/Release"
   cp -a --reflink=auto \
-    locales \
-    resources \
+    WidevineCdm \
+    MEIPreload \
     brave \
     brave_*.pak \
     chrome_*.pak \
@@ -273,6 +286,13 @@ package() {
     swiftshader/libGLESv2.so \
     swiftshader/libEGL.so \
     "${pkgdir}/usr/lib/brave/swiftshader/"
+  cp -a --reflink=auto \
+    locales/*.pak \
+    "${pkgdir}/usr/lib/brave/locales/"
+  cp -a --reflink=auto \
+    resources/brave_extension \
+    resources/brave_rewards \
+    "${pkgdir}/usr/lib/brave/resources/"
 
   if [ "$COMPONENT" != "4" ] || [[ -z ${_system_libs[icu]+set} ]]; then
     cp -a --reflink=auto \
