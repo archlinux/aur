@@ -1,7 +1,7 @@
 # Maintainer: Arsen Musayelyan <moussaelianarsen@gmail.com>
 pkgname=pak-bin
 pkgver=1.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Changes pacman syntax to be more like APT"
 arch=('x86_64' 'aarch64')
 license=('GPLv3')
@@ -11,6 +11,7 @@ conflicts=('pak')
 _arch="$(uname -m)"
 source=("https://minio.arsenm.dev/pak/$pkgver/pak-linux-$_arch" "https://gitea.arsenm.dev/Arsen6331/pak/raw/branch/master/pak.toml")
 md5sums=('SKIP' 'SKIP')
+backup=('etc/pak.toml')
 
 package() {
     chmod +x pak-linux-$_arch
