@@ -33,26 +33,27 @@ plugin:
     args:
       exec:
         - if:
-            - match_ad_domain # 处理已知的广告域名
+            - query_is_ad_domain # 处理已知的广告域名
           exec:
             - _block_with_nxdomain # 屏蔽
           goto: _end
 
         - if:
-            - match_local_domain # 处理已知的本地域名
-            - _query_type_is_unusual # 和不常见的请求类型
+            - query_is_local_domain # 处理已知的本地域名
+            - !_query_is_common # 和不常见的请求类型
+
           exec:
             - forward_local
           goto: _end
 
         - if:
-            - match_non_local_domain # 处理已知的非本地域名
+            - query_is_non_local_domain # 处理已知的非本地域名
           exec:
             - forward_remote
           goto: _end
 
-        - sequence_bypass_local # 分流未知域名。有两种方案：顺序或并行。这是顺序执行。
-      # - parallel_bypass_local       # 如果想用类似 ChinaDNS 的并发分流逻辑。用这个。
+        - sequence_bypass_local # 用 IP 分流未知域名。有两种方案：顺序或并行。这是顺序执行。
+      # - parallel_bypass_local   # 如果想用类似 ChinaDNS 的并发分流逻辑。用这个。
 
   - tag: sequence_bypass_local # 顺序执行的分流逻辑
     type: sequence
@@ -60,7 +61,7 @@ plugin:
       exec:
         - forward_local # 先请求转发至本地服务器
         - if:
-            - match_local_ip # 如果应答包含本地 IP
+            - response_has_local_ip # 如果应答包含本地 IP
           goto: _end # 就直接采用结果
         - forward_remote # 否则用远程服务器的结果
 
@@ -70,10 +71,10 @@ plugin:
       exec:
         - - forward_local # 并发请求本地和远程服务器
           - if:
-              - !match_local_ip # 本地服务器返回的非本地 IP 的应答会被丢弃
+              - !response_has_local_ip # 如果本地服务器返回的非本地 IP
 
             exec:
-              - _drop_response
+              - _drop_response # 应答会被丢弃
         - - forward_remote
 
   - tag: forward_local # 转发至本地服务器的插件
@@ -94,30 +95,28 @@ plugin:
 
   ################ 匹配器插件 #################
 
-  - tag: query_is_local_domain         # 匹配本地域名的插件
+  - tag: query_is_local_domain # 匹配本地域名的插件
     type: query_matcher
     args:
       domain:
         - /usr/share/v2ray/geosite.dat:cn
 
-  - tag: query_is_non_local_domain    # 匹配非本地域名的插件
+  - tag: query_is_non_local_domain # 匹配非本地域名的插件
     type: query_matcher
     args:
       domain:
         - /usr/share/v2ray/geosite.dat:geolocation-!cn
 
-  - tag: query_is_ad_domain           # 匹配广告域名的插件
+  - tag: query_is_ad_domain # 匹配广告域名的插件
     type: query_matcher
     args:
       domain:
         - /usr/share/v2ray/geosite.dat:category-ads-all
 
-  - tag: response_has_local_ip        # 匹配本地 IP的插件
+  - tag: response_has_local_ip # 匹配本地 IP的插件
     type: response_matcher
     args:
       ip:
         - /usr/share/v2ray/geoip.dat:cn
 
-
 include: []
-
