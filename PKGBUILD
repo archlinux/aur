@@ -18,6 +18,7 @@ sha512sums=('SKIP')
 
 build() {
   cd "$srcdir/glu"
+  ./autogen.sh
   ./configure --prefix=/usr --disable-static
   make
 }
