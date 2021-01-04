@@ -1,6 +1,6 @@
 pkgbase = lychee-rs
 	pkgdesc = A glorious link checker
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/lycheeverse/lychee
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = lychee-rs
 	makedepends = rust
 	depends = openssl
 	depends = gcc-libs
-	source = lychee-rs-0.4.0.tar.gz::https://github.com/lycheeverse/lychee/archive/v0.4.0.tar.gz
-	sha512sums = 85c856a42ee03d71f179210bec6f55625d45f2cfe847752ac201f0f2bc7b495e3a02957aa682a53c2e71962e51368c3bf7f816128d51c4968bcc52ddac16a0c5
+	source = lychee-rs-0.4.1.tar.gz::https://github.com/lycheeverse/lychee/archive/v0.4.1.tar.gz
+	sha512sums = 58a9a693f34558eb9927dc46c844553d84d69f3e9ad196dc1e74814e8c68e463eb593a2102dac5694c19dbcec8657e44b68d4fa0e9ffae2a281a3f67f621bd69
 
 pkgname = lychee-rs
