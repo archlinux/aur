@@ -22,6 +22,7 @@ prepare() {
   curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/6296.patch | patch -p1
   curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/7454.patch | patch -p1
   curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/7465.patch | patch -p1
+  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/7432.patch | patch -p1
 }
 
 build() {
