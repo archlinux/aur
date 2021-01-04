@@ -1,11 +1,12 @@
-_npmname=gamecode
+_npmname_base=gamecode
+_npmname=${_npmname_base}-cli
 _npmscope=@camoto
-pkgname=${_npmname}js # All lowercase
+pkgname=${_npmname} # All lowercase
 pkgver=latest
 pkgrel=1
-pkgdesc="Modify executable files used by MS-DOS games "
+pkgdesc="Modify text strings in executable files used by MS-DOS games"
 arch=(any)
-url="http://github.com/Malvineous/gamecodejs"
+url="http://github.com/Malvineous/${_npmname_base}js"
 license=()
 depends=('nodejs' )
 makedepends=('npm')
@@ -13,11 +14,22 @@ optdepends=()
 
 pkgver() {
 	# Grab the latest version from npmjs.org
-	npm view "${_npmscope}/${_npmname}@latest" version
+	#npm view "${_npmscope}/${_npmname}@latest" version
+	# ...but as a dodgy hack use the version of the parent package instead.  This
+	# way when the base library gets updated this package version number will
+	# change to match, even though technically the package we're installing
+	# hasn't been updated, only one of its dependencies has.
+	npm view "${_npmscope}/${_npmname_base}@latest" version
 }
 
 package() {
-	npm install -g --user root --prefix "${pkgdir}/usr" "${_npmscope}/${_npmname}@${pkgver}"
+	#npm install -g --user root --prefix "${pkgdir}/usr" "${_npmscope}/${_npmname}@${pkgver}"
+	# We should be installing ${pkgver} but since that is now the parent library
+	# version, it won't match the -cli package version.  So we just use 'latest'
+	# to get whatever CLI version is there.  It will always install the latest
+	# version of the underlying library because of the '*' spec in package.json
+	# so it should always match the $pkgver.
+	npm install -g --user root --prefer-online --prefix "${pkgdir}/usr" "${_npmscope}/${_npmname}@latest"
 
 	# Non-deterministic race in npm gives 777 permissions to random directories.
 	# See https://github.com/npm/cli/issues/1103 for details.
