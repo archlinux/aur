@@ -3,7 +3,7 @@
 pkgname=dwm-monosans-git
 pkgver=6.2.r1698.3b74baf
 pkgrel=1
-pkgdesc='A dynamic window manager for X with some additional features'
+pkgdesc='A dynamic window manager for X'
 url="https://github.com/monosans/dwm"
 arch=(i686 x86_64)
 license=(MIT)
