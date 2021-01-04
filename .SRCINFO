@@ -14,3 +14,19 @@ pkgbase = bieaz
 
 pkgname = bieaz
 
+pkgbase = bieaz
+	pkgdesc = Pure shell script Root on ZFS boot environment manager with GRUB integration for Linux
+	pkgver = 0.0.11
+	pkgrel = 1
+	url = https://gitlab.com/m_zhou/bieaz
+	arch = any
+	license = GPL
+	depends = coreutils
+	depends = util-linux
+	depends = zfs
+	optdepends = grub: select boot environment at boot
+	source = https://gitlab.com/m_zhou/bieaz/-/archive/0.0.11/bieaz-0.0.11.tar.gz
+	md5sums = fe02c257922393f5a9c7b209fbb48907
+
+pkgname = bieaz
+
