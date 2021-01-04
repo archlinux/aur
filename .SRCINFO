@@ -1,0 +1,20 @@
+pkgbase = pomeron-gtk-theme-git
+	pkgdesc = Dark, red GTK theme for GNOME desktops
+	pkgver = 20210104.05060ea
+	pkgrel = 1
+	url = https://github.com/hypernormalisation/Pomeron-GTK
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = gtk-engine-murrine
+	depends = gtk-engines
+	depends = gtk3
+	optdepends = tela-circle-icon-theme-git: pairs well with this icon theme
+	provides = pomeron-gtk-theme
+	conflicts = pomeron-gtk-theme
+	options = !strip
+	source = pomeron-gtk-theme::git+https://github.com/hypernormalisation/Pomeron-GTK
+	sha256sums = SKIP
+
+pkgname = pomeron-gtk-theme-git
+
