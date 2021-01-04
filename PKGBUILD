@@ -1,12 +1,16 @@
 # Maintainer: Yadav Gowda <yadav . gowda __at__ gmail . com>
 pkgname=gnome-flashback-xmonad-nopanel
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="XMonad support for Gnome Flashback"
 arch=('any')
 license=('GPL2')
 depends=('gnome-flashback')
-optdepends=('xmonad')
+provides=( gnome-flashback-xmonad )
+conflicts=( gnome-flashback-xmonad )
+replaces=( gnome-flashback-xmonad )
+optdepends=( 'xmonad: some xmonad binary is required, you may place your own instead of relying on the package manager' )
+
 source=(
     'gnome-flashback-xmonad'
     'gnome-flashback-xmonad.desktop'
