@@ -1,0 +1,19 @@
+pkgbase = mobsh
+	pkgdesc = Swift git handover
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/remotemobprogramming/mob
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = git
+	optdepends = espeak-ng-espeak: Multi-lingual software speech synthesizer
+	optdepends = mbrola-voices-us1: An American English female voice for the MBROLA synthesizer
+	provides = mobsh
+	conflicts = mobsh
+	conflicts = mob
+	source = https://github.com/remotemobprogramming/mob/archive/v1.1.0.tar.gz
+	sha256sums = 4e65f2eef137c782a0c5bd7cba39c44f0dd322af3b1d0b3723f3938de3ab1646
+
+pkgname = mobsh
+
