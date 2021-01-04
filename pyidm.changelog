@@ -1,3 +1,22 @@
+2020.12.25:
+- [CHECKSUM] fix out of memory when calculating checksum for big files.
+- Add option to set a custom "http user agent" issue #199
+
+2020.12.20:
+- [playlist] Fixed youtube-dl playlist processing
+- [playlist window] added "select all" checkbutton issue #187
+- [Settings tab] enable / disable autoscroll downloads tab to bottom when adding new item issue #187
+- [downloads tab] Added "RESUME", and "STOP" buttons, issue #187
+- [downloads tab] Select multiple items in downloads tab.
+- CAPTCHA workaround, enable option in setting [experimental], issue #105
+- [Main Tab] fix for file rename issue #19
+- [video extractors] quick switching between youtube-dl and youtube-dlc.
+- [video playlist] removed duplicate call of select_playlist_video()
+- Removed symbols from Stream menu, issue #197.
+- [stream menu] use correct quality value issue #198
+- [Update] one update button to check and update PyIDM, youtube-dl, and youtube-dlc.
+- [Main Tab] Fixed Playlist and stream menu select color
+
 2020.11.10:
 - Set youtube-dl as the default video extractor, still can select youtube-dlc as an alternative extractor.
 - fixed youtube-dl update, used pypi .whl file as an update source
