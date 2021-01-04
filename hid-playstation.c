@@ -5,13 +5,16 @@
  *  Copyright (c) 2020 Sony Interactive Entertainment
  */
 
+#include <linux/bits.h>
+#include <linux/crc32.h>
 #include <linux/device.h>
 #include <linux/hid.h>
+#include <linux/idr.h>
 #include <linux/input/mt.h>
 #include <linux/leds.h>
 #include <linux/led-class-multicolor.h>
 #include <linux/module.h>
-#include <linux/crc32.h>
+
 #include <asm/unaligned.h>
 
 #include "hid-ids.h"
@@ -21,6 +24,8 @@ static DEFINE_MUTEX(ps_devices_lock);
 static LIST_HEAD(ps_devices_list);
 
 static DEFINE_IDA(ps_player_id_allocator);
+
+#define HID_PLAYSTATION_VERSION_PATCH 0x8000
 
 /* Base class for playstation devices. */
 struct ps_device {
@@ -91,6 +96,12 @@ struct ps_led_info {
 #define DS_STATUS_CHARGING		GENMASK(7, 4)
 #define DS_STATUS_CHARGING_SHIFT	4
 
+/* Status of a DualSense touch point contact.
+ * Contact IDs, with highest bit set are 'inactive'
+ * and any associated data is then invalid.
+ */
+#define DS_TOUCH_POINT_INACTIVE BIT(7)
+
 /* Flags for DualSense output report. */
 #define DS_OUTPUT_VALID_FLAG0_COMPATIBLE_VIBRATION BIT(0)
 #define DS_OUTPUT_VALID_FLAG0_HAPTICS_SELECT BIT(1)
@@ -101,6 +112,7 @@ struct ps_led_info {
 #define DS_OUTPUT_VALID_FLAG1_PLAYER_INDICATOR_CONTROL_ENABLE BIT(4)
 #define DS_OUTPUT_VALID_FLAG2_LIGHTBAR_SETUP_CONTROL_ENABLE BIT(1)
 #define DS_OUTPUT_POWER_SAVE_CONTROL_MIC_MUTE BIT(4)
+#define DS_OUTPUT_LIGHTBAR_SETUP_LIGHT_OUT BIT(1)
 
 /* DualSense hardware limits */
 #define DS_ACC_RES_PER_G	8192
@@ -131,7 +143,7 @@ struct dualsense {
 	uint8_t motor_right;
 
 	/* RGB lightbar */
-	struct led_classdev_mc *lightbar;
+	struct led_classdev_mc lightbar;
 	bool update_lightbar;
 	uint8_t lightbar_red;
 	uint8_t lightbar_green;
@@ -244,7 +256,7 @@ struct dualsense_output_report {
  * Note: for device with a touchpad, touchpad button is not included
  *        as it will be part of the touchpad device.
  */
-static int ps_gamepad_buttons[] = {
+static const int ps_gamepad_buttons[] = {
 	BTN_WEST, /* Square */
 	BTN_NORTH, /* Triangle */
 	BTN_EAST, /* Circle */
@@ -333,8 +345,9 @@ static struct input_dev *ps_allocate_input_dev(struct hid_device *hdev, const ch
 				name_suffix);
 		if (!input_dev->name)
 			return ERR_PTR(-ENOMEM);
-	} else
+	} else {
 		input_dev->name = hdev->name;
+	}
 
 	input_set_drvdata(input_dev, hdev);
 
@@ -442,12 +455,12 @@ static struct input_dev *ps_gamepad_create(struct hid_device *hdev,
 	for (i = 0; i < ARRAY_SIZE(ps_gamepad_buttons); i++)
 		input_set_capability(gamepad, EV_KEY, ps_gamepad_buttons[i]);
 
-#if IS_ENABLED(CONFIG_PLAYSTATION_FF)
+//#if IS_ENABLED(CONFIG_PLAYSTATION_FF)
 	if (play_effect) {
 		input_set_capability(gamepad, EV_FF, FF_RUMBLE);
 		input_ff_create_memless(gamepad, NULL, play_effect);
 	}
-#endif
+//#endif
 
 	ret = input_register_device(gamepad);
 	if (ret)
@@ -482,23 +495,18 @@ static int ps_led_register(struct ps_device *ps_dev, struct led_classdev *led,
 	return 0;
 }
 
-/* Create a DualSense/DualShock4 RGB lightbar represented by a multicolor LED. */
-static struct led_classdev_mc *ps_lightbar_create(struct ps_device *ps_dev,
+/* Register a DualSense/DualShock4 RGB lightbar represented by a multicolor LED. */
+static int ps_lightbar_register(struct ps_device *ps_dev, struct led_classdev_mc *lightbar_mc_dev,
 	int (*brightness_set)(struct led_classdev *, enum led_brightness))
 {
 	struct hid_device *hdev = ps_dev->hdev;
-	struct led_classdev_mc *lightbar_mc_dev;
 	struct mc_subled *mc_led_info;
 	struct led_classdev *led_cdev;
 	int ret;
 
-	lightbar_mc_dev = devm_kzalloc(&hdev->dev, sizeof(*lightbar_mc_dev), GFP_KERNEL);
-	if (!lightbar_mc_dev)
-		return ERR_PTR(-ENOMEM);
-
 	mc_led_info = devm_kzalloc(&hdev->dev, 3*sizeof(*mc_led_info), GFP_KERNEL);
 	if (!mc_led_info)
-		return ERR_PTR(-ENOMEM);
+		return -ENOMEM;
 
 	mc_led_info[0].color_index = LED_COLOR_ID_RED;
 	mc_led_info[0].channel = 0;
@@ -520,10 +528,10 @@ static struct led_classdev_mc *ps_lightbar_create(struct ps_device *ps_dev,
 	ret = devm_led_classdev_multicolor_register(&hdev->dev, lightbar_mc_dev);
 	if (ret < 0) {
 		hid_err(hdev, "Cannot register multicolor LED device\n");
-		return ERR_PTR(ret);
+		return ret;
 	}
 
-	return lightbar_mc_dev;
+	return 0;
 }
 
 static struct input_dev *ps_sensors_create(struct hid_device *hdev, int accel_range, int accel_res,
@@ -562,7 +570,7 @@ static struct input_dev *ps_sensors_create(struct hid_device *hdev, int accel_ra
 }
 
 static struct input_dev *ps_touchpad_create(struct hid_device *hdev, int width, int height,
-		int num_contacts)
+		unsigned int num_contacts)
 {
 	struct input_dev *touchpad;
 	int ret;
@@ -575,8 +583,8 @@ static struct input_dev *ps_touchpad_create(struct hid_device *hdev, int width, 
 	input_set_capability(touchpad, EV_KEY, BTN_LEFT);
 	__set_bit(INPUT_PROP_BUTTONPAD, touchpad->propbit);
 
-	input_set_abs_params(touchpad, ABS_MT_POSITION_X, 0, width, 0, 0);
-	input_set_abs_params(touchpad, ABS_MT_POSITION_Y, 0, height, 0, 0);
+	input_set_abs_params(touchpad, ABS_MT_POSITION_X, 0, width - 1, 0, 0);
+	input_set_abs_params(touchpad, ABS_MT_POSITION_Y, 0, height - 1, 0, 0);
 
 	ret = input_mt_init_slots(touchpad, num_contacts, INPUT_MT_POINTER);
 	if (ret)
@@ -596,7 +604,7 @@ static ssize_t ps_show_firmware_version(struct device *dev,
 	struct hid_device *hdev = to_hid_device(dev);
 	struct ps_device *ps_dev = hid_get_drvdata(hdev);
 
-	return snprintf(buf, PAGE_SIZE, "0x%08x\n", ps_dev->fw_version);
+	return sysfs_emit(buf, "0x%08x\n", ps_dev->fw_version);
 }
 
 static DEVICE_ATTR(firmware_version, 0444, ps_show_firmware_version, NULL);
@@ -608,7 +616,7 @@ static ssize_t ps_show_hardware_version(struct device *dev,
 	struct hid_device *hdev = to_hid_device(dev);
 	struct ps_device *ps_dev = hid_get_drvdata(hdev);
 
-	return snprintf(buf, PAGE_SIZE, "0x%08x\n", ps_dev->hw_version);
+	return sysfs_emit(buf, "0x%08x\n", ps_dev->hw_version);
 }
 
 static DEVICE_ATTR(hardware_version, 0444, ps_show_hardware_version, NULL);
@@ -645,6 +653,11 @@ static int dualsense_get_calibration_data(struct dualsense *ds)
 			DS_FEATURE_REPORT_CALIBRATION_SIZE, HID_FEATURE_REPORT, HID_REQ_GET_REPORT);
 	if (ret < 0)
 		goto err_free;
+	else if (ret != DS_FEATURE_REPORT_CALIBRATION_SIZE) {
+		hid_err(ds->base.hdev, "failed to retrieve DualSense calibration info\n");
+		ret = -EINVAL;
+		goto err_free;
+	}
 
 	if (ds->base.hdev->bus == BUS_BLUETOOTH) {
 		/* Last 4 bytes contains crc32 */
@@ -724,7 +737,7 @@ err_free:
 static int dualsense_get_firmware_info(struct dualsense *ds)
 {
 	uint8_t *buf;
-	int ret = 0;
+	int ret;
 
 	buf = kzalloc(DS_FEATURE_REPORT_FIRMWARE_INFO_SIZE, GFP_KERNEL);
 	if (!buf)
@@ -735,6 +748,11 @@ static int dualsense_get_firmware_info(struct dualsense *ds)
 			HID_REQ_GET_REPORT);
 	if (ret < 0)
 		goto err_free;
+	else if (ret != DS_FEATURE_REPORT_FIRMWARE_INFO_SIZE) {
+		hid_err(ds->base.hdev, "failed to retrieve DualSense firmware info\n");
+		ret = -EINVAL;
+		goto err_free;
+	}
 
 	ds->base.hw_version = get_unaligned_le32(&buf[24]);
 	ds->base.fw_version = get_unaligned_le32(&buf[28]);
@@ -758,6 +776,11 @@ static int dualsense_get_mac_address(struct dualsense *ds)
 			HID_REQ_GET_REPORT);
 	if (ret < 0)
 		goto err_free;
+	else if (ret != DS_FEATURE_REPORT_PAIRING_INFO_SIZE) {
+		hid_err(ds->base.hdev, "failed to retrieve DualSense pairing info\n");
+		ret = -EINVAL;
+		goto err_free;
+	}
 
 	/* Note MAC address is stored in little endian order. */
 	memcpy(ds->base.mac_address, &buf[1], sizeof(ds->base.mac_address));
@@ -796,33 +819,35 @@ static enum led_brightness dualsense_mute_led_get_brightness(struct led_classdev
 	return ds->mic_muted;
 }
 
+/* The mute LED is treated as read-only. This set call prevents ENOTSUP errors e.g. on unload. */
+static void dualsense_mute_led_set_brightness(struct led_classdev *led, enum led_brightness value)
+{
+
+}
+
 static enum led_brightness dualsense_player_led_get_brightness(struct led_classdev *led)
 {
 	struct hid_device *hdev = to_hid_device(led->dev->parent);
 	struct dualsense *ds = hid_get_drvdata(hdev);
-	int i;
 
-	for (i = 0; i < ARRAY_SIZE(ds->player_leds); i++) {
-		if (&ds->player_leds[i] == led)
-			return !!(ds->player_leds_state & BIT(i));
-	}
-
-	return LED_OFF;
+	return !!(ds->player_leds_state & BIT(led - ds->player_leds));
 }
 
 static void dualsense_player_led_set_brightness(struct led_classdev *led, enum led_brightness value)
 {
 	struct hid_device *hdev = to_hid_device(led->dev->parent);
 	struct dualsense *ds = hid_get_drvdata(hdev);
-	uint8_t player_leds_state = 0;
 	unsigned long flags;
-	int i;
-
-	for (i = 0; i < ARRAY_SIZE(ds->player_leds); i++)
-		player_leds_state |= (ds->player_leds[i].brightness << i);
+	unsigned int led_index;
 
 	spin_lock_irqsave(&ds->base.lock, flags);
-	ds->player_leds_state = player_leds_state;
+
+	led_index = led - ds->player_leds;
+	if (value == LED_OFF)
+		ds->player_leds_state &= ~(1 << led_index);
+	else
+		ds->player_leds_state |= (1 << led_index);
+
 	ds->update_player_leds = true;
 	spin_unlock_irqrestore(&ds->base.lock, flags);
 
@@ -955,7 +980,7 @@ static int dualsense_parse_report(struct ps_device *ps_dev, struct hid_report *r
 		u8 *data, int size)
 {
 	struct hid_device *hdev = ps_dev->hdev;
-	struct dualsense *ds = (struct dualsense *)ps_dev;
+	struct dualsense *ds = container_of(ps_dev, struct dualsense, base);
 	struct dualsense_input_report *ds_report;
 	uint8_t battery_data, battery_capacity, charging_status, value;
 	int battery_status;
@@ -985,11 +1010,11 @@ static int dualsense_parse_report(struct ps_device *ps_dev, struct hid_report *r
 		return -1;
 	}
 
-	input_report_abs(ds->gamepad, ABS_X, ds_report->x);
-	input_report_abs(ds->gamepad, ABS_Y, ds_report->y);
+	input_report_abs(ds->gamepad, ABS_X,  ds_report->x);
+	input_report_abs(ds->gamepad, ABS_Y,  ds_report->y);
 	input_report_abs(ds->gamepad, ABS_RX, ds_report->rx);
 	input_report_abs(ds->gamepad, ABS_RY, ds_report->ry);
-	input_report_abs(ds->gamepad, ABS_Z, ds_report->z);
+	input_report_abs(ds->gamepad, ABS_Z,  ds_report->z);
 	input_report_abs(ds->gamepad, ABS_RZ, ds_report->rz);
 
 	value = ds_report->buttons[0] & DS_BUTTONS0_HAT_SWITCH;
@@ -998,19 +1023,19 @@ static int dualsense_parse_report(struct ps_device *ps_dev, struct hid_report *r
 	input_report_abs(ds->gamepad, ABS_HAT0X, ps_gamepad_hat_mapping[value].x);
 	input_report_abs(ds->gamepad, ABS_HAT0Y, ps_gamepad_hat_mapping[value].y);
 
-	input_report_key(ds->gamepad, BTN_WEST, ds_report->buttons[0] & DS_BUTTONS0_SQUARE);
-	input_report_key(ds->gamepad, BTN_SOUTH, ds_report->buttons[0] & DS_BUTTONS0_CROSS);
-	input_report_key(ds->gamepad, BTN_EAST, ds_report->buttons[0] & DS_BUTTONS0_CIRCLE);
-	input_report_key(ds->gamepad, BTN_NORTH, ds_report->buttons[0] & DS_BUTTONS0_TRIANGLE);
-	input_report_key(ds->gamepad, BTN_TL, ds_report->buttons[1] & DS_BUTTONS1_L1);
-	input_report_key(ds->gamepad, BTN_TR, ds_report->buttons[1] & DS_BUTTONS1_R1);
-	input_report_key(ds->gamepad, BTN_TL2, ds_report->buttons[1] & DS_BUTTONS1_L2);
-	input_report_key(ds->gamepad, BTN_TR2, ds_report->buttons[1] & DS_BUTTONS1_R2);
+	input_report_key(ds->gamepad, BTN_WEST,   ds_report->buttons[0] & DS_BUTTONS0_SQUARE);
+	input_report_key(ds->gamepad, BTN_SOUTH,  ds_report->buttons[0] & DS_BUTTONS0_CROSS);
+	input_report_key(ds->gamepad, BTN_EAST,   ds_report->buttons[0] & DS_BUTTONS0_CIRCLE);
+	input_report_key(ds->gamepad, BTN_NORTH,  ds_report->buttons[0] & DS_BUTTONS0_TRIANGLE);
+	input_report_key(ds->gamepad, BTN_TL,     ds_report->buttons[1] & DS_BUTTONS1_L1);
+	input_report_key(ds->gamepad, BTN_TR,     ds_report->buttons[1] & DS_BUTTONS1_R1);
+	input_report_key(ds->gamepad, BTN_TL2,    ds_report->buttons[1] & DS_BUTTONS1_L2);
+	input_report_key(ds->gamepad, BTN_TR2,    ds_report->buttons[1] & DS_BUTTONS1_R2);
 	input_report_key(ds->gamepad, BTN_SELECT, ds_report->buttons[1] & DS_BUTTONS1_CREATE);
-	input_report_key(ds->gamepad, BTN_START, ds_report->buttons[1] & DS_BUTTONS1_OPTIONS);
+	input_report_key(ds->gamepad, BTN_START,  ds_report->buttons[1] & DS_BUTTONS1_OPTIONS);
 	input_report_key(ds->gamepad, BTN_THUMBL, ds_report->buttons[1] & DS_BUTTONS1_L3);
 	input_report_key(ds->gamepad, BTN_THUMBR, ds_report->buttons[1] & DS_BUTTONS1_R3);
-	input_report_key(ds->gamepad, BTN_MODE, ds_report->buttons[2] & DS_BUTTONS2_PS_HOME);
+	input_report_key(ds->gamepad, BTN_MODE,   ds_report->buttons[2] & DS_BUTTONS2_PS_HOME);
 	input_sync(ds->gamepad);
 
 	/* The DualSense has an internal microphone, which can be muted through a mute button
@@ -1067,9 +1092,8 @@ static int dualsense_parse_report(struct ps_device *ps_dev, struct hid_report *r
 	input_event(ds->sensors, EV_MSC, MSC_TIMESTAMP, ds->sensor_timestamp_us);
 	input_sync(ds->sensors);
 
-	input_report_key(ds->touchpad, BTN_LEFT, ds_report->buttons[2] & DS_BUTTONS2_TOUCHPAD);
 	for (i = 0; i < 2; i++) {
-		bool active = (ds_report->points[i].contact & 0x80) ? false : true;
+		bool active = (ds_report->points[i].contact & DS_TOUCH_POINT_INACTIVE) ? false : true;
 
 		input_mt_slot(ds->touchpad, i);
 		input_mt_report_slot_state(ds->touchpad, MT_TOOL_FINGER, active);
@@ -1160,7 +1184,7 @@ static int dualsense_reset_leds(struct dualsense *ds)
 	 * doesn't hurt.
 	 */
 	report.common->valid_flag2 = DS_OUTPUT_VALID_FLAG2_LIGHTBAR_SETUP_CONTROL_ENABLE;
-	report.common->lightbar_setup = 2; /* Fade light out. */
+	report.common->lightbar_setup = DS_OUTPUT_LIGHTBAR_SETUP_LIGHT_OUT; /* Fade light out. */
 	dualsense_send_output_report(ds, &report);
 
 	kfree(buf);
@@ -1192,10 +1216,13 @@ static void dualsense_set_player_leds(struct dualsense *ds)
 static struct ps_device *dualsense_create(struct hid_device *hdev)
 {
 	struct dualsense *ds;
+	struct ps_device *ps_dev;
 	uint8_t max_output_report_size;
 	int i, ret;
 
-	struct ps_led_info mute_led_info = { "micmute", dualsense_mute_led_get_brightness, NULL };
+	struct ps_led_info mute_led_info = {
+		"micmute", dualsense_mute_led_get_brightness, dualsense_mute_led_set_brightness
+	};
 
 	struct ps_led_info player_leds_info[] = {
 		{ "led1", dualsense_player_led_get_brightness, dualsense_player_led_set_brightness },
@@ -1212,12 +1239,13 @@ static struct ps_device *dualsense_create(struct hid_device *hdev)
 	/* Patch version to allow userspace to distinguish between
 	 * hid-generic vs hid-playstation axis and button mapping.
 	 */
-	hdev->version |= 0x8000;
+	hdev->version |= HID_PLAYSTATION_VERSION_PATCH;
 
-	ds->base.hdev = hdev;
-	ds->base.battery_capacity = 100; /* initial value until parse_report. */
-	ds->base.battery_status = POWER_SUPPLY_STATUS_UNKNOWN;
-	ds->base.parse_report = dualsense_parse_report;
+	ps_dev = &ds->base;
+	ps_dev->hdev = hdev;
+	ps_dev->battery_capacity = 100; /* initial value until parse_report. */
+	ps_dev->battery_status = POWER_SUPPLY_STATUS_UNKNOWN;
+	ps_dev->parse_report = dualsense_parse_report;
 	INIT_WORK(&ds->output_worker, dualsense_output_worker);
 	hid_set_drvdata(hdev, ds);
 
@@ -1239,7 +1267,7 @@ static struct ps_device *dualsense_create(struct hid_device *hdev)
 		return ERR_PTR(ret);
 	}
 
-	ret = ps_devices_list_add((struct ps_device *)ds);
+	ret = ps_devices_list_add(ps_dev);
 	if (ret < 0)
 		return ERR_PTR(ret);
 
@@ -1268,7 +1296,7 @@ static struct ps_device *dualsense_create(struct hid_device *hdev)
 		goto err;
 	}
 
-	ret = ps_device_register_battery((struct ps_device *)ds);
+	ret = ps_device_register_battery(ps_dev);
 	if (ret < 0)
 		goto err;
 
@@ -1280,26 +1308,23 @@ static struct ps_device *dualsense_create(struct hid_device *hdev)
 	if (ret < 0)
 		goto err;
 
-	ds->lightbar = ps_lightbar_create((struct ps_device *)ds,
-			dualsense_lightbar_set_brightness);
-	if (IS_ERR(ds->lightbar)) {
-		ret = PTR_ERR(ds->lightbar);
+	ret = ps_lightbar_register(ps_dev, &ds->lightbar, dualsense_lightbar_set_brightness);
+	if (ret < 0)
 		goto err;
-	}
 
-	ret = ps_led_register((struct ps_device *)ds, &ds->mute_led, &mute_led_info);
+	ret = ps_led_register(ps_dev, &ds->mute_led, &mute_led_info);
 	if (ret < 0)
 		goto err;
 
 	for (i = 0; i < ARRAY_SIZE(player_leds_info); i++) {
 		struct ps_led_info *led_info = &player_leds_info[i];
 
-		ret = ps_led_register((struct ps_device *)ds, &ds->player_leds[i], led_info);
+		ret = ps_led_register(ps_dev, &ds->player_leds[i], led_info);
 		if (ret < 0)
 			goto err;
 	}
 
-	ret = ps_device_set_player_id((struct ps_device *)ds);
+	ret = ps_device_set_player_id(ps_dev);
 	if (ret < 0) {
 		hid_err(hdev, "Failed to assign player id for DualSense\n");
 		goto err;
@@ -1314,10 +1339,10 @@ static struct ps_device *dualsense_create(struct hid_device *hdev)
 	hid_info(hdev, "Registered DualSense controller hw_version=%x fw_version=%x\n",
 			ds->base.hw_version, ds->base.fw_version);
 
-	return (struct ps_device *)ds;
+	return &ds->base;
 
 err:
-	ps_devices_list_remove((struct ps_device *)ds);
+	ps_devices_list_remove(ps_dev);
 	return ERR_PTR(ret);
 }
 
@@ -1362,13 +1387,9 @@ static int ps_probe(struct hid_device *hdev, const struct hid_device_id *id)
 			ret = PTR_ERR(dev);
 			goto err_close;
 		}
-	} else {
-		hid_err(hdev, "Unhandled device\n");
-		ret = -EINVAL;
-		goto err_close;
 	}
 
-	ret = sysfs_create_group(&hdev->dev.kobj, &ps_device_attribute_group);
+	ret = devm_device_add_group(&hdev->dev, &ps_device_attribute_group);
 	if (ret < 0) {
 		hid_err(hdev, "Failed to register sysfs nodes.\n");
 		goto err_close;
@@ -1392,16 +1413,14 @@ static void ps_remove(struct hid_device *hdev)
 
 	hid_hw_close(hdev);
 	hid_hw_stop(hdev);
-
-	sysfs_remove_group(&hdev->dev.kobj, &ps_device_attribute_group);
 }
 
 static const struct hid_device_id ps_devices[] = {
-	{ HID_BLUETOOTH_DEVICE(USB_VENDOR_ID_SONY, USB_DEVICE_ID_SONY_PS5_CONTROLLER),
-		.driver_data = 0 },
-	{ HID_USB_DEVICE(USB_VENDOR_ID_SONY, USB_DEVICE_ID_SONY_PS5_CONTROLLER),
-		.driver_data = 0 },
+	{ HID_BLUETOOTH_DEVICE(USB_VENDOR_ID_SONY, USB_DEVICE_ID_SONY_PS5_CONTROLLER) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_SONY, USB_DEVICE_ID_SONY_PS5_CONTROLLER) },
+	{ }
 };
+MODULE_DEVICE_TABLE(hid, ps_devices);
 
 static struct hid_driver ps_driver = {
 	.name             = "playstation",
@@ -1411,6 +1430,20 @@ static struct hid_driver ps_driver = {
 	.raw_event        = ps_raw_event,
 };
 
-module_hid_driver(ps_driver);
+static int __init ps_init(void)
+{
+	return hid_register_driver(&ps_driver);
+}
 
+static void __exit ps_exit(void)
+{
+	hid_unregister_driver(&ps_driver);
+	ida_destroy(&ps_player_id_allocator);
+}
+
+module_init(ps_init);
+module_exit(ps_exit);
+
+MODULE_AUTHOR("Sony Interactive Entertainment");
+MODULE_DESCRIPTION("HID Driver for PlayStation peripherals.");
 MODULE_LICENSE("GPL");

@@ -2,25 +2,19 @@
 
 _pkgbase=hid-playstation
 pkgname=${_pkgbase}-dkms
-pkgver=20201219
-pkgrel=2
+pkgver=20210102
+pkgrel=1
 pkgdesc="Sony's official HID driver for the PS5 DualSense controller."
 arch=(any)
 url="https://patchwork.kernel.org/project/linux-input/list/?series=404369"
 license=("GPL2")
 depends=('dkms')
-source=(
-	'hid-playstation.c' 'dkms.conf' 'hid-ids.h' 'Makefile'
-	'work-without-modifying-hid-quirks.patch'
-	'disable-ff-enabled-check.patch'
-)
+source=('hid-playstation.c' 'dkms.conf' 'hid-ids.h' 'Makefile')
 
-md5sums=('ea60e546559ded5ac2ef03f8f6950145'
+md5sums=('11ca4528b5be12abe371027ded0f7012'
          '6d97239c33773b3f2fc5d497e98a1017'
          'c9585c976df5c262127bfe8b595824b3'
-         'b5424fcb24f12a53b4ff18f1b85bcb23'
-         '52c3680b1fad94cc4cc5b1081bb1c9b5'
-         '4a14732dbadd6419ce0ae49ecad8eaed')
+         'b5424fcb24f12a53b4ff18f1b85bcb23')
 
 package() {
 	cd "${srcdir}"
@@ -31,13 +25,4 @@ package() {
 		-i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
 	install -Dm644 hid-playstation.c hid-ids.h Makefile \
 		-t "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
-
-	# The hid-playstation driver relies on modifying hid-quirks.c for device
-	# detection, we can't do that for a dkms module though so modify the
-	# driver's source file to do it there instead, like hid-nintendo does.
-	cd "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
-	patch -Np1 -i "${srcdir}/work-without-modifying-hid-quirks.patch"
-	
-	# Enable force feedback support
-	patch -Np1 -i "${srcdir}/disable-ff-enabled-check.patch"
 }
