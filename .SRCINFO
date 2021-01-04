@@ -1,7 +1,7 @@
 pkgbase = gog-unreal-tournament-goty
 	pkgdesc = Unreal Tournament (99): Game of the Year Edition. GOG Version.
 	pkgver = 2.0.0.5
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.gog.com/game/unreal_tournament_goty
 	arch = x86_64
 	license = MIT
