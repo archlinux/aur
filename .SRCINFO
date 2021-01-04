@@ -1,8 +1,9 @@
 pkgbase = aurutils
 	pkgdesc = helper tools for the arch user repository
 	pkgver = 3.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AladW/aurutils
+	install = aurutils.install
 	changelog = aurutils.changelog
 	arch = any
 	license = custom:ISC
