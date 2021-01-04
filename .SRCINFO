@@ -1,7 +1,7 @@
 pkgbase = fcitx-mozc-ut-unified
 	pkgdesc = Fcitx Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with New UT dictionaries (default dictionaties.)
 	pkgver = 2.26.4237.102.20201229
-	pkgrel = 2
+	pkgrel = 3
 	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
 	arch = x86_64
 	license = custom
@@ -39,7 +39,7 @@ pkgbase = fcitx-mozc-ut-unified
 	source = protobuf-3.13.0.tar.gz::https://github.com/protocolbuffers/protobuf/archive/v3.13.0.tar.gz
 	source = https://osdn.net/users/utuhiro/pf/utuhiro/dl/fcitx-mozc-20201111.patch
 	source = https://osdn.net/users/utuhiro/pf/utuhiro/dl/fcitx-mozc-icons-20201229.tar.gz
-	source = https://osdn.net/users/utuhiro/pf/utuhiro/dl/mozcdic-ut-20201229.2.tar.bz2
+	source = https://osdn.net/users/utuhiro/pf/utuhiro/dl/mozcdic-ut-20201229.1.tar.bz2
 	source = https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip
 	source = https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip
 	sha1sums = b0b8fbf69f0d6089a800533a99be747e40faf922

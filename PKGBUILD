@@ -11,7 +11,7 @@ _fcitxver=20201111
 _iconver=20201229
 _utdicver=20201229
 pkgver=${_mozcver}.${_utdicver}
-pkgrel=2
+pkgrel=3
 
 _pkgbase=mozc
 pkgname=fcitx-mozc-ut-unified
@@ -31,7 +31,7 @@ source=(
   protobuf-3.13.0.tar.gz::https://github.com/protocolbuffers/protobuf/archive/v3.13.0.tar.gz
   https://osdn.net/users/utuhiro/pf/utuhiro/dl/fcitx-mozc-${_fcitxver}.patch
   https://osdn.net/users/utuhiro/pf/utuhiro/dl/fcitx-mozc-icons-${_iconver}.tar.gz
-  https://osdn.net/users/utuhiro/pf/utuhiro/dl/mozcdic-ut-${_utdicver}.${pkgrel}.tar.bz2
+  https://osdn.net/users/utuhiro/pf/utuhiro/dl/mozcdic-ut-${_utdicver}.1.tar.bz2
   https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip
   https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip
 )
@@ -70,7 +70,7 @@ prepare() {
   sed "/stdlib=libc++/d;/-lc++/d" -i src/gyp/common.gypi
 
   # Add UT dictionary
-  cat ${srcdir}/mozcdic-ut-${_utdicver}.${pkgrel}/mozcdic*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt
+  cat ${srcdir}/mozcdic-ut-${_utdicver}.1/mozcdic*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt
 }
 
 build() {
