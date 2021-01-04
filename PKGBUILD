@@ -1,27 +1,21 @@
 # Maintainer: Artjom Simon <artjom.simon@gmail.com>
 # Contributor: Orffen <orffen@orffenspace.com>
-pkgname=otf-metropolis-git
-pkgver=r9.r29.6c93f78
+pkgname=otf-metropolis
+pkgver=r11
 pkgrel=1
 pkgdesc="The Metropolis font, a modern, geometric typeface."
 arch=('any')
 url="https://github.com/chrismsimpson/Metropolis"
 license=('UNLICENSE')
-makedepends=('git')
-provides=("${pkgname%-git}")
+provides=("${pkgname}")
 conflicts=('otf-metropolis')
-source=('git+https://github.com/chrismsimpson/Metropolis.git')
-md5sums=('SKIP')
-
-pkgver() {
-	cd "$srcdir/Metropolis"
-	printf "%s" "$(git describe --long --tags| sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-}
+source=('https://fontsarena.com/wp-content/uploads/2018/11/Metropolis-r11.zip')
+sha256sums=('a9efb018df3fae5d39fcd3d05418bce35c4f88ecbf9c3eb54ffff7dbfdf79466')
 
 package() {
 	install -d "${pkgdir}/usr/share/fonts/OTF/"
-	install -m644 Metropolis/Fonts/OpenType/Metropolis-*.otf "${pkgdir}/usr/share/fonts/OTF/"
+	install -m644 Metropolis-$pkgver/Fonts/OpenType/Metropolis-*.otf "${pkgdir}/usr/share/fonts/OTF/"
 
 	install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-	install -m644 "Metropolis/UNLICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -m644 "Metropolis-$pkgver/UNLICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
