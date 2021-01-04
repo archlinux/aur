@@ -1,0 +1,26 @@
+pkgbase = libcurl-compat-minimal-git
+	pkgdesc = An URL retrieval library (without versioned symbols)
+	pkgver = 7.74.0
+	pkgrel = 1
+	url = https://curl.haxx.se
+	arch = x86_64
+	license = MIT
+	depends = curl
+	depends = glibc
+	depends = libidn2
+	depends = libidn2.so
+	depends = krb5
+	depends = openssl
+	depends = libnghttp2
+	depends = libpsl
+	depends = libpsl.so
+	depends = zlib
+	depends = zstd
+	provides = libcurl-compat
+	conflicts = libcurl-compat
+	options = strip
+	source = git+https://github.com/curl/curl
+	sha512sums = SKIP
+
+pkgname = libcurl-compat-minimal-git
+
