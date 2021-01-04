@@ -1,0 +1,22 @@
+pkgbase = xkeyboard-config-bbkt-git
+	pkgdesc = XKB configuration files with DreymaR's Big Bag patches applied (Colemak)
+	pkgver = 2.31.r38.g80e6af3
+	pkgrel = 1
+	url = https://forum.colemak.com/topic/1438-dreymars-big-bag-of-keyboard-tricks-linuxxkb-files-included
+	arch = any
+	license = custom
+	makedepends = intltool
+	makedepends = xorg-xkbcomp
+	makedepends = libxslt
+	makedepends = python
+	makedepends = git
+	provides = xkbdata
+	provides = xkeyboard-config
+	conflicts = xkbdata
+	conflicts = xkeyboard-config
+	replaces = xkbdata
+	source = git+https://github.com/SeerLite/xkeyboard-config
+	sha512sums = SKIP
+
+pkgname = xkeyboard-config-bbkt-git
+
