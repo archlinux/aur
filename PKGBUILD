@@ -3,13 +3,13 @@
 
 pkgname=herbstluftwm-git
 _pkgname=herbstluftwm
-pkgver=0.8.0.r14.g3387014f
+pkgver=0.9.1.r21.gf18eef44
 pkgrel=1
 pkgdesc="Manual tiling window manager for X"
 arch=('i686' 'x86_64')
 url="http://herbstluftwm.org"
 license=('BSD')
-depends=('libx11' 'libxinerama')
+depends=('libx11' 'libxinerama' 'libxft' 'freetype2')
 optdepends=(
         'bash: needed by most scripts'
         'xterm: used by the default autostart'
