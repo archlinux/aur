@@ -1,7 +1,7 @@
 # Maintainer: Helle Vaanzinn <glitsj16 at riseup dot net >
 
 pkgname=fdns
-pkgver=0.9.64
+pkgver=0.9.64.2
 pkgrel=1
 pkgdesc="Firejail DNS-over-HTTPS proxy server"
 arch=(x86_64)
@@ -13,8 +13,8 @@ optdepends=('apparmor: support for apparmor profiles'
     'firejail: seamless integration support'
     'systemd: run fdns as a systemd service')
 validpgpkeys=('F951164995F5C4006A73411E2CCB36ADFC5849A7')
-source=("https://github.com/netblue30/fdns/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.asc})
-sha256sums=('267c90bb2f72f50d5dfbe727f3f6242e3271c69db7d168018ce4e2d6c23cf6c2'
+source=("https://github.com/netblue30/fdns/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.asc})
+sha256sums=('1ecfb371748df2654f1ce9d14dde3f2f9266a50a9dbcff51122fb941ccc07236'
             'SKIP')
 
 build() {
