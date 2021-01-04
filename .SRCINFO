@@ -15,7 +15,7 @@ pkgbase = xkeyboard-config-bbkt-git
 	conflicts = xkbdata
 	conflicts = xkeyboard-config
 	replaces = xkbdata
-	source = git+https://github.com/SeerLite/xkeyboard-config
+	source = git+https://github.com/SeerLite/xkeyboard-config-bbkt
 	sha512sums = SKIP
 
 pkgname = xkeyboard-config-bbkt-git

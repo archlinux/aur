@@ -13,16 +13,16 @@ makedepends=('intltool' 'xorg-xkbcomp' 'libxslt' 'python' 'git')
 provides=('xkbdata' 'xkeyboard-config')
 replaces=('xkbdata')
 conflicts=('xkbdata' 'xkeyboard-config')
-source=(git+https://github.com/SeerLite/xkeyboard-config)
+source=(git+https://github.com/SeerLite/xkeyboard-config-bbkt)
 sha512sums=('SKIP')
 
 pkgver() {
-  cd xkeyboard-config
+  cd xkeyboard-config-bbkt
   git describe --long | sed 's/^xkeyboard-config-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd xkeyboard-config
+  cd xkeyboard-config-bbkt
   ./autogen.sh
   ./configure --prefix=/usr \
       --with-xkb-base=/usr/share/X11/xkb \
@@ -32,7 +32,7 @@ build() {
  }
  
  package() { 
-  cd xkeyboard-config
+  cd xkeyboard-config-bbkt
 
   make DESTDIR="${pkgdir}" install
   rm -f "${pkgdir}/usr/share/X11/xkb/compiled"
