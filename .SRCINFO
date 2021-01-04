@@ -10,6 +10,7 @@ pkgbase = recidia-audio-visualizer
 	makedepends = ninja
 	makedepends = vulkan-headers
 	depends = gsl
+	depends = glm
 	depends = fftw
 	depends = ncurses
 	depends = libconfig
