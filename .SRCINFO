@@ -1,6 +1,6 @@
 pkgbase = emulsion
 	pkgdesc = A fast and minimalistic image viewer
-	pkgver = 7.2.0
+	pkgver = 8.0.0
 	pkgrel = 1
 	url = https://github.com/ArturKovacs/emulsion
 	arch = i686
@@ -15,9 +15,9 @@ pkgbase = emulsion
 	depends = gcc-libs
 	depends = hicolor-icon-theme
 	depends = libxcb
-	source = emulsion-7.2.0.tar.gz::https://github.com/ArturKovacs/emulsion/archive/v7.2.tar.gz
+	source = emulsion-8.0.0.tar.gz::https://github.com/ArturKovacs/emulsion/archive/v8.0.tar.gz
 	source = emulsion.desktop
-	sha256sums = 528454b5333e17b73c2d1bd87ebd0b2bb734d8f3bb28fcf7ba7d5550e4e23c2a
+	sha256sums = a704daecb2c86839f0800e483bfae9d6b547354c616eedf9d3d9c3b3ce9c1d12
 	sha256sums = a1bdf607a12a4c9a10e15586c6c90afef6985a3f4bd7c451e7c022c17f986aed
 
 pkgname = emulsion
