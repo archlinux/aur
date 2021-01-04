@@ -14,7 +14,7 @@ license=('custom:BSD')
 depends=('lib32-glibc' 'openssl-1.0')
 provides=(lib32-openssl-1.0)
 conflicts=(lib32-openssl-1.0)
-source=("https://www.openssl.org/source/openssl-${_ver}.tar.gz"
+source=(""https://artfiles.org/openssl.org/source/old/1.0.2/openssl-1.0.2u.tar.gz""
         'no-rpath.patch'
         'openssl-1.0-versioned-symbols.patch')
 sha256sums=('SKIP'
