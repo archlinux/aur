@@ -2,7 +2,7 @@
 
 pkgname=texinfo-git
 pkgver=6.7.r9202
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="GNU documentation system for on-line information and printed output"
 arch=('i686' 'x86_64')
@@ -39,7 +39,7 @@ prepare() {
 build() {
   cd $pkgname
   ./autogen.sh || true
-  sed -i '5904,5916d' configure
+  sed -i '5904,5914d' configure
   ./configure --prefix=/usr --libexecdir=/usr/lib
   make
 }
