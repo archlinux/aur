@@ -1,0 +1,38 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f6cb247..5a89f65 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15,7 +15,6 @@ find_package(Gflags REQUIRED)
+ add_definitions(-DHPMVS_GFLAGS_NAMESPACE=${GFLAGS_NAMESPACE})
+ find_package(Glog REQUIRED)
+ 
+-ADD_SUBDIRECTORY(thirdLibs/nlopt-2.4.2)
+ ADD_SUBDIRECTORY(thirdLibs/stlplus3)
+ 
+ set(HPMVS_SRC
+@@ -42,7 +41,7 @@ set(HPMVS_INCLUDE_DIRS
+ 	${JPEG_INCLUDE_DIR}
+ 	${GFLAGS_INCLUDE_DIRS}
+ 	${GLOG_INCLUDE_DIRS}
+-	${PROJECT_SOURCE_DIR}/thirdLibs/nlopt-2.4.2/api
++	/usr/include
+ 	${PROJECT_SOURCE_DIR}/thirdLibs/cimg
+ 	${PROJECT_SOURCE_DIR}/thirdLibs/
+ 	${PROJECT_SOURCE_DIR}/thirdLibs/stlplus3
+@@ -55,7 +54,6 @@ set(HPMVS_LIBRARIES
+ 	${JPEG_LIBRARIES} 
+ 	${GFLAGS_LIBRARIES} 
+ 	${GLOG_LIBRARIES} 
+-	nlopt 
+ 	stlplus3_hpmvs
+ 	)
+ 
+@@ -67,7 +65,7 @@ target_link_libraries(HPMVS_static ${HPMVS_LIBRARIES})
+ 
+ # build the executable
+ add_executable (hpmvs src/main.cpp)
+-target_link_libraries(hpmvs HPMVS_static ${HPMVS_LIBRARIES})
++target_link_libraries(hpmvs HPMVS_static ${HPMVS_LIBRARIES} nlopt)
+ 
+ # install path
+ install(TARGETS hpmvs RUNTIME DESTINATION bin)
