@@ -1,0 +1,24 @@
+pkgbase = buildaur-git
+	pkgdesc = An AUR helper with asp support (development version)
+	pkgver = 188.064da14
+	pkgrel = 1
+	url = https://github.com/lxgr-linux/buildaur
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = pacman
+	depends = devtools
+	depends = git
+	depends = python3
+	depends = python-requests
+	depends = pyalpm
+	optdepends = bash-completion: Bash completion
+	optdepends = asp: ASP support
+	provides = buildaur
+	backup = etc/buildaur/buildaur.conf
+	backup = usr/share/buildaur/blacklist
+	source = buildaur-git::git+https://github.com/lxgr-linux/buildaur.git
+	md5sums = SKIP
+
+pkgname = buildaur-git
+
