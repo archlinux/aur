@@ -1,9 +1,9 @@
 # Maintainer Chris Werner Rau <aur@cwrau.io>
 
 pkgname=heroic-games-launcher-appimage
-_pkgver=0.3.2-beta
+_pkgver=0.4.0-beta
 pkgver=${_pkgver%-*}
-pkgrel=3
+pkgrel=1
 pkgdesc="HGL, a Native alternative Linux Launcher for Epic Games"
 arch=('x86_64')
 url="https://github.com/flavioislima/HeroicGamesLauncher"
@@ -14,7 +14,7 @@ _filename=heroic-${_pkgver}.AppImage
 source=("$url/releases/download/${_pkgver}/${_filename}"
         "heroic.desktop.patch"
         "heroicGamesLauncher")
-md5sums=('b790bad94c4f22a5a4787a97effd5525'
+md5sums=('d7945e418ff7db9d2f8d8a8f7d6d8075'
          'ca15ab98d434d881c3db27bb8573440d'
          '22f51cb64049525f8510046e69c715b7')
 options=(!strip)
