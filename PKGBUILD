@@ -1,7 +1,7 @@
 # Maintainer: Salamandar <felix@piedallu.me>
 
 pkgname=freecad-linkstage3-git
-pkgver=asm3.0.11.r3384.g405243723c
+pkgver=asm3.0.11.r3435.gb7d3346e00
 pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler - LinkStage3 dev branch, git checkout'
 arch=('x86_64')
@@ -48,9 +48,13 @@ optdepends=(
 _gitname='FreeCAD'
 source=(
     "git+https://github.com/realthunder/FreeCAD.git#branch=LinkStage3"
+    'patch_std_gnupp14.patch'
+    'patch_boost_placeholders.patch'
 )
 sha256sums=(
     'SKIP'
+    'd2a3a4c157741089c5ffbdd7c502be04414b8256081cd01208c94f2b0ed06ce3'
+    '84b9f47fd643a5b01a9b5af8bd1e75c94842d8b564613286e2f145a85793a91e'
 )
 
 
@@ -61,7 +65,8 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_gitname}"
-
+    git apply < "$srcdir/patch_std_gnupp14.patch"
+    git apply < "$srcdir/patch_boost_placeholders.patch"
 }
 
 build() {
@@ -70,6 +75,10 @@ build() {
     rm build -rf
     mkdir build -p
     pushd build >/dev/null
+
+    # Those deprecation warnings make debugging a nightmare
+    export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
+    export CXXFLAGS="$CXXFLAGS -Wno-deprecated-declarations"
 
     cmake -GNinja -Wno-dev .. \
         -DBUILD_QT5=ON \
