@@ -46,7 +46,7 @@ build() {
     ./configure \
       --prefix=/usr \
       --localstatedir=/var/lib/vim \
-      --with-features=small \
+      --with-features=normal \
       --with-compiledby='Arch Linux' \
       --disable-gpm \
       --enable-acl \
