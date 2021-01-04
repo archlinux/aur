@@ -2,7 +2,7 @@
 
 pkgname=dwm-monosans-git
 pkgver=6.2.r1699.8a76189
-pkgrel=2
+pkgrel=3
 pkgdesc='A dynamic window manager for X'
 url="https://github.com/monosans/dwm"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ makedepends=(git)
 source=(git://github.com/monosans/dwm
         config.mk)
 sha256sums=('SKIP'
-            '4dd65d478f5dca4ac603fe7a32d6c8ef5d9324eafb256ccebc6aa915304f24ab')
+            '37e0b861183ab8d5595a0cc7fb5a98be19a681f1517b15a0cc48daeed009b1b9')
 provides=(dwm)
 conflicts=(dwm)
 

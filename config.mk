@@ -1,5 +1,5 @@
 VERSION = 6.2
-PREFIX = /usr/local
+PREFIX = /usr
 X11INC = /usr/include/X11
 X11LIB = /usr/lib/X11
 # Xinerama, uncomment for multi-monitor
