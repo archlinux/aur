@@ -1,9 +1,8 @@
 # Maintainer: Feakster <feakster at posteo dot eu>
 
 pkgname=simplenote-electron-arm-bin
-_appimagver=2.3.0
-_appimage="${pkgname}-${_appimagver}.AppImage"
-pkgver=${_appimagver//-/_}
+pkgver=2.3.0
+_appimage="simplenote-electron-${pkgver}-${CARCH}.AppImage"
 pkgrel=5
 pkgdesc='The simplest way to keep notes'
 arch=('armv7h' 'aarch64')
@@ -17,8 +16,8 @@ optdepends=(
 )
 provides=('simplenote')
 options=(!strip)
-source_armv7h=("${_appimage}"::"${url}/releases/download/v${pkgver}/Simplenote-linux-${pkgver}-armv7l.AppImage")
-source_aarch64=("${_appimage}"::"${url}/releases/download/v${pkgver}/Simplenote-linux-${pkgver}-arm64.AppImage")
+source_armv7h=("simplenote-electron-${pkgver}-armv7h.AppImage"::"${url}/releases/download/v${pkgver}/Simplenote-linux-${pkgver}-armv7l.AppImage")
+source_aarch64=("simplenote-electron-${pkgver}-aarch64.AppImage"::"${url}/releases/download/v${pkgver}/Simplenote-linux-${pkgver}-arm64.AppImage")
 noextract=("${_appimage}")
 b2sums_armv7h=('b9a7eabdd35b4a61cdeaf296c7771d6991c824068b69a03c951ef82c596826d4ff6951bd646bf7abb1a57c4100ce492a72254b2267d2e7d14767425bbce2592e')
 b2sums_aarch64=('7ffd079364774395d68ab2a125c074ba09e7f56c54c7db2f100f19a2bafc1d83cb447b0232da857f4cf9cc3cda8b3f66d53be985259defb14b94af96b90ab586')
