@@ -20,6 +20,11 @@ source=(git+https://github.com/curl/curl)
 sha512sums=('SKIP')
 #validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
 
+pkgver() {
+  cd curl
+  git describe --tags | sed 's/-/+/g'
+}
+
 build() {
   cd curl
 
