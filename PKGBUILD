@@ -1,10 +1,12 @@
 #maintainer lxgr <lxgr@protonmail.com>
 pkgname=buildaur-git
+_pkgname=buildaur
 pkgver=188.064da14
 pkgrel=1
 pkgdesc="An AUR helper with asp support (development version)"
 arch=(any)
-provides=('buildaur')
+conflicts=($_pkgname)
+provides=($_pkgname)
 url="https://github.com/lxgr-linux/buildaur"
 license=('GPL3')
 depends=('pacman' 'devtools' 'git' 'python3' 'python-requests' 'pyalpm')

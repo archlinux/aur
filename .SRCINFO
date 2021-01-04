@@ -15,6 +15,7 @@ pkgbase = buildaur-git
 	optdepends = bash-completion: Bash completion
 	optdepends = asp: ASP support
 	provides = buildaur
+	conflicts = buildaur
 	backup = etc/buildaur/buildaur.conf
 	backup = usr/share/buildaur/blacklist
 	source = buildaur-git::git+https://github.com/lxgr-linux/buildaur.git
