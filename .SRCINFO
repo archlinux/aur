@@ -1,4 +1,4 @@
-pkgbase = gamecompjs
+pkgbase = gamecomp-cli
 	pkgdesc = Apply and remove compression and encryption algorithms used by DOS games
 	pkgver = latest
 	pkgrel = 1
@@ -7,5 +7,5 @@ pkgbase = gamecompjs
 	makedepends = npm
 	depends = nodejs
 
-pkgname = gamecompjs
+pkgname = gamecomp-cli
 
