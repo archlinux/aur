@@ -1,0 +1,9 @@
+[Unit]
+Description=Ricochet bridge for IRC
+
+[Service]
+ExecStart=/usr/bin/ricochet-irc --config %h/.config/ricochet-irc/
+Restart=always
+
+[Install]
+WantedBy=default.target
