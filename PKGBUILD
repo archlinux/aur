@@ -2,7 +2,7 @@
 # Contributor: wowario <wowario[at]protonmail[dot]com>
 
 pkgname='wownero-feather-git'
-pkgver=0.3.0.3a23db1479
+pkgver=0.3.0.b2cfa01bdb
 pkgrel=1
 pkgdesc='a free Wownero desktop wallet'
 license=('BSD')
@@ -11,7 +11,7 @@ url="https://featherwallet.org"
 depends=('boost-libs' 'libunwind' 'openssl' 'readline' 'pcsclite' 'hidapi' 'protobuf' 'miniupnpc' 'libgcrypt' 'qrencode' 'libsodium' 'libpgm' 'expat' 'qt5-base' 'qt5-websockets' 'tor')
 makedepends=('git' 'cmake' 'boost')
 
-source=("${pkgname}"::"git+https://git.wownero.com/feather/feather-wow")
+source=("${pkgname}"::"git+https://git.wownero.com/wowario/feather-wow")
 
 sha256sums=('SKIP')
 
