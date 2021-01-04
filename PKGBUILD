@@ -26,6 +26,7 @@ build() {
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
+  ./autogen.sh
   ./configure --prefix=/usr --libdir=/usr/lib32 --disable-thorough-tests --disable-doxygen-docs --enable-asm-optimizations --enable-sse --enable-altivec --enable-vsx --enable-avx --disable-valgrind-testing --disable-xmms-plugin
   make
 }
