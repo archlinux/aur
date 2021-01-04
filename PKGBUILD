@@ -1,18 +1,18 @@
 # Maintainer: monosans <hsyqixco at protonmail dot com>
 
 pkgname=st-monosans-git
-pkgver=0.8.4.1139.a4b7a06
-pkgrel=2
+pkgver=0.8.4.r1140.1119853
+pkgrel=1
 pkgdesc='Simple (suckless) terminal with scrollback, ligatures and One Dark color scheme'
-url='https://github.com/monosans/st'
-arch=('i686' 'x86_64')
-license=('MIT')
-depends=('libxft' 'harfbuzz' 'ttf-jetbrains-mono')
-makedepends=('git' 'libxext' 'ncurses')
-source=('git://github.com/monosans/st')
+url="https://github.com/monosans/st"
+arch=(i686 x86_64)
+license=(MIT)
+depends=(libxft harfbuzz ttf-jetbrains-mono)
+makedepends=(git libxext ncurses)
+source=("git://github.com/monosans/st")
 sha256sums=('SKIP')
-provides=('st')
-conflicts=('st')
+provides=(st)
+conflicts=(st)
 
 pkgver() {
 	cd st
