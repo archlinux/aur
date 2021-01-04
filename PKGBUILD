@@ -3,18 +3,22 @@
 _pkgbase=hid-playstation
 pkgname=${_pkgbase}-dkms
 pkgver=20210102
-pkgrel=1
+pkgrel=2
 pkgdesc="Sony's official HID driver for the PS5 DualSense controller."
 arch=(any)
 url="https://patchwork.kernel.org/project/linux-input/list/?series=404369"
 license=("GPL2")
 depends=('dkms')
-source=('hid-playstation.c' 'dkms.conf' 'hid-ids.h' 'Makefile')
+source=(
+	'hid-playstation.c' 'dkms.conf' 'hid-ids.h' 'Makefile'
+	disable-ff-enabled-check.patch
+)
 
-md5sums=('1ede5a2b91a03a1f246bf8eda0d4258e'
+md5sums=('11ca4528b5be12abe371027ded0f7012'
          '6d97239c33773b3f2fc5d497e98a1017'
          'c9585c976df5c262127bfe8b595824b3'
-         'b5424fcb24f12a53b4ff18f1b85bcb23')
+         'b5424fcb24f12a53b4ff18f1b85bcb23'
+         '4a14732dbadd6419ce0ae49ecad8eaed')
 
 package() {
 	cd "${srcdir}"
@@ -25,4 +29,7 @@ package() {
 		-i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
 	install -Dm644 hid-playstation.c hid-ids.h Makefile \
 		-t "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
+
+	cd "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
+	patch -Np1 -i "${srcdir}/disable-ff-enabled-check.patch"
 }

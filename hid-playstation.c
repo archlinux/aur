@@ -455,12 +455,12 @@ static struct input_dev *ps_gamepad_create(struct hid_device *hdev,
 	for (i = 0; i < ARRAY_SIZE(ps_gamepad_buttons); i++)
 		input_set_capability(gamepad, EV_KEY, ps_gamepad_buttons[i]);
 
-//#if IS_ENABLED(CONFIG_PLAYSTATION_FF)
+#if IS_ENABLED(CONFIG_PLAYSTATION_FF)
 	if (play_effect) {
 		input_set_capability(gamepad, EV_FF, FF_RUMBLE);
 		input_ff_create_memless(gamepad, NULL, play_effect);
 	}
-//#endif
+#endif
 
 	ret = input_register_device(gamepad);
 	if (ret)
