@@ -38,7 +38,7 @@ build() {
     --with-gssapi \
     --without-libssh2 \
     --with-random='/dev/urandom' \
-    --with-ca-bundle='/etc/ssl/certs/ca-certificates.crt'
+    --with-ca-bundle='/etc/ssl/certs/ca-certificates.crt' \
     --disable-verbose \
     --disable-rtsp \
     --disable-ftp \
