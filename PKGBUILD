@@ -1,7 +1,7 @@
 # Maintainer: Martin Andersson <m.t.andersson at gmail dot com>
 
 pkgname="gphotos-uploader-cli"
-pkgver="2.0.0"
+pkgver="2.0.1"
 pkgrel=0
 pkgdesc='Command line tool to mass upload media folders to your Google Photos account(s).'
 
@@ -20,7 +20,7 @@ source=(
 )
 
 sha256sums=(
-  '94afd0f15b4542e621aa757fbde7aee7dbf4ee004a2a25c5bd03128be5865286'
+  '27d46ea246bbd58e9b79d707080bdba057f020f52183897c45de59e0f0ca0147'
 )
 
 build() {
