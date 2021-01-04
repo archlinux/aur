@@ -1,7 +1,7 @@
 # Maintainer: Arsen Musayelyan <moussaelianarsen@gmail.com>
 pkgname=pak-git
 pkgver=r27.51071dc
-pkgrel=1
+pkgrel=2
 pkgdesc="Changes pacman syntax to be more like APT"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPLv3')
@@ -11,6 +11,7 @@ conflicts=('pak')
 makedepends=('go')
 source=('git+https://gitea.arsenm.dev/Arsen6331/pak.git')
 md5sums=('SKIP')
+backup=('etc/pak.toml')
 
 pkgver() {
     cd "$srcdir/pak"

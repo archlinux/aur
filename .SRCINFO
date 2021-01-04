@@ -1,7 +1,7 @@
 pkgbase = pak-git
 	pkgdesc = Changes pacman syntax to be more like APT
 	pkgver = r27.51071dc
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	arch = i686
 	arch = arm
@@ -13,6 +13,7 @@ pkgbase = pak-git
 	depends = yay
 	provides = pak
 	conflicts = pak
+	backup = etc/pak.toml
 	source = git+https://gitea.arsenm.dev/Arsen6331/pak.git
 	md5sums = SKIP
 
