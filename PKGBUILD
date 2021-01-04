@@ -2,7 +2,7 @@
 
 pkgname=st-monosans-git
 pkgver=0.8.4.r1141.966386b
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple (suckless) terminal with scrollback, ligatures and One Dark color scheme'
 url=https://github.com/monosans/st
 arch=(i686 x86_64)
@@ -23,7 +23,7 @@ pkgver() {
 }
 
 prepare() {
-    cp "$BUILDDIR/config.mk" "$_sourcedir"
+	cp "$BUILDDIR/config.mk" "${srcdir}"
 	cd st
 	sed -i '/tic /d' Makefile
 }
