@@ -2,7 +2,7 @@
 
 _plug=tcolormask
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r1.0.g85d90a5
+pkgver=r1.2.g525d8b2
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -24,12 +24,13 @@ prepare(){
   cd "${_plug}"
 
   echo "all:
-	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o TColorMask.o TColorMask/TColorMask.cpp
+	  g++ -c -fPIC ${CXXFLAGS} -std=c++11 ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o TColorMask.o TColorMask/TColorMask.cpp
 	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so TColorMask.o" > Makefile
+
 }
 
 build() {
-  make -C "${_plug}"
+  LC_ALL=C make -C "${_plug}" -j1
 }
 
 package() {

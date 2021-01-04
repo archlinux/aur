@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-tcolormask-git
 	pkgdesc = Plugin for Vapoursynth: tcolormask (GIT version)
-	pkgver = r1.0.g85d90a5
+	pkgver = r1.2.g525d8b2
 	pkgrel = 1
 	url = https://github.com/Beatrice-Raws/VapourSynth-TColorMask
 	arch = x86_64
