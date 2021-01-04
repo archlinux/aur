@@ -3,7 +3,7 @@
 
 pkgname=python-tasklib
 _name=${pkgname#python-}
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Python library for interacting with taskwarrior databases."
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python' 'python-pytz' 'python-tzlocal')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('21525a34469928876b64edf8abf79cf788bb3fa796d4554ba22a68bc1f0693f5')
+sha256sums=('7fe8676acb4559129c4e958be7704c12dccdbae302fff47c5398bc0dd1c9e563')
 
 build() {
   cd "$_name-$pkgver"
