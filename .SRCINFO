@@ -1,0 +1,22 @@
+pkgbase = feeluown-netease-git
+	pkgdesc = feeluown netease plugin git
+	pkgver = r529.c14d987
+	pkgrel = 1
+	url = https://github.com/feeluown/feeluown-netease
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = feeluown
+	depends = python-pycryptodome
+	depends = python-requests
+	depends = python-marshmallow
+	depends = python-beautifulsoup4
+	provides = feeluown-netease
+	conflicts = feeluown-netease
+	source = git+https://github.com/feeluown/feeluown-netease.git
+	sha512sums = SKIP
+
+pkgname = feeluown-netease-git
+
