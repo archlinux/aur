@@ -3,15 +3,15 @@
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 
 pkgname=qtspim
-pkgver=9.1.21
-pkgrel=2
+pkgver=9.1.22
+pkgrel=1
 pkgdesc="New user interface for spim, a MIPS simulator."
 arch=('x86_64')
 url="http://spimsimulator.sourceforge.net/"
 license=('BSD')
 depends=('qt5-base')
 makedepends=('qt5-tools' 'subversion' 'icu')
-source=("svn://svn.code.sf.net/p/spimsimulator/code/#revision=734")
+source=("svn://svn.code.sf.net/p/spimsimulator/code/#revision=739")
 sha256sums=('SKIP')
 
 prepare() {
@@ -26,6 +26,7 @@ build() {
   cd "$srcdir/code/QtSpim"
 
   qmake
+  sed -i 's|$(COPY) help/qtspim.qhc help/qtspim.qhc;||' Makefile
   make
 }
 
