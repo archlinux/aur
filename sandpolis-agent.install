@@ -1,0 +1,5 @@
+post_install() {
+
+	# Run interactive configuration
+	/usr/bin/sandpolis-agent-config
+}

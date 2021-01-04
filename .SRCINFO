@@ -1,0 +1,20 @@
+pkgbase = sandpolis-agent
+	pkgdesc = Sandpolis agent
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = https://github.com/sandpolis/sandpolis
+	install = sandpolis-agent.install
+	arch = any
+	license = Mozilla Public License Version 2.0
+	makedepends = java-environment>=15
+	makedepends = git
+	depends = java-runtime>=15
+	provides = sandpolis-agent
+	conflicts = sandpolis-agent
+	source = git+https://github.com/sandpolis/sandpolis.git#commit=a5de3be94f3d9a4b12344a7cebe9c06601900060
+	source = git+https://github.com/sandpolis/com.sandpolis.agent.vanilla.git#commit=8fe5cd3734f82176644ea0ff1ae221be2fdbefe3
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = sandpolis-agent
+
