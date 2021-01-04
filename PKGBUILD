@@ -9,7 +9,6 @@ url="https://github.com/chrismsimpson/Metropolis"
 license=('UNLICENSE')
 provides=("${pkgname}")
 replaces=("${pkgname}-git")
-conflicts=('otf-metropolis')
 source=('https://fontsarena.com/wp-content/uploads/2018/11/Metropolis-r11.zip')
 sha256sums=('a9efb018df3fae5d39fcd3d05418bce35c4f88ecbf9c3eb54ffff7dbfdf79466')
 
