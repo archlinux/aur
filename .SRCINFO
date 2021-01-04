@@ -1,6 +1,6 @@
 pkgbase = pak-git
 	pkgdesc = Changes pacman syntax to be more like APT
-	pkgver = r8.5635d2a
+	pkgver = r27.51071dc
 	pkgrel = 1
 	arch = x86_64
 	arch = i686
@@ -10,10 +10,10 @@ pkgbase = pak-git
 	arch = aarch64
 	license = GPLv3
 	makedepends = go
-	depends = pak-config
+	depends = yay
 	provides = pak
 	conflicts = pak
-	source = git+https://gitlab.com/moussaelianarsen/pak.git
+	source = git+https://gitea.arsenm.dev/Arsen6331/pak.git
 	md5sums = SKIP
 
 pkgname = pak-git
