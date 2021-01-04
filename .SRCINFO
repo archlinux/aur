@@ -1,7 +1,7 @@
 pkgbase = st-monosans-git
 	pkgdesc = Simple (suckless) terminal with scrollback, ligatures and One Dark color scheme
 	pkgver = 0.8.4.r1141.966386b
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/monosans/st
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = st-monosans-git
 	source = git://github.com/monosans/st
 	source = config.mk
 	sha256sums = SKIP
-	sha256sums = 3e502ff0939d230da385420aef2b9ee0dc3ba413713a54272cd768a632f11a72
+	sha256sums = 328eab38522960e2155f3011a2839124f6da74a8dc3515378a9778824167a436
 
 pkgname = st-monosans-git
 

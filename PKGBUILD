@@ -2,7 +2,7 @@
 
 pkgname=st-monosans-git
 pkgver=0.8.4.r1141.966386b
-pkgrel=4
+pkgrel=5
 pkgdesc='Simple (suckless) terminal with scrollback, ligatures and One Dark color scheme'
 url=https://github.com/monosans/st
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ makedepends=(git libxext ncurses)
 source=(git://github.com/monosans/st
         config.mk)
 sha256sums=('SKIP'
-            '3e502ff0939d230da385420aef2b9ee0dc3ba413713a54272cd768a632f11a72')
+            '328eab38522960e2155f3011a2839124f6da74a8dc3515378a9778824167a436')
 provides=(st)
 conflicts=(st)
 
@@ -23,18 +23,18 @@ pkgver() {
 }
 
 prepare() {
-	cp config.mk st/config.mk
+	cp config.mk st/
 	cd st
 	sed -i '/tic /d' Makefile
 }
 
 build() {
 	cd st
-	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+	make
 }
 
 package() {
 	cd st
-	make PREFIX=/usr DESTDIR="${pkgdir}" install
+	make DESTDIR="${pkgdir}" install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
