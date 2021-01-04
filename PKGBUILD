@@ -8,7 +8,7 @@ url="https://github.com/deadhead420/fetchmirrors"
 license=('GPL')
 depends=('curl' 'pacman-contrib')
 source=('https://raw.githubusercontent.com/deadhead420/fetchmirrors/master/fetchmirrors.sh')
-md5sums=('d2996d8b1febfeaaf6d6a8eeaa78f2a8')
+md5sums=('57086287d793a514222d083cd0e60af2')
 
 package() {
   cd "${srcdir}"
