@@ -37,7 +37,8 @@ build() {
 package() {
     cd "$pkgname"
 
-    cp -r "build/" "${pkgdir}/usr/share/webapps/lightspeed-react/"
+    install -d "${pkgdir}/usr/share/webapps/lightspeed-react/"
+    cp -r "build/." "${pkgdir}/usr/share/webapps/lightspeed-react"
 
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/lightspeed-react/README.md"
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
