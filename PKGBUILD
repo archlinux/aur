@@ -4,7 +4,7 @@
 pkgname=octave-hg
 epoch=5
 pkgrel=1
-pkgver=7.0.0.r29243.e2bca6106057
+pkgver=7.0.0.r29258.fdfd874293f6
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -50,7 +50,7 @@ prepare () {
 build() {
   cd ${_hgrepo}
   ./bootstrap --gnulib-srcdir="$srcdir"/gnulib
-  sed -i '7723d' configure
+  sed -i '7722,7732d' configure
   [[ -d build ]] && rm -rf build
   mkdir build
   cd build
