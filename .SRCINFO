@@ -1,7 +1,7 @@
 pkgbase = autofirmaja
-	pkgdesc = Junta de Andalucia digital signature client
-	pkgver = 1.6.0
-	pkgrel = 2
+	pkgdesc = Junta de Andalucia cliente de firma digital andaluz
+	pkgver = 1.6.0_jav2
+	pkgrel = 1
 	url = https://ws024.juntadeandalucia.es/clienteafirma/autofirma/autofirma.html
 	arch = i686
 	arch = x86_64
@@ -12,9 +12,8 @@ pkgbase = autofirmaja
 	depends = java-runtime
 	depends = nss
 	depends = firefox
-	source = https://ws024.juntadeandalucia.es/clienteafirma/autofirma/AutoFirma_v1_6_0_JAv01.deb
-	md5sums = ff2211f3035f72615024a8a2e4561069
-	sha512sums = 4e520afa9abc4bc48eb6ffb9e7a30700d84a58d7aa11d708b349126cb8dbcce9e151acd08fbabdf9d35d1e9d38c5c44baed5cc04339c3faa8a340b8482e909c0
+	source = autofirmaja-1.6.0_jav2.deb::https://ws024.juntadeandalucia.es/ae/descargar/5679
+	sha512sums = 073aa69caf26209706ec703dc12b7dcf99e205f1d96345c94607380dff9ea49a0e8614dfed86acfe8ae932c3a42a4c0dd1574b72eaa26e96cccea24e9b59b376
 
 pkgname = autofirmaja
 
