@@ -2,7 +2,7 @@
 # Contributor: wowario <wowario[at]protonmail[dot]com>
 
 pkgname='wownero-feather-git'
-pkgver=0.3.0.1317f22fbb
+pkgver=0.3.0.3a23db1479
 pkgrel=1
 pkgdesc='a free Wownero desktop wallet'
 license=('BSD')
