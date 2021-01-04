@@ -9,8 +9,8 @@ pkgbase = python-awesometkinter
 	depends = python
 	depends = tk
 	depends = python-pillow
-	source = https://github.com/Aboghazala/AwesomeTkinter/archive/2020.9.22.tar.gz
-	b2sums = 6a090e92fc7e4f87224230c574da6bdaaf011d757ca96eceead3af5709fad8a53e4ba4345b883264311573416d72162f65e5a5e3a048c33653b0cc17cb3a0a7c
+	source = https://github.com/Aboghazala/AwesomeTkinter/tarball/cf562880fc572977f9805779b11f437da2ce09ff
+	b2sums = f6a82c95cd740cc6358b7bf3f669874959fc0a585dbc1c07717d8433c756603125537c8498cf70f7881fc66e07fd049ce5caa20a7d1428c0afcb9e360cd23e5b
 
 pkgname = python-awesometkinter
 

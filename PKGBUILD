@@ -1,7 +1,7 @@
 # Maintainer: Franck STAUFFER <franck.stauffer@monaco.mc>
 
 pkgname=python-awesometkinter
-pkgver=2020.9.22
+pkgver=2020.12.16
 pkgrel=1
 pkgdesc="Pretty tkinter widgets"
 arch=('any')
@@ -9,16 +9,16 @@ url='https://github.com/Aboghazala/AwesomeTkinter'
 license=('MIT')
 depends=('python' 'tk' 'python-pillow')
 changelog="$pkgname.changelog"
-source=("https://github.com/Aboghazala/AwesomeTkinter/archive/$pkgver.tar.gz")
-b2sums=('6a090e92fc7e4f87224230c574da6bdaaf011d757ca96eceead3af5709fad8a53e4ba4345b883264311573416d72162f65e5a5e3a048c33653b0cc17cb3a0a7c')
+source=("https://github.com/Aboghazala/AwesomeTkinter/tarball/cf562880fc572977f9805779b11f437da2ce09ff")
+b2sums=('f6a82c95cd740cc6358b7bf3f669874959fc0a585dbc1c07717d8433c756603125537c8498cf70f7881fc66e07fd049ce5caa20a7d1428c0afcb9e360cd23e5b')
 
 build() {
-  cd "AwesomeTkinter-$pkgver"
+  cd Aboghazala-AwesomeTkinter-cf56288
   python setup.py build
 }
 
 package() {
-  cd "AwesomeTkinter-$pkgver"
+  cd Aboghazala-AwesomeTkinter-cf56288
   python setup.py install --root="$pkgdir" --skip-build --optimize=1
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
