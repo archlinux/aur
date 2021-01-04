@@ -1,12 +1,11 @@
 pkgname=jsonpp-git
 _gourl=github.com/jmhodges/jsonpp
-pkgver=40.508c54e
+pkgver=46.7bc0743
 pkgver() {
   cd $srcdir/src/$_gourl && \
-    echo $(git rev-list --count master).$(git rev-parse --short master) || \
-    echo "null"
+    echo $(git rev-list --count master).$(git rev-parse --short master) || echo "$pkgver"
 }
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple command line JSON pretty printer. Written on Go."
 arch=('i686' 'x86_64')
 url="http://jmhodges.github.io/jsonpp/"

@@ -1,7 +1,7 @@
 pkgbase = jsonpp-git
 	pkgdesc = Simple command line JSON pretty printer. Written on Go.
-	pkgver = 40.508c54e
-	pkgrel = 1
+	pkgver = 46.7bc0743
+	pkgrel = 2
 	url = http://jmhodges.github.io/jsonpp/
 	arch = i686
 	arch = x86_64
