@@ -9,7 +9,6 @@ url="https://github.com/caverym/Proton-Caller/"
 license=('GPL3')
 depends=(
   'steam'
-  'dxvk'
 )
 makedepends=('git')
 provides=(proton-caller)

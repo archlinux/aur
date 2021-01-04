@@ -7,7 +7,6 @@ pkgbase = proton-caller-git
 	license = GPL3
 	makedepends = git
 	depends = steam
-	depends = dxvk
 	provides = proton-caller
 	conflicts = proton-caller
 	source = git+https://github.com/caverym/Proton-Caller.git
