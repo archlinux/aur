@@ -1,18 +1,20 @@
 # Maintainer: Arsen Musayelyan <moussaelianarsen@gmail.com>
 pkgname=pak-bin
-pkgver=1.0.9
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="Changes pacman syntax to be more like APT"
 arch=('x86_64' 'aarch64')
 license=('GPLv3')
-depends=('pak-config')
+depends=('yay')
 provides=('pak')
 conflicts=('pak')
-source=("https://minio.arsenm.dev/pak/$pkgver/pak-linux-$(uname -m)")
-md5sums=('SKIP')
+_arch="$(uname -m)"
+source=("https://minio.arsenm.dev/pak/$pkgver/pak-linux-$_arch" "https://gitea.arsenm.dev/Arsen6331/pak/raw/branch/master/pak.toml")
+md5sums=('SKIP' 'SKIP')
 
 package() {
-        chmod +x pak-linux-$(uname -m)
-	mkdir -p $pkgdir/usr/bin
-	mv pak-linux-$(uname -m) $pkgdir/usr/bin/pak
+    chmod +x pak-linux-$_arch
+	install -Dm755 pak-linux-$_arch $pkgdir/usr/bin/pak
+	sed -i 's/activeManager = ""/activeManager = "yay"/' pak.toml
+	install -Dm755 pak.toml $pkgdir/etc/pak.toml
 }
