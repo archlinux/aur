@@ -11,7 +11,7 @@ license=("GPL2")
 depends=('dkms')
 source=('hid-playstation.c' 'dkms.conf' 'hid-ids.h' 'Makefile')
 
-md5sums=('11ca4528b5be12abe371027ded0f7012'
+md5sums=('1ede5a2b91a03a1f246bf8eda0d4258e'
          '6d97239c33773b3f2fc5d497e98a1017'
          'c9585c976df5c262127bfe8b595824b3'
          'b5424fcb24f12a53b4ff18f1b85bcb23')
