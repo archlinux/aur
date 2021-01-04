@@ -11,7 +11,8 @@ url='https://curl.haxx.se'
 license=('MIT')
 depends=('lib32-curl' 'lib32-glibc' 'lib32-libidn2' 'lib32-krb5'
          'lib32-libpsl' 'lib32-openssl' 'lib32-zlib'
-         'lib32-zstd' 'libcurl-compat')
+         'lib32-zstd')
+optdepends=('libcurl-compat: 64bit support')
 provides=(lib32-libcurl-compat)
 conflicts=(lib32-libcurl-compat)
 options=('strip')
