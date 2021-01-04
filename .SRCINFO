@@ -1,6 +1,6 @@
 pkgbase = delta-media-player
 	pkgdesc = IPTV program stream player for DMPlayer
-	pkgver = 1.21
+	pkgver = 1.23
 	pkgrel = 1
 	url = http://www.deltamediaplayer.com/en/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = delta-media-player
 	depends = libevent>=2.1.8
 	depends = openssl-1.0
 	provides = dmplayer
-	source = https://www.deltamediaplayer.com/playercode/download/DeltaMediaPlayer-1.21.deb
-	sha256sums = 3b1caf7f5a27a5de01811900d6910bd2907bd08737848a32d23bcbad413c05f3
+	source = https://www.deltamediaplayer.com/playercode/download/DeltaMediaPlayer-1.23.deb
+	sha256sums = SKIP
 
 pkgname = delta-media-player
 
