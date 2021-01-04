@@ -1,16 +1,17 @@
-# Maintainer : Achilleas Pipinellis <axilleas archlinux info>
+# Maintainer : Achilleas Pipinellis <axilleas archlinux gr>
 # Contributor: Cilyan Olowen <gaknar@gmail.com>
 # Contributor: G_Syme <demichan(at)mail(dot)upb(dot)de>
+
 pkgname=python-zope.proxy
 _pyname=zope.proxy
 pkgver=4.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic Transparent Proxies"
 arch=('i686' 'x86_64')
 url="https://pypi.org/project/zope.proxy/"
 license=('ZPL')
 depends=('python')
-makedepends=('python-distribute' 'pypy-zope-interface')
+makedepends=('python-distribute' 'pypy3-zope-interface')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 
 package() {
