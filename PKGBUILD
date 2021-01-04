@@ -1,18 +1,14 @@
 # Maintainer: Joznia <jz.joznia@protonmail.com>
 pkgname=jza
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Simple AUR helper written in Bash"
 arch=('x86_64')
 url="https://gitlab.com/joznia/jza"
 license=('GPL2')
 depends=('git' 'wget')
-source=("https://gitlab.com/joznia/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.bz2")
-md5sums=('e11ec2488d94a88b163e7a1d0b9df67e')
-
-prepare() {
-    tar xpf "$pkgname-v$pkgver.tar.bz2"
-}
+source=("https://gitlab.com/joznia/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
+md5sums=('9a8444f32d4cb4448ac619fb44f31250')
 
 package() {
     mkdir -p "${pkgdir}/usr/share/licenses/$pkgname/"
