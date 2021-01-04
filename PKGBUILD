@@ -1,7 +1,7 @@
 #maintainer lxgr <lxgr@protonmail.com>
 pkgname=buildaur-git
 _pkgname=buildaur
-pkgver=188.064da14
+pkgver=194.9110624
 pkgrel=1
 pkgdesc="An AUR helper with asp support (development version)"
 arch=(any)
@@ -11,7 +11,7 @@ url="https://github.com/lxgr-linux/buildaur"
 license=('GPL3')
 depends=('pacman' 'devtools' 'git' 'python3' 'python-requests' 'pyalpm')
 makedepends=('git')
-backup=('etc/buildaur/buildaur.conf' 'usr/share/buildaur/blacklist')
+backup=('etc/buildaur/buildaur.conf')
 optdepends=("bash-completion: Bash completion" "asp: ASP support")
 source=("$pkgname"::'git+https://github.com/lxgr-linux/buildaur.git')
 md5sums=('SKIP')
@@ -25,7 +25,6 @@ package() {
 	cd "$srcdir/$pkgname"
 	install -dm755 "${pkgdir}/usr/share/buildaur"
 	install -dm755 "${pkgdir}/etc/bash_completion.d"
-	install -m644 blacklist "${pkgdir}/usr/share/buildaur"
 	install -m644 buildaur-completion.bash "${pkgdir}/etc/bash_completion.d"
 	install -Dm0755 progressbar_buildaur.py "${pkgdir}/usr/share/buildaur"
 	install -Dm0755 buildaur_translations.py "${pkgdir}/usr/share/buildaur"
