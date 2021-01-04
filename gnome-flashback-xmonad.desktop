@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=GNOME Flashback (XMonad)
+Comment=This session logs you into GNOME Flashback with XMonad.
+Exec=/usr/lib/gnome-flashback/gnome-flashback-xmonad
+TryExec=/usr/lib/gnome-flashback/gnome-flashback-xmonad
+Icon=
+Type=Application
+DesktopNames=GNOME-Flashback;GNOME;
