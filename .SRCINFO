@@ -7,7 +7,6 @@ pkgbase = libreddit-git
 	license = AGPL-3.0
 	makedepends = git
 	makedepends = cargo
-	makedepends = rustup
 	provides = libreddit
 	conflicts = libreddit
 	source = libreddit::git+https://github.com/spikecodes/libreddit
