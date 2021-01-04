@@ -10,8 +10,8 @@
 
 pkgbase=networkmanager-iwd
 pkgname=(networkmanager-iwd libnm-iwd nm-iwd-cloud-setup)
-pkgver=1.28.1dev+7+g3f5df3cdc
-pkgrel=1
+pkgver=1.28.1dev+7+g3f5df3cdc6
+pkgrel=2
 pkgdesc="Network connection manager and user applications; using iwd backend instead of wpa_supplicant"
 url="https://wiki.gnome.org/Projects/NetworkManager"
 arch=(x86_64)
@@ -98,8 +98,8 @@ _pick() {
 package_networkmanager-iwd() {
   depends=(libnm-iwd iproute2 polkit iwd libmm-glib libnewt libndp libteam curl
            bluez-libs libpsl audit mobile-broadband-provider-info)
-  provides=("networkmanager")
-  conflicts=("networkmanager")
+  provides=(networkmanager)
+  conflicts=(networkmanager)
   optdepends=('dnsmasq: connection sharing'
               'bluez: Bluetooth support'
               'ppp: dialup connection support'
@@ -159,7 +159,7 @@ END
 package_libnm-iwd() {
   pkgdesc="NetworkManager client library with iwd backend"
   depends=(glib2 nss util-linux-libs jansson systemd-libs)
-  provides=(libnm.so)
+  provides=(libnm)
   conflicts=(libnm)
 
   mv libnm/* "$pkgdir"
@@ -168,8 +168,8 @@ package_libnm-iwd() {
 package_nm-iwd-cloud-setup() {
   pkgdesc="Automatically configure NetworkManager with iwd backend in cloud"
   depends=(networkmanager-iwd)
-  provides=("nm-cloud-setup")
-  conflicts=("nm-cloud-setup")
+  provides=(nm-cloud-setup)
+  conflicts=(nm-cloud-setup)
 
   mv nm-cloud-setup/* "$pkgdir"
 }
