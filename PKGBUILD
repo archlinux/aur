@@ -11,7 +11,7 @@ url="https://sphinx-tabs.readthedocs.io"
 license=('MIT')
 makedepends=('python-setuptools')
 #'python-sphinx')
-#checkdepends=('python-pytest')
+checkdepends=('python-sphinx' 'python-pygments')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('0bdb8e8577d3ec12f5e4aa48bb3cfe5a')
 
@@ -23,12 +23,12 @@ build() {
 #   python setup.py build_sphinx
 }
 
-#check() {
-#    cd ${srcdir}/${_pyname}-${pkgver}
-#
-##   python setup.py test
-#    pytest #|| warning "Tests failed"
-#}
+check() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    python setup.py test
+#   pytest #|| warning "Tests failed"
+}
 
 package_python-sphinx-tabs() {
     depends=('python-sphinx<4' 'python-pygments')
