@@ -1,6 +1,6 @@
 pkgbase = vmware-vmrc
 	pkgdesc = VMWare VMRC Client.
-	pkgver = 11.2.0
+	pkgver = 12.0.0
 	pkgrel = 1
 	url = https://www.vmware.com/go/download-vmrc
 	arch = x86_64

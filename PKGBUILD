@@ -4,7 +4,7 @@
 # And put it under the same directory as this PKGBUILD!
 
 pkgname=vmware-vmrc
-pkgver=11.2.0
+pkgver=12.0.0
 pkgrel=1
 pkgdesc="VMWare VMRC Client."
 arch=('x86_64')
