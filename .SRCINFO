@@ -1,14 +1,14 @@
 pkgbase = rtptools
 	pkgdesc = Number of small applications that can be used for processing RTP data.
 	pkgver = 1.22
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cs.columbia.edu/irt/software/rtptools/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = glibc
-	source = http://www.cs.columbia.edu/irt/software/rtptools/download/rtptools-1.22.tar.gz
-	sha256sums = 2c76b2a423fb943820c91194372133a44cbdc456ebf69c51616ec50eeb068c28
+	source = https://github.com/irtlab/rtptools/archive/1.22.tar.gz
+	sha256sums = ac6641558200f5689234989e28ed3c44ead23757ccf2381c8878933f9c2523e0
 
 pkgname = rtptools
 
