@@ -22,7 +22,7 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd ogg
-  git describe --tags | sed 's/^v//'
+  git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
