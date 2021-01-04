@@ -2,7 +2,7 @@
 # Contributor: Black_Codec <orso.f.regna@gmail.com>
 
 pkgname=guacamole-server
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Guacamole proxy daemon"
 arch=('i686' 'x86_64' 'armv7h')
@@ -23,7 +23,7 @@ install=$pkgname.install
 
 source=("http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/${pkgver}/source/${pkgname}-${pkgver}.tar.gz")
  
-md5sums=('a2d0f4eed3b331d8470e138e85d580cb')
+md5sums=('5203866c9de4e8c064b19a56a95599c6')
 
 build() {
 	cd "$srcdir"/$pkgname-$pkgver
