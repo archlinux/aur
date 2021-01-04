@@ -1,6 +1,6 @@
 pkgbase = libpep-adapter-hg
 	pkgdesc = C++ library for common structures used in p≡p adapters
-	pkgver = 2.1.2
+	pkgver = 2.1.3
 	pkgrel = 1
 	url = https://pep.foundation/dev/repos/libpEpAdapter
 	arch = x86_64

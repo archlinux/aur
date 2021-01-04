@@ -3,7 +3,7 @@
 _name=libpEpAdapter
 _pkgname=libpep-adapter
 pkgname=$_pkgname-hg
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="C++ library for common structures used in p≡p adapters"
 arch=('x86_64' 'i686')
