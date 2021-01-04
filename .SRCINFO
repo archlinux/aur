@@ -1,6 +1,6 @@
 pkgbase = shadered
 	pkgdesc = SHADERed is a lightweight tool for creating and testing HLSL and GLSL shaders.
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/dfranx/SHADERed
 	arch = x86_64
@@ -8,13 +8,14 @@ pkgbase = shadered
 	makedepends = git
 	makedepends = cmake
 	makedepends = python
-	depends = assimp
-	depends = glew
-	depends = glm
 	depends = gtk3
 	depends = sdl2
 	depends = sfml
-	source = git+https://github.com/dfranx/SHADERed.git#commit=9a74bc1
+	depends = assimp
+	depends = glew
+	depends = glm
+	depends = spirv-headers
+	source = git+https://github.com/dfranx/SHADERed.git#commit=cd1b6f2
 	source = SHADERed.sh
 	sha256sums = SKIP
 	sha256sums = e501a371996c373988bd74733f288c8caa6b44d88439c5d52b18e14b4766420c
