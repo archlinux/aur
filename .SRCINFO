@@ -1,13 +1,14 @@
 pkgbase = caddy2
 	pkgdesc = Fast web server with automatic HTTPS
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://caddyserver.com
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	makedepends = git
 	depends = glibc
+	optdepends = mime-types: Augment MIME types table
 	provides = caddy
 	conflicts = caddy
 	backup = etc/caddy/Caddyfile
