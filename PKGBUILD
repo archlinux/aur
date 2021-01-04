@@ -22,5 +22,5 @@ prepare()
 
 package()
 {
-	install -Dm 755 "${srcdir}/NFAuthenticationKey-$commit"/NFAuthenticationKey.py "${pkgdir}/usr/bin/nfauthenticationkey"
+	install -Dm 755 "${srcdir}/NFAuthenticationKey-$commit/NFAuthenticationKey.py" "${pkgdir}/usr/bin/nfauthenticationkey"
 }
