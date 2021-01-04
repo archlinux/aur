@@ -16,7 +16,7 @@ source=(
 )
 sha256sums=(
   "a7a1c2e5669a9c47e8e5ac425d90998a93feb303ef6dc5fd8b94a4213cbb83a8"
-  "5a45f03ec544bfdf2c75391a68d29302e7f721348ba530a8f365697c799f84a2"
+  "72bf480d367051fca62f02cca5c421fd0b9f0245494b6d41a897db5c7a3f9fd7"
 )
 options=(!strip)
 _filename="./stoplight-studio-linux-${arch}-${_realver}.AppImage"
