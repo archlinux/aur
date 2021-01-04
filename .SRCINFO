@@ -1,0 +1,48 @@
+pkgbase = gnuradio-maint38-git
+	pkgdesc = General purpose DSP and SDR toolkit, with drivers for usrp and fcd.
+	pkgver = v3.8.2.0.34.gf1204e038
+	pkgrel = 1
+	url = https://github.com/gnuradio/gnuradio
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = boost
+	makedepends = cmake
+	makedepends = python-cairo
+	makedepends = python-yaml
+	makedepends = python-cheetah3
+	makedepends = glu
+	makedepends = pybind11
+	makedepends = qwt
+	makedepends = python-sphinx
+	depends = fftw
+	depends = python
+	depends = python-numpy
+	depends = python-mako
+	depends = python-click
+	depends = python-click-plugins
+	depends = python-pyqt5
+	depends = python-gobject
+	depends = cppunit
+	depends = gsl
+	depends = blas
+	depends = guile
+	depends = boost-libs>=1.54
+	depends = libusb
+	depends = portaudio
+	depends = libuhd
+	depends = zeromq
+	depends = libvolk
+	depends = log4cpp
+	depends = sdl
+	optdepends = python-lxml: Some GRC modules use lxml optionally for improved performance
+	provides = gnuradio
+	provides = gnuradio-companion
+	conflicts = gnuradio
+	conflicts = gnuradio-companion
+	source = git+https://github.com/gnuradio/gnuradio.git#branch=maint-3.8
+	md5sums = SKIP
+
+pkgname = gnuradio-maint38-git
+
