@@ -2,7 +2,7 @@
 
 pkgname=pyidm
 pkgver=2020.12.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Python open source alternative to IDM (Internet Download Manager)"
 arch=('any')
 url="https://github.com/pyIDM/PyIDM"
