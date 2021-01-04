@@ -1,4 +1,4 @@
-pkgbase = otf-metropolis
+pkgbase = otf-metropolis-git
 	pkgdesc = The Metropolis font, a modern, geometric typeface.
 	pkgver = r11
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = otf-metropolis
 	source = https://fontsarena.com/wp-content/uploads/2018/11/Metropolis-r11.zip
 	sha256sums = a9efb018df3fae5d39fcd3d05418bce35c4f88ecbf9c3eb54ffff7dbfdf79466
 
-pkgname = otf-metropolis-git
+pkgname = otf-metropolis
 
