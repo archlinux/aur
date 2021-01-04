@@ -2,9 +2,9 @@
 
 pkgname=ricochet-irc
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc=""
+pkgdesc="Ricochet bridge for IRC"
 arch=('any')
 url="https://github.com/adraenwan/ricochet-irc"
 license=('BSD')

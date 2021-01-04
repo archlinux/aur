@@ -1,6 +1,7 @@
 pkgbase = ricochet-irc
+	pkgdesc = Ricochet bridge for IRC
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adraenwan/ricochet-irc
 	arch = any
 	license = BSD
