@@ -7,12 +7,12 @@ _srcname=linux-5.10
 _major=5.10
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=3
+_minor=4
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
 #_fullver=$_major
-_rcver=2
+_rcver=1
 _rcpatch=patch-${_major}.${_minorc}-rc${_rcver}
 pkgver=${_major}.${_minorc}rc${_rcver}
 arch=(x86_64)
@@ -29,27 +29,28 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-0003-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch
-0004-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch
-0005-drm-amd-display-Add-get_dig_frontend-implementation-.patch
-0007-btrfs-Fix-500-2000-performance-regression-w-5.10.patch
-0008-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch
+0002-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch
+0003-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch
+0005-btrfs-Fix-500-2000-performance-regression-w-5.10.patch
+0006-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch
+0007-ALSA-hda-hdmi-fix-locking-in-silent_stream_disable.patch
+
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('fd03d186764458a33c10ae0e5d6c2f47ea2e74e6e08f6b80f195d750ce5af383e6f4eef9236def37515d1a41e9b62fb41e73e2f1ba802601ca81929fe0b6c8b3'
+b2sums=('3a4fa6e77721b0dc3b74e0e1c6d6af2aaf33286d5fc3bf6e0ae844cbed2f745cfa3fa8a83b406082e1e981125cf1c09a5df765e990a132713e7a05281a936394'
         'SKIP'
-        '0a8603991e9de4b50c2a0c9b7f96d2d169a41567f81bfc8bfd3d41edd45a948d2a672236c9651d701f16f0cb619c39996c9cc883647bacb2cefb33100e072d98'
+        '57f6d719451aacfd298452703ae02e6188885500e8cdf18fffa6b9967b0934a23cd378ab4c49b76ccb2f7a9012d6aa7ff1349d488cb31e40924be2f27b244cec'
         'SKIP'
-        'ac86054c7dc7e47cdc256c652c47cc4dc2100d1110637253fcc986fb5bcbda0023e8525d36253b9111284fd4d68c2a111219d904ac0489fdc251b26fb92d7c86'
-        '93567344c75bdd53b08bbae74d9cd6a99223825e37b59a762f7abd83ecf76e90d3a6d62d807d5ffe282aabbad21ae8c0e542fcf45e4419229de804068414d01d'
-        '155b189c79c1631d1f709ad7b01fc0b1d94e9c7a31ba0eacaa2dcde80020e8b7b36bea2429668fcac440c97a11ea26051cf2912f3f7af070a3878c8d00d53c82'
-        'af8f9ad7ee3f78da380ca97be64179a5cf95216b0f3652a95536f313ac8a7fdb39657ec88ca70474582c56974d096691544afef5c31293194ef004710bcfbefa'
-        'da02f8893032c5658d2ba900355c3a576214e39c369faac6599fbbd2c416fee6f4efa7683f069b0269993a1f395cf373f27e2fc001206b95c7870a8f594c8ce5'
-        '7733157d74983a5c2de0ab2aa1b41244ffa60e1fe038795fba1868a2410d2a91e23977462233628de85f3fea16921c48964f4c29e0a0af73e46cbd0dda26e05c'
-        '9550885b97c06a796ff62923f2049cc7c6b6db3a31a1824e7b1bf6d1417e7243c8dff5bb358495c562880a821769c43f4aff258cf3e4e93f0642ac1881282496')
+        'cb3a58e4eef8395b75887d94a84bba25f05fbec8f576a791623057a190a1d51b412a19ecf1b600ac3f9f6c46968eb0e130d571743e61afc231a97146ee4b52d0'
+        '7d2ef86a15ead6c946051c117a8ed97056e92a25a274455c5cc62ec65ff92bda7a50032b32c8019180f233a54e778becc45751741ae4d87db8f56ef520ca1e83'
+        '8ea9d2b7809728c3de05768fea5d8838fe20de8aaaed9106f26c0e8fc051921668d0c31345f200d06005403dec565690f828dbbcd38504079fe6fccbf742be61'
+        'd361b313a3dcd761833b8e2e40201df5e5b93c472e8a06f4684feb24d6e174405e6e4328dc0c449b9b0263e87224b3e1f4a52c873b666a93055979c9d2e2bf59'
+        '2853fa5257b96b11bcbf60ed68df09938ebb15f81c1bb6aa763c721c4e55f440fd27f9a6b49e8f9a1788948928299810f9e8ea43f0759b06cae3dd140902f93e'
+        '46a30c86206717fe6804d8e88693b90382b07fdad91d8fd7220e398e41f87a4b5cb5be70285241a3fc81c62ced6021f1710ce0426f3161285c254db9e5484d86'
+        'eec26b472efda62e27d26c2033158e970a5eadb30d38fc4de59c36fafe53efc1e220b7d57189abcd5a2697d242df8475cf2eebfd1ad6373804b5456dbcc14098')
 
 
 export KBUILD_BUILD_HOST=archlinux

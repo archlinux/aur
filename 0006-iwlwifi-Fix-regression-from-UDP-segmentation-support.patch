@@ -1,7 +1,7 @@
-From 2059ba0b121bb366467fcefb35cef22cc23e2fe9 Mon Sep 17 00:00:00 2001
+From 61e5f6548784e507eb0662a71976a673436e6e3a Mon Sep 17 00:00:00 2001
 From: Eric Dumazet <edumazet@google.com>
 Date: Mon, 21 Dec 2020 20:14:02 +0100
-Subject: [PATCH 8/9] iwlwifi: Fix regression from UDP segmentation support
+Subject: [PATCH 6/8] iwlwifi: Fix regression from UDP segmentation support
 
 Eric's tentative fix from
 https://lore.kernel.org/linux-wireless/CANn89iJWG2n1s3j7EdpwkQQv-9dOY02V+FGYHAWguO4JiqWuJA@mail.gmail.com/
@@ -30,5 +30,5 @@ index fe1c538cd718..c27743a58f81 100644
  			if (qos) {
  				u8 *qc;
 -- 
-2.29.2
+2.30.0
 

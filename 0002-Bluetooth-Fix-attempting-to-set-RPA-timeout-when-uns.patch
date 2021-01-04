@@ -1,7 +1,7 @@
-From 538fc2513b46f71985af6cb12344fee501ef58a5 Mon Sep 17 00:00:00 2001
+From 0438f3011663ce01a981bb8b3af0e84e73551ecf Mon Sep 17 00:00:00 2001
 From: Edward Vear <edwardvear@gmail.com>
 Date: Tue, 27 Oct 2020 00:02:03 -0700
-Subject: [PATCH 3/9] Bluetooth: Fix attempting to set RPA timeout when
+Subject: [PATCH 2/8] Bluetooth: Fix attempting to set RPA timeout when
  unsupported
 
 During controller initialization, an LE Set RPA Timeout command is sent
@@ -45,5 +45,5 @@ index 502552d6e9af..c4aa2cbb9269 100644
  
  			/* Set RPA timeout */
 -- 
-2.29.2
+2.30.0
 
