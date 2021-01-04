@@ -2,7 +2,7 @@
 
 pkgname=lightspeed-react-git
 pkgver=r9.e299491
-pkgrel=1
+pkgrel=2
 pkgdesc="React frontend for the Lightspeed project"
 arch=(any)
 url="https://github.com/GRVYDEV/Lightspeed-react"
@@ -24,8 +24,8 @@ pkgver() {
 
 prepare() {
     cd "$pkgname"
-    
-    npm install --cache "${srcdir}/npm-cache" 
+
+    npm install --cache "${srcdir}/npm-cache"
 }
 
 build() {
@@ -36,8 +36,8 @@ build() {
 
 package() {
     cd "$pkgname"
-    
-    find "build" -type f -exec install -Dm 644 -t "${pkgdir}/usr/share/webapps/lightspeed-react" "{}" \;
+
+    cp -r "build/" "${pkgdir}/usr/share/webapps/lightspeed-react/"
 
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/lightspeed-react/README.md"
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

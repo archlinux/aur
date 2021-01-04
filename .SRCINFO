@@ -1,7 +1,7 @@
 pkgbase = lightspeed-react-git
 	pkgdesc = React frontend for the Lightspeed project
 	pkgver = r9.e299491
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GRVYDEV/Lightspeed-react
 	arch = any
 	license = custom:MIT
