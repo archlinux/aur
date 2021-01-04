@@ -6,7 +6,7 @@
 SUMO_HOME='/usr/share/sumo'
 pkgname=('sumo' 'sumo-doc')
 pkgbase=sumo
-pkgver=1.7.0
+pkgver=1.8.0
 _pkgver="${pkgver//./_}"
 pkgrel=1
 pkgdesc="Traffic simulation modelling road vehicles, public transport and pedestrians."
@@ -18,7 +18,7 @@ makedepends=('cmake' 'help2man' 'swig' 'gtest')
 source=("https://github.com/eclipse/sumo/archive/v${_pkgver}.tar.gz"
         "${pkgbase}.desktop")
 
-sha256sums=('db0868318f2a602475a15ba8b83d30b686e6283b3ff753b9d112217529f2893b'
+sha256sums=('c70a802509c354c222e40926c71314e05c04652b1759f50e581d8d95d2f1d836'
             'd9ec82a1b56ebeaf31c6382f6d903baf0767e440b640a713e587d7e09f72d213')
 
 prepare() {
