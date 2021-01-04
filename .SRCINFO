@@ -15,6 +15,7 @@ pkgbase = st-monosans-git
 	provides = st
 	conflicts = st
 	source = git://github.com/monosans/st
+	source = config.mk
 	sha256sums = SKIP
 
 pkgname = st-monosans-git
