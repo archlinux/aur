@@ -1,10 +1,10 @@
 # Maintainer: monosans <hsyqixco at protonmail dot com>
 
 pkgname=dwm-monosans-git
-pkgver=6.2.r1699.8a76189
-pkgrel=3
+pkgver=6.2.r1701.d0bdbb8
+pkgrel=1
 pkgdesc='A dynamic window manager for X'
-url="https://github.com/monosans/dwm"
+url=https://github.com/monosans/dwm
 arch=(i686 x86_64)
 license=(MIT)
 depends=(freetype2 libx11 libxinerama libxft)
