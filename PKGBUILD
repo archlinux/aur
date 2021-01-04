@@ -1,28 +1,32 @@
-# Maintainer: Bruce Zhang
+# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
+# Contributor: Bruce Zhang
+
+_pkgname=SPIRV-Headers
 pkgname=spirv-headers-git
-pkgver=r128.4618b86
+pkgver=1.5.4.raytracing.fixed.r0.gf027d53
 pkgrel=1
 pkgdesc='SPIR-V header files Git version'
 arch=('any')
 url='https://www.khronos.org/registry/spir-v/'
 license=('custom')
-source=('git://github.com/KhronosGroup/SPIRV-Headers.git')
+source=("git+https://github.com/KhronosGroup/$_pkgname.git")
 sha1sums=('SKIP')
+makedepends=('git' 'cmake')
 conflicts=('spirv-headers')
-provides=('spirv-headers')
+provides=("spirv-headers=$pkgver")
 
 pkgver() {
-    cd "${srcdir}/SPIRV-Headers"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$_pkgname"
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+	cmake -B build -S "$_pkgname" \
+		-DCMAKE_INSTALL_PREFIX=/usr
+	make -C build
 }
 
 package() {
-  cd "${srcdir}/SPIRV-Headers/include/spirv/unified1"
-
-  mkdir -p "${pkgdir}"/usr/include/spirv/unified1/
-  install -m644 spirv.h        "${pkgdir}"/usr/include/spirv/unified1/
-  install -m644 spirv.hpp      "${pkgdir}"/usr/include/spirv/unified1/
-  install -m644 spirv.hpp11    "${pkgdir}"/usr/include/spirv/unified1/
-  install -m644 GLSL.std.450.h "${pkgdir}"/usr/include/spirv/unified1/
-  install -m644 OpenCL.std.h   "${pkgdir}"/usr/include/spirv/unified1/
+	make -C build DESTDIR="$pkgdir" install
+	install -Dm644 "$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
