@@ -4,7 +4,7 @@ pkgname=simplenote-electron-arm-bin
 _appimagver=2.3.0
 _appimage="${pkgname}-${_appimagver}.AppImage"
 pkgver=${_appimagver//-/_}
-pkgrel=4
+pkgrel=5
 pkgdesc='The simplest way to keep notes'
 arch=('armv7h' 'aarch64')
 url='https://github.com/Automattic/simplenote-electron'
@@ -51,14 +51,14 @@ package() {
     install -dm0755 "${pkgdir}"/usr/share/icons
 
     # Install Icons
-    cp -r squashfs-root/usr/share/icons/hicolor "${pkgdir}"/usr/share/icons/
+    cp -rL squashfs-root/usr/share/icons/hicolor "${pkgdir}"/usr/share/icons/
 
     # Install desktop file
     install -Dm644 squashfs-root/${provides}.desktop -t "${pkgdir}"/usr/share/applications/
 
     # Move package contents to opt
-    mv squashfs-root "${pkgdir}"/opt/${pkgname}
-
+    cp -rL squashfs-root "${pkgdir}"/opt/${pkgname}
+    
     # Symlink /usr/bin executable to opt
     ln -s /opt/${pkgname}/${provides} "${pkgdir}"/usr/bin/${provides}
 }
