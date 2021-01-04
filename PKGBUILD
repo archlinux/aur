@@ -2,21 +2,20 @@
 # Contributor: Cilyan Olowen <gaknar@gmail.com>
 # Contributor: G_Syme <demichan(at)mail(dot)upb(dot)de>
 pkgname=python-zope.proxy
-_pkgname=zope.proxy
-pkgver=4.1.4
+_pyname=zope.proxy
+pkgver=4.3.5
 pkgrel=1
-pkgdesc="Generic Transpatent Proxies"
+pkgdesc="Generic Transparent Proxies"
 arch=('i686' 'x86_64')
-url="https://pypi.python.org/pypi/zope.proxy/"
+url="https://pypi.org/project/zope.proxy/"
 license=('ZPL')
 depends=('python')
-makedepends=('python-distribute' 'zope-interface')
-optdepends=('zope-testing: For testing')
-source=(http://pypi.python.org/packages/source/z/${_pkgname}/${_pkgname}-$pkgver.tar.gz)
+makedepends=('python-distribute' 'pypy-zope-interface')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 
 package() {
-  cd $srcdir/${_pkgname}-$pkgver
+  cd $srcdir/${_pyname}-$pkgver
   python setup.py install --root=$srcdir/pkg --prefix=/usr
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
-md5sums=('3bcaf8b8512a99649ecf2f158c11d05b')
+md5sums=('2d102d9c22a81be04d9de7548c23b2a2')
