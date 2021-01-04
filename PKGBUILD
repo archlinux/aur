@@ -1,10 +1,10 @@
-# Maintainer: Michael Duell <mail _at_ akurei _._ me>
+# Maintainer: Michael Duell <dev _at_ akurei _._ me>
 # Contributor: Jian Zeng <anonymousknight96 at gmail dot com>
 
 pkgname=python-telegram-send
 _name=telegram-send
 pkgver=0.25
-pkgrel=1
+pkgrel=2
 pkgdesc="Send messages and files over Telegram from the command-line."
 arch=(any)
 url='https://github.com/rahiel/telegram-send'

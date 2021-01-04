@@ -1,7 +1,7 @@
 pkgbase = python-telegram-send
 	pkgdesc = Send messages and files over Telegram from the command-line.
 	pkgver = 0.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rahiel/telegram-send
 	arch = any
 	license = GPLv3
