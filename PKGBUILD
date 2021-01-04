@@ -1,7 +1,7 @@
 # Maintainer:  Andy Mender <andymenderunix@gmail.com>
 # Contributor: Andy Mender <andymenderunix@gmail.com>
 pkgname="nuklear-git"
-pkgver=r1855.daecaaa
+pkgver=r1857.4a74982
 pkgrel=1
 pkgdesc="A header-only, immediate-mode GUI toolkit written in ANSI C"
 arch=('any')

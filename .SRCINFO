@@ -1,6 +1,6 @@
 pkgbase = nuklear-git
 	pkgdesc = A header-only, immediate-mode GUI toolkit written in ANSI C
-	pkgver = r1855.daecaaa
+	pkgver = r1857.4a74982
 	pkgrel = 1
 	url = https://github.com/Immediate-Mode-UI/Nuklear
 	arch = any
