@@ -124,9 +124,11 @@ package() {
   echo "Unpacking the downloaded archives..."
   #Unpack archives
   if [ $INC_DATA_FILES == "TRUE" ]; then
+    echo "Download data flag set. Extracting downloaded data to package."
     unzip -q "${srcdir}/data.zip" -d "${pkgdir}/${DEST_DIR}/${DATA_DIR}"
   else
-    echo "Include data flag not set. Skipping data extraction."
+    echo "Download data flag not set. Copying pre-existing data to package."
+    cp -R "/$DEST_DIR/$DATA_DIR" "${pkgdir}/${DEST_DIR}/${DATA_DIR}"
   fi
   unzip -q "${srcdir}/engine.zip" -d "${pkgdir}/${DEST_DIR}/${ENGINE_DIR}"
   echo "Done."
