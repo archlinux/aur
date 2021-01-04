@@ -16,7 +16,7 @@ conflicts=(murmur murmur-git murmur-ice)
 options=("!strip")
 backup=("etc/murmur.ini")
 install="murmur.install"
-source=(https://mumble.info/snapshot/stable/murmur-static_x86-${pkgver}.tar.bz2{,.sig}
+source=(https://dl.mumble.info/stable/murmur-static_x86-${pkgver}.tar.bz2{,.sig}
         "murmur.service"
         "murmur.sysusers"
         "murmurd.1")
