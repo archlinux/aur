@@ -1,7 +1,7 @@
 pkgbase = panda3d
 	pkgdesc = A 3D game engine with Python bindings. SDK package. Optional dependencies you want to support need to be installed before panda3d.
 	pkgver = 1.10.8
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.panda3d.org
 	install = panda3d.install
 	arch = i686
@@ -30,7 +30,7 @@ pkgbase = panda3d
 	optdepends = libjpeg: JPEG image format support
 	optdepends = python: Python 3 bindings
 	optdepends = ffmpeg: Required to load and play video textures
-	optdepends = ode-compat: Support for the ODE physics engine (AUR)
+	optdepends = ode: Support for the ODE physics engine
 	optdepends = libxxf86dga: Relative mouse mode (AUR)
 	optdepends = bullet: Support for the Bullet physics engine
 	optdepends = opusfile: Support for manipulating opus audio files
