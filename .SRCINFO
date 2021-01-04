@@ -1,0 +1,19 @@
+pkgbase = ibm650-git
+	pkgdesc = Emulator for the IBM Type 650 computer
+	pkgver = r35.3ab08db
+	pkgrel = 1
+	url = https://github.com/snick-a-doo/IBM650
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = boost
+	depends = boost-libs
+	depends = gtkmm3
+	provides = ibm650
+	conflicts = ibm650
+	source = ibm650::git+https://github.com/snick-a-doo/IBM650.git
+	md5sums = SKIP
+
+pkgname = ibm650-git
+
