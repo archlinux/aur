@@ -1,0 +1,21 @@
+pkgbase = lib32-flac-git
+	pkgdesc = Free Lossless Audio Codec (32-bit)
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = https://xiph.org/flac/
+	arch = x86_64
+	license = BSD
+	license = GPL
+	makedepends = nasm
+	depends = lib32-gcc-libs
+	depends = lib32-libogg
+	depends = flac
+	source = git://github.com/xiph/flac.git
+	sha256sums = SKIP
+
+pkgname = lib32-flac-git
+	provides = lib32-flac
+	provides = libFLAC.so
+	provides = libFLAC++.so
+	conflicts = lib32-flac
+
