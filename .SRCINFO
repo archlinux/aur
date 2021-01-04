@@ -1,0 +1,20 @@
+pkgbase = sandpolis-server-git
+	pkgdesc = Sandpolis server
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = https://github.com/sandpolis/sandpolis
+	install = sandpolis-server.install
+	arch = any
+	license = Mozilla Public License Version 2.0
+	makedepends = java-environment>=15
+	makedepends = git
+	depends = java-runtime>=15
+	provides = sandpolis-server
+	conflicts = sandpolis-server
+	source = git+https://github.com/sandpolis/sandpolis.git
+	source = git+https://github.com/sandpolis/com.sandpolis.server.vanilla.git
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = sandpolis-server-git
+

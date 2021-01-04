@@ -1,0 +1,11 @@
+post_install() {
+	echo "Creating 'sandpolis' user account"
+	useradd -M -s /bin/false sandpolis
+	chown -R sandpolis /var/lib/sandpolis-server
+	chown -R sandpolis /var/log/sandpolis-server
+	chown -R sandpolis /usr/share/java/sandpolis-server
+}
+
+post_remove() {
+	userdel sandpolis
+}
