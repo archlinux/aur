@@ -1,6 +1,7 @@
-# Maintainer: axionl <axionl@aosc.io>
+# Maintainer: Hsiu-Ming Chang <cges30901@gmail.com>
+# Contributor: axionl <axionl@aosc.io>
 pkgname=baidupcs-go-git
-pkgver=3.6.2.r3.ga829eef
+pkgver=3.7.1.r3.ga0a694b
 pkgrel=1
 pkgdesc="The terminal utility for Baidu Network Disk (Golang Version)."
 arch=('x86_64')
@@ -8,10 +9,10 @@ depends=('glibc')
 makedepends=('git' 'go-pie')
 conflicts=("baidupcs")
 provides=("baidupcs")
-url="https://github.com/iikira/BaiduPCS-Go"
+url="https://github.com/qjfoidnh/BaiduPCS-Go"
 license=("Apache")
 
-source=("${pkgname}::git+https://github.com/iikira/BaiduPCS-Go")
+source=("${pkgname}::git+https://github.com/qjfoidnh/BaiduPCS-Go.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -25,7 +26,11 @@ pkgver() {
 
 build() {
     cd "${pkgname}"
-    CGO_ENABLED=0 go build -x -v -ldflags "-extldflags ${LDFLAGS} -X main.Version=${pkgver} -s -w"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    go build -buildmode=pie -trimpath -ldflags "-linkmode external -X main.Version=${pkgver} -s -w"
 }
 
 package() {
