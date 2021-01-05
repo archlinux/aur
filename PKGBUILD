@@ -4,8 +4,8 @@
 
 _pkgname=thermald
 pkgname=thermald-git
-pkgver=v1.4.2.r528.gfe026aa
-pkgrel=2
+pkgver=v2.4.1.r6.g7c2ec23
+pkgrel=1
 pkgdesc="The Linux Thermal Daemon program from 01.org"
 arch=('i686' 'x86_64')
 url="https://github.com/intel/thermal_daemon"
@@ -25,7 +25,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd $_pkgname
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
