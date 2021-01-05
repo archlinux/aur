@@ -1,0 +1,12 @@
+% layout 'android-qt6-module', has_binaries => 1;
+\
+_qtver=6.0.0
+pkgver=${_qtver/-/}
+pkgrel=1
+arch=(any)
+url='https://www.qt.io'
+license=(GPL3 LGPL3 FDL custom)
+pkgdesc='Classes for QML and JavaScript languages (android)'
+depends=(<%== qt6deps qw(base) %>)
+makedepends=('android-cmake<%== $static_suffix %>' 'qt6-declarative' 'ninja' 'python' 'java-environment-openjdk=8')
+optdepends=('qt6-declarative: development tools')
