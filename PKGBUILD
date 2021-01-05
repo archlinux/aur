@@ -1,7 +1,7 @@
 # Maintainer: 1400Blank <1400blank@gmail.com>
 
 pkgbase=linux-fix_navi_reset
-pkgver=5.9.14.arch1
+pkgver=5.10.4.arch2
 pkgrel=1
 pkgdesc='experimental fix for AMD Navi Cards with "Unknown PCI header type 127" by Geoffrey McRae'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -18,7 +18,6 @@ _srcname=archlinux-linux
 source=(
   "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
   config         # the main kernel config file
-  sphinx-workaround.patch
   navi_reset.patch
 )
 validpgpkeys=(
@@ -202,3 +201,6 @@ for _p in "${pkgname[@]}"; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
+sha256sums=('SKIP'
+            '623601ed9d7879dd9dba1cd50fc8051f9db508b49b4fc0c47c5a9eb9165fc04e'
+            '4725968648c12546cbd19f71ab2e37507484316d8f85270ff2741ba8def60da1')
