@@ -1,0 +1,14 @@
+pkgbase = sip6
+	pkgdesc = A tool that makes it easy to create Python bindings for C and C++ libraries
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://www.riverbankcomputing.com/software/sip/intro
+	arch = x86_64
+	license = custom:"sip"
+	depends = python-setuptools
+	depends = python-toml
+	source = https://pypi.python.org/packages/source/s/sip/sip-6.0.0.tar.gz
+	sha256sums = 6185160e1aa8e167b5919c4761cbbf68cc7478d34fb655b3a28b3eb9acb5943a
+
+pkgname = sip6
+
