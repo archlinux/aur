@@ -1,6 +1,6 @@
 pkgbase = libretro-cannonball-git
 	pkgdesc = libretro version of Cannonball - An Enhanced OutRun Engine
-	pkgver = 354.5dcef18
+	pkgver = 361.749489c
 	pkgrel = 1
 	url = https://github.com/libretro/cannonball
 	arch = i686
@@ -19,8 +19,6 @@ pkgbase = libretro-cannonball-git
 	depends = mesa
 	depends = sdl
 	source = git+https://github.com/libretro/cannonball.git
-	source = https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/cannonball_libretro.info
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = libretro-cannonball-git

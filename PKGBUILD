@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-cannonball-git
-pkgver=354.5dcef18
+pkgver=361.749489c
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 pkgdesc="libretro version of Cannonball - An Enhanced OutRun Engine"
@@ -13,10 +13,8 @@ makedepends=('git' 'boost-libs')
 
 _libname=cannonball_libretro
 _gitname=cannonball
-source=("git+https://github.com/libretro/${_gitname}.git"
-	"https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/${_libname}.info")
-sha256sums=('SKIP'
-	'SKIP')
+source=("git+https://github.com/libretro/${_gitname}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}"
@@ -30,7 +28,6 @@ build() {
 
 package() {
   install -Dm644 ""${_gitname}"/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
-  install -Dm644 "${_libname}.info" "${pkgdir}/usr/share/libretro/info/${_libname}.info"
   msg2 "\e[1;32mPlease have a look at https://github.com/djyt/cannonball/blob/master/roms/roms.txt"
   msg2 "\e[1;32mto find out which roms are needed."
   msg2 "\e[1;32mAlso, create a file 'outrun.game' somewhere (ie in your roms directory) and"
