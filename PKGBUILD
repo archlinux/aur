@@ -18,7 +18,7 @@ sha512sums=('SKIP')
 #validpgpkeys=('F04DF50737AC1A884C4B3D718380596DA6E59C91') # ALSA Release Team (Package Signing Key v1) <release@alsa-project.org>
 
 prepare() {
-  cd "${_name}-$pkgver"
+  cd ${_name}
   autoreconf -vfi
 }
 
