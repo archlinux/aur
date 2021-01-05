@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=ytmdesktop
 pkgver=1.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
 url="https://ytmdesktop.app"
 license=('CC0 1.0 Universal')
-depends=('electron')
+depends=('electron10')
 makedepends=('npm')
 optdepends=('libnotify: for desktop notifications'
             'libappindicator-gtk3: for tray icon'
