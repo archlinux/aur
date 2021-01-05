@@ -43,4 +43,9 @@ package() {
   make DESTDIR="$pkgdir/" install
   cd "$srcdir"/kde2-kde${_module}
   install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
+
+  rm -f "${pkgdir}"/usr/share/icons/hicolor/48x48/apps/gimp.png
+  rm -f "${pkgdir}"/usr/share/icons/hicolor/32x32/apps/gimp.png
+  rm -f "${pkgdir}"/usr/share/icons/hicolor/16x16/apps/gimp.png
+  rm -f "${pkgdir}"/usr/share/icons/hicolor/48x48/apps/gvim.png
 }
