@@ -1,6 +1,6 @@
 pkgbase = silos
 	pkgdesc = Web-app container, with multimedia apps (YouTube, Netflix, Twitch, VVVVID, and RaiPlay), productivity suites (Microsoft Office 365, Skype, Google Office, Trello, and Gmail), and others (WhatsApp web and Wikipedia)
-	pkgver = 0.1.53
+	pkgver = 0.1.54
 	pkgrel = 1
 	url = https://github.com/intersimone999/pyqtws
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = silos
 	optdepends = silo-whatsapp: Silo app for WhatsApp
 	optdepends = silo-wikipedia: Silo app for Wikipedia
 	optdepends = silo-youtube: Silo app for YouTube
-	source = git+https://github.com/intersimone999/pyqtws.git#tag=0.1.53
+	source = git+https://github.com/intersimone999/pyqtws.git#tag=0.1.54
 	sha256sums = SKIP
 
 pkgname = silos
