@@ -1,6 +1,6 @@
 pkgbase = perl-clipboard
 	pkgdesc = Perl clipboard module
-	pkgver = 0.24
+	pkgver = 0.26
 	pkgrel = 1
 	url = https://metacpan.org/release/Clipboard
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = perl-clipboard
 	depends = perl-uri
 	depends = xclip
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Clipboard-0.24.tar.gz
-	md5sums = 665a4b11c8aebe1fcbca4c2d5712ba9d
+	source = http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Clipboard-0.26.tar.gz
+	md5sums = 0395d3efdfcfb9d6dc9067fb7d2d161f
 
 pkgname = perl-clipboard
 
