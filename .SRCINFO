@@ -1,6 +1,6 @@
 pkgbase = upaste
 	pkgdesc = Paste and upload files on x0.at
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/eoli3n/upaste
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = upaste
 	optdepends = xclip: Command line interface to the X11 clipboard
 	source = up
 	source = UNLICENSE
-	sha256sums = 4775536bcc695a19e1559fbed27479a309d062cae8f1cd3fd125fb8ed1eec012
+	sha256sums = ed78a5f4a4c0f78be67c71c725f842aff57b68e77f60e24ba51e6131e513c765
 	sha256sums = 6b0382b16279f26ff69014300541967a356a666eb0b91b422f6862f6b7dad17e
 
 pkgname = upaste

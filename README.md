@@ -19,5 +19,5 @@ C-d C-d
 ```
 Options :  
     -h    Print this usage  
-    -a    Disable autocopy in clipboard  
+    -a    Enable autocopy in clipboard  
     -t    Set extension, without dot

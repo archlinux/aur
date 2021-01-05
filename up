@@ -4,7 +4,7 @@
 
 # Vars
 
-autocopy=1
+autocopy=0
 
 # Functions
 
@@ -29,7 +29,7 @@ C-d C-d
 
 Options :
     -h    Print this usage
-    -a    Disable autocopy in clipboard
+    -a    Enable autocopy in clipboard
     -t    Set extension, without dot
 EOF
 }
@@ -68,14 +68,21 @@ autocopy () {
   # If xorg or wayland is running
   if [ -n "$DISPLAY" ]
   then
-    # If xclip is installed
-    if which xclip >/dev/null 2>&1
+    if [ "$XDG_SESSION_TYPE" = "x11" ]
     then
-      xclip "$1"
-    # Else if wl-clipboard is installed
-    elif which wl-copy >/dev/null 2>&1
+      # If xclip is installed
+      if which xclip >/dev/null 2>&1
+      then
+        echo "$1" | xclip
+      fi
+    fi
+    if [ "$XDG_SESSION_TYPE" = "wayland" ]
     then
-      wl-copy -p "$1"
+      # Else if wl-clipboard is installed
+      if which wl-copy >/dev/null 2>&1
+      then
+        wl-copy -p "$1"
+      fi
     fi
   fi
 }
@@ -139,7 +146,7 @@ while getopts "hat:" arg
 do
   case $arg in
     a)
-      autocopy=0
+      autocopy=1
       ;;
     h)
       usage
