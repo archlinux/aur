@@ -3,7 +3,7 @@
 # Github Contributor: Michael Herold <https://github.com/michaelherold>
 
 pkgname=heroku-cli
-pkgver=7.47.6
+pkgver=7.47.7
 pkgrel=1
 _builddir=cli-$pkgver-$pkgrel
 pkgdesc="CLI to manage Heroku apps and services with forced auto-update removed"
@@ -11,12 +11,22 @@ arch=('any')
 url="https://devcenter.heroku.com/articles/heroku-cli"
 license=('custom' 'ISC')
 depends=('nodejs')
-makedepends=('npm' 'perl')
+# the heroku-cli upstream maintainers live in their own little bubble, so this
+# package now requires both npm and yarn to actually complete the build process.
+#
+# If you need to stick to `npm` the `heroku-cli-bin` works with either/both
+# `npm` and `yarn`, and the package is built through the exact same process,
+# with the exception that it's pre-compiled using my machine before I release
+# it (hence the `-bin` suffix)
+#
+# I have tried every option I can think of to get it to build correctly with
+# pure `npm`; if you have a suggestion I'm all ears
+makedepends=('npm' 'yarn' 'perl')
 optdepends=('git: Deploying to Heroku')
 conflicts=('heroku-cli-bin' 'heroku-client-standalone' 'heroku-toolbelt' 'ruby-heroku')
 source=("https://github.com/heroku/cli/archive/v$pkgver.tar.gz")
-sha256sums=('7892f3670771b86be2520b7cc2f4bc6ed3b027a3e05f770e0916d5a1497894ab')
-sha512sums=('81661b10491bf1571c1c1b6be973e9fbc45d91b7956cfe7ceadc27ad9d7a55c7bdc05ec97f4ec5cab0d9841108bcef4fb36b00c84d5a372a38f5f0a910f563a9')
+sha256sums=('1d6dfe8c86d7c264b7eab607d77d62c3f29bed24c6b7b08808debed2d77d4bf1')
+sha512sums=('7953df70a2327c675823de3605f8e95e9eb9fc4c7bdb4f01b295e402ea5f7ed5a4f816f1d0e5305f756159637bcba520a28899e3310b208d9283896bb0fb1eec')
 options=('!strip')
 provides=('heroku' 'heroku-cli')
 
@@ -45,7 +55,7 @@ prepare() {
     pushd "cli-$pkgver"
 
       # install packaging tools
-      npm install
+      yarn
 
       pushd packages/cli
 
