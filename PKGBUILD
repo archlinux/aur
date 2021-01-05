@@ -25,7 +25,9 @@ build() {
   cd alsa-lib
   ./configure --prefix=/usr \
               --without-debug \
-	      --disable-debug
+	      --disable-debug \
+	      --without-versioned \
+	      --enable-symbolic-functions
   make
 }
 
