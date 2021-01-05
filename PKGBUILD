@@ -2,14 +2,14 @@
 
 pkgname=libtas-git
 pkgdesc="Tool-assisted speedrunning utility for Linux-native binaries"
-pkgver=1.4.1.r0.a7bc36b
+pkgver=1.4.1.r9.ac432d4
 pkgrel=1
 epoch=1
 arch=('x86_64')
 url="https://github.com/clementgallet/libTAS"
 license=('GPL3')
-depends=('alsa-lib' 'fontconfig' 'freetype2' 'hicolor-icon-theme'
-         'qt5-base' 'xcb-util-cursor' 'zlib')
+depends=('alsa-lib' 'fontconfig' 'ffmpeg' 'freetype2' 'hicolor-icon-theme'
+         'qt5-base' 'sdl2' 'xcb-util-cursor' 'zlib')
 makedepends=('git')
 optdepends=('lib32-libtas-git: for 32-bit games support')
 conflicts=('libtas')
