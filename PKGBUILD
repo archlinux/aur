@@ -1,6 +1,6 @@
 # Maintainer: Zacharias Knudsen <zachasme@gmail.com>
 pkgname=h3-git
-pkgver=v3.3.0.r0.g6af4914
+pkgver=v3.7.1.r14.g29e353f
 pkgrel=1
 pkgdesc="Hexagonal hierarchical geospatial indexing system"
 arch=('x86_64')
@@ -13,22 +13,25 @@ source=("$pkgname::git+https://github.com/uber/h3.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd "${pkgname}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd $pkgname
-	cmake -DBUILD_SHARED_LIBS=1 -DCMAKE_INSTALL_PREFIX:PATH=/usr .
-    make
+	cmake -B "build" -S "${pkgname}" \
+		-DBUILD_SHARED_LIBS=1 \
+		-Wno-dev
+	cmake --build "build"
 }
 
 check() {
-	cd $pkgname
-	make test
+	cmake --build "build" --target test 
 }
 
 package() {
-	cd $pkgname
-	make DESTDIR="$pkgdir" install
+	DESTDIR="${pkgdir}" cmake --install "build" --prefix "/usr"
+
+	install -D --mode 644 \
+    "${pkgname}/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

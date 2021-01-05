@@ -1,6 +1,6 @@
 pkgbase = h3-git
 	pkgdesc = Hexagonal hierarchical geospatial indexing system
-	pkgver = v3.3.0.r0.g6af4914
+	pkgver = v3.7.1.r14.g29e353f
 	pkgrel = 1
 	url = https://github.com/uber/h3
 	arch = x86_64
