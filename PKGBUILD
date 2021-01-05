@@ -1,6 +1,6 @@
 pkgname=mingw-w64-glslang
-pkgver=8.13.3743
-pkgrel=2
+pkgver=11.1.0
+pkgrel=1
 pkgdesc='OpenGL and OpenGL ES shader front end and validator (mingw-w64)'
 arch=('any')
 url='https://github.com/KhronosGroup/glslang'
@@ -10,14 +10,12 @@ makedepends=('mingw-w64-cmake' 'python')
 optdepends=('mingw-w64-wine: runtime support')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(https://github.com/KhronosGroup/glslang/archive/${pkgver}.tar.gz wine-glslangValidator.sh)
-sha256sums=('639ebec56f1a7402f2fa094469a5ddea1eceecfaf2e9efe361376a0f73a7ee2f' SKIP)
+sha256sums=('a47f1f9ed17a1f53a074fef20787110ef49522c6de68b218db68d04a81d649c5' SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd glslang-$pkgver
-  # error: conflicting declaration of ‘int sprintf_s
-  sed -i "s|MINGW_HAS_SECURE_API|NO_MINGW|g" glslang/Include/Common.h
 }
 
 build() {
