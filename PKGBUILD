@@ -13,6 +13,7 @@ depends=(kde2-kdelibs xorg-iceauth)
 makedepends=(cmake git)
 provides=(kde2-kde${_module})
 conflicts=(kde2-kde${_module})
+options+=(libtool)
 
 # Mirror
 source=("git+https://github.com/sandsmark/kde2-kde${_module}.git")
