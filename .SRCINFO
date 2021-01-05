@@ -1,7 +1,7 @@
 pkgbase = eiquadprog
 	pkgdesc = Quadratic Programing solver with eigen
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stack-of-tasks/eiquadprog
 	arch = any
 	license = LGPL

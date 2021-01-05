@@ -1,10 +1,10 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
 pkgorg='stack-of-tasks'
-_pkgname=eiquadprog
-pkgname=(${_pkgname} ${_pkgname}-docs)
+_pkgname='eiquadprog'
+pkgname=("${_pkgname}" "${_pkgname}-docs")
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Quadratic Programing solver with eigen"
 arch=('any')
 url="https://github.com/${pkgorg}/${_pkgname}"
@@ -38,6 +38,6 @@ package_eiquadprog() {
 package_eiquadprog-docs() {
     cd "${_pkgname}-${pkgver}"
     make DESTDIR="${pkgdir}/" install
-    rm -rf ${pkgdir}/usr/{lib,include}
+    rm -rf ${pkgdir}/usr/{lib,include,"share/$_pkgname"}
     install -Dm644 COPYING.LESSER "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
