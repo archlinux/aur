@@ -1,6 +1,6 @@
 pkgbase = masterpdfeditor-libs-included
 	pkgdesc = A complete solution for creation and editing PDF files (with libs and qt5 included)
-	pkgver = 5.6.49
+	pkgver = 5.6.80
 	pkgrel = 1
 	url = https://code-industry.net/free-pdf-editor/
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = masterpdfeditor-libs-included
 	depends = nss
 	depends = sane
 	provides = masterpdfeditor
-	source = https://code-industry.net/public/master-pdf-editor-5.6.49-qt5_included.x86_64.rpm
-	sha256sums = 46878fb7e85981a8f896e5bc20e5ca51e97bd54670d20910a120c3aaca36c9df
+	source = https://code-industry.net/public/master-pdf-editor-5.6.80-qt5_included.x86_64.rpm
+	sha256sums = 7d8a3a57538b1363eb934d4e2308289ab560f38b44f273634fa50cbed28ed571
 
 pkgname = masterpdfeditor-libs-included
 

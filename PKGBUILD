@@ -1,6 +1,6 @@
 pkgname=masterpdfeditor-libs-included
 pkgname_=masterpdfeditor
-pkgver=5.6.49
+pkgver=5.6.80
 pkgrel=1
 pkgdesc='A complete solution for creation and editing PDF files (with libs and qt5 included)'
 url='https://code-industry.net/free-pdf-editor/'
@@ -10,7 +10,7 @@ license=('custom')
 makedepends=('patchelf')
 depends=('gcc-libs' 'glibc' 'libgl' 'nspr' 'nss' 'sane')
 source=("https://code-industry.net/public/master-pdf-editor-${pkgver}-qt5_included.x86_64.rpm")
-sha256sums=('46878fb7e85981a8f896e5bc20e5ca51e97bd54670d20910a120c3aaca36c9df')
+sha256sums=('7d8a3a57538b1363eb934d4e2308289ab560f38b44f273634fa50cbed28ed571')
 
 package() {
   install -d "$pkgdir"{/usr/bin/,/usr/share/}
