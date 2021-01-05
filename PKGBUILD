@@ -1,8 +1,8 @@
 # Maintainer  : Chris Billington <chrisjbillington@gmail.com>
 pkgname=python-numexpr-mkl-bin
 _pkgname=numexpr
-_pkgver=2.7.1
-_build=py39h63df603_0
+_pkgver=2.7.2
+_build=py39hb2eb853_0
 _build_number=0
 pkgver="${_pkgver}.${_build_number}.${_build//_/.}"
 pkgrel=3
@@ -14,7 +14,7 @@ provides=('python-numexpr')
 conflicts=('python-numexpr')
 depends=('python-mkl-service' 'python-numpy')
 source=("https://repo.anaconda.com/pkgs/main/linux-64/${_pkgname}-${_pkgver}-${_build}.tar.bz2")
-sha256sums=('79bbb867341757f7bd3786c689f631a013e91204529957d7376d43e82fe6f0ad')
+sha256sums=('3fe65eaeb520756895d5a10b157c743fcf13c4d40e1555cccb4270be904ac703')
 
 package() {
   mkdir "${pkgdir}/usr"
