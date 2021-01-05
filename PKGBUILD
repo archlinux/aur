@@ -1,59 +1,65 @@
 # Maintainer: Groctel <aur@taxorubio.com>
-pkgname=manimce
-pkgver=0.1.1
+pkgname=manim-community
+_name=manim
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Animation engine for explanatory math videos (community edition)."
 arch=('any')
 url="https://github.com/ManimCommunity/manim/"
 license=('MIT' 'custom')
 depends=(
+	'python'
 	'cairo'
 	'ffmpeg'
 	'python'
+	'python-black'
 	'python-cairo'
-	'python-cairocffi'
 	'python-colour'
+	'python-grpcio'
+	'python-guzzle-sphinx-theme'
+	'python-matplotlib'
+	'python-networkx'
 	'python-numpy'
 	'python-pillow'
-	# 'python-progressbar' Doesn't work, must be installed with pip
 	'python-pygments'
+	'python-pylint'
+	'python-pytest'
+	'python-recommonmark'
 	'python-rich'
 	'python-scipy'
 	'python-tqdm'
 	'python-watchdog'
+
+	# Aur dependencies
+	'python-grpcio-tools'
+	'python-manimpango'
+	'python-pydub'
 )
 makedepends=(
-	'python-pip'
-	'python-wheel'
+	'sed'
 )
 optdepends=(
 	'texlive-most: latex support'
 )
-provides=()
 conflicts=('python-manimlib')
-source=("https://github.com/ManimCommunity/manim/releases/download/v$pkgver/manimce-$pkgver.tar.gz")
-sha256sums=('9660f1bf2a9696e6b4c5313ffb4b223f66468df5ab554bc605ff42ce1076b9b2')
+provides=()
+source=("https://github.com/ManimCommunity/$_name/releases/download/v$pkgver/$_name-$pkgver.tar.gz")
+sha256sums=('01925f8550b5dd96275259e1943a12216d18f851202aa88abde16d660148638f')
 
 prepare() {
-	pip install pip --upgrade
-	pip install --no-cache --force \
-		grpcio \
-		grpcio-tools \
-		pangocffi==0.8.0 \
-		pangocairocffi \
-		progressbar \
-		pydub \
-		rich==6.0
+	cd "$srcdir/$_name-$pkgver"
+	sed -i "/'progressbar',/d" setup.py
+	sed -i 's/rich>=6.0,<7.0/rich/' setup.py
 }
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$_name-$pkgver"
 	python setup.py build
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$_name-$pkgver"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -D -m644 LICENSE.community "$pkgdir/usr/share/licenses/$pkgname/LICENSE.community"
+	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_name/LICENSE"
+	install -D -m644 LICENSE.community "$pkgdir/usr/share/licenses/$_name/LICENSE.community"
 }
