@@ -18,8 +18,7 @@ conflicts=(dwm)
 
 pkgver() {
 	cd dwm
-	_pkgver=$(awk '/VERSION/ {print $3}' config.mk|head -1)
-	echo "${_pkgver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	echo "$(awk '/^VERSION =/ {print $3}' config.mk)".r"$(git rev-list --count HEAD)"."$(git rev-parse --short HEAD)"
 }
 
 prepare() {
