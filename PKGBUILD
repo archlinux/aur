@@ -2,7 +2,7 @@
 
 pkgname=fish-nvm-git
 _reponame=nvm.fish
-pkgver=2.0.1.r0.ge8229c5
+pkgver=2.1.0.r0.gabea3e7
 pkgrel=1
 pkgdesc="Node.js version manager lovingly made for Fish (master branch)"
 arch=('x86_64')
