@@ -4,7 +4,7 @@
 pkgbase=gridcoinresearch
 pkgname=(gridcoinresearch-qt gridcoinresearchd)
 pkgver=5.1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network"
 makedepends=('boost' 'qt5-charts' 'qt5-tools' 'qrencode')
 depends=('db' 'libzip')
@@ -36,7 +36,7 @@ build() {
 
 package_gridcoinresearch-qt() {
   pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network (Qt GUI)"
-  depends=('boost-libs' 'miniupnpc' 'qrencode' 'qt5-base' 'qt5-charts')
+  depends=('boost-libs' 'miniupnpc' 'qrencode' 'qt5-base' 'qt5-charts' 'qt-svg')
   optdepends=('boinc: to earn Gridcoin rewards by doing computational research')
 
   cd "$srcdir/$_sourcename"
