@@ -1,7 +1,7 @@
 pkgbase = python-parallelencode
 	pkgdesc = A python framework to split and encode videos in parallel
-	pkgver = 0.1.4
-	pkgrel = 2
+	pkgver = 0.1.12
+	pkgrel = 1
 	url = https://github.com/parallelencode/PyParallelEncode
 	arch = any
 	license = GPL3
@@ -19,8 +19,8 @@ pkgbase = python-parallelencode
 	optdepends = aom
 	optdepends = x264
 	optdepends = x265
-	source = https://files.pythonhosted.org/packages/source/p/parallelencode/parallelencode-0.1.4.tar.gz
-	sha256sums = c4e3c7dddebeabd3752659ee3e4dd503040b7c5dfcb842146de55cd494caf508
+	source = https://files.pythonhosted.org/packages/source/p/parallelencode/parallelencode-0.1.12.tar.gz
+	sha256sums = af2db851f9ccb36452e1b1cfddf4dc68926fec3bcc3f355a2efdbdc1500ee964
 
 pkgname = python-parallelencode
 

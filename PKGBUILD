@@ -2,8 +2,8 @@
 
 pkgname=python-parallelencode
 _name="${pkgname#python-}"
-pkgver=0.1.4
-pkgrel=2
+pkgver=0.1.12
+pkgrel=1
 pkgdesc='A python framework to split and encode videos in parallel'
 url='https://github.com/parallelencode/PyParallelEncode'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=('vmaf: Target vmaf support',
 'x265: h265/HEVC output support',
 )
 
-sha256sums=('c4e3c7dddebeabd3752659ee3e4dd503040b7c5dfcb842146de55cd494caf508')
+sha256sums=('af2db851f9ccb36452e1b1cfddf4dc68926fec3bcc3f355a2efdbdc1500ee964')
 
 build() {
 	cd "$_name-$pkgver"
