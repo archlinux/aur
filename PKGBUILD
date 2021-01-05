@@ -3,9 +3,9 @@
 _intelid=30059
 pkgname=intel-mas-cli-tool
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel Memory and Storage Tool (MAS) supports firmware upgrades and 4Kn sector size changes for PCIe/NVMe/SATA flash/Optane SSDs"
-arch=(any)
+arch=(x86_64)
 url="https://downloadcenter.intel.com/download/${_intelid}"
 license=()
 makedepends=('libarchive')
