@@ -1,6 +1,6 @@
 pkgbase = owon-vds-tiny
 	pkgdesc = OWON VDS1022(I)/VDS2052 oscilloscope application
-	pkgver = 1.0.30.cf10
+	pkgver = 1.0.33.cf11
 	pkgrel = 1
 	url = https://github.com/ceres-c/OWON-VDS1022
 	install = owon-vds-tiny.install
@@ -11,7 +11,7 @@ pkgbase = owon-vds-tiny
 	depends = libusb-compat
 	depends = java-runtime>=8
 	provides = owon-vds-tiny
-	source = owon-vds-tiny-1.0.30.cf10.tar.gz::https://codeload.github.com/ceres-c/owon-vds-tiny/tar.gz/1.0.30.cf10
+	source = git+https://github.com/ceres-c/OWON-VDS1022.git
 	source = owon-vds-tiny
 	source = 70-owon-vds-tiny.rules
 	source = owon-vds-tiny.desktop
