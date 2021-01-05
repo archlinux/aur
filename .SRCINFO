@@ -1,0 +1,22 @@
+pkgbase = opencl-amd-polaris
+	pkgdesc = OpenCL userspace driver as provided in the amdgpu-pro driver stack. This package is intended to work along with the free amdgpu stack. Last known working version for Polaris GPUs.
+	pkgver = 19.50.967956
+	pkgrel = 1
+	url = http://www.amd.com
+	arch = x86_64
+	license = custom:AMD
+	makedepends = wget
+	depends = libdrm
+	depends = ocl-icd
+	depends = gcc-libs
+	provides = opencl-driver
+	provides = opencl-amdgpu-pro-orca=19.50.967956
+	conflicts = amdgpocl
+	conflicts = opencl-amdgpu-pro-orca
+	conflicts = rocm-opencl-runtime
+	conflicts = opencl-amd
+	source = https://drivers.amd.com/drivers/linux/19.50/amdgpu-pro-19.50-967956-ubuntu-18.04.tar.xz
+	sha256sums = d8bb480c72b4225ad864c60335d33254ce7d442590e8dd9c05659cc868b7be2f
+
+pkgname = opencl-amd-polaris
+
