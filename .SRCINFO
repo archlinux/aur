@@ -1,20 +1,15 @@
 pkgbase = python-ratelimiter
 	pkgdesc = Simple Python module providing rate limiting
 	pkgver = 1.2.0.post0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RazerM/ratelimiter
 	arch = any
 	license = Apache
-	checkdepends = python2-pytest>=3.0
 	checkdepends = python-pytest>=3.0
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	depends = python
 	source = ratelimiter-1.2.0.post0.tar.gz::https://github.com/RazerM/ratelimiter/archive/1.2.0.post0.tar.gz
 	sha256sums = b8dbff5bdfd922126f20cd513473cfd0d61b017cd354cb641a3d50b62897eca9
 
 pkgname = python-ratelimiter
-	depends = python
-
-pkgname = python2-ratelimiter
-	depends = python2
 
