@@ -1,7 +1,7 @@
 # Maintainer: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='tablet-mode'
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc='Tools to toggle a convertible laptop between laptop and tablet mode'
 arch=('any')
