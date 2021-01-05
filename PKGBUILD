@@ -2,7 +2,7 @@
 # Contributor: Jonathan Knapp <jaknapp8+aur@gmail.com>
 
 pkgname=termshark
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A terminal UI for tshark, inspired by Wireshark"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('wireshark-cli')
 makedepends=('git' 'go')
 provides=('termshark')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gcla/termshark/archive/v${pkgver}.tar.gz")
-sha256sums=('c02a21e0a61b791b1287b85acc33834ccd3bb4efb40be52e5a74d2b989d51416')
+sha256sums=('deefdb0b65e5d5b97c305cf280770724542f8dd122502f616e394c62c91db0c4')
 
 prepare(){
 	cd "$pkgname-$pkgver"
