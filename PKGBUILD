@@ -2,17 +2,19 @@
 
 _module=libs
 pkgname=kde2-kde${_module}-git
-pkgver=2.2.2.r23846.c22d02e13
+pkgver=2.2.2.r23932.3d11ab03a
 pkgrel=1
 pkgdesc="Historical copy of the $_module module of KDE 2, adapted to compile on modern systems"
 arch=(i686 x86_64)
 url="https://github.com/sandsmark/kde${_module}"
 license=("GPL2")
 groups=(kde2)
-depends=(qt2-git)
+depends=(qt2 audiofile libxslt python libtool hicolor-icon-theme)
+optdepends=('java: Java support')
 makedepends=(cmake git)
 provides=(kde2-kde${_module})
 conflicts=(kde2-kde${_module})
+options+=(libtool)
 
 # Mirror
 source=("git+https://github.com/sandsmark/kde${_module}.git")

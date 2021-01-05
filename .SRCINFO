@@ -1,6 +1,6 @@
 pkgbase = kde2-kdelibs-git
 	pkgdesc = Historical copy of the libs module of KDE 2, adapted to compile on modern systems
-	pkgver = 2.2.2.r23846.c22d02e13
+	pkgver = 2.2.2.r23932.3d11ab03a
 	pkgrel = 1
 	url = https://github.com/sandsmark/kdelibs
 	arch = i686
@@ -9,9 +9,16 @@ pkgbase = kde2-kdelibs-git
 	license = GPL2
 	makedepends = cmake
 	makedepends = git
-	depends = qt2-git
+	depends = qt2
+	depends = audiofile
+	depends = libxslt
+	depends = python
+	depends = libtool
+	depends = hicolor-icon-theme
+	optdepends = java: Java support
 	provides = kde2-kdelibs
 	conflicts = kde2-kdelibs
+	options = libtool
 	source = git+https://github.com/sandsmark/kdelibs.git
 	md5sums = SKIP
 
