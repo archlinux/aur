@@ -11,7 +11,6 @@ license=('GPL2')
 depends=('dkms' 'bc' 'linux-lts-headers')
 makedepends=('git' 'bc' 'linux-lts-headers')
 conflicts=("${_pkgbase}")
-# 'dkms.conf'
 source=("git+https://github.com/tomaspinho/rtl8821ce.git")
 sha256sums=('SKIP')
 
@@ -24,7 +23,6 @@ package() {
   cd ${srcdir}/rtl8821ce
   mkdir -p ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
   cp -pr * ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
-  #cp ${srcdir}/dkms.conf ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
   # Set name and version
   sed -e "s/@_PKGBASE@/${_pkgbase}-dkms/" \
     -e "s/@PKGVER@/${pkgver}/" \
