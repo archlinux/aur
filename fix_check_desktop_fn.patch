@@ -1,0 +1,21 @@
+diff -Naur ./xfce4-panel-profiles-1.0.12.orig/xfce4-panel-profiles/panelconfig.py ./xfce4-panel-profiles-1.0.12/xfce4-panel-profiles/panelconfig.py
+--- ./xfce4-panel-profiles-1.0.12.orig/xfce4-panel-profiles/panelconfig.py	2021-01-04 20:57:26.586270762 -0500
++++ ./xfce4-panel-profiles-1.0.12/xfce4-panel-profiles/panelconfig.py	2021-01-04 20:59:11.042768564 -0500
+@@ -119,12 +119,15 @@
+         self.remove_keys(rem_keys)
+ 
+     def check_desktop(self, path):
+-        if not os.path.isfile(path):
++        try:
++            _bytes = self.get_desktop_source_file(path).read()
++        except FileNotFoundError:
++            # If the .desktop file does not exist at all return False
+             return False
+ 
+         # Check if binary exists
+         keyfile = GLib.KeyFile.new()
+-        decoded = bytes.decode()
++        decoded = _bytes.decode()
+         if keyfile.load_from_data(decoded, len(decoded),
+                                   GLib.KeyFileFlags.NONE):
+             try:
