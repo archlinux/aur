@@ -8,6 +8,9 @@ url=https://github.com/LukeSmithxyz/dwm
 arch=(i686 x86_64)
 license=(MIT)
 depends=(freetype2 libx11 libxft-bgra)
+optdepends=(
+	'dmenu: program launcher'
+	'st: terminal emulator')
 makedepends=(git)
 source=(git://github.com/LukeSmithxyz/dwm)
 sha256sums=('SKIP')
