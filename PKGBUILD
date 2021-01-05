@@ -1,7 +1,7 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=ftl-sdk
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Software Development Kit for Mixer's FTL Protocol"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=("custom:MIT")
 depends=("jansson" "curl")
 makedepends=("cmake" "make")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Scrumplex/ftl-sdk/archive/${pkgver}.tar.gz")
-sha512sums=('c6f58016836955e4345e21126680a98a1626ea8d66f2b3c16136d46e21a6072ee4c2899485436682de13d1d2145502e91f03732057d50bea95b55743d65ce205')
+sha512sums=('d423dec8cf2f5887989d5435410d9cfdee744b6cd6badcbb14b6013a205d9e8b2dbcda04e16cf11978dd5eb5193d99112109872a9462fc5b722c5f01fcd492bd')
 
 
 build() {
