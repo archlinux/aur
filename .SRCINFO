@@ -7,6 +7,7 @@ pkgbase = alsa-lib-minimal-git
 	license = LGPL2.1
 	depends = glibc
 	depends = alsa-topology-conf
+	depends = alsa-ucm-conf
 	provides = alsa-lib
 	provides = libasound.so
 	provides = libatopology.so
