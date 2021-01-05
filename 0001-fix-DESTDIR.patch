@@ -1,0 +1,34 @@
+From 218f8689a75935dfec2bb410b0057b91a8e782d8 Mon Sep 17 00:00:00 2001
+From: Zhai Zhaoxuan <kxuanobj@gmail.com>
+Date: Tue, 5 Jan 2021 17:57:57 +0800
+Subject: [PATCH] fix DESTDIR
+
+Signed-off-by: Zhai Zhaoxuan <kxuanobj@gmail.com>
+---
+ Makefile.in | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 2dfccad..12938d2 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -10,11 +10,11 @@ exec_prefix = @exec_prefix@
+ srcdir = @srcdir@
+ VPATH = @srcdir@
+ 
+-bindir = @bindir@
+-libdir = @libdir@
+-shlibdir = @shlibdir@
+-includedir = @includedir@
+-docdir = $(prefix)/share/doc/$(MODULE)
++bindir = $(DESTDIR)@bindir@
++libdir = $(DESTDIR)@libdir@
++shlibdir = $(DESTDIR)@shlibdir@
++includedir = $(DESTDIR)@includedir@
++docdir = $(DESTDIR)$(prefix)/share/doc/$(MODULE)
+ 
+ # default c-compiler
+ CC = @CC@
+-- 
+2.29.2
+

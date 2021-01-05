@@ -1,0 +1,16 @@
+pkgbase = dmalloc
+	pkgdesc = Debug Malloc memory allocation debugging C library
+	pkgver = 5.6.5
+	pkgrel = 1
+	url = https://github.com/j256/dmalloc
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	makedepends = make
+	source = https://github.com/j256/dmalloc/releases/download/dmalloc_release_5_6_5/dmalloc-5.6.5.tgz
+	source = 0001-fix-DESTDIR.patch
+	sha256sums = 480e3414ab6cedca837721c756b7d64b01a84d2d0e837378d98444e2f63a7c01
+	sha256sums = 9791b34e6999540cd823bfb045772a6ef0a59cdb354bc18353d768dbe7d21335
+
+pkgname = dmalloc
+
