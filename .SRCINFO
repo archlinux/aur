@@ -1,13 +1,14 @@
 pkgbase = php-pecl-krb5
-	pkgdesc = PHP interface for Kerberos and GSSAPI
-	pkgver = 1.1.3
+	pkgdesc = PHP interface to Kerberos and GSSAPI
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://pecl.php.net/package/krb5
 	arch = x86_64
 	license = MIT
-	depends = php
-	source = https://pecl.php.net/get/krb5-1.1.3.tgz
-	md5sums = c99aa6db1826310fe91a0f9890c8d185
+	makedepends = php
+	depends = krb5
+	source = https://pecl.php.net/get/krb5-1.1.4.tgz
+	sha1sums = 650a094276570c15dbc66d9b38e84b40380a194c
 
 pkgname = php-pecl-krb5
 
