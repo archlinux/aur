@@ -1,6 +1,6 @@
 pkgbase = callaudiod-git
 	pkgdesc = Call audio routing daemon
-	pkgver = 0.0.4.r2.g6c8ffc2
+	pkgver = 0.0.4.r4.g585f3da
 	pkgrel = 1
 	url = https://gitlab.com/mobian1/callaudiod
 	arch = i686
