@@ -1,6 +1,6 @@
 pkgbase = powerdevil-light
 	pkgdesc = Manages the power consumption settings of a Plasma Shell. Light version without NetworkManager and Bluez support/dependencies.
-	pkgver = 5.20.4
+	pkgver = 5.20.5
 	pkgrel = 1
 	url = https://www.kde.org/workspaces/plasmadesktop/
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = powerdevil-light
 	depends = plasma-workspace
 	provides = powerdevil
 	conflicts = powerdevil
-	source = https://download.kde.org/stable/plasma/5.20.4/powerdevil-5.20.4.tar.xz
-	source = https://download.kde.org/stable/plasma/5.20.4/powerdevil-5.20.4.tar.xz.sig
+	source = https://download.kde.org/stable/plasma/5.20.5/powerdevil-5.20.5.tar.xz
+	source = https://download.kde.org/stable/plasma/5.20.5/powerdevil-5.20.5.tar.xz.sig
 	validpgpkeys = 2D1D5B0588357787DE9EE225EC94D18F7F05997E
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = 864128ea9178701bc322f728402cf9277b3c6feaa15fe425aa2adf92464bd28d
+	sha256sums = 32fb5ca72bed38d9bffc47f24a6c4dcee03b1da52b200d0f5bb976f9d48b6ef0
 	sha256sums = SKIP
 
 pkgname = powerdevil-light
