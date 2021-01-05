@@ -1,22 +1,17 @@
 pkgbase = bootchart2
 	pkgdesc = Boot Process Performance Visualization
-	pkgver = 0.14.8
-	pkgrel = 3
+	pkgver = 0.14.9
+	pkgrel = 1
 	url = https://github.com/xrmx/bootchart
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = python2
+	depends = python
 	depends = busybox
-	depends = pygtk
-	provides = bootchart2
-	conflicts = bootchart2-git
 	conflicts = bootchart
 	backup = etc/bootchartd2.conf
-	source = https://github.com/xrmx/bootchart/archive/0.14.8.tar.gz
-	source = 0001-include-sys-sysmacros.h-for-major-minor-makedev.patch
-	sha512sums = 58303db91d22ccc44c0dc765e7a6672fb277840555fd87ce64b8987cba85250cfe3db17f3ec7e0e1e726ad59166a5d3d01a7a262c07b5690c595877b46c66bd0
-	sha512sums = 3fd04183634f4406aab6fff5e77aaeb339f0705aeba2d193ad55fa297dbd9739e872f26c6feb225ff0b2cf953370e08bc82fa3bae69fac3832feaa4671cc406c
+	source = https://github.com/xrmx/bootchart/archive/0.14.9.tar.gz
+	sha512sums = 7ee1220b0add027fc39f710cc01119d7aaa22fe11736497b089c26955216cef10552216ed29ca55bf08aa848f92bb11d74deeb3aa69769dfecf3a55aa988e58b
 
 pkgname = bootchart2
 
