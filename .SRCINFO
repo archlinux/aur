@@ -10,7 +10,6 @@ pkgbase = libpng12-minimal
 	source = https://sourceforge.net/projects/libpng/files/libpng-1.2.59.tar.xz
 	source = https://sourceforge.net/projects/libpng/files/libpng-1.2.59.tar.xz.asc
 	source = https://sourceforge.net/projects/libpng-apng/files/libpng12/1.2.59/libpng-1.2.59-apng.patch.gz
-	validpgpkeys = 8048643BA2C840F4F92A195FF54984BFA16C640F
 	sha256sums = b4635f15b8adccc8ad0934eea485ef59cc4cae24d0f0300a9a941e51974ffcc7
 	sha256sums = SKIP
 	sha256sums = 281fd5f0165762967a18302dca217de3212be4a3437f95805be44f1ac9db1a5d
