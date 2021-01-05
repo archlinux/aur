@@ -18,7 +18,7 @@ depends=('glm'
          'sdl2>=2.0.6'
          'sdl2_image'
          'sdl2_ttf')
-source=("https://gitlab.com/solarus-games/solarus/-/jobs/731973863/artifacts/download")
+source=("https://gitlab.com/solarus-games/solarus/-/jobs/943695049/artifacts/download")
 provides=('solarus')
 conflicts=('solarus' 'solarus-run' 'solarus-git')
 package() {
@@ -26,4 +26,4 @@ package() {
 	cd $srcdir
 	mv staging/* $pkgdir/usr
 }
-md5sums=('a7c19441932273e45dd14229b4959c53')
+md5sums=('6c55c9f5e37065bc45d2fd18f1c0f9fd')
