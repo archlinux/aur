@@ -35,10 +35,10 @@ pkgbase = mingw-w64-paraview59
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://www.paraview.org/files/v5.9/ParaView-v5.9.0-RC2.tar.xz
+	source = https://www.paraview.org/files/v5.9/ParaView-v5.9.0-RC3.tar.xz
 	source = https://gitlab.kitware.com/vtk/vtk/-/merge_requests/7038.patch
 	source = https://gitlab.kitware.com/paraview/catalyst/-/merge_requests/7.patch
-	sha256sums = a3e6f7db7804f11351df48781e8d67ff3e9c18a691bb9ef9a5485aa6520e70bc
+	sha256sums = 3487ee36cc2ff2a0fe4037a8d341f8c0a09f035f256f4e1f85e2f8356fd9da0a
 	sha256sums = SKIP
 	sha256sums = SKIP
 
