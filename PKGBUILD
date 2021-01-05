@@ -8,16 +8,19 @@ url=https://github.com/monosans/dwm
 arch=(i686 x86_64)
 license=(MIT)
 depends=(freetype2 libx11 libxinerama libxft)
-optdepends=('dmenu: default program launcher'
-            'st-monosans-git: default terminal emulator'
-            'pcmanfm-gtk3: default file manager'
-            'scrot: default screenshoter'
-            'brave-nightly-bin: default browser')
+optdepends=(
+	'dmenu: program launcher'
+	'st-monosans-git: default terminal emulator'
+	'pcmanfm-gtk3: default file manager'
+	'scrot: default screenshoter'
+	'brave-nightly-bin: default browser')
 makedepends=(git)
-source=(git://github.com/monosans/dwm
-        config.mk)
-sha256sums=('SKIP'
-            '37e0b861183ab8d5595a0cc7fb5a98be19a681f1517b15a0cc48daeed009b1b9')
+source=(
+	git://github.com/monosans/dwm
+	config.mk)
+sha256sums=(
+	'SKIP'
+	'37e0b861183ab8d5595a0cc7fb5a98be19a681f1517b15a0cc48daeed009b1b9')
 provides=(dwm)
 conflicts=(dwm)
 
