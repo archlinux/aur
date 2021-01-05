@@ -1,13 +1,12 @@
 pkgbase = heroku-cli
 	pkgdesc = CLI to manage Heroku apps and services with forced auto-update removed
 	pkgver = 7.47.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://devcenter.heroku.com/articles/heroku-cli
 	arch = any
 	license = custom
 	license = ISC
 	makedepends = npm
-	makedepends = yarn
 	makedepends = perl
 	depends = nodejs
 	optdepends = git: Deploying to Heroku
