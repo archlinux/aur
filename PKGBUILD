@@ -2,7 +2,7 @@
 # Contributor: kitech1 <vatic@vivaldi.net>
 pkgname=edrawmax
 pkgver=10.0
-pkgrel=1
+pkgrel=4
 pkgmaver=10
 pkgmaname=EdrawMax
 epoch=
