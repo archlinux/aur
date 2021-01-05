@@ -1,18 +1,19 @@
 pkgbase = edisyn-bin
 	pkgdesc = A cross-platform synthesizer patch editor library
-	pkgver = 16b
+	pkgver = 26
 	pkgrel = 1
 	url = https://github.com/eclab/edisyn/
 	arch = i686
 	arch = x86_64
 	license = Apache
-	depends = java-runtime>=8
+	depends = java-runtime>=11
 	provides = edisyn
 	conflicts = edisyn
-	source = https://github.com/eclab/edisyn/raw/71bc00f96dc83e0da3fee31b02bb6e4ad18d21d3/jar/edisyn.jar
+	noextract = edisyn-26.jar
+	source = edisyn-26.jar::https://cs.gmu.edu/~eclab/projects/edisyn/edisyn.jar
 	source = edisyn.desktop
 	source = edisyn.sh
-	md5sums = cc3b699ecaf3255de334506b7442a35b
+	md5sums = 57deace01f048365260a15ef0eee1b46
 	md5sums = 5022b2d274e99ca6704f4dd69e17a1cb
 	md5sums = a6f1544c7b08354593f2c5b91258d88c
 
