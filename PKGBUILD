@@ -38,3 +38,4 @@ package() {
 	install -m644 $srcdir/firefox/browser/chrome/icons/default/default128.png $pkgdir/usr/share/pixmaps/$_pkgname.png
 }
 
+
