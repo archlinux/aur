@@ -14,6 +14,8 @@ depends=('glibc' 'pciutils' 'psmisc')
 makedepends=('alsa-lib' 'docbook-xsl' 'fftw' 'libsamplerate' 'ncurses'
 'python-docutils' 'systemd' 'xmlto')
 optdepends=('fftw: for alsabat')
+provides=(alsa-utils)
+conflicts=(alsa-utils)
 # we require /var/lib/alsa for state file
 options=(emptydirs)
 source=("git+https://github.com/alsa-project/alsa-utils.git")
