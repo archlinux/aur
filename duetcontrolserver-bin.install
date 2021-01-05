@@ -1,0 +1,18 @@
+post_install() {
+	# Create gpio group and add dsf to it
+	systemd-sysusers duetcontrolserver.conf
+
+	# Create /var/run/dsf now
+	systemd-tmpfiles --create duetcontrolserver.conf
+
+	# Trigger assignment of gpio group to the existing devices
+	udevadm trigger
+}
+
+pre_remove() {
+	systemctl disable --now duetcontrolserver.service
+}
+
+post_remove() {
+	echo "==> to delete \"gpio\" group run as root: groupdel gpio"
+}
