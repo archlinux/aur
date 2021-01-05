@@ -1,0 +1,6 @@
+src/
+pkg/
+
+*.pkg.tar.xz
+
+/1337
