@@ -1,0 +1,22 @@
+pkgbase = kde2-kdegraphics-git
+	pkgdesc = Historical copy of the graphics module of KDE 2, adapted to compile on modern systems
+	pkgver = 2.2.2.r7.d4eb496
+	pkgrel = 1
+	url = https://github.com/sandsmark/kdegraphics
+	arch = i686
+	arch = x86_64
+	groups = kde2
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = kde2-kdelibs
+	provides = kde2-kdegraphics
+	conflicts = kde2-kdegraphics
+	conflicts = kcolorchooser
+	conflicts = kruler
+	options = libtool
+	source = git+https://github.com/sandsmark/kde2-kdegraphics.git
+	md5sums = SKIP
+
+pkgname = kde2-kdegraphics-git
+
