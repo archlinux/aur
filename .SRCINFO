@@ -1,6 +1,6 @@
 pkgbase = ding
 	pkgdesc = A Dictionary Lookup program and EN<->DE Dictionary
-	pkgver = 1.8.1
+	pkgver = 1.9
 	pkgrel = 1
 	url = http://www-user.tu-chemnitz.de/~fri/ding
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = ding
 	depends = tk
 	depends = tre
 	depends = aspell
-	source = http://ftp.tu-chemnitz.de/pub/Local/urz/ding/ding-1.8.1.tar.gz
-	sha256sums = 5817bad70d9661fc1efc8bad38939bf665818c549a9675e8e041fff487c61232
+	source = http://ftp.tu-chemnitz.de/pub/Local/urz/ding/ding-1.9.tar.gz
+	sha256sums = 69a6c81fcf785a286c053a352f3201cc8671c72851615c4b707a434309b098e5
 
 pkgname = ding
 

@@ -4,7 +4,7 @@
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=ding
-pkgver=1.8.1
+pkgver=1.9
 pkgrel=1
 pkgdesc="A Dictionary Lookup program and EN<->DE Dictionary"
 arch=('any')
@@ -12,21 +12,13 @@ license=('GPL')
 url="http://www-user.tu-chemnitz.de/~fri/ding"
 depends=('sh' 'tk' 'tre' 'aspell')
 source=(http://ftp.tu-chemnitz.de/pub/Local/urz/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('5817bad70d9661fc1efc8bad38939bf665818c549a9675e8e041fff487c61232')
+sha256sums=('69a6c81fcf785a286c053a352f3201cc8671c72851615c4b707a434309b098e5')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  install -m755 -d "${pkgdir}/usr/bin"
-  install -m755 -d "${pkgdir}/usr/share/dict"
-  install -m755 -d "${pkgdir}/usr/share/man/man1"
-  install -m755 -d "${pkgdir}/usr/share/applications"
-  install -m755 -d "${pkgdir}/usr/share/pixmaps"
-
-  sed -i -e 's/ger-en.txt/de-en.txt/g' ding
-
-  install -m755 ding "${pkgdir}/usr/bin/"
-  install -m644 ding.1 "${pkgdir}/usr/share/man/man1/"
-  install -m644 de-en.txt "${pkgdir}/usr/share/dict/"
-  install -m644 ding.png "${pkgdir}/usr/share/pixmaps/"
-  install -m644 ding.desktop "${pkgdir}/usr/share/applications/"
+  install -Dm755 $pkgname "${pkgdir}"/usr/bin/$pkgname
+  install -Dm755 de-en.txt "${pkgdir}"/usr/share/dict/de-en-txt
+  install -Dm755 $pkgname.1 "${pkgdir}"/usr/share/man/man1/$pkgname.1
+  install -Dm755 $pkgname.desktop "${pkgdir}"/usr/share/applications/$pkgname.png
+  install -Dm755 $pkgname.png "${pkgdir}"/usr/share/pixmaps/$pkgname.desktop
 }
