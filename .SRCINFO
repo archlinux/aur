@@ -1,7 +1,7 @@
 pkgbase = dnsmasq-openrc
 	pkgdesc = OpenRC dnsmasq init script
 	pkgver = 20210101
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL2
 	depends = openrc
