@@ -1,0 +1,16 @@
+--- a/Makefile  2021-01-04 20:58:19.306881153 +0100
++++ b/Makefile	2021-01-04 20:58:29.833572677 +0100
+@@ -35,11 +35,11 @@
+ MIT_KRB5_SRV_LIB=-lkadm5srv_mit
+ MIT_KRB5_CLNT_LIB=-lkadm5clnt_mit
+ 
+-prefix=/usr/local
++prefix=/usr/lib
+ ldap_subdir=/openldap
+ 
+ libdir=$(prefix)/lib
+-libexecdir=$(prefix)/libexec
++libexecdir=$(prefix)
+ moduledir=$(libexecdir)$(ldap_subdir)
+ 
+ .PHONY: all
