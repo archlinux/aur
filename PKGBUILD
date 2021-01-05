@@ -24,7 +24,7 @@ pkgver() {
 package() {
 	cd "$srcdir/$pkgname"
   install -Dm0755 -t "${pkgdir}/usr/bin" buildaur.sh buildaur
-	install -Dm644 -t "${pkgdir}/usr/share/buildaur" progressbar_buildaur.py buildaur_translations.py outputter.sh
+	install -Dm644 -t "${pkgdir}/usr/share/buildaur" progressbar_buildaur.py buildaur_translations.py
   install -Dm0755 -t "${pkgdir}/usr/share/buildaur" outputter.sh
 	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
 	install -Dm644 -t "${pkgdir}/etc/bash_completion.d/" buildaur-completion.bash
