@@ -1,7 +1,7 @@
 pkgbase = python-cupy
 	pkgdesc = NumPy-like API accelerated with CUDA
 	pkgver = 8.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cupy.dev
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,6 @@ pkgbase = python-cupy
 	makedepends = python-setuptools
 	makedepends = cython
 	depends = cuda
-	depends = cuda-static
 	depends = cudnn
 	depends = nccl
 	depends = python-numpy
