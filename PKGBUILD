@@ -1,11 +1,11 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=piknik-git
 pkgver=r228.00ee34c
-pkgrel=1
+pkgrel=2
 pkgdesc="Copy/paste anything over the network."
 arch=('any')
 url="https://github.com/jedisct1/${pkgname%-git}"
-license=('BSD')
+license=('ISC')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 makedepends=('go' 'git')
