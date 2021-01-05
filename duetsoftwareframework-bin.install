@@ -1,0 +1,5 @@
+post_remove() {
+	# Do not delete the 'dsf' user automatically. It may still own files.
+	# If 'dsf' is the only user in group 'dsf', then userdel will also delete the group.
+	echo "==> To delete the \"dsf\" user, run as root: userdel --force dsf"
+}
