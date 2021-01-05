@@ -1,7 +1,7 @@
 pkgbase = mc-lithium-dev-git
 	pkgdesc = A server side minecraft optimization mod
 	pkgver = 1.16.4.0.6.0.r387.4d4ca3b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jellysquid3/lithium-fabric
 	arch = any
 	license = LGPL

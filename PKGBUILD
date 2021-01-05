@@ -3,7 +3,7 @@
 _pkgname=lithium-fabric
 pkgname=mc-lithium-dev-git
 pkgver=1.16.4.0.6.0.r387.4d4ca3b
-pkgrel=1
+pkgrel=2
 pkgdesc="A server side minecraft optimization mod"
 arch=('any')
 url="https://github.com/jellysquid3/lithium-fabric"
@@ -30,6 +30,6 @@ package() {
   
   # please for the love of anything do not read the next 2 lines
   cp "build/libs/${_pkgname}-mc$(cat gradle.properties | grep 'minecraft_version' | cut -d'=' -f2)-$(cat gradle.properties | grep 'mod_version' | cut -d'=' -f2)-SNAPSHOT.jar" \
-     "${pkgdir}/usr/share/minecraft/${_pkgname}-next-$(cat gradle.properties | grep 'minecraft_version' | cut -d'=' -f2)-$(cat gradle.properties | grep 'mod_version' | cut -d'=' -f2).jar"
+     "${pkgdir}/usr/share/minecraft/${_pkgname}-dev-$(cat gradle.properties | grep 'minecraft_version' | cut -d'=' -f2)-$(cat gradle.properties | grep 'mod_version' | cut -d'=' -f2).jar"
 }
 
