@@ -10,7 +10,7 @@ license=("LGPL")
 makedepends=('mingw-w64-configure')
 depends=('mingw-w64-gettext')
 options=(staticlibs !strip !buildflags)
-source=("https://www.gnupg.org/gcrypt/libgpg-error/libgpg-error-${pkgver}.tar.bz2"{,.sig}
+source=("https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-${pkgver}.tar.bz2"{,.sig}
         "01-mingw32-fix-potomo.mingw.patch"
         "02-fix-symbollist-on.mingw.patch"
         "05-w32-gen.all.patch"
