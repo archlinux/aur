@@ -1,0 +1,19 @@
+pkgbase = alsa-lib-git
+	pkgdesc = An alternative implementation of Linux sound support
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://www.alsa-project.org
+	arch = x86_64
+	license = LGPL2.1
+	depends = glibc
+	depends = alsa-topology-conf
+	depends = alsa-ucm-conf
+	provides = alsa-lib
+	provides = libasound.so
+	provides = libatopology.so
+	conflicts = alsa-lib
+	source = git+https://github.com/alsa-project/alsa-lib.git
+	sha512sums = SKIP
+
+pkgname = alsa-lib-git
+
