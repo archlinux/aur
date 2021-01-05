@@ -20,7 +20,7 @@ md5sums=("a1d06729fb2addcc5b09bfc14f9b3173"
 
 # Dynamically generate sources and skip sums
 _arch=("amd64" "i386" "armel" "armhf" "arm64")
-_repo="http://ftp.debian.org/debian/pool/main/libx/libxcrypt/"
+_repo="http://deb.debian.org/debian/pool/main/libx/libxcrypt/"
 _vers="2.4-4"
 _pkgs=("libxcrypt1" "libxcrypt-dev")
 for _i in "${!arch[@]}"; do
