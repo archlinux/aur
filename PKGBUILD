@@ -21,8 +21,8 @@ pkgname=(
   "$pkgbase" "$pkgbase-x11" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=r56865.af8aded66c1
-pkgrel=2
+pkgver=r56885.b783517b55d
+pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -41,12 +41,8 @@ makedepends=(
   'libinput'
 )
 
-_codename=Leia
 _gitname='xbmc'
 _sse_workaround=1
-_build_x11=1
-_build_wayland=1
-_build_gbm=1
 
 # Found on their respective github release pages. One can check them against
 # what is pulled down when not specifying them in the cmake step.
@@ -156,43 +152,38 @@ build() {
     -DSPDLOG_URL="$srcdir/spdlog-$_spdlog_version.tar.gz"
   )
 
-  if [[ "$_build_x11" -eq 1 ]]; then
-    echo "building kodi-x11"
-    cd "$srcdir/kodi-build-x11"
-    _args+=(
-      -DCORE_PLATFORM_NAME=x11
-      -DAPP_RENDER_SYSTEM=gl
-    )
+  echo "building kodi-x11"
+  cd "$srcdir/kodi-build-x11"
+  _args+=(
+    -DCORE_PLATFORM_NAME=x11
+    -DAPP_RENDER_SYSTEM=gl
+  )
 
-    cmake "${_args[@]}" ../xbmc
-    make
-    make preinstall
-  fi
+  cmake "${_args[@]}" ../xbmc
+  make
+  make preinstall
 
-  if [[ "$_build_wayland" -eq 1 ]]; then
-    echo "building kodi-wayland"
-    cd "$srcdir/kodi-build-wayland"
-    _args+=(
-      -DCORE_PLATFORM_NAME=wayland
-      -DAPP_RENDER_SYSTEM=gl
-    )
+  echo "building kodi-wayland"
+  cd "$srcdir/kodi-build-wayland"
+  _args+=(
+    -DCORE_PLATFORM_NAME=wayland
+    -DAPP_RENDER_SYSTEM=gl
+  )
 
-    cmake "${_args[@]}" ../xbmc
-    make
-    make preinstall
-  fi
+  cmake "${_args[@]}" ../xbmc
+  make
+  make preinstall
 
-  if [[ "$_build_gbm" -eq 1 ]]; then
-    echo "building kodi-gbm"
-    cd "$srcdir/kodi-build-gbm"
-    _args+=(
-      -DCORE_PLATFORM_NAME=gbm
-      -DAPP_RENDER_SYSTEM=gles
-    )
-    cmake "${_args[@]}" ../xbmc
-    make
-    make preinstall
-  fi
+  echo "building kodi-gbm"
+  cd "$srcdir/kodi-build-gbm"
+  _args+=(
+    -DCORE_PLATFORM_NAME=gbm
+    -DAPP_RENDER_SYSTEM=gles
+  )
+
+  cmake "${_args[@]}" ../xbmc
+  make
+  make preinstall
 }
 
 # kodi
