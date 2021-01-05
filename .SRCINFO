@@ -1,14 +1,10 @@
 pkgbase = lutris-git
 	pkgdesc = Open Gaming Platform
-	pkgver = 0.5.8.1.r43.gd22e243a
+	pkgver = 0.5.8.2.r0.gc1edfdd8
 	pkgrel = 1
 	url = https://lutris.net/
 	arch = any
 	license = GPL3
-	checkdepends = xorg-server-xvfb
-	checkdepends = python-nose-cover3
-	checkdepends = wine
-	checkdepends = xterm
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-gobject

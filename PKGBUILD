@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.8.1.r43.gd22e243a
+pkgver=0.5.8.2.r0.gc1edfdd8
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -17,7 +17,7 @@ depends=('python-gobject' 'python-yaml' 'python-evdev' 'python-dbus' 'gtk3'
          'mesa-demos' 'python-dbus' 'python-distro' 'python-magic-ahupp'
          'python-lxml')
 makedepends=('git' 'python-setuptools')
-checkdepends=('xorg-server-xvfb' 'python-nose-cover3' 'wine' 'xterm')
+#checkdepends=('xorg-server-xvfb' 'python-nose-cover3' 'wine' 'xterm')
 optdepends=(
   'wine: Run windows games'
   'vulkan-icd-loader: Vulkan support'
@@ -44,6 +44,8 @@ build() {
 	cd "$srcdir/${pkgname%-git}"
 	python setup.py build
 }
+
+# Tests fail in chroot
 
 #check() {
 # cd "$srcdir/${pkgname%-git}"
