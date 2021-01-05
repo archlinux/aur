@@ -3,8 +3,8 @@
 pkgname=python-nox-poetry
 _pkgname="${pkgname#python-}"
 _name="${_pkgname/-/_}"
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="Use Poetry inside Nox sessions"
 arch=('any')
 url="https://github.com/cjolowicz/nox-poetry"
@@ -14,7 +14,7 @@ makedepends=('python-setuptools' 'python-dephell')
 checkdepends=() # TODO
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('c6a3eb50a14f3024d01fbf05370b45181a7e322164c031bbf3270a5a16b14fbf71a0c36396c1b82922237cc956b91668e64825ff500b14a9b9df67d4eea504f3')
+b2sums=('82d78a6976a25a30d9d66b1f16e89bab8e46db97d72dbab1b64c88f5f72ceeef1e6d80e6575adc9eaadea27521977f400162a396efb5575ebfa6fd11657dfdd2')
 
 prepare() {
   cd "$_pkgname-$pkgver"
