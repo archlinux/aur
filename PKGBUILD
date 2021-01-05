@@ -1,14 +1,14 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+        # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=libksysguard
 pkgname=libksysguard-light
-pkgver=5.20.4
+pkgver=5.20.5
 pkgrel=1
 pkgdesc='Libraries for ksysguard to retrieve information on the current status of computer hardware without the big dependency on qt5-webengine'
 arch=(x86_64)
-url='https://www.kde.org/workspaces/plasmadesktop/'
+url='   https://kde.org/plasma-desktop/'
 license=(LGPL)
 depends=(libxres knewstuff kdeclarative)
 makedepends=(extra-cmake-modules kdoctools qt5-tools)
@@ -17,7 +17,7 @@ conflicts=(libksysguard)
 replaces=(libksysguard)
 provides=(libksysguard)
 source=("https://download.kde.org/stable/plasma/$pkgver/$_pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('a89968476cb8a888550e1a5138ab8e86eeb49788187192cba71f79abd4aad422'
+sha256sums=('a8a5635c88559567342eba77c707269ab23bc0ce1775ce424c0abd57a83e5d6c'
             'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
