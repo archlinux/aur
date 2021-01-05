@@ -1,0 +1,23 @@
+pkgbase = kde2-kio-sftp-kde4-git
+	pkgdesc = Backport of the KDE4 version of kio-sftp to KDE 2
+	pkgver = 2.2.2.r18.f2e832e
+	pkgrel = 1
+	url = https://github.com/sandsmark/kde2-kio-sftp-kde4
+	arch = i686
+	arch = x86_64
+	groups = kde2
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = kde2-kdelibs-git
+	depends = libssh
+	provides = kde2-kio-sftp-kde4
+	provides = kde2-kio-sftp
+	conflicts = kde2-kio-sftp-kde4
+	conflicts = kde2-kio-sftp
+	options = libtool
+	source = git+https://github.com/sandsmark/kde2-kio-sftp-kde4.git
+	md5sums = SKIP
+
+pkgname = kde2-kio-sftp-kde4-git
+
