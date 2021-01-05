@@ -6,8 +6,8 @@
 
 pkgname=dia-git
 _pkgname=dia
-pkgver=6604.6063d791
-pkgrel=3
+pkgver=6611.81fe2063
+pkgrel=1
 pkgdesc="A GTK+ based diagram creation program (GIT VERSION)"
 arch=('x86_64')
 license=('GPL')
