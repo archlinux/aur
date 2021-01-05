@@ -11,7 +11,7 @@ license=('GPL')
 install=${pkgname}.install
 depends=('gtk-update-icon-cache' 'java-runtime')
 source=( "https://github.com/triplea-game/triplea/releases/download/${pkgver}/${appname}.zip")
-sha256sums=('b478da60ccf187e1bda55f23e8a139e7fa624e739a4ee173668a8d3b2a03f304')
+sha256sums=('e8d52af53961bb1238668eafe0ef93943e999ad190f7947c361062e8eed9640b')
 
 package() {
     install -d ${pkgdir}/usr/share/${pkgname}
