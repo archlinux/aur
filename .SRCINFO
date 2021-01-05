@@ -1,0 +1,12 @@
+pkgbase = mc-phosphor-dev-git
+	pkgdesc = A client side minecraft optimization mod
+	pkgver = 1.16.3.0.7.0.r183.a38b1bd
+	pkgrel = 1
+	url = https://github.com/jellysquid3/phosphor-fabric
+	arch = any
+	license = LGPL
+	makedepends = gradle
+	source = git+https://github.com/jellysquid3/phosphor-fabric.git
+	md5sums = SKIP
+
+pkgname = mc-phosphor-dev-git
