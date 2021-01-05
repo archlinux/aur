@@ -1,4 +1,4 @@
-pkgbase = gamearchivejs
+pkgbase = gamearchive-cli
 	pkgdesc = Read and write archive files used by DOS games
 	pkgver = latest
 	pkgrel = 1
@@ -7,5 +7,5 @@ pkgbase = gamearchivejs
 	makedepends = npm
 	depends = nodejs
 
-pkgname = gamearchivejs
+pkgname = gamearchive-cli
 
