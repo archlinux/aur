@@ -4,7 +4,7 @@
 pkgname=rstudio-desktop
 pkgver=1.3.1093
 _clangver=3.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source and enterprise-ready professional software for the R community"
 arch=(i686 x86_64)
 url="http://www.rstudio.com/"
@@ -26,10 +26,12 @@ conflicts=(rstudio-desktop-bin rstudio-desktop-git rstudio-desktop-preview-bin)
 source=(
 	"rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/tarball/v$pkgver"
 	'https://s3.amazonaws.com/rstudio-dictionaries/core-dictionaries.zip'
+	'https://gist.githubusercontent.com/trap000d/22b11a58c064046478967e60b3394214/raw/8bd457515431ec8c139e8f07fd86b0d2cb420d5d/rstudio-aee4453_libboost175.diff'
 )
 noextract=('core-dictionaries.zip' "gin-$_ginver.zip")
 sha256sums=('6ea169a0d59f0c3eba408d74a2590f7bf9f1e6f911b266a02f6266bf4975cec9'
-            '4341a9630efb9dcf7f215c324136407f3b3d6003e1c96f2e5e1f9f14d5787494')
+            '4341a9630efb9dcf7f215c324136407f3b3d6003e1c96f2e5e1f9f14d5787494'
+            '77e3e1cfec3c3ffebc9151f62b80db2840db022c84359c7bf17e92c288ab4973')
 
 _pkgname=rstudio
 
@@ -72,6 +74,7 @@ build() {
 	
 	# The previous comparison doesn’t seem to work with Boost_VERSION being 1.71.0
 	sed -i 's/Boost_VERSION LESS 106900/Boost_VERSION VERSION_LESS 1.69.0/g' src/cpp/CMakeLists.txt
+	patch -p1 <'../rstudio-aee4453_libboost175.diff'
 	
 	# Prevent java error: “Could not lock User prefs. Lock file access denied.”
 	# Because gwt desperately needs to add a “firstLaunch” entry there…
