@@ -1,14 +1,14 @@
 pkgbase = jza
-	pkgdesc = Simple AUR helper written in Bash
-	pkgver = 0.2.0
+	pkgdesc = Simple AUR helper written in shell
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://gitlab.com/joznia/jza
 	arch = x86_64
 	license = GPL2
 	depends = git
 	depends = wget
-	source = https://gitlab.com/joznia/jza/-/archive/v0.2.0/jza-v0.2.0.tar.gz
-	md5sums = 9a8444f32d4cb4448ac619fb44f31250
+	source = https://gitlab.com/joznia/jza/-/archive/v0.2.1/jza-v0.2.1.tar.gz
+	md5sums = 31ec221412119406337dad661cfdfa2c
 
 pkgname = jza
 
