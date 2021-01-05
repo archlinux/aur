@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Simon Allen <simon@simonallen.org>
 pkgname=ytmdesktop-git
-pkgver=1.13.0.r56.gfdc734e
-pkgrel=2
+pkgver=1.13.0.r83.gea2a1d2
+pkgrel=1
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
 url="https://ytmdesktop.app"
 license=('CC0 1.0 Universal')
-depends=('electron')
+depends=('electron10')
 makedepends=('git' 'npm' 'python')
 optdepends=('libnotify: for desktop notifications'
             'libappindicator-gtk3: for tray icon'
@@ -19,7 +19,7 @@ source=('git+https://github.com/ytmdesktop/ytmdesktop.git#branch=development'
         "${pkgname%-git}.sh")
 sha256sums=('SKIP'
             '3ed0c519e62483bb411e258df6d100463b8a417930ea67b34844bde8464e143d'
-            '4cbf5c9c7a2b24feb0fd623bf267cf8da1a9948431affba9b3927d5df84a269a')
+            '43658b3fd92526d37ce43b35afa8aabac7cf6f021a0ff7c416caa443f6fdf215')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
