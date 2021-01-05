@@ -1,0 +1,35 @@
+pkgbase = alsa-utils-git
+	pkgdesc = Advanced Linux Sound Architecture - Utilities
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://www.alsa-project.org
+	arch = x86_64
+	license = GPL2
+	makedepends = alsa-lib
+	makedepends = docbook-xsl
+	makedepends = fftw
+	makedepends = libsamplerate
+	makedepends = ncurses
+	makedepends = python-docutils
+	makedepends = systemd
+	makedepends = xmlto
+	depends = glibc
+	depends = pciutils
+	depends = psmisc
+	optdepends = fftw: for alsabat
+	options = emptydirs
+	source = git+https://github.com/alsa-project/alsa-utils.git
+	sha512sums = SKIP
+
+pkgname = alsa-utils-git
+	depends = glibc
+	depends = pciutils
+	depends = psmisc
+	depends = libasound.so
+	depends = libatopology.so
+	depends = libformw.so
+	depends = libmenuw.so
+	depends = libncursesw.so
+	depends = libpanelw.so
+	depends = libsamplerate.so
+
