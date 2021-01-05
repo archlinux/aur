@@ -8,9 +8,7 @@ pkgbase = libpng12-minimal
 	depends = glibc
 	depends = zlib
 	source = https://sourceforge.net/projects/libpng/files/libpng-1.2.59.tar.xz
-	source = https://sourceforge.net/projects/libpng/files/libpng-1.2.59.tar.xz.asc
 	source = https://sourceforge.net/projects/libpng-apng/files/libpng12/1.2.59/libpng-1.2.59-apng.patch.gz
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 

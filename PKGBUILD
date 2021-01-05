@@ -15,11 +15,10 @@ arch=('x86_64')
 url='http://www.libpng.org/pub/png/libpng.html'
 license=('custom')
 depends=('glibc' 'zlib')
-source=("https://sourceforge.net/projects/libpng/files/libpng-${pkgver}.tar.xz"{,.asc}
+source=("https://sourceforge.net/projects/libpng/files/libpng-${pkgver}.tar.xz"
         "https://sourceforge.net/projects/libpng-apng/files/libpng12/${pkgver}/libpng-${pkgver}-apng.patch.gz")
 #validpgpkeys=('8048643BA2C840F4F92A195FF54984BFA16C640F') # Glenn Randers-Pehrson
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP')
 
 prepare() {
