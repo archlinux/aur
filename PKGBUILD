@@ -9,10 +9,12 @@ arch=(i686 x86_64)
 license=(MIT)
 depends=(libxft harfbuzz ttf-jetbrains-mono)
 makedepends=(git libxext ncurses)
-source=(git://github.com/monosans/st
-        config.mk)
-sha256sums=('SKIP'
-            '328eab38522960e2155f3011a2839124f6da74a8dc3515378a9778824167a436')
+source=(
+	git://github.com/monosans/st
+	config.mk)
+sha256sums=(
+	'SKIP'
+	'328eab38522960e2155f3011a2839124f6da74a8dc3515378a9778824167a436')
 provides=(st)
 conflicts=(st)
 
