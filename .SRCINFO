@@ -1,0 +1,29 @@
+pkgbase = pyqt6
+	pkgdesc = A set of Python bindings for the Qt6 toolkit
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://riverbankcomputing.com/software/pyqt/intro
+	arch = x86_64
+	groups = pyqt6
+	license = GPL
+	makedepends = sip6
+	makedepends = pyqt-builder
+	makedepends = python-opengl
+	makedepends = python-dbus
+	makedepends = qt6-tools
+	makedepends = qt6-svg
+	makedepends = qt6-networkauth
+	makedepends = qt6-quick3d
+	depends = python-pyqt6-sip
+	depends = qt6-base
+	optdepends = python-opengl: enable OpenGL 3D graphics in PyQt applications
+	optdepends = python-dbus: for python-dbus mainloop support
+	optdepends = qt6-tools: QtHelp, QtDesigner
+	optdepends = qt6-svg: QtSvg
+	optdepends = qt6-declarative: QtQml, qmlplugin
+	optdepends = qt6-networkauth: QtNetworkAuth
+	source = https://pypi.python.org/packages/source/P/PyQt6/PyQt6-6.0.0.tar.gz
+	sha256sums = c758b0568127bffd7147f461d74bbf06249177eae908efed8099eec30984f1b3
+
+pkgname = python-pyqt6
+
