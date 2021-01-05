@@ -1,6 +1,6 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=fslpy
-pkgver=3.2.2
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="The fslpy package is a collection of utilities and data abstractions used by FSLeyes."
 arch=('any')
@@ -15,7 +15,7 @@ provides=()
 conflicts=()
 replaces=()
 source=($pkgname-$pkgver.tar.gz::https://git.fmrib.ox.ac.uk/fsl/fslpy/repository/archive.tar.gz?ref=$pkgver)
-sha256sums=('47578615b3a94d65bfade31729dc2ad9139455f4f0ca7d142eced7076ce29072')
+sha256sums=('eeb10410f800490a4d27f80ea63dd4415b9651016a52744d287da25b4f5f570a')
 
 package() {
   cd "$srcdir/${pkgname#fsleyes-}-$pkgver-"*
