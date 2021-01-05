@@ -1,7 +1,7 @@
 # Maintainer: Simone Scalabrino <s.scalabrino9@gmail.com>
 _appname="gsuite"
 _appdesc="Standalone silo apps for the Google office suite (Drive, Documents and Sheets)"
-_gittag="0.3"
+_gittag="0.4"
 
 _gitname=silos-apps
 pkgname="silo-${_appname}"
