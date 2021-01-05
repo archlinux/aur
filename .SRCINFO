@@ -1,0 +1,16 @@
+pkgbase = ftl-sdk
+	pkgdesc = Software Development Kit for Mixer's FTL Protocol
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/Scrumplex/ftl-sdk
+	arch = x86_64
+	license = custom:MIT
+	makedepends = cmake
+	makedepends = make
+	depends = jansson
+	depends = curl
+	source = ftl-sdk-0.10.0.tar.gz::https://github.com/Scrumplex/ftl-sdk/archive/0.10.0.tar.gz
+	sha512sums = c6f58016836955e4345e21126680a98a1626ea8d66f2b3c16136d46e21a6072ee4c2899485436682de13d1d2145502e91f03732057d50bea95b55743d65ce205
+
+pkgname = ftl-sdk
+
