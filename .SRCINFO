@@ -1,6 +1,6 @@
 pkgbase = libretro-neocd-git
 	pkgdesc = Neo Geo CD emulator for libretro
-	pkgver = 73.aedbf12
+	pkgver = 80.b795a80
 	pkgrel = 1
 	url = https://github.com/libretro/neocd_libretro
 	arch = i686
