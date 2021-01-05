@@ -1,4 +1,4 @@
-pkgbase = manim-community
+pkgbase = manimce
 	pkgdesc = Animation engine for explanatory math videos (community edition).
 	pkgver = 0.2.0
 	pkgrel = 1

@@ -1,4 +1,5 @@
 # Maintainer: Groctel <aur@taxorubio.com>
+pkgbase=manimce
 pkgname=manim-community
 _name=manim
 pkgver=0.2.0
