@@ -1,0 +1,18 @@
+pkgbase = libfnr-git
+	pkgdesc = Format-preserving encryption (FPE), small cipher (< 128 bits), for anonymization.
+	pkgver = r105.400cf06
+	pkgrel = 1
+	url = http://cisco.github.io/libfnr/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = openssl
+	provides = libfnr=r105.400cf06
+	conflicts = libfnr
+	options = !libtool
+	source = libfnr-git::git+https://github.com/cisco/libfnr.git
+	md5sums = SKIP
+
+pkgname = libfnr-git
+
