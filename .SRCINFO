@@ -1,16 +1,17 @@
 pkgbase = wolfssl
 	pkgdesc = small, fast, portable implementation of TLS/SSL for embedded devices to the cloud (formerly CyaSSL)
-	pkgver = 4.5.0
-	pkgrel = 2
+	pkgver = 4.6.0
+	pkgrel = 1
 	url = https://www.wolfssl.com/
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = cmake
 	depends = sh
-	source = wolfssl-4.5.0-stable.tar.gz::https://github.com/wolfSSL/wolfssl/archive/v4.5.0-stable.tar.gz
-	source = https://github.com/wolfSSL/wolfssl/releases/download/v4.5.0-stable/wolfssl-4.5.0-stable.tar.gz.asc
+	source = wolfssl-4.6.0-stable.tar.gz::https://github.com/wolfSSL/wolfssl/archive/v4.6.0-stable.tar.gz
+	source = https://github.com/wolfSSL/wolfssl/releases/download/v4.6.0-stable/wolfssl-4.6.0-stable.tar.gz.asc
 	validpgpkeys = A2A48E7BCB96C5BECB987314EBC80E415CA29677
-	sha256sums = 7de62300ce14daa0051bfefc7c4d6302f96cabc768b6ae49eda77523b118250c
+	sha256sums = 053aefbb02d0b06b27c5e2df6875b4b587318755b7db9d6aa8d72206b310a848
 	sha256sums = SKIP
 
 pkgname = wolfssl
