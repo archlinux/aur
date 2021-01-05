@@ -1,9 +1,10 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
 pkgorg='loco-3d'
-pkgname=('crocoddyl' 'crocoddyl-docs')
+_pkgname='crocoddyl'
+pkgname=("$_pkgname" "$_pkgname-docs")
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="optimal control library for robot control under contact sequence"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
@@ -41,6 +42,6 @@ package_crocoddyl() {
 package_crocoddyl-docs() {
     cd "$pkgbase-$pkgver/build"
     make DESTDIR="$pkgdir/" install
-    rm -rf $pkgdir/usr/{lib,include}
+    rm -rf $pkgdir/usr/{lib,include,"share/$_pkgname"}
     install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
