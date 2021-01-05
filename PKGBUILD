@@ -16,7 +16,7 @@ conflicts=('rlvm')
 source=("git+https://github.com/eglaysher/rlvm.git"
         "freetype.patch")
 sha256sums=('SKIP'
-            '102c0e50a42abfe635ff3a454bedf5d76ce47b8ebb7ac802605979199c7e471b')
+            'd8977832b099a00e51f161ce97d7fa0524888f0bad7e1b6100f71f8458f16ceb')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
