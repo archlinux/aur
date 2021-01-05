@@ -1,7 +1,7 @@
 pkgbase = proton-ge-custom-bin
 	pkgdesc = A fancy custom distribution of Valves Proton with various patches
 	pkgver = 5.21_GE_1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	changelog = changelog
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = proton-ge-custom-bin
 	conflicts = proton-ge-custom-stable-bin
 	options = !strip
 	backup = usr/share/steam/compatibilitytools.d/proton-ge-custom/user_settings.py
-	source = proton-ge-custom-5.21-GE-1_2.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/5.21-GE-1/Proton-5.21-GE-1.tar.gz
+	source = proton-ge-custom-5.21-GE-1_3.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/5.21-GE-1/Proton-5.21-GE-1.tar.gz
 	source = supplementary.tar.zst
 	md5sums = 32a562a772a9b56ff03287978a153227
 	md5sums = 5d6781563275b942f0cff1fb172bfd8d

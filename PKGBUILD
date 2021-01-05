@@ -6,7 +6,7 @@
 pkgdesc="A fancy custom distribution of Valves Proton with various patches"
 pkgname=proton-ge-custom-bin
 pkgver=5.21_GE_1
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 changelog=changelog
@@ -67,7 +67,7 @@ mv ${_srcdir}/LICENSE ${pkgdir}/${_licensedir}/license
 mv ${_srcdir}/LICENSE.OFL ${pkgdir}/${_licensedir}/license_OFL
 mv ${_srcdir}/protonfixes/LICENSE ${pkgdir}/${_licensedir}/license_protonfixes
 ## config files
-install --mode=0775 --group=games ${srcdir}/configs/user_settings.py ${pkgdir}/${_protoncfg}
+install --mode=0775 --group=50 ${srcdir}/configs/user_settings.py ${pkgdir}/${_protoncfg}
 ## executables
 mv ${_srcdir}/* ${pkgdir}/${_protondir}
 install --mode=0755 ${srcdir}/launchers/proton.sh ${pkgdir}/${_execfile}
