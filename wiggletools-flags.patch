@@ -1,24 +1,18 @@
---- a/src/Makefile	2020-08-13 10:25:02.781495451 -0400
-+++ b/src/Makefile	2020-08-13 10:29:03.068773044 -0400
-@@ -1,9 +1,10 @@
+--- a/src/Makefile	2021-01-04 20:25:57.361048840 -0500
++++ b/src/Makefile	2021-01-04 20:27:57.596453700 -0500
+@@ -1,4 +1,5 @@
 -CFLAGS=-g -Wall -O3 -std=gnu99
 +CFLAGS+=-g -Wall -O3 -std=gnu99
 +LDFLAGS+=
  LIBDIR=../lib
  BINDIR=../bin
- INC=-I../../libBigWig -I../../htslib
- LIB_PATHS=-L${LIBDIR} -L../../libBigWig -L../../htslib
--LIBS= -lwiggletools -l:libBigWig.a -lcurl -l:libhts.a -lgsl  -lgslcblas -lz -lpthread -lm -llzma -lbz2
-+LIBS= -lwiggletools -lBigWig -lcurl -lhts -lgsl  -lgslcblas -lz -lpthread -lm -llzma -lbz2
- OPTS=-D_PBGZF_USE
+ LIBS= -lwiggletools -lBigWig -lcurl -lhts -lgsl  -lgslcblas -lz -lpthread -lm -llzma -lbz2
+@@ -18,7 +19,7 @@
+ 	mkdir -p ${LIBDIR}
+ 	ar rcs ${LIBDIR}/libwiggletools.a *.o
  
- default: lib bin
-@@ -12,7 +13,7 @@
+-%.o: %.c; ${CC} ${CFLAGS} ${INC} ${OPTS} -c $< -o $@
++%.o: %.c; ${CC} ${CFLAGS} ${LDFLAGS} ${INC} ${OPTS} -c $< -o $@
  
- ${BINDIR}/wiggletools: ${LIBDIR}/libwiggletools.a wiggletools.o
- 	mkdir -p ${BINDIR}
--	${CC} ${CFLAGS} ${LIB_PATHS} wiggletools.c ${LIBS} -o ${BINDIR}/wiggletools 
-+	${CC} ${CFLAGS} ${LDFLAGS} ${LIB_PATHS} wiggletools.c ${LIBS} -o ${BINDIR}/wiggletools 
- 
- lib: ${LIBDIR}/libwiggletools.a 
- 
+ clean:
+ 	rm -Rf *.o *.a wiggletools
