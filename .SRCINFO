@@ -1,0 +1,17 @@
+pkgbase = lib32-libpng-minimal-git
+	pkgdesc = A collection of routines used to create PNG format graphics files (32-bit)
+	pkgver = 1.6.37
+	pkgrel = 1
+	url = http://www.libpng.org/pub/png/libpng.html
+	arch = x86_64
+	license = custom
+	makedepends = gcc-multilib
+	depends = lib32-zlib
+	depends = libpng
+	provides = lib32-libpng
+	conflicts = lib32-libpng
+	source = git+https://git.code.sf.net/p/libpng/code
+	sha256sums = SKIP
+
+pkgname = lib32-libpng-minimal-git
+
