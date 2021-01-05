@@ -1,11 +1,11 @@
 pkgbase = qt2-git
 	pkgdesc = Porting Qt2 to modern cmake to use it for KDE 2 port
-	pkgver = 2.3.2.r42.c477567
+	pkgver = 2.3.2.r51.cd8f9ec
 	pkgrel = 1
-	url = https://github.com/heliocastro/qt2
+	url = https://github.com/sandsmark/qt2
 	arch = i686
 	arch = x86_64
-	license = custom:Qt Free Edition License
+	license = GPL2
 	makedepends = git
 	makedepends = cmake
 	makedepends = byacc
@@ -19,7 +19,7 @@ pkgbase = qt2-git
 	depends = glu
 	provides = qt2
 	conflicts = qt2
-	source = git+https://github.com/heliocastro/qt2.git
+	source = git+https://github.com/sandsmark/qt2.git
 	sha256sums = SKIP
 
 pkgname = qt2-git
