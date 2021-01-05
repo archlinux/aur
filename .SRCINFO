@@ -1,26 +1,26 @@
 pkgbase = duettools-bin
 	pkgdesc = Optional tools (code examples)
-	pkgver = 3.1.1
+	pkgver = 3.2.0
 	pkgrel = 1
-	url = https://github.com/chrishamm/DuetSoftwareFramework.git
+	url = https://github.com/Duet3D/DuetSoftwareFramework.git
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
-	depends = duetcontrolserver>=3.1.1
-	provides = duettools=3.1.1
+	depends = duetcontrolserver>=3.2.0
+	provides = duettools=3.2.0
 	conflicts = duettools
 	options = !strip
 	options = staticlibs
-	source_armv7h = https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/duettools_3.1.1_armhf.deb
-	md5sums_armv7h = fc9194517d7f785cf0f2712e0c653fe0
-	sha1sums_armv7h = 348e3096ffa297a76ad0a0605745d968c9ad6186
-	sha256sums_armv7h = b60b992189a8cd047a50fd890597dff76b95a6791161892aa56231475ffbab9f
-	sha512sums_armv7h = 5eb8236da1228f3caafd2e47f12e18bdf0c756b70b90c0838602046e34ecf5f455b6c62a3ed0c59490c31ab7aa9e391b16de9c4178d94ccdc1a6f893567ce765
-	source_aarch64 = https://pkg.duet3d.com/dists/stable/armv7/binary-arm64/duettools_3.1.1_arm64.deb
-	md5sums_aarch64 = 0555f1139478a9324868fe6182054979
-	sha1sums_aarch64 = 3b0f8d94e3e22a2ae87f364366a85715b52f79fe
-	sha256sums_aarch64 = eca467abf26d1455f658b3567a8886374dc945fac86de918d45ba28bb2520e79
-	sha512sums_aarch64 = 67b76b7114850cabae9433b5a2ad164262b1a724e07c4fb1df4e23c2bddfb2a991dfb612cefd5eb1686c2bb3f8708f858a9ce93d9699c9e338ee6c1689998c74
+	source_armv7h = https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/duettools_3.2.0_armhf.deb
+	md5sums_armv7h = 8c0736ce9f5adcc7cb8fcbbfbb9fcfff
+	sha1sums_armv7h = 6027d1b9d402d1ebb8183d2c942a219379005e1c
+	sha256sums_armv7h = e71c4c084cb7bfd4a74c547fd594d96835f7b3fb006ffcd649fd468840b1fb12
+	sha512sums_armv7h = 264a6dcceecf60584139d5077300ea0422569b78731c3c45a93c530dd56d5becba4b9629ab6b200705094b63d56f2c15d835adb1fe425085a40f1c360cfdec95
+	source_aarch64 = https://pkg.duet3d.com/dists/stable/armv7/binary-arm64/duettools_3.2.0_arm64.deb
+	md5sums_aarch64 = 5dd33576a4387d37829c2c22c9d93ba8
+	sha1sums_aarch64 = 1e33dd6e4d86eae27c3fd02f73713ed539f32670
+	sha256sums_aarch64 = 15f774ae640621f0ab9f450d6433032bc3138e8586d32656d129a8eb33431f54
+	sha512sums_aarch64 = 55cde3c2857764f2f95156bf0c4f10327cf4ddb9de4c284e56b156de9da171fdcc7de0416580464bd002f31a0b09fb8946be04a86dcf00074f75e16997e1f1b5
 
 pkgname = duettools-bin
 
