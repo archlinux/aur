@@ -1,5 +1,5 @@
 post_install() {
-    # Set the correct permission
+    # Remind the user the activate the product 
     echo
     echo "The launcher is called agisoft-metashape-pro"
     echo
