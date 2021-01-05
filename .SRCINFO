@@ -1,6 +1,6 @@
 pkgbase = libretro-meowpc98-git
 	pkgdesc = Neko Project 2 (PC98 emulator) port for libretro/RetroArch
-	pkgver = 101.ae203f9
+	pkgver = 124.3a8cf48
 	pkgrel = 1
 	url = https://github.com/libretro/libretro-meowPC98
 	arch = i686
