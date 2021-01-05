@@ -1,11 +1,13 @@
+# Maintainer: Gasparotto Mattia <gasmat04@gmail.com>
+
 _pkgname=ConsoleKit2
 pkgname=consolekit-git
-pkgver=r726.29b7384
+pkgver=r807.51c11c1
 pkgrel=1
 pkgdesc="A framework for defining and tracking users, login sessions, and seats"
 arch=('i686' 'x86_64')
 url="https://github.com/ConsoleKit2/ConsoleKit2"
-license=('GPL')
+license=('GPL-2.0')
 provides=('consolekit' 'consolekit2')
 replaces=('consolekit')
 conflicts=('consolekit')
@@ -19,7 +21,7 @@ source=("git://github.com/ConsoleKit2/ConsoleKit2"
         'consolekit.tmpfiles.conf')
 sha256sums=('SKIP'
             '778552dc12b3c235bde200e476d4262da0c135f3f6f8b3e975a87881d1f154d1')
-validpgpkeys=('6DD4217456569BA711566AC7F06E8FDE7B45DAAC') # Eric Vidal
+validpgpkeys=('6DD4217456569BA711566AC7F06E8FDE7B45DAAC')
 
 pkgver() {
     cd $_pkgname
