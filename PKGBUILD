@@ -4,11 +4,11 @@
 # Maintainer: Uffe Jakobsen <_microtop_-at-_starion_-_dot_-_dk_>
 #
 
-_pkgver="1_8i"
+_pkgver="1_8j"
 
 pkgname=vasm
-pkgver=1.8i
-pkgrel=2
+pkgver=1.8j
+pkgrel=1
 pkgdesc="Portable and retargetable 6502 6800 arm c16x jagrisc m68k ppc test tr3200 vidcore x86 z80 assembler."
 arch=('i686' 'x86_64')
 url="http://sun.hasenbraten.de/vasm/"
@@ -18,12 +18,13 @@ depends=()
 #source=(http://sun.hasenbraten.de/vasm/release/vasm.tar.gz) # latest unversioned source url
 #source=(http://server.owl.de/~frank/tags/${pkgname}${_pkgver}.tar.gz)
 source=(http://phoenix.owl.de/tags/${pkgname}${_pkgver}.tar.gz)
-md5sums=('889d409503d8b4f5e41a26a90594fad2')
+md5sums=('c20f99ef11b8510fd4be9e425caab460')
 
 
-CPU_LIST="6502 6800 arm c16x jagrisc m68k ppc test tr3200 vidcore x86 z80"
+# TODO: dynamic lists based on dirs below vasm/cpus, vasm/syntax, vasm/output_*.c/.h
+CPU_LIST="6502 6800 6809 arm c16x jagrisc m68k pdp11 ppc qnice test tr3200 vidcore x86 z80"
 SYNTAX_LIST="std madmac mot oldstyle" # test
-OUTPUT_LIST="aout bin elf hunk test tos vobj"
+OUTPUT_LIST="aout bin cdef elf errors hunk ihex srec test tos vobj xfile"
 
 prepare()
 {
