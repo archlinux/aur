@@ -1,5 +1,5 @@
 pkgbase = dwm-luke-git
-	pkgdesc = A dynamic window manager for X
+	pkgdesc = Luke's dynamic window manager for X
 	pkgver = 6.2.r1861.94906e1
 	pkgrel = 1
 	url = https://github.com/LukeSmithxyz/dwm

@@ -3,7 +3,7 @@
 pkgname=dwm-luke-git
 pkgver=6.2.r1861.94906e1
 pkgrel=1
-pkgdesc='A dynamic window manager for X'
+pkgdesc="Luke's dynamic window manager for X"
 url=https://github.com/LukeSmithxyz/dwm
 arch=(i686 x86_64)
 license=(MIT)
@@ -16,8 +16,7 @@ conflicts=(dwm)
 
 pkgver() {
 	cd dwm
-	_pkgver=$(awk '/VERSION/ {print $3}' config.mk|head -1)
-	echo "${_pkgver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	echo "$(awk '/^VERSION =/ {print $3}' config.mk)".r"$(git rev-list --count HEAD)"."$(git rev-parse --short HEAD)"
 }
 
 build() {
