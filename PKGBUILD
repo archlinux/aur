@@ -2,7 +2,7 @@
 
 pkgname=p4v
 _version=2020.3
-pkgver=2020.3.2059355
+pkgver=2020.3.2060285
 pkgrel=1
 pkgdesc="Perforce Visual Client"
 arch=('x86_64')
@@ -24,7 +24,7 @@ sha256sums=('1fc7ea925fdcb38915f191b6a9c85fb46db9ef501dbaa077e8f38876c5e8fda0'
             '10e470c6099459a072565494c4fd21cc1f4198f1024fe6fdeb6c77ea7e594827'
             '139c5e4951ea9ab040912ef1f9705de16a37d32fdf7b8c7116eb5a785829c634'
             'c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32'
-            '8e0adaba7ebea6fdb9b0d879d0110d1cd86792a3f4073ada954002832839d8fd')
+            'a5550587ded1fde03831610242a29d50ddf0f3f5475cb384443c3bb4a1b7ea72')
 
 # Perforce Software (Package Signing) <support+packaging@perforce.com>
 # validpgpkeys=('7123CB760FF18869'
