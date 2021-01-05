@@ -1,0 +1,20 @@
+pkgbase = ebu
+	pkgdesc = EB library (EPWING) with JIS X 4081 UTF-8 support
+	pkgver = 4.5
+	pkgrel = 20200413
+	url = http://green.ribbon.to/~ikazuhiro/dic/ebu.html
+	arch = any
+	license = BSD
+	makedepends = autoconf
+	makedepends = automake
+	depends = perl
+	depends = gcc-libs
+	depends = zlib
+	depends = libnsl
+	depends = libiconv
+	options = !libtool
+	source = http://green.ribbon.to/~ikazuhiro/dic/files/ebu-4.5-20200413.tar.gz
+	sha512sums = ec72aac8eb660d155660fdd612076df03c68c735cb584df48718542363a1a87baa076510dae71918287e88c2af68362ec06aec9b05b063e9f6519576c597e453
+
+pkgname = ebu
+
