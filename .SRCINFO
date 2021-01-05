@@ -1,18 +1,22 @@
 pkgbase = gamejolt-client-bin
 	pkgdesc = GameJolt library of game
-	pkgver = 0.57.0
+	pkgver = 0.52.3
 	pkgrel = 1
 	url = https://gamejolt.com/
 	arch = x86_64
 	license = MIT
+	source = .manifest
 	source = startgamejolt
 	source = gamejolt.png
 	source = GameJolt.desktop
-	source = gamejolt-0.57.0::https://f-cdn.gamejolt.net/data/games/5/162/362412/protected-files-cdn/5f9c532ec81b9/gamejoltclient.tar.gz?secure=7TVKCt5yPQaw5Z-eg0qqcg%2C1604394296
+	source = https://www.dropbox.com/s/gqgc2g82piosw0x/game-jolt-client?dl=0
+	source = https://www.dropbox.com/s/ys3feo3hhd3nsx3/data-376715-879203.tar.gz?dl=0
+	md5sums = 25087ad57c3c1aef436c42b24ab51bf9
 	md5sums = 2b11324ddd227249714b8173a3b3a97d
 	md5sums = 4c975528cb791ee16e5c62edbbf28287
 	md5sums = bc5ce421d3288c1982cade5a456a392e
-	md5sums = 5d7a015d54c4f92b68b760dee9b7519a
+	md5sums = abb29899371c605956f6f36b54f610f4
+	md5sums = 759908ea23176325debf0d39fe73fe63
 
 pkgname = gamejolt-client-bin
 
