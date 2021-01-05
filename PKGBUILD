@@ -7,7 +7,7 @@
 pkgbase=pipewire-gstfree
 _pkgbase=pipewire
 pkgname=(pipewire-gstfree pipewire-gstfree-docs pipewire-gstfree-jack pipewire-gstfree-pulse pipewire-gstfree-alsa pipewire-gstfree-ffmpeg)
-pkgver=0.3.18+91+gc39ba857
+pkgver=0.3.19
 pkgrel=3
 pkgdesc="Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies"
 url="https://pipewire.org"
@@ -17,7 +17,7 @@ makedepends=(git meson doxygen graphviz xmltoman valgrind jack2 libpulse
              alsa-lib sbc rtkit vulkan-icd-loader dbus sdl2
              ncurses libsndfile bluez-libs vulkan-headers libldac libopenaptx
              libfdk-aac ffmpeg)
-_commit=c39ba8570e0dc4401df3a1a3fbc6612c6c29fa6b  # master
+_commit=b2b45abe0198354ff43e5bf1bc0324b060dde97a  # tags/0.3.19
 source=("git+https://github.com/PipeWire/pipewire#commit=$_commit")
 sha256sums=('SKIP')
 
