@@ -4,6 +4,7 @@ pkgbase = qemu-user-static
 	pkgrel = 1
 	url = http://wiki.qemu.org/
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	license = LGPL2.1
 	makedepends = python
