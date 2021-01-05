@@ -1,6 +1,6 @@
 pkgbase = dbeaver-ce-latest-deb
 	pkgdesc = DBeaver Community Edition, Universal Database Manager and SQL Client
-	pkgver = 7.3.1
+	pkgver = 7.3.2
 	pkgrel = 1
 	url = https://dbeaver.io
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = dbeaver-ce-latest-deb
 	optdepends = dbeaver-plugin-svg-format: save diagrams in SVG format
 	conflicts = dbeaver
 	conflicts = dbeaver-ee
-	source = https://dbeaver.io/files/7.3.1/dbeaver-ce_7.3.1_amd64.deb
-	sha256sums = 6b992c1d6b67b8b453acf247be505befa4fadbea41538cc71dc26423dd999962
+	source = https://dbeaver.io/files/7.3.2/dbeaver-ce_7.3.2_amd64.deb
+	sha256sums = b919ccc2cf754efa0e46d8802442a5bea4e8a7743ad86d0427ab180bd39cc0f7
 
 pkgname = dbeaver-ce-latest-deb
 

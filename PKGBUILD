@@ -2,7 +2,7 @@
 # Check for new Linux releases in: https://dbeaver.io/download/
 
 pkgname=dbeaver-ce-latest-deb
-pkgver=7.3.1
+pkgver=7.3.2
 pkgrel=1
 pkgdesc='DBeaver Community Edition, Universal Database Manager and SQL Client'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=('dbeaver-plugin-apache-poi: DBeaver library for Microsoft Office doc
   'dbeaver-plugin-sshj-lib: SSHv2 library for Java for DBeaver plugin for SSHv2 tunnels'
   'dbeaver-plugin-svg-format: save diagrams in SVG format')
 source=("https://dbeaver.io/files/${pkgver}/dbeaver-ce_${pkgver}_amd64.deb")
-sha256sums=('6b992c1d6b67b8b453acf247be505befa4fadbea41538cc71dc26423dd999962')
+sha256sums=('b919ccc2cf754efa0e46d8802442a5bea4e8a7743ad86d0427ab180bd39cc0f7')
 
 package() {
   msg2 'Extracting the data.tar.gz...'
