@@ -55,8 +55,8 @@ package() {
   # install desktop entry and license document
   install -D --mode 644 \
     "${pkgname}.desktop" \
-    "${pkgdir}/usr/share/applications"
+    "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -D --mode 644 \
     "app/LICENSE.md" \
-    "${pkgdir}/usr/share/licenses/${pkgname}"
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
