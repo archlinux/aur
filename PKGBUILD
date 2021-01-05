@@ -7,7 +7,7 @@ pkgbase=gprbuild
 pkgname=(libgpr gprbuild)
 _upstream_ver=2020-20200429-19BD2
 pkgver=2020
-pkgrel=5
+pkgrel=6
 pkgdesc="Builder for multi-language systems"
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/gprbuild/"
@@ -52,6 +52,9 @@ build() {
 package_libgpr() {
     pkgdesc="Ada library to handle GPRbuild project files"
     depends=('xmlada')
+
+    # both provide /usr/lib/libgpr.so
+    conflicts=('grpc')
 
     cd "$srcdir/$pkgbase-$_upstream_ver-src"
 
