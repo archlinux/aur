@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libbacktrace-git
 	pkgdesc = Library to produce symbolic backtraces (mingw-w64)
-	pkgver = r47.95e8e96
+	pkgver = r53.1da441c
 	pkgrel = 1
 	url = https://github.com/ianlancetaylor/libbacktrace
 	arch = any
