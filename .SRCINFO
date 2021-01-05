@@ -1,6 +1,6 @@
 pkgbase = libretro-gw-git
 	pkgdesc = gw-libretro is a libretro core that runs Game & Watch simulators
-	pkgver = 257.46b889c
+	pkgver = 272.e3ba6eb
 	pkgrel = 1
 	url = https://github.com/libretro/gw-libretro
 	arch = i686
