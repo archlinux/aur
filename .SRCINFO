@@ -1,0 +1,27 @@
+pkgbase = android-aarch64-qt6-imageformats
+	pkgdesc = Plugins for additional image formats: TIFF, TGA, WBMP (android)
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = any
+	groups = android-aarch64-qt6
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = android-cmake
+	makedepends = qt6-base
+	makedepends = ninja
+	makedepends = java-environment-openjdk=8
+	makedepends = git
+	depends = android-aarch64-qt6-base
+	depends = android-aarch64-libwebp
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = qtimageformats-everywhere-src-6.0.0::git://code.qt.io/qt/qtimageformats.git#tag=v6.0.0
+	sha256sums = SKIP
+
+pkgname = android-aarch64-qt6-imageformats
+
