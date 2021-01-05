@@ -2,7 +2,7 @@
 pkgname=buildaur-git
 _pkgname=buildaur
 pkgver=195.b8bbadc
-pkgrel=1
+pkgrel=2
 pkgdesc="An AUR helper with asp support (development version)"
 arch=(any)
 conflicts=($_pkgname)
@@ -25,6 +25,7 @@ package() {
 	cd "$srcdir/$pkgname"
   install -Dm0755 -t "${pkgdir}/usr/bin" buildaur.sh buildaur
 	install -Dm644 -t "${pkgdir}/usr/share/buildaur" progressbar_buildaur.py buildaur_translations.py outputter.sh
+  install -Dm0755 -t "${pkgdir}/usr/share/buildaur" outputter.sh
 	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
 	install -Dm644 -t "${pkgdir}/etc/bash_completion.d/" buildaur-completion.bash
 	install -Dm644 -t "$pkgdir/etc/buildaur/" buildaur.conf
