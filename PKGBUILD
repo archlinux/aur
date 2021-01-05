@@ -4,10 +4,10 @@
 
 _gemname=fluentd
 pkgname=$_gemname
-pkgver=1.11.5
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Open source data collector designed to scale and simplify log management'
-arch=(x86_64)
+arch=(any)
 url='https://github.com/fluent/fluentd'
 license=(Apache)
 depends=(ruby ruby-msgpack ruby-yajl-ruby ruby-cool.io ruby-serverengine ruby-http_parser.rb ruby-sigdump ruby-tzinfo ruby-tzinfo-data ruby-strptime)
@@ -19,7 +19,7 @@ source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem"
         "$pkgname.sysusers")
 noextract=("$_gemname-$pkgver.gem")
 backup=('etc/fluentd/fluentd.conf')
-b2sums=('8a3d1415a809c84c9a28632fbba4bc3d481fc46be45765f7feb8e88a70b5dfdb7b172dc48e530a69abf239ab019f1c587ba6f97478ff86fec525ef687cdbe104'
+b2sums=('3c8962de67ced5104c13a6c96e000387c078e46d152f04fc2b4793a5f901f10b1f13be6fdda9fc443d7b3ca2a5d8c4799cc96bb79e1aa281723e938a435cb264'
         '73a3afc0e3692890087d03a778e26949af2d68c3eb3c0656b4d278c8f4e51f71678482a2dde58565df7ca3b9ce7d1f9dd4b1cc3f85d9c0ac2b7e6ccacd8e6ff5'
         '80b220bdee1eb18f128db3514484fcfd13c8e2a99fb43f03f4e2ebfa0ddc893a7b128f1bcbdc9f43b235c0613cdce71ef7d12120131b419d9efeb89d51860c3a'
         '8957872f805a274a56ae9e63896033a5fe175bd4d71704e62aff18524b95bf2a611bb3a4bff3c93b6d977f209e415a7d38d806341e144919022226ab1f53247d'
