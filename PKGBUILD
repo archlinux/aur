@@ -3,7 +3,7 @@
 
 _pkgname='windows95'
 pkgname="${_pkgname}-electron-bin"
-pkgver=2.2.2
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Windows 95, running in an Electron app'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('gtk3' 'libxss' 'nss')
 provides=("${_pkgname}")
 source=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
         "${_pkgname}-${pkgver}-LICENSE.md::${url}/raw/v${pkgver}/LICENSE.md")
-sha256sums=('4e59cb8d122d562024cd85d1917f9ad87093202393a81dd7c580522ba996b506'
+sha256sums=('d9e7c10235347f27bcaafdf5ff28d5b77d425dfe56c1a530456198dc57a70d1d'
             '29b033609720d6977aaf4f537319ab136fb8b84022a3c847daf2ffca88d8eb20')
 
 package() {
