@@ -26,7 +26,7 @@ pkgver() {
 build() {
   cd "code"
 
-  ./autogen.sh
+  autoreconf -fi
   ./configure --prefix="/usr" --enable-hardware-optimizations --enable-intel-sse
   make
 }
