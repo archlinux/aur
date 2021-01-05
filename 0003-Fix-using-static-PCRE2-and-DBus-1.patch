@@ -1,0 +1,48 @@
+From 95e7cc0c70ebad9da721154cb523db7c214c6996 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Thu, 5 Nov 2020 21:13:19 +0100
+Subject: [PATCH 3/7] Fix using static PCRE2 and DBus-1
+
+When making a static build of Qt we're using the static version of these
+libraries and must define the corresponding macros.
+
+Change-Id: I2387b79462b6d183b71f9433dd937f63fc7ef26e
+---
+ src/corelib/text/qregularexpression.cpp | 5 +++++
+ src/dbus/qdbus_symbols_p.h              | 4 ++++
+ 2 files changed, 9 insertions(+)
+
+diff --git a/src/corelib/text/qregularexpression.cpp b/src/corelib/text/qregularexpression.cpp
+index 827884d709..be5159186c 100644
+--- a/src/corelib/text/qregularexpression.cpp
++++ b/src/corelib/text/qregularexpression.cpp
+@@ -53,6 +53,11 @@
+ #include <QtCore/qdatastream.h>
+ 
+ #define PCRE2_CODE_UNIT_WIDTH 16
++#ifdef QT_STATIC
++#define PCRE_STATIC
++#define PCRE2_STATIC
++#endif
++#define PCRE2_EXP_DECL Q_CORE_EXPORT
+ 
+ #include <pcre2.h>
+ 
+diff --git a/src/dbus/qdbus_symbols_p.h b/src/dbus/qdbus_symbols_p.h
+index accaa4f5ed..4b11c74caa 100644
+--- a/src/dbus/qdbus_symbols_p.h
++++ b/src/dbus/qdbus_symbols_p.h
+@@ -57,6 +57,10 @@
+ 
+ #ifndef QT_NO_DBUS
+ 
++#ifdef QT_STATIC
++#  define DBUS_STATIC_BUILD
++#endif
++
+ #ifdef QT_LINKED_LIBDBUS
+ #  include <dbus/dbus.h>
+ #else
+-- 
+2.30.0
+

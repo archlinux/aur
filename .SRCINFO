@@ -1,0 +1,51 @@
+pkgbase = android-aarch64-qt6-base
+	pkgdesc = A cross-platform application and UI framework (android)
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = any
+	groups = android-aarch64-qt6
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = android-cmake
+	makedepends = android-pkg-config
+	makedepends = java-environment-openjdk=8
+	makedepends = qt6-base
+	makedepends = ninja
+	depends = java-runtime-headless-openjdk=8
+	depends = ant
+	depends = android-ndk
+	depends = android-sdk
+	depends = android-sdk-build-tools
+	depends = android-sdk-platform-tools
+	depends = android-platform
+	depends = android-aarch64-libjpeg-turbo
+	depends = android-aarch64-libpng
+	depends = android-aarch64-openssl
+	depends = android-aarch64-zlib
+	optdepends = qt6-base: development tools
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://download.qt.io/official_releases/qt/6.0/6.0.0/submodules/qtbase-everywhere-src-6.0.0.tar.xz
+	source = 0001-Use-CMake-s-default-import-library-suffix.patch
+	source = 0002-Fix-finding-D-Bus.patch
+	source = 0003-Fix-using-static-PCRE2-and-DBus-1.patch
+	source = 0004-Fix-transitive-dependencies-of-static-libraries.patch
+	source = 0005-Fix-libjpeg-workaround-for-conflict-with-rpcndr.h.patch
+	source = 0006-Support-finding-MariaDB.patch
+	source = 0007-Allow-overriding-CMAKE_FIND_LIBRARY_SUFFIXES-to-pref.patch
+	sha256sums = ae227180272d199cbb15318e3353716afada5c57fd5185b812ae26912c958656
+	sha256sums = 0907b860c3394efc457304e75ec0282799374a83f411e194250cd20f4f703051
+	sha256sums = ba9f624f9393289930b10a1b976d094f4f023009d46ceaf1a05af0ef9981a65f
+	sha256sums = 7b1b9b3b995e0ade88251bd97ca9b197511ed35657d7ec5643eaee22f7f83993
+	sha256sums = aa30dd86403f39cc3de9512de05c86dbb69ca141bdb55ca4dd7578c03de174a9
+	sha256sums = dd4db93874ae433a88dde68ebe5bed864c0af4a37cb81778a4154cda8f310b3d
+	sha256sums = 713d91d944688677c3d56f07f7a9e8b9858a38709daf95cea99e5a87f8e429d2
+	sha256sums = 56d024b76fa9dde2bcf8720a48bf9c43dc8b48256be6590d3da55fc68c27ad25
+
+pkgname = android-aarch64-qt6-base
+

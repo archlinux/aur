@@ -1,0 +1,30 @@
+From ea58e477bd07475f2fd9c1b0025732265cf0467c Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 8 Nov 2020 00:33:12 +0100
+Subject: [PATCH 6/7] Support finding MariaDB
+
+Change-Id: I3f95a7c3aabc734e1c6c5ce00957ab9814200232
+---
+ cmake/FindMySQL.cmake | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/FindMySQL.cmake b/cmake/FindMySQL.cmake
+index 7575386338..df1d848cf6 100644
+--- a/cmake/FindMySQL.cmake
++++ b/cmake/FindMySQL.cmake
+@@ -24,10 +24,10 @@ pkg_check_modules(PC_MySQL QUIET mysqlclient)
+ find_path(MySQL_INCLUDE_DIRS
+           NAMES mysql.h
+           HINTS ${PC_MySQL_INCLUDEDIR}
+-          PATH_SUFFIXES mysql)
++          PATH_SUFFIXES mariadb mysql)
+ 
+ find_library(MySQL_LIBRARIES
+-             NAMES mysqlclient
++             NAMES mariadb mariadbclient mysqlclient
+              HINTS ${PC_MySQL_LIBDIR}
+ )
+ 
+-- 
+2.30.0
+

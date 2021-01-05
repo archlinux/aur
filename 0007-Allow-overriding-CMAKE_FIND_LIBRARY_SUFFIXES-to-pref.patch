@@ -1,0 +1,37 @@
+From 563b073d12df9982f3ec75b95a6a9eeb2058c6bd Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 8 Nov 2020 00:34:09 +0100
+Subject: [PATCH 7/7] Allow overriding CMAKE_FIND_LIBRARY_SUFFIXES to prefer
+ static libraries
+
+Change-Id: Ic29b64b999ed9b5888a8dc1b0961a76009c5e75c
+---
+ cmake/QtBuildInternals/QtBuildInternalsConfig.cmake | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/cmake/QtBuildInternals/QtBuildInternalsConfig.cmake b/cmake/QtBuildInternals/QtBuildInternalsConfig.cmake
+index bb2de0a0c2..a2e8b37ba7 100644
+--- a/cmake/QtBuildInternals/QtBuildInternalsConfig.cmake
++++ b/cmake/QtBuildInternals/QtBuildInternalsConfig.cmake
+@@ -2,6 +2,10 @@ if (CMAKE_VERSION VERSION_LESS 3.1.0)
+     message(FATAL_ERROR "Qt requires at least CMake version 3.1.0")
+ endif()
+ 
++if (CMAKE_FIND_LIBRARY_SUFFIXES_OVERRIDE)
++    set(CMAKE_FIND_LIBRARY_SUFFIXES "${CMAKE_FIND_LIBRARY_SUFFIXES_OVERRIDE}")
++endif ()
++
+ ######################################
+ #
+ #       Macros for building Qt modules
+@@ -268,6 +272,7 @@ macro(qt_prepare_standalone_project)
+ endmacro()
+ 
+ macro(qt_build_repo_begin)
++
+     qt_build_internals_set_up_private_api()
+     qt_enable_cmake_languages()
+ 
+-- 
+2.30.0
+
