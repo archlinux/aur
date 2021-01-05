@@ -1,6 +1,6 @@
 pkgbase = libretro-stella2014-git
 	pkgdesc = libretro implementation of Stella. (Atari 2600)
-	pkgver = 230.3e8c080
+	pkgver = 242.2340b12
 	pkgrel = 1
 	url = https://github.com/libretro/stella2014-libretro
 	arch = i686
