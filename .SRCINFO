@@ -1,0 +1,15 @@
+pkgbase = kubecm-git
+	pkgdesc = Manage your kubeconfig more easily.
+	pkgver = v0.13.1
+	pkgrel = 1
+	url = https://github.com/sunny0826/kubecm
+	arch = i686
+	arch = x86_64
+	makedepends = make
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/sunny0826/kubecm.git
+	sha1sums = SKIP
+
+pkgname = kubecm-git
+
