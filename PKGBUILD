@@ -1,9 +1,10 @@
 # Maintainer: Guilhem Saurel <gsaurel@laas.fr>
 
 pkgorg='stack-of-tasks'
-pkgname=('tsid' 'tsid-docs')
+_pkgname='tsid'
+pkgname=("$_pkgname" "$_pkgname-docs")
 pkgver=1.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Efficient Task Space Inverse Dynamics (TSID) based on Pinocchio"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
@@ -38,6 +39,6 @@ package_tsid() {
 package_tsid-docs() {
     cd "$pkgbase-$pkgver/build"
     make DESTDIR="$pkgdir/" install
-    rm -rf $pkgdir/usr/{lib,include}
+    rm -rf $pkgdir/usr/{lib,include,"share/$_pkgname"}
     install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
