@@ -1,0 +1,17 @@
+pkgbase = stegseek
+	pkgdesc = Lightning fast steghide cracker
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/RickdeJager/stegseek
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = mhash
+	depends = libmcrypt
+	depends = libjpeg
+	depends = zlib
+	source = stegseek-0.5.tar.gz::https://github.com/RickdeJager/stegseek/archive/v0.5.tar.gz
+	sha512sums = 9155ddbbbe651e688cfe3665c9ec2237f1eb7b7b3c95c3f82721b17dc99c4a532a5e6213cbe4f884bdb951b74f7d1923e73f08a3e155470188b07f3cdeb6c048
+
+pkgname = stegseek
+
