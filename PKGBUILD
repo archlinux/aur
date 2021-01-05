@@ -1,9 +1,10 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
 pkgorg='stack-of-tasks'
-pkgname=('pinocchio' 'pinocchio-docs')
+_pkgname='pinocchio'
+pkgname=("$_pkgname" "$_pkgname-docs")
 pkgver=2.5.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Dynamic computations using Spatial Algebra"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
@@ -43,6 +44,6 @@ package_pinocchio() {
 package_pinocchio-docs() {
     cd "$pkgbase-$pkgver/build"
     make DESTDIR="$pkgdir/" install
-    rm -rf $pkgdir/usr/{lib,include,bin,share/pinocchio}
+    rm -rf $pkgdir/usr/{lib,include,bin,"share/$_pkgname"}
     install -Dm644 ../COPYING.LESSER "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
