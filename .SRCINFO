@@ -1,13 +1,13 @@
 pkgbase = git-rainbow-branches
 	pkgdesc = Rainbow printing for git branch -avv
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/bradford-smith94/git-rainbow-branches
 	arch = any
 	license = MIT
 	depends = git
-	source = https://github.com/bradford-smith94/git-rainbow-branches/archive/v0.1.0.tar.gz
-	md5sums = 74e04941d8ecdd35e4306ed9cbc32d52
+	source = https://github.com/bradford-smith94/git-rainbow-branches/archive/v0.1.1.tar.gz
+	sha256sums = 74e04941d8ecdd35e4306ed9cbc32d52
 
 pkgname = git-rainbow-branches
 
