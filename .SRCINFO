@@ -1,0 +1,17 @@
+pkgbase = lib32-libpng12-minimal
+	pkgdesc = A collection of routines used to create PNG format graphics files
+	pkgver = 1.2.59
+	pkgrel = 1
+	url = http://www.libpng.org/pub/png/libpng.html
+	arch = x86_64
+	license = custom
+	makedepends = gcc-multilib
+	depends = lib32-glibc
+	depends = lib32-zlib
+	source = https://sourceforge.net/projects/libpng/files/libpng-1.2.59.tar.xz
+	source = https://sourceforge.net/projects/libpng-apng/files/libpng12/1.2.59/libpng-1.2.59-apng.patch.gz
+	sha256sums = b4635f15b8adccc8ad0934eea485ef59cc4cae24d0f0300a9a941e51974ffcc7
+	sha256sums = SKIP
+
+pkgname = lib32-libpng12-minimal
+
