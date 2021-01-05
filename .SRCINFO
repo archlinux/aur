@@ -1,0 +1,18 @@
+pkgbase = cherry-kde-theme
+	pkgdesc = Clean, Flat, Fervent Tempo battlesuit-inspired Theme for Plasma Desktop
+	pkgver = 1.3.r3.g1cc6fb8
+	pkgrel = 1
+	url = https://github.com/nullxception/cherry-kde-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	optdepends = konsole: For the Konsole color scheme
+	optdepends = kvantum-qt5: For the Qt application style
+	provides = cherry-kde
+	conflicts = cherry-kde
+	options = !strip
+	source = cherry-kde::git+https://github.com/nullxception/cherry-kde-theme.git
+	sha256sums = SKIP
+
+pkgname = cherry-kde-theme
+
