@@ -1,6 +1,6 @@
 pkgbase = smartmeter
 	pkgdesc = Read energy utility meter with IR dongle
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/ahpohl/smartmeter
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = smartmeter
 	license = MIT
 	depends = mosquitto
 	backup = etc/smartmeter.conf
-	source = smartmeter-0.2.5::git+https://github.com/ahpohl/smartmeter.git#tag=v0.2.5
+	source = smartmeter-0.2.6::git+https://github.com/ahpohl/smartmeter.git#tag=v0.2.6
 	sha256sums = SKIP
 
 pkgname = smartmeter
