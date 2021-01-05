@@ -1,0 +1,29 @@
+pkgbase = android-aarch64-qt6-tools
+	pkgdesc = A cross-platform application and UI framework (tools, android)
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = any
+	groups = android-aarch64-qt6
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = android-cmake
+	makedepends = android-aarch64-qt6-declarative
+	makedepends = qt6-declarative
+	makedepends = qt6-tools
+	makedepends = ninja
+	makedepends = java-environment-openjdk=8
+	depends = android-aarch64-qt6-base
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://download.qt.io/official_releases/qt/6.0/6.0.0/submodules/qttools-everywhere-src-6.0.0.tar.xz
+	source = 0001-Make-windeployqt-an-optional-feature.patch
+	sha256sums = b6dc559db447bf394d09dfb238d5c09108f834139a183888179e855c6566bfae
+	sha256sums = f316cdb87dcc84d1fe9ebd262812118e35571aa0fadd3da6ac3b9f42af19b8bb
+
+pkgname = android-aarch64-qt6-tools
+

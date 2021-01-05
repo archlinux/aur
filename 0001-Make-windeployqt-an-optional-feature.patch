@@ -1,0 +1,26 @@
+From 007674dc717498f33a8e30a558e8d6560369a0fd Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Thu, 26 Nov 2020 01:53:27 +0100
+Subject: [PATCH] Make windeployqt an optional feature
+
+Change-Id: I3c797df913c07ed80929b41d367b1ebb41d8400f
+---
+ src/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 770f1cab..d5d34064 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -51,7 +51,7 @@ endif()
+ if(TARGET Qt::DBus)
+     add_subdirectory(qdbus)
+ endif()
+-if(WIN32)
++if(QT_FEATURE_windeployqt)
+     add_subdirectory(windeployqt)
+ endif()
+ if(QT_FEATURE_commandlineparser AND TARGET Qt::Gui AND NOT ANDROID AND NOT QNX AND NOT UIKIT AND NOT WASM)
+-- 
+2.29.2
+
