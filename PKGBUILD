@@ -6,7 +6,7 @@
 pkgbase=ddccontrol
 pkgname=(ddccontrol gddccontrol)
 pkgver=0.4.4
-pkgrel=7
+pkgrel=8
 pkgdesc="Control your monitor by software using the DDC/CI protocol"
 arch=('i686' 'x86_64')
 url="https://github.com/ddccontrol/ddccontrol"
@@ -24,7 +24,7 @@ sha256sums=('aafbb16ac4f4edfe3fcc5feec1eb5729aaf86e3b0f31f9d707ba1406bb404817'
 prepare() {
 	cd "${srcdir}"/${pkgbase}-${pkgver}
 	patch -Np1 -i ../fix-gcc10-compilation.patch
-	test -f configure || ./autogen.sh
+	test -f configure || INTLTOOLIZE='intltoolize --force' autoreconf --install
 }
 
 build() {
