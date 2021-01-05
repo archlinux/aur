@@ -1,6 +1,6 @@
 pkgbase = kde2-kdebase-git
 	pkgdesc = Historical copy of the base module of KDE 2, adapted to compile on modern systems
-	pkgver = 2.2.2.r18.9c677b2
+	pkgver = 2.2.2.r185.59a91e9
 	pkgrel = 1
 	url = https://github.com/sandsmark/kdebase
 	arch = i686
@@ -9,10 +9,13 @@ pkgbase = kde2-kdebase-git
 	license = GPL2
 	makedepends = cmake
 	makedepends = git
-	depends = qt2
+	depends = kde2-kdelibs
 	depends = xorg-iceauth
+	depends = libxtst
+	depends = libxinerama
 	provides = kde2-kdebase
 	conflicts = kde2-kdebase
+	options = libtool
 	source = git+https://github.com/sandsmark/kde2-kdebase.git
 	md5sums = SKIP
 
