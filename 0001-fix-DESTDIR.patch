@@ -1,9 +1,7 @@
 From 218f8689a75935dfec2bb410b0057b91a8e782d8 Mon Sep 17 00:00:00 2001
-From: Zhai Zhaoxuan <kxuanobj@gmail.com>
 Date: Tue, 5 Jan 2021 17:57:57 +0800
 Subject: [PATCH] fix DESTDIR
 
-Signed-off-by: Zhai Zhaoxuan <kxuanobj@gmail.com>
 ---
  Makefile.in | 10 +++++-----
  1 file changed, 5 insertions(+), 5 deletions(-)
