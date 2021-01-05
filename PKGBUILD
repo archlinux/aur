@@ -1,7 +1,7 @@
 #maintainer lxgr <lxgr@protonmail.com>
 pkgname=buildaur
 pkgver=42.0.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc="An AUR helper with asp support"
 arch=(any)
 url="https://github.com/lxgr-linux/buildaur"
@@ -15,23 +15,12 @@ md5sums=('2d6729a790ed96bfc07c011adeb356e8')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-	install -dm755 "${pkgdir}/usr/share/buildaur"
-	install -dm755 "${pkgdir}/etc/bash_completion.d"
-	install -m644 blacklist "${pkgdir}/usr/share/buildaur"
-	install -m644 buildaur-completion.bash "${pkgdir}/etc/bash_completion.d"
-	install -Dm0755 progressbar_buildaur.py "${pkgdir}/usr/share/buildaur"
-	install -Dm0755 buildaur_translations.py "${pkgdir}/usr/share/buildaur"
-	install -dm755 "${pkgdir}/etc/buildaur"
-	install -dm755 "${pkgdir}/etc/buildaur/prehooks"
-	install -dm755 "${pkgdir}/etc/buildaur/posthooks"
-	install -dm755 "${pkgdir}/etc/buildaur/prerunhooks"
-	install -dm755 "${pkgdir}/etc/buildaur/postrunhooks"
-	install -dm755 "${pkgdir}/etc/buildaur/hooks"
-	install -Dm0755 -t "$pkgdir/etc/buildaur/prehooks" ./prehooks/*
-	install -m644 buildaur.conf "$pkgdir/etc/buildaur/"
+	install -Dm0755 -t "${pkgdir}/usr/bin" buildaur.sh buildaur
+	install -Dm644 -t "${pkgdir}/usr/share/buildaur" progressbar_buildaur.py buildaur_translations.py outputter.sh blacklist
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
+	install -Dm644 -t "${pkgdir}/etc/bash_completion.d/" buildaur-completion.bash
+	install -Dm644 -t "$pkgdir/etc/buildaur/" buildaur.conf
+	install -dm755 "${pkgdir}/etc/buildaur/"{prehooks,posthooks,prerunhooks,postrunhooks,hooks}
+	install -Dm0755 ./prehooks/* "$pkgdir/etc/buildaur/prehooks"
 	#install -Dm0755 -t "$pkgdir/etc/buildaur/posthooks" ./posthooks/*
-	install -Dm0755 -t "$pkgdir/usr/bin" "buildaur"
-	install -Dm0755 -t "$pkgdir/usr/bin" "buildaur.sh"
-	install -Dm0755 -t "$pkgdir/usr/share/buildaur" "outputter.sh"
-	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
