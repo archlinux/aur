@@ -1,0 +1,11 @@
+diff -rub craft/deps/tinycthread/tinycthread.h craft-patched/deps/tinycthread/tinycthread.h
+--- craft/deps/tinycthread/tinycthread.h	2019-10-25 01:39:05.150038579 +0300
++++ craft-patched/deps/tinycthread/tinycthread.h	2019-10-25 01:43:53.623190099 +0300
+@@ -59,7 +59,6 @@
+ 
+ /* Activate some POSIX functionality (e.g. clock_gettime and recursive mutexes) */
+ #if defined(_TTHREAD_POSIX_)
+-  #undef _FEATURES_H
+   #if !defined(_GNU_SOURCE)
+     #define _GNU_SOURCE
+   #endif

@@ -1,7 +1,7 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-craft-git
-pkgver=1058.3f1d382
+pkgver=1062.9d37b5e
 pkgrel=1
 pkgdesc="A simple Minecraft clone written in C using modern OpenGL (shaders)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')

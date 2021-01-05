@@ -1,6 +1,6 @@
 pkgbase = libretro-craft-git
 	pkgdesc = A simple Minecraft clone written in C using modern OpenGL (shaders)
-	pkgver = 1058.3f1d382
+	pkgver = 1062.9d37b5e
 	pkgrel = 1
 	url = https://github.com/libretro/Craft
 	arch = i686
