@@ -1,0 +1,22 @@
+pkgbase = lib32-libtiff4-minimal
+	pkgdesc = Library for manipulation of TIFF images
+	pkgver = 3.9.7
+	pkgrel = 1
+	url = http://www.simplesystems.org/libtiff/
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = lib32-libjpeg-turbo
+	depends = lib32-zlib
+	optdepends = jbigkit: jbigkit support
+	provides = lib32-libtiff4
+	conflicts = lib32-libtiff4
+	source = git+https://gitlab.com/libtiff/libtiff.git#tag=Release-v3-9-7
+	source = libtiff4-soname.patch
+	sha256sums = SKIP
+	sha256sums = e6246631f6d943715b612b4ddd2279c946ff90c9e8d755fa639e8051a6eb3488
+
+pkgname = lib32-libtiff4-minimal
+
