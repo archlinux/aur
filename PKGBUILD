@@ -3,8 +3,8 @@
 _pkgname=nimf
 pkgname=nimf-libhangul-git
 pkgver=1.3.0.r5.f02290d
-pkgrel=1
-pkgdesc="Nimf is an input method framework."
+pkgrel=2
+pkgdesc="Nimf is a lightweight, fast and extensible input method framework. (libhangul only)"
 arch=('any')
 url="https://github.com/hamonikr/nimf"
 license=('LGPL3')
