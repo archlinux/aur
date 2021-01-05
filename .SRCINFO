@@ -1,6 +1,6 @@
 pkgbase = elementary-planner
 	pkgdesc = Task manager with Todoist support
-	pkgver = 2.6.7
+	pkgver = 2.6.8
 	pkgrel = 1
 	url = https://useplanner.com
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = elementary-planner
 	depends = elementary-icon-theme
 	provides = planner
 	conflicts = planner
-	source = planner-2.6.7.tar.gz::https://github.com/alainm23/planner/archive/2.6.7.tar.gz
-	sha256sums = 1f282f8f65d624de57648f49cd1af229a27bb50b1ad3526cdb75320925f76917
+	source = planner-2.6.8.tar.gz::https://github.com/alainm23/planner/archive/2.6.8.tar.gz
+	sha256sums = 2b2e466257da31105e7e0b7676d1a4e10d384c6461d44472ca49b5e36d587980
 
 pkgname = elementary-planner
 

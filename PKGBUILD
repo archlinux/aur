@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Jonas 'cherti' Große Sundrup <aur@letopolis.de>
 pkgname=elementary-planner
-pkgver=2.6.7
+pkgver=2.6.8
 pkgrel=1
 pkgdesc="Task manager with Todoist support"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('meson' 'vala' 'gobject-introspection')
 provides=('planner')
 conflicts=('planner')
 source=("planner-$pkgver.tar.gz::https://github.com/alainm23/planner/archive/$pkgver.tar.gz")
-sha256sums=('1f282f8f65d624de57648f49cd1af229a27bb50b1ad3526cdb75320925f76917')
+sha256sums=('2b2e466257da31105e7e0b7676d1a4e10d384c6461d44472ca49b5e36d587980')
 
 build() {
 	arch-meson planner-$pkgver build
