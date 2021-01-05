@@ -1,0 +1,11 @@
+diff -rupN gettext-0.21/gettext-tools/woe32dll/gettextsrc-exports.c gettext-0.21-new/gettext-tools/woe32dll/gettextsrc-exports.c
+--- gettext-0.21/gettext-tools/woe32dll/gettextsrc-exports.c	2019-12-23 12:21:12.000000000 +0100
++++ gettext-0.21-new/gettext-tools/woe32dll/gettextsrc-exports.c	2020-08-03 14:22:17.096473605 +0200
+@@ -50,6 +50,7 @@ VARIABLE(formatstring_python)
+ VARIABLE(formatstring_python_brace)
+ VARIABLE(formatstring_qt)
+ VARIABLE(formatstring_qt_plural)
++VARIABLE(formatstring_ruby)
+ VARIABLE(formatstring_scheme)
+ VARIABLE(formatstring_sh)
+ VARIABLE(formatstring_smalltalk)

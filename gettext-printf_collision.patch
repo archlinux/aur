@@ -1,0 +1,20 @@
+diff -rupN --no-dereference gettext-0.21/gettext-runtime/intl/libgnuintl.in.h gettext-0.21-new/gettext-runtime/intl/libgnuintl.in.h
+--- gettext-0.21/gettext-runtime/intl/libgnuintl.in.h	2020-07-26 22:13:34.000000000 +0200
++++ gettext-0.21-new/gettext-runtime/intl/libgnuintl.in.h	2020-08-03 11:57:20.495613456 +0200
+@@ -431,6 +431,7 @@ extern int vasprintf (char **, const cha
+ #endif
+ 
+ #if @HAVE_WPRINTF@
++#ifndef __cplusplus
+ 
+ #undef fwprintf
+ #define fwprintf libintl_fwprintf
+@@ -455,6 +456,8 @@ extern int vswprintf (wchar_t *, size_t,
+ 
+ #endif
+ 
++#endif
++
+ #endif
+ 
+ 
