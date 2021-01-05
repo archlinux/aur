@@ -2,13 +2,13 @@
 pkgname=speedify
 _pkgver=9.8.0-8512
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Use multiple internet connections in parallel"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://speedify.com/"
 license=(unknown)
 groups=()
-depends=()
+depends=( lsof net-tools )
 makedepends=()
 provides=()
 conflicts=()

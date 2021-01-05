@@ -1,12 +1,14 @@
 pkgbase = speedify
 	pkgdesc = Use multiple internet connections in parallel
 	pkgver = 9.8.0.8512
-	pkgrel = 2
+	pkgrel = 3
 	url = https://speedify.com/
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = unknown
+	depends = lsof
+	depends = net-tools
 	source_x86_64 = http://apt.connectify.me/pool/main/s/speedify/speedify_9.8.0-8512_amd64.deb
 	md5sums_x86_64 = 3c3178d7eee99e641de9d41fc7b95dca
 	source_aarch64 = http://apt.connectify.me/pool/main/s/speedify/speedify_9.8.0-8512_arm64.deb
