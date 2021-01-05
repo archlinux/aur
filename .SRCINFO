@@ -1,0 +1,14 @@
+pkgbase = python-manimpango
+	pkgdesc = C binding for Pango using Cython used in Manim to render (non-LaTeX) text.
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/ManimCommunity/manimpango/
+	arch = any
+	license = GPL3
+	depends = pango
+	depends = python
+	source = https://github.com/ManimCommunity/ManimPango/releases/download/v0.1.4/manimpango-0.1.4.tar.gz
+	sha256sums = 693fbc52ea60c75acb9c98f23fc8e98a429b5ce02ab761ef9db24e9d61d62a49
+
+pkgname = manimpango
+
