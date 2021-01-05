@@ -1,7 +1,7 @@
 # Maintainer: Christopher P. Fair  
 
 pkgname=triplea
-pkgver=2.5.22294
+pkgver=2.6.22541
 pkgrel=1
 pkgdesc='An online multiplayer turn based strategy game and board game engine.'
 arch=('any')
