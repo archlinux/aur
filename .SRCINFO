@@ -1,6 +1,6 @@
 pkgbase = snm
 	pkgdesc = Smol Node Manager written in Rust
-	pkgver = 0.1.9
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/numToStr/snm
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = snm
 	depends = git
 	provides = snm
 	conflicts = snm
-	source_x86_64 = https://github.com/numToStr/snm/releases/download/v0.1.9/snm-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = https://github.com/numToStr/snm/releases/download/v0.2.0/snm-x86_64-unknown-linux-gnu.tar.gz
 	md5sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/numToStr/snm/releases/download/v0.1.9/snm-aarch64-unknown-linux-gnu.tar.gz
+	source_aarch64 = https://github.com/numToStr/snm/releases/download/v0.2.0/snm-aarch64-unknown-linux-gnu.tar.gz
 	md5sums_aarch64 = SKIP
-	source_armv7 = https://github.com/numToStr/snm/releases/download/v0.1.9/snm-armv7-unknown-linux-gnueabihf.tar.gz
+	source_armv7 = https://github.com/numToStr/snm/releases/download/v0.2.0/snm-armv7-unknown-linux-gnueabihf.tar.gz
 	md5sums_armv7 = SKIP
 
 pkgname = snm
