@@ -1,9 +1,10 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
 pkgorg='gepetto'
-pkgname=('example-robot-data' 'example-robot-data-docs')
+_pkgname='example-robot-data'
+pkgname=("${_pkgname}" "${_pkgname}-docs")
 pkgver=3.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Set of robot URDFs for benchmarking and developed examples. "
 arch=('any')
 url="https://github.com/$pkgorg/$pkgname"
@@ -42,5 +43,5 @@ package_example-robot-data-docs() {
     cd "$pkgbase-$pkgver/build"
     make DESTDIR="$pkgdir/" install
     install -D -m755 "../LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    rm -rf $pkgdir/usr/{lib,include}
+    rm -rf $pkgdir/usr/{lib,include,"share/$_pkgname"}
 }

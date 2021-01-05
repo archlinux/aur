@@ -1,7 +1,7 @@
 pkgbase = example-robot-data
 	pkgdesc = Set of robot URDFs for benchmarking and developed examples.
 	pkgver = 3.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gepetto/example-robot-data
 	arch = any
 	license = BSD
