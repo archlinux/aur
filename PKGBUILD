@@ -1,9 +1,9 @@
 # Maintainer: SanskritFritz (gmail)
 
-pkgname=(pzl_common pzl_ajs pzl_akari pzl_arrowsudoku pzl_boggle pzl_bridges pzl_codeword pzl_fillomino pzl_futoshiki pzl_gol pzl_hidato pzl_hitori pzl_jigsaw pzl_jigsawsudoku pzl_kakuro pzl_masyu pzl_minesweeper pzl_numberlink pzl_nurikabe pzl_scrabbler pzl_othello pzl_ripple pzl_shikaku pzl_sokoban pzl_sudoku pzl_suguru pzl_sumpuzzle pzl_tetrofit pzl_wordwheel pzl_wordladder)
+pkgname=(pzl_common pzl_ajs pzl_akari pzl_arrowsudoku pzl_binary pzl_boggle pzl_bridges pzl_codeword pzl_fillomino pzl_futoshiki pzl_gol pzl_hidato pzl_hitori pzl_jigsaw pzl_jigsawsudoku pzl_kakuro pzl_masyu pzl_minesweeper pzl_numberlink pzl_nurikabe pzl_scrabbler pzl_othello pzl_ripple pzl_shikaku pzl_sokoban pzl_sudoku pzl_suguru pzl_sumpuzzle pzl_tetrofit pzl_wordwheel pzl_wordladder)
 pkgbase="pzl_games"
-pkgver=22.1
-_pkgver=22_1
+pkgver=23.0
+_pkgver=23_0
 pkgrel=1
 pkgdesc="Collection of puzzle games."
 arch=('any')
@@ -13,6 +13,7 @@ source=("http://pzl.org.uk/pzl3_$_pkgver.zip"
         "pzl_ajs.desktop"
         "pzl_akari.desktop"
         "pzl_arrowsudoku.desktop"
+        "pzl_binary.desktop"
         "pzl_boggle.desktop"
         "pzl_bridges.desktop"
         "pzl_codeword.desktop"
@@ -40,10 +41,11 @@ source=("http://pzl.org.uk/pzl3_$_pkgver.zip"
         "pzl_wordwheel.desktop"
         "pzl_wordladder.desktop")
 
-md5sums=('055f3622c733136fb202ce73d3ea0e4f'
+md5sums=('7021d5709ffffe43e55011c148343bdb'
          '6f5058e263976d69a2eb356ca2c2a6b5'
          '37af6d1fa020f7fa532a69a0e07b32ad'
          'a1e25c7621e92598bcdb8d442133031a'
+         '25bd274e5e1637fd09d48661a4ad6a52'
          '898534ec921c3c165fc11a7b5ef9b8d2'
          'b62c538e5baba89f6fe1e195af8e39af'
          '02df03e4c57e8b77062df51971f7c582'
@@ -110,6 +112,17 @@ package_pzl_arrowsudoku() {
 	install -m644 pzl3_download/arrowsudoku_data.py "$pkgdir/usr/share/pzl_games"
 	install -m644 pzl3_download/arrowsudoku_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
 	install -m644 pzl_arrowsudoku.desktop "$pkgdir/usr/share/applications"
+}
+
+package_pzl_binary() {
+	pkgdesc="Puzzle game with binary numbers in a grid."
+	url="http://pzl.org.uk/binary.html"
+	depends=('pzl_common')
+	install -dm755 "$pkgdir"/usr/share/{applications,pixmaps/pzl_games,pzl_games}
+	install -m644 pzl3_download/binary.pyw "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/binary_data.py "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/binary_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
+	install -m644 pzl_binary.desktop "$pkgdir/usr/share/applications"
 }
 
 package_pzl_boggle() {

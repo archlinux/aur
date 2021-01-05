@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=pzl games Binary
+Comment=Binary (pzl games)
+Categories=Game;LogicGame
+Exec=python /usr/share/pzl_games/binary.pyw
+Terminal=false
+Icon=/usr/share/pixmaps/pzl_games/binary_icon.png
+Type=Application
