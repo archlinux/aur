@@ -12,7 +12,7 @@ optdepends=('dmenu: default program launcher'
             'st-monosans-git: default terminal emulator'
             'pcmanfm-gtk3: default file manager'
             'scrot: default screenshoter'
-            'brave-nightly: default browser')
+            'brave-nightly-bin: default browser')
 makedepends=(git)
 source=(git://github.com/monosans/dwm
         config.mk)
