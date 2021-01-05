@@ -1,6 +1,6 @@
 pkgbase = buildaur-git
 	pkgdesc = An AUR helper with asp support (development version)
-	pkgver = 194.9110624
+	pkgver = 195.b8bbadc
 	pkgrel = 1
 	url = https://github.com/lxgr-linux/buildaur
 	arch = any
