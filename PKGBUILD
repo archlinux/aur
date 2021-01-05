@@ -21,7 +21,7 @@ provides=('otr-verwaltung3p')
 _pkgname='otr-verwaltung3p'
 
 source=("https://github.com/EinApfelBaum/otr-verwaltung3p/archive/${pkgver}.tar.gz")
-sha256sums=('8488a48c3a0ca3d4d5f793e8b6b410f8e6763ab086e5e06dd06a596378365040')
+sha256sums=('6b49bc08a0e1a2891589e5ed91627aac9aaed79bb33725b21345ecb03c4deca9')
 options=('!strip')
 
 #prepare() {
