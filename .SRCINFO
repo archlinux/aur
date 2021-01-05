@@ -7,8 +7,8 @@ pkgbase = suckit
 	license = Apache
 	makedepends = rust
 	depends = openssl
+	depends = gcc-libs
 	source = suckit-0.1.1.tar.gz::https://github.com/Skallwar/suckit/archive/v0.1.1.tar.gz
 	sha512sums = b1da8cf552980925a192164dce091dd9e68ea242c19d1caf0d1bb029dbf532b7bdddf2d58458496de1da181541eea19252e2f5fc8af7c2fa49d87c1faf8c9a88
 
 pkgname = suckit
-
