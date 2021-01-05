@@ -1,0 +1,12 @@
+pkgbase = mc-fabric-carpet-git
+	pkgdesc = A mod for vanilla Minecraft that allows you to take full control of what matters
+	pkgver = 1.16.4.1.4.21.r2049.35715c93
+	pkgrel = 1
+	url = https://github.com/gnembon/fabric-carpet
+	arch = any
+	license = LGPL
+	makedepends = gradle
+	source = git+https://github.com/gnembon/fabric-carpet.git
+	md5sums = SKIP
+
+pkgname = mc-fabric-carpet-git
