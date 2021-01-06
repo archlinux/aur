@@ -1,8 +1,8 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
 # pkg: git
 pkgname=hsandbox-git
-pkgver=1.1.r28.gc43f92f
-pkgrel=4
+pkgver=1.1.r29.gbf81769
+pkgrel=1
 pkgdesc="The Hacking Sandbox"
 arch=('any')
 url="http://labix.org/hsandbox"
