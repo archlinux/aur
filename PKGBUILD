@@ -12,9 +12,9 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ttygde/$pkgname/archive/v$p
 md5sums=('745b8e5b1055a36310b835d7bc6c39b9')
 
 build() {
-	make -C $pkgname-$pkgver
+	make -C $pkgname-$pkgver PREFIX=/usr
 }
 
 package() {
-	make -C $pkgname-$pkgver DESTDIR="$pkgdir" install
+	make -C $pkgname-$pkgver PREFIX=/usr DESTDIR="$pkgdir" install
 }
