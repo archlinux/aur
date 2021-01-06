@@ -1,0 +1,6 @@
+post_install() {
+	ualsv --pacman init
+}
+post_upgrade() {
+	ualsv --pacman hook
+}

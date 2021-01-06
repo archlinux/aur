@@ -1,7 +1,7 @@
 # Author: Artemii Sudakov <finziyr@yandex.ru>
 pkgname=ualsv
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Useful Arch Linux Script Vault'
 arch=('any')
 url='https://github.com/BiteDasher/ualsv'
@@ -10,6 +10,7 @@ makedepends=('sed')
 depends=('gawk' 'sed' 'coreutils' 'bash' 'wget' 'curl' 'git' 'grep' 'sudo' 'yay')
 source=("${pkgname}-${pkgver}::git+https://github.com/BiteDasher/${pkgname}.git")
 sha256sums=('SKIP')
+install=ualsv.install
 package() {
 mkdir -p $pkgdir/usr/bin
 mkdir -p $pkgdir/usr/share/ualsv
