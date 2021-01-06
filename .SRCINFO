@@ -1,6 +1,6 @@
 pkgbase = textosaurus-git
 	pkgdesc = Simple cross-platform text editor based on Qt and Scintilla
-	pkgver = 0.9.13.r25.g6b0b702f
+	pkgver = 0.9.13.r32.g4e2ad75a
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/martinrotter/textosaurus
@@ -23,13 +23,11 @@ pkgbase = textosaurus-git
 	source = git+https://github.com/martinrotter/7za.git
 	source = git+https://github.com/martinrotter/nsis.git
 	source = git+https://github.com/martinrotter/sed.git
-	source = git+https://github.com/martinrotter/scintilla
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = textosaurus-git
 
