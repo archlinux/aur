@@ -1,0 +1,23 @@
+pkgbase = ualsv
+	pkgdesc = Useful Arch Linux Script Vault
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/BiteDasher/ualsv
+	arch = any
+	license = MIT
+	makedepends = sed
+	depends = gawk
+	depends = sed
+	depends = coreutils
+	depends = bash
+	depends = wget
+	depends = curl
+	depends = git
+	depends = grep
+	depends = sudo
+	depends = yay
+	source = ualsv-1.0::git+https://github.com/BiteDasher/ualsv.git
+	sha256sums = SKIP
+
+pkgname = ualsv
+
