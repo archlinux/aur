@@ -1,0 +1,19 @@
+pkgbase = lib32-nettle-git
+	pkgdesc = A low-level cryptographic library (32-bit)
+	pkgver = 3.7
+	pkgrel = 1
+	url = https://www.lysator.liu.se/~nisse/nettle/
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc-multilib
+	depends = lib32-gmp
+	depends = nettle
+	provides = lib32-nettle
+	provides = libnettle.so
+	provides = libhogweed.so
+	conflicts = lib32-nettle
+	source = git+https://git.lysator.liu.se/nettle/nettle.git
+	sha256sums = SKIP
+
+pkgname = lib32-nettle-git
+
