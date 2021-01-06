@@ -17,7 +17,7 @@ source=("http://downloads.sourceforge.net/project/gcviewer/$_pkgname-$pkgver.jar
         'gcviewer.sh'
         'gcviewer.desktop')
 sha256sums=('5e6757735903d1d3b8359ae8fabc66cdc2ac6646725e820a18e55b85b3bc00f4'
-            'df95105e72d4d586f24ccea32ba1b0e1ed7746fed90cfde53e045db4c8027e28'
+            'c2415418801329f0162a5ff46c3cd4d1240f0dd621848a0b5d8cf35f05af8eed'
             '016cb8684edccbef21834a274a5e3c9226ef19a2cb88fc6f317757d53661e3ba'
             '20316cd8975215966d9983aab9cc61a1a95acdbd397d30db6ad1da7f2ecc2e0b'
             '255f2a7b966832b98b0e8683d3a2b97a3a71bd354000d226ab21500ec52e8a91')
