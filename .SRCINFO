@@ -1,7 +1,7 @@
 pkgbase = lightspeed-react-git
 	pkgdesc = React frontend for the Lightspeed project
-	pkgver = r9.e299491
-	pkgrel = 2
+	pkgver = r31.f396a1a
+	pkgrel = 1
 	url = https://github.com/GRVYDEV/Lightspeed-react
 	arch = any
 	license = custom:MIT
@@ -13,6 +13,7 @@ pkgbase = lightspeed-react-git
 	provides = lightspeed-frontend
 	conflicts = lightspeed-react
 	conflicts = lightspeed-frontend
+	backup = etc/webapps/lightspeed-react/config.json
 	source = lightspeed-react-git::git+https://github.com/GRVYDEV/Lightspeed-react.git
 	sha512sums = SKIP
 
