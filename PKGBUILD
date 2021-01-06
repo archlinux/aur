@@ -8,7 +8,7 @@ arch=('x86_64')
 pkgdesc="KDAB's Dock Widget Framework for Qt"
 license=("GPL2" "custom:KDAB commercial license")
 depends=('qt5-base' 'qt5-x11extras')
-makedepends=('cmake' 'ninja' 'qt5-tools')
+makedepends=('cmake' 'git' 'ninja' 'qt5-tools')
 url="https://github.com/KDAB/KDDockWidgets"
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
