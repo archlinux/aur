@@ -2,7 +2,7 @@
 # old maintainer:   M.Reynolds <blackboxnetworkproject@gmail.com>
 
 pkgname=tastyworks
-pkgver='1.12.1'
+pkgver='1.12.2'
 pkgrel='1'
 pkgdesc="One of the fastest, most reliable, and most secure trading platforms in the world."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('java-runtime')
 conflicts=('tastyworks-bin')
 
 source=(https://download.tastyworks.com/desktop-1.x.x/${pkgver}/tastyworks-${pkgver}-${pkgrel}_amd64.deb)
-sha256sums=('eb744696f972ddb9a748f6940d79ed94193fe288032509de98a716946b1e4d10')
+sha256sums=('30db45ae2828786a575ec2d08a0d7443d6cf1c5fa8e17f1d79a1a57f491b69b9')
 
 build() {
 	tar xf data.tar.xz
