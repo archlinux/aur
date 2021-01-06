@@ -1,20 +1,19 @@
 # Maintainer: stardust95
-# Contributor: Namarrgon
+# Contributor: yochananmargos
 pkgname=lebiniou
-pkgver=3.51
+pkgver=3.52.0
 pkgrel=1
 pkgdesc="A tool to create images from sound"
-arch=(x86_64)
-url="https://biniou.net/"
+arch=('x86_64')
+url="https://biniou.net"
 license=('GPL')
-depends=(libmagick6 fftw sdl2_ttf libcaca ffmpeg lebiniou-data libulfius)
+depends=('libmagick6' 'fftw' 'sdl2_ttf' 'libcaca' 'ffmpeg' 'lebiniou-data' 'libulfius')
 source=("https://gitlab.com/lebiniou/lebiniou/-/archive/version-$pkgver/lebiniou-version-$pkgver.tar.gz")
-sha256sums=('567dfe611d89874e7a5c53f9f6f8584531ca062590fa231271d78d8895d64cc3')
+sha256sums=('bdb881210b2327ffbb9fcd7de9df08a4ee631a9f409b5aadc3570e9777363209')
 
 build() {
 	cd "$pkgname-version-$pkgver"
-
-	autoreconf --install
+	autoreconf -i
 	export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/lib/imagemagick6/pkgconfig"
 	./configure --prefix=/usr
 	make
@@ -22,7 +21,6 @@ build() {
 
 package() {
 	cd "$pkgname-version-$pkgver"
-
 	make DESTDIR="$pkgdir/" install
 }
 
