@@ -1,6 +1,6 @@
 pkgbase = direnv-bin
 	pkgdesc = a shell extension that manages your environment
-	pkgver = 2.26.0
+	pkgver = 2.27.0
 	pkgrel = 1
 	url = https://direnv.net
 	arch = aarch64
@@ -10,16 +10,16 @@ pkgbase = direnv-bin
 	license = MIT
 	provides = direnv
 	conflicts = direnv
-	source = direnv-2.26.0.tar.gz::https://github.com/direnv/direnv/archive/v2.26.0.tar.gz
-	sha256sums = b3dbb97f4d2627ec588894f084bfdc76db47ff5e3bec21050bb818608c7835b9
-	source_aarch64 = direnv-2.26.0.linux-aarch64::https://github.com/direnv/direnv/releases/download/v2.26.0/direnv.linux-arm64
-	sha256sums_aarch64 = 65fd7b629e312ae81c7a8c8b0d0bf990bf60a0bea0c51863bd3d2e2b59d17a2b
-	source_armv7h = direnv-2.26.0.linux-armv7h::https://github.com/direnv/direnv/releases/download/v2.26.0/direnv.linux-arm
-	sha256sums_armv7h = 1557a447003e840885a5245f1518ab916fe0205ae2bd2b9bfaf8f2dce47ee0ba
-	source_i686 = direnv-2.26.0.linux-i686::https://github.com/direnv/direnv/releases/download/v2.26.0/direnv.linux-386
-	sha256sums_i686 = 3a3f3c1bd354e94c178014d6996040354352c215db41d4d94fa9f0abfbf1f2f1
-	source_x86_64 = direnv-2.26.0.linux-x86_64::https://github.com/direnv/direnv/releases/download/v2.26.0/direnv.linux-amd64
-	sha256sums_x86_64 = fc365358a320692642ba13fffdcb7c439744d2739ea20740b24d0d453f108a28
+	source = direnv-2.27.0.tar.gz::https://github.com/direnv/direnv/archive/v2.27.0.tar.gz
+	sha256sums = 9dc5ce43c63d9d9ff510c6bcd6ae06f3f2f907347e7cbb2bb6513bfb0f151621
+	source_aarch64 = direnv-2.27.0.linux-aarch64::https://github.com/direnv/direnv/releases/download/v2.27.0/direnv.linux-arm64
+	sha256sums_aarch64 = 4b29068a239da7b6401bf894a22f88cffbdb80ba8f38dfb06d22033bcf14f004
+	source_armv7h = direnv-2.27.0.linux-armv7h::https://github.com/direnv/direnv/releases/download/v2.27.0/direnv.linux-arm
+	sha256sums_armv7h = 5fb176071d0caf2bec534e0076c070681394afbbb72862f117af1af2b9671c28
+	source_i686 = direnv-2.27.0.linux-i686::https://github.com/direnv/direnv/releases/download/v2.27.0/direnv.linux-386
+	sha256sums_i686 = 24ed5c79596da68a54240c58f2b4766fae08c6a624c45701e3c7b2ced6c8fced
+	source_x86_64 = direnv-2.27.0.linux-x86_64::https://github.com/direnv/direnv/releases/download/v2.27.0/direnv.linux-amd64
+	sha256sums_x86_64 = 86172548fbd738a852350b4633a67d93ead042df5fa2e61787677a1010f01b3d
 
 pkgname = direnv-bin
 
