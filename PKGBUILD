@@ -3,7 +3,7 @@
 # Maintainer: rmorgans <rick.morgans@gmail.com>
 pkgname=direnv
 pkgver=2.27.0
-pkgrel=2
+pkgrel=3
 pkgdesc='a shell extension that manages your environment'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://direnv.net'
@@ -35,7 +35,7 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
-  make install DESTDIR="$pkgdir/usr"
+  make install PREFIX=/usr DESTDIR="$pkgdir"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
