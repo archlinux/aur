@@ -4,15 +4,15 @@
 pypiname=isit
 pkgbase=python-isit
 pkgname=('python-isit' 'python2-isit')
-pkgver=0.3.5
-pkgrel=1
+pkgver=0.3.6
+pkgrel=1.1
 pkgdesc="Python library for discovering environment information (OS, Distribution, Python version)"
 arch=('any')
 url="https://pypi.python.org/pypi/isit/"
 license=('AGPLv3')
 makedepends=('python' 'python2')
 source=(https://pypi.io/packages/source/i/$pypiname/$pypiname-$pkgver.tar.gz)
-md5sums=('22672005f54c37ea8bdaf52c5e57e625')
+md5sums=('cee801e13e06ce02463a66d5b8076bee')
 
 
 package_python-isit() {
