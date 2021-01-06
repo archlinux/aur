@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=ParseHub
+GenericName=Web Scraper
+Comment=A free web scraper that is easy to use
+Exec=/usr/bin/parsehub
+StartupNotify=true
+Terminal=false
+Icon=/usr/share/icons/parsehub.png
+Type=Application
+Categories=Network;WebBrowser;

@@ -1,0 +1,16 @@
+pkgbase = parsehub
+	pkgdesc = A free web scraper that is easy to use
+	pkgver = latest
+	pkgrel = 2
+	url = https://www.parsehub.com/
+	arch = x86_64
+	license = custom: https://www.parsehub.com/terms
+	source = https://parsehub.com/static/client/parsehub.tar.gz
+	source = parsehub.desktop
+	source = parsehub.png
+	sha256sums = a7e67e39049e70f6762736e3b9fff7c462bc5ca5e6b3af22c3b02838235a34f6
+	sha256sums = c3f888139be468e31af62d1f606ee3b1f681dcac77710ff318dbdd051e969aa6
+	sha256sums = 32eb295845efbcbc888b399590d3eecafd7c6d66a6e70c7b560b305b71c1111b
+
+pkgname = parsehub
+
