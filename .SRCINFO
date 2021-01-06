@@ -1,6 +1,6 @@
 pkgbase = basilisk-bin
 	pkgdesc = Basilisk Browser from the makers of Pale Moon
-	pkgver = 52.9.2020.11.25
+	pkgver = 52.9.2021.01.05
 	pkgrel = 1
 	epoch = 1
 	url = http://www.basilisk-browser.org
@@ -17,11 +17,11 @@ pkgbase = basilisk-bin
 	optdepends = hunspell: spell checker and morphological analyzer
 	optdepends = hyphen: library for hyphenation and justification
 	optdepends = ffmpeg: record, convert, and stream audio and video
-	provides = basilisk=52.9.2020.11.25
+	provides = basilisk=52.9.2021.01.05
 	conflicts = basilisk
-	source = basilisk-52.9.2020.11.25.tar.xz::http://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.xz
+	source = basilisk-52.9.2021.01.05.tar.xz::http://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.xz
 	source = basilisk.desktop
-	sha256sums = 8b80adea68137c3bed038c935095c3f0df0ceef825fd97275030a29b8f7e2dbd
+	sha256sums = c4cb4274b9aff4fae6bf52026dc31a6fa63130c339e8a5469a114cdef7cc1996
 	sha256sums = c4223e966bc404467fece4a524cc2db3e99c12455087da2ade9a47b8d99d3a45
 
 pkgname = basilisk-bin
