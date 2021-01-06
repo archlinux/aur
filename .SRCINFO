@@ -1,4 +1,4 @@
-pkgbase = tdesktop-x64
+pkgbase = tdesktop-x64-git
 	pkgdesc = Third party Telegram Desktop client with various enhancements (dev branch)
 	pkgver = 2.5.1.1.r3.gceda77176
 	pkgrel = 1
@@ -93,5 +93,5 @@ pkgbase = tdesktop-x64
 	sha512sums = SKIP
 	sha512sums = SKIP
 
-pkgname = tdesktop-x64
+pkgname = tdesktop-x64-git
 
