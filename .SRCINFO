@@ -1,6 +1,6 @@
 pkgbase = wasmer
 	pkgdesc = Universal Binaries Powered by WebAssembly
-	pkgver = 0.17.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/wasmerio/wasmer
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = wasmer
 	makedepends = rust
 	makedepends = cmake
 	makedepends = python
-	makedepends = git
+	makedepends = libxkbcommon
 	depends = gcc-libs
-	source = git+https://github.com/wasmerio/wasmer.git#tag=0.17.1
-	sha512sums = SKIP
+	source = wasmer-1.0.0.tar.gz::https://github.com/wasmerio/wasmer/archive/1.0.0.tar.gz
+	sha512sums = 5869f5b1a111389a8442abb9edd03d38417df46188e88b65b90ac7dc3752bbc4f2d7a6031402d68f80f96ed9ec630345769ec0849a445845e55c2381945b44e5
 
 pkgname = wasmer
 
