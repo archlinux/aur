@@ -2,7 +2,7 @@
 # Contributor: Jiachen YANG <farseerfc@gmail.com>
 pkgname=tdesktop-x64
 pkgver=2.5.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Third party Telegram Desktop client with various enhancements'
 arch=('x86_64')
 url="https://github.com/TDesktop-x64/tdesktop"
