@@ -1,7 +1,7 @@
 pkgbase = stm32cubeide
 	pkgdesc = Integrated Development Environment for STM32
 	pkgver = 1.5.1
-	pkgrel = 3
+	pkgrel = 1
 	url = https://www.st.com/en/development-tools/stm32cubeide.html
 	arch = x86_64
 	license = Commercial
