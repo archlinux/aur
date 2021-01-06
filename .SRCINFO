@@ -1,16 +1,16 @@
 pkgbase = fixjson
 	pkgdesc = JSON fixer for Humans
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://www.npmjs.com/package/
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = fixjson-1.1.1.tgz
+	noextract = fixjson-1.1.2.tgz
 	options = !emptydirs
-	source = https://registry.npmjs.org/fixjson/-/fixjson-1.1.1.tgz
-	sha256sums = dc617af1cb53f149a9dffd0b5956c4ce0c055263c1b10129e7a85fe4bd536bdd
+	source = https://registry.npmjs.org/fixjson/-/fixjson-1.1.2.tgz
+	sha256sums = 28bcae94ecfbe7495f778066216946fd1858c1ff612981f4f3d6fa12a884c879
 
 pkgname = fixjson
 

@@ -1,7 +1,7 @@
 # Maintainer: fenuks
 
 pkgname=fixjson
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="JSON fixer for Humans"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://www.npmjs.com/package/${fixjson}"
 license=('MIT')
 source=(https://registry.npmjs.org/${pkgname}/-/${pkgname}-$pkgver.tgz)
 noextract=(${pkgname}-$pkgver.tgz)
-sha256sums=('dc617af1cb53f149a9dffd0b5956c4ce0c055263c1b10129e7a85fe4bd536bdd')
+sha256sums=('28bcae94ecfbe7495f778066216946fd1858c1ff612981f4f3d6fa12a884c879')
 options=('!emptydirs')
 provides=()
 conflicts=()
