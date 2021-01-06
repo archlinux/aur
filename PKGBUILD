@@ -1,7 +1,7 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=lightspeed-webrtc-git
-pkgver=r41.191f2df
+pkgver=r50.b70c71e
 pkgrel=1
 pkgdesc="WebRTC server for the Lightspeed project"
 arch=(x86_64)
@@ -12,6 +12,7 @@ optdepends=("lightspeed-frontend: Frontend to Project Lightspeed")
 makedepends=("go" "git")
 provides=("lightspeed-webrtc")
 conflicts=("lightspeed-webrtc")
+backup=("etc/conf.d/lightspeed-webrtc")
 source=("${pkgname}::git+https://github.com/GRVYDEV/Lightspeed-webrtc.git"
         "systemd.service"
         "service.env")
