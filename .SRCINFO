@@ -1,0 +1,14 @@
+pkgbase = ismyarchverifiedyet
+	pkgdesc = Experimental script to query rebuilderd for results
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kpcyrd/ismyarchverifiedyet
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-requests
+	source = ismyarchverifiedyet-0.1.0.tar.gz::https://github.com/kpcyrd/ismyarchverifiedyet/archive/v0.1.0.tar.gz
+	b2sums = 763d93274ea024e0451f8740b4e9798d043554347ed2bacfff2b040278535baaea1b3beae332a4fe0fb15e5e603e4639002484b8944bc1e13750dc9c09c3b779
+
+pkgname = ismyarchverifiedyet
+
