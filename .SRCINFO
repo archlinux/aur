@@ -1,6 +1,6 @@
 pkgbase = foosynth-plugin-neo_gradient-mask-git
 	pkgdesc = Plugin for Vapoursynth/Avisynth: neo_gradient-mask (Dual interface for Vapoursynth/Avisynth) (GIT version)
-	pkgver = d460f60
+	pkgver = r2.d460f60
 	pkgrel = 1
 	url = https://github.com/HomeOfAviSynthPlusEvolution/neo_Gradient_Mask
 	arch = x86_64
