@@ -1,5 +1,5 @@
 pkgbase = blender-2.7
-	pkgdesc = Blender 2.7 branch
+	pkgdesc = Maintnance version of Blenders blender2.7 branch
 	pkgver = 2.79b.r71421.e045fe53f1b
 	pkgrel = 3
 	url = https://blender.org/
@@ -44,6 +44,7 @@ pkgbase = blender-2.7
 	source = python3.9.patch
 	source = python3.9_2.patch
 	source = openvdb7.patch
+	source = openvdb8.patch
 	source = cycles.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -57,6 +58,7 @@ pkgbase = blender-2.7
 	sha256sums = d106248d55045f5ef913bf6243ad74a76f6282264d9ee4c9b87ec4a3d2e2064b
 	sha256sums = b2a2bc5de8d3b730e49d1f50cb025c1dfdbcb66c58ead573322585b6a887d3a7
 	sha256sums = c4079c4c142516d9cd476f5a3cafddf4068f0950c3c11ea4da9cf999c5ccc1f9
+	sha256sums = edfd784f8497417660c0b9fdc97893fd0d77764d0bc10f4cb92a9082f41bae75
 	sha256sums = d245f02d73bd5b767ffa49d369383d7cd6ae5e57b89c2975a78c1015e1884864
 
 pkgname = blender-2.7
