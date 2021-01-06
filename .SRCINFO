@@ -1,6 +1,6 @@
 pkgbase = foosynth-plugin-delogohd-git
 	pkgdesc = Plugin for Vapoursynth: delogohd (Dual interface for Vapoursynth/Avisynth) (GIT version)
-	pkgver = r10.0.g8f343b7
+	pkgver = r10.1.g87e6d19
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=176658
 	arch = x86_64
