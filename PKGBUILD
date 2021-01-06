@@ -3,7 +3,7 @@
 pkgname=yabridge-git
 _pkgname=yabridge
 pkgver=2.2.1.r508.g71eadff
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet Another VST bridge, run Windows VST2 plugins under Linux"
 arch=('x86_64')
 url="https://github.com/robbert-vdh/yabridge"
@@ -53,11 +53,13 @@ build() {
 
   # The unity build takes can take up to 2 GB of RAM per target, so if the
   # system does not have enough RAM to build everything at once we'll limit the
-  # number of concurrent jobs to 3.
+  # number of concurrent jobs
   total_memory=$(free --gibi --si | awk '/^Mem:/ { print $2 }')
-  if [ "$total_memory" -le 8 ]; then
+  if [ "$total_memory" -le 4 ]; then
+    echo -e "\n$total_memory gigabytes of RAM detected, limiting the number of build jobs to 1\n"
+    ninja -C build -j1
+  elif [ "$total_memory" -le 8 ]; then
     echo -e "\n$total_memory gigabytes of RAM detected, limiting the number of build jobs to 3\n"
-
     ninja -C build -j3
   else
     ninja -C build
