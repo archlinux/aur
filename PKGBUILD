@@ -62,7 +62,7 @@ build() {
 
 package() {
     cd "$srcdir"
-    install -Dm755 gfetch ukbconv ukbfetch ukblink ukbmd5 ukbunpack -t "$pkgdir/usr/bin/"
+    install -Dm755 gfetch ukbconv ukbfetch ukblink ukbmd5 ukbunpack -t "$pkgdir/usr/bin"
     install -dm755 "$pkgdir/var/lib/ukbprep/encoding"
     install -m644 encoding.ukb "$pkgdir/var/lib/ukbprep/encoding/encoding.ukb"
 }
