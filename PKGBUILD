@@ -23,7 +23,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   local vmajor vminor vpatch
-  cd nss
+  cd $srcdir/nss
 
   { read vmajor; read vminor; read vpatch; } \
   < <(awk '/#define.*NSS_V(MAJOR|MINOR|PATCH)/ {print $3}' lib/nss/nss.h)
@@ -32,14 +32,14 @@ pkgver() {
 }
 
 prepare() {
-  cd nss
+  cd $srcdir/nss
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1382942
   patch -Np1 -i "$srcdir/0001-Hack-mpi_x64.s-to-work-with-fno-plt.patch"
 }
 
 build() {
-  cd nss
+  cd $srcdir/nss
   ./build.sh \
     --target ia32 \
     --opt \
@@ -52,7 +52,7 @@ build() {
 package() {
   depends+=(nss)
 
-  cd nss
+  cd $srcdir/nss
 
   local libdir=/usr/lib32 nsprver="$(i686-pc-linux-gnu-pkg-config --modversion nspr)"
   sed nss/pkg/pkg-config/nss.pc.in \
