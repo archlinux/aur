@@ -1,9 +1,8 @@
 pkgbase = qbittorrent-dark-git
 	pkgdesc = A dark version of bittorrent client powered by C++, Qt5 and the good libtorrent library (development version)
-	pkgver = 4.2.0.r20.gf9422a293
+	pkgver = 4.3.2.r236.g56ba037c6
 	pkgrel = 1
 	url = http://www.qbittorrent.org/
-	arch = i686
 	arch = x86_64
 	license = custom
 	license = GPL
@@ -20,6 +19,7 @@ pkgbase = qbittorrent-dark-git
 	conflicts = qbittorrent-stable-git
 	source = qbittorrent-dark::git+https://github.com/suratovvlad/qBittorrent.git
 	source = 0001-Revert-Use-new-libtorrent-1.1.2-utility-function-to-.patch
+	validpgpkeys = D8F3DA77AAC6741053599C136E4A2D025B7CC9A2
 	sha256sums = SKIP
 	sha256sums = d020ac4ce37a871cb92e3f203cc5ccd6de24c1f0a369f7aea67a4be578c48b64
 

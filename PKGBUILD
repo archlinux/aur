@@ -1,10 +1,10 @@
 # Maintainer: degreeme <suratovvlad@gmail.com>
 
 pkgname=qbittorrent-dark-git
-pkgver=4.2.0.r20.gf9422a293
+pkgver=4.3.2.r236.g56ba037c6
 pkgrel=1
 pkgdesc="A dark version of bittorrent client powered by C++, Qt5 and the good libtorrent library (development version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.qbittorrent.org/"
 license=('custom' 'GPL')
 depends=('libtorrent-rasterbar' 'qt5-base' 'libqdark-git')
@@ -16,6 +16,7 @@ source=("${pkgname%-*}::git+https://github.com/suratovvlad/qBittorrent.git"
         "0001-Revert-Use-new-libtorrent-1.1.2-utility-function-to-.patch")
 sha256sums=('SKIP'
             'd020ac4ce37a871cb92e3f203cc5ccd6de24c1f0a369f7aea67a4be578c48b64')
+validpgpkeys=('D8F3DA77AAC6741053599C136E4A2D025B7CC9A2') # sledgehammer999 <sledgehammer999@qbittorrent.org>
 
 pkgver() {
   cd ${pkgname%-*}
@@ -37,6 +38,9 @@ prepare() {
 build() {
   cd ${pkgname%-*}
 
+  # tell qmake not to break makepkg's debug/!strip options
+  export QBT_ADD_CONFIG='nostrip'
+  
   ./configure --prefix=/usr
   make
 }
