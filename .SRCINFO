@@ -1,7 +1,7 @@
 pkgbase = blender-fracture_modifier-git
 	pkgdesc = Development version of Blenders fracture_modifier branch
 	pkgver = 2.79.r70678.g233ad61cb8d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://blender.org/
 	arch = i686
 	arch = x86_64
