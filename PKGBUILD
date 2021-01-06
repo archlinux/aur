@@ -1,6 +1,6 @@
 # Maintainer: tsp <patrictroy at gmail dot com>
 pkgname=rizin-git
-pkgver=0.1.0.r25295.4d5702df4
+pkgver=0.1.0.r25311.f53c0e194
 pkgrel=1
 epoch=1
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
