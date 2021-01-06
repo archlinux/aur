@@ -1,7 +1,7 @@
 pkgbase = rpcs3
 	pkgdesc = Open-source Sony PlayStation 3 Emulator
 	pkgver = 0.0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rpcs3.net
 	arch = x86_64
 	license = GPL2
@@ -49,6 +49,7 @@ pkgbase = rpcs3
 	source = git+https://github.com/wolfSSL/wolfssl.git
 	source = git+https://github.com/tcbrindle/span.git
 	source = git+https://github.com/zeux/pugixml.git
+	source = 9541.patch::https://patch-diff.githubusercontent.com/raw/RPCS3/rpcs3/pull/9541.patch
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
@@ -65,5 +66,7 @@ pkgbase = rpcs3
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = 1f1ae64f976cafb0c25b689df6ffb72c
 
 pkgname = rpcs3
+
