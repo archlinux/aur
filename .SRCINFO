@@ -1,9 +1,9 @@
 pkgbase = atom-editor-beta-bin
-	pkgdesc = simple configuration file class
+	pkgdesc = A hackable text editor for the 21st Century
 	pkgver = 1.54.0beta0
 	pkgrel = 1
 	arch = x86_64
-	license = GPL
+	license = MIT
 	depends = gconf
 	depends = git
 	depends = nodejs
