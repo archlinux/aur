@@ -5,7 +5,7 @@ pkgbase="foosynth-plugin-${_plug}-git"
 pkgname=("avisynth-plugin-${_plug}-git"
          "vapoursynth-plugin-${_plug}-git"
          )
-pkgver=r1.1.g4199078
+pkgver=r1.3.gd07b333
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth/Avisynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ url='https://github.com/HomeOfAviSynthPlusEvolution/neo_TMedian.git'
 license=('MIT')
 makedepends=('git'
              'cmake'
-             'avisynthplus-git'
+             'avisynthplus'
              'vapoursynth'
              )
 source=("${_plug}::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_TMedian.git")
@@ -21,14 +21,14 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --first-parent --tags --always | tr - .)"
+  echo "$(git describe --long --tags | tr - .)"
 }
 
 prepare() {
   cd "${_plug}"
   mkdir -p build
 
-  sed '1i#include <cpuid.h>' -i src/cpuid.cpp
+  rm -fr include/Vapoursynth/*
 }
 
 build() {
