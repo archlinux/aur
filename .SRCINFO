@@ -1,6 +1,6 @@
 pkgbase = tab-rs-bin
 	pkgdesc = The intuitive config-driven terminal multiplexer
-	pkgver = 0.5.4
+	pkgver = 0.5.5
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/austinjones/tab-rs
@@ -9,8 +9,8 @@ pkgbase = tab-rs-bin
 	provides = tab-rs
 	conflicts = tab
 	conflicts = tab-rs
-	source = tab-rs-bin-0.5.4.tar.gz::https://github.com/austinjones/tab-rs/releases/download/v0.5.4/tab-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 751a589323a9bdd9352b5831c94ccaca0d4499d8f2ad720b2afaf31184512041
+	source = tab-rs-bin-0.5.5.tar.gz::https://github.com/austinjones/tab-rs/releases/download/v0.5.5/tab-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = a69cd14c72ce091003656592952ae675a6281de35029b71e815fcaba9bda0925
 
 pkgname = tab-rs-bin
 
