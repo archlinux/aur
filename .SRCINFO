@@ -1,0 +1,18 @@
+pkgbase = lib32-nspr-hg
+	pkgdesc = Netscape Portable Runtime (32-bit)
+	pkgver = 4.29
+	pkgrel = 1
+	url = https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSPR
+	arch = x86_64
+	license = MPL
+	license = GPL
+	makedepends = zip
+	depends = lib32-glibc
+	depends = nspr
+	provides = lib32-nspr
+	conflicts = lib32-nspr
+	source = hg+https://hg.mozilla.org/projects/nspr
+	sha256sums = SKIP
+
+pkgname = lib32-nspr-hg
+
