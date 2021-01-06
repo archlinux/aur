@@ -10,6 +10,8 @@ pkgbase = lib32-libidn2-git
 	depends = libidn2
 	depends = lib32-glibc
 	depends = lib32-libunistring
+	provides = lib32-libidn2
+	conflicts = lib32-libidn2
 	source = git+https://gitlab.com/libidn/libidn2.git
 	sha256sums = SKIP
 
