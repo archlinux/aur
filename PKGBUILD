@@ -4,10 +4,10 @@ pkgname=funemustation-git
 _name=funemustation
 _export=FunEmuStation_Launcher
 pkgver=r9.407c919
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple but elegant launcher of emulators and pc games"
 url="https://dannygaray60.itch.io/funemustation-launcher"
-depends=()
+depends=('libxcursor' 'libxinerama' 'freetype2' 'alsa-lib' 'libxrandr' 'libxi' 'libglvnd')
 makedepends=('godot' 'git')
 optdepends=()
 license=('GPL3')
@@ -29,7 +29,7 @@ build() {
 	echo "cd /usr/share/$_name" >> "bin/${_name}"
 	echo "./${_export}.x86_64" >> "bin/${_name}"
 
-	godot-headless --no-window --path "." --export "Linux/X11" "bin/${_export}.x86_64"
+	godot --no-window --path "." --export "Linux/X11" "bin/${_export}.x86_64"
 }
 
 package() {
