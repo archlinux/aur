@@ -5,7 +5,7 @@ pkgbase="foosynth-plugin-${_plug}-git"
 pkgname=("avisynth-plugin-${_plug}-git"
          "vapoursynth-plugin-${_plug}-git"
          )
-pkgver=r1.3.g4b19ea8
+pkgver=r2.0.gce598cb
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth/Avisynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ url='https://github.com/HomeOfAviSynthPlusEvolution/neo_Vague_Denoiser.git'
 license=('GPL')
 makedepends=('git'
              'cmake'
-             'avisynthplus-git'
+             'avisynthplus'
              'vapoursynth'
              )
 source=("${_plug}::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_Vague_Denoiser.git")
