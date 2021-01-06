@@ -1,0 +1,27 @@
+pkgbase = lib32-nss-hg
+	pkgdesc = Network Security Services (32-bit)
+	pkgver = 3.60
+	pkgrel = 1
+	url = https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS
+	arch = x86_64
+	license = MPL
+	license = GPL
+	makedepends = perl
+	makedepends = python
+	makedepends = gyp
+	depends = lib32-nspr
+	depends = lib32-sqlite
+	depends = lib32-zlib
+	depends = lib32-p11-kit>=0.23.19
+	provides = lib32-nss
+	conflicts = lib32-nss
+	source = hg+https://hg.mozilla.org/projects/nss
+	sha256sums = SKIP
+
+pkgname = lib32-nss-hg
+	depends = lib32-nspr
+	depends = lib32-sqlite
+	depends = lib32-zlib
+	depends = lib32-p11-kit>=0.23.19
+	depends = nss
+
