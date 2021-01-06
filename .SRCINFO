@@ -1,10 +1,9 @@
 pkgbase = libulfius
-	pkgdesc = HTTP Framework for REST API in C, using JSON, with websockets and streaming data
-	pkgver = 2.6.9
-	pkgrel = 2
-	url = https://github.com/babelouest/ulfius
+	pkgver = 2.7.1
+	pkgrel = 1
+	url = http://babelouest.github.io/ulfius
 	arch = x86_64
-	license = GPL
+	license = LGPL2.1
 	makedepends = git
 	makedepends = cmake
 	depends = libmicrohttpd
@@ -13,8 +12,14 @@ pkgbase = libulfius
 	depends = gnutls
 	depends = libgcrypt
 	depends = libyder
-	source = git+https://github.com/babelouest/ulfius.git#tag=v2.6.9
-	sha256sums = SKIP
+	source = ulfius-2.7.1.tar.gz::https://github.com/babelouest/ulfius/archive/v2.7.1.tar.gz
+	sha256sums = d5dfb90ac16fe9d8ce70fe6b23e43102d5208d4f0174196d3ef183d950d3a57b
 
 pkgname = libulfius
+	pkgdesc = Web Framework for REST Applications in C
+	provides = libulfius.so=2.7
+
+pkgname = uwsc
+	pkgdesc = Ulfius WebSocket Client
+	depends = libulfius
 
