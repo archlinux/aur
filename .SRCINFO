@@ -1,6 +1,6 @@
 pkgbase = hnsd-git
 	pkgdesc = SPV resolver daemon for the Handshake network. Written in C for speed/size/embedability.
-	pkgver = 0.0.0.895d89c
+	pkgver = 1.0.0.5.g1b47849
 	pkgrel = 1
 	url = http://handshake.org/
 	arch = i686
