@@ -1,6 +1,6 @@
 pkgbase = gcc-git
 	pkgdesc = The GNU Compiler Collection
-	pkgver = 11.0.0.r178244.004bb936d6d
+	pkgver = 11.0.0.r182655.6d0b075d662
 	pkgrel = 1
 	url = https://gcc.gnu.org
 	arch = x86_64
@@ -20,23 +20,23 @@ pkgbase = gcc-git
 	makedepends = git
 	options = !emptydirs
 	source = git+https://gcc.gnu.org/git/gcc.git
-	source = http://isl.gforge.inria.fr/isl-0.22.1.tar.xz
+	source = http://isl.gforge.inria.fr/isl-0.23.tar.xz
 	source = c89
 	source = c99
-	sha512sums = SKIP
-	sha512sums = 8dc7b0c14e5bfdca8f2161be51d3c9afcd18bc217bb19b7de01dbba0c6f3fdc2b725fb999f8562c77bf2918d3005c9247f7a58474a6da7697390067944d4d4aa
-	sha512sums = 25f0e186388075e25c80c2322865e948f22678f6769886d30c09204eb0e7efd6653170b62e749ece674d0814843609be75a096fd54bb65a87fa4037cf2889d03
-	sha512sums = a0589368eb84611e2fd7397c619b7f13700bfac8018a45c35bd1c0c3d59a2782609cb9d8d090696586ea721c6d93dca6f7f6c689ac729341ee62e035b1d5af14
+	b2sums = SKIP
+	b2sums = ce026eaa1d6c814f4067c555d97a453bdf01d5fa240aa9b6ccd22c9a0e7f19b0c30cd834f976a29b10a5d57eaa747a3f45cf55717f05d98ae405ec93dd42f27b
+	b2sums = 2c64090b879d6faea7f20095eff1b9bd6a09fe3b15b3890783d3715171678ab62d32c91af683b878746fb14441dbe09768474417840f96a561443415f76afb63
+	b2sums = 3cf318835b9833ac7c5d3a6026fff8b4f18b098e18c9649d00e32273688ff06ec3af41f0d0aee9d2261725e0ff08f47a224ccfe5ebb06646aaf318ff8ac9a0d1
 
 pkgname = gcc-git
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends
 	groups = base-devel
-	depends = gcc-libs=11.0.0.r178244.004bb936d6d-1
+	depends = gcc-libs=11.0.0.r182655.6d0b075d662-1
 	depends = binutils>=2.28
 	depends = libmpc
 	optdepends = lib32-gcc-libs: for generating code for 32-bit ABI
-	provides = gcc-multilib=11.0.0.r178244.004bb936d6d-1
-	provides = gcc=11.0.0.r178244.004bb936d6d-1
+	provides = gcc-multilib=11.0.0.r182655.6d0b075d662-1
+	provides = gcc=11.0.0.r182655.6d0b075d662-1
 	conflicts = gcc
 	options = !emptydirs
 	options = staticlibs
@@ -44,68 +44,67 @@ pkgname = gcc-git
 pkgname = gcc-libs-git
 	pkgdesc = Runtime libraries shipped by GCC
 	depends = glibc>=2.27
-	provides = gcc-libs-multilib=11.0.0.r178244.004bb936d6d-1
-	provides = libgo.so=11.0.0.r178244.004bb936d6d-1
-	provides = libgfortran.so=11.0.0.r178244.004bb936d6d-1
-	provides = libgphobos.so=11.0.0.r178244.004bb936d6d-1
-	provides = libubsan.so=11.0.0.r178244.004bb936d6d-1
-	provides = libasan.so=11.0.0.r178244.004bb936d6d-1
-	provides = libtsan.so=11.0.0.r178244.004bb936d6d-1
-	provides = liblsan.so=11.0.0.r178244.004bb936d6d-1
-	provides = gcc-libs=11.0.0.r178244.004bb936d6d-1
+	provides = gcc-libs-multilib=11.0.0.r182655.6d0b075d662-1
+	provides = libgo.so=11.0.0.r182655.6d0b075d662-1
+	provides = libgfortran.so=11.0.0.r182655.6d0b075d662-1
+	provides = libgphobos.so=11.0.0.r182655.6d0b075d662-1
+	provides = libubsan.so=11.0.0.r182655.6d0b075d662-1
+	provides = libasan.so=11.0.0.r182655.6d0b075d662-1
+	provides = libtsan.so=11.0.0.r182655.6d0b075d662-1
+	provides = liblsan.so=11.0.0.r182655.6d0b075d662-1
+	provides = gcc-libs=11.0.0.r182655.6d0b075d662-1
 	conflicts = gcc-libs
 	options = !emptydirs
 	options = !strip
 
 pkgname = gcc-fortran-git
 	pkgdesc = Fortran front-end for GCC
-	depends = gcc=11.0.0.r178244.004bb936d6d-1
-	provides = gcc-fortran-multilib=11.0.0.r178244.004bb936d6d-1
-	provides = gcc-fortran=11.0.0.r178244.004bb936d6d-1
+	depends = gcc=11.0.0.r182655.6d0b075d662-1
+	provides = gcc-fortran-multilib=11.0.0.r182655.6d0b075d662-1
+	provides = gcc-fortran=11.0.0.r182655.6d0b075d662-1
 	conflicts = gcc-fortran
 
 pkgname = gcc-objc-git
 	pkgdesc = Objective-C front-end for GCC
-	depends = gcc=11.0.0.r178244.004bb936d6d-1
-	provides = gcc-objc-multilib=11.0.0.r178244.004bb936d6d-1
-	provides = gcc-objc=11.0.0.r178244.004bb936d6d-1
+	depends = gcc=11.0.0.r182655.6d0b075d662-1
+	provides = gcc-objc-multilib=11.0.0.r182655.6d0b075d662-1
+	provides = gcc-objc=11.0.0.r182655.6d0b075d662-1
 	conflicts = gcc-objc
 
 pkgname = gcc-ada-git
 	pkgdesc = Ada front-end for GCC (GNAT)
-	depends = gcc=11.0.0.r178244.004bb936d6d-1
-	provides = gcc-ada-multilib=11.0.0.r178244.004bb936d6d-1
-	provides = gcc-ada=11.0.0.r178244.004bb936d6d-1
+	depends = gcc=11.0.0.r182655.6d0b075d662-1
+	provides = gcc-ada-multilib=11.0.0.r182655.6d0b075d662-1
+	provides = gcc-ada=11.0.0.r182655.6d0b075d662-1
 	conflicts = gcc-ada
 	options = !emptydirs
 	options = staticlibs
 
 pkgname = gcc-go-git
 	pkgdesc = Go front-end for GCC
-	depends = gcc=11.0.0.r178244.004bb936d6d-1
+	depends = gcc=11.0.0.r182655.6d0b075d662-1
 	provides = go=1.12.2
-	provides = gcc-go-multilib=11.0.0.r178244.004bb936d6d-1
-	provides = gcc-go=11.0.0.r178244.004bb936d6d-1
+	provides = gcc-go-multilib=11.0.0.r182655.6d0b075d662-1
+	provides = gcc-go=11.0.0.r182655.6d0b075d662-1
 	conflicts = go
 	conflicts = gcc-go
 
 pkgname = lib32-gcc-libs-gitb
 	pkgdesc = 32-bit runtime libraries shipped by GCC
 	depends = lib32-glibc>=2.27
-	provides = libgo.so=11.0.0.r178244.004bb936d6d-1
-	provides = libgfortran.so=11.0.0.r178244.004bb936d6d-1
-	provides = libubsan.so=11.0.0.r178244.004bb936d6d-1
-	provides = libasan.so=11.0.0.r178244.004bb936d6d-1
-	provides = lib32-gcc-libs=11.0.0.r178244.004bb936d6d-1
+	provides = libgo.so=11.0.0.r182655.6d0b075d662-1
+	provides = libgfortran.so=11.0.0.r182655.6d0b075d662-1
+	provides = libubsan.so=11.0.0.r182655.6d0b075d662-1
+	provides = libasan.so=11.0.0.r182655.6d0b075d662-1
+	provides = lib32-gcc-libs=11.0.0.r182655.6d0b075d662-1
 	conflicts = lib32-gcc-libs
 	options = !emptydirs
 	options = !strip
 
 pkgname = gcc-d-git
 	pkgdesc = D frontend for GCC
-	depends = gcc=11.0.0.r178244.004bb936d6d-1
-	provides = gdc=11.0.0.r178244.004bb936d6d-1
-	provides = gcc-d=11.0.0.r178244.004bb936d6d-1
+	depends = gcc=11.0.0.r182655.6d0b075d662-1
+	provides = gdc=11.0.0.r182655.6d0b075d662-1
+	provides = gcc-d=11.0.0.r182655.6d0b075d662-1
 	conflicts = gcc-d
 	options = staticlibs
-
