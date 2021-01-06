@@ -1,6 +1,6 @@
 # Maintainer: KspLite <ksplite@outlook.com>
 # Contributor: Jiachen YANG <farseerfc@gmail.com>
-pkgname=tdesktop-x64
+pkgname=tdesktop-x64-git
 pkgver=2.5.1.1.r3.gceda77176
 pkgrel=1
 pkgdesc='Third party Telegram Desktop client with various enhancements (dev branch)'
