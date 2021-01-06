@@ -27,9 +27,9 @@ build() {
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  ./bootstrap
+  ./.bootstrap
   ./configure --prefix=/usr --libdir=/usr/lib32 \
-    --enable-shared --with-include-path=/usr/lib32/gmp --disable-documentation
+    --enable-shared --with-include-path=/usr/lib32/gmp --disable-documentation --disable-openssl
   make
 }
 
