@@ -5,7 +5,7 @@ pkgbase="foosynth-plugin-${_plug}-git"
 pkgname=("avisynth-plugin-${_plug}-git"
          "vapoursynth-plugin-${_plug}-git"
          )
-pkgver=r5.1.gabb9cdc
+pkgver=r10.1.g1537395
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth/Avisynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('git'
              'cmake'
              'fftw'
              'intel-tbb'
-             'avisynthplus-git'
+             'avisynthplus'
              'vapoursynth'
              )
 source=("${_plug}::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_FFT3D.git")

@@ -1,6 +1,6 @@
 pkgbase = foosynth-plugin-neo_fft3dfilter-git
 	pkgdesc = Plugin for Vapoursynth/Avisynth: neo_fft3dfilter (Dual interface for Vapoursynth/Avisynth) (GIT version)
-	pkgver = r5.1.gabb9cdc
+	pkgver = r10.1.g1537395
 	pkgrel = 1
 	url = https://github.com/HomeOfAviSynthPlusEvolution/neo_FFT3D.git
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = foosynth-plugin-neo_fft3dfilter-git
 	makedepends = cmake
 	makedepends = fftw
 	makedepends = intel-tbb
-	makedepends = avisynthplus-git
+	makedepends = avisynthplus
 	makedepends = vapoursynth
 	source = neo_fft3dfilter::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_FFT3D.git
 	sha256sums = SKIP
