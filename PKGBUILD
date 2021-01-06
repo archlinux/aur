@@ -12,14 +12,14 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 ((DISABLE_USD)) || {
   _CMAKE_FLAGS+=( -DWITH_USD=ON
                 -DUSD_ROOT=/usr )
-  depends+=( usd=20.05 )
+  depends+=( "usd>=20.05" )
 }
 ((DISABLE_NINJA)) ||  makedepends+=('ninja')
 #shellcheck disable=SC2015
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
 
 pkgname=blender-develop-git
-pkgver=2.91.r100471.g3e101759b1b
+pkgver=2.92.r102077.g82e401031fd
 pkgrel=1
 pkgdesc="Development version of Blender (non-conflicting version)"
 changelog=blender.changelog
