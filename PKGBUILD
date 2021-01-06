@@ -2,6 +2,7 @@
 
 pkgname=bsp-tinkerboard
 pkgver=20.11.6
+_pkgver=20.11.3
 _ubuntu=focal
 pkgrel=1
 pkgdesc="Board support package for Tinker Board / S (Bluetooth, HDMI, Audio...)"
@@ -13,7 +14,7 @@ install="$pkgname.install"
 source=(
   "pulseaudio-sink.txt"
   "pulseaudio-source.txt"
-  "https://apt.armbian.com/pool/main/a/armbian-firmware/armbian-firmware_${pkgver}_all.deb"
+  "https://apt.armbian.com/pool/main/a/armbian-firmware/armbian-firmware_${_pkgver}_all.deb"
   "https://apt.armbian.com/pool/main/l/linux-$_ubuntu-root-current-tinkerboard/linux-$_ubuntu-root-current-tinkerboard_${pkgver}_armhf.deb"
 )
 sha512sums=(
@@ -33,7 +34,7 @@ prepare() {
 package() {
   cd "$srcdir"
 
-  ar x "armbian-firmware_${pkgver}_all.deb"
+  ar x "armbian-firmware_${_pkgver}_all.deb"
   tar -xf data.tar.xz
   ar x "linux-$_ubuntu-root-current-tinkerboard_${pkgver}_armhf.deb"
   tar -xf data.tar.xz
