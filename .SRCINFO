@@ -1,7 +1,7 @@
 pkgbase = zrythm
 	pkgdesc = a highly automated and intuitive digital audio workstation
 	pkgver = alpha.7.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.zrythm.org
 	arch = x86_64
 	arch = i686
@@ -30,6 +30,7 @@ pkgbase = zrythm
 	depends = lv2
 	depends = rubberband
 	depends = python-sphinx-intl
+	depends = ruby-sass
 	optdepends = portaudio: portaudio backend
 	optdepends = qt5-base: for embedding qt5 plugin UIs
 	conflicts = zrythm-git
