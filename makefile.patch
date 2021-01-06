@@ -1,0 +1,15 @@
+diff --unified --recursive --text usbimager-orig/src/Makefile usbimager-new/src/Makefile
+--- usbimager-orig/src/Makefile	2020-09-23 07:19:31.000000000 +1200
++++ usbimager-new/src/Makefile	2020-11-30 07:46:07.134100297 +1300
+@@ -157,11 +157,6 @@
+ ifeq ($(DEBUG),)
+ 	$(STRIP) $(TARGET)
+ endif
+-ifneq ($(GRP),)
+-	chgrp $(GRP) $(TARGET) || true
+-	chmod g+s $(TARGET) || true
+-	@(ls -la $(TARGET)|grep $(GRP)|grep sr) || printf "\n\nWARNING - Your user is not member of the '$(GRP)' group, can't grant access. Run the following two commands manually:\n\n  sudo chgrp $(GRP) $(TARGET)\n  sudo chmod g+s $(TARGET)\n\n"
+-endif
+ 
+ ####### install and package creation #######
+ 

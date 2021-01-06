@@ -1,21 +1,23 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='usbimager'
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='Minimal GUI application to write compressed disk images to USB drives (GTK+ Frontend)'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://gitlab.com/bztsrc/usbimager'
 license=('MIT')
 depends=('gtk3' 'udisks2')
-source=("${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('20ffc3720f4c806285628064d536cbf5a59f05d6fdef92bd06f9fbd694426ce6')
+makedepends=('setconf')
+source=("${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        'makefile.patch')
+sha256sums=('1d436524c46d756bd4ab598929b41e6d8dc6d23e11c8576667cb44999e6e87b8'
+            'a8622b5584d5458b608096f24ab2e52e40f1970baaf4e4cd1ffd69b64d149828')
 
 prepare() {
-  # Add LDFLAGS to Makefile
-  sed -i "/LDFLAGS =/s/$/ ${LDFLAGS}/" "${pkgname}-${pkgver}/src/Makefile"
-  # Skip chgrp and chmod operations in Makefile
-  sed -i '160s/ifneq/ifeq/' "${pkgname}-${pkgver}/src/Makefile"
+  cd "${pkgname}-${pkgver}"
+  setconf 'src/Makefile' 'LDFLAGS' "${LDFLAGS}" # Add LDFLAGS to Makefile
+  patch --forward --strip=1 --input="${srcdir}/makefile.patch" # Skip chgrp and chmod operations in Makefile
 }
 
 build() {
