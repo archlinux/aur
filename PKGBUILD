@@ -4,59 +4,51 @@
 # Contributor: Lari Tikkanen
 # Maintainer:  Tim Schumacher
 
-pkgname=('heimdall-git')
-_gitname="heimdall"
-pkgver=1.4.2.r5.g5377b62
+pkgname=heimdall-git
+_pkgname=Heimdall
+pkgver=1.4.2.r7.ga2cfdaa
 pkgrel=1
-pkgdesc="A cross-platform open-source utility to flash firmware (aka ROMs) onto Samsung Galaxy S devices."
-arch=('i686' 'x86_64')
-url="http://www.glassechidna.com.au/products/heimdall/"
-license=('MIT')
-depends=('libusb' 'qt5-base')      
-makedepends=('cmake' 'git')
-optdepends=('android-udev: Udev rules to connect Android devices to you linux box')
-conflicts=('heimdall')
-provides=('heimdall')
-source=("$_gitname::git+https://gitlab.com/BenjaminDobell/Heimdall.git"
-        "heimdall.desktop"
-        "BridgeManager.patch")
-md5sums=('SKIP'
-         '6c4de9e74c0d9e7ab4d50af21303b78a'
-         '8fce869eb9539b6b410b1a52370c3824')
+pkgdesc="Tool suite used to flash firmware (ROMs) onto Samsung Galaxy S devices"
+arch=("i686" "x86_64")
+url="https://glassechidna.com.au/heimdall/"
+license=("MIT")
+depends=("qt5-base")
+makedepends=("cmake" "git")
+optdepends=("android-udev: Udev rules to connect Android devices to your linux box")
+conflicts=("heimdall")
+provides=("heimdall")
+source=(
+	"$_pkgname::git+https://gitlab.com/BenjaminDobell/Heimdall.git"
+	"heimdall.desktop"
+)
+sha256sums=(
+	"SKIP"
+	"439cea1a8976b9b589ffe4030a084243bcc5e937dcb9c571cdb94d3ff08b4fb4"
+)
 
 pkgver() {
-  cd $_gitname
+  cd $_pkgname
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd ${srcdir}/heimdall/
-  patch -Np1 -i ${srcdir}/BridgeManager.patch
-}
-
 build() {
-  cd ${srcdir}/heimdall/
+	cd "$srcdir/$_pkgname"
 
-  if [ -d build ] ; then
-    rm -rf build
-  fi
-
-  mkdir build
-  cd build
-  
-  cmake -DCMAKE_BUILD_TYPE=Release ..
-  make
+	cmake . -DCMAKE_INSTALL_PREFIX="/usr"
+	make
 }
 
 package() {
-  cd ${srcdir}/$_gitname
+	cd "$srcdir/$_pkgname"
 
-  install -m644 -D LICENSE "${pkgdir}/usr/share/licenses/$_gitname/LICENSE"
+	# Install desktop file
+	install -m644 -D "$srcdir/heimdall.desktop" "$pkgdir/usr/share/applications/heimdall.desktop"
 
-  cd build
+	# Install license file
+	install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  install -m755 -D bin/heimdall "${pkgdir}/usr/bin/heimdall"
-
-  install -m755 bin/heimdall-frontend "${pkgdir}/usr/bin/heimdall-frontend"
-  install -m644 -D "${srcdir}/heimdall.desktop" "${pkgdir}/usr/share/applications/heimdall.desktop"
+	# Install heimdall command line tool
+	install -d "$pkgdir"/usr/bin
+	install -Dm755 bin/* "$pkgdir"/usr/bin/
+	install -Dm644 heimdall/60-heimdall.rules "$pkgdir"/usr/lib/udev/rules.d/60-heimdall.rules
 }
