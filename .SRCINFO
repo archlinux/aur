@@ -1,0 +1,17 @@
+pkgbase = avisynth-plugin-tivtc-git
+	pkgdesc = Plugin for Avisynth: tivtc (GIT version)
+	pkgver = r257.94eb799
+	pkgrel = 1
+	url = https://forum.doom9.org/showthread.php?t=182032
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	depends = avisynthplus
+	provides = avisynth-plugin-tivtc
+	conflicts = avisynth-plugin-tivtc
+	source = tivtc::git+https://github.com/pinterf/TIVTC.git
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-tivtc-git
+
