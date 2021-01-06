@@ -1,6 +1,6 @@
 pkgbase = bdf-unifont-extra
 	pkgdesc = GNU Unifont Glyphs (bold and italic versions)
-	pkgver = 13.0.04
+	pkgver = 13.0.05
 	pkgrel = 1
 	url = http://unifoundry.com/unifont.html
 	arch = any
@@ -10,11 +10,11 @@ pkgbase = bdf-unifont-extra
 	depends = fontconfig
 	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
-	source = https://ftp.gnu.org/gnu/unifont/unifont-13.0.04/unifont-13.0.04.bdf.gz
-	source = https://ftp.gnu.org/gnu/unifont/unifont-13.0.04/unifont-13.0.04.bdf.gz.sig
+	source = https://ftp.gnu.org/gnu/unifont/unifont-13.0.05/unifont-13.0.05.bdf.gz
+	source = https://ftp.gnu.org/gnu/unifont/unifont-13.0.05/unifont-13.0.05.bdf.gz.sig
 	source = http://unifoundry.com/LICENSE.txt
 	validpgpkeys = 95D2E9AB8740D8046387FD151A09227B1F435A33
-	sha256sums = 5319d51779aa23e206268e6e6de71bb67b983033468d2c815118aecf5f7d57c0
+	sha256sums = c4e61e9336d8d024479ea72616722c6c47c93f76dc173e8ad3edf9f9e07c3115
 	sha256sums = SKIP
 	sha256sums = 95d93c1634f6982250d51940ff5c81b93a657c295b5c24dfa4214a13c6100495
 
