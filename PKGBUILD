@@ -5,13 +5,13 @@
 
 _pkgname=lab
 pkgname=$_pkgname-git
-pkgver=0.17.2.r25.g885eea3
+pkgver=0.18.0.r1.gb7be1c1
 _branch=master
 pkgrel=1
 pkgdesc="A hub-like tool for GitLab (git $_branch branch)"
 arch=('x86_64')
 url="https://zaquestion.github.io/$_pkgname"
-license=('custom:Unlicense')
+license=('custom:CC0')
 depends=('git')
 optdepends=('hub')
 makedepends=('git' 'go')
