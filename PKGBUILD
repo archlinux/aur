@@ -4,14 +4,14 @@
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 
 pkgname=serpent-browser
-pkgver=2020.11.25
+pkgver=2021.01.05
 pkgrel=1
 pkgdesc="Unbranded version of Basilisk web browser"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://www.basilisk-browser.org/"
 license=(MPL GPL LGPL)
 depends=(gtk2 gtk3 libxt mailcap nss alsa-lib icu ttf-font libpulse)
-makedepends=(unzip zip python2 yasm mesa autoconf2.13)
+makedepends=(git unzip zip python2 yasm mesa autoconf2.13)
 optdepends=('hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification'
             'ffmpeg: record, convert, and stream audio and video')

@@ -1,6 +1,6 @@
 pkgbase = serpent-browser
 	pkgdesc = Unbranded version of Basilisk web browser
-	pkgver = 2020.11.25
+	pkgver = 2021.01.05
 	pkgrel = 1
 	url = https://www.basilisk-browser.org/
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = serpent-browser
 	license = MPL
 	license = GPL
 	license = LGPL
+	makedepends = git
 	makedepends = unzip
 	makedepends = zip
 	makedepends = python2
@@ -35,7 +36,7 @@ pkgbase = serpent-browser
 	conflicts = basilisk
 	options = !emptydirs
 	options = !makeflags
-	source = serpent-browser::git+https://repo.palemoon.org/MoonchildProductions/Basilisk.git#tag=v2020.11.25
+	source = serpent-browser::git+https://repo.palemoon.org/MoonchildProductions/Basilisk.git#tag=v2021.01.05
 	source = serpent-browser.desktop
 	source = git+https://repo.palemoon.org/MoonchildProductions/UXP.git
 	sha256sums = SKIP
