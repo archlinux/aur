@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-mavlink
 	pkgdesc = ROS - MAVLink message marshaling library.
-	pkgver = 2020.12.12
+	pkgver = 2021.1.4
 	pkgrel = 1
 	url = https://qgroundcontrol.org/mavlink/
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = ros-melodic-mavlink
 	makedepends = python
 	depends = ros-melodic-catkin
 	depends = python
-	source = ros-melodic-mavlink-2020.12.12.tar.gz::https://github.com/mavlink/mavlink-gbp-release/archive/upstream/2020.12.12.tar.gz
-	sha256sums = 20f8a7e5b7b45c72c06af9d216524e44afdd468ae1e2c628c1a9f80378ded143
+	source = ros-melodic-mavlink-2021.1.4.tar.gz::https://github.com/mavlink/mavlink-gbp-release/archive/upstream/2021.1.4.tar.gz
+	sha256sums = b3e8cf88d981afad80aba5f9c8c9b4d8ea5229e187d839040d8c7e1a9e1d8158
 
 pkgname = ros-melodic-mavlink
 
