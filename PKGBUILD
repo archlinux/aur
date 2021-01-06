@@ -1,8 +1,9 @@
 # Maintainer: morguldir <morguldir@protonmail.com>
 _gitname=PyTMX
 pkgname=python-pytmx
-pkgver=3.22.0
-pkgrel=2
+pkgver=3.24
+_commit=eb96efea30d57b731654b2a167d86b8b553b147d
+pkgrel=1
 pkgdesc="Python library to read Tiled Map Editor's TMX maps"
 arch=('i686' 'x86_64')
 url="https://github.com/bitcraft/$_gitname"
@@ -11,7 +12,7 @@ depends=('python>=3.3' 'python-six')
 makedepends=('git')
 provides=($pkgname)
 conflicts=($pkgname)
-source=("git+https://github.com/bitcraft/$_gitname.git#commit=1896511afff65b5a5eb18295976ec44b68a9bb5a")
+source=("git+https://github.com/bitcraft/$_gitname.git#commit=$_commit")
 sha256sums=('SKIP')
 
 package(){
