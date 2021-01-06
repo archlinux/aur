@@ -1,0 +1,29 @@
+pkgbase = vapoursynth-plugin-realsr-ncnn-vulkan-git
+	pkgdesc = Plugin for Vapoursynth: realsr-ncnn-vulkan (GIT version)
+	pkgver = r1.1.g4262d64
+	pkgrel = 1
+	url = https://github.com/Kiyamou/vapoursynth-realsr-ncnn-vulkan
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = vulkan-headers
+	depends = vapoursynth
+	depends = vulkan-icd-loader
+	provides = vapoursynth-plugin-realsr-ncnn-vulkan
+	conflicts = vapoursynth-plugin-realsr-ncnn-vulkan
+	source = realsr-ncnn-vulkan::git+https://github.com/Kiyamou/VapourSynth-realsr-ncnn-vulkan.git
+	source = git+https://github.com/Tencent/ncnn.git
+	source = git+https://github.com/KhronosGroup/glslang.git
+	source = https://github.com/nihui/realsr-ncnn-vulkan/raw/master/models/models-DF2K/x4.bin
+	source = https://github.com/nihui/realsr-ncnn-vulkan/raw/master/models/models-DF2K/x4.param
+	source = model-path.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = a3f5eb53906ef54d5c5d125b2c9dd5f570d9dbb779e3d934df14b5375fd923c1
+	sha256sums = a7f31e75518ad279c179202bf77da9eca3141124a67e5261d97235849e6cc323
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-realsr-ncnn-vulkan-git
+

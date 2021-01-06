@@ -1,0 +1,19 @@
+diff --git a/src/main.cpp b/src/main.cpp
+index eb56ece..77732fa 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -163,10 +163,10 @@ static void VS_CC filterCreate(const VSMap* in, VSMap* out, void* userData, VSCo
+ 
+         // Model path
+         const std::string pluginPath{ vsapi->getPluginPath(vsapi->getPluginById("com.vapoursynth.realsrnv", core)) };
+-        std::string paramPath{ pluginPath.substr(0, pluginPath.find_last_of('/')) };
+-        std::string modelPath{ pluginPath.substr(0, pluginPath.find_last_of('/')) };
+-        paramPath += "/models/models-DF2K/x4.param";
+-        modelPath += "/models/models-DF2K/x4.bin";
++        std::string paramPath = "/usr/share/vapoursynth/realsr-ncnn-vulkan/models/models-DF2K";
++        std::string modelPath = paramPath;
++        paramPath += "/x4.param";
++        modelPath += "/x4.bin";
+ 
+         // Check model file readable
+         std::ifstream pf(paramPath);
