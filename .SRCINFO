@@ -1,6 +1,6 @@
 pkgbase = python-jupytext
 	pkgdesc = Jupyter notebooks as Markdown documents, Julia, Python or R scripts
-	pkgver = 1.7.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://github.com/mwouts/jupytext
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-jupytext
 	depends = python-pyaml
 	depends = python-mock
 	depends = python-testfixtures
-	source = python-jupytext-1.7.0.tar.gz::https://github.com/mwouts/jupytext/archive/v1.7.0.tar.gz
-	sha256sums = fba1e27b963a0c9120b71bd94f7a9df8e81297d25f0ff1a73819c78f58b64683
+	source = python-jupytext-1.9.1.tar.gz::https://github.com/mwouts/jupytext/archive/v1.9.1.tar.gz
+	sha256sums = 0e21cc0c18e8899d2763037234b1240d37e2e23aac5f7010267a5d2133dab8da
 
 pkgname = python-jupytext
 
