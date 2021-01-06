@@ -1,0 +1,16 @@
+pkgbase = qucsator
+	pkgdesc = An integrated circuit simulator
+	pkgver = 0.0.20
+	pkgrel = 1
+	url = http://qucs.sourceforge.net
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gperf
+	depends = gcc-libs
+	depends = adms
+	source = git+https://github.com/Qucs/qucsator.git#tag=0.0.20
+	md5sums = SKIP
+
+pkgname = qucsator
+
