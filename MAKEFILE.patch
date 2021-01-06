@@ -1,0 +1,12 @@
+diff --unified --recursive --text linux-sgx-driver.orig/Makefile linux-sgx-driver/Makefile
+--- linux-sgx-driver.orig/Makefile	2020-12-30 23:35:25.706859158 -0800
++++ linux-sgx-driver/Makefile	2020-12-30 23:47:34.306602884 -0800
+@@ -9,7 +9,7 @@
+ 		sgx_encl2.o
+ 	obj-m += isgx.o
+ else
+-KDIR := /lib/modules/$(shell uname -r)/build
++KDIR := /lib/modules/${kernelver}/build
+ PWD  := $(shell pwd)
+ 
+ default:
