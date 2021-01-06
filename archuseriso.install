@@ -2,11 +2,10 @@ post_install() {
   echo
   echo '==='
   echo 'Archuseriso:'
-  echo 'New version rebased on Archiso profiledef.sh'
+  echo 'v0.6 series rebased on Archiso profiledef.sh'
   echo
-  echo 'Command arguments and options haved changed, this'
-  echo 'major release is not compatible with previous'
-  echo 'versions of Archuseriso.'
+  echo 'Command arguments and options haved changed, '
+  echo 'Versions prior to v0.6 series are not compatible.'
   echo '==='
   echo
 }
