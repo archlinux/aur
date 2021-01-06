@@ -1,7 +1,7 @@
 pkgbase = wapm
 	pkgdesc = WebAssembly Package Manager
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wapm.io
 	arch = x86_64
 	license = MIT

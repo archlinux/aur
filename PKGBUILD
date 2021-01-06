@@ -2,7 +2,7 @@
 
 pkgname=wapm
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="WebAssembly Package Manager"
 arch=('x86_64')
 url="https://wapm.io"
@@ -27,7 +27,16 @@ check() {
 package() {
   cd "$srcdir/wapm-cli-$pkgver"
 
+  target/release/wapm completions bash > bash-completions
+  target/release/wapm completions zsh > zsh-completions
+  target/release/wapm completions fish > fish-completions
+
+  install -Dm644 bash-completions "$pkgdir"/usr/share/bash-completion/completions/wapm
+  install -Dm644 zsh-completions "$pkgdir"/usr/share/zsh/site-functions/_wapm
+  install -Dm644 fish-completions "$pkgdir"/usr/share/fish/completions/wapm.fish
+
   install -Dm755 target/release/wapm "$pkgdir"/usr/bin/wapm
+  ln -s wapm "$pkgdir"/usr/bin/wax
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
