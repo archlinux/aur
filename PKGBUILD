@@ -2,7 +2,7 @@
 # Contributor: Jiachen YANG <farseerfc@gmail.com>
 pkgname=tdesktop-x64
 pkgver=2.5.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Third party Telegram Desktop client with various enhancements'
 arch=('x86_64')
 url="https://github.com/TDesktop-x64/tdesktop"
@@ -12,7 +12,7 @@ depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'libtg_owt')
 optdepends=('ttf-opensans: default Open Sans font family')
 provides=("tdesktop-x64")
-conflicts=("telegram-desktop" "tdesktop-x64-git")
+conflicts=("telegram-desktop")
 source=("tdesktop::git+https://github.com/TDesktop-x64/tdesktop.git#tag=v${pkgver}"
         "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip"
         "GSL::git+https://github.com/Microsoft/GSL.git"
@@ -132,7 +132,8 @@ build() {
         -DTDESKTOP_API_ID=611335 \
         -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c \
         -DTDESKTOP_LAUNCHER_BASENAME="telegramdesktop" \
-        -DDESKTOP_APP_SPECIAL_TARGET=""
+        -DDESKTOP_APP_SPECIAL_TARGET="" \
+        -DDESKTOP_APP_DISABLE_AUTOUPDATE=ON
     ninja -C build
 }
 
