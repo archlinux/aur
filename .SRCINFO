@@ -1,0 +1,13 @@
+pkgbase = python-sphinxcontrib-globalsubs
+	pkgdesc = Sphinx needs extension to add support for global substitutions to conf.py
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/missinglinkelectronics/sphinxcontrib-globalsubs
+	arch = any
+	license = BSD
+	depends = python-sphinx
+	source = https://files.pythonhosted.org/packages/source/s/sphinxcontrib-globalsubs/sphinxcontrib-globalsubs-0.1.0.tar.gz
+	sha256sums = 83df8b5a5d72dfb3e2250d91f621df3a0aac3fe34c470dd3a7d6d9a3e101aeda
+
+pkgname = python-sphinxcontrib-globalsubs
+
