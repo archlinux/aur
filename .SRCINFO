@@ -1,0 +1,12 @@
+pkgbase = mc-tweakeroo-116-fabric
+	pkgdesc = A client-side mod, which adds a whole bunch of various different tweaks to the game.
+	pkgver = 0.10.0.dev.20201213.222846
+	pkgrel = 1
+	url = https://masa.dy.fi/mcmods/client_mods/
+	arch = any
+	license = LGPL
+	makedepends = wget
+	source = manifest.json::https://masa.dy.fi/api/games/mods/minecraft/latest/client/
+	sha1sums = SKIP
+
+pkgname = mc-tweakeroo-116-fabric
