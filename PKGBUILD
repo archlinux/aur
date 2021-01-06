@@ -10,11 +10,11 @@ url='https://www.rust-lang.org/'
 arch=('x86_64')
 license=('MIT' 'Apache')
 
-makedepends=('rust' 'libffi' 'lib32-gcc-libs' 'perl' 'python' 'curl' 'cmake' )
+makedepends=('rust' 'libffi' 'ninja' 'perl' 'python' 'curl' 'cmake')
 
 options=('!emptydirs' '!strip')
 
-depends=(gcc-libs curl libssh2 llvm lld)
+depends=(gcc-libs curl libssh2 lib32-gcc-libs)
 provides=(rust rust-wasm cargo rustfmt)
 conflicts=(rust cargo rustfmt)
 replaces=(cargo rustfmt cargo-tree)
