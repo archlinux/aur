@@ -1,6 +1,6 @@
 pkgbase = cotp
 	pkgdesc = Trustworthy command line authenticator app compatible with backups from andOTP, Aegis and so on..
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/replydev/cotp
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = cotp
 	arch = armv7
 	license = GPL3
 	makedepends = rust
-	source = cotp-0.1.0.tar.gz::https://github.com/replydev/cotp/archive/0.1.0.tar.gz
-	sha256sums = 2d9261eb857595acb1315ea386c29ed983f938f45959dcf0f83d0cbe176ff457
+	source = cotp-0.1.1.tar.gz::https://github.com/replydev/cotp/archive/0.1.1.tar.gz
+	sha256sums = fb80f7437c7132797468d16d9c7940e6ba434ffc3126d620e573a406c2b64970
 
 pkgname = cotp
 
