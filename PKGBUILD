@@ -6,7 +6,7 @@
 pkgname=sunflower
 _pkgver=0.4-62
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Small and highly customizable twin-panel file manager for Linux with support for plugins"
 arch=(any)
 license=(GPL3)
@@ -26,8 +26,10 @@ build() {
 
 package() {
   cd "${srcdir}/Sunflower"
+  _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
+
   python setup.py install --root="$pkgdir/" --optimize=1  --skip-build
-  install -Dm644 images/sunflower.svg "${pkgdir}"/usr/lib/python3.8/site-packages/images/sunflower.svg
+  install -Dm644 images/sunflower.svg "${pkgdir}"/usr/lib/${_pyver}/site-packages/images/sunflower.svg
   install -Dm644 images/sunflower.png "${pkgdir}/usr/share/pixmaps/sunflower.png"
   rm -rd "${pkgdir}/usr/images"
   cp -r "${srcdir}"/Sunflower/translations/ "${pkgdir}/usr/share/locale"
