@@ -21,6 +21,7 @@ pkgbase = packettracer
 	depends = libxml2
 	depends = libjpeg-turbo
 	depends = nss
+	depends = libxss
 
 pkgname = packettracer
 
