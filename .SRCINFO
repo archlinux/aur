@@ -1,6 +1,6 @@
 pkgbase = stm32cubeide
 	pkgdesc = Integrated Development Environment for STM32
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 3
 	url = https://www.st.com/en/development-tools/stm32cubeide.html
 	arch = x86_64
@@ -13,12 +13,11 @@ pkgbase = stm32cubeide
 	depends = ncurses5-compat-libs
 	depends = glibc
 	depends = libusb
-	conflicts = truestudio
 	options = !strip
-	source = local://en.en-st-stm32cubeide_1-5-0_8698_20201117_1050_amd64_sh.zip
+	source = local://en.st-stm32cubeide_1.5.1_9029_20201210_1234_amd64.sh.zip
 	source = 99-jlink.rules.patch
 	source = https://www.st.com/resource/en/license_agreement/dm00218346.pdf
-	sha256sums = 5efe1aa8cc044aba65a2e231fe17ea698f5ff1492535c4c9296b79d098d01a6d
+	sha256sums = 9b7edb4c93be799aa8bca643cb93befc6393fcd60f705c9f630da13860cef207
 	sha256sums = 0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3
 	sha256sums = SKIP
 
