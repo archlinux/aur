@@ -1,5 +1,5 @@
 pkgbase = python-pyqt6-sip
-	pkgdesc = The sip module support for PyQt5
+	pkgdesc = The sip module support for PyQt6
 	pkgver = 13.0.0
 	pkgrel = 1
 	url = https://riverbankcomputing.com/software/pyqt/intro
