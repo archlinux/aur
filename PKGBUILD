@@ -2,7 +2,7 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.7.1.r8.g072599c
+pkgver=3.7.1.r9.gcf8cf60
 pkgrel=1
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
@@ -12,8 +12,10 @@ depends=("wlroots-git" "sdl2" "libxcomposite" "vulkan-icd-loader" "libxtst" "lib
 makedepends=("git" "meson" "ninja" "patch" "vulkan-headers" "glslang")
 provides=($_pkgname "steamcompmgr")
 conflicts=($_pkgname "steamcompmgr")
-source=("git+https://github.com/Plagman/gamescope.git")
-sha512sums=('SKIP')
+source=("git+https://github.com/Plagman/gamescope.git"
+        "fix-wlserver-update-wlr_headless_backend_create-call.patch")
+sha512sums=('SKIP'
+            'c79e380f2307744de7fff7d719da6b5ecdaf8daf03771acb2c4bf1770e34692876fa37ce5efc8441dee9d8d386a17331f6991fe635730c59012faaba7db4b50b')
 
 
 pkgver() {
@@ -23,11 +25,13 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/$_pkgname"
 
     rm -rf "$srcdir/$_pkgname/subprojects/libliftoff"
     rm -rf "$srcdir/$_pkgname/subprojects/wlroots"
 
+    cd "$srcdir/$_pkgname"
+
+    patch -Np1 < "$srcdir/fix-wlserver-update-wlr_headless_backend_create-call.patch"
 }
 
 build() {
