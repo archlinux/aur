@@ -2,7 +2,7 @@
 
 _plug=tivtc
 pkgname=avisynth-plugin-${_plug}-git
-pkgver=r257.94eb799
+pkgver=v1.0.25.8.g94eb799
 pkgrel=1
 pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -19,8 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  #echo "$(git describe --long --tags | tr - .)"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  echo "$(git describe --long --tags | tr - .)"
 }
 
 prepare() {
