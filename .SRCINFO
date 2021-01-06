@@ -8,6 +8,6 @@ pkgbase = dyn-wall-rs
 	makedepends = rust
 	optdepends = feh: for setting wallpapers for window managers
 	source = dyn-wall-rs-2.1.2.tar.gz::https://github.com/RAR27/dyn-wall-rs/archive/v2.1.2.tar.gz
-	sha256sums = c260bc5e025d9dd9f8c2afc7e87108b45bcbd619a62fb0b1519372c467ebf816
+	sha256sums = 934e54eb77427f31d2f6b3ca0dc5903aefafc2d52cde47747fa879959718bc55
 
 pkgname = dyn-wall-rs

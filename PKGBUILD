@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('rust')
 optdepends=('feh: for setting wallpapers for window managers')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c260bc5e025d9dd9f8c2afc7e87108b45bcbd619a62fb0b1519372c467ebf816')
+sha256sums=('934e54eb77427f31d2f6b3ca0dc5903aefafc2d52cde47747fa879959718bc55')
 
 build() {
   cd "$pkgname-$pkgver"
