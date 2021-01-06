@@ -3,7 +3,7 @@
 
 pkgname=neru-icon-newyear-theme
 pkgver=1.0
-pkgrel=10
+pkgrel=11
 pkgdesc="Christmas theme icons Neru"
 arch=('any')
 url="https://github.com/chistota/neru-icon-newyear-theme/"
@@ -12,7 +12,7 @@ depends=('gtk-update-icon-cache')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/chistota/"${pkgname}"/archive/v"${pkgver}".tar.gz"
         "patch.diff")
 sha256sums=('dbb885f926ad1e2e3b282484928da7553c124ee1f494bd8e580efd670157dc99'
-            '83f57489374a6f5dfc30b8c71734ed279ed557a52f30c31c0ec73d70afacf242')
+            '59891d8d987344b5dc3113680c0203ed7c02b17bdc6cb41a8dba0d1a7e50812c')
 
 
 prepare() {
@@ -172,27 +172,80 @@ prepare() {
     ln -s system-switch-user.svg neru-newyear-dark/medium/apps/xfsm-switch-user.svg
     ln -s system-lock-screen.svg neru-newyear-dark/medium/apps/xfsm-lock.svg
     
-    rm -f neru-newyear-dark/medium/apps/com.librehat.yahooweather.svg
-    rm -f neru-newyear-dark/medium/apps/cumulus.svg
-    rm -f neru-newyear-dark/medium/apps/gis-weather.svg
-    rm -f neru-newyear-dark/medium/apps/gnome-weather.svg
-    rm -f neru-newyear-dark/medium/apps/indicator-weather.svg
-    rm -f neru-newyear-dark/medium/apps/org.gnome.Weather.Application.svg
-    rm -f neru-newyear-dark/medium/apps/org.gnome.weather.application.svg
-    rm -f neru-newyear-dark/medium/apps/org.gnome.Weather.svg
-    rm -f neru-newyear-dark/medium/apps/org.gnome.weather.svg
-    rm -f neru-newyear-dark/medium/apps/xfce4-weather.svg
+    ln -s applications-utilities.svg neru-newyear-light/medium/apps/org.xfce.taskmanager.svg
+    ln -s builder.svg neru-newyear-light/medium/apps/applications-engineering.svg
+    ln -s xfce4-systray.svg neru-newyear-light/medium/apps/org.xfce.panel.statustray.svg
+    ln -s preferences-desktop-launch-feedback.svg neru-newyear-light/medium/apps/org.xfce.panel.launcher.svg
+    ln -s ../devices/battery.svg neru-newyear-light/medium/apps/xfce4-battery-plugin.svg
+    ln -s ../places/folder.svg neru-newyear-light/medium/apps/org.xfce.panel.directorymenu.svg
+    ln -s workspace-switcher-left-bottom.svg neru-newyear-light/medium/apps/org.xfce.panel.pager.svg
+    ln -s cs-desktop.svg neru-newyear-light/medium/apps/org.xfce.panel.showdesktop.svg
+    ln -s preferences-system-time.svg neru-newyear-light/medium/apps/org.xfce.panel.clock.svg
+    ln -s menulibre.svg neru-newyear-light/medium/apps/org.xfce.panel.windowmenu.svg
+    ln -s xfce4-taskbar.svg neru-newyear-light/medium/apps/org.xfce.panel.tasklist.svg
     
-    rm -f neru-newyear-light/medium/apps/com.librehat.yahooweather.svg
-    rm -f neru-newyear-light/medium/apps/cumulus.svg
-    rm -f neru-newyear-light/medium/apps/gis-weather.svg
-    rm -f neru-newyear-light/medium/apps/gnome-weather.svg
-    rm -f neru-newyear-light/medium/apps/indicator-weather.svg
-    rm -f neru-newyear-light/medium/apps/org.gnome.Weather.Application.svg
-    rm -f neru-newyear-light/medium/apps/org.gnome.weather.application.svg
-    rm -f neru-newyear-light/medium/apps/org.gnome.Weather.svg
-    rm -f neru-newyear-light/medium/apps/org.gnome.weather.svg
-    rm -f neru-newyear-light/medium/apps/xfce4-weather.svg
+    ln -s applications-utilities.svg neru-newyear-dark/medium/apps/org.xfce.taskmanager.svg
+    ln -s builder.svg neru-newyear-dark/medium/apps/applications-engineering.svg
+    ln -s xfce4-systray.svg neru-newyear-dark/medium/apps/org.xfce.panel.statustray.svg
+    ln -s preferences-desktop-launch-feedback.svg neru-newyear-dark/medium/apps/org.xfce.panel.launcher.svg
+    ln -s ../devices/battery.svg neru-newyear-dark/medium/apps/xfce4-battery-plugin.svg
+    ln -s ../places/folder.svg neru-newyear-dark/medium/apps/org.xfce.panel.directorymenu.svg
+    ln -s workspace-switcher-left-bottom.svg neru-newyear-dark/medium/apps/org.xfce.panel.pager.svg
+    ln -s cs-desktop.svg neru-newyear-dark/medium/apps/org.xfce.panel.showdesktop.svg
+    ln -s preferences-system-time.svg neru-newyear-dark/medium/apps/org.xfce.panel.clock.svg
+    ln -s menulibre.svg neru-newyear-dark/medium/apps/org.xfce.panel.windowmenu.svg
+    ln -s xfce4-taskbar.svg neru-newyear-dark/medium/apps/org.xfce.panel.tasklist.svg
+    ln -s system-help.svg neru-newyear-light/medium/apps/org.xfce.about.svg
+    ln -s system-help.svg neru-newyear-dark/medium/apps/org.xfce.about.svg
+    ln -s mate-panel-separator.svg neru-newyear-light/medium/apps/org.xfce.panel.separator.svg
+    ln -s mate-panel-separator.svg neru-newyear-dark/medium/apps/org.xfce.panel.separator.svg
+    ln -s onlyiffice.svg neru-newyear-light/medium/apps/onlyoffice-desktopeditors.svg
+    ln -s onlyiffice.svg neru-newyear-dark/medium/apps/onlyoffice-desktopeditors.svg
+    ln -s desktop-environment-xfce.svg neru-newyear-light/medium/apps/org.xfce.panel.applicationsmenu.svg
+
+    ln -s window-close.svg neru-newyear-light/small/actions/xfce-wm-close.svg
+    ln -s window-minimize.svg neru-newyear-light/small/actions/xfce-wm-minimize.svg
+    ln -s xfce-wm-maximize.svg neru-newyear-light/small/actions/xfce-wm-unmaximize.svg
+
+    ln -s window-close.svg neru-newyear-dark/small/actions/xfce-wm-close.svg
+    ln -s window-minimize.svg neru-newyear-dark/small/actions/xfce-wm-minimize.svg
+    ln -s xfce-wm-maximize.svg neru-newyear-dark/small/actions/xfce-wm-unmaximize.svg
+
+    ln -s ../../../neru-newyear-light/medium/apps/distributor-logo-archlinux.svg \
+    neru-newyear-dark/medium/apps/distributor-logo-archlinux.svg
+    ln -s ../../../neru-newyear-light/medium/apps/wps-office-pdfmain.svg \
+    neru-newyear-dark/medium/apps/wps-office-pdfmain.svg
+    ln -s ../../../neru-newyear-light/medium/apps/wpa_gui.svg \
+    neru-newyear-dark/medium/apps/wpa_gui.svg
+    ln -s ../../../neru-newyear-light/medium/apps/sandbox.svg \
+    neru-newyear-dark/medium/apps/sandbox.svg
+    ln -s ../../../neru-newyear-light/medium/apps/flameshot.svg \
+    neru-newyear-dark/medium/apps/flameshot.svg
+    ln -s ../../../neru-newyear-light/medium/apps/mate-panel-separator.svg \
+    neru-newyear-dark/medium/apps/mate-panel-separator.svg
+    ln -s ../../../neru-newyear-light/medium/apps/org.xfce.tumbler.svg \
+    neru-newyear-dark/medium/apps/org.xfce.tumbler.svg
+    ln -s ../../../neru-newyear-light/medium/apps/bitwarden.svg \
+    neru-newyear-dark/medium/apps/bitwarden.svg
+    ln -s ../../../neru-newyear-light/medium/apps/doom3.svg \
+    neru-newyear-dark/medium/apps/doom3.svg
+    ln -s ../../../neru-newyear-light/medium/apps/qcalcfilehash.svg \
+    neru-newyear-dark/medium/apps/qcalcfilehash.svg
+    ln -s ../../../neru-newyear-light/medium/apps/quake.svg \
+    neru-newyear-dark/medium/apps/quake.svg
+    ln -s ../../../neru-newyear-light/medium/apps/rocksndiamonds.svg \
+    neru-newyear-dark/medium/apps/rocksndiamonds.svg
+    ln -s ../../../neru-newyear-light/medium/apps/uno-calculator.svg \
+    neru-newyear-dark/medium/apps/uno-calculator.svg
+    ln -s ../../../neru-newyear-light/medium/apps/weather.svg \
+    neru-newyear-dark/medium/apps/weather.svg
+    ln -s ../../../neru-newyear-light/medium/apps/desktop-environment-xfce.svg \
+    neru-newyear-dark/medium/apps/desktop-environment-xfce.svg
+    ln -s ../../../neru-newyear-light/medium/apps/desktop-environment-xfce.svg \
+    neru-newyear-dark/medium/apps/org.xfce.panel.applicationsmenu.svg
+    ln -s ../../../neru-newyear-light/medium/apps/darkplaces.svg \
+    neru-newyear-dark/medium/apps/darkplaces.svg
+    echo -e "\033[1;35mf\033[1;35mi\033[1;35mx \033[1;34mL\033[1;34mI\033[1;34mN\033[1;34mK\033[0m"
 }
 
 
