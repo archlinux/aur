@@ -1,0 +1,21 @@
+pkgbase = cchat-gtk-git
+	pkgdesc = Gtk frontend for cchat.
+	pkgver = r122.9cb3f71
+	pkgrel = 1
+	url = https://github.com/diamondburned/cchat-gtk
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	depends = gtk3
+	depends = discordlogin-git
+	depends = libhandy0
+	provides = cchat
+	conflicts = cchat
+	source = git+https://github.com/diamondburned/cchat-gtk
+	source = cchat-gtk.desktop
+	sha256sums = SKIP
+	sha256sums = 429790014af6dc2575dbcaf100008f9abdaf366553cc8665730e4c521018799f
+
+pkgname = cchat-gtk-git
+

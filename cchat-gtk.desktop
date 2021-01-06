@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=cchat
+Comment=Gtk frontend for cchat. 
+Exec=cchat-gtk
+Icon=cchat-gtk
+Terminal=false
+Type=Application
+Categories=Network;InstantMessaging;P2P;
