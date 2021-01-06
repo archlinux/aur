@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=certbot-dns-ovh
-pkgver=1.10.1
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="OVH DNS Authenticator plugin for Certbot"
 arch=('any')
@@ -14,7 +14,7 @@ source=("https://pypi.io/packages/source/c/$pkgname/$pkgname-$pkgver.tar.gz"{,.a
 validpgpkeys=('148C30F6F7E429337A72D992B00B9CC82D7ADF2C'
               '1B41B758F9A78C7F444C20FA3E5B4152E3ADB1FD'
               'A2CFB51FA275A7286234E7B24D17C995CD9775F2')
-sha512sums=('a3c28a2a213ecdefdf05e8e562eea7edd6cc45cced6cc32f567d1ddaedc671ffa9e49de3825ec29fdf41fcb2aff81706df58154d25c8cce737e676dcada70c9c'
+sha512sums=('278a7123881298d830d840cab5f66d91023deff9b3826848807de3abdc76073bc6309b4212475c947bd5b3cdb2c6bfff8a44278ccfa6dc177d609a2b7ed6a265'
             'SKIP')
 
 build() {
