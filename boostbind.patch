@@ -1,0 +1,12 @@
+diff --git a/src/validationinterface.h b/src/validationinterface.h
+index 094eccf..8c5fe43 100644
+--- a/src/validationinterface.h
++++ b/src/validationinterface.h
+@@ -8,6 +8,7 @@
+ 
+ #include <boost/signals2/signal.hpp>
+ #include <boost/shared_ptr.hpp>
++#include <boost/bind.hpp>
+ 
+ class CBlock;
+ struct CBlockLocator;

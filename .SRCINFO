@@ -1,7 +1,7 @@
 pkgbase = gobyte-qt
 	pkgdesc = Cryptocurrency wallet(QT)
-	pkgver = 0.12.2
-	pkgrel = 4
+	pkgver = 0.12.2.4
+	pkgrel = 1
 	url = https://www.gobyte.network/
 	install = gobyte-qt.install
 	arch = i686
@@ -20,8 +20,12 @@ pkgbase = gobyte-qt
 	conflicts = gobyte
 	source = gobyte-qt::git+https://github.com/gobytecoin/gobyte.git#tag=v0.12.2.4
 	source = gobyte-qt.desktop
+	source = qpainterpath.patch
+	source = boostbind.patch
 	sha256sums = SKIP
 	sha256sums = cfedcb808ba80d55409394db7483709daac526b351ceada402588dab3a83d84b
+	sha256sums = 22b6bb675dc46f4cf0bc5b2d5f2549f52240bc874790f7138c9166e3d49fa863
+	sha256sums = 0648a93bae4c361999484e0001f202ab8525cd04fed848f640708779cc68ae54
 
 pkgname = gobyte-qt
 
