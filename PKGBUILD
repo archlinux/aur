@@ -18,6 +18,8 @@ sha512sums=('d51bc9916c106413ead36d3eb855fe8053e62fe3bc7a3500349f4209c7abe7c05ae
 noextract=($pkgname-$pkgver.tgz)
 
 package() {
+  # Pretend we are a continuous integration tool to force non-interactive install
+  export CI=skip
   npm install -g --prefix "$pkgdir"/usr $pkgname-$pkgver.tgz
   find "$pkgdir"/usr -type d -exec chmod 755 {} +
 }
