@@ -11,7 +11,7 @@ url="https://github.com/lieser/${_dkim}"
 license=('AGPL')
 depends=('thunderbird')
 source=("${_dkim}.xpi::https://addons.mozilla.org/thunderbird/downloads/latest/dkim-verifier/addon-438634-latest.xpi?src=dp-btn-primary")
-sha256sums=('d1be8866c1f04a00af3e246907818e18b88ed7e1fdd8d33581b98590c74d42e0')
+sha256sums=('c8de1a52ae4ed7e0671f8fb73dce56c23d5e2264722a4eb3bfef4629bc022108')
 noextract=(${source[@]%%::*})
 
 package() {
