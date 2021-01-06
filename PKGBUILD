@@ -13,7 +13,6 @@ sha256sums=('9ab4c0d8f68d54a87df1cc19975f78cf0a16d6401afa83459eed9613695995dc')
 
 build() {
   cd openturns-$pkgver
-  curl -L https://github.com/openturns/openturns/pull/1682.patch | patch -p1
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_SKIP_INSTALL_RPATH=ON \
         -DOPENTURNS_SYSCONFIG_PATH=/etc \
