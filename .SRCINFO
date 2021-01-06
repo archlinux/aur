@@ -1,0 +1,11 @@
+pkgbase = curl-pulse-secure
+	pkgdesc = curl 7.73.0-1 libraries for pulse-secure
+	pkgver = 7.73.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/curl-pulse-secure
+	arch = x86_64
+	source = libcurl.so.4.7.0.gz
+	md5sums = e1c5aae1efcda110138caeb8821bc61e
+
+pkgname = curl-pulse-secure
+
