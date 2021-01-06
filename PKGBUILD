@@ -4,7 +4,7 @@
 # Upstream: https://github.com/handshake-org/hnsd
 
 pkgname=hnsd-git
-pkgver=0.0.0.895d89c
+pkgver=1.0.0.5.g1b47849
 pkgrel=1
 pkgdesc='SPV resolver daemon for the Handshake network. Written in C for speed/size/embedability.'
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  #git describe | sed 's/^v//;s/-/./g'
-  echo 0.0.0.g$(git rev-parse --short HEAD)
+  git describe | sed 's/^v//;s/-/./g'
+  #echo 0.0.0.g$(git rev-parse --short HEAD)
 }
 
 build() {
@@ -32,6 +32,6 @@ build() {
 
 package() {
   cd "$pkgname"
-  install -D -m644 hnsd "$pkgdir/usr/bin/hnsd"
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm655 hnsd "$pkgdir/usr/bin/hnsd"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
