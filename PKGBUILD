@@ -16,8 +16,10 @@ depends=(lib32-nspr lib32-sqlite lib32-zlib 'lib32-p11-kit')
 makedepends=(perl python gyp)
 provides=(lib32-nss)
 conflicts=(lib32-nss)
-source=("hg+https://hg.mozilla.org/projects/nss")
-sha256sums=('SKIP')
+source=("hg+https://hg.mozilla.org/projects/nss"
+        "0001-Hack-mpi_x64.s-to-work-with-fno-plt.patch")
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
   local vmajor vminor vpatch
@@ -33,7 +35,7 @@ prepare() {
   cd nss
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1382942
-#  patch -Np1 -i "$srcdir/0001-Hack-mpi_x64.s-to-work-with-fno-plt.patch"
+  patch -Np1 -i "$srcdir/0001-Hack-mpi_x64.s-to-work-with-fno-plt.patch"
 }
 
 build() {

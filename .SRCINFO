@@ -16,6 +16,8 @@ pkgbase = lib32-nss-hg
 	provides = lib32-nss
 	conflicts = lib32-nss
 	source = hg+https://hg.mozilla.org/projects/nss
+	source = 0001-Hack-mpi_x64.s-to-work-with-fno-plt.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = lib32-nss-hg
