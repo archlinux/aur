@@ -1,13 +1,14 @@
 pkgbase = wapm
 	pkgdesc = WebAssembly Package Manager
-	pkgver = 0.4.3
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://wapm.io
 	arch = x86_64
 	license = MIT
-	makedepends = cargo
-	source = https://github.com/wasmerio/wapm-cli/archive/0.4.3.tar.gz
-	sha512sums = 4321b3278fb7f78d1f5147e80ee00c75b52a3c79d26cb46a19487f686942c882b0929e093195f5245f677197faabfe3980e1f3361a78ad6dca80544cf2c7fdbf
+	makedepends = rust
+	depends = gcc-libs
+	source = wapm-0.5.0.tar.gz::https://github.com/wasmerio/wapm-cli/archive/v0.5.0.tar.gz
+	sha512sums = 525be40c5b70073d7cbeb267af82414c6d02ef9af78d04c7c032bb17565ff67760070962975fc06edbca92148e7cb5a251e9a2f170b40e944c9ee582c5c7e101
 
 pkgname = wapm
 
