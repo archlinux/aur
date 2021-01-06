@@ -1,6 +1,6 @@
 pkgbase = qdre-git
 	pkgdesc = Qt Desktop Regular Environment (early development)
-	pkgver = c69974a
+	pkgver = 07628fa
 	pkgrel = 1
 	url = https://gitlab.com/zaps166/qdre
 	arch = i686
