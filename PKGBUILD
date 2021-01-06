@@ -9,6 +9,7 @@ pkgdesc='Universal WebAssembly runtime'
 arch=('x86_64')
 license=('MIT')
 url='https://wasmer.io/'
+_repo='https://github.com/wasmerio/wasmer'
 depends=('bash')
 conflicts=(
   'wasmer'
@@ -28,8 +29,8 @@ provides=(
   "libwamser.so=$pkgver"
 )
 source=(
-  "wasmer-linux-amd64-${pkgver}.tar.gz"::"https://github.com/wasmerio/wasmer/releases/download/${pkgver}/wasmer-linux-amd64.tar.gz"
-  "https://raw.githubusercontent.com/wasmerio/wasmer/${pkgver}/LICENSE"
+  "wasmer-linux-amd64-$pkgver.tar.gz"::"$_repo/releases/download/$pkgver/wasmer-linux-amd64.tar.gz"
+  "https://raw.githubusercontent.com/wasmerio/wasmer/$pkgver/LICENSE"
 )
 sha512sums=(
   'SKIP'
