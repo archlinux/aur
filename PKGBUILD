@@ -15,10 +15,8 @@ source=("git+https://github.com/martinrotter/textosaurus.git#commit=6e2e86d45eeb
         "git+https://github.com/martinrotter/transka.git"
         "git+https://github.com/martinrotter/7za.git"
         "git+https://github.com/martinrotter/nsis.git"
-        "git+https://github.com/martinrotter/sed.git"
-        "git+https://github.com/martinrotter/scintilla")
+        "git+https://github.com/martinrotter/sed.git")
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -37,7 +35,6 @@ prepare() {
   git config 'submodule.resources/scripts/7za.url' "${srcdir}/7za"
   git config 'submodule.resources/scripts/nsis.url' "${srcdir}/nsis"
   git config 'submodule.resources/scripts/sed.url' "${srcdir}/sed"
-  git config 'submodule.src/libtextosaurus/3rd-party/scintilla.url' "${srcdir}/scintilla"
   git submodule update
 }
 
