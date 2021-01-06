@@ -1,8 +1,8 @@
 # Maintainer: Johnny Halfmoon < jhalfmoon at milksnot dot com >
 
 pkgname=blheli-configurator
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Crossplatform configuration tool for BLHeli based ESCs"
 arch=('x86_64')
 url="https://github.com/blheli-configurator/blheli-configurator"
@@ -12,9 +12,10 @@ source=(
 "blheli-configurator.desktop"
 )
 
-md5sums=('35ba8814c2701327823f5a6ada974bcf'
+md5sums=('cbd559872d35d97ad7af3b7f2257a309'
          '7ebf8dc82bf9cde6529da6166a8eb55f'
-          'd3f44aeb4a87d478aa9421c8c0206a11')
+         'd3f44aeb4a87d478aa9421c8c0206a11')
+
 options=(!strip)
 license=('custom')
 provides=("$pkgname")
