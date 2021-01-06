@@ -4,7 +4,7 @@ url='https://wiki.ros.org/mavros_extras'
 pkgname='ros-melodic-mavros-extras'
 pkgver='1.5.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('GPLv3, LGPLv3, BSD')
 
 ros_makedepends=(ros-melodic-std-msgs
@@ -18,7 +18,7 @@ ros_makedepends=(ros-melodic-std-msgs
   ros-melodic-visualization-msgs
   ros-melodic-sensor-msgs
   ros-melodic-cmake-modules)
-makedepends=('cmake' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools' 'boost1.69'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-melodic-tf
@@ -31,7 +31,8 @@ ros_depends=(ros-melodic-tf
   ros-melodic-visualization-msgs
   ros-melodic-sensor-msgs)
 depends=(${ros_depends[@]}
-	 geographiclib)
+	 geographiclib
+         boost1.69)
 
 _dir="mavros-${pkgver}/mavros_extras"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mavlink/mavros/archive/${pkgver}.tar.gz")
@@ -55,7 +56,9 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DBOOST_ROOT=/opt/boost1.69 \
+	-DBoost_NO_SYSTEM_PATHS=TRUE
   make
 }
 

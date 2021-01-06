@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-mavros-extras
 	pkgdesc = ROS - Extra nodes and plugins for MAVROS.
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/mavros_extras
 	arch = i686
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = ros-melodic-mavros-extras
 	license = GPLv3, LGPLv3, BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
+	makedepends = boost1.69
 	makedepends = ros-melodic-std-msgs
 	makedepends = ros-melodic-tf
 	makedepends = ros-melodic-mavros
@@ -32,6 +33,7 @@ pkgbase = ros-melodic-mavros-extras
 	depends = ros-melodic-visualization-msgs
 	depends = ros-melodic-sensor-msgs
 	depends = geographiclib
+	depends = boost1.69
 	source = ros-melodic-mavros-extras-1.5.1.tar.gz::https://github.com/mavlink/mavros/archive/1.5.1.tar.gz
 	sha256sums = 28e6b007bae627e6db5908575aa249f8fd081f18c67b9925a81914602296d33e
 
