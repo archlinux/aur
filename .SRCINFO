@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-agrum
 	pkgdesc = C++ Bayesian networks library (mingw-w64)
-	pkgver = 0.18.2
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = http://agrum.gitlab.io/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = mingw-w64-agrum
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = https://gitlab.com/agrumery/aGrUM/-/archive/0.18.2/aGrUM-0.18.2.tar.bz2
-	sha256sums = 7a7ebf059696aa67fc654ba31b450f42ab41889e9e8ace258df7afe64fbb829c
+	source = https://gitlab.com/agrumery/aGrUM/-/archive/0.19.0/aGrUM-0.19.0.tar.bz2
+	sha256sums = 07e78ab272b79c58b00b5f7f382fdd0c864ecbbf90a93055b054af41611aab88
 
 pkgname = mingw-w64-agrum
 
