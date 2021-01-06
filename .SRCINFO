@@ -1,8 +1,8 @@
 pkgbase = openage-git
 	pkgdesc = A free (as in freedom) clone of the Age of Empires II engine
-	pkgver = 0.4.0.r0.g0f8615cbc
-	pkgrel = 1
-	url = http://openage.sft.mx/
+	pkgver = 0.4.1.r346.g28fb967ec
+	pkgrel = 2
+	url = https://openage.sft.mx/
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = openage-git
 	makedepends = cython
 	makedepends = doxygen
 	makedepends = vulkan-headers
-	depends = python
+	makedepends = python-graphviz
 	depends = libepoxy
 	depends = ftgl
 	depends = sdl2_image
@@ -25,6 +25,7 @@ pkgbase = openage-git
 	depends = libogg
 	depends = python-pillow
 	depends = python-numpy
+	depends = python-toml
 	depends = python-pygments
 	depends = python-jinja
 	depends = nyan-lang-git
@@ -33,7 +34,7 @@ pkgbase = openage-git
 	provides = openage
 	conflicts = openage
 	source = git+https://github.com/SFTtech/openage
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = openage-git
 
