@@ -1,18 +1,15 @@
 pkgbase = zsh-autosuggestions-git
-	pkgdesc = Fish shell like fast/unobtrusive autosuggestions for zsh
-	pkgver = v0.4.3.r0.gd7c7967
+	pkgdesc = Fish-like autosuggestions for zsh (from git)
+	pkgver = 0.6.4.r0.gae315de
 	pkgrel = 1
 	url = https://github.com/zsh-users/zsh-autosuggestions
-	install = zsh-autosuggestions.install
 	arch = any
-	license = Custom:MIT
+	license = MIT
 	makedepends = git
-	makedepends = ruby
-	makedepends = tmux
-	makedepends = ruby-rdoc
 	depends = zsh
 	provides = zsh-autosuggestions
-	source = zsh-autosuggestions::git://github.com/zsh-users/zsh-autosuggestions
+	conflicts = zsh-autosuggestions
+	source = git+https://github.com/zsh-users/zsh-autosuggestions.git
 	sha256sums = SKIP
 
 pkgname = zsh-autosuggestions-git

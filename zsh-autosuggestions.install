@@ -1,4 +1,0 @@
-post_install() {
-    echo "==> To use zsh autosuggestions, include the following snippet in your .zshrc:
-    source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-}

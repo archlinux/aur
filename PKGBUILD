@@ -1,44 +1,37 @@
-_name='zsh-autosuggestions'
-pkgname="${_name}-git"
-pkgver=v0.4.3.r0.gd7c7967
+# Maintainer: Amanoel Dawod <amoka at amanoel dot com>
+# Contributor: Andrew Stubbs
+
+pkgname=zsh-autosuggestions-git
+pkgver=0.6.4.r0.gae315de
 pkgrel=1
-pkgdesc='Fish shell like fast/unobtrusive autosuggestions for zsh'
-url='https://github.com/zsh-users/zsh-autosuggestions'
+pkgdesc="Fish-like autosuggestions for zsh (from git)"
 arch=('any')
-license=('Custom:MIT')
+url="https://github.com/zsh-users/zsh-autosuggestions"
+license=('MIT')
 depends=('zsh')
-makedepends=('git' 'ruby' 'tmux' 'ruby-rdoc')
+makedepends=('git')
 provides=('zsh-autosuggestions')
-install="${_name}.install"
-source=("${_name}::${url//https/git}")
+conflicts=('zsh-autosuggestions')
+source=("git+https://github.com/zsh-users/zsh-autosuggestions.git")
 sha256sums=('SKIP')
 
 pkgver() {
-   cd "${srcdir}/${_name}"
-   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd zsh-autosuggestions
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd zsh-autosuggestions
+  make
 }
 
 package() {
-    cd "${srcdir}/${_name}"
-    make -B zsh-autosuggestions.zsh
-    install -d "${pkgdir}/usr/share/zsh/plugins/${_name}"
-    cp -a --no-preserve=ownership "zsh-autosuggestions.zsh" "${pkgdir}/usr/share/zsh/plugins/${_name}"
-
-    # license
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
-}
-
-check() {
-    cd "${srcdir}/${_name}"
-    (
-      # The test script uses Ruby Gems.
-      # Avoid installing them in the user's real home.
-      export HOME=$PWD/tmphome
-      export GEM_HOME=$(ruby -e 'print Gem.user_dir')
-      export PATH=$GEM_HOME/bin:$PATH
-      gem install bundler
-      bundle install
-
-      make test
-    )
+  cd zsh-autosuggestions
+  install -vDm 644 ${pkgname%-git}{,.plugin}.zsh \
+    -t "${pkgdir}/usr/share/zsh/plugins/${pkgname}/"
+  # docs
+  install -vDm 644 {CHANGELOG,README}.md \
+    -t "${pkgdir}/usr/share/doc/${pkgname}/"
+  # license
+  install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
