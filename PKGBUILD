@@ -2,7 +2,7 @@
 
 _pkgname=Parachute
 pkgname=kwin-scripts-parachute
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Windows and desktops from above"
 arch=(any)
@@ -11,7 +11,7 @@ license=(GPLv3)
 depends=(kwin)
 makedepends=(kpackage)
 source=("$url/archive/v${pkgver}.zip")
-sha256sums=('e390dc16ad694c11558687d6c8f9caaa25aca622952ace80ca64203ac337260d')
+sha256sums=('ca09a6b569d275063d98448f556e58e2ffae0302e16df72ebbdc586c2badd326')
 
 package() {
   cd $srcdir/${_pkgname}-${pkgver}/
