@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=dbxfs
-pkgver=1.0.48
+pkgver=1.0.49
 pkgrel=1
 pkgdesc="User-space file system for Dropbox"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('fuse2' 'python-dropbox>=11.0.0' 'python-appdirs' 'python-userspacefs'
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"{,.asc}
         "$pkgname.patch")
-sha256sums=('531d84501c1257b725581a0746106ca4bf4c5df398929ca8bcca63acf06b071f'
+sha256sums=('7bf7d6a02af7e6b9d312291c774329d1bfd4e1981cb6a0c115d9658304ba8f4a'
             'SKIP'
             'cc238c6562ec327efeba4f48e4523808338658b2b1f38b1fb6a901ba938c4868')
 validpgpkeys=('584EDA5AAC13B9FBFB13F678A6A5398DACC9C15C') # Rian Hunter <rian@thelig.ht>
