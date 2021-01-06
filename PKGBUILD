@@ -2,7 +2,7 @@
 
 _npmname=intelephense
 pkgname=nodejs-$_npmname
-pkgver=1.5.4
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Intelephense is a PHP language server adhering to the Language Server Protocol."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=(nodejs)
 makedepends=(npm)
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
-sha256sums=('747921fc36b206aa06e7ca3709bf8331fb5c6273984decd047b00a9a073dbf27')
+sha256sums=('cec5ea75611e15ec3699ac72df2ce20ab986ed181b34dd82d04ee090b74f440f')
 noextract=($_npmname-$pkgver.tgz)
 
 package() {
