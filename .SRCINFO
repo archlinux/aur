@@ -25,7 +25,7 @@ pkgbase = wownero-feather-git
         depends = qt5-base
         depends = qt5-websockets
         depends = tor
-        source = wownero-feather-git::git+https://git.wownero.com/wowario/feather-wow
+        source = wownero-feather-git::git+https://git.wownero.com/feather/feather-wow
         sha256sums = SKIP
 
 pkgname = wownero-feather-git
