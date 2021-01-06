@@ -1,7 +1,7 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=gnome-shell-extension-unite
 pkgver=44
-pkgrel=1
+pkgrel=2
 pkgdesc="Unite makes GNOME Shell look like Ubuntu Unity Shell"
 arch=("any")
 url="https://github.com/hardpixel/unite-shell"
@@ -15,4 +15,7 @@ md5sums=("18b5a37d3454c4db825b4ce1d3d16998")
 
 package() {
   install -d "$pkgdir/usr/share/gnome-shell/extensions" && cp -a "$srcdir/unite-shell-$pkgver/unite@hardpixel.eu" "$_"
+  install -d "$pkgdir/usr/share/glib-2.0" && mv "$pkgdir/usr/share/gnome-shell/extensions/unite@hardpixel.eu/schemas" "$_"
+
+  rm -f "$pkgdir/usr/share/glib-2.0/schemas/gschemas.compiled"
 }
