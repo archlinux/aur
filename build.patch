@@ -1,13 +1,12 @@
-diff --color -ura Graviton-App-2.0.92/package.json Graviton-App-2.0.92-new/package.json
---- Graviton-App-2.0.92/package.json	2020-07-06 05:35:01.000000000 +0800
-+++ Graviton-App-2.0.92-new/package.json	2020-07-07 16:52:39.651341591 +0800
-@@ -147,9 +147,7 @@
+diff -ura Graviton-App-2.1.6/package.json Graviton-App-2.1.6-new/package.json
+--- Graviton-App-2.1.6/package.json	2021-01-03 18:39:34.000000000 +0800
++++ Graviton-App-2.1.6-new/package.json	2021-01-06 18:41:05.498615487 +0800
+@@ -198,8 +198,7 @@
  			"icon": "assets/building/linux",
  			"category": "Development",
  			"target": [
 -				"AppImage",
--				"deb",
--				"rpm"
+-				"deb"
 +				"dir"
  			]
  		},

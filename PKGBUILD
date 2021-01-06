@@ -2,7 +2,7 @@
 
 pkgname=graviton
 _pkgname=Graviton-App
-pkgver=2.0.92
+pkgver=2.1.6
 pkgrel=1
 pkgdesc='A modern Code Editor'
 arch=('x86_64')
@@ -13,13 +13,13 @@ makedepends=('npm')
 provides=("graviton")
 conflicts=("graviton-bin")
 
-source=("https://github.com/Graviton-Code-Editor/Graviton-App/archive/${pkgver}.tar.gz"
+source=("https://github.com/Graviton-Code-Editor/Graviton-App/archive/v${pkgver}.tar.gz"
         'graviton.desktop'
         'build.patch')
 
-sha256sums=('cf012cdc855efb4fbd320c8c92973dfe4cb92f4f019be90aaf5c7cc3fb2cb380'
+sha256sums=('f1801f53f810b78f593a95e5c05882af41ed6053784262450fe6a7d89640baea'
             '274abb2bef19694a483dc0f9d1bad14ad397b68e9e07f13580eac4cecc5163dd'
-            'a5b842ae3cc53f6f247ffc27d9b787883dc0e11866e77a38bc1c2f6d7ba00d1f')
+            '021eac4c4cb19d3e425d716c15d4577b3ed9cdcb5b0a35fcb9115ac3efd823fc')
 
 prepare() {
     cd $srcdir/${_pkgname}-$pkgver
