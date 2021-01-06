@@ -5,7 +5,7 @@ pkgbase="foosynth-plugin-${_plug}-git"
 pkgname=("avisynth-plugin-${_plug}-git"
          "vapoursynth-plugin-${_plug}-git"
          )
-pkgver=r6.3.gf2e9c24
+pkgver=r6.6.g94cb6a4
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth/Avisynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ url='https://forum.doom9.org/showthread.php?t=176553'
 license=('GPL3')
 makedepends=('git'
              'cmake'
-             'avisynthplus-git'
+             'avisynthplus'
              'vapoursynth'
              )
 source=("${_plug}::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_f3kdb.git")
@@ -33,7 +33,7 @@ build() {
   cd "${_plug}/build"
   cmake .. \
     -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_PREFIX=/usr
 
   make
 }
