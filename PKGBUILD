@@ -2,14 +2,14 @@
 # Contributor: Alexandros Theodotou <alex@zrythm.org>
 _pkgname=zrythm
 pkgname=$_pkgname-git
-pkgver=1.0.0.alpha.6.0.1.r.ged48d5c6e
+pkgver=1.0.0.alpha.7.1.1.r.gb61d69ee9
 pkgrel=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
 url="https://www.zrythm.org"
 license=('AGPL3')
 depends=('gtk3' 'lilv' 'libx11' 'jack' 'libsndfile'
-  'libyaml'  'libsamplerate' 'alsa-lib' 'fftw')
+  'libyaml'  'libsamplerate' 'alsa-lib' 'fftw' 'ruby-sass')
 makedepends=(
   'python' 'gettext' 'sed'
   'meson' 'ninja' 'help2man' 'python-sphinx'

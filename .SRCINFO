@@ -25,6 +25,7 @@ pkgbase = zrythm-git
 	depends = libsamplerate
 	depends = alsa-lib
 	depends = fftw
+	depends = ruby-sass
 	optdepends = portaudio: portaudio backend
 	optdepends = qt5-base: for embedding qt5 plugin UIs
 	provides = zrythm
