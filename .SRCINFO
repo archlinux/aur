@@ -12,7 +12,7 @@ pkgbase = lib32-nss-hg
 	depends = lib32-nspr
 	depends = lib32-sqlite
 	depends = lib32-zlib
-	depends = lib32-p11-kit>=0.23.19
+	depends = lib32-p11-kit
 	provides = lib32-nss
 	conflicts = lib32-nss
 	source = hg+https://hg.mozilla.org/projects/nss
@@ -22,6 +22,6 @@ pkgname = lib32-nss-hg
 	depends = lib32-nspr
 	depends = lib32-sqlite
 	depends = lib32-zlib
-	depends = lib32-p11-kit>=0.23.19
+	depends = lib32-p11-kit
 	depends = nss
 

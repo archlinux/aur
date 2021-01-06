@@ -12,7 +12,7 @@ pkgdesc="Network Security Services (32-bit)"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 arch=(x86_64)
 license=(MPL GPL)
-depends=(lib32-nspr lib32-sqlite lib32-zlib 'lib32-p11-kit>=0.23.19')
+depends=(lib32-nspr lib32-sqlite lib32-zlib 'lib32-p11-kit')
 makedepends=(perl python gyp)
 provides=(lib32-nss)
 conflicts=(lib32-nss)
