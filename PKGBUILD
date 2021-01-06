@@ -15,6 +15,8 @@ depends=(
   'python-ly>=0.9.5'
   'python-poppler-qt5'
   'python-pyqt5>=5.9'
+  'python-pyqt5-webengine>=5.9'
+  'python-pyqt5-sip>=5.9'
   'qpageview'
   'qt5-base>=5.9'
   'qt5-svg>=5.9'

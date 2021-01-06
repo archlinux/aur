@@ -12,6 +12,8 @@ pkgbase = frescobaldi-git
 	depends = python-ly>=0.9.5
 	depends = python-poppler-qt5
 	depends = python-pyqt5>=5.9
+	depends = python-pyqt5-webengine>=5.9
+	depends = python-pyqt5-sip>=5.9
 	depends = qpageview
 	depends = qt5-base>=5.9
 	depends = qt5-svg>=5.9
