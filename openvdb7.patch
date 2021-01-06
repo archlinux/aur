@@ -1,0 +1,29 @@
+diff --git a/intern/openvdb/CMakeLists.txt b/intern/openvdb/CMakeLists.txt
+index 9ac0817903b..e60d45b7f64 100644
+--- a/intern/openvdb/CMakeLists.txt
++++ b/intern/openvdb/CMakeLists.txt
+@@ -23,6 +23,8 @@
+ #
+ # ***** END GPL LICENSE BLOCK *****
+ 
++set (CMAKE_CXX_STANDARD 14)
++
+ set(INC
+ 	.
+ 	intern
+diff --git a/intern/openvdb/intern/openvdb_writer.cc b/intern/openvdb/intern/openvdb_writer.cc
+index 900c5371682..f209ec758b6 100644
+--- a/intern/openvdb/intern/openvdb_writer.cc
++++ b/intern/openvdb/intern/openvdb_writer.cc
+@@ -39,11 +39,7 @@ void OpenVDBWriter::insert(const openvdb::GridBase::Ptr &grid)
+ 
+ void OpenVDBWriter::insert(const openvdb::GridBase &grid)
+ {
+-#if (OPENVDB_LIBRARY_MAJOR_VERSION_NUMBER <= 3) || defined(OPENVDB_3_ABI_COMPATIBLE)
+-	m_grids->push_back(grid.copyGrid());
+-#else
+ 	m_grids->push_back(grid.copyGridWithNewTree());
+-#endif
+ }
+ 
+ void OpenVDBWriter::insertFloatMeta(const openvdb::Name &name, const float value)

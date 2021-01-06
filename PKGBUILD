@@ -49,6 +49,10 @@ source=("git://git.blender.org/blender.git${_fragment}"
         Cleanup-use-PyImport_GetModuleDict.patch
         python3.8.patch
         addon_path.patch
+        'python3.9.patch'   # ::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/56d0df51a36fdce7ec2d1fbb7b47b1d95b591b5f
+        'python3.9_2.patch' # ::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/5edba9b42f684bf8b99894bb6988e7f46180e12c
+        openvdb7.patch
+        openvdb8.patch # ::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/37889011070ff2ec52159690f652238d2b325185
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -65,7 +69,11 @@ sha256sums=('SKIP'
             '5ff48d0e35025f21ee45274b56d1788b2e1768fa4d86b5032a40941057695176'
             'f4fea95b9d27fb5c30a13cd57ae22d8f3091d456719377e28572091793e941c2'
             '229853b98bb62e1dec835aea6b2eab4c3dabbc8be591206573a3c1b85f10be59'
-            'e959c2ae13baa35e9ee6d9ff8f30fea55a60ccd59a0b8d047df134aee4b5424e')
+            'e959c2ae13baa35e9ee6d9ff8f30fea55a60ccd59a0b8d047df134aee4b5424e'
+            'd106248d55045f5ef913bf6243ad74a76f6282264d9ee4c9b87ec4a3d2e2064b'
+            'b2a2bc5de8d3b730e49d1f50cb025c1dfdbcb66c58ead573322585b6a887d3a7'
+            'c4079c4c142516d9cd476f5a3cafddf4068f0950c3c11ea4da9cf999c5ccc1f9'
+            'edfd784f8497417660c0b9fdc97893fd0d77764d0bc10f4cb92a9082f41bae75')
 
 pkgver() {
   blender_version=$(grep -Po "BLENDER_VERSION\s+\K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
@@ -86,8 +94,8 @@ prepare() {
   if [[ -v _suffix ]]; then
     git apply -v <(sed "s/@@_suffix@@/${_suffix}/g" "${srcdir}/addon_path.patch")
   fi
-  git -C "$srcdir/blender" apply -v "${srcdir}"/{gcc{8,9},ffmpeg,openvdb,collada1668,oiio-2.0,Cleanup-use-PyImport_GetModuleDict}.patch
-  git -C "$srcdir/blender" apply -v "${srcdir}"/python3.8.patch
+  git -C "$srcdir/blender" apply -v "${srcdir}"/{gcc{8,9},ffmpeg,openvdb{,7,8},collada1668,oiio-2.0,Cleanup-use-PyImport_GetModuleDict}.patch
+  git -C "$srcdir/blender" apply -v "${srcdir}"/python3.{8,9,9_2}.patch
 }
 
 build() {
