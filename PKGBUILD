@@ -5,11 +5,12 @@
 
 pkgname=qpxtool
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows better controll over optical drives to include QChecks and optimization settings."
 arch=('x86_64')
 url="http://qpxtool.sourceforge.net/"
 license=('GPL')
+makedepends=('qt5-tools')
 depends=('qt5-base')
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.bz2)
 md5sums=('33f210de24ef8dd7c7adac6b41ac8328')
