@@ -1,44 +1,35 @@
-# Maintainer Jordan Klassen <forivall at gmail dot com>
 
-# Based on atom-editor-bin
-# Maintainer Danny Arnold <despair.blue at gmail dot com>
-# Contributor: Andre Miranda <andreldm1989 AT gmail DOT com>
-# Contributor: Tom Bu <tom.bu AT members.fsf.org>
-# Contributor: John Reese <john@noswap.com>
-# Contributor: Samantha McVey <samantham@posteo.net>
-# Upstream URL: https://github.com/atom/atom
 
 pkgname=atom-editor-beta-bin
-pkgver=1.38.0.beta0
-pkgver() {
-  curl -sS https://github.com/atom/atom/releases.atom | grep -Eo 'v.*?beta([0-9]+)' | head -n 1 | sed -e 's/-/./' -e 's/v//'
-}
-get_version() {
-   printf "%s" $(pkgver) | sed -e 's/\(.*\)\.beta/v\1-beta/'
-}
+_pkgver="1.54.0-beta0"
+pkgver=1.54.0beta0
 pkgrel=1
-pkgdesc="Chrome-based text editor from Github - Beta Channel - Precompiled binary from official repository - PKGBUILD downloads the latest dev release when built."
+pkgdesc="simple configuration file class"
 arch=('x86_64')
-url="https://github.com/atom/atom"
-license=('MIT')
-options=(!strip)
-depends=('git' 'gconf' 'gtk2' 'libnotify' 'libxtst' 'nss' 'python2' 'xdg-utils' 'desktop-file-utils' 'alsa-lib' 'libgnome-keyring')
-optdepends=('gvfs')
-conflicts=('atom-editor-beta')
-install=$pkgname.install
-
-md5sums=('SKIP'
-         '677241ab040fa75db07f6a52d26930b9'
-         'b05aef80afa76162ff9a1992cef3f0f9')
-source=("atom-amd64-$(get_version).deb::https://atom-installer.github.com/$(get_version)/atom-amd64.deb"
-         atom-python.patch
-         startupwmclass.patch)
+license=('GPL')
+depends=('gconf' 'git' 'nodejs' 'npm' 'libsecret' 'python' 'libx11' 'libxkbfile')
+provides=('atom')
+conflicts=('atom')
+source=("https://github.com/atom/atom/releases/download/v${_pkgver}/atom-amd64.tar.gz"
+        "https://raw.githubusercontent.com/atom/atom/master/resources/linux/atom.desktop.in")
+md5sums=('545601dbe5d715b7b66145b67a072dcc'
+         'edd7c80254eae752065ec9fd17915752')
 
 package() {
-  tar xf data.tar.xz
-  patch -p1 < "${srcdir}"/atom-python.patch
-  patch -p1 < "${srcdir}"/startupwmclass.patch
-  sed -i 's|env PYTHON=python2 GTK_IM_MODULE= QT_IM_MODULE= XMODIFIERS= /usr/share/atom-beta/atom|/usr/bin/atom-beta|' usr/share/applications/atom-beta.desktop
-  chmod -R g-w usr
-  mv usr "${pkgdir}"
+  cd "atom-beta-${_pkgver}-amd64"
+
+  install -d -m 755 "${pkgdir}/usr/share/applications"
+  install -d -m 755 "${pkgdir}"/usr/lib
+  install -d -m 755 "${pkgdir}"/usr/bin
+  cp -r ./ "${pkgdir}"/usr/lib/atom
+
+  sed -e "s|<%= appName %>|Atom|" \
+      -e "s/<%= description %>/${pkgdesc}/" \
+      -e "s|<%= installDir %>|/usr|" \
+      -e "s|<%= appFileName %>|atom|" \
+      -e "s|<%= iconPath %>|atom|" \
+      ../atom.desktop.in > "${pkgdir}/usr/share/applications/atom.desktop"
+
+  cd "${pkgdir}"/usr/bin
+  ln -sf ../lib/atom/atom atom
 }
