@@ -5,7 +5,7 @@
 
 pkgname=imgp
 _pkgauthor=jarun
-pkgver=2.7
+pkgver=2.8
 pkgrel=1
 pkgdesc="Multi-core batch image resizer and rotator"
 arch=('any')
@@ -14,7 +14,7 @@ license=('GPL3')
 depends=('python' 'python-pillow')
 source=("https://github.com/${_pkgauthor}/${pkgname}/archive/v$pkgver.tar.gz")
 conflicts=('imgp-git')
-sha256sums=('362f9fab7eaf4c53438e12f32477329c970bd7348181c243ffa30326e231acf7')
+sha256sums=('91494f57a110c4439ae956a8a45762467d8deb4606a92f687efdc3a61e4e7cbd')
 
 package() {
 	make -C "${pkgname}-$pkgver" DESTDIR="${pkgdir}" PREFIX="/usr" install
