@@ -5,7 +5,7 @@
 
 # Maintainer: Jackson McCrory <jackson@mccrory.xyz>
 pkgname=dmenu-jadecell-git
-pkgver=5.0.r2.6bf6160.r..r..r.
+pkgver=5.0
 pkgrel=1
 epoch=
 pkgdesc="JadeCell's build of dmenu patched for caseinsensitive, instant, lineheight, etc."
@@ -31,7 +31,7 @@ validpgpkeys=()
 
 pkgver() {
     cd "${_pkgname}"
-    printf "${pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "5.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
