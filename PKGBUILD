@@ -14,7 +14,7 @@ license=('GPL')
 makedepends=('git'
              'cmake'
              'intel-tbb'
-             'avisynthplus-git'
+             'avisynthplus'
              'vapoursynth'
              )
 source=("${_plug}::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_Gradient_Mask.git")
