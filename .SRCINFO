@@ -1,6 +1,6 @@
 pkgbase = blender-develop-git
 	pkgdesc = Development version of Blender (non-conflicting version)
-	pkgver = 2.92.r102077.g82e401031fd
+	pkgver = 2.92.r102629.g4b56c182907
 	pkgrel = 1
 	url = https://blender.org/
 	changelog = blender.changelog
@@ -13,7 +13,6 @@ pkgbase = blender-develop-git
 	makedepends = boost
 	makedepends = mesa
 	makedepends = llvm
-	depends = usd>=20.05
 	depends = alembic
 	depends = embree
 	depends = libgl
