@@ -1,12 +1,19 @@
 pkgbase = indicator-sound-switcher-git
 	pkgdesc = Sound input/output selector indicator for Linux.
 	pkgver = 2.3.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yktoo/indicator-sound-switcher
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = python-setuptools
 	depends = python
+	depends = python-gobject
+	depends = libkeybinder3
+	depends = libappindicator-gtk3
+	depends = pulseaudio
+	provides = indicator-sound-switcher
+	conflicts = indicator-sound-switcher
 	source = https://github.com/yktoo/indicator-sound-switcher/archive/v2.3.5.2.tar.gz
 	md5sums = 49c836b5d20c505a32971f4fbd2182af
 
