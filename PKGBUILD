@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.33.0.37.gbff5416dae
+pkgver=v0.33.0.57.g1251f7bbf9
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -22,6 +22,7 @@ depends=(
          'libplacebo.so'
          'libpulse'
          'libshaderc_shared.so'
+         'libsixel'
          'libsoxr'
          'libssh'
          'libva.so'
@@ -84,7 +85,7 @@ if [ -f /usr/lib/libvapoursynth.so ]; then
   depends+=('vapoursynth')
 fi
 if [ -f /usr/lib/libavisynth.so.*.*.* ]; then
-  depends+=('avisynthplus-git')
+  depends+=('avisynthplus')
 fi
 
 pkgver() {
