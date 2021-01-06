@@ -1,17 +1,17 @@
 pkgbase = r5u87x
 	pkgdesc = Userspace module for Ricoh R5U870 OEM cameras
-	pkgver = 64
-	pkgrel = 3
-	url = https://bitbucket.org/ahixon/r5u87x
+	pkgver = 0.2.2
+	pkgrel = 1
+	epoch = 1
+	url = https://gitea.artixlinux.org/linuxer/r5u87x
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = git
 	depends = glib2
 	depends = libusb-compat
 	optdepends = guile: script for extracting firmware from Windows driver
-	source = git+https://github.com/tmn505/r5u87x.git#commit=6e521e39d60afee08370970d3ccd362ad5541cfe
-	sha256sums = SKIP
+	source = r5u87x-0.2.2.tar.gz::https://gitea.artixlinux.org/linuxer/r5u87x/archive/0.2.2.tar.gz
+	sha256sums = d87dc965f6fcb2a1c849ff309d8bc4e4669b9b37d73ba875af35f580c5e32036
 
 pkgname = r5u87x
 
