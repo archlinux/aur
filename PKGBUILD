@@ -1,25 +1,34 @@
 # Maintainer: Emilien Devos (unixfox) <contact@emiliendevos.be>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=green-recorder-git
-pkgver=3.0.1.2.r2.ge7f877d
+pkgver=3.2.8.r0.g6d4d44e
 pkgrel=1
-pkgdesc='A simple screen recorder for Linux desktop. Supports Wayland & Xorg'
-arch=('i686' 'x86_64')
-license=('GPL3')
-url="https://github.com/foss-project/${pkgname%-git}"
-depends=('python2' 'libappindicator-gtk3' 'python2-gobject' 'gtk3' 'ffmpeg' 'gawk' 'python2-urllib3' 'python2-dbus' 'xorg-xdpyinfo' 'xorg-xwininfo' 'imagemagick' 'python2-configparser' 'xdg-utils' 'pulseaudio' 'python2-pydbus')
-options=('!emptydirs')
-source=("git://github.com/green-project/${pkgname%-git}.git")
-sha1sums=('SKIP')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+pkgdesc="Simple screen recorder for Linux desktop, supports Wayland & Xorg"
+arch=(any)
+url="https://github.com/dvershinin/green-recorder"
+license=(GPL3)
+depends=(python-pydbus python-gobject python-urllib3 ffmpeg imagemagick
+         xorg-xdpyinfo xorg-xwininfo libappindicator-gtk3 gawk)
+optdepends=('gnome-shell: Gnome on Wayland desktop recording')
+makedepends=(git python-setuptools)
+options=(!emptydirs)
+provides=(green-recorder)
+conflicts=(green-recorder)
+source=("git+https://github.com/dvershinin/green-recorder")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "${pkgname%-git}"
-	git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${pkgname%-git}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "${pkgname%-git}"
+  python setup.py build
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-        python2 setup.py install --root="$pkgdir/" --optimize=1
+  cd "${pkgname%-git}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
