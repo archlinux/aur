@@ -9,10 +9,12 @@ license=('GPL3')
 depends=('wget' 'unzip')
 source=(daggerfall-unity
   daggerfall.desktop
-  settings-template.ini)
+  settings-template.ini
+  data-files.txt)
 sha256sums=(0b312ea87a391da827da5296a59f6c19412a408d497ce06bbe68b45be98c3bcb
   1015b75af1876313bf8727cc57dc3c033e82b0904ee623a6944c333d6e4de1ae
   f8c7e4de325a5a25add4b2404cfdaa59f490a7cc43c89f4b72ed12db66e52ff5
+  a6a45d321dda7b98484dbe38099d8f697c3d25e570a7bfbcdd975c206cadef2f
 )
 
 #Package Variables
@@ -128,7 +130,21 @@ package() {
     unzip -q "${srcdir}/data.zip" -d "${pkgdir}/${DEST_DIR}/${DATA_DIR}"
   else
     echo "Download data flag not set. Copying pre-existing data to package."
-    cp -R "/$DEST_DIR/$DATA_DIR" "${pkgdir}/${DEST_DIR}/${DATA_DIR}"
+    #First make the package directories
+    mkdir -p ${pkgdir}/opt/daggerfall-unity/data/SAVE2
+    mkdir -p ${pkgdir}/opt/daggerfall-unity/data/SAVE0
+    mkdir -p ${pkgdir}/opt/daggerfall-unity/data/SAVE4
+    mkdir -p ${pkgdir}/opt/daggerfall-unity/data/SAVE3
+    mkdir -p ${pkgdir}/opt/daggerfall-unity/data/arena2/books
+    mkdir -p ${pkgdir}/opt/daggerfall-unity/data/SAVE1
+    mkdir -p ${pkgdir}/opt/daggerfall-unity/data/SAVE5
+    
+    #Then loop through package file listing and copy files into the package directory
+    for SRC_FILE in `cat ${srcdir}/data-files.txt`
+    do
+      DST_FILE=${pkgdir}/$(echo $SRC_FILE)
+      cp $SRC_FILE $DST_FILE
+    done
   fi
   unzip -q "${srcdir}/engine.zip" -d "${pkgdir}/${DEST_DIR}/${ENGINE_DIR}"
   echo "Done."
