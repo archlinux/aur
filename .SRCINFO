@@ -1,6 +1,6 @@
 pkgbase = chatty-beta
 	pkgdesc = Twitch Chat Client for Desktop
-	pkgver = 0.13.1
+	pkgver = 0.14b2
 	pkgrel = 1
 	url = https://chatty.github.io/
 	arch = any
@@ -12,14 +12,14 @@ pkgbase = chatty-beta
 	optdepends = livestreamer: for watching streams in a custom video player.
 	provides = chatty
 	conflicts = chatty
-	source = chatty-0.13.1.tar.gz::https://github.com/chatty/chatty/archive/v0.13.1.tar.gz
+	source = chatty-0.14-b2.tar.gz::https://github.com/chatty/chatty/archive/v0.14-b2.tar.gz
 	source = chatty.desktop
 	source = chatty_script
 	source = disable_version_check.patch
-	sha512sums = 042f4a5d3e7d4b3ead3f736722b2138c02bd057d6fbe74d2728222ffc668c48d6c87678d43c729713f4a18dca2ab22c945b89ef2c93e41dd3754afe4effe75c9
-	sha512sums = 6b18009b4e34a2255cec42fd1e136e437aa528c80c40d9f1ab7379ab9e4a637fbd64860fb51e7e57aa0c74165b42f8d4c1ed6a1ffd061d07a02af1ec5167145e
-	sha512sums = b5ea9a3e77cf5ed006537348371619577aabf86bdb4e90b249c2e3a236b1f1d51920c6af2d2779920a0853cb4f5456fc0a10ad2a788c7c1e5b2649f7f2b756d0
-	sha512sums = 8df69baaf9a0bad68d7c1aac96877b65637c4688d59f9b36f4915b77e2ec9bfa99c67adfe69bca95baee88a585f6f01f5f26eb076079f95bfca9f0ac19180199
+	b2sums = 19826a0c22c948ef64b31fb66eec71c83ecb7907ea2601d60a37220a2c698aead198ff71419113ed450edfcd1ebb25337da2ed0a033e468f4ef99b15169bc8e9
+	b2sums = 8eaa2a6a1f16b4c65c046b5d524b8237132f40c50bfd952f34e8296c8cc3c299c0eb8abf528aa167373bd844da9c0ad265181984d3dab04b86fc4efdd5100281
+	b2sums = ad27872651f6481b52721b286f3b22b5dde3c9d3a9f3bdf155a361f5733d20c0bd97515d283f0d038e96903e91e62e363dbb57aee25e018a4e7f4aa014ec715b
+	b2sums = fa6495c018023f244a924c2a37eafde6f26c13e4664480ca2ffdb3d7e97ba644f78db42bd75649825966ff70a3cfb1a4e9eff41087c501528f964f32ed0defe5
 
 pkgname = chatty-beta
 
