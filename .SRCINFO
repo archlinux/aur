@@ -1,18 +1,18 @@
 pkgbase = heroic-games-launcher-electron
 	pkgdesc = HGL, a Native alternative Linux Launcher for Epic Games
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/flavioislima/HeroicGamesLauncher
 	arch = x86_64
 	license = GPL3
 	depends = xterm
-	depends = fuse2
+	depends = electron
 	conflicts = heroic-games-launcher-appimage
 	conflicts = heroic-games-launcher-bin
 	options = !strip
-	source = https://github.com/flavioislima/HeroicGamesLauncher/releases/download/0.4.0-beta/heroic-0.4.0-beta.pacman
+	source = https://github.com/flavioislima/HeroicGamesLauncher/releases/download/0.4.1-beta/heroic-0.4.1-beta.pacman
 	source = heroic
-	md5sums = 247684c170ae8b15d625d5f5cbdedb1e
+	md5sums = e5087ce4a32e31bb1fffbb42053df1db
 	md5sums = b561c32112d481345acb0d9ca828fa01
 
 pkgname = heroic-games-launcher-electron
