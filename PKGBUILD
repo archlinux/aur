@@ -29,4 +29,5 @@ package() {
   install -Dm755 "${srcdir}/build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm755 "${srcdir}/qrop.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm644 "${srcdir}/build/core/libcore.so" "${pkgdir}/usr/lib/libcore.so"
+  install -Dm644 "${srcdir}/qrop-v${pkgver}/logo.png" "${pkgdir}/usr/share/icons/hicolor/256x256/qrop.png"
 }
