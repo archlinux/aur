@@ -4,8 +4,8 @@
 
 pkgname=advanced-ssh-config
 _name=assh
-pkgver=2.10.0
-_vcsref=1ff23be
+pkgver=2.11.0
+_vcsref=3b5e2fe
 pkgrel=1
 pkgdesc='ssh wrapper using ProxyCommand that adds regex, aliases, gateways, includes, dynamic hostnames to SSH and ssh-config'
 arch=('x86_64')
@@ -13,16 +13,15 @@ url='https://github.com/moul/assh'
 license=('MIT')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/moul/assh/archive/v${pkgver}.tar.gz")
-sha256sums=('7cc2ff54c5fc04d2b5cbe0b073ef2fef112e5b3ef9185408b708625e572c83c1')
+sha256sums=('8819b847cabddbd1a36893dfeadbbf60346bed14d38e36726248817ff101489c')
 
 build() {
   cd "$_name-$pkgver"
   go build \
      -trimpath \
      -buildmode=pie \
-     -mod=readonly \
      -modcacherw \
-     -ldflags "-extldflags ${LDFLAGS}" \
+     -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
      -ldflags "-X 'moul.io/assh/v2/pkg/version.Version=${pkgver}' -X 'moul.io/assh/v2/pkg/version.VcsRef=${_vcsref}'" \
      -o assh \
      .
@@ -40,5 +39,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
-
