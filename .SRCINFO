@@ -1,7 +1,7 @@
 pkgbase = haskell-language-server-bin
 	pkgdesc = Integration point for ghcide and haskell-ide-engine. One IDE to rule them all.
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/haskell/haskell-language-server
 	arch = x86_64
 	license = Apache
@@ -15,6 +15,7 @@ pkgbase = haskell-language-server-bin
 	source = haskell-language-server-Linux-8.8.4-0.8.0.gz::https://github.com/haskell/haskell-language-server/releases/download/0.8.0/haskell-language-server-Linux-8.8.4.gz
 	source = haskell-language-server-Linux-8.10.1-0.8.0.gz::https://github.com/haskell/haskell-language-server/releases/download/0.8.0/haskell-language-server-Linux-8.10.1.gz
 	source = haskell-language-server-Linux-8.10.2-0.8.0.gz::https://github.com/haskell/haskell-language-server/releases/download/0.8.0/haskell-language-server-Linux-8.10.2.gz
+	source = haskell-language-server-Linux-8.10.3-0.8.0.gz::https://github.com/haskell/haskell-language-server/releases/download/0.8.0/haskell-language-server-Linux-8.10.3.gz
 	source = haskell-language-server-wrapper-Linux-0.8.0.gz::https://github.com/haskell/haskell-language-server/releases/download/0.8.0/haskell-language-server-wrapper-Linux.gz
 	sha256sums = 0c8a02598f596defd3abf963c1505a2af16d2363c46dd296fda6dd8682e94490
 	sha256sums = bdaa6687ef5e44e037ccab91b5e7ab205b11f7cf1aed03dda8f38af0d8f24718
@@ -23,6 +24,7 @@ pkgbase = haskell-language-server-bin
 	sha256sums = b688eec0952a80fc71c3ecb9778ed376bc1a7e14f0909382996fe2dcd89c3187
 	sha256sums = 569ebebdc6cb4b30944b7f14fbcb198a3f3019b8a4267368fa441e133497e1b6
 	sha256sums = ad4d0c3638be51174c399d263e5c9f7ce7c9a1747a5825568da646a99ebc631d
+	sha256sums = 0d4bd6eae430d42788cba4ff4a41b2add9c23a2f942829fc22a9cf3dd7e64d36
 	sha256sums = eeaa8cea780923da977ef00a08ae007a8fdb75c957b500209bc4d0fff10e72d4
 
 pkgname = haskell-language-server-bin
