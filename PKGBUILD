@@ -3,7 +3,7 @@
 pkgname=mingw-w64-libpsl
 _pkgname=libpsl
 pkgver=0.21.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Public Suffix List library (mingw-w64)'
 url='https://github.com/rockdaboot/libpsl'
 arch=(any)
@@ -26,6 +26,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure \
+      --disable-gtk-doc \
       --disable-gtk-doc-html \
       --disable-man \
       --enable-{builtin,runtime}=libidn2 \
