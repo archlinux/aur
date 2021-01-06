@@ -69,7 +69,7 @@ sha256sums=('SKIP'
             '5ff48d0e35025f21ee45274b56d1788b2e1768fa4d86b5032a40941057695176'
             'f4fea95b9d27fb5c30a13cd57ae22d8f3091d456719377e28572091793e941c2'
             '229853b98bb62e1dec835aea6b2eab4c3dabbc8be591206573a3c1b85f10be59'
-            'e959c2ae13baa35e9ee6d9ff8f30fea55a60ccd59a0b8d047df134aee4b5424e'
+            '350063cd4f234565bd928a356b4e5f65cf37fc1377904a08bf60f7010c88740b'
             'd106248d55045f5ef913bf6243ad74a76f6282264d9ee4c9b87ec4a3d2e2064b'
             'b2a2bc5de8d3b730e49d1f50cb025c1dfdbcb66c58ead573322585b6a887d3a7'
             'c4079c4c142516d9cd476f5a3cafddf4068f0950c3c11ea4da9cf999c5ccc1f9'
@@ -149,7 +149,7 @@ package() {
   export DESTDIR="$pkgdir"
   if ((DISABLE_NINJA)); then make -C "$srcdir/build" install; else ninja -C "$srcdir/build" install; fi
   msg "install fracture-helper addon"
-  install -Dm644 "${srcdir}"/blender-fracture-helper/*.py "${pkgdir}/usr/share/blender/${_blenver}_${_sufix}/scripts/addons/"
+  install -Dm644 "${srcdir}"/blender-fracture-helper/*.py "${pkgdir}/usr/share/blender/${_blenver}_${_suffix}/scripts/addons/"
 
   if [[ -v _suffix ]]; then
     msg "add -${_suffix} suffix to desktop shortcut"
