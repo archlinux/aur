@@ -3,7 +3,7 @@
 
 pkgname=lite-xl
 _pkgname=lite
-pkgver=1.14.1
+pkgver=1.15
 pkgrel=1
 pkgdesc='A lightweight text editor written in Lua'
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=("$_pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver-$pkgname.tar.gz"
 	# credits to 6r1d  for the svg icon
 	"$pkgname.svg.zip::https://github.com/rxi/lite/files/4716765/lite.svg.zip")
-sha256sums=('2e4a6643cae281b90262acb1b5d509c84e9262ca761665d81e96d158c7bc224a'
+sha256sums=('35ab39da4ef21efc3127b73f5638a67b781a921696f1d457a4ea0166dbf46ece'
             '504d2ccd74f1c5b631b5b83a4f4319c74edb705fc383b3058f4b2d9354093b53')
 
 prepare() {
