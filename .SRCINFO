@@ -1,0 +1,18 @@
+pkgbase = python-sphinxcontrib-needs
+	pkgdesc = Sphinx needs extension for managing needs/requirements and specifications
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = http://github.com/useblocks/sphinxcontrib-needs
+	arch = any
+	license = MIT
+	depends = python-sphinx
+	depends = python-matplotlib
+	depends = python-six
+	optdepends = python-sphinxcontrib-plantuml: for needflow
+	source = https://files.pythonhosted.org/packages/source/s/sphinxcontrib-needs/sphinxcontrib-needs-0.6.0.tar.gz
+	source = https://raw.githubusercontent.com/useblocks/sphinxcontrib-needs/0.6.0/LICENSE
+	sha256sums = fb7c163410e32b286435f53e4ce06cf91f9de59262abc7ae7b6170373105060e
+	sha256sums = fe4ddb344f410de4b564938d0c3eb76905142764ccd9835ee6c3674b0f288e00
+
+pkgname = python-sphinxcontrib-needs
+
