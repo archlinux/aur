@@ -12,7 +12,7 @@ _sufix=${_branch}
 _fragment="#branch=${_branch}"
 
 pkgname=blender-${_sufix}-git
-pkgver=2.79b.r70678.g233ad61cb8d
+pkgver=2.79.r70678.g233ad61cb8d
 _blenver=${pkgver:0:4}
 pkgrel=1
 pkgdesc="Development version of Blenders ${_branch} branch"
@@ -69,8 +69,12 @@ sha256sums=('SKIP'
             'e959c2ae13baa35e9ee6d9ff8f30fea55a60ccd59a0b8d047df134aee4b5424e')
 
 pkgver() {
-  cd "$srcdir/blender"
-  printf "%sb.r%s.g%s" "$(grep -Po "BLENDER_VERSION *\K[0-9]{3}" source/blender/blenkernel/BKE_blender_version.h|sed 's/./&./1')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  blender_version=$(grep -Po "BLENDER_VERSION\s+\K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
+  printf "%d.%d.r%s.g%s" \
+    $((blender_version/100)) \
+    $((blender_version%100)) \
+    "$(git -C "$srcdir/blender" rev-list --count HEAD)" \
+    "$(git -C "$srcdir/blender" rev-parse --short HEAD)"
 }
 
 prepare() {
