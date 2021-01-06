@@ -10,8 +10,12 @@ license=('GPL3' 'LGPL3')
 makedepends=('git' 'meson' 'ninja')
 depends=('capstone' 'lz4' 'file' 'libzip' 'xxhash' 'libuv')
 provides=('rizin')
-source=("$pkgname"::"git://github.com/rizinorg/rizin.git")
-md5sums=('SKIP')
+source=("$pkgname"::"git://github.com/rizinorg/rizin.git"
+	"sdb"::"git://github.com/rizinorg/sdb.git"
+	"tree-sitter"::"git://github.com/tree-sitter/tree-sitter.git")
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP')
 
 pkgver () {
   cd ${pkgname}
@@ -21,7 +25,9 @@ pkgver () {
 
 prepare () {
   cd ${pkgname}
-  git submodule update --init --recursive
+  git config 'submodule.src/shlr/sdb.url' "${srcdir}/sdb"
+  git config 'submodule.src/shlr/tree-sitter.url' "${srcdir}/tree-sitter"
+  git submodule update --init --recursive --remote
 }
 
 build() {

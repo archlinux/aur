@@ -19,6 +19,10 @@ pkgbase = rizin-git
 	depends = libuv
 	provides = rizin
 	source = rizin-git::git://github.com/rizinorg/rizin.git
+	source = sdb::git://github.com/rizinorg/sdb.git
+	source = tree-sitter::git://github.com/tree-sitter/tree-sitter.git
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = rizin-git
