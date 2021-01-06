@@ -2,34 +2,28 @@
 
 pkgname=('lua-luasodium' 'lua51-luasodium' 'lua52-luasodium' 'lua53-luasodium')
 _pkgbase='luasodium'
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 arch=('x86_64' 'i686')
 url='https://github.com/jprjr/luasodium'
 license=('MIT')
 depends=('libsodium')
-makedepends=('lua' 'lua51' 'lua52' 'lua53')
+makedepends=('cmake' 'lua' 'lua51' 'lua52' 'lua53')
 source=("https://github.com/jprjr/luasodium/releases/download/v${pkgver}/luasodium-${pkgver}.tar.gz")
 
-md5sums=('10dff0660225dcbca8650285c86787bd')
+md5sums=('2c025429528ed82e00565d138dca2816')
 
 build() {
 
-    cp -r "${_pkgbase}-${pkgver}" "${_pkgbase}-${pkgver}-lua5.1"
-    cp -r "${_pkgbase}-${pkgver}" "${_pkgbase}-${pkgver}-lua5.2"
-    cp -r "${_pkgbase}-${pkgver}" "${_pkgbase}-${pkgver}-lua5.3"
+    cmake -B build-lua                     -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_INSTALL_RPATH=YES -DCMAKE_INSTALL_PREFIX=/usr -S "${_pkgbase}-${pkgver}"
+    cmake -B build-lua51 -DLUA_VERSION=5.1 -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_INSTALL_RPATH=YES -DCMAKE_INSTALL_PREFIX=/usr -S "${_pkgbase}-${pkgver}"
+    cmake -B build-lua52 -DLUA_VERSION=5.2 -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_INSTALL_RPATH=YES -DCMAKE_INSTALL_PREFIX=/usr -S "${_pkgbase}-${pkgver}"
+    cmake -B build-lua53 -DLUA_VERSION=5.3 -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_INSTALL_RPATH=YES -DCMAKE_INSTALL_PREFIX=/usr -S "${_pkgbase}-${pkgver}"
 
-    cd "${_pkgbase}-${pkgver}"
-    make LUA=lua
-
-    cd "../${_pkgbase}-${pkgver}-lua5.1"
-    make LUA=lua5.1
-
-    cd "../${_pkgbase}-${pkgver}-lua5.2"
-    make LUA=lua5.2
-
-    cd "../${_pkgbase}-${pkgver}-lua5.3"
-    make LUA=lua5.3
+    make -C build-lua
+    make -C build-lua51
+    make -C build-lua52
+    make -C build-lua53
 
 }
 
@@ -37,10 +31,8 @@ package_lua-luasodium() {
     pkgdesc="Lua bindings for libsodium"
     depends+=('lua')
 
-    cd "${_pkgbase}-${pkgver}"
-
-    make LUA=lua DESTDIR="$pkgdir" install
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    make -C build-lua LUA=lua DESTDIR="$pkgdir" install
+    install -Dm644 "${_pkgbase}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 }
 
@@ -48,28 +40,22 @@ package_lua51-luasodium() {
     pkgdesc="Lua bindings for libsodium for Lua 5.1"
     depends+=('lua51')
 
-    cd "${_pkgbase}-${pkgver}-lua5.1"
-
-    make LUA=lua5.1 DESTDIR="$pkgdir" install
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    make -C build-lua51 LUA=lua5.1 DESTDIR="$pkgdir" install
+    install -Dm644 "${_pkgbase}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_lua52-luasodium() {
     pkgdesc="Lua bindings for libsodium for Lua 5.2"
     depends+=('lua52')
 
-    cd "${_pkgbase}-${pkgver}-lua5.2"
-
-    make LUA=lua5.2 DESTDIR="$pkgdir" install
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    make -C build-lua52 LUA=lua5.2 DESTDIR="$pkgdir" install
+    install -Dm644 "${_pkgbase}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_lua53-luasodium() {
     pkgdesc="Lua bindings for libsodium for Lua 5.3"
     depends+=('lua53')
 
-    cd "${_pkgbase}-${pkgver}-lua5.3"
-
-    make LUA=lua5.3 DESTDIR="$pkgdir" install
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    make -C build-lua53 LUA=lua5.3 DESTDIR="$pkgdir" install
+    install -Dm644 "${_pkgbase}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
