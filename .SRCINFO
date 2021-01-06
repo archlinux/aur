@@ -1,7 +1,8 @@
 pkgbase = rizin-git
 	pkgdesc = Open-source tools to disasm, debug, analyze and manipulate binary files
-	pkgver = 0.1.0.r25187.53e96239a
+	pkgver = 0.1.0.r25295.4d5702df4
 	pkgrel = 1
+	epoch = 1
 	url = https://rizin.re/
 	arch = i686
 	arch = x86_64
