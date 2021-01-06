@@ -5,14 +5,14 @@ depends=('python-defusedxml' 'python-requests' 'python-dateutil' 'python-semver'
 checkdepends=('python-pytest')
 makedepends=('python-setuptools')
 optdepends=('python-docker: Docker support')
-pkgver=1.2.2
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="Python library to interface into Tenable's products and applications"
 arch=('any')
 url="https://github.com/tenable/pyTenable/"
 license=('MIT')
 source=("${_pyname}-${pkgver}.tar.gz::https://github.com/tenable/pyTenable/archive/${pkgver}.tar.gz")
-sha512sums=('2c700871a0e374550cbaa568440bcae48ac3d187cbf6faa7039479c4f631b2701bb5bfcde7eed7e6c25fab18db99056d7eb885c54bcfc09c7de965663fcb523c')
+sha512sums=('03233ee606411413a3a75e7b22cafab0ca33dccdf8060e0c492839f16beaafd5e9302d42cba51cc39ea47b14562fc17081d3451b072fedac30d3bbc2533f2f4c')
 
 build() {
   cd "${srcdir}/${_pyname}-${pkgver}"
