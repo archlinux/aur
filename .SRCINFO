@@ -18,7 +18,6 @@ pkgbase = openturns
 	depends = cminpack
 	depends = ceres-solver
 	depends = coin-or-bonmin
-	depends = dlib
 	depends = hdf5
 	backup = etc/openturns/openturns.conf
 	source = https://github.com/openturns/openturns/archive/v1.16.tar.gz
