@@ -1,6 +1,6 @@
 pkgbase = phoronix-test-suite
 	pkgdesc = The most comprehensive testing and benchmarking platform available for Linux
-	pkgver = 10.0.1
+	pkgver = 10.2.0
 	pkgrel = 1
 	url = http://www.phoronix-test-suite.com/
 	arch = any
@@ -16,9 +16,9 @@ pkgbase = phoronix-test-suite
 	optdepends = mesa-demos: required for universe-cli test suite
 	optdepends = openmpi: required for universe-cli test suite
 	options = !strip
-	source = phoronix-test-suite-10.0.1.tar.gz::https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v10.0.1.tar.gz
+	source = phoronix-test-suite-10.2.0.tar.gz::https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v10.2.0.tar.gz
 	source = https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/phoronix-test-suite-launcher.patch
-	sha256sums = 3d65dc03c0e20e2419521157cb8189b90e93826dfbf81e7e4d088bc2f14b0650
+	sha256sums = 3563b5b5c46530bb19cf89393877f006bb627bb6c7c8640e1d131b2b37779615
 	sha256sums = 577326343d0303a59fd469c3f9c9740e756dd59c0660c54363b62d6fd1cee26d
 
 pkgname = phoronix-test-suite
