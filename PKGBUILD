@@ -18,5 +18,5 @@ build() {
 
 package() {
 	cd $pkgname
-	sudo make install
+	make install PREFIX=/usr DESTDIR="$pkgdir"
 }
