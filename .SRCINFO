@@ -1,0 +1,15 @@
+pkgbase = funemustation-git
+	pkgdesc = A simple but elegant launcher of emulators and pc games
+	pkgver = r9.407c919
+	pkgrel = 1
+	url = https://dannygaray60.itch.io/funemustation-launcher
+	arch = any
+	license = GPL3
+	makedepends = godot
+	makedepends = git
+	provides = funemustation
+	source = git+https://github.com/dannygaray60/funemustation.git
+	sha256sums = SKIP
+
+pkgname = funemustation-git
+
