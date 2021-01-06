@@ -1,0 +1,24 @@
+pkgbase = lvm2-openrc
+	pkgdesc = OpenRC lvm2 init script
+	pkgver = 20210106
+	pkgrel = 1
+	arch = any
+	license = GPL2
+	depends = device-mapper-openrc
+	depends = lvm2
+	provides = init-lvm2
+	conflicts = init-lvm2
+	backup = etc/conf.d/lvm
+	source = lvm.confd
+	source = lvm.initd
+	source = lvm-monitoring.initd
+	source = lvmetad.initd
+	source = lvmpolld.initd
+	sha256sums = 70318500ade549f6587033ed18e89f35d77478d812765629783fbb47e82e209b
+	sha256sums = d5fa0d21ff28cf50198699c1049470fef00ed725e8f8744341f184e095bd27d5
+	sha256sums = 46604a5e759883de2758af947390e2a3af81b8977733540185a55484628f13b7
+	sha256sums = fc01a258e01d2fdb64aade25816aca3ba95acf228410894916200aa491f531a9
+	sha256sums = c2ecb427721be25e42386b73f278da08944c40676acb3fe7124bc2239a5f7651
+
+pkgname = lvm2-openrc
+
