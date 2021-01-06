@@ -1,4 +1,5 @@
 # Maintainer: Martin Patz <mailto at martin-patz.de>
+# Contributor: Nicky Heinimann <nicky.heinimann at posteo.de>
 
 pkgname=indicator-sound-switcher
 pkgver=2.3.5.2
