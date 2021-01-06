@@ -15,7 +15,7 @@ source=("https://github.com/Graviton-Code-Editor/Graviton-App/releases/download/
         "https://raw.githubusercontent.com/Graviton-Code-Editor/Graviton-App/master/LICENSE.md")
 
 sha256sums=('32082a5376280767b1d7f82a3667e9c9577951c29350261ee55b40632612816f'
-            '3fcd384c9a6ce982c1436b509ec49802c640c41cdd2ddf023c28eb7e50e17028')
+            'SKIP')
 
 package() {
     # Install 
