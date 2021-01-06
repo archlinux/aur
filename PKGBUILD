@@ -3,12 +3,14 @@
 # Maintainer: rmorgans <rick.morgans@gmail.com>
 pkgname=direnv
 pkgver=2.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc='a shell extension that manages your environment'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://direnv.net'
 license=('MIT')
-makedepends=('go')
+makedepends=('go' 'gcc' 'make')
+conflicts=("$pkgname")
+provides=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/direnv/direnv/archive/v$pkgver.tar.gz")
 sha256sums=('9dc5ce43c63d9d9ff510c6bcd6ae06f3f2f907347e7cbb2bb6513bfb0f151621')
 
@@ -20,7 +22,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=vendor -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
   go build -o $pkgname
 }
 

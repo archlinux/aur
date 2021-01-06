@@ -1,7 +1,7 @@
 pkgbase = direnv
 	pkgdesc = a shell extension that manages your environment
 	pkgver = 2.27.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://direnv.net
 	arch = x86_64
 	arch = i686
@@ -9,6 +9,10 @@ pkgbase = direnv
 	arch = aarch64
 	license = MIT
 	makedepends = go
+	makedepends = gcc
+	makedepends = make
+	provides = direnv
+	conflicts = direnv
 	source = direnv-2.27.0.tar.gz::https://github.com/direnv/direnv/archive/v2.27.0.tar.gz
 	sha256sums = 9dc5ce43c63d9d9ff510c6bcd6ae06f3f2f907347e7cbb2bb6513bfb0f151621
 
