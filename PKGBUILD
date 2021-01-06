@@ -10,7 +10,7 @@
 
 pkgbase=calibre-git
 pkgname=calibre-git
-pkgver=5.8.1.r16.ge0ec185ea2
+pkgver=5.8.1.r74.g77658f4c95
 pkgrel=1
 _dictionaries_commit="d6160c5e006089c711f3fec6eb4e2ade60a4150c"
 pkgdesc="Ebook management application"
@@ -24,7 +24,7 @@ _py_deps=('apsw' 'beautifulsoup4' 'cssselect' 'css-parser' 'dateutil' 'dbus' 'dn
 depends=('hunspell' 'hyphen' 'icu' 'jxrlib' 'libmtp' 'libusb'
          'libwmf' 'mathjax' 'mtdev' 'optipng' 'podofo'
          "${_py_deps[@]/#/python-}" 'qt5-svg' 'ttf-liberation' 'udisks2')
-makedepends=('git' 'qt5-x11extras' 'sip5' 'pyqt-builder' 'xdg-utils' 'rapydscript-ng' 'python-sphinx')
+makedepends=('git' 'qt5-x11extras' 'sip' 'pyqt-builder' 'xdg-utils' 'rapydscript-ng' 'python-sphinx')
 checkdepends=('xorg-server-xvfb')
 optdepends=('poppler: required for converting pdf to html')
 provides=("${pkgname%-git}")

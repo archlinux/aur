@@ -1,6 +1,6 @@
 pkgbase = calibre-git
 	pkgdesc = Ebook management application
-	pkgver = 5.8.1.r16.ge0ec185ea2
+	pkgver = 5.8.1.r74.g77658f4c95
 	pkgrel = 1
 	url = https://calibre-ebook.com/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = calibre-git
 	checkdepends = xorg-server-xvfb
 	makedepends = git
 	makedepends = qt5-x11extras
-	makedepends = sip5
+	makedepends = sip
 	makedepends = pyqt-builder
 	makedepends = xdg-utils
 	makedepends = rapydscript-ng
