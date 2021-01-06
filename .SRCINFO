@@ -1,7 +1,7 @@
 pkgbase = frescobaldi
 	pkgdesc = A LilyPond sheet music text editor.
 	pkgver = 3.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.frescobaldi.org/
 	arch = any
 	license = GPL
@@ -11,12 +11,11 @@ pkgbase = frescobaldi
 	depends = python-ly>=0.9.5
 	depends = python-poppler-qt5
 	depends = python-pyqt5>=5.9
-	depends = python-pyqtwebengine>=5.9
-	depends = python-sip
+	depends = python-pyqt5-webengine>=5.9
+	depends = python-pyqt5-sip>=5.9
 	depends = qt5-base>=5.9
 	depends = qt5-svg>=5.9
-	depends = qt5-webchannel>=5.9
-	depends = qt5-webengine>=5.9
+	depends = qt5-webkit>=5.9
 	depends = hicolor-icon-theme
 	depends = tango-icon-theme
 	optdepends = lilypond: Music engraving (recommended)

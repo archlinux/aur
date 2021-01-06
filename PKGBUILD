@@ -5,7 +5,7 @@
 
 pkgname=frescobaldi
 pkgver=3.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A LilyPond sheet music text editor."
 arch=('any')
 url="http://www.frescobaldi.org/"
@@ -17,12 +17,11 @@ depends=(
   'python-ly>=0.9.5'
   'python-poppler-qt5'
   'python-pyqt5>=5.9'
-  'python-pyqtwebengine>=5.9'
-  'python-sip'
+  'python-pyqt5-webengine>=5.9'
+  'python-pyqt5-sip>=5.9'
   'qt5-base>=5.9'
   'qt5-svg>=5.9'
-  'qt5-webchannel>=5.9'
-  'qt5-webengine>=5.9'
+  'qt5-webkit>=5.9'
   'hicolor-icon-theme'
   'tango-icon-theme'
 )
