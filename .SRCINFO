@@ -1,7 +1,7 @@
 pkgbase = luxmark
 	pkgdesc = OpenCL benchmark tool
-	pkgver = 4.0alpha0
-	pkgrel = 7
+	pkgver = 4.0alpha1
+	pkgrel = 1
 	url = http://www.luxrender.net/
 	arch = x86_64
 	license = GPL3
@@ -26,16 +26,16 @@ pkgbase = luxmark
 	depends = libbcd
 	depends = intel-tbb
 	depends = openimagedenoise
-	source = luxmark-4.0alpha0-3284b97fdea381553d763e4e153f4d29e48ba185.tar.bz2::https://github.com/LuxCoreRender/LuxMark/archive/3284b97fdea381553d763e4e153f4d29e48ba185.tar.gz
-	source = scenes_4.0alpha0.zip::https://github.com/LuxCoreRender/LuxMark/releases/download/luxmark_v4.0alpha0/scenes.tgz
+	source = luxmark-4.0alpha1-543b6780171fc58bf7204b312d94ae8bb5bbef56.tar.bz2::https://github.com/LuxCoreRender/LuxMark/archive/543b6780171fc58bf7204b312d94ae8bb5bbef56.tar.gz
+	source = scenes_4.0alpha1.zip::https://github.com/LuxCoreRender/LuxMark/releases/download/luxmark_v4.0alpha1/scenes.tgz
 	source = system_scenes.diff
 	source = exepath.diff
 	source = fix-dependencies.patch
-	md5sums = 92862b24a169f54f084c310fdf7e2eb5
-	md5sums = 2e17995365617b8af066e5aa2c78df49
-	md5sums = c11dd38c085e03ced707410b43a94088
+	md5sums = 4eaccbb6db1eb13d2d06b017224907bd
+	md5sums = 2d02d2192f6e0baad6090b0609a31b2f
+	md5sums = 8726fa90791f5380dd24789b8933141e
 	md5sums = 6ba9b9888160cc06e3c3644e21d80e5a
-	md5sums = 63382377d8f8e0dbfd7c4c816c62d49a
+	md5sums = e04c72ea68fbcdd6b96245935441c9fe
 
 pkgname = luxmark
 

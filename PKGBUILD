@@ -1,8 +1,8 @@
 # Maintainer: Fabian Maurer <dark.shadow4@web.de>
 pkgname=luxmark
-pkgver=4.0alpha0
-_pkgver=3284b97fdea381553d763e4e153f4d29e48ba185
-pkgrel=7
+pkgver=4.0alpha1
+_pkgver=543b6780171fc58bf7204b312d94ae8bb5bbef56
+pkgrel=1
 pkgdesc="OpenCL benchmark tool"
 arch=('x86_64') # because of embree only x86_64 is supported
 url="http://www.luxrender.net/"
@@ -12,11 +12,11 @@ makedepends=('cmake' 'boost' 'luxcorerender' 'mesa' 'opencl-headers' 'freeglut' 
 source=($pkgname-$pkgver-$_pkgver.tar.bz2::https://github.com/LuxCoreRender/LuxMark/archive/${_pkgver}.tar.gz \
         scenes_$pkgver.zip::https://github.com/LuxCoreRender/LuxMark/releases/download/luxmark_v${pkgver}/scenes.tgz \
         system_scenes.diff exepath.diff fix-dependencies.patch)
-md5sums=('92862b24a169f54f084c310fdf7e2eb5'
-         '2e17995365617b8af066e5aa2c78df49'
-         'c11dd38c085e03ced707410b43a94088'
+md5sums=('4eaccbb6db1eb13d2d06b017224907bd'
+         '2d02d2192f6e0baad6090b0609a31b2f'
+         '8726fa90791f5380dd24789b8933141e'
          '6ba9b9888160cc06e3c3644e21d80e5a'
-         '63382377d8f8e0dbfd7c4c816c62d49a')
+         'e04c72ea68fbcdd6b96245935441c9fe')
 
 prepare() {
   cd "$srcdir/LuxMark-$_pkgver"

@@ -1,11 +1,10 @@
 diff -rup luxrender-luxmark-985b948aa5c7/src/main.cpp luxrender-luxmark-985b948aa5c7.new/src/main.cpp
 --- luxrender-luxmark-985b948aa5c7/src/main.cpp	2015-02-25 10:46:48.000000000 +0100
 +++ luxrender-luxmark-985b948aa5c7.new/src/main.cpp	2015-03-12 23:01:53.971856726 +0100
-@@ -159,16 +159,7 @@ int main(int argc, char **argv) {
- 		return EXIT_SUCCESS;
+@@ -165,15 +165,7 @@ int main(int argc, char **argv) {
  	else {
- 		app.Init(mode, devices, scnName, singleRun, singleRunExtInfo);
--
+ 		app.Init(mode, useCPU, devices, optixDevices, scnName, singleRun, singleRunExtInfo);
+ 
 -		// If current directory doesn't have the "scenes" directory, move
 -		// to where the executable is
 -		if (!boost::filesystem::exists("./scenes")) {

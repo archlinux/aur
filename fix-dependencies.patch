@@ -2,12 +2,29 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 23b2230..c9b1bed 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -102,6 +102,7 @@ set(LUXMARK_SRCS
+@@ -115,6 +115,7 @@ set(LUXMARK_SRCS
  ADD_EXECUTABLE(luxmark WIN32 ${LUXMARK_SRCS})
  
- TARGET_LINK_LIBRARIES(luxmark ${ALL_LUXCORE_LIBRARIES} ${Boost_LIBRARIES} ${Qt5_LIBRARIES} ${OPENGL_gl_LIBRARY} ${OPENCL_LIBRARIES})
+ TARGET_LINK_LIBRARIES(luxmark ${ALL_LUXCORE_LIBRARIES} ${Boost_LIBRARIES} ${Qt5_LIBRARIES} ${OPENGL_gl_LIBRARY} ${CMAKE_DL_LIBS})
 +TARGET_LINK_LIBRARIES(luxmark opensubdiv.a openvdb.a OpenImageIO python3 blosc dl)
+ 
  if (WIN32)
  	# This is needed by Boost 1.67 but is not found automatically
-     TARGET_LINK_LIBRARIES(luxmark bcrypt.lib)
 
+diff --git a/cmake/Packages/FindOidn.cmake b/cmake/Packages/FindOidn.cmake
+index 3544698..be202b4 100644
+--- a/cmake/Packages/FindOidn.cmake
++++ b/cmake/Packages/FindOidn.cmake
+@@ -14,10 +14,10 @@
+ ## limitations under the License.                                           ##
+ ## ======================================================================== ##
+ 
+-FIND_PATH(OIDN_INCLUDE_PATH NAMES OpenImageDenoise/version.h PATHS
++FIND_PATH(OIDN_INCLUDE_PATH NAMES OpenImageDenoise/oidn.h PATHS
+ 	${OIDN_ROOT}/include)
+ IF (NOT OIDN_INCLUDE_PATH)
+-	FIND_PATH(OIDN_INCLUDE_PATH NAMES OpenImageDenoise/version.h PATHS
++	FIND_PATH(OIDN_INCLUDE_PATH NAMES OpenImageDenoise/oidn.h PATHS
+ 		/usr/include
+ 		/usr/local/include
+ 		/opt/local/include)
