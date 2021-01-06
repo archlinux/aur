@@ -2,7 +2,7 @@
 
 pkgname=dyn-wall-rs
 pkgver=2.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A utility to allow you to set a dynamic wallpaper and more.'
 arch=('x86_64')
 url='https://github.com/RAR27/dyn-wall-rs'
