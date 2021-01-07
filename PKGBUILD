@@ -3,7 +3,7 @@
 pkgname=('python-pytzwhere' 'python2-pytzwhere')
 pkgdesc="Python library to lookup the timezone for a given lat/lng entirely offline"
 pkgver=3.0.3
-pkgrel=2
+pkgrel=3
 url="https://github.com/pegler/pytzwhere/"
 license=('MIT')
 arch=('any')
