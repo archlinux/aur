@@ -5,7 +5,7 @@
 
 pkgname=xscreensaver-arch-logo
 pkgver=5.44
-pkgrel=4
+pkgrel=5
 pkgdesc='Screen saver and locker for the X Window System with Arch Linux branding'
 url='https://www.jwz.org/xscreensaver/'
 arch=('x86_64')
@@ -24,11 +24,6 @@ sha1sums=('3e93aa745aa986cf521de31b6e731f990302c920'
           '63ed187b08864993684f826dc87b1c5f42ea5bf4'
           '203ca4f21e0d42263fc0ebb796eaf968c457d93a'
           '619cff60b77812545493dbedb0ba247a37f381e5')
-prepare() {
-  cd "${pkgname%%-*}-${pkgver}"
-  sed 's|-std=c89||' -i configure.in
-  autoreconf -fiv
-}
 
 build() {
   cp logo-* "${srcdir}"/${pkgname%%-*}-${pkgver}/hacks/images/
