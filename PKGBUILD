@@ -21,5 +21,5 @@ build() {
 package() {
   cd "ZeGrapher-$pkgver"
   install -Dm755 ZeGrapher "$pkgdir"/usr/bin/ZeGrapher
-  install -Dm644 ZeGrapher.ico "$pkgdir"/usr/share/pixmaps/ZeGrapher.ico
-} 
+  install -Dm644 icons/ZeGrapher.png "$pkgdir"/usr/share/pixmaps/ZeGrapher.png
+}

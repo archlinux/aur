@@ -8,7 +8,7 @@ pkgbase = zegrapher
 	depends = qt5-base
 	depends = boost
 	conflicts = zegrapher
-	source = https://github.com/AdelKS/ZeGrapher/archive/v3.1.1.tar.gz
+	source = zegrapher-3.1.1.tar.gz::https://github.com/AdelKS/ZeGrapher/archive/v3.1.1.tar.gz
 	sha256sums = d140f2940b7fd47e65c780650d74970bc6304be1e735da5430504acccfa20078
 
 pkgname = zegrapher
