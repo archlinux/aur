@@ -2,4 +2,4 @@
 
 DATADIR="$HOME/.pcsx-redux"
 mkdir -p "$DATADIR"
-cd "$DATADIR" && /opt/pcsx-redux/pcsx-redux
+cd "$DATADIR" && /opt/pcsx-redux/pcsx-redux "$@"

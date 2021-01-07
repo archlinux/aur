@@ -2,18 +2,16 @@
 
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
-pkgver=r1270.109d9f9
-pkgrel=2
-pkgdesc='Modern fork of the pcsxr Playstation 1 emulator that focuses on reverse engineering and homebrew development'
+pkgver=r1272.6c73f79
+pkgrel=1
+pkgdesc='Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development'
 arch=('x86_64')
 url='https://github.com/grumpycoders/pcsx-redux.git'
 license=('GPL2')
-depends=('curl'
-         'ffmpeg'
+depends=('ffmpeg'
          'glfw-x11'
          'libuv'
          'sdl2'
-         'xorg-server-xvfb'
          'zlib'
          )
 makedepends=('clang'
@@ -34,6 +32,7 @@ source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/serge1/ELFIO.git'
         'git+https://github.com/exoticlibraries/libcester.git'
         'pcsx-redux.sh'
+        'pcsx-redux.desktop'
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -47,7 +46,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'f2869575cc7a4132a2c1d56ea504b20bb6a8185d663711313116ad51b6a8fd12')
+            '21db8ce528f3240388d55d1f309ebc6060bb1145cce50553659e73fb6f89d326'
+            '9061d4428ba69e06e3a540df6700a637cc28e740f95b07ca46f2cbcc8cdd347c')
 
 pkgver() {
   cd "$_pkgname"
@@ -89,5 +89,6 @@ build() {
 
 package() {
   install -Dm755 pcsx-redux.sh "$pkgdir/usr/bin/pcsx-redux"
+  install -Dm644 pcsx-redux.desktop "$pkgdir/usr/share/applications/pcsx-redux.desktop"
   install -Dm755 "$_pkgname/pcsx-redux" "$pkgdir/opt/pcsx-redux/pcsx-redux"
 }

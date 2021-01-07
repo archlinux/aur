@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=pcsx-redux
+Comment=PlayStation Emulator
+Terminal=false
+Exec=/usr/bin/pcsx-redux
