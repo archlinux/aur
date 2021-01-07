@@ -8,7 +8,6 @@ pkgbase = iptables-minimal-git
 	license = GPL2
 	makedepends = git
 	makedepends = linux-api-headers
-	makedepends = libpcap
 	depends = glibc
 	depends = libmnl
 	depends = libnftnl

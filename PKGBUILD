@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://www.netfilter.org/projects/iptables/index.html"
 license=('GPL2')
 depends=('glibc' 'libmnl' 'libnftnl')
-makedepends=('git' 'linux-api-headers' 'libpcap')
+makedepends=('git' 'linux-api-headers')
 provides=('arptables' 'ebtables' 'iptables' 'iptables-nft')
 conflicts=('arptables' 'ebtables' 'iptables' 'iptables-nft')
 backup=('etc/ethertypes'
@@ -62,7 +62,8 @@ build() {
     --with-xtlibdir="/usr/lib/iptables" \
     --enable-devel \
     --disable-libipq \
-    --enable-bpf-compiler \
+    --disable-bpf-compiler \
+    --disable-nfsynproxy \
     --disable-ipv6
   make
 }
