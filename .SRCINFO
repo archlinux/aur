@@ -1,0 +1,20 @@
+pkgbase = evillimiter-git
+	pkgdesc = Tool that monitors, analyzes and limits the bandwidth of devices on the local network without administrative access.
+	pkgver = 1.5.0.r0.g46d2033
+	pkgrel = 1
+	url = https://github.com/bitbrute/evillimiter
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-colorama
+	depends = python-netaddr
+	depends = python-netifaces
+	depends = python-tqdm
+	depends = python-scapy
+	depends = python-terminaltables
+	provides = evillimiter
+	source = git+https://github.com/bitbrute/evillimiter.git#branch=master
+	sha256sums = SKIP
+
+pkgname = evillimiter-git
+
