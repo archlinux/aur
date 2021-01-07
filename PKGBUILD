@@ -2,15 +2,15 @@
 # Maintainer: replydev <commoncargo@protonmail.com>
 
 pkgname=cotp
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
-pkgdesc='Trustworthy command line authenticator app compatible with backups from andOTP, Aegis and so on..'
+pkgdesc='Trustworthy encrypted command line authenticator app compatible with multiple backups.'
 arch=('x86_64' 'aarch64' 'armv7')
 url='https://github.com/replydev/cotp'
 license=('GPL3')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('fb80f7437c7132797468d16d9c7940e6ba434ffc3126d620e573a406c2b64970')
+sha256sums=('57f919096a931afab83afe52679705c138826afc07c03df1ad772b3032378737')
 
 build() {
   cd "$pkgname-$pkgver"
