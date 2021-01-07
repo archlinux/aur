@@ -5,8 +5,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-no-extras
-pkgver=87.0.4280.88
-pkgrel=3
+pkgver=87.0.4280.141
+pkgrel=1
 _pkgname=chromium
 _launcher_ver=6
 _gcc_patchset=9
@@ -33,7 +33,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         icu68.patch
         v8-icu68.patch
         subpixel-anti-aliasing-in-FreeType-2.8.1.patch)
-sha256sums=('3e4645328735ef60db78d1a313efb3770a3edeaede90d076414df52f567a09c0'
+sha256sums=('147591d7fc21e1a173701d28bbf35baddb91e64dd96ec16d8eee9a5113403375'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'c99934bcd2f3ae8ea9620f5f59a94338b2cf739647f04c28c8a551d9083fa7e9'
             '38fb5218331d6e03915490dab64f7b8bf26833a581d1aaa02090437c67e9439c'
@@ -156,8 +156,11 @@ build() {
     "google_default_client_id=\"${_google_default_client_id}\""
     "google_default_client_secret=\"${_google_default_client_secret}\""
     'symbol_level=0'
-    'clang_use_default_sample_profile=false' # https://blogs.igalia.com/jaragunde/2018/06/13/chromium-official-release-builds-and-icecc/
-    'is_cfi=false' # same comment as above
+    # from ArchARM to build with distcc, uncomment if you build with distcc
+    #'is_cfi=false'
+    #'use_gold=false'
+    #'clang_use_default_sample_profile=false'
+    #'chrome_pgo_phase=0'
   )
 
   if [[ -n ${_system_libs[icu]+set} ]]; then
