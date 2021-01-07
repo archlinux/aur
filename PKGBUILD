@@ -2,12 +2,12 @@
 # Created: 12/12/2016
 pkgname=autopanovideo-beta
 pkgver=3.0.0.400
-pkgrel=1
+pkgrel=2
 pkgdesc="Stitch and create 360° videos automatically with Autopano Video BETA (trial version)."
 arch=('x86_64')
 url='http://www.kolor.com/autopano-video/'
 license=('custom: "commercial"')
-provides=('autopanovideopro-beta', 'autopanovideopro', 'autopanovideo')
+provides=('autopanovideopro')
 optdepends=('autopanogiga: Edit control points manually'
             'gopro-vr-player: 360 video player')
 install="$pkgname.install"
