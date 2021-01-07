@@ -1,5 +1,5 @@
-# Maintainer:	Kostas Kardaras <firstname dot lastname at gmail>
-
+# Maintainer:	Batuhan Baserdem <lastname dot firstname at gmail>
+#
 name='wrapio'
 pkgname="python-${name}"
 provides=("${pkgname}")
