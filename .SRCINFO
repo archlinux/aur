@@ -1,6 +1,6 @@
 pkgbase = perl-http-entity-parser
 	pkgdesc = PSGI compliant HTTP Entity Parser
-	pkgver = 0.22
+	pkgver = 0.25
 	pkgrel = 1
 	url = https://metacpan.org/release/HTTP-Entity-Parser
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = perl-http-entity-parser
 	depends = perl-stream-buffered
 	depends = perl-www-form-urlencoded>=0.23
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAZEBURO/HTTP-Entity-Parser-0.22.tar.gz
-	md5sums = d8256c95119a3ddc6f4a88e59b67f0ec
+	source = http://search.cpan.org/CPAN/authors/id/K/KA/KAZEBURO/HTTP-Entity-Parser-0.25.tar.gz
+	md5sums = 09663f9577975587e832e28ba5f5f8af
 
 pkgname = perl-http-entity-parser
 
