@@ -1,6 +1,6 @@
 pkgbase = devilspy
 	pkgdesc = Window matching utility
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/buzz/devilspy
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = devilspy
 	depends = python-yaml
 	depends = python-xlib
 	options = !emptydirs
-	source = git+https://github.com/buzz/devilspy.git#tag=v0.1.0
+	source = git+https://github.com/buzz/devilspy.git#tag=v0.1.1
 	md5sums = SKIP
 
 pkgname = devilspy
