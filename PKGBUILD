@@ -1,8 +1,8 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=glewlwyd
-pkgver=2.3.3
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 pkgdesc='Single-Sign-On (SSO) server with multiple factor authentication'
 arch=(x86_64)
 url=https://github.com/babelouest/glewlwyd
@@ -14,11 +14,14 @@ depends=(
   libcbor.so
   libconfig.so
   libcrypt.so
-  libcurl.so
+  libhoel.so
+  libiddawc.so
   libldap
-  libmicrohttpd
-  libnettle.so
-  oath-toolkit
+  liboath.so
+  liborcania.so
+  librhonabwy.so
+  libulfius.so
+  libyder.so
 )
 makedepends=(
   cmake
@@ -28,13 +31,8 @@ makedepends=(
   postgresql-libs
   sqlite
 )
-optdepends=(
-  'postgresql-libs: PostgreSQL support'
-  'mariadb-libs: MariaDB support'
-  'sqlite: SQLite support'
-)
 backup=(etc/glewlwyd/glewlwyd.conf)
-_tag=675f5e4c4a72554ad2eddaacca3bfd9ef03c6fcd
+_tag=67355d6b2515b8d02f14b98c13c235814d66ca1c
 source=(
   git+https://github.com/babelouest/glewlwyd.git#tag=${_tag}
   glewlwyd.service
@@ -45,7 +43,6 @@ b2sums=('SKIP'
 
 pkgver() {
   cd glewlwyd
-
   git describe --tags | sed 's/^v//'
 }
 
@@ -53,8 +50,7 @@ build() {
   cmake -S glewlwyd -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_SYSCONFDIR=/etc \
-    -DDOWNLOAD_DEPENDENCIES=ON
+    -DCMAKE_INSTALL_SYSCONFDIR=/etc
   ninja -C build
 }
 
