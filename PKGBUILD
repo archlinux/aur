@@ -3,16 +3,17 @@
 # Contributor: franciscod <demartino.francisco@gmail.com>
 
 pkgname=simulide
-pkgver="0.4.13_SR5"
+pkgver="0.4.14_SR4"
+_realver=${pkgver//_/-}
 pkgrel=1
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers)"
 arch=("x86_64")
 url="https://www.simulide.com/"
 license=("GPL3")
-source=("https://mailfence.com/pub/docs/santigoro/web/SimulIDE_${pkgver//_*/}/SimulIDE_${pkgver//_/-}_Sources.tar.gz"
-        "simulide.desktop"
+source=("https://mailfence.com/pub/docs/santigoro/web/SimulIDE_${pkgver//_*/}/simulIDE_${_realver}_Sources.tar.gz"
+	"simulide.desktop"
         "changelog.txt")
-md5sums=("fdb189d2e75a1da3cdae6d2a596d3f08"
+md5sums=("c73088d73f9bbf1c5408e53416d849c2"
          "beda8f4452562e5cc1e2c9a19ac99bb3"
          "SKIP"
         )
@@ -37,19 +38,21 @@ makedepends=(
   "avr-gcc"
 )
 
+
 build() {
-  cd "${srcdir}/simulide_${pkgver//_/-}_Sources/build_XX"
+  cd "${srcdir}/simulide_${_realver}_Sources/build_XX"
   qmake
   make
 }
 
 package() {
   install -D -m644 simulide.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  #cp "${srcdir}/simulide_${_realver}_Sources/changelog.txt" "${srcdir}/.."
 
-  cd "${srcdir}/simulide_${pkgver//_/-}_Sources/build_XX/release/SimulIDE_${pkgver//_/-}"
+  cd "${srcdir}/simulide_${_realver}_Sources/build_XX/executables/SimulIDE_${_realver}"
+  test -s "bin/${pkgname}" && test -x "bin/${pkgname}"
+  test -d "share/${pkgname}"
 
-  install -D -m755 "bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -D -m644 "share/icons/hicolor/256x256/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/256x256/${pkgname}.png"
-  install -d -m755 "${pkgdir}/usr/share/${pkgname}"
-  cp -r "share/${pkgname}"/* "${pkgdir}/usr/share/${pkgname}"
+  mkdir -p "${pkgdir}/usr"
+  cp -r ./* "${pkgdir}/usr" # usr/bin usr/share
 }
