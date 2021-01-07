@@ -4,12 +4,12 @@
 pkgname=python-defcon
 _pkgname=defcon
 pkgver=0.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A set of UFO based objects for use in font editing applications'
 arch=('any')
 url="https://github.com/robotools/$_pkgname"
 license=('MIT')
-depends=('python-fonttools' 'python-fs' 'python')
+depends=('python-fonttools' 'python-fs')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-unicodedata2')
 optdepends=('python-fontpens' 'python-lxml')
