@@ -24,19 +24,19 @@ sanitize() {
 build() {
 	cd [% distdir %]
 	sanitize
-	perl Build.PL --installdirs vendor --destdir "$pkgdir"
-	perl Build
+	/usr/bin/perl Build.PL --installdirs vendor --destdir "$pkgdir"
+	/usr/bin/perl Build
 }
 
 check() {
 	cd [% distdir %]
 	sanitize
-	perl Build test
+	/usr/bin/perl Build test
 }
 
 package() {
 	cd [% distdir %]
 	sanitize
-	perl Build install
+	/usr/bin/perl Build install
 	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
