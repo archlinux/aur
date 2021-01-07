@@ -20,8 +20,8 @@ Server = https://repo.jkanetwork.com/repo/$repo/$arch
 # Germany
 ## By: Nico
 Server = https://chaotic.dr460nf1r3.me/repos/$repo/$arch
-## By: ParanoidBangL (Out-dated / Not syncing right now)
-#Server = http://chaotic.bangl.de/$repo/$arch
+## By: ParanoidBangL
+Server = http://chaotic.bangl.de/$repo/$arch
 
 # Seoul, Korea
 ## By: Ryoichi <t.me/r377yx>

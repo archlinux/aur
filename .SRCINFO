@@ -1,13 +1,13 @@
 pkgbase = chaotic-mirrorlist
 	pkgdesc = Chaotic-AUR mirror list for use by pacman
-	pkgver = 20210104
+	pkgver = 20210107
 	pkgrel = 1
 	url = https://builds.garudalinux.org/repos/chaotic-aur
 	arch = any
 	license = GPL
 	backup = etc/pacman.d/chaotic-mirrorlist
 	source = mirrorlist
-	sha256sums = 50a3c4c923590679c6e178d86fe226588310cd63f59ab469002540c849d58057
+	sha256sums = 64e67a8f89083d01f31f7b048e4868e67cb4281086a2d4aadd46e62ff2f2fa47
 
 pkgname = chaotic-mirrorlist
 
