@@ -1,8 +1,9 @@
+# Maintainer: Pig Monkey <pm@pig-monkey.com>
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname='visidata'
-pkgver=2.1
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='Terminal spreadsheet multitool for discovering and arranging data'
 arch=('any')
@@ -32,7 +33,7 @@ optdepends=('python-dnslib: pcap support'
             'python-xlrd: xls support'
             'python-pyaml: yaml/yml support')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('4acd38e1311db45c9283d970c512415cb962112d68b253288d2018085cf4c697')
+sha256sums=('ddd6fa8db87a04966df7bfcf05d3d04a4346db170f08f51b7fcdaf9ca985c06a')
 
 prepare() {
   # Set correct permissions
