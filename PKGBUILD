@@ -3,7 +3,7 @@ pkgname=wolf-m7m-cpuminer-v2-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=r2.293a024
 pkgrel=1
 pkgdesc="This is a multi-threaded CPU pool miner for M7M/Magi (XMG). This miner is an optimizing of code released by Wolf0 mainly by revising <m7mhash.c>."
-arch=('x86_64')
+arch=('any')
 url="https://github.com/magi-project/wolf-m7m-cpuminer-V2"
 license=('GPL2')
 groups=()
@@ -55,7 +55,7 @@ prepare() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	./autogen.sh
-	CFLAGS="-O3" LDFLAGS="-L/usr/lib/openssl-1.0" ./configure --prefix=/usr
+	CFLAGS="-O3" CXXFLAGS=-"-O3" LDFLAGS="-L/usr/lib/openssl-1.0" ./configure --prefix=/usr
 	make
 }
 
