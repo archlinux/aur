@@ -1,7 +1,7 @@
 pkgbase = pcsx-redux-git
 	pkgdesc = Modern fork of the pcsxr Playstation 1 emulator that focuses on reverse engineering and homebrew development
 	pkgver = r1270.109d9f9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/grumpycoders/pcsx-redux.git
 	arch = x86_64
 	license = GPL2
@@ -17,12 +17,9 @@ pkgbase = pcsx-redux-git
 	depends = xorg-server-xvfb
 	depends = zlib
 	source = pcsx-redux::git+https://github.com/grumpycoders/pcsx-redux.git
-	source = git+https://github.com/madler/zlib.git
-	source = git+https://github.com/SDL-mirror/SDL.git
 	source = git+https://github.com/ocornut/imgui.git
 	source = git+https://github.com/ocornut/imgui_club.git
 	source = git+https://github.com/grumpycoders/ImGuiColorTextEdit.git
-	source = git+https://github.com/libuv/libuv.git
 	source = git+https://github.com/mateidavid/zstr.git
 	source = git+https://github.com/grumpycoders/uC-sdk.git
 	source = git+https://github.com/google/googletest.git
@@ -44,10 +41,7 @@ pkgbase = pcsx-redux-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = f6680bd999fe0e409376b552c18ee76428f64a0441e700f5ea8235d661d2b3af
+	sha256sums = f2869575cc7a4132a2c1d56ea504b20bb6a8185d663711313116ad51b6a8fd12
 
 pkgname = pcsx-redux-git
 

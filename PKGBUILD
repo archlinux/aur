@@ -3,7 +3,7 @@
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
 pkgver=r1270.109d9f9
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern fork of the pcsxr Playstation 1 emulator that focuses on reverse engineering and homebrew development'
 arch=('x86_64')
 url='https://github.com/grumpycoders/pcsx-redux.git'
@@ -22,12 +22,9 @@ makedepends=('clang'
              'pkg-config'
             )
 source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
-        'git+https://github.com/madler/zlib.git'
-        'git+https://github.com/SDL-mirror/SDL.git'
         'git+https://github.com/ocornut/imgui.git'
         'git+https://github.com/ocornut/imgui_club.git'
         'git+https://github.com/grumpycoders/ImGuiColorTextEdit.git'
-        'git+https://github.com/libuv/libuv.git'
         'git+https://github.com/mateidavid/zstr.git'
         'git+https://github.com/grumpycoders/uC-sdk.git'
         'git+https://github.com/google/googletest.git'
@@ -50,10 +47,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'f6680bd999fe0e409376b552c18ee76428f64a0441e700f5ea8235d661d2b3af')
+            'f2869575cc7a4132a2c1d56ea504b20bb6a8185d663711313116ad51b6a8fd12')
 
 pkgver() {
   cd "$_pkgname"
@@ -63,12 +57,9 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
   git submodule init
-  git config submodule.third_party/zlib.url "$srcdir/zlib"
-  git config submodule.third_party/SDL.url "$srcdir/SDL"
   git config submodule.third_party/imgui.url "$srcdir/imgui"
   git config submodule.third_party/imgui_club.url "$srcdir/imgui_club"
   git config submodule.third_party/ImGuiColorTextEdit.url "$srcdir/ImGuiColorTextEdit"
-  git config submodule.third_party/libuv.url "$srcdir/libuv"
   git config submodule.third_party/zstr.url "$srcdir/zstr"
   git config submodule.third_party/uC-sdk.url "$srcdir/uC-sdk"
   git config submodule.third_party/googletest.url "$srcdir/googletest"
@@ -78,10 +69,17 @@ prepare() {
   git config submodule.third_party/ELFIO.url "$srcdir/ELFIO"
   git config submodule.third_party/libcester.url "$srcdir/libcester"
 
-  git submodule update third_party/zlib third_party/SDL third_party/imgui third_party/imgui_club \
-  third_party/ImGuiColorTextEdit third_party/libuv third_party/zstr third_party/uC-sdk \
-  third_party/googletest third_party/fmt third_party/uvw third_party/http-parser third_party/ELFIO \
-  third_party/libcester
+  git submodule update third_party/imgui \
+                       third_party/imgui_club \
+                       third_party/ImGuiColorTextEdit \
+                       third_party/zstr \
+                       third_party/uC-sdk \
+                       third_party/googletest \
+                       third_party/fmt \
+                       third_party/uvw \
+                       third_party/http-parser \
+                       third_party/ELFIO \
+                       third_party/libcester
 }
 
 build() {
@@ -91,5 +89,5 @@ build() {
 
 package() {
   install -Dm755 pcsx-redux.sh "$pkgdir/usr/bin/pcsx-redux"
-  install -Dm755 "$_pkgname/pcsx-redux" "$pkgdir/usr/share/pcsx-redux/pcsx-redux"
+  install -Dm755 "$_pkgname/pcsx-redux" "$pkgdir/opt/pcsx-redux/pcsx-redux"
 }
