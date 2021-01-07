@@ -3,14 +3,14 @@
 # Contributor: MatejSpindler <spindler.matej@gmail.com>
 
 pkgname=esptool-git
-pkgver=3.0.r3.gc6f40c7
+pkgver=3.0.r26.gdb4df64
 pkgrel=1
 pkgdesc="A cute Python utility to communicate with the ROM bootloader in Espressif ESP8266"
 arch=('any')
 url="https://github.com/espressif/esptool"
 license=('GPL2')
-makedepends=('git' 'python-setuptools')
-depends=('python-pyserial' 'python-ecdsa' 'python-pyaes' 'python-cryptography')
+makedepends=('git' 'python-setuptools' 'python-wheel')
+depends=('python-pyserial' 'python-ecdsa' 'python-pyaes' 'python-cryptography' 'python-bitstring' 'python-reedsolo')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/espressif/esptool")
