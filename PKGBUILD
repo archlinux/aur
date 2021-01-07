@@ -13,4 +13,5 @@ install="snp.install"
 package() {
        install -Dm 755 $source $pkgdir/usr/bin/snp
 }
-md5sums=('dab60c8e39ca9fcf0c2d92a037ca344b')
+md5sums=('62391f9c315b01be777e86f52ef319ed'
+         'c54f7435f3036f256b58c39ac68dd759')
