@@ -11,6 +11,8 @@ pkgbase = pyhamcrest-git
 	checkdepends = python-numpy
 	makedepends = python-setuptools
 	depends = python-six
+	provides = python-pyhamcrest
+	conflicts = python-pyhamcrest
 	source = git+https://github.com/hamcrest/PyHamcrest.git
 	md5sums = SKIP
 
