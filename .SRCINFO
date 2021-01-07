@@ -1,6 +1,6 @@
 pkgbase = talon-bin
 	pkgdesc = Powerful hands-free voice and gaze input scriptable with Python
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://talonvoice.com/
 	install = talon.install
@@ -12,7 +12,7 @@ pkgbase = talon-bin
 	source = start.sh
 	source = talon.desktop
 	source = talon.png
-	b2sums = 77f178948164fba1e9ecacaa115067507f9b9d72855c2c3abb17abb809a6e2c4c2908db74a40bd3c5555b7f0dfcd8d9651b97010c2034f1b8794eece09418318
+	b2sums = 215a247eacf3dfe77ccd9d3f6cded66052443bc87df04eac23521143e3e3dfb106738fc5e4fa7ddb39fe7231ba2ed322679cfe499b907b4b72bbb4d901761463
 	b2sums = 34608eb13260ad88baa65faa875e29808ff30be56ae90298ca2d081181cd90a26d2c1f126dd605467f18245136b962ee0e2db17139392a37a44c6a9bc46301ec
 	b2sums = c63afa0d3d1cbdeda086b278c4539b60be80be1b927e7eb137d2c40d3dbb13b0945efd743515c3d2d6bee7ff66b01cc9360cf3be12a17e4d4ca481d71d574dfb
 	b2sums = 86a2e315b72e43e1083cd9163adb634987526fe80972ff3697afa71d538968bce54b7e2115fee9814768aba4c2dfb7d8c23ed45f75c70f44cfee9a30e00bf99e
