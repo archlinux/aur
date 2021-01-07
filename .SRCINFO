@@ -1,7 +1,7 @@
 pkgbase = obs-rtspserver-bin
 	pkgdesc = RTSP server plugin for obs-studio
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iamscottxu/obs-rtspserver
 	arch = x86_64
 	license = GPL

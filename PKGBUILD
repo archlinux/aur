@@ -2,7 +2,7 @@
 pkgname=obs-rtspserver-bin
 pkgver=1.1.1
 _obsver=24.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="RTSP server plugin for obs-studio"
 arch=("x86_64")
 url="https://github.com/iamscottxu/obs-rtspserver"
@@ -16,11 +16,13 @@ md5sums=('833054b95e46af518e219e4504c34fec'
 build() {
 	if [ -d "$HOME/.config/obs-studio/plugins/" ]; then
     		echo "[+] The OBS-Studio plugin folder exists. ($HOME/.config/obs-studio/plugins/)"
+		echo "[*] Creating the OBS-Studio plugin folder.... ($HOME/.config/obs-studio/plugins/)"
+		mkdir -p "$HOME/.config/obs-studio/plugins/obs-rtspserver/bin/64bit/"
+                mkdir -p "$HOME/.config/obs-studio/plugins/obs-rtspserver/data/locale/"
+
 	else
 		echo "[-] The OBS-Studio plugin folder DOES NOT exist!"
 		echo "[*] Creating the OBS-Studio plugin folder.... ($HOME/.config/obs-studio/plugins/)"
-		mkdir -p "$HOME/.config/obs-studio/plugins/"
-		mkdir -p "$HOME/.config/obs-studio/plugins/obs-rtspserver/"
 		mkdir -p "$HOME/.config/obs-studio/plugins/obs-rtspserver/bin/64bit/"
 		mkdir -p "$HOME/.config/obs-studio/plugins/obs-rtspserver/data/locale/"
 	fi
@@ -28,14 +30,5 @@ build() {
 
 package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"	
-	install -dm755 obs-rtspserver $HOME/.config/obs-studio/plugins/
-}
-
-post_remove() {
-	if [ -d "$HOME/.config/obs-studio/plugins/obs-rtspserver/" ]; then
-                echo "[*] The obs-rtspserver plugin folder exists. ($HOME/.config/obs-studio/plugins/obs-rtspserver)"
-                echo "[*] Removing obs-rtspserver folder.... ($HOME/.config/obs-studio/plugins/obs-rtspserver/)"
-		rm -rf $HOME/.config/obs-studio/plugins/obs-rtspserver/
-        fi
-
+	cp -r obs-rtspserver $HOME/.config/obs-studio/plugins/
 }
