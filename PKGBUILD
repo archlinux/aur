@@ -4,7 +4,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-plack
-pkgver=1.0047
+pkgver=1.0048
 pkgrel=1
 pkgdesc='Perl Superglue for Web frameworks and Web Servers'
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
 	'perl-devel-stacktrace-ashtml>=0.11'
 	'perl-file-sharedir>=1.00'
 	'perl-filesys-notify-simple'
-	'perl-http-entity-parser>=0.17'
+	'perl-http-entity-parser>=0.25'
 	'perl-http-message>=5.814'
 	'perl-http-headers-fast>=0.18'
 	'perl-http-tiny>=0.034'
@@ -43,9 +43,9 @@ checkdepends=(
 	'perl-log-dispatch-array'
 	'perl-lwp-protocol-http10'
 	'perl-mime-types')
-source=(http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Plack-1.0047.tar.gz)
+source=(http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Plack-1.0048.tar.gz)
 options=(!emptydirs)
-md5sums=('9d37086aec1b29bab52a9575687e3557')
+md5sums=('36282b473b4521219c44a9db437b650f')
 
 sanitize() {
 	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
@@ -53,20 +53,20 @@ sanitize() {
 }
 
 build() {
-	cd Plack-1.0047
+	cd Plack-1.0048
 	sanitize
-	perl Makefile.PL INSTALLDIRS=vendor
+	/usr/bin/perl Makefile.PL INSTALLDIRS=vendor
 	make
 }
 
 check() {
-	cd Plack-1.0047
+	cd Plack-1.0048
 	sanitize
 	make test
 }
 
 package() {
-	cd Plack-1.0047
+	cd Plack-1.0048
 	sanitize
 	make install DESTDIR="$pkgdir"
 	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
