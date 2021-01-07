@@ -1,0 +1,17 @@
+pkgbase = avisynth-plugin-mpeg2decplus-git
+	pkgdesc = Plugin for Avisynth: mpeg2decplus (GIT version)
+	pkgver = 1.2.0.3.gf8b68fe
+	pkgrel = 1
+	url = https://github.com/Asd-g/MPEG2DecPlus
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	depends = avisynthplus
+	provides = avisynth-plugin-mpeg2decplus
+	conflicts = avisynth-plugin-mpeg2decplus
+	source = mpeg2decplus::git+https://github.com/Asd-g/MPEG2DecPlus.git
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-mpeg2decplus-git
+
