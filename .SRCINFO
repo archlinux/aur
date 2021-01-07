@@ -1,6 +1,6 @@
 pkgbase = feeluown-netease-git
 	pkgdesc = feeluown netease plugin git
-	pkgver = r529.c14d987
+	pkgver = r50.cfdcd13
 	pkgrel = 1
 	url = https://github.com/feeluown/feeluown-netease
 	arch = any

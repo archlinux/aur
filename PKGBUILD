@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 pkgname=feeluown-netease-git
-pkgver=r529.c14d987
+pkgver=r50.cfdcd13
 pkgrel=1
 pkgdesc="feeluown netease plugin git"
 arch=('any')
@@ -15,6 +15,7 @@ source=("git+https://github.com/feeluown/feeluown-netease.git")
 sha512sums=('SKIP')
 
 pkgver() {
+    cd feeluown-netease
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
