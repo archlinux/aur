@@ -1,4 +1,4 @@
-From e5e77ad2223f662e1615266d8ef39a8db7e65a70 Mon Sep 17 00:00:00 2001
+From ab24a3058ff19f9578b93a4073773e11a2d3b9bf Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Felix=20H=C3=A4dicke?= <felixhaedicke@web.de>
 Date: Thu, 19 Nov 2020 09:22:32 +0100
 Subject: [PATCH 3/8] HID: quirks: Add Apple Magic Trackpad 2 to
