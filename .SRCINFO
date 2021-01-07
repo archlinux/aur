@@ -1,0 +1,29 @@
+pkgbase = famistudio
+	pkgdesc = A very simple music editor for the Nintendo Entertainment System or Famicom
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://famistudio.org/
+	arch = x86_64
+	license = MIT
+	makedepends = mono-msbuild
+	makedepends = mono-msbuild-sdkresolver
+	makedepends = nuget
+	depends = mono
+	depends = gtk-sharp-2
+	depends = openal
+	depends = libcanberra
+	depends = rtmidi
+	depends = ffmpeg
+	conflicts = famistudio-bin
+	source = https://github.com/BleuBleu/FamiStudio/archive/2.3.1.tar.gz
+	source = famistudio.desktop
+	source = FamiStudio.svg
+	md5sums = b81503890f9e277ce84b731ed04cbb82
+	md5sums = 7cecbef97612ec8cf56a84e966382c87
+	md5sums = a1156aa440fcc359acc3d43dbfd2d6f9
+	sha256sums = 3397dabbefc869fbcc08fff4963d9065033488626a90ba4f769cb5ad943dbacc
+	sha256sums = 2c25b53b8a287ef5c29a1f32c32ad8cc56f093cb08f02cf0d09550a1bcd19537
+	sha256sums = f8c86d1a851dd1321d3bf3ac3f704abc398d5297b620ef444d2eea0de5e58bf8
+
+pkgname = famistudio
+

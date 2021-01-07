@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=2.2.0
+Type=Application
+Name=FamiStudio
+Keywords=music
+Exec=famistudio
+Icon=/usr/share/famistudio/FamiStudio.svg
+Terminal=false
+Categories=Audio
+StartupNotify=true
