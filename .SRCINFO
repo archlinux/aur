@@ -18,7 +18,6 @@ pkgbase = maestral
 	depends = python-keyring>=19
 	depends = python-keyring<22
 	depends = python-keyrings-alt>=3.1.0
-	depends = python-keyrings-alt<5.0
 	depends = python-packaging
 	depends = python-pathspec>=0.5.8
 	depends = python-pyro5>=5.10
