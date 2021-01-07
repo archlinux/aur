@@ -1,13 +1,14 @@
 pkgbase = adwaita-qt-git
 	pkgdesc = A style to bend Qt applications to look like they belong into GNOME Shell (Qt5).
-	pkgver = 1.1.1.r1.gd1e7619
-	pkgrel = 2
+	pkgver = 1.2.0.r0.g60b1abf
+	pkgrel = 1
 	url = https://github.com/FedoraQt/adwaita-qt
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	makedepends = git
 	makedepends = qt5-base
+	makedepends = qt5-x11extras
 	depends = qt5-base
 	optdepends = qgnomeplatform: apply GNOME settings to Qt apps
 	provides = adwaita-qt-common
