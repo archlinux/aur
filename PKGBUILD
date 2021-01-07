@@ -1,6 +1,6 @@
 pkgname=cchat-gtk-git
 _pkgname=cchat-gtk
-pkgver=r122.9cb3f71
+pkgver=r123.776b58b
 pkgrel=1
 pkgdesc='Gtk frontend for cchat.'
 arch=('any')
