@@ -1,0 +1,36 @@
+pkgbase = python-pytorch_spline_conv
+	pkgdesc = Implementation of the Spline-Based Convolution Operator of SplineCNN in PyTorch
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/rusty1s/pytorch_spline_conv
+	arch = any
+	license = MIT
+	depends = python
+	depends = gcc
+	depends = cuda
+	depends = cmake
+	depends = python-setuptools
+	depends = python-pytest
+	depends = python-pytest-cov
+	depends = python-pytorch
+	source = https://github.com/rusty1s/pytorch_spline_conv/archive/1.2.0.tar.gz
+	sha256sums = ab8da41357c8a4785662366655bb6dc5e84fd0e938008194955409aefe535009
+
+pkgname = python-pytorch_spline_conv
+
+pkgname = python-pytorch_spline_conv-cuda
+	pkgdesc = Implementation of the Spline-Based Convolution Operator of SplineCNN in PyTorch (with CUDA)
+	depends = python
+	depends = gcc
+	depends = cuda
+	depends = cmake
+	depends = python-setuptools
+	depends = python-pytest
+	depends = python-pytest-cov
+	depends = python-pytorch
+	depends = cuda
+	depends = cudnn
+	depends = python-pytorch-cuda
+	provides = python-pytorch_spline_conv
+	conflicts = python-pytorch_spline_conv
+
