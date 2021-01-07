@@ -9,9 +9,18 @@ url="https://gitlab.com/m_zhou/bieaz"
 license=('GPL')
 depends=('coreutils')
 optdepends=('grub: select boot environment at boot')
-source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+source=(
+	"$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
+	"0000-42_bieaz-detect-archlinux-initramfs.patch"
+)
 package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir" install
 }
-md5sums=('c4976c5ba67b1aa8bb6beda18f40219b')
+prepare() {
+	cd "${srcdir}/$pkgname-$pkgver/"
+	echo "Patch to detect of Arch Linux initramfs images by grub-mkconfig..."
+	patch -Np1 -i "${srcdir}/0000-42_bieaz-detect-archlinux-initramfs.patch"
+}
+md5sums=('c4976c5ba67b1aa8bb6beda18f40219b'
+         '730393243c14719c345954f90306ef8c')
