@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Cairo is a contemporary Arabic and Latin typeface family."
 arch=(any)
 url=https://github.com/Gue3bara/Cairo
-license=(custom:SIL Open Font License v1.1)
+license=(custom:OFL)
 source=("Cairo-Black.ttf::https://github.com/Gue3bara/Cairo/raw/${_commit}/fonts/ttf/Cairo-Black.ttf"
         "Cairo-BlackItalic.ttf::https://github.com/Gue3bara/Cairo/raw/${_commit}/fonts/ttf/Cairo-BlackItalic.ttf"
         "Cairo-BlackSlantLeft.ttf::https://github.com/Gue3bara/Cairo/raw/${_commit}/fonts/ttf/Cairo-BlackSlantLeft.ttf"
