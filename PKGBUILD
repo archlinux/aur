@@ -8,7 +8,7 @@ depends=(portaudio python-markupsafe python-pyaudio python-pythondialog python-j
 license=('MIT')
 url="https://github.com/kalliope-project/kalliope"
 source=("https://github.com/kalliope-project/kalliope/archive/v${pkgver}.tar.gz")
-sha256sums=('0f711e0acbc4ff3f9e80c3d9b2bb72beed7fa7766773189128f969315357797f')
+sha256sums=('caa83bedbe76affb1cce128be61b404b94fa587134d48cd285284148b1c42db6')
 
 prepare()
 {
