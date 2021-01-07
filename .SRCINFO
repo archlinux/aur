@@ -1,4 +1,4 @@
-pkgbase = usd
+pkgbase = usd-qfix
 	pkgdesc = 3D VFX pipeline interchange file format.
 	pkgver = 20.05
 	pkgrel = 1
@@ -20,6 +20,7 @@ pkgbase = usd
 	depends = openexr
 	depends = opensubdiv
 	provides = usd=20.05
+	conflicts = usd
 	source = git+https://github.com/PixarAnimationStudios/USD.git#tag=v20.05
 	source = boost_python2.patch
 	source = blender.patch
@@ -27,5 +28,5 @@ pkgbase = usd
 	sha256sums = 2f595ce72b9fb33e6da7db97b02be11fe6262e31b83b0e59232ee8713afed97e
 	sha256sums = 95a4934ae8154e1650a024b09ed3237ba7d9411ada089a4b6337cbba9312705a
 
-pkgname = usd
+pkgname = usd-qfix
 

@@ -16,7 +16,7 @@ else
   eval "makedepends+=( python2-{jinja,pyside-tools} )"
 fi
 
-pkgname=usd
+pkgname=usd-qfix
 pkgver=${_ver#v}
 pkgrel=1
 pkgdesc="3D VFX pipeline interchange file format."
@@ -26,6 +26,7 @@ license=('Apache')
 depends+=('boost-libs' 'glew' 'openexr' 'opensubdiv')
 makedepends+=('boost' 'cmake' 'git' 'intel-tbb' 'ninja')
 provides=("usd=${pkgver}")
+conflicts=("usd")
 source=("git+https://github.com/PixarAnimationStudios/USD.git${_fragment}"
         "boost_python2.patch"
         "blender.patch")
