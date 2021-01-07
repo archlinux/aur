@@ -1,10 +1,11 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Michael Lutonsky <m@luto.at>
+# Contributor: Tássio Virgínio <tassiovirginio@gmail.com>
 
 _name='Beekeeper Studio'
 _pkgname='beekeeper-studio'
 pkgname="${_pkgname}-bin"
-pkgver=1.8.11
+pkgver=1.9.1
 pkgrel=1
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
 arch=('x86_64' 'aarch64')
@@ -20,8 +21,8 @@ source_x86_64=("${_url_source}/releases/download/v${pkgver}/${_pkgname}_${pkgver
 source_aarch64=("${_url_source}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
 
 sha256sums=('787ebc78ce29cd0cea3e52651936df7fef96b117782882fce389c3b7ce5683f5')
-sha256sums_x86_64=('e42b7996a84095a365ccc453423fa39ee7dc3283967444b8f70e0095024feacf')
-sha256sums_aarch64=('d36d3143e24c7bf8aca54b1ca1a3cfe0a04152308e3934e5c26b7c623b0a3287')
+sha256sums_x86_64=('0b01caae9e54199c2dd6778bd7089a9f2303b70e5b51a874e168b231e8e22599')
+sha256sums_aarch64=('82716f97f780ef2e0c68bbeb8212a89450379a17406f94c357f8548da1f758fe')
 
 package() {
   tar -xvf 'data.tar.xz' -C "${pkgdir}"
