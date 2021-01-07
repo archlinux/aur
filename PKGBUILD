@@ -16,7 +16,7 @@ depends=('lib32-zlib' 'lib32-bzip2' 'lib32-libpng' 'lib32-harfbuzz' $_pkgbasenam
 makedepends=('gcc-multilib')
 provides=('libfreetype.so' 'lib32-freetype2')
 conflicts=('lib32-freetype2')
-source=(git://git.sv.gnu.org/freetype/freetype2.git
+source=(git://git.sv.nongnu.org/freetype/freetype2.git
         0001-Enable-table-validation-modules.patch
         0002-Enable-infinality-subpixel-hinting.patch
         0003-Enable-long-PCF-family-names.patch)
