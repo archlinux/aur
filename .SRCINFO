@@ -1,0 +1,14 @@
+pkgbase = voxforge-am-julius
+	pkgdesc = Acoustic model information for use with Julius voice recognition software
+	pkgver = 0.9.3
+	pkgrel = 2
+	url = http://www.voxforge.org/
+	install = voxforge-am-julius.install
+	changelog = ChangeLog
+	arch = any
+	license = GPL
+	optdepends = perl: for mkdfa.pl
+	source = voxforge-am-julius-0.9.3.tgz::http://www.repository.voxforge1.org/downloads/Main/Tags/Releases/0.9.3/Julius-4.3.1-Quickstart-Linux_(0.9.3).tgz
+	sha512sums = 3f3d8f7655e40657f330cde1f0b1cb2a8ae7425f14921f0a124d67b638c2f41101e9eaa2fc39cf2f157d413f8b0560ffb20ddbf9f8773beb5c518a508d65a5f1
+
+pkgname = voxforge-am-julius

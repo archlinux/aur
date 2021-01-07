@@ -1,0 +1,11 @@
+post_install() {
+  cat << EOF
+To run, use
+    julius -input mic -C /usr/share/voxforge/julius/julian.jconf
+
+To manipulate, copy the contents of /usr/share/voxforge/julius to a local
+folder (i.e. ~/.voxforge/julius/).
+EOF
+}
+
+# vim:set ts=2 sw=2 et:
