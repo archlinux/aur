@@ -22,7 +22,7 @@ sanitize() {
 build() {
 	cd [% distdir %]
 	sanitize
-	perl Makefile.PL INSTALLDIRS=vendor
+	/usr/bin/perl Makefile.PL INSTALLDIRS=vendor
 	make
 }
 

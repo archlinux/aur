@@ -1,7 +1,7 @@
 pkgbase = perl-tex-encode
 	pkgdesc = Perl module to encode/decode UTF-8 strings into TeX
-	pkgver = 2.007
-	pkgrel = 2
+	pkgver = 2.009
+	pkgrel = 1
 	url = https://metacpan.org/release/TeX-Encode
 	arch = any
 	license = GPL
@@ -10,8 +10,8 @@ pkgbase = perl-tex-encode
 	depends = perl-html-parser
 	depends = perl-pod-latex
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/A/AT/ATHREEF/TeX-Encode-2.007.tar.gz
-	md5sums = 343544c039f8f713f65ead8d95812ff4
+	source = http://search.cpan.org/CPAN/authors/id/A/AT/ATHREEF/TeX-Encode-2.009.tar.gz
+	md5sums = 451987bcd62fc78db71fe390739a7608
 
 pkgname = perl-tex-encode
 
