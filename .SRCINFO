@@ -15,7 +15,7 @@ pkgbase = lib32-86box-nightly-bin
 	source = https://ci.86box.net/job/86Box/lastSuccessfulBuild/artifact/*zip*/archive.zip
 	md5sums = 91806130ae51196094ec77f2a7b4ce3e
 	md5sums = 2f6edbb5b672676a59bc689aaab0e043
-	md5sums = 98e90dc4e6562bb4060f463bc42ebd6e
+	md5sums = SKIP
 
 pkgname = lib32-86box-nightly-bin
 

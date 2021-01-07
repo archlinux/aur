@@ -46,5 +46,5 @@ post_install() {
 }
 
 md5sums=('91806130ae51196094ec77f2a7b4ce3e'
-'2f6edbb5b672676a59bc689aaab0e043 '
-'98e90dc4e6562bb4060f463bc42ebd6e')
+'2f6edbb5b672676a59bc689aaab0e043'
+'SKIP')
