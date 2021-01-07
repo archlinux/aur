@@ -1,0 +1,10 @@
+pkgbase = theme.sh-git
+	pkgver = 20210107.45d3236
+	pkgrel = 1
+	arch = any
+	provides = theme.sh
+	source = git+https://github.com/lemnos/theme.sh.git
+	md5sums = SKIP
+
+pkgname = theme.sh-git
+
