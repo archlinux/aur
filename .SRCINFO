@@ -15,7 +15,7 @@ pkgbase = avisynth-plugin-turnstile-git
 	source = esee
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 6c4265143c0ff198634c31f04b15a0eb232cf332cadedac8b42aa12ff91886f2
+	sha256sums = ca3cff98459311e4f3e219a3a4122562e737624ef9026048dc89b19bcc3568ab
 
 pkgname = avisynth-plugin-turnstile-git
 

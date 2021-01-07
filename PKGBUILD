@@ -20,7 +20,7 @@ source=("${_plug}::git+https://github.com/ItEndsWithTens/TurnsTile.git"
         )
 sha256sums=('SKIP'
             'SKIP'
-            '6c4265143c0ff198634c31f04b15a0eb232cf332cadedac8b42aa12ff91886f2'
+            'ca3cff98459311e4f3e219a3a4122562e737624ef9026048dc89b19bcc3568ab'
             )
 
 pkgver() {
