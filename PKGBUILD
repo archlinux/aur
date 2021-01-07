@@ -9,7 +9,7 @@ pkgdesc="A new schematic mod written from scratch"
 arch=('any')
 url="https://masa.dy.fi/mcmods/client_mods/"
 license=('LGPL')
-makedepends=('wget')
+makedepends=('wget' 'jq')
 source=("manifest.json::https://masa.dy.fi/api/games/mods/minecraft/latest/client/")
 sha1sums=('SKIP')
 
