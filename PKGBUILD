@@ -16,12 +16,8 @@ makedepends=('git'
              'avisynthplus'
              'vapoursynth'
              )
-source=("${_plug}::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_TMedian.git"
-        'esee'
-        )
-sha256sums=('SKIP'
-            'SKIP'
-            )
+source=("${_plug}::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_TMedian.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
