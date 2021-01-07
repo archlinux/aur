@@ -1,7 +1,7 @@
 # Maintainer: sh0rez <me@shorez.de>
 
 pkgname=gmailctl
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=0
 pkgdesc="Declarative configuration for Gmail filters"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/gmailctl"
-  CGO_ENABLED=0 go build -ldflags='-s -w -extldflags "-static"' -o gmailctl ./cmd/gmailctl
+  CGO_ENABLED=0 go build -trimpath -ldflags='-s -w -extldflags "-static"' -o gmailctl ./cmd/gmailctl
 }
 
 package() {
