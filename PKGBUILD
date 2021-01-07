@@ -6,7 +6,7 @@ pkgver=v1.0.25.11.gaf18f2c
 pkgrel=1
 pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
-url='https://forum.doom9.org/showthread.php?t=182032'
+url='https://github.com/pinterf/TIVTC.git'
 license=('LGPL')
 depends=('avisynthplus')
 makedepends=('git'
