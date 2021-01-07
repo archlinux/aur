@@ -1,0 +1,18 @@
+pkgbase = eric
+	pkgdesc = A full-featured Python and Ruby IDE in PyQt
+	pkgver = 20.9
+	pkgrel = 2
+	url = https://eric-ide.python-projects.org/
+	changelog = ChangeLog
+	arch = any
+	license = GPL3
+	depends = python-qscintilla-qt5
+	depends = python-pyqtwebengine
+	depends = python-pyqtchart
+	depends = qt5-svg
+	conflicts = eric-common
+	replaces = eric-common
+	source = https://downloads.sourceforge.net/eric-ide/eric6-20.9.tar.gz
+	sha512sums = ffdab3b51f0c782d79d99387d6e54bc4b5b05a40a61972731516efedbb276ea1bb9632ffe65fced25642c900a77d9240aed8d31cb3fe238292278a2fd9d53e73
+
+pkgname = eric
