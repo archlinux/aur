@@ -1,6 +1,6 @@
 pkgbase = fheroes2-git
 	pkgdesc = Free implementation of Heroes of the Might and Magic II engine
-	pkgver = r523.a9138543
+	pkgver = r1028.b640d527
 	pkgrel = 1
 	url = https://github.com/ihhub/fheroes2
 	install = fheroes2.install
@@ -20,7 +20,7 @@ pkgbase = fheroes2-git
 	source = fheroes2.desktop
 	source = fheroes2.sh
 	md5sums = SKIP
-	md5sums = 0d52069db426be17ce9dbd5deb20d4fd
+	md5sums = 8e8e2b9097d886d9115f4541e943fa9e
 	md5sums = a39dd6625e7d1582c85087937e00f074
 
 pkgname = fheroes2-git

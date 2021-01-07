@@ -1,5 +1,5 @@
 pkgname=fheroes2-git
-pkgver=r523.a9138543
+pkgver=r1028.b640d527
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 #	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
@@ -18,7 +18,7 @@ source=(fheroes2::git+https://github.com/ihhub/fheroes2.git
         fheroes2.sh)
 install=fheroes2.install
 md5sums=('SKIP'
-         '0d52069db426be17ce9dbd5deb20d4fd'
+         '8e8e2b9097d886d9115f4541e943fa9e'
          'a39dd6625e7d1582c85087937e00f074')
 
 build() {
@@ -31,9 +31,9 @@ package() {
   install -Dm755 "$srcdir/fheroes2.sh" "$pkgdir/usr/bin/fheroes2"
   install -Dm644 "$srcdir/fheroes2.desktop" "$pkgdir/usr/share/applications/fheroes2.desktop"
 
-  install -Dm644 "image/fheroes2_32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/fheroes2.png"
+#  install -Dm644 "image/fheroes2_32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/fheroes2.png"
   install -Dm755 "src/dist/fheroes2" "$pkgdir/usr/share/fheroes2/fheroes2"
-  install -Dm644 "fheroes2.cfg" "$pkgdir/usr/share/fheroes2/fheroes2.cfg"
+#  install -Dm644 "fheroes2.cfg" "$pkgdir/usr/share/fheroes2/fheroes2.cfg"
 
   install -dm755 "$pkgdir/usr/share/fheroes2/data" "$pkgdir/usr/share/fheroes2/maps"
 }

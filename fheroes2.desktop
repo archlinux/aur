@@ -1,6 +1,6 @@
 [Desktop Entry]
 Exec=fheroes2
-Icon=fheroes2
+;Icon=fheroes2
 Type=Application
 Terminal=false
 Name=Free Heroes 2
