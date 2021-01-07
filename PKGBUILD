@@ -4,7 +4,7 @@
 # python-bugsnag    (vcs, maintained by me)
 # python-markdown2
 pkgname=maestral-qt
-pkgver=1.2.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='A Qt interface for the Maestral daemon'
 arch=('any')
@@ -13,16 +13,14 @@ license=('MIT')
 source=("${url}/archive/v${pkgver}.tar.gz")
 makedepends=('python' 'python-setuptools')
 depends=(
-    'maestral>=1.2.2'
-    'python>=3.6'
-    'python<=3.9'
-    'python-bugsnag>=3.4.0'
+    'python'
+    'maestral>=1.3.0'
     'python-click>=7.1.1'
     'python-markdown2'
     'python-packaging'
     'python-pyqt5>=5.9')
 optdepends=('gnome-shell-extension-appindicator: Gnome integration')
-md5sums=('c6f58c46fa328a4ace44607d38452f59')
+md5sums=('8713d035ab6728631bbdcd8521e3157f')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
