@@ -2,7 +2,7 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=mastodon-git
-pkgver=2.4.3_85_g018a9e4e7
+pkgver=3.3.0_75_gefffdd3778
 _branch=master
 pkgrel=1
 pkgdesc='Free software social network server based on ActivityPub and OStatus'
@@ -14,7 +14,7 @@ depends=(ffmpeg
          libpqxx
          libxml2
          libxslt
-         nodejs-lts-boron
+         nodejs
          postgresql
          redis
          ruby-bundler
