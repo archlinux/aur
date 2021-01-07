@@ -4,7 +4,7 @@ _svnname='libsnl'
 
 pkgname=libsnl-svn
 pkgver=18
-pkgrel=6
+pkgrel=7
 pkgdesc="libSNL is a library of routines used for the manipulation of NURBS curves and surfaces."
 arch=('i686' 'x86_64')
 url="https://libsnl.sourceforge.net/"
@@ -14,7 +14,7 @@ conflicts=('libsnl')
 depends=()
 makedepends=('subversion')
 
-source=("$_svnname::svn://svn.code.sf.net/p/$_svnname/code/trunk")
+source=("$_svnname::svn+https://svn.code.sf.net/p/$_svnname/code/trunk")
 md5sums=('SKIP')
 
 pkgver() 
