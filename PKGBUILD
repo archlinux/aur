@@ -8,10 +8,10 @@
 
 
 ## Helpful internal stuff
-_commit=91cc1e19ef34aeb12888b697fefa52907f1a834d
+_commit=1f4fa17372bd196e87042738a16ab08bf904bcbf
 _major=2
 _minor=26
-_build=4206
+_build=4237
 _revision=102
 _mozcver=${_major}.${_minor}.${_build}.${_revision}
 _utdicdate=20201129
