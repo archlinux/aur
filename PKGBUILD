@@ -3,7 +3,7 @@
 
 pkgname=xfce4-i3-workspaces-plugin-git
 pkgrel=1
-pkgver=1.2.0.r23.gcdcc2bc
+pkgver=1.4.0.r0.gbaec90d
 pkgdesc="A workspace switcher plugin for xfce4-panel which can be used for the i3 window manager"
 arch=('i686' 'x86_64')
 url="https://github.com/denesb/xfce4-i3-workspaces-plugin"
