@@ -35,8 +35,8 @@ pkgver=5.6.40
 pkgrel=1
 pkgdesc="A general-purpose scripting language that is especially suited to web development"
 arch=('i686' 'x86_64')
-license=('PHP')
 url='http://php.net'
+license=('PHP')
 makedepends=('apache' 'c-client' 'postgresql-libs' 'libldap' 'smtp-forwarder'
              'sqlite' 'unixodbc' 'net-snmp' 'libzip' 'enchant' 'file' 'freetds'
              'libmcrypt' 'tidyhtml' 'aspell' 'libltdl' 'gd' 'icu'
@@ -47,7 +47,32 @@ source=("https://secure.php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
         'php.ini.patch' 'apache.conf' 'php-fpm.conf.in.patch'
         'logrotate.d.php-fpm' 'php-fpm.service' 'php-fpm.tmpfiles'
         'use-enchant2.patch'
-        'php-freetype-2.9.1.patch')
+        'php-freetype-2.9.1.patch'
+        'https://raw.githubusercontent.com/centminmod/centminmod/123.09beta01/patches/php/php5640-mysqlnd-fix.patch')
+validpgpkeys=('6E4F6AB321FDC07F2C332E3AC2BF0BC433CFC8B3'
+              '0BD78B5F97500D450838F95DFE857D9A90D90EC1')
+md5sums=('c7dde3afb16ce7b761abf2805125d372'
+         'SKIP'
+         'c893cdf2599f68a7844cd4c91e66a18b'
+         'dec2cbaad64e3abf4f0ec70e1de4e8e9'
+         '2d0e98c423a9dc57e923f31d63117106'
+         'bc1006ba3308c0b641726944874da315'
+         'c1cc15d2123931f883f75f231ae44f60'
+         '12392414f768281ae96f292d0aa9669c'
+         '4a9801acb02312746347095f107c68e9'
+         'b40b82f55208eaead22dbfb64720b064'
+         'ce426ef8c362dd27a74678656b5700f4')
+sha256sums=('1369a51eee3995d7fbd1c5342e5cc917760e276d561595b6052b21ace2656d1c'
+            'SKIP'
+            'f70833674fec2575bb404a907fb01c616537629d6a4bfa7c319df04fb90e21e1'
+            '8b5b15f1c348d8897d837ea9894157d9630dc542bbb0dbc7ad93c5dc0235d1d5'
+            '71996465bf1ccd0f335cd023f74dc362c9ac8eae03ce400dc36a729d42431403'
+            'e1eee1e035a3ae973c08989564227577d996fddace2bb25d0c62ef8763d109a8'
+            'c65c3c140aa06868ecef672c17b467589dc03d21caf06a75511dbc19c0bae1c3'
+            '2fb61bcef63765d3491bb78cab835f1ab6819c127bef4d30945916193608eb4e'
+            '471eadcbe1d28102774260fa7fcb47fb65b104c4e3fc7267c3ae59e075c8cceb'
+            'f9fe57f809ac13e0043d18b795ef777af3e8c710a83745b37b09db536f683d2a'
+            '4599f34603b8af7c33b123bc14d2cea5832fe2275c901cbd46ff76182b1dbf13')
 sha512sums=('997b5a952a60cf9166671cc91fcc34c674dd62bfd5cb0a9cdf3fdf2d088b5d19943d94c1cf193f8ab71fc4957d9a9a4c7c2fb8826f937501c1c0a0858f10e329'
             'SKIP'
             'e742d6e3e43bce75e11b4646cdbf06c5661c66cc22d5615caff1e293ed35e95973290940c93d6abeec2d43f02761baabf24e6954720d7df8f2bd7de2c3f9ba0d'
@@ -57,9 +82,8 @@ sha512sums=('997b5a952a60cf9166671cc91fcc34c674dd62bfd5cb0a9cdf3fdf2d088b5d19943
             'c6b74e1b39224e79d33915a0d32fe2d08114d1dcec93035017af783b8b73b6475779e3e649abb35b73ea2fd6553120696c48ebb0894531282fbc9e1b36da9f3b'
             '9cc548c9395f0765e6ebf54604dc8e71da38ffbc10eba50ba9b7e2f91690c53056f62efa2060fc8670de94e0642027c6eaa6c2820ba99e2b489695d1e320fcf3'
             '9fa342db6530bf1b6c86d6eb5020f86eab08b7c134d649291755d3b8356837509ac9dd8a8c8a26a7c98468045abcb128bdf9cc7c6646ccf06da43909aa7b019b'
-            '0a06189f6fb3513cd2dcf9ddb590360475e2dd9a7aa8b13ab66c389c1ed40ce2361681f017cd3c6219f5b40a0a9d4978e57ca3ee4bacb7657db3285136fd2875')
-validpgpkeys=('6E4F6AB321FDC07F2C332E3AC2BF0BC433CFC8B3'
-              '0BD78B5F97500D450838F95DFE857D9A90D90EC1')
+            '0a06189f6fb3513cd2dcf9ddb590360475e2dd9a7aa8b13ab66c389c1ed40ce2361681f017cd3c6219f5b40a0a9d4978e57ca3ee4bacb7657db3285136fd2875'
+            '14720eff3bc90106c6740017344e01f678090c4b07dd4ba5d91d65b194829032a0e458f333f8c14e12279a5e0f526de9792e43f22eb2a2db48285e34a2e148e2')
 
 prepare() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
@@ -81,11 +105,17 @@ prepare() {
   # kudos to Brian Evans <grknight@gentoo.org>
   # https://gitweb.gentoo.org/repo/gentoo.git/plain/dev-lang/php/files/php-freetype-2.9.1.patch
   patch -p1 -N -l -i "${srcdir}/php-freetype-2.9.1.patch"
+
+  # fix mysqlnd compat with mariadb versions
+  # stricter packet checking introduced where php is sending a byte to indicate prepared params and not sending any params
+  # https://raw.githubusercontent.com/centminmod/centminmod/123.09beta01/patches/php/php5640-mysqlnd-fix.patch
+  patch -p1 -N -l -u -i "${srcdir}/php5640-mysqlnd-fix.patch"
 }
 
 build() {
   # http://site.icu-project.org/download/61#TOC-Migration-Issues
   CPPFLAGS+=' -DU_USING_ICU_NAMESPACE=1'
+  CPPFLAGS+=' -DU_DEFINE_FALSE_AND_TRUE=1'
 
   local _phpconfig="--srcdir=../${_pkgbase}-${pkgver} \
     --config-cache \
@@ -183,7 +213,7 @@ build() {
     --enable-pcntl \
     ${_phpextensions}
   sed -i '/^IMAP_SHARED_LIBADD =/ s#-lssl -lcrypto#-Wl,/usr/lib/libssl.so -Wl,/usr/lib/libcrypto.so#' Makefile
-  make
+  make -s
 
   # cgi and fcgi
   # reuse the previous run; this will save us a lot of time
@@ -193,7 +223,7 @@ build() {
     --disable-cli \
     --enable-cgi \
     ${_phpextensions}
-  make
+  make -s
 
   # apache
   cp -Ta ${srcdir}/build-php ${srcdir}/build-apache
@@ -202,7 +232,7 @@ build() {
     --disable-cli \
     --with-apxs2 \
     ${_phpextensions}
-  make
+  make -s
 
   # fpm
   cp -Ta ${srcdir}/build-php ${srcdir}/build-fpm
@@ -213,7 +243,7 @@ build() {
     --with-fpm-user=http \
     --with-fpm-group=http \
     ${_phpextensions}
-  make
+  make -s
 
   # embed
   cp -Ta ${srcdir}/build-php ${srcdir}/build-embed
@@ -222,7 +252,7 @@ build() {
     --disable-cli \
     --enable-embed=shared \
     ${_phpextensions}
-  make
+  make -s
 
   # phpdbg
   cp -Ta ${srcdir}/build-php ${srcdir}/build-phpdbg
@@ -233,7 +263,7 @@ build() {
     --with-readline \
     --enable-phpdbg \
     ${_phpextensions}
-  make
+  make -s
 
   # pear
   sed -i 's#@$(top_builddir)/sapi/cli/php $(PEAR_INSTALL_FLAGS) pear/install-pear-nozlib.phar -d#@$(top_builddir)/sapi/cli/php $(PEAR_INSTALL_FLAGS) pear/install-pear-nozlib.phar -p $(bindir)/php$(program_suffix) -d#' ${srcdir}/php-${pkgver}/pear/Makefile.frag
@@ -245,7 +275,7 @@ build() {
     --enable-pcntl \
     --with-pear \
     ${_phpextensions}
-  make
+  make -s
 }
 
 check() {
