@@ -3,7 +3,7 @@
 pkgname=('python-timezonefinder')
 pkgdesc="Fast and lightweight project for looking up the timezone for a given lat/lng"
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 url="https://github.com/MrMinimal64/timezonefinder"
 license=('MIT')
 arch=('any')
