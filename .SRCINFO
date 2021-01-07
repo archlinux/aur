@@ -1,6 +1,6 @@
 pkgbase = fcct-bin
 	pkgdesc = Fedora CoreOS Config Transpiler
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/coreos/fcct
 	arch = aarch64
@@ -8,12 +8,12 @@ pkgbase = fcct-bin
 	license = Apache
 	conflicts = fcct
 	validpgpkeys = 963A2BEB02009608FE67EA4249FD77499570FF31
-	source_aarch64 = https://github.com/coreos/fcct/releases/download/v0.8.0/fcct-aarch64-unknown-linux-gnu
-	source_aarch64 = https://github.com/coreos/fcct/releases/download/v0.8.0/fcct-aarch64-unknown-linux-gnu.asc
+	source_aarch64 = https://github.com/coreos/fcct/releases/download/v0.9.0/fcct-aarch64-unknown-linux-gnu
+	source_aarch64 = https://github.com/coreos/fcct/releases/download/v0.9.0/fcct-aarch64-unknown-linux-gnu.asc
 	sha256sums_aarch64 = 4574ecd48f4e4d613f92e57614e077402410b566a0ee99f67c342f6c2685ba80
 	sha256sums_aarch64 = SKIP
-	source_x86_64 = https://github.com/coreos/fcct/releases/download/v0.8.0/fcct-x86_64-unknown-linux-gnu
-	source_x86_64 = https://github.com/coreos/fcct/releases/download/v0.8.0/fcct-x86_64-unknown-linux-gnu.asc
+	source_x86_64 = https://github.com/coreos/fcct/releases/download/v0.9.0/fcct-x86_64-unknown-linux-gnu
+	source_x86_64 = https://github.com/coreos/fcct/releases/download/v0.9.0/fcct-x86_64-unknown-linux-gnu.asc
 	sha256sums_x86_64 = addef5c6b620afda41f4646ce0447a31e84e3e7f7ab0745828de9b38a083bc17
 	sha256sums_x86_64 = SKIP
 
