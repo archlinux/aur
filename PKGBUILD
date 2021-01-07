@@ -1,16 +1,16 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributr: Patrick José Pereira < positivcheg94 at gmail dot com >
 
-_commit=aae6f315ce80ff80df5bc9439b4ee852187533c1  # tags=v2.40.0
-_RS4XX_VER=5.12.9.0
+_commit=4f37f2ef0874c1716bce223b20e46d00532ffb04  # tags=v2.41.0
+_RS4XX_VER=5.12.10.0
 _SR300_VER=3.26.1.0
 _TM2_VER=0.2.0.951
-_L5XX_VER=1.5.2.0
+_L5XX_VER=1.5.3.0
 
 pkgname=librealsense
-pkgver=v2.40.0
+pkgver=v2.41.0
 pkgrel=1
-pkgdesc="Intel® RealSense™ SDK 2.0 is a cross-platform library for Intel® RealSense™ depth cameras (D400 series and the SR300)"
+pkgdesc="Intel® RealSense™ SDK 2.0 is a cross-platform library for Intel® RealSense™ depth cameras (D400 series and the SR300) and the T265 tracking camera."
 arch=('x86_64')
 url="https://github.com/IntelRealSense/librealsense"
 license=('Apache')
@@ -22,14 +22,20 @@ source=("git+https://github.com/IntelRealSense/librealsense#commit=${_commit}"
     "https://realsense-hw-public.s3.amazonaws.com/Releases/TM2/FW/target/${_TM2_VER}/target-${_TM2_VER}.mvcmd"
     "https://realsense-hw-public.s3.amazonaws.com/Releases/L5xx/FW/L5XX_FW_Image-${_L5XX_VER}.bin")
 sha256sums=('SKIP'
-            'cc42926852ea26d415b57d8e082f41deb7f951ab187cf73dcb22b8c031efd3a9'
+            'c44731a31ffc76a1acb4cb34aef57e4ec5372fa70f58a73cab04294683308b10'
             'c4ac2144df13c3a64fca9d16c175595c903e6e45f02f0f238630a223b07c14d1'
             '0265fd111611908b822cdaf4a3fe5b631c50539b2805d2f364c498aa71c007c0'
-            '3b97b5a92c8453cab75593ed6a11bb8a0c869d94520d4398b0638f6cb359cd68')
+            '187e281fb02cdc8e441fc433850ebebef01d9d9318654ec5c7499404590d1fa3')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
   git describe --tags | sed 's/-/+/g'
+}
+
+prepare(){
+  cd "${srcdir}/${pkgname}"
+  sed -i 's|, GROUP:="plugdev"||g' "config/99-realsense-libusb.rules"
+  sed -i 's|, GROUP="plugdev"||g' "config/99-realsense-libusb.rules"
 
   mkdir -p build/common/fw/
   cp "../D4XX_FW_Image-${_RS4XX_VER}.bin" build/common/fw/
