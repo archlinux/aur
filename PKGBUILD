@@ -1,13 +1,12 @@
 # Maintainer: Brodi <me@brodi.space>
 pkgname=obs-rtspserver-bin
 pkgver=1.1.1
-_obsver=24.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="RTSP server plugin for obs-studio"
 arch=("x86_64")
 url="https://github.com/iamscottxu/obs-rtspserver"
 license=('GPL')
-depends=('obs-studio')
+depends=('obs-studio>=24.0.0')
 source=("https://github.com/iamscottxu/obs-rtspserver/releases/download/v${pkgver}/obs-rtspserver-v${pkgver}-linux.tar.gz"
 	"https://raw.githubusercontent.com/iamscottxu/obs-rtspserver/master/LICENSE")
 md5sums=('833054b95e46af518e219e4504c34fec'
