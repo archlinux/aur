@@ -1,6 +1,6 @@
 pkgbase = linux-ck-autobuild
 	pkgdesc = A tool to automatically build ck kernels
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/j00ch/linux-ck-autobuild
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = linux-ck-autobuild
 	depends = sed
 	depends = nano
 	provides = linux-ck-autobuild
-	source = https://github.com/j00ch/linux-ck-autobuild/archive/0.1.1.tar.gz
-	sha256sums = 119020af07fea39f84038f8db49a2e11acc6129d6f230d5fe10068158c736caa
+	source = https://github.com/j00ch/linux-ck-autobuild/archive/0.1.2.tar.gz
+	sha256sums = 49e0c69d57fbb54adf510c13861c234869739ca50d480cd97f33251fa689a76d
 
 pkgname = linux-ck-autobuild
 
