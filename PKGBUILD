@@ -3,7 +3,7 @@
 pkgname=('python-django-markupfield' 'python2-django-markupfield')
 pkgdesc="An implementation of a custom MarkupField for Django"
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 url="https://github.com/jamesturk/django-markupfield"
 license=('BSD')
 arch=('any')
