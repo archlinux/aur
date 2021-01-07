@@ -1,7 +1,7 @@
 pkgbase = python-lunardate
 	pkgdesc = A Chinese Calendar Library in Pure Python
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lidaobing/python-lunardate
 	arch = any
 	license = GPLv3
