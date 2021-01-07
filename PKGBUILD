@@ -1,5 +1,5 @@
 pkgname=kalliope
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Modular always-on voice controlled personal assistant designed for home automation"
