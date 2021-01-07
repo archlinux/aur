@@ -3,7 +3,7 @@
 pkgname=('python-django-polymorphic' 'python2-django-polymorphic')
 pkgdesc="Polymorphic Models for Django"
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 url="https://github.com/django-polymorphic/django-polymorphic"
 license=('BSD')
 arch=('any')
