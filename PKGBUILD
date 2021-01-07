@@ -1,7 +1,7 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=overseerr-git
-pkgver=r423.16e48c4
+pkgver=r516.2bfe0f2
 pkgrel=1
 pkgdesc='Request management and media discovery tool for the Plex ecosystem'
 arch=('x86_64')
@@ -33,6 +33,10 @@ pkgver()
 build()
 {
     cd "${srcdir}/overseerr"
+
+    export COMMIT_TAG=${pkgver}
+    echo "{\"commitTag\": \"${COMMIT_TAG}\"}" > committag.json
+
     yarn --frozen-lockfile
     yarn build
     yarn install --production --ignore-scripts --prefer-offline
