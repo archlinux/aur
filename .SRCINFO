@@ -6,6 +6,7 @@ pkgbase = mc-itemscroller-116-fabric
 	arch = any
 	license = LGPL
 	makedepends = wget
+	makedepends = jq
 	source = manifest.json::https://masa.dy.fi/api/games/mods/minecraft/latest/client/
 	sha1sums = SKIP
 
