@@ -1,7 +1,7 @@
 pkgbase = zegrapher
 	pkgdesc = mathematical objects plotting software
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zegrapher.com
 	arch = x86_64
 	license = GPL

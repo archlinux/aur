@@ -1,7 +1,7 @@
  # Maintainer: Mickael Bosch <mickael dot bosch at linux dot com>
 pkgname='zegrapher'
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.zegrapher.com"
 makedepends=()
