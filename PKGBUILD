@@ -2,7 +2,7 @@
 
 pkgbase=python-pycountry-convert
 pkgname=(python-pycountry-convert python2-pycountry-convert)
-pkgver=0.6.4
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Extension of Python package pycountry providing conversion functions."
 arch=('any')
@@ -10,7 +10,7 @@ url="http://pypi.python.org/pypi/pycountry-convert"
 license=('LGPL3.0')
 makedepends=('python2-setuptools' 'python-setuptools')
 source=("https://pypi.io/packages/source/p/${pkgbase#python-}/${pkgbase#python-}-${pkgver}.tar.gz")
-sha512sums=('3e60d1c06e36b05125999cb83c2660d7856d533b03ab773bf2a58b1e9b9f99552d219d209b2fe7eae6082b6a2f04004f513a3a958db35a2bbc0674a83fbc3453')
+sha512sums=('5010668fcc20e70e035464d69caa0cc3235bc3d913cb0ec759267395ca25d6ffe36800f5c0efc380e0d52c5e7eee35d31471b847072f5253b884a49dfd35a4d7')
 
 package_python2-pycountry-convert() {
   depends=('python2-pycountry' 'python2-pprintpp')
