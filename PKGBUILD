@@ -15,7 +15,7 @@ _enable_libsyncthing=${MINGW_W64_SYNCTHING_TRAY_JS_PROVIDER:-ON}
 _reponame=syncthingtray
 pkgname=mingw-w64-syncthingtray
 _name=${pkgname#mingw-w64-}
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 arch=('any')
 pkgdesc='Tray application for Syncthing (mingw-w64)'
@@ -31,7 +31,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg' 'n
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
 [[ $_enable_libsyncthing == ON ]] && source+=("syncthing::git+https://github.com/Martchus/syncthing.git#branch=libsyncthing-latest")
-sha256sums=('730301d51744c7c54a393b06a3a02cd93d2275d8864d8a2dc84a86afc901756f'
+sha256sums=('7a8dfb53d9359e0e930adef784d9b018f11985dfc264d7fdd3d20769b01615db'
             'SKIP')
 options=(!buildflags staticlibs !strip !emptydirs)
 
@@ -81,12 +81,11 @@ build() {
         -DKF_PACKAGE_PREFIX=StaticKF5
         -DSYNCTHINGCTL_CONFIGURATION_TARGET_SUFFIX:STRING=static
         -DSYNCTHINGTRAY_CONFIGURATION_TARGET_SUFFIX:STRING=static
-        -DENABLE_QT_TRANSLATIONS:BOOL=ON
         -DBUILTIN_TRANSLATIONS:BOOL=ON
         -DBUILTIN_ICON_THEMES:STRING=breeze;breeze-dark;Numix
         -DIMAGE_FORMAT_SUPPORT:STRING=Gif;ICO;Jpeg
         -DSVG_SUPPORT:BOOL=ON
-        -DSVG_ICON_SUPPORT:BOOL=0N
+        -DSVG_ICON_SUPPORT:BOOL=ON
         -DWEBVIEW_PROVIDER:STRING=none
     '
   )
