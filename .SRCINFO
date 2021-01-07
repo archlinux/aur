@@ -9,9 +9,9 @@ pkgbase = nginx-mainline-mod-auth-ldap-git
 	makedepends = git
 	depends = nginx-mainline
 	depends = libldap
-	source = https://nginx.org/download/nginx-1.19.3.tar.gz
+	source = https://nginx.org/download/nginx-1.19.6.tar.gz
 	source = git+https://github.com/kvspb/nginx-auth-ldap.git
-	sha256sums = 91e5b74fa17879d2463294e93ad8f6ffc066696ae32ad0478ffe15ba0e9e8df0
+	sha256sums = b11195a02b1d3285ddf2987e02c6b6d28df41bb1b1dd25f33542848ef4fc33b5
 	sha256sums = SKIP
 
 pkgname = nginx-mainline-mod-auth-ldap-git
