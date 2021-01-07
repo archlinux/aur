@@ -39,7 +39,6 @@ build() {
 package(){
   make -C build DESTDIR="${pkgdir}" install
 
-  install -Dm644 "${_plug}/Documentation/AddGrainC.txt" "${pkgdir}/usr/share/doc/${_plug}/AddGrainC.txt"
-  install -Dm644 "${_plug}/Documentation/addgrain.avs"  "${pkgdir}/usr/share/doc/${_plug}/addgrainc.avs"
-
+  install -Dm644 "${_plug}/Documentation/AddGrainC.txt" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/AddGrainC.txt"
+  install -Dm644 "${_plug}/Documentation/addgrain.avs"  "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/addgrainc.avs"
 }
