@@ -39,6 +39,6 @@ build() {
 package(){
   make -C build DESTDIR="${pkgdir}" install
 
-  install -Dm755 "${_plug}/FluxSmooth/documentation/readme.html" "${pkgdir}/usr/share/doc/${_plug}/readme.html"
+  install -Dm644 "${_plug}/FluxSmooth/documentation/readme.html" "${pkgdir}/usr/share/doc/${_plug}/readme.html"
 
 }
