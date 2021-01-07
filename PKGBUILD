@@ -14,7 +14,7 @@ license=(GPL)
 # introduces a cycle dep to harfbuzz depending on freetype wanted by upstream
 depends=(zlib bzip2 sh libpng harfbuzz)
 makedepends=(libx11 git)
-source=(git://git.sv.gnu.org/freetype/freetype2.git)
+source=(git://git.sv.nongnu.org/freetype/freetype2.git)
 sha256sums=('SKIP')
 
 pkgver() {

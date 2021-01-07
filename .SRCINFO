@@ -14,7 +14,7 @@ pkgbase = freetype2-minimal-git
 	depends = sh
 	depends = libpng
 	depends = harfbuzz
-	source = git://git.sv.gnu.org/freetype/freetype2.git
+	source = git://git.sv.nongnu.org/freetype/freetype2.git
 	sha256sums = SKIP
 
 pkgname = freetype2-minimal-git
