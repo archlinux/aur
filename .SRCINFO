@@ -3,9 +3,11 @@ pkgbase = snp
 	pkgver = 8
 	pkgrel = 1
 	url = https://gist.github.com/erikw/5229436
+	install = snp.install
 	arch = any
 	depends = snapper
 	source = snp
+	source = snp.install
 	md5sums = dab60c8e39ca9fcf0c2d92a037ca344b
 
 pkgname = snp
