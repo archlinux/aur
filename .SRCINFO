@@ -1,0 +1,18 @@
+pkgbase = pdfsam
+	pkgdesc = A free open source tool to split and merge pdf documents
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = https://www.pdfsam.org/
+	arch = any
+	license = AGPL3
+	makedepends = desktop-file-utils
+	makedepends = gendesk
+	depends = hicolor-icon-theme
+	depends = java-environment>=11
+	depends = sh
+	source = https://github.com/torakiki/pdfsam/releases/download/v4.2.0/pdfsam-4.2.0-linux.zip
+	source = pdfsam
+	sha512sums = 26ec8f1c554c4b308c0fbc27d46c25c922fe0f6d128feb5156bdbb890646cf270a4b0dd54efe18e52775b90fcefb5e7748c9bd2bf131151c5f5a40711766c84a
+	sha512sums = c0d8665e8f0a82e539cd70972f95f819d13b10166f1e4bb04d032d108ef5de45fe77f8716e8e2f0fa129e7042907928bde1d947cc54f691aa6d87a76dfaa10c1
+
+pkgname = pdfsam
