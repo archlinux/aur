@@ -1,0 +1,20 @@
+pkgbase = canorus
+	pkgdesc = A free music score editor
+	pkgver = 0.7.3rc3
+	pkgrel = 4
+	url = http://www.canorus.org/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = swig
+	makedepends = qt5-tools
+	makedepends = ruby
+	depends = qt5-svg
+	depends = qt5-webengine
+	depends = alsa-lib
+	depends = zlib
+	depends = python
+	source = https://downloads.sourceforge.net/project/canorus/0.7.3/canorus-0.7.3rc3.tar.bz2
+	sha256sums = c5d470ac6cae696472dcb7176e0cd4545b883ff84ae2dc767a8956546f5b4b15
+
+pkgname = canorus
