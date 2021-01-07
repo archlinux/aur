@@ -1,4 +1,4 @@
-pkgbase = okular-no-purpose0
+pkgbase = okular-no-purpose
 	pkgdesc = Okular, a document viewer, without the dependency on purpose. This disables the share menu
 	pkgver = 20.12.1
 	pkgrel = 1
@@ -45,5 +45,5 @@ pkgbase = okular-no-purpose0
 	sha256sums = 2ca17ad0b2a1a0f9f70c7ca4bc1f44a9ed758b0ca6a8e5c9935a467f883df53e
 	sha256sums = SKIP
 
-pkgname = okular-no-purpose0
+pkgname = okular-no-purpose
 

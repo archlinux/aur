@@ -1,7 +1,7 @@
 # Maintainer: Bas Timmer <basjetimmer at yahoo dot com >
 
 _pkgname=okular
-pkgname=okular-no-purpose0
+pkgname=okular-no-purpose
 pkgver=20.12.1
 pkgrel=1
 pkgdesc='Okular, a document viewer, without the dependency on purpose. This disables the share menu'
