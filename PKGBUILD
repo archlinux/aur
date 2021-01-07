@@ -24,10 +24,10 @@ makedepends_x86_64=('yasm')
 install='p7zip-gui.install'
 source=("https://downloads.sourceforge.net/project/p7zip/p7zip/${pkgver}/p7zip_${pkgver}_src_all.tar.bz2"
         'https://src.fedoraproject.org/rpms/p7zip/raw/master/f/14-Fix-g++-warning.patch'
-        'CVE-2016-9296.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/CVE-2016-9296.patch?h=packages/p7zip'
-        'CVE-2017-17969.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/CVE-2017-17969.patch?h=packages/p7zip'
-        'CVE-2018-5996.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/CVE-2018-5996.patch?h=packages/p7zip'
-        'CVE-2018-10115.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/CVE-2018-10115.patch?h=packages/p7zip'
+        'CVE-2016-9296.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/CVE-2016-9296.patch?h=packages/p7zip&id=a82b67f5d36f374afd154e7648bb13ec38a3c497'
+        'CVE-2017-17969.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/CVE-2017-17969.patch?h=packages/p7zip&id=a82b67f5d36f374afd154e7648bb13ec38a3c497'
+        'CVE-2018-5996.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/CVE-2018-5996.patch?h=packages/p7zip&id=a82b67f5d36f374afd154e7648bb13ec38a3c497'
+        'CVE-2018-10115.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/CVE-2018-10115.patch?h=packages/p7zip&id=a82b67f5d36f374afd154e7648bb13ec38a3c497'
         'https://src.fedoraproject.org/rpms/p7zip/raw/master/f/gcc10-conversion.patch'
         '7zFM.desktop')
 sha256sums=('5eb20ac0e2944f6cb9c2d51dd6c4518941c185347d4089ea89087ffdd6e2341f'

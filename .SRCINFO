@@ -15,10 +15,10 @@ pkgbase = p7zip-gui
 	optdepends = kservice: entries in kde context menu
 	source = https://downloads.sourceforge.net/project/p7zip/p7zip/16.02/p7zip_16.02_src_all.tar.bz2
 	source = https://src.fedoraproject.org/rpms/p7zip/raw/master/f/14-Fix-g++-warning.patch
-	source = CVE-2016-9296.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/CVE-2016-9296.patch?h=packages/p7zip
-	source = CVE-2017-17969.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/CVE-2017-17969.patch?h=packages/p7zip
-	source = CVE-2018-5996.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/CVE-2018-5996.patch?h=packages/p7zip
-	source = CVE-2018-10115.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/CVE-2018-10115.patch?h=packages/p7zip
+	source = CVE-2016-9296.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/CVE-2016-9296.patch?h=packages/p7zip&id=a82b67f5d36f374afd154e7648bb13ec38a3c497
+	source = CVE-2017-17969.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/CVE-2017-17969.patch?h=packages/p7zip&id=a82b67f5d36f374afd154e7648bb13ec38a3c497
+	source = CVE-2018-5996.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/CVE-2018-5996.patch?h=packages/p7zip&id=a82b67f5d36f374afd154e7648bb13ec38a3c497
+	source = CVE-2018-10115.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/CVE-2018-10115.patch?h=packages/p7zip&id=a82b67f5d36f374afd154e7648bb13ec38a3c497
 	source = https://src.fedoraproject.org/rpms/p7zip/raw/master/f/gcc10-conversion.patch
 	source = 7zFM.desktop
 	sha256sums = 5eb20ac0e2944f6cb9c2d51dd6c4518941c185347d4089ea89087ffdd6e2341f
