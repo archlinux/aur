@@ -3,7 +3,7 @@
 pkgname=('python-django-location-field' 'python2-django-location-field')
 pkgdesc="Let users pick locations using a map widget and store its latitude and longitude"
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 url="https://github.com/caioariede/django-location-field"
 license=('MIT')
 arch=('any')
