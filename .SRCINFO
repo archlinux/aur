@@ -1,0 +1,15 @@
+pkgbase = julius
+	pkgdesc = A high-performance, two-pass large vocabulary continuous speech recognition decoder software
+	pkgver = 4.6
+	pkgrel = 2
+	url = http://julius.sourceforge.jp/
+	arch = x86_64
+	license = custom
+	depends = libpulse
+	depends = sdl2
+	depends = perl
+	optdepends = voxforge-am-julius: acoustic models
+	source = julius-4.6.tar.gz::https://github.com/julius-speech/julius/archive/v4.6.tar.gz
+	sha512sums = 431aa3693f7fa3cbc8e9aa429c3e2011d1dde8db9510f14e81516061c8348cdf0f48bf585c0feeb12ad7aceb25d270fb6890131e746fb1a6f7cc0d8514bd30e4
+
+pkgname = julius
