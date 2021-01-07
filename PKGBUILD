@@ -2,11 +2,11 @@
 
 pkgname=python-jupytext
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Jupyter notebooks as Markdown documents, Julia, Python or R scripts"
 url="https://github.com/mwouts/jupytext"
 depends=('jupyter-notebook' 'python-pyaml' 'python-mock' 'python-testfixtures')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-jupyter_packaging')
 license=('MIT')
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")

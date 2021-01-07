@@ -1,11 +1,12 @@
 pkgbase = python-jupytext
 	pkgdesc = Jupyter notebooks as Markdown documents, Julia, Python or R scripts
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mwouts/jupytext
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-jupyter_packaging
 	depends = jupyter-notebook
 	depends = python-pyaml
 	depends = python-mock
