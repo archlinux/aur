@@ -19,7 +19,7 @@ source=('https://dl.google.com/android/repository/emulator-linux-7033400.zip'
 sha1sums=('3cec9833ab787ed496f727a9e152332ef2b4b00c'
           '80c9b3ffc8865b5f8e55b1ffed36c08ee7a9d8ad'
           'e1485ef14463f275005cae43a0a1e43ce52354ca'
-          '234fb42a5bcd6f09ca641bad1648d4919e4a5e1c')
+          'd5f08151ac1b6a56d342212c9bc69ff9ee9d75e0')
 
 package() {
   install -Dm755 "${pkgname}.sh" "${pkgdir}/etc/profile.d/${pkgname}.sh"
