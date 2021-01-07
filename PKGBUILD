@@ -2,7 +2,7 @@
 
 _plug=tivtc
 pkgname=avisynth-plugin-${_plug}-git
-pkgver=v1.0.25.8.g94eb799
+pkgver=v1.0.25.11.gaf18f2c
 pkgrel=1
 pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -37,15 +37,15 @@ build() {
 
   make
 
-#   cd ..
-#   g++ -fpic ${CXXLAGS} ${CPPFLAGS} -o RetreiveRanges "${_plug}/Retreive Ranges/RetrieveRanges.cpp"
+  cd ..
+  make -C "${srcdir}/${_plug}/RetrieveRanges"
 }
 
 package(){
   make -C build DESTDIR="${pkgdir}" install
 
-#   install -Dm755 RetreiveRanges "${pkgdir}/usr/bin/RetreiveRanges"
-#   install -Dm644 "${_plug}/Retreive Ranges/RetrieveRanges-ReadMe.txt" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/RetrieveRanges-ReadMe.txt"
+  install -Dm755 "${_plug}/RetrieveRanges/RetrieveRanges" "${pkgdir}/usr/bin/RetrieveRanges"
+  install -Dm644 "${_plug}/RetrieveRanges/RetrieveRanges-ReadMe.txt" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/RetrieveRanges-ReadMe.txt"
 
   install -Dm644 "${_plug}/Doc_TDeint/tdeint.htm" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/TDeint/tdeint.htm"
 
