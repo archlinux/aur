@@ -23,7 +23,7 @@ index 1a9f277..72c8a09 100644
  install(
    FILES README.md
 -  DESTINATION .
-+  DESTINATION $ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_DATADIR}/doc/avistnth/plugins/turnstile
++  DESTINATION $ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_DATADIR}/doc/avisynth/plugins/turnstile
    RENAME ${TURNSTILE_OUTPUT_NAME}.txt
  )
  
@@ -32,6 +32,6 @@ index 1a9f277..72c8a09 100644
      file(
        INSTALL ${CMAKE_SOURCE_DIR}/extras
 -      DESTINATION ${TURNSTILE_CPACK_TEMP_DIR})
-+      DESTINATION $ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_DATADIR}/doc/avistnth/plugins/turnstile)
++      DESTINATION $ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_DATADIR}/doc/avisynth/plugins/turnstile)
    "
  )
