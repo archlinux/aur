@@ -1,0 +1,17 @@
+pkgbase = pacgtk-git
+	pkgdesc = GUI wrapper for pacman
+	pkgver = v2.0.1.r0.3bdbc94
+	pkgrel = 1
+	url = https://git.kocotian.pl/pacboy
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = yad
+	depends = pacman-contrib
+	provides = pacgtk
+	conflicts = pacgtk
+	source = git+git://git.kocotian.pl/pacgtk.git
+	md5sums = SKIP
+
+pkgname = pacgtk-git
+
