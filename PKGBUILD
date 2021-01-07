@@ -2,7 +2,7 @@
 
 pkgname=emuflight-configurator
 _realname=EmuConfigurator
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="Crossplatform configuration tool for the Emuflight flight control system"
 arch=('x86_64')
