@@ -1,0 +1,13 @@
+pkgbase = blflash
+	pkgdesc = BL602 serial flasher
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/spacemeowx2/blflash
+	arch = x86_64
+	license = MIT
+	depends = cargo
+	source = blflash-0.3.0.tar.gz::https://github.com/spacemeowx2/blflash/archive/v0.3.0.tar.gz
+	sha256sums = f84302d754811ae5d33ae0765307dbe4cccf6d30dc9623b0714303911f259814
+
+pkgname = blflash
+
