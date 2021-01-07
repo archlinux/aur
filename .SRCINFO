@@ -1,11 +1,13 @@
 pkgbase = mtsieve
 	pkgdesc = Library for sieving various types of numbers
 	pkgver = 2.1.3r85
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/mtsieve/
 	arch = x86_64
 	license = GPL
 	depends = gmp
+	depends = ocl-icd
+	depends = opencl-driver
 	source = https://github.com/Dylan1496/mtsieve-source/raw/main/mtsieve-2.1.3-r85-trunk.zip
 	sha256sums = c3ec778ebd618c941bc2fa6479e16133c47d3fc41b44475acbdf1115313e9d35
 
