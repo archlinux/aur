@@ -7,7 +7,7 @@
 
 pkgname=r5u87-webcam-drivers
 pkgver=0.2.2
-pkgrel=3
+pkgrel=4
 _alias=r5u87x
 pkgdesc='Userspace modules for Ricoh R5U870 OEM cameras, improved packages and compatibility'
 arch=('i686' 'x86_64')
@@ -16,33 +16,41 @@ license=('GPL2')
 depends=('glib2' 'libusb-compat' 'lib32-libusb-compat')
 optdepends=('guile: script for extracting firmware from Windows driver')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('d87dc965f6fcb2a1c849ff309d8bc4e4669b9b37d73ba875af35f580c5e32036')
+b2sums=('77964f77fc7c01a31f7768aa63203f5eb3e961533fe808418dba03c20ef07367caf12927974b1db74b6accbd56070adecbe372abc151b7e8c57af5c52b121638')
 
 prepare() {
 	mv "${srcdir}/${pkgver}.tar.gz" "${srcdir}/${_alias}.tar.gz"
 	cd ${srcdir}/${_alias}
+
 	# fix udev rule
 	sed -i 's| --reload||' contrib/90-r5u87x-loader.rules.in
 }
 
 build() {
 	cd ${srcdir}/${_alias}
+
 	# set UCODE_PATH because we don't install to default location
 	make UCODE_PATH=/usr/lib/firmware/r5u87x-%vid%-%pid%.fw
 }
 
 package() {
 	cd ${srcdir}/${_alias}
+
 	mkdir -p "${pkgdir}/usr/bin"
 	mkdir -p "${pkgdir}/usr/lib/r5u87x/ucode"
 	mkdir -p "${pkgdir}/usr/lib32/r5u87x/ucode"
-	install "${srcdir}/${_alias}/ricoh-webcam-loader" ${pkgdir}/usr/bin
-	make DESTDIR="${pkgdir}" \
+	
+    install "${srcdir}/${_alias}/ricoh-webcam-loader" ${pkgdir}/usr/bin
+	
+    make DESTDIR="${pkgdir}" \
 		sbindir="/bin" \
 		firmdir="/lib/ucode" \
 		UDEV_INSTALL="/usr/lib/udev/rules.d" \
         install
-	install recode-fw.scm ${pkgdir}/usr/bin
+	
+    install recode-fw.scm ${pkgdir}/usr/bin
 	cp -r "${pkgdir}/usr/lib/ucode" "${pkgdir}/usr/lib/r5u87x/"
 	cp -r "${pkgdir}/usr/lib/ucode" "${pkgdir}/usr/lib32/r5u87x/"
+    
+    install=post.install
 }
