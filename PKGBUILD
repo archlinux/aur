@@ -1,4 +1,4 @@
-# Maintainer:	Kostas Kardaras <firstname dot lastname at gmail>
+# Maintainer:	Batuhan Baserdem <lastname dot firstname at gmail>
 
 name='survey'
 pkgname="python-${name}"
@@ -14,7 +14,6 @@ makedepends=('python-setuptools')
 depends=(
     'python>=3.5'
     'python-wrapio>=0.3.5')
-changelog=CHANGELOG.md
 md5sums=('9e1fd33c111098b07744cd531d955a41')
 
 build() {
