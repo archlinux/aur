@@ -15,9 +15,7 @@ pkgdesc='A light-weight and open-source CLI Dropbox client.'
 arch=('x86_64')
 url="https://github.com/SamSchott/${pkgname}"
 license=('MIT')
-source=("${url}/archive/v${pkgver}.tar.gz"
-        "maestral@.service"
-        "maestral.patch")
+source=("${url}/archive/v${pkgver}.tar.gz" "maestral@.service")
 makedepends=('python-setuptools')
 depends=(
     'python>=3.9'
@@ -39,12 +37,10 @@ depends=(
     'python-systemd')
 optdepends=('maestral-qt: Qt interface for the maestral daemon')
 md5sums=('8ef48fc9f9ba853b3253b8962cc18cde'
-         '25d1041b158c1b1ea42d7290c9c0f91d'
-         '1f2d6018e313cc133cae4f799d5242be')
+         '25d1041b158c1b1ea42d7290c9c0f91d')
 
 prepare() {
-    cd "${pkgname}-${pkgver}"
-    patch --strip=1 --input="${srcdir}/maestral.patch"
+    sed -i 's|watchdog>=0\.10\.0,<=0\.10\.3|watchdog>=0.10.0|' "${pkgname}-${pkgver}/setup.py"
 }
 
 build() {

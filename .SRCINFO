@@ -34,10 +34,8 @@ pkgbase = maestral
 	conflicts = maestral-git
 	source = https://github.com/SamSchott/maestral/archive/v1.3.1.tar.gz
 	source = maestral@.service
-	source = maestral.patch
 	md5sums = 8ef48fc9f9ba853b3253b8962cc18cde
 	md5sums = 25d1041b158c1b1ea42d7290c9c0f91d
-	md5sums = 1f2d6018e313cc133cae4f799d5242be
 
 pkgname = maestral
 
