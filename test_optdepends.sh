@@ -32,6 +32,11 @@ if [ -f "/usr/lib/libfftw3_mpi.so" ]; then
 	CONFOPTS="${CONFOPTS} --with-fftw=1"
 fi
 
+# Add triangle support
+if [ -f "/usr/lib/libtriangle.so" ]; then
+	CONFOPTS="${CONFOPTS} --with-triangle=1"
+fi
+
 # Add hdf5 support
 if [[ "$(h5stat -V)" ]]; then
 	CONFOPTS="${CONFOPTS} --with-hdf5=1"
@@ -74,6 +79,12 @@ if [ -d "${SUPERLU_DIR}" ]; then
 	CONFOPTS="${CONFOPTS} --with-superlu=1 --with-superlu-lib=-lsuperlu --with-superlu-include=${SUPERLU_DIR}"
 fi
 
+# Add superlu_dist support
+SUPERLU_DIST_DIR="/usr/include/superlu_dist"
+if [ -d "${SUPERLU_DIST_DIR}" ]; then
+	CONFOPTS="${CONFOPTS} --with-superlu_dist=1 --with-superlu_dist-lib=-lsuperlu_dist --with-superlu_dist-include=${SUPERLU_DIST_DIR}"
+fi
+
 # Add pastix support
 PASTIX_CONF=$(which pastix-conf)
 if [ -f "${PASTIX_CONF}" ]; then
@@ -87,10 +98,10 @@ if [ -f "${PASTIX_CONF}" ]; then
 fi
 
 # Add trilinos support
-if [ -f "/usr/lib/libml.so" ]; then
-	CONFOPTS="${CONFOPTS} --with-ml=1"
-	# Add boost support (may be useful for trilinos)
-	CONFOPTS="${CONFOPTS} --with-boost=1"
-fi
+#if [ -f "/usr/lib/libml.so" ]; then
+#	CONFOPTS="${CONFOPTS} --with-ml=1"
+#	# Add boost support (may be useful for trilinos)
+#	CONFOPTS="${CONFOPTS} --with-boost=1"
+#fi
 
 echo "${CONFOPTS}"

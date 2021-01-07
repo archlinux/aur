@@ -1,5 +1,5 @@
-# Maintainer: Sigvald Marholm <marholm@marebakken.com>
-
+# Maintainer: Jingbei Li <i@jingbei.li>
+# Contributor: Sigvald Marholm <marholm@marebakken.com>
 # Adapted from the package petsc with the following original contributors:
 # Contributor: Martin Diehl <https://martin-diehl.net>
 # Contributor: Andreas Bilke <abilke at cosy dot sbg dot ac dot at>
@@ -8,38 +8,47 @@
 
 pkgname=petsc-complex
 _pkgname=petsc
-pkgver=3.12.4
+pkgver=3.14.2
 pkgrel=1
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
 #_config=linux-c-debug
 pkgdesc="Portable, extensible toolkit for scientific computation (complex scalars)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.mcs.anl.gov/petsc/"
 license=('BSD')
 options=(staticlibs)
 conflicts=('petsc')
-provides=('petsc=3.12.4')
-depends=('python' 'openmpi' 'boost' 'lapack')
-makedepends=('gcc' 'gcc-fortran' 'cmake')
-optdepends=('trilinos: support for trilinos'
-  'ptscotch: support for ptscotch parallel graph partitioning library'
-  'parmetis: support for parmetis parallel graph partitioning library'
-  'metis: support for metis graph partitioning library'
-  'pastix: support for the pastix solver'
-  'superlu: support for the superlu sparse solver'
-  'hypre: support for the hypre sparse system solver'
-  'hdf5: support for the parallel version of hdf5'
-  'mumps: support for the mumps sparse solver'
-  'fftw: support for the fftw fast Fourier transform'
-  'suitesparse: support for the suitesparse sparse matrix libraries'
-  )
+provides=('petsc')
+depends=(
+  'boost'
+  'tcsh'
+  'fftw'
+  'hdf5-openmpi'
+  'hypre'
+  'lapack'
+  'openmpi'
+  'python'
+  'suitesparse'
+)
+_depends=(
+  'metis'
+  'mumps'
+  'parmetis'
+  'pastix'
+  'scotch'
+  'superlu'
+  'superlu_dist'
+  'triangle'
+)
+makedepends=(${_depends[@]} 'cmake' 'gcc-fortran')
+optdepends=(${_depends[@]} 'trilinos')
 install=petsc.install
 source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${_pkgname}-lite-${pkgver/_/-}.tar.gz
         test_optdepends.sh)
-sha256sums=('800a965dd01adac099a186588cda68e4fcb224af326d8aaf55978361c019258f'
-            'f127806175b681f4e9cb64aeba4f3fabd9eb92ef945f5542677b255cb3d85913')
+sha256sums=('87a04fd05cac20a2ec47094b7d18b96e0651257d8c768ced2ef7db270ecfb9cb'
+            '902f8d222706868184cfeff94b1c26a781fd9553a43a66deac7cc1317de82a86')
 
 _install_dir=/opt/petsc/${_config}
 _petsc_arch="arch-${_config}"
@@ -52,7 +61,9 @@ build() {
   unset PETSC_ARCH
   export PETSC_DIR=${_build_dir}
 
-  CONFOPTS="--with-shared-libraries=1 --COPTFLAGS=-O3 --CXXOPTFLAGS=-O3 --FOPTFLAGS=-O3 --with-scalar-type=complex"
+  CONFOPTS="--with-shared-libraries=1 --COPTFLAGS=-O3 --CXXOPTFLAGS=-O3 --FOPTFLAGS=-O3 \
+            --with-cc=$(which mpicc) --with-cxx=$(which mpicxx) --with-fc=$(which mpifort) \
+            --with-scalar-type=complex"
   CONFOPTS="${CONFOPTS} $(sh ${srcdir}/test_optdepends.sh)"
 
   echo ${CONFOPTS}
@@ -68,7 +79,7 @@ check() {
   _build_dir="${srcdir}/${_pkgname}-${pkgver/_/-}"
   cd ${_build_dir}
 
-  make test
+  make check
 }
 
 package() {
