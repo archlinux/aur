@@ -1,6 +1,6 @@
 pkgbase = linux-clear
 	pkgdesc = Clear Linux
-	pkgver = 5.9.16
+	pkgver = 5.10.5
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
@@ -12,24 +12,22 @@ pkgbase = linux-clear
 	makedepends = libelf
 	makedepends = xmlto
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.9.tar.xz
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.9.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.9.16.xz
-	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.9.15-1008
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.sign
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.10.5.xz
+	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.10.5-1012
 	source = enable_additional_cpu_optimizations-20200615.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20200615.tar.gz
 	source = pci-enable-overrides-for-missing-acs-capabilities.patch
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-	source = nvidia-5.9-uvm-fix.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 3239a4ee1250bf2048be988cc8cb46c487b2c8a0de5b1b032d38394d5c6b1a06
+	sha256sums = dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43
 	sha256sums = SKIP
-	sha256sums = 46c520da2db82d8f9a15c2117d3a50e0faaaf98f05bd4ea1f3105e2724f207d6
+	sha256sums = 20a9a6742728677d0959197bc00cb9963ecffc6164d0e082364c11b9c9961349
 	sha256sums = SKIP
 	sha256sums = 278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90
 	sha256sums = 2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e
 	sha256sums = 261574aeee09864929d44a5f9896ad2645fe4539d9ee8a86575bd19a07eed865
-	sha256sums = 19dee9da3b2827493324c669cdead506e90fe4e967ec76937dc46f43ce81f5f7
 
 pkgname = linux-clear
 	pkgdesc = The Clear Linux kernel and modules

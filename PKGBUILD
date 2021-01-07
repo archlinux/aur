@@ -67,10 +67,10 @@ _use_current=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-_major=5.9
-_minor=16
+_major=5.10
+_minor=5
 _srcname=linux-${_major}
-_clr=${_major}.15-1008
+_clr=${_major}.5-1012
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -89,7 +89,6 @@ source=(
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   'pci-enable-overrides-for-missing-acs-capabilities.patch'
   '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch'
-  'nvidia-5.9-uvm-fix.patch'
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -352,14 +351,13 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('3239a4ee1250bf2048be988cc8cb46c487b2c8a0de5b1b032d38394d5c6b1a06'
+sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
-            '46c520da2db82d8f9a15c2117d3a50e0faaaf98f05bd4ea1f3105e2724f207d6'
+            '20a9a6742728677d0959197bc00cb9963ecffc6164d0e082364c11b9c9961349'
             'SKIP'
             '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
             '2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e'
-            '261574aeee09864929d44a5f9896ad2645fe4539d9ee8a86575bd19a07eed865'
-            '19dee9da3b2827493324c669cdead506e90fe4e967ec76937dc46f43ce81f5f7')
+            '261574aeee09864929d44a5f9896ad2645fe4539d9ee8a86575bd19a07eed865')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
