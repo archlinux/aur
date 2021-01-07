@@ -1,7 +1,6 @@
 #!/usr/bin/bash
 
 build() {
-    add_binary "awk"
     add_binary "file"
     add_binary "partprobe"
 
