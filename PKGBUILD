@@ -2,36 +2,29 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-mpv
-pkgver=0.0.4_6_g559ef4b
-_commit=559ef4b794bb52d577c69e8ed3fcce34e10cd3f0
+pkgver=0.2.2
 _vdrapi=2.4.6
-pkgrel=6
+pkgrel=1
 pkgdesc="mpv player plugin for VDR"
-url="http://projects.vdr-developer.org/projects/plg-mpv"
+url="https://github.com/ua0lnj/vdr-plugin-mpv"
 arch=('x86_64' 'i686')
 license=('AGPL3')
 depends=('mpv' "vdr-api=${_vdrapi}")
-makedepends=('git')
 _plugname=${pkgname//vdr-/}
-source=("git://projects.vdr-developer.org/vdr-plugin-mpv.git#commit=$_commit"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ua0lnj/vdr-plugin-mpv/archive/v$pkgver.tar.gz"
         "50-${pkgname//vdr-/}.conf")
 backup=("etc/vdr/conf.avail/50-${pkgname//vdr-/}.conf")
-md5sums=('SKIP'
-         'd1f90a5bc8d735b48764e12384324750')
-
-pkgver() {
-  cd "${srcdir}/vdr-plugin-${_plugname}"
-  git describe --tags | sed 's/-/_/g;s/v//'
-}
+sha256sums=('0699b51e40a7b60727ece2cb600874cfb6c26ce7a3eb4e0338dd6911b4e2be6f'
+            'e03891f550b215efa19cdb51e133434d99b416e91f0f6e7204ffaee70287633c')
 
 build() {
-  cd "${srcdir}/vdr-plugin-${_plugname}"
+  cd "${srcdir}/vdr-plugin-${_plugname}-$pkgver"
 
   make
 }
 
 package() {
-  cd "${srcdir}/vdr-plugin-${_plugname}"
+  cd "${srcdir}/vdr-plugin-${_plugname}-$pkgver"
   make DESTDIR="$pkgdir" install
 
   install -Dm644 "$srcdir/50-$_plugname.conf" "$pkgdir/etc/vdr/conf.avail/50-$_plugname.conf"
