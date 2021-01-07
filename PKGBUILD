@@ -8,21 +8,21 @@
 
 
 ## Helpful internal stuff
-_commit=91cc1e19ef34aeb12888b697fefa52907f1a834d
+_commit=1f4fa17372bd196e87042738a16ab08bf904bcbf
 _major=2
 _minor=26
-_build=4206
+_build=4237
 _revision=102
 _mozcver=${_major}.${_minor}.${_build}.${_revision}
-_utdicdate=20201129
+_utdicdate=20201229
 _utdicrel=1
-_kendate=202011
-_jugyosyodate=202011
+_kendate=202012
+_jugyosyodate=202012
 _bldtype=Release
 
 pkgname='mozc-ut-common'
 pkgver=${_mozcver}.${_utdicdate}
-pkgrel=2
+pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input bundled with the UT dictionary'
 arch=('i686' 'x86_64')
 url='https://github.com/google/mozc'
@@ -32,13 +32,13 @@ makedepends=('clang' 'git' 'gtk2' 'ninja' 'pkgconf' 'python' 'python-six')
 conflicts=('mozc' 'mozc-ut' 'mozc-ut2' 'mozc-neologd-ut' 'mozc-neologd-ut+ut2' 'mozc-ut-unified' 'mozc-ut-united')
 provides=("mozc=${_mozcver}" "mozc-ut=${_mozcver}.${_utdicdate}")
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit}"
-        "https://osdn.net/downloads/users/26/26959/mozcdic-ut-${_utdicdate}.${_utdicrel}.tar.bz2"
+        "https://osdn.net/downloads/users/27/27013/mozcdic-ut-${_utdicdate}.${_utdicrel}.tar.bz2"
         "https://osdn.net/projects/ponsfoot-aur/storage/mozc/ken_all-${_kendate}.zip"
         "https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-${_jugyosyodate}.zip")
 sha256sums=('SKIP'
-            '0c4f5fa4733010843b7a61ea18a7bb474265525489dcdeb55b11e6e11b32a738'
-            '0c498cbefd2b0c3ef3442de0af4b3921525269988386560982f0b9d604e0b45c'
-            '8fb32436d778f904e2f7512b7958a0e3f395d28e72d7e2888c42411262cafe66')
+            'd8f82541bc05b0c822f793cfa756f394db5084108848047a8663c06639ed0b12'
+            'f6c15add56af8ded9a5e66c0f6643d79c2f36733a879543528b4313e4e1a1d14'
+            'c6eca7f6da19420ebc3e7d1b05bd15a838a1aa6c7bcf23e43ebd3c22a49cff1b')
 
 prepare() {
     cd ${pkgname}-git
