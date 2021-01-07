@@ -1,11 +1,12 @@
---- a/CMakeLists.txt	2015-08-24 19:50:08.000000000 +0300
-+++ b/CMakeLists.txt	2015-08-25 23:22:14.174394239 +0300
-@@ -37,7 +37,7 @@ if (CMAKE_VERSION VERSION_LESS 3.1.0)
+diff -ruN ASL-0.1.7-orig/CMakeLists.txt ASL-0.1.7/CMakeLists.txt
+--- ASL-0.1.7-orig/CMakeLists.txt	2017-08-07 17:47:37.522927767 +0300
++++ ASL-0.1.7/CMakeLists.txt	2017-08-07 17:47:58.382410158 +0300
+@@ -37,7 +37,7 @@
  	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpermissive -std=c++11")
  else()
  	set(CMAKE_CXX_STANDARD 11)
 -	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpermissive")
-+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpermissive -Wno-deprecated -Wno-deprecated-declarations")
++	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpermissive -Wno-deprecated -Wno-deprecated-declarations -Wno-ignored-attributes")
  endif()
  
  # Enable supplied cmake includes and modules

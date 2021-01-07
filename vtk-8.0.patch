@@ -1,0 +1,29 @@
+diff -ruN ASL-0.1.7-orig/CMakeLists.txt ASL-0.1.7/CMakeLists.txt
+--- ASL-0.1.7-orig/CMakeLists.txt	2017-09-27 16:59:25.073568503 +0300
++++ ASL-0.1.7/CMakeLists.txt	2017-09-27 17:00:07.945853532 +0300
+@@ -1,6 +1,6 @@
+ #
+ # Advanced Simulation Library <http://asl.org.il>
+-# 
++#
+ # Copyright 2015 Avtech Scientific <http://avtechscientific.com>
+ #
+ #
+@@ -55,7 +55,7 @@
+ # ToDo: remove support for VTK 6.1 at some point in future
+ find_package(VTK 6.1 QUIET COMPONENTS vtkRenderingCore vtkImagingCore vtkFiltersCore vtkIOCore vtkIOGeometry vtkIOLegacy vtkIOXML vtkIOMINC vtkCommonCore vtkViewsCore vtkftgl vtksys vtkDICOMParser vtkexpat vtkzlib NO_MODULE)
+ if(NOT VTK_FOUND)
+-	find_package(VTK 7.0 REQUIRED COMPONENTS vtkRenderingCore vtkImagingCore vtkFiltersCore vtkIOCore vtkIOGeometry vtkIOLegacy vtkIOXML vtkIOMINC vtkCommonCore vtkViewsCore vtksys vtkDICOMParser vtkexpat vtkzlib NO_MODULE)
++	find_package(VTK 8.0 REQUIRED COMPONENTS vtkRenderingCore vtkImagingCore vtkFiltersCore vtkIOCore vtkIOGeometry vtkIOLegacy vtkIOXML vtkIOMINC vtkCommonCore vtkViewsCore vtksys vtkDICOMParser vtkexpat vtkzlib NO_MODULE)
+ endif()
+ include(${VTK_USE_FILE})
+ 
+@@ -120,7 +120,7 @@
+ 
+ # ASL conforms to Semantic Versioning scheme <http://semver.org/>
+ # Switch to COMPATIBILITY SameMajorVersion on ASL_VERSION 1.0.0
+-# Till then use COMPATIBILITY ExactVersion 
++# Till then use COMPATIBILITY ExactVersion
+ write_basic_package_version_file(
+ 	"${CMAKE_CURRENT_BINARY_DIR}/ASLConfigVersion.cmake"
+ 	VERSION ${ASL_VERSION}
