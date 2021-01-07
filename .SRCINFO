@@ -1,0 +1,17 @@
+pkgbase = avisynth-plugin-yadifmod2-git
+	pkgdesc = Plugin for Avisynth: yadifmod2 (GIT version)
+	pkgver = 0.2.6.5.ga3472ef
+	pkgrel = 1
+	url = https://github.com/Asd-g/yadifmod2
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = avisynthplus
+	provides = avisynth-plugin-yadifmod2
+	conflicts = avisynth-plugin-yadifmod2
+	source = yadifmod2::git+https://github.com/Asd-g/yadifmod2.git
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-yadifmod2-git
+
