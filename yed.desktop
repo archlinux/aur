@@ -5,4 +5,5 @@ Exec=yed %f
 StartupNotify=true
 StartupWMClass=com-yworks-A-yEd
 Name=yEd Graph Editor
+MimeType=application/x-graphml+xml;
 Categories=Application;Graphics;VectorGraphics;Java;
