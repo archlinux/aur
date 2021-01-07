@@ -1,6 +1,6 @@
 # Maintainer: Beej Jorgensen <beej@beej.us>
 pkgname=phyghtmap
-pkgver=2.21
+pkgver=2.22
 pkgrel=1
 pkgdesc="Generate OSM contour lines from NASA SRTM data"
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("http://katze.tfiu.de/projects/phyghtmap/phyghtmap_${pkgver}.orig.tar.gz")
-sha256sums=('e88a2df3db1bec224f8df1ea5d45bec03ab8d914c734a89ec8cc7666b0c6ba21')
+sha256sums=('d08ad6a423c1fa8b1cd5314a5c4cb4862d810b9a35a0ff8ed44dd401fe2d76fe')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
