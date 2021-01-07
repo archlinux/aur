@@ -1,12 +1,11 @@
 pkgbase = onivim2
 	pkgdesc = Native, lightweight modal code editor
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 0.5.2
+	pkgrel = 1
 	url = https://github.com/onivim/oni2
 	install = onivim2.install
 	arch = any
 	license = custom:OutrunLabsEULA
-	makedepends = git
 	makedepends = esy
 	makedepends = ragel
 	makedepends = nodejs
@@ -35,9 +34,9 @@ pkgbase = onivim2
 	makedepends = clang
 	makedepends = node-gyp
 	options = !strip
-	source = onivim2::git+https://github.com/onivim/oni2.git#commit=c6b7772e18696ac033a4ec3d0e19e6fa4e0249b5
+	source = https://github.com/onivim/oni2/archive/v0.5.2/onivim2-0.5.2.tar.gz
 	source = onivim2.install
-	b2sums = SKIP
+	b2sums = 731bf7710c0427f48db3609a55e21ab5060caae8ce6109ba94e12193de153854a40318c72d021753fdd6adde8f879504d89a886e3210cecbdc3eff15522b39b8
 	b2sums = d6e0ad8b9755f1e809d5ffc0a23a5f53455468cfed80a2946f9a1901cc3b31b79250b1b418f6cfffe6f14a521f0eaef3370f06e1babeafb84358e7906becbc44
 
 pkgname = onivim2
