@@ -13,7 +13,7 @@ arch=('x86_64')
 url="https://curl.haxx.se"
 license=('MIT')
 depends=('ca-certificates' 'krb5' 'libssh2' 'libssh2.so' 'openssl' 'zlib'
-         'libpsl' 'libpsl.so' 'libnghttp2' 'libidn2' 'libidn2.so' 'zstd')
+         'libpsl' 'libpsl.so' 'libnghttp2' 'libidn2' 'zstd')
 provides=('libcurl.so' curl)
 conflicts=(curl)
 source=("git+https://github.com/curl/curl")

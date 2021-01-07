@@ -15,7 +15,6 @@ pkgbase = curl-git
 	depends = libpsl.so
 	depends = libnghttp2
 	depends = libidn2
-	depends = libidn2.so
 	depends = zstd
 	provides = libcurl.so
 	provides = curl
