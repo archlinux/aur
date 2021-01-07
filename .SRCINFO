@@ -1,7 +1,7 @@
 pkgbase = mupen64plus-qt
 	pkgdesc = A customizable launcher for Mupen64Plus
 	pkgver = 1.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dh4/mupen64plus-qt
 	install = mupen64plus-qt.install
 	arch = i686
@@ -11,7 +11,9 @@ pkgbase = mupen64plus-qt
 	depends = mupen64plus
 	depends = hicolor-icon-theme
 	source = mupen64plus-qt-1.14.tar.gz::https://github.com/dh4/mupen64plus-qt/archive/1.14.tar.gz
+	source = quazip-fix.patch
 	sha256sums = 467f4e5b75a0f63f23b1c8266746b3e7932b9dc4ee950c42b2bfaf9660e64614
+	sha256sums = c4db13e2620d5d16f5c58b5884f1275c225bc8f90720f980cdc2fb1f2d7677f6
 
 pkgname = mupen64plus-qt
 

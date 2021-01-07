@@ -1,0 +1,40 @@
+diff -ur old/mupen64plus-qt.pro mupen64plus-qt-1.14/mupen64plus-qt.pro
+--- old/mupen64plus-qt.pro	2020-02-19 22:33:40.000000000 -0500
++++ mupen64plus-qt-1.14/mupen64plus-qt.pro	2021-01-07 14:18:09.915059630 -0500
+@@ -86,7 +86,7 @@
+                 LIBS += -lquazip5
+             }
+         } else {
+-            LIBS += -lquazip5
++            LIBS += -lquazip1-qt5
+         }
+     }
+ }
+diff -ur old/src/common.cpp mupen64plus-qt-1.14/src/common.cpp
+--- old/src/common.cpp	2020-02-19 22:33:40.000000000 -0500
++++ mupen64plus-qt-1.14/src/common.cpp	2021-01-07 14:17:15.291242409 -0500
+@@ -40,8 +40,8 @@
+ #include <QLocale>
+ #include <QSize>
+ 
+-#include <quazip5/quazip.h>
+-#include <quazip5/quazipfile.h>
++#include <QuaZip-Qt5-1.1/quazip/quazip.h>
++#include <QuaZip-Qt5-1.1/quazip/quazipfile.h>
+ 
+ #ifdef Q_OS_WIN
+ #include <QCoreApplication>
+diff -ur old/src/emulation/emulatorhandler.cpp mupen64plus-qt-1.14/src/emulation/emulatorhandler.cpp
+--- old/src/emulation/emulatorhandler.cpp	2020-02-19 22:33:40.000000000 -0500
++++ mupen64plus-qt-1.14/src/emulation/emulatorhandler.cpp	2021-01-07 14:17:31.158049756 -0500
+@@ -38,8 +38,8 @@
+ #include <QFile>
+ #include <QMessageBox>
+ 
+-#include <quazip5/quazip.h>
+-#include <quazip5/quazipfile.h>
++#include <QuaZip-Qt5-1.1/quazip/quazip.h>
++#include <QuaZip-Qt5-1.1/quazip/quazipfile.h>
+ 
+ 
+ EmulatorHandler::EmulatorHandler(QWidget *parent) : QObject(parent)
