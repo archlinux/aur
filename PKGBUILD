@@ -6,7 +6,7 @@ url='https://github.com/mavlink/mavros'
 pkgname='ros-melodic-test-mavros'
 pkgver='1.5.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD, GPLv3, LGPLv3')
 
 ros_makedepends=(ros-melodic-mavros-extras
@@ -22,6 +22,7 @@ ros_makedepends=(ros-melodic-mavros-extras
   ros-melodic-cmake-modules)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
+  boost1.69
   eigen)
 
 ros_depends=(ros-melodic-mavros-extras
@@ -33,6 +34,7 @@ ros_depends=(ros-melodic-mavros-extras
   ros-melodic-geometry-msgs
   ros-melodic-control-toolbox)
 depends=(${ros_depends[@]}
+  boost1.69
   eigen)
 
 # Git version (e.g. for debugging)
@@ -64,7 +66,9 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DBOOST_ROOT=/opt/boost1.69 \
+	-DBoost_NO_SYSTEM_PATHS=TRUE
   make
 }
 
