@@ -1,0 +1,12 @@
+pkgbase = ttf-cairo
+	pkgdesc = Cairo is a contemporary Arabic and Latin typeface family.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://fonts.google.com/specimen/Cairo
+	arch = any
+	license = custom:OFL
+	source = Cairo.zip::https://fonts.google.com/download?family=Cairo
+	md5sums = 46be687189b62b8a41121720ceaa87e2
+
+pkgname = ttf-cairo
+
