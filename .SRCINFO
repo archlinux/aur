@@ -1,6 +1,6 @@
 pkgbase = wownero-feather-git
         pkgdesc = a free Wownero desktop wallet
-        pkgver = 0.3.0.7228e4c69a
+        pkgver = 0.3.0.dd9daee498
         pkgrel = 1
         url = https://featherwallet.org
         arch = x86_64
