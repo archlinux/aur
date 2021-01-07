@@ -1,0 +1,6 @@
+pkg/
+src/
+python-milksnake-*.pkg.tar.xz
+python-milksnake-*.pkg.tar.zst
+milksnake-*.tar.gz
+milksnake-*.zip
