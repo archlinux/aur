@@ -1,19 +1,30 @@
 pkgbase = syncthing-git
-	pkgdesc = Open Source Continuous Replication / Cluster Synchronization Thing
-	pkgver = v1.6.0.rc.5.r26.gcf7532906
+	pkgver = 1.12.1.r41.ge6f0ed65b
 	pkgrel = 1
 	url = https://syncthing.net/
-	install = syncthing.install
-	arch = i686
 	arch = x86_64
-	license = MPLv2
+	license = MPL
 	makedepends = git
 	makedepends = go
 	makedepends = inetutils
-	provides = syncthing
-	conflicts = syncthing
 	source = git+https://github.com/syncthing/syncthing.git
+	source = https://raw.githubusercontent.com/archlinux/svntogit-community/packages/syncthing/trunk/syncthing-relaysrv.sysusers
+	source = https://raw.githubusercontent.com/archlinux/svntogit-community/packages/syncthing/trunk/syncthing-relaysrv.tmpfiles
+	source = https://raw.githubusercontent.com/archlinux/svntogit-community/packages/syncthing/trunk/syncthing-relaysrv.service
+	source = https://raw.githubusercontent.com/archlinux/svntogit-community/packages/syncthing/trunk/gcc-pie-segfaults-race.patch
 	sha256sums = SKIP
+	sha256sums = 6ab96a5949e223d315d49663734ad27b70c72469c691a61ac198cb7794cb5eaa
+	sha256sums = f899998985f2d374af57f17ef6362c37a305467858195b74d1c1def71d97273f
+	sha256sums = 7c2fbc9608d81f8080f8a9102b867a52a050b61f426a0c182ccc1cb5815e4981
+	sha256sums = 4e00b06544a900b206fc41b9250ab75ea51b8e1489b1eff042da4f08d8a84ab0
 
 pkgname = syncthing-git
+	pkgdesc = Open Source Continuous Replication / Cluster Synchronization Thing
+	provides = syncthing
+	conflicts = syncthing
+
+pkgname = syncthing-relaysrv-git
+	pkgdesc = Relay server for Syncthing
+	provides = syncthing-relaysrv
+	conflicts = syncthing-relaysrv
 
