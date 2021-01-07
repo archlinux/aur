@@ -1,13 +1,13 @@
 pkgbase = mysql-docs
 	pkgdesc = Set of HTML documentation for MySQL.
 	pkgver = 8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://dev.mysql.com/doc/
 	arch = any
 	license = GPL
 	options = docs
 	source = mysql-docs-8.0.tar.gz::http://downloads.mysql.com/docs/refman-8.0-en.html-chapter.tar.gz
-	sha256sums = SKIP
+	sha256sums = 4a8817d54231c503a60d0ca72d9dfbc9cad131d906ece2892b4e7d136f16bd7d
 
 pkgname = mysql-docs
 
