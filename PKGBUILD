@@ -1,10 +1,11 @@
 # Maintainer:	Batuhan Baserdem <lastname dot firstname at gmail>
 
-# AUR dependencies (*: I maintain)
-#*python-dbus-next
+# AUR dependencies (*: I maintain, +: I co-maintain)
+#+python-dbus-next
 # python-pyro5
 # python-sdnotify
 #*python-survey
+#*python-wrapio (as dependency for python-survey)
 pkgname='maestral'
 provides=('maestral')
 conflicts=('maestral-git')
@@ -18,7 +19,6 @@ source=("${url}/archive/v${pkgver}.tar.gz"
         "maestral@.service"
         "maestral.patch")
 makedepends=('python-setuptools')
-changelog=CHANGELOG.md
 depends=(
     'python>=3.9'
     'python-alembic>=1.3'
@@ -47,7 +47,7 @@ depends=(
 optdepends=('maestral-qt: Qt interface for the maestral daemon')
 md5sums=('8ef48fc9f9ba853b3253b8962cc18cde'
          '25d1041b158c1b1ea42d7290c9c0f91d'
-         '25fdcd795720c61d55f9eabb8c005797')
+         '1f2d6018e313cc133cae4f799d5242be')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
