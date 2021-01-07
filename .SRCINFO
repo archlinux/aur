@@ -1,0 +1,16 @@
+pkgbase = mmdvmcal-git
+	pkgdesc = The calibration program for the MMDVM
+	pkgver = r129.76a13a8
+	pkgrel = 1
+	url = https://github.com/g4klx/MMDVMCal
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = git
+	provides = mmdvmcal
+	conflicts = mmdvmcal
+	source = mmdvmcal::git+https://github.com/g4klx/MMDVMCal.git
+	md5sums = SKIP
+
+pkgname = mmdvmcal-git
+
