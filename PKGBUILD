@@ -1,25 +1,46 @@
-# Maintainer: David Birks <david@birks.dev>
+# Maintainer: sseneca <me at ssene dot ca>
 
 pkgname=kubeseal
-pkgver=0.12.5
+_pkgname=sealed-secrets
+pkgver=0.13.1
 pkgrel=1
-pkgdesc="A tool for one-way encrypted secrets in Kubernetes"
-arch=(x86_64)
+pkgdesc="A Kubernetes controller and tool for one-way encrypted Secrets"
+arch=('x86_64')
 url="https://github.com/bitnami-labs/sealed-secrets"
 license=('Apache')
 makedepends=('go')
-conflicts=('kubeseal-bin')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/bitnami-labs/sealed-secrets/archive/v$pkgver.tar.gz")
-sha512sums=('e55a8921208739358f89ba7f5fb6ce92a8b3806997496a01651020cc6fe346040434ec374ba010ce70779d613103fa98b704042503a060efeff7a39534fb06e5')
+depends=('glibc')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitnami-labs/${_pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('a766e8f1f662aa33507d7d02016d2eefcfb5ea383ed4d4e043070b823e6d1a5de2b89c8bd7f342688745cc0744ec7a867b7b64c0451f8847bb59ba0436588974')
+
+prepare() {
+  cd "${_pkgname}-${pkgver}"
+
+  mkdir -p build
+}
 
 build() {
-  # Trim path from binary
-  export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
+  cd "${_pkgname}-${pkgver}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -ldflags='-X=main.VERSION=v${pkgver}' -mod=readonly -modcacherw"
 
-  cd sealed-secrets-$pkgver
-  go build --ldflags "-X main.VERSION=$pkgver" ./cmd/kubeseal
+  go build -o build ./cmd/...
+}
+
+check() {
+  cd "${_pkgname}-${pkgver}"
+
+  go test ./...
 }
 
 package() {
-  install -Dm 755 "$srcdir/sealed-secrets-$pkgver/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  cd "${_pkgname}-${pkgver}"
+
+  install -Dm644 build/$pkgname "$pkgdir"/usr/bin/$pkgname
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
