@@ -1,15 +1,16 @@
 pkgbase = ipcalc-redhat
 	pkgdesc = Redhat's modernized ipcalc fork with IPv6 support
-	pkgver = 0.4.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://gitlab.com/ipcalc/ipcalc
 	arch = x86_64
 	license = GPL
 	makedepends = meson
+	makedepends = ruby-ronn
 	depends = glibc
 	conflicts = ipcalc
-	source = https://gitlab.com/ipcalc/ipcalc/-/archive/0.4.1/ipcalc-0.4.1.tar.gz
-	sha256sums = b68d795897f80fde4187aa9397abdd1cd651554e2327f6edb0406beefeb690ac
+	source = https://gitlab.com/ipcalc/ipcalc/-/archive/1.0.0/ipcalc-1.0.0.tar.gz
+	sha256sums = 4d945beec973930177156ee0dc696861317d7cbeaf65144df888ced7e7190fca
 
 pkgname = ipcalc-redhat
 

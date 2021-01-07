@@ -1,7 +1,7 @@
 # Maintainer: Conrad Hoffmann <ch@bitfehler.net>
 
 pkgname=ipcalc-redhat
-pkgver=0.4.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Redhat's modernized ipcalc fork with IPv6 support"
 arch=('x86_64')
@@ -9,9 +9,9 @@ url="https://gitlab.com/ipcalc/ipcalc"
 license=('GPL')
 conflicts=('ipcalc')
 depends=('glibc')
-makedepends=('meson')
+makedepends=('meson' 'ruby-ronn')
 source=("https://gitlab.com/ipcalc/ipcalc/-/archive/${pkgver}/ipcalc-${pkgver}.tar.gz")
-sha256sums=('b68d795897f80fde4187aa9397abdd1cd651554e2327f6edb0406beefeb690ac')
+sha256sums=('4d945beec973930177156ee0dc696861317d7cbeaf65144df888ced7e7190fca')
 
 build() {
   cd "$srcdir/ipcalc-$pkgver"
@@ -23,5 +23,5 @@ package() {
     cd "$srcdir/ipcalc-$pkgver"
     install -m755 -Dt "${pkgdir}/usr/bin/" build/ipcalc
     install -m644 -Dt "${pkgdir}/usr/share/licenses/ipcalc/" COPYING
-    install -m644 -Dt "${pkgdir}/usr/share/man/man1/" ipcalc.1
+    install -m644 -Dt "${pkgdir}/usr/share/man/man1/" build/ipcalc.1
 }
