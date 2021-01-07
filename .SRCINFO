@@ -1,7 +1,7 @@
 pkgbase = lib32-86box-nightly-bin
 	pkgdesc = x86 full-system emulator running via Wine
 	pkgver = 3.0.git
-	pkgrel = 1
+	pkgrel = 2
 	url = http://86box.net
 	arch = x86_64
 	license = GPL2
