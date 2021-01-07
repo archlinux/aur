@@ -49,6 +49,7 @@ package()
     done
     cd ..
     rm -r "__temp__"
+    rm -r "$pkgdir/sbin/logsave" "$pkgdir/usr/share/man/man8/logsave.8" 
     mv "$pkgdir/sbin" "$pkgdir/usr/bin"
 }
 
