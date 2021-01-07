@@ -1,3 +1,18 @@
+2021-01-07 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.0.2.4-1:
+    [!] Docker builds are now built by GitHub (previously Docker Hub), available also on ghcr.io (in addition to Docker Hub) and supporting multi-platform manifests. Because of unified manifest, -arm and -arm64 docker tags are no longer being deployed, as they're now included in the main tag. Fixed A.B.C.D-{arch} tags that were released in the past remain available for download. Check out our wiki for more info (#2096).
+    Added --no-config-watch command-line argument.
+    Added a workaround for IPC not starting in generic-netf variant running under mono.
+    ASF will now print Steam error text for failed trade offers, if available (#2116).
+    Fixed a possibility of ASF cache not getting invalidated properly, which could result in games being classified as temporarily unavailable to idle. ASF will invalidate existing (old) caches automatically, so there is no need from you to do anything.
+    Fixed a possibility of two farming processes to start at once.
+    Fixed a possible crash with invalid login/password input (#2109).
+    Fixed a possible crash with CompleteTypesToSend (#2099).
+    Fixed swagger usage with custom PathBase being used (#2091).
+    Small fixes related to Kestrel shutdown (#2087).
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
 2020-12-17 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.0.1.2-1:
     Added Steam Winter Sale 2020 to idling blacklist (#2086).
