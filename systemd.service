@@ -1,7 +1,6 @@
 [Unit]
 Description=lightspeed-webrtc Server
-Requires=lightspeed-ingest.service
-After=lightspeed-ingest.service
+After=network.target
 
 [Service]
 EnvironmentFile=/etc/conf.d/lightspeed-webrtc

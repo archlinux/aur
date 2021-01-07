@@ -1,13 +1,14 @@
 pkgbase = lightspeed-webrtc-git
 	pkgdesc = WebRTC server for the Lightspeed project
-	pkgver = r50.b70c71e
+	pkgver = r51.9bf3a28
 	pkgrel = 1
 	url = https://github.com/GRVYDEV/Lightspeed-webrtc
 	arch = x86_64
 	license = custom:MIT
 	makedepends = go
 	makedepends = git
-	depends = lightspeed-ingest
+	depends = glibc
+	optdepends = lightspeed-ingest: Server to handle the FTL handshake
 	optdepends = lightspeed-frontend: Frontend to Project Lightspeed
 	provides = lightspeed-webrtc
 	conflicts = lightspeed-webrtc
@@ -16,8 +17,8 @@ pkgbase = lightspeed-webrtc-git
 	source = systemd.service
 	source = service.env
 	sha512sums = SKIP
-	sha512sums = 9d1da80556bf1e427ef5c601ab0a16f3e293bf23559877f853773387c01e9f90e743c18d04b0b9dfa0a49da1f0472a7d59f217dde4ff62ae561ba215ecdd8a42
-	sha512sums = 3feff4b2ec022da6ab40539b79253bf515ffca478588ea93acd6ca16bd9a6256158e96e10459d81b09454d1ba2b80646c02f6861e55e2def15fae4bbab701cac
+	sha512sums = e4ed6c1bfcc4ec81b10d40df4a63a473967c2f24ce9d07a81989f604d9174a6f4f7ebd35729f016936b048fd65d544c3dd538a276fd701101f740a80854a3fae
+	sha512sums = 7bbd272cb47216d46f082cd4730c52a0ffd4c3f68964eede725d160383502b65bf8e13209122ebe3f56d668a596bd328872a230d990902822ec8574ba3c0fe05
 
 pkgname = lightspeed-webrtc-git
 

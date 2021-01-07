@@ -1,14 +1,15 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=lightspeed-webrtc-git
-pkgver=r50.b70c71e
+pkgver=r51.9bf3a28
 pkgrel=1
 pkgdesc="WebRTC server for the Lightspeed project"
 arch=(x86_64)
 url="https://github.com/GRVYDEV/Lightspeed-webrtc"
 license=("custom:MIT")
-depends=("lightspeed-ingest")
-optdepends=("lightspeed-frontend: Frontend to Project Lightspeed")
+depends=("glibc")
+optdepends=("lightspeed-ingest: Server to handle the FTL handshake"
+            "lightspeed-frontend: Frontend to Project Lightspeed")
 makedepends=("go" "git")
 provides=("lightspeed-webrtc")
 conflicts=("lightspeed-webrtc")
@@ -17,8 +18,8 @@ source=("${pkgname}::git+https://github.com/GRVYDEV/Lightspeed-webrtc.git"
         "systemd.service"
         "service.env")
 sha512sums=('SKIP'
-            '9d1da80556bf1e427ef5c601ab0a16f3e293bf23559877f853773387c01e9f90e743c18d04b0b9dfa0a49da1f0472a7d59f217dde4ff62ae561ba215ecdd8a42'
-            '3feff4b2ec022da6ab40539b79253bf515ffca478588ea93acd6ca16bd9a6256158e96e10459d81b09454d1ba2b80646c02f6861e55e2def15fae4bbab701cac')
+            'e4ed6c1bfcc4ec81b10d40df4a63a473967c2f24ce9d07a81989f604d9174a6f4f7ebd35729f016936b048fd65d544c3dd538a276fd701101f740a80854a3fae'
+            '7bbd272cb47216d46f082cd4730c52a0ffd4c3f68964eede725d160383502b65bf8e13209122ebe3f56d668a596bd328872a230d990902822ec8574ba3c0fe05')
 
 
 pkgver() {
