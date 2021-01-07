@@ -1,0 +1,37 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1a9f277..72c8a09 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -289,12 +289,12 @@ set(CPACK_SOURCE_IGNORE_FILES
+   "zip$"
+ )
+ 
+-set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/artifacts/install CACHE INTERNAL "")
++include(GNUInstallDirs)
+ 
+ install(
+   TARGETS TurnsTile
+-  RUNTIME DESTINATION .
+-  LIBRARY DESTINATION .
++  RUNTIME DESTINATION $ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/avisynth
++  LIBRARY DESTINATION $ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/avisynth
+   PERMISSIONS
+     OWNER_READ OWNER_WRITE OWNER_EXECUTE
+     GROUP_READ GROUP_EXECUTE
+@@ -313,7 +313,7 @@ endif()
+ 
+ install(
+   FILES README.md
+-  DESTINATION .
++  DESTINATION $ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_DATADIR}/doc/avistnth/plugins/turnstile
+   RENAME ${TURNSTILE_OUTPUT_NAME}.txt
+ )
+ 
+@@ -363,6 +363,6 @@ install(
+   CODE "
+     file(
+       INSTALL ${CMAKE_SOURCE_DIR}/extras
+-      DESTINATION ${TURNSTILE_CPACK_TEMP_DIR})
++      DESTINATION $ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_DATADIR}/doc/avistnth/plugins/turnstile)
+   "
+ )
