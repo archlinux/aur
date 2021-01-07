@@ -9,8 +9,8 @@ pkgdesc='Perl module providing GNU C library compatible strftime for loggers and
 arch=('any')
 url='[% url %]'
 license=('PerlArtistic' 'GPL')
-depends=('perl>=5.8.1')
-makedepends=('perl-module-build>=0.38')
+depends=('perl')
+makedepends=('perl-module-build-tiny>=0.035')
 source=([% source %])
 options=(!emptydirs)
 md5sums=('[% md5sums %]')
@@ -23,19 +23,19 @@ sanitize() {
 build() {
 	cd [% distdir %]
 	sanitize
-	perl Build.PL --installdirs vendor --destdir "$pkgdir"
-	perl Build
+	/usr/bin/perl Build.PL --installdirs vendor --destdir "$pkgdir"
+	/usr/bin/perl Build
 }
 
 check() {
 	cd [% distdir %]
 	sanitize
-	perl Build test
+	/usr/bin/perl Build test
 }
 
 package() {
 	cd [% distdir %]
 	sanitize
-	perl Build install
+	/usr/bin/perl Build install
 	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
