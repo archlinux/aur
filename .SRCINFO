@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-unite-git
 	pkgdesc = Unite makes GNOME Shell look like Ubuntu Unity Shell
-	pkgver = r755.4d77a58
+	pkgver = r756.b053fee
 	pkgrel = 1
 	url = https://github.com/hardpixel/unite-shell
 	arch = any
