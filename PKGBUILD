@@ -3,12 +3,12 @@
 _pkgname=exchangelib
 pkgname=python-exchangelib
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Client for Microsoft Exchange Web Services (EWS)"
 arch=(any)
 url="https://github.com/ecederstrand/exchangelib"
 license=('BSD')
-depends=('python' 'python-cached-property' 'python-cryptography' 'python-defusedxml' 'python-dnspython' 'python-isodate' 'python-lxml' 'python-requests-kerberos' 'python-requests-ntlm' 'python-requests-oauthlib' 'python-pytz' 'python-future' 'python-tzlocal')
+depends=('python-cached-property' 'python-cryptography' 'python-defusedxml' 'python-dnspython' 'python-isodate' 'python-lxml' 'python-requests-kerberos' 'python-requests-ntlm' 'python-requests-oauthlib' 'python-pytz' 'python-future' 'python-tzlocal')
 makedepends=('python-setuptools')
 checkdepends=('python-requests-mock')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
