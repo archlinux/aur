@@ -1,0 +1,3 @@
+post_install() {
+            echo "Please generate a snapper root config before using this script"
+}
