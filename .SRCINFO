@@ -1,6 +1,6 @@
-pkgbase = mc-malilib-116-fabric
-	pkgdesc = Library mod containing shared code for masas client-side mods.
-	pkgver = 0.10.0.dev.21.arne.2
+pkgbase = mc-tellme-112-liteloader
+	pkgdesc = An informational mod for Minecraft.
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://masa.dy.fi/mcmods/client_mods/
 	arch = any
@@ -9,4 +9,4 @@ pkgbase = mc-malilib-116-fabric
 	source = manifest.json::https://masa.dy.fi/api/games/mods/minecraft/latest/client/
 	sha1sums = SKIP
 
-pkgname = mc-malilib-116-fabric
+pkgname = mc-tellme-112-liteloader
