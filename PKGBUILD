@@ -5,8 +5,8 @@ pkgname=('python-pycalverter'
 	 'python2-pycalverter')
 pkgdesc="Python Calendar Converter"
 pkgver=1.6.1
-pkgrel=3
-url="https://bitbucket.org/bayazee/pycalverter/overview"
+pkgrel=4
+url="https://pypi.org/project/pyCalverter/"
 license=('GPLv2')
 arch=('any')
 source=("https://pypi.python.org/packages/source/p/pyCalverter/pyCalverter-${pkgver}.tar.gz")
