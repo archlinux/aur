@@ -1,0 +1,11 @@
+[Unit]
+Description=Logitech G15 Support Daemon
+Documentation=man:g15daemon(1)
+
+[Service]
+Type=forking
+PIDFile=/run/g15daemon.pid
+ExecStart=/usr/bin/g15daemon
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,20 @@
+pkgbase = g15daemon
+	pkgdesc = A daemon that makes it possible to use the G-Buttons and draw on the G15 LCD
+	pkgver = 1.9.5.3
+	pkgrel = 10
+	url = https://sourceforge.net/projects/g15daemon/
+	arch = x86_64
+	license = GPL
+	depends = libg15render>=1.2
+	source = https://downloads.sourceforge.net/g15daemon/g15daemon-1.9.5.3.tar.bz2
+	source = g15daemon.service
+	source = g15daemon-1.9.5.3-uinput.patch
+	source = g15daemon-1.9.5.3-config-write.patch
+	source = g15daemon-1.9.5.3-recv-oob-answer.patch
+	sha512sums = 3dfeee7e9c0db1014f20e4c489cd4f277a880dc9928d4a2d8ef7a1ceaadfc491f0ffaac8d2a38f07f883f96862d7441500be2415b326f1495c94f86ff467ae4b
+	sha512sums = 45867c1737cbca98c8a069b30b383404c39438d70179fbd53a91f09921205c9739826ea7868388216219a6b24e4dee6814714a6d162c10dfb4a663a4efa8145d
+	sha512sums = be9e8edf9c17c0dfe1d72ec011a4bce97972cb66f05b5fa1fe0839fefd194e1ace40429bd054e7e670064074c0b017b0c33237f7c6964de821bcd119cdd83b4b
+	sha512sums = 7d6250bc5e8e2c9a0a045ef15d4a0d747e21f7da3cc577cb4ffc8dd8d0baa47a9005276475524c2ca8cca6bb9155549dcb781780d8c76cdec2926923b4bb22d9
+	sha512sums = 1adb4486e4275b83bb06c6a912cc020cdc56c7c86822ad35ded823fe768d6bed3248081a62c071fd8268a86cb7240610732f9a87c7eb787ce9734c448eec583d
+
+pkgname = g15daemon
