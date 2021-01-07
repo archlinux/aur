@@ -7,7 +7,6 @@ pkgdesc="React frontend for the Lightspeed project"
 arch=(any)
 url="https://github.com/GRVYDEV/Lightspeed-react"
 license=("custom:MIT")
-depends=("lightspeed-webrtc")
 optdepends=("nginx: Web Server to host the static web app")
 makedepends=("npm" "git")
 provides=("lightspeed-react" "lightspeed-frontend")

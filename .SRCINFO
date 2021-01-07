@@ -7,7 +7,6 @@ pkgbase = lightspeed-react-git
 	license = custom:MIT
 	makedepends = npm
 	makedepends = git
-	depends = lightspeed-webrtc
 	optdepends = nginx: Web Server to host the static web app
 	provides = lightspeed-react
 	provides = lightspeed-frontend
