@@ -1,0 +1,17 @@
+pkgbase = avisynth-plugin-rgtools-git
+	pkgdesc = Plugin for Avisynth: rgtools (GIT version)
+	pkgver = 1.1.0.g1311d1c
+	pkgrel = 1
+	url = https://github.com/pinterf/RgTools
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = avisynthplus
+	provides = avisynth-plugin-rgtools
+	conflicts = avisynth-plugin-rgtools
+	source = rgtools::git+https://github.com/pinterf/RgTools.git
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-rgtools-git
+
