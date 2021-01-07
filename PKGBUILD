@@ -4,17 +4,17 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=('jed-snapshot' 'rgrep')
-_pkgver=0.99.20-144
+_pkgver=0.99.20-145
 pkgver=${_pkgver//-/.}
 _pkgname=${pkgname/-snapshot/}
-pkgrel=2
+pkgrel=1
 pkgdesc="A freely available text editor - Latest development version"
 arch=('i686' 'x86_64')
 url="http://www.jedsoft.org/snapshots/"
 license=('GPL')
 makedepends=('libxext' 'libxt')
 source=("http://www.jedsoft.org/snapshots/jed-pre${_pkgver}.tar.gz")
-sha256sums=('77ed328449c23fcfbb10cd82a1118c76c363a496f159a37c342423fb03ea3f34')
+sha256sums=('9c01ff1bb0e3e549d595307fa2fca98da3d2298d704efa2a5737d15c7eb9ea36')
 install="$pkgname.install"
 
 prepare() {
@@ -40,5 +40,6 @@ package_jed-snapshot() {
 }
 
 package_rgrep() {
+  depends=('slang')
   install -Dm755 ${_pkgname}-pre${_pkgver}/src/objs/rgrep "$pkgdir"/usr/bin/rgrep
 }
