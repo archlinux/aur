@@ -6,8 +6,8 @@ _module="$_name"
 pkgname=("python-$_module" "python2-$_module")
 pkgdesc="Python API to Mercurial using the command-line interface"
 pkgver=1.7.4
-pkgrel=2
-url="https://bitbucket.org/haard/hgapi"
+pkgrel=3
+url="https://github.com/haard/hgapi"
 license=('MIT')
 arch=('any')
 makedepends=("python-pbr>=1.9" "python2-pbr>=1.9")
