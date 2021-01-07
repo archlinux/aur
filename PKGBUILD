@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/Asd-g/RawSource_2.6x'
-license=('GPL')
+license=('custom')
 depends=('avisynthplus')
 makedepends=('git'
              'cmake'
@@ -39,5 +39,6 @@ build() {
 package(){
   install -Dm755 build/librawsourceplus.so "${pkgdir}/usr/lib/avisynth/librawsourceplus.so"
 
-#   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/README.md"
+  install -Dm644 "${_plug}/src/RawSourcePlus.html" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/RawSourcePlus.html"
+  install -Dm644 "${_plug}/src/readme.txt" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/readme.txt"
 }
