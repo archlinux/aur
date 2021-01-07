@@ -1,0 +1,19 @@
+pkgbase = meikade
+	pkgdesc = Meikade is a poetry application
+	pkgver = 4.2.2
+	pkgrel = 1
+	url = https://github.com/Aseman-Land/Meikade
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	source = meikade.desktop
+	source = https://github.com/Aseman-Land/Meikade/releases/download/4.2.2/Meikade-Linux-4.2.2.xz
+	source = git+https://github.com/Aseman-Land/QtAseman.git
+	source = https://raw.githubusercontent.com/Aseman-Land/Meikade/master/configurations/ios/icons/AppIcon40x40%402x.png
+	sha256sums = d404ae996967334f9813a043b2aa0a5aa7ac19b90c8a9f6ac0d05aaf32529bdf
+	sha256sums = bfd18aa478e76c2353562fd24822247b25b66b5b88a582af5554cbc9b60dfbcf
+	sha256sums = SKIP
+	sha256sums = ffcf1cb0edd57d1efa9ecb6029744a4c0182eccdefa2a37b17e7b81df5f3e93c
+
+pkgname = meikade
+

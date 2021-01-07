@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Meikade
+Icon=Meikade
+GenericName=Meikade is a poetry application.
+Exec=/usr/lib/meikade/Meikade
+Type=Application
+Categories=Poetry;
