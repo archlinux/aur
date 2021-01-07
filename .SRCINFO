@@ -1,0 +1,15 @@
+pkgbase = adnw-kbd-layouts
+	pkgdesc = Keymaps for the german keyboard layouts AdNW and KOY
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.adnw.de/
+	arch = any
+	license = unknown
+	noextract = koy.map.gz
+	source = http://www.adnw.de/uploads/Main/Downloads/koy.map.gz
+	source = http://www.adnw.de/uploads/Main/Downloads/adnw.tar.gz
+	sha256sums = 49323903103d47ef985fdce30f17b5b4ce139ec8a5b6e452f45bc9e27b80a1d9
+	sha256sums = 7524d704a2972077297b1f885c7f50f6a5d042763567bb26b1e7caeaecd3b0e8
+
+pkgname = adnw-kbd-layouts
+
