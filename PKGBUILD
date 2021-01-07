@@ -1,5 +1,5 @@
 pkgname=nextcloud-app-talk_matterbridge
-pkgver=1.18.3
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="Nextcloud Talk interface to matterbridge"
 arch=('any')
@@ -9,7 +9,7 @@ depends=('nextcloud-app-spreed')
 makedepends=()
 options=('!strip')
 source=("https://github.com/nextcloud/talk_matterbridge/releases/download/v$pkgver/talk_matterbridge.tar.gz")
-sha512sums=('8fb0ee3413a9d90bde3cc3def16b64cde7a8f1867e194338fb3a8295bd8f640afeed1cd71fd5d838b139bb8cf21a31a6be3c1056f1e7925bf4092cbd7566160f')
+sha512sums=('175dc7ef38f081a79efc118c67651542c123ad4f729482f8af3687a4ad16b1bc7fa2ea2d9008e951c316521f641ba0db693508ed116e46a56813a065496542d7')
 
 package() {
     install -d --owner=root --group=root $pkgdir/usr/share/webapps/nextcloud/apps/
