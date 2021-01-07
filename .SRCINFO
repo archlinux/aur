@@ -1,6 +1,6 @@
 pkgbase = python-pydsdl
 	pkgdesc = UAVCAN DSDL processing front end implemented in Python
-	pkgver = 1.9.4
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://uavcan.org
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = python-pydsdl
 	depends = python
 	depends = python-parsimonious
 	depends = python-six
-	source = python-pydsdl-1.9.4::https://github.com/UAVCAN/pydsdl/archive/1.9.4.tar.gz
-	sha256sums = 984c528a815c7bcc57d49a7f3bea49f4ed1dda0ffd425df114c4615b7d113d19
+	source = python-pydsdl-1.10.0::https://github.com/UAVCAN/pydsdl/archive/1.10.0.tar.gz
+	sha256sums = ae9d9dbb0fdfe821cb93af430e72f3630d35c74919076fb52659957dfbc4b9a0
 
 pkgname = python-pydsdl
 
