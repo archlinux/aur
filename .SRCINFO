@@ -1,0 +1,15 @@
+pkgbase = blflash-git
+	pkgdesc = BL602 serial flasher
+	pkgver = 0.3.0.0.gb0967e7
+	pkgrel = 1
+	url = https://github.com/spacemeowx2/blflash
+	arch = x86_64
+	license = MIT
+	depends = cargo
+	provides = blflash
+	conflicts = blflash
+	source = blflash-git::git+https://github.com/spacemeowx2/blflash
+	md5sums = SKIP
+
+pkgname = blflash-git
+
