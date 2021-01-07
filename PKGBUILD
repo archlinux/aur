@@ -6,7 +6,8 @@ pkgdesc='Gtk frontend for cchat.'
 arch=('any')
 url='https://github.com/diamondburned/cchat-gtk'
 license=('GPL3')
-depends=('gtk3' 'discordlogin-git' 'libhandy0' 'gspell')
+depends=('gtk3' 'libhandy0' 'gspell')
+optdepends=('discordlogin-git: Discord login support')
 provides=('cchat')
 conflicts=('cchat')
 # Maintainer: Nicholas George <vencorr@zoho.com>
