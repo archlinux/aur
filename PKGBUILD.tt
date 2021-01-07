@@ -9,7 +9,8 @@ pkgdesc='Building, finding and using GSL library'
 arch=('any')
 url='[% url %]'
 license=('PerlArtistic' 'GPL')
-makedepends=('perl-module-build>=0.38' 'perl-alien-base-modulebuild')
+makedepends=('perl-module-build>=0.38' 'perl-alien-base-modulebuild' 'perl-net-ssleay'
+	'perl-io-socket-ssl')
 depends=('perl-alien-build' 'gsl')
 source=([% source %])
 options=(!emptydirs)
