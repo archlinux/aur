@@ -1,9 +1,10 @@
-# Maintainer: KopfKrieg <archlinux [at] absolem [dot] cc>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: KopfKrieg <archlinux [at] absolem [dot] cc>
 
 pkgname=pacman-cleanup-hook
 pkgver=1.0
-pkgrel=7
-pkgdesc='Pacman hook to cleanup pacman cache, keeps only the latest cache and the currently installed package. No configuration necessary, just install it.'
+pkgrel=8
+pkgdesc='hook to cleanup pacman cache keeping only the installed version plus most recent cache'
 arch=('any')
 depends=('pacman-contrib')
 source=('cleanup.hook')
