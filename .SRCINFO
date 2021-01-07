@@ -1,7 +1,7 @@
 pkgbase = python-mbed-manifest-tool
 	pkgdesc = A tool for creating and parsing update manifests
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ARMmbed/manifest-tool
 	arch = any
 	license = Apache
@@ -14,7 +14,7 @@ pkgbase = python-mbed-manifest-tool
 	depends = python-pyasn1
 	depends = python-urllib3
 	depends = python-mbed-cloud-sdk
-	source = -2.1.0.tar.gz::https://github.com/ARMmbed/manifest-tool/archive/v2.1.0.tar.gz
+	source = python-mbed-manifest-tool-2.1.0.tar.gz::https://github.com/ARMmbed/manifest-tool/archive/v2.1.0.tar.gz
 	sha256sums = 90a9aabb349d1bb0bf6a3a9939faebdeaaefdd0753ef94c9ec6f22bc864c0dbe
 
 pkgname = python-mbed-manifest-tool
