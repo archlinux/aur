@@ -31,6 +31,7 @@ depends=(
   'openmpi'
   'python'
   'suitesparse'
+  'triangle'
 )
 _depends=(
   'metis'
@@ -40,7 +41,6 @@ _depends=(
   'scotch'
   'superlu'
   'superlu_dist'
-  'triangle'
 )
 makedepends=(${_depends[@]} 'cmake' 'gcc-fortran')
 optdepends=(${_depends[@]} 'trilinos')
@@ -90,10 +90,12 @@ package() {
   export PETSC_DIR=${_build_dir}
   make ${MAKEFLAGS} PETSC_DIR=${_build_dir} DESTDIR=${pkgdir} install
 
+  rm -rf ${pkgdir}/opt/petsc/linux-c-opt/lib/petsc/bin/__pycache__
+
   export PETSC_DIR=${_install_dir}
 
   # install licence (even though there is no such word as licenses)
-  install -Dm 644 ${_build_dir}/LICENSE ${pkgdir}/usr/share/licenses/$_pkgname/LICENSE
+  install -Dm 644 ${_build_dir}/LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
 
   mkdir -p ${pkgdir}/etc/profile.d
   echo "export PETSC_DIR=${_install_dir}" > ${pkgdir}/etc/profile.d/petsc.sh
