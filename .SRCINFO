@@ -1,6 +1,6 @@
 pkgbase = mc-litematica-116-fabric
 	pkgdesc = A new schematic mod written from scratch
-	pkgver = 0
+	pkgver = 0.0.0.dev.20210104.135541
 	pkgrel = 1
 	url = https://masa.dy.fi/mcmods/client_mods/
 	arch = any
