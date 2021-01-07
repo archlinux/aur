@@ -1,56 +1,53 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
-# Maintainer: Saren Arterius <saren at wtako dot com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Saren Arterius <saren at wtako dot com>
 # Contributor: Felix Yan
 
 pkgname=rclone-git
-pkgver=1.50.0.r83.g4537d9b5c
+pkgver=1.53.0.r296.gc553ad515
 pkgrel=1
 pkgdesc="Sync files to and from Google Drive, S3, Swift, Cloudfiles, Dropbox and Google Cloud Storage"
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
 url="http://rclone.org/"
 license=(MIT)
 depends=(glibc)
-makedepends=(git python pandoc go-pie)
+makedepends=(git python go)
 source=("git+https://github.com/rclone/rclone.git")
 conflicts=(rclone)
 provides=(rclone)
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname%-git}"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "${pkgname%-git}"
-
-  sed -i "1s/python$/&2/" bin/make_manual.py
-
-  mkdir -p .gopath/src/github.com/rclone
-  ln -sf "$PWD" .gopath/src/github.com/rclone/rclone
-  export GOPATH="$PWD/.gopath"
-
-  go get github.com/rclone/rclone
+  sed -i "1s/python$/&2/" bin/make_manual.py bin/make_backend_docs.py
 }
 
 build() {
-  cd "${pkgname%-git}/.gopath/src/github.com/rclone/rclone"
+  cd "${pkgname%-git}"
+  export GOPATH="$SRCDEST/go-modules"
 
-  PATH="$GOPATH/bin:$PATH" make TAG=v$pkgver rclone rclone.1 MANUAL.html MANUAL.txt
+  go build \
+    -gcflags "all=-trimpath=${PWD}" \
+    -asmflags "all=-trimpath=${PWD}" \
+    -ldflags "-extldflags ${LDFLAGS}"
 
   ./rclone genautocomplete bash rclone.bash_completion
   ./rclone genautocomplete zsh rclone.zsh_completion
 }
 
-check() {
-  cd "${pkgname%-git}/.gopath/src/github.com/rclone/rclone"
-  make TAG=v$pkgver test || warning "Tests failed"
-}
+#check() {
+#  cd "${pkgname%-git}"
+#  PATH=$PATH:"$SRCDEST/go-modules/bin" ; export PATH
+#  make test || warning "Tests failed"
+#}
 
 package() {
-  cd "${pkgname%-git}/.gopath/src/github.com/rclone/rclone"
-  make TAG=v$pkgver DESTDIR="$pkgdir" install
-
+  cd "${pkgname%-git}"
+  install -D rclone ${pkgdir}/usr/bin/rclone
   install -Dm644 rclone.bash_completion "$pkgdir"/usr/share/bash-completion/completions/rclone
   install -Dm644 rclone.zsh_completion "$pkgdir"/usr/share/zsh/site-functions/_rclone
 
