@@ -1,0 +1,17 @@
+pkgbase = avisynth-plugin-mvtools2-git
+	pkgdesc = Plugin for Avisynth: mvtools2 (GIT version)
+	pkgver = 2.7.44.27.g76c676e
+	pkgrel = 1
+	url = https://github.com/pinterf/mvtools
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = avisynthplus
+	provides = avisynth-plugin-mvtools2
+	conflicts = avisynth-plugin-mvtools2
+	source = mvtools2::git+https://github.com/pinterf/mvtools.git
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-mvtools2-git
+
