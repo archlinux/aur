@@ -1,0 +1,41 @@
+pkgbase = python-pytorch_sparse
+	pkgdesc = PyTorch Extension Library of Optimized Autograd Sparse Matrix Operations
+	pkgver = 0.6.8
+	pkgrel = 1
+	url = https://github.com/rusty1s/pytorch_sparse
+	arch = any
+	license = MIT
+	depends = python
+	depends = gcc
+	depends = cuda
+	depends = cmake
+	depends = python-scipy
+	depends = python-setuptools
+	depends = python-pytest
+	depends = python-pytest-cov
+	depends = python-pytorch
+	depends = python-pytorch_scatter
+	source = https://github.com/rusty1s/pytorch_sparse/archive/0.6.8.tar.gz
+	sha256sums = 98f7ff1f0f9cd5031bc81c70c11970c3864545ae33677025a6efd2466a97e6f9
+
+pkgname = python-pytorch_sparse
+
+pkgname = python-pytorch_sparse-cuda
+	pkgdesc = PyTorch Extension Library of Optimized Autograd Sparse Matrix Operations (with CUDA)
+	depends = python
+	depends = gcc
+	depends = cuda
+	depends = cmake
+	depends = python-scipy
+	depends = python-setuptools
+	depends = python-pytest
+	depends = python-pytest-cov
+	depends = python-pytorch
+	depends = python-pytorch_scatter
+	depends = cuda
+	depends = cudnn
+	depends = python-pytorch-cuda
+	depends = python-pytorch_scatter-cuda
+	provides = python-pytorch_sparse
+	conflicts = python-pytorch_sparse
+
