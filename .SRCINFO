@@ -1,0 +1,17 @@
+pkgbase = avisynth-plugin-rawsource26-git
+	pkgdesc = Plugin for Avisynth: rawsource26 (GIT version)
+	pkgver = 0.0.1.5.g1c0e215
+	pkgrel = 1
+	url = https://github.com/Asd-g/RawSource_2.6x
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = avisynthplus
+	provides = avisynth-plugin-rawsource26
+	conflicts = avisynth-plugin-rawsource26
+	source = rawsource26::git+https://github.com/Asd-g/RawSource_2.6x.git
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-rawsource26-git
+
