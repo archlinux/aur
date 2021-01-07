@@ -14,7 +14,7 @@ pkgbase = lib32-freetype2-minimal-git
 	provides = libfreetype.so
 	provides = lib32-freetype2
 	conflicts = lib32-freetype2
-	source = git://git.sv.gnu.org/freetype/freetype2.git
+	source = git://git.sv.nongnu.org/freetype/freetype2.git
 	validpgpkeys = SKIP
 	sha1sums = SKIP
 
