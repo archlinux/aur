@@ -1,19 +1,19 @@
 # Maintainer: Fronkles McFranko <mrelfranko@disroot.org>
 pkgname=eww-git
 _pkgname=eww
-pkgver=dd3c50f
+pkgver=145__2021.01.03
 pkgrel=1
 epoch=
 pkgdesc="ElKowar's wacky widgets"
 arch=('any')
 url="https://github.com/elkowar/eww"
-license=('GPL')
+license=('MIT')
 groups=()
-depends=()
+depends=("gtk3")
 makedepends=("cargo" "git")
 checkdepends=()
 optdepends=()
-provides=()
+provides=("eww")
 conflicts=("eww")
 replaces=()
 backup=()
@@ -26,24 +26,21 @@ md5sums=("SKIP")
 validpgpkeys=()
 
 pkgver() {
-    cd $_pkgname
-    printf "%s" "$(git describe --always --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    cd ${_pkgname}
+    _tag=$(git describe --tags | sed 's:^v::')
+    _commits=$(git rev-list --count HEAD)
+    _date=$(git log -1 --date=short --pretty=format:%cd)
+    printf "%s_%s_%s\n" "${_commits}" "${_tag}" "${_date}" | sed 's/-/./g'
 }
 
 build() {
-	cd "$_pkgname"
-    cargo build
-}
-
-check() {
-	cd "$_pkgname"
-    cargo check
+    cd "$_pkgname"
+    cargo build --release
 }
 
 package() {
-	cd "$_pkgname"
-    cargo install --path . --root "$pkgdir/usr"
+    cd "$_pkgname"
 
-    cd "$pkgdir/usr"
-    rm .crates2.json .crates.toml
+    mkdir -p "${pkgdir}/usr/bin"
+    mv target/release/eww "${pkgdir}/usr/bin"
 }

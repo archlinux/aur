@@ -1,12 +1,14 @@
 pkgbase = eww-git
 	pkgdesc = ElKowar's wacky widgets
-	pkgver = dd3c50f
+	pkgver = 145__2021.01.03
 	pkgrel = 1
 	url = https://github.com/elkowar/eww
 	arch = any
-	license = GPL
+	license = MIT
 	makedepends = cargo
 	makedepends = git
+	depends = gtk3
+	provides = eww
 	conflicts = eww
 	source = git+https://github.com/elkowar/eww
 	md5sums = SKIP
