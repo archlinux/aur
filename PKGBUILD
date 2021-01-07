@@ -1,4 +1,5 @@
 # Maintainer: Daniel Plaza <daniel.plaza.espi at gmail dot com>
+# Contributor: Romain Bazile <gromain.baz at gmail dot com>
 
 pkgname=mcuxpresso-ide
 pkgver=11.2.1_4149
@@ -8,12 +9,11 @@ pkgdesc="An easy-to-use integrated development environment (IDE) for creating, b
 arch=('x86_64')
 url="http://www.nxp.com/MCUXPresso"
 license=('custom:"NXP"')
-depends=('dfu-util' 'libusb' 'ncurses' 'glibc' 'lib32-glibc' 'jlink-software-and-documentation')
+depends=('ncurses' 'glibc' 'lib32-glibc' 'jlink-software-and-documentation' 'dfu-util' 'libusb')
 
-source=("https://freescaleesd.flexnetoperations.com/337170/687/17360687/mcuxpressoide-${pkgver}.${arch}.deb.bin" "LICENSE")
+source=("file://mcuxpressoide-${pkgver}.${arch}.deb.bin")
 noextract=("mcuxpressoide-${pkgver}.${arch}.deb.bin")
-sha256sums=('f45ae45f6cdcb6232b9a03551cbcdc0fdad9e5c12898d26dd436fdd6a7091bb5'
-            '581e52868fa304c1632045f6a05b2495d95bae4011525f32f2ccf66fbaccfdca')
+sha256sums=('f45ae45f6cdcb6232b9a03551cbcdc0fdad9e5c12898d26dd436fdd6a7091bb5')
 options=('!strip')
 
 prepare() {
@@ -27,22 +27,25 @@ prepare() {
     bsdtar -x -f mcuxpressoide/data.tar.gz -C mcuxpressoide/
     rm mcuxpressoide/data.tar.gz
     rm JLink_Linux_x86_64.deb
+    rm ${srcdir}/mcuxpressoide/usr/local/mcuxpressoide-${pkgver}/JLink_Linux_x86_64.deb
     # Rename main folder in place
     mv ${srcdir}/mcuxpressoide/usr/local/mcuxpressoide-${pkgver} ${srcdir}/mcuxpressoide/usr/local/${pkgname};
     # Update link in desktop file
-    mv ${srcdir}/mcuxpressoide/usr/share/applications/com.nxp.mcuxpressoide.desktop ${srcdir}/mcuxpressoide/usr/share/applications/com.nxp.mcuxpressoide.desktop.old
-    cat ${srcdir}/mcuxpressoide/usr/share/applications/com.nxp.mcuxpressoide.desktop.old | sed "s/mcuxpressoide-${pkgver}/mcuxpresso-ide/" > ${srcdir}/mcuxpressoide/usr/share/applications/com.nxp.mcuxpressoide.desktop
-    rm ${srcdir}/mcuxpressoide/usr/share/applications/com.nxp.mcuxpressoide.desktop.old
+    cat ${srcdir}/mcuxpressoide/usr/share/applications/com.nxp.mcuxpressoide.desktop | sed "s/mcuxpressoide-${pkgver}/mcuxpresso-ide/" > ${srcdir}/mcuxpressoide/usr/share/applications/com.nxp.mcuxpressoide.desktop.1
+    cat ${srcdir}/mcuxpressoide/usr/share/applications/com.nxp.mcuxpressoide.desktop.1 | sed "s/usr\/local/opt/" > ${srcdir}/mcuxpressoide/usr/share/applications/com.nxp.mcuxpressoide.desktop
 }
 
 
 package() {
-    # Create folder for license file
-    mkdir -p ${srcdir}/mcuxpressoide/usr/share/NXPLPCXpresso;
-    # Move main folder in place
-    mv ${srcdir}/mcuxpressoide/usr ${pkgdir}/;
-    # Move udev rules from /lib to /usr/lib folder
-    mv ${srcdir}/mcuxpressoide/lib/udev ${pkgdir}/usr/lib/;
-    # Add LICENSE file to licenses folder
-    install -D -m644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE;
+    # Copy main folder in place
+    cp -ar ${srcdir}/mcuxpressoide/usr ${pkgdir}/;
+    # Move application files to /opt as they don't obey standard file system hierarchy
+    mv ${pkgdir}/usr/local ${pkgdir}/opt;
+    # Copy licenses of software components (FreeRTOS, Java etc.) accarding to system directory structure
+    mkdir ${pkgdir}/usr/share/licenses
+    cp -ar ${pkgdir}/opt/mcuxpresso-ide/licenses ${pkgdir}/usr/share/licenses/${pkgname}
+    # Copy udev rules from /lib to /usr/lib folder
+    cp -ar ${srcdir}/mcuxpressoide/lib/udev ${pkgdir}/usr/lib/;
+    # Add Product LICENSE file to licenses folder
+    install -D -m644 ${srcdir}/ProductLicense.txt ${pkgdir}/usr/share/licenses/${pkgname}/ProductLicense.txt;
 }

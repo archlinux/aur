@@ -5,18 +5,16 @@ pkgbase = mcuxpresso-ide
 	url = http://www.nxp.com/MCUXPresso
 	arch = x86_64
 	license = custom:"NXP"
-	depends = dfu-util
-	depends = libusb
 	depends = ncurses
 	depends = glibc
 	depends = lib32-glibc
 	depends = jlink-software-and-documentation
+	depends = dfu-util
+	depends = libusb
 	noextract = mcuxpressoide-11.2.1_4149.x86_64.deb.bin
 	options = !strip
-	source = https://freescaleesd.flexnetoperations.com/337170/687/17360687/mcuxpressoide-11.2.1_4149.x86_64.deb.bin
-	source = LICENSE
+	source = file://mcuxpressoide-11.2.1_4149.x86_64.deb.bin
 	sha256sums = f45ae45f6cdcb6232b9a03551cbcdc0fdad9e5c12898d26dd436fdd6a7091bb5
-	sha256sums = 581e52868fa304c1632045f6a05b2495d95bae4011525f32f2ccf66fbaccfdca
 
 pkgname = mcuxpresso-ide
 
