@@ -17,25 +17,19 @@
 #
 pkgbase="zfs-linux-lts"
 pkgname=("zfs-linux-lts" "zfs-linux-lts-headers")
-_zfsver="2.0.0"
-_kernelver="5.4.86-1"
-_extramodules="5.4.86-1-lts"
+_zfsver="2.0.1"
+_kernelver="5.4.87-1"
+_extramodules="5.4.87-1-lts"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
 pkgrel=1
 makedepends=("linux-lts-headers=${_kernelver}")
 arch=("x86_64")
 url="https://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz"
-              "autoconf-270-compatibility.patch")
-sha256sums=("3403bf8e993f3c9d772f768142117df47bdbbb8e9bbf85a29c0e166f577f9311"
-                        "dc82ee4e62f76b68d972423909c38ced28dea876c6ef4f19037a24a8dbb2fff5")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz")
+sha256sums=("71510a6381d9910d75fa52d7bbf0863aa80ff88f337c8a023e267f4ba8486978")
 license=("CDDL")
 depends=("kmod" "zfs-utils=${_zfsver}" "linux-lts=${_kernelver}")
-prepare() {
-    cd "${srcdir}/zfs-${_zfsver}"
-    patch -Np1 -i ${srcdir}/autoconf-270-compatibility.patch
-}
 
 build() {
     cd "${srcdir}/zfs-${_zfsver}"
