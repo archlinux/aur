@@ -1,33 +1,30 @@
 # Maintainer:	Kostas Kardaras <firstname dot lastname at gmail>
 
-_pkgname='wrapio'
-pkgname='python-wrapio'
-provides=('python-wrapio')
+name='wrapio'
+pkgname="python-${name}"
+provides=("${pkgname}")
 conflicts=()
 pkgver=0.3.8
 pkgrel=1
 pkgdesc='Handling event-based streams.'
 arch=('x86_64')
-url="https://github.com/Exahilosys/${_pkgname}"
+url="https://github.com/Exahilosys/${name}"
 license=('MIT')
 source=("${url}/archive/v${pkgver}.tar.gz")
 makedepends=('python-setuptools')
-depends=(
-    'python>=3.5')
-optdepends=()
+depends=('python>=3.5')
 md5sums=('170de19707eaa0596db01b0edac405d0')
 
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${name}-${pkgver}"
     python setup.py build
 }
 
-
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${name}-${pkgver}"
     # Run python setup function
     python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
     # Install the licence
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENCE" \
+    install -Dm644 "${srcdir}/${name}-${pkgver}/LICENCE" \
     	"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
