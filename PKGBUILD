@@ -5,13 +5,14 @@ pkgbase=vdr
 pkgname=(vdr vdr-examples)
 pkgver=2.4.6
 _vdrapi=2.4.6
-pkgrel=2
+pkgrel=3
 url="http://tvdr.de/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 makedepends=('fontconfig' 'libcap' 'libjpeg-turbo' 'libsystemd' 'perl' 'ttf-font' 'systemd' 'ncurses')
 source=("http://www.tvdr.de/ftp/${pkgbase}-${pkgver}.tar.bz2"
         "$pkgbase-$pkgver-clre-crash-fix.patch"
+        "$pkgbase-$pkgver-pute-epg-loading-fix.patch"
         'vdr-MainMenuHooks.patch'
         '00-vdr.conf' '50-hello.conf' '50-pictures.conf'
         '60-create-dvb-device-units.rules'
@@ -22,6 +23,7 @@ source=("http://www.tvdr.de/ftp/${pkgbase}-${pkgver}.tar.bz2"
         'vdr.sysuser')
 sha256sums=('c8993babf2a878a0fba84558de1e35f042c3c66f7c1ec569eea00a3af1014e4b'
             'd95115c3fb89d17be9367f882cf7581cb0cea3401fc6dcc5a0b25714ca43dac6'
+            '779b93c4700639c022718dabde6f5a740edb3c0c9650eee2e469e8e1cfb4247f'
             '4c553065d24ee4dc001c06ff588494db44982b7debe9a1e6cd1a8903beb7c87b'
             '86f2469f459e2aabfc0ab703fc8435e458e89c4879376e900160d083924097b3'
             '423656cb6ba39af52d379dee697c52e6f435c098daa8c2ba429c1247b757af50'
@@ -49,6 +51,7 @@ prepare() {
 
   # Upstream fixes
   patch -i "$srcdir/$pkgbase-$pkgver-clre-crash-fix.patch"
+  patch -i "$srcdir/$pkgbase-$pkgver-pute-epg-loading-fix.patch"
 
   # Don't install plugins with VDR
   sed -i '/^install: /s/install-plugins //' Makefile
