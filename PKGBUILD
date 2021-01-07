@@ -5,8 +5,8 @@
 pkgbase=lib32-pipewire
 _pkgbase=pipewire
 pkgname=(lib32-pipewire lib32-pipewire-jack lib32-gst-plugin-pipewire)
-pkgver=0.3.18
-pkgrel=2
+pkgver=0.3.19
+pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines (32-bit client libraries)"
 url="https://pipewire.org"
 license=(LGPL2.1)
@@ -16,7 +16,7 @@ makedepends=(git meson valgrind jack2 lib32-jack2 libpulse lib32-libpulse
              gst-plugins-base lib32-gst-plugins-base rtkit 
              vulkan-icd-loader lib32-vulkan-icd-loader lib32-dbus
              libsndfile lib32-libsndfile vulkan-headers)
-_commit=e7dffd64ebff76e2388d6e694de96d6693a6ed7d  # tags/0.3.18
+_commit=b2b45abe0198354ff43e5bf1bc0324b060dde97a  # tags/0.3.19
 source=("git+https://github.com/PipeWire/pipewire#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -27,9 +27,6 @@ pkgver() {
 
 prepare() {
   cd $_pkgbase
-
-  # fix kwin
-  git cherry-pick -n fc2b0b20ad4271b0c6f258451a82311b792b7a57
 }
 
 build() {
