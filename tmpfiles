@@ -1,0 +1,1 @@
+d /var/lib/lightspeed-ingest 0700 lightspeed-ingest lightspeed-ingest  -
