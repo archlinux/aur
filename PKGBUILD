@@ -7,7 +7,7 @@
 _npmname=uniread
 
 pkgname=uniread
-pkgver=0.1.14
+pkgver=0.1.22
 pkgrel=1
 pkgdesc="Uniread is Spritz like CLI fast reading software."
 arch=(any)
@@ -16,12 +16,12 @@ license=(MIT)
 depends=('nodejs')
 makedepends=('npm')
 optdepends=()
-source=(https://github.com/nemanjan00/uniread/archive/master.zip)
-noextract=(master.zip)
-sha256sums=('1853c140507c517ee5a3146fce9902c2cc6285587b2c9d0332c3b815216305e5')
+source=("https://github.com/nemanjan00/uniread/archive/v${pkgver}.tar.gz")
+noextract=(master.tar.gz)
+sha256sums=('84f2c8f7cae67c2008eb45922ec1338a13eb5e312bb54f382365521583c8af3b')
 
 package() {
-  npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$_npmname-$pkgver.zip
+  npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/v$pkgver.tar.gz
 
   # Non-deterministic race in npm gives 777 permissions to random directories.
   # See https://github.com/npm/npm/issues/9359 for details.
@@ -29,5 +29,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
-
