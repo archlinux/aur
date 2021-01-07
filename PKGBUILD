@@ -12,6 +12,7 @@ depends=(
 makedepends=(
   'jupyter'
   'jupyterlab'
+  'jupyterlab_pygments'
   'npm'
   'python-setuptools'
   'python-jupyter_packaging')
