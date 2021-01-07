@@ -3,29 +3,31 @@
 
 pkgname=godef
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Print where symbols are defined in Go source code.'
 arch=('x86_64')
-url='https://github.com/rogpeppe/godef'
+url="https://github.com/rogpeppe/$pkgname"
 license=('BSD')
-depends=('go')
-provides=('godef')
+makedepends=('go')
 conflicts=('godef-git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/rogpeppe/$pkgname/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('48a1680e9a7db28f19c4b5716402c615bbab454c769c28d9e373df75bde48b9c')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-$pkgver"
 
-    export GOPATH="$srcdir"
-    go build -v -o "$pkgname"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	go build -v -o "$pkgname"
 }
 
 package() {
-    licenses="$pkgdir/usr/share/licenses/$pkgname"
+	cd "$srcdir/$pkgname-$pkgver"
 
-    cd "$srcdir/$pkgname-$pkgver"
-
-    install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 LICENSE "$licenses/LICENSE"
+	install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
+	install -Dm644 'LICENSE' -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm644 'README' -t "$pkgdir/usr/share/doc/$pkgname"
 }
