@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=terminal-to-html
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Converts arbitrary shell output (with ANSI) into beautifully rendered HTML"
 arch=("x86_64" "i686")
@@ -11,10 +11,8 @@ provides=('terminal-to-html')
 conflicts=('terminal-to-html')
 depends=('glibc')
 makedepends=('go' 'go-bindata')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-        "LICENSE")
-sha256sums=('bd6584245c1224d139e9a5b57e9326bbd68b0961dad85374cdbe5ad36fd70356'
-            'ad8a919cd390f9475ed22addad10d283539f5b9afec268b03427c667e60b9ae5')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('51e8c03c2a078030ddb0e2bd2b399c543545b4664413d3494076042d56d23793')
 
 build() {
   cd ${pkgname}-${pkgver}
@@ -28,6 +26,7 @@ build() {
 }
 
 package() {
+  cd ${pkgname}-${pkgver}
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm755 "$pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
