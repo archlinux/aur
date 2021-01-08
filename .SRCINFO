@@ -1,7 +1,7 @@
 pkgbase = ddccontrol
 	pkgdesc = Control your monitor by software using the DDC/CI protocol
-	pkgver = 0.4.4
-	pkgrel = 8
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/ddccontrol/ddccontrol
 	arch = i686
 	arch = x86_64
@@ -15,12 +15,8 @@ pkgbase = ddccontrol
 	depends = libxml2
 	depends = icu
 	options = !libtool
-	source = ddccontrol-0.4.4.tar.gz::https://github.com/ddccontrol/ddccontrol/archive/0.4.4.tar.gz
-	source = org.ddccontrol.pkexec.gddccontrol.policy
-	source = fix-gcc10-compilation.patch
-	sha256sums = aafbb16ac4f4edfe3fcc5feec1eb5729aaf86e3b0f31f9d707ba1406bb404817
-	sha256sums = ef84637e512496a37fe3b50f64020f11aafaa7bc8ab821e90e81256439c2069a
-	sha256sums = 86b560a674ddfca7d8d7a30eb5ebf57d135e81eb8eea3808a0492010a9059995
+	source = ddccontrol-0.5.0.tar.gz::https://github.com/ddccontrol/ddccontrol/archive/0.5.0.tar.gz
+	sha256sums = 41d7c4fbcd1c2fa33bc6993c44527e98a1af7233903f6b362f41b99f977224df
 
 pkgname = ddccontrol
 	install = ddccontrol.install
