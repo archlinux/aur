@@ -5,9 +5,9 @@ pkgname="${_pkgname}"
 epoch=1
 _pkgver=4
 pkgver=4.19.24
-pkgrel=1
+pkgrel=2
 
-pkgdesc="Metapackage: Depends on 'sip4' and makes 'sip4' provide 'sip'-dependency (with proper \$pkgver)."
+pkgdesc="Metapackage: Depends on 'sip4' and makes 'sip4' provide 'sip'-dependency (with \$pkgver automatically bumped to the one if the installed 'sip4' during build)."
 url="https://archlinux.org/packages/extra/x86_64/sip4/"
 license=('custom: public domain.')
 
