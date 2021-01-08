@@ -2,8 +2,8 @@
 # Maintainer: pzl <alsoelp at gmail dot com>
 
 pkgname=jlink-software-and-documentation
-pkgver=6.92
-pkgrel=3
+pkgver=6.94
+pkgrel=0
 epoch=33
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64' 'armv7h')
@@ -36,9 +36,9 @@ desktops=(
 )
 source+=(${desktops[@]})
 echo ${sources}
-md5sums_i686=('ecb2229e5c0963972b8533399d16e41e')
-md5sums_x86_64=('62cc06a9aea4a2617c80700fa1716eec')
-md5sums_armv7h=('98a3e5626e0a81560b5c18c7fc606e08')
+md5sums_i686=('081c33ffeabb0a8588da4e101cfa0b0d')
+md5sums_x86_64=('9deac082b4e0fc4bdf32e0cf267158ed')
+md5sums_armv7h=('4232249a15c70814de1533b5ca06f9cf')
 md5sums=("a57d93b791581c1f36e4c672303bb85d" "83a136d31b296dd8f0e23bc21f9d8e19"
         "02e067cd1c420f2085216d76e4866cd4"
         "50bced5895a0ec59db0146153a077515"
@@ -102,7 +102,7 @@ package(){
     # Bulk copy everything
     if [ ${CARCH} = "armv7h" ]; then
         cp --preserve=mode -r J* Devices README.txt GDBServer lib* "${pkgdir}/opt/SEGGER/JLink"
-    else cp --preserve=mode -r J* Doc Samples ETC Devices ThirdParty README.txt GDBServer lib* "${pkgdir}/opt/SEGGER/JLink"
+    else cp --preserve=mode -r J* Doc Samples ETC Devices README.txt GDBServer lib* "${pkgdir}/opt/SEGGER/JLink"
     fi
     if [ ${CARCH} = "x86_64" ]; then
         cp --preserve=mode -r x86 "${pkgdir}/opt/SEGGER/JLink"
