@@ -2,7 +2,7 @@
 # Maintainer: Alex
 # Contributor: Alex
 pkgname=('opentx-companion-bin')
-pkgver=2.3.10
+pkgver=2.3.11
 pkgrel=1
 pkgdesc="Models and settings editor for the OpenTX open source firmware."
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('companion' 'companion9x-svn')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://downloads.open-tx.org/2.3/release/companion/linux/companion23_${pkgver}_amd64.deb")
-sha512sums_x86_64=('f25c9dda0fab026c23c3097ac2faaa31af22997eac8fe4194c1b8ca0f16a36f374ca25a2adeb5147444ce5c18405419479ec26604efe194780668521a94a0a90')
+sha512sums_x86_64=('aea3eae3174996139d7e614f33883e781e5a5a23313be909ade545853a83a51fe304bd314c8c00b10540f753a57ec52d0d8dd93b3b9ad345e10258cb0bf7f5ab')
 
 package(){
 
