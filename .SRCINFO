@@ -1,6 +1,6 @@
 pkgbase = audacious-plugins-gtk
-	pkgdesc = Plugins for Audacious
-	pkgver = 4.0.5
+	pkgdesc = Plugins for Audacious - latest stable release
+	pkgver = 4.1.beta1
 	pkgrel = 1
 	url = https://audacious-media-player.org/
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = audacious-plugins-gtk
 	depends = libcue
 	provides = audacious-plugins
 	conflicts = audacious-plugins
-	source = https://distfiles.audacious-media-player.org/audacious-plugins-4.0.5.tar.bz2
+	source = https://distfiles.audacious-media-player.org/audacious-plugins-4.1-beta1.tar.bz2
 	sha256sums = SKIP
 
 pkgname = audacious-plugins-gtk
