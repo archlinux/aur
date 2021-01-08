@@ -1,5 +1,5 @@
 pkgbase = hushboard-git
-	pkgdesc = A command-line utility that checks for best practices in SaltStack.
+	pkgdesc = Mute your microphone while typing.
 	pkgver = 7748a07
 	pkgrel = 0
 	url = https://github.com/jbouter/hushboard
