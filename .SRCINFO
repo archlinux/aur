@@ -1,0 +1,23 @@
+pkgbase = kibana6
+	pkgdesc = Browser based analytics and search dashboard for Elasticsearch
+	pkgver = 6.8.13
+	pkgrel = 1
+	url = https://www.elastic.co/products/kibana
+	arch = any
+	license = Apache
+	depends = nodejs
+	optdepends = elasticsearch6
+	options = !strip
+	options = emptydirs
+	backup = etc/kibana6/kibana.yml
+	source = https://artifacts.elastic.co/downloads/kibana6/kibana-oss-6.8.13-linux-x86_64.tar.gz
+	source = kibana6.service
+	source = tmpfile.conf
+	source = user.conf
+	sha512sums = 58e3d52616ca306739642e7932ec2f6388231c966e6fd5ce3431fc39e46183745f90ae069d659ad6c59f5c1361220e012723ccccd7dc47f61f53bf6d14705cde
+	sha512sums = 47aa34d76af831761c0da4bf3a056894f51d8f6aee83c07b8b7c4d7f3dd561e7e26f3b7aed8371aee35bda162e256ba18fb7acfafb98f629197505535e98687f
+	sha512sums = b9c09618bb5c41bb8de106d162db1a6efc0c5f26fd34ad16161d5719a30ef923e2a6b84c3e351335d622e5deef835f605aed01a21afd3db44b89da5fb85273c8
+	sha512sums = 1027e200a1d517d41a9e57fa4e30064c35065841ac4a602fcfd2a59cfbf1ec83f39fb6e5c29b69e6a78cbec126fac5cb9c82826f665243d36d4f58553f3140d8
+
+pkgname = kibana6
+
