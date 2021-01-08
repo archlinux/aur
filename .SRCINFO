@@ -1,0 +1,21 @@
+pkgbase = mygnuhealth-git
+	pkgdesc = The GNU Health Personal Health Record (PHR)
+	pkgver = r129.50459c5
+	pkgrel = 1
+	url = https://invent.kde.org/pim/mygnuhealth
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-matplotlib
+	depends = python-requests
+	depends = python-tinydb
+	depends = python-bcrypt
+	provides = mygnuhealth
+	conflicts = mygnuhealth
+	source = git+https://invent.kde.org/pim/mygnuhealth.git
+	sha512sums = SKIP
+
+pkgname = mygnuhealth-git
+
