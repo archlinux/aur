@@ -8,14 +8,14 @@ depends=()
 optdepends=()
 makedepends=()
 url="https://home.otoy.com/render/octane-render/demo/"
-source=(https://render.otoy.com/downloads/46/6e/7d/ad/octane_server_prime_2020.1.3-21.11-stable.run)
-noextract=('octane_server_prime_2020.1.3-21.11-stable.run')
-md5sums=('07fcfb01ccd5e1f3bc0eff8883b0440e')
+source=(https://render.otoy.com/downloads/34/be/2d/d8/octane_server_prime_2020.1.5-22.2-xb.run)
+noextract=('octane_server_prime_2020.1.5-22.2-xb.run')
+md5sums=('1d9ea74ffbb1eb961617132cb1cf4a5b')
 
 prepare()
 {
-  chmod +x octane_server_prime_2020.1.3-21.11-stable.run
-  ./octane_server_prime_2020.1.3-21.11-stable.run -e
+  chmod +x octane_server_prime_2020.1.5-22.2-xb.run
+  ./octane_server_prime_2020.1.5-22.2-xb.run -e
 }
 
 package()
