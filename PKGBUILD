@@ -1,6 +1,6 @@
 # Maintainer: Cédric Connes <cedric.connes@gmail.com>
 
-pkgname=chisel-tunnel
+pkgname=chisel-tunnel-bin
 pkgver=1.7.3
 pkgrel=1
 pkgdesc="A fast TCP tunnel over HTTP"

@@ -1,4 +1,4 @@
-pkgbase = chisel-tunnel
+pkgbase = chisel-tunnel-bin
 	pkgdesc = A fast TCP tunnel over HTTP
 	pkgver = 1.7.3
 	pkgrel = 1
@@ -26,5 +26,5 @@ pkgbase = chisel-tunnel
 	source_aarch64 = chisel_1.7.3_aarch64.gz::https://github.com/jpillora/chisel/releases/download/v1.7.3/chisel_1.7.3_linux_arm64.gz
 	sha256sums_aarch64 = 1c841d5d1d34538febdda50a60f9e4f7a9df773a40dccacbd6aaa75595babfdb
 
-pkgname = chisel-tunnel
+pkgname = chisel-tunnel-bin
 
