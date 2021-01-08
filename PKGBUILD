@@ -4,13 +4,13 @@
 
 _pkgname=FanFicFare
 pkgname=fanficfare-git
-pkgver=3.12.0.r0.g400b8172
+pkgver=3.27.0.r10.g19af3ea7
 pkgrel=1
 pkgdesc="A tool for downloading fanfiction to eBook formats"
 arch=('any')
 url="https://github.com/JimmXinu/${_pkgname}"
 license=('Apache')
-depends=('python' 'python-beautifulsoup4' 'python-chardet' 'python-html5lib'
+depends=('python' 'python-beautifulsoup4' 'python-chardet' 'python-cloudscraper' 'python-html5lib'
          'python-html2text')
 makedepends=('git')
 optdepends=('python-pillow: support for converting/resizing story images and covers')
