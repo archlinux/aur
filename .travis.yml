@@ -43,7 +43,7 @@ archlinux:
   - |
      update_interval=5
      update_offset=$(. PKGBUILD; sha1sum <<< "$pkgname"|sed -e "s/[a-z -]//g" -e "s/^0*//"|echo `cat`%$update_interval|bc)
-     next_update=$(((365-`date +%j`+update_offset)%update_interval))
+     next_update=$(((365-`date +%-j`+update_offset)%update_interval))
 # check (opt|)depends update
   - |
      build_deps=$(. PKGBUILD; IFS=$'\n'; echo -e "${depends[*]}\n${makedepends[*]}"; )
