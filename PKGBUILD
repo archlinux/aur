@@ -6,13 +6,13 @@
 
 pkgname=apvlv
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='PDF/DJVU/TXT viewer which behaves like vi'
 arch=('x86_64')
 url="http://naihe2010.github.com/apvlv/"
 license=('GPL2')
 depends=('gtk3' 'poppler-glib' 'djvulibre' 'webkit2gtk' 'ebook-tools')
-makedepends=('cmake' 'git')
+makedepends=('cmake')
 source=("$pkgname-$pkgver::http://github.com/naihe2010/apvlv/archive/v$pkgver.tar.gz")
 sha256sums=('a4a2f42a7e42715a21d2356def3ed93c180c6ae41128580addee42835e5374c2')
 backup=('etc/apvlvrc')
