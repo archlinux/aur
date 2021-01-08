@@ -1,0 +1,16 @@
+pkgbase = brother-mfc-l2717dw
+	pkgdesc = Driver for the Brother MFC-L2717DW
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=mfcl2717dw_us
+	install = brother-mfc-l2717dw.install
+	arch = i686
+	arch = x86_64
+	license = EULA
+	depends = cups
+	source = https://download.brother.com/welcome/dlf104660/mfcl2717dwpdrv-4.0.0-1.i386.rpm
+	sha256sums = 64312120786ca514e5925383e3c83957b9ea434918fe5a057f7c71a11579a9d4
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-l2717dw
+
