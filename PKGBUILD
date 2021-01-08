@@ -1,8 +1,8 @@
 # Maintainer: Thibaut Sautereau (thithib) <thibaut at sautereau dot fr>
 
 pkgname=hardened_malloc
-pkgver=4
-pkgrel=2
+pkgver=5
+pkgrel=1
 pkgdesc="Hardened allocator designed for modern systems"
 arch=('x86_64')
 url="https://github.com/GrapheneOS/hardened_malloc"
