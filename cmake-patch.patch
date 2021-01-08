@@ -1,0 +1,6 @@
+1061a1062
+>     if(WIN32)
+1062a1064,1066
+>     else(WIN32)
+>     add_custom_target(symlink_gdl ALL ${CMAKE_COMMAND} -E create_symlink ${GDLLOCATION} ${CMAKE_SOURCE_DIR}/src/gdl DEPENDS gdl)
+>     endif(WIN32)
