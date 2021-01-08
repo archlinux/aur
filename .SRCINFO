@@ -1,0 +1,15 @@
+pkgbase = prosody-mod-invites
+	pkgdesc = Invite management module for Prosody
+	pkgver = 2020.09.11
+	pkgrel = 1
+	url = https://modules.prosody.im/mod_invites.html
+	arch = any
+	license = MIT
+	makedepends = mercurial
+	depends = prosody
+	depends = prosody-mod-http-libjs
+	source = hg+https://hg.prosody.im/prosody-modules/#revision=24f4eb35ab60
+	sha1sums = SKIP
+
+pkgname = prosody-mod-invites
+
