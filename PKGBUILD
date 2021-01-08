@@ -6,11 +6,11 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 pkgname=hushboard-git
 _pkgname=hushboard
 epoch=
-pkgver=r01.7748a07
+pkgver=r02.223b6f9
 pkgrel=0
 pkgdesc='Mute your microphone while typing.'
 arch=(any)
-url="https://github.com/jbouter/$_pkgname"
+url="https://github.com/stuartlangridge/$_pkgname"
 license=(MIT)
 depends=(python libappindicator-gtk3 python-gobject python-xlib gtk3)
 ## EXTRA_DEPENDS ##
@@ -19,7 +19,7 @@ checkdepends=()
 provides=("$_pkgname")
 conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 noextract=()
-source+=("git+https://github.com/jbouter/$_pkgname.git")
+source+=("git+https://github.com/stuartlangridge/$_pkgname.git")
 md5sums+=(SKIP)
 source+=(LICENSE)
 md5sums+=(3ce314c6b503c298b2ebba2d176915a4)
