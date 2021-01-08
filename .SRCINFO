@@ -1,0 +1,12 @@
+pkgbase = ttf-smokum
+	pkgdesc = A western inspired slab-serif font with a little playful swagger to it.
+	pkgver = 1.001
+	pkgrel = 1
+	url = https://github.com/google/fonts/tree/master/apache/smokum
+	arch = any
+	license = Apache
+	source = https://github.com/google/fonts/raw/master/apache/smokum/Smokum-Regular.ttf
+	md5sums = 9c6ebacd90feb70fbaf84688e7c53f33
+
+pkgname = ttf-smokum
+
