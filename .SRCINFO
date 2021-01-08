@@ -14,6 +14,7 @@ pkgbase = video2x
 	depends = python-pillow
 	depends = python-requests
 	depends = python-tqdm
+	depends = python-magic
 	optdepends = waifu2x-ncnn-vulkan: for anime/cartoon upscaling and JPEG denoising - fast
 	optdepends = realsr-ncnn-vulkan: real photos upscaling and denoising - slow
 	optdepends = srmd-ncnn-vulkan: general purpose upscaling and image restoration
@@ -23,7 +24,7 @@ pkgbase = video2x
 	source = video2x.yaml
 	sha256sums = a372027fb09c45f6624db8839b46fa34b4c3c639ba19fe9d192f9ef0a4ed9c46
 	sha256sums = 9d027d3f8ca5bdf4e7c543fe5cd18e5024cf7ce0e74c2d52db0a3d1ca27fcc5e
-	sha256sums = 1dc4082745591bf7eab3b92608cb8a86b9d9a9cfccaa9ad395bac2da229d1e7d
+	sha256sums = dae9fb91b965d27a868ab71e36c8d6633f0c4be770c8f70c2ea41bc957b7c796
 
 pkgname = video2x
 

@@ -18,6 +18,7 @@ depends=(
 	#"python-pyqt5"
 	"python-requests"
 	"python-tqdm"
+	"python-magic"
 )
 optdepends=(
 	"waifu2x-ncnn-vulkan: for anime/cartoon upscaling and JPEG denoising - fast"
