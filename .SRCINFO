@@ -1,15 +1,3 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
-	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
-	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
-
-pkgname = yarxi
-
 pkgbase = pacminder
 	pkgdesc = Configurable reminder to update pacman.
 	pkgver = 1.0.0
