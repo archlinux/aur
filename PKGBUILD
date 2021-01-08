@@ -1,8 +1,9 @@
-# Maintainer: FrozenCow <frozencow@gmail.com>
+# Maintainer: Triangulum Labs <triangulumlabs@gmail.com>
+# Contributor: FrozenCow <frozencow@gmail.com>
 
 pkgname=libusrsctp-git
-pkgver=2252.80e6e7e
-pkgrel=1
+pkgver=3425.6093769
+pkgrel=2
 pkgdesc="A portable SCTP userland stack"
 
 arch=('i686' 'x86_64')
@@ -20,12 +21,12 @@ pkgver() {
 build() {
   cd ${pkgname}
   unset CPPFLAGS
-  ./bootstrap
-  ./configure --prefix=/usr
+  cmake .
   make
 }
 
 package() {
   cd ${pkgname}
   make DESTDIR="$pkgdir/" install
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
