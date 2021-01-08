@@ -2,11 +2,13 @@
 
 pkgname=chisel-tunnel-bin
 pkgver=1.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast TCP tunnel over HTTP"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/jpillora/chisel"
 license=('MIT')
+provides=('chisel-tunnel')
+conflicts=('chisel-tunnel')
 source=("README_${pkgver}.md::https://raw.githubusercontent.com/jpillora/chisel/v$pkgver/README.md"
         "users_${pkgver}.json::https://raw.githubusercontent.com/jpillora/chisel/v$pkgver/example/users.json"
 	"LICENSE_${pkgver}::https://raw.githubusercontent.com/jpillora/chisel/v$pkgver/LICENSE")
