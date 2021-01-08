@@ -2,7 +2,7 @@
 
 pkgname=slapdash
 pkgver="1.8.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="a tool that can manage various web services for free in one place"
 arch=('x86_64')
 url="https://slapdash.com/"
@@ -33,7 +33,7 @@ build(){
 package() {
     mkdir -p "${pkgdir}/opt/slapdash/" "${pkgdir}/usr/bin"
     cp -r "${srcdir}/squashfs-root/"* "${pkgdir}/opt/slapdash/"
-    ln -s "${pkgdir}/opt/slapdash/AppRun" "${pkgdir}/usr/bin/slapdash"
+    ln -s "${pkgdir}/opt/slapdash/AppRun" "/usr/bin/slapdash"
     install -m 755 -D "${srcdir}/slapdash.svg" "${pkgdir}/usr/share/pixmaps/slapdash.svg"
     install -m 755 -D "${srcdir}/slapdash.desktop" "${pkgdir}/usr/share/applications/slapdash.desktop"
 }

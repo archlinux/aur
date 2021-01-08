@@ -1,7 +1,7 @@
 pkgbase = slapdash
 	pkgdesc = a tool that can manage various web services for free in one place
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://slapdash.com/
 	arch = x86_64
 	license = custom
