@@ -1,9 +1,9 @@
 pkgbase = docker-pushrm
 	pkgdesc = "Docker Push Readme" - a Docker CLI plugin to update container repo docs
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/christian-korneck/docker-pushrm
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = go
 	source = https://github.com/christian-korneck/docker-pushrm/archive/v1.7.0.zip
