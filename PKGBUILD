@@ -7,19 +7,20 @@ pkgdesc='IPTV program stream player for DMPlayer'
 arch=('i686' 'x86_64')
 url='http://www.deltamediaplayer.com/en/'
 license=('GPL3')
-depends=(vlc qt5-tools 'libevent>=2.1.8' openssl-1.0)
-makedepends=(chrpath)
-provides=(dmplayer)
+depends=('vlc' 'qt5-tools' 'openssl-1.0' 'libevent>=2.1.8')
+makedepends=('chrpath')
+provides=('dmplayer')
 source=("https://www.deltamediaplayer.com/playercode/download/DeltaMediaPlayer-$pkgver.deb")
-sha256sums=('SKIP')
+sha256sums=('d34d4765ee4f7cfb5bac10cc71f5c6b6eb300ffdf9f394a27f316f214bf6d927')
 
-package(){
+package() {
   cd "$srcdir"
   bsdtar -xf data.tar.xz
   install -dm755 "$pkgdir"/usr
   mv usr/local/* "$pkgdir"/usr
   chrpath -d "$pkgdir"/usr/bin/dmplayer
   sed 's#/local##' -i "$pkgdir"/usr/share/applications/DeltaMediaPlayer.desktop
-  rm -f "$pkgdir"/usr/lib/libevent*
+  rm -f "$pkgdir"/usr/lib/libssl* "$pkgdir"/usr/lib/libcrypto*
+  rm -f "$pkgdir"/usr/lib/libevent*.so
 }
 

@@ -9,11 +9,11 @@ pkgbase = delta-media-player
 	makedepends = chrpath
 	depends = vlc
 	depends = qt5-tools
-	depends = libevent>=2.1.8
 	depends = openssl-1.0
+	depends = libevent>=2.1.8
 	provides = dmplayer
 	source = https://www.deltamediaplayer.com/playercode/download/DeltaMediaPlayer-1.23.deb
-	sha256sums = SKIP
+	sha256sums = d34d4765ee4f7cfb5bac10cc71f5c6b6eb300ffdf9f394a27f316f214bf6d927
 
 pkgname = delta-media-player
 
