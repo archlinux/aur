@@ -1,0 +1,84 @@
+#!/bin/sh
+
+list_mode=false
+while [ $# -gt 0 ]; do
+    case "$1" in
+    -l|--list)
+        list_mode=true
+        ;;
+    *)
+        printf 'USAGE: %s [-l|--list]\n' "$0" >&2
+        exit 1
+        ;;
+    esac
+    shift
+done
+
+escape() {
+    printf '%q ' "$@"
+    printf '\n'
+}
+
+read -r _Xorg xorg_user <<<"$(ps -eo comm,user | grep Xorg)"
+if ! $list_mode && [ -e "$xorg_user" ]; then
+    printf '[%s] could not find owner of X session' "$0" >&2
+    exit 1
+fi
+
+[ "$USER" != "$xorg_user" ] && exec su --login "$xorg_user" -c "DISPLAY=$(escape "$DISPLAY") $(escape "$0" "$@")"
+
+# per the EDID standard: http://read.pudn.com/downloads110/ebook/456020/E-EDID%20Standard.pdf
+
+big_to_little_endian() {
+    little_endian=""
+    while read -rn2 byte; do
+        little_endian="${byte}${little_endian}"
+    done <<<"$1"
+    printf '%s\n' "$little_endian"
+}
+
+hex_to_dec() {
+    printf '%d\n' "0x${1}"
+}
+
+model_number() {
+    hex_to_dec "$(big_to_little_endian "${1:20:4}")"
+}
+
+serial_number() {
+    hex_to_dec "$(big_to_little_endian "${1:24:8}")"
+}
+
+state=start
+{ xrandr --prop | grep -E '^[A-Za-z0-9-]+ connected|^[[:space:]]*[0-9a-f]+$'; printf 'EOF\n'; } | while read -r line; do
+    while true; do
+        case $state in
+        start)
+            if printf '%s\n' "$line" | grep -E '^[A-Za-z0-9-]+ connected' >/dev/null; then
+                state=edid
+                edid=""
+                output="$(printf '%s\n' "$line" | cut -f1 -d' ')"
+            fi
+            ;;
+        edid)
+            if printf '%s\n' "$line" | grep -vE '^[[:space:]]*[0-9a-f]+$' >/dev/null; then
+                printf '%s %s %s\n' "$output" "$(model_number "$edid")" "$(serial_number "$edid")"
+                state=start
+                continue
+            fi
+            edid="${edid}${line}"
+            ;;
+        esac
+        break
+    done
+done | {
+    if $list_mode; then
+        cat
+    else
+        if ! [ -x "${XDG_CONFIG_HOME:-$HOME/.config}/auto-xrandr/configure-outputs" ]; then
+            printf '[%s] user %s does not have an auto-xrandr configuration\n' "$0" "$xorg_user" >&2
+            exit 1
+        fi
+        "${XDG_CONFIG_HOME:-$HOME/.config}/auto-xrandr/configure-outputs"
+    fi
+}

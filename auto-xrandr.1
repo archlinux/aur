@@ -1,0 +1,68 @@
+.\" man page for auto-xrandr
+.TH AUTO-XRANDR 1 "auto-xrandr 1.0" "Adrian Sinclair" "auto-xrandr Manual"
+.SH NAME
+auto\-xrandr \- automatically configure displays
+.SH SYNOPSIS
+.B auto\-xrandr
+[\fB\-l\fR]
+.SH DESCRIPTION
+.B auto-xrandr
+is a small tool used to help with configuring display outputs using xrandr.
+It is intended to be run automatically by a udev rule, but can also be run manually.
+.P
+auto\-xrandr executes \`$XDG_CONFIG_HOME/auto\-xrandr/configure\-outputs,\' passing information about connected displays over STDIN.
+This information consists of lines in the format \`<xrandr_name> <product_id> <serial_number>.\'
+.SH OPTIONS
+.TP
+.BR \-l ", " \-\-list
+Write connected display information to STDOUT instead of calling the user's configuration script.
+.SH EXAMPLES
+Example output of auto\-xrandr \-\-list:
+.P
+.in 14
+eDP\-1 1234 0
+.br
+DP\-4 56789 7654321
+.br
+DP\-3\-2 56789 8765432
+.P
+Example configure-outputs script:
+.P
+.in 14
+#!/bin/sh
+.br
+while read \-r output product serial; do
+.br
+.in 18
+case "$product:$serial" in
+.br
+56789:8765432)
+.br
+.in 22
+xrandr \-\-output "$output" \-\-scale 1.5x1.5 \-\-pos 0x0 \-\-primary
+.br
+;;
+.br
+.in 18
+56789:7654321)
+.br
+.in 22
+xrandr \-\-output "$output" \-\-scale 1.5x1.5 \-\-pos 5760x0
+.br
+;;
+.br
+.in 18
+1234:0)
+.br
+.in 22
+xrandr \-\-output "$output" \-\-scale 2x2 \-\-pos 3840x3240
+.br
+;;
+.br
+.in 18
+esac
+.br
+.in 14
+done
+.SH SEE ALSO
+Xrandr(1)

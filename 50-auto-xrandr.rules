@@ -1,0 +1,1 @@
+SUBSYSTEM=="drm", ACTION=="change", ENV{DISPLAY}=":0", RUN+="/usr/bin/auto-xrandr"
