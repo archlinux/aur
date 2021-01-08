@@ -2,13 +2,19 @@
 
 pkgname=ignition-sensors
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides numerous sensor models designed to generate realistic data
 from simulation environments."
 arch=('x86_64')
 url="https://ignitionrobotics.org/libs/sensors"
 license=('Apache')
-depends=()
+depends=(
+    ignition-transport
+    ignition-rendering
+    ignition-msgs
+    ignition-plugin
+    sdformat
+)
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-sensors/archive/${pkgname}4_${pkgver}.tar.gz")
 sha256sums=('d7b3dd18e5130532d202acd08be0f941e552bd0f13154a0e9cd31d00919f2952')
