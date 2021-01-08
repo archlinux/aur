@@ -1,7 +1,7 @@
 pkgbase = ambiqsuite
 	pkgdesc = SDK for Ambiq MCU
 	pkgver = 2.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ambiq.com/
 	arch = any
 	license = unknown
