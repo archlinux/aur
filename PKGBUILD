@@ -2,7 +2,7 @@
 # Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
 
 pkgname=freecad-git
-pkgver=0.19_pre.r4993.gadc78f1e23
+pkgver=0.19_pre.r4995.g1851ddd933
 pkgrel=1
 epoch=0
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -88,7 +88,7 @@ check() {
 
 package() {
   cd FreeCAD
-  local _destdir=/opt/freecad-git
+  local _destdir=/usr/local/freecad  # maybe this belongs in /opt/freecad-git
   DESTDIR="${pkgdir}${_destdir}" ninja -C "${srcdir}/build" install
 
   mkdir -p "${pkgdir}"/usr/{share,bin,lib}
