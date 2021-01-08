@@ -3,7 +3,7 @@
 pkgname=todesk-bin
 _pkgname=${pkgname%-bin}
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote control and team work"
 arch=('x86_64')
 url="https://www.todesk.cn/"
@@ -28,6 +28,7 @@ package() {
 
   # binary wrapper
   install -Dm 755 usr/local/bin/${_pkgname} -t ${pkgdir}/usr/bin/
+  install -Dm 755 usr/local/bin/${_pkgname}update -t ${pkgdir}/usr/bin/
 
   # lib
   find opt/${_pkgname}/lib     -type f -exec install -Dm644 {} ${pkgdir}/{} \;
@@ -39,6 +40,7 @@ package() {
   # binary & scripts
   install -Dm755 opt/${_pkgname}/${_pkgname} -t ${pkgdir}/opt/${_pkgname}/
   install -Dm755 opt/${_pkgname}/${_pkgname}d -t ${pkgdir}/opt/${_pkgname}/
+  install -Dm755 opt/${_pkgname}/${_pkgname}update -t ${pkgdir}/opt/${_pkgname}/
   install -Dm755 opt/${_pkgname}/daemon.sh -t ${pkgdir}/opt/${_pkgname}/
 
   # qt.conf & todeskd.conf
