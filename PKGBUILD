@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.10.4
+pkgver=5.10.5
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -33,7 +33,7 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_tag_commit=4c5d5289951e22aeb0abcae7b629bcc1c24e8697
+_arch_tag_commit=85a93920af2d3fffff676e90c5560089496cba81
 _bmqversion=5.10-r2
 _bmq_patch="prjc_v${_bmqversion}.patch"
 _gcc_more_v='20201113'
@@ -42,31 +42,31 @@ source=(
   "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_tag_commit}/trunk/config"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=3a8bc83f97cb4ef7ad72a742382f373357d4d95b"
-  "0002-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch::https://git.archlinux.org/linux.git/patch/?id=0438f3011663ce01a981bb8b3af0e84e73551ecf"
-  "0003-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch::https://git.archlinux.org/linux.git/patch/?id=e5e77ad2223f662e1615266d8ef39a8db7e65a70"
-  "0004-drm-amd-display-Add-get_dig_frontend-implementation-.patch::https://git.archlinux.org/linux.git/patch/?id=88fbde26128dedf0097aa45b8c923973a4e5f843"
-  "0005-btrfs-Fix-500-2000-performance-regression-w-5.10.patch::https://git.archlinux.org/linux.git/patch/?id=0128c7314a4d856461caacfdd528a7bffa03d41e"
-  "0006-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch::https://git.archlinux.org/linux.git/patch/?id=61e5f6548784e507eb0662a71976a673436e6e3a"
-  "0007-ALSA-hda-hdmi-fix-locking-in-silent_stream_disable.patch::https://git.archlinux.org/linux.git/patch/?id=00f09a6a8193b46c83ae1c8ff6623db011f90099"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=3925c72c3245f3bdef8224114f665acb3ba65434"
+  "0002-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch::https://git.archlinux.org/linux.git/patch/?id=7c2e4c1ef7e5c78a2e668e744563c9bd5f2b488f"
+  "0003-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch::https://git.archlinux.org/linux.git/patch/?id=ab24a3058ff19f9578b93a4073773e11a2d3b9bf"
+  "0004-btrfs-Fix-500-2000-performance-regression-w-5.10.patch::https://git.archlinux.org/linux.git/patch/?id=24141c21ecdb5d95665d74b31c4a0b76110606bb"
+  "0005-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch::https://git.archlinux.org/linux.git/patch/?id=c954d99bf3e3ceaefd1c1b5293393a8614bd7571"
+  "0006-ALSA-hda-hdmi-fix-locking-in-silent_stream_disable.patch::https://git.archlinux.org/linux.git/patch/?id=a204be2dae771de5b62758710938b96a398a52cc"
+  "0006-Revert-drm-amd-display-Fix-memory-leaks-in-S3-resume.patch::https://git.archlinux.org/linux.git/patch/?id=a70000cd95f7d55a8df0a7f5e0ed41c5656a0f53"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-b2sums=('57f6d719451aacfd298452703ae02e6188885500e8cdf18fffa6b9967b0934a23cd378ab4c49b76ccb2f7a9012d6aa7ff1349d488cb31e40924be2f27b244cec'
+b2sums=('25b71eb091ea6526a7ebfef5bc201b76d612e5138b6b3caa708f90e76196c30d1865c223e2084a118a3883a9620d47c9576b1ab7db2c8d9c0f204dda7c640eab'
         'SKIP'
         'cb3a58e4eef8395b75887d94a84bba25f05fbec8f576a791623057a190a1d51b412a19ecf1b600ac3f9f6c46968eb0e130d571743e61afc231a97146ee4b52d0'
         '964457a55fe70988fcba968d2940d78d3daff5d1629863279ee15e07f8c1bb4e58e4d22b2cae9e66ab0c61c4d54de04e7a6eb2710eaaa536ec11f29efa961f1c'
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
-        '349d852edb6695efc940607cd3fe65bf2cd293109825f6fd31fdc6f3d398e9fd90d36bd0f9c5716a3b006495c7f64b090adb535180f7912d070735ce587877ac'
-        '425ab3ba80caee9f99f408d819d71a4ae55587183ca1137088b6f2177f9a81f172dd5b5437fc54cf2cc16f3e4be54caf5e9992c6ca20c6c57d3da98c144953a1'
-        'cd6c3054e949a6e1896c8686d2ee81111d60795a239404f54de6154fe83c9f027ed78ac31ce68fc609873f06db6392daf01edac00fe9aaa40549a42e40ac7f07'
-        '0a4eb7eafdbd504a4438c6a4bb25e5a296d83f2a57ba3629defac51a4bda17546ef45bac7b513c6fc084b955e68b08d4cd0b17d5952ccff056a2999dcafd56d8'
-        '241b3f112eb8f250b2a74b9c6255519ced8cc2c2f356cae9272351db16c003608efba1f72115d25e007b443b9151e1fced6848f4966b2648b1d21318304478e4'
-        'e53c858f4133c04268c0cba8f3ef7201ba5ceda82670544b8da3e12fdfaa62b471bacf171cc0689944d24453155933def0d136fa242e3f6b8763b2c103229867'
-        '7d81beaaa2dc5e00838c27d1bd049ae389128a17d540c72d4b8dba6a6dfb870b6bf4a5148fbdd4bf4337791e9f3c83ff4a84a95295aec7b8e9aec8c3cb2ad866')
+        'c986b237af87ea6f4113b64d74d433c01d02149d2a32a5b5b23ebcdeefc67d28ef463bd5f0e4e693ab72b1939b6b587f86ae3ddcf8d4ac7a08307af3ba8ef660'
+        '92bc0930b7001377091f8d92b301643603ddcab24181e48835aea8794c3d2e60dcbb6666188f6c98694475eb35e3fcdba15427b0bfe858c18906aceccf8915ce'
+        '0704667810f2b8ec7530de2a42846835ed16484390e29a0ce700e605c3751152a0338662c5fd0970db00da7aedcb7a305b1ff7d94e39ab10daf6f2d7edd9f79f'
+        '14c6cf3d7aade158390ad5a3b8b44e537605045a004df74c70f1b49985228043c4284146ef050889f6a9427a5ac295cd9bd46a95397cea5fedb60793ef8d5ffe'
+        '869269a1703d7b1249e17e24756d599412c6549f8aa2676459af8cd6435b2e3a53ff0b9ddbc88bd7b81313fbf21a9257e47bb104092bad52b419bf9e4d3324d0'
+        'eae587f948f21d94616fe384a8676b269e39b552086037c1a16c96497a752c08628dfc1a83ed57ccdea19389a0a03826c6c116ff6aa25dcedce1027a94564b6d'
+        '6db620d44c908f14fec4dd74b345ee2829fff1fad8783deb3c31cc9c4e298c269711dcc478dfd72c72a5d8b36447d6ff892589eb322bf0811810cd861805d3eb')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
