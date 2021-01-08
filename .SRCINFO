@@ -1,6 +1,6 @@
 pkgbase = python-mnelab
 	pkgdesc = Graphical user interface (GUI) for MNE, a Python-based toolbox for EEG/MEG analysis
-	pkgver = 0.5.7
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/cbrnr/mnelab
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = python-mnelab
 	depends = python-matplotlib
 	depends = python-mne
 	optdepends = python-scikit-learn
-	source = https://files.pythonhosted.org/packages/source/m/mnelab/mnelab-0.5.7.tar.gz
+	source = https://files.pythonhosted.org/packages/source/m/mnelab/mnelab-0.6.3.tar.gz
 	source = mnelab.desktop
-	sha1sums = 45c675063278a39030e34e2fd6182d24ca1cd341
+	sha1sums = 6d3bcbf9f3be8f1c3e77e5be0608b0973f335e23
 	sha1sums = 19c8abd304416595d8316f91eb2b5410aa88b070
 
 pkgname = python-mnelab
