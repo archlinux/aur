@@ -1,0 +1,15 @@
+pkgbase = hexdd-data-gog
+	pkgdesc = Hexen: Deathkings of the Dark Citadel data via GOG.com
+	pkgver = 1.1.42970
+	pkgrel = 1
+	url = https://www.gog.com/game/hexen_deathkings_of_the_dark_citadel
+	arch = any
+	license = Proprietary
+	makedepends = innoextract
+	makedepends = lgogdownloader
+	provides = hexdd-data
+	source = setup_hexen_deathkings_of_the_dark_citadel_1.1_(42970).exe::gogdownloader://hexen_deathkings_of_the_dark_citadel/en1installer0
+	sha512sums = 5176a94127bff2d46d3c025049d5f53b59dd0fd0f59eba19e4a82e50e6f98c45a560551a264747711534899df60d948a4161a2f34ecf9626c6b9627d33abcf5f
+
+pkgname = hexdd-data-gog
+
