@@ -1,11 +1,12 @@
 pkgbase = octopi-dev
-	pkgdesc = A powerful Pacman frontend using Qt5 libs
+	pkgdesc = This is Octopi, a powerful Pacman frontend using Qt libs
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tintaescura.com/projects/octopi/
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	makedepends = qt5-tools
 	depends = alpm_octopi_utils-dev
 	depends = pkgfile
@@ -22,7 +23,7 @@ pkgbase = octopi-dev
 	provides = octopi-repoeditor
 	provides = octopi-cachecleaner
 	conflicts = octopi
-	source = octopi-0.11.0-1.tar.gz::https://github.com/aarnt/octopi/archive/fd1b3516f40119a3e88de85c4f4fa977c179fdaf.tar.gz
+	source = octopi-0.11.0-2.tar.gz::https://github.com/aarnt/octopi/archive/4805a95ff88bf3a24418147cbd279686e585435d.tar.gz
 	sha256sums = SKIP
 
 pkgname = octopi-dev

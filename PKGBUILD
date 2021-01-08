@@ -1,17 +1,17 @@
 # Maintainer: MatMoul <matmoul@gmail.com>
 
 _pkggit=octopi
-_gitcommit=fd1b3516f40119a3e88de85c4f4fa977c179fdaf
+_gitcommit=4805a95ff88bf3a24418147cbd279686e585435d
 pkgbase=octopi-dev
 pkgname='octopi-dev'
 pkgver=0.11.0
-pkgrel=1
-pkgdesc="A powerful Pacman frontend using Qt5 libs"
+pkgrel=2
+pkgdesc="This is Octopi, a powerful Pacman frontend using Qt libs"
 arch=('i686' 'x86_64')
 url="https://tintaescura.com/projects/octopi/"
 license=('GPL2')
 depends=('alpm_octopi_utils-dev' 'pkgfile' 'qtermwidget' 'sudo')
-makedepends=('qt5-tools')
+makedepends=('git' 'qt5-tools')
 optdepends=('octopi-notifier-qt5: Notifier for Octopi using Qt5 libs'
             'octopi-notifier-frameworks: Notifier for Octopi with Knotifications support'
             'pacaur: for AUR support'
