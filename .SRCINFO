@@ -1,13 +1,13 @@
 pkgbase = python-pebble
 	pkgdesc = Pebble provides a neat API to manage threads and processes within an application
-	pkgver = 4.5.3
-	pkgrel = 2
+	pkgver = 4.6.0
+	pkgrel = 1
 	url = https://github.com/noxdafox/pebble
 	arch = any
 	license = LGPL
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pebble/Pebble-4.5.3.tar.gz
-	sha1sums = e8fecfca77a4192faec51748bbc46a644b25d3eb
+	source = https://files.pythonhosted.org/packages/source/p/pebble/Pebble-4.6.0.tar.gz
+	sha1sums = 4af237aa8bc0dba50d41bcc2e5c6ae2a40255e5e
 
 pkgname = python-pebble
 
