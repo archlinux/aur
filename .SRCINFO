@@ -7,7 +7,7 @@ pkgbase = mc-litematica-116-fabric
 	license = LGPL
 	makedepends = wget
 	makedepends = jq
-	source = manifest.json::https://masa.dy.fi/mcmods/client_mods/
+	source = manifest.json::https://masa.dy.fi/api/games/mods/minecraft/latest/client/
 	sha1sums = SKIP
 
 pkgname = mc-litematica-116-fabric

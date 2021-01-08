@@ -2,7 +2,6 @@
 
 _modname=litematica
 _mcver="1.16.4"
-_url="https://masa.dy.fi/api/games/mods/minecraft/latest/client/"
 pkgname=mc-litematica-116-fabric
 pkgver="0.0.0.dev.20210104.135541"
 pkgrel=3
@@ -11,7 +10,7 @@ arch=('any')
 url="https://masa.dy.fi/mcmods/client_mods/"
 license=('LGPL')
 makedepends=('wget' 'jq')
-source=("manifest.json::${url}")
+source=("manifest.json::https://masa.dy.fi/api/games/mods/minecraft/latest/client/")
 sha1sums=('SKIP')
 
 pkgver() {
