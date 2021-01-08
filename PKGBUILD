@@ -56,6 +56,7 @@ _flags=(
     -Dxwayland=enabled
     -Dx11-backend=enabled
     -Dexamples=false
+    -Dxdg-foreign=disabled
 )
 
 build() {
