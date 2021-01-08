@@ -1,6 +1,6 @@
 pkgbase = audacious-gtk
-	pkgdesc = Lightweight, advanced audio player focused on audio quality
-	pkgver = 4.0.5
+	pkgdesc = Lightweight, advanced audio player focused on audio quality - latest stable release
+	pkgver = 4.1.beta1
 	pkgrel = 1
 	url = https://audacious-media-player.org/
 	install = audacious.install
@@ -15,7 +15,7 @@ pkgbase = audacious-gtk
 	depends = hicolor-icon-theme
 	provides = audacious
 	conflicts = audacious
-	source = https://distfiles.audacious-media-player.org/audacious-4.0.5.tar.bz2
+	source = https://distfiles.audacious-media-player.org/audacious-4.1-beta1.tar.bz2
 	sha256sums = SKIP
 
 pkgname = audacious-gtk
