@@ -72,13 +72,12 @@ build() {
         -DUDUNITS=YES \
         -DPSLIB=YES ..
 
-    cd ..
     make -j3
 }
 
 package() {
-    cd ${srcdir}/gdl-1.0.0-rc.3/
+    cd ${srcdir}/gdl-1.0.0-rc.3/build
     make DESTDIR=${pkgdir} install
 
-    install -D -m755 ../../gdl.profile "${pkgdir}/etc/profile.d/gdl.sh"
+    install -D -m755 ${srcdir}/gdl.profile "${pkgdir}/etc/profile.d/gdl.sh"
 }
