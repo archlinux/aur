@@ -4,7 +4,7 @@
 pkgname=marktext-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.16.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple and elegant open-source markdown editor that focused on speed and usability'
 arch=('x86_64')
 url='https://marktext.app'
@@ -40,7 +40,8 @@ prepare() {
 package() {
     install -d "$pkgdir/usr/lib"
     cp -rT "$_pkgname-x64" "$pkgdir/usr/lib/$_pkgname"
-    ln -sf "/usr/lib/marktext/marktext" "$pkgdir/usr/bin"
+	install -d "$pkgdir/usr/bin"
+    ln -sf "/usr/lib/marktext/marktext" "$pkgdir/usr/bin/marktext"
     install -Dm644 "$pkgname-$pkgver.desktop" \
         "$pkgdir/usr/share/applications/$_pkgname.desktop"
     for s in 16 24 32 48 64 128 256 512; do
