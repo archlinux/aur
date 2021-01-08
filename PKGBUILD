@@ -1,30 +1,28 @@
+# Maintainer: sunplan
 # Maintainer: bitwave
 
 _pkgname=textadept
 pkgname=textadept-bin
-pkgver=10.8
+pkgver=11.0
 pkgrel=1
 pkgdesc="A fast, minimalist and remarkably extensible text editor (binary version)"
-url="http://foicica.com/textadept"
-arch=('i686' 'x86_64')
+url="https://orbitalquark.github.io/textadept/"
+arch=('x86_64')
 license=('MIT')
 depends=('lua' 'desktop-file-utils')
 optdepends=('gtk2: for GUI version'
             'python: for reStructuredText language module')
 conflicts=('textadept-beta' 'textadept-git' 'textadept-latest-stable'
            'textadept-modules' 'textadept-modules-beta' 'textadept')
-_arch=x86_64
-[ "$CARCH" = "i686" ] && _arch=i386
-source=(http://foicica.com/textadept/download/${_pkgname}_${pkgver}.${_arch}.tgz
-        http://foicica.com/textadept/download/${_pkgname}_${pkgver}.modules.zip
+source=(https://github.com/orbitalquark/textadept/releases/download/${_pkgname}_${pkgver}/${_pkgname}_${pkgver}.linux.tgz
+        https://github.com/orbitalquark/textadept/releases/download/${_pkgname}_${pkgver}/${_pkgname}_${pkgver}.modules.zip
         textadept.install)
-sha256sums=('2702e601091120909644b8f5b1b89661e46e16536de4d00a5c64c4951fe07d40'
-            '2b2a94f43129ca81d67fde0b206fcd96e352b09a7f687833baa4ee8c5e46b32c'
+sha256sums=('39cff1059dcece7999fd30ddc3f09df15fc72b10d982aa41b54247e7f3afde4e'
+            'dd1398cd72fe33c4404e2cc038158f3fd1db1b4e160b65af5945d2ba5761aeb2'
             'b2971d4c6743033b16b172c2b208942a4a6082c7bcfb593ae25bff3fbad45b4b')
-[ "$CARCH" = "i686" ] &&
-sha256sums[0]='6cd09da10394a266841559f8ffd6b65d28e242f9431182c7f1c4c0372a0b657b'
+
 package() {
-    cd textadept_${pkgver}.${_arch}
+    cd textadept_${pkgver}.linux
 
     # Create directories
     install -d $pkgdir/opt/textadept
@@ -34,7 +32,7 @@ package() {
     install -d $pkgdir/usr/bin
 
     # Copy files and directories
-    cp -r core lexers modules scripts themes doc *.lua LICENSE \
+    cp -r core lexers modules scripts themes docs *.lua LICENSE \
           $pkgdir/opt/textadept
     install -m755 textadept textadept-curses \
                   $pkgdir/opt/textadept
@@ -57,11 +55,9 @@ package() {
     ln -s /opt/textadept/doc $pkgdir/usr/share/doc/textadept
 
     # Copy modules
-    cd $srcdir/textadept_${pkgver}.modules
-    cp -r modules $pkgdir/opt/textadept
+    cp -r $srcdir/textadept-modules $pkgdir/opt/textadept
 
     # Clean up
-    rm $pkgdir/opt/textadept/doc/bombay
     # rm $pkgdir/opt/textadept/modules/yaml/libyaml64{.dll,jit.dll,osx.so}
     rm -rf `find $pkgdir -type d -name .hg`
 }
