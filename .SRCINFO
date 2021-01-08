@@ -12,6 +12,7 @@ pkgbase = mygnuhealth-git
 	depends = python-requests
 	depends = python-tinydb
 	depends = python-bcrypt
+	depends = pyside2
 	provides = mygnuhealth
 	conflicts = mygnuhealth
 	source = git+https://invent.kde.org/pim/mygnuhealth.git
