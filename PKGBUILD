@@ -2,7 +2,7 @@
 
 pkgname=dwarfs
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast high compression read-only file system"
 url='https://github.com/mhx/dwarfs'
 arch=('x86_64')
@@ -32,6 +32,9 @@ build() {
 
 package() {
   cmake --install build --prefix "${pkgdir}/usr"
+
+  mv "${pkgdir}/usr/sbin"/* "${pkgdir}/usr/bin"
+  rm -rf "${pkgdir}/usr/sbin"
 
   install -Dm0644 "${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
