@@ -1,7 +1,7 @@
 pkgbase = otf-takao
 	pkgdesc = Japanese outline fonts based on IPA Fonts (otf-ipafont)
 	pkgver = 15.03
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/takao-fonts
 	arch = any
 	license = custom
