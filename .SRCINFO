@@ -1,6 +1,6 @@
-pkgbase = fcct_test_do_not_use
+pkgbase = fcct
 	pkgdesc = Fedora CoreOS Config Transpiler
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/coreos/fcct
 	arch = any
@@ -8,8 +8,10 @@ pkgbase = fcct_test_do_not_use
 	makedepends = git
 	makedepends = go
 	makedepends = make
-	source = git+https://github.com/coreos/fcct.git#tag=v0.3.0
+	source = git+https://github.com/coreos/fcct.git#tag=v0.4.0
+	source = change-bin-dir.patch
 	sha256sums = SKIP
+	sha256sums = a26cbc75fba1872a0213fac07d46650c3a2854913205695402f41232faeeeda5
 
-pkgname = fcct_test_do_not_use
+pkgname = fcct
 
