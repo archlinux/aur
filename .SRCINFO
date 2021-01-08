@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-checker
 	pkgdesc = Check kodi addons or whole kodi repositories for errors and best practices.
-	pkgver = 0.0.18
+	pkgver = 0.0.20
 	pkgrel = 1
 	url = https://pypi.org/project/kodi-addon-checker
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = kodi-addon-checker
 	depends = python-radon
 	depends = python-urllib3
 	depends = python-xmlschema
-	source = https://files.pythonhosted.org/packages/source/k/kodi-addon-checker/kodi-addon-checker-0.0.18.tar.gz
-	sha256sums = 79447ff22e75f6703925e7fe6585ec99a82e6f7aa2a678f7c24e1ed2be46af2b
+	source = https://files.pythonhosted.org/packages/source/k/kodi-addon-checker/kodi-addon-checker-0.0.20.tar.gz
+	sha256sums = 0a3edc3b88d5fcbea725ac33d5cba1291a39323b3f2ca94a4c9fc6a50a180da1
 
 pkgname = kodi-addon-checker
 
