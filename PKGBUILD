@@ -1,7 +1,7 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
 pkgname=fcct_test_do_not_use
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Fedora CoreOS Config Transpiler"
 arch=("any")
