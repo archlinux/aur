@@ -1,7 +1,7 @@
 pkgbase = python-pystray
 	pkgdesc = Allows to create a system tray icon
 	pkgver = 0.17.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moses-palmer/pystray
 	changelog = python-pystray.changelog
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = python-pystray
 	depends = python-pillow
 	depends = python-xlib>=0.17
 	depends = libappindicator-gtk3
+	depends = python-gobject
 	source = python-pystray-0.17.2.tar.gz::https://github.com/moses-palmer/pystray/archive/v0.17.2.tar.gz
 	sha512sums = d9e7f8896e177ecab9998fce8ec23a8a030525d114f7f546471c0995bbea23b698870ae084d56ad091a46e0b14047a68aa7f5dd0f2edf1a2479704408ecc6435
 

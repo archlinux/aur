@@ -3,12 +3,12 @@
 
 pkgname="python-pystray"
 pkgver=0.17.2
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('GPL3')
 pkgdesc="Allows to create a system tray icon"
 url="https://github.com/moses-palmer/pystray"
-depends=('python-six' 'python-pillow' 'python-xlib>=0.17' 'libappindicator-gtk3')
+depends=('python-six' 'python-pillow' 'python-xlib>=0.17' 'libappindicator-gtk3' 'python-gobject')
 makedepends=('python>=3.4' 'python-setuptools' 'python-pip' 'python-wheel')
 changelog="$pkgname.changelog"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/moses-palmer/pystray/archive/v${pkgver}.tar.gz")
