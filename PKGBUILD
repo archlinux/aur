@@ -39,7 +39,7 @@ build() {
   # disable libidn for security reasons:
   # http://lists.gnupg.org/pipermail/gnutls-devel/2015-May/007582.html
 
-  ./bootstrap
+  ./bootstrap --skip-po
   ./configure --prefix=/usr --libdir=/usr/lib32 --build=i686-pc-linux-gnu \
     --with-zlib \
     --with-included-unistring \
