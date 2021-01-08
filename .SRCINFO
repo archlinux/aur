@@ -1,0 +1,13 @@
+pkgbase = grasp
+	pkgdesc = Create strong passwords using words that are easy for you to remember. A password manager that does not require any type of storage
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/lucasepe/grasp
+	arch = x86_64
+	makedepends = go
+	makedepends = git
+	source = grasp-0.1.1.tar.gz::https://github.com/lucasepe/grasp/archive/v0.1.1.tar.gz
+	sha256sums = 23cb977b5ee435c9a0540976c6fa82e9c282cf6dca0a37fc99303a88a83cd332
+
+pkgname = grasp
+
