@@ -1,4 +1,5 @@
-# Maintainer: Jack Random <jack (at) random.to>
+# Maintainer: Daniel Sonck <daniel (at) sonck (dot) nl>
+# Contributor: Jack Random <jack (at) random.to>
 
 # Contributors from demo package:
 # Samæ <eeva.samæ@marvid.fr>
@@ -13,7 +14,7 @@
 #  place it into same DIR as this file
 
 pkgname="renoise"
-pkgver="3.2.4"
+pkgver="3.3.0"
 pkgrel="1"
 pkgdesc="A music composition program"
 arch=("x86_64")
