@@ -1,0 +1,28 @@
+pkgbase = pkgbase
+	pkgdesc = Japanese-Russian kanji and word dictionary
+	pkgver = 1.10
+	pkgrel = 1
+	url = http://www.susi.ru/yarxi/
+	arch = x86_64
+	license = custom
+	depends = ttf-sazanami
+	depends = nas
+
+pkgname = yarxi
+
+pkgbase = pacminder
+	pkgdesc = Configurable reminder to update pacman.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/samox73/pacminder
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = boost-libs
+	depends = libconfig
+	source = git+https://github.com/samox73/pacminder.git
+	md5sums = SKIP
+
+pkgname = pacminder
+
