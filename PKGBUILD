@@ -1,8 +1,8 @@
 # Maintainer: Maurice Zhou <ja at apvc punkt uk>
 pkgname=rozb3-pac
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
-pkgdesc="pacman hook for ZFS boot environment"
+pkgdesc="create ZFS boot environment for pacman transactions"
 arch=(any)
 url="https://gitlab.com/m_zhou/rozb3-pac"
 license=('GPL')
@@ -13,4 +13,4 @@ package() {
     cd "$pkgname-$pkgver"
     make DESTDIR=$pkgdir install
 }
-md5sums=('67bf7272d2efb061e9303ea74e36a90e')
+md5sums=('526c8a25fcb6cf52ce1eda5c7294de41')

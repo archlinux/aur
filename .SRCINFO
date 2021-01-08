@@ -1,13 +1,13 @@
 pkgbase = rozb3-pac
-	pkgdesc = pacman hook for ZFS boot environment
-	pkgver = 0.1.4
+	pkgdesc = create ZFS boot environment for pacman transactions
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://gitlab.com/m_zhou/rozb3-pac
 	arch = any
 	license = GPL
 	depends = bieaz
-	source = https://gitlab.com/m_zhou/rozb3-pac/-/archive/0.1.4/rozb3-pac-0.1.4.tar.gz
-	md5sums = 67bf7272d2efb061e9303ea74e36a90e
+	source = https://gitlab.com/m_zhou/rozb3-pac/-/archive/0.1.5/rozb3-pac-0.1.5.tar.gz
+	md5sums = 526c8a25fcb6cf52ce1eda5c7294de41
 
 pkgname = rozb3-pac
 
