@@ -1,0 +1,14 @@
+pkgbase = lighttpd_minimal
+	pkgdesc = Lighttpd with less features to be more minimal as never. Compiled with native support.
+	pkgver = 1.4.59
+	pkgrel = 1
+	url = https://www.lighttpd.net/
+	arch = any
+	license = BSD3
+	provides = lighttpd
+	conflicts = lighttpd
+	source = git+https://github.com/lighttpd/lighttpd1.4.git
+	md5sums = SKIP
+
+pkgname = lighttpd_minimal
+
