@@ -1,0 +1,15 @@
+pkgbase = hexen2-data-gog
+	pkgdesc = Hexen II data via GOG.com
+	pkgver = 1.11.43447
+	pkgrel = 1
+	url = https://www.gog.com/game/hexen_ii
+	arch = any
+	license = Proprietary
+	makedepends = innoextract
+	makedepends = lgogdownloader
+	provides = hexen2-data
+	source = setup_hexen_ii_1.11_(43447).exe::gogdownloader://hexen_ii/en1installer0
+	sha512sums = 1dddc5869216db9ac1d4a380fae322b229bac0fd98672326b9f29c8494e073eafda33575cd0cc386e47aef4208446b98eae0755ad05b0f4e80764050debfb410
+
+pkgname = hexen2-data-gog
+
