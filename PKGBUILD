@@ -5,14 +5,14 @@
 # https://github.com/mymedia2/tdesktop
 pkgname=telegram-desktop-dev
 pkgver=2.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
 url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
          'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'qt5-wayland' 'gtk3')
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'libtg_owt-tdesktop-dev'
+makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'libtg_owt-git'
              'libxcb')
 optdepends=('ttf-opensans: default Open Sans font family')
 
