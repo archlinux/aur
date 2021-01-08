@@ -2,7 +2,7 @@
 
 pkgname=prosody-mod-invites-page
 pkgver=2020.10.16
-pkgrel=1
+pkgrel=2
 _commit="0f26ae2f2a74"
 pkgdesc="Generate friendly web page for invitations"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://modules.prosody.im/mod_invites_page.html"
 license=('MIT')
 depends=('prosody')
 makedepends=('mercurial')
-optdepends=("prosody-register-apps: Configuring list of XMPP clients")
+optdepends=("prosody-mod-register-apps: Configuring list of XMPP clients")
 source=("hg+https://hg.prosody.im/prosody-modules/"#revision=$_commit)
 sha1sums=('SKIP')
 
