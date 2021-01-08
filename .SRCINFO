@@ -1,0 +1,16 @@
+pkgbase = prosody-invitations
+	pkgdesc = Meta package for all prosody modules regarding inviting new users
+	pkgver = 1
+	pkgrel = 1
+	url = https://blog.prosody.im/great-invitations/
+	arch = any
+	license = MIT
+	depends = prosody-mod-invites
+	depends = prosody-mod-invites-adhoc
+	depends = prosody-mod-invites-register
+	depends = prosody-mod-invites-register-web
+	depends = prosody-mod-invites-api
+	optdepends = prosody-mod-register-apps: optional for two modules
+
+pkgname = prosody-invitations
+
