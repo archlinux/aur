@@ -6,6 +6,7 @@ pkgbase = assetfinder-git
 	arch = any
 	license = MIT
 	makedepends = go
+	makedepends = git
 	conflicts = assetfinder
 
 pkgname = assetfinder-git

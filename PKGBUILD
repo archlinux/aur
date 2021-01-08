@@ -9,7 +9,7 @@ pkgdesc="Find domains and subdomains related to a given domain"
 arch=('any')
 url="https://github.com/tomnomnom/assetfinder"
 license=('MIT')
-makedepends=('go')
+makedepends=('go' 'git')
 conflicts=('assetfinder')
 
 prepare() {
