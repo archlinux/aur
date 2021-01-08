@@ -1,7 +1,7 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=redasm-git
-pkgver=r1590.8526bfd
+pkgver=r1597.5f723db
 pkgrel=1
 url='https://github.com/REDasmOrg/REDasm'
 arch=('i686' 'x86_64')
@@ -77,7 +77,6 @@ prepare() {
 
     cd LibREDasm
     git submodule init
-    git config submodule.depends/capstone.url "$srcdir/capstone"
     git config submodule.rdcore/libs/taojson.url "$srcdir/json"
     git submodule update
 
@@ -89,6 +88,7 @@ prepare() {
     cd "$srcdir"/REDasm/submodules/assemblers
     git submodule init
     git config submodule.x86/zydis.url "$srcdir/zydis"
+    git config submodule.arm64/capstone.url "$srcdir/capstone"
     git submodule update
 
     cd x86/zydis
