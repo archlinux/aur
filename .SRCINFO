@@ -1,0 +1,24 @@
+pkgbase = hushboard-git
+	pkgdesc = A command-line utility that checks for best practices in SaltStack.
+	pkgver = 7748a07
+	pkgrel = 0
+	url = https://github.com/jbouter/hushboard
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	depends = libappindicator-gtk3
+	depends = python-gobject
+	depends = python-xlib
+	depends = gtk3
+	provides = hushboard
+	conflicts = hushboard
+	source = git+https://github.com/jbouter/hushboard
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 3ce314c6b503c298b2ebba2d176915a4
+
+pkgname = hushboard-git
+
