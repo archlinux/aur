@@ -39,6 +39,5 @@ build() {
 package() {
 	# cd "$pkgname-$pkgver/build"
 	cd "$pkgname/build"
-  rm /usr/
 	make DESTDIR="$pkgdir/" install
 }

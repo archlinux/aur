@@ -1,6 +1,6 @@
 pkgbase = pacminder
 	pkgdesc = Configurable reminder to update pacman.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/samox73/pacminder
 	arch = i686
