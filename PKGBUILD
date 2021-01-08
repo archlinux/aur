@@ -6,7 +6,7 @@
 
 _gemname=rails
 pkgname=ruby-$_gemname
-pkgver=6.1.0
+pkgver=6.1.1
 pkgrel=1
 pkgdesc='Full-stack web application framework.'
 arch=(any)
@@ -18,7 +18,7 @@ depends=(ruby ruby-activesupport ruby-actionpack ruby-actionview ruby-activemode
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('e66d0b9a1dd8640c5a98da5b4ebd7ef5d1e01be67477f910e0cf514fa89c221b')
+sha256sums=('b7710f82e68af72db1ffa30ff3d67437e8fb91c26255659f3c2602964b834a64')
 
 package() {
     local _gemdir="$(ruby -e'puts Gem.default_dir')"
