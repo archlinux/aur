@@ -4,7 +4,7 @@ pkgname=brltty-git
 pkgver=6.2.r49.g6092ac0ae
 pkgrel=1
 pkgdesc="Braille display driver for Linux/Unix (development version)"
-arch=(x86_64)
+arch=('x86_64')
 url="https://brltty.app"
 license=('LGPL2.1')
 depends=('bluez-libs' 'expat' 'gcc-libs' 'glibc' 'liblouis' 'libspeechd' 'pcre'
@@ -71,5 +71,5 @@ package() {
 	make INSTALL_ROOT="${pkgdir}" install-dracut
 	make INSTALL_ROOT="${pkgdir}" install-polkit
 	chmod -c 750 "${pkgdir}/usr/share/polkit-1/rules.d"
-	install -vDm 644 "Documents/brltty.conf" -t "${pkgdir}/etc/"
+	install -vDm 644 "Documents/${pkgname%-git}.conf" -t "${pkgdir}/etc/"
 }

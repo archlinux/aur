@@ -1,5 +1,5 @@
 post_install () {
-  brltty-genkey
+  [ ! -e /etc/brlapi.key ] && brltty-genkey
   echo "Please add your user to the brlapi group."
 }
 
