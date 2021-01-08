@@ -1,8 +1,8 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 
 pkgname=azote-git
-pkgver=1.7.14.r17.g76607a2
-pkgrel=3
+pkgver=1.8.1.r8.g0f8ae39
+pkgrel=2
 pkgdesc="Wallpaper & color manager for Sway, i3 and other WMs (development version)"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/azote"
@@ -37,7 +37,7 @@ package() {
   install -D -m 755 dist/azote "$pkgdir"/usr/bin/azote
   install -Dm 644 LICENSE-COLORTHIEF "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-COLORTHIEF"
   install -Dm755 dist/azote.desktop "$pkgdir"/usr/share/applications/azote.desktop
-  install -Dm644 dist/azote.svg "$pkgdir"/usr/share/azote/azote.svg
+  install -Dm644 dist/azote.svg "$pkgdir"/usr/share/pixmaps/azote.svg
   install -Dm644 dist/indicator_active.png "$pkgdir"/usr/share/azote/indicator_active.png
   install -Dm644 dist/indicator_attention.png "$pkgdir"/usr/share/azote/indicator_attention.png
 }
