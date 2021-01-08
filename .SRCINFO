@@ -1,0 +1,31 @@
+pkgbase = wallabag-client
+	pkgdesc = Command line client for the self hosted read-it-later app Wallabag
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://github.com/artur-shaik/wallabag-client
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-beautifulsoup4
+	depends = python-pycryptodome
+	depends = python-requests
+	depends = python-click
+	depends = python-click-spinner
+	depends = python-click-repl
+	depends = python-pyxdg
+	depends = python-colorama
+	depends = python-setuptools
+	depends = python-delorean
+	depends = python-tzlocal
+	depends = python-humanize
+	depends = python-lxml
+	depends = python-tabulate
+	depends = python-packaging
+	depends = python-babel
+	options = !emptydirs
+	source = https://pypi.io/packages/source/w/wallabag-client/wallabag-client-1.6.3.tar.gz
+	sha512sums = cbf9ec6420af8f68febe2d8202b622018319ca87b4851c9e165e0d0b55d46e81082d3945bb60a6d28eca72de7d022214e92ab149f545d5496dc15a48d6ef0fa4
+
+pkgname = wallabag-client
+
