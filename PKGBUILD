@@ -2,7 +2,7 @@
 # Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
 
 pkgname=freecad-git
-pkgver=0.19_pre.r4809.gefa6346e5f
+pkgver=0.19_pre.r4993.gadc78f1e23
 pkgrel=1
 epoch=0
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -58,8 +58,6 @@ pkgver() {
 
 prepare() {
   cd FreeCAD
-  # patch out a build error
-  #curl -L "https://github.com/FreeCAD/FreeCAD/pull/2842/commits/095984fce44931a4c8e2ace269d45a62640fbfb4.patch" | patch -p1
 }
 
 build() {
@@ -68,12 +66,10 @@ build() {
   cmake -Wno-dev .. \
     -D BUILD_ENABLE_CXX_STD=C++14 \
     -D BUILD_QT5=ON \
+    -D CMAKE_INSTALL_PREFIX="" \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_C_FLAGS="${CFLAGS} -fPIC -w" \
     -D CMAKE_CXX_FLAGS="${CXXFLAGS} -fPIC -w" \
-    -D CMAKE_INSTALL_DATADIR="/usr/share/freecad" \
-    -D CMAKE_INSTALL_DOCDIR="/usr/share/freecad/doc" \
-    -D CMAKE_INSTALL_PREFIX="/usr/lib/freecad" \
     -D FREECAD_USE_EXTERNAL_PIVY=ON \
     -D FREECAD_USE_OCC_VARIANT="Official Version" \
     -D FREECAD_USE_QT_FILEDIALOG=ON \
@@ -84,39 +80,36 @@ build() {
 }
 
 check() {
-  cd FreeCAD
-  "${srcdir}/build/bin/FreeCAD" --console --run-test 0
+  DESTDIR="${srcdir}/check" ninja -C "${srcdir}/build" install
+
+  cd "${srcdir}/check"
+  LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:lib bin/FreeCADCmd --console --run-test 0
 }
 
 package() {
   cd FreeCAD
-  DESTDIR="${pkgdir}" ninja -C "${srcdir}/build" install
+  local _destdir=/opt/freecad-git
+  DESTDIR="${pkgdir}${_destdir}" ninja -C "${srcdir}/build" install
 
-  # Create desktop shortcut
-  gendesk -f -n --pkgname "${pkgname}" --pkgdesc "${pkgdesc}" --name FreeCAD \
-    --mimetypes='application/x-extension-fcstd' --startupnotify=true
+  mkdir -p "${pkgdir}"/usr/{share,bin,lib}
 
-  # Package desktop shortcut
-  install -Dm644 freecad.desktop \
-    "${pkgdir}/usr/share/applications/freecad.desktop"
-
-  # Package MIME info
-  #install -Dm644 freecad.xml "$pkgdir/usr/share/mime/packages/freecad.xml"
-
-  cd src/Gui/Icons
-
-  # Package icons
-  for i in 16 32 48 64; do
-    install -Dm644 "freecad-icon-$i.png" \
-      "${pkgdir}/usr/share/icons/hicolor/${i}x$i/apps/freecad.png"
+  # links for bin
+  FILES="${pkgdir}${_destdir}"/bin/*
+  for f in $FILES
+  do
+    ln -s ${_destdir}/bin/$(basename $f) "${pkgdir}"/usr/bin/$(basename $f)
   done
-  install -Dm644 freecad.svg \
-    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/freecad.svg"
 
-  # Package symlinks in /usr/bin
-  install -d "${pkgdir}/usr/bin"
-  ln -sf /usr/lib/freecad/bin/FreeCAD "${pkgdir}/usr/bin/freecad"
-  ln -sf /usr/lib/freecad/bin/FreeCAD "${pkgdir}/usr/bin/FreeCAD"
-  ln -sf /usr/lib/freecad/bin/FreeCADCmd "${pkgdir}/usr/bin/freecadcmd"
-  ln -sf /usr/lib/freecad/bin/FreeCADCmd "${pkgdir}/usr/bin/FreeCADCmd"
+  # links for lib
+  FILES="${pkgdir}${_destdir}"/lib/*
+  for f in $FILES
+  do
+    ln -s ${_destdir}/lib/$(basename $f) "${pkgdir}"/usr/lib/$(basename $f)
+  done
+
+  # manage share files
+  mv "${pkgdir}${_destdir}"/share/{applications,doc,icons,metainfo,mime,pixmaps,thumbnailers} "${pkgdir}"/usr/share
+
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 "${pkgdir}${_destdir}"/share/License.txt
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE
 }
