@@ -1,0 +1,13 @@
+pkgbase = python-pylspci
+	pkgdesc = A Python parser for the lspci command from the pciutils package.
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pylspci
+	arch = any
+	license = GPL3
+	depends = python-cached-property
+	source = git+https://gitlab.com/Lucidiot/pylspci.git#tag=0.3.3
+	md5sums = SKIP
+
+pkgname = python-pylspci
+
