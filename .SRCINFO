@@ -1,6 +1,6 @@
 pkgbase = o
-	pkgdesc = Small, fast and VT100-compatible text editor
-	pkgver = 2.34.1
+	pkgdesc = Quick little text editor limited by VT100
+	pkgver = 2.35.0
 	pkgrel = 1
 	url = https://github.com/xyproto/o
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = o
 	optdepends = lua-format: for formatting Lua
 	optdepends = lua: for compiling Lua
 	optdepends = tidy: for formatting HTML
-	source = git+https://github.com/xyproto/o#commit=07370880aa7df4f1883553a5e6482df930e0eab2
+	source = git+https://github.com/xyproto/o#commit=2d941e0b13188018b0857874ce583303660f3cda
 	sha256sums = SKIP
 
 pkgname = o
