@@ -2,7 +2,7 @@
 
 pkgname=domain2idna
 _name=${pkgname#}
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=2
 pkgdesc="The tool to convert a domain or a file with a list of domain to the famous IDNA format."
 arch=('any')
@@ -19,7 +19,7 @@ source=(
     "https://raw.githubusercontent.com/PyFunceble/domain2idna/master/LICENSE"
 )
 sha256sums=(
-    "975a69015a181e6cbbe16aff8699c39908086cae3514e1b350c07c41a7eef0d0"
+    "7f45b4de5ae261b23270b7f980c2600cd306fa570d4ade9e5935f965327bba2d"
     "08c0daa67e227be62d082aa48d00e990e1192791291293ba683cec88151c6820"
 )
 
