@@ -3,7 +3,7 @@
 _modname=itemscroller
 _mcver="1.16.4"
 pkgname=mc-itemscroller-116-fabric
-pkgver="0.15.0.dev.20210105.174829"
+pkgver="0.15.0.dev.20210108.022049"
 pkgrel=1
 pkgdesc="A client-side mod that adds several ways of moving items in inventory GUIs."
 arch=('any')
