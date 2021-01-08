@@ -1,0 +1,7 @@
+*.zip
+*.tar.gz
+*.xz
+*.zst
+pkg
+src
+i3lockr*

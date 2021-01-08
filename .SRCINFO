@@ -1,0 +1,16 @@
+pkgbase = i3lockr-bin
+	pkgdesc = Distort a screenshot and run i3lock.
+	pkgver = 1.1.0_docfix
+	pkgrel = 1
+	url = https://github.com/owenthewizard/i3lockr
+	arch = x86_64
+	license = APACHE
+	license = MIT
+	depends = i3lock>=2.12
+	source = i3lockr-bin-1.1.0_docfix::https://github.com/owenthewizard/i3lockr/releases/download/v1.1.0-docfix/i3lockr
+	source = LICENSE-MIT.md
+	sha256sums = 086f33891af6268f1282ce6d41db2b910e3bc744b5c802033630306544b337dd
+	sha256sums = f69e4704af94bb7dc2462898e6484065d148d31a325f01e0da3652f7a501340e
+
+pkgname = i3lockr-bin
+
