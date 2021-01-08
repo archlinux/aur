@@ -2,13 +2,12 @@
 
 pkgname=iscan-plugin-gt-1500
 _pkgname=iscan-gt-1500-bundle
-pkgver=2.2.0
-_pkgver=1.0.1
+pkgver=2.2.1
+_pkgver=2.30.4
 pkgrel=2
 pkgdesc="iscan plugin for the Epson GT-1500 scanner"
 arch=('i686' 'x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
-license=('custom:AVASYSPL')
 depends=('iscan')
 install=gt-1500.install
 
@@ -16,12 +15,12 @@ if [ "$CARCH" = "i686" ]; then
   _ARCH=i386
   _ARCH2=x86
   source=("https://download2.ebz.epson.net/iscan/plugin/gt-1500/deb/x86/iscan-gt-1500-bundle-$_pkgver.x86.deb.tar.gz")
-  md5sums=('693e047ff461a9c2900413eb80fb4ac5')
+  md5sums=('5e9fe2f3fcf61b4d5ca854324475c7fc')
 elif [ "$CARCH" = "x86_64" ]; then
   _ARCH=amd64
   _ARCH2=x64
   source=("https://download2.ebz.epson.net/iscan/plugin/gt-1500/deb/x64/iscan-gt-1500-bundle-$_pkgver.x64.deb.tar.gz")
-  md5sums=('e1957478b03ffc3236581b2e772cc8af')
+  md5sums=('954e9c95e3ba3795e6244f5338be436c')
 fi
 
 build(){
@@ -39,5 +38,4 @@ package(){
   install -d $pkgdir/usr/share/iscan
   install -m644 usr/share/iscan/esfw86.bin $pkgdir/usr/share/iscan
   install -d $pkgdir/usr/share/licenses/$pkgname/
-  install -m644 usr/share/doc/$pkgname/{AVASYSPL.en.txt,AVASYSPL.ja.txt,copyright} $pkgdir/usr/share/licenses/$pkgname/
 }
