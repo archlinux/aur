@@ -1,7 +1,7 @@
 # Maintainer: Maurice Zhou <ja at apvc punkt uk>
 
 pkgname=bieaz
-pkgver=0.0.20
+pkgver=0.0.21
 pkgrel=1
 pkgdesc="Shell script ZFS boot environment manager"
 arch=(any)
@@ -24,3 +24,5 @@ prepare() {
 }
 md5sums=('3bf7dc0a016951d63243b61c9c8f0873'
          '730393243c14719c345954f90306ef8c')
+md5sums=('3b5fd7035c608d4528916c747a688bfc'
+         'bac8697ba0fdb65adca3b76668fa01a1')

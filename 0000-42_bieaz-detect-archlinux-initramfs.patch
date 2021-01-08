@@ -1,8 +1,8 @@
 diff --git a/42_bieaz b/42_bieaz
-index 98f303c..967c719 100755
+index dcbb843..69f479a 100755
 --- a/42_bieaz
 +++ b/42_bieaz
-@@ -199,7 +199,7 @@ while [ "x$list" != "x" ] ; do
+@@ -202,7 +202,7 @@ while [ "x$list" != "x" ] ; do
    gettext_printf "Found linux image: %s\n" "$linux" >&2
    basename=`basename $linux`
    dirname=`dirname $linux`
