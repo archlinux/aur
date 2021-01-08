@@ -15,8 +15,11 @@ source=(
   "git+https://github.com/pbrisbin/dotfiles.git#tag=v1.0"
   nvim.patch
 )
-sha256sum=('SKIP'
-         '64ed706fd94cc0340e7c46ee4c8db1076040b6f9a66e4e4f5ebcb9f5157c032d')
+
+sha256sums=(
+  'SKIP'
+  '64ed706fd94cc0340e7c46ee4c8db1076040b6f9a66e4e4f5ebcb9f5157c032d'
+)
 
 pkgver() {
 	cd "${srcdir}/dotfiles"
