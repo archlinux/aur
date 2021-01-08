@@ -3,11 +3,8 @@
 
 
 pkgname=mutt-wizard-git
-pkgver() {
-  cd "${pkgname%-git}"
-  printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-pkgver=r859.g9a3fdb8
+pkgver() { git -C "${pkgname%-git}" describe --tags | sed 's/^v//;s/-/.r/;s/-/./g'; }
+pkgver=3.1.r2.gd7fd475
 pkgrel=1
 
 pkgdesc='Simple interface to auto-configure neomutt and isync with safe passwords'
@@ -19,7 +16,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
 makedepends=('git')
-depends=('neomutt' 'isync' 'msmtp' 'notmuch-runtime' 'pass')
+depends=('neomutt' 'isync' 'msmtp' 'notmuch-runtime' 'pass' 'curl')
 optdepends=('imagemagick: view images inside of the neomutt TUI'
             'w3m: view HTML email and images inside of the neomutt TUI'
             'lynx: view HTML email inside of the neomutt TUI'
@@ -28,7 +25,8 @@ optdepends=('imagemagick: view images inside of the neomutt TUI'
             'urlview: list URLs found in mails to open them in a browser'
             'abook: contact store and tab completion'
             'protonmail-bridge: use neomutt with protonmail accounts'
-            'pam-gnupg: automatically unlock gpg keys at session login')
+            'pam-gnupg: automatically unlock gpg keys at session login'
+            'cron: set up automatic mail syncing')
 
 options=('zipman')
 
