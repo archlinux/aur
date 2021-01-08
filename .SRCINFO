@@ -1,15 +1,15 @@
 pkgbase = bieaz
 	pkgdesc = Shell script ZFS boot environment manager
-	pkgver = 0.0.22
+	pkgver = 0.0.23
 	pkgrel = 1
 	url = https://gitlab.com/m_zhou/bieaz
 	arch = any
 	license = GPL
 	depends = coreutils
 	optdepends = grub: select boot environment at boot
-	source = https://gitlab.com/m_zhou/bieaz/-/archive/0.0.22/bieaz-0.0.22.tar.gz
+	source = https://gitlab.com/m_zhou/bieaz/-/archive/0.0.23/bieaz-0.0.23.tar.gz
 	source = 0000-42_bieaz-detect-archlinux-initramfs.patch
-	md5sums = 7a2f14a8002fb14873db89eade04e070
+	md5sums = c32c4365033bca0eb2a4c809cafb7ae8
 	md5sums = bac8697ba0fdb65adca3b76668fa01a1
 
 pkgname = bieaz

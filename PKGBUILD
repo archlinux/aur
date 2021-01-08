@@ -1,7 +1,7 @@
 # Maintainer: Maurice Zhou <ja at apvc punkt uk>
 
 pkgname=bieaz
-pkgver=0.0.22
+pkgver=0.0.23
 pkgrel=1
 pkgdesc="Shell script ZFS boot environment manager"
 arch=(any)
@@ -22,5 +22,5 @@ prepare() {
 	echo "Patch to detect of Arch Linux initramfs images by grub-mkconfig..."
 	patch -Np1 -i "${srcdir}/0000-42_bieaz-detect-archlinux-initramfs.patch"
 }
-md5sums=('7a2f14a8002fb14873db89eade04e070'
+md5sums=('c32c4365033bca0eb2a4c809cafb7ae8'
          'bac8697ba0fdb65adca3b76668fa01a1')
