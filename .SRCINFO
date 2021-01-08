@@ -1,0 +1,15 @@
+pkgbase = hexen-data-gog
+	pkgdesc = Hexen: Beyond Heretic data via GOG.com
+	pkgver = 1.1.42801
+	pkgrel = 1
+	url = https://www.gog.com/game/hexen_beyond_heretic
+	arch = any
+	license = Proprietary
+	makedepends = innoextract
+	makedepends = lgogdownloader
+	provides = hexen-data
+	source = setup_hexen_beyond_heretic_1.1_(42801).exe::gogdownloader://hexen_beyond_heretic/en1installer0
+	sha512sums = 18131a857867d452b41e09dd129656d35de9cf01ad17d5bb17b4baba7875a668d868055cb80b3af330a915059ee6965e058f552c97cddcdac90e474dd579dc2a
+
+pkgname = hexen-data-gog
+
