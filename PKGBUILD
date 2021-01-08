@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=archivebox
-pkgver=0.4.21
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="The open source self-hosted web archive"
 arch=("any")
@@ -14,10 +14,10 @@ depends=('python-django' 'python-mypy_extensions' 'wget'
          'python-requests' 'python-base32_crockford' 'python-w3lib'
          'chromium' 'python-django-extensions' 'git'
          'youtube-dl' 'curl' 'single-file-git'
-         'readability-extractor')
+         'readability-extractor' 'ripgrep' 'mercury-parser')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('ae6bbd2a63dedec4b55eac3418440c2e50a11e16e18b28e4c7cd46332d679e47')
+sha256sums=('68af7e1db93f0bc75cf071227fd9a0856036b199165d73834b4c25ed03ba72e3')
 
 build() {
   cd ${pkgname}-${pkgver}

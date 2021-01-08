@@ -1,6 +1,6 @@
 pkgbase = archivebox
 	pkgdesc = The open source self-hosted web archive
-	pkgver = 0.4.21
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/pirate/ArchiveBox
 	arch = any
@@ -22,10 +22,12 @@ pkgbase = archivebox
 	depends = curl
 	depends = single-file-git
 	depends = readability-extractor
+	depends = ripgrep
+	depends = mercury-parser
 	provides = archivebox
 	conflicts = archivebox
-	source = https://files.pythonhosted.org/packages/source/a/archivebox/archivebox-0.4.21.tar.gz
-	sha256sums = ae6bbd2a63dedec4b55eac3418440c2e50a11e16e18b28e4c7cd46332d679e47
+	source = https://files.pythonhosted.org/packages/source/a/archivebox/archivebox-0.5.3.tar.gz
+	sha256sums = 68af7e1db93f0bc75cf071227fd9a0856036b199165d73834b4c25ed03ba72e3
 
 pkgname = archivebox
 
