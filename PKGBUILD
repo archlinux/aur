@@ -1,6 +1,6 @@
 # Maintainer: Samuel Recker, samuel.recker at gmail dot com
 pkgname=pacminder
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 epoch=
 pkgdesc="Configurable reminder to update pacman."
@@ -39,5 +39,6 @@ build() {
 package() {
 	# cd "$pkgname-$pkgver/build"
 	cd "$pkgname/build"
+  rm /usr/
 	make DESTDIR="$pkgdir/" install
 }
