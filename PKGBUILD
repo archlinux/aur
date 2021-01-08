@@ -1,8 +1,8 @@
 # Maintainer: BrLi <brli at chakralinux dot org>
 
 pkgname=zettlr
-pkgver=1.8.4
-pkgrel=4
+pkgver=1.8.5
+pkgrel=1
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
@@ -18,14 +18,12 @@ _zh_tw_commit=60ef7ec4cb8ba0a6da924d89c60d6d39d1c8b729 # matches 1.8.4
 options=(!strip)
 install=install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Zettlr/Zettlr/archive/v$pkgver.tar.gz"
-        'pandoc-fix.patch'
         # citation style
         "locales-$pkgrel-$pkgver.zip::https://github.com/citation-style-language/locales/archive/$_csl_locale_commit.zip"
         "chicago-author-date-$pkgver-$pkgrel.csl::https://github.com/citation-style-language/styles/raw/$_csl_style_commit/chicago-author-date.csl"
         # Chinese(Taiwan) translation
 		"zh-TW-$pkgver-$pkgrel.json::https://raw.githubusercontent.com/Brli/zettlr-zh-TW/$_zh_tw_commit/zh-TW.json")
-sha256sums=('da3ba36a98587e258bdb09700343b7a067ee4659aaef6b5021b16dd5b9d00400'
-            '488f3c308e0cbdcc626d95798e07fa3489ea28a631e9fbdacb50e6fcf35c5d4c'
+sha256sums=('59a89ea4c86cf64920b540c0734566dbf737f08c6f48256fc8de124f65aebade'
             '24503a6cd5b3651a7003353811ae82d3ed707ec8ff932d341668c2ad377434b6'
             '2b7cd6c1c9be4add8c660fb9c6ca54f1b6c3c4f49d6ed9fa39c9f9b10fcca6f4'
             '9aef5eec4876aa180fa55cf3bc213a5cf68ab96567bc4021ba58a32fa0fa9f94')
@@ -43,7 +41,6 @@ prepare() {
     cp "$srcdir/chicago-author-date-$pkgver-$pkgrel.csl" source/app/service-providers/assets/csl-styles/chicago-author-date.csl
 
     # fake Pandoc
-    patch -Np1 -i "$srcdir/pandoc-fix.patch"
     ln -sf /dev/null resources/pandoc
 }
 
