@@ -7,7 +7,10 @@ pkgdesc="Beautiful Gemini Client"
 url="https://git.skyjake.fi/skyjake/lagrange"
 arch=("any")
 license=("BSD")
-source=("https://git.skyjake.fi/skyjake/$pkgname/releases/download/v$pkgver/lagrange-$pkgver.tar.gz")
+source=(
+    "https://git.skyjake.fi/skyjake/$pkgname/releases/download/v$pkgver/lagrange-$pkgver.tar.gz"
+    "lagrange.desktop"
+)
 
 depends=(
     "openssl"
@@ -25,10 +28,11 @@ build() {
 
 package() {
     install -Dm644 $pkgname-$pkgver/LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
 
     cd build
     make PREFIX="/usr" DESTDIR="$pkgdir" install
 }
 
-md5sums=('0ad3319d4df6d555be6f05614222c471')
-
+md5sums=('0ad3319d4df6d555be6f05614222c471'
+         '1dd1255e856f3b00b822be75ec78b51b')

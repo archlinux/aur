@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Lagrange
+StartupWMClass=lagrange
+Comment=A Beautiful Gemini Client
+Type=Application
+Categories=Network;WebBrowser;
+Exec=lagrange
+Terminal=false
+StartupNotify=false
