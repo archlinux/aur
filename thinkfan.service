@@ -11,4 +11,5 @@ ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target
+Also=thinkfan-sleep.service
 Also=thinkfan-wakeup.service

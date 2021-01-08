@@ -4,7 +4,7 @@
 
 pkgname=thinkfan
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalist fan control program. Supports the sysfs hwmon interface and thinkpad_acpi"
 url="https://github.com/vmatare/thinkfan"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/vmatare/$pkgname/archive/$p
         'thinkfan.service'
         'thinkpad_acpi.conf')
 sha256sums=('a03fc0ed5bee33a1576c631e327fdd10f89fd906c5a413a8b01bd73d3fd97d25'
-            '5b743256afc30d8a2db840f16b03871abbe0a033dd1b0d3f1b7d5a544808271f'
+            '625730e33fae251f3a1cc8259b222089fb45ada08e9cf5c816ea1cde6560e989'
             '28874576641b3cc1aa486e1bc9ed40eadfe8b13d6d3014016e31fedc5dc5195f')
 install=thinkfan.install
 
@@ -38,6 +38,7 @@ package() {
   install -D -m644 src/"$pkgname".1 "$pkgdir"/usr/share/man/man1
   install -D -m644 src/"$pkgname".conf.5 "$pkgdir"/usr/share/man/man5
   install -D -m644 ../"$pkgname".service rcscripts/systemd/thinkfan-wakeup.service "$pkgdir"/usr/lib/systemd/system
+  install -D -m644 ../"$pkgname".service rcscripts/systemd/thinkfan-sleep.service "$pkgdir"/usr/lib/systemd/system
   install -D -m644 rcscripts/systemd/override.conf "$pkgdir"/etc/systemd/system/thinkfan.service.d
   install -D -m644 ../thinkpad_acpi.conf "$pkgdir"/usr/lib/modprobe.d
 }
