@@ -1,7 +1,7 @@
 pkgbase = jami-daemon-git
 	pkgdesc = Free and universal communication platform which preserves the users’ privacy and freedoms (daemon component)
-	pkgver = 4.0.0.r1727.g7eb1e7373
-	pkgrel = 1
+	pkgver = 4.0.0.r1820.g9835b0487
+	pkgrel = 2
 	url = https://jami.net
 	arch = x86_64
 	groups = jami

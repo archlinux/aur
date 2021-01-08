@@ -4,8 +4,8 @@
 
 _pkgname=ring-daemon
 pkgname=jami-daemon-git
-pkgver=4.0.0.r1727.g7eb1e7373
-pkgrel=1
+pkgver=4.0.0.r1820.g9835b0487
+pkgrel=2
 pkgdesc="Free and universal communication platform which preserves the users’ privacy and freedoms (daemon component)"
 arch=(x86_64)
 url="https://jami.net"
@@ -29,7 +29,7 @@ pkgver() {
 
 prepare() {
   cd ${_pkgname}
-  mkdir contrib/native
+  mkdir -p contrib/native
   autoreconf -fvi
 }
 
