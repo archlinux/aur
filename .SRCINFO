@@ -1,7 +1,7 @@
 pkgbase = pacnews-neovim-git
 	pkgdesc = Find .pacnew files and merge them with a neovim diff, updated git tag
-	pkgver = v1.0.r298.g802fcb1
-	pkgrel = 2
+	pkgver = v1.0.r0.gd78c8ac
+	pkgrel = 3
 	url = https://github.com/pbrisbin/dotfiles/blob/v1.0/tag-scripts/local/bin/pacnews
 	arch = any
 	license = unknown
@@ -11,7 +11,5 @@ pkgbase = pacnews-neovim-git
 	conflicts = pacnews-git
 	source = git+https://github.com/pbrisbin/dotfiles.git#tag=v1.0
 	source = nvim.patch
-	md5sums = SKIP
-	md5sums = c8532d9984cbcb2dc97d2a07bb7a23de
 
 pkgname = pacnews-neovim-git
