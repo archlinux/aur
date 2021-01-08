@@ -1,15 +1,15 @@
 pkgbase = odpscmd
 	pkgdesc = Aliyun ODPS Command Line Tool
-	pkgver = 0.34.1
+	pkgver = 0.35.1
 	pkgrel = 1
 	url = http://odps.aliyun.com
 	arch = any
 	license = APACHE
 	makedepends = unzip
 	depends = java-runtime
-	source = https://github.com/aliyun/aliyun-odps-console/releases/download/v0.32.2/odpscmd_public.zip
+	source = https://github.com/aliyun/aliyun-odps-console/releases/download/v0.35.1/odpscmd_public.zip
 	source = odpscmd
-	md5sums = eee6bfdd91dd41725c91143a4464e32f
+	md5sums = 63af51bebfde31efcef48e5dbe937489
 	md5sums = a94bb8679669e70a77aa0212ba8767c3
 
 pkgname = odpscmd
