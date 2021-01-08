@@ -15,7 +15,7 @@ source=(http://download.savannah.nongnu.org/releases/sysvinit/sysvinit-${pkgver}
         "0001-simplify-writelog.patch"
         "0002-remove-ansi-escape-codes-from-log-file.patch"
         "openrc-init.patch")
-md5sums=('6eda8a97b86e0a6f59dabbf25202aa6f'
+md5sums=('e3254f7622ea5cf2322b1b386a98ba59'
          '26bfc38ccd225814ef9dd02842109df2'
          'a913d77f6554699bc074428cc6b07589'
          'f60460c6a3bc58376562fc76568bf3d7')
