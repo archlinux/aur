@@ -10,12 +10,6 @@ pkgbase = openrc-sysvinit
 	license = GPL
 	depends = sysvinit
 	source = http://download.savannah.nongnu.org/releases/sysvinit/sysvinit-2.98.tar.xz
-	source = 0001-simplify-writelog.patch
-	source = 0002-remove-ansi-escape-codes-from-log-file.patch
-	source = openrc-init.patch
 	md5sums = e3254f7622ea5cf2322b1b386a98ba59
-	md5sums = 26bfc38ccd225814ef9dd02842109df2
-	md5sums = a913d77f6554699bc074428cc6b07589
-	md5sums = f60460c6a3bc58376562fc76568bf3d7
 
 pkgname = openrc-sysvinit
