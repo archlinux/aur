@@ -1,21 +1,28 @@
 # Maintainer: Arsen Musayelyan <moussaelianarsen@gmail.com>
 pkgname=pak-bin
-pkgver=1.0.11
-pkgrel=2
+pkgver=1.0.12
+pkgrel=1
 pkgdesc="Changes pacman syntax to be more like APT"
-arch=('x86_64' 'aarch64')
+arch=('x86_64' 'aarch64' 'i686')
 license=('GPLv3')
 depends=('yay')
 provides=('pak')
 conflicts=('pak')
-_arch="$(uname -m)"
-source=("https://minio.arsenm.dev/pak/$pkgver/pak-linux-$_arch" "https://gitea.arsenm.dev/Arsen6331/pak/raw/branch/master/pak.toml")
-md5sums=('SKIP' 'SKIP')
+#_arch="$(uname -m)"
+source=("https://gitea.arsenm.dev/Arsen6331/pak/raw/branch/master/pak.toml")
+source_x86_64=("https://minio.arsenm.dev/pak/$pkgver/pak-linux-x86_64")
+source_i686=("https://minio.arsenm.dev/pak/$pkgver/pak-linux-386")
+source_aarch64=("https://minio.arsenm.dev/pak/$pkgver/pak-linux-aarch64")
+sha256sums=('1830c528b5f0920c05e8c517aece8ef167ddd17365b15b337d05cba777fc1f86')
+sha256sums_x86_64=('194b0376dcdd750965c70d8983480b791ed8ca6a8f00b8683afa08e8ede20788')
+sha256sums_i686=('5f6b9c4b47608eaf86308b788199f5b290afec61ff4d78a621b6bf6066427bcf')
+sha256sums_aarch64=('bc0046623f539a5ad61d0e894ed8ce33407a9bcf4344ed6a87c4e7665ce1e1cd')
 backup=('etc/pak.toml')
 
 package() {
-    chmod +x pak-linux-$_arch
-	install -Dm755 pak-linux-$_arch $pkgdir/usr/bin/pak
+	mv pak-linux-* pak
+	chmod +x pak
+	install -Dm755 pak $pkgdir/usr/bin/pak
 	sed -i 's/activeManager = ""/activeManager = "yay"/' pak.toml
 	install -Dm755 pak.toml $pkgdir/etc/pak.toml
 }
