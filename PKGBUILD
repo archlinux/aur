@@ -1,10 +1,11 @@
-# Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Maintainer: Tung Ha <tunght13488 at gmail dot com>
+# Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Marcello "mererghost" Rocha <https://github.com/mereghost>
-# Refactored by Blaž "Speed" Hrastnik <https://github.com/archSeer>
+# Contributor: Blaž "Speed" Hrastnik <https://github.com/archSeer>
 
 pkgname=elasticsearch6
 _pkgname=elasticsearch
-pkgver=6.8.6
+pkgver=6.8.13
 pkgrel=1
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('any')
@@ -23,7 +24,7 @@ source=(
   elasticsearch-tmpfile.conf
   elasticsearch.default
 )
-sha256sums=('351861766c5fd8c1148e74c4186c6f77dcfe14b0c2c3a7e74315d3989b9ae068'
+sha256sums=('e3a41d1a58898c18e9f80d45b1bf9f413779bdda9621027a6fe87f3a0f59ec90'
             'cce7cfe85ddea80ff6db10ec88f973b87ffa97b9f6a2614234b846551a7731d7'
             'ff1c01c16f77d18b0cf8c94798dd74f86a1f89d132508b98dcc8a8e9251c1750'
             '2af4e23d1e1b99211c413a73600e369b190eb7d5ff1ad844ad93191b0adc5311'
