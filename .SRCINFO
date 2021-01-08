@@ -1,14 +1,14 @@
 pkgbase = authenticator-rs-bin
 	pkgdesc = MFA Authenticator. TOTP-MFA application written in Rust and GTK3.
-	pkgver = 0.5.5
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/grumlimited/authenticator-rs
 	arch = x86_64
 	license = GPL3
 	depends = gtk3
 	depends = sqlite
-	source = https://github.com/grumlimited/authenticator-rs/releases/download/0.5.5/authenticator-rs-0.5.5-x86_64.deb
-	md5sums = 86a04860ad1056256424973c2e0ff2bd
+	source = https://github.com/grumlimited/authenticator-rs/releases/download/0.6.1/authenticator-rs-0.6.1-x86_64.deb
+	md5sums = d0a48171c50f9c4b7597082c0c19fea3
 
 pkgname = authenticator-rs-bin
 
