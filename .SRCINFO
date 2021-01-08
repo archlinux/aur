@@ -1,0 +1,15 @@
+pkgbase = python-typedload
+	pkgdesc = Load and dump data from json-like format into typed data structures
+	pkgver = 2.4
+	pkgrel = 1
+	url = https://github.com/ltworf/typedload
+	arch = any
+	license = GPL3
+	checkdepends = mypy
+	makedepends = python-setuptools
+	depends = python
+	source = typedload-2.4.tar.gz::https://github.com/ltworf/typedload/archive/2.4.tar.gz
+	sha256sums = a24131bf859b94cd637be4b9da809fee7b85329e32b9b71f0d204616976b295a
+
+pkgname = python-typedload
+
