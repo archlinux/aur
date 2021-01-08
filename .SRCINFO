@@ -1,0 +1,12 @@
+pkgbase = ttf-chewy
+	pkgdesc = A font you can really sink your teeth into. And unlike all those tasteless fonts, Chewy never loses its flavor!
+	pkgver = 1.001
+	pkgrel = 1
+	url = https://github.com/google/fonts/tree/master/apache/chewy
+	arch = any
+	license = Apache
+	source = https://github.com/google/fonts/raw/master/apache/chewy/Chewy-Regular.ttf
+	md5sums = fef0557686d2280ebe303fd3b8691efd
+
+pkgname = ttf-chewy
+
