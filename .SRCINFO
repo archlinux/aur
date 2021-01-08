@@ -1,6 +1,6 @@
 pkgbase = hushboard-git
 	pkgdesc = Mute your microphone while typing.
-	pkgver = 7748a07
+	pkgver = r01.7748a07
 	pkgrel = 0
 	url = https://github.com/jbouter/hushboard
 	arch = any
