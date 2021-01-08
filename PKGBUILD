@@ -4,12 +4,12 @@
 
 pkgname=mplayer-gui
 pkgver=1.4
-pkgrel=1
-pkgdesc='Media player for Linux'
+pkgrel=2
+pkgdesc='Media player for Linux - latest stable release'
 url='http://www.mplayerhq.hu/'
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('desktop-file-utils' 'ttf-font' 'enca' 'libxss' 'a52dec' 'libvpx' 'lirc' 'x264' 'libmng' 'libdca' 'aalib' 'libxinerama' 'smbclient' 'jack2' 'libmad' 'libcaca' 'libxxf86vm' 'faac' 'faad2' 'libxv' 'libxvmc' 'mpg123' 'libx11' 'libcdio' 'libcdio-paranoia' 'rtmpdump' 'libdvdread' 'libdvdnav' 'ffmpeg' 'libbs2b' 'alsa-lib' 'giflib' 'glibc' 'libass' 'zlib' 'libjpeg' 'libpng' 'libpulse' 'libogg' 'fribidi' 'libtheora' 'libvorbis' 'libbluray' 'xvidcore' 'ncurses' 'fontconfig' 'freetype2' 'libxext' 'libvdpau' 'libgl' 'openal' 'speex' 'libmpeg2' 'glibc' 'lame'
+depends=('desktop-file-utils' 'ttf-font' 'enca' 'libxss' 'a52dec' 'libvpx' 'lirc' 'x264' 'libmng' 'libdca' 'aalib' 'libxinerama' 'smbclient' 'jack2' 'libmad' 'libcaca' 'libxxf86vm' 'faac' 'faad2' 'libxv' 'libxvmc' 'mpg123' 'libx11' 'libcdio' 'libcdio-paranoia' 'rtmpdump' 'libdvdread' 'libdvdnav' 'ffmpeg' 'libbs2b' 'alsa-lib' 'giflib' 'glibc' 'libass' 'zlib' 'libjpeg' 'libpng' 'libpulse' 'libogg' 'fribidi' 'libtheora' 'libvorbis' 'libbluray' 'xvidcore' 'ncurses' 'fontconfig' 'freetype2' 'libxext' 'libvdpau' 'libgl' 'openal' 'speex' 'libmpeg2' 'glibc' 'lame' 'mencoder'
 )
 
 makedepends=('xorgproto' 'libxxf86vm' 'libmad' 'libxinerama' 'libmng' 'libxss' 'smbclient' 'aalib' 'jack2' 'libcaca' 'faac' 'faad2' 'lirc' 'libxv' 'libxvmc' 'enca' 'libdca' 'a52dec' 'libvpx' 'unzip' 'mesa' 'live-media' 'yasm' 'git' 'mpg123' 'ladspa' 'libcdio' 'zlib' 'libcdio-paranoia' 'x264' 'rtmpdump' 'libdvdcss' 'libdvdread' 'libdvdnav' 'ffmpeg' 'giflib' 'libbs2b' 'fribidi' 'opus' 'libvorbis' 'gsm' 'libpulse' 'alsa-lib' 'glibc' 'libass' 'libjpeg' 'libpng' 'libogg' 'libtheora' 'libbluray' 'xvidcore' 'ncurses' 'fontconfig' 'freetype2' 'libx11' 'libxext' 'libvdpau' 'libgl' 'lame' 'desktop-file-utils' 'ttf-font' 'openal' 'speex' 'libmpeg2'
