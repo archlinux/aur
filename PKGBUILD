@@ -1,28 +1,28 @@
-# Maintainer: Evgeniy Alekseev <arcanis at archlinux dot org>
+# Maintainer: Xavion <Xavion (dot) 0 (at) Gmail (dot) com>
+# Contributor: Evgeniy Alekseev <arcanis at archlinux dot org>
 # Contributor: Ray Rashif <schiv at archlinux dot org>
 # Contributor: Brad Fanella <bradfanellaat archlinux dot us>
 # See .contrib for older/other contributors
 
 pkgname=eric
-pkgver=20.9
-pkgrel=2
+pkgver=21.1
+pkgrel=1
 pkgdesc="A full-featured Python and Ruby IDE in PyQt"
 arch=('any')
-url="https://eric-ide.python-projects.org/"
+url="https://${pkgname}-ide.python-projects.org/"
 license=('GPL3')
-depends=('python-qscintilla-qt5' 'python-pyqtwebengine' 'python-pyqtchart' 'qt5-svg')
-conflicts=(eric-common)
-replaces=(eric-common)
-source=("https://downloads.sourceforge.net/eric-ide/eric6-$pkgver.tar.gz")
-sha512sums=('ffdab3b51f0c782d79d99387d6e54bc4b5b05a40a61972731516efedbb276ea1bb9632ffe65fced25642c900a77d9240aed8d31cb3fe238292278a2fd9d53e73')
-changelog=ChangeLog
+depends=('python-qscintilla-qt5' 'python-pyqt5-webengine' 'python-pyqt5-chart' 'qt5-svg')
+conflicts=(${pkgname}-common)
+replaces=(${pkgname}-common)
+source=("https://downloads.sourceforge.net/${pkgname}-ide/${pkgname}6-${pkgver}.tar.gz")
 
 package_eric() {
-  cd eric6-$pkgver
-  python install.py -c -b "/usr/bin" -i "${pkgdir}"
+	cd "${pkgname}6-${pkgver}"
 
-  # fix paths in desktop files
-  find "${pkgdir}" -name '*.desktop' -exec sed -i "s|${pkgdir}||g" {} \;
+	python install.py -c -b "/usr/bin" -i "${pkgdir}"
+
+	# fix paths in desktop files
+	find "${pkgdir}" -name '*.desktop' -exec sed -i "s|${pkgdir}||g" {} \;
 }
 
-# vim:set ts=2 sw=2 et:
+sha256sums=('6ae88796caa17ec6bc32165614372c052e409e7f2467d7d8a93a1f0b2bbded0f')
