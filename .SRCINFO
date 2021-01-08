@@ -1,6 +1,6 @@
 pkgbase = pup-git
 	pkgdesc = Parsing HTML at the command line
-	pkgver = r102.681d7bb
+	pkgver = 0.4.0.r10.g681d7bb
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/EricChiang/pup
@@ -10,7 +10,7 @@ pkgbase = pup-git
 	makedepends = go
 	provides = pup
 	conflicts = pup
-	source = git://github.com/EricChiang/pup.git
+	source = git+https://github.com/EricChiang/pup.git
 	md5sums = SKIP
 
 pkgname = pup-git

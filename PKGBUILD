@@ -3,7 +3,7 @@
 pkgname=pup-git
 _gitname="pup"
 _gourl="github.com/ericchiang/pup"
-pkgver=r102.681d7bb
+pkgver=0.4.0.r10.g681d7bb
 pkgrel=1
 epoch=1
 pkgdesc="Parsing HTML at the command line"
@@ -13,12 +13,12 @@ license=('MIT')
 provides=('pup')
 conflicts=('pup')
 makedepends=('git' 'go')
-source=('git://github.com/EricChiang/pup.git')
+source=('git+https://github.com/EricChiang/pup.git')
 md5sums=('SKIP')
 
 pkgver() {
     cd "$_gitname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
