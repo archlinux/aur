@@ -1,0 +1,13 @@
+pkgbase = ssb
+	pkgdesc = Secure Shell Bruteforcer — A faster & simpler way to bruteforce SSH server.
+	pkgver = v0.0.2
+	pkgrel = 1
+	url = https://github.com/kitabisa/ssb
+	arch = any
+	license = Apache2.0
+	depends = go
+	source = https://github.com/kitabisa/ssb/releases/download/v0.0.2/ssb_0.0.2_linux_amd64.tar.gz
+	md5sums = SKIP
+
+pkgname = ssb
+
