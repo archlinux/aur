@@ -1,0 +1,14 @@
+pkgbase = prosody-mod-http-libjs
+	pkgdesc = Serve common Javascript libraries
+	pkgver = 2020.09.11
+	pkgrel = 1
+	url = https://modules.prosody.im/mod_http_libjs.html
+	arch = any
+	license = MIT
+	makedepends = mercurial
+	depends = prosody
+	source = hg+https://hg.prosody.im/prosody-modules/#revision=de2390d6bbe4
+	sha1sums = SKIP
+
+pkgname = prosody-mod-http-libjs
+
