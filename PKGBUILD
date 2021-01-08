@@ -10,7 +10,7 @@ pkgdesc='Dependency based init system that works with sysvinit and systemd.'
 arch=('i686' 'x86_64')
 url='https://github.com/OpenRC/openrc/'
 license=('BSD')
-depends=('openrc-sysvinit' 'pam')
+depends=('pam')
 optdepends=('openrc-sysvinit'
             'openrc-arch-services-git: collection of services for Arch'
             'net-tools: for network service support'

@@ -9,7 +9,6 @@ pkgbase = openrc
 	makedepends = psmisc
 	makedepends = pam
 	makedepends = git
-	depends = openrc-sysvinit
 	depends = pam
 	optdepends = openrc-sysvinit
 	optdepends = openrc-arch-services-git: collection of services for Arch
