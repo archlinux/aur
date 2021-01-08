@@ -9,7 +9,7 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-newlib
-pkgver=3.3.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="C library for bare metal systems (${_target})."
 arch=(any)
@@ -18,8 +18,9 @@ license=('BSD')
 groups=(devel)
 depends=("${_target}-gcc-bootstrap" "${_target}-binutils")
 options=('!makeflags' '!strip' 'staticlibs' '!libtool')
+PKGEXT="pkg.tar.zst"
 source=("ftp://sourceware.org/pub/newlib/newlib-${pkgver}.tar.gz")
-sha256sums=('58dd9e3eaedf519360d92d84205c3deef0b3fc286685d1c562e245914ef72c66')
+sha512sums=('6a24b64bb8136e4cd9d21b8720a36f87a34397fd952520af66903e183455c5cf19bb0ee4607c12a05d139c6c59382263383cb62c461a839f969d23d3bc4b1d34')
 
 prepare() {
   mkdir ${srcdir}/newlib-build
@@ -34,7 +35,7 @@ build() {
     --prefix=/usr \
     --disable-newlib-supplied-syscalls \
     --disable-multilib \
-	--with-cpu=${_target_cpu} \
+    --with-cpu=${_target_cpu} \
     --disable-nls
 
   make
