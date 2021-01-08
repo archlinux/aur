@@ -1,6 +1,6 @@
 # Maintainer: Paul Fauchon <p.fauchon at gmail dot com>
 pkgname=unifi-throughput-ncurses
-pkgver=r57.b7c113f
+pkgver=r60.788fb0f
 pkgrel=1
 pkgdesc="Display unifi controller throughput in a terminal"
 arch=('x86_64')
