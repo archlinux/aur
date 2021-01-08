@@ -15,7 +15,7 @@ source=("barnard::git+https://github.com/bmmcginty/barnard.git"
   "https://github.com/bmmcginty/go-openal/pull/1.patch")
 install="${pkgname}.install"
 sha512sums=('SKIP'
-  'SKIP')
+            '8089b15fc08a9b4342babf4391448be6cd989a0a576e703fe0628ace134eb5e154dbd7eddfad237e3350966a3f97c46c93e52bc37afb421f3ecd7dc3e35b00c7')
 
   prepare(){
       mkdir -p gopath/src/github.com/bmmcginty
