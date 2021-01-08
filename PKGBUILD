@@ -9,13 +9,14 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-gdb
-pkgver=9.1
+pkgver=10.1
 pkgrel=1
 pkgdesc="The GNU Project Debugger (${_target})"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://www.gnu.org/software/gdb/"
-depends=("${_target}-binutils>=2.29-1" "${_target}-gcc" 'zlib' 'guile2.0')
+depends=("${_target}-binutils" "${_target}-gcc" 'zlib' 'guile')
+PKGEXT="pkg.tar.zst"
 source=("http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz"
         "http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz.sig")
         
@@ -30,9 +31,6 @@ prepare() {
 
   mkdir ${srcdir}/gdb-build
 }
-
-#    --with-cpu=${_target_cpu} \
-#    --with-guile="guile-2.0"
 
 build() {
   cd ${srcdir}/gdb-build

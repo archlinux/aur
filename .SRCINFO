@@ -1,17 +1,17 @@
 pkgbase = m68k-elf-gdb
 	pkgdesc = The GNU Project Debugger (m68k-elf)
-	pkgver = 9.1
+	pkgver = 10.1
 	pkgrel = 1
 	url = https://www.gnu.org/software/gdb/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = m68k-elf-binutils>=2.29-1
+	depends = m68k-elf-binutils
 	depends = m68k-elf-gcc
 	depends = zlib
-	depends = guile2.0
-	source = http://ftp.gnu.org/gnu/gdb/gdb-9.1.tar.xz
-	source = http://ftp.gnu.org/gnu/gdb/gdb-9.1.tar.xz.sig
+	depends = guile
+	source = http://ftp.gnu.org/gnu/gdb/gdb-10.1.tar.xz
+	source = http://ftp.gnu.org/gnu/gdb/gdb-10.1.tar.xz.sig
 	validpgpkeys = F40ADB902B24264AA42E50BF92EDB04BFF325CF3
 	sha256sums = SKIP
 	sha256sums = SKIP
