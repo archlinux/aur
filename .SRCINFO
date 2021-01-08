@@ -1,10 +1,11 @@
 pkgbase = mc-itemscroller-116-fabric
 	pkgdesc = A client-side mod that adds several ways of moving items in inventory GUIs.
-	pkgver = 0.15.0.dev.20210105.174829
+	pkgver = 0.15.0.dev.20210108.022049
 	pkgrel = 1
 	url = https://masa.dy.fi/mcmods/client_mods/
 	arch = any
 	license = LGPL
+	makedepends = curl
 	makedepends = wget
 	makedepends = jq
 	source = manifest.json::https://masa.dy.fi/api/games/mods/minecraft/latest/client/
