@@ -1,0 +1,17 @@
+pkgbase = sip4-sip-provides
+	pkgdesc = Metapackage: Depends on 'sip4' and makes 'sip4' provide 'sip'-dependency (with proper $pkgver).
+	pkgver = 4.19.24
+	pkgrel = 1
+	epoch = 1
+	url = https://archlinux.org/packages/extra/x86_64/sip4/
+	arch = any
+	license = custom: public domain.
+	depends = sip4<5
+	depends = sip4>=4
+	provides = sip=4.19.24
+	options = emptydirs
+	source = COPYING
+	sha256sums = 90d77bbbe6aa2cfdaf6eaa3580fd1a981e0d0428ae586ac37b47aee5e67fcf12
+
+pkgname = sip4-sip-provides
+
