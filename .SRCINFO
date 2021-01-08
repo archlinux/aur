@@ -41,7 +41,7 @@ pkgbase = chromium-dev
 	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-89.0.4356.6.tar.xz
 	source = git+https://github.com/foutrelis/chromium-launcher.git
 	source = chromium-dev.svg
-	source = chromium-skia-harmony-r2.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium
+	source = chromium-skia-harmony-r2.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/fbcff5bbd7b98dfba37fced2496fb9a04d46a385/trunk/chromium-skia-harmony.patch
 	sha256sums = d98a7602b2aaa23a9f4f5411d51c1efdeab204dd03679082f8f380afd4e200cb
 	sha256sums = SKIP
 	sha256sums = dd2b5c4191e468972b5ea8ddb4fa2e2fa3c2c94c79fc06645d0efc0e63ce7ee1

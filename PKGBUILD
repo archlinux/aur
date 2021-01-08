@@ -82,7 +82,7 @@ source=(
         # Misc Patches.
 
         # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
-        'chromium-skia-harmony-r2.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium'
+        'chromium-skia-harmony-r2.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/fbcff5bbd7b98dfba37fced2496fb9a04d46a385/trunk/chromium-skia-harmony.patch'
         )
 sha256sums=(
             #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
