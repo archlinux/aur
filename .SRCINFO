@@ -1,6 +1,6 @@
 pkgbase = v2ray-desktop
-	pkgdesc = A cross-platform GUI proxy client that supports Shadowsocks, V2Ray, and Trojan protocols (Stable Release)
-	pkgver = 2.2.0
+	pkgdesc = A cross-platform GUI proxy client that supports Shadowsocks(R), V2Ray, and Trojan protocols (Stable Release)
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/Dr-Incognito/V2Ray-Desktop
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = v2ray-desktop
 	makedepends = jq
 	makedepends = qt5-tools>=5.15.0
 	makedepends = qt5-declarative>=5.15.0
-	depends = clash
+	depends = clash>=1.2.0
 	depends = qt5-base>=5.15.0
 	depends = qt5-quickcontrols>=5.15.0
 	depends = qt5-quickcontrols2>=5.15.0
 	depends = qt5-svg>=5.15.0
 	provides = v2ray-desktop
-	source = V2Ray-Desktop::git+https://github.com/Dr-Incognito/V2Ray-Desktop#tag=2.2.0
+	source = V2Ray-Desktop::git+https://github.com/Dr-Incognito/V2Ray-Desktop#tag=2.2.1
 	sha512sums = SKIP
 
 pkgname = v2ray-desktop
