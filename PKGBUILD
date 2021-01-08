@@ -1,14 +1,13 @@
-# Mantainer: Ramana Kumar <firstname at member.fsf.org>
-# Contributor: Ramana Kumar <firstname at member.fsf.org>
-# Contributor: Jesus Alvarez <jeezusjr@gmail.com>
+# Maintainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
 
 pkgname=pacnews-neovim-git
-pkgver=v1.0.r0.gd78c8ac
-pkgrel=1
-pkgdesc="Find .pacnew files and merge them with a neovim diff - updated git tag"
+pkgver=v1.0.r298.g802fcb1
+pkgrel=2
+pkgdesc="Find .pacnew files and merge them with a neovim diff, updated git tag"
 arch=(any)
 url="https://github.com/pbrisbin/dotfiles/blob/v1.0/tag-scripts/local/bin/pacnews"
 license=('unknown')
+depends=('neovim')
 makedepends=('git')
 provides=('pacnews-git')
 conflicts=('pacnews-git')
