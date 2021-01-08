@@ -1,17 +1,17 @@
-# Maintainer: NebulaNeko <chfsefefgesfen foxmail>
+# Maintainer: seiuneko <chfsefefgesfen foxmail>
 # Contributor: acgtyrant <acgtyrant#gmail>
 
 _pkgname=search-and-view
 pkgname=$_pkgname-git
-pkgver=r37.52a4962
+pkgver=r46.b5c08a5
 pkgrel=1
 pkgdesc="Tools to make searching and viewing easy."
 arch=('any')
 url="https://github.com/lilydjwg/search-and-view"
 license=('GPL3')
-depends=('bash' 'python')
+depends=('python')
 makedepends=('git')
-optdepends=('python-setproctitle: agv support' 'ripgrep: rgg support' 'the_silver_searcher: agg support' 'vim: vv support')
+optdepends=('python-setproctitle: agv support' 'ripgrep: rgg support' 'vim: vv support')
 source=('git+https://github.com/lilydjwg/search-and-view.git')
 md5sums=('SKIP')
 
@@ -22,9 +22,8 @@ pkgver() {
 
 package() {
 	cd "$srcdir/${_pkgname}"
-  install -Dm 755 agg "$pkgdir/usr/bin/agg"
-  install -Dm 755 agv "$pkgdir/usr/bin/agv"
   install -Dm 755 rgg "$pkgdir/usr/bin/rgg"
-  install -Dm 755 agv "$pkgdir/usr/bin/rgv"
+  install -Dm 755 rgv "$pkgdir/usr/bin/rgv"
   install -Dm 755 vv "$pkgdir/usr/bin/vv"
+  install -Dm644 vv.desktop "$pkgdir/usr/share/applications/vv.desktop"
 }
