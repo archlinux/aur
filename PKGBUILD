@@ -3,7 +3,7 @@
 _pkgname=bilibilitool-dotnet
 pkgname=${_pkgname}-git
 pkgver=1.1.4.r4.g63d339a
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform Bilibili daily task tool written in .Net 5"
 arch=('x86_64')
 url='https://github.com/RayWangQvQ/BiliBiliTool'
@@ -18,7 +18,7 @@ source=("${_pkgname}::git+https://github.com/RayWangQvQ/BiliBiliTool.git"
 install="${pkgname}.install"
 backup=("etc/${_pkgname}/appsettings.json")
 sha256sums=('SKIP'
-            '1bedfc41955b4cc6b2d2d945c478b90cacfbd0d6d7752d26cfac709cf6344677'
+            '495345f3e25352cb446765c90f98b0f2cf6da3215532c886792582583c3125c5'
             '818ed53d54e57c4021fd5078212fe7199414b49b4c097fcb2f3631560d77fd35'
             '2b4f3621c10194156e0127e07367a2adc3dcc2a90dee5a9ca145931da8ec8d30'
             '55c10b3ff54139395bde101db58d1e31879b72cc50cbbf785280e20e8df17bc0')
@@ -62,7 +62,8 @@ package() {
   --self-contained false \
   --no-restore \
   -o "${pkgdir}/usr/lib/${_pkgname}"
-  ln -s "/usr/lib/${_pkgname}/Ray.BiliBiliTool.Console" "${pkgdir}/usr/bin/${_pkgname}"
+  chmod 755 "${pkgdir}/usr/lib/${_pkgname}/Ray.BiliBiliTool.Console" 
+  ln -s "${pkgdir}/usr/lib/${_pkgname}/Ray.BiliBiliTool.Console" "${pkgdir}/usr/bin/${_pkgname}"
 
   cd ../..
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
