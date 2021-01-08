@@ -1,7 +1,7 @@
 pkgbase = prosody-mod-register-apps
 	pkgdesc = Manage list of compatible client apps
 	pkgver = 2020.10.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://modules.prosody.im/mod_register_apps.html
 	arch = any
 	license = MIT

@@ -2,7 +2,7 @@
 
 pkgname=prosody-mod-register-apps
 pkgver=2020.10.10
-pkgrel=1
+pkgrel=2
 _commit="e2db07017332"
 pkgdesc="Manage list of compatible client apps"
 arch=('any')
@@ -17,7 +17,7 @@ sha1sums=('SKIP')
 package() {
   cd "prosody-modules/mod_register_apps"
   find . -type f -name '*.lua' -exec install -Dm 644 '{}' "${pkgdir}/usr/lib/prosody/modules/{}" \;
-  install -Dm755 assets/logos/* -t "${pkgdir}/usr/lib/prosody/modules/assets/logos/"
+  install -Dm644 assets/logos/* -t "${pkgdir}/usr/lib/prosody/modules/assets/logos/"
   find . -type f ! -name '*.lua' -exec install -Dm 644 '{}' "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
   rm -r "${pkgdir}/usr/share/doc/${pkgname}/assets"
 }
