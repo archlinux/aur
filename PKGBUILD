@@ -3,7 +3,7 @@
                                                                                                                                                                 
 pkgname="barnard-git"
 pkgver=r90.c9876db
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A command line mumble client."
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -11,9 +11,11 @@ url="https://github.com/bmmcginty/barnard"
 license=('GPL2')
 depends=('openal' 'opus')
 makedepends=('git' 'go-pie')
-source=("barnard::git+https://github.com/bmmcginty/barnard.git")
+source=("barnard::git+https://github.com/bmmcginty/barnard.git"
+  "https://github.com/bmmcginty/go-openal/pull/1.patch")
 install="${pkgname}.install"
-sha512sums=('SKIP')
+sha512sums=('SKIP'
+  'SKIP')
 
   prepare(){
       mkdir -p gopath/src/github.com/bmmcginty
@@ -21,6 +23,9 @@ sha512sums=('SKIP')
     export GOPATH="${srcdir}/gopath"
   cd gopath/src/github.com/bmmcginty/barnard
     go get -v -d
+    pushd "$srcdir/gopath/src/github.com/bmmcginty/go-openal"
+    patch -p1 -i "$srcdir/1.patch"
+    popd
               }
 
 pkgver() {
