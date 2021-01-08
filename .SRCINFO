@@ -1,6 +1,6 @@
 pkgbase = dwarfs
 	pkgdesc = A fast high compression read-only file system
-	pkgver = 0.2.4
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/mhx/dwarfs
 	arch = x86_64
@@ -10,9 +10,13 @@ pkgbase = dwarfs
 	makedepends = ruby-ronn
 	makedepends = boost
 	makedepends = libevent
+	makedepends = snappy
+	makedepends = libdwarf
+	makedepends = libaio
 	depends = fuse3
 	depends = openssl
 	depends = boost-libs
+	depends = jemalloc
 	depends = lz4
 	depends = xz
 	depends = zstd
@@ -21,9 +25,9 @@ pkgbase = dwarfs
 	depends = fmt
 	depends = gflags
 	depends = double-conversion
-	source = dwarfs-0.2.4.tar.bz2::https://github.com/mhx/dwarfs/releases/download/v0.2.4/dwarfs-0.2.4.tar.bz2
-	sha256sums = 68b02c4fafbcc274489b789e272d727dc345a224fe7590efb65488daab104d83
-	b2sums = 08ed8aad5efced3b0132dd09228530c01a556e87daaf543ca1e4565aaaabac3294f2b3816a1bd3f52b09215b560efcd4f5a8b5ff71909dd45e7011be133e9986
+	source = dwarfs-0.3.1.tar.bz2::https://github.com/mhx/dwarfs/releases/download/v0.3.1/dwarfs-0.3.1.tar.bz2
+	sha256sums = f6d49ef8e39e74d3d0514c3ef42e6a2e874f98229489efa975ec2392df8a37c9
+	b2sums = f7f5a2affae5da78d526891017ac66ed16f73919c7b990b558413c028590e3e3efa2f7e8cc70d97cbad2a0332d91458444898611ea86343a5978bcdf2ed1bf3b
 
 pkgname = dwarfs
 
