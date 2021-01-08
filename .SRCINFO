@@ -5,9 +5,10 @@ pkgbase = google-tsunami-security-scanner-git
 	url = https://github.com/google/tsunami-security-scanner
 	arch = any
 	license = Apache
+	makedepends = git
 	depends = nmap>=7.80
 	depends = ncrack>=0.7
-	depends = jdk11-openjdk
+	depends = java-runtime<12
 	conflicts = google-tsunami-security-scanner
 	source = git+https://github.com/google/tsunami-security-scanner.git
 	sha256sums = SKIP
