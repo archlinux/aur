@@ -1,0 +1,30 @@
+pkgbase = mutt-wizard
+	pkgdesc = Simple interface to auto-configure neomutt and isync with safe passwords
+	pkgver = 3.1
+	pkgrel = 1
+	url = https://github.com/lukesmithxyz/mutt-wizard
+	install = mutt-wizard.install
+	arch = any
+	license = GPL3
+	depends = neomutt
+	depends = isync
+	depends = msmtp
+	depends = notmuch-runtime
+	depends = pass
+	depends = curl
+	optdepends = imagemagick: view images inside of the neomutt TUI
+	optdepends = w3m: view HTML email and images inside of the neomutt TUI
+	optdepends = lynx: view HTML email inside of the neomutt TUI
+	optdepends = links: view HTML email inside of the neomutt TUI
+	optdepends = elinks: view HTML email inside of the neomutt TUI
+	optdepends = urlview: list URLs found in mails to open them in a browser
+	optdepends = abook: contact store and tab completion
+	optdepends = protonmail-bridge: use neomutt with protonmail accounts
+	optdepends = pam-gnupg: automatically unlock gpg keys at session login
+	optdepends = cron: set up automatic mail syncing
+	options = zipman
+	source = mutt-wizard-3.1.tgz::https://github.com/lukesmithxyz/mutt-wizard/archive/v3.1.tar.gz
+	b2sums = 699c2a43231240bae49a7280ea4b983c5025c566b109d46e27c14fad7b4d0a9359af3f32581f74426464f4e16c37dc69b75a33944237316198b79007e408077a
+
+pkgname = mutt-wizard
+

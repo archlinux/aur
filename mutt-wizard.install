@@ -1,0 +1,50 @@
+post_upgrade() {
+	if [ $(vercmp r847 "$2") = 1 ]; then
+		printf "\e[1;32m==>\e[0;1;33m %s\e[0m\n" 'NOTE: mutt-wizard-git'
+		printf "\e[1;34m ->\e[0;1m %s\e[0m\n"    'There have been breaking changes to the "mw" CLI.'
+		printf "\e[1;34m ->\e[0;1m %s\e[0m\n"    'Please consult the README.md file and the manual mw(1).'
+	fi
+}
+
+post_install() {
+	echo -e "\n\e[1m Luke’s mutt-wizard $1\e[0m\n"
+	cat <<-END
+		 Some useful hints
+		 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+		 • Gmail accounts need to  create an App Password to use with less secure applica-
+		   tions.  This password is single-use (i.e. for setup) and will be stored and en-
+		   crypted locally.  Enabling third-party  applications requires  turning off two-
+		   factor  authentication, and this will circumvent that.  You might also  need to
+		   manually "Enable IMAP" in the settings.
+		 • Protonmail accounts  require a "Protonmail Bridge" to access PM's IMAP and SMTP
+		   servers.  Configure that before running mutt-wizard. Note that when mutt-wizard
+		   asks for a password,  you should put in your bridge password,  not your account
+		   password.
+		 • Protonmail bridge is prone  to timing out.  Watch out for this  while adding an
+		   account.   If the bridge times out,  try again.   It might help to increase the
+		   timeout in your mbsyncrc.
+		 • If you have a university email or enterprise-hosted email for work, there might
+		   be other hurdles  or two-factor authentication you have to jump through.  Some,
+		   for example, will want you to create a separate IMAP password, etc.
+		 • isync is not fully  UTF-8 compatible,  so non-Latin characters  may be  garbled
+		   (although sync should succeed). Also, mw will not auto-create mailbox shortcuts
+		   since it is looking for English mailbox names.  I strongly recommend you to set
+		   your email language to English on your mail server to avoid these problems.
+
+		 Help the project
+		 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+		 • Try mutt-wizard out on weird machines and weird email addresses and report any
+		   errors.
+		 • Open a PR to add new server information into ’domains.csv’, so their users can
+		   more easily use mutt-wizard.
+		 • If nothing else, donate: https://paypal.me/LukeMSmith !
+
+		 See Luke’s website: https://lukesmith.xyz/ - email him at: luke<at>lukesmith.xyz
+
+		      -->  mutt-wizard is free/libre software, licensed under the GPLv3  <--
+
+	END
+}
+
+
+# vim: ts=2 sw=2 noet ft=bash:
