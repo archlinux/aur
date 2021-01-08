@@ -1,7 +1,7 @@
 # Maintainer: Alexander Epaneshnikov <aarnaarn2@gmail.com>
 
 pkgname=brltty-git
-pkgver=6.1.r667.g010d72694
+pkgver=6.2.r49.g6092ac0ae
 pkgrel=1
 pkgdesc="Braille display driver for Linux/Unix (development version)"
 arch=(x86_64)
@@ -54,6 +54,7 @@ build() {
 	          --mandir=/usr/share/man \
 	          --with-tables-directory=/usr/share/brltty \
 	          --with-writable-directory=/run/brltty \
+	          --with-scripts-directory=/usr/lib/brltty/ \
 	          --enable-gpm \
 	          --disable-stripping
 	make
