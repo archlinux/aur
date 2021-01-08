@@ -3,20 +3,20 @@
 # Contributor: George Eleftheriou <eleftg>
 
 pkgname=mpich
-pkgver=3.4a2
+pkgver=3.4
 pkgrel=1
 pkgdesc="An improved implementation of the Message Passing Interface."
 url="https://mpich.org"
-arch=("any")
+arch=(x86_64)
 license=("custom")
 replaces=(mpich2)
-depends=('gcc-fortran' 'libxml2' 'openssh' 'numactl' 'pciutils')
+depends=('gcc-fortran' 'libxml2' 'openssh' 'numactl' 'pciutils' 'hwloc' 'bash')
 makedepends=('texlive-core' 'sowing')
-optdepends=("java-environment")
+optdepends=(perl)
 install="${pkgname}.install"
-source=("http://www.mpich.org/static/downloads/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+source=("https://www.mpich.org/static/downloads/${pkgver}/${pkgname}-${pkgver}.tar.gz"
 	"mpich.profile")
-sha256sums=('ca9b9a6d4d858f3f94d2ea1ed0b851fccbc6f2976eb08dfc3379be8c6278aa12'
+sha256sums=('ce5e238f0c3c13ab94a64936060cff9964225e3af99df1ea11b130f20036c24b'
             'b9716439a544511bf88618edeb40c3eb80f1b5d0d9369c30d750251feed02284')
 options=('!libtool')
 
@@ -37,7 +37,8 @@ build() {
   cd build
 
   ../configure --prefix=/opt/mpich \
-               --with-device=ch3:nemesis \
+               --with-device=ch4:ucx \
+               --with-hwloc-prefix=/usr \
                --enable-error-checking=runtime \
                --enable-error-messages=all \
                --enable-g=meminit \
