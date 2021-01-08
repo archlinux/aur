@@ -1,7 +1,7 @@
 # Maintaoner: Yamada Hayao <development@fascode.net>
 
 pkgname=slapdash
-pkgver="1.7.47"
+pkgver="1.8.1"
 pkgrel=1
 pkgdesc="a tool that can manage various web services for free in one place"
 arch=('x86_64')
