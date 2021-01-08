@@ -9,11 +9,11 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-gcc
-pkgver=10.1.0
-_mpfrver=4.0.2
-_mpcver=1.1.0
-_gmpver=6.2.0
-pkgrel=2
+pkgver=10.2.0
+_mpfrver=4.1.0
+_mpcver=1.2.1
+_gmpver=6.2.1
+pkgrel=1
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
@@ -25,6 +25,7 @@ options=('!emptydirs' '!distcc' '!strip')
 conflicts=("${_target}-gcc-bootstrap")
 replaces=("${_target}-gcc-bootstrap")
 provides=("${_target}-gcc-bootstrap=${pkgver}")
+PKGEXT="pkg.tar.zst"
 source=("http://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
         "http://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz.sig"
         "http://ftp.gnu.org/gnu/mpfr/mpfr-${_mpfrver}.tar.xz"
@@ -36,7 +37,7 @@ source=("http://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
 
 sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
 
-validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06
+validpgpkeys=(13975A70E63C361C73AE69EF6EEB81F8981C74C7
               07F3DBBECC1A39605078094D980C197698C3739D
               AD17A21EF8AED8F1CC02DBD9F7D5C9BF765C61E3
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298)
