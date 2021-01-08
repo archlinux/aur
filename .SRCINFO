@@ -1,15 +1,14 @@
 pkgbase = iscan-plugin-gt-1500
 	pkgdesc = iscan plugin for the Epson GT-1500 scanner
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 2
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	install = gt-1500.install
 	arch = i686
 	arch = x86_64
-	license = custom:AVASYSPL
 	depends = iscan
-	source = https://download2.ebz.epson.net/iscan/plugin/gt-1500/deb/x64/iscan-gt-1500-bundle-1.0.1.x64.deb.tar.gz
-	md5sums = e1957478b03ffc3236581b2e772cc8af
+	source = https://download2.ebz.epson.net/iscan/plugin/gt-1500/deb/x64/iscan-gt-1500-bundle-2.30.4.x64.deb.tar.gz
+	md5sums = 954e9c95e3ba3795e6244f5338be436c
 
 pkgname = iscan-plugin-gt-1500
 
