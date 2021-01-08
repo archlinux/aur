@@ -1,0 +1,15 @@
+pkgbase = heretic-data-gog
+	pkgdesc = Heretic: Shadow of the Serpent Riders data via GOG.com
+	pkgver = 1.3.42801
+	pkgrel = 1
+	url = https://www.gog.com/game/heretic_shadow_of_the_serpent_riders
+	arch = any
+	license = Proprietary
+	makedepends = innoextract
+	makedepends = lgogdownloader
+	provides = heretic-data
+	source = setup_heretic_shadow_of_the_serpent_riders_1.3_(42801).exe::gogdownloader://heretic_shadow_of_the_serpent_riders/en1installer0
+	sha512sums = 2196554a931bea7e3710976d5d249697f350730fdf57c5caf67665b7c7384eba0a5df722220cd2425d55ebc5a1c58c51283e826bb1e3dd91abae5e956e08cbc1
+
+pkgname = heretic-data-gog
+
