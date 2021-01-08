@@ -3,7 +3,7 @@
 pkgname=odpscmd
 pkgver=0.35.1
 pkgrel=1
-pkgdesc="Aliyun ODPS Command Line Tool"
+pkgdesc="Alibaba Cloud MaxCompute(ODPS) Command Line Tool"
 arch=('any')
 url="http://odps.aliyun.com"
 license=('APACHE')
