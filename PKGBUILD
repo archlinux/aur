@@ -1,24 +1,22 @@
-# Maintainer: Philippe Cherel <philippe dot cherel at mayenne dot org>
+# Maintainer: Gunnar Bretthauer <taijian@posteo.de>
+# Contributor: Philippe Cherel <philippe dot cherel at mayenne dot org>
 # Contributor: fabioticconi <fabio dot ticconi at gmail dot com>
 
 pkgname=weidu-bin
-pkgver=242
+pkgver=247
 pkgrel=1
 pkgdesc="A dialogue compiler for Infinity Engine games (precompiled binary)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://weidu.org"
 license=('GPL2')
-source=(http://www.weidu.org/~thebigg/WeiDU-Linux-$pkgver.zip)
-md5sums=('d10a196c714336ed6da58b137e8fb7ad')
+source=(https://github.com/WeiDUorg/weidu/releases/download/v$pkgver.00/WeiDU-Linux-$pkgver-amd64.zip)
+md5sums=('3b2abb25f34e728960a454e05c654e5c')
 options=('!strip')
 
 package() {
-  if [ ${CARCH} == 'x86_64' ]; then
-    cd "${srcdir}/WeiDU-Linux/bin/amd64"
-  else
-    cd "${srcdir}/WeiDU-Linux/bin/i386"
-  fi
-
+  
+  cd "$srcdir/WeiDU-Linux"
+  
   install -D -m755 ./mosunpack "${pkgdir}/usr/bin/mosunpack"
   install -D -m755 ./mospack "${pkgdir}/usr/bin/mospack"
   install -D -m755 ./tisunpack "${pkgdir}/usr/bin/tisunpack"
@@ -26,28 +24,11 @@ package() {
   install -D -m755 ./tolower "${pkgdir}/usr/bin/tolower"
   install -D -m755 ./weidu "${pkgdir}/usr/bin/weidu"
   install -D -m755 ./weinstall "${pkgdir}/usr/bin/weinstall"
-
-  mkdir -p "${pkgdir}/usr/share/${pkgname}"
-  mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
-
-  cd "$srcdir/WeiDU-Linux"
-
-  # copy the examples directory
-  cp -R ./examples "${pkgdir}/usr/share/doc/${pkgname}"
-  # copy the lib directory
-  cp -R ./lib "${pkgdir}/usr/share/${pkgname}"
-
-  # set files to 644 and directories to 755,
-  # for both the "examples" and "lib" directories
-  cd "${pkgdir}/usr/share/doc/${pkgname}"
-  chmod 664 ./examples -R
-  find ./examples -type d -print0 | xargs -0 chmod 755
-
-  cd "${pkgdir}/usr/share/${pkgname}"
-  chmod 664 ./lib -R
-  find ./lib -type d -print0 | xargs -0 chmod 755
-
-  cd "${srcdir}/WeiDU-Linux"
+  
+  # copy the examples & lib directories
+  install -m755 -d "${pkgdir}/usr/share/${pkgname}/lib" "${pkgdir}/usr/share/doc/${pkgname}/examples"
+  cp -r ./lib "${pkgdir}/usr/share/${pkgname}/lib"  
+  cp -r ./examples "${pkgdir}/usr/share/doc/${pkgname}/examples"
 
   # copy the readmes
   install -D -m644 ./readme-mosunpack.txt "${pkgdir}/usr/share/doc/${pkgname}/readme-mosunpack.txt"
