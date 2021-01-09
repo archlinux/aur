@@ -1,7 +1,7 @@
 pkgbase = longcat
 	pkgdesc = Creates a loooonng cat in the terminal
-	pkgver = r112.a13f8d2
-	pkgrel = 1
+	pkgver = r113.f0ff33e
+	pkgrel = 2
 	url = https://github.com/mattn/longcat
 	arch = i686
 	arch = pentium4
