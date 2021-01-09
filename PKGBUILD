@@ -52,7 +52,8 @@ build() {
     --disable-tests \
     --disable-seccomp-tests \
     --disable-full-test-suite \
-    --without-idn
+    --without-idn \
+    --disable-tools
   make
 }
 
