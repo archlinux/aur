@@ -6,8 +6,9 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=impressive
-pkgver=0.13.0_r306
-pkgrel=2
+_rev=310
+pkgver=0.13.0_r$_rev
+pkgrel=1
 pkgdesc='A simple presentation program that displays slideshows of PDF, image or video files'
 arch=('any')
 url='http://impressive.sourceforge.net'
@@ -19,7 +20,7 @@ optdepends=('pdftk: for retrieving PDF metadata, can replace mupdf-tools'
             'xdg-utils: for starting web or e-mail hyperlinks from PDF documents'
             'mplayer: for sound and video playback'
             'ffmpeg: for more efficient generation of video preview images')
-source=('impressive::svn+https://svn.emphy.de/impressive/trunk/impressive#revision=306')
+source=("${pkgname}::svn+https://svn.emphy.de/impressive/trunk/impressive#revision=$_rev")
 sha256sums=('SKIP')
 
 build() {
