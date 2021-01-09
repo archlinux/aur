@@ -1,0 +1,17 @@
+pkgbase = python-pybrowserstack-screenshots
+	pkgdesc = api wrapper and python client for Browserstack Screenshots, including phantomCSS support
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://github.com/cmck/pybrowserstack-screenshots
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pillow
+	depends = python-simplejson
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/p/pybrowserstack-screenshots/pybrowserstack-screenshots-0.1.tar.gz
+	sha256sums = 530cba97ff4131ec9cf003bf7b63fa48d7dd81a2e63bb75dbbd771f1f19f7c9a
+
+pkgname = python-pybrowserstack-screenshots
+
