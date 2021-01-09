@@ -64,8 +64,8 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.10.5
-pkgrel=3
+pkgver=5.10.6
+pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -82,29 +82,25 @@ source=(
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "http://ck.kolivas.org/patches/5.0/5.10/5.10-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch
-  0003-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch
-  0004-btrfs-Fix-500-2000-performance-regression-w-5.10.patch
-  0005-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch
-  0006-ALSA-hda-hdmi-fix-locking-in-silent_stream_disable.patch
-  0007-Revert-drm-amd-display-Fix-memory-leaks-in-S3-resume.patch
+  0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch
+  0003-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch
+  0004-btrfs-fix-deadlock-when-cloning-inline-extent-and-lo.patch
+  0005-btrfs-shrink-delalloc-pages-instead-of-full-inodes.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('25b71eb091ea6526a7ebfef5bc201b76d612e5138b6b3caa708f90e76196c30d1865c223e2084a118a3883a9620d47c9576b1ab7db2c8d9c0f204dda7c640eab'
+b2sums=('2da9e47f6524ecb50db9f515b9f281f08fbcb323f6e4ddb225c2b2f6379787c37efee25589e49286e13ff663c414a422b680912739400afab89f0ebaf741d33b'
         'SKIP'
-        'cb3a58e4eef8395b75887d94a84bba25f05fbec8f576a791623057a190a1d51b412a19ecf1b600ac3f9f6c46968eb0e130d571743e61afc231a97146ee4b52d0'
+        '37df0c9fc2214da9e94f0fb38ddc9c1f5bcf6279cacf918166efc3a0a8a9433ee10a95232992a108944160cf020fc3c240ef2fb8023581dc9cac11f973d7985d'
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
         '067f3389124fdd937ca69e9e9568b1b3194791960a093e81037051eb6d25e80b40bf7f60c61373ac9e92bff9db760766009b1e6f9ee8429a883bb7fce2d60f8a'
-        'f73d83132caebb708937da40b765722923cacc3842182dade837a7f5c9a26899cbdfac67541d4f319160a7faa3510d7bd8a4de89cb72a8c87cf5cedb49bffc30'
-        '0a1ebcafd728b511b501d347e1d6aa4250ab29d9f4701f4bd0e8d8ea9043d386e568f47aee1879874667c2c58da3ab3b97f68caa50d8ea2c6fa7cd9b49b278ab'
-        'f54cd64693b0b50761359c94b2773fdd17834d83bb275c1a90dd939087befe9595085a356d71a704302d335e6f1ac15e8c761d6c8ab4285f7e698e7fdc6340e7'
-        '4a07725fde51b7141607f1fc6b5e542c2f2db7fff05b8eba5de49a272fed0c92cd72d89636678d4112445b740d002332b14e3b6e8a862a707462e9e899976cfa'
-        '574065657486cf0e65e5c592cf9c743996ae4e02485219f620b8b055970442c29e2e3fa3b00dbf7ed43297f6744e890b72e7703361cc5f7378c1bfab72d8801f'
-        '9ee18ce9d18de97e8ee93f47c6a1702403ae14fabdc98ed327b31c9a63e51c7383fdf9a03b3b41b9094a34dc0e3f76683af0c020d240751c1c407b3d6ba9e508'
-        'e441aa9788fb5ce67e4efa19d62dccfb6165eda08e5ba16deeaabb6ea4714866e9c979075324ae534428d58b7195be77c9bece5e26cee0ed72bddd19b6941e4e')
+        'b42730a806a63dbf905f448a3282dec72a950ef7d16a3531d977dcae3b5c2685a5c5dd10a58e345d57084a6212353dc2f2f0102021d13c1557092e564f81eaf5'
+        'a5dea5bb6df6fb517009ad5b104c2ea8e93ed880393a1412ca2d7fc8047abccc9c72076e40d1d4133cadc9048040846cc9bdc91e30c4d601ad5963d13498503e'
+        '9a8723104239ba4646dd0c76c5a60128892954dd2faee69ca5c5d1251c9694de8fd528ca063a2add1401ad1375ad0dcc2560ca03a1bfd03b161d34ccd25b686a'
+        'e0da90b08fb03658dca9c42ac287c04d9b35969a15165c0f1fc7e11290de272b892abb58f5c7aabe22899f53f5bc39539f58768b8012d92145ba2fd8b89898a7'
+        '2b180269f934469d6ef6f0f8474dd947c7a8e9344cf3bbecac6a9c325d7bfb89d234eb15c4422709acaffd30ebeda2ec06c91a8c1128631a839186e8b273eb65')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -134,32 +130,23 @@ prepare() {
   # and can easily overwhelm a system with 32 GB of memory using a tmpfs build
   # partition ... this was introduced by FS#66260, see:
   # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/linux&id=663b08666b269eeeeaafbafaee07fd03389ac8d7
-  sed -i -e 's/CONFIG_CGROUP_BPF=y/# CONFIG_CGROUP_BPF is not set/' \
-      -i -e 's/CONFIG_BPF_LSM=y/# CONFIG_BPF_LSM is not set/' \
-      -i -e 's/CONFIG_USERMODE_DRIVER=y/# CONFIG_BPF_PRELOAD is not set/' \
-      -i -e '/CONFIG_BPF_PRELOAD=y/d' \
-      -i -e '/CONFIG_BPF_PRELOAD_UMD=m/d' \
-      -i -e '/CONFIG_BPF_STREAM_PARSER=y/g' \
-      -i -e 's/CONFIG_BPF_LIRC_MODE2=y/# CONFIG_BPF_LIRC_MODE2 is not set/' \
-      -i -e 's/CONFIG_DEBUG_INFO=y/# CONFIG_DEBUG_INFO is not set/' \
-      -i -e '/# CONFIG_DEBUG_INFO_REDUCED is not set/d' \
-      -i -e '/# CONFIG_DEBUG_INFO_COMPRESSED is not set/d' \
-      -i -e '/# CONFIG_DEBUG_INFO_SPLIT is not set/d' \
-      -i -e '/CONFIG_DEBUG_INFO_DWARF4=y/d' \
-      -i -e '/CONFIG_DEBUG_INFO_BTF=y/d' \
-      -i -e '/# CONFIG_GDB_SCRIPTS is not set/d' \
-      -i -e 's/CONFIG_BPF_KPROBE_OVERRIDE=y/# CONFIG_BPF_KPROBE_OVERRIDE is not set/' ./.config
+  scripts/config --disable CONFIG_DEBUG_INFO
+  scripts/config --disable CONFIG_CGROUP_BPF
+  scripts/config --disable CONFIG_BPF_LSM
+  scripts/config --disable CONFIG_BPF_PRELOAD
+  scripts/config --disable CONFIG_BPF_LIRC_MODE2
+  scripts/config --disable CONFIG_BPF_KPROBE_OVERRIDE
 
   # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
-  sed -i -e 's/# CONFIG_PSI_DEFAULT_DISABLED is not set/CONFIG_PSI_DEFAULT_DISABLED=y/' ./.config
+  scripts/config --enable CONFIG_PSI_DEFAULT_DISABLED
 
   # https://bbs.archlinux.org/viewtopic.php?pid=1863567#p1863567
-  sed -i -e '/CONFIG_LATENCYTOP=/ s,y,n,' \
-      -i -e '/CONFIG_SCHED_DEBUG=/ s,y,n,' ./.config
+  scripts/config --disable CONFIG_LATENCYTOP
+  scripts/config --disable CONFIG_SCHED_DEBUG
 
   # FS#66613
   # https://bugzilla.kernel.org/show_bug.cgi?id=207173#c6
-  sed -i -e 's/CONFIG_KVM_WERROR=y/# CONFIG_KVM_WERROR is not set/' ./.config
+  scripts/config --disable CONFIG_KVM_WERROR
 
   # fix naming schema in EXTRAVERSION of ck patch set
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatch}"

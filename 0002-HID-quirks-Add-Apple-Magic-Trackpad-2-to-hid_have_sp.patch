@@ -1,7 +1,7 @@
-From ab24a3058ff19f9578b93a4073773e11a2d3b9bf Mon Sep 17 00:00:00 2001
+From eeab2ccf0d788a6895b3b9a21c505d78ceec43e0 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Felix=20H=C3=A4dicke?= <felixhaedicke@web.de>
 Date: Thu, 19 Nov 2020 09:22:32 +0100
-Subject: [PATCH 3/8] HID: quirks: Add Apple Magic Trackpad 2 to
+Subject: [PATCH 2/6] HID: quirks: Add Apple Magic Trackpad 2 to
  hid_have_special_driver list
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

@@ -1,7 +1,7 @@
-From 3925c72c3245f3bdef8224114f665acb3ba65434 Mon Sep 17 00:00:00 2001
+From 2c517031bd7c5d34a05980c656ce2b6c6fbf1f78 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Mon, 16 Sep 2019 04:53:20 +0200
-Subject: [PATCH 1/8] ZEN: Add sysctl and CONFIG to disallow unprivileged
+Subject: [PATCH 1/6] ZEN: Add sysctl and CONFIG to disallow unprivileged
  CLONE_NEWUSER
 
 Our default behavior continues to match the vanilla kernel.
@@ -63,7 +63,7 @@ index 0872a5a2e759..a40d8afeb1bb 100644
  	bool "PID Namespaces"
  	default y
 diff --git a/kernel/fork.c b/kernel/fork.c
-index dc55f68a6ee3..15d29085d1ff 100644
+index c675fdbd3dce..9266039e28e4 100644
 --- a/kernel/fork.c
 +++ b/kernel/fork.c
 @@ -97,6 +97,10 @@

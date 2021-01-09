@@ -1,7 +1,7 @@
-From c954d99bf3e3ceaefd1c1b5293393a8614bd7571 Mon Sep 17 00:00:00 2001
+From 631f3ba6f0debde7efcadc90fb9abef10a271148 Mon Sep 17 00:00:00 2001
 From: Eric Dumazet <edumazet@google.com>
 Date: Mon, 21 Dec 2020 20:14:02 +0100
-Subject: [PATCH 5/8] iwlwifi: Fix regression from UDP segmentation support
+Subject: [PATCH 3/6] iwlwifi: Fix regression from UDP segmentation support
 
 Eric's tentative fix from
 https://lore.kernel.org/linux-wireless/CANn89iJWG2n1s3j7EdpwkQQv-9dOY02V+FGYHAWguO4JiqWuJA@mail.gmail.com/
