@@ -15,6 +15,7 @@ md5sums=("SKIP")
 
 
 build() {
+  mkdir "$pkgname"
 	cd "$pkgname"
   mkdir build && cd build
   cmake ..
