@@ -1,4 +1,4 @@
-# Maintainer: altaway <email@altaway.uk> 
+# Maintainer: altaway <aur@altaway.uk> 
 pkgname=vital-synth
 pkgver=1.0.4
 pkgrel=1
