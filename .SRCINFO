@@ -1,0 +1,16 @@
+pkgbase = multimc-curseforge
+	pkgdesc = Adds support for Curseforge's Install button to MultiMC
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/ShayBox/multimc-curseforge
+	arch = i686
+	arch = x86_64
+	license = MIT
+	optdepends = multimc
+	source_i686 = https://github.com/ShayBox/multimc-curseforge/releases/download/1.2.0/linux-386.tar.gz
+	sha256sums_i686 = acacf48f6220d895e20518908b854e578ad0def4e796e401ab7c6851b1493568
+	source_x86_64 = https://github.com/ShayBox/multimc-curseforge/releases/download/1.2.0/linux-amd64.tar.gz
+	sha256sums_x86_64 = ae21e6a7858b57565bca50502797e1cf0476ef442fc552206767fea83e490172
+
+pkgname = multimc-curseforge
+
