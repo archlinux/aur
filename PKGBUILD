@@ -1,6 +1,5 @@
-# Substitution for Arch Linux's base -package - SELinux installation
-# Unofficial PKGBUILDs for SELinux support can be found from:
-# https://github.com/archlinuxhardened/selinux
+# Substitution for Arch Linux's base -package - SELinux support
+# https://wiki.archlinux.org/index.php/SELinux
 
 # Maintainer: Tuomo Kuure <tqre@far.fi>
 
@@ -10,7 +9,7 @@ pkgrel=1
 pkgdesc='Minimal packages for Arch Linux installation with SELinux support'
 arch=('any')
 license=('GPL')
-url='https://github.com/tqre/selinux/tree/base-selinux'
+url='https://github.com/archlinuxhardened/selinux'
 groups=('selinux')
 depends=(
   # Basics
