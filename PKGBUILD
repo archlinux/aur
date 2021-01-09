@@ -3,7 +3,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
 
-pkgname=libtasn1-git
+pkgname=libtasn1-nodocs-git
 pkgver=4.16.0
 pkgrel=1
 pkgdesc="The ASN.1 library used in GNUTLS"

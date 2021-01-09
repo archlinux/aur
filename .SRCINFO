@@ -1,4 +1,4 @@
-pkgbase = libtasn1-git
+pkgbase = libtasn1-nodocs-git
 	pkgdesc = The ASN.1 library used in GNUTLS
 	pkgver = 4.16.0
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = libtasn1-git
 	source = git+https://gitlab.com/gnutls/libtasn1.git
 	sha256sums = SKIP
 
-pkgname = libtasn1-git
+pkgname = libtasn1-nodocs-git
 
