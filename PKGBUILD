@@ -6,7 +6,7 @@ url='https://wiki.ros.org/python_orocos_kdl'
 pkgname='ros-melodic-python-orocos-kdl'
 pkgver='1.4.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=5
+pkgrel=6
 license=('LGPL')
 
 ros_makedepends=(
@@ -17,8 +17,8 @@ makedepends=(
 	'cmake'
 	'ros-build-tools'
 	${ros_makedepends[@]}
-	python-sip
-	sip
+	python-sip4
+	sip4
 )
 
 ros_depends=(
@@ -28,8 +28,8 @@ ros_depends=(
 
 depends=(
 	${ros_depends[@]}
-	python-sip
-	sip
+	python-sip4
+	sip4
 )
 
 _dir="orocos_kinematics_dynamics-${pkgver}/python_orocos_kdl"
