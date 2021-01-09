@@ -1,5 +1,5 @@
 pkgname=checkra1n-cn
-pkgver=0.12.1
+pkgver=0.12.2
 pkgrel=1
 pkgdesc="checkra1n是一款支持A7-A11设备的越狱软件"
 license=('unknown')
