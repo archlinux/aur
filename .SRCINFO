@@ -1,6 +1,6 @@
 pkgbase = python-freqtrade-git
-	pkgdesc = Simple High Frequency Trading Bot for crypto currencies
-	pkgver = 0.14.3.r7484.g54c07e5e
+	pkgdesc = Free, open source crypto trading bot
+	pkgver = 0.14.3.r10087.gf97e8104
 	pkgrel = 1
 	url = https://github.com/gcarq/freqtrade/
 	arch = any
@@ -36,6 +36,8 @@ pkgbase = python-freqtrade-git
 	depends = python-hyperopt
 	depends = python-coinmarketcap
 	depends = python-ccxt
+	depends = python-certifi
+	depends = python-aiohttp
 	provides = python-freqtrade
 	source = python-freqtrade-git::git://github.com/gcarq/freqtrade.git#branch=master
 	sha256sums = SKIP
