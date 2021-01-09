@@ -1,6 +1,6 @@
 pkgbase = m64p
 	pkgdesc = Mupen64Plus with custom plugins and Qt5 GUI
-	pkgver = 20201215
+	pkgver = 20210104
 	pkgrel = 1
 	url = https://m64p.github.io/
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = m64p
 	conflicts = mupen64plus-gui
 	conflicts = mupen64plus-video-gliden64
 	conflicts = mupen64plus
-	source = git+https://github.com/loganmc10/m64p.git#commit=da3fc8ee7d67a9f566ac9de438f56b94648de509
+	source = git+https://github.com/loganmc10/m64p.git#commit=fdab03260ecef0964879207cc01bd282b4533a71
 	source = 010-m64p-remove-build-jobs-limitation.patch
 	source = 020-m64p-enable-optimizations.patch
 	source = 030-m64p-fix-paths.patch
