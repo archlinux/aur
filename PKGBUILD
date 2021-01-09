@@ -1,10 +1,11 @@
 # Submitter: Doug Newgard <scimmia22 at outlook dot com>
 # Contributor: Ronald vandd Haren <ronald.archlinux.org>
-# Current Maintainer: chchch
+# Previous Maintainer: chchch
+# Current Maintainer: endlesseden
 
 _pkgname=ephoto
 pkgname=$_pkgname-git
-pkgver=1.5.888.ccf4979
+pkgver=1.19.0.934.09873c6
 pkgrel=1
 pkgdesc="A light image viewer based on EFL"
 arch=('i686' 'x86_64')
@@ -14,7 +15,7 @@ depends=('efl')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git://git.enlightenment.org/apps/$_pkgname.git")
+source=("git+https://git.enlightenment.org/apps/$_pkgname.git")
 #source=("http://www.smhouston.us/stuff/ephoto-1.5.tar.gz")
 sha256sums=('SKIP')
 
@@ -23,8 +24,7 @@ pkgver() {
 #cd ephoto-1.5
 cd $_pkgname
 
-  local efl_version=$(grep -m1 EFL_VERSION configure.ac | awk -F [][] '{print $2 "." $4 "." $6}')
-  efl_version=$(awk -F , -v efl_version=${efl_version%.} '/^AC_INIT/ {gsub(/efl_version/, efl_version); gsub(/[\[\] -]/, ""); print $2}' configure.ac)
+  efl_version=$(grep -m1 efl_version meson.build | sed -e 's/\s\+/\n/g' | tail -1 | sed -e "s/'/\n/g" | head -1)
 
   printf "$efl_version.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
@@ -34,11 +34,19 @@ build() {
     cd $_pkgname
 #cd ephoto-1.5
 
-  ./autogen.sh \
-    --prefix=/usr \
-    --disable-static
+  rm -rf build
+  arch-meson $@ . build \
+  --prefix=/usr \
+  --buildtype=release \
+  --default-library=shared \
+  --optimization=3
 
-  make
+  meson compile -C build
+}
+
+check() {
+  cd $_pkgname
+  meson test -C build
 }
 
 package() {
@@ -46,10 +54,10 @@ package() {
     cd $_pkgname
 #cd ephoto-1.5
 
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" meson install -C build
 
 # install text files
-  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" ChangeLog NEWS README
+  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" TODO README
 
 # install license files
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COPYING
