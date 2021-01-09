@@ -30,9 +30,17 @@ build() {
     --prefix="/usr" \
     --with-default-trust-store-pkcs11="pkcs11:model=p11-kit-trust;manufacturer=PKCS%2311%20Kit" \
     --disable-full-test-suite \
-    --disable-guile\
+    --enable-guile \
+    --with-guile-site-dir=no \
     --disable-doc \
-    --disable-manpages 
+    --disable-manpages \
+    --with-zlib \
+    --disable-static \
+    --enable-openssl-compatibility \
+    --with-idn
+
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
   make
 }
 
