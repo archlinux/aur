@@ -1,20 +1,34 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gftools-git
-pkgver=0.3.14.r2.gb26c5c5
+pkgver=0.6.1.r0.g5c76b41
 pkgrel=1
 pkgdesc='Misc tools for working with the Google Fonts library'
 arch=('any')
 url="https://github.com/googlefonts/${pkgname%-git}"
 license=('Apache')
-_py_deps=('fonttools'
+_py_deps=('babelfont'
+          'brotli'
+          'pybrowserstack-screenshots'
+          'fontmake'
+          'fonttools'
+          'glyphslib'
+          'opentype-sanitizer'
+          'pygit2'
+          'pyaml'
+          'requests'
+          'strictyaml'
+          'tabulate'
+          'ttfautohint-py'
+          'unidecode'
           'fs' # optdepends of fonttols required for [ufo]
           'protobuf'
           'pygithub'
           'vttlib')
 depends=('absl-py'
          'python'
-         "${_py_deps[@]/#/python-}")
+         "${_py_deps[@]/#/python-}"
+         'statmake')
 makedepends=('python-setuptools-scm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
