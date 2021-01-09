@@ -45,7 +45,9 @@ build() {
     --with-included-unistring \
     --disable-static \
     --disable-guile \
-    --disable-valgrind-tests
+    --disable-valgrind-tests \
+    --disable-doc \
+    --disable-manpages
   make
 }
 
