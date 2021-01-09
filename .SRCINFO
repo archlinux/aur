@@ -8,6 +8,7 @@ pkgbase = ydotool
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = boost
+	makedepends = scdoc
 	depends = libevdevplus
 	depends = libuinputplus
 	depends = boost-libs
