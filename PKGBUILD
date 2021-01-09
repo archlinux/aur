@@ -1,5 +1,5 @@
-# Maintainer:  Vincent Grande <shoober420@gmail.com>
-# Contributor: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
+# Maintainer: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
+# Contributor:  Vincent Grande <shoober420@gmail.com>
 # Contributor: Armin K. <krejzi at email dot com>
 # Contributor: Kristian Klausen <klausenbusk@hotmail.com>
 # Contributor: Egon Ashrafinia <e.ashrafinia@gmail.com>
@@ -12,17 +12,17 @@
 
 pkgname=lib32-mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=21.0.0_devel.132039.6df572532dc
+pkgver=21.0.0_devel.133218.b634d7f3e2b
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
-             'lib32-gcc-libs' 'lib32-libvdpau' 'lib32-libelf' 'git' 'mesa-git' 'lib32-libglvnd' 
-             'wayland-protocols' 'glslang' 'lib32-wayland' 'meson' 'lib32-libva' 'lib32-libxrandr')
-depends=('mesa-git' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence'
-            'lib32-elfutils' 'lib32-vulkan-icd-loader' 'lib32-zstd')
+             'lib32-gcc-libs' 'lib32-libvdpau' 'lib32-libelf' 'git' 'lib32-libglvnd' 
+             'wayland-protocols' 'lib32-wayland' 'meson' 'lib32-libva' 'lib32-libxrandr' 'mesa-minimal-git' 'lib32-llvm-minimal-git' )
+depends=('mesa-minimal-git' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence'
+            'lib32-elfutils' 'lib32-libunwind' 'lib32-lm_sensors' 'glslang' 'lib32-vulkan-icd-loader' 'lib32-zstd' 'lib32-llvm-libs-minimal-git')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=('lib32-mesa' 'lib32-mesa-git' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-opengl-driver' 'lib32-vulkan-driver')
-conflicts=('lib32-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau')
+provides=('lib32-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-opengl-driver' 'lib32-vulkan-driver' 'lib32-mesa-vulkan')
+conflicts=('lib32-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-mesa-vulkan')
 url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git'
@@ -39,47 +39,6 @@ sha512sums=('SKIP'
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
-
-# MESA_WHICH_LLVM is an environment variable used to determine which llvm package tree is used to built mesa-git against.
-# Adding a line to ~/.bash_rc that sets this value is the simplest way to ensure a specific choice.
-# 
-# 1: llvm-minimal-git (aur) preferred value
-# 2: llvm-git (aur)
-# 3  llvm-git (lordheavy unoffical repo)
-# 4  llvm (stable from extra) default value
-# 
-# N.B. make sure lib32-mesa-git uses same value for this as mesa-git to avoid problems !
-#
-
-if [[ ! $MESA_WHICH_LLVM ]] ; then
-    MESA_WHICH_LLVM=4
-fi
-
-case $MESA_WHICH_LLVM in
-    1)
-        # aur lone_wolf-llvm-git
-        makedepends+=('lib32-llvm-minimal-git')
-        depends+=('lib32-llvm-libs-minimal-git')
-        ;;
-    2)
-        # aur llvm-git
-        # depending on aur-lib32-llvm-* to avoid mixup with LH llvm-git
-        makedepends+=('aur-lib32-llvm-git')
-        depends+=('aur-lib32-llvm-libs-git')
-        ;;
-    3)
-        # mesa-git/llvm-git (lordheavy unofficial repo)
-        makedepends+=('lib32-llvm-git')
-        depends+=('lib32-llvm-libs-git')
-        ;;
-    4)
-        # extra/llvm
-        makedepends+=(lib32-llvm=11.0.0)
-        depends+=(lib32-llvm-libs=11.0.0)
-        ;;
-    *)
-esac
-
 
 pkgver() {
     cd mesa
@@ -101,7 +60,7 @@ build () {
 
     meson setup mesa _build \
         --native-file llvm32.native \
-        -D b_ndebug=false \
+        -D b_ndebug=true \
         -D b_lto=true \
         -D buildtype=plain \
         --wrap-mode=nofallback \
@@ -109,36 +68,34 @@ build () {
         -D sysconfdir=/etc \
         --libdir=/usr/lib32 \
         -D platforms=x11,wayland \
-        -D dri-drivers=i915,i965,r200,r100,nouveau \
-        -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl,iris,zink \
-        -D vulkan-drivers=amd,intel \
+        -D dri-drivers=[] \
+        -D gallium-drivers=radeonsi,swrast,iris,zink \
+        -D vulkan-drivers=amd,intel,swrast \
         -D dri3=enabled \
         -D egl=enabled \
         -D gallium-extra-hud=true \
         -D vulkan-overlay-layer=true \
         -D vulkan-device-select-layer=true \
-        -D gallium-nine=true \
+        -D gallium-nine=false \
         -D gallium-omx=disabled \
         -D gallium-opencl=disabled \
         -D gallium-va=enabled \
-        -D gallium-vdpau=enabled \
-        -D gallium-xa=enabled \
+        -D gallium-vdpau=disabled \
+        -D gallium-xa=disabled \
         -D gallium-xvmc=disabled \
         -D gbm=enabled \
         -D gles1=disabled \
         -D gles2=enabled \
         -D glvnd=true \
         -D glx=dri \
-        -D libunwind=disabled \
+        -D libunwind=enabled \
         -D llvm=enabled \
-        -D lmsensors=disabled \
-        -D osmesa=true \
+        -D lmsensors=enabled \
+        -D osmesa=false \
         -D shared-glapi=enabled \
         -D valgrind=disabled \
         -D tools=[] \
         -D zstd=enabled \
-	-D debug=false \
-	-D b_pgo=off \
         -D microsoft-clc=disabled
 
     meson configure _build
