@@ -1,7 +1,7 @@
 # Maintainer: Nocifer <apmichalopoulos at gmail dot com>
 
 pkgname=zmeventnotification
-pkgver=6.1.5
+pkgver=6.1.6
 pkgrel=1
 pkgdesc='A machine learning powered, secure websocket & MQTT based event notification server for ZoneMinder'
 arch=('any')
@@ -51,8 +51,8 @@ sha256sums=('SKIP'
             'dccea06f59b781ec1234ddf8d1e94b9519a97f4245748a7d4db75d5b7080a42c'
             'a6d0f8e5c62cc8378384f75a8159b95fa2964d4162e33351b00ac82e0fc46a34'
             'e8a4f6c62188738d86dc6898d82724ec0964d0eb9d2ae0f0a9d53d65d108d562'
-            '6cbf5ece15235f66112e0bedebb324f37199b31aee385b7e18f0bbfb536b258e'
-            '037676f0d929c24e1bd9a0037fe30dc416fc26e0ca2a4491a44d024873316061'
+            'f858e3724962eedf3ac44e3b6cb3f0c3d9ed067c306bb831f539c578b924c90e'
+            'cf9fbfd0f6d4869b35762f56100f50ed05268084078805f0e7989efe5bb8ca87'
             '93f235896748537fc71325a070ee32e9a0afda2481ceb943559325619763fa6d'
             '232775917b5e0162b25c07bb1502ec3bbdeb5d0f1a835aba3097d5a2f4fc11e1')
      
