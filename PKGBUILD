@@ -1,8 +1,8 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=newrelic-cli
-pkgver=0.18.9
-pkgrel=2
+pkgver=0.18.11
+pkgrel=1
 pkgdesc="The New Relic Command Line Interface"
 arch=(x86_64)
 url=https://github.com/newrelic/newrelic-cli
