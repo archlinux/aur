@@ -13,7 +13,7 @@ pkgbase = lib32-mesa-minimal+-git
 	makedepends = lib32-libvdpau
 	makedepends = lib32-libelf
 	makedepends = git
-	makedepends = mesa-git
+	makedepends = mesa
 	makedepends = lib32-libglvnd
 	makedepends = wayland-protocols
 	makedepends = glslang
@@ -22,7 +22,7 @@ pkgbase = lib32-mesa-minimal+-git
 	makedepends = lib32-libva
 	makedepends = lib32-libxrandr
 	makedepends = lib32-llvm=11.0.0
-	depends = mesa-git
+	depends = mesa
 	depends = lib32-gcc-libs
 	depends = lib32-libdrm
 	depends = lib32-wayland

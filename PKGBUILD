@@ -16,9 +16,9 @@ pkgver=21.0.0_devel.132039.6df572532dc
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
-             'lib32-gcc-libs' 'lib32-libvdpau' 'lib32-libelf' 'git' 'mesa-git' 'lib32-libglvnd' 
+             'lib32-gcc-libs' 'lib32-libvdpau' 'lib32-libelf' 'git' 'mesa' 'lib32-libglvnd' 
              'wayland-protocols' 'glslang' 'lib32-wayland' 'meson' 'lib32-libva' 'lib32-libxrandr')
-depends=('mesa-git' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence'
+depends=('mesa' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence'
             'lib32-elfutils' 'lib32-vulkan-icd-loader' 'lib32-zstd')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=('lib32-mesa' 'lib32-mesa-git' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-opengl-driver' 'lib32-vulkan-driver')
