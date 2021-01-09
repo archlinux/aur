@@ -18,6 +18,11 @@ provides=(npth)
 conflicts=(npth)
 sha256sums=( 'SKIP')
 
+pkgver() {
+  cd npth
+  git describe --tags | sed 's/-/+/g'
+}
+
 build() {
 	cd npth
 	./autogen.sh
