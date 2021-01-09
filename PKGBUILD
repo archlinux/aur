@@ -2,8 +2,8 @@
 
 _pkgname=acdcontrol
 pkgname=$_pkgname-git
-pkgver=13.ee9f85a
-pkgrel=2
+pkgver=17.cc6315f
+pkgrel=1
 pkgdesc="Apple Cinema Display Control Utility for Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/jenrik/acdcontrol.git"
