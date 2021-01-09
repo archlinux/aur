@@ -1,7 +1,7 @@
 pkgbase = niacop-git
 	pkgdesc = Cross platform self-tracker tool
-	pkgver = 0.5.10.r3.gf6d44c7
-	pkgrel = 3
+	pkgver = v0.7.0.r0.ge5f3677
+	pkgrel = 1
 	url = https://github.com/xdrie/niacop
 	arch = x86_64
 	license = GPL3

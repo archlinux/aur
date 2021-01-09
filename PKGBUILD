@@ -1,8 +1,8 @@
 # Maintainer: xhyinne <xhyi AT gmx DOT us>
 
 pkgname=niacop-git
-pkgver=0.5.10.r3.gf6d44c7
-pkgrel=3
+pkgver=v0.7.0.r0.ge5f3677
+pkgrel=1
 pkgdesc="Cross platform self-tracker tool"
 arch=('x86_64')
 url="https://github.com/xdrie/niacop"
