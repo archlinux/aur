@@ -3,7 +3,15 @@
 # Contributor: Stephen Zhang <zsrkmyn at gmail dot com>
 
 pkgbase=python-pytorch-rocm
-pkgname=("python-pytorch-rocm" "python-pytorch-opt-rocm")
+
+# Flags for building without/with cpu optimizations
+_build_no_opt=1
+_build_opt=1
+
+pkgname=()
+[ "$_build_no_opt" -eq 1 ] && pkgname+=("python-pytorch-rocm")
+[ "$_build_opt" -eq 1 ]    && pkgname+=("python-pytorch-opt-rocm")
+
 _pkgname="pytorch"
 pkgver=1.7.1
 _pkgver=1.7.1
@@ -58,8 +66,8 @@ prepare() {
 
   cd ..
 
-  cp -a "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-rocm"
-  cp -a "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-opt-rocm"
+  [ "$_build_no_opt" -eq 1 ] && cp -a "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-rocm"
+  [ "$_build_opt" -eq 1 ]    && cp -a "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-opt-rocm"
 
   export VERBOSE=1
   export PYTORCH_BUILD_VERSION="${pkgver}"
@@ -87,29 +95,32 @@ prepare() {
 }
 
 build() {
-  echo "Building with rocm and without non-x86-64 optimizations"
-  export USE_CUDA=OFF
-  export USE_ROCM=ON
-  cd "${srcdir}/${_pkgname}-${pkgver}-rocm"
-  patch -Np1 -i "${srcdir}/disable_non_x86_64.patch"
-  echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
+  if [ "$_build_no_opt" -eq 1 ]; then
+    echo "Building with rocm and without non-x86-64 optimizations"
+    export USE_CUDA=OFF
+    export USE_ROCM=ON
+    cd "${srcdir}/${_pkgname}-${pkgver}-rocm"
+    patch -Np1 -i "${srcdir}/disable_non_x86_64.patch"
+    echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
 
-  # Apply changes needed for ROCm
-  python tools/amd_build/build_amd.py
+    # Apply changes needed for ROCm
+    python tools/amd_build/build_amd.py
 
-  python setup.py build
+    python setup.py build
+  fi
 
+  if [ "$_build_opt" -eq 1 ]; then
+    echo "Building with rocm and with non-x86-64 optimizations"
+    export USE_CUDA=OFF
+    export USE_ROCM=ON
+    cd "${srcdir}/${_pkgname}-${pkgver}-opt-rocm"
+    echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
 
-  echo "Building with rocm and with non-x86-64 optimizations"
-  export USE_CUDA=OFF
-  export USE_ROCM=ON
-  cd "${srcdir}/${_pkgname}-${pkgver}-opt-rocm"
-  echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
+    # Apply changes needed for ROCm
+    python tools/amd_build/build_amd.py
 
-  # Apply changes needed for ROCm
-  python tools/amd_build/build_amd.py
-
-  python setup.py build
+    python setup.py build
+  fi
 }
 
 _package() {
