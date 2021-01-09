@@ -17,7 +17,7 @@ depends=(
         'libcdio-paranoia' 'codec2' 'dav1d' 'libdc1394' 'libavc1394' 'libfdk-aac'
         'fontconfig' 'freetype2' 'fribidi' 'libgme' 'gsm' 'libiec61883'
         'libilbc' 'jack' 'kvazaar' 'lensfun' 'libmodplug' 'lame' 'opencore-amr'
-        'openjpeg2' 'opus' 'pulseaudio' 'librabbitmq-c' 'rav1e' 'librsvg' 'rubberband'
+        'openjpeg2' 'opus' 'libpulse' 'librabbitmq-c' 'rav1e' 'librsvg' 'rubberband'
         'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh' 'svt-hevc'
         'svt-av1' 'svt-vp9' 'tensorflow' 'tesseract' 'libtheora' 'twolame' 'v4l-utils'
         'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'libwebp' 'x264' 'x265' 'libxcb'
