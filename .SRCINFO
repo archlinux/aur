@@ -1,0 +1,18 @@
+pkgbase = lib32-libusb-git
+	pkgdesc = A cross-platform user library to access USB devices (32-bit)
+	pkgver = 1.0.24
+	pkgrel = 1
+	url = http://libusb.info/
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = gcc-multilib
+	depends = lib32-glibc
+	depends = libusb
+	provides = libusb-1.0.so
+	provides = lib32-libusb
+	conflicts = lib32-libusb
+	source = git+https://github.com/libusb/libusb.git
+	sha512sums = SKIP
+
+pkgname = lib32-libusb-git
+
