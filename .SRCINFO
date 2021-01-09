@@ -1,0 +1,48 @@
+pkgbase = buildroot-dummy
+	pkgdesc = dependency requirements for buildroot
+	pkgver = 2020.11.1
+	pkgrel = 1
+	url = https://buildroot.org/downloads/manual/manual.html#requirement
+	arch = any
+	license = GPL
+	depends = which
+	depends = sed
+	depends = make>=3.81
+	depends = binutils
+	depends = gcc>=4.8
+	depends = bash
+	depends = patch
+	depends = gzip
+	depends = bzip2
+	depends = perl>=5.8.7
+	depends = tar
+	depends = cpio
+	depends = unzip
+	depends = rsync
+	depends = file
+	depends = bc
+	depends = wget
+	optdepends = python
+	optdepends = ncurses: menuconfig & nconfig
+	optdepends = qt5-base: xconfig
+	optdepends = gtk2: gconfig
+	optdepends = glib2: gconfig
+	optdepends = libglade: gconfig
+	optdepends = breezy: bazaar
+	optdepends = cvs
+	optdepends = git
+	optdepends = mercurial
+	optdepends = rsync
+	optdepends = openssh: scp
+	optdepends = subversion
+	optdepends = asciidoc
+	optdepends = w3m
+	optdepends = python-argparse
+	optdepends = dblatex: pdf manual
+	optdepends = graphviz: graph-depends & <pkg>-graph-depends
+	optdepends = python-matplotlib: graph-build
+	provides = buildroot-
+	conflicts = buildroot-
+
+pkgname = buildroot-dummy
+
