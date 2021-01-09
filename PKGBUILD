@@ -2,7 +2,7 @@
 
 pkgname=buildroot-dummy
 pkgver=2020.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="dependency requirements for buildroot"
 arch=('any')
 url="https://buildroot.org/downloads/manual/manual.html#requirement"
@@ -61,7 +61,7 @@ optdepends=(
 	'python-matplotlib: graph-build'
 
 )
-provides=("${pkgname%dummy}")
-conflicts=("${pkgname%dummy}")
+provides=("${pkgname%-dummy}")
+conflicts=("${pkgname%-dummy}")
 # source=('SKIP')
 # md5sums=('SKIP')
