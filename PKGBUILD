@@ -12,6 +12,8 @@ rust-wasm
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rustwasm/wasm-bindgen/archive/${pkgver}.tar.gz")
 sha256sums=('207645bdd2a0c927593fe34a75fe93bd8a69f82525d160e99429307b51d11f01')
 
+CARGO_HOME="${srcdir}/cargo_home"
+
 prepare() {
   cd wasm-bindgen-${pkgver}/crates/cli
   export CARGO_HOME="${srcdir}/cargo_home"
@@ -20,12 +22,14 @@ prepare() {
 
 build() {
   cd wasm-bindgen-${pkgver}/crates/cli
-  cargo build --release --frozen --all-features --target-dir=target
+  #export CARGO_HOME="${srcdir}/cargo_home"
+  cargo build --release --offline --all-features --target-dir=target
 }
 
 check() {
   cd wasm-bindgen-${pkgver}/crates/cli
-  cargo test --release --frozen --target-dir=target
+  #export CARGO_HOME="${srcdir}/cargo_home"
+  cargo test --release --offline --target-dir=target
 }
 
 package(){
