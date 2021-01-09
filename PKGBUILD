@@ -2,20 +2,21 @@
 
 pkgname=gftools
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Misc tools for working with the Google Fonts library'
 arch=('any')
 url="https://github.com/googlefonts/$pkgname"
 license=('Apache')
 _py_deps=('babelfont'
           'brotli'
-          'pybrowserstack-screenshots'
+          'browserstack-local'
           'fontmake'
           'fonttools'
           'glyphslib'
           'opentype-sanitizer'
-          'pygit2'
           'pyaml'
+          'pybrowserstack-screenshots'
+          'pygit2'
           'requests'
           'strictyaml'
           'tabulate'
