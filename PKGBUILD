@@ -1,6 +1,6 @@
 # Maintainer: Charlie Ringström <c.ringstrom@gmail.com>
 pkgname='longcat'
-pkgver=r112.a13f8d2
+pkgver=r113.f0ff33e
 pkgrel=1
 pkgdesc="Creates a loooonng cat in the terminal"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -30,4 +30,5 @@ build() {
 package() {
 	cd "$pkgname"
 	install -Dm755 ./longcat "$pkgdir"/usr/bin/$pkgname
+	install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
