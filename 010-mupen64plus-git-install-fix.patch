@@ -1,6 +1,5 @@
-diff -Naurp a/m64p_install.sh b/m64p_install.sh
---- a/m64p_install.sh	2013-02-26 20:22:09.000000000 +0000
-+++ b/m64p_install.sh	2018-12-31 12:20:39.000000000 +0000
+--- a/m64p_install.sh
++++ b/m64p_install.sh
 @@ -43,5 +43,5 @@ for component in ${M64P_COMPONENTS}; do
  	fi
  

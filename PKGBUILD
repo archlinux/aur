@@ -7,15 +7,15 @@
 # mupen64plus component receives a new commit.
 
 pkgname=mupen64plus-git
-pkgver=2.5.9.r70.g4edc53c2.20200422.041041
+pkgver=2.5.9.r164.gaf812317.20210102.183932
 pkgrel=1
 pkgdesc='Nintendo64 Emulator (git version)'
 arch=('x86_64')
 url='https://www.mupen64plus.org/'
 license=('GPL')
-depends=('speexdsp' 'minizip' 'sdl2' 'glu' 'libsamplerate' 'libpng'
-         'freetype2' 'boost-libs' 'hicolor-icon-theme' 'desktop-file-utils')
-makedepends=('git' 'nasm' 'mesa' 'boost')
+depends=('boost-libs' 'freetype2' 'glu' 'libgl' 'libpng' 'libsamplerate'
+         'minizip' 'sdl2' 'speexdsp' 'zlib' 'hicolor-icon-theme')
+makedepends=('git' 'nasm' 'boost' 'mesa')
 provides=('mupen64plus')
 conflicts=('mupen64plus')
 source=('git+https://github.com/mupen64plus/mupen64plus-core.git'
@@ -25,8 +25,7 @@ source=('git+https://github.com/mupen64plus/mupen64plus-core.git'
         'git+https://github.com/mupen64plus/mupen64plus-audio-sdl.git'
         'git+https://github.com/mupen64plus/mupen64plus-input-sdl.git'
         'git+https://github.com/mupen64plus/mupen64plus-ui-console.git'
-        'mupen64plus-git-install-fix.patch'
-        'mupen64plus-git-ui-console-pie.patch')
+        '010-mupen64plus-git-install-fix.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -34,8 +33,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'd45208a1d9e5a08e6711739c9f52bd88ff016fa5c382a85f305cd4b69dbf62d1'
-            'e0e6b47aa5ea7b72f2bd5d5ad5e42fee870d947177f2b7e0137b6a93540b894d')
+            '57d44edf46bafc6dbdf82e6db204c50bac1c2ea5c07aef7d3f84818f87e671a5')
 
 _m64p_components='core rsp-hle video-rice video-glide64mk2 audio-sdl input-sdl ui-console'
 
@@ -44,10 +42,7 @@ prepare() {
     bsdtar -xf "${srcdir}/mupen64plus-core/tools/m64p_helper_scripts.tar.gz" m64p_install.sh
     
     # remove uneedeed 'source' directory references from install script
-    patch -Np1 -i mupen64plus-git-install-fix.patch
-    
-    # enable PIE for ui-console interface
-    patch -Np1 -i mupen64plus-git-ui-console-pie.patch
+    patch -Np1 -i 010-mupen64plus-git-install-fix.patch
 }
 
 pkgver() {
