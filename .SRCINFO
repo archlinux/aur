@@ -1,0 +1,24 @@
+pkgbase = perl-bundle-camelcade
+	pkgdesc = Bundle of modules used by Perl5 plugin for IntelliJ IDEs
+	pkgver = 0.001
+	pkgrel = 1
+	url = https://metacpan.org/release/Bundle-Camelcade
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-app-prove-plugin-passenv>=0
+	depends = perl-app-cpanminus>=0
+	depends = perl-devel-camelcadedb>=0
+	depends = perl-devel-cover>=0
+	depends = perl-devel-nytprof>=0
+	depends = perl-json>=0
+	depends = perl-perl-critic>=0
+	depends = perl-tidy>=0
+	depends = perl-tap-formatter-camelcade>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/H/HU/HURRICUP/Bundle-Camelcade-0.001.tar.gz
+	md5sums = f288ee2ac0db9a4c179deb88c723c171
+	sha512sums = 92ec0a66809ecc866191b773a2414bcf4c27c5c7eb9fff512e5701c5ed511ad7e5500a2a346eb4d1407f265160cb0915de2c4ef627663cc82c475400778804f0
+
+pkgname = perl-bundle-camelcade
+
