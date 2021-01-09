@@ -1,6 +1,6 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-git
-pkgver=2019.10.r760.gc74e49b3f
+pkgver=2020.06.r481.ga4979e2cd
 pkgrel=1
 pkgdesc="C++11/C++14 graphics middleware for games and data visualization (Git version)"
 arch=('i686' 'x86_64')
@@ -48,7 +48,9 @@ build() {
         -DWITH_FONTCONVERTER=ON \
         -DWITH_IMAGECONVERTER=ON \
         -DWITH_SCENECONVERTER=ON \
+        -DWITH_SHADERCONVERTER=ON \
         -DWITH_GL_INFO=ON \
+        -DWITH_VK_INFO=ON \
         -DWITH_AL_INFO=ON \
         -G Ninja
     ninja
