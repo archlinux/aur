@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _modulename=vimteractive
 pkgname=vim-$_modulename
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Send commands from text files to interactive programs via vim"
 arch=(any)
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('a6c178f3a0409b3426bec266f060418ae850424137dbb1acef83b63675074a17')
+sha256sums=('6a2b059d78266d068d45d45a223c20cf64df5eb8a0b8435052404141bf004dbc')
 
 package() {
   cd "$srcdir/$_modulename-${pkgver}"
