@@ -1,6 +1,6 @@
 pkgbase = okit-git
 	pkgdesc = The Application toolkit for the Orion Operating System
-	pkgver = 32
+	pkgver = r36.08bb550
 	pkgrel = 1
 	url = https://github.com/RosettaHS/OKit#readme
 	arch = x86_64

@@ -1,6 +1,6 @@
 # Maintainer: William Brown <glowinthedarkcia@horsefucker.org>
 pkgname="okit-git"
-pkgver=32
+pkgver=r36.08bb550
 pkgrel=1
 arch=("x86_64")
 pkgdesc="The Application toolkit for the Orion Operating System"
@@ -12,7 +12,7 @@ depends=("libx11" "gcc-libs")
 makedepends=("git")
 pkgver() {
 	cd "$srcdir/OKit"
-	git rev-list --count HEAD
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 build() {
 	cd "$srcdir/OKit"
