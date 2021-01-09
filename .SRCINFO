@@ -1,7 +1,7 @@
 pkgbase = fcitx5-chewing-git
 	pkgdesc = Fcitx5 addon for Chewing
-	pkgver = r108.76498e2
-	pkgrel = 1
+	pkgver = 5.0.2.r10.gb2d3dae
+	pkgrel = 2
 	url = https://gitlab.com/fcitx/fcitx5-chewing
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = fcitx5-chewing-git
 	makedepends = extra-cmake-modules
 	makedepends = git
 	depends = libchewing-git
-	depends = fcitx5-git
+	depends = fcitx5
 	depends = hicolor-icon-theme
-	provides = fcitx5-chewing=r108.76498e2
+	provides = fcitx5-chewing=5.0.2.r10.gb2d3dae
 	conflicts = fcitx5-chewing
 	conflicts = fcitx-chewing
 	source = git+https://github.com/fcitx/fcitx5-chewing.git

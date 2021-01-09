@@ -6,13 +6,13 @@
 
 _pkgname=fcitx5-chewing
 pkgname=$_pkgname-git
-pkgver=r108.76498e2
-pkgrel=1
+pkgver=5.0.2.r10.gb2d3dae
+pkgrel=2
 pkgdesc="Fcitx5 addon for Chewing"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/fcitx/fcitx5-chewing"
 license=('GPL')
-depends=('libchewing-git' 'fcitx5-git' 'hicolor-icon-theme')
+depends=('libchewing-git' 'fcitx5' 'hicolor-icon-theme')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" 'fcitx-chewing')
 makedepends=('extra-cmake-modules' 'git')
@@ -21,29 +21,19 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd $_pkgname
-
-  mkdir -p build
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build(){
-  cd $_pkgname/build
+  cd $_pkgname
 
-  cmake \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-      ..
+  cmake -B build -S . \
+      -DCMAKE_INSTALL_PREFIX=/usr
 
-  make
+  make -C build
 }
 
 package() {
   cd $_pkgname/build
-
   make DESTDIR="$pkgdir" install
 }
