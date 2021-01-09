@@ -26,7 +26,9 @@ build() {
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake \
+	-B build \
+        -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=/usr/lib32 \
         -DCMAKE_BUILD_TYPE='None' \
         -DWITH_JPEG7=OFF \
