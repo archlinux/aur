@@ -24,7 +24,7 @@ pkgver() {
 build() {
 	cd libksba
 	./autogen.sh
-	./configure --prefix=/usr
+	./configure --prefix=/usr --disable-doc
 	make
 }
 
