@@ -1,6 +1,6 @@
 # Maintainer: Nick Webster <nick@nick.geek.nz>
 pkgname=oled_shmoled
-pkgver=0.1.0
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="OLED displays don't have backlights but it'd be nice if we could pretend they do on Linux!"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('rust')
 source=(
     $pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate
 )
-md5sums=('1b42442bc41182964918b000a7ffb827')
+md5sums=('63c23d971efd9f1beed107d18fbe2a76')
 
 build() {
     cd "$pkgname-$pkgver"
