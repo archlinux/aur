@@ -1,6 +1,6 @@
 pkgbase = jurism
 	pkgdesc = Juris-M Standalone. Is a variant of Zotero, with legal and multilingual support.
-	pkgver = 5.0.93m15
+	pkgver = 5.0.93m18
 	pkgrel = 1
 	url = https://juris-m.github.io/downloads
 	install = jurism.install
@@ -12,8 +12,8 @@ pkgbase = jurism
 	depends = libxt
 	source = jurism.desktop
 	sha256sums = e77753174477bfd22d9b983e9e53954e9579e944c2b62bf32fcbdf17f1b36281
-	source_x86_64 = Jurism-5.0.93m15_linux_x86_64.tar.bz2::https://our.law.nagoya-u.ac.jp/jurism/dl?channel=release&platform=linux-x86_64&version=5.0.93m15
-	sha256sums_x86_64 = 2ad22b54bc710ddb5fb5d741ef583349329a8a8c013a7610925973595b813941
+	source_x86_64 = Jurism-5.0.93m18_linux_x86_64.tar.bz2::https://our.law.nagoya-u.ac.jp/jurism/dl?channel=release&platform=linux-x86_64&version=5.0.93m18
+	sha256sums_x86_64 = 0bd8a76cfbe776afb41ba12627a57cd99d06aa7843282137cff73710c8858d0d
 
 pkgname = jurism
 
