@@ -1,7 +1,8 @@
 pkgbase = r5u87x
-	pkgdesc = Userspace modules for Ricoh R5U870 OEM cameras, improved packages and compatibility
+	pkgdesc = Userspace module for Ricoh R5U870 OEM cameras
 	pkgver = 0.2.2
-	pkgrel = 4
+	pkgrel = 2
+	epoch = 1
 	url = https://gitea.artixlinux.org/linuxer/r5u87x
 	arch = i686
 	arch = x86_64
@@ -14,5 +15,4 @@ pkgbase = r5u87x
 	b2sums = 77964f77fc7c01a31f7768aa63203f5eb3e961533fe808418dba03c20ef07367caf12927974b1db74b6accbd56070adecbe372abc151b7e8c57af5c52b121638
 
 pkgname = r5u87x
-	install = post.install
 
