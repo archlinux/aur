@@ -11,14 +11,14 @@ index 10fc418..22ef968 100644
 +#else
 +#include <linux/dma-direct.h>
 +#endif
- #endif
  
- #if defined(CONFIG_SWIOTLB) && defined(NVCPU_AARCH64)
+ #if defined(NV_LINUX_DMA_MAP_OPS_H_PRESENT)
+ #include <linux/dma-map-ops.h>
 diff --git a/kernel/conftest.sh b/kernel/conftest.sh
 index b23dbb4..42dc576 100755
 --- a/kernel/conftest.sh
 +++ b/kernel/conftest.sh
-@@ -1906,7 +1906,12 @@ compile_test() {
+@@ -2068,7 +2068,12 @@ compile_test() {
              # Determine if the phys_to_dma function is present.
              #
              CODE="

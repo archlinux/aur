@@ -22,7 +22,7 @@ _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
         'kernel-4.16.patch')
 b2sums=('fae33e5fcd8f0429f163ad40e58a07c42ff47260bd1b0f56989d6147d63294c475f33ddc02f06a16eaf8c8ea9f74a98dbcb32b5322c68661331ebf7dfe976770'
-        '1d21307640a3844752c92e8344518daf6ad62d846689bebe6eed4dcadbf7b2e742862f5c17c0faee7256662cb75e62e124d59e5a5617e87324e1f0658f2b748d')
+        '16480a3df51248b5adf3a3349f602f96cd830b5364c0a1c142a53099ed1e881f727026fe36b837b76f20aef7e7bf606f52c1af28f1eec7cc8bf39a571243a4ba')
 
 prepare() {
     sh "${_pkg}.run" --extract-only
