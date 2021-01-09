@@ -3,21 +3,31 @@
 
 _gemname=pry
 pkgname=ruby-$_gemname
-pkgver=0.13.0
-pkgrel=2
-pkgdesc='An IRB alternative and runtime developer console.'
+pkgver=0.13.1
+pkgrel=1
+pkgdesc="An IRB alternative and runtime developer console"
 arch=(any)
-url='http://pryrepl.org'
+url=https://github.com/pry/pry
 license=(MIT)
 depends=(ruby ruby-coderay ruby-method_source)
-makedepends=(rubygems ruby-rdoc)
+makedepends=(git rubygems ruby-rdoc)
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
-sha256sums=('74b7d9b871845970a5a336e117bf2a7b292d66f39af2bbc16821cac72db4fb51')
+source=(git+https://github.com/pry/pry.git?tag=v${pkgver})
+sha256sums=('SKIP')
+
+prepare() {
+  cd ${_gemname}
+  sed -i 's|~>|>=|g' ${_gemname}.gemspec
+}
+
+build() {
+  cd ${_gemname}
+  gem build ${_gemname}.gemspec
+}
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  cd ${_gemname}
+  local _gemdir="$(gem env gemdir)"
 
   gem install \
     --ignore-dependencies \
@@ -28,6 +38,8 @@ package() {
 
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 
-  install -Dm0644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
+
+# vim: set ts=2 sw=2 et:
