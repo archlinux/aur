@@ -17,9 +17,9 @@ pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libxrandr'
-              'ocl-icd' 'wayland-protocols' 'meson' 'ninja' 'glslang' 'llvm-minimal-git')
+              'ocl-icd' 'wayland-protocols' 'meson' 'ninja' 'glslang' 'llvm')
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-         'libglvnd' 'wayland' 'libclc' 'vulkan-icd-loader' 'zstd' 'llvm-libs-minimal-git')
+         'libglvnd' 'wayland' 'libclc' 'vulkan-icd-loader' 'zstd' 'llvm-libs')
 # In order to keep the package simple and ease troubleshooting only use one llvm implementation
 optdepends=('opengl-man-pages: for the OpenGL API man pages'
                         'llvm-minimal-git: opencl')
@@ -37,6 +37,49 @@ sha512sums=('SKIP'
 # this package uses the environment variable NINJAFLAGS to allow the user to change this behaviour
 # The responsibility to validate the value of NINJAFLAGS lies with the user.
 # If unsure, use NINJAFLAGS=""
+
+# NINJAFLAGS is an env var used to pass commandline options to ninja
+# NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
+
+# MESA_WHICH_LLVM is an environment variable used to determine which llvm package tree is used to built mesa-git against.
+# Adding a line to ~/.bash_rc that sets this value is the simplest way to ensure a specific choice.
+#
+# 1: llvm-minimal-git (aur) preferred value
+# 2: llvm-git (aur)
+# 3  llvm-git (lordheavy unoffical repo)
+# 4  llvm (stable from extra) default value
+#
+# N.B. make sure lib32-mesa-git uses same value for this as mesa-git to avoid problems !
+#
+
+if [[ ! $MESA_WHICH_LLVM ]] ; then
+    MESA_WHICH_LLVM=4
+fi
+
+case $MESA_WHICH_LLVM in
+    1)
+        # aur lone_wolf-llvm-git
+        makedepends+=('lib32-llvm-minimal-git')
+        depends+=('lib32-llvm-libs-minimal-git')
+        ;;
+    2)
+        # aur llvm-git
+        # depending on aur-lib32-llvm-* to avoid mixup with LH llvm-git
+        makedepends+=('aur-lib32-llvm-git')
+        depends+=('aur-lib32-llvm-libs-git')
+        ;;
+    3)
+        # mesa-git/llvm-git (lordheavy unofficial repo)
+        makedepends+=('lib32-llvm-git')
+        depends+=('lib32-llvm-libs-git')
+        ;;
+    4)
+        # extra/llvm
+        makedepends+=(lib32-llvm=11.0.0)
+        depends+=(lib32-llvm-libs=11.0.0)
+        ;;
+    *)
+esac
 
 pkgver() {
     cd mesa

@@ -19,7 +19,8 @@ pkgbase = mesa-minimal+-git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = glslang
-	makedepends = llvm-minimal-git
+	makedepends = llvm
+	makedepends = lib32-llvm=11.0.0
 	depends = libdrm
 	depends = libxxf86vm
 	depends = libxdamage
@@ -30,7 +31,8 @@ pkgbase = mesa-minimal+-git
 	depends = libclc
 	depends = vulkan-icd-loader
 	depends = zstd
-	depends = llvm-libs-minimal-git
+	depends = llvm-libs
+	depends = lib32-llvm-libs=11.0.0
 	optdepends = opengl-man-pages: for the OpenGL API man pages
 	optdepends = llvm-minimal-git: opencl
 	provides = mesa
