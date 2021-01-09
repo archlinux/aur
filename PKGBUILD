@@ -1,7 +1,7 @@
 # Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 pkgname=linvst3-x-bin
 pkgver=2.15
-pkgrel=3
+pkgrel=4
 pkgdesc="Linux Windows vst3 wrapper/bridge"
 arch=('x86_64')
 url="https://github.com/osxmidi/LinVst3-X"
@@ -12,7 +12,7 @@ conflicts=('linvst3x')
 optdepends=('jack')
 suffix="Debian-Stretch"
 source=("$url/releases/download/$pkgver/LinVst3-X-$pkgver-$suffix.zip")
-md5sums=('cf9af920e72b477c897aecbda16f9996')
+md5sums=('8dbd70dd0d7ab51928bbbf029beb7c92')
 
 package() {
 	# Shared library
