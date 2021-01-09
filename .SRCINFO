@@ -11,7 +11,7 @@ pkgbase = linvst3-bin
 	optdepends = jack
 	conflicts = linvst3
 	source = https://github.com/osxmidi/LinVst3/releases/download/2.15/LinVst3-2.15-Debian-Stretch.zip
-	md5sums = f8b584967ec7516166b34cf183604874
+	md5sums = f234707929ffe8280312ce8e4007d042
 
 pkgname = linvst3-bin
 

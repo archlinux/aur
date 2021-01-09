@@ -12,7 +12,7 @@ conflicts=('linvst3')
 optdepends=('jack')
 suffix="Debian-Stretch"
 source=("$url/releases/download/$pkgver/LinVst3-$pkgver-$suffix.zip")
-md5sums=('f8b584967ec7516166b34cf183604874')
+md5sums=('f234707929ffe8280312ce8e4007d042')
 
 package() {
 
