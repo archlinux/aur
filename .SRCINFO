@@ -1,13 +1,13 @@
 pkgbase = kubeseal
 	pkgdesc = A Kubernetes controller and tool for one-way encrypted Secrets
 	pkgver = 0.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bitnami-labs/sealed-secrets
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	depends = glibc
-	source = kubeseal-0.13.1.tar.gz::https://github.com/bitnami-labs/sealed-secrets/archive/v0.13.1.tar.gz
+	source = https://github.com/bitnami-labs/sealed-secrets/archive/v0.13.1/kubeseal-0.13.1.tar.gz
 	sha512sums = a766e8f1f662aa33507d7d02016d2eefcfb5ea383ed4d4e043070b823e6d1a5de2b89c8bd7f342688745cc0744ec7a867b7b64c0451f8847bb59ba0436588974
 
 pkgname = kubeseal
