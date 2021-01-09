@@ -1,6 +1,6 @@
 pkgbase = redasm
 	pkgdesc = The OpenSource Disassembler
-	pkgver = 2.1.1
+	pkgver = 2.1.1.fix
 	pkgrel = 1
 	url = https://redasm.io/
 	arch = i686
@@ -9,9 +9,11 @@ pkgbase = redasm
 	makedepends = git
 	makedepends = cmake
 	depends = qt5-base
-	source = git+https://github.com/REDasmOrg/REDasm.git#tag=v2.1.1
+	source = git+https://github.com/REDasmOrg/REDasm.git#tag=v2.1.1-fix
+	source = git+https://github.com/REDasmOrg/REDasm-Library.git
 	source = git+https://github.com/Dax89/QHexView.git
 	source = git+https://github.com/aquynh/capstone.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
