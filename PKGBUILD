@@ -5,7 +5,7 @@
 
 _pkgname=touchegg
 pkgname=${_pkgname}-git
-pkgver=r323.c1773dc
+pkgver=r426.53aa6e8
 pkgrel=1
 pkgdesc='Linux multi-touch gesture recognizer'
 arch=('x86_64')
@@ -13,8 +13,8 @@ url='https://github.com/JoseExposito/touchegg'
 license=('GPL3')
 install="${_pkgname}.install"
 source=("${_pkgname}::git+https://github.com/JoseExposito/touchegg.git")
-depends=('libinput' 'cairo' 'systemd-libs' 'libx11' 'libxrandr' 'libxtst' 'pugixml')
-makedepends=('git' 'cmake')
+depends=('cairo' 'gtk3' 'pugixml' 'systemd-libs' 'libinput' 'libx11' 'libxrandr' 'libxtst')
+makedepends=('cmake' 'git')
 sha256sums=('SKIP')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
