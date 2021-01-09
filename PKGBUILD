@@ -8,6 +8,7 @@ url="https://github.com/rustwasm/wasm-bindgen"
 license=(APACHE MIT)
 depends=(
 rust-wasm
+wasm-bindgen-cli
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/thedodd/trunk/archive/v${pkgver}.tar.gz")
 sha256sums=('cab41516583250624e12b0e78379935d60d5fc46cfa4aead8746d119ac615406')
