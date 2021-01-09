@@ -1,0 +1,24 @@
+pkgbase = python-jq
+	pkgdesc = Python bindings for jq
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/mwilliamson/jq.py
+	arch = x86_64
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	depends = jq
+	source = python-jq-1.1.1.tar.gz::https://files.pythonhosted.org/packages/source/j/jq/jq-1.1.1.tar.gz
+	source = https://raw.githubusercontent.com/mwilliamson/jq.py/1.1.1/LICENSE
+	sha256sums = 62d649c4f6f26ed91810c8db075f5fe05319c3dc99dbebcd2d31b0b697a4592e
+	sha256sums = 6663bbd049205d38a496ccacb412a151980b444627d38de218b3b809aef330f1
+
+pkgname = python-jq
+	depends = python
+	provides = python3-jq=1.1.1
+	conflicts = python-jq-git
+
+pkgname = python2-jq
+	depends = python2
+	conflicts = python2-jq-git
+
