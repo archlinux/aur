@@ -1,51 +1,39 @@
-# Maintainer: alphazo <alphazo NOSPAM gmail.com>
-# Contributor: nullren <chopflop NOSPAM gmail.com>
-# Contributor: Richard Schwab <mail NOSPAM w.tf-w.tf>
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
 
-_pkgname="libassuan"
 pkgname=libassuan-git
-pkgver=2.1.1+1_gfd255da
+pkgver=2.5.4
 pkgrel=1
-pkgdesc="An IPC library used by some GnuPG related softwareI (git version)"
-arch=('i686' 'x86_64')
+pkgdesc='IPC library used by some GnuPG related software'
+url='https://www.gnupg.org/related_software/libassuan/'
+arch=('x86_64')
 license=('GPL')
-url="http://www.gnupg.org/related_software/libassuan"
 depends=('libgpg-error')
-options=('!libtool')
-provides=('libassuan')
-conflicts=('libassuan')
-install='libassuan.install'
-
-source=('libassuan.install'
-        'git://git.gnupg.org/libassuan.git')
-
-sha512sums=('9b01f13a96ea6be9d2e8d42505f1ff862186b889e4d01d1d2eaf25e7642d8e5edcce82d155f15a315aebd3edfba0d544a513d59cf25a43d3c1a1a3e57da2a60c'
-            'SKIP')
+provides=(libassuan)
+conflicts=(libassuan)
+source=("git://git.gnupg.org/libassuan.git")
+sha256sums=('SKIP')
+#validpgpkeys=('6DAA6E64A76D2840571B4902528897B826403ADA') # "Werner Koch (dist signing 2020)"
 
 pkgver() {
-        cd "$_pkgname"
-	git describe | sed 's|libassuan-||;s|-|+|;s|-|_|'
+  cd libassuan
+  git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-   cd "$_pkgname"
-
-   # patch things and don't build doc
-   sed -i 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/g' configure.ac
-   sed -i '/doc.Makefile/d' configure.ac
-   sed -i 's/src doc tests/src tests/' Makefile.am
-   autoreconf -fiv --force
-   ./configure --prefix=/usr --enable-maintainer-mode
-   make
+  cd libassuan
+  ./autogen.sh
+  ./configure --prefix=/usr
+  make
 }
 
-check() {
-  cd "$_pkgname" 
-  make check
-}
+#check() {
+#  cd libassuan
+#  make check
+#}
 
 package() {
-  cd "$_pkgname"
+  cd libassuan
   make DESTDIR="${pkgdir}" install
 }
-

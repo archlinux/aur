@@ -1,20 +1,15 @@
 pkgbase = libassuan-git
-	pkgdesc = An IPC library used by some GnuPG related softwareI (git version)
-	pkgver = 2.1.1+1_gfd255da
+	pkgdesc = IPC library used by some GnuPG related software
+	pkgver = 2.5.4
 	pkgrel = 1
-	url = http://www.gnupg.org/related_software/libassuan
-	install = libassuan.install
-	arch = i686
+	url = https://www.gnupg.org/related_software/libassuan/
 	arch = x86_64
 	license = GPL
 	depends = libgpg-error
 	provides = libassuan
 	conflicts = libassuan
-	options = !libtool
-	source = libassuan.install
 	source = git://git.gnupg.org/libassuan.git
-	sha512sums = 9b01f13a96ea6be9d2e8d42505f1ff862186b889e4d01d1d2eaf25e7642d8e5edcce82d155f15a315aebd3edfba0d544a513d59cf25a43d3c1a1a3e57da2a60c
-	sha512sums = SKIP
+	sha256sums = SKIP
 
 pkgname = libassuan-git
 
