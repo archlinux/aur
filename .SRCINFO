@@ -1,7 +1,7 @@
 pkgbase = docker-registry2-git
 	pkgdesc = Docker Registry 2.0 implementation to pack, ship, store, and deliver docker images (git version).
-	pkgver = r2752.ae2e973d
-	pkgrel = 1
+	pkgver = r2845.35f1369d
+	pkgrel = 2
 	url = https://github.com/docker/distribution
 	install = docker-registry-git.install
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = docker-registry2-git
 	makedepends = go
 	provides = docker-registry
 	conflicts = docker-registry
+	backup = etc/docker-registry/config.yml
 	source = docker-registry2-git::git+https://github.com/docker/distribution
 	source = docker-registry.conf
 	source = docker-registry.service
