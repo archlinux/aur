@@ -1,13 +1,13 @@
 # Maintainer: skydrome <skydrome at@at proton mail dot com>
 # Contributors: Thynix
 
-_fred=build01487
+_fred=build01489
 _wot=next
 
 _plugins=('WebOfTrust')
 
 pkgname=freenet
-pkgver=0.7.5.1487
+pkgver=0.7.5.1489
 pkgrel=1
 pkgdesc="A peer-to-peer platform for censorship-resistant communication and publishing"
 url="https://freenetproject.org"
@@ -47,7 +47,7 @@ prepare() {
     cd fred
 
     # Java 15 support
-    git pull -r -v https://github.com/skydrome/fred.git gradle-6.7-aur -q
+    git pull -r -v https://github.com/skydrome/fred.git gradle-6.8-aur -q
 
     rm -f seednodes.fref
     for node in "$srcdir"/seedrefs/0* ;do
