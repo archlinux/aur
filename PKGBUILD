@@ -34,6 +34,7 @@ build() {
     -DWITH_JPEG7=OFF \
     -DWITH_JPEG8=OFF \
     -DWITH_JAVA=OFF \
+    -DWITH_TURBOJPEG=ON \
     ./
   make -C "_build"
 }
