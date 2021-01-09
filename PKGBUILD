@@ -127,7 +127,7 @@ build () {
         -D lmsensors=disabled \
         -D osmesa=false \
         -D shared-glapi=enabled \
-	-D gallium-opencl=icd \
+	-D gallium-opencl=disabled \
         -D valgrind=disabled \
 	-D vulkan-overlay-layer=true \
 	-D vulkan-device-select-layer=true \
