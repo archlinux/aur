@@ -3,7 +3,7 @@
 
 pkgbase=linux-pf-git
 pkgdesc="Linux pf-kernel (git version)"
-pkgver=5.10.2.r0.ge560c558cdeb
+pkgver=5.10.6.r0.g5bfd8ac02dfe
 _kernel_rel=5.10
 _branch=pf-${_kernel_rel}
 _product="${pkgbase%-git}"
@@ -24,8 +24,8 @@ source=(
   pf_defconfig
 )
 sha256sums=('SKIP'
-            'd8b28f67a0f0bc56e5de858141dee3607fbac48eac41b0e9f7f69685f7475b53'
-            '598d8639cd9a78695b025342b21e9e1de55b3d5093d037987e70024c8767b3ef')
+            'd3e7adf5fcfc632887058ca84ca7b849a824dda5a03de854c8d3480ef0124ad1'
+            'e4ffd35546de014302d2f3ce052e8665fe751804f0aacb0b640749eaa5db071a')
 
 pkgver() {
   cd "${_srcname}"
