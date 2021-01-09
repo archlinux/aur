@@ -1,15 +1,11 @@
 pkgbase = luxtrust-middleware
 	pkgdesc = Gemalto PKCS#11 driver
-	pkgver = 1.2.1
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://www.luxtrust.lu/en/simple/225
-	arch = i686
 	arch = x86_64
-	depends = libclassicclient>=7.2.0_b04
-	source_i686 = https://www.luxtrust.lu/downloads/middleware/LuxTrust_Middleware_1.2.1_Ubuntu_32bit.tar.gz
-	sha256sums_i686 = 79ee2940496ffeed457eefb6b16013a1b5baa4b65f78bfa43411a3675445b579
-	source_x86_64 = https://www.luxtrust.lu/downloads/middleware/LuxTrust_Middleware_1.2.1_Ubuntu_64bit.tar.gz
-	sha256sums_x86_64 = 487c5f60a8dbb6212e24c41f9b80bf7d845bb13b29f129c96a7c3d070006cb80
+	depends = libclassicclient>=7.3.0_b06.01
+	source_x86_64 = https://www.luxtrust.lu/downloads/middleware/LuxTrust_Middleware_1.4.1_Ubuntu_64bit.tar.gz
+	sha256sums_x86_64 = 2b27b873f223f254b37fcc6ae9b21e5bb48ac081b0845be0f3bee10d8a377eff
 
 pkgname = luxtrust-middleware
-
