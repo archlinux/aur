@@ -1,0 +1,13 @@
+pkgbase = eclipse-embedcpp
+	pkgdesc = Embedded C/C++ Development Environment(Chinese Mirror)
+	pkgver = 4.18
+	pkgrel = 2
+	url = www.eclipse.org
+	arch = x86_64
+	license = EPL
+	depends = java-runtime>=11
+	source = eclipse-embedcpp-4.18.tar.gz::https://mirrors.ustc.edu.cn/eclipse/technology/epp/downloads/release/2020-12/R/eclipse-embedcpp-2020-12-R-linux-gtk-x86_64.tar.gz
+	md5sums = fec1a3813975f5474d93fbd2901d4783
+
+pkgname = eclipse-embedcpp
+
