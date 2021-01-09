@@ -1,7 +1,7 @@
 # Maintainer: Nick Webster <nick@nick.geek.nz>
 pkgname=oled_shmoled
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="OLED displays don't have backlights but it'd be nice if we could pretend they do on Linux!"
 arch=('x86_64')
 url="https://github.com/NickGeek/oled-shmoled"
