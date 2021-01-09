@@ -23,7 +23,9 @@ package() {
 	install -Dm644 "$pkgdir"/opt/NeatImage/Legal.txt "$pkgdir"/usr/share/licenses/"$pkgname"/Legal.txt
 #	install -Dm755 neatimage "$pkgdir"/usr/bin/neatimage
 	mkdir -p "$pkgdir"/usr/bin
-	echo -e '#!/bin/bash \n cd /opt/NeatImage/ && ./NeatImage "$@"' > "$pkgdir"/usr/bin/NeatImage
-	echo -e '#!/bin/bash \n cd /opt/NeatImage/ && ./NeatImageCL "$@"' > "$pkgdir"/usr/bin/NeatImageCL
+	cat > "$pkgdir"/usr/bin/NeatImage <<<'#!/bin/bash
+cd /opt/NeatImage/ && ./NeatImage "$@"'
+	cat > "$pkgdir"/usr/bin/NeatImageCL <<<'#!/bin/bash
+cd /opt/NeatImage/ && ./NeatImageCL "$@"'
 	chmod +x "$pkgdir"/usr/bin/NeatImage{,CL}
 }
