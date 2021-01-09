@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=tsmuxer-git
-pkgver=2.6.16.r290.b4a5668
+pkgver=2.6.16.r448.e6b1ed8
 pkgrel=1
 pkgdesc='Remux/mux elementary streams, EVO/VOB/MPG, MKV/MKA, MP4/MOV, TS, M2TS to TS to M2TS. (GIT Version)'
 arch=('x86_64')
@@ -16,12 +16,8 @@ provides=('tsmuxer'
           'tsmuxer'
           )
 conflicts=('tsmuxer')
-source=('git+https://github.com/justdan96/tsMuxer'
-        'tsmuxer.desktop'
-        )
-sha256sums=('SKIP'
-            'aed84b10da52849c14acb6bfb8b806c9675e4c8bcf781590712bbedc332b443f'
-            )
+source=('git+https://github.com/justdan96/tsMuxer')
+sha256sums=('SKIP')
 
 pkgver() {
   cd tsMuxer
@@ -48,12 +44,9 @@ build() {
 }
 
 package() {
-  install -Dm644 "${srcdir}/tsmuxer.desktop" "${pkgdir}/usr/share/applications/tsmuxergui.desktop"
-  install -Dm644 tsMuxer/tsMuxerGUI/images/icon.png "${pkgdir}/usr/share/pixmaps/tsmuxergui.png"
+  make -C build DESTDIR="${pkgdir}" install
+
   install -Dm644 tsMuxer/LICENSE "${pkgdir}/usr/share/licenses/tsmuxer/LICENSE"
   install -Dm644 tsMuxer/README.md "${pkgdir}/usr/share/doc/tsmuxer/README.md"
   install -Dm644 tsMuxer/CHANGELOG.md "${pkgdir}/usr/share/doc/tsmuxer/CHANGELOG.md"
-
-  install -Dm755 build/tsMuxer/tsmuxer "${pkgdir}/usr/bin/tsmuxer"
-  install -Dm755 build/tsMuxerGUI/tsMuxerGUI "${pkgdir}/usr/bin/tsmuxergui"
 }
