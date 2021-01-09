@@ -2,7 +2,7 @@
 
 pkgname=zettlr
 pkgver=1.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
@@ -14,15 +14,12 @@ optdepends=('pandoc: For exporting to various format'
             'ttf-lato: Display output in a more comfortable way')
 _csl_locale_commit=ecb8e70233e9a68e8b1dda4586061be8f8611a38 # Dec 11, 2020
 _csl_style_commit=a7899732910f5e69aae7799bf4e61505716c211b
-_zh_tw_commit=60ef7ec4cb8ba0a6da924d89c60d6d39d1c8b729 # matches 1.8.4
 options=(!strip)
 install=install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Zettlr/Zettlr/archive/v$pkgver.tar.gz"
         # citation style
         "locales-$pkgrel-$pkgver.zip::https://github.com/citation-style-language/locales/archive/$_csl_locale_commit.zip"
-        "chicago-author-date-$pkgver-$pkgrel.csl::https://github.com/citation-style-language/styles/raw/$_csl_style_commit/chicago-author-date.csl"
-        # Chinese(Taiwan) translation
-		"zh-TW-$pkgver-$pkgrel.json::https://raw.githubusercontent.com/Brli/zettlr-zh-TW/$_zh_tw_commit/zh-TW.json")
+        "chicago-author-date-$pkgver-$pkgrel.csl::https://github.com/citation-style-language/styles/raw/$_csl_style_commit/chicago-author-date.csl")
 sha256sums=('59a89ea4c86cf64920b540c0734566dbf737f08c6f48256fc8de124f65aebade'
             '24503a6cd5b3651a7003353811ae82d3ed707ec8ff932d341668c2ad377434b6'
             '2b7cd6c1c9be4add8c660fb9c6ca54f1b6c3c4f49d6ed9fa39c9f9b10fcca6f4'
