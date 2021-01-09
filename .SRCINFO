@@ -1,6 +1,6 @@
 pkgbase = linux-ck
 	pkgver = 5.10.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
 	license = GPL2
@@ -51,5 +51,5 @@ pkgname = linux-ck
 
 pkgname = linux-ck-headers
 	pkgdesc = Headers and scripts for building modules for Linux-ck kernel
-	depends = linux-ck
+	depends = pkgbase
 
