@@ -4,7 +4,7 @@ url='https://wiki.ros.org/rviz'
 pkgname='ros-melodic-rviz'
 pkgver='1.13.15'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD, Creative Commons')
 
 ros_makedepends=(
@@ -83,8 +83,8 @@ depends=(
 	tinyxml2
 	urdfdom-headers
 	qt5-base
-	sip
-	python-sip
+	sip4
+	python-sip4
         boost1.69
 )
 
