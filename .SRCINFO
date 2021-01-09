@@ -1,6 +1,6 @@
 pkgbase = meep
 	pkgdesc = A free finite-difference time-domain simulation software package
-	pkgver = 1.17.0
+	pkgver = 1.17.1
 	pkgrel = 1
 	url = http://ab-initio.mit.edu/wiki/index.php/Meep
 	arch = x86_64
@@ -21,8 +21,8 @@ pkgbase = meep
 	options = !libtool
 	options = !makeflags
 	options = staticlibs
-	source = meep-1.17.0.tar.gz::https://github.com/stevengj/meep/archive/v1.17.0.tar.gz
-	sha256sums = 0a728d00421483db6069dab7af9f130d216ed2a9378561bd50602ab9e0754f72
+	source = meep-1.17.1.tar.gz::https://github.com/stevengj/meep/archive/v1.17.1.tar.gz
+	sha256sums = 271b4a547a7abc2e7ac67ecc06c2f112603c7de48c774a519f014b99b59185ad
 
 pkgname = meep
 
