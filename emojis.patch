@@ -1,4 +1,5 @@
 diff --git a/emote/emojis.py b/emote/emojis.py
+index 333e021..829a1c5 100644
 --- a/emote/emojis.py
 +++ b/emote/emojis.py
 @@ -47,7 +47,10 @@ def update_recent_category():
@@ -14,6 +15,7 @@ diff --git a/emote/emojis.py b/emote/emojis.py
              {"char": char, "category": "recent", "name": emoji["name"]}
          )
 diff --git a/static/emojis.json b/static/emojis.json
+index 5763645..67ff57e 100644
 --- a/static/emojis.json
 +++ b/static/emojis.json
 @@ -343,7 +343,7 @@
@@ -852,7 +854,30 @@ diff --git a/static/emojis.json b/static/emojis.json
      "fitzpatrick_scale": false,
      "category": "symbols"
    },
-@@ -7387,7 +7387,7 @@
+@@ -7367,19 +7367,19 @@
+     "fitzpatrick_scale": false,
+     "category": "symbols"
+   },
+-  "female-sign":{
++  "female-sign": {
+     "keywords": ["woman", "venus", "gender", "sex"],
+     "char": "♀️",
+     "fitzpatrick_scale": false,
+     "category": "symbols"
+   },
+-  "male-sign":{
++  "male-sign": {
+     "keywords": ["man", "mars", "gender", "sex"],
+     "char": "♂️",
+     "fitzpatrick_scale": false,
+     "category": "symbols"
+   },
+-  "transgender-symbol":{
++  "transgender-symbol": {
+     "keywords": ["gender", "sex"],
+     "char": "⚧️",
+     "fitzpatrick_scale": false,
+@@ -7405,7 +7405,7 @@
    },
    "curly_loop": {
      "keywords": ["scribble", "draw", "shape", "squiggle"],
@@ -861,7 +886,7 @@ diff --git a/static/emojis.json b/static/emojis.json
      "fitzpatrick_scale": false,
      "category": "symbols"
    },
-@@ -7405,19 +7405,19 @@
+@@ -7423,19 +7423,19 @@
    },
    "heavy_plus_sign": {
      "keywords": ["math", "calculation", "addition", "more", "increase"],
@@ -884,7 +909,7 @@ diff --git a/static/emojis.json b/static/emojis.json
      "fitzpatrick_scale": false,
      "category": "symbols"
    },
-@@ -7429,7 +7429,7 @@
+@@ -7447,7 +7447,7 @@
    },
    "infinity": {
      "keywords": ["forever"],
@@ -893,7 +918,7 @@ diff --git a/static/emojis.json b/static/emojis.json
      "fitzpatrick_scale": false,
      "category": "symbols"
    },
-@@ -7507,13 +7507,13 @@
+@@ -7525,13 +7525,13 @@
    },
    "white_circle": {
      "keywords": ["shape", "round"],
@@ -909,7 +934,7 @@ diff --git a/static/emojis.json b/static/emojis.json
      "fitzpatrick_scale": false,
      "category": "symbols"
    },
-@@ -7573,13 +7573,13 @@
+@@ -7597,13 +7597,13 @@
    },
    "black_large_square": {
      "keywords": ["shape", "icon", "button"],
@@ -925,7 +950,7 @@ diff --git a/static/emojis.json b/static/emojis.json
      "fitzpatrick_scale": false,
      "category": "symbols"
    },
-@@ -7603,13 +7603,13 @@
+@@ -7627,13 +7627,13 @@
    },
    "black_medium_small_square": {
      "keywords": ["icon", "shape", "button"],
@@ -941,7 +966,7 @@ diff --git a/static/emojis.json b/static/emojis.json
      "fitzpatrick_scale": false,
      "category": "symbols"
    },
-@@ -9391,7 +9391,7 @@
+@@ -9415,7 +9415,7 @@
    },
    "pirate_flag": {
      "keywords": ["skull", "crossbones", "flag", "banner"],

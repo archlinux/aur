@@ -1,7 +1,7 @@
 pkgbase = emote
 	pkgdesc = Emoji Picker for Linux written in GTK3
-	pkgver = 1.0.1
-	pkgrel = 3
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/tom-james-watson/Emote
 	arch = any
 	license = GPL3
@@ -14,10 +14,10 @@ pkgbase = emote
 	depends = libkeybinder3
 	source = setup.py
 	source = emojis.patch
-	source = https://github.com/tom-james-watson/Emote/archive/v1.0.1.tar.gz
+	source = https://github.com/tom-james-watson/Emote/archive/dbff57507b20b4e723f1b82a9506809810711276.tar.gz
 	sha512sums = 83b6697b96882d3854c0f64a208571bfeec3e6324790e5508a6bd32092c5d462e86fa676c561111d98cce8058f1730303658612427b66daac086236e3e365316
-	sha512sums = d06513f492a91b2140928b9e116be079b5fb09f8df38d84d0697a1791b470155e130dfdd42d9c3a4167771ca8a1e249a2840ff9e72b1d2feb819a223d6d4c340
-	sha512sums = 258c6333109571c8d008f8663a6864b9155100ac9afc083aa08008086c748ec6bc9d3711c2f2be9c8cc53c31dcc98cfa9fbeb6b5186301eec5821a546bf90aaa
+	sha512sums = cefe0364d1adcfdd914c8a265a7e9146506d03bd6208c6b1dd54fbd65daa276ef48fa2936f622e1aba694caf29dd3041af6f54a9e200d98de838f7d12852e746
+	sha512sums = 2dae4a078c006a64b2ece589e55a6aa392292cbd5fd596e3b08bdeb50977e6859b359b66fdbad7ae9d30c3bb5fafb90744a4add0aef4950cf8cdff91921f8fed
 
 pkgname = emote
 
