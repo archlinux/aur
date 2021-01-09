@@ -28,9 +28,7 @@ build() {
   export CC="gcc -m32"
 
   ./autogen.sh
-  ./configure --prefix=/usr \
-    --libdir=/usr/lib32 --libexecdir=/usr/lib32 \
-    --disable-static --enable-pax_emutramp --disable-docs --disable-debug
+  ./configure --prefix=/usr --libdir=/usr/lib32 --libexecdir=/usr/lib32 --disable-static --enable-pax_emutramp --disable-docs --disable-debug
 
   make
 }
