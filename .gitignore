@@ -1,6 +1,8 @@
 pkg
 src
 pgzero-*.tar.gz
+pgzero-*.zip
+python-pgzero-*.pkg.tar.zst
 python-pgzero-*.pkg.tar.xz
 python-pgzero-*.src.tar.gz
 .AURINFO

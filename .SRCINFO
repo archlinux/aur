@@ -1,6 +1,6 @@
 pkgbase = python-pgzero
 	pkgdesc = A zero-boilerplate 2D games framework
-	pkgver = 1.2
+	pkgver = 1.2.post5
 	pkgrel = 2
 	url = http://pypi.python.org/pypi/pgzero
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-pgzero
 	makedepends = python-setuptools
 	depends = python-numpy
 	depends = python-pygame
-	source = https://files.pythonhosted.org/packages/source/p/pgzero/pgzero-1.2.tar.gz
-	md5sums = b627a2667ad7c2ccbe22c3875bbd2822
+	source = pgzero-1.2.post5.zip::https://github.com/lordmauve/pgzero/archive/1.2.post5.zip
+	md5sums = 8c2146a6dd244ab71e84a632c09b3f08
 
 pkgname = python-pgzero
 
