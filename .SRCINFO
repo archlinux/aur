@@ -1,0 +1,22 @@
+pkgbase = ccache-4
+	pkgdesc = Compiler cache that speeds up recompilation by caching previous compilations - 4.x version
+	pkgver = 4.1
+	pkgrel = 1
+	url = https://ccache.samba.org/
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = glibc
+	depends = zstd
+	provides = ccache
+	conflicts = ccache
+	source = https://github.com/ccache/ccache/releases/download/v4.1/ccache-4.1.tar.xz
+	source = https://github.com/ccache/ccache/releases/download/v4.1/ccache-4.1.tar.xz.asc
+	validpgpkeys = 5A939A71A46792CF57866A51996DDA075594ADB8
+	sha512sums = e80075eeea3fef8215de0a793e02381bfb59d7e74237fa34a49306047c60f0de0e678396ad3a9e5d86d3ad2aa21bbe29c7f0055f06b3ba2470f6895ce2eedd7b
+	sha512sums = SKIP
+	b2sums = 265ed6cd9602a04db0fadf63266d0fe1e78a74c69a27f05854a287e4048934d6afd63e71987bc525217782075c1a158601c400f3418caa0eb9730f34275bd08c
+	b2sums = SKIP
+
+pkgname = ccache-4
+
