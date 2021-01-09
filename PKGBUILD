@@ -53,11 +53,13 @@ END
 
 build() {
   cd "rustc-$pkgver-src"
+  export CARGO_HOME="${srcdir}/cargo_home"
   python x.py dist -j "$(nproc)"
 }
 
 package() {
   cd "rustc-$pkgver-src"
+  export CARGO_HOME="${srcdir}/cargo_home"
   DESTDIR="${pkgdir}" python x.py install -j "$(nproc)"
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE*
 
