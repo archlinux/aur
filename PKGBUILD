@@ -4,7 +4,7 @@ pkgdesc="ROS - Transports audio from a source to a destination."
 url='https://wiki.ros.org/audio_capture'
 
 pkgname='ros-melodic-audio-capture'
-pkgver='0.3.9'
+pkgver='0.3.10'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
@@ -28,7 +28,7 @@ depends=(${ros_depends[@]}
 
 _dir="audio_common-${pkgver}/audio_capture"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/audio_common/archive/${pkgver}.tar.gz")
-sha256sums=('59d56e5894666e81641ae8684fd32937769befbd8110bf22eae3beeca0608e19')
+sha256sums=('18fc68e3d2fa152bdba6c374845e8dbc366c9fcfe88b90b37c9c8dc9803185e7')
 
 build() {
   # Use ROS environment variables
