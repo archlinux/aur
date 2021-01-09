@@ -1,0 +1,18 @@
+pkgbase = pacminder-git
+	pkgdesc = Configurable reminder to update pacman.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/samox73/pacminder
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = cmake>=3.13
+	depends = boost
+	depends = boost-libs
+	depends = libconfig
+	source = git+https://github.com/samox73/pacminder.git
+	md5sums = SKIP
+
+pkgname = pacminder-git
+
