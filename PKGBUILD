@@ -15,7 +15,7 @@ sha256sums=('207645bdd2a0c927593fe34a75fe93bd8a69f82525d160e99429307b51d11f01')
 prepare() {
   cd wasm-bindgen-${pkgver}/crates/cli
   export CARGO_HOME="${srcdir}/cargo_home"
-  cargo fetch 
+  cargo fetch  # --locked isn't working and I guess that's a bug in the package?
 }
 
 build() {
