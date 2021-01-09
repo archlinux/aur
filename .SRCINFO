@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-ros-tutorials
 	pkgdesc = ROS - ros_tutorials contains packages that demonstrate various features of ROS, as well as support packages which help demonstrate those features.
-	pkgver = 0.9.1
-	pkgrel = 3
+	pkgver = 1.3.1
+	pkgrel = 1
 	url = https://wiki.ros.org/ros_tutorials
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = ros-noetic-ros-tutorials
 	depends = ros-noetic-roscpp-tutorials
 	depends = ros-noetic-rospy-tutorials
 	depends = ros-noetic-turtlesim
-	source = ros-noetic-ros-tutorials-0.9.1.tar.gz::https://github.com/ros/ros_tutorials/archive/0.9.1.tar.gz
-	sha256sums = b39929a2ac912326fc114256e755fff5d0f0e5e5e7c99640d013eb7f916b85f4
+	source = ros-noetic-ros-tutorials-1.3.1.tar.gz::https://github.com/ros/ros_tutorials/archive/1.3.1.tar.gz
+	sha256sums = b1071896e92a7060c14e7a1ed71bb4c7613049f4021992b50002574ba70b3d0f
 
 pkgname = ros-noetic-ros-tutorials
 
