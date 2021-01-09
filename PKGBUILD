@@ -2,7 +2,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="odio-sacd"
-pkgver="20.5.12"
+pkgver="21.1.9"
 pkgrel="1"
 pkgdesc="SACD decoder"
 arch=("i686" "x86_64" "pentium4")
@@ -11,7 +11,7 @@ license=("GPL3")
 depends=("libodiosacd")
 makedepends=("libodiosacd")
 source=("https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("67fd5e7e578defd2d3b4f32598a47291")
+md5sums=("ec7d54425ad4aba58fa0abb932dccc35")
 options=("!emptydirs")
 
 build()
