@@ -5,19 +5,21 @@
 # Contributor: clarence <catchfire at gmail dot com>
 
 pkgname=patchage
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="A modular patch bay for audio and MIDI systems based on Jack and Alsa"
 arch=('x86_64')
 url="https://drobilla.net/software/patchage"
 license=('GPL3')
-depends=('atkmm' 'cairo' 'cairomm' 'dbus-glib' 'fontconfig' 'gcc-libs'
-'gdk-pixbuf2' 'glibc' 'harfbuzz' 'libsigc++' 'pangomm')
-makedepends=('alsa-lib' 'atk' 'boost' 'dbus' 'freetype2' 'ganv' 'glib2' 'gtk2'
-'jack' 'pango' 'waf')
-source=("https://download.drobilla.net/$pkgname-$pkgver.tar.bz2"{,.sig})
-sha512sums=('8d59bf4a71c2b41a1c9d8f72da30046568573c6cedaca69815b279fd1c24d44267da6846e219449d47f43157663abc331ef89f241d94dd16e666e06da9f81e12'
+depends=('atkmm' 'cairo' 'cairomm' 'dbus-glib' 'gcc-libs' 'gdk-pixbuf2' 'glibc'
+'libsigc++' 'pangomm')
+makedepends=('alsa-lib' 'atk' 'boost' 'dbus' 'fontconfig' 'freetype2' 'ganv'
+'glib2' 'gtk2' 'harfbuzz' 'jack' 'pango' 'waf')
+source=("https://download.drobilla.net/$pkgname-$pkgver.tar.bz2"{,.asc})
+sha512sums=('665d81ca16c1052f71c3037d2ad8f9a6120b09a323999468484dda1b4c4b567c36728ebe38c54152406b63a4107f04764d0dede52302bc7a7b124e82132749fb'
             'SKIP')
+b2sums=('3e56b7513e19e0acb1ef524ba7d7754699abdb6a968547f7a545c8651f23a33c209b9728dae01d839022ec380185a1673ff58733c1553007a6a3b7c889aa7f03'
+        'SKIP')
 validpgpkeys=('907D226E7E13FA337F014A083672782A9BF368F3') # David Robillard <d@drobilla.net>
 
 prepare() {
@@ -41,10 +43,10 @@ build() {
 }
 
 package() {
-  depends+=('libasound.so' 'libatk-1.0.so' 'libdbus-1.so' 'libfreetype.so'
-  'libganv-1.so' 'libgdk-x11-2.0.so' 'libgio-2.0.so' 'libglib-2.0.so'
-  'libgobject-2.0.so' 'libgtk-x11-2.0.so' 'libjack.so' 'libpangoft2-1.0.so'
-  'libpango-1.0.so' 'libpangocairo-1.0.so')
+  depends+=('libasound.so' 'libatk-1.0.so' 'libdbus-1.so' 'libfontconfig.so'
+  'libfreetype.so' 'libganv-1.so' 'libgdk-x11-2.0.so' 'libgio-2.0.so'
+  'libglib-2.0.so' 'libgobject-2.0.so' 'libgtk-x11-2.0.so' 'libharfbuzz.so'
+  'libjack.so' 'libpangoft2-1.0.so' 'libpango-1.0.so' 'libpangocairo-1.0.so')
   cd "${pkgname}-${pkgver}"
   waf install --destdir="${pkgdir}"
   install -vDm 644 {AUTHORS,NEWS,README.md} \
