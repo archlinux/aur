@@ -11,8 +11,17 @@ pkgdesc='ASCII-art demo that uses AAlib'
 arch=('x86_64' 'i686')
 url='http://aa-project.sourceforge.net/bb/'
 license=('GPL')
-makedepends=('aalib' 'allegro')
-depends=('aalib' 'glibc' 'libx11' 'ncurses' 'libmikmod' 'libxau' 'libxdmcp' 'allegro')
+makedepends=('aalib'
+             'allegro')
+depends=('aalib'
+         'allegro'
+         'glibc'
+         'libx11'
+         'libmikmod'
+         'libxau'
+         'libxdmcp'
+         'ncurses'
+         'xorg-fonts-misc')
 source=("http://ftp.debian.org/debian/pool/main/b/bb/${pkgname}_$pkgver.orig.tar.gz"
         "http://ftp.debian.org/debian/pool/main/b/bb/${pkgname}_$pkgver-8.3.diff.gz"
         'https://github.com/xaos-project/XaoS/archive/release-3.5.tar.gz'
