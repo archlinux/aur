@@ -39,6 +39,7 @@ pkgbase = freecad-git
 	depends = shared-mime-info
 	depends = xerces-c
 	optdepends = povray: ray tracing support
+	optdepends = luxcorerender: ray tracing support
 	optdepends = libspnav: 3d mouse support
 	provides = freecad
 	conflicts = freecad

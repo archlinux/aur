@@ -46,6 +46,7 @@ swig
 )
 optdepends=(
 'povray: ray tracing support'
+'luxcorerender: ray tracing support'
 'libspnav: 3d mouse support'
 )
 provides=('freecad')
