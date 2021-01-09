@@ -2,8 +2,8 @@
 
 pkgname=intellij-idea-community-edition-jre
 _appname=jetbrains-idea-ce
-pkgver=2020.3
-_buildver=203.5981.155
+pkgver=2020.3.1
+_buildver=203.6682.168
 pkgrel=1
 pkgdesc="Intellij Idea Community Edition with bundled JRE"
 arch=('any')
@@ -14,7 +14,7 @@ provides=("$_appname")
 conflicts=("$_appname")
 source=("https://download.jetbrains.com/idea/ideaIC-$pkgver.tar.gz"
 		"$_appname.desktop")
-sha256sums=('c6f78b72cf7b82619685651ae8517c3faf983dc558c4d4f4c171801ab8d43674'
+sha256sums=('06abca33b240b24f447dada437f5ce7387b47644c76378230254d6163882a42a'
             '91aa66e16e428d595c9f76a02f5a6d54d6fb0b1d1ccac4159cfb7070cff26a4b')
 
 package() {
