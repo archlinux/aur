@@ -65,7 +65,7 @@ _localmodcfg=
 
 pkgbase=linux-ck
 pkgver=5.10.5
-pkgrel=2
+pkgrel=3
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -251,7 +251,7 @@ _package() {
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for ${pkgbase/linux/Linux} kernel"
-  depends=("pkgbase") # added to keep kernel and headers packages matched
+  depends=("$pkgbase") # added to keep kernel and headers packages matched
   #groups=('ck-generic')
 
   cd linux-${pkgver}
