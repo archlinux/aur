@@ -1,0 +1,23 @@
+pkgbase = azcomicv
+	pkgdesc = A simple comic viewer for Linux
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = http://azsky2.html.xdomain.jp/soft/azcomicv.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = libx11
+	depends = libxext
+	depends = libxcursor
+	depends = hicolor-icon-theme
+	depends = freetype2
+	depends = fontconfig
+	depends = zlib
+	depends = libpng
+	depends = libtiff
+	depends = libjpeg-turbo
+	source = http://azsky2.html.xdomain.jp/arc/azcomicv-2.0.1.tar.xz
+	sha256sums = 8f47b243a17e2eb4f80c2330844c38e0a4aece77db21a9835ce3ac99fe3e64de
+
+pkgname = azcomicv
+
