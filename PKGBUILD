@@ -2,12 +2,13 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=color_blinder-git
-pkgver=1.0.0.r2.g4dd8496
-pkgrel=2
+pkgver=1.0.2.r0.g14bd892
+pkgrel=1
 pkgdesc="Simulate different kinds of color blindness with a set of images (git)"
 arch=('x86_64')
 url="https://gitlab.com/dns2utf8/color_blinder"
 license=('MIT')
+depends=('gcc-libs')
 makedepends=('rust' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
@@ -21,14 +22,12 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  # TODO: Use `--locked` flag for reproducibility.
-  # Tracking issue: https://gitlab.com/dns2utf8/color_blinder/-/merge_requests/3
-  cargo build --release
+  cargo build --release --locked
 }
 
 check() {
   cd "${pkgname%-git}"
-  cargo test --release
+  cargo test --release --locked
 }
 
 package() {

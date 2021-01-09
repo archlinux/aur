@@ -1,16 +1,16 @@
 pkgbase = color_blinder-git
 	pkgdesc = Simulate different kinds of color blindness with a set of images (git)
-	pkgver = 1.0.0.r2.g4dd8496
-	pkgrel = 2
+	pkgver = 1.0.2.r0.g14bd892
+	pkgrel = 1
 	url = https://gitlab.com/dns2utf8/color_blinder
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = git
+	depends = gcc-libs
 	provides = color_blinder
 	conflicts = color_blinder
 	source = git+https://gitlab.com/dns2utf8/color_blinder
 	sha512sums = SKIP
 
 pkgname = color_blinder-git
-
