@@ -1,6 +1,6 @@
 --- a/configure
 +++ b/configure
-@@ -4341,10 +4341,10 @@ fi
+@@ -4344,10 +4344,10 @@ fi
  
  if enabled cuda_nvcc; then
      nvcc_default="nvcc"

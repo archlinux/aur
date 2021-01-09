@@ -4,7 +4,7 @@ _svt_hevc_ver='ead6fdf7c9ff84511b42fc1658c1654b84d83e4b'
 _svt_vp9_ver='7951c3cf6773c5e0ede00e4ce3e3ad2f7e090cfb'
 
 pkgname=ffmpeg-full-git
-pkgver=4.4.r100085.g68adb68e96
+pkgver=4.4.r100585.g69aeba8a19
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)'
 arch=('x86_64')
@@ -49,7 +49,7 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         'LICENSE')
 sha256sums=('SKIP'
             '52778c70d9fe6e3a10941b99b96ac7749cec325dc1b9ee11ab75332b5ff68e50'
-            '3899622607498c14c5fa15ecfa34a5b30d7b6221339222b25680f84996e0023f'
+            'de0eeda63c2b0adf185e8c96e15872940cb8cfae5dd7590d593f56ef2c7db09d'
             '05ec4d3323dc80ef6c1d4d6d50d339accd51d22b12a735b7a6605f10feb09cec'
             '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
             '34e78efe063abc10707e47b4a3ba9d22955bfaf26d5670abb963d8f11f6b22b1'
