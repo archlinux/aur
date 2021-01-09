@@ -1,6 +1,6 @@
 pkgbase = mangohud-git
 	pkgver = 0.6.1.r46.gc92f805
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flightlessmango/MangoHud
 	arch = x86_64
 	license = MIT
