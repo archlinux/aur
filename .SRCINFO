@@ -1,6 +1,6 @@
 pkgbase = mrouted
 	pkgdesc = An implementation of the DVMRP multicast routing protocol. It turns a UNIX workstation into a DVMRP multicast router with tunnel support, in order to cross non-multicast-aware routers.
-	pkgver = 3.9.8
+	pkgver = 4.2
 	pkgrel = 1
 	url = https://github.com/troglobit/mrouted
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = mrouted
 	license = BSD
 	depends = glibc
 	backup = etc/mrouted.conf
-	source = https://github.com/troglobit/mrouted/releases/download/3.9.8/mrouted-3.9.8.tar.bz2
+	source = https://github.com/troglobit/mrouted/releases/download/4.2/mrouted-4.2.tar.gz
 	source = mrouted.service
-	md5sums = 8fdd21cf7028b0d16e9477140d311750
+	md5sums = b921f9e152e039efdac745438ef8362c
 	md5sums = a1ba2643cb169513666a2dcc98e01f4e
 
 pkgname = mrouted
