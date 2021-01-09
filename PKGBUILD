@@ -1,7 +1,7 @@
 # Maintainer: degreeme <suratovvlad@gmail.com>
 
 pkgname=texstudio-dark-git
-pkgver=2.12.16beta3.r24.g67a7b8bc
+pkgver=3.0.4.r8.g829deb6b
 pkgrel=1
 pkgdesc="Integrated writing environment for creating LaTeX documents. Dark version."
 arch=('i686' 'x86_64')
