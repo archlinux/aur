@@ -1,7 +1,7 @@
 pkgbase = rpms
 	pkgdesc = Renoir power metrics server
 	pkgver = 1.0.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/moson-mo/rpms
 	install = rpms.install
 	arch = x86_64

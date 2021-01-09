@@ -2,7 +2,7 @@
 
 pkgname=rpms
 pkgver=1.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Renoir power metrics server'
 arch=('x86_64')
 url="https://github.com/moson-mo/$pkgname"
