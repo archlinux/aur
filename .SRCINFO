@@ -1,0 +1,20 @@
+pkgbase = gamerworld-git
+	pkgdesc = Play games all in one place
+	pkgver = 1.2.0
+	pkgrel = 5
+	url = https://gitlab.com/gamerworld/application
+	arch = any
+	license = GPL
+	makedepends = npm
+	makedepends = git
+	makedepends = unzip
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	provides = gamerworld-git
+	conflicts = gamerworld-git
+	source = git+https://gitlab.com/gamerworld/application.git#branch=Stable
+	sha256sums = SKIP
+
+pkgname = gamerworld-git
+
