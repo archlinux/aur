@@ -1,12 +1,13 @@
-# Maintainer: Alonso Rodriguez <alonsorodi20 (at) gmail (dot) com>
-# Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
-# Maintainer: Thomas Baechler <thomas@archlinux.org>
+# Maintainer: Jonathon Fernyhough <jonathon+m2x+dev>
+# Contributor: Alonso Rodriguez <alonsorodi20 (at) gmail (dot) com>
+# Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
+# Contributor: Thomas Baechler <thomas@archlinux.org>
 # Contributor: James Rayner <iphitus@gmail.com>
 
 pkgbase=nvidia-390xx-utils
 pkgname=('nvidia-390xx-utils' 'opencl-nvidia-390xx')
-pkgver=390.138
-pkgrel=3
+pkgver=390.141
+pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -19,7 +20,7 @@ source=('nvidia-drm-outputclass.conf'
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
             '1fde155171701e8dac7e58b3ef8f62b7810a959ec664950ac7b791aca4e6776ff5540cb5819e44ccce46b2d42c087ac43c80ad1182a484e4d75e9b4374516137'
-            'a4e6e63cbd74d25c5bef8efee64828acf45e89a27d1a677eab04a9a10fd10eb77bd28d17aab2009b282ae3db97e810b1c07aab80c257e8d981e6a8512c79f789')
+            'c218517ab880470b9048ad40b54014ee6dfced442fc7178e629c1fd0917da58186dece3587b424d99e0b8acfd6f0bdb91ab00035c6b0488fbac198d496b09371')
 
 
 create_links() {
