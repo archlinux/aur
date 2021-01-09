@@ -1,12 +1,12 @@
-diff -ur old/reddio new/reddio
---- old/reddio	2019-08-24 14:59:17.992503592 +0200
-+++ new/reddio	2019-08-24 15:00:06.863109059 +0200
-@@ -185,7 +185,7 @@
- 	load_config "$config_file"
+diff -ru --color old/reddio new/reddio
+--- old/reddio	2021-01-09 14:35:46.414055005 +0100
++++ new/reddio	2021-01-09 14:36:59.154613701 +0100
+@@ -173,7 +173,7 @@
+ 	fi
  
- 	# Environment variable has precedence over config
+ 	# Library path environment variable has precedence over config
 -	lib_dir=${REDDIO_LIB:-${lib_dir:-/usr/local/share/reddio}}
 +	lib_dir=${REDDIO_LIB:-${lib_dir:-/usr/share/reddio}}
  
  	# Make sure the lib directory can be found
- 	[ -d "$lib_dir" ] \
+ 	[ -d "$lib_dir" ] || {

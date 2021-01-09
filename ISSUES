@@ -1,3 +1,0 @@
-Private message threads aren't indented properly because the Reddit API
-doesn't provide a "depth" attribute for messages. For now, all messages
-which have a parent are set to depth 1.
