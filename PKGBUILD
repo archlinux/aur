@@ -12,8 +12,8 @@
 
 pkgbase=linux-nitrous-fire
 _srcname=linux-nitrous
-pkgver=5.10.5
-pkgrel=5
+pkgver=5.10.6
+pkgrel=2
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
 license=('GPL2')
