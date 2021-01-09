@@ -1,7 +1,7 @@
 # Maintainer: Srevin Saju <srevinsaju@sugarlabs.org>
 
 pkgname=archivy
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A self-hosted knowledge repository, to preserve useful content to your knowledge bank."
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('python-setuptools')
 depends=('python-flask' 'python-flask-wtf' 'python-wtforms'
          'python-werkzeug' 'python-appdirs' 'python-attrs'
-         'python-beautifulsoup4' 'python-elasticsearch' 'python-pypandoc'
+         'python-beautifulsoup4' 'python-elasticsearch'
          'python-dotenv' 'python-frontmatter' 'python-requests'
          'python-tinydb' 'python-validators' 'python-flask-login' 'python-brotli'
          'python-click-plugins' 'python-html2text' 'python-flask-compress')
