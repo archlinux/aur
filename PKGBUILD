@@ -15,12 +15,12 @@
 #   - deJaVu and GhostScript font directories are the default ones
 #   - Windows font directory is set according to a Wiki example
 
-_commit='d5daf30364814a002d625ca62eeb7f84ba9535e1'
+_commit='4633fa36985e290a1306ffa5f2c3ea1c458e1133'
 _qdepth='32'
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.0.10.53
+pkgver=7.0.10.56
 pkgrel=1
 arch=('x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all features)"
@@ -37,7 +37,7 @@ makedepends=(
         'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip'
     # AUR:
         'pstoedit-nomagick' 'autotrace-nomagick' 'flif' 'libfpx' 'libumem-git'
-        'brunsli'
+        'libjpeg-xl'
 )
 source=("git+https://github.com/ImageMagick/ImageMagick.git#commit=${_commit}"
         'arch-fonts.diff')
@@ -139,7 +139,7 @@ package_imagemagick-full() {
             'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl'
         # AUR:
             'pstoedit-nomagick' 'autotrace-nomagick' 'flif' 'libfpx' 'libumem-git'
-            'brunsli'
+            'libjpeg-xl'
     )
     optdepends=(
         # AUR:
