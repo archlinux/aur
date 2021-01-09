@@ -1,6 +1,7 @@
 # Maintainer: zer0def <zer0def@github>
+# Maintainer: istimaldar_sntlk <istimaldar@gmail.com>
 pkgname=lens-bin
-pkgver=4.0.5
+pkgver=4.0.6
 pkgrel=1
 pkgdesc='The Kubernetes IDE (previously Kontena Lens)'
 arch=('x86_64')
@@ -16,7 +17,7 @@ source=(
   "lens.sh"
 )
 sha512sums=(
-  '55e3b84ab7f48f7a8787d6975ba14d8aab57e20e3d5c2f653dc8bf3522a8e63a1afb9b972034560474139744210baaaf63c4152063b116cd4bad098dea3f7b87'
+  '560ef75e73c3c533b24e21839120af904f71144cea43501c086036847b3293e7cfab3157fa83294f88209adf567d71a057b99fe5d79a1debcf77afdbd425f0bd'
   'ff81d0bfd155766462b1a7b37fe1aed4cb1b80b5afe2310a922a94b4f8801e104fde56d279fe5944dcd36dff38650b0d83bc99d11613a4dc87064a952a2b9364'
   '382f51df6df222dee97021cc0dc2eca76dd510f32461da836a9265fad28549be43e272e7b36a65332e7bd53beb27128e1b0379b430a4f07ad327e14cea3596a1'
 )
