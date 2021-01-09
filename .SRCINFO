@@ -1,0 +1,16 @@
+pkgbase = lib32-libffi-minimal-git
+	pkgdesc = A portable, high level programming interface to various calling conventions (32-bit)
+	pkgver = 3.3
+	pkgrel = 1
+	url = https://sourceware.org/libffi/
+	arch = x86_64
+	license = MIT
+	depends = lib32-glibc
+	depends = libffi
+	provides = lib32-libffi
+	conflicts = lib32-libffi
+	source = git+https://github.com/libffi/libffi.git
+	sha512sums = SKIP
+
+pkgname = lib32-libffi-minimal-git
+
