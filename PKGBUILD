@@ -1,7 +1,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="odio"
-pkgver="20.5.21.244"
+pkgver="21.1.9"
 pkgrel=2
 pkgdesc="Audio compression tool for FLAC and Nero AAC"
 arch=("any")
@@ -10,7 +10,7 @@ license=("GPL3")
 depends=("gst-python" "gst-plugins-base" "gst-libav" "python-html5lib" "python-beautifulsoup4" "python-lxml" "python-psutil" "flac" "cuetools" "shntool" "atomicparsley" "mac" "lsdvd" "mplayer" "odio-edit" "neroaacenc-bin" "libodiosacd")
 makedepends=("breezy" "python-setuptools" "python-polib")
 source=("bzr+lp:${pkgname}")
-md5sums=("SKIP")
+md5sums=("a3edb65cb819c0c8fdd3dd731a782869")
 options=("!emptydirs")
 
 pkgver()
