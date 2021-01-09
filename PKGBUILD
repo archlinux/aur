@@ -5,8 +5,8 @@
 # Contributor: Marc Mettke <marc@itmettke.de>
 
 pkgname=firefox-kde-opensuse-rpm
-pkgver="83.0.882.3"
-_pkgver="83.0-882.3"
+pkgver="84.0.2.890.1"
+_pkgver="84.0.2-890.1"
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE - Binary from OBS"
 epoch=2  # Because of update 76.0.1-833.1
@@ -19,7 +19,7 @@ makedepends=("gzip")
 provides=("firefox=${pkgver}")
 conflicts=("firefox" "firefox-kde-opensuse" "firefox-kde-opensuse-bin")
 source_x86_64=(https://download.opensuse.org/repositories/mozilla:/Factory/openSUSE_Factory/x86_64/MozillaFirefox-${_pkgver}.x86_64.rpm)
-sha512sums_x86_64=('d87fe9be6136d060fcebfcbd09374ed633040069b025f4f6848dbe870ce07ac9642b5e997e05f37cb7570dd3e8b5b643b48ce8160e32d23e66f9f53c2431107b')
+sha512sums_x86_64=('56536627c23f2eb74a47523098aa15b4a74d224c2b3028ccfaede0745964910d23ad5b422d7285170f46203c94301c79272fce969e07cc6d9d69d9ce8fde2b7c')
 
 
 prepare() {
@@ -45,4 +45,5 @@ package() {
     cp -r "." "${pkgdir}/usr/"
     mv "${pkgdir}/usr/lib64" "${pkgdir}/usr/lib"  # Make file structure more in-line with Arch
     ln -sf "/usr/lib/firefox/firefox.sh" "${pkgdir}/usr/bin/firefox"
+
 }
