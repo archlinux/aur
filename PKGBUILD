@@ -15,17 +15,19 @@ sha256sums=('cab41516583250624e12b0e78379935d60d5fc46cfa4aead8746d119ac615406')
 prepare() {
   cd trunk-${pkgver}
   export CARGO_HOME="${srcdir}/cargo_home"
-  cargo fetch 
+  cargo fetch --locked
 }
 
 build() {
   cd trunk-${pkgver}
-  cargo build --release --offline --frozen --all-features --target-dir=target
+  export CARGO_HOME="${srcdir}/cargo_home"
+  cargo build --release --offline --all-features --target-dir=target
 }
 
 check() {
   cd trunk-${pkgver}
-  cargo test --release --offline --frozen --target-dir=target
+  export CARGO_HOME="${srcdir}/cargo_home"
+  cargo test --release --offline --target-dir=target
 }
 
 package(){
