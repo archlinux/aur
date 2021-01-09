@@ -1,6 +1,6 @@
 pkgbase = jackett-runit.git
 	pkgdesc = Use many torrent trackers with software that supports torznab/potato feeds.
-	pkgver = 0.17.197
+	pkgver = 0.17.213
 	pkgrel = 1
 	url = https://github.com/Jackett/Jackett
 	arch = x86_64
@@ -16,12 +16,12 @@ pkgbase = jackett-runit.git
 	source = jackett.sysusers
 	source = jackett.tmpfiles
 	source = jackett.install
-	source = jackett-runit.git-0.17.197.tar.gz::https://github.com/Jackett/Jackett/archive/v0.17.197.tar.gz
+	source = jackett-runit.git-0.17.213.tar.gz::https://github.com/Jackett/Jackett/archive/v0.17.213.tar.gz
 	b2sums = fed3336e07fe1d88a65bad5fb4f3e081ec16b24c07cc2a96462e7cecc3962b9742897455c0ce7f7fdbe04ecb337c575d54194d2dedad865f72572a5158cc6ef4
 	b2sums = 6b0534e5f3320e70cff1cc59b0c4de202451d6bc240c0659749929a72223fcb8e636508b14905e3d449c854ae6774c4349480039dd50e35d1d01ac13fa15eea3
 	b2sums = 4837363802330a33153e8b1560074d3af1c24c393287d295083dc41c82d6667ef0eb1dbcabc6afd180082405762bfed749adc7483d0c6fab0be431f944b4c001
 	b2sums = bccae26aece8872da424e8a2076c6a97ec7523026a6c4320e0a3d573452e06e0c36bd65374ecd45f809c107e21902c91b2c6546365b49a173b3f7c775d891b11
-	b2sums = ec14960492fe942ada87a6833925b886b542fc2331be3026b79dcba8488e2415a231ab41d5b112e3e9a6a4c212d34d95a6a01b0396b2740ed70d11159e767899
+	b2sums = d9bc86151e06572140df7e12fa1cd1e9362ffda10809335b826d60603d94c0f2a982744edea8e69cc1d329d128d3f287b1a1f98b9b97ca4bf0d177673f0fb1b2
 
 pkgname = jackett-runit.git
 	install = jackett.install
