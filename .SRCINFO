@@ -6,6 +6,7 @@ pkgbase = libtasn1-nodocs-git
 	arch = x86_64
 	license = GPL3
 	license = LGPL
+	makedepends = gtk-doc
 	depends = glibc
 	provides = libtasn1
 	conflicts = libtasn1

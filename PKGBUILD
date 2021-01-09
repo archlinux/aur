@@ -11,6 +11,7 @@ arch=('x86_64')
 license=('GPL3' 'LGPL')
 url="https://www.gnu.org/software/libtasn1/"
 depends=('glibc')
+makedepends=(gtk-doc)
 source=(git+https://gitlab.com/gnutls/libtasn1.git)
 provides=(libtasn1)
 conflicts=(libtasn1)
