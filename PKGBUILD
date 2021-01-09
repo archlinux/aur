@@ -2,8 +2,8 @@
 
 _plug=sharpaamcmod
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r5
-pkgrel=3
+pkgver=r6
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://gist.github.com/4re'

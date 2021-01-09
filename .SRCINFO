@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-sharpaamcmod-git
 	pkgdesc = Plugin for Vapoursynth: sharpaamcmod (GIT version)
-	pkgver = r5
-	pkgrel = 3
+	pkgver = r6
+	pkgrel = 1
 	url = https://gist.github.com/4re
 	arch = any
 	license = GPL
