@@ -3,7 +3,7 @@
 _pkgbase=mangohud
 pkgbase=$_pkgbase-git
 pkgname=('mangohud-git' 'lib32-mangohud-git' 'mangohud-common-git')
-pkgver=0.5.1.r18.g9391822
+pkgver=0.6.1.r46.gc92f805
 pkgrel=1
 url='https://github.com/flightlessmango/MangoHud'
 license=('MIT')
@@ -22,7 +22,10 @@ pkgver() {
 
 
 build() {
-    arch-meson -Dappend_libdir_mangohud=false -Duse_system_vulkan=enabled "$_pkgbase" build64
+    arch-meson --wrap-mode=forcefallback \
+    -Dappend_libdir_mangohud=false \
+    -Duse_system_vulkan=enabled "$_pkgbase" build64
+
     ninja -C build64
 
     export CC="gcc -m32"

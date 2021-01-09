@@ -1,7 +1,8 @@
+mangohud
 src
 pkg
 *.tar.xz
 *.tar.gz
+*.pkg.tar.zst
 *.log
-ImGui
-mangohud
+.directory
