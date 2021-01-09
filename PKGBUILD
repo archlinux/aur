@@ -2,28 +2,29 @@
 
 pkgname=gftools-git
 pkgver=0.6.1.r0.g5c76b41
-pkgrel=1
+pkgrel=2
 pkgdesc='Misc tools for working with the Google Fonts library'
 arch=('any')
 url="https://github.com/googlefonts/${pkgname%-git}"
 license=('Apache')
 _py_deps=('babelfont'
           'brotli'
-          'pybrowserstack-screenshots'
+          'browserstack-local'
           'fontmake'
           'fonttools'
+          'fs' # optdepends of fonttols required for [ufo]
           'glyphslib'
           'opentype-sanitizer'
-          'pygit2'
+          'protobuf'
           'pyaml'
+          'pybrowserstack-screenshots'
+          'pygit2'
+          'pygithub'
           'requests'
           'strictyaml'
           'tabulate'
           'ttfautohint-py'
           'unidecode'
-          'fs' # optdepends of fonttols required for [ufo]
-          'protobuf'
-          'pygithub'
           'vttlib')
 depends=('absl-py'
          'python'
