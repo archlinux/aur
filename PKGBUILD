@@ -1,6 +1,6 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-extras-git
-pkgver=2019.10.r54.g0c4be49
+pkgver=2020.06.r27.g9ef821f
 pkgrel=1
 pkgdesc="Extras for the Magnum C++11/C++14 graphics engine (Git version)"
 arch=('i686' 'x86_64')
