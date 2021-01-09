@@ -27,7 +27,7 @@ build() {
 check() {
   cd trunk-${pkgver}
   export CARGO_HOME="${srcdir}/cargo_home"
-  cargo test --release --offline --target-dir=target
+  cargo test --release --offline --all-features --target-dir=target
 }
 
 package(){
