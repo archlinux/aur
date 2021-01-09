@@ -2,13 +2,13 @@
 
 pkgname=mfaktc
 pkgver=0.21
-pkgrel=2
+pkgrel=3
 pkgdesc="A CUDA program for Mersenne prefactoring."
 arch=('x86_64')
 url="https://mersenneforum.org/showthread.php?t=12827"
 license=('GPL3')
 depends=('nvidia')
-makedepends=('cuda<11.2.0')
+makedepends=('cuda')
 source=("https://download.mersenne.ca/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
 "mfaktc.ini"
 "makeandparams.patch")
