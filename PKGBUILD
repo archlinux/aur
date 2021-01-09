@@ -2,7 +2,7 @@
 # Contributor: Dale Blount <dale@archlinux.org>
 # Contributor: Gregor Ibic <gregor.ibic@intelicom.si>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
-# Maintainer: Micheael Novick <mnovick1988@gmail.com>
+# Maintainer: EndlessEden
 #
 # Cloned from the Archlinux PKGBUILD for clamav
 
@@ -53,6 +53,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_gitname}"
+	./autogen.sh
 	./configure \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
