@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=color_blinder
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Simulate different kinds of color blindness with a set of images"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://gitlab.com/dns2utf8/color_blinder"
 license=('MIT')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('460df56c90ea553d5bcfb9fa6347a0f59dd3b9554cec0582e903021854755ad8329a859a3dd942ce8c522432a06391f447ee60ee5f5a7144ae0bf5ee3dd46508')
+sha512sums=('d81ad0ac8dfbbf3a921ae5d857b5dde997368bb30e6aa733257de242a7135507322ca85b0fb184e762b80cd940c7ec7f822b1a23b93223b933dffe9c7839fda6')
 
 build() {
   cd "$pkgname-$pkgver"
