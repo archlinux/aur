@@ -1,0 +1,18 @@
+pkgbase = libffi-minimal-git
+	pkgdesc = Portable foreign function interface library
+	pkgver = 3.2.1.r334.g4fdbb05
+	pkgrel = 1
+	url = https://sourceware.org/libffi/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	provides = libffi
+	conflicts = libffi
+	options = staticlibs
+	source = git+https://github.com/libffi/libffi.git
+	sha256sums = SKIP
+
+pkgname = libffi-minimal-git
+
