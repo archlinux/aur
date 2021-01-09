@@ -91,8 +91,9 @@ build () {
        -D zstd=enabled \
        -D microsoft-clc=disabled \
        -D selinux=false \
-       -D sse2=true
-       
+       -D sse2=true \
+       -D debug=false   
+
     meson configure _build
     
     ninja $NINJAFLAGS -C _build
