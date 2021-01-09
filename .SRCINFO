@@ -1,17 +1,12 @@
 pkgbase = opensend-git
-	pkgdesc = Send files and URLs securely across systems
-	pkgver = r38.003c27d
+	pkgdesc = Send files and securely across systems
+	pkgver = r39.07e35af
 	pkgrel = 1
 	arch = any
-	license = GPLv2
-	depends = python
-	depends = python-pip
-	depends = python-pynacl
-	depends = python-zeroconf
-	depends = python-pyftpdlib
-	depends = python-pyqt5
-	depends = avahi
-	source = git+https://gitlab.com/moussaelianarsen/opensend.git
+	license = Apache-2.0
+	makedepends = go
+	backup = etc/opensend.toml
+	source = git+https://gitea.arsenm.dev/opensend/opensend.git
 	md5sums = SKIP
 
 pkgname = opensend-git
