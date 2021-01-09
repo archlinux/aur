@@ -1,7 +1,7 @@
 pkgbase = xtensa-lx106-elf-gcc-bin
 	pkgdesc = ESP8266 GCC Cross-compiler Toolchain
-	pkgver = 1.22.0_100_ge567ec7_5.2.0
-	pkgrel = 2
+	pkgver = 8.4.0
+	pkgrel = 1
 	url = https://github.com/espressif/ESP8266_RTOS_SDK
 	install = xtensa-lx106-elf-gcc.install
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = xtensa-lx106-elf-gcc-bin
 	options = emptydirs
 	source = xtensa-lx106-elf-gcc.install
 	source = xtensa-lx106-elf-gcc.sh
-	source = https://dl.espressif.com/dl/xtensa-lx106-elf-linux64-1.22.0-100-ge567ec7-5.2.0.tar.gz
+	source = https://dl.espressif.com/dl/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64.tar.gz
 	sha256sums = 8fa5e234d15686f29b679b6808b2f8971c0e3271859502c295ee8420b6ab0d53
 	sha256sums = 9b9499713cb6911616ded8bd3b82568e9d602540e2ff1ca4d996ff06e80c0c0a
-	sha256sums = 706a02853759c2f85d912f68df4f5b4566ecb41422de5afe35a45d064eb8e494
+	sha256sums = 0a1804b5e2231c6db8b72af6bc2a0f9a5b6994cfba29956d412651109f13fe7e
 
 pkgname = xtensa-lx106-elf-gcc-bin
 
