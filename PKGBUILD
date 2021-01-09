@@ -1,6 +1,6 @@
 # Maintainer: Maurice Zhou <ja at apvc punkt uk>
 pkgname=rozb3-pac
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="create ZFS boot environment for pacman transactions"
 arch=(any)
@@ -13,4 +13,4 @@ package() {
     cd "$pkgname-$pkgver"
     make DESTDIR=$pkgdir install
 }
-md5sums=('982a41718fa91898520ae19e96e3cabe')
+md5sums=('639b22e6bd8bd92361e0bc6cdae522fc')
