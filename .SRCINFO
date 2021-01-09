@@ -1,0 +1,17 @@
+pkgbase = lib32-libnsl-git
+	pkgdesc = Public client interface library for NIS(YP) and NIS+
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/thkukuk/libnsl
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	depends = lib32-libtirpc
+	depends = libnsl
+	provides = lib32-libnsl
+	conflicts = lib32-libnsl
+	source = git+https://github.com/thkukuk/libnsl.git
+	sha256sums = SKIP
+
+pkgname = lib32-libnsl-git
+
