@@ -2,7 +2,7 @@
 pkgbase = jlink-software-and-documentation
 	pkgdesc = Segger JLink software & documentation pack for Linux
 	pkgver = 6.94
-	pkgrel = 0
+	pkgrel = 1
 	epoch = 33
 	url = https://www.segger.com/jlink-software.html
 	install = jlink-software-and-documentation.install
@@ -51,7 +51,7 @@ pkgbase = jlink-software-and-documentation
 	md5sums = 3cf777043c9779763fb8281cceed5d81
 	md5sums = fea9e4cf79db13c19e90af0e6ce4048a
 	md5sums = f933dfa3297baba000a0514a0c705264
-	md5sums = acf99ac26e8bf244539bbe8efec691f0
+	md5sums = 5f4be0a5698e359e03b8ed30bf6ac4b6
 	md5sums = 9119afd453425a256aa023bae8442570
 	md5sums = 24e403277bb890d915b2c454833ff3d6
 	md5sums = 74cb2486441a6e571dcc3327204cd8da

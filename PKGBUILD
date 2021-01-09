@@ -3,7 +3,7 @@
 
 pkgname=jlink-software-and-documentation
 pkgver=6.94
-pkgrel=0
+pkgrel=1
 epoch=33
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64' 'armv7h')
@@ -39,25 +39,26 @@ echo ${sources}
 md5sums_i686=('081c33ffeabb0a8588da4e101cfa0b0d')
 md5sums_x86_64=('9deac082b4e0fc4bdf32e0cf267158ed')
 md5sums_armv7h=('4232249a15c70814de1533b5ca06f9cf')
-md5sums=("a57d93b791581c1f36e4c672303bb85d" "83a136d31b296dd8f0e23bc21f9d8e19"
-        "02e067cd1c420f2085216d76e4866cd4"
-        "50bced5895a0ec59db0146153a077515"
-        "395410c9819a18a659de9c80925508f1"
-        "88fa3a356d20179a2cb5e6679a30c946"
-        "ca75f4f47bf69df8b651b94a1b564594"
-        "69516914a635e3b8c703816fb34add8b"
-        "a44a41520069f29f68b14985307ac09d"
-        "e763d0de7bced23342523447af761c23"
-        "3d9e3093c2da9fde601b9c308296161b"
-        "3cf777043c9779763fb8281cceed5d81"
-        "fea9e4cf79db13c19e90af0e6ce4048a"
-        "f933dfa3297baba000a0514a0c705264"
-        "acf99ac26e8bf244539bbe8efec691f0"
-        "9119afd453425a256aa023bae8442570"
-        "24e403277bb890d915b2c454833ff3d6"
-        "74cb2486441a6e571dcc3327204cd8da"
-        "8fa15c29a78bf1c98af5941607ff5a2a"
-        "dd0923b84488e5f1cca5192324904201"
+md5sums=("a57d93b791581c1f36e4c672303bb85d"
+         "83a136d31b296dd8f0e23bc21f9d8e19"
+         "02e067cd1c420f2085216d76e4866cd4"
+         "50bced5895a0ec59db0146153a077515"
+         "395410c9819a18a659de9c80925508f1"
+         "88fa3a356d20179a2cb5e6679a30c946"
+         "ca75f4f47bf69df8b651b94a1b564594"
+         "69516914a635e3b8c703816fb34add8b"
+         "a44a41520069f29f68b14985307ac09d"
+         "e763d0de7bced23342523447af761c23"
+         "3d9e3093c2da9fde601b9c308296161b"
+         "3cf777043c9779763fb8281cceed5d81"
+         "fea9e4cf79db13c19e90af0e6ce4048a"
+         "f933dfa3297baba000a0514a0c705264"
+         "5f4be0a5698e359e03b8ed30bf6ac4b6"
+         "9119afd453425a256aa023bae8442570"
+         "24e403277bb890d915b2c454833ff3d6"
+         "74cb2486441a6e571dcc3327204cd8da"
+         "8fa15c29a78bf1c98af5941607ff5a2a"
+         "dd0923b84488e5f1cca5192324904201"
         )
 
 install=$pkgname.install
