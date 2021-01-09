@@ -2,7 +2,7 @@
 # Contributor: Maikel Wever <maikelwever@gmail.com>
 
 pkgname=python-numpy-stl
-pkgver=2.13.0
+pkgver=2.13.1
 pkgrel=1
 pkgdesc="Library to make working with STL files (and 3D objects in general) fast and easy"
 url="https://github.com/WoLpH/numpy-stl/"
@@ -11,7 +11,7 @@ depends=('python' 'python-numpy' 'python-utils')
 makedepends=('cython' 'python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-flake8')
 source=("numpy-stl-v${pkgver}.tar.gz::https://github.com/WoLpH/numpy-stl/archive/v${pkgver}.tar.gz")
-sha256sums=('15a4bc07e7c707a62ebadc477de57511cfeb5bc51556f75d5b4fd91a687e514e')
+sha256sums=('757c1ad21f68a5746d9a8d0f4588146db1b724998f0f5754c2fdc2d91f9c8b09')
 arch=('x86_64')
 
 build() {
