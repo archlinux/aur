@@ -2,13 +2,13 @@
 # Contributor: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname=orocos-kdl-git
-pkgver=r931.546d04d
-pkgrel=3
+pkgver=r1039.79adc6f
+pkgrel=1
 pkgdesc="The Kinematics and Dynamics Library is a framework for modelling and computation of kinematic chains"
 arch=('i686' 'x86_64')
 url="https://www.orocos.org/kdl"
 license=('GPL')
-depends=(eigen)
+depends=(eigen cppunit)
 makedepends=(cmake)
 provides=(orocos-kdl)
 conflicts=(orocos-kdl)
@@ -26,11 +26,12 @@ pkgver() {
 build() {
   cd "${srcdir}/${_dir}/${_pkgname}"
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .
+  mkdir -p build && cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }
 
 package() {
-  cd "${srcdir}/${_dir}/${_pkgname}"
+  cd "${srcdir}/${_dir}/${_pkgname}/build"
   make DESTDIR="${pkgdir}" install
 }
