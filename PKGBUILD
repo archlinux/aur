@@ -2,12 +2,11 @@
 
 pkgname=vr-video-player-git
 pkgver=r65.afe16ef
-pkgrel=1
+pkgrel=2
 pkgdesc='A virtual reality video player for x11 on Linux'
 arch=('x86_64')
 url="https://git.dec05eba.com/vr-video-player"
 license=('BSD')
-makedepends=('sibs')
 depends=('glm' 'glew' 'sdl2' 'openvr' 'libx11' 'libxcomposite' 'libxfixes')
 provides=('vr-video-player')
 conflicts=('vr-video-player')
@@ -16,12 +15,12 @@ sha512sums=('1ff4fe3c1108377f91162bc997897467e727b6a37b45fd5efea0f944fc9a11e1fed
 
 build() {
   cd "$srcdir"
-  sibs build --release
+  ./build.sh
 }
 
 package() {
   cd "$srcdir"
-  install -Dm755 "sibs-build/$(sibs platform)/release/vr-video-player" "$pkgdir/usr/bin/vr-video-player"
+  install -Dm755 "vr-video-player" "$pkgdir/usr/bin/vr-video-player"
   install -Dm644 config/hellovr_actions.json "$pkgdir/usr/share/vr-video-player/hellovr_actions.json"
   install -Dm644 config/hellovr_bindings_generic.json "$pkgdir/usr/share/vr-video-player/hellovr_bindings_generic.json"
   install -Dm644 config/hellovr_bindings_vive_controller.json "$pkgdir/usr/share/vr-video-player/hellovr_bindings_vive_controller.json"
