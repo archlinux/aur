@@ -1,7 +1,7 @@
 pkgbase = mutt-wizard
 	pkgdesc = Simple interface to auto-configure neomutt and isync with safe passwords
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lukesmithxyz/mutt-wizard
 	install = mutt-wizard.install
 	arch = any
