@@ -1,10 +1,12 @@
-# Maintainer: Jack Random, <jack(at)random(dot)to>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Jack Random, <jack(at)random(dot)to>
 # previous: csllbr; Popsch <popsch@gmx.net>
 # Thanks to the maintainers and contributors of the mu binary package
 
 pkgname=mu-git
-pkgver=1.3.6.114.g0dced59c
+pkgver=1.4.7.r248.g4dbc6ac3
 pkgrel=1
+epoch=1
 pkgdesc="mu and mu4e from git"
 arch=('i686' 'x86_64')
 url="http://www.djcbsoftware.nl/code/mu"
@@ -19,16 +21,12 @@ md5sums=('SKIP')
 
 pkgver() {
   cd mu
-  printf "%s" "$(git describe --tags | tr - .)"
-}
-
-prepare() {
-  cd mu
-  ./autogen.sh --prefix=/usr
+  git describe --tags | sed 's+-+.r+' | tr - .
 }
 
 build() {
   cd mu
+  ./autogen.sh --prefix=/usr
   make
 }
 
