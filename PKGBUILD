@@ -10,7 +10,7 @@ license=('MIT')
 provides=("$_pkgname")
 install='galene.install'
 depends=('go')
-makedepends=('git')
+makedepends=('git' 'pandoc')
 source=("git://github.com/jech/galene.git"
         'galene.service'
         'galene.sysusers'
@@ -65,8 +65,11 @@ package() {
   install -dm755 "$pkgdir/usr/share/galene"
   cp -r static "$pkgdir/usr/share/galene"
 
-  install -dm755 "$pkgdir/usr/share/doc/galene"
-  install -m644 README README.FRONTEND README.PROTOCOL "$pkgdir/usr/share/doc/galene"
+  local doc="$pkgdir/usr/share/doc/galene"
+  install -dm755 "$doc"
+  for file in README README.FRONTEND README.PROTOCOL; do
+    pandoc --from=markdown --to html --standalone --shift-heading-level-by=-1 "$file" > "${doc}/${file}.html"
+  done
 
   install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$_pkgname/LICENCE"
 }

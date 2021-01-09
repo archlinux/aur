@@ -8,6 +8,7 @@ pkgbase = galene-git
 	arch = i686
 	license = MIT
 	makedepends = git
+	makedepends = pandoc
 	depends = go
 	provides = galene
 	source = git://github.com/jech/galene.git
