@@ -1,7 +1,7 @@
 pkgbase = obs-v4l2sink
 	pkgdesc = v4l2 output for obs-studio
 	pkgver = 0.1.0
-	pkgrel = 19
+	pkgrel = 20
 	url = https://github.com/CatxFish/obs-v4l2sink
 	arch = x86_64
 	license = GPL
@@ -9,10 +9,10 @@ pkgbase = obs-v4l2sink
 	depends = obs-studio
 	optdepends = v4l2loopback-dkms: virtual video device
 	source = obs-v4l2sink-0.1.0.tar.gz::https://github.com/CatxFish/obs-v4l2sink/archive/0.1.0.tar.gz
-	source = obs-studio-26.0.2.tar.gz::https://github.com/obsproject/obs-studio/archive/26.0.2.tar.gz
+	source = obs-studio-26.1.0.tar.gz::https://github.com/obsproject/obs-studio/archive/26.1.0.tar.gz
 	source = v4l2device_close.patch::https://github.com/CatxFish/obs-v4l2sink/pull/21.patch
 	sha256sums = 83e9bb104dcc3840acd17ebc0810de30c8de27545d4ef181d58f8a375dba06d4
-	sha256sums = 06eef30156d21f179f590599ab866b7745209045825a3bf8461a85b60d880ed5
+	sha256sums = c015d9bab1075ecf9c66c066328e291a20ef36880958fb3db6486ebc5ca9c6da
 	sha256sums = 617e017562ab3ca85fffa86c869fa778e26ee0694e0ae8dd1b8b110bff1bb6cc
 
 pkgname = obs-v4l2sink
