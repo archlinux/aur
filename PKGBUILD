@@ -5,7 +5,7 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=84.0
+pkgver=84.0.2
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
@@ -23,34 +23,38 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'hunspell-en_US: Spell checking, American English')
 options=(!emptydirs !makeflags !strip)
 _arch_svn=https://git.archlinux.org/svntogit/packages.git/plain/trunk
-_settings_commit=2f76ae07f7016034273f1887b7f1bedab997909c
+_settings_commit=25115b211d60876c43f5098ce3e88bcee2a7e521
 source_x86_64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
                $pkgname.desktop
                "git+https://gitlab.com/${pkgname}-community/browser/common.git"
                "git+https://gitlab.com/${pkgname}-community/settings.git"
                "megabar.patch"
-               "remove_addons.patch")
+               "remove_addons.patch"
+               "unity-menubar.patch")
 source_aarch64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
                 $pkgname.desktop
                 "git+https://gitlab.com/${pkgname}-community/browser/common.git"
                 "git+https://gitlab.com/${pkgname}-community/settings.git"
                 "megabar.patch"
                 "remove_addons.patch"
+                "unity-menubar.patch"
                 arm.patch
                 https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch)
 
-sha256sums_x86_64=('23273ef0165b243f5d0908c38e7854d38070282c9b526e8d93b7503cd5f69138'
+sha256sums_x86_64=('92bfd518d4f9760c897388a8e06130b171c1c43524d8af181add9daac2be7b37'
                    '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
                    'SKIP'
                    'SKIP'
                    '682bf4bf5d79db0080aa132235a95b25745c8ef944d2a2e1fed985489d894df5'
-                   'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6')
-sha256sums_aarch64=('23273ef0165b243f5d0908c38e7854d38070282c9b526e8d93b7503cd5f69138'
+                   'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
+                   '6ca4d5a50a6645ff35da0bd2e9b606172f55123ddaec3ed1f87416c18f9800ff')
+sha256sums_aarch64=('92bfd518d4f9760c897388a8e06130b171c1c43524d8af181add9daac2be7b37'
                     '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
                     'SKIP'
                     'SKIP'
                     '682bf4bf5d79db0080aa132235a95b25745c8ef944d2a2e1fed985489d894df5'
                     'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
+                    '6ca4d5a50a6645ff35da0bd2e9b606172f55123ddaec3ed1f87416c18f9800ff'
                     '6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7'
                     '2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
 
@@ -137,6 +141,9 @@ fi
   # Adapted from https://github.com/WesleyBranton/userChrome.css-Customizations
   patch -p1 -i ../megabar.patch
 
+  # Debian patch to enable global menubar
+  patch -p1 -i ../unity-menubar.patch
+
   # Disabling Pocket
   sed -i "s/'pocket'/#'pocket'/g" browser/components/moz.build
   # this one only to remove an annoying error message:
@@ -151,6 +158,14 @@ fi
 
   # allow SearchEngines option in non-ESR builds
   sed -i 's#"enterprise_only": true,#"enterprise_only": false,#g' browser/components/enterprisepolicies/schemas/policies-schema.json
+
+  _settings_services_sed='s#firefox.settings.services.mozilla.com#f.s.s.m.c.qjz9zk#g'
+
+  # stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
+  sed "$_settings_services_sed" -i browser/components/newtab/data/content/activity-stream.bundle.js
+  sed "$_settings_services_sed" -i modules/libpref/init/all.js
+  sed "$_settings_services_sed" -i services/settings/Utils.jsm
+  sed "$_settings_services_sed" -i toolkit/components/search/SearchUtils.jsm
 
   rm -f ${srcdir}/common/source_files/mozconfig
   cp -r ${srcdir}/common/source_files/* ./
