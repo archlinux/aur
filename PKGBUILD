@@ -2,7 +2,7 @@
 
 _pkgbase='mcwb'
 pkgname="python-${_pkgbase}"
-pkgver=0.0.1
+pkgver=0.0.6
 pkgrel=1
 pkgdesc='Python 3 library for Minecraft world manipulation via RCON commands'
 arch=('any')
