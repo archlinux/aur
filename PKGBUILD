@@ -15,7 +15,7 @@ arch=('x86_64')
 license=('GPL3' 'LGPL2.1')
 url="https://gnutls.org/"
 depends=('lib32-zlib' 'lib32-nettle' 'lib32-p11-kit' 'lib32-libtasn1' 'lib32-libidn2' $_pkgbasename)
-makedepends=('gcc-multilib' 'libev')
+makedepends=('gcc-multilib')
 provides=(lib32-gnutls)
 conflicts=(lib32-gnutls)
 source=("git+https://gitlab.com/gnutls/gnutls.git")
@@ -47,7 +47,12 @@ build() {
     --disable-guile \
     --disable-valgrind-tests \
     --disable-doc \
-    --disable-manpages
+    --disable-manpages \
+    --disable-bash-tests \
+    --disable-tests \
+    --disable-seccomp-tests \
+    --disable-full-test-suite \
+    --without-idn
   make
 }
 

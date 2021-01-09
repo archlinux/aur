@@ -7,7 +7,6 @@ pkgbase = lib32-gnutls-git
 	license = GPL3
 	license = LGPL2.1
 	makedepends = gcc-multilib
-	makedepends = libev
 	depends = lib32-zlib
 	depends = lib32-nettle
 	depends = lib32-p11-kit
