@@ -1,8 +1,8 @@
 pkgbase = python-strictyaml
-	pkgdesc = A type-safe YAML parser that parses a restricted subset of the YAML specificaton.
+	pkgdesc = A type-safe YAML parser that parses a restricted subset of the YAML specificaton
 	pkgver = 1.1.1
-	pkgrel = 1
-	url = http://hitchdev.com/strictyaml/
+	pkgrel = 2
+	url = http://hitchdev.com/strictyaml
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
