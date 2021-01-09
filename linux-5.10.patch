@@ -1,0 +1,244 @@
+diff --git a/core/efuse/rtw_efuse.c b/core/efuse/rtw_efuse.c
+index 5d3f80a..062c51f 100644
+--- a/core/efuse/rtw_efuse.c
++++ b/core/efuse/rtw_efuse.c
+@@ -1329,7 +1329,9 @@ void Rtw_Hal_ReadMACAddrFromFile(PADAPTER padapter)
+ {
+ 	u32 i;
+ 	struct file *fp;
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0))
+ 	mm_segment_t fs;
++#endif
+ 	u8 source_addr[18];
+ 	loff_t pos = 0;
+ 	u32 curtime = rtw_get_current_time();
+@@ -1347,8 +1349,10 @@ void Rtw_Hal_ReadMACAddrFromFile(PADAPTER padapter)
+ 		pEEPROM->bloadmac_fail_flag = _TRUE;
+ 		DBG_871X("Error, wifi mac address file doesn't exist.\n");
+ 	} else {
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0))
+ 		fs = get_fs();
+ 		set_fs(KERNEL_DS);
++#endif
+ 
+ 		DBG_871X("wifi mac address:\n");
+ 		vfs_read(fp, source_addr, 18, &pos);
+@@ -1371,7 +1375,9 @@ void Rtw_Hal_ReadMACAddrFromFile(PADAPTER padapter)
+ 			DBG_871X("%02x \n", pEEPROM->mac_addr[i]);
+ 		}
+ 		DBG_871X("\n");
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0))
+ 		set_fs(fs);
++#endif
+ 		pEEPROM->bloadmac_fail_flag = _FALSE;
+ 		filp_close(fp, NULL);
+ 	}
+@@ -1397,7 +1403,9 @@ u32 Rtw_Hal_readPGDataFromConfigFile(PADAPTER	padapter)
+ {
+ 	u32 i;
+ 	struct file *fp;
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0))
+ 	mm_segment_t fs;
++#endif
+ 	u8 temp[3];
+ 	loff_t pos = 0;
+ 	EEPROM_EFUSE_PRIV *pEEPROM = GET_EEPROM_EFUSE_PRIV(padapter);
+@@ -1413,8 +1421,10 @@ u32 Rtw_Hal_readPGDataFromConfigFile(PADAPTER	padapter)
+ 		return _FAIL;
+ 	}
+ 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0))
+ 	fs = get_fs();
+ 	set_fs(KERNEL_DS);
++#endif
+ 
+ 	DBG_871X("Efuse configure file:\n");
+ 	for (i=0; i< EFUSE_MAP_SIZE  ; i++) {
+@@ -1424,7 +1434,9 @@ u32 Rtw_Hal_readPGDataFromConfigFile(PADAPTER	padapter)
+ 		DBG_871X("%02X \n", PROMContent[i]);
+ 	}
+ 	DBG_871X("\n");
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0))
+ 	set_fs(fs);
++#endif
+ 
+ 	filp_close(fp, NULL);
+ 	
+diff --git a/core/rtw_wlan_util.c b/core/rtw_wlan_util.c
+index f8e3f60..f2cd923 100644
+--- a/core/rtw_wlan_util.c
++++ b/core/rtw_wlan_util.c
+@@ -3657,7 +3657,9 @@ int rtw_dev_nlo_info_set(struct pno_nlo_info *nlo_info, pno_ssid_t* ssid,
+ 
+ 	int i = 0;
+ 	struct file *fp;
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0))
+ 	mm_segment_t fs;
++#endif
+ 	loff_t pos = 0;
+ 	u8 *source = NULL;
+ 	long len = 0;
+@@ -3690,8 +3692,10 @@ int rtw_dev_nlo_info_set(struct pno_nlo_info *nlo_info, pno_ssid_t* ssid,
+ 		return 0;
+ 	}
+ 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0))
+ 	fs = get_fs();
+ 	set_fs(KERNEL_DS);
++#endif
+ 
+ 	source = rtw_zmalloc(2048);
+ 
+@@ -3701,7 +3705,9 @@ int rtw_dev_nlo_info_set(struct pno_nlo_info *nlo_info, pno_ssid_t* ssid,
+ 		rtw_mfree(source, 2048);
+ 	}
+ 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0))
+ 	set_fs(fs);
++#endif
+ 	filp_close(fp, NULL);
+ 
+ 	DBG_871X("-%s-\n", __func__);
+diff --git a/hal/rtl8188e/usb/usb_halinit.c b/hal/rtl8188e/usb/usb_halinit.c
+index 366b4bd..82571ca 100644
+--- a/hal/rtl8188e/usb/usb_halinit.c
++++ b/hal/rtl8188e/usb/usb_halinit.c
+@@ -2499,7 +2499,9 @@ static u32 Hal_readPGDataFromConfigFile(
+ {
+ 	u32 i;
+ 	struct file *fp;
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0))
+ 	mm_segment_t fs;
++#endif
+ 	u8 temp[3];
+ 	loff_t pos = 0;
+ 	EEPROM_EFUSE_PRIV *pEEPROM = GET_EEPROM_EFUSE_PRIV(padapter);
+@@ -2515,8 +2517,10 @@ static u32 Hal_readPGDataFromConfigFile(
+ 		return _FAIL;
+ 	}
+ 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0))
+ 	fs = get_fs();
+ 	set_fs(KERNEL_DS);
++#endif
+ 
+ 	DBG_871X("Efuse configure file:\n");
+ 	for (i=0; i<HWSET_MAX_SIZE_88E; i++) {
+@@ -2526,7 +2530,9 @@ static u32 Hal_readPGDataFromConfigFile(
+ 		DBG_871X("%02X \n", PROMContent[i]);
+ 	}
+ 	DBG_871X("\n");
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0))
+ 	set_fs(fs);
++#endif
+ 
+ 	filp_close(fp, NULL);
+ 	
+@@ -2542,7 +2548,9 @@ Hal_ReadMACAddrFromFile_8188EU(
+ {
+ 	u32 i;
+ 	struct file *fp;
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0))
+ 	mm_segment_t fs;
++#endif
+ 	u8 source_addr[18];
+ 	loff_t pos = 0;
+ 	u32 curtime = rtw_get_current_time();
+@@ -2560,8 +2568,10 @@ Hal_ReadMACAddrFromFile_8188EU(
+ 		pEEPROM->bloadmac_fail_flag = _TRUE;
+ 		DBG_871X("Error, wifi mac address file doesn't exist.\n");
+ 	} else {
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0))
+ 		fs = get_fs();
+ 		set_fs(KERNEL_DS);
++#endif
+ 
+ 		DBG_871X("wifi mac address:\n");
+ 		vfs_read(fp, source_addr, 18, &pos);
+@@ -2584,7 +2594,9 @@ Hal_ReadMACAddrFromFile_8188EU(
+ 			DBG_871X("%02x \n", pEEPROM->mac_addr[i]);
+ 		}
+ 		DBG_871X("\n");
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0))
+ 		set_fs(fs);
++#endif
+ 		pEEPROM->bloadmac_fail_flag = _FALSE;
+ 		filp_close(fp, NULL);
+ 	}
+diff --git a/os_dep/osdep_service.c b/os_dep/osdep_service.c
+index 8c21b7e..7d1ab56 100644
+--- a/os_dep/osdep_service.c
++++ b/os_dep/osdep_service.c
+@@ -1930,7 +1930,9 @@ static int isFileReadable(char *path)
+ { 
+ 	struct file *fp;
+ 	int ret = 0;
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0))
+ 	mm_segment_t oldfs;
++#endif
+ 	char buf;
+  
+ 	fp=filp_open(path, O_RDONLY, 0); 
+@@ -1938,12 +1940,16 @@ static int isFileReadable(char *path)
+ 		ret = PTR_ERR(fp);
+ 	}
+ 	else {
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0))
+ 		oldfs = get_fs(); set_fs(KERNEL_DS);
++#endif
+ 		
+ 		if(1!=readFile(fp, &buf, 1))
+ 			ret = PTR_ERR(fp);
+ 		
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0))
+ 		set_fs(oldfs);
++#endif
+ 		filp_close(fp,NULL);
+ 	}	
+ 	return ret;
+@@ -1959,16 +1965,22 @@ static int isFileReadable(char *path)
+ static int retriveFromFile(char *path, u8* buf, u32 sz)
+ {
+ 	int ret =-1;
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0))
+ 	mm_segment_t oldfs;
++#endif
+ 	struct file *fp;
+ 
+ 	if(path && buf) {
+ 		if( 0 == (ret=openFile(&fp,path, O_RDONLY, 0)) ){
+ 			DBG_871X("%s openFile path:%s fp=%p\n",__FUNCTION__, path ,fp);
+ 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0))
+ 			oldfs = get_fs(); set_fs(KERNEL_DS);
++#endif
+ 			ret=readFile(fp, buf, sz);
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0))
+ 			set_fs(oldfs);
++#endif
+ 			closeFile(fp);
+ 			
+ 			DBG_871X("%s readFile, ret:%d\n",__FUNCTION__, ret);
+@@ -1993,16 +2005,22 @@ static int retriveFromFile(char *path, u8* buf, u32 sz)
+ static int storeToFile(char *path, u8* buf, u32 sz)
+ {
+ 	int ret =0;
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0))
+ 	mm_segment_t oldfs;
++#endif
+ 	struct file *fp;
+ 	
+ 	if(path && buf) {
+ 		if( 0 == (ret=openFile(&fp, path, O_CREAT|O_WRONLY, 0666)) ) {
+ 			DBG_871X("%s openFile path:%s fp=%p\n",__FUNCTION__, path ,fp);
+ 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0))
+ 			oldfs = get_fs(); set_fs(KERNEL_DS);
++#endif
+ 			ret=writeFile(fp, buf, sz);
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0))
+ 			set_fs(oldfs);
++#endif
+ 			closeFile(fp);
+ 
+ 			DBG_871X("%s writeFile, ret:%d\n",__FUNCTION__, ret);
