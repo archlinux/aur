@@ -5,7 +5,7 @@
 
 pkgname="ices0"
 pkgver=0.4.11
-pkgrel=4
+pkgrel=5
 pkgdesc="A source client for broadcasting in MP3, FLAC, AAC and OGG Vorbis formats to an icecast2 server"
 license=("GPL2")
 arch=("i686" "x86_64" "armv7h")
@@ -34,7 +34,7 @@ build(){
  else
   ./configure --prefix="/usr" --sysconfdir="/usr/share/$pkgname" -mandir="/usr/share"
  fi
- echo "Please check that all the features you want are available, otherwise install optional dependencies"
+ echo "Please check that all the features you want are available, otherwise install optional dependencies before installing ices0"
  echo "Waiting 10 seconds"
  sleep 10
  make
