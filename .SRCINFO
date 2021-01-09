@@ -1,7 +1,7 @@
 pkgbase = emote
 	pkgdesc = Emoji Picker for Linux written in GTK3
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tom-james-watson/Emote
 	arch = any
 	license = GPL3
@@ -12,6 +12,7 @@ pkgbase = emote
 	depends = python-gobject
 	depends = python-xlib
 	depends = libkeybinder3
+	depends = noto-fonts-emoji
 	source = setup.py
 	source = emojis.patch
 	source = https://github.com/tom-james-watson/Emote/archive/dbff57507b20b4e723f1b82a9506809810711276.tar.gz

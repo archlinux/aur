@@ -3,12 +3,12 @@
 pkgname=emote
 pkgver=1.2.0
 _pkgref=dbff57507b20b4e723f1b82a9506809810711276
-pkgrel=1
+pkgrel=2
 url="https://github.com/tom-james-watson/Emote"
 pkgdesc="Emoji Picker for Linux written in GTK3"
 arch=('any')
 license=('GPL3')
-depends=('python' 'gtk3' 'python-gobject' 'python-xlib' 'libkeybinder3')
+depends=('python' 'gtk3' 'python-gobject' 'python-xlib' 'libkeybinder3' 'noto-fonts-emoji')
 makedepends=('python-setuptools' 'python-pipenv')
 source=(
   "setup.py"
