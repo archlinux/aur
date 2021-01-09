@@ -1,4 +1,4 @@
-# Maintainer : Gustavo Alvarez <sl1pkn07@gmail.com>
+# Contributor : Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=realsr-ncnn-vulkan
 pkgname=vapoursynth-plugin-${_plug}-git
@@ -41,7 +41,7 @@ prepare() {
   mkdir -p build
 
   cd ${_plug}
-  git config submodule.deps/nncn.url "${srcdir}/ncnn"
+  git config submodule.deps/ncnn.url "${srcdir}/ncnn"
   git submodule update --init deps/ncnn
 
   # fix models path
