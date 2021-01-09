@@ -1,42 +1,35 @@
-# $Id: PKGBUILD 146745 2012-01-16 22:52:52Z dreisner $
-# Maintainer: Alphazo <alphazo@gmail.com>
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=npth-git
-pkgver=1.2+3_ga49a061
+pkgver=1.6
 pkgrel=1
-pkgdesc="A library to provide the GNU Pth API and thus a non-preemptive threads implementationA IPC library used by some GnuPG related software (git version)."
-arch=('i686' 'x86_64')
-license=('GPL')
-url="http://www.gnupg.org/related_software/"
-options=('!libtool')
-provides=('npth')
-conflicts=('npth')
-makedepends=('git')
-
-_gitname="npth"
-source=("$_gitname::git://git.gnupg.org/npth.git")
-
-pkgver() {
-	cd "$srcdir/$_gitname"
-	git describe | sed 's|npth-||;s|-|+|;s|-|_|'
-}
+pkgdesc='New portable threads library'
+url='https://git.gnupg.org/cgi-bin/gitweb.cgi?p=npth.git'
+license=('LGPL')
+#options=('!libtool')
+arch=('x86_64')
+#validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6'
+#              '46CC730865BB5C78EBABADCF04376F3EE0856959'
+#              '031EC2536E580D8EA286A9F22071B08A33BD3F06'
+#              'D238EA65D64C67ED4C3073F28A861B1C7EFD60D9')
+source=(git://git.gnupg.org/npth.git)
+sha256sums=( 'SKIP')
 
 build() {
-   cd "$srcdir/$_gitname"
-   autoreconf -fiv
-   ./configure --prefix=/usr
-   read me
-   make
+	cd npth
+	./autogen.sh
+	./configure --prefix=/usr --enable-maintainer-mode
+	make
 }
 
-check() {
-  cd "$srcdir/$_gitname" 
-  make check
-}
+#check() {
+#	cd npth
+#	make check
+#}
 
 package() {
-  cd "$srcdir/$_gitname"
-  make DESTDIR=${pkgdir} install
+	cd npth
+	make DESTDIR="${pkgdir}" install
 }
-md5sums=('SKIP')
 

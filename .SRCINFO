@@ -1,17 +1,12 @@
 pkgbase = npth-git
-	pkgdesc = A library to provide the GNU Pth API and thus a non-preemptive threads implementationA IPC library used by some GnuPG related software (git version).
-	pkgver = 1.2+3_ga49a061
+	pkgdesc = New portable threads library
+	pkgver = 1.6
 	pkgrel = 1
-	url = http://www.gnupg.org/related_software/
-	arch = i686
+	url = https://git.gnupg.org/cgi-bin/gitweb.cgi?p=npth.git
 	arch = x86_64
-	license = GPL
-	makedepends = git
-	provides = npth
-	conflicts = npth
-	options = !libtool
-	source = npth::git://git.gnupg.org/npth.git
-	md5sums = SKIP
+	license = LGPL
+	source = git://git.gnupg.org/npth.git
+	sha256sums = SKIP
 
 pkgname = npth-git
 
