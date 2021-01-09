@@ -1,7 +1,7 @@
 pkgname=theme.sh-git
 _pkgname=theme.sh
 provides=("theme.sh")
-pkgver=20210107.45d3236
+pkgver=20210108.9156670
 pkgrel=1
 arch=('any')
 source=("git+https://github.com/lemnos/theme.sh.git")
