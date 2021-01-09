@@ -1,26 +1,33 @@
 pkgbase = intel-graphics-compiler-git
 	pkgdesc = Intel Graphics Compiler for OpenCL (git version)
-	pkgver = 1.0.4361.r125.ga3bf2c5b
+	pkgver = 1.0.5964.r58.g51b88fca
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/intel/intel-graphics-compiler/
 	arch = x86_64
 	license = MIT
+	license = custom
 	makedepends = git
 	makedepends = cmake
-	makedepends = clang
-	makedepends = llvm
 	makedepends = python
-	depends = llvm-libs
-	depends = intel-opencl-clang
-	depends = ncurses
+	depends = gcc-libs
 	depends = zlib
 	provides = intel-graphics-compiler
+	provides = spirv-llvm-translator
+	provides = intel-opencl-clang
 	conflicts = intel-graphics-compiler
+	conflicts = spirv-llvm-translator
+	conflicts = intel-opencl-clang
 	options = !emptydirs
 	source = git+https://github.com/intel/intel-graphics-compiler.git
 	source = git+https://github.com/intel/vc-intrinsics.git
-	source = git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git
+	source = git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git#branch=llvm_release_100
+	source = git+https://github.com/intel/opencl-clang.git#branch=ocl-open-100
+	source = git+https://github.com/llvm/llvm-project.git#tag=llvmorg-10.0.0
+	source = git+https://github.com/intel/llvm-patches.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
