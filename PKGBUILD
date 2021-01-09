@@ -8,7 +8,7 @@ pkgrel=1
 url='https://github.com/flightlessmango/MangoHud'
 license=('MIT')
 arch=('x86_64')
-makedepends=('meson' 'python-mako' 'glslang' 'libglvnd' 'lib32-libglvnd'
+makedepends=('git' 'dbus' 'meson' 'python-mako' 'glslang' 'libglvnd' 'lib32-libglvnd'
              'vulkan-headers' 'vulkan-icd-loader'  'lib32-vulkan-icd-loader'
              'libxnvctrl')
 replaces=('vulkan-mesa-layer-mango' 'lib32-vulkan-mesa-layer-mango')
