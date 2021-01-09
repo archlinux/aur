@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-waifu2x-ncnn-vulkan-git
 	pkgdesc = Plugin for Vapoursynth: waifu2x-ncnn-vulkan (GIT version)
-	pkgver = r3.0.g870f3c9
+	pkgver = r3.1.gc2316e0
 	pkgrel = 1
 	url = https://github.com/Nlzy/vapoursynth-waifu2x-ncnn-vulkan
 	arch = x86_64

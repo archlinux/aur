@@ -2,7 +2,7 @@
 
 _plug=waifu2x-ncnn-vulkan
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r3.0.g870f3c9
+pkgver=r3.1.gc2316e0
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -36,7 +36,7 @@ prepare() {
   mkdir -p build
 
   cd ${_plug}
-  git config submodule.deps/nncn.url "${srcdir}/ncnn"
+  git config submodule.deps/ncnn.url "${srcdir}/ncnn"
   git submodule update --init deps/ncnn
 
   # rename models path
