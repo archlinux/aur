@@ -1,0 +1,12 @@
+pkgbase = shortcut-mapper-git
+	pkgver = v0.1.1
+	pkgrel = 1
+	url = https://github.com/OZoneGuy/shortcut-mapper.git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	source = git+https://github.com/OZoneGuy/shortcut-mapper.git
+	md5sums = SKIP
+
+pkgname = shortcut-mapper-git
+
