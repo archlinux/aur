@@ -1,29 +1,45 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=astc-encoder
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc='A tool for compressing and decompressing images using the ASTC texture compression standard'
 arch=('x86_64')
 url='https://github.com/ARM-software/astc-encoder/'
 license=('Apache')
 depends=('gcc-libs')
-source=("https://github.com/ARM-software/astc-encoder/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        '010-astc-encoder-use-arch-flags.patch')
-sha256sums=('655bf72ff09d6337e6e9cbce217c5cdf53437acdcfacc2b6005db774433f64a8'
-            '578e63355d8455312561d5667f714ab8f97491ae0327b9756de02b83546b01d1')
+makedepends=('git' 'cmake')
+source=("git+https://github.com/ARM-software/astc-encoder.git#tag=${pkgver}"
+        'git+https://github.com/google/googletest.git'
+        '010-astc-encoder-fix-install.patch')
+sha256sums=('SKIP'
+            'SKIP'
+            '83b5f79ba9b015bc9fdaa37a33ff2b092a98d324323b1e57f026051fef316309')
 
 prepare() {
-    patch -d "${pkgname}-${pkgver}" -Np1 -i "${srcdir}/010-astc-encoder-use-arch-flags.patch"
+    git -C astc-encoder submodule init
+    git -C astc-encoder config --local submodule.Source/GoogleTest.url "${srcdir}/googletest"
+    git -C astc-encoder submodule update
+    patch -d astc-encoder -Np1 -i "${srcdir}/010-astc-encoder-fix-install.patch"
 }
 
 build() {
-    make -C "${pkgname}-${pkgver}/Source" APP='astcenc' VEC='sse2'
-    make -C "${pkgname}-${pkgver}/Source" APP='astcenc' VEC='sse4.2'
-    make -C "${pkgname}-${pkgver}/Source" APP='astcenc' VEC='avx2'
+    cmake -B build -S astc-encoder \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DISA_AVX2:BOOL='ON' \
+        -DISA_SSE41:BOOL='ON' \
+        -DISA_SSE2:BOOL='ON' \
+        -DUNITTEST:BOOL='ON' \
+        -Wno-dev
+    make -C build
+}
+
+check() {
+    make -C build test
 }
 
 package() {
-    install -D -m755 "${pkgname}-${pkgver}/Source"/astcenc-{sse2,sse4.2,avx2} -t "${pkgdir}/usr/bin"
+    make -C build DESTDIR="$pkgdir" install
     ln -s astcenc-sse2 "${pkgdir}/usr/bin/astcenc"
 }
