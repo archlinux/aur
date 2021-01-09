@@ -1,27 +1,7 @@
-diff -rupN pdfposter.orig/pdftools/pdfposter/cmd.py pdfposter.patched/pdftools/pdfposter/cmd.py
---- pdfposter.orig/pdftools/pdfposter/cmd.py	2018-11-30 13:35:53.713023093 +0100
-+++ pdfposter.patched/pdftools/pdfposter/cmd.py	2018-11-30 13:36:22.433571014 +0100
-@@ -25,7 +25,7 @@ __author__ = "Hartmut Goebel <h.goebel@c
- __copyright__ = "Copyright 2008-2018 by Hartmut Goebel <h.goebel@crazy-compilers.com>"
- __licence__ = "GNU General Public License version 3 (GPL v3)"
- 
--from . import main, __version__, DEFAULT_MEDIASIZE, papersizes, DecryptionError
-+from . import main, __version__, DEFAULT_OVERLAP_PERCENT, DEFAULT_MEDIASIZE, papersizes, DecryptionError
- import re
- import PyPDF2.utils
- import argparse
-@@ -167,6 +167,8 @@ def run(args=None):
-                      help='Specify the poster size (defaults to media size). ')
-     group.add_argument('-s', '--scale', type=float,
-                      help='Specify a linear scaling factor to produce the poster.')
-+    group.add_argument('-O', '--overlap-percent', type=float, default = DEFAULT_OVERLAP_PERCENT,
-+                     help='Image overlap (default: %g).' % DEFAULT_OVERLAP_PERCENT)
- 
-     parser.add_argument('infilename', metavar='InputFile')
-     parser.add_argument('outfilename', metavar='OutputFile')
-diff -rupN pdfposter.orig/pdftools/pdfposter/__init__.py pdfposter.patched/pdftools/pdfposter/__init__.py
---- pdfposter.orig/pdftools/pdfposter/__init__.py	2018-11-30 13:35:53.713023093 +0100
-+++ pdfposter.patched/pdftools/pdfposter/__init__.py	2018-11-30 13:36:10.546634666 +0100
+diff --git i/pdftools/pdfposter/__init__.py w/pdftools/pdfposter/__init__.py
+index 07e2cbe..a5f5e5c 100755
+--- i/pdftools/pdfposter/__init__.py
++++ w/pdftools/pdfposter/__init__.py
 @@ -33,6 +33,7 @@ from logging import log
  import math
  
@@ -52,7 +32,7 @@ diff -rupN pdfposter.orig/pdftools/pdfposter/__init__.py pdfposter.patched/pdfto
  
      rotate = False
  
-@@ -259,12 +260,13 @@ def _scale_pdf_page(outpdf, page, factor
+@@ -259,12 +260,13 @@ def _scale_pdf_page(outpdf, page, factor):
      page[NameObject('/Contents')] = outpdf._addObject(content)
  
  
@@ -67,7 +47,7 @@ diff -rupN pdfposter.orig/pdftools/pdfposter/__init__.py pdfposter.patched/pdfto
      """
      if use_ArtBox:
          inbox = rectangle2box(page.artBox)
-@@ -273,7 +275,7 @@ def posterize(outpdf, page, mediabox, po
+@@ -273,7 +275,7 @@ def posterize(outpdf, page, mediabox, posterbox, scale, use_ArtBox=False):
      _clip_pdf_page(page, inbox['offset_x'], inbox['offset_y'],
                     inbox['width'], inbox['height'])
      ncols, nrows, scale, rotate = decide_num_pages(inbox, mediabox,
@@ -76,16 +56,7 @@ diff -rupN pdfposter.orig/pdftools/pdfposter/__init__.py pdfposter.patched/pdfto
      mediabox = mediabox.copy()
      _scale_pdf_page(outpdf, page, scale)
      if rotate:
-@@ -281,7 +283,7 @@ def posterize(outpdf, page, mediabox, po
-         rotate_box(inbox)
-         rotate_box(mediabox)
-     # area to put on each page (allows for overlay of margin)
--    h_step = mediabox['width']  - mediabox['offset_x']
-+    h_step = mediabox['width'] - mediabox['offset_x'] 
-     v_step = mediabox['height'] - mediabox['offset_y']
- 
-     if use_ArtBox:
-@@ -291,7 +293,7 @@ def posterize(outpdf, page, mediabox, po
+@@ -291,7 +293,7 @@ def posterize(outpdf, page, mediabox, posterbox, scale, use_ArtBox=False):
      h_pos = float(trimbox['offset_x'])
      h_max, v_max = float(trimbox['width']), float(trimbox['height'])
      for col in range(ncols):
@@ -94,7 +65,7 @@ diff -rupN pdfposter.orig/pdftools/pdfposter/__init__.py pdfposter.patched/pdfto
          for row in range(nrows):
              log(17, 'Creating page with offset: %.2f %.2f' % (h_pos, v_pos))
              newpage = copyPage(page)
-@@ -306,8 +308,8 @@ def posterize(outpdf, page, mediabox, po
+@@ -306,8 +308,8 @@ def posterize(outpdf, page, mediabox, posterbox, scale, use_ArtBox=False):
                                                 min(v_max, v_pos + v_step)))
              newpage.artBox = newpage.trimBox
              outpdf.addPage(newpage)
@@ -105,7 +76,7 @@ diff -rupN pdfposter.orig/pdftools/pdfposter/__init__.py pdfposter.patched/pdfto
  
  def password_hook():
      import getpass
-@@ -344,7 +346,7 @@ def main(opts, infilename, outfilename,
+@@ -344,7 +346,7 @@ def main(opts, infilename, outfilename, password_hook=password_hook):
          page = inpdf.getPage(i)
          log(19, '---- processing page %i -----', i+1)
          posterize(outpdf, page, opts.media_size, opts.poster_size, opts.scale,
@@ -114,3 +85,25 @@ diff -rupN pdfposter.orig/pdftools/pdfposter/__init__.py pdfposter.patched/pdfto
  
      if not opts.dry_run:
          outpdf.write(open(outfilename, 'wb'))
+diff --git i/pdftools/pdfposter/cmd.py w/pdftools/pdfposter/cmd.py
+index fa5b693..38872d3 100644
+--- i/pdftools/pdfposter/cmd.py
++++ w/pdftools/pdfposter/cmd.py
+@@ -25,7 +25,7 @@ __author__ = "Hartmut Goebel <h.goebel@crazy-compilers.com>"
+ __copyright__ = "Copyright 2008-2018 by Hartmut Goebel <h.goebel@crazy-compilers.com>"
+ __licence__ = "GNU General Public License version 3 (GPL v3)"
+ 
+-from . import main, __version__, DEFAULT_MEDIASIZE, papersizes, DecryptionError
++from . import main, __version__, DEFAULT_OVERLAP_PERCENT, DEFAULT_MEDIASIZE, papersizes, DecryptionError
+ import re
+ import PyPDF2.utils
+ import argparse
+@@ -171,6 +171,8 @@ def run(args=None):
+                        'of the input image size. Thus, a scaling factor of 2 '
+                        'results in a poster 4 times the area compared to the '
+                        'original.')
++    group.add_argument('-O', '--overlap-percent', type=float, default = DEFAULT_OVERLAP_PERCENT,
++                     help='Image overlap (default: %g).' % DEFAULT_OVERLAP_PERCENT)
+ 
+     parser.add_argument('infilename', metavar='InputFile')
+     parser.add_argument('outfilename', metavar='OutputFile')

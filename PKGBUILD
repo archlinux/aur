@@ -3,18 +3,18 @@
 # Contributor: Elena ``of Valhalla'' Grandi <elena.valhalla@gmail.com>
 pkgname=pdfposter-git
 _pkgname=pdfposter
-pkgver=0.7.post1.r4.g6617424
+pkgver=0.7.post1.r7.g0ec90f0
 pkgrel=1
 pkgdesc="Print large posters on multiple sheets"
 arch=('any')
 url="https://pdfposter.readthedocs.io"
 license=('GPL3')
-depends=('python2-pypdf2')
-makedepends=('python2-distribute')
+depends=('python-pypdf2')
+makedepends=('python-distribute')
 options=(!emptydirs)
 source=("git+https://gitlab.com/pdftools/pdfposter.git" "overlap.patch")
 sha256sums=('SKIP'
-            '002e33a4899e92692119588cd79c0be2e3fab80b75421088a14d14d4921efcb1')
+            '100d55d2f198a390347181ce0d6ad33bb4b16d885f1a812367cd7df3e1a2f83f')
 
 pkgver() {
   cd "$_pkgname"
@@ -29,10 +29,10 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
   cd "$srcdir/$_pkgname"
-  python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
+  python setup.py install --skip-build --root="${pkgdir}" --optimize=1
 }
