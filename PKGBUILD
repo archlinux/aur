@@ -20,12 +20,12 @@ prepare() {
 
 build() {
   cd trunk-${pkgver}
-  cargo build --release --frozen --all-features --target-dir=target
+  cargo build --release --offline --frozen --all-features --target-dir=target
 }
 
 check() {
   cd trunk-${pkgver}
-  cargo test --release --frozen --target-dir=target
+  cargo test --release --offline --frozen --target-dir=target
 }
 
 package(){
