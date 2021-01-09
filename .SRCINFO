@@ -1,6 +1,6 @@
 pkgbase = magnum-plugins-git
 	pkgdesc = Plugins for the Magnum C++11/C++14 graphics engine (Git version)
-	pkgver = 2019.10.r284.g8b60cd48
+	pkgver = 2020.06.r119.g15b8cac9
 	pkgrel = 1
 	url = https://magnum.graphics
 	arch = i686
@@ -17,6 +17,8 @@ pkgbase = magnum-plugins-git
 	depends = freetype2
 	depends = assimp
 	depends = meshoptimizer
+	depends = spirv-tools
+	depends = glslang
 	provides = magnum-plugins
 	conflicts = magnum-plugins
 	source = git+git://github.com/mosra/magnum-plugins.git
