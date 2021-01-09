@@ -1,14 +1,14 @@
 pkgbase = peakperf-git
 	pkgdesc = Benchmark to achieve peak performance on x86_64 CPUs
-	pkgver = 1.0
+	pkgver = v1.0.r0.g3a5207a
 	pkgrel = 1
 	url = https://github.com/Dr-Noob/peakperf
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = make
 	depends = glibc
 	depends = gcc-libs
-	depends = make
 	source = git+https://github.com/Dr-Noob/peakperf
 	md5sums = SKIP
 
