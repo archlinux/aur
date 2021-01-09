@@ -1,7 +1,7 @@
 pkgbase = neatimage
 	pkgdesc = Best noise reduction fro digital cameras and scanners
-	pkgver = 8.4
-	pkgrel = 2
+	pkgver = 8.6
+	pkgrel = 1
 	url = https://ni.neatvideo.com/
 	arch = x86_64
 	license = custom
@@ -25,7 +25,8 @@ pkgbase = neatimage
 	depends = pcre
 	depends = zlib
 	source = https://ni.neatvideo.com/demo/ni8/sld/NeatImageSL.Demo.Intel64.tgz
-	sha512sums = b7c15ffe5e11ca66eb3b65a443a699c37bcca4abf66a2daf9d9c65f60538bcdb37d4bfe4c2f32f56d187a40669e5884e831946086f7c044586c32904f328c9d4
+	sha512sums = 7aa8888407caad0613674cb2fe8370782e2aabb87b8eaba3c9a7631c959901cb03f0759d67d325236bbf5cf40a3b7c3d29152cf8e2ddcb69f7d7866ff912cf95
+	b2sums = 2304a58333b3213f5861680e0f77972c0d6c7964e144346375f1bed8c758a01ee3e5ae549cd7674d30808ee449d4f203b6961aca3d0abf828fa77cc2eab846a4
 
 pkgname = neatimage
 
