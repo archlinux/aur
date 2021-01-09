@@ -1,8 +1,6 @@
 # Substitution for Arch Linux's base-devel -group as a meta package for SELinux
 # https://www.archlinux.org/groups/x86_64/base-devel/
-# 
-# Arch Linux SELinux support package upstream repository:
-# https://github.com/archlinuxhardened/selinux
+# https://wiki.archlinux.org/index.php/SELinux
 
 # Maintainer: Tuomo Kuure <tqre@far.fi>
 
@@ -12,7 +10,7 @@ pkgrel=1
 pkgdesc='Meta package that substitutes base-devel group with SELinux support'
 arch=('any')
 license=('GPL')
-url='https://github.com/tqre/selinux/tree/base-selinux'
+url='https://github.com/archlinuxhardened/selinux'
 groups=('selinux')
 depends=(
   'base-selinux'
