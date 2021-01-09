@@ -1,0 +1,28 @@
+pkgbase = gnutls-nodocs-git
+	pkgdesc = A secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them
+	pkgver = 3.6.13.r104.g52e78f1e3
+	pkgrel = 1
+	url = https://www.gnutls.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = autogen
+	makedepends = gperf
+	makedepends = rsync
+	makedepends = wget
+	depends = glibc
+	depends = libidn2
+	depends = libtasn1
+	depends = libunistring
+	depends = nettle
+	depends = p11-kit
+	depends = readline
+	depends = zlib
+	provides = gnutls
+	conflicts = gnutls
+	source = git+https://gitlab.com/gnutls/gnutls.git
+	sha256sums = SKIP
+
+pkgname = gnutls-nodocs-git
+
