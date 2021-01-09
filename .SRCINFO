@@ -1,5 +1,5 @@
 pkgbase = linux-amd-raven
-	pkgver = 5.4.v.87
+	pkgver = 5.4.v.88
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -13,13 +13,13 @@ pkgbase = linux-amd-raven
 	makedepends = libelf
 	makedepends = lzop
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v5.4.87
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v5.4.88
 	source = config.x86_64
 	source = linux-amd-raven.preset
 	source = linux.install
 	source = 5013_enable-cpu-optimizations-for-gcc10.patch
 	sha256sums = SKIP
-	sha256sums = c696bad9a1a65ecf40447cb279d78c6a69aa762ff4237242217ba850a147dca8
+	sha256sums = bec9aeee8d84f033b3399df1f11a3844edb0b6ed1e1d97860297cb9ba4028f5d
 	sha256sums = fd220b9f47a86162247b042f06311848678f9acb64b92f716572972f3aeb3d18
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = 27b7fc535ade94b636c3ec4e809e141831e9465a0ef55215a9852b87048629e2
