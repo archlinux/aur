@@ -14,6 +14,8 @@ arch=('x86_64')
 #              '031EC2536E580D8EA286A9F22071B08A33BD3F06'
 #              'D238EA65D64C67ED4C3073F28A861B1C7EFD60D9')
 source=(git://git.gnupg.org/npth.git)
+provides=(npth)
+conflicts=(npth)
 sha256sums=( 'SKIP')
 
 build() {
