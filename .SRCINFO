@@ -1,7 +1,7 @@
 pkgbase = gamerworld
 	pkgdesc = Play games all in one place
 	pkgver = 1.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.com/gamerworld/application
 	arch = any
 	license = GPL
