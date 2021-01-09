@@ -4,15 +4,18 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seafile-server
-pkgver=7.1.5
-pkgrel=2
+pkgver=8.0.2
+pkgrel=1
 pkgdesc='Seafile server core'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/haiwen/seafile-server'
 license=('AGPL3')
 depends=(
-    "ccnet-server>=$pkgver"
     'fuse2'
+    'mariadb-libs'
+    'python'
+    'libsearpc'
+    'libevent'
     'libevhtp-seafile'
     'libarchive'
 )
@@ -26,7 +29,7 @@ source=(
     'seafile-tmpfiles.conf'
 )
 sha256sums=(
-    '407a6243f754e366ce6754a2aa643574aa7742d4e81b7cc350dea348f3063707'
+    '4ae07f9c7712453a8c17ad34b5278749656ba59fb8d0714b10d66881cca98d34'
     'c4bd2b24fa2e5919b1ada61fff0dda7486460a8814764dc37db79178378d4930'
     'b09ab24829df0692e78b777802298b8cac23bdcdc31306e12ed3543833a7088e'
     '2faf52556d901ae18cfaa33b1cc55ee14abab4f78869eb6a2889ceeac4e3076a'
@@ -52,11 +55,10 @@ build() {
     cd "$srcdir/$pkgname-$pkgver-server"
     ./autogen.sh
     ./configure \
-        --enable-fuse \
-        --enable-python \
         --prefix='/usr' \
-        --with-mysql='/usr/bin/mysql_config'
-        PYTHON='/usr/bin/python'
+        --with-mysql='/usr/bin/mysql_config' \
+        --enable-fuse \
+        --enable-python
     make
 }
 
