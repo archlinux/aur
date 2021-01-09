@@ -4,7 +4,7 @@
 
 pkgbase="ptpython"
 pkgname="ptpython"
-pkgver="3.0.8"
+pkgver="3.0.9"
 pkgrel="1"
 pkgdesc="Python REPL build on top of prompt_toolkit"
 arch=("any")
@@ -23,7 +23,7 @@ optdepends=(
 provides=("ptpython3")
 # source=("https://files.pythonhosted.org/packages/49/b7/e11d308880e24387e71eb81c2fc20e22aee573542be7cff540051334a59b/${pkgbase}-${pkgver}.tar.gz")
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/prompt-toolkit/ptpython/archive/${pkgver}.tar.gz")
-sha256sums=('24bd641e7cd7a47983dfe0900c6077766b262bb90ad085e7ef7f239f8079621e')
+sha256sums=('ab7aff9b8eedd83085635f775c6cf28f1778692c000938e3a2e9461a02fe6bff')
 
 prepare() {
     cp -a "${srcdir}/${pkgbase}-${pkgver}" "${srcdir}/${pkgbase}2-${pkgver}"
@@ -39,4 +39,3 @@ package() {
     python setup.py install --skip-build --root="${pkgdir}" --optimize=1
     install -D --mode 644 --target-directory "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
-
