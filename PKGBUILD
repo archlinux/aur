@@ -1,9 +1,8 @@
 # Maintainer: Joost Molenaar <jjm@j0057.nl>
 pkgname=cni-plugin-dnsname
-pkgver=0.0
+pkgver=1.1.1
 pkgrel=1
-pkgcommit=2e1d2e0732df49df460e0991f68bf2ccfcd102db
-epoch=0
+epoch=
 pkgdesc="name resolution for containers"
 arch=(x86_64)
 url="https://github.com/containers/dnsname"
@@ -20,17 +19,17 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/containers/dnsname/archive/$pkgcommit.zip")
+source=("https://github.com/containers/dnsname/archive/v1.1.1.tar.gz")
 noextract=()
-sha256sums=("76386cbed1a540c700e28b8cb2dcda083118a9c10fea2bb85f06a4f59a081b64")
+sha256sums=('e8c7b0d4bab5d2559e50fe4a9947f2addd28cdaddd6b2909cddc350c85761f41')
 validpgpkeys=()
 
 build() {
-    cd "dnsname-$pkgcommit"
-	make
+    cd "dnsname-$pkgver"
+    make
 }
 
 package() {
-    install -o root -g root -m 644 -d $pkgdir/usr/lib/cni
-    install -o root -g root -m 755 -t $pkgdir/usr/lib/cni dnsname-$pkgcommit/bin/dnsname
+    install -o root -g root -m 755 -d $pkgdir/usr/lib/cni
+    install -o root -g root -m 755 -t $pkgdir/usr/lib/cni dnsname-$pkgver/bin/dnsname
 }
