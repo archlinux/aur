@@ -1,12 +1,12 @@
 pkgbase = jtool-bin
 	pkgdesc = Enhanced object file displaying tool for Mach-O executables
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.newosxbook.com/tools/jtool.html
 	arch = x86_64
 	license = unknown
 	source = jtool-bin-2.0.tar.gz::http://www.newosxbook.com/tools/jtool2.tgz
-	b2sums = 80c739375f8bd2ca9323295ddadae30a413e881ea0c6eaaf49cde7c809701e6d385db2ea8c92fb1ed1cd685fb301996f4b7d7f1d7760590930852474f8295ccf
+	b2sums = f1673377b3a845607747a05c0f058343b62e63ad42a63b533ac74cfa5523d2295579c21cf30737e7a6a1a69fcdde1d802267301de41b6d221d9b0d016e92be93
 
 pkgname = jtool-bin
 
