@@ -1,4 +1,5 @@
 # Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 # Contributor: David Rungel <dvzrv@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Simone Sclavi 'Ito' <darkhado@gmail.com>
