@@ -1,0 +1,18 @@
+pkgbase = ricoh-r5u87x-webcam-drivers
+	pkgdesc = Userspace modules for Ricoh R5U870 OEM cameras, improved packages and compatibility
+	pkgver = 0.2.2
+	pkgrel = 4
+	url = https://gitea.artixlinux.org/linuxer/r5u87x
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glib2
+	depends = libusb-compat
+	depends = lib32-libusb-compat
+	optdepends = guile: script for extracting firmware from Windows driver
+	source = ricoh-r5u87x-webcam-drivers-0.2.2.tar.gz::https://gitea.artixlinux.org/linuxer/r5u87x/archive/0.2.2.tar.gz
+	b2sums = 77964f77fc7c01a31f7768aa63203f5eb3e961533fe808418dba03c20ef07367caf12927974b1db74b6accbd56070adecbe372abc151b7e8c57af5c52b121638
+
+pkgname = ricoh-r5u87x-webcam-drivers
+	install = post.install
+
