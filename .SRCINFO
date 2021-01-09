@@ -1,12 +1,13 @@
 pkgbase = dirsearch
 	pkgdesc = Web path scanner/fuzzer, written in Python
 	pkgver = 0.4.1.alpha
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maurosoria/dirsearch
 	changelog = CHANGELOG.md
 	arch = any
 	license = GPL2
 	depends = python
+	backup = usr/lib/dirsearch/default.conf
 	source = dirsearch-0.4.1-alpha.tgz::https://github.com/maurosoria/dirsearch/archive/v0.4.1-alpha.tar.gz
 	b2sums = 04aa83d8c1acf7d7f093820af944dd63e2508678ae2311bae8393e6b8dc4e3fa15b766dea9a2b320029d8c7143d9f7caf7bf02f1abf4bb248fb0428a4f730fab
 
