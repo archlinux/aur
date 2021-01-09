@@ -1,0 +1,633 @@
+==> Erstelle Paket: pyfunceble-dev 4.0.0b4-2 (Sa 09 Jan 2021 14:18:02 CET)
+==> Prüfe Laufzeit-Abhängigkeiten...
+==> Prüfe Buildtime-Abhängigkeiten...
+==> Empfange Quellen...
+  -> PyFunceble-dev-4.0.0b4.tar.gz gefunden
+  -> LICENSE gefunden
+==> Überprüfe source Dateien mit sha256sums...
+    PyFunceble-dev-4.0.0b4.tar.gz ... Durchgelaufen
+    LICENSE ... Durchgelaufen
+==> Entpacke Quellen...
+  -> Entpacke PyFunceble-dev-4.0.0b4.tar.gz mit bsdtar
+==> Beginne build()...
+https://files.pythonhosted.org/packages/source/p/pyfunceble-dev/PyFunceble-dev-4.0.0b4.tar.gz
+running build
+running build_py
+running egg_info
+writing PyFunceble_dev.egg-info/PKG-INFO
+writing dependency_links to PyFunceble_dev.egg-info/dependency_links.txt
+writing entry points to PyFunceble_dev.egg-info/entry_points.txt
+writing requirements to PyFunceble_dev.egg-info/requires.txt
+writing top-level names to PyFunceble_dev.egg-info/top_level.txt
+reading manifest file 'PyFunceble_dev.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+warning: no previously-included files matching '__pycache__' found anywhere in distribution
+warning: no previously-included files matching '*.py[co]' found anywhere in distribution
+writing manifest file 'PyFunceble_dev.egg-info/SOURCES.txt'
+==> Betrete fakeroot Umgebung...
+==> Beginne package()...
+running install
+running install_lib
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/record
+copying build/lib/PyFunceble/query/record/dns.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/record
+copying build/lib/PyFunceble/query/record/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/record
+copying build/lib/PyFunceble/query/record/whois.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/record
+copying build/lib/PyFunceble/query/record/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/record
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/netinfo
+copying build/lib/PyFunceble/query/netinfo/address.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/netinfo
+copying build/lib/PyFunceble/query/netinfo/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/netinfo
+copying build/lib/PyFunceble/query/netinfo/hostbyaddr.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/netinfo
+copying build/lib/PyFunceble/query/netinfo/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/netinfo
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/requests
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/requests/adapter
+copying build/lib/PyFunceble/query/requests/adapter/https.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/requests/adapter
+copying build/lib/PyFunceble/query/requests/adapter/http.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/requests/adapter
+copying build/lib/PyFunceble/query/requests/adapter/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/requests/adapter
+copying build/lib/PyFunceble/query/requests/adapter/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/requests/adapter
+copying build/lib/PyFunceble/query/requests/requester.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/requests
+copying build/lib/PyFunceble/query/requests/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/requests
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/dns
+copying build/lib/PyFunceble/query/dns/resolver.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/dns
+copying build/lib/PyFunceble/query/dns/query_tool.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/dns
+copying build/lib/PyFunceble/query/dns/nameserver.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/dns
+copying build/lib/PyFunceble/query/dns/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/dns
+copying build/lib/PyFunceble/query/http_status_code.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/whois
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/whois/converter
+copying build/lib/PyFunceble/query/whois/converter/digit2digits.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/whois/converter
+copying build/lib/PyFunceble/query/whois/converter/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/whois/converter
+copying build/lib/PyFunceble/query/whois/converter/month2unified.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/whois/converter
+copying build/lib/PyFunceble/query/whois/converter/expiration_date.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/whois/converter
+copying build/lib/PyFunceble/query/whois/converter/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/whois/converter
+copying build/lib/PyFunceble/query/whois/query_tool.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/whois
+copying build/lib/PyFunceble/query/whois/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/whois
+copying build/lib/PyFunceble/query/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli
+copying build/lib/PyFunceble/cli/factory.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli
+copying build/lib/PyFunceble/cli/storage.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli
+copying build/lib/PyFunceble/cli/credential_loader.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/utils
+copying build/lib/PyFunceble/cli/utils/ascii_logo.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/utils
+copying build/lib/PyFunceble/cli/utils/version.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/utils
+copying build/lib/PyFunceble/cli/utils/testing.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/utils
+copying build/lib/PyFunceble/cli/utils/sort.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/utils
+copying build/lib/PyFunceble/cli/utils/stdout.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/utils
+copying build/lib/PyFunceble/cli/utils/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/utils
+copying build/lib/PyFunceble/cli/storage_facility.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem
+copying build/lib/PyFunceble/cli/filesystem/counter.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem/printer
+copying build/lib/PyFunceble/cli/filesystem/printer/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem/printer
+copying build/lib/PyFunceble/cli/filesystem/printer/file.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem/printer
+copying build/lib/PyFunceble/cli/filesystem/printer/stdout.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem/printer
+copying build/lib/PyFunceble/cli/filesystem/printer/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem/printer
+copying build/lib/PyFunceble/cli/filesystem/cleanup.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem
+copying build/lib/PyFunceble/cli/filesystem/status_file.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem
+copying build/lib/PyFunceble/cli/filesystem/dir_base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem
+copying build/lib/PyFunceble/cli/filesystem/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem/dir_structure
+copying build/lib/PyFunceble/cli/filesystem/dir_structure/backup.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem/dir_structure
+copying build/lib/PyFunceble/cli/filesystem/dir_structure/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem/dir_structure
+copying build/lib/PyFunceble/cli/filesystem/dir_structure/restore.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem/dir_structure
+copying build/lib/PyFunceble/cli/filesystem/dir_structure/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem/dir_structure
+copying build/lib/PyFunceble/cli/execution_time.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes
+copying build/lib/PyFunceble/cli/processes/tester.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes
+copying build/lib/PyFunceble/cli/processes/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes
+copying build/lib/PyFunceble/cli/processes/miner.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes
+copying build/lib/PyFunceble/cli/processes/migrator.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes
+copying build/lib/PyFunceble/cli/processes/file_sorter.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes
+copying build/lib/PyFunceble/cli/processes/producer.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes/workers
+copying build/lib/PyFunceble/cli/processes/workers/tester.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes/workers
+copying build/lib/PyFunceble/cli/processes/workers/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes/workers
+copying build/lib/PyFunceble/cli/processes/workers/miner.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes/workers
+copying build/lib/PyFunceble/cli/processes/workers/migrator.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes/workers
+copying build/lib/PyFunceble/cli/processes/workers/file_sorter.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes/workers
+copying build/lib/PyFunceble/cli/processes/workers/producer.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes/workers
+copying build/lib/PyFunceble/cli/processes/workers/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes/workers
+copying build/lib/PyFunceble/cli/processes/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/continuous_integration
+copying build/lib/PyFunceble/cli/continuous_integration/exceptions.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/continuous_integration
+copying build/lib/PyFunceble/cli/continuous_integration/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/continuous_integration
+copying build/lib/PyFunceble/cli/continuous_integration/travis_ci.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/continuous_integration
+copying build/lib/PyFunceble/cli/continuous_integration/gitlab_ci.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/continuous_integration
+copying build/lib/PyFunceble/cli/continuous_integration/github_actions.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/continuous_integration
+copying build/lib/PyFunceble/cli/continuous_integration/utils.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/continuous_integration
+copying build/lib/PyFunceble/cli/continuous_integration/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/continuous_integration
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads
+copying build/lib/PyFunceble/cli/threads/threading.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads
+copying build/lib/PyFunceble/cli/threads/tester.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads
+copying build/lib/PyFunceble/cli/threads/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads
+copying build/lib/PyFunceble/cli/threads/file_producer.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads
+copying build/lib/PyFunceble/cli/threads/miner.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads
+copying build/lib/PyFunceble/cli/threads/producer_base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads
+copying build/lib/PyFunceble/cli/threads/migrator.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads
+copying build/lib/PyFunceble/cli/threads/whois_producer.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads
+copying build/lib/PyFunceble/cli/threads/file_sorter.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads
+copying build/lib/PyFunceble/cli/threads/continue_producer.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads
+copying build/lib/PyFunceble/cli/threads/inactive_producer.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads
+copying build/lib/PyFunceble/cli/threads/stdout_producer.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads
+copying build/lib/PyFunceble/cli/threads/utils.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads
+copying build/lib/PyFunceble/cli/threads/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/json2csv
+copying build/lib/PyFunceble/cli/migrators/json2csv/inactive.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/json2csv
+copying build/lib/PyFunceble/cli/migrators/json2csv/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/json2csv
+copying build/lib/PyFunceble/cli/migrators/json2csv/whois.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/json2csv
+copying build/lib/PyFunceble/cli/migrators/json2csv/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/json2csv
+copying build/lib/PyFunceble/cli/migrators/db_base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators
+copying build/lib/PyFunceble/cli/migrators/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/mariadb
+copying build/lib/PyFunceble/cli/migrators/mariadb/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/mariadb
+copying build/lib/PyFunceble/cli/migrators/mariadb/whois_record_idna_subject.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/mariadb
+copying build/lib/PyFunceble/cli/migrators/mariadb/file_and_status.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/mariadb
+copying build/lib/PyFunceble/cli/migrators/mariadb/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/mariadb
+copying build/lib/PyFunceble/cli/migrators/alembic.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/file_cleanup
+copying build/lib/PyFunceble/cli/migrators/file_cleanup/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/file_cleanup
+copying build/lib/PyFunceble/cli/migrators/file_cleanup/mining_file.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/file_cleanup
+copying build/lib/PyFunceble/cli/migrators/file_cleanup/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/file_cleanup
+copying build/lib/PyFunceble/cli/migrators/file_cleanup/hashes_file.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/file_cleanup
+copying build/lib/PyFunceble/cli/migrators/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/scripts
+copying build/lib/PyFunceble/cli/scripts/public_suffix.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/scripts
+copying build/lib/PyFunceble/cli/scripts/iana.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/scripts
+copying build/lib/PyFunceble/cli/scripts/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/scripts
+copying build/lib/PyFunceble/cli/scripts/production.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/scripts
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/entry_points
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/entry_points/pyfunceble
+copying build/lib/PyFunceble/cli/entry_points/pyfunceble/argsparser.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/entry_points/pyfunceble
+copying build/lib/PyFunceble/cli/entry_points/pyfunceble/cli.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/entry_points/pyfunceble
+copying build/lib/PyFunceble/cli/entry_points/pyfunceble/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/entry_points/pyfunceble
+copying build/lib/PyFunceble/cli/entry_points/clean.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/entry_points
+copying build/lib/PyFunceble/cli/entry_points/public_suffix.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/entry_points
+copying build/lib/PyFunceble/cli/entry_points/iana.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/entry_points
+copying build/lib/PyFunceble/cli/entry_points/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/entry_points
+copying build/lib/PyFunceble/cli/entry_points/production.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/entry_points
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/system
+copying build/lib/PyFunceble/cli/system/integrator.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/system
+copying build/lib/PyFunceble/cli/system/launcher.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/system
+copying build/lib/PyFunceble/cli/system/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/system
+copying build/lib/PyFunceble/cli/system/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/system
+copying build/lib/PyFunceble/cli/facility.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli
+copying build/lib/PyFunceble/cli/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli
+copying build/lib/PyFunceble/factory.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/converter
+copying build/lib/PyFunceble/converter/subject2complements.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/converter
+copying build/lib/PyFunceble/converter/adblock_input_line2subject.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/converter
+copying build/lib/PyFunceble/converter/wildcard2subject.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/converter
+copying build/lib/PyFunceble/converter/url2netloc.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/converter
+copying build/lib/PyFunceble/converter/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/converter
+copying build/lib/PyFunceble/converter/input_line2subject.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/converter
+copying build/lib/PyFunceble/converter/internal_url.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/converter
+copying build/lib/PyFunceble/converter/rpz_input_line2subject.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/converter
+copying build/lib/PyFunceble/converter/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/converter
+copying build/lib/PyFunceble/converter/rpz_policy2subject.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/converter
+copying build/lib/PyFunceble/storage.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/inactive
+copying build/lib/PyFunceble/dataset/inactive/csv.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/inactive
+copying build/lib/PyFunceble/dataset/inactive/mysql.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/inactive
+copying build/lib/PyFunceble/dataset/inactive/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/inactive
+copying build/lib/PyFunceble/dataset/inactive/mariadb.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/inactive
+copying build/lib/PyFunceble/dataset/inactive/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/inactive
+copying build/lib/PyFunceble/dataset/db_base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset
+copying build/lib/PyFunceble/dataset/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset
+copying build/lib/PyFunceble/dataset/ipv4_reputation.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset
+copying build/lib/PyFunceble/dataset/user_agent.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset
+copying build/lib/PyFunceble/dataset/public_suffix.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/autocontinue
+copying build/lib/PyFunceble/dataset/autocontinue/csv.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/autocontinue
+copying build/lib/PyFunceble/dataset/autocontinue/mysql.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/autocontinue
+copying build/lib/PyFunceble/dataset/autocontinue/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/autocontinue
+copying build/lib/PyFunceble/dataset/autocontinue/mariadb.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/autocontinue
+copying build/lib/PyFunceble/dataset/autocontinue/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/autocontinue
+copying build/lib/PyFunceble/dataset/iana.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset
+copying build/lib/PyFunceble/dataset/csv_base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/whois
+copying build/lib/PyFunceble/dataset/whois/csv.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/whois
+copying build/lib/PyFunceble/dataset/whois/mysql.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/whois
+copying build/lib/PyFunceble/dataset/whois/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/whois
+copying build/lib/PyFunceble/dataset/whois/mariadb.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/whois
+copying build/lib/PyFunceble/dataset/whois/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/whois
+copying build/lib/PyFunceble/dataset/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset
+copying build/lib/PyFunceble/dataset/mariadb_base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset
+copying build/lib/PyFunceble/exceptions.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/config
+copying build/lib/PyFunceble/config/compare.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/config
+copying build/lib/PyFunceble/config/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/config
+copying build/lib/PyFunceble/config/loader.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/config
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/utils
+copying build/lib/PyFunceble/utils/version.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/utils
+copying build/lib/PyFunceble/utils/platform.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/utils
+copying build/lib/PyFunceble/utils/profile.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/utils
+copying build/lib/PyFunceble/utils/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/utils
+copying build/lib/PyFunceble/storage_facility.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/availability
+copying build/lib/PyFunceble/checker/availability/extra_rules.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/availability
+copying build/lib/PyFunceble/checker/availability/domain.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/availability
+copying build/lib/PyFunceble/checker/availability/params.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/availability
+copying build/lib/PyFunceble/checker/availability/domain_and_ip.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/availability
+copying build/lib/PyFunceble/checker/availability/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/availability
+copying build/lib/PyFunceble/checker/availability/ip.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/availability
+copying build/lib/PyFunceble/checker/availability/status.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/availability
+copying build/lib/PyFunceble/checker/availability/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/availability
+copying build/lib/PyFunceble/checker/availability/url.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/availability
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/utils
+copying build/lib/PyFunceble/checker/utils/whois.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/utils
+copying build/lib/PyFunceble/checker/utils/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/utils
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/reputation
+copying build/lib/PyFunceble/checker/reputation/domain.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/reputation
+copying build/lib/PyFunceble/checker/reputation/params.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/reputation
+copying build/lib/PyFunceble/checker/reputation/domain_and_ip.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/reputation
+copying build/lib/PyFunceble/checker/reputation/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/reputation
+copying build/lib/PyFunceble/checker/reputation/ip.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/reputation
+copying build/lib/PyFunceble/checker/reputation/status.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/reputation
+copying build/lib/PyFunceble/checker/reputation/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/reputation
+copying build/lib/PyFunceble/checker/reputation/url.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/reputation
+copying build/lib/PyFunceble/checker/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker
+copying build/lib/PyFunceble/checker/complex_json_encoder.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker
+copying build/lib/PyFunceble/checker/status_base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker
+copying build/lib/PyFunceble/checker/params_base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/syntax
+copying build/lib/PyFunceble/checker/syntax/domain_base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/syntax
+copying build/lib/PyFunceble/checker/syntax/domain.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/syntax
+copying build/lib/PyFunceble/checker/syntax/params.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/syntax
+copying build/lib/PyFunceble/checker/syntax/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/syntax
+copying build/lib/PyFunceble/checker/syntax/ipv6.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/syntax
+copying build/lib/PyFunceble/checker/syntax/ip.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/syntax
+copying build/lib/PyFunceble/checker/syntax/ipv4.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/syntax
+copying build/lib/PyFunceble/checker/syntax/status.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/syntax
+copying build/lib/PyFunceble/checker/syntax/second_lvl_domain.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/syntax
+copying build/lib/PyFunceble/checker/syntax/subdomain.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/syntax
+copying build/lib/PyFunceble/checker/syntax/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/syntax
+copying build/lib/PyFunceble/checker/syntax/url.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/syntax
+copying build/lib/PyFunceble/checker/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/.vscode
+copying build/lib/PyFunceble/.vscode/settings.json -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/.vscode
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database
+copying build/lib/PyFunceble/database/session.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/schemas
+copying build/lib/PyFunceble/database/schemas/inactive.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/schemas
+copying build/lib/PyFunceble/database/schemas/whois_record.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/schemas
+copying build/lib/PyFunceble/database/schemas/autocontinue.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/schemas
+copying build/lib/PyFunceble/database/schemas/status.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/schemas
+copying build/lib/PyFunceble/database/schemas/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/schemas
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/credential
+copying build/lib/PyFunceble/database/credential/mysql.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/credential
+copying build/lib/PyFunceble/database/credential/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/credential
+copying build/lib/PyFunceble/database/credential/mariadb.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/credential
+copying build/lib/PyFunceble/database/credential/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/credential
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/sqlalchemy
+copying build/lib/PyFunceble/database/sqlalchemy/base_schema.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/sqlalchemy
+copying build/lib/PyFunceble/database/sqlalchemy/all_schemas.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/sqlalchemy
+copying build/lib/PyFunceble/database/sqlalchemy/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/sqlalchemy
+copying build/lib/PyFunceble/database/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database
+copying build/lib/PyFunceble/logger.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble
+copying build/lib/PyFunceble/sessions.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic
+copying build/lib/PyFunceble/data/alembic/env.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic
+copying build/lib/PyFunceble/data/alembic/script.py.mako -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions
+copying build/lib/PyFunceble/data/alembic/versions/7bcf7fa64ba1_rename_created_to_created_at_and.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions
+copying build/lib/PyFunceble/data/alembic/versions/ade87195b0a0_base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions
+copying build/lib/PyFunceble/data/alembic/versions/bef7bcaac3f2_make_id_a_bigint.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions
+copying build/lib/PyFunceble/data/alembic/versions/3d6f4a33cdb2_add_inactive_table.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions
+copying build/lib/PyFunceble/data/alembic/versions/45713fea8097_deletion_uneeded_columns_from_whois_.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions
+copying build/lib/PyFunceble/data/alembic/versions/e04e8301d1a2_deletion_of_the_mined_table.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions
+copying build/lib/PyFunceble/data/alembic/versions/3a4c55a9320d_add_continue_table.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions
+copying build/lib/PyFunceble/data/alembic/versions/459a0d7b8f09_add_idna_subject_column_into_whois.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions
+copying build/lib/PyFunceble/data/alembic/versions/95dc17ddd729_introduction_of_the_session_id_column.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions
+copying build/lib/PyFunceble/data/alembic/versions/d8893cd406db_allow_whois_record_to_be_empty_null.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions
+copying build/lib/PyFunceble/data/alembic/versions/83ada95132bf_delete_the_file_table.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions
+copying build/lib/PyFunceble/data/alembic/versions/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions
+copying build/lib/PyFunceble/data/alembic/versions/35c79626ecb9_fix_some_columns.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions
+copying build/lib/PyFunceble/data/alembic/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/infrastructure
+copying build/lib/PyFunceble/data/infrastructure/dir_structure_production.json -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/infrastructure
+copying build/lib/PyFunceble/data/infrastructure/.PyFunceble_production.yaml -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/infrastructure
+copying build/lib/PyFunceble/data/infrastructure/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/infrastructure
+copying build/lib/PyFunceble/data/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/downloader
+copying build/lib/PyFunceble/downloader/exceptions.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/downloader
+copying build/lib/PyFunceble/downloader/base.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/downloader
+copying build/lib/PyFunceble/downloader/ipv4_reputation.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/downloader
+copying build/lib/PyFunceble/downloader/user_agents.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/downloader
+copying build/lib/PyFunceble/downloader/public_suffix.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/downloader
+copying build/lib/PyFunceble/downloader/iana.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/downloader
+copying build/lib/PyFunceble/downloader/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/downloader
+copying build/lib/PyFunceble/facility.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble
+copying build/lib/PyFunceble/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble
+creating /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/helpers
+copying build/lib/PyFunceble/helpers/download.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/helpers
+copying build/lib/PyFunceble/helpers/dict.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/helpers
+copying build/lib/PyFunceble/helpers/exceptions.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/helpers
+copying build/lib/PyFunceble/helpers/directory.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/helpers
+copying build/lib/PyFunceble/helpers/file.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/helpers
+copying build/lib/PyFunceble/helpers/regex.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/helpers
+copying build/lib/PyFunceble/helpers/list.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/helpers
+copying build/lib/PyFunceble/helpers/environment_variable.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/helpers
+copying build/lib/PyFunceble/helpers/merge.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/helpers
+copying build/lib/PyFunceble/helpers/command.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/helpers
+copying build/lib/PyFunceble/helpers/__init__.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/helpers
+copying build/lib/PyFunceble/helpers/hash.py -> /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/helpers
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/record/dns.py to dns.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/record/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/record/whois.py to whois.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/record/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/netinfo/address.py to address.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/netinfo/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/netinfo/hostbyaddr.py to hostbyaddr.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/netinfo/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/requests/adapter/https.py to https.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/requests/adapter/http.py to http.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/requests/adapter/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/requests/adapter/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/requests/requester.py to requester.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/requests/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/dns/resolver.py to resolver.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/dns/query_tool.py to query_tool.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/dns/nameserver.py to nameserver.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/dns/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/http_status_code.py to http_status_code.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/whois/converter/digit2digits.py to digit2digits.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/whois/converter/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/whois/converter/month2unified.py to month2unified.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/whois/converter/expiration_date.py to expiration_date.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/whois/converter/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/whois/query_tool.py to query_tool.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/whois/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/query/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/factory.py to factory.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/storage.py to storage.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/credential_loader.py to credential_loader.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/utils/ascii_logo.py to ascii_logo.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/utils/version.py to version.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/utils/testing.py to testing.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/utils/sort.py to sort.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/utils/stdout.py to stdout.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/utils/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/storage_facility.py to storage_facility.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem/counter.py to counter.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem/printer/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem/printer/file.py to file.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem/printer/stdout.py to stdout.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem/printer/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem/cleanup.py to cleanup.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem/status_file.py to status_file.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem/dir_base.py to dir_base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem/dir_structure/backup.py to backup.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem/dir_structure/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem/dir_structure/restore.py to restore.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/filesystem/dir_structure/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/execution_time.py to execution_time.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes/tester.py to tester.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes/miner.py to miner.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes/migrator.py to migrator.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes/file_sorter.py to file_sorter.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes/producer.py to producer.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes/workers/tester.py to tester.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes/workers/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes/workers/miner.py to miner.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes/workers/migrator.py to migrator.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes/workers/file_sorter.py to file_sorter.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes/workers/producer.py to producer.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes/workers/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/processes/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/continuous_integration/exceptions.py to exceptions.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/continuous_integration/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/continuous_integration/travis_ci.py to travis_ci.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/continuous_integration/gitlab_ci.py to gitlab_ci.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/continuous_integration/github_actions.py to github_actions.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/continuous_integration/utils.py to utils.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/continuous_integration/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads/threading.py to threading.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads/tester.py to tester.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads/file_producer.py to file_producer.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads/miner.py to miner.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads/producer_base.py to producer_base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads/migrator.py to migrator.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads/whois_producer.py to whois_producer.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads/file_sorter.py to file_sorter.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads/continue_producer.py to continue_producer.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads/inactive_producer.py to inactive_producer.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads/stdout_producer.py to stdout_producer.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads/utils.py to utils.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/threads/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/json2csv/inactive.py to inactive.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/json2csv/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/json2csv/whois.py to whois.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/json2csv/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/db_base.py to db_base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/mariadb/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/mariadb/whois_record_idna_subject.py to whois_record_idna_subject.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/mariadb/file_and_status.py to file_and_status.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/mariadb/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/alembic.py to alembic.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/file_cleanup/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/file_cleanup/mining_file.py to mining_file.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/file_cleanup/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/file_cleanup/hashes_file.py to hashes_file.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/migrators/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/scripts/public_suffix.py to public_suffix.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/scripts/iana.py to iana.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/scripts/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/scripts/production.py to production.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/entry_points/pyfunceble/argsparser.py to argsparser.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/entry_points/pyfunceble/cli.py to cli.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/entry_points/pyfunceble/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/entry_points/clean.py to clean.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/entry_points/public_suffix.py to public_suffix.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/entry_points/iana.py to iana.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/entry_points/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/entry_points/production.py to production.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/system/integrator.py to integrator.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/system/launcher.py to launcher.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/system/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/system/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/facility.py to facility.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/cli/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/factory.py to factory.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/converter/subject2complements.py to subject2complements.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/converter/adblock_input_line2subject.py to adblock_input_line2subject.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/converter/wildcard2subject.py to wildcard2subject.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/converter/url2netloc.py to url2netloc.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/converter/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/converter/input_line2subject.py to input_line2subject.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/converter/internal_url.py to internal_url.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/converter/rpz_input_line2subject.py to rpz_input_line2subject.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/converter/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/converter/rpz_policy2subject.py to rpz_policy2subject.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/storage.py to storage.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/inactive/csv.py to csv.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/inactive/mysql.py to mysql.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/inactive/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/inactive/mariadb.py to mariadb.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/inactive/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/db_base.py to db_base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/ipv4_reputation.py to ipv4_reputation.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/user_agent.py to user_agent.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/public_suffix.py to public_suffix.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/autocontinue/csv.py to csv.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/autocontinue/mysql.py to mysql.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/autocontinue/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/autocontinue/mariadb.py to mariadb.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/autocontinue/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/iana.py to iana.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/csv_base.py to csv_base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/whois/csv.py to csv.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/whois/mysql.py to mysql.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/whois/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/whois/mariadb.py to mariadb.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/whois/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/dataset/mariadb_base.py to mariadb_base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/exceptions.py to exceptions.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/config/compare.py to compare.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/config/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/config/loader.py to loader.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/utils/version.py to version.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/utils/platform.py to platform.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/utils/profile.py to profile.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/utils/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/storage_facility.py to storage_facility.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/availability/extra_rules.py to extra_rules.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/availability/domain.py to domain.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/availability/params.py to params.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/availability/domain_and_ip.py to domain_and_ip.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/availability/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/availability/ip.py to ip.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/availability/status.py to status.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/availability/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/availability/url.py to url.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/utils/whois.py to whois.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/utils/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/reputation/domain.py to domain.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/reputation/params.py to params.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/reputation/domain_and_ip.py to domain_and_ip.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/reputation/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/reputation/ip.py to ip.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/reputation/status.py to status.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/reputation/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/reputation/url.py to url.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/complex_json_encoder.py to complex_json_encoder.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/status_base.py to status_base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/params_base.py to params_base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/syntax/domain_base.py to domain_base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/syntax/domain.py to domain.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/syntax/params.py to params.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/syntax/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/syntax/ipv6.py to ipv6.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/syntax/ip.py to ip.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/syntax/ipv4.py to ipv4.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/syntax/status.py to status.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/syntax/second_lvl_domain.py to second_lvl_domain.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/syntax/subdomain.py to subdomain.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/syntax/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/syntax/url.py to url.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/checker/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/session.py to session.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/schemas/inactive.py to inactive.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/schemas/whois_record.py to whois_record.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/schemas/autocontinue.py to autocontinue.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/schemas/status.py to status.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/schemas/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/credential/mysql.py to mysql.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/credential/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/credential/mariadb.py to mariadb.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/credential/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/sqlalchemy/base_schema.py to base_schema.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/sqlalchemy/all_schemas.py to all_schemas.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/sqlalchemy/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/database/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/logger.py to logger.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/sessions.py to sessions.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/env.py to env.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions/7bcf7fa64ba1_rename_created_to_created_at_and.py to 7bcf7fa64ba1_rename_created_to_created_at_and.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions/ade87195b0a0_base.py to ade87195b0a0_base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions/bef7bcaac3f2_make_id_a_bigint.py to bef7bcaac3f2_make_id_a_bigint.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions/3d6f4a33cdb2_add_inactive_table.py to 3d6f4a33cdb2_add_inactive_table.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions/45713fea8097_deletion_uneeded_columns_from_whois_.py to 45713fea8097_deletion_uneeded_columns_from_whois_.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions/e04e8301d1a2_deletion_of_the_mined_table.py to e04e8301d1a2_deletion_of_the_mined_table.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions/3a4c55a9320d_add_continue_table.py to 3a4c55a9320d_add_continue_table.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions/459a0d7b8f09_add_idna_subject_column_into_whois.py to 459a0d7b8f09_add_idna_subject_column_into_whois.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions/95dc17ddd729_introduction_of_the_session_id_column.py to 95dc17ddd729_introduction_of_the_session_id_column.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions/d8893cd406db_allow_whois_record_to_be_empty_null.py to d8893cd406db_allow_whois_record_to_be_empty_null.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions/83ada95132bf_delete_the_file_table.py to 83ada95132bf_delete_the_file_table.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/versions/35c79626ecb9_fix_some_columns.py to 35c79626ecb9_fix_some_columns.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/alembic/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/infrastructure/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/data/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/downloader/exceptions.py to exceptions.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/downloader/base.py to base.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/downloader/ipv4_reputation.py to ipv4_reputation.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/downloader/user_agents.py to user_agents.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/downloader/public_suffix.py to public_suffix.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/downloader/iana.py to iana.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/downloader/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/facility.py to facility.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/helpers/download.py to download.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/helpers/dict.py to dict.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/helpers/exceptions.py to exceptions.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/helpers/directory.py to directory.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/helpers/file.py to file.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/helpers/regex.py to regex.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/helpers/list.py to list.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/helpers/environment_variable.py to environment_variable.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/helpers/merge.py to merge.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/helpers/command.py to command.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/helpers/__init__.py to __init__.cpython-39.pyc
+byte-compiling /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble/helpers/hash.py to hash.cpython-39.pyc
+writing byte-compilation script '/tmp/tmpa_ii1gk_.py'
+/usr/bin/python /tmp/tmpa_ii1gk_.py
+removing /tmp/tmpa_ii1gk_.py
+running install_egg_info
+running egg_info
+writing PyFunceble_dev.egg-info/PKG-INFO
+writing dependency_links to PyFunceble_dev.egg-info/dependency_links.txt
+writing entry points to PyFunceble_dev.egg-info/entry_points.txt
+writing requirements to PyFunceble_dev.egg-info/requires.txt
+writing top-level names to PyFunceble_dev.egg-info/top_level.txt
+reading manifest file 'PyFunceble_dev.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+warning: no previously-included files matching '__pycache__' found anywhere in distribution
+warning: no previously-included files matching '*.py[co]' found anywhere in distribution
+writing manifest file 'PyFunceble_dev.egg-info/SOURCES.txt'
+Copying PyFunceble_dev.egg-info to /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/lib/python3.9/site-packages/PyFunceble_dev-4.0.0b4-py3.9.egg-info
+running install_scripts
+Installing PyFunceble script to /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/bin
+Installing clean-pyfunceble script to /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/bin
+Installing iana-pyfunceble script to /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/bin
+Installing production-pyfunceble script to /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/bin
+Installing public-suffix-pyfunceble script to /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/bin
+Installing pyfunceble script to /home/funilrys/repositories/aur/test/pyfunceble-dev/pkg/pyfunceble-dev/usr/bin
+==> Säubere Installation...
+  -> Entferne libtool Dateien...
+  -> Bereinige ungewollte Dateien...
+  -> Entferne statische Bibliotheken...
+  -> Entferne unnötige Symbole aus Binär-Dateien und Bibliotheken...
+  -> Komprimiere Man-Pages und Info-Seiten...
+==> Prüfe auf Paketierungsprobleme...
+==> Erstelle Paket "pyfunceble-dev"...
+  -> Erstelle .PKGINFO Datei...
+  -> Erstelle .BUILDINFO Datei...
+  -> Erstelle .MTREE-Datei...
+  -> Komprimiere Paket... 
+==> Verlasse fakeroot Umgebung.
+==> Beendete Erstellung: pyfunceble-dev 4.0.0b4-2 (Sa 09 Jan 2021 14:18:12 CET)
