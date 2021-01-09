@@ -1,15 +1,10 @@
 pkgbase = cpuminer-opt-sugarchain
 	pkgdesc = Optimized Cpuminer for Sugarchain using YespowerSugar (based on Yespower 1.0.0)
 	pkgver = 3.8.8.1.7rc1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sugarchain.org
 	arch = x86_64
-	makedepends = automake
-	depends = curl
 	depends = jansson
-	depends = openssl
-	depends = gmp
-	depends = zlib
 	provides = cpuminer
 	conflicts = cpuminer
 	source = https://github.com/cryptozeny/cpuminer-opt-sugarchain/archive/v3.8.8.1.7rc1.tar.gz
