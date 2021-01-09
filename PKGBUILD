@@ -1,5 +1,4 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
-# Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
 
 pkgname=freecad-git
 pkgver=0.19_pre.r4995.g1851ddd933
@@ -13,7 +12,6 @@ depends=(
 boost-libs
 glew
 jsoncpp
-libspnav
 med
 netcdf
 opencascade
@@ -45,6 +43,10 @@ pyside2
 python-shiboken2
 shiboken2
 swig
+)
+optdepends=(
+'povray: ray tracing support'
+'libspnav: 3d mouse support'
 )
 provides=('freecad')
 conflicts=('freecad' 'freecad-appimage' 'freecad-appimage-git')
