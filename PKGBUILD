@@ -1,7 +1,7 @@
 # Maintainer: Isaac Freund <ifreund@ifreund.xyz>
 
 pkgname=zsh-abbr
-pkgver=3.1.1
+pkgver=4.2.0
 pkgrel=1
 pkgdesc='zsh abbreviations, ported from fish and enhanced'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/olets/zsh-abbr'
 license=('MIT')
 depends=('zsh')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/olets/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('0b2f2ba163bf448684fd556102b770ebe8c177b0b69e04b7853718bc87982409')
+sha256sums=('136b3e473d1106ea4746c5e92a9c44fa439875ac8b6598c5259d969f82735094')
 
 package() {
     cd "$pkgname-$pkgver"
