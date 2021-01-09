@@ -9,8 +9,8 @@
 
 pkgbase=nvidia-390xx
 pkgname=(nvidia-390xx nvidia-390xx-dkms)
-pkgver=390.138
-pkgrel=10
+pkgver=390.141
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux, 390xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
@@ -20,12 +20,8 @@ license=('custom')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
-        'kernel-4.16.patch'
-        'kernel-5.8.patch'
-        'kernel-5.9.patch'
-        'https://gitlab.com/herecura/packages/nvidia-390xx-dkms/-/raw/db83ed8ac2e0e0097d535a82e2fd4ee0f31873e3/kernel-5.10.patch'
-        'uvm_common-415.18.c')
-b2sums=('bf56cef38d76accdf547b96cd444b0bd4288f604d44a1d274f3246c13310d6a59050b36f384280edb83938db81fa0544f7a2dc84ff6f440ff90b76ee62749fc1'
+        'kernel-4.16.patch')
+b2sums=('fae33e5fcd8f0429f163ad40e58a07c42ff47260bd1b0f56989d6147d63294c475f33ddc02f06a16eaf8c8ea9f74a98dbcb32b5322c68661331ebf7dfe976770'
         '1d21307640a3844752c92e8344518daf6ad62d846689bebe6eed4dcadbf7b2e742862f5c17c0faee7256662cb75e62e124d59e5a5617e87324e1f0658f2b748d'
         '3ea3b298db0af192eb79a67d2307c92229defefc4cf66d09e24b85015de03b64a57b420233ca5532c6f57f35e007bc982c27333f2fc43a016a84cc797f67b191'
         '7358919041a3d5df1cac50f6519b282abe7a344f07b59d52ab95a022ce0af12e743a1c194fd838b5733f3900e68c7f0756a528ac32255775f2ba830a2f052dec'
@@ -36,22 +32,9 @@ prepare() {
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
 
-    # Use GPL2/MIT code directly from 415.18 release
-    # https://www.nvidia.com/Download/driverResults.aspx/140282/en-us
-    install -m644 ../uvm_common-415.18.c kernel/nvidia-uvm/uvm_common.c
-
-    # Restore phys_to_dma support (still needed for 396.18) (and still needed for 390.138)
+    # Restore phys_to_dma support (still needed for 390.138)
     # From loqs via https://bugs.archlinux.org/task/58074
     patch -Np1 -i ../kernel-4.16.patch
-
-    # 5.8 Patch, Alberto Milone
-    patch -Np1 -i ../kernel-5.8.patch
-
-    # 5.9 Patch, from loqs
-    patch -Np1 -i ../kernel-5.9.patch
-
-    # 5.10 Patch, from xtrymind and BlackIkeEagle
-    patch -Np1 -i ../kernel-5.10.patch
 
     cp -a kernel kernel-dkms
     cd kernel-dkms
