@@ -1,30 +1,26 @@
 pkgbase = libclassicclient
 	pkgdesc = Gemalto PKCS#11 driver
-	pkgver = 7.2.0_b04
-	pkgrel = 5
+	pkgver = 7.3.0_b06.01
+	pkgrel = 1
 	url = https://www.luxtrust.lu/en/simple/225
-	arch = i686
 	arch = x86_64
 	depends = gcc-libs
 	depends = gdk-pixbuf2
 	depends = gtk2
 	depends = libusb-compat
-	depends = openssl-1.0>=1.0.2.k-4
+	depends = openssl
 	depends = pcsclite
 	depends = qt5-base
 	optdepends = luxtrust-middleware: LuxTrust software for web authentication
-	source_i686 = https://www.luxtrust.lu/downloads/middleware/LuxTrust_Middleware_1.2.1_Ubuntu_32bit.tar.gz
-	sha256sums_i686 = 79ee2940496ffeed457eefb6b16013a1b5baa4b65f78bfa43411a3675445b579
-	source_x86_64 = https://www.luxtrust.lu/downloads/middleware/LuxTrust_Middleware_1.2.1_Ubuntu_64bit.tar.gz
-	sha256sums_x86_64 = 487c5f60a8dbb6212e24c41f9b80bf7d845bb13b29f129c96a7c3d070006cb80
+	source_x86_64 = https://www.luxtrust.lu/downloads/middleware/LuxTrust_Middleware_1.4.1_Ubuntu_64bit.tar.gz
+	sha256sums_x86_64 = 2b27b873f223f254b37fcc6ae9b21e5bb48ac081b0845be0f3bee10d8a377eff
 
 pkgname = libclassicclient
 	depends = gcc-libs
 	depends = gdk-pixbuf2
 	depends = gtk2
 	depends = libusb-compat
-	depends = openssl-1.0>=1.0.2.k-4
+	depends = openssl
 	depends = pcsclite
 	depends = qt5-base
 	depends = openmp
-
