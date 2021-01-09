@@ -8,7 +8,7 @@
 
 pkgname=bash-devel-static-git
 pkgdesc='The GNU Bourne Again shell (development version)(Static-Version)'
-pkgver=4.0.alpha.r749.g5a7a52ea
+pkgver=5.1.r5.g76404c85
 pkgrel=1
 url='http://www.gnu.org/software/bash/bash.html'
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=('git' 'readline-git' 'glibc-git' 'ncurses-git')
 optdepends=('bash-completion: for tab completion')
 provides=('sh' 'bash=$pkgver')
 conflicts=('bash' 'bash-static')
-source=('git+https://git.savannah.gnu.org/git/bash.git#branch=devel'
+source=('git+https://git.savannah.gnu.org/git/bash.git#branch=master'
         'dot.bashrc'
         'dot.bash_profile'
         'dot.bash_logout'
