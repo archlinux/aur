@@ -13,7 +13,6 @@ makedepends=('git' 'cmake>=3.13')
 source=("$pkgname::git+$url.git")
 md5sums=("SKIP")
 
-
 build() {
 	cd "$pkgname"
   mkdir build && cd build
