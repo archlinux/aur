@@ -2,7 +2,7 @@
 
 _pkgname=filezilla
 pkgname="$_pkgname-bin"
-pkgver=3.51.0
+pkgver=3.52.0.5
 pkgrel=1
 pkgdesc='Free, open source FTP, FTPS and SFTP client (Pre-built binary)'
 arch=('i686' 'x86_64')
@@ -11,25 +11,23 @@ license=('GPL')
 depends=('pugixml' 'wxgtk3' 'xdg-utils' 'gmp' 'gnutls' 'nettle' 'sqlite')
 makedepends=('curl')
 provides=("${_pkgname}" "${_pkgname}-git")
-conflicts=("${_pkgname}" "${_pkgname}-git")
+conflicts=("${_pkgname}" "${_pkgname}-git" "libfilezilla")
+machine_arch="${CARCH}"
 
-machine_arch="$(uname -m)"
-
-source=(
-    "FileZilla_${pkgver}_${machine_arch}-linux-gnu.tar.bz2::https://download.filezilla-project.org/client/FileZilla_${pkgver}_${machine_arch}-linux-gnu.tar.bz2"
-)
-
-sha512sums=(
-    "$(
-        _url="https://download.filezilla-project.org/client/FileZilla_${pkgver}.sha512"
-        _sum=$(curl --silent -L "${_url}" | grep "FileZilla_${pkgver}_${machine_arch}-linux-gnu.tar.bz2" | awk '{print $1}')
-        if [[ ! "${?}" = 0 ]] || [[ ! -v "_sum" ]]; then
-            echo -n "SKIP"
-        else
-            echo -n "${_sum}"
-        fi
+for _arch in ${arch[@]}; do
+    eval "source_${_arch}=(FileZilla_${pkgver}_${_arch}-linux-gnu.tar.bz2::https://download.filezilla-project.org/client/FileZilla_${pkgver}_${_arch}-linux-gnu.tar.bz2)"
+    eval "sha512sums_${_arch}=(
+        '$(
+            _url="https://download.filezilla-project.org/client/FileZilla_${pkgver}.sha512"
+            _sum=$(curl --silent -L "${_url}" | grep "FileZilla_${pkgver}_${_arch}-linux-gnu.tar.bz2" | awk '{print $1}')
+            if [[ ! "${?}" = 0 ]] || [[ ! -v "_sum" ]]; then
+                echo -n "SKIP"
+            else
+                echo -n "${_sum}"
+            fi
+        )'
     )"
-)
+done
 
 package() {
     rm -rf "${srcdir}/FileZilla_${pkgver}_${machine_arch}-linux-gnu.tar.bz2"
