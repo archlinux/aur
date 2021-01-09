@@ -1,0 +1,14 @@
+pkgbase = firefox_remove_ctrl_q
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = Unlicense
+	depends = firefox
+	provides = firefox_remove_ctrl_q
+	source = remove-ctrl-q-prefs.js
+	source = remove-ctrl-q.js
+	sha256sums = c13bf7cb0e6bd1af363caa3744593e9b86d8437148d67ee68b8e537d154543a5
+	sha256sums = 876b45a0aa3c4c20a3b58d033aefad03c876f05ce61911e63d88daf3dd887b41
+
+pkgname = firefox_remove_ctrl_q
+
