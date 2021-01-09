@@ -3,7 +3,7 @@
 pkgname=coredns-wgsd-git
 _pkgname='wgsd'
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A DNS server that chains plugins - with module wgsd"
 makedepends=('go')
 conflicts=('coredns-bin')
@@ -12,7 +12,7 @@ url="https://github.com/tobikris/wgsd"
 license=('Apache')
 provides=('coredns')
 conflicts=('coredns')
-source=($_pkgname::git+https://github.com/tobikris/wgsd.git#branch=serve-self
+source=($_pkgname::git+https://github.com/jwhited/wgsd.git
 coredns.service
 coredns-sysusers.conf)
 
