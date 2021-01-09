@@ -1,6 +1,6 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-bindings-git
-pkgver=2019.10.r34.gf2cba9c
+pkgver=2020.06.r24.g52f2073
 pkgrel=1
 pkgdesc="Bindings for the Magnum C++11/C++14 graphics engine (Git version)"
 arch=('i686' 'x86_64')
