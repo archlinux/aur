@@ -4,8 +4,8 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seahub
-pkgver=7.1.5
-pkgrel=3
+pkgver=8.0.2
+pkgrel=1
 pkgdesc='The web frontend for seafile server'
 arch=('any')
 url='https://github.com/haiwen/seahub'
@@ -17,7 +17,7 @@ depends=(
     'python-django-post-office'
     'python-django-webpack-loader'
     'gunicorn'
-    'python-pymysql'
+    'python-mysqlclient'
     'python-openpyxl'
     'python-qrcode'
     'python-django-formtools'
@@ -37,7 +37,7 @@ optdepends=(
 )
 # Outdated Python modules, but required by Seahub
 _thirdpart=(
-    'django-1.11.29'
+    'django-2.2.14'
     'django-picklefield-2.1.1'
     'django-rest-framework-3.11.1'
 )
@@ -50,8 +50,8 @@ source=(
     'nginx.example.conf'
 )
 sha256sums=(
-    'cc7f5a1642d203b2390ae3c30c8a5546d1e829d9d1a5ddf686e558292746ce5c'
-    '77a6b8c441bc060e42e7e147225ccac42191a5b96d57d03aefdb684c9ae4e09d'
+    'ad4f0358147859a5f0d6e4d078b7e53f6d619b83e8a52dc3e7adc69d73e982c5'
+    '52590ea1a39713cb87cc1f93588867049a84d1985b215ed3884695bae01469ec'
     '5985205ec990ad1319e6d238616284b342f018d41a30dc089b76349fb17b15ae'
     '513c0da69619e76715a4ac9149d7715751b9c4820a29476cb143f2bb6b5a3d11'
     '67bb375871ce908b48bef53277284c9d8f80ee2e733efc89cb66d987647195e4'
@@ -91,10 +91,13 @@ package() {
         cd "$srcdir/$thirdpart"
         python setup.py install \
             --root="$pkgdir/" \
-            --install-lib="usr/share/seafile-server/$pkgname/thirdpart/" \
-            --optimize=1
+            --install-lib="usr/share/seafile-server/$pkgname/thirdpart" \
+            --optimize=0
     done
     rm -rf "$pkgdir"/usr/{bin,share/seafile-server/"$pkgname"/thirdpart/*.egg-info}
+
+    python -m compileall -f -j 0 -o 1 \
+        -s "$pkgdir" -p '/' "$pkgdir/usr/share/seafile-server/seahub"
 
     install -Dm644 \
         "$srcdir/seahub@.service" \
