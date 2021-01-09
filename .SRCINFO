@@ -1,6 +1,6 @@
 pkgbase = clamav-git
 	pkgdesc = Anti-virus toolkit for Unix
-	pkgver = 0.99.g1ab521a
+	pkgver = 0.99.gdce04e58f
 	pkgrel = 1
 	url = http://www.clamav.net/
 	install = install
