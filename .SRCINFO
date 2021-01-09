@@ -5,6 +5,7 @@ pkgbase = xssmap
 	url = https://github.com/secdec/xssmap
 	arch = any
 	license = Apache-2.0
+	makedepends = git
 	depends = phantomjs
 	depends = python
 	depends = python-certifi

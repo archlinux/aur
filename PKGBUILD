@@ -5,6 +5,7 @@ pkgver=r7.1a208b1
 pkgrel=1
 pkgdesc="Intelligent XSS detection tool that uses human techniques for looking for reflected cross-site scripting (XSS) vulnerabilities "
 depends=('phantomjs' 'python' 'python-certifi' 'python-chardet' 'python-idna' 'python-lxml' 'python-requests' 'python-urllib3')
+makedepends=('git')
 arch=('any')
 url="https://github.com/secdec/xssmap"
 license=('Apache-2.0')
