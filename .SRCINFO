@@ -9,6 +9,7 @@ pkgbase = libnsl-git
 	provides = libnsl
 	conflicts = libnsl
 	source = git+https://github.com/thkukuk/libnsl.git
+	md5sums = SKIP
 
 pkgname = libnsl-git
 

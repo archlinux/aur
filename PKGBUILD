@@ -12,7 +12,7 @@ depends=(libtirpc)
 provides=(libnsl)
 conflicts=(libnsl)
 source=("git+https://github.com/thkukuk/libnsl.git")
-#md5sums=('a7ab1d3e2a685edad1a55857bfccf318')
+md5sums=('SKIP')
 
 pkgver() {
   cd libnsl
