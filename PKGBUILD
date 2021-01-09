@@ -42,7 +42,6 @@ prepare() {
     git -C jpeg-xl config --local submodule.third_party/googletest.url "${srcdir}/googletest"
     git -C jpeg-xl config --local submodule.third_party/sjpeg.url "${srcdir}/sjpeg"
     git -C jpeg-xl config --local submodule.third_party/skcms.url "${srcdir}/skcms"
-    git -C jpeg-xl config --local submodule.third_party/mingw-std-threads.url "${srcdir}/mingw-std-threads"
     git -C jpeg-xl config --local submodule.third_party/IQA-optimization.url "${srcdir}/IQA-optimization"
     git -C jpeg-xl config --local submodule.third_party/vmaf.url "${srcdir}/vmaf"
     git -C jpeg-xl config --local submodule.third_party/difftest_ng.url "${srcdir}/difftest_ng"
