@@ -1,0 +1,21 @@
+pkgbase = opennic-resolve-git
+	pkgdesc = OpenNIC DNS updater
+	pkgver = 1
+	pkgrel = 1
+	url = https://notabug.org/ohnonot/opennic-resolve
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = jq
+	depends = curl
+	depends = coreutils
+	optdepends = systemd
+	provides = opennic-resolve
+	conflicts = opennic-resolve
+	backup = etc/opennic-resolve/opennic-resolve.conf
+	source = opennic-resolve-git::git+https://notabug.org/ohnonot/opennic-resolve.git
+	sha256sums = SKIP
+
+pkgname = opennic-resolve-git
+
