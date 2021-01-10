@@ -2,7 +2,7 @@
 
 pkgname=xerox-workcentre-3045b-3045ni
 pkgver=1.0_28
-pkgrel=1
+pkgrel=2
 pkgdesc="Xerox WorkCentre 3045 printer driver for CUPS."
 arch=(i686 x86_64)
 url="http://www.support.xerox.com/support/workcentre-3045"
