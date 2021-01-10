@@ -1,11 +1,11 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: wenLiangcan <boxeed at gmail dot com>
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 _projectname='utop'
 pkgname="ocaml-$_projectname"
-pkgver='2.6.0'
-pkgrel='2'
+pkgver='2.7.0'
+pkgrel='1'
 pkgdesc='Universal toplevel for OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-community/$_projectname"
@@ -14,7 +14,7 @@ depends=('ocaml>=4.03.0' 'ocaml-camomile' 'ocaml-findlib>=1.7.2' 'ocaml-lambda-t
 makedepends=('cppo>=1.1.2' 'dune>=1.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('b8c2fe5762c04a1c9b4831fa39d92b7480608a2235c73c748ba629b3c017fa02')
+sha256sums=('c6aaa5e1643ad220e66503820f07180cb50ae3fac49b79ed4ee27b0f733fc24c')
 
 _sourcedirectory="$_projectname-$pkgver"
 
