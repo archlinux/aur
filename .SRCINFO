@@ -1,0 +1,18 @@
+pkgbase = libvdpau-git
+	pkgdesc = Nvidia VDPAU library
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://www.freedesktop.org/wiki/Software/VDPAU/
+	arch = x86_64
+	license = custom
+	makedepends = xorgproto
+	makedepends = git
+	makedepends = meson
+	depends = libxext
+	provides = libvdpau
+	conflicts = libvdpau
+	source = git+https://gitlab.freedesktop.org/vdpau/libvdpau.git
+	sha256sums = SKIP
+
+pkgname = libvdpau-git
+
