@@ -31,5 +31,5 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C build install
-  install -Dm 644 $pkgname/COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm 644 libvdpau/COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
