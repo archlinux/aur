@@ -1,6 +1,6 @@
 pkgbase = argonone-git
 	pkgdesc = Argon One Service and Control Scripts por Raspberry Pi
-	pkgver = r25.ff51561
+	pkgver = r30.c878d73
 	pkgrel = 1
 	url = https://download.argon40.com/argon1.sh
 	install = argonone.install
@@ -11,10 +11,16 @@ pkgbase = argonone-git
 	depends = lm_sensors
 	depends = python>=3.3
 	depends = raspberrypi-userland-aarch64-git
+	depends = python-raspberry-gpio
 	provides = argonone
 	backup = etc/argononed.conf
+	backup = etc/modules-load.d/argonone-i2c.conf
 	source = git+https://github.com/kounch/argonone.git#branch=feature/RaspberryPi4
+	source = remove_virtual_env.patch
+	source = argonone-i2c.conf
 	sha256sums = SKIP
+	sha256sums = 387244f164aefd796da544aa13809544ac0b0b35e44ddaf5aa1155f915aefcf4
+	sha256sums = 8bf7f83cd0d8bdd6f212177a7555b3bea7f60b0a34e662f56b0ad4954bb7daae
 
 pkgname = argonone-git
 

@@ -1,0 +1,12 @@
+diff --git a/argononed.service b/argononed.service
+index d726b4b..1494058 100755
+--- a/argononed.service
++++ b/argononed.service
+@@ -5,6 +5,6 @@ After=multi-user.target
+ Type=simple
+ Restart=always
+ RemainAfterExit=true
+-ExecStart=/opt/argonone/bin/python3 /opt/argonone/bin/argononed.py
++ExecStart=/usr/bin/python3 /usr/bin/argononed
+ [Install]
+ WantedBy=multi-user.target
