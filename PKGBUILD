@@ -5,16 +5,17 @@
 
 # Maintainer: Buck Yeh <buck.yeh at gmail dot com>
 pkgname=parsergen
-pkgver=1.5.1
+pkgver=1.6.0
+#pkgver=VERSION
 pkgrel=1
 epoch=
-pkgdesc='LR1/GLR parser generator into Modern C++ code which must be built with bux library'
+pkgdesc='Self-hosted LR parser generator in C++20'
 arch=('x86_64')
 url='https://github.com/buck-yeh/parsergen.git'
 license=('MIT')
 groups=()
 depends=('fmt')
-makedepends=('cmake' 'make' 'gcc' 'git' 'binutils' 'fakeroot' 'sed' 'gawk')
+makedepends=('cmake' 'make' 'gcc' 'git' 'binutils' 'fakeroot' 'gawk')
 checkdepends=()
 optdepends=('bux: To build the generated code with')
 provides=()
@@ -48,7 +49,7 @@ if [[ ! "$pkgver" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
 s/^ *VERSION_MAJOR *= *\([0-9][0-9]*\).*/\1/p
 s/^ *VERSION_MINOR *= *\([0-9][0-9]*\).*/.\1/p
 s/^ *VERSION_RELEASE *= *\([0-9][0-9]*\).*/.\1/p
-' ParserGen/main.cpp); do _ret="$_ret$i"; done
+' ParserGen/Output.h); do _ret="$_ret$i"; done
 		echo "$_ret"
 	}
 fi

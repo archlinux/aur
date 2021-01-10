@@ -1,6 +1,6 @@
 pkgbase = parsergen
-	pkgdesc = LR1/GLR parser generator into Modern C++ code which must be built with bux library
-	pkgver = 1.5.1
+	pkgdesc = Self-hosted LR parser generator in C++20
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/buck-yeh/parsergen.git
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = parsergen
 	makedepends = git
 	makedepends = binutils
 	makedepends = fakeroot
-	makedepends = sed
 	makedepends = gawk
 	depends = fmt
 	optdepends = bux: To build the generated code with
