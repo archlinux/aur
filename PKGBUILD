@@ -2,14 +2,14 @@
 # Contributor: Lukas Böger <dev  AT  lboeger  DOT  de>
 
 pkgname=vim-quickscope
-pkgver=2.5.3
+pkgver=2.5.10
 pkgrel=1
 pkgdesc='Highlight which characters to target for f, F and family'
 arch=('any')
 license=('MIT')
 url='https://github.com/unblevable/quick-scope'
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('c9354f414cb26c3eb770dec18620379ad30fdfba8186fa20a363434fc66a5d03')
+sha256sums=('00d7b8561dba7059fcc61cf4f5e2163e9f508c9b1dd44c4a67afa69b19343e9b')
 groups=('vim-plugins')
 
 package() {
