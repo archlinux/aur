@@ -1,7 +1,7 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 _pkgname=galene
 pkgname=$_pkgname-git
-pkgver=0.1.r49.g50a3d8b
+pkgver=0.2.r0.g9f67a03
 pkgrel=1
 pkgdesc="A videoconferencing server"
 arch=('x86_64' 'i686')
