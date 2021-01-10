@@ -1,4 +1,4 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Lightning <sgsdxzy@gmail.com>
 _projectname='dolphin'
@@ -6,8 +6,8 @@ _mainpkgname="$_projectname-emu"
 _noguipkgname="$_projectname-emu-nogui"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git")
-pkgver='5.0.r11879.gc9aab4f809'
-pkgrel='1'
+pkgver='5.0.r13467.g79a234eff7'
+pkgrel='2'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
 arch=('x86_64' 'aarch64')
