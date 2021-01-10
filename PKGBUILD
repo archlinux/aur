@@ -25,7 +25,7 @@ prepare() {
 
 	if [ "$_is_older" = "1" ]; then
 		msg2 "Running autogen (for autoconf<2.70)"
-		./autogen.sh
+		test -f configure || ./autogen.sh
 	else
 		msg2 "Running autogen (for autoconf>=2.70)"
 		test -f configure || INTLTOOLIZE='intltoolize --force' autoreconf --install
