@@ -1,0 +1,19 @@
+pkgbase = lib32-libasyncns-git
+	pkgdesc = A C library for executing name service queries asynchronously
+	pkgver = 0.8+3+g68cd5af
+	pkgrel = 1
+	url = http://0pointer.de/lennart/projects/libasyncns
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc-multilib
+	makedepends = git
+	makedepends = lynx
+	depends = lib32-glibc
+	depends = libasyncns
+	provides = lib32-libasyncns
+	conflicts = lib32-libasyncns
+	source = git://git.0pointer.de/libasyncns.git
+	md5sums = SKIP
+
+pkgname = lib32-libasyncns-git
+
