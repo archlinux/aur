@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=wasm-micro-runtime-git
-pkgver=y2020.07.10+5.g32b2943369
+pkgver=y2020.09.29+47.g8a477786f1
 pkgrel=1
 pkgdesc="Standalone WebAssembly (WASM) runtime with small footprint"
 arch=(x86_64)
