@@ -6,8 +6,8 @@ git_user_name=leomoon-studios
 _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}-git
-pkgver=r52.5077528
-pkgrel=2
+pkgver=r150.acbca9f
+pkgrel=1
 pkgdesc="Blender addon adding studio lights setup."
 arch=('any')
 url="https://github.com/${git_user_name}/${git_name}"
@@ -27,7 +27,7 @@ depends=('blender')
   cd ${srcdir}
   addons="$pkgdir/usr/share/blender/${_blender}/scripts/addons"
   install -dm755 ${addons}/${name}
-  cp -a -t ${addons}/${name} ${name}/src/*
+  cp -a -t ${addons}/${name} ${srcdir}/${name}/*
   install -Dm644 ${name}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
