@@ -1,6 +1,6 @@
 pkgbase = python-pycobertura
 	pkgdesc = Code coverage diff tool for Cobertura reports
-	pkgver = 0.10.5
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/aconrad/pycobertura
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = python-pycobertura
 	depends = python-jinja
 	depends = python-lxml
 	depends = python-tabulate
-	source = https://github.com/aconrad/pycobertura/archive/v0.10.5.tar.gz
-	sha256sums = 909f99348e20b1bc69d68ea39c874e93ae586995fcfff4aef4a8dff07fa7f56f
+	source = https://github.com/aconrad/pycobertura/archive/v2.0.0.tar.gz
+	sha256sums = 5eaa1ebcf9ca4b3c6679b74ac850da406c9b5cdec11d8e71fed59f70819d5d14
 
 pkgname = python-pycobertura
 
