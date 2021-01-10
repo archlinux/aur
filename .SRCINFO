@@ -1,0 +1,25 @@
+pkgbase = webapp-manager
+	pkgdesc = Run websites as if they were apps
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/linuxmint/webapp-manager
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python-beautifulsoup4
+	depends = python-configobj
+	depends = python-gobject
+	depends = python-pillow
+	depends = python-setproctitle
+	depends = python-tldextract
+	depends = dconf
+	depends = xapp
+	provides = webapp-manager
+	conflicts = webapp-manager-git
+	conflicts = ice-ssb
+	conflicts = ice-dev
+	source = https://github.com/linuxmint/webapp-manager/archive/1.1.0.zip
+	sha256sums = 2e8c30c2d96f6aaae3c655606eeb076cc070c9dfbc2124297a7b86273676b488
+
+pkgname = webapp-manager
+
