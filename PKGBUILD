@@ -16,7 +16,7 @@ conflicts=(libvdpau)
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd libvdpau
   git describe --tags | sed 's/-/+/g'
 }
 
