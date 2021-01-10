@@ -15,6 +15,7 @@ pkgbase = procps-ng-nosystemd-minimal-git
 	conflicts = sysvinit-tools
 	replaces = procps
 	replaces = sysvinit-tools
+	backup = etc/sysctl.conf
 	source = git+https://gitlab.com/procps-ng/procps.git
 	source = fs66093.patch
 	sha256sums = SKIP

@@ -1,4 +1,5 @@
 # Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Eric Vidal <eric@obarun.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
@@ -11,6 +12,7 @@ url='https://gitlab.com/procps-ng/procps'
 license=(GPL LGPL)
 arch=(x86_64)
 depends=(ncurses)
+backup=('etc/sysctl.conf')
 conflicts=(procps procps-ng sysvinit-tools)
 provides=(procps procps-ng sysvinit-tools)
 replaces=(procps sysvinit-tools)
