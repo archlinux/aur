@@ -1,6 +1,6 @@
 # Maintainer: Phil Ruffwind <rf@rufflewind.com>
 pkgname=ghc-8.6
-pkgver=8.6.3
+pkgver=8.6.5
 pkgrel=1
 pkgdesc="The Glasgow Haskell Compiler (pinned to 8.6.*)"
 arch=(x86_64)
@@ -8,7 +8,7 @@ url=http://www.haskell.org/ghc/
 license=(custom)
 depends=(gmp libffi ncurses5-compat-libs numactl)
 source=("https://downloads.haskell.org/~ghc/$pkgver/ghc-$pkgver-$CARCH-deb9-linux.tar.xz")
-sha512sums=('5b81e11fb31d3ef22dfe360684ec8ded7d3b0f59f962686c250d3851a8296cb8f88fcec17650b6cd8feba10678f47b419ba99088cb64178cbf3abcc7decb2df6')
+sha512sums=('6e1d17ea69d313d7023985759ac28c87b620ea6fac59b92f298467e0b8a501ca6a9ba6e0107d6b27d3976be1da724e7e8b1625e7b99be4045f319a916d0ab711')
 
 build() {
     cd "ghc-$pkgver"
