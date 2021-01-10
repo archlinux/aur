@@ -4,7 +4,7 @@ pkgver=r218.7502669
 pkgrel=1
 pkgdesc="A powerful global DNS progagation checker that can output in a variety of formats."
 arch=(x86_64)
-url="https://git.kaijucode.com/matt/dug"
+url="https://dug.unfrl.com/"
 license=('custom:ANTI-CAPITALIST SOFTWARE LICENSE v1.4')
 depends=()
 makedepends=(git 'dotnet-runtime>=5.0.0' 'dotnet-sdk>=5.0.0', 'dotnet-host>=5.0.0')
