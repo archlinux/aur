@@ -1,6 +1,6 @@
 pkgbase = aegisub-ttools-meson-git
-	pkgdesc = A general-purpose subtitle editor with ASS/SSA support (TypesettingTools fork, meson branch)
-	pkgver = 3.2.2.r491.53034e5f8
+	pkgdesc = A general-purpose subtitle editor with ASS/SSA support (TypesettingTools fork)
+	pkgver = 3.2.2.r521.417ba4ff2
 	pkgrel = 1
 	url = http://www.aegisub.org
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = aegisub-ttools-meson-git
 	provides = aegisub
 	conflicts = aegisub
 	conflicts = aegisub-git
-	source = aegisub-ttools::git+https://github.com/TypesettingTools/Aegisub.git#branch=meson-vs2019
+	source = aegisub-ttools::git+https://github.com/TypesettingTools/Aegisub.git
 	sha256sums = SKIP
 
 pkgname = aegisub-ttools-meson-git
