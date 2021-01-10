@@ -2,8 +2,8 @@
 # Contributor: Pete Alexandrou <pete@ozmartians.com>
 
 pkgname=vidcutter
-pkgver=6.0.0
-pkgrel=6
+pkgver=6.0.5
+pkgrel=1
 pkgdesc='Modern, simple to use, constantly evolving and hella fast media cutter + joiner with frame-accurate SmartCut technology'
 arch=(x86_64)
 url='https://github.com/ozmartian/vidcutter'
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(ffmpeg mediainfo mpv python-opengl python-pyqt5 python-simplejson)
 makedepends=(python-setuptools cython)
 source=(https://github.com/ozmartian/$pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('c09be7eceaf42ff7211fe3b8125279c4fec7f7d251d272b61d579e426bd4e2c2')
+sha256sums=('b33c50606de20d480f14682d4c958d266257a34f8b2765a6c1a7aef991bec769')
 
 prepare() {
   cd $pkgname-$pkgver
