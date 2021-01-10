@@ -1,7 +1,7 @@
 # Maintainer: Tobias Backer Dirks <omgitsaheadcrab@gmail.com>
 
 pkgname=popsql
-pkgver=1.0.29
+pkgver=1.0.35
 pkgrel=1
 pkgdesc="Collaborative SQL editor to write, run, and share queries instantly"
 arch=('x86_64')
@@ -18,12 +18,12 @@ optdepends=(
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("$pkgname-$pkgver-$pkgrel.deb::https://get.popsql.com/download/debian")
-sha512sums_x86_64=('7aeff512d6021a0d513c29bc0136b333fbd4e4f04349743b52a3f71b8e7b7987ccd34691f7c0dd478279a1823eda54a93e680ee4f72b4c91ad0de30a8fc2570a')
+sha512sums_x86_64=('24857e35b0fd322dfa8917ebe739cdc1ec05cdab7bb833cc5bde22279383d4b2ce00accf52dcb809b8826fb4a58673c4ca22365fcbbb3b6e8921007d4a940271')
 
-package(){
+package() {
   # Extract package data
   tar xf data.tar.xz -C "${pkgdir}"
   # Create a Licenses directory, add a license file
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-  echo "Copyright PopSQL, inc. All rights reserved"  > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  echo "Copyright PopSQL, inc. All rights reserved" >"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
