@@ -1,6 +1,6 @@
 # Maintainer: William Brown <glowinthedarkcia@horsefucker.org>
 pkgname="okit-git"
-pkgver=r36.08bb550
+pkgver=r44.4aeb168
 pkgrel=1
 arch=("x86_64")
 pkgdesc="The Application toolkit for the Orion Operating System"
