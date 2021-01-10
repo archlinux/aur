@@ -1,6 +1,6 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 pkgname=duplicity-dev
-pkgver=0.8.16
+pkgver=0.8.18
 pkgrel=1
 pkgdesc="A utility for encrypted, bandwidth-efficient backups using the rsync algorithm"
 arch=("x86_64")
@@ -36,10 +36,8 @@ source=(
     "https://code.launchpad.net/duplicity/0.8-series/${pkgver}/+download/duplicity-${pkgver}.tar.gz"{,.sig}
 )
 
-sha512sums=(
-    "67e8fe7d5db7da82d82f24892d721e32cd63fcdb8bbc5e60508af06e4c9b637f593ce0b1902c31433c92ed97035880e44368e9a461ad197511171f67de937f73"
-    "SKIP"
-)
+sha512sums=('fd9dc472e4145725de343a3195ca8c898570ec492d46bc385d354c40b2c31e7c0da1f6e15e2a4a391d35926ae77e854992f4c973e55b072006c3f6489e27408f'
+            'SKIP')
 validpgpkeys=(
     "9D95920CED4A8D5F8B086A9F8B6F8FF4E654E600"
 )
