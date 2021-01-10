@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=python-pycobertura-git
-pkgver=0.10.5+2.g25ce699cfb
+pkgver=2.0.0+0.gfdbbc8aea2
 pkgrel=1
 pkgdesc="Code coverage diff tool for Cobertura reports"
 arch=(x86_64)
