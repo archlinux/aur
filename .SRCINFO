@@ -14,6 +14,7 @@ pkgbase = ddccontrol
 	depends = perl-xml-parser
 	depends = libxml2
 	depends = icu
+	depends = glibc
 	options = !libtool
 	source = ddccontrol-0.5.0.tar.gz::https://github.com/ddccontrol/ddccontrol/archive/0.5.0.tar.gz
 	sha256sums = 41d7c4fbcd1c2fa33bc6993c44527e98a1af7233903f6b362f41b99f977224df
