@@ -1,6 +1,6 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=galene
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="A videoconferencing server"
 arch=('x86_64' 'i686')
@@ -8,13 +8,13 @@ url='https://galene.org'
 license=('MIT')
 install='galene.install'
 depends=('go')
-makedepends=('git')
+makedepends=('git' 'pandoc')
 source=("https://github.com/jech/$pkgname/archive/$pkgname-$pkgver.tar.gz"
         'galene.service'
         'galene.sysusers'
         'galene.tmpfiles')
-sha256sums=('95e0231e2ec010af327455ff0173cecd9c2c32d86238b272aa247329f876ef2b'
-            'eb27f57f04b9a1f5820880e006e299d657404e899add6f87ec524d2b554c9a7e'
+sha256sums=('ac43210dfab641940c37cba56bac90d2121584d4ba3473002130dcfef534cd7d'
+            '2cb0143997c73b9dcc2ce82014358186695666ccfa7398cf4bd097fa558d38be'
             'a1b933ff4034cce2da2607e81df547acd7efa6f4236c18fec144047f50361f84'
             '85680da8ab202280b92b6dd32e920906570fb8070db06b2ef0275462d0f5a16d')
 
@@ -55,10 +55,11 @@ package() {
   install -dm755 "$pkgdir/usr/share/galene"
   cp -r static "$pkgdir/usr/share/galene"
 
-  install -dm755 "$pkgdir/usr/share/doc/galene"
-  install -m644 README README.FRONTEND "$pkgdir/usr/share/doc/galene"
+  local doc="$pkgdir/usr/share/doc/galene"
+  install -dm755 "$doc"
+  for file in README README.FRONTEND README.PROTOCOL; do
+    pandoc --from=markdown --to html --standalone --shift-heading-level-by=-1 "$file" > "${doc}/${file}.html"
+  done
 
   install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENCE"
-
-  install -Dm644 data/ice-servers.json "$pkgdir/var/lib/galene/data/ice-servers.json"
 }

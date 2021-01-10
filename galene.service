@@ -10,7 +10,10 @@ User=galene
 Group=galene
 WorkingDirectory=~
 ExecStart=/usr/bin/galene -static /usr/share/galene/static
+Restart=on-failure
 LimitNOFILE=65536
+Environment=PION_LOG_INFO="ice"
+Environment=PION_LOG_WARNING="all"
 
 [Install]
 WantedBy=multi-user.target
