@@ -2,7 +2,7 @@
 
 pkgbase=vulkan-extensionlayer-git
 pkgname=({,lib32-}vulkan-extensionlayer-git)
-pkgver=r31.8a457f8552
+pkgver=r39.7474cb8e1f
 pkgrel=1
 pkgdesc="Layer providing Vulkan features when native support is unavailable"
 arch=(x86_64)
@@ -21,7 +21,7 @@ pkgver() {
     $(git rev-parse HEAD | head -c10)
 }
 
-build_vulkan-extensionlayer-git() {
+build() {
   cmake \
     -S Vulkan-ExtensionLayer -B build64 \
     -G Ninja \
@@ -30,9 +30,7 @@ build_vulkan-extensionlayer-git() {
     -D BUILD_LAYERS=ON
 
   ninja -C build64
-}
 
-build_lib32-vulkan-extensionlayer-git() {
   CC='gcc -m32' \
   CXX='g++ -m32' \
   PKG_CONFIG_PATH='/usr/lib32/pkgconfig' \

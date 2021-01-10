@@ -1,6 +1,6 @@
 pkgbase = vulkan-extensionlayer-git
 	pkgdesc = Layer providing Vulkan features when native support is unavailable
-	pkgver = r31.8a457f8552
+	pkgver = r39.7474cb8e1f
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/Vulkan-ExtensionLayer
 	arch = x86_64
