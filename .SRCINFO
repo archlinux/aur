@@ -1,0 +1,19 @@
+pkgbase = lib32-libvdpau-git
+	pkgdesc = Nvidia VDPAU library
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/vdpau/libvdpau
+	arch = x86_64
+	license = custom
+	makedepends = xorgproto
+	makedepends = git
+	makedepends = meson
+	depends = lib32-libxext
+	depends = libvdpau
+	provides = lib32-libvdpau
+	conflicts = lib32-libvdpau
+	source = git+https://gitlab.freedesktop.org/vdpau/libvdpau.git
+	sha256sums = SKIP
+
+pkgname = lib32-libvdpau-git
+
