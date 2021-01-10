@@ -2,7 +2,7 @@
 # Contributor: ondoho <buababg-tvguho@cbfgrb.qr(rot13)>
 pkgname=opennic-resolve-git
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenNIC DNS updater"
 arch=('any')
 url="https://notabug.org/ohnonot/${pkgname%-git}"
