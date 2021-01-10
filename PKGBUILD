@@ -6,7 +6,7 @@ pkgdesc="A Git client originally forked from QGit that has continued its own pat
 arch=(x86_64)
 url="https://github.com/francescmm/GitQlient"
 license=('LGPL')
-depends=(git qt5-base qlogger)
+depends=(git qt5-base qlogger-git)
 source=(
     "https://github.com/francescmm/GitQlient/archive/v${pkgver}.tar.gz"
     werror.patch
