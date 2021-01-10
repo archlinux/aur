@@ -17,7 +17,7 @@ build() {
   python setup.py build
 }
 
-build() {
+check() {
   cd "q2cli-$pkgver"
   python setup.py test
 }
