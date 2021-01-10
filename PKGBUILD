@@ -14,12 +14,12 @@ pkgname=(
   java-openjfx-doc
   java-openjfx-src
 )
-_majorver=14
+_majorver=15
 _minorver=0
-_securityver=2
-_updatever=0
+_securityver=1
+_updatever=1
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
-pkgrel=2
+pkgrel=1
 pkgdesc="Java OpenJFX ${_majorver} client application platform (open-source implementation of JavaFX)"
 arch=(x86_64)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
@@ -56,9 +56,9 @@ source=(
   java-openjfx-no-xlocale.patch
   java-openjfx-gstreamer-lite-gcc10-compat.patch
 )
-sha256sums=('4ed624e2a0c464526af50fae3115bca34357bc5d3bbe6e4bb608994dd9094a10'
+sha256sums=('c6b481516ea50819d42607bdd3d744692e843eba93bcf1a64e16b2900c538164'
             '2622aa35d733cc69f4421f1cd053bf425e89f93141cb52c9f016a9b425fc0cb6'
-            'e76f202e8163a9a6e02138987bfc344a66f70aa30b8b699c6bdb41eec31c1465'
+            'af52cd9fb252770b6886eef2720ca4b6c582f3719f8a28128c498681b457233c'
             '220c63396561867a6d07ae81b6390160d8f91502587e4873998e3b7a83793a1c'
             'd7f9db86854b1cb8ab973c2ff255e51a637b9c24af30144182202d33f01a9434')
 

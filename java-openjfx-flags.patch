@@ -20,22 +20,21 @@ index 7a7cbc72..6705a0f3 100644
          "-fno-strict-aliasing", "-fPIC", "-fno-omit-frame-pointer", // optimization flags
          "-fstack-protector",
 +        "-Wno-error=cast-function-type",
-         "-Wextra", "-Wall", "-Wformat-security", "-Wno-unused", "-Wno-parentheses", "-Werror=implicit-function-declaration", "-Werror=trampolines"] // warning flags
+         "-Wextra", "-Wall", "-Wformat-security", "-Wno-unused", "-Wno-parentheses", "-Werror=trampolines"] // warning flags
  
 +commonFlags.addAll(System.getenv("CFLAGS").trim().split(" "))
 +
  if (!IS_64) {
      commonFlags += "-m32"
  }
-@@ -61,6 +64,8 @@ def linkFlags = ["-static-libgcc", "-static-libstdc++", "-shared", commonFlags,
-                  "-z", "relro",
-                  "-Wl,--gc-sections"].flatten()
- 
+@@ -70,6 +70,7 @@
+ def staticLinkFlags = [].flatten()
+
+ def linkFlags = IS_STATIC_BUILD ? staticLinkFlags : dynamicLinkFlags;
 +linkFlags.addAll(System.getenv("LDFLAGS").trim().split(" "))
-+
+
  if (IS_DEBUG_NATIVE) {
      linkFlags += "-g"
- }
 @@ -294,7 +299,7 @@ LINUX.iio.nativeSource = [
  LINUX.iio.compiler = compiler
  LINUX.iio.ccFlags = [ccFlags].flatten()
