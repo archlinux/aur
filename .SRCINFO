@@ -1,18 +1,18 @@
 pkgbase = xerox-workcentre-3045b-3045ni
 	pkgdesc = Xerox WorkCentre 3045 printer driver for CUPS.
 	pkgver = 1.0_28
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.support.xerox.com/support/workcentre-3045
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = binutils
 	makedepends = tar
-	depends = lib32-libcups
-	source = xerox-workcentre-3045b-3045ni-1.0_28.zip::http://www.support.xerox.com/support/workcentre-3045/file-redirect/enin.html?operatingSystem=linux&fileLanguage=en_GB&contentId=118990
+	source = xerox-workcentre-3045b-3045ni-1.0_28.zip::https://www.support.xerox.com/download/118990
 	md5sums = cd8159e18589c463953c44a55d64c48c
 	sha1sums = 9059c3321eaf54115544795cd91467d10d1824eb
 	depends_i686 = libcups
+	depends_x86_64 = lib32-libcups
 
 pkgname = xerox-workcentre-3045b-3045ni
 
