@@ -1,7 +1,7 @@
 pkgbase = briar-gtk-git
 	pkgdesc = Native GTK Briar client
-	pkgver = 0.1.0.beta1.r51.gd976738
-	pkgrel = 1
+	pkgver = 0.1.0.beta2.r53.ga462450
+	pkgrel = 2
 	url = https://code.briarproject.org/briar/briar-gtk
 	arch = any
 	license = GPL
@@ -19,6 +19,7 @@ pkgbase = briar-gtk-git
 	depends = python-gobject
 	depends = briar-headless-git
 	depends = java-runtime=11
+	depends = python-cairo
 	conflicts = briar-gtk
 	source = git+https://code.briarproject.org/briar/briar-gtk.git
 	source = briar-wrapper::git+https://code.briarproject.org/briar/python-briar-wrapper.git
