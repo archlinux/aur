@@ -1,3 +1,4 @@
+# Maintainer: Rami Chowdhury <necaris@gmail.com>
 # Maintainer: Tobias Backer Dirks <omgitsaheadcrab@gmail.com>
 
 pkgname=popsql
