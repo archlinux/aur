@@ -1,0 +1,12 @@
+diff -r 448bbc1f99a1 libinterp/parse-tree/oct-parse.yy
+--- a/libinterp/parse-tree/oct-parse.yy Fri Jan 08 11:17:59 2021 +0100
++++ b/libinterp/parse-tree/oct-parse.yy Sun Jan 10 14:25:59 2021 +0100
+@@ -1341,7 +1341,7 @@
+
+ spmd_command    : SPMD stash_comment opt_sep opt_list END
+                   {
+-                    YYUSE ($3);
++                    OCTAVE_YYUSE ($3);
+
+                     octave::comment_list *lc = $2;
+                     octave::comment_list *tc = lexer.get_comment ();

@@ -4,7 +4,7 @@
 pkgname=octave-hg
 epoch=6
 pkgrel=1
-pkgver=7.0.0.r29258.fdfd874293f6
+pkgver=7.0.0.r29280+.448bbc1f99a1+
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -22,9 +22,12 @@ optdepends=('texinfo: for help-support in octave'
 conflicts=('octave')
 provides=("octave=$pkgver")
 options=('!emptydirs')
-source=(hg+https://hg.savannah.gnu.org/hgweb/octave git://git.sv.gnu.org/gnulib)
+source=(hg+https://hg.savannah.gnu.org/hgweb/octave git://git.sv.gnu.org/gnulib
+	avoid_yyuse_macro.diff)
 md5sums=('SKIP'
-         'SKIP')
+         'SKIP'
+         'ea6859eec567ea6594a9ba2687400c90')
+
 _hgrepo=octave
 
 pkgver() {
@@ -44,12 +47,13 @@ prepare () {
     [[ -f $i ]] && rm build-aux/$i
   done
   install -Dm644 /usr/share/automake-1.16/texinfo.tex build-aux/
+  patch -Np1 < "$srcdir"/avoid_yyuse_macro.diff || true
 }
 
 build() {
   cd ${_hgrepo}
   ./bootstrap --gnulib-srcdir="$srcdir"/gnulib
-  sed -i '7722,7732d' configure
+
   [[ -d build ]] && rm -rf build
   mkdir build
   cd build
