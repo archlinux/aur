@@ -16,7 +16,7 @@ pkgrel=1
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 license=(GPL)
-depends=("libltdl" "rtkit" "tdb" "orc" "dconf")
+depends=("libltdl" "rtkit" "tdb" "orc" "dconf" "libasyncns" "libsndfile" "speexdsp")
 makedepends=("git" "attr" "rtkit" "libasyncns"
              "tdb" "intltool"
              "orc" "check" "meson" "speexdsp")
