@@ -4,19 +4,19 @@
 
 pkgname=sparkleshare
 _pkgname=SparkleShare
-pkgver=3.28
-pkgrel=5
+pkgver=3.38
+pkgrel=1
 pkgdesc="Collaboration and sharing tool based on git written in C Sharp"
 arch=('any')
 url="https://www.sparkleshare.org/"
 license=('GPL3')
 depends=('webkit2-sharp' 'notify-sharp-3' 'curl' 'git-lfs' 'openssh' 'gvfs')
 makedepends=(git meson)
-_commit=3176efc8c38f5effba780aa9bbc0b1d5a313129a  # tags/3.28
+_commit=23d7166012e6fcf9ad6b6d317217908bbc0f51c8
 source=("git+https://github.com/hbons/SparkleShare.git#commit=$_commit"
         "0001-Use-gtk-status-icon-by-default.patch")
 sha256sums=('SKIP'
-            '748a4aa153689d59aa6145eb91b863d8f7668fcb901a7773befd44afd1f904d9')
+            '6565b373198faccade6de323a372ed4f9b26bdceefb2ce886df953eebe464b8f')
 
 pkgver() {
   cd $_pkgname

@@ -25,7 +25,7 @@ diff --git a/SparkleShare/Linux/UserInterface.cs b/SparkleShare/Linux/UserInterf
 index 74fd5559..eac9b4ae 100644
 --- a/SparkleShare/Linux/UserInterface.cs
 +++ b/SparkleShare/Linux/UserInterface.cs
-@@ -92,17 +92,9 @@ namespace SparkleShare
+@@ -92,20 +92,9 @@ namespace SparkleShare
              if (args.Length > 0)
                  Logger.LogInfo ("Environment", "Arguments: " + string.Join (" ", args));
  
@@ -37,7 +37,10 @@ index 74fd5559..eac9b4ae 100644
                  StatusIcon.use_appindicator = true;
 -            #else
 -            if (StatusIcon.use_appindicator) {
--                Console.WriteLine ("AppIndicator not installed.");
+-                Console.ForegroundColor = ConsoleColor.Red;
+-                Console.WriteLine ("error: AppIndicator not found. Install AppIndicator or run with --status-icon=gtk");
+-                Console.ResetColor ();
+-
 -                Environment.Exit (-1);
 -            }
              #endif
