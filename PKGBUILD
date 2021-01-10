@@ -17,7 +17,7 @@ optdepends=('ntfs-3g: NTFS file system support')
 source=($url/archive/v$pkgver.tar.gz
         no-ruby.patch)
 sha256sums=('8d5275577c44f2bd87f6e05dd61971a71c0e56a9cbedf000bd38deadd8b6c1e6'
-            '0b8d211cab004d17ec7a3841ca4597a909a5b61fe6197125d26a09f4ef669a85')
+            '2ec0b679a914544eda264fb9d2f2c1c618df411b16b9c1605d0ddb12623a340e')
 
 prepare() {
   cd "$srcdir/$_name-$pkgver"
@@ -30,8 +30,6 @@ build() {
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -Dlibdir=/usr/lib \
-        -DC_INCLUDE_PATH="$C_INCLUDE_PATH:/usr/include/ruby-2.6.0/" \
-        -D WARN_FLAGS:STRING="-Wall -Wextra" \
         -DWITH_RUBY=OFF \
         .
   make
