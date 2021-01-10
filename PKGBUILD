@@ -2,7 +2,7 @@
 
 pkgname=nbdkit
 pkgver=1.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc="NBD server toolkit"
 arch=('i686' 'x86_64')
 url="https://github.com/libguestfs/nbdkit"
@@ -21,10 +21,6 @@ source=(
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   autoreconf -i
-
-  # https://bugs.archlinux.org/index.php?do=details&task_id=64853
-  export GUESTFISH=no
-  sed -i 's/HAVE_LIBGUESTFS/HAVE_GUESTFISH/' tests/Makefile.am
 
   ./configure --prefix=/usr --sbindir=/usr/bin
   make
