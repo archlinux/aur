@@ -9,7 +9,7 @@ pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-jack-git
          gst-plugin-pipewire-common-git pipewire-common-ffmpeg-git
          pipewire-common-bluez5-git pipewire-common-bluez5-hsphfpd-git)
 pkgver=0.3.19+37+g86576f1e
-pkgrel=1
+pkgrel=2
 pkgdesc="Server and user space API to deal with multimedia pipelines"
 url="https://pipewire.org"
 license=(MIT)
@@ -59,7 +59,7 @@ _pick() {
 _ver=${pkgver:0:3}
 
 package_pipewire-common-git() {
-  depends=(sbc rtkit vulkan-icd-loader bluez-libs alsa-card-profiles
+  depends=(sbc rtkit vulkan-icd-loader alsa-card-profiles
            libdbus-1.so libncursesw.so libsndfile.so libudev.so libasound.so
            libsystemd.so)
   optdepends=('pipewire-common-docs-git: Documentation'
@@ -76,7 +76,7 @@ package_pipewire-common-git() {
           etc/pipewire/media-session.d/{alsa-monitor,media-session}.conf)
   install=pipewire.install
 
-  DESTDIR="$pkgdir" meson install -C build --quiet
+  DESTDIR="$pkgdir" meson install -C build
 
   cd "$pkgdir"
 
@@ -170,7 +170,7 @@ package_pipewire-common-ffmpeg-git() {
 
 package_pipewire-common-bluez5-git() {
   pkgdesc+=" (BlueZ 5 SPA plugin)"
-  depends=(pipewire libpipewire-$_ver.so
+  depends=(pipewire libpipewire-$_ver.so bluez-libs
            libldacBT_enc.so libopenaptx.so libfdk-aac.so)
   provides=(pipewire-bluez5)
   conflicts=(pipewire-bluez5)
@@ -179,7 +179,7 @@ package_pipewire-common-bluez5-git() {
 
 package_pipewire-common-bluez5-hsphfpd-git() {
   pkgdesc+=" (BlueZ 5 SPA plugin, using hsphfpd for HSP/HFP support)"
-  depends=(pipewire libpipewire-$_ver.so hsphfpd
+  depends=(pipewire libpipewire-$_ver.so bluez-libs hsphfpd
            libldacBT_enc.so libopenaptx.so libfdk-aac.so)
   provides=(pipewire-bluez5)
   conflicts=(pipewire-bluez5)
