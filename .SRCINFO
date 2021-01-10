@@ -1,15 +1,14 @@
 pkgbase = python-hdmedians
 	pkgdesc = High-dimensional medians
-	pkgver = 0.13
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = http://github.com/daleroberts/hdmedians
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/h/hdmedians/hdmedians-0.13.tar.gz
-	md5sums = 27945c64fd9ba1a46ef6c136d402291d
+	source = python-hdmedians-0.14.1.tar.gz::https://github.com/daleroberts/hdmedians/archive/v0.14.1.tar.gz
+	md5sums = 6dcf388f56a144f7e7bb5aac8c4d888e
 
 pkgname = python-hdmedians
-	depends = python
 

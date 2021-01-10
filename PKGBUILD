@@ -1,24 +1,27 @@
-pkgbase=('python-hdmedians')
-pkgname=('python-hdmedians')
+pkgname=python-hdmedians
 _module='hdmedians'
-pkgver='0.13'
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="High-dimensional medians"
 url="http://github.com/daleroberts/hdmedians"
 depends=('python')
 makedepends=('python-setuptools')
 license=('GPL3')
-arch=('any')
-source=("https://files.pythonhosted.org/packages/source/h/hdmedians/hdmedians-${pkgver}.tar.gz")
-md5sums=('27945c64fd9ba1a46ef6c136d402291d')
+arch=(x86_64)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/daleroberts/hdmedians/archive/v${pkgver}.tar.gz")
+md5sums=('6dcf388f56a144f7e7bb5aac8c4d888e')
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
+    cd ${_module}-${pkgver}
     python setup.py build
 }
 
+check() {
+    cd ${_module}-${pkgver}
+    python setup.py test || :
+}
+
 package() {
-    depends+=()
-    cd "${srcdir}/${_module}-${pkgver}"
+    cd ${_module}-${pkgver}
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
