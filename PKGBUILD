@@ -13,11 +13,11 @@ source=("https://github.com/bewue/$_pkgname/archive/v$pkgver.zip")
 md5sums=('4d3a90954f2dbfaf8af17ba5fb088e3c')
 
 build() {
-        cd "$srcdir/$_pkgname-$pkgver"
-		mkdir -p build
-		cd build
-		qmake ../$_pkgname/$_pkgname.pro
-        make
+	cd "$srcdir/$_pkgname-$pkgver"
+	mkdir -p build
+	cd build
+	qmake ../$_pkgname/$_pkgname.pro
+	make
 }
 
 package() {
