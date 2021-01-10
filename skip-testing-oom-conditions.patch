@@ -1,0 +1,28 @@
+From 8fc748b3be138fcd86bedb9129e161deacda1154 Mon Sep 17 00:00:00 2001
+From: Rose Kunkel <rose@rosekunkel.me>
+Date: Sat, 9 Jan 2021 17:51:36 -0800
+Subject: [PATCH] Skip testing OOM conditions
+
+---
+ test-suite/standalone/test-out-of-memory | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/test-suite/standalone/test-out-of-memory b/test-suite/standalone/test-out-of-memory
+index 31375a559..bc0df3286 100755
+--- a/test-suite/standalone/test-out-of-memory
++++ b/test-suite/standalone/test-out-of-memory
+@@ -3,6 +3,11 @@ guild compile "$0"
+ exec guile -q -s "$0" "$@"
+ !#
+ 
++;; Skip this test unconditionally. See
++;; https://debbugs.gnu.org/cgi/bugreport.cgi?bug=42026
++;; https://aur.archlinux.org/packages/guile3/#comment-785252
++(exit 77)
++
+ (unless (defined? 'setrlimit)
+   ;; Without an rlimit, this test can take down your system, as it
+   ;; consumes all of your memory.  That doesn't seem like something we
+-- 
+2.30.0
+
