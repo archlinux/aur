@@ -1,7 +1,7 @@
 pkgbase = abrowser-bin
 	pkgdesc = Binary version of Abrowser, safe and easy web browser from Mozilla
 	pkgver = 84.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://trisquel.info/en/wiki/abrowser-help
 	arch = x86_64
 	license = MPL
@@ -26,7 +26,7 @@ pkgbase = abrowser-bin
 	depends = libnotify
 	depends = desktop-file-utils
 	depends = libvpx
-	depends = lcms
+	depends = lcms2
 	depends = nspr>=4.8.8
 	depends = libevent
 	depends = libpng
