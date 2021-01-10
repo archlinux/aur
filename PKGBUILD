@@ -51,7 +51,7 @@ _major=5.10
 _minor=6
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -78,10 +78,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v8-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v8-sep/0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
-        "${_lucjanpath}/arch-patches-v8-sep/0003-btrfs-Fix-500-2000-performance-regression-w-5.10.patch"
-        "${_lucjanpath}/arch-patches-v8-sep/0004-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch"
+        "${_lucjanpath}/arch-patches-v9-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v9-sep/0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
+        "${_lucjanpath}/arch-patches-v9-sep/0003-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch"
+        "${_lucjanpath}/arch-patches-v9-sep/0004-btrfs-fix-deadlock-when-cloning-inline-extent-and-lo.patch"
+        "${_lucjanpath}/arch-patches-v9-sep/0005-btrfs-shrink-delalloc-pages-instead-of-full-inodes.patch"
          # the main kernel config files
         'config')
 
@@ -330,10 +331,11 @@ sha512sums=('fbf4442b9acda111de40de59a5809a6609edc12896a2067f1a7c8cabee7458e6705
             '45fa721352143304eceff87649986fd42fcf4ae369f15ba704a435ab2f107dfe41c050eac25cd9167d2cc73d569aad8501cbd13477b62bad9724e4240f36ab15'
             'a920e67f590f07c2f3b0b51ce84fba8207465ff1341f636ea7ba1403e4f34d595ccaafb4215a88caccf8181975846eb5c993eb297f58c9669856552f216228e8'
             '34e21ecc4ef0d07707283427fa82d561a9573d670e80ccd41f7d9cb595473b3844b8df7aeffcb4fe82d9deeef0a4d4e6aef663eb1a7a397fa181f06f418a0d6d'
-            '7e4b489d6e7fe1ab63353beaccabbb56dc9d4dc03b8b42ef98f1c4909c370608661062eca9ea5627b830204831e52d022f72c18e282246abaa926e73b27702b2'
-            '5014b81a4f437e58266301ac115b713e52efe7ef25e4916765d491a6c36a1026280671b75a99545814c8bca2a30a04a49b9f7c02de4d4e4c21be7d4c31c10d42'
-            '6409faa9f1f2b5f0a1f7737c8748bbc9e465703d91ad01c2b7f344d5bb0557208de15cb6e9d5aac370265556b6b3eb5294dd996ff3c3897b3a9da0d20b4b4dae'
-            '0adc8f920ac3ae5aa33f2d2d00885ac9c81bcff16a40246d1ac44237311ecafa6a92556d648a137e2daaf0e3fdaafd55054270bbe773d355d67f7e837395d31d'
+            'e1c75a7bfdf14d33ccd6bc653a966cc475fba818c2fa8c215dc4bcb4bfeee3d59f2979ce1771c0d9a356075110a834b5e99effc01f04f708cf82e85e874e7e5a'
+            '1e7b9d9c01f757e7c51133d79ec2f4088fbfaae12fd840f0939ac7e4361de8cd83c2a606368c548b2ee2810fc1272efe2fba55c2a3c288423b2f26e232a8a8d7'
+            '37009d1fc97342402f2febafd04741a0fe3b506741d83ebdb526e0ce42446289952180a61f48898ee1c6da7a314c67b8c129f1bde3f52e663dc24ab800aaa1c4'
+            'cdcb5611d0b7faf9d42a63fcdc3f44fb5423632bc94a48a518cb2cb9606a6992ea7ffa541fc7e9a9ad77e446985a495ede504e001fb9ac4254e6f7b5504d9ea5'
+            '1b59d08e23de548f2402ee65f90619224d6dd05ae80cd78f71e3efa144608f63a80ab768138592b2a7f54bbc2a7eb99eae886c9e88c04a190983755f7a2e4f03'
             'dc094eb861d065a20c0bbe7a0c60d0ea126f283671bd0cc06c72d176095eb26a040455d0b2b225c0e7adaa22d29dd322955a6089c6bbe6deb57e4d0e16c8c320')
 
 validpgpkeys=(
