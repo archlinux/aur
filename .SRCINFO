@@ -1,0 +1,14 @@
+pkgbase = kangaru
+	pkgdesc = An inversion of control container for C++11, C++14 and later
+	pkgver = 4.2.4+12+g4852a2e
+	pkgrel = 1
+	url = https://github.com/gracicot/kangaru
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	source = git+https://github.com/gracicot/kangaru.git
+	sha512sums = SKIP
+
+pkgname = kangaru
+
