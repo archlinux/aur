@@ -3,7 +3,7 @@
 _pkgname=filezilla
 pkgname="$_pkgname-bin"
 pkgver=3.52.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Free, open source FTP, FTPS and SFTP client (Pre-built binary)'
 arch=('i686' 'x86_64')
 url='https://filezilla-project.org'
@@ -19,11 +19,11 @@ for _arch in ${arch[@]}; do
     eval "sha512sums_${_arch}=(
         '$(
             _url="https://download.filezilla-project.org/client/FileZilla_${pkgver}.sha512"
-            _sum=$(curl --silent -L "${_url}" | grep "FileZilla_${pkgver}_${_arch}-linux-gnu.tar.bz2" | awk '{print $1}')
-            if [[ ! "${?}" = 0 ]] || [[ ! -v "_sum" ]]; then
+            _sum="$(curl --silent -L "${_url}" | grep "FileZilla_${pkgver}_${_arch}-linux-gnu.tar.bz2")"
+            if [[ ! "${?}" = 0 ]] || [[ ! -v "_sum" ]] || [[ -z "${_sum}" ]]; then
                 echo -n "SKIP"
             else
-                echo -n "${_sum}"
+                echo -n "$(echo "${_sum}" | cut -d ' ' -f 1)"
             fi
         )'
     )"
@@ -46,4 +46,3 @@ package() {
         _make_link "/opt/FileZilla3/bin/${_filename}"  "${pkgdir}/usr/bin/${_filename}" 
     done
 }
-
