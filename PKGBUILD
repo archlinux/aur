@@ -14,6 +14,11 @@ depends=(
   'python-setuptools'
   'mopidy>=3.0'
 )
+checkdepends=(
+  'python-pytest'
+  'python-pytest'
+  'python-vcrpy'
+)
 source=(
   "https://github.com/mopidy/${pkgname}/archive/v${pkgver}.tar.gz"
 )
@@ -24,6 +29,11 @@ sha512sums=(
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py build
+}
+
+check() {
+  cd "$srcdir/$pkgname-$pkgver"
+  pytest
 }
 
 package() {
