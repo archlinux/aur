@@ -63,4 +63,5 @@ build() {
 package() {
   cd procps
   make DESTDIR="$pkgdir" install
+  install -Dm644 "${srcdir}/sysctl.conf" "$pkgdir/etc/sysctl.conf"
 }
