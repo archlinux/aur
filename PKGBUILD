@@ -1,12 +1,10 @@
-# Script generated with import_catkin_packages.py
-# For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Outputs audio to a speaker from a source node."
 url='https://wiki.ros.org/audio_play'
 
 pkgname='ros-melodic-audio-play'
 pkgver='0.3.10'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-roscpp
@@ -47,7 +45,9 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+	-DBOOST_ROOT=/opt/boost1.69 \
+	-DBoost_NO_SYSTEM_PATHS=TRUE
   make
 }
 

@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-audio-play
 	pkgdesc = ROS - Outputs audio to a speaker from a source node.
 	pkgver = 0.3.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/audio_play
 	arch = i686
 	arch = x86_64
