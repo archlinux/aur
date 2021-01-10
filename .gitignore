@@ -1,0 +1,5 @@
+/pkg/
+/src/
+/vpaint-git/
+/*.pkg.tar.zst
+/*.tar.gz

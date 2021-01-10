@@ -1,14 +1,15 @@
-# Maintainer: TheNiceGuy <gabrielpolloguilbert@gmail.com>
+# Maintainer: Simon Repp <simon@fdpl.io>
+# Contributor: TheNiceGuy <gabrielpolloguilbert@gmail.com>
 
 pkgname=vpaint-git
-pkgver=v1.6.r0.g85d499a
-pkgrel=2
+pkgver=v1.7.r16.g8619f0a
+pkgrel=3
 pkgdesc='VPaint is an experimental vector graphics editor based on the Vector Animation Complex technology. (git version)'
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('qt4' 'glu' 'qt5-base' 'libxkbcommon-x11')
+depends=('glu' 'qt5-base' 'libxkbcommon-x11')
 makedepends=('gendesk' 'icoutils' 'git')
-url='http://www.vpaint.org'
+url='https://www.vpaint.org'
 conflicts=('vpaint')
 provides=()
 source=('vpaint-git::git+https://github.com/dalboris/vpaint.git')
@@ -16,9 +17,14 @@ md5sums=('SKIP')
 
 prepare() {
 	icotool -x -o $srcdir/vpaint.png $srcdir/$pkgname/src/Gui/images/VPaint.ico
-	gendesk -f --pkgname "$pkgname" --pkgdesc "Vector graphics editor" --name="VPaint" \
-            --comment "Start VPaint" --exec "$pkgname" --categories "Graphics"         \
-            --custom "Icon=/usr/share/pixmaps/vpaint.png"
+	gendesk -f \
+					--categories "Graphics" \
+					--comment "Start VPaint" \
+					--custom "Icon=/usr/share/pixmaps/vpaint.png" \
+					--exec vpaint \
+					--name="VPaint" \
+					--pkgdesc "Vector graphics editor" \
+					--pkgname "$pkgname"
 }
 
 pkgver() {
