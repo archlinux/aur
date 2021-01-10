@@ -27,7 +27,7 @@ pkgname=libspotify
 pkgver=12.1.51
 pkgrel=7
 pkgdesc="C API package allowing third-party developers to write applications that utilize the Spotify music streaming service"
-arch=("i686" "x86_64" "armv6h")
+arch=("i686" "x86_64" "armv6h" "armv7h")
 url="https://mopidy.github.io/libspotify-archive/"
 license=('custom')
 depends=('glibc')
@@ -52,6 +52,13 @@ if [ "$CARCH" == "armv6h" ]; then
     source_armv6h=("https://mopidy.github.io/libspotify-archive/${pkgname}-${pkgver}-Linux-${SPOTIFY_ARCH}-release.tar.gz")
     md5sums_armv6h=('bf9afc8c7b966841735734b248f9c7a7')
     sha256sums_armv6h=('d658e6c1978fb46cf33376eb8367a51d024f4014f21beac1dd264532bcc54b24')
+fi
+
+if [ "$CARCH" == "armv7h" ]; then
+    SPOTIFY_ARCH="armv7"
+    source_armv7h=("https://mopidy.github.io/libspotify-archive/${pkgname}-${pkgver}-Linux-${SPOTIFY_ARCH}-release.tar.gz")
+    md5sums_armv7h=('eb7e98849b3bb6d364fa74034602afbf')
+    sha256sums_armv7h=('ad27b6c5aee5382b66b39bfea3b1752076b7abcc445979ce25c1ec9d7ff3aeda')
 fi
 
 build() {
