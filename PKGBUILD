@@ -22,5 +22,5 @@ prepare() {
 	echo "Patch to detect of Arch Linux initramfs images by grub-mkconfig..."
 	patch -Np1 -i "${srcdir}/0000-42_bieaz-detect-archlinux-initramfs.patch"
 }
-md5sums=('c17320337108484ba5297208bc90e4f2'
+md5sums=('2b6f9728094645bd9cac9d6483ab2eb5'
          '1e6b0557de8f46c8a0db45895821abe5')
