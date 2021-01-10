@@ -25,6 +25,8 @@ pkgbase = python-ocp-git
 	makedepends = python-toml
 	depends = python
 	depends = opencascade
+	provides = python-ocp
+	conflicts = python-ocp
 	source = git+https://github.com/CadQuery/OCP.git
 	sha256sums = SKIP
 

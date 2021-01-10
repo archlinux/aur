@@ -31,6 +31,8 @@ rapidjson
 python-jinja
 python-toml
 )
+conflicts=(python-ocp)
+provides=(python-ocp)
 source=(git+https://github.com/CadQuery/OCP.git)
 sha256sums=('SKIP')
 
