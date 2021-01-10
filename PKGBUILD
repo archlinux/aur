@@ -32,34 +32,24 @@ url="https://mopidy.github.io/libspotify-archive/"
 license=('custom')
 depends=('glibc')
 
-if [ "$CARCH" == "x86_64" ]; then
-    SPOTIFY_ARCH="x86_64"
-    source_x86_64=("https://mopidy.github.io/libspotify-archive/${pkgname}-${pkgver}-Linux-${SPOTIFY_ARCH}-release.tar.gz")
-    md5sums_x86_64=('83efddcc195d6ff12b24c97c767a5e45')
-    sha256sums_x86_64=('43a14e0732ba6ae30078fac105d0e2998d04d5f5c396a4968386bc4e22491058')
-fi
-
-if [ "$CARCH" == "i686" ]; then
-    SPOTIFY_ARCH="i686"
-    source_i686=("https://mopidy.github.io/libspotify-archive/${pkgname}-${pkgver}-Linux-${SPOTIFY_ARCH}-release.tar.gz")
-    md5sums_i686=('04735b890da0b1fc7f1f14e68a5293de')
-    sha256sums_i686=('941ab4ba10bcd6ec4e96127afd095a39e11bc955de0882734c97e4f588b155ae')
-fi
-
+if [ "$CARCH" == "x86_64" ]; then SPOTIFY_ARCH="x86_64"; fi
+if [ "$CARCH" == "i686" ]  ; then SPOTIFY_ARCH="i686"  ; fi
+if [ "$CARCH" == "armv7h" ]; then SPOTIFY_ARCH="armv7" ; fi
 if [ "$CARCH" == "armv6h" ]; then
     SPOTIFY_ARCH="armv6-bcm2708hardfp"
     pkgver=12.1.103
-    source_armv6h=("https://mopidy.github.io/libspotify-archive/${pkgname}-${pkgver}-Linux-${SPOTIFY_ARCH}-release.tar.gz")
-    md5sums_armv6h=('bf9afc8c7b966841735734b248f9c7a7')
-    sha256sums_armv6h=('d658e6c1978fb46cf33376eb8367a51d024f4014f21beac1dd264532bcc54b24')
 fi
 
-if [ "$CARCH" == "armv7h" ]; then
-    SPOTIFY_ARCH="armv7"
-    source_armv7h=("https://mopidy.github.io/libspotify-archive/${pkgname}-${pkgver}-Linux-${SPOTIFY_ARCH}-release.tar.gz")
-    md5sums_armv7h=('eb7e98849b3bb6d364fa74034602afbf')
-    sha256sums_armv7h=('ad27b6c5aee5382b66b39bfea3b1752076b7abcc445979ce25c1ec9d7ff3aeda')
-fi
+source=("https://mopidy.github.io/libspotify-archive/${pkgname}-${pkgver}-Linux-${SPOTIFY_ARCH}-release.tar.gz")
+
+md5sums_x86_64=('83efddcc195d6ff12b24c97c767a5e45')
+sha256sums_x86_64=('43a14e0732ba6ae30078fac105d0e2998d04d5f5c396a4968386bc4e22491058')
+md5sums_i686=('04735b890da0b1fc7f1f14e68a5293de')
+sha256sums_i686=('941ab4ba10bcd6ec4e96127afd095a39e11bc955de0882734c97e4f588b155ae')
+md5sums_armv6h=('bf9afc8c7b966841735734b248f9c7a7')
+sha256sums_armv6h=('d658e6c1978fb46cf33376eb8367a51d024f4014f21beac1dd264532bcc54b24')
+md5sums_armv7h=('eb7e98849b3bb6d364fa74034602afbf')
+sha256sums_armv7h=('ad27b6c5aee5382b66b39bfea3b1752076b7abcc445979ce25c1ec9d7ff3aeda')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}-Linux-${SPOTIFY_ARCH}-release"
