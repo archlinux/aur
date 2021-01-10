@@ -1,0 +1,24 @@
+pkgbase = procps-ng-nosystemd-minimal-git
+	pkgdesc = Utilities for monitoring your system and its processes
+	pkgver = 3.3.16
+	pkgrel = 1
+	url = https://gitlab.com/procps-ng/procps
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	depends = ncurses
+	provides = procps
+	provides = procps-ng
+	provides = sysvinit-tools
+	conflicts = procps
+	conflicts = procps-ng
+	conflicts = sysvinit-tools
+	replaces = procps
+	replaces = sysvinit-tools
+	source = git+https://gitlab.com/procps-ng/procps.git
+	source = fs66093.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = procps-ng-nosystemd-minimal-git
+
