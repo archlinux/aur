@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=python-avocado-git
-pkgver=82.0+0.ge975407939
+pkgver=84.0+15.gbc0a48bfa4
 pkgrel=1
 pkgdesc="Set of tools and libraries to help with automated testing"
 arch=('x86_64')
