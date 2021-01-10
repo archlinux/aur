@@ -1,0 +1,32 @@
+pkgbase = python-ocp-git
+	pkgdesc = Python wrapper for OCCT generated using pywrap
+	pkgver = 7.5.RC1.r4.g6b105a3
+	pkgrel = 1
+	url = https://github.com/CadQuery/OCP
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = clang
+	makedepends = python-joblib
+	makedepends = python-click
+	makedepends = python-pandas
+	makedepends = python-path
+	makedepends = pybind11
+	makedepends = python-setuptools
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = python-logzero
+	makedepends = python-tqdm
+	makedepends = python-toposort
+	makedepends = python-cymbal
+	makedepends = python-schema
+	makedepends = rapidjson
+	makedepends = python-jinja
+	makedepends = python-toml
+	depends = python
+	depends = opencascade
+	source = git+https://github.com/CadQuery/OCP.git
+	sha256sums = SKIP
+
+pkgname = python-ocp-git
+
