@@ -9,7 +9,7 @@ url="https://www.freedesktop.org/wiki/Software/DBusBindings"
 arch=(x86_64)
 license=('GPL')
 depends=('dbus' 'glib2')
-makedepends=('python')
+makedepends=('python' 'gtk-doc')
 provides=(dbus-glib)
 conflicts=(dbus-glib)
 source=("git+https://gitlab.freedesktop.org/dbus/dbus-glib.git")
@@ -30,7 +30,6 @@ build() {
     --sysconfdir=/etc \
     --localstatedir=/var \
     --libexecdir=/usr/lib \
-    --disable-gtk-doc \
     --disable-static
   make
 }
