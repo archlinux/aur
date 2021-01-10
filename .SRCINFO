@@ -1,6 +1,6 @@
 pkgbase = isfree
 	pkgdesc = Check your Arch system for nonfree software
-	pkgver = 0.8.14
+	pkgver = 0.8.15
 	pkgrel = 1
 	url = https://github.com/leo-arch/isfree
 	arch = any
