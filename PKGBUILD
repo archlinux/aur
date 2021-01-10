@@ -7,7 +7,7 @@ _pkgver="java-${pkgver}"
 pkgrel=1
 pkgdesc='Library for the Signal Protocol.'
 url="https://github.com/signalapp/${pkgname}"
-makedepends=('cargo' 'gradle' 'git' 'zip')
+makedepends=('cargo' 'gradle' 'git' 'zip' 'protobuf')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
 source=("${pkgname}-${_pkgver}.tar.gz::https://github.com/signalapp/${pkgname}/archive/$_pkgver.tar.gz")
@@ -28,7 +28,8 @@ prepare() {
 build() {
   cd "${pkgname}-${_pkgver}/java"
 
-  gradle assemble
+  ./build_jni.sh desktop
+  gradle --no-daemon assemble
 
   zip -d "java/build/libs/signal-client-java-${pkgver}.jar" "${_libname}.so"
 }
