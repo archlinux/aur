@@ -1,0 +1,14 @@
+pkgbase = netvisix
+	pkgdesc = A utility to visualize the network packet flow between hosts
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/bewue/Netvisix
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	depends = libpcap
+	source = https://github.com/bewue/Netvisix/archive/v1.4.0.zip
+	md5sums = 4d3a90954f2dbfaf8af17ba5fb088e3c
+
+pkgname = netvisix
+
