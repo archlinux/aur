@@ -32,7 +32,7 @@ build() {
   cd ${_pkgbase}
 
   ./bootstrap
-  ./configure --prefix=/usr \
+  ./configure --prefix=/usr --disable-doc \
       --libdir=/usr/lib32 \
       --with-packager=Archlinux \
       --with-packager-bug-reports="http://bugs.archlinux.org/" \
