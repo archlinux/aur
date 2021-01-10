@@ -1,7 +1,7 @@
 pkgbase = mroonga
 	pkgdesc = Fast fulltext search on MySQL(MariaDB bundled Mroonga package).
 	pkgver = 10.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mroonga.org/
 	arch = i686
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = mroonga
 	makedepends = jemalloc
 	makedepends = lz4
 	makedepends = boost
+	makedepends = snappy
 	depends = perl
 	depends = inetutils
 	depends = libaio

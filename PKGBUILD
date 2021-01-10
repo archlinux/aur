@@ -2,7 +2,7 @@
 
 pkgname=mroonga
 pkgver=10.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast fulltext search on MySQL(MariaDB bundled Mroonga package)."
 mariadbver=10.4.17
 MYSQL_VERSION=mariadb-${mariadbver}
@@ -15,7 +15,7 @@ source=(http://packages.groonga.org/source/mroonga/mroonga-$pkgver.tar.gz
         mariadb.service
         mariadb-post.sh
         mariadb-tmpfile.conf)
-makedepends=('cmake' 'openssl' 'systemd' 'zlib' 'zstd' 'libaio' 'libxml2' 'pcre' 'jemalloc' 'lz4' 'boost' )
+makedepends=('cmake' 'openssl' 'systemd' 'zlib' 'zstd' 'libaio' 'libxml2' 'pcre' 'jemalloc' 'lz4' 'boost' 'snappy')
 conflicts=('libmariadbclient' 'mariadb-clients' 'mytop' 'mariadb' 'mysql' 'libmysqlclient' 'mysql-clients')
 depends=('perl' 'inetutils' 'libaio' 'libxml2' 'pcre' 'groonga' 'groonga-normalizer-mysql')
 optdepends=('cutter-test_framework' 'ruby' 'snowball-c')
