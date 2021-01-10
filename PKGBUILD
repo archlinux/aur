@@ -1,7 +1,7 @@
 # Maintainer: Elliot Hatch <elliot.hatch@gmail.com>
 pkgname=dug-git
-pkgver=r190.a4c3132
-pkgrel=2
+pkgver=r218.7502669
+pkgrel=1
 pkgdesc="A powerful global DNS progagation checker that can output in a variety of formats."
 arch=(x86_64)
 url="https://git.kaijucode.com/matt/dug"
@@ -10,7 +10,7 @@ depends=()
 makedepends=(git 'dotnet-runtime>=5.0.0' 'dotnet-sdk>=5.0.0', 'dotnet-host>=5.0.0')
 provides=(dug)
 options=(!strip)
-source=($pkgname::git+https://git.kaijucode.com/matt/dug.git)
+source=($pkgname::git+https://github.com/unfrl/dug.git)
 md5sums=('SKIP')
 
 pkgver() {
