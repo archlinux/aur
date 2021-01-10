@@ -9,7 +9,7 @@ url="https://git.lavasoftware.org/lava/lavacli"
 license=('AGPL3')
 source=("$url/-/archive/v$pkgver/lavacli-v$pkgver.tar.gz")
 sha256sums=('4f7e70330b32d0e0a0613c5bf6525c67982666bc5c817dd14d52ab72aaa28561')
-depends=(python)
+depends=(python python-{aiohttp,pyzmq})
 makedepends=(python-setuptools)
 
 build() {
