@@ -9,11 +9,11 @@ arch=('x86_64' 'i686')
 url="https://www.zrythm.org"
 license=('AGPL3')
 depends=('gtk3' 'lilv' 'libx11' 'jack' 'libsndfile'
-  'libyaml'  'libsamplerate' 'alsa-lib' 'fftw' 'ruby-sass')
+  'libyaml'  'libsamplerate' 'alsa-lib' 'fftw')
 makedepends=(
   'python' 'gettext' 'sed'
   'meson' 'ninja' 'help2man' 'python-sphinx' 'python-sphinx-intl'
-  'ladspa' 'lv2' 'suil')
+  'ladspa' 'lv2' 'suil' 'ruby-sass')
 optdepends=('portaudio: portaudio backend'
             'qt5-base: for embedding qt5 plugin UIs')
 conflicts=("$_pkgname")
