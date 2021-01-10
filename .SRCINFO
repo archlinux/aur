@@ -6,8 +6,6 @@ pkgbase = mhwd-nvidia-390xx
 	arch = any
 	license = GPL2
 	makedepends = nvidia-390xx-dkms
-	makedepends = nvidia-390xx-utils
-	provides = mhwd-nvidia-390xx
 	source = mhwd-nvidia
 	b2sums = 8141f8b95c403788092c83f067538170734b2a8c6e1f0e5df11677dc15693558f99278680b7d89f8eab0b8cd19b21476b438bcecf303074946d07ad3e43703c8
 
