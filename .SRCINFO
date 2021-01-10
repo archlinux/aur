@@ -1,7 +1,7 @@
 pkgbase = arch-secure-boot
 	pkgdesc = UEFI Secure Boot for Arch Linux + btrfs snapshot recovery
 	pkgver = 1.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maximbaz/arch-secure-boot
 	arch = any
 	license = MIT
@@ -14,6 +14,8 @@ pkgbase = arch-secure-boot
 	depends = linux-lts
 	depends = snapper
 	depends = snap-pac
+	optdepends = intel-ucode: microcode update for Intel (one is required)
+	optdepends = amd-ucode: microcode update for AMD (one is required)
 	source = arch-secure-boot-1.2.4.tar.gz::https://github.com/maximbaz/arch-secure-boot/archive/1.2.4.tar.gz
 	source = https://github.com/maximbaz/arch-secure-boot/releases/download/1.2.4/arch-secure-boot-1.2.4.tar.gz.asc
 	validpgpkeys = EB4F9E5A60D32232BB52150C12C87A28FEAC6B20
