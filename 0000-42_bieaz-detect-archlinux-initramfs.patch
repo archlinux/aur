@@ -1,8 +1,8 @@
-diff --git a/grub_linux_entry b/grub_linux_entry
-index 538f9d3..9d1581f 100755
---- a/grub_linux_entry
-+++ b/grub_linux_entry
-@@ -128,7 +128,7 @@ while [ "x$list" != "x" ] ; do
+diff --git a/10_linux b/10_linux
+index f6b9b39..f95f165 100755
+--- a/10_linux
++++ b/10_linux
+@@ -152,7 +152,7 @@ while [ "x$list" != "x" ] ; do
    gettext_printf "Found linux image: %s\n" "$linux" >&2
    basename=`basename $linux`
    dirname=`dirname $linux`
