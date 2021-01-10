@@ -7,6 +7,7 @@ pkgbase = libasyncns-git
 	license = LGPL
 	makedepends = git
 	depends = glibc
+	optdepends = lynx: docs
 	provides = libasyncns
 	conflicts = libasyncns
 	source = git://git.0pointer.de/libasyncns.git
