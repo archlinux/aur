@@ -13,7 +13,6 @@ pkgbase = ttf-ibm-plex-mono-git
 	provides = ttf-font
 	conflicts = ttf-ibm-plex
 	conflicts = ttf-ibm-plex-git
-	conflicts = ttf-font
 	source = ttf-ibm-plex-mono-git::git+https://github.com/IBM/plex.git
 	sha256sums = SKIP
 
