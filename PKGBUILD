@@ -8,8 +8,8 @@ pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-jack-git
          pipewire-common-pulse-git pipewire-common-alsa-git
          gst-plugin-pipewire-common-git pipewire-common-ffmpeg-git
          pipewire-common-bluez5-git pipewire-common-bluez5-hsphfpd-git)
-pkgver=0.3.19+37+g86576f1e
-pkgrel=2
+pkgver=0.3.19.r37.g86576f1e
+pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines"
 url="https://pipewire.org"
 license=(MIT)
@@ -23,7 +23,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgbase
-  git describe --tags | sed 's/-/+/g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
