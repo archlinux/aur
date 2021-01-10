@@ -1,13 +1,13 @@
 pkgbase = akvcam-dkms
 	pkgdesc = Virtual camera for Linux
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/webcamoid/akvcam
 	arch = any
 	license = GPL2
 	depends = dkms
-	source = https://github.com/webcamoid/akvcam/archive/1.1.1.tar.gz
-	md5sums = 80d66077068edc284a6fa181f2b254bb
+	source = https://github.com/webcamoid/akvcam/archive/1.2.0.tar.gz
+	md5sums = e575da5cc19532c563a7c69bd8cf7a75
 
 pkgname = akvcam-dkms
 
