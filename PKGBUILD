@@ -2,13 +2,13 @@
 # Contributor: Jon Gjengset <jon@thesquareplanet.com>
 
 pkgname=hotspot-git
-pkgver=v1.3.0.r28.g103fd82
+pkgver=v1.3.0.r95.g8f786c8
 pkgrel=1
 pkgdesc="The Linux perf GUI for performance analysis"
 arch=('any')
 url="https://github.com/KDAB/hotspot"
 license=('GPL2')
-depends=('qt5-base>=5.6.0' 'libelf' 'elfutils' 'threadweaver' 'ki18n' 'kconfig' 'kio' 'kitemviews' 'kcoreaddons' 'kitemmodels' 'kconfigwidgets' 'solid' 'rustc-demangle')
+depends=('qt5-base>=5.6.0' 'elfutils' 'kcoreaddons' 'kddockwidgets' 'ki18n' 'kconfig' 'kio' 'kitemviews'  'kitemmodels' 'kconfigwidgets' 'libelf' 'rustc-demangle' 'solid' 'threadweaver')
 makedepends=('git' 'cmake>=3.1.0' 'extra-cmake-modules' 'desktop-file-utils')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
