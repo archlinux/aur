@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-audio-capture
 	pkgdesc = ROS - Transports audio from a source to a destination.
 	pkgver = 0.3.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/audio_capture
 	arch = i686
 	arch = x86_64
