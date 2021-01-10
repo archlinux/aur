@@ -19,14 +19,10 @@ provides=('xf86-video-amdgpu')
 groups=('xorg-drivers')
 source=("${pkgname}::git+https://gitlab.freedesktop.org/xorg/driver/${_pkgname}.git")
 sha256sums=('SKIP')
+
 pkgver() {
-  local version count
-
   cd "${pkgname}"
-
-  version="$(git describe --abbrev=0 --tags)"
-  count="$(git rev-list --count ${version}..)"
-  printf '%s.%s' "${version#v}" "${count}"|sed 's/^xf86-video-amdgpu-//'
+  git describe --tags | sed 's/-/+/g'
 }
 
 build() {
