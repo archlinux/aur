@@ -4,13 +4,13 @@ pkgname=neeto-vue-bin
 _pkgname=${pkgname%-bin}
 _filename=Neeto-Vue
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet another wiznote client Made with Vue."
 arch=('x86_64')
 url="https://github.com/TankNee/Neeto-Vue"
 license=('MIT')
 depends=('electron9')
-makedepends=("icoutils"
+makedepends=("imagemagick"
              "asar")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")

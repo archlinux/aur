@@ -1,11 +1,11 @@
 pkgbase = neeto-vue-bin
 	pkgdesc = Yet another wiznote client Made with Vue.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TankNee/Neeto-Vue
 	arch = x86_64
 	license = MIT
-	makedepends = icoutils
+	makedepends = imagemagick
 	makedepends = asar
 	depends = electron9
 	provides = neeto-vue
