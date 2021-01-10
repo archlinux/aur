@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=89.0.4356.6
+pkgver=89.0.4381.6
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -52,10 +52,10 @@ fi
 makedepends=(
              'gperf'
              'ninja'
-             'python2-protobuf'
-             'python2-setuptools'
-             'python2-xcb-proto'
+             'python-protobuf'
+             'python-setuptools'
              'python'
+             'python2' # for Nacl
              'yasm'
              'nasm'
              'git'
@@ -80,9 +80,9 @@ source=(
         # Patch form Gentoo.
 
         # Misc Patches.
+        'fix_hevc_in_non_cromeos.patch'
 
         # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
-        'chromium-skia-harmony-r2.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/fbcff5bbd7b98dfba37fced2496fb9a04d46a385/trunk/chromium-skia-harmony.patch'
         )
 sha256sums=(
             #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -92,9 +92,8 @@ sha256sums=(
             # Patch form Gentoo
 
             # Misc Patches
-
+            '814246e08b63884dae096fe317f837259294118b5336e8da081b19eeb7991977'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
-            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
             )
 install=chromium-dev.install
 
@@ -141,13 +140,6 @@ _keeplibs=(
            'third_party/angle/src/third_party/libXNVCtrl'
            'third_party/angle/src/third_party/trace_event'
            'third_party/angle/src/third_party/volk'
-           'third_party/angle/third_party/glslang'
-           'third_party/angle/third_party/spirv-headers'
-           'third_party/angle/third_party/spirv-tools'
-           'third_party/angle/third_party/vulkan-headers'
-           'third_party/angle/third_party/vulkan-loader'
-           'third_party/angle/third_party/vulkan-tools'
-           'third_party/angle/third_party/vulkan-validation-layers'
            'third_party/apple_apsl'
            'third_party/axe-core'
            'third_party/blink'
@@ -204,7 +196,6 @@ _keeplibs=(
            'third_party/ffmpeg'
            'third_party/flatbuffers'
            'third_party/fusejs'
-           'third_party/glslang'
            'third_party/google_input_tools'
            'third_party/google_input_tools/third_party/closure_library'
            'third_party/google_input_tools/third_party/closure_library/third_party/closure'
@@ -291,24 +282,20 @@ _keeplibs=(
            'third_party/skia/include/third_party/skcms'
            'third_party/skia/include/third_party/vulkan'
            'third_party/skia/third_party/skcms'
-           'third_party/skia/third_party/vulkan'
            'third_party/smhasher'
-           'third_party/spirv-cross/spirv-cross'
-           'third_party/spirv-headers'
-           'third_party/SPIRV-Tools'
            'third_party/sqlite'
            'third_party/swiftshader'
            'third_party/swiftshader/third_party/astc-encoder'
            'third_party/swiftshader/third_party/llvm-subzero'
            'third_party/swiftshader/third_party/marl'
            'third_party/swiftshader/third_party/subzero'
-           'third_party/swiftshader/third_party/SPIRV-Headers/include/spirv/unified1'
            'third_party/tcmalloc'
            'third_party/tint'
            'third_party/ukey2'
            'third_party/unrar'
            'third_party/usrsctp'
-           'third_party/vulkan'
+           'third_party/vulkan-deps'
+           'third_party/vulkan_memory_allocator'
            'third_party/wayland'
            'third_party/web-animations-js'
            'third_party/webdriver'
@@ -466,14 +453,13 @@ prepare() {
 
   # Force script incompatible with Python 3 to use /usr/bin/python2.
    sed -e '1s|python$|&2|' \
-     -i third_party/ffmpeg/chromium/scripts/build_ffmpeg.py \
      -i third_party/ffmpeg/chromium/scripts/generate_gn.py \
      -i third_party/dom_distiller_js/protoc_plugins/json_values_converter.py \
      -i third_party/dom_distiller_js/protoc_plugins/json_values_converter_tests.py
 
   # Py3toniced.
-  sed 's|iteritems|items|g' \
-    -i build/linux/unbundle/remove_bundled_libraries.py
+  2to3 -w --no-diff build/linux/unbundle/remove_bundled_libraries.py
+  2to3 -w --no-diff third_party/ffmpeg/chromium/scripts/build_ffmpeg.py
 
   # Remove most bundled libraries. Some are still needed.
   msg2 "Removing unnecessary components to save disk space."
@@ -537,13 +523,13 @@ prepare() {
       -i third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
       -i third_party/libxml/chromium/libxml_utils.cc
 
+  # Fix build if enable HEVC in non-chromeOS system
+  patch -p1 -i "${srcdir}/fix_hevc_in_non_cromeos.patch"
+
   # # Patch from Gentoo
 
 
   # # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
-
-  # https://crbug.com/skia/6663#c10.
-  patch -p0 -i "${srcdir}/chromium-skia-harmony-r2.patch"
 
   # Setup nodejs dependency.
   mkdir -p third_party/node/linux/node-linux-x64/bin/
@@ -559,7 +545,10 @@ prepare() {
 
   # Setup bundled ffmpeg.
   # Add build verbose output.
-  sed "s|'make', '-j|'make', 'V=1', '-j|g" -i third_party/ffmpeg/chromium/scripts/build_ffmpeg.py
+  # setup all cores
+  sed -e "s|'make', '-j|'make', 'V=1', '-j|g" \
+      -e "s|parallel_jobs = 8|parallel_jobs = $(nproc)|g" \
+      -i third_party/ffmpeg/chromium/scripts/build_ffmpeg.py
   # Use system opus.
   rm -fr third_party/opus/src/include
   ln -sf /usr/include/opus/ third_party/opus/src/include
@@ -596,9 +585,8 @@ build() {
   chromium/scripts/generate_gn.py
   popd &> /dev/null
 
-
   msg2 "Starting building Chromium..."
-  LC_ALL=C buildtools/linux64/gn gen out/Release -v --args="${_flags[*]}" --script-executable=/usr/bin/python2
+  LC_ALL=C buildtools/linux64/gn gen out/Release -v --args="${_flags[*]}" --script-executable=/usr/bin/python
 
   # Build all.
   LC_ALL=C ninja -C out/Release -v chrome chrome_sandbox chromedriver
