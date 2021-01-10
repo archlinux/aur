@@ -1,7 +1,7 @@
 pkgbase = mysql
 	pkgdesc = Fast SQL database server, community edition
 	pkgver = 8.0.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mysql.com/products/community/
 	arch = x86_64
 	license = GPL
@@ -29,7 +29,7 @@ pkgbase = mysql
 	sha256sums = e1c23fa0971a13d998f2790379b68c475438d05b6d6f2691b99051dbf497567f
 	sha256sums = 203dcd22fea668477ac7123dbd9909fae72d3d07f8855417a669a9c94db072ae
 	sha256sums = 8fbedfc2c5fe271ed13217feeceeac00202d2cb135e4283eeee2f9a13d6251af
-	sha256sums = 7dfc863de8ba62b31e412bdb82a2617c90b9e588db34028ab694813547dab167
+	sha256sums = e2abfc23fcc417e201a893cc7c8bdf847a275a35783d4d135d3b3a2ecf108d77
 
 pkgname = mysql
 	pkgdesc = Fast SQL database server, community edition
@@ -50,6 +50,7 @@ pkgname = mysql
 	conflicts = mariadb
 	options = emptydirs
 	backup = etc/mysql/my.cnf
+	backup = etc/mysqlrouter/mysqlrouter.conf
 	backup = etc/conf.d/mysql.conf
 
 pkgname = libmysqlclient
