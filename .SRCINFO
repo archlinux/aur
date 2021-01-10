@@ -1,6 +1,6 @@
 pkgbase = wasm-micro-runtime-git
 	pkgdesc = Standalone WebAssembly (WASM) runtime with small footprint
-	pkgver = y2020.07.10+5.g32b2943369
+	pkgver = y2020.09.29+47.g8a477786f1
 	pkgrel = 1
 	url = https://github.com/bytecodealliance/wasm-micro-runtime
 	arch = x86_64
