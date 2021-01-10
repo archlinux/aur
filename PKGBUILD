@@ -8,7 +8,7 @@ pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-jack-git
          pipewire-common-pulse-git pipewire-common-alsa-git
          gst-plugin-pipewire-common-git pipewire-common-ffmpeg-git
          pipewire-common-bluez5-git pipewire-common-bluez5-hsphfpd-git)
-pkgver=0.3.19.r37.g86576f1e
+pkgver=0.3.19.r38.g7aabd50d
 pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines"
 url="https://pipewire.org"
@@ -172,6 +172,7 @@ package_pipewire-common-bluez5-git() {
   pkgdesc+=" (BlueZ 5 SPA plugin)"
   depends=(pipewire libpipewire-$_ver.so bluez-libs
            libldacBT_enc.so libopenaptx.so libfdk-aac.so)
+  optdepends=('ofono: HFP support')
   provides=(pipewire-bluez5)
   conflicts=(pipewire-bluez5)
   mv bluez5/* "${pkgdir}"
