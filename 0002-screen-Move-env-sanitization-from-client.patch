@@ -55,10 +55,10 @@ index f7fb6a81..774e5f50 100644
      g_variant_builder_add (builder, "{sv}",
                             "environ",
 diff --git a/src/terminal-screen.c b/src/terminal-screen.c
-index 2442a49d..8abc59fd 100644
+index 570d4151..1e95d41b 100644
 --- a/src/terminal-screen.c
 +++ b/src/terminal-screen.c
-@@ -959,10 +959,8 @@ terminal_screen_exec (TerminalScreen *screen,
+@@ -960,10 +960,8 @@ terminal_screen_exec (TerminalScreen *screen,
      return FALSE;
    }
  
@@ -70,7 +70,7 @@ index 2442a49d..8abc59fd 100644
  
    data->fd_list = fd_list ? g_object_ref(fd_list) : NULL;
  
-@@ -1452,9 +1450,33 @@ terminal_screen_get_child_environment (TerminalScreen *screen,
+@@ -1453,9 +1451,33 @@ terminal_screen_get_child_environment (TerminalScreen *screen,
            g_hash_table_replace (env_table, g_strdup (env[i]), NULL);
      }
  

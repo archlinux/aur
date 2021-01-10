@@ -10,10 +10,10 @@ Subject: [PATCH] screen: Ignore some more environment variables
  1 file changed, 3 insertions(+)
 
 diff --git a/src/terminal-screen.c b/src/terminal-screen.c
-index 8abc59fd..6e8c590d 100644
+index 1e95d41b..137faaa1 100644
 --- a/src/terminal-screen.c
 +++ b/src/terminal-screen.c
-@@ -1457,7 +1457,10 @@ terminal_screen_get_child_environment (TerminalScreen *screen,
+@@ -1458,7 +1458,10 @@ terminal_screen_get_child_environment (TerminalScreen *screen,
    g_hash_table_remove (env_table, "EXIT_STATUS");
    g_hash_table_remove (env_table, "GIO_LAUNCHED_DESKTOP_FILE");
    g_hash_table_remove (env_table, "GIO_LAUNCHED_DESKTOP_FILE_PID");

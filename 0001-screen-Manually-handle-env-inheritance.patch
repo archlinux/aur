@@ -12,10 +12,10 @@ https://gitlab.gnome.org/GNOME/gnome-terminal/-/issues/303
  1 file changed, 13 insertions(+), 13 deletions(-)
 
 diff --git a/src/terminal-screen.c b/src/terminal-screen.c
-index 844b563c..2442a49d 100644
+index f44de43a..570d4151 100644
 --- a/src/terminal-screen.c
 +++ b/src/terminal-screen.c
-@@ -942,9 +942,7 @@ terminal_screen_exec (TerminalScreen *screen,
+@@ -943,9 +943,7 @@ terminal_screen_exec (TerminalScreen *screen,
                                                                    &shell);
  
    gboolean preserve_cwd = FALSE;
@@ -26,11 +26,11 @@ index 844b563c..2442a49d 100644
    gs_strfreev char **exec_argv = NULL;
    if (!terminal_screen_get_child_command (screen,
                                            argv,
-@@ -1431,25 +1429,27 @@ terminal_screen_get_child_environment (TerminalScreen *screen,
+@@ -1432,25 +1430,27 @@ terminal_screen_get_child_environment (TerminalScreen *screen,
  {
    TerminalApp *app = terminal_app_get ();
    char **env;
-+  gs_strfreev **current_environ = NULL;
++  gs_strfreev char **current_environ = NULL;
    char *e, *v;
    GHashTable *env_table;
    GHashTableIter iter;
