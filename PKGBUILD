@@ -10,7 +10,6 @@ url="https://mystiqapp.com/"
 license=('GPL3')
 depends=('qt5-declarative' 'qt5-multimedia' 'ffmpeg' 'libnotify' 'sox')
 makedepends=('qt5-tools')
-replaces=('qwinff')
 source=("https://github.com/swl-x/MystiQ/archive/v${pkgver}.tar.gz")
 sha256sums=('cfb84faebf68876733624e4500d4b6c654bc01cb75fd6eddd9efa8337816d22e')
 
