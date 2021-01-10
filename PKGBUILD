@@ -1,5 +1,5 @@
 # Maintainer: Christian Pinedo <christian (at) chrpinedo (dot) me>
-# Co-Maintainer: Mark Wagie <mark (dot) wagie (at) tutanota (dot) com>
+# Contributor: Mark Wagie <mark (dot) wagie (at) tutanota (dot) com>
 pkgname=solarwallet-appimage
 _pkgname=solarwallet
 _githubname=solar
