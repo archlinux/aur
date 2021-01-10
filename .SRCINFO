@@ -6,6 +6,7 @@ pkgbase = libasyncns-git
 	arch = x86_64
 	license = LGPL
 	makedepends = git
+	makedepends = lynx
 	depends = glibc
 	provides = libasyncns
 	conflicts = libasyncns
