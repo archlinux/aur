@@ -1,9 +1,10 @@
-# Maintainer: Alonso Rodriguez <alonsorodi20 (at) gmail (dot) com>
-# Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
+# Maintainer: Jonathon Fernyhough <jonathon+m2x+dev>
+# Contributor: Alonso Rodriguez <alonsorodi20 (at) gmail (dot) com>
+# Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 pkgbase=nvidia-390xx-settings
 pkgname=('nvidia-390xx-settings' 'libxnvctrl-390xx')
-pkgver=390.138
+pkgver=390.141
 pkgrel=1
 pkgdesc='Tool for configuring the NVIDIA graphics driver, 390xx legacy branch'
 url='https://github.com/NVIDIA/nvidia-settings'
@@ -14,7 +15,7 @@ options=('staticlibs')
 source=(nvidia-settings-${pkgver}.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/${pkgver}.tar.gz
         libxnvctrl_so.patch
         0001-nvidia-settings-Make-VDPAUDeviceFunctions-static-to-.patch)
-sha512sums=('c27c8dbb858f06982e251bd3bf49650d05ca8811d61eb342b43bf00bc595b8d789b38b7ebd76b9ab5786ec5bee84b1cb44ee3f3fb24c40dee1b1b9d535993eb6'
+sha512sums=('dbf7c389bbdc94291a1b974adfa33414148b1ab752aa7d948a27e91ee1bceb3b8435aceb6b7ef3cb806333572db11b5524667045ef7686b119d7955d2699cb04'
             'f69f5dc84fe624579a3c9ce877f4ae4e34c2184877576afbea07b8abdd7ff01e470517f2b77cd11a904518cbcb83fb388ca1d08888006f0ef2854723920c9cf8'
             '0fd6355a10dfecb3636764f40eb0d4a4625f69e48fb653060f40e2bde8bf51eb04ae08be8751163d94e022c6f595a9756cde9d8404a556a4a83e3b5b74052c53')
 
