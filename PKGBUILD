@@ -1,12 +1,13 @@
-# Maintainer: Alonso Rodriguez <alonsorodi20 (at) gmail (dot) com>
-# Maintainer: Thomas Baechler <thomas@archlinux.org>
+# Maintainer: Jonathon Fernyhough <jonathon+m2x+dev>
+# Contributor: Alonso Rodriguez <alonsorodi20 (at) gmail (dot) com>
+# Contributor: Thomas Baechler <thomas@archlinux.org>
 # Contributor: James Rayner <iphitus@gmail.com>
 
 _pkgbasename=nvidia-390xx-utils
 pkgbase=lib32-$_pkgbasename
 pkgname=('lib32-nvidia-390xx-utils' 'lib32-opencl-nvidia-390xx')
-pkgver=390.138
-pkgrel=2
+pkgver=390.141
+pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
 #makedepends=('nvidia-libgl')  # To avoid conflict during installation in the build chroot
@@ -16,7 +17,7 @@ options=('!strip')
 _arch='x86'
 _pkg="NVIDIA-Linux-${_arch}-${pkgver}"
 source=("https://us.download.nvidia.com/XFree86/Linux-${_arch}/${pkgver}/${_pkg}.run")
-sha512sums=('f6c1e388a6801f0557e34ce9094f99e1a87510c3c620f0ecd9959a6e3bb0a313a8b991c8da319d60531e6a1e2f098d94bc88b12b63c624930295f0e05bb4f9ae')
+sha512sums=('6dfde3b54520070954b45f6bc071251084e1741f55e582b1abd806eb367e4b9ce0015615bf6a887fa784d075b3db08b6940da4163b960969773d1bdc52b4961e')
 
 create_links() {
     # create soname links
