@@ -7,7 +7,7 @@
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-pkgver=1.3.0.rc2.r1004.gf5489231a
+pkgver=1.3.0.rc2.r1128.g1d5c69be0
 pkgrel=1
 epoch=1
 pkgdesc='An Open Source, low-latency, high quality voice chat software (git version)'
@@ -46,11 +46,14 @@ prepare() {
 }
 
 build() {
+  cd "$_pkgname"
+  _release_id=$(scripts/mumble-version.py -p)
+
   cmake \
-    -B "$_pkgname/build" \
-    -S "$_pkgname" \
-    -DCMAKE_BUILD_TYPE='None' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -B build \
+    -DCMAKE_BUILD_TYPE:STRING='None' \
+    -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+    -DRELEASE_ID:STRING="$_release_id" \
     -Dwarnings-as-errors:BOOL='OFF' \
     -Dclient:BOOL='ON' \
     -Dserver:BOOL='OFF' \
@@ -59,7 +62,7 @@ build() {
     -Dbundled-speex:BOOL='OFF' \
     -Dupdate:BOOL='OFF' \
     -Wno-dev
-  make -C "$_pkgname/build"
+  make -C build
 }
 
 package() {
