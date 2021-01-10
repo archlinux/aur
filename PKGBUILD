@@ -2,7 +2,7 @@
 
 _pkgname=tidal-hifi
 pkgname="$_pkgname-git"
-pkgver=1.3.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="The web version of listen.tidal.com running in electron with hifi support thanks to widevine."
 arch=("x86_64")
@@ -15,7 +15,7 @@ provides=("$_pkgname")
 
 source=("https://github.com/Mastermindzh/tidal-hifi/archive/$pkgver.zip"
         "${_pkgname}.desktop")
-sha512sums=('aacd985ba0d3944f43c10a8a82abbbc738ea86870c7bf4c2a51b99e311e44a6ac27eccc7a23c321cfcc5ad56121b749526a6dad0ca59fe2e5cbb76262192bf92'
+sha512sums=('68fce020128b637fd37383a5afae71d2e4f3eec2d6b4bfcd7f410dcec18c91327d163deb21750e2251967a31f83b2b16092d11d3ff500a1fecd8c595448f380e'
             '35f38ac308b871c1822d7f6f760f2fb54c3748cf769822cb0f0dfb90f0f5754ba9316da5e903a0d2e9839de3a43ec76f238f3f2e44021956fa1da19142081349')
 
 cdToPkg(){
