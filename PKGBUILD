@@ -1,7 +1,7 @@
 # Maintainer: Martin Wagner <martin.wagner.dev@gmail.com>
 
 pkgname=mpdevil-git
-pkgver=v1.0.0.r0.ge8191ea
+pkgver=1.0.0.r0.ge8191ea
 pkgrel=1
 pkgdesc="A simple music browser for MPD (git version)"
 arch=('any')
@@ -17,7 +17,7 @@ _gitname="mpdevil"
 
 pkgver() {
   cd "${_gitname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
