@@ -13,7 +13,7 @@ arch=(x86_64)
 url="http://0pointer.de/lennart/projects/libasyncns"
 license=(LGPL)
 depends=(glibc)
-makedepends=(git lynx)
+makedepends=(git)
 provides=(libasyncns)
 conflicts=(libasyncns)
 source=("git://git.0pointer.de/libasyncns.git")
@@ -31,7 +31,7 @@ prepare() {
 
 build() {
   cd libasyncns
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --disable-lynx
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
