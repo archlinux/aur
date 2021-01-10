@@ -1,0 +1,21 @@
+pkgbase = arcanist-linters-git
+	pkgdesc = Various linters for Phabricator (via arcanist) by Pinterest
+	pkgver = r106.4b2b839
+	pkgrel = 1
+	url = https://github.com/pinterest/arcanist-linters
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = php
+	depends = python
+	depends = arcanist-git
+	optdepends = git: Git VCS support
+	optdepends = subversion: Subversion VCS support
+	optdepends = mercurial: Mercurial VCS support
+	provides = arcanist-linters=r106.4b2b839
+	conflicts = arcanist-linters
+	source = git+https://github.com/pinterest/arcanist-linters.git
+	sha256sums = SKIP
+
+pkgname = arcanist-linters-git
+
