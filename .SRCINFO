@@ -1,6 +1,6 @@
 pkgbase = dragonframe-bin
 	pkgdesc = Industry standard stop motion animation software
-	pkgver = 4.2.2
+	pkgver = 4.2.4
 	pkgrel = 1
 	url = https://www.dragonframe.com/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = dragonframe-bin
 	provides = dragonframe
 	conflicts = dragonframe
 	options = !strip
-	source = https://www.dragonframe.com/download/dragonframe4_4.2.2_amd64.deb
-	sha256sums = b594ed0a08900c08c759efe10244be9b3ec72ec136035a34bab6e31fbd89700c
+	source = https://www.dragonframe.com/download/dragonframe4_4.2.4_amd64.deb
+	sha256sums = 773978046836a59ebce33609638334afae63c000b2dd782ea83e78560a740a16
 
 pkgname = dragonframe-bin
 

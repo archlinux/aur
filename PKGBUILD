@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <arch.aur@engestrom.ch>
 
 pkgname=dragonframe-bin
-pkgver=4.2.2
+pkgver=4.2.4
 pkgrel=1
 pkgdesc="Industry standard stop motion animation software"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('EULA')
 provides=('dragonframe')
 conflicts=('dragonframe')
 source=("https://www.dragonframe.com/download/dragonframe4_${pkgver}_amd64.deb")
-sha256sums=('b594ed0a08900c08c759efe10244be9b3ec72ec136035a34bab6e31fbd89700c')
+sha256sums=('773978046836a59ebce33609638334afae63c000b2dd782ea83e78560a740a16')
 options=('!strip')
 depends=('libudev0-shim')
 
