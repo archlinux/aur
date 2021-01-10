@@ -2,10 +2,10 @@
 pkgname=assbreak
 pkgver=0.1.15
 pkgrel=1
-makedepends=('chromedriver')
+makedepends=('chromedriver' 'cargo' 'rust')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="a tool that helps brute-force a website and address mail."
-url="https://github.com/L14ms111/assbreak.git"
+url="https://github.com/L14ms111/assbreak"
 license=('MPL-2.0')
 
 check() {
