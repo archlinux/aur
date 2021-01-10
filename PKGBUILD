@@ -8,15 +8,10 @@ pkgdesc="a tool that helps brute-force a website and address mail."
 url="https://github.com/L14ms111/assbreak"
 license=('MPL-2.0')
 
-check() {
-  cargo test --release --locked --target-dir=target
-}
-
 build() {
     return 0
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  cargo install --no-track --locked --all-features --root "$pkgdir/usr/" --path .
+  cargo install --no-track --locked --all-features --root "$pkgdir/usr/" --git=https://github.com/L14ms111/assbreak
 }
