@@ -1,0 +1,18 @@
+pkgbase = lib32-libtasn1-git
+	pkgdesc = The ASN.1 library used in GNUTLS (32 bit)
+	pkgver = 4.16.0
+	pkgrel = 1
+	url = https://www.gnu.org/software/libtasn1/
+	arch = x86_64
+	license = GPL3
+	license = LGPL
+	makedepends = gcc-multilib
+	depends = lib32-glibc
+	depends = libtasn1
+	provides = lib32-libtasn1
+	conflicts = lib32-libtasn1
+	source = git+https://gitlab.com/gnutls/libtasn1.git
+	sha256sums = SKIP
+
+pkgname = lib32-libtasn1-git
+
