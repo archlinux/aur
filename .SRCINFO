@@ -1,0 +1,21 @@
+pkgbase = arc-unit-mocha-git
+	pkgdesc = Various linters for Phabricator (via arcanist) by Pinterest
+	pkgver = r13.259af28
+	pkgrel = 1
+	url = https://github.com/sealcode/arc-unit-mocha
+	arch = any
+	license = BSD3
+	makedepends = git
+	depends = php
+	depends = python
+	depends = arcanist-git
+	optdepends = git: Git VCS support
+	optdepends = subversion: Subversion VCS support
+	optdepends = mercurial: Mercurial VCS support
+	provides = arc-unit-mocha=r13.259af28
+	conflicts = arc-unit-mocha
+	source = git+https://github.com/sealcode/arc-unit-mocha.git
+	sha256sums = SKIP
+
+pkgname = arc-unit-mocha-git
+
