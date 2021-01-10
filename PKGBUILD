@@ -1,7 +1,7 @@
 # Maintainer: milk <aur at milkmiruku dot com>
 _pkgname="petri-foo"
 pkgname="${_pkgname}-git"
-pkgver=r224.3f2a456
+pkgver=r226.5e73217
 pkgrel=1
 pkgdesc="A fork of specimen, a MIDI controllable audio sampler, for JACK. sollapse fork."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('cmake')
 optdepends=('liblo: Non Session Manager support')
 provides=('petri-foo')
 conflicts=('petri-foo')
-source=('petri-foo::git+https://github.com/sollapse/Petri-Foo')
+source=('petri-foo::git+https://github.com/mxmilkiib/Petri-Foo')
 md5sums=('SKIP')
 
 pkgver() {
