@@ -1,0 +1,17 @@
+pkgbase = libasyncns-git
+	pkgdesc = A C library for executing name service queries asynchronously
+	pkgver = 0.8+3+g68cd5af
+	pkgrel = 1
+	url = http://0pointer.de/lennart/projects/libasyncns
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = lynx
+	depends = glibc
+	provides = libasyncns
+	conflicts = libasyncns
+	source = git://git.0pointer.de/libasyncns.git
+	md5sums = SKIP
+
+pkgname = libasyncns-git
+
