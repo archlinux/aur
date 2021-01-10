@@ -1,9 +1,9 @@
 # Maintainer: archcrack <johndoe.arch@outlook.com>
 
 pkgname=isfree
-pkgver=0.8.13
-pkgrel=3
-pkgdesc="Check your Arch system for non-free/libre software"
+pkgver=0.8.14
+pkgrel=1
+pkgdesc="Check your Arch system for nonfree software"
 arch=(any)
 url="https://github.com/leo-arch/isfree"
 license=(GPL2)
