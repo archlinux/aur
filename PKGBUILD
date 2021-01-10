@@ -10,8 +10,8 @@ url='https://ibm.github.io/type/'
 license=('SIL Open Font License, Version 1.1')
 depends=('fontconfig' 'xorg-font-util')
 makedepends=('git')
-provides=('ttf-ibm-plex' 'ttf-ibm-plex-git')
-conflicts=('ttf-ibm-plex' 'ttf-ibm-plex-git')
+provides=('ttf-ibm-plex' 'ttf-ibm-plex-git' 'ttf-font')
+conflicts=('ttf-ibm-plex' 'ttf-ibm-plex-git' 'ttf-font')
 
 source=("${pkgname}"::"git+https://github.com/IBM/plex.git")
 sha256sums=(SKIP)

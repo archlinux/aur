@@ -10,8 +10,10 @@ pkgbase = ttf-ibm-plex-mono-git
 	depends = xorg-font-util
 	provides = ttf-ibm-plex
 	provides = ttf-ibm-plex-git
+	provides = ttf-font
 	conflicts = ttf-ibm-plex
 	conflicts = ttf-ibm-plex-git
+	conflicts = ttf-font
 	source = ttf-ibm-plex-mono-git::git+https://github.com/IBM/plex.git
 	sha256sums = SKIP
 
