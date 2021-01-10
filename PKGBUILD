@@ -5,7 +5,7 @@ pkgver=1.5.6
 pkgrel=1
 pkgdesc="X11 protocol tracer, akin to strace"
 arch=(x86_64)
-url="https://www.chiark.greenend.org.uk/~sgtatham/xtruss/"
+url="ftp://ftp.gwdg.de/pub/x11/x.org/contrib/devel_tools/xmon.$pkgver.README"
 license=(MIT)
 source=("ftp://ftp.gwdg.de/pub/x11/x.org/contrib/devel_tools/xmon.$pkgver.tar.gz"
         'build-fix.patch')
