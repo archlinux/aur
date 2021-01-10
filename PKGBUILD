@@ -3,7 +3,7 @@
 pkgname=neeto-vue-bin
 _pkgname=${pkgname%-bin}
 _filename=Neeto-Vue
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=3
 pkgdesc="Yet another wiznote client Made with Vue."
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("${_pkgname}-${pkgver}.zip::https://github.com/TankNee/Neeto-Vue/release
         "${_pkgname}.sh"
         "${_pkgname}.ico"
         "${_pkgname}.desktop")
-sha256sums=('ae146f301c122b3089d986c58671acc940e0f49dc284f1b19fe62d5efe81e965'
+sha256sums=('a4190ad079a2abd8303cfaadc02b23a4a006ca1fa8181c24461208b23fe7c8da'
             '09141f28d3723a64b16c54cbecd3b239301c879fc2f229dd70528cf75878b812'
             '778fefd87355aa3ce977e510f236bfe25b9873eb6f86d4b34f5e5c8ddcdf93f9'
             '5b0cb7c05b15b187d1b9383091267f8294a5161fbe6fc9509b2283a51378183e'
