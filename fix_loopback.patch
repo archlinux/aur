@@ -1,5 +1,5 @@
 diff --git a/proto/ospf/iface.c b/proto/ospf/iface.c
-index 666140b5..004c4bb4 100644
+index 666140b5..19998610 100644
 --- a/proto/ospf/iface.c
 +++ b/proto/ospf/iface.c
 @@ -1179,7 +1179,7 @@ ospf_ifa_notify3(struct proto *P, uint flags, struct ifa *a)
@@ -11,3 +11,12 @@ index 666140b5..004c4bb4 100644
    {
      if (a->prefix.type != NET_IP6)
        return;
+@@ -1281,7 +1281,7 @@ ospf_reconfigure_ifaces3(struct ospf_proto *p)
+       if (a->flags & IA_SECONDARY)
+ 	continue;
+ 
+-      if (a->scope != SCOPE_LINK)
++      if (a->scope < SCOPE_LINK)
+ 	continue;
+ 
+       struct ospf_mip_walk s = { .iface = iface };

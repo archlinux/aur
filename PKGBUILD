@@ -1,6 +1,6 @@
 pkgname=bird-git
-pkgver=r3666.455c13dc
-pkgrel=3
+pkgver=r3672.17663b6a
+pkgrel=4
 pkgdesc='RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon'
 arch=('x86_64')
 url='https://bird.network.cz/'
@@ -15,7 +15,7 @@ source=("git+https://gitlab.nic.cz/labs/bird.git"
         'fix_loopback.patch')
 md5sums=('SKIP'
          '69221e063a3f07dcad519d5eeacaae75'
-         '514ecf30581769f052efb66afab6ed5d')
+         '6081f96ff081e21bdde6aa83692331e7')
 
 pkgver() {
   cd "$srcdir/bird"
