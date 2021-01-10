@@ -22,12 +22,12 @@ fi
 ## 4 -> release with custom cflags and system libs
 ## https://github.com/brave/brave-browser/wiki#clone-and-initialize-the-repo
 if [ -z ${COMPONENT+x} ]; then
-  COMPONENT=4
+  COMPONENT=1
 fi
 ##
 
 pkgname=brave
-pkgver=1.18.70
+pkgver=1.18.78
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -63,7 +63,7 @@ done
 # VAAPI patches from chromium-vaapi in AUR
 #source+=("vdpau-support.patch::https://aur.archlinux.org/cgit/aur.git/plain/vdpau-support.patch?h=chromium-vaapi&id=7c05464a8700b1a6144258320b2b33b352385f77")
 
-sha256sums=('699b75c6fa915f7e9f6ce9a6e5237456c82821f3fc726760a1e5ae3027a4f5f6'
+sha256sums=('8c749fe75999956a5bb17db7e4fda13d6468a7644cadf8d79d794a22d8441046'
             '725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
@@ -100,6 +100,7 @@ _unwanted_bundled_libs=(
 
 # Add depends if user wants a release with custom cflags and system libs
 if [ "$COMPONENT" = "4" ]; then
+  echo "Build with system libs is disabled for now" && exit 1
   depends+=('libpulse' 'pciutils')
   depends+=(${_system_libs[@]})
   makedepends+=('lld' 'libva' 'libpipewire02' 'python2-xcb-proto')
