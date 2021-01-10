@@ -17,8 +17,10 @@ conflicts=(procps procps-ng sysvinit-tools)
 provides=(procps procps-ng sysvinit-tools)
 replaces=(procps sysvinit-tools)
 source=("git+https://gitlab.com/procps-ng/procps.git"
-        fs66093.patch)
+        'sysctl.conf'
+        'fs66093.patch')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP')
 
 pkgver() {
