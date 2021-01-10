@@ -1,7 +1,7 @@
 pkgbase = neeto-vue-bin
 	pkgdesc = Yet another wiznote client Made with Vue.
 	pkgver = 1.0.1
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/TankNee/Neeto-Vue
 	arch = x86_64
 	license = MIT
@@ -14,12 +14,12 @@ pkgbase = neeto-vue-bin
 	source = neeto-vue-1.0.1.zip::https://github.com/TankNee/Neeto-Vue/releases/download/v1.0.1/Neeto-Vue-linux-x64.zip
 	source = https://raw.githubusercontent.com/TankNee/Neeto-Vue/master/LICENSE
 	source = neeto-vue.sh
-	source = neeto-vue.ico
+	source = neeto-vue.ico::https://raw.githubusercontent.com/TankNee/Neeto-Vue/master/public/icon.ico
 	source = neeto-vue.desktop
 	sha256sums = a4190ad079a2abd8303cfaadc02b23a4a006ca1fa8181c24461208b23fe7c8da
 	sha256sums = 09141f28d3723a64b16c54cbecd3b239301c879fc2f229dd70528cf75878b812
 	sha256sums = 778fefd87355aa3ce977e510f236bfe25b9873eb6f86d4b34f5e5c8ddcdf93f9
-	sha256sums = 5b0cb7c05b15b187d1b9383091267f8294a5161fbe6fc9509b2283a51378183e
+	sha256sums = dd95ba9191a5a1c02ac830eb2f5f1dd3bafcfc6897f8b9a2fef7e919294608e6
 	sha256sums = 7868ad5caf58b07d081d5983ed5592b401886ac9f7eac57761b1001345d473b0
 
 pkgname = neeto-vue-bin
