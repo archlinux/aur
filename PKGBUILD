@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=vim-quickscope-git
-pkgver=2.5.3+4.gac80025b86
+pkgver=2.5.10+0.gd4c02b85ff
 pkgrel=1
 pkgdesc='Highlight which characters to target for f, F and family'
 arch=('any')
