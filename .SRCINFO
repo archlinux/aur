@@ -1,6 +1,6 @@
 pkgbase = intellij-idea-ce
 	pkgdesc = Intellij Idea IDE (community version) with Intellij JDK
-	pkgver = 2020.3
+	pkgver = 2020.3.1
 	pkgrel = 1
 	url = http://www.jetbrains.com/idea/
 	arch = any
@@ -8,8 +8,10 @@ pkgbase = intellij-idea-ce
 	depends = giflib
 	depends = libxtst
 	options = !strip
-	source = https://download.jetbrains.com/idea/ideaIC-2020.3.tar.gz
-	md5sums = eb27adeeeaae8aa4e713263276f66a7b
+	source = https://download.jetbrains.com/idea/ideaIC-2020.3.1.tar.gz
+	source = intellij-idea-ce.desktop
+	sha256sums = 06abca33b240b24f447dada437f5ce7387b47644c76378230254d6163882a42a
+	sha256sums = b38188c0533db6861cf5193deebd58731ad93647ae3c03b3fae6f7748b4ff849
 
 pkgname = intellij-idea-ce
 

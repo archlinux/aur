@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=IntelliJ IDEA Community
+Comment=Intelligent Java IDE
+Exec=/usr/bin/idea-ce
+Icon=intellij-idea-ce
+Comment=Intellij Idea IDE (community version) with Intellij JDK
+Categories=Development;IDE;
+Terminal=false
+StartupNotify=true
+StartupWMClass=jetbrains-idea-ce
