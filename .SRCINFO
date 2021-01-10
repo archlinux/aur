@@ -1,0 +1,16 @@
+pkgbase = actual-appimage
+	pkgdesc = Actual is a super fast privacy-focused app for managing your finances.
+	pkgver = 0.0.127
+	pkgrel = 1
+	url = https://actualbudget.com/
+	arch = x86_64
+	license = custom:Commercial
+	depends = zlib
+	depends = hicolor-icon-theme
+	noextract = Actual-0.0.127-x86_64.AppImage
+	options = !strip
+	source_x86_64 = Actual-0.0.127-x86_64.AppImage::https://github.com/actualbudget/releases/releases/download/0.0.127/Actual-0.0.127-x86_64.AppImage
+	sha256sums_x86_64 = e07147275646f61d0a202b53b9a3ceff7ced1fd8f7a56f07ffadfcb80e04c8b2
+
+pkgname = actual-appimage
+
