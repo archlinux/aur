@@ -1,14 +1,12 @@
 pkgbase = ruri
-	pkgdesc = A CRC32 checker with file name checking.
-	pkgver = 1.2.0
+	pkgdesc = Calculates the CRC-32 of a file and checks it against the filename.
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://gitlab.com/Timmy1e/ruri
 	arch = any
 	license = GPL3
-	makedepends = python-pip
-	depends = python
-	depends = python-colorama
-	depends = python-progressbar
+	source = ruri_2.0.0::https://gitlab.com/Timmy1e/ruri/uploads/f6bd33f10be83001a241050842249c1d/ruri
+	sha256sums = d5676ba63f5c2ef1f2ea7fa7f016149d19c9d78fc41332ff09cc7c7bd4336654
 
 pkgname = ruri
 
