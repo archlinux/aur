@@ -1,9 +1,11 @@
 # Maintainer: buckket <buckket@cock.li>
+# Co-maintainer: leothrix <ty at tjll dot net>
 # Contributor: FadeMind <fademind@gmail.com>
 # Contributor: Richard Weber <old-box at outlook dot com>
 # Contributor: Benjamin Hedrich <kiwisauce at pagenotfound dot de>
 # Contributor: Thomas Jost <schnouki at schnouki dot net>
 # Contributor: Tomas Strand <tomas at fik1 dot net>
+# Contributor: Neil Shephard <nshephard at gmail dot com>
 
 ### NOTICE
 ### libspotify is EOL, sources are taken from https://mopidy.github.io/libspotify-archive/
@@ -25,7 +27,7 @@ pkgname=libspotify
 pkgver=12.1.51
 pkgrel=7
 pkgdesc="C API package allowing third-party developers to write applications that utilize the Spotify music streaming service"
-arch=("i686" "x86_64")
+arch=("i686" "x86_64" "armv6h")
 url="https://mopidy.github.io/libspotify-archive/"
 license=('custom')
 depends=('glibc')
@@ -42,6 +44,14 @@ if [ "$CARCH" == "i686" ]; then
     source_i686=("https://mopidy.github.io/libspotify-archive/${pkgname}-${pkgver}-Linux-${SPOTIFY_ARCH}-release.tar.gz")
     md5sums_i686=('04735b890da0b1fc7f1f14e68a5293de')
     sha256sums_i686=('941ab4ba10bcd6ec4e96127afd095a39e11bc955de0882734c97e4f588b155ae')
+fi
+
+if [ "$CARCH" == "armv6h" ]; then
+    SPOTIFY_ARCH="armv6-bcm2708hardfp"
+    pkgver=12.1.103
+    source_armv6h=("https://mopidy.github.io/libspotify-archive/${pkgname}-${pkgver}-Linux-${SPOTIFY_ARCH}-release.tar.gz")
+    md5sums_armv6h=('bf9afc8c7b966841735734b248f9c7a7')
+    sha256sums_armv6h=('d658e6c1978fb46cf33376eb8367a51d024f4014f21beac1dd264532bcc54b24')
 fi
 
 build() {
