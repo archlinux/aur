@@ -1,4 +1,4 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Eric Bailey <nerflad@gmail.com>
 # Contributor: Marek Kubica <marek@xivilization.net>
 # Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
@@ -9,8 +9,8 @@
 # Contributor: Sylvester Johansson <syljo361(at)gmail(dot)org>
 _projectname='ounit'
 pkgname="ocaml-$_projectname"
-pkgver='2.2.3'
-pkgrel='2'
+pkgver='2.2.4'
+pkgrel='1'
 pkgdesc='Unit testing framework for OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/gildor478/$_projectname"
@@ -19,7 +19,7 @@ depends=('ocaml>=4.04.0' 'ocaml-lwt' 'ocaml-stdlib-shims')
 makedepends=('dune>=1.11.0' 'ocaml-findlib')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('cc69df60d8b6b526d824b6e6db8cb7a5e3e0d603489588b4603a1b06d7ec5720')
+sha256sums=('cbb5c0849886ccbc85190be5f4874e9d6967cd5ea071631baac91c0d834202ca')
 
 _sourcedirectory="$_projectname-$pkgver"
 

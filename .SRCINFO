@@ -1,7 +1,7 @@
 pkgbase = ocaml-ounit
 	pkgdesc = Unit testing framework for OCaml
-	pkgver = 2.2.3
-	pkgrel = 2
+	pkgver = 2.2.4
+	pkgrel = 1
 	url = https://github.com/gildor478/ounit
 	arch = x86_64
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = ocaml-ounit
 	depends = ocaml-lwt
 	depends = ocaml-stdlib-shims
 	options = !strip
-	source = ocaml-ounit-2.2.3-2.tar.gz::https://github.com/gildor478/ounit/archive/v2.2.3.tar.gz
-	sha256sums = cc69df60d8b6b526d824b6e6db8cb7a5e3e0d603489588b4603a1b06d7ec5720
+	source = ocaml-ounit-2.2.4-1.tar.gz::https://github.com/gildor478/ounit/archive/v2.2.4.tar.gz
+	sha256sums = cbb5c0849886ccbc85190be5f4874e9d6967cd5ea071631baac91c0d834202ca
 
 pkgname = ocaml-ounit
