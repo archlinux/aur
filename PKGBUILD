@@ -20,12 +20,12 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd procps-ng
+  cd procps
   git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
-  cd procps-ng
+  cd procps
   sed 's:<ncursesw/:<:g' -i watch.c
 
   # pgrep: check sanity of SC_ARG_MAX 
@@ -34,7 +34,7 @@ prepare() {
 }
 
 build() {
-  cd procps-ng
+  cd procps
 
   ./autogen.sh
   ./configure \
@@ -57,6 +57,6 @@ build() {
 }
 
 package() {
-  cd procps-ng
+  cd procps
   make DESTDIR="$pkgdir" install
 }
