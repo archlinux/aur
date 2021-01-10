@@ -1,6 +1,6 @@
 pkgbase = mhwd-nvidia-390xx
-	pkgdesc = mhwd-nvidia-390xx pci id
-	pkgver = 390.138
+	pkgdesc = mhwd-nvidia-390xx PCI ID database
+	pkgver = 390.141
 	pkgrel = 1
 	url = https://garudalinux.org/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = mhwd-nvidia-390xx
 	makedepends = nvidia-390xx-utils
 	provides = mhwd-nvidia-390xx
 	source = mhwd-nvidia
-	sha256sums = 11176f1c070bbdbfaa01a3743ec065fe71ff867b9f72f1dce0de0339b5873bb5
+	b2sums = 8141f8b95c403788092c83f067538170734b2a8c6e1f0e5df11677dc15693558f99278680b7d89f8eab0b8cd19b21476b438bcecf303074946d07ad3e43703c8
 
 pkgname = mhwd-nvidia-390xx
 
