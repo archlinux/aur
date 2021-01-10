@@ -1,5 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
-# Co-Maintainer: Christian Pinedo <christian (at) chrpinedo (dot) me>
+# Maintainer: Christian Pinedo <christian (at) chrpinedo (dot) me>
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=solarwallet
 _pkgname="Solar Wallet"
 pkgver=0.25.3
