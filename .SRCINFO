@@ -7,6 +7,7 @@ pkgbase = lib32-libtasn1-git
 	license = GPL3
 	license = LGPL
 	makedepends = gcc-multilib
+	makedepends = gtk-doc
 	depends = lib32-glibc
 	depends = libtasn1
 	provides = lib32-libtasn1
