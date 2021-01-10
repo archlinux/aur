@@ -6,6 +6,7 @@ pkgbase = nault-bin
 	install = nault-bin.install
 	arch = x86_64
 	license = MIT
+	depends = fuse2
 	provides = nault-bin
 	conflicts = nault-bin
 	noextract = nault.AppImage

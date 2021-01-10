@@ -1,12 +1,13 @@
 # Maintainer: agilob <archlinux@agilob.net>
 pkgname=nault-bin
 pkgver=1.8.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Nault AppImage client'
 arch=('x86_64')
 url='https://github.com/Nault/Nault'
 license=('MIT')
 provides=("${pkgname}")
+depends=('fuse2')
 conflicts=("${pkgname}")
 options=(!strip)
 _appimage="nault.AppImage"
