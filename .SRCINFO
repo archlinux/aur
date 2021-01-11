@@ -1,0 +1,16 @@
+pkgbase = qemu-debootstrap
+	pkgdesc = QEMU debootstrap wrapper
+	pkgver = 4.1
+	pkgrel = 1
+	url = https://salsa.debian.org/qemu-team/qemu
+	arch = any
+	license = GPL
+	depends = qemu
+	depends = debootstrap
+	source = https://salsa.debian.org/qemu-team/qemu/-/raw/master/debian/qemu-debootstrap
+	source = https://salsa.debian.org/qemu-team/qemu/-/raw/master/debian/qemu-debootstrap.1
+	sha1sums = d756058d0a4bf955dda8dcaeea693df5377a39cd
+	sha1sums = 8f4b540c52db9f2753dd1ef62507497f5f844027
+
+pkgname = qemu-debootstrap
+

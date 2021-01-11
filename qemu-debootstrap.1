@@ -1,0 +1,19 @@
+.TH qemu\-debootstrap 1 2011-07-02 "0.14.1+dfsg" Debian
+.SH NAME
+qemu\-debootstrap \- QEMU debootstrap wrapper
+.SH SYNOPSIS
+.B qemu\-debootstrap
+.RI [ options ]
+.SH DESCRIPTION
+The
+.B qemu\-debootstrap
+wrapper calls 
+.BR debootstrap (8)
+making use of the \-\-foreign and \-\-second-stage options, and copies the appropriate 
+.BR qemu\-user\-static (1)
+binary into place in order to install cross-architecture chroots. In order for it to work seamlessly, the binfmt-support package must be installed.
+.SH SEE ALSO
+.BR debootstrap (8),
+.BR qemu\-user\-static (1).
+.SH AUTHOR
+This manual page was written by Vagrant Cascadian <vagrant@debian.org>.
