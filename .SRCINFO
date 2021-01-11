@@ -1,0 +1,13 @@
+pkgbase = confedi-git
+	pkgver = 1
+	pkgrel = 1
+	url = https://bitbucket.org/masterofhoppips/configuration-editor.git
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python3
+	source = git+https://bitbucket.org/masterofhoppips/configuration-editor.git
+	md5sums = SKIP
+
+pkgname = confedi-git
+
