@@ -1,6 +1,6 @@
 pkgbase = lynx-ldk
 	pkgdesc = Build hybrid web/desktop applications or wrappers on Linux, with Python, JavaScript, HTML5, and CSS3 and QTWebengine
-	pkgver = 3.5.6
+	pkgver = 3.5.7
 	pkgrel = 2
 	url = https://gitlab.com/LynxOS/ldk
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = lynx-ldk
 	depends = python-pyqtwebengine
 	depends = pyside2>=5.14
 	depends = qt5-webengine
-	source = https://gitlab.com/LynxOS/ldk/-/archive/3.5.6/ldk-3.5.6.tar.gz
-	md5sums = 342bd41cbcb04d8faf4feccac856d2a6
+	source = https://gitlab.com/LynxOS/ldk/-/archive/3.5.7/ldk-3.5.7.tar.gz
+	md5sums = 802dd89454e183ac8214ad756324d180
 
 pkgname = lynx-ldk
 
