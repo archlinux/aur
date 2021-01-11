@@ -1,6 +1,6 @@
 pkgbase = python-msgpack-numpy
 	pkgdesc = Serialize numpy arrays using msgpack
-	pkgver = 0.4.5
+	pkgver = 0.4.7.1
 	pkgrel = 1
 	url = https://pypi.org/project/msgpack-numpy/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-msgpack-numpy
 	makedepends = python-setuptools
 	depends = python-numpy
 	depends = python-msgpack
-	source = https://files.pythonhosted.org/packages/06/e5/ab4d8174d1054da471b957c395c7e0b3eadc7aa8073dd9ee3c0e658415f9/msgpack-numpy-0.4.5.tar.gz
-	sha256sums = af26f6f839b954bf072b3e47f6d954517d6b6d6956d26097331b571545d1747c
+	source = python-msgpack-numpy-0.4.7.1.tar.gz::https://github.com/lebedov/msgpack-numpy/archive/0.4.7.1.tar.gz
+	sha256sums = c1f3fc082efbf733aeb24aa638db622b8f6d6320a82b19116dc97e7afd0ab5cc
 
 pkgname = python-msgpack-numpy
 
