@@ -5,7 +5,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-nox-git
-pkgver=4.4.r99691.g1bf86ee907
+pkgver=4.4.r100607.g9219ed213d
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version, without X dependencies, for headless systems)'
 arch=('x86_64')
@@ -38,7 +38,7 @@ depends=(
     'libsoxr'
     'libssh'
     'libtheora'
-    'libva'
+    'libva-headless'
     'libvdpau'
     'libvidstab.so'
     'libvorbisenc.so'
@@ -55,7 +55,7 @@ depends=(
     'opencore-amr'
     'openjpeg2'
     'opus'
-    'sdl2'
+    'sdl2-nox'
     'speex'
     'srt'
     'v4l-utils'
