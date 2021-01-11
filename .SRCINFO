@@ -1,7 +1,7 @@
 pkgbase = iridium-deb
 	pkgdesc = An attempt at creating a safer, faster, and more stable browser (Stable Channel)
 	pkgver = 73.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://iridiumbrowser.de/
 	arch = x86_64
 	license = BSD
@@ -26,6 +26,8 @@ pkgbase = iridium-deb
 	depends = xdg-utils
 	optdepends = kdialog: needed for file dialogs in KDE
 	optdepends = ttf-liberation: fix fonts for some PDFs
+	provides = iridium
+	conflicts = iridium
 	options = !emptydirs
 	options = !strip
 	source = https://downloads.iridiumbrowser.de/deb/pool/main/i/iridium-browser/iridium-browser_2019.04.73-1iridium0_amd64.deb

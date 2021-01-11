@@ -3,7 +3,7 @@
 
 pkgname=iridium-deb
 pkgver=73.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An attempt at creating a safer, faster, and more stable browser (Stable Channel)"
 arch=('x86_64')
 url="https://iridiumbrowser.de/"
