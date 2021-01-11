@@ -20,12 +20,12 @@ sha512sums=('SKIP'
 #validpgpkeys=('E390B9700582FAEA959ACAD41EEF53D38A3A9C67') # "Andreas Boll <andreas.boll.dev@gmail.com>"
 
 pkgver() {
-  cd mesa-demos
+  cd demos
   git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-  cd mesa-demos
+  cd demos
 
   ./autogen.sh
   ./configure --prefix=/usr \
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-  cd mesa-demos
+  cd demos
   make DESTDIR="${pkgdir}" install
   
   # add missing egl files
