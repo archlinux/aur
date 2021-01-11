@@ -1,7 +1,7 @@
 # Maintainer: Nathan Lowe <techwiz96@gmail.com>
 pkgname=movfuscator-git
 pkgver=r48.ea37dae
-pkgrel=1
+pkgrel=2
 pkgdesc="The single instruction C compiler"
 arch=('x86_64')
 provides=('movcc' 'movfuscator')
@@ -47,5 +47,5 @@ package() {
     install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm755 "${srcdir}/${pkgname}/build/movcc" "${pkgdir}/usr/share/movfuscator/bin/movcc"
     install -Dm755 "${srcdir}/${pkgname}/build/rcc" "${pkgdir}/usr/share/movfuscator/bin/rcc"
-    install -Dm755 "${srcdir}/movcc" "${pkgdir}/usr/local/bin/movcc"
+    install -Dm755 "${srcdir}/movcc" "${pkgdir}/usr/bin/movcc"
 }
