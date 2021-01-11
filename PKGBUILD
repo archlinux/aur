@@ -13,7 +13,7 @@ pkgver=10.2.0
 _mpfrver=4.1.0
 _mpcver=1.2.1
 _gmpver=6.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
@@ -24,7 +24,6 @@ optdepends=('m68k-elf-newlib')
 options=('!emptydirs' '!distcc' '!strip')
 conflicts=("${_target}-gcc-bootstrap")
 replaces=("${_target}-gcc-bootstrap")
-provides=("${_target}-gcc-bootstrap=${pkgver}")
 PKGEXT="pkg.tar.zst"
 source=("http://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
         "http://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz.sig"

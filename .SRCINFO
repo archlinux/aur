@@ -1,7 +1,7 @@
 pkgbase = m68k-elf-gcc
 	pkgdesc = The GNU Compiler Collection (m68k-elf)
 	pkgver = 10.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = m68k-elf-gcc
 	depends = m68k-elf-binutils>=2.29-1
 	depends = zlib
 	optdepends = m68k-elf-newlib
-	provides = m68k-elf-gcc-bootstrap=10.2.0
 	conflicts = m68k-elf-gcc-bootstrap
 	replaces = m68k-elf-gcc-bootstrap
 	options = !emptydirs
