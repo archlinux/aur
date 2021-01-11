@@ -2,8 +2,9 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=duply
-_mainver=2.2
-pkgver=$_mainver.2
+_mainver=2.3
+# pkgver=$_mainver.0
+pkgver=$_mainver
 pkgrel=1
 pkgdesc="A shell front end for duplicity. It manages backup job settings in profiles and allows to batch execute commands."
 arch=('any')
@@ -12,7 +13,7 @@ license=('GPL2')
 depends=('duplicity')
 makedepends=('txt2man')
 source=( "http://downloads.sourceforge.net/project/ftplicity/duply%20%28simple%20duplicity%29/${_mainver}.x/${pkgname}_${pkgver}.tgz")
-md5sums=('22a8a0d1471d373a7989e698408274b0')
+md5sums=('8d0591f8092937d09a4b091f84d83f99')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname}_${pkgver}/duply" "$pkgdir/usr/bin/duply"
