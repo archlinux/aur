@@ -16,8 +16,8 @@ makedepends=(gcc-multilib 'lib32-mesa')
 provides=(lib32-mesa-demos)
 conflicts=(lib32-mesa-demos)
 source=("git+https://gitlab.freedesktop.org/mesa/demos")
-#sha512sums=('SKIP')
-validpgpkeys=('E390B9700582FAEA959ACAD41EEF53D38A3A9C67') # "Andreas Boll <andreas.boll.dev@gmail.com>"
+sha512sums=('SKIP')
+#validpgpkeys=('E390B9700582FAEA959ACAD41EEF53D38A3A9C67') # "Andreas Boll <andreas.boll.dev@gmail.com>"
 
 pkgver() {
   cd demos

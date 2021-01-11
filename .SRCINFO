@@ -13,7 +13,7 @@ pkgbase = lib32-mesa-demos-git
 	provides = lib32-mesa-demos
 	conflicts = lib32-mesa-demos
 	source = git+https://gitlab.freedesktop.org/mesa/demos
-	validpgpkeys = E390B9700582FAEA959ACAD41EEF53D38A3A9C67
+	sha512sums = SKIP
 
 pkgname = lib32-mesa-demos-git
 	depends = lib32-glew
