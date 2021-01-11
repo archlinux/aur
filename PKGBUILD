@@ -2,7 +2,7 @@
 
 pkgname=dokku
 pkgver=0.22.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('any')
 url='https://github.com/dokku/dokku'
@@ -32,6 +32,11 @@ sha256sums=('c0bb4f1beb5880824928ad8db27e82114bf086bb291a6a21468ab17e17834300'
 install="$pkgname.install"
 
 build() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   export GOPATH="$srcdir/gopath"
 
   cd "$pkgname-$pkgver"
