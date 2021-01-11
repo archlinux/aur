@@ -10,7 +10,7 @@ url="https://cran.r-project.org/web/packages/$_pkgname/"
 license=('GPL2')
 depends=('r-gtools')
 makedepends=()
-optdepends=()
+optdepends=('perl-spreadsheet-parsexlsx')
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_$pkgver.tar.gz")
 sha512sums=('609a412970d46bed0d12191b1015fac96b48244cb9fb35506be07ae0544583566669c0e233a52f418dafdfc787a92cfbbf6554cb336af06c257b3bb6058e4fd5')
 
