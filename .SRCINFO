@@ -1,0 +1,23 @@
+pkgbase = lib32-util-linux-nosystemd-minimal-git
+	pkgdesc = Miscellaneous system utilities for Linux (32-bit)
+	pkgver = 2.36.1
+	pkgrel = 1
+	url = https://github.com/karelzak/util-linux
+	arch = x86_64
+	license = GPL2
+	depends = lib32-glibc
+	depends = util-linux
+	depends = lib32-libxcrypt
+	provides = lib32-util-linux
+	provides = libuuid.so
+	provides = libblkid.so
+	provides = libfdisk.so
+	provides = libmount.so
+	provides = libsmartcols.so
+	conflicts = lib32-util-linux
+	options = !emptydirs
+	source = git+https://github.com/karelzak/util-linux.git
+	sha256sums = SKIP
+
+pkgname = lib32-util-linux-nosystemd-minimal-git
+
