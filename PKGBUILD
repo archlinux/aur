@@ -7,7 +7,7 @@ pkgdesc="A highly customizable real time audio visualizer"
 arch=('i686' 'x86_64')
 url="https://github.com/GhostNaN/$_gitname"
 license=('GPL3')
-depends=('gsl' 'glm' 'fftw' 'ncurses' 'libconfig' 'shaderc')
+depends=('gsl' 'glm' 'fftw' 'ncurses' 'libconfig' 'shaderc' 'vulkan-driver')
 makedepends=('meson' 'ninja' 'vulkan-headers')
 optdepends=('pulseaudio: Audio data collection - PICK ONE/BOTH'
             'portaudio: Audio data collection (Input Only) - PICK ONE/BOTH')
