@@ -1,0 +1,12 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = etc/dconf/db/*.d/
+
+[Action]
+Description = Updating system dconf databases...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/dconf-update
+NeedsTargets
