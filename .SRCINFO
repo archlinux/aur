@@ -14,7 +14,7 @@ pkgbase = libdrm-minimal-git
 	provides = libdrm
 	provides = libdrm-git
 	conflicts = libdrm
-	source = libdrm::git://anongit.freedesktop.org/mesa/drm#branch=master
+	source = git+https://gitlab.freedesktop.org/mesa/drm.git
 	source = COPYING
 	sha512sums = SKIP
 	sha512sums = b0ca349b882a4326b19f81f22804fabdb6fb7aef31cdc7b16b0a7ae191bfbb50c7daddb2fc4e6c33f1136af06d060a273de36f6f3412ea326f16fa4309fda660
