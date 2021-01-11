@@ -2,14 +2,14 @@
 
 pkgname=graviton
 _pkgname=Graviton-App
-pkgver=2.1.6
+pkgver=2.1.7
 pkgrel=1
 pkgdesc='A modern Code Editor'
 arch=('x86_64')
 url='https://graviton.netlify.app/'
 license=('MIT')
 depends=('libappindicator-gtk3' 'libnotify' 'libxss' 'nss' 'xdg-utils')
-makedepends=('npm')
+makedepends=('yarn' 'npm')
 provides=("graviton")
 conflicts=("graviton-bin")
 
@@ -17,7 +17,7 @@ source=("https://github.com/Graviton-Code-Editor/Graviton-App/archive/v${pkgver}
         'graviton.desktop'
         'build.patch')
 
-sha256sums=('f1801f53f810b78f593a95e5c05882af41ed6053784262450fe6a7d89640baea'
+sha256sums=('dd06ba3148218bde225b8bdf6b2dc9d07c1024ff8d1da969f193df3d9b0719dc'
             '274abb2bef19694a483dc0f9d1bad14ad397b68e9e07f13580eac4cecc5163dd'
             '021eac4c4cb19d3e425d716c15d4577b3ed9cdcb5b0a35fcb9115ac3efd823fc')
 
@@ -28,17 +28,17 @@ prepare() {
 
 build() {
     cd $srcdir/${_pkgname}-$pkgver
-    npm install
-    npm run build
+    yarn
+    yarn build:electron
 }
 
 package() {
     # Install 
     cd "$srcdir/${_pkgname}-$pkgver/dist/linux-unpacked"
-    install -dm755 "$pkgdir/opt/Graviton"
+    install -dm755 "$pkgdir/opt/Graviton Editor"
     install -dm755 "$pkgdir/usr/bin"
-    cp -r * "$pkgdir/opt/Graviton"
-    ln -s /opt/Graviton/graviton "$pkgdir/usr/bin/graviton"
+    cp -r * "$pkgdir/opt/Graviton Editor"
+    ln -s "/opt/Graviton Editor/graviton" "$pkgdir/usr/bin/graviton"
 
     # Install Other things
     install -Dm644 "$srcdir/${_pkgname}-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
