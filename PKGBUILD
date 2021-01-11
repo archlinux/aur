@@ -13,10 +13,8 @@ depends=(gdk-pixbuf2 pango)
 makedepends=(gobject-introspection vala git rust)
 provides=(librsvg-${pkgver%%.*}.so librsvg)
 conflicts=(librsvg)
-source=("git+https://gitlab.gnome.org/GNOME/librsvg.git"
-        lto.diff)
-sha256sums=('SKIP'
-            '3cc8ad1af515b2cb4071f0647319c1cf3280dc054875634239061800af1616b6')
+source=("git+https://gitlab.gnome.org/GNOME/librsvg.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd librsvg
@@ -25,9 +23,6 @@ pkgver() {
 
 prepare() {
   cd librsvg
-
-  # Turn LTO back on
-  git apply -3 ../lto.diff
 
   NOCONFIGURE=1 ./autogen.sh
 }
