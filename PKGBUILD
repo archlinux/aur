@@ -2,7 +2,7 @@
 
 pkgname=grocy
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="web-based self-hosted groceries & household management solution for your home"
 depends=('php' 'php-sqlite' 'php-gd')
 makedepends=('composer' 'yarn')
@@ -19,8 +19,6 @@ backup=('etc/webapps/grocy/config.php')
 build() {
     cd grocy-${pkgver}
 
-    mkdir data/viewcache
-
     # composer need to have php-gd extension enabled, otherwise it will fail for a dependency of grocy.
     php -n -dextension=gd.so /usr/bin/composer install --no-interaction --no-dev --optimize-autoloader
     composer clear-cache
@@ -33,7 +31,7 @@ package() {
     cd grocy-${pkgver}
 
     _instdir="$pkgdir"/usr/share/webapps/grocy
-    mkdir -p "$_instdir" "$pkgdir"/etc/webapps/grocy
+    mkdir -p "$_instdir" "$pkgdir"/etc/webapps/grocy "$pkgdir"/var/lib/webapps
 
 
     # install license
@@ -42,8 +40,14 @@ package() {
     # copy files to install directory
     cp -ra . "$_instdir"/
 
+    mv "$pkgdir"/usr/share/webapps/grocy/data "$pkgdir"/var/lib/webapps/grocy
+
+#    mkdir "$pkgdir"/usr/share/webapps/grocy/data/
+    ln -s /var/lib/webapps/grocy "$pkgdir"/usr/share/webapps/grocy/data
+
+    ln -s /etc/webapps/grocy/config.php "$pkgdir"/var/lib/webapps/grocy/config.php
+
     mv config-dist.php "$pkgdir"/etc/webapps/grocy/config.php
-    ln -s /etc/webapps/grocy/config.php "$pkgdir"/usr/share/webapps/grocy/data/config.php
 
     chown 33 "$pkgdir"/usr/share/webapps/grocy/data -R
 }
