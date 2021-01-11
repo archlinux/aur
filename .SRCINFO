@@ -1,8 +1,8 @@
-pkgbase = ros-melodic-moveit-resources-panda-moveit-config
+pkgbase = ros-noetic-moveit-resources-panda-moveit-config
 	pkgdesc = ROS - MoveIt Resources for testing: Franka Emika Panda A project-internal configuration for testing in MoveIt.
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
-	url = h
+	url = https://wiki.ros.org/moveit_resources
 	arch = i686
 	arch = x86_64
 	arch = aarch64
@@ -11,15 +11,15 @@ pkgbase = ros-melodic-moveit-resources-panda-moveit-config
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	depends = ros-melodic-xacro
-	depends = ros-melodic-robot-state-publisher
-	depends = ros-melodic-moveit-resources-panda-description
-	depends = ros-melodic-joint-state-publisher
-	depends = ros-melodic-joint-state-publisher-gui
-	depends = ros-melodic-topic-tools
-	source = ros-melodic-moveit-resources-panda-moveit-config-0.7.0.tar.gz::https://github.com/ros-gbp/moveit_resources-release/archive/release/melodic/moveit_resources_panda_moveit_config/0.7.0.tar.gz
-	sha256sums = 8ddc0aee83159b05be65c6b0409c95326808a461b7a4fa9e117d06eb68707d94
+	makedepends = ros-noetic-catkin
+	depends = ros-noetic-xacro
+	depends = ros-noetic-robot-state-publisher
+	depends = ros-noetic-moveit-resources-panda-description
+	depends = ros-noetic-joint-state-publisher
+	depends = ros-noetic-joint-state-publisher-gui
+	depends = ros-noetic-topic-tools
+	source = ros-noetic-moveit-resources-panda-moveit-config-0.7.1.tar.gz::https://github.com/ros-planning/moveit_resources/archive/0.7.1.tar.gz
+	sha256sums = 1b6364d808fbfa01bbc302fc66821ef0bd564b67be0e2ab9e394c5931ac3dc07
 
-pkgname = ros-melodic-moveit-resources-panda-moveit-config
+pkgname = ros-noetic-moveit-resources-panda-moveit-config
 
