@@ -56,6 +56,8 @@ prepare() {
   git checkout -b wayland FETCH_HEAD
   git merge master || true
   [[ -z "$(git rerere status)" ]] || exit 1
+  git config user.email "placeholder@example.com"
+  git config user.name "Placeholder"
   git commit --all --no-edit
 
   # from official arch package
