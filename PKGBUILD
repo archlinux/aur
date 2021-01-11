@@ -31,7 +31,7 @@ sha256sums=(SKIP)
 pkgver() {
   cd dconf
 
-  git describe --tags
+  git describe --tags | sed 's/-/+/g'
 }
 
 build() {
