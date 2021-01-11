@@ -13,7 +13,7 @@ depends=('libgl' 'glew' 'freeglut')
 makedepends=('mesa' 'freetype2' 'git')
 provides=(mesa-demos)
 conflicts=(mesa-demos)
-source=("git+https://gitlab.freedesktop.org/mesa/demos"}
+source=("git+https://gitlab.freedesktop.org/mesa/demos"
         'LICENSE')
 sha512sums=('SKIP'
             'SKIP')
