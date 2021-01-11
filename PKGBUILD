@@ -3,7 +3,7 @@ _py=ipycanvas
 pkgname=python-$_py-git
 provides=("${pkgname%-git}")
 pkgver=r297.0cc98b4
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive widgets library exposing the browser's Canvas API"
 arch=(any)
 url="https://github.com/martinRenou/ipycanvas"
@@ -18,7 +18,11 @@ depends=(
 	jupyter
 	jupyterlab
 )
-makedepends=(python-setuptools git)
+makedepends=(
+	git
+	python-setuptools
+	python-jupyter_packaging
+)
 source=("git+$url")
 md5sums=('SKIP')
 pkgver() {
