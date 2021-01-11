@@ -4,7 +4,7 @@
 pkgname=cp2k
 pkgver=8.1.0
 _dbcsrver=2.1.0
-pkgrel=2
+pkgrel=3
 # NVIDIA GPU Generation: Kepler, Pascal, or Volta;
 # please specify one closest to yours or leave unchanged
 # if CUDA isn't supposed to be used
@@ -44,8 +44,8 @@ prepare() {
   # Enabling additional features
   if [ $( echo -n $( which nvcc) | tail -c 4 ) == nvcc ] ; then
     _gpumem=$( nvidia-smi --query-gpu=memory.total --format=csv,nounits,noheader )
-    # Tests require at least 600 MB of GPU memory per core
-    _memcore=$(($_gpumem / 600))
+    # Tests require at least 150 MB of GPU memory per core
+    _memcore=$(($_gpumem / 150))
     if [[ $_memcore -ge 2 ]] ; then
       echo "Adding CUDA support"
       _buildmode=$((_buildmode | 1))
@@ -118,7 +118,8 @@ check() {
                 -arch $_arch \
                 -nobuild \
                 -maxtasks $_corenumber \
-                -skipdir QS/regtest-xastdp
+                -skipdir QS/regtest-xastdp \
+                -jobmaxtime 1000
 }
 
 package() {
