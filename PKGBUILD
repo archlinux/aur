@@ -1,8 +1,8 @@
 # Maintainer Chris Werner Rau <aur@cwrau.io>
 
 pkgname=heroic-games-launcher-electron
-_pkgver=0.4.1-beta
-pkgver=${_pkgver%-*}
+_pkgver=v1.0.0
+pkgver=${_pkgver#v}
 pkgrel=1
 pkgdesc="HGL, a Native alternative Linux Launcher for Epic Games"
 arch=('x86_64')
@@ -10,10 +10,10 @@ url="https://github.com/flavioislima/HeroicGamesLauncher"
 license=('GPL3')
 conflicts=(${pkgname%-*}-{appimage,bin})
 depends=(xterm electron)
-_filename=heroic-${_pkgver}.pacman
+_filename=heroic-${pkgver}.pacman
 source=("$url/releases/download/${_pkgver}/${_filename}"
   heroic)
-md5sums=('e5087ce4a32e31bb1fffbb42053df1db'
+md5sums=('60a75a26a369ff2b9b0465a05ccad7b3'
          'b561c32112d481345acb0d9ca828fa01')
 options=(!strip)
 
