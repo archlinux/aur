@@ -8,6 +8,7 @@ depends=(python3)
 makedepends=(git)
 url="https://bitbucket.org/masterofhoppips/configuration-editor.git"
 source=("git+$url")
+md5sums=('SKIP')
 
 build(){
 	pyinstaller program.py -F

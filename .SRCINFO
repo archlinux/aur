@@ -8,6 +8,7 @@ pkgbase = confedi-git-bin
 	makedepends = git
 	depends = python3
 	source = git+https://bitbucket.org/masterofhoppips/configuration-editor.git
+	md5sums = SKIP
 
 pkgname = confedi-git-bin
 
