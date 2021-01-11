@@ -3,7 +3,7 @@
 pkgname='ttf-google-fonts-typewolf'
 pkgver='20201125'
 _commit='5222456e6e79ff15c6ff71b6e2544386b750c11d'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Typewolf's curated collection of the 40 best fonts from the Google Fonts project"
 arch=('any')
 url='https://www.typewolf.com/google-fonts'
@@ -52,6 +52,7 @@ provides=(
 	# Aliases
 	'adobe-source-sans-pro-fonts'
 	'adobe-source-serif-pro-fonts'
+	'ttf-opensans'
 	'ttf-spacemono'
 )
 conflicts=(
