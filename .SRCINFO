@@ -1,6 +1,6 @@
 pkgbase = rng-tools-git
 	pkgdesc = Random number generator daemon
-	pkgver = 6.10.r22.g5c68cbb
+	pkgver = 6.11.r0.g2ea1347
 	pkgrel = 1
 	url = https://github.com/nhorman/rng-tools
 	arch = i686

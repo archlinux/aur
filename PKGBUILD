@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=rng-tools-git
-pkgver=6.10.r22.g5c68cbb
+pkgver=6.11.r0.g2ea1347
 pkgrel=1
 pkgdesc="Random number generator daemon"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 pkgver() {
   cd "rng-tools"
 
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^[vV]//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
