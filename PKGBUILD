@@ -3,7 +3,7 @@
 
 pkgname=usrsctp-git
 pkgver=0.9.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A portable SCTP userland stack"
 
 arch=('i686' 'x86_64')
@@ -17,6 +17,7 @@ sha256sums=('e7b8f908d71dc69c9a2bf55d609e8fdbb2fa7cc647f8b23a837d36a05c59cd77')
 build() {
   cd "$srcdir/usrsctp-$pkgver"
   unset CPPFLAGS
+  export CFLAGS="$CFLAGS -fPIC"
   cmake .
   make
 }
