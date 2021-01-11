@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('azote')
-pkgver=1.8.1
-pkgrel=2
+pkgver=1.8.2
+pkgrel=1
 pkgdesc="Wallpaper & color manager for Sway, i3 and other WMs"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/azote"
@@ -20,11 +20,11 @@ optdepends=('imagemagick: for screen color picker'
 
 source=("https://github.com/nwg-piotr/azote/archive/v$pkgver.tar.gz")
 
-md5sums=('fafb2090e64a8572416d2f28a1ffd264')
+md5sums=('4bed6ef78f712d37d201d029c962c80c')
 
 package() {
   install -D -m 755 "$pkgname"-"$pkgver"/dist/azote "$pkgdir"/usr/bin/azote
-  install -D -t "$pkgdir"/usr/share/"$pkgname" "$pkgname"-"$pkgver"/dist/azote.svg
+  install -D -t "$pkgdir"/usr/share/pixmaps "$pkgname"-"$pkgver"/dist/azote.svg
   install -D -t "$pkgdir"/usr/share/"$pkgname" "$pkgname"-"$pkgver"/dist/indicator*.png
   install -D -t "$pkgdir"/usr/share/applications "$pkgname"-"$pkgver"/dist/azote.desktop
   install -Dm 644 "$pkgname"-"$pkgver"/LICENSE-COLORTHIEF "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-COLORTHIEF"
