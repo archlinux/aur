@@ -5,7 +5,7 @@ _kernver_base="$(echo $_kernver | cut -d- -f1)"
 pkgname=btusb-qca-0x3004
 _pkgname=btusb
 url=https://github.com/kmoe/btusb-qca-0x3004
-pkgver=0.9
+pkgver=0.9.5.10.6
 pkgrel=1
 pkgdesc="patch btusb so it works on QCA devices with id 0x3004"
 arch=('i686' 'x86_64')
@@ -14,12 +14,15 @@ depends=('linux-headers')
 source=("Makefile"
 	"btusb.patch"
 	"btusb-qca-0x3004.install"
-	"btusb.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btusb.c?id=refs/tags/v4.13.4"
-	"btintel.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btintel.h?id=refs/tags/v4.13.4"
-	"btbcm.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btbcm.h?id=refs/tags/v4.13.4"
-	"btrtl.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btrtl.h?id=refs/tags/v4.13.4")
-install="btusb-qca-0x3004.install"
+	"btusb.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btusb.c?id=refs/tags/v5.10.6"
+	"btintel.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btintel.h?id=refs/tags/v5.10.6"
+	"btbcm.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btbcm.h?id=refs/tags/v5.10.6"
+	"btrtl.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btrtl.h?id=refs/tags/v5.10.6")
+install=btusb-qca-0x3004.install
 	
+pkgver() {
+ printf "0.9.%s" "$(uname -r | cut -d- -f1)"
+}
 
 prepare() {
 	echo $_kernver_base
