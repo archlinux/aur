@@ -7,7 +7,7 @@ _srcname=linux-5.10
 _major=5.10
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=4
+_minor=6
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -22,6 +22,7 @@ makedepends=(
   bc kmod libelf        cpio perl tar xz
 )
 options=('!strip')
+_modprobeddb=
 source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/stable-review/"$_rcpatch".{xz,sign}
   # https://lkml.org/lkml/2019/8/23/712
@@ -29,28 +30,26 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-0002-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch
-0003-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch
-0005-btrfs-Fix-500-2000-performance-regression-w-5.10.patch
-0006-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch
-0007-ALSA-hda-hdmi-fix-locking-in-silent_stream_disable.patch
+0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch
+0003-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch
+0004-btrfs-fix-deadlock-when-cloning-inline-extent-and-lo.patch
+0005-btrfs-shrink-delalloc-pages-instead-of-full-inodes.patch
 
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('3a4fa6e77721b0dc3b74e0e1c6d6af2aaf33286d5fc3bf6e0ae844cbed2f745cfa3fa8a83b406082e1e981125cf1c09a5df765e990a132713e7a05281a936394'
+b2sums=('d751bad7450ea12ea43b4565093d1da2ac0c4e1ecd4d50de3096a7d0a9717e8781b93cfbb156edc859f2c38805ab2d0fc71d7d6c128fdbe415cd5e5aff3f2dde'
         'SKIP'
-        '57f6d719451aacfd298452703ae02e6188885500e8cdf18fffa6b9967b0934a23cd378ab4c49b76ccb2f7a9012d6aa7ff1349d488cb31e40924be2f27b244cec'
+        '2da9e47f6524ecb50db9f515b9f281f08fbcb323f6e4ddb225c2b2f6379787c37efee25589e49286e13ff663c414a422b680912739400afab89f0ebaf741d33b'
         'SKIP'
         'cb3a58e4eef8395b75887d94a84bba25f05fbec8f576a791623057a190a1d51b412a19ecf1b600ac3f9f6c46968eb0e130d571743e61afc231a97146ee4b52d0'
-        '7d2ef86a15ead6c946051c117a8ed97056e92a25a274455c5cc62ec65ff92bda7a50032b32c8019180f233a54e778becc45751741ae4d87db8f56ef520ca1e83'
-        '8ea9d2b7809728c3de05768fea5d8838fe20de8aaaed9106f26c0e8fc051921668d0c31345f200d06005403dec565690f828dbbcd38504079fe6fccbf742be61'
-        'd361b313a3dcd761833b8e2e40201df5e5b93c472e8a06f4684feb24d6e174405e6e4328dc0c449b9b0263e87224b3e1f4a52c873b666a93055979c9d2e2bf59'
-        '2853fa5257b96b11bcbf60ed68df09938ebb15f81c1bb6aa763c721c4e55f440fd27f9a6b49e8f9a1788948928299810f9e8ea43f0759b06cae3dd140902f93e'
-        '46a30c86206717fe6804d8e88693b90382b07fdad91d8fd7220e398e41f87a4b5cb5be70285241a3fc81c62ced6021f1710ce0426f3161285c254db9e5484d86'
-        'eec26b472efda62e27d26c2033158e970a5eadb30d38fc4de59c36fafe53efc1e220b7d57189abcd5a2697d242df8475cf2eebfd1ad6373804b5456dbcc14098')
+        'b42730a806a63dbf905f448a3282dec72a950ef7d16a3531d977dcae3b5c2685a5c5dd10a58e345d57084a6212353dc2f2f0102021d13c1557092e564f81eaf5'
+        'a5dea5bb6df6fb517009ad5b104c2ea8e93ed880393a1412ca2d7fc8047abccc9c72076e40d1d4133cadc9048040846cc9bdc91e30c4d601ad5963d13498503e'
+        '9a8723104239ba4646dd0c76c5a60128892954dd2faee69ca5c5d1251c9694de8fd528ca063a2add1401ad1375ad0dcc2560ca03a1bfd03b161d34ccd25b686a'
+        'e0da90b08fb03658dca9c42ac287c04d9b35969a15165c0f1fc7e11290de272b892abb58f5c7aabe22899f53f5bc39539f58768b8012d92145ba2fd8b89898a7'
+        '2b180269f934469d6ef6f0f8474dd947c7a8e9344cf3bbecac6a9c325d7bfb89d234eb15c4422709acaffd30ebeda2ec06c91a8c1128631a839186e8b273eb65')
 
 
 export KBUILD_BUILD_HOST=archlinux
@@ -60,7 +59,7 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 prepare() {
   cd linux-${_fullver}
 
-  echo "Setting version..."
+  msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
@@ -72,7 +71,7 @@ prepare() {
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
-    [[ $src = *.patch ]] || continue
+    [[ $src = 0*.patch ]] || continue
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
@@ -84,10 +83,35 @@ prepare() {
   # and can easily overwhelm a system with 32 GB of memory using a tmpfs build
   # partition ... this was introduced by FS#66260, see:
   # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/linux&id=663b08666b269eeeeaafbafaee07fd03389ac8d7
-  sed -i -e 's/CONFIG_DEBUG_INFO=y/# CONFIG_DEBUG_INFO is not set/' \
+  sed -i -e 's/CONFIG_CGROUP_BPF=y/# CONFIG_CGROUP_BPF is not set/' \
+      -i -e 's/CONFIG_BPF_LSM=y/# CONFIG_BPF_LSM is not set/' \
+      -i -e 's/CONFIG_USERMODE_DRIVER=y/# CONFIG_BPF_PRELOAD is not set/' \
+      -i -e '/CONFIG_BPF_PRELOAD=y/d' \
+      -i -e '/CONFIG_BPF_PRELOAD_UMD=m/d' \
+      -i -e '/CONFIG_BPF_STREAM_PARSER=y/g' \
+      -i -e 's/CONFIG_BPF_LIRC_MODE2=y/# CONFIG_BPF_LIRC_MODE2 is not set/' \
+      -i -e 's/CONFIG_DEBUG_INFO=y/# CONFIG_DEBUG_INFO is not set/' \
+      -i -e '/# CONFIG_DEBUG_INFO_REDUCED is not set/d' \
+      -i -e '/# CONFIG_DEBUG_INFO_COMPRESSED is not set/d' \
+      -i -e '/# CONFIG_DEBUG_INFO_SPLIT is not set/d' \
       -i -e '/CONFIG_DEBUG_INFO_DWARF4=y/d' \
-      -i -e '/CONFIG_DEBUG_INFO_BTF=y/d' ./.config
+      -i -e '/CONFIG_DEBUG_INFO_BTF=y/d' \
+      -i -e '/# CONFIG_GDB_SCRIPTS is not set/d' \
+      -i -e 's/CONFIG_BPF_KPROBE_OVERRIDE=y/# CONFIG_BPF_KPROBE_OVERRIDE is not set/' ./.config
 
+  if [[ -n "$_modprobeddb" ]]; then
+    #msg "Running Steven Rostedt's make localmodconfig now"
+    #sudo /usr/bin/modprobed-db recall
+    #make localmodconfig
+    msg "Running Steven Rostedt's make localmodconfig now"
+    if [[ -f $HOME/.config/modprobed.db ]]; then
+      _useit="$HOME/.config/modprobed.db"
+    else
+      _useit="../modprobed.db"
+    fi
+    make LSMOD="$_useit" localmodconfig
+  fi
+  
   make olddefconfig
  # make nconfig
 
@@ -121,7 +145,10 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  #make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  # not needed since not building with CONFIG_DEBUG_INFO=y
+
+  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
@@ -199,6 +226,7 @@ _package-headers() {
 
   #echo "Stripping vmlinux..."
   #strip -v $STRIP_STATIC "$builddir/vmlinux"
+  # not needed since not building with CONFIG_DEBUG_INFO=y
 
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
