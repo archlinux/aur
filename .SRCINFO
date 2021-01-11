@@ -1,0 +1,18 @@
+pkgbase = nekofetch
+	pkgdesc = neofetch but with nekos
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/propruhh/nekofetch
+	arch = any
+	makedepends = git
+	makedepends = make
+	depends = curl
+	depends = jq
+	depends = jp2a
+	depends = neofetch
+	provides = nekofetch
+	source = https://github.com/propruhh/nekofetch/archive/v1.2.2.tar.gz
+	sha256sums = bc932af7f1f009697585d74e952a967ac1d9fbdc7cf6e16fe129cdf2a6f99a7f
+
+pkgname = nekofetch
+
