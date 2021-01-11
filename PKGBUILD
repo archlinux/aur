@@ -2,20 +2,24 @@
 
 _pkgbase='rcon'
 pkgname="python-${_pkgbase}"
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc='Python 3 RCON client library and scripts'
 arch=('any')
 url="https://github.com/coNQP/${_pkgbase}"
 license=('GPLv3')
-depends=('python')
+depends=('python' 'python-setuptools')
 optdepends=('python-gobject: for GUI support')
-makedepends=('git' 'python' 'python-setuptools' 'python-setuptools-git')
+makedepends=('git' 'python' 'python-pip' 'python-setuptools-git' 'python-wheel')
 source=("${_pkgbase}::git+${url}.git#tag=${pkgver}")
 md5sums=('SKIP')
 
+build() {
+    cd "${srcdir}/${_pkgbase}"
+    python setup.py build
+}
 
 package() {
     cd "${srcdir}/${_pkgbase}"
-    python setup.py install --root "${pkgdir}" --optimize=1
+    python setup.py install --root "${pkgdir}" --optimize=1 --skip-build
 }
