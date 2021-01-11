@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=python-ufolib2
 _pkgname=ufoLib2
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc='A UFO font library'
 url='https://github.com/fonttols/ufoLib2'
@@ -12,7 +12,7 @@ optdepends=()
 license=('Apache')
 arch=('any')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.zip")
-sha256sums=('1ac5f0c3b7277f2814b2d34f68bf0d23de1abacb67cf94a269fea89a4aa0de19')
+sha256sums=('94f8b1d59c64d41318c7874694c394ea6fc171fd7132b49a4c9b9c66f22f9620')
 
 package() {
     cd "${_pkgname}-${pkgver}"
