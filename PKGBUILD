@@ -13,8 +13,8 @@ arch=(x86_64)
 license=(LGPL)
 provides=(lib32-pango)
 conflicts=(lib32-pango)
-depends=(lib32-cairo lib32-libxft lib32-harfbuzz lib32-fribidi pango)
-makedepends=(git meson)
+depends=(lib32-cairo lib32-libxft lib32-harfbuzz lib32-fribidi pango lib32-libthai)
+makedepends=(git meson lib32-libthai)
 optdepends=("lib32-libthai: Thai language support")
 #checkdepends=(ttf-dejavu cantarell-fonts)
 source=("git+https://gitlab.gnome.org/GNOME/pango.git")
@@ -34,7 +34,7 @@ build() {
   export CXX="g++ -m32"
   export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
 
-  arch-meson pango build --libdir=/usr/lib32 -D introspection=disabled -D libthai=disabled
+  arch-meson pango build --libdir=/usr/lib32 -D introspection=disabled -D
   ninja $NINJAFLAGS -C build
 }
 
