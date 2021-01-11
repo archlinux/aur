@@ -1,7 +1,8 @@
 # Maintainer: Feakster <feakster at posteo dot eu>
 
 pkgname=simplenote-electron-arm-bin
-pkgver=2.3.0
+_pkgname=${pkgname%-electron-arm-bin}
+pkgver=2.4.0
 _appimage="simplenote-electron-${pkgver}-${CARCH}.AppImage"
 pkgrel=5
 pkgdesc='The simplest way to keep notes'
@@ -18,26 +19,28 @@ provides=('simplenote')
 options=(!strip)
 source_armv7h=("simplenote-electron-${pkgver}-armv7h.AppImage"::"${url}/releases/download/v${pkgver}/Simplenote-linux-${pkgver}-armv7l.AppImage")
 source_aarch64=("simplenote-electron-${pkgver}-aarch64.AppImage"::"${url}/releases/download/v${pkgver}/Simplenote-linux-${pkgver}-arm64.AppImage")
-noextract=("${_appimage}")
-b2sums_armv7h=('b9a7eabdd35b4a61cdeaf296c7771d6991c824068b69a03c951ef82c596826d4ff6951bd646bf7abb1a57c4100ce492a72254b2267d2e7d14767425bbce2592e')
-b2sums_aarch64=('7ffd079364774395d68ab2a125c074ba09e7f56c54c7db2f100f19a2bafc1d83cb447b0232da857f4cf9cc3cda8b3f66d53be985259defb14b94af96b90ab586')
+noextract=($_appimage)
+b2sums_armv7h=('d646487d3ea2bc4938803df7d7523b8b3eeba0076bfd922de5d7b65b6eef31c216de792fdf8f6e488d3d871d1a9bc81facdc2283aea88d076b3e6bf4e92564d0')
+b2sums_aarch64=('50250e6250388ecf2091b02a981d0dd9113b649c751af844ce8ede3c5993774afe9283670d60530775a2005ee2309910b7ddeab3549b0d481f318527518d1bf7')
 
 prepare() {
-    # Go to source directory
+    # Go to Source Directory
     cd "$srcdir"
-    
-    # Mark AppImage as executable
-    chmod a+x "${_appimage}"
 
-    # Extract AppImage into squashfs-root directory
-    ./"${_appimage}" --appimage-extract
+    # Mark AppImage as Executable
+    chmod a+x $_appimage
 
-    # Set permissions for squashfs-root filesystem directories
+    # Extract AppImage into squashfs-root Directory
+    ./$_appimage --appimage-extract
+
+    # Set Permissions for squashfs-root Filesystem Directories
     find squashfs-root -type d -exec chmod 755 {} +
 
-    # Modify .desktop file to run executable instead of AppImage
-    sed -i -E "s|Exec=AppRun|Exec=/usr/bin/${provides}|" squashfs-root/${provides}.desktop
-    sed -i '/^X-AppImage-Version=/d' squashfs-root/${provides}.desktop
+    # Modify Desktop File
+    sed -i -E "s|Exec=AppRun|Exec=/usr/bin/${_pkgname}|" squashfs-root/${_pkgname}.desktop
+    sed -i '/^X-AppImage-Version=.*/d' squashfs-root/${_pkgname}.desktop
+    sed -i '/^Path=.*/d' squashfs-root/${_pkgname}.desktop
+    echo "Path=/opt/${_pkgname}" >> squashfs-root/${_pkgname}.desktop
 }
 
 package() {
@@ -45,19 +48,19 @@ package() {
     cd "$srcdir"
 
     # Create Installation Directory Structure
-    install -dm0755 "${pkgdir}"/usr/bin
-    install -dm0755 "${pkgdir}"/opt
-    install -dm0755 "${pkgdir}"/usr/share/icons
+    install -dm0755 "$pkgdir"/usr/bin
+    install -dm0755 "$pkgdir"/opt/$_pkgname
+    install -dm0755 "$pkgdir"/usr/share/icons
 
     # Install Icons
-    cp -rL squashfs-root/usr/share/icons/hicolor "${pkgdir}"/usr/share/icons/
+    cp -RL squashfs-root/usr/share/icons/hicolor "$pkgdir"/usr/share/icons/
 
-    # Install desktop file
-    install -Dm644 squashfs-root/${provides}.desktop -t "${pkgdir}"/usr/share/applications/
+    # Install Desktop File
+    install -Dm644 squashfs-root/${_pkgname}.desktop -t "$pkgdir"/usr/share/applications/
 
-    # Move package contents to opt
-    cp -rL squashfs-root "${pkgdir}"/opt/${pkgname}
+    # Move AppImage Contents to /opt/$_pkgname
+    cp -RLT squashfs-root "$pkgdir"/opt/$_pkgname
     
-    # Symlink /usr/bin executable to opt
-    ln -s /opt/${pkgname}/${provides} "${pkgdir}"/usr/bin/${provides}
+    # Symlink /usr/bin Executable to /opt/$_pkgname
+    ln -s /opt/$_pkgname/$_pkgname "$pkgdir"/usr/bin/$_pkgname
 }
