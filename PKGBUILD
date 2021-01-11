@@ -23,13 +23,15 @@ prepare() {
 	cd "${srcdir}"/${pkgbase}-${pkgver}
 
 	# fix for autoconf older than 2.70 (suggested by jbbr)
-	local _is_older="$(vercmp "2.70-1" "$(pacman -Q autoconf|cut -d\  -f2)")"
+	local _version_required="2.70-1"
+	local _version_installed="$(pacman -Q autoconf|cut -d\  -f2)"
+	local _is_older="$(vercmp $_version_required $_version_installed)"
 
 	if [ "$_is_older" = "1" ]; then
-		msg2 "Running autogen (for autoconf<2.70)"
+		msg2 "Running autogen (for autoconf<$_version_required)"
 		test -f configure || ./autogen.sh
 	else
-		msg2 "Running autogen (for autoconf>=2.70)"
+		msg2 "Running autogen (for autoconf>=$_version_required)"
 		test -f configure || INTLTOOLIZE='intltoolize --force' autoreconf --install
 	fi
 }
