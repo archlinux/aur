@@ -1,11 +1,12 @@
 pkgbase = iridium-rpm
 	pkgdesc = Iridium browser - rhel/centos build altered for arch
 	pkgver = 85.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://iridiumbrowser.de/
 	arch = x86_64
 	license = BSD
-	conflicts = iridium-deb
+	provides = iridium
+	conflicts = iridium
 	options = !emptydirs
 	options = !strip
 	source = https://downloads.iridiumbrowser.de/epel8/iridium-browser-2020.11.85-1.el8.x86_64.rpm
