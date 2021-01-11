@@ -1,6 +1,6 @@
 pkgbase = xmrig-donateless
 	pkgdesc = High Perf CryptoNote CPU and GPU (OpenCL, CUDA) miner - No Donate Version
-	pkgver = 6.7.0
+	pkgver = 6.7.1
 	pkgrel = 1
 	url = https://github.com/xmrig/xmrig
 	arch = x86_64
@@ -15,15 +15,15 @@ pkgbase = xmrig-donateless
 	optdepends = ocl-icd: AMD GPU mining
 	optdepends = opencl-headers: AMD GPU mining
 	optdepends = cuda: Nvidia GPU mining
-	provides = xmrig=6.7.0
+	provides = xmrig=6.7.1
 	conflicts = xmrig
 	backup = etc/xmrig/xmrig.conf
 	source = xmrig.service
 	source = xmrig.sysusers
-	source = xmrig-donateless-6.7.0.tar.gz::https://github.com/xmrig/xmrig/archive/v6.7.0.tar.gz
+	source = xmrig-donateless-6.7.1.tar.gz::https://github.com/xmrig/xmrig/archive/v6.7.1.tar.gz
 	sha256sums = 1c4fa2898b1252507e885c4bfa2d8d5b20bce2069cb5f703bb084066d560a770
 	sha256sums = d8f499302fb2b642fe02586c81c410a299e0a6e133aef1cc1c783bcdcb3f44f6
-	sha256sums = cfa512014b996926f9fad65271628f29fe2401d2ba94e139d502e3a23d4c49a1
+	sha256sums = 72202ba211a7554b9a45bb1f633dcf132656fcdb83a778f1754d08d6988ec672
 
 pkgname = xmrig-donateless
 
