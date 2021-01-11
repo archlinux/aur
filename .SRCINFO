@@ -1,7 +1,7 @@
 pkgbase = openpomodoro
 	pkgdesc = A command-line Pomodoro tracker which uses the Open Pomodoro Format
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/open-pomodoro/openpomodoro-cli
 	arch = x86_64
 	arch = armv7h

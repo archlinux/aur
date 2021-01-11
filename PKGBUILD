@@ -1,7 +1,7 @@
 pkgname=openpomodoro
 provides=("pomodoro")
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line Pomodoro tracker which uses the Open Pomodoro Format'
 arch=('x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/open-pomodoro/openpomodoro-cli"
