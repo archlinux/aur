@@ -10,16 +10,18 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('5f1dda7e2fdfdf9fbdb851449eb40220ac7195cd9354d81923ba50c3ffa2530d')
 
 build() {
-    cd "${pkgname}-cli-${pkgver}"
+    cd "${srcdir}/${pkgname}-cli-${pkgver}"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
 		go get ./...
-    go build -o ${pkgname} -ldflags "-extldflags ${LDFLAGS} -s -w -X main.version=${pkgver}" main.go
+    go build -o pomodoro -ldflags "-extldflags ${LDFLAGS} -s -w -X main.version=${pkgver}" main.go
 }
 
 package() {
-    install -Dm755 "${pkgname}-cli-${pkgver}/pomodoro" ${pkgdir}/usr/bin/pomodoro
+    cd "${srcdir}/${pkgname}-cli-${pkgver}"
+
+    install -Dm755 "pomodoro" ${pkgdir}/usr/bin/pomodoro
 }
