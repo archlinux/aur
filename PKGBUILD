@@ -5,7 +5,7 @@
 
 _basename=panon
 pkgname=plasma5-applets-$_basename
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="A Different Audio Spectrum Analyzer for KDE Plasma"
 arch=('any')
@@ -28,7 +28,7 @@ source=(
 	"https://raw.githubusercontent.com/williammalo/hsluv-glsl/master/hsluv-glsl.fsh"
 	hsluv-glsl_LICENSE.md::"https://raw.githubusercontent.com/williammalo/hsluv-glsl/master/LICENCE.md"
 )
-sha256sums=('aa854f6f16d666d84074ce96db6f800586be8c8bc20c1ba622ace1dc1be2b190'
+sha256sums=('09249bc77ee33336cab5ac77bc225a86815ab739d3973ed6a409b2014845c7ff'
             '1985bbfacfafcadf72582cfdb52103cceb853b0f9c818273ad179d6045c3f2cc'
             '5ad083fe6cafbf17ca8ecba924c124b7bc3f43f95732d1712104ac05f5373875')
 
@@ -45,10 +45,8 @@ build() {
 	rm -rf build || true
 	mkdir -p build
 	cd build
-	cmake .. \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DKDE_INSTALL_LIBDIR=lib
+	cmake ../translations
+	make install DESTDIR=../plasmoid/contents/locale
 }
 
 package() {
@@ -56,8 +54,6 @@ package() {
 	
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_basename%-*}/LICENSE"
 	install -Dm644 third_party/hsluv-glsl/LICENCE.md "$pkgdir/usr/share/licenses/${_basename%-*}/hsluv-glsl/LICENCE.md"
-	
-	(cd build && make install DESTDIR="$pkgdir")
 	
 	rm -rf "$pkgdir/usr/share/plasma/plasmoids/" || true
 	kpackagetool5 -p "$pkgdir/usr/share/plasma/plasmoids/" -t Plasma/Applet -i plasmoid
