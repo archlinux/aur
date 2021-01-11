@@ -1,0 +1,21 @@
+pkgbase = lib32-mesa-demos-git
+	pkgdesc = Mesa demos and tools (32-bit)
+	pkgver = 8.4.0
+	pkgrel = 1
+	url = http://mesa3d.sourceforge.net
+	arch = x86_64
+	license = custom
+	makedepends = gcc-multilib
+	makedepends = lib32-mesa
+	depends = lib32-libgl
+	depends = lib32-glew
+	depends = mesa-demos
+	provides = lib32-mesa-demos
+	conflicts = lib32-mesa-demos
+	source = git+https://gitlab.freedesktop.org/mesa/demos
+	validpgpkeys = E390B9700582FAEA959ACAD41EEF53D38A3A9C67
+
+pkgname = lib32-mesa-demos-git
+	depends = lib32-glew
+	depends = mesa-demos
+
