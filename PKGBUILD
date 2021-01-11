@@ -4,12 +4,12 @@
 
 pkgname=pdfsam
 pkgver=4.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A free open source tool to split and merge pdf documents"
 arch=('any')
 url="https://www.pdfsam.org/"
 license=('AGPL3')
-depends=('hicolor-icon-theme' 'java-environment>=11' 'sh')
+depends=('hicolor-icon-theme' 'java-environment>=11' 'sh' 'unzip')
 makedepends=('desktop-file-utils' 'gendesk')
 source=("https://github.com/torakiki/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux.zip"
         "pdfsam")
