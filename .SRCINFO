@@ -1,8 +1,8 @@
-pkgbase = ros-melodic-moveit-resources-panda-description
+pkgbase = ros-noetic-moveit-resources-panda-description
 	pkgdesc = ROS - panda Resources used for MoveIt! testing.
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
-	url = h
+	url = https://wiki.ros.org/moveit_resources
 	arch = i686
 	arch = x86_64
 	arch = aarch64
@@ -11,9 +11,9 @@ pkgbase = ros-melodic-moveit-resources-panda-description
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-catkin
-	source = ros-melodic-moveit-resources-panda-description-0.7.0.tar.gz::https://github.com/ros-gbp/moveit_resources-release/archive/release/melodic/moveit_resources_panda_description/0.7.0.tar.gz
-	sha256sums = 302af814b6077db1cd63914e532410b9f0bf2dd717e0794a59abce80f6e436bd
+	makedepends = ros-noetic-catkin
+	source = ros-noetic-moveit-resources-panda-description-0.7.1.tar.gz::https://github.com/ros-planning/moveit_resources/archive/0.7.1.tar.gz
+	sha256sums = 1b6364d808fbfa01bbc302fc66821ef0bd564b67be0e2ab9e394c5931ac3dc07
 
-pkgname = ros-melodic-moveit-resources-panda-description
+pkgname = ros-noetic-moveit-resources-panda-description
 
