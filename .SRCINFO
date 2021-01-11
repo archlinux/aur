@@ -12,6 +12,7 @@ pkgbase = dconf-git
 	makedepends = python
 	makedepends = meson
 	makedepends = bash-completion
+	makedepends = gtk-doc
 	depends = glib2
 	provides = libdconf.so
 	provides = dconf
