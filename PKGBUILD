@@ -1,12 +1,12 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=wxmaxima-git
-pkgver=20.06.6.r96.gfc09b1b93
+pkgver=20.12.2.r43.gdffcb10c7
 pkgrel=1
 pkgdesc="A document based interface for the computer algebra system Maxima."
 arch=('i686' 'x86_64')
 url="https://wxmaxima-developers.github.io/wxmaxima/"
 license=('GPL2')
-depends=('maxima' 'wxgtk' 'openmp')
+depends=('maxima' 'wxgtk2' 'openmp')
 makedepends=('git' 'texi2html' 'cmake')
 optdepends=('gnuplot: for plotting')
 conflicts=('wxmaxima')
