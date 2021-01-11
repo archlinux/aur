@@ -3,7 +3,7 @@
 _pkgbase=Nordic
 pkgbase=nordic-kde-git
 pkgname=(nordic-kde-git kvantum-theme-nordic-git sddm-nordic-theme-git)
-pkgver=1.9.0.r19.gf702c96
+pkgver=1.9.0.r30.g07d764c
 pkgrel=1
 pkgdesc="Theme for KDE Plasma 5 using the awesome Nord color pallete"
 arch=(any)
@@ -13,6 +13,7 @@ options=(!strip)
 source=("git+${url}.git"
         "git+${url}-kde.git")
 sha256sums=(SKIP SKIP)
+makedepends=(git)
 
 pkgver() {
     cd ${_pkgbase}

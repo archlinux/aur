@@ -1,10 +1,11 @@
 pkgbase = nordic-kde-git
 	pkgdesc = Theme for KDE Plasma 5 using the awesome Nord color pallete
-	pkgver = 1.9.0.r19.gf702c96
+	pkgver = 1.9.0.r30.g07d764c
 	pkgrel = 1
 	url = https://github.com/EliverLara/Nordic
 	arch = any
 	license = GPL3
+	makedepends = git
 	options = !strip
 	source = git+https://github.com/EliverLara/Nordic.git
 	source = git+https://github.com/EliverLara/Nordic-kde.git
