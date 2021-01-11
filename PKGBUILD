@@ -1,7 +1,7 @@
 # Maintainer: Buce <dmbuce@gmail.com>
 
 pkgname=mcexplore-git
-pkgver=1.6.r3.g8c45e64
+pkgver=1.7.r38.g89dc312
 pkgver() {
   cd "$srcdir/$pkgname"
   if ! git describe --tags 2>/dev/null; then
@@ -14,7 +14,7 @@ arch=(any)
 url="https://github.com/DMBuce/mcexplore"
 license=('CCPL:by-sa')
 groups=()
-depends=(python2 python2-nbt)
+depends=(python python-nbt)
 provides=(mcexplore)
 conflicts=(mcexplore)
 makedepends=('git' 'asciidoc')
@@ -25,8 +25,6 @@ md5sums=('SKIP')
 
 prepare() {
   cd "$srcdir/$pkgname"
-
-  sed -i '1s/python/python2/' mcexplore.py
 }
 
 package() {
