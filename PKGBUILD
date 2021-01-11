@@ -7,6 +7,8 @@ arch=('any')
 url='http://en.cppreference.com/'
 license=(CCPL:cc-by-sa GPL3)
 options=('!strip' '!emptydirs')
+provides=(cppreference)
+conflicts=(cppreference)
 source=("https://github.com/PeterFeicht/$pkgname/releases/download/v$pkgver/html-book-$pkgver.tar.xz")
 sha256sums=('35d67ceb114b91d9220e7db81d00cae80f74768729b21b369bf2f17b401cbdc0')
 
