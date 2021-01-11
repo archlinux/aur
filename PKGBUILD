@@ -4,34 +4,36 @@
 
 _pkgname=skabus
 pkgname=${_pkgname}-git
-pkgver=1
+pkgver=r40.a50a007
 pkgrel=1
 pkgdesc="A suite of programs and libraries for Unix systems that aim to implement a bus, i.e. a many-to-many interprocess communication mechanism"
 arch=('i686' 'x86_64')
 url="http://skarnet.org/software/${_pkgname}/"
 license=('ISC')
-makedepends=('skalibs' 'git')
-depends=('s6')
+makedepends=('git')
+depends=('s6' 'skalibs')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 # source=("http://skarnet.org/software/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 source=("git://git.skarnet.org/skabus")
 sha256sums=('SKIP')
 
-build() {
-  # cd ${srcdir}/${_pkgname}-${pkgver}
-  cd ${srcdir}/${_pkgname}
-  ./configure --prefix=/usr
+pkgver() {
+  cd "${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
+build() {
+  # cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}"
+  ./configure --prefix=/usr \
+              --datadir=/etc
   make
 }
 
 package() {
-  # cd ${srcdir}/${_pkgname}-${pkgver}
-  cd ${srcdir}/${_pkgname}
-
+  # cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}"
   DESTDIR=${pkgdir} make install
   install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
-
-# vim:ft=sh ts=2 sw=2 et:
