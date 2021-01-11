@@ -1,4 +1,4 @@
-pkgbase = xradio
+pkgbase = xradio-sl-git
 	pkgdesc = Driver for the Allwinner XRadio XR819 wifi chip
 	pkgver = r183.354e8c3
 	pkgrel = 1
