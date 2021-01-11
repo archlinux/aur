@@ -48,12 +48,16 @@ build() {
 	-D freedreno=false \
 	-D vc4=false \
 	-D vmwgfx=false \
-	-D radeon=false \
+	-D amdgpu=true
+	-D radeon=true \
 	-D intel=false \
 	-D nouveau=false \
 	-D man-pages=false
     meson configure _build
     ninja $NINJAFLAGS -C _build
+
+# EDIT BUILD OPTIONS TO MATCH YOUR CARDS - DEFAULTS TO AMDGPU / RADEON
+# RADEON NEEDS TO BE TRUE WHEN BUILDING AGAINST MESA
 }
 
 #check() {
