@@ -27,8 +27,7 @@ source=("git+https://github.com/karelzak/util-linux.git"
         'pam-runuser'
         'pam-su'
         '60-rfkill.rules'
-        'util-linux.sysusers'
-        '0001-libmount-don-t-use-symfollow-for-helpers-on-user-mounts.patch')
+        'util-linux.sysusers')
 
 #--BUILD CONFIGURATION------------------------------------------------------
 
@@ -45,12 +44,6 @@ makedepends=(
 pkgver() {
   cd util-linux
   git describe --tags | sed 's/-/+/g'
-}
-
-prepare() {
-  cd util-linux
-
-  patch -Np1 < ../0001-libmount-don-t-use-symfollow-for-helpers-on-user-mounts.patch
 }
 
 #--BUILD CONTROL------------------------------------------------------------
@@ -176,7 +169,6 @@ license=('GPL2')
 #validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
 
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
