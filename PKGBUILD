@@ -1,7 +1,7 @@
 # Maintainer: Triangulum Labs <triangulumlabs@gmail.com>
 # Contributor: FrozenCow <frozencow@gmail.com>
 
-pkgname=libusrsctp-git
+pkgname=usrsctp-git
 pkgver=0.9.4.0
 pkgrel=1
 pkgdesc="A portable SCTP userland stack"
