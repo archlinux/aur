@@ -8,7 +8,6 @@ depends=(python3)
 makedepends=(git)
 url="https://bitbucket.org/masterofhoppips/configuration-editor.git"
 source=("git+$url")
-md5sums=('SKIP')
 
 package() {
     mkdir -p "$pkgdir"/usr/bin
