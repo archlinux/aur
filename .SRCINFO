@@ -1,0 +1,19 @@
+pkgbase = usbutils-git
+	pkgdesc = A collection of USB tools to query connected USB devices
+	pkgver = 013
+	pkgrel = 1
+	url = https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/usbutils.git/
+	arch = x86_64
+	license = GPL2
+	makedepends = libusb
+	depends = glibc
+	depends = hwids
+	optdepends = python: for lsusb.py usage
+	optdepends = coreutils: for lsusb.py usage
+	provides = usbutils
+	conflicts = usbutils
+	source = git+https://github.com/gregkh/usbutils
+	b2sums = SKIP
+
+pkgname = usbutils-git
+
