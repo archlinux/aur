@@ -40,6 +40,10 @@ build() {
         --wrap-mode      nofallback \
         -D udev=false \
         -D valgrind=false \
+	-D freedreno=false \
+        -D vc4=false \
+	-D vmwgfx=false \
+	-D radeon=false \
 	-D man-pages=false
     meson configure _build
     ninja $NINJAFLAGS -C _build
