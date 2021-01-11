@@ -1,4 +1,4 @@
-pkgbase = confedi
+pkgbase = confedi-git
 	pkgdesc = Confedi is designed to help with changing configuration files with one command.
 	pkgver = 1
 	pkgrel = 1
@@ -8,6 +8,7 @@ pkgbase = confedi
 	makedepends = git
 	depends = python3
 	source = git+https://bitbucket.org/masterofhoppips/configuration-editor.git
+	md5sums = SKIP
 
-pkgname = confedi
+pkgname = confedi-git
 
