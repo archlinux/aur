@@ -1,7 +1,7 @@
 pkgbase = python-opentype-sanitizer
 	pkgdesc = Python wheels for the OpenType Sanitizer
-	pkgver = 8.1.0
-	pkgrel = 4
+	pkgver = 8.1.2.post3
+	pkgrel = 1
 	url = https://github.com/googlefonts/ots-python
 	arch = any
 	license = GPL3
@@ -9,9 +9,9 @@ pkgbase = python-opentype-sanitizer
 	makedepends = python-setuptools
 	depends = python
 	depends = ots
-	source = https://files.pythonhosted.org/packages/source/o/opentype-sanitizer/opentype-sanitizer-8.1.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/o/opentype-sanitizer/opentype-sanitizer-8.1.2.post3.tar.gz
 	source = system-ots-sanitize.patch
-	sha256sums = 1bed7b1eeb715cdc5be94b94e6b3c667d99be987a1b96b917e585b43a5b59c5e
+	sha256sums = 3f132cb465fbae2121ad58a1142c4972a53654f3d3f64b4c0376659e34e16a55
 	sha256sums = 6388d57e44f3dc7d6ee91422b30ca9eca3e3c590bacaa7bc4664b6183ed4d065
 
 pkgname = python-opentype-sanitizer
