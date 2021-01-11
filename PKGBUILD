@@ -12,7 +12,7 @@ license=('MIT')
 provides=(libcurl-gnutls)
 conflicts=(libcurl-gnutls)
 depends=('curl' 'glibc' 'gnutls' 'libidn2' 'libnghttp2'
-         'libpsl' 'libpsl.so' 'nettle' 'libnettle.so'
+         'libpsl' 'nettle'
          'zlib' 'zstd')
 options=('strip')
 source=("git+https://github.com/curl/curl")
