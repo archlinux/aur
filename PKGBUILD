@@ -1,7 +1,7 @@
 pkgname=confedi-git
 pkgver=1
 pkgrel=1
-pkgdesc=""
+pkgdesc="Confedi is designed to help with changing configuration files with one command."
 arch=(any)
 license=('GPL')
 depends=(python3)
