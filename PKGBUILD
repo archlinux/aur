@@ -1,10 +1,10 @@
-# Maintainer: Barry <brrtsm at gmail.com>
+# Maintainer: Barry Smith <brrtsm at gmail.com>
 # Contributor: nblock <nblock [/at\] archlinux DOT us>
 # Contributor: Frederik AlkÃ¦rsig (FALKER) <havnelisten AT gmail.com>
 
 pkgname=thinkfan
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A minimalist fan control program. Supports the sysfs hwmon interface and thinkpad_acpi"
 url="https://github.com/vmatare/thinkfan"
 arch=('i686' 'x86_64')
@@ -37,10 +37,9 @@ package() {
   install -D -m644 examples/* "$pkgdir"/usr/share/doc/"$pkgname"/examples
   install -D -m644 src/"$pkgname".1 "$pkgdir"/usr/share/man/man1
   install -D -m644 src/"$pkgname".conf.5 "$pkgdir"/usr/share/man/man5
-  install -D -m644 ../"$pkgname".service rcscripts/systemd/thinkfan-wakeup.service "$pkgdir"/usr/lib/systemd/system
-  install -D -m644 ../"$pkgname".service rcscripts/systemd/thinkfan-sleep.service "$pkgdir"/usr/lib/systemd/system
+  install -D -m644 "$srcdir/$pkgname".service rcscripts/systemd/thinkfan-{sleep,wakeup}.service "$pkgdir"/usr/lib/systemd/system
   install -D -m644 rcscripts/systemd/override.conf "$pkgdir"/etc/systemd/system/thinkfan.service.d
-  install -D -m644 ../thinkpad_acpi.conf "$pkgdir"/usr/lib/modprobe.d
+  install -D -m644 "$srcdir"/thinkpad_acpi.conf "$pkgdir"/usr/lib/modprobe.d
 }
 
 # vim:set ts=2 sw=2 noet:
