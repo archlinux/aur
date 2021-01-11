@@ -52,12 +52,12 @@ prepare() {
   # from https://github.com/obsproject/obs-studio/pull/2484
   cp -a "$srcdir"/.git/rr-cache .git/
   git config rerere.enabled true
+  git config user.email "placeholder@example.com"
+  git config user.name "Placeholder"
   git fetch origin pull/2484/head
   git checkout -b wayland FETCH_HEAD
   git merge master || true
   [[ -z "$(git rerere status)" ]] || exit 1
-  git config user.email "placeholder@example.com"
-  git config user.name "Placeholder"
   git commit --all --no-edit
 
   # from official arch package
