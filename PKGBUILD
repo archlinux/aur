@@ -5,7 +5,7 @@
 
 _pkgname=vokoscreenNG
 pkgname=vokoscreen-git
-pkgver=3.0.7.r14.g2222ed25
+pkgver=3.0.7.r46.g600669e0
 pkgrel=1
 epoch=1
 pkgdesc='An easy to use screencast creator. Development version.'
@@ -13,9 +13,10 @@ arch=('i686' 'x86_64')
 url='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'
 license=('GPL2')
 depends=('qt5-x11extras' 'qt5-multimedia' 'qt-gstreamer'
-	'gst-plugins-good' 'gst-plugins-bad' 'pulseaudio')
+	'gst-plugins-good' 'pulseaudio')
 makedepends=('git' 'qt5-tools' 'libxrandr' 'bzip2')
-optdepends=('gst-plugins-ugly: for x264 video codec')
+optdepends=('gst-plugins-ugly: for x264 video codec'
+	   'gst-plugins-bad: for faac')
 provides=("${_pkgname%NG}=${pkgver}")
 conflicts=("${_pkgname%NG}")
 source=("git+https://github.com/vkohaupt/${_pkgname}.git")
