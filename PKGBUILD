@@ -2,8 +2,8 @@
 # Contributor: scrawler@gmail.com
 
 pkgname=freeplane-git
-_NEXT_VERSION=1.8.x
-pkgver=1.8.x.878123add
+_NEXT_VERSION=1.9.x
+pkgver=1.9.x.5a1b8898e
 pkgrel=1
 pkgdesc="A Java mindmapping tool"
 arch=('any')
