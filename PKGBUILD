@@ -41,7 +41,7 @@ build() {
 package() {
   depends=('lib32-glew' mesa-demos)
 
-  cd "${srcdir}/mesa-demos-${pkgver}"
+  cd demos
   make DESTDIR="${pkgdir}" install
 
   for i in "$pkgdir/usr/bin/"*; do
