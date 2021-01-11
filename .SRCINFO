@@ -1,6 +1,6 @@
 pkgbase = obs-studio-wayland-git
 	pkgdesc = Free, open source software for live streaming and recording (with wayland patches)
-	pkgver = 26.1.2.r27.g79f8b420f
+	pkgver = 26.1.2.r3.g410c60e79
 	pkgrel = 1
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = obs-studio-wayland-git
 	makedepends = swig
 	makedepends = luajit
 	makedepends = python
-	makedepends = cef-minimal-3770
+	makedepends = cef-minimal
 	makedepends = wayland
 	depends = ffmpeg
 	depends = jansson
@@ -38,9 +38,9 @@ pkgbase = obs-studio-wayland-git
 	optdepends = python: Python scripting
 	optdepends = v4l2loopback-dkms: virtual webcam
 	optdepends = wlrobs: screen capture on wlroots compositors
-	provides = obs-studio=26.1.2.r27.g79f8b420f
+	provides = obs-studio=26.1.2.r3.g410c60e79
 	provides = obs-studio-git
-	provides = obs-studio-wayland=26.1.2.r27.g79f8b420f
+	provides = obs-studio-wayland=26.1.2.r3.g410c60e79
 	conflicts = obs-studio
 	source = obs-studio-wayland-git::git+https://github.com/obsproject/obs-studio.git#branch=master
 	source = git+https://github.com/Mixer/ftl-sdk.git
