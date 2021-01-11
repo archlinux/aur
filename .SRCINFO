@@ -1,23 +1,22 @@
 pkgbase = python-astroalign
 	pkgdesc = Astrometric Alignment of Images
-	pkgver = 1.0.3
+	pkgver = 2.3.1
 	pkgrel = 00
 	url = https://github.com/toros-astro/astroalign
 	arch = any
-	license = custom:
+	license = MIT
 	makedepends = python-pip
 	depends = python
 	depends = python-scipy
 	depends = python-scikit-image
 	depends = python-sep
 	depends = python-numpy
-	noextract = astroalign-1.0.3-py2.py3-none-any.whl
 	source = PKGBUILD_EXTRAS
-	source = https://files.pythonhosted.org/packages/ef/a9/6f744c255a15afd30b39d2c2a811dcc9352fe795e84e8cc006ab27280a16/astroalign-1.0.3-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/5e/cf/ce13356452bd43694370c4b648e80eec4a3b49c5ca2b080939581613e7a4/astroalign-2.3.1.tar.gz
 	source = LICENSE
 	md5sums = SKIP
-	md5sums = 48a0023e0a79e45792ced0c562bcd944
-	md5sums = 06b4d478d8468eabe14dd55952457292
+	md5sums = a251ccc1d38d36486da92c5e4c781078
+	md5sums = 814192244e134780a1bc35c1a784b1d0
 
 pkgname = python-astroalign
 
