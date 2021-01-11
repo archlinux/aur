@@ -1,17 +1,18 @@
 pkgbase = mkinitcpio-encrypt-bootsplash
 	pkgdesc = a mkinitcpio hook to pause bootsplash for LUKS password input
-	pkgver = 1.0
+	pkgver = 2
 	pkgrel = 1
 	url = https://github.com/archlinux/svntogit-packages/tree/packages/cryptsetup/trunk
+	install = mkinitcpio-encrypt-bootsplash.install
 	arch = x86_64
 	license = GPL
 	depends = cryptsetup
 	depends = linux-bootsplash
 	source = encrypt-hook
-	source = encrypt-hook.patch
+	source = encrypt-hook.diff
 	source = encrypt-install
 	sha256sums = 416aa179ce3c6a7a5eee0861f1f0a4fafac91b69e84a2aae82b6e5a6140e31e2
-	sha256sums = 658cdae681c25d6c0abdaf6b3913c091d58e730c8e0124a5e3c24efeb2adbdd9
+	sha256sums = ce0edec30abd79e7f72de45d37beb0de6aefea6242a7b5057a51289ca0a7f387
 	sha256sums = d325dc239ecc9a5324407b0782da6df2573e8491251836d6c4e65fa61339ce57
 
 pkgname = mkinitcpio-encrypt-bootsplash

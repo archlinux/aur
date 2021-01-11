@@ -1,0 +1,31 @@
+--- a/encrypt-hook	2020-07-30 04:12:39.225605612 -0700
++++ b/encrypt-hook  09:06:39.968085123 -0800
+@@ -80,6 +80,7 @@
+             fi
+             # Ask for a passphrase
+             if [ ${dopassphrase} -gt 0 ]; then
++                test -e /sys/devices/platform/bootsplash.0/enabled && echo 0 > /sys/devices/platform/bootsplash.0/enabled
+                 echo ""
+                 echo "A password is required to access the ${cryptname} volume:"
+ 
+@@ -87,6 +88,7 @@
+                 while ! eval cryptsetup open --type luks ${resolved} ${cryptname} ${cryptargs} ${CSQUIET}; do
+                     sleep 2;
+                 done
++                test -e /sys/devices/platform/bootsplash.0/enabled && echo 1 > /sys/devices/platform/bootsplash.0/enabled
+             fi
+             if [ -e "/dev/mapper/${cryptname}" ]; then
+                 if [ ${DEPRECATED_CRYPT} -eq 1 ]; then
+@@ -116,10 +118,12 @@
+             if [ -f "$ckeyfile" ]; then
+                 exe="$exe --key-file $ckeyfile"
+             else
++                test -e /sys/devices/platform/bootsplash.0/enabled && echo 0 > /sys/devices/platform/bootsplash.0/enabled
+                 echo ""
+                 echo "A password is required to access the ${cryptname} volume:"
+             fi
+             eval "$exe $CSQUIET"
++            test -e /sys/devices/platform/bootsplash.0/enabled && echo 1 > /sys/devices/platform/bootsplash.0/enabled
+ 
+             if [ $? -ne 0 ]; then
+                 err "Non-LUKS device decryption failed. verify format: "

@@ -1,0 +1,3 @@
+post_install() {
+	printf "\033[34mInfo\033[0m: Replace 'encrypt' hook with 'encrypt-bootsplash' to enable password prompt with bootplash\n"
+}
