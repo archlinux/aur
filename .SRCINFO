@@ -12,7 +12,7 @@ pkgbase = kamoso-git
 	depends = kirigami2
 	provides = kamoso
 	conflicts = kamoso
-	source = https://invent.kde.org/multimedia/kamoso.git
+	source = kamoso::git+https://invent.kde.org/multimedia/kamoso.git
 	sha256sums = SKIP
 
 pkgname = kamoso-git

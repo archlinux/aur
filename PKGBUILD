@@ -11,7 +11,7 @@ makedepends=('cmake' 'git')
 conflicts=('kamoso')
 provides=('kamoso')
 
-source=("https://invent.kde.org/multimedia/kamoso.git")
+source=("$_pkgname::git+https://invent.kde.org/multimedia/kamoso.git")
 sha256sums=('SKIP')
 
 pkgver() {
