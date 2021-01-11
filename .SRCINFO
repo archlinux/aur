@@ -1,6 +1,6 @@
 pkgbase = emacs-gcc-wayland-devel-bin
 	pkgdesc = GNU Emacs. Development native-comp branch and pgtk branch combined, served as a binary.
-	pkgver = 28.0.50.146289
+	pkgver = 28.0.50.144759
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	arch = x86_64
@@ -25,8 +25,8 @@ pkgbase = emacs-gcc-wayland-devel-bin
 	replaces = emacs27-git
 	replaces = emacs-git
 	replaces = emacs-seq
-	source = https://github.com/mpsq/emacs-gcc-wayland-devel-builder/releases/download/28.0.50.146289/28.0.50.146289.tar.gz
-	sha512sums = f61d60dccdc2f5aba4746b9623aef2089f519abd65a17b44ed153d999d33fdb9c023d9ffe185483f621dcc65c76be1f9a27a11eef7e059be154788356c9c4b5e
+	source = https://github.com/mpsq/emacs-gcc-wayland-devel-builder/releases/download/28.0.50.144759/28.0.50.144759.tar.gz
+	sha512sums = dba96ba545976d6f7cda207e1df82c03a82a78b2d247fca4bde86a9e88f7d56a2fe15557b9c918557f189f2cf64f561318a2c08230dc447ed9621d1f21e118e2
 
 pkgname = emacs-gcc-wayland-devel-bin
 
