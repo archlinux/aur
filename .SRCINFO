@@ -1,12 +1,12 @@
 pkgbase = m68k-elf-newlib
 	pkgdesc = C library for bare metal systems (m68k-elf).
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceware.org/newlib/
 	arch = any
 	groups = devel
 	license = BSD
-	depends = m68k-elf-gcc-bootstrap
+	makedepends = m68k-elf-gcc-bootstrap
 	depends = m68k-elf-binutils
 	options = !makeflags
 	options = !strip
