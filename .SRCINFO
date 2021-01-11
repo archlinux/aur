@@ -9,7 +9,6 @@ pkgbase = libcurl-gnutls-minimal-git
 	depends = glibc
 	depends = gnutls
 	depends = libidn2
-	depends = libidn2.so
 	depends = libnghttp2
 	depends = libpsl
 	depends = libpsl.so
