@@ -14,4 +14,5 @@ md5sums=('SKIP')
 package() {
     mkdir -p "$pkgdir"/usr/bin
     cp configuration-editor/src/program.py "$pkgdir"/usr/bin/$pkgname
+    chmod +x "$pkgdir"/usr/bin/$pkgname
 }
