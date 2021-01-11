@@ -2,7 +2,7 @@
 
 pkgname=nanosaur
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Play as a cybernetic dinosaur in this third-person shooter"
 arch=(x86_64)
 url="https://github.com/jorio/Nanosaur"
@@ -15,12 +15,14 @@ source=("$pkgname::git+https://github.com/jorio/Nanosaur.git#tag=v$pkgver"
         "git+https://github.com/jorio/Pomme.git"
         "git+https://github.com/jorio/Quesa.git"
         LICENSE
-        "$pkgname.desktop")
+        "$pkgname.desktop"
+        "$pkgname.sh")
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'ff25be6bd681b6d54b7ae97f81611bf601fad532ac413c90f2d683e252ada8015da1a24cf830b90d6d3c78463505d55044b58b457351fdae56f14fe2ab9ca754'
-        'a58f80a565d56b634a3ca70867779c469755828c44c26261553b3d7e663d32204318ef29500596668e1de2c4a16068200430820f3dd2c459da1d8265ebe5b78f')
+        'a58f80a565d56b634a3ca70867779c469755828c44c26261553b3d7e663d32204318ef29500596668e1de2c4a16068200430820f3dd2c459da1d8265ebe5b78f'
+        '21824ed76dd1150c5c7c84e4d580959c2bab00c54d9c558ee1565f63f864a4be3bf745e0d436720a71273efb0b9077cf93477ec977b46dd78bd552786569ec74')
 
 prepare() {
   cd "$pkgname"
@@ -47,6 +49,9 @@ package() {
 
   # move binary & assets
   mv build/{Data,Nanosaur} "$pkgdir/usr/lib/$pkgname"
+
+  # wrapper script for $PATH execution
+  install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 
   # license
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/LICENSE"
