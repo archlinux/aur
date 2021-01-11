@@ -2,31 +2,27 @@
 # Contributor: FrozenCow <frozencow@gmail.com>
 
 pkgname=libusrsctp-git
-pkgver=3425.6093769
-pkgrel=2
+pkgver=0.9.4.0
+pkgrel=1
 pkgdesc="A portable SCTP userland stack"
 
 arch=('i686' 'x86_64')
 url="https://github.com/sctplab/usrsctp"
-license=('custom')
+license=("BSD")
 
-source=("${pkgname}::git+https://github.com/sctplab/usrsctp.git")
-sha256sums=('SKIP')
-
-pkgver() {
-    cd ${pkgname}
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
+makedepends=('cmake' 'git')
+source=("${pkgver}::https://github.com/sctplab/usrsctp/archive/0.9.4.0.tar.gz")
+sha256sums=('e7b8f908d71dc69c9a2bf55d609e8fdbb2fa7cc647f8b23a837d36a05c59cd77')
 
 build() {
-  cd ${pkgname}
+  cd "$srcdir/usrsctp-$pkgver"
   unset CPPFLAGS
   cmake .
   make
 }
 
 package() {
-  cd ${pkgname}
+  cd "$srcdir/usrsctp-$pkgver"
   make DESTDIR="$pkgdir/" install
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -2,14 +2,14 @@
 # Sat Jan  9 18:58:03 UTC 2016
 pkgbase = libusrsctp-git
 	pkgdesc = A portable SCTP userland stack
-	pkgver = 3425.6093769
+	pkgver = 0.9.4.0
 	pkgrel = 1
 	url = https://github.com/sctplab/usrsctp
 	arch = i686
 	arch = x86_64
 	license = BSD
-	source = libusrsctp-git::git+https://github.com/sctplab/usrsctp.git
-	sha256sums = SKIP
+	source = ${pkgver}::https://github.com/sctplab/usrsctp/archive/0.9.4.0.tar.gz
+	sha256sums = e7b8f908d71dc69c9a2bf55d609e8fdbb2fa7cc647f8b23a837d36a05c59cd77
 
-pkgname = libusrsctp-git
+pkgname = usrsctp-git
 
