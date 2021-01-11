@@ -1,12 +1,12 @@
 # Maintainer: Jeremy MountainJohnson <jay@jskier.com>
 pkgname=gophercap
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Accurate, modular, scalable PCAP manipulation tool written in Go.'
 arch=('x86_64')
 url="https://github.com/StamusNetworks/gophercap"
 license=('Apache')
-makedepends=('go')
+makedepends=('go' 'libpcap')
 source=("https://github.com/StamusNetworks/gophercap/archive/v$pkgver.tar.gz")
 sha256sums=('bd9afc756d8dac687217d077231175267d0733c18940a85b6ddb32b691c849df')
 
