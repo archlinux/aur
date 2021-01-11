@@ -1,0 +1,16 @@
+_depmod() {
+  EXTRAMODULES=extramodules-5.8-armv7
+  depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
+}
+
+post_install() {
+  _depmod
+}
+
+post_upgrade() {
+  _depmod
+}
+
+post_remove() {
+  _depmod
+}
