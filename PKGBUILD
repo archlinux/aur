@@ -1,7 +1,7 @@
 # Maintainer: ventusliberum <dafeinayius@gmail.com>
 
 pkgname=graviton-bin
-pkgver=2.1.6
+pkgver=2.1.7
 pkgrel=1
 pkgdesc='A modern Code Editor'
 arch=('x86_64')
@@ -11,10 +11,10 @@ depends=('libappindicator-gtk3' 'libnotify' 'libxss' 'nss' 'xdg-utils')
 provides=("graviton")
 conflicts=("graviton")
 
-source=("https://github.com/Graviton-Code-Editor/Graviton-App/releases/download/v${pkgver}/GravitonEditor_Installer_${pkgver}_linux.deb"
+source=("https://github.com/Graviton-Code-Editor/Graviton-App/releases/download/v${pkgver}/Graviton.Editor_Installer_${pkgver}_linux_amd64.deb"
         "https://raw.githubusercontent.com/Graviton-Code-Editor/Graviton-App/master/LICENSE.md")
 
-sha256sums=('32082a5376280767b1d7f82a3667e9c9577951c29350261ee55b40632612816f'
+sha256sums=('4b07ca064c7fb72a24ff6ffa8b89598fbb9bf227facdcd0cbd85a7b24a16f8a6'
             'SKIP')
 
 package() {
@@ -22,7 +22,7 @@ package() {
     cd "$srcdir"
     tar -xJf data.tar.xz -C "$pkgdir"
     install -dm755 "$pkgdir/usr/bin"
-    ln -s /opt/Graviton/graviton "$pkgdir/usr/bin/graviton"
+    ln -s "/opt/Graviton Editor/graviton" "$pkgdir/usr/bin/graviton"
     install -Dm644 "$srcdir/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    sed -i 's,/opt/Graviton/graviton %U,/usr/bin/graviton %F,g' "$pkgdir/usr/share/applications/graviton.desktop"
+    sed -i 's,^Exec="/opt/Graviton Editor/graviton" %U$,Exec=/usr/bin/graviton %F,g' "$pkgdir/usr/share/applications/graviton.desktop"
 }
