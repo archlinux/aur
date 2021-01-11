@@ -1,6 +1,6 @@
 pkgbase = 3ncode-git
 	pkgdesc = Graphical video and audio converter for ffmpeg
-	pkgver = r35.30e0440
+	pkgver = r37.2222e41
 	pkgrel = 1
 	url = https://github.com/llelectronics/3ncode
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = 3ncode-git
 	optdepends = mkvtoolnix-cli: mkv files
 	provides = 3ncode
 	conflicts = 3ncode
-	source = git://github.com/llelectronics/3ncode.git
+	source = 3ncode-git::git+https://github.com/llelectronics/3ncode.git
 	source = 3ncode.sh
 	source = 3ncode.desktop
 	md5sums = SKIP
