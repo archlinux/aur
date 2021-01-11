@@ -1,4 +1,4 @@
-From 08758cddd4d5749f2715534b28108420cb167b74 Mon Sep 17 00:00:00 2001
+From f6e09895b65ce46cec39c88c0b057735c7ea17ee Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Tue, 1 Sep 2020 12:22:28 +0100
 Subject: [PATCH 3/3] Don't build the main poppler library.
@@ -8,7 +8,7 @@ Subject: [PATCH 3/3] Don't build the main poppler library.
  1 file changed, 17 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 1573249a..67bd471d 100644
+index cf88eef1..91f9c5e8 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -564,23 +564,6 @@ ADD_GPERF_FILE(TimesItalicWidths)
@@ -21,7 +21,7 @@ index 1573249a..67bd471d 100644
 -else()
 -add_library(poppler ${poppler_SRCS})
 -endif()
--set_target_properties(poppler PROPERTIES VERSION 105.0.0 SOVERSION 105)
+-set_target_properties(poppler PROPERTIES VERSION 106.0.0 SOVERSION 106)
 -if(MINGW AND BUILD_SHARED_LIBS)
 -    get_target_property(POPPLER_SOVERSION poppler SOVERSION)
 -    set_target_properties(poppler PROPERTIES SUFFIX "-${POPPLER_SOVERSION}${CMAKE_SHARED_LIBRARY_SUFFIX}")
@@ -36,5 +36,5 @@ index 1573249a..67bd471d 100644
    install(FILES
      poppler/Annot.h
 -- 
-2.29.2
+2.30.0
 
