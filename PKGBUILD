@@ -28,7 +28,6 @@ check(){
   cd hdfview-${pkgver}
   export HDFLIBS=/opt/hdf4
   export HDF5LIBS=/opt/hdf5110
-  export JAVA_HOME=/usr/lib/jvm/java-14-openjdk
   ant junit
 }
 
@@ -36,7 +35,6 @@ package() {
   cd hdfview-${pkgver}
   export HDFLIBS=/opt/hdf4
   export HDF5LIBS=/opt/hdf5110
-  export JAVA_HOME=/usr/lib/jvm/java-14-openjdk
   ant createJPackage
 
   mkdir -p "${pkgdir}/opt"
