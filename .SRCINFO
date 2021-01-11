@@ -1,6 +1,6 @@
 pkgbase = python-pyowm
 	pkgdesc = A Python wrapper around OpenWeatherMap web APIs
-	pkgver = 3.0.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = http://github.com/csparpa/pyowm
 	arch = any
@@ -11,8 +11,10 @@ pkgbase = python-pyowm
 	depends = python-requests<3
 	depends = python-geojson>=2.3.0
 	depends = python-geojson<3
-	source = https://github.com/csparpa/pyowm/archive/3.0.0.tar.gz
-	sha256sums = 9073d2ebb13b4c8878059b7c26aa1af2ad5675f74e060ac3828e148026458c99
+	depends = python-pysocks>=1.7.1
+	depends = python-pysocks<2
+	source = https://github.com/csparpa/pyowm/archive/3.1.1.tar.gz
+	sha256sums = 9785e5cab4aaf2bddde4268b83841033acca363b06d97f941832adb52c00ead4
 
 pkgname = python-pyowm
 	depends = python>=3.7
@@ -20,4 +22,6 @@ pkgname = python-pyowm
 	depends = python-requests<3
 	depends = python-geojson>=2.3.0
 	depends = python-geojson<3
+	depends = python-pysocks>=1.7.1
+	depends = python-pysocks<2
 
