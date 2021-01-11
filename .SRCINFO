@@ -6,6 +6,7 @@ pkgbase = confedi-git-bin
 	arch = any
 	license = GPL
 	makedepends = git
+	makedepends = pyinstaller
 	depends = python3
 	source = git+https://bitbucket.org/masterofhoppips/configuration-editor.git
 	md5sums = SKIP

@@ -5,16 +5,18 @@ pkgdesc="Confedi is designed to help with changing configuration files with one 
 arch=(any)
 license=('GPL')
 depends=(python3)
-makedepends=(git)
+makedepends=(git pyinstaller)
 url="https://bitbucket.org/masterofhoppips/configuration-editor.git"
 source=("git+$url")
 md5sums=('SKIP')
 
 build(){
+	cd configuraton-editor
 	pyinstaller program.py -F
+	cd ..
 }
 
 package() {
-    mkdir -p "$pkgdir"/usr/bin
-    cp configuration-editor/src/dist/program "$pkgdir"/usr/bin/$pkgname
+	mkdir -p "$pkgdir"/usr/bin
+	cp configuration-editor/src/dist/program "$pkgdir"/usr/bin/$pkgname
 }
