@@ -1,0 +1,22 @@
+pkgbase = idrt-git
+	pkgdesc = An application intended to hold your web-based messaging-applications (or any other single page application)
+	pkgver = 20210111_d6da738
+	pkgrel = 1
+	url = https://github.com/hpotter02/idrt
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = npm
+	depends = electron
+	provides = idrt
+	conflicts = idrt
+	conflicts = idrt-bin
+	source = idrt::git+https://github.com/hpotter02/idrt.git
+	source = idrt.desktop
+	source = idrt.sh
+	md5sums = SKIP
+	md5sums = f0c07f2cfc3c87ed1d3c8562d23f698d
+	md5sums = a682caeacffc6f6e68000de986fa545e
+
+pkgname = idrt-git
+

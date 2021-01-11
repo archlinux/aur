@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=idrt
+Comment=organise your messegers
+Exec=idrt %U
+Terminal=false
+Type=Application
+Icon=idrt
+Categories=Utility;
+StartupWMClass=idrt
