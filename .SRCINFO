@@ -1,6 +1,6 @@
 pkgbase = dosbox-x-sdl2-git
 	pkgdesc = x86 emulator with builtin DOS, with patches with more features - sdl2 git version
-	pkgver = 13176.49c1b11b4
+	pkgver = 13218.6e258e4a9
 	pkgrel = 1
 	url = http://dosbox.sourceforge.net
 	install = dosbox-x.install
