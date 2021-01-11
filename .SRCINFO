@@ -1,6 +1,6 @@
 pkgbase = lx-music
 	pkgdesc = 一个基于 electron 的音乐软件
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/lyswhut/lx-music-desktop
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = lx-music
 	makedepends = moreutils
 	makedepends = npm
 	depends = electron9
-	source = lx-music-1.5.0.tar.gz::https://github.com/lyswhut/lx-music-desktop/archive/v1.5.0.tar.gz
-	sha256sums = 1c9d3af5b9b6b99df7733d2d2a4832a8d865166e358e708831133a4fda71edea
+	source = lx-music-1.6.0.tar.gz::https://github.com/lyswhut/lx-music-desktop/archive/v1.6.0.tar.gz
+	sha256sums = c27f567780c5d6562347a69c9d2f08f083070f41e23e2d891b4082e70dd02eab
 
 pkgname = lx-music
