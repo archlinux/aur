@@ -10,7 +10,7 @@ url="https://portal.hdfgroup.org/display/support/Download+HDFView"
 license=('custom')
 depends=(
 hdf5110
-java-environment-openjdk=14
+java-environment-openjdk=15
 )
 optdepends=(hdf4)
 replaces=('hdfview-beta')

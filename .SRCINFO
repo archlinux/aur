@@ -8,7 +8,7 @@ pkgbase = hdfview
 	makedepends = ant
 	makedepends = gendesk
 	depends = hdf5110
-	depends = java-environment-openjdk=14
+	depends = java-environment-openjdk=15
 	optdepends = hdf4
 	conflicts = hdfview-beta
 	replaces = hdfview-beta
