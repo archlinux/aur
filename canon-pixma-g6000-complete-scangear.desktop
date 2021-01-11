@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Canon Scangear (G6000)
+Exec=/usr/bin/scangearmp2
+Icon=/usr/share/pixmaps/canon-pixma-g6000-complete-scangear-icon.png
+Categories=Graphics;2DGraphics;
+Name[en_US]=canon-pixma-g6000-complete-scangear.desktop

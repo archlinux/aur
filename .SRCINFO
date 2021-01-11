@@ -1,0 +1,38 @@
+pkgbase = canon-pixma-g6000-complete
+	pkgdesc = Print Scan for Canon PIXMA series E3340 G5040 G5050 G6040 G6050 GM2050 TS3340 TS3350 TS3351 TS3352 TS3355 TS5340 TS5350 TS5351 TS5352 TS5353 TS6340 TS6350 TS6351 TS8340 TS8350 TS8351 TS8352
+	pkgver = 5.90
+	pkgrel = 1
+	url = https://www.canon-europe.com/support/consumer_products/products/fax__multifunctionals/inkjet/pixma_g_series/pixma-g6050.html?type=drivers
+	install = canon-pixma-g6000-complete.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = popt
+	depends = libusb-compat
+	depends = gtk2
+	conflicts = canon-pixma-mg3000-complete
+	conflicts = canon-pixma-mg5700-complete
+	conflicts = canon-pixma-mx495-printer
+	conflicts = canon-pixma-ts5055-printer
+	options = !strip
+	source = https://gdlp01.c-wss.com/gds/2/0100010482/01/cnijfilter2-5.90-1-deb.tar.gz
+	source = https://gdlp01.c-wss.com/gds/5/0100010485/01/scangearmp2-3.90-1-deb.tar.gz
+	source = canon-pixma-g6000-complete-scangear.desktop
+	source = canon-pixma-g6000-complete-scangear-icon.png
+	md5sums = 368cf7466336eb77d4f8661e01be5da3
+	md5sums = 2076a830e774283223c44fca42f18c15
+	md5sums = bd78d16ffb2b40f96f811b30e42b16bf
+	md5sums = 3feefd413092d7152f47b7451ba79efe
+	sha256sums = 0e59ca1781c046c0dc10876011d554ecb1744bdc50dd2209eccffa8a25507d85
+	sha256sums = a4653e636d7894d880574da09589cfac1dbecc7594075824aac307bf01692159
+	sha256sums = c437966f4c12c22b7ef2700f24f10a24c4091a97dd368fd570ec5e1264cf0f8e
+	sha256sums = 29dbc682d3f22d79f580bda54801d1f4ef261d857c756eaf4db29e1313406bcc
+	depends_i686 = lib32-libpng12
+	depends_i686 = lib32-libtiff
+	depends_i686 = lib32-libxml2
+	depends_x86_64 = libpng12
+	depends_x86_64 = libtiff
+	depends_x86_64 = libxml2
+
+pkgname = canon-pixma-g6000-complete
+
