@@ -11,7 +11,7 @@ depends=('wxgtk3' 'openssl' 'fontconfig' 'curl')
 makedepends=('cmake')
 install=${pkgname}.install
 source=(https://files.dxsolutions.org/$pkgname-$pkgver.tar.gz)
-md5sums=('6cc53076cfe132b065131b95671dd158')
+md5sums=('8eb93929980a6419d888bec3aea2650c')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
