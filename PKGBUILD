@@ -1,11 +1,9 @@
 # Maintainer: MatMoul <matmoul@gmail.com>
-# Contributor: Stephan Springer <buzo+arch@Lini.de>
-# Contributor: kikadf <kikadf.01@gmail.com>
 
 pkgname=alpm_octopi_utils
 pkgver=1.0.2
-_commit=bd9fcd5fc5de8e8e800fbdf553249c95f1300356
-pkgrel=1
+_commit=2bb9349507f8155155c9b5f12b1f30e60e157d30
+pkgrel=2
 pkgdesc="Alpm utils for Octopi"
 url="https://tintaescura.com/projects/octopi/"
 arch=('i686' 'x86_64')
@@ -13,7 +11,7 @@ license=('GPL3')
 depends=('pacman-contrib')
 makedepends=('vala')
 source=("https://github.com/aarnt/${pkgname}/archive/${_commit}.tar.gz")
-sha256sums=('6af796743349f04127b4e168b03afef510d1b869c8116718c4cc26059ef6d19b')
+sha256sums=('7decbc613f65aafb5a4ef8f9fbe5b87893f535e8c6e5c9d9659051ee6ce0aef5')
          
 build() {
     cd "$pkgname-$_commit"
