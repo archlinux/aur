@@ -1,7 +1,7 @@
 # Maintainer: Joaquin (Pato) Decima <https://patojad.com.ar/>
 
 pkgname=lynx-desktop-settings
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=2
 pkgdesc="Archivos de configuracion de LynxOS"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://gitlab.com/LynxOS/lds"
 license=('GPL')
 makedepends=('git')
 source=("$url/-/archive/$pkgver/lds-$pkgver.tar.gz")
-md5sums=('d93d85e25aa44f6e2cdd8a541d01d959')
+md5sums=('d7ddc712c12fe0f8f61af97534d8ef22')
 depends=(
         'dex'
         'qt5-styleplugins'
@@ -17,6 +17,7 @@ depends=(
         'xcursor-breeze'
         'qt5ct'
         'polkit-gnome'
+        'sxhkd-git'
         'lynx-menu-data'
         'lynx-gtk-theme'
         'network-manager-applet'

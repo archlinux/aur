@@ -1,6 +1,6 @@
 pkgbase = lynx-desktop-settings
 	pkgdesc = Archivos de configuracion de LynxOS
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 2
 	url = https://gitlab.com/LynxOS/lds
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = lynx-desktop-settings
 	depends = xcursor-breeze
 	depends = qt5ct
 	depends = polkit-gnome
+	depends = sxhkd-git
 	depends = lynx-menu-data
 	depends = lynx-gtk-theme
 	depends = network-manager-applet
@@ -19,8 +20,8 @@ pkgbase = lynx-desktop-settings
 	depends = tint2
 	depends = pavucontrol
 	depends = pa-applet-git
-	source = https://gitlab.com/LynxOS/lds/-/archive/0.0.2/lds-0.0.2.tar.gz
-	md5sums = d93d85e25aa44f6e2cdd8a541d01d959
+	source = https://gitlab.com/LynxOS/lds/-/archive/0.0.3/lds-0.0.3.tar.gz
+	md5sums = d7ddc712c12fe0f8f61af97534d8ef22
 
 pkgname = lynx-desktop-settings
 
