@@ -6,7 +6,7 @@
 # Contributor: Franco Tortoriello <franco.tortoriello@gmail.com>
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
-pkgname=lib32-libtirpc-git
+pkgname=lib32-libtirpc-minimal-git
 pkgver=1.3.1
 pkgrel=1
 pkgdesc='Transport Independent RPC library (SunRPC replacement)'
@@ -39,7 +39,8 @@ build() {
   ./configure \
     --prefix=/usr \
     --libdir=/usr/lib32 \
-    --sysconfdir=/etc
+    --sysconfdir=/etc \
+    --disable-ipv6
   make
 }
 
