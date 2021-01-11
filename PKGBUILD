@@ -1,10 +1,9 @@
-# Current Maintainer: necklace <ns@nsz.no>
-# Original Packager: sunnaryt <joshd@protonmail.com>
-# Contributors: Det, t3ddy, Lex Rivera aka x-demon, ruario
+# Maintainer: necklace <ns@nsz.no>
+# Contributor: sunnaryt <joshd@protonmail.com>
 
 pkgname=iridium-deb
 pkgver=73.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An attempt at creating a safer, faster, and more stable browser (Stable Channel)"
 arch=('x86_64')
 url="https://iridiumbrowser.de/"
@@ -15,7 +14,8 @@ depends=('alsa-lib' 'desktop-file-utils' 'flac' 'gconf' 'gnome-themes-standard' 
 optdepends=('kdialog: needed for file dialogs in KDE'
             'ttf-liberation: fix fonts for some PDFs')
 options=('!emptydirs' '!strip')
-
+provides=('iridium')
+conflicts=('iridium')
 source=("https://downloads.iridiumbrowser.de/deb/pool/main/i/iridium-browser/iridium-browser_2019.04.73-1iridium0_amd64.deb")
 
 sha256sums=('12c64bec477ffe5b998994bcd7f1078abff3691edc1c25cd4792e0e59b78ba90')
