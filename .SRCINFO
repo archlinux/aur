@@ -1,0 +1,13 @@
+pkgbase = waybar-mpris-git
+	pkgdesc = MPRIS2 waybar component
+	pkgver = r29.937769e
+	pkgrel = 1
+	url = https://git.hrfee.pw/hrfee/waybar-mpris
+	arch = any
+	license = unknown
+	makedepends = go
+	source = git+https://git.hrfee.pw/hrfee/waybar-mpris
+	md5sums = SKIP
+
+pkgname = waybar-mpris-git
+
