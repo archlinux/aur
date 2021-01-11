@@ -1,8 +1,8 @@
 diff --git i/nitter.conf w/nitter.conf
-index 99b0d18..e1dbae1 100644
+index d6d860b..877b270 100644
 --- i/nitter.conf
 +++ w/nitter.conf
-@@ -1,13 +1,13 @@
+@@ -1,10 +1,10 @@
  [Server]
 -address = "0.0.0.0"
 -port = 8080
@@ -17,12 +17,8 @@ index 99b0d18..e1dbae1 100644
 +hostname = "nitter.net"  # Change this
  
  [Cache]
--directory = "./tmp"
-+directory = "/var/cache/nitter"
  listMinutes = 240  # how long to cache list info (not the tweets, so keep it high)
- rssMinutes = 10  # how long to cache rss queries
- redisHost = "localhost"
-@@ -19,8 +19,8 @@ redisMaxConnections = 30
+@@ -18,8 +18,8 @@ redisMaxConnections = 30
  # you receive tons of requests per second
  
  [Config]
@@ -33,13 +29,13 @@ index 99b0d18..e1dbae1 100644
  tokenCount = 10
  # minimum amount of usable tokens. tokens are used to authorize API requests,
  # but they expire after ~1 hour, and have a limit of 187 requests.
-@@ -30,9 +30,9 @@ tokenCount = 10
+@@ -29,9 +29,9 @@ tokenCount = 10
  
  # Change default preferences here, see src/prefs_impl.nim for a complete list
  [Preferences]
 -theme = "Nitter"
 -replaceTwitter = "nitter.net"
--replaceYouTube = "invidious.snopyta.org"
+-replaceYouTube = "invidio.us"
 +theme = "twitter_dark"  # Change this?
 +replaceTwitter = "nitter.net"  # Use the same "hostname" as above
 +replaceYouTube = ""
