@@ -1,0 +1,24 @@
+pkgbase = lib32-icu-git
+	pkgdesc = International Components for Unicode library (32 bit)
+	pkgver = 68.2
+	pkgrel = 1
+	url = http://site.icu-project.org/home
+	arch = x86_64
+	license = custom:icu
+	checkdepends = python
+	makedepends = gcc-multilib
+	depends = lib32-gcc-libs
+	depends = icu
+	provides = libicudata.so
+	provides = libicui18n.so
+	provides = libicuio.so
+	provides = libicutest.so
+	provides = libicutu.so
+	provides = libicuuc.so
+	provides = lib32-icu
+	conflicts = lib32-icu
+	source = git+https://github.com/unicode-org/icu.git
+	sha512sums = SKIP
+
+pkgname = lib32-icu-git
+
