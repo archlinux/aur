@@ -1,6 +1,6 @@
 pkgbase = kamoso-git
 	pkgdesc = Kamoso is an application to take pictures and videos out of your webcam. Git version.
-	pkgver = r994.95d86f8
+	pkgver = r1410.311960b
 	pkgrel = 1
 	url = https://kde.org/applications/en/kamoso
 	arch = i686
@@ -8,6 +8,8 @@ pkgbase = kamoso-git
 	license = GPL
 	makedepends = cmake
 	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
 	depends = purpose
 	depends = kirigami2
 	provides = kamoso
