@@ -1,7 +1,7 @@
 pkgbase = nancy-bin
 	pkgdesc = A tool to check for vulnerabilities in your Golang dependencies
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sonatype-nexus-community/nancy
 	arch = x86_64
 	arch = i686
