@@ -1,6 +1,6 @@
 pkgbase = nheko-git
 	pkgdesc = Desktop client for the Matrix protocol
-	pkgver = 0.7.2.r1925.fe325f92
+	pkgver = 0.7.2.r2316.b6f2acfe
 	pkgrel = 1
 	url = https://github.com/Nheko-Reborn/nheko
 	arch = i686
@@ -20,6 +20,7 @@ pkgbase = nheko-git
 	depends = qt5-svg
 	depends = qt5-quickcontrols2
 	depends = qt5-declarative
+	depends = qtkeychain-qt5
 	depends = boost-libs
 	depends = libsodium
 	depends = cmark
