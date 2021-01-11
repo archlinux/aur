@@ -1,0 +1,23 @@
+pkgbase = pango-minimal-git
+	pkgdesc = A library for layout and rendering of text
+	pkgver = 1.44.3
+	pkgrel = 1
+	epoch = 1
+	url = https://www.pango.org/
+	arch = x86_64
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = meson
+	depends = cairo
+	depends = libxft
+	depends = harfbuzz
+	optdepends = libthai: Thai language support
+	optdepends = fribidi: Hebrew and Arabic language support
+	provides = pango
+	conflicts = pango
+	source = git+https://gitlab.gnome.org/GNOME/pango.git
+	sha256sums = SKIP
+
+pkgname = pango-minimal-git
+
