@@ -2,14 +2,14 @@
 pkgbase=python-einsteinpy-git
 _gitname=einsteinpy
 pkgname=("python-${_gitname}-git" "python-${_gitname}-doc-git")
-pkgver=0.1.0.r647.g77ce582
+pkgver=0.1.0.r652.g86d0b7d
 pkgrel=1
 pkgdesc="Python package for General Relativity"
 arch=('i686' 'x86_64')
 url="https://einsteinpy.org"
 license=('MIT')
 makedepends=('git' 'python-setuptools' 'python-scipy' 'python-nbsphinx' 'pandoc' 'graphviz')
-checkdepends=('python-pytest' 'python-matplotlib' 'python-sympy' 'python-plotly' 'python-astropy' 'python-numba' 'python-einsteinpy_geodesics')
+checkdepends=('python-pytest-doctestplus' 'python-matplotlib' 'python-sympy' 'python-plotly' 'python-astropy' 'python-numba' 'python-einsteinpy_geodesics')
 source=("git+https://github.com/einsteinpy/einsteinpy")
 md5sums=('SKIP')
 
@@ -22,6 +22,13 @@ pkgver() {
     )
 }
 
+#prepare() {
+#    cd ${srcdir}/${_gitname}
+#
+#    sed '/julia/s/False/True/g' -i tests/test_plotting/test_geodesic/test_interactive.py \
+#        -i tests/test_plotting/test_geodesic/test_static.py -i tests/test_geodesic/test_geodesic.py
+#}
+
 build() {
     cd ${srcdir}/${_gitname}
     python setup.py build
@@ -33,7 +40,7 @@ build() {
 check() {
     cd ${srcdir}/${_gitname}
 
-    PYTHONPATH="build/lib" pytest
+    PYTHONPATH="build/lib" pytest tests
 }
 
 package_python-einsteinpy-git() {
