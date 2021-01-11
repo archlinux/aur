@@ -4,7 +4,7 @@
 
 pkgname=pdfsam
 pkgver=4.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free open source tool to split and merge pdf documents"
 arch=('any')
 url="https://www.pdfsam.org/"
@@ -20,7 +20,7 @@ prepare() {
   # create *.desktop file
   gendesk -f -n \
           --pkgname="${pkgname}" \
-          --pkgdesc="${pkgdesk}" \
+          --pkgdesc="${pkgdesc}" \
           --name="PDFsam" \
           --categories="Office"
 
