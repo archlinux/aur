@@ -2,7 +2,7 @@
 
 pkgname=zettlr
 pkgver=1.8.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
@@ -27,9 +27,6 @@ sha256sums=('59a89ea4c86cf64920b540c0734566dbf737f08c6f48256fc8de124f65aebade'
 
 prepare() {
     cd "Zettlr-$pkgver"
-
-    # Manually add community translation
-    cp "$srcdir/zh-TW-$pkgver-$pkgrel.json" source/common/lang/zh-TW.json
 
     # csl:refresh from package.json
     find "$srcdir/locales-$_csl_locale_commit" -name "*.xml" \
