@@ -2,7 +2,7 @@
 
 pkgname=("lynx-ldk")
 _pkgname="ldk"
-pkgver=3.5.7
+pkgver=3.5.8
 pkgrel=2
 pkgdesc="Build hybrid web/desktop applications or wrappers on Linux, with Python, JavaScript, HTML5, and CSS3 and QTWebengine"
 url="https://gitlab.com/LynxOS/$_pkgname"
@@ -10,7 +10,7 @@ depends=("python>=3.8" "desktop-file-utils" "python-pyqt5>=5.14" "python-pyqtweb
 makedepends=("python-setuptools")
 license=("GPL")
 arch=("any")
-md5sums=('802dd89454e183ac8214ad756324d180')
+md5sums=('1d4e33c5cfa9f0ada98f08a218ce8c78')
 source=("$url/-/archive/$pkgver/ldk-$pkgver.tar.gz")
 
 build() {
