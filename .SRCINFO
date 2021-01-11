@@ -7,6 +7,9 @@ pkgbase = screendimmer
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
+	depends = python-screeninfo
+	depends = python-pyqt5
+	backup = etc/screendimmer/brightness.ini
 	source = screendimmer-0.3.1.tar.gz::https://github.com/Lawrence-Chiappelli/screendimmer/archive/0.3.1.tar.gz
 	md5sums = 7fc20944ebc3e729c1ba774423cf3493
 
