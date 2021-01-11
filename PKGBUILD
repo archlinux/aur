@@ -7,14 +7,9 @@ pkgdesc="Documentation for AstroPy"
 arch=('i686' 'x86_64')
 url="http://www.astropy.org"
 license=('BSD')
-makedepends=("python-${_pyname}=${pkgver}" 'python-yaml' 'python-pillow' 'python-astropy-helpers>=4.0.1' 'graphviz' 'python-scikit-image' 'python-pytest' 'python-sphinx-astropy')
+makedepends=("python-${_pyname}=${pkgver}" 'python-scipy' 'python-yaml' 'graphviz' 'python-pytest' 'python-sphinx-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('6801e8c78ed2f02fd8fdc0ea65048f95')
-
-prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-    sed -i -e '/auto_use/s/True/False/' setup.cfg
-}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}/docs

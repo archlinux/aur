@@ -7,11 +7,9 @@ pkgbase = python-astropy-doc
 	arch = x86_64
 	license = BSD
 	makedepends = python-astropy=4.2
+	makedepends = python-scipy
 	makedepends = python-yaml
-	makedepends = python-pillow
-	makedepends = python-astropy-helpers>=4.0.1
 	makedepends = graphviz
-	makedepends = python-scikit-image
 	makedepends = python-pytest
 	makedepends = python-sphinx-astropy
 	source = https://files.pythonhosted.org/packages/source/a/astropy/astropy-4.2.tar.gz
