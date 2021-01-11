@@ -6,7 +6,7 @@ pkgdesc="Track your portfolio performance (finance)"
 arch=('i686' 'x86_64')
 url="http://buchen.github.io/portfolio/"
 license=('EPL')
-depends=('java-runtime>=8' 'webkit2gtk')
+depends=('java-runtime>=8' 'java-runtime<=14' 'webkit2gtk')
 makedepends=('maven' 'java-runtime>=8' 'archlinux-java-run' 'gendesk')
 
 _DEST="/usr/share/portfolio"
@@ -32,7 +32,7 @@ prepare() {
 build() {
     export MAVEN_OPTS="-Xmx1g"
     #export JAVA_HOME=/usr/lib/jvm/default-runtime
-    export JAVA_HOME=$(archlinux-java-run --min 8 --java-home)
+    export JAVA_HOME=$(archlinux-java-run --min 8 --max 14 --java-home)
     cd $pkgname-$pkgver
 
     cd portfolio-app

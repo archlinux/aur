@@ -11,6 +11,7 @@ pkgbase = portfolio
 	makedepends = archlinux-java-run
 	makedepends = gendesk
 	depends = java-runtime>=8
+	depends = java-runtime<=14
 	depends = webkit2gtk
 	source = https://github.com/buchen/portfolio/archive/0.50.0.tar.gz
 	sha1sums = 2055c9e759eb36c21126fb958bea06afbdd6eee5
