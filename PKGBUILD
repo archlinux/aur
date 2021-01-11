@@ -29,7 +29,7 @@ prepare() {
 }
 
 build() {
-  arch-meson pango build -D gtk_doc=false -D -D libthai=disabled -D frbidi=disabled -D docs=false
+  arch-meson pango build -D gtk_doc=false -D libthai=disabled -D frbidi=disabled -D docs=false
   ninja $NINJAFLAGS -C build
 }
 
