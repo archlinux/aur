@@ -4,8 +4,8 @@
 
 _pkgname=lab
 pkgname=$_pkgname-bin
-pkgver=0.17.2
-pkgrel=3
+pkgver=0.18.0
+pkgrel=1
 pkgdesc='A hub-like tool for GitLab (pre-built binary release)'
 arch=('x86_64')
 url="https://zaquestion.github.io/$_pkgname"
@@ -15,7 +15,7 @@ optdepends=('hub')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("https://github.com/zaquestion/${pkgname%-bin}/releases/download/v$pkgver/lab_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('abba37f6808daba347650b44249ef4793c849cc90a6b020a51e71dcfa3d34b99')
+sha256sums=('d02beb6335be59af96fba62ef6bd37e91e9c0d4ef30f19f87acc072e8511d7f5')
 
 build () {
     ./lab completion bash > completion.bash
