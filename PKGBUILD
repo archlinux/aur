@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontship-git
-pkgver=0.6.2.r8.gb2f4c97
+pkgver=0.7.5.r0.gdd0bbcb
 pkgrel=1
 pkgdesc='A font development toolkit and collaborative work flow'
 arch=('any')
@@ -56,6 +56,11 @@ build() {
     cd "${pkgname%-git}"
     ./configure --prefix="/usr"
     make
+}
+
+check() {
+    cd "${pkgname%-git}"
+    make check
 }
 
 package() {
