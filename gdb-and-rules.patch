@@ -208,7 +208,7 @@ diff --unified --recursive --text buildscripts.old/dkarm-eabi/scripts/build-crtl
  cd rules
  tar -xvf $SRCDIR/devkitarm-rules-$DKARM_RULES_VER.tar.xz
 -make install
-+patch -u Makefile -i "$SRCDIR"/../rules-makefile.patch
++patch -u Makefile -i "$SRCDIR"/rules-makefile.patch
 +DESTDIR=$DEVKITPRO make install
  
  #---------------------------------------------------------------------------------
@@ -218,6 +218,6 @@ diff --unified --recursive --text buildscripts.old/dkarm-eabi/scripts/build-crtl
  cd crtls
  tar -xvf $SRCDIR/devkitarm-crtls-$DKARM_CRTLS_VER.tar.xz
 -make install
-+patch -u Makefile -i "$SRCDIR"/../crtls-makefile.patch
++patch -u Makefile -i "$SRCDIR"/crtls-makefile.patch
 +DESTDIR=$DEVKITPRO make install
  
