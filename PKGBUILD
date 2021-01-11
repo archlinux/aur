@@ -25,7 +25,7 @@ pkgver() {
 build() {
   cd libtirpc
 
-  ./autogen.sh
+  ./bootstrap
   ./configure --prefix=/usr --sysconf=/etc --disable-ipv6
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
