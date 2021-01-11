@@ -9,7 +9,7 @@ pkgdesc='An URL retrieval library (without versioned symbols)'
 arch=('x86_64')
 url='https://curl.haxx.se'
 license=('MIT')
-depends=('curl' 'glibc' 'libidn2' 'libidn2.so' 'krb5' 'openssl' 'libnghttp2'
+depends=('curl' 'glibc' 'libidn2' 'krb5' 'openssl' 'libnghttp2'
          'libpsl' 'libpsl.so' 'zlib' 'zstd')
 options=('strip')
 provides=(libcurl-compat)

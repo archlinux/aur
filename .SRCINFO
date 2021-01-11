@@ -8,7 +8,6 @@ pkgbase = libcurl-compat-minimal-git
 	depends = curl
 	depends = glibc
 	depends = libidn2
-	depends = libidn2.so
 	depends = krb5
 	depends = openssl
 	depends = libnghttp2
