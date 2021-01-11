@@ -1,6 +1,6 @@
 pkgname=reveal-md
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Get beautiful reveal.js presentations from your Markdown file'
 arch=('any')
 url='http://webpro.github.io/reveal-md/'
@@ -27,7 +27,7 @@ package() {
     install -dm755 $_npmdir
     cd $_npmdir
     cp -r --no-preserve=ownership --preserve=mode $srcdir/$pkgname-$pkgver/* ./
-    install -Dm755 /usr/bin/$pkgname <<END
+    install -Dm755 /dev/stdin $pkgdir/usr/bin/$pkgname <<END
 #!/bin/env bash
 node /usr/lib/$pkgname/bin/$pkgname.js \"\$\@\"
 END

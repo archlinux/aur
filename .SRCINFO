@@ -1,7 +1,7 @@
 pkgbase = reveal-md
 	pkgdesc = Get beautiful reveal.js presentations from your Markdown file
 	pkgver = 4.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://webpro.github.io/reveal-md/
 	arch = any
 	license = MIT
