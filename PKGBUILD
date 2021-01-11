@@ -3,15 +3,15 @@
 
 pkgname='perl-array-shuffle'
 pkgver='0.03'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="fast shuffling of arrays in-place"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/Array-Shuffle'
-source=('http://search.cpan.org/CPAN/authors/id/S/SA/SALVA/Array-Shuffle-0.03.tar.gz')
+url='https://metacpan.org/release/Array-Shuffle'
+source=('https://search.cpan.org/CPAN/authors/id/S/SA/SALVA/Array-Shuffle-0.03.tar.gz')
 md5sums=('9a4cdf80bc513a73088ae7ce7922dc11')
 sha512sums=('684cc589d8038d7e5bff433183b6900d2d8da23e2fab5094c080f71bef6d2c2a02682f8337d2a856100cd55b49733cccce3055e35e280454efb2cac813586c37')
 _distdir="Array-Shuffle-0.03"
