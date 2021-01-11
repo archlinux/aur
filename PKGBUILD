@@ -2,7 +2,7 @@
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
-pkgname=libtirpc-git
+pkgname=libtirpc-minimal-git
 pkgver=1.3.1
 pkgrel=1
 pkgdesc="Transport Independent RPC library (SunRPC replacement)"
