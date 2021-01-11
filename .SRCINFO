@@ -1,0 +1,20 @@
+pkgbase = dwm-jadecell-git
+	pkgdesc = JadeCell's build of dwm patched for autostart, swallow, and more.
+	pkgver = 6.2
+	pkgrel = 1
+	url = https://gitlab.com/jadecell/dwm.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = libxinerama
+	makedepends = libxft
+	depends = nerd-fonts-complete
+	provides = dwm
+	conflicts = dwm
+	source = git+https://gitlab.com/jadecell/dwm.git
+	md5sums = SKIP
+
+pkgname = dwm-jadecell-git
+
