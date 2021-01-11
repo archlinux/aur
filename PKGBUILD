@@ -23,7 +23,7 @@ sha512sums=('SKIP'
             'b0ca349b882a4326b19f81f22804fabdb6fb7aef31cdc7b16b0a7ae191bfbb50c7daddb2fc4e6c33f1136af06d060a273de36f6f3412ea326f16fa4309fda660')
 
 pkgver() {
-    cd $_realname
+    cd drm
     git describe --long --abbrev=8 | sed 's/^libdrm-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -34,7 +34,7 @@ prepare() {
 }
 
 build() {
-    meson setup libdrm _build \
+    meson setup drm _build \
         --prefix /usr \
         --buildtype plain \
         --wrap-mode      nofallback \
@@ -50,7 +50,7 @@ build() {
     meson configure _build
     ninja $NINJAFLAGS -C _build
 
-# EDIT BUILD OPTIONS TO MATCH YOUR CARDS API. DEFAULTS TO AMDGPU
+# EDIT BUILD OPTIONS TO MATCH YOUR CARDS - DEFAULTS TO AMDGPU
 }
 
 #check() {
