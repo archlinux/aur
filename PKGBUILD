@@ -1,12 +1,12 @@
 # Maintainer: MatMoul <matmoul@gmail.com>
 
 _pkggit=octopi
-_gitcommit=f6961a89cab1078989a084b42694516ffc75c491
-_gitsha256='d05ba89605fd601b2c5ddd09e019d9912207674825c463cdd32c8c057cb68e94'
+_gitcommit=5b8dfb0388aeb471bb4ab5652a651ec1345a1ed5
+_gitsha256='4c34bfb33e733dd23d42a13a3814d64c7c25de41ce01680a456514a471520729'
 
 pkgbase=octopi-notifier-qt5
 pkgname=('octopi-notifier-qt5')
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Notifier for Octopi using Qt5 libs"
 arch=('i686' 'x86_64')
