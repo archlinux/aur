@@ -1,0 +1,23 @@
+pkgbase = python2-mechanize
+	pkgdesc = Stateful programmatic web browsing in Python
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://github.com/python-mechanize/mechanize
+	arch = any
+	license = BSD
+	checkdepends = python2-zope-interface
+	checkdepends = python2-twisted
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-html5lib
+	optdepends = python2-html5-parser: faster parsing of HTML
+	source = https://files.pythonhosted.org/packages/source/m/mechanize/mechanize-0.4.5.tar.gz
+	source = https://files.pythonhosted.org/packages/source/m/mechanize/mechanize-0.4.5.tar.gz.asc
+	validpgpkeys = 3CE1780F78DD88DF45194FD706BC317B515ACE7C
+	sha256sums = 6355c11141f6d4b54a17fc2106944806b5db2711e60b120d15d83db438c333fd
+	sha256sums = SKIP
+	b2sums = 67951ad8295a32799768b3719525d45d502bc773c6f2a5e762e3dae97f309c8c265a2cb3efde95c9e8cb65e89dee6ad6ad8585685baa4e9ff1acfd146f115f6f
+	b2sums = SKIP
+
+pkgname = python2-mechanize
+
