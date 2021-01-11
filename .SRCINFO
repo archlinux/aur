@@ -1,0 +1,17 @@
+pkgbase = openpomodoro
+	pkgdesc = A command-line Pomodoro tracker which uses the Open Pomodoro Format
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/open-pomodoro/openpomodoro-cli
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	makedepends = go
+	makedepends = git
+	provides = pomodoro
+	source = openpomodoro-0.2.1.tar.gz::https://github.com/open-pomodoro/openpomodoro-cli/archive/v0.2.1.tar.gz
+	sha256sums = 5f1dda7e2fdfdf9fbdb851449eb40220ac7195cd9354d81923ba50c3ffa2530d
+
+pkgname = openpomodoro
+
