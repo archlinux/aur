@@ -28,7 +28,7 @@ prepare() {
 }
 
 build() {
-  arch-meson pango build -D gtk_doc=false -D
+  arch-meson pango build -D gtk_doc=false
   ninja $NINJAFLAGS -C build
 }
 
