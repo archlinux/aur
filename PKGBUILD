@@ -15,6 +15,7 @@ conflicts=("${pkgname}-git")
 source=("${pkgname}-${_pkgver}::git+ssh://git@github.com/sccn/liblsl.git#tag=${pkgver}")
 md5sums=('SKIP')
 
+
 build() {
     cmake \
         -B "${pkgname}-${_pkgver}/build" \
