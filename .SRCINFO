@@ -14,7 +14,7 @@ pkgbase = lib32-libdrm-minimal-git
 	depends = lib32-gcc-libs
 	provides = lib32-libdrm
 	conflicts = lib32-libdrm
-	source = libdrm::git://anongit.freedesktop.org/mesa/drm#branch=master
+	source = git+https://gitlab.freedesktop.org/mesa/drm
 	source = COPYING
 	sha256sums = SKIP
 	sha256sums = 9631d4f694952e3e6ae5a05534c2e93e994e47d3413677a3a00e45c8cef6db93

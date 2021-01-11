@@ -17,14 +17,14 @@ url="http://dri.freedesktop.org/"
 provides=('lib32-libdrm')
 conflicts=('lib32-libdrm')
 
-source=('libdrm::git://anongit.freedesktop.org/mesa/drm#branch=master'
+source=("git+https://gitlab.freedesktop.org/mesa/drm"
         COPYING)
 sha256sums=('SKIP'
             '9631d4f694952e3e6ae5a05534c2e93e994e47d3413677a3a00e45c8cef6db93')
 
           
 pkgver() {
-    cd libdrm
+    cd drm
     git describe --long --abbrev=8 | sed 's/^libdrm-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -38,7 +38,7 @@ build() {
     export CC="gcc -m32"
     export CXX="g++ -m32"
     export PKG_CONFIG=/usr/bin/i686-pc-linux-gnu-pkg-config
-    meson setup libdrm _build \
+    meson setup drm _build \
         --prefix /usr \
         --libdir lib32 \
         --buildtype plain \
