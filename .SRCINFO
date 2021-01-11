@@ -23,3 +23,16 @@ pkgbase = r-gdata
 
 pkgname = r-gdata
 
+pkgbase = r-gdata
+	pkgdesc = Various R Programming Tools for Data Manipulation
+	pkgver = 2.18.0
+	pkgrel = 1
+	url = https://cran.r-project.org/web/packages/gdata/
+	arch = any
+	license = GPL2
+	depends = r-gtools
+	source = https://cran.r-project.org/src/contrib/gdata_2.18.0.tar.gz
+	sha512sums = 609a412970d46bed0d12191b1015fac96b48244cb9fb35506be07ae0544583566669c0e233a52f418dafdfc787a92cfbbf6554cb336af06c257b3bb6058e4fd5
+
+pkgname = r-gdata
+
