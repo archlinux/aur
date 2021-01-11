@@ -3,8 +3,9 @@
 
 pkgbase=docspell
 pkgname=('docspell-joex' 'docspell-restserver')
-pkgver=0.17.1
+pkgver=0.18.0
 pkgrel=1
+changelog=.CHANGELOG
 arch=('any')
 url="https://github.com/eikek/docspell"
 pkgdesc="Assists in organizing your piles of documents, resulting from scanners, e-mails and other sources with miminal effort."
@@ -20,8 +21,8 @@ source=("$pkgbase-$pkgver-restserver.zip::https://github.com/eikek/$pkgbase/rele
         "${pkgname[1]}.service"
         "$pkgbase.sysusers"
         "$pkgbase.tmpfiles")
-sha512sums=('1d3aa21a3a8d1230027596671501c02ca41af4ffb6b7547f34a4a7388e082ddd9cb94cc7a1bd50dbed2f806330166b278c7617e56b35473fc8814d77bc4fd91b'
-            '5d87581933834e7a0fcd450e197bab2f4a7ce218d16aed80a871615d4b4df57ee89649be40a13b513b40e69200d525533c2d4162e0b3f2563277885751fc4ace'
+sha512sums=('7c56b72970d85be635fe47098f917a9c1356b788c59c5abbdeb60eb065bad856b0b7066a5adcc4ccc6c37a837090a7bf558ce8ab9beca94ad04688127fceb4d1'
+            '56172c3d0da239280b48c5b4e3356283ed9f6edcf5e70ad9ac7e9be78de203142e53ceb8abd6a9320e4694ca18d88f4875cd82c7d39bf4549d4d2323147daddf'
             '6ab8b24eb76f02b68e4fa4194b8771ef4f57c8375b34bf7bf914563528e347ea127beb5547e432910911d4fd15982cccdd1df50aeb76058129b909824ce49093'
             '0b8b08f47f1cb46a3bfc16df4b0574cebfb4a851562d134fcba3c4bf80fb011443499a549c3a04480456c048346d09f36fbcbc9d792810001c9c8b370d3926a8'
             'f63f0fa58715b7da01aa265a7bec72eb24f0e98c354eed479b6034bc33b2ccdaef87db8a7630af1d5a6ac43fadf11a0f0a3fb3de5e183aa64d838a69b67125f9'
