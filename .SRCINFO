@@ -1,0 +1,17 @@
+pkgbase = ruby-twurl
+	pkgdesc = OAuth-enabled curl for the Twitter API
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = https://github.com/twitter/twurl
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-oauth
+	noextract = twurl-0.9.6.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/twurl-0.9.6.gem
+	md5sums = 1055232009e178d95c0eebc226732430
+
+pkgname = ruby-twurl
+
