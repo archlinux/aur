@@ -1,7 +1,7 @@
 pkgbase = shadowsocks-uri-generator-git
 	pkgdesc = Command line tool for multi-user ss:// URL generation, SIP008 online configuration delivery, and Outline server deployment and management
 	pkgver = 20210110.r54.ca29e5e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/database64128/shadowsocks-uri-generator
 	arch = x86_64
 	license = GPL
@@ -9,7 +9,7 @@ pkgbase = shadowsocks-uri-generator-git
 	makedepends = dotnet-sdk>=5.0
 	provides = shadowsocks-uri-generator
 	conflicts = shadowsocks-uri-generator
-	options = staticlibs
+	options = !strip
 	source = shadowsocks-uri-generator-git::git+https://github.com/database64128/shadowsocks-uri-generator
 	b2sums = SKIP
 
