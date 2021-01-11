@@ -40,7 +40,10 @@ if [ "$CARCH" == "armv6h" ]; then
     pkgver=12.1.103
 fi
 
-source=("https://mopidy.github.io/libspotify-archive/${pkgname}-${pkgver}-Linux-${SPOTIFY_ARCH}-release.tar.gz")
+source_x86_64=("https://mopidy.github.io/libspotify-archive/${pkgname}-${pkgver}-Linux-${SPOTIFY_ARCH}-release.tar.gz")
+source_i686=("https://mopidy.github.io/libspotify-archive/${pkgname}-${pkgver}-Linux-${SPOTIFY_ARCH}-release.tar.gz")
+source_armv6h=("https://mopidy.github.io/libspotify-archive/${pkgname}-${pkgver}-Linux-${SPOTIFY_ARCH}-release.tar.gz")
+source_armv7h=("https://mopidy.github.io/libspotify-archive/${pkgname}-${pkgver}-Linux-${SPOTIFY_ARCH}-release.tar.gz")
 
 md5sums_x86_64=('83efddcc195d6ff12b24c97c767a5e45')
 sha256sums_x86_64=('43a14e0732ba6ae30078fac105d0e2998d04d5f5c396a4968386bc4e22491058')
