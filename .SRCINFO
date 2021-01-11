@@ -1,0 +1,23 @@
+pkgbase = lib32-dconf-git
+	pkgdesc = A low-level configuration system
+	pkgver = 0.38.0
+	pkgrel = 1
+	url = https://live.gnome.org/dconf
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = bash-completion
+	makedepends = docbook-xsl
+	makedepends = git
+	makedepends = intltool
+	makedepends = meson
+	makedepends = python
+	makedepends = vala
+	depends = dconf
+	depends = lib32-glib2
+	provides = lib32-dconf
+	conflicts = lib32-dconf
+	source = git+https://gitlab.gnome.org/GNOME/dconf.git
+	sha256sums = SKIP
+
+pkgname = lib32-dconf-git
+
