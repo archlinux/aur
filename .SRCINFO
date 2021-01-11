@@ -15,6 +15,7 @@ pkgbase = recidia-audio-visualizer
 	depends = ncurses
 	depends = libconfig
 	depends = shaderc
+	depends = qt5-base
 	depends = vulkan-driver
 	optdepends = pulseaudio: Audio data collection - PICK ONE/BOTH
 	optdepends = portaudio: Audio data collection (Input Only) - PICK ONE/BOTH
