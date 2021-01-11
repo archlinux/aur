@@ -5,7 +5,7 @@ for name in $BASEDIR/lib/*.jar; do
 done
 
 PATH_TO_FX=$BASEDIR/lib/java-openjfx
-PATH_TO_JAVA=/usr/lib/jvm/java-14-openjdk/bin/java
+PATH_TO_JAVA=/usr/lib/jvm/java-15-openjdk/bin/java
 
 exec $PATH_TO_JAVA \
   -cp $CP \
