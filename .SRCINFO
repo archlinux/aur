@@ -8,6 +8,7 @@ pkgbase = lib32-pango-minimal-git
 	license = LGPL
 	makedepends = git
 	makedepends = meson
+	makedepends = lib32-fribidi
 	depends = lib32-cairo
 	depends = lib32-libxft
 	depends = lib32-harfbuzz
