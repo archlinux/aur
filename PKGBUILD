@@ -5,10 +5,10 @@
 
 # Maintainer: Simon Keimer <dc0sk at secure dot mailbox dot org>
 pkgname=antscope2-git
-pkgver=r65.27225ec-1
+pkgver=r65.27225ec
 pkgrel=1
 epoch=
-pkgdesc="The AntScope2 software is designed to support various models of RigExpert hamradio antenna analyzers under various operating systems."
+pkgdesc="The AntScope2 software is designed to support various models of RigExpert antenna analyzers under various operating systems. It is commonly used in the hamradio community. Based in Qt5."
 arch=('x86_64' 'i686')
 url="https://github.com/rigexpert/AntScope2"
 license=('MIT')
