@@ -25,8 +25,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    python setup.py test
-#   pytest
+    pytest "build/lib"
 }
 
 package_python-extension-helpers() {
