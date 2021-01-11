@@ -2,13 +2,13 @@
 pkgbase=python-einsteinpy-git
 _gitname=einsteinpy
 pkgname=("python-${_gitname}-git" "python-${_gitname}-doc-git")
-pkgver=0.1.0.r640.gc349832
+pkgver=0.1.0.r647.g77ce582
 pkgrel=1
 pkgdesc="Python package for General Relativity"
 arch=('i686' 'x86_64')
 url="https://einsteinpy.org"
 license=('MIT')
-makedepends=('git' 'python-setuptools' 'python-nbsphinx' 'pandoc' 'graphviz')
+makedepends=('git' 'python-setuptools' 'python-scipy' 'python-nbsphinx' 'pandoc' 'graphviz')
 checkdepends=('python-pytest' 'python-matplotlib' 'python-sympy' 'python-plotly' 'python-astropy' 'python-numba' 'python-einsteinpy_geodesics')
 source=("git+https://github.com/einsteinpy/einsteinpy")
 md5sums=('SKIP')
