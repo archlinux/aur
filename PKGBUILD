@@ -1,15 +1,14 @@
 # Maintainer: Alexandros Theodotou <alex at zrythm dot org>
 pkgname=zrythm
 pkgver=alpha.7.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
 url="https://www.zrythm.org"
 license=('AGPL3')
 depends=('gtk3' 'lilv' 'libx11' 'jack' 'libsndfile' 'libyaml' 'libsamplerate' 'alsa-lib' 'fftw'
-         'suil' 'breeze-icons' 'lv2' 'rubberband' 'python-sphinx-intl' 'ruby-sass')
-makedepends=(
-  'python' 'gettext' 'sed'
+         'suil' 'breeze-icons' 'lv2' 'rubberband')
+makedepends=('ruby-sass' 'python' 'gettext' 'sed' 'python-sphinx-intl'
   'meson' 'ninja' 'help2man' 'python-sphinx'
   'ladspa' 'lv2' 'gtksourceview3')
 optdepends=('portaudio: portaudio backend'
