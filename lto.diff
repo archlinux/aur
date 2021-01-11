@@ -1,0 +1,10 @@
+diff --git i/Cargo.toml w/Cargo.toml
+index 818fa620..c776b113 100644
+--- i/Cargo.toml
++++ w/Cargo.toml
+@@ -8,3 +8,5 @@ members = [
+ 
+ [profile.release]
+ debug = true
++lto = "fat"
++codegen-units = 1
