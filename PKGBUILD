@@ -11,8 +11,8 @@ arch=(x86_64)
 license=(LGPL)
 provides=(pango)
 conflicts=(pango)
-depends=(cairo libxft harfbuzz fribidi)
-makedepends=(gobject-introspection git meson)
+depends=(cairo libxft harfbuzz fribidi libthai)
+makedepends=(gobject-introspection git meson libthai)
 optdepends=("libthai: Thai language support")
 #checkdepends=(ttf-dejavu cantarell-fonts)
 source=("git+https://gitlab.gnome.org/GNOME/pango.git")
@@ -28,7 +28,7 @@ prepare() {
 }
 
 build() {
-  arch-meson pango build -D gtk_doc=false -D libthai=disabled
+  arch-meson pango build -D gtk_doc=false -D
   ninja $NINJAFLAGS -C build
 }
 
