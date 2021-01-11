@@ -1,7 +1,7 @@
-# Contributor: Tatsuyuki Ishi <ishitatsuyuki at gmail dot com>
+# Contributor: Mateusz Galazyn <carbolymer at gmail.com>
 
 pkgrel=1
-pkgver=r458.1ab110c
+pkgver=r547.3e06f0a
 pkgname=zsh-zim-git
 pkgdesc="ZIM - Zsh IMproved"
 url="https://github.com/zimfw/zimfw"
@@ -10,36 +10,61 @@ license=('MIT')
 depends=('zsh')
 makedepends=('git' 'rsync')
 optdepends=('otf-powerline-symbols-git: for eriner prompt')
-source=('git://github.com/zimfw/zimfw.git' 'zim.install' 'zshrc')
+source=('git://github.com/zimfw/zimfw.git'
+        'git://github.com/zimfw/install.git'
+        'zim.install'
+        'zshrc')
+md5sums=('SKIP'
+         'SKIP'
+         '37cfb43655ba975a492f5a8a0d436b6e'
+         'ccd089796e6c0cf8e3b7170283b5a724')
 options=('!strip')
 install='zim.install'
-sha384sums=('SKIP'
-            'ba9906f5cad124b1a419008ff5f98ca31414056be7a89d94ecf679a170765208d244b2d41ce85a2dba6a5aa60fc7f299'
-            'f9369671dd4b4e116a6b1d6769482f148dc062ec9ff1cb0ec70f0c0ee91a62efc9acdae0193a299fab941e770f377d74')
 _gitname='zimfw'
 backup=('etc/zsh/zlogin' 'etc/zsh/zimrc' 'etc/zsh/zshrc')
 
 pkgver() {
-	cd "$srcdir/$_gitname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_gitname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd $srcdir/$_gitname
-	git submodule update --init --recursive
+  cd $srcdir/$_gitname
+  git submodule update --init --recursive
 }
 
 package() {
-	mkdir -p $pkgdir/usr/lib/zim
-	rsync -ar --exclude=".git*" $srcdir/$_gitname/ $pkgdir/usr/lib/zim
-	cp $srcdir/zshrc $pkgdir/usr/lib/zim/templates/zshrc
+  ZIM_TPL_DIR="${pkgdir}/usr/lib/zim/templates"
+  mkdir -p $ZIM_TPL_DIR
 
-	mkdir -p $pkgdir/etc/zsh
+  rcfiles=('zshenv' 'zshrc' 'zlogin' 'zimrc')
+  for entry in "${rcfiles[@]}"; do
+    cp -L "${srcdir}/install/src/templates/${entry}" $ZIM_TPL_DIR
+  done
+  cp ${srcdir}/$_gitname/zimfw.zsh ${pkgdir}/usr/lib/zim/
 
-	for entry in ${backup[@]}; do
-		rcfile=$(basename $entry)
-		if [ -f $srcdir/$_gitname/templates/$rcfile ]; then
-			echo "source /usr/lib/zim/templates/$rcfile" >> "$pkgdir/etc/zsh/$rcfile"
-		fi
-	done
+  # zimfw.zsh generates hardcoded reference to .zimrc, so for packaging purpose we fake it
+  ( cd $ZIM_TPL_DIR ; ln -s ./zimrc .zimrc )
+  export ZDOTDIR=$ZIM_TPL_DIR
+  export ZIM_HOME=${pkgdir}/usr/lib/zim
+  zsh ${ZIM_HOME}/zimfw.zsh install
+  rm "${ZIM_TPL_DIR}/.zimrc"
+
+  # Prepare /etc/zsh/ contents
+  mkdir -p $pkgdir/etc/zsh
+  echo "source /usr/lib/zim/templates/zlogin" >> "$pkgdir/etc/zsh/zlogin"
+  cp -f $ZIM_TPL_DIR/zimrc $pkgdir/etc/zsh/zimrc
+  cp -f zshrc "$pkgdir/etc/zsh/zshrc"
+
+  # patch & recompile zwc file with hardcoded paths
+  # assume that you're not running makepkg in directory with '+' in its name
+  patching=('login_init.zsh' 'init.zsh')
+  for entry in "${patching[@]}"; do
+    echo "Patching build paths occurrence in: ${entry}"
+    sed -i "s+${pkgdir}++g" "${ZIM_HOME}/${entry}"
+  done
+  find ${ZIM_HOME} -iname "*.old" -type f -exec rm -f \{\} \;
+  find ${ZIM_HOME} -iname "*.zwc" -type f -exec rm -f \{\} \;
 }
+
+

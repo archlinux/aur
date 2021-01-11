@@ -1,10 +1,11 @@
 #!/bin/bash
 
 post_install() {
-	compile_scripts
+	[[ -f ~root/.zimrc ]] || ln -s /etc/zsh/zimrc ~root/.zimrc
+  compile_scripts
 	echo
 	echo "Zim is enabled for all users by default."
-	echo "To change that, edit /etc/zsh/zshrc file."
+  echo "~/.zimrc was symlinked to /etc/zsh/zimrc for root (if it was not present)"
 	echo "Global settings reside in the /etc/zsh/ directory."
 	echo "To personalize Zsh and zim, edit your local ~/.zshrc and ~/.zimrc files."
 	echo "A user can also have a custom, overriding Zim installation in ~/.zim/"
@@ -20,7 +21,7 @@ post_remove() {
 }
 
 compile_scripts() {
-	zsh -c 'source /usr/lib/zim/templates/zshrc; source /usr/lib/zim/templates/zlogin;'
+	zsh -c 'export ZIM_HOME=/usr/lib/zim; source /etc/zsh/zshrc; source /usr/lib/zim/templates/zlogin;'
 }
 
 remove_compiled_scripts() {
