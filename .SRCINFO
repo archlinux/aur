@@ -1,8 +1,8 @@
 pkgbase = linux-froidzen
 	pkgdesc = Linux ZEN with Patches and Modifications
-	pkgver = 5.10.4.zen2
+	pkgver = 5.10.6.zen1
 	pkgrel = 1
-	url = https://github.com/zen-kernel/zen-kernel/commits/v5.10.4-zen2
+	url = https://github.com/zen-kernel/zen-kernel/commits/v5.10.6-zen1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,14 +20,14 @@ pkgbase = linux-froidzen
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.10.4-zen2
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.10.6-zen1
 	source = config
 	source = https://raw.githubusercontent.com/dolohow/uksm/master/v5.x/uksm-5.10.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
-	sha256sums = e7ff33a0bcd53f832dc577f9aa83043e987cd903628922cdfc4d23cc45927056
+	sha256sums = d4423b8c868b6144079a3dde547edeb417001591a7d46f3f7d8192cffd157a31
 	sha256sums = 24729e63e08de13039ce7e6637146ec5a5747379ebbd92cdeef744edfad17183
 
 pkgname = linux-froidzen
