@@ -48,7 +48,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "$pkgbase-$pkgver"
+  cd util-linux
 
   patch -Np1 < ../0001-libmount-don-t-use-symfollow-for-helpers-on-user-mounts.patch
 }
