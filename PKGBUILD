@@ -4,7 +4,7 @@
 pkgname=tinyfugue
 pkgver=5.0
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="a flexible, screen-oriented MUD client, for use with any type of MUD"
 url="https://github.com/tinyfugue/tinyfugue"
 license=('GPL3')
