@@ -3,14 +3,14 @@
 
 pkgname=python-ufonormalizer-git
 _pkgname=ufoNormalizer
-pkgver=0.4.2.r1.gd22e855
+pkgver=0.5.3.r0.g783ec14
 pkgrel=1
 pkgdesc="A tool that will normalize XML and other data inside of a UFO"
 url="https://github.com/unified-font-object/$_pkgname"
 license=('BSD')
 arch=('any')
 depends=('python')
-provides=("${pkgname%-git}")
+provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
 makedepends=('git' 'python-setuptools-scm')
 source=("git+$url.git")
