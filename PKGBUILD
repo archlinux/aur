@@ -1,12 +1,12 @@
 # Contributor: vantu5z <vantu5z@mail.ru>
 pkgname=rhvoice-dictionary-git
-pkgver=r1488.20200405
+pkgver=r1734.20210109
 pkgrel=1
 pkgdesc="Русский словарь для RHVoice. Дополнительные иструменты (Python)."
 arch=('i686' 'x86_64')
 url="https://github.com/vantu5z/RHVoice-dictionary"
 license=('GPL3')
-depends=('rhvoice-git')
+depends=('rhvoice')
 optdepends=("python>3: for text preprocessing support"
             "python-pymorphy2: morphology tool for text preprocessing")
 makedepends=('git' 'python>3')

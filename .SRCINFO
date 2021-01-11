@@ -1,6 +1,6 @@
 pkgbase = rhvoice-dictionary-git
 	pkgdesc = Русский словарь для RHVoice. Дополнительные иструменты (Python).
-	pkgver = r1488.20200405
+	pkgver = r1734.20210109
 	pkgrel = 1
 	url = https://github.com/vantu5z/RHVoice-dictionary
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = rhvoice-dictionary-git
 	license = GPL3
 	makedepends = git
 	makedepends = python>3
-	depends = rhvoice-git
+	depends = rhvoice
 	optdepends = python>3: for text preprocessing support
 	optdepends = python-pymorphy2: morphology tool for text preprocessing
 	source = rhvoice-dictionary-git::git+https://github.com/vantu5z/RHVoice-dictionary.git
