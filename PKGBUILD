@@ -1,4 +1,4 @@
-pkgname=confedi-git
+pkgname=confedi
 pkgver=1
 pkgrel=1
 pkgdesc="Confedi is designed to help with changing configuration files with one command."
