@@ -15,7 +15,7 @@ pkgname=()
 _pkgname="pytorch"
 pkgver=1.7.1
 _pkgver=1.7.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -108,7 +108,7 @@ build() {
 
     # Fix so amdip64 library ending with a dash
     python setup.py build --cmake-only
-    sed -iE 's/opt\/rocm\/hip\/lib\/libamdhip64\.so\.[0-9.]+-/opt\/rocm\/hip\/lib\/libamdhip64.so/' build/build.ninja
+    sed -E -i 's#opt/rocm/hip/lib/libamdhip64\.so\.[0-9.]+-#opt/rocm/hip/lib/libamdhip64.so#' build/build.ninja
 
     python setup.py build
   fi
@@ -125,7 +125,7 @@ build() {
 
     # Fix so amdip64 library ending with a dash
     python setup.py build --cmake-only
-    sed -iE 's/opt\/rocm\/hip\/lib\/libamdhip64\.so\.[0-9.]+-/opt\/rocm\/hip\/lib\/libamdhip64.so/' build/build.ninja
+    sed -E -i 's#opt/rocm/hip/lib/libamdhip64\.so\.[0-9.]+-#opt/rocm/hip/lib/libamdhip64.so#' build/build.ninja
 
     python setup.py build
   fi
