@@ -1,7 +1,7 @@
 # Maintainer: a821
 
 pkgname=shiny-server
-pkgver=1.5.15.953
+pkgver=1.5.16.958
 pkgrel=1
 pkgdesc="Host Shiny applications over the web"
 arch=('x86_64')
