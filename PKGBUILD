@@ -8,14 +8,14 @@
 pkgname=wxformbuilder-git
 _gitname=wxFormBuilder
 pkgver=3.9.0.r188.g0eccdbc5
-pkgrel=1
+pkgrel=2
 pkgdesc="Designer, GUI builder, and RAD tool For wxWidgets"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://sourceforge.net/projects/wxformbuilder/"
 license=('GPL')
 provides=('wxformbuilder')
 conflicts=('wxformbuilder' 'wxformbuilder-svn')
-depends=('wxgtk' 'boost')
+depends=('wxgtk2' 'boost')
 makedepends=('git' 'ninja' 'meson')
 source=("git://github.com/wxFormBuilder/wxFormBuilder.git")
 md5sums=('SKIP')
