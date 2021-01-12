@@ -1,0 +1,15 @@
+pkgbase = rivertiler-git
+	pkgdesc = tiling layout generator for river
+	pkgver = r17.f42cac1
+	pkgrel = 1
+	url = https://gitlab.com/snakedye/river-layouts
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	provides = rivertiler-git
+	conflicts = rivertiler-git
+	source = rivertiler-git::git+https://gitlab.com/snakedye/river-layouts.git
+	md5sums = SKIP
+
+pkgname = rivertiler-git
+
