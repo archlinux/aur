@@ -21,6 +21,11 @@ b2sums=('SKIP'
         '6f50d5a03c3532e6e50506cd878b1c9ca5cee5f1758f9318d4cb5d1e319cbe5f31210ba46a81b1af30730e2329aed7921c11f1a468a596a3f210972ca0da9d64')
 #validpgpkeys=('38A644698C69787344E954CE29EE848AE2CCF3F4') # Andrew G. Morgan <morgan@kernel.org>
 
+pkgver() {
+  cd libcap
+  git describe --tags | sed 's/-/+/g'
+}
+
 prepare() {
   cd libcap
   # SBINDIR is hardcoded to sbin. set to bin
