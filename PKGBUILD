@@ -1,37 +1,41 @@
 # Maintainer: Marc Vidal <mvidaldp@gmail.com>
 
-pkgname="labrecorder"
-pkgver=v1.13.1
+pkgname=labrecorder
+pkgver=1.14.0
+_pkgver=v1.14.0
 pkgrel=1
-pkgdesc="Default LSL (LabStreamingLayer) recording program (stable release). It allows to record all streams on the lab network (or a subset) into a single file, with time synchronization between streams."
-arch=('x86_64')
-url="https://github.com/sccn/liblsl/"
+pkgdesc='Default LSL (LabStreamingLayer) recording program (stable release). It allows to record all streams on the lab network (or a subset) into a single file, with time synchronization between streams.'
+arch=('any')
+url='https://github.com/sccn/liblsl/'
 license=('MIT')
-provides=($pkgname)
-conflicts=($pkgname)
 depends=('liblsl')
 makedepends=('boost' 'cmake' 'qt5-base')
-source=("${pkgname}-${pkgver}::git+ssh://git@github.com/labstreaminglayer/App-LabRecorder.git#tag=${pkgver}")
+provides=($pkgname)
+conflicts=($pkgname)
+source=("${pkgname}-${pkgver}::git+ssh://git@github.com/labstreaminglayer/App-LabRecorder.git#tag=${_pkgver}")
 md5sums=('SKIP')
 
 
-prepare() {
-    mkdir -p "$srcdir/$pkgname-${pkgver}/build"
-}
-
 build() {
-    cd "$srcdir/$pkgname-${pkgver}/build"
-    cmake -DLSL_INSTALL_ROOT="/opt/LSL" ..
-    make
+    cmake \
+        -B "${pkgname}-${pkgver}/build" \
+        -S "${pkgname}-${pkgver}" \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DLSL_DIR:STRING='/opt/LSL' \
+        -DLSL_UNIXFOLDERS:BOOL='ON' \
+        -Wno-dev
+    make -C "${pkgname}-${pkgver}/build" all
 }
 
 package() {
-    mkdir -p $pkgdir/usr/bin
-    install -Dm 755 $srcdir/$pkgname-$pkgver/build/LabRecorder $pkgdir/opt/LSL/bin/LabRecorder
-    ln -rs -T $pkgdir/opt/LSL/bin/LabRecorder $pkgdir/usr/bin/LabRecorder
-    install -Dm 755 $srcdir/$pkgname-$pkgver/build/LabRecorderCLI $pkgdir/opt/LSL/bin/LabRecorderCLI
-    ln -rs -T $pkgdir/opt/LSL/bin/LabRecorderCLI $pkgdir/usr/bin/LabRecorderCLI
-    install -Dm 755 $srcdir/$pkgname-$pkgver/LabRecorder.cfg $pkgdir/opt/LSL/bin/LabRecorder.cfg
-    install -Dm 755 $srcdir/$pkgname-$pkgver/LabRecorder_Legacy.cfg $pkgdir/opt/LSL/bin/LabRecorder_Legacy.cfg
-    install -Dm 755 $srcdir/$pkgname-$pkgver/LabRecorder_BIDS.cfg $pkgdir/opt/LSL/bin/LabRecorder_BIDS.cfg
+    make -C "${pkgname}-${pkgver}/build" DESTDIR="$pkgdir" install
+    
+    mkdir -p "${pkgdir}/opt/LSL/bin"
+    
+    ln -rs "${pkgdir}/usr/bin/LabRecorder" -t "${pkgdir}/opt/LSL/bin"
+    ln -rs "${pkgdir}/usr/bin/LabRecorder.cfg" -t "${pkgdir}/opt/LSL/bin"
+    ln -rs "${pkgdir}/usr/bin/LabRecorderCLI" -t "${pkgdir}/opt/LSL/bin"
+    
+    install -D -m644 "${pkgdir}/usr/bin/LICENSE" -t "${pkgdir}/opt/LSL/bin"
 }
