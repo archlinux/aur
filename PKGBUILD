@@ -1,7 +1,7 @@
 # Maintainer: Advaith Madhukar <advaith.madhukar at gmail dot com>
 pkgname=nuclear-player-git
-pkgver=v0.6.5.r77.g83b8473e
-pkgrel=1
+pkgver=v0.6.5.r78.g76d8d14c
+pkgrel=2
 pkgdesc="A free, multiplatform music player app that streams from multiple sources."
 url="https://nuclear.js.org"
 provides=("${pkgname%-git}")
