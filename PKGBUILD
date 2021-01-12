@@ -1,4 +1,5 @@
 # Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Dan Beste  <dan.ray.beste+aur@gmail.com>
 # Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Florian Pritz <bluewind@xinu.at>
 # Contributor: Hugo Doria <hugo@archlinux.org>
@@ -21,9 +22,17 @@ b2sums=('SKIP'
         '6f50d5a03c3532e6e50506cd878b1c9ca5cee5f1758f9318d4cb5d1e319cbe5f31210ba46a81b1af30730e2329aed7921c11f1a468a596a3f210972ca0da9d64')
 #validpgpkeys=('38A644698C69787344E954CE29EE848AE2CCF3F4') # Andrew G. Morgan <morgan@kernel.org>
 
+_commit() {
+# Convert HEAD into a shortened commit id:
+  git rev-parse --short HEAD
+}
+
 pkgver() {
   cd libcap
-  git describe --tags | sed 's/-/+/g'
+
+# Suggestions for improvement welcome!
+  printf '%s.r%s.%s'         \
+  "$(_commit)"
 }
 
 prepare() {
