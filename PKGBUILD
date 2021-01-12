@@ -20,6 +20,18 @@ conflicts=(lib32-nspr)
 source=("hg+https://hg.mozilla.org/projects/nspr")
 sha256sums=('SKIP')
 
+pkgver() {
+
+  #Thanks Kozeid
+
+  cd "nspr"
+
+  printf "%s.r%s.%s" \
+  "$(hg log -r . -T "{latesttag}" | sed 's/^release-//')" \
+  "$(hg identify -n)" \
+  "$(hg identify -i)"
+}
+
 prepare() {
   cd nspr
 }
