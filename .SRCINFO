@@ -1,6 +1,6 @@
 pkgbase = matcha-gtk-theme
 	pkgdesc = A flat design theme for GTK 3, GTK 2 and GNOME Shell
-	pkgver = 2021.01.01
+	pkgver = 2021.01.12
 	pkgrel = 1
 	url = https://vinceliuice.github.io/theme-matcha.html
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = matcha-gtk-theme
 	optdepends = qogir-icon-theme: Recommended icon theme
 	optdepends = kvantum-theme-matcha: Matching Kvantum theme
 	options = !strip
-	source = matcha-gtk-theme-2021-01-01.tar.gz::https://github.com/vinceliuice/Matcha-gtk-theme/archive/2021-01-01.tar.gz
-	sha256sums = 4000be993f0a9b73d1ab426e0ebf4ef41b9999233693670545b6c21d6992b959
+	source = matcha-gtk-theme-2021-01-12.tar.gz::https://github.com/vinceliuice/Matcha-gtk-theme/archive/2021-01-12.tar.gz
+	sha256sums = 2e05112d17d3d3a3202bb94bbd409fa2626837491bfd2bc69a0557da1bcda0ef
 
 pkgname = matcha-gtk-theme
 
