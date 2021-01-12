@@ -4,7 +4,7 @@ _edition=' Readonly Beta'
 pkgname="mongodb-$_target"
 _pkgver='1.25.0-beta.0'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - beta version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
@@ -17,7 +17,7 @@ source=(
 	'hadron-build.diff'
 )
 sha256sums=('f8040d22106d3fa32e1ae65f167c9dda9af5db6d93d05c1789b41483149e90be'
-            '6adbd892ef2603c556e50b8f300fff87b5481dcec1b3ae741be0fbd250ad4c93')
+            '559564c32e2b499d09b9c5b3badcaf64c88d89786d4542bb11bb36a26b5ca657')
 
 _sourcedirectory="compass-$_pkgver"
 _homedirectory="$pkgname-$pkgver-$pkgrel-home"
