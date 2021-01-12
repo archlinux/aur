@@ -4,7 +4,7 @@
 
 pkgname=mixxx_beta-git
 pkgver=r7956
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital DJ mixing software. 2.3 (beta) branch."
 arch=('i686' 'x86_64')
 url="https://mixxx.org/"
@@ -44,8 +44,11 @@ depends=(
 makedepends=('git' 'lv2' 'qt5-tools' 'cmake')
 provides=('mixxx')
 conflicts=('mixxx')
-source=("${pkgname%-*}::git+https://github.com/mixxxdj/mixxx.git#branch=2.3")
-md5sums=('SKIP')
+source=("${pkgname%-*}::git+https://github.com/mixxxdj/mixxx.git#branch=2.3"
+        'mixxx.install')
+md5sums=('SKIP'
+         '321b9cca3ed690fcf57e7ac1e99109c2')
+install='mixxx.install'
 
 pkgver() {
     cd "$srcdir/${pkgname%-*}"
