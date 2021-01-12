@@ -8,7 +8,7 @@ pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-jack-git
          pipewire-common-pulse-git pipewire-common-alsa-git
          gst-plugin-pipewire-common-git pipewire-common-ffmpeg-git
          pipewire-common-bluez5-git pipewire-common-bluez5-hsphfpd-git)
-pkgver=0.3.19.r38.g7aabd50d
+pkgver=0.3.19.r52.g219248d4
 pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines"
 url="https://pipewire.org"
@@ -78,10 +78,9 @@ package_pipewire-common-git() {
 
   DESTDIR="$pkgdir" meson install -C build
 
-  cd "$pkgdir"
+  install -Dm644 "$_pkgbase/LICENSE" "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
 
-  mkdir -p etc/alsa/conf.d
-  ln -st etc/alsa/conf.d /usr/share/alsa/alsa.conf.d/50-pipewire.conf
+  cd "$pkgdir"
 
   _pick bluez5 usr/lib/spa-0.2/bluez5
 
@@ -97,6 +96,9 @@ package_pipewire-common-git() {
   DESTDIR="$pkgdir" meson install -C build --only-changed
 
   cd "$pkgdir"
+
+  mkdir -p etc/alsa/conf.d
+  ln -st etc/alsa/conf.d /usr/share/alsa/alsa.conf.d/50-pipewire.conf
 
   _pick bluez5-hsphfpd usr/lib/spa-0.2/bluez5
 
