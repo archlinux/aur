@@ -6,12 +6,12 @@
 
 pkgname=fityk
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A program for nonlinear fitting of analytical functions to data."
 arch=(i686 x86_64)
 url="http://fityk.nieto.pl/"
 license=('GPL')
-depends=('lua52' 'wxgtk' 'xylib>=1.4')
+depends=('lua52' 'wxgtk2' 'xylib>=1.4')
 makedepends=('boost' 'swig')
 options=(!libtool)
 source=("https://github.com/wojdyr/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.bz2")
