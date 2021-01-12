@@ -5,7 +5,6 @@ pkgbase = rygel-git
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/Rygel
 	arch = x86_64
-	groups = gnome
 	license = LGPL
 	makedepends = vala
 	makedepends = gobject-introspection
