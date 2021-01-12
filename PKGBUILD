@@ -20,6 +20,11 @@ source=("git+https://github.com/libjpeg-turbo/libjpeg-turbo.git")
 sha512sums=('SKIP')
 #validpgpkeys=('0338C8D8D9FDA62CF9C421BD7EC2DBB6F4DBF434') # The libjpeg-turbo Project (Signing key for official binaries) <information@libjpeg-turbo.org>
 
+pkgver() {
+  cd libjpeg-turbo
+  git describe --tags | sed 's/-/+/g'
+}
+
 build() {
   cd "${_name}"
 
