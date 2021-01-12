@@ -3,7 +3,7 @@
 # Upstream URL: https://github.com/RitwickVerma/Gesture-Manager-X
 
 pkgname=gesture-manager-x-git
-pkgver=r5.856d1fd
+pkgver=r6.cf56062
 pkgrel=1
 pkgdesc="Extended GUI for interacting with libinput-gestures"
 arch=('any')
@@ -31,7 +31,7 @@ prepare() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -Dm644 daemonHelper.py gestureHelper.py ui.glade -t \
+	install -Dm644 *.py ui.glade -t \
 		"$pkgdir/usr/share/${pkgname%-git}"
 
 	install -Dm755 main.py -t "$pkgdir/usr/share/${pkgname%-git}"

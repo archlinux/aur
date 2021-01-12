@@ -1,16 +1,18 @@
 pkgbase = gesture-manager-x-git
-	pkgdesc = GUI for setting libinput-gestures touchpad gestures with extended support for newer gestures.
-	pkgver = 0.1
+	pkgdesc = Extended GUI for interacting with libinput-gestures
+	pkgver = r6.cf56062
 	pkgrel = 1
 	url = https://github.com/RitwickVerma/Gesture-Manager-X
 	arch = any
-	license = GPLv3
+	license = GPL3
 	makedepends = git
 	depends = libinput-gestures
 	depends = xf86-input-libinput
-	depends = gtk3>=3.18,python
-	source = gesturemanagerx::git+git://github.com/RitwickVerma/Gesture-Manager-X
-	md5sums = SKIP
+	depends = gtk3
+	provides = gesture-manager-x
+	conflicts = gesture-manager-x
+	source = gesture-manager-x::git+https://github.com/RitwickVerma/Gesture-Manager-X.git
+	sha256sums = SKIP
 
 pkgname = gesture-manager-x-git
 
