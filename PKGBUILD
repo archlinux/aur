@@ -17,9 +17,17 @@ conflicts=(lib32-keyutils)
 source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git")
 sha512sums=('SKIP')
 
+_commit() {
+  # Convert HEAD into a shortened commit id:
+  git rev-parse --short HEAD
+}
+
 pkgver() {
   cd keyutils
-  git describe --tags | sed 's/-/+/g'
+
+  # Suggestions for improvement welcome!
+  printf '%s.r%s.%s'         \
+  "$(_commit)"
 }
 
 build() {
