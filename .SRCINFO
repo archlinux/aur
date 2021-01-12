@@ -1,7 +1,7 @@
 pkgbase = reflective-rapidjson
 	pkgdesc = Code generator for serializing/deserializing C++ objects to/from JSON using Clang and RapidJSON
 	pkgver = 0.0.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Martchus/reflective-rapidjson
 	arch = i686
 	arch = x86_64
