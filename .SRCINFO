@@ -1,0 +1,21 @@
+pkgbase = theshop
+	pkgdesc = Software store
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/vicr123/theshop
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = qt5-tools
+	makedepends = libthedesk
+	makedepends = thedesk
+	depends = qt5-base
+	depends = the-libs
+	depends = qt5-svg
+	depends = appstream-qt
+	depends = packagekit-qt5
+	source = theshop-1.0::https://github.com/vicr123/theShop/archive/v1.0.tar.gz
+	sha256sums = 90f836280fc68eb4a21df25d3633b3276b96ac3fdc4dd7dbba099bbdb504ea33
+
+pkgname = theshop
+
