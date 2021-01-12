@@ -1,7 +1,7 @@
 pkgbase = autojump-git
 	pkgdesc = A faster way to navigate your filesystem from the command line
 	pkgver = 22.5.3.r0.g06e082c
-	pkgrel = 3
+	pkgrel = 4
 	url = http://github.com/wting/autojump
 	arch = any
 	license = GPL3

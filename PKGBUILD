@@ -5,7 +5,7 @@
 
 pkgname=autojump-git
 pkgver=22.5.3.r0.g06e082c
-pkgrel=3
+pkgrel=4
 pkgdesc="A faster way to navigate your filesystem from the command line"
 arch=(any)
 url="http://github.com/wting/autojump"
@@ -18,7 +18,7 @@ source=('git+https://github.com/wting/autojump.git')
 md5sums=('SKIP')
 
 _gitname="autojump"
-_python="python3.8"
+_python="python3.9"
 
 pkgver() {
     cd ${_gitname}
