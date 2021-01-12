@@ -1,0 +1,16 @@
+pkgbase = wofer
+	pkgdesc = unopiniated script that emulates a file manager
+	pkgver = r103.0499883
+	pkgrel = 1
+	url = https://gitlab.com/snakedye/wofer
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	optdepends = fd: search for files in directory hierarchy
+	provides = wofer-git
+	conflicts = wofer-git
+	source = wofer::git+https://gitlab.com/snakedye/wofer.git
+	md5sums = SKIP
+
+pkgname = wofer
+
