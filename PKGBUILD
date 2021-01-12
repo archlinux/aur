@@ -8,7 +8,7 @@
 
 _pkgname=gnupg
 pkgname=gnupg-scdaemon-shared-access
-pkgver=2.2.26
+pkgver=2.2.27
 pkgrel=1
 pkgdesc='This package adds shared-access option that uses PCSC_SHARE_SHARED for pcsc_connect in scdaemon when using pcsc backend for smartcard access'
 url='https://www.gnupg.org/'
@@ -32,7 +32,7 @@ source=("https://gnupg.org/ftp/gcrypt/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2"
         'drop-import-clean.patch'
         'avoid-beta-warning.patch'
         "scdaemon_shared-access.patch")
-sha256sums=('517569e6c9fad22175df16be5900f94c991c41e53612db63c14493e814cfff6d'
+sha256sums=('34e60009014ea16402069136e0a5f63d9b65f90096244975db5cea74b3d02399'
             'SKIP'
             '02d375f0045f56f7dd82bacdb5ce559afd52ded8b75f6b2673c39ec666e81abc'
             '22fdf9490fad477f225e731c417867d9e7571ac654944e8be63a1fbaccd5c62d'
@@ -81,3 +81,4 @@ package() {
 
 	install -Dm 644 doc/examples/systemd-user/*.* -t "${pkgdir}/usr/lib/systemd/user"
 }
+
