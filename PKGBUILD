@@ -35,7 +35,7 @@ prepare() {
 
 build() {
    export _stagedir="${srcdir}/stagedir"
-   local JOBS; JOBS="$(grep -oP -- "-j\s*[0-9]+" <<< "${MAKEFLAGS}")"
+   local JOBS; JOBS="$(grep -oP -- "-j\s*[0-9]+" <<< "${MAKEFLAGS}")" || JOBS="-j1"
 
    cd ${pkgbase%-python2}_${_boostver}
 
