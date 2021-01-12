@@ -2,13 +2,14 @@
 
 pkgname=python-jax
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Differentiate, compile, and transform Numpy code.'
 arch=('x86_64')
 url='https://github.com/google/jax/'
 license=('Apache')
 depends=('absl-py'
          'python'
+         'python-flatbuffers'
          'python-numpy'
          'python-opt_einsum'
          'python-protobuf'
