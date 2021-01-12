@@ -6,7 +6,7 @@
 
 pkgname=vlang-git
 pkgver=0.2.r418.g33976246c
-pkgrel=4
+pkgrel=5
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software'
 arch=('x86_64')
 url='https://vlang.io'
@@ -40,6 +40,9 @@ build() {
   # CFLAGS and LDFLAGS to ensure successful compilation.
   CFLAGS="" LDFLAGS="" prod=1 make
 
+  # We have to manually compile this tool before executing it since we disable
+  # automatic compilation in no-compile.patch
+  ./v cmd/tools/vbuild-tools.v
   # vpm and vdoc fail to compile with "unsupported linker option" when LDFLAGS
   # is set
   LDFLAGS="" ./v build-tools
