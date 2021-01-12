@@ -26,10 +26,16 @@ pkgbase = librewolf-bin
 	provides = librewolf
 	conflicts = librewolf
 	options = !emptydirs
+	validpgpkeys = 031F7104E932F7BD7416E7F6D2845E1305D6E801
+	validpgpkeys = 9D7008F8DFCD21508174954A3740FE9FC5772203
 	source_x86_64 = https://gitlab.com/librewolf-community/browser/linux/uploads/55ee6af4d63896e6cdd5b244e463fa7e/librewolf-84.0.2-1-x86_64.pkg.tar.zst
+	source_x86_64 = https://gitlab.com/librewolf-community/browser/linux/uploads/a65415dbeabe283701d04b87fcc2c6ae/librewolf-84.0.2-1-x86_64.pkg.tar.zst.sig
 	sha256sums_x86_64 = 481765e4e0ecb4074a860fecc62952fb9814a70c17256dd505d41ef3ca6873cf
+	sha256sums_x86_64 = SKIP
 	source_aarch64 = https://gitlab.com/librewolf-community/browser/linux/uploads/9c018ee028e864b0a5581fe440421d99/librewolf-84.0.2-1-aarch64.pkg.tar.zst
+	source_aarch64 = https://gitlab.com/librewolf-community/browser/linux/uploads/709ef388f7e7f328ca982f6a4adda112/librewolf-84.0.2-1-aarch64.pkg.tar.zst.sig
 	sha256sums_aarch64 = 3139a13b986b246d3491e6a4fa6f7a117b861227dd6b8b9414f45169fef544a6
+	sha256sums_aarch64 = SKIP
 
 pkgname = librewolf-bin
 
