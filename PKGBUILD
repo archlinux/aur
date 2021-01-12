@@ -3,7 +3,7 @@
 
 pkgbase=sia
 pkgname=('siac' 'siad')
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc='Decentralized storage for the post-cloud world'
 arch=('x86_64')
