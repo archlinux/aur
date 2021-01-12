@@ -2,7 +2,7 @@
 # Maintainer: m8D2 <omui (at) proton mail (dot) com>
 
 pkgname="elementary-xfce-icons"
-pkgver=0.15.1
+pkgver=0.15.2
 pkgrel=1
 pkgdesc='Elementary icon theme with improved Xfce support'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=(gtk3 optipng)
 depends=(adwaita-icon-theme)
 conflicts=(elementary-xfce-icons-git)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz")
-sha256sums=('75937a08c4618dac07a91e4de60884f890c332c8f367101b5f81a5e3b3c376d9')
+sha256sums=('29de5e0b5852e5c409b25681349e045cb555d3ae0f25ec1ae555caf6f3eed4a4')
 
 build() {
     cd "elementary-xfce-$pkgver"
