@@ -7,8 +7,8 @@ pkgdesc='Yet another mirror list optimization tool'
 arch=('any')
 url="https://github.com/coNQP/${pkgname}"
 license=('GPLv3')
-makedepends=('git' 'python-setuptools-scm')
 depends=('python' 'python-setuptools')
+makedepends=('git' 'python-setuptools-scm')
 source=("${pkgname}::git+${url}.git#tag=${pkgver}")
 sha256sums=('SKIP')
 backup=('etc/speculum.conf')
