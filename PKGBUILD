@@ -1,6 +1,6 @@
 # Maintainer: Advaith Madhukar <advaith.madhukar at gmail dot com>
 pkgname=nuclear-player-bin
-pkgver=0.6.6
+pkgver=0.6.7
 repurl=https://github.com/nukeop/nuclear
 commidfull=$(git ls-remote $repurl.git -tags v$pkgver)
 commid=${commidfull:0:6}
@@ -12,11 +12,11 @@ install=nuclear-player-bin.install
 license=('GPL3')
 depends=('libnotify' 'libappindicator-gtk3' 'libxtst' 'nss' )
 source=(
-    https://github.com/nukeop/nuclear/releases/download/v${pkgver}/nuclear-v${pkgver}.deb
+    https://github.com/nukeop/nuclear/releases/download/v${pkgver}/nuclear-${pkgver}.deb
     nuclear.desktop
 )
 md5sums=(
-    '3bfd3911d4e1e649d71db562f1f52ea2'
+    'e2b0734e91ccdf964904dfee77d4ff34'
     'SKIP'    
 )
 
