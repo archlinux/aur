@@ -27,8 +27,8 @@ package() {
   # Fix libs
   mv "${pkgdir}/usr/local/lib" "${pkgdir}/usr/lib"
   rm -rf "${pkgdir}/usr/local" "${pkgdir}/usr/lib/libdnieremotepkcs11.so" "${pkgdir}/usr/lib/libdnieremotepkcs11.so.0"
-  ln -fsT "libdnieremotepkcs11.so.0.0.1" "${pkgdir}/usr/lib/libdnieremotepkcs11.so.0"
-  ln -fsT "libdnieremotepkcs11.so.0.0.1" "${pkgdir}/usr/lib/libdnieremotepkcs11.so"
+  ln -fsT "libdnieremotepkcs11.so.0.0.2" "${pkgdir}/usr/lib/libdnieremotepkcs11.so.0"
+  ln -fsT "libdnieremotepkcs11.so.0.0.2" "${pkgdir}/usr/lib/libdnieremotepkcs11.so"
 
   # Install manual
   install -D -m644 "DNIeRemote_user_manual.pdf" "${pkgdir}/usr/share/doc/${pkgname}/README.pdf"
