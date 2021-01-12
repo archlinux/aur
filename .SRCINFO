@@ -1,7 +1,7 @@
 pkgbase = libg15
 	pkgdesc = Provides low-level access to the Logitech G15 and G11 keyboards and Z10 speakers
 	pkgver = 1.2.7
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.g15tools.com/
 	arch = x86_64
 	license = GPL
