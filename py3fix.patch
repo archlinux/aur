@@ -2,13 +2,25 @@ diff --git a/setup.py b/setup.py
 index 139f369..cb5af11 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -34,8 +34,7 @@ setup(name='inkscape-silhouette',
+@@ -38,14 +38,13 @@ setup(name='inkscape-silhouette',
        author=m.groups()[0],
        author_email=m.groups()[1],
        url='https://github.com/jnweiger/inkscape-silhouette',
--      scripts=filter(os.path.isfile, ['sendto_silhouette.py', 'sendto_silhouette.inx', 'README.md' ] + glob.glob('silhouette-*') + glob.glob('misc/*') + glob.glob('misc/*/*')),
+-      scripts=filter(os.path.isfile,
+-                     ['sendto_silhouette.py',
+-                      'sendto_silhouette.inx',
+-                      'README.md'] +
+-                     glob.glob('silhouette-*') +
+-                     glob.glob('misc/*') +
+-                     glob.glob('misc/*/*')),
 -
-+      package_data={'silhouette': list(filter(os.path.isfile, ['sendto_silhouette.py', 'sendto_silhouette.inx', 'README.md' ] + glob.glob('silhouette-*') + glob.glob('misc/*') + glob.glob('misc/*/*')))},
++      package_data={'silhouette': list(filter(os.path.isfile,
++                    ['sendto_silhouette.py',
++                     'sendto_silhouette.inx',
++                     'README.md' ] +
++                    glob.glob('silhouette-*') +
++                    glob.glob('misc/*') +
++                    glob.glob('misc/*/*')))},
        packages=['silhouette'],
        license='GPL-2.0',
        classifiers=[
