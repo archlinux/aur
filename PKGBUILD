@@ -2,7 +2,7 @@
 # Contributor: Johannes Löthberg <demizide@gmail.com>
 
 pkgname=beets-git
-pkgver=1.4.9.r42.g81b1faa05
+pkgver=1.4.9.r1031.gcbc045f1
 pkgrel=1
 pkgdesc="Flexible music library manager and tagger - git version"
 arch=('any')
@@ -53,12 +53,16 @@ pkgver() {
 
 build() {
   cd ${srcdir}/beets
-  python setup.py build
+  python setup.py build sdist
 }
 
 package() {
   cd ${srcdir}/beets
   python setup.py install --root=${pkgdir} --optimize=1 --skip-build
-
+  install -dm 755 "${pkgdir}"/usr/share/zsh/site-functions
+  install -m 644 extra/_beet "${pkgdir}"/usr/share/zsh/site-functions/
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -dm 755 "${pkgdir}"/usr/share/man/man{1,5}
+  install -m 644 man/beet.1 "${pkgdir}"/usr/share/man/man1/
+  install -m 644 man/beetsconfig.5 "${pkgdir}"/usr/share/man/man5/
 }
