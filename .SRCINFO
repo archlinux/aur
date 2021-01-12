@@ -1,0 +1,18 @@
+pkgbase = json-c-git
+	pkgdesc = A JSON implementation in C
+	pkgver = 0.15
+	pkgrel = 1
+	url = https://github.com/json-c/json-c/wiki
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	provides = libjson-c.so
+	provides = json-c
+	conflicts = json-c
+	source = git+https://github.com/json-c/json-c
+	sha256sums = SKIP
+
+pkgname = json-c-git
+
