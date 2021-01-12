@@ -13,7 +13,8 @@ optdepends=('libpurple-lurch: XMPP E2E OMEMO encryption'
 	    'libpurple-carbons: XMPP Carbon Copy - Live multiple device support'
 	    'purple-xmpp-http-upload: XMPP HTTP Upload - Filesharing'
 	    'purple-mm-sms: SMS plugin using ModemManager'
-	    'libolm: add OLM for matrix encryption')
+	    'purple-matrix: Matrix support'
+	    'libolm: add OLM for Matrix encryption')
 makedepends=('pkg-config' 'meson' 'libolm')
 provides=('purism-chatty')
 conflicts=('purism-chatty')
