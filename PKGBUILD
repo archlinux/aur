@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=pdfstudioviewer
 _pkgname=pdfstudioviewer2020
-pkgver=2020.3.0
+pkgver=2020.3.1
 pkgrel=1
 pkgdesc="Review, annotate, and edit PDF Documents"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('java-runtime=8' 'sane')
 source=("${pkgname}-${pkgver}_linux64.deb::https://download.qoppa.com/$pkgname/PDFStudioViewer_linux64.deb"
         "$pkgname.desktop"
         "$pkgname.sh")
-sha256sums=('0a70d0fc1554d96db284c66a49bf3eda184267b06419e012d1f543dee4d03817'
+sha256sums=('bab32cb7634cb72cfecde68663a8642b8270efdb7068a7c541fa0e1c9ca0d9ad'
             '531354a4fe61e8b16ad3123cd49df7140d4ac1ef3c5e75520b9250d55c398481'
             'eb17f775395167664d3bb22dc0f0ba54a6ba9fa975c2a1076716090a8e9a39aa')
 
