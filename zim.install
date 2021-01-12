@@ -1,29 +1,32 @@
 #!/bin/bash
 
 post_install() {
-	[[ -f ~root/.zimrc ]] || ln -s /etc/zsh/zimrc ~root/.zimrc
+  [[ -f ~root/.zimrc ]] || ln -s /etc/zsh/zimrc ~root/.zimrc
   compile_scripts
-	echo
-	echo "Zim is enabled for all users by default."
+  echo
+  echo "Zim is enabled for all users by default."
   echo "~/.zimrc was symlinked to /etc/zsh/zimrc for root (if it was not present)"
-	echo "Global settings reside in the /etc/zsh/ directory."
-	echo "To personalize Zsh and zim, edit your local ~/.zshrc and ~/.zimrc files."
-	echo "A user can also have a custom, overriding Zim installation in ~/.zim/"
-	echo
+  echo "Global settings reside in the /etc/zsh/ directory."
+  echo "To personalize Zsh and zim, edit your local ~/.zshrc and ~/.zimrc files."
+  echo "A user can also have a custom, overriding Zim installation in ~/.zim/"
+  echo
+  echo "Please note that zim errors are suppressed, so if you're experiencing any issues"
+  echo "with zim, remove &>/dev/null from /etc/zsh/zshrc"
+  echo
 }
 
 post_upgrade() {
-	compile_scripts
+  compile_scripts
 }
 
 post_remove() {
-	remove_compiled_scripts
+  remove_compiled_scripts
 }
 
 compile_scripts() {
-	zsh -c 'export ZIM_HOME=/usr/lib/zim; source /etc/zsh/zshrc; source /usr/lib/zim/templates/zlogin;'
+  zsh -c 'export ZIM_HOME=/usr/lib/zim; source /etc/zsh/zshrc; source /usr/lib/zim/templates/zlogin;'
 }
 
 remove_compiled_scripts() {
-	find /usr/lib/zim -name "*.zwc" | xargs rm -f
+  find /usr/lib/zim -name "*.zwc" | xargs rm -f
 }

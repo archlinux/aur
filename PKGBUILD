@@ -1,6 +1,6 @@
 # Contributor: Mateusz Galazyn <carbolymer at gmail.com>
 
-pkgrel=1
+pkgrel=2
 pkgver=r547.3e06f0a
 pkgname=zsh-zim-git
 pkgdesc="ZIM - Zsh IMproved"
@@ -16,8 +16,8 @@ source=('git://github.com/zimfw/zimfw.git'
         'zshrc')
 md5sums=('SKIP'
          'SKIP'
-         '37cfb43655ba975a492f5a8a0d436b6e'
-         'ccd089796e6c0cf8e3b7170283b5a724')
+         '6e5ffd11ddfc72d74afb105829821f28'
+         '7874908906dbcb5f85bb1ba1d9ab5c00')
 options=('!strip')
 install='zim.install'
 _gitname='zimfw'
@@ -56,14 +56,14 @@ package() {
   cp -f $ZIM_TPL_DIR/zimrc $pkgdir/etc/zsh/zimrc
   cp -f zshrc "$pkgdir/etc/zsh/zshrc"
 
-  # patch & recompile zwc file with hardcoded paths
-  # assume that you're not running makepkg in directory with '+' in its name
+  # patch zwc file with hardcoded paths
   patching=('login_init.zsh' 'init.zsh')
   for entry in "${patching[@]}"; do
     echo "Patching build paths occurrence in: ${entry}"
-    sed -i "s+${pkgdir}++g" "${ZIM_HOME}/${entry}"
+    sed -i "s/${pkgdir//\//\\/}//g" "${ZIM_HOME}/${entry}"
   done
   find ${ZIM_HOME} -iname "*.old" -type f -exec rm -f \{\} \;
+  # files will be recompiled during installation, when zsh will be executed as root
   find ${ZIM_HOME} -iname "*.zwc" -type f -exec rm -f \{\} \;
 }
 
