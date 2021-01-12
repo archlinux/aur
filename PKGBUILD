@@ -22,13 +22,13 @@
 _pkgname=codelite
 pkgname=${_pkgname}
 pkgver=14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
 license=('GPL')
 makedepends=('pkgconfig' 'cmake' 'clang')
-depends=('wxgtk'
+depends=('wxgtk2'
           'clang' 'lldb'
           'libedit'
           'libssh'

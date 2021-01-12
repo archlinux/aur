@@ -1,7 +1,7 @@
 pkgbase = codelite
 	pkgdesc = Cross platform C/C++/PHP and Node.js IDE written in C++
 	pkgver = 14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.codelite.org/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = codelite
 	makedepends = pkgconfig
 	makedepends = cmake
 	makedepends = clang
-	depends = wxgtk
+	depends = wxgtk2
 	depends = clang
 	depends = lldb
 	depends = libedit
