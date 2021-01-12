@@ -3,7 +3,7 @@
 
 pkgname=hunspell-fr-cpr90
 pkgver=7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="French (Classic + 1990 Reform) hunspell dictionaries"
 arch=(any)
 url="http://www.dicollecte.org/"
@@ -11,7 +11,7 @@ license=('custom:MPLv2')
 optdepends=('hunspell:	the spell checking libraries and apps')
 provides=('hunspell-fr')
 conflicts=('hunspell-fr')
-source=(http://www.dicollecte.org/download/fr/hunspell-french-dictionaries-v${pkgver}.zip
+source=(http://www.grammalecte.net/download/fr/hunspell-french-dictionaries-v${pkgver}.zip
         LICENSE)
 sha256sums=('eb7ac36dc14b9c3e3c0cabae0f90304a137da8e6ae607bcaf56d65720fbd097f'
             'fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85')
