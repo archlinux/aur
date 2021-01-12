@@ -1,6 +1,6 @@
 pkgbase = ddccontrol
 	pkgdesc = Control your monitor by software using the DDC/CI protocol
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/ddccontrol/ddccontrol
 	arch = i686
@@ -16,11 +16,9 @@ pkgbase = ddccontrol
 	depends = libxml2
 	depends = icu
 	depends = glib2
-	provides = ddccontrol-git
-	conflicts = ddccontrol-git
 	options = !libtool
-	source = ddccontrol-0.5.0.tar.gz::https://github.com/ddccontrol/ddccontrol/archive/0.5.0.tar.gz
-	sha256sums = 41d7c4fbcd1c2fa33bc6993c44527e98a1af7233903f6b362f41b99f977224df
+	source = ddccontrol-0.5.1.tar.gz::https://github.com/ddccontrol/ddccontrol/archive/0.5.1.tar.gz
+	sha512sums = 2973a06a0c75080ff34d0239b5011506a52b875acfc4664a484fe9860c2f9863701384ec611562f4b55fd333e2298ba49c9e3acfe24026d4fa9ac72933af85a0
 
 pkgname = ddccontrol
 	install = ddccontrol.install
@@ -29,4 +27,5 @@ pkgname = gddccontrol
 	pkgdesc = Control your monitor by software using the DDC/CI protocol (GUI)
 	depends = gtk2
 	depends = ddccontrol
+	conflicts = ddccontrol-git
 
