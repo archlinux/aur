@@ -1,15 +1,15 @@
 pkgbase = yaml-language-server
 	pkgdesc = Language Server for Yaml Files
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/redhat-developer/yaml-language-server
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = yaml-language-server-0.13.0.tgz
-	source = https://registry.npmjs.org/yaml-language-server/-/yaml-language-server-0.13.0.tgz
-	sha256sums = 6f3bda4b0816970e7317951013e251367e892cdd309d835f64b40fbf1d7615ff
+	noextract = yaml-language-server-0.14.0.tgz
+	source = https://registry.npmjs.org/yaml-language-server/-/yaml-language-server-0.14.0.tgz
+	sha256sums = ddadf7adae46314af9d64d8ec4e46e5dbb4a99732c4e9801d167776dceda5c5b
 
 pkgname = yaml-language-server
 
