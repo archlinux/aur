@@ -16,5 +16,5 @@ build(){
 
 package() {
 	mkdir -p "$pkgdir"/usr/bin
-	cp src/dist/program "$pkgdir"/usr/bin/$pkgname
+	cp dist/program "$pkgdir"/usr/bin/$pkgname
 }
