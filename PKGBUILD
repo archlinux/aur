@@ -1,6 +1,6 @@
 # Maintainer: spsf64 <at g m a i l  dot com>
 pkgname=webapp-manager
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Run websites as if they were apps"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}-git" 'ice-ssb' 'ice-dev')
 
 
-sha256sums=('2e8c30c2d96f6aaae3c655606eeb076cc070c9dfbc2124297a7b86273676b488')
+sha256sums=('2ee8c38b5fe8d0d9a9a9bd60eceb9eea802b873e0cbff9a38dce48c12af5a67b')
 
 source=("https://github.com/linuxmint/$pkgname/archive/$pkgver.zip")
 
