@@ -64,7 +64,8 @@ build() {
     --disable-libipq \
     --disable-bpf-compiler \
     --disable-nfsynproxy \
-    --disable-ipv6
+    --disable-ipv6 \
+    --disable-connlabel
   make
 }
 
