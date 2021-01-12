@@ -7,6 +7,7 @@ pkgbase = i3-swallow
 	license = CC BY-NC-SA 4.0
 	makedepends = git
 	depends = xdo
+	depends = python-i3ipc
 	conflicts = i3-swallow-git
 	source = i3-swallow-2021.01.01.tar.gz::https://github.com/TheCynicalTeam/i3-swallow/archive/2021.01.01.tar.gz
 	sha256sums = ab06d29b0889a7cbe1b1cf601da84b64ce3b7a8f51d03b9fc3b49f2e71a73aea
