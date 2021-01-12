@@ -2,14 +2,14 @@ pkgbase = perl-html-encoding
 	pkgdesc = Determine the encoding of HTML/XML/XHTML documents
 	pkgver = 0.61
 	pkgrel = 1
-	url = http://search.cpan.org/dist/HTML-Encoding
+	url = https://metacpan.org/release/HTML-Encoding
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	depends = perl-html-parser
 	depends = perl-http-message
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/B/BJ/BJOERN/HTML-Encoding-0.61.tar.gz
+	source = https://search.cpan.org/CPAN/authors/id/B/BJ/BJOERN/HTML-Encoding-0.61.tar.gz
 	md5sums = bce9f00f04ad055feaa4d6511b30e421
 	sha512sums = eff1978f77e01efe37bcc2f04e48644f96072bb7649f04e35e1576a99fc45e794e0de07c49832b7fe4adaff91ab95e1b8a9adf2da4675a521fa3541f390242b6
 
