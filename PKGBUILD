@@ -25,7 +25,7 @@
 
 pkgname=libspotify
 pkgver=12.1.51
-pkgrel=7
+pkgrel=8
 pkgdesc="C API package allowing third-party developers to write applications that utilize the Spotify music streaming service"
 arch=("i686" "x86_64" "armv6h" "armv7h")
 url="https://mopidy.github.io/libspotify-archive/"

@@ -1,7 +1,7 @@
 pkgbase = libspotify
 	pkgdesc = C API package allowing third-party developers to write applications that utilize the Spotify music streaming service
 	pkgver = 12.1.51
-	pkgrel = 7
+	pkgrel = 8
 	url = https://mopidy.github.io/libspotify-archive/
 	arch = i686
 	arch = x86_64
