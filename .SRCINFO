@@ -1,0 +1,31 @@
+pkgbase = kmod-minimal-git
+	pkgdesc = Linux kernel module management tools and library
+	pkgver = 28
+	pkgrel = 1
+	url = https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git
+	arch = x86_64
+	license = GPL2
+	checkdepends = linux-headers
+	checkdepends = libelf
+	depends = glibc
+	depends = zlib
+	depends = openssl
+	depends = xz
+	depends = zstd
+	provides = module-init-tools=3.16
+	provides = libkmod.so
+	provides = kmod
+	conflicts = module-init-tools
+	conflicts = kmod
+	replaces = module-init-tools
+	source = git+https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git
+	source = depmod-search.conf
+	source = depmod.hook
+	source = depmod.script
+	md5sums = SKIP
+	md5sums = dd62cbf62bd8f212f51ef8c43bec9a77
+	md5sums = e179ace75721e92b04b2e145b69dab29
+	md5sums = 18fb3d1f6024a5a84514c8276cb3ebff
+
+pkgname = kmod-minimal-git
+
