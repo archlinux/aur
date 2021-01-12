@@ -20,6 +20,11 @@ source=("git+https://git.lysator.liu.se/nettle/nettle.git")
 sha256sums=('SKIP')
 #validpgpkeys=('343C2FF0FBEE5EC2EDBEF399F3599FF828C67298') # Niels Möller <nisse@lysator.liu.se>
 
+pkgver() {
+  cd nettle
+  git describe --tags | sed 's/-/+/g'
+}
+
 build() {
   cd $_pkgbasename
 
