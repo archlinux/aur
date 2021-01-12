@@ -3,12 +3,12 @@
 
 pkgname=meteorite
 pkgver=0.11
-pkgrel=2
+pkgrel=3
 pkgdesc='A Matroska/MKV repair engine'
 arch=('i686' 'x86_64')
 url='http://www.mkvrepair.com/'
 license=('GPL')
-depends=('wxgtk')
+depends=('wxgtk2')
 source=("https://downloads.sourceforge.net/$pkgname/Meteorite-v$pkgver-src.tar.bz2"\
         "meteorite.patch")
 md5sums=('9f608eee5a8f355beb8b59fb7e0a8718'
