@@ -8,17 +8,23 @@
 pkgname=wxformbuilder-git
 _gitname=wxFormBuilder
 pkgver=3.9.0.r188.g0eccdbc5
-pkgrel=2
+pkgrel=1
 pkgdesc="Designer, GUI builder, and RAD tool For wxWidgets"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://sourceforge.net/projects/wxformbuilder/"
 license=('GPL')
 provides=('wxformbuilder')
 conflicts=('wxformbuilder' 'wxformbuilder-svn')
-depends=('wxgtk2' 'boost')
+depends=('wxgtk3' 'boost')
 makedepends=('git' 'ninja' 'meson')
-source=("git://github.com/wxFormBuilder/wxFormBuilder.git")
-md5sums=('SKIP')
+source=(
+  "git://github.com/wxFormBuilder/wxFormBuilder.git"
+  "nativefile.ini"
+)
+md5sums=(
+  'SKIP'
+  '124daaf4663d8e4285a17e9e0f1f4d6a'
+)
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
@@ -32,7 +38,7 @@ prepare() {
 
 build() {
   cd "$srcdir/${_gitname}"
-  meson _build --prefix /usr
+  meson setup _build --native-file "$srcdir"/nativefile.ini --prefix /usr
   ninja -j$(nproc) -C _build
 }
 
