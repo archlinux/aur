@@ -43,6 +43,6 @@ package() {
   make DESTDIR="$pkgdir" RAISE_SETFCAP='no' lib='lib32' prefix='/usr' install
 
   # docs
-  install -vDm 644 {CHANGELOG,README} -t "${pkgdir}/usr/share/doc/libcap/"
+#  install -vDm 644 {CHANGELOG,README} -t "${pkgdir}/usr/share/doc/libcap/"
   rm -r "${pkgdir}/usr/"{include,share/man,bin}
 }
