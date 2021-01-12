@@ -1,0 +1,6 @@
+post_upgrade() {
+  echo "The configuration file for zigbee2mqtt is now located in /etc/zigbee2mqtt"
+  echo "Please move your old configuration file if you upgraded from a previous version of this package:"
+  echo "mv /opt/zigbee2mqtt/data/configuration.yaml.pacsave /etc/zigbee2mqtt/configuration.yaml"
+}
+

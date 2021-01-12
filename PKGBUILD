@@ -3,15 +3,15 @@
 _pkgname=zigbee2mqtt
 pkgname=zigbee2mqtt-git
 pkgver=1.12.0.r0.g840b9d9
-pkgrel=3
+pkgrel=4
 pkgdesc='A Zigbee to MQTT bridge'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://www.zigbee2mqtt.io'
 license=('GPL3')
-depends=('nodejs>=10.0' 'npm')
+depends=('nodejs>=10.0')
 conflicts=('zigbee2mqtt')
 provides=('zigbee2mqtt')
-makedepends=('git')
+makedepends=('git' 'npm')
 optdepends=(
   'cc-tool: To flash Texas Instruments CC2531 debugger'
   'mosquitto: MQTT broker')
@@ -21,10 +21,12 @@ source=(
   'zigbee2mqtt.sysusers'
   'zigbee2mqtt.tmpfiles')
 sha256sums=('SKIP'
-            '831ce970669d29ba2db208bec8245c97e80540981dd23276bba10a9b7b699e1b'
-            'bf3e49cfb86df460b4db16b280839dc7f0c73fbfd29ea6d86040f711606abf65'
-            '5861e6e25350b32fc81cf1a43802470e8ff033a019cba4d28b3bd48c6cb5ddf6')
-backup=('opt/zigbee2mqtt/data/configuration.yaml')
+            '36fdca9c274fc143a85cc57d70a36e0ec9455cf86b85d0690ccf0090ee8d682d'
+            '3a86716e9036e97d885e9b5f37c7f87d9c2872435e4acf9fc4c9157264cf387b'
+            '8f0fbe06c8d6e8fdf37feb31f244930025d76785451f9049fd90fe6e23c259f6')
+backup=('etc/zigbee2mqtt/configuration.yaml')
+install='zigbee2mqtt.install'
+options=('!strip')
   
 pkgver() {
   cd "${_pkgname}"
@@ -32,12 +34,18 @@ pkgver() {
 }
 
 package() {
-  cd "${_pkgname}"
-  npm install --cache "${srcdir}/npm-cache" --user root
-  install -d -m 650 "${pkgdir}/opt/${_pkgname}"
-  cp -dpr --no-preserve=ownership "${srcdir}/${_pkgname}/" "${pkgdir}/opt/"
-  install -Dm644 "${srcdir}/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
-  install -Dm644 "${srcdir}/${_pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
-  install -Dm644 "${srcdir}/${_pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
+  npm install -g --user root --prefix "${pkgdir}/usr" --cache "${srcdir}/npm-cache" "${srcdir}/${pkgver}.tar.gz"
+
+  find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+  chown -R root:root "${pkgdir}"
+
+  find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+
+  cd "${pkgname}-${pkgver}"
+  install -Dm644 data/configuration.yaml "${pkgdir}/etc/${pkgname}/configuration.yaml"
+
+  install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }
 
