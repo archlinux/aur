@@ -27,6 +27,11 @@ makedepends=(
 provides=(lib32-kmod)
 conflicts=(lib32-kmod)
 #-----------------------------------------------------------------------------------------------
+pkgver() {
+  cd kmod
+  git describe --tags | sed 's/-/+/g'
+}
+
 build() {
 
     export CC="gcc -m32"
