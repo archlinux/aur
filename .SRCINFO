@@ -1,0 +1,48 @@
+pkgbase = yaru-remix-git
+	pkgdesc = Yaru-remix is a fork of Yaru theme
+	pkgver = 20.10.1.r65.g23b4478a
+	pkgrel = 1
+	url = https://github.com/Muqtxdir/yaru-remix-gtk-theme
+	arch = any
+	license = GPL3
+	license = LGPL3
+	license = LGPL2.1
+	license = CCPL:by-nc-sa
+	makedepends = meson
+	makedepends = sassc
+	makedepends = git
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = yaru-remix::git+https://github.com/Muqtxdir/yaru-remix.git
+	sha256sums = SKIP
+
+pkgname = yaru-remix-gtk-theme-git
+	pkgdesc = Yaru-remix gtk theme
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = gtk-engine-murrine
+	depends = gnome-themes-extra
+	provides = yaru-remix-gtk-theme
+	conflicts = yaru-remix-gtk-theme-git
+
+pkgname = yaru-remix-gnome-shell-theme-git
+	pkgdesc = Yaru-remix gnome shell theme
+	depends = gnome-shell
+	provides = yaru-remix-gnome-shell-theme
+	conflicts = yaru-remix-gnome-shell-theme
+
+pkgname = yaru-remix-icon-theme-git
+	pkgdesc = Yaru-remix icon theme
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	depends = librsvg
+	depends = humanity-icon-theme
+	provides = yaru-remix-icon-theme
+	conflicts = yaru-remix-icon-theme
+
+pkgname = yaru-remix-wallpaper-git
+	pkgdesc = Yaru-remix wallpaper theme
+	provides = yaru-remix-wallpaper
+	conflicts = yaru-remix-wallpaper
+
