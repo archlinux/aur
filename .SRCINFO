@@ -1,12 +1,13 @@
 pkgbase = gmi2html
 	pkgdesc = Translate text/gemini to HTML
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shtanton/gmi2html
 	arch = x86_64
 	license = MIT
 	makedepends = zig>=0.7.0,
-	makedepends = zig<=0.7.1
+	makedepends = zig<=0.7.1,
+	makedepends = scdoc
 	source = https://github.com/shtanton/gmi2html/archive/v0.2.0.tar.gz
 	md5sums = 3a9559971522c179f9677643ce45a842
 
