@@ -21,9 +21,17 @@ sha256sums=('SKIP'
             '203c602c61ed94ccd423a0a453d74143d678c641a9a4486367576ee8af2cb8d6'
             '7bb7400b2b8c8f0288c86ec9191f8964a1e682745a204013d5fc7c2e1a253d8e')
 
+_commit() {
+  # Convert HEAD into a shortened commit id:
+  git rev-parse --short HEAD
+}
+
 pkgver() {
   cd keyutils
-  git describe --tags | sed 's/-/+/g'
+
+  # Suggestions for improvement welcome!
+  printf '%s.r%s.%s'         \
+  "$(_commit)"
 }
 
 prepare() {
