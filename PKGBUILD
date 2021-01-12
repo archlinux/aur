@@ -24,7 +24,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd libcap
-  git describe --tags | sed 's/-/+/g'
+  git describe --tags --always | sed 's/-/+/g'
 }
 
 prepare() {
