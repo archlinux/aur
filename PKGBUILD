@@ -4,7 +4,7 @@ _edition=' Isolated Edition'
 pkgname="mongodb-$_target"
 _pkgver='1.24.6'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='The official GUI for MongoDB - Isolated Edition'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
@@ -17,7 +17,7 @@ source=(
 	'hadron-build.diff'
 )
 sha256sums=('9495eb33fdbab2bdfcce217b20b2d47ba1028fdabcb3f406a2693a0c0417fb55'
-            '6adbd892ef2603c556e50b8f300fff87b5481dcec1b3ae741be0fbd250ad4c93')
+            '559564c32e2b499d09b9c5b3badcaf64c88d89786d4542bb11bb36a26b5ca657')
 
 _sourcedirectory="compass-$_pkgver"
 _homedirectory="$pkgname-$pkgver-$pkgrel-home"

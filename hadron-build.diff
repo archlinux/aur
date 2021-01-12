@@ -2,47 +2,24 @@ diff --git a/commands/release.js b/commands/release.js
 index fbbc423..cf85826 100644
 --- a/commands/release.js
 +++ b/commands/release.js
-@@ -566,9 +566,7 @@ exports.run = (argv, done) => {
-     task('create module cache', createModuleCache),
-     task('create packaged styles', createPackagedStyles),
-     task('remove development files', removeDevelopmentFiles),
+@@ -569,3 +569 @@ exports.run = (argv, done) => {
 -    task('create application asar', createApplicationAsar),
 -    task('create branded installer', createBrandedInstaller),
 -    task('create application zip', createApplicationZip)
 +    task('create application asar', createApplicationAsar)
-   ]);
- 
-   return async.series(tasks, (_err) => {
-@@ -582,9 +580,5 @@ exports.run = (argv, done) => {
- exports.handler = (argv) => {
-   exports.run(argv, (_err, CONFIG) => {
-     cli.abortIfError(_err);
+@@ -585,4 +582,0 @@ exports.handler = (argv) => {
 -    cli.ok(`${CONFIG.assets.length} assets successfully built`);
 -    CONFIG.assets.map(function(asset) {
 -      cli.info(asset.path);
 -    });
-   });
- };
 diff --git a/lib/target.js b/lib/target.js
-index 610546f..c4e151a 100644
+index 45b27f6..01b287e 100644
 --- a/lib/target.js
 +++ b/lib/target.js
-@@ -4,8 +4,6 @@ const semver = require('semver');
- const path = require('path');
- const normalizePkg = require('normalize-package-data');
- const parseGitHubRepoURL = require('parse-github-repo-url');
+@@ -7,2 +6,0 @@ const parseGitHubRepoURL = require('parse-github-repo-url');
 -const ffmpegAfterExtract = require('electron-packager-plugin-non-proprietary-codecs-ffmpeg')
 -  .default;
- const debug = require('debug')('hadron-build:target');
- 
- const notary = require('mongodb-notary-service-client');
-@@ -174,8 +172,7 @@ class Target {
-       platform: this.platform,
-       arch: this.arch,
-       electronVersion: this.electronVersion,
+@@ -178,2 +176 @@ class Target {
 -      sign: null,
 -      afterExtract: [ffmpegAfterExtract]
 +      sign: null
-     };
- 
-     if (this.platform === 'win32') {
