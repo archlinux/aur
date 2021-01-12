@@ -20,7 +20,7 @@
 
 _basename=czkawka
 pkgname=${_basename}-git
-pkgver=1.4.0.r0.gc62617d
+pkgver=2.2.0.r3.geeaaea2
 pkgrel=1
 pkgdesc="Multi functional app to find duplicates, empty folders etc."
 arch=(any)
@@ -29,7 +29,7 @@ license=('MIT')
 depends=("gtk3>=3.22")
 makedepends=("git" "rust" "cargo")
 provides=("czkawka")
-source=("${_basename}::git+https://github.com/qarmin/czkawka.git" "com.github.qarmin.czkawka.desktop")
+source=("${_basename}::git+https://github.com/qarmin/czkawka.git")
 md5sums=("SKIP" "bbc480c6106a7bd7dc73c3cc49a76961")
 
 pkgver() {
@@ -40,7 +40,6 @@ pkgver() {
 build() {
 	cd "${_basename}/"
 	cargo build --release --bin czkawka_gui
-	cargo build --release --bin czkawka_gui_orbtk
 	cargo build --release --bin czkawka_cli
 }
 
@@ -53,11 +52,10 @@ package() {
 	cd "${_basename}"
 	#ls -lah target/release/
 	install -Dm755 target/release/czkawka_gui $pkgdir/usr/bin/${_basename}_gui
-	install -Dm755 target/release/czkawka_gui_orbtk $pkgdir/usr/bin/${_basename}_gui_orbtk
 	install -Dm755 target/release/czkawka_cli $pkgdir/usr/bin/${_basename}_cli
 
 	ln -s $pkgdir/usr/bin/${_basename}_gui $pkgdir/usr/bin/${_basename}
 
 	install -Dm644 LICENSE $pkgdir/usr/share/licenses/${_basename}/LICENSE
-	install -Dm644 $srcdir/com.github.qarmin.czkawka.desktop -t $pkgdir/usr/share/applications/
+	install -Dm644 com.github.qarmin.czkawka.desktop -t $pkgdir/usr/share/applications/
 }
