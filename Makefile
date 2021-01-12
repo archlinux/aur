@@ -36,7 +36,7 @@ help: ## Show this help message
 .PHONY: clean
 clean: ## Clean the current workspace
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Cleaning up old package files${CC_END}"
-	rm -rf *.pkg.tar.xz *.pkg.tar.zst *.zip terraform-ls-linux-*
+	rm -rf *.pkg.tar.{xz,zst} *.zip terraform-ls-linux-*
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Cleaning up old working directories${CC_END}"
 	rm -rf ./pkg ./src
 
