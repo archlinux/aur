@@ -10,12 +10,12 @@
 ### NOTICE
 ### libspotify is EOL, sources are taken from https://mopidy.github.io/libspotify-archive/
 ### Checksums have not changed.
-### 
+###
 ### SPOTIFY DEVS STATEMENT
 ###
-### Please note that we have removed the LibSpotify binaries from our website in an effort to phase out the usage of this deprecated library. 
-### LibSpotify has been considered deprecated since 2015 and will be shut down in 2017, so we want to ensure that all developers’ efforts and 
-### attention are focused on newer and better APIs that we actively support and maintain. These APIs include the Web API, iOS and Android SDKs, 
+### Please note that we have removed the LibSpotify binaries from our website in an effort to phase out the usage of this deprecated library.
+### LibSpotify has been considered deprecated since 2015 and will be shut down in 2017, so we want to ensure that all developers’ efforts and
+### attention are focused on newer and better APIs that we actively support and maintain. These APIs include the Web API, iOS and Android SDKs,
 ### and upcoming embedded libraries for Windows, Mac OS X and Linux. More information regarding upcoming libraries will be provided in the coming months.
 ###
 ###
