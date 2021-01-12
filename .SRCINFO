@@ -1,6 +1,6 @@
 pkgbase = caddy-git
 	pkgdesc = HTTP/2 Web Server with Automatic HTTPS
-	pkgver = 20200720.2bc30bb7
+	pkgver = 20210111.14f50d9d
 	pkgrel = 1
 	url = https://caddyserver.com/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = caddy-git
 	provides = caddy
 	conflicts = caddy
 	backup = srv/http/Caddyfile
-	source = git+https://github.com/mholt/caddy.git
+	source = git+https://github.com/caddyserver/caddy.git
 	source = service
 	source = conf
 	sha256sums = SKIP

@@ -7,14 +7,14 @@
 
 pkgname=caddy-git
 _pkgname=caddy
-pkgver=20200720.2bc30bb7
+pkgver=20210111.14f50d9d
 pkgrel=1
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS'
 url='https://caddyserver.com/'
 license=('Apache')
 arch=('x86_64')
 makedepends=('git' 'go')
-source=("git+https://github.com/mholt/caddy.git"
+source=('git+https://github.com/caddyserver/caddy.git'
         'service'
         'conf')
 sha256sums=('SKIP'
