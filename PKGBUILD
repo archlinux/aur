@@ -1,5 +1,5 @@
 # Maintainer: Mike Javorski (javmorin) <mike.javorski gmail com>
-pkgname=python-aws_lambda_builders
+pkgname=python-aws-lambda-builders
 _name=${pkgname#python-}
 pkgver=1.1.0
 pkgrel=1
@@ -7,6 +7,7 @@ pkgdesc='Python library to compile, build & package AWS Lambda functions for sev
 arch=('any')
 url="https://github.com/awslabs/aws-lambda-builders"
 license=('Apache')
+replaces=('python-aws_lambda_builders')
 depends=('python-six' 'python-wheel')
 makedepends=('python-setuptools')
 options=(!emptydirs)
