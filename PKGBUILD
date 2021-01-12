@@ -1,13 +1,13 @@
 # Maintainer: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='speculum'
-pkgver=1.7.1
-pkgrel=2
+pkgver=1.7.2
+pkgrel=1
 pkgdesc='Yet another mirror list optimization tool'
 arch=('any')
 url="https://github.com/coNQP/${pkgname}"
 license=('GPLv3')
-makedepends=('git' 'python-pip' 'python-setuptools-git' 'python-wheel')
+makedepends=('git' 'python-setuptools-scm')
 depends=('python' 'python-setuptools')
 source=("${pkgname}::git+${url}.git#tag=${pkgver}")
 sha256sums=('SKIP')
