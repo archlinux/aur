@@ -1,5 +1,6 @@
 pkg/
 src/
 nfdump-*-*-*.pkg.tar.xz
+nfdump-*-*-*.pkg.tar.zst
 nfdump-*.tar.gz
 v*.*.*.tar.gz
