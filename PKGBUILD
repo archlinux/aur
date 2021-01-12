@@ -8,7 +8,7 @@ _files=(descriptions.py __init__.py names.py operators.py properties.py simulate
 
 pkgname=blender-plugin-${_name}
 pkgver=1.1.1_r249.e4ef6a2
-pkgrel=1
+pkgrel=2
 pkgdesc="Blender addon for advance particle physics, multithreaded."
 arch=(i686 x86_64)
 url="https://github.com/bartoszek/Blender-Molecular-Script.git"
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd ${_name}/sources/
-  sed -i "s/'-march=i686',//" setup.py 
+  sed -e "s/'-march=i686',//;s/\(core_3\)8/\19/;s/\(minor == \)8/\19/" -i setup.py
   python setup.py build_ext --inplace
   cp core*.so core.html -t ../${_name}
 }

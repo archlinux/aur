@@ -1,7 +1,7 @@
 pkgbase = blender-plugin-molecular
 	pkgdesc = Blender addon for advance particle physics, multithreaded.
 	pkgver = 1.1.1_r249.e4ef6a2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bartoszek/Blender-Molecular-Script.git
 	arch = i686
 	arch = x86_64
