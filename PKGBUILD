@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Kremiec <sebastian.kremiec at gmail dot com>
 pkgname=bpmn-js-token-simulation-plugin
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Token Simulation for the Camunda Modeler'
 arch=('any')
 url='https://github.com/bpmn-io/bpmn-js-token-simulation-plugin'
