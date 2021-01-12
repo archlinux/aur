@@ -1,20 +1,20 @@
 pkgname=tracker-miners-git
 _pkgname=tracker-miners
-pkgver=2.99.5+5+gafb650198
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="Collection of data extractors for Tracker/Nepomuk"
 url="https://wiki.gnome.org/Projects/Tracker"
 arch=(x86_64)
 license=(GPL)
-depends=('tracker' 'gst-plugins-base-libs' 'exempi' 'flac' 'libexif' 'libcue' 'libgrss' 'libgsf' 'libgxps' 'libiptcdata'
-         'libosinfo' 'libvorbis' 'poppler-glib' 'totem-plparser' 'giflib' 'libgexiv2' 'gupnp-dlna' 'upower'
-         'libseccomp')
-makedepends=('intltool' 'git' 'meson' 'vala')
+depends=('tracker3' 'gst-plugins-base-libs' 'exempi' 'libexif' 'libcue' 'libgrss' 'libgsf'
+         'libgxps' 'libiptcdata' 'libosinfo' 'poppler-glib' 'totem-plparser' 'giflib'
+         'libgexiv2' 'gupnp-dlna' 'upower' 'libseccomp' 'libnm')
+makedepends=('git' 'meson' 'vala' 'asciidoc')
 checkdepends=('python-gobject' 'gst-plugins-good' 'gst-plugins-base' 'gst-libav')
-provides=('tracker-miners')
-conflicts=('tracker-miners')
+provides=('tracker3-miners')
+conflicts=('tracker3-miners')
 source=("git+https://gitlab.gnome.org/GNOME/tracker-miners.git")
-sha512sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -33,5 +33,6 @@ check() {
 
 package() {
   depends+=(libtracker-sparql-3.0.so)
+
   DESTDIR="$pkgdir" meson install -C build
 }
