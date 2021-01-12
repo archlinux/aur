@@ -3,10 +3,10 @@
 
 pkgname=just-bin
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A handy way to save and run project-specific commands'
-arch=("x86_64")
-url="https://github.com/casey/just"
+arch=('x86_64')
+url='https://github.com/casey/just'
 license=('custom:CC0')
 provides=('just')
 conflicts=('just')
@@ -21,7 +21,5 @@ package() {
   install -Dm644 GRAMMAR.md "$pkgdir/usr/share/doc/just/GRAMMAR.md"
   install -Dm644 README.adoc "$pkgdir/usr/share/doc/just/README.adoc"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/just/LICENSE"
-
-  install -dm755 "$pkgdir/usr/share/man/man1"
-  gzip -c --best just.1 > "$pkgdir/usr/share/man/man1/just.1.gz"
+  install -Dm644 just.1 "$pkgdir/usr/share/man/man1/just.1"
 }

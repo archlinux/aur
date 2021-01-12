@@ -1,7 +1,7 @@
 pkgbase = just-bin
 	pkgdesc = A handy way to save and run project-specific commands
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/casey/just
 	changelog = just-bin.changelog
 	arch = x86_64
