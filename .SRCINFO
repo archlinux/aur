@@ -1,11 +1,15 @@
 pkgbase = kicad-rc
 	pkgdesc = Official KiCad release candidates and dev snapshots
-	pkgver = 5.1.8
+	pkgver = 5.1.9
 	pkgrel = 1
-	epoch = 0
 	url = http://kicad-pcb.org/
-	arch = any
+	arch = x86_64
 	license = GPL3
+	license = AGPL3
+	license = BOOST
+	license = ISC
+	license = MIT
+	license = CC-BY-SA
 	makedepends = clang
 	depends = glew
 	depends = wxgtk3
@@ -27,8 +31,8 @@ pkgbase = kicad-rc
 	conflicts = kicad-git
 	conflicts = kicad-scripting-git
 	conflicts = kicad-bzr
-	source = https://gitlab.com/kicad/code/kicad/-/archive/5.1.8/kicad-5.1.8.tar.gz
-	md5sums = c573140e521e29441d71f1a39b79752f
+	source = kicad-rc:5.1.9.tar.gz::https://gitlab.com/kicad/code/kicad/-/archive/5.1.9/kicad-5.1.9.tar.gz
+	sha256sums = 841be864b9dc5c761193c3ee9cbdbed6729952d7b38451aa8e1977bdfdb6081b
 
 pkgname = kicad-rc
 
