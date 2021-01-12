@@ -1,6 +1,6 @@
 pkgbase = mephisto.lv2-git
 	pkgdesc = A Just-in-Time FAUST compiler embedded in an LV2 plugin (git version)
-	pkgver = 0.11.27.r196.85bf2a3
+	pkgver = 0.13.67.r255.ec63c59
 	pkgrel = 1
 	url = https://open-music-kontrollers.ch/lv2/mephisto/
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = mephisto.lv2-git
 	depends = libvterm
 	depends = libx11
 	depends = ttf-fira-code
+	depends = ttf-fira-sans
 	provides = mephisto.lv2
 	conflicts = mephisto.lv2
 	source = mephisto.lv2::git+https://github.com/OpenMusicKontrollers/mephisto.lv2
@@ -35,5 +36,6 @@ pkgname = mephisto.lv2-git
 	depends = libvterm
 	depends = libx11
 	depends = ttf-fira-code
+	depends = ttf-fira-sans
 	depends = libfaust.so
 
