@@ -26,7 +26,7 @@ sha256sums=(SKIP)
 pkgver() {
   cd libtirpc
 
-  git describe --tags | sed 's/^libtirpc-//; s/-/./g'
+  git describe --tags | sed 's/-/+/g'
 }
 
 build() {
