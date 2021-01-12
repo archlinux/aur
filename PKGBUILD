@@ -1,6 +1,6 @@
 # Maintainer: Francisco Lopes <francisco+interception@nosubstance.me>
 pkgname=interception-xswitch
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='xswitch: an Interception Tools tool to redirect stdin to a muxer if a X window matches'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://gitlab.com/interception/linux/plugins/xswitch'
 depends=('interception-tools' 'glibc' 'libx11' 'libxmu')
 makedepends=('boost' 'cmake' 'gcc')
 source=("$pkgname.tar.gz::https://gitlab.com/interception/linux/plugins/xswitch/repository/archive.tar.gz?ref=v${pkgver}")
-sha256sums=('8bb49502179b6433e43fcc7051f5aad52695cee70b5bdab59818719d64682690')
+sha256sums=('4946f5317c776e15882b75a67a817e1f368dbc5b520c2d9c45f692624c296358')
 
 build() {
     cd ${srcdir}/xswitch-v${pkgver}-*
