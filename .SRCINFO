@@ -1,6 +1,6 @@
 pkgbase = dosbox-staging-git
 	pkgdesc = A modernized DOSBox project using current development practices and tools, fixing issues, adding features that better support today's systems
-	pkgver = 0.76.0.alpha.40.g0d9670ad
+	pkgver = 0.77.0.alpha.181.gd6b6d035
 	pkgrel = 1
 	url = https://github.com/dosbox-staging/dosbox-staging
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = dosbox-staging-git
 	depends = sdl2_net
 	depends = opusfile
 	depends = alsa-lib
+	depends = fluidsynth
 	optdepends = libpng
 	optdepends = ncurses
 	provides = dosbox
