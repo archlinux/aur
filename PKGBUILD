@@ -11,9 +11,7 @@ source=("git+$url")
 md5sums=('SKIP')
 
 build(){
-	cd configuration-editor
-	pyinstaller program.py -F
-	cd ..
+	pyinstaller configuration-editor/src/program.py -F
 }
 
 package() {
