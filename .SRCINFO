@@ -1,17 +1,17 @@
 pkgbase = python-metatube
-	pkgdesc = downloads YouTube metadata
-	pkgver = 1.0.2
+	pkgdesc = Downloads YouTube metadata
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://gitlab.com/christoph.fink/metatube
 	arch = any
 	license = GPLv3
 	makedepends = python-setuptools
 	depends = python-dateparser
-	depends = python-psycopg2
+	depends = python-sqlalchemy
 	depends = python-pyaml
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/m/metatube/metatube-1.0.2.tar.gz
-	sha256sums = 64ac7e34cc33950a3111cac9a4cd4db5e6524b0aa3e9bae94a5fd41ca665e4f1
+	source = https://files.pythonhosted.org/packages/source/m/metatube/metatube-1.0.6.tar.gz
+	sha256sums = 7555acc2e02ba5fe0844de2d6bb8d7c686940fccb922afd628dc308f7197b386
 
 pkgname = python-metatube
 
