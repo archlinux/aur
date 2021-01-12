@@ -1,0 +1,22 @@
+pkgbase = iputils-minimal-git
+	pkgdesc = Network monitoring tools, including ping
+	pkgver = 20200821
+	pkgrel = 1
+	url = http://www.skbuff.net/iputils/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	depends = libcap
+	depends = libidn2
+	provides = iputils
+	conflicts = netkit-base
+	conflicts = arping
+	conflicts = netkit-tftpd
+	conflicts = iputils
+	replaces = netkit-base
+	source = git+https://github.com/iputils/iputils.git
+	sha1sums = SKIP
+
+pkgname = iputils-minimal-git
+
