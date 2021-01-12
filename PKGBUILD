@@ -19,9 +19,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd json-c
-  local tag="$(git describe --tags --abbrev=0)"
-  local ver="$(git describe --tags)"
-  echo "${tag%-*}${ver#$tag}" | sed 's/^json-c-//;s/-/+/g'
+  
+  git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
