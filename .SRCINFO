@@ -1,6 +1,6 @@
 pkgbase = jstar
 	pkgdesc = A Lightweight Embeddable Scripting Language
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 0
 	url = https://github.com/bamless/jstar
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = jstar
 	license = MIT
 	makedepends = cmake>=3.9
 	makedepends = python>=2.7
-	source = jstar-1.4.1::git://github.com/bamless/jstar.git#tag=v1.4.1
+	source = jstar-1.4.2::git://github.com/bamless/jstar.git#tag=v1.4.2
 	sha256sums = SKIP
 
 pkgname = jstar
