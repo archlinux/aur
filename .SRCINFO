@@ -1,0 +1,19 @@
+pkgbase = lib32-kmod-git
+	pkgdesc = Linux kernel module handling
+	pkgver = 28
+	pkgrel = 1
+	url = https://www.kernel.org/pub/linux/utils/kernel/kmod
+	arch = x86_64
+	license = GPL2
+	makedepends = lib32-gcc-libs
+	makedepends = gcc-multilib
+	depends = lib32-zlib
+	depends = lib32-xz
+	provides = lib32-kmod
+	conflicts = lib32-kmod
+	options = !libtool
+	source = git+https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git
+	sha512sums = SKIP
+
+pkgname = lib32-kmod-git
+
