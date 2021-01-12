@@ -1,12 +1,11 @@
 pkgbase = python-cq-editor-git
 	pkgdesc = CadQuery GUI editor based on PyQT built from git
-	pkgver = 0.1.2.r15.g3a87ed0
-	pkgrel = 2
+	pkgver = 0.1.2.r48.g2f75bf6
+	pkgrel = 1
 	url = https://github.com/CadQuery/CQ-editor
 	arch = x86_64
-	license = Apache 2.0
+	license = Apache
 	checkdepends = python-pytest
-	checkdepends = python-pytest-cov
 	checkdepends = python-pytest-qt
 	checkdepends = python-pytest-mock
 	makedepends = python-setuptools
