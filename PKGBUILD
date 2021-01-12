@@ -23,10 +23,17 @@ conflicts=(lib32-libtirpc)
 source=(git://git.linux-nfs.org/projects/steved/libtirpc.git)
 sha256sums=(SKIP)
 
+_commit() {
+  # Convert HEAD into a shortened commit id:
+  git rev-parse --short HEAD
+}
+
 pkgver() {
   cd libtirpc
 
-  git describe --tags | sed 's/-/+/g'
+  # Suggestions for improvement welcome!
+  printf '%s.r%s.%s'         \
+  "$(_commit)"
 }
 
 build() {
