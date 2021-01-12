@@ -54,6 +54,9 @@ pkgver () {
 prepare() {
     cd tor
     git submodule update --init --recursive
+
+    sed -i configure.ac \
+        -e 's/AC_PROG_CC_C99/AC_PROG_CC/'
     ./autogen.sh
 }
 
