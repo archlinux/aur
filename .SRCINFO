@@ -5,6 +5,7 @@ pkgbase = obs-input-overlay-bin
 	url = https://github.com/univrsal/input-overlay
 	arch = x86_64
 	license = GPL
+	makedepends = unzip
 	depends = obs-studio>=19.0.3
 	depends = libuiohook
 	provides = obs-input-overlay

@@ -13,6 +13,9 @@ depends=(
 	"obs-studio>=${_obsver}"
 	"libuiohook"
 )
+makedepends=(
+	"unzip"
+)
 source=(
     "https://github.com/univrsal/input-overlay/releases/download/${pkgver}/input-overlay.${pkgver}b.linux64.zip"
 )
