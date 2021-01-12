@@ -1,0 +1,24 @@
+pkgbase = keyutils-git
+	pkgdesc = Linux Key Management Utilities
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://www.kernel.org/
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = git
+	depends = glibc
+	depends = sh
+	provides = libkeyutils.so
+	provides = keyutils
+	conflicts = keyutils
+	backup = etc/request-key.conf
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git
+	source = request-key.conf.patch
+	source = reproducible.patch
+	sha256sums = SKIP
+	sha256sums = 203c602c61ed94ccd423a0a453d74143d678c641a9a4486367576ee8af2cb8d6
+	sha256sums = 7bb7400b2b8c8f0288c86ec9191f8964a1e682745a204013d5fc7c2e1a253d8e
+
+pkgname = keyutils-git
+

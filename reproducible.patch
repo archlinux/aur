@@ -1,0 +1,24 @@
+Adhere to the SOURCE_DATE_EPOCH standard and use it's date when set
+otherwise fall back to the default behaviour.
+
+Signed-off-by: Jelle van der Waa <jelle@vdwaa.nl>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 33a451e..9066d5d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -108,7 +108,7 @@ all: keyctl request-key key.dns_resolver
+ ###############################################################################
+ #RPATH = -Wl,-rpath,$(LIBDIR)
+ 
+-VCPPFLAGS	:= -DPKGBUILD="\"$(shell date -u +%F)\""
++VCPPFLAGS	:= -DPKGBUILD="\"$(date --utc --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%F)\""
+ VCPPFLAGS	+= -DPKGVERSION="\"keyutils-$(VERSION)\""
+ VCPPFLAGS	+= -DAPIVERSION="\"libkeyutils-$(APIVERSION)\""
+ 
+-- 
+2.21.0
+
