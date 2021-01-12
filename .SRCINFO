@@ -1,0 +1,25 @@
+pkgbase = kbd-git
+	pkgdesc = Keytable files and keyboard utilities
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = http://www.kbd-project.org
+	arch = x86_64
+	license = GPL
+	makedepends = check
+	makedepends = git
+	depends = glibc
+	depends = pam
+	provides = vlock
+	provides = kbd
+	conflicts = vlock
+	conflicts = kbd
+	replaces = vlock
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/legion/kbd.git
+	source = fix-euro2.patch
+	source = vlock.pam
+	sha256sums = SKIP
+	sha256sums = a5e0167b6a82a9eb4d581d56baab930c2d80f5541dc34630460b73e1115384b8
+	sha256sums = 5c2d377a87121e7c399534fb91e2ffc0cc1e75d44a8f07ee6f55c9c089bc81e4
+
+pkgname = kbd-git
+
