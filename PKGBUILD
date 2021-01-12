@@ -3,7 +3,7 @@
 
 pkgname=codelite-git
 _gitname=codelite
-pkgver=14.0.2.r61.g2b75baba8
+pkgver=14.0.2.r99.g84ee59970
 pkgrel=1
 pkgdesc="A cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=('i686' 'x86_64' 'aarch64')
@@ -11,7 +11,7 @@ url="http://www.codelite.org/"
 license=('GPL')
 makedepends=('pkgconfig' 'cmake' 'ninja' 'clang' 'git')
 depends=(
-  'wxgtk'
+  'wxgtk3'
   'libedit'
   'libssh'
   'mariadb-libs'
@@ -61,6 +61,7 @@ build() {
   CXXFLAGS="${CXXFLAGS} -fno-devirtualize"
 
   cmake -G "Ninja" -DCMAKE_BUILD_TYPE=Release \
+    -DWITH_WX_CONFIG=/usr/bin/wx-config-gtk3 \
     -DENABLE_LLDB=1 -DWITH_MYSQL=0 \
     -DCMAKE_INSTALL_LIBDIR=lib \
     ..
