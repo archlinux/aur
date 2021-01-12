@@ -5,7 +5,7 @@ pkgname=orocos-kdl-python
 _dir=orocos_kinematics_dynamics
 _pkgname=python_orocos_kdl
 pkgver=1.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The Kinematics and Dynamics Library is a framework for modelling and computation of kinematic chains (Python binding)"
 arch=('i686' 'x86_64')
 url="https://www.orocos.org/kdl"
@@ -26,7 +26,9 @@ prepare() {
 build() {
   cd "${srcdir}/${_dir}-${pkgver}/${_pkgname}"
   mkdir -p build && cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DPYTHON_VERSION=3 \
+        ..
   make
 }
 
