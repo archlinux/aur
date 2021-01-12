@@ -22,6 +22,11 @@ sha512sums=('SKIP'
             '4f613f83198dfccb8b79e1b2c8764657a85300cb166d633d86b87f46567d51fa9395387caf33e82a8718f19e9a1fc65c11e7b6f63c3c4cde1b2a27f70671ec07')
 #validpgpkeys=(38A644698C69787344E954CE29EE848AE2CCF3F4) # Andrew G. Morgan <morgan@kernel.org>
 
+pkgver() {
+  cd libcap
+  git describe --tags | sed 's/-/+/g'
+}
+
 prepare() {
   cd libcap
   # SBINDIR is hardcoded to sbin. set to bin
