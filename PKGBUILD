@@ -16,5 +16,5 @@ build(){
 
 package() {
 	mkdir -p "$pkgdir"/usr/bin
-	cp configuration-editor/src/dist/program "$pkgdir"/usr/bin/$pkgname
+	cp src/dist/program "$pkgdir"/usr/bin/$pkgname
 }
