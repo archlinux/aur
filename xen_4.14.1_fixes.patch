@@ -1,0 +1,12 @@
+diff -Naur orig/stubdom/vtpmmgr/vtpmmgr.h changed/stubdom/vtpmmgr/vtpmmgr.h
+--- orig/stubdom/vtpmmgr/vtpmmgr.h	2020-05-14 05:19:32.000000000 -0700
++++ changed/stubdom/vtpmmgr/vtpmmgr.h	2020-05-20 12:04:28.506666463 -0700
+@@ -50,7 +50,7 @@
+ #define RSA_KEY_SIZE 0x0800
+ #define RSA_CIPHER_SIZE (RSA_KEY_SIZE / 8)
+ 
+-enum {
++extern enum {
+     TPM1_HARDWARE = 1,
+     TPM2_HARDWARE,
+ } tpm_version;
