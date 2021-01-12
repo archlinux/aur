@@ -2,14 +2,14 @@
 # Contributor:  Joakim Hernberg <jbh@alchemy.lu>
 
 pkgbase=linux-rt-lts
-pkgver=5.4.82.45.rt1
+pkgver=5.4.87.48.arch1
 pkgrel=1
 pkgdesc='Linux RT LTS'
 arch=('x86_64')
 url="https://wiki.linuxfoundation.org/realtime/start"
 license=('GPL2')
-makedepends=('bc' 'git' 'graphviz' 'imagemagick' 'kmod' 'libelf' 'python-sphinx'
-'python-sphinx_rtd_theme' 'xmlto')
+makedepends=('bc' 'cpio' 'git' 'graphviz' 'imagemagick' 'kmod' 'libelf' 'perl'
+'python-sphinx' 'python-sphinx_rtd_theme' 'tar' 'xmlto' 'xz')
 options=('!strip')
 source=(
   "git+https://gitlab.archlinux.org/dvzrv/linux-rt-lts.git/#tag=v${pkgver}?signed"
@@ -17,10 +17,10 @@ source=(
   'sphinx-workaround.patch'
 )
 sha512sums=('SKIP'
-            '436ec00ee2337e44b49bd1e67deaa9d03596812859b77986ef15ce95e7d98430fc5567d4a5e8193c1ac0e7b218619c73147984dd22417e88d7eb5a01da077c07'
+            'ef1dba4ec9f638717319170e5d0ae51fc9ff06f458431b6b7e82240d7fe8f5f9a9127d43f5c0bc625f185fbf36710bd957be41bb49d2cbd988a5dcc9922b2828'
             '8081673a6594e5fc2fddc98fa434e99817aa822f7136d3c14c8d465fa7b93c9ac5d3a4150a5b632e25b1dc76a814dfa19d8aede37d58b935db288465b6585c58')
 b2sums=('SKIP'
-        'c624a47b82c4acbb86c75201f84141eed812a06622df71c5e59d266b273657d905a4a7c819f9b7484b8286f7b36d5daf96a9142eb9305321d3351161a0c027f4'
+        '4c94df9d8c470eee90d2cf5ca64fc7985922c0ca66ec404bfcc13f3649dfe4476edaee41f584ea9ab27cedf13847527d8e3e81eabf68fbf3e3aba08b8cd5b341'
         '657fd0e70d29eee5518c27af7eec73a18f399215d2a21cf7b92c9914bee16d1e0981c00065ccb12f0534e57af906af63b17221c65a61146ec8894c88420fa56c')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@linuxfoundation.org>
@@ -54,7 +54,7 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
-#  make menuconfig # CLI menu for configuration
+#  make nconfig
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
