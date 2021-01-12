@@ -1,13 +1,15 @@
 pkgbase = ldaptools
 	pkgdesc = Easily manage LDAP users and groups
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/coNQP/ldaptools
 	arch = any
 	license = GPLv3
 	makedepends = git
+	makedepends = python-setuptools-scm
 	depends = python
-	source = git+https://github.com/coNQP/ldaptools.git#tag=1.0.0
+	depends = python-setuptools
+	source = git+https://github.com/coNQP/ldaptools.git#tag=1.0.1
 	md5sums = SKIP
 
 pkgname = ldaptools
