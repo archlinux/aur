@@ -1,16 +1,16 @@
 pkgbase = binders-bin
 	pkgdesc = Flexible database creator for organizing arbitrary data
-	pkgver = 4.362.545
+	pkgver = 4.371.416
 	pkgrel = 1
 	url = https://generism.com/
 	arch = any
 	license = custom
-	depends = java-openjfx>=8
+	depends = java8-openjfx
 	noextract = Binders.jar
 	source = http://generism.com/Binders.jar
 	source = LICENSE
 	source = binders.sh
-	sha512sums = f0ddd6e23b285c35a24657a6e70960cc03ecf900dd069e6b4f6f21fef9bdefd81f3ed444dd94906d98ab0910d3cc083ebfbb242403ec93720f4955b1416dc904
+	sha512sums = 2e7127687f0b9d5eaff4c11523787a84eb1946788b4df89b73a86f799cf4a3deae8c0fe6f1136e06c3e04b19049b9b2e29922dacbd1f6f85d835380211f62d37
 	sha512sums = 608daed787b3f0753b4911d062ab2e89ec396f3d74a3d6b5655a68ea6e96b22e6da71001c126dda85780a7061c413f90482ef55598bd3b0dae02e68a1bab27af
 	sha512sums = 06d5fce19fc6c3cbc872059721d280ae2cd6e8e0baa191666be4dc0e14f3b6a6e120e24772946d91e772708e9e0c185571fb8fec88278204a413d7a312a1ac05
 
