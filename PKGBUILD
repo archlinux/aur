@@ -10,7 +10,7 @@ depends=(gtk3 libffi libvpx icu libevent mozilla-common libxt startup-notificati
          ffmpeg nss ttf-font libpulse)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2
-             python nodejs python2-psutil cbindgen=0.15.0 nasm)
+             python nodejs python2-psutil cbindgen nasm)
 optdepends=('libnotify: Notification integration'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'
@@ -25,12 +25,14 @@ source=(git://github.com/MrAlex94/Waterfox#branch=future
         waterfox-g3.desktop
         ignore_bad_validator.patch
 	https://git.savannah.gnu.org/cgit/gnuzilla.git/plain/data/patches/disable-settings-services.patch
+        https://d3kxowhw4s8amj.cloudfront.net/file/data/2d2iu6gr6rmlzantktl2/PHID-FILE-rjgsde7cjngtdn4txwwv/D100497.diff
         vendor.js)
 sha512sums=('SKIP'
-	    'SKIP'
+            '66b1c9b265f59a69a0b1688c56a50140d77aa20322e1f558509f6ba8c93baaf08fb297ba7e888ddf733598d3ed5199086ccc8017ea2e20a60b5c640224019cf0'
             '36d0568a5d7e06a98002e2320adf130a0d0025d9d7717316a2df0247fea406eb79dce527261eba146d413e3b18df19adaf362d96399d3712b1f478aae1944a26'
             'ab2aced2e371afad317ab3ffb3e8161c457f022327e182d426aa2ba4142112060225ced4610eb2525e1c739a4e56ad4e7cf78cc102232cf01cf06d0224a9c09d'
             '243f6aa749057f5221c1ad9321b183eee767cb7d877df0f24dc4ef3c4e559621f7620f990147d341c6f4cab705df7dae59e8f4c2cfe5cfc4525bf3c3621c77ff'
+            '77a76a71c073bd232a08c0bec8b4b19060aaaadae93ea0e855feccc4344b5df1a0c1702820993e1a25884e11f34a7ca8ee69cae89e6e9ddf87546abb6f09232e'
             'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7')
 
 # don't compress the package - we're just going to uncompress during install in a moment
@@ -54,6 +56,9 @@ prepare() {
 
   # until patched out upstream (icecat)
   patch -Np1 -i "${srcdir}/disable-settings-services.patch"
+
+  # fix for our newer cbindgen
+  patch -Np1 -i "${srcdir}/D100497.diff"
 
   mkdir -p "$srcdir/path"
 }
