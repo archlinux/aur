@@ -1,10 +1,11 @@
 pkgbase = shortcut-mapper-git
-	pkgver = v0.1.1
+	pkgver = v0.1.2.r0.g7da8094
 	pkgrel = 1
 	url = https://github.com/OZoneGuy/shortcut-mapper.git
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	depends = xorg-server
 	source = git+https://github.com/OZoneGuy/shortcut-mapper.git
 	md5sums = SKIP
 
