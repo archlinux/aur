@@ -1,6 +1,6 @@
 pkgbase = kafkatool2
 	pkgdesc = The Ultimate Kafka UI Tool, version 2
-	pkgver = 2.0.8
+	pkgver = 2.0.9
 	pkgrel = 1
 	url = http://www.kafkatool.com
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = kafkatool2
 	makedepends = gendesk
 	depends = java-runtime
 	noextract = kafkatool.sh
-	source = http://www.kafkatool.com/download2/kafkatool.sh
-	md5sums = 906dd34eb12f62a5f673b37aab4dbe97
+	source = https://www.kafkatool.com/download2/kafkatool.sh
+	md5sums = a616c0e7e42f03fbb40d11e8ce1d2d6a
 
 pkgname = kafkatool2
 
