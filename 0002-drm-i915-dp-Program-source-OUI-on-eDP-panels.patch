@@ -1,0 +1,92 @@
+From fcd270dd73e76dc2d6cea20f3ab596cf692d9153 Mon Sep 17 00:00:00 2001
+From: Lyude Paul <lyude@redhat.com>
+Date: Fri, 4 Dec 2020 17:35:55 -0500
+Subject: [PATCH 02/10] drm/i915/dp: Program source OUI on eDP panels
+
+Since we're about to start adding support for Intel's magic HDR
+backlight interface over DPCD, we need to ensure we're properly
+programming this field so that Intel specific sink services are exposed.
+Otherwise, 0x300-0x3ff will just read zeroes.
+
+We also take care not to reprogram the source OUI if it already matches
+what we expect. This is just to be careful so that we don't accidentally
+take the panel out of any backlight control modes we found it in.
+
+v2:
+* Add careful parameter to intel_edp_init_source_oui() to avoid
+  re-writing the source OUI if it's already been set during driver
+  initialization
+
+Signed-off-by: Lyude Paul <lyude@redhat.com>
+Reviewed-by: Rodrigo Vivi <rodrigo.vivi@intel.com>
+Cc: thaytan@noraisin.net
+Cc: Vasily Khoruzhick <anarsoul@gmail.com>
+Signed-off-by: Jani Nikula <jani.nikula@intel.com>
+Link: https://patchwork.freedesktop.org/patch/msgid/20201204223603.249878-2-lyude@redhat.com
+---
+ drivers/gpu/drm/i915/display/intel_dp.c | 35 +++++++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
+
+diff --git a/drivers/gpu/drm/i915/display/intel_dp.c b/drivers/gpu/drm/i915/display/intel_dp.c
+index 9bc59fd2f95f..64ad6f8d1664 100644
+--- a/drivers/gpu/drm/i915/display/intel_dp.c
++++ b/drivers/gpu/drm/i915/display/intel_dp.c
+@@ -3492,6 +3492,29 @@ void intel_dp_sink_set_decompression_state(struct intel_dp *intel_dp,
+ 			    enable ? "enable" : "disable");
+ }
+ 
++static void
++intel_edp_init_source_oui(struct intel_dp *intel_dp, bool careful)
++{
++	struct drm_i915_private *i915 = dp_to_i915(intel_dp);
++	u8 oui[] = { 0x00, 0xaa, 0x01 };
++	u8 buf[3] = { 0 };
++
++	/*
++	 * During driver init, we want to be careful and avoid changing the source OUI if it's
++	 * already set to what we want, so as to avoid clearing any state by accident
++	 */
++	if (careful) {
++		if (drm_dp_dpcd_read(&intel_dp->aux, DP_SOURCE_OUI, buf, sizeof(buf)) < 0)
++			drm_err(&i915->drm, "Failed to read source OUI\n");
++
++		if (memcmp(oui, buf, sizeof(oui)) == 0)
++			return;
++	}
++
++	if (drm_dp_dpcd_write(&intel_dp->aux, DP_SOURCE_OUI, oui, sizeof(oui)) < 0)
++		drm_err(&i915->drm, "Failed to write source OUI\n");
++}
++
+ /* If the sink supports it, try to set the power state appropriately */
+ void intel_dp_sink_dpms(struct intel_dp *intel_dp, int mode)
+ {
+@@ -3511,6 +3534,12 @@ void intel_dp_sink_dpms(struct intel_dp *intel_dp, int mode)
+ 	} else {
+ 		struct intel_lspcon *lspcon = dp_to_lspcon(intel_dp);
+ 
++		lspcon_resume(lspcon);
++
++		/* Write the source OUI as early as possible */
++		if (intel_dp_is_edp(intel_dp))
++			intel_edp_init_source_oui(intel_dp, false);
++
+ 		/*
+ 		 * When turning on, we need to retry for 1ms to give the sink
+ 		 * time to wake up.
+@@ -4713,6 +4742,12 @@ intel_edp_init_dpcd(struct intel_dp *intel_dp)
+ 	if (INTEL_GEN(dev_priv) >= 10 || IS_GEMINILAKE(dev_priv))
+ 		intel_dp_get_dsc_sink_cap(intel_dp);
+ 
++	/*
++	 * If needed, program our source OUI so we can make various Intel-specific AUX services
++	 * available (such as HDR backlight controls)
++	 */
++	intel_edp_init_source_oui(intel_dp, true);
++
+ 	return true;
+ }
+ 
+-- 
+2.29.2
+

@@ -1,7 +1,7 @@
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-oled
-pkgver=5.9.12.arch1
+pkgver=5.10.6.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -9,7 +9,7 @@ url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc kmod libelf pahole
+  bc kmod libelf pahole cpio perl tar xz
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
@@ -18,9 +18,16 @@ _srcname=archlinux-linux
 source=(
   "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
   config         # the main kernel config file
-  sphinx-workaround.patch
-  0001-drm-i915-dp-Program-source-OUI-on-eDP-panels.patch
-  0002-WIP-drm-i915-Enable-Intel-s-HDR-backlight-interface-.patch
+  0001-drm-i915-refactor-panel-backlight-control-functions..patch
+  0002-drm-i915-dp-Program-source-OUI-on-eDP-panels.patch
+  0003-drm-i915-Rename-pwm_-backlight-callbacks-to-ext_pwm_.patch
+  0004-drm-i915-Pass-down-brightness-values-to-enable-disab.patch
+  0005-drm-i915-dp-Rename-eDP-VESA-backlight-interface-func.patch
+  0006-drm-i915-dp-Add-register-definitions-for-Intel-HDR-b.patch
+  0007-drm-i915-Keep-track-of-pwm-related-backlight-hooks-s.patch
+  0008-drm-i915-dp-Enable-Intel-s-HDR-backlight-interface-o.patch
+  0009-drm-i915-dp-Allow-forcing-specific-interfaces-throug.patch
+  0010-drm-dp-Revert-drm-dp-Introduce-EDID-based-quirks.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -28,10 +35,17 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'cf69b81648a07ebedb274ed26bed3c4d2ff75c6665ecaca0a724b148c70c9c7c'
-            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            'c60c3040f90a28177a0b7718ebb85b4598d2087a3f7670be6102b0cf79a23598'
-            '12ff4aed41d3ad9a0a72124966ceeb96bb34404761221ad43bee2c810ceafe7d')
+            'd3e7adf5fcfc632887058ca84ca7b849a824dda5a03de854c8d3480ef0124ad1'
+            'aed42e89690d92c73d6ece35b3e54b19fd0762e5cfa6e6bd406977f81ff2dd11'
+            'bb4feb3fc811b12ad749737844c9e8c39e8d84db78a20db896f2cade230d8c9b'
+            '2e279912671ea24d3b69328116f42e7f67af592c445012cc095b5093416a8477'
+            '128eed03043ff4055ba50b0f242598524a69a2b8a046eae50f7a6fdeabeb6874'
+            'c6765d1a9a5c38dafc9b351e86cca3e3e59863ac29d8f129524a6062a0dceecb'
+            '52f85de724220f4794d137c5a1189d97fca48931a84e9accf732e01695358130'
+            'ca2b4bbe07efd45f0490bc85e657bd08e927f62455ad9f03068ffb884ac53c81'
+            '886896af41e87f4698cb3c0c49537055048e327d9a9b36303b8b8a682d46cf47'
+            '80924801f42c726a7884a3a8cbd039ad9ddbc57887c6a6f4303c3f310a312d63'
+            '3ca75bd291e6716c106e17f6efd370b41e773f7893f962143b9e84f1b79510b2')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -73,8 +87,8 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE linux)
-  replaces=(virtualbox-guest-modules-arch wireguard-arch linux)
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
   cd $_srcname
   local kernver="$(<version)"
