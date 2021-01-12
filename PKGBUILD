@@ -1,16 +1,17 @@
-# Maintainer: Frederik Schwan <freswa at archlinux dot org>
+# Maintainer: Alexey Peschany <nelex111@gmail.com>
+# Contributor: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Giovanni Harting <539@idlegandalf.com>
 # Contributor: aimileus <me at aimileus dot nl>
 # Contributor: Salvador Pardiñas <darkfm@vera.com.uy>
 
 pkgname=woeusb
 pkgver=3.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A Linux program to create Windows USB stick installer from a Windows DVD or an image'
 arch=('x86_64')
 url='https://github.com/slacka/WoeUSB'
 license=('GPL3')
-depends=('dosfstools' 'grub' 'ntfs-3g' 'parted' 'wget' 'wxgtk2')
+depends=('autoconf' 'dosfstools' 'grub' 'ntfs-3g' 'parted' 'wget' 'wxgtk2')
 source=("https://github.com/slacka/WoeUSB/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 b2sums=('1423ecca39018c674b0eea36de732f54cfcdd14b8cc465e6d3c0639192cbd8355436b7a39ba453b19fa6f1c5b1f6938ef12f49710bc2a4af0f2eaed967e03ce7')
 

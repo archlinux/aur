@@ -1,10 +1,11 @@
 pkgbase = woeusb
 	pkgdesc = A Linux program to create Windows USB stick installer from a Windows DVD or an image
 	pkgver = 3.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/slacka/WoeUSB
 	arch = x86_64
 	license = GPL3
+	depends = autoconf
 	depends = dosfstools
 	depends = grub
 	depends = ntfs-3g
