@@ -1,7 +1,7 @@
 # Maintainer: Karol Fuksiewicz <kfuks2@gmail.com>
 
 pkgname=telegram-desktop-wide
-pkgver=2.2.0
+pkgver=2.5.1
 pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
@@ -16,7 +16,7 @@ optdepends=('ttf-opensans: default Open Sans font family')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
         wide-messages.patch
         fix-qt-build.patch)
-sha512sums=('2aeca83be7bc385bd7537d56ecf66996facedd0af588e743fedbb08c3158fc76436d6cf3b1fb5dd7c8d37b4471f739872ca54ba300aa1d0e0202e87c005703fd'
+sha512sums=('c906c76e44f5c6926bdc00143cbb1ac718633395a390c8a3e40fde9c4bfa42ba2e92cf0ac4c20434168d0548981f2fddefd019b942411ff4552a0f441336c0e1'
             'd350450a1e3b950a6df34a24caa340c848c83e0aa93acf95d80b1e5a5c39fe7e2ab122025a718861751541a0d8bfee35482cc13f261ea0fbce874e214213ddae'
             '850421cd5700df1c33af7b7f8aaf57b60a51e9694250068149c3221e750214f860665987e0f6aadd077c13e9c04c2f0662f0a58dce9d3085d96d7fdcd42ca81b')
 
@@ -24,6 +24,8 @@ prepare() {
     cd tdesktop-$pkgver-full
     patch -p0 < ../wide-messages.patch
     patch -p0 < ../fix-qt-build.patch
+    cd cmake
+    echo "target_link_libraries(external_webrtc INTERFACE jpeg)" | tee -a external/webrtc/CMakeLists.txt
 }
 
 build() {
