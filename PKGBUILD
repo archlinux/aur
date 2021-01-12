@@ -5,7 +5,7 @@
 
 pkgname=gnudatalanguage
 pkgver=0.9.9
-pkgrel=3
+pkgrel=4
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=('i686' 'x86_64')
 url="https://github.com/gnudatalanguage/gdl"
@@ -19,7 +19,7 @@ depends=('python'
          'hdf5'
          'netcdf'
          'netcdf-cxx'
-         'wxgtk'
+         'wxgtk2'
          'fftw'
          'pslib'
          'eccodes'
