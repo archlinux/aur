@@ -1,24 +1,25 @@
 pkgname=rygel-git
 _pkgname=rygel
-pkgver=0.38.2+34+g4b7d6a6a
+pkgver=0.40.0+14+g8cdee188
 pkgrel=1
-pkgdesc="UPnP AV MediaServer and MediaRenderer that allows you to easily share audio, video and pictures, and control of media player on your home network"
+epoch=1
+pkgdesc="UPnP AV MediaServer and MediaRenderer"
 url="https://wiki.gnome.org/Projects/Rygel"
 arch=(x86_64)
 license=(LGPL)
-depends=('gupnp' 'gupnp-av' 'gupnp-dlna' 'libgee' 'gtk3' 'libunistring' 'tracker' 'libmediaart')
+depends=('gupnp' 'gupnp-av' 'gupnp-dlna' 'libgee' 'gtk3' 'libunistring' 'tracker3'
+         'libmediaart' 'gst-editing-services')
 makedepends=('vala' 'gobject-introspection' 'git' 'meson')
 optdepends=('gst-plugins-base: Extra media codecs'
             'gst-plugins-good: Extra media codecs'
             'gst-plugins-bad: Extra media codecs'
             'gst-plugins-ugly: Extra media codecs'
             'gst-libav: Extra media codecs'
-            'tracker-miners: Share indexed media files')
-provides=('rygel')
-conflicts=('rygel')
-backup=('etc/rygel.conf')
+            'tracker3-miners: Share indexed media files')
+backup=(etc/rygel.conf)
+groups=(gnome)
 source=("git+https://gitlab.gnome.org/GNOME/rygel.git")
-sha512sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -26,8 +27,9 @@ pkgver() {
 }
 
 build() {
-  arch-meson $_pkgname build
-  ninja -C build
+  arch-meson $_pkgname build \
+    -D plugins=external,gst-launch,lms,media-export,mpris,playbin,ruih,tracker3
+  meson compile -C build
 }
 
 check() {
