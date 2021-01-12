@@ -9,7 +9,6 @@ pkgbase = chatterino2-git
 	makedepends = git
 	makedepends = qt5-svg
 	makedepends = boost
-	makedepends = pkgconf
 	depends = qt5-multimedia
 	depends = qt5-base
 	depends = boost-libs

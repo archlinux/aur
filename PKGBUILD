@@ -8,7 +8,7 @@ arch=('any')
 url=https://chatterino.com
 license=('MIT')
 depends=('qt5-multimedia' 'qt5-base' 'boost-libs' 'openssl')
-makedepends=('git' 'qt5-svg' 'boost' 'pkgconf')
+makedepends=('git' 'qt5-svg' 'boost')
 optdepends=('streamlink: For piping streams to video players'
             'pulseaudio: For audio output'
             'gst-plugins-good: For audio output')
