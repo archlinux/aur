@@ -1,6 +1,6 @@
 pkgbase = acl-git
 	pkgdesc = Commands for manipulating POSIX access control lists
-	pkgver = 2.2.52.r53.gfa5f683
+	pkgver = 2.2.53.r4.g40c190d
 	pkgrel = 1
 	url = https://savannah.nongnu.org/projects/acl
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = acl-git
 	depends = attr
 	provides = acl
 	provides = xfsacl
+	provides = libacl.so
 	conflicts = acl
 	conflicts = xfsacl
 	replaces = xfsacl
