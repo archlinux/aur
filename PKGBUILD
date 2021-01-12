@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=sandboxctl
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Automates the creation and management of chroot-based sandboxes"
 arch=('any')
@@ -10,7 +10,7 @@ makedepends=('autoconf' 'automake' 'make' 'pkg-config')
 url="https://github.com/jmmv/sandboxctl"
 license=('BSD')
 source=($pkgname-$pkgver.tar.gz::https://github.com/jmmv/$pkgname/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('4b404885c4a3a206eb31f620cf6c9a4bcece585bb134ebc7a8d6f06b7c1c5a59')
+sha256sums=('60bfb575364a77f238e4a373fe11b78b70f87a15f084d53a87efa3d88fe8694a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
