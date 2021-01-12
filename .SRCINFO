@@ -1,0 +1,21 @@
+pkgbase = python-jaxlib
+	pkgdesc = Differentiate, compile, and transform Numpy code.
+	pkgver = 0.1.57
+	pkgrel = 1
+	url = https://github.com/google/jax/
+	arch = x86_64
+	license = Apache
+	makedepends = bazel
+	makedepends = gcc
+	makedepends = python-pip
+	makedepends = python-six
+	depends = python
+	depends = python-numpy
+	depends = python-protobuf
+	depends = python-scipy
+	depends = python-wheel
+	source = https://github.com/google/jax/archive/jaxlib-v0.1.57.tar.gz
+	md5sums = 2a6b1acd4d002c6760138f9fc792b736
+
+pkgname = python-jaxlib
+

@@ -1,0 +1,7 @@
+# Ignore special directories
+pkg/
+src/
+
+# Ignore archives
+*.tar.gz
+*.tar.zst
