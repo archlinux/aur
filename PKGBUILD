@@ -1,16 +1,17 @@
-# Maintainer: Peter Vanusanik <admin@en-circle.com>
+# Maintainer: Jacob Garby <j4cobgarby@gmail.com>
+# Contributor: Peter Vanusanik <admin@en-circle.com>
 # stolen from bochs PKGBUILD in normal repos, but modified
 
 pkgname=bochs-gdb
-pkgver=2.6.8
-pkgrel=2
+pkgver=2.6.11
+pkgrel=3
 pkgdesc="A portable x86 PC emulation software package with gdbstub"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://bochs.sourceforge.net/"
 license=('LGPL')
 depends=('gcc-libs' 'libxrandr' 'libxpm' 'gtk2' 'bochs')
 source=("http://downloads.sourceforge.net/sourceforge/bochs/bochs-$pkgver.tar.gz")
-md5sums=('8a243e2b5f7562f32d2b26f3cebbba08')
+md5sums=('61dbf6d5c0384712e1f3e51e88381b4c')
 
 prepare() {
     cd "$srcdir/bochs-$pkgver"
@@ -31,6 +32,7 @@ build() {
         --enable-cpu-level=6 \
         --enable-fpu \
         --enable-3dnow \
+	--enable-evex \
         --enable-disasm \
         --enable-x86-64 \
         --enable-avx \
