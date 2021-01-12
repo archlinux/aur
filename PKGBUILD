@@ -4,7 +4,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
 
-pkgname=libcap-ng-git
+pkgname=libcap-ng-minimal-git
 pkgver=0.8.2
 pkgrel=1
 pkgdesc='Library making programming with POSIX capabilities easier than traditional libcap'

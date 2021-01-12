@@ -1,4 +1,4 @@
-pkgbase = libcap-ng-git
+pkgbase = libcap-ng-minimal-git
 	pkgdesc = Library making programming with POSIX capabilities easier than traditional libcap
 	pkgver = 0.8.2
 	pkgrel = 1
@@ -13,5 +13,5 @@ pkgbase = libcap-ng-git
 	source = git+https://github.com/stevegrubb/libcap-ng.git
 	sha512sums = SKIP
 
-pkgname = libcap-ng-git
+pkgname = libcap-ng-minimal-git
 
