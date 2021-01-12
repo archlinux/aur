@@ -14,13 +14,13 @@ _EXTRAMODULES=$(readlink -f /usr/lib/modules/"$_cur_kernel/extramodules")
 
 pkgname=synaptics-led
 pkgver=$_kver
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 license=(GPL2)
 url="https://github.com/mmonaco/PKGBUILDs"
 pkgdesc="Synaptics LED enabled psmouse kernel module"
-depends=('linux>=4.14.9' 'linux<5.10.3')
-makedepends=('git' 'linux-headers>=4.14.9' 'linux-headers<5.10.3')
+depends=('linux>=4.14.9' 'linux<5.10.2')
+makedepends=('git' 'linux-headers>=4.14.9' 'linux-headers<5.10.2')
 install="$pkgname.install"
 
 source=(
