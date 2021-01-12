@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd json-c
   
-  git describe --tags | sed 's/-/+/g'
+  git describe --tags --always | sed 's/-/+/g'
 }
 
 prepare() {
