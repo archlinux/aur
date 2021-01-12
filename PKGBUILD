@@ -19,10 +19,17 @@ conflicts=(lib32-libnsl)
 source=(git+https://github.com/thkukuk/libnsl.git)
 sha256sums=(SKIP)
 
+_commit() {
+  # Convert HEAD into a shortened commit id:
+  git rev-parse --short HEAD
+}
+
 pkgver() {
   cd libnsl
 
-  git describe --tags | sed 's/^v//'
+  # Suggestions for improvement welcome!
+  printf '%s.r%s.%s'         \
+  "$(_commit)"
 }
 
 prepare() {
