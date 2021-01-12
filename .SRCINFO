@@ -1,6 +1,6 @@
 pkgbase = gesture-manager-x-git
 	pkgdesc = Extended GUI for interacting with libinput-gestures
-	pkgver = r6.cf56062
+	pkgver = r8.d61ed8a
 	pkgrel = 1
 	url = https://github.com/RitwickVerma/Gesture-Manager-X
 	arch = any

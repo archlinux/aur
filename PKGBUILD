@@ -3,7 +3,7 @@
 # Upstream URL: https://github.com/RitwickVerma/Gesture-Manager-X
 
 pkgname=gesture-manager-x-git
-pkgver=r6.cf56062
+pkgver=r8.d61ed8a
 pkgrel=1
 pkgdesc="Extended GUI for interacting with libinput-gestures"
 arch=('any')
