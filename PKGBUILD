@@ -13,7 +13,6 @@ source=("${pkgname}::git+${url}.git#tag=${pkgver}")
 sha256sums=('SKIP')
 backup=('etc/speculum.conf')
 
-
 build() {
     cd "${srcdir}/${pkgname}"
     python setup.py build
