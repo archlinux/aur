@@ -1,7 +1,7 @@
 pkgbase = aws-sam-cli
 	pkgdesc = CLI tool to build, test, debug, and deploy Serverless applications using AWS SAM
 	pkgver = 1.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/awslabs/aws-sam-cli
 	arch = any
 	license = Apache
@@ -20,7 +20,7 @@ pkgbase = aws-sam-cli
 	depends = python-dateutil
 	depends = python-requests
 	depends = python-serverlessrepo
-	depends = python-aws_lambda_builders
+	depends = python-aws-lambda-builders
 	depends = python-tomlkit
 	depends = python-watchdog
 	options = !emptydirs
