@@ -1,18 +1,19 @@
 pkgbase = mosdns-bin
 	pkgdesc = Plug-in configured DNS forwarder/server
-	pkgver = 0.23.0
-	pkgrel = 2
+	pkgver = 0.25.1
+	pkgrel = 1
 	url = https://github.com/IrineSistiana/mosdns/
 	arch = x86_64
 	license = GPL3
 	optdepends = v2ray-domain-list-community: geosite.dat
 	optdepends = v2ray-geoip: geoip.dat
+	optdepends = v2ray-rules-dat-git: geosite.dat & geoip.dat
 	provides = mosdns
 	conflicts = mosdns
 	conflicts = mosdns-git
 	backup = etc/mosdns/config.yaml
-	source = mosdns-bin-0.23.0.zip::https://github.com/IrineSistiana/mosdns/releases/download/v0.23.0/mosdns-linux-amd64.zip
-	sha256sums = 8e45b45ddb1a4c2673d949d8dc2f9087d6594c099ee5db0c8519c4f3be1fec8e
+	source = mosdns-bin-0.25.1.zip::https://github.com/IrineSistiana/mosdns/releases/download/v0.25.1/mosdns-linux-amd64.zip
+	sha256sums = ed8e0c6724583c55b856afde23659a786dc35abadbd59e6aec1e2711386658f3
 
 pkgname = mosdns-bin
 

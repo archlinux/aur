@@ -1,13 +1,12 @@
-plugin:
-  - tag: log # 日志
-    type: logger
-    args:
-      level: info
+log:
+  level: info
+  file: ""
 
+plugin:
   - tag: main_server # 启动服务器
     type: server
     args:
-      entry: pipeline
+      entry: main_sequence
       max_concurrent_queries: 0
       server:
         - protocol: udp
@@ -21,61 +20,50 @@ plugin:
 
   ################# 可执行插件 ################
 
-  - tag: pipeline
-    type: pipeline
-    args:
-      pipe:
-        - _default_cache # 缓存
-        - main_sequence # 处理请求的主要执行序列
-
   - tag: main_sequence
     type: sequence
     args:
       exec:
+        - _default_cache # 缓存
         - if:
-            - query_is_ad_domain # 处理已知的广告域名
+            - query_is_ad_domain # 已知的广告域名
           exec:
             - _block_with_nxdomain # 屏蔽
           goto: _end
 
         - if:
-            - query_is_local_domain # 处理已知的本地域名
-            - !_query_is_common # 和不常见的请求类型
-
+            - query_is_local_domain # 已知的本地域名
+            - "!_query_is_common" # 和不常见的请求类型
           exec:
-            - forward_local
+            - forward_local # 用本地服务器
           goto: _end
 
         - if:
-            - query_is_non_local_domain # 处理已知的非本地域名
+            - query_is_non_local_domain # 已知的非本地域名
           exec:
-            - forward_remote
+            - forward_remote # 用远程服务器
           goto: _end
 
-        - sequence_bypass_local # 用 IP 分流未知域名。有两种方案：顺序或并行。这是顺序执行。
-      # - parallel_bypass_local   # 如果想用类似 ChinaDNS 的并发分流逻辑。用这个。
+          # 剩下的域名用 IP 分流。
+          # 有两种方案："顺序分流"或"并发分流"。
+          # 下面的是"顺序分流"的配置.
 
-  - tag: sequence_bypass_local # 顺序执行的分流逻辑
-    type: sequence
-    args:
-      exec:
         - forward_local # 先请求转发至本地服务器
         - if:
             - response_has_local_ip # 如果应答包含本地 IP
           goto: _end # 就直接采用结果
         - forward_remote # 否则用远程服务器的结果
 
-  - tag: parallel_bypass_local # 并发执行的分流的逻辑
-    type: parallel
-    args:
-      exec:
-        - - forward_local # 并发请求本地和远程服务器
-          - if:
-              - !response_has_local_ip # 如果本地服务器返回的非本地 IP
+        # 如果想用类似 ChinaDNS 的"并发分流"逻辑。将上面的配置注释掉，然后用下面的配置。
+        # 注意: 如果上游支持连接复用，不要用并发分流。因为服务器延时不可预测，会有问题。
 
-            exec:
-              - _drop_response # 应答会被丢弃
-        - - forward_remote
+        # - parallel:
+        #     - - forward_local                 # 并发请求本地和远程服务器
+        #       - if:
+        #           - "!response_has_local_ip"  # 如果本地服务器返回的非本地 IP
+        #         exec:
+        #           - _drop_response            # 应答会被丢弃
+        #     - - forward_remote
 
   - tag: forward_local # 转发至本地服务器的插件
     type: forward
