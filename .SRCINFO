@@ -11,7 +11,7 @@ pkgbase = linvst-x-bin
 	optdepends = jack
 	conflicts = linvstx
 	source = https://github.com/osxmidi/LinVst-X/releases/download/3.2/LinVst-X-3.2-Debian-Stretch.zip
-	md5sums = 696db70152b8f0bafab421233b4fc071
+	md5sums = d9d3186e5fb96409a40bd5e7d5674900
 
 pkgname = linvst-x-bin
 

@@ -12,7 +12,7 @@ conflicts=('linvstx')
 optdepends=('jack')
 suffix="Debian-Stretch"
 source=("$url/releases/download/$pkgver/LinVst-X-$pkgver-$suffix.zip")
-md5sums=('696db70152b8f0bafab421233b4fc071')
+md5sums=('d9d3186e5fb96409a40bd5e7d5674900')
 
 package() {
 
