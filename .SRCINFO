@@ -1,0 +1,25 @@
+pkgbase = lib32-freeglut-git
+	pkgdesc = Provides functionality for small OpenGL programs (32-bit)
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = http://freeglut.sourceforge.net/
+	arch = x86_64
+	license = MIT
+	makedepends = lib32-mesa
+	makedepends = lib32-glu
+	makedepends = lib32-libxxf86vm
+	makedepends = cmake
+	depends = lib32-libxi
+	depends = lib32-libxrandr
+	depends = lib32-libgl
+	depends = freeglut
+	provides = lib32-glut
+	provides = lib32-freeglut
+	conflicts = lib32-glut
+	conflicts = lib32-freeglut
+	replaces = lib32-glut
+	source = svn+https://svn.code.sf.net/p/freeglut/code/trunk/freeglut/freeglut
+	sha512sums = SKIP
+
+pkgname = lib32-freeglut-git
+
