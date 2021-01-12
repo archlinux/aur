@@ -1,20 +1,17 @@
-# Contributor: Anonymous
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
 
 pkgname='perl-html-clean'
-pkgver='0.8'
+pkgver='1.4'
 pkgrel='1'
 pkgdesc="Cleans up HTML code for web browsers, not humans"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
-makedepends=()
-url='http://search.cpan.org/dist/HTML-Clean'
-source=('http://search.cpan.org/CPAN/authors/id/L/LI/LINDNER/HTML-Clean-0.8.tar.gz')
-md5sums=('ee562703b7700c7fd4173f355e83ec2c')
-sha512sums=('5e9fdf49c1fccbb35c769394dac2013972bea070579983c5c2e99105b2f9a4ca6594966ae88770fc6ae1ee6b9388a07d61830d0451d6957197114d35dc5cc1e4')
-_distdir="HTML-Clean-0.8"
+url='https://metacpan.org/release/HTML-Clean'
+source=(https://cpan.metacpan.org/authors/id/A/AZ/AZJADFTRE/HTML-Clean-${pkgver}.tar.gz)
+sha512sums=('a675b2ae0f7472d4fe44d3402687c4a7d87d33b30894e2c1d9639552fa5f58a89b35b52be17f95058a5ce690a996451c877d1c723b9b6f3919f437da8d458004')
+_distdir="HTML-Clean-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -41,9 +38,3 @@ package() {
   make install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
