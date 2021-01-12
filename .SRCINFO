@@ -1,0 +1,15 @@
+pkgbase = nat-tcp-test-git
+	pkgdesc = TCP established connection idle-timeout tests for NAT implementations
+	pkgver = r25.cbb1eb5
+	pkgrel = 1
+	url = https://github.com/AndersTrier/NAT-TCP-test
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = unknown
+	makedepends = git
+	source = git+https://github.com/AndersTrier/NAT-TCP-test
+	sha256sums = SKIP
+
+pkgname = nat-tcp-test-git
+
