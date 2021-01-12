@@ -1,0 +1,14 @@
+pkgbase = rofi-script-to-dmenu
+	pkgdesc = Run rofi scripts with dmenu (or with dmenu mode of rofi)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/jluttine/rofi-script-to-dmenu
+	arch = any
+	license = MIT
+	depends = dmenu
+	optdepends = rofi: Run with dmenu mode of rofi
+	source = rofi-script-to-dmenu-1.1.0.src.tar.gz::https://github.com/jluttine/rofi-script-to-dmenu/archive/1.1.0.tar.gz
+	sha512sums = fa4aff98302cdf21b5656ac73a8223141712374ae44e4496ba4e70071fa13a077f3b364f2b035da79473e632bf5d3836368e99cf99aebb5b330f0eda1356864f
+
+pkgname = rofi-script-to-dmenu
+
