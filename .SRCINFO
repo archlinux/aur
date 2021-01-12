@@ -10,6 +10,7 @@ pkgbase = lib32-freeglut-git
 	makedepends = lib32-libxxf86vm
 	makedepends = cmake
 	makedepends = subversion
+	makedepends = libsasl
 	depends = lib32-libxi
 	depends = lib32-libxrandr
 	depends = lib32-libgl

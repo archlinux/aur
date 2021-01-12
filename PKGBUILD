@@ -1,4 +1,5 @@
 # Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Andrew Wong <andrew@wongdev.com>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Eric Belanger <eric@archlinux.org>
@@ -13,7 +14,7 @@ url='http://freeglut.sourceforge.net/'
 arch=('x86_64')
 license=('MIT')
 depends=('lib32-libxi' 'lib32-libxrandr' 'lib32-libgl' 'freeglut')
-makedepends=('lib32-mesa' 'lib32-glu' 'lib32-libxxf86vm' 'cmake' 'subversion')
+makedepends=('lib32-mesa' 'lib32-glu' 'lib32-libxxf86vm' 'cmake' 'subversion' 'libsasl')
 replaces=('lib32-glut')
 provides=('lib32-glut' 'lib32-freeglut')
 conflicts=('lib32-glut' 'lib32-freeglut')
@@ -22,7 +23,8 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd freeglut
-  git describe --tags | sed 's/-/+/g'
+  local ver="$(svnversion)"
+  echo "r${ver//[[:alpha:]]}"
 }
 
 prepare() {
