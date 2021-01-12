@@ -1,6 +1,6 @@
 # Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 pkgname=linvst-bin
-pkgver=3.5
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Linux Windows vst wrapper/bridge"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('linvst')
 optdepends=('jack')
 suffix="Debian-Stretch"
 source=( "$url/releases/download/$pkgver/LinVst-$pkgver-$suffix.zip") 
-md5sums=('8b8d98fe0fb68a7e9e18b310fc443c05')
+md5sums=('a4346eb57cecb56f87ff2122406a32cb')
 
 package() {
 	# Shared library
