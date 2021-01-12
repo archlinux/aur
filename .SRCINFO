@@ -1,7 +1,7 @@
 pkgbase = zettlr
 	pkgdesc = A markdown editor for writing academic texts and taking notes
 	pkgver = 1.8.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.zettlr.com
 	install = install
 	arch = x86_64
@@ -15,12 +15,11 @@ pkgbase = zettlr
 	optdepends = ttf-lato: Display output in a more comfortable way
 	options = !strip
 	source = zettlr-1.8.5.tar.gz::https://github.com/Zettlr/Zettlr/archive/v1.8.5.tar.gz
-	source = locales-3-1.8.5.zip::https://github.com/citation-style-language/locales/archive/ecb8e70233e9a68e8b1dda4586061be8f8611a38.zip
-	source = chicago-author-date-1.8.5-3.csl::https://github.com/citation-style-language/styles/raw/a7899732910f5e69aae7799bf4e61505716c211b/chicago-author-date.csl
+	source = locales-4-1.8.5.zip::https://github.com/citation-style-language/locales/archive/ecb8e70233e9a68e8b1dda4586061be8f8611a38.zip
+	source = chicago-author-date-1.8.5-4.csl::https://github.com/citation-style-language/styles/raw/a7899732910f5e69aae7799bf4e61505716c211b/chicago-author-date.csl
 	sha256sums = 59a89ea4c86cf64920b540c0734566dbf737f08c6f48256fc8de124f65aebade
 	sha256sums = 24503a6cd5b3651a7003353811ae82d3ed707ec8ff932d341668c2ad377434b6
 	sha256sums = 2b7cd6c1c9be4add8c660fb9c6ca54f1b6c3c4f49d6ed9fa39c9f9b10fcca6f4
-	sha256sums = 9aef5eec4876aa180fa55cf3bc213a5cf68ab96567bc4021ba58a32fa0fa9f94
 
 pkgname = zettlr
 
