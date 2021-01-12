@@ -1,9 +1,8 @@
 pkgbase = bochs-gdb
 	pkgdesc = A portable x86 PC emulation software package with gdbstub
-	pkgver = 2.6.8
-	pkgrel = 2
+	pkgver = 2.6.11
+	pkgrel = 3
 	url = http://bochs.sourceforge.net/
-	arch = i686
 	arch = x86_64
 	license = LGPL
 	depends = gcc-libs
@@ -11,8 +10,8 @@ pkgbase = bochs-gdb
 	depends = libxpm
 	depends = gtk2
 	depends = bochs
-	source = http://downloads.sourceforge.net/sourceforge/bochs/bochs-2.6.8.tar.gz
-	md5sums = 8a243e2b5f7562f32d2b26f3cebbba08
+	source = http://downloads.sourceforge.net/sourceforge/bochs/bochs-2.6.11.tar.gz
+	md5sums = 61dbf6d5c0384712e1f3e51e88381b4c
 
 pkgname = bochs-gdb
 
