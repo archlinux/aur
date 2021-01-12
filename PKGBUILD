@@ -5,7 +5,7 @@
 
 pkgname=processing-jdk8
 pkgver=3.5.4
-pkgrel=4
+pkgrel=5
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions (always uses Oracle JDK 8)'
 url='https://www.processing.org/'
@@ -24,7 +24,7 @@ source=("https://github.com/processing/processing/archive/processing-0$((266+${p
         disable_update_check.patch
         no_downloads.patch)
 sha256sums=('99a5d3cfccd106e79fe82cafa66b72b15c19e5747eac77e40dd0a82b032c2925'
-            '1417308bf43bec2a8d178b84043a3e8a498fa164f3bf7d7668ba17cf96de1282'
+            'fabe7420a714f450a6b1430f13fc46f14ba52db57af360365c6a7fd96d0b642f'
             '8255ba154118884e51e3b9b7174814f7de8fcf7c380ce6f8666192adb6f2483c'
             'fcd5c5ea558ceadde3f840522a5c1cb11e26569aec651e8154194cca39026611'
             '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
