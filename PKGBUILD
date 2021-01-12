@@ -2,14 +2,15 @@
 
 _pkgname=material-kwin-decoration
 pkgname=${_pkgname}-git
-pkgver=v5+9+gc296eeb
+pkgver=v5+38+g65fe6f5
 pkgrel=1
 pkgdesc="Material-ish window decoration theme for KWin, with LIM support."
 url='https://github.com/Zren/material-decoration'
 arch=('x86_64')
 license=('GPL')
-depends=('kdecoration')
+depends=('kdecoration' 'kconfig' 'kconfigwidgets' 'kcoreaddons' 'kiconthemes' 'kwindowsystem')
 makedepends=('git' 'cmake' 'extra-cmake-modules')
+optdepends=('appmenu-gtk-module: gtk app support')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+${url}.git")
