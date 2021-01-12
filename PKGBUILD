@@ -6,7 +6,7 @@
 
 pkgname=vlang-git
 pkgver=0.2.r418.g33976246c
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software'
 arch=('x86_64')
 url='https://vlang.io'
@@ -31,7 +31,7 @@ build() {
   # We don't require optimizations when compiling the bootstrap executable and
   # -O2 actually breaks `./v self` (resulting in "cgen error:"), so we empty
   # CFLAGS and LDFLAGS to ensure successful compilation.
-  CFLAGS="" LDFLAGS="" make
+  CFLAGS="" LDFLAGS="" prod=1 make
 }
 
 package() {
