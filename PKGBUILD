@@ -1,7 +1,7 @@
 # Maintainer: Omar Alkersh <oalkersh at protonmail dot com>
 pkgname=shortcut-mapper-git
-pkgver=v0.1.1
-pkgrel=1
+pkgver=v0.1.2
+pkgrel=
 epoch=
 pkgdesc=""
 arch=(x86_64)
@@ -26,7 +26,8 @@ validpgpkeys=()
 
 pkgver() {
     cd "shortcut-mapper"
-    git describe --tags HEAD
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+
 }
 
 build() {
