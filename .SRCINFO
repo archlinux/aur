@@ -1,0 +1,27 @@
+pkgbase = vieb
+	pkgdesc = Vim Inspired Electron Browser - Vim bindings for the web by design
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://vieb.dev
+	install = vieb.install
+	arch = x86_64
+	license = GPL3
+	depends = c-ares
+	depends = ffmpeg
+	depends = gtk3
+	depends = http-parser
+	depends = libevent
+	depends = libvpx
+	depends = libxslt
+	depends = libxss
+	depends = minizip
+	depends = nss
+	depends = re2
+	depends = snappy
+	depends = libnotify
+	depends = libappindicator-gtk3
+	provides = vieb
+	source = https://github.com/Jelmerro/Vieb/releases/download/3.2.0/vieb-3.2.0.pacman
+	sha256sums = 173b972d76c05c11f11a3c0884221cb351c52d88d5d293b64e63e6720f48694c
+
+pkgname = vieb
