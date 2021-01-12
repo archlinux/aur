@@ -15,6 +15,7 @@ pkgbase = libidn2-nodocs-git
 	depends = glibc
 	depends = libunistring
 	provides = libidn2
+	provides = libidn2.so
 	conflicts = libidn2
 	options = staticlibs
 	source = git+https://gitlab.com/libidn/libidn2.git
