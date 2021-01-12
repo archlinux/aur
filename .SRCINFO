@@ -1,4 +1,4 @@
-pkgbase = lib32-kmod-git
+pkgbase = lib32-kmod-minimal-git
 	pkgdesc = Linux kernel module handling
 	pkgver = 28
 	pkgrel = 1
@@ -15,5 +15,5 @@ pkgbase = lib32-kmod-git
 	source = git+https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git
 	sha512sums = SKIP
 
-pkgname = lib32-kmod-git
+pkgname = lib32-kmod-minimal-git
 

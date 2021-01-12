@@ -5,7 +5,7 @@
 # Website       : https://git.kernel.org/?p=utils/kernel/kmod/kmod.git;a=summary
 #-----------------------------------------------------------------------------------------------
 
-pkgname=lib32-kmod-git
+pkgname=lib32-kmod-minimal-git
 pkgver=28
 pkgrel=1
 pkgdesc="Linux kernel module handling"
