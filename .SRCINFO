@@ -12,7 +12,6 @@ pkgbase = python-ocp-git
 	makedepends = python-pandas
 	makedepends = python-path
 	makedepends = pybind11
-	makedepends = python-setuptools
 	makedepends = ninja
 	makedepends = cmake
 	makedepends = python-logzero

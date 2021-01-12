@@ -19,7 +19,6 @@ python-click
 python-pandas
 python-path
 pybind11
-python-setuptools
 ninja
 cmake
 python-logzero
@@ -45,9 +44,6 @@ prepare(){
   cd OCP
   git submodule update --init --recursive
   
-  # pywrap assdumes I'm using clang 8.0.0...
-  #sed -i "s,rv.append(Path(prefix) / 'lib/clang/8.0.0/include/'),rv.append(Path(prefix) / 'lib/clang/$(pacman -Q clang | awk '{print $2}' | cut -f1 -d"-")/include/'),g" pywrap/bindgen/utils.py
-
   # don't use the opencascade headers packaged here
   # instead use the ones from the installed opencascade package
   #rm -rf opencascade
@@ -56,47 +52,36 @@ prepare(){
 
 build() {
   cd OCP
-  export CONDA_PREFIX=/usr
-  export PYTHONPATH=pywrap
-  python -m bindgen all ocp.toml
-  msg2 pywrap done
-  ls -al
-  cmake \
-    -D CMAKE_INSTALL_PREFIX="/usr" \
-    -G Ninja \
-    -B "${srcdir}/build" \
-    -S OCP
-  ninja -C "${srcdir}/build"
-  msg2 ninja done
-  #cmake -S OCP -B build
-  #cmake --build build
-  #msg2 pywrap done
-  #exit -1
+  CONDA_PREFIX=/usr PYTHONPATH=pywrap python -m bindgen \
+    --clean \
+    --libclang "$(ldconfig -p | grep 'libclang.so$' | awk '{print $NF}')" \
+    --include "$(clang -print-resource-dir)"/include \
+    all ocp.toml
 
-  #local _config_file=ocp.toml
-  #local _output=$(python -c "import toml; print(toml.load(\"${_config_file}\")['output_folder'])")
-  #python -m bindgen -n $(nproc) parse ${_config_file} out.pkl
-  #python -m bindgen -n $(nproc) transform ${_config_file} out.pkl out_f.pkl
-  #python -m bindgen -n $(nproc) generate ${_config_file} out_f.pkl
-  #mkdir -p ${_output}
-  #cp -a out*.pkl ${_output}/.
-  #cmake -B build -S "${_output}" -G Ninja -DCMAKE_BUILD_TYPE=Release
-  #cmake --build build -j $(nproc) -- -k 0
+  cmake \
+    -W no-dev \
+    -D CMAKE_INSTALL_PREFIX="/usr" \
+    -D OPENCASCADE_INCLUDE_DIR=opencascade \
+    -D CMAKE_BUILD_TYPE=None \
+    -B "${srcdir}/build" \
+    -G Ninja \
+    -S OCP
+
+  ninja -C "${srcdir}/build"
 }
 
 check() {
-  cd OCP
+  cd "${srcdir}/build"
   python -c "from OCP.gp import gp_Vec, gp_Ax1, gp_Ax3, gp_Pnt, gp_Dir, gp_Trsf, gp_GTrsf, gp, gp_XYZ"
 }
 
 package(){
   cd OCP
-  rm -rf build/CMakeFiles
+  _python_site_path="$(python -c 'import sys; print(sys.path[-1])')"
+  mkdir -p "${pkgdir}/${_python_site_path}"
+  cp "${srcdir}"/build/OCP.*.so "${pkgdir}/${_python_site_path}"
 
-  # now we should figure out where site packages go and put the generated python there
-  _i_dir="${pkgdir}/$(python -c 'import sys; print(sys.path[-1])')"
-  mkdir -p "${_i_dir}"
-  cp build/OCP* "${_i_dir}/."
+ install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE
 }
 
 # vim:ts=2:sw=2:et:
