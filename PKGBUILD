@@ -1,6 +1,6 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 pkgname=punes-git
-pkgver=r1233.b8dc4659
+pkgver=0.107.r1233.b8dc4659
 pkgrel=1
 pkgdesc="Nintendo Entertaiment System emulator"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=('!buildflags')
 
 pkgver() {
     cd puNES
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s.r%s.%s" "$(git describe --abbrev=0 --tags | sed 's/v//')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

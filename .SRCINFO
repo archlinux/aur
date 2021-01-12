@@ -1,6 +1,6 @@
 pkgbase = punes-git
 	pkgdesc = Nintendo Entertaiment System emulator
-	pkgver = r1233.b8dc4659
+	pkgver = 0.107.r1233.b8dc4659
 	pkgrel = 1
 	url = http://forums.nesdev.com/viewtopic.php?t=6928
 	arch = x86_64
