@@ -6,7 +6,7 @@
 
 pkgname=vlang-git
 pkgver=0.2.r418.g33976246c
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software'
 arch=('x86_64')
 url='https://vlang.io'
@@ -44,5 +44,6 @@ package() {
   cp -a examples "$pkgdir/usr/share/vlang/"
   cp -a thirdparty "$pkgdir/usr/lib/vlang/"
   cp -a vlib "$pkgdir/usr/lib/vlang/"
+  cp v.mod "$pkgdir/usr/lib/vlang/"
   ln -s /usr/lib/vlang/v "$pkgdir/usr/bin/v"
 }
