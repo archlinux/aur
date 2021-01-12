@@ -1,0 +1,12 @@
+pkgbase = ttf-european-typewriter
+	pkgdesc = Monospace font with serifes
+	pkgver = 2001
+	pkgrel = 1
+	url = https://www.1001freefonts.com/de/d/9708/european-typewriter
+	arch = any
+	license = custom:unknown
+	source = ttf-european-typewriter-2001.zip::https://www.1001freefonts.com/de/d/9708/european-typewriter.zip
+	sha256sums = afd6aafa4727e59863a7e2fd9205a132436257bf445f34dd47ce374d4231c589
+
+pkgname = ttf-european-typewriter
+
