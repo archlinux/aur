@@ -1,6 +1,6 @@
 pkgbase = python-olxsearch
 	pkgdesc = Download metadata from the OLX online market place(s)
-	pkgver = 1.0.2
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://gitlab.com/christoph.fink/olxsearch
 	arch = any
@@ -10,12 +10,13 @@ pkgbase = python-olxsearch
 	depends = python-beautifulsoup4
 	depends = python-dateparser
 	depends = python-fake-useragent
+	depends = python-geoalchemy2
 	depends = python-geocoder
 	depends = python-pandas
-	depends = python-psycopg2
+	depends = python-sqlalchemy
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/o/olxsearch/olxsearch-1.0.2.tar.gz
-	sha256sums = 1ec78ae710a504e841977513b3a3ab2bc33b10ae1ed24a933e01a73a01892453
+	source = https://files.pythonhosted.org/packages/source/o/olxsearch/olxsearch-1.0.4.tar.gz
+	sha256sums = ed19ee86971fc8b577ce78dd2965d386b33550a6b2631e6c17a307e4c8f2a304
 
 pkgname = python-olxsearch
 
