@@ -1,14 +1,14 @@
 pkgbase = colorgrab
 	pkgdesc = A cross-platform color picker.
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nielssp/colorgrab
 	install = colorgrab.install
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = cmake
-	depends = wxgtk
+	depends = wxgtk2
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
 	source = https://github.com/nielssp/colorgrab/archive/v0.3.tar.gz
