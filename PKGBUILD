@@ -16,6 +16,8 @@ optdepends=('gst-plugins-base: Extra media codecs'
             'gst-plugins-ugly: Extra media codecs'
             'gst-libav: Extra media codecs'
             'tracker3-miners: Share indexed media files')
+provides=('rygel')
+conflicts=('rygel')
 backup=(etc/rygel.conf)
 source=("git+https://gitlab.gnome.org/GNOME/rygel.git")
 b2sums=('SKIP')
