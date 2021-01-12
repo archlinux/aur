@@ -1,0 +1,22 @@
+pkgbase = lib32-libcap-git
+	pkgdesc = POSIX 1003.1e capabilities (32-bit)
+	pkgver = 2.46
+	pkgrel = 1
+	url = https://sites.google.com/site/fullycapable/
+	arch = x86_64
+	license = GPL2
+	makedepends = linux-api-headers
+	depends = libcap=2.46
+	depends = lib32-glibc
+	depends = lib32-pam
+	provides = libcap.so
+	provides = libpsx.so
+	provides = lib32-libcap
+	conflicts = lib32-libcap
+	source = git+https://git.kernel.org/pub/scm/libs/libcap/libcap.git
+	source = libcap-2.45-makefile.patch
+	b2sums = SKIP
+	b2sums = 6f50d5a03c3532e6e50506cd878b1c9ca5cee5f1758f9318d4cb5d1e319cbe5f31210ba46a81b1af30730e2329aed7921c11f1a468a596a3f210972ca0da9d64
+
+pkgname = lib32-libcap-git
+
