@@ -8,7 +8,7 @@ pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-jack-git
          pipewire-common-pulse-git pipewire-common-alsa-git
          gst-plugin-pipewire-common-git pipewire-common-ffmpeg-git
          pipewire-common-bluez5-git pipewire-common-bluez5-hsphfpd-git)
-pkgver=0.3.19.r55.g7bd86df6
+pkgver=0.3.19.r56.g4cba8fc7
 pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines"
 url="https://pipewire.org"
@@ -72,7 +72,7 @@ package_pipewire-common-git() {
               'pipewire-common-bluez5-git: Bluetooth audio support'
               'pipewire-common-bluez5-hsphfpd-git: Bluetooth audio support (using hsphfpd for HSP/HFP support)')
   provides=(pipewire libpipewire-$_ver.so)
-  conflicts=(pipewire)
+  conflicts=(pipewire pipewire-git)
   backup=(etc/pipewire/pipewire.conf
           etc/pipewire/media-session.d/{alsa-monitor,media-session}.conf)
   install=pipewire.install
