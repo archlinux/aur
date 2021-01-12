@@ -1,5 +1,5 @@
 # Maintainer: Ritwick Verma <verma1997@gmail.com>
-# Contributer : Mark Wagie
+# Contributer : Mark Wagie <mark.wagie@tutanota.com>
 # Upstream URL: https://github.com/RitwickVerma/Gesture-Manager-X
 
 pkgname=gesture-manager-x-git
