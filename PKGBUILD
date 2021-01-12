@@ -1,9 +1,10 @@
-# Maintainer: Evgeniy Alekseev <arcanis.arch at gmail dot com>
+# Maintainer: Daniel Menelkir <menelkir at itroll dot org>
+# Contributor: Evgeniy Alekseev <arcanis.arch at gmail dot com>
 # Contributor: onestep_ua <onestep at ukr dot net>
 
 pkgname=libg15
 pkgver=1.2.7
-pkgrel=4
+pkgrel=5
 pkgdesc="Provides low-level access to the Logitech G15 and G11 keyboards and Z10 speakers"
 arch=('x86_64')
 url="http://www.g15tools.com/"
