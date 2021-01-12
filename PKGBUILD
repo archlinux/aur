@@ -8,7 +8,7 @@ pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-jack-git
          pipewire-common-pulse-git pipewire-common-alsa-git
          gst-plugin-pipewire-common-git pipewire-common-ffmpeg-git
          pipewire-common-bluez5-git pipewire-common-bluez5-hsphfpd-git)
-pkgver=0.3.19.r52.g219248d4
+pkgver=0.3.19.r55.g7bd86df6
 pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines"
 url="https://pipewire.org"
@@ -35,7 +35,8 @@ build() {
   meson configure build \
     -D docs=true \
     -D ffmpeg=true \
-    -D bluez5-backend-native=true \
+    -D bluez5-backend-hsp-native=true \
+    -D bluez5-backend-hfp-native=true \
     -D bluez5-backend-ofono=true \
     -D bluez5-backend-hsphfpd=false \
     -D udevrulesdir=/usr/lib/udev/rules.d
@@ -79,6 +80,7 @@ package_pipewire-common-git() {
   DESTDIR="$pkgdir" meson install -C build
 
   install -Dm644 "$_pkgbase/LICENSE" "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
+  install -Dm644 "$_pkgbase/COPYING" "$pkgdir/usr/share/licenses/$_pkgbase/COPYING"
 
   cd "$pkgdir"
 
@@ -89,7 +91,8 @@ package_pipewire-common-git() {
   cd "$srcdir"
 
   meson configure build \
-    -D bluez5-backend-native=false \
+    -D bluez5-backend-hsp-native=false \
+    -D bluez5-backend-hfp-native=false \
     -D bluez5-backend-ofono=false \
     -D bluez5-backend-hsphfpd=true
   meson compile -C build
