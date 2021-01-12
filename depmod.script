@@ -1,0 +1,9 @@
+#!/bin/bash
+
+while read -r f; do
+  if [[ -e ${f}vmlinuz ]]; then
+    depmod $(basename "$f")
+  fi
+done
+
+# vim:set ft=sh sw=2 et:
