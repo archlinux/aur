@@ -1,6 +1,6 @@
 pkgbase = chatterino2-git
 	pkgdesc = Second installment of the Twitch chat client series "Chatterino", dev/git version
-	pkgver = r2983.11150ec5
+	pkgver = r2997.a6e23e24
 	pkgrel = 1
 	url = https://chatterino.com
 	install = chatterino2-git.install
