@@ -2,7 +2,7 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgbase=linux-rt
-pkgver=5.9.1.20.arch1
+pkgver=5.10.4.22.arch1
 pkgrel=1
 pkgdesc='Linux RT'
 arch=('x86_64')
@@ -14,14 +14,11 @@ options=('!strip')
 source=(
   "git+https://gitlab.archlinux.org/dvzrv/linux-rt#tag=v${pkgver}?signed"
   config
-  sphinx-workaround.patch
 )
 sha512sums=('SKIP'
-            '34d040462566e365e094ce1ce6a22558913203f98a4beead302efc339c645e1cf4788cd1ff642a1a5161a4947ff23fe87867ff8ed4fbeb8814d18c12e8e4239d'
-            '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be')
+            'f40218a43662c3cfbfaa9b9070aeae8b0dcf8613cb07e1171c427446f1681d1c9168d9b93ea4bb5df11d5c38ade17ca60b334aaf776e504a6f467cfcc6f220f6')
 b2sums=('SKIP'
-        'b2b925584c62ede37276f7207ce72caa702cf8d27f8ae0653e564f49a96f969518347ef888ccf5210c82a971dc89e8cc4f269234072c6e3121a6cf1f39f35331'
-        'b4e1377d97ad7e8144d6e55b6d43731e3271a5aec65b65ca6d81026a95f15f549b9303fb3c6f492099ca691e3f65f4cf7f0c3aa742df03b396d7f6d81813aa95')
+        '42edc375c1323545e5fa2622855e04ffd3d0a8149beb2c239a684f2679db1c1fe4831bfaf5e678481520a9db3174f87c452eaa42ba7a8c6fad4a7d8156a0b4dd')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@kernel.org>
   '64254695FFF0AA4466CC19E67B96E8162A8CF5D1'  # Sebastian Andrzej Siewior
@@ -54,7 +51,7 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
-#  make menuconfig # CLI menu for configuration
+#  make nconfig
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
