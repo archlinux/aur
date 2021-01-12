@@ -2,7 +2,7 @@
 # Contributor: M.Reynolds <blackboxnetworkproject@gmail.com>
 
 pkgname=thonny
-pkgver=3.3.1
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="Python IDE for beginners"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('hicolor-icon-theme' 'mypy' 'python-astroid' 'python-asttokens' 'python
          'python-pylint' 'python-pyserial' 'python-send2trash' 'python-setuptools' 'tk')
 optdepends=('python-birdseye: Debug support with Birdseye')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('3c75dd5f1c749eeb03a460e7ccd63208c0d99ea84cf16d0d62e8fb7229ba7365368de5cb0b1bd4d5bd6a66376369b29b48666dfea89a83c9d4b787d2da25fe90')
+sha512sums=('2a08cc3e89ece8a5f441cba456756641a828a872a055abc9ef4a9fa1be03735bb34d0c21869fd323956e433f635ec25a5ab78c9061abfc94f6825d446bf6a6fc')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -36,7 +36,7 @@ package() {
 
   for size in 16 22 32 48 64 128 256; do
     install -Dm 644 "packaging/icons/${pkgname}-${size}x${size}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${_xdg_desktop_name}.png"
+                    "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${_xdg_desktop_name}.png"
   done
 
   install -Dm 644 "LICENSE.txt" \
