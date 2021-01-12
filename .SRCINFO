@@ -1,5 +1,5 @@
 pkgbase = postgresql-src
-	pkgver = 13.0
+	pkgver = 13.1
 	pkgrel = 1
 	url = http://www.postgresql.org/
 	arch = aarch64
@@ -9,13 +9,13 @@ pkgbase = postgresql-src
 	makedepends = python
 	makedepends = perl
 	makedepends = openssl>=1.0.0
-	source = http://ftp.postgresql.org/pub/source/v13.0/postgresql-13.0.tar.bz2
+	source = http://ftp.postgresql.org/pub/source/v13.1/postgresql-13.1.tar.bz2
 	source = postgresql-run-socket.patch
 	source = postgresql.pam
 	source = postgresql.logrotate
 	source = postgresql.service
 	source = postgresql-check-db-dir
-	sha512sums = 1fde89487c3e50a7a07e1d42fba60d415645ea89c5d4c5c7fcc93fbd5330feca7ec991d5b274f6ab757d5d04667ca1a7efdf4eaaa760add19d2e02437465f8f5
+	sha512sums = b7bd378db1dcb74ebcd5fffba03b82d8117d182029e4caca48eef62d8bcdbeef2c2e10f18eef0cdafb9d7acf21aa164d040e56687709f97b08c51540a786eeca
 	sha512sums = aa0a82a6ba356d3ccd7b8c497dae19666368e3342eb52cb4b8c9f48b0bfcb8f66574c55ba39eb65565ebf66467e18e2a02ae467d78fc2c247c056af170b3ab35
 	sha512sums = 1e6183ab0eb812b3ef687ac2c26ce78f7cb30540f606d20023669ac00ba04075487fb72e4dc89cc05dab0269ff6aca98fc1167cc75669c225b88b592482fbf67
 	sha512sums = 9ab4da01337ffbab8faec0e220aaa2a642dbfeccf7232ef2645bdc2177a953f17ee3cc14a4d8f8ebd064e1dae8b3dba6029adbffb8afaabea383963213941ba8
@@ -41,7 +41,7 @@ pkgname = postgresql-src-docs
 pkgname = postgresql-src
 	pkgdesc = A sophisticated object-relational DBMS (from source, LTO enabled)
 	install = postgresql.install
-	depends = postgresql-src-libs>=13.0
+	depends = postgresql-src-libs>=13.1
 	depends = krb5
 	depends = readline>=6.0
 	depends = openssl>=1.0.0
