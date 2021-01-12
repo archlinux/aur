@@ -1,24 +1,48 @@
 # Maintainer: Ritwick Verma <verma1997@gmail.com>
+# Contributer : Mark Wagie
 # Upstream URL: https://github.com/RitwickVerma/Gesture-Manager-X
 
 pkgname=gesture-manager-x-git
-pkgver=0.1
+pkgver=r5.856d1fd
 pkgrel=1
-pkgdesc='GUI for setting libinput-gestures touchpad gestures with extended support for newer gestures.'
+pkgdesc="Extended GUI for interacting with libinput-gestures"
 arch=('any')
-url='https://github.com/RitwickVerma/Gesture-Manager-X'
-license=('GPLv3')
-depends=('libinput-gestures' 'xf86-input-libinput' 'gtk3>=3.18','python')
+url="https://github.com/RitwickVerma/Gesture-Manager-X"
+license=('GPL3')
+depends=('libinput-gestures' 'xf86-input-libinput' 'gtk3')
 makedepends=('git')
-source=("gesturemanagerx::git+git://github.com/RitwickVerma/Gesture-Manager-X")
-md5sums=('SKIP')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname%-git}::git+https://github.com/RitwickVerma/Gesture-Manager-X.git")
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/${pkgname%-git}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "$srcdir/${pkgname%-git}"
+	sed -i 's|/usr/bin/gesture-manager-x|gesture-manager-x|g' \
+		"${pkgname%-git}.desktop.in"
+	sed -i 's|/usr/share/gesture-manager-x/icon.svg|gesture-manager-x|g' \
+		"${pkgname%-git}.desktop.in"
+}
 
 package() {
-  cd "$srcdir"
-  mkdir -p $pkgdir/usr/share/applications
-  mkdir -p $pkgdir/usr/bin
-  cp gesturemanagerx/gesture-manager-x.desktop.in $pkgdir/usr/share/applications/gesture-manager-x.desktop
-  cp -r gesturemanagerx $pkgdir/usr/share/gesture-manager-x
-  echo -e "#!/bin/sh\npython3 /usr/share/gesture-manager-x/main.py" > $pkgdir/usr/bin/gesture-manager-x
-  chmod +x $pkgdir/usr/bin/gesture-manager-x
+	cd "$srcdir/${pkgname%-git}"
+	install -Dm644 daemonHelper.py gestureHelper.py ui.glade -t \
+		"$pkgdir/usr/share/${pkgname%-git}"
+
+	install -Dm755 main.py -t "$pkgdir/usr/share/${pkgname%-git}"
+	install -dm755 "$pkgdir/usr/bin"
+	echo -e "#!/bin/sh\npython3 /usr/share/${pkgname%-git}/main.py" > \
+		"$pkgdir/usr/bin/${pkgname%-git}"
+	chmod +x "$pkgdir/usr/bin/${pkgname%-git}"
+
+	install -Dm644 "${pkgname%-git}.desktop.in" \
+		"$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
+
+	install -Dm644 icon.svg \
+		"$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgname%-git}.svg"
 }
