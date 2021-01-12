@@ -1,13 +1,13 @@
 pkgbase = fish-fishtape
 	pkgdesc = TAP-based test runner for the fish shell
-	pkgver = 2.1.3
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/jorgebucaran/fishtape
 	arch = any
 	license = MIT
-	depends = fish>=2.0
-	source = fish-fishtape-2.1.3.tar.gz::https://github.com/jorgebucaran/fishtape/archive/2.1.3.tar.gz
-	sha256sums = c8407585c82a87bf3a752bf8b8c1fc85200b8e0b3fc67193dc6dc6ee88170b51
+	depends = fish>=3.0
+	source = fish-fishtape-3.0.0.tar.gz::https://github.com/jorgebucaran/fishtape/archive/3.0.0.tar.gz
+	sha256sums = d79f064882d8b64064f642c90c2877e607e4acbc29d719ba8ae9ca7454fe27ef
 
 pkgname = fish-fishtape
 
