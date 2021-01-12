@@ -48,7 +48,7 @@ package() {
   DESTDIR="${pkgdir}" cmake --build build --target install
   rm -rf "${pkgdir}/usr/include"
   ln -sr "${pkgdir}"/usr/lib32/pkgconfig/{glut,freeglut}.pc
-  install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ${_pkgname}-${pkgver}/COPYING
+  install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" freeglut/COPYING
 }
 
 # vim: ts=2 sw=2 et:
