@@ -21,6 +21,11 @@ sha256sums=('SKIP'
             '5c2d377a87121e7c399534fb91e2ffc0cc1e75d44a8f07ee6f55c9c089bc81e4')
 #validpgpkeys=('7F2A3D07298149A0793C9A4EA45ABA544CFFD434' #Alexey Gladkov)
 
+pkgver() {
+  cd kbd
+  git describe --tags | sed 's/-/+/g'
+}
+
 prepare() {
   cd kbd
   # rename keymap files with the same names
