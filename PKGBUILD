@@ -2,14 +2,14 @@
 
 pkgname=dosbox-staging
 pkgver=0.76.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="DOS/x86 emulator focusing on ease of use. Based on DOSBox"
 arch=('any')
 url="https://github.com/dosbox-staging/dosbox-staging"
 license=('GPL2')
-depends=('sdl2' 'sdl2_net' 'opusfile'  'alsa-lib')
-optdepends=('libpng' 'ncurses' 'fluidsynth')
+depends=('sdl2' 'sdl2_net' 'opusfile'  'alsa-lib' 'fluidsynth')
+optdepends=('libpng' 'ncurses')
 makedepends=('autoconf' 'automake' 'gcc' 'gzip')
 provides=("dosbox")
 conflicts=("dosbox")
