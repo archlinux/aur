@@ -6,7 +6,7 @@ pkgbase = lib32-libcap-git
 	arch = x86_64
 	license = GPL2
 	makedepends = linux-api-headers
-	depends = libcap=2.46
+	depends = libcap
 	depends = lib32-glibc
 	depends = lib32-pam
 	provides = libcap.so

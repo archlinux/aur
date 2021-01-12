@@ -11,7 +11,7 @@ pkgdesc="POSIX 1003.1e capabilities (32-bit)"
 arch=('x86_64')
 url="https://sites.google.com/site/fullycapable/"
 license=('GPL2')
-depends=("libcap=${pkgver}" 'lib32-glibc' 'lib32-pam')
+depends=(libcap 'lib32-glibc' 'lib32-pam')
 makedepends=('linux-api-headers')
 provides=('libcap.so' 'libpsx.so' 'lib32-libcap')
 conflicts=(lib32-libcap)
