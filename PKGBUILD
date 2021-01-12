@@ -52,7 +52,7 @@ prepare(){
 
 build() {
   cd OCP
-  CONDA_PREFIX=/usr PYTHONPATH=pywrap python -m bindgen \
+  PYTHONPATH=pywrap python -m bindgen \
     --clean \
     --libclang "$(ldconfig -p | grep 'libclang.so$' | awk '{print $NF}')" \
     --include "$(clang -print-resource-dir)"/include \
