@@ -6,7 +6,7 @@
 # https://bugzilla.novell.com/768506
 # https://bugzilla.novell.com/765524
 
-_kver=5.9
+_kver=5.10
 _gitroot=git://repo.or.cz/linux.git
 _gitcommit=linux-$_kver.y
 _cur_kernel="$(uname -r)"
@@ -14,13 +14,13 @@ _EXTRAMODULES=$(readlink -f /usr/lib/modules/"$_cur_kernel/extramodules")
 
 pkgname=synaptics-led
 pkgver=$_kver
-pkgrel=2
+pkgrel=1
 arch=(i686 x86_64)
 license=(GPL2)
 url="https://github.com/mmonaco/PKGBUILDs"
 pkgdesc="Synaptics LED enabled psmouse kernel module"
-depends=('linux>=4.14.9')
-makedepends=('git' 'linux-headers>=4.14.9')
+depends=('linux>=4.14.9' 'linux<5.10.3')
+makedepends=('git' 'linux-headers>=4.14.9' 'linux-headers<5.10.3')
 install="$pkgname.install"
 
 source=(
@@ -29,9 +29,9 @@ source=(
 	kernel.patch
 )
 
-sha256sums=('f547d96e3c8e2126a88ad9a901a1cd0f99e0800b3b649858c012d8a1da37bfed'
+sha256sums=('90fdc521519ba9047b77c4b5b36cda1e494faa684866f9adeaea24f3b98b3f8c'
             'b46af61822e8ec8639faa1b60dd3b6b1a64e24854611902499b9f81d2691e22c'
-            'c98a73eae81a490325781da16d04ae03d85380ed431c22eac4dfd363ac09c813')
+            'e5ceec0528c76af072bac74f701c45b84726d8f5f72337e24434b6ac5a1a6097')
 
 build() {
 	msg2 "Module will be installed to: $_EXTRAMODULES"
@@ -55,16 +55,16 @@ build() {
 	cd "drivers/input/mouse"
 	make -C "/usr/lib/modules/$_cur_kernel/build" M="$PWD" psmouse.ko
 
-	msg2 "Compressing psmouse.ko.gz"
-	gzip -9 psmouse.ko
+	msg2 "Compressing psmouse.ko.xz"
+	xz psmouse.ko
 }
 
 package() {
 	cd "${srcdir}/drivers/input/mouse"
 
-	install -D -m 0644 psmouse.ko.gz "${pkgdir}/${_EXTRAMODULES}/psmouse.ko.gz"
+	install -D -m 0644 psmouse.ko.xz "${pkgdir}/${_EXTRAMODULES}/psmouse.ko.xz"
 
 	# if you have not one kernel installed and _EXTRAMODULES not proper detected:
 	# you should change install string for EXTRAMODULES manualy:
-	# install -D -m 0644 psmouse.ko.gz "${pkgdir}/usr/lib/modules/{YOUR_EXTRAMODULES_DIR}/psmouse.ko.gz"
+	# install -D -m 0644 psmouse.ko.xz "${pkgdir}/usr/lib/modules/{YOUR_EXTRAMODULES_DIR}/psmouse.ko.xz"
 }

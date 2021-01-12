@@ -1,7 +1,7 @@
 pkgbase = synaptics-led
 	pkgdesc = Synaptics LED enabled psmouse kernel module
-	pkgver = 5.9
-	pkgrel = 2
+	pkgver = 5.10
+	pkgrel = 1
 	url = https://github.com/mmonaco/PKGBUILDs
 	install = synaptics-led.install
 	arch = i686
@@ -9,13 +9,15 @@ pkgbase = synaptics-led
 	license = GPL2
 	makedepends = git
 	makedepends = linux-headers>=4.14.9
+	makedepends = linux-headers<5.10.3
 	depends = linux>=4.14.9
+	depends = linux<5.10.3
 	source = SHA256SUMS
 	source = synaptics-led.install
 	source = kernel.patch
-	sha256sums = f547d96e3c8e2126a88ad9a901a1cd0f99e0800b3b649858c012d8a1da37bfed
+	sha256sums = 90fdc521519ba9047b77c4b5b36cda1e494faa684866f9adeaea24f3b98b3f8c
 	sha256sums = b46af61822e8ec8639faa1b60dd3b6b1a64e24854611902499b9f81d2691e22c
-	sha256sums = c98a73eae81a490325781da16d04ae03d85380ed431c22eac4dfd363ac09c813
+	sha256sums = e5ceec0528c76af072bac74f701c45b84726d8f5f72337e24434b6ac5a1a6097
 
 pkgname = synaptics-led
 
