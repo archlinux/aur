@@ -13,8 +13,12 @@ makedepends=('git' 'python-setuptools-scm')
 source=("${_pkgbase}::git+${url}.git#tag=${pkgver}")
 md5sums=('SKIP')
 
+build() {
+    cd "${srcdir}/${_pkgbase}"
+    python setup.py build
+}
 
 package() {
     cd "${srcdir}/${_pkgbase}"
-    python setup.py install --root "${pkgdir}" --optimize=1
+    python setup.py install --root "${pkgdir}" --optimize=1 --skip-build
 }
