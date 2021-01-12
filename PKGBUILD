@@ -13,7 +13,6 @@ sha256sums=('727afd835ca7f3e7d00cece0c8b3e56d137d91607b1c9d68ff7e3f7823a2c652')
 
 prepare() {
   cd $pkgname-$pkgver/2.x
-  sed -i 's/-Werror //' dooble.pro
   sed -i 's|Categories=Web|Categories=Network;Qt;WebBrowser;|
           s|Exec=.*|Exec=dooble|
           s|Icon=.*|Icon=dooble|' dooble.desktop
@@ -22,7 +21,7 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver/2.x
-  qmake
+  qmake dooble.pro
   make
 }
 
