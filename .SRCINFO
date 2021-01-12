@@ -1,0 +1,16 @@
+pkgbase = rofi-power-menu
+	pkgdesc = Configurable power menu mode for Rofi and dmenu
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/jluttine/rofi-power-menu
+	arch = any
+	license = MIT
+	depends = rofi
+	optdepends = rofi-script-to-dmenu: Run rofi scripts with dmenu (or with dmenu mode of rofi)
+	optdepends = dmenu: Use with dmenu instead of rofi
+	provides = dmenu-power-menu
+	source = rofi-power-menu-3.0.1.src.tar.gz::https://github.com/jluttine/rofi-power-menu/archive/3.0.1.tar.gz
+	sha512sums = b45a675931792f542ab0ee425e10deab5ee3f5afe63ae5a61ffaacb8d174e1b98cadf9bbbb977a318345516b7fd361c120740b9012f366066feca3e45b2629db
+
+pkgname = rofi-power-menu
+
