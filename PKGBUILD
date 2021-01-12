@@ -3,14 +3,14 @@
 
 pkgname=aws-sam-cli
 pkgver=1.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool to build, test, debug, and deploy Serverless applications using AWS SAM'
 arch=('any')
 url='https://github.com/awslabs/aws-sam-cli'
 license=('Apache')
 depends=('docker' 'python-chevron' 'python-click' 'python-flask' 'python-boto3' 'python-jmespath' 'python-yaml'
          'python-cookiecutter' 'python-aws-sam-translator' 'python-docker' 'python-dateparser' 'python-dateutil'
-         'python-requests' 'python-serverlessrepo' 'python-aws_lambda_builders' 'python-tomlkit' 'python-watchdog')
+         'python-requests' 'python-serverlessrepo' 'python-aws-lambda-builders' 'python-tomlkit' 'python-watchdog')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
