@@ -1,9 +1,10 @@
-# Maintainer: Evgeniy Alekseev <arcanis.arch at gmail dot com>
+# Maintainer: Daniel Menelkir <menelkir at itroll dot org>
+# Contributor: Evgeniy Alekseev <arcanis.arch at gmail dot com>
 # Contributor: Valeriy Lyasotskiy <onestep@ukr.net>
 
 pkgname=g15daemon
 pkgver=1.9.5.3
-pkgrel=10
+pkgrel=11
 pkgdesc="A daemon that makes it possible to use the G-Buttons and draw on the G15 LCD"
 arch=('x86_64')
 url="https://sourceforge.net/projects/g15daemon/"
