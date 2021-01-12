@@ -1,0 +1,18 @@
+[Desktop Entry]
+Comment=FileCloud Sync Client
+Exec=/opt/filecloudsync/filecloudsyncstart.sh
+GenericName=File Synchronization
+Icon=/opt/filecloudsync/filecloudsyncicon.png
+Name=FileCloud Sync
+NoDisplay=false
+Path[]=/opt/filecloudsync
+StartupNotify=true
+Terminal=false
+NoDisplay=false
+TerminalOptions=
+Type=Application
+Categories=Network;System;
+StartupWMClass=filecloud
+
+
+

@@ -1,0 +1,16 @@
+
+# arg 1:  the old package version
+post_remove() {
+
+	echo "Each user of FileCloud Sync will have these directories and files in their home folder: FileCloudSyncData/, syncclientconfig.xml"
+	echo "Additionally, each user of FileCloud Sync will have their own copy of files at the location defined in their syncclientconfig.xml"
+	echo "Recommended steps are to: grep -irA 2 'syncfolderlocation' /home/*/syncclientconfig.xml"
+	echo "Then remove the synced files at those locations. Then remove the directories and files mentioned above."
+	echo "See output that follows: "
+
+  grep -irA 2 'syncfolderlocation' /home/*/syncclientconfig.xml
+
+	cat /home/*/syncclientconfig.xml
+  tree -a /home/*/FileCloudSyncData/
+}
+

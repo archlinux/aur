@@ -1,0 +1,21 @@
+pkgbase = filecloudsync
+	pkgdesc = FileCloud Sync for Linux: targeted for Ubuntu (12.04 and higher). Uses GTK2.
+	pkgver = 20.3.0.5156
+	pkgrel = 3
+	url = https://www.getfilecloud.com/additional-downloads
+	install = filecloudsync.install
+	arch = x86_64
+	license = proprietary
+	depends = libdbusmenu-gtk2
+	depends = libpng12
+	depends = openssl-1.0
+	depends = wxgtk2
+	source_x86_64 = filecloudsync_20.3.0.5156_linux_amd64.zip::http://patch.codelathe.com/tonido/live/installer/x86-linux/filecloudsync_linux_amd64.zip
+	source_x86_64 = FileCloud.desktop
+	source_x86_64 = LICENSE
+	sha256sums_x86_64 = be5d442970064413122fbfe3ef01169da22fabfbd35d0114ccaae1d9b2963a43
+	sha256sums_x86_64 = 90db80ec4ca61283e5ed09a300df55a3aa87be7b7fbf53a6ee0be8d71cfa8d75
+	sha256sums_x86_64 = a397573d54734349929b3572875577073c3aeab6d9e4d6dbae4400a6954a61ed
+
+pkgname = filecloudsync
+
