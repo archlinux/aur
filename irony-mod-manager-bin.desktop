@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Irony Mod Mananger
+Comment=A mod manager and launcher for paradox interactive games
+Exec=/usr/bin/irony-mod-manager-bin %U
+Icon=irony-mod-manager
+Terminal=false
+Type=Application
+Categories=Network;FileTransfer;Game;
+ 

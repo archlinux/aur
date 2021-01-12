@@ -1,0 +1,28 @@
+pkgbase = irony-mod-manager-bin
+	pkgdesc = A mod manager and launcher for paradox interactive games
+	pkgver = 1.10.65
+	pkgrel = 1
+	url = https://github.com/bcssov/IronyModManager
+	arch = x86_64
+	license = MIT
+	depends = fontconfig
+	depends = bash
+	depends = zlib
+	depends = krb5
+	depends = lttng-ust
+	noextract = irony-mod-manager-bin-1.10.65.zip
+	source = irony-mod-manager-bin-1.10.65.zip::https://github.com/bcssov/IronyModManager/releases/download/v1.10.65/linux-x64.zip
+	source = irony-mod-manager-bin.png::https://raw.githubusercontent.com/bcssov/IronyModManager/v1.10.65/src/IronyModManager/Assets/logo.png
+	source = irony-mod-manager-bin.desktop
+	source = irony-mod-manager-bin.sh
+	source = irony-mod-manager-bin.README.md
+	source = fixed-jsons.diff
+	md5sums = bda33c8e0a4cd6aaf09edc2d4b30d6bf
+	md5sums = 190d6d8e852bbe000af5dac87a5b921c
+	md5sums = 937b6e3a2add4fa832d13d3af7737308
+	md5sums = 020c05854432b6e877de520a967fccee
+	md5sums = 40e27fea8c512d1b6d10ad3bb794eb2e
+	md5sums = 953d00c6442dec40d998f97dfd53ffe4
+
+pkgname = irony-mod-manager-bin
+
