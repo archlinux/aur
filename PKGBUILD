@@ -1,7 +1,8 @@
-# Maintainer Chris Werner Rau <aur@cwrau.io>
+# Maintainer: Chris Werner Rau <aur@cwrau.io>
+# Maintainer: flaviofearn <flavioislima@gmail.com>
 
 pkgname=heroic-games-launcher-bin
-_pkgver=v1.0.1
+_pkgver=v1.0.2
 pkgver=${_pkgver#v}
 pkgrel=1
 pkgdesc="HGL, a Native alternative Linux Launcher for Epic Games"
@@ -13,7 +14,7 @@ depends=(fuse2)
 _filename=heroic-${pkgver}.pacman
 source=("$url/releases/download/${_pkgver}/${_filename}")
 noextract=("${_filename}")
-md5sums=('6b5789d399e5a1c5faf8fca64051593d')
+md5sums=('63db57b0153112d1c8e53ebad9796104')
 options=(!strip)
 
 package() {
