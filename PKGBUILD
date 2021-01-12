@@ -4,14 +4,14 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=webkit2gtk-unstable
-pkgver=2.30.0
+pkgver=2.31.1
 pkgrel=1
 pkgdesc="GTK Web content engine library"
 arch=(x86_64)
 url="https://webkitgtk.org/"
 license=(custom)
-depends=(libxt libxslt enchant gst-plugins-base-libs libsecret libwebp openjpeg2
-         harfbuzz-icu gtk3 libnotify hyphen woff2 libwpe wpebackend-fdo
+depends=(libxt libxslt enchant gst-plugins-base-libs libmanette libsecret libwebp
+         openjpeg2 harfbuzz-icu gtk3 libnotify hyphen woff2 libwpe wpebackend-fdo
          bubblewrap xdg-dbus-proxy)
 makedepends=(gperf gobject-introspection ruby gtk-doc cmake python geoclue ninja)
 optdepends=('geoclue: Geolocation support'
@@ -19,7 +19,7 @@ optdepends=('geoclue: Geolocation support'
             'gst-plugins-good: media decoding'
             'gst-libav: nonfree media decoding')
 source=(https://webkitgtk.org/releases/webkitgtk-${pkgver}.tar.xz{,.asc})
-sha256sums=('caf3dbf2d2383072614e34281f2fffb6331faf92f4ecf215f6f6a5a57f755d11'
+sha256sums=('6b1bb3e0efcfcb6e4a8e18b6a5f1cac27cda203d46a7dfbb0f150784a47e908f'
             'SKIP')
 validpgpkeys=('D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3'
               '5AA3BC334FD7E3369E7C77B291C559DBE4C9123B')
