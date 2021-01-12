@@ -1,7 +1,7 @@
 pkgbase = sipvicious
 	pkgdesc = Set of security tools that can be used to audit SIP based VoIP systems
 	pkgver = 0.3.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/EnableSecurity/sipvicious
 	changelog = sipvicious.changelog
 	arch = any
