@@ -3,8 +3,9 @@ _target='compass'
 _edition=''
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='1.24.0.r3346.g40bff9a4'
+pkgver='r3378.g2deb992e'
 pkgrel='1'
+epoch='1'
 pkgdesc='The official GUI for MongoDB - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
@@ -19,7 +20,7 @@ source=(
 	'hadron-build.diff'
 )
 sha256sums=('SKIP'
-            '6adbd892ef2603c556e50b8f300fff87b5481dcec1b3ae741be0fbd250ad4c93')
+            '559564c32e2b499d09b9c5b3badcaf64c88d89786d4542bb11bb36a26b5ca657')
 
 _sourcedirectory="$pkgname"
 _homedirectory="$pkgname-home"
@@ -28,10 +29,8 @@ prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 
 	# Replace version in package.json
-	_origversion="$(sed -nE 's|.*"version": "(.*)".*|\1|p' 'package.json')"
-	_compassversion="$(echo "$_origversion" | cut -d '.' -f 1-2).$(git rev-list --count HEAD)"
-	_aurversion="$(echo "$_origversion" | cut -d '-' -f 1).r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
-	sed -E -i 's|"version": ".*",|"version": "'"$_compassversion"'",\n"_aurversion": "'"$_aurversion"'",|' 'package.json'
+	_compassversion="99.99.$(git rev-list --count HEAD)"
+	sed -E -i 's|"version": ".*",|"version": "'"$_compassversion"'",|' 'package.json'
 
 	# Loosen node version restriction
 	sed -E -i 's|("node": ").*"|\1'"$(node -v | sed 's/^v//')"'"|' 'package.json'
@@ -48,7 +47,7 @@ prepare() {
 
 pkgver() {
 	cd "$srcdir/$_sourcedirectory/"
-	sed -nE 's|.*"_aurversion": "(.*)".*|\1|p' 'package.json'
+	printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
