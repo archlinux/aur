@@ -6,7 +6,7 @@
 
 pkgname=vlang-git
 pkgver=0.2.r418.g33976246c
-pkgrel=3
+pkgrel=4
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software'
 arch=('x86_64')
 url='https://vlang.io'
@@ -18,12 +18,19 @@ optdepends=('glfw: Needed for graphics support'
       'openssl: Needed for http support')
 provides=('vlang')
 conflicts=('v' 'vlang' 'vlang-bin')
-source=('vlang::git+https://github.com/vlang/v')
-sha256sums=('SKIP')
+source=('vlang::git+https://github.com/vlang/v'
+        'no-compile.patch')
+sha256sums=('SKIP'
+            '66278f03a6edd2496b2910f22b70dcf1e4534e892c1ce9fef670bd5401d4c969')
 
 pkgver() {
   cd "${srcdir}/vlang"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${srcdir}/vlang"
+  patch -Np1 -i ../no-compile.patch
 }
 
 build() {
@@ -32,6 +39,10 @@ build() {
   # -O2 actually breaks `./v self` (resulting in "cgen error:"), so we empty
   # CFLAGS and LDFLAGS to ensure successful compilation.
   CFLAGS="" LDFLAGS="" prod=1 make
+
+  # vpm and vdoc fail to compile with "unsupported linker option" when LDFLAGS
+  # is set
+  LDFLAGS="" ./v build-tools
 }
 
 package() {
@@ -40,7 +51,6 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm755 v "$pkgdir/usr/lib/vlang"
   cp -a cmd "$pkgdir/usr/lib/vlang/"
-  chmod -R 777 "$pkgdir/usr/lib/vlang/cmd"
   cp -a examples "$pkgdir/usr/share/vlang/"
   cp -a thirdparty "$pkgdir/usr/lib/vlang/"
   cp -a vlib "$pkgdir/usr/lib/vlang/"

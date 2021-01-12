@@ -1,7 +1,7 @@
 pkgbase = vlang-git
 	pkgdesc = Simple, fast, safe, compiled language for developing maintainable software
 	pkgver = 0.2.r418.g33976246c
-	pkgrel = 3
+	pkgrel = 4
 	url = https://vlang.io
 	arch = x86_64
 	license = MIT
@@ -15,7 +15,9 @@ pkgbase = vlang-git
 	conflicts = vlang
 	conflicts = vlang-bin
 	source = vlang::git+https://github.com/vlang/v
+	source = no-compile.patch
 	sha256sums = SKIP
+	sha256sums = 66278f03a6edd2496b2910f22b70dcf1e4534e892c1ce9fef670bd5401d4c969
 
 pkgname = vlang-git
 

@@ -1,0 +1,11 @@
+diff --color --unified --recursive --text a/vlib/v/util/util.v b/vlib/v/util/util.v
+--- a/vlib/v/util/util.v	2021-01-11 21:04:32.054605303 -0900
++++ b/vlib/v/util/util.v	2021-01-11 22:17:37.324885569 -0900
+@@ -223,6 +223,7 @@
+ 			should_compile = false
+ 		}
+ 	}
++	should_compile = false
+ 	return should_compile
+ }
+ 
