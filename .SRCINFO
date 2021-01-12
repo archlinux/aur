@@ -1,6 +1,6 @@
 pkgbase = md2pdf
 	pkgdesc = A Python Markdown to PDF Converter
-	pkgver = v0.0.3.r0.gac9bce4
+	pkgver = v0.0.4.r0.g4ee08fd
 	pkgrel = 1
 	url = https://github.com/walwe/md2pdf
 	arch = any
