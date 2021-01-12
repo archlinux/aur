@@ -18,7 +18,7 @@ source=("git+https://github.com/astrand/$_pkgname")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
+  cd ${srcdir}/${_pkgname}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
