@@ -2,7 +2,7 @@ post_install() {
   echo 'Attention:'
   echo '  Latte Dock layout for Moe theme is NOT installed.'
   echo '  Please manually download it from'
-  echo '  https://www.opencode.net/jomada/moe-theme/raw/master/Latte%20Layout/Moe.layout.latte'
+  echo '  https://gitlab.com/jomada/moe-theme/-/raw/master/latte-layout/Moe.layout.latte'
   echo '  and import it by right-clicking your latte-dock and navigate to Layouts -> Manage Layouts...'
 }
 

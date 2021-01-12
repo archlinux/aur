@@ -1,18 +1,14 @@
 pkgbase = moe-kde-git
 	pkgdesc = A Light theme, with blur transparencies and red tones with gradients for KDE
-	pkgver = r91.29c375c
+	pkgver = r11.b58cecf
 	pkgrel = 1
-	url = https://www.opencode.net/jomada/moe-theme
+	url = https://gitlab.com/jomada/moe-theme
 	install = moe-kde-git.install
 	arch = any
 	license = GPL3
 	makedepends = git
 	optdepends = plasma-desktop: for a plasma desktop theme
 	optdepends = kvantum-qt5: for a Kvantum theme
-	optdepends = mcmojave-circle-icon-theme-git: Default icon theme
-	optdepends = tencent-icon-theme-git: Another excellent icon theme
-	optdepends = sierrabreeze-kwin-decoration-git: KWin decoration
-	optdepends = sierrabreeze-jomada-kwin-decoration: Default KWin decoration
 	optdepends = latte-dock-git: for a Latte dock layout
 	optdepends = plasma5-applets-virtual-desktop-bar-git: for Latte dock
 	optdepends = plasma5-applets-latte-sidebar-button: for Latte dock
@@ -22,10 +18,8 @@ pkgbase = moe-kde-git
 	optdepends = plasma5-applets-betterinlineclock: Better inline (Chili) Clock on Latte dock
 	provides = moe-kde
 	conflicts = moe-kde
-	source = git+https://www.opencode.net/jomada/moe-theme.git
-	source = set_kdec_jomada.patch
+	source = git+https://gitlab.com/jomada/moe-theme.git
 	sha256sums = SKIP
-	sha256sums = 29bc08871a9dc8288a231153f4fb674bf9baa9fb9e8af0371fdd82358767395a
 
 pkgname = moe-kde-git
 
