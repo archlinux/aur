@@ -1,14 +1,14 @@
 pkgbase = persway
 	pkgdesc = Small Sway IPC Daemon
-	pkgver = 0.3.5
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/johnae/persway
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = persway-0.3.5.tar.gz::https://github.com/johnae/persway/archive/0.3.5.tar.gz
-	sha512sums = 0932ba8bf53939fdb76378e5ddfdef71ac571f3d9b231e8bffc97f830a73f9e32bfcf664ae91addea7f8900f5ad93f9430b44bf87fcc1f007165fab2804603b9
+	source = persway-0.4.0.tar.gz::https://github.com/johnae/persway/archive/0.4.0.tar.gz
+	sha512sums = 0432c7b244dc865dbc697fb0dcd619edaf63797b744f28439fdcaf997cd88b68d35118209a505bf22b4fd630e0b4b1aaf63d2072be414545896650cd59c36277
 
 pkgname = persway
 
