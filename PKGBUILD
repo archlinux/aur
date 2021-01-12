@@ -1,6 +1,6 @@
 # Maintainer: Christian Mauderer <oss@c-mauderer.de>
 pkgname=abeep-git
-pkgrel=1
+pkgrel=2
 pkgver=r20.01c63c8
 pkgdesc='Just like beep, except that it plays via ALSA'
 arch=('x86_64')
@@ -22,5 +22,5 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}"
-	install -D -m0755 abeep ${pkgdir}/usr/local/bin/abeep
+	install -D -m0755 abeep ${pkgdir}/usr/bin/abeep
 }

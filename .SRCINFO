@@ -1,7 +1,7 @@
 pkgbase = abeep-git
 	pkgdesc = Just like beep, except that it plays via ALSA
 	pkgver = r20.01c63c8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Hawk777/abeep
 	arch = x86_64
 	license = GPL2
