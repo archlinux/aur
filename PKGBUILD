@@ -1,9 +1,10 @@
-# Maintainer: Evgeniy Alekseev <arcanis.arch at gmail dot com>
+# Maintainer: Daniel Menelkir <menelkir at itroll dot org>
+# Contributor: Evgeniy Alekseev <arcanis.arch at gmail dot com>
 # Contributor: onestep_ua <onestep at ukr dot net>
 
 pkgname=libg15render
 pkgver=1.2
-pkgrel=5
+pkgrel=6
 pkgdesc="A small graphics library optimised for drawing on an LCD"
 arch=('x86_64')
 url="http://www.g15tools.com/"
