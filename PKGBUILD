@@ -2,8 +2,8 @@
 # Maintainer: Reihar <reihar@necronomicon.fr>
 
 pkgname=stone-soup-ncurses
-_majorver=0.25
-pkgver=${_majorver}.1
+_majorver=0.26
+pkgver=${_majorver}.0
 pkgrel=1
 pkgdesc='Open-source, single-player, role-playing roguelike game of exploration and treasure-hunting (ncurses-only)'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ conflicts=('crawl' 'stone-soup' 'stone-soup-tiles' 'stone-soup-git')
 license=('custom')
 install=stone-soup-ncurses.install
 source=("http://github.com/crawl/crawl/releases/download/${pkgver}/stone_soup-${pkgver}-nodeps.tar.xz")
-sha256sums=('2567be6182056f3051bfe2f3000fb45e4763b02f8e1fc04de6d07873bd7bd894')
+sha256sums=('cb51edc7a2217ad580c50ab1403e2a3b165e38bb63452b7851535c7375e801d5')
 
 prepare() {
   cd "$srcdir"
