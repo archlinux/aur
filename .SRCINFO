@@ -6,7 +6,6 @@ pkgbase = python-rcon
 	arch = any
 	license = GPLv3
 	makedepends = git
-	makedepends = python
 	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-setuptools

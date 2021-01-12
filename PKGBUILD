@@ -10,7 +10,7 @@ url="https://github.com/coNQP/${_pkgbase}"
 license=('GPLv3')
 depends=('python' 'python-setuptools')
 optdepends=('python-gobject: for GUI support')
-makedepends=('git' 'python' 'python-setuptools-scm')
+makedepends=('git' 'python-setuptools-scm')
 source=("${_pkgbase}::git+${url}.git#tag=${pkgver}")
 md5sums=('SKIP')
 
