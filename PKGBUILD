@@ -1,7 +1,7 @@
 # Maintainer: Roey Darwish Dror <roey.ghost@gmail.com>
 
 pkgname=topgrade
-pkgver=6.2.0
+pkgver=6.2.3
 pkgrel=1
 pkgdesc='Invoke the upgrade procedure of multiple package managers'
 arch=('x86_64' 'aarch64' 'armv7')
@@ -9,7 +9,7 @@ url='https://github.com/r-darwish/topgrade'
 license=('GPL3')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ee23ba04962509ac188ec601dd67c0f8a7eae7d6532155c0eb848756264dbc21')
+sha256sums=('bc1c385be2003462af1bc21fd0556bff88498bb510d80c419ead7adffb4239d2')
 
 build() {
   cd "$pkgname-$pkgver"
