@@ -6,72 +6,37 @@
 # http://www.latticesemi.com/latticediamond#linux
 # Then put these files in the build directory and retry.
 
-_version=3.11
-_sp=3
-_build=469.0
-_base=396-4
+_version=3.12
+_base=240-2
 pkgname=lattice-diamond
 pkgdesc='Lattice Diamond design software'
 url=http://www.latticesemi.com/
 license=('custom')
-pkgver=${_version}.${_sp}.${_build}
+pkgver=${_version}
 pkgrel=1
 arch=('x86_64')
 install=$pkgname.install
-source=("http://files.latticesemi.com/Diamond/${_version}/diamond_${_version/"."/"_"}-base_x64-${_base}-${arch}-linux.rpm"
-	"http://files.latticesemi.com/Diamond/${_version}.${_sp}/diamond_${_version/"."/"_"}-sp${_sp}_x64-${_build/"."/"-"}-${arch}-linux.rpm"
+source=("http://files.latticesemi.com/Diamond/${_version}/diamond_${_version/"."/"_"}-base-${_base}-${arch}-linux.rpm"
         "${pkgname}.png"
         "${pkgname}.desktop"
         "${pkgname}.install")
-sha512sums=('d4f0e2ca10c8160b16fec3e1cb0d72538d452719fd6b10e3109c63d91a5862ce392479276ab3865c0a1469fe7145cafa9fc9d7c89b3827417447aa21fff7ec36'
-            'cdff9a06138262eeab862efd2be4fe03514aafcf1864c15df5c5d1484e79a9ddc75e020c1492b99ca17c42e0986427f3dfa3759db8737d17b259ff92353f4b3c'
+sha512sums=('b3cd590ad588c01b0296ed055735c7cc3670c37265d7f377abb57ff225eec8b621380cc56025eec6f0836bfef470da2d2c28ea87d03bf0152fe506c16c02f6b9'
             '772fa260bb1a4ed7c4e328a99b3cd16b625e8880d7731abbe0cd59dbe4d743265e169a26ceba7b619a87c1cb9638a268a5501d3358863171ee808e59b2d3b0ac'
-            '77f42fd480370c3a8bfe47083683c6ae22eaa8cf155426ce6983f183379efc8e70a248e8bb56080ff274046251afacbbba9cf3456c0fbcfd899c16053b13707c'
+            'b5e8b6d6ed282181aff1a0206adf333339c19bd9f2f0d61984864891e971f4923f64d6fc8b657035a080d22c519f26afa30d73933f842b9c66008cecad3f3179'
             '0f6f4463e1b1266a151afaaf6fefb3d69b712fafd6f2fa20beb211a3f9dd4db216be7255cc8fddaac946534754739c13406476fc6474236e7505bcd033a71d81')
 options=('!strip')
 PKGEXT=".pkg.tar.zst"
 
 prepare() {
-	# Extract all the packages from base
-    for package in bin cae_library data embedded_source examples ispfpga synpbase tcltk
+    # Extract all the packages from base
+    for package in bin cae_library data embedded_source examples ispfpga modeltech synpbase tcltk
     do
         echo -en "\tExtracting ${package}..."
-        cd ${srcdir}/usr/local/diamond/${_version}_x64/${package}
+        cd ${srcdir}/usr/local/diamond/${_version}/${package}
         tar -xzf ${package}.tar.gz
         rm ${package}.tar.gz
         echo ' done!'
     done
-
-    # Apply service pack
-    cd ${srcdir}/usr/local/diamond/${_version}_x64
-    for directory in bin cae_library data docs embedded_source examples ispfpga module synpbase tcltk
-    do
-        echo -en "\tPatching ${directory}..."
-        cp -rpf sp/${directory} ./
-        echo ' done!'
-    done
-    rm -rf sp
-
-    # Update version information and installation history
-    echo -en "\tUpdating version information..."
-    sed -i "1iDiamond_x64 Update Build ${pkgver} Update     Date: `LANG=C date`" \
-        ${srcdir}/usr/local/diamond/${_version}_x64/data/installation_history.txt
-
-    for file in data/ispsys.ini ispfpga/data/ispsys.ini
-    do
-        awk -i inplace 'BEGIN { FS = "="; minor = ARGV[2]; ARGV[2] = ""; bnum = ARGV[3]; ARGV[3] = ""; build_rev = ARGV[4]; ARGV[4] = ""};
-        {
-            if ($1 == "MinorVersion")
-                printf "%s=%s\n", $1, minor
-            else if ($1 == "BuildNumber")
-                printf "%s=%s\n", $1, bnum
-            else if ($1 == "ProductType")
-                printf "%s=%s\n", $1, build_rev
-            else
-                printf "%s\n", $0
-        }' ${file} $(echo ${pkgver} | cut -f 2,3 -d'.') ${_build} ${pkgver}
-    done
-    echo ' done!'
 }
 
 package() {

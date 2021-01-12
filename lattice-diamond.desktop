@@ -4,6 +4,6 @@ Version=1.0
 Type=Application
 Icon=lattice-diamond
 Name=Lattice Diamond
-Exec=/usr/local/diamond/3.11_x64/bin/lin64/diamond
+Exec=/usr/local/diamond/3.12/bin/lin64/diamond
 Categories=Development;
 Comment=Lattice Diamond Design Software
