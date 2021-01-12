@@ -1,6 +1,6 @@
 pkgname=tribler
 _pkgname=tribler
-pkgver=7.7.0
+pkgver=7.7.1
 pkgrel=1
 pkgdesc="P2P/Bittorrent/YouTube client"
 arch=("x86_64")
@@ -39,7 +39,7 @@ https://github.com/Tribler/tribler/releases/download/v$pkgver/Tribler-v$pkgver.t
 https://github.com/G-P-L/AUR/raw/master/Tribler/Tribler.desktop
 https://github.com/G-P-L/AUR/raw/master/Tribler/tribler.sh)
 
-sha256sums=('8f44de19e7b06cc0ddff1cae30827fbfc5477539205937f866f81cea5455b6e3'
+sha256sums=('45bb4202a10c2240692f461f274065b7ba7add9f62a3f0f8c131c02c733f9737'
             '6b7ae61a0679a468860e5cc735f30185883088b1668c4193fcc05382cdd5173f'
             'b357229d5decc3ff3d0e5ec25907258b2372a5ee93462950e4283c664cdcc776')
 
