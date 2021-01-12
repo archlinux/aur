@@ -1,0 +1,25 @@
+pkgbase = mozilla-vpn-client
+	pkgdesc = A fast, secure and easy to use VPN. Built by the makers of Firefox.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://vpn.mozilla.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-tools
+	depends = polkit
+	depends = qt5-charts
+	depends = qt5-declarative
+	depends = qt5-graphicaleffects
+	depends = qt5-imageformats
+	depends = qt5-networkauth
+	depends = qt5-quickcontrols2
+	depends = qt5-svg
+	depends = hicolor-icon-theme
+	depends = wireguard-tools
+	depends = WIREGUARD-MODULE
+	source = https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/2.0.1-focal2/mozillavpn_2.0.1.orig.tar.gz
+	sha256sums = c2d60f1a1d28923a2f4f0d5231abc9c72505dabb816364140146318bfc212b21
+
+pkgname = mozilla-vpn-client
+
