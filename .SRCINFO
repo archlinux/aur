@@ -1,0 +1,10 @@
+pkgbase = theme.sh
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/lemnos/theme.sh
+	arch = any
+	source = https://github.com/lemnos/theme.sh/archive/v0.0.1.tar.gz
+	sha256sums = ca9aadc15d9d06bd6a39e36cb9f15954c8cf934364388ea654fd883a6b2c0488
+
+pkgname = theme.sh
+
