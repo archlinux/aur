@@ -1,0 +1,15 @@
+pkgbase = cmdcalc
+	pkgdesc = A simple command-line calculator
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/Benni3D/cmdcalc
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = cmake
+	depends = readline>=8
+	source = https://github.com/Benni3D/cmdcalc/archive/v2.1.tar.gz
+	md5sums = 08716498b365425c36aec8f8982722d5
+
+pkgname = cmdcalc
+
