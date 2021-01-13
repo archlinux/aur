@@ -4,13 +4,13 @@
 # vim: set ts=4 sw=4 et ft=sh:
 
 pkgname=qutebrowser-git
-pkgver=1.14.1.r542.g8757741ac
+pkgver=1.14.1.r634.gf421eae50
 pkgrel=1
 pkgdesc="A keyboard-driven, vim-like browser based on PyQt5"
 arch=("any")
 url="https://www.qutebrowser.org/"
 license=("GPL")
-depends=("python-attrs" "python-jinja" "python-pygments" "python-pypeg2"
+depends=("python-jinja" "python-pygments" "python-pypeg2"
          "python-pyqt5" "python-yaml" "qt5-base" "python-pyqtwebengine"
          "python-setuptools")
 makedepends=("asciidoc" "pygmentize" "git")
