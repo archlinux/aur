@@ -1,0 +1,19 @@
+pkgbase = dmenu-bbaovanc-git
+	pkgdesc = bbaovanc's fork of dmenu (suckless dynamic menu)
+	pkgver = r581.4448fd5
+	pkgrel = 1
+	url = https://github.com/BBaoVanC/dmenu
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = libxext
+	depends = libxft-bgra-git
+	depends = libxinerama
+	depends = sh
+	provides = dmenu
+	conflicts = dmenu
+	source = git+https://github.com/BBaoVanC/dmenu.git
+	sha256sums = SKIP
+
+pkgname = dmenu-bbaovanc-git
+
