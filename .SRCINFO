@@ -17,7 +17,6 @@ pkgbase = eiskaltdcpp
 	makedepends = jsoncpp
 	makedepends = qt5-multimedia
 	makedepends = qt5-tools
-	makedepends = qt5-script
 	makedepends = qt5-xmlpatterns
 	makedepends = gtk3
 	makedepends = libnotify
@@ -46,6 +45,7 @@ pkgname = eiskaltdcpp-qt
 	depends = eiskaltdcpp-core=2.4.0
 	depends = eiskaltdcpp-data=2.4.0
 	depends = aspell
+	depends = qt5-script
 	depends = qt5-multimedia
 	depends = desktop-file-utils
 	optdepends = php: needed for some scripts

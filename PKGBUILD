@@ -32,7 +32,6 @@ makedepends=('cmake'
              'jsoncpp'
              'qt5-multimedia'
              'qt5-tools'
-             'qt5-script'
              'qt5-xmlpatterns'
              'gtk3'
              'libnotify'
@@ -101,6 +100,7 @@ package_eiskaltdcpp-qt() {
   depends=("${pkgbase}-core=${pkgver}"
            "${pkgbase}-data=${pkgver}"
            'aspell'
+           'qt5-script'
            'qt5-multimedia'
            'desktop-file-utils'
            )
