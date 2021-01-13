@@ -1,0 +1,20 @@
+pkgbase = flycast-git
+	pkgdesc = A multi-platform Sega Dreamcast, Naomi and Atomiswave emulator
+	pkgver = r4192.17274132
+	pkgrel = 1
+	url = https://github.com/flyinghead/flycast
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = git
+	depends = libgl
+	depends = libzip
+	depends = xxhash
+	depends = zlib
+	provides = flycast
+	conflicts = flycast
+	source = flycast::git+https://github.com/flyinghead/flycast.git
+	md5sums = SKIP
+
+pkgname = flycast-git
+
