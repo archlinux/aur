@@ -1,0 +1,18 @@
+pkgbase = python-importmagic-git
+	pkgdesc = Automatically manage imports in Python
+	pkgver = r109.a6cde18
+	pkgrel = 1
+	url = https://github.com/alecthomas/importmagic
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	provides = python-importmagic
+	conflicts = python-importmagic
+	source = python-importmagic-git::git+https://github.com/alecthomas/importmagic.git
+	sha256sums = SKIP
+
+pkgname = python-importmagic-git
+
