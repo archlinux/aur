@@ -1,8 +1,8 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 
 pkgname=private-internet-access-vpn
-pkgver=3.3.3
-pkgrel=11
+pkgver=3.4
+pkgrel=1
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
@@ -11,10 +11,9 @@ depends=('python' 'python-setuptools' 'python-docopt' 'openvpn')
 makedepends=('git')
 optdepends=('networkmanager: Enables PIA for Network Manager (needs a openvpn plugin)'
             'connman: Enables PIA for Connman')
-			
-sha256sums=('a64b66dd645b862b08142c6193a95c031a99267d42be6c5db80d29a27b7a953e'
-            'e41de6a5632bdac6b87091d2a71437fe04ee53fece24c6f022872768cc47105d'
-            'f52ac678a0ffca13e4d1f7c13bfd5ba3b1a8d9788f76c7e1c4cbf4edc27e21cb'
+
+sha256sums=('bc38427782aedc90cb65b322cd6f9d74af4e988cc5b3c884e43236ed7a5e4491'
+            '38758f393590c51ec1566aba19beaed7c4fa8bd6f7c323f44ab00b9eb9fd7577'
             '4322a2a4bc3e206c6ab7e1df87a8805032b76c177c1ed9dd3501260ed32ccb30'
             '797dbdb6e3aadc86f97262e26d61cf4847caf85dda4b7a97cac59088cb912b27'
             '246fc4dc3218f56b4c70014df6801b10fc2a573d6545962b7fce05f16908c54e'
@@ -23,47 +22,42 @@ sha256sums=('a64b66dd645b862b08142c6193a95c031a99267d42be6c5db80d29a27b7a953e'
             'SKIP'
             'SKIP')
 
-source=("ip-lport-$pkgver-$pkgrel.zip::https://www.privateinternetaccess.com/openvpn/openvpn-ip-lport.zip"
-        "default-$pkgver-$pkgrel.zip::https://www.privateinternetaccess.com/openvpn/openvpn.zip"
-	    "strong-$pkgver-$pkgrel.zip::https://www.privateinternetaccess.com/openvpn/openvpn-strong.zip"
+source=("default-$pkgver-$pkgrel.zip::https://www.privateinternetaccess.com/openvpn/openvpn.zip"
+	      "strong-$pkgver-$pkgrel.zip::https://www.privateinternetaccess.com/openvpn/openvpn-strong.zip"
         "login-example.conf"
-	    "pia-example.conf"
-	    "restart.conf"
-	    "vpn.sh"
-	    "pia.8.gz"
-	    "git+https://github.com/flamusdiu/python-pia.git#tag=v${pkgver}"
-	    "git+https://github.com/masterkorp/openvpn-update-resolv-conf.git")
-		
-noextract=("ip-lport-$pkgver-$pkgrel.zip"
-           "default-$pkgver-$pkgrel.zip"
+	      "pia-example.conf"
+	      "restart.conf"
+	      "vpn.sh"
+	      "pia.8.gz"
+	      "git+file:///home/user/python-pia#branch=dev"
+	      "git+https://github.com/masterkorp/openvpn-update-resolv-conf.git")
+
+noextract=("default-$pkgver-$pkgrel.zip"
            "strong-$pkgver-$pkgrel.zip"
            "pia.8.gz")
 
 prepare() {
   cd "${srcdir}"
-  
+
   msg2 "Extracting Certifications..."
-  bsdtar -xf ip-lport-$pkgver-$pkgrel.zip "*.pem" "*.crt"
   bsdtar -xf default-$pkgver-$pkgrel.zip "*.pem" "*.crt"
   bsdtar -xf strong-$pkgver-$pkgrel.zip "*.pem" "*.crt"
-  
+
   msg2 "Extracting OpenVPN Configurations..."
   if [ -d "vpn-configs" ]; then
   	rm -rf vpn-configs
   fi
   mkdir "vpn-configs"
   bsdtar -xf default-$pkgver-$pkgrel.zip -C vpn-configs *.ovpn
-  
+
   cd "vpn-configs"
   msg2 "Creating Remote Host List..."
   touch ../vpn-hosts.txt
-  
-  find *.ovpn -print0 | while read -d $'\0' file
-  do
-    host=$(egrep -o "([-A-Za-z]+\.privateinternetaccess\.com)" "$file")
-    printf "%s,%s\n"  "${file/%.ovpn/}" ${host} >> ../vpn-hosts.txt
-  done
-  
+
+  grep -Eo "\s(.*\.privacy\.network)\s" *.ovpn | \
+    sed 's/_/ /g;s/.ovpn//;s/: /,/;s/[^ ]\+/\L\u&/g;s/\b\([a-z]\{2\}\)\s/\U&/gi' \
+    >> ../vpn-hosts.txt
+
   msg2 "Done."
 }
 
@@ -74,7 +68,7 @@ package() {
   install -D -m 755 vpn.sh "${pkgdir}/usr/lib/systemd/system/system-sleep/vpn.sh"
   install -D -m 644 pia.8.gz "${pkgdir}/usr/share/man/man8/pia.8.gz"
 
-  
+
   install -dm755 "${pkgdir}"/etc/{openvpn,private-internet-access}
   install -g network -dm750 "${pkgdir}"/etc/openvpn/client
 
