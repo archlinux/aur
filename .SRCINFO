@@ -1,6 +1,6 @@
 pkgbase = jamm-bin
 	pkgdesc = Jamm is a lightweight video collaboration app for remote teams
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://jamm.app/download
 	arch = x86_64
@@ -22,8 +22,8 @@ pkgbase = jamm-bin
 	depends = libappindicator-gtk3
 	provides = jamm
 	conflicts = jamm
-	source = jamm-0.6.0.pacman::https://jamm.app/api/download/pacman?channel=alpha
-	sha256sums = 9a1038847001565c27ad05df84c262e70c6c9c885568ec26ae8b61d55ee3b5d1
+	source = jamm-0.6.1.pacman::https://jamm.app/api/download/pacman?channel=alpha
+	sha256sums = b7955b2f24d6388cd8a1a275fb4d83b9b15ebef3278dba217403b954f72386bd
 
 pkgname = jamm-bin
 

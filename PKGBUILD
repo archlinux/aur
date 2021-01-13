@@ -4,7 +4,7 @@
 # symlink in post_install, and hence does not remove it properly
 # when it gets removed due to our conflicts entry.
 pkgname=jamm-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Jamm is a lightweight video collaboration app for remote teams"
 arch=("x86_64")
@@ -23,7 +23,7 @@ source=(
   "jamm-${pkgver}.pacman::https://jamm.app/api/download/pacman?channel=alpha"
 )
 sha256sums=(
-  "9a1038847001565c27ad05df84c262e70c6c9c885568ec26ae8b61d55ee3b5d1"
+  "b7955b2f24d6388cd8a1a275fb4d83b9b15ebef3278dba217403b954f72386bd"
 )
 
 prepare() {
