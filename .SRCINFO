@@ -1,0 +1,19 @@
+pkgbase = python-mypy-zope
+	pkgdesc = Plugin for mypy to support zope.interface
+	pkgver = 0.2.8
+	pkgrel = 1
+	url = https://pypi.org/project/mypy-zope/
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-lxml
+	depends = python
+	depends = python-setuptools
+	depends = mypy
+	depends = python-zope-interface
+	depends = python-zope-schema
+	source = https://files.pythonhosted.org/packages/source/m/mypy-zope/mypy-zope-0.2.8.tar.gz
+	sha256sums = 782beeda908878cc47167dec95abd9074f64d5f6dee98fad400966ec07225741
+
+pkgname = python-mypy-zope
+
