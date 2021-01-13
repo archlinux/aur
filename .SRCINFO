@@ -1,7 +1,7 @@
 pkgbase = cmdcalc
 	pkgdesc = A simple command-line calculator
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Benni3D/cmdcalc
 	arch = x86_64
 	arch = i686
