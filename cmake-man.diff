@@ -1,0 +1,11 @@
+diff -u -r libmikmod-3.3.11.1/docs/CMakeLists.txt libmikmod-3.3.11.1-man/docs/CMakeLists.txt
+--- libmikmod-3.3.11.1/docs/CMakeLists.txt	2014-07-10 07:37:00.000000000 +0000
++++ libmikmod-3.3.11.1-man/docs/CMakeLists.txt	2020-01-11 18:54:48.154853499 +0000
+@@ -20,5 +20,7 @@
+   COMMENT "Creating HTML file ${html_out}"
+   VERBATIM)
+ 
++configure_file(libmikmod-config.1.in libmikmod-config.1 @ONLY)
++
+ add_custom_target(info ALL DEPENDS ${info_out} ${html_out})
+ ENDIF(ENABLE_DOC)

@@ -1,0 +1,23 @@
+pkgbase = libmikmod-git
+	pkgdesc = Module player library supporting many formats, including MOD, S3M, IT and XM
+	pkgver = 3.3.11.1
+	pkgrel = 1
+	url = http://mikmod.sourceforge.net
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = alsa-lib
+	makedepends = cmake
+	depends = glibc
+	depends = libpulse
+	depends = sh
+	provides = libmikmod.so
+	provides = libmikmod
+	conflicts = libmikmod
+	source = git://git.code.sf.net/p/mikmod/mikmod.git
+	source = cmake-man.diff
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = libmikmod-git
+
