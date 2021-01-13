@@ -2,8 +2,8 @@
 
 pkgname='python-sgp4'
 _name=${pkgname#python-}
-pkgver='2.13'
-pkgrel=2
+pkgver='2.14'
+pkgrel=1
 pkgdesc="Track earth satellite TLE orbits using up-to-date 2010 version of SGP4"
 url="https://pypi.org/project/sgp4/"
 depends=('python')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('x86_64')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('1e1de8ec0af430174d056a3a53523bac')
+md5sums=('f3774f13db4a9fb428fbd2d6e3a62a65')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
