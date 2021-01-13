@@ -2,7 +2,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ots
-pkgver=8.1.2
+pkgver=8.1.3
 pkgrel=1
 pkgdesc='OpenType fonts sanitiser. Supports TTF, WOFF, WOFF2 and other formats'
 arch=(x86_64 i686)
@@ -10,15 +10,8 @@ url=https://github.com/khaledhosny/ots
 license=(custom)
 depends=(freetype2 libfreetype.so)
 makedepends=(meson ninja gtest)
-source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz"
-        use-system-gtest.patch)
-sha512sums=('f2424a79558001b7b4ba743c15e7429b613b3c5a3a23bec8ef36556dffc8101235f67f2ac7974ecdea50483fe2d97170131aa3814999caf5d1c546e444bec4ec'
-            'a8e06db16a17f0c2851628cc970b828a2c6df786ed553381906e80f286e2651fd56acf3253156041850a1aeedcaeaf20840db738cf96e0e1582176dbdf3300f2')
-
-prepare () {
-	cd "$pkgname-$pkgver"
-	patch -p0 < "$srcdir/use-system-gtest.patch"
-}
+source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
+sha512sums=('1b7945204756b2cc41ef42103e06fbb2942c3938fbade3b642223a8276e2606aea66cc295f185470157ccd9a88c321280032fc0ed0a0e67f9b7d10d97e427afc')
 
 build() {
 	cd "$pkgname-$pkgver"
