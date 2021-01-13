@@ -1,0 +1,17 @@
+pkgbase = borg-backup-gui-git
+	pkgdesc = Borg BackUP GUI can be used by new Borg users to get to their destination very quickly.
+	pkgver = 330.2111867
+	pkgrel = 1
+	url = https://github.com/MTrage/Borg-BackUP-GUI
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = python-llfuse
+	depends = qt5-base
+	optdepends = adwaita-icon-theme
+	source = git+https://github.com/MTrage/Borg-BackUP-GUI.git
+	sha256sums = SKIP
+
+pkgname = borg-backup-gui-git
+
