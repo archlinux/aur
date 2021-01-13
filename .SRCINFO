@@ -9,8 +9,8 @@ pkgbase = python-epics
 	depends = python
 	depends = python-numpy
 	depends = epics-base
-	source = https://github.com/pyepics/pyepics/archive/3.4.1.tar.gz
-	sha256sums = e3b852a98e483b6a6b53af94ab4aa1d3d51ac49434bfae32fcdacae31577e8d0
+	source = python-epics-3.4.1.tar.gz::https://github.com/pyepics/pyepics/archive/3.4.1.tar.gz
+	sha256sums = a995685638c01a9326d3414de9b5471fb7b0bf6b1c60de1efae778c25dedaabf
 
 pkgname = python-epics
 
