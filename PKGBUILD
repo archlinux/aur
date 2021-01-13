@@ -1,6 +1,6 @@
 # Maintainer: thaliarchos <thaliarchos at protonmail dot com>
 pkgname=bookmenu-git
-pkgver=r76.930a68c
+pkgver=r90.fa6b93e
 pkgrel=1
 pkgdesc="Command line interface ebooks browser and downloader for LibGen using the InterPlanetary File System."
 arch=('any')
@@ -17,22 +17,15 @@ options=()
 install=
 source=(
 	'git+https://github.com/kusky3/bookmenu'
-	'use_wget.patch'
 )
 noextract=()
 md5sums=(
 	'SKIP'
-	'7aaba52c2b2f95e730813cefb1b84bd9'
 )
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	cd "$srcdir/${pkgname%-git}"
-	git apply "../use_wget.patch"
 }
 
 package() {
