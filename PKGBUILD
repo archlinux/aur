@@ -1,6 +1,6 @@
 # Maintainer: Deepjyoti <deep.barman30@gmail.com>
 pkgname=ytmdl
-pkgver=2020.11.20.post1
+pkgver=2021.1.14
 pkgrel=0
 pkgdesc="Download songs from YouTube with metadata from sources like Itunes and Gaana"
 arch=("any")
@@ -26,6 +26,8 @@ depends=(
 		"python-simber"
 		"python-pydes"
 		"python-urllib3"
+		"python-rich"
+		"python-musicbrainzngs"
 		)
 makedepends=("git" "python-setuptools")
 optdepends=("tensorflow: Trim Support")
@@ -36,7 +38,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://files.pythonhosted.org/packages/64/2f/dfc2a1ad86993e0385397dabbc7445d52470a26c8496e09f70c79cb4902c/ytmdl-2020.11.20.post1.tar.gz")
+source=("https://files.pythonhosted.org/packages/c7/bd/77596235a4d81e06754b770fadf6e2fc80e78045f36de236bc857b5268a7/ytmdl-2021.1.14.tar.gz")
 noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
@@ -47,12 +49,12 @@ prepare() {
 }
 
 build() {
-	cd "ytmdl-${pkgver}"
+	cd "${pkgname}-${pkgver}"
 	python setup.py build
 }
 
 package() {
-	cd "ytmdl-${pkgver}"
+	cd "${pkgname}-${pkgver}"
 	python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm644 "${pkgdir}/share/bash-completion/completions/ytmdl.bash" \
 	   	"${pkgdir}/usr/share/bash-completion/completions/ytmdl"
