@@ -1,0 +1,16 @@
+pkgbase = libroboint-python
+	pkgdesc = python library for the libroboint package. libroboint is an Open Source version of the fischertechnik ROBO Interface Library for Unix like systems
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = https://gitlab.com/Humpelstilzchen/libroboint
+	arch = x86_64
+	arch = arm
+	license = LGPLv2.1
+	makedepends = cmake
+	depends = libroboint
+	depends = python
+	source = https://gitlab.com/Humpelstilzchen/libroboint/-/archive/0.5.5/libroboint-0.5.5.tar.gz
+	md5sums = b30d38681449840f1174573bcd310ae1
+
+pkgname = libroboint-python
+
