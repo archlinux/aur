@@ -1,7 +1,7 @@
 # Maintainer: Mirko Scholz
 pkgname=qwt5-qt5
-_commit=eeacc4497738de159ca6f352d0c8ada353831b53
-pkgver=5.2.3.1
+_commit=0052f96fdd6d5f021f20a1cfc4d2fcfc605941da
+pkgver=5.2.3.2
 pkgrel=1
 pkgdesc='Qwt library (version 5.2.3) updated to work with Qt5.'
 arch=('x86_64')
@@ -12,8 +12,8 @@ source=(
 "qwt5-qt5-${pkgver}.zip::https://github.com/gbm19/qwt5-qt5/archive/${_commit}.zip"
 "qwtconfig-archlinux.pri"
 )
-sha1sums=('74adb1f1eb56895e7a40bbdcb8b4a205d7e9f16f'
-          '23209de530c9604a0b2fa6df32b6beabe28a9e58')
+sha1sums=('528b8dd247aa314523e8c81314cdd0195fcf51fc'
+          'f78e1dd11f7e5dedf0b62370485688729cb344ad')
 
 prepare() {
 	install -Dm644 "qwtconfig-archlinux.pri" "${srcdir}/qwt5-qt5-${_commit}/qwtconfig.pri"
