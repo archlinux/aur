@@ -1,6 +1,6 @@
 pkgbase = imhex-git
 	pkgdesc = A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM
-	pkgver = 1.4.0.r23.gd7af693
+	pkgver = 1.6.1.r20.g4328a33
 	pkgrel = 1
 	url = https://github.com/WerWolv/ImHex
 	arch = x86_64

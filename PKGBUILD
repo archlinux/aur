@@ -1,7 +1,7 @@
 # Maintainer: Alex Sarum <rum.274.4 at gmail dot com>
 
 pkgname=imhex-git
-pkgver=1.4.0.r23.gd7af693
+pkgver=1.6.1.r20.g4328a33
 pkgrel=1
 pkgdesc="A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM"
 arch=('x86_64')
@@ -29,5 +29,5 @@ build() {
 package() {
   cd "$pkgname"
 
-  install -DTm755 build/ImHex "${pkgdir}/usr/bin/imhex"
+  install -DTm755 build/imhex "${pkgdir}/usr/bin/imhex"
 }
