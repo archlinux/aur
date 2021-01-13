@@ -1,7 +1,7 @@
 pkgbase='python-waller'
 pkgname=('python-waller')
 _module='waller'
-pkgver='0.3.4'
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Python curses utility to cycle between desktop wallpapers"
 url="https://github.com/codeswhite/$_module"
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('d54256b8ca5d1df2241b681c9ce0a1cbf09113fb6cc8b49e26618e021fd8cf7c')
+sha256sums=("2550956360addcfad6c1eb6e47bc648f3e68182d83736a94b2b3ffade397794b")
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
