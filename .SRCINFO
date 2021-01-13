@@ -7,8 +7,9 @@ pkgbase = python-interutils
 	license = MIT
 	depends = python-setuptools
 	depends = python-termcolor
-	source = https://files.pythonhosted.org/packages/source/i/interutils/interutils-0.12.4.tar.gz
-	sha256sums = e6088c1d04093cfe1986478e3576a154bc41f4bd2c081f0c626a8fcc170d5080
+	optdepends = python-pyfiglet: Figlet banner printing
+	source = https://files.pythonhosted.org/packages/source/i/interutils/interutils-0.12.5.tar.gz
+	sha256sums = 6bd2ba7d262cff57976f19ab958d30cc77b59e3ab75bdbc2b100e92634bf374a
 
 pkgname = python-interutils
 
