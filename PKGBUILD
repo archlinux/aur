@@ -2,7 +2,7 @@
 
 pkgname=kora-icon-theme
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SVG icon theme suitable for every desktop environment (dark and light versions, HiDPI support)"
 arch=("any")
 url="https://github.com/bikass/kora"
@@ -16,8 +16,8 @@ optdepends=(
     "breeze-icons: fallback Breeze icon theme for Plasma Desktop"
     "adwaita-icon-theme: fallback Adwaita icon theme for Gnome Desktop")
 install="$pkgname.install"
-source=("https://github.com/bikass/kora/archive/v$pkgver.tar.gz")
-sha256sums=("94f4c568c0f59eafa4a0d8a63ab5675bcb19fd121dda0add145037b83553e16c")
+source=("https://github.com/bikass/kora/archive/v$pkgver.tar.gz" "fix-index.patch::https://github.com/bikass/kora/commit/eddfba54ab7003b2855eb235f9093cf725bf0cb0.patch")
+sha256sums=("94f4c568c0f59eafa4a0d8a63ab5675bcb19fd121dda0add145037b83553e16c" "c28b6ddf749e361b7b8c27ad7bcbe82e5b8b9b649594a9fb4dcdb7f3ab82d63b")
 
 _iconpath=usr/share/icons
 _iconcache=icon-theme.cache
@@ -35,6 +35,9 @@ package() {
     rm -f "kora-light-panel/$_iconcache"
     rm -f "kora-pgrey/$_iconnewcachescript"
     rm -f "kora-pgrey/$_iconcache"
+
+    # Fix index
+    patch -p1 < "$srcdir/fix-index.patch"
 
     install -dm755 "$pkgdir/$_iconpath"
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
