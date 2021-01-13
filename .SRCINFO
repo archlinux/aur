@@ -1,0 +1,25 @@
+pkgbase = hamsket
+	pkgdesc = Free and Open Source app that combines common web apps into one
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/TheGoddessInari/hamsket
+	arch = x86_64
+	license = GPL3
+	makedepends = gendesk
+	makedepends = java-runtime=8
+	makedepends = desktop-file-utils
+	makedepends = ruby
+	makedepends = npm
+	makedepends = sencha-cmd-6
+	depends = electron
+	provides = hamsket
+	conflicts = hamsket-bin
+	conflicts = rambox
+	conflicts = rambox-bin
+	conflicts = rambox-os
+	conflicts = ramboxpro-bin
+	source = https://github.com/TheGoddessInari/hamsket/archive/0.6.2.tar.gz
+	md5sums = ad52b4fdf1a7d4e4f2d401a0bff00f91
+
+pkgname = hamsket
+
