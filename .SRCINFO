@@ -1,6 +1,6 @@
 pkgbase = mucommander
 	pkgdesc = A lightweight, cross-platform file manager with a dual-pane interface written in Java
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = http://www.mucommander.com
 	install = mucommander.install
@@ -8,10 +8,10 @@ pkgbase = mucommander
 	license = GPL
 	depends = java-runtime
 	depends = bash
-	source = https://github.com/mucommander/mucommander/releases/download/0.9.5-1/mucommander-0.9.5-1.tar.gz
+	source = https://github.com/mucommander/mucommander/releases/download/0.9.6-1/mucommander-0.9.6-1.tar.gz
 	source = mucommander.png
 	source = mucommander.desktop
-	sha256sums = 0fd53ea3cf7f1a302a8cb9a889779454185006e9c66d7142b6058d236980c1c5
+	sha256sums = 0ef7893c1514b1f36c846442803d57308df57ccfdf89dbfd5f44ee7f9f426704
 	sha256sums = 2595fd4f7299750b6762a9d978feebc1e8b375a54b722391e86c972963384f55
 	sha256sums = 96672efdbb19448736c0038a55ed82d1634380499f03293bd5900194301a482f
 

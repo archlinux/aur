@@ -4,7 +4,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=mucommander
-pkgver=0.9.5
+pkgver=0.9.6
 _pkgver=${pkgver}-1
 __pkgver=${_pkgver}
 pkgrel=1
@@ -16,7 +16,7 @@ license=('GPL')
 install=${pkgname}.install
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/${_pkgver}/${pkgname}-${_pkgver}.tar.gz"
         "${pkgname}.png" "${pkgname}.desktop")
-sha256sums=('0fd53ea3cf7f1a302a8cb9a889779454185006e9c66d7142b6058d236980c1c5'
+sha256sums=('0ef7893c1514b1f36c846442803d57308df57ccfdf89dbfd5f44ee7f9f426704'
             '2595fd4f7299750b6762a9d978feebc1e8b375a54b722391e86c972963384f55'
             '96672efdbb19448736c0038a55ed82d1634380499f03293bd5900194301a482f')
 
