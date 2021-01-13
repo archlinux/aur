@@ -2,8 +2,9 @@
 
 pkgname='boxcryptor'
 pkgfilename="Boxcryptor_Portable_Linux64"
-pkgver='2.31.296'
-pkgrel='1'
+#pkgver='2.31.296'
+pkgver='2.33.304'
+pkgrel='2'
 pkgdesc="Boxcryptor Portable Client for Linux"
 url="https://www.boxcryptor.com/l/download-linux-portable"
 license=('custom')
@@ -16,7 +17,7 @@ source=("${url}"
     "boxcryptor.desktop"
     "boxcryptor.svg"
     "boxcryptor.sh")
-sha256sums=('eb590c598f3918c084c5816a989dfe85f04566c45e0d015fefd16e788d9abcdc'
+sha256sums=('91a27c5e38ef31cec975561095f7532dc9ff44f44cd0d6ec853a2eb8f5bf8527'
             '4bb5c3f0628ba30c8ffb3461dd1619799bb27db298ea682db96e787dc7705052'
             '771c399be357bedc1dc29c804063c30d2036e7d82cf4efeb7d8a3d32ebbbd0d6'
             '83f932018e189cd5250ead65de223f98c90bfafc99ea3e2de440c5370407e9ee')
