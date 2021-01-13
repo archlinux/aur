@@ -1,0 +1,14 @@
+pkgbase = outline-manager-appimage
+	pkgdesc = Creates and manages Outline servers, powered by Shadowsocks.
+	pkgver = 1.5.3_rc1
+	pkgrel = 1
+	url = https://github.com/Jigsaw-Code/outline-server
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	provides = outline-manager
+	source = https://github.com/Jigsaw-Code/outline-server/releases/download/server-v1.5.3-rc1/Outline-Manager.AppImage
+	b2sums = da687d42993cab1ed6848da703eafe31143989a3751e588e37aa3b349987900c303df40e08589e10c87667a548c4d510b4307e7e6f43a29eec0b3c1333c94062
+
+pkgname = outline-manager-appimage
+
