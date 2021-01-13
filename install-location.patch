@@ -1,0 +1,26 @@
+diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
+index 878e901..8e060b7 100644
+--- a/lib/CMakeLists.txt
++++ b/lib/CMakeLists.txt
+@@ -4,8 +4,8 @@ FIND_PACKAGE(Threads REQUIRED)
+ FIND_PACKAGE(LIBUSB REQUIRED)
+ 
+ add_library(roboint SHARED libroboint.c crc.c)
+-install(TARGETS roboint DESTINATION lib)
+-install(FILES roboint.h DESTINATION include/)
++install(TARGETS roboint DESTINATION usr/lib)
++install(FILES roboint.h DESTINATION usr/include/)
+ TARGET_LINK_LIBRARIES(roboint ${CMAKE_THREAD_LIBS_INIT} ${LIBUSB_LIBRARIES})
+ INCLUDE_DIRECTORIES(${LIBUSB_INCLUDE_DIR})
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 8b3f3d5..337aacc 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -4,4 +4,4 @@ add_executable(ftuploader ftuploader.c)
+ 
+ target_link_libraries(ftuploader roboint)
+ 
+-INSTALL_TARGETS(/bin ftuploader)
++INSTALL_TARGETS(/usr/bin ftuploader)
+
