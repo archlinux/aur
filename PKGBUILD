@@ -2,7 +2,7 @@
 
 gitname=htop
 pkgname=${gitname}-git
-pkgver=3.0.0.4.g2d14269
+pkgver=3.0.5.19.gceee96d
 pkgrel=1
 epoch=1
 pkgdesc="Interactive text-mode process viewer"
@@ -35,8 +35,7 @@ prepare() {
         --sysconfdir=/etc \
         --enable-unicode \
         --enable-openvz \
-        --enable-vserver \
-        --enable-cgroup
+        --enable-vserver
 }
 
 build() {
