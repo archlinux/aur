@@ -1,4 +1,5 @@
 pkgname=theme.sh
+provides=("${pkgname}")
 pkgver=0.0.1
 pkgrel=1
 arch=('any')
