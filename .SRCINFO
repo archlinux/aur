@@ -1,6 +1,6 @@
 pkgbase = kora-icon-theme
 	pkgdesc = SVG icon theme suitable for every desktop environment (dark and light versions, HiDPI support)
-	pkgver = 1.3.4
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/bikass/kora
 	install = kora-icon-theme.install
@@ -9,12 +9,12 @@ pkgbase = kora-icon-theme
 	depends = gtk-update-icon-cache
 	optdepends = hicolor-icon-theme: fallback Freedesktop.org Hicolor icon theme
 	optdepends = breeze-icons: fallback Breeze icon theme for Plasma Desktop
-	optdepends = gnome-icon-theme: fallback Gnome icon theme for Gnome Desktop
+	optdepends = adwaita-icon-theme: fallback Adwaita icon theme for Gnome Desktop
 	provides = kora-icon-theme
 	conflicts = kora-icon-theme
 	conflicts = korla-icon-theme
 	replaces = korla-icon-theme
-	source = https://github.com/bikass/kora/archive/v1.3.4.tar.gz
-	sha256sums = 1ad156b2515a131e73342f85fa3e752765c5e7ca693e0d529433d6821c7ab4fd
+	source = https://github.com/bikass/kora/archive/v1.4.0.tar.gz
+	sha256sums = 94f4c568c0f59eafa4a0d8a63ab5675bcb19fd121dda0add145037b83553e16c
 
 pkgname = kora-icon-theme
