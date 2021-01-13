@@ -4,7 +4,7 @@ pkgname=private-internet-access-vpn
 pkgver=3.4
 pkgrel=1
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
-arch=('any')
+arch=("any")
 url="https://www.privateinternetaccess.com/"
 license=('GPL')
 depends=('python' 'python-setuptools' 'python-docopt' 'openvpn')
@@ -45,7 +45,7 @@ prepare() {
 
   msg2 "Extracting OpenVPN Configurations..."
   if [ -d "vpn-configs" ]; then
-  	rm -rf vpn-configs
+      rm -rf vpn-configs
   fi
   mkdir "vpn-configs"
   bsdtar -xf default-$pkgver-$pkgrel.zip -C vpn-configs *.ovpn
