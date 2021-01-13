@@ -1,12 +1,13 @@
 # Maintainer: DuckSoft <realducksoft at gmail dot com>
 pkgname=outline-manager-appimage
 pkgver=1.5.3_rc1
-pkgrel=1
+pkgrel=2
 pkgdesc="Creates and manages Outline servers, powered by Shadowsocks."
 arch=('x86_64')
 url="https://github.com/Jigsaw-Code/outline-server"
 license=('Apache')
 makedepends=('git')
+options=(!strip)
 provides=('outline-manager')
 conficts=('outline-manager')
 source=("https://github.com/Jigsaw-Code/outline-server/releases/download/server-v${pkgver/_/-}/Outline-Manager.AppImage")
