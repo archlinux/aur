@@ -1,18 +1,17 @@
 pkgbase = python-lineprofiler
 	pkgdesc = Line-by-line profiler
-	pkgver = 2.1.2
-	pkgrel = 3
+	pkgver = 3.0.2
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/line_profiler
-	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = cython
 	depends = python-setuptools
 	depends = ipython
-	source = https://files.pythonhosted.org/packages/14/fc/ecf4e238bb601ff829068e5a72cd1bd67b0ee0ae379db172eb6a0779c6b6/line_profiler-2.1.2.tar.gz
-	source = line_profiler.patch
-	md5sums = 141cb6996f0e3188ca05bfddcb403e36
-	md5sums = fd05a4246f3bb741bbf9b51ca3e14d34
+	source = line_profiler-3.0.2.tar.gz::https://github.com/pyutils/line_profiler/archive/3.0.2.tar.gz
+	source = cython.patch
+	sha256sums = 8eb9683b339083220adec19f391006435efb47ef63fc1200b965a88b48068f26
+	sha256sums = e275bc6da60b49fa778d53a91acb8b9a866f80cf7dc2ff47b42c78e661b256c7
 
 pkgname = python-lineprofiler
 

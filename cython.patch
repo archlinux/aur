@@ -1,0 +1,37 @@
+--- a/setup.py	2020-01-12 15:51:13.000000000 -0500
++++ b/setup.py	2021-01-12 22:54:31.181954242 -0500
+@@ -150,7 +150,7 @@
+     return mb_tag
+ 
+ 
+-USE_SKBUILD = True
++USE_SKBUILD = False
+ if USE_SKBUILD:
+ 
+     if '--universal' in sys.argv:
+@@ -181,6 +181,7 @@
+     try:
+         from Cython.Distutils import build_ext
++        from Cython.Build import cythonize
+         cmdclass = dict(build_ext=build_ext)
+         line_profiler_source = '_line_profiler.pyx'
+     except ImportError:
+         cmdclass = {}
+@@ -196,12 +197,13 @@
+     setupkw = dict(
+         cmdclass=cmdclass,
+         ext_modules=[
+-            Extension('_line_profiler',
+-                      sources=[line_profiler_source, 'timers.c', 'unset_trace.c'],
+-                      depends=['python25.pxd']),
++            Extension('line_profiler._line_profiler',
++                      sources=["line_profiler/_line_profiler.pyx", 'line_profiler/timers.c', 'line_profiler/unset_trace.c'],
++                      depends=['python25.pxd'],
++                      extra_compile_args=["-DHAVE_GETTIMEOFDAY"]),
+         ],
+     )
+-
++setupkw["ext_modules"] = cythonize(setupkw["ext_modules"])
+ long_description = """\
+ line_profiler will profile the time individual lines of code take to execute.
+ The profiler is implemented in C via Cython in order to reduce the overhead of
