@@ -1,0 +1,17 @@
+pkgbase = nerd-fonts-overpass
+	pkgdesc = All variants of Nerd-Font patched Overpass
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/ryanoasis/nerd-fonts
+	arch = any
+	groups = nerd-fonts
+	license = MIT
+	provides = nerd-fonts-overpass
+	conflicts = nerd-fonts-complete
+	conflicts = nerd-fonts-git
+	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Overpass.zip
+	source = https://github.com/ryanoasis/nerd-fonts/raw/v2.1.0/LICENSE
+	sha1sums = 6229a1a6eca9c2ecd7a0e363dac379b79ac6ecc1
+	sha1sums = 92fdad3c8babc0473da5f03e41fb1151417ab386
+
+pkgname = nerd-fonts-overpass
