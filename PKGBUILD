@@ -2,12 +2,13 @@
 pkgname=python-aws-lambda-builders
 _name=${pkgname#python-}
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library to compile, build & package AWS Lambda functions for several runtimes & framework'
 arch=('any')
 url="https://github.com/aws/aws-lambda-builders"
 license=('Apache')
 replaces=('python-aws_lambda_builders')
+conflicts=('python-aws_lambda_builders')
 depends=('python-six' 'python-wheel')
 makedepends=('python-setuptools')
 options=(!emptydirs)

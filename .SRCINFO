@@ -1,13 +1,14 @@
 pkgbase = python-aws-lambda-builders
 	pkgdesc = Python library to compile, build & package AWS Lambda functions for several runtimes & framework
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aws/aws-lambda-builders
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	depends = python-six
 	depends = python-wheel
+	conflicts = python-aws_lambda_builders
 	replaces = python-aws_lambda_builders
 	options = !emptydirs
 	source = https://github.com/aws/aws-lambda-builders/archive/v1.2.0/aws-lambda-builders-1.2.0.tar.gz
