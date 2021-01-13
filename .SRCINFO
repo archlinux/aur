@@ -1,6 +1,6 @@
 pkgbase = beets-git
 	pkgdesc = Flexible music library manager and tagger - git version
-	pkgver = 1.4.9.r1031.gcbc045f1
+	pkgver = 1.4.9.r1031.ee0467e
 	pkgrel = 1
 	url = http://beets.io/
 	arch = any
