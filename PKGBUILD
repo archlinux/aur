@@ -3,7 +3,7 @@
 
 pkgbase=linux-amd-staging-drm-next-git
 pkgdesc='Linux kernel with AMDGPU WIP patches'
-pkgver=5.10.952174.d3b9ec1a13c9
+pkgver=5.10.952431.2b8ea6adc224
 _product="${pkgbase%-git}"
 _branch="${_product#linux-}"
 pkgrel=1
@@ -11,19 +11,19 @@ arch=(x86_64)
 url='https://gitlab.freedesktop.org/drm/amd'
 license=(GPL2)
 makedepends=(
-  bc kmod libelf pahole
+  bc kmod libelf pahole cpio perl
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
 options=('!strip')
 _srcname=linux-agd5f
 source=(
-  "$_srcname::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
+  "$_srcname::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=${_branch}"
   config         # the main kernel config file
   sphinx-workaround.patch
 )
 sha256sums=('SKIP'
-            'cf69b81648a07ebedb274ed26bed3c4d2ff75c6665ecaca0a724b148c70c9c7c'
+            'd3e7adf5fcfc632887058ca84ca7b849a824dda5a03de854c8d3480ef0124ad1'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c')
 
 pkgver() {
@@ -196,10 +196,10 @@ _package-docs() {
 
 pkgname=("${_product}-git" "${_product}-headers-git" "${_product}-docs-git")
 for _package in "${pkgname[@]}"; do
-	local _package_no_git="${_package%-git}"
-	local _package_stripped="${_package_no_git#$_product}"
-	eval "package_${_package}() {
-	$(declare -f "_package${_package_stripped}")
-	_package${_package_stripped}
+  local _package_no_git="${_package%-git}"
+  local _package_stripped="${_package_no_git#$_product}"
+  eval "package_${_package}() {
+  $(declare -f "_package${_package_stripped}")
+  _package${_package_stripped}
 }"
 done
