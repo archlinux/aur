@@ -1,7 +1,7 @@
 # Maintainer: xhyinne <xhyi AT gmx DOT us>
 
 pkgname=niacop-git
-pkgver=0.7.2.r0.g1337e77
+pkgver=0.7.2.r2.g997ad85
 pkgrel=1
 pkgdesc="Cross platform self-tracker tool"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'dotnet-sdk>=5.0.1.sdk101')
 optdepends=()
 source=("$pkgname::git+https://github.com/xdrie/niacop.git#branch=master")
 sha256sums=('SKIP')
-options=(!strip)
+options=(!strip staticlibs)
 
 _basename=${pkgname%-git}
 
