@@ -14,7 +14,8 @@ makedepends=(
     'desktop-file-utils'
     'ruby'
     'npm'
-    'sencha-cmd-6')
+    'sencha-cmd-6'
+    'git')
 provides=('hamsket')
 conflicts=('hamsket-bin' 'rambox' 'rambox-bin' 'rambox-os' 'ramboxpro-bin')
 source=("${url}/archive/${pkgver}.tar.gz")

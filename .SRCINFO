@@ -11,6 +11,7 @@ pkgbase = hamsket
 	makedepends = ruby
 	makedepends = npm
 	makedepends = sencha-cmd-6
+	makedepends = git
 	depends = electron
 	provides = hamsket
 	conflicts = hamsket-bin
