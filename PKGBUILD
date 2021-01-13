@@ -1,6 +1,7 @@
 pkgname=tmpsms
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
+depends=('fzf' 'jq' 'curl')
 arch=('any')
 url="https://github.com/sdushantha/tmpsms"
 source=("$url/archive/v$pkgver.tar.gz")
