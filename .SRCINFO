@@ -1,7 +1,7 @@
 pkgbase = klee
 	pkgdesc = Symbolic virtual machine built on top of the LLVM compiler infrastructure
 	pkgver = 2.2
-	pkgrel = 9
+	pkgrel = 10
 	url = https://klee.github.io/
 	arch = x86_64
 	license = custom:UIUC
@@ -19,7 +19,7 @@ pkgbase = klee
 	depends = llvm-libs>=3.8
 	depends = klee-uclibc
 	depends = sqlite
-	provides = klee=2.1
+	provides = klee=2.2
 	source = git+https://github.com/klee/klee.git#commit=5719d2803e93252e5d4613f43afc7db0d72332f1
 	source = git+https://github.com/google/googletest.git#tag=release-1.10.0
 	md5sums = SKIP

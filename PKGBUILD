@@ -2,7 +2,7 @@
 # Contributor: r7v
 pkgname=klee
 pkgver=2.2
-pkgrel=9
+pkgrel=10
 epoch=
 pkgdesc="Symbolic virtual machine built on top of the LLVM compiler infrastructure"
 arch=('x86_64')
@@ -24,7 +24,7 @@ makedepends=('gperftools'
              'git')
 checkdepends=('python-tabulate')
 optdepends=()
-provides=('klee=2.1')
+provides=('klee=2.2')
 conflicts=()
 replaces=()
 backup=()
