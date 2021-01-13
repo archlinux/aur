@@ -1,4 +1,7 @@
 # Maintainer: Méril Pilon <meril at mailfence dot com>
+# Maintainer of emacs-git: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
+# Maintainer of emacs-pgtk-native-comp: Andrew Whatson <https://aur.archlinux.org/account/flatwhatson>
+
 pkgname=emacs-gcc-wayland-devel-bin
 pkgver=28.0.50.144759
 pkgrel=1
@@ -6,7 +9,7 @@ pkgdesc="GNU Emacs. Development native-comp branch and pgtk branch combined, ser
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL3')
-depends=('alsa-lib' 'gnutls' 'libxml2' 'jansson' 'libotf' 'harfbuzz' 'gpm' 'libgccjit' 'webkit2gtk')
+depends=('alsa-lib' 'cairo' 'gnutls' 'gtk3' 'libxml2' 'jansson' 'libotf' 'harfbuzz' 'gpm' 'libgccjit' 'webkit2gtk')
 provides=('emacs' 'emacs-seq')
 conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-git' 'emacs-seq')
 replaces=('emacs26-git' 'emacs27-git' 'emacs-git' 'emacs-seq')
