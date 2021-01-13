@@ -1,6 +1,6 @@
 # Maintainer: Sam L. Yes <samlukeyes123@gmail.com>
 pkgname=lx-music-desktop-appimage
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="A music assistant based on Electron + Vue."
 arch=("x86_64")
@@ -15,7 +15,7 @@ conflicts=('lx-music-desktop' 'lx-music-desktop-bin')
 source=("https://github.com/lyswhut/lx-music-desktop/releases/download/v${pkgver}/${_filename}"
         ${_launcher})
 noextract=(${_filename})
-sha256sums=('24d269188a2b1478b4816c7fb3eb874fac075a1ec0be8da7430c7e1daca9be31'
+sha256sums=('554e992004e6bc2887a686f830052d062e3513f44c40b99a7b7856dd5141adfe'
             '88d199167894812929c2ed8a14451f8565c392ac63900d0deaa47a0c01257072')
 _icon='/usr/share/icons/hicolor/512x512/apps/lx-music-desktop.png'
 _licensedir=/usr/share/licenses/${pkgname}
