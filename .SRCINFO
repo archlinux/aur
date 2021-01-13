@@ -1,6 +1,6 @@
 pkgbase = niacop-git
 	pkgdesc = Cross platform self-tracker tool
-	pkgver = v0.7.0.r0.ge5f3677
+	pkgver = 0.7.2.r0.g1337e77
 	pkgrel = 1
 	url = https://github.com/xdrie/niacop
 	arch = x86_64
@@ -12,7 +12,8 @@ pkgbase = niacop-git
 	depends = xdotool
 	depends = xorg-xinput
 	depends = xorg-xmodmap
-	source = niacop-git::git+https://github.com/xdrie/niacop.git
+	options = !strip
+	source = niacop-git::git+https://github.com/xdrie/niacop.git#branch=master
 	sha256sums = SKIP
 
 pkgname = niacop-git
