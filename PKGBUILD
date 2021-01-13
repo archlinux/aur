@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=onefetch-git
-pkgver=2.8.0.r2.g966f598
+pkgver=2.9.0.r0.g6071814
 pkgrel=1
 pkgdesc="Git repository summary on your terminal (git)"
 arch=('x86_64')
@@ -35,5 +35,5 @@ package() {
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm 644 "${pkgname%-git}.1" -t "$pkgdir/usr/share/man/man1"
+  install -Dm 644 "docs/${pkgname%-git}.1" -t "$pkgdir/usr/share/man/man1"
 }
