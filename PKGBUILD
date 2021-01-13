@@ -1,12 +1,12 @@
 # Maintainer: Max G <max3227@gmail.com>
 
-pkgname=python-interutils
-_pypiname=${pkgname/python-/}
+_module='interutils'
+pkgname="python-$_module"
 pkgver=0.12.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of utilities for creating interactive console scripts"
 arch=('any')
-url='https://pypi.org/project/interutils/'
+url="https://pypi.org/project/$_module/"
 license=('MIT')
 makedepends=('python-setuptools')
 depends=('python-termcolor')

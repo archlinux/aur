@@ -1,14 +1,14 @@
 pkgbase = python-interutils
 	pkgdesc = A collection of utilities for creating interactive console scripts
 	pkgver = 0.12.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/interutils/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-termcolor
 	optdepends = python-pyfiglet: Figlet banner printing
-	source = https://files.pythonhosted.org/packages/source///-0.12.6.tar.gz
+	source = https://files.pythonhosted.org/packages/source/i/interutils/interutils-0.12.6.tar.gz
 	sha256sums = 5f3639b8739d7f0fe31bed82d7ece6cddf42484dcef29ec3da1d21d668fd1fe2
 
 pkgname = python-interutils
