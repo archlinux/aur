@@ -2,7 +2,7 @@ post_install() {
   cat << EOF
 
 betterdiscord-rauenzi-git requires you to install per-user. To install:
-  $ betterdiscordctl install -b /usr/lib/betterdiscord-rauenzi-git
+  $ betterdiscordctl install -c -b /usr/lib/betterdiscord-rauenzi-git
 To remove:
   $ betterdiscordctl uninstall
 

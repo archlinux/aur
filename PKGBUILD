@@ -2,7 +2,7 @@
 # Co-maintainer: ObserverOfTime <chronobserver@disroot.org>
 
 pkgname=betterdiscord-rauenzi-git
-pkgver=0.3.2.r11.g1c2e6f6
+pkgver=0.6.2.r43.gb44348d
 pkgrel=1
 pkgdesc="Discord extension with plugin support, emotes, and more (rauenzi's updated fork)"
 arch=('any')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
   printf '%s.r%s.g%s' \
-    "$(sed -n 's/\s*"version": "\(.*\)"/\1/p' betterdiscord/config.json)" \
+    "$(sed -n 's/\s*"version": "\(.*\)",/\1/p' package.json)" \
     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 

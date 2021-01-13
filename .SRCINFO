@@ -1,6 +1,6 @@
 pkgbase = betterdiscord-rauenzi-git
 	pkgdesc = Discord extension with plugin support, emotes, and more (rauenzi's updated fork)
-	pkgver = 0.3.2.r11.g1c2e6f6
+	pkgver = 0.6.2.r43.gb44348d
 	pkgrel = 1
 	url = https://github.com/rauenzi/BetterDiscordApp
 	install = betterdiscord-rauenzi.install
