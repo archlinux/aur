@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=dotenv-linter
-pkgver=2.2.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Lightning-fast linter for .env files. Written in Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0ccf8f221a84c935bb885b863ba54283cc26a9724aae6a15766a387ccc4d3f4d')
+sha256sums=('a858a4ff6121ec9d9a8889b8bb8d3fd88497c8142c5c5d087a6f169bfd19d73f')
 
 build() {
     cd $pkgname-$pkgver
