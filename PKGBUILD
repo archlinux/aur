@@ -4,14 +4,14 @@
 pkgname=discord_arch_electron
 _pkgname=discord
 pkgver=0.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Discord (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
 provides=('discord')
 conflicts=('discord')
 url='https://discordapp.com'
 license=('custom')
-depends=('electron')
+depends=('electron10')
 makedepends=('asar')
 optdepends=('libpulse: Pulseaudio support'
             'xdg-utils: Open files')
@@ -45,8 +45,8 @@ package() {
   cp -r Discord/resources/*  "$pkgdir"/usr/lib/$_pkgname/
 
   # Create starter script for discord
-  echo "#!/bin/sh" >> "$srcdir"/$_pkgname
-  echo "exec electron /usr/lib/$_pkgname/app.asar \$@" >> "$srcdir"/$_pkgname
+  echo "#!/bin/sh" > "$srcdir"/$_pkgname
+  echo "exec electron10 /usr/lib/$_pkgname/app.asar \$@" >> "$srcdir"/$_pkgname
 
   install -d "$pkgdir"/usr/{bin,share/{pixmaps,applications}}
   install -Dm 755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
