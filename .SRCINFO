@@ -1,15 +1,15 @@
 pkgbase = qtwebapp-cmake
 	pkgdesc = Fork of QtWebApp using CMake as build system. QtWepApp is a HTTP server library in C++, inspired by Java Servlets.
 	pkgver = 1.7.11
-	pkgrel = 1
-	url = https://gitlab.com/msrd0/QtWebApp
+	pkgrel = 2
+	url = https://github.com/msrd0/QtWebApp
 	arch = x86_64
 	arch = armv7h
 	license = LGPL
 	makedepends = git
 	depends = cmake
 	depends = qt5-base
-	source = qtwebapp::git+https://gitlab.com/msrd0/qtwebapp.git#tag=v1.7.11
+	source = https://github.com/msrd0/QtWebApp/archive/v1.7.11.tar.gz
 	sha512sums = SKIP
 
 pkgname = qtwebapp-cmake

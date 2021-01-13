@@ -4,6 +4,7 @@ src/
 
 # downloaded source
 qtwebapp/
+v*.tar.gz
 
 # generated packages
 *.pkg*
