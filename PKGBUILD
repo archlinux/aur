@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/cocotb/cocotb"
 license=('BSD')
 conflicts=('python-cocotb')
-provides=('python-cocotb-git')
+provides=('python-cocotb')
 depends=('python' 'python-setuptools')
 
 makedepends=('git' 'gcc')
