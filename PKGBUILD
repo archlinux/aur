@@ -2,35 +2,42 @@
 
 _name=elstob
 pkgbase=$_name-font
-pkgname=(otf-$_name ttf-$_name ttf-$_name-variable)
-pkgver=1.013
+pkgname=(otf-$_name ttf-$_name ttf-$_name-desktop ttf-$_name-variable)
+pkgver=1.014
 pkgrel=1
-pkgdesc='A variable font for medievalists '
+pkgdesc='A variable font for medievalists'
 arch=('any')
 url="https://github.com/psb1558/${pkgbase^}"
 license=('OFL')
-source=("$url/releases/download/v${pkgver}/${_name^}_v${pkgver/./_}_desktop.zip"
-        "$url/releases/download/v${pkgver}/${_name^}_v${pkgver/./_}_web.zip")
-sha256sums=('8dd58848f90396a67fb886d5ccc06046e612b82a18befd5cb290ed3bbbbd6652'
-            'f00da4bb5ca942793f2304c822965b40803d3fb2a9890167ff18aeffab9a28bf')
+source=("$url/releases/download/v${pkgver}/${_name^}_v${pkgver/./_}.zip")
+sha256sums=('43d4eb19b4be2a881f22faa91b5df865dcd77e66da042da6eafe8d8efa0a7348')
 
 package_otf-elstob() {
     provides=("$pkgbase")
-    cd "${_name^}_font_web"
+    conflicts=("$pkgbase-variable")
+    cd "${_name^}_font"
     install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/" otf/*.otf
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.txt
 }
 
 package_ttf-elstob() {
     provides=("$pkgbase")
-    cd "${_name^}_font_desktop"
+    conflicts=("$pkgbase-variable")
+    cd "${_name^}_font"
     install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" ttf/*.ttf
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.txt
+}
+
+package_ttf-elstob-desktop() {
+    provides=("$pkgbase")
+    cd "${_name^}_font"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" desktop/*.ttf
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.txt
 }
 
 package_ttf-elstob-variable() {
     provides=("$pkgbase-variable")
-    cd "${_name^}_font_web"
+    cd "${_name^}_font"
     install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" variable/*.ttf
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.txt
 }
