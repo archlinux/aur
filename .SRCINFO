@@ -1,6 +1,6 @@
 pkgbase = r-diffobj
 	pkgdesc = Diffs for R Objects
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=diffobj
 	arch = i686
@@ -10,9 +10,8 @@ pkgbase = r-diffobj
 	depends = r-crayon>=1.3.2
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/diffobj_0.3.2.tar.gz
-	sha256sums = a2fa3275db2a53644277f56e4e683d6240a76bcb27a51664fdf7a247c2ff286c
+	source = https://cran.r-project.org/src/contrib/diffobj_0.3.3.tar.gz
+	sha256sums = 414e5573470b9565b9149a0a61c7e8344fb37f889d23dc4e131acc8aa62e6df4
 
 pkgname = r-diffobj
 
