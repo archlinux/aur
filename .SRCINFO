@@ -1,6 +1,6 @@
 pkgbase = grin-wallet
 	pkgdesc = Reference implementation of Grin's wallet.
-	pkgver = 4.0.0
+	pkgver = 5.0.2
 	pkgrel = 1
 	url = https://github.com/mimblewimble/grin-wallet
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = grin-wallet
 	makedepends = git
 	makedepends = rust
 	optdepends = tor: for immediate transactions through Tor anonymizing network
-	source = grin-wallet::git+https://github.com/mimblewimble/grin-wallet.git#tag=v4.0.0
+	source = grin-wallet::git+https://github.com/mimblewimble/grin-wallet.git#tag=v5.0.2
 	sha256sums = SKIP
 
 pkgname = grin-wallet
