@@ -8,7 +8,7 @@ _fragment=${FRAGMENT:-#branch=master}
 _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 
 pkgname=bforartists
-pkgver=2.5.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -33,7 +33,7 @@ source=("https://github.com/Bforartists/Bforartists/archive/v$pkgver.tar.gz"
         usd_python.patch #add missing python headers when building against python enabled usd.
         embree.patch #add missing embree link.
         )
-sha256sums=('SKIP'
+sha256sums=('b79f8837b9ebe17b8fe9d07af4b5f8d0265048e073a5779a9bb77785927d2a26'
             '12bd6db5c1fe14244fd7321e3d740941a36aa545ec21b02325e7553c9214778a'
             'dd04c10b6a9c78849608eebfd1f2a5f2a280b7413a24a7f0337d67bceab90cb4')
 
@@ -42,8 +42,8 @@ sha256sums=('SKIP'
   #printf "%d.%d.r%s.g%s" \
   #  $((blender_version/100)) \
   #  $((blender_version%100)) \
-  #  "$(git -C "$srcdir/Bforartists-2.4.0" rev-list --count HEAD)" \
-  #  "$(git -C "$srcdir/Bforartists-2.4.0" rev-parse --short HEAD)"
+  #  "$(git -C "$srcdir/Bforartists-2.6.0" rev-list --count HEAD)" \
+  #  "$(git -C "$srcdir/Bforartists-2.6.0" rev-parse --short HEAD)"
 #}
 
 prepare() {
@@ -95,7 +95,7 @@ build() {
         -DWITH_PYTHON_INSTALL=OFF \
         -DPYTHON_VERSION="${_pyver}" \
         "${_CMAKE_FLAGS[@]}"
-  ninja -C "$srcdir/build" ${MAKEFLAGS:--j1}
+  ninja -C "$srcdir/build" ${MAKEFLAGS:--j10}
 }
 
 package() {
