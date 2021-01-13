@@ -1,24 +1,18 @@
 --- php.ini-production.orig
 +++ php.ini-production
-@@ -756,7 +756,7 @@
- 
+@@ -765,7 +765,7 @@
+
  ; Directory in which the loadable extensions (modules) reside.
  ; http://php.net/extension-dir
 -;extension_dir = "./"
 +extension_dir = "/usr/lib/php80/modules/"
  ; On windows:
  ;extension_dir = "ext"
- 
-@@ -913,48 +913,43 @@
- ; deprecated in a future PHP major version. So, when it is possible, please
- ; move to the new ('extension=<ext>) syntax.
+
+@@ -919,8 +919,13 @@
+ ;   extension folders as well as the separate PECL DLL download (PHP 5+).
+ ;   Be sure to appropriately set the extension_dir directive.
  ;
--; Notes for Windows environments :
--;
--; - Many DLL files are located in the extensions/ (PHP 4) or ext/ (PHP 5+)
--;   extension folders as well as the separate PECL DLL download (PHP 5+).
--;   Be sure to appropriately set the extension_dir directive.
--;
 +;extension=bcmath
  ;extension=bz2
 -;extension=curl
@@ -29,21 +23,21 @@
 +;extension=exif
  ;extension=ffi
  ;extension=ftp
--;extension=fileinfo
- ;extension=gd
+ ;extension=fileinfo
+@@ -928,22 +933,20 @@
  ;extension=gettext
  ;extension=gmp
--;extension=intl
+ ;extension=intl
 +;extension=iconv
  ;extension=imap
-+;extension=intl
  ;extension=ldap
--;extension=mbstring
--;extension=exif      ; Must be after mbstring as it depends on it
+ ;extension=mbstring
+ ;extension=exif      ; Must be after mbstring as it depends on it
  ;extension=mysqli
 -;extension=oci8_12c  ; Use with Oracle Database 12c Instant Client
+-;extension=oci8_19  ; Use with Oracle Database 19 Instant Client
  ;extension=odbc
--;extension=openssl
+ ;extension=openssl
 -;extension=pdo_firebird
  ;extension=pdo_mysql
 -;extension=pdo_oci
@@ -53,23 +47,18 @@
  ;extension=pgsql
 +;extension=pspell
  ;extension=shmop
--
--; The MIBS data available in the PHP distribution must be installed.
--; See http://www.php.net/manual/en/snmp.installation.php
- ;extension=snmp
--
- ;extension=soap
+
+ ; The MIBS data available in the PHP distribution must be installed.
+@@ -954,8 +957,12 @@
  ;extension=sockets
  ;extension=sodium
  ;extension=sqlite3
 +;extension=sysvmsg
 +;extension=sysvsem
-+;extension=sysvshm
++;extension=sysvsh
  ;extension=tidy
-+;extension=xmlrpc
  ;extension=xsl
 +extension=zip
 
  ;zend_extension=opcache
-
 

@@ -22,8 +22,8 @@ pkgname=("${pkgbase}"
          "${pkgbase}-sqlite"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
-pkgver=8.0.0
-pkgrel=2
+pkgver=8.0.1
+pkgrel=1
 arch=('x86_64')
 license=('PHP')
 url='https://www.php.net/'
@@ -33,14 +33,16 @@ makedepends=('apache' 'aspell' 'c-client' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libso
 checkdepends=('procps-ng')
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch')
-sha256sums=('b5278b3eef584f0c075d15666da4e952fa3859ee509d6b0cc2ed13df13f65ebb'
+sha256sums=('208b3330af881b44a6a8c6858d569c72db78dab97810332978cc65206b0ec2dc'
             'SKIP'
             'b4ea038f2863801175d6c4e74c685913feecdd5be3d49aff7d9b3fa92d8c4159'
             'ebc0af1ef3a6baccb013d0ccb29923895a7b22ff2d032e3bba802dc6328301ce'
             '591a266b62cd027483675b07254a61f54fe73d2118b4fbea7b168b632cb7243d'
             '3d8c5d47300ddd9509dcc502209a4337f46ff1b424764498c18e1e34e8240dea'
-            '7a0b7b976d61d4f0e0c12572e781021e03a364eae89aa1e5d76846049d6dba2f')
+            'd2eb6b41e4559306259ac91714e1a3ac8940c5c2fa7db0545e3267adf0bc0b0a')
 validpgpkeys=('CBAF69F173A0FEA4B537F470D66C9593118BCCB6'
+	      '9B67A5C12229118F'
+	      'BFDDD28642824F8118EF77909B67A5C12229118F'
 	      '1729F83938DA44E27BA0F4D3DBDB397470D12172'
               'F38252826ACD957EF380D39F2F7956BC5DA04B5D')
 
@@ -57,6 +59,7 @@ prepare() {
 
 build() {
 	# http://site.icu-project.org/download/61#TOC-Migration-Issues
+        unset CPPFLAGS
 	CPPFLAGS+=' -DU_USING_ICU_NAMESPACE=1'
 
 	local _phpconfig="--srcdir=../${_pkgbase}-${pkgver} \
@@ -167,6 +170,7 @@ build() {
 }
 
 check() {
+        unset CPPFLAGS
 	cd ${srcdir}/build
 
 	# Check if sendmail was configured correctly (FS#47600)
@@ -176,7 +180,7 @@ check() {
 	export NO_INTERACTION=1
 	export SKIP_ONLINE_TESTS=1
 	export SKIP_SLOW_TESTS=1
-	export TEST_PHP_ARGS="-n -j$(nproc)"
+	export TEST_PHP_ARGS="-j$(nproc)"
 	export TESTS='tests Zend'
 
         make test
