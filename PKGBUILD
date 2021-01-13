@@ -4,7 +4,7 @@
 # Contributor: Sander van Kasteel <info at sandervankasteel dot nl>
 pkgname=gtg-git
 pkgver=0.4.r254.ge7130c6b
-pkgrel=1
+pkgrel=2
 pkgdesc="Getting Things GNOME! is a personal tasks and TODO-list items organizer for GNOME"
 url="https://wiki.gnome.org/Apps/GTG"
 arch=('x86_64')
@@ -14,7 +14,8 @@ makedepends=('git' 'meson')
 optdepends=('python-cheetah3: for the Export and print plugin'
             'texlive-bin: pdflatex, for the Export and print plugin'
             'texlive-core: pdfjam, for the Export and print plugin'
-            'pdftk: for the Export and print plugin')
+            'pdftk: for the Export and print plugin'
+            'hamster-time-tracker: send a task to the Hamster time tracking applet')
 checkdepends=('python-nose' 'python-mock')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

@@ -1,7 +1,7 @@
 pkgbase = gtg-git
 	pkgdesc = Getting Things GNOME! is a personal tasks and TODO-list items organizer for GNOME
 	pkgver = 0.4.r254.ge7130c6b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Apps/GTG
 	arch = x86_64
 	license = GPL
@@ -15,6 +15,7 @@ pkgbase = gtg-git
 	optdepends = texlive-bin: pdflatex, for the Export and print plugin
 	optdepends = texlive-core: pdfjam, for the Export and print plugin
 	optdepends = pdftk: for the Export and print plugin
+	optdepends = hamster-time-tracker: send a task to the Hamster time tracking applet
 	provides = gtg
 	conflicts = gtg
 	source = git+https://github.com/getting-things-gnome/gtg.git
