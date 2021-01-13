@@ -1,7 +1,7 @@
 pkgbase = python-aur-deploy
 	pkgdesc = Automate updating pkgbuild and deploying to AUR
 	pkgver = 0.8.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/codeswhite/aur-deploy
 	arch = any
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = python-aur-deploy
 	depends = pip2pkgbuild
 	depends = python-interutils
 	source = https://files.pythonhosted.org/packages/source/a/aur-deploy/aur-deploy-0.8.7.tar.gz
-	sha256sums = f5128d278e866f2074031877cd59a67707365ad1cf40cad8d15748398139b29c
+	sha256sums = 5d3ea98170269a408c4411e628cf15d263e4b85240e55e8a70e10f9d548315d5
 
 pkgname = python-aur-deploy
 	depends = python
