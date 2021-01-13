@@ -6,8 +6,6 @@ pkgdesc="Coroutine based cosimulation library for writing VHDL and Verilog testb
 arch=('any')
 url="http://github.com/cocotb/cocotb/"
 license=('BSD')
-conflicts=('python-cocotb-git')
-provides=('python-cocotb')
 depends=('python' 'python-setuptools')
 
 makedepends=('git' 'gcc')
