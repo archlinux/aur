@@ -9,6 +9,7 @@ pkgbase = libroboint
 	makedepends = cmake
 	makedepends = gcc
 	depends = libusb-compat
+	optdepends = libroboint-python: python bindings
 	source = https://gitlab.com/Humpelstilzchen/libroboint/-/archive/0.5.5/libroboint-0.5.5.tar.gz
 	source = install-location.patch
 	md5sums = b30d38681449840f1174573bcd310ae1

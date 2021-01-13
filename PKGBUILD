@@ -7,6 +7,7 @@ arch=('x86_64' 'arm')
 url="https://gitlab.com/Humpelstilzchen/libroboint"
 license=('LGPLv2.1')
 depends=('libusb-compat')
+optdepends=('libroboint-python: python bindings')
 makedepends=('cmake' 'gcc')
 source=("https://gitlab.com/Humpelstilzchen/libroboint/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         "install-location.patch")
