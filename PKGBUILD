@@ -1,12 +1,13 @@
-# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Maintainer: Antoine Viallon <antoine+aur@lesviallon.fr>
+# Contributor: Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Kamran Mackey <kamranm1200@gmail.com>
 # Contributor: richteer <richteer at lastprime.net>
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
-pkgname=ffmpeg-git
-pkgver=4.4.r99044.gd1f3d721df
+pkgname=ffmpeg-svt-vp9-git
+pkgver=4.4.r100616.gca21cb1e36
 pkgrel=1
-pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
+pkgdesc='Complete solution to record, convert and stream audio and video (git version, SVT-VP9 patch applied)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
 license=('GPL3')
@@ -64,6 +65,7 @@ depends=(
     'vmaf'
     'xz'
     'zlib'
+	'svt-vp9'
 )
 makedepends=('git' 'avisynthplus' 'ffnvcodec-headers' 'ladspa' 'nasm')
 optdepends=('avisynthplus: for reading AviSynth scripts as input'
@@ -75,12 +77,15 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'ffmpeg')
 conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
-        '010-ffmpeg-fix-vmaf-model-path.patch')
+        '010-ffmpeg-fix-vmaf-model-path.patch'
+		'0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch::https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/master/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch')
 sha256sums=('SKIP'
-            '52778c70d9fe6e3a10941b99b96ac7749cec325dc1b9ee11ab75332b5ff68e50')
+            '52778c70d9fe6e3a10941b99b96ac7749cec325dc1b9ee11ab75332b5ff68e50'
+            'SKIP')
 
 prepare() {
     patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-fix-vmaf-model-path.patch"
+	patch -d ffmpeg -Np1 -i "${srcdir}/0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
 }
 
 pkgver() {
@@ -132,6 +137,7 @@ build() {
         --enable-libspeex \
         --enable-libsrt \
         --enable-libssh \
+		--enable-libsvtvp9 \
         --enable-libtheora \
         --enable-libv4l2 \
         --enable-libvidstab \
