@@ -1,3 +1,16 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 581d7f5..6546f2d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -73,7 +73,7 @@ ELSE (DOXYGEN_INSTALLED)
+ 	MESSAGE(STATUS "Unable to create documentation!")
+ ENDIF (DOXYGEN_INSTALLED)
+ 
+-ADD_CUSTOM_TARGET(udev COMMAND ${CMAKE_COMMAND} -E copy udev/fischertechnik.rules /etc/udev/rules.d/fischertechnik.rules)
++ADD_CUSTOM_TARGET(udev COMMAND ${CMAKE_COMMAND} -E copy udev/fischertechnik.rules ${CMAKE_INSTALL_PREFIX}/etc/udev/rules.d/fischertechnik.rules)
+ 
+ ADD_DEFINITIONS(-DLIBROBOINT_VERSION_MAJOR=${CPACK_PACKAGE_VERSION_MAJOR})
+ ADD_DEFINITIONS(-DLIBROBOINT_VERSION_MINOR=${CPACK_PACKAGE_VERSION_MINOR})
 diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
 index 878e901..8e060b7 100644
 --- a/lib/CMakeLists.txt
@@ -23,4 +36,3 @@ index 8b3f3d5..337aacc 100644
  
 -INSTALL_TARGETS(/bin ftuploader)
 +INSTALL_TARGETS(/usr/bin ftuploader)
-

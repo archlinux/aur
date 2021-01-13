@@ -1,7 +1,7 @@
 pkgbase = libroboint
 	pkgdesc = libroboint is an Open Source version of the fischertechnik ROBO Interface Library for Unix like systems
 	pkgver = 0.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/Humpelstilzchen/libroboint
 	arch = x86_64
 	arch = arm
@@ -13,7 +13,7 @@ pkgbase = libroboint
 	source = https://gitlab.com/Humpelstilzchen/libroboint/-/archive/0.5.5/libroboint-0.5.5.tar.gz
 	source = install-location.patch
 	md5sums = b30d38681449840f1174573bcd310ae1
-	md5sums = 655be9776e307e816e936445f00551e5
+	md5sums = 925ec938a574e6e2f9fb7b5a894a35c9
 
 pkgname = libroboint
 
