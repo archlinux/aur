@@ -10,7 +10,7 @@
 #   https://github.com/radhermit/gentoo-vim-scripts/blob/master/get-colorschemes
 
 pkgname=vim-colorschemes
-pkgver=r190.c79c769
+pkgver=r215.fd8f122
 pkgrel=1
 pkgdesc="A very large collection of color schemes from vim.org"
 url="https://github.com/flazz/vim-colorschemes/"
@@ -19,7 +19,7 @@ conflicts=('vim-colorsamplerpack' 'vim-solarized-git' 'tomorrow-theme-vim-git')
 depends=('vim')
 license=('vim' 'GPL2' 'public-domain' 'as-is')
 groups=('vim-plugins')
-source=("git+https://github.com/solaraquarion/vim-colorschemes.git#commit=c79c76900fa79818d06266d5b6398ef612a29fef")
+source=("git+https://github.com/flazz/vim-colorschemes.git#commit=fd8f122cef604330c96a6a6e434682dbdfb878c9")
 md5sums=('SKIP')
 
 pkgver(){
