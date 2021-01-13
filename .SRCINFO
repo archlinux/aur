@@ -1,6 +1,6 @@
 pkgbase = interception-uswitch
 	pkgdesc = uswitch: an Interception Tools tool to redirect stdin to a muxer if logged user matches
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://gitlab.com/interception/linux/plugins/uswitch
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = interception-uswitch
 	makedepends = gcc
 	depends = interception-tools
 	depends = glibc
-	source = interception-uswitch.tar.gz::https://gitlab.com/interception/linux/plugins/uswitch/repository/archive.tar.gz?ref=v0.1.0
-	sha256sums = 5176239cef3fb536ca58070231866bbdd3515acb47e91343f122dcb22c92d008
+	source = interception-uswitch.tar.gz::https://gitlab.com/interception/linux/plugins/uswitch/repository/archive.tar.gz?ref=v0.1.1
+	sha256sums = 66659db28aeae1156541f9ac33f7a0d3fc78b0da35b30e607401c263a4834b10
 
 pkgname = interception-uswitch
 
