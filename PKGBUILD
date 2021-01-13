@@ -2,7 +2,7 @@
 # Contributor: Sebastian Bøe <sebastianbooe at gmail dot com>
 
 pkgname=firrtl
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc='Flexible Intermediate Representation for RTL'
 arch=('any')
@@ -14,8 +14,8 @@ depends=('java-environment' 'bash')
 makedepends=('sbt' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/freechipsproject/firrtl/archive/v$pkgver.tar.gz"
         'firrtl.sh')
-sha512sums=('82c614a3e59f5ac5cd280683a1a471e1e48f7b0fbf03c0e06327344f6f33a6ba7216191558cf6cbd957f8694dbc826d82a4f2dd27fcb617f2799941ea714c40c'
-            '81a74fab55e360a3b5272a22d5c2dc6005dbf6e865bc2f13b94f5606456807e7f7239e47d17d05e194106f925599f02445accc83c39e92f22f0017002c902c1c')
+sha512sums=('7ff548882d0a73bc67e3d7ba2fd9ee4a216346c3583d973409dcb4c672e94e86897aae47c49e1d0190937bb8b6b0417446632cefb8128fbf1b22c6b473a882c8'
+            '2e3ca5c5771bbbf4cfa1245e5bc6e1b65cc17f521ee62ca79e044d24be3c403f85ad8134734eed66132190c1d02e1295de4a0c7a46fd057d8040f1c8cb1865a2')
 
 build(){
   cd firrtl-$pkgver
