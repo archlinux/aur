@@ -2,7 +2,7 @@
 
 pkgname=kwin-scripts-krohnkite-git
 _gitname=krohnkite
-pkgver=r409.7d1d494
+pkgver=r464.2a47753
 pkgrel=1
 pkgdesc="A dynamic tiling extension for KWin"
 arch=('any')
