@@ -1,13 +1,13 @@
 pkgbase = python-bokeh
 	pkgdesc = Interactive Web Plotting for Python
-	pkgver = 2.2.1
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = http://bokeh.pydata.org/
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	source = https://pypi.io/packages/source/b/bokeh/bokeh-2.2.1.tar.gz
-	sha256sums = a82e9eebd7a1e2ebb7f8fc1ead802fefd10a84daef8ec4bfc986121323948555
+	source = https://pypi.io/packages/source/b/bokeh/bokeh-2.2.3.tar.gz
+	sha256sums = c4a3f97afe5f525019dd58ee8c4e3d43f53fe1b1ac264ccaae9b02c07b2abc17
 
 pkgname = python-bokeh
 	depends = python-numpy
