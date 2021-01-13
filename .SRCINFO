@@ -1,0 +1,13 @@
+pkgbase = searchweb-git
+	pkgdesc = A web search cache with menu and tagged history.
+	pkgver = 0.0.r6.gb779a55
+	pkgrel = 1
+	url = https://gitlab.com/abarocio80/searchweb.git
+	arch = any
+	license = GPL3
+	makedepends = git
+	source = git+https://gitlab.com/abarocio80/searchweb.git
+	md5sums = SKIP
+
+pkgname = searchweb-git
+
