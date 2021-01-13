@@ -2,7 +2,7 @@
 
 pkgname=rav1e-bin
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The fastest and safest AV1 encoder"
 arch=('x86_64' 'aarch64')
 url="https://github.com/xiph/rav1e"
@@ -11,12 +11,12 @@ provides=('rav1e')
 conflicts=('rav1e')
 source=("https://raw.githubusercontent.com/xiph/rav1e/master/LICENSE"
         "https://raw.githubusercontent.com/xiph/rav1e/master/PATENTS")
-source_x86_64=("https://github.com/xiph/rav1e/releases/download/v$pkgver-alpha/rav1e-$pkgver-alpha-linux.tar.gz")
-source_aarch64=("https://github.com/xiph/rav1e/releases/download/v$pkgver-alpha/rav1e-$pkgver-alpha-aarch64-linux.tar.gz")
+source_x86_64=("https://github.com/xiph/rav1e/releases/download/v$pkgver/rav1e-$pkgver-linux.tar.gz")
+source_aarch64=("https://github.com/xiph/rav1e/releases/download/v$pkgver/rav1e-$pkgver-aarch64-linux.tar.gz")
 sha256sums=('SKIP'
             'SKIP')
-sha256sums_x86_64=('4c38bc7659ae899540da59750416dc138e082725b961c881b610f72cc6450933')
-sha256sums_aarch64=('e48d42c3d7117f42b13d8dbbe80db4b0dc7c928db895eb3907459c657ed77b34')
+sha256sums_x86_64=('8372174ba45ca66a76bd43ffb03acb4ace5341cc9b38a15b21c0aff9f16e793d')
+sha256sums_aarch64=('ede79db300b4c2cfd944505f4b0a4bad0c79f46708949cf4d03ef838826a6ba2')
 
 
 package() {
