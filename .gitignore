@@ -1,7 +1,9 @@
 # sources:
 *.tar.*
 # built packages:
-*.pkg
-*.pkg.sig
+*.pkg.*
 # build logs:
 *.log
+
+pkg/
+src/
