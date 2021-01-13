@@ -3,8 +3,8 @@
 _pkgname=prusa-slicer
 
 pkgname=${_pkgname}-git
-pkgver=2.3.0.beta2.r118.g06df87da3
-pkgrel=3
+pkgver=2.3.0.r10.g5b138cf04
+pkgrel=1
 pkgdesc='G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)'
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url='https://github.com/prusa3d/PrusaSlicer'
