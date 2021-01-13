@@ -1,6 +1,6 @@
 pkgbase = nekofetch
 	pkgdesc = neofetch but with nekos
-	pkgver = 1.2.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/propruhh/nekofetch
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = nekofetch
 	depends = jp2a
 	depends = neofetch
 	provides = nekofetch
-	source = https://github.com/propruhh/nekofetch/archive/v1.2.2.tar.gz
-	sha256sums = bc932af7f1f009697585d74e952a967ac1d9fbdc7cf6e16fe129cdf2a6f99a7f
+	source = https://github.com/propruhh/nekofetch/archive/v1.3.tar.gz
+	sha256sums = fec5a171ec88ef95a9e17c7e8799839101fd70c10de09eccfe28bb27ec0e32a4
 
 pkgname = nekofetch
 
