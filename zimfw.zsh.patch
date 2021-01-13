@@ -1,0 +1,39 @@
+--- zimfw.zsh	2021-01-11 22:16:26.000000000 +0100
++++ zimfw.zsh	2021-01-13 18:59:16.889418467 +0100
+@@ -52,16 +52,13 @@
+ 
+ _zimfw_build_init() {
+   local -r ztarget=${ZIM_HOME}/init.zsh
+-  # Force update of init.zsh if it's older than .zimrc
+-  if [[ ${ztarget} -ot ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+-    command mv -f ${ztarget}{,.old} || return 1
+-  fi
+   _zimfw_mv =(
+     print -R "zimfw() { source ${ZIM_HOME}/zimfw.zsh \"\${@}\" }"
+     if (( ${#_zfpaths} )) print -R 'fpath=('${_zfpaths:A}' ${fpath})'
+     if (( ${#_zfunctions} )) print -R 'autoload -Uz '${_zfunctions}
+     print -R ${(F)_zcmds}
+   ) ${ztarget}
++  chmod u+rX,g+rX,o+rX "${ZIM_HOME}" &>/dev/null
+ }
+ 
+ _zimfw_build_login_init() {
+@@ -69,10 +66,6 @@
+   local -Ur zscriptdirs=(${ZIM_HOME} ${${_zdirs##${ZIM_HOME}/*}:A})
+   local -r zscriptglob=("${^zscriptdirs[@]}/(^*test*/)#*.zsh(|-theme)(N-.)")
+   local -r ztarget=${ZIM_HOME}/login_init.zsh
+-  # Force update of login_init.zsh if it's older than .zimrc
+-  if [[ ${ztarget} -ot ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+-    command mv -f ${ztarget}{,.old} || return 1
+-  fi
+   _zimfw_mv =(
+     print -Rn "() {
+   setopt LOCAL_OPTIONS CASE_GLOB EXTENDED_GLOB
+@@ -99,6 +92,7 @@
+ } \"\${@}\"
+ "
+   ) ${ztarget}
++  chmod u+rX,g+rX,o+rX "${ZIM_HOME}" &>/dev/null
+ }
+ 
+ _zimfw_build() {

@@ -1,5 +1,5 @@
 FROM registry.hub.docker.com/library/archlinux:latest
-RUN pacman -Sy zsh git rsync sudo fakeroot --noconfirm
+RUN pacman -Sy zsh git rsync sudo fakeroot patch vim --noconfirm
 RUN useradd -ms /usr/bin/zsh work && \
     usermod -aG wheel work
 RUN echo '%wheel ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
