@@ -15,6 +15,7 @@ pkgbase = mozc-ut-united
 	makedepends = ninja
 	makedepends = clang
 	makedepends = gyp
+	makedepends = zinnia
 	depends = qt5-base
 	depends = ibus>=1.4.1
 	depends = zinnia
