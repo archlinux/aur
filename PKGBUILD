@@ -2,7 +2,7 @@
 # Contributor: Mark Lee <mark@markelee.com>
 # Contributor: Familia < carlosfamilia at gmail dot com >
 pkgname=rstudio-server-preview-bin
-pkgver=1.4.1100
+pkgver=1.4.1103
 pkgrel=1
 pkgdesc="A integrated development environment (IDE) for R (binary preview version from RStudio official website)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 url="http://www.rstudio.org/"
 depends=('r>=3.0.1' 'sqlite' 'pam' 'postgresql-libs')
 conflicts=('rstudio-server' 'rstudio-server-git' 'rstudio-server-bin')
-sha256sums=('0fb0d3c7fbf1b23128d761e7de7425ef500c495aeaacf5ea15f9b16d713892fa'
+sha256sums=('552baf1bbfd98fc36a3f63c430cce3ceb16dd41de723a535fa27d254ff6afa62'
             '24b0545aa2a576c7d7480c0ef77d7641e2ebaadae856fd2a18f57871bd25fd88'
             '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92')
 provides=("rstudio-server=${pkgver}")
