@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python-six' 'python-unidecode' 'python-musicbrainzngs'
          'python-yaml' 'python-mediafile' 'python-confuse'
          'python-munkres' 'python-jellyfish')
-makedepends=('python-setuptools' 'git')
+makedepends=('python-setuptools' 'git' 'python-sphinx')
 optdepends=('python-requests: absubmit, fetchart, embyupdate, kodiupdate, lyrics, plexupdate plugins'
             'python-pillow: fetchart, embedart, thumbnails plugins'
             'python-pyacoustid: chroma plugin'
