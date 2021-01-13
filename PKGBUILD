@@ -1,90 +1,165 @@
-# Maintainer: kaptoxic <kaptoxic@yahoo.com>
+# Maintainer: ars <asav1410 at gmail dot com>
+# Contributer: kaptoxic <kaptoxic@yahoo.com>
 # Contributor: dhamp <dhamp@ya.ru>
 
-_name=eiskaltdcpp
-_tarver=2.2.10
-pkgbase=${_name}
-pkgname=(${_name}-gtk ${_name}-qt ${_name}-daemon ${_name}-core ${_name}-data)
-pkgver=${_tarver}
-pkgrel=4
+pkgbase="eiskaltdcpp"
+pkgname=("${pkgbase}-core"
+         "${pkgbase}-qt"
+         "${pkgbase}-gtk"
+         "${pkgbase}-daemon"
+         "${pkgbase}-cli"
+         "${pkgbase}-data"
+         )
+pkgver=2.4.0
+pkgrel=1
+pkgdesc="EiskaltDC++ is a cross-platform program that uses the Direct Connect (DC aka NMDC) and Advanced Direct Connect (ADC) protocols. It is compatible with DC++, AirDC++, FlylinkDC++ and other DC clients. EiskaltDC++ also interoperates with all common DC hub software."
 license=('GPL3')
-arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h')
-url="http://code.google.com/p/eiskaltdc/"
+arch=('x86_64')
+url="https://github.com/eiskaltdcpp/eiskaltdcpp/"
+conflicts=('eiskaltdcpp-git')
 options=(!emptydirs)
-source=(https://github.com/${_name}/${_name}/archive/v${_tarver}.tar.gz)
-sha256sums=('e461c8c499e459651d6382a6ded6788e5ac9a9c4ff26386c3cf073d94d606127')
-makedepends=(gcc make cmake gtk2 libnotify qt4 bzip2 openssl openssl-1.0 lua52 libidn pcre)
+source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/${pkgbase}/${pkgbase}/archive/v${pkgver}.tar.gz")
+sha256sums=('674d023027a0f00f293cc73ce3c010cf462f8f2a516d967c7e2a8af3ac4b84ba')
+makedepends=('cmake'
+             'lua'
+             'libidn'
+             'aspell'
+             'attr'
+             'boost'
+             'pcre'
+             'bash'
+             'miniupnpc'
+             'jsoncpp'
+             'qt5-multimedia'
+             'qt5-tools'
+             'qt5-script'
+             'qt5-xmlpatterns'
+             'gtk3'
+             'libnotify'
+             'perl-json'
+             'perl-json-rpc'
+             )
+
+prepare() {
+  mkdir -p build
+}
 
 build() {
-  cd ${srcdir}/${_name}-${_tarver}
-  rm -rf ${srcdir}/${_name}-${_tarver}/build
-  mkdir ${srcdir}/${_name}-${_tarver}/build
-  cd ${srcdir}/${_name}-${_tarver}/build
-  PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig CFLAGS=" -I/usr/include/openssl-1.0" LDFLAGS="-I/usr/lib/openssl-1.0" cmake ../ -DENABLE_STACKTRACE=ON -DCMAKE_INSTALL_PREFIX=/usr -DUSE_MINIUPNP=ON -DLOCAL_MINIUPNP=ON -DPERL_REGEX=ON -DLOCAL_BOOST=OFF -DLUA_SCRIPT=ON -DWITH_LUASCRIPTS=ON -DWITH_DHT=ON -DUSE_QT=OFF
-}
+  cd build
+  cmake ../eiskaltdcpp-"${pkgver}" \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DUSE_QT5=ON \
+    -DUSE_QT_QML=OFF \
+    -DUSE_QT_SQLITE=ON \
+    -DUSE_GTK3=ON \
+    -DLUA_SCRIPT=ON \
+    -DUSE_MINIUPNP=ON \
+    -DUSE_ASPELL=ON \
+    -DUSE_LIBNOTIFY=ON \
+    -DWITH_LUASCRIPTS=ON \
+    -DWITH_SOUNDS=ON \
+    -DWITH_DEV_FILES=ON \
+    -DUSE_JS=ON \
+    -DXMLRPC_DAEMON=OFF \
+    -DPERL_REGEX=ON \
+    -DENABLE_STACKTRACE=ON \
+    -DJSONRPC_DAEMON=ON \
+    -DUSE_CLI_XMLRPC=OFF \
+    -DUSE_CLI_JSONRPC=ON \
+    -DLOCAL_JSONCPP=OFF \
+    -DLOCAL_BOOST=OFF
 
-package_eiskaltdcpp-gtk() {
-    depends=(gtk2 libnotify desktop-file-utils ${_name}-core ${_name}-data)
-    pkgdesc="EiskaltDC++: Gtk2-based DC and ADC client based on dcpp core"
-    conflicts=(${_name}-gtk )
-    provides=(${_name}-gtk)
-    install=${_name}.install
-    cd ${srcdir}/${_name}-${_tarver}/build
-    cmake ../ -DUSE_GTK=ON
-    make --no-print-directory -C cmake
-    make --no-print-directory -C ${_name}-gtk DESTDIR=${pkgdir} install clean
-
-}
-package_eiskaltdcpp-qt() {
-    depends=(qt4 ${_name}-core ${_name}-data)
-    optdepends=('aspell: spellchecking'
-                'qtscriptgenerator: need for qtscript')
-    pkgdesc="EiskaltDC++: Qt4-based DC and ADC client based on dcpp core"
-    conflicts=(${_name}-qt)
-    provides=(${_name}-qt)
-    install=${_name}.install
-    cd ${srcdir}/${_name}-${_tarver}/build
-    cmake ../  -DUSE_JS=ON -DUSE_QT=ON
-    make --no-print-directory ${_name}-qt_tr
-    make --no-print-directory -C ${_name}-qt DESTDIR=${pkgdir} install clean
-}
-
-package_eiskaltdcpp-cli() {
-    arch=('any')
-    depends=(${_name}-daemon ${_name}-data perl-term-shellui perl-data-dump perl-json-rpc)
-    pkgdesc="EiskaltDC++ cli interface for daemon with xmlrpc"
-    cd ${srcdir}/${_name}-${_tarver}/build
-    make --no-print-directory -C ${_name}-cli DESTDIR=${pkgdir} install clean
-}
-
-package_eiskaltdcpp-daemon() {
-    depends=(${_name}-core ${_name}-data gcc-libs)
-    pkgdesc="EiskaltDC++ Daemon"
-    conflicts=(${_name}-daemon)
-    provides=(${_name}-daemon)
-    cd ${srcdir}/${_name}-${_tarver}/build
-    cmake ../ -DNO_UI_DAEMON=ON -DJSONRPC_DAEMON=ON
-    make --no-print-directory -C ${_name}-daemon DESTDIR=${pkgdir} install clean
+  make
 }
 
 package_eiskaltdcpp-core() {
-    depends=(bzip2 openssl lua52 libidn pcre openssl-1.0)
-    pkgdesc="EiskaltDC++ Core"
-    conflicts=(${_name}-core)
-    provides=(${_name}-core)
-    cd ${srcdir}/${_name}-${_tarver}/build
-    make --no-print-directory -C cmake
-    make --no-print-directory -C dcpp DESTDIR=${pkgdir} install clean
+  pkgdesc="EiskaltDC++ Core"
+  depends=('openssl'
+           'lua'
+           'libidn'
+           'attr'
+           'boost-libs'
+           'miniupnpc'
+           'pcre'
+           )
+  provides=("${pkgbase}-core=${pkgver}"
+            "${pkgbase}"
+            )
+  conflicts=("${pkgbase}-core-git")
+  opdepends=("${pkgbase}-qt: EiskaltDC++ QT interface"
+             "${pkgbase}-gtk: EiskaltDC++ GTK interface"
+             "${pkgbase}-cli: EiskaltDC++ CLI interface"
+             "${pkgbase}-daemon: EiskaltDC++ Daemon"
+             )
+
+  make -C build/dcpp DESTDIR="${pkgdir}" install
 }
 
+package_eiskaltdcpp-qt() {
+  pkgdesc="Qt5-based DC and ADC client for EiskaltDC++ core."
+  depends=("${pkgbase}-core=${pkgver}"
+           "${pkgbase}-data=${pkgver}"
+           'aspell'
+           'qt5-multimedia'
+           'desktop-file-utils'
+           )
+  optdepends=('php: needed for some scripts')
+  provides=("${pkgbase}-qt")
+  conflicts=("${pkgbase}-qt-git")
+
+  make -C build/eiskaltdcpp-qt DESTDIR="${pkgdir}" install
+}
+
+package_eiskaltdcpp-gtk() {
+  pkgdesc="GTK3-based DC and ADC client for EiskaldDC++ core."
+  depends=("${pkgbase}-core=${pkgver}"
+           "${pkgbase}-data=${pkgver}"
+           'gtk3'
+           'libnotify'
+           )
+  provides=("${pkgbase}-gtk")
+  conflicts=("${pkgbase}-gtk-git")
+
+  make -C build/eiskaltdcpp-gtk DESTDIR="${pkgdir}" install
+}
+
+package_eiskaltdcpp-daemon() {
+  pkgdesc="DC and ADC daemon for EiskaltDC++ core."
+  depends=("${pkgbase}-core=${pkgver}"
+           'jsoncpp'
+           )
+  provides=("${pkgbase}-daemon")
+  conflicts=("${pkgbase}-daemon-git")
+
+  make -C build/eiskaltdcpp-daemon DESTDIR="${pkgdir}" install
+}
+
+package_eiskaltdcpp-cli() {
+  arch=('any')
+  pkgdesc="CLI interface for EiskaltDC++ Daemon."
+  depends=("${pkgbase}-daemon=${pkgver}"
+           'perl-json'
+           'perl-json-rpc'
+           )
+  provides=("${pkgbase}-cli")
+  conflicts=("${name}-cli-git")
+
+  make -C build/eiskaltdcpp-cli DESTDIR="${pkgdir}" install
+}
+
+
 package_eiskaltdcpp-data() {
-    arch=('any')
-    depends=(sh bash hicolor-icon-theme)
-    optdepends=('php: needed for some optional scripts')
-    conflicts=(${_name}-data)
-    provides=(${_name}-data)
-    install=${_name}.install
-    pkgdesc="EiskaltDC++ Data files"
-    cd ${srcdir}/${_name}-${_tarver}/build
-    make --no-print-directory -C data DESTDIR=${pkgdir} install clean
+  arch=('any')
+  pkgdesc="EiskaltDC++ common data files."
+  depends=('bash'
+           'hicolor-icon-theme'
+           )
+  optdepends=('php: needed for some optional scripts'
+              'python: test http server'
+              )
+  provides=("${pkgbase}-data")
+  conflicts=("${pkgbase}-data-git")
+
+  make -C build/data DESTDIR="${pkgdir}" install
 }
