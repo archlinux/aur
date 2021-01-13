@@ -1,7 +1,7 @@
 pkgname=theme.sh
 provides=("${pkgname}")
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/lemnos/theme.sh"
 source=("$url/archive/v$pkgver.tar.gz")

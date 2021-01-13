@@ -1,6 +1,6 @@
 pkgbase = theme.sh
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lemnos/theme.sh
 	arch = any
 	provides = theme.sh
