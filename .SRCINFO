@@ -1,0 +1,17 @@
+pkgbase = st-bbaovanc-git
+	pkgdesc = bbaovanc's fork of st (simple/suckless terminal)
+	pkgver = r1155.b2b31a8
+	pkgrel = 1
+	url = https://github.com/BBaoVanC/st
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = libxext
+	depends = libxft-bgra-git
+	provides = st
+	conflicts = st
+	source = git+https://github.com/BBaoVanC/st.git
+	sha256sums = SKIP
+
+pkgname = st-bbaovanc-git
+
