@@ -1,0 +1,16 @@
+pkgbase = vault-acme
+	pkgdesc = A Vault secret engine to retrieve TLS certificates validated by an ACME provider
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/remilapeyre/vault-acme
+	install = vault-acme.install
+	arch = x86_64
+	license = MPL
+	makedepends = go
+	makedepends = git
+	makedepends = glibc
+	source = git+https://github.com/remilapeyre/vault-acme#tag=v0.0.6
+	sha512sums = SKIP
+
+pkgname = vault-acme
+
