@@ -1,0 +1,16 @@
+pkgbase = noto
+	pkgdesc = A command line journal.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/valsaven/noto
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = git
+	provides = noto
+	conflicts = noto
+	source = noto-1.1.tar.gz::https://github.com/valsaven/noto/archive/v1.1.tar.gz
+	sha256sums = 87a342fb33a142ae1d2a73300ebd1900e0149c3b51d5da8777d2a171efc0fb07
+
+pkgname = noto
+
