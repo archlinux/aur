@@ -1,0 +1,24 @@
+pkgbase = gpgme-minimal-git
+	pkgdesc = A C wrapper library for GnuPG
+	pkgver = 1.15.1
+	pkgrel = 1
+	url = https://www.gnupg.org/related_software/gpgme/
+	arch = x86_64
+	license = LGPL
+	makedepends = libgpg-error
+	makedepends = gnupg
+	makedepends = qt5-base
+	makedepends = python
+	makedepends = swig
+	source = git://git.gnupg.org/gpgme.git
+	sha256sums = SKIP
+
+pkgname = gpgme-minimal-git
+	depends = libgpg-error
+	depends = gnupg>=2
+	provides = libgpgme.so
+	provides = libgpgmepp.so
+	provides = gpgme
+	conflicts = gpgme
+	options = !emptydirs
+
