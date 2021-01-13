@@ -1,6 +1,6 @@
 pkgbase = lilv-git
 	pkgdesc = A C library interface to the LV2 plug-in standard with Python bindings (git version)
-	pkgver = 0.24.9.r1287.81babb7
+	pkgver = 0.24.13.r1396.71a2ff5
 	pkgrel = 1
 	url = http://drobilla.net/software/lilv
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = lilv-git
 	optdepends = bash-completion: completion for bash
 	optdepends = libsndfile: lv2apply utility
 	provides = lilv
-	provides = lilv=0.24.9
+	provides = lilv=0.24.13
 	provides = liblilv-0.so
 	conflicts = lilv
 	conflicts = lilv-svn

@@ -4,7 +4,7 @@
 
 _pkgname=lilv
 pkgname="${_pkgname}-git"
-pkgver=0.24.9.r1287.81babb7
+pkgver=0.24.13.r1396.71a2ff5
 pkgrel=1
 pkgdesc="A C library interface to the LV2 plug-in standard with Python bindings (git version)"
 arch=('i686' 'x86_64')
@@ -42,7 +42,7 @@ prepare() {
 check() {
   cd "${srcdir}/${_pkgname}"
 
-  python waf test -v || echo "Python tests are currently expected to fail"
+  python waf test -v || echo "Some tests are currently known to fail"
 }
 
 build() {
