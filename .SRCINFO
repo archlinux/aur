@@ -1,9 +1,8 @@
 pkgbase = pyinstaller
 	pkgdesc = Bundles a Python application and all its dependencies into a single package
-	pkgver = 4.1
+	pkgver = 4.2
 	pkgrel = 1
 	url = https://github.com/pyinstaller/pyinstaller
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = python-setuptools
@@ -11,8 +10,8 @@ pkgbase = pyinstaller
 	depends = pyinstaller-hooks-contrib
 	optdepends = python-pycrypto: bytecode encryption support
 	optdepends = upx: executable compression support
-	source = https://pypi.org/packages/source/p/pyinstaller/pyinstaller-4.1.tar.gz
-	sha256sums = 954ae81de9a4bc096ff02433b3e245b9272fe53f27cac319e71fe7540952bd3d
+	source = https://pypi.org/packages/source/p/pyinstaller/pyinstaller-4.2.tar.gz
+	sha256sums = f5c0eeb2aa663cce9a5404292c0195011fa500a6501c873a466b2e8cad3c950c
 
 pkgname = pyinstaller
 
