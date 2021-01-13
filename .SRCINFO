@@ -1,0 +1,39 @@
+pkgbase = dlib
+	pkgdesc = A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques
+	pkgver = 19.22
+	pkgrel = 1
+	url = http://dlib.net
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = ccache-ext
+	makedepends = ccache
+	makedepends = cuda
+	makedepends = cudnn
+	depends = cblas
+	depends = lapack
+	depends = blas
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = libx11
+	optdepends = giflib: for GIF support
+	optdepends = sqlite: for sqlite support
+	source = https://github.com/davisking/dlib/archive/4a53742f8f6a071fb002655857f3a4e5d72a52d1.tar.gz
+	source = version.patch
+	sha256sums = f2f7aecb25f6a70c902e95e8ed6d24e663fff4e03fac03d607ad2d4d4169943f
+	sha256sums = df6167bb6c9a258eebfed651bd4c8d4e5d89324dd10579057fa58e6d1f4d110d
+
+pkgname = dlib-sse
+
+pkgname = dlib-sse-cuda
+	pkgdesc = A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques (with CUDA)
+	depends = cblas
+	depends = lapack
+	depends = blas
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = libx11
+	depends = cuda
+	depends = cudnn
+	conflicts = dlib
+
