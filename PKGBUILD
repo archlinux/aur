@@ -8,7 +8,7 @@ pkgdesc="Userspace command line program used to configure the packet filtering r
 arch=('i686' 'x86_64')
 url="https://www.netfilter.org/projects/iptables/index.html"
 license=('GPL2')
-depends=('glibc' 'libmnl' 'libnftnl')
+depends=('glibc' 'libmnl' 'libnftnl' 'libnetfilter_conntrack')
 makedepends=('git' 'linux-api-headers')
 provides=('arptables' 'ebtables' 'iptables' 'iptables-nft')
 conflicts=('arptables' 'ebtables' 'iptables' 'iptables-nft')
@@ -64,8 +64,7 @@ build() {
     --disable-libipq \
     --disable-bpf-compiler \
     --disable-nfsynproxy \
-    --disable-ipv6 \
-    --disable-connlabel
+    --disable-ipv6
   make
 }
 

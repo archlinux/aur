@@ -11,6 +11,7 @@ pkgbase = iptables-nosystemd-minimal-git
 	depends = glibc
 	depends = libmnl
 	depends = libnftnl
+	depends = libnetfilter_conntrack
 	provides = arptables
 	provides = ebtables
 	provides = iptables
