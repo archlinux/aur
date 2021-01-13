@@ -3,7 +3,7 @@
 pkgname=mineonline
 pkg_case=MineOnline
 pkgdev=codieradical
-depends=('jre8-openjdk' 'jq')
+depends=('jre8' 'jq')
 pkgver=$(curl -s "https://api.github.com/repos/codieradical/MineOnline/releases/latest" | jq -r '.tag_name')
 pkgrel=1
 pkgdesc="Launch old versions of Minecraft just as you remembered them, only without a browser."
