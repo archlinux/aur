@@ -4,7 +4,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=git2r
-_cranver=0.27.1
+_cranver=0.28.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,11 +13,10 @@ arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2)
 depends=('r>=3.1' libgit2 zlib openssl)
-makedepends=(gcc)
 optdepends=(r-getpass
             'libssh2: SSH transport support')
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('dd143247ed595e001871d827e3775a5c')
+sha256sums=('ce6d148d21d2c87757e98ef4474b2d09faded9b9b866f046bd26d4ca925e55f2')
 
 build() {
   cd "${srcdir}"
