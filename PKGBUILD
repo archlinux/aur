@@ -4,14 +4,14 @@ pkgname=jellyfin-server-bin
 pkgver='10.7.0~rc2'
 _pkgver=$(echo "$pkgver" | cut -f1 -d"_")
 _pkgverfull="${pkgver//_/-}"
-pkgrel=1
+pkgrel=2
 pkgdesc='The Free Software Media System - server package'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://jellyfin.org/'
 license=('GPL2')
 provides=('jellyfin-server')
 conflicts=('jellyfin-server' 'jellyfin-server-git')
-depends=("ffmpeg" "jellyfin-web-bin=$pkgver")
+depends=("ffmpeg" "jellyfin-web-bin>=$pkgver")
 optdepends=('ffmpeg-mmal: OpenMAX OMX hardware acceleration on Raspberry Pis')
 source=('jellyfin.conf'
         'jellyfin.service'

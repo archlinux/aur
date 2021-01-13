@@ -1,14 +1,14 @@
 pkgbase = jellyfin-server-bin
 	pkgdesc = The Free Software Media System - server package
 	pkgver = 10.7.0~rc2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jellyfin.org/
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = GPL2
 	depends = ffmpeg
-	depends = jellyfin-web-bin=10.7.0~rc2
+	depends = jellyfin-web-bin>=10.7.0~rc2
 	optdepends = ffmpeg-mmal: OpenMAX OMX hardware acceleration on Raspberry Pis
 	provides = jellyfin-server
 	conflicts = jellyfin-server
