@@ -1,7 +1,7 @@
-pkgbase = dlib
+pkgbase = dlib-sse
 	pkgdesc = A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques
 	pkgver = 19.22
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dlib.net
 	arch = x86_64
 	license = custom
