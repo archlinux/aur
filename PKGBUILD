@@ -2,7 +2,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=SQUAREM
-_cranver=2020.5
+_cranver=2021.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(GPL2 GPL3)
 depends=('r>=3.0')
 optdepends=(r-setrng)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('64015fe83c08ced7c1374eb4c923f772859468db0f41445d3b918bafd72d12b8')
+sha256sums=('66e5e18ca29903e4950750bbd810f0f9df85811ee4195ce0a86d939ba8183a58')
 
 build() {
   cd "${srcdir}"
