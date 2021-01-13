@@ -1,6 +1,6 @@
 # Maintainer: Deepjyoti <deep.barman30@gmail.com>
 pkgname=python-simber
-pkgver=0.1.2
+pkgver=0.2.1
 pkgrel=0
 pkgdesc="Simple, minimal, powerful logging library for Python"
 arch=("any")
@@ -18,7 +18,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/deepjyoti30/simber/archive/0.1.2.tar.gz")
+source=("https://github.com/deepjyoti30/simber/archive/0.2.1.tar.gz")
 noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
