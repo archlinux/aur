@@ -1,6 +1,6 @@
 pkgbase = libsignal-client
 	pkgdesc = Library for the Signal Protocol.
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/signalapp/libsignal-client
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = libsignal-client
 	makedepends = git
 	makedepends = zip
 	makedepends = protobuf
-	source = libsignal-client-java-0.2.0.tar.gz::https://github.com/signalapp/libsignal-client/archive/java-0.2.0.tar.gz
-	sha512sums = 258e3ca34cd0ab25ef8ac63c067ddfd1f795790a3fa34f27d13e1e31ad05dbc016b49579e050ec56e91f7ef0e73e12c42e41c81f809a3355532afe023ba556ec
+	source = libsignal-client-java-0.2.1.tar.gz::https://github.com/signalapp/libsignal-client/archive/java-0.2.1.tar.gz
+	sha512sums = 1f7b10bcc47199da1a2efd9de7ebb8d3906752bd5378073c08ae6638b9cb52529da965544213c5a97b081ce114c7497bcf077c2da02470df5d6096b14a8ce51d
 
 pkgname = libsignal-client
 

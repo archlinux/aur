@@ -2,7 +2,7 @@
 
 pkgname=libsignal-client
 _libname=libsignal_jni
-pkgver=0.2.0
+pkgver=0.2.1
 _pkgver="java-${pkgver}"
 pkgrel=1
 pkgdesc='Library for the Signal Protocol.'
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
 source=("${pkgname}-${_pkgver}.tar.gz::https://github.com/signalapp/${pkgname}/archive/$_pkgver.tar.gz")
 
-sha512sums=('258e3ca34cd0ab25ef8ac63c067ddfd1f795790a3fa34f27d13e1e31ad05dbc016b49579e050ec56e91f7ef0e73e12c42e41c81f809a3355532afe023ba556ec')
+sha512sums=('1f7b10bcc47199da1a2efd9de7ebb8d3906752bd5378073c08ae6638b9cb52529da965544213c5a97b081ce114c7497bcf077c2da02470df5d6096b14a8ce51d')
 
 prepare() {
   tar xf "${pkgname}-$_pkgver.tar.gz"
