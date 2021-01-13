@@ -1,7 +1,7 @@
 pkgbase = brother-hll2375dw
 	pkgdesc = Brother HL-L2375DW CUPS driver
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.brother.com
 	arch = i686
 	arch = x86_64
