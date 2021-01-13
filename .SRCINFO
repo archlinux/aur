@@ -1,13 +1,13 @@
 pkgbase = uwebsockets
 	pkgdesc = Simple, secure & standards compliant web server for the most demanding of applications
-	pkgver = 18.17.0
+	pkgver = 18.19.0
 	pkgrel = 1
 	url = https://github.com/uNetworking/uWebSockets
 	arch = any
 	license = Apache
 	depends = usockets
-	source = uwebsockets-18.17.0.tar.gz::https://github.com/uNetworking/uWebSockets/archive/v18.17.0.tar.gz
-	md5sums = ae1dffd2fe19b78969c5b41d31e26310
+	source = uwebsockets-18.19.0.tar.gz::https://github.com/uNetworking/uWebSockets/archive/v18.19.0.tar.gz
+	md5sums = 770db1e669f5734fba07c7c7e7a104d9
 
 pkgname = uwebsockets
 
