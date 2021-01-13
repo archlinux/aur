@@ -6,7 +6,7 @@ pkgname=('pipewire-git'
          'pipewire-pulse-git'
          'pipewire-ffmpeg-git'
          )
-pkgver=0.3.18.104.gd99ac615
+pkgver=0.3.19.61.gfee0c267
 pkgrel=1
 pkgdesc='Server and user space API to deal with multimedia pipelines. (GIT version)'
 arch=('x86_64')
@@ -82,22 +82,20 @@ _pick() {
 }
 
 package_pipewire-git() {
-  depends=(
-           'alsa-card-profiles'
+  depends=('alsa-card-profiles'
            'bluez-libs'
-           'libsndfile.so'
+           'rtkit'
+           'sbc'
+           'vulkan-icd-loader'
            'libasound.so'
            'libdbus-1.so'
            'libfdk-aac.so'
            'libldacBT_enc.so'
            'libncursesw.so'
            'libopenaptx.so'
+           'libsndfile.so'
            'libsystemd.so'
            'libudev.so'
-           'rtkit'
-           'sbc'
-           'sdl2'
-           'vulkan-icd-loader'
            )
   optdepends=('pipewire-docs-git: Documentation'
               'pipewire-jack-git: JACK support'
@@ -112,7 +110,9 @@ package_pipewire-git() {
   conflicts=('pipewire')
   backup=('etc/pipewire/pipewire.conf'
           'etc/pipewire/media-session.d/alsa-monitor.conf'
+          'etc/pipewire/media-session.d/bluez-monitor.conf'
           'etc/pipewire/media-session.d/media-session.conf'
+          'etc/pipewire/media-session.d/v4l2-monitor.conf'
           )
   install=pipewire-git.install
 
@@ -130,12 +130,12 @@ package_pipewire-git() {
   _pick jack usr/lib/spa-0.2/jack
   _pick jack usr/share/man/man1/pw-jack.1
 
-  # Use alsa-card-profiles built with Pulseaudio
-  rm -rv "$pkgdir"/usr/share/alsa-card-profile
-
   _pick pulse etc/pipewire/media-session.d/with-pulseaudio
 
   _pick ffmpeg usr/lib/spa-0.2/ffmpeg/libspa-ffmpeg.so
+
+  # Use alsa-card-profiles built with Pulseaudio
+  rm -rv "$pkgdir"/usr/share/alsa-card-profile
 
 }
 
@@ -160,20 +160,6 @@ package_pipewire-jack-git() {
   mv jack/* "${pkgdir}"
 }
 
-package_pipewire-alsa-git() {
-  pkgdesc="ALSA Configuration for PipeWire (ALSA support)(GIT version)"
-  depends=('pipewire'
-           "libpipewire-${pkgver:0:3}.so"
-           )
-  provides=('pipewire-alsa')
-  conflicts=('pipewire-alsa')
-  arch=('any')
-
-  mkdir -p "$pkgdir"/etc/{alsa/conf.d,pipewire/media-session.d}
-  ln -st "${pkgdir}/etc/alsa/conf.d" /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf
-  touch "$pkgdir/etc/pipewire/media-session.d/with-alsa"
-}
-
 package_pipewire-pulse-git() {
   pkgdesc='Server and user space API to deal with multimedia pipelines. (Pulse support)(GIT version)'
   depends=('pipewire'
@@ -191,6 +177,20 @@ package_pipewire-pulse-git() {
   install=pipewire-pulse.install
 
   mv pulse/* "${pkgdir}"
+}
+
+package_pipewire-alsa-git() {
+  pkgdesc="ALSA Configuration for PipeWire (ALSA support)(GIT version)"
+  depends=('pipewire'
+           "libpipewire-${pkgver:0:3}.so"
+           )
+  provides=('pipewire-alsa')
+  conflicts=('pipewire-alsa')
+  arch=('any')
+
+  mkdir -p "$pkgdir"/etc/{alsa/conf.d,pipewire/media-session.d}
+  ln -st "${pkgdir}/etc/alsa/conf.d" /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf
+  touch "$pkgdir/etc/pipewire/media-session.d/with-alsa"
 }
 
 package_pipewire-ffmpeg-git() {
