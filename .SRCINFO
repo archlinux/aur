@@ -1,7 +1,7 @@
 pkgbase = python-limits
 	pkgdesc = utilities to implement rate limiting
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alisaifee/limits/
 	arch = any
 	license = MIT
