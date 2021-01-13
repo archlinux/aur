@@ -3,7 +3,7 @@
 _module='interutils'
 pkgname="python-$_module"
 pkgver=0.12.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of utilities for creating interactive console scripts"
 arch=('any')
 url="https://pypi.org/project/$_module/"
@@ -21,6 +21,6 @@ build() {
 }
 
 package() {
-    cd $srcdir/${_pypiname}-${pkgver}
-    python setup.py install --root="${pkgdir}/" --optimize=1
+    cd $srcdir/${_module}-${pkgver}
+    python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 }

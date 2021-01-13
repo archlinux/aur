@@ -1,7 +1,7 @@
 pkgbase = python-interutils
 	pkgdesc = A collection of utilities for creating interactive console scripts
 	pkgver = 0.12.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/interutils/
 	arch = any
 	license = MIT
