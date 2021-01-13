@@ -2,15 +2,16 @@
 # Contributor: gost-engine
 
 pkgname=openssl-gost
-pkgver=r614.0c4da90
-pkgrel=3
+pkgver=r634.42a6213
+pkgrel=1
 pkgdesc='A reference implementation of the Russian GOST crypto algorithms for OpenSSL'
 url='https://github.com/gost-engine/engine/'
 license=('Apache License 2.0')
 arch=('x86_64')
 depends=('openssl')
 makedepends=('cmake' 'git')
-source=("${pkgname}::git+https://github.com/gost-engine/engine.git" "openssl-gost.cnf" "openssl-gost.install")
+_commit=42a6213fe3bab6003121069ef28a1419e2342b3c
+source=("${pkgname}::git+https://github.com/gost-engine/engine.git#commit=${_commit}" "openssl-gost.cnf" "openssl-gost.install")
 install='openssl-gost.install'
 sha256sums=('SKIP'
             '672bb57aed5e2016f72befb483a94bbda406f3b748f1db23347bb8dd54b62835'
