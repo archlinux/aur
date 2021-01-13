@@ -21,12 +21,12 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd libmikmod
+  cd mikmod
   git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
-  cd libmikmod
+  cd mikmod
   patch -Np1 -i ../cmake-man.diff
 }
 
@@ -34,7 +34,7 @@ build() {
   # cmake ignores CPPFLAGS
   CFLAGS+=" $CPPFLAGS"
 
-  cmake -H$libmikmod -Bbuild \
+  cmake -H$mikmod -Bbuild \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_DL=1
   cmake --build build
