@@ -1,8 +1,8 @@
 # Maintainer: Vyacheslav Konovalov <f4f7l1hvr@relay.firefox.com>
 
-_path=d9/2c/1ebd6a264c709993ba4ca593409f98f9ea0938698384138ea7d714d781ad
+_path=83/69/d6cb3246b9b0964dc90287b0692db0c578342f6a0e8c1a31cba5ea48dda9
 pkgname=deemix
-pkgver=2.0.5
+pkgver=2.0.11
 pkgrel=1
 pkgdesc='A barebone deezer downloader library'
 arch=(any)
@@ -12,7 +12,7 @@ depends=('python>=3.6' 'python-click' 'python-pycryptodomex' 'python-mutagen' 'p
     'python-eventlet' 'python-deezer-py')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/$_path/deemix-$pkgver.tar.gz")
-sha512sums=('5443367f5b1205349d098588d46a68aafdcc10f6cc8303d116a60ec00535b73214bf64d700da9e85ada5a786130f23a05744d9c53c44770d8e878cf8aa84926f')
+sha512sums=('0f352c13f2d6c18e19aa4b6ac3e4f3d2862cf54771de591fc7bbc31818807a8bdba607721a9941ebc57c04dec9c6c6bd12b36f812c272ed0b4a434c35a4ba1c2')
 
 pkgver() {
     cd deemix-$pkgver
