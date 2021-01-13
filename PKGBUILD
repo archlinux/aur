@@ -11,13 +11,13 @@ _pkgname=scidavis
 pkgname=scidavis-qt5
 pkgver=2.3.0
 _commit=${pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc="Application for Scientific Data Analysis and Visualization, fork of QtiPlot. Qt5 port"
 arch=('x86_64')
 url="http://scidavis.sourceforge.net/"
 license=('GPL')
 makedepends=('boost' 'cmake' 'qt5-tools'
-'sip' 'python-sip'
+'sip4' 'python-sip4'
 'qwt5-qt5>=5.2.3.1-2'
 'qwtplot3d-qt5>=0.2.7-3'
 )
