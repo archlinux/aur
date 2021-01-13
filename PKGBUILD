@@ -4,8 +4,8 @@
 
 pkgbase="ptpython"
 pkgname="ptpython"
-pkgver="3.0.9"
-pkgrel="2"
+pkgver="3.0.10"
+pkgrel="1"
 pkgdesc="Python REPL build on top of prompt_toolkit"
 arch=("any")
 url="https://github.com/prompt-toolkit/ptpython"
@@ -24,7 +24,7 @@ optdepends=(
 provides=("ptpython3")
 # source=("https://files.pythonhosted.org/packages/49/b7/e11d308880e24387e71eb81c2fc20e22aee573542be7cff540051334a59b/${pkgbase}-${pkgver}.tar.gz")
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/prompt-toolkit/ptpython/archive/${pkgver}.tar.gz")
-sha256sums=('ab7aff9b8eedd83085635f775c6cf28f1778692c000938e3a2e9461a02fe6bff')
+sha256sums=('4f2527d2add93ae5093c69929698261d2ecd4a7c1639e6429ce6cc99217cbf69')
 
 prepare() {
     cp -a "${srcdir}/${pkgbase}-${pkgver}" "${srcdir}/${pkgbase}2-${pkgver}"
