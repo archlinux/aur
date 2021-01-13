@@ -2,7 +2,7 @@
 # Contributor: frichtlm <frichtlm@gmail.com>
 
 _cranname=BH
-_cranver=1.72.0-3
+_cranver=1.75.0-0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -11,9 +11,8 @@ arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(BSL1.0)
 depends=(r)
-optdepends=()
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('6125aaade08e678496128a1f0ee79493')
+sha256sums=('ae4c10992607dd697663f60675a46a5770851da159330bb63c4a68890bdd6f5a')
 
 build() {
   cd "${srcdir}"
