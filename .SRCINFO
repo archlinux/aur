@@ -1,0 +1,16 @@
+pkgbase = sqlx-cli
+	pkgdesc = Command-line utility for SQLx, the Rust SQL toolkit.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://crates.io/crates/sqlx-cli
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = openssl
+	source = sqlx-cli.tar.gz::https://crates.io/api/v1/crates/sqlx-cli/0.2.0/download
+	sha512sums = 35ec6c85b3e8f3361781d080fe1f2925e52e8ceb72e0002103eee6547d5c647700d955197f337915f7ef74bdf347a43dff6127466c948d9ac80868f9c5cb56da
+
+pkgname = sqlx-cli
+
