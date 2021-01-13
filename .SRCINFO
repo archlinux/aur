@@ -1,0 +1,14 @@
+pkgbase = python-simple-salesforce
+	pkgdesc = A basic Salesforce.com REST API client.
+	pkgver = 1.10.1
+	pkgrel = 1
+	url = https://github.com/simple-salesforce/simple-salesforce
+	arch = any
+	license = GPL3
+	depends = python-requests
+	depends = python-authlib
+	source = https://github.com/simple-salesforce/simple-salesforce/archive/v1.10.1.tar.gz
+	sha256sums = fdb211c569eb9d06b84bd024fe78e39200e1d4eb408e48025a331dfa591f2393
+
+pkgname = python-simple-salesforce
+
