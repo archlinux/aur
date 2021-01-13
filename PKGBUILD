@@ -16,8 +16,9 @@ url="https://www.gitkraken.com/"
 provides=('gitkraken')
 arch=('x86_64')
 license=('custom')
-depends=('nss' 'libxtst' 'org.freedesktop.secrets' 'alsa-lib' 'libxss')
-optdepends=('git-lfs: git-lfs support')
+depends=('nss' 'libxtst' 'alsa-lib' 'libxss')
+optdepends=('git-lfs: git-lfs support'
+            'org.freedesktop.secrets: Provides ways to store passwords and encryption keys')
 makedepends=()
 backup=()
 install=''
