@@ -1,0 +1,14 @@
+pkgbase = nextcloud-sync-cron-git
+	pkgdesc = Script to run the Linux/Unix Nextcloud command line client in a cron job.
+	pkgver = r14.cf3fc63
+	pkgrel = 1
+	url = https://github.com/qcif/nextcloud-sync-cron
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = curl
+	source = git+https://github.com/qcif/nextcloud-sync-cron.git
+	sha256sums = SKIP
+
+pkgname = nextcloud-sync-cron-git
+
