@@ -2,7 +2,7 @@
 
 _pkgname=suil
 pkgname="${_pkgname}-git"
-pkgver=0.10.7.r343.b402ae4
+pkgver=0.10.11.r396.6e556e0
 pkgrel=1
 pkgdesc="Lightweight C library for loading and wrapping LV2 plugin UIs (git version)"
 arch=('i686' 'x86_64')
@@ -42,8 +42,7 @@ build() {
 
   python waf configure \
     --prefix=/usr \
-    --configdir=/etc \
-    --no-qt4
+    --configdir=/etc
   python waf build $MAKEFLAGS
 }
 
