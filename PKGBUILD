@@ -26,7 +26,11 @@ _categories='Network;Utility'
 
 prepare() {
     # Generate desktop file
-    gendesk -f -n
+    gendesk -f -n --pkgname "${pkgname}" --pkgdesc "${pkgdesc}" \
+        --name 'Hamsket' \
+        --genericname 'Network tool aggregator' \
+        --categories 'Network;Utility' \
+        --exec '/usr/bin/hamsket -- %u'
 
     # Get electron version from pacman, and insert the version to package.json
     _ver="$(pacman -Q electron | cut -d " " -f2 | cut -d "-" -f1)"
