@@ -1,0 +1,35 @@
+pkgbase = lua-colors-git
+	pkgdesc = HSL Color Theory Computation in Lua
+	pkgver = 8.05.26.r7.gf373e79
+	pkgrel = 1
+	url = https://github.com/yuri/lua-colors
+	arch = any
+	license = MIT
+	makedepends = lua
+	makedepends = lua53
+	makedepends = lua52
+	makedepends = lua51
+	makedepends = luarocks
+	source = lua-colors-repo::git+https://github.com/yuri/lua-colors.git
+	sha256sums = SKIP
+
+pkgname = lua-colors-git
+	depends = lua
+	provides = lua-colors
+	conflicts = lua-colors
+
+pkgname = lua53-colors-git
+	depends = lua53
+	provides = lua53-colors
+	conflicts = lua53-colors
+
+pkgname = lua52-colors-git
+	depends = lua52
+	provides = lua52-colors
+	conflicts = lua52-colors
+
+pkgname = lua51-colors-git
+	depends = lua51
+	provides = lua51-colors
+	conflicts = lua51-colors
+
