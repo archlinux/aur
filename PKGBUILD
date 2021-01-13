@@ -1,10 +1,11 @@
 # Submbitter: Eric Bélanger <eric@archlinux.org>
 # Contributor: McNoggins <gagnon88 (at) gmail (dot) com>
-# Maintainer: zoe <chp321 (at) gmail (dot) com>
+# Contributor: zoe <chp321 (at) gmail (dot) com>
+# Maintainer: Francesco Zardi <frazar0 (at) hotmail (dot) it>
 
 pkgname=qt3
 pkgver=3.3.8b
-pkgrel=12
+pkgrel=13
 epoch=1
 pkgdesc="A cross-platform application and UI framework"
 arch=('i686' 'x86_64')
@@ -12,19 +13,17 @@ url="http://qt.io"
 license=('GPL')
 depends=('libpng' 'libxmu' 'libxcursor' 'libxinerama' 'glu' 'libxft'
          'libxrandr' 'libmng' 'libunistring' 'libnsl' 'libtirpc')
-makedepends=('mariadb' 'postgresql' 'unixodbc' 'sqlite' 'mesa')
+makedepends=('unixodbc' 'sqlite' 'mesa')
 optdepends=('qtchooser: set the default Qt toolkit'
-            'libmariadbclient: MariaDB driver'
-            'postgresql-libs: PostgreSQL driver'
             'unixodbc: ODBC driver')
 options=('!docs')
 source=(http://download.qt.io/archive/qt/3/qt-x11-free-${pkgver}.tar.gz
-        qt3-png15.patch 
-        qt-copy-kde-patches.tar.bz2 
+        qt3-png15.patch
+        qt-copy-kde-patches.tar.bz2
         qt-patches.tar.bz2
-        eastern_asian_languagues.diff 
-        qt-odbc.patch 
-        gcc-4.6.patch 
+        eastern_asian_languagues.diff
+        qt-odbc.patch
+        gcc-4.6.patch
         qt-x11-free-3.3.5-makelibshared.patch)
 sha256sums=('1b7a1ff62ec5a9cb7a388e2ba28fda6f960b27f27999482ebeceeadb72ac9f6e'
             '1f8a1aa1d9c5eee8cdbc91b1c6d5a5bae62f422480fee383a1753bc7eac7741c'
@@ -42,20 +41,20 @@ prepare() {
   cd qt-x11-free-${pkgver}
   # apply qt patches from kde.org
   for i in ../qt-copy-kde-patches/*; do
-    patch -p0 -i $i 
+    patch -p0 -i $i
   done
   # apply other qt patches and one security fix from debian/gentoo
   for i in ../qt-patches/*; do
-    patch -p1 -i $i 
+    patch -p1 -i $i
   done
   # fix CJK font/chars select error (FS#11245)
-  patch -p1 -i "${srcdir}"/eastern_asian_languagues.diff 
+  patch -p1 -i "${srcdir}"/eastern_asian_languagues.diff
   # fix build problem against new unixODBC
-  patch -p1 -i "${srcdir}"/qt-odbc.patch 
+  patch -p1 -i "${srcdir}"/qt-odbc.patch
   # fix build with gcc 4.6.0
   patch -p1 -i "${srcdir}"/gcc-4.6.patch
-  patch -p0 -i "${srcdir}"/qt3-png15.patch 
- 
+  patch -p0 -i "${srcdir}"/qt3-png15.patch
+
   patch -p1 -i "${srcdir}"/qt-x11-free-3.3.5-makelibshared.patch
 
   sed -i "s|-O2|$CXXFLAGS|" mkspecs/linux-g++{,-32,-64}/qmake.conf
@@ -70,7 +69,7 @@ build() {
   export QMAKESPEC=$QTDIR/mkspecs/linux-g++
 
   if [ "$CARCH" = "x86_64" ]; then
-      export ARCH="-64"	
+      export ARCH="-64"
     else unset ARCH
   fi
 
@@ -95,7 +94,7 @@ build() {
     -stl \
     -system-lib{png,jpeg,mng} \
     -no-g++-exceptions \
-    -plugin-sql-{mysql,psql,sqlite,odbc}
+    -plugin-sql-{sqlite,odbc} #-plugin-sql-{mysql,psql,sqlite,odbc}
 
   make
 }
@@ -105,7 +104,7 @@ package() {
   make INSTALL_ROOT="${pkgdir}" install
   sed -i -e "s|-L${srcdir}/qt-x11-free-${pkgver}/lib ||g" -e "s|${srcdir}/||g" "${pkgdir}"/usr/lib/*.prl
   rm -rf "${pkgdir}"/usr/share/qt3/{phrasebooks,templates,translations}
-  rm -rf "${pkgdir}"/usr/share/qt3/mkspecs/{aix*,*bsd*,cygwin*,dgux*,darwin*,hpux*,hurd*,irix*,linux-g++$ARCH/linux-g++$ARCH,lynxos*,macx*,qnx*,reliant*,sco*,solaris*,tru64*,unixware*,win32*} 
+  rm -rf "${pkgdir}"/usr/share/qt3/mkspecs/{aix*,*bsd*,cygwin*,dgux*,darwin*,hpux*,hurd*,irix*,linux-g++$ARCH/linux-g++$ARCH,lynxos*,macx*,qnx*,reliant*,sco*,solaris*,tru64*,unixware*,win32*}
 
 # install man pages
   install -d -m755 "${pkgdir}"/usr/share/man
