@@ -7,7 +7,7 @@
 pkgname=vlink
 pkgver=0.16g
 _pkgver="0_16g"
-pkgrel=2
+pkgrel=1
 pkgdesc="A portable linker for multiple file formats including AmigaOS hunk format. A companion to the vasm assembler."
 arch=('any')
 url="http://sun.hasenbraten.de/vlink/"
