@@ -5,7 +5,7 @@ pkg_case=MineOnline
 pkgdev=codieradical
 depends=('jre8' 'jq')
 pkgver=$(curl -s "https://api.github.com/repos/codieradical/MineOnline/releases/latest" | jq -r '.tag_name')
-pkgrel=1
+pkgrel=2
 pkgdesc="Launch old versions of Minecraft just as you remembered them, only without a browser."
 url="http://mineonline.codie.gg"
 license=('CCPL:by-nc')
@@ -18,7 +18,7 @@ noextract=('MineOnline.jar')
 md5sums=('SKIP'
 		 'ee7c23b2f3f53e811960769c676b788b'
 		 '21c69aad5d0faae6e05271651631c7ca'
-		 '4dcd0b3e90b5ce932b9a5048ce0c9a13')
+		 '199197ea135ff706fc3fc9a35e5eca20')
 
 package() {
 	cd $srcdir
