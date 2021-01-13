@@ -2,12 +2,12 @@
 
 pkgname=rescuetime2
 pkgver=2.16.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Application time-tracking for Linux. Stable version"
 arch=('i686' 'x86_64')
 url=https://www.rescuetime.com
 license=('proprietary')
-depends=('sqlite' 'qt5-base' 'xorg-xprop' 'xprintidle')
+depends=('sqlite' 'qt5-base' 'xorg-xprop' 'xprintidle' 'inetutils')
 makedepends=('gendesk')
 conflicts=('rescuetime')
 source_i686=("${pkgname}_${pkgver}_i686.deb"::"$url/installers/rescuetime_current_i386.deb")
