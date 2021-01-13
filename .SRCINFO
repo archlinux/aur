@@ -1,7 +1,7 @@
 pkgbase = pyosmium
 	pkgdesc = Python bindings for libosmium, the data processing library for OSM data
-	pkgver = 3.1.0
-	pkgrel = 2
+	pkgver = 3.1.2
+	pkgrel = 1
 	url = https://osmcode.org/pyosmium
 	arch = x86_64
 	license = BSD
@@ -10,8 +10,8 @@ pkgbase = pyosmium
 	depends = python
 	depends = libosmium
 	depends = pybind11
-	source = https://files.pythonhosted.org/packages/source/o/osmium/osmium-3.1.0.tar.gz
-	sha256sums = f19ad99acf2ec002f5a06c4c4f34129e220736c8d0ebb2b61e151dfdcd18545e
+	source = https://files.pythonhosted.org/packages/source/o/osmium/osmium-3.1.2.tar.gz
+	sha256sums = 2add625aa9db1910cce9d0670cbe89192278682cc9a9ccd3a88ceca9005398cd
 
 pkgname = pyosmium
 
