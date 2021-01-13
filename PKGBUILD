@@ -1,8 +1,9 @@
 # Maintainer: KopfKrieg <archlinux at absolem dot cc>
 # Contributor: Daniel Wyatt <Daniel.Wyatt at gmail dot com>
+# Contributor: André Fettouhi <a.fettouhi at gmail dot com>
 pkgname=brother-hll2375dw
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Brother HL-L2375DW CUPS driver'
 arch=('i686' 'x86_64')
 url='http://www.brother.com'
