@@ -15,8 +15,6 @@ pkgbase = libmikmod-git
 	provides = libmikmod
 	conflicts = libmikmod
 	source = git://git.code.sf.net/p/mikmod/mikmod.git
-	source = cmake-man.diff
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = libmikmod-git
