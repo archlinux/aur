@@ -1,7 +1,7 @@
 pkgbase = mineonline
 	pkgdesc = Launch old versions of Minecraft just as you remembered them, only without a browser.
 	pkgver = 3.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://mineonline.codie.gg
 	arch = any
 	license = CCPL:by-nc
@@ -15,7 +15,7 @@ pkgbase = mineonline
 	md5sums = SKIP
 	md5sums = ee7c23b2f3f53e811960769c676b788b
 	md5sums = 7b03ae414098babec81c613bd7b8fe5b
-	md5sums = 199197ea135ff706fc3fc9a35e5eca20
+	md5sums = f71684f402cd53a32be3b8d2cc05964b
 
 pkgname = mineonline
 

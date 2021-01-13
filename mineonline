@@ -1,3 +1,2 @@
 #!/bin/sh
-export PATH="/usr/lib/jvm/java-8-jre/jre/bin/:$PATH"
-exec /usr/bin/java -jar '/usr/share/java/mineonline/MineOnline.jar' "$@"
+exec /usr/lib/jvm/java-8-jre/jre/bin/java -jar /usr/share/java/mineonline/MineOnline.jar "$@"
