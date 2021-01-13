@@ -3,7 +3,7 @@
 # 
 
 pkgname=idris2
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Funtional Programming Lanugage with Dependent Types"
 url="https://www.idris-lang.org/"
@@ -12,7 +12,7 @@ arch=('x86_64')
 depends=('chez-scheme')
 makedepends=('git')
 source=("https://www.idris-lang.org/idris2-src/idris2-${pkgver}.tgz")
-sha256sums=('8a32f6e93479deaf7674671ce7f06e5cc3c32afc10dccb96bd0aed34d47e9334')
+sha256sums=('faadedda48e103163af1cc3edaf646321c8eec43e1ec45c7b0f85c14334449e3')
 
 _srcname="Idris2-$pkgver"
 
