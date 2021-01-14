@@ -19,6 +19,6 @@ pkgbase = qtrans
 	depends = zlib
 	depends = hicolor-icon-theme
 	source = https://sourceforge.net/project/qtrans0/kf5/0.3.2.7/qtrans-0.3.2.7.tar.gz
-	md5sums = 5368cc1d208d69c20a489dc5f5f424b6
+	md5sums = 9ed620bff53cffb0eedda206335352ad
 
 pkgname = qtrans

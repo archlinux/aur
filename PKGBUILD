@@ -14,7 +14,7 @@ depends=('qt5-base' 'kconfig' 'ki18n' 'ktextwidgets' 'qt5-webkit' 'kcoreaddons' 
 #optdepends=('')
 makedepends=('git')
 source=("https://sourceforge.net/project/qtrans0/kf5/0.3.2.7/qtrans-0.3.2.7.tar.gz")
-sha256sums=('7bef3ac19eeb19b3c3be49aef364cd8abbf99102cc3d2c816e137c28f925df0a')
+sha256sums=('5a19be0354752ced0abe4ee2449db2d3a669c3227343fbbcf479a3a21edda362')
 
 prepare() {
     mkdir -p build
