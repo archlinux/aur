@@ -1,11 +1,12 @@
 pkgbase = interminal
 	pkgdesc = Utility for launching commands in a GUI terminal
 	pkgver = 0.3.7
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/chrisjbillington/interminal
 	arch = any
 	license = BSD
 	depends = python
+	depends = python-pexpect
 	source = https://files.pythonhosted.org/packages/source/i/interminal/interminal-0.3.7.tar.gz
 	sha256sums = 2eee41cae9cc5e2885c29be6eac9e175a5f5b44be8d17153862db09c087f37e0
 

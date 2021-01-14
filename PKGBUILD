@@ -1,10 +1,10 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 pkgname=interminal
 pkgver=0.3.7
-pkgrel=4
+pkgrel=5
 pkgdesc="Utility for launching commands in a GUI terminal"
 url="https://github.com/chrisjbillington/interminal"
-depends=('python' )
+depends=('python' 'python-pexpect')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
