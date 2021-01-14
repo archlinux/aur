@@ -2,7 +2,7 @@
 
 pkgbase=linux-vanilla-selinux
 pkgname=linux-vanilla-selinux
-pkgver=5.10.1
+pkgver=5.10.7
 pkgrel=1
 pkgdesc="Vanilla-Linux-Kernel from kernel.org with Selinux enabled"
 arch=('x86_64')
@@ -25,9 +25,9 @@ validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torva
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
               )
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
-sha512sums=('5b6cc32f2daa1de35ceeb0007536d6e49776064370d94f8d77c19cefc97e88c47ff55cb4c6add7c49189e7203ff44a05ffacf3c0f4b766f719d6df1a110f95bb'
-            'b15265e6402462e656497a53e94cd0cbfcbcfdf2e0f66c5f6244a4ce8658b8985583b4932127db44f8449de94ee681a2ec9b530829c976f375ccffc1772a8877'
-	    '1caaa9fc39c0a6478e65c488697979fad5576307f17e3f53cb745722e23f28fbd59a347d27dcbb8c6e70c46c06813ffc2b75bc1ad3a139929072fe780dc00dd4'
+sha512sums=('d639ee7ddd8071b1b54354e68034508bd32a3d2b8eb50ab4aa0f64f3beac9d4ce4f7940ba1848f9903ee827f7cad1a2625185eb4071b0f348bc4639af6f41d9a'
+            '37808aaffc5f249368704bf5df1e12c42ca77041dc2ca2baf0eb52fe7128c999570ba78aa1c326939d189e33b24b8997b16888f5f2869b6fdf915b70cb58c5d9'
+	    '9fcf0343b80eb5bbf1781b626ec2669acc94b33f20e29158c5c29e76318800d4b7f6e7a8fd909960f7d768a04781de47fad46aa5c6c8f579cebcec13d0000188'
 	    'fc52feda32be644deeadf267fdff124ffcc0d0870c36e736024a7be0958ba4b50cea5ef0ec33c2681ad00f36b42ebed354fa3e63bd4827acbeedebc39029229c'
             '7132a74149b39e30f57a0ef70330fbdf8f38a33bd88ba94f1115de098319e41af0ae86091a1e610e209fc87a9823f69da5c883b0a2fd7adc203578cc4ab08733'
             '06481e0492d8ec0f353672fbd1d71322b105849871975f434f87bcb33ca898f85407403ba935153e5d8cca44fea62bfbb43404871d12f26891579067a36fae19'
