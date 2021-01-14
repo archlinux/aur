@@ -2,7 +2,7 @@
 
 pkgname=quickmedia-git
 pkgver=r522.ebfa5dd
-pkgrel=1
+pkgrel=2
 pkgdesc='A dmenu-inspired native client for web services. Supports youtube, nyaa.si, 4chan, matrix and several manga sites.'
 arch=('x86_64')
 url="https://git.dec05eba.com/QuickMedia"
