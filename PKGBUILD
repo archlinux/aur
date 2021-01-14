@@ -2,7 +2,7 @@
 
 pkgname=wp-cli
 pkgver=2.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A command-line tool for managing WordPress"
 url="http://wp-cli.org/"
 arch=('any')
@@ -18,8 +18,8 @@ md5sums=('ea149787cacc1b8f2e76730573d97874')
 
 build() {
   cd "${pkgname}-bundle-${pkgver}"
-  echo "Replacing mustache release to fix PHP 7.4 comatibility..."
-  sed -i 's/fe8fe72e9d580591854de404cc59a1b83ca4d19e/e95c5a008c23d3151d59ea72484d4f72049ab7f4/g' composer.lock
+  echo "Applying composer 2.x compatibility patch..."
+  composer update cweagans/composer-patches:1.7.0 dealerdirect/phpcodesniffer-composer-installer wp-cli/wp-cli-tests:v2.1.13
   composer install --no-interaction --prefer-dist --no-scripts && composer dump
   echo -n "Building phar... "
   php -dphar.readonly=0 utils/make-phar.php wp-cli.phar --quiet

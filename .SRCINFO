@@ -1,7 +1,7 @@
 pkgbase = wp-cli
 	pkgdesc = A command-line tool for managing WordPress
 	pkgver = 2.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://wp-cli.org/
 	arch = any
 	license = MIT
