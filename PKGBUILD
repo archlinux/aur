@@ -1,7 +1,7 @@
 # Maintainer: shulhan <ms@kilabit.info>
 
 pkgname=stackdriver-collectd
-pkgver=6.1.0
+pkgver=6.1.1
 pkgrel=1
 
 pkgdesc="Stackdriver's monitoring agent based on collectd"
@@ -41,7 +41,7 @@ source=(
 	"stackdriver-collectd.service"
 	"stackdriver-collectd.sh"
 )
-md5sums=('fef6db9b22153903ed98d4c888ccc35a'
+md5sums=('1ed478600f2843019dc239e2206bff86'
          '7a2c4528d4ff161d7ac665daedc5fb3c'
          '251922321b6d566c8f1750402e4cfd21'
          'e4da9e61c35f6d74d3d76a02eb441ff2')
