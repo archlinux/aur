@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-base-local-planner
 	pkgdesc = ROS - This package provides implementations of the Trajectory Rollout and Dynamic Window approaches to local robot navigation on a plane.
 	pkgver = 1.16.7
-	pkgrel = 15
+	pkgrel = 16
 	url = https://wiki.ros.org/base_local_planner
 	arch = i686
 	arch = x86_64

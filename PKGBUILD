@@ -1,11 +1,10 @@
-# Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - This package provides implementations of the Trajectory Rollout and Dynamic Window approaches to local robot navigation on a plane."
 url='https://wiki.ros.org/base_local_planner'
 
 pkgname='ros-melodic-base-local-planner'
 pkgver='1.16.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=15
+pkgrel=16
 license=('BSD')
 
 ros_makedepends=(ros-melodic-angles
@@ -53,13 +52,6 @@ ros_depends=(ros-melodic-angles
   ros-melodic-voxel-grid)
 depends=(${ros_depends[@]} 'eigen')
 
-# Git version (e.g. for debugging)
-# _tag=release/melodic/base_local_planner/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
 _dir="navigation-${pkgver}/base_local_planner"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/navigation/archive/${pkgver}.tar.gz")
 sha256sums=('3a4ee70949a07d4f5f84deddb2ee8a4314bc143d10fb2054b90683c7f92a2f33')
@@ -82,7 +74,9 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DBOOST_ROOT=/opt/boost1.69 \
+        -DBoost_NO_SYSTEM_PATHS=TRUE
   make
 }
 
