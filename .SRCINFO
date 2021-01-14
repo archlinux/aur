@@ -1,0 +1,17 @@
+pkgbase = python-data-science-types
+	pkgdesc = Python port of the parser used internally by GNU bash
+	pkgver = 0.2.22
+	pkgrel = 1
+	url = https://github.com/predictive-analytics-lab/data-science-types
+	arch = any
+	license = GPL3
+	depends = python
+	depends = mypy
+	optdepends = python-numpy: for numpy support
+	optdepends = python-pandas: for pandas support
+	optdepends = python-matplotlib: for matplotlib support
+	source = https://github.com/predictive-analytics-lab/data-science-types/archive/v0.2.22.tar.gz
+	sha256sums = 89b3c3f742303e1922488ebc02b9660d1db55d8f80f5c49f87977f1c1a4572c2
+
+pkgname = python-data-science-types
+
