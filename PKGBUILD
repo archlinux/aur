@@ -1,10 +1,11 @@
-# Maintainer: Evgeniy Alekseev <arcanis at archlinux dot org>
+# Maintainer: Camille Monière <draslorus at draslorus dot fr>
+# Contributor: Evgeniy Alekseev <arcanis at archlinux dot org>
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 # Contributor: Alexander Rødseth <rodseth at gmail dot com>
 # Contributor: William Rea <sillywilly at gmail dot com>
 
 pkgname=libmatio
-pkgver=1.5.17
+pkgver=1.5.19
 pkgrel=1
 pkgdesc='C library with a fortran 90/95 module interface for reading/writing MATLAB MAT-files'
 arch=('x86_64')
@@ -14,11 +15,13 @@ depends=('zlib' 'hdf5')
 options=('!emptydirs')
 source=("https://downloads.sourceforge.net/matio/matio-${pkgver}.tar.gz")
 changelog=ChangeLog
-sha512sums=('af8ff11c7c44fea9ea6886e381f49ef9186946f3def98ad9695f2d5d1df045c35e8f4ceac12a44be397f7bbd708b4803762b5ce54c45b60a9f446d551c04f5d2')
+sha512sums=('c087944a7d87d78a7de662d7e19f5f81c55858cf5bf315c28d5a0f7544555b0816045e20bb0c83752eb3d54b589d9237a27cf3de98e3ebefcc7ea0af9311740e')
 
 build() {
   cd "matio-${pkgver}"
-  ./configure --prefix=/usr --enable-shared --with-hdf5
+  ./configure --prefix=/usr --enable-shared --with-hdf5 \
+	--enable-mat73='yes' --with-default-file-ver='7.3' \
+	--with-matlab=/dev/null
   make
 }
 
