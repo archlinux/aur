@@ -1,6 +1,6 @@
 pkgbase = python-aur-deploy
 	pkgdesc = Automate updating pkgbuild and deploying to AUR
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/codeswhite/aur-deploy
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-aur-deploy
 	depends = python-beautifulsoup4
 	depends = pip2pkgbuild
 	depends = python-interutils
-	source = https://files.pythonhosted.org/packages/source/a/aur-deploy/aur-deploy-0.9.1.tar.gz
-	sha256sums = bae003e03dc1c88d1b9a7c23ee97aa19fea09f5a1e60a41c12684ee723714f22
+	source = https://files.pythonhosted.org/packages/source/a/aur-deploy/aur-deploy-0.9.2.tar.gz
+	sha256sums = 208e22705aa268880cadce344f3b7b1dc611e7f53a08029993e6693d6f492fd3
 
 pkgname = python-aur-deploy
 	depends = python
