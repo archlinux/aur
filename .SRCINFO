@@ -1,6 +1,6 @@
 pkgbase = qgroundcontrol
 	pkgdesc = Micro air vehicle ground control station.
-	pkgver = 4.0.11
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/mavlink/qgroundcontrol
 	arch = x86_64
@@ -43,18 +43,18 @@ pkgbase = qgroundcontrol
 	depends = qt5-tools
 	depends = qt5-wayland
 	depends = qt5-x11extras
-	source = qgroundcontrol-4.0.11.tar.gz::https://github.com/mavlink/qgroundcontrol/archive/v4.0.11.tar.gz
-	source = gps-drivers-qgc4.0.11.tar.gz::https://github.com/PX4/GpsDrivers/archive/2a4865adc3808687d6c6f550f497a02eb920c382.tar.gz
-	source = mavlink-v2.0-qgc4.0.11.tar.gz::https://github.com/mavlink/c_library_v2/archive/cf28669660332f9348994ae0e323582d8d19d704.tar.gz
-	source = aossl-qgc4.0.11.tar.gz::https://github.com/Auterion/android_openssl/archive/3aaff1bd9e35047abdb363239bb3e3c114d07ea1.tar.gz
-	source = gst-plugins-good-qgc4.0.11.tar.gz::https://github.com/mavlink/gst-plugins-good/archive/9d782fad9dc0384ba86ecae64511c193f6149f93.tar.gz
-	source = libcudata-qgc.patch
-	sha256sums = cf36a001fc04aeb7689f6ab7e9ca957c787fad304375d2903ea4653407b54396
-	sha256sums = 11fea11460eaaedf6007c56d2263b3fb9925a523cdf6f11ee79d2bbe12f9c7bb
-	sha256sums = 46aefd64c24a48158e953467c432ac25c067ec93bff8704cd8af925a90aab5c8
+	source = qgroundcontrol-4.1.0.tar.gz::https://github.com/mavlink/qgroundcontrol/archive/v4.1.0.tar.gz
+	source = gps-drivers-qgc4.1.0.tar.gz::https://github.com/PX4/GpsDrivers/archive/5afc11588b2b6ec0861ecf9ef673c7a9e2109129.tar.gz
+	source = mavlink-v2.0-qgc4.1.0.tar.gz::https://github.com/mavlink/c_library_v2/archive/5637057af5ab8ec5667e3f8e5f8c73d3bc60eed8.tar.gz
+	source = aossl-qgc4.1.0.tar.gz::https://github.com/Auterion/android_openssl/archive/3aaff1bd9e35047abdb363239bb3e3c114d07ea1.tar.gz
+	source = gst-plugins-good-qgc4.1.0.tar.gz::https://github.com/mavlink/gst-plugins-good/archive/9d782fad9dc0384ba86ecae64511c193f6149f93.tar.gz
+	source = libicudata-qgc.patch::https://patch-diff.githubusercontent.com/raw/mavlink/qgroundcontrol/pull/9332.patch
+	sha256sums = 9a9c67e293290e296aa6716441f8ff5b7d9006286e2a6d8c145e283eab75e310
+	sha256sums = 9d158a4f611d605714ec0b6f643ab9ee02be6f64d67d8ba823fbc4bb29d853f2
+	sha256sums = 9f251211db18eb0e1b636033a0eae7344ff88718cc61ae46249ca628e906de2e
 	sha256sums = 93598e63fbbd86fec5e15f2596bba8b1f1654c854a99222099516933fd22a118
 	sha256sums = d5aad13c8eff7f3cce75c8cf3bbf6ac592ac82455e666dccd17cf006deec3e55
-	sha256sums = d65862686e39f30245b8684b33db8f32074f683c934f5c964c3ffe8a288b7d61
+	sha256sums = SKIP
 
 pkgname = qgroundcontrol
 
