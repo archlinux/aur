@@ -1,0 +1,45 @@
+pkgbase = linux-uek
+	pkgdesc = Linux
+	pkgver = 5.4.17.2102.200.0
+	pkgrel = 1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.4.17-2102.200.0
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = git
+	makedepends = libdtrace-ctf
+	optdepends = dtrace-utils: DTrace port to Linux
+	options = !strip
+	source = linux-uek::git+https://github.com/oracle/linux-uek.git#tag=v5.4.17-2102.200.0
+	source = sphinx-workaround.patch
+	sha256sums = SKIP
+	sha256sums = b7c814c8183e4645947a6dcc3cbf80431de8a8fd4e895b780f9a5fd92f82cb8e
+
+pkgname = linux-uek
+	pkgdesc = The Linux kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
+
+pkgname = linux-uek-headers
+	pkgdesc = Headers and scripts for building modules for the Linux kernel
+
+pkgname = linux-uek-docs
+	pkgdesc = Documentation for the Linux kernel
+
