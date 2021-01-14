@@ -1,13 +1,13 @@
 # Maintainer: Ryan Farley <ryan.farley@gmx.com>
 
 pkgname=waynergy-git
-pkgver=r105.327f459
+pkgver=r114.7f207eb
 pkgrel=1
 pkgdesc="Synergy client for wlroots wayland compositors"
 arch=(x86_64)
 url="https://github.com/r-c-f/waynergy"
 license=('MIT')
-depends=('wayland')
+depends=('libxkbcommon' 'wayland')
 makedepends=(git meson ninja)
 optdepends=('wl-clipboard: Clipboard synchronization support')
 provides=("${pkgname%-git}")
