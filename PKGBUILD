@@ -1,20 +1,20 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
 pkgname=patroneo
-pkgver=1.7
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="An easy to use pattern based midi sequencer"
 arch=('x86_64')
 url="https://www.laborejo.org/patroneo.git/"
 license=('GPL3')
 groups=('pro-audio')
 depends=('glibc' 'hicolor-icon-theme' 'python' 'python-pyqt5' 'ttf-dejavu')
-makedepends=('glib2' 'jack' 'libsndfile' 'util-linux-libs' 'nuitka')
-optdepends=('non-session-manager: Session management')
+makedepends=('glib2' 'jack' 'libsndfile' 'util-linux-libs')
+optdepends=('new-session-manager: for session management')
 source=("https://www.laborejo.org/downloads/${pkgname}-${pkgver}.tar.gz"{,.sig})
-sha512sums=('f2d1dfaad07b61c20c186c20789fbcd471dd74a7bf5a19831d64822fd452e1dc7a5174f28dd3161b86b8c29d67bffb33cac6d43126314ca94e06370d4f0f8ac9'
+sha512sums=('03b5be3301b3d940c90506ff3ecd28097b256e7e0cd7f3a9d2c1e17598c82fd7be0541b2c0e640971b3cb2e4168350a3b9b65913845b4bdace19681b09dedecb'
             'SKIP')
-b2sums=('20db86028d67800ad6aeed86eb06450e4637572d3fbb1a1c93c5df2e54482f042f1cbbf4a3b7eb9f6bd66c6be1acee2a739f91afc52ebd4841d78787034646e1'
+b2sums=('dec29a390fe70fa3ea62c9c0480114a5c6ea251591531f572db1e6666e1a82a0b6b8e0427d33fa6f4ed417d5073a7e4c259da63b3db30591b03132309702da03'
         'SKIP')
 validpgpkeys=('45D952EF384ADFBB00913E3428C6A306F2909FEE') # Nils Hilbricht <nils@hilbricht.com>
 
