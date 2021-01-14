@@ -1,0 +1,52 @@
+From 9700cbf1784ea722dd2a7fed88f4f76cd7491564 Mon Sep 17 00:00:00 2001
+From: Jeffrey Altman <jaltman@auristor.com>
+Date: Thu, 14 Jan 2021 09:57:13 -0500
+Subject: [PATCH 4/4] rx: update_nextCid overflow handling is broken
+
+The overflow handling in update_nextCid() produces a rx_nextCid
+value of 0x80000001 which itself is an overflow.   When used
+to construct the first call of a new connection the connection
+id for the call becomes 0x80000002.
+
+If the same connection id is used for multiple connections from
+the same endpoint the accepting rx peer will be very confused.
+
+When authenticated connections are used, the CHALLENGE/RESPONSE
+will fail because of a mismatch in the connection's callNumber
+array.
+
+All communication from a broken initiator to any rx peer will
+fail.
+
+The incorrect overflow calculation was introduced by
+39b165cdda941181845022c183fea1c7af7e4356 ("Move epoch and cid
+generation into the rx core").
+
+This change corrects the overflow value to become
+
+  1 << RX_CIDSHIFT
+
+Change-Id: If36e3aa581d557cc0f4d2d478f84a6593224c3cc
+---
+ src/rx/rx.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/src/rx/rx.c b/src/rx/rx.c
+index e1e6d8fd6..5d5953120 100644
+--- a/src/rx/rx.c
++++ b/src/rx/rx.c
+@@ -6651,9 +6651,8 @@ update_nextCid(void)
+ {
+     /* Overflow is technically undefined behavior; avoid it. */
+     if (rx_nextCid > MAX_AFS_INT32 - (1 << RX_CIDSHIFT))
+-	rx_nextCid = -1 * ((MAX_AFS_INT32 / RX_CIDSHIFT) * RX_CIDSHIFT);
+-    else
+-	rx_nextCid += 1 << RX_CIDSHIFT;
++	rx_nextCid = 0;
++    rx_nextCid += 1 << RX_CIDSHIFT;
+ }
+ 
+ static void
+-- 
+2.30.0
+

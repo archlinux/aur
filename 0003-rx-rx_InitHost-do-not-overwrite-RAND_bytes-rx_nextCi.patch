@@ -1,0 +1,39 @@
+From c2c8cf8765e9c7ca0b07ae212ff59816f21faf53 Mon Sep 17 00:00:00 2001
+From: Jeffrey Altman <jaltman@auristor.com>
+Date: Thu, 14 Jan 2021 09:41:39 -0500
+Subject: [PATCH 3/4] rx: rx_InitHost do not overwrite RAND_bytes rx_nextCid
+
+39b165cdda941181845022c183fea1c7af7e4356 ("Move epoch and cid
+generation into the rx core") introduced the use of RAND_bytes()
+to generate the initial 'rx_nextCid' but failed to remove the
+
+  rx_nextCid = ((tv.tv_sec ^ tv.tv_usec) << RX_CIDSHIFT;
+
+assignment inherited from IBM/Transarc.
+
+At Thu, 14 Jan 2021 08:25:36 GMT the IBM inherited calculation
+overflows the value CID range.   This triggers broken overflow
+logic in update_nextCid().
+
+Change-Id: Ib7283def1ded9792d394133a3969a6d86f3a6123
+---
+ src/rx/rx.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/src/rx/rx.c b/src/rx/rx.c
+index 244838d9c..e1e6d8fd6 100644
+--- a/src/rx/rx.c
++++ b/src/rx/rx.c
+@@ -621,9 +621,6 @@ rx_InitHost(u_int host, u_int port)
+     MUTEX_ENTER(&rx_quota_mutex);
+     rxi_dataQuota += rx_extraQuota; /* + extra pkts caller asked to rsrv */
+     MUTEX_EXIT(&rx_quota_mutex);
+-    /* *Slightly* random start time for the cid.  This is just to help
+-     * out with the hashing function at the peer */
+-    rx_nextCid = ((tv.tv_sec ^ tv.tv_usec) << RX_CIDSHIFT);
+     rx_connHashTable = (struct rx_connection **)htable;
+     rx_peerHashTable = (struct rx_peer **)ptable;
+ 
+-- 
+2.30.0
+

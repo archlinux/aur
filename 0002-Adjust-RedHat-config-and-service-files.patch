@@ -1,7 +1,7 @@
-From 4d84dcc621373c7a146cf3e97dbaf600bb0dd219 Mon Sep 17 00:00:00 2001
+From c0f5be5ee08d8db59c0c0106bed56f602edf3cad Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Michael=20La=C3=9F?= <lass@mail.uni-paderborn.de>
 Date: Thu, 19 Feb 2015 19:34:00 +0100
-Subject: [PATCH 2/2] Adjust RedHat config and service files
+Subject: [PATCH 2/4] Adjust RedHat config and service files
 
 Basically we reuse upstream's config for RedHat but we change a few things:
 
@@ -66,5 +66,5 @@ index ac9d3c411..0a4b3bfea 100644
  
  [Install]
 -- 
-2.26.2
+2.30.0
 
