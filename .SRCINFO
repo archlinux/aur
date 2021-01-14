@@ -1,7 +1,7 @@
 pkgbase = 2048-gui-git
 	pkgdesc = Animated graphical 2048 sliding block puzzle game written in C and SDL2
 	pkgver = 58.dee05d0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/filiparag/asm2048
 	arch = any
 	license = MIT
@@ -16,7 +16,9 @@ pkgbase = 2048-gui-git
 	provides = 2048-gui
 	conflicts = 2048-gui
 	source = 2048-gui-git-source::git+https://github.com/filiparag/asm2048
+	source = release.diff
 	source = https://raw.githubusercontent.com/snwh/paper-icon-theme/master/Paper/512x512/apps/gnome-2048.png
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 

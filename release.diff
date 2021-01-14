@@ -1,0 +1,13 @@
+diff --git a/src/window/window.c b/src/window/window.c
+index 1bd46af..0fb2808 100644
+--- a/src/window/window.c
++++ b/src/window/window.c
+@@ -6,7 +6,7 @@ bool window_init(window_store* store) {
+ 		return false;
+ 	}
+ 	store->window = SDL_CreateWindow(
+-		"asm2048",
++		"2048",
+ 		SDL_WINDOW_VULKAN,
+ 		SDL_WINDOW_VULKAN,
+ 		BOARD_SIZE,

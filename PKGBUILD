@@ -3,7 +3,7 @@
 _pkgname="2048-gui"
 pkgname="${_pkgname}-git"
 pkgver=58.dee05d0
-pkgrel=1
+pkgrel=2
 pkgdesc="Animated graphical 2048 sliding block puzzle game written in C and SDL2"
 arch=('any')
 url="https://github.com/filiparag/asm2048"
@@ -12,8 +12,8 @@ makedepends=('cmake' 'git' 'gcc' 'make')
 depends=('glibc' 'sdl2' 'sdl2_gfx' 'sdl2_ttf')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${pkgname}-source::git+${url}" 'https://raw.githubusercontent.com/snwh/paper-icon-theme/master/Paper/512x512/apps/gnome-2048.png')
-sha256sums=('SKIP' 'SKIP')
+source=("${pkgname}-source::git+${url}" 'release.diff' 'https://raw.githubusercontent.com/snwh/paper-icon-theme/master/Paper/512x512/apps/gnome-2048.png')
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "${pkgname}-source"
@@ -49,7 +49,8 @@ Terminal=false
 StartupNotify=false
 Comment=Animated graphical 2048 sliding block puzzle game written in C and SDL2
 END
-
+  # Patch upstream with release-specific changes
+  git apply ../release.diff
 }
 
 build() {
