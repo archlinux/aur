@@ -2,17 +2,18 @@
 # Maintainer: pzl <alsoelp at gmail dot com>
 
 pkgname=jlink-software-and-documentation
-pkgver=6.94
-pkgrel=1
-epoch=33
+pkgver=6.94a
+pkgrel=0
+epoch=34
 pkgdesc="Segger JLink software & documentation pack for Linux"
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64' )
 license=('custom')
 groups=('jlink')
 depends=('glibc' 'libudev0-shim' 'patch')
 source_x86_64=("JLink_Linux_${pkgver/./}_x86_64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_x86_64.tgz")
 source_i686=("JLink_Linux_${pkgver/./}_i686.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_i386.tgz")
 source_armv7h=("JLink_Linux_${pkgver/./}_arm.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_arm.tgz")
+source_aarch64=("JLink_Linux_${pkgver/./}_arm64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_arm64.tgz")
 source=("99-jlink.rules.patch" "JLink.svg")
 desktops=(
         "JFlashExe.desktop"
@@ -36,9 +37,11 @@ desktops=(
 )
 source+=(${desktops[@]})
 echo ${sources}
-md5sums_i686=('081c33ffeabb0a8588da4e101cfa0b0d')
-md5sums_x86_64=('9deac082b4e0fc4bdf32e0cf267158ed')
-md5sums_armv7h=('4232249a15c70814de1533b5ca06f9cf')
+md5sums_i686=('91787f6e4883a79af81ce0b2fca7b6fe')
+md5sums_x86_64=('e21d9ed50a1d529bb5feb6d36e6c9b73')
+md5sums_armv7h=('38bd5731920654cf8191915d7c6549fb')
+md5sums_aarch64=('28703b7ef3c384e5a3050ca6311224d6')
+
 md5sums=("a57d93b791581c1f36e4c672303bb85d"
          "83a136d31b296dd8f0e23bc21f9d8e19"
          "02e067cd1c420f2085216d76e4866cd4"
@@ -72,10 +75,15 @@ prepare() {
     # Change src path name
     if [ ${CARCH} = "i686" ]; then
         mv JLink_Linux_V${pkgver/./}_i386 JLink
-    else if [ ${CARCH} = "x86_64" ]; then
-             mv JLink_Linux_V${pkgver/./}_x86_64 JLink
-         else mv JLink_Linux_V${pkgver/./}_arm JLink
-    	 fi
+    fi
+    if [ ${CARCH} = "x86_64" ]; then
+        mv JLink_Linux_V${pkgver/./}_x86_64 JLink
+    fi
+    if [ ${CARCH} = "armv7h" ]; then
+        mv JLink_Linux_V${pkgver/./}_arm JLink
+    fi
+    if [ ${CARCH} = "aarch64" ]; then
+       mv JLink_Linux_V${pkgver/./}_arm64 JLink
     fi
 }
 
