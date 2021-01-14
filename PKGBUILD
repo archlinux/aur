@@ -1,17 +1,17 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
-# Warning: If you are downgrading from the development branch (Wine ≥ 5.1,
+# Warning: If you are downgrading from the development branch (Wine ≥ 6.1,
 # for example), your WINEPREFIX may break and experience unusual bugs.
 # Try to make a clean WINEPREFIX, such as by doing “rm -rf ~/.wine”
 
 pkgname=wine-stable
-pkgver=5.0.3
-pkgrel=2
+pkgver=6.0
+pkgrel=1
 
-source=(https://dl.winehq.org/wine/source/5.0/wine-$pkgver.tar.xz{,.sign}
+source=(https://dl.winehq.org/wine/source/6.0/wine-$_pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
         wine-binfmt.conf)
-b2sums=('459399b940111fb573d3060e74c17423ff43b510a196d70eadb5d57e7d57b44c990f8c9bb69eb258a76515c2d50fb756f82229a1a7cd391a32c407bedc1e9f14'
+b2sums=('472617d20e160f7b8f3d511a5e4b44681b543dffcda43cdd3e94e35978a7e01319e69225d651c8d602b894ee62a5b0c71479881684231c7bbeaf780919a31b8f'
         'SKIP'
         '45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b'
         'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588')
@@ -44,22 +44,23 @@ makedepends=(alsa-lib fontforge giflib gnutls gsm
   lib32-vulkan-icd-loader)
 
 optdepends=(alsa-lib alsa-plugins dosbox giflib gnutls gsm
-  gst-plugins-base-libs libcups libgphoto2 libjpeg-turbo libldap
-  libpng libpulse libxcomposite libxinerama libxslt mpg123 ncurses
-  ocl-icd openal samba sane sdl2 v4l-utils vkd3d vulkan-icd-loader
-  lib32-alsa-lib lib32-alsa-plugins lib32-giflib lib32-gnutls
-  lib32-gst-plugins-base-libs lib32-libcups lib32-libjpeg-turbo
-  lib32-libldap lib32-libpng lib32-libpulse lib32-libxcomposite
-  lib32-libxinerama lib32-libxslt lib32-mpg123 lib32-ncurses
-  lib32-ocl-icd lib32-openal lib32-sdl2 lib32-v4l-utils lib32-vkd3d
-  lib32-vulkan-icd-loader)
+  gst-plugins-base gst-plugins-base-libs gst-plugins-good libcups
+  libgphoto2 libjpeg-turbo libldap libpng libpulse libxcomposite
+  libxinerama libxslt mpg123 ncurses ocl-icd openal samba sane sdl2
+  v4l-utils vkd3d vulkan-icd-loader lib32-alsa-lib lib32-alsa-plugins
+  lib32-giflib lib32-gnutls lib32-gst-plugins-base
+  lib32-gst-plugins-base-libs lib32-gst-plugins-good lib32-libcups
+  lib32-libjpeg-turbo lib32-libldap lib32-libpng lib32-libpulse
+  lib32-libxcomposite lib32-libxinerama lib32-libxslt lib32-mpg123
+  lib32-ncurses lib32-ocl-icd lib32-openal lib32-sdl2 lib32-v4l-utils
+  lib32-vkd3d lib32-vulkan-icd-loader)
 
 provides=("wine=$pkgver")
 conflicts=("wine")
 
 prepare() {
   # Allow ccache to work
-  mv wine-$pkgver wine
+  mv wine-$_pkgver wine
 
   for patch in *.patch; do
     if [ ! -f "$patch" ]; then

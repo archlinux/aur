@@ -1,7 +1,7 @@
-pkgbase = wine-stable
+pkgbase = wine-stable-next
 	pkgdesc = A compatibility layer for running Windows programs
-	pkgver = 5.0.3
-	pkgrel = 2
+	pkgver = 6.0rc6
+	pkgrel = 1
 	url = http://www.winehq.com
 	install = wine.install
 	arch = x86_64
@@ -94,7 +94,9 @@ pkgbase = wine-stable
 	optdepends = giflib
 	optdepends = gnutls
 	optdepends = gsm
+	optdepends = gst-plugins-base
 	optdepends = gst-plugins-base-libs
+	optdepends = gst-plugins-good
 	optdepends = libcups
 	optdepends = libgphoto2
 	optdepends = libjpeg-turbo
@@ -118,7 +120,9 @@ pkgbase = wine-stable
 	optdepends = lib32-alsa-plugins
 	optdepends = lib32-giflib
 	optdepends = lib32-gnutls
+	optdepends = lib32-gst-plugins-base
 	optdepends = lib32-gst-plugins-base-libs
+	optdepends = lib32-gst-plugins-good
 	optdepends = lib32-libcups
 	optdepends = lib32-libjpeg-turbo
 	optdepends = lib32-libldap
@@ -135,18 +139,19 @@ pkgbase = wine-stable
 	optdepends = lib32-v4l-utils
 	optdepends = lib32-vkd3d
 	optdepends = lib32-vulkan-icd-loader
-	provides = wine=5.0.3
+	provides = wine=6.0rc6
+	provides = wine-stable=6.0rc6
 	conflicts = wine
 	options = staticlibs
-	source = https://dl.winehq.org/wine/source/5.0/wine-5.0.3.tar.xz
-	source = https://dl.winehq.org/wine/source/5.0/wine-5.0.3.tar.xz.sign
+	source = https://dl.winehq.org/wine/source/6.0/wine-6.0-rc6.tar.xz
+	source = https://dl.winehq.org/wine/source/6.0/wine-6.0-rc6.tar.xz.sign
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	validpgpkeys = DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D
-	b2sums = 459399b940111fb573d3060e74c17423ff43b510a196d70eadb5d57e7d57b44c990f8c9bb69eb258a76515c2d50fb756f82229a1a7cd391a32c407bedc1e9f14
+	b2sums = 472617d20e160f7b8f3d511a5e4b44681b543dffcda43cdd3e94e35978a7e01319e69225d651c8d602b894ee62a5b0c71479881684231c7bbeaf780919a31b8f
 	b2sums = SKIP
 	b2sums = 45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b
 	b2sums = e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588
 
-pkgname = wine-stable
+pkgname = wine-stable-next
 
