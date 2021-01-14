@@ -1,0 +1,66 @@
+diff --git a/midi_gate-psi.lv2/midi_gate_ui.cxx b/midi_gate-psi.lv2/midi_gate_ui.cxx
+index e0be2d4..c63cf95 100644
+--- a/midi_gate-psi.lv2/midi_gate_ui.cxx
++++ b/midi_gate-psi.lv2/midi_gate_ui.cxx
+@@ -43,7 +43,7 @@ typedef struct {
+   LV2UI_Controller controller;
+ } MidiGateGUI;
+ 
+-static LV2UI_Handle instantiate(const struct _LV2UI_Descriptor * descriptor,
++static LV2UI_Handle instantiate(const struct LV2UI_Descriptor * descriptor,
+                                 const char * plugin_uri,
+                                 const char * bundle_path,
+                                 LV2UI_Write_Function write_function,
+@@ -158,7 +158,7 @@ static const void* extension_data(const char* uri) {
+   return NULL;
+ }
+ 
+-static LV2UI_Descriptor descriptors[] = {
++static const LV2UI_Descriptor descriptors[] = {
+   {MIDIGATE_UI_URI, instantiate, cleanup, port_event, extension_data}
+ };
+ 
+diff --git a/sidechain_gate-psi.lv2/sidechain_gate_ui.cxx b/sidechain_gate-psi.lv2/sidechain_gate_ui.cxx
+index 988555f..878082f 100644
+--- a/sidechain_gate-psi.lv2/sidechain_gate_ui.cxx
++++ b/sidechain_gate-psi.lv2/sidechain_gate_ui.cxx
+@@ -37,7 +37,7 @@ typedef struct {
+   LV2UI_Controller controller;
+ } SidechainGateGUI;
+ 
+-static LV2UI_Handle instantiate(const struct _LV2UI_Descriptor * descriptor,
++static LV2UI_Handle instantiate(const struct LV2UI_Descriptor * descriptor,
+                                 const char * plugin_uri,
+                                 const char * bundle_path,
+                                 LV2UI_Write_Function write_function,
+@@ -187,7 +187,7 @@ static const void* extension_data(const char* uri) {
+   return NULL;
+ }
+ 
+-static LV2UI_Descriptor descriptors[] = {
++static const LV2UI_Descriptor descriptors[] = {
+   {SCGATE_UI_URI, instantiate, cleanup, port_event, extension_data}
+ };
+ 
+diff --git a/super_welle.lv2/super_welle_ui.cxx b/super_welle.lv2/super_welle_ui.cxx
+index aee9703..c5c3b7a 100644
+--- a/super_welle.lv2/super_welle_ui.cxx
++++ b/super_welle.lv2/super_welle_ui.cxx
+@@ -55,7 +55,7 @@ typedef struct {
+ 
+ uint8_t update_ui = 0;
+ 
+-static LV2UI_Handle instantiate(const struct _LV2UI_Descriptor * descriptor,
++static LV2UI_Handle instantiate(const struct LV2UI_Descriptor * descriptor,
+                                 const char * plugin_uri,
+                                 const char * bundle_path,
+                                 LV2UI_Write_Function write_function,
+@@ -748,7 +748,7 @@ static const void* extension_data(const char* uri) {
+   return NULL;
+ }
+ 
+-static LV2UI_Descriptor descriptors[] = {
++static const LV2UI_Descriptor descriptors[] = {
+   {SW_UI_URI, instantiate, cleanup, port_event, extension_data}
+ };
+ 

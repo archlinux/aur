@@ -1,0 +1,5 @@
+pkg/
+src/
+psi-plugins.lv2/
+psi-plugins.lv2-git-*.pkg.tar.xz
+psi-plugins.lv2-git-*.pkg.tar.zst
