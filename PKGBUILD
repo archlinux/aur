@@ -1,6 +1,6 @@
 # Maintainer: zer0def <zer0def@github>
 pkgname=firecracker-bin
-pkgver=0.24.0
+pkgver=0.24.1
 pkgrel=1
 pkgdesc="Secure and fast microVMs for serverless computing"
 url="https://github.com/firecracker-microvm/firecracker"
@@ -11,20 +11,21 @@ source=("https://github.com/firecracker-microvm/firecracker/releases/download/v$
 
 case "${CARCH}" in
   x86_64)
-    sha512sums=(7d8a2b1c109d24c5c7f81bd5ef193f92527b35d55790845feea1201b87ca7f9d997a65d29b5b4a913fe79c7764df6093c6fc2828d01448e6ca9f9f5e110be29c)
-    b2sums=(77503adf8093d82ea93554c4951cf39f5090cfbb5722e2cee9b9b687aaf0a23e4d2423401fcb8bcb5517fa725a7da7752a438e38c4e9099323f88b77e16d2041)
+    sha512sums=(b719520464e3d5c9ff072c73639af71895bfcca9ac4964f2a255ed2d8d3b264a92566f7b87078c163c0f1ce21b9d5bd11cb38eb7cb784c5e18581ee531a0bcaf)
+    b2sums=(a6b206042fe4dfa873cfa1da4f591242f0224d2c98b367635534497d2bf82e218c409e473be618bd2902594ea24a8c710c853f2f1a00ac96f917a100e80aec0b)
   ;;
   aarch64)
-    sha512sums=(e50eef5d6e011c3bc4ecb5ab58b2964732f7ea382b30b963646e0a7e928ec33338dba3c08988a2958382235fc24b17d185563fd0704b256fff1eb6a00955beba)
-    b2sums=(c9fcc2f2dd6d05457bb4d088be191124e822ca3ada4789ceebfec53bf344cf9cab92c8fa26d695dc70cf8e52fbc3ee0bea41d6a43abcc2ed527dae97686a74f3)
+    sha512sums=(cbedc62e5b98cdfd6dfb565bc1b977d84fcd0fa28eb36e18922ec56c3c2dfa34c84c549c7a4e23aee9d16c53b212ef87128d42e68f1a6b9997cbec42e613a82d)
+    b2sums=(17d85c6843dfa90bf871d5ff7dc5f5286c7bd11559cb9a507f57fafaba7d5abbf1019239ea39529e29a8bb4fa32b9a8a44f096f1379dc2d3d801502890690024)
   ;;
 esac
 
 package() {
-  install -Dm755 "${srcdir}/firecracker-v${pkgver}-${CARCH}" "${pkgdir}/usr/bin/firecracker"
-  install -Dm755 "${srcdir}/jailer-v${pkgver}-${CARCH}" "${pkgdir}/usr/bin/jailer"
+  _srcdir="${srcdir}/release-v${pkgver}"
+  install -Dm755 "${_srcdir}/firecracker-v${pkgver}-${CARCH}" "${pkgdir}/usr/bin/firecracker"
+  install -Dm755 "${_srcdir}/jailer-v${pkgver}-${CARCH}" "${pkgdir}/usr/bin/jailer"
   install -Dm644 -t "${pkgdir}/usr/share/licenses/firecracker" \
-    "${srcdir}/LICENSE" "${srcdir}/NOTICE" "${srcdir}/THIRD-PARTY"
+    "${_srcdir}/LICENSE" "${_srcdir}/NOTICE" "${_srcdir}/THIRD-PARTY"
   install -Dm644 -t "${pkgdir}/usr/share/doc/firecracker" \
-    "${srcdir}/firecracker-v${pkgver}.yaml"
+    "${_srcdir}/firecracker_spec-v${pkgver}.yaml"
 }
