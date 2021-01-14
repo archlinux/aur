@@ -1,7 +1,7 @@
 # Maintainer: Brodi <me@brodi.space>
 pkgname=obs-rtspserver-bin
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="RTSP server plugin for obs-studio"
 arch=("x86_64")
 url="https://github.com/iamscottxu/obs-rtspserver"
