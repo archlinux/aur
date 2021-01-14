@@ -1,6 +1,6 @@
 pkgbase = callaudiod
 	pkgdesc = Call audio routing daemon
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://gitlab.com/mobian1/callaudiod
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = callaudiod
 	depends = alsa-lib
 	depends = glib2
 	depends = libpulse
-	source = https://gitlab.com/mobian1/callaudiod/-/archive/0.0.4/callaudiod-0.0.4.tar.gz
-	sha256sums = a9620dee2999fa85a7ca8f0314be3317a99fc225439ac193d5f727ff9397f93d
+	source = https://gitlab.com/mobian1/callaudiod/-/archive/0.0.5/callaudiod-0.0.5.tar.gz
+	sha256sums = 0016a5800749d408dbaa14d8a7886bf492068d56508c83a352dee9b1920754b4
 
 pkgname = callaudiod
 
