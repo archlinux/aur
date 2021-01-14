@@ -1,0 +1,17 @@
+pkgbase = typescript-language-server-git
+	pkgdesc = TypeScript & JavaScript Language Server
+	pkgver = 0.4.0.r15.gfdf2831
+	pkgrel = 1
+	url = https://github.com/theia-ide/typescript-language-server
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = yarn
+	depends = nodejs
+	provides = typescript-language-server
+	conflicts = typescript-language-server
+	source = git+https://github.com/theia-ide/typescript-language-server.git
+	b2sums = SKIP
+
+pkgname = typescript-language-server-git
+
