@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Aether
+StartupWMClass=aether
+Comment=Peer-to-peer ephemeral public communities
+Icon=aether
+Categories=Application;Network;
+Exec=aether
+Terminal=false
+StartupNotify=false

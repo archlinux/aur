@@ -1,0 +1,18 @@
+pkgbase = aether-bin
+	pkgdesc = Peer-to-peer ephemeral public communities
+	pkgver = 2.0.0_dev.15
+	pkgrel = 1
+	url = https://github.com/nehbit/aether
+	arch = any
+	license = AGPL
+	depends = gtk3
+	depends = nss
+	source = https://static.getaether.net/Releases/Aether-2.0.0-dev.15/2011262249.19338c93/linux/Aether-2.0.0-dev.15%2B2011262249.19338c93.tar.gz
+	source = https://raw.githubusercontent.com/nehbit/aether/master/aether-core/aether/client/src/app/ext_dep/images/Logo-lg.png
+	source = aether.desktop
+	sha256sums = c7d50891f10e56846c1baf45cddf91d040bf26d4c254f1be8f6c50f507e228c2
+	sha256sums = a844669cf6aeca6b28bbd77fa1163ed774899054563d77c087570980c812bd5d
+	sha256sums = f1e54ee1e9f04f0b6c39b0bb42f447403c5be122a6ad361f8d4ff65559c98636
+
+pkgname = aether-bin
+
