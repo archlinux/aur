@@ -1,6 +1,6 @@
 pkgname=mt
 pkgver=0.1.0+alpha2021.01.14
-pkgrel=2
+pkgrel=3
 pkgdesc="A terminal written in GTK+ and Rust"
 provides=("com.gitlab.miridyan.Terminal")
 makedepends=('cargo')
@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://gitlab.com/Miridyan/terminal"
 source=("terminal-v$pkgver.tar.gz::https://gitlab.com/Miridyan/terminal/-/archive/v$pkgver/terminal-v$pkgver.tar.gz")
 license=('BSD')
-sha512sums=('9ef7a05482dd024e0997536d4ca596b9676d23d32e207b6e872b41210fca372d00be890f1edba96485e1083f9e907b9831d21ff8db68222ac5ea5cae477f17f6')
+sha512sums=('aaf0f0150d0b8dbc28087b269564ba87ae8478fdcde73193e718b13bdb7df73d829cdb5e83bef0d25f6bcfb64ee4ab8ac665badef09e1f58377352ac83536fb3')
 
 build() {
     cd $srcdir/terminal-v$pkgver
