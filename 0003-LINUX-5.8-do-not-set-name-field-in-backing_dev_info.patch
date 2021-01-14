@@ -1,7 +1,7 @@
 From c8d51224d54275ac34f9bb4d817842e73e777b14 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Fri, 3 Jul 2020 10:34:42 -0600
-Subject: [PATCH 3/7] LINUX 5.8: do not set name field in backing_dev_info
+Subject: [PATCH 3/8] LINUX 5.8: do not set name field in backing_dev_info
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
