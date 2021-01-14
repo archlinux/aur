@@ -11,6 +11,7 @@ pkgbase = nekofetch-git
 	depends = jp2a
 	depends = neofetch
 	provides = nekofetch
+	conflicts = nekofetch
 	source = git+https://github.com/propruhh/nekofetch.git
 	sha256sums = SKIP
 
