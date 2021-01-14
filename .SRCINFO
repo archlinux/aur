@@ -1,6 +1,6 @@
 pkgbase = sat-libervia-hg
 	pkgdesc = Salut à Toi, multi-frontends multi-purposes XMPP client (Web interface)
-	pkgver = 0.7.0.r1339.3a1cb3c5702f
+	pkgver = 0.7.0.r1377.46ce79eac754
 	pkgrel = 1
 	url = http://salut-a-toi.org/
 	install = sat-libervia-hg.install

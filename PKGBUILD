@@ -2,7 +2,7 @@
 
 pkgname='sat-libervia-hg'
 _realname=libervia
-pkgver=0.7.0.r1339.3a1cb3c5702f
+pkgver=0.7.0.r1377.46ce79eac754
 _version=0.7.0
 pkgrel=1
 url="http://salut-a-toi.org/"
