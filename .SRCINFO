@@ -1,6 +1,6 @@
 pkgbase = scrap_engine-git
-	pkgver = 151.32b362b
-	pkgrel = 2
+	pkgver = 174.2a76b58
+	pkgrel = 1
 	url = https://github.com/lxgr-linux/scrap_engine
 	arch = any
 	license = GPL3
@@ -12,17 +12,17 @@ pkgbase = scrap_engine-git
 pkgname = python-scrap_engine-git
 	pkgdesc = Python scrap_engine module
 	depends = python
-	provides = scrap_engine
+	provides = python-scrap_engine
 
 pkgname = scrape-git
 	pkgdesc = Snake like game written in python3
 	depends = python
-	depends = scrap_engine
+	depends = python-scrap_engine-git
 	provides = scrape
 
 pkgname = lil_t-git
 	pkgdesc = Experimantal jump and run game written in python3
 	depends = python
-	depends = scrap_engine
+	depends = python-scrap_engine-git
 	provides = lil_t
 
