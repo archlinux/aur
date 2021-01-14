@@ -1,6 +1,6 @@
 pkgname=libbtbb
-pkgver=2018.12.R1
-_pkgver=2018-12-R1
+pkgver=2020.12.R1
+_pkgver=2020-12-R1
 pkgrel=1
 pkgdesc='Bluetooth baseband decoding library'
 url='https://github.com/greatscottgadgets/libbtbb'
@@ -9,7 +9,7 @@ license=('GPL2')
 makedepends=(cmake)
 depends=('python2')
 source=("https://github.com/greatscottgadgets/libbtbb/archive/${_pkgver}.tar.gz")
-sha256sums=('0eb2b72e1c1131538206f1e3176e2cf1048751fe7dc665eef1e7429d1f2e6225')
+sha256sums=('9478bb51a38222921b5b1d7accce86acd98ed37dbccb068b38d60efa64c5231f')
 
 build() {
   cd "${srcdir}/${pkgname}-${_pkgver}/"
