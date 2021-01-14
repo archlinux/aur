@@ -10,8 +10,8 @@ arch=('x86_64')
 url="https://git.harting.dev/IdleGandalf/alsa-lib/commit/646bc80a63b0220300678a38e0c26a9a13af6fc0"
 license=('LGPL2.1')
 depends=('glibc' 'alsa-topology-conf' 'alsa-ucm-conf')
-provides=('libasound.so' 'libatopology.so' 'alsa-lib')
-conflicts=('alsa-lib')
+provides=('libasound.so' 'libatopology.so' alsa-lib=$pkgver)
+conflicts=(alsa-lib=$pkgver)
 source=("https://www.alsa-project.org/files/pub/lib/${pkgname%-a52pcm}-$pkgver.tar.bz2"
         "pcm-config-parsing-workaround.patch")
 sha512sums=('12086952dc8f16f1cb6946517858e17b1c3276aeda9ff5703a84bb38aa78eb4c4e9cb4485c5b3f21f174fdbd976b3bcbbc481e85cb2460652858490df51ae844'

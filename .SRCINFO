@@ -10,8 +10,8 @@ pkgbase = alsa-lib-a52pcm
 	depends = alsa-ucm-conf
 	provides = libasound.so
 	provides = libatopology.so
-	provides = alsa-lib
-	conflicts = alsa-lib
+	provides = alsa-lib=1.2.4
+	conflicts = alsa-lib=1.2.4
 	source = https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.4.tar.bz2
 	source = pcm-config-parsing-workaround.patch
 	sha512sums = 12086952dc8f16f1cb6946517858e17b1c3276aeda9ff5703a84bb38aa78eb4c4e9cb4485c5b3f21f174fdbd976b3bcbbc481e85cb2460652858490df51ae844
