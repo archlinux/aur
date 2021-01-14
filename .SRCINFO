@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-moveit-msgs
 	pkgdesc = ROS - Messages, services and actions used by MoveIt.
-	pkgver = 0.10.0
-	pkgrel = 2
+	pkgver = 0.11.1
+	pkgrel = 1
 	url = https://moveit.ros.org
 	arch = any
 	license = BSD
@@ -26,8 +26,8 @@ pkgbase = ros-noetic-moveit-msgs
 	depends = ros-noetic-std-msgs
 	depends = ros-noetic-sensor-msgs
 	depends = ros-noetic-shape-msgs
-	source = ros-noetic-moveit-msgs-0.10.0.tar.gz::https://github.com/ros-planning/moveit_msgs/archive/0.10.0.tar.gz
-	sha256sums = 68885eafd4e6fbf9fee33e4cfd85b75ecd7465a29fffc52b3b75a3c1931da6f4
+	source = ros-noetic-moveit-msgs-0.11.1.tar.gz::https://github.com/ros-planning/moveit_msgs/archive/0.11.1.tar.gz
+	sha256sums = 9276e112a5a1862e32814b5c38babf0a39fdb88430760aefcdc4b0476ff6c9a9
 
 pkgname = ros-noetic-moveit-msgs
 
