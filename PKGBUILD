@@ -3,7 +3,7 @@
 
 pkgname=sdl2-nox
 pkgver=2.0.14
-pkgrel=0
+pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2) without X11 support"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.libsdl.org"
@@ -21,10 +21,9 @@ sha512sums=('ebc482585bd565bf3003fbcedd91058b2183e333b9ea566d2f386da0298ff970645
 build() {
   cd "SDL2-$pkgver"
   ./configure --prefix=/usr \
-    --enable-sdl-dlopen --enable-video-kmsdrm \
     --disable-arts --disable-esd --disable-nas \
-    --enable-alsa --enable-pulseaudio-shared \
-    --disable-video-x11 --disable-video-opengl
+    --enable-pulseaudio-shared  --enable-video-kmsdrm \
+    --without-x --disable-video-wayland --disable-video-rpi
 
   make
 }
