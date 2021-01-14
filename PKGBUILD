@@ -5,7 +5,7 @@
 
 pkgname=qt3
 pkgver=3.3.8b
-pkgrel=13
+pkgrel=14
 epoch=1
 pkgdesc="A cross-platform application and UI framework"
 arch=('i686' 'x86_64')
@@ -13,57 +13,177 @@ url="http://qt.io"
 license=('GPL')
 depends=('libpng' 'libxmu' 'libxcursor' 'libxinerama' 'glu' 'libxft'
          'libxrandr' 'libmng' 'libunistring' 'libnsl' 'libtirpc')
-makedepends=('unixodbc' 'sqlite' 'mesa')
+makedepends=('mariadb' 'postgresql' 'unixodbc' 'sqlite2' 'mesa')
 optdepends=('qtchooser: set the default Qt toolkit'
+            'libmariadbclient: MariaDB driver'
+            'postgresql-libs: PostgreSQL driver'
             'unixodbc: ODBC driver')
 options=('!docs')
 source=(http://download.qt.io/archive/qt/3/qt-x11-free-${pkgver}.tar.gz
-        qt3-png15.patch
-        qt-copy-kde-patches.tar.bz2
-        qt-patches.tar.bz2
-        eastern_asian_languagues.diff
-        qt-odbc.patch
-        gcc-4.6.patch
-        qt-x11-free-3.3.5-makelibshared.patch)
+        qt3-other-patches.tar.bz2
+        qt3-fedora-patches.tar.bz2)
 sha256sums=('1b7a1ff62ec5a9cb7a388e2ba28fda6f960b27f27999482ebeceeadb72ac9f6e'
-            '1f8a1aa1d9c5eee8cdbc91b1c6d5a5bae62f422480fee383a1753bc7eac7741c'
-            'bbef150acbb506eebb5e005fc0b5f3d3d7d970f673f4d3989c43947b52693a7e'
-            '7cc99dee873d074efef18a637529fec5ba2dc96a7474febe7b85698e41d35c9b'
-            '10a8449a55d02553ab8d61cbf51cbbb2cb9dc0e8c22036172c63a15736b8c5e0'
-            '5e5e2bbbd6273caa2c350542365ab3b5f904c6049ba4cd96c7ae2fb47c1f2ac2'
-            '49413093d37a0206870475943f14ac17e6309337eb02ce06de2e342f86523989'
-            '27e1482308912323aa8cd603d7f719bce47ae7caa9df68569b26ed3ba1e39418')
-
-# qt-copy-kde-patches come from http://websvn.kde.org/trunk/qt-copy/patches/
-# other qt-patches come from fedora and gentoo
+            'd8a7c622b0a5054d85d465f7b1b6db03233fbcf9fd132f7f0bd7c6848ff906ce'
+            '673b10f3652d72d65515f5a0c21c27d39d0c3b7fade30ae77ebd7facca6acacb')
 
 prepare() {
   cd qt-x11-free-${pkgver}
-  # apply qt patches from kde.org
-  for i in ../qt-copy-kde-patches/*; do
-    patch -p0 -i $i
-  done
-  # apply other qt patches and one security fix from debian/gentoo
-  for i in ../qt-patches/*; do
-    patch -p1 -i $i
-  done
-  # fix CJK font/chars select error (FS#11245)
-  patch -p1 -i "${srcdir}"/eastern_asian_languagues.diff
-  # fix build problem against new unixODBC
-  patch -p1 -i "${srcdir}"/qt-odbc.patch
-  # fix build with gcc 4.6.0
-  patch -p1 -i "${srcdir}"/gcc-4.6.patch
-  patch -p0 -i "${srcdir}"/qt3-png15.patch
 
-  patch -p1 -i "${srcdir}"/qt-x11-free-3.3.5-makelibshared.patch
+  # Most of the patches come from the Fedora qt3 package at
+  # https://fedora.pkgs.org/33/fedora-aarch64/qt3-3.3.8b-84.fc33.aarch64.rpm.html
+  #
+  # qt-copy-kde-patches come from http://websvn.kde.org/trunk/qt-copy/patches/
+  #
+  # Other patches were taken from gentoo
 
-  sed -i "s|-O2|$CXXFLAGS|" mkspecs/linux-g++{,-32,-64}/qmake.conf
+
+  # Apply patches from Fedora
+
+  # Patch application order copied from the "qt3.spec" file of the Fedora
+
+  patch -p1 -i ../../qt3-fedora-patches/qt-3.3.4-print-CJK.patch # Patch1
+  patch -p1 -i ../../qt3-fedora-patches/qt-3.0.5-nodebug.patch # Patch2
+  patch -p1 -i ../../qt3-fedora-patches/qt-3.1.0-makefile.patch # Patch3
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.7-umask.patch # Patch4
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.6-strip.patch # Patch5
+
+  # drop backup file(s), else they get installed too, http://bugzilla.redhat.com/639459
+  rm -fv mkspecs/linux-g++*/qmake.conf.strip
+
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.2-quiet.patch # Patch7
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.3-qembed.patch # Patch8
+  patch -p1 -i ../../qt3-fedora-patches/qt-uic-nostdlib.patch # Patch12
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.6-qfontdatabase_x11.patch # Patch13
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.3-gl.patch # Patch14
+  patch -p1 -i ../../qt3-fedora-patches/qt-3.3.3-gtkstyle.patch # Patch19
+  # hardcode the compiler version in the build key once and for all
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-hardcode-buildkey.patch # Patch20
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.5-uic.patch # Patch24
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-uic-multilib.patch # Patch25
+  patch -p1 -i ../../qt3-fedora-patches/qt-3.3.6-fontrendering-ml_IN-209097.patch # Patch27
+  patch -p1 -i ../../qt3-fedora-patches/qt-3.3.8-fontrendering-as_IN-209972.patch # Patch29
+  patch -p1 -i ../../qt3-fedora-patches/qt-3.3.6-fontrendering-te_IN-211259.patch # Patch31
+  patch -p1 -i ../../qt3-fedora-patches/qt-3.3.6-fontrendering-214371.patch # Patch32
+  patch -p1 -i ../../qt3-fedora-patches/qt-3.3.8-fontrendering-#214570.patch # Patch33
+  patch -p1 -i ../../qt3-fedora-patches/qt-3.3.6-fontrendering-ml_IN-209974.patch # Patch34
+  patch -p1 -i ../../qt3-fedora-patches/qt-3.3.6-fontrendering-ml_IN-217657.patch # Patch35
+  patch -p1 -i ../../qt3-fedora-patches/qt-3.3.6-fontrendering-gu-228452.patch # Patch37
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8-odbc.patch # Patch38
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.7-arm.patch # Patch39
+  # See http://bugzilla.redhat.com/549820
+  # Try to set some sane defaults, for style, fonts, plugin path
+  # FIXME: style doesn't work.  use kde3 plastik, if available
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-sane_defaults.patch # Patch40
+  sed -i.KDE3_PLUGIN_PATH \
+      -e "s|@@KDE3_PLUGIN_PATH@@|%{_libdir}/kde3/plugins|" \
+      src/kernel/qapplication.cpp
+  # and/or just use qtrc to do the same thing
+
+  # add missing #include <cstdef> to make gcc-4.6 happier
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-cstddef.patch # Patch41
+  # fix aliasing issue in qlocale.cpp
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-qlocale-aliasing.patch # Patch42
+  # use the system SQLite 2 (Debian's 91_system_sqlite.diff)
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-system-sqlite2.patch # Patch43
+  # silence compiler warning in qimage.h by adding parentheses
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-qimage-parentheses.patch # Patch44
+  ## fix the include path for zlib.h in qcstring.cpp to pick up the system version
+  #patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-system-zlib-header.patch # Patch45
+  # fix FTBFS with libpng 1.5 (patch from NetBSD)
+  patch -p0 -i ../../qt3-fedora-patches/qt-3.3.8-libpng15.patch # Patch46
+  # work around -Werror=format-security false positives (#1037297)
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-#1037297.patch # Patch47
+  # search for FreeType using pkg-config, fixes FTBFS with freetype >= 2.5.1
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-freetype251.patch # Patch48
+  # rename the struct Param in qsqlextension_p.h that conflicts with PostgreSQL 11
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-postgresql11.patch # Patch49
+
+  # immodule patches
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-immodule-unified-qt3.3.8-20071116.diff # Patch50
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-immodule-unified-qt3.3.5-20051012-quiet.patch # Patch51
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-fix-key-release-event-with-imm.diff # Patch52
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.6-qt-x11-immodule-unified-qt3.3.5-20060318-resetinputcontext.patch # Patch53
+
+  # mariadb support
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-mariadb.patch # Patch60
+
+  # compile with postgresql 12
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-PostgreSQL12.patch # Patch70
+
+  patch -p0 -i ./../qt3-other-patches/0001-dnd_optimization.patch
+  patch -p0 -i ./../qt3-other-patches/0002-dnd_active_window_fix.patch
+  patch -p0 -i ./../qt3-other-patches/0005-qpixmap_mitshm.patch
+  patch -p0 -i ./../qt3-other-patches/0007-qpixmap_constants.patch
+  patch -p0 -i ./../qt3-other-patches/0015-qiconview-finditem.patch
+  patch -p0 -i ./../qt3-other-patches/0016-qiconview-rebuildcontainer.patch
+  patch -p0 -i ./../qt3-other-patches/0017-qiconview-ctrl_rubber.patch
+  patch -p0 -i ./../qt3-other-patches/0020-designer-deletetabs.patch
+  patch -p0 -i ./../qt3-other-patches/0032-fix_rotated_randr.diff
+  patch -p0 -i ./../qt3-other-patches/0035-qvaluelist-streaming-operator.patch
+  patch -p0 -i ./../qt3-other-patches/0036-qprogressbar-optimization.patch
+
+  # qt-copy patches
+  patch -p0 -i ../../qt3-fedora-patches/0038-dragobject-dont-prefer-unknown.patch # Patch100
+  patch -p0 -i ./../qt3-other-patches/0044-qscrollview-windowactivate-fix.diff
+  patch -p0 -i ./../qt3-other-patches/0046-qiconview-no-useless-scrollbar.diff
+  patch -p0 -i ../../qt3-fedora-patches/0047-fix-kmenu-width.diff # Patch101
+  patch -p0 -i ../../qt3-fedora-patches/0048-qclipboard_hack_80072.patch # Patch102
+  patch -p0 -i ./../qt3-other-patches/0049-qiconview-rubber_on_move.diff
+  patch -p0 -i ../../qt3-fedora-patches/0056-khotkeys_input_84434.patch # Patch103
+  patch -p0 -i ./../qt3-other-patches/0059-qpopup_has_mouse.patch
+  patch -p0 -i ./../qt3-other-patches/0060-qpopup_ignore_mousepos.patch
+  patch -p0 -i ./../qt3-other-patches/0061-qscrollview-propagate-horizontal-wheelevent.patch
+  patch -p0 -i ../../qt3-fedora-patches/0073-xinerama-aware-qpopup.patch # Patch105
+  patch -p0 -i ./../qt3-other-patches/0078-argb-visual-hack.patch
+  patch -p0 -i ../../qt3-fedora-patches/0079-compositing-types.patch # Patch107
+  patch -p0 -i ../../qt3-fedora-patches/0080-net-wm-sync-request-2.patch # Patch108
+  patch -p0 -i ../../qt3-fedora-patches/0084-compositing-properties.patch # Patch110
+
+  # upstream patches
+  patch -p1 -i ./../qt3-other-patches/qt-no-rpath.patch
+  patch -p1 -i ./../qt3-other-patches/qt-visibility.patch
+  patch -p1 -i ./../qt3-other-patches/qt-x11-free-3.3.4-gcc4.patch
+  patch -p1 -i ./../qt3-other-patches/qt-x11-free-3.3.5-makelibshared.patch
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.4-fullscreen.patch # Patch200
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-gcc43.patch # Patch201
+
+  # security patches
+  # fix for CVE-2013-4549 backported from Qt 4
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-CVE-2013-4549.patch # Patch300
+  # fix for CVE-2014-0190 (QTBUG-38367) backported from Qt 4
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-CVE-2014-0190.patch # Patch301
+  # fix for CVE-2015-0295 backported from Qt 4
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-CVE-2015-0295.patch # Patch302
+  # fix for CVE-2015-1860 backported from Qt 4
+  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-CVE-2015-1860.patch # Patch303
+
+
+  # Fix CJK font/chars select error (FS#11245)
+  patch -p1 -i ../../qt3-other-patches/eastern_asian_languagues.diff
+
+  # For immodule
+  sh ./make-symlinks.sh
+
+  # set correct X11 prefix
+  sed -i "s,QMAKE_LIBDIR_X11.*,QMAKE_LIBDIR_X11\t=," mkspecs/*/qmake.conf
+  sed -i "s,QMAKE_INCDIR_X11.*,QMAKE_INCDIR_X11\t=," mkspecs/*/qmake.conf
+  sed -i "s,QMAKE_INCDIR_OPENGL.*,QMAKE_INCDIR_OPENGL\t=," mkspecs/*/qmake.conf
+  sed -i "s,QMAKE_LIBDIR_OPENGL.*,QMAKE_LIBDIR_OPENGL\t=," mkspecs/*/qmake.conf
+
+  # don't use rpath
+  sed -i "s|-Wl,-rpath,| |" mkspecs/*/qmake.conf
+
+  # sed -i "s|-O2|$INCLUDES %{optflags} -fno-strict-aliasing|g" mkspecs/*/qmake.conf
+
+  sed -i "s|-O2|$CXXFLAGS -fno-strict-aliasing|" mkspecs/linux-g++{,-32,-64}/qmake.conf
   sed -i "s|-I. |$CXXFLAGS -I. |" qmake/Makefile.unix
   sed -i "s|read acceptance|acceptance=yes|" configure
 }
 
 build() {
-  export QTDIR="${srcdir}"/qt-x11-free-${pkgver}
+  cd "qt-x11-free-${pkgver}" || exit 1
+
+  export QTDIR="${srcdir}/qt-x11-free-${pkgver}"
   export PATH=${QTDIR}/bin:${PATH}
   export LD_LIBRARY_PATH=${QTDIR}/lib:${LD_LIBRARY_PATH}
   export QMAKESPEC=$QTDIR/mkspecs/linux-g++
@@ -73,7 +193,6 @@ build() {
     else unset ARCH
   fi
 
-  cd qt-x11-free-${pkgver}
   ./configure \
     -prefix /usr \
     -bindir /usr/lib/qt3/bin \
@@ -81,41 +200,72 @@ build() {
     -plugindir /usr/lib/qt3/plugins \
     -datadir /usr/share/qt3 \
     -translationdir /usr/share/qt3/translations \
-    -I/usr/include/mysql -I/usr/include/postgresql/server \
+    -I/usr/include/mysql \
+    -I/usr/include/postgresql/server \
     -I/usr/include/tirpc \
+    -I/usr/include \
     -platform linux-g++$ARCH \
-    -system-zlib \
+    -enable-styles \
+    -enable-tools \
+    -enable-kernel \
+    -enable-widgets \
+    -enable-dialogs \
+    -enable-iconview \
+    -enable-workspace \
+    -enable-network \
+    -enable-canvas \
+    -enable-table \
+    -enable-xml \
+    -enable-opengl \
+    -enable-sql \
     -qt-gif \
+    -qt-style-motif \
     -release \
+    -largefile \
     -shared \
     -sm \
     -nis \
     -thread \
     -stl \
-    -system-lib{png,jpeg,mng} \
+    -cups \
+    -xinerama \
+    -xrender \
+    -xkb \
+    -ipv6 \
+    -dlopen-opengl \
+    -xft \
+    -tablet \
+    -system-zlib \
+    -system-libpng \
+    -system-libmng \
+    -system-libjpeg \
+    -no-exceptions \
     -no-g++-exceptions \
-    -plugin-sql-{sqlite,odbc} #-plugin-sql-{mysql,psql,sqlite,odbc}
+    -plugin-sql-mysql \
+    -plugin-sql-psql \
+    -plugin-sql-sqlite \
+    -plugin-sql-odbc
 
   make
 }
 
 package() {
-  cd qt-x11-free-${pkgver}
+  cd qt-x11-free-${pkgver} || exit 1
   make INSTALL_ROOT="${pkgdir}" install
   sed -i -e "s|-L${srcdir}/qt-x11-free-${pkgver}/lib ||g" -e "s|${srcdir}/||g" "${pkgdir}"/usr/lib/*.prl
   rm -rf "${pkgdir}"/usr/share/qt3/{phrasebooks,templates,translations}
   rm -rf "${pkgdir}"/usr/share/qt3/mkspecs/{aix*,*bsd*,cygwin*,dgux*,darwin*,hpux*,hurd*,irix*,linux-g++$ARCH/linux-g++$ARCH,lynxos*,macx*,qnx*,reliant*,sco*,solaris*,tru64*,unixware*,win32*}
 
-# install man pages
+  # install man pages
   install -d -m755 "${pkgdir}"/usr/share/man
   cp -r "${srcdir}"/qt-x11-free-${pkgver}/doc/man/{man1,man3} "${pkgdir}"/usr/share/man/
   for i in "${pkgdir}"/usr/share/man/man1/*; do
-    mv $i ${i%.*}-qt3.1
+    mv "$i" "${i%.*}-qt3.1"
   done
 
-# Useful symlinks for cmake and configure scripts
+  # Useful symlinks for cmake and configure scripts
   install -d "${pkgdir}"/usr/bin
   for b in "${pkgdir}"/usr/lib/qt3/bin/*; do
-    ln -s /usr/lib/qt3/bin/$(basename $b) "${pkgdir}"/usr/bin/$(basename $b)-qt3
+    ln -s "/usr/lib/qt3/bin/$(basename "$b")" "${pkgdir}/usr/bin/$(basename "$b")-qt3"
   done
 }
