@@ -1,0 +1,17 @@
+pkgbase = ibus-ancient-git
+	pkgdesc = ibus-compatible input methods and keyboards for ancient languages.
+	pkgver = r11.399cba4
+	pkgrel = 1
+	url = https://github.com/emk/ibus-ancient
+	arch = any
+	license = Unicode
+	license = UNLICENSE
+	makedepends = git
+	depends = ibus
+	depends = ibus-m17n
+	depends = ibus-table
+	source = git+https://github.com/emk/ibus-ancient.git
+	sha256sums = SKIP
+
+pkgname = ibus-ancient-git
+
