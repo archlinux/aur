@@ -6,7 +6,7 @@
 
 pkgname=openafs
 pkgver=1.8.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source implementation of the AFS distributed file system"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -27,14 +27,16 @@ source=(http://openafs.org/dl/openafs/${pkgver}/${pkgname}-${pkgver}-src.tar.bz2
         0001-Temporary-fix-for-compilation-with-GCC-10.patch
         0002-Adjust-RedHat-config-and-service-files.patch
         0003-rx-rx_InitHost-do-not-overwrite-RAND_bytes-rx_nextCi.patch
-        0004-rx-update_nextCid-overflow-handling-is-broken.patch)
+        0004-rx-update_nextCid-overflow-handling-is-broken.patch
+        0005-Remove-overflow-check-from-update_nextCid.patch)
 sha256sums=('8b4e9d3180f1ecd752753da17ac630df04eb7007c90a921a5f6403c0339d2945'
             'e34fa28d9ee06b47d080e4ed0c1f55fe2629ce974f1a7a7ec60dd6e87a9d21e9'
             '18d7b0173bbffbdc212f4e58c5b3ce369adf868452aabc3485f2a6a2ddb35d68'
-            '2bbc1e89cb1032c6dcdeb482db3578993f83ce40bf03c413886484cf1dc84b43'
-            '3b1029fda091177834f9fec79967164d9c3172b2bdca2190c2555bd2dd1b1e9b'
-            'f13225033ad18c74cc21316aeae50d3a325fb9e88e38b0d76c470714ce83da1c'
-            '506d090da582910f6e69c8dbbb3e78a9afbaed689f1057cae71c7dd923999f8f')
+            '5a64f667ef5c63a0b54e859ccde0a69f6d883bfadfa5ce4b3e0a98e613764258'
+            '30cd5cb67782161a8510039c14479a02252e3bb80fdf23795753ddb7f1aeadf7'
+            '302cf63380e43145949f6e91e9510fdc8ed94de915b90975212a5bdb55bb9259'
+            '3ab566be3b11bcd8e59d7809ee4e73e3b7206b7cf21097d5cf55675543c2b785'
+            '94dea81621ba41b7b1122d977c60d66431b64bead0d6796ef322b04196579e63')
 
 # If you need the kauth tools set this to 1. But be aware that these tools
 # are considered insecure since 2003! This also affects the PAM libs.
@@ -50,10 +52,12 @@ prepare() {
   patch -p1 < "${srcdir}/0002-Adjust-RedHat-config-and-service-files.patch"
 
   # Fix RX bug triggered after 14.01.2021 08:25:36 UTC
-  # https://gerrit.openafs.org/#/c/14491/
-  # https://gerrit.openafs.org/#/c/14492/
+  # https://gerrit.openafs.org/#/c/14493/
+  # https://gerrit.openafs.org/#/c/14494/
+  # https://gerrit.openafs.org/#/c/14497/
   patch -p1 < "${srcdir}"/0003-rx-rx_InitHost-do-not-overwrite-RAND_bytes-rx_nextCi.patch
   patch -p1 < "${srcdir}"/0004-rx-update_nextCid-overflow-handling-is-broken.patch
+  patch -p1 < "${srcdir}"/0005-Remove-overflow-check-from-update_nextCid.patch
 
   # Only needed when changes to configure were made
   ./regen.sh -q

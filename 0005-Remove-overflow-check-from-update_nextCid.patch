@@ -1,0 +1,49 @@
+From ad49f820fec917e361ff4cd3fb999cfa956b010e Mon Sep 17 00:00:00 2001
+From: Benjamin Kaduk <kaduk@mit.edu>
+Date: Thu, 14 Jan 2021 10:20:59 -0800
+Subject: [PATCH 5/5] Remove overflow check from update_nextCid
+
+The rx_nextCid global has been an unsigned type since
+http://gerrit.openafs.org/11106 (which was actually merged before
+the refactoring of overflow check to avoid signed integer overflow)
+and thus there is no need to avoid signed overflow.  The per-connection
+cid has been unsigned since the IBM import.
+
+The natural unsigned behavior on overflow of wrapping is the desired
+behvaior here, so just remove the extra logic and always increment.
+
+Reviewed-on: https://gerrit.openafs.org/14496
+Reviewed-by: Jeffrey Hutzelman <jhutz@cmu.edu>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 43ef1f2a5d80aa1c3f5b4831ada8e776ac0c7d13)
+
+Change-Id: I64fabe5229039f7af040902ed2e6f03dba7bc14d
+---
+ src/rx/rx.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/src/rx/rx.c b/src/rx/rx.c
+index 5d5953120..c713fefd8 100644
+--- a/src/rx/rx.c
++++ b/src/rx/rx.c
+@@ -6644,14 +6644,12 @@ rxi_CancelGrowMTUEvent(struct rx_call *call)
+ }
+ 
+ /*
+- * Increment the counter for the next connection ID, handling overflow.
++ * Increment the counter for the next connection ID.
++ * Wrapping on unsigned integer overflow is the intended behavior.
+  */
+ static void
+ update_nextCid(void)
+ {
+-    /* Overflow is technically undefined behavior; avoid it. */
+-    if (rx_nextCid > MAX_AFS_INT32 - (1 << RX_CIDSHIFT))
+-	rx_nextCid = 0;
+     rx_nextCid += 1 << RX_CIDSHIFT;
+ }
+ 
+-- 
+2.30.0
+
