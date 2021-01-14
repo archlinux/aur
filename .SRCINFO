@@ -1,7 +1,7 @@
 pkgbase = xe-guest-utilities-xcp-ng
 	pkgdesc = XCP-NG XenServer Tools
 	pkgver = 7.11.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = i686
 	arch = x86_64
 	license = CUSTOM
