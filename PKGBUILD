@@ -8,10 +8,10 @@ pkgname=wine-stable
 pkgver=6.0
 pkgrel=1
 
-source=(https://dl.winehq.org/wine/source/6.0/wine-$_pkgver.tar.xz{,.sign}
+source=(https://dl.winehq.org/wine/source/6.0/wine-$pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
         wine-binfmt.conf)
-b2sums=('472617d20e160f7b8f3d511a5e4b44681b543dffcda43cdd3e94e35978a7e01319e69225d651c8d602b894ee62a5b0c71479881684231c7bbeaf780919a31b8f'
+b2sums=('baf0eee582190ede8d210390b51d330c1879cb442100bc2e957052898fbd84bcc047a885065f9bf96ac4f072f92eee44f0e1c3baddc68937286e7cc6f976bd4e'
         'SKIP'
         '45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b'
         'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588')
@@ -60,7 +60,7 @@ conflicts=("wine")
 
 prepare() {
   # Allow ccache to work
-  mv wine-$_pkgver wine
+  mv wine-$pkgver wine
 
   for patch in *.patch; do
     if [ ! -f "$patch" ]; then
