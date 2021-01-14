@@ -8,7 +8,7 @@
 pkgname=signal-desktop-beta
 _pkgname=Signal-Desktop
 pkgver=1.39.5beta1
-pkgrel=2
+pkgrel=3
 pkgdesc="Signal Private Messenger for Linux"
 license=('GPL3')
 replaces=('signal-desktop-beta-bin')
@@ -39,8 +39,6 @@ prepare() {
   # https://github.com/sass/node-sass/issues/2716
   sed 's#"resolutions": {#"resolutions": {"node-sass/node-gyp": "^6.0.0",#' -i package.json
   yarn install --ignore-engines
-  yarn run build
-  yarn prepare-beta-build
 
   # Have SQLCipher dynamically link from OpenSSL
   # See https://github.com/signalapp/Signal-Desktop/issues/2634
@@ -56,6 +54,7 @@ build() {
   # Gruntfile expects Git commit information which we don't have in a tarball download
   # See https://github.com/signalapp/Signal-Desktop/issues/2376
   yarn generate exec:build-protobuf exec:transpile concat copy:deps sass
+  yarn prepare-beta-build
   yarn build-release --dir
 }
 

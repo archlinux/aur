@@ -1,7 +1,7 @@
 pkgbase = signal-desktop-beta
 	pkgdesc = Signal Private Messenger for Linux
 	pkgver = 1.39.5beta1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://signal.org
 	arch = x86_64
 	license = GPL3
