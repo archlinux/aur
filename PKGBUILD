@@ -9,7 +9,7 @@
 # This is mostly the discord-canary package, but modified to install Discord Development
 
 pkgname=discord-development
-pkgver=0.0.131
+pkgver=0.0.133
 pkgrel=1
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=('libpulse: For pulseaudio support'
 source=("https://dl-development.discordapp.net/apps/linux/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "LICENSE"
         "${pkgname}.sh")
-sha256sums=('60b829dfe0a92c3481c636d503cde0aa071ad2621d096a994718cab55e261b7a'
+sha256sums=('50481d6f938e771fed3f44f9ec71baeda10dde7baeddba6ec2c152eff8249d85'
             'a7c01ba4de8e8ddabfe4a2d434b9c1d05b5fdbd44b1b8ca2164b89a9657a930d'
             '105aa35a4babefed67893e3f62a5f8d758abc958edbde7c6a6686b403ac24f6b')
 
