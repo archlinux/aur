@@ -1,7 +1,7 @@
 # Author: Artemii Sudakov <finziyr@yandex.ru>
 pkgname=ualsv
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc='Useful Arch Linux Script Vault'
 arch=('any')
 url='https://github.com/BiteDasher/ualsv'

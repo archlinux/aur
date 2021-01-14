@@ -1,6 +1,6 @@
 post_install() {
-	ualsv --pacman init
+	[ -n "$SUDO_USER" ] && ualsv --pacman init || msg "pacman was not executed via sudo. Manually do 'ualsv --pacman init'"
 }
 post_upgrade() {
-	ualsv --pacman hook
+	[ -n "$SUDO_USER" ] && ualsv --pacman hook || msg "pacman was not executed via sudo. Manually do 'ualsv --pacman hook'"
 }
