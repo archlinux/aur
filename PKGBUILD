@@ -2,7 +2,7 @@
 # Contributor: Daniel Milde <daniel at milde dot cz>
 
 pkgname=dibuja
-pkgver=0.12.0
+pkgver=0.21.12
 pkgrel=1
 pkgdesc="Gtk based basic paint program like classic MS Paint or Paintbrush for Mac but for Linux"
 url="https://launchpad.net/dibuja"
@@ -23,4 +23,4 @@ package() {
     cd "$srcdir/$pkgname-$pkgver"
     make DESTDIR="$pkgdir" install
 }
-sha256sums=('24f2a19d6aae58b6d7b99eabf13017173fac14800ad84b6103c72076d4c9d8b3')
+sha256sums=('c4b4f533a8e4628862e0fe4d2ac3e4d4134befc417727e96a4eab988596abf5a')
