@@ -1,39 +1,47 @@
-# $Id: PKGBUILD 225278 2014-10-24 18:25:28Z dreisner $
-# Maintainer: Giovanni Scafora <giovanni@archlinux.org>
-# Contributor: John Proctor <jproctor@prium.net>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
+# Contributor: VargArch <roels.jorick@gmail.com>
+# Contributor: zsrkmyn
+# Contributor: marsam
 
 pkgname=ctags-git
-_pkgname=ctags
-pkgver=r2361.b3f670c
+pkgver=5.9.20210110.0.r12.g14609424
 pkgrel=1
-pkgdesc="Generates an index file of language objects found in source files"
-arch=('i686' 'x86_64')
-url="http://ctags.io"
-license=('GPLv2')
-depends=('glibc')
-makedepends=('git')
+pkgdesc='Generates an index (or tag) file of language objects found in source files'
+arch=('x86_64')
+url=https://ctags.io
+license=('GPL')
+depends=('jansson' 'libseccomp' 'libxml2' 'libyaml')
+makedepends=('git' 'python-docutils')
 provides=('ctags')
-conflicts=('ctags')
-source=("${_pkgname}::git+https://github.com/universal-ctags/ctags.git")
-md5sums=('SKIP')
+conflicts=('ctags' 'universal-ctags-git')
+source=("git+https://github.com/universal-ctags/ctags.git")
+b2sums=('SKIP')
 
 pkgver() {
-  cd ${srcdir}/${_pkgname}
-
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ctags
+  git describe --long --tags | sed 's/^p//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd ${srcdir}/${_pkgname}
-
-  autoreconf -f -i -v
+  cd ctags
+  ./autogen.sh
   ./configure --prefix=/usr \
-              --disable-external-sort
+              --libexecdir=/usr/lib \
+              --sysconfdir=/etc
   make
 }
 
-package() {
-  cd ${srcdir}/${_pkgname}
-
-  make prefix=${pkgdir}/usr install
+check() {
+  cd ctags
+  mkdir -p testhome
+  export HOME=./testhome XDG_CONFIG_HOME=
+  make check
 }
+
+package() {
+  cd ctags
+  make DESTDIR="$pkgdir" install
+}
+
+# vim:set ts=2 sw=2 et:
