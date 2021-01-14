@@ -1,14 +1,14 @@
 pkgbase = javafx15-scenebuilder
-	pkgdesc = The latest release candidate version of Scene Builder is 15.0.0-RC1.
-	pkgver = 15.0.0RC1
-	pkgrel = 0
+	pkgdesc = Scene Builder 15.0.0 was released on Jan 8, 2021.
+	pkgver = 15.0.0
+	pkgrel = 1
 	url = http://gluonhq.com/labs/scene-builder/
 	arch = x86_64
 	arch = i686
 	license = BSD License
 	depends = libarchive
-	source = https://download2.gluonhq.com/scenebuilder/RC/15.0.0-RC1/install/linux/SceneBuilder-15.0.0-RC1.deb
-	sha1sums = acf9342fe2391c5b8310dfd009c24b79a8ca9b59
+	source = https://download2.gluonhq.com/scenebuilder/15.0.0/install/linux/SceneBuilder-15.0.0.deb
+	sha1sums = d608d989ae039722583fb7a64b34955477e31463
 
 pkgname = javafx15-scenebuilder
 
