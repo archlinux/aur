@@ -1,7 +1,7 @@
 pkgbase = lib32-libnuma
 	pkgdesc = Simple NUMA policy support 32-bit version. Libraries only
 	pkgver = 2.0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/numactl/numactl
 	arch = x86_64
 	license = LGPL2.1
