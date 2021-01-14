@@ -18,7 +18,7 @@ optdepends=('lib32-libsndfile: for uncompressed audio support'
             'lib32-flac: for FLAC support'
             'lib32-mpg123: for MPEG support'
             'lib32-fluidsynth: for SoundFont 2 support')
-source=("https://kcat.strangesoft.net/alure-releases/${_pkgbasename}-${pkgver}.tar.bz2"
+source=("https://src.fedoraproject.org/lookaside/pkgs/alure/${_pkgbasename}-${pkgver}.tar.bz2"
         build.patch)
 md5sums=('3088aba074ad02d95ea51e705053b9f5'
          '6a8dfd62ccae920d393b4202736aba46')
