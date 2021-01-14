@@ -1,7 +1,7 @@
 # Maintainer: Leonardo Eugenio <lelgenio@disroot.org>
 pkgname=materia-custom-accent
 _pkgname=materia-theme
-_accent=c85a5a
+_accent="c85a5a"
 _colors="     SEL_BG=$_accent FG=212121 \n BG=eeeeee \n HDR_FG=eeeeee \n HDR_BG=303030 \n MATERIA_VIEW=ffffff \n MATERIA_SURFACE=fafafa"
 _colors_dark="SEL_BG=$_accent FG=eeeeee \n BG=212121 \n HDR_FG=e0e0e0 \n HDR_BG=303030 \n MATERIA_VIEW=303030 \n MATERIA_SURFACE=424242"
 pkgdesc="Easy installer for the materia theme with a custom accent color, gdm and qt5 support and a workaround for dark apps (edit PKGBUILD)"
@@ -32,17 +32,19 @@ pkgver() {
 }
 
 prepare(){
+  # materia-qt has no ./change_color script
   cd "${srcdir}/materia-theme-qt/Kvantum"
   sed "s/4285f4/$_accent/" -i */*
 }
 
 build(){
   cd "${srcdir}/${_pkgname}"
-  ./change_color.sh -t "${srcdir}/themes" -o $pkgname      <( echo -e "$_colors")
-  ./change_color.sh -t "${srcdir}/themes" -o $pkgname-dark <( echo -e "$_colors_dark")
+  ./change_color.sh -t "${srcdir}/themes" -o "${pkgname}"      <( echo -e "$_colors")
+  ./change_color.sh -t "${srcdir}/themes" -o "${pkgname}-dark" <( echo -e "$_colors_dark")
   
-  cp "${srcdir}/themes/$pkgname-dark/gtk-3.0/gtk.css" \
-     "${srcdir}/themes/$pkgname/gtk-3.0/gtk-dark.css"
+  # ./change_color.sh can't generate dark variants
+  cp "${srcdir}/themes/${pkgname}-dark/gtk-3.0/gtk.css" \
+     "${srcdir}/themes/${pkgname}/gtk-3.0/gtk-dark.css"
 }
 
 package() {
