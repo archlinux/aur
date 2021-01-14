@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gammy-git
-pkgver=0.9.60.r0.g8a65ae6
+pkgver=0.9.62.r0.gc9fd421
 pkgrel=1
 pkgdesc="Adaptive screen brightness/temperature tool."
 arch=('x86_64')
 url="https://getgammy.com"
 license=('GPL3')
 depends=('mesa' 'qt5-base')
-makedepends=('git' 'imagemagick')
+makedepends=('git' 'imagemagick' 'libxext')
 optdepends=('plog: library for debug logging'
             'qt5ct: recommended on DE without Qt integration')
 provides=("${pkgname%-git}")

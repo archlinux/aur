@@ -1,12 +1,13 @@
 pkgbase = gammy-git
 	pkgdesc = Adaptive screen brightness/temperature tool.
-	pkgver = 0.9.60.r0.g8a65ae6
+	pkgver = 0.9.62.r0.gc9fd421
 	pkgrel = 1
 	url = https://getgammy.com
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = imagemagick
+	makedepends = libxext
 	depends = mesa
 	depends = qt5-base
 	optdepends = plog: library for debug logging
