@@ -1,0 +1,12 @@
+pkgbase = i3-autodisplay-bin
+	pkgdesc = i3wm multiple monitors auto configuration
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/lpicanco/i3-autodisplay/
+	arch = x86_64
+	license = GPL
+	source = i3-autodisplay-0.4::https://github.com/lpicanco/i3-autodisplay/releases/download/v0.4/i3-autodisplay-0.4-linux-amd64
+	sha256sums = 2e1218ae53a82cd75294f4ee63d5edd0eb475c5172cbb9b7055dbe7ad9b27739
+
+pkgname = i3-autodisplay-bin
+
