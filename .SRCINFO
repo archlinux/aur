@@ -1,11 +1,11 @@
 pkgbase = lightzone
 	pkgdesc = Open-source professional-level digital darkroom software
-	pkgver = 4.2.1
-	pkgrel = 2
+	pkgver = 4.2.2
+	pkgrel = 1
 	url = http://lightzoneproject.org/
 	arch = x86_64
 	license = custom:BSD-3-Clause
-	makedepends = java-environment=14
+	makedepends = java-environment=11
 	makedepends = ant
 	makedepends = autoconf
 	makedepends = gcc
@@ -18,7 +18,7 @@ pkgbase = lightzone
 	makedepends = lcms2
 	makedepends = libjpeg-turbo
 	makedepends = libtiff
-	depends = java-runtime=14
+	depends = java-runtime=11
 	depends = java-openjfx
 	depends = javahelp2
 	depends = lcms2
@@ -28,8 +28,8 @@ pkgbase = lightzone
 	depends = libxml2
 	provides = lightzone
 	conflicts = lightzone-git
-	source = https://github.com/ktgw0316/LightZone/archive/4.2.1.zip
-	md5sums = bf64dad3db8d524bfa060b01387fd5e9
+	source = https://github.com/ktgw0316/LightZone/archive/4.2.2.zip
+	md5sums = c453e23b49eceafc6611b2ae0fc9b82b
 
 pkgname = lightzone
 
