@@ -1,18 +1,18 @@
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com
-
+# Warning: This takes up 4.8G of disk space!
 
 _target=m68k-elf
 pkgname=$_target-toolchain
-pkgver=20190226
+pkgver=20210114
 pkgrel=1
 pkgdesc="A complete gcc/binutils/newlib toolchain for $_target"
-depends=('zlib' 'bash' 'libmpc')
+depends=('libelf' 'zlib' 'libmpc')
 url="http://www.gnu.org"
 conflicts=('m68k-elf-gcc' 'm68k-elf-binutils' 'm68k-elf-newlib')
 arch=('x86_64')
-_gcc=gcc-8.3.0
-_binutils=binutils-2.32
-_newlib=newlib-3.1.0
+_gcc=gcc-10.2.0
+_binutils=binutils-2.35.1
+_newlib=newlib-4.1.0
 license=('GPL' 'BSD')
 options=('!strip')
 
@@ -20,18 +20,22 @@ source=("http://gnuftp.uib.no/gcc/${_gcc}/${_gcc}.tar.xz"
 	"http://gnuftp.uib.no/binutils/${_binutils}.tar.xz"
 	"ftp://sourceware.org/pub/newlib/${_newlib}.tar.gz")
 
-sha512sums=('1811337ae3add9680cec64968a2509d085b6dc5b6783fc1e8c295e3e47416196fd1a3ad8dfe7e10be2276b4f62c357659ce2902f239f60a8648548231b4b5802'
-            'd326408f12a03d9a61a9de56584c2af12f81c2e50d2d7e835d51565df8314df01575724afa1e43bd0db45cfc9916b41519b67dfce03232aa4978704492a6994a'
-            'efc4c3ab7153387780d141386bca5d3e20c9d25ae3e6b87cf94c8df9d301ce5926dacdff9bd33aeb9781559d933c3d0ae77f4e5b46120d90792f75dbfde702c7')
+sha512sums=('42ae38928bd2e8183af445da34220964eb690b675b1892bbeb7cd5bb62be499011ec9a93397dba5e2fb681afadfc6f2767d03b9035b44ba9be807187ae6dc65e'
+            '94ff72708403413b70b247f3af4099ebaa882b6659249869f1ed9941a0f1912e313f08357d470f9fd2359e7f5e5b0eb86285e5eaf883fa8187789d6b1bd304eb'
+            '6a24b64bb8136e4cd9d21b8720a36f87a34397fd952520af66903e183455c5cf19bb0ee4607c12a05d139c6c59382263383cb62c461a839f969d23d3bc4b1d34')
 
 prepare() {
 	cd "${srcdir}/${_gcc}"
 	
-	for i in bfd binutils gas ld opcodes; do ln -sv ../${_binutils}/$i; done
+	for i in bfd binutils gas ld libctf opcodes; do ln -sv ../${_binutils}/$i; done
 	for i in newlib libgloss; do ln -sf ../${_newlib}/$i; done
 
+	#hack - use libiberty from binutils, not from gcc.
+	rm -rf libiberty
+	ln -sv ../${_binutils}/libiberty
+
 	# hack! - some configure tests for header files using "$CPP $CPPFLAGS"
-        sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
+	sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 
 	mkdir -p "${srcdir}/obj"
 }
