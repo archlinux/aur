@@ -1,7 +1,7 @@
 pkgbase = mt
 	pkgdesc = A terminal written in GTK+ and Rust
 	pkgver = 0.1.0+alpha2021.01.14
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/Miridyan/terminal
 	arch = x86_64
 	license = BSD

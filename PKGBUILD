@@ -1,6 +1,6 @@
 pkgname=mt
 pkgver=0.1.0+alpha2021.01.14
-pkgrel=3
+pkgrel=4
 pkgdesc="A terminal written in GTK+ and Rust"
 provides=("com.gitlab.miridyan.Terminal")
 makedepends=('cargo')
@@ -21,8 +21,8 @@ package() {
     cd $srcdir/terminal-v$pkgver
 
     install -Dm 755 "target/release/terminal" "$pkgdir/usr/bin/com.gitlab.miridyan.Terminal"
-    install -Dm 644 "gresource/com.gitlab.miridyan.Terminal.desktop" "$pkgdir/usr/share/applications/com.gitlab.miridyan.Terminal.desktop"
-    install -Dm 644 "gresource/icons/com.gitlab.miridyan.Terminal.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.gitlab.miridyan.Terminal.svg"
-    install -Dm 644 "gresource/profile/default.tpfl.yml" "$pkgdir/usr/share/com.gitlab.miridyan.Terminal/profiles/default.tpfl.yml"
-    install -Dm 644 "gresource/colorscheme/base16.tscm.yml" "$pkgdir/usr/share/com.gitlab.miridyan.Terminal/colorschemes/base16.tscm.yml"
+    install -Dm 644 "data/com.gitlab.miridyan.Terminal.desktop" "$pkgdir/usr/share/applications/com.gitlab.miridyan.Terminal.desktop"
+    install -Dm 644 "data/icons/com.gitlab.miridyan.Terminal.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.gitlab.miridyan.Terminal.svg"
+    install -Dm 644 "data/profile/default.tpfl.yml" "$pkgdir/usr/share/com.gitlab.miridyan.Terminal/profiles/default.tpfl.yml"
+    install -Dm 644 "data/colorscheme/base16.tscm.yml" "$pkgdir/usr/share/com.gitlab.miridyan.Terminal/colorschemes/base16.tscm.yml"
 }
