@@ -6,7 +6,7 @@
 pkgname=openafs-modules
 _srcname=openafs
 pkgver=1.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module for OpenAFS"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -20,14 +20,18 @@ source=("http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.b
         0002-LINUX-5.8-Replace-kernel_setsockopt-with-new-funcs.patch
         0003-LINUX-5.8-do-not-set-name-field-in-backing_dev_info.patch
         0004-LINUX-5.8-use-lru_cache_add.patch
-        0005-LINUX-5.9-Remove-HAVE_UNLOCKED_IOCTL-COMPAT_IOCTL.patch)
+        0005-LINUX-5.9-Remove-HAVE_UNLOCKED_IOCTL-COMPAT_IOCTL.patch
+        0006-rx-rx_InitHost-do-not-overwrite-RAND_bytes-rx_nextCi.patch
+        0007-rx-update_nextCid-overflow-handling-is-broken.patch)
 install=openafs-modules.install
 sha256sums=('8b4e9d3180f1ecd752753da17ac630df04eb7007c90a921a5f6403c0339d2945'
-            '604fc461acf66dc833baa434023320ab656b17acdfabcd8153759af5578ddaf8'
-            'fa4a34c095429a84a68251270323dfa7159ee3532c2fe2dd8d49da449d275e89'
-            '0921338953f2359971a1431c3fc2d2a5f4d3ff050acce160e5cf21023eca9d0f'
-            '938fcde2ab0637164cc893bf21fec0f495495bea5690f00a0cc0bfd6b8c07f66'
-            '9057a23e755c4b218f67c71d481500ff32598f3f6de6a2f487d5b22412130c78')
+            'a50428eeac459c2ddadb6622c5cb927923344ee95ce9f917b9bd6a957c5b7c58'
+            '5451e85ae2da9077f487a3e8ec9542f02eb1df87db92ee20a44cf1fa3da92dd9'
+            '46bb9faf756b22b9862275d3ccff81bf5efa95f893620b49fac0c4da62d690d7'
+            '2e86ad81026bb5a5aa4cf4af1b518f7b7e47eec7f92fb49afa5417131543f0c5'
+            '7ab14c9db3021fe09e13c35be4a9509c7f585c147826279e853a7f1bffd22d89'
+            '4efdca5f2f5026565eb93a8199290755634157996bbd3d506c2a3d514ed45472'
+            '469db4138c52b33f6b5055a5615b137ea139f52d6535346eed902f0f09962bf0')
 
 # Heuristic to determine version of installed kernel
 # You can modify this if the heuristic fails
@@ -47,6 +51,12 @@ prepare() {
 
   # Compatibility with Linux 5.9
   patch -p1 < "${srcdir}"/0005-LINUX-5.9-Remove-HAVE_UNLOCKED_IOCTL-COMPAT_IOCTL.patch
+
+  # Fix RX bug triggered after 14.01.2021 08:25:36 UTC
+  # https://gerrit.openafs.org/#/c/14491/
+  # https://gerrit.openafs.org/#/c/14492/
+  patch -p1 < "${srcdir}"/0006-rx-rx_InitHost-do-not-overwrite-RAND_bytes-rx_nextCi.patch
+  patch -p1 < "${srcdir}"/0007-rx-update_nextCid-overflow-handling-is-broken.patch
 
   # Only needed when changes to configure were made
   ./regen.sh -q

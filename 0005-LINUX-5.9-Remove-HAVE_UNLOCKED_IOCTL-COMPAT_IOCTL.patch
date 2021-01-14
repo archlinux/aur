@@ -1,7 +1,7 @@
 From e7f32efde6b4cf8c4a69768826c9fa2509bb98a2 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Fri, 21 Aug 2020 10:37:51 -0600
-Subject: [PATCH 5/5] LINUX 5.9: Remove HAVE_UNLOCKED_IOCTL/COMPAT_IOCTL
+Subject: [PATCH 5/7] LINUX 5.9: Remove HAVE_UNLOCKED_IOCTL/COMPAT_IOCTL
 
 Linux-5.9-rc1 commit 'fs: remove the HAVE_UNLOCKED_IOCTL and
 HAVE_COMPAT_IOCTL defines' (4e24566a) removed the two referenced macros
@@ -165,5 +165,5 @@ index 36a4f685e..ba4f1e6af 100644
    .open =	afs_linux_open,
    .flush =	afs_linux_flush,
 -- 
-2.28.0
+2.30.0
 
