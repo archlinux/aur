@@ -1,6 +1,6 @@
 pkgbase = linux-amd-git
 	pkgdesc = Linux kernel with AMDGPU WIP patches
-	pkgver = 5.11.968815.a135a1b4c4db
+	pkgver = 5.12.968912.044a48f420b9
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/drm/amd
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = linux-amd-git
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = linux-agd5f::git://people.freedesktop.org/~agd5f/linux#branch=drm-next-5.11
+	source = linux-agd5f::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=drm-next-5.12
 	source = config
 	sha256sums = SKIP
-	sha256sums = cf69b81648a07ebedb274ed26bed3c4d2ff75c6665ecaca0a724b148c70c9c7c
+	sha256sums = d3e7adf5fcfc632887058ca84ca7b849a824dda5a03de854c8d3480ef0124ad1
 
 pkgname = linux-amd-git
 	pkgdesc = The Linux kernel with AMDGPU WIP patches kernel and modules

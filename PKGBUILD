@@ -3,9 +3,9 @@
 
 pkgbase=linux-amd-git
 pkgdesc='Linux kernel with AMDGPU WIP patches'
-pkgver=5.11.968815.a135a1b4c4db
+pkgver=5.12.968912.044a48f420b9
 _product="${pkgbase%-git}"
-_kernel_rel=5.11
+_kernel_rel=5.12
 _branch=drm-next-${_kernel_rel}
 pkgrel=1
 arch=(x86_64)
@@ -19,19 +19,16 @@ makedepends=(
 options=('!strip')
 _srcname=linux-agd5f
 source=(
-  "$_srcname::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
+  "$_srcname::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=${_branch}"
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            'cf69b81648a07ebedb274ed26bed3c4d2ff75c6665ecaca0a724b148c70c9c7c')
+            'd3e7adf5fcfc632887058ca84ca7b849a824dda5a03de854c8d3480ef0124ad1')
 
 pkgver() {
   cd "${_srcname}"
-  local version="$(grep \^VERSION Makefile|cut -d"=" -f2|cut -d" " -f2)"
-  local patch="$(grep \^PATCHLEVEL Makefile|cut -d"=" -f2|cut -d" " -f2)"
-  patch=$(( $patch + 1 ))
 
-  echo $version.$patch.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo "${_kernel_rel}".$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 export KBUILD_BUILD_HOST=archlinux
