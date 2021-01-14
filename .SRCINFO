@@ -1,6 +1,6 @@
 pkgbase = mle
 	pkgdesc = Flexible terminal-based text editor
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/adsr/mle
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = mle
 	makedepends = uthash
 	depends = pcre
 	depends = termbox
-	depends = lua
+	depends = lua53
 	conflicts = mle-git
-	source = https://github.com/adsr/mle/archive/v1.4.2.tar.gz
-	sha512sums = 4fe292065c64f3cbe255647804ba6314681bd82cbba8ef04e94bd3175b1b284c26d2c92de8d2e41c16b8f35f6df26d18a915c6f14affb73868637b0cfface376
+	source = https://github.com/adsr/mle/archive/v1.4.3.tar.gz
+	sha512sums = 014a8834a088f410a9ef5cd213140f1e4386726bd277f5fdffdfff8165cd1460ede54d5cb62a26bdef804391a524d398a439977b8f82add3d365936a3c5505ab
 
 pkgname = mle
 

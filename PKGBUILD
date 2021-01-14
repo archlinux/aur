@@ -1,25 +1,16 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgdesc='Flexible terminal-based text editor'
 pkgname=mle
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 url='https://github.com/adsr/mle'
 license=(Apache)
 arch=(x86_64)
 conflicts=(mle-git)
-depends=(pcre termbox lua)
+depends=(pcre termbox lua53)
 makedepends=(uthash)
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('4fe292065c64f3cbe255647804ba6314681bd82cbba8ef04e94bd3175b1b284c26d2c92de8d2e41c16b8f35f6df26d18a915c6f14affb73868637b0cfface376')
-
-prepare () {
-	cd "${pkgname}-${pkgver}"
-
-	# The source code uses <lua5.3/lua.h>; and the Arch Linux "lua" package
-	# places the headers directly under /usr/include, so let's just use a
-	# symlink to provide the headers at the expected include location.
-	ln -snf /usr/include lua5.3
-}
+sha512sums=('014a8834a088f410a9ef5cd213140f1e4386726bd277f5fdffdfff8165cd1460ede54d5cb62a26bdef804391a524d398a439977b8f82add3d365936a3c5505ab')
 
 build () {
 	cd "${pkgname}-${pkgver}"
