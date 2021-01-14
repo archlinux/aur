@@ -3,11 +3,11 @@
 _pkgname=data-science-types
 pkgname=python-${_pkgname}
 pkgver=0.2.22
-pkgrel=1
-pkgdesc="Python port of the parser used internally by GNU bash"
+pkgrel=2
+pkgdesc="Mypy type stubs for numpy, pandas and matplotlib"
 arch=('any')
 url="https://github.com/predictive-analytics-lab/data-science-types"
-license=('GPL3')
+license=('Apache')
 depends=('python' 'mypy')
 optdepends=(
 	'python-numpy: for numpy support'
