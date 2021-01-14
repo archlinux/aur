@@ -1,14 +1,14 @@
 pkgbase = retrofe
 	pkgdesc = A cross-platform frontend designed for MAME cabinets/game centers/etc. with a focus on simplicity and customization
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://retrofe.nl
 	install = retrofe.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
-	makedepends = mercurial
+	makedepends = git
 	makedepends = python2
 	depends = glib2
 	depends = zlib
@@ -17,7 +17,7 @@ pkgbase = retrofe
 	depends = sdl2_image
 	depends = sdl2_mixer
 	depends = sdl2_ttf
-	source = hg+https://phulshof@bitbucket.org/phulshof/retrofe#branch=RetroFE-Release-0.10.0
+	source = git+https://github.com/phulshof/RetroFE.git#branch=master
 	source = retrofe.desktop
 	source = icon.png
 	md5sums = SKIP
