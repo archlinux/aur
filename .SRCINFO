@@ -1,14 +1,14 @@
 pkgbase = xinit-xsession
 	pkgdesc = Allows ~/.xinitrc to be run as a session from your display manager
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	arch = any
 	license = GPL3
 	depends = bash
 	provides = xinit-xsession
 	source = xinitrcsession-helper
 	source = xinitrc.desktop
-	sha1sums = 85c4188bb68ece9654c0b36b4f2eaed95a2da36e
+	sha1sums = 20d3bc708c44871af80b41db83738cca834023df
 	sha1sums = 9665e18bd24aca0afd9d46d3c9200893fd12a391
 
 pkgname = xinit-xsession

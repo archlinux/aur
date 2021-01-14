@@ -1,2 +1,3 @@
 #!/bin/bash
-exec $HOME/.xinitrc
+: "${XINITRC:=$HOME/.xinitrc}"
+exec "${XINITRC}"
