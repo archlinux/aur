@@ -1,13 +1,15 @@
 pkgbase = bitstower-markets
 	pkgdesc = A stock, currency and cryptocurrency tracker
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/bitstower/markets
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	makedepends = meson
 	makedepends = vala
+	makedepends = appstream-glib
 	depends = libgee
 	depends = libsoup
 	depends = libhandy

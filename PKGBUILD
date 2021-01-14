@@ -5,10 +5,10 @@
 
 pkgname=bitstower-markets
 pkgver=0.5.1
-pkgrel=1
+pkgrel=3
 pkgdesc="A stock, currency and cryptocurrency tracker"
 url="https://github.com/bitstower/markets"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 license=(GPL3)
 depends=(
     libgee
@@ -22,6 +22,7 @@ makedepends=(
     git
     meson
     vala
+    appstream-glib
 )
 _upstream="markets"
 _commit=b1606b0ed3aff2881fd9d43a736244f6a353beea # 0.5.1
