@@ -50,11 +50,11 @@ package_droidcam() {
   # Install droidcam program files
   install -Dm755 "${pkgbase}" "$pkgdir/usr/bin/${pkgbase}"
   install -Dm755 "${pkgbase}-cli" "$pkgdir/usr/bin/${pkgbase}-cli"
-  install -Dm644 icon2.png "$pkgdir/usr/share/pixmaps/${pkgbase}.png"
+  install -Dm644 icon2.png "${pkgdir}/usr/share/pixmaps/${pkgbase}.png"
   install -Dm644 icon2.png "${pkgdir}/opt/droidcam-icon.png"
-  install -Dm644 "../../${pkgbase}.desktop" "$pkgdir/usr/share/applications/${pkgbase}.desktop"
+  install -Dm644 "../../${pkgbase}.desktop" "${pkgdir}/usr/share/applications/${pkgbase}.desktop"
   install -Dm644 "../../${pkgbase}.conf" "${pkgdir}/etc/modules-load.d/${pkgbase}.conf"
-  install -Dm644 README.md "$pkgdir/usr/share/licenses/${pkgbase}/LICENSE"
+  install -Dm644 README.md "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
 }
 
 package_v4l2loopback-dc-dkms() {
@@ -69,16 +69,16 @@ package_v4l2loopback-dc-dkms() {
   sed -e "s/@_PKGNAME@/${_pkgname}/" -e "s/@PKGVER@/${pkgver}/" -i "${install_dir}/dkms.conf"
 
   # Install module loading configuration
-  install -Dm644 "${pkgbase}.modprobe.conf" "$pkgdir/etc/modprobe.d/${pkgbase}.conf"
+  install -Dm644 "${pkgbase}.modprobe.conf" "${pkgdir}/etc/modprobe.d/${pkgbase}.conf"
 
   # Install module source
   cd ${pkgbase}-${pkgver}/v4l2loopback
 
   for d in $(find . -type d); do
-    install -dm755 "${install_dir}/$d"
+    install -dm755 "${install_dir}/${d}"
   done
 
   for f in $(find . -type f ! -name '.gitignore'); do
-    install -m644 "$f" "${install_dir}/$f"
+    install -m644 "${f}" "${install_dir}/${f}"
   done
 }
