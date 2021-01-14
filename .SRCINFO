@@ -9,6 +9,7 @@ pkgbase = btspk
 	depends = bluez-tools
 	depends = bluez-utils
 	depends = coreutils
+	depends = libpulse
 	depends = pulseaudio
 	optdepends = pulseaudio-equalizer
 	optdepends = pulseaudio-equalizer-ladspa
