@@ -1,0 +1,16 @@
+pkgbase = python-stargen
+	pkgdesc = Framework for wordlist generation, combination and expansion
+	pkgver = 0.8.5
+	pkgrel = 1
+	url = https://github.com/codeswhite/stargen
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	optdepends = crunch: Generating wordlists programmatically
+	source = https://files.pythonhosted.org/packages/source/s/stargen/stargen-0.8.5.tar.gz
+	sha256sums = c516546005510628638347870a972273c4297dfe38d0ddb83007281317061873
+
+pkgname = python-stargen
+	depends = python
+
