@@ -1,4 +1,6 @@
 # Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: EndlessEden
+# Contributor: mnovick1988
 # Contributor: Florian Pritz <flo@xinu.at>
 
 _pkgbasename=glew
@@ -11,7 +13,8 @@ url="https://github.com/nigels-com/glew"
 license=('BSD' 'MIT' 'GPL')
 depends=('lib32-libxmu' 'lib32-libxi' 'lib32-glu' "$_pkgbasename>=$pkgver")
 makedepends=('gcc-multilib')
-provides=('libGLEW.so')
+provides=('libGLEW.so' 'lib32-glew')
+conflicts=('lib32-glew')
 source=(git+https://github.com/nigels-com/glew.git
         glew-install.patch)
 sha1sums=('SKIP'

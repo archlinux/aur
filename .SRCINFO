@@ -13,6 +13,8 @@ pkgbase = lib32-glew-git
 	depends = lib32-glu
 	depends = glew>=2.2.0
 	provides = libGLEW.so
+	provides = lib32-glew
+	conflicts = lib32-glew
 	source = git+https://github.com/nigels-com/glew.git
 	source = glew-install.patch
 	sha1sums = SKIP
