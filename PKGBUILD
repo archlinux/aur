@@ -1,6 +1,6 @@
 # Maintainer: Pieter Joost van de Sande <pj@born2code.net>
 pkgname=owncast
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='Take control over your live stream video by running it yourself. Streaming + chat out of the box.'
 url='https://github.com/owncast/owncast'
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('git')
 depends=('go' 'git')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f3c574b05ca3d9574a00a520430f77f241d620c9e98370bd0ab4c313a0c65dd4')
+sha256sums=('6aa1ffdc8ab96374a35817e962fc33c7970ac2572f371df9885247a4e45b542e')
 
 provides=("${pkgname}")
 

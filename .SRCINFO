@@ -1,6 +1,6 @@
 pkgbase = owncast
 	pkgdesc = Take control over your live stream video by running it yourself. Streaming + chat out of the box.
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/owncast/owncast
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = owncast
 	depends = go
 	depends = git
 	provides = owncast
-	source = https://github.com/owncast/owncast/archive/v0.0.4.tar.gz
-	sha256sums = f3c574b05ca3d9574a00a520430f77f241d620c9e98370bd0ab4c313a0c65dd4
+	source = https://github.com/owncast/owncast/archive/v0.0.5.tar.gz
+	sha256sums = 6aa1ffdc8ab96374a35817e962fc33c7970ac2572f371df9885247a4e45b542e
 
 pkgname = owncast
 
