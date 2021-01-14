@@ -1,0 +1,18 @@
+pkgbase = xe-guest-utilities-xcp-ng
+	pkgdesc = XCP-NG XenServer Tools
+	pkgver = 7.11.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = CUSTOM
+	source = file://xe-guest-utilities_7.11.0-1_all.tgz
+	source = xe-linux-distribution.service
+	md5sums = 622dd4487e346869e730da235c8c1c30
+	md5sums = 18d34f1ac7f9a91d4d0651e15cc8a3a9
+
+pkgname = xe-guest-utilities-xcp-ng
+	depends = xenstore-xcp-ng
+	depends = bash
+
+pkgname = xenstore-xcp-ng
+
