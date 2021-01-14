@@ -12,7 +12,8 @@ pkgbase = qdvdauthor
 	depends = ffmpeg063-static
 	depends = vlc
 	depends = xine-lib
+	depends = libx11
 	source = https://sourceforge.net/projects/qdvd/files/archlinux/qdvdauthor-2.3.1-012a.tar.gz
-	md5sums = 01affa248ef47b77c726d300364c4fa3
+	md5sums = 24efd1aa4d5455806c4ec1289855b08f
 
 pkgname = qdvdauthor

@@ -8,7 +8,7 @@ pkgdesc='QDVDAuthor is a GUI frontend for dvdauthor, video DVD creator'
 url='https://sourceforge.net/projects/qdvd'
 license=('GPL2')
 arch=('i686' 'x86_64')
-depends=('qt5-base' 'ffmpeg063-static' 'vlc' 'xine-lib')
+depends=('qt5-base' 'ffmpeg063-static' 'vlc' 'xine-lib' 'libx11')
 makedepends=('cmake' 'extra-cmake-modules')
 conflicts=()
 provides=(
@@ -20,7 +20,7 @@ provides=(
 )
 options=()
 source=("https://sourceforge.net/projects/qdvd/files/archlinux/qdvdauthor-${pkgver}-012a.tar.gz")
-md5sums=('01affa248ef47b77c726d300364c4fa3')
+md5sums=('24efd1aa4d5455806c4ec1289855b08f')
 
 build() {
   cd qdvdauthor-${pkgver}/build
