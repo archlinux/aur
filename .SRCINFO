@@ -1,7 +1,7 @@
 pkgbase = nuclear-player-git
 	pkgdesc = A free, multiplatform music player app that streams from multiple sources.
-	pkgver = v0.6.5.r78.g76d8d14c
-	pkgrel = 2
+	pkgver = v0.6.5.r80.gf395aa8c
+	pkgrel = 1
 	url = https://nuclear.js.org
 	arch = x86_64
 	license = GPL3
