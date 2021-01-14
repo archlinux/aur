@@ -8,13 +8,14 @@ pkgdesc="Easy installer for the materia theme with a custom accent color, gdm an
 arch=('any')
 url="https://github.com/nana-4/materia-theme"
 _url_qt="https://github.com/PapirusDevelopmentTeam/materia-kde"
-pkgver=r1460.e329aaee
+pkgver=r1462.c63ca328
 pkgrel=1
 license=('GPL')
 makedepends=(bc sassc inkscape)
-depends=('gtk3>=3.22' 'gtk-engine-murrine' 'gnome-themes-extra' 'kvantum-qt5')
+depends=('gtk3>=3.22' 'gtk-engine-murrine' 'gnome-themes-extra')
 optdepends=(
     'resvg: faster compilation'
+    'kvantum-qt5: qt5 theme support'
 )
 provides=()
 conflicts=('materia-theme' 'kvantum-theme-materia')
