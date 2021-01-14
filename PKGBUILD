@@ -3,7 +3,7 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=alsa-lib-a52pcm
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="An alternative implementation of Linux sound support (with workaround for a52 digital surround PCM)"
 arch=('x86_64')
@@ -11,10 +11,10 @@ url="https://git.harting.dev/IdleGandalf/alsa-lib/commit/646bc80a63b0220300678a3
 license=('LGPL2.1')
 depends=('glibc' 'alsa-topology-conf' 'alsa-ucm-conf')
 provides=('libasound.so' 'libatopology.so' 'alsa-lib')
-conflicts=('alsa-lib=$pkgver')
+conflicts=('alsa-lib')
 source=("https://www.alsa-project.org/files/pub/lib/${pkgname%-a52pcm}-$pkgver.tar.bz2"
         "pcm-config-parsing-workaround.patch")
-sha512sums=('567c094914833af511bd7b175b0865ae4e4483ae68a7d4f90a34b12d7f077782835eec24257a7928631c104c78eff588f7b92068aade37e3c4806d79353758a8'
+sha512sums=('12086952dc8f16f1cb6946517858e17b1c3276aeda9ff5703a84bb38aa78eb4c4e9cb4485c5b3f21f174fdbd976b3bcbbc481e85cb2460652858490df51ae844'
             '2de27b4059c3acae13550e9cd2499f51edff48b73a57876d3521619693f343bee817e3d8e29be209c4286131a51164c80ab9823cb2a3fdf1412a2809c94ad7ce')
 
 prepare() {
