@@ -6,7 +6,7 @@
 pkgbase=droidcam
 pkgname=('droidcam' 'v4l2loopback-dc-dkms')
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A tool for using your android device as a wireless/usb webcam'
 arch=('x86_64')
@@ -52,8 +52,8 @@ package_droidcam() {
   install -Dm755 "${pkgbase}-cli" "$pkgdir/usr/bin/${pkgbase}-cli"
   install -Dm644 icon2.png "${pkgdir}/usr/share/pixmaps/${pkgbase}.png"
   install -Dm644 icon2.png "${pkgdir}/opt/droidcam-icon.png"
-  install -Dm644 "../../${pkgbase}.desktop" "${pkgdir}/usr/share/applications/${pkgbase}.desktop"
-  install -Dm644 "../../${pkgbase}.conf" "${pkgdir}/etc/modules-load.d/${pkgbase}.conf"
+  install -Dm644 "${srcdir}/${pkgbase}.desktop" "${pkgdir}/usr/share/applications/${pkgbase}.desktop"
+  install -Dm644 "${srcdir}/${pkgbase}.conf" "${pkgdir}/etc/modules-load.d/${pkgbase}.conf"
   install -Dm644 README.md "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
 }
 
