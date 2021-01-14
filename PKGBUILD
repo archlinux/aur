@@ -10,6 +10,7 @@ url="https://github.com/propruhh/nekofetch"
 depends=(curl jq jp2a neofetch)
 makedepends=(git make)
 provides=($_pkgname)
+conflicts=($_pkgname)
 
 source=("git+https://github.com/propruhh/$_pkgname.git")
 sha256sums=('SKIP')
