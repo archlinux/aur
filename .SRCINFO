@@ -1,6 +1,6 @@
 pkgbase = lib32-mariadb-connector-c
 	pkgdesc = MariaDB connector libraries for C/C++
-	pkgver = 3.1.9
+	pkgver = 3.1.11
 	pkgrel = 1
 	url = http://mariadb.org/
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = lib32-mariadb-connector-c
 	depends = lib32-krb5
 	depends = lib32-curl
 	conflicts = lib32-libmysqlclient
-	source = https://downloads.mariadb.org/interstitial/connector-c-3.1.9/mariadb-connector-c-3.1.9-src.tar.gz
-	sha256sums = 108d99bf2add434dcb3bd9526ba1d89a2b9a943b62dcd9d0a41fcbef8ffbf2c7
+	source = https://downloads.mariadb.org/interstitial/connector-c-3.1.11/mariadb-connector-c-3.1.11-src.tar.gz
+	sha256sums = 3e6f6c399493fe90efdc21a3fe70c30434b7480e8195642a959f1dd7a0fa5b0f
 
 pkgname = lib32-mariadb-connector-c
 
