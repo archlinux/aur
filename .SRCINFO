@@ -1,6 +1,6 @@
 pkgbase = schildichat-desktop-bin
 	pkgdesc = SchildiChat is a Matrix client based on Element with a more traditional instant messaging experience.
-	pkgver = 1.7.16
+	pkgver = 1.7.17.sc1
 	pkgrel = 1
 	url = https://schildi.chat
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = schildichat-desktop-bin
 	depends = sqlcipher
 	provides = schildichat-desktop
 	conflicts = schildichat-desktop
-	source = https://github.com/SchildiChat/schildichat-desktop/releases/download/v1.7.16/schildichat-desktop_1.7.16_amd64.deb
+	source = https://github.com/SchildiChat/schildichat-desktop/releases/download/v1.7.17-sc1/schildichat-desktop_1.7.17-sc1_amd64.deb
 	source = schildichat-desktop.sh
-	sha256sums = 8e5454877b359d24d520a1cfa1ac3ca53a1462806e735d111124413901b84caa
+	sha256sums = 5d88d4aa69b7b9be86d9ec8a723e82499f29d3a003e97bc92f12dd6b9f91d471
 	sha256sums = fbc7d9a5480a66e2623dbf05c0c51deee39bf35289d5b79325bfc4b87fa2a609
 
 pkgname = schildichat-desktop-bin
