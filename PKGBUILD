@@ -37,7 +37,7 @@ END
 Name=2048
 Version=1.0
 GenericName=Sliding number puzzle game
-Exec=${pkgdir}/usr/bin/${pkgname}
+Exec=/usr/bin/${pkgname}
 Icon=${pkgname}
 Type=Application
 Categories=Game;
