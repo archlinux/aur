@@ -6,7 +6,6 @@ pkgbase = wp-cli
 	arch = any
 	license = MIT
 	makedepends = composer
-	makedepends = sed
 	depends = php
 	source = https://github.com/wp-cli/wp-cli-bundle/archive/v2.4.0.tar.gz
 	md5sums = ea149787cacc1b8f2e76730573d97874
