@@ -2,7 +2,7 @@
 
 pkgname=snapcast
 pkgver=0.23.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Synchronous multi-room audio player"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/badaix/snapcast"
@@ -55,11 +55,14 @@ package() {
     install -Dm644 "${srcdir}/snapcast.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/snapclient.conf"
 
     # install documentation
-    install -d "${pkgdir}/usr/share/doc/${pkgname}"
+    install -d "${pkgdir}/usr/share/doc/${pkgname}/control"
     cp -R doc/* "${pkgdir}/usr/share/doc/${pkgname}/"
     install -Dm644 "changelog.md" "${pkgdir}/usr/share/doc/${pkgname}"
 
     find "${pkgdir}"/usr/share/doc/${pkgname} -type f -exec chmod 0644 {} \;
     find "${pkgdir}"/usr/share/doc/${pkgname} -type d -exec chmod 0755 {} \;
+
+    # example control scripts
+    cp -R control/* "${pkgdir}/usr/share/doc/${pkgname}/control/"
 }
 

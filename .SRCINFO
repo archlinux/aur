@@ -1,7 +1,7 @@
 pkgbase = snapcast
 	pkgdesc = Synchronous multi-room audio player
 	pkgver = 0.23.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/badaix/snapcast
 	install = snapcast.install
 	arch = x86_64
