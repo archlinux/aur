@@ -5,17 +5,16 @@
 _pkgsourcename=qt3
 pkgname=lib32-$_pkgsourcename
 pkgver=3.3.8b
-pkgrel=12
+pkgrel=13
 epoch=1
 pkgdesc="A cross-platform application and UI framework"
 arch=('i686' 'x86_64')
 url="http://qt.io"
 license=('GPL')
-depends=('lib32-libpng-minimal-git' 'lib32-libxmu' 'lib32-libxcursor'
-         'lib32-libxinerama'  'lib32-glu-git' 'lib32-libxft' 'lib32-libxrandr'
-         'lib32-libmng' 'libunistring' 'lib32-libnsl-git'
-         'lib32-libtirpc-minimal-git')
-makedepends=('lib32-mesa' 'lib32-unixodbc' 'lib32-sqlite-git')
+depends=('lib32-libpng' 'lib32-libxmu' 'lib32-libxcursor' 'lib32-libxinerama'
+         'lib32-glu' 'lib32-libxft' 'lib32-libxrandr' 'lib32-libmng'
+         'libunistring' 'lib32-libnsl' 'lib32-libtirpc')
+makedepends=('lib32-mesa' 'lib32-unixodbc' 'lib32-sqlite')
 optdepends=('qtchooser: set the default Qt toolkit'
             'libmariadbclient: MariaDB driver'
             'postgresql-libs: PostgreSQL driver'
