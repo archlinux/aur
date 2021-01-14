@@ -1,0 +1,13 @@
+pkgbase = mc-minihud-117-fabric
+	pkgdesc = A client-side mod that allows displaying various info lines on the screen
+	pkgver = 0.19.0.dev.20201218.025957
+	pkgrel = 1
+	url = https://masa.dy.fi/mcmods/client_mods/
+	arch = any
+	license = LGPL
+	makedepends = wget
+	makedepends = jq
+	source = manifest.json::https://masa.dy.fi/api/games/mods/minecraft/latest/client/
+	sha1sums = SKIP
+
+pkgname = mc-minihud-117-fabric
