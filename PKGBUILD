@@ -35,6 +35,8 @@ build() {
   sed -i 's|LD = cc|LD = gcc -m32|' config/Makefile.linux
   sed -i 's|lib64|lib32|g' config/Makefile.linux
 
+  cd ../
+  cmake build/cmake/.
   make
 }
 
