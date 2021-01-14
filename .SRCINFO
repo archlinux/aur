@@ -1,6 +1,6 @@
 pkgbase = libmatio
 	pkgdesc = C library with a fortran 90/95 module interface for reading/writing MATLAB MAT-files
-	pkgver = 1.5.17
+	pkgver = 1.5.19
 	pkgrel = 1
 	url = https://sourceforge.net/projects/matio
 	changelog = ChangeLog
@@ -9,7 +9,7 @@ pkgbase = libmatio
 	depends = zlib
 	depends = hdf5
 	options = !emptydirs
-	source = https://downloads.sourceforge.net/matio/matio-1.5.17.tar.gz
-	sha512sums = af8ff11c7c44fea9ea6886e381f49ef9186946f3def98ad9695f2d5d1df045c35e8f4ceac12a44be397f7bbd708b4803762b5ce54c45b60a9f446d551c04f5d2
+	source = https://downloads.sourceforge.net/matio/matio-1.5.19.tar.gz
+	sha512sums = c087944a7d87d78a7de662d7e19f5f81c55858cf5bf315c28d5a0f7544555b0816045e20bb0c83752eb3d54b589d9237a27cf3de98e3ebefcc7ea0af9311740e
 
 pkgname = libmatio
