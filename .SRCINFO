@@ -1,6 +1,6 @@
 pkgbase = gpu-trace-git
 	pkgdesc = GPU Trace capture tool
-	pkgver = v2.0.r0.g1fbaa4f
+	pkgver = v2.0.r2.g42c9b66
 	pkgrel = 1
 	url = https://github.com/lostgoat/gpu-trace
 	arch = x86_64
