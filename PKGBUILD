@@ -1,7 +1,7 @@
 pkgname=ubertooth
-pkgver=2018.12.R1
-_pkgver=2018-12-R1
-pkgrel=6
+pkgver=2020.12.R1
+_pkgver=2020-12-R1
+pkgrel=1
 pkgdesc="Open source wireless development platform suitable for Bluetooth experimentation"
 url="https://github.com/greatscottgadgets/ubertooth/"
 arch=('x86_64' 'i686')
@@ -9,13 +9,8 @@ license=('GPL')
 depends=('bluez-libs' 'libbtbb>=2018.12.R1' 'libusb' 'libpcap' 'python-numpy' 'python-pyusb')
 optdepends=('qt5-declarative' 'python-pyside2')
 makedepends=('cmake')
-source=("https://github.com/greatscottgadgets/ubertooth/releases/download/${_pkgver}/ubertooth-${_pkgver}.tar.xz" "extern-packet_counter_max.patch")
-sha256sums=('0042daa79db0f4148a0255cdf05aa57006e23ac36edf7024e9e99ccc4892867b' '6a88a2e000e02b1dd31dee125cbe9f8713c2c397023ae9ee8f6e57aa71fa9598')
-
-prepare() {
-    cd "${pkgname}-${_pkgver}"
-    patch --forward --strip=1 --input="${srcdir}/extern-packet_counter_max.patch"
-}
+source=("https://github.com/greatscottgadgets/ubertooth/releases/download/${_pkgver}/ubertooth-${_pkgver}.tar.xz")
+sha256sums=('93a4ce7af8eddcc299d65aff8dd3a0455293022f7fea4738b286353f833bf986')
 
 build() {
   cd "${srcdir}/${pkgname}-${_pkgver}/host/"
