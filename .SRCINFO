@@ -8,6 +8,7 @@ pkgbase = ruby-libvirt
 	license = GPL
 	makedepends = rubygems
 	makedepends = ruby-rake
+	makedepends = ruby-rdoc
 	depends = ruby
 	depends = libvirt
 	source = http://libvirt.org/ruby/download/ruby-libvirt-0.7.1.tgz

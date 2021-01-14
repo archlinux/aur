@@ -9,7 +9,7 @@ arch=(i686 x86_64)
 license=(GPL)
 url=http://libvirt.org/ruby/
 depends=(ruby libvirt)
-makedepends=(rubygems ruby-rake)
+makedepends=(rubygems ruby-rake ruby-rdoc)
 source=(http://libvirt.org/ruby/download/$pkgname-$pkgver.tgz)
 sha256sums=('4e1495d64af5ce9edba80f973a2e2eb125946c0fa266c8f9d75f1e7a98fc5d60')
 
