@@ -12,8 +12,8 @@ else
 fi
 
 # if it is failed to get the version of pulseaudio, use the hard coded one.
-if [[ -v pulseaudio_ver ]]; then
-    pulseaudio_ver="14.0"
+if [[ -z "${pulseaudio_ver}" ]]; then
+    pulseaudio_ver="14.1"
 fi
 
 
