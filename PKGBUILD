@@ -1,7 +1,7 @@
 # Maintainer: Mike Boiko <mike@boiko.ca>
 
 _pkgname=nextcloud-sync-cron
-pkgname=$_pkgname-git
+pkgname=${_pkgname}-git
 pkgver=r16.a681ca7
 pkgrel=1
 pkgdesc='Script to run the Linux/Unix Nextcloud command line client in a cron job.'
