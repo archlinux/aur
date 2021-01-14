@@ -1,19 +1,26 @@
 # Maintainer: Vyacheslav Konovalov <f4f7l1hvr@relay.firefox.com>
 
 pkgname=opensnitch
-pkgver=1.3.0
+pkgver=1.3.5
 pkgrel=1
 pkgdesc='GNU/Linux port of the Little Snitch application firewall'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/evilsocket/opensnitch'
 license=('GPL3')
+depends=(
+    'libnetfilter_queue' 'libpcap' 'python-grpcio' 'python-protobuf'
+    'python-pyinotify' 'python-slugify' 'python-pyqt5'
+)
 makedepends=('go' 'python-setuptools' 'python-grpcio-tools')
-depends=('libnetfilter_queue' 'libpcap' 'python-grpcio' 'python-protobuf'
-    'python-pyinotify' 'python-slugify' 'python-pyqt5')
 optdepends=('logrotate: for logfile rotation support')
-backup=('etc/opensnitchd/default-config.json' 'etc/opensnitchd/system-fw.json')
+backup=(
+    'etc/opensnitchd/default-config.json'
+    'etc/opensnitchd/system-fw.json'
+)
 source=("$url/archive/v$pkgver.tar.gz")
-sha512sums=('fb540614f8ce6799ed1a9af561bcf302f3778e706f5913206ed978402ee65a5577b1a17c5c2ec1805998606f056c3513b87e997133d03985ffccf00bb52f1176')
+sha512sums=(
+    'dda1f717c98248db236b2b68698aac04f5d3a51d65ce28b42a8f66a839e33b99e679296eb5afac42d983ca64000835be11a53d859464a1695c5b5b8019705693'
+)
 
 prepare() {
     cd "$srcdir/opensnitch-$pkgver"
