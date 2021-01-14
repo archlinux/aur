@@ -1,6 +1,6 @@
 pkgbase = sidfactory2
 	pkgdesc = Cross-platform editor for composing music for the Commodore C64 SID chip
-	pkgver = 20200911
+	pkgver = 20210104
 	pkgrel = 1
 	url = https://github.com/Chordian/sidfactory2
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = sidfactory2
 	makedepends = gcc
 	depends = sdl2
 	conflicts = sidfactory2-unstable
-	source = sidfactory2-20200911.tar.gz::https://github.com/Chordian/sidfactory2/archive/release-20200911.tar.gz
-	md5sums = dbba94f8e31f43618354033596470374
+	source = sidfactory2-20210104.tar.gz::https://github.com/Chordian/sidfactory2/archive/release-20210104.tar.gz
+	md5sums = 4ac9c5003f89caa629becf8e01f8e436
 
 pkgname = sidfactory2
 
