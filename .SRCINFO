@@ -1,6 +1,6 @@
 pkgbase = unifi-throughput-ncurses
 	pkgdesc = Display unifi controller throughput in a terminal
-	pkgver = r63.a25fe6e
+	pkgver = r64.db27be2
 	pkgrel = 1
 	url = https://github.com/lamarios/unifi-throughput-ncurses/
 	arch = x86_64
