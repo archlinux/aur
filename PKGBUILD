@@ -1,7 +1,7 @@
 # Maintainer: Johannes Graën <johannes SPIRALGALAXY selfnet FULLSTOP de>
 
 pkgname=jabref-latest
-pkgver=20201224
+pkgver=20210113
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java; latest master version from git"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(Jabref-${pkgver}.tgz::https://builds.jabref.org/master/JabRef-5.3-portab
         JabRef.desktop
         JabRef.svg)
 sha256sums=('SKIP'
-            '057113b2e1e3eaeffdbbfbc57febca6e02c53cb63b14ffc9e1fbacf6ddc17638'
+            '4cee727d46de1fe49a7e89e18584e87c031826517582923a1c4d93ae1e5138f6'
             '9311fb9ed26f65be4040b6add5f195ffff22c857d5f85bd471375633e44bfe04'
             '81a9ce53092525d1ba964435a0558654441a85e818581453a50df1045017c131'
             '84408ddc8c6e41e4367f3b6cd171909fb1cf7ac808495f3a8033b64a2ff4c40b')
