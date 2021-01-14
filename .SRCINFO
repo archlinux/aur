@@ -1,16 +1,16 @@
 pkgbase = finalshell
 	pkgdesc = 一体化的的服务器,网络管理软件,不仅是ssh客户端,还是功能强大的开发,运维工具,充分满足开发,运维需求.
-	pkgver = 3.7.7
-	pkgrel = 4
+	pkgver = 3.8.3
+	pkgrel = 1
 	epoch = 0
 	url = http://www.hostbuf.com/
 	arch = x86_64
 	license = custom
-	source = https://master.dl.sourceforge.net/project/finalshell/finalshell_linux-3.7.7.zip
+	source = https://master.dl.sourceforge.net/project/finalshell/finalshell_linux-3.8.3.zip
 	source = LICENSE::http://www.hostbuf.com/t/1081.html
-	md5sums = 8a9cf1d2e33348999ccf414375c47371
+	md5sums = bfbc2e207958792a00a640662dab1bb3
 	md5sums = SKIP
-	sha256sums = 745ddb7b0e6270118739087adb0c13b87a29215ccdabd348bf69986c23752ddf
+	sha256sums = 5822aecfa9840aeab01dcae5de3976ffa479c07a9cef89ae93a57065d750884e
 	sha256sums = SKIP
 
 pkgname = finalshell
