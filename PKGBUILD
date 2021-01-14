@@ -3,7 +3,7 @@
 _pkgname=nekofetch
 pkgname=$_pkgname-git
 pkgver=r27.56ee91f
-pkgrel=1
+pkgrel=2
 pkgdesc="neofetch but with nekos"
 arch=(any)
 url="https://github.com/propruhh/nekofetch"

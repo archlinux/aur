@@ -1,7 +1,7 @@
 pkgbase = nekofetch-git
 	pkgdesc = neofetch but with nekos
 	pkgver = r27.56ee91f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/propruhh/nekofetch
 	arch = any
 	makedepends = git
