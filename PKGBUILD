@@ -2,13 +2,13 @@
 
 pkgname=cegui-git
 pkgver=r6347.e444e854e
-pkgrel=1
+pkgrel=2
 pkgdesc="A free library providing windowing and widgets for graphics APIs/engines"
 arch=('i686' 'x86_64')
 url="http://cegui.org.uk"
 license=("MIT")
 depends=(glm)
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'swig')
 optdepends=('pcre'
             'freetype2'
             'minizip'

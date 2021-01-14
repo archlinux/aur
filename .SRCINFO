@@ -1,13 +1,14 @@
 pkgbase = cegui-git
 	pkgdesc = A free library providing windowing and widgets for graphics APIs/engines
 	pkgver = r6347.e444e854e
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cegui.org.uk
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cmake
+	makedepends = swig
 	depends = glm
 	optdepends = pcre
 	optdepends = freetype2
