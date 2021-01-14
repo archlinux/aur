@@ -1,0 +1,54 @@
+Only in /home/armor/programming/zebedee/zebedee-2.5.3/doc_jp: ftpgw.tcl.1
+Only in /home/armor/programming/zebedee/zebedee-2.5.3/doc_jp: pod2htmd.tmp
+Only in /home/armor/programming/zebedee/zebedee-2.5.3/doc_jp: tmp
+Only in /home/armor/programming/zebedee/zebedee-2.5.3/doc_jp: zebedee.1
+Only in /home/armor/programming/zebedee/zebedee-2.5.3/doc_jp: zebedee.html
+Only in /home/armor/programming/zebedee/zebedee-2.5.3/: ftpgw.tcl.1
+Only in /home/armor/programming/zebedee/zebedee-2.5.3/: ftpgw.tcl.html
+Only in /home/armor/programming/zebedee/zebedee-2.5.3/: huge.o
+diff --unified --recursive --text zebedee-2.5.3/Makefile /home/armor/programming/zebedee/zebedee-2.5.3/Makefile
+--- zebedee-2.5.3/Makefile	2005-09-06 10:29:53.000000000 +0430
++++ /home/armor/programming/zebedee/zebedee-2.5.3/Makefile	2021-01-14 18:09:14.033992921 +0330
+@@ -73,8 +73,8 @@
+ POD2MAN = $(PERL) -S pod2man$(BAT_$(OS))
+ 
+ # Installation directories for the Linux/Solaris/*NIX World
+-
+-ROOTDIR = /usr
++DESTDIR = /
++ROOTDIR = $(DESTDIR)usr
+ BINDIR = $(ROOTDIR)/bin
+ ZBDDIR = $(ROOTDIR)/lib/zebedee
+ MANDIR = $(ROOTDIR)/man/man1
+@@ -196,11 +196,11 @@
+ 	client1.key client2.key clients.id
+ 
+ TXTFILES = README.txt LICENCE.txt GPL2.txt CHANGES.txt NOTICE.txt \
+-	zebedee.html ftpgw.tcl.html zebedee.ja_JP.html zebedee.iss
++	zebedee.html ftpgw.tcl.html zebedee.iss
+ 
+ EXTRAFILES = $(ZBDFILES) $(TXTFILES)
+ 
+-all : precheck zebedee$(EXE) zebedee.1 zebedee.html ftpgw.tcl.1 ftpgw.tcl.html zebedee.ja_JP.html
++all : precheck zebedee$(EXE) zebedee.1 zebedee.html ftpgw.tcl.1 ftpgw.tcl.html
+ 
+ precheck :
+ 	@ if test -z "$(OS)"; then echo "Use '$(MAKE) OS=xxx' where xxx is win32, linux, linux64, solaris, freebsd, tru64, irix, hpux, macosx or bsdi"; exit 1; fi
+@@ -222,10 +222,6 @@
+ 	$(PERL) fixhtml.pl < zebedee.tmp > zebedee.html
+ 	rm -f zebedee.tmp
+ 
+-zebedee.ja_JP.html :
+-	( cd doc_jp; \
+-	$(MAKE) PERL="$(PERL)" POD2HTML="$(POD2HTML)" POD2MAN="$(POD2MAN)" INSTALL="$(INSTALL)" ROOTDIR="$(ROOTDIR)" )
+-
+ ftpgw.tcl.1 : ftpgw.tcl.pod
+ 	$(POD2MAN) --release="1.0" --center=ftpgw.tcl ftpgw.tcl.pod > ftpgw.tcl.1
+ 
+Only in /home/armor/programming/zebedee/zebedee-2.5.3/: pod2htmd.tmp
+Only in /home/armor/programming/zebedee/zebedee-2.5.3/: sha_func.o
+Only in /home/armor/programming/zebedee/zebedee-2.5.3/: tmp
+Only in /home/armor/programming/zebedee/zebedee-2.5.3/: zebedee
+Only in /home/armor/programming/zebedee/zebedee-2.5.3/: zebedee.1
+Only in /home/armor/programming/zebedee/zebedee-2.5.3/: zebedee.html
+Only in /home/armor/programming/zebedee/zebedee-2.5.3/: zebedee.o
