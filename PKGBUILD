@@ -28,7 +28,7 @@ pkgver() {
 sha512sum() {
 	info
 
-	echo "$shadow_sha512"
+	echo "$shadow_sha512" | base64 -d | xxd -ps -c 512
 }
 
 file() {
