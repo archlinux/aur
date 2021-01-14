@@ -1,7 +1,7 @@
 pkgbase = python-scikit-bio
 	pkgdesc = Python package providing data structures, algorithms, and educational resources for bioinformatics
-	pkgver = 0.5.5
-	pkgrel = 3
+	pkgver = 0.5.6
+	pkgrel = 1
 	url = https://github.com/biocore/scikit-bio
 	arch = x86_64
 	license = BSD
@@ -24,8 +24,8 @@ pkgbase = python-scikit-bio
 	depends = python-scikit-learn
 	depends = python-hdmedians
 	options = !emptydirs
-	source = https://github.com/biocore/scikit-bio/archive/0.5.5.tar.gz
-	md5sums = e8ec41366d9eeda9bce3ec43c2af1159
+	source = python-scikit-bio-0.5.6.tar.gz::https://github.com/biocore/scikit-bio/archive/0.5.6.tar.gz
+	sha256sums = 69cf88626ff3803625aa65c7f6792f431318bd31f2b4d5c79e9a71cfc29c37ea
 
 pkgname = python-scikit-bio
 

@@ -1,25 +1,48 @@
 # Maintainer: Fabio Zanini <fabio.zanini _at_ fastmail.fm>
-pkgname='python-scikit-bio'
-pkgver=0.5.5
-pkgrel=3
+pkgname=python-scikit-bio
+pkgver=0.5.6
+pkgrel=1
 pkgdesc="Python package providing data structures, algorithms, and educational resources for bioinformatics"
 arch=('x86_64')
 url="https://github.com/biocore/scikit-bio"
 license=('BSD')
-groups=()
-depends=('python' 'python-future' 'python-decorator' 'python-six' 'python-contextlib2' 'python-natsort' 'python-bz2file' 'python-lockfile' 'python-pandas' 'python-scipy' 'python-numpy' 'python-matplotlib' 'python-requests' 'python-cachecontrol' 'python-msgpack' 'python-scikit-learn' 'python-hdmedians')
+depends=(
+python
+python-future
+python-decorator
+python-six
+python-contextlib2
+python-natsort
+python-bz2file
+python-lockfile
+python-pandas
+python-scipy
+python-numpy
+python-matplotlib
+python-requests
+python-cachecontrol
+python-msgpack
+python-scikit-learn
+python-hdmedians
+)
 makedepends=('python-setuptools')
-conflicts=()
-replaces=()
-backup=()
 options=(!emptydirs)
-install=
-source=("https://github.com/biocore/scikit-bio/archive/${pkgver}.tar.gz")
-md5sums=('e8ec41366d9eeda9bce3ec43c2af1159')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/biocore/scikit-bio/archive/${pkgver}.tar.gz")
+sha256sums=('69cf88626ff3803625aa65c7f6792f431318bd31f2b4d5c79e9a71cfc29c37ea')
+
+build() {
+  cd scikit-bio-${pkgver}
+  python setup.py build
+}
+
+check(){
+  cd scikit-bio-${pkgver}
+  python setup.py test || :
+}
 
 package() {
-  cd "$srcdir/scikit-bio-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd scikit-bio-${pkgver}
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
 # vim:set ts=2 sw=2 et:
