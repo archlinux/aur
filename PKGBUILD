@@ -5,7 +5,7 @@
 
 pkgname=qt3
 pkgver=3.3.8b
-pkgrel=15
+pkgrel=16
 epoch=1
 pkgdesc="A cross-platform application and UI framework"
 arch=('i686' 'x86_64')
@@ -110,40 +110,40 @@ prepare() {
   # compile with postgresql 12
   patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.8b-PostgreSQL12.patch # Patch70
 
-  patch -p0 -i ./../qt3-other-patches/0001-dnd_optimization.patch
-  patch -p0 -i ./../qt3-other-patches/0002-dnd_active_window_fix.patch
-  patch -p0 -i ./../qt3-other-patches/0005-qpixmap_mitshm.patch
-  patch -p0 -i ./../qt3-other-patches/0007-qpixmap_constants.patch
-  patch -p0 -i ./../qt3-other-patches/0015-qiconview-finditem.patch
-  patch -p0 -i ./../qt3-other-patches/0016-qiconview-rebuildcontainer.patch
-  patch -p0 -i ./../qt3-other-patches/0017-qiconview-ctrl_rubber.patch
-  patch -p0 -i ./../qt3-other-patches/0020-designer-deletetabs.patch
-  patch -p0 -i ./../qt3-other-patches/0032-fix_rotated_randr.diff
-  patch -p0 -i ./../qt3-other-patches/0035-qvaluelist-streaming-operator.patch
-  patch -p0 -i ./../qt3-other-patches/0036-qprogressbar-optimization.patch
+  patch -p0 -i ../qt3-other-patches/0001-dnd_optimization.patch
+  patch -p0 -i ../qt3-other-patches/0002-dnd_active_window_fix.patch
+  patch -p0 -i ../qt3-other-patches/0005-qpixmap_mitshm.patch
+  patch -p0 -i ../qt3-other-patches/0007-qpixmap_constants.patch
+  patch -p0 -i ../qt3-other-patches/0015-qiconview-finditem.patch
+  patch -p0 -i ../qt3-other-patches/0016-qiconview-rebuildcontainer.patch
+  patch -p0 -i ../qt3-other-patches/0017-qiconview-ctrl_rubber.patch
+  patch -p0 -i ../qt3-other-patches/0020-designer-deletetabs.patch
+  patch -p0 -i ../qt3-other-patches/0032-fix_rotated_randr.diff
+  patch -p0 -i ../qt3-other-patches/0035-qvaluelist-streaming-operator.patch
+  patch -p0 -i ../qt3-other-patches/0036-qprogressbar-optimization.patch
 
   # qt-copy patches
   patch -p0 -i ../qt3-fedora-patches/0038-dragobject-dont-prefer-unknown.patch # Patch100
-  patch -p0 -i ./../qt3-other-patches/0044-qscrollview-windowactivate-fix.diff
-  patch -p0 -i ./../qt3-other-patches/0046-qiconview-no-useless-scrollbar.diff
+  patch -p0 -i ../qt3-other-patches/0044-qscrollview-windowactivate-fix.diff
+  patch -p0 -i ../qt3-other-patches/0046-qiconview-no-useless-scrollbar.diff
   patch -p0 -i ../qt3-fedora-patches/0047-fix-kmenu-width.diff # Patch101
   patch -p0 -i ../qt3-fedora-patches/0048-qclipboard_hack_80072.patch # Patch102
-  patch -p0 -i ./../qt3-other-patches/0049-qiconview-rubber_on_move.diff
+  patch -p0 -i ../qt3-other-patches/0049-qiconview-rubber_on_move.diff
   patch -p0 -i ../qt3-fedora-patches/0056-khotkeys_input_84434.patch # Patch103
-  patch -p0 -i ./../qt3-other-patches/0059-qpopup_has_mouse.patch
-  patch -p0 -i ./../qt3-other-patches/0060-qpopup_ignore_mousepos.patch
-  patch -p0 -i ./../qt3-other-patches/0061-qscrollview-propagate-horizontal-wheelevent.patch
+  patch -p0 -i ../qt3-other-patches/0059-qpopup_has_mouse.patch
+  patch -p0 -i ../qt3-other-patches/0060-qpopup_ignore_mousepos.patch
+  patch -p0 -i ../qt3-other-patches/0061-qscrollview-propagate-horizontal-wheelevent.patch
   patch -p0 -i ../qt3-fedora-patches/0073-xinerama-aware-qpopup.patch # Patch105
-  patch -p0 -i ./../qt3-other-patches/0078-argb-visual-hack.patch
+  patch -p0 -i ../qt3-other-patches/0078-argb-visual-hack.patch
   patch -p0 -i ../qt3-fedora-patches/0079-compositing-types.patch # Patch107
   patch -p0 -i ../qt3-fedora-patches/0080-net-wm-sync-request-2.patch # Patch108
   patch -p0 -i ../qt3-fedora-patches/0084-compositing-properties.patch # Patch110
 
   # upstream patches
-  patch -p1 -i ./../qt3-other-patches/qt-no-rpath.patch
-  patch -p1 -i ./../qt3-other-patches/qt-visibility.patch
-  patch -p1 -i ./../qt3-other-patches/qt-x11-free-3.3.4-gcc4.patch
-  patch -p1 -i ./../qt3-other-patches/qt-x11-free-3.3.5-makelibshared.patch
+  patch -p1 -i ../qt3-other-patches/qt-no-rpath.patch
+  patch -p1 -i ../qt3-other-patches/qt-visibility.patch
+  patch -p1 -i ../qt3-other-patches/qt-x11-free-3.3.4-gcc4.patch
+  patch -p1 -i ../qt3-other-patches/qt-x11-free-3.3.5-makelibshared.patch
   patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.4-fullscreen.patch # Patch200
   patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.8b-gcc43.patch # Patch201
 
