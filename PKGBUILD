@@ -1,14 +1,17 @@
 # Maintainer: Filip Parag <aur@filiparag.com>
 
-pkgname=2048-gui-git
-pkgver=57.59e0c80
+_pkgname="2048-gui"
+pkgname="${_pkgname}-git"
+pkgver=58.dee05d0
 pkgrel=1
 pkgdesc="Animated graphical 2048 sliding block puzzle game written in C and SDL2"
 arch=('any')
 url="https://github.com/filiparag/asm2048"
 license=('MIT')
 makedepends=('cmake' 'git' 'gcc' 'make')
-depends=('sdl2' 'sdl2_gfx' 'sdl2_ttf')
+depends=('glibc' 'sdl2' 'sdl2_gfx' 'sdl2_ttf')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("${pkgname}-source::git+${url}" 'https://raw.githubusercontent.com/snwh/paper-icon-theme/master/Paper/512x512/apps/gnome-2048.png')
 sha256sums=('SKIP' 'SKIP')
 
@@ -28,7 +31,7 @@ prepare() {
   # Create launcher
   tee 'launch.sh' << END
 #!/bin/sh
-cd /usr/share/${pkgname}
+cd /usr/share/${_pkgname}
 exec ./asm2048
 END
   # Create desktop entry
@@ -37,8 +40,8 @@ END
 Name=2048
 Version=1.0
 GenericName=Sliding number puzzle game
-Exec=/usr/bin/${pkgname}
-Icon=${pkgname}
+Exec=/usr/bin/${_pkgname}
+Icon=${_pkgname}
 Type=Application
 Categories=Game;
 Keywords=Puzzle;2D;Block;Number;Animated;
@@ -60,9 +63,9 @@ check() {
 }
 
 package() {
-  install -Dm 644 'gnome-2048.png' "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -Dm 755 "${pkgname}-source/launch.sh" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm 755 "${pkgname}-source/asm2048" -t "${pkgdir}/usr/share/${pkgname}/"
-  cp -r --preserve=mode "${pkgname}-source/assets" "${pkgdir}/usr/share/${pkgname}/"
-  install -Dm 644 "${pkgname}-source/launch.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm 644 'gnome-2048.png' "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  install -Dm 755 "${pkgname}-source/launch.sh" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm 755 "${pkgname}-source/asm2048" -t "${pkgdir}/usr/share/${_pkgname}/"
+  cp -r --preserve=mode "${pkgname}-source/assets" "${pkgdir}/usr/share/${_pkgname}/"
+  install -Dm 644 "${pkgname}-source/launch.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
