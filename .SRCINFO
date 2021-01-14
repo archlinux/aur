@@ -1,7 +1,7 @@
 pkgbase = typescript-language-server-git
-	pkgdesc = TypeScript & JavaScript Language Server
+	pkgdesc = Language Server Protocol (LSP) implementation for TypeScript using tsserver
 	pkgver = 0.4.0.r15.gfdf2831
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/theia-ide/typescript-language-server
 	arch = any
 	license = Apache
