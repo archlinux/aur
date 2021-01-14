@@ -1,6 +1,6 @@
 pkgbase = rgbtemp
 	pkgdesc = Change RGB colors according to temperature.
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/mdomlop/rgbtemp
 	changelog = ChangeLog
@@ -8,8 +8,8 @@ pkgbase = rgbtemp
 	arch = x86_64
 	license = GPL3
 	depends = msi-rgb
-	source = rgbtemp-0.1.tar.gz::https://github.com/mdomlop/rgbtemp/archive/0.1.tar.gz
-	md5sums = 5411e3e9907abda82ffadcf074477842
+	source = rgbtemp-0.2.tar.gz::https://github.com/mdomlop/rgbtemp/archive/0.2.tar.gz
+	md5sums = 099d476906d4b9a241eac666a722a42d
 
 pkgname = rgbtemp
 

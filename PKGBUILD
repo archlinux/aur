@@ -5,7 +5,7 @@ _pkgver_month=04
 _pkgver_day=03
 
 pkgname=rgbtemp
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc='Change RGB colors according to temperature.'
 url='https://github.com/mdomlop/rgbtemp'
@@ -24,4 +24,4 @@ package() {
     cd $srcdir/$pkgname-$pkgver
     make arch_install DESTDIR="$pkgdir"
 }
-md5sums=('5411e3e9907abda82ffadcf074477842')
+md5sums=('099d476906d4b9a241eac666a722a42d')

@@ -1,6 +1,19 @@
-snapman (0.1) unstable; urgency=medium
+rgbtemp
+=======
 
-  * Release 0.1.
-    + First release.
+Release 0.2
+-----------
 
- -- Manuel Domínguez López <mdomlop@gmail.com > Wed, 03 Apr 2020 14:34:17 +0200
+By Manuel <mdomlop@gmail.com> Thu, 14 Jan 2021 09:55:25 +0100
+
+- No hardcoded values for hwmon file.
+- Supply such file by RGBTEMP environment variable or by command line.
+
+
+Release 0.1
+-----------
+
+By Manuel <mdomlop@gmail.com > Wed, 03 Apr 2020 14:34:17 +0200
+
+- First release.
+
