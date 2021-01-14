@@ -1,7 +1,7 @@
 From db3408925dd69a70c14249a97d178d2762329f15 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Fri, 3 Jul 2020 10:35:06 -0600
-Subject: [PATCH 4/5] LINUX 5.8: use lru_cache_add
+Subject: [PATCH 4/7] LINUX 5.8: use lru_cache_add
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -104,5 +104,5 @@ index 78ff48294..11d071806 100644
  dnl e.g. ip_sock_set_mtu_discover, ip_sock_set_recverr
  AC_CHECK_LINUX_FUNC([ip_sock_set],
 -- 
-2.28.0
+2.30.0
 
