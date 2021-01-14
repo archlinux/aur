@@ -2,7 +2,7 @@
 # edrawmax 中文版
 
 pkgname=edrawmax-cn
-pkgver=10.1.0
+pkgver=10.5.0
 pkgrel=1
 arch=('x86_64')
 options=(!strip)
@@ -10,8 +10,8 @@ conflicts=("edrawmax")
 pkgdesc="强大的办公绘图、工程绘图、图文编辑、彩页设计软件"
 license=('Commercial')
 url="https://www.edrawsoft.cn/edrawmax/"
-source_x86_64=("https://www.edrawsoft.cn/2download/x86_64/edrawmax_10.1.0_cn_x84_64.deb")
-sha256sums_x86_64=('B86F999EE32ECC3EE8C71B43EDE3108B5B88F35130F76E3C1C99D58447C716B1')
+source_x86_64=("https://www.edrawsoft.cn/2download/x86_64/edrawmax-10-5-cn.deb")
+sha256sums_x86_64=('SKIP')
 
 package() {	
     cd "${pkgdir}"
