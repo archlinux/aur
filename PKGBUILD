@@ -1,6 +1,6 @@
 # Author: Artemii Sudakov <finziyr@yandex.ru>
 pkgname=ualsv
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc='Useful Arch Linux Script Vault'
 arch=('any')

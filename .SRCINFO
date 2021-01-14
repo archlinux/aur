@@ -1,6 +1,6 @@
 pkgbase = ualsv
 	pkgdesc = Useful Arch Linux Script Vault
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/BiteDasher/ualsv
 	install = ualsv.install
@@ -17,7 +17,7 @@ pkgbase = ualsv
 	depends = grep
 	depends = sudo
 	depends = yay
-	source = ualsv-1.1::git+https://github.com/BiteDasher/ualsv.git
+	source = ualsv-1.2::git+https://github.com/BiteDasher/ualsv.git
 	sha256sums = SKIP
 
 pkgname = ualsv
