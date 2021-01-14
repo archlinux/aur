@@ -1,12 +1,12 @@
 from bs4 import BeautifulSoup
-from robobrowser import RoboBrowser
+import mechanicalsoup
 import re
 import subprocess
 import warnings
 
-URL1="http://www.siedler25.org/"
-URL2="http://www.siedler25.org/index.php?com=dynamic&mod=2&type=nightly"
-LINK_URL_RE=re.compile('http://www.siedler25.org/uploads/nightly/s25rttr_([0-9]{8})-[0-9a-f]{40}_linux.x86_64.tar.bz2')
+URL1="https://www.siedler25.org/"
+URL2="https://www.siedler25.org/index.php?com=dynamic&mod=2&type=nightly"
+LINK_URL_RE=re.compile('https://www.siedler25.org/uploads/nightly/s25rttr_([0-9]{8})-[0-9a-f]{40}-linux.x86_64.tar.bz2')
 TEMPLATE="""
 # Maintainer: heinrich5991 <heinrich5991@gmail.com>
 pkgname=s25rttr-nightly-bin
@@ -17,7 +17,7 @@ arch=('x86_64')
 url="http://www.siedler25.org/"
 license=('GPL3')
 depends=(sdl sdl_mixer)
-install="s25rttr-nightly-bin.install"
+install=s25rttr-nightly-bin.install
 source=("{url}"
         "rttr"
         "s25rttr-nightly-bin.install")
@@ -27,7 +27,7 @@ sha256sums=('0000000000000000000000000000000000000000000000000000000000000000'
 
 build() {{
   cd "$srcdir"/s25rttr_"$pkgver"
-  rm lib/libminiupnpc.so
+  rm lib/libminiupnpc.so.*
 }}
 
 package() {{
@@ -43,16 +43,14 @@ package() {{
 # vim:set ts=2 sw=2 et:
 """[1:]
 
-browser = RoboBrowser()
+browser = mechanicalsoup.StatefulBrowser()
 browser.open(URL1)
 browser.open(URL2)
 
-with warnings.catch_warnings():
-    warnings.simplefilter("ignore")
-    hrefs = (a.get("href") for a in browser.parsed("a"))
-    matching_hrefs = (LINK_URL_RE.match(href) for href in hrefs if href is not None)
-    result = [(m.group(0), m.group(1)) for m in matching_hrefs if m is not None]
-    if len(result) != 1:
-        raise ValueError
-    url, date = result[0]
-    print(TEMPLATE.format(date=date, url=url), end="")
+hrefs = (a.get("href") for a in browser.get_current_page()("a"))
+matching_hrefs = (LINK_URL_RE.match(href) for href in hrefs if href is not None)
+result = [(m.group(0), m.group(1)) for m in matching_hrefs if m is not None]
+if len(result) != 1:
+    raise ValueError
+url, date = result[0]
+print(TEMPLATE.format(date=date, url=url), end="")
