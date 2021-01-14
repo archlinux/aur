@@ -1,0 +1,25 @@
+pkgbase = sauklaue
+	pkgdesc = Notetaking application for lecturing with an external graphics tablet
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/fagu/sauklaue
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = qt5-base
+	depends = capnproto
+	depends = cairomm
+	depends = poppler-glib
+	depends = hicolor-icon-theme
+	depends = libx11
+	depends = libxi
+	depends = kconfig
+	depends = kconfigwidgets
+	depends = kguiaddons
+	source = sauklaue-1.0.0.tar.gz::https://github.com/fagu/sauklaue/archive/v1.0.0.tar.gz
+	sha256sums = 18692b63f2034e18de53c8aadfb09cd0d201ccf8823985f129dc95dd71b2b8c4
+
+pkgname = sauklaue
+
