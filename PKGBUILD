@@ -5,7 +5,7 @@
 pkgname=franz
 #pkgver=${_pkgver//-/_} # Leaving it here for possible dev/beta package :)
 pkgver=5.6.1
-pkgrel=3
+pkgrel=4
 # Due to the previous "_beta" naming
 epoch=1
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more.'
@@ -13,7 +13,7 @@ arch=(x86_64 i686)
 url='https://meetfranz.com'
 license=(Apache)
 # Allow to easily switch between Electron versions.
-# Expected one is 'electron9' (Electron 9). May change soon.
+# Expected one is 'electron' (Electron 11). May change soon.
 # This is automatically replaced in `franz.sh` with the package name, as
 # the executable matches the package name (as of 2020-11-15).
 _electron='electron'
@@ -31,8 +31,9 @@ prepare() {
   cd "$pkgname"
 
   # Adjust the electron version to use when building
-  echo "--> Using Electron package: $_electron"
+  echo "--> Using Electron package:   $_electron"
   electron_version="`expac %v $_electron | cut -d'-' -f1`"
+  echo "--> Electron package version: $electron_version"
   sed -i -E "s|(\s+\"electron\":).*,|\1 \"$electron_version\",|" package.json
 
   # Prevent franz from being launched in dev mode
