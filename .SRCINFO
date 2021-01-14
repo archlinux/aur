@@ -1,12 +1,13 @@
 pkgbase = koi-git
 	pkgdesc = Switch between light and dark themes on KDE Plasma
 	pkgver = 0.1.1.r157.g452fc47
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Da-Viper/Koi
 	arch = x86_64
 	license = LGPL3
 	makedepends = qt5-base
 	makedepends = git
+	makedepends = extra-cmake-modules
 	depends = kconfig
 	depends = kcoreaddons
 	depends = kwidgetsaddons
