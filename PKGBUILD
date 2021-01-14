@@ -6,8 +6,8 @@ _source="installer"   # if installing from .sh installer
 # _source="pkg"         # if installing from .pkg package
 
 pkgname=cisco-anyconnect
-pkgver=4.9.04053
-pkgrel=2
+pkgver=4.9.05042
+pkgrel=1
 pkgdesc='Cisco AnyConnect Secure Mobility Client'
 arch=('x86_64')
 depends=('libxml2' 'ca-certificates')
@@ -40,21 +40,21 @@ unpack_installer() {
 
 if [[ "${_source}" == "tarball" ]]; then
     _filename="anyconnect-linux64-${pkgver}-predeploy-k9.tar.gz"
-    _filehash="fc113b2166d61debc60883911004a24ebd82a1067bd07155eade84076918da56"
+    _filehash="934f3a06ecc922b1dda719d2c5b7ab7aaf973e10b574d78ecccab26da9982882"
 
     prepare() {
         tar xf "$_filename"
     }
 elif [[ "${_source}" == "installer" ]]; then
     _filename="${_installer_filename}"
-    _filehash="38e833475dfaf4f1b43025b1b0431460a8e829428ba09766867bf6baf7028032"
+    _filehash="da229c098ef7b7708901d43bb433192840989cfb55bb73f68e1f1112f540d8b2"
 
     prepare() {
         unpack_installer
     }
 elif [[ "${_source}" == "pkg" ]]; then
     _filename="anyconnect-linux64-${pkgver}-webdeploy-k9.pkg"
-    _filehash="9aa32f5ee7c17b13e0f0384c7824c89b0bd9c8bec520eff7a28f5f401b89accb"
+    _filehash="ac5026ab293e7cad6344db71557ae821c26bd4c3f51628949ad2afc797792816"
 
     prepare() {
         unzip -j "${_filename}" "binaries/${_installer_filename}"
@@ -84,7 +84,7 @@ package() {
     # install libs
     for lib in "libvpnagentutilities.so" "libvpncommon.so" "libvpncommoncrypt.so" \
         "libvpnapi.so" "libacruntime.so" "libacciscossl.so" "libacciscocrypto.so" \
-        "libboost_date_time.so" "libboost_filesystem.so" "libboost_system.so" \
+        "cfom.so" "libboost_date_time.so" "libboost_filesystem.so" "libboost_system.so" \
         "libboost_thread.so" "libboost_signals.so" "libboost_chrono.so" \
         "libaccurl.so.4.5.0"; do
         install -Dm755 ${lib} "${pkgdir}/opt/cisco/anyconnect/lib/${lib}"
