@@ -1,24 +1,23 @@
 pkgbase = droidcam
 	pkgdesc = A tool for using your android device as a wireless/usb webcam
-	pkgver = 1.7
+	pkgver = 1.7.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/aramg/droidcam
 	arch = x86_64
 	license = GPL
 	makedepends = gtk3
-	makedepends = libappindicator-gtk3
 	makedepends = ffmpeg
 	makedepends = libusbmuxd
 	backup = etc/modprobe.d/droidcam.conf
 	source = droidcam.desktop
 	source = dkms.conf
 	source = droidcam.conf
-	source = droidcam-1.7.zip::https://github.com/aramg/droidcam/archive/v1.7.zip
+	source = droidcam-1.7.1.zip::https://github.com/aramg/droidcam/archive/v1.7.1.zip
 	sha512sums = 72d21aa2d7eecc9bb070aaf7059a671246feb22f9c39b934a5463a4839f9347050de00754e5031dbc44f78eb2731f58f0cd2fcf781bc241f6fbd1abb4308b7ee
 	sha512sums = 27848dc6825c965c0aaac8e86220c3916ba20df6d941f5f05caecbf9c329ee744ee883bd2638ba58fe0dc3f40a8ae804dafbfbbe2efc23237e2b5450606cb78d
 	sha512sums = 74415b349bf8b2d1bb8181906f4254416d6223c5c42951185051bf3dd3e2f780db3441078ebff4a670eb0ffc76cc08f3b36851e0824c55a7f70136ce4d0240bc
-	sha512sums = eaf06b2c51a888da752819d765055da05fdb8997202825809fd88b9ea7e7ffbbac9ba1ee9bbc274e075bc7cd0d50d5e233bd126ecbabd95c93e9ebe62d498d2a
+	sha512sums = 5ed727de03c875e7f0c9f24eab603c32f3b99be906c46108dd66be4d38dc3e7029c02a4f7ee82e1fd1c5cfc1f60cf351a9bac25ba3d5150a28c632f25cf5f70a
 
 pkgname = droidcam
 	depends = alsa-lib
@@ -27,7 +26,6 @@ pkgname = droidcam
 	depends = v4l2loopback-dc-dkms
 	depends = libusbmuxd
 	optdepends = gtk3: use GUI version in addition to CLI interface
-	optdepends = libappindicator-gtk3: use GUI version in addition to CLI interface
 
 pkgname = v4l2loopback-dc-dkms
 	depends = dkms
