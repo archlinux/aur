@@ -1,0 +1,15 @@
+pkgbase = python-shell
+	pkgdesc = Python Shell Wrapper Library. A better way to run shell commands in Python.
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/bart-tools/python-shell
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-six
+	source = https://github.com/bart-tools/python-shell/archive/stable/1.0.4.tar.gz
+	sha256sums = a3e35889d44c0d3c8f52b07f0969560e985605e1f66161535e6ca548580d183c
+
+pkgname = python-shell
+
