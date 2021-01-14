@@ -2,9 +2,9 @@ pkgdesc="ROS - This package contains generic definitions of geometric shapes and
 url='http://wiki.ros.org/geometric_shapes'
 
 pkgname='ros-noetic-geometric-shapes'
-pkgver='0.7.0'
+pkgver='0.7.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -47,7 +47,7 @@ depends=(
 
 _dir="geometric_shapes-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/geometric_shapes/archive/${pkgver}.tar.gz")
-sha256sums=('5b381526645555f550a5de52ac944ed37f67194509f596c24d82d0e9fb4e60da')
+sha256sums=('542028d17daa1e307eb14e9f81c9a75bce64428d31c10ab4d977cdbc70bcea01')
 
 build() {
     # Use ROS environment variables
