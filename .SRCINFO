@@ -1,0 +1,35 @@
+pkgbase = browservice
+	pkgdesc = Browse the modern web on historical browsers
+	pkgver = 0.9.1.2
+	pkgrel = 1
+	url = https://github.com/ttalvitie/browservice
+	arch = x86_64
+	arch = armv7l
+	arch = aarch64
+	license = MIT
+	depends = wget
+	depends = cmake
+	depends = poco
+	depends = pango
+	depends = libjpeg-turbo
+	depends = libxcb
+	depends = libx11
+	depends = python
+	depends = xorg-server-xvfb
+	depends = xorg-xauth
+	depends = at-spi2-atk
+	depends = alsa-lib
+	depends = nss
+	depends = libcups
+	depends = libxcursor
+	depends = libxss
+	depends = libxcomposite
+	depends = libxkbcommon
+	depends = ttf-ms-fonts
+	source = https://github.com/ttalvitie/browservice/archive/v0.9.1.2.tar.gz
+	source = cmake.patch
+	sha256sums = 4936efb4389605d96e358cd61a6a689b13c3b3b137ce7e79f3c96cfc290d3d92
+	sha256sums = 9a89293e55961adadca26829e2a97f06286b19b554032917cccbf1bd0bd53700
+
+pkgname = browservice
+

@@ -1,0 +1,20 @@
+diff --unified --recursive --text browservice-0.9.1.2/setup_cef.sh browservice-patch/setup_cef.sh
+--- browservice-0.9.1.2/setup_cef.sh	2020-11-21 05:38:52.000000000 -0500
++++ browservice-patch/setup_cef.sh	2021-01-13 16:55:27.846282188 -0500
+@@ -18,13 +18,13 @@
+ 
+ if [ "$ARCH" == "x86_64" ] || [[ "$ARCH" =~ ^i[3-7]86$ ]]
+ then
+-    CMAKEFLAGS=""
++    CMAKEFLAGS="-DCEF_COMPILER_FLAGS=-Wno-error=cpp"
+ elif [ "$ARCH" == "armv7l" ]
+ then
+-    CMAKEFLAGS="-DPROJECT_ARCH=arm"
++    CMAKEFLAGS="-DPROJECT_ARCH=arm -DCEF_COMPILER_FLAGS=-Wno-error=cpp"
+ elif [ "$ARCH" == "aarch64" ]
+ then
+-    CMAKEFLAGS="-DPROJECT_ARCH=arm64"
++    CMAKEFLAGS="-DPROJECT_ARCH=arm64 -DCEF_COMPILER_FLAGS=-Wno-error=cpp"
+ else
+     echo "Unsupported architecture"
+     exit 1
