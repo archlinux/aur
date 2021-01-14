@@ -1,7 +1,7 @@
 # Maintainer: Amir Zarrinkafsh <nightah at me dot com>
 pkgname=authelia
 pkgver=4.25.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Cloud ready multi-factor authentication portal for your Apps."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/authelia/authelia"
@@ -30,6 +30,7 @@ build() {
   INLINE_RUNTIME_CHUNK=false yarn build
   mv build ../public_html
   cd ..
+  cp -R api public_html/
   go get -u aletheia.icu/broccoli
   go generate internal/server/*
   sed -i "s/__BUILD_TAG__/v${pkgver}/" cmd/authelia/constants.go
