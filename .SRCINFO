@@ -1,0 +1,16 @@
+pkgbase = cryfa
+	pkgdesc = A secure encryption tool for genomic data
+	pkgver = 20.04
+	pkgrel = 1
+	url = https://github.com/cobilab/cryfa
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	source = cryfa-20.04.tar.gz::https://github.com/cobilab/cryfa/archive/v20.04.tar.gz
+	sha256sums = 8e65537821d4a6f8d64ddbdb7751344fcb7793096809cb3ed1661720c607aaa9
+
+pkgname = cryfa
+
