@@ -15,7 +15,7 @@ optdepends=(
 source=("${pkgname}-${pkgver}-src.tar.gz::${url}/releases/download/${pkgver}/${pkgname}-${pkgver}-src.tar.gz"
     "${pkgname}-${pkgver}-src.tar.gz.asc::${url}/releases/download/${pkgver}/${pkgname}-${pkgver}-src.tar.gz.asc")
 validpgpkeys=('4F7BC1FD97170A79267686A6FC9B1319726657D3')
-sha256sums=('71ef2a2aab29cff883fe86ef5043d206091e93fa57be38f85fb7a85b6693c1c1'
+sha256sums=('7994b9cfdfe77b216df42e45c8bc304b60db2c80e3b891356bf84e10ceb473d1'
             'SKIP')
 
 build() {
