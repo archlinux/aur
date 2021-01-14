@@ -1,10 +1,11 @@
+# Maintainer: David Brown <d.brown at bigdavedev dot com>
 # Maintainer: Felix Golatofski <contact@xdfr.de>
 
 pkgbase=postgresql-11
 pkgname=('postgresql-libs-11' 'postgresql-docs-11' 'postgresql-11')
 pkgver=11.10
 _majorver=${pkgver%.*}
-pkgrel=1
+pkgrel=2
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -12,6 +13,7 @@ license=('custom:PostgreSQL')
 makedepends=('krb5' 'libxml2' 'python' 'python2' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0'
              'pam' 'zlib' 'icu' 'systemd' 'libldap' 'llvm' 'clang')
 source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
+        icu68.patch
         postgresql-run-socket.patch
         postgresql-perl-rpath.patch
         postgresql.pam
@@ -21,6 +23,7 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
 	postgresql.sysusers
 	postgresql.tmpfiles)
 sha256sums=('13e6d2f80662fe463bc7718cdf0de6a9ec67fc78afcc7a3ae66b9ea19bb97899'
+            'fa784fe8b94833539cdb52f3986561bba3673e3b1d80e18d9e097826c5658454'
             '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
             '5f73b54ca6206bd2c469c507830261ebd167baca074698d8889d769c33f98a31'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
@@ -30,6 +33,7 @@ sha256sums=('13e6d2f80662fe463bc7718cdf0de6a9ec67fc78afcc7a3ae66b9ea19bb97899'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
             '4a4c0bb9ceb156cc47e9446d8393d1f72b4fe9ea1d39ba17213359df9211da57')
 sha512sums=('0cc0e9b0f76e00727dc699ea59a45d760d37d91ec736a62cbc9bda3e38eb1ef1565e4e399dd3ae96bad87f866e56e364f916de7740d8be6e1cfc2bf654dfbb68'
+            '8dad1f4f5740e54b2fa3facdf5475df8553b67e62178e144f1f6d37947784656093a664014a3ce72a5d23cf535f61f2fbfe3ab440a8c81faf054495e2d45c2bb'
             '031efe12d18ce386989062327cdbbe611c5ef1f94e4e1bead502304cb3e2d410af533d3c7f1109d24f9da9708214fe32f9a10ba373a3ca8d507bdb521fbb75f7'
             '38302242b30c01c7981574ed28d9cbd9dc73bf6b56ba3a032afb5d0885ae83e5aa72ce578bf2422214dfa6c46f09d0bdd7cccaeb3c25d58754eb1a34f8bf5615'
             '1e6183ab0eb812b3ef687ac2c26ce78f7cb30540f606d20023669ac00ba04075487fb72e4dc89cc05dab0269ff6aca98fc1167cc75669c225b88b592482fbf67'
@@ -41,6 +45,7 @@ sha512sums=('0cc0e9b0f76e00727dc699ea59a45d760d37d91ec736a62cbc9bda3e38eb1ef1565
 
 prepare() {
   cd postgresql-${pkgver}
+  patch -p0 < ../icu68.patch
   patch -p1 < ../postgresql-run-socket.patch
   patch -p1 < ../postgresql-perl-rpath.patch
 }
