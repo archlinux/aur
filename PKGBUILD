@@ -3,7 +3,7 @@
 pkgname=heketi-client
 _pname=${pkgname%%-client}
 _shortname=${_pname}-cli
-pkgver=9.0.0
+pkgver=10.2.0
 pkgrel=1
 pkgdesc="RESTful based volume management framework for GlusterFS (client)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/heketi/heketi"
 license=('APACHE' 'GPL2')
 depends=('glibc')
 source=("https://github.com/$_pname/$_pname/releases/download/v$pkgver/$pkgname-v$pkgver.linux.amd64.tar.gz")
-sha256sums=('3d46ea98ea17a3d9558e14dcc8c4e78f019f82ff0f4955fa3e5533cc1dea59e4')
+sha256sums=('73c411488f87b7aeab5d3ab4e1344d9baeffda6020b700272f192ab2998f00b6')
 
 build() {
     echo > /dev/null
