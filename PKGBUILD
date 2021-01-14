@@ -5,7 +5,7 @@
 
 pkgname=qt3
 pkgver=3.3.8b
-pkgrel=14
+pkgrel=15
 epoch=1
 pkgdesc="A cross-platform application and UI framework"
 arch=('i686' 'x86_64')
@@ -41,74 +41,74 @@ prepare() {
 
   # Patch application order copied from the "qt3.spec" file of the Fedora
 
-  patch -p1 -i ../../qt3-fedora-patches/qt-3.3.4-print-CJK.patch # Patch1
-  patch -p1 -i ../../qt3-fedora-patches/qt-3.0.5-nodebug.patch # Patch2
-  patch -p1 -i ../../qt3-fedora-patches/qt-3.1.0-makefile.patch # Patch3
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.7-umask.patch # Patch4
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.6-strip.patch # Patch5
+  patch -p1 -i ../qt3-fedora-patches/qt-3.3.4-print-CJK.patch # Patch1
+  patch -p1 -i ../qt3-fedora-patches/qt-3.0.5-nodebug.patch # Patch2
+  patch -p1 -i ../qt3-fedora-patches/qt-3.1.0-makefile.patch # Patch3
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.7-umask.patch # Patch4
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.6-strip.patch # Patch5
 
   # drop backup file(s), else they get installed too, http://bugzilla.redhat.com/639459
   rm -fv mkspecs/linux-g++*/qmake.conf.strip
 
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.2-quiet.patch # Patch7
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.3-qembed.patch # Patch8
-  patch -p1 -i ../../qt3-fedora-patches/qt-uic-nostdlib.patch # Patch12
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.6-qfontdatabase_x11.patch # Patch13
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.3-gl.patch # Patch14
-  patch -p1 -i ../../qt3-fedora-patches/qt-3.3.3-gtkstyle.patch # Patch19
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.2-quiet.patch # Patch7
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.3-qembed.patch # Patch8
+  patch -p1 -i ../qt3-fedora-patches/qt-uic-nostdlib.patch # Patch12
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.6-qfontdatabase_x11.patch # Patch13
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.3-gl.patch # Patch14
+  patch -p1 -i ../qt3-fedora-patches/qt-3.3.3-gtkstyle.patch # Patch19
   # hardcode the compiler version in the build key once and for all
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-hardcode-buildkey.patch # Patch20
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.5-uic.patch # Patch24
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-uic-multilib.patch # Patch25
-  patch -p1 -i ../../qt3-fedora-patches/qt-3.3.6-fontrendering-ml_IN-209097.patch # Patch27
-  patch -p1 -i ../../qt3-fedora-patches/qt-3.3.8-fontrendering-as_IN-209972.patch # Patch29
-  patch -p1 -i ../../qt3-fedora-patches/qt-3.3.6-fontrendering-te_IN-211259.patch # Patch31
-  patch -p1 -i ../../qt3-fedora-patches/qt-3.3.6-fontrendering-214371.patch # Patch32
-  patch -p1 -i ../../qt3-fedora-patches/qt-3.3.8-fontrendering-#214570.patch # Patch33
-  patch -p1 -i ../../qt3-fedora-patches/qt-3.3.6-fontrendering-ml_IN-209974.patch # Patch34
-  patch -p1 -i ../../qt3-fedora-patches/qt-3.3.6-fontrendering-ml_IN-217657.patch # Patch35
-  patch -p1 -i ../../qt3-fedora-patches/qt-3.3.6-fontrendering-gu-228452.patch # Patch37
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8-odbc.patch # Patch38
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.7-arm.patch # Patch39
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.8b-hardcode-buildkey.patch # Patch20
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.5-uic.patch # Patch24
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.8b-uic-multilib.patch # Patch25
+  patch -p1 -i ../qt3-fedora-patches/qt-3.3.6-fontrendering-ml_IN-209097.patch # Patch27
+  patch -p1 -i ../qt3-fedora-patches/qt-3.3.8-fontrendering-as_IN-209972.patch # Patch29
+  patch -p1 -i ../qt3-fedora-patches/qt-3.3.6-fontrendering-te_IN-211259.patch # Patch31
+  patch -p1 -i ../qt3-fedora-patches/qt-3.3.6-fontrendering-214371.patch # Patch32
+  patch -p1 -i ../qt3-fedora-patches/qt-3.3.8-fontrendering-#214570.patch # Patch33
+  patch -p1 -i ../qt3-fedora-patches/qt-3.3.6-fontrendering-ml_IN-209974.patch # Patch34
+  patch -p1 -i ../qt3-fedora-patches/qt-3.3.6-fontrendering-ml_IN-217657.patch # Patch35
+  patch -p1 -i ../qt3-fedora-patches/qt-3.3.6-fontrendering-gu-228452.patch # Patch37
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.8-odbc.patch # Patch38
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.7-arm.patch # Patch39
   # See http://bugzilla.redhat.com/549820
   # Try to set some sane defaults, for style, fonts, plugin path
   # FIXME: style doesn't work.  use kde3 plastik, if available
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-sane_defaults.patch # Patch40
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.8b-sane_defaults.patch # Patch40
   sed -i.KDE3_PLUGIN_PATH \
       -e "s|@@KDE3_PLUGIN_PATH@@|%{_libdir}/kde3/plugins|" \
       src/kernel/qapplication.cpp
   # and/or just use qtrc to do the same thing
 
   # add missing #include <cstdef> to make gcc-4.6 happier
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-cstddef.patch # Patch41
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.8b-cstddef.patch # Patch41
   # fix aliasing issue in qlocale.cpp
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-qlocale-aliasing.patch # Patch42
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.8b-qlocale-aliasing.patch # Patch42
   # use the system SQLite 2 (Debian's 91_system_sqlite.diff)
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-system-sqlite2.patch # Patch43
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.8b-system-sqlite2.patch # Patch43
   # silence compiler warning in qimage.h by adding parentheses
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-qimage-parentheses.patch # Patch44
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.8b-qimage-parentheses.patch # Patch44
   ## fix the include path for zlib.h in qcstring.cpp to pick up the system version
-  #patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-system-zlib-header.patch # Patch45
+  #patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.8b-system-zlib-header.patch # Patch45
   # fix FTBFS with libpng 1.5 (patch from NetBSD)
-  patch -p0 -i ../../qt3-fedora-patches/qt-3.3.8-libpng15.patch # Patch46
+  patch -p0 -i ../qt3-fedora-patches/qt-3.3.8-libpng15.patch # Patch46
   # work around -Werror=format-security false positives (#1037297)
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-#1037297.patch # Patch47
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.8b-#1037297.patch # Patch47
   # search for FreeType using pkg-config, fixes FTBFS with freetype >= 2.5.1
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-freetype251.patch # Patch48
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.8b-freetype251.patch # Patch48
   # rename the struct Param in qsqlextension_p.h that conflicts with PostgreSQL 11
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-postgresql11.patch # Patch49
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.8b-postgresql11.patch # Patch49
 
   # immodule patches
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-immodule-unified-qt3.3.8-20071116.diff # Patch50
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-immodule-unified-qt3.3.5-20051012-quiet.patch # Patch51
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-fix-key-release-event-with-imm.diff # Patch52
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.6-qt-x11-immodule-unified-qt3.3.5-20060318-resetinputcontext.patch # Patch53
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-immodule-unified-qt3.3.8-20071116.diff # Patch50
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-immodule-unified-qt3.3.5-20051012-quiet.patch # Patch51
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.8b-fix-key-release-event-with-imm.diff # Patch52
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.6-qt-x11-immodule-unified-qt3.3.5-20060318-resetinputcontext.patch # Patch53
 
   # mariadb support
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-mariadb.patch # Patch60
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.8b-mariadb.patch # Patch60
 
   # compile with postgresql 12
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-PostgreSQL12.patch # Patch70
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.8b-PostgreSQL12.patch # Patch70
 
   patch -p0 -i ./../qt3-other-patches/0001-dnd_optimization.patch
   patch -p0 -i ./../qt3-other-patches/0002-dnd_active_window_fix.patch
@@ -123,43 +123,43 @@ prepare() {
   patch -p0 -i ./../qt3-other-patches/0036-qprogressbar-optimization.patch
 
   # qt-copy patches
-  patch -p0 -i ../../qt3-fedora-patches/0038-dragobject-dont-prefer-unknown.patch # Patch100
+  patch -p0 -i ../qt3-fedora-patches/0038-dragobject-dont-prefer-unknown.patch # Patch100
   patch -p0 -i ./../qt3-other-patches/0044-qscrollview-windowactivate-fix.diff
   patch -p0 -i ./../qt3-other-patches/0046-qiconview-no-useless-scrollbar.diff
-  patch -p0 -i ../../qt3-fedora-patches/0047-fix-kmenu-width.diff # Patch101
-  patch -p0 -i ../../qt3-fedora-patches/0048-qclipboard_hack_80072.patch # Patch102
+  patch -p0 -i ../qt3-fedora-patches/0047-fix-kmenu-width.diff # Patch101
+  patch -p0 -i ../qt3-fedora-patches/0048-qclipboard_hack_80072.patch # Patch102
   patch -p0 -i ./../qt3-other-patches/0049-qiconview-rubber_on_move.diff
-  patch -p0 -i ../../qt3-fedora-patches/0056-khotkeys_input_84434.patch # Patch103
+  patch -p0 -i ../qt3-fedora-patches/0056-khotkeys_input_84434.patch # Patch103
   patch -p0 -i ./../qt3-other-patches/0059-qpopup_has_mouse.patch
   patch -p0 -i ./../qt3-other-patches/0060-qpopup_ignore_mousepos.patch
   patch -p0 -i ./../qt3-other-patches/0061-qscrollview-propagate-horizontal-wheelevent.patch
-  patch -p0 -i ../../qt3-fedora-patches/0073-xinerama-aware-qpopup.patch # Patch105
+  patch -p0 -i ../qt3-fedora-patches/0073-xinerama-aware-qpopup.patch # Patch105
   patch -p0 -i ./../qt3-other-patches/0078-argb-visual-hack.patch
-  patch -p0 -i ../../qt3-fedora-patches/0079-compositing-types.patch # Patch107
-  patch -p0 -i ../../qt3-fedora-patches/0080-net-wm-sync-request-2.patch # Patch108
-  patch -p0 -i ../../qt3-fedora-patches/0084-compositing-properties.patch # Patch110
+  patch -p0 -i ../qt3-fedora-patches/0079-compositing-types.patch # Patch107
+  patch -p0 -i ../qt3-fedora-patches/0080-net-wm-sync-request-2.patch # Patch108
+  patch -p0 -i ../qt3-fedora-patches/0084-compositing-properties.patch # Patch110
 
   # upstream patches
   patch -p1 -i ./../qt3-other-patches/qt-no-rpath.patch
   patch -p1 -i ./../qt3-other-patches/qt-visibility.patch
   patch -p1 -i ./../qt3-other-patches/qt-x11-free-3.3.4-gcc4.patch
   patch -p1 -i ./../qt3-other-patches/qt-x11-free-3.3.5-makelibshared.patch
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.4-fullscreen.patch # Patch200
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-gcc43.patch # Patch201
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.4-fullscreen.patch # Patch200
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.8b-gcc43.patch # Patch201
 
   # security patches
   # fix for CVE-2013-4549 backported from Qt 4
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-CVE-2013-4549.patch # Patch300
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.8b-CVE-2013-4549.patch # Patch300
   # fix for CVE-2014-0190 (QTBUG-38367) backported from Qt 4
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-CVE-2014-0190.patch # Patch301
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.8b-CVE-2014-0190.patch # Patch301
   # fix for CVE-2015-0295 backported from Qt 4
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-CVE-2015-0295.patch # Patch302
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.8b-CVE-2015-0295.patch # Patch302
   # fix for CVE-2015-1860 backported from Qt 4
-  patch -p1 -i ../../qt3-fedora-patches/qt-x11-free-3.3.8b-CVE-2015-1860.patch # Patch303
+  patch -p1 -i ../qt3-fedora-patches/qt-x11-free-3.3.8b-CVE-2015-1860.patch # Patch303
 
 
   # Fix CJK font/chars select error (FS#11245)
-  patch -p1 -i ../../qt3-other-patches/eastern_asian_languagues.diff
+  patch -p1 -i ../qt3-other-patches/eastern_asian_languagues.diff
 
   # For immodule
   sh ./make-symlinks.sh
