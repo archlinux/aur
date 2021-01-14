@@ -10,7 +10,7 @@ url="https://gitlab.gnome.org/GNOME/gnome-shell"
 arch=(x86_64)
 license=(GPL2)
 depends=(accountsservice gcr gjs-git js68 gnome-bluetooth upower gnome-session gnome-settings-daemon sysprof-git
-         gnome-themes-extra gsettings-desktop-schemas-git libcanberra-pulse libcroco libgdm libsecret
+         gnome-themes-extra gsettings-desktop-schemas-git gtk4 libcanberra-pulse libcroco libgdm libsecret
          mutter-git nm-connection-editor unzip gstreamer libibus gnome-desktop-git bash-completion gnome-autoar)
 makedepends=(gtk-doc gnome-control-center evolution-data-server gobject-introspection git meson
              sassc asciidoc)
