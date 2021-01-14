@@ -4,7 +4,7 @@
 buildarch=8
 
 pkgname=uboot-raspberrypi4-rc
-pkgver=2021.01rc2
+pkgver=2021.01
 pkgrel=1
 pkgdesc="U-Boot for Raspberry Pi 4"
 arch=(aarch64)
@@ -18,7 +18,7 @@ options=('!strip' '!makeflags' !buildflags 'staticlibs')
 source=("${pkgname}-${pkgver}.tar.bz2::ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver/rc/-rc}.tar.bz2"
         'boot.txt'
         'mkscr')
-sha256sums=('acdfc246cf68cb3c4022c455713d6405abb53f1ff730445361a6ebd4a2a9a3ec'
+sha256sums=('b407e1510a74e863b8b5cb42a24625344f0e0c2fc7582d8c866bd899367d0454'
             '4ae414a388383046f28ebd249a2c74045b4f2e14131cada9e9ce0c4f341f63f1'
             '6fa9a67367836fc9e96670881ea3fc8eede828f2182cd9bf08366bfcb1bfa0cb')
 
