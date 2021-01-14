@@ -2,12 +2,12 @@
 
 pkgname=snapcast
 pkgver=0.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Synchronous multi-room audio player"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/badaix/snapcast"
 license=('GPL')
-depends=(alsa-lib avahi libvorbis flac opus expat libsoxr)
+depends=(alsa-lib avahi libvorbis flac opus expat libsoxr libpulse)
 makedepends=(cmake alsa-utils boost)
 install="snapcast.install"
 backup=('etc/default/snapserver' 'etc/default/snapclient' 'etc/snapserver.conf')
@@ -57,6 +57,7 @@ package() {
     # install documentation
     install -d "${pkgdir}/usr/share/doc/${pkgname}"
     cp -R doc/* "${pkgdir}/usr/share/doc/${pkgname}/"
+    install -Dm644 "changelog.md" "${pkgdir}/usr/share/doc/${pkgname}"
 
     find "${pkgdir}"/usr/share/doc/${pkgname} -type f -exec chmod 0644 {} \;
     find "${pkgdir}"/usr/share/doc/${pkgname} -type d -exec chmod 0755 {} \;

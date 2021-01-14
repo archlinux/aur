@@ -1,7 +1,7 @@
 pkgbase = snapcast
 	pkgdesc = Synchronous multi-room audio player
 	pkgver = 0.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badaix/snapcast
 	install = snapcast.install
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = snapcast
 	depends = opus
 	depends = expat
 	depends = libsoxr
+	depends = libpulse
 	backup = etc/default/snapserver
 	backup = etc/default/snapclient
 	backup = etc/snapserver.conf
