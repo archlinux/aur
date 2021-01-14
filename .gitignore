@@ -1,0 +1,4 @@
+*.zst
+pkg/
+src/
+aws-lambda-rie

@@ -1,0 +1,12 @@
+pkgbase = aws-lambda-rie
+	pkgdesc = AWS Lambda runtime interface emulator
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aws.amazon.com/
+	arch = x86_64
+	license = Apache_v2
+	source = https://github.com/aws/aws-lambda-runtime-interface-emulator/releases/download/v1.0/aws-lambda-rie
+	md5sums = 33796b3e29d200c0d08b93c67161e87f
+
+pkgname = aws-lambda-rie
+
