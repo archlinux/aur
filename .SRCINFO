@@ -1,13 +1,14 @@
 pkgbase = mt
 	pkgdesc = A terminal written in GTK+ and Rust
 	pkgver = 0.1.0+alpha2021.01.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/Miridyan/terminal
 	arch = x86_64
 	license = BSD
 	makedepends = cargo
 	depends = gtk3
 	depends = vte3
+	depends = libhandy
 	provides = com.gitlab.miridyan.Terminal
 	source = terminal-v0.1.0+alpha2021.01.14.tar.gz::https://gitlab.com/Miridyan/terminal/-/archive/v0.1.0+alpha2021.01.14/terminal-v0.1.0+alpha2021.01.14.tar.gz
 	sha512sums = 9ef7a05482dd024e0997536d4ca596b9676d23d32e207b6e872b41210fca372d00be890f1edba96485e1083f9e907b9831d21ff8db68222ac5ea5cae477f17f6

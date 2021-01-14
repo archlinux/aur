@@ -1,10 +1,10 @@
 pkgname=mt
 pkgver=0.1.0+alpha2021.01.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal written in GTK+ and Rust"
 provides=("com.gitlab.miridyan.Terminal")
 makedepends=('cargo')
-depends=('gtk3' 'vte3')
+depends=('gtk3' 'vte3' 'libhandy')
 arch=('x86_64')
 url="https://gitlab.com/Miridyan/terminal"
 source=("terminal-v$pkgver.tar.gz::https://gitlab.com/Miridyan/terminal/-/archive/v$pkgver/terminal-v$pkgver.tar.gz")
