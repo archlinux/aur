@@ -1,0 +1,22 @@
+pkgbase = yong
+	pkgdesc = Tiny Small Chinese Input Method
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/dgod/yong
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = nodejs
+	makedepends = gcc
+	makedepends = wayland
+	makedepends = gtk2
+	makedepends = gtk3
+	makedepends = qt5-base
+	depends = gtk3
+	source = git+https://hub.fastgit.org/dgod/yong.git
+	source = git+https://hub.fastgit.org/dgod/build.js.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = yong
+
