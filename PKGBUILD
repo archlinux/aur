@@ -1,24 +1,25 @@
 # Maintainer: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 # Contributor: Valentin Hăloiu <vially.ichb@gmail.com>
+# Contributor: David Rubio <david.alejandro.rubio at gmail.com>
 
 pkgname=electron-ozone
-pkgver=11.0.1
+pkgver=11.1.1
 provides=('electron')
 conflicts=('electron')
-_commit=4f281e3d31710a72f8922419a28c82210b581d28
-_chromiumver=87.0.4280.60
-pkgrel=1
+_commit=dcd216984fb7e823758a2fac1378b8d5a0f1774b
+_chromiumver=87.0.4280.88
+pkgrel=2
 pkgdesc='Electron compiled with wayland support via Ozone'
 arch=('x86_64')
 url='https://electronjs.org/'
 license=('MIT' 'custom')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libxslt' 'minizip'
-         'nss' 'snappy')
+         'nss' 'snappy' 'openh264')
 makedepends=('git' 'gn<0.1865' 'gperf' 'harfbuzz-icu' 'java-runtime-headless'
              'jsoncpp' 'libnotify' 'lld' 'llvm' 'ninja' 'npm' 'pciutils' 'yarn'
              'python2' 'wget' 'yasm' 'python2-setuptools' 'libpipewire02' 'nodejs'
-             'openh264')
+             'clang')
 optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'libappindicator-gtk3: StatusNotifierItem support'
             'trash-cli: file deletion support (trash-put)'
@@ -28,6 +29,8 @@ source=('git+https://github.com/electron/electron.git'
         'electron.desktop'
         'default_app-icon.patch'
         'use-system-libraries-in-node.patch'
+        'icu68.patch'
+        'v8-icu68.patch' 
         'chromium-skia-harmony.patch'
         '0001-fix-add-Wayland-support-26022.patch'
        )
@@ -36,6 +39,8 @@ sha256sums=('SKIP'
             '5270db01f3f8aaa5137dec275a02caa832b7f2e37942e068cba8d28b3a29df39'
             '00b21418b9468064f6f275566d3cf64c6b014e596acc650100a5a46da31efbfa'
             '50884820e07f7ce5ce55ee1ecdf610367a737e076c5029da0ab0d23154e7661d'
+            '38fb5218331d6e03915490dab64f7b8bf26833a581d1aaa02090437c67e9439c'
+            '6e919c9712d8fe6c2918778df1f8c2ee0675a87a48be5d2aaa54e320703ced4b' 
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
             '7d5a92aa58858d82a756c7b0c266484ac9dbc299127205bae93ba4e7030bfd3c')
 
@@ -126,6 +131,8 @@ prepare() {
   cd ..
 
   echo "Applying local Chromium patches..."
+  patch -Np1 -i ../icu68.patch
+  patch -Np1 -d v8 <../v8-icu68.patch 
   patch -Np0 -i ../chromium-skia-harmony.patch
   # patch -Np1 -i ../use-system-libraries-in-node.patch
   patch -Np1 -i ../default_app-icon.patch  # Icon from .desktop file
