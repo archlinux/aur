@@ -7,16 +7,16 @@ pkgname=(
   kata-linux-container
   kata-containers-image
 )
-pkgver=1.12.0
+pkgver=1.12.1
 _pkgver=${pkgver/\~/-}
-pkgrel=2
+pkgrel=1
 pkgdesc="Lightweight virtual machines for containers (guest components)"
 arch=('x86_64')
 url="https://katacontainers.io/"
 license=('Apache')
 makedepends=(
   'go'
-  'yq2-bin'  # quietly pulled by Kata's codebase to read versions.yaml from repo
+  #'yq2-bin'  # quietly pulled by Kata's codebase to read versions.yaml from repo
   'mkinitcpio'  # initrd build
   'pacman' 'udisks2'  # rootless image build
 )
@@ -31,7 +31,6 @@ source=(
 
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_kata_kernel_ver}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_kata_kernel_ver}.tar.sign"
-  #"btrfs.config"
 
   # mknitcpio-busybox
   "mkinitcpio-agent.conf"
@@ -42,13 +41,12 @@ source=(
   "install_sd-kata-agent.tpl"
 )
 sha512sums=(
-  "eb577858dc936f82c3ac8914182aef32db1472a006fe19d02d7d041d315690eae63f6b582675b224a53657cac4edd183c6859c41bcc59c6487050fe88ca3efe6"
-  "2729b5f23463f5d8355defe6fe6af6c79384b2e095760807a71140fe7701701b305063bb6e348c9fe749d23159bd30c8bb236e2cceda39685cf02b271810d47d"
-  "fd11575c3015e36b0235dc8815237500e5a490bb90416c51832a8c91a7dfc0d4a31cd4fa6e9e96030daa1bbbbbeb135693370059e1c595e3682f34dc9f39856d"
+  "1a9b84d5f0a5228a6660c88af01e28c608923156cbed55dea78263ecf243a79c3ee383aa0feaa26f83ef9255ebab1f01c2b61c1d027f7101a0ae2d820463586c"
+  "c596150773be53e1a9796086d39912c407954a05d3b05d60d74f9c2cc3be61c99c43065e2a818aca0045b37bee332efd0c92f7a00354845154095c61c934ec95"
+  "5cad6504b78b08f5bd8ad8e5d0099c288c8e6d21ed32e70176bf4c5bfe55092716d3915b9da7f104ab9d63f81f363a90b853fc3b745c909252174cc90435bc3f"
 
   "${KATA_KERNEL_SUM_SHA512:-fb9ebada932c17d0adbc099a1df31a7d97afe3be694665b1f8171e7159bda84a36a435ceecfdce6d492d8e5075ed4253c68029dcdf952e75a3fe7ee36646327b}"
   "SKIP"
-  #"ed3011a9fee8dd2fb16a004305b23e6b79158afcfe6d88ccdf471b177a8fbe4a9da92924e437284de83a69cebdf5cca2312b614906c404c0d22692aeca491510"
 
   "182a249aecbab33b8704e9567e96d33b535ee59e6d2f52f0c30fbc3d12813f60192886539cc745933caaf59268925d78db9e0b6b427321e2bac932ebde77d62e"
   "0250e52251986f36cfb9e378d848f755caaf5253daa8ff7d87172f2622754c1eb4180b338a497e3fbeb880e232eef19d5e512f5a8e610e7a6eb468f210849a08"
@@ -57,13 +55,12 @@ sha512sums=(
   "65d368df7fe4546d5c825e30c5c831cb4b4f759fb1352b7715d40b750968b3ba54139f64cd1133a3b599d179d88d8181bd61eb34b1f5868b5606e53de6552c41"
 )
 b2sums=(
-  "83862ccf03526e740e25626d167823696a94af8b2a18a27e3124525371ae9540abc7a6be33a3d920217c06d63b960abb50a8b8b5c32cedb41525e7b6971839c2"
-  "736f80e3d2821e20a239d9bbcaa781f8b6bf65691ee15ffd2cd39133629beb12bc0fb5c56c3b0401b8f838f31b66ca35ad5e1ffeb9b01825a7f084337bf43285"
-  "67c00a49965a5972df86029c9df721c980de86e8b5aa4760511dc4f674cb9d5adb7979e7eb814ef5083953c8cc32745955def9f183bc048ac40141cf9d2d13f0"
+  "0d72ce69d0c9de920f3b11d3180627b2e65a1760d6830cfd4812339f7b6d16452f33506996f2ef67cdeffe1269f297b0f22a49a36c5b7078f31849f6b9cd2e37"
+  "40af9fb14a5b42a88378be0c04b693876f508710e84d9f0e043c0fcd8cff66ff64a82f1202a2b9df65047175f0824b7950a491a7e3ad33077f364c1688a07f4c"
+  "2ca8e265eb38bb3c3095e7317637ca6db8ebac2a9174c9a56eb531eae960345ca82b58327a83f8ffbdd84dd8c6ec159cb391d216cd3e26f726f8b822ad021d6a"
 
   "${KATA_KERNEL_SUM_B2:-1f6296eb9be00329b1eb015eafb4a965c575ded58b8618cfc0af3d15072c424afbbc029fad4d65e0af3bccc5963c4304c14b4a9d4763cfaec9b4596834a0f9b0}"
   "SKIP"
-  #"803eb3483722e7eab50102b8d0f9dc1ea7f38781d1f61e5998137469e019cb49d944a30c97f465c5b03916322955fcf29629af27ac47f2e19210bee3d63c488e"
 
   "43c81141a65fd14b60ae72c5b98168bec531990903cc7c8b224b416c71d1d05c1cf3f73891954604e0b0c6f48c52a3a41a8e9e78874a79e72b14282373108e8b"
   "9abf2208af353019ba177d8a48ba613401742cd21258a79c5d9cb8518a51f4f22a41dc386b71f2d6521d03f6ff65d8710dc59d1ca9c7c1dc5f94061c7374286c"
@@ -99,15 +96,14 @@ _kernel_prepare(){
   else
     install -D -m 0644 "${_KCONFIG}" .config
   fi
-  #cat "${srcdir}/btrfs.config" >> .config
   make -s ARCH="${_KARCH}" oldconfig
 }
 
 prepare(){
   _kernel_prepare
 
-  install -dm0755 "${srcdir}/bin"
-  ln -sf "$(type -p yq)" "${srcdir}/bin/yq"
+  #install -dm0755 "${srcdir}/bin"
+  #ln -sf "$(command -v yq)" "${srcdir}/bin/yq"
 
   install -dm0755 "${srcdir}/src/${_gh_org}"
   mv "${srcdir}/agent-${_pkgver}" "${srcdir}/src/${_gh_org}/agent"
