@@ -3,8 +3,8 @@
 
 # Thanks to the patch from the MXE project <mxe.cc>
 
-_basever=8.0
-_patchlevel=004
+_basever=8.1
+_patchlevel=000
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-readline
@@ -19,23 +19,17 @@ depends=('mingw-w64-crt'
          'mingw-w64-termcap')
 makedepends=('mingw-w64-configure')
 options=('!strip' 'staticlibs' '!buildflags')
-source=("https://ftp.gnu.org/gnu/readline/readline-${_basever}.tar.gz"{,.sig})
+source=("https://ftp.gnu.org/gnu/readline/readline-${_basever}.tar.gz"{,.sig}
+  fix_signal.diff)
 if [ ${_patchlevel} -gt 00 ]; then
     for (( _p=1; _p<=$((10#${_patchlevel})); _p++ )); do
         source=(${source[@]} "https://ftp.gnu.org/gnu/readline/readline-${_basever}-patches/readline${_basever//./}-$(printf "%03d" ${_p})"{,.sig})
     done
 fi
 
-sha256sums=('e339f51971478d369f8a053a330a190781acb9864cf4c541060f12078948e461'
+sha256sums=('f8ceb4ee131e3232226a17f51b164afc46cd0b9e6cef344be87c65962cb82b02'
             'SKIP'
-            'd8e5e98933cf5756f862243c0601cb69d3667bb33f2c7b751fe4e40b2c3fd069'
-            'SKIP'
-            '36b0febff1e560091ae7476026921f31b6d1dd4c918dcb7b741aa2dad1aec8f7'
-            'SKIP'
-            '94ddb2210b71eb5389c7756865d60e343666dfb722c85892f8226b26bb3eeaef'
-            'SKIP'
-            'b1aa3d2a40eee2dea9708229740742e649c32bb8db13535ea78f8ac15377394c'
-            'SKIP')
+            '277ee9b021cb0d91c1079736ce8c3a8b7afd116cb5735866a044b6e82a4cdd21')
 validpgpkeys=(7C0135FB088AAF6C66C650B9BB5869F064EA74AB) # Chet Ramey <chet@cwru.edu>
 
 prepare() {
@@ -48,6 +42,8 @@ prepare() {
 
   # Remove RPATH from shared objects (FS#14366)
   sed -i 's|-Wl,-rpath,$(libdir) ||g' support/shobj-conf
+
+  patch -Np1 -i ../fix_signal.diff
 }
 
 build() {
