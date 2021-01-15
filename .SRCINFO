@@ -1,7 +1,7 @@
 pkgbase = wordpress-plugin-wp-statistics
 	pkgdesc = Anti spam plugin
 	pkgver = 13.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wp-statistics/wp-statistics
 	arch = any
 	license = GPL3

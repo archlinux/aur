@@ -3,7 +3,7 @@
 
 pkgname=wordpress-plugin-wp-statistics
 pkgver=13.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Anti spam plugin"
 arch=('any')
 url="https://github.com/wp-statistics/wp-statistics"
@@ -17,5 +17,4 @@ sha512sums=('9aa6a36c0a726bb9f708616994b7f9fc289e4d3ff156025b1613ac5f263fcd3d418
 package() {
   install -d "${pkgdir}/usr/share/webapps/wordpress/wp-content/plugins"
   cp -ra "${srcdir}/wp-statistics" "${pkgdir}/usr/share/webapps/wordpress/wp-content/plugins/"
-  install -D "${srcdir}/wp-statistics/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
