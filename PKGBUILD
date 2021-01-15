@@ -29,6 +29,8 @@ sha512sums=('e89ec3f35644ae8bc570d9802ecfadbf0067145e23a589df2032e8781e9c954f416
             'bb7f81a43e6bd1d58e41693dca1b5f03e507fb040bf036a5847a273f55bcfa665e8512220a54495c2926afb64e786d4e666556d7880be432cc7660de105e3ee4')
 
 build() {
+  # export cppflags to fix build error, see https://github.com/ntop/nDPI/issues/1115
+  export CPPFLAGS='-D_FORTIFY_SOURCE=2 -O2'
   cd $srcdir/nDPI-$_ndpiver
   ./autogen.sh
   ./configure
