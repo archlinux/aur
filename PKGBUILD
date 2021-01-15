@@ -11,6 +11,7 @@ depends=('xz' 'qt5-base' 'qt5-imageformats' 'qt5-tools' 'qt5-declarative' 'qt5-g
          'qt5-quickcontrols' 'qt5-x11extras')
 optdepends=('udisks2: Disk Management Service for disk installation')
 source=("https://github.com/altlinux/ALTMediaWriter.git")
+md5source=('c31e795400cd7748001ed99744a543ef')
 
 build() {
   cd "${_pkgname}-${pkgver}"
