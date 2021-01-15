@@ -22,7 +22,7 @@ build() {
 
 
 package() {
-  cd "${_pkgname}-${pkgver}"
+  cd "ALTMediaWriter-master"
 
   INSTALL_ROOT="${pkgdir}" make install
 }
