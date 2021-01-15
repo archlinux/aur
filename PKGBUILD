@@ -1,7 +1,7 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=instamenu
-pkgver=2021.01.08
+pkgver=2021.01.15
 pkgrel=1
 pkgdesc="dmenu like menu with the Dracula theme"
 url="https://github.com/TheCynicalTeam/$pkgname"
@@ -13,7 +13,7 @@ provides=($pkgname dmenu)
 conflicts=(dmenu)
 replaces=(dmenu)
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('51a58d07f3914f8b33aefe6f7b35f873eb46a69a82af99f6af6e6d687783a4e5')
+sha256sums=('ced817dade4e226f9c5d2142b9ab249833c3ccf017722edb69f1cef73a8fd3b3')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
