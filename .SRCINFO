@@ -1,0 +1,20 @@
+pkgbase = ruby-tty-table-0.10
+	pkgdesc = A flexible and intuitive table generator
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://piotrmurach.github.io/tty/
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-equatable-0.5
+	depends = ruby-necromancer-0.4
+	depends = ruby-pastel-0.7.2
+	depends = ruby-tty-screen-0.6
+	depends = ruby-strings-0.1
+	noextract = tty-table-0.10.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/tty-table-0.10.0.gem
+	sha1sums = e61c5995a4eae5ad994f8c818f5bfd17e2257319
+
+pkgname = ruby-tty-table-0.10
+
