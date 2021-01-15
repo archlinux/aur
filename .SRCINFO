@@ -1,0 +1,17 @@
+pkgbase = lib32-sqlite2
+	pkgdesc = A C library that implements an SQL database engine
+	pkgver = 2.8.17
+	pkgrel = 1
+	url = http://www.sqlite.org/
+	arch = x86_64
+	license = custom
+	depends = readline>=6.0.00
+	source = https://www.sqlite.org/sqlite-2.8.17.tar.gz
+	source = LICENSE
+	source = fix-libtool-directiories.patch
+	sha256sums = 3f35ebfb67867fb5b583a03e480f900206af637efe7179b32294a6a0cf806f37
+	sha256sums = f5c6d91e17fd798af2ab9106a067ac80331eb96a182859630d211e94f9164d10
+	sha256sums = 9123f098d2b45d0f894d007aea0fdfea9123fdc1ec26f7e1045c15aa117a2a10
+
+pkgname = lib32-sqlite2
+
