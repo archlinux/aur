@@ -4,7 +4,7 @@
 pkgname=git-delta
 _name="${pkgname#*-}"
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 
 pkgdesc='A syntax-highlighting pager for git and diff output'
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -43,17 +43,18 @@ check() {
 
 package() {
   cd "$_name-$pkgver"
-  install -Dm755 "target/release/$_name"   -t"$pkgdir/usr/bin/"
-  install -Dm644 {README,CONTRIBUTING}.md  -t"$pkgdir/usr/share/doc/$_name/"
-  install -Dm644 LICENSE                   -t"$pkgdir/usr/share/licenses/$_name/"
+  install -Dm755 "${CARGO_TARGET_DIR:-target}/release/$_name" \
+                                             -t"$pkgdir/usr/bin/"
+  install -Dm644 {README,CONTRIBUTING}.md    -t"$pkgdir/usr/share/doc/$_name/"
+  install -Dm644 LICENSE                     -t"$pkgdir/usr/share/licenses/$_name/"
   cd etc
-  cp -a --no-preserve=o performance examples "$pkgdir/usr/share/doc/$_name/"
-  install -Dm644 completion/completion.bash  "$pkgdir/usr/share/bash-completion/completions/$_name"
-  install -Dm644 completion/completion.zsh   "$pkgdir/usr/share/zsh/site-functions/_$_name"
+  cp -a --no-preserve=o performance examples   "$pkgdir/usr/share/doc/$_name/"
+  install -Dm644 completion/completion.bash    "$pkgdir/usr/share/bash-completion/completions/$_name"
+  install -Dm644 completion/completion.zsh     "$pkgdir/usr/share/zsh/site-functions/_$_name"
   cd bin
   local _bin
   for _bin in *; do
-    install -Dm755 "$_bin"                   "$pkgdir/usr/bin/delta-$_bin"
+    install -Dm755 "$_bin"                     "$pkgdir/usr/bin/delta-$_bin"
   done
 }
 
