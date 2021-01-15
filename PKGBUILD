@@ -1,9 +1,9 @@
 # Maintainer: monosans <hsyqixco at protonmail dot com>
 
 pkgname=dwm-luke-git
-pkgver=6.2.r1861.94906e1
-pkgrel=2
-pkgdesc="Luke's dynamic window manager for X"
+pkgver=6.2.r1863.612232b
+pkgrel=1
+pkgdesc="Luke's build of dynamic window manager for X"
 url=https://github.com/LukeSmithxyz/dwm
 arch=(i686 x86_64)
 license=(MIT)
