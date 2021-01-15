@@ -1,7 +1,7 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 
 pkgname=web-ext
-pkgver=5.4.1
+pkgver=5.5.0
 pkgrel=1
 pkgdesc='A command line tool to help build, run, and test web extensions'
 arch=(any)
@@ -17,8 +17,8 @@ options=('!strip')
 # tarball on npmjs lacks scripts for building from sources
 source=("https://github.com/mozilla/web-ext/archive/$pkgver/web-ext-$pkgver.tar.gz"
         "skip-if-non-git-repo.diff")
-sha256sums=('c2591f601c1b385d1360d9d3867fbe45a0db12973b4019b066b0fa13e3207687'
-            'f485e30d304023a8a503095b6d0ba1f0f9f70d476e2ce58c5a7713caaa78ab49')
+sha256sums=('1c1951b003cbabb82c5a09dbf23567d3ae4374de8e40cb2de8c087b60f629405'
+            'f7333b0c2b204a178f48f4b243bccfda84a274c3eea0f056c93d5696a889f14f')
 
 prepare() {
   cd "$srcdir"
@@ -53,6 +53,9 @@ package() {
 
   install -Ddm755 "$_npmdir"
   cp -r --no-preserve=ownership $pkgname-$pkgver "$_npmdir/$pkgname"
+
+  # dtrace-provider (brought in by bunyan) is not used on Linux, and its build artifacts makes this package unreproducible
+  rm -r "$_npmdir"/web-ext/node_modules/dtrace-provider/build/
 
   # Non-deterministic race in npm gives 777 permissions to random directories.
   # See https://github.com/npm/cli/issues/1103 for details.

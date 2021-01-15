@@ -1,8 +1,8 @@
 diff --git a/tests/unit/test.program.js b/tests/unit/test.program.js
-index d18beff..cea3d4d 100644
+index 1a89b95..71fdfdd 100644
 --- a/tests/unit/test.program.js
 +++ b/tests/unit/test.program.js
-@@ -885,7 +885,15 @@ describe('program.defaultVersionGetter', () => {
+@@ -911,7 +911,15 @@ describe('program.defaultVersionGetter', () => {
    });
  
    it('returns git commit information in development', function() {
