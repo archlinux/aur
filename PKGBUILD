@@ -1,7 +1,7 @@
 # Maintainer: zuyoutoki <zuyoutoki+aur at oki dot moe>
 pkgname=poly-via-bin
 pkgver=fca28b60
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="VIA app for online course at PolyMTL"
 arch=('x86_64')
@@ -11,6 +11,7 @@ depends=('libatomic_ops')
 provides=('via' 'viascreensharing')
 source=("https://polymtl.sviesolutions.com/Application/Via/Via.tar.xz")
 md5sums=('SKIP')
+options=(!strip)
 
 pkgver() {
 	shasum Via.tar.xz | sed -e 's/^\(.\{8\}\).*/\1/'
