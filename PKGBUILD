@@ -9,7 +9,7 @@ arch=('any')
 url="https://git.hrfee.pw/hrfee/$_pkgname"
 license=('unknown')
 depends=('glibc')
-makedepends=('go')
+makedepends=('go' 'git')
 source=(git+$url)
 md5sums=(SKIP)
 
