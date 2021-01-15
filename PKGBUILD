@@ -7,15 +7,15 @@ pkgbase=mp-5
 #pkgname=(mp-5-gtk mp-5-nc mp-5-qt5)
 pkgname=(mp-5-gtk mp-5-nc)
 pkgver=5.45
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://triptico.com/software/mp.html"
 license=('Unlicense')
 #'mp_doccer' 'perl-grutatxt'
 makedepends=('gtk3' 'ncurses' 'qt5-base')
 options=(!makeflags)
-#source=("https://triptico.com/download/mp/mp-$pkgver.tar.gz")
-source=("https://triptico.com/download/mp-5.tar.gz")
+#source=("$pkgbase-$pkgver.tar.gz::https://triptico.com/download/mp/mp-$pkgver.tar.gz")
+source=("$pkgbase-$pkgver.tar.gz::https://triptico.com/download/mp-5.tar.gz")
 md5sums=('f49bc5d5cd816bee0bacbb3d7e156a4d')
 
 prepare() {
