@@ -1,9 +1,10 @@
 # Contributor: alphazo <alphazo@gmail.com>
+# Maintainer: Abbas Maheryar <abbasmaheryar@gmail.com>
 # This version fetches and install master branch from Git repo (now using the same repo as [Community] version).
 
 pkgname=sshuttle-git
 _gitname=sshuttle
-pkgver=v0.77.2+10_g6e15e69
+pkgver=v1.0.5+5_g97c25e9
 #_commit=e433c599e40bc47c7b0e4d16934815c84b26eea8
 pkgrel=1
 pkgdesc='Transparent proxy server that forwards all TCP packets over ssh'
@@ -30,7 +31,7 @@ pkgver() {
 build() {
   cd "$_gitname"
   python setup.py build
-  
+
   cd docs
   make man
 }
