@@ -1,8 +1,8 @@
 # Maintainer: Jerry <isjerryxiao at outlook dot com>
 _srcname=pacroller
 pkgname=pacroller
-pkgver=0.0.1
-pkgrel=2
+pkgver=0.0.2
+pkgrel=1
 pkgdesc="Unattended upgrade for archlinux"
 arch=('any')
 url="https://github.com/isjerryxiao/pacroller"
