@@ -15,7 +15,8 @@ pkgbase = alt-media-writer
 	depends = qt5-quickcontrols
 	depends = qt5-x11extras
 	optdepends = udisks2: Disk Management Service for disk installation
-	source = https://github.com/altlinux/ALTMediaWriter/archive/master.zip
+	source = https://github.com/altlinux/ALTMediaWriter/archive/master.tar.gz
+	md5sums = 1dc3775ea9304a33cf274a843974b415
 
 pkgname = alt-media-writer
 
