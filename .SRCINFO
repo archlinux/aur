@@ -1,0 +1,15 @@
+pkgbase = poly-via-bin
+	pkgdesc = VIA app for online course at PolyMTL
+	pkgver = fca28b60
+	pkgrel = 1
+	url = https://polymtl.sviesolutions.com
+	arch = x86_64
+	license = custom
+	depends = libatomic_ops
+	provides = via
+	provides = viascreensharing
+	source = https://polymtl.sviesolutions.com/Application/Via/Via.tar.xz
+	md5sums = SKIP
+
+pkgname = poly-via-bin
+
