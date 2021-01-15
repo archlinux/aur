@@ -12,8 +12,6 @@ depends=('sdl2' 'glew')
 makedepends=('python2-pillow')
 optdepends=('vasm: game selection menu (must rebuild)'
             'xcftools: game selection menu (must rebuild)')
-provides=("${pkgname}")
-conflicts=("${pkgname}-hg")
 source=("$pkgname-$pkgver.tar.gz::https://www.retrodev.com/repos/blastem/archive/$_srcver.tar.gz"
         'menu.patch')
 sha1sums=('1953ebfd0eaf5e5630ff5488779eb8e6bb8fe9bf'
