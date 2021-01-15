@@ -1,11 +1,5 @@
 post_install() {
     echo ""
     echo "---------------------------- TIPS ----------------------------"
-    echo "In order to use python-easyocr, you need to go to the official"
-    echo "website (https://www.jaided.ai/read_download) or its GitHub"
-    echo "project homepage (https://github.com/JaidedAI/EasyOCR#Usage),"
-    echo "and download the modules you need according to the prompt and"
-    echo "copy them to the specified location (usually /usr/lib/python3.8/"
-    echo "site-packages/easyocr/model/)"
-    echo ""
+    echo "Visit https://github.com/JaidedAI/EasyOCR#usage for detail usage."
 }

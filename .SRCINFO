@@ -1,6 +1,6 @@
 pkgbase = python-easyocr
 	pkgdesc = Ready-to-use OCR with 40+ languages supported including Chinese, Japanese, Korean and Thai
-	pkgver = 1.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/JaidedAI/EasyOCR
 	install = python-easyocr.install
@@ -15,11 +15,13 @@ pkgbase = python-easyocr
 	depends = opencv
 	depends = hdf5
 	depends = python-scipy
+	depends = python-bidi
+	depends = python-pyaml
 	provides = python-easyocr
 	conflicts = python-easyocr-git
 	replaces = python-easyocr-git
-	source = EasyOCR-1.1.tar.gz::https://github.com/JaidedAI/EasyOCR/archive/v1.1.tar.gz
-	sha256sums = 42d65f0da9cde6b1b183b6fdebdc8e077ad03deeb6b0b622fa5926c2f31bed7f
+	source = EasyOCR-1.2.2.tar.gz::https://github.com/JaidedAI/EasyOCR/archive/1.2.2.tar.gz
+	sha256sums = SKIP
 
 pkgname = python-easyocr
 	depends = python-torchvision
@@ -30,5 +32,7 @@ pkgname = python-easyocr
 	depends = opencv
 	depends = hdf5
 	depends = python-scipy
+	depends = python-bidi
+	depends = python-pyaml
 	depends = python
 
