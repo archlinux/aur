@@ -2,7 +2,7 @@
 
 pkgname=hkd-git
 pkgver=r109.dfa7976
-pkgrel=1
+pkgrel=2
 pkgdesc='hkd allows to define system-wide hotkeys independent from the graphical session'
 arch=('x86_64')
 url="https://git.alemauri.eu/alema/hkd"
@@ -40,4 +40,5 @@ package() {
 	install -Dvm644 LICENSE "${pkgdir}/usr/share/licenses/${_basename}/LICENSE"
 	install -Dvm644 README.md "${pkgdir}/usr/share/doc/${_basename}/README.md"
 	install -Dvm644 config.template "${pkgdir}/usr/share/doc/${_basename}/config.template"
+	install -Dvm644 keys.h "${pkgdir}/usr/share/doc/${_basename}/keys.h"
 }
