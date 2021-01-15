@@ -14,7 +14,7 @@
 
 pkgname=ffmpeg3.4
 pkgver=3.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://ffmpeg.org'
@@ -80,7 +80,6 @@ build() {
 		--enable-libmp3lame \
 		--enable-libopencore_amrnb \
 		--enable-libopencore_amrwb \
-		--enable-libopenjpeg \
 		--enable-libopus \
 		--enable-libpulse \
 		--enable-libsoxr \
