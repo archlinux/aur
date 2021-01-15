@@ -1,0 +1,21 @@
+pkgbase = alt-media-writer
+	pkgdesc = Fedora Media Writer - Write Fedora Images to Portable Media
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/altlinux/ALTMediaWriter
+	arch = any
+	license = GPL2
+	depends = xz
+	depends = qt5-base
+	depends = qt5-imageformats
+	depends = qt5-tools
+	depends = qt5-declarative
+	depends = qt5-graphicaleffects
+	depends = qt5-svg
+	depends = qt5-quickcontrols
+	depends = qt5-x11extras
+	optdepends = udisks2: Disk Management Service for disk installation
+	source = https://github.com/altlinux/ALTMediaWriter.git
+
+pkgname = alt-media-writer
+
