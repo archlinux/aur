@@ -3,11 +3,11 @@
 _pkgname=treesheets
 pkgname=$_pkgname-git
 pkgver=r293.524ec28
-pkgrel=1
+pkgrel=2
 pkgdesc='The ultimate replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases'
 url='http://treesheets.com'
 license=('zlib')
-depends=('wxgtk')
+depends=('wxgtk2')
 makedepends=('cmake' 'git')
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 
