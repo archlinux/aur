@@ -1,14 +1,14 @@
 pkgbase = brainfuck-psiphon-pro-go-bin
-	pkgdesc = Brainfuck Tunnel [Psiphon Pro Go Version. 1.3.200619]
-	pkgver = 1.3.200619
+	pkgdesc = Brainfuck Tunnel [Psiphon Pro Go Version. 1.3.210109]
+	pkgver = 1.3.210109
 	pkgrel = 1
 	url = https://github.com/aztecrabbit/brainfuck-psiphon-pro-go
 	arch = x86_64
 	license = MIT
 	depends = redsocks
 	conflicts = brainfuck-psiphon-pro-go-git
-	source = https://github.com/aztecrabbit/brainfuck-psiphon-pro-go/releases/download/v1.3.200619/brainfuck-psiphon-pro-go-1.3.200619.tar.gz
-	md5sums = 7753948ef055c55fa7c4a71323dd7fc6
+	source = https://github.com/aztecrabbit/brainfuck-psiphon-pro-go/releases/download/v1.3.210109/brainfuck-psiphon-pro-go-1.3.210109.tar.gz
+	md5sums = 3dd336f6a47d17dd6bbef62c363b5258
 
 pkgname = brainfuck-psiphon-pro-go-bin
 

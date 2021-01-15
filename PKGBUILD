@@ -2,7 +2,7 @@
 
 _pkgname='brainfuck-psiphon-pro-go'
 pkgname="${_pkgname}-bin"
-pkgver=1.3.200619
+pkgver=1.3.210109
 pkgrel=1
 pkgdesc="Brainfuck Tunnel [Psiphon Pro Go Version. ${pkgver}]"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
 	"https://github.com/aztecrabbit/brainfuck-psiphon-pro-go/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
 )
 md5sums=(
-	'7753948ef055c55fa7c4a71323dd7fc6'
+	'3dd336f6a47d17dd6bbef62c363b5258'
 )
 
 package() {
