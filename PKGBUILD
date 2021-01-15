@@ -1,7 +1,7 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 # Contributor: mickele <mimocciola[at]yahoo[dot]com>
 pkgname=(ifcopenshell-git blender-plugin-bim-git)
-pkgver=0.6.0b0.r1581.gb91dfb40
+pkgver=0.6.0b0.r1652.gf5796eae
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon. GIT version."
 arch=('x86_64' 'i686')
@@ -73,6 +73,9 @@ package_ifcopenshell-git() {
   cp -rf "${srcdir}/IfcOpenShell/src/ifcclash/." "./"
   cp -rf "${srcdir}/IfcOpenShell/src/ifcdiff/." "./"
   cp -rf "${srcdir}/IfcOpenShell/src/bcf/bcf/." "./bcf/"
+  cp -rf "${srcdir}/IfcOpenShell/src/ifccsv/ifccsv.py" "./"
+  cp -rf "${srcdir}/IfcOpenShell/src/ifcbimtester/bimtester" "./"
+  python -O -m compileall "./"
 }
 
 package_blender-plugin-bim-git() {
