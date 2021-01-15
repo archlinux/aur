@@ -1,12 +1,15 @@
 pkgbase = kicad-packages3d-git
 	pkgdesc = KiCad component 3D model libraries from the official git repo
-	pkgver = r2020.10.06.27d653c
+	pkgver = 20201014.0.1602698909
 	pkgrel = 1
-	url = https://github.com/KiCad/kicad-packages3D
+	url = https://gitlab.com/kicad/libraries/kicad-packages3D
 	arch = any
 	license = GPL
 	makedepends = cmake
 	makedepends = git
+	makedepends = ninja
+	makedepends = jq
+	makedepends = curl
 	provides = kicad-packages3d
 	conflicts = kicad-library-bzr
 	conflicts = kicad-library-git
