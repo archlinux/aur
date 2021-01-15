@@ -22,9 +22,9 @@ pkgname=(
   "$pkgbase" "$pkgbase-x11" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=19.0b2
+pkgver=19.0rc1
 #_major=18.7.1
-pkgrel=7
+pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -43,7 +43,8 @@ makedepends=(
   'libinput'
 )
 
-_tag="$pkgver-Matrix"
+#_tag="$pkgver-Matrix"
+_tag="${pkgver^^}-Matrix"
 #_tag="$_major-Matrix"
 _sse_workaround=1
 
@@ -95,7 +96,7 @@ noextract=(
   "flatbuffers-$_flatbuffers_version.tar.gz"
   "spdlog-$_spdlog_version.tar.gz"
 )
-b2sums=('79b9606b48d1a4a2a2ad7c2799bddf539edd04e1954892299507f245fd1c1db057dc22f753877fd0ba56f414c1addb32168c73328d5cf62dec1428941eebb590'
+b2sums=('305793e2a5f16f07853a82e8f1953a56baa4159c9eee762aee40e8b6692c317cb83e7713d99cbb767cff0c1ac2a2d8bfc3837525d8ad4c854f114f900ebdb294'
         '283aa2cec0a2200d3569bc280cb9659e9224a6b3a77db8a35b269cd8caf1337ac9d8b92b806df66f63ef7458a46bd6261f0b8b14678b10e26644a79dcbeea5da'
         '7573434a0ae8e8ccabf48173f81fcde29074eb138e119a2ae9156cde3c3d8bfd716f5d0e605b97f2dcac21f570781137c8533c5ae306b51e3905822fda318355'
         '0c206acdaf0776841ab792c74e023af07d9539eb72e03ae164382a31ed950f60e5e15f1d055979d28f1398924471b294d11f064b11b8373353b3962a3777ff3c'
