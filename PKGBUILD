@@ -6,13 +6,13 @@
 
 pkgname=firehol
 pkgver=3.1.7
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc="The iptables stateful packet filtering firewall builder."
 url="http://firehol.sourceforge.net"
 arch=('any')
 license=('GPL')
-depends=('iptables' 'gawk' 'iproute' 'iprange' 'ipset' 'traceroute')
+depends=('iptables' 'gawk' 'iproute' 'iprange' 'ipset' 'traceroute' 'procps-ng')
 backup=('etc/firehol/firehol.conf' 'etc/firehol/fireqos.conf')
 source=("https://github.com/firehol/firehol/releases/download/v$pkgver/firehol-$pkgver.tar.xz")
 

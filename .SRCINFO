@@ -1,7 +1,7 @@
 pkgbase = firehol
 	pkgdesc = The iptables stateful packet filtering firewall builder.
 	pkgver = 3.1.7
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 2
 	url = http://firehol.sourceforge.net
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = firehol
 	depends = iprange
 	depends = ipset
 	depends = traceroute
+	depends = procps-ng
 	backup = etc/firehol/firehol.conf
 	backup = etc/firehol/fireqos.conf
 	source = https://github.com/firehol/firehol/releases/download/v3.1.7/firehol-3.1.7.tar.xz
