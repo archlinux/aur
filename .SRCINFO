@@ -1,6 +1,6 @@
 pkgbase = ugrep
 	pkgdesc = Universal grep: ultra fast searcher of file systems, text and binary files, source code, archives, compressed files, documents, and more.
-	pkgver = 3.1.2
+	pkgver = 3.1.3
 	pkgrel = 1
 	url = https://github.com/Genivia/ugrep
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = ugrep
 	depends = pcre2
 	depends = xz
 	depends = zlib
-	source = https://github.com/Genivia/ugrep/archive/v3.1.2.tar.gz
-	sha256sums = 81de520a6db437455e8ae9ee4abbdc9dc875328a359b8620ef296bb8d8364310
+	source = https://github.com/Genivia/ugrep/archive/v3.1.3.tar.gz
+	sha256sums = 6416e06d1358316aafa147aa74e5bc7d05502f1d78d742248b3fdce0f6fbeae1
 
 pkgname = ugrep
 
