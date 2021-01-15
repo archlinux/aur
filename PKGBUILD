@@ -1,7 +1,7 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=jack-matchmaker
-pkgver=0.8.2
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A command line tool to auto-connect JACK ports matching given patterns."
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('python-setuptools' 'jack')
 source=("https://files.pythonhosted.org/packages/source/j/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 backup=('etc/conf.d/jack-matchmaker')
-sha256sums=('a864797b3b2a3725d1d3498ea75e3aa12e7cd76d2faf863aeae7e0a0756bbb66')
+sha256sums=('3705cd493fd442738fe5369eff49654022cec681e7fe17c0ece28e064e524368')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
