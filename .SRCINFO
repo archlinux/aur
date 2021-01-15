@@ -1,0 +1,15 @@
+pkgbase = ruby-wisper-1
+	pkgdesc = A micro library providing objects with Publish-Subscribe capabilities
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://github.com/krisleech/wisper
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = wisper-1.6.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/wisper-1.6.1.gem
+	sha1sums = 2b95220ea17c312086c1a8b0e8807f22a0b86c10
+
+pkgname = ruby-wisper-1
+
