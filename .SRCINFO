@@ -1,15 +1,15 @@
 pkgbase = zenith-bin
 	pkgdesc = Terminal system monitor with histograms, written in Rust
-	pkgver = 0.11.0
-	pkgrel = 2
+	pkgver = 0.12.0
+	pkgrel = 1
 	url = https://github.com/bvaisvil/zenith
 	arch = x86_64
 	license = MIT
 	optdepends = nvidia-utils
 	provides = zenith
 	conflicts = zenith
-	source = https://dl.bintray.com/bvaisvil/debian/pool/z/zenith/zenith_0.11.0-1_amd64.deb
-	sha256sums = 6966a0673ea7de1fd1f113a86ee7e79e3083220c9153ebf8d212b5ae0e1ad8cd
+	source = https://dl.bintray.com/bvaisvil/debian/pool/z/zenith/zenith_0.12.0-1_amd64.deb
+	sha256sums = 515969f924f862da9d7cd7713e31d87670d744c924257a7d6032fd4440fee2e7
 
 pkgname = zenith-bin
 

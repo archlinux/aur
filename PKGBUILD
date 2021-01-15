@@ -1,8 +1,8 @@
 # Maintainer: Sergey A. <murlakatamenka@disroot.org>
 
 pkgname=zenith-bin
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.12.0
+pkgrel=1
 pkgdesc="Terminal system monitor with histograms, written in Rust"
 arch=('x86_64')
 url="https://github.com/bvaisvil/zenith"
@@ -10,19 +10,15 @@ license=('MIT')
 provides=('zenith')
 conflicts=('zenith')
 optdepends=('nvidia-utils')
-source=('https://dl.bintray.com/bvaisvil/debian/pool/z/zenith/zenith_0.11.0-1_amd64.deb')
-sha256sums=('6966a0673ea7de1fd1f113a86ee7e79e3083220c9153ebf8d212b5ae0e1ad8cd')
+source=('https://dl.bintray.com/bvaisvil/debian/pool/z/zenith/zenith_0.12.0-1_amd64.deb')
+sha256sums=('515969f924f862da9d7cd7713e31d87670d744c924257a7d6032fd4440fee2e7')
 
 package() {
     # extract package data
     tar xf "data.tar.xz"
 
-    # launch script
+    # binary
     install -D -m755 {,"$pkgdir"/}usr/bin/zenith
-
-    # binaries
-    install -d "$pkgdir"/usr/lib/zenith
-    cp -a usr/lib/zenith "$pkgdir"/usr/lib
 
     # license
     install -D -m644 'usr/share/doc/zenith/copyright' "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
