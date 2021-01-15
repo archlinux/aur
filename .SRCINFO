@@ -1,6 +1,6 @@
 pkgbase = python-cryptofetch
 	pkgdesc = CLI tool to fetch and view cryptocurrencies prices
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/codeswhite/cryptofetch
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-cryptofetch
 	depends = python-requests
 	depends = python-prettytable
 	depends = python-interutils
-	source = https://files.pythonhosted.org/packages/source/c/cryptofetch/cryptofetch-1.2.0.tar.gz
-	sha256sums = 139d45b89bb0c2fa44938fc2b3d7d0ebd89f31db9cc6c8c681829ecb16ba934a
+	source = https://files.pythonhosted.org/packages/source/c/cryptofetch/cryptofetch-1.2.1.tar.gz
+	sha256sums = 57f663b08b7a7f2b71c89fc26f36d16bac8f10d8793f4fa1d13e5c0c19e24a8a
 
 pkgname = python-cryptofetch
 	depends = python
