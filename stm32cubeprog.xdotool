@@ -1,0 +1,62 @@
+# Wait for STM32CubeProg Window Open
+sleep 5
+
+# Click Next
+search --name "STM32CubeProgrammer Installation Wizard" windowmove --sync 960 540   windowfocus --sync
+mousemove 1456 992 click 1 
+
+# Click Next
+search --name "STM32CubeProgrammer Installation Wizard" windowmove --sync 960 540   windowfocus --sync 
+mousemove 1456 992 click 1 
+
+
+# Accept License agreement
+search --name "STM32CubeProgrammer Installation Wizard" windowmove --sync 960 540   windowfocus --sync 
+mousemove 1122 912 click 1 
+
+# Click Next
+search --name "STM32CubeProgrammer Installation Wizard" windowmove --sync 960 540   windowfocus --sync 
+mousemove 1456 992 click  1 
+
+# Set Path of Installation
+search --name "STM32CubeProgrammer Installation Wizard" windowmove --sync 960 540   windowfocus -sync 
+mousemove 1531 650 click  1 
+# input the path of pkgdir
+type $1
+
+mousemove 1482 781 click  1
+
+# Click Next
+search --name "STM32CubeProgrammer Installation Wizard" windowmove --sync 960 540   windowfocus --sync 
+mousemove 1456 992 click  1
+
+# Confirm
+search --name "STM32CubeProgrammer Installation Wizard" windowmove --sync 960 540   windowfocus --sync 
+mousemove 1322 806 click  1 
+
+
+# Click Next
+search --name "STM32CubeProgrammer Installation Wizard" windowmove --sync 960 540   windowfocus --sync 
+mousemove 1456 992 click  1 
+
+sleep 20
+
+# Click Next
+search --name "STM32CubeProgrammer Installation Wizard" windowmove --sync 960 540   windowfocus --sync 
+mousemove 1456 992 click  1 
+
+# Cancel Create shortcuts in the Start-Menu
+search --name "STM32CubeProgrammer Installation Wizard" windowmove --sync 960 540   windowfocus --sync 
+mousemove 1181 683 click  1 
+
+# Cancel Create additional shortcus on the desktop
+search --name "STM32CubeProgrammer Installation Wizard" windowmove --sync 960 540   windowfocus --sync 
+mousemove 1181 705 click  1 
+
+# Click Next
+search --name "STM32CubeProgrammer Installation Wizard" windowmove --sync 960 540   windowfocus --sync 
+mousemove 1456 992 click  1 
+
+# Click Next
+search --name "STM32CubeProgrammer Installation Wizard" windowmove --sync 960 540   windowfocus --sync 
+mousemove 1542 989 click  1 
