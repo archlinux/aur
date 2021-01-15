@@ -1,0 +1,33 @@
+pkgbase = earthwalker-git
+	pkgdesc = A selfhosted browsergame in which you find out where you are by navigating StreetView.
+	pkgver = r272.c4b7337
+	pkgrel = 1
+	url = https://gitlab.com/glatteis/earthwalker
+	install = earthwalker.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	makedepends = npm
+	provides = earthwalker
+	conflicts = earthwalker
+	backup = etc/earthwalker/earthwalker.env
+	backup = etc/earthwalker/config.toml
+	source = git+https://gitlab.com/glatteis/earthwalker.git
+	source = earthwalker.install
+	source = earthwalker.env
+	source = earthwalker.service
+	source = earthwalker.sysusers.conf
+	source = earthwalker.tmpfiles.conf
+	sha512sums = SKIP
+	sha512sums = 484d5b10b83202dcf0bc0b0717c637f806f1a457d54dd78185ad56316cfbef49ab16338d15994cde1923b1f31cfcac6d7b7b66e15051c3f59fa85f3df9c6daab
+	sha512sums = 7e4c63f7e01898c66532206cdae3f8b0262edc73b066f1d6d3c42a2443876cd03acbb3a7ee9a91b59f736ab81d04a6e796b0269ee88dc04292f698efc795f38d
+	sha512sums = 4942bf0b14248e6cc144c8dd31ab82182bfee6c927f07e9ff6269de67a95eb6ab2567119ed9af898131706be997f4b71cb3b6050899aff5049e4372e89feb361
+	sha512sums = 03823fd28e00034932e6f30912f93f6c58cf5897a99bc4c9b96cda73bb17e0391c9a3937ef587ddd9bac54581f9337f86046b0ce29af3702444f162baca33439
+	sha512sums = c2ddeba33f565ffa2a78ffedfaacb5e0ed8030c67c2f45e3286261b7e005739d3c4cd16ce5e59c46c9eba14f514270ccae343c4879d11f57d418cb596a9a8e1e
+
+pkgname = earthwalker-git
+
