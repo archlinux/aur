@@ -1,0 +1,10 @@
+--- a/config.toml.sample
++++ b/config.toml.sample
+@@ -1,5 +1,5 @@
+ Port = "8080"
+-DBPath = "./badger"
+-StaticPath = "./"
++DBPath = "/var/lib/earthwalker/badger"
++StaticPath = "/usr/share/earthwalker"
+ TileServerURL = "https://tiles.wmflabs.org/osm/{z}/{x}/{y}.png"
+ NoLabelTileServerURL = "https://tiles.wmflabs.org/osm-no-labels/{z}/{x}/{y}.png"

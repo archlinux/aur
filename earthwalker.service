@@ -9,7 +9,7 @@ User=earthwalker
 Group=earthwalker
 
 # The location of the .env file for configuration
-EnvironmentFile=/etc/earthwalker/earthwalker.env
+Environment=EARTHWALKER_CONFIG_PATH=/etc/earthwalker/config.toml
 # The location of the compiled binary
 ExecStart=/usr/bin/earthwalker
 
