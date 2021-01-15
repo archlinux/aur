@@ -1,7 +1,7 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 # Contributor: Lukas Sabota <lukas@lwsabota.com>
 pkgname=blastem-hg
-pkgver=r1693.ba3fb7a3be6b
+pkgver=r2024.ba5d206dcfea
 pkgrel=1
 pkgdesc="Fast and accurate Sega Genesis/Mega Drive emulator"
 arch=('x86_64')
@@ -26,6 +26,8 @@ prepare() {
 	cd "$srcdir/${pkgname%-hg}"
 	patch -Np1 -i "${srcdir}/menu.patch"
 	chmod a+x menumake.sh install.sh
+	#GCC10 workaround
+	perl -pi -e 's|(CFLAGS:=)(-std=gnu99.*)|\1-fcommon \2|g' Makefile
 }
 
 build() {
