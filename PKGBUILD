@@ -6,7 +6,7 @@ pkgver=20210102
 pkgrel=2
 pkgdesc="Sony's official HID driver for the PS5 DualSense controller."
 arch=(any)
-url="https://patchwork.kernel.org/project/linux-input/list/?series=404369"
+url="https://patchwork.kernel.org/project/linux-input/list/?series=408207"
 license=("GPL2")
 depends=('dkms')
 source=(
