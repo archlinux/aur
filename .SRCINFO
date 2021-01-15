@@ -1,7 +1,7 @@
 pkgbase = supermicro-update-manager
 	pkgdesc = manage the firmware and configuration for Supermicro motherboards
 	pkgver = 2.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.supermicro.com/en/solutions/management-software/supermicro-update-manager
 	arch = x86_64
 	license = custom: EULA

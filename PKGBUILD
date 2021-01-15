@@ -2,7 +2,7 @@
 
 pkgname=supermicro-update-manager
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="manage the firmware and configuration for Supermicro motherboards"
 arch=(x86_64)
 url="https://www.supermicro.com/en/solutions/management-software/supermicro-update-manager"
@@ -22,9 +22,13 @@ __EVENTTARGET=ctl00%24CPCenter%24MyGridView&__EVENTARGUMENT=Action%241&ctl00_Tre
 package() {
 	cd sum_"$pkgver"_Linux_x86_64
 	
-	install -D sumrc.sample "$pkgdir/etc/sumrc"
-	sed -i '1{s|.*|# To use this config invoke supermicro-update-manager with --rc_path=/etc/sumrc.|}' "$pkgdir/etc/sumrc"
-	sed -i '2{s|.*|# Alternatively, copy this file as .sumrc to your home directory or use needed parameters directly via command line.|}' "$pkgdir/etc/sumrc"
+	install -Dm766 sumrc.sample "$pkgdir/etc/sumrc"
+	sed -i '1{s|.*|# To use this config you should symlink to this file with "ln -s /etc/sumrc $HOME/.sumrc" command.|}' "$pkgdir/etc/sumrc"
+	sed -i '2{s|.*|# Alternatively, invoke supermicro-update-manager with "--rc_path=/etc/sumrc" parameter.|}' "$pkgdir/etc/sumrc"
+	sed -i 's|#journal_path = /home/administrator/journal/supermicro/test|journal_path = /var/log/supermicro-update-manager|' "$pkgdir/etc/sumrc"
+	sed -i 's|#journal_level = 0|journal_level = 6|' "$pkgdir/etc/sumrc"
+
+	install -m757 -d "${pkgdir}"/var/log/supermicro-update-manager
 	
 	# acpica_bin folder: contains acpidump and acpiexec. I do not know when they are used, so did not packaged them.
 	# driver folder: sum_bios.ko only needed if InBand SMI E7h support is not implemented in BIOS. I have not seen such systems, but if you have, please contact me and I will edit pkgbuild.
@@ -34,7 +38,7 @@ package() {
 	install -D PlatformFeatureSupportMatrix.pdf "$pkgdir/usr/share/doc/supermicro-update-manager/PlatformFeatureSupportMatrix.pdf"
 	install -Dm755 sum "$pkgdir/usr/bin/supermicro-update-manager" # rename executable file to not conflict with gnu sum.
 	
-	# policy_sample.xml: I do not know what it is and when needed. So did not packaged it (yet at least).
+	# policy_sample.xml: I did not packaged it (yet at least).
 	
 	msg2 "Warning! I did not explored all files extensively yet. Some files may be missing from original archive. See PKGBUILD for details."
 }
