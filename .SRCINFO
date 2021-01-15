@@ -1,6 +1,6 @@
 pkgbase = kodi-devel
 	pkgver = 19.0b2
-	pkgrel = 6
+	pkgrel = 7
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2

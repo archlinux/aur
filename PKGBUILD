@@ -24,7 +24,7 @@ pkgname=(
 )
 pkgver=19.0b2
 #_major=18.7.1
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -46,9 +46,6 @@ makedepends=(
 _tag="$pkgver-Matrix"
 #_tag="$_major-Matrix"
 _sse_workaround=1
-_build_x11=1
-_build_wayland=1
-_build_gbm=1
 
 # Found on their respective github release pages. One can check them against
 # what is pulled down when not specifying them in the cmake step.
@@ -150,6 +147,7 @@ build() {
   _args=(
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
+    -DUSE_LTO=$(nproc)
     -DENABLE_EVENTCLIENTS=ON
     -DENABLE_INTERNAL_FFMPEG=ON
     -DENABLE_INTERNAL_FMT=ON
@@ -169,44 +167,38 @@ build() {
     -DSPDLOG_URL="$srcdir/spdlog-$_spdlog_version.tar.gz"
   )
 
-  if [[ "$_build_x11" -eq 1 ]]; then
-    echo "building kodi-x11"
-    cd "$srcdir/kodi-build-x11"
-    _args+=(
-      -DCORE_PLATFORM_NAME=x11
-      -DAPP_RENDER_SYSTEM=gl
-    )
+  echo "building kodi-x11"
+  cd "$srcdir/kodi-build-x11"
+  _args+=(
+    -DCORE_PLATFORM_NAME=x11
+    -DAPP_RENDER_SYSTEM=gl
+  )
 
-    cmake "${_args[@]}" ../"xbmc-$_tag"
-    make
-    make preinstall
-  fi
+  cmake "${_args[@]}" ../"xbmc-$_tag"
+  make
+  make preinstall
 
-  if [[ "$_build_wayland" -eq 1 ]]; then
-    echo "building kodi-wayland"
-    cd "$srcdir/kodi-build-wayland"
-    _args+=(
-      -DCORE_PLATFORM_NAME=wayland
-      -DAPP_RENDER_SYSTEM=gl
-    )
+  echo "building kodi-wayland"
+  cd "$srcdir/kodi-build-wayland"
+  _args+=(
+    -DCORE_PLATFORM_NAME=wayland
+    -DAPP_RENDER_SYSTEM=gl
+  )
 
-    cmake "${_args[@]}" ../"xbmc-$_tag"
-    make
-    make preinstall
-  fi
+  cmake "${_args[@]}" ../"xbmc-$_tag"
+  make
+  make preinstall
 
-  if [[ "$_build_gbm" -eq 1 ]]; then
-    echo "building kodi-gbm"
-    cd "$srcdir/kodi-build-gbm"
-    _args+=(
-      -DCORE_PLATFORM_NAME=gbm
-      -DAPP_RENDER_SYSTEM=gles
-    )
-    
-    cmake "${_args[@]}" ../"xbmc-$_tag"
-    make
-    make preinstall
-  fi
+  echo "building kodi-gbm"
+  cd "$srcdir/kodi-build-gbm"
+  _args+=(
+    -DCORE_PLATFORM_NAME=gbm
+    -DAPP_RENDER_SYSTEM=gles
+  )
+
+  cmake "${_args[@]}" ../"xbmc-$_tag"
+  make
+  make preinstall
 }
 
 # kodi
