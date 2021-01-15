@@ -1,7 +1,7 @@
 # Maintainer: Fedor Suchkov <f.suchkov@gmail.com>
 
 pkgname=rpatool-git
-pkgver=r11.fc78e81
+pkgver=r16.9a58396
 pkgrel=1
 
 pkgdesc="rpatool is a simple tool allowing you to create, modify and extract Ren'Py (renpy) Archive (.rpa/.rpi) files. Currently, only writing to RPAv2/RPAv3 archives is supported."
@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/Shizmob/rpatool"
 license=('custom:WTFPL')
 
-depends=('python2')
+depends=('python3')
 makedepends=('git')
 
 source=('git://github.com/Shizmob/rpatool.git')
