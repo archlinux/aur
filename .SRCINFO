@@ -1,15 +1,15 @@
 pkgbase = venv-wrapper-bin
 	pkgdesc = Simple python virtual environment management
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/marier-nico/venv-wrapper
 	arch = x86_64
 	license = Apache
 	provides = venv-wrapper-bin
 	conflicts = venv-wrapper-bin
-	noextract = venv-wrapper-bin-0.1.4
-	source = venv-wrapper-bin-0.1.4::https://github.com/marier-nico/venv-wrapper/releases/download/v0.1.4/venv-wrapper
-	sha256sums = 3620c09bbbe01a51155d441144aaa1ca26d9b757f0f966452cb7d65fb28a4899
+	noextract = venv-wrapper-bin-0.1.5
+	source = venv-wrapper-bin-0.1.5::https://github.com/marier-nico/venv-wrapper/releases/download/v0.1.5/venv-wrapper
+	sha256sums = 13759d88eb05637c9e011a090afc8105ca59054910d89fd05e7fd7ec007e98cd
 
 pkgname = venv-wrapper-bin
 
