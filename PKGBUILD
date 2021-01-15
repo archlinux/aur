@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="KiCad component 3D model libraries from the official git repo"
 arch=('any')
 url=https://gitlab.com/kicad/libraries/kicad-packages3D
-license=('GPL')
+license=('CC-BY-SA 4.0')
 options=('!strip')
 makedepends=(
 cmake
