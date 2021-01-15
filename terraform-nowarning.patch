@@ -1,0 +1,375 @@
+From 88dae43732b76206548ca5b9f7cacb203411b3e0 Mon Sep 17 00:00:00 2001
+From: Eugene Dementyev <eugene@springload.co.nz>
+Date: Tue, 25 Jun 2019 14:10:41 +1200
+Subject: [PATCH] Allows undeclares variables
+
+---
+ backend/damerau_levenshtein.go | 132 +++++++++++++++++++++++++++++++++
+ backend/unparsed_value.go      |  68 ++++++++++-------
+ backend/unparsed_value_test.go |  50 ++++++++-----
+ 3 files changed, 206 insertions(+), 44 deletions(-)
+ create mode 100644 backend/damerau_levenshtein.go
+
+diff --git a/backend/damerau_levenshtein.go b/backend/damerau_levenshtein.go
+new file mode 100644
+index 000000000..5ee1d2c76
+--- /dev/null
++++ b/backend/damerau_levenshtein.go
+@@ -0,0 +1,132 @@
++package backend
++
++import "math"
++
++// References:
++// This is based off https://github.com/antzucaro/matchr which itself is
++// based off of the one found on Wikipedia at
++// http://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance#Distance_with_adjacent_transpositions
++// as well as KevinStern's Java implementation found at
++// https://github.com/KevinStern/software-and-algorithms.
++func DamerauLevenshtein(s1, s2 string) (distance int) {
++	// index by code point, not byte
++	r1 := []rune(s1)
++	r2 := []rune(s2)
++
++	// the maximum possible distance
++	inf := len(r1) + len(r2)
++
++	// if one string is blank, we needs insertions
++	// for all characters in the other one
++	if len(r1) == 0 {
++		return len(r2)
++	}
++
++	if len(r2) == 0 {
++		return len(r1)
++	}
++
++	// construct the edit-tracking matrix
++	matrix := make([][]int, len(r1))
++	for i := range matrix {
++		matrix[i] = make([]int, len(r2))
++	}
++
++	// seen characters
++	seenRunes := make(map[rune]int)
++
++	if r1[0] != r2[0] {
++		matrix[0][0] = 1
++	}
++
++	seenRunes[r1[0]] = 0
++	for i := 1; i < len(r1); i++ {
++		deleteDist := matrix[i-1][0] + 1
++		insertDist := (i+1)*1 + 1
++		var matchDist int
++		if r1[i] == r2[0] {
++			matchDist = i
++		} else {
++			matchDist = i + 1
++		}
++		matrix[i][0] = minInt32(minInt32(deleteDist, insertDist), matchDist)
++	}
++
++	for j := 1; j < len(r2); j++ {
++		deleteDist := (j + 1) * 2
++		insertDist := matrix[0][j-1] + 1
++		var matchDist int
++		if r1[0] == r2[j] {
++			matchDist = j
++		} else {
++			matchDist = j + 1
++		}
++
++		matrix[0][j] = minInt32(minInt32(deleteDist, insertDist), matchDist)
++	}
++
++	for i := 1; i < len(r1); i++ {
++		var maxSrcMatchIndex int
++		if r1[i] == r2[0] {
++			maxSrcMatchIndex = 0
++		} else {
++			maxSrcMatchIndex = -1
++		}
++
++		for j := 1; j < len(r2); j++ {
++			swapIndex, ok := seenRunes[r2[j]]
++			jSwap := maxSrcMatchIndex
++			deleteDist := matrix[i-1][j] + 1
++			insertDist := matrix[i][j-1] + 1
++			matchDist := matrix[i-1][j-1]
++			if r1[i] != r2[j] {
++				matchDist++
++			} else {
++				maxSrcMatchIndex = j
++			}
++
++			// for transpositions
++			var swapDist int
++			if ok && jSwap != -1 {
++				iSwap := swapIndex
++				var preSwapCost int
++				if iSwap == 0 && jSwap == 0 {
++					preSwapCost = 0
++				} else {
++					preSwapCost = matrix[maxInt32(0, iSwap-1)][maxInt32(0, jSwap-1)]
++				}
++				swapDist = i + j + preSwapCost - iSwap - jSwap - 1
++			} else {
++				swapDist = inf
++			}
++			matrix[i][j] = minInt32(minInt32(minInt32(deleteDist, insertDist), matchDist), swapDist)
++		}
++		seenRunes[r1[i]] = i
++	}
++
++	return matrix[len(r1)-1][len(r2)-1]
++}
++
++// minInt32 finds the minimum int32 value of a range of int.
++// MinInt32  = -1 << 31
++func minInt32(a ...int) int {
++	min := math.MaxInt32
++	for _, i := range a {
++		if i < min {
++			min = i
++		}
++	}
++	return min
++}
++
++// maxInt32 finds the maximum int32 value of a range of int.
++// MaxInt32  = 1<<31 - 1
++func maxInt32(a ...int) int {
++	max := math.MinInt32
++	for _, i := range a {
++		if i > max {
++			max = i
++		}
++	}
++	return max
++}
+diff --git a/backend/unparsed_value.go b/backend/unparsed_value.go
+index 65a05c823..fcb5c966c 100644
+--- a/backend/unparsed_value.go
++++ b/backend/unparsed_value.go
+@@ -2,8 +2,9 @@ package backend
+ 
+ import (
+ 	"fmt"
++	"strings"
+ 
+-	"github.com/hashicorp/hcl/v2"
++	hcl "github.com/hashicorp/hcl/v2"
+ 	"github.com/hashicorp/terraform/configs"
+ 	"github.com/hashicorp/terraform/terraform"
+ 	"github.com/hashicorp/terraform/tfdiags"
+@@ -44,6 +45,10 @@ type UnparsedVariableValue interface {
+ func ParseVariableValues(vv map[string]UnparsedVariableValue, decls map[string]*configs.Variable) (terraform.InputValues, tfdiags.Diagnostics) {
+ 	var diags tfdiags.Diagnostics
+ 	ret := make(terraform.InputValues, len(vv))
++	var variables []string
++	for v, _ := range decls {
++		variables = append(variables, v)
++	}
+ 
+ 	// Currently we're generating only warnings for undeclared variables
+ 	// defined in files (see below) but we only want to generate a few warnings
+@@ -52,6 +57,7 @@ func ParseVariableValues(vv map[string]UnparsedVariableValue, decls map[string]*
+ 	seenUndeclaredInFile := 0
+ 
+ 	for name, rv := range vv {
++		name := name
+ 		var mode configs.VariableParsingMode
+ 		config, declared := decls[name]
+ 		if declared {
+@@ -69,30 +75,38 @@ func ParseVariableValues(vv map[string]UnparsedVariableValue, decls map[string]*
+ 		if !declared {
+ 			switch val.SourceType {
+ 			case terraform.ValueFromConfig, terraform.ValueFromAutoFile, terraform.ValueFromNamedFile:
+-				// These source types have source ranges, so we can produce
+-				// a nice error message with good context.
+-				//
+-				// This one is a warning for now because there is an existing
+-				// pattern of providing a file containing the superset of
+-				// variables across all configurations in an organization. This
+-				// is deprecated in v0.12.0 because it's more important to give
+-				// feedback to users who make typos. Those using this approach
+-				// should migrate to using environment variables instead before
+-				// this becomes an error in a future major release.
+-				if seenUndeclaredInFile < 3 {
+-					diags = diags.Append(tfdiags.Sourceless(
+-						tfdiags.Warning,
+-						"Value for undeclared variable",
+-						fmt.Sprintf("The root module does not declare a variable named %q but a value was found in file %q. To use this value, add a \"variable\" block to the configuration.\n\nUsing a variables file to set an undeclared variable is deprecated and will become an error in a future release. If you wish to provide certain \"global\" settings to all configurations in your organization, use TF_VAR_... environment variables to set these instead.", name, val.SourceRange.Filename),
+-					))
++				var matches []string
++				for _, declaredVariable := range variables {
++					if DamerauLevenshtein(name, declaredVariable) <= 2 {
++						matches = append(matches, declaredVariable)
++					}
++				}
++				if len(matches) > 0 {
++					// These source types have source ranges, so we can produce
++					// a nice error message with good context.
++					//
++					// This one is a warning for now because there is an existing
++					// pattern of providing a file containing the superset of
++					// variables across all configurations in an organization. This
++					// is deprecated in v0.12.0 because it's more important to give
++					// feedback to users who make typos. Those using this approach
++					// should migrate to using environment variables instead before
++					// this becomes an error in a future major release.
++					if seenUndeclaredInFile < 3 {
++						diags = diags.Append(tfdiags.Sourceless(
++							tfdiags.Warning,
++							"Value for undeclared variable",
++							fmt.Sprintf("The root module does not declare a variable named %q. Did you mean one of [%s]?", name, strings.Join(matches, ", ")),
++						))
++					}
++					seenUndeclaredInFile++
+ 				}
+-				seenUndeclaredInFile++
+ 
+ 			case terraform.ValueFromEnvVar:
+-				// We allow and ignore undeclared names for environment
+-				// variables, because users will often set these globally
+-				// when they are used across many (but not necessarily all)
+-				// configurations.
++			// We allow and ignore undeclared names for environment
++			// variables, because users will often set these globally
++			// when they are used across many (but not necessarily all)
++			// configurations.
+ 			case terraform.ValueFromCLIArg:
+ 				diags = diags.Append(tfdiags.Sourceless(
+ 					tfdiags.Error,
+@@ -116,11 +130,11 @@ func ParseVariableValues(vv map[string]UnparsedVariableValue, decls map[string]*
+ 
+ 	if seenUndeclaredInFile >= 3 {
+ 		extras := seenUndeclaredInFile - 2
+-		diags = diags.Append(&hcl.Diagnostic{
+-			Severity: hcl.DiagWarning,
+-			Summary:  "Values for undeclared variables",
+-			Detail:   fmt.Sprintf("In addition to the other similar warnings shown, %d other variable(s) defined without being declared.", extras),
+-		})
++		diags = diags.Append(tfdiags.Sourceless(
++			tfdiags.Warning,
++			"Values for undeclared variables",
++			fmt.Sprintf("In addition to the other similar warnings shown, %d other variable(s) defined without being declared.", extras),
++		))
+ 	}
+ 
+ 	// By this point we should've gathered all of the required root module
+diff --git a/backend/unparsed_value_test.go b/backend/unparsed_value_test.go
+index 27fba6257..d51575480 100644
+--- a/backend/unparsed_value_test.go
++++ b/backend/unparsed_value_test.go
+@@ -1,10 +1,11 @@
+ package backend
+ 
+ import (
++	"math/big"
+ 	"testing"
+ 
+ 	"github.com/google/go-cmp/cmp"
+-	"github.com/hashicorp/hcl/v2"
++	hcl "github.com/hashicorp/hcl/v2"
+ 	"github.com/zclconf/go-cty/cty"
+ 
+ 	"github.com/hashicorp/terraform/configs"
+@@ -14,12 +15,13 @@ import (
+ 
+ func TestParseVariableValuesUndeclared(t *testing.T) {
+ 	vv := map[string]UnparsedVariableValue{
+-		"undeclared0": testUnparsedVariableValue("0"),
+-		"undeclared1": testUnparsedVariableValue("1"),
+-		"undeclared2": testUnparsedVariableValue("2"),
+-		"undeclared3": testUnparsedVariableValue("3"),
+-		"undeclared4": testUnparsedVariableValue("4"),
+-		"declared1":   testUnparsedVariableValue("5"),
++		"undeclared0":                testUnparsedVariableValue("0"),
++		"undeclared1":                testUnparsedVariableValue("1"),
++		"undeclared2":                testUnparsedVariableValue("2"),
++		"undeclared3":                testUnparsedVariableValue("3"),
++		"undeclared4":                testUnparsedVariableValue("4"),
++		"declared1":                  testUnparsedVariableValue("5"),
++		"load_balancer_lstener_port": testUnparsedVariableValue("6"),
+ 	}
+ 	decls := map[string]*configs.Variable{
+ 		"declared1": {
+@@ -43,7 +45,7 @@ func TestParseVariableValuesUndeclared(t *testing.T) {
+ 			},
+ 		},
+ 		"missing2": {
+-			Name:        "missing1",
++			Name:        "missing2",
+ 			Type:        cty.String,
+ 			ParsingMode: configs.VariableParseLiteral,
+ 			Default:     cty.StringVal("default for missing2"),
+@@ -53,18 +55,29 @@ func TestParseVariableValuesUndeclared(t *testing.T) {
+ 				End:      hcl.Pos{Line: 4, Column: 1, Byte: 0},
+ 			},
+ 		},
++		"load_balancer_listener_port": {
++			Name:        "load_balancer_listener_port",
++			Type:        cty.Number,
++			ParsingMode: configs.VariableParseLiteral,
++			Default:     cty.NumberVal(big.NewFloat(8080.)),
++			DeclRange: hcl.Range{
++				Filename: "fake.tf",
++				Start:    hcl.Pos{Line: 5, Column: 1, Byte: 0},
++				End:      hcl.Pos{Line: 5, Column: 1, Byte: 0},
++			},
++		},
+ 	}
+ 
+ 	gotVals, diags := ParseVariableValues(vv, decls)
++
+ 	for _, diag := range diags {
+ 		t.Logf("%s: %s", diag.Description().Summary, diag.Description().Detail)
+ 	}
+-	if got, want := len(diags), 5; got != want {
++	if got, want := len(diags), 3; got != want {
+ 		t.Fatalf("wrong number of diagnostics %d; want %d", got, want)
+ 	}
+ 
+ 	const undeclSingular = `Value for undeclared variable`
+-	const undeclPlural = `Values for undeclared variables`
+ 	const missingRequired = `No value for required variable`
+ 
+ 	if got, want := diags[0].Description().Summary, undeclSingular; got != want {
+@@ -73,15 +86,9 @@ func TestParseVariableValuesUndeclared(t *testing.T) {
+ 	if got, want := diags[1].Description().Summary, undeclSingular; got != want {
+ 		t.Errorf("wrong summary for diagnostic 1\ngot:  %s\nwant: %s", got, want)
+ 	}
+-	if got, want := diags[2].Description().Summary, undeclSingular; got != want {
++	if got, want := diags[2].Description().Summary, missingRequired; got != want {
+ 		t.Errorf("wrong summary for diagnostic 2\ngot:  %s\nwant: %s", got, want)
+ 	}
+-	if got, want := diags[3].Description().Summary, undeclPlural; got != want {
+-		t.Errorf("wrong summary for diagnostic 3\ngot:  %s\nwant: %s", got, want)
+-	}
+-	if got, want := diags[4].Description().Summary, missingRequired; got != want {
+-		t.Errorf("wrong summary for diagnostic 4\ngot:  %s\nwant: %s", got, want)
+-	}
+ 
+ 	wantVals := terraform.InputValues{
+ 		"declared1": {
+@@ -111,6 +118,15 @@ func TestParseVariableValuesUndeclared(t *testing.T) {
+ 				End:      tfdiags.SourcePos{Line: 4, Column: 1, Byte: 0},
+ 			},
+ 		},
++		"load_balancer_listener_port": {
++			Value:      cty.NumberVal(big.NewFloat(8080.)),
++			SourceType: terraform.ValueFromConfig,
++			SourceRange: tfdiags.SourceRange{
++				Filename: "fake.tf",
++				Start:    tfdiags.SourcePos{Line: 5, Column: 1, Byte: 0},
++				End:      tfdiags.SourcePos{Line: 5, Column: 1, Byte: 0},
++			},
++		},
+ 	}
+ 	if diff := cmp.Diff(wantVals, gotVals, cmp.Comparer(cty.Value.RawEquals)); diff != "" {
+ 		t.Errorf("wrong result\n%s", diff)
+-- 
+2.30.0
+
