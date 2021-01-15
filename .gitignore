@@ -1,0 +1,5 @@
+notes.lv2/
+pkg/
+src/
+notes.lv2-git-*.pkg.tar.xz
+notes.lv2-git-*.pkg.tar.zst

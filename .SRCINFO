@@ -1,0 +1,27 @@
+pkgbase = notes.lv2-git
+	pkgdesc = An LV2 plugin to store arbitrary notes and images in your project (git version)
+	pkgver = 0.3.1.r88.d0fed49
+	pkgrel = 1
+	url = https://open-music-kontrollers.ch/lv2/notes/
+	arch = x86_64
+	groups = lv2-plugins
+	groups = pro-audio
+	license = Artistic2.0
+	checkdepends = lv2lint
+	makedepends = git
+	makedepends = glu
+	makedepends = lv2
+	makedepends = meson
+	depends = fontconfig
+	depends = glew
+	depends = libvterm
+	depends = ttf-fira-code
+	depends = ttf-fira-sans
+	provides = notes.lv2
+	provides = notes.lv2=0.3.1.r88.d0fed49
+	conflicts = notes.lv2
+	source = notes.lv2::git+https://github.com/OpenMusicKontrollers/notes.lv2
+	sha512sums = SKIP
+
+pkgname = notes.lv2-git
+
