@@ -1,14 +1,14 @@
 pkgbase = nextcloud-integration-reddit
 	pkgdesc = Reddit integration into Nextcloud
-	pkgver = 0.0.6
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/nextcloud/integration_reddit
 	arch = any
 	license = AGPL3
 	depends = nextcloud
 	options = !strip
-	source = https://github.com/nextcloud/integration_reddit/releases/download/v0.0.6/integration_reddit-0.0.6.tar.gz
-	sha512sums = cf2ee16572ef492a85cb87b286dbd50aad6832b9772a6404f3c998fd31866b1a5d45090699ae689c4e2eb6c51304b5973815e470c80f930720ebb681e79205cd
+	source = https://github.com/nextcloud/integration_reddit/releases/download/v0.0.9/integration_reddit-0.0.9.tar.gz
+	sha512sums = a5f0a7577a159028fff9793c0d5c5a67bb30cc85aaa541f7793ade32eaf4f190722a6fb20ab7ed328784d4949047117574d885450e5e02c0d364dfceeef33025
 
 pkgname = nextcloud-integration-reddit
 

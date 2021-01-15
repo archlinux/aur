@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-integration-reddit
-pkgver=0.0.6
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="Reddit integration into Nextcloud"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nextcloud')
 makedepends=()
 options=('!strip')
 source=("https://github.com/nextcloud/integration_reddit/releases/download/v${pkgver}/integration_reddit-${pkgver}.tar.gz")
-sha512sums=('cf2ee16572ef492a85cb87b286dbd50aad6832b9772a6404f3c998fd31866b1a5d45090699ae689c4e2eb6c51304b5973815e470c80f930720ebb681e79205cd')
+sha512sums=('a5f0a7577a159028fff9793c0d5c5a67bb30cc85aaa541f7793ade32eaf4f190722a6fb20ab7ed328784d4949047117574d885450e5e02c0d364dfceeef33025')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
