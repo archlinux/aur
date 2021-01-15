@@ -1,0 +1,20 @@
+pkgbase = youtube-git
+	pkgdesc = Unnofficial Youtube desktop application
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://gitlab.com/youtube-desktop/application
+	arch = any
+	license = GPL
+	makedepends = npm
+	makedepends = git
+	makedepends = unzip
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	provides = youtube-git
+	conflicts = youtube-bin
+	source = git+https://gitlab.com/youtube-desktop/application.git
+	sha256sums = SKIP
+
+pkgname = youtube-git
+
