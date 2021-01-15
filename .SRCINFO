@@ -1,0 +1,15 @@
+pkgbase = ruby-tty-cursor-0.4
+	pkgdesc = Terminal cursor positioning, visibility and text manipulation.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://piotrmurach.github.io/tty/
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = tty-cursor-0.4.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/tty-cursor-0.4.0.gem
+	sha1sums = 83f13f93781a08050ebc47183a48237caf3446ca
+
+pkgname = ruby-tty-cursor-0.4
+
