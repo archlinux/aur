@@ -43,7 +43,7 @@ in i686 )
 	#sha256sums[0]='e195758b7872e0cb04ff9fe869587a1ce81d2216'
 ;; x86_64 )
 	source=(http://apache.org/dist/openoffice/${pkgver}/binaries/${_lang}/Apache_OpenOffice_${pkgver}_Linux_x86-64_langpack-rpm_${_lang}.tar.gz)
-	md5sums[0]='cf706a91951b9edc2601a9e2a9146e9e'
+	md5sums[0]='SKIP'
 	#sha256sums[0]='5a7b29cdb426b557629cdc979db4ab70551ce1366509f15b8b3d8c5b7ab5499c'
 esac
 
