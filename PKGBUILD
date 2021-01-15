@@ -1,7 +1,7 @@
-# Maintainer : Breizh <breizh.craft.98@openmailbox.org>
+# Maintainer : Breizh <breizh@breizh.pm>
 pkgname=libp7
 pkgver=3.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Casio Communication Protocol 7.00 implementation"
 arch=('i686' 'x86_64')
 url="https://p7.planet-casio.com"
@@ -23,7 +23,7 @@ md5sums=('778891e9e816c905c78b6750d8dc7ec7')
 
 build() {
   cd "$pkgname-$pkgver"
-  ./configure --udev && make
+  ./configure --udev --udevrulesdir='${libdir}/udev/rules.d' && make
 }
 
 package() {

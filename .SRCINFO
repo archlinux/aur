@@ -1,7 +1,7 @@
 pkgbase = libp7
 	pkgdesc = Casio Communication Protocol 7.00 implementation
 	pkgver = 3.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://p7.planet-casio.com
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = libp7
 	depends = libusb>=1.0
 	provides = libp7
 	source = https://p7.planet-casio.com/pub/libp7-3.0.tar.gz
-	md5sums = 66ea73a4ff29fa502422a465ce28888d
+	md5sums = 778891e9e816c905c78b6750d8dc7ec7
 
 pkgname = libp7
 
