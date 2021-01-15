@@ -5,7 +5,6 @@ pkgbase = heb12-cli-git
 	url = https://heb12.com/#cli
 	arch = x86_64
 	license = GPL2
-	makedepends = wget
 	provides = heb12
 	conflicts = heb12
 	source = git+https://code.heb12.com/heb12/cli.git
