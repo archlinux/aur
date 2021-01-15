@@ -2,8 +2,8 @@
 
 pkgname=bauh-staging
 pkgver=0.9.12.RC
-pkgrel=8
-_commit="765bdff851bb024f84126972a7a52ac81be4c031"
+pkgrel=9
+_commit="465c90a7b6361e1cbe223f8567c7c147e29f3edc"
 pkgdesc="Graphical interface for managing your applications (AppImage, Flatpak, Snap, Arch/AUR, Web). Testing branch (it may not be working properly)."
 arch=('any')
 url="https://github.com/vinifmor/bauh"
@@ -19,7 +19,8 @@ optdepends=('flatpak: required for Flatpak support'
             'fuse3: may be required for AppImage support'
             'pacman: required for AUR support'             
             'binutils: required for AUR support'
-            'git: required for AUR support'            
+            'git: required for AUR support'
+            'rebuild-detector: enables rebuild checking for AUR packages (optional)'            
             'autoconf: may be required to compile some AUR packages'
             'automake: may be required to compile some AUR packages'
             'bison: may be required to compile some AUR packages'
@@ -39,7 +40,7 @@ makedepends=('git' 'python' 'python-pip' 'python-setuptools')
 provides=("bauh")
 conflicts=('bauh')
 source=("${url}/archive/${_commit}.tar.gz")
-sha512sums=('b3e8e8dfb6343290da2593786286bc669d51ee97b2e09e7be4680607bfa9234df46b07a6623167238647e5c6d7eb715496c22421ef7a8e026519fbf602ccbf26')
+sha512sums=('699346c024d0b4adbb4d7541cc74a44f64e6859fa4dd14893dbeebfb63cf8b58bec0b1d8e4fdd307a7a00c56b482c5d0efc40d6c7207fe72d7de4820e51b0526')
 
 build() {
   cd "${srcdir}/bauh-${_commit}"
