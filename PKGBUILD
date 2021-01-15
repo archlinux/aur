@@ -1,7 +1,7 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=jack-select
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="A systray app to set the JACK configuration from QjackCtl presets via DBus."
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=(
     'a2jmidid: ALSA-MIDI to JACK bridge control'
 )
 source=("https://files.pythonhosted.org/packages/source/j/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('eea85821f4bfc8566a06f3a1b6830cddd32a15d028e36cadee9f39e1699a32fe')
+sha256sums=('77e392dd73ef48294b925a1b542b87203a41c2d401ba066b0a09e03c1cc6935d')
 
 
 prepare() {
