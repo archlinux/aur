@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxt-git
-pkgver=v0.1.1.r0.g0b549e9
+pkgver=v0.1.3.r0.g017c2d1
 pkgrel=1
 pkgdesc="simple tty api library, adds interactive terminal interface to your applications"
 arch=('any')
