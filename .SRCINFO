@@ -1,0 +1,14 @@
+pkgbase = wordpress-plugin-opengraph
+	pkgdesc = Open Graph plugin for WordPress
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://github.com/willnorris/wordpress-opengraph
+	arch = any
+	license = MIT
+	depends = wordpress
+	options = !strip
+	source = wordpress-plugin-opengraph-1.10.0.tar.gz::https://downloads.wordpress.org/plugin/opengraph.1.10.0.zip
+	sha512sums = dc2ec294d65bc5d38766ff9e136712bee1ff3f9d5221ddb90a81d4878f48c4d0e79270c2a80ceb165088f786396e3631e91a35498652670e046ce012aee06a3f
+
+pkgname = wordpress-plugin-opengraph
+
