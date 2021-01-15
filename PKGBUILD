@@ -30,7 +30,6 @@ build() {
 
 package() {
     install -Dm644 $pkgname-$pkgver/LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
 
     cd build
     make PREFIX="/usr" DESTDIR="$pkgdir" install
