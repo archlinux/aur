@@ -1,8 +1,8 @@
 # Maintainer: Olivier Le Moal
 
 pkgname=sdrangel-bin
-pkgver=6.4.0
-_subver=632
+pkgver=6.5.0
+_subver=643
 pkgrel=1
 conflicts=(sdrangel-git)
 pkgdesc="Qt5/OpenGL SDR and signal analyzer frontend."
@@ -17,7 +17,7 @@ optdepends=('mbelib: Required for Digital Speech Decoder (DSD) demodulator'
             'qt5-serialport: Required for  GS-232 controller')
 provides=("sdrangel")
 source=("https://github.com/f4exb/sdrangel/releases/download/v${pkgver}/sdrangel-${_subver}-master.tar.gz")
-sha256sums=('a1f8110506abec55184eaec927208f79861f2b24dd2cdcecfd5c51fb46dcd8d3')
+sha256sums=('d72310f6b0d2682bcafb83de8f37fd905e4b12019ed8c5cc0f43f06b72071e09')
 
 prepare() {
     cd "sdrangel-${_subver}-master"
