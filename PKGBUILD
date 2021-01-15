@@ -7,10 +7,10 @@ pkgdesc='Tiny waybar module to fetch new alerts from livestatus.'
 arch=('x86_64')
 url="https://github.com/cyrinux/${pkgname}"
 license=('ISC')
-depends=('glibc')
+depends=('glibc' 'otf-font-awesome')
 makedepends=('go' 'make')
 optdepends=(
-    'dunst: to get popup notifications',
+    'mako: to get popup notifications',
 )
 source=("${pkgname}-${pkgver}-src.tar.gz::${url}/releases/download/${pkgver}/${pkgname}-${pkgver}-src.tar.gz"
     "${pkgname}-${pkgver}-src.tar.gz.asc::${url}/releases/download/${pkgver}/${pkgname}-${pkgver}-src.tar.gz.asc")
