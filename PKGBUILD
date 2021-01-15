@@ -1,7 +1,7 @@
 # Maintainer: dllud <dllud riseup net>
 
 pkgname=grin-wallet
-pkgver=5.0.2
+pkgver=5.0.3
 pkgrel=1
 pkgdesc="Reference implementation of Grin's wallet."
 arch=('i686' 'x86_64')
