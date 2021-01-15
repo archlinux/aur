@@ -4,8 +4,9 @@
 # NOTE: config.sh detects during the build which libraries (gtk, qt5, ...) are available
 
 pkgbase=mp-5
-pkgname=(mp-5-gtk mp-5-nc mp-5-qt5)
-pkgver=5.44
+#pkgname=(mp-5-gtk mp-5-nc mp-5-qt5)
+pkgname=(mp-5-gtk mp-5-nc)
+pkgver=5.45
 pkgrel=1
 arch=('x86_64')
 url="https://triptico.com/software/mp.html"
@@ -15,26 +16,29 @@ makedepends=('gtk3' 'ncurses' 'qt5-base')
 options=(!makeflags)
 #source=("https://triptico.com/download/mp/mp-$pkgver.tar.gz")
 source=("https://triptico.com/download/mp-5.tar.gz")
-md5sums=('d76f16f46e2b0a9175a3995d92e80feb')
+md5sums=('f49bc5d5cd816bee0bacbb3d7e156a4d')
 
 prepare() {
   # Patch hard-coded install paths
-  #sed -i 's| /usr| $(PREFIX)|g' mp-$pkgver/makefile.in
-  sed -i 's| /usr| $(PREFIX)|g' mp-$pkgver-dev/makefile.in
+  #sed -i 's| /usr| $(PREFIX)|g' mp-$pkgver-dev/makefile.in
+  sed -i 's| /usr| $(PREFIX)|g' mp-$pkgver/makefile.in
 
   # Copy source files for each package
   # Patch: move subfolders "mpdm" and "mpsl" one folder up
-  for dir in mp-5-gtk mp-5-nc mp-5-qt5; do
+  #for dir in mp-5-gtk mp-5-nc mp-5-qt5; do
+  for dir in mp-5-gtk mp-5-nc; do
     rm -rf "$dir"
-    #cp -a mp-$pkgver "$dir"
-    cp -a mp-$pkgver-dev "$dir"
+    #cp -a mp-$pkgver-dev "$dir"
+    cp -a mp-$pkgver "$dir"
     rm -rf "$dir/"{mpdm,mpsl}
   done
-  #cp -a mp-$pkgver/{mpdm,mpsl} .
-  cp -a mp-$pkgver-dev/{mpdm,mpsl} .
+  #cp -a mp-$pkgver-dev/{mpdm,mpsl} .
+  cp -a mp-$pkgver/{mpdm,mpsl} .
 }
 
 build() {
+  set -x
+
   cd "$srcdir/mp-5-gtk"
   ./config.sh --prefix=/usr --without-curses --without-kde4 --without-qt
   make
@@ -43,9 +47,9 @@ build() {
   ./config.sh --prefix=/usr --without-gtk --without-kde4 --without-qt
   make
 
-  cd "$srcdir/mp-5-qt5"
-  ./config.sh --prefix=/usr --without-curses --without-gtk --without-kde4 --without-qt4
-  make
+  #cd "$srcdir/mp-5-qt5"
+  #./config.sh --prefix=/usr --without-curses --without-gtk --without-kde4 --without-qt4
+  #make
 }
 
 package_mp-5-gtk() {
@@ -74,16 +78,16 @@ package_mp-5-nc() {
   make DESTDIR="$pkgdir" install
 }
 
-package_mp-5-qt5() {
-  pkgdesc="Text editor for programmers (QT5 front-end)"
-  depends=('qt5-base')
-  _pkgname='mp-5'
-  provides=($_pkgname)
-  conflicts=($_pkgname)
-
-  cd mp-5-qt5
-  #install -Dm644 mp.png "$pkgdir/usr/share/pixmaps/mp.png"
-  install -dm755 "$pkgdir"{/usr/bin,/usr/share/applications,/usr/share/icons/hicolor/48x48/apps}
-  make DESTDIR="$pkgdir" install
-}
+#package_mp-5-qt5() {
+#  pkgdesc="Text editor for programmers (QT5 front-end)"
+#  depends=('qt5-base')
+#  _pkgname='mp-5'
+#  provides=($_pkgname)
+#  conflicts=($_pkgname)
+#
+#  cd mp-5-qt5
+#  #install -Dm644 mp.png "$pkgdir/usr/share/pixmaps/mp.png"
+#  install -dm755 "$pkgdir"{/usr/bin,/usr/share/applications,/usr/share/icons/hicolor/48x48/apps}
+#  make DESTDIR="$pkgdir" install
+#}
 
