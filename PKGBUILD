@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-integration-discourse
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="Discourse integration into Nextcloud"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nextcloud')
 makedepends=()
 options=('!strip')
 source=("https://github.com/nextcloud/integration_discourse/releases/download/v${pkgver}/integration_discourse-${pkgver}.tar.gz")
-sha512sums=('5fb73766081d4d7c05c37bf8f6163ae35bc30d2851337009045f5f09fd031263a8e256ac1e8c636c9d33ca3317c7e98f34465e74d55e86202b057eae2501ee3c')
+sha512sums=('139dcc598195198a738319e89a6359bd7d83a62897f3f429b54290c927e5840143b57fb2cf2321521ce6afc13cb82603e57ffee873ce0d1442dd8388d4aa3f9a')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
