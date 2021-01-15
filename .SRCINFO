@@ -1,5 +1,5 @@
 pkgbase = alt-media-writer
-	pkgdesc = Fedora Media Writer - Write Fedora Images to Portable Media
+	pkgdesc = ALT Media Writer is a tool that helps users put ALT images on their portable drives such as flash disks.
 	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/altlinux/ALTMediaWriter
