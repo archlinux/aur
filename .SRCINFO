@@ -1,0 +1,19 @@
+pkgbase = heb12-cli-git
+	pkgdesc = Bible command line interface reader.
+	pkgver = 0.1.0.r31.ge41cf6c
+	pkgrel = 1
+	url = https://heb12.com/#cli
+	arch = x86_64
+	license = GPL2
+	makedepends = wget
+	provides = heb12
+	conflicts = heb12
+	source = git+https://code.heb12.com/heb12/cli.git
+	source = https://api.heb12.com/translations/biblec/web.i
+	source = https://api.heb12.com/translations/biblec/web.t
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = heb12-cli-git
+
