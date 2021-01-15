@@ -1,0 +1,15 @@
+pkgbase = ruby-tty-color-0.4
+	pkgdesc = Terminal color capabilities detection
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = http://piotrmurach.github.io/tty
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = tty-color-0.4.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/tty-color-0.4.3.gem
+	sha1sums = c57b3844f1e3c45e6c9ba4da77dd1fe5fe5461c0
+
+pkgname = ruby-tty-color-0.4
+
