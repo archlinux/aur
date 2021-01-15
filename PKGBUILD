@@ -1,8 +1,8 @@
 # Maintainer: EatMyVenom <eat.my.venomm@gmail.com>
 
 pkgname=atom-editor-beta-bin
-_pkgver="1.54.0-beta0"
-pkgver=1.54.0beta0
+_pkgver="1.55.0-beta0"
+pkgver=1.55.0beta0
 pkgrel=1
 pkgdesc="A hackable text editor for the 21st Century"
 arch=('x86_64')
