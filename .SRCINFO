@@ -1,0 +1,17 @@
+pkgbase = nordic-darker-theme-git
+	pkgdesc = Dark Gtk3.20+ theme created using the awesome Nord color pallete. Darker branch
+	pkgver = r100.b62b128
+	pkgrel = 1
+	url = https://github.com/EliverLara/Nordic
+	arch = any
+	license = GPL
+	makedepends = inkscape
+	makedepends = optipng
+	optdepends = ttf-roboto: primary font face defined
+	optdepends = ttf-ubuntu-font-family: secondary font face defined
+	optdepends = cantarell-fonts: tertiary font face defined
+	source = Nordic::git+https://github.com/EliverLara/Nordic.git#branch=darker
+	sha256sums = SKIP
+
+pkgname = nordic-darker-theme-git
+
