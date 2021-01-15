@@ -1,37 +1,39 @@
 pkgbase = lua-pgmoon
-	pkgver = 1.11.0
-	pkgrel = 2
+	pkgver = 1.12.0
+	pkgrel = 1
 	url = https://github.com/leafo/pgmoon
 	arch = any
 	license = MIT
-	source = lua-pgmoon-1.11.0.tar.gz::https://github.com/leafo/pgmoon/archive/v1.11.0.tar.gz
-	source = pgmoon-lua53-compat.patch
-	md5sums = fbfa084ff9947b1d2552357dde2e25c8
-	md5sums = b25c48ed67c2b70011333eaa1f8292c3
+	source = lua-pgmoon-1.12.0.tar.gz::https://github.com/leafo/pgmoon/archive/v1.12.0.tar.gz
+	md5sums = 324b85cea48fd7650cd67ec354b8a783
 
 pkgname = lua-pgmoon
 	pkgdesc = PostgreSQL driver written in pure Lua for Lua 5.4
+	depends = lua
 	depends = lua-lpeg
 	optdepends = lua-cqueues: asynchronous connectivity
 	optdepends = lua-socket: synchronous connectivity
 
 pkgname = lua51-pgmoon
 	pkgdesc = PostgreSQL driver written in pure Lua for Lua 5.1
-	depends = lua-lpeg
+	depends = lua51
+	depends = lua51-lpeg
 	depends = lua51-bitop
-	optdepends = lua-cqueues: asynchronous connectivity
-	optdepends = lua-socket: synchronous connectivity
+	optdepends = lua51-cqueues: asynchronous connectivity
+	optdepends = lua51-socket: synchronous connectivity
 
 pkgname = lua52-pgmoon
 	pkgdesc = PostgreSQL driver written in pure Lua for Lua 5.2
-	depends = lua-lpeg
+	depends = lua52
+	depends = lua52-lpeg
 	depends = lua52-bitop
-	optdepends = lua-cqueues: asynchronous connectivity
-	optdepends = lua-socket: synchronous connectivity
+	optdepends = lua52-cqueues: asynchronous connectivity
+	optdepends = lua52-socket: synchronous connectivity
 
 pkgname = lua53-pgmoon
 	pkgdesc = PostgreSQL driver written in pure Lua for Lua 5.3
-	depends = lua-lpeg
-	optdepends = lua-cqueues: asynchronous connectivity
-	optdepends = lua-socket: synchronous connectivity
+	depends = lua53
+	depends = lua53-lpeg
+	optdepends = lua53-cqueues: asynchronous connectivity
+	optdepends = lua53-socket: synchronous connectivity
 
