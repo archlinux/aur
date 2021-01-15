@@ -1,6 +1,6 @@
 pkgbase = lib_amxc-git
 	pkgdesc = Generic C-implementation of data containers
-	pkgver = v1.0.1.r0.gac2487f
+	pkgver = v1.0.3.r0.g8404328
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/libraries/libamxc
 	arch = any
