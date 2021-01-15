@@ -1,0 +1,20 @@
+pkgbase = qqc2-breeze-style-git
+	pkgdesc = Breeze inspired QQC2 Style
+	pkgver = r105.96d00f7
+	pkgrel = 1
+	url = https://invent.kde.org/plasma/qqc2-breeze-style
+	arch = x86_64
+	arch = armv7
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-quickcontrols2
+	provides = qqc2-breeze-style
+	conflicts = qqc2-breeze-style
+	source = git+https://invent.kde.org/plasma/qqc2-breeze-style.git
+	md5sums = SKIP
+
+pkgname = qqc2-breeze-style-git
+
