@@ -1,6 +1,6 @@
 # Contributor: vantu5z <vantu5z@mail.ru>
 pkgname=rhvoice-dictionary-git
-pkgver=r1734.20210109
+pkgver=r1746.20210115
 pkgrel=1
 pkgdesc="Русский словарь для RHVoice. Дополнительные иструменты (Python)."
 arch=('i686' 'x86_64')
@@ -32,16 +32,8 @@ build() {
 package()
 {
     cd $pkgname
-    mkdir -p ${pkgdir}/etc/RHVoice/dicts/Russian/
-    cp -R phrase_dict.txt "$pkgdir/etc/RHVoice/dicts/Russian/"
-    cp -R locations_dict.txt "$pkgdir/etc/RHVoice/dicts/Russian/"
-    cp -R names_dict.txt "$pkgdir/etc/RHVoice/dicts/Russian/"
-    cp -R person_names_dict.txt "$pkgdir/etc/RHVoice/dicts/Russian/"
-    cp -R abbr_dict.txt "$pkgdir/etc/RHVoice/dicts/Russian/"
-    cp -R yo_dict.txt "$pkgdir/etc/RHVoice/dicts/Russian/"
+    mkdir -p ${pkgdir}/etc/RHVoice/
 
-    mkdir -p ${pkgdir}/usr/bin/
-    cp -R "tools/rhvoice_say" "$pkgdir/usr/bin/"
-    cp -R "tools/rhvoice_config" "$pkgdir/usr/bin/"
-    cp -R "tools/build/lib/" "$pkgdir/usr/"
+    cp -R "dicts" "$pkgdir/etc/RHVoice/"
+    cp -R "tools/build/usr/" "$pkgdir/"
 }
