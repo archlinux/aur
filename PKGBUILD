@@ -1,7 +1,7 @@
 # Maintainer: Roshless <pkg@roshless.com>
 
 pkgname=lagrange
-pkgrel=1
+pkgrel=2
 pkgver=1.0.3
 pkgdesc="Beautiful Gemini Client"
 url="https://git.skyjake.fi/skyjake/lagrange"
@@ -9,7 +9,6 @@ arch=("any")
 license=("BSD")
 source=(
     "https://git.skyjake.fi/skyjake/$pkgname/releases/download/v$pkgver/lagrange-$pkgver.tar.gz"
-    "lagrange.desktop"
 )
 
 depends=(
@@ -37,5 +36,4 @@ package() {
     make PREFIX="/usr" DESTDIR="$pkgdir" install
 }
 
-md5sums=('17fcd774f3b54c8275b1a1c0a3a850bf'
-         '1dd1255e856f3b00b822be75ec78b51b')
+md5sums=('17fcd774f3b54c8275b1a1c0a3a850bf')
