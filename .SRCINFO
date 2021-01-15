@@ -33,6 +33,8 @@ pkgbase = ifcopenshell-git
 	provides = python-ifcpatch
 	provides = python-ifcdiff
 	provides = python-bcf
+	provides = python-bimtester
+	provides = python-ifccsv
 	source = git+https://github.com/IfcOpenShell/IfcOpenShell.git
 	md5sums = SKIP
 

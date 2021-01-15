@@ -19,7 +19,7 @@ optdepends=('python-svgwrite: blender bim addon svg support'
 			'python-lark-parser: util, ifccsv, ifcclash support'
 			'python-odfpy: ifccobie support')
 makedepends=('cmake' 'boost>=1.58.0' 'swig')
-provides=('ifcopenshell' 'blender-plugin-bim' 'IfcConvert' 'IfcGeomServer' 'python-ifcpatch' 'python-ifcdiff' 'python-bcf')
+provides=('ifcopenshell' 'blender-plugin-bim' 'IfcConvert' 'IfcGeomServer' 'python-ifcpatch' 'python-ifcdiff' 'python-bcf' 'python-bimtester' 'python-ifccsv')
 conflicts=()
 replaces=()
 backup=()
@@ -72,9 +72,10 @@ package_ifcopenshell-git() {
   cd "${pkgdir}/usr/lib/python${_python_ver}/site-packages/"
   cp -rf "${srcdir}/IfcOpenShell/src/ifcclash/." "./"
   cp -rf "${srcdir}/IfcOpenShell/src/ifcdiff/." "./"
-  cp -rf "${srcdir}/IfcOpenShell/src/bcf/bcf/." "./bcf/"
+  cp -rf "${srcdir}/IfcOpenShell/src/bcf/bcf" "./"
   cp -rf "${srcdir}/IfcOpenShell/src/ifccsv/ifccsv.py" "./"
   cp -rf "${srcdir}/IfcOpenShell/src/ifcbimtester/bimtester" "./"
+  cp -rf "${srcdir}/IfcOpenShell/src/ifcpatch" "./"
   python -O -m compileall "./"
 }
 
