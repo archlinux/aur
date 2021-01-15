@@ -1,15 +1,28 @@
 # Maintainer: yjun <jerrysteve1101@gmail.com>
 
+# fork from https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=stm32cubeide
+
 pkgname="stm32cubeprog"
 _pkgname="STM32CubeProgrammer"
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An all-in-one multi-OS software tool for programming STM32 products."
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubeprog.html"
 license=('SLA0048')
+# libusb1.0.12 version or higher is required to run STM32CubeProgrammer.
+
+# There is no need to install any Java™ SE Run Time Environment since version 2.6.0. The
+# STM32CubeProgrammer runs with a bundled JRE available inside the downloaded
+# package and no longer with the one installed on your machine.
+
+# -------------------------------------------------->
+# https://www.st.com/resource/en/user_manual/dm00403500-stm32cubeprogrammer-software-description-stmicroelectronics.pdf
 depends=('stlink'
-         'libusb')
+         'libusb'
+         'libnet'
+         'qt5-serialport'
+         'openssl-1.0')
 makedepends=('xdotool'
              'xorg-server-xvfb'
              'xdg-user-dirs')
