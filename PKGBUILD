@@ -1,13 +1,13 @@
 # Maintainer: Mintsuki <mintsuki@protonmail.com>
 pkgname=limine
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="An advanced x86/x86_64 BIOS bootloader"
 arch=("i686" "x86_64")
 url="https://github.com/limine-bootloader/limine"
 license=("BSD")
-source=(${url}/archive/v1.0.tar.gz)
-sha256sums=('790d53bee9eef6c7ca55a9cad6550dae8ae73db6d913c28da0c289abfd8b6bfa')
+source=(${url}/archive/v1.0.1.tar.gz)
+sha256sums=('f2b8bfe1feb4b3db3969339bd577c921f6b3c47d75be8232e168c3c711d0ba37')
 _dir="${pkgname}-${pkgver}"
 
 build() {
