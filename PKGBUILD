@@ -1,7 +1,7 @@
 # Maintainer: crab2313 <crab2313@gmail.com>
 
 pkgname=rkdeveloptool
-pkgver=62
+pkgver=66
 pkgrel=1
 pkgdesc='Development tool for Rockchip SOC'
 arch=('x86_64')
