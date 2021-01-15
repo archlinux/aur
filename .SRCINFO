@@ -6,6 +6,7 @@ pkgbase = neocities-cli
 	arch = any
 	license = MIT
 	depends = ruby
+	depends = ruby-rake-12
 	depends = ruby-httpclient
 	depends = ruby-pastel-0.7.2
 	depends = ruby-tty-table-0.10
