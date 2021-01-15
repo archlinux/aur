@@ -1,6 +1,17 @@
---- Makefile.in.sav	2021-01-15 12:52:38.804446378 +0100
-+++ Makefile.in	2021-01-15 13:03:58.391622084 +0100
-@@ -465,14 +465,14 @@
+--- Makefile.in.sav	2005-04-24 00:43:23.000000000 +0200
++++ Makefile.in	2021-01-15 14:24:29.144490016 +0100
+@@ -32,6 +32,10 @@
+ #
+ prefix = @prefix@
+ exec_prefix = @exec_prefix@
++libdir = @libdir@
++pkgconfigdir = $(libdir)/pkgconfig
++bindir = @bindir@
++includedir = @includedir@
+ INSTALL = @INSTALL@
+ LIBTOOL = ./libtool
+ RELEASE = @ALLOWRELEASE@
+@@ -465,14 +469,14 @@
  	mv $(DOC) doc
  
  install:	sqlite libsqlite.la sqlite.h
