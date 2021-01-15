@@ -1,20 +1,20 @@
 pkgbase = raven-reader
 	pkgdesc = Simple Desktop RSS Reader made using VueJS
-	pkgver = 0.5.2
-	pkgrel = 0
+	pkgver = 1.0.28
+	pkgrel = 1
 	url = https://github.com/mrgodhani/raven-reader
 	arch = x86_64
 	license = MIT
-	depends = libxss>=1.2.3
-	depends = libxtst>=1.2.3
-	depends = libappindicator-gtk2>=12.10.0
-	depends = gconf>=3.2.6+11+g07808097
-	depends = libnotify>=0.7.8
+	depends = libxss
+	depends = libxtst
+	depends = libappindicator-gtk2
+	depends = gconf-gtk2
+	depends = libnotify
 	provides = raven-reader
-	source = https://github.com/mrgodhani/raven-reader/releases/download/v0.5.2/raven-reader-0.5.2-x86_64.AppImage
+	source = https://download.helloefficiency.com/ravenreader/Raven Reader-1.0.28.AppImage
 	source = raven-reader.desktop
-	sha512sums = 117af9ff52567162f9e6bb68bb6a16a3c49ab6def45f131646e76c1492c3ef765e8a93591f320c752298e8baa0d07b2155866945ac837276718ea1a563c9fa18
-	sha512sums = 901cb672dfb53fb2c3bd11e7075cc3fa8fba69fcb201102390058acd3c84b6e2ca36aea9b6bddb05461947c9ad1a0e0fb3b79664bceca062ed5a6511d02982b7
+	sha512sums = b044d512dd27c4d073f0797630d82e25617afda4fe33d886491ab9527cdf888674625c2cbf452bb9797bee5585f75a6873cb4d1ddefe8e8e102a72ae6b873931
+	sha512sums = 9fa28be0cfac906f0d6acb6be147f797999660fda207df0b282a132950e587b5db0e77c719a38892bf6bc5e1cd77e5e9e24bf9ba169fd5505abd2dcd71ed27cf
 
 pkgname = raven-reader
 

@@ -6,6 +6,6 @@ Terminal=false
 Type=Application
 Icon=raven-reader
 StartupWMClass=Raven Reader
-X-AppImage-Version=0.5.0
+X-AppImage-Version=0.6.6
 Categories=News;
 X-AppImage-BuildId=1K8cl6z8GnZXpZKBItoe53hDqFs
