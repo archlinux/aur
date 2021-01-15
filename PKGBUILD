@@ -1,13 +1,16 @@
 # Maintainer: monosans <hsyqixco at protonmail dot com>
 
 pkgname=st-monosans-git
-pkgver=0.8.4.r1141.966386b
-pkgrel=5
+pkgver=0.8.4.r1142.197a78b
+pkgrel=1
 pkgdesc='Simple (suckless) terminal with scrollback, ligatures and One Dark color scheme'
 url=https://github.com/monosans/st
 arch=(i686 x86_64)
 license=(MIT)
 depends=(libxft harfbuzz ttf-jetbrains-mono)
+optdepends=(
+	'libxft-bgra: if st crashes when viewing emojis'
+	'libxft-bgra-git: if st crashes when viewing emojis')
 makedepends=(git libxext ncurses)
 source=(
 	git://github.com/monosans/st
