@@ -1,0 +1,14 @@
+pkgbase = gnotepad
+	pkgdesc = A simple GTK Notepad
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/caverym/gnotepad
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = gtk3
+	source = git+https://github.com/caverym/gnotepad.git
+	sha256sums = SKIP
+
+pkgname = gnotepad
+
