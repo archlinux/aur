@@ -1,0 +1,13 @@
+pkgbase = nginx-mod-http-xslt-filter
+	pkgdesc = Transform nginx XML responses using XSLT stylesheets
+	pkgver = 1.18.0
+	pkgrel = 2
+	url = https://nginx.org/en/docs/http/ngx_http_xslt_module.html
+	arch = x86_64
+	license = custom:BSD-2-Clause
+	makedepends = nginx-src
+	depends = nginx
+	depends = libxslt
+
+pkgname = nginx-mod-http-xslt-filter
+
