@@ -14,7 +14,7 @@ source=("https://github.com/altlinux/ALTMediaWriter/archive/master.zip")
 md5source=('c31e795400cd7748001ed99744a543ef')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+  cd "ALTMediaWriter-master"
 
   qmake-qt5 PREFIX=/usr .
   make
