@@ -2,14 +2,15 @@
 # Maintainer: Patrick Wicki <patrick.wicki96@gmail.com>
 
 pkgname=xfce4-goodies-meta
-pkgver=4.12
+pkgver=4.16
 pkgrel=1
 pkgdesc='Meta package for installing the xfce4-goodies group'
 arch=(any)
 url='https://www.archlinux.org/'
 license=(GPL)
-depends=(mousepad
-	orage
+depends=(
+	mousepad
+	ristretto
 	thunar-archive-plugin
 	thunar-media-tags-plugin
 	xfburn
@@ -31,6 +32,7 @@ depends=(mousepad
 	xfce4-notes-plugin
 	xfce4-notifyd
 	xfce4-pulseaudio-plugin
+	xfce4-screensaver
 	xfce4-screenshooter
 	xfce4-sensors-plugin
 	xfce4-smartbookmark-plugin
@@ -43,6 +45,5 @@ depends=(mousepad
 	xfce4-weather-plugin
 	xfce4-xkb-plugin
 	parole
-	ristretto
 	xfce4-whiskermenu-plugin
-	)
+)
