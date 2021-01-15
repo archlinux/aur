@@ -1,0 +1,17 @@
+pkgbase = ruby-pastel-0.7.2
+	pkgdesc = Terminal strings styling with intuitive and clean API.
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/piotrmurach/pastel
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-equatable-0.5
+	depends = ruby-tty-color-0.4
+	noextract = pastel-0.7.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/pastel-0.7.2.gem
+	sha1sums = 99b548b2c44b9afbc4b8eedbc0685d781448407a
+
+pkgname = ruby-pastel-0.7.2
+
