@@ -6,8 +6,10 @@
 # work using the CC0 <https://creativecommons.org/publicdomain/zero/1.0/>.
 
 pkgname='nginx-mod-http-xslt-filter'
-pkgver=$(pacman -Si nginx-src | sed -nE 's/^Version *: ([[:alnum:]._]+).*$/\1/p')
-pkgrel=$(pacman -Si nginx-src | sed -nE 's/^Version *: [^-]+-(.*)$/\1/p')
+#pkgver=$(pacman -Si nginx-src | sed -nE 's/^Version *: ([[:alnum:]._]+).*$/\1/p')
+pkgver=1.18.0
+#pkgrel=$(pacman -Si nginx-src | sed -nE 's/^Version *: [^-]+-(.*)$/\1/p')
+pkgrel=3
 pkgdesc="Transform nginx XML responses using XSLT stylesheets"
 arch=('x86_64')
 url='https://nginx.org/en/docs/http/ngx_http_xslt_module.html'
@@ -20,15 +22,11 @@ prepare() {
 }
 
 build() {
-  cd "nginx"
-  IFS=$'\n'
-  _options=$(nginx -V |&\
-             sed -nE 's/^configure arguments: ([^\n]*)$/\1/p' |\
-             sed -nE 's/([^'\'' \t\n]+('\''([^'\''\]|\\'\''?)*'\'\
-                     '|"([^"\\]|\\"?)*")?) ?/\1\n/gp' |\
-             sed -nE -e 's/(--with-ld-opt=).*/\1"$LDFLAGS"/p;'\
-                     -e 's/(--with-cc-opt=).*/\1"$CFLAGS $CPPFLAGS"/p')
-  ./configure ${_options[@]} --with-http_xslt_module=dynamic
+  cd nginx
+  _options=$(nginx -V |&
+             sed -nE 's/^configure arguments: ([^\n]*)$/\1/p' |
+             sed -nE 's/([^'"'"' \t\n]+('"'"'([^'"'"'\]|\\'"'"'?)*'"'"'|"([^"\\]|\\"?)*")?) ?/\1\n/gp')
+  IFS=$'\n' xargs ./configure --with-http_xslt_module=dynamic <<< ${_options[@]}
   make modules
 }
 
