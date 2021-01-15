@@ -1,5 +1,5 @@
 pkgname=protobuf-rust-git
-pkgver=1.4.1.12.gdf787b8
+pkgver=1.4.1.1227.gf1a21a56
 pkgrel=1
 pkgdesc="Rust Support for Google's protocol buffers"
 arch=('x86_64' 'i686')
@@ -21,9 +21,7 @@ pkgver() {
 build() {
     cd "$pkgname"
     cargo build \
-        --package protoc \
-        --package protoc-rust \
-        --package protobuf \
+        --package protobuf-codegen \
         --release
 }
 
