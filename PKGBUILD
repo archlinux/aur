@@ -10,8 +10,8 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-io-all>=0.30' 'perl-libwww')
 makedepends=()
-url='http://search.cpan.org/dist/IO-All-LWP'
-source=('http://search.cpan.org/CPAN/authors/id/I/IT/ITUB/IO-All-LWP-0.14.tar.gz')
+url='https://metacpan.org/release/IO-All-LWP'
+source=('https://search.cpan.org/CPAN/authors/id/I/IT/ITUB/IO-All-LWP-0.14.tar.gz')
 md5sums=('2971dc7889c0c523237b1fd4488c6cdb')
 sha512sums=('5636d6d01ddb8a9a216a28a23223599caf91e8fcfd9e2fd2e6891abee7f574e51a233bfcd8f0529c9c9ce43cc58c586a2bf8986e09fe1de9091b6e73b24a186a')
 _distdir="IO-All-LWP-0.14"
