@@ -1,6 +1,6 @@
 pkgbase = glibc-git
 	pkgdesc = GNU C Library
-	pkgver = 2.32.r69.g567b170501
+	pkgver = 2.32.r537.g2d651eb926
 	pkgrel = 1
 	url = https://www.gnu.org/software/libc/
 	install = glibc-git.install
@@ -15,6 +15,7 @@ pkgbase = glibc-git
 	depends = tzdata
 	depends = filesystem
 	optdepends = gd: graph image generation with memusage
+	optdepends = perl: for mtrace
 	provides = glibc=2.32
 	conflicts = glibc
 	options = staticlibs
@@ -22,10 +23,8 @@ pkgbase = glibc-git
 	backup = etc/nscd.conf
 	source = git+https://sourceware.org/git/glibc.git
 	source = locale-gen
-	source = 0001-Revert-elf-Correct-absolute-SHN_ABS-symbol-run-time-.patch
 	sha256sums = SKIP
 	sha256sums = 05fbb88877cdddc99ef25e48304d6e5ac236660c20925d461cb4e90ebcb3b7de
-	sha256sums = 6a3de26cec7b5b3e05090e85e970705454d9d749dcd4a2e1d35bee11d4e3637b
 
 pkgname = glibc-git
 	options = staticlibs

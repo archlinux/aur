@@ -4,7 +4,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=glibc-git
-pkgver=2.32.r69.g567b170501
+pkgver=2.32.r537.g2d651eb926
 pkgrel=1
 pkgdesc='GNU C Library'
 arch=('i686' 'x86_64')
@@ -12,7 +12,8 @@ url='https://www.gnu.org/software/libc/'
 license=('GPL' 'LGPL')
 groups=('base')
 depends=('linux-api-headers' 'tzdata' 'filesystem')
-optdepends=('gd: graph image generation with memusage')
+optdepends=('gd: graph image generation with memusage'
+            'perl: for mtrace')
 makedepends=('git' 'python')
 # XXX Arch Linux's valgrind package requires an exact version
 provides=("glibc=${pkgver%%.r*}")
@@ -21,11 +22,9 @@ backup=('etc/gai.conf' 'etc/nscd.conf')
 options=('staticlibs')
 install='glibc-git.install'
 source=('git+https://sourceware.org/git/glibc.git'
-        'locale-gen'
-        '0001-Revert-elf-Correct-absolute-SHN_ABS-symbol-run-time-.patch')
+        'locale-gen')
 sha256sums=('SKIP'
-            '05fbb88877cdddc99ef25e48304d6e5ac236660c20925d461cb4e90ebcb3b7de'
-            '6a3de26cec7b5b3e05090e85e970705454d9d749dcd4a2e1d35bee11d4e3637b')
+            '05fbb88877cdddc99ef25e48304d6e5ac236660c20925d461cb4e90ebcb3b7de')
 
 # remove default hardening for building libraries
 CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}
@@ -34,15 +33,6 @@ pkgver() {
     cd glibc
     # wtf is tag "glibc-2.26.9000"
     git describe --exclude '*.*.9000' | sed 's/^glibc-//; s/-/.r/; s/-/./'
-}
-
-prepare() {
-    cd glibc
-    # revert commit breaking proprietary electron apps for now; this is lld's fault
-    # but it's too serious a regression to break software in the wild until users
-    # have a solution. See https://bugs.archlinux.org/task/59550 and
-    # https://github.com/electron/electron/issues/13972#issuecomment-411532741
-    patch -p1 -i ../0001-Revert-elf-Correct-absolute-SHN_ABS-symbol-run-time-.patch
 }
 
 build() {
