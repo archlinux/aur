@@ -1,8 +1,8 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=velero
-pkgver=1.5.2
-pkgrel=2
+pkgver=1.5.3
+pkgrel=1
 pkgdesc="Backup and migrate Kubernetes applications and their persistent volumes"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://velero.io"
@@ -30,7 +30,7 @@ build() {
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
     export GOLDFLAGS="-linkmode=external"
 
-    make local GIT_TREE_STATE=clean VERSION=$pkgver
+    make GIT_TREE_STATE=clean VERSION=$pkgver local
 
     ./velero completion bash | install -Dm644 /dev/stdin share/bash-completion/completions/velero
     ./velero completion zsh | install -Dm644 /dev/stdin share/zsh/site-functions/_velero
