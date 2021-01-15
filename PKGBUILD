@@ -1,12 +1,17 @@
 #Maintainer: Sanskrit Coders <sanskrit-programmers@googlegroups.com>
 pkgname=sanskrit-fonts
-pkgver=1.1
+pkgver=r29.b68fc95
 pkgrel=1
 pkgdesc="Various unicode fonts for Sanskrit (Scripts: Devanagari, Kannada, Tamil, Telugu, Malayalam, Oriya). Fonts include: Siddhanta, Chandas, Uttara, Sanskrit2003, Noto Sans Devanagari."
 url="http://github.com/sanskrit-coders/sanskrit-fonts"
 license=('custom:OFL')
 arch=(any)
 makedepends=('git')
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   rm -rf "$srcdir/sanskrit-fonts/"
