@@ -1,6 +1,6 @@
 pkgbase = amxb_pcb-git
 	pkgdesc = PCB baapi back-end
-	pkgver = v0.6.2.r0.g897bf18
+	pkgver = v1.0.2.r0.g2286db6
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/modules/amxb_backends/amxb_pcb.git
 	arch = any
