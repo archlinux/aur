@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://github.com/SELinuxProject/selinux'
 license=('custom')
 groups=('selinux')
-makedepends=('pkgconf')
+makedepends=()
 depends=('libsepol>=3.1' 'pcre-static')
 options=(staticlibs)
 source=("https://github.com/SELinuxProject/selinux/releases/download/20200710/${_pkgname}-${pkgver}.tar.gz")

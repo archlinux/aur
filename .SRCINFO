@@ -6,7 +6,6 @@ pkgbase = libselinux-static
 	arch = x86_64
 	groups = selinux
 	license = custom
-	makedepends = pkgconf
 	depends = libsepol>=3.1
 	depends = pcre-static
 	options = staticlibs
