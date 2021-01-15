@@ -2,7 +2,7 @@
 
 pkgname=waybar-livestatus
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Tiny waybar module to fetch new alerts from livestatus.'
 arch=('x86_64')
 url="https://github.com/cyrinux/${pkgname}"

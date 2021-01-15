@@ -1,7 +1,7 @@
 pkgbase = waybar-livestatus
 	pkgdesc = Tiny waybar module to fetch new alerts from livestatus.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cyrinux/waybar-livestatus
 	arch = x86_64
 	license = ISC
