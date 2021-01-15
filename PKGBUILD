@@ -5,13 +5,13 @@
 _name=Cadence
 pkgname=cadence
 pkgver=0.9.1
-pkgrel=3
+pkgrel=4
 pkgdesc="JACK toolbox for audio production."
 arch=('x86_64')
 url="https://kx.studio/Applications:Cadence"
 license=('GPL2')
 groups=('pro-audio')
-depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'jack' 'python-dbus'
+depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'jack2-dbus' 'python-dbus'
 'python-pyqt5' 'qt5-base' 'qt5-svg')
 makedepends=('a2jmidid' 'jack_capture' 'libpulse' 'pulseaudio-jack'
 'python-rdflib' 'zita-ajbridge')
