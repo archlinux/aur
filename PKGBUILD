@@ -2,9 +2,6 @@
 
 pkgname=scrcpy-git
 pkgver=1.17.r3.ged130e0
-# Get latest tagged version
-_pkgver="$(curl -ILs -o /dev/null -w %{url_effective} "https://github.com/Genymobile/scrcpy/releases/latest")"
-_pkgver="${_pkgver##*/}"
 pkgrel=1
 pkgdesc='Display and control your Android device (development version)'
 arch=('i686' 'x86_64')
@@ -16,6 +13,10 @@ optdepends=('android-tools: required if adb is not already installed')
 provides=("scrcpy")
 conflicts=("scrcpy")
 noextract=("scrcpy-server"*)
+
+# Get latest tagged version
+_pkgver="$(curl -qILs -o /dev/null -w %{url_effective} "$url/releases/latest")"
+_pkgver="${_pkgver##*/}"
 
 source=("git+$url.git"
         "$url/releases/download/$_pkgver/scrcpy-server-$_pkgver")
