@@ -1,13 +1,15 @@
 pkgbase = pacman-fix-permissions
-	pkgdesc = small Python script to fix broken Arch Linux filesystem permissions
-	pkgver = 1.1
+	pkgdesc = Fix broken filesystem permissions
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/droserasprout/pacman-fix-permissions
 	arch = any
 	license = GPL3
+	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/droserasprout/pacman-fix-permissions/archive/v1.1.tar.gz
-	md5sums = SKIP
+	depends = python-zstandard
+	source = https://github.com/droserasprout/pacman-fix-permissions/releases/download/v1.1.1/pacman-fix-permissions-1.1.1.tar.gz
+	sha256sums = 2a3eae130ab1450e6313696915114d315400cd6fd276b0c772626112d568f64b
 
 pkgname = pacman-fix-permissions
 

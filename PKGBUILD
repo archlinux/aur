@@ -1,15 +1,18 @@
+# Maintainer: Lev Gorodetskiy <aur@droserasprout.space>
 pkgname=pacman-fix-permissions
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
-pkgdesc="small Python script to fix broken Arch Linux filesystem permissions"
+pkgdesc="Fix broken filesystem permissions"
 arch=('any')
-url="https://github.com/droserasprout/$pkgname"
+url="https://github.com/droserasprout/${pkgname}"
 license=('GPL3')
-depends=('python')
-source=("https://github.com/droserasprout/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('SKIP')
+depends=('python' 'python-zstandard')
+source=("https://github.com/droserasprout/pacman-fix-permissions/releases/download/v$pkgver/pacman-fix-permissions-$pkgver.tar.gz")
+sha256sums=('2a3eae130ab1450e6313696915114d315400cd6fd276b0c772626112d568f64b')
+makedepends=('python-setuptools')
 
 package() {
-    install -D -m755 "$srcdir/$pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  cd ${pkgname}-${pkgver}
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
 
