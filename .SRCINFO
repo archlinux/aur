@@ -1,0 +1,17 @@
+pkgbase = man-pages-mk-git
+	pkgdesc = Macedonian man pages (Git version)
+	pkgver = r13110.c106340ae8
+	pkgrel = 1
+	url = https://salsa.debian.org/manpages-l10n-team/manpages-l10n
+	arch = any
+	license = GPL3
+	makedepends = po4a
+	makedepends = git
+	depends = man-db
+	conflicts = man-pages-mk
+	options = !emptydirs
+	source = manpages-l10n::git+https://salsa.debian.org/manpages-l10n-team/manpages-l10n.git
+	sha512sums = SKIP
+
+pkgname = man-pages-mk-git
+
