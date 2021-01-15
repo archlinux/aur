@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="8.0.343.0"
+pkgver="9.0.350.0"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -10,7 +10,7 @@ makedepends=('p7zip' 'icoutils' 'gendesk')
 optdepends=($(pacman -Ssq tesseract-data))
 url="https://www.tracker-software.com/product/pdf-xchange-editor"
 _downloadsource="https://www.tracker-software.com/downloads"
-_x64file="EditorV8.x64.msi"
+_x64file="EditorV9.x64.msi"
 _installdir="/usr/lib"
 _programname="PDF Editor"
 _commonfiles="Common Files/Tracker Software/Common"
@@ -20,7 +20,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=($_downloadsource/$_x64file)
-sha256sums=('2121f8d7c35ea3e1ac5a688a39e1033b262a8b78f7e6e2db31ee0e962b787c8a')
+md5sums=('b20adebd36ab0e85e9b737c9dbeb9e4a')
 
 prepare()
 {
@@ -43,7 +43,7 @@ package()
  mkdir -p "$pkgdir${_installdir}/$pkgname"
 
  install -Dm644 "$srcdir/FID_HelpStub" "$pkgdir${_installdir}/$pkgname/${_programname}/Help/PDFXVE8Sm.pdf"
- install -Dm644 "$srcdir/FID_EOCRLicense" "$pkgdir/usr/share/licenses/$pkgname/PDF_EOCR_Plugin.pdf"
+ install -Dm644 "$srcdir/FID_EOCRALicense" "$pkgdir${_installdir}/$pkgname/${_programname}/PDF_EOCR_PluginV9.pdf"
  install -Dm644 "$srcdir/FID_ViewerLicense" "$pkgdir/usr/share/licenses/$pkgname/PDF_VE.pdf"
  install -Dm644 "$srcdir/FID_ViewerDLL64" "$pkgdir${_installdir}/$pkgname/${_programname}/PDFXEditCore.x64.dll"
  install -Dm755 "$srcdir/FID_EditorEXE" "$pkgdir${_installdir}/$pkgname/${_programname}/PDFXEdit.exe"
@@ -54,7 +54,7 @@ package()
  install -Dm644 "$srcdir/FID_CSVtoPDF64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/CSVtoPDF.pvp"
  install -Dm644 "$srcdir/FID_DX43_64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/d3dx9_43.dll"
  install -Dm644 "$srcdir/FID_DB64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/DropBox.pvp"
- install -Dm644 "$srcdir/FID_EOCR64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/EnhancedOCR.pvp"
+ install -Dm644 "$srcdir/FID_EOCRA64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/EnhancedOCRa.pvp"
  install -Dm644 "$srcdir/FID_FileOpenSH64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/FileOpenSH.pvp"
  install -Dm644 "$srcdir/FID_KeybHook64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/FowpKbd64.dll"
  install -Dm644 "$srcdir/FID_GD64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/GoogleDrive.pvp"
@@ -131,6 +131,7 @@ package()
  install -Dm644 "$srcdir/FID_BOX_uk_UA" "$pkgdir${_installdir}/$pkgname/${_languages}/BoxFS.uk-UA.xcl"
  install -Dm644 "$srcdir/FID_BOX_zh_CN" "$pkgdir${_installdir}/$pkgname/${_languages}/BoxFS.zh-CN.xcl"
  install -Dm644 "$srcdir/FID_BOX_zh_TW" "$pkgdir${_installdir}/$pkgname/${_languages}/BoxFS.zh-TW.xcl"
+ install -Dm644 "$srcdir/FID_CC_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/ColorConvert.az-Latn-AZ.xcl"
  install -Dm644 "$srcdir/FID_CC_cs_CZ" "$pkgdir${_installdir}/$pkgname/${_languages}/ColorConvert.cs-CZ.xcl"
  install -Dm644 "$srcdir/FID_CC_de_DE" "$pkgdir${_installdir}/$pkgname/${_languages}/ColorConvert.de-DE.xcl"
  install -Dm644 "$srcdir/FID_CC_es_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/ColorConvert.es-ES.xcl"
@@ -164,8 +165,10 @@ package()
  install -Dm644 "$srcdir/FID_CSV_pl_PL" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.pl-PL.xcl"
  install -Dm644 "$srcdir/FID_CSV_pt_BR" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.pt-BR.xcl"
  install -Dm644 "$srcdir/FID_CSV_pt_PT" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.pt-PT.xcl"
+ install -Dm644 "$srcdir/FID_CSV_ru_RU" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.ru-RU.xcl"
  install -Dm644 "$srcdir/FID_CSV_sl_SI" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.sl-SI.xcl"
  install -Dm644 "$srcdir/FID_CSV_tr_TR" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.tr-TR.xcl"
+ install -Dm644 "$srcdir/FID_CSV_uk_UA" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.uk-UA.xcl"
  install -Dm644 "$srcdir/FID_CSV_zh_CN" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.zh-CN.xcl"
  install -Dm644 "$srcdir/FID_CSV_zh_TW" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.zh-TW.xcl"
  install -Dm644 "$srcdir/FID_DB_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/DropBox.az-Latn-AZ.xcl"
@@ -312,6 +315,7 @@ package()
  install -Dm644 "$srcdir/FID_OCR_uk_UA" "$pkgdir${_installdir}/$pkgname/${_languages}/OCRPlugin.uk-UA.xcl"
  install -Dm644 "$srcdir/FID_OCR_zh_CN" "$pkgdir${_installdir}/$pkgname/${_languages}/OCRPlugin.zh-CN.xcl"
  install -Dm644 "$srcdir/FID_OCR_zh_TW" "$pkgdir${_installdir}/$pkgname/${_languages}/OCRPlugin.zh-TW.xcl"
+ install -Dm644 "$srcdir/FID_OD_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/OneDrive.az-Latn-AZ.xcl"
  install -Dm644 "$srcdir/FID_OD_cs_CZ" "$pkgdir${_installdir}/$pkgname/${_languages}/OneDrive.cs-CZ.xcl"
  install -Dm644 "$srcdir/FID_OD_de_DE" "$pkgdir${_installdir}/$pkgname/${_languages}/OneDrive.de-DE.xcl"
  install -Dm644 "$srcdir/FID_OD_es_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/OneDrive.es-ES.xcl"
@@ -446,6 +450,7 @@ package()
  install -Dm644 "$srcdir/FID_ROL_uk_UA" "$pkgdir${_installdir}/$pkgname/${_languages}/ReadOutLoud.uk-UA.xcl"
  install -Dm644 "$srcdir/FID_ROL_zh_CN" "$pkgdir${_installdir}/$pkgname/${_languages}/ReadOutLoud.zh-CN.xcl"
  install -Dm644 "$srcdir/FID_ROL_zh_TW" "$pkgdir${_installdir}/$pkgname/${_languages}/ReadOutLoud.zh-TW.xcl"
+ install -Dm644 "$srcdir/FID_SAN_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/Sanitize.az-Latn-AZ.xcl"
  install -Dm644 "$srcdir/FID_SAN_cs_CZ" "$pkgdir${_installdir}/$pkgname/${_languages}/Sanitize.cs-CZ.xcl"
  install -Dm644 "$srcdir/FID_SAN_de_DE" "$pkgdir${_installdir}/$pkgname/${_languages}/Sanitize.de-DE.xcl"
  install -Dm644 "$srcdir/FID_SAN_es_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/Sanitize.es-ES.xcl"
@@ -554,6 +559,7 @@ package()
  install -Dm644 "$srcdir/FID_EDT_uk_UA" "$pkgdir${_installdir}/$pkgname/${_languages}/Strings.uk-UA.xcl"
  install -Dm644 "$srcdir/FID_EDT_zh_CN" "$pkgdir${_installdir}/$pkgname/${_languages}/Strings.zh-CN.xcl"
  install -Dm644 "$srcdir/FID_EDT_zh_TW" "$pkgdir${_installdir}/$pkgname/${_languages}/Strings.zh-TW.xcl"
+ install -Dm644 "$srcdir/FID_U3D_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.az-Latn-AZ.xcl"
  install -Dm644 "$srcdir/FID_U3D_cs_CZ" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.cs-CZ.xcl"
  install -Dm644 "$srcdir/FID_U3D_de_DE" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.de-DE.xcl"
  install -Dm644 "$srcdir/FID_U3D_es_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.es-ES.xcl"
