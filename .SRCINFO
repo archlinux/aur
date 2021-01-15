@@ -1,0 +1,15 @@
+pkgbase = ruby-necromancer-0.4
+	pkgdesc = Conversion from one object type to another with a bit of black magic.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/piotrmurach/necromancer
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = necromancer-0.4.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/necromancer-0.4.0.gem
+	sha1sums = d7a7ff75a2a2b31f0208e16b39a279321e5f8229
+
+pkgname = ruby-necromancer-0.4
+
