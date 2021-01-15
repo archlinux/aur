@@ -6,7 +6,7 @@
 
 pkgbase=tomb
 pkgname=(tomb tomb-kdf)
-pkgver=2.8.1
+pkgver=2.9
 pkgrel=1
 pkgdesc="Crypto Undertaker, a simple tool to manage encrypted storage"
 arch=('i686' 'x86_64')
@@ -21,8 +21,8 @@ source=(
         )
 
 # The first hash comes from the .sha file
-sha256sums=('74865ea3364706323a3ebe12886d5816dd86c90a100bc3b49fae6e60cbb7be16'
-            '216fa9f5203fca5296d756d1c83ca7e3c57f3e38c0c4ed16ccabc956107137a5'
+sha256sums=('b3a23c6680815f7557a3c4bd73d2b2dbde870a62357fcbf9b33089afae75d68c'
+            '4f57af24b3b39ae1774ac0bca5af5dacf26465bbd55dc954001069fecce5f2a2'
             'SKIP')
 
 # The public key is found at https://keybase.io/jaromil
