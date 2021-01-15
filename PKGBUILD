@@ -8,11 +8,6 @@ license=('custom:OFL')
 arch=(any)
 makedepends=('git')
 
-pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 build() {
   rm -rf "$srcdir/sanskrit-fonts/"
   git clone https://github.com/sanskrit-coders/sanskrit-fonts.git
