@@ -1,11 +1,10 @@
 pkgname=brother-dcp-l2550dw
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="LPR and CUPS driver for the Brother DCP-L2550DW printer"
 arch=("i686" "x86_64")
 url="https://support.brother.com/g/b/downloadhowto.aspx?c=ca&lang=en&prod=dcpl2550dw_us&os=127&dlid=dlf103576_000&flang=4&type3=10282"
 license=("EULA")
-groups=("base-devel")
 source=("https://download.brother.com/welcome/dlf103576/dcpl2550dwpdrv-4.0.0-1.i386.rpm")
 md5sums=('92279e64ec1e40714bb707ab9aab2600')
 
