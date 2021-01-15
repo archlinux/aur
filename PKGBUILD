@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/Shizmob/rpatool"
 license=('custom:WTFPL')
 
-depends=('python3')
+depends=('python')
 makedepends=('git')
 
 source=('git://github.com/Shizmob/rpatool.git')
