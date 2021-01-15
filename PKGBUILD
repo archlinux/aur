@@ -1,16 +1,16 @@
-pkgname=youtube-git
-_pkgname=Youtube-git
-pkgver=1.0.4
-pkgrel=1
-pkgdesc="Unnofficial Youtube desktop application"
+pkgname=twitch-git
+_pkgname=Twitch-git
+pkgver=1.0.2
+pkgrel=5
+pkgdesc="Unofficial Twitch desktop application."
 arch=('any')
-url="https://gitlab.com/youtube-desktop/application"
+url="https://gitlab.com/twitch-application/application"
 license=('GPL')
 depends=('nss' 'gtk3' 'libxss')
 makedepends=('npm' 'git' 'unzip')
 provides=("${pkgname%}")
-conflicts=("youtube-bin")
-source=(git+https://gitlab.com/youtube-desktop/application.git)
+conflicts=("${pkgname%}")
+source=('git+https://gitlab.com/twitch-application/application.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,21 +22,21 @@ build() {
     cd "$srcdir/application"
     npm --cache "$srcdir/npm-cache" i electron@11.0.4 electron-packager
     ./node_modules/.bin/electron-packager .
-    for dir in Youtube-linux-*/ ; do mv "${dir}" "Youtube" ;done
-    rm -rf "$srcdir/application/Youtube/resources/app/node_modules"
+    for dir in Twitch-linux-*/ ; do mv "${dir}" "Twitch" ;done
+    rm -rf "$srcdir/application/Twitch/resources/app/node_modules"
 }
 
 package() {
-    cd "$srcdir/application/Youtube"
-    install -dm755 "$pkgdir/opt/Youtube"
-    cp -r ./ "$pkgdir/opt/Youtube"
+    cd "$srcdir/application/Twitch"
+    install -dm755 "$pkgdir/opt/Twitch"
+    cp -r ./ "$pkgdir/opt/Twitch"
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/$_pkgname/Youtube" "$pkgdir/usr/bin/Youtube"
+    ln -s "/opt/$_pkgname/Twitch" "$pkgdir/usr/bin/Twitch"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/application/Youtube.desktop" \
-        "$pkgdir/usr/share/applications/Youtube.desktop"
-    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/Youtube.desktop"
+    install -Dm644 "$srcdir/application/Twitch.desktop" \
+        "$pkgdir/usr/share/applications/Twitch.desktop"
+    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/Twitch.desktop"
 }
