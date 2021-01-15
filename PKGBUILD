@@ -3,7 +3,7 @@
 
 _pkgname=nextcloud
 pkgname=${_pkgname}-client-appimage-daily
-pkgver=3.1.50.20201215
+pkgver=3.1.50.20210115
 pkgrel=2
 epoch=1
 pkgdesc="Nextcloud desktop client (official daily AppImage build)"
