@@ -1,6 +1,6 @@
 pkgbase = cagebreak-bin
 	pkgdesc = Tiling wayland compositor based on cage inspired by ratpoison
-	pkgver = 1.4.4
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/project-repo/cagebreak
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = cagebreak-bin
 	conflicts = cagebreak
 	options = !buildflags
 	options = !strip
-	source = cagebreak-bin-1.4.4.tar.gz::https://github.com/project-repo/cagebreak-pkgbuild/releases/download/1.4.4/release_bin_1.4.4.tar.gz
-	sha512sums = 7cf37f9c097f559131f1c9c7295f4c0c6977f03bc116c02f43d1371e7c54d9904b92dd4001bd7cbf5880fcc5dd4e235f37e651b89bab6d6bf3e0b69e63d0effa
+	source = cagebreak-bin-1.5.0.tar.gz::https://github.com/project-repo/cagebreak-pkgbuild/releases/download/1.5.0/release_bin_1.5.0.tar.gz
+	sha512sums = 39e5a47337b4c80296ab61b0fc7163020ae4364253eabcf86b96fa174084e82a1ff7dd6f62fec5c57e2ae51384eb00dbc3c2eb89d5b7e60f145fbd298ef7e7a0
 
 pkgname = cagebreak-bin
 
