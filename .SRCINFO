@@ -1,0 +1,19 @@
+pkgbase = ruby-tty-prompt-0.12
+	pkgdesc = A beautiful and powerful interactive command line prompt.
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://piotrmurach.github.io/tty
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-necromancer-0.4
+	depends = ruby-pastel-0.7.2
+	depends = ruby-tty-cursor-0.4
+	depends = ruby-wisper-1
+	noextract = tty-prompt-0.12.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/tty-prompt-0.12.0.gem
+	sha1sums = 5a736835d65619108ebc20e27f9d5ba55cbea84a
+
+pkgname = ruby-tty-prompt-0.12
+
