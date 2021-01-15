@@ -7,13 +7,13 @@
 pkgbase=arc-gtk-theme-git
 _pkgname=arc-theme
 pkgname=('arc-gtk-theme-git' 'arc-solid-gtk-theme-git')
-pkgver=20200819.r58.g0c53316
+pkgver=20201013.r15.g1c41d1b
 pkgrel=1
 pkgdesc="A flat theme suite with transparent elements."
 arch=('any')
 url="https://github.com/jnsh/arc-theme"
 license=('GPL3')
-makedepends=('sassc' 'inkscape' 'optipng' 'git')
+makedepends=('meson' 'sassc' 'inkscape' 'git')
 optdepends=('gtk-engine-murrine: GTK2 support'
             'gnome-themes-extra: GTK2 support')
 source=("${_pkgname}::git+https://github.com/jnsh/${_pkgname}.git")
@@ -31,35 +31,32 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
-  ./autogen.sh --prefix=/usr \
-    --with-cinnamon="${_cinnamonver}" \
-    --with-gnome-shell="${_gnomeshellver}" \
-    --with-gtk3="${_gtk3ver}"
-  make
 
-  cd "${srcdir}"
-  cp -a "${_pkgname}"{,-solid}
+  meson --prefix=/usr build \
+    -Dcinnamon_version="${_cinnamonver}" \
+    -Dgnome_shell_version="${_gnomeshellver}" \
+    -Dgtk3_version="${_gtk3ver}"
+  meson compile -C build
 
-  cd "${_pkgname}-solid"
-  ./autogen.sh --prefix=/usr \
-    --with-cinnamon="${_cinnamonver}" \
-    --with-gnome-shell="${_gnomeshellver}" \
-    --with-gtk3="${_gtk3ver}" \
-    --disable-transparency
-  make
+  meson --prefix=/usr build-solid \
+    -Dtransparency=false \
+    -Dcinnamon_version="${_cinnamonver}" \
+    -Dgnome_shell_version="${_gnomeshellver}" \
+    -Dgtk3_version="${_gtk3ver}"
+  meson compile -C build-solid
 }
 
 package_arc-gtk-theme-git() {
   conflicts=('arc-gtk-theme')
 
   cd "${_pkgname}"
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" meson install -C build
 }
 
 package_arc-solid-gtk-theme-git() {
   pkgdesc="A flat theme suite without transparent elements."
   conflicts=('arc-solid-gtk-theme')
 
-  cd "${_pkgname}-solid"
-  make DESTDIR="$pkgdir/" install
+  cd "${_pkgname}"
+  DESTDIR="$pkgdir" meson install -C build-solid
 }
