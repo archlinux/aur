@@ -29,6 +29,7 @@ check() {
 
 package() {
     cd "$pkgname-$pkgver"
-    install -Dm755 "target/release/starship" "$pkgdir/usr/bin/$pkgname"
+    targetdir=${CARGO_TARGET_DIR:-target}
+    install -Dm755 "$targetdir/release/starship" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
