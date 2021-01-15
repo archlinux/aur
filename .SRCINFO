@@ -3,7 +3,7 @@
 pkgbase = libusrsctp-git
 	pkgdesc = A portable SCTP userland stack
 	pkgver = 0.9.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sctplab/usrsctp
 	arch = i686
 	arch = x86_64
