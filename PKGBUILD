@@ -24,6 +24,8 @@ _opt_features=(
   # dependencies the first time you build. If you have the dependencies
   # installed, subsequent builds will pick them up automatically.
 
+  #javascript
+
   #x11
   #wayland
 
@@ -45,7 +47,7 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.32.0_779_gcbbdb3fae4
+pkgver=0.33.0_61_gdae9ea3fa7
 pkgrel=1
 _waf_version=2.0.20
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
@@ -79,26 +81,29 @@ for feature in "${_opt_features[@]}"; do
       depends+=('libcdio-paranoia')
       _opt_extra_flags+=('--enable-cdda')
       ;;
-    sdl2|openal)
-      depends+=("$feature")
-      _opt_extra_flags+=("--enable-$feature")
-      ;;
     lua)
       depends+=('lua52')
-      _opt_extra_flags+=('--lua=52arch')
+      _opt_extra_flags+=('--enable-lua' '--lua=52arch')
       ;;
     luajit)
       depends+=('luajit')
-      _opt_extra_flags+=('--lua=luajit')
+      _opt_extra_flags+=('--enable-lua' '--lua=luajit')
+      ;;
+    javascript)
+      depends+=('mujs')
+      _opt_extra_flags+=('--enable-javascript')
       ;;
     x11)
       depends+=('libxinerama' 'libxrandr' 'libxss')
+      _opt_extra_flags+=('--enable-x11')
       ;;
     wayland)
       depends+=('wayland' 'libxkbcommon')
+      _opt_extra_flags+=('--enable-wayland')
       ;;
-    uchardet|rubberband)
+    sdl2|openal|uchardet|rubberband)
       depends+=("$feature")
+      _opt_extra_flags+=("--enable-$feature")
       ;;
     dvbin)
       _opt_extra_flags+=("--enable-$feature")
