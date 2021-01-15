@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A high degree of freedom embedded debugging tool with plugins support."
 arch=('x86_64')
 url="https://www.vofa.plus/"
-license=('LGPL')
+license=('unknown')
 provides=("${_pkgname}")
 options=('!strip')
 source=("${pkgname}-${pkgver}.pkg.tar.zst::https://gutega.gitee.io/vofa_plus_res/downloads/${pkgname}-${pkgver}-1-${CARCH}.pkg.tar.zst")
@@ -17,7 +17,7 @@ package() {
   cd ${srcdir}/opt/${pkgname}/
 
   # fix the wrong permission of the files
-   
+
   # doc
   find doc/ -type f -exec install -Dm 644 {} ${pkgdir}/opt/${pkgname}/{} \;
 
