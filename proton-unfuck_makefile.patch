@@ -1,5 +1,5 @@
 diff --git a/build/makefile_base.mak b/build/makefile_base.mak
-index 6acce47..22aeab4 100644
+index 8d2554b..e7e1f81 100644
 --- a/build/makefile_base.mak
 +++ b/build/makefile_base.mak
 @@ -68,7 +68,7 @@ endif
@@ -31,7 +31,7 @@ index 6acce47..22aeab4 100644
  SANITY_FLAGS   := -fwrapv -fno-strict-aliasing
  COMMON_FLAGS   := $(OPTIMIZE_FLAGS) $(SANITY_FLAGS)
  CARGO_BUILD_ARG := --release
-@@ -254,9 +255,11 @@ WINE_OUT_SERVER := $(DST_DIR)/bin/wineserver
+@@ -263,9 +264,11 @@ WINE_OUT_SERVER := $(DST_DIR)/bin/wineserver
  WINE_OUT := $(WINE_OUT_BIN) $(WINE_OUT_SERVER)
  # Tool-only build outputs needed for other projects
  WINEGCC32 := $(TOOLS_DIR32)/bin/winegcc
@@ -43,7 +43,7 @@ index 6acce47..22aeab4 100644
  WINEBUILD64 := $(TOOLS_DIR64)/bin/winebuild
  WINE_BUILDTOOLS64 := $(WINEGCC64) $(WINEBUILD64)
  
-@@ -335,7 +338,7 @@ downloads: $(SHARED_GECKO64_TARBALL) $(SHARED_GECKO32_TARBALL) $(SHARED_MONO_TAR
+@@ -346,7 +349,7 @@ downloads: $(SHARED_GECKO64_TARBALL) $(SHARED_GECKO32_TARBALL) $(SHARED_MONO_TAR
  $(DST_DIR):
  	mkdir -p $@
  
@@ -52,8 +52,8 @@ index 6acce47..22aeab4 100644
  
  FILELOCK_TARGET := $(addprefix $(DST_BASE)/,filelock.py)
  $(FILELOCK_TARGET): $(addprefix $(SRCDIR)/,filelock.py)
-@@ -368,9 +371,17 @@ DIST_WINEMONO := $(DIST_WINEMONO_DIR)/wine-mono-$(WINEMONO_VER)
- DIST_FONTS := $(DST_DIR)/share/fonts
+@@ -381,9 +384,17 @@ DIST_WINEOPENXR_JSON64 := $(DIST_PREFIX)/drive_c/openxr/wineopenxr64.json
+ DIST_WINEOPENXR64 := $(DIST_PREFIX)/drive_c/windows/system32/wineopenxr.dll
  
  DIST_TARGETS := $(DIST_COPY_TARGETS) $(DIST_OVR32) $(DIST_OVR64) \
 -                $(DIST_GECKO32) $(DIST_GECKO64) $(DIST_WINEMONO) \
@@ -71,10 +71,10 @@ index 6acce47..22aeab4 100644
  DEPLOY_COPY_TARGETS := $(DIST_COPY_TARGETS) $(DIST_VERSION) $(DIST_LICENSE) $(DIST_TOOLMANIFEST) $(DIST_OFL_LICENSE)
  REDIST_COPY_TARGETS := $(DEPLOY_COPY_TARGETS) $(DIST_COMPAT_MANIFEST)
  
-@@ -452,8 +463,8 @@ GOAL_TARGETS += dist
- dist: $(DIST_TARGETS) wine gst_good vrclient lsteamclient steam dxvk vkd3d-proton mediaconv | $(DST_DIR)
- 	echo `date '+%s'` `GIT_DIR=$(abspath $(SRCDIR)/.git) git describe --tags` > $(DIST_VERSION)
- 	cp $(DIST_VERSION) $(DST_BASE)/
+@@ -471,8 +482,8 @@ ALL_TARGETS += dist
+ GOAL_TARGETS += dist
+ 
+ dist_prefix: wine gst_good
 -	find $(DST_DIR)/lib/wine -type f -execdir chmod a-w '{}' '+'
 -	find $(DST_DIR)/lib64/wine -type f -execdir chmod a-w '{}' '+'
 +	find $(DST_DIR)/lib/wine -type f -execdir chmod go-w '{}' '+'
@@ -82,7 +82,7 @@ index 6acce47..22aeab4 100644
  	rm -rf $(abspath $(DIST_PREFIX))
  	python3 $(SRCDIR)/default_pfx.py $(abspath $(DIST_PREFIX)) $(abspath $(DST_DIR)) $(STEAM_RUNTIME_RUNSH)
  
-@@ -489,6 +500,8 @@ module64:
+@@ -514,6 +525,8 @@ module64:
  module: module32 module64
  
  GST_COMMON_MESON_ARGS := \
@@ -91,7 +91,7 @@ index 6acce47..22aeab4 100644
  	-Dexamples=disabled \
  	-Dtests=disabled \
  	-Dgtk_doc=disabled \
-@@ -556,14 +569,14 @@ gst_orc64: SHELL = $(CONTAINER_SHELL64)
+@@ -581,14 +594,14 @@ gst_orc64: SHELL = $(CONTAINER_SHELL64)
  gst_orc64: $(GST_ORC_CONFIGURE_FILES64)
  	PATH="$(abspath $(TOOLS_DIR64))/bin:$(PATH)" \
  	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR64))/lib:$(LD_LIBRARY_PATH)" \
@@ -108,7 +108,7 @@ index 6acce47..22aeab4 100644
  	cp -a $(TOOLS_DIR32)/lib/liborc* $(DST_DIR)/lib/
  
  ##
-@@ -575,6 +588,9 @@ GSTREAMER_MESON_ARGS := \
+@@ -600,6 +613,9 @@ GSTREAMER_MESON_ARGS := \
  	-Dbenchmarks=disabled \
  	-Dtools=disabled \
  	-Dbash-completion=disabled \
@@ -118,7 +118,7 @@ index 6acce47..22aeab4 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GSTREAMER_CONFIGURE_FILES32 := $(GSTREAMER_OBJ32)/build.ninja
-@@ -625,7 +641,7 @@ gstreamer64: SHELL = $(CONTAINER_SHELL64)
+@@ -650,7 +666,7 @@ gstreamer64: SHELL = $(CONTAINER_SHELL64)
  gstreamer64: $(GSTREAMER_CONFIGURE_FILES64)
  	PATH="$(abspath $(TOOLS_DIR64))/bin:$(PATH)" \
  	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR64))/lib:$(LD_LIBRARY_PATH)" \
@@ -127,7 +127,7 @@ index 6acce47..22aeab4 100644
  	cp -a $(TOOLS_DIR64)/lib/libgst* $(DST_DIR)/lib64/ && \
  	cp -a $(TOOLS_DIR64)/lib/gstreamer-1.0 $(DST_DIR)/lib64/
  
-@@ -633,7 +649,7 @@ gstreamer32: SHELL = $(CONTAINER_SHELL32)
+@@ -658,7 +674,7 @@ gstreamer32: SHELL = $(CONTAINER_SHELL32)
  gstreamer32: $(GSTREAMER_CONFIGURE_FILES32)
  	PATH="$(abspath $(TOOLS_DIR32))/bin:$(PATH)" \
  	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR32))/lib:$(LD_LIBRARY_PATH)" \
@@ -136,7 +136,7 @@ index 6acce47..22aeab4 100644
  	cp -a $(TOOLS_DIR32)/lib/libgst* $(DST_DIR)/lib/ && \
  	cp -a $(TOOLS_DIR32)/lib/gstreamer-1.0 $(DST_DIR)/lib/
  
-@@ -667,6 +683,7 @@ GST_BASE_MESON_ARGS := \
+@@ -692,6 +708,7 @@ GST_BASE_MESON_ARGS := \
  	-Dxshm=disabled \
  	-Dxvideo=disabled \
  	-Dtools=disabled \
@@ -144,7 +144,7 @@ index 6acce47..22aeab4 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GST_BASE_CONFIGURE_FILES32 := $(GST_BASE_OBJ32)/build.ninja
-@@ -717,7 +734,7 @@ gst_base64: SHELL = $(CONTAINER_SHELL64)
+@@ -742,7 +759,7 @@ gst_base64: SHELL = $(CONTAINER_SHELL64)
  gst_base64: $(GST_BASE_CONFIGURE_FILES64)
  	PATH="$(abspath $(TOOLS_DIR64))/bin:$(PATH)" \
  	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR64))/lib:$(LD_LIBRARY_PATH)" \
@@ -153,7 +153,7 @@ index 6acce47..22aeab4 100644
  	cp -a $(TOOLS_DIR64)/lib/libgst* $(DST_DIR)/lib64/ && \
  	cp -a $(TOOLS_DIR64)/lib/gstreamer-1.0 $(DST_DIR)/lib64/
  
-@@ -725,7 +742,7 @@ gst_base32: SHELL = $(CONTAINER_SHELL32)
+@@ -750,7 +767,7 @@ gst_base32: SHELL = $(CONTAINER_SHELL32)
  gst_base32: $(GST_BASE_CONFIGURE_FILES32)
  	PATH="$(abspath $(TOOLS_DIR32))/bin:$(PATH)" \
  	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR32))/lib:$(LD_LIBRARY_PATH)" \
@@ -162,7 +162,7 @@ index 6acce47..22aeab4 100644
  	cp -a $(TOOLS_DIR32)/lib/libgst* $(DST_DIR)/lib/ && \
  	cp -a $(TOOLS_DIR32)/lib/gstreamer-1.0 $(DST_DIR)/lib/
  
-@@ -783,6 +800,7 @@ GST_GOOD_MESON_ARGS := \
+@@ -808,6 +825,7 @@ GST_GOOD_MESON_ARGS := \
  	-Dximagesrc=disabled \
  	-Dy4m=disabled \
  	-Dtools=disabled \
@@ -170,7 +170,7 @@ index 6acce47..22aeab4 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GST_GOOD_CONFIGURE_FILES32 := $(GST_GOOD_OBJ32)/build.ninja
-@@ -833,7 +851,7 @@ gst_good64: SHELL = $(CONTAINER_SHELL64)
+@@ -858,7 +876,7 @@ gst_good64: SHELL = $(CONTAINER_SHELL64)
  gst_good64: $(GST_GOOD_CONFIGURE_FILES64)
  	PATH="$(abspath $(TOOLS_DIR64))/bin:$(PATH)" \
  	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR64))/lib:$(LD_LIBRARY_PATH)" \
@@ -179,7 +179,7 @@ index 6acce47..22aeab4 100644
  	cp -a $(TOOLS_DIR64)/lib/libgst* $(DST_DIR)/lib64/ && \
  	cp -a $(TOOLS_DIR64)/lib/gstreamer-1.0 $(DST_DIR)/lib64/
  
-@@ -841,7 +859,7 @@ gst_good32: SHELL = $(CONTAINER_SHELL32)
+@@ -866,7 +884,7 @@ gst_good32: SHELL = $(CONTAINER_SHELL32)
  gst_good32: $(GST_GOOD_CONFIGURE_FILES32)
  	PATH="$(abspath $(TOOLS_DIR32))/bin:$(PATH)" \
  	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR32))/lib:$(LD_LIBRARY_PATH)" \
@@ -188,7 +188,7 @@ index 6acce47..22aeab4 100644
  	cp -a $(TOOLS_DIR32)/lib/libgst* $(DST_DIR)/lib/ && \
  	cp -a $(TOOLS_DIR32)/lib/gstreamer-1.0 $(DST_DIR)/lib/
  
-@@ -871,6 +889,7 @@ $(FAUDIO_CONFIGURE_FILES32): $(FAUDIO)/CMakeLists.txt $(MAKEFILE_DEP) gst_base32
+@@ -896,6 +914,7 @@ $(FAUDIO_CONFIGURE_FILES32): $(FAUDIO)/CMakeLists.txt $(MAKEFILE_DEP) gst_base32
  		CC="$(CC32)" \
  		CXX="$(CXX32)" \
  		PKG_CONFIG="$(PKG_CONFIG32)" \
@@ -196,7 +196,7 @@ index 6acce47..22aeab4 100644
  		cmake $(abspath $(FAUDIO)) \
  			-DCMAKE_INSTALL_PREFIX="$(abspath $(TOOLS_DIR32))" \
  			$(FAUDIO_CMAKE_FLAGS)
-@@ -1132,7 +1151,13 @@ $(WINE_CONFIGURE_FILES64): SHELL = $(CONTAINER_SHELL64)
+@@ -1255,7 +1274,13 @@ $(WINE_CONFIGURE_FILES64): SHELL = $(CONTAINER_SHELL64)
  $(WINE_CONFIGURE_FILES64): $(MAKEFILE_DEP) | faudio64 jxrlib64 gst_base64 $(WINE_OBJ64)
  	cd $(dir $@) && \
  		../$(WINE)/configure \
@@ -210,7 +210,7 @@ index 6acce47..22aeab4 100644
  			--enable-win64 \
  			--disable-tests \
  			--prefix=$(abspath $(DST_DIR)) \
-@@ -1152,7 +1177,13 @@ $(WINE_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
+@@ -1275,7 +1300,13 @@ $(WINE_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
  $(WINE_CONFIGURE_FILES32): $(MAKEFILE_DEP) | faudio32 jxrlib32 gst_base32 $(WINE_OBJ32)
  	cd $(dir $@) && \
  		../$(WINE)/configure \
@@ -224,7 +224,7 @@ index 6acce47..22aeab4 100644
  			--disable-tests \
  			--prefix=$(abspath $(WINE_DST32)) \
  			LD_LIBRARY_PATH=$(abspath $(TOOLS_DIR32))/lib \
-@@ -1356,7 +1387,7 @@ dxvk_configure32: $(DXVK_CONFIGURE_FILES32)
+@@ -1479,7 +1510,7 @@ dxvk_configure32: $(DXVK_CONFIGURE_FILES32)
  dxvk: dxvk32 dxvk64
  
  dxvk64: $(DXVK_CONFIGURE_FILES64)
@@ -233,7 +233,7 @@ index 6acce47..22aeab4 100644
  	mkdir -p "$(DST_DIR)/lib64/wine/dxvk"
  	cp -f "$(DXVK_OBJ64)"/bin/dxgi.dll "$(DST_DIR)"/lib64/wine/dxvk
  	cp -f "$(DXVK_OBJ64)"/bin/d3d11.dll "$(DST_DIR)"/lib64/wine/dxvk
-@@ -1369,7 +1400,7 @@ dxvk64: $(DXVK_CONFIGURE_FILES64)
+@@ -1492,7 +1523,7 @@ dxvk64: $(DXVK_CONFIGURE_FILES64)
  
  
  dxvk32: $(DXVK_CONFIGURE_FILES32)
@@ -242,7 +242,7 @@ index 6acce47..22aeab4 100644
  	mkdir -p "$(DST_DIR)"/lib/wine/dxvk
  	cp -f "$(DXVK_OBJ32)"/bin/dxgi.dll "$(DST_DIR)"/lib/wine/dxvk/
  	cp -f "$(DXVK_OBJ32)"/bin/d3d11.dll "$(DST_DIR)"/lib/wine/dxvk/
-@@ -1399,7 +1430,7 @@ $(VKD3D_CONFIGURE_FILES32): $(VKD3D)/meson.build $(VKD3D)/build-win32.txt | $(VK
+@@ -1522,7 +1553,7 @@ $(VKD3D_CONFIGURE_FILES32): $(VKD3D)/meson.build $(VKD3D)/build-win32.txt | $(VK
  
  vkd3d32: SHELL = $(CONTAINER_SHELL32)
  vkd3d32: $(VKD3D_CONFIGURE_FILES32)
@@ -251,7 +251,7 @@ index 6acce47..22aeab4 100644
  	mkdir -p "$(DST_DIR)"/lib/wine/vkd3d-proton
  	cp -af "$(VKD3D_OBJ32)/bin/d3d12.dll" "$(DST_DIR)"/lib/wine/vkd3d-proton/
  	rm -f "$(DST_DIR)"/lib/wine/vkd3d-proton/version && if test -e $(SRCDIR)/.git; then ( cd $(SRCDIR) && git submodule status -- vkd3d-proton ) > "$(DST_DIR)"/lib/wine/vkd3d-proton/version; fi
-@@ -1416,7 +1447,7 @@ $(VKD3D_CONFIGURE_FILES64): $(VKD3D)/meson.build $(VKD3D)/build-win64.txt | $(VK
+@@ -1539,7 +1570,7 @@ $(VKD3D_CONFIGURE_FILES64): $(VKD3D)/meson.build $(VKD3D)/build-win64.txt | $(VK
  
  vkd3d64: SHELL = $(CONTAINER_SHELL64)
  vkd3d64: $(VKD3D_CONFIGURE_FILES64)
