@@ -1,6 +1,6 @@
 pkgbase = instamenu-extra
 	pkgdesc = addons for instamenu
-	pkgver = 2021.01.10
+	pkgver = 2021.01.15
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/instamenu-extra
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = instamenu-extra
 	depends = instamenu
 	depends = instamenu-schemas
 	provides = instamenu-extra
-	source = instamenu-extra-2021.01.10.tar.gz::https://github.com/TheCynicalTeam/instamenu-extra/archive/2021.01.10.tar.gz
-	sha256sums = 674ac027c70213c5242ab779257c9545aeb91f5d65d1ef1ade4c357b6ad3dbb7
+	source = instamenu-extra-2021.01.15.tar.gz::https://github.com/TheCynicalTeam/instamenu-extra/archive/2021.01.15.tar.gz
+	sha256sums = 4ab5d985f888ef7bc8a226df4846e0a821a5e04738631b05448b5219c72f30a4
 
 pkgname = instamenu-extra
 
