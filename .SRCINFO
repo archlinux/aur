@@ -1,7 +1,7 @@
 pkgbase = purple-matrix-git
 	pkgdesc = Libpurple protocol plugin for matrix.
 	pkgver = r207.1d23385
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/matrix-org/purple-matrix
 	arch = any
 	license = GPL2
@@ -10,7 +10,7 @@ pkgbase = purple-matrix-git
 	depends = http-parser
 	depends = glib2
 	depends = json-glib
-	optdepends = libolm-git: encryption support
+	optdepends = libolm: encryption support
 	optdepends = libgcrypt: encryption support
 	provides = purple-matrix
 	conflicts = purple-matrix
