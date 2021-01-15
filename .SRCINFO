@@ -6,8 +6,10 @@ pkgbase = waybar-mpris-git
 	arch = any
 	license = unknown
 	makedepends = go
+	makedepends = git
 	depends = glibc
 	source = git+https://git.hrfee.pw/hrfee/waybar-mpris
 	md5sums = SKIP
 
 pkgname = waybar-mpris-git
+
