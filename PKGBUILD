@@ -5,13 +5,18 @@ pkgname=(
   kata-proxy-git
   kata-shim-git
 )
-pkgver=1.12.0~rc0~runtime.r14.c54378d7
+pkgver=1.13.0~alpha0~runtime.r0.cd63aacc
 pkgrel=1
 pkgdesc="Lightweight virtual machines for containers (Git version)"
 arch=('x86_64')
 url="https://katacontainers.io/"
 license=('Apache')
-makedepends=('go' 'yq2-bin' 'bc' 'git')
+makedepends=(
+  'go'
+  #'yq2-bin'
+  'bc'
+  'git'
+)
 _gh_org="github.com/kata-containers"
 source=(
   "ksm-throttler::git+https://${_gh_org}/ksm-throttler"
@@ -33,8 +38,8 @@ pkgver(){
 
 prepare(){
   # kata-runtime makedep
-  mkdir -p "${srcdir}/bin"
-  ln -sf "$(type -p yq)" "${srcdir}/bin/yq"
+  #mkdir -p "${srcdir}/bin"
+  #ln -sf "$(command -v yq)" "${srcdir}/bin/yq"
 
   mkdir -p "${srcdir}/src/${_gh_org}"
   for i in ksm-throttler proxy runtime shim; do

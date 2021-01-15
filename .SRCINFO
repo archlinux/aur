@@ -1,12 +1,11 @@
 pkgbase = kata-containers-git
 	pkgdesc = Lightweight virtual machines for containers (Git version)
-	pkgver = 1.12.0~rc0~runtime.r14.c54378d7
+	pkgver = 1.13.0~alpha0~runtime.r0.cd63aacc
 	pkgrel = 1
 	url = https://katacontainers.io/
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	makedepends = yq2-bin
 	makedepends = bc
 	makedepends = git
 	source = ksm-throttler::git+https://github.com/kata-containers/ksm-throttler
