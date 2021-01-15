@@ -1,8 +1,10 @@
 # Maintainer: skydrome -at- protonmail
 
 pkgname=scrcpy-git
-pkgver=1.16.r4.g0be766e
-_pkgver=${pkgver%.r*}
+pkgver=1.17.r3.ged130e0
+# Get latest tagged version
+_pkgver="$(curl -ILs -o /dev/null -w %{url_effective} "https://github.com/Genymobile/scrcpy/releases/latest")"
+_pkgver="${_pkgver##*/}"
 pkgrel=1
 pkgdesc='Display and control your Android device (development version)'
 arch=('i686' 'x86_64')
@@ -16,7 +18,7 @@ conflicts=("scrcpy")
 noextract=("scrcpy-server"*)
 
 source=("git+$url.git"
-        "$url/releases/download/v$_pkgver/scrcpy-server-v$_pkgver")
+        "$url/releases/download/$_pkgver/scrcpy-server-$_pkgver")
 sha256sums=('SKIP'
             'SKIP')
 
@@ -30,7 +32,7 @@ build() {
     rm -rf build
 
     arch-meson \
-        -D prebuilt_server="${srcdir}/scrcpy-server-v${_pkgver}" \
+        -D prebuilt_server="${srcdir}/scrcpy-server-${_pkgver}" \
         build
 
     ninja -C build
