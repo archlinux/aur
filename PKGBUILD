@@ -1,7 +1,6 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=kicad-packages3d-git
-_gitlab_repo=kicad/libraries/kicad-packages3D
 pkgver=5.1.6.r26.gd8b7e8c5
 pkgrel=1
 pkgdesc="KiCad component 3D model libraries from the official git repo"
