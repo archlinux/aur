@@ -1,12 +1,12 @@
 pkgname=tunl
-pkgver=0.22.0
+pkgver=0.22.1
 pkgrel=1
 pkgdesc='Expose your localhost to the public'
 arch=('x86_64')
 url="https://github.com/pjvds/tunl"
 makedepends=()
 source=("$url/releases/download/$pkgver/tunl_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums=('9f4f845b0e7adebc2273a0fef1910f465e6ccd0b9fcbeb57e779ed293ccd4e81')
+sha256sums=('100264732e7f8cd62d2720565c1596edffbbb9457041b2d11f0850476a351c91')
 
 package() {
   install -Dm755 ./tunl "${pkgdir}/usr/bin/tunl"

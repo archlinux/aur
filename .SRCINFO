@@ -1,11 +1,11 @@
 pkgbase = tunl
 	pkgdesc = Expose your localhost to the public
-	pkgver = 0.22.0
+	pkgver = 0.22.1
 	pkgrel = 1
 	url = https://github.com/pjvds/tunl
 	arch = x86_64
-	source = https://github.com/pjvds/tunl/releases/download/0.22.0/tunl_0.22.0_Linux_x86_64.tar.gz
-	sha256sums = 9f4f845b0e7adebc2273a0fef1910f465e6ccd0b9fcbeb57e779ed293ccd4e81
+	source = https://github.com/pjvds/tunl/releases/download/0.22.1/tunl_0.22.1_Linux_x86_64.tar.gz
+	sha256sums = 100264732e7f8cd62d2720565c1596edffbbb9457041b2d11f0850476a351c91
 
 pkgname = tunl
 
