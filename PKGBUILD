@@ -6,14 +6,14 @@
 
 pkgname=firehol-git
 _gitname=firehol
-pkgver=v3.1.6.r1.gaaa6552
+pkgver=v3.1.7.r1.g52549e0
 pkgrel=1
 epoch=1
 pkgdesc="The iptables stateful packet filtering firewall builder."
 url="http://firehol.org/"
 arch=('any')
 license=('GPL')
-depends=('iptables' 'gawk' 'iproute' 'iprange' 'ipset' 'traceroute')
+depends=('iptables' 'gawk' 'iproute' 'iprange' 'ipset' 'traceroute' 'procps-ng')
 makedepends=('git' 'dblatex' 'pandoc')
 provides=('firehol')
 conflicts=('firehol')
@@ -35,7 +35,7 @@ build() {
 	cd "$_gitname"
 
 	./autogen.sh
-	./configure \
+	PING6="/usr/bin/ping -6" ./configure \
 		--enable-maintainer-mode \
 		--prefix="/usr" \
 		--sysconfdir="/etc" \
