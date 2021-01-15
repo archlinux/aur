@@ -1,13 +1,13 @@
 pkgbase = neocities-cli
 	pkgdesc = (Official) neocities.org CLI and API client
 	pkgver = 0.0.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://neocities.org/cli
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-rake-12
-	depends = ruby-httpclient
+	depends = ruby-httpclient<3
 	depends = ruby-pastel-0.7.2
 	depends = ruby-tty-table-0.10
 	depends = ruby-tty-prompt-0.12

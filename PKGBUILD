@@ -3,12 +3,12 @@
 _gemname=neocities
 pkgname=neocities-cli
 pkgver=0.0.15
-pkgrel=1
+pkgrel=2
 pkgdesc='(Official) neocities.org CLI and API client'
 arch=('any')
 url='https://neocities.org/cli'
 license=('MIT')
-depends=('ruby' 'ruby-rake-12' 'ruby-httpclient' 'ruby-pastel-0.7.2' 'ruby-tty-table-0.10' 'ruby-tty-prompt-0.12')
+depends=('ruby' 'ruby-rake-12' 'ruby-httpclient<3' 'ruby-pastel-0.7.2' 'ruby-tty-table-0.10' 'ruby-tty-prompt-0.12')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
