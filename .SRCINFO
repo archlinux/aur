@@ -12,7 +12,7 @@ pkgbase = openoffice-ru-bin
 	options = !strip
 	options = docs
 	source = http://apache.org/dist/openoffice/4.1.8/binaries/ru/Apache_OpenOffice_4.1.8_Linux_x86-64_langpack-rpm_ru.tar.gz
-	md5sums = cf706a91951b9edc2601a9e2a9146e9e
+	md5sums = SKIP
 	sha256sums = SKIP
 
 pkgname = openoffice-ru-bin
