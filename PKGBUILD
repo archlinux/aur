@@ -6,7 +6,6 @@ pkgdesc="Bible command line interface reader."
 arch=("x86_64")
 url="https://heb12.com/#cli"
 license=("GPL2")
-makedepends=("wget")
 provides=("heb12")
 conflicts=("heb12")
 source=("git+https://code.heb12.com/heb12/cli.git" "https://api.heb12.com/translations/biblec/web.i" "https://api.heb12.com/translations/biblec/web.t")
