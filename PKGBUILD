@@ -10,15 +10,15 @@ makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'mingw-w64-
 provides=('mingw-w64-paraview')
 conflicts=('mingw-w64-paraview')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("${url}/files/v${pkgver:0:3}/ParaView-v${pkgver}-RC3.tar.xz"
+source=("${url}/files/v${pkgver:0:3}/ParaView-v${pkgver}-RC4.tar.xz"
         https://gitlab.kitware.com/vtk/vtk/-/merge_requests/7038.patch
         https://gitlab.kitware.com/paraview/catalyst/-/merge_requests/7.patch)
-sha256sums=('3487ee36cc2ff2a0fe4037a8d341f8c0a09f035f256f4e1f85e2f8356fd9da0a' SKIP SKIP)
+sha256sums=('9539b57bc8255dd40bc1db2c48a6e8cd8b3474302f4e36cd3173cd88bb0e54f4' SKIP SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-  cd "${srcdir}/ParaView-v${pkgver}-RC3"
+  cd "${srcdir}/ParaView-v${pkgver}-RC4"
   cd VTK
   patch -p1 -i "${srcdir}"/7038.patch
   cd ../ThirdParty/catalyst/vtkcatalyst/catalyst
@@ -26,7 +26,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/ParaView-v${pkgver}-RC3"
+  cd "${srcdir}/ParaView-v${pkgver}-RC4"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
@@ -46,7 +46,7 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "$srcdir"/ParaView-v${pkgver}-RC3/build-${_arch}
+    cd "$srcdir"/ParaView-v${pkgver}-RC4/build-${_arch}
     make install/fast DESTDIR="$pkgdir"
     rm -r "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
