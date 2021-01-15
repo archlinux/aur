@@ -1,12 +1,12 @@
 pkgbase = freecad-fcgear-git
 	pkgdesc = Freecad workbench to generate various gears
 	pkgver = r193.8b0d8e9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://freecadweb.org/wiki/Macro_FCGear
 	arch = any
 	license = GPL2
 	makedepends = git
-	makedepends = python2
+	makedepends = python2-setuptools
 	depends = freecad>=0.15
 	provides = freecad-fcgear
 	source = git+https://github.com/looooo/FCGear.git
