@@ -10,8 +10,8 @@
 pkgbase=oss
 pkgname=oss
 true && pkgname=(oss libflashsupport-oss)
-pkgver=4.2_2017
-pkgrel=2
+pkgver=4.2_2020
+pkgrel=1
 arch=(i686 x86_64)
 url="http://developer.opensound.com/"
 license=(GPL2)
@@ -21,14 +21,12 @@ source=("http://www.4front-tech.com/developer/sources/stable/gpl/oss-v${pkgver/_
         remove-hal.patch
         rm-init-scripts.patch
         soundon.patch
-        kmod-link.patch
         ossvermagic.patch)
-sha512sums=('c915f708fb94fc29ecb3726b44bbeed5f3c6be67f4dc9deabf83f4191084b71ffa8d693697ef9860050142cfaaf23c74c74a983fe1616662ca14c1086e3001f6'
+sha512sums=('6b0c5390e92f9c9466669600321140b54d1fde5eeaef2f9938d6bdbc7ae686f4a1ad0fa9669a1505962eb515d61d29d8a677911557a9b245ce039e1ab3b77d69'
             '355e1380432947c0e9caa21114b2c3debeb162fb5abcf845125ec281ce52b437ad1ee1db04d37e9b7a5ac79816c4dcbc21b4ed4cf8191f71218d99acd7bab70e'
             '6956e5e2e9323b568bb18e80bbee591b0e5ffd3d4612a50df09879941b2733c31d6b3178dc9a46c283bd1629f76b7ff5e2b54893a42a47f6379eaee4731fd9be'
             '64e6d9d8eb5320f737d3a0698a245da2b2d141b68cfb2f02e448144d1c610aa8b8a6c38b56fcca364d63171a49afe93161a00545cdb90086b5328997b3096690'
             'a8196aeea43499f4822bad6adc8c7f8721eb122045732ab34bb675182a1c4403c3f4a30ead85188fdaec77ee79a5097dd8de84782f8915db4061157474b5c7c6'
-            'f73b837643c7b86c5ce3a2ff18a66b99166d16ac7d1ac3d419b203efd8d398d8c4b21c304d6fa1c038ebf180ca0620d6517be384b307bb66e84a15b0339800df'
             'eec0608d82d5bec305b374d9cb62d70860d7be833f87f563a828c44b2dd67754cb27716194d2ea2707391d1257ba1b4b7b5cdf513d618dfd877a065999baa4ad')
 _dir=oss-v${pkgver/_*}-build${pkgver/*_}-src-gpl
 
@@ -48,11 +46,6 @@ prepare() {
   patch -p2 < "$srcdir/remove-hal.patch"
   rm oss/scripts/*oss_usb-create-device*
   patch -p1 < "$srcdir/soundon.patch"
-
-  # FS#35672
-  mv oss/build/{osscore.c,osscore_wrapper.c}
-  patch -p2 < "$srcdir/kmod-link.patch"
-  cd ../..
 }
 
 build() {
