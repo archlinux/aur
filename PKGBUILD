@@ -3,7 +3,7 @@
 
 pkgname=autenticacao-gov-pt
 _pkgname=autenticacao.gov
-pkgver=3.3.1
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Portuguese Citizen Card Application (Portugal eID)"
 arch=('i686' 'x86_64')
@@ -22,8 +22,9 @@ depends=('qt5-base'
 				 'libxerces-c-3.1'
 				 'libcurl-compat'
          'xml-security-c'
-				 'libcurl-gnutls')
-makedepends=('swig' 'qconf' 'git' 'xml-security-c' 'libcurl-gnutls' 'jdk11-openjdk')
+				 'libcurl-gnutls'
+				 'openjpeg2')
+makedepends=('swig' 'qconf' 'git' 'xml-security-c' 'libcurl-gnutls' 'jdk11-openjdk' 'openjpeg2')
 optdepends=('plugin-autenticacao-gov-pt: Necessário para autenticações online'
             'autenticacao-gov-pt-pki: PKI que confirma a validade dos certificados dos CC'
             'ecce-gov-pt-certificates: Certificados da ECCE quem assina dos certificados contidos em cartaodecidadao-pki')
@@ -31,7 +32,6 @@ conflicts=('classpath' 'cartaodecidadao' 'cartaodecidadao-bin')
 replaces=('cartaodecidadao')
 
 source=('git+https://github.com/amagovpt/autenticacao.gov/#branch=master'
-#source=('git+https://github.com/amagovpt/autenticacao.gov/#branch=openssl-migration'
 		    'autenticacao-gov-pt.install')
 
 sha512sums=('SKIP'
@@ -44,6 +44,9 @@ prepare(){
 	sudo archlinux-java set java-11-openjdk
 	sudo ln -sf /usr/lib/jvm/default/include/jni.h /usr/include/jni.h
 	sudo ln -sf /usr/lib/jvm/default/include/linux/jni_md.h /usr/include/jni_md.h
+	sudo ln -sf /usr/include/openjpeg-2.4/openjpeg.h /usr/include/openjpeg.h
+	sudo ln -sf /usr/include/openjpeg-2.4/opj_stdint.h /usr/include/opj_stdint.h
+	sudo ln -sf /usr/include/openjpeg-2.4/opj_config.h /usr/include/opj_config.h
 }
 
 build() {
