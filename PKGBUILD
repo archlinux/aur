@@ -21,7 +21,7 @@ pkgname=(
   "$pkgbase" "$pkgbase-x11" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=r56885.b783517b55d
+pkgver=r56939.6995aad7c37
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -77,6 +77,8 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/spdlog-$_spdlog_version.tar.gz"
   cheat-sse-build.patch
+  # this causes issues for the official iOS app
+  # see: https://github.com/xbmc/Official-Kodi-Remote-iOS/issues/95
   0001-Revert-jsonrpc-remove-ambiguous-and-duplicate-Player.patch
 )
 noextract=(
@@ -133,6 +135,7 @@ build() {
   _args=(
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
+    -DUSE_LTO=$(nproc)
     -DENABLE_EVENTCLIENTS=ON
     -DENABLE_INTERNAL_FFMPEG=ON
     -DENABLE_INTERNAL_FMT=ON
