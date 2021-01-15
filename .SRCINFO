@@ -1,7 +1,7 @@
 pkgbase = ivideon-server
 	pkgdesc = Ivideon Server (with QT5 GUI)
 	pkgver = 3.10.0
-	pkgrel = 6169
+	pkgrel = 6170
 	url = https://ivideon.com
 	arch = x86_64
 	license = freeware
@@ -13,8 +13,8 @@ pkgbase = ivideon-server
 	depends = libsm
 	conflicts = ivideon-video-server-nogui
 	conflicts = ivideon-video-server
-	source = https://packages.ivideon.com/ubuntu/pool/non-free/i/ivideon-video-server/ivideon-video-server_3.10.0-6169~11d42c3_amd64.deb
-	md5sums = 3bce6dc5c28799cb9c1464aca0816ef4
+	source = https://packages.ivideon.com/ubuntu/pool/non-free/i/ivideon-video-server/ivideon-video-server_3.10.0-6170~ad9c357_amd64.deb
+	md5sums = 1ab4a2a55c23c07cf5a3b8764d3ac055
 
 pkgname = ivideon-server
 
