@@ -1,6 +1,6 @@
 pkgbase = dwm-monosans-git
 	pkgdesc = A dynamic window manager for X
-	pkgver = 6.2.r1703.d3e8b2a
+	pkgver = 6.2.r1704.9826d07
 	pkgrel = 1
 	url = https://github.com/monosans/dwm
 	arch = i686
@@ -11,6 +11,8 @@ pkgbase = dwm-monosans-git
 	depends = libx11
 	depends = libxinerama
 	depends = libxft
+	optdepends = libxft-bgra: if dwm crashes when displaying emojis
+	optdepends = libxft-bgra-git: if dwm crashes when displaying emojis
 	optdepends = dmenu: program launcher
 	optdepends = st-monosans-git: default terminal emulator
 	optdepends = pcmanfm-gtk3: default file manager

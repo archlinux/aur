@@ -1,7 +1,7 @@
 # Maintainer: monosans <hsyqixco at protonmail dot com>
 
 pkgname=dwm-monosans-git
-pkgver=6.2.r1703.d3e8b2a
+pkgver=6.2.r1704.9826d07
 pkgrel=1
 pkgdesc='A dynamic window manager for X'
 url=https://github.com/monosans/dwm
@@ -9,6 +9,8 @@ arch=(i686 x86_64)
 license=(MIT)
 depends=(freetype2 libx11 libxinerama libxft)
 optdepends=(
+	'libxft-bgra: if dwm crashes when displaying emojis'
+	'libxft-bgra-git: if dwm crashes when displaying emojis'
 	'dmenu: program launcher'
 	'st-monosans-git: default terminal emulator'
 	'pcmanfm-gtk3: default file manager'
