@@ -8,11 +8,6 @@ User=radarr
 Group=radarr
 ExecStart=/usr/lib/radarr/bin/Radarr -nobrowser -data=/var/lib/radarr
 Type=simple
-TimeoutStopSec=20
-
-# Lets built in updater work well.
-Restart=on-failure
-KillMode=process
 
 [Install]
 WantedBy=multi-user.target
