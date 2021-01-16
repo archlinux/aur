@@ -2,7 +2,7 @@
 
 pkgname=typescript-language-server
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Language Server Protocol (LSP) implementation for TypeScript using tsserver'
 url=https://github.com/theia-ide/typescript-language-server
 arch=('any')
@@ -18,7 +18,7 @@ build() {
   yarn compile
   cp --parents -r server/{lib,node_modules,package.json} ..
   cd ../server
-  yarn --ignore-scripts --production --non-interactive
+  yarn --ignore-scripts --production --non-interactive --no-bin-links
 
 }
 
