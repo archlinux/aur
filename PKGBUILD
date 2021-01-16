@@ -6,14 +6,14 @@
 
 pkgname=silo
 pkgver=4.10.2
-pkgrel=10
+pkgrel=11
 pkgdesc="A Mesh and Field I/O Library and Scientific Database"
 url="https://wci.llnl.gov/simulation/computer-codes/silo"
 arch=('x86_64')
 depends=('qt5-base' 'hdf5-openmpi')
 makedepends=('gcc-fortran')
 license=('BSD')
-source=("https://wci.llnl.gov/content/assets/docs/simulation/computer-codes/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver-bsd.tar.gz"
+source=("https://wci.llnl.gov/sites/wci/files/2021-01/$pkgname-$pkgver-bsd.tgz"
         "remove-mpiposix.patch"
         "skip-test.patch"
         "qt5.patch")

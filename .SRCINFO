@@ -1,14 +1,14 @@
 pkgbase = silo
 	pkgdesc = A Mesh and Field I/O Library and Scientific Database
 	pkgver = 4.10.2
-	pkgrel = 10
+	pkgrel = 11
 	url = https://wci.llnl.gov/simulation/computer-codes/silo
 	arch = x86_64
 	license = BSD
 	makedepends = gcc-fortran
 	depends = qt5-base
 	depends = hdf5-openmpi
-	source = https://wci.llnl.gov/content/assets/docs/simulation/computer-codes/silo/silo-4.10.2/silo-4.10.2-bsd.tar.gz
+	source = https://wci.llnl.gov/sites/wci/files/2021-01/silo-4.10.2-bsd.tgz
 	source = remove-mpiposix.patch
 	source = skip-test.patch
 	source = qt5.patch
