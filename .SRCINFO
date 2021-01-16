@@ -1,24 +1,25 @@
 pkgbase = bacula
 	pkgdesc = Bacula - A Network Backup Tool
-	pkgver = 9.6.5
-	pkgrel = 2
+	pkgver = 9.6.7
+	pkgrel = 1
 	url = https://www.bacula.org
 	install = bacula.install
-	arch = any
+	arch = x86_64
 	license = AGPL3
 	makedepends = sqlite
 	makedepends = libmariadbclient
 	makedepends = postgresql-libs
-	makedepends = qt4
-	makedepends = openssl-1.0
-	optdepends = openssl-1.0: network encryption between daemons
-	source = https://downloads.sourceforge.net/sourceforge/bacula/bacula-9.6.5.tar.gz
-	source = https://downloads.sourceforge.net/sourceforge/bacula/bacula-9.6.5.tar.gz.sig
+	makedepends = qt5-base
+	makedepends = openssl
+	makedepends = readline
+	makedepends = lzo
+	source = https://downloads.sourceforge.net/sourceforge/bacula/bacula-9.6.7.tar.gz
+	source = https://downloads.sourceforge.net/sourceforge/bacula/bacula-9.6.7.tar.gz.sig
 	source = bacula-dir.service
 	source = bacula-fd.service
 	source = bacula-sd.service
 	validpgpkeys = 5235F5B668D81DB61704A82DC0BE2A5FE9DF3643
-	sha256sums = 510f35b86138472abe6c559caded7bc773bf5eb1b9ee10905ee8f4f827c7c77a
+	sha256sums = df0f8525ecdba380e74b537ca71adf3b7596593f02189b59ab0ebffc85ccc8de
 	sha256sums = SKIP
 	sha256sums = d1f06403b3460ad8cb7bd063ec31108d87c77dc58bb8a916229262d2bac4a565
 	sha256sums = 072a408b136f27251e9420f801d162e828218306ee74c0c5ba83b24f558e5e39
@@ -29,32 +30,29 @@ pkgname = bacula-common
 
 pkgname = bacula-console
 	pkgdesc = Bacula - A Network Backup Tool (management CLI)
-	depends = bacula-common=9.6.5
+	depends = bacula-common=9.6.7
+	depends = readline
 	backup = etc/bacula/bconsole.conf
 
 pkgname = bacula-fd
 	pkgdesc = Bacula - A Network Backup Tool (file daemon)
-	depends = bacula-common=9.6.5
-	optdepends = openssl-1.0: network encryption between daemons
-	optdepends = lzo: LZO compression for Storage Daemon
+	depends = bacula-common=9.6.7
 	backup = etc/bacula/bacula-fd.conf
 
 pkgname = bacula-bat
 	pkgdesc = Bacula - A Network Backup Tool (management GUI)
-	depends = bacula-common=9.6.5
-	depends = qt4
+	depends = bacula-common=9.6.7
+	depends = qt5-base
 	backup = etc/bacula/bat.conf
 
 pkgname = bacula-sd
 	pkgdesc = Bacula - A Network Backup Tool (Storage Daemon)
 	depends = bacula-common
-	optdepends = openssl-1.0: network encryption between daemons
-	optdepends = lzo: LZO compression for Storage Daemon
 	backup = etc/bacula/bacula-sd.conf
 
 pkgname = bacula-dir
 	pkgdesc = Bacula - A Network Backup Tool (Director)
-	depends = bacula-common=9.6.5
+	depends = bacula-common=9.6.7
 	optdepends = bacula-dir-sqlite3: SQLite support
 	optdepends = bacula-dir-mariadb: MariaDB support
 	optdepends = bacula-dir-postgresql: PostgreSQL support

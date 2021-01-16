@@ -15,21 +15,20 @@ pkgname=("${pkgbase}-common"
          "${pkgbase}-dir"
          "${_dir_backends[@]}"
          "${pkgbase}-dir-mysql")
-pkgver=9.6.5
-pkgrel=2
-arch=('any')
+pkgver=9.6.7
+pkgrel=1
+arch=(x86_64)
 pkgdesc="${pkgbase^} - A Network Backup Tool "
 url="https://www.${pkgbase}.org"
 license=('AGPL3')
-optdepends=('openssl-1.0: network encryption between daemons')
-makedepends=('sqlite' 'libmariadbclient' 'postgresql-libs' 'qt4' 'openssl-1.0')
+makedepends=(sqlite libmariadbclient postgresql-libs qt5-base openssl readline lzo)
 install="bacula.install"
 source=("https://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}-${pkgver}.tar.gz"{,.sig}
         'bacula-dir.service'
         'bacula-fd.service'
         'bacula-sd.service')
 
-sha256sums=('510f35b86138472abe6c559caded7bc773bf5eb1b9ee10905ee8f4f827c7c77a'
+sha256sums=('df0f8525ecdba380e74b537ca71adf3b7596593f02189b59ab0ebffc85ccc8de'
             'SKIP'
             'd1f06403b3460ad8cb7bd063ec31108d87c77dc58bb8a916229262d2bac4a565'
             '072a408b136f27251e9420f801d162e828218306ee74c0c5ba83b24f558e5e39'
@@ -39,15 +38,6 @@ sha256sums=('510f35b86138472abe6c559caded7bc773bf5eb1b9ee10905ee8f4f827c7c77a'
 validpgpkeys=('5235F5B668D81DB61704A82DC0BE2A5FE9DF3643')
 
 _workdir="/var/lib/${pkgbase}"
-
-prepare() {
-  cd "${srcdir}/${pkgbase}-${pkgver}"
-
-  cd autoconf
-
-  autoconf configure.in > ../configure
-  cd ..
-}
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
@@ -67,18 +57,21 @@ build() {
     --with-logdir=/var/log/${pkgbase}        \
     --with-working-dir="${_workdir}"         \
     --with-openssl=/usr                      \
-    --with-x
+    --with-x                                 \
+    --enable-readline                        \
+    --disable-conio
 
   make
   make DESTDIR="${srcdir}/install" install
-
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  ./libtool --silent --mode=install install \
+    src/qt-console/bat src/qt-console/tray-monitor/bacula-tray-monitor \
+    "${srcdir}/install/usr/bin"
 }
 
 package_bacula-bat() {
   pkgdesc+="(management GUI)"
   backup=("etc/${pkgbase}/bat.conf")
-  depends=("${pkgbase}-common=${pkgver}" 'qt4')
+  depends=("${pkgbase}-common=${pkgver}" qt5-base)
 
   cd "${srcdir}/install"
   cp --parents -a usr/bin/bat "${pkgdir}"
@@ -99,8 +92,6 @@ package_bacula-bat() {
 package_bacula-fd() {
   pkgdesc+="(file daemon)"
   backup=("etc/${pkgbase}/${pkgname}.conf")
-  optdepends=('openssl-1.0: network encryption between daemons'
-              'lzo: LZO compression for Storage Daemon')
   depends=("${pkgbase}-common=${pkgver}")
 
   cd "${srcdir}/install"
@@ -136,7 +127,7 @@ package_bacula-common() {
 package_bacula-console() {
   pkgdesc+="(management CLI)"
   backup=("etc/${pkgbase}/bconsole.conf")
-  depends=("${pkgbase}-common=${pkgver}")
+  depends=("${pkgbase}-common=${pkgver}" readline)
 
   cd "${srcdir}/install"
   cp --parents -a usr/bin/bconsole "${pkgdir}"
@@ -198,7 +189,7 @@ package_bacula-dir() {
 
 package_bacula-dir-mariadb() {
   pkgdesc+="(Director - MariaDB support)"
-  depends=("${pkgbase}-dir" 'libmariadbclient')
+  depends=("${pkgbase}-dir" libmariadbclient)
   conflicts=(${_dir_backends[@]/${pkgname}})
   replaces=("${pkgbase}-dir-mysql")
   provides=("${pkgbase}-dir-mysql")
@@ -219,7 +210,7 @@ package_bacula-dir-mysql() {
 
 package_bacula-dir-postgresql() {
   pkgdesc+="(Director - PostgreSQL support)"
-  depends=("${pkgbase}-dir" 'postgresql-libs')
+  depends=("${pkgbase}-dir" postgresql-libs)
   conflicts=(${_dir_backends[@]/${pkgname}})
 
   cd "${srcdir}/install"
@@ -233,7 +224,7 @@ package_bacula-dir-postgresql() {
 
 package_bacula-dir-sqlite3() {
   pkgdesc+="(Director - SQLite3 support)"
-  depends=("${pkgbase}-dir" 'sqlite')
+  depends=("${pkgbase}-dir" sqlite)
   conflicts=(${_dir_backends[@]/${pkgname}})
 
   cd "${srcdir}/install"
@@ -249,8 +240,6 @@ package_bacula-sd() {
   pkgdesc+="(Storage Daemon)"
   backup=("etc/${pkgbase}/${pkgname}.conf")
   depends=("${pkgbase}-common")
-  optdepends=('openssl-1.0: network encryption between daemons'
-              'lzo: LZO compression for Storage Daemon')
 
   cd "${srcdir}/install"
   cp --parents -a etc/${pkgbase}/${pkgname}.conf "${pkgdir}"
