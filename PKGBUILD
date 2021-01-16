@@ -1,11 +1,11 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
-_glslang_commit='517f39eee46f27c83527117d831c4d7e2f7c9fe3'
-_spirv_tools_commit='c341f7a6cd441d05ca1347ee39f2f03f32225c59'
-_spirv_headers_commit='3fdabd0da2932c276b25b9b4a988ba134eba1aa6'
+_glslang_commit='3de5cfe50edecd001e6d703555284d9b10b3dd57'
+_spirv_tools_commit='f3ccb633dfd7c5de1f9f0a2d2e9d7a25f2478206'
+_spirv_headers_commit='f027d53ded7e230e008d37c8b47ede7cd308e19d'
 
 pkgname=spirv-cross
-pkgver=2020.09.17
+pkgver=2021.01.15
 pkgrel=1
 pkgdesc='A tool and library for parsing and converting SPIR-V to other shader languages'
 arch=('x86_64')
