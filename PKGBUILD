@@ -1,6 +1,6 @@
 # Maintainer: Harvey Tindall <hrfee@protonmail.ch>
 pkgname="jfa-go"
-pkgver=0.2.1
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="A web app for managing users on Jellyfin"
 arch=("x86_64")
@@ -23,7 +23,7 @@ validpgpkeys=()
 
 prepare() {
     cd jfa-go
-    make configuration sass email version swagger
+    make configuration npm email version swagger
 }
 
 build() {
