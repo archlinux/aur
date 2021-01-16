@@ -5,7 +5,7 @@
 pkgname="stm32cubeprog"
 _pkgname="STM32CubeProgrammer"
 pkgver=2.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An all-in-one multi-OS software tool for programming STM32 products."
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubeprog.html"
@@ -25,7 +25,8 @@ depends=('stlink'
          'openssl-1.0')
 makedepends=('xdotool'
              'xorg-server-xvfb'
-             'xdg-user-dirs')
+             'xdg-user-dirs'
+             'icoutils')
 provides=("${pkgname}rammer")
 options=('!strip')
 _pkg_file_name="en.${pkgname//prog/prg}-lin_v${pkgver//./-}.zip"
