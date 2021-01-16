@@ -19,13 +19,13 @@ optdepends=('nfpm: deb and rpm packager'
 _basedownloadurl="https://github.com/${_pkgname}/${_pkgname}/releases/download/${pkgver}"
 
 source_x86_64=("${_pkgname}_${pkgver}_linux_x86_64.tar.gz::${_basedownloadurl}/${_pkgname}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('')
+sha256sums_x86_64=('2a33aa15933cfd5bd2b714860c4876fa76f1fab8f46a7c6d29a8e32c7f9445f2')
 
 source_i686=("${_pkgname}_${pkgver}_linux_i386.tar.gz::${_basedownloadurl}/${_pkgname}_linux_i386.tar.gz")
-sha256sums_i686=('')
+sha256sums_i686=('72242c17fbbdff5feddd827d16600650a7671b1a1e7cdca08a80ff4b228c4e9f')
 
 source_aarch64=("${_pkgname}_${pkgver}_linux_arm64.tar.gz::${_basedownloadurl}/${_pkgname}_linux_arm64.tar.gz")
-sha256sums_aarch64=('')
+sha256sums_aarch64=('b2a5c93acbe3a49f99021b3216970d20e88d572ab12ca386109185ac31295707')
 
 package() {
 	# Bin
