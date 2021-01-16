@@ -1,7 +1,7 @@
 pkgbase = gmnisrv-git
 	pkgdesc = A high-performance Gemini server for POSIX systems
-	pkgver = r58.70fadc2
-	pkgrel = 2
+	pkgver = r88.fbef1d3
+	pkgrel = 1
 	url = https://git.sr.ht/~sircmpwn/gmnisrv
 	arch = any
 	license = GPL
@@ -10,7 +10,9 @@ pkgbase = gmnisrv-git
 	depends = openssl
 	depends = mailcap
 	source = gmnisrv::git+https://git.sr.ht/~sircmpwn/gmnisrv
+	source = gmnisrv.service
 	md5sums = SKIP
+	md5sums = d6c15f32c646a89f85e5b19e83756146
 
 pkgname = gmnisrv-git
 
