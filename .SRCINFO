@@ -1,6 +1,6 @@
 pkgbase = dust-bin
 	pkgdesc = du + rust = dust. Like du but more intuitive
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/bootandy/dust
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = dust-bin
 	license = Apache
 	provides = dust
 	conflicts = dust
-	source_x86_64 = https://github.com/bootandy/dust/releases/download/v0.5.3/dust-v0.5.3-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 4580972fd9e210112c0dfb54ce0c21e4ddff056c92c0d3ea83ce7e670418d3b1
-	source_i686 = https://github.com/bootandy/dust/releases/download/v0.5.3/dust-v0.5.3-i686-unknown-linux-musl.tar.gz
-	sha256sums_i686 = 7501be90091eb61aee6869b62dfb514eff35961eaa3adc732f107d7338de8286
+	source_x86_64 = https://github.com/bootandy/dust/releases/download/v0.5.4/dust-v0.5.4-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 33e2f90682a29e71a492883bb857ab45aaaa2af361b57a40ea526ff399bf91eb
+	source_i686 = https://github.com/bootandy/dust/releases/download/v0.5.4/dust-v0.5.4-i686-unknown-linux-musl.tar.gz
+	sha256sums_i686 = 20ea2b5696628824b59b4033d42571c09850bbc314df7e3dc31cfd32bfbd84ed
 
 pkgname = dust-bin
 
