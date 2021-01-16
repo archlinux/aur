@@ -1,7 +1,7 @@
-pkgname='sac-core'
+pkgname='sac-core-legacy'
 pkgver='10.0.37'
-pkgrel='11'
-pkgdesc='Safenet Authentication Client for Alladin eToken, stripped core package'
+pkgrel='1'
+pkgdesc='Safenet Authentication Client for Alladin eToken (version 10.0 for old token support)'
 arch=('x86_64')
 depends=('pcsclite' 'libusb-compat' 'openssh' 'nss')
 makedepends=('libarchive')

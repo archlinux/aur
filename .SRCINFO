@@ -1,9 +1,9 @@
-pkgbase = sac-core
-	pkgdesc = Safenet Authentication Client for Alladin eToken, stripped core package
+pkgbase = sac-core-legacy
+	pkgdesc = Safenet Authentication Client for Alladin eToken (version 10.0 for old token support)
 	pkgver = 10.0.37
-	pkgrel = 11
+	pkgrel = 1
 	url = https://data-protection-updates.gemalto.com/category/safenet-authentication-client/
-	install = sac-core.install
+	install = sac-core-legacy.install
 	arch = x86_64
 	license = custom
 	makedepends = libarchive
@@ -16,5 +16,4 @@ pkgbase = sac-core
 	source_x86_64 = https://storage.spidlas.cz/public/soft/safenet/SafenetAuthenticationClient-core-10.0.37-0_amd64.deb
 	sha256sums_x86_64 = b4f8ffd030363693540bd494c3825ebd901937565cdd1c6455f95005571a27e5
 
-pkgname = sac-core
-
+pkgname = sac-core-legacy
