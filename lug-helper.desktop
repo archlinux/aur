@@ -1,0 +1,8 @@
+[Desktop Entry]
+Exec=/usr/bin/lug-helper
+Icon=/usr/share/pixmaps/lug-logo.png
+Name=LUG-Helper
+StartupNotify=true
+Terminal=false
+Type=Application
+
