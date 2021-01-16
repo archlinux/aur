@@ -1,7 +1,7 @@
 # Mantainer: lxsycht <lux@systemli.org>
 pkgname=metadata-cleaner
 pkgdesc='Python GTK application to view and clean metadata in files, using mat2'
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 url='https://gitlab.com/rmnvgr/metadata-cleaner'
 license=('GPL3')
