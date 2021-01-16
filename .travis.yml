@@ -9,7 +9,7 @@ archlinux:
   script:
     - "PKGEXT='.pkg.tar' makepkg -si --noconfirm"
     - "namcap PKGBUILD"
-    - "namcap symfony*.pkg*"
+    - "namcap local-php-security-checker*.pkg*"
 
 script:
   - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
