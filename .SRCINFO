@@ -1,0 +1,19 @@
+pkgbase = ipmap-git
+	pkgdesc = An interactive map that shows connected IP addresses
+	pkgver = 0.1.7.r10.gf35da86
+	pkgrel = 1
+	url = https://skylinecc.github.io/ipmap/
+	arch = x86_64
+	license = GPL
+	makedepends = rust
+	makedepends = gzip
+	makedepends = git
+	depends = glibc
+	depends = libpcap
+	depends = webkit2gtk
+	depends = polkit
+	source = ipmap::git+https://github.com/skylinecc/ipmap.git
+	md5sums = SKIP
+
+pkgname = ipmap-git
+
