@@ -7,34 +7,40 @@
 # Contributor: Zion Nimchuk <zionnimchuk@gmail.com>
 
 pkgbase='nim-git'
-pkgname=('nim-git' 'nimble-git' 'nimsuggest-git' 'nimpretty-git')
-pkgdesc='Nim is a compiled, garbage-collected systems programming language with a design that focuses on efficiency, expressiveness, and elegance (in that order of priority).'
+pkgname=('nim-git' 'nimble-git' 'nimsuggest-git' 'nimpretty-git' 'nimfind-git' 'nim-gdb-git')
+pkgdesc='Nim is a statically typed compiled systems programming language. It combines successful concepts from mature languages like Python, Ada and Modula. Its design focuses on efficiency, expressiveness, and elegance (in that order of priority).'
 epoch=1
-pkgver=0.19.4.r1821.d24585c49
+pkgver=1.4.2.r591.44ceefa9f
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 groups=('nim')
+backup=(
+  'etc/nim/config.nims'
+  'etc/nim/nim.cfg'
+  'etc/nim/nimdoc.cfg'
+  'etc/nim/nimdoc.tex.cfg'
+  'etc/nim/rename.rules.cfg'
+)
 makedepends=('git')
 source=(
   'git+https://github.com/nim-lang/Nim'
-  'git+https://github.com/nim-lang/Nim.wiki'
   'git+https://github.com/nim-lang/csources'
   'git+https://github.com/nim-lang/nimble'
   'makepkg-conf.patch'
 )
 sha256sums=(
-  'SKIP' 'SKIP' 'SKIP' 'SKIP'
+  'SKIP' 'SKIP' 'SKIP'
   '9d73290e81a2e2a79f7bb8058d47854d90ba9301dda1bee107294e2d82f631bf'
 )
 
 _tag() {
-  # Describes the most recent tag
-  git describe --abbrev=0 origin/master
+  # Grab the most recent non-annotated tag:
+  git tag | grep -E '^v' | sort | tail -1
 }
 
 _revision() {
   # Count revisions made to HEAD since master:
-  git rev-list --count origin/master...HEAD
+  git rev-list --count $(_tag)..HEAD
 }
 
 _commit() {
@@ -77,11 +83,16 @@ build() {
   cd -
 
   # Build a release version of the "koch" maintenance program:
-  ./bin/nim c -d:release koch
+  ./bin/nim c -d:release --skipUserCfg --skipParentCfg koch
   # Build a release version of the nim compiler:
-  ./koch boot -d:release -d:nativeStacktrace
+  ./koch boot           \
+    -d:nativeStacktrace \
+    -d:release          \
+    -d:useGnuReadline   \
+    --skipUserCfg       \
+    --skipParentCfg
   # Build nimsuggest, nimgrep, and nimpretty:
-  ./koch tools
+  ./koch tools -d:release --skipUserCfg --skipParentCfg
 
   # Build nimrtl.nim:
   cd lib
@@ -105,13 +116,8 @@ package_nim-git() {
   # Docs
   install -dm 755 "${pkgdir}/usr/share/doc/nim"
   cp -dpr --no-preserve=ownership \
-    examples doc/*                \
+    doc/*                         \
     -t "${pkgdir}/usr/share/doc/nim"
-
-  # Docs: Wiki
-  cp -dpr --no-preserve=ownership   \
-    "${srcdir}/Nim.wiki"            \
-    "${pkgdir}/usr/share/doc/nim/wiki"
 
   # Nim
   ./koch install "${pkgdir}"
@@ -174,23 +180,44 @@ package_nimble-git() {
 }
 
 package_nimsuggest-git() {
-  pkgdesc="Nimsuggest is a tool that helps to give editors IDE like capabilities."
-  url="https://github.com/nim-lang/nimsuggest"
+  pkgdesc='Nimsuggest is a tool that helps to give editors IDE like capabilities.'
+  url='https://github.com/nim-lang/nimsuggest'
   license=('MIT')
   provides=('nimsuggest')
   conflicts=('nimsuggest')
 
-  install -Dm 755 "Nim/bin/nimsuggest" -t "${pkgdir}/usr/bin"
+  install -Dm 755 'Nim/bin/nimsuggest' -t "${pkgdir}/usr/bin"
 }
 
 package_nimpretty-git() {
-  pkgdesc="Standard tool for pretty printing."
-  url="https://github.com/nim-lang/Nim/tree/devel/nimpretty"
+  pkgdesc='Standard tool for pretty printing.'
+  url='https://github.com/nim-lang/Nim/tree/devel/nimpretty'
   license=('MIT')
   provides=('nimpretty')
   conflicts=('nimpretty')
 
-  install -Dm 755 "Nim/bin/nimpretty" -t "${pkgdir}/usr/bin"
+  install -Dm 755 'Nim/bin/nimpretty' -t "${pkgdir}/usr/bin"
+}
+
+package_nimfind-git() {
+  pkgdesc='Nimfind is a tool that helps to give editors IDE like capabilities.'
+  url='https://github.com/nim-lang/Nim'
+  license=('MIT')
+  provides=('nimfind')
+  conflicts=('nimfind')
+
+  install -Dm 755 'Nim/bin/nimfind' -t "${pkgdir}/usr/bin"
+}
+
+package_nim-gdb-git() {
+  pkgdesc='GDB pretty printing for Nim language.'
+  url='https://github.com/nim-lang/Nim'
+  license=('MIT')
+  depends=('gdb')
+  provides=('nim-gdb')
+  conflicts=('nimp-gdb')
+
+  install -Dm 755 'Nim/bin/nim-gdb' -t "${pkgdir}/usr/bin"
 }
 
 # vim: sw=2 ts=2 et:
