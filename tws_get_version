@@ -12,29 +12,22 @@ if ! test -e "$1"; then
 	exit 1
 fi
 
-ARG1="$(readlink -v -f "$1")" || exit 1
-
-TDIR="$(mktemp -d -t twsdir.XXXX)" || exit 1
-trap "rm -rf ${TDIR}" exit
-cd "${TDIR}" || exit 1
-
 # Clean up installation directories if required and install new version
-rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/tws
+rm -rf $HOME/Jts $HOME/.install4j $HOME/.i4j_jres $HOME/tws
+mkdir -p $HOME/Jts
+
+# Install TWS
+ARG1="$(readlink -v -f "$1")" || exit 1
 chmod +x ${ARG1}
 ${ARG1} -q &> /dev/null
 
-TWS_HOME="${TDIR}/twshome"
-mkdir "${TWS_HOME}" || exit 1
-LOG="${TWS_HOME}/launcher.log"
-
-TWS_CP=`find ${HOME}/tws/jars -type f -name \*.jar -printf '%p:'`
-/usr/sbin/xvfb-run -n 99 /usr/lib/jvm/java-8-openjdk/jre/bin/java -cp "${TWS_CP}" jclient.LoginFrame "${TWS_HOME}" &
-disown
-TWS_PID="$!"
+# Run TWS in virtual frame buffer
+LOG="$HOME/Jts/launcher.log"
+/usr/sbin/xvfb-run -n 99 $HOME/tws/tws &
 
 # Wait for TWS JVM to start writing to $LOG
 while [ ! -f $LOG ]; do
-  inotifywait -q -q -t 10 -e create --format '%f' $TWS_HOME
+  inotifywait -q -q -t 10 -e create --format '%f' $HOME/Jts
   if [ $? -eq 2 ] && [ ! -f $LOG ]; then
     echo "Error: $LOG not found"
     exit 1
@@ -51,7 +44,7 @@ for count in {0..10}; do
 done
 
 # Kill process now that version line or timeout was reached
-/usr/bin/kill --verbose --timeout 1000 TERM --timeout 1000 KILL --signal INT $TWS_PID &>/dev/null
+pkill -9 -f tws/jars/ &> /dev/null
 
 # Clean up ready for next run
 rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/tws
