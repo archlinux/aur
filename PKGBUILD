@@ -11,12 +11,12 @@ depends=('python' 'python-urllib3')
 makedepends=('git' 'python-setuptools')
 optdepends=('tesseract' 'imagemagick')
 source=("git+https://gitgud.io/ring/infinityctl.git"
-        "0001-Add-setup.py.patch"
-        "0002-Add-unix_original-file-scrape-mode.patch"
-        "0003-Fix-for-file-names-which-potentially-exceed-the-file-name-length-limit.patch"
-        "0004-Remove-defunct-variants.patch"
-        "0005-Use-8kun.top-addresses.patch"
-        "0006-Add-variants-for-smuglo.li.patch")
+        "infinityctl-setup.py.patch"
+        "infinityctl-unix_original-scrape-mode.patch"
+        "infinityctl-file-name-length-limit.patch"
+        "infinityctl-remove-defunct.patch"
+        "infinityctl-8kun.top.patch"
+        "infinityctl-smuglo.li.patch")
 sha256sums=('SKIP'
             '08f7c0c16d586732371e9448b76ad924bf3172897aa7f7bb41896c7be6fb1203'
             '53ef6c4a259c3648aeadbf3c695db72734ea824f9ba345fd4e1146d9cf76978d'
@@ -32,12 +32,12 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-  patch -Np1 -i "$srcdir/0001-Add-setup.py.patch"
-  patch -Np1 -i "$srcdir/0002-Add-unix_original-file-scrape-mode.patch"
-  patch -Np1 -i "$srcdir/0003-Fix-for-file-names-which-potentially-exceed-the-file-name-length-limit.patch"
-  patch -Np1 -i "$srcdir/0004-Remove-defunct-variants.patch"
-  patch -Np1 -i "$srcdir/0005-Use-8kun.top-addresses.patch"
-  patch -Np1 -i "$srcdir/0006-Add-variants-for-smuglo.li.patch"
+  patch -Np1 -i "$srcdir/infinityctl-setup.py.patch"
+  patch -Np1 -i "$srcdir/infinityctl-unix_original-scrape-mode.patch"
+  patch -Np1 -i "$srcdir/infinityctl-file-name-length-limit.patch"
+  patch -Np1 -i "$srcdir/infinityctl-remove-defunct.patch"
+  patch -Np1 -i "$srcdir/infinityctl-8kun.top.patch"
+  patch -Np1 -i "$srcdir/infinityctl-smuglo.li.patch"
 }
 
 build() {
