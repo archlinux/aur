@@ -8,6 +8,7 @@ pkgbase = pacslim-git
 	makedepends = make
 	depends = pacman
 	source = git+https://gitlab.com/abarocio80/pacslim
+	md5sums = SKIP
 
 pkgname = pacslim-git
 

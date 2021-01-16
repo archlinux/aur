@@ -23,7 +23,7 @@ install=
 changelog=
 source=("git+$url")
 noextract=()
-md5sums=()
+md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
