@@ -1,16 +1,16 @@
 pkgbase = ruby-git
-	pkgdesc = Ruby/Git is a Ruby library that can be used to create, read and manipulate Git repositories by wrapping system calls to the git binary.
-	pkgver = 1.2.9.1
+	pkgdesc = Ruby library to manipulate git repositories by wrapping system calls to the git binary
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/schacon/ruby-git
 	arch = any
 	license = MIT
 	makedepends = rubygems
+	makedepends = ruby-rdoc
 	depends = ruby
 	depends = git
-	noextract = git-1.2.9.1.gem
-	source = https://rubygems.org/downloads/git-1.2.9.1.gem
-	sha256sums = 9aa9a279bb45fe8a22e0799a3dbf80d7fd4866bc733256d52fec505829920eeb
+	source = git+https://github.com/ruby-git/ruby-git.git?tag=v1.8.1
+	sha256sums = SKIP
 
 pkgname = ruby-git
 

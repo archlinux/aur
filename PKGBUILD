@@ -1,22 +1,43 @@
-# Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
+# Maintainer: Mario Finelli <mario at finel dot li>
 
 _gemname=git
 pkgname=ruby-$_gemname
-pkgver=1.2.9.1
+pkgver=1.8.1
 pkgrel=1
-pkgdesc="Ruby/Git is a Ruby library that can be used to create, read and manipulate Git repositories by wrapping system calls to the git binary."
+pkgdesc="Ruby library to manipulate git repositories by wrapping system calls to the git binary"
 arch=(any)
-url="https://github.com/schacon/ruby-git"
-license=('MIT')
-depends=('ruby' 'git')
-makedepends=('rubygems')
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
-sha256sums=('9aa9a279bb45fe8a22e0799a3dbf80d7fd4866bc733256d52fec505829920eeb')
+url=https://github.com/schacon/ruby-git
+license=(MIT)
+depends=(ruby git)
+makedepends=(rubygems ruby-rdoc)
+source=(git+https://github.com/ruby-git/ruby-git.git?tag=v$pkgver)
+sha256sums=('SKIP')
+
+prepare() {
+  cd ${pkgname}
+  sed -i 's|~>|>=|g' ${_gemname}.gemspec
+}
+
+build() {
+  cd ${pkgname}
+  gem build ${_gemname}.gemspec
+}
 
 package() {
-  cd "$srcdir"
-  local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
-  
-  gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" "$_gemname-$pkgver.gem"
+  cd ${pkgname}
+  local _gemdir="$(gem env gemdir)"
+
+  gem install \
+    --ignore-dependencies \
+    --no-user-install \
+    -i "$pkgdir/$_gemdir" \
+    -n "$pkgdir/usr/bin" \
+    $_gemname-$pkgver.gem
+
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+
+  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
+
+# vim: set ts=2 sw=2 et:
