@@ -1,18 +1,18 @@
 pkgbase = ruby-librarianp
-	pkgdesc = A Framework for Bundlers, used by librarian-puppet.
-	pkgver = 0.6.4
+	pkgdesc = A Framework for Bundlers, used by librarian-puppet
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/voxpupuli/librarian
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = rubygems
 	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-thor
-	noextract = librarianp-0.6.4.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/librarianp-0.6.4.gem
-	sha256sums = 7b58de3ce3f6169b4ec5a5174f141dbcc36ca5459cd1d077f23b990ec324bb2b
+	source = git+https://github.com/voxpupuli/librarian.git?tag=v1.0.0
+	sha256sums = SKIP
 
 pkgname = ruby-librarianp
 

@@ -2,21 +2,31 @@
 
 _gemname=librarianp
 pkgname=ruby-$_gemname
-pkgver=0.6.4
+pkgver=1.0.0
 pkgrel=1
-pkgdesc='A Framework for Bundlers, used by librarian-puppet.'
+pkgdesc="A Framework for Bundlers, used by librarian-puppet"
 arch=(any)
-url='https://github.com/voxpupuli/librarian'
-license=('MIT')
+url=https://github.com/voxpupuli/librarian
+license=(MIT)
 depends=(ruby ruby-thor)
-makedepends=(rubygems ruby-rdoc)
+makedepends=(git rubygems ruby-rdoc)
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
-sha256sums=('7b58de3ce3f6169b4ec5a5174f141dbcc36ca5459cd1d077f23b990ec324bb2b')
+source=(git+https://github.com/voxpupuli/librarian.git?tag=v$pkgver)
+sha256sums=('SKIP')
+
+prepare() {
+  cd librarian
+  sed -i 's|~>|>=|g' ${_gemname}.gemspec
+}
+
+build() {
+  cd librarian
+  gem build ${_gemname}.gemspec
+}
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  cd librarian
+  local _gemdir="$(gem env gemdir)"
 
   gem install \
     --ignore-dependencies \
@@ -27,6 +37,7 @@ package() {
 
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 
-  install -Dm0644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# vim: set ts=2 sw=2 et:
