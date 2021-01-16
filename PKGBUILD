@@ -2,7 +2,7 @@
 
 pkgname=gitui-git
 _filename=gitui
-pkgver=0.11.0.r13.g5d3eec7
+pkgver=0.11.0.r25.g0299020
 pkgrel=1
 pkgdesc='Blazing fast terminal-ui for git written in Rust'
 arch=('i686' 'x86_64')
