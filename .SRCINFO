@@ -1,0 +1,14 @@
+pkgbase = typescript-language-server
+	pkgdesc = Language Server Protocol (LSP) implementation for TypeScript using tsserver
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/theia-ide/typescript-language-server
+	arch = any
+	license = Apache
+	makedepends = yarn
+	depends = typescript
+	source = https://github.com/theia-ide/typescript-language-server/archive/v0.5.1/typescript-language-server-v0.5.1.tar.gz
+	b2sums = 0504769db1f386bc588302550652f5b5e1f393a9c7cdadd6a52f1ae60bbee8c0b24a3bebeef17d2e97bb4c23a21e9de47853cbf07e65f8704b6544c0e3de0663
+
+pkgname = typescript-language-server
+
