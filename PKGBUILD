@@ -1,24 +1,38 @@
-# Generated with gembuild (https://github.com/mfinelli/gembuild)
-# Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
+# Maintainer: Mario Finelli <mario at finel dot li>
 
 _gemname=netrc
 pkgname=ruby-$_gemname
-pkgver=0.10.3
+pkgver=0.11.0
 pkgrel=1
-pkgdesc='This library can read and update netrc files, preserving formatting including comments and whitespace.'
-arch=('any')
-url='https://github.com/geemus/netrc'
-license=('MIT')
+pkgdesc="Reads and writes netrc files"
+arch=(any)
+url=https://github.com/heroku/netrc
+license=(MIT)
 options=(!emptydirs)
-noextract=($_gemname-$pkgver.gem)
-depends=('ruby')
-makedepends=('rubygems')
-source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
-sha256sums=('8fa24558ed46e2b2d9a58baa78fd7d11cb7efa3ec7e2ec89a057f76dc3abcce4')
+depends=(ruby)
+makedepends=(git rubygems ruby-rdoc)
+source=(git+https://github.com/heroku/netrc.git?tag=v$pkgver)
+sha256sums=('SKIP')
+
+build() {
+  cd ${_gemname}
+  gem build ${_gemname}.gemspec
+}
 
 package() {
-  cd "$srcdir"
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  cd ${_gemname}
+  local _gemdir="$(gem env gemdir)"
 
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  gem install \
+    --ignore-dependencies \
+    --no-user-install \
+    -i "$pkgdir/$_gemdir" \
+    -n "$pkgdir/usr/bin" \
+    $_gemname-$pkgver.gem
+
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+
+  install -Dm0644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
+
+# vim: set ts=2 sw=2 et:
