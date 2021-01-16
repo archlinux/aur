@@ -1,6 +1,6 @@
 pkgname=sac-core
 pkgver=10.7.77
-pkgrel=1
+pkgrel=2
 pkgdesc='SafeNet Authentication Client for eToken 5110/5300 & IDPrime (core package with no GUI tools)'
 url='https://cpl.thalesgroup.com/access-management/security-applications/authentication-client-token-management'
 arch=(x86_64)
@@ -38,7 +38,13 @@ package() {
   #ln -s libeToken.so "$pkgdir"/usr/lib/libeTPkcs11.so
   #ln -s ../libeToken.so "$pkgdir"/usr/lib/pkcs11/libeTPkcs11.so
 
-  install -Dm644 eToken.conf "$pkgdir"/etc/eToken.conf
+  # Documentation -- user guide belongs to the GUI package
+  install -Dm644 "GA - Build 77/Documentation/007-013841-002_SafeNet Authentication Client_ 10.7_Linux_GA_RN_RevD.pdf" \
+                  "$pkgdir"/usr/share/doc/$pkgname/SAC_10.7_Linux_Release_Notes.pdf
+  install -Dm644 "GA - Build 77/Documentation/007-013842-001_SafeNet Authentication Client_10.7_GA_Linux_Administrator_Guide_Rev C.pdf" \
+                  "$pkgdir"/usr/share/doc/$pkgname/SAC_10.7_Linux_Administrator_Guide.pdf
+
+  #install -Dm644 eToken.conf "$pkgdir"/etc/eToken.conf
 }
 
 # vim: ts=2:sw=2:et:
