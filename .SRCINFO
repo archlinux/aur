@@ -17,6 +17,7 @@ pkgbase = telepathy-kde-common-internals-git
 	depends = kaccounts-integration
 	depends = libotr
 	depends = telepathy-accounts-signon
+	provides = telepathy-kde-common-internals
 	conflicts = telepathy-kde-common-internals
 	source = git+https://invent.kde.org/network/ktp-common-internals.git
 	sha256sums = SKIP

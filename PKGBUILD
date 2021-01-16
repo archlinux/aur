@@ -12,6 +12,7 @@ url='http://community.kde.org/Real-Time_Communication_and_Collaboration'
 license=(GPL)
 depends=(knotifyconfig ktexteditor kpeople telepathy-logger-qt kaccounts-integration libotr telepathy-accounts-signon)
 makedepends=(extra-cmake-modules git kdoctools doxygen python)
+provides=(telepathy-kde-common-internals)
 conflicts=(telepathy-kde-common-internals)
 source=("git+https://invent.kde.org/network/$_name.git")
 sha256sums=('SKIP')
