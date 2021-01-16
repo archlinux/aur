@@ -19,7 +19,7 @@ vulkan-amdgpu-pro
 lib32-vulkan-amdgpu-pro
 )
 pkgver=${major}_${minor}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url=https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-20-30
 license=('custom: multiple')
@@ -31,7 +31,6 @@ DLAGENTS='https::/usr/bin/wget --referer https://www.amd.com/en/support/kb/relea
 source=(https://drivers.amd.com/drivers/linux/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}.tar.xz)
 sha256sums=(a4040db7822cde36c0783912428e1b4897ecdacb9b3d21d716357dae6e4fc6b7)
 
-PKGEXT=".pkg.tar"
 
 
 # extracts a debian package
@@ -91,7 +90,7 @@ package_amdgpu-pro-core-meta () {
 package_amf-amdgpu-pro () {
     pkgdesc="AMDGPU Pro Advanced Multimedia Framework"
     license=('custom: AMDGPU-PRO EULA')
-    depends=("amdgpu-pro-core-meta=${major}_${minor}-${pkgrel}" "libglvnd" "libx11" "opencl-amdgpu-pro-icd" "vulkan-amdgpu-pro=${major}_${minor}-${pkgrel}")
+    depends=("libglvnd" "libx11" "vulkan-amdgpu-pro=${major}_${minor}-${pkgrel}")
 
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/amf-amdgpu-pro_${major}-${minor}_amd64.deb
     move_copyright
@@ -145,7 +144,8 @@ package_vulkan-amdgpu-pro () {
     # extra_commands:
     mkdir -p "${pkgdir}"/usr/share/vulkan/icd.d/
     mv "${pkgdir}"/opt/amdgpu-pro/etc/vulkan/icd.d/amd_icd64.json "${pkgdir}"/usr/share/vulkan/icd.d/amd_pro_icd64.json
-    rm -rf "${pkgdir}"/opt/amdgpu-pro/etc/rm -rf "${pkgdir}"/etc/vulkan/icd.d/
+    rm -rf "${pkgdir}"/opt/amdgpu-pro/etc/
+    rm -rf "${pkgdir}"/etc
 }
 
 package_lib32-vulkan-amdgpu-pro () {
@@ -160,6 +160,7 @@ package_lib32-vulkan-amdgpu-pro () {
     # extra_commands:
     mkdir -p "${pkgdir}"/usr/share/vulkan/icd.d/
     mv "${pkgdir}"/opt/amdgpu-pro/etc/vulkan/icd.d/amd_icd32.json "${pkgdir}"/usr/share/vulkan/icd.d/amd_pro_icd32.json
-    rm -rf "${pkgdir}"/opt/amdgpu-pro/etc/rm -rf "${pkgdir}"/etc/vulkan/icd.d/
+    rm -rf "${pkgdir}"/opt/amdgpu-pro/etc/
+    rm -rf "${pkgdir}"/etc
 }
 
