@@ -31,7 +31,14 @@ pkgver() {
 
 prepare() {
   cd $pkgname
+
   sed -i "s/^BRANCH.*/BRANCH = 'develop'/" version.py
+
+  # Disable updater
+  sed -i 's/\(.*\)\(def doUpdate(self):\)/\1\2\n\1    return False/g' couchpotato/core/_base/updater/main.py
+  find . -name \*.js | while read FILE; do
+    sed -i 's/No updates available/Updater is not available on a non-master branch/g' "$FILE"
+  done
 }
 
 package() {
