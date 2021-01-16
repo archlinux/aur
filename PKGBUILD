@@ -1,21 +1,22 @@
 pkgname=grilo-plugins-git
 _pkgname=grilo-plugins
-pkgver=0.3.11+14+g29c5590
+pkgver=0.3.12+23+g7a2f9fbe
 pkgrel=1
+epoch=1
 pkgdesc="A collection of plugins for the Grilo framework"
 url="https://gitlab.gnome.org/GNOME/grilo-plugins"
 arch=(x86_64)
 license=(LGPL)
-depends=('grilo' 'lua' 'libmediaart' 'libgdata' 'tracker' 'gom' 'libdmapsharing' 'chromaprint'
+depends=('grilo' 'lua' 'libmediaart' 'libgdata' 'tracker3' 'gom' 'libdmapsharing' 'chromaprint'
          'gst-plugins-bad' 'gmime3')
 makedepends=('git' 'meson' 'gperf' 'yelp-tools')
-checkdepends=('gst-plugins-good' 'gst-plugins-base')
+checkdepends=('gst-plugins-good' 'gst-plugins-base' 'python-gobject' 'tracker3-miners')
 optdepends=('dleyna-server: DLNA plugin'
-            'tracker-miners: Tracker plugin')
+            'tracker3-miners: Tracker plugin')
 provides=('grilo-plugins')
 conflicts=('grilo-plugins')
 source=("git+https://gitlab.gnome.org/GNOME/grilo-plugins.git")
-sha512sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -24,7 +25,11 @@ pkgver() {
 
 build() {
   arch-meson $_pkgname build
-  ninja -C build
+  meson compile -C build
+}
+
+check() {
+  dbus-run-session meson test -C build --print-errorlogs
 }
 
 package() {
