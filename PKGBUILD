@@ -1,7 +1,7 @@
 # Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 
 pkgname=juce-bin
-pkgver=6.0.5
+pkgver=6.0.7
 pkgrel=1
 pkgdesc="Cross-platform c++ framework for creating audio applications"
 arch=("x86_64")
@@ -9,11 +9,12 @@ url="https://github.com/juce-framework/JUCE"
 license=('custom')
 groups=("pro-audio")
 depends=("alsa-lib" "freetype2" "libglvnd" "java-runtime")
+provides=("juce")
 makedepends=()
 checkdepends=()
 optdepends=("python")
 source=("$url/releases/download/$pkgver/juce-$pkgver-linux.zip" "Projucer.desktop")
-md5sums=('0599252dc7ee0e54040e18be5c05b5d1'
+md5sums=('8beda8acb99a1ae7505eed909bd3e7ea'
          '1f41df4e862e80ba260038dd8a8ae438')
 install=juce-bin.install
 
