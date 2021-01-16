@@ -12,7 +12,7 @@ makedepends=('git' 'python-setuptools')
 source=("git+https://gitgud.io/ring/imbpy.git"
         "setup.py.patch")
 sha256sums=('SKIP'
-            '4fc94e7c2dd2eebf135b76dbb2e3044fad688249f08bde8c28fe72a6e7785eba')
+            '5a8b4cdbb45085432cde21214df787f6380742abc3b67ba913763ce8659ce47e')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
