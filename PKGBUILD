@@ -1,8 +1,9 @@
 # Maintainer : Yamada Hayao <hayao@fascode.net>
 # Contributor: EHfive <eh5@sokka.cn>
+# Contributar: tleydxdy https://aur.archlinux.org/packages/pulseaudio-modules-bt/#comment-786420
 
 #-- PulseAudio --#
-pulseaudio_pkgname="extra/pulseaudio"
+pulseaudio_pkgname="pulseaudio"
 if pacman -Qq "$(basename "${pulseaudio_pkgname}")" 2> "/dev/null" 1>&2; then
     # If pulseaudio is installed, use the version of installed pulseaudio.
     pulseaudio_ver="$(pacman -Q "$(basename "${pulseaudio_pkgname}")" | cut -d ' ' -f 2 | cut -d '-'  -f 1)"
@@ -26,14 +27,14 @@ arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/EHfive/pulseaudio-modules-bt"
 license=('GPL3')
 depends=("pulseaudio>=12.0" "bluez" "bluez-libs" "sbc" "libfdk-aac.so")
-makedepends=("libpulse" "cmake>=3.0" "libavcodec.so>=58" "libldac" "git")
+makedepends=("libpulse" "cmake>=3.0" "libavcodec.so>=58" "libldac")
 optdepends=(
     "libavcodec.so>=58: aptX Classic, aptX HD support"
     "libldac: LDAC support"
     "pulseaudio=${pulseaudio_ver}: This package requires a specific PulseAudio version"
 )
-provides=("pulseaudio-bluetooth" "pulseaudio-modules-bt-git")
-conflicts=("pulseaudio-bluetooth" "pulseaudio-modules-bt-git")
+provides=("pulseaudio-bluetooth")
+conflicts=("pulseaudio-bluetooth")
 
 source=(
     "pulseaudio-modules-bt-${module_ver}.zip::https://github.com/EHfive/pulseaudio-modules-bt/archive/v${module_ver}.zip"
