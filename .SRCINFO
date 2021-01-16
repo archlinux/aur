@@ -1,0 +1,17 @@
+pkgbase = pyhoca-cli-git
+	pkgdesc = Command line X2Go client written in Python
+	pkgver = 0.6.1.x_2b50752
+	pkgrel = 1
+	url = http://www.x2go.org/
+	arch = any
+	license = AGPL
+	makedepends = python-setuptools
+	depends = python-x2go
+	depends = python-setproctitle
+	provides = pyhoca-cli
+	conflicts = pyhoca-cli
+	source = git://code.x2go.org/pyhoca-cli
+	sha256sums = SKIP
+
+pkgname = pyhoca-cli-git
+
