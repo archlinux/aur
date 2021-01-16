@@ -1,9 +1,10 @@
 # Maintainer: Simon Wörner <arch-pkg@simon-woerner.de>
 pkgname=packr
 _pkgname=packr
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="packr - Go static assets bundler"
+url="https://github.com/gobuffalo/packr"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=()
