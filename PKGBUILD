@@ -3,7 +3,7 @@
 # Contributor: Tao Meng ("mtunique") <oatgnem [at] gmail.com>
 
 pkgname=apache-flink
-_appver=1.11.2
+_appver=1.12.0
 _scalaver=2.12
 pkgver=${_appver}_${_scalaver}
 pkgrel=1
@@ -16,12 +16,12 @@ optdepends=('python2: Python2 support for python API'
             'python: Python3 support for python API'
             'hadoop: Support for running on YARN')
 install=apache-flink.install
-source=("${pkgname}-${pkgver}.tgz::https://downloads.apache.org/flink/flink-${_appver}/flink-${_appver}-bin-scala_${_scalaver}.tgz"
+source=("${pkgname}-${pkgver}.tgz::https://archive.apache.org/dist/flink/flink-${_appver}/flink-${_appver}-bin-scala_${_scalaver}.tgz"
         'apache-flink-jobmanager.service'
         'apache-flink-taskmanager@.service')
-sha256sums=('d8d22847e9aa8243373024e74f54f79f281541c4ea0b9034f177cdf290e5c0e0'
-            'SKIP'
-            'SKIP')
+sha256sums=('f7064bcd079cb9f6c9b5b2b14f52534aa75d3094b366f6aee335d7864d77f8e9'
+            '59fe1cfe8f2de6437e20a98af68125f1bdab9d04c81a583d359c56b7ca3a2c5e'
+            '11eba4a7203805d758779a8e6d18c0e6b1de0bf3e9a6ecf509fe093a4e8f975b')
 backup=("etc/${pkgname}/flink-conf.yaml"
         "etc/${pkgname}/log4j-cli.properties"
         "etc/${pkgname}/log4j-yarn-session.properties"
