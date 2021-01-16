@@ -1,27 +1,27 @@
 # Maintainer: Sergey A. <murlakatamenka@disroot.org>
 
 pkgname=zenith
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Terminal system monitor with histograms, written in Rust"
 arch=('x86_64')
 url="https://github.com/bvaisvil/zenith"
 license=('MIT')
 makedepends=('cargo')
+optdepends=('nvidia-utils')
 provides=('zenith')
 conflicts=('zenith-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-md5sums=('0cb7db378eadfd35420609396cd9c98d')
+md5sums=('bea1f9e7f373c335322dfbaead7a8f10')
 
 build() {
     cd "$pkgname-$pkgver"
-    cargo build --release
+
+    make
 }
 
 package() {
     cd "$pkgname-$pkgver"
 
-    install -Dm 755 "target/release/zenith"  "$pkgdir/usr/bin/zenith"
-
-    install -Dm 644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+    make PREFIX=$pkgdir/usr install
 }
