@@ -1,6 +1,6 @@
 pkgbase = git-req
 	pkgdesc = Switch between merge/pull requests in your GitLab and GitHub repositories with just the request ID.
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://arusahni.github.io/git-req/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = git-req
 	depends = git
 	provides = git-req
 	conflicts = git-req
-	source = git-req-2.2.0.tar.gz::https://github.com/arusahni/git-req/archive/v2.2.0.tar.gz
-	sha256sums = 9ac96c2dbdcdc591218a09d2c35bc8d663f2f913467b0f229bc3e4fa5903b04c
+	source = git-req-2.2.1.tar.gz::https://github.com/arusahni/git-req/archive/v2.2.1.tar.gz
+	sha256sums = 074a41e2246eb44d6a44d5615d441dd300078080bd013a9c2346e4c7cb93e17a
 
 pkgname = git-req
 

@@ -1,6 +1,6 @@
 # Maintainer: Aru Sahni <aru@arusahni.net>
 pkgname=git-req
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 epoch=
 pkgdesc="Switch between merge/pull requests in your GitLab and GitHub repositories with just the request ID."
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/arusahni/$pkgname/archive/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('9ac96c2dbdcdc591218a09d2c35bc8d663f2f913467b0f229bc3e4fa5903b04c')
+sha256sums=('074a41e2246eb44d6a44d5615d441dd300078080bd013a9c2346e4c7cb93e17a')
 validpgpkeys=()
 
 build() {
