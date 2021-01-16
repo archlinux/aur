@@ -1,13 +1,15 @@
 # Maintainer: Cobra <najahannah [at] gmail [dot] com>
 pkgname=portfolio
-pkgver=0.50.0
+pkgver=0.50.1
 pkgrel=1
 pkgdesc="Track your portfolio performance (finance)"
 arch=('i686' 'x86_64')
 url="http://buchen.github.io/portfolio/"
 license=('EPL')
-depends=('java-runtime>=8' 'java-runtime<=14' 'webkit2gtk')
-makedepends=('maven' 'java-runtime>=8' 'archlinux-java-run' 'gendesk')
+#depends=('java-runtime>=11' 'java-runtime<15' 'webkit2gtk')
+depends=('java-runtime=11' 'webkit2gtk')
+#makedepends=('maven' 'java-runtime>=11' 'archlinux-java-run' 'gendesk')
+makedepends=('maven' 'java-runtime=11' 'archlinux-java-run' 'gendesk')
 
 _DEST="/usr/share/portfolio"
 
@@ -15,7 +17,7 @@ _DEST="/usr/share/portfolio"
 [ "$CARCH" = "x86_64" ] && _platform="x86_64"
 
 source=("https://github.com/buchen/portfolio/archive/$pkgver.tar.gz")
-sha1sums=('2055c9e759eb36c21126fb958bea06afbdd6eee5')
+sha1sums=('38f0c68f84b1d44afeb0fd1cd3eda1d2f5c44924')
 
 prepare() {
 	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
@@ -32,7 +34,8 @@ prepare() {
 build() {
     export MAVEN_OPTS="-Xmx1g"
     #export JAVA_HOME=/usr/lib/jvm/default-runtime
-    export JAVA_HOME=$(archlinux-java-run --min 8 --max 14 --java-home)
+    #export JAVA_HOME=$(archlinux-java-run --min 11 --max 14 --java-home)
+    export JAVA_HOME=$(archlinux-java-run --min 11 --max 11 --java-home)
     cd $pkgname-$pkgver
 
     cd portfolio-app
