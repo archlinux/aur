@@ -19,7 +19,6 @@ build() {
   cp --parents -r server/{lib,node_modules,package.json} ..
   cd ../server
   yarn --ignore-scripts --production --non-interactive --no-bin-links
-
 }
 
 check() {
