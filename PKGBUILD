@@ -7,11 +7,13 @@
 # http://zipcon.net/~swhite/docs/computers/browsers/fonttest.html
 # http://getemoji.com/
 
-pkgbase=fontconfig-ubuntu
-pkgname=('fontconfig-ubuntu' 'fontconfig-ubuntu-docs')
+# documentation currently fails to build
+#pkgbase=fontconfig-ubuntu
+#pkgname=('fontconfig-ubuntu' 'fontconfig-ubuntu-docs')
+pkgname=fontconfig-ubuntu
 pkgver=2.13.1
-_ubuver=2ubuntu3
-pkgrel=1
+_ubuver=4.2ubuntu2
+pkgrel=2
 pkgdesc='A library for configuring and customizing font access (with Ubuntu patches)'
 arch=('x86_64')
 url='https://launchpad.net/ubuntu/+source/fontconfig'
@@ -23,7 +25,7 @@ source=("https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_${pkgve
         "https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_${pkgver}-${_ubuver}.debian.tar.xz"
         'fontconfig-ubuntu.hook')
 sha256sums=('f655dd2a986d7aa97e052261b36aa67b0a64989496361eca8d604e6414006741'
-            '342671f6a1e6d392958a6eec27541c6bdffc6498b469dcc46eca66c9d23a863a'
+            'c882c12b8d66d7e1ae7a880ebcc1fe1716e70b3502b5cd7ac88859d7a70eff50'
             '8883f7e6e9d574ed52b89256507a6224507925715ddc85b3dfab9683df2f1e25')
 
 prepare() {
@@ -45,7 +47,8 @@ build() {
         --localstatedir='/var' \
         --disable-static \
         --with-default-fonts='/usr/share/fonts' \
-        --with-add-fonts='/usr/local/share/fonts'
+        --with-add-fonts='/usr/local/share/fonts' \
+        --disable-docs
     make
 }
 
@@ -67,16 +70,16 @@ package_fontconfig-ubuntu() {
     install -D -m644 "fontconfig-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     
     # split docs
-    [ -d 'docs' ] && rm -rf docs
-    mkdir -p docs/share/man
-    mv "${pkgdir}/usr/share/doc" docs/share
-    mv "${pkgdir}/usr/share/man/man3" docs/share/man
+    #[ -d 'docs' ] && rm -rf docs
+    #mkdir -p docs/share/man
+    #mv "${pkgdir}/usr/share/doc" docs/share
+    #mv "${pkgdir}/usr/share/man/man3" docs/share/man
 }
 
-package_fontconfig-ubuntu-docs() {
-    pkgdesc+=' (documentation)'
-    arch=('any')
-    
-    mv docs "${pkgdir}/usr"
-    install -D -m644 "fontconfig-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
+#package_fontconfig-ubuntu-docs() {
+#    pkgdesc+=' (documentation)'
+#    arch=('any')
+#    
+#    mv docs "${pkgdir}/usr"
+#    install -D -m644 "fontconfig-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+#}

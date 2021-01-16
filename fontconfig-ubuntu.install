@@ -1,8 +1,8 @@
 post_upgrade() {
   # a full forced directory scan is required here
-  echo -n "Rebuilding fontconfig cache..."
+  printf '%s' 'Rebuilding fontconfig cache...'
   /usr/bin/fc-cache -rs
-  echo " done."
+  printf '%s\n' ' done.'
 }
 
 post_install() {
