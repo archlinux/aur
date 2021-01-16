@@ -2,12 +2,15 @@
 
 pkgname=lsi-openpegasus
 pkgver=2.14.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Openpegasus libs for LSI (Broadcom) Raid products"
 arch=('x86_64')
 url='http://www.avagotech.com/products/server-storage'
 license=('custom:TOG')
-depends=('sqlite')
+depends=('sqlite'
+         'openssl'
+         'libxcrypt'
+         )
 makedepends=('icu'
              'openssl'
              'net-snmp'
@@ -58,15 +61,21 @@ prepare() {
   # set lib output directory
   setconf configure libbase lib
 
-  export PEGASUS_EXTRA_C_FLAGS="${CFLAGS}"
-  export PEGASUS_EXTRA_CXX_FLAGS="${CXXFLAGS}"
-  export PEGASUS_EXTRA_PROGRAM_LINK_FLAGS="${LDFLAGS}"
+  # add missing z library
+  sed 's|lcrypt|& -lz|g' -i mak/config-linux.mak
 
-  ./configure
 }
 
 build() {
   cd pegasus
+
+  export PEGASUS_EXTRA_C_FLAGS="${CFLAGS} -Wall -Wno-unused -fno-strict-aliasing"
+  export PEGASUS_EXTRA_CXX_FLAGS="${PEGASUS_EXTRA_C_FLAGS} -std=c++14"
+  export PEGASUS_EXTRA_LINK_FLAGS="${LDFLAGS}"
+  export PEGASUS_EXTRA_PROGRAM_LINK_FLAGS="-pie -Wl,-z,relro,-z,now,-z,nodlopen,-z,noexecstack"
+
+  ./configure
+
   make -f GNUmakefile
 }
 
