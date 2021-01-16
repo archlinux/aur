@@ -1,7 +1,7 @@
 pkgbase = kiconthemes-git
 	pkgdesc = KIconThemes
-	pkgver = v4.100.0.rc1.r387.g3830e19
-	pkgrel = 2
+	pkgver = v4.100.0.rc1.r400.gd6b1a91
+	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kiconthemes
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = kiconthemes-git
 	makedepends = git
 	makedepends = python
 	makedepends = qt5-tools
+	makedepends = qt5-wayland
 	depends = qt5-svg
 	depends = kconfigwidgets-git
 	depends = kitemviews-git

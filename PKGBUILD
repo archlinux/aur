@@ -2,14 +2,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kiconthemes-git
-pkgver=v4.100.0.rc1.r387.g3830e19
-pkgrel=2
+pkgver=v4.100.0.rc1.r400.gd6b1a91
+pkgrel=1
 pkgdesc='KIconThemes'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kiconthemes'
 license=('LGPL')
 depends=('qt5-svg' 'kconfigwidgets-git' 'kitemviews-git' 'karchive-git')
-makedepends=('extra-cmake-modules-git' 'git' 'python' 'qt5-tools')
+makedepends=('extra-cmake-modules-git' 'git' 'python' 'qt5-tools' 'qt5-wayland')
 conflicts=(kiconthemes)
 provides=(kiconthemes)
 source=('git+https://github.com/KDE/kiconthemes.git')
