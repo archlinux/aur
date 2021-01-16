@@ -2,7 +2,7 @@
 
 pkgname=yarn-completion-git
 pkgver=v0.17.0.r0.g30262cf
-pkgrel=3
+pkgrel=4
 pkgdesc='Bash completion for Yarn'
 url='https://github.com/dsifford/yarn-completion'
 arch=('any')
@@ -72,6 +72,6 @@ check() {
 
 package() {
   cd ${pkgname%-git}
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
   install -Dm644 "${pkgname%-git}.bash" "$pkgdir/usr/share/bash-completion/completions/yarn"
 }
