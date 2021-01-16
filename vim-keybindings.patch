@@ -1,8 +1,8 @@
 diff --git a/Action.c b/Action.c
-index 206eb67..99ef96d 100644
+index 0b5c899..c3b7166 100644
 --- a/Action.c
 +++ b/Action.c
-@@ -443,7 +443,7 @@ static const struct {
+@@ -432,7 +432,7 @@ static const struct {
     const char* key;
     const char* info;
  } helpLeft[] = {
@@ -11,7 +11,7 @@ index 206eb67..99ef96d 100644
     { .key = " Digits: ", .info = "incremental PID search" },
     { .key = "   F3 /: ", .info = "incremental name search" },
     { .key = "   F4 \\: ",.info = "incremental name filtering" },
-@@ -469,7 +469,7 @@ static const struct {
+@@ -458,7 +458,7 @@ static const struct {
     { .key = "  Space: ", .info = "tag process" },
     { .key = "      c: ", .info = "tag process and its children" },
     { .key = "      U: ", .info = "untag all processes" },
@@ -20,7 +20,7 @@ index 206eb67..99ef96d 100644
     { .key = "   F7 ]: ", .info = "higher priority (root only)" },
     { .key = "   F8 [: ", .info = "lower priority (+ nice)" },
  #if (defined(HAVE_LIBHWLOC) || defined(HAVE_LINUX_AFFINITY))
-@@ -477,12 +477,12 @@ static const struct {
+@@ -466,12 +466,12 @@ static const struct {
  #endif
     { .key = "      e: ", .info = "show process environment" },
     { .key = "      i: ", .info = "set IO priority" },
@@ -36,7 +36,7 @@ index 206eb67..99ef96d 100644
     { .key = "  F10 q: ", .info = "quit" },
     { .key = NULL, .info = NULL }
  };
-@@ -648,12 +648,14 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -641,12 +641,14 @@ void Action_setBindings(Htop_Action* keys) {
     keys['H'] = actionToggleUserlandThreads;
     keys['I'] = actionInvertSortOrder;
     keys['K'] = actionToggleKernelThreads;
@@ -51,7 +51,7 @@ index 206eb67..99ef96d 100644
     keys['Z'] = actionTogglePauseProcessUpdate;
     keys['['] = actionLowerPriority;
     keys['\014'] = actionRedraw; // Ctrl+L
-@@ -663,9 +665,6 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -656,9 +658,6 @@ void Action_setBindings(Htop_Action* keys) {
     keys['a'] = actionSetAffinity;
     keys['c'] = actionTagAllChildren;
     keys['e'] = actionShowEnvScreen;
@@ -61,7 +61,7 @@ index 206eb67..99ef96d 100644
     keys['m'] = actionToggleMergedCommand;
     keys['p'] = actionToggleProgramPath;
     keys['q'] = actionQuit;
-@@ -673,7 +672,7 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -666,7 +665,7 @@ void Action_setBindings(Htop_Action* keys) {
     keys['t'] = actionToggleTreeView;
     keys['u'] = actionFilterByUser;
     keys['w'] = actionShowCommandScreen;
@@ -70,19 +70,18 @@ index 206eb67..99ef96d 100644
     keys[KEY_F(1)] = actionHelp;
     keys[KEY_F(2)] = actionSetup;
     keys[KEY_F(3)] = actionIncSearch;
-@@ -685,6 +684,7 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -678,5 +677,6 @@ void Action_setBindings(Htop_Action* keys) {
     keys[KEY_F(9)] = actionKill;
     keys[KEY_F(10)] = actionQuit;
     keys[KEY_F(18)] = actionExpandCollapseOrSortColumn;
 +   keys['o'] = actionExpandCollapseOrSortColumn;
     keys[KEY_RECLICK] = actionExpandOrCollapse;
-    keys[KEY_RESIZE] = actionResize;
  }
 diff --git a/Panel.c b/Panel.c
-index 26a0c0e..2ace36a 100644
+index 986a989..e7cb440 100644
 --- a/Panel.c
 +++ b/Panel.c
-@@ -343,6 +343,7 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -351,6 +351,7 @@ bool Panel_onKey(Panel* this, int key) {
  
     switch (key) {
     case KEY_DOWN:
@@ -90,7 +89,7 @@ index 26a0c0e..2ace36a 100644
     case KEY_CTRL('N'):
     #ifdef KEY_C_DOWN
     case KEY_C_DOWN:
-@@ -351,6 +352,7 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -359,6 +360,7 @@ bool Panel_onKey(Panel* this, int key) {
        break;
  
     case KEY_UP:
@@ -98,7 +97,7 @@ index 26a0c0e..2ace36a 100644
     case KEY_CTRL('P'):
     #ifdef KEY_C_UP
     case KEY_C_UP:
-@@ -359,7 +361,7 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -367,7 +369,7 @@ bool Panel_onKey(Panel* this, int key) {
        break;
  
     case KEY_LEFT:
@@ -107,7 +106,7 @@ index 26a0c0e..2ace36a 100644
        if (this->scrollH > 0) {
           this->scrollH -= MAXIMUM(CRT_scrollHAmount, 0);
           this->needsRedraw = true;
-@@ -367,18 +369,29 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -375,16 +377,27 @@ bool Panel_onKey(Panel* this, int key) {
        break;
  
     case KEY_RIGHT:
@@ -128,16 +127,14 @@ index 26a0c0e..2ace36a 100644
 +
     case KEY_PPAGE:
 +   case KEY_CTRL('B'):
-       this->selected -= (this->h - 1);
-       this->scrollV = CLAMP_INDEX(this->scrollV, -(this->h - 1), 0, size - this->h);
-       this->needsRedraw = true;
+       PANEL_SCROLL(-(this->h - Panel_headerHeight(this)));
        break;
  
     case KEY_NPAGE:
 +   case KEY_CTRL('F'):
-       this->selected += (this->h - 1);
-       this->scrollV = CLAMP_INDEX(this->scrollV, +(this->h - 1), 0, size - this->h);
-       this->needsRedraw = true;
+       PANEL_SCROLL(+(this->h - Panel_headerHeight(this)));
+       break;
+ 
 @@ -397,10 +410,12 @@ bool Panel_onKey(Panel* this, int key) {
        break;
  
@@ -205,7 +202,7 @@ index 880597d..0c44936 100644
  
  For more information and details on how to contribute to `htop` visit [htop.dev](https://htop.dev).
 diff --git a/ScreenManager.c b/ScreenManager.c
-index 4c74e47..6fce01f 100644
+index 64af535..6c947a8 100644
 --- a/ScreenManager.c
 +++ b/ScreenManager.c
 @@ -251,7 +251,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
