@@ -20,7 +20,7 @@ source=('couchpotato.service'
         'couchpotato.sysusers'
         "$pkgname::git+$_giturl#branch=develop")
 md5sums=('f03b752e2a46030a9cafa38385f3d0df'
-         'b4dd3397e74c6d543ae2936971e26541'
+         '1b826a61b26b5ec098b720bac02f4232'
          'SKIP')
 
 pkgver() {
