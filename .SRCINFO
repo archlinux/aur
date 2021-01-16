@@ -1,5 +1,5 @@
 pkgbase = qqc2-desktop-style-git
-	pkgdesc = A style for Qt Quick Controls 2 to make it follow your desktop theme
+	pkgdesc = A style for Qt Quick Controls 2 to make it follow your desktop theme - Git Version
 	pkgver = r435.64d900d
 	pkgrel = 1
 	url = https://invent.kde.org/frameworks/qqc2-desktop-style
@@ -7,8 +7,8 @@ pkgbase = qqc2-desktop-style-git
 	groups = kf5
 	license = LGPL
 	makedepends = extra-cmake-modules
-	depends = kirigami2
-	depends = kiconthemes
+	depends = kirigami-git
+	depends = kiconthemes-git
 	provides = qqc2-desktop-style
 	conflicts = qqc2-desktop-style
 	source = git+https://invent.kde.org/frameworks/qqc2-desktop-style.git
