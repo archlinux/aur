@@ -11,12 +11,12 @@ depends=('python' 'python-urllib3')
 makedepends=('git' 'python-setuptools')
 optdepends=('tesseract' 'imagemagick')
 source=("git+https://gitgud.io/ring/infinityctl.git"
-        "infinityctl-setup.py.patch"
-        "infinityctl-unix_original-scrape-mode.patch"
-        "infinityctl-file-name-length-limit.patch"
-        "infinityctl-remove-defunct.patch"
-        "infinityctl-8kun.top.patch"
-        "infinityctl-smuglo.li.patch")
+        "setup.py.patch"
+        "unix_original-scrape-mode.patch"
+        "file-name-length-limit.patch"
+        "remove-defunct.patch"
+        "8kun.top.patch"
+        "smuglo.li.patch")
 sha256sums=('SKIP'
             '08f7c0c16d586732371e9448b76ad924bf3172897aa7f7bb41896c7be6fb1203'
             '53ef6c4a259c3648aeadbf3c695db72734ea824f9ba345fd4e1146d9cf76978d'
@@ -32,12 +32,12 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-  patch -Np1 -i "$srcdir/infinityctl-setup.py.patch"
-  patch -Np1 -i "$srcdir/infinityctl-unix_original-scrape-mode.patch"
-  patch -Np1 -i "$srcdir/infinityctl-file-name-length-limit.patch"
-  patch -Np1 -i "$srcdir/infinityctl-remove-defunct.patch"
-  patch -Np1 -i "$srcdir/infinityctl-8kun.top.patch"
-  patch -Np1 -i "$srcdir/infinityctl-smuglo.li.patch"
+  patch -Np1 -i "$srcdir/setup.py.patch"
+  patch -Np1 -i "$srcdir/unix_original-scrape-mode.patch"
+  patch -Np1 -i "$srcdir/file-name-length-limit.patch"
+  patch -Np1 -i "$srcdir/remove-defunct.patch"
+  patch -Np1 -i "$srcdir/8kun.top.patch"
+  patch -Np1 -i "$srcdir/smuglo.li.patch"
 }
 
 build() {
