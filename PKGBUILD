@@ -2,21 +2,26 @@
 
 _gemname=oj
 pkgname=ruby-$_gemname
-pkgver=3.5.0
+pkgver=3.11.0
 pkgrel=1
-pkgdesc="The fastest JSON parser and object serializer."
-arch=('i686' 'x86_64')
-url="http://www.ohler.com/oj/"
-license=('MIT')
-depends=('ruby')
-makedepends=('rubygems' 'ruby-rdoc')
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
+pkgdesc="The fastest JSON parser and object serializer"
+arch=(i686 x86_64)
+url=http://www.ohler.com/oj/
+license=(MIT)
+depends=(ruby)
+makedepends=(rubygems ruby-rdoc)
+source=(https://github.com/ohler55/oj/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
 options=(!emptydirs)
-sha256sums=('d8eee3580ba5b3ef4342d9116a1f6356f0e77c03e89c4497000e0318c1c4f353')
+sha256sums=('1d4796dffe29fbbc30c3e6b5abc8f76d8ae0c549a3844b44d1c13a9e1c8080b5')
+
+build() {
+  cd $_gemname-$pkgver
+  gem build ${_gemname}.gemspec
+}
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  cd $_gemname-$pkgver
+  local _gemdir="$(gem env gemdir)"
 
   gem install \
     --ignore-dependencies \
@@ -27,6 +32,7 @@ package() {
 
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 
-  install -Dm0644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# vim: set ts=2 sw=2 et:
