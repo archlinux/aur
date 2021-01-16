@@ -1,33 +1,45 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=kicad-symbols-git
-_pkgname=kicad-symbols
-pkgver=r6627.ab2ff7fa
+pkgver=5.1.6.r591.ge012b90c
 pkgrel=1
 pkgdesc="KiCad schematic symbol libraries from the official git repo"
-arch=('any')
-url="https://github.com/KiCad/kicad-symbols"
-license=('GPL')
-makedepends=('cmake' 'git')
-conflicts=('kicad-library-bzr' 'kicad-library-git' 'kicad-library-3d' 'kicad-library' 'kicad-symbols')
+arch=(any)
+url=https://gitlab.com/kicad/libraries/kicad-package
+license=('CC-BY-SA 4.0')
+makedepends=(
+cmake
+git
+ninja
+)
+conflicts=('kicad-library-bzr' 'kicad-library-git' 'kicad-library' 'kicad-symbols')
 provides=('kicad-symbols')
-source=("git+https://gitlab.com/kicad/libraries/kicad-symbols.git")
+source=(git+https://gitlab.com/kicad/libraries/kicad-symbols.git)
 md5sums=('SKIP')
 
+options=('!strip')
+
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd kicad-symbols
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir"
-  mkdir -p "$srcdir/build/"
-  cd "$srcdir/build"
-  cmake ../${_pkgname} -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  cd kicad-symbols
+  cmake \
+    -W no-dev \
+    -D CMAKE_BUILD_TYPE=None \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -G Ninja \
+    -B build_dir \
+    -S .
+
+  cmake --build build_dir
 }
 
 package() {
-  cd "$srcdir/build"
+  cd kicad-symbols
+  DESTDIR="${pkgdir}" cmake --build build_dir -- install
 
-  make DESTDIR="$pkgdir" install
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE.md
 }
