@@ -1,7 +1,7 @@
 # Maintainer: Robert Cegliński <rob.ceglinski@gmail.com>
 
 pkgname=minetest-mineclone2
-pkgver=0.69.1
+pkgver=0.70.0
 pkgrel=1
 pkgdesc='Minecraft clone game for Minetest'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://git.minetest.land/Wuzzy/MineClone2'
 license=('GPL3')
 depends=('minetest-common')
 source=("mineclone2-$pkgver.tar.gz::https://git.minetest.land/Wuzzy/MineClone2/archive/${pkgver}.tar.gz")
-sha256sums=('c13fba6abc0ae5eb10b4b95466a5c7b6c1ddf0ada7eb12ec8e535ac09a01f187')
+sha256sums=('e5a3c5cdd068ef6b5453fc7999579d03fbfd797c7be4a691b9360ba81f30180c')
 
 package() {
   cd mineclone2
