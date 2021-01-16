@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=breaktimer-bin
-pkgver=0.7.7
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Manage periodic breaks. Avoid eye-strain and RSI'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('nss'
          'nodejs')
 makedepends=('tar')
 source=("${pkgname%-bin}-${pkgver}.deb::https://github.com/tom-james-watson/breaktimer-app/releases/download/v${pkgver}/BreakTimer.deb")
-sha256sums=('98e9714521bbee6ae4d2b5166a4f79b40fd43d116ad6994d9fbb49cdf2692c04')
+sha256sums=('7516fd6e0e71a82a8f8f47d5f3229476f8dfdcd59c7f6f801ebf40bca4368987')
 
 package() {
   tar xvf data.tar.xz -C "${pkgdir}"
