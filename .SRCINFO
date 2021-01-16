@@ -1,13 +1,13 @@
 pkgbase = python-untwisted
 	pkgdesc = A library for asynchronous programming in python
-	pkgver = 2.0.2
+	pkgver = 3.2.2
 	pkgrel = 1
 	url = https://github.com/untwisted/untwisted
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	source = python-untwisted-2.0.2.tar.gz::https://github.com/untwisted/untwisted/archive/v2.02.tar.gz
-	sha256sums = f58fd29d21b83d586b333bfeec9969385994605ddb9623c419781fa5f9439534
+	source = python-untwisted-3.2.2.tar.gz::https://github.com/untwisted/untwisted/archive/v3.2.2.tar.gz
+	sha256sums = ddee7f9d6c732eb210f3aeea4896ff34f795326a5b3401adb3814748d995f188
 
 pkgname = python-untwisted
 
