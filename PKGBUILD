@@ -3,15 +3,14 @@
 
 pkgname=kitematic
 pkgver=0.17.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Visual Docker Container Management'
 arch=('x86_64')
 url='https://github.com/docker/kitematic/'
 license=('Apache')
-depends=('docker' 'nodejs' 'glib2' 'hicolor-icon-theme'
-         'nss' 'libxss' 'libxtst' 'gtk2' 'gconf' 'alsa-lib')
+depends=('docker' 'gtk3' 'nodejs' 'nss' 'libxss' 'hicolor-icon-theme')
 makedepends=('git' 'npm' 'grunt-cli')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/docker/kitematic/archive/v${pkgver}.tar.gz"
+source=("https://github.com/docker/kitematic/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         'kitematic.desktop'
         'kitematic.svg')
 sha256sums=('fb22f98bb775ccb42ba29b3432b14cb5bae9cc1f1fb816990d73cf6d609f05da'
