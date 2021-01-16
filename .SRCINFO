@@ -11,6 +11,7 @@ pkgbase = pulseaudio-nosystemd-minimal-git
 	makedepends = libasyncns
 	makedepends = tdb
 	makedepends = intltool
+	makedepends = dconf
 	makedepends = orc
 	makedepends = check
 	makedepends = meson

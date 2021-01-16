@@ -18,7 +18,7 @@ url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 license=(GPL)
 depends=("libltdl" "rtkit" "tdb" "orc" "dconf" "libasyncns" "libsndfile" "speexdsp")
 makedepends=("git" "attr" "rtkit" "libasyncns"
-             "tdb" "intltool"
+             "tdb" "intltool" "dconf"
              "orc" "check" "meson" "speexdsp")
 optdepends=("alsa-plugins: ALSA support"
             "pulseaudio-alsa: ALSA configuration (recommended)")
