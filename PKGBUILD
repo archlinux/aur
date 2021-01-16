@@ -2,7 +2,7 @@
 pkgname=jfa-go-git
 _pkgname=jfa-go
 pkgver=r221.ffc6257
-pkgrel=1
+pkgrel=2
 pkgdesc="A web app for managing users on Jellyfin"
 arch=("x86_64")
 url="https://github.com/hrfee/jfa-go"
@@ -29,7 +29,10 @@ pkgver() {
 
 prepare() {
     cd ${pkgname}
-    make configuration npm email version swagger
+    make configuration npm email version
+    export GOPATH="$(go env GOPATH)"
+    go get github.com/swaggo/swag/cmd/swag
+    "${GOPATH}"/bin/swag init -g main.go
 }
 
 build() {
