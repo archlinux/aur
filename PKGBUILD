@@ -52,7 +52,7 @@ prepare(){
 
 build() {
   cd OCP
-  PYTHONPATH=pywrap python -m bindgen \
+  CONDA_PREFIX=/usr PYTHONPATH=pywrap python -m bindgen \
     --clean \
     --libclang "$(ldconfig -p | grep 'libclang.so$' | awk '{print $NF}')" \
     --include "$(clang -print-resource-dir)"/include \
@@ -63,25 +63,27 @@ build() {
     -D CMAKE_INSTALL_PREFIX="/usr" \
     -D OPENCASCADE_INCLUDE_DIR=opencascade \
     -D CMAKE_BUILD_TYPE=None \
-    -B "${srcdir}/build" \
+    -B build_dir \
     -G Ninja \
     -S OCP
 
-  ninja -C "${srcdir}/build"
+  cmake --build build_dir
 }
 
 check() {
-  cd "${srcdir}/build"
+  cd OCP
+  cd build_dir
   python -c "from OCP.gp import gp_Vec, gp_Ax1, gp_Ax3, gp_Pnt, gp_Dir, gp_Trsf, gp_GTrsf, gp, gp_XYZ"
 }
 
 package(){
   cd OCP
-  _python_site_path="$(python -c 'import sys; print(sys.path[-1])')"
-  mkdir -p "${pkgdir}/${_python_site_path}"
-  cp "${srcdir}"/build/OCP.*.so "${pkgdir}/${_python_site_path}"
+  #_python_site_path="$(python -c 'import sys; print(sys.path[-1])')"
+  #mkdir -p "${pkgdir}/${_python_site_path}"
+  #cp "${srcdir}"/build/OCP.*.so "${pkgdir}/${_python_site_path}"
 
- install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE
+  install -Dt "${pkgdir}$(python -c 'import sys; print(sys.path[-1])')" -m644 build_dir/OCP.*.so
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE
 }
 
 # vim:ts=2:sw=2:et:
