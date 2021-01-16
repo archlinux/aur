@@ -10,8 +10,9 @@ pkgdesc="Automatic Movie Downloading via NZBs & Torrents"
 arch=('any')
 url="http://couchpota.to/"
 license=('GPL3')
+makedepends=('git')
 # 'python2-pyopenssl' is deprecated
-depends=('git' 'python2-lxml')
+depends=('python2-lxml')
 #depends=('python2-lxml')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -41,11 +42,8 @@ package() {
 
   cd $pkgname
 
-  # A "GIT" install includes the .git folder
+  # A "source" install does not include the .git folder
   install 755 -d "$pkgdir/opt/couchpotato/app"
-  cp -a . "$pkgdir/opt/couchpotato/app"
-
-  git -C "$pkgdir/opt/couchpotato/app" remote set-url origin $_giturl
-  git -C "$pkgdir/opt/couchpotato/app" switch develop    # master
+  cp -a * "$pkgdir/opt/couchpotato/app"
 }
 
