@@ -1,13 +1,13 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 
 pkgname=loopauditioneer-svn
-pkgver=r50
+pkgver=r54
 pkgrel=1
 pkgdesc="Software for loop and cue handling in .wav files"
 arch=('i686' 'x86_64')
 url="http://loopauditioneer.sourceforge.net/"
 license=('GPL3')
-depends=('wxgtk' 'alsa-lib' 'gcc-libs-multilib')
+depends=('wxgtk2' 'alsa-lib' 'gcc-libs-multilib')
 makedepends=('svn')
 provides=('loopauditioneer')
 conflicts=('loopauditioneer')

@@ -1,13 +1,13 @@
 pkgbase = loopauditioneer-svn
 	pkgdesc = Software for loop and cue handling in .wav files
-	pkgver = r50
+	pkgver = r54
 	pkgrel = 1
 	url = http://loopauditioneer.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = svn
-	depends = wxgtk
+	depends = wxgtk2
 	depends = alsa-lib
 	depends = gcc-libs-multilib
 	provides = loopauditioneer
