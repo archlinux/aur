@@ -1,6 +1,6 @@
 pkgbase = czkawka-gui-bin
 	pkgdesc = Multi functional app to find duplicates, empty folders, similar images etc (GUI)
-	pkgver = 2.1.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/qarmin/czkawka
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = czkawka-gui-bin
 	depends = gtk3
 	provides = czkawka-gui
 	provides = czkawka
-	source = czkawka-gui-bin-2.1.0::https://github.com/qarmin/czkawka/releases/download/2.1.0/linux_czkawka_gui
+	source = czkawka-gui-bin-2.3.0::https://github.com/qarmin/czkawka/releases/download/2.3.0/linux_czkawka_gui
 	source = LICENSE::https://github.com/qarmin/czkawka/raw/master/LICENSE
 	source = czkawka-gui.png
-	sha256sums = 5df93a9819e426374704b77ca03a8c8d870ddd40da1e91e6152a43c7c2e4f06a
+	sha256sums = 5d2830872c838193eda197c098fadde9305dd23eafe8e0b90a0481b5c365d1c4
 	sha256sums = 4745d8b5b4ca465f4894553b40c8d1a23ee65a987f2846a4ef90662d7f3f2002
 	sha256sums = 1614565bc6f143b4bb4fc80c71cb1fe0b2ba2719037046719d5a3a89c3f5905e
 
