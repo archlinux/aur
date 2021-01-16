@@ -1,0 +1,18 @@
+pkgbase = joshuto
+	pkgdesc = ranger-like terminal file manager written in Rust
+	pkgver = 0.8.5
+	pkgrel = 1
+	url = https://github.com/kamiyaa/joshuto
+	arch = any
+	license = LGPL3
+	makedepends = git
+	makedepends = cargo
+	depends = file
+	depends = xdg-utils
+	provides = joshuto
+	conflicts = joshuto
+	source = https://github.com/kamiyaa/joshuto/archive/0.8.5.tar.gz
+	md5sums = 451bce32cde13b959ae545635c8c8f88
+
+pkgname = joshuto
+
