@@ -1,0 +1,24 @@
+pkgbase = python-bempp-cl
+	pkgdesc = A fast Python based just-in-time compiling boundary element library
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/bempp/bempp-cl
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-numba
+	depends = python-meshio
+	depends = python-llvmlite
+	optdepends = python-plotly: data visualization
+	optdepends = python-pyopencl: GPU computation
+	optdepends = gmsh: meshing and visualization
+	provides = python-bempp
+	conflicts = python-bempp
+	source = bempp-cl-0.2.2.tar.gz::https://github.com/bempp/bempp-cl/archive/v0.2.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-bempp-cl
+
