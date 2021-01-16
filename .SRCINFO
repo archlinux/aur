@@ -27,6 +27,7 @@ pkgbase = pulseaudio-nosystemd-git
 	makedepends = webrtc-audio-processing
 	makedepends = check
 	makedepends = meson
+	makedepends = dconf
 	depends = libltdl
 	depends = libsoxr
 	depends = libasyncns
