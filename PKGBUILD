@@ -3,7 +3,7 @@
 
 pkgname=weewx
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for logging data from weather stations"
 arch=("any")
 url="http://www.weewx.com/"
