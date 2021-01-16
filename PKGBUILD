@@ -1,7 +1,7 @@
 # Maintainer: ml <ml visu.li>
 pkgname=kubectl-split-yaml
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Split Kubernetes YAML output into one file per resource'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/nathforge/kubectl-split-yaml'
@@ -30,6 +30,9 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
+  # plugin executables have to replace all but the first dash (-) with underscore
+  # this is a stupid solution, but it works for any amount of dashes in the plugin name
+  : "${pkgname//-/_}"
+  install -Dm755 "$pkgname" "$pkgdir/usr/bin/${_/_/-}"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
