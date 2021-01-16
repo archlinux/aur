@@ -1,7 +1,7 @@
 # Maintainer: Cydon <cydoncs@gmail.com>
 pkgname=dropship-bin
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Launcher and Mod manager for Among Us'
 arch=('x86_64')
 url='https://github.com/NuclearPowered/Dropship'
@@ -21,5 +21,5 @@ package() {
 	chmod go+rX -R "$pkgdir/opt/Dropship"
 
 	mkdir -p "$pkgdir/usr/bin"
-	ln -s /opt/Dropship/dropship "$pkgdir/usr/bin/dropship"
+	ln -s /opt/Dropship/AppRun "$pkgdir/usr/bin/dropship"
 }
