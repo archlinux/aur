@@ -1,6 +1,6 @@
 # Maintainer: Ashymad <czilukim@o2.pl>
 pkgname=sfk
-_version=1.9.5
+_version=1.9.7
 _revision=2
 pkgver=${_version}.${_revision}
 pkgrel=1
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('gcc-libs')
 makedepends=()
 source=("$pkgname-$pkgver.tar.gz::https://sourceforge.net/projects/swissfileknife/files/1-swissfileknife/${pkgver}/sfk-${_version}.tar.gz")
-sha256sums=('0c9596d0271cc5c04d91c99f53ff17d5bf566187512f0e51f9fb2e4f4a44d152')
+sha256sums=('d48c446ea849f0cfa1435dd2eb0d5678f7eb781ebfe2cbd155fe46bb2f8ca879')
 
 prepare() {
 	cd "$pkgname-$_version"
