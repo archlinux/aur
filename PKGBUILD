@@ -2,13 +2,13 @@
 
 pkgname=easyeda-bin
 pkgver=6.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="easyeda.com desktop client"
 arch=('x86_64')
 url="https://easyeda.com/"
 license=('unknown')
 depends=()
-makedepends=()
+makedepends=('unzip')
 source=("https://image.easyeda.com/files/easyeda-linux-x64-6.4.7.zip"
 		"custom-dest-dir.patch")
 md5sums=("d636a526483939f011f6724520317554"
