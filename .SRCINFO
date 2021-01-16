@@ -1,0 +1,21 @@
+pkgbase = pulseaudio-dummy
+	pkgdesc = Dummy PulseAudio package to utilize apulse
+	pkgver = 0.1
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	depends = apulse
+	provides = pulseaudio
+	provides = pulseaudio-alsa
+	provides = libpulse
+	provides = libpulse.so=0-64
+	provides = libpulse-simple.so=0-64
+	conflicts = pulseaudio
+	conflicts = pulseaudio-alsa
+	conflicts = libpulse
+	conflicts = libpulse.so=0-64
+	conflicts = libpulse-simple.so=0-64
+
+pkgname = pulseaudio-dummy
+
