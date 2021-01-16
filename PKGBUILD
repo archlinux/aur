@@ -5,22 +5,22 @@
 _pkgname=scala
 pkgbase=scala_2.12
 pkgname=(scala_2.12 scala-docs_2.12 scala-sources_2.12)
-pkgver=2.12.12
+pkgver=2.12.13
 pkgrel=1
 _watch="https://github.com/scala/scala/releases"
 _distdate=20181127-085200
 _distsha=38cd84d976
 pkgdesc="A Java-interoperable language with object-oriented and functional features. This is the maintenance version of Scala 2.12."
 arch=('any')
-url="http://www.scala-lang.org"
+url="https://www.scala-lang.org"
 license=('Apache')
 depends=('java-environment>=8' 'java-runtime>=8')
 conflicts=('scala' 'scala-docs' 'scala-sources' 'java-environment<8')
 makedepends=('git' 'sbt')
 source=("scala-${pkgver}.tar.gz::https://github.com/scala/scala/archive/v${pkgver}.tar.gz"
-        "scala-docs-${pkgver}.tar.xz::http://www.scala-lang.org/files/archive/scala-docs-${pkgver}.txz")
-sha512sums=('cafeb755a1b1e29ef67bb1c3cfa83e5766ace450330b0b6458765979ab2ce3db173f30dfcd82b1e922fd93da332f3daff5086379d5634eb16bbd07118e0031d8'
-            'f01ed37b2e0d3ff03e8afda5273de4cc3043187a65a2b9b7ae6a4b6d3ff122e12ec410cceed4139921f315f50b429ba2f4411c891c1fb1d49ea7c14ed12b78b9')
+        "scala-docs-${pkgver}.tar.xz::https://www.scala-lang.org/files/archive/scala-docs-${pkgver}.txz")
+sha512sums=('cc6578872178536c9135b63a827c58eca093b51c4898042510a826e45cd1460698fdbcb05de6f75333478202ba0185bb1023fb4dfa80583eaae61930f1aefa1f'
+            '79e8be15313596cdb47e793444906a41793db57dd5b4c33993743d1e0dc140998b2c6b22d77b79e30467efded01cf60b5af12373f7049675e496a1b5df8f7a28')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
