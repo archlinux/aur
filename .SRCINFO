@@ -1,6 +1,6 @@
 pkgbase = python-viztracer
 	pkgdesc = VizTracer is a low-overhead logging/debugging/profiling tool that can trace and visualize your python code execution.
-	pkgver = 0.10.5
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://github.com/gaogaotiantian/viztracer
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = python-viztracer
 	optdepends = python-rich: Full function support
 	optdepends = python-orjson: Full function support
 	optdepends = chromium: browser to open html results
-	source = https://files.pythonhosted.org/packages/source/v/viztracer/viztracer-0.10.5.tar.gz
-	sha256sums = 258c8775cb65620056141069f7c0c8ac8df33ab843f076d817611555e0b97fc2
+	source = https://files.pythonhosted.org/packages/source/v/viztracer/viztracer-0.11.2.tar.gz
+	sha256sums = 26a7b28049aecc252bd3f9aa5825ce9f8a56460e18fd992b0f2f9b3f85c7ab14
 
 pkgname = python-viztracer
 
