@@ -1,6 +1,6 @@
 pkgbase = gravit-designer-bin
 	pkgdesc = A cross-platform, free design tool for the 21st century empowering everyone to design
-	pkgver = 2020_1.3.4
+	pkgver = 2020_1.3.4.1
 	pkgrel = 1
 	url = https://designer.io/
 	arch = x86_64
@@ -12,17 +12,12 @@ pkgbase = gravit-designer-bin
 	depends = gtk3
 	depends = libindicator-gtk2
 	depends = libdbusmenu-gtk2
-	source = gravit-designer-bin-2020_1.3.4.zip::https://designer.gravit.io/_downloads/linux/GravitDesigner.zip?v=2020-1.3.4
+	source = gravit-designer-bin-2020_1.3.4.1.zip::https://designer.gravit.io/_downloads/linux/GravitDesigner.zip?v=2020-1.3.4.1
 	source = gravit-designer.png
 	source = gravit-designer-document.svg
 	source = gravit-designer.xml
 	source = LICENSE
-	md5sums = e0b2ed775962bf1e53ab64a1f41a5028
-	md5sums = 17969adf6d872a541772e169658b82d1
-	md5sums = 70b0c1397df726a2ba0f16a4ff43993a
-	md5sums = fb3e19b45f7fe02bd959f20cc26e49d0
-	md5sums = 021ccafc0993d3c34265ae59048d4bf2
-	sha256sums = 023bccee59d7661b0cd32aa8a47db8a69dc735286fea2865da6234b0c7b571e5
+	sha256sums = 23a63078eebcf3297ad55ffb56cb8fc44b260d1e4ddd40d0c01c1f94140cdc99
 	sha256sums = 80f947f51165c9764ec3ac168df64178a68c26c49d96ae1a970930146aee3cfe
 	sha256sums = 1c4673222f28e070258289a363ba1d03b3af87aaca99fee7c05a54c9de5deb2b
 	sha256sums = d2228771efc34f1ed0953fd8f8cd49f60d72728d230c7f860862c4f2056c0df3
