@@ -1,0 +1,17 @@
+pkgbase = zutty
+	pkgdesc = Terminal emulator
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://tomscii.sig7.se/zutty
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python
+	depends = freetype2
+	depends = libglvnd
+	depends = libxmu
+	source = git+https://github.com/tomszilagyi/zutty#commit=71f7fc9f03cdc2f38d9dca1f9e5f279899dbc568
+	sha256sums = SKIP
+
+pkgname = zutty
+
