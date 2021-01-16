@@ -1,8 +1,8 @@
 pkgbase = ruby-rubocop
-	pkgdesc = Automatic Ruby code style checking tool.
-	pkgver = 0.92.0
+	pkgdesc = A Ruby static code analyzer and formatter
+	pkgver = 1.8.1
 	pkgrel = 1
-	url = https://rubocop.readthedocs.io
+	url = https://rubocop.org
 	arch = any
 	license = MIT
 	makedepends = rubygems
@@ -16,10 +16,9 @@ pkgbase = ruby-rubocop
 	depends = ruby-rubocop-ast
 	depends = ruby-ruby-progressbar
 	depends = ruby-unicode-display_width
-	noextract = rubocop-0.92.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/rubocop-0.92.0.gem
-	sha256sums = 3653dec299db6290c1f4dd3c4afd47ef76c484185f3642605552547c74672e4b
+	source = https://github.com/rubocop-hq/rubocop/archive/v1.8.1/rubocop-1.8.1.tar.gz
+	sha256sums = 62e9da709f4650acccc640d57dfd091edaf9c887d09c52ea52b369eb006219c1
 
 pkgname = ruby-rubocop
 

@@ -1,12 +1,12 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
-# Contributor: farwayer <farwayer@gmail.com>
+# Contributor: farwayer <farwayer at gmail dot com>
 
 _gemname=rubocop
 pkgname=ruby-${_gemname}
-pkgver=0.92.0
+pkgver=1.8.1
 pkgrel=1
-pkgdesc="Automatic Ruby code style checking tool."
-arch=('any')
+pkgdesc="A Ruby static code analyzer and formatter"
+arch=(any)
 depends=(
   ruby
   ruby-parallel
@@ -19,15 +19,25 @@ depends=(
   ruby-unicode-display_width
 )
 makedepends=(rubygems ruby-rdoc)
-url="https://rubocop.readthedocs.io"
-noextract=($_gemname-$pkgver.gem)
-license=('MIT')
+url=https://rubocop.org
+license=(MIT)
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha256sums=('3653dec299db6290c1f4dd3c4afd47ef76c484185f3642605552547c74672e4b')
+source=(https://github.com/rubocop-hq/rubocop/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
+sha256sums=('62e9da709f4650acccc640d57dfd091edaf9c887d09c52ea52b369eb006219c1')
+
+prepare() {
+  cd $_gemname-$pkgver
+  sed -i 's|~>|>=|g' ${_gemname}.gemspec
+}
+
+build() {
+  cd $_gemname-$pkgver
+  gem build ${_gemname}.gemspec
+}
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  cd $_gemname-$pkgver
+  local _gemdir="$(gem env gemdir)"
 
   gem install \
     --ignore-dependencies \
@@ -38,6 +48,7 @@ package() {
 
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 
-  install -Dm0644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# vim: set ts=2 sw=2 et:
