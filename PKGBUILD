@@ -16,9 +16,8 @@ pkgrel=1
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 license=(GPL)
-depends=("libltdl" "rtkit" "tdb" "orc" "libsndfile" "speexdsp")
-makedepends=("git" "attr" "rtkit" "libasyncns"
-             "tdb" "intltool" "dconf" "libcap"
+makedepends=("git" "attr" "rtkit" "libcap"
+             "tdb" "intltool" "dconf"
              "orc" "check" "meson" "speexdsp")
 optdepends=("alsa-plugins: ALSA support"
             "pulseaudio-alsa: ALSA configuration (recommended)")
@@ -89,7 +88,7 @@ _pick() {
 }
 
 package_pulseaudio-nosystemd-minimal-git() {
-  depends=(rtkit libltdl tdb orc)
+  depends=(rtkit libltdl tdb orc speexdsp libpulse)
   optdepends=('pulseaudio-alsa: ALSA configuration (recommended)')
   backup=(etc/pulse/{daemon.conf,default.pa,system.pa})
   provides=(pulseaudio)
@@ -133,6 +132,7 @@ package_pulseaudio-nosystemd-minimal-git() {
 package_libpulse-nosystemd-minimal-git() {
   pkgdesc="$pkgdesc (client library)"
   depends=(libcap libxcb libsm libsndfile)
+  optdepends=('glib2: mainloop integration')
   provides=(libpulse{,-simple,-mainloop-glib}.so libpulse)
   conflicts=(libpulse)
   license=(LGPL)
