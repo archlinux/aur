@@ -1,7 +1,7 @@
 pkgbase = otf-code-new-roman
 	pkgdesc = Monospaced font aimed for use in programming environments
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fb.com/Code.New.Roman
 	arch = any
 	license = custom

@@ -1,7 +1,7 @@
 # Maintainer: Ashymad <czilukim@o2.pl>
 pkgname="otf-code-new-roman"
 pkgver="2.1"
-pkgrel=1
+pkgrel=2
 pkgdesc='Monospaced font aimed for use in programming environments'
 arch=('any')
 url='http://fb.com/Code.New.Roman'
