@@ -2,21 +2,26 @@
 
 _gemname=regexp_parser
 pkgname=ruby-${_gemname}
-pkgver=1.7.1
+pkgver=2.0.3
 pkgrel=1
-pkgdesc="A library for tokenizing, lexing, and parsing Ruby regular expressions."
+pkgdesc="A regular expression parser library for Ruby"
 arch=(any)
 depends=(ruby)
 makedepends=(rubygems ruby-rdoc)
-url="https://github.com/ammar/regexp_parser"
-noextract=($_gemname-$pkgver.gem)
+url=https://github.com/ammar/regexp_parser
 license=(MIT)
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha256sums=('2401a4eedf9334c2fa7a1026d807594b059c4873265b899cf0000926f2fdca80')
+source=(https://github.com/ammar/regexp_parser/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
+sha256sums=('c8a5732ee6a4c39a7b30edbd40f7858cd6ce3febe08ee90fd2e23c4825f43b96')
+
+build() {
+  cd $_gemname-$pkgver
+  gem build ${_gemname}.gemspec
+}
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  cd $_gemname-$pkgver
+  local _gemdir="$(gem env gemdir)"
 
   gem install \
     --ignore-dependencies \
@@ -27,6 +32,8 @@ package() {
 
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 
-  install -Dm0644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
+
+# vim: set ts=2 sw=2 et:
