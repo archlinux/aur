@@ -1,0 +1,17 @@
+pkgbase = comedi-dkms-git
+	pkgdesc = The Linux Control and Measurement Device Interface
+	pkgver = r3496.9a780c9a
+	pkgrel = 1
+	url = https://github.com/Linux-Comedi/comedi
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	depends = automake
+	optdepends = comedilib: userspace library for COMEDI devices
+	conflicts = comedi
+	source = comedi::git+https://github.com/Linux-Comedi/comedi.git
+	sha256sums = SKIP
+
+pkgname = comedi-dkms-git
+
