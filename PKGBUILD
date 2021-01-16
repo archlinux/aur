@@ -2,21 +2,26 @@
 
 _gemname=mimemagic
 pkgname=ruby-$_gemname
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
-pkgdesc='Fast mime detection by extension or content in pure ruby (Uses freedesktop.org.xml shared-mime-info database).'
-arch=('any')
-url='https://github.com/minad/mimemagic'
-license=('MIT')
+pkgdesc="Fast mime detection by extension or content in pure ruby"
+arch=(any)
+url=https://github.com/minad/mimemagic
+license=(MIT)
 options=(!emptydirs)
-noextract=($_gemname-$pkgver.gem)
-depends=('ruby')
-makedepends=(rubygems ruby-rdoc)
-source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
-sha256sums=('3751635874b1b0d3ea7daae37be571a5f60cbbbf2977b174d8043a51fe76393b')
+depends=(ruby)
+makedepends=(git rubygems ruby-rdoc)
+source=(git+https://github.com/minad/mimemagic.git?tag=v$pkgver)
+sha256sums=('SKIP')
+
+build() {
+  cd ${_gemname}
+  gem build ${_gemname}.gemspec
+}
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  cd ${_gemname}
+  local _gemdir="$(gem env gemdir)"
 
   gem install \
     --ignore-dependencies \
@@ -27,6 +32,7 @@ package() {
 
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 
-  install -Dm0644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# vim: set ts=2 sw=2 et:
