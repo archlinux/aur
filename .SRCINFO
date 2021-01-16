@@ -1,7 +1,7 @@
 pkgbase = glib2-patched-thumbnailer
 	pkgdesc = GLib2 patched with ahodesuka's thumbnailer patch.
 	pkgver = 2.66.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5
 	arch = x86_64
 	license = LGPL
@@ -34,14 +34,18 @@ pkgbase = glib2-patched-thumbnailer
 	options = !docs
 	source = git+https://gitlab.gnome.org/GNOME/glib.git#commit=bacbec652d356895ec493f3de2f2f6f4c7dafde0
 	source = noisy-glib-compile-schemas.diff
+	source = glib-thumbnailer.patch
+	source = glib-compile-schemas.hook
 	source = glib-compile-schemas.hook
 	source = gio-querymodules.hook
-	source = glib-thumbnailer.patch
+	source = gio-querymodules.script
 	sha256sums = SKIP
 	sha256sums = 81a4df0b638730cffb7fa263c04841f7ca6b9c9578ee5045db6f30ff0c3fc531
-	sha256sums = 64ae5597dda3cc160fc74be038dbe6267d41b525c0c35da9125fbf0de27f9b25
-	sha256sums = 557c88177f011ced17bdeac1af3f882b2ca33b386a866fdf900b35f927a2bbe8
 	sha256sums = 9f055d2a4f3fa08a7f0ca9f233a0ca6925247f572fb6873af7ac1e1f43f23d74
+	sha256sums = 64ae5597dda3cc160fc74be038dbe6267d41b525c0c35da9125fbf0de27f9b25
+	sha256sums = 64ae5597dda3cc160fc74be038dbe6267d41b525c0c35da9125fbf0de27f9b25
+	sha256sums = 2a9f9b8235f48e3b7d0f6cfcbc76cd2116c45f28692cac4bd61074c495bd5eb7
+	sha256sums = 92d08db5aa30bda276bc3d718e7ff9dd01dc40dcab45b359182dcc290054e24e
 
 pkgname = glib2-patched-thumbnailer
 
