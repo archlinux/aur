@@ -2,14 +2,14 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=libretro-dosbox-pure
 pkgname=$_pkgname-git
-pkgver=0.2.r0.g8cc6db9
+pkgver=0.9.r1.g44eb98b
 pkgrel=1
 pkgdesc="New fork of DOSBox built for RetroArch/Libretro aiming for simplicity and ease of use"
 arch=('x86_64')
 url="https://github.com/schellingb/dosbox-pure"
 license=('GPL2')
 groups=('libretro')
-depends=('gcc-libs')
+depends=('libretro-core-info' 'gcc-libs')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -30,5 +30,4 @@ package() {
 	cd $_pkgname
 	# shellcheck disable=SC2154
 	install -Dm644 -t "$pkgdir"/usr/lib/libretro dosbox_pure_libretro.so
-	install -Dm644 -t "$pkgdir"/usr/share/libretro/info dosbox_pure_libretro.info
 }
