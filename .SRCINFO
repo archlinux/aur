@@ -1,20 +1,15 @@
 pkgbase = sac-core
-	pkgdesc = Safenet Authentication Client for Alladin eToken, stripped core package
-	pkgver = 10.0.37
-	pkgrel = 11
-	url = https://data-protection-updates.gemalto.com/category/safenet-authentication-client/
-	install = sac-core.install
+	pkgdesc = SafeNet Authentication Client for eToken 5110/5300 & IDPrime (core package with no GUI tools)
+	pkgver = 10.7.77
+	pkgrel = 1
+	url = https://cpl.thalesgroup.com/access-management/security-applications/authentication-client-token-management
 	arch = x86_64
 	license = custom
-	makedepends = libarchive
 	depends = pcsclite
-	depends = libusb-compat
-	depends = openssh
-	depends = nss
+	optdepends = sac-core-legacy: Support for eToken 32K/64K (CardOS 4.2)
+	source = https://installer.id.ee/media/etoken/SAC%2010.7%20Linux.zip
 	source = eToken.conf
+	sha256sums = 15c55b1faec11c460bd1b5a303a92b1667171d615b20967dccc753fcf8026051
 	sha256sums = 85b850b820610e029428e577ca0e48f6fb7b4148ae8d702ca20b191963046c6c
-	source_x86_64 = https://storage.spidlas.cz/public/soft/safenet/SafenetAuthenticationClient-core-10.0.37-0_amd64.deb
-	sha256sums_x86_64 = b4f8ffd030363693540bd494c3825ebd901937565cdd1c6455f95005571a27e5
 
 pkgname = sac-core
-

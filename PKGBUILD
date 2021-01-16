@@ -1,51 +1,44 @@
-pkgname='sac-core'
-pkgver='10.0.37'
-pkgrel='11'
-pkgdesc='Safenet Authentication Client for Alladin eToken, stripped core package'
-arch=('x86_64')
-depends=('pcsclite' 'libusb-compat' 'openssh' 'nss')
-makedepends=('libarchive')
-license=('custom')
-install=$pkgname.install
-url='https://data-protection-updates.gemalto.com/category/safenet-authentication-client/'
-source_x86_64=('https://storage.spidlas.cz/public/soft/safenet/SafenetAuthenticationClient-core-10.0.37-0_amd64.deb')
-sha256sums_x86_64=('b4f8ffd030363693540bd494c3825ebd901937565cdd1c6455f95005571a27e5')
-source+=('eToken.conf')
-sha256sums+=('85b850b820610e029428e577ca0e48f6fb7b4148ae8d702ca20b191963046c6c')
+pkgname=sac-core
+pkgver=10.7.77
+pkgrel=1
+pkgdesc='SafeNet Authentication Client for eToken 5110/5300 & IDPrime (core package with no GUI tools)'
+url='https://cpl.thalesgroup.com/access-management/security-applications/authentication-client-token-management'
+arch=(x86_64)
+depends=(pcsclite)
+optdepends=(
+  'sac-core-legacy: Support for eToken 32K/64K (CardOS 4.2)'
+)
+license=(custom)
+source=('https://installer.id.ee/media/etoken/SAC%2010.7%20Linux.zip'
+        eToken.conf)
+sha256sums=('15c55b1faec11c460bd1b5a303a92b1667171d615b20967dccc753fcf8026051'
+            '85b850b820610e029428e577ca0e48f6fb7b4148ae8d702ca20b191963046c6c')
 
-build() {
-    bsdtar -xf "$srcdir/data.tar.gz"
+prepare() {
+  ar x "GA - Build 77/Installation/withoutUI/DEB/safenetauthenticationclient-core_${pkgver}_amd64.deb"
+  bsdtar -xf data.tar.xz
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/lib/pcsc/drivers"
-    cp -dpr --no-preserve=ownership "$srcdir/usr/share/eToken/drivers/aks-ifdh.bundle" "$pkgdir/usr/lib/pcsc/drivers"
-    rm "$pkgdir/usr/lib/pcsc/drivers/aks-ifdh.bundle/Contents/Linux/readme.txt"
+  # Install libraries
+  install -dm755 "$pkgdir"/usr
+  cp -r usr/lib "$pkgdir"/usr/lib
 
-    mkdir -p "$pkgdir/usr/lib"
-    cp --no-preserve=ownership "$srcdir/lib/libeToken.so.10.0.37" "$pkgdir/usr/lib/libeToken.so.10.0.37"
-    cp --no-preserve=ownership "$srcdir/lib/libcardosTokenEngine.so.10.0.37" "$pkgdir/usr/lib/libcardosTokenEngine.so.10.0.37"
+  # Create missing .so symlinks
+  ldconfig -N -r "$pkgdir"
 
-    mkdir -p "$pkgdir/etc"
-    cp "$srcdir/eToken.conf" "$pkgdir/etc/eToken.conf"
+  # PKCS#11 modules
+  install -dm755 "$pkgdir"/usr/lib/pkcs11
+  ln -s ../libeToken.so "$pkgdir"/usr/lib/pkcs11/
+  ln -s ../libIDPrimePKCS11.so "$pkgdir"/usr/lib/pkcs11/
 
-    cd "$pkgdir/usr/lib/"
-    ln -sf libeToken.so.10.0.37 libeTPkcs11.so
-    ln -sf libeToken.so.10.0.37 libeToken.so.10.0
-    ln -sf libeToken.so.10.0.37 libeToken.so.10
-    ln -sf libeToken.so.10.0.37 libeToken.so
-    ln -sf libcardosTokenEngine.so.10.0.37 libcardosTokenEngine.so.10.0
-    ln -sf libcardosTokenEngine.so.10.0.37 libcardosTokenEngine.so.10
-    ln -sf libcardosTokenEngine.so.10.0.37 libcardosTokenEngine.so
+  # Legacy name for the eToken PKCS#11 module -- not creating it here, since
+  # it's primarily associated with the old Alladin eToken and you should use
+  # sac-core-legacy for that.
+  #ln -s libeToken.so "$pkgdir"/usr/lib/libeTPkcs11.so
+  #ln -s ../libeToken.so "$pkgdir"/usr/lib/pkcs11/libeTPkcs11.so
 
-    cd "$pkgdir/usr/lib/pcsc/drivers/aks-ifdh.bundle/Contents/Linux/"
-    ln -sf libAksIfdh.so.10.0 libAksIfdh.so
-    ln -sf libAksIfdh.so.10.0 libAksIfdh.so.10
+  install -Dm644 eToken.conf "$pkgdir"/etc/eToken.conf
 }
 
-# To add eToken to Firefox eval output of this cmd:
-#  find ~ -name secmod.db -type f -printf "modutil -dbdir %h -add eToken -libfile /usr/lib/libeToken.so -mechanisms RSA:DES -force\n"
-
-# To add eToken to Chromium run this cmd:
-#  modutil -dbdir sql:.pki/nssdb/ -add "eToken" -libfile /usr/lib/libeToken.so
-#  modutil -dbdir sql:.pki/nssdb/ -list
+# vim: ts=2:sw=2:et:
