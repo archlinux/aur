@@ -1,18 +1,18 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='cinaps'
 pkgname="ocaml-$_projectname"
-pkgver='0.14.0'
-pkgrel='2'
+pkgver='0.15.0'
+pkgrel='1'
 pkgdesc='Trivial Metaprogramming tool using the OCaml toplevel'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-ppx/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.07.0' 'ocaml-re>=1.8.0')
+depends=('ocaml>=4.04.0' 'ocaml-re>=1.8.0')
 makedepends=('dune>=2.0.0')
 checkdepends=('ocaml-ppx_jane')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('84a1e37ea536c07dfba73e3c395ccd3b0eaf86437aa96536c452f0fea05c7497')
+sha256sums=('e82fb350cc78c7fc98f125c625bba2e5845356c40105432f9469834af4b82f4c')
 
 _sourcedirectory="$_projectname-$pkgver"
 
