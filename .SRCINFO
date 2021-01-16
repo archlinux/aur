@@ -3,7 +3,6 @@ pkgbase = folder-color-nautilus-git
 	pkgver = r11.e76d1d9
 	pkgrel = 1
 	url = http://foldercolor.tuxfamily.org/
-	install = folder-color-nautilus-git.install
 	arch = any
 	license = GPL3
 	makedepends = git

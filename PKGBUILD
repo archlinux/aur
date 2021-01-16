@@ -15,7 +15,6 @@ optdepends=(
 	'humanity-icon-theme: to use with humanity theme'
 	'vibrancy-colors: to use with vibrancy theme'
 )
-install=$pkgname.install
 source=($pkgname::git+https://github.com/costales/folder-color.git)
 sha256sums=('SKIP')
 
