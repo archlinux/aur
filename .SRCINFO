@@ -1,6 +1,6 @@
 pkgbase = clojure-lsp-bin
 	pkgdesc = Language Server (LSP) for Clojure
-	pkgver = 2021.01.14_23.15.54
+	pkgver = 2021.01.16_03.28.20
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/snoe/clojure-lsp
@@ -9,8 +9,8 @@ pkgbase = clojure-lsp-bin
 	depends = clojure
 	provides = clojure-lsp
 	conflicts = clojure-lsp
-	source = clojure-lsp-bin-2021.01.14_23.15.54::https://github.com/clojure-lsp/clojure-lsp/releases/download/2021.01.14-23.15.54/clojure-lsp
-	sha256sums = f528d93b818fe42d6eb72c004625187e844e8a039cf7df7c950c9780fcb40b39
+	source = clojure-lsp-bin-2021.01.16_03.28.20::https://github.com/clojure-lsp/clojure-lsp/releases/download/2021.01.16-03.28.20/clojure-lsp
+	sha256sums = f64722891d831eb96e930d548da93839d9b1dcbe9c04d70f69cb868d9fe2c42b
 
 pkgname = clojure-lsp-bin
 
