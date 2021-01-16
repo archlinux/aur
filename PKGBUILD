@@ -4,8 +4,8 @@
 
 pkgname=python-anyconfig
 _name=anyconfig
-pkgver=0.9.11
-pkgrel=4
+pkgver=0.10.0
+pkgrel=1
 pkgdesc='Python library provides common APIs to load and dump configuration files in various formats'
 url='https://github.com/ssato/python-anyconfig'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=('python-simplejson: Replace standard json backend'
 makedepends=('python-setuptools')
 conflicts=('python-anyconfig-git')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('8888130cde5461cb39379afdd1d09b1b1342356210f0a6743a4b60f9973226f8')
+sha256sums=('d9a25625aa72dd870e0712eac3e70fee50eb243af14b2f0cc6f305ec9191cacf')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
