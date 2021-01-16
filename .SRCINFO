@@ -1,7 +1,7 @@
 pkgbase = typescript-language-server
 	pkgdesc = Language Server Protocol (LSP) implementation for TypeScript using tsserver
 	pkgver = 0.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/theia-ide/typescript-language-server
 	arch = any
 	license = Apache
