@@ -7,7 +7,7 @@ start() {
   if pgrep -x "LSA" > /dev/null; then
     killall -15 LSA
   fi
-  ./LSA start
+  ./LSA -start
 }
 
 stop() {
@@ -23,7 +23,7 @@ server_start() {
   ./nginx -p .
 }
 
-stop_start() {
+server_stop() {
   cd "${pwd}/server"
   ./nginx -s stop -p .
 }

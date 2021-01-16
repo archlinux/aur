@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=lsi-lsa
-pkgver=007.009.011.000
+pkgver=007.015.004.000
 pkgrel=1
 pkgdesc="LSI Storage Authority Software Suite"
 arch=('x86_64')
@@ -13,17 +13,17 @@ depends=('openslp'
          )
 makedepends=('chrpath')
 DLAGENTS=('https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b "agreement=true" -o %o %u')
-source=('LSI_Storage_Authority_Lightweight_Monitor_User_Guide.pdf::https://docs.broadcom.com/docs-and-downloads/raid-controllers/pub-005092_2015-11-25_LSI_Storage_Authority_Lightweight_Monitor_User_Guide.pdf'
-        'LSI_Storage_Authority_Software_User_Guide.pdf::https://docs.broadcom.com/docs-and-downloads/raid-controllers-common-files/DB15-001161-10_LSI%20Storage%20Authority%20Software%20User%20Guide.pdf'
+source=('LSI_Storage_Authority_Lightweight_Monitor_User_Guide_rev1.0.pdf::https://docs.broadcom.com/doc/pub-005092'
+        'LSI_Storage_Authority_Software_User_Guide_rev1.15.pdf::https://docs.broadcom.com/doc/DB15-001161'
         'lsi_lsa.service'
         'lsa_launcher.sh'
         "${pkgver}_LSA_Linux.zip::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_LSA_Linux-x64.zip"
         )
 sha256sums=('5196f542b52457abb94bce4e069005543a7e748270b7b673e5afa669e7af2e03'
-            'aea22917f5f3680fb19b9b219ac4775434f500946f579a58242a07bc1e66f209'
+            '7786c99f9489b272a5662d7d7a4442f1262b9ce2dc678c48d99c2c6e37a5fd2b'
             '5d65b855b7d38192ef8fd0ce34cab567efd5f9af922c080876a10e96a62b0b17'
-            '05bdeae736b4b06546ea669a5b2764f2410ec8f20873505fee9a8205eccf4190'
-            'be81c22d3bee377cf8495c567396889fd24d5d51205101c14f3f5a4f3c99dca9'
+            '977ff4069d4ae02b60a58e708ae5bb5c8fa10f9a331e527b518006e8e5eb03ea'
+            '722b72eefb80fd40cbf57c06fe09073db3e8d01c686dd14f5367b2e6d42c54fc'
             )
 install=lsi-lsa.install
 backup=('opt/lsi/LSIStorageAuthority/installtype'
@@ -67,8 +67,8 @@ package() {
   install -Dm755 ${srcdir}/lsa_launcher.sh opt/lsi/LSIStorageAuthority/bin/lsa_launcher.sh
 
   # Install Docs
-  install -Dm644 "${srcdir}/LSI_Storage_Authority_Lightweight_Monitor_User_Guide.pdf" "usr/share/doc/${pkgname}/LSI_Storage_Authority_Lightweight_Monitor_User_Guide.pdf"
-  install -Dm644 "${srcdir}/LSI_Storage_Authority_Software_User_Guide.pdf" "usr/share/doc/${pkgname}/LSI_Storage_Authority_Software_User_Guide.pdf"
+  install -Dm644 "${srcdir}/LSI_Storage_Authority_Lightweight_Monitor_User_Guide_rev1.0.pdf" "usr/share/doc/${pkgname}/LSI_Storage_Authority_Lightweight_Monitor_User_Guide.pdf"
+  install -Dm644 "${srcdir}/LSI_Storage_Authority_Software_User_Guide_rev1.15.pdf" "usr/share/doc/${pkgname}/LSI_Storage_Authority_Software_User_Guide.pdf"
   install -Dm644 "${srcdir}/"*/LSA_Linux_*_readme.txt "usr/share/doc/${pkgname}/LSA_Linux_readme.txt"
 
   # Configure the port server/client: 2463 for bundled nginx server & 9009 for LSA client
