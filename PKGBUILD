@@ -2,7 +2,7 @@
 
 _pkgname=qqc2-desktop-style
 pkgname=qqc2-desktop-style-git
-pkgver=r435.64d900d
+pkgver=v5.78.0.r4.g64d900d
 pkgrel=1
 pkgdesc='A style for Qt Quick Controls 2 to make it follow your desktop theme - Git Version'
 arch=(x86_64)
@@ -19,7 +19,7 @@ validpgpkeys=('53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB') # David Faure <faure@k
 
 pkgver() {
   cd $_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
