@@ -1,7 +1,7 @@
 # Maintainer: Tony Finn <aur@tonyfinn.com>
 
 pkgname=preserve
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Efficiency oriented media player/jellyfin frontend"
 arch=(any)
