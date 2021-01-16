@@ -1,0 +1,12 @@
+pkgbase = ttf-killgothic-u
+	pkgdesc = A free ttf font with the theme of the anime "Kill Me Baby".
+	pkgver = 0.99b
+	pkgrel = 1
+	url = http://www.getsuren.com/en/killgoU.html
+	arch = any
+	license = custom
+	source = GN-KillGothic_U.zip::http://getsuren.com/download/download.cgi?name=GN-KillGothic_U.zip
+	sha256sums = e0ec9c9a8058e928b08bf8df7ddd6fb238db05e3f63d8c44493e246725a48177
+
+pkgname = ttf-killgothic-u
+
