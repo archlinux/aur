@@ -1,0 +1,24 @@
+pkgbase = lib32-libzbar
+	pkgdesc = Application and library for reading bar codes from various sources. 32bit libraries only version
+	pkgver = 0.23.1
+	pkgrel = 1
+	url = https://github.com/mchehab/zbar
+	arch = x86_64
+	license = LGPL
+	makedepends = docbook-xsl
+	makedepends = xmlto
+	depends = zbar
+	depends = lib32-v4l-utils
+	depends = lib32-dbus
+	depends = lib32-libsm
+	depends = lib32-libxv
+	provides = lib32-zbar=0.23.1
+	conflicts = lib32-zbar
+	options = !staticlibs
+	source = zbar-0.23.1.tar.gz::https://github.com/mchehab/zbar/archive/0.23.1.tar.gz
+	source = fix-configure.patch::https://github.com/mchehab/zbar/commit/89e7900.patch
+	sha256sums = 297439f8859089d2248f55ab95b2a90bba35687975365385c87364c77fdb19f3
+	sha256sums = 82ac7723115d4c6aa8db6ff0e62764c310cc35f7b620413b36c4999a301216e2
+
+pkgname = lib32-libzbar
+
