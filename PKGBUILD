@@ -2,8 +2,8 @@
 # Contributor: Jon Wiersma <archaur@jonw.org>
 
 pkgname=ib-tws
-pkgver=981.2j
-pkgrel=2
+pkgver=981.2o
+pkgrel=1
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
 arch=('any')
 url="http://interactivebrokers.com/"
@@ -28,7 +28,7 @@ md5sums=('c93bcc44678aef8b9d0ec6faecb27927'
          'b1cbe7273f3d0f2f0b6a09e65606b600'
          '5762f281cc4d624a4cd3bc62f67ffebe'
          'ffa9fcfb623850e5c9e796040bdbd052'
-         '5287d88a572715cf2e139deb92cca12d')
+         'ec1cb30d9eb68b789d57350b40ad6c20')
 
 build() {
   cd ${srcdir}
