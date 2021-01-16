@@ -1,6 +1,6 @@
 pkgbase = intel-compute-runtime-git
 	pkgdesc = Intel(R) Graphics Compute Runtime for oneAPI Level Zero and OpenCL(TM) Driver (git version)
-	pkgver = 20.23.16988.r118.gc1b8ae735
+	pkgver = 21.02.18820.r49.g670013e88
 	pkgrel = 1
 	url = https://01.org/compute-runtime/
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-compute-runtime-git
-pkgver=20.23.16988.r118.gc1b8ae735
+pkgver=21.02.18820.r49.g670013e88
 pkgrel=1
 pkgdesc='Intel(R) Graphics Compute Runtime for oneAPI Level Zero and OpenCL(TM) Driver (git version)'
 arch=('x86_64')
@@ -31,11 +31,5 @@ build() {
 package() {
     make -C build DESTDIR="$pkgdir" install
     install -D -m644 compute-runtime/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    
-    local _lz_sover
-    local _lz_major
-    _lz_sover="$(find "${pkgdir}/usr/lib" -type f -name 'libze_intel_gpu.so.*.*.*' | sed 's/^.*\.so\.//')"
-    _lz_major="${_lz_sover%%.*}"
-    ln -s "libze_intel_gpu.so.${_lz_sover}" "${pkgdir}/usr/lib/libze_intel_gpu.so"
-    ln -s "libze_intel_gpu.so.${_lz_sover}" "${pkgdir}/usr/lib/libze_intel_gpu.so.${_lz_major}"
+    ln -s "$(find "${pkgdir}/usr/lib" -regex '.*libze_intel_gpu.so.[0-9]*' -exec basename {} +)" "${pkgdir}/usr/lib/libze_intel_gpu.so"
 }
