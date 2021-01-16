@@ -1,0 +1,8 @@
+post_install() {
+	echo "The Gurobi Optimizer requires a license to run."
+	echo "To install your Gurobi License, make sure you are connected to Internet"
+	echo "and run: grbgetkey <license-ID>."
+	echo "If you choose to store the license file somewhere else than the default"
+	echo "location (your home directory), you must set the environment variable:"
+	echo "GRB_LICENSE_FILE=/path/to/gurobi.lic"
+}
