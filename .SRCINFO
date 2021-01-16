@@ -1,13 +1,14 @@
 pkgbase = pfetch
 	pkgdesc = A pretty system information tool written in POSIX sh.
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dylanaraps/pfetch
 	arch = any
 	license = MIT
 	provides = pfetch
+	conflicts = pfetch-git
 	source = pfetch-0.6.0.tar.gz::https://github.com/dylanaraps/pfetch/archive/0.6.0.tar.gz
-	sha1sums = 9440d085e9ef93a94127ed634edbbfb2048186c7
+	b2sums = 300f6f44f9306df4f438227a6f35bd54f50e477b950a45d63656f7c460cfc30a8b44ebdb3d5fdcf1e808e3b8e8e69e14088ff73a5da4485abf694893f2cc53f3
 
 pkgname = pfetch
 

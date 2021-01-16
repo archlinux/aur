@@ -1,17 +1,19 @@
-# Maintainer: Caio Novais <caionov08 at gmail dot com>
-# shellcheck shell=bash
-# shellcheck disable=SC2034,SC2154
+# Maintainer: Franck STAUFFER <franck.stauffer@monaco.mc>
+# Contributor: Caio Novais <caionov08 at gmail dot com>
+
 pkgname=pfetch
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A pretty system information tool written in POSIX sh."
 arch=('any')
 url="https://github.com/dylanaraps/$pkgname"
 license=('MIT')
 provides=("$pkgname")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/dylanaraps/$pkgname/archive/$pkgver.tar.gz")
-sha1sums=('9440d085e9ef93a94127ed634edbbfb2048186c7')
+conflicts=('pfetch-git')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+b2sums=('300f6f44f9306df4f438227a6f35bd54f50e477b950a45d63656f7c460cfc30a8b44ebdb3d5fdcf1e808e3b8e8e69e14088ff73a5da4485abf694893f2cc53f3')
 
 package() {
   install -Dm755 "$srcdir/$pkgname-$pkgver/pfetch" "$pkgdir/usr/bin/pfetch"
+  install -Dm755 "$srcdir/$pkgname-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
