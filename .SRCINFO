@@ -1,13 +1,13 @@
 pkgbase = poe-overlay-community-bin
 	pkgdesc = An overlay for Path of Exile. Built with Electron and Angular.
-	pkgver = 0.7.5
-	pkgrel = 2
+	pkgver = 0.7.6
+	pkgrel = 1
 	url = https://github.com/PoE-Overlay-Community/PoE-Overlay-Community-Fork
 	arch = x86_64
 	license = MIT
 	provides = poe-overlay-community
-	source = poe-overlay-0.7.5.AppImage::https://github.com/PoE-Overlay-Community/PoE-Overlay-Community-Fork/releases/download/v0.7.5/poe-overlay-0.7.5.AppImage
-	sha256sums = 67c8f879c18f83ce66929f8f94e87353c3a62d5d9501a22a7c2de677518bd902
+	source = poe-overlay-0.7.6.AppImage::https://github.com/PoE-Overlay-Community/PoE-Overlay-Community-Fork/releases/download/0.7.6/poe-overlay-0.7.6.AppImage
+	sha256sums = a4f5ff9c79fa4b526ab9b6ace07dd102008e1c2370463b44cef4030f8ad0ad78
 
 pkgname = poe-overlay-community-bin
 
