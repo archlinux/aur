@@ -1,18 +1,6 @@
-From 11aa63d34689dd95f864ffc5db0d4f35bccfbb12 Mon Sep 17 00:00:00 2001
-From: neeshy <neeshy@tfwno.gf>
-Date: Sun, 17 Feb 2019 05:40:27 -0500
-Subject: [PATCH 5/6] Use 8kun.top addresses
-
----
- infinitychan.py | 12 ++++++------
- onionctl        | 14 ++++++--------
- 2 files changed, 12 insertions(+), 14 deletions(-)
-
-diff --git a/infinitychan.py b/infinitychan.py
-index 2f17aa2..2a27bbe 100644
 --- a/infinitychan.py
 +++ b/infinitychan.py
-@@ -26,12 +26,12 @@ import re
+@@ -26,12 +26,12 @@
  import threadviewer
  import urls
  
@@ -31,11 +19,9 @@ index 2f17aa2..2a27bbe 100644
  
  config = os.path.join(os.path.expanduser("~"), ".infinityctl")
  
-diff --git a/onionctl b/onionctl
-index bb468e4..81dfa6e 100755
 --- a/onionctl
 +++ b/onionctl
-@@ -12,14 +12,12 @@ import os
+@@ -12,14 +12,12 @@
  import infinitychan
  import infinityctl
  
@@ -56,6 +42,3 @@ index bb468e4..81dfa6e 100755
  infinitychan.config = os.path.join(os.path.expanduser("~"), ".onionctl")
  
  infinityctl.main()
--- 
-2.25.0
-

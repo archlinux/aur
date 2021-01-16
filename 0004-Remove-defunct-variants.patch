@@ -1,19 +1,3 @@
-From 7b7f68a7a62eb2bd08651183ecb49571f2f690a2 Mon Sep 17 00:00:00 2001
-From: neeshy <neeshy@tfwno.gf>
-Date: Wed, 29 Jan 2020 00:27:59 -0500
-Subject: [PATCH 4/6] Remove defunct variants
-
----
- finalchanctl | 23 -----------------------
- setup.py     |  2 +-
- vichanctl    | 23 -----------------------
- 3 files changed, 1 insertion(+), 47 deletions(-)
- delete mode 100755 finalchanctl
- delete mode 100755 vichanctl
-
-diff --git a/finalchanctl b/finalchanctl
-deleted file mode 100755
-index befdf41..0000000
 --- a/finalchanctl
 +++ /dev/null
 @@ -1,23 +0,0 @@
@@ -40,11 +24,9 @@ index befdf41..0000000
 -infinitychan.config = os.path.join(os.path.expanduser("~"), ".finalchanctl")
 -
 -infinityctl.main()
-diff --git a/setup.py b/setup.py
-index 5ea51b9..619fa5d 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -18,7 +18,7 @@ setup(
+@@ -18,7 +18,7 @@
          'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
          'Intended Audience :: End Users/Desktop'],
      py_modules=['infinitychan', 'infinityctl', 'botmod', 'threadviewer', 'urls'],
@@ -53,9 +35,6 @@ index 5ea51b9..619fa5d 100644
      install_requires=['urllib3'],
      python_requires='>=3.0'
  )
-diff --git a/vichanctl b/vichanctl
-deleted file mode 100755
-index 3b2bf3c..0000000
 --- a/vichanctl
 +++ /dev/null
 @@ -1,23 +0,0 @@
@@ -82,6 +61,3 @@ index 3b2bf3c..0000000
 -infinitychan.config = os.path.join(os.path.expanduser("~"), ".vichanctl")
 -
 -infinityctl.main()
--- 
-2.25.0
-

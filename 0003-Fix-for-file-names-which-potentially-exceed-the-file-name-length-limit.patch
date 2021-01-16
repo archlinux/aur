@@ -1,18 +1,6 @@
-From a3d2fa9b95326cc8b7ff062d5746bba700996e5d Mon Sep 17 00:00:00 2001
-From: neeshy <neeshy@tfwno.gf>
-Date: Sat, 3 Nov 2018 16:33:30 -0400
-Subject: [PATCH 3/6] Fix for file names which potentially exceed the file name
- length limit
-
----
- infinitychan.py | 11 +++++++++--
- 1 file changed, 9 insertions(+), 2 deletions(-)
-
-diff --git a/infinitychan.py b/infinitychan.py
-index 94c81ea..2f17aa2 100644
 --- a/infinitychan.py
 +++ b/infinitychan.py
-@@ -301,11 +301,18 @@ def scrape_files(board, thread, mode='unix_original'):
+@@ -301,11 +301,18 @@
                  else:
                      name = file['tim']
                  if mode == 'unix_original':
@@ -33,6 +21,3 @@ index 94c81ea..2f17aa2 100644
              else:
                  raise RuntimeError("Unknown mode {}".format(mode))
              name += file['ext']
--- 
-2.25.0
-

@@ -13,17 +13,17 @@ optdepends=('tesseract' 'imagemagick')
 source=("git+https://gitgud.io/ring/infinityctl.git"
         "0001-Add-setup.py.patch"
         "0002-Add-unix_original-file-scrape-mode.patch"
-        "0003-Fix-for-file-names-which-potentially-exceed-the-file.patch"
+        "0003-Fix-for-file-names-which-potentially-exceed-the-file-name-length-limit.patch"
         "0004-Remove-defunct-variants.patch"
         "0005-Use-8kun.top-addresses.patch"
         "0006-Add-variants-for-smuglo.li.patch")
 sha256sums=('SKIP'
-            'd07d1e661e9361eae4d9ef181fed0b41ef1c0f726cb77cd1374b71e470ecfcda'
-            '6e511397568acc0a619f73243cf2a52ac306557d9da93cb90a420a6550f059c8'
-            '45763115641e5616b17bf2a6d8e791889852c8de0a16364769658af0ec06bcdd'
-            '794d37c153946095b7ef67d17ac9c2adc848b4babad37f013edec9ff0d0dc6e4'
-            'a2414a02188f1824733d6d0e78ad8d98b16f902a0cbc6ba4f821d48d56112f9a'
-            'fa4bb1349955b94f3ca1d1577e3811496c6de360fd93b86bcec3814c30c67a9d')
+            '08f7c0c16d586732371e9448b76ad924bf3172897aa7f7bb41896c7be6fb1203'
+            '53ef6c4a259c3648aeadbf3c695db72734ea824f9ba345fd4e1146d9cf76978d'
+            '901ef2bee21afa0b5651fab84efa03186733b0776704acd5d123979345ee1e76'
+            '48da6f8535f719ff6a07398efd433b9928285639c09922205eec436d5a72b03e'
+            '9122ae8ae31b6a3be68e174bc67033dbe62da092eaa25a60e9f9850ce440cfe7'
+            'afcd273106ed6584d1e843477215badea06d8729094e37721f35adad21414597')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -34,7 +34,7 @@ prepare() {
   cd "$srcdir/$_pkgname"
   patch -Np1 -i "$srcdir/0001-Add-setup.py.patch"
   patch -Np1 -i "$srcdir/0002-Add-unix_original-file-scrape-mode.patch"
-  patch -Np1 -i "$srcdir/0003-Fix-for-file-names-which-potentially-exceed-the-file.patch"
+  patch -Np1 -i "$srcdir/0003-Fix-for-file-names-which-potentially-exceed-the-file-name-length-limit.patch"
   patch -Np1 -i "$srcdir/0004-Remove-defunct-variants.patch"
   patch -Np1 -i "$srcdir/0005-Use-8kun.top-addresses.patch"
   patch -Np1 -i "$srcdir/0006-Add-variants-for-smuglo.li.patch"
