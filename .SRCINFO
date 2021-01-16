@@ -1,6 +1,6 @@
 pkgbase = python-setuptools-rust
 	pkgdesc = Compile and distribute Python extensions written in rust as easily as if they were written in C.
-	pkgver = 0.10.6
+	pkgver = 0.11.6
 	pkgrel = 1
 	url = https://github.com/PyO3/setuptools-rust
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-setuptools-rust
 	depends = python-setuptools
 	depends = python-semantic-version
 	depends = python-toml
-	source = python-setuptools-rust-0.10.6.tar.gz::https://github.com/PyO3/setuptools-rust/archive/v0.10.6.tar.gz
-	sha384sums = f9c2f7b86c5b88abdf6bd162f2d80029639d0000744a6d830b3a7c63ad54f2571c70a95902b56abef1db390b3f24203f
+	source = python-setuptools-rust::git+https://github.com/PyO3/setuptools-rust.git#tag=v0.11.6
+	sha256sums = SKIP
 
 pkgname = python-setuptools-rust
 

@@ -1,4 +1,5 @@
-# Maintainer: Dario Ostuni <dario.ostuni@gmail.com>
+# Maintainer: codedust
+# Contributor: Dario Ostuni <dario.ostuni@gmail.com>
 # Contributor: Clayton Craft <clayton at craftyguy dot net>
 
 pkgname=python-setuptools-rust
