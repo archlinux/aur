@@ -14,7 +14,7 @@ depends=('dbus'
   'python-dbus-next'
   'systemd')
 makedepends=('git')
-optdepends=('ddccontrol: switching monitor inputs')
+optdepends=('ddccontrol: switch monitor inputs')
 backup=('etc/vfio-kvm.yaml')
 provides=(${pkgname%-*})
 conflicts=(${pkgname%-*})
