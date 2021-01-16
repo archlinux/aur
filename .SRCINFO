@@ -16,7 +16,7 @@ pkgbase = kicad-packages3d-git
 	conflicts = kicad-packages
 	conflicts = kicad-packages3d
 	options = !strip
-	source = git+https://gitlab.com/kicad/libraries/kicad-packages3D
+	source = git+https://gitlab.com/kicad/libraries/kicad-packages3D.git
 	sha256sums = SKIP
 
 pkgname = kicad-packages3d-git
