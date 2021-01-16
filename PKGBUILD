@@ -2,7 +2,7 @@
 
 pkgname=fluffychat
 _gitname=${pkgname}
-pkgver=0.24.2
+pkgver=0.24.3
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('any')
@@ -10,16 +10,18 @@ url="https://fluffychat.im/"
 license=('AGPL3')
 makedepends=('clang'
              'ninja'
-             'flutter-dev'
+             'flutter-git'
              'cmake')
 optdepends=('pantalaimon: used for E2E encryption')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz")
-sha256sums=('9cf1d74ed10cade77bcc12ef152d24450021a232e73e2801aad99a5f269aaf3b')
+sha256sums=('f14930f84c3be4d40d2fba5dca799837ae57ec05708f0bbd80f6aba0fa9fb515')
 
 prepare() {
   flutter config --enable-linux-desktop
+  cd ${_gitname}-v$pkgver
+  echo "dependency_overrides:\n  intl: 0.17.0-nullsafety.2" >> pubspec.yaml
 }
 
 build() {
