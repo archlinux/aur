@@ -1,7 +1,7 @@
 # Maintainer: Plague-doctor <plague at privacyrequired dot com >
 
 pkgname=freetube-bin
-pkgver=0.10.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="An open source desktop YouTube player built with privacy in mind."
 arch=('x86_64')
@@ -33,4 +33,4 @@ package() {
 
 md5sums=('e6ae90f67b51efc28cbc249aefc7fc28'
          '226826376032a3253ebba9f1ed2e58fd'
-         'fdede99d1e2c224e3ab2c142e6f562b4')
+         '028870c621f395092edeeed1303d4ae4')
