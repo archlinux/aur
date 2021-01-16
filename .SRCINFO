@@ -1,7 +1,7 @@
 pkgbase = weboob-qt
 	pkgdesc = Weboob is a project which provides a core library, modules and applications (QT apps)
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://weboob.org
 	install = weboob.install
 	arch = any

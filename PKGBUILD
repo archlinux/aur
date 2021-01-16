@@ -2,7 +2,7 @@
 
 pkgname=weboob-qt
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Weboob is a project which provides a core library, modules and applications (QT apps)"
 arch=('any')
 url="https://weboob.org"
@@ -24,16 +24,16 @@ package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   rm -rf "${pkgdir}/usr/share/man"
-  rm ${pkgdir}/usr/lib/python3.8/site-packages/weboob/__init__.py
-  rm ${pkgdir}/usr/lib/python3.8/site-packages/weboob/__pycache__/__init__.cpython-38.opt-1.pyc
-  rm ${pkgdir}/usr/lib/python3.8/site-packages/weboob/__pycache__/__init__.cpython-38.pyc
-  rm ${pkgdir}/usr/lib/python3.8/site-packages/weboob/applications/__init__.py
-  rm ${pkgdir}/usr/lib/python3.8/site-packages/weboob/applications/__pycache__/__init__.cpython-38.opt-1.pyc
-  rm ${pkgdir}/usr/lib/python3.8/site-packages/weboob/applications/__pycache__/__init__.cpython-38.pyc
-  rm ${pkgdir}/usr/lib/python3.8/site-packages/weboob/tools/__init__.py
-  rm ${pkgdir}/usr/lib/python3.8/site-packages/weboob/tools/__pycache__/__init__.cpython-38.opt-1.pyc
-  rm ${pkgdir}/usr/lib/python3.8/site-packages/weboob/tools/__pycache__/__init__.cpython-38.pyc
-  rm ${pkgdir}/usr/lib/python3.8/site-packages/weboob/tools/application/__init__.py
-  rm ${pkgdir}/usr/lib/python3.8/site-packages/weboob/tools/application/__pycache__/__init__.cpython-38.opt-1.pyc
-  rm ${pkgdir}/usr/lib/python3.8/site-packages/weboob/tools/application/__pycache__/__init__.cpython-38.pyc
+  rm ${pkgdir}/usr/lib/python3.9/site-packages/weboob/__init__.py
+  rm ${pkgdir}/usr/lib/python3.9/site-packages/weboob/__pycache__/__init__.cpython-39.opt-1.pyc
+  rm ${pkgdir}/usr/lib/python3.9/site-packages/weboob/__pycache__/__init__.cpython-39.pyc
+  rm ${pkgdir}/usr/lib/python3.9/site-packages/weboob/applications/__init__.py
+  rm ${pkgdir}/usr/lib/python3.9/site-packages/weboob/applications/__pycache__/__init__.cpython-39.opt-1.pyc
+  rm ${pkgdir}/usr/lib/python3.9/site-packages/weboob/applications/__pycache__/__init__.cpython-39.pyc
+  rm ${pkgdir}/usr/lib/python3.9/site-packages/weboob/tools/__init__.py
+  rm ${pkgdir}/usr/lib/python3.9/site-packages/weboob/tools/__pycache__/__init__.cpython-39.opt-1.pyc
+  rm ${pkgdir}/usr/lib/python3.9/site-packages/weboob/tools/__pycache__/__init__.cpython-39.pyc
+  rm ${pkgdir}/usr/lib/python3.9/site-packages/weboob/tools/application/__init__.py
+  rm ${pkgdir}/usr/lib/python3.9/site-packages/weboob/tools/application/__pycache__/__init__.cpython-39.opt-1.pyc
+  rm ${pkgdir}/usr/lib/python3.9/site-packages/weboob/tools/application/__pycache__/__init__.cpython-39.pyc
 }
