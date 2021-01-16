@@ -61,6 +61,7 @@ pkgver() {
 
 prepare() {
   cd FreeCAD
+  #git checkout 927fdc9edc
 }
 
 build() {
@@ -70,29 +71,32 @@ build() {
     -D BUILD_ENABLE_CXX_STD=C++14 \
     -D BUILD_QT5=ON \
     -D CMAKE_INSTALL_PREFIX="" \
-    -D CMAKE_BUILD_TYPE=Release \
+    -D CMAKE_BUILD_TYPE=None \
     -D CMAKE_C_FLAGS="${CFLAGS} -fPIC -w" \
     -D CMAKE_CXX_FLAGS="${CXXFLAGS} -fPIC -w" \
     -D FREECAD_USE_EXTERNAL_PIVY=ON \
     -D FREECAD_USE_OCC_VARIANT="Official Version" \
     -D FREECAD_USE_QT_FILEDIALOG=ON \
     -D PYTHON_EXECUTABLE=/usr/bin/python \
-    -G Ninja -B "${srcdir}/build" -S .
+    -G Ninja \
+    -B build_dir \
+    -S .
 
-  ninja -C "${srcdir}/build"
+  cmake --build build_dir
 }
 
 check() {
-  DESTDIR="${srcdir}/check" ninja -C "${srcdir}/build" install
+  cd FreeCAD
+  DESTDIR=check cmake --build build_dir -- install
 
-  cd "${srcdir}/check"
+  cd build_dir/check
   LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:lib bin/FreeCADCmd --console --run-test 0
 }
 
 package() {
   cd FreeCAD
   local _destdir=/usr/local/freecad  # maybe this belongs in /opt/freecad-git
-  DESTDIR="${pkgdir}${_destdir}" ninja -C "${srcdir}/build" install
+  DESTDIR="${pkgdir}${_destdir}" cmake --build build_dir -- install
 
   mkdir -p "${pkgdir}"/usr/{share,bin,lib}
 
