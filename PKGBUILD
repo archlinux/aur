@@ -2,10 +2,11 @@
 
 pkgname=(flashplugin-debug pepper-flash-debug)
 pkgver=32.0.0.465
-pkgrel=1
+pkgrel=2
 pkgdesc="Adobe Flash Player debugger"
 arch=('x86_64')
 url="https://www.adobe.com/support/flashplayer/debug_downloads.html"
+makedepends=('bbe')
 license=('custom' 'LGPL')
 options=('!strip')
 source=(flash_player_npapi_linux_debug_$pkgver.x86_64.tar.gz::https://fpdownload.macromedia.com/pub/flashplayer/updaters/32/flash_player_npapi_linux_debug.x86_64.tar.gz
@@ -23,6 +24,22 @@ prepare() {
   done
 }
 
+remove_eol_time_bomb() {
+  local plugin_file="$1";
+  shift;
+  # From https://cache.tehsausage.com/flash/defuse.txt
+  time_bomb_trigger='\x40\x46\x3E\x6F\x77\x42'
+  if grep "$(printf "$time_bomb_trigger")" "$plugin_file"; then
+    echo "Found flash player EOL time bomb in ${plugin_file}. Removing it..."
+    bbe -o "${plugin_file}.patched" -e "s/\x00\x00${time_bomb_trigger}/\x00\x00\x00\x00\x00\x00\xF8\x7F/" "$plugin_file"
+    mv "${plugin_file}.patched" "$plugin_file"
+    sync
+    echo "Removed flash player EOL time bomb from ${plugin_file}"
+  else
+    echo "Did not find flash player EOL time bomb in ${plugin_file}."
+  fi
+}
+
 package_flashplugin-debug() {
   pkgdesc+=" NPAPI"
   depends=('libxt' 'gtk2' 'nss' 'curl' 'hicolor-icon-theme')
@@ -31,6 +48,7 @@ package_flashplugin-debug() {
   conflicts=('flashplugin')
 
   cd npapi
+  remove_eol_time_bomb libflashplayer.so
   install -Dm644 libflashplayer.so "$pkgdir/usr/lib/mozilla/plugins/libflashplayer.so"
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" license.pdf LGPL/notice.txt
 
@@ -47,6 +65,7 @@ package_pepper-flash-debug() {
   conflicts=('pepper-flash')
 
   cd ppapi
+  remove_eol_time_bomb libpepflashplayer.so
   install -Dm644 -t "$pkgdir/usr/lib/PepperFlash" manifest.json libpepflashplayer.so
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" license.pdf LGPL/notice.txt
 }
