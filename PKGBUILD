@@ -1,9 +1,9 @@
 # Maintainer: QuantMint <qua/nt/mint/@/tuta/nota.de>
 # Contributor: Ivan Fonseca <ivanfon@riseup.net>
 pkgname=godot-beta-bin
-pkgver=3.2.4_beta5
 _v1=3.2.4
-_v2=beta5
+_v2=beta6
+pkgver=${_v1}_${_v2}
 pkgrel=1
 pkgdesc='The latest official beta release of the Godot game engine'
 url='https://godotengine.org'
