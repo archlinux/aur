@@ -1,0 +1,18 @@
+pkgbase = uade-git
+	pkgdesc = uade plays 200+ Amiga computer music formats
+	pkgver = r1372.60bca48
+	pkgrel = 1
+	url = https://gitlab.com/uade-music-player/uade
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconf
+	makedepends = git
+	depends = libao
+	depends = bencodetools
+	provides = uade
+	conflicts = uade
+	source = git+https://gitlab.com/uade-music-player/uade.git
+	md5sums = SKIP
+
+pkgname = uade-git
+
