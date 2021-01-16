@@ -3,21 +3,26 @@
 
 _gemname=parallel
 pkgname=ruby-$_gemname
-pkgver=1.19.2
+pkgver=1.20.1
 pkgrel=1
-pkgdesc="Run any kind of code in parallel processes"
+pkgdesc="Ruby: parallel processing made simple and fast"
 arch=(any)
-url="https://github.com/grosser/parallel"
+url=https://github.com/grosser/parallel
 license=(MIT)
 depends=(ruby)
-makedepends=(rubygems ruby-rdoc)
+makedepends=(git rubygems ruby-rdoc)
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
-sha256sums=('54dc19bef898b700b6f51ac1a025b0d310708a5e1c1b127ec35ed4dafb11619d')
+source=(git+https://github.com/grosser/parallel.git?tag=v$pkgver)
+sha256sums=('SKIP')
+
+build() {
+  cd ${_gemname}
+  gem build ${_gemname}.gemspec
+}
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  cd ${_gemname}
+  local _gemdir="$(gem env gemdir)"
 
   gem install \
     --ignore-dependencies \
@@ -28,6 +33,8 @@ package() {
 
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 
-  install -Dm0644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/MIT-LICENSE.txt" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 MIT-LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 Readme.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
+
+# vim: set ts=2 sw=2 et:
