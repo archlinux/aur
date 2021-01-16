@@ -10,9 +10,9 @@ pkgdesc="Automatic Movie Downloading via NZBs & Torrents"
 arch=('any')
 url="http://couchpota.to/"
 license=('GPL3')
-makedepends=('git')
 # 'python2-pyopenssl' is deprecated
-depends=('python2-lxml')
+depends=('git' 'python2-lxml')
+#depends=('python2-lxml')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=$pkgname.install
@@ -28,6 +28,11 @@ pkgver() {
   git describe --long --tags | sed 's|^build/||;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd $pkgname
+  sed -i "s/^BRANCH.*/BRANCH = 'develop'/" version.py
+}
+
 package() {
   install -Dm644 couchpotato.service "$pkgdir/usr/lib/systemd/system/couchpotato.service"
   install -Dm644 couchpotato.sysusers "$pkgdir/usr/lib/sysusers.d/couchpotato.conf"
@@ -35,10 +40,12 @@ package() {
   install -dm755 "$pkgdir/opt/couchpotato/data"
 
   cd $pkgname
+
+  # A "GIT" install includes the .git folder
   install 755 -d "$pkgdir/opt/couchpotato/app"
   cp -a . "$pkgdir/opt/couchpotato/app"
 
-  # Set URL for the built-in updater
   git -C "$pkgdir/opt/couchpotato/app" remote set-url origin $_giturl
+  git -C "$pkgdir/opt/couchpotato/app" switch develop    # master
 }
 
