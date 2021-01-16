@@ -2,7 +2,7 @@
 
 pkgname=typescript-language-server-git
 pkgver=0.5.1.r0.g3a8ea0f
-pkgrel=1
+pkgrel=2
 pkgdesc='Language Server Protocol (LSP) implementation for TypeScript using tsserver'
 url=https://github.com/theia-ide/typescript-language-server
 arch=('any')
@@ -21,11 +21,14 @@ pkgver() {
 
 build() {
   cd ${pkgname%-git}
-  yarn --ignore-scripts --frozen-lockfile --non-interactive
-  yarn compile
-  cp --parents -r server/{lib,node_modules,package.json} ..
-  cd ../server
+  yarn --ignore-scripts --non-interactive
+  yarn compile # Needs bin links
+
+  # Shallowly install server workspace dependencies
+  mv package.json{,.bak}
+  cd server
   yarn --ignore-scripts --production --non-interactive --no-bin-links
+  mv ../package.json{.bak,}
 }
 
 check() {
@@ -34,13 +37,12 @@ check() {
 }
 
 package() {
-  install -d "$pkgdir"/usr/{bin,lib/node_modules/${pkgname%-git}}
-  ln -s /usr/lib/node_modules/${pkgname%-git}/lib/cli.js \
-    "$pkgdir"/usr/bin/${pkgname%-git}
-  cd server
-  cp --parents -r lib node_modules package.json \
-    "$pkgdir"/usr/lib/node_modules/${pkgname%-git}
-  chmod 755 "$pkgdir"/usr/lib/node_modules/${pkgname%-git}/lib/cli.js
+  cd ${pkgname%-git}$/server
+  install -d "$pkgdir"/usr/{bin,lib/node_modules/$pkgname}
+  cp -r lib node_modules package.json "$pkgdir"/usr/lib/node_modules/$pkgname
+  chmod 755 "$pkgdir"/usr/lib/node_modules/$pkgname/lib/cli.js
+  ln -s /usr/lib/node_modules/$pkgname/lib/cli.js \
+    "$pkgdir"/usr/bin/$pkgname
 }
 
 # vim:set ts=2 sw=2 et:
