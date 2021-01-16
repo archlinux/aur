@@ -4,7 +4,7 @@
 _basename=numactl
 pkgname=lib32-libnuma
 pkgver=2.0.14
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple NUMA policy support 32-bit version. Libraries only'
 arch=('x86_64')
 url='https://github.com/numactl/numactl'
@@ -28,5 +28,6 @@ build() {
 
 package() {
   cd "$srcdir/$_basename-${pkgver/_/-}"
-  make DESTDIR="$pkgdir" install-libLTLIBRARIES
+  make DESTDIR="$pkgdir" install
+  rm -rf "$pkgdir"/usr/{share,bin,include}
 }
