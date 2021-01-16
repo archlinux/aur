@@ -1,6 +1,6 @@
 # Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
 pkgname=plasma-workspace-git
-pkgver=r9154.cb03cd7ca
+pkgver=r9831.f59389a0f
 pkgrel=1
 pkgdesc='KDE Plasma Workspace'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('qt5-tools' 'kded-git' 'libksysguard-git' 'kjsembed-git'
   'khelpcenter-git' 'xorg-xrdb' 'xorg-xsetroot' 'xorg-xmessage' 'xorg-xprop'
   'prison-git' 'kxmlrpcclient-git' 'networkmanager-qt' 'kscreenlocker-git'
   'kholidays-git')
-makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git')
+makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git' 'plasma-wayland-protocols-git')
 optdepends=('plasma-workspace-wallpapers: additional wallpapers')
 conflicts=('plasma-workspace' 'plasma-wayland-session' 'kdebase-workspace')
 provides=('plasma-workspace' 'plasma-wayland-session')
