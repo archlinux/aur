@@ -4,7 +4,7 @@ rm -rf src
 rm -rf pkg
 rm -rf local-php-security-checker*
 updpkgsums
-makepkg -si
+makepkg -si --noconfirm
 makepkg --printsrcinfo > .SRCINFO
 set +e
 git add .

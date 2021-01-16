@@ -6,7 +6,7 @@ pkgver=1.0.0
 pkgdesc="PHP security vulnerabilities checker."
 url="https://github.com/fabpot/local-php-security-checker"
 arch=('x86_64')
-license=('GNU Affero General Public License v3.0')
+license=('AGPL3')
 source=(
     "$pkgname-$pkgver::https://github.com/fabpot/local-php-security-checker/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_amd64"
 )
