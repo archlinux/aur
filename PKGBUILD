@@ -7,19 +7,19 @@ pkgver=2.24.0
 pkgrel=12
 pkgdesc="Python bindings for the GTK widget set"
 url='http://www.pygtk.org'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('LGPL')
 depends=('libglade' 'python2-cairo' 'python2-gobject2')
-makedepends=('python2-numpy' 'pygobject2-devel')
+makedepends=('python2-numpy' 'python2-gobject2')
 optdepends=('python2-numpy')
 source=("${pkgname}-${pkgver}.tar.bz2::https://download.gnome.org/sources/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.bz2"
         'drop-pangofont.patch'
         'python27.patch'
         'fix-leaks-of-pango-objects.patch')
 sha256sums=('cd1c1ea265bd63ff669e92a2d3c2a88eb26bcd9e5363e0f82c896e649f206912'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+            '3281964f25ae0a3e4b80057a3735bc2856d91b13208ffafb5b74dc307d848b02'
+            'af6306b9dfe90d507b2bcfff19ba87aff3575ca4e531e094a5620ff6781b3e72'
+            '0ca9e910e9bb88897089dd19752a419aa78de15463df766cb19a1d0c2dd45bcb')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -38,7 +38,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  PYTHON=/usr/bin/python2 ./configure --prefix=/usr --disable-docs
+  PYTHON=/usr/bin/python2 ./configure --prefix=/usr --build=unknown-unknown-linux --disable-docs
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
