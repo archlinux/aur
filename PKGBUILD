@@ -1,6 +1,6 @@
 # Maintainer: Mees Luten <mees [dot] luten [at] gmail [dot] com>
 pkgname=l-band-decoders-git
-pkgver=r99.a5b6b00
+pkgver=r133.949d29b
 pkgrel=1
 pkgdesc="Small experimental project aimed at decoding various (HRPT) satellites such as Metop and FengYun"
 arch=('x86_64')
@@ -41,10 +41,15 @@ package() {
 	install -Dm755 METEOR\ Demuxer/METEOR-Demux "${pkgdir}"/usr/bin/METEOR-Demux
 	install -Dm755 METEOR\ MSU-MR\ Decoder/METEOR-MSU-MR-Decoder "${pkgdir}"/usr/bin/METEOR-MSU-MR-Decoder
 	install -Dm755 METEOR\ MTVZA\ Decoder/METEOR-MTVZA-Decoder "${pkgdir}"/usr/bin/METEOR-MTVZA-Decoder
+	install -Dm755 MetOp\ AMSU\ Decoder/MetOp-AMSU-Decoder "${pkgdir}"/usr/bin/MetOp-AMSU-Decoder
 	install -Dm755 MetOp\ AVHRR\ Decoder/MetOp-AVHRR-Decoder "${pkgdir}"/usr/bin/MetOp-AVHRR-Decoder
 	install -Dm755 MetOp\ Decoder/MetOp-Decoder "${pkgdir}"/usr/bin/MetOp-Decoder
-	install -Dm755 NOAA\ MHS\ Decoder/MHS_Decoder "${pkgdir}"/usr/bin/MHS_Decoder
+	install -Dm755 MetOp\ GOME-2\ Decoder/MetOp-GOME-2-Decoder "${pkgdir}"/usr/bin/MetOp-GOME-2-Decoder
+	install -Dm755 MetOp\ HIRS\ Decoder/MetOp-HIRS-Decoder "${pkgdir}"/usr/bin/MetOp-HIRS-Decoder
+	install -Dm755 MetOp\ IASI\ Decoder/MetOp-IASI-Decoder "${pkgdir}"/usr/bin/MetOp-IASI-Decoder
+	install -Dm755 MetOp\ MHS\ Decoder/MetOp-MHS-Decoder "${pkgdir}"/usr/bin/MetOp-MHS-Decoder
 	install -Dm755 NOAA\ AVHRR\ Decoder/NOAA-AVHRR-Decoder "${pkgdir}"/usr/bin/NOAA-AVHRR-Decoder
-	#install -Dm755 MetOp\ IASI\ Decoder/MetOp-IASI-Decoder "${pkgdir}"/usr/bin/MetOp-IASI-Decoder
+	install -Dm755 NOAA\ HIRS\ Decoder/NOAA-HIRS-Decoder "${pkgdir}"/usr/bin/NOAA-HIRS-Decoder
+	install -Dm755 NOAA\ MHS\ Decoder/NOAA-MHS-Decoder "${pkgdir}"/usr/bin/NOAA-MHS-Decoder
 }
 
