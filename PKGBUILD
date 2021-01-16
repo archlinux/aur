@@ -2,8 +2,8 @@
 
 pkgname=lunar-client
 _pkgname=lunarclient
-pkgver=2.4.0
-pkgrel=4
+pkgver=2.4.3
+pkgrel=1
 pkgdesc='PvP Modpack for Minecraft 1.7, 1.8, 1.12, 1.15 and 1.16'
 url=https://lunarclient.com
 arch=(x86_64)
