@@ -5,11 +5,10 @@
 # Contributor: Marc Mettke <marc@itmettke.de>
 
 pkgname=firefox-kde-opensuse-rpm
-pkgver="84.0.2.890.1"
-_pkgver="84.0.2-890.1"
+pkgver="84.0.2.894.1"
+_pkgver="84.0.2-894.1"
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE - Binary from OBS"
-epoch=2  # Because of update 76.0.1-833.1
 arch=(x86_64)
 license=("MPL" "GPL" "LGPL")
 url="https://build.opensuse.org/package/show/mozilla:Factory/MozillaFirefox"
@@ -19,31 +18,28 @@ makedepends=("gzip")
 provides=("firefox=${pkgver}")
 conflicts=("firefox" "firefox-kde-opensuse" "firefox-kde-opensuse-bin")
 source_x86_64=(https://download.opensuse.org/repositories/mozilla:/Factory/openSUSE_Factory/x86_64/MozillaFirefox-${_pkgver}.x86_64.rpm)
-sha512sums_x86_64=('56536627c23f2eb74a47523098aa15b4a74d224c2b3028ccfaede0745964910d23ad5b422d7285170f46203c94301c79272fce969e07cc6d9d69d9ce8fde2b7c')
-
+sha512sums_x86_64=('bcb099ed51fe00aa6335a4409c37bcb20cfe3143a659cecc71dffbbd5fe19ef247fd8ce4b59a1ef1f3b59d87e3e4941e83198bc4a2dc95deab89fe76822d1627')
 
 prepare() {
     cd "usr"
-
-    # Cleanup openSUSE Branding
-    # We keep the "mozilla" directories as there might be other things in there in the future.
+    
+    # Cleanup openSUSE Branding. We keep the "mozilla" directories as there might be other things in there in the future.
     rm -rf "share/mozilla/extensions"
     rm -rf "lib64/mozilla/extensions"
 
     # unzip man pages, let makepkg handle them
     gunzip -f "share/man/man1/firefox.1.gz"
-
+    
     sed -i "s|/usr/lib64/firefox|/usr/lib/firefox|g" "lib64/firefox/firefox.sh"
     sed -i "s|/usr/lib64/firefox|/usr/lib/firefox|g" "share/man/man1/firefox.1"
 }
 
 package() {
     cd "usr"
-
+    
     install -d "${pkgdir}/usr"
 
     cp -r "." "${pkgdir}/usr/"
     mv "${pkgdir}/usr/lib64" "${pkgdir}/usr/lib"  # Make file structure more in-line with Arch
     ln -sf "/usr/lib/firefox/firefox.sh" "${pkgdir}/usr/bin/firefox"
-
 }
