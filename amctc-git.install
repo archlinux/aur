@@ -1,0 +1,10 @@
+
+post_install() {
+  echo "==> Remember you need 'AMCTC' data files to play. You can put them under"
+  echo "==> '/usr/share/games/amctc/' for all users, '~/.amctc/' for yourself"
+  echo "==> or install amctc-data package."
+}
+
+post_upgrade() {
+  post_install
+}

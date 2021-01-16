@@ -1,0 +1,32 @@
+pkgbase = amctc-git
+	pkgver = r9402_9ee4224ed
+	pkgrel = 1
+	url = https://github.com/cdoom64hunter/eduke32-amcfork-revised
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	license = custom: BUILD
+	makedepends = git
+	makedepends = gendesk
+	makedepends = glu
+	depends = sdl2_mixer
+	depends = libvpx
+	depends = gtk2
+	optdepends = timidity-freepats: a free soundfont for music
+	optdepends = fluidsynth: alternative midi sequencer
+	optdepends = eduke32-shareware-episode: Duke Nukem 3D Demo
+	source = amctc-git::git+https://github.com/cdoom64hunter/eduke32-amcfork-revised.git#branch=amc_dev
+	source = amctc.png
+	sha256sums = SKIP
+	sha256sums = 899dd4fdd84e2dba998b4cf19228fff82967106eea58ce9fcb99836d49310256
+	makedepends_i686 = nasm
+
+pkgname = amctc-git
+	pkgdesc = Advanced Duke Nukem 3D source port with support for amctc - git version
+	install = amctc-git.install
+	provides = amctc
+	provides = amctc-git
+	conflicts = amctc
+	conflicts = amctc-git
+
