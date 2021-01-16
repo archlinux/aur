@@ -24,17 +24,17 @@ provides=('folder-color-nautilus-bzr')
 
 
 pkgver() {
-    cd "$pkgname"
+	cd "$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
 	cd "$pkgname/install_scripts"
-    ./nautilus.sh
+	./nautilus.sh
 }
 
 package() {
-    cd "$pkgname"
-    python setup.py install --root="$pkgdir"
+	cd "$pkgname"
+	python setup.py install --root="$pkgdir"
 }
 
