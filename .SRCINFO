@@ -1,6 +1,6 @@
 pkgbase = vfio-kvm-git
-	pkgdesc = A systemd service that manages switching input devices between a VFIO host and guest
-	pkgver = 0.1.0.r5.g9a49779
+	pkgdesc = A systemd service that send a D-Bus signal when a QEMU evdev hotkey is pressed.
+	pkgver = 1.0.0.r0.gc23b0fe
 	pkgrel = 1
 	url = https://github.com/dangle/vfio-kvm
 	arch = any

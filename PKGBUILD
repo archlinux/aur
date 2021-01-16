@@ -2,9 +2,9 @@
 # Maintainer: Melissa Nuño
 
 pkgname=vfio-kvm-git
-pkgver=0.1.0.r5.g9a49779
+pkgver=1.0.0.r0.gc23b0fe
 pkgrel=1
-pkgdesc="A systemd service that manages switching input devices between a VFIO host and guest"
+pkgdesc="A systemd service that send a D-Bus signal when a QEMU evdev hotkey is pressed."
 arch=('any')
 url='https://github.com/dangle/vfio-kvm'
 license=('MIT')
