@@ -1,0 +1,222 @@
+--- a/webm.py
++++ b/webm.py
+@@ -11,7 +11,7 @@
+   - can burn subtitles, fit to limit, use external audio track and many more
+ 
+ dependencies:
+-  - Python 2.7+ or 3.2+ (using: {pythonv})
++  - Python 3.2+ (using: {pythonv})
+   - FFmpeg 2+ compiled with libvpx and libopus (using: {ffmpegv})
+   - mpv 0.17+ compiled with Lua support, optional (using: {mpvv})
+ 
+@@ -29,13 +29,6 @@
+ similarly you can set custom location of mpv executable with WEBM_MPV
+ """
+ 
+-# Since there is no way to wrap future imports in try/except, we use
+-# hack with comment. See <http://stackoverflow.com/q/388069> for
+-# details.
+-from __future__ import division  # Install Python 2.7+ or 3.2+
+-from __future__ import print_function  # Install Python 2.7+ or 3.2+
+-from __future__ import unicode_literals  # Install Python 2.7+ or 3.2+
+-
+ import os
+ import re
+ import sys
+@@ -55,77 +48,11 @@
+ __license__ = 'CC0'
+ 
+ 
+-_WIN = os.name == 'nt'
+-_PY2 = sys.version_info[0] == 2
+-_TEXT_TYPE = unicode if _PY2 else str  # noqa: F821
+-_NUM_TYPES = (int, long, float) if _PY2 else (int, float)  # noqa: F821
+-_input = raw_input if _PY2 else input  # noqa: F821
+-_range = xrange if _PY2 else range  # noqa: F821
+-
+-
+-# We can't use e.g. ``sys.stdout.encoding`` because user can redirect
+-# the output so in Python2 it would return ``None``. Seems like
+-# ``getpreferredencoding`` is the best remaining method.
+-# NOTE: Python 3 uses ``getfilesystemencoding`` in ``os.getenv`` and
+-# ``getpreferredencoding`` in ``subprocess`` module.
+-# XXX: We will fail early with ugly traceback on any of this toplevel
+-# decodes if encoding is wrong.
+-OS_ENCODING = locale.getpreferredencoding() or 'utf-8'
+-
+-
+-if _WIN and _PY2:
+-    # https://stackoverflow.com/a/846931
+-    # Broken due to https://bugs.python.org/issue2128
+-    def win32_unicode_argv():
+-        from ctypes import POINTER, byref, cdll, c_int, windll
+-        from ctypes.wintypes import LPCWSTR, LPWSTR
+-
+-        GetCommandLineW = cdll.kernel32.GetCommandLineW
+-        GetCommandLineW.argtypes = []
+-        GetCommandLineW.restype = LPCWSTR
+-
+-        CommandLineToArgvW = windll.shell32.CommandLineToArgvW
+-        CommandLineToArgvW.argtypes = [LPCWSTR, POINTER(c_int)]
+-        CommandLineToArgvW.restype = POINTER(LPWSTR)
+-
+-        cmd = GetCommandLineW()
+-        argc = c_int(0)
+-        argv = CommandLineToArgvW(cmd, byref(argc))
+-        if argc.value > 0:
+-            # Remove Python executable and commands if present.
+-            start = argc.value - len(sys.argv)
+-            return [argv[i] for i in _range(start, argc.value)]
+-        else:
+-            return []
+-
+-    ARGS = win32_unicode_argv()[1:]
+-else:
+-    ARGS = sys.argv[1:]
+-    # In Python2 ``sys.argv`` is a list of bytes. See:
+-    # <http://stackoverflow.com/q/4012571>,
+-    # <https://bugs.python.org/issue2128> for details.
+-    if _PY2:
+-        ARGS = [arg.decode(OS_ENCODING) for arg in ARGS]
++ARGS = sys.argv[1:]
+ 
+ 
+-# Python3 returns unicode here fortunately.
+ FFMPEG_PATH = os.getenv('WEBM_FFMPEG', 'ffmpeg')
+-if _PY2:
+-    FFMPEG_PATH = FFMPEG_PATH.decode(OS_ENCODING)
+-
+-
+ MPV_PATH = os.getenv('WEBM_MPV', 'mpv')
+-if _PY2:
+-    MPV_PATH = MPV_PATH.decode(OS_ENCODING)
+-
+-
+-# Fix unicode subprocess arguments on Win+Py2:
+-# https://bugs.python.org/issue1759845
+-if _WIN and _PY2:
+-    try:
+-        import subprocessww  # noqa: F401
+-    except ImportError:
+-        pass
+ 
+ 
+ def _ffmpeg(args, check_code=True, debug=False):
+@@ -152,7 +79,6 @@
+                 stderr=subprocess.PIPE)
+     except Exception as exc:
+         raise Exception('failed to run FFmpeg ({})'.format(exc))
+-    # These are bytes in both Py2 and 3.
+     out, err = p.communicate()
+     if check_code and p.returncode != 0:
+         raise Exception('FFmpeg exited with error')
+@@ -183,22 +109,17 @@
+     out, err = p.communicate()
+     if check_code and p.returncode != 0:
+         raise Exception('mpv exited with error')
+-    if _PY2:
+-        if catch_stdout:
+-            out = out.decode(OS_ENCODING)
+-        err = err.decode(OS_ENCODING)
+     return {'stdout': out, 'stderr': err, 'code': p.returncode}
+ 
+ 
+ def get_capabilities():
+     pythonv = '{}.{}.{}'.format(*sys.version_info)
+-    if ((sys.version_info[0] == 2 and sys.version_info[1] < 7) or
+-            (sys.version_info[0] == 3 and sys.version_info[1] < 2) or
++    if ((sys.version_info[0] == 3 and sys.version_info[1] < 2) or
+             # Just in case... Also don't restrict <= 3, script might
+             # work on Python 4+ too.
+-            sys.version_info[0] < 2):
++            sys.version_info[0] < 3):
+         raise Exception(
+-            'Python version must be 2.7+ or 3.2+, using: {}'.format(pythonv))
++            'Python version must be 3.2+, using: {}'.format(pythonv))
+ 
+     ffverout = _ffmpeg_output(['-version'])['stdout']
+     try:
+@@ -612,7 +533,7 @@
+ 
+ 
+ def _parse_time(time):
+-    if isinstance(time, _NUM_TYPES):
++    if isinstance(time, (int, float)):
+         return time
+     if time == 'N/A':
+         return sys.maxsize
+@@ -640,7 +561,7 @@
+                                        idur % 60)
+     frac = duration % 1
+     if frac >= 0.1:
+-        ts += _TEXT_TYPE(frac)[1:3]
++        ts += str(frac)[1:3]
+     return ts
+ 
+ 
+@@ -767,7 +688,7 @@
+ 
+     if cut or crop or info:
+         try:
+-            ok = _input('Continue with that settings? Y/n ')
++            ok = input('Continue with that settings? Y/n ')
+         except EOFError:
+             sys.exit(1)
+         if ok == '' or ok.lower() == 'y':
+@@ -789,7 +710,7 @@
+     else:
+         print("You haven't defined cut/crop or dumped info.", file=sys.stderr)
+         try:
+-            ok = _input('Encode input video intact? y/N ')
++            ok = input('Encode input video intact? y/N ')
+         except EOFError:
+             sys.exit(1)
+         if ok == '' or ok.lower() != 'y':
+@@ -979,13 +900,13 @@
+     if (options.vs is not None or
+             getattr(options, 'as') is not None or
+             options.aa is not None):
+-        vstream = 'v:0' if options.vs is None else _TEXT_TYPE(options.vs)
++        vstream = 'v:0' if options.vs is None else str(options.vs)
+         if not vstream.startswith('['):
+             vstream = '0:{}'.format(vstream)
+         args += ['-map', vstream]
+         ainput = 0 if options.aa is None else 1
+         astream = getattr(options, 'as')
+-        astream = 'a:0?' if astream is None else _TEXT_TYPE(astream)
++        astream = 'a:0?' if astream is None else str(astream)
+         if not astream.startswith('['):
+             astream = '{}:{}'.format(ainput, astream)
+         args += ['-map', astream]
+@@ -1048,9 +969,9 @@
+         vfilters += [options.vfi]
+     if options.vw is not None or options.vh is not None:
+         scale = 'scale='
+-        scale += '-1' if options.vw is None else _TEXT_TYPE(options.vw)
++        scale += '-1' if options.vw is None else str(options.vw)
+         scale += ':'
+-        scale += '-1' if options.vh is None else _TEXT_TYPE(options.vh)
++        scale += '-1' if options.vh is None else str(options.vh)
+         vfilters += [scale]
+     if options.sa is not None:
+         sub_delay = 0
+@@ -1121,7 +1042,7 @@
+         args += shlex.split(options.fo)
+ 
+     args += [outfile]
+-    args = [_TEXT_TYPE(arg) for arg in args]
++    args = [str(arg) for arg in args]
+     _ffmpeg(args, debug=True)
+ 
+ 
+@@ -1134,10 +1055,6 @@
+         options.vb = _calc_video_bitrate(options)
+     options.threads = multiprocessing.cpu_count()
+     if not options.singlepass:
+-        # NOTE: Py3 always returns unicode for the second parameter, Py2
+-        # returns bytes with bytes suffix/without suffix and unicode with
+-        # unicode suffix. Since we use unicode_literals and provide suffix,
+-        # it should always be unicode.
+         logfh, options.logfile = tempfile.mkstemp(suffix='-0.log')
+         os.close(logfh)
+         _encode(options, caps, passn=1)

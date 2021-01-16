@@ -9,8 +9,18 @@ license=('custom:CC0')
 depends=('python' 'ffmpeg')
 optdepends=('mpv: for interactive mode')
 makedepends=('python-setuptools')
-source=("https://github.com/Kagami/webm.py/archive/v$pkgver.tar.gz")
-sha256sums=('786244edc928583a49e210cbb5533d192bf9ad31bc82eb0a66d393964db119c8')
+source=("https://github.com/Kagami/webm.py/archive/v$pkgver.tar.gz"
+        "webm-mpv-options.patch"
+        "webm-drop-python2-support.patch")
+sha256sums=('786244edc928583a49e210cbb5533d192bf9ad31bc82eb0a66d393964db119c8'
+            'ddaf7c409fb7e0d6a50c638338b1d18fb2df3f7555503d6c9d0e5054703ad958'
+            '70308ed9a2f0a3d9fc445fec5a8cebf8f8e7fb51686af2a9fcc77953094bce0d')
+
+prepare() {
+  cd "$srcdir/webm.py-$pkgver"
+  patch -Np1 -i "$srcdir/webm-mpv-options.patch"
+  patch -Np1 -i "$srcdir/webm-drop-python2-support.patch"
+}
 
 build() {
   cd "$srcdir/webm.py-$pkgver"

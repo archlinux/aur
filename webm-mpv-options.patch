@@ -1,0 +1,11 @@
+--- a/webm.py
++++ b/webm.py
+@@ -701,7 +701,7 @@
+ 
+     # --osc conflicts with crop area dragging.
+     # Possible to enable back with -po='--osc'
+-    args = ['--msg-level', 'all=error', '--no-osc', '--script', luafile]
++    args = ['--msg-level=all=error', '--no-osc', '--script=' + luafile]
+     if options.po is not None:
+         args += shlex.split(options.po)
+     args += [options.infile]
