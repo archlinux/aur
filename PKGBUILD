@@ -1,32 +1,44 @@
-# Maintainer: Ben Ruijl <benruyl at gmail>
+# Maintainer: willemw <willemw12@gmail.com>
+# Contributor: Ben Ruijl <benruyl at gmail>
+
+_giturl=https://github.com/CouchPotato/CouchPotatoServer.git
 
 pkgname=couchpotato-git
-_gitname=CouchPotatoServer
-pkgver=4869.c4fad95
-pkgrel=2
-pkgdesc="Automatic Movie Downloading via NZBs & Torrent"
+pkgver=2.6.1.r1261.g6f36f917
+pkgrel=1
+pkgdesc="Automatic Movie Downloading via NZBs & Torrents"
 arch=('any')
 url="http://couchpota.to/"
 license=('GPL3')
-depends=('python2' 'python2-lxml')
 makedepends=('git')
-provides=('couchpotato')
-conflicts=('couchpotato')
-install='couchpotato.install'
-source=('git://github.com/RuudBurger/CouchPotatoServer.git' 'couchpotato.service')
-md5sums=('SKIP' 'af02374e700522e56cb9bc606bf31731')
+# 'python2-pyopenssl' is deprecated
+depends=('python2-lxml')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+install=$pkgname.install
+source=('couchpotato.service'
+        'couchpotato.sysusers'
+        "$pkgname::git+$_giturl#branch=develop")
+md5sums=('f03b752e2a46030a9cafa38385f3d0df'
+         'b4dd3397e74c6d543ae2936971e26541'
+         'SKIP')
 
 pkgver() {
-  cd $_gitname
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd $pkgname
+  git describe --long --tags | sed 's|^build/||;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  mkdir -p "${pkgdir}/opt/"
-  cp -r "$srcdir/$_gitname" "${pkgdir}/opt/couchpotato"
+  install -Dm644 couchpotato.service "$pkgdir/usr/lib/systemd/system/couchpotato.service"
+  install -Dm644 couchpotato.sysusers "$pkgdir/usr/lib/sysusers.d/couchpotato.conf"
 
-   # Fix for issues with Python 3
-  find "${pkgdir}/opt/couchpotato" -type f -exec sed -i 's/env python/env python2/g' {} \;
+  install -dm755 "$pkgdir/opt/couchpotato/data"
 
-  install -Dm644 "${srcdir}/couchpotato.service" "${pkgdir}/usr/lib/systemd/system/couchpotato.service"
+  cd $pkgname
+  install 755 -d "$pkgdir/opt/couchpotato/app"
+  cp -a . "$pkgdir/opt/couchpotato/app"
+
+  # Set URL for the built-in updater
+  git -C "$pkgdir/opt/couchpotato/app" remote set-url origin $_giturl
 }
+

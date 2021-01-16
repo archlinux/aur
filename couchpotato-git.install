@@ -1,0 +1,26 @@
+post_install() {
+  post_upgrade
+
+  echo "==> Start and enable couchpotato.service. Then visit http://localhost:5050/"
+}
+
+post_upgrade() {
+  systemd-sysusers couchpotato.conf
+
+  chown -R couchpotato:couchpotato /opt/couchpotato/app
+  chown couchpotato:couchpotato /opt/couchpotato/data
+}
+
+pre_remove() {
+  echo "==> Stopping couchpotato.service..."
+  systemctl stop couchpotato.service
+}
+
+post_remove() {
+  rm -rf /opt/couchpotato/app
+
+  #echo "==> To delete the configuration files, run as root: rm -rf /opt/couchpotato/data"
+  echo "==> To delete the configuration files, run as root: rm -rf /opt/couchpotato/{config.ini,data}"
+  echo "==> To delete the \"couchpotato\" user, run as root: userdel --force couchpotato"
+}
+

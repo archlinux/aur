@@ -1,14 +1,14 @@
 [Unit]
-Description=An automatic NZB and torrent movie downloader
+Description=CouchPotato Daemon
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/python2 /opt/couchpotato/CouchPotato.py --config_file /opt/couchpotato/config.ini --data_dir /opt/couchpotato/data --quiet
+#ExecStart=/opt/couchpotato/app/CouchPotato.py --data_dir=/opt/couchpotato/data --quiet
+ExecStart=/opt/couchpotato/app/CouchPotato.py --config_file=/opt/couchpotato/config.ini --data_dir=/opt/couchpotato/data --quiet
 Type=simple
 User=couchpotato
 Group=couchpotato
+Restart=on-success
 
 [Install]
 WantedBy=multi-user.target
-
-
