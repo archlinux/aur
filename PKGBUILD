@@ -20,6 +20,7 @@ build() {
     cd grocy-${pkgver}
 
     # composer need to have php-gd extension enabled, otherwise it will fail for a dependency of grocy.
+    # note: you may need to adjust your php open_basedir setting, so that php can run!
     php -n -dextension=gd.so /usr/bin/composer install --no-interaction --no-dev --optimize-autoloader
     composer clear-cache
 
