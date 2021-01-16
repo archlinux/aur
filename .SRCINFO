@@ -1,0 +1,24 @@
+pkgbase = dvanalyzer
+	pkgdesc = a technical quality control and reporting tool that examines DV streams
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://mediaarea.net/DVAnalyzer
+	arch = x86_64
+	license = GPL
+	makedepends = dos2unix
+	depends = libzen
+	depends = libmediainfo
+	source = https://mediaarea.net/download/source/dvanalyzer/1.4.2/dvanalyzer_1.4.2.tar.xz
+	source = fix-compilation.patch
+	sha256sums = dc55d91382fc52470a98f861f30d35c4ac6d1c21285b9332aa950221dc6991e3
+	sha256sums = 46e375e6689372bc11bb7a12b797f8c2de5cf71333a468db6cadaf4510b0e907
+
+pkgname = dvanalyzer
+	pkgdesc = a technical quality control and reporting tool that examines DV streams (CLI)
+
+pkgname = dvanalyzer-gui
+	pkgdesc = a technical quality control and reporting tool that examines DV streams (GUI)
+	depends = libzen
+	depends = libmediainfo
+	depends = qt5-base
+

@@ -1,0 +1,25 @@
+From ef610646fa7cf813b1228ea8cd124c2b5ebaf9d2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?J=C3=A9r=C3=B4me=20Martinez?= <jerome@mediaarea.net>
+Date: Sat, 9 May 2020 18:45:08 +0200
+Subject: [PATCH] Fix a compilation issue with newest MediaInfo library
+
+---
+ Source/Common/Core.cpp | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/Source/Common/Core.cpp b/Source/Common/Core.cpp
+index f2ab489..db6dc3a 100755
+--- a/Source/Common/Core.cpp
++++ b/Source/Common/Core.cpp
+@@ -142,8 +142,9 @@ void Core::Analysis_Frame_Add(const MediaInfo_Event_DvDif_Analysis_Frame_0* Fram
+     if (ToPush.Errors)
+     {
+         size_t SizeToCopy=std::strlen(FrameData->Errors)+1;
+-        ToPush.Errors=new char[SizeToCopy];
+-        std::memcpy(ToPush.Errors, FrameData->Errors, SizeToCopy);
++        char* Errors=new char[SizeToCopy];
++        std::memcpy(Errors, FrameData->Errors, SizeToCopy);
++        ToPush.Errors=Errors;
+     }
+     Analysis[Analysis.size()-1]->push_back(ToPush);
+ }
