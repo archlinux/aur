@@ -1,14 +1,13 @@
 pkgbase = vis-base16-git
-	pkgdesc = cscope interface for the vis editor.
+	pkgdesc = Themes for the vis editor.
 	pkgver = r6.05dae61
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pshevtsov/base16-vis
 	arch = any
 	license = MIT
 	depends = vis
 	provides = vis-base16
-	conflicts = vis-base16
-	source = git+https://github.com/pshevtsov/base16-vis.git
+	source = vis-base16::git+https://github.com/pshevtsov/base16-vis.git
 	sha256sums = SKIP
 
 pkgname = vis-base16-git
