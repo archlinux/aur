@@ -1,0 +1,14 @@
+pkgbase = dropship-bin
+	pkgdesc = Launcher and Mod manager for Among Us
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/NuclearPowered/Dropship
+	arch = x86_64
+	license = GPL3
+	provides = dropship
+	conflicts = dropship
+	source = https://github.com/NuclearPowered/Dropship/releases/download/v0.1.3/dropship-0.1.3.AppImage
+	sha256sums = 976380e70066e51c067f754c5d3f327d7dd6993dbcf0b0c14bfb7b04c8841cb0
+
+pkgname = dropship-bin
+
