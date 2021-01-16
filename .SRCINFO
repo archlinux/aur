@@ -47,7 +47,6 @@ pkgbase = pulseaudio-nosystemd-git
 	depends = python-dbus
 	depends = python-sip
 	depends = fftw
-	depends = dconf
 	optdepends = alsa-plugins: ALSA support
 	optdepends = pulseaudio-alsa: ALSA configuration (recommended)
 	optdepends = lirc-utils: infra-red support

@@ -18,7 +18,7 @@ url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 license=(GPL)
 depends=(lib{ltdl,soxr,asyncns,xtst,sndfile} "rtkit" "speexdsp" "tdb" "orc"
          "webrtc-audio-processing" jack "lirc" bluez{,-libs} "sbc"
-         python-{pyqt5,dbus,sip} "fftw" dconf)
+         python-{pyqt5,dbus,sip} "fftw")
 makedepends=("git" lib{asyncns,xtst,tool,soxr,sndfile} "attr" "rtkit" "speexdsp"
              "tdb" jack bluez{,-libs} "intltool"  "sbc" "lirc" "fftw"
              "orc" "gtk3" "webrtc-audio-processing" "check" "meson" "dconf")
