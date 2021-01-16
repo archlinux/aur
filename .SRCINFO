@@ -1,14 +1,14 @@
 pkgbase = scannerextract
 	pkgdesc = Scanned Image Extractor
 	pkgver = 0.2.601
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.dominik-ruess.de/scannerExtract/scannerExtract_help_en.html
 	arch = any
 	license = GPL3
 	makedepends = qt5-tools
 	depends = liblbfgs
 	depends = opencv
-	source = scannerextract-0.2.601::https://ayera.dl.sourceforge.net/project/scannedimageextractor/Version-0.2.601/SIE-0.2.601.tar.bz2
+	source = scannerextract-0.2.601::https://iweb.dl.sourceforge.net/project/scannedimageextractor/Version-0.2.601/SIE-0.2.601.tar.bz2
 	source = remove-q-foreachcontainer.patch
 	source = opencv4-compatibility.diff
 	sha256sums = f2473afef1e0cf972a60eec323fc323739aa9e0e8bb14dab639a787cec007dd8
