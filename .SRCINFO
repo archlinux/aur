@@ -5,6 +5,7 @@ pkgbase = pacslim-git
 	url = https://gitlab.com/abarocio80/pacslim
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = make
 	depends = pacman
 	source = git+https://gitlab.com/abarocio80/pacslim
