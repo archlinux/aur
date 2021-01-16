@@ -1,40 +1,39 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
-# Contributor: Lubosz Sarnecki <lubosz@gmail.com>
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Jan de Groot <jgc@archlinux.org>
-
 pkgbase=nautilus-git
-pkgname=(nautilus-git libnautilus-extension-git)
-pkgver=3.37.1.1.r10.g23a2a67b1
+_pkgbase=nautilus
+pkgname=('nautilus-git' 'libnautilus-extension-git')
+pkgver=40.alpha+13+g9b733dd9d
 pkgrel=1
 pkgdesc="Default file manager for GNOME"
 url="https://wiki.gnome.org/Apps/Files"
-arch=(i686 x86_64 armv7h aarch64)
+arch=(x86_64)
 license=(GPL)
-depends=(libgexiv2 gnome-desktop gvfs dconf tracker gnome-autoar gst-plugins-base-libs tracker-miners)
-makedepends=(gobject-introspection git gtk-doc meson appstream-glib)
-options=(!emptydirs)
+depends=('libgexiv2' 'gnome-desktop' 'gvfs' 'dconf' 'tracker3' 'tracker3-miners'
+         'gnome-autoar' 'gst-plugins-base-libs')
+makedepends=('gobject-introspection' 'git' 'gtk-doc' 'meson' 'appstream-glib')
+checkdepends=('python-gobject')
 source=("git+https://gitlab.gnome.org/GNOME/nautilus.git"
         "git+https://gitlab.gnome.org/GNOME/libgd.git")
-sha256sums=('SKIP'
-            'SKIP')
+b2sums=('SKIP'
+        'SKIP')
 
 prepare() {
-  cd nautilus
+  cd $_pkgbase
 
   git submodule init
-  git config --local submodule.subprojects/libgd.url "$srcdir/libgd"
+  git submodule set-url subprojects/libgd "$srcdir/libgd"
   git submodule update
 }
 
 pkgver() {
-  cd nautilus
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd $_pkgbase
+  git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-  arch-meson nautilus build -D docs=true -D packagekit=false
-  ninja -C build
+  arch-meson $_pkgbase build \
+    -D docs=true \
+    -D packagekit=false
+  meson compile -C build
 }
 
 check() {
@@ -52,11 +51,10 @@ _pick() {
 }
 
 package_nautilus-git() {
-  depends+=(libnautilus-extension)
-  provides=(nautilus)
-  conflicts=(nautilus)
+  depends+=('libnautilus-extension')
   optdepends=('nautilus-sendto: Send files via mail extension')
-  groups=(gnome)
+  provides=('nautilus')
+  conflicts=('nautilus')
 
   DESTDIR="$pkgdir" meson install -C build
 
@@ -68,10 +66,11 @@ package_nautilus-git() {
 }
 
 package_libnautilus-extension-git() {
-  pkgdesc="Library for extending GNOME Files"
-  depends=(gtk3)
-  provides=(libnautilus-extension libnautilus-extension.so)
-  conflicts=(libnautilus-extension)
-  
+  pkgdesc="Library for extending the $pkgdesc"
+  depends=('gtk3')
+  provides=('libnautilus-extension' 'libnautilus-extension.so')
+  conflicts=('libnautilus-extension')
   mv libne/* "$pkgdir"
 }
+
+# vim:set sw=2 et:
