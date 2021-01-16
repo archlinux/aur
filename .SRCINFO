@@ -1,6 +1,6 @@
 pkgbase = irccloud-bin
 	pkgdesc = Chat on IRC from anywhere, and never miss a message
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://www.irccloud.com/
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = irccloud-bin
 	depends = libsecret
 	provides = irccloud
 	conflicts = irccloud
-	source = https://github.com/irccloud/irccloud-desktop/releases/download/v0.15.0/irccloud-desktop_0.15.0_linux_amd64.deb
-	md5sums = 2c029a634deb29cdadd5f0b9372b3db5
+	source = https://github.com/irccloud/irccloud-desktop/releases/download/v0.16.0/irccloud-desktop_0.16.0_linux_amd64.deb
+	md5sums = acd8af9504144161a08e687ebd609605
 
 pkgname = irccloud-bin
 
