@@ -1,6 +1,6 @@
 pkgbase = trytond
 	pkgdesc = A three-tiers high-level general purpose application platform (server application)
-	pkgver = 5.6.5
+	pkgver = 5.8.2
 	pkgrel = 1
 	url = http://www.tryton.org/
 	install = trytond.install
@@ -24,15 +24,19 @@ pkgbase = trytond
 	optdepends = python-html2text
 	optdepends = python-gevent
 	backup = etc/trytond.conf
-	source = http://downloads.tryton.org/5.6/trytond-5.6.5.tar.gz
-	source = http://downloads.tryton.org/5.6/trytond-5.6.5.tar.gz.asc
+	source = http://downloads.tryton.org/5.8/trytond-5.8.2.tar.gz
+	source = http://downloads.tryton.org/5.8/trytond-5.8.2.tar.gz.asc
 	source = trytond.conf
 	source = trytond.service
 	validpgpkeys = 7C5A4360F6DF81ABA91FD54D6FF50AFE03489130
-	sha256sums = a373d73b141d71f8e30d728dd8380955bc0f33daaa097201fa9a952e3663e6d8
+	sha256sums = dea7d11ec0b4584a438fab7a1acb56864b32cc9e7d6ffa166572f75a2b033dc0
 	sha256sums = SKIP
 	sha256sums = b843e9cc60ef01bea8fff6bdcd5cc1bf0838ff04d140caa8fcf146ff87619ae4
 	sha256sums = a5c54c8e0408fd757f7688a784ea0ba713c1f46636b5c67858d3817433151f34
+	b2sums = 86c12f0700f61443412b8ecd87cd0b0d800c7610b58bc1e472394d4447dcb70a100a555cb1aef0be28ad54c26105257e165663fe30b3f04a62ad63345fe90855
+	b2sums = SKIP
+	b2sums = 5b5af16d3c9d5857a1d751b88028de8d48ec8a803e1a850cf5cb3e9374186bc8df1e3584eaefcde199ef2136746b0c41f16c9b7e7f4b1e379836322381289d85
+	b2sums = a34c4be9a2adcc12793c1f6413081e8f7bbe9c5b8bbd78bcb6fa233ea4a89d34e09c797e7aa86dfd5bc4dfd30f6472d0fd65326e323f0c6145115adbfa98c80e
 
 pkgname = trytond
 
