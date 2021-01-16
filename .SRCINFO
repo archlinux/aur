@@ -1,7 +1,7 @@
 pkgbase = blobby-volley-svn
 	pkgdesc = Official continuation of the famous Blobby Volley 1.x arcade game
 	pkgver = r1681
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/blobby/
 	arch = x86_64
 	arch = i686
@@ -12,6 +12,8 @@ pkgbase = blobby-volley-svn
 	makedepends = zip
 	depends = physfs
 	depends = sdl2
+	provides = blobby2
+	conflicts = blobby2
 	source = blobby-code::svn+https://svn.code.sf.net/p/blobby/code/trunk
 	source = blobby2.desktop
 	source = blobby2.png

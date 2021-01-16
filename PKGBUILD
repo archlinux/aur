@@ -2,13 +2,15 @@
 
 pkgname=blobby-volley-svn
 pkgver=r1681
-pkgrel=2
+pkgrel=3
 pkgdesc="Official continuation of the famous Blobby Volley 1.x arcade game"
 arch=('x86_64' 'i686')
 url="https://sourceforge.net/projects/blobby/"
 makedepends=('subversion' 'boost' 'cmake' 'zip')
 depends=('physfs' 'sdl2')
 license=('GPL')
+provides=('blobby2')
+conflicts=('blobby2')
 source=("blobby-code::svn+https://svn.code.sf.net/p/blobby/code/trunk"
         "blobby2.desktop"
         "blobby2.png"
@@ -41,6 +43,10 @@ build() {
 package() {
   cd blobby-code
   make DESTDIR="$pkgdir/" install
+
+  install -Dm644 data/api.lua "$pkgdir"/usr/share/blobby/api.lua
+  install -Dm644 data/bot_api.lua "$pkgdir"/usr/share/blobby/bot_api.lua
+  install -Dm644 data/rules_api.lua "$pkgdir"/usr/share/blobby/rules_api.lua
 
   # install .desktop file and icon
   install -dm755 "$pkgdir"/usr/share/{applications,pixmaps}
