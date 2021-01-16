@@ -1,17 +1,23 @@
 pkgbase = bambootracker-git
 	pkgdesc = YM2608 (OPNA) music tracker
-	pkgver = v0.1.6.r58.g72627b1
+	pkgver = 0.4.5.r85.g4af2db7
 	pkgrel = 1
 	url = https://github.com/rerrahkr/BambooTracker
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	makedepends = qt5-tools
-	depends = qt5-multimedia
+	depends = qt5-base
+	depends = jack
+	depends = libpulse
 	depends = hicolor-icon-theme
 	provides = bambootracker
 	conflicts = bambootracker
 	source = bambootracker::git+https://github.com/rerrahkr/BambooTracker.git
+	source = git+https://github.com/thestk/rtaudio
+	source = git+https://github.com/thestk/rtmidi
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = bambootracker-git
