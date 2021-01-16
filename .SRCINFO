@@ -1,0 +1,13 @@
+pkgbase = demoinfo
+	pkgdesc = Displays info about a source engine demo file.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/mads256h/demoinfo
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	source = demoinfo-1.1.tar.gz::https://github.com/mads256h/demoinfo/archive/v1.1.tar.gz
+	sha256sums = 081e20b230a46b0371e6aef3e528a7320ad71b7b9463c5ffc5e0f7b1875e3bea
+
+pkgname = demoinfo
+
