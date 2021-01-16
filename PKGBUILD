@@ -1,5 +1,5 @@
-# Packager: Melissa Nuño
-# Maintainer: Melissa Nuño
+# Packager: Melissa Nuño <melissa.nuno@gmail.com>
+# Maintainer: Melissa Nuño <melissa.nuno@gmail.com>
 
 pkgname=vfio-kvm-git
 pkgver=1.0.0.r0.gc23b0fe
@@ -8,8 +8,12 @@ pkgdesc="A systemd service that send a D-Bus signal when a QEMU evdev hotkey is 
 arch=('any')
 url='https://github.com/dangle/vfio-kvm'
 license=('MIT')
-depends=('python>=3.7' 'python-evdev' 'python-dbus-next')
+depends=('dbus'
+  'python>=3.7'
+  'python-evdev'
+  'python-dbus-next')
 makedepends=('git')
+optdepends=('ddccontrol: switching monitor inputs')
 provides=(${pkgname%-*})
 conflicts=(${pkgname%-*})
 source=('git+https://github.com/dangle/vfio-kvm.git')

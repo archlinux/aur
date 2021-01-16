@@ -6,9 +6,11 @@ pkgbase = vfio-kvm-git
 	arch = any
 	license = MIT
 	makedepends = git
+	depends = dbus
 	depends = python>=3.7
 	depends = python-evdev
 	depends = python-dbus-next
+	optdepends = ddccontrol: switching monitor inputs
 	provides = vfio-kvm
 	conflicts = vfio-kvm
 	source = git+https://github.com/dangle/vfio-kvm.git
