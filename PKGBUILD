@@ -16,7 +16,7 @@ depends=("python"
          "python-pyserial"
          "python-pyusb"
          "python-cheetah3")
-optdepends=("python-ephem: for extended almanac information"
+optdepends=("python-pyephem: for extended almanac information"
             "mariadb-clients: for MariaDB support"
             "python-mysqlclient: for MySQL/MariaDB support")
 backup=("etc/weewx/weewx.conf")
