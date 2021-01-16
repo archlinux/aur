@@ -5,7 +5,7 @@ rm -rf pkg
 rm -rf symfony_linux_amd64.gz
 rm -rf symfony-cli*.tar.xz
 updpkgsums
-makepkg -si
+makepkg -si --noconfirm
 makepkg --printsrcinfo > .SRCINFO
 set +e
 git add .
