@@ -7,6 +7,7 @@ pkgbase = nordselect
 	license = MIT
 	makedepends = rustup
 	depends = curl
+	depends = liboping
 	provides = nordselect
 	source = https://github.com/editicalu/nordselect/archive/1.4.2.tar.gz
 	sha512sums = 350a7fc537d3300ab3051c4660584b79f7365e6e60836f6604b787326e58b7f85d46b05740968e4f934acad6fcbf53041a688f41acee41b73a7f330a15fbe915
