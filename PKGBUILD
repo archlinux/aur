@@ -2,15 +2,16 @@
 
 pkgname=zutty-git
 pkgver=57.ccccbad
-pkgrel=1
+pkgrel=2
 pkgdesc='Terminal emulator'
 arch=(x86_64)
 url='https://tomscii.sig7.se/zutty'
 license=(GPL3)
+conflicts=(zutty)
 depends=(freetype2 libglvnd libxmu)
 makedepends=(git python)
 source=('git+https://github.com/tomszilagyi/zutty')
-sha256sums=('SKIP')
+sha256sums=(SKIP)
 
 pkgver() {
   cd zutty
