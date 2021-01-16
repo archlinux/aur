@@ -1,9 +1,9 @@
 # Maintainer: Roshless <aur@roshless.com>
 pkgname=spek-alternative
 pkgver=0.8.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc='An acoustic spectrum analyser. Fork'
-arch=('any')
+arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/withmorten/spek-alternative'
 license=('GPL3')
 depends=('desktop-file-utils' 'ffmpeg' 'wxgtk2')

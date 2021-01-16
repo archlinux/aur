@@ -1,9 +1,14 @@
 pkgbase = spek-alternative
 	pkgdesc = An acoustic spectrum analyser. Fork
 	pkgver = 0.8.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/withmorten/spek-alternative
-	arch = any
+	arch = aarch64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = x86_64
 	license = GPL3
 	makedepends = intltool
 	depends = desktop-file-utils
