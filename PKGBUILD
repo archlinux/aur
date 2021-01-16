@@ -1,7 +1,7 @@
 # Maintainter: Jerome M. Berger <jeberger@free.fr>
 pkgname=pacmerge
-pkgver=0.1.2
-pkgrel=3
+pkgver=0.1.3
+pkgrel=1
 pkgdesc="A semi-automatic merge tool for pacnew files."
 arch=('x86_64' 'armv7h')
 url="https://heptapod.host/jmb/pacmerge"
