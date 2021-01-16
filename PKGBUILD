@@ -3,7 +3,7 @@
 pkgname='goreleaser-bin'
 _pkgname="${pkgname%-bin}"
 pkgver=v0.155.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Deliver Go binaries as fast and easily as possible'
 url='https://goreleaser.com'
 arch=('x86_64' 'i686' 'aarch64')
