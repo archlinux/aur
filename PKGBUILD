@@ -1,29 +1,31 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
-
-pkgname=libretro-core-info-git
-pkgver=r27.500790e
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
+# shellcheck shell=bash disable=SC2034,SC2164
+_pkgname=libretro-core-info
+pkgname=$_pkgname-git
+pkgver=1.9.0.r16.g48d954c
 pkgrel=1
-pkgdesc='Libretro core info files'
+epoch=1
+pkgdesc="Libretro core info files"
 arch=('any')
-url='https://github.com/libretro/libretro-core-info'
-license=('GPL3')
-groups=('libretro-unstable')
+url="https://github.com/libretro/libretro-core-info"
+license=('MIT')
+groups=('libretro')
 makedepends=('git')
-provides=('libretro-core-info')
-conflicts=('libretro-core-info')
-source=('git+https://github.com/libretro/libretro-core-info.git')
-sha256sums=('SKIP')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url.git")
+md5sums=('SKIP')
 
 pkgver() {
-  cd libretro-core-info
-
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	cd $_pkgname
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd libretro-core-info
-
-  make DESTDIR="${pkgdir}" install
+	cd $_pkgname
+	# shellcheck disable=SC2154
+	make DESTDIR="$pkgdir" install
+	# copy license
+	install -Dm644 -t "$pkgdir"/usr/share/licenses/$_pkgname COPYING
 }
-
-# vim: ts=2 sw=2 et:
