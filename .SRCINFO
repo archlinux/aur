@@ -1,16 +1,13 @@
 pkgbase = isfree
 	pkgdesc = Check your Arch system for nonfree software
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/leo-arch/isfree
 	arch = any
 	license = GPL2
 	makedepends = git
 	depends = pacman
-	depends = coreutils
 	depends = sed
-	depends = gawk
-	depends = grep
 	depends = tar
 	optdepends = bc: percentages support
 	source = git+https://github.com/leo-arch/isfree.git

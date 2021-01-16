@@ -2,12 +2,12 @@
 
 pkgname=isfree
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Check your Arch system for nonfree software"
 arch=(any)
 url="https://github.com/leo-arch/isfree"
 license=(GPL2)
-depends=('pacman' 'coreutils' 'sed' 'gawk' 'grep' 'tar')
+depends=('pacman' 'sed' 'tar')
 optdepends=('bc: percentages support')
 makedepends=('git')
 source=("git+${url}.git")
