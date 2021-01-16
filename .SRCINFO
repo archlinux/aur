@@ -1,12 +1,13 @@
 pkgbase = splunk
 	pkgdesc = Statistical analysis and search tool for logs and machine data
 	pkgver = 8.1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 3
 	url = https://www.splunk.com/
 	install = splunk.install
 	arch = x86_64
 	license = custom
+	options = !strip
 	source = splunk.service
 	sha256sums = ca96b85750a0592208facc747bbe1eb22b0a35b6dee841e6f51f1ad6a9157757
 	source_x86_64 = https://download.splunk.com/products/splunk/releases/8.1.1/linux/splunk-8.1.1-08187535c166-Linux-x86_64.tgz

@@ -8,7 +8,7 @@ if [ ${#basever} -gt 5 ]; then
 else
 	pkgver=${basever}.0
 fi
-pkgrel=1
+pkgrel=2
 epoch=3
 pkgdesc="Statistical analysis and search tool for logs and machine data"
 url="https://www.splunk.com/"
@@ -19,6 +19,7 @@ source=("$pkgname.service")
 source_x86_64=("https://download.splunk.com/products/splunk/releases/$basever/linux/$pkgname-$splunkver-Linux-x86_64.tgz")
 sha256sums=('ca96b85750a0592208facc747bbe1eb22b0a35b6dee841e6f51f1ad6a9157757')
 sha256sums_x86_64=('0d2f44f94af734cbab212338adb7dbe4016b024ca6322823fd8854cff40d34c1')
+options=(!strip)
 
 package() {
 	cd "$srcdir"
