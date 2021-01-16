@@ -1,17 +1,19 @@
 # Maintainer: Kyle Sferrazza <kyle.sferrazza@gmail.com>
+# Maintainer: Jake <aur@ja-ke.tech>
 
+# Contributor: Kyle Sferrazza <kyle.sferrazza@gmail.com>
 # Contributor: Maks Verver <maksverver@geocities.com>
 # Contributor: p2k <Patrick.Schneider@uni-ulm.de>
 # Contributor: nokangaroo <nokangaroo@aon.at>
 
 pkgname=golly
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simulator for Conway's Game of Life and other cellular automata"
 arch=('i686' 'x86_64')
 url="http://golly.sourceforge.net/"
 license=('GPL')
-depends=('wxgtk' 'glu')
+depends=('wxgtk2' 'glu')
 makedepends=('perl' 'python3')
 optdepends=('perl: for Perl scripting support'
             'python3: for Python scripting support')
