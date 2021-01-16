@@ -31,8 +31,6 @@ package() {
     install -Dm644 assets/completions/mosaic.bash "${pkgdir}/usr/share/bash-completion/completions/mosaic.bash"
     install -Dm644 assets/completions/mosaic.fish "${pkgdir}/usr/share/fish/completions/mosaic.fish"
     install -Dm644 assets/completions/_mosaic "${pkgdir}/usr/share/zsh/site-functions/_mosaic"
-    install -Dm644 assets/layouts/* "${XDG_DATA_HOME:-$HOME/.local/share}/mosaic/"
-    install -Dm644 assets/plugins/* "${XDG_DATA_HOME:-$HOME/.local/share}/mosaic/"
 }
 
 pkgver() {
