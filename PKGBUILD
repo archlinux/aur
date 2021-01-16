@@ -1,3 +1,4 @@
+# Maintainer: danieltetraquark
 # based on the PKGBUILD provided in dvanalyzer source
 pkgbase=dvanalyzer
 pkgname=(dvanalyzer dvanalyzer-gui)
