@@ -2,14 +2,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kglobalaccel-git
-pkgver=v4.100.0.rc1.r323.ge6790ab
-pkgrel=2
+pkgver=v4.100.0.rc1.r357.g708fbcf
+pkgrel=1
 pkgdesc='KGlobalAccel'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kglobalaccel'
 license=('LGPL')
 depends=('qt5-x11extras' 'kconfig-git' 'kcrash-git' 'kdbusaddons-git' 'ki18n-git' 'kwindowsystem-git')
-makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools')
+makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools' 'qt5-wayland')
 conflicts=(kglobalaccel)
 provides=(kglobalaccel)
 source=('git+https://github.com/KDE/kglobalaccel.git')

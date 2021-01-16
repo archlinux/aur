@@ -1,7 +1,7 @@
 pkgbase = kglobalaccel-git
 	pkgdesc = KGlobalAccel
-	pkgver = v4.100.0.rc1.r323.ge6790ab
-	pkgrel = 2
+	pkgver = v4.100.0.rc1.r357.g708fbcf
+	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kglobalaccel
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = kglobalaccel-git
 	makedepends = extra-cmake-modules-git
 	makedepends = git
 	makedepends = qt5-tools
+	makedepends = qt5-wayland
 	depends = qt5-x11extras
 	depends = kconfig-git
 	depends = kcrash-git
