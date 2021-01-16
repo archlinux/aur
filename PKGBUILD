@@ -3,20 +3,25 @@
 _gemname=rexml
 pkgname=ruby-${_gemname}
 pkgver=3.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An XML toolkit for Ruby"
-arch=('any')
+arch=(any)
 depends=(ruby)
 makedepends=(rubygems ruby-rdoc)
-url="https://github.com/ruby/rexml"
-noextract=($_gemname-$pkgver.gem)
+url=https://github.com/ruby/rexml
 license=(BSD)
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha256sums=('036b31f3c052be42b7a2e6914f3322daaecce46b172806f38fea4297389b7bd6')
+source=(https://github.com/ruby/rexml/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
+sha256sums=('808a138b2118079e5d1a020976f5e843e915d1331721bf05c4a0deaf95296da8')
+
+build() {
+  cd $_gemname-$pkgver
+  gem build ${_gemname}.gemspec
+}
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  cd $_gemname-$pkgver
+  local _gemdir="$(gem env gemdir)"
 
   gem install \
     --ignore-dependencies \
@@ -26,4 +31,9 @@ package() {
     $_gemname-$pkgver.gem
 
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+
+  install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
+
+# vim: set ts=2 sw=2 et:
