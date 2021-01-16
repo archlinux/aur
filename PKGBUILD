@@ -6,7 +6,7 @@ pkgdesc='Monospaced font aimed for use in programming environments'
 arch=('any')
 url='http://fb.com/Code.New.Roman'
 license=('custom')
-depends=(fontconfig xorg-font-utils)
+depends=('fontconfig')
 source=('https://fontain.org/code-new-roman/export/otf/code-new-roman.otf.zip')
 
 sha256sums=('88e0fb4a3683e50e14d52722924b7ea7d0893910c39f65bf071ae100f0b75bf7')
