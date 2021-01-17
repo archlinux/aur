@@ -1,7 +1,7 @@
 pkgbase = plasma-angelfish
-	pkgdesc = Plasma Demo Webbrowser for Mobile Devices
+	pkgdesc = Web browser for Plasma Mobile
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/plasma-mobile/plasma-angelfish
 	arch = x86_64
 	license = GPL2
