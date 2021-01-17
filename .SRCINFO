@@ -1,4 +1,4 @@
-pkgbase = tumpa
+pkgbase = tumpa-git
 	pkgdesc = Tumpa is a desktop application that makes OpenPGP key creation and smart card access easier. No more terminals, no more typing and entering options multiple times. All you need to do is fill up a few fields, and click a few ti mes
 	pkgver = 0.1.1
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = tumpa
 	source = git+https://github.com/kushaldas/tumpa.git
 	md5sums = SKIP
 
-pkgname = tumpa
+pkgname = tumpa-git
 

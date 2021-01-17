@@ -1,5 +1,5 @@
 # Maintainer: insaanimanav <mail@manav.co.in>
-pkgname=tumpa
+pkgname=tumpa-git
 pkgver=0.1.1
 pkgrel=1
 epoch=
