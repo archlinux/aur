@@ -3,11 +3,11 @@
 _gemname=regexp_parser
 pkgname=ruby-${_gemname}
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A regular expression parser library for Ruby"
 arch=(any)
 depends=(ruby)
-makedepends=(rubygems ruby-rdoc)
+makedepends=(rubygems ruby-rdoc ragel ruby-rake)
 url=https://github.com/ammar/regexp_parser
 license=(MIT)
 options=(!emptydirs)
@@ -16,6 +16,7 @@ sha256sums=('c8a5732ee6a4c39a7b30edbd40f7858cd6ce3febe08ee90fd2e23c4825f43b96')
 
 build() {
   cd $_gemname-$pkgver
+  rake ragel:rb
   gem build ${_gemname}.gemspec
 }
 
