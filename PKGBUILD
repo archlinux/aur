@@ -1,8 +1,8 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_web_shortener
 _name=trytond_web_shortener
-pkgver=5.6.0
-_pkgdir=5.6
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
 pkgdesc="Tryton module to plug a URL to an action"
@@ -12,7 +12,8 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('0e5d716815bf2357d0403e4333efa393d3fdecd6022fe9b2f675091ab83acb07')
+sha256sums=('c848bb3fd0847b46a1b9612bb916b31962c981360acd2967e6e8dab3f63716ba')
+b2sums=('105b9684bc0575551d38f89ed3a06958bb11f3c495086c665e4d170f5b5633023e52416c23a5ac98726559f982e711d52c9e826ca33b3fd64dc9b6b01bbe7731')
 
 build() {
   cd $srcdir/$_name-$pkgver
