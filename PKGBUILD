@@ -14,10 +14,10 @@ makedepends=('cmake' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/simulationcraft/simc.git'
-        '0001-set-welcome-path.patch'
+        '01_qt_datalocation.patch'
         'SimulationCraft.desktop')
 sha256sums=('SKIP'
-            '618e5d13965b9093213ef2240e23a828870b07faac0908cb1978438501f9e43d'
+            'fea45e1c7d8fa6ba18373b917916018f5e2e6e9f69ec09cbb0fb7295f241f73f'
             '12cddfa8077e3f7c5c7d8bc445f27691072911d36e296ffe21281c6f4a0c1dd9')
 pkgver() {
     cd "${srcdir}/${_gitname}/"
@@ -26,11 +26,11 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_gitname}/"
-    patch -p1 < "${srcdir}/0001-set-welcome-path.patch"
+    patch -p1 < "${srcdir}/01_qt_datalocation.patch"
 
     mkdir -p build
     cd build
-    cmake -DCMAKE_BUILD_TYPE=Release ..
+    cmake -DCMAKE_BUILD_TYPE=Release -DSC_TO_INSTALL=ON ..
 }
 
 build() {

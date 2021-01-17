@@ -1,0 +1,12 @@
+diff --git a/qt/sc_window.cpp b/qt/sc_window.cpp
+index 18f0dc64e5..d8f7cf0df0 100644
+--- a/qt/sc_window.cpp
++++ b/qt/sc_window.cpp
+@@ -67,6 +67,7 @@ QStringList SC_PATHS::getDataPaths()
+ #else
+   QStringList shared_paths;
+   QStringList appdatalocation = QStandardPaths::standardLocations( QStandardPaths::DataLocation );
++  appdatalocation << "/usr/share/simulationcraft";
+   for ( int i = 0; i < appdatalocation.size(); ++i )
+   {
+     QDir dir( appdatalocation[ i ] );
