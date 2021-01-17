@@ -3,10 +3,10 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=5.2.2
-pkgrel=2
+pkgver=5.2.3
+pkgrel=1
 _wwwpkgname=AdminLTE
-_wwwpkgver=5.2.2
+_wwwpkgver=5.3
 _now=`date +%N`
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
@@ -41,21 +41,21 @@ source=($pkgname-core-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/arc
 	    piholeDebug.sh
 )
 
-md5sums=('a8aadbbfbd3cf7574b9a167085ccce22'
-         '0a1f576e6a78256f6286a7ac78b1f414'
-         '48dad63a1b73961be3cc4092bbdda7bb'
-         '41138b0a46b063ab5a1aa2c076e7ce3d'
-         '62ab22d82267f30bd1a75773a1de79c8'
-         '971cc2859672341d77f8deba702fb7f7'
-         'b63fcf29c29796023a2677bcf2b369a7'
-         '37e7d5e5aad2d812e825b584e07bbd02'
-         '047f13d4ac97877f724f87b002aaee63'
-         'd42a864f88299998f8233c0bc0dd093d'
-         '20c5b0c6b4e23e55b25ab6c28dda709d'
-         '291d3c95e445fe65caf40c3605efd186'
-         'f3d97637e0e74599ae77e6ab36cb9e26'
-         'c9a5fa5fe9b794b0630cb53fb343f598'
-         'd7b69ae51db0e8ac8e27f20a234eed85')
+sha256sums=('11c7cefc868e17c46f23ea7b747ce445515eac5154587d74d2dbd8d089b716c3'
+            'bac26b2d9129bf68fbc73833fc17da32fba25754d93a59d88ed27a867e21fd42'
+            'f8fe19afbbf7561540035b291c585251ed5182d00edc0b99da15ab22b4b3b657'
+            '0df28287b76384eb97f0a6f9539b1285adc4ba223eef3982f5be11f0889d801d'
+            '96c1fb8b15e1d0e99c18dc768f5dc3d4991184fb2631af84c5e2111028bc5287'
+            '6495a9db2e77cc2e6b822f3c93d637842acdb7447811dd6dda9ded94bb205630'
+            '032770450ba4a1085bcb0bf3f944c436c5702f3a3faf984fbbba2d3dbc6accea'
+            '6da6bba6cfac4e87a1f1e8e1488b71858ac6feb0a2e327470a58d8f1e9ad8cbf'
+            '9b72d7769036f8f4bb7121968d2ae4bdba427e4b16787ce340205a5f62b45c7c'
+            '5228b4f923eab7784952a0fd6da895e7bff2f80a7f91c4a7c6350491dfdbb2e8'
+            '88e3c78bbeaf5dc1100df65202ded8207877954a96bdf1b0ab3d9990d9fa759f'
+            'ff507ce58c9492cce57e947696e1b814469fc2d856a1e303c6e68f98c62ebf46'
+            'bfa80b3dd82d778dce6141ae50edefeda16c6d3851e11383e61e1a71a3ca3a59'
+            'fa8d91d07b75f21076e5334c46d323cbc3dcf9a33fe9b8b4e032dbc5c979a6d2'
+            '69a71c29dbe42ef0cbd3655fd7ce5cf04e8a77e27a5b2c3a1fcce0b544223309')
 
 prepare() {
   cd "$srcdir"/"$_pkgname"-"$pkgver"
