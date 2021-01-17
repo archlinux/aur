@@ -1,7 +1,7 @@
 #Maintainer: Skykey <zcxzxlc@163.com>
 
 pkgname=('kingstvis')
-pkgver=3.4.2
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="KingstVIS软件可以采集记录多路数字信号，可测量信号脉宽、周期、频率、占空比等，可依据多种标准协议解析出通信数据，具备演示模式可让你购买之前体验全部功能。"
 provides=("kingstvis")
@@ -16,7 +16,7 @@ logo-2.png
 logo-3.png
 logo-4.png
 )
-md5sums=('18e3967942ed1a01d0b26d2ca45cd889'
+md5sums=('812bbd37a16d315a489ca33ea2868a36'
 SKIP
 SKIP
 SKIP
