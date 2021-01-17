@@ -1,0 +1,28 @@
+pkgbase = nvchecker
+	pkgdesc = New version checker for software releases
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://github.com/lilydjwg/nvchecker
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-httpbin
+	checkdepends = python-flaky
+	checkdepends = git
+	checkdepends = mercurial
+	depends = python
+	depends = python-setuptools
+	depends = python-structlog
+	depends = python-tornado
+	depends = python-pycurl
+	optdepends = pyalpm: allow using "sort_version_key = vercmp" in configuration files
+	optdepends = bzr: for VCS sources
+	optdepends = git: for VCS sources
+	optdepends = mercurial: for VCS sources
+	optdepends = subversion: for VCS sources
+	source = nvchecker-1.7.tar.gz::https://github.com/lilydjwg/nvchecker/archive/v1.7/nvchecker-1.7.tar.gz
+	sha512sums = 6243960747de33bd004bb3377109699f702bb64d65320e0c219f540546f33ace2d87be4eb2b18d988874eb98812176488fa5c98aec6f93cd218b8549b38482d0
+
+pkgname = nvchecker
+
