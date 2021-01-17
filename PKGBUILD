@@ -2,7 +2,7 @@
 
 pkgname=fluffychat
 _gitname=${pkgname}
-pkgver=0.24.3
+pkgver=0.25.1
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('pantalaimon: used for E2E encryption')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz")
-sha256sums=('f14930f84c3be4d40d2fba5dca799837ae57ec05708f0bbd80f6aba0fa9fb515')
+sha256sums=('819d646a442d4332ec6bfc783ccc7a1bb50e5dc2b560b983488e3cfeb04b9da7')
 
 prepare() {
   flutter config --enable-linux-desktop
