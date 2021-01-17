@@ -1,0 +1,17 @@
+pkgbase = evsieve
+	pkgdesc = A utility for mapping events from Linux event devices.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/KarsMulder/
+	arch = x86_64
+	license = GPL2
+	license = MIT
+	license = custom:HPND-sell-variant
+	makedepends = rust
+	depends = libevdev
+	depends = gcc-libs
+	source = https://github.com/KarsMulder/evsieve/archive/v1.0.0.tar.gz
+	sha256sums = 34d1de10513a377e4b99f44f932d6438202bfd770bc8f1233901d20de1925adc
+
+pkgname = evsieve
+
