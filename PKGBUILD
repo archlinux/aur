@@ -5,7 +5,7 @@
 # Contributor: ArcticVanguard <LideEmily at gmail dot com>
 # Contributor: ledti <antergist at gmail dot com>
 pkgname=obs-studio-wayland-git
-pkgver=26.1.2.r3.g410c60e79
+pkgver=26.1.2.r34.gfb347c3c6
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording (with wayland patches)"
 arch=("i686" "x86_64")
@@ -49,12 +49,12 @@ prepare() {
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git submodule update
 
-  # from https://github.com/obsproject/obs-studio/pull/2484
+  # from https://github.com/obsproject/obs-studio/pull/3338
   cp -a "$srcdir"/.git/rr-cache .git/
   git config rerere.enabled true
   git config user.email "placeholder@example.com"
   git config user.name "Placeholder"
-  git fetch origin pull/2484/head
+  git fetch origin pull/3338/head
   git checkout -b wayland FETCH_HEAD
   git merge master || true
   [[ -z "$(git rerere status)" ]] || exit 1
