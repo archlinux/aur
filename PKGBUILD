@@ -2,7 +2,7 @@
 
 pkgname=pi-hole-standalone
 _pkgname=pi-hole
-pkgver=5.2.2
+pkgver=5.2.3
 pkgrel=1
 _now=`date +%N`
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch alteration for standalone PC.'
@@ -23,14 +23,14 @@ source=($pkgname-core-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/arc
 	mimic_basic-install.sh
 	piholeDebug.sh)
 
-md5sums=('a8aadbbfbd3cf7574b9a167085ccce22'
-         'e0656040e556e4b459664866160813e8'
-         '16cb5e4da1341fd971d6094ce2d44029'
-         '047f13d4ac97877f724f87b002aaee63'
-         'd42a864f88299998f8233c0bc0dd093d'
-         '7821b6dfe380955073701e5acd1587a2'
-         'c9a5fa5fe9b794b0630cb53fb343f598'
-         '6139cbc8cf38a7bb2a32f9e855eaf7d9')
+sha256sums=('11c7cefc868e17c46f23ea7b747ce445515eac5154587d74d2dbd8d089b716c3'
+            '76bc8b97d83fea52a941cbbd31b1d443b0e07cf2eaf60c626067ad07374455b2'
+            '2d0caa2d0c6a2d7b74da8456d6df9b15a104ab8c68a24403de2906d329ef2cd5'
+            '9b72d7769036f8f4bb7121968d2ae4bdba427e4b16787ce340205a5f62b45c7c'
+            '5228b4f923eab7784952a0fd6da895e7bff2f80a7f91c4a7c6350491dfdbb2e8'
+            '8119a46428bdbe00a312b14f3f0c364248b120f2569c9f2b6af2ef1a64fdfe94'
+            'fa8d91d07b75f21076e5334c46d323cbc3dcf9a33fe9b8b4e032dbc5c979a6d2'
+            '73a8362f7a3eac91c77efbbcb4910ff079203bb5f829e32ecf3391d017117bb8')
 
 prepare() {
   cd "$srcdir"/"$_pkgname"-"$pkgver"
