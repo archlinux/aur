@@ -1,0 +1,21 @@
+pkgbase = dmenu-gregdan3
+	pkgdesc = A menu for quickly opening applications.
+	pkgver = 5.0
+	pkgrel = 1
+	url = https://tools.suckless.org/dmenu
+	arch = any
+	license = MIT
+	source = git://git.suckless.org/dmenu
+	source = config.h
+	source = https://tools.suckless.org/dmenu/patches/numbers/dmenu-numbers-4.9.diff
+	source = https://tools.suckless.org/dmenu/patches/fuzzymatch/dmenu-fuzzymatch-4.9.diff
+	source = https://tools.suckless.org/dmenu/patches/grid/dmenu-grid-4.9.diff
+	source = https://tools.suckless.org/dmenu/patches/gridnav/dmenu-gridnav-5.0.diff
+	sha256sums = SKIP
+	sha256sums = 07828a145bf1d75b4fd92bf58b27120dedbd4422b6d8345891a1350208d3a98a
+	sha256sums = f79de21544b83fa1e86f0aed5e849b1922ebae8d822e492fbc9066c0f07ddb69
+	sha256sums = d9a1e759cd518348fc37c2c83fbd097232098562ebfd1edf85b51413ff524b79
+	sha256sums = d70d888c1d70289aaad7a9bcaec61203654a588ae11e10ce2fc8d03c8c38a3b4
+	sha256sums = 75cc8831d0af46c13d37f460825630f9599a76742a3e00ee66bef3ad4fa97412
+
+pkgname = dmenu-gregdan3
