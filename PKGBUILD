@@ -3,12 +3,12 @@
 
 pkgname=lenmus
 pkgver=5.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A free program for learning music"
 arch=('i686' 'x86_64')
 url="http://www.lenmus.org/"
 license=('GPL')
-depends=('portmidi' 'wxgtk' 'sqlite3' 'fluidsynth' 'soundfont-fluid')
+depends=('portmidi' 'wxgtk2' 'sqlite3' 'fluidsynth' 'soundfont-fluid')
 optdepends=('timidity++: for sound without external midi player')
 makedepends=('unittestpp' 'cmake>=3.1')
 

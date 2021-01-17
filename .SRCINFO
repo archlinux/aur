@@ -1,7 +1,7 @@
 pkgbase = lenmus
 	pkgdesc = A free program for learning music
 	pkgver = 5.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.lenmus.org/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = lenmus
 	makedepends = unittestpp
 	makedepends = cmake>=3.1
 	depends = portmidi
-	depends = wxgtk
+	depends = wxgtk2
 	depends = sqlite3
 	depends = fluidsynth
 	depends = soundfont-fluid
