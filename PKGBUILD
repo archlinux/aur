@@ -5,26 +5,26 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=salt-lint
 epoch=
-pkgver=0.4.2
-pkgrel=01
+pkgver=0.5.0
+pkgrel=00
 pkgdesc='A command-line utility that checks for best practices in SaltStack.'
 arch=(any)
 url=https://github.com/warpnet/salt-lint
 license=(MIT)
-depends=(python python-six python-pyaml python-pathspec python-future)
+depends=(python python-six python-pyaml python-pathspec)
 ## EXTRA_DEPENDS ##
 makedepends=(python-pip python-distro python-wheel)
 checkdepends=()
 provides=()
 conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
-md5sums=(SKIP)
+sha256sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/8f/42/af4e3f9c726c8f824b4a24b8d80cc18f6bc967d2b38317e203e426af58ff/salt_lint-0.4.2-py3-none-any.whl)
-md5sums+=(470a2fd8d0fe537fcc9530dad44cdff7)
-noextract+=(salt_lint-0.4.2-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/1a/65/7d9dd0b9416981190c30cf545e54f0a9a9a4172508859009c1e9c5d495ab/salt_lint-0.5.0-py3-none-any.whl)
+sha256sums+=(fe75de9e89760baea911e15b9e788ec2f57c26616abaef5eb7f5743744aa3a34)
+noextract+=(salt_lint-0.5.0-py3-none-any.whl)
 source+=(LICENSE)
-md5sums+=(cbbaec5f9f4ae8e04a44ed3ae41b5071)
+sha256sums+=(0aa56ec10b6c3f24385b7c684e61520fc24b1d913c3618b54ed5eead5655e552)
 
 _first_source() {
     echo " ${source_i686[@]} ${source_x86_64[@]} ${source[@]}" |
