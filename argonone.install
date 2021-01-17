@@ -1,12 +1,13 @@
 pre_install() {
   echo "Checking Hardware Model..."
   if [[ $(grep -a "Raspberry Pi 3" /proc/device-tree/model) || $(grep -a "Raspberry Pi 4" /proc/device-tree/model) ]] ; then
-    if [[ (! $(lsmod | grep i2c_dev)) || (! $(lsmod | grep i2c_bcm2835)) ]]; then
-      echo "Please first enable i2C on your Raspberry Pi"
-      echo "  1. Append dtparam=i2c_arm=on to your /boot/config.txt,"
-      echo "     if this file doesn't have the line."
-      echo "  2. Reboot your device."
-      echo "  3. Check the output of lsmod, i2c_dev and i2c_bcm2835 should appear."
+    echo "Enabling i2C..."
+    BOOT_CFG="/boot/config.txt"
+    if [[ ! -e "${BOOT_CFG}" ]]; then
+      touch "${BOOT_CFG}"
+    fi
+    if ! grep "dtparam=i2c_arm=on" "${BOOT_CFG}" >/dev/null 2>&1 ; then
+      echo "dtparam=i2c_arm=on" >> "${BOOT_CFG}"
     fi
   else
     echo "Not a Raspberry Pi Model 3 or 4!"

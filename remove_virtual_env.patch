@@ -1,12 +1,23 @@
+diff --git a/argononed-poweroff.py b/argononed-poweroff.py
+index 0b0664e..dfa1dad 100755
+--- a/argononed-poweroff.py
++++ b/argononed-poweroff.py
+@@ -1,4 +1,4 @@
+-#!/opt/argonone/bin/python3
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ # -*- mode: Python; tab-width: 4; indent-tabs-mode: nil; -*-
+ # PEP 8, PEP 263.
 diff --git a/argononed.service b/argononed.service
-index d726b4b..1494058 100755
+index d726b4b..aea8a05 100755
 --- a/argononed.service
 +++ b/argononed.service
-@@ -5,6 +5,6 @@ After=multi-user.target
+@@ -5,6 +5,7 @@ After=multi-user.target
  Type=simple
  Restart=always
  RemainAfterExit=true
 -ExecStart=/opt/argonone/bin/python3 /opt/argonone/bin/argononed.py
 +ExecStart=/usr/bin/python3 /usr/bin/argononed
++ExecStop=/usr/bin/python3 /usr/lib/systemd/system-shutdown/argononed-poweroff.py service-stop
  [Install]
  WantedBy=multi-user.target

@@ -11,7 +11,7 @@ arch=('any')
 url='https://download.argon40.com/argon1.sh'
 license=('GPL3')
 makedepends=('git')
-depends=('i2c-tools' 'lm_sensors' 'python>=3.3' 'raspberrypi-userland-aarch64-git' 'python-raspberry-gpio')
+depends=('i2c-tools' 'lm_sensors' 'python>=3.3' 'raspberrypi-firmware' 'python-raspberry-gpio')
 provides=('argonone')
 backup=('etc/argononed.conf' 'etc/modules-load.d/argonone-i2c.conf')
 install=argonone.install
@@ -22,7 +22,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '387244f164aefd796da544aa13809544ac0b0b35e44ddaf5aa1155f915aefcf4'
+  'f49f356ec8f87570a57d07cccbec6d3811444eeaa75e59eac2d743912a95ea8b'
   '8bf7f83cd0d8bdd6f212177a7555b3bea7f60b0a34e662f56b0ad4954bb7daae'
 )
 
