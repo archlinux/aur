@@ -2,9 +2,8 @@
 
 pkgname="archpxe"
 pkgver="1.0"
-pkgrel="1"
-pkgdesc='About
-Quick setup of PXE server to load Arch Linux using an ethernet cable'
+pkgrel="2"
+pkgdesc='Quick setup of PXE server to load Arch Linux using an ethernet cable'
 arch=('any')
 url="https://github.com/BiteDasher/archpxe"
 license=('MIT')

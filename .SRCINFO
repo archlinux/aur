@@ -1,7 +1,7 @@
 pkgbase = archpxe
-	pkgdesc = About Quick setup of PXE server to load Arch Linux using an ethernet cable
+	pkgdesc = Quick setup of PXE server to load Arch Linux using an ethernet cable
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BiteDasher/archpxe
 	arch = any
 	license = MIT
