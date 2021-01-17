@@ -1,8 +1,8 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_product_price_list_dates
 _name=trytond_product_price_list_dates
-pkgver=5.6.0
-_pkgdir=5.6
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
 pkgdesc="Tryton module to add dates on price list"
@@ -12,7 +12,8 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('edfa5d201ed590205d54a0ee5f729a215432108ae6851e3b90fbd78844520b67')
+sha256sums=('d48626cb0aef0345ca910a90ed7af26208f1fa196f099e2f9f2ab1c7c694c418')
+b2sums=('7c71246a09a052ebc8634b56e3decbac62b1bf3624f5cd89eee26122ed057f7b5a01978d9e674bec82144745f8b16e2359963513b66935264fa963cd9e99d251')
 
 build() {
   cd $srcdir/$_name-$pkgver
