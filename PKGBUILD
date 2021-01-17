@@ -1,4 +1,4 @@
-# Maintainer Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
+# Maintainer: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
 
 # This script contains as well instructions for other Linux systems.
 # Have a look what is done in the build() and package() functions below.
