@@ -1,8 +1,8 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_production_routing
 _name=trytond_production_routing
-pkgver=5.6.0
-_pkgdir=5.6
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
 pkgdesc="Tryton module for production routing"
@@ -12,7 +12,8 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('ef09f16d40d7411506099c6091ad2c42fb35a5cc68200e63b3e71b871d04d3c2')
+sha256sums=('22d4079fe556ea4c2ff6860614a6989bdd6f19ae33940d639d1740a77b98a7aa')
+b2sums=('62c8f2006e3a8ce9e4b7a4703a78e8ef3c4508dfc6e436ee157316896f85e7cd796588097c5b307ce27cd4ab7164876e7abf9e6ea0e9556200fcc0ebe32fb0bb')
 
 build() {
   cd $srcdir/$_name-$pkgver
