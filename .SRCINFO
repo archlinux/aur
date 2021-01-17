@@ -1,0 +1,23 @@
+pkgbase = dlib-nocuda
+	pkgdesc = A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques
+	pkgver = 19.21
+	pkgrel = 1
+	url = http://dlib.net
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = ninja
+	depends = cblas
+	depends = lapack
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = libx11
+	optdepends = giflib: for GIF support
+	optdepends = sqlite: for sqlite support
+	provides = dlib
+	conflicts = dlib
+	source = http://dlib.net/files/dlib-19.21.tar.bz2
+	sha256sums = be728a03ae8c4dc8b48408d90392a3c28bc6642a6eb22f3885895b434d7df53c
+
+pkgname = dlib-nocuda
+
