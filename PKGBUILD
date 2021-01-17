@@ -17,12 +17,12 @@ md5sums=('SKIP')
 backup=('etc/ananicy.d/ananicy.conf')
 
 pkgver() {
-  cd ananicy
+  cd Ananicy
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd ananicy
+  cd Ananicy
   make install PREFIX="$pkgdir"
   mkdir -p "$pkgdir/usr/"
   mv -v "$pkgdir/lib" "$pkgdir/usr/"
