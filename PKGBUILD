@@ -1,9 +1,10 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_carrier_percentage
 _name=trytond_carrier_percentage
-pkgver=5.2.0
-_pkgdir=5.2
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
+pkgbase=python-$_name
 pkgdesc="Tryton module to add cost method "on percentage" on carrier"
 arch=('any')
 url="http://www.tryton.org/"
@@ -11,7 +12,8 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('8071be18d903991763cd1ddcd92b7d288f9dbfcb8d839877a5f86cfcca7e4b1d')
+sha256sums=('772dca42ad87ab7bf397c148b48848003d5fc3d4279197cc8f565e5414295d28')
+b2sums=('d256e0b5110f13e853fc0748227415a3193dd90a11b5233ef5ca9d6842344e598f6006ad873d325e3245fb4a3798c038c3aefef1a6356b84641c974e8ee96aa5')
 
 build() {
   cd $srcdir/$_name-$pkgver
