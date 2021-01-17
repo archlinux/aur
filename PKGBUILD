@@ -1,7 +1,7 @@
 # Maintainer: Michael Cordover <khefin@mjec.net>
 
 pkgname=khefin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A simple way to generate password-proteceted secrets from a FIDO2 authenticator with the hmac-secret extension"
 arch=('x86_64')
@@ -22,8 +22,8 @@ validpgpkeys=(
   '6927F7D45F567621E14121DDFD1D670D31F82A81' # Michael Cordover; available from https://keybase.io/mjec/pgp_keys.asc?fingerprint=6927f7d45f567621e14121ddfd1d670d31f82a81
 )
 sha256sums=(
-  '17718eac0ff5a8e618aa0a6c0aa7312884d856ac219c912e17b638349e4cefef'
-  '0a5bf1f6f5b0bebc2e58134219f330e3d2fc71f7982e53ad4412a3ae06dc058b'
+  '0655c4a7d258e976337c3b0154a712187cc01f737478aaa0a02115a6d3a5ef12'
+  'b860ad459d112bdec0be28f7c36721978cfe183db9ca762bee05b09a9746e5c6'
 )
 install="$pkgname.install"
 
