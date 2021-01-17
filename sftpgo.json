@@ -121,7 +121,6 @@
     "sslmode": 0,
     "connection_string": "",
     "sql_tables_prefix": "",
-    "manage_users": 1,
     "track_quota": 2,
     "pool_size": 0,
     "users_base_dir": "/srv/sftpgo/data",
@@ -153,7 +152,6 @@
     "templates_path": "/usr/share/sftpgo/templates",
     "static_files_path": "/usr/share/sftpgo/static",
     "backups_path": "/srv/sftpgo/backups",
-    "auth_user_file": "",
     "certificate_file": "",
     "certificate_key_file": ""
   },
