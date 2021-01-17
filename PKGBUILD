@@ -30,8 +30,6 @@ check() {
 
 package() {
     cd "$pkgname-$pkgver/web-ext-artifacts"
-    ls
-
     install -dm755 "$pkgdir/usr/share/$pkgname"
     bsdtar -C "$pkgdir/usr/share/$pkgname" -xvf "privacy_redirect-$pkgver.zip"
 }
