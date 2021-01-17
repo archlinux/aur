@@ -64,7 +64,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.10.7
+pkgver=5.10.8
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -84,23 +84,19 @@ source=(
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch
   0003-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch
-  0004-btrfs-fix-deadlock-when-cloning-inline-extent-and-lo.patch
-  0005-btrfs-shrink-delalloc-pages-instead-of-full-inodes.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('c3a222cf56350a3778bd825ba8434d27266412ffe921429be189d51fa97ec66b6aaf336bfd67c20d44828e4b150afade9659b341e9c499f63d6dc01fc2a4fb03'
+b2sums=('1bea3293bb036639d5dd72aba9ca078e1cf94c3752d48abd6462c65038ca5808ee976919623ccb64356756b2cc766a014e57483e8e1418a089236522a0e0a56e'
         'SKIP'
         '37df0c9fc2214da9e94f0fb38ddc9c1f5bcf6279cacf918166efc3a0a8a9433ee10a95232992a108944160cf020fc3c240ef2fb8023581dc9cac11f973d7985d'
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
         '067f3389124fdd937ca69e9e9568b1b3194791960a093e81037051eb6d25e80b40bf7f60c61373ac9e92bff9db760766009b1e6f9ee8429a883bb7fce2d60f8a'
         'b42730a806a63dbf905f448a3282dec72a950ef7d16a3531d977dcae3b5c2685a5c5dd10a58e345d57084a6212353dc2f2f0102021d13c1557092e564f81eaf5'
         'a5dea5bb6df6fb517009ad5b104c2ea8e93ed880393a1412ca2d7fc8047abccc9c72076e40d1d4133cadc9048040846cc9bdc91e30c4d601ad5963d13498503e'
-        '9a8723104239ba4646dd0c76c5a60128892954dd2faee69ca5c5d1251c9694de8fd528ca063a2add1401ad1375ad0dcc2560ca03a1bfd03b161d34ccd25b686a'
-        'e0da90b08fb03658dca9c42ac287c04d9b35969a15165c0f1fc7e11290de272b892abb58f5c7aabe22899f53f5bc39539f58768b8012d92145ba2fd8b89898a7'
-        '2b180269f934469d6ef6f0f8474dd947c7a8e9344cf3bbecac6a9c325d7bfb89d234eb15c4422709acaffd30ebeda2ec06c91a8c1128631a839186e8b273eb65')
+        '9a8723104239ba4646dd0c76c5a60128892954dd2faee69ca5c5d1251c9694de8fd528ca063a2add1401ad1375ad0dcc2560ca03a1bfd03b161d34ccd25b686a')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
