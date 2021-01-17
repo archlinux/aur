@@ -1,24 +1,27 @@
-# Maintainer:  Andrew Gregory <andrew.gregory.8@gmail.com>
+# Maintainer: EatMyVenom <eat.my.venomm@gmail.com>
+# Contributor:  Andrew Gregory <andrew.gregory.8@gmail.com>
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=openrc-git
-pkgver=0.17.2.ga36a635
+pkgver=0.42.34.g170ce262
 pkgrel=1
 pkgdesc='Dependency based init system that works with sysvinit.'
 arch=('i686' 'x86_64')
 url='http://www.gentoo.org/proj/en/base/openrc/'
 license=('BSD')
-depends=('openrc-sysvinit' 'pam' 'sh')
+depends=('pam')
 optdepends=('openrc-arch-services-git: collection of services for Arch'
-            'net-tools: for network service support')
-makedepends=('git')
-provides=('openrc')
+            'net-tools: for network service supporti')
+makedepends=('git' 'psmisc')
+provides=('openrc' 'librc.so' 'init-rc' 'libeinfo.so' 'svc-manager')
 conflicts=('openrc')
 backup=(etc/openrc/inittab
         etc/openrc/rc.conf
         etc/openrc/conf.d/{bootmisc,consolefont,dmesg,fsck,hostname,hwclock,keymaps}
         etc/openrc/conf.d/{killprocs,localmount,modules,netmount,network,staticroute}
-        etc/openrc/conf.d/{tmpfiles,urandom})
+        etc/openrc/conf.d/{tmpfiles,urandom}i
+	etc/openrc/conf.d/udev
+        )
 source=('git://github.com/OpenRC/openrc.git')
 source+=('openrc.logrotate')
 md5sums=('SKIP'
