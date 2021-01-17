@@ -2,7 +2,7 @@
 
 pkgname="museeks-bin"
 _pkgname="museeks"
-pkgver="0.11.4"
+pkgver="0.11.5"
 pkgrel="1"
 pkgdesc="A lightweight and cross-platform music player."
 arch=("x86_64" "i686")
@@ -12,8 +12,8 @@ depends=("gtk2" "cairo" "freetype2" "fontconfig" "gconf" "nss" "alsa-lib" "ttf-f
 provides=("museeks")
 conflicts=("museeks" "museeks-git")
 
-md5sums=("e5f2e0a78d692a7d467d743818a1152e")
-[ "$CARCH" = "i686" ] && md5sums=("82a18bde45aa3a89df1e75e3e409bb6c")
+md5sums=("f6401d488d263c168604e3608bc2bb3a")
+[ "$CARCH" = "i686" ] && md5sums=("d4873befa99d1f99d4dea0ad4c3271e2")
 
 source=("https://github.com/KeitIG/museeks/releases/download/${pkgver}/museeks-${CARCH}.rpm")
 
