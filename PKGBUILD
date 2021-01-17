@@ -1,9 +1,10 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_country
 _name=trytond_country
-pkgver=5.2.0
-_pkgdir=5.2
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
+pkgbase=python-$_name
 pkgdesc="Tryton module with countries"
 arch=('any')
 url="http://www.tryton.org/"
@@ -11,7 +12,8 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('7f0fd15a0aa69152bf58f2d6d3f0267cf7d33e743bc786a706377f209c244f6c')
+sha256sums=('92c58d55466c5e8a6b6f982017ea7c2325c9f83eeb1f01c57b60ddc2cbbc7ad2')
+b2sums=('b65da631bd2ece135c06de108d422d326d41173740628070f23cd45a18455f021282fa3df7b47e737e62589a48121ae9f74c2ac3f8f312eaca3786a32461f2b3')
 
 build() {
   cd $srcdir/$_name-$pkgver
