@@ -1,7 +1,7 @@
 pkgname=scannerextract
 _pkgname=scannerExtract
 pkgver=0.2.601
-pkgrel=3
+pkgrel=4
 pkgdesc="Scanned Image Extractor"
 depends=('liblbfgs' 'opencv')
 makedepends=('qt5-tools')
@@ -31,11 +31,13 @@ build() {
     patch --strip 2 -l -i ${srcdir}/opencv4-compatibility.diff
     mkdir -p build
     cd build
-    cmake ../scannerExtract/ -DCMAKE_BUILD_TYPE=release
+    cmake ../scannerExtract/ -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=/usr
     make
 }
 
 package() {
+    mkdir -p "$pkgdir/usr/share/licenses/scannerextract"
     cd "$_pkgname-$pkgver"/build
     make DESTDIR="$pkgdir/" install
+    cp "${srcdir}/$_pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/scannerextract"
 }

@@ -1,7 +1,7 @@
 pkgbase = scannerextract
 	pkgdesc = Scanned Image Extractor
 	pkgver = 0.2.601
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.dominik-ruess.de/scannerExtract/scannerExtract_help_en.html
 	arch = any
 	license = GPL3
