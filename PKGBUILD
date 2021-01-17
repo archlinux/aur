@@ -3,7 +3,7 @@
 pkgname=("php-pdlib")
 _pkgbase=("pdlib")
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="PDlib - A PHP extension for Dlib"
 arch=('x86_64')
 url="https://github.com/goodspb/pdlib"
@@ -12,7 +12,7 @@ depends=('dlib'
          'php'
          'libx11'
          'openblas'
-         'liblas')
+         )
 
 makedepends=('cmake')
 source=("https://github.com/goodspb/pdlib/archive/v$pkgver.tar.gz"
