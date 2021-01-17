@@ -1,8 +1,8 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_account_statement_coda
 _name=trytond_account_statement_coda
-pkgver=5.6.0
-_pkgdir=5.6
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
 pkgdesc="Tryton module to import CODA statements"
@@ -12,7 +12,8 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('a735461cf5629b627aa6e19c8ba2fb24d183f928f0c3d50d325b271bcc0cdf9e')
+sha256sums=('ce02e9d57d843374b523c6d543c9895cc9e83a14e2ede9502468231038924ff3')
+b2sums=('aa62b7fea43293c72a324de229b1481434a8313e1a0aecd750b233b95345f5f42bddc1ce285e71a0a5553690ece1be1b7cf96d2802559c83fabde1cfd0bb67ca')
 
 build() {
   cd $srcdir/$_name-$pkgver
