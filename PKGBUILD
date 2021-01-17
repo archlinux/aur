@@ -1,18 +1,19 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_account_payment_sepa
 _name=trytond_account_payment_sepa
-pkgver=5.6.0
-_pkgdir=5.6
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
-pkgdesc=""
+pkgdesc="Tryton module for SEPA payment"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('94757f28fb9344cac302171a236c95c2ecfc2977e225cd9854998234e8675227')
+sha256sums=('25d7147bb329d0d1dd4ed46a260801fcaa9292fce4033b5c4bda664609332493')
+b2sums=('ac665390942e8f72a21ff9cac2169c12aadb445c1e317eb8e5c42c40b9262990f864d678af1d95fdda382bda4e977958042f75391a229f7ca14d08e778fa9603')
 
 build() {
   cd $srcdir/$_name-$pkgver
