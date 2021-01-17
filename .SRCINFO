@@ -1,0 +1,20 @@
+pkgbase = ananicy-nosystemd-git
+	pkgdesc = Ananicy - is Another auto nice daemon, with community rules support
+	pkgver = 2.1.0.r12.g38eb477
+	pkgrel = 1
+	url = https://github.com/Nefelim4ag/Ananicy
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	depends = bash
+	depends = schedtool
+	depends = python
+	provides = ananicy
+	conflicts = ananicy
+	backup = etc/ananicy.d/ananicy.conf
+	source = git+https://github.com/Nefelim4ag/Ananicy.git#branch=master
+	md5sums = SKIP
+
+pkgname = ananicy-nosystemd-git
+

@@ -1,0 +1,29 @@
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Timofey Titovets <nefelim4ag@gmail.com>
+
+pkgname=ananicy-nosystemd-git
+pkgver=2.1.0.r12.g38eb477
+pkgrel=1
+pkgdesc="Ananicy - is Another auto nice daemon, with community rules support"
+arch=('any')
+url="https://github.com/Nefelim4ag/Ananicy"
+license=('GPL3')
+depends=('bash' 'schedtool' 'python')
+makedepends=('git' 'make')
+provides=(ananicy)
+conflicts=(ananicy)
+source=(git+https://github.com/Nefelim4ag/Ananicy.git#branch=master)
+md5sums=('SKIP')
+backup=('etc/ananicy.d/ananicy.conf')
+
+pkgver() {
+  cd ananicy
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+package() {
+  cd ananicy
+  make install PREFIX="$pkgdir"
+  mkdir -p "$pkgdir/usr/"
+  mv -v "$pkgdir/lib" "$pkgdir/usr/"
+}
