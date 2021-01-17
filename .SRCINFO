@@ -1,7 +1,7 @@
 pkgbase = dlib-sse
 	pkgdesc = A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques
 	pkgver = 19.22
-	pkgrel = 2
+	pkgrel = 3
 	url = http://dlib.net
 	arch = x86_64
 	license = custom
@@ -18,9 +18,10 @@ pkgbase = dlib-sse
 	depends = libx11
 	optdepends = giflib: for GIF support
 	optdepends = sqlite: for sqlite support
-	source = https://github.com/davisking/dlib/archive/4a53742f8f6a071fb002655857f3a4e5d72a52d1.tar.gz
+	provides = dlib
+	source = https://github.com/davisking/dlib/archive/600e03655274f0e7f2013d8d3cd5a3799843186b.tar.gz
 	source = version.patch
-	sha256sums = f2f7aecb25f6a70c902e95e8ed6d24e663fff4e03fac03d607ad2d4d4169943f
+	sha256sums = ff6fbbb0032e973a32b9a3b525b507851326305a97b8892e90c519dc6b2490d7
 	sha256sums = df6167bb6c9a258eebfed651bd4c8d4e5d89324dd10579057fa58e6d1f4d110d
 
 pkgname = dlib-sse
