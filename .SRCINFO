@@ -12,7 +12,7 @@ pkgbase = nekofetch-git
 	depends = neofetch
 	provides = nekofetch
 	conflicts = nekofetch
-	source = git+https://github.com/propruhh/nekofetch.git
+	source = git+https://github.com/propruhh/nekofetch.git#branch=master
 	sha256sums = SKIP
 
 pkgname = nekofetch-git

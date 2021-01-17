@@ -1,6 +1,7 @@
 # Maintainer: bbaovanc <bbaovanc@bbaovanc.com
 
 _pkgname=nekofetch
+_branch=master
 pkgname=$_pkgname-git
 pkgver=r27.56ee91f
 pkgrel=2
@@ -12,7 +13,7 @@ makedepends=(git make)
 provides=($_pkgname)
 conflicts=($_pkgname)
 
-source=("git+https://github.com/propruhh/$_pkgname.git")
+source=("git+https://github.com/propruhh/$_pkgname.git#branch=${_branch}")
 sha256sums=('SKIP')
 
 _makeopts="--directory=$_pkgname"
