@@ -6,7 +6,7 @@
 _gitname='nerd-fonts'
 pkgname='nerd-fonts-complete'
 pkgver=2.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Iconic font aggregator, collection, & patcher. 3,600+ icons, 50+ patched fonts.'
 arch=('any')
 url='https://github.com/ryanoasis/nerd-fonts'
@@ -17,8 +17,10 @@ source=(
   'fix-installer-font-dir.patch'
   "${_gitname}-${pkgver}.tar.gz::https://github.com/ryanoasis/nerd-fonts/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('ccf93b108044a87bfb29c3f836d2ce4d5bdb1829702e532a69ccb4ab4aecaceb'
-            'a084ca91a174b547bab4523507824c76aa91ebcf38f9256a4ffd181813f87bd8')
+sha256sums=(
+  'ccf93b108044a87bfb29c3f836d2ce4d5bdb1829702e532a69ccb4ab4aecaceb'
+  'a084ca91a174b547bab4523507824c76aa91ebcf38f9256a4ffd181813f87bd8'
+)
 
 prepare () {
   cd "$srcdir/$_gitname-$pkgver"
@@ -50,6 +52,11 @@ package() {
   # Install fonts
   install -m644 release/NerdFonts/*.otf "${otfdir}"
   install -m644 release/NerdFonts/*.ttf "${ttfdir}"
+
+  # Install fontconfig
+  install -dm755 "${pkgdir}/etc/fonts/conf.d"
+  install -Dm644 "10-nerd-font-symbols.conf" "${pkgdir}/etc/fonts/conf.avail/10-nerd-font-symbols.conf"
+  ln -s "../conf.avail/10-nerd-font-symbols.conf" "${pkgdir}/etc/fonts/conf.d/10-nerd-font-symbols.conf"
 
   # Install scripts
   install -m644 bin/scripts/lib/*.sh "${libdir}"
