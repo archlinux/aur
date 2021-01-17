@@ -17,7 +17,7 @@ QtScrcpy.desktop
 binaries.patch
 )
 md5sums=(SKIP
-'71e240ca3c11cbbd43d5a6013cdb6675'
+'626b7adef99d110b192cb3a0fa07652f'
 '049c0e95b49a4437c9cda0c19b7295f2'
 )
 

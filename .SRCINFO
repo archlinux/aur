@@ -16,7 +16,7 @@ pkgbase = qtscrcpy-git
 	source = QtScrcpy.desktop
 	source = binaries.patch
 	md5sums = SKIP
-	md5sums = 71e240ca3c11cbbd43d5a6013cdb6675
+	md5sums = 626b7adef99d110b192cb3a0fa07652f
 	md5sums = 049c0e95b49a4437c9cda0c19b7295f2
 
 pkgname = qtscrcpy-git
