@@ -1,0 +1,15 @@
+pkgbase = python-trytond_attendance
+	pkgdesc = Tryton module for recording employee attendance
+	pkgver = 5.8.1
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_attendance/trytond_attendance-5.8.1.tar.gz
+	sha256sums = 3750d6f77ec074bdfb8ec7c9bdf7e240f074396f994087ffd9833549c96bc4b0
+	b2sums = a8f9da9540f61b264fa63e59d2e1f9644d2e2bc0a23cfe3ba3dd3b126ef6b44573b13435b3ed25742f9e28a0b026ed9c7b4c2b2d040754695c7b01ef6b9cfc45
+
+pkgname = python-trytond_attendance
+
