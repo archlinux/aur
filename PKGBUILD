@@ -1,8 +1,8 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_account_invoice_stock
 _name=trytond_account_invoice_stock
-pkgver=5.6.0
-_pkgdir=5.6
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
 pkgdesc="Tryton module to link stock and invoice"
@@ -12,7 +12,8 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('ce243b399271f0868b5a7cb09e843598a84c2eb8f5e1d48aa2f07485964ac3cf')
+sha256sums=('bb7c62fd4860933885515dbc208f34137c9968b9bdbcdf5a204ca1c1d88ca60a')
+b2sums=('7db442a56234c044fb2cb15c01bd5a86719c8a937b32593907b7ab83cad3ef0f8f46586fcfd034230c28e65de43628c40789659eb52be0ed5524cb0460dceefa')
 
 build() {
   cd $srcdir/$_name-$pkgver
