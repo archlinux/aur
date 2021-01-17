@@ -9,6 +9,7 @@ pkgbase = python-pulsectl
 	makedepends = python-setuptools
 	depends = python
 	depends = libpulse
+	conflicts = python-pulse-control
 	source = https://pypi.org/packages/source/p/pulsectl/pulsectl-20.5.1.tar.gz
 	sha256sums = 39b0a0e7974a7d6468d826a838822f78b00ac9c3803f0d7bfa9b1cad08ee22db
 

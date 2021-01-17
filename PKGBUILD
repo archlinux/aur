@@ -11,6 +11,7 @@ url="https://github.com/mk-fg/python-pulse-control"
 license=('MIT')
 depends=('python' 'libpulse')
 makedepends=('python-setuptools')
+conflicts=('python-pulse-control')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('39b0a0e7974a7d6468d826a838822f78b00ac9c3803f0d7bfa9b1cad08ee22db')
 
