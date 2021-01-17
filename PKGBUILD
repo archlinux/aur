@@ -3,9 +3,10 @@
 _pkgname=nekofetch
 _branch=master
 pkgname=$_pkgname-git
-pkgver=r27.56ee91f
-pkgrel=3
+pkgver=r30.0e8a74b
+pkgrel=1
 pkgdesc="neofetch but with nekos"
+license=('GPL3')
 arch=(any)
 url="https://github.com/propruhh/nekofetch"
 depends=(curl jq jp2a neofetch)

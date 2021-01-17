@@ -4,6 +4,7 @@ pkgbase = nekofetch-git
 	pkgrel = 3
 	url = https://github.com/propruhh/nekofetch
 	arch = any
+	license = GPL3
 	makedepends = git
 	makedepends = make
 	depends = curl
