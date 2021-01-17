@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: GI Jack <GI_Jack@hackermail.com>
 
 pkgname=gosecretsdump
 pkgver=0.3.0
