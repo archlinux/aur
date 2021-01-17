@@ -3,21 +3,21 @@
 
 _gemname=ruby-progressbar
 pkgname=ruby-$_gemname
-pkgver=1.10.1
+pkgver=1.11.0
 pkgrel=1
-pkgdesc="Flexible text progress bar library for Ruby."
-arch=('any')
-url="https://github.com/jfelchner/ruby-progressbar"
-license=('MIT')
-depends=('ruby')
-makedepends=('ruby-rdoc')
+pkgdesc="Flexible text progress bar library for Ruby"
+arch=(any)
+url=https://github.com/jfelchner/ruby-progressbar
+license=(MIT)
+depends=(ruby)
+makedepends=(rubygems ruby-rdoc)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha256sums=('ee23400615f91c2ce6bc1e3bfa98392302ef38cbba8ad6de1bc26a4e1a88e7cc')
+sha256sums=('cc127db3866dc414ffccbf92928a241e585b3aa2b758a5563e74a6ee0f57d50a')
 noextract=($_gemname-$pkgver.gem)
 options=(!emptydirs)
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  local _gemdir="$(gem env gemdir)"
 
   gem install \
     --ignore-dependencies \
@@ -31,3 +31,5 @@ package() {
   install -Dm0644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# vim: set ts=2 sw=2 et:
