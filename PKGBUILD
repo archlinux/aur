@@ -3,7 +3,7 @@
 # Contributor: Brian Knox <taotetek at gmail.com>
 
 pkgname=czmq-git
-pkgver=20201006
+pkgver=20210117
 pkgrel=1
 pkgdesc="High-level C binding for ZeroMQ"
 arch=('i686' 'x86_64')
