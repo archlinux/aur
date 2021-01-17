@@ -7,7 +7,6 @@ pkgbase = xf86-input-libinput-git
 	groups = xorg-drivers
 	license = custom
 	makedepends = xorg-server-devel
-	makedepends = X-ABI-XINPUT_VERSION=24.1
 	makedepends = libxi
 	makedepends = libx11
 	makedepends = xorgproto
