@@ -43,8 +43,8 @@ source=($pkgname-core-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/arc
 
 sha256sums=('11c7cefc868e17c46f23ea7b747ce445515eac5154587d74d2dbd8d089b716c3'
             'bac26b2d9129bf68fbc73833fc17da32fba25754d93a59d88ed27a867e21fd42'
-            'f8fe19afbbf7561540035b291c585251ed5182d00edc0b99da15ab22b4b3b657'
-            '0df28287b76384eb97f0a6f9539b1285adc4ba223eef3982f5be11f0889d801d'
+            'afccc0e7f4094ebdd4d8bf0b29d665b17eedb6b763ef8635923cf77cfca8a8bb'
+            'd8f7ba3c5905b42eba67bc117ec8bb5c1fdeb6655544fd38fb539385a6630adf'
             '96c1fb8b15e1d0e99c18dc768f5dc3d4991184fb2631af84c5e2111028bc5287'
             '6495a9db2e77cc2e6b822f3c93d637842acdb7447811dd6dda9ded94bb205630'
             '032770450ba4a1085bcb0bf3f944c436c5702f3a3faf984fbbba2d3dbc6accea'
