@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('git' 'cmake')
 provides=('cndl')
 depends=('simplyfile')
-source=('git+https://github.com/gottliebtfreitag/cndl.git')
+source=('git+https://github.com/nerdmaennchen/cndl.git')
 sha256sums=('SKIP')
 
 pkgver() {
