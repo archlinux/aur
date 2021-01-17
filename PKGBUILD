@@ -1,7 +1,7 @@
 # Maintainer:  JP-Ellis <josh@jpellis.me>
 pkgname=papis
-pkgver=0.10
-pkgrel=2
+pkgver=0.11.1
+pkgrel=1
 pkgdesc="Papis is a powerful and highly extensible command-line based document and bibliography manager."
 arch=('any')
 url="https://github.com/papis/papis"
@@ -30,14 +30,14 @@ depends=('python'
         )
 optdepends=('papis-rofi: integration with rofi')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
-        "b8ce11c08dc32051545e73e858f0cd044ac12ef2.patch")
-sha256sums=('0668bba24c0ea159fd9f3497f8f26b1e27e8bc9d9f9a52c82ef28835ee4ec4d1'
-            '261f466e0a1765621877eef3b2b6498a2e54576d52b6fac66e52b7322d0d5608')
+        "isbnlib-3.10-fix.patch")
+sha256sums=('e54739a1771ba4da4afe30b0b52dfc220543926765f975d14e8ddce508f4fdf9'
+            '3f79cc4c5deb31cd56590b2c17e3d7a22fefd18e03580139ad665154b814fa10')
 noextract=()
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p 1 < "${srcdir}/b8ce11c08dc32051545e73e858f0cd044ac12ef2.patch"
+  # patch -p 1 < "${srcdir}/isbnlib-3.10-fix.patch"
 }
 
 build() {
