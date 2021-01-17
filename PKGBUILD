@@ -4,7 +4,7 @@
 pkgname=python-ffmpeg
 _pkgname='ffmpeg-python'
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for FFmpeg - with complex filtering support"
 arch=(any)
 url="https://github.com/kkroening/ffmpeg-python"
