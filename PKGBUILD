@@ -5,11 +5,11 @@
 _gemname=parser
 pkgname=ruby-${_gemname}
 pkgver=3.0.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Ruby parser written in pure Ruby"
 arch=(any)
 depends=(ruby ruby-ast)
-makedepends=(rubygems ruby-rdoc ragel ruby-racc ruby-cliver)
+makedepends=(rubygems ruby-rdoc ragel ruby-racc ruby-cliver ruby-rake ruby-bundler)
 url=https://github.com/whitequark/parser
 license=(MIT)
 source=(https://github.com/whitequark/parser/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
