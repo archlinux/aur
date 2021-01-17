@@ -1,9 +1,10 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_account_payment
 _name=trytond_account_payment
-pkgver=5.2.0
-_pkgdir=5.2
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
+pkgbase=python-$_name
 pkgdesc="Tryton module for payment"
 arch=('any')
 url="http://www.tryton.org/"
@@ -11,7 +12,8 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('7f87eb23320766d200e3c435c685a3ef0511b5388f0f3366e3d6c177fcb504f5')
+sha256sums=('bb9c015f8501f0508e54594bf4004513b73efcf33485560c817d58a3d507d0a6')
+b2sums=('2e51440c498e749af10dfb741fda7d44f5715f6262737cfe99e5410d313ff60d2efc322ca4c7fec996c856b352e4107212fd8ddee404dbcb14c0ec6a7ea59030')
 
 build() {
   cd $srcdir/$_name-$pkgver
