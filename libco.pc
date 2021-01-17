@@ -1,0 +1,9 @@
+prefix=/usr
+libdir=/usr/lib
+includedir=/usr/include
+
+Name: libco
+Description: Cooperative multithreading library written in C89C
+Version: 20
+Libs: -L${libdir} -lco
+Cflags: -I${includedir}
