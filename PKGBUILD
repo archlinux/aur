@@ -1,7 +1,7 @@
 # Maintainer: Lutz Freitag <aur.lutz@gottliebtfreitag.de>
 
 pkgname=qrqma-git
-pkgver=v0.1
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='A C++ implementaion of Jinja templates'
 url='https://github.com/nerdmaennchen/qrqma'
