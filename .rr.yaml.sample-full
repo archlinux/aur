@@ -25,22 +25,6 @@ http:
 	# http host to listen.
 	address: 0.0.0.0:8080
 
-	ssl:
-		# custom https port (default 443)
-		port:     443
-
-		# force redirect to https connection
-		redirect: true
-
-		# ssl cert
-		cert:     server.crt
-
-		# ssl private key
-		key:      server.key
-
-		# rootCA certificate path
-		rootCa:   root.crt
-
 	# HTTP service provides FastCGI as frontend
 	fcgi:
 		# FastCGI connection DSN. Supported TCP and Unix sockets.
