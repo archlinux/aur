@@ -11,8 +11,8 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('qt5-webkit' 'openssl' 'qt5-webkit' 'qt5-webengine')
 makedepends=('cmake' 'git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}" "${pkgname%-git}-gui")
+conflicts=("${pkgname%-git}" "${pkgname%-git}-gui")
 source=('git+https://github.com/simulationcraft/simc.git'
         '01_qt_datalocation.patch'
         'SimulationCraft.desktop')
