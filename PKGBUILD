@@ -2,24 +2,25 @@
 
 pkgname=libsignal-client
 _libname=libsignal_jni
-pkgver=0.2.1
+pkgver=0.2.2
 _pkgver="java-${pkgver}"
 pkgrel=1
 pkgdesc='Library for the Signal Protocol.'
 url="https://github.com/signalapp/${pkgname}"
-makedepends=('cargo' 'gradle' 'git' 'zip' 'protobuf')
+makedepends=('rustup' 'cargo' 'gradle' 'git' 'zip' 'protobuf')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
 source=("${pkgname}-${_pkgver}.tar.gz::https://github.com/signalapp/${pkgname}/archive/$_pkgver.tar.gz")
 
-sha512sums=('1f7b10bcc47199da1a2efd9de7ebb8d3906752bd5378073c08ae6638b9cb52529da965544213c5a97b081ce114c7497bcf077c2da02470df5d6096b14a8ce51d')
+sha512sums=('0a8b48c5c8c061a10d50a6e1d7557cb4117683738ab0bd6ce730fc9bcd3440a21ba106dc16f8660b4097b8ef6bc63496926b0435b49b96045ebade2ea845c0f7')
 
 prepare() {
   tar xf "${pkgname}-$_pkgver.tar.gz"
   cd "${pkgname}-${_pkgver}"
 
-  # Use the default system rust toolchain
-  rm -f rust-toolchain
+  # currently nightly is required ... so rustup is required a makedepends
+  # # Use the default system rust toolchain
+  # rm -f rust-toolchain
 
   # Do not build the android library
   sed -i "s/, ':android'//" java/settings.gradle
