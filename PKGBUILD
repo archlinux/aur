@@ -18,7 +18,7 @@ source=('git+https://github.com/simulationcraft/simc.git'
         '01_qt_datalocation.patch'
         'SimulationCraft.desktop')
 sha256sums=('SKIP'
-            'fea45e1c7d8fa6ba18373b917916018f5e2e6e9f69ec09cbb0fb7295f241f73f'
+            'dbdbcb0efaa340e5631feec8dc0532bd4a89df505ad60a845c027e1706eb3e03'
             '12cddfa8077e3f7c5c7d8bc445f27691072911d36e296ffe21281c6f4a0c1dd9')
 pkgver() {
     cd "${srcdir}/${_gitname}/"

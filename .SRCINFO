@@ -20,7 +20,7 @@ pkgbase = simulationcraft-git
 	source = 01_qt_datalocation.patch
 	source = SimulationCraft.desktop
 	sha256sums = SKIP
-	sha256sums = fea45e1c7d8fa6ba18373b917916018f5e2e6e9f69ec09cbb0fb7295f241f73f
+	sha256sums = dbdbcb0efaa340e5631feec8dc0532bd4a89df505ad60a845c027e1706eb3e03
 	sha256sums = 12cddfa8077e3f7c5c7d8bc445f27691072911d36e296ffe21281c6f4a0c1dd9
 
 pkgname = simulationcraft-git
