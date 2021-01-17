@@ -1,4 +1,4 @@
-# Maintainer Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
+# Maintainer: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
 
 # This doesn't compile with gcc 4.5, 4.9 or the current versions of gcc or clang.
 # It does compile with gcc 4.3.
@@ -11,9 +11,9 @@ arch=('i486' 'i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.wesnoth.org"
 license=('GPL')
 depends=('sdl' 'sdl_image' 'sdl_mixer' 'sdl_net' 'freetype2')
-makedepends=('gcc43')
+makedepends=('gcc44' 'git')
 options=('!emptydirs')
-source=("esnoth-1.2-git::git+https://github.com/wesnoth/wesnoth.git#branch=1.2"
+source=("wesnoth-1.2-git::git+https://github.com/wesnoth/wesnoth.git#branch=1.2"
         "wesnoth-1.2.desktop"
         "wesnothd-1.2.tmpfiles.conf"
         "wesnothd-1.2.service"
@@ -49,8 +49,8 @@ build() {
   unset CFLAGS CXXFLAGS
   export CXXFLAGS="-w -pipe"
 
-  export CC=gcc-4.3
-  export CXX=g++-4.3
+  export CC=gcc-4.4
+  export CXX=g++-4.4
 
   # It's a convention to use /usr/local when installing by hand, it allows you
   # to keep easier track of what was installed.

@@ -11,14 +11,15 @@ pkgbase = wesnoth-1.2
 	arch = armv7h
 	arch = aarch64
 	license = GPL
-	makedepends = gcc43
+	makedepends = gcc44
+	makedepends = git
 	depends = sdl
 	depends = sdl_image
 	depends = sdl_mixer
 	depends = sdl_net
 	depends = freetype2
 	options = !emptydirs
-	source = esnoth-1.2-git::git+https://github.com/wesnoth/wesnoth.git#branch=1.2
+	source = wesnoth-1.2-git::git+https://github.com/wesnoth/wesnoth.git#branch=1.2
 	source = wesnoth-1.2.desktop
 	source = wesnothd-1.2.tmpfiles.conf
 	source = wesnothd-1.2.service
