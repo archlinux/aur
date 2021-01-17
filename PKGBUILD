@@ -54,7 +54,7 @@ build() {
   cd OCP
   CONDA_PREFIX=/usr PYTHONPATH=pywrap python -m bindgen \
     --clean \
-    --libclang "$(ldconfig -p | grep 'libclang.so$' | awk '{print $NF}')" \
+    --libclang "$(ldconfig -p | grep 'libclang.so$' | head -1 | awk '{print $NF}')" \
     --include "$(clang -print-resource-dir)"/include \
     all ocp.toml
 
