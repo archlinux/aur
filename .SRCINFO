@@ -1,0 +1,16 @@
+pkgbase = ruby-bump
+	pkgdesc = A gem to simplify the way you build gems
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/gregorym/bump
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	makedepends = rubygems
+	depends = ruby
+	options = !emptydirs
+	source = git+https://github.com/gregorym/bump.git?tag=v0.8.0
+	sha256sums = SKIP
+
+pkgname = ruby-bump
+
