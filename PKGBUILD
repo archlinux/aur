@@ -1,8 +1,8 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_sale_promotion
 _name=trytond_sale_promotion
-pkgver=5.6.0
-_pkgdir=5.6
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
 pkgdesc="Tryton module for sale promotion"
@@ -12,7 +12,8 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('17fe709d51d76f862ac41dc7d758adf012577c92a419b7f695aa8c93e21e7546')
+sha256sums=('a7c034d0092450071aa2c9cb00008be58e5fdb5f1831543b1b83c161eb122050')
+b2sums=('45155e526ffc695bef517716cb5ad9343e7471ed1654c0528c6cc8a218901babba767f69c618e3d30e67c1ab26d0a15172603894986634d04118d5b058a2fd13')
 
 build() {
   cd $srcdir/$_name-$pkgver
