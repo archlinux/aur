@@ -6,7 +6,6 @@ pkgbase = dlib-nocuda
 	arch = x86_64
 	license = custom
 	makedepends = cmake
-	makedepends = ninja
 	depends = cblas
 	depends = lapack
 	depends = libjpeg-turbo
