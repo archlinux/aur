@@ -1,4 +1,4 @@
-# Maintainer Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
+# Maintainer: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
 
 # This doesn't compile with gcc 4.5, 4.9 or the current versions of gcc or clang
 # It does compile with gcc 4.3.
@@ -11,7 +11,7 @@ arch=('i486' 'i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.wesnoth.org"
 license=('GPL')
 depends=('sdl' 'sdl_image' 'sdl_mixer' 'sdl_net' 'boost-libs' 'zlib' 'freetype2')
-makedepends=('boost' 'gcc43')
+makedepends=('boost' 'gcc44' 'git')
 options=('!emptydirs')
 install=wesnoth-1.4.install
 source=("wesnoth-1.4-git::git+https://github.com/wesnoth/wesnoth.git#branch=1.4"
@@ -50,10 +50,9 @@ build() {
   # CFLAG & CXXFLAGS Environment variables whose values contain a space are
   # problematic, which means in particular that one can only set one additional
   # compiler flag! (one can add the values directly in configure.ac though)
-  unset CFLAGS CXXFLAGS
 
-  export CC=gcc-4.3
-  export CXX=g++-4.3
+  export CC=gcc-4.4
+  export CXX=g++-4.4
 
   # It's a convention to use /usr/local when installing by hand, it allows you
   # to keep easier track of what was installed.
