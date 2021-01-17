@@ -1,34 +1,32 @@
 # Maintainer: Moacir R.F <moacirrf@gmail.com>
 _basename="SceneBuilder"
 pkgname="javafx-scenebuilder"
-_debpkg=scenebuilder
-pkgver="8.5.0"
-pkgrel=2
-pkgdesc="Gluon Scene Builder for Java 8, based on debian package, this version is recognized by Netbeans, it was released on Jun 5, 2018."
+_debpkg=SceneBuilder
+pkgver="15.0.0"
+_pkgver="15.0.0"
+pkgrel=1
+pkgdesc="Scene Builder 15.0.0 was released on Jan 8, 2021."
 arch=('x86_64' 'i686')
 url="http://gluonhq.com/labs/scene-builder/"
 license=('BSD License')
-depends=()
+depends=('libarchive')
 makedepends=()
 optdepends=()
 install=
-source_x86_64=($_debpkg-$pkgver-x86_64.deb::http://download.gluonhq.com/scenebuilder/$pkgver/install/linux/$_debpkg-$pkgver.deb)
-source_i686=($_debpkg-$pkgver-i686.deb::http://download.gluonhq.com/scenebuilder/$pkgver/install/linux-x86/$_debpkg-$pkgver.deb)
-sha1sums_x86_64=('52bb179903b45de257fd76657404d340601e5b10')
-sha1sums_i686=('f4df31a35b690a0c7de86b64fd513e188874dca9')
-
-
+source=(https://download2.gluonhq.com/scenebuilder/15.0.0/install/linux/$_debpkg"-"$_pkgver".deb")
+sha1sums=('d608d989ae039722583fb7a64b34955477e31463') 
 build() {
   cd "$srcdir/"
   tar -xf data.tar.xz
+  mv "${srcdir}/opt/scenebuilder" "${srcdir}/opt/${_basename}"
 echo "[Desktop Entry]
-Name=Scene Builder
-Comment=Gluon Scene Builder for Java 8.
-Exec=/opt/${_basename}/${_basename}
-Icon=/opt/${_basename}/${_basename}.png
+Name=Scene Builder 15.0.0
+Comment=Gluon Scene Builder for Java 15.0.0
+Exec=/opt/${_basename}/bin/SceneBuilder
+Icon=/opt/${_basename}/lib/${_basename}.png
 Terminal=false
 Type=Application
-Categories=Development;GTK;">"${srcdir}/opt/${_basename}/${_basename}.desktop"
+Categories=Development;GTK;">"${srcdir}/opt/${_basename}/lib/${_basename}.desktop"
 }
 
 package() {
@@ -36,7 +34,8 @@ package() {
   install -d "${pkgdir}/usr/share/applications/"
   install -d "${pkgdir}/usr/share/pixmaps/"
   install -d "${pkgdir}/usr/bin/"
-  ln -s "/opt/${_basename}/${_basename}" "${pkgdir}/usr/bin/${pkgname}"
-  install -m644 "${srcdir}/opt/${_basename}/${_basename}.desktop" "${pkgdir}/usr/share/applications/"
-  install -m644 "${srcdir}/opt/${_basename}/${_basename}.png" "${pkgdir}/usr/share/pixmaps/"
+  ln -s "/opt/${_basename}/bin/SceneBuilder" "${pkgdir}/usr/bin/${pkgname}"
+  install -m644 "${srcdir}/opt/${_basename}/lib/${_basename}.desktop" "${pkgdir}/usr/share/applications/"
+  install -m644 "${srcdir}/opt/${_basename}/lib/${_basename}.png" "${pkgdir}/usr/share/pixmaps/"
 }
+
