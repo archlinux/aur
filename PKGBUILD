@@ -1,33 +1,33 @@
-# Maintainer: ava1ar <mail(at)ava1ar(dot)me>
+# Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
+# Contributor: xylosper <darklin20@gmail.com>
+# Contributor: Martin T. H. Sandsmark <martin.sandsmark@kde.org>
 
-_base=okular-backend-mupdf
-pkgname=("$_base-git")
-pkgver=r54.8a03617
+pkgname=okular-backend-mupdf-git
+pkgver=r78.7b2858a
 pkgrel=1
 pkgdesc="MuPDF-based backend for Okular (git version)"
 arch=('i686' 'x86_64')
-license=('GPL')
-depends=('okular' 'openjpeg2' 'mupdf')
-makedepends=('gcc' 'automoc4' 'cmake' 'git' 'libmupdf')
-url="https://github.com/xyzz/okular-backend-mupdf"
+license=('AGPL')
+depends=('okular')
+makedepends=('extra-cmake-modules' 'cmake' 'git' 'libmupdf')
+url="https://github.com/sandsmark/okular-backend-mupdf"
 source=("git+$url")
 sha1sums=('SKIP')
-conflicts=("$_base")
-provides=("$_base")
+conflicts=("okular-backend-mupdf")
+provides=("okular-backend-mupdf")
 
 pkgver() {
-	cd "$_base"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd $srcdir/$_base
-	rm -rf build
-	mkdir build && cd build
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=$pkgdir/usr -DCMAKE_INSTALL_LIBDIR=$pkgdir/usr/lib/qt .. && make -j$(nproc)
+  cd "${pkgname%-git}"
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -B build
+  make -C build
 }
 
 package() {
-	cd $srcdir/$_base/build
-	make install
+  cd "${pkgname%-git}"
+  make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
 }
