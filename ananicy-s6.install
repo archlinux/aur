@@ -1,0 +1,3 @@
+post_install() {
+	echo "Configs in /etc/ananicy.d/"
+}
