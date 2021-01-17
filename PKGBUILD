@@ -2,7 +2,7 @@
 # pkg: git
 pkgname=trakt-scrobbler-git
 pkgver=1.2.0.r5.g9cb6a06
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
 arch=(any)
@@ -32,6 +32,9 @@ makedepends=(
     go-md2man
     gzip
 )
+
+provides=("${pkgname%*-git}")
+conflicts=("${pkgname%*-git}")
 
 source=(
     "${pkgname%*-git}::git+https://github.com/iamkroot/trakt-scrobbler.git"
