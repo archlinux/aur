@@ -1,8 +1,8 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_user_role
 _name=trytond_user_role
-pkgver=5.6.0
-_pkgdir=5.6
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
 pkgdesc="Tryton module to manage role on user"
@@ -12,7 +12,8 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('ad86dc270ec4e579806ddf6e59ef98c9639e4fa155eaf0d364a0010d8390ba98')
+sha256sums=('c23cf2c691a6b4015d52050b688af7bb4da5ad42699d4d3dd6485fda8209a32b')
+b2sums=('2df37a6e7c779f0497dd08b4a6eaba9dd43050af132c8b03be1764cd04b36db78cd91a41c921736966a472162507259233509aa20da958c795d85aaa1b29ff00')
 
 build() {
   cd $srcdir/$_name-$pkgver
