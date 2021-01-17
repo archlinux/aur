@@ -2,7 +2,7 @@
 
 pkgname=roadrunner
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance PHP application server, load-balancer and process manager written in Golang"
 arch=(x86_64)
 url="https://roadrunner.dev/"
@@ -13,7 +13,7 @@ source=(
 	"https://github.com/spiral/$pkgname/archive/v$pkgver.tar.gz"
 	".rr.yaml.sample-full"
 	".rr.yaml.sample-minimal"
-	"03-build_version_time.patch"
+	"02-build_version_time.patch"
 )
 sha256sums=(
 	"b49f082391380ac66e1e90f147594d7c3772a3b9eddb042f04b338083ae40e33"
@@ -33,7 +33,7 @@ build() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	cd "$pkgname-$pkgver"
-	patch -p1 < $srcdir/03-build_version_time.patch
+	patch -p1 < $srcdir/02-build_version_time.patch
 	go mod download
 	make
 }
