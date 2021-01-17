@@ -7,6 +7,7 @@ pkgbase = cmus-minimal-git
 	arch = aarch64
 	license = GPL
 	makedepends = git
+	makedepends = flac
 	depends = ncurses
 	optdepends = alsa-lib: for ALSA output plugin support
 	optdepends = oss: for Open Sound System output plugin support

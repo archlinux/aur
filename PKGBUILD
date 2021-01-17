@@ -8,7 +8,7 @@ pkgdesc="Small, fast and powerful console music player for Unix-like operating s
 arch=('x86_64' 'aarch64')
 url="https://cmus.github.io/"
 depends=('ncurses')
-makedepends=('git')
+makedepends=('git' 'flac')
 optdepends=('alsa-lib: for ALSA output plugin support'
 	    'oss: for Open Sound System output plugin support'
             'libao: for AO output plugin support'
