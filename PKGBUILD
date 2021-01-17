@@ -1,7 +1,7 @@
 # Maintainer: Sardelli Tommaso <lacappannadelloziotom at gmail dot com>
 
 pkgname=beekeeper-studio-appimage
-pkgver=1.8.11
+pkgver=1.9.1
 pkgrel=1
 pkgdesc='Cross platform SQL editor and database management app for Windows, Linux, and Mac'
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('beekeeper-studio' 'beekeeper-studio-bin')
 source=("https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v${pkgver}/Beekeeper-Studio-${pkgver}.AppImage"
         beekeeper-studio.desktop.patch
         beekeeper-studio.sh)
-sha256sums=('f4c8a9cb447e2ff782d74579992ee61a22ac56ce9341e92b7749ce458bfa2524'
+sha256sums=('3ac4201ad67275495fda5fa3a82604afb2bfca83ab1b53060a525dfbda6ef72f'
             'f9e74810cd2a39c1a9fe362950c42f1009b60d440a3b3b2d71c2705883b13d96'
             '6ec287cbcfb138b5249ba9c539c67cd1dfe5343d334595872de0dfc82115df2a')
 options=(!strip)
