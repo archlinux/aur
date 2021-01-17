@@ -130,13 +130,11 @@ build() {
   ulimit -n 4096
 
   ./mach build
-  ./mach buildsymbols
 }
 
 package() {
   cd mozilla-unified
   DESTDIR="$pkgdir" ./mach install
-  find . -name '*crashreporter-symbols-full.zip' -exec cp -fvt "$startdir" {} +
 
   _vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
   install -Dm644 /dev/stdin "$_vendorjs" <<END
