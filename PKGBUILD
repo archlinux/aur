@@ -1,7 +1,7 @@
 # Maintainer: asamk <asamk@gmx.de>
 
 pkgname=signal-cli
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Provides a commandline and dbus interface for secure Signal messaging."
 arch=('any')
@@ -14,7 +14,7 @@ source=("https://github.com/AsamK/${pkgname}/archive/v${pkgver}.tar.gz"
         "${pkgname}.sh"
         "${pkgname}.sysusers.conf"
         "${pkgname}.tmpfiles.conf")
-sha512sums=('7ab8ed580872cdc42a541c9a51c6c1b9bf2e36eba6da2ba2b7e5f3cdf63799131cfaf836ed3b387bd42b4bdf56842f98847eeb1bc5bc76e0905b1aee793cfb5a'
+sha512sums=('86c9c473a224df6b5d9d424409326e0ec9cbc72ab2eec07afe0c8b6568f6f7a8d436696186d3c3fab7981a31b9ac8ed3087a0fc72bde7a63bde5205546ce4c79'
             'SKIP'
             '5f890752b999de525312d9c04ea076fd65036a65df33be172c2a382b3f8037232f4065746de4a5847b719527141885d9871f8c667a218fc14969e46615c4de84'
             'b4db42e18c957edb274637eee1ea5feb5d5f94e16ff0ced63788c8285e0c31c17e5414c6b93b1c2a6ffacca4888b177d33d1878727780e9a0e937b323e332021'
@@ -50,7 +50,8 @@ package() {
 
 	install -m644 "data/org.asamk.Signal.conf" "${pkgdir}/etc/dbus-1/system.d/"
 	install -m644 "data/${pkgname}@.service" "${pkgdir}/usr/lib/systemd/system/"
-	sed -i "s|%dir%|/usr|" "${pkgdir}/usr/lib/systemd/system/${pkgname}@.service"
+	install -m644 "data/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/"
+	sed -i "s|%dir%|/usr|" "${pkgdir}/usr/lib/systemd/system/${pkgname}@.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
 	install -m644 "man/${pkgname}.1" "${pkgdir}/usr/share/man/man1/"
 
