@@ -1,6 +1,6 @@
 pkgname=ibm-tss
 epoch=1
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A user space TSS for TPM 2.0 by IBM"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ makedepends=('git')
 # tarbomb
 #source=("https://downloads.sourceforge.net/project/ibmtpm20tss/ibmtss$pkgver.tar.gz")
 #sha256sums=('5242ce5ca8f9aff8d7a5c71dc41dbdac472b0827dafc3a1cdb6e32c16cbb95e3')
-_commit=aa6c6ec83793ba21782033c03439977c26d3cc87
+_commit=c4e131e34ec0ed09411aa3bc76f76129ef881573
 source=("$pkgname::git+https://git.code.sf.net/p/ibmtpm20tss/tss#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -27,7 +27,6 @@ prepare() {
 
 build() {
   cd $pkgname
-  CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make
 }
