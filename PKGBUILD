@@ -1,9 +1,10 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_commission_waiting
 _name=trytond_commission_waiting
-pkgver=5.2.0
-_pkgdir=5.2
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
+pkgbase=python-$_name
 pkgdesc="Tryton module for commission waiting"
 arch=('any')
 url="http://www.tryton.org/"
@@ -11,7 +12,8 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('ee45c60302eae85e6823cb359bf02156350ab01b563dff269b5b088642c9e93d')
+sha256sums=('a1f3a46b9d547bbfc77d5b72707a7e9ba8bbede5df0193070807ca72c1f2195c')
+b2sums=('7887d1ef52257e404dc1d6fcd1d98d4c3015be00a08d4e33ab62fbe4b4e3f31df378e29d12860ab44491b4d9a13242c806e6e4e4ca4da0f7d78c203fa12f4511')
 
 build() {
   cd $srcdir/$_name-$pkgver
