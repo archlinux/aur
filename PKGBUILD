@@ -1,7 +1,7 @@
 # Maintainer: Scott Harrison <scott.arch@scottrix.co.uk>
 
 pkgname=pulseaudio-dummy
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc='Dummy PulseAudio package to utilize apulse'
 arch=('i686' 'x86_64')
@@ -15,6 +15,7 @@ package() {
     for lib in libpulse-mainloop-glib.so libpulse-simple.so libpulse.so
     do
         ln -s apulse/${lib} "${pkgdir}/usr/lib/${lib}"
+        ln -s apulse/${lib}.0 "${pkgdir}/usr/lib/${lib}.0"
     done
 }
 
