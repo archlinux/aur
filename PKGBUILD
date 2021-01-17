@@ -3,13 +3,14 @@
 pkgname=python-midi-git
 _gitname=python-midi
 pkgver=r50.fec80bd
-pkgrel=1
+pkgrel=2
 pkgdesc="A feature-rich, hardware-independent MIDI toolkit for Python"
 arch=('i686' 'x86_64')
 url="https://github.com/aspiers/python-midi"
 license=('MIT')
 depends=('alsa-lib' 'python')
 makedepends=('git' 'python-setuptools' 'swig')
+provides=('python-midi')
 source=('git+https://github.com/aspiers/python-midi')
 sha256sums=('SKIP')
 
