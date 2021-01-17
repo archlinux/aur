@@ -23,7 +23,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-sqlite"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
-pkgver=8.0.0
+pkgver=8.0.1
 pkgrel=1
 arch=('x86_64')
 license=('PHP')
@@ -35,7 +35,7 @@ checkdepends=('procps-ng')
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
         'enchant-2.patch' )
-sha256sums=('b5278b3eef584f0c075d15666da4e952fa3859ee509d6b0cc2ed13df13f65ebb'
+sha256sums=('208b3330af881b44a6a8c6858d569c72db78dab97810332978cc65206b0ec2dc'
             'SKIP'
             'b4ea038f2863801175d6c4e74c685913feecdd5be3d49aff7d9b3fa92d8c4159'
             'ebc0af1ef3a6baccb013d0ccb29923895a7b22ff2d032e3bba802dc6328301ce'
@@ -44,7 +44,9 @@ sha256sums=('b5278b3eef584f0c075d15666da4e952fa3859ee509d6b0cc2ed13df13f65ebb'
             '7a0b7b976d61d4f0e0c12572e781021e03a364eae89aa1e5d76846049d6dba2f'
             '3992491eebaf5b31f6b00095a7276d11682f9a8aaff473bfb25afbdcfa6eba32')
 validpgpkeys=('CBAF69F173A0FEA4B537F470D66C9593118BCCB6'
-	      '1729F83938DA44E27BA0F4D3DBDB397470D12172'
+              '9B67A5C12229118F'
+              'BFDDD28642824F8118EF77909B67A5C12229118F'
+              '1729F83938DA44E27BA0F4D3DBDB397470D12172'
               'F38252826ACD957EF380D39F2F7956BC5DA04B5D')
 
 prepare() {
@@ -189,7 +191,7 @@ check() {
 
 package_php80-zts() {
 	pkgdesc='A general-purpose scripting language that is especially suited to web development'
-	depends=('libxml2' 'curl' 'libzip' 'pcre2' 'argon2')
+	depends=('libxml2' 'curl' 'hspell' 'nuspell' 'libzip' 'pcre2' 'argon2')
 	replaces=('php80-ldap')
 	conflicts=('php80-ldap')
 	provides=("php80-ldap=${pkgver}" "php80")
