@@ -1,18 +1,19 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_account_credit_limit
 _name=trytond_account_credit_limit
-pkgver=5.6.0
-_pkgdir=5.6
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
-pkgdesc=""
+pkgdesc="Tryton module for account credit limit"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('738723b7baf34eb755f93d520755ad2d85def08ff2deec2c9dda8b83fc78d4ea')
+sha256sums=('039485499ae59f6a9e4f23fccfdea173a9d4265c9b52b4dc07f46ffd47fb6b6c')
+b2sums=('c2b562146c8d25f0b74537790d5342fa478f218578c61188a56b766e900cd44e9ce4c3b5aff344b23ffeec595a43496d14d614ebcfb5369a700788b4c0032597')
 
 build() {
   cd $srcdir/$_name-$pkgver
