@@ -1,9 +1,10 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_carrier
 _name=trytond_carrier
-pkgver=5.2.0
-_pkgdir=5.2
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
+pkgbase=python-$_name
 pkgdesc="Tryton module with carriers"
 arch=('any')
 url="http://www.tryton.org/"
@@ -11,7 +12,8 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('8ade200d0b8c833a1eeae9b1e6c2a6a7f66fe1871d06649e001cb3c22b5bb4fa')
+sha256sums=('a91cbec366184b3e26fcde98ebdbc975d418c8633d02e065484862952c968392')
+b2sums=('ff83681d4434b097ffa1052996d68029e5335ad3683bedc38adb1a2b74eb9fdd547821397a5fb0a3cd42edcca10df35f3002b5ad2fa647e16a682245aa0af377')
 
 build() {
   cd $srcdir/$_name-$pkgver
