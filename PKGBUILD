@@ -1,42 +1,36 @@
-# $Id$
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: Christoph Brill <egore911@gmail.com>
 pkgbase=ogre-1.10
 pkgname=('ogre-1.10' 'ogre-docs-1.10')
-pkgver=1.10.11
-pkgrel=4
+pkgver=1.10.12
+pkgrel=1
 pkgdesc='Scene-oriented, flexible 3D engine written in C++'
 arch=('x86_64')
-url='http://www.ogre3d.org'
+url='https://www.ogre3d.org'
 license=('custom:MIT')
-depends=('boost-libs' 'freeimage' 'freetype2' 'libxaw' 'libxrandr'
-         'nvidia-cg-toolkit' 'zziplib' 'sdl2' 'glu' 'tinyxml')
-makedepends=('boost' 'cmake' 'doxygen' 'graphviz' 'ttf-dejavu' 'mesa' 'python' 'swig' 'systemd')
+depends=('freeimage' 'freetype2' 'libxaw' 'libxrandr' 'openexr'
+         'nvidia-cg-toolkit' 'zziplib' 'sdl2' 'glu' 'tinyxml'
+         'boost-libs')
+makedepends=('cmake' 'doxygen' 'graphviz' 'ttf-dejavu' 'mesa' 'python' 'swig' 'systemd')
 provides=('ogre=1.10' 'ogre-docs=1.10')
-install=ogre.install
 source=("https://github.com/OGRECave/ogre/archive/v${pkgver}.tar.gz")
-sha512sums=('2dfedd6f0a0de1a8c687c001439138b233200ca11e5c9940debf43d8a0380ca6472e0b5f4d599f0e22ca2049d0a5d34066ef41b6bc4912130694fa5d851fc900')
+sha512sums=('c2a16b7b80759b1ee02cd95bce6dc8fa21d66148aa3573b54cc6ee42b29a3ca389aeb2e1c74fb24ef2d08fd60b8758ea71a08f4279b34b77ca5d11e95310ab65')
 
 prepare() {
-  cd ogre-${pkgver}
-
-  sed -i "s/dist-packages/site-packages/" Components/Python/CMakeLists.txt
+  mkdir -p ogre-${pkgver}/build
 }
 
 build() {
-  cd ogre-${pkgver}
-
-  [[ -d build ]] && rm -rf build
-  mkdir build && cd build
+  cd ogre-${pkgver}/build
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DOGRE_INSTALL_SAMPLES=TRUE \
-    -DOGRE_INSTALL_DOCS=TRUE \
-    -DOGRE_INSTALL_SAMPLES_SOURCE=TRUE \
     -DOGRE_BUILD_DEPENDENCIES=FALSE \
-    -DOGRE_BUILD_COMPONENT_PYTHON=TRUE \
-    -DOGRE_BUILD_COMPONENT_JAVA=FALSE \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+    -DOGRE_BUILD_PLUGIN_FREEIMAGE=TRUE \
+    -DOGRE_BUILD_PLUGIN_EXRCODEC=TRUE \
+    -DOGRE_INSTALL_SAMPLES=TRUE \
+    -DOGRE_INSTALL_SAMPLES_SOURCE=TRUE \
+    -DOGRE_BUILD_COMPONENT_PYTHON=TRUE
 
   make
   make OgreDoc
@@ -44,18 +38,14 @@ build() {
 
 package_ogre-1.10() {
   optdepends=('cppunit: unit testing'
-              'intel-tbb: better threading support'
-              'poco: portability'
               'python: python bindings'
-              'boost: for developing using ogre'
               'ogre-docs: documentation')
 
   cd ogre-${pkgver}/build
 
   make DESTDIR=${pkgdir} install
 
-  mv ${pkgdir}/usr/bin/SampleBrowser ${pkgdir}/usr/bin/OgreSampleBrowser
-  install -Dm644 ../LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 ../Docs/License.md ${pkgdir}/usr/share/licenses/${pkgname}/license
 
   # move docs out of this package
   mv ${pkgdir}/usr/share/OGRE/docs ${srcdir}/docs
@@ -76,5 +66,3 @@ package_ogre-docs-1.10() {
   cd ${pkgdir}/usr/share
   ln -s /usr/share/doc/OGRE/ OGRE/docs
 }
-
-# vim:set ts=2 sw=2 et:

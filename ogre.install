@@ -1,3 +1,0 @@
-post_install() {
-    echo "To view the OGRE samples just run OgreSampleBrowser"
-}
