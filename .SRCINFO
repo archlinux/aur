@@ -1,0 +1,15 @@
+pkgbase = plex-sub-zero-git
+	pkgdesc = Subtitles for Plex, as good you would expect them to be
+	pkgver = 2.6.5.3247.r0.g6b918be7
+	pkgrel = 1
+	url = https://github.com/pannal/Sub-Zero.bundle
+	arch = any
+	license = MIT
+	depends = python
+	depends = plex-media-server
+	options = !strip
+	source = git://github.com/pannal/Sub-Zero.bundle.git
+	md5sums = SKIP
+
+pkgname = plex-sub-zero-git
+
