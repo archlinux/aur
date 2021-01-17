@@ -3,4 +3,5 @@
 /*.log
 /*.tar.gz
 /*.pkg.tar.xz
+/*.pkg.tar.zst
 /forensic_log.txt
