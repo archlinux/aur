@@ -2,7 +2,7 @@
 
 pkgname=semgrep-bin
 _name=semgrep
-pkgver=0.32.0
+pkgver=0.37.0
 pkgrel=1
 pkgdesc="Fast and syntax-aware semantic code pattern search for many languages: like grep but for code"
 arch=(x86_64)
@@ -17,22 +17,23 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
 )
 sha256sums=(
-  'bd20411a185b637ae970c8a79ad1237f8439a5afd0710612238f7822cce6a835'
-  '8d7198e1a2556b903d33bee29e61fc4369deef09cfb14e58588c825e4dfa2aba'
+  'ebe1b1465d3db22419d7df772dd13884a5364654dc548d1af73b13933b758522'
+  'adbf544bbe99ee32cc0ca40b230c0b2a5f3e04a6bc6ad4086aedb096e61c6e5e'
 )
 # https://github.com/returntocorp/semgrep/releases/download/v${pkgver}/semgrep-v${pkgver}-ubuntu-16.04.tgz.sha256
 
 build() {
   cd "$srcdir/${_name}-${pkgver}"
-  python setup.py build
+  sed -i 's/ruamel.yaml==0.16.10/ruamel.yaml>=0.16.10/;s/shutil.copyfile/print/' setup.py
+  SEMGREP_SKIP_BIN=1 python setup.py build
+  chmod +x build/lib/semgrep/bin/{semgrep-core,spacegrep}
 }
 
 package() {
-  cd "${srcdir}"
-  find semgrep-files -type f -exec install -D '{}' "${pkgdir}/usr/lib/{}" \;
-
-  cd "${_name}-${pkgver}"
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  cd "${srcdir}/${_name}-${pkgver}"
+  SEMGREP_CORE_BIN="${srcdir}/semgrep-files/semgrep-core" \
+  SPACEGREP_BIN="${srcdir}/semgrep-files/spacegrep" \
+    python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 
   # solve conflict with python-hypothesis
   rm -rf "${pkgdir}/usr/lib/python3.8/site-packages/tests"
