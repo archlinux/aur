@@ -1,7 +1,7 @@
 pkgbase='python-probat'
 pkgname=('python-probat')
 _module='probat'
-pkgver='1.0.1'
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Battery life saver and reminder"
 url="https://github.com/codeswhite/probat"
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('639cd81ba684b406e0e6847c9a39379b8ad4a6cf7ce285e216fd22f8c622b5dc')
+sha256sums=("c6a63ebf9214b199320ae6659801aa13b1840a8e5116f43c27f6321cbd61a614")
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
