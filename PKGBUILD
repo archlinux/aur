@@ -1,4 +1,5 @@
 # Maintainer: maniacata <maniaciachao at gmail dot com>
+# Contributor: Marcin Wieczorek <marcin@marcin.co>
 # Contributor: Martin Thierer <thierer@web.de>
 # Contributor: Amy Wilson <awils_1[at]xsmail[dot]com>
 # Contributor: Simon Doppler <dopsi[at]dopsi[dot]ch>
@@ -7,37 +8,50 @@
 # Contributor: Renan Birck <renan.ee.ufsm at gmail.com>
 
 pkgname=logisim-evolution
-pkgver=3.3.6
+pkgver=3.4.1
 pkgrel=1
-pkgdesc='An educational tool for designing and simulating digital logic circuits'
+pkgdesc='An educational tool for designing and simulating digital logic circuits (build from source)'
 arch=('any')
 url="https://github.com/reds-heig/logisim-evolution"
 license=('GPL3')
-depends=('java-runtime>=10' 'bash' 'hicolor-icon-theme')
+depends=('java-runtime>=9' 'hicolor-icon-theme')
+makedepends=('java-environment>=9')
 
-source=("${pkgname}-${pkgver}.jar::https://github.com/reds-heig/logisim-evolution/releases/download/v${pkgver}/logisim-evolution-${pkgver}-all.jar"
-    "${pkgname}.desktop"
-    "${pkgname}.sh"
-    "${pkgname}.xml")
-sha256sums=('97f6c44c30550f42a71850fac8e2a604f82134ae580a4d0bfdd664938c8cf52b'
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/reds-heig/logisim-evolution/archive/v${pkgver}.tar.gz")
+sha256sums=('bce8ee163e80b56a49a4ec3b5fa10c2b21779146f4c2c44d4bc7560a72566236'
             '086851b07012f669743080dc4f059cf7727b19200384070852b34e142533385b'
             'd5975cc0025905ab8a8a451ce4362ba876bed88008d3a5b2c0a7f664a85da1ba'
             'f90c3709748af806a33c14e81c8bf91dc06c3a4f58fe00cfe14a8f1842e09dec')
 
-package() {
-    cd "$srcdir"
+install=$_pkgname.install
 
-    install -Dm644 ${pkgname}-${pkgver}.jar "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
-    install -Dm644 ${pkgname}.xml "${pkgdir}/usr/share/mime/packages/${pkgname}.xml"
-    install -Dm644 ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    ./gradlew shadowJar
+}
+
+package() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    install -Dm644 "build/libs/logisim-evolution-${pkgver}-all.jar" \
+                   "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
+    install -Dm644 "support/Flatpak/com.github.reds.LogisimEvolution.xml" \
+                   "${pkgdir}/usr/share/mime/packages/${pkgname}.xml"
+    install -Dm644 "support/Flatpak/com.github.reds.LogisimEvolution.desktop" \
+                   "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
     for SIZE in 16 20 24 48 64 128; do
-      install -Dm644 "resources/logisim/img/logisim-icon-${SIZE}.png" \
-        "${pkgdir}/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/${pkgname}.png"
+        install -Dm644 \
+            "src/main/resources/resources/logisim/img/logisim-icon-${SIZE}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/${pkgname}.png"
     done
-    install -Dm644 "resources/logisim/img/logisim-icon.svg" \
-        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 
-    install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "build/resources/main/resources/logisim/img/logisim-icon.svg" \
+                   "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+
+    sed -e 's|Exec=.*|Exec=/usr/bin/logisim-evolution|' \
+        -e 's|com.github.reds.LogisimEvolution|logisim-evolution|' \
+        -i "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
 
