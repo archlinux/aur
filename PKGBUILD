@@ -1,18 +1,19 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_account_invoice_history
 _name=trytond_account_invoice_history
-pkgver=5.6.0
-_pkgdir=5.6
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
-pkgdesc=""
+pkgdesc="Tryton module to historize invoices"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('a73e1ce91aa620ff81e7bf671da2162e51f014d6895fcf77e1c00f0dcb3814b3')
+sha256sums=('94907f8ba0f3a422b0c4ae1153452059a6798581eae92a6c6a46959b97091da6')
+b2sums=('f8e777a39b5336753f682ac92efab245142f008dd97494c96b4a0c4c79469ea03850a5a943347a2f014d2b75884ab06548a77be4c0736b53797521ec407ed79f')
 
 build() {
   cd $srcdir/$_name-$pkgver
