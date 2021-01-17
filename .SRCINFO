@@ -1,0 +1,18 @@
+pkgbase = python-midi-git
+	pkgdesc = A feature-rich, hardware-independent MIDI toolkit for Python
+	pkgver = r50.fec80bd
+	pkgrel = 1
+	url = https://github.com/aspiers/python-midi
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = swig
+	depends = alsa-lib
+	depends = python
+	source = git+https://github.com/aspiers/python-midi
+	sha256sums = SKIP
+
+pkgname = python-midi-git
+
