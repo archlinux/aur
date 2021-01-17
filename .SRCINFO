@@ -1,18 +1,28 @@
 pkgbase = libretro-pcsx2-git
-	pkgdesc = Launch Sony PlayStation 2 games through PCSX2, directly from RetroArch.
-	pkgver = 46.bc78bf9
+	pkgdesc = PlayStation 2 core
+	pkgver = r11469.9addce2e5
 	pkgrel = 1
-	url = https://github.com/coldscientist/libretro-pcsx2-launcher
+	url = https://github.com/libretro/pcsx2
 	arch = x86_64
 	groups = libretro
-	license = MIT
+	license = GPL2
+	license = GPL3
+	license = LGPL2.1
+	license = LGPL3
 	makedepends = git
-	depends = pcsx2
+	makedepends = cmake
+	makedepends = ccache
+	makedepends = systemd
 	depends = libretro-core-info
+	depends = glib2
+	depends = libaio
+	depends = libglvnd
+	depends = libpng
+	depends = systemd-libs
 	provides = libretro-pcsx2
 	conflicts = libretro-pcsx2
-	source = libretro-pcsx2::git+https://github.com/coldscientist/libretro-pcsx2-launcher.git
-	sha256sums = SKIP
+	source = libretro-pcsx2::git+https://github.com/libretro/pcsx2.git
+	md5sums = SKIP
 
 pkgname = libretro-pcsx2-git
 

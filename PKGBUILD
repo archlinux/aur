@@ -1,34 +1,34 @@
-# Maintainer: Eugene Lebedev <satanych13+dev@gmail.com>
-
-pkgname=libretro-pcsx2-git
-pkgver=46.bc78bf9
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
+# shellcheck shell=bash disable=SC2034,SC2164
+_pkgname=libretro-pcsx2
+pkgname=$_pkgname-git
+pkgver=r11469.9addce2e5
 pkgrel=1
-pkgdesc="Launch Sony PlayStation 2 games through PCSX2, directly from RetroArch."
+pkgdesc="PlayStation 2 core"
 arch=('x86_64')
-url="https://github.com/coldscientist/libretro-pcsx2-launcher"
-license=('MIT')
-conflicts=('libretro-pcsx2')
-provides=('libretro-pcsx2')
-depends=('pcsx2' 'libretro-core-info')
-makedepends=('git')
+url="https://github.com/libretro/pcsx2"
+license=('GPL2' 'GPL3' 'LGPL2.1' 'LGPL3')
 groups=('libretro')
-
-source=("libretro-pcsx2::git+https://github.com/coldscientist/libretro-pcsx2-launcher.git")
-
-sha256sums=(SKIP)
+depends=('libretro-core-info' 'glib2' 'libaio' 'libglvnd' 'libpng' 'systemd-libs')
+makedepends=('git' 'cmake' 'ccache' 'systemd')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url.git")
+md5sums=('SKIP')
 
 pkgver() {
-  cd libretro-pcsx2
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	cd $_pkgname
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd libretro-pcsx2
-  make
+	cmake -S $_pkgname -B build \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_LINK_WHAT_YOU_USE=TRUE # doesn't link without this, but I don't know why xD
+	cmake --build build
 }
 
 package() {
-  install -Dm644 libretro-pcsx2/dolphin_launcher_libretro.so "${pkgdir}/usr/lib/libretro/pcsx2_launcher_libretro.so"
-  install -Dm644 libretro-pcsx2/dolphin_launcher_libretro.info "${pkgdir}/usr/share/libretro/info/pcsx2_launcher_libretro.info"
+	# shellcheck disable=SC2154
+	install -Dm644 -t "$pkgdir"/usr/lib/libretro build/pcsx2/pcsx2_libretro.so
 }
-
