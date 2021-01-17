@@ -1,7 +1,7 @@
 # Maintainer: Jeandre Le Roux <theblazehen@gmail.com>
 
 pkgname=xmenu
-pkgver=4.4.1
+pkgver=4.5.4
 pkgrel=1
 pkgdesc="A menu utility for X."
 arch=('any')
@@ -10,7 +10,7 @@ license=("Public domain")
 depends=("imlib2")
 provides=("xmenu")
 source=("https://github.com/phillbush/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=("d133cf0b1527667cc676e088696c6945")
+md5sums=("85e7159c013d44f9a61df6b54a43ebba")
 
 build() {
 	cd "$pkgname-$pkgver"
