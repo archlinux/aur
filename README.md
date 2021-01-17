@@ -10,13 +10,14 @@ Use
 ---
 
 Running `sbkeys` will generate a full set of keys and certificates for use in a
-Secure Boot system.
+Secure Boot system. `sbkeys -m` will, in addition, create a signed signature
+database entry for Microsoft's signing certificates.
 
 Copyright and License
 ---------------------
 
 Copyright (c) 2015 by Roderick W. Smith
-Copyright (c) 2017 Corey Hinshaw
+Copyright (c) 2020 Corey Hinshaw
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software

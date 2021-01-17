@@ -1,6 +1,6 @@
 #!/bin/bash
 # Copyright (c) 2015 by Roderick W. Smith
-# Copyright (c) 2017 Corey Hinshaw
+# Copyright (c) 2020 Corey Hinshaw
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,74 +18,137 @@
 [ -n "${DEBUG}" ] && set -x
 set -e
 
-# Do not create new keys if key files already exist
-KEYS=(
-  PK.key PK.crt PK.cer PK.esl PK.auth
-  KEK.key KEK.crt KEK.cer KEK.esl KEK.auth
-  DB.key DB.crt DB.cer DB.esl DB.auth
-  noPK.esl noPK.auth
-  myGUID.txt
-)
-for file in ${KEYS[@]}; do
-  if [ -f ${file} ]; then
-    echo "Error: keys already exist in $(pwd)" >&2
-    exit 1
-  fi
+usage() {
+  cat <<EOF
+Usage: sbkeys [OPTION]...
+Generate secure boot keys
+
+Options:
+  -h      Print this help text
+  -m      Generate signature database entries for Microsoft certificates
+EOF
+}
+
+generate_keys() {
+  # Do not create new keys if key files already exist
+  KEYS=(
+    PK.key PK.crt PK.cer PK.esl PK.auth
+    KEK.key KEK.crt KEK.cer KEK.esl KEK.auth
+    DB.key DB.crt DB.cer DB.esl DB.auth
+    noPK.esl noPK.auth
+    myGUID.txt
+  )
+  for file in ${KEYS[@]}; do
+    if [ -f ${file} ]; then
+      echo "Skipping key generation: keys already exist in $(pwd)"
+      return
+    fi
+  done
+
+  echo -n "Enter a Common Name to embed in the keys: "
+  read NAME
+
+  # Platform key
+  openssl req -new -x509 \
+      -subj "/CN=${NAME} PK/" -days 3650 -nodes \
+      -newkey rsa:2048 -sha256 \
+      -keyout PK.key -out PK.crt
+  openssl x509 -in PK.crt -out PK.cer -outform DER
+
+  # Key exchange key
+  openssl req -new -x509 \
+      -subj "/CN=${NAME} KEK/" -days 3650 -nodes \
+      -newkey rsa:2048 -sha256 \
+      -keyout KEK.key -out KEK.crt
+  openssl x509 -in KEK.crt -out KEK.cer -outform DER
+
+  # Signature database
+  openssl req -new -x509 \
+      -subj "/CN=${NAME} DB/" -days 3650 -nodes \
+      -newkey rsa:2048 -sha256 \
+      -keyout DB.key -out DB.crt
+  openssl x509 -in DB.crt -out DB.cer -outform DER
+
+  GUID="$(uuidgen -r)"
+  echo ${GUID} > myGUID.txt
+
+  cert-to-efi-sig-list -g ${GUID} PK.crt PK.esl
+  cert-to-efi-sig-list -g ${GUID} KEK.crt KEK.esl
+  cert-to-efi-sig-list -g ${GUID} DB.crt DB.esl
+  rm -f noPK.esl
+  touch noPK.esl
+
+  sign-efi-sig-list \
+      -t "$(date --date='1 second' +'%Y-%m-%d %H:%M:%S')" \
+      -k PK.key -c PK.crt \
+      PK PK.esl PK.auth
+  sign-efi-sig-list \
+      -t "$(date --date='1 second' +'%Y-%m-%d %H:%M:%S')" \
+      -k PK.key -c PK.crt \
+      PK noPK.esl noPK.auth
+  sign-efi-sig-list \
+      -t "$(date --date='1 second' +'%Y-%m-%d %H:%M:%S')" \
+      -k PK.key -c PK.crt \
+      KEK KEK.esl KEK.auth
+  sign-efi-sig-list \
+      -t "$(date --date='1 second' +'%Y-%m-%d %H:%M:%S')" \
+      -k KEK.key -c KEK.crt \
+      DB DB.esl DB.auth
+
+  chmod 0600 *.key
+}
+
+generate_ms_db() {
+  msguid=77fa9abd-0359-4d32-bd60-28f4e78f784b
+
+  msdb="MS_db.esl add_MS_db.auth"
+  for file in $msdb; do
+    if [ -f $file ]; then
+      echo "Microsoft signature lists already exist in $(pwd)"
+      return
+    fi
+  done
+
+  wget --user-agent="Mozilla" https://www.microsoft.com/pkiops/certs/MicWinProPCA2011_2011-10-19.crt
+  wget --user-agent="Mozilla" https://www.microsoft.com/pkiops/certs/MicCorUEFCA2011_2011-06-27.crt
+
+  sbsiglist --owner "$msguid" --type x509 --output MS_Win_db.esl MicWinProPCA2011_2011-10-19.crt
+  sbsiglist --owner "$msguid" --type x509 --output MS_UEFI_db.esl MicCorUEFCA2011_2011-06-27.crt
+  cat MS_Win_db.esl MS_UEFI_db.esl > MS_db.esl
+  sign-efi-sig-list -a -g "$msguid" -k KEK.key -c KEK.crt DB MS_db.esl add_MS_db.auth
+
+  rm MS_Win_db.esl MS_UEFI_db.esl MicWinProPCA2011_2011-10-19.crt MicCorUEFCA2011_2011-06-27.crt
+}
+
+mskeys=0
+
+while getopts ":hm" opt; do
+  case $opt in
+    h)
+      usage
+      cat <<EOF
+
+For use with KeyTool, copy the *.auth and *.esl files to a FAT USB
+flash drive or to your EFI System Partition (ESP).
+For use with most UEFIs' built-in key managers, copy the *.cer files.
+
+To add Microsoft's certificates use KeyTool or UEFI to append
+add_MS_db.auth to the signature database.
+EOF
+      exit 0
+      ;;
+    m)
+      mskeys=1
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      usage >&2
+      exit 1
+      ;;
+   esac
 done
 
-echo -n "Enter a Common Name to embed in the keys: "
-read NAME
-
-# Platform key
-openssl req -new -x509 \
-    -subj "/CN=${NAME} PK/" -days 3650 -nodes \
-    -newkey rsa:2048 -sha256 \
-    -keyout PK.key -out PK.crt
-openssl x509 -in PK.crt -out PK.cer -outform DER
-
-# Key exchange key
-openssl req -new -x509 \
-    -subj "/CN=${NAME} KEK/" -days 3650 -nodes \
-    -newkey rsa:2048 -sha256 \
-    -keyout KEK.key -out KEK.crt
-openssl x509 -in KEK.crt -out KEK.cer -outform DER
-
-# Signature database
-openssl req -new -x509 \
-    -subj "/CN=${NAME} DB/" -days 3650 -nodes \
-    -newkey rsa:2048 -sha256 \
-    -keyout DB.key -out DB.crt
-openssl x509 -in DB.crt -out DB.cer -outform DER
-
-GUID="$(uuidgen -r)"
-echo ${GUID} > myGUID.txt
-
-cert-to-efi-sig-list -g ${GUID} PK.crt PK.esl
-cert-to-efi-sig-list -g ${GUID} KEK.crt KEK.esl
-cert-to-efi-sig-list -g ${GUID} DB.crt DB.esl
-rm -f noPK.esl
-touch noPK.esl
-
-sign-efi-sig-list \
-    -t "$(date --date='1 second' +'%Y-%m-%d %H:%M:%S')" \
-    -k PK.key -c PK.crt \
-    PK PK.esl PK.auth
-sign-efi-sig-list \
-    -t "$(date --date='1 second' +'%Y-%m-%d %H:%M:%S')" \
-    -k PK.key -c PK.crt \
-    PK noPK.esl noPK.auth
-sign-efi-sig-list \
-    -t "$(date --date='1 second' +'%Y-%m-%d %H:%M:%S')" \
-    -k PK.key -c PK.crt \
-    KEK KEK.esl KEK.auth
-sign-efi-sig-list \
-    -t "$(date --date='1 second' +'%Y-%m-%d %H:%M:%S')" \
-    -k KEK.key -c KEK.crt \
-    DB DB.esl DB.auth
-
-chmod 0600 *.key
-
-echo
-echo "For use with KeyTool, copy the *.auth and *.esl files to a FAT USB"
-echo "flash drive or to your EFI System Partition (ESP)."
-echo "For use with most UEFIs' built-in key managers, copy the *.cer files."
+generate_keys
+if [ $mskeys -eq 1 ]; then
+  generate_ms_db
+fi

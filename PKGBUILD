@@ -2,16 +2,16 @@
 # Contributor: zer0def <zer0def@github>
 
 pkgname=sbkeys
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Simple script to generate Secure Boot keys"
 arch=('any')
 url="https://github.com/electrickite/sbkeys"
 license=('GPL3')
-depends=('efitools' 'coreutils' 'bash' 'openssl' 'util-linux')
+depends=('efitools' 'coreutils' 'bash' 'util-linux' 'openssl' 'wget')
 
 source=('sbkeys')
-sha256sums=('895dc5b515625ea515c3f74279dfe67cf40efea4f23ac5e4dbe78213da34d957')
+sha256sums=('19e24a796889ba7af0eedbb163fb343491e8d935e4a1ae717465ecbaa98a6e0e')
 
 package() {
   install -Dm755 sbkeys "${pkgdir}/usr/bin/sbkeys"
