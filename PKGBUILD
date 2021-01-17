@@ -9,14 +9,14 @@
 # Contributor: Eli Schwartz <eschwartz@archlinux.org>
 
 pkgname=('vim-min' 'vim-runtime-min')
-pkgver=8.2.1989
+pkgver=8.2.2347
 _versiondir=82
 pkgrel=1
 pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor'
 url='https://www.vim.org'
 arch=('x86_64')
 license=('custom:vim')
-makedepends=('glibc' 'libgcrypt' 'python' 'libxt'
+makedepends=('glibc' 'libgcrypt' 'python'
              'gawk' 'pcre' 'zlib' 'libffi')
 source=(https://github.com/vim/vim/archive/v${pkgver}/${pkgbase}-${pkgver}.tar.gz
         vimrc
@@ -91,7 +91,8 @@ package_vim-runtime-min() {
   pkgdesc+=' (shared runtime)'
   optdepends=('sh: support for some tools and macros'
               'python: demoserver example tool'
-              'gawk: mve tools upport')
+              'gawk: mve tools upport'
+              'libxt: widget support')
   provides=(vim-runtime)
   conflicts=(vim-runtime)
   backup=('etc/vimrc')
@@ -135,7 +136,8 @@ package_vim-min() {
               'ruby: Ruby language support'
               'lua: Lua language support'
               'perl: Perl language support'
-              'tcl: Tcl language support')
+              'tcl: Tcl language support'
+              'libxt: widget support')
   conflicts=('gvim' 'vim' 'vim-minimal' 'vim-python3')
   provides=('xxd' 'vim' 'vim-minimal' 'vim-python3' 'vim-plugin-runtime')
   replaces=('vim-python3')
