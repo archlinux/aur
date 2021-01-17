@@ -2,17 +2,18 @@
 # Contributor: Sam Stuewe <halosghost at archlinux dot info>
 
 pkgname=uacme
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc='An ACMEv2 client written in plain C with minimal dependencies'
 arch=('i686' 'x86_64')
 url='https://github.com/ndilieto/uacme/'
-makedepends=('asciidoc' 'libev')
+makedepends=('asciidoc' 'git' 'libev')
 depends=('curl' 'gnutls')
-optdepends=('libev: ualpn')
+optdepends=('libev: for ualpn')
 license=('GPL3')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ndilieto/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('1f3282e659d1486105e2f10150a88aa338be9c644ecd817a0cca5a4a9dae990f') # not upstream
+source=("$pkgname-$pkgver::git+https://github.com/ndilieto/$pkgname.git#tag=upstream/$pkgver?signed")
+sha256sums=('SKIP')
+validpgpkeys=('243828049BB5F549446516E24142E3D6318A7874') # Nicola Di Lieto
 
 build() {
   cd "$pkgname-$pkgver"
