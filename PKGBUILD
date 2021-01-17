@@ -1,18 +1,19 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_stock_shipment_measurements
 _name=trytond_stock_shipment_measurements
-pkgver=5.6.0
-_pkgdir=5.6
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
-pkgdesc=""
+pkgdesc="Tryton module to add measurements to shipment"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('c1bf7b01e0860cebe55a33d952410ff793cf87754d88f7f84cd52f0e2bb748b8')
+sha256sums=('18ced6c2678c509fe1f3146d0ac20bcabbdafe9947d654a99ab7acc8b1463ec2')
+b2sums=('b4260867a5d2c362bc9b23cac520a611dd9cf6fb2d142b7c14f346c305b558493bf9e172692396b716db72915b20c329c5610b055c794c37e4f92e021c21b93c')
 
 build() {
   cd $srcdir/$_name-$pkgver
