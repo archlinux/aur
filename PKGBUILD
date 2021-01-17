@@ -2,7 +2,7 @@
 # Contributor: csicar
 
 pkgname=fx_cast
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Implementation of the Chrome Sender API (Chromecast) within Firefox"
 arch=('x86_64')
@@ -13,24 +13,28 @@ depends=('avahi')
 conflicts=('fx_cast-bin')
 options=('!strip')
 source=("https://github.com/hensm/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('529425e78208e6acfe54284c1ca145ff1781daf627334939630b31cc53234be7')
+sha256sums=('eb166318c3c4a62cb74e2e1457911d6abcf2bd1f1462bcc3ad1c0bdeb29291ab')
+
+prepare() {
+	cd "${pkgname}-${pkgver}/app"
+
+	sed -i '/devDependencies/a "typescript": "^3.9.7",' package.json
+	sed -i -e 's/`node.*`/"host"/' -e '/: path\.join/a manifest.path = "/usr/lib/fx_cast/fx_cast_bridge"' bin/build.js
+}
 
 build() {
-	cd "${pkgname}-${pkgver}"
+	cd "${pkgname}-${pkgver}/app"
 
-	sed -i 's/`node.*`/"host"/' app/bin/build.js
 	npm install --cache "${srcdir}/npm-cache"
-	npm run build:app
-	sed -i 's#"path":.*$#"path": "/usr/lib/fx_cast/fx_cast_bridge.sh"#' dist/app/fx_cast_bridge.json
+	npm run build -- --usePkg
 }
 
 package() {
 	cd "${pkgname}-${pkgver}"
 
-	install -Dm755 dist/app/{fx_cast_bridge.sh,package.json} -t "${pkgdir}/usr/lib/fx_cast/"
-	cp -r dist/app/src "${pkgdir}/usr/lib/fx_cast/"
-	cp -r app/node_modules "${pkgdir}/usr/lib/fx_cast/"
+	install -Dm755 dist/app/fx_cast_bridge -t "${pkgdir}/usr/lib/fx_cast/"
+	install -Dm644 dist/app/dns_sd_bindings.node -t "${pkgdir}/usr/lib/fx_cast/"
 
-	install -Dm644 dist/app/fx_cast_bridge.json "${pkgdir}/usr/lib/mozilla/native-messaging-hosts/fx_cast_bridge.json"
+	install -Dm644 dist/app/fx_cast_bridge.json -t "${pkgdir}/usr/lib/mozilla/native-messaging-hosts/"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

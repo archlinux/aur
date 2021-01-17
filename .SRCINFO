@@ -1,6 +1,6 @@
 pkgbase = fx_cast
 	pkgdesc = Implementation of the Chrome Sender API (Chromecast) within Firefox
-	pkgver = 0.1.0
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://hensm.github.io/fx_cast/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = fx_cast
 	depends = avahi
 	conflicts = fx_cast-bin
 	options = !strip
-	source = https://github.com/hensm/fx_cast/archive/v0.1.0.tar.gz
-	sha256sums = 529425e78208e6acfe54284c1ca145ff1781daf627334939630b31cc53234be7
+	source = https://github.com/hensm/fx_cast/archive/v0.1.2.tar.gz
+	sha256sums = eb166318c3c4a62cb74e2e1457911d6abcf2bd1f1462bcc3ad1c0bdeb29291ab
 
 pkgname = fx_cast
 
