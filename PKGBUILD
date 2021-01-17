@@ -2,7 +2,7 @@
 
 _pkgbase=fancon
 pkgname=fancon-git
-pkgver=0.23.5.r1.1cf6ab5
+pkgver=0.23.7.r1.5a773a8
 pkgrel=1
 pkgdesc="A Linux fan control daemon"
 arch=('x86_64')
