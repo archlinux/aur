@@ -1,10 +1,10 @@
-# Maintainer Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
+# Maintainer: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
 
 # This script contains as well instructions for other Linux systems.
 # Have a look what is done in the build() and package() functions below.
 # Execute the same command which are used there.
 
-# On other systems, ignore the used variables like $pkgdir, $srcdir or $startdir
+# On other systems, ignore the used variables like $pkgdir and $srcdir
 # (there $pkgdir would be the same as an undefined variable (empty),
 #  and $srcdir would be the place where you have your files)
 
