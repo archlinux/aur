@@ -1,84 +1,67 @@
-# Script generated with import_catkin_packages.py
-# For more information: https://github.com/bchretien/arch-ros-stacks
-pkgdesc="ROS - Helper functions for displaying and debugging MoveIt! data in Rviz via published markers."
-url='https://github.com/davetcoleman/moveit_visual_tools'
+pkgdesc="Helper functions for displaying and debugging MoveIt data in Rviz via published markers."
+url='https://wiki.ros.org/moveit_visual_tools'
 
-pkgname='ros-kinetic-moveit-visual-tools'
-pkgver='3.3.0'
-_pkgver_patch=0
-arch=('any')
+pkgname='ros-noetic-moveit-visual-tools'
+pkgver='3.6.0'
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-kinetic-roslint
-  ros-kinetic-moveit-core
-  ros-kinetic-trajectory-msgs
-  ros-kinetic-cmake-modules
-  ros-kinetic-geometry-msgs
-  ros-kinetic-visualization-msgs
-  ros-kinetic-rviz-visual-tools
-  ros-kinetic-std-msgs
-  ros-kinetic-roscpp
-  ros-kinetic-moveit-ros-robot-interaction
-  ros-kinetic-graph-msgs
-  ros-kinetic-tf-conversions
-  ros-kinetic-eigen-conversions
-  ros-kinetic-catkin)
-makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]})
+ros_makedepends=(
+    ros-noetic-catkin
+)
 
-ros_depends=(ros-kinetic-roslint
-  ros-kinetic-moveit-core
-  ros-kinetic-trajectory-msgs
-  ros-kinetic-cmake-modules
-  ros-kinetic-geometry-msgs
-  ros-kinetic-visualization-msgs
-  ros-kinetic-rviz-visual-tools
-  ros-kinetic-std-msgs
-  ros-kinetic-roscpp
-  ros-kinetic-moveit-ros-robot-interaction
-  ros-kinetic-graph-msgs
-  ros-kinetic-tf-conversions
-  ros-kinetic-eigen-conversions)
-depends=(${ros_depends[@]})
+makedepends=(
+    cmake
+    ros-build-tools
+    ${ros_makedepends[@]}
+)
 
-# Git version (e.g. for debugging)
-# _tag=release/kinetic/moveit_visual_tools/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/davetcoleman/moveit_visual_tools-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
+ros_depends=(
+    ros-noetic-cmake-modules
+    ros-noetic-geometry-msgs
+    ros-noetic-graph-msgs
+    ros-noetic-moveit-core
+    ros-noetic-moveit-ros-planning
+    ros-noetic-roscpp
+    ros-noetic-roslint
+    ros-noetic-rviz-visual-tools
+    ros-noetic-std-msgs
+    ros-noetic-tf2-eigen
+    ros-noetic-tf2-ros
+    ros-noetic-trajectory-msgs
+    ros-noetic-visualization-msgs
+)
 
-# Tarball version (faster download)
-_dir="moveit_visual_tools-release-release-kinetic-moveit_visual_tools-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/davetcoleman/moveit_visual_tools-release/archive/release/kinetic/moveit_visual_tools/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('47a0be8e7037445e2ac82a7ec6025d7a861bad522a0058bc2afb63bd70cdc2f4')
+depends=(
+    ${ros_depends[@]}
+)
+
+_dir="moveit_visual_tools-${pkgver}"
+
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit_visual_tools/archive/${pkgver}.tar.gz")
+sha256sums=('747956d416529483247dc3e2baad4a6046e1d9eef87592ef3396302ffea6acc3')
 
 build() {
-  # Use ROS environment variables
-  source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/kinetic/setup.bash ] && source /opt/ros/kinetic/setup.bash
+    # Use ROS environment variables
+    source /usr/share/ros-build-tools/clear-ros-env.sh
+    [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
-  # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+    # Create build directory
+    [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
+    cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
-
-  # Build project
-  cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/kinetic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
-        -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
-        -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
-  make
+    # Build project
+    cmake ${srcdir}/${_dir} \
+          -DCATKIN_BUILD_BINARY_PACKAGE=ON \
+          -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+          -DPYTHON_EXECUTABLE=/usr/bin/python \
+          -DSETUPTOOLS_DEB_LAYOUT=OFF
+    make
 }
 
 package() {
-  cd "${srcdir}/build"
-  make DESTDIR="${pkgdir}/" install
+    cd "${srcdir}/build"
+    make DESTDIR="${pkgdir}/" install
 }
+
