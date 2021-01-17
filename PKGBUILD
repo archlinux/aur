@@ -1,8 +1,8 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_stock_supply_forecast
 _name=trytond_stock_supply_forecast
-pkgver=5.6.0
-_pkgdir=5.6
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
 pkgdesc="Tryton module to add forecast to supply computation"
@@ -12,7 +12,8 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('0b52b4ea1ac88f685f173cb6fd9898b3918795718da51792d183899dc7985119')
+sha256sums=('9a05eec7731b503065a38db0ebfe61842504de54b156a1b0643d4db411e0b031')
+b2sums=('b99d79f4d5685f934e225b2183acb9fc8483950c7684a8e22fafcba3bb4d7923923c84355f4729f93e411a1efa5225ccc3d70f76263da4680db0c46cc77b993f')
 
 build() {
   cd $srcdir/$_name-$pkgver
