@@ -45,6 +45,16 @@ pkgbase = darktable-git
 	options = !emptydirs
 	options = !libtool
 	source = git://github.com/darktable-org/darktable.git
+	source = rawspeed.git::git+https://github.com/darktable-org/rawspeed.git
+	source = OpenCL-Headers.git::git+https://github.com/KhronosGroup/OpenCL-Headers.git
+	source = libxcf.git::git+https://github.com/houz/libxcf.git
+	source = whereami::git+https://github.com/gpakosz/whereami
+	source = darktable-tests.git::git+https://github.com/darktable-org/darktable-tests.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = darktable-git

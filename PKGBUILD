@@ -22,8 +22,19 @@ conflicts=(darktable)
 provides=(darktable)
 install=darktable.install
 options=(!emptydirs !libtool)
-source=('git://github.com/darktable-org/darktable.git')
-md5sums=('SKIP')
+source=('git://github.com/darktable-org/darktable.git'
+	"rawspeed.git::git+https://github.com/darktable-org/rawspeed.git"
+	"OpenCL-Headers.git::git+https://github.com/KhronosGroup/OpenCL-Headers.git"
+	"libxcf.git::git+https://github.com/houz/libxcf.git"
+	"whereami::git+https://github.com/gpakosz/whereami"
+	"darktable-tests.git::git+https://github.com/darktable-org/darktable-tests.git"
+)
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 pkgver() {
   cd $_gitname
@@ -35,9 +46,14 @@ pkgver() {
 }
 
 prepare() {
-	local _gitdir=$srcdir/$_gitname
-	cd $_gitdir
-	git submodule update --init
+  local _gitdir=$srcdir/$_gitname
+  cd $_gitdir
+  git config submodule.src/external/rawspeed.url "$srcdir/rawspeed.git"
+  git config submodule.src/external/OpenCL.url "$srcdir/OpenCL-Headers.git"
+  git config submodule.src/external/libxcf.url "$srcdir/libxcf.git"
+  git config submodule.src/external/whereami.url "$srcdir/whereami"
+  git config submodule.src/tests/integration.url "$srcdir/darktable-tests.git"
+  git submodule update --init --remote --recursive
 }
 
 build() {
