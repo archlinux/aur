@@ -1,7 +1,7 @@
 pkgbase = browservice
 	pkgdesc = Browse the modern web on historical browsers
 	pkgver = 0.9.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ttalvitie/browservice
 	arch = x86_64
 	arch = armv7l

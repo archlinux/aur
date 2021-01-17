@@ -2,7 +2,7 @@
 
 pkgname=browservice
 pkgver=0.9.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Browse the modern web on historical browsers'
 url='https://github.com/ttalvitie/browservice'
 license=('MIT')
@@ -22,7 +22,7 @@ build() {
 cd "${srcdir}/${pkgname}-${pkgver}"
 ./download_cef.sh
 ./setup_cef.sh
-make -j
+make -j${nproc}
 }
 
 package() {
