@@ -1,9 +1,10 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_company
 _name=trytond_company
-pkgver=5.2.0
-_pkgdir=5.2
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
+pkgbase=python-$_name
 pkgdesc="Tryton module with companies and employees"
 arch=('any')
 url="http://www.tryton.org/"
@@ -11,7 +12,8 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('a60c743cd4e0ef188e97f0c4fa841729eff11cf9812711581b98cec47cab73a5')
+sha256sums=('e95feb964153952e678a205c45082c82f475fccd03ba8221676270f766169eaf')
+b2sums=('7636fa82d2c3da6f45b6b4775e4e0159b120e6a4a1c6af764d58e9fa78531b5430c59a1465d2bdee3f152a22a14a8b7eb132f83db8f4e4b1926967bf2d89e04e')
 
 build() {
   cd $srcdir/$_name-$pkgver
