@@ -1,0 +1,15 @@
+pkgbase = python-trytond_web_shop_vue_storefront
+	pkgdesc = Tryton module to integrate with Vue Storefront
+	pkgver = 5.8.1
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_web_shop_vue_storefront/trytond_web_shop_vue_storefront-5.8.1.tar.gz
+	sha256sums = 4e62f868fae5bf9b96e6b09e4383f663ebfcf9cfc0e27c22ad8368f60894aea5
+	b2sums = caddec220f698965a11a05012da36dff8fe839b12a854a66d2f6944f82b2f5297f1e2b00ee5cf136978caaea7cdbaa4f5273d1dd05bbbb81252e020d9f525857
+
+pkgname = python-trytond_web_shop_vue_storefront
+
