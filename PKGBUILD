@@ -1,32 +1,37 @@
-# Maintainer: Ainola
+# Maintainer: Brett Cornwall <ainola@archlinux.org>
 # Contributor: Sergey Mastykov
 
 pkgname=linkchecker
-pkgver=9.4.0
-pkgrel=6
+pkgver=10.0.0
+pkgrel=1
 pkgdesc="Check websites for broken links."
-arch=('x86_64')
+arch=('any')
 url="https://github.com/linkcheck/linkchecker"
 license=('GPL2')
-depends=('python2-requests' 'python2-dnspython' 'python2-xdg')
+makedepends=('python-pytest')
+depends=(
+    'python-requests'
+    'python-dnspython'
+    'python-xdg'
+    'python-beautifulsoup4'
+)
 optdepends=(
-    'python2-argcomplete: For command-line completion',
-    'python2-geoip: For displaying country codes'
+    'python-argcomplete: For command-line completion'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/linkchecker/linkchecker/archive/v$pkgver.tar.gz")
-sha256sums=('1ce495fc5f2366ac5b31cbda6fef2c5cf6582bb2d55fd9648931952611e47473')
+sha256sums=('e86bdd9d1bd39e7caee7521c80f211f9cbdc07f5bc01225ee4fc07a7ada34ccd')
 
 build() {
     cd "$pkgname-$pkgver"
-    python2 setup.py build
+    python setup.py build
 }
 
 # Upstream tests need to be fixed first
 #check() {
-#    cd "$pkgname-$pkgver" && python2 setup.py test
+#    cd "$pkgname-$pkgver" && python setup.py test
 #}
 
 package() {
     cd "$pkgname-$pkgver"
-    python2 setup.py install --root="$pkgdir"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
