@@ -50,5 +50,5 @@ build() {
 package() {
 	cd "$pkgname"
   mkdir -p "$pkgdir"/usr/lib/lv2/
-  cp -r Plugin/Builds/LinuxMakefile/build/CHOWTapeModel.lv2 "$pkgdir"/usr/lib/lv2/
+  cp -r Plugin/build/CHOWTapeModel_artefacts/LV2/CHOWTapeModel.lv2 "$pkgdir"/usr/lib/lv2/
 }
