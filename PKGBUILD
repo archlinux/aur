@@ -77,6 +77,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
+        "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/arch-patches-v10-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_lucjanpath}/arch-patches-v10-sep/0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
         "${_lucjanpath}/arch-patches-v10-sep/0003-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch"
@@ -327,6 +328,7 @@ sha512sums=('13ea7cf81db43059466c1558bd80175a6c2090496786fe9220c165958d19781d550
             'SKIP'
             '45fa721352143304eceff87649986fd42fcf4ae369f15ba704a435ab2f107dfe41c050eac25cd9167d2cc73d569aad8501cbd13477b62bad9724e4240f36ab15'
             'c074a23494d46b8c29e404c73823d86addd19ab12337f7c62607befdff58f10b5059ec97c3c52ab27b210cf64a21019c38547fdd4c004823f772bf7b8ea4b0c5'
+            '34e21ecc4ef0d07707283427fa82d561a9573d670e80ccd41f7d9cb595473b3844b8df7aeffcb4fe82d9deeef0a4d4e6aef663eb1a7a397fa181f06f418a0d6d'
             'd9fe7da551cf29d41a80a2c50d74ee427bc81d1cbf373abf23644244a5a7a382a8d5a2bad94a415e0d17cd2b225d5c7999ad5781cc442196608cd92826350520'
             'eae926cbd8528e8d688b0038c29069cdafb37894bcba8d510a43b138a2db47b78b450a745db07acd0c5edf66fde86eacd94b1124587218b3e73848861d543182'
             '0ff23d3cfe37e3112cf2c518d3fcdd4b510000044facd3a3091ad5440a9db25ddbc01b4bf8e54c33055d76222fb7b2968de7ede265156b980e89620998ee6081'
