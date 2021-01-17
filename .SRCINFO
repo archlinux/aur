@@ -1,0 +1,13 @@
+pkgbase = lifelines
+	pkgdesc = Second generation genealogy software.
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://github.com/lifelines/lifelines
+	arch = x86_64
+	license = MIT
+	conflicts = lifelines-git
+	source = https://github.com/lifelines/lifelines/releases/download/3.1.1/lifelines-3.1.1.tar.gz
+	sha256sums = 083007f81e406fce15931e5a29a7ba0380ef0b3b9c61d5eb5228ad378c7f332d
+
+pkgname = lifelines
+
