@@ -1,8 +1,8 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_gis
 _name=trytond_gis
-pkgver=5.6.0
-_pkgdir=5.6
+pkgver=5.8.0
+_pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
 pkgdesc="Adds Geographic Information System support to trytond"
@@ -12,7 +12,8 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('b2d952ff4877c53f62f90866c86acdd03f1c439a0bf3db43bcdf2d68dc03182a')
+sha256sums=('fbbd17ddf0c17c0231007fda007f73677f0db21b17dd77930ae0ddfd6250b499')
+b2sums=('1cfec5f6710636f89c7dea42f55d7f3dd0667ca4ac85ffe1c21566dd40c07535852465afc55f1263bd9a7371b993209038fa210bfc2e6fdab9fc308d29b7faac')
 
 build() {
   cd $srcdir/$_name-$pkgver
