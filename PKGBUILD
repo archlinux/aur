@@ -1,8 +1,8 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_product
 _name=trytond_product
-pkgver=5.6.0
-_pkgdir=5.6
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
 pkgdesc="Tryton module with products"
@@ -12,7 +12,8 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('90401f9accf8088f2366265f8c6a945808c4648d285cf69e77a9772228dbc8d8')
+sha256sums=('824532bcc6945475fb1417300c367b654b02af44e9af131e97bc652fefb32874')
+b2sums=('77b3d709cf6e7c392cd684e4f530fcaad6e615cb52b16699a5e024617a6af76a91ee7db12968292dc98bef6447c810d4ab332936b6d6c3fa792978cabf584789')
 
 build() {
   cd $srcdir/$_name-$pkgver

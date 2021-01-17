@@ -1,14 +1,15 @@
 pkgbase = python-trytond_product
 	pkgdesc = Tryton module with products
-	pkgver = 5.6.0
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_product/trytond_product-5.6.0.tar.gz
-	sha256sums = 90401f9accf8088f2366265f8c6a945808c4648d285cf69e77a9772228dbc8d8
+	source = https://files.pythonhosted.org/packages/source/t/trytond_product/trytond_product-5.8.1.tar.gz
+	sha256sums = 824532bcc6945475fb1417300c367b654b02af44e9af131e97bc652fefb32874
+	b2sums = 77b3d709cf6e7c392cd684e4f530fcaad6e615cb52b16699a5e024617a6af76a91ee7db12968292dc98bef6447c810d4ab332936b6d6c3fa792978cabf584789
 
 pkgname = python-trytond_product
 
