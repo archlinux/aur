@@ -1,7 +1,7 @@
 pkgbase = pyidm
 	pkgdesc = Python open source alternative to IDM (Internet Download Manager)
-	pkgver = 2020.12.20
-	pkgrel = 2
+	pkgver = 2021.1.7
+	pkgrel = 1
 	url = https://github.com/pyIDM/PyIDM
 	changelog = pyidm.changelog
 	arch = any
@@ -11,14 +11,15 @@ pkgbase = pyidm
 	depends = python>=3.6
 	depends = python-awesometkinter>=2020.12.16
 	depends = python-certifi
-	depends = python-pillow
+	depends = python-packaging
+	depends = python-pillow>=6.0.0
 	depends = python-plyer
 	depends = python-pycurl
 	depends = python-pystray
 	depends = youtube-dl
 	depends = youtube-dlc
-	source = pyidm-2020.12.20.tar.gz::https://github.com/pyIDM/PyIDM/archive/2020.12.20.tar.gz
-	b2sums = 1fd1fa17dde4731a19a142ca21a03e2404e563d0733dab15404d4384199d53aa3ef36666a3cd33404dc218c72edb049eca532ae3b0ada6af71ffd79a12612529
+	source = pyidm-2021.1.7.tar.gz::https://github.com/pyIDM/PyIDM/archive/2021.1.7.tar.gz
+	b2sums = 0052bfdad452f9834daedfce8738396f928362d88e522d86c1a098ebea182c68511c7d71548a8e49cf6545365d221787f80ce73ca797eefb5e18b2864c9d8a8b
 
 pkgname = pyidm
 
