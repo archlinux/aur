@@ -1,8 +1,8 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_timesheet_cost
 _name=trytond_timesheet_cost
-pkgver=5.6.0
-_pkgdir=5.6
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
 pkgdesc="Tryton module to add cost on timesheet"
@@ -12,7 +12,8 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('01386a79e6d6424004623251dbeaaaad9194697f6c044de8a3374969590b019a')
+sha256sums=('9f61cb718e849c89f10fa1cdc301f7969160ae6b505c1bee561e6185ae44006d')
+b2sums=('6acd33e5fdb029578eee5b5e031bd5fe2b6c056b286934332b25e4d00de47c544a7d54692022c0e78f4359142186208d717121a8d5b7a9a97bb7d2286b5671f0')
 
 build() {
   cd $srcdir/$_name-$pkgver
