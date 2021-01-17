@@ -1,4 +1,4 @@
-# Maintainer Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
+# Maintainer: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
 
 # This script contains as well instructions for other Linux systems.
 # Have a look what is done in the build() and package() functions below.
@@ -17,6 +17,7 @@ arch=('i486' 'i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.wesnoth.org"
 license=('GPL')
 depends=('sdl' 'sdl_image' 'sdl_mixer' 'sdl_net' 'freetype2')
+makedepends=('git')
 # Package names on Debian / Ubuntu / Mint:
 # libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev gettext-base pkgconf autoconf automake make gcc g++ git
 options=('!emptydirs')
