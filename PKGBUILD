@@ -11,8 +11,9 @@ arch=('x86_64')
 url="https://www.alsa-project.org"
 license=('GPL2')
 depends=('glibc' 'pciutils' 'psmisc')
-makedepends=('alsa-lib' 'libsamplerate' 'ncurses')
-optdepends=('fftw: for alsabat')
+makedepends=('alsa-lib' 'ncurses')
+optdepends=('fftw: for alsabat'
+	    'libsamplerate: libsamplerate support')
 provides=(alsa-utils)
 conflicts=(alsa-utils)
 # we require /var/lib/alsa for state file
@@ -46,7 +47,7 @@ build() {
 
 package() {
   depends+=('libasound.so' 'libatopology.so' 'libformw.so' 'libmenuw.so'
-  'libncursesw.so' 'libpanelw.so' 'libsamplerate.so')
+  'libncursesw.so' 'libpanelw.so')
   cd alsa-utils
   make DESTDIR="${pkgdir}" install
   install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/alsa-utils"
