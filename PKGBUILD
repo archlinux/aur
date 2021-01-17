@@ -14,7 +14,7 @@ sha256sums=('e77e351c856f6594a17e583cded8bf75fe1bc4dd3ddd6babd2f7b24d83b98fba')
 package() {
   cp -a $srcdir/$pkgname-$pkgver/etc $pkgdir/etc
   mkdir -p $pkgdir/usr
-	cp -a $srcdir/$pkgname-$pkgver/usr/bin $pkgdir/usr/bin
+  cp -a $srcdir/$pkgname-$pkgver/usr/bin $pkgdir/usr/bin
   mkdir -p $pkgdir/usr/lib
-	cp -a $srcdir/$pkgname-$pkgver/usr/lib/i3-cheat $pkgdir/usr/lib/i3-cheat
+  cp -a $srcdir/$pkgname-$pkgver/usr/lib/i3-cheat $pkgdir/usr/lib/i3-cheat
 }
