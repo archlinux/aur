@@ -9,6 +9,8 @@ depends=('python')
 optdepends=('python-numpy: for array manipulation'
             'python-lz4: for compressed serialization')
 makedepends=('python-setuptools')
+conflicts=(python-joblib)
+provides=(python-joblib)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/joblib/joblib/archive/${pkgver}.tar.gz")
 sha256sums=('a7cd4dfc41ceab2354beada00793c360c114d25082b7b41f36e749eb3462c73a')
 

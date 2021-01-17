@@ -9,6 +9,8 @@ pkgbase = python-joblib1
 	depends = python
 	optdepends = python-numpy: for array manipulation
 	optdepends = python-lz4: for compressed serialization
+	provides = python-joblib
+	conflicts = python-joblib
 	source = python-joblib1-1.0.0.tar.gz::https://github.com/joblib/joblib/archive/1.0.0.tar.gz
 	sha256sums = a7cd4dfc41ceab2354beada00793c360c114d25082b7b41f36e749eb3462c73a
 
