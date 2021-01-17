@@ -1,0 +1,15 @@
+pkgbase = qrqma-git
+	pkgdesc = A C++ implementaion of Jinja templates
+	pkgver = v0.1
+	pkgrel = 1
+	url = https://github.com/nerdmaennchen/qrqma
+	arch = any
+	license = ISC
+	makedepends = git
+	makedepends = cmake
+	provides = qrqma
+	source = git+https://github.com/nerdmaennchen/qrqma.git
+	sha256sums = SKIP
+
+pkgname = qrqma-git
+
