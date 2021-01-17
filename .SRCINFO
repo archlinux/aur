@@ -1,0 +1,15 @@
+pkgbase = python-trytond_sale_supply_production
+	pkgdesc = Tryton module to supply sales from production
+	pkgver = 5.8.1
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_supply_production/trytond_sale_supply_production-5.8.1.tar.gz
+	sha256sums = 2a5f8523b9947cc96b0da70b14c0c2e09c09b4fd7c6ce209bd83e4ed5e79d9c6
+	b2sums = 014359d3d4a5ccd709a3aebc59ef0723cda65a40073138e0280766d64096106e6810d9cb5203ea9ea33dd55e6326df87f8370f4b22de92231c46f550b755b5b4
+
+pkgname = python-trytond_sale_supply_production
+
