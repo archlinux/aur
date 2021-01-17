@@ -1,6 +1,6 @@
 pkgbase = pi-hole-ftl
 	pkgdesc = The Pi-hole FTL engine
-	pkgver = 5.3.4
+	pkgver = 5.4
 	pkgrel = 1
 	url = https://github.com/pi-hole/FTL
 	install = pi-hole-ftl.install
@@ -20,20 +20,20 @@ pkgbase = pi-hole-ftl
 	conflicts = dnsmasq
 	backup = etc/pihole/pihole-FTL.conf
 	backup = etc/pihole/pihole-FTL.db
-	source = pi-hole-ftl-v5.3.4.tar.gz::https://github.com/pi-hole/FTL/archive/v5.3.4.tar.gz
-	source = arch-ftl-5.3.4-350128744.patch::https://raw.githubusercontent.com/max72bra/pi-hole-ftl-archlinux-customization/master/arch-ftl-5.3.4.patch
+	source = pi-hole-ftl-v5.4.tar.gz::https://github.com/pi-hole/FTL/archive/v5.4.tar.gz
+	source = arch-ftl-5.4-947885399.patch::https://raw.githubusercontent.com/max72bra/pi-hole-ftl-archlinux-customization/master/arch-ftl-5.4.patch
 	source = pi-hole-ftl.tmpfile
 	source = pi-hole-ftl.sysuser
 	source = pi-hole-ftl.service
 	source = pi-hole-ftl.db
 	source = pi-hole-ftl.conf
-	md5sums = 844de46f8cfc0280283224ad71d917f6
-	md5sums = 844e71f755271158f809460cfe9c070e
-	md5sums = ca844c23699ba64777571253bc7ccb21
-	md5sums = 455c38b73491bf641e422be3652698b7
-	md5sums = 5e135fd2729441f908d848a45b1ff289
-	md5sums = 0495c002b7d5dce303d451e4cd2fede5
-	md5sums = a9c8de83f02d36bfe96db57975984bbb
+	sha256sums = 7e342cfb7d689fb4a2d1b6938a717d904ea906d9688e0d148316ce7efa924ec2
+	sha256sums = abd6de66266b3b022298ceac59c49f65e2b888ae649811ec6dd54c88fa3c8419
+	sha256sums = 538d2f66e30eabeeb0ac6794ac388b96ddf1830d9e988a0aaa810cb17c5c69fc
+	sha256sums = 39ef7bfd672ce59440bbf89e812992adc4d40091bc8d70fa24bd586381979064
+	sha256sums = 3740a64750877c3fc49913d24d9d1c435f00803c8b87626a741d016d06799baa
+	sha256sums = 8beb120ac275f88c4b72bf2dde583f27f0c1e1fb9766c2d7c60285bd342867ed
+	sha256sums = bd4794a73bea22f3301cf6ab8d9029d8e671e6411a26493a2ffbdf462129268c
 
 pkgname = pi-hole-ftl
 
