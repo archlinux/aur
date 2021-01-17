@@ -1,8 +1,8 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_sale_amendment
 _name=trytond_sale_amendment
-pkgver=5.6.0
-_pkgdir=5.6
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
 pkgdesc="Tryton module to amend sales"
@@ -12,7 +12,8 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('c4a9560e0ffd295909fde5ab90bac2e8c45b41c46fe5f916a59789e0e2e6605c')
+sha256sums=('c156a5d934c4bb345482696f631c9d8e2a217786d1c5de2cd1770d901a92cdcd')
+b2sums=('452a56451a2981c28ab625fcdb7a8495c4b33a7e15159438ff969f405a62cc6b2ea1378c46e8408f1c7666b1a404c50a92b7547ca5fcc04ef114fea851df310d')
 
 build() {
   cd $srcdir/$_name-$pkgver
