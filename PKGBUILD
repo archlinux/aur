@@ -1,9 +1,10 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_analytic_account
 _name=trytond_analytic_account
-pkgver=5.2.0
-_pkgdir=5.2
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
+pkgbase=python-$_name
 pkgdesc="Tryton module for analytic accounting"
 arch=('any')
 url="http://www.tryton.org/"
@@ -11,7 +12,8 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('1b11b9bfceb0ccc0c5b70a77d5e7bf3a06a506f4121b3cc2fa67fb67a3e7621d')
+sha256sums=('bd745cec4e87ae0235bae7613aa10a142fb53d3243b157fb0bed44195c163683')
+b2sums=('c9d5299bc21204f253606181a6c4ebe638f64b2c0e64e4b93cfd61da7bb2e7938892e00aa1856c1ba4eff98056acf2352b42d240724eaacfe8459f671c7265bf')
 
 build() {
   cd $srcdir/$_name-$pkgver
