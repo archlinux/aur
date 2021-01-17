@@ -2,7 +2,7 @@
 
 pkgname=circuitjs1-web-bin
 pkgver=20201006
-pkgrel=1
+pkgrel=2
 pkgdesc="Falstad circuit simulator (CircuitJS1) - webapp"
 arch=('any')
 url="https://www.falstad.com/circuit/"
@@ -12,6 +12,7 @@ url="https://www.falstad.com/circuit/"
 license=('GPL2')
 
 depends=()
+provides=(circuitjs1-web)
 conflicts=(circuitjs1-web)
 source=(https://www.falstad.com/circuit/offline/circuitjs1-linux64.tgz)
 
