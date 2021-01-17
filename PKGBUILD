@@ -1,9 +1,10 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_commission
 _name=trytond_commission
-pkgver=5.2.0
-_pkgdir=5.2
+pkgver=5.8.2
+_pkgdir=5.8
 pkgrel=1
+pkgbase=python-$_name
 pkgdesc="Tryton module for commission"
 arch=('any')
 url="http://www.tryton.org/"
@@ -11,7 +12,8 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('0420ea109f01864e0a11fc54cdddacd07652718396c3a939ca4105a2d3601ca4')
+sha256sums=('adef4b413ba08d536f4d1e6ca5a84ca1cf69b6bbd7d5f42f59eb9c6f419b3e91')
+b2sums=('acdc57049a6c0db5c8e3b475aee87f7785b9d12a5fa8ea3a8efe8fbd8918b31479be688dcf75285b4fe25d9834c09030ee531fa84885699430f13980244e340c')
 
 build() {
   cd $srcdir/$_name-$pkgver
