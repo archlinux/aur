@@ -1,8 +1,8 @@
 # Maintainer: Alex Colburn <alcolbur@nmu.edu>
 pkgname=eclipse-java-bin
-pkgver=4.17
-_releasemonth="2020-09"
-pkgrel=2
+pkgver=4.18
+_releasemonth="2020-12"
+pkgrel=0
 pkgdesc="Highly extensible IDE"
 arch=('x86_64')
 url="https://www.eclipse.org"
@@ -11,10 +11,10 @@ depends=("java-environment>=11" "python" "libsecret")
 makedepends=('tar')
 provides=('eclipse-java')
 conflicts=('eclipse-java')
-source=("https://mirrors.xmission.com/eclipse/technology/epp/downloads/release/$_releasemonth/R/${pkgname%-bin}-$_releasemonth-R-linux-gtk-$CARCH.tar.gz"
+source=("https://eclipse.mirror.rafal.ca/technology/epp/downloads/release/$_releasemonth/R/${pkgname%-bin}-$_releasemonth-R-linux-gtk-$CARCH.tar.gz"
 			"eclipse.desktop"
 			"eclipse.png")
-sha512sums=('38b063a4df5a0ae6d22f82fb1c64281e462ef8b4de6e4cc970d47e89575c447376550ebc8063b8bcf2c6532ac7a276fe9d4c79f140846357c4218899f9d93bf3'
+sha512sums=('1d5aac59454d35175c6b388674d23de91f45d953141389d82b5557d46de92beb2b14396427bfab8f6b198ed58bed67094755d26d3d379c92733f2a74d51b02bd'
 			'eb3e245f27a0eb328bdf3dcc1258013d55cf24d4ec3864cdc0ad9c68995bfc1af44f05a5973368f115e9957359c9e50b4cefa2fa7014c36e499447c48769f505'
 			'7933c44f9e4d47aa89706e839fd5f1339e58454125cc8533ea4d7d391f677805ebcb937857ccea305f8829a2e8c6b38dc0447491ad0fbd26e55fcad6c782128f')
 
