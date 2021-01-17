@@ -2,7 +2,7 @@
 # Maintainer: flaviofearn <flavioislima@gmail.com>
 
 pkgname=heroic-games-launcher-bin
-_pkgver=v1.1.0
+_pkgver=v1.1.1
 pkgver=${_pkgver#v}
 pkgrel=1
 pkgdesc="HGL, a Native alternative Linux Launcher for Epic Games"
@@ -14,7 +14,7 @@ depends=(fuse2 gawk)
 _filename=heroic-${pkgver}.pacman
 source=("$url/releases/download/${_pkgver}/${_filename}")
 noextract=("${_filename}")
-md5sums=('cc4e4e27af9c27c55682fa86fe131f2d')
+md5sums=('4af80f3de4a336c9c1c42cc15dbef812')
 options=(!strip)
 
 package() {
