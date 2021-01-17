@@ -1,10 +1,10 @@
 # Maintainer: kusakata <shohei atmark kusakata period com>
 
 pkgname=aobook
-pkgver=1.0.4
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Aozora Bunko text viewer'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://azsky2.html.xdomain.jp/soft/aobook.html"
 license=('MIT')
 depends=('fontconfig' 'hicolor-icon-theme' 'libjpeg-turbo' 'libxext')
@@ -22,4 +22,4 @@ package() {
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-md5sums=('e81476f010c3dd1fe6be9c9969cbfc35')
+md5sums=('435c4eb3fd887468d63ca1252805df01')
