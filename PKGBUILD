@@ -3,7 +3,7 @@ pkgbase=boost1.69
 pkgname=('boost1.69-libs' 'boost1.69')
 pkgver=1.69.0
 _boostver=${pkgver//./_}
-pkgrel=8
+pkgrel=9
 pkgdesc='Free peer-reviewed portable C++ source libraries'
 url='https://www.boost.org/'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
@@ -92,6 +92,9 @@ package_boost1.69-libs() {
 
    install -Dm644 "${srcdir}/"boost_${_boostver}/LICENSE_1_0.txt \
       "${pkgdir}"/opt/boost1.69/share/licenses/boost-libs/LICENSE_1_0.txt
+
+   mkdir -p "${pkgdir}"/etc/ld.so.conf.d
+   echo "/opt/boost1.69/lib" >  "${pkgdir}"/etc/ld.so.conf.d/boost1.69.conf
 }
 
 # vim: ts=2 sw=2 et:
