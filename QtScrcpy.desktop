@@ -1,6 +1,6 @@
 [Desktop Entry] 
 Type=Application
-Version=1.4.3
+Version=1.4.5
 Name=QtScrcpy
 Comment=Android real-time display control software.
 Exec=QtScrcpy

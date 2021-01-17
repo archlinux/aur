@@ -1,7 +1,7 @@
 #Maintainer: Skykey <zcxzxlc@163.com>
 
 pkgname=('qtscrcpy-git')
-pkgver=1.4.3.r4.g92ec6c6
+pkgver=1.4.5.r0.gb5c5188
 pkgrel=1
 pkgdesc="Android real-time display control software."
 provides=("qt-scrcpy")
