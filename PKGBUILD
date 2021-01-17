@@ -1,7 +1,7 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=swapper
-pkgver=0.31
+pkgver=0.32
 pkgrel=1
 pkgdesc="Swap tiles to remove them"
 url='https://efanomars.com/games/swapper'
@@ -9,8 +9,8 @@ arch=('x86_64' 'aarch64')
 license=('GPL3')
 
 depends=(
-    'stmm-games>=0.31'
-    'stmm-input>=0.16'
+    'stmm-games>=0.32'
+    'stmm-input>=0.17'
     'gtkmm3')
 makedepends=('cmake' 'doxygen' 'graphviz' 'python')
 optdepends=()
@@ -19,8 +19,8 @@ optdepends=()
 #replaces=("swapper")
 #conflicts=("swapper")
 
-source=('https://efanomars.com/sources/swapper-0.31.tar.gz')
-sha256sums=('59eaee9cdea98310da008d98e1f8753b361c2450ffc562ed1c09d2dbf99ee87a')
+source=('https://efanomars.com/sources/swapper-0.32.tar.gz')
+sha256sums=('2c949f155bb6d2e0e7a5dd31a3f1f815505d58901486e4a837155505ef894f3c')
 
 build() {
   cd "${srcdir}/swapper"
