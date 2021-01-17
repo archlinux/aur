@@ -1,4 +1,3 @@
-
 # Maintainer: Vincent Grande <shoober420@gmail.com>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
@@ -10,7 +9,7 @@ arch=('x86_64')
 url="https://www.libsdl.org"
 license=('MIT')
 depends=('glibc' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor' 'libxxf86vm')
-makedepends=('alsa-lib' 'libxrandr' 'libxinerama' 'libxkbcommon' 'libxss' 'cmake' 'libxxf86vm' 'mercurial' 'ninja')
+makedepends=('alsa-lib' 'libxrandr' 'libxinerama' 'libxkbcommon' 'cmake' 'libxxf86vm' 'mercurial' 'ninja')
 optdepends=('alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver'
             'jack: JACK audio driver'
@@ -21,7 +20,8 @@ optdepends=('alsa-lib: ALSA audio driver'
             'wayland: wayland support'
             'wayland-protocols: wayland support'
             'mesa: open source graphics support'
-            'hidapi: modern controller support')
+            'hidapi: modern controller support'
+            'libxss: screensaver support')
 source=("hg+https://hg.libsdl.org/SDL#branch=default")
 provides=(sdl2)
 conflicts=(sdl2 sdl2-hg)
