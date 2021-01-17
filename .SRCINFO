@@ -1,6 +1,6 @@
 pkgbase = darktable-git
 	pkgdesc = A virtual lighttable and darkroom for photographers
-	pkgver = 3.3.0.r1655.gecd7e2cbf
+	pkgver = 3.5.0.r693.g2c8b69f01
 	pkgrel = 1
 	url = http://www.darktable.org/
 	install = darktable.install
