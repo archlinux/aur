@@ -2,7 +2,7 @@
 maintaner="Milkii Brewster <milkii on Freenode IRC>"
 pkgname=chowtapemodel.lv2-git
 pkgdesc="Physical modelling signal processing for analog tape recording."
-pkgver=r130.3f6967e
+pkgver=r165.7aebad0
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/jatinchowdhury18/AnalogTapeModel"
@@ -42,7 +42,9 @@ prepare() {
 }
 
 build() {
-	cd "$pkgname"/Plugin && bash build_linux.sh
+	cd "$pkgname"/Plugin
+  cmake -Bbuild
+  cmake --build build/ --config Release
 }
 
 package() {
