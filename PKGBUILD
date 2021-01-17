@@ -1,7 +1,7 @@
 # Maintainer: Thibaut Pérami <thibaut.perami@ens.fr>
 
 pkgname=magic_enum
-pkgver=0.7.0
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Header-only C++17 library, provides static reflection for enums, works with any enum type without any macro or boilerplate code."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/Neargye/magic_enum"
 license=('MIT')
 makedepends=('cmake' 'wget')
 source=("https://github.com/Neargye/magic_enum/archive/v${pkgver}.tar.gz")
-sha256sums=('4fe6627407a656d0d73879c0346b251ccdcfb718c37bef5410ba172c7c7d5f9a')
+sha256sums=('a77895ebc684f7a4dd2e4e06529b22e9ae694037f6dee0753d3ce0bbcd5b3e38')
 
 build() {
   cd "${pkgname}-${pkgver}"
