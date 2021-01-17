@@ -1,0 +1,13 @@
+pkgbase = thunderbird-extension-tbkeys
+	pkgdesc = Custom commands, functions, and keybindings for Thunderbird
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/wshanks/tbkeys
+	arch = any
+	license = MPL
+	depends = thunderbird>=68
+	source = tbkeys-2.1.2.xpi::https://github.com/wshanks/tbkeys/releases/download/v2.1.2/tbkeys.xpi
+	sha256sums = 3d2cceec290753b65089770b1a8d4e8d4a50b317dcbfde93015807ce935b47cb
+
+pkgname = thunderbird-extension-tbkeys
+
