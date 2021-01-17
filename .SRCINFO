@@ -1,7 +1,7 @@
-pkgbase = nvchecker
+pkgbase = nvchecker-1.7
 	pkgdesc = New version checker for software releases
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lilydjwg/nvchecker
 	arch = any
 	license = MIT
@@ -21,8 +21,10 @@ pkgbase = nvchecker
 	optdepends = git: for VCS sources
 	optdepends = mercurial: for VCS sources
 	optdepends = subversion: for VCS sources
-	source = nvchecker-1.7.tar.gz::https://github.com/lilydjwg/nvchecker/archive/v1.7/nvchecker-1.7.tar.gz
+	provides = nvchecker
+	conflicts = nvchecker
+	source = https://github.com/lilydjwg/nvchecker/archive/v1.7.tar.gz
 	sha512sums = 6243960747de33bd004bb3377109699f702bb64d65320e0c219f540546f33ace2d87be4eb2b18d988874eb98812176488fa5c98aec6f93cd218b8549b38482d0
 
-pkgname = nvchecker
+pkgname = nvchecker-1.7
 

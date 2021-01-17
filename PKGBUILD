@@ -1,13 +1,16 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
+# Maintainer: peeweep <peeweep at 0x0 dot ee>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Chih-Hsuan Yen <yan12125@archlinux.org>
 
-pkgname=nvchecker
+pkgname=nvchecker-1.7
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="New version checker for software releases"
 arch=('any')
 url="https://github.com/lilydjwg/nvchecker"
 license=('MIT')
+provides=('nvchecker')
+conflicts=('nvchecker')
 depends=('python' 'python-setuptools' 'python-structlog' 'python-tornado' 'python-pycurl')
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-httpbin' 'python-flaky' 'git' 'mercurial')
 optdepends=(
@@ -17,17 +20,12 @@ optdepends=(
   'mercurial: for VCS sources'
   'subversion: for VCS sources'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/lilydjwg/nvchecker/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+source=("https://github.com/lilydjwg/nvchecker/archive/v$pkgver.tar.gz")
 sha512sums=('6243960747de33bd004bb3377109699f702bb64d65320e0c219f540546f33ace2d87be4eb2b18d988874eb98812176488fa5c98aec6f93cd218b8549b38482d0')
 
 build() {
   cd nvchecker-$pkgver
   python setup.py build
-}
-
-check() {
-  cd nvchecker-$pkgver
-  pytest
 }
 
 package() {
