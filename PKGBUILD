@@ -1,6 +1,6 @@
 # Maintainer: laserK <echo 'Y29udGFjdEBrYXJzdGVucHVmYWhsLmRlCg==' | base64 -d>
 pkgname=stm32cubemx
-pkgver=6.1.0
+pkgver=6.1.1
 pkgrel=1
 epoch=
 pkgdesc="graphical software configuration tool for STM32 microcontrollers that allows generating C initialization code"
@@ -25,7 +25,7 @@ source=("https://sw-center.st.com/packs/resource/library/stm32cube_mx_v${pkgver/
  	"stm32cubemx.desktop"
  	"stm32cubemx.sh")
 noextract=()
-sha512sums=('f19dc54e89c1f0748fb5d83e4799554b7bd8d8a532146655f3a6d16efae416ae55477815d722635d5dbfe017c67bf3f280ee146c4aab5bc5dc98b905fd72f160'
+sha512sums=('7ba0c4606897f7ef6777264c2371e6ae7e2a935fac5a01f46b2a6635c6ae9f7234b37c863bd640d658a46155135ec8dbf3e4315ca7736218dc310a9241181d3c'
             'ad1897ea5234b712d726b5d3423f05f1c0c5a64e28354afe07dce7451563ae4492366cc252ca379b44793797be20011a66458431fd5453c18a7543ccb8df5397'
             '56bff32e35f8eb09ae4df94e4e885aaf9349c687ce9f4901ddd11c83b69a32b19d99ab8dbd90c6679e86e7213c4d41640e52ab0d80b8fc4640a1bc5df9a3af32'
             '9cc2dcb57e48e7039fb833c410e4638155fd14793c6daa7a00e1d1445162e7e26690c3303b6f052fff643123bc246be345da8624b18ee2805ddde75280512eec')
