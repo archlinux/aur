@@ -1,0 +1,18 @@
+pkgbase = archpxe
+	pkgdesc = About Quick setup of PXE server to load Arch Linux using an ethernet cable
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/BiteDasher/archpxe
+	arch = any
+	license = MIT
+	depends = bash
+	depends = coreutils
+	depends = grep
+	depends = dnsmasq
+	depends = darkhttpd
+	optdepends = curl: ISO download
+	source = archpxe::git+https://github.com/BiteDasher/archpxe.git
+	sha512sums = SKIP
+
+pkgname = archpxe
+
