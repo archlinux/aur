@@ -2,21 +2,43 @@
 
 _gemname=sshkit
 pkgname=ruby-$_gemname
-pkgver=1.11.2
+pkgver=1.21.1
 pkgrel=1
-pkgdesc='A toolkit for deploying code and assets to servers in a repeatable, testable, reliable way.'
+pkgdesc="Toolkit for deploying code and assets to servers"
 arch=(any)
-url='https://github.com/capistrano/sshkit'
-license=('MIT')
+url=https://github.com/capistrano/sshkit
+license=(MIT)
 depends=(ruby ruby-net-scp ruby-net-ssh)
+makedepends=(git rubygems ruby-rdoc)
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
-sha256sums=('610cebe87c1c016693e2d80bb5e5411961a0405358bdba6a6b3f11d682bfc125')
+source=(git+https://github.com/capistrano/sshkit.git?tag=v$pkgver)
+sha256sums=('SKIP')
+
+prepare() {
+  cd ${_gemname}
+  sed -i 's|~>|>=|g' ${_gemname}.gemspec
+}
+
+build() {
+  cd ${_gemname}
+  gem build ${_gemname}.gemspec
+}
 
 package() {
-  cd "$srcdir"
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  cd ${_gemname}
+  local _gemdir="$(gem env gemdir)"
 
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  gem install \
+    --ignore-dependencies \
+    --no-user-install \
+    -i "$pkgdir/$_gemdir" \
+    -n "$pkgdir/usr/bin" \
+    $_gemname-$pkgver.gem
+
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+
+  install -Dm0644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
+
+# vim: set ts=2 sw=2 et:
