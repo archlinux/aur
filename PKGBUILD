@@ -1,8 +1,8 @@
 # Maintainer: xiretza <xiretza+aur@gmail.com>
 pkgname=python-discord
 _pkgname=discord.py
-pkgver=1.5.1
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="An API wrapper for Discord written in Python"
 arch=(any)
 url="https://github.com/Rapptz/discord.py"
@@ -11,7 +11,7 @@ depends=('python' 'python-aiohttp')
 optdepends=('python-pynacl: Voice support'
             'libffi: Voice support')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Rapptz/discord.py/archive/v${pkgver}.tar.gz")
-sha512sums=('0d68b1d3747fc631a3dc8a2e573d3c88dd3dfb2f01c88a5c8f4b590a241318059bcdcc4cf423ce6f2fdd58a70235be81064b233858e8f51cf60c027de3a8eef6')
+sha512sums=('b0a1490aa1d3c2a6519a00305c954787ad8ecc241342fde95935f0b0608d12630df09775c405aa9608d660ce687ff1ee397fb7545bc4e0d0b34ce0a5996d0b6c')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
