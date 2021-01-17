@@ -1,18 +1,19 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_stock_inventory_location
 _name=trytond_stock_inventory_location
-pkgver=5.6.0
-_pkgdir=5.6
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
-pkgdesc=""
+pkgdesc="Tryton module to create inventories by locations"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('77661c5dae93cc1a53241275b4a24786dabac234aee61a4d9ce8ad60146f48ab')
+sha256sums=('2db7604ffd21ed8b8a206245f7553abfa1730707e80ebf966a33188e49155e5d')
+b2sums=('eb4d5cac791fa64427eb047e507cf7cd6c43c66b3a0e79473fd21ac40123c3ba8541ae9eb2923c8f2ebc3b30234dfa5445e6bcbe6737a3014b9d5f50fc4f841c')
 
 build() {
   cd $srcdir/$_name-$pkgver
