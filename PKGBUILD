@@ -2,9 +2,9 @@
 
 pkgname=tl866-updater-git
 _pkgname=TL866
-pkgver=r206.edd0f50
+pkgver=r215.bbc88d7
 pkgrel=1
-pkgdesc="Open source software for TL866 eprom programmer"
+pkgdesc="Open source software for Minipro TL866 eprom programmer"
 arch=('i686' 'x86_64')
 url="https://github.com/radiomanV/TL866"
 license=('GPL2')

@@ -1,5 +1,5 @@
 pkgbase = tl866-updater-git
-	pkgdesc = Open source software for TL866 eprom programmer
+	pkgdesc = Open source software for Minipro TL866 eprom programmer
 	pkgver = r206.edd0f50
 	pkgrel = 1
 	url = https://github.com/radiomanV/TL866
