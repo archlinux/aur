@@ -1,18 +1,19 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_purchase_request_quotation
 _name=trytond_purchase_request_quotation
-pkgver=5.6.0
-_pkgdir=5.6
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
-pkgdesc=""
+pkgdesc="Tryton module for purchase request quotation"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('7485943c5bf4b1153b333caa0defa6e83daefaaaf2dee2ac448b0bb62399d645')
+sha256sums=('a60aa8462383b5947c68d7d547bd8ee2d4a4b246c534787030acfaabb83dba3e')
+b2sums=('5770990edb8d1d10b2235a9c4dad17817a3ef2e74e2602a9589ddfe45f5551132e3b01a303b8ba33dcf1e56e7ad4a78572888ad864b19123bea658fb4782ad90')
 
 build() {
   cd $srcdir/$_name-$pkgver
