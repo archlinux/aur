@@ -3,11 +3,11 @@
 # Contributor: 網軍總司令
 
 pkgname=librime
-pkgver=1.6.1
-_octagramcommit=3664bc9d0426397541e6dcfb7c3c7d6aaad73b2e
-_luacommit=aeb1e9d76e704dd5472e70e7d3e2b25fcec93f23
-_charcodecommit=8f019bcec09d010b155cea111ae72f08e68f79ca
-pkgrel=3
+pkgver=1.7.0
+_octagramcommit=f92e083052b9983ee3cbddcda5ed60bb3c068e24
+_luacommit=d45a41af2f9d731e3c1516a191cc3160e3cb8377
+_charcodecommit=b569184772b12965e3ebe1dfd431026951fed81c
+pkgrel=1
 epoch=1
 pkgdesc="Rime input method engine"
 arch=('x86_64')
@@ -15,14 +15,14 @@ url="https://github.com/rime/librime"
 license=('GPL3')
 depends=('boost-libs' 'capnproto' 'opencc' 'yaml-cpp' 'leveldb' 'librime-data' 'lua' 'google-glog' 'marisa')
 makedepends=('cmake' 'boost' 'gtest' 'ninja')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/rime/librime/archive/$pkgver.tar.gz"
+source=("https://github.com/rime/librime/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         "https://github.com/lotem/librime-octagram/archive/$_octagramcommit/librime-octagram-$_octagramcommit.tar.gz"
         "https://github.com/hchunhui/librime-lua/archive/$_luacommit/librime-lua-$_luacommit.tar.gz"
         "https://github.com/rime/librime-charcode/archive/$_charcodecommit/librime-lua-$_charcodecommit.tar.gz")
-sha512sums=('944361e9459662bb97b97ce9e2651acf0beb368b3769d1b9576cf4e5c2779302cae470fa39f5bc262cabb6a0e8590bcb77d32ffc87d7385b9465869fe7d5bcb3'
-            'fb8c263c25a15986c83510e8d02db4702c247089dcd1cbfa05da50357765f3839cd1081177c4aefff1091558beb4516c1808669281d0635bbf071cfda7fca8e0'
-            '11646843db59c69fb6846bf7177edb52c4e77a5b920396b6e073c85bf4ec59ba94e3370fcece5f1f4d2792404b7eaac02a6289bf498b9453b730cf7517f37832'
-            'f247fed1ea6956c840a65932432e1b72e5abdb6fbb68603f0582adf1099d749226045d495ec71ca018cc5802897bc9c83629e7de21fddeca462e0ee1c9167840')
+sha512sums=('74d1d8a97c6b1affb84f7d92b3c37f3d88163acff1118099c1d6ddf72003b39733aec7ad533e759b80e4af1be1ff1276f41be14b902f09ba2bf2e5192cac2f72'
+            '737d1c58982d2f79a6e8b2548eefa1dddc036dd6e6d5436e7d6b4f3adfa2e9d8e45b29a13c1b8207a93cb77f3b5dbd9d18436f44d4e8040eb95b962de582b386'
+            '2a3d3b49d53066fe96dd008e8064718082225e6bf185574a25b8e98175d9936abcfa1fdc56e48f9c72a2deb46f8157d6132fd119ff8e0a3d52fbe9e2ea21386c'
+            '6670a2b089479cf4fb23012e61675065d483ab6123f6dcad136b226dbe361a16bc8f33caece2e139c8d89161a73a2126afe2bed3759996153de6e4888a95a430')
 
 prepare() {
   cd $pkgname-$pkgver/plugins
@@ -34,8 +34,13 @@ prepare() {
 build() {
   cd $pkgname-$pkgver
   export CXXFLAGS="$CXXFLAGS -DNDEBUG"
-  cmake . -GNinja -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_MERGED_PLUGINS=Off
+  cmake . -GNinja -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_MERGED_PLUGINS=Off -DENABLE_EXTERNAL_PLUGINS=On
   cmake --build build
+}
+
+check() {
+  cd $pkgname-$pkgver/build
+  ninja test
 }
 
 package() {
