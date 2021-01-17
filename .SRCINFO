@@ -1,0 +1,20 @@
+pkgbase = fluffychat-git
+	pkgdesc = Chat with your friends
+	pkgver = 0
+	pkgrel = 1
+	url = https://fluffychat.im/
+	arch = any
+	license = AGPL3
+	makedepends = clang
+	makedepends = ninja
+	makedepends = flutter-git
+	makedepends = cmake
+	makedepends = git
+	optdepends = pantalaimon: used for E2E encryption
+	provides = fluffychat
+	conflicts = fluffychat
+	source = git+https://gitlab.com/famedly/fluffychat.git
+	sha256sums = SKIP
+
+pkgname = fluffychat-git
+
