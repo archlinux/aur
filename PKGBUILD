@@ -37,7 +37,7 @@ noextract=()
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  # patch -p 1 < "${srcdir}/isbnlib-3.10-fix.patch"
+  patch -p 1 < "${srcdir}/isbnlib-3.10-fix.patch"
 }
 
 build() {
