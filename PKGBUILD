@@ -1,0 +1,40 @@
+#
+# PKGBUILD for minipro (stable)
+#
+# Maintainer: uffe _.at._ uffe _.dot._ org
+#
+
+pkgname=minipro
+pkgver=0.5
+
+pkg_name_ver="${pkgname}-${pkgver}"
+
+pkgrel=1
+pkgdesc="Open source programming utility for autoelectric.cn Minipro TL866"
+url="https://gitlab.com/DavidGriffith/minipro"
+arch=("i686" "x86_64")
+license=("GPL")
+depends=("libusb" "srecord")
+makedepends=("git")
+source=(${pkgname}::https://gitlab.com/DavidGriffith/minipro/-/archive/${pkgver}/${pkg_name_ver}.tar.gz)
+conflicts=("minipro")
+provides=("minipro")
+md5sums=("601df72a153e47dd452bc20c32acd275")
+
+
+build()
+{
+  cd "${srcdir}/${pkg_name_ver}"
+  make PREFIX="/usr"
+}
+
+package()
+{
+  cd "${srcdir}/${pkg_name_ver}"
+  make DESTDIR="${pkgdir}" PREFIX="/usr" COMPLETIONS_DIR="/usr/share/bash-completion/completions" install
+}
+
+# vim: ts=2 sw=2 et:
+#
+# EOF
+#

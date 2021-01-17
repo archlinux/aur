@@ -1,0 +1,18 @@
+pkgbase = minipro
+	pkgdesc = Open source programming utility for autoelectric.cn Minipro TL866
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://gitlab.com/DavidGriffith/minipro
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libusb
+	depends = srecord
+	provides = minipro
+	conflicts = minipro
+	source = minipro::https://gitlab.com/DavidGriffith/minipro/-/archive/0.5/minipro-0.5.tar.gz
+	md5sums = 601df72a153e47dd452bc20c32acd275
+
+pkgname = minipro
+
