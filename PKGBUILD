@@ -1,6 +1,6 @@
 # Maintainer: Johannes Willem (Hans) Fernhout <hfern@fernhout.info>
 pkgname="krapplet"
-pkgver="0.1.0"
+pkgver="0.2.0"
 pkgrel=1
 pkgdesc="Password manager based on gnome-keyring"
 arch=("any")
@@ -9,8 +9,7 @@ license=("BSD")
 depends=("python-gobject" "gtk3" "python-secretstorage")
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=("24b5fc5a6e5b38524836b7f34b90ee129c814b698ba90e46cd184dad6e776f37")
-
+sha256sums=("853efd6be3e642aa4c97b492f2dd3956b758c82266636ebab73bc80e9ee4157b")
 build() {
     cd  "${pkgname}-${pkgver}"
     python setup.py build
