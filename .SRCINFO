@@ -1,7 +1,7 @@
 pkgbase = courier-mta
 	pkgdesc = IMAP(s)/POP3(s) and SMTP Server with ML-manager, webmail and webconfig
 	pkgver = 1.0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = http://courier-mta.org
 	install = courier-mta.install
 	arch = i686
@@ -21,6 +21,7 @@ pkgbase = courier-mta
 	depends = mime-types
 	depends = ca-certificates
 	depends = libidn
+	depends = wget
 	optdepends = libldap
 	provides = smtp-server
 	provides = smtp-forwarder
