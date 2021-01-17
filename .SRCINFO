@@ -1,16 +1,14 @@
 pkgbase = python-cppheaderparser
 	pkgdesc = Parse C++ header files and generate a data structure representing the class
 	pkgver = 2.7.4
-	pkgrel = 2
+	pkgrel = 4
 	url = http://senexcanis.com/open-source/cppheaderparser
 	arch = any
-	license = custom
+	license = BSD
 	makedepends = python-setuptools
 	depends = python-ply
 	source = https://pypi.org/packages/source/C/CppHeaderParser/CppHeaderParser-2.7.4.tar.gz
-	source = https://bitbucket.org/senex/cppheaderparser/raw/6613bc9718009a3bd90b9de2f64e0e94eec5afcc/LICENSE.txt
 	sha256sums = 382b30416d95b0a5e8502b214810dcac2a56432917e2651447d3abe253e3cc42
-	sha256sums = eb7b784bb4d031e970db11186fdbd3833b327d77d0250687daffd18b4900693d
 
 pkgname = python-cppheaderparser
 
