@@ -1,14 +1,14 @@
 pkgbase = i3-cheat
 	pkgdesc = cheat sheet for i3wm
-	pkgver = 2021.01.01
+	pkgver = 2021.01.17
 	pkgrel = 1
-	url = https://github.com/TheCynicalTeam/i3-cheat
+	url = https://github.com/TheCynicalTeam/wm-cheat
 	arch = any
 	license = CC BY-NC-SA 4.0
 	depends = gtk3
 	depends = i3-wm
-	source = i3-cheat-2021.01.01.tar.gz::https://github.com/TheCynicalTeam/i3-cheat/archive/2021.01.01.tar.gz
-	sha256sums = e77e351c856f6594a17e583cded8bf75fe1bc4dd3ddd6babd2f7b24d83b98fba
+	source = wm-cheat-2021.01.17.tar.gz::https://github.com/TheCynicalTeam/wm-cheat/archive/2021.01.17.tar.gz
+	sha256sums = 3d37b3d7b672dba63ca581e80f64eca4c91399be569d551b11ae1b90e0aee82d
 
 pkgname = i3-cheat
 
