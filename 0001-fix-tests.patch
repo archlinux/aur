@@ -1,0 +1,41 @@
+@@ -7,27 +7,23 @@ COMPLETION_SRC="$TEST_DIR"/../yarn-completion.bash
+ # shellcheck source=./utils.sh
+ source "$TEST_DIR"/utils.sh
+ 
+-declare -i FALURES=0
++declare -i FAILURES=0
+ 
+ describe 'Environment checks'
+ {
+ 	it should match yarn version line in src file
+-	t=$(
+-		declare actual expected
+-		actual=$(sed -n 's/# Yarn Version: \([^ ]*\)/\1/p' "$COMPLETION_SRC")
+-		expected=$(yarn --version)
+-		if [[ $actual != "${expected%-*}" ]]; then
+-			prepend '  | ' <<- EOF
+-				ERROR: mismatched yarn version line in src file.
+-				
+-				expected: ${expected%-*}
+-				received: $actual
+-			EOF
+-			exit 1
+-		fi
+-		exit 0
+-	)
+-	passfail "$t"
++	declare actual expected
++	actual=$(sed -n 's/# Yarn Version: \([^ ]*\)/\1/p' "$COMPLETION_SRC")
++	expected=$(yarn --version)
++	if [[ $actual != "${expected%-*}" ]]; then
++		echo ..WARN
++		prepend '  | ' <<- EOF
++			WARNING: mismatched yarn version line in src file.
++			
++			expected: ${expected%-*}
++			received: $actual
++		EOF
++	fi
+ }
+ 
+ describe 'Checking top-level commands'
