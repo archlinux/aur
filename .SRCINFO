@@ -1,15 +1,15 @@
 pkgbase = speedread-git
-	pkgdesc = A simple terminal-based open source Spritz-alike.
-	pkgver = r26.6d1c5eb
+	pkgdesc = A simple terminal-based open source Spritz-alike
+	pkgver = r38.93acfd6
 	pkgrel = 1
 	url = https://github.com/pasky/speedread
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = git
+	depends = perl
 	provides = speedread
 	conflicts = speedread
-	source = git://github.com/pasky/speedread.git
+	source = git+https://github.com/pasky/speedread.git
 	md5sums = SKIP
 
 pkgname = speedread-git

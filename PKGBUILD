@@ -1,25 +1,29 @@
-# Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
+# Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=speedread-git
-pkgver=r26.6d1c5eb
+pkgver=r38.93acfd6
 pkgrel=1
-pkgdesc="A simple terminal-based open source Spritz-alike."
-arch=('i686' 'x86_64')
-url="https://github.com/pasky/speedread"
-license=('MIT')
-makedepends=('git')
-provides=('speedread')
-conflicts=('speedread')
-source=('git://github.com/pasky/speedread.git')
+pkgdesc="A simple terminal-based open source Spritz-alike"
+arch=(any)
+url=https://github.com/pasky/speedread
+license=(MIT)
+depends=(perl)
+makedepends=(git)
+provides=(speedread)
+conflicts=(speedread)
+source=(git+https://github.com/pasky/speedread.git)
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/speedread"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd speedread
+  printf "r%s.%s" "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
 
-package(){
-  cd "$srcdir/speedread"
-  install -Dm0755 speedread "$pkgdir"/usr/bin/speedread
-  install -Dm0644 LICENCE "$pkgdir"/usr/share/licenses/speedread/LICENSE
+package() {
+  cd speedread
+  install -Dm0755 speedread "$pkgdir/usr/bin/speedread"
+  install -Dm0644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# vim: set ts=2 sw=2 et:
