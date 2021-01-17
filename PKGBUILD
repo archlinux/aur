@@ -1,25 +1,26 @@
 # Maintainer: davedatum <ask at davedatum dot com>
 
 pkgname=cabal-desktop-git
-pkgver=4.0.0.r0.g9efb32b
+pkgver=6.0.6.r0.gbdfa839
 pkgrel=1
 pkgdesc="Desktop client for Cabal, the p2p/decentralized/local-first chat platform."
 arch=("x86_64")
 url="https://github.com/cabal-club/cabal-desktop"
 license=("AGPL3")
-depends=("electron5")
+depends=("electron")
 makedepends=("git" "npm" "libicns" "imagemagick")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 install=${pkgname}.install
-source=("${pkgname}::git+$url.git#tag=v4.0.0"
+source=("${pkgname}::git+$url.git#tag=v6.0.6"
 		"${pkgname}.sh"
 		"${pkgname}.desktop"
 		"${pkgname}.install")
 md5sums=('SKIP'
-         'a64677d2e3fc1a39ec60f6d2a3addef2'
+				 'e2b47a95567f38d7559a132fb5d8ab11'
          '8448a411c5cf2621959f7d33ce2110fb'
-         'bbbc6b7a1102ca32c9ac39b47d7742de')
+				 'bbbc6b7a1102ca32c9ac39b47d7742de'
+)
 
 prepare() {
     sed -i -e '/"scripts": {/a "linux": "npm run build && electron-rebuild -f -w sodium-native && electron-builder --dir ",' \
@@ -39,7 +40,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${pkgname}"
-	npm install && npm run linux
+	npm install --legacy-peer-deps && npm run linux
 }
 
 package() {
