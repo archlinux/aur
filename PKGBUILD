@@ -1,7 +1,7 @@
 # Maintainer: Francisco Lopes <francisco+interception@nosubstance.me>
 pkgname=interception-xswitch
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='xswitch: an Interception Tools tool to redirect stdin to a muxer if a X window matches'
 arch=('x86_64')
 license=('MIT')
@@ -21,4 +21,10 @@ package() {
     cd ${srcdir}/xswitch-v${pkgver}-*/build
 
     make DESTDIR="$pkgdir/" install
+
+    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -m 644 ../LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}"
+
+    mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
+    install -m 644 ../README.md "${pkgdir}/usr/share/doc/${pkgname}"
 }
