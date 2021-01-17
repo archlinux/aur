@@ -8,9 +8,9 @@
 
 pkgname=logisim-evolution-bin
 _name=logisim-evolution
-pkgver=3.3.4
-pkgrel=2
-pkgdesc='An educational tool for designing and simulating digital logic circuits'
+pkgver=3.4.1
+pkgrel=1
+pkgdesc='An educational tool for designing and simulating digital logic circuits (binary version)'
 arch=('any')
 url="https://github.com/reds-heig/logisim-evolution"
 license=('GPL3')
