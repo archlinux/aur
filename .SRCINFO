@@ -1,0 +1,15 @@
+pkgbase = simplyfile-git
+	pkgdesc = C++ wrappers around linux file descriptors
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/gottliebtfreitag/simplyfile
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	provides = simplyfile
+	source = git+https://github.com/gottliebtfreitag/simplyfile.git
+	sha256sums = SKIP
+
+pkgname = simplyfile-git
+
