@@ -1,4 +1,5 @@
 # Maintainer: KillerBean <killerbean at gmail.com>
+# Contributor: Samuel Kogler <firstname.lastname at gmail.com>
 
 _gui=true
 _gitname=simc
