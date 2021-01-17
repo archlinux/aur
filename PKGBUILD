@@ -1,18 +1,19 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_stock_supply_production
 _name=trytond_stock_supply_production
-pkgver=5.6.0
-_pkgdir=5.6
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
-pkgdesc=""
+pkgdesc="Tryton module for stock supply of production"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('ce285e9dd28ba9505e157c8e3d229b12501ad1ccf8ee5b0b37319f245119e716')
+sha256sums=('3438f918bb27a0c7e7f2c7995d3d49a71625bd33fd555291238c6fe7bb22251c')
+b2sums=('7a15d9a0c41aec28f9f3eb196bef32874abc15f016651ee542a2e37bcb0e033ae59efd4fe203dcb61f989d76e734607736d7bdddac007b577c23025c6b3da9c1')
 
 build() {
   cd $srcdir/$_name-$pkgver
