@@ -23,7 +23,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 pkgver=8.0.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('PHP')
 url='https://www.php.net/'
@@ -188,7 +188,7 @@ check() {
 
 package_php80() {
 	pkgdesc='A general-purpose scripting language that is especially suited to web development'
-	depends=('libxml2' 'curl' 'libzip' 'pcre2' 'argon2')
+	depends=('libxml2' 'hspell' 'nuspell' 'libvoikko' 'curl' 'libzip' 'pcre2' 'argon2')
 	replaces=('php80-ldap')
 	conflicts=('php80-ldap')
 	provides=("php80-ldap=${pkgver}" "php80")

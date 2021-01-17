@@ -1,6 +1,6 @@
 pkgbase = php80
 	pkgver = 8.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.php.net/
 	arch = x86_64
 	license = PHP
@@ -52,6 +52,9 @@ pkgbase = php80
 pkgname = php80
 	pkgdesc = A general-purpose scripting language that is especially suited to web development
 	depends = libxml2
+	depends = hspell
+	depends = nuspell
+	depends = libvoikko
 	depends = curl
 	depends = libzip
 	depends = pcre2
