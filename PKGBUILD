@@ -2,24 +2,21 @@
 
 _gemname=rubocop-ast
 pkgname=ruby-${_gemname}
-pkgver=0.7.1
+pkgver=1.4.0
 pkgrel=1
-pkgdesc="RuboCop's Node and NodePattern classes."
-arch=('any')
-depends=(
-  ruby
-  ruby-parser
-)
+pkgdesc="RuboCop's Node and NodePattern classes"
+arch=(any)
+depends=(ruby ruby-parser)
 makedepends=(rubygems ruby-rdoc)
-url="https://rubocop.readthedocs.io"
+url=https://github.com/rubocop-hq/rubocop-ast
 noextract=($_gemname-$pkgver.gem)
-license=('MIT')
+license=(MIT)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha256sums=('e4d04cca95f5e023fec1c3c03e3fad048209803fbb8413c0031631aec97f3089')
+sha256sums=('92e50baf1e848d9fd437a7c1c1c612bd01697d29f79423397b325f754cb96ee3')
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  local _gemdir="$(gem env gemdir)"
 
   gem install \
     --ignore-dependencies \
@@ -33,3 +30,5 @@ package() {
   install -Dm0644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# vim: set ts=2 sw=2 et:
