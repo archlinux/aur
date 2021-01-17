@@ -4,7 +4,7 @@
 
 pkgname='therion'
 pkgver='5.5.6'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Cave surveying: processes survey data and generates maps or 3D models of caves"
 arch=('x86_64' 'i686')
 url="http://therion.speleo.sk"
@@ -23,7 +23,7 @@ depends=(
 	'tk'
 	'tkimg'
 	'vtk' 
-	'wxgtk' 
+	'wxgtk3'
 	'zlib'
 )
 
@@ -56,6 +56,8 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}"
  
+  export WX_CONFIG="wx-config-gtk3"
+
   # avoid parallel-execution errors
   make version thchencdata.h thmpost.h
   make therion
