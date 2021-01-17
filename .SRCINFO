@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-control-blur-effect-on-lock-screen-git
+	pkgdesc = Control the GNOME lock screen's blur sigma and brightness
+	pkgver = r3.748b95e
+	pkgrel = 1
+	url = https://github.com/PRATAP-KUMAR/Control_Blur_Effect_On_Lock_Screen
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell>=3.36.0
+	depends = gnome-tweaks
+	provides = gnome-shell-extension-control-blur-effect-on-lock-screen
+	source = gnome-shell-extension-control-blur-effect-on-lock-screen-git::git+https://github.com/PRATAP-KUMAR/Control_Blur_Effect_On_Lock_Screen
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-control-blur-effect-on-lock-screen-git
+
