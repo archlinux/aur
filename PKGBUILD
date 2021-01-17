@@ -50,6 +50,7 @@ build() {
   # CFLAG & CXXFLAGS Environment variables whose values contain a space are
   # problematic, which means in particular that one can only set one additional
   # compiler flag! (one can add the values directly in configure.ac though)
+  unset CFLAGS CXXFLAGS
 
   export CC=gcc-4.4
   export CXX=g++-4.4
