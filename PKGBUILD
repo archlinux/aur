@@ -1,8 +1,8 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_project_plan
 _name=trytond_project_plan
-pkgver=5.6.0
-_pkgdir=5.6
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
 pkgdesc="Tryton module to add planning capabilities on projects"
@@ -12,7 +12,8 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('975bd12e044bc62ffe421d577cd8cca4c77e13a216d33b7ab9cebcaa2a6335b5')
+sha256sums=('7f5144ea46872f83db68a1fbd368ef5fa58b463c6c591be7db83bcc1f5268231')
+b2sums=('2a09255e78a5e3d48f7000532d378cb428576d14a9175ed5245f684b1fcc58010f58bd06d9863b4b746ee8d7e89711d785237542914ec14e602cc1e707da4701')
 
 build() {
   cd $srcdir/$_name-$pkgver
