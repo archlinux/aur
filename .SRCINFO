@@ -12,6 +12,7 @@ pkgbase = wesnoth-1.0
 	arch = armv7h
 	arch = aarch64
 	license = GPL
+	makedepends = git
 	depends = sdl
 	depends = sdl_image
 	depends = sdl_mixer
