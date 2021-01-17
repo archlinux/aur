@@ -1,8 +1,8 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_notification_email
 _name=trytond_notification_email
-pkgver=5.6.0
-_pkgdir=5.6
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
 pkgdesc="Tryton module for sending email notifications"
@@ -12,7 +12,8 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('9874f354bfe6b0b0b3bf5caff92b56db72b55a388a074338b5554b250b500c4f')
+sha256sums=('aeb20ecdabec98ae2a1b96e34d3acd8edb304eda07c59b8193cbcef108231be8')
+b2sums=('dba002c9747df73ca6ec20cba0e3c49d4b42142ebd42764f8dc703fe2df93643d5fd6d2ea135145c54a237897c06c0e8af29ff607b7505126e1ca08f626bba12')
 
 build() {
   cd $srcdir/$_name-$pkgver
