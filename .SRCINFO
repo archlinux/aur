@@ -1,0 +1,21 @@
+pkgbase = beef-cerberus-git
+	pkgdesc = Herramienta para automatizar BeEF fuera de LAN!
+	pkgver = 1.0_beta
+	pkgrel = 1
+	url = https://github.com/tony23x/beef-for-cerberus
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = curl
+	depends = php
+	depends = python3
+	depends = wget
+	depends = openssh
+	depends = unzip
+	depends = ngrok
+	optdepends = BeEF: Cerberus es la implementación para este
+	source = git+https://github.com/tony23x/beef-for-cerberus.git
+	md5sums = SKIP
+
+pkgname = beef-cerberus-git
+
