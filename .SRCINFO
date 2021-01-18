@@ -1,7 +1,7 @@
 pkgbase = seafile-server
 	pkgdesc = Seafile server core
 	pkgver = 8.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/haiwen/seafile-server
 	arch = i686
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = seafile-server
 	depends = libevent
 	depends = libevhtp-seafile
 	depends = libarchive
+	depends = libldap
 	conflicts = seafile
 	source = seafile-server-8.0.2.tar.gz::https://github.com/haiwen/seafile-server/archive/v8.0.2-server.tar.gz
 	source = fix_seafile-controller_paths.diff
