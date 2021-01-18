@@ -17,7 +17,7 @@ source=("git+https://github.com/podonoghue/usbdm-eclipse-makefiles-build.git"
         "undebian.patch"
         "60-usbdm.rules")
 sha256sums=('SKIP'
-            '0cedd9a6fcd1abdbfe3df8a2237c152f4c32ffb9c4de191b73ffae1c2895ffa5'
+            '69407963c3aa12cdee47e100c64a3de76e2c182b7e33a3e486448a2581710457'
             '88eaab73a1020ac84d4979a4f70f122214b0042d167942a95bddd0560f0e3aa8')
 
 pkgver() {
