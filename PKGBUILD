@@ -2,7 +2,7 @@
 
 pkgname=vimiv-qt-git
 pkgrel=1
-pkgver=r1732.3092e8f
+pkgver=r2066.41d9382d
 pkgdesc='An image viewer with vim-like keybindings'
 arch=('any')
 url='https://github.com/karlch/vimiv-qt'
@@ -11,8 +11,9 @@ depends=('python-pyqt5')
 makedepends=('git' 'python-setuptools')
 optdepends=(
     'qt5-svg: for svg support'
-    'python-piexif: for exif support'
     'qt5-imageformats: for additional image formats'
+    'python-exiv2: for exif support'
+    'python-piexif: alternative for exif support'
 )
 conflicts=('vimiv' 'vimiv-git' 'vimiv-qt')
 provides=('vimiv')
