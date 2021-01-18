@@ -1,6 +1,6 @@
 # Maintainer: erdii <me at erdii dot engineering>
 pkgname=aws2-wrap
-pkgver=1.1.1
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Simple script to export current AWS SSO credentials or run a sub-process with them"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 
-sha256sums=('d184e77e269d5f3b21d2e57a2d6e1c6217d53d18fd92e884e11d97aaab4d5136')
+sha256sums=('483a0e46c5d2417d2c7d07d1076823465d0e4388127c2e1c4f345320ffc7d6eb')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
