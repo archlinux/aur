@@ -1,0 +1,20 @@
+pkgbase = kime-git
+	pkgdesc = Korean IME
+	pkgver = 0.5.0.209.g95afb0d
+	pkgrel = 1
+	url = https://github.com/Riey/kime
+	arch = any
+	license = GPL3
+	makedepends = cargo
+	depends = gtk3
+	depends = cairo
+	depends = libxkbcommon
+	depends = libxcb
+	depends = pango
+	provides = kime
+	conflicts = kime
+	source = kime-git::git+https://github.com/Riey/kime
+	sha512sums = SKIP
+
+pkgname = kime-git
+
