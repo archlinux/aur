@@ -1,14 +1,14 @@
 pkgbase = rainloop
 	pkgdesc = Simple, modern & fast web-based email client
-	pkgver = 1.14.0
+	pkgver = 1.15.0
 	pkgrel = 1
 	url = https://www.rainloop.net
 	arch = any
 	license = AGPL
 	depends = php
-	source = https://github.com/RainLoop/rainloop-webmail/releases/download/v1.14.0/rainloop-1.14.0.zip
-	sha256sums = 906dcc7d233b64083ddd3b0665c7271408c331c9a97f94fc710081c82a79c124
-	sha512sums = effc8de581252081d4934ef2087c5a9a26c58757fd55bb8cd98f43367779ac21215689ad8b6a32d321afb3ef8e53c2e49b9cbb04495819723fedcfa8752ebb7c
+	source = https://github.com/RainLoop/rainloop-webmail/releases/download/v1.15.0/rainloop-1.15.0.zip
+	sha256sums = d18f4def23bf9eed2518b6f5332098410ee33ec70887c6dc50fb5fc058e941e6
+	sha512sums = a45549c043a8467695a4634ac0e8070755ae1b68a1b1ec9f678ab2086d688f08e79f720e439f6cf0b549ce0495b0318415f857fdf0231748d829cb5bc1703c98
 
 pkgname = rainloop
 
