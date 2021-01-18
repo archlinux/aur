@@ -3,14 +3,14 @@
 # Contributor: Bailey Fox <bfox200012@gmail.com>
 
 pkgname=meanalyzer-git
-pkgver=1.135.0.r196.r0.g0d77851
+pkgver=1.185.0.r227.r0.g8d9f6aa
 pkgrel=1
 pkgdesc='Intel Management Engine firmware analysis tool'
 arch=('any')
 url='https://github.com/platomav/MEAnalyzer'
 _branch='master'
 license=('GPL3')
-depends=('python-colorama' 'python-crccheck' 'python-pltable-git')
+depends=('python-colorama' 'python-crccheck' 'python-pltable')
 makedepends=('dos2unix' 'git')
 source=("${pkgname}::git+${url}#branch=${_branch}"
         'change-mea_dir.patch'
