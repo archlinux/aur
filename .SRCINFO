@@ -1,7 +1,7 @@
 pkgbase = midiomatic
 	pkgdesc = A collection of MIDI filter, generator and processor LV2 and VST plugins
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SpotlightKid/midiomatic
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = midiomatic
 	groups = lv2-plugins
 	groups = vst-plugins
 	license = MIT
+	depends = gcc-libs
 	source = https://github.com/SpotlightKid/midiomatic/releases/download/v0.2.0/midiomatic-0.2.0.tar.gz
 	sha256sums = 06be064b2868a6ba140f7bc8d4ef7b7e675454dd7ef5b5c54e22e8ccf8e77628
 

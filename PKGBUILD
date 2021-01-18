@@ -3,12 +3,13 @@
 _pkgver="0.2.0"
 pkgname=midiomatic
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of MIDI filter, generator and processor LV2 and VST plugins"
 arch=('i686' 'x86_64')
 url="https://github.com/SpotlightKid/midiomatic"
 license=('MIT')
 groups=('pro-audio' 'lv2-plugins' 'vst-plugins')
+depends=('gcc-libs')
 source=(
     "https://github.com/SpotlightKid/midiomatic/releases/download/v${_pkgver}/${pkgname}-${_pkgver}.tar.gz"
 )
