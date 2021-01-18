@@ -1,4 +1,3 @@
-# Maintainer: Yizheng Hu <huyizheng@hotmail.com>
 # Contributer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributer: Guillaume ALAUX <guillaume@archlinux.org>
 
@@ -22,7 +21,7 @@ _ver=11.0.9.1
 _hgver=11_0_9_1
 _updatever=11
 _jbver1=1145
-_jbver2=63
+_jbver2=77
 pkgrel=1
 pkgver=${_ver}.b${_jbver1}.${_jbver2}
 _hg_tag=jb${_hgver}-b${_jbver2}
@@ -38,7 +37,7 @@ source=(https://github.com/JetBrains/JetBrainsRuntime/archive/${_hg_tag}.tar.gz
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
-sha256sums=('4fe1ef2d2efc9420c28669629790d08173f95fb32edc575a0d0af8dcaf40b84e'
+sha256sums=('0a2936873a8afd1a0de18740bc91b1ea494873c35e97574fa78211b590fee333'
             'ceb149421aeceb286143a9c9979f3b9ce9fc9b161dfda1e20d41352c5e4741c4'
             '915bd0722e897fd811bb0d77829528017ecdfd703880454bc690018ee54e44b6'
             '3f072ef4d1f59e1188d4b36ff83378c67b9f77db532b4f5cbaeb57cd37620f07'
