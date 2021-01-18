@@ -1,14 +1,15 @@
 pkgbase = python-trytond_currency
 	pkgdesc = Tryton module with currencies
-	pkgver = 5.6.0
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_currency/trytond_currency-5.6.0.tar.gz
-	sha256sums = c8d487cdb32474da1485fa6b61e82bdb4819b7722947b78b9f573ab56eb7def4
+	source = https://files.pythonhosted.org/packages/source/t/trytond_currency/trytond_currency-5.8.1.tar.gz
+	sha256sums = bdd6038d4248f5d31f55c208948efa4576a2664e4686e1ced6d41e1a573cb72c
+	b2sums = d98fedf7d6ab3c7011a6c10fa80899233ca91954705ca446d5f45e22b410ad9359703a5f9130fbb6373739733de9a26061d716824a0d06a8bb8bf8d264b7c66c
 
 pkgname = python-trytond_currency
 
