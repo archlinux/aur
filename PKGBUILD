@@ -4,9 +4,9 @@ pkgdesc="ROS - visualization_msgs is a set of messages used by higher level pack
 url='https://wiki.ros.org/visualization_msgs'
 
 pkgname='ros-melodic-visualization-msgs'
-pkgver='1.12.7'
+pkgver='1.12.8'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -34,7 +34,7 @@ depends=(
 
 _dir="common_msgs-${pkgver}/visualization_msgs"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/common_msgs/archive/${pkgver}.tar.gz")
-sha256sums=('a9d8c7655d426afe8bc2b021e0bc8ce25dae70ca35b985a0ec0b8b5768722bd4')
+sha256sums=('d3c698e7c164e97d135ca341420f266b95f5c4ef995e8faf9a5362f44987718d')
 
 build() {
 	# Use ROS environment variables.
