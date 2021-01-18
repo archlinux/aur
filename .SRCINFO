@@ -7,11 +7,11 @@ pkgbase = tigercapture
 	license = GPLv3
 	depends = libcurl-compat
 	depends = qt5-base
-	makedepends = make
+	makedepends = makes
 	makedepends = cmake
 	makedepends = git
-	source = ${pkgname}-${pkgver}.tar.gz::https://github.com/Tigermouthbear/tigercapture/archive/v${pkgver}.tar.gz
-	sha1sums = ba4410aa47d244c16207ed0c543d3ee0b737b0bc
+    source = git://github.com/tigermouthbear/tigercapture.git
+	sha1sums = SKIP
 
 pkgname = tigercapture
 

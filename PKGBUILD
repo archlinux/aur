@@ -9,13 +9,13 @@ pkgdesc="A screen capturing and uploading util"
 arch=("x86_64")
 depends=("libcurl-compat" "qt5-base")
 makedepends=("make" "cmake" "git")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Tigermouthbear/tigercapture/archive/v${pkgver}.tar.gz")
-sha1sums=("ba4410aa47d244c16207ed0c543d3ee0b737b0bc")
+source=("git://github.com/tigermouthbear/tigercapture.git")
+sha1sums=("SKIP")
 
 prepare() {
     cd $srcdir/$pkgname-$pkgver
-    git submodule init
-    git submodule update
+    git checkout tags/v$pkgver
+    git submodule update --init
 }
 
 build() {
