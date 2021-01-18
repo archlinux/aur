@@ -9,7 +9,6 @@ pkgbase = lib32-libpulse-nosystemd-git
 	makedepends = lib32-glib2
 	makedepends = git
 	makedepends = meson
-	makedepends = libpulse
 	makedepends = lib32-tdb
 	makedepends = lib32-libltdl
 	depends = libpulse

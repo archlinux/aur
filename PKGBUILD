@@ -9,7 +9,7 @@ arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 license=(LGPL)
 depends=(libpulse lib32-{dbus,libasyncns,libcap,libxtst,libsm,libsndfile})
-makedepends=(lib32-{speexdsp,glib2} git meson libpulse lib32-tdb lib32-libltdl)
+makedepends=(lib32-{speexdsp,glib2} git meson lib32-tdb lib32-libltdl)
 optdepends=('lib32-alsa-plugins: ALSA support'
             'lib32-gtk3: gtk3 support')
 provides=(lib32-pulseaudio lib32-libpulse)
