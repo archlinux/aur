@@ -1,13 +1,15 @@
 pkgbase = python-trytond_stock_package_shipping_ups
-	pkgver = 5.6.0
+	pkgdesc = UPS connector for the Tryton application plateform
+	pkgver = 5.8.2
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_package_shipping_ups/trytond_stock_package_shipping_ups-5.6.0.tar.gz
-	sha256sums = 442790e6626ad36952772566a3d3959ee1ac2f8e230443e4dace1b77768b2560
+	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_package_shipping_ups/trytond_stock_package_shipping_ups-5.8.2.tar.gz
+	sha256sums = c7c0006bcae97cac1b6d014b1e2047799b44103bea28a9586536a84044439c53
+	b2sums = 0cbdb3277d5aed66e0fb453616cbc86fc2975c30898867537a2c40232e37b397a116e38c799db3fabff107f6fe2725fe4a3c7a8d503c99a6bd49717f9e9ce1e2
 
 pkgname = python-trytond_stock_package_shipping_ups
 
