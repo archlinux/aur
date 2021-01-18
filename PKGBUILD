@@ -1,16 +1,16 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='General-purpose library specifically developed for the WPE-flavored port of WebKit.'
 pkgname=libwpe-git
-pkgver=1.3.1.r17.g67ccb40
+pkgver=1.9.1.r0.g6458ea3
 pkgrel=1
 url=https://github.com/WebPlatformForEmbedded/libwpe
 arch=(x86_64 i686 aarch64 armv7l armv7h)
 groups=(wpe)
-makedepends=(cmake opengl-driver)
-provides=(libwpe)
+makedepends=(mesa git meson)
+provides=(libwpe libwpe-1.0.so)
 conflicts=(libwpe)
 replaces=(wpebackend-git)
-depends=(gcc-libs)
+depends=(gcc-libs libxkbcommon)
 license=(custom:BSD)
 source=("${pkgname}::git+${url}")
 sha256sums=(SKIP)
@@ -24,21 +24,16 @@ pkgver () {
 	)
 }
 
-prepare () {
-	mkdir -p _build
+build () {
+	arch-meson "${pkgname}" build
+	meson compile -C build
 }
 
-build () {
-	cd _build
-	cmake \
-		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
-		"../${pkgname}"
-	cmake --build .
+check () {
+	meson test -C build --print-errorlogs
 }
 
 package () {
-	DESTDIR="${pkgdir}" cmake --build _build --target install
+	DESTDIR="${pkgdir}" meson install -C build
 	install -Dm644 "${pkgname}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
