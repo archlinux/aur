@@ -13,13 +13,13 @@ source=("git://github.com/tigermouthbear/tigercapture.git")
 sha1sums=("SKIP")
 
 prepare() {
-    cd $srcdir/$pkgname-$pkgver
+    cd $srcdir/$pkgname
     git checkout tags/v$pkgver
     git submodule update --init
 }
 
 build() {
-	cd $srcdir/$pkgname-$pkgver
+	cd $srcdir/$pkgname
 	mkdir build
 	cd build
 	cmake \
@@ -33,6 +33,6 @@ build() {
 }
 
 package() {
-	cd $srcdir/$pkgname-$pkgver/build
+	cd $srcdir/$pkgname/build
 	make DESTDIR="$pkgdir" install
 }
