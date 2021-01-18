@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.10.7
+pkgver=5.10.8
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -33,7 +33,7 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_tag_commit=b816aed6e669f2d4a176e5a2f5df1ab3fe783019
+_arch_tag_commit=a0a47291449ab346e0dd209a2f23c82264c60d79
 _bmqversion=5.10-r2
 _bmq_patch="prjc_v${_bmqversion}.patch"
 _gcc_more_v='20201113'
@@ -42,27 +42,23 @@ source=(
   "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_tag_commit}/trunk/config"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=2c517031bd7c5d34a05980c656ce2b6c6fbf1f78"
-  "0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch::https://git.archlinux.org/linux.git/patch/?id=eeab2ccf0d788a6895b3b9a21c505d78ceec43e0"
-  "0003-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch::https://git.archlinux.org/linux.git/patch/?id=631f3ba6f0debde7efcadc90fb9abef10a271148"
-  "0004-btrfs-fix-deadlock-when-cloning-inline-extent-and-lo.patch::https://git.archlinux.org/linux.git/patch/?id=e763d7a19f256a8861ee2c1eedaaf42f603488d2"
-  "0005-btrfs-shrink-delalloc-pages-instead-of-full-inodes.patch::https://git.archlinux.org/linux.git/patch/?id=0397aa4e6205543d9b3da11794037e94f8735867"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=0a52657572d26b79e59fcea419d25b56605ee70e"
+  "0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch::https://git.archlinux.org/linux.git/patch/?id=a5e7a06605de0db23d1a5fe19aae1dc6147c05af"
+  "0003-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch::https://git.archlinux.org/linux.git/patch/?id=60461ad03cedc7b50774587f67ef1044c09ac8a0"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-b2sums=('c3a222cf56350a3778bd825ba8434d27266412ffe921429be189d51fa97ec66b6aaf336bfd67c20d44828e4b150afade9659b341e9c499f63d6dc01fc2a4fb03'
+b2sums=('1bea3293bb036639d5dd72aba9ca078e1cf94c3752d48abd6462c65038ca5808ee976919623ccb64356756b2cc766a014e57483e8e1418a089236522a0e0a56e'
         'SKIP'
         '37df0c9fc2214da9e94f0fb38ddc9c1f5bcf6279cacf918166efc3a0a8a9433ee10a95232992a108944160cf020fc3c240ef2fb8023581dc9cac11f973d7985d'
         '964457a55fe70988fcba968d2940d78d3daff5d1629863279ee15e07f8c1bb4e58e4d22b2cae9e66ab0c61c4d54de04e7a6eb2710eaaa536ec11f29efa961f1c'
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
-        '1dcc7c0b236b5a2ca2da18d1e1a9bbbb0fa4af82185a88252ea739f8d2d0439129a0d8e254c703e6535cf80b07a20f016858e3ed8f082fd54a0150785532598f'
-        '85b7f6a698afdfbfffe7e79dcd3d857dd675c55dcd5c23c47dd11855c374a597e6909a0db6601dd5d668696debdb09f61735680ce67ce8a62c19f9c43c1b2dc2'
-        'c94a64a0bcdc12b17cc1b1a261879109acdf2bee32c5347fb1438797d245554130744f6c744a9b069f79744cf56dc42d319ff6ac3136527a6ba384cf0b3c2676'
-        '3878d2a269de30b1c6cddcf91264f9c1dd4bccdaf0539257789f80ab473ced748e5bba395781850f48af79b3c5d92f8c68153c93a5241c308eb1a2636a3e983c'
-        '6c3881ba6e209925084c348c058a0f61695b3aadda74aa3dbef68fd48d6c995296e8cb6c4014dcf48e22905c5ac03be554ed688b9afe47d05745dd321196ae04')
+        'f113738d5eb063cac85a6414dd20ac9939543a60bca797a859717536f1cbef4ed76254fdeef6511fc2e7d7e4a5585235633dc35a87d2a8572fbbc6a1e097347c'
+        '3ca7f853ebd6dc7e59f81fee94a9de0cd49793b02190e19f22a855364b222629a65282ef663c18dd153739354a4cef7f007b23fe22285a3efd444bc26513dd37'
+        '0edf00d2911ba41ef7b898691abe9804572b63688d51d476f16e925bf615ea34edfbf7bc6528f2080c126f6162fa0170ba03fe30d59372d283efc0dfbf49d97d')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
