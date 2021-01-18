@@ -1,7 +1,7 @@
 pkgbase = brother-mfc-j6510dw
 	pkgdesc = LPR and CUPS driver for the Brother MFC-J6510DW
 	pkgver = 3.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
 	install = brother-mfc-j6510dw.install
 	arch = i686
