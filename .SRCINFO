@@ -1,7 +1,7 @@
 pkgbase = pacfree
 	pkgdesc = A pacman wrapper to make pacman Free and Open Source Software aware
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/leo-arch/pacfree
 	arch = any
 	license = GPL2
@@ -9,8 +9,8 @@ pkgbase = pacfree
 	depends = pacman
 	depends = sed
 	optdepends = isfree: Check your Arch system for nonfree software
-	source = git+https://github.com/leo-arch/pacfree.git
-	sha256sums = SKIP
+	source = pacfree-0.6.0.tar.gz::https://github.com/leo-arch/pacfree/archive/v0.6.0.tar.gz
+	sha256sums = 3d058e868dc7197a4584bc520f5f76ba3b29fec776bccbe21b5411a6c4661153
 
 pkgname = pacfree
 
