@@ -1,8 +1,8 @@
 # Maintainer: Torben <git at letorbi dot com>
 
 pkgname=processing4-git
-pkgver=r1.e96622d
-pkgrel=2
+pkgver=r1.fd0244a
+pkgrel=3
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://github.com/processing/processing4'
@@ -26,7 +26,7 @@ sha256sums=('fabe7420a714f450a6b1430f13fc46f14ba52db57af360365c6a7fd96d0b642f'
             'fcd5c5ea558ceadde3f840522a5c1cb11e26569aec651e8154194cca39026611'
             '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
             'a07184b87d3d2ccd35525a0721df787973f92487bae367a0668abd3f64134263'
-            '6115cced44fcf1cadd945cbb5a09692a3956259c294351bdec27469f1fd03163')
+            'fbcbb318db352d10ecc03df9a07b199818bb87c9ebdebccdb4a2bbe21a12a370')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
