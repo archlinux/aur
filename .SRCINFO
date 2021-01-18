@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-turtlebot3-slam
 	pkgdesc = ROS - The turtlebot3_slam package provides roslaunch scripts for starting the SLAM
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://wiki.ros.org/turtlebot3_slam
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = ros-melodic-turtlebot3-slam
 	depends = ros-melodic-roscpp
 	depends = ros-melodic-sensor-msgs
 	depends = ros-melodic-turtlebot3-bringup
-	source = ros-melodic-turtlebot3-slam-1.2.4.tar.gz::https://github.com/ROBOTIS-GIT/turtlebot3/archive/1.2.4.tar.gz
-	sha256sums = a75bd9e8f007cafcd3a0a7fd80a5428dfec69d13dcbd0a5bc018fac3154649fc
+	source = ros-melodic-turtlebot3-slam-1.2.5.tar.gz::https://github.com/ROBOTIS-GIT/turtlebot3/archive/1.2.5.tar.gz
+	sha256sums = cee1be2249f18084075e4604b70463eb40a96d6f5c2e63efc7f2c501399dee3d
 
 pkgname = ros-melodic-turtlebot3-slam
 
