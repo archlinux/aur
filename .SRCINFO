@@ -1,6 +1,6 @@
 pkgbase = python-yalafi
 	pkgdesc = Yet another LaTeX filter
-	pkgver = 1.1.7
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/matze-dd/YaLafi
 	arch = any
@@ -8,12 +8,10 @@ pkgbase = python-yalafi
 	makedepends = python-setuptools
 	depends = python3
 	depends = languagetool
-	source = https://files.pythonhosted.org/packages/0f/57/57827ab252b49616253bb007e823b810005a9a4873b8c0ff0f70ef1954d7/yalafi-1.1.2.tar.gz
+	source = https://github.com/matze-dd/YaLafi/archive/1.2.0.zip
 	source = ltdirectory.patch
-	source = ltserver_local_cmd.patch
-	sha512sums = a7c0ffcdc918eb2c60339cbb7fc3ae4339966e0fde11d86ce75479433a1dde1cdc8ca6dca8cb904a884d2f2a60a72e302e5a4ff0226d20a2b52c2f0f5a3484f2
-	sha512sums = 325c907378215d8dc617810fc2f5ebc53f5c77c2a061287d22dc2b36715d24a4037ce83ae6b7a57fb74b5ff1b5c945da848cb82d7569385600de95bb6bef8318
-	sha512sums = 4fddb5052391d2e8b612ac83640a1e8bcedccf8ed7c4477e68863d13c69da49342924bc0435565002161beaed09d22ca06d87c46354096e8bb2a08e746597790
+	sha256sums = b7ace265aacca53b6d1bbfa9e4dd267817d71450a80a87f213c5d39ea2fb13d1
+	sha256sums = ff59913ed6c4cc63dcf47f9604d5a096bd30e152f14e36ec53fa1e37793e5c10
 
 pkgname = python-yalafi
 
