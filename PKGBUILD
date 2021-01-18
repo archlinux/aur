@@ -2,7 +2,7 @@
 # Contributor: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 
 pkgname=kcgi
-pkgver=0.11.0
+pkgver=0.12.2
 pkgrel=1
 pkgdesc="Minimal CGI and FastCGI library"
 arch=('i686' 'x86_64')
@@ -12,8 +12,9 @@ depends=('glibc')
 makedepends=('bmake')
 source=("https://kristaps.bsd.lv/kcgi/snapshots/$pkgname-$pkgver.tgz"
         "LICENSE")
-sha512sums=('4e6cb03d22dc0c301b709b52cf69452d3e0dfa37bc78dcce5683a5b8b8d8d5ee64b0edd94763a0b346e46486061dfc1da7202acfed21862d699cc9bcdbf6b8e6'
+sha512sums=('f28dd2134936036c44bbd3fc094e512c52019e0dc39f085a396924331c0e7f0bb940cee8afae43147674065b7d5a1d057c56cfdb0040131b72da53dff2289d31'
             'b040c157fe8b95a41a0375d2cd3cc4e6406a988ed5f337b0c6dd15f1ea08344196018a5c2353c2acfbde7858ca5e0f2bf00d1cc4890661effadf39e239a95520')
+
 build() {
   cd $pkgname-$pkgver
 
@@ -41,4 +42,3 @@ package() {
 
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
