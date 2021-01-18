@@ -1,0 +1,18 @@
+pkgbase = prjoxide-git
+	pkgdesc = Project Oxide LatticeSemi 28nm Nexus FPGA Bitstream Database
+	pkgver = r265.450bf02
+	pkgrel = 1
+	url = https://github.com/daveshah1/prjoxide
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = cargo
+	provides = prjoxide
+	conflicts = prjoxide
+	source = database::git+https://github.com/daveshah1/prjoxide-db.git
+	source = oxide::git+https://github.com/daveshah1/prjoxide.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = prjoxide-git
+
