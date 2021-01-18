@@ -1,13 +1,15 @@
 pkgbase = python-trytond_sale_supply_drop_shipment
-	pkgver = 5.6.0
+	pkgdesc = Tryton module for sale supply drop shipment
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_supply_drop_shipment/trytond_sale_supply_drop_shipment-5.6.0.tar.gz
-	sha256sums = b57f7edcc4858e6c06431023951775c376c8affabc930705bb6c15f71c5e160b
+	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_supply_drop_shipment/trytond_sale_supply_drop_shipment-5.8.1.tar.gz
+	sha256sums = 8af88a42189f076d161012e3a040cd2005255e8f1338ce8050b31d1740dfe574
+	b2sums = 611a17ae78f0454d6b5c84b6ece87839b9bce6f9e5adf6541e22ac8c9abe8b939ce5c4fc0cb878b73dee6644240e39d61269fc92778586b265e65497f97ba1e7
 
 pkgname = python-trytond_sale_supply_drop_shipment
 
