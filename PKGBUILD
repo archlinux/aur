@@ -1,7 +1,7 @@
 # Maintainer: Aston <astonbitecode at gmail dot com>
 
 pkgname="rust-keylock-ui"
-pkgver="0.13.0"
+pkgver="0.13.1"
 pkgrel=1
 epoch=
 pkgdesc="Password manager with goals to be Secure, Simple to use, Portable and Extensible"
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/rust-keylock/$pkgname/archive/v$pkgver.tar.gz")
 noextract=()
-sha512sums=("638c3483b06b7bee9b43c5d504c9b8ac6db95d59eebd54791636a0643856f5dea46d1c23cb17cee26554738d9b1f2905361f7ac606bb3406d13d1476cbb387aa")
+sha512sums=("547793e68231b326768016a28fdb15de1ecf21ed40ba006ed11167d850166489f8bd8305fa6d564366c134ccc4a5a78ce685ad112afe77fb8b96cf539fa2072b")
 validpgpkeys=()
 
 prepare() {
