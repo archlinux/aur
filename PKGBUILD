@@ -59,8 +59,8 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.10.7.arch1.r969182.93347f716249
-_srcver_tag=v5.10.7.arch1
+pkgver=v5.10.8.arch1.r969186.8a9ddf9f0c78
+_srcver_tag=v5.10.8.arch1
 pkgrel=1
 pkgdesc="Linux"
 url="https://github.com/koverstreet/bcachefs"
@@ -104,7 +104,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '8d6b6d1fa31d82b7c97c2446245d8aae2973266cda8f04cd26643782575aaf9f3c78f4ecc866116861cc5f83e52ddb479bd90a82fea4b40e7dbd81f65aaad5fe')
+            'd0acb751bbfbea484c6c83edc1a41a843325f69d2fbf3de8ce2ed87a5ea9cf11960c3efe61b9f72a1d57ed9712c93f67320330151c06a3f95b1d772a8d254ed4')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
