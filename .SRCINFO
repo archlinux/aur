@@ -9,7 +9,7 @@ pkgbase = pyfetch
 	depends = python-gputil
 	depends = python-xlib
 	source = pyfetch-2021.01.18.tar.gz::https://github.com/TheCynicalTeam/pyfetch/archive/2021.01.18.tar.gz
-	sha256sums = 97f5b8ebc09cfcf206367b5ae587a5066c732cc918855f35c2ecee7d8a867a03
+	sha256sums = 34450741166cb4d011a4bccf3d7350315d3d54b0dde8660987c9b57f24b00f24
 
 pkgname = pyfetch
 

@@ -9,7 +9,7 @@ url="https://github.com/TheCynicalTeam/$pkgname"
 license=('CC BY-NC-SA 4.0')
 depends=('gtk3' 'python-gputil' 'python-xlib')
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('97f5b8ebc09cfcf206367b5ae587a5066c732cc918855f35c2ecee7d8a867a03')
+sha256sums=('34450741166cb4d011a4bccf3d7350315d3d54b0dde8660987c9b57f24b00f24')
 
 package() {
   cd "$pkgname-$pkgver"
