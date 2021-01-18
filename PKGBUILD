@@ -1,7 +1,7 @@
 # Maintainer: Héctor Molinero Fernández <hector at molinero dot dev>
 # Contributor: Erazem Kokot <contact at erazem dot eu>
 pkgname='hblock'
-pkgver='3.1.3'
+pkgver='3.2.0'
 pkgrel='1'
 pkgdesc='Adblocker that creates a hosts file from multiple sources'
 arch=('any')
@@ -9,7 +9,12 @@ url='https://github.com/hectorm/hblock'
 license=('MIT')
 depends=('curl')
 source=("https://github.com/hectorm/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('e7dad9febc5205f19b36ce9268a41374931d27e0195a2d7504b62c2d1721ab7f')
+sha256sums=('a5a86a0e9913d88dcba7270c9e3ed37f4c626c8a6a8b5e9303a8a173824bdfee')
+
+check() {
+  cd -- "${pkgname:?}-${pkgver:?}"
+  make test
+}
 
 package() {
   cd -- "${pkgname:?}-${pkgver:?}"
