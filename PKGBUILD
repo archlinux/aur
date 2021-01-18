@@ -11,8 +11,8 @@ arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 license=(GPL)
 makedepends=(libcap attr libxtst libsm libsndfile rtkit
-             speexdsp tdb dbus sbc
-             lirc openssl orc check git meson)
+             speexdsp tdb dbus
+             openssl orc check git meson)
 source=("git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git")
 sha256sums=('SKIP')
 
