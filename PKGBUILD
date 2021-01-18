@@ -30,6 +30,7 @@ python-pytest-mock
 )
 source=("git+https://github.com/CadQuery/CQ-editor.git")
 md5sums=('SKIP')
+options=(!strip)
 
 pkgver() {
   cd CQ-editor
@@ -42,6 +43,10 @@ prepare() {
   #curl https://github.com/greyltc/CQ-editor/commit/dc2734d19b826ab90df6db58fbceb6b6a6ed2229.patch | patch -p1  # for https://github.com/CadQuery/CQ-editor/issues/174 and 122
 }
 
+build(){
+  python setup.py build
+}
+
 check() {
   cd CQ-editor
   #pytest -v --cov
@@ -50,6 +55,6 @@ check() {
 
 package() {
   cd CQ-editor
-  python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
