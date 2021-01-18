@@ -1,14 +1,15 @@
 pkgbase = python-trytond_stock_supply_forecast
 	pkgdesc = Tryton module to add forecast to supply computation
-	pkgver = 5.6.0
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_supply_forecast/trytond_stock_supply_forecast-5.6.0.tar.gz
-	sha256sums = 0b52b4ea1ac88f685f173cb6fd9898b3918795718da51792d183899dc7985119
+	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_supply_forecast/trytond_stock_supply_forecast-5.8.1.tar.gz
+	sha256sums = 9a05eec7731b503065a38db0ebfe61842504de54b156a1b0643d4db411e0b031
+	b2sums = b99d79f4d5685f934e225b2183acb9fc8483950c7684a8e22fafcba3bb4d7923923c84355f4729f93e411a1efa5225ccc3d70f76263da4680db0c46cc77b993f
 
 pkgname = python-trytond_stock_supply_forecast
 
