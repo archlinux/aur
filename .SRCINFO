@@ -1,0 +1,13 @@
+pkgbase = virtualhub
+	pkgdesc = Toolbox for Yoctopuce USB devices
+	pkgver = 42982
+	pkgrel = 1
+	url = https://www.yoctopuce.com
+	install = virtualhub.install
+	arch = x86_64
+	license = GPL
+	source = https://www.yoctopuce.com/FR/downloads/VirtualHub.linux.42982.zip
+	sha256sums = c92934c7bbd6456afb14f5ff8d08f89d1ea408c9e260570d89d2a0c1681483d8
+
+pkgname = virtualhub
+

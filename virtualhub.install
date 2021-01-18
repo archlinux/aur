@@ -1,0 +1,14 @@
+post_install() {
+	sudo udevadm control --reload-rules && sudo udevadm trigger
+	echo "Udev rules have been added to /etc/udev/rules.d"
+	echo "If you edit them, reload udevd with:"
+	echo "sudo udevadm control --reload-rules"
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	post_install
+}
