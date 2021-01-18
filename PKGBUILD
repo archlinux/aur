@@ -1,12 +1,12 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime-git
 pkgver=0.5.0.209.g95afb0d
-pkgrel=1
+pkgrel=2
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
 conflicts=('kime')
 provides=('kime')
-depends=('gtk3' 'cairo' 'libxkbcommon' 'libxcb' 'pango')
+depends=('gtk3' 'cairo' 'libxcb' 'pango')
 makedepends=('cargo')
 arch=('any')
 license=('GPL3')
