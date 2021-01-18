@@ -3,7 +3,7 @@
 
 _pkgname=edb-debugger
 pkgname=$_pkgname-git
-pkgver=1.1.0.r18.ge99c70ef
+pkgver=1.3.0.r51.g39925b68
 pkgrel=1
 pkgdesc="EDB (Evan's Debugger) is a binary mode debugger with the goal of having usability on par with OllyDbg. Git version"
 arch=('x86_64')
@@ -51,7 +51,7 @@ package() {
   make -C build DESTDIR="$pkgdir" install
 
   # icons
-  install -Dm644 src/images/edb48-logo.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/edb.png"
+  install -Dm644 src/res/images/edb48-logo.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/edb.png"
 
   # install desktop file
   install -Dm644 "$srcdir/edb.desktop" "$pkgdir/usr/share/applications/edb.desktop"
