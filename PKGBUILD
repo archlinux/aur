@@ -13,7 +13,6 @@ license=('GPL3')
 makedepends=('git')
 # 'python2-pyopenssl' is deprecated
 depends=('python2-lxml')
-#depends=('python2-lxml')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=$pkgname.install
