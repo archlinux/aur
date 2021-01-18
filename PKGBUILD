@@ -1,6 +1,6 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime-git
-pkgver=0.5.1.219.g56e95a7
+pkgver=0.6.0.251.ga0baf76
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
@@ -21,8 +21,7 @@ pkgver() {
 build() {
     cd "${pkgname}"
     cargo build --release
-    pkg/release-7z.sh
-    7z x -obuild/out build/7z/kime.7z
+    pkg/release.sh
 }
 
 package() {
