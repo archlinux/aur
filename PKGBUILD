@@ -15,7 +15,7 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd "${pkgname}"
-	echo $(grep '^version =' gtk3/Cargo.toml|head -n1|cut -d\" -f2).$(git rev-list --count HEAD).g$(git describe --always)
+    echo $(grep '^version =' gtk3/Cargo.toml|head -n1|cut -d\" -f2).$(git rev-list --count HEAD).g$(git describe --always)
 }
 
 build() {
