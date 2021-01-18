@@ -6,7 +6,7 @@ _commit=bcc5e6c4b300ddaca5b1a435c754eaac7490b9d1
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
 _monover=5.1.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 arch=(x86_64)
@@ -123,7 +123,6 @@ source=(
     proton-unfuck_makefile.patch
     proton-disable_lock.patch
     proton-user_compat_data.patch
-    dxvk-async.patch
     dxvk-extraopts.patch
     vkd3d-extraopts.patch
 )
@@ -191,12 +190,6 @@ prepare() {
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
     patch -p1 -i "$srcdir"/proton-user_compat_data.patch
 
-    # Uncomment to enable dxvk async patch.
-    # Enable at your own risk. If you don't know what it is,
-    # and its implications, leave it as is. You have been warned.
-    # I am not liable if anything happens to you by using it.
-    # Patch ENABLES async by DEFAULT. YOU HAVE BEEN WARNED.
-    #patch -p1 -i "$srcdir"/dxvk-async.patch
     # Uncomment to enable extra optimizations
     # Patch crossfiles with extra optimizations from makepkg.conf
     patch -p1 -i "$srcdir"/dxvk-extraopts.patch
@@ -354,6 +347,5 @@ sha256sums=('SKIP'
             '6743a56d019823a33508c3dbfc64ea82d8db61e2b98983a7ad28cade85f0538e'
             '8263a3ffb7f8e7a5d81bfbffe1843d6f84502d3443fe40f065bcae02b36ba954'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
-            'd745ffd15df9e6740e678ab38792e195851a20e113e05b13fab2885b5b9eba02'
             '23cba1756adc4a76de963414994ffc964047ab1d6f1949fe8133135a91ac0473'
             '7c5f9c20e41c0cd7d0d18867950a776608cef43e0ab9ebad2addb61e613fe17a')
