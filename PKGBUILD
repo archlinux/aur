@@ -3,11 +3,11 @@
 _pkgname=capstone
 pkgname=mingw-w64-${_pkgname}
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight multi-platform, multi-architecture disassembly framework (mingw-w64)"
 arch=(any)
-depends=(mingw-w64-{crt,curl,libssh2,openssl,zlib})
-# makedepends=(mingw-w64-cmake)
+depends=(mingw-w64-crt)
+makedepends=(mingw-w64-cmake)
 options=(staticlibs !buildflags !strip)
 license=(BSD)
 url="https://www.capstone-engine.org/"
