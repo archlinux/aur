@@ -1,0 +1,15 @@
+pkgbase = python-trytond_account_invoice_secondary_unit
+	pkgdesc = Tryton module to add a secondary unit on invoice line
+	pkgver = 5.8.1
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_invoice_secondary_unit/trytond_account_invoice_secondary_unit-5.8.1.tar.gz
+	sha256sums = ec60d47cf93629bcd2d43e381ade2a49d991c5498ab6c352ff48c287a0d481cd
+	b2sums = eef91db659d885e713b5c83bc20dc690aeab66e1146a8c1360c1fccf056d0f08932a2a2a876d148118fda31efb7f7b2c96d3e83bfeda2496aa54d6416cd05530
+
+pkgname = python-trytond_account_invoice_secondary_unit
+
