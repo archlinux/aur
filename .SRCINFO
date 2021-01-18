@@ -1,0 +1,14 @@
+pkgbase = python-pltable
+	pkgdesc = Python library for easily displaying tabular data in a visually appealing text table format
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/platomav/PLTable
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/P/PLTable/PLTable-1.0.2.tar.gz
+	sha256sums = 1a34a9999ad74dcd3ba73dd602ff5853f699030d7a2e4a0469e9dacaf763bafc
+
+pkgname = python-pltable
+
