@@ -1,14 +1,15 @@
 pkgbase = python-trytond_stock_split
 	pkgdesc = Tryton module to split stock move
-	pkgver = 5.6.0
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_split/trytond_stock_split-5.6.0.tar.gz
-	sha256sums = 8550c8e05469f2cfcbacfdb2218fa617d158d1d0752e4e42e959faee016b41a4
+	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_split/trytond_stock_split-5.8.1.tar.gz
+	sha256sums = 02ed02c14ab1e7673d3cef6d3a9d09c826b71b330aa7f44897f69ff283f40b04
+	b2sums = 18c847f11428b2909d01f7ad0273216c93388d44fe15c712124a090c70d86b4e38b768cbe5d338720123188307578da5702b7e7697faae73757d27beacb0075a
 
 pkgname = python-trytond_stock_split
 
