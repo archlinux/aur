@@ -12,7 +12,7 @@ _openj9ver=0.23.0
 _buildvershort=11
 _buildver=${_buildvershort}_openj9-${_openj9ver}
 pkgver=${_jdkfullver}b${_buildver//-/_}
-pkgrel=4
+pkgrel=5
 pkgdesc="Eclipse (former IBM) OpenJ9 with openjdk${_jdkver}"
 arch=('x86_64')
 url="https://adoptopenjdk.net/index.html?variant=openjdk${_jdkver}&jvmVariant=openj9"
@@ -26,7 +26,7 @@ provides=(
   "java-runtime-headless=${_jdkver}"
   "java-runtime-headless-openjdk=${_jdkver}"
 )
-conflicts=("jdk${_jdkver}-openj9-bin" "jdk${_jdkver}-openj9")
+conflicts=("jdk${_jdkver}-openj9")
 options=(!strip)
 source=("https://github.com/AdoptOpenJDK/openjdk${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}/OpenJDK${_jdkver}U-jdk_x64_linux_openj9_${_jdkfullver}_${_buildver}.tar.gz")
 
