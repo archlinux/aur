@@ -1,7 +1,7 @@
 pkgbase = lebiniou
 	pkgdesc = A tool to create images from sound
 	pkgver = 3.53.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://biniou.net
 	arch = x86_64
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = lebiniou
 	depends = lebiniou-data
 	depends = ulfius
 	source = https://gitlab.com/lebiniou/lebiniou/-/archive/version-3.53.0/lebiniou-version-3.53.0.tar.gz
-	sha256sums = 9098d596753550f966a7eb12b2f7513805605cf5e5ca3a53ad2ba66cc188bed3
+	sha256sums = a048c4482629ac6c65f3ecedbd2c32fb5e80b69c020c4633c7becc33444e43e1
 
 pkgname = lebiniou
 
