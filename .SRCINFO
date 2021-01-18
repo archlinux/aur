@@ -1,14 +1,15 @@
 pkgbase = python-trytond_stock_lot_unit
 	pkgdesc = Tryton module to define unit on stock lot
-	pkgver = 5.6.0
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_lot_unit/trytond_stock_lot_unit-5.6.0.tar.gz
-	sha256sums = 28bbba9b0d4cbf8fc992d04927b782e82771fd192948ee7f4d05743684b47563
+	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_lot_unit/trytond_stock_lot_unit-5.8.1.tar.gz
+	sha256sums = 57bfad08ca62eaf0fcbd5f8021e30edb0376da0814ffa5566e649e2738d0328a
+	b2sums = 4e9603a68a07c8085e926348e730bbd918ffb6f8ec68c277b372decf5365d64cfe6ad62489816562500c7c996bc8bcbce3b40015101059ec2b5bb6997ba26470
 
 pkgname = python-trytond_stock_lot_unit
 
