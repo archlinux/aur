@@ -6,7 +6,7 @@ pkgname=$_pkgname-git
 provides=($_pkgname)
 conflicts=($_pkgname)
 
-pkgver=r166.4252e6d
+pkgver=r391.4ed01ae
 pkgrel=1
 arch=('x86_64')
 
@@ -32,8 +32,14 @@ build() {
   cd "$srcdir/$_src_pkgname"
   mkdir -p build
   cd build
-  
+
+  # Workaround!
+  # This should have been included via /usr/lib/pkgconfig/libftdi1.pc
+  FIX_CXXFLAGS="-isystem /usr/include/libftdi1"
+
+  CXXFLAGS="$CXXFLAGS $FIX_CXXFLAGS" \
   cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+
   cmake --build .
 }
 
