@@ -1,14 +1,15 @@
 pkgbase = python-trytond_project_plan
 	pkgdesc = Tryton module to add planning capabilities on projects
-	pkgver = 5.6.0
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_project_plan/trytond_project_plan-5.6.0.tar.gz
-	sha256sums = 975bd12e044bc62ffe421d577cd8cca4c77e13a216d33b7ab9cebcaa2a6335b5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_project_plan/trytond_project_plan-5.8.1.tar.gz
+	sha256sums = 7f5144ea46872f83db68a1fbd368ef5fa58b463c6c591be7db83bcc1f5268231
+	b2sums = 2a09255e78a5e3d48f7000532d378cb428576d14a9175ed5245f684b1fcc58010f58bd06d9863b4b746ee8d7e89711d785237542914ec14e602cc1e707da4701
 
 pkgname = python-trytond_project_plan
 
