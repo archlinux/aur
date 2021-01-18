@@ -1,14 +1,15 @@
 pkgbase = python-trytond_sale_opportunity
 	pkgdesc = Tryton module with leads and opportunities
-	pkgver = 5.6.0
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_opportunity/trytond_sale_opportunity-5.6.0.tar.gz
-	sha256sums = 8e8a637cce553231de6ec3517664f94a46bdc02a0ac50714e2e1d0f8a4edbcb0
+	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_opportunity/trytond_sale_opportunity-5.8.1.tar.gz
+	sha256sums = eaa918e897925b88b8e42c156f0991e4c78567ff99454813f8886b7b65684763
+	b2sums = a019f058827e5a1a90c61ffa672211516d7a357efd4955bfdb7d0b370ddd767ac1b09b39fd0f6ee37436edb4e06463f1b0c3349abde43dc7fd88aa5850f3d67b
 
 pkgname = python-trytond_sale_opportunity
 
