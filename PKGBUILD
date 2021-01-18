@@ -1,6 +1,6 @@
 # Maintainer: xiretza <xiretza+aur@gmail.com>
 pkgname=lemonldap-ng
-pkgver=2.0.9
+pkgver=2.0.10
 pkgrel=1
 pkgdesc="A modular WebSSO (Single Sign On) based on Apache::Session modules"
 arch=(any)
@@ -12,13 +12,13 @@ depends=('perl-apache-session' 'perl-cache-cache' 'perl-clone' 'perl-config-inif
          'perl-html-template' 'perl-io-string' 'perl-json' 'perl-mime-tools' 'perl-mouse'
          'perl-ldap' 'perl-plack' 'perl-regexp-assemble' 'perl-regexp-common' 'perl-soap-lite'
          'perl-string-random' 'perl-unicode-string' 'perl-uri' 'perl-libwww' 'perl-lwp-protocol-https'
-         'perl-xml-simple' 'perl-xml-libxslt' 'perl-crypt-urandom'
+         'perl-xml-simple' 'perl-xml-libxslt' 'perl-crypt-urandom' 'perl-json-xs'
          'perl-module-pluggable' 'perl-convert-base32' 'perl-text-unidecode' 'imagemagick')
 makedepends=('uglify-js' 'python-sphinx' 'python-sphinx-bootstrap-theme')
 checkdepends=('perl-test-output' 'perl-time-fake')
 optdepends=('uwsgi-plugin-psgi: for running under uWSGI')
 source=("https://release.ow2.org/lemonldap/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('49941897e3341b427de5919a1c2d2d86a3b89317ef1dcd02666692f3032d81df81b977d43e1be0233c4d425d28d18777b7ff45f758658709f7226530e67d8cb9')
+sha512sums=('66510544809eb7c022d8ad2b2710c29587ba20da436a2a97748533c37657a5fcf353a67dd51156eeb3f6785370593f65796ec61fe437d20144dff6eab85d0a80')
 
 prepare() {
 	cd "$pkgname-$pkgver"
