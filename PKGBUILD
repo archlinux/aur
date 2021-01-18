@@ -13,7 +13,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Tigermouthbear/tigercap
 sha1sums=("ba4410aa47d244c16207ed0c543d3ee0b737b0bc")
 
 build() {
-	cd $srcdir/$pkgname
+	cd $srcdir/$pkgname-$pkgver
 	mkdir build
 	cd build
 	cmake \
@@ -27,6 +27,6 @@ build() {
 }
 
 package() {
-	cd $srcdir/$pkgname/build
+	cd $srcdir/$pkgname-$pkgver/build
 	make DESTDIR="$pkgdir" install
 }
