@@ -1,13 +1,15 @@
 pkgbase = python-trytond_sale_product_customer
-	pkgver = 5.6.0
+	pkgdesc = Tryton module to manage customer product on sale
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_product_customer/trytond_sale_product_customer-5.6.0.tar.gz
-	sha256sums = 945fd8bc2b0962573451ad3726fba9c52ed6efe1a9577d61aff964d8ced3a77a
+	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_product_customer/trytond_sale_product_customer-5.8.1.tar.gz
+	sha256sums = 98a2209e669076898eebba6415a303eedfd200ecb407d1eddff04f0fef2e5fcd
+	b2sums = 83d8e9201f3816da178807643218f02c8cced62b23f95ece48cb1df8cfb140558ef0e89fb0d91cc731ddd8f3988d7a8c4f1754b44f5c91e65854d0b163c3105e
 
 pkgname = python-trytond_sale_product_customer
 
