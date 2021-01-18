@@ -1,6 +1,6 @@
 # Maintainer: Mario Ortiz Manero <marioortizmanero@gmail.com>
 pkgname=python-tekore
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Client for the Spotify Web API"
 arch=("any")
@@ -9,7 +9,7 @@ license=("custom:MIT")
 depends=("python>=3.7" "python-httpx>=0.11")
 makedepends=("python-setuptools")
 source=("https://github.com/felix-hilden/tekore/archive/v$pkgver.tar.gz")
-md5sums=('648d41fdda07cef6c71753b550fe3d3f')
+md5sums=('3b93a30844e44ea284b2c839bfb1af29')
 
 prepare() {
     cd "tekore-$pkgver"
