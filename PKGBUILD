@@ -3,7 +3,7 @@ pkgname=usbdm-git
 pkgver=1102.62ab4f14
 pkgrel=2
 pkgdesc="Debugger interface for Freescale RS08,HCS08,HCS12,Coldfire and ARM-Kinetis Devices."
-arch=("i686" "x86_64")
+arch=("x86_64")
 url="http://usbdm.sourceforge.net/"
 license=('GPL2')
 depends=("java-runtime" "webkit2gtk" "xerces-c" "tcl" "wxgtk" "xdg-utils")
@@ -33,9 +33,8 @@ prepare() {
 
 build() {
 	cd "${srcdir}/usbdm-eclipse-makefiles-build"
-	make -f Makefile.mk
+	make -f Makefile-x64.mk
 }
-
 
 package() {
 	SOURCE_DIRECTORY="${srcdir}/usbdm-eclipse-makefiles-build"
