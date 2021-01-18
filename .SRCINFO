@@ -1,13 +1,14 @@
 pkgbase = python-trytond_carrier_weight
-	pkgver = 5.2.0
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_carrier_weight/trytond_carrier_weight-5.2.0.tar.gz
-	sha256sums = ba14300212a5a9d59d524f1a7cbdedc0845ff88273a512a82380f9a6863f2a45
+	source = https://files.pythonhosted.org/packages/source/t/trytond_carrier_weight/trytond_carrier_weight-5.8.1.tar.gz
+	sha256sums = 72876d278c80e64034fa5a4f6b68afba06b4335b8689a6d715747f2394a89d2d
+	b2sums = 871c277a80c8817206fef7672d0af691088ff4659c96005c200e8bcee84b1275774eae153521bb1185128bc8a65098e7412243ea00cccc1809757a197b681115
 
 pkgname = python-trytond_carrier_weight
 
