@@ -1,13 +1,15 @@
 pkgbase = python-trytond_stock_package_shipping_dpd
-	pkgver = 5.6.0
+	pkgdesc = DPD connector for the Tryton application platform
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_package_shipping_dpd/trytond_stock_package_shipping_dpd-5.6.0.tar.gz
-	sha256sums = 67fb28260b6137a1185966bf3f36468bfc44a6dc71b2a27aa991d1de8ea0e46a
+	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_package_shipping_dpd/trytond_stock_package_shipping_dpd-5.8.1.tar.gz
+	sha256sums = adeeba3deb3c38872e26ab51a17dce13eff80eebf1dc8e48eed4b858f0748272
+	b2sums = 5ee30addc9e954c0a0b9dc24180db294238229aa8b7912ccebeb6e7ac29e9a55503804da0fb52dece7c5997fbea66fd7e05495579d6dbe799cc05831ffef205e
 
 pkgname = python-trytond_stock_package_shipping_dpd
 
