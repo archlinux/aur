@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-turtlebot3-bringup
 	pkgdesc = ROS - roslaunch scripts for starting the TurtleBot3
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://wiki.ros.org/turtlebot3_bringup
 	arch = i686
@@ -23,8 +23,8 @@ pkgbase = ros-melodic-turtlebot3-bringup
 	depends = ros-melodic-robot-state-publisher
 	depends = ros-melodic-rosserial-python
 	depends = ros-melodic-hls-lfcd-lds-driver
-	source = ros-melodic-turtlebot3-bringup-1.2.4.tar.gz::https://github.com/ROBOTIS-GIT/turtlebot3/archive/1.2.4.tar.gz
-	sha256sums = a75bd9e8f007cafcd3a0a7fd80a5428dfec69d13dcbd0a5bc018fac3154649fc
+	source = ros-melodic-turtlebot3-bringup-1.2.5.tar.gz::https://github.com/ROBOTIS-GIT/turtlebot3/archive/1.2.5.tar.gz
+	sha256sums = cee1be2249f18084075e4604b70463eb40a96d6f5c2e63efc7f2c501399dee3d
 
 pkgname = ros-melodic-turtlebot3-bringup
 
