@@ -45,8 +45,6 @@ package() {
 	RM="rm -f"
 	MV="mv"
 
-	local BITNESS="$1"
-
 	# Where to find libraries and binaries
 	USBDM_SOURCE_LIBDIR=${SOURCE_DIRECTORY}/PackageFiles/lib
 
@@ -111,21 +109,6 @@ package() {
 	${CP} -r -P "${USBDM_SOURCE_LIBDIR}"/*      ${USBDM_LIBDIR}
 	#${RM} ${USBDM_LIBDIR}/*-debug*
 	chmod 644  ${USBDM_LIBDIR}/*
-
-	if [[ (${BITNESS} == "64") && -e ${USBDM_SOURCE_LIBDIR32} ]]; then
-		# Include i386 version for Codewarrior
-		echo "Doing i386 libs"
-
-		I386_LIBS="libusbdm-jni.so libusbdm.so libusbdm-jni-debug.so libusbdm-debug.so"
-
-		${MKDIR} ${USBDM_LIBDIR}
-
-		for I386_LIB in ${I386_LIBS}; do
-			echo "Copying '${I386_LIB}'"
-			${CP}v "${USBDM_SOURCE_LIBDIR32}/${I386_LIB}"* ${USBDM_LIBDIR}   
-		done
-		chmod 644  ${USBDM_LIBDIR}/*
-	fi
 
 	${MKDIR} ${USBDM_BINDIR}
 	${CP} -r "${USBDM_SOURCE_BINDIR}"/*      ${USBDM_BINDIR}
