@@ -5,9 +5,9 @@
 
 pkgname=vrms-arch-git
 _pkgname=vrms-arch
-pkgver=0.1.0.r33.g2cef2cb
+pkgver=0.1.0.r35.ge4d1380
 pkgrel=1
-pkgdesc="(gardenapple's fork) Virtual Richard M. Stallman for Arch Linux"
+pkgdesc="Virtual Richard M. Stallman for Arch Linux (gardenapple's fork)"
 arch=('any')
 url="https://github.com/gardenappl/${_pkgname}"
 license=('custom:BSD3')
