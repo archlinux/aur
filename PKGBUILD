@@ -11,7 +11,7 @@ source=("git+$url")
 md5sums=('SKIP')
 
 package() {
-    mkdir -p confedi/usr/bin
-    cp configuration-editor/src/program.py confedi/usr/bin/confedi
-    chmod +x confedi/usr/bin/confedi
+    mkdir -p "$pkgdir"/usr/bin
+    cp configuration-editor/src/program.py "$pkgdir"/usr/bin/confedi
+    chmod +x "$pkgdir"/usr/bin/confedi
 }
