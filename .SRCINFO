@@ -1,4 +1,4 @@
-pkgbase = qemu
+pkgbase = qemu-nonbroken
 	pkgdesc = A generic and open source machine emulator and virtualizer
 	pkgver = 5.2.0
 	pkgrel = 99
@@ -52,13 +52,13 @@ pkgbase = qemu
 	sha512sums = bdf05f99407491e27a03aaf845b7cc8acfa2e0e59968236f10ffc905e5e3d5e8569df496fd71c887da2b5b8d1902494520c7da2d3a8258f7fd93a881dd610c99
 	sha512sums = 8721068fb968dbae62ceff71aa46eb4c2452c7fde95b87396b439f2f927ea84d2ee2c512264a9f28a5ccaf3096aacce052cebf209aaffd62a201b5bafb512002
 
-pkgname = qemu
+pkgname = qemu-nonbroken
 	optdepends = qemu-arch-extra: extra architectures support
 	provides = qemu-headless
 	conflicts = qemu-headless
 	replaces = qemu-kvm
 
-pkgname = qemu-headless
+pkgname = qemu-nonbroken-headless
 	pkgdesc = QEMU without GUI
 	depends = seabios
 	depends = gnutls
@@ -82,34 +82,34 @@ pkgname = qemu-headless
 	depends = dtc
 	optdepends = qemu-headless-arch-extra: extra architectures support
 
-pkgname = qemu-arch-extra
+pkgname = qemu-nonbroken-arch-extra
 	pkgdesc = QEMU for foreign architectures
 	depends = qemu
 	provides = qemu-headless-arch-extra
 	conflicts = qemu-headless-arch-extra
 	options = !strip
 
-pkgname = qemu-headless-arch-extra
+pkgname = qemu-nonbroken-headless-arch-extra
 	pkgdesc = QEMU without GUI, for foreign architectures
 	depends = qemu-headless
 	options = !strip
 
-pkgname = qemu-block-iscsi
+pkgname = qemu-nonbroken-block-iscsi
 	pkgdesc = QEMU iSCSI block module
 	depends = glib2
 	depends = libiscsi
 
-pkgname = qemu-block-rbd
+pkgname = qemu-nonbroken-block-rbd
 	pkgdesc = QEMU RBD block module
 	depends = glib2
 	depends = ceph-libs
 
-pkgname = qemu-block-gluster
+pkgname = qemu-nonbroken-block-gluster
 	pkgdesc = QEMU GlusterFS block module
 	depends = glib2
 	depends = glusterfs
 
-pkgname = qemu-guest-agent
+pkgname = qemu-nonbroken-guest-agent
 	pkgdesc = QEMU Guest Agent
 	install = qemu-guest-agent.install
 	depends = gcc-libs
