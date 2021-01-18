@@ -1,0 +1,14 @@
+pkgbase = rpmspectool
+	pkgdesc = Utility for handling RPM spec files
+	pkgver = 1.99.7
+	pkgrel = 1
+	url = https://github.com/nphilipp/rpmspectool
+	arch = x86_64
+	makedepends = python-setuptools
+	depends = python-argcomplete
+	depends = python-pycurl
+	source = https://files.pythonhosted.org/packages/source/r/rpmspectool/rpmspectool-1.99.7.tar.gz
+	md5sums = SKIP
+
+pkgname = rpmspectool
+
