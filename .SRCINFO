@@ -11,8 +11,6 @@ pkgbase = afetch-git
 	provides = afetch
 	conflicts = afetch
 	source = git+https://github.com/13-CF/afetch
-	source = Makefile.patch
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = afetch-git

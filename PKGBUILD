@@ -21,20 +21,20 @@ options=()
 install=
 changelog=
 source=("git+https://github.com/13-CF/afetch"
-    "Makefile.patch")
+)
 noextract=()
-md5sums=("SKIP" "SKIP")
+md5sums=("SKIP")
 
-prepare() {
-    patch "$_pkgname/Makefile" -i Makefile.patch
-}
 
 build() {
-	cd "$_pkgname"
-	make all
+    cd "$_pkgname"
+    make all
 }
 
 package() {
-	cd "$_pkgname"
-	make DESTDIR="$pkgdir/" PREFIX="/usr/" install
+    mkdir "${pkgdir}/usr/bin" -p
+    mkdir "${pkgdir}/usr/share/man/man1" -p
+
+    cd "$_pkgname"
+    make DESTDIR="$pkgdir/" PREFIX="/usr/" install
 }
