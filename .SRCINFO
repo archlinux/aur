@@ -1,13 +1,15 @@
 pkgbase = python-trytond_sale_stock_quantity
-	pkgver = 5.6.0
+	pkgdesc = Tryton module to add stock warning on sale
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_stock_quantity/trytond_sale_stock_quantity-5.6.0.tar.gz
-	sha256sums = c00015e70b19805a11eaef63be9d291e293d6008977cb6674a61d6b05a766525
+	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_stock_quantity/trytond_sale_stock_quantity-5.8.1.tar.gz
+	sha256sums = 45bfa3103f9de9ab14e800a8bee135dbaede86c60a738c19fc27f962c071a6e0
+	b2sums = 88ab3bf9282efaf597e1163119472980314cb6f2e45f41caf892b451be2536e3bb2b70de2f04c814f62b46a897ddbbd89937b14ec9f1a8abfe68bbca1211a9f1
 
 pkgname = python-trytond_sale_stock_quantity
 
