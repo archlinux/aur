@@ -1,14 +1,15 @@
 pkgbase = python-trytond_account_payment
 	pkgdesc = Tryton module for payment
-	pkgver = 5.2.0
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_account_payment/trytond_account_payment-5.2.0.tar.gz
-	sha256sums = 7f87eb23320766d200e3c435c685a3ef0511b5388f0f3366e3d6c177fcb504f5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_payment/trytond_account_payment-5.8.1.tar.gz
+	sha256sums = bb9c015f8501f0508e54594bf4004513b73efcf33485560c817d58a3d507d0a6
+	b2sums = 2e51440c498e749af10dfb741fda7d44f5715f6262737cfe99e5410d313ff60d2efc322ca4c7fec996c856b352e4107212fd8ddee404dbcb14c0ec6a7ea59030
 
 pkgname = python-trytond_account_payment
 
