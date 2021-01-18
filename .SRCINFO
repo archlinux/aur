@@ -1,0 +1,15 @@
+pkgbase = python-trytond_sale_discount
+	pkgdesc = Tryton module that manages discount on sale
+	pkgver = 5.8.2
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_discount/trytond_sale_discount-5.8.2.tar.gz
+	sha256sums = b5faa106b3ecc474d8b922445e48af88c6e8c2a4dda44bd6102ebac6019ef086
+	b2sums = cb8e0b2bd32cc4678db7be725d57c009713cd531f98c4a44eae182749243f36550955708a06b239c445a4fae60c426958bf67706f10828ff37bdab32faf1a7e9
+
+pkgname = python-trytond_sale_discount
+
