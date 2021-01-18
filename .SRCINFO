@@ -1,14 +1,15 @@
 pkgbase = python-trytond_project_revenue
 	pkgdesc = Tryton module to add revenue on project
-	pkgver = 5.6.0
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_project_revenue/trytond_project_revenue-5.6.0.tar.gz
-	sha256sums = fdfa8e0ca745a20a8a2838364acc1be11d324cd569fee1b86a6ff522aee7102f
+	source = https://files.pythonhosted.org/packages/source/t/trytond_project_revenue/trytond_project_revenue-5.8.1.tar.gz
+	sha256sums = d97759bab1632520b189f402955877e4781f834c48ea081b797d4a189ac73a29
+	b2sums = 50494b10c8c2458c341e871b2a11414d7cf29a43afa7da78b05ed40afd7a2e13f3402154980839a96169fee0f6525d86778ca9e85cbd60f9ba83a92bea812519
 
 pkgname = python-trytond_project_revenue
 
