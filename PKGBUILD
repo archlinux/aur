@@ -1,9 +1,10 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Sébastien "Seblu" Luttringer <seblu@seblu.net>
 
-pkgbase=qemu
-pkgname=(qemu qemu-headless qemu-arch-extra qemu-headless-arch-extra
-         qemu-block-{iscsi,rbd,gluster} qemu-guest-agent)
+pkgbase=qemu-nonbroken
+_pkgbase=qemu
+pkgname=(qemu-nonbroken qemu-nonbroken-headless qemu-nonbroken-arch-extra qemu-nonbroken-headless-arch-extra
+         qemu-nonbroken-block-{iscsi,rbd,gluster} qemu-nonbroken-guest-agent)
 pkgdesc="A generic and open source machine emulator and virtualizer"
 pkgver=5.2.0
 pkgrel=99
@@ -34,7 +35,7 @@ esac
 prepare() {
   mkdir build-{full,headless}
   mkdir -p extra-arch-{full,headless}/usr/{bin,share/qemu}
-  patch -p1 -d ${srcdir}/${pkgbase}-${pkgver} < ${srcdir}/build-most-modules-statically-hack.diff
+  patch -p1 -d ${srcdir}/${_pkgbase}-${pkgver} < ${srcdir}/build-most-modules-statically-hack.diff
 }
 
 build() {
@@ -54,7 +55,7 @@ build() {
 _build() (
   cd build-$1
 
-  ../${pkgname}-${pkgver}/configure \
+  ../${_pkgbase}-${pkgver}/configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
@@ -70,7 +71,7 @@ _build() (
   ninja
 )
 
-package_qemu() {
+package_qemu-nonbroken() {
   optdepends=('qemu-arch-extra: extra architectures support')
   provides=(qemu-headless)
   conflicts=(qemu-headless)
@@ -79,7 +80,7 @@ package_qemu() {
   _package full
 }
 
-package_qemu-headless() {
+package_qemu-nonbroken-headless() {
   pkgdesc="QEMU without GUI"
   depends=("${_headlessdeps[@]}")
   optdepends=('qemu-headless-arch-extra: extra architectures support')
@@ -166,7 +167,7 @@ _package() {
   if [ "$1" = headless ]; then rm -r {applications,icons}; fi
 }
 
-package_qemu-arch-extra() {
+package_qemu-nonbroken-arch-extra() {
   pkgdesc="QEMU for foreign architectures"
   depends=(qemu)
   provides=(qemu-headless-arch-extra)
@@ -176,7 +177,7 @@ package_qemu-arch-extra() {
   mv extra-arch-full/usr "$pkgdir"
 }
 
-package_qemu-headless-arch-extra() {
+package_qemu-nonbroken-headless-arch-extra() {
   pkgdesc="QEMU without GUI, for foreign architectures"
   depends=(qemu-headless)
   options=(!strip)
@@ -184,28 +185,28 @@ package_qemu-headless-arch-extra() {
   mv extra-arch-headless/usr "$pkgdir"
 }
 
-package_qemu-block-iscsi() {
+package_qemu-nonbroken-block-iscsi() {
   pkgdesc="QEMU iSCSI block module"
   depends=(glib2 libiscsi)
 
   install -D build-full/block-iscsi.so "$pkgdir/usr/lib/qemu/block-iscsi.so"
 }
 
-package_qemu-block-rbd() {
+package_qemu-nonbroken-block-rbd() {
   pkgdesc="QEMU RBD block module"
   depends=(glib2 ceph-libs)
 
   install -D build-full/block-rbd.so "$pkgdir/usr/lib/qemu/block-rbd.so"
 }
 
-package_qemu-block-gluster() {
+package_qemu-nonbroken-block-gluster() {
   pkgdesc="QEMU GlusterFS block module"
   depends=(glib2 glusterfs)
 
   install -D build-full/block-gluster.so "$pkgdir/usr/lib/qemu/block-gluster.so"
 }
 
-package_qemu-guest-agent() {
+package_qemu-nonbroken-guest-agent() {
   pkgdesc="QEMU Guest Agent"
   depends=(gcc-libs glib2 libudev.so liburing)
   install=qemu-guest-agent.install
