@@ -1,6 +1,6 @@
 pkgbase = git-cola
 	pkgdesc = A powerful GUI for Git
-	pkgver = 3.7
+	pkgver = 3.8
 	pkgrel = 1
 	url = http://git-cola.github.com/
 	arch = any
@@ -15,10 +15,12 @@ pkgbase = git-cola
 	depends = icu
 	depends = qt5-svg
 	optdepends = python-pyinotify: for inotify support
-	optdepends = tk: to use the built-in ssh-askpass handler
+	optdepends = python-pygments: syntax highlighting
+	optdepends = python-pyinotify: for inotify support
+	optdepends = tcl: to use the built-in ssh-askpass handler
 	options = !makeflags
-	source = git-cola-3.7.tar.gz::https://github.com/git-cola/git-cola/archive/v3.7.tar.gz
-	sha256sums = 9a1427b05c107ec8337881ed68bb450ac040a08880f91dcb770588f755d6fd1b
+	source = git-cola-3.8.tar.gz::https://github.com/git-cola/git-cola/archive/v3.8.tar.gz
+	sha256sums = ea482ca32fe142ddba500d2edf3a05f11e31cf193e5d7a944f3fe28c9ab123d4
 
 pkgname = git-cola
 
