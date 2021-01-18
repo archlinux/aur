@@ -19,7 +19,6 @@ pkgbase = lib32-libpulse-nosystemd-git
 	depends = lib32-libxtst
 	depends = lib32-libsm
 	depends = lib32-libsndfile
-	depends = lib32-libltdl
 	optdepends = lib32-alsa-plugins: ALSA support
 	optdepends = lib32-gtk3: gtk3 support
 	provides = lib32-pulseaudio
