@@ -6,11 +6,12 @@
 pkgname=libjbig-shared
 pkgver=2.1
 pkgrel=5
-pkgdesc="Shared library interface to jbigkit"
+pkgdesc="Shared library interface to jbigkit built from Debian patchset"
 arch=('x86_64')
 url="https://www.cl.cam.ac.uk/~mgk25/jbigkit/"
 license=('GPL')
-depends=()
+depends=('jbigkit')
+provides=('libjbig.so.0')
 source=(https://www.cl.cam.ac.uk/~mgk25/download/jbigkit-$pkgver.tar.gz
         http://deb.debian.org/debian/pool/main/j/jbigkit/jbigkit_$pkgver-3.1.debian.tar.xz)
 sha256sums=('de7106b6bfaf495d6865c7dd7ac6ca1381bd12e0d81405ea81e7f2167263d932'
