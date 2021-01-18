@@ -1,8 +1,8 @@
 # Maintainer: Björn "zemrod" Bravin <sinon dot adastrum at gmail dot com>
 _bpn=rawk
 pkgname=$_bpn-git
-pkgver=0.6.3
-pkgrel=2
+pkgver=0.6.3.48.g51ab8bc
+pkgrel=1
 pkgdesc="a minimal tool inspired by gawks string seperation ability"
 arch=('x86_64')
 url="https://gitlab.com/Zemrod/$_bpn"
@@ -14,8 +14,8 @@ source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "${_pkgname}"
-    printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$_bpn"
+    printf "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
