@@ -1,7 +1,7 @@
 pkgbase = pacroller-git
 	pkgdesc = Unattended upgrade for archlinux
 	pkgver = 0.0.5.2.g7c67531
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/isjerryxiao/pacroller
 	arch = any
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = pacroller-git
 	depends = python
 	depends = pyalpm
 	provides = pacroller
+	conflicts = pacroller
 	backup = etc/pacroller/config.json
 	source = pacroller::git+https://github.com/isjerryxiao/pacroller.git
 	md5sums = SKIP

@@ -2,7 +2,7 @@
 _srcname=pacroller
 pkgname=pacroller-git
 pkgver=0.0.5.2.g7c67531
-pkgrel=1
+pkgrel=2
 pkgdesc="Unattended upgrade for archlinux"
 arch=('any')
 url="https://github.com/isjerryxiao/pacroller"
@@ -10,6 +10,7 @@ license=('GPL3')
 depends=('python' 'pyalpm')
 makedepends=('git')
 provides=("pacroller")
+conflicts=("pacroller")
 backup=('etc/pacroller/config.json')
 source=("$_srcname::git+https://github.com/isjerryxiao/pacroller.git")
 md5sums=('SKIP')
