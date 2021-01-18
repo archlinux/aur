@@ -1,5 +1,4 @@
-# Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
-# Mainainer: Nathan Owens <ndowens @ artixlinux.org>
+# Maintainer: Ian Young <ian at iangreenleaf dot com>
 
 pkgname=python-rollbar
 pkgver=0.15.0
