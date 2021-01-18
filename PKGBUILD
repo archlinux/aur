@@ -2,10 +2,10 @@
 
 pkgname=ivm
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The cross-platform Inko version manager"
 url="https://gitlab.com/inko-lang/ivm"
-makedepends=('gcc-libs')
+depends=('gcc-libs')
 makedepends=('fakeroot' 'cargo')
 arch=('x86_64')
 license=('MPL2')
