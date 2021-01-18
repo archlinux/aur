@@ -1,5 +1,5 @@
 pkgbase = visual-studio-code-wayland
-	pkgdesc = The Open Source build of Visual Studio Code (vscode) editor
+	pkgdesc = The Open Source build of Visual Studio Code (vscode) editor with electron 12 beta (wayland native support)
 	pkgver = 1.52.1
 	pkgrel = 1
 	url = https://github.com/microsoft/vscode

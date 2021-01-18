@@ -1,7 +1,7 @@
 # Maintainer: Yifan Xu <jamesxu182@gamil.com>
 
 pkgname=visual-studio-code-wayland
-pkgdesc='The Open Source build of Visual Studio Code (vscode) editor'
+pkgdesc='The Open Source build of Visual Studio Code (vscode) editor with electron 12 beta (wayland native support)'
 # Important: Remember to check https://github.com/microsoft/vscode/wiki/How-to-Contribute#prerequisites for target node version
 # NodeJS versioning cheatsheet:
 #   - carbon: 8
