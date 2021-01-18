@@ -1,12 +1,13 @@
 pkgbase = ivm
 	pkgdesc = The cross-platform Inko version manager
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/inko-lang/ivm
 	arch = x86_64
 	license = MPL2
 	makedepends = fakeroot
 	makedepends = cargo
+	depends = gcc-libs
 	provides = inko
 	source = https://gitlab.com/inko-lang/ivm/-/archive/v0.1.3/ivm-v0.1.3.tar.bz2
 	sha256sums = db4241195e1ed0efb9b4ab3f8f0ac76186d47163020c2d4486d84367cd6d9423
