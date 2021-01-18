@@ -1,0 +1,28 @@
+pkgbase = boops.lv2-git
+	pkgdesc = A glitch effect sequencer LV2 plugin (git version)
+	pkgver = 1.2.4.r0.gbdb4de4
+	pkgrel = 1
+	url = https://github.com/sjaehn/BOops
+	arch = x86_64
+	groups = lv2-plugins
+	groups = pro-audio
+	license = GPL3
+	checkdepends = lv2lint
+	makedepends = git
+	makedepends = lv2
+	depends = cairo
+	depends = gcc-libs
+	depends = glibc
+	depends = libsndfile
+	depends = libx11
+	provides = boops
+	provides = boops=1.2.4
+	provides = boops.lv2
+	provides = boops.lv2=1.2.4
+	conflicts = boops
+	conflicts = boops.lv2
+	source = boops.lv2::git+https://github.com/sjaehn/BOops
+	md5sums = SKIP
+
+pkgname = boops.lv2-git
+

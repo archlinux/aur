@@ -1,0 +1,5 @@
+boops.lv2/
+boops.lv2-git-*.pkg.tar.xz
+boops.lv2-git-*.pkg.tar.zst
+pkg/
+src/
