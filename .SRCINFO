@@ -1,6 +1,6 @@
 pkgbase = qshutdown
 	pkgdesc = Shutdown your computer
-	pkgver = 1.7.1
+	pkgver = 1.8.0.0~rc4
 	pkgrel = 1
 	url = https://launchpad.net/~hakaishi/+archive/ubuntu/qshutdown
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = qshutdown
 	depends = gstreamer0.10-base
 	depends = libxss
 	depends = qt5-imageformats
-	source = http://ppa.launchpad.net/hakaishi/qshutdown/ubuntu/pool/main/q/qshutdown/qshutdown_1.7.1.orig.tar.gz
-	md5sums = 418249014ef3ec46a38b10b183408a86
+	source = http://ppa.launchpad.net/hakaishi/qshutdown/ubuntu/pool/main/q/qshutdown/qshutdown_1.8.0.0~rc4.orig.tar.gz
+	md5sums = fd3112eeef30eb9dd1362196e46775e5
 
 pkgname = qshutdown
 
