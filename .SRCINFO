@@ -1,6 +1,6 @@
 pkgbase = moodle-dl-git
 	pkgdesc = Moodle downloader to download course content automatically
-	pkgver = v2.1.0.5.r0.ga122ba7
+	pkgver = v2.1.1.8.r0.gc431778
 	pkgrel = 1
 	url = https://github.com/C0D3D3V/Moodle-Downloader-2
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = moodle-dl-git
 	depends = python-certifi
 	depends = python-html2text
 	depends = python-requests
+	depends = python-slixmpp
 	provides = moodle-dl
 	conflicts = moodle-dl
 	source = git://github.com/C0D3D3V/Moodle-Downloader-2.git
