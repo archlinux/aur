@@ -36,9 +36,6 @@ package() {
     rm -f "kora-pgrey/$_iconnewcachescript"
     rm -f "kora-pgrey/$_iconcache"
 
-    # Fix index
-    patch -p1 < "$srcdir/fix-index.patch"
-
     install -dm755 "$pkgdir/$_iconpath"
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
     
