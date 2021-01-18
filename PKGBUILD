@@ -1,4 +1,4 @@
-# Maintainer: Florian B. 
+# Maintainer: Florian B. gn0mish@protonmail.com
 
 pkgname="powerline-shell-git"
 _pkgname="powerline-shell"
@@ -10,7 +10,7 @@ _giturl="://github.com/b-ryan/powerline-shell"
 url="https${_giturl}"
 license=("MIT")
 provides=("${_pkgname}")
-depends=("python")
+depends=("python" "python-argparse")
 makedepends=(
   "git" "python-setuptools"
 )
