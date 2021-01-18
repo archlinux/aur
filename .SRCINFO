@@ -1,6 +1,6 @@
 pkgbase = protoc-gen-go-grpc
 	pkgdesc = gRPC bindings generator for Go language
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/grpc/grpc-go
@@ -8,8 +8,8 @@ pkgbase = protoc-gen-go-grpc
 	license = Apache
 	makedepends = go
 	depends = protoc-gen-go
-	source = https://github.com/grpc/grpc-go/archive/cmd/protoc-gen-go-grpc/v1.0.1.tar.gz
-	sha256sums = 01bfd13d2140ff671fcb826d114d091f71b921102337ea730a9c21f8272fc655
+	source = https://github.com/grpc/grpc-go/archive/cmd/protoc-gen-go-grpc/v1.1.0.tar.gz
+	sha256sums = 9aa1f1f82b45a409c25eb7c06c6b4d2a41eb3c9466ebd808fe6d3dc2fb9165b3
 
 pkgname = protoc-gen-go-grpc
 
