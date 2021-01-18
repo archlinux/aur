@@ -1,14 +1,15 @@
 pkgbase = python-trytond_account_dunning_email
 	pkgdesc = Tryton module for account dunning email
-	pkgver = 5.2.0
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_account_dunning_email/trytond_account_dunning_email-5.2.0.tar.gz
-	sha256sums = d631a86e5b8e7e2a12c1ad61922200b574b7959f3b54e3243290be5429b388c5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_dunning_email/trytond_account_dunning_email-5.8.1.tar.gz
+	sha256sums = fee7106671b7d51879536f93cc7345c07d71044de04436c84f312388913b5dbd
+	b2sums = 435c4c30f82e89af260d3063d965416899d3b60b12be861a2385efd1d14ce1fb481f6b270db68cb0eb804e310a3f7d7bbd61646ec9d06a175c222a2d58eb36e9
 
 pkgname = python-trytond_account_dunning_email
 
