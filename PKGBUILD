@@ -10,6 +10,7 @@ license=(GPL3)
 depends=(python-gobject python-xdg python-dbus python-docopt python-ewmh gtk3
          libnotify python-setproctitle python-setuptools python-wheel)
 optdepends=("libappindicator-gtk3: AppIndictor support (eg: Plasma, Unity).")
+makedepends=(git python-setuptools-scm)
 conflicts=(caffeine caffeine-bzr caffeine-oneclick caffeine-systray)
 provides=(caffeine caffeine-bzr caffeine-oneclick caffeine-systray)
 replaces=(caffeine-oneclick caffeine-systray)
