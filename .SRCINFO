@@ -1,0 +1,15 @@
+pkgbase = python-trytond_web_shop
+	pkgdesc = Tryton module that provides a common base for webshops
+	pkgver = 5.8.1
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_web_shop/trytond_web_shop-5.8.1.tar.gz
+	sha256sums = 72af6bbb93e2b50fb80c3547332f6d219f4fbac4b5ea27569ae251ef08dd5e1f
+	b2sums = 91eef41ec8902935a6e7e93835c2e5fe73a85b5c7c1b8b1be16f9d9242129e57dbaeb01d3ec2b6b49ff74ae69029579034236397a1c66cddb65dfa883de45175
+
+pkgname = python-trytond_web_shop
+
