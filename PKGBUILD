@@ -6,13 +6,19 @@
 _gitname='nerd-fonts'
 pkgname='nerd-fonts-complete'
 pkgver=2.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Iconic font aggregator, collection, & patcher. 3,600+ icons, 50+ patched fonts.'
 arch=('any')
 url='https://github.com/ryanoasis/nerd-fonts'
 license=('MIT')
 makedepends=('xorg-mkfontscale' 'xorg-bdftopcf' 'xorg-font-util')
-conflicts=('nerd-fonts-git' 'nerd-fonts-complete-mono-glyphs')
+conflicts=(
+  'nerd-fonts-git'
+  'nerd-fonts-complete-mono-glyphs'
+  'nerd-fonts-hack'
+  'ttf-nerd-fonts-symbols'
+  'ttf-nerd-fonts-symbols-mono'
+)
 source=(
   'fix-installer-font-dir.patch'
   "${_gitname}-${pkgver}.tar.gz::https://github.com/ryanoasis/nerd-fonts/archive/v${pkgver}.tar.gz"
