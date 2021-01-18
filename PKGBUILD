@@ -4,7 +4,7 @@
 _model="j6510dw"
 pkgname="brother-mfc-$_model"
 pkgver="3.0.0"
-pkgrel=4
+pkgrel=5
 _revision=1
 pkgdesc="LPR and CUPS driver for the Brother MFC-J6510DW"
 url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
