@@ -1,14 +1,15 @@
 pkgbase = python-trytond_google_maps
 	pkgdesc = Tryton module to link addresses to Google Maps
-	pkgver = 5.6.0
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_google_maps/trytond_google_maps-5.6.0.tar.gz
-	sha256sums = 4ff91fffdd061bbdd5c202d581a795e3bfa9fbb94756b6c88b97b523f93f33da
+	source = https://files.pythonhosted.org/packages/source/t/trytond_google_maps/trytond_google_maps-5.8.1.tar.gz
+	sha256sums = 9cfd3f6997b4cd427fa31caf2ec5c15f4aacbf1a6dc839ffbd857597ec547105
+	b2sums = a83b40a51cbe22bdc6095f9c4b2fb465282b2bebeedb16928de6fd9c5d22576ef116c379531c12117186f8981d77863c06a249c8d4e29ec15ad46566ff7b8416
 
 pkgname = python-trytond_google_maps
 
