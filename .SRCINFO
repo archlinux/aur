@@ -1,6 +1,6 @@
 pkgbase = emacs-pgtk-native-comp-git
 	pkgdesc = GNU Emacs. Unofficial pgtk-nativecomp branch.
-	pkgver = 28.0.50.143840
+	pkgver = 28.0.50.146387
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	arch = x86_64
