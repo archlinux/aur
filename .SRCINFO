@@ -1,0 +1,19 @@
+pkgbase = gr-lora_sdr-git
+	pkgdesc = GNURadio blocks for fully-functional LoRa transceiver
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/martynvdijke/gr-lora_sdr
+	arch = any
+	license = unknown
+	makedepends = cmake
+	depends = gnuradio
+	depends = boost
+	depends = swig
+	depends = libvolk
+	depends = libuhd
+	provides = gr-lora_sdr
+	source = git+https://github.com/martynvdijke/gr-lora_sdr
+	sha1sums = SKIP
+
+pkgname = gr-lora_sdr-git
+
