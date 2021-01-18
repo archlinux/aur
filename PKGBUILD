@@ -7,8 +7,7 @@ arch=('x86_64' 'arm64')
 url="https://github.com/screego/$_pkgname"
 license=('GPL3')
 provides=("screego-server")
-conflict=("screego-server"
-	"screego-server-git")
+conflict=("screego-server")
 makedepends=('go' 'yarn')
 optdepends=('nginx: to allow reverse proxy connections')
 source_x86_64=("$pkgname-${pkgver}_amd64.tar.gz::$url/releases/download/v$pkgver/screego_${pkgver}_linux_amd64.tar.gz")
