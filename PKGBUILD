@@ -16,7 +16,7 @@ conflicts=("iicalc-beta")
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("iicalc-$pkgver.deb::https://gitlab.com/TurboWafflz/ImaginaryInfinity-Calculator/-/jobs/artifacts/development/raw/iicalc.deb?job=debian%20packager")
-sha512sums=('9981b7128f907734d00ff8985eb3034288ba60e418610ccf91bb3a952e99ff61ef1ee7348fbe24560f5547a6a11d0d26637052189b030dfced5630ec24f8ed88')
+sha512sums=('0e9900979a3cafc2fd4526af56c3b4f67288cea4f643b33af228cb97542afe55ac00dd02f50c7b94aa62e30e8ebf8b081826e74a26f1b9ac84a61943225df38a')
 
 package(){
 
