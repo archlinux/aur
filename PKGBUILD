@@ -3,7 +3,7 @@ _basename="SceneBuilder-8"
 pkgname="javafx8-scenebuilder"
 _debpkg=scenebuilder
 pkgver="8.5.0"
-pkgrel=2
+pkgrel=1
 pkgdesc="Gluon Scene Builder for Java 8, based on debian package, this version is recognized by Netbeans, it was released on Jun 5, 2018."
 arch=('x86_64' 'i686')
 url="http://gluonhq.com/labs/scene-builder/"
@@ -25,7 +25,7 @@ build() {
   mv "${srcdir}/opt/${_basename}/SceneBuilder.png" "${srcdir}/opt/${_basename}/${_basename}.png"
 
 echo "[Desktop Entry]
-Name=Scene Builder
+Name=Scene Builder 8.5.0
 Comment=Gluon Scene Builder for Java 8.
 Exec=/opt/${_basename}/${_basename}
 Icon=/opt/${_basename}/${_basename}.png
