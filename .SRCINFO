@@ -1,14 +1,15 @@
 pkgbase = python-trytond_sale_complaint
 	pkgdesc = Tryton module for sale complaint
-	pkgver = 5.6.0
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_complaint/trytond_sale_complaint-5.6.0.tar.gz
-	sha256sums = 0a788a042f8371e70615f9ab307d34f421a3c7a731aa9a21f8cc65da567d91c5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_complaint/trytond_sale_complaint-5.8.1.tar.gz
+	sha256sums = 259534a30544a1cb8146c5255e5b827a8ccac3d10ee3b8c4af113637b225266f
+	b2sums = 1d2e643bee1d78f588743f0294b61bb8ae165f5fe44361cd4bb1a3d1b71adcdaaf85d1eacc7c4b10cce464e7aec466e6e15c94c0dcb17d08df0a2741f82761d4
 
 pkgname = python-trytond_sale_complaint
 
