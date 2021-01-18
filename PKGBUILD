@@ -49,7 +49,6 @@ source=(
   git+https://github.com/hrydgard/miniupnp.git
   ppsspp.desktop
   ppsspp-qt.desktop
-  ppsspp-flags.patch
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -62,8 +61,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '77a88e75f3c090856442b11c8d3f24ed95cc9ca0da1e3f22a40b700b30a3a7b7'
-            '7456207ba3759ee93709e25b7bfce5b560a8cb432e2d578ef0f98cb6da6c4d15'
-            '6694643d96dae673f01555637139468eb277f3379afbcceccad3f7e0ae670278')
+            '7456207ba3759ee93709e25b7bfce5b560a8cb432e2d578ef0f98cb6da6c4d15')
 
 pkgver() {
   cd ppsspp
@@ -73,8 +71,6 @@ pkgver() {
 
 prepare() {
   cd ppsspp
-
-  patch -Np1 -i ../ppsspp-flags.patch
 
   for submodule in assets/lang ext/glslang ffmpeg; do
     git submodule init ${submodule}
