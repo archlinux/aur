@@ -1,8 +1,8 @@
 # Maintainer: Björn "zemrod" Bravin <sinon dot adastrum at gmail dot com>
 _bpn=rawk
 pkgname=$_bpn-git
-pkgver=0.6.3.r151.0495fe0
-pkgrel=1
+pkgver=0.6.3
+pkgrel=2
 pkgdesc="a minimal tool inspired by gawks string seperation ability"
 arch=('x86_64')
 url="https://gitlab.com/Zemrod/$_bpn"
