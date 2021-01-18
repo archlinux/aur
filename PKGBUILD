@@ -2,7 +2,7 @@
 
 _pkgname='bandwhich'
 pkgname="${_pkgname}-git"
-pkgver=0.18.1.r9.g8020b94
+pkgver=0.20.0.r4.gacd1b0a
 pkgrel=1
 pkgdesc='Terminal bandwidth utilization tool'
 arch=('x86_64')
