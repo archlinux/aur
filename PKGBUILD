@@ -1,6 +1,6 @@
 # Maintainer: Ben Brown <benjamb at pm dot me>
 pkgname=dlt-viewer-git
-pkgver=2.20.0.r0.g5bab4bb
+pkgver=2.21.1.r0.gceb8fea
 pkgrel=1
 pkgdesc="Diagnostic Log and Trace viewing program"
 url="https://github.com/GENIVI/dlt-viewer"
