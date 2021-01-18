@@ -54,8 +54,9 @@ package() {
 
   # sanitize
   rm -f "$pkgdir"/opt/$pkgname/bin/{$pkgname.exe,compile.{bat,make}}
-  find "$pkgdir" -exec sh -c \
-    "file '{}' | grep -qE 'ELF|executable|directory' && chmod 755 '{}' || chmod 644 '{}'" \;
+  # find "$pkgdir" -exec sh -c \
+    # "file '{}' | grep -qE 'ELF|executable|directory' && chmod 755 '{}' || chmod 644 '{}'" \;
+  find "$pkgdir" -exec sh -c "ls -Fd '{}' | grep -q '.*[/\*]$' && chmod 755 '{}' || chmod 644 '{}'" \;
   chown -R root:root "$pkgdir"
 
   # symlinks
