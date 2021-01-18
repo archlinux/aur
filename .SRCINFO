@@ -1,14 +1,15 @@
 pkgbase = python-trytond_gis
 	pkgdesc = Adds Geographic Information System support to trytond
-	pkgver = 5.6.0
+	pkgver = 5.8.0
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_gis/trytond_gis-5.6.0.tar.gz
-	sha256sums = b2d952ff4877c53f62f90866c86acdd03f1c439a0bf3db43bcdf2d68dc03182a
+	source = https://files.pythonhosted.org/packages/source/t/trytond_gis/trytond_gis-5.8.0.tar.gz
+	sha256sums = fbbd17ddf0c17c0231007fda007f73677f0db21b17dd77930ae0ddfd6250b499
+	b2sums = 1cfec5f6710636f89c7dea42f55d7f3dd0667ca4ac85ffe1c21566dd40c07535852465afc55f1263bd9a7371b993209038fa210bfc2e6fdab9fc308d29b7faac
 
 pkgname = python-trytond_gis
 
