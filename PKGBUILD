@@ -1,14 +1,13 @@
 pkgname=screego-server
 _pkgname=screego-server
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='screen sharing for developers'
 arch=('x86_64' 'arm64')
 url="https://github.com/screego/server"
 license=('GPL3')
 provides=("${pkgname}")
-conflict=("screego-server-bin"
-	"screego-server-git")
+onflict=("screego-server")
 makedepends=('go' 'yarn')
 optdepends=('nginx: to allow reverse proxy connections')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
@@ -16,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	"tmpfiles.conf"
 	"sysusers.conf"
 )
-sha256sums=('8f698e8546bf3b21011d75fd498e770c104ee8a7783f93aaa72571708be0e30a'
+sha256sums=('9a8e707ae216c455b9fef08171fd8c306ab6d40ab65cebb511b22735050b2a17'
             '7467398db76e4c14f7c4bd402b8dc1dce71866856ac9ae3d54cec6e5ce93155c'
             '1d4494d5328700b304b0837dafc7a5772b8abe3435a0a24337a89f25ad5acd1b'
             '5804e54e4af5704fd5066c45313d7635798bd4389cd8312ee965c911d9d75e85')
