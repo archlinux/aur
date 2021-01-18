@@ -1,5 +1,5 @@
 pkgbase = sphvr-git
-	pkgdesc = A GLib library for Vulkan abstraction.
+	pkgdesc = A spherical media player using Vulkan and GStreamer.
 	pkgver = 0.0.1.63.3a9ec15
 	pkgrel = 1
 	url = https://gitlab.com/lubosz/sphvr
