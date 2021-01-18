@@ -1,5 +1,5 @@
 diff --git a/build/makefile_base.mak b/build/makefile_base.mak
-index e685cdd..f98cad8 100755
+index 412060a..685dd65 100755
 --- a/build/makefile_base.mak
 +++ b/build/makefile_base.mak
 @@ -69,7 +69,7 @@ endif
@@ -31,7 +31,7 @@ index e685cdd..f98cad8 100755
  SANITY_FLAGS   := -fwrapv -fno-strict-aliasing
  COMMON_FLAGS   := $(OPTIMIZE_FLAGS) $(SANITY_FLAGS)
  CARGO_BUILD_ARG := --release
-@@ -273,9 +274,11 @@ WINE_OUT_SERVER := $(DST_DIR)/bin/wineserver
+@@ -282,9 +283,11 @@ WINE_OUT_SERVER := $(DST_DIR)/bin/wineserver
  WINE_OUT := $(WINE_OUT_BIN) $(WINE_OUT_SERVER)
  # Tool-only build outputs needed for other projects
  WINEGCC32 := $(TOOLS_DIR32)/bin/winegcc
@@ -43,7 +43,7 @@ index e685cdd..f98cad8 100755
  WINEBUILD64 := $(TOOLS_DIR64)/bin/winebuild
  WINE_BUILDTOOLS64 := $(WINEGCC64) $(WINEBUILD64)
  
-@@ -292,14 +295,6 @@ VKD3D := $(SRCDIR)/vkd3d-proton
+@@ -301,14 +304,6 @@ VKD3D := $(SRCDIR)/vkd3d-proton
  VKD3D_OBJ32 := ./obj-vkd3d32
  VKD3D_OBJ64 := ./obj-vkd3d64
  
@@ -58,7 +58,7 @@ index e685cdd..f98cad8 100755
  MEDIACONV := $(SRCDIR)/media-converter
  MEDIACONV_OBJ32 := ./obj-media-converter32
  MEDIACONV_OBJ64 := ./obj-media-converter64
-@@ -324,7 +319,6 @@ OBJ_DIRS := $(TOOLS_DIR32)        $(TOOLS_DIR64)        \
+@@ -335,7 +330,6 @@ OBJ_DIRS := $(TOOLS_DIR32)        $(TOOLS_DIR64)        \
              $(WINE_OBJ32)         $(WINE_OBJ64)         \
              $(VRCLIENT_OBJ32)     $(VRCLIENT_OBJ64)     \
              $(DXVK_OBJ32)         $(DXVK_OBJ64)         \
@@ -66,7 +66,7 @@ index e685cdd..f98cad8 100755
              $(MEDIACONV_OBJ32)    $(MEDIACONV_OBJ64)    \
              $(VKD3D_OBJ32)        $(VKD3D_OBJ64)
  
-@@ -338,20 +332,14 @@ $(OBJ_DIRS):
+@@ -349,20 +343,14 @@ $(OBJ_DIRS):
  
  .PHONY: downloads
  
@@ -87,7 +87,7 @@ index e685cdd..f98cad8 100755
  $(SHARED_GECKO64_TARBALL):
  	mkdir -p $(dir $@)
  	wget -O "$@" "$(GECKO64_TARBALL_URL)"
-@@ -364,7 +352,7 @@ $(SHARED_MONO_TARBALL):
+@@ -375,7 +363,7 @@ $(SHARED_MONO_TARBALL):
  	mkdir -p $(dir $@)
  	wget -O "$@" "$(MONO_TARBALL_URL)"
  
@@ -96,7 +96,7 @@ index e685cdd..f98cad8 100755
  
  ##
  ## dist/install -- steps to finalize the install
-@@ -373,7 +361,7 @@ downloads: $(SHARED_NASM_TARBALL) $(SHARED_GECKO64_TARBALL) $(SHARED_GECKO32_TAR
+@@ -384,7 +372,7 @@ downloads: $(SHARED_NASM_TARBALL) $(SHARED_GECKO64_TARBALL) $(SHARED_GECKO32_TAR
  $(DST_DIR):
  	mkdir -p $@
  
@@ -105,8 +105,8 @@ index e685cdd..f98cad8 100755
  
  FILELOCK_TARGET := $(addprefix $(DST_BASE)/,filelock.py)
  $(FILELOCK_TARGET): $(addprefix $(SRCDIR)/,filelock.py)
-@@ -410,9 +398,17 @@ DIST_WINEMONO := $(DIST_WINEMONO_DIR)/wine-mono-$(WINEMONO_VER)
- DIST_FONTS := $(DST_DIR)/share/fonts
+@@ -423,9 +411,17 @@ DIST_WINEOPENXR_JSON64 := $(DIST_PREFIX)/drive_c/openxr/wineopenxr64.json
+ DIST_WINEOPENXR64 := $(DIST_PREFIX)/drive_c/windows/system32/wineopenxr.dll
  
  DIST_TARGETS := $(DIST_COPY_TARGETS) $(DIST_OVR32) $(DIST_OVR64) \
 -                $(DIST_GECKO32) $(DIST_GECKO64) $(DIST_WINEMONO) \
@@ -124,14 +124,10 @@ index e685cdd..f98cad8 100755
  DEPLOY_COPY_TARGETS := $(DIST_COPY_TARGETS) $(DIST_VERSION) $(DIST_LICENSE) $(DIST_TOOLMANIFEST) $(DIST_OFL_LICENSE)
  REDIST_COPY_TARGETS := $(DEPLOY_COPY_TARGETS) $(DIST_COMPAT_MANIFEST)
  
-@@ -491,11 +487,11 @@ $(DIST_FONTS): fonts
- ALL_TARGETS += dist
+@@ -513,14 +509,14 @@ ALL_TARGETS += dist
  GOAL_TARGETS += dist
  
--dist: $(DIST_TARGETS) wine gst_good gst_bad gst_ugly ffmpeg gst_libav lsteamclient steam dxvk vkd3d-proton vrclient | $(DST_DIR)
-+dist: $(DIST_TARGETS) wine gst_good gst_bad gst_ugly ffmpeg gst_libav vrclient lsteamclient steam dxvk vkd3d-proton mediaconv | $(DST_DIR)
- 	echo `date '+%s'` `GIT_DIR=$(abspath $(SRCDIR)/.git) git describe --tags` > $(DIST_VERSION)
- 	cp $(DIST_VERSION) $(DST_BASE)/
+ dist_prefix: wine gst_good
 -	find $(DST_DIR)/lib/wine -type f -execdir chmod a-w '{}' '+'
 -	find $(DST_DIR)/lib64/wine -type f -execdir chmod a-w '{}' '+'
 +	find $(DST_DIR)/lib/wine -type f -execdir chmod go-w '{}' '+'
@@ -139,18 +135,14 @@ index e685cdd..f98cad8 100755
  	rm -rf $(abspath $(DIST_PREFIX))
  	python3 $(SRCDIR)/default_pfx.py $(abspath $(DIST_PREFIX)) $(abspath $(DST_DIR)) $(STEAM_RUNTIME_RUNSH)
  
-@@ -515,8 +511,8 @@ install: dist | $(filter-out dist deploy install redist,$(MAKECMDGOALS))
- redist: dist | $(filter-out dist deploy install redist,$(MAKECMDGOALS))
- 	mkdir -p $(REDIST_DIR)
- 	cp -a $(REDIST_COPY_TARGETS) $(REDIST_DIR)
--	cp -a $(DST_BASE)/dist $(REDIST_DIR)
--	@echo "Created redistribution at "$(REDIST_DIR)
-+	tar -C $(DST_DIR) -c . | gzip -c -1 > $(REDIST_DIR)/proton_dist.tar.gz
-+	@echo "Created redistribution tarball at "$(REDIST_DIR)"/proton_dist.tar.gz"
+ dist_wineopenxr: dist_prefix $(DIST_WINEOPENXR_JSON64) $(DIST_WINEOPENXR64)
  
- .PHONY: module32 module64 module
+-dist: $(DIST_TARGETS) wine gst_good gst_bad gst_ugly ffmpeg gst_libav lsteamclient steam dxvk vkd3d-proton vrclient dist_wineopenxr | $(DST_DIR)
++dist: $(DIST_TARGETS) gst_bad gst_ugly ffmpeg gst_libav lsteamclient steam dxvk vkd3d-proton vrclient dist_wineopenxr | $(DST_DIR)
+ 	echo `date '+%s'` `GIT_DIR=$(abspath $(SRCDIR)/.git) git describe --tags` > $(DIST_VERSION)
+ 	cp $(DIST_VERSION) $(DST_BASE)/
  
-@@ -531,6 +527,8 @@ module64:
+@@ -556,6 +552,8 @@ module64:
  module: module32 module64
  
  GST_COMMON_MESON_ARGS := \
@@ -159,7 +151,7 @@ index e685cdd..f98cad8 100755
  	-Dexamples=disabled \
  	-Dtests=disabled \
  	-Dgtk_doc=disabled \
-@@ -598,14 +596,14 @@ gst_orc64: SHELL = $(CONTAINER_SHELL64)
+@@ -623,14 +621,14 @@ gst_orc64: SHELL = $(CONTAINER_SHELL64)
  gst_orc64: $(GST_ORC_CONFIGURE_FILES64)
  	PATH="$(abspath $(TOOLS_DIR64))/bin:$(PATH)" \
  	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR64))/lib:$(LD_LIBRARY_PATH)" \
@@ -176,7 +168,7 @@ index e685cdd..f98cad8 100755
  	cp -a $(TOOLS_DIR32)/lib/liborc* $(DST_DIR)/lib/
  
  ##
-@@ -617,6 +615,9 @@ GSTREAMER_MESON_ARGS := \
+@@ -642,6 +640,9 @@ GSTREAMER_MESON_ARGS := \
  	-Dbenchmarks=disabled \
  	-Dtools=disabled \
  	-Dbash-completion=disabled \
@@ -186,7 +178,7 @@ index e685cdd..f98cad8 100755
  	$(GST_COMMON_MESON_ARGS)
  
  GSTREAMER_CONFIGURE_FILES32 := $(GSTREAMER_OBJ32)/build.ninja
-@@ -667,7 +668,7 @@ gstreamer64: SHELL = $(CONTAINER_SHELL64)
+@@ -692,7 +693,7 @@ gstreamer64: SHELL = $(CONTAINER_SHELL64)
  gstreamer64: $(GSTREAMER_CONFIGURE_FILES64)
  	PATH="$(abspath $(TOOLS_DIR64))/bin:$(PATH)" \
  	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR64))/lib:$(LD_LIBRARY_PATH)" \
@@ -195,7 +187,7 @@ index e685cdd..f98cad8 100755
  	cp -a $(TOOLS_DIR64)/lib/libgst* $(DST_DIR)/lib64/ && \
  	cp -a $(TOOLS_DIR64)/lib/gstreamer-1.0 $(DST_DIR)/lib64/
  
-@@ -675,7 +676,7 @@ gstreamer32: SHELL = $(CONTAINER_SHELL32)
+@@ -700,7 +701,7 @@ gstreamer32: SHELL = $(CONTAINER_SHELL32)
  gstreamer32: $(GSTREAMER_CONFIGURE_FILES32)
  	PATH="$(abspath $(TOOLS_DIR32))/bin:$(PATH)" \
  	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR32))/lib:$(LD_LIBRARY_PATH)" \
@@ -204,7 +196,7 @@ index e685cdd..f98cad8 100755
  	cp -a $(TOOLS_DIR32)/lib/libgst* $(DST_DIR)/lib/ && \
  	cp -a $(TOOLS_DIR32)/lib/gstreamer-1.0 $(DST_DIR)/lib/
  
-@@ -708,6 +709,8 @@ GST_BASE_MESON_ARGS := \
+@@ -733,6 +734,8 @@ GST_BASE_MESON_ARGS := \
  	-Dx11=disabled \
  	-Dxshm=disabled \
  	-Dxvideo=disabled \
@@ -213,7 +205,7 @@ index e685cdd..f98cad8 100755
  	$(GST_COMMON_MESON_ARGS)
  
  GST_BASE_CONFIGURE_FILES32 := $(GST_BASE_OBJ32)/build.ninja
-@@ -758,7 +761,7 @@ gst_base64: SHELL = $(CONTAINER_SHELL64)
+@@ -783,7 +786,7 @@ gst_base64: SHELL = $(CONTAINER_SHELL64)
  gst_base64: $(GST_BASE_CONFIGURE_FILES64)
  	PATH="$(abspath $(TOOLS_DIR64))/bin:$(PATH)" \
  	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR64))/lib:$(LD_LIBRARY_PATH)" \
@@ -222,7 +214,7 @@ index e685cdd..f98cad8 100755
  	cp -a $(TOOLS_DIR64)/lib/libgst* $(DST_DIR)/lib64/ && \
  	cp -a $(TOOLS_DIR64)/lib/gstreamer-1.0 $(DST_DIR)/lib64/
  
-@@ -766,7 +769,7 @@ gst_base32: SHELL = $(CONTAINER_SHELL32)
+@@ -791,7 +794,7 @@ gst_base32: SHELL = $(CONTAINER_SHELL32)
  gst_base32: $(GST_BASE_CONFIGURE_FILES32)
  	PATH="$(abspath $(TOOLS_DIR32))/bin:$(PATH)" \
  	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR32))/lib:$(LD_LIBRARY_PATH)" \
@@ -231,7 +223,7 @@ index e685cdd..f98cad8 100755
  	cp -a $(TOOLS_DIR32)/lib/libgst* $(DST_DIR)/lib/ && \
  	cp -a $(TOOLS_DIR32)/lib/gstreamer-1.0 $(DST_DIR)/lib/
  
-@@ -817,11 +820,14 @@ GST_GOOD_MESON_ARGS := \
+@@ -842,11 +845,14 @@ GST_GOOD_MESON_ARGS := \
  	-Dtaglib=disabled \
  	-Dudp=disabled \
  	-Dv4l2=disabled \
@@ -246,7 +238,7 @@ index e685cdd..f98cad8 100755
  	$(GST_COMMON_MESON_ARGS)
  
  GST_GOOD_CONFIGURE_FILES32 := $(GST_GOOD_OBJ32)/build.ninja
-@@ -872,7 +878,7 @@ gst_good64: SHELL = $(CONTAINER_SHELL64)
+@@ -897,7 +903,7 @@ gst_good64: SHELL = $(CONTAINER_SHELL64)
  gst_good64: $(GST_GOOD_CONFIGURE_FILES64)
  	PATH="$(abspath $(TOOLS_DIR64))/bin:$(PATH)" \
  	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR64))/lib:$(LD_LIBRARY_PATH)" \
@@ -255,7 +247,7 @@ index e685cdd..f98cad8 100755
  	cp -a $(TOOLS_DIR64)/lib/libgst* $(DST_DIR)/lib64/ && \
  	cp -a $(TOOLS_DIR64)/lib/gstreamer-1.0 $(DST_DIR)/lib64/
  
-@@ -880,7 +886,7 @@ gst_good32: SHELL = $(CONTAINER_SHELL32)
+@@ -905,7 +911,7 @@ gst_good32: SHELL = $(CONTAINER_SHELL32)
  gst_good32: $(GST_GOOD_CONFIGURE_FILES32)
  	PATH="$(abspath $(TOOLS_DIR32))/bin:$(PATH)" \
  	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR32))/lib:$(LD_LIBRARY_PATH)" \
@@ -264,7 +256,7 @@ index e685cdd..f98cad8 100755
  	cp -a $(TOOLS_DIR32)/lib/libgst* $(DST_DIR)/lib/ && \
  	cp -a $(TOOLS_DIR32)/lib/gstreamer-1.0 $(DST_DIR)/lib/
  
-@@ -908,6 +914,9 @@ GST_BAD_MESON_ARGS := \
+@@ -933,6 +939,9 @@ GST_BAD_MESON_ARGS := \
  	-Dopencv=disabled \
  	-Dvoamrwbenc=disabled \
  	-Dx265=disabled \
@@ -274,7 +266,7 @@ index e685cdd..f98cad8 100755
  	$(GST_COMMON_MESON_ARGS)
  
  GST_BAD_CONFIGURE_FILES32 := $(GST_BAD_OBJ32)/build.ninja
-@@ -980,6 +989,7 @@ GST_UGLY_MESON_ARGS := \
+@@ -1005,6 +1014,7 @@ GST_UGLY_MESON_ARGS := \
          -Dglib-checks='disabled' \
          -Dglib-checks='disabled' \
          -Ddoc='disabled' \
@@ -282,7 +274,7 @@ index e685cdd..f98cad8 100755
  	$(GST_COMMON_MESON_ARGS)
  
  GST_UGLY_CONFIGURE_FILES32 := $(GST_UGLY_OBJ32)/build.ninja
-@@ -1048,6 +1058,7 @@ gst_ugly32: $(GST_UGLY_CONFIGURE_FILES32)
+@@ -1073,6 +1083,7 @@ gst_ugly32: $(GST_UGLY_CONFIGURE_FILES32)
  
  GST_LIBAV_MESON_ARGS := \
          -Ddoc=disabled \
@@ -290,7 +282,7 @@ index e685cdd..f98cad8 100755
  	$(GST_COMMON_MESON_ARGS)
  
  GST_LIBAV_CONFIGURE_FILES32 := $(GST_LIBAV_OBJ32)/build.ninja
-@@ -1120,7 +1131,7 @@ FFMPEG_CONFIGURE_FILES64 := $(FFMPEG_OBJ64)/Makefile
+@@ -1145,7 +1156,7 @@ FFMPEG_CONFIGURE_FILES64 := $(FFMPEG_OBJ64)/Makefile
  
  # 64bit-configure
  $(FFMPEG_CONFIGURE_FILES64): SHELL = $(CONTAINER_SHELL64)
@@ -299,7 +291,7 @@ index e685cdd..f98cad8 100755
  	cd $(dir $@) && \
  		PATH="$(abspath $(TOOLS_DIR64))/bin:$(PATH)" \
  		PKG_CONFIG="$(PKG_CONFIG64)" \
-@@ -1128,6 +1139,8 @@ $(FFMPEG_CONFIGURE_FILES64): $(FFMPEG)/configure $(MAKEFILE_DEP) nasm64 | $(FFMP
+@@ -1153,6 +1164,8 @@ $(FFMPEG_CONFIGURE_FILES64): $(FFMPEG)/configure $(MAKEFILE_DEP) nasm64 | $(FFMP
  		$(abspath $(FFMPEG))/configure \
  			--cc=$(CC_QUOTED) --cxx=$(CXX_QUOTED) \
  			--prefix=$(abspath $(TOOLS_DIR64)) \
@@ -308,7 +300,7 @@ index e685cdd..f98cad8 100755
  			--disable-static \
  			--enable-shared \
  			--disable-programs \
-@@ -1172,7 +1185,7 @@ $(FFMPEG_CONFIGURE_FILES64): $(FFMPEG)/configure $(MAKEFILE_DEP) nasm64 | $(FFMP
+@@ -1197,7 +1210,7 @@ $(FFMPEG_CONFIGURE_FILES64): $(FFMPEG)/configure $(MAKEFILE_DEP) nasm64 | $(FFMP
  
  # 32-bit configure
  $(FFMPEG_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
@@ -317,7 +309,7 @@ index e685cdd..f98cad8 100755
  	cd $(dir $@) && \
  		PATH="$(abspath $(TOOLS_DIR32))/bin:$(PATH)" \
  		PKG_CONFIG="$(PKG_CONFIG32)" \
-@@ -1180,7 +1193,8 @@ $(FFMPEG_CONFIGURE_FILES32): $(FFMPEG)/configure $(MAKEFILE_DEP) nasm32 | $(FFMP
+@@ -1205,7 +1218,8 @@ $(FFMPEG_CONFIGURE_FILES32): $(FFMPEG)/configure $(MAKEFILE_DEP) nasm32 | $(FFMP
  		$(abspath $(FFMPEG))/configure \
  			--cc="$(CC32)" --cxx="$(CXX32)" \
  			--prefix=$(abspath $(TOOLS_DIR32)) \
@@ -327,7 +319,7 @@ index e685cdd..f98cad8 100755
  			--disable-static \
  			--enable-shared \
  			--disable-programs \
-@@ -1278,6 +1292,7 @@ $(FAUDIO_CONFIGURE_FILES32): $(FAUDIO)/CMakeLists.txt $(MAKEFILE_DEP) gst_base32
+@@ -1303,6 +1317,7 @@ $(FAUDIO_CONFIGURE_FILES32): $(FAUDIO)/CMakeLists.txt $(MAKEFILE_DEP) gst_base32
  		CC="$(CC32)" \
  		CXX="$(CXX32)" \
  		PKG_CONFIG="$(PKG_CONFIG32)" \
@@ -335,7 +327,7 @@ index e685cdd..f98cad8 100755
  		cmake $(abspath $(FAUDIO)) \
  			-DCMAKE_INSTALL_PREFIX="$(abspath $(TOOLS_DIR32))" \
  			$(FAUDIO_CMAKE_FLAGS)
-@@ -1539,7 +1554,13 @@ $(WINE_CONFIGURE_FILES64): SHELL = $(CONTAINER_SHELL64)
+@@ -1661,7 +1676,13 @@ $(WINE_CONFIGURE_FILES64): SHELL = $(CONTAINER_SHELL64)
  $(WINE_CONFIGURE_FILES64): $(MAKEFILE_DEP) | faudio64 jxrlib64 gst_base64 $(WINE_OBJ64)
  	cd $(dir $@) && \
  		../$(WINE)/configure \
@@ -349,16 +341,7 @@ index e685cdd..f98cad8 100755
  			--enable-win64 \
  			--disable-tests \
  			--prefix=$(abspath $(DST_DIR)) \
-@@ -1547,7 +1568,7 @@ $(WINE_CONFIGURE_FILES64): $(MAKEFILE_DEP) | faudio64 jxrlib64 gst_base64 $(WINE
- 			STRIP=$(STRIP_QUOTED) \
- 			CFLAGS="-I$(abspath $(TOOLS_DIR64))/include -g $(COMMON_FLAGS)" \
- 			CROSSCFLAGS="-g $(COMMON_FLAGS)" \
--			LDFLAGS="-L$(abspath $(TOOLS_DIR64))/lib" \
-+			LDFLAGS=-L$(abspath $(TOOLS_DIR64))/lib \
- 			PKG_CONFIG_PATH=$(abspath $(TOOLS_DIR64))/lib/pkgconfig \
- 			JXRLIB_CFLAGS=-I$(abspath $(TOOLS_DIR64))/include/jxrlib \
- 			CC=$(CC_QUOTED) \
-@@ -1559,14 +1580,20 @@ $(WINE_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
+@@ -1681,7 +1702,13 @@ $(WINE_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
  $(WINE_CONFIGURE_FILES32): $(MAKEFILE_DEP) | faudio32 jxrlib32 gst_base32 $(WINE_OBJ32)
  	cd $(dir $@) && \
  		../$(WINE)/configure \
@@ -372,15 +355,7 @@ index e685cdd..f98cad8 100755
  			--disable-tests \
  			--prefix=$(abspath $(WINE_DST32)) \
  			LD_LIBRARY_PATH=$(abspath $(TOOLS_DIR32))/lib \
- 			STRIP=$(STRIP_QUOTED) \
- 			CFLAGS="-I$(abspath $(TOOLS_DIR32))/include -g $(COMMON_FLAGS)" \
- 			CROSSCFLAGS="-g $(COMMON_FLAGS)" \
--			LDFLAGS="-L$(abspath $(TOOLS_DIR32))/lib" \
-+			LDFLAGS=-L$(abspath $(TOOLS_DIR32))/lib \
- 			PKG_CONFIG_PATH=$(abspath $(TOOLS_DIR32))/lib/pkgconfig \
- 			JXRLIB_CFLAGS=-I$(abspath $(TOOLS_DIR32))/include/jxrlib \
- 			CC=$(CC_QUOTED) \
-@@ -1762,7 +1789,7 @@ dxvk_configure32: $(DXVK_CONFIGURE_FILES32)
+@@ -1884,7 +1911,7 @@ dxvk_configure32: $(DXVK_CONFIGURE_FILES32)
  dxvk: dxvk32 dxvk64
  
  dxvk64: $(DXVK_CONFIGURE_FILES64)
@@ -389,7 +364,7 @@ index e685cdd..f98cad8 100755
  	mkdir -p "$(DST_DIR)/lib64/wine/dxvk"
  	cp -f "$(DXVK_OBJ64)"/bin/dxgi.dll "$(DST_DIR)"/lib64/wine/dxvk/
  	cp -f "$(DXVK_OBJ64)"/bin/d3d11.dll "$(DST_DIR)"/lib64/wine/dxvk/
-@@ -1775,7 +1802,7 @@ dxvk64: $(DXVK_CONFIGURE_FILES64)
+@@ -1897,7 +1924,7 @@ dxvk64: $(DXVK_CONFIGURE_FILES64)
  
  
  dxvk32: $(DXVK_CONFIGURE_FILES32)
@@ -398,7 +373,7 @@ index e685cdd..f98cad8 100755
  	mkdir -p "$(DST_DIR)"/lib/wine/dxvk
  	cp -f "$(DXVK_OBJ32)"/bin/dxgi.dll "$(DST_DIR)"/lib/wine/dxvk/
  	cp -f "$(DXVK_OBJ32)"/bin/d3d11.dll "$(DST_DIR)"/lib/wine/dxvk/
-@@ -1805,7 +1832,7 @@ $(VKD3D_CONFIGURE_FILES32): $(VKD3D)/meson.build $(VKD3D)/build-win32.txt | $(VK
+@@ -1927,7 +1954,7 @@ $(VKD3D_CONFIGURE_FILES32): $(VKD3D)/meson.build $(VKD3D)/build-win32.txt | $(VK
  
  vkd3d32: SHELL = $(CONTAINER_SHELL32)
  vkd3d32: $(VKD3D_CONFIGURE_FILES32)
@@ -407,7 +382,7 @@ index e685cdd..f98cad8 100755
  	mkdir -p "$(DST_DIR)"/lib/wine/vkd3d-proton
  	cp -af "$(VKD3D_OBJ32)/bin/d3d12.dll" "$(DST_DIR)"/lib/wine/vkd3d-proton/
  	rm -f "$(DST_DIR)"/lib/wine/vkd3d-proton/version && if test -e $(SRCDIR)/.git; then ( cd $(SRCDIR) && git submodule status -- vkd3d-proton ) > "$(DST_DIR)"/lib/wine/vkd3d-proton/version; fi
-@@ -1822,7 +1849,7 @@ $(VKD3D_CONFIGURE_FILES64): $(VKD3D)/meson.build $(VKD3D)/build-win64.txt | $(VK
+@@ -1944,7 +1971,7 @@ $(VKD3D_CONFIGURE_FILES64): $(VKD3D)/meson.build $(VKD3D)/build-win64.txt | $(VK
  
  vkd3d64: SHELL = $(CONTAINER_SHELL64)
  vkd3d64: $(VKD3D_CONFIGURE_FILES64)
@@ -416,7 +391,7 @@ index e685cdd..f98cad8 100755
  	mkdir -p "$(DST_DIR)"/lib64/wine/vkd3d-proton
  	cp -af "$(VKD3D_OBJ64)/bin/d3d12.dll" "$(DST_DIR)"/lib64/wine/vkd3d-proton/
  	rm -f "$(DST_DIR)"/lib64/wine/vkd3d-proton/version && if test -e $(SRCDIR)/.git; then ( cd $(SRCDIR) && git submodule status -- vkd3d-proton ) > "$(DST_DIR)"/lib64/wine/vkd3d-proton/version; fi
-@@ -1852,75 +1879,6 @@ mediaconv64: $(MAKEFILE_DEP) gstreamer64 | $(MEDIACONV_OBJ64)
+@@ -1974,75 +2001,6 @@ mediaconv64: $(MAKEFILE_DEP) gstreamer64 | $(MEDIACONV_OBJ64)
  
  mediaconv: mediaconv32 mediaconv64
  

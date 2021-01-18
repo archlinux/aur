@@ -1,8 +1,8 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=6.0-GE-rc1 
-_commit=58620b9250f1925ba1d89b1ace51a22d631a3694
+_srctag=6.0-GE-1
+_commit=bcc5e6c4b300ddaca5b1a435c754eaac7490b9d1
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
 _monover=5.1.1
@@ -101,6 +101,7 @@ source=(
     vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
     dxvk::git+https://github.com/doitsujin/dxvk.git
     openvr::git+https://github.com/ValveSoftware/openvr.git
+    OpenXR-SDK::git+https://github.com/KhronosGroup/OpenXR-SDK.git
     ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git
     liberation-fonts::git+https://github.com/liberationfonts/liberation-fonts.git
     SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
@@ -122,6 +123,7 @@ source=(
     proton-unfuck_makefile.patch
     proton-disable_lock.patch
     proton-user_compat_data.patch
+    dxvk-async.patch
     dxvk-extraopts.patch
     vkd3d-extraopts.patch
 )
@@ -132,7 +134,7 @@ noextract=(
 
 prepare() {
     # I know this is fugly and it should NOT be done
-    # but the afdko package from AUR breaks regulalry.
+    # but the afdko package from AUR breaks regularly.
     # Install it from pip in a virtualenv
     virtualenv --no-wheel afdko
     source afdko/bin/activate
@@ -146,7 +148,7 @@ prepare() {
 
     [ ! -d build ] && mkdir build
     cd proton-ge-custom
-    for submodule in ffmpeg openvr FAudio fonts/liberation-fonts vkd3d-proton; do
+    for submodule in ffmpeg openvr OpenXR-SDK fonts/liberation-fonts FAudio vkd3d-proton; do
         git submodule init "${submodule}"
         git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
         git submodule update "${submodule}"
@@ -189,6 +191,12 @@ prepare() {
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
     patch -p1 -i "$srcdir"/proton-user_compat_data.patch
 
+    # Uncomment to enable dxvk async patch.
+    # Enable at your own risk. If you don't know what it is,
+    # and its implications, leave it as is. You have been warned.
+    # I am not liable if anything happens to you by using it.
+    # Patch ENABLES async by DEFAULT. YOU HAVE BEEN WARNED.
+    #patch -p1 -i "$srcdir"/dxvk-async.patch
     # Uncomment to enable extra optimizations
     # Patch crossfiles with extra optimizations from makepkg.conf
     patch -p1 -i "$srcdir"/dxvk-extraopts.patch
@@ -213,6 +221,7 @@ prepare() {
     # Since Wine 5.16 AVX is supported. Testing showed 32bit applications
     # crashing with AVX regardless, but 64bit applications worked just fine.
     # So disable AVX only for the 32bit binaries and AVX2 for the 64bit.
+    # AVX2 seems to degrade performance. So disregard the above.
     # Relevant Wine issues
     # https://bugs.winehq.org/show_bug.cgi?id=45289
     # https://bugs.winehq.org/show_bug.cgi?id=43516
@@ -255,7 +264,7 @@ build() {
 
     export WINEESYNC=0
     export WINEFSYNC=0
-    #export CARGO_HOME="$srcdir/build/cargo"
+    export CARGO_HOME="$srcdir/build/cargo"
     SUBMAKE_JOBS="${MAKEFLAGS/-j/}" \
         NO_DXVK=0 \
         SYSTEM_GECKO=0 \
@@ -338,11 +347,13 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             '06a00cedf391ee07bbca0b3282e5c8ad9d950446d50648d2ff417716816fd1ab'
             'ea5246e4c91d1aa1226658e1749b6e5d0e9353b52b14df79c4b93b6e61a3c59e'
             'b17ac815afbf5eef768c4e8d50800be02af75c8b230d668e239bad99616caa82'
-            'd7f1d1c82b84eb13d2d05f08be9f499fc719e666a18adacc7ebeba78fd78adf7'
+            '6743a56d019823a33508c3dbfc64ea82d8db61e2b98983a7ad28cade85f0538e'
             '8263a3ffb7f8e7a5d81bfbffe1843d6f84502d3443fe40f065bcae02b36ba954'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
-            '31fc1677e3a92189bab09f683e721be764dd24672c0c8198a52b8fd98e32fbdf'
+            'd745ffd15df9e6740e678ab38792e195851a20e113e05b13fab2885b5b9eba02'
+            '23cba1756adc4a76de963414994ffc964047ab1d6f1949fe8133135a91ac0473'
             '7c5f9c20e41c0cd7d0d18867950a776608cef43e0ab9ebad2addb61e613fe17a')
