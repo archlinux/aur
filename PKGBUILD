@@ -2,7 +2,7 @@
 
 pkgname=firefox-extension-arch-search
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of Web Extensions that adds ArchLinux (bug tracker, forum, packages, wiki, AUR) as a search engine to the Firefox browser."
 arch=('any')
 url="https://github.com/noraj/firefox-extension-arch-search"
@@ -46,7 +46,7 @@ package() {
   install -Dm644 "archlinux_forum_by_keywords_search-1.0.1-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchForumK@archlinux.org.xpi"
   install -Dm644 "archlinux_packages_search-1.0.1-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchPkgs@archlinux.org.xpi"
   install -Dm644 "archlinux_wiki_search-1.0.1-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchWiki@archlinux.org.xpi"
-  install -Dm644 "archlinux_manual_pages_search-$pkgver-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchMan@archlinux.org"
+  install -Dm644 "archlinux_manual_pages_search-$pkgver-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchMan@archlinux.org.xpi"
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
