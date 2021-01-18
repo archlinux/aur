@@ -1,0 +1,4 @@
+pkg/
+src/
+vrms-arch/
+*.pkg.tar.*
