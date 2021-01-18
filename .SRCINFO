@@ -1,13 +1,15 @@
 pkgbase = python-trytond_stock_supply_production
-	pkgver = 5.6.0
+	pkgdesc = Tryton module for stock supply of production
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_supply_production/trytond_stock_supply_production-5.6.0.tar.gz
-	sha256sums = ce285e9dd28ba9505e157c8e3d229b12501ad1ccf8ee5b0b37319f245119e716
+	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_supply_production/trytond_stock_supply_production-5.8.1.tar.gz
+	sha256sums = 3438f918bb27a0c7e7f2c7995d3d49a71625bd33fd555291238c6fe7bb22251c
+	b2sums = 7a15d9a0c41aec28f9f3eb196bef32874abc15f016651ee542a2e37bcb0e033ae59efd4fe203dcb61f989d76e734607736d7bdddac007b577c23025c6b3da9c1
 
 pkgname = python-trytond_stock_supply_production
 
