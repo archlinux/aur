@@ -1,6 +1,6 @@
 pkgbase = circos
 	pkgdesc = A software package for visualizing data in a circular layout
-	pkgver = 0.69_4
+	pkgver = 0.69_9
 	pkgrel = 1
 	url = http://circos.ca
 	arch = any
@@ -33,9 +33,9 @@ pkgbase = circos
 	depends = perl-time-hires
 	optdepends = circos-docs: tutorials
 	optdepends = circos-tools: addons
-	noextract = circos-0.69-4.tgz
-	source = http://circos.ca/distribution/circos-0.69-4.tgz
-	sha256sums = 26cde7700e797643d8edd647329be4ebdfe87691cb8e4b082078cd910f22ca92
+	noextract = circos-0.69-9.tgz
+	source = http://circos.ca/distribution/circos-0.69-9.tgz
+	sha256sums = 34d8d7ebebf3f553d62820f8f4a0a57814b610341f836b4740c46c3057f789d2
 
 pkgname = circos
 
