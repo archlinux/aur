@@ -1,14 +1,15 @@
 pkgbase = python-trytond_country
 	pkgdesc = Tryton module with countries
-	pkgver = 5.2.0
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_country/trytond_country-5.2.0.tar.gz
-	sha256sums = 7f0fd15a0aa69152bf58f2d6d3f0267cf7d33e743bc786a706377f209c244f6c
+	source = https://files.pythonhosted.org/packages/source/t/trytond_country/trytond_country-5.8.1.tar.gz
+	sha256sums = 92c58d55466c5e8a6b6f982017ea7c2325c9f83eeb1f01c57b60ddc2cbbc7ad2
+	b2sums = b65da631bd2ece135c06de108d422d326d41173740628070f23cd45a18455f021282fa3df7b47e737e62589a48121ae9f74c2ac3f8f312eaca3786a32461f2b3
 
 pkgname = python-trytond_country
 
