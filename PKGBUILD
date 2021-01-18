@@ -45,7 +45,7 @@ fi
 pkgbase="linux-mainline-bcachefs" #"${_custom_pkgbase}"
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver="${_basekernel}"."${_sub}"
-pkgrel=111
+pkgrel=112
 pkgdesc='Linux-tkg with bcachefs'
 bcachefs="git+https://github.com/koverstreet/bcachefs.git"
 arch=('x86_64') # no i686 in here
@@ -64,7 +64,7 @@ case $_basever in
     source=("$bcachefs"
         "$patch_site"
         "https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v10.1%2B_kernel_v5.8%2B.patch"
-        config.x86_64 # stock Arch config
+        'config.x86_64' # stock Arch config
         #'config_hardened.x86_64' # hardened Arch config
         90-cleanup.hook
         cleanup
@@ -92,7 +92,7 @@ case $_basever in
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0012-misc-additions.patch"
     )
     sha256sums=('SKIP'
-            '8ecf194fbba49edf9014112f15928f0e869355ebe305b98a99db6f2674a931c2'
+            'fc89eb1b4ede1ab0331df04e33d6581aa3c1e7195aa771b0378cc292c00be892'
             'SKIP'
             '277c2126ecb28175a3c79732c91767d2e2fc0094c80eb0047eee34e0804ab55a'
             '1e15fc2ef3fa770217ecc63a220e5df2ddbcf3295eb4a021171e7edd4c6cc898'
@@ -114,7 +114,7 @@ case $_basever in
             'a557b342111849a5f920bbe1c129f3ff1fc1eff62c6bd6685e0972fc88e39911'
             'e308292fc42840a2366280ea7cf26314e92b931bb11f04ad4830276fc0326ee1'
             '49262ce4a8089fa70275aad742fc914baa28d9c384f710c9a62f64796d13e104'
-            'c41bf6a5d2ec52df766ce3019800cf7dd60a62f52811ead6f20dd06765870de2')
+            'cf7c758604f2a99cfcb65129c436e32e2ef7a80fe486f8e55a2206a955acc40a')
 	;;
 esac
 
@@ -135,10 +135,6 @@ prepare() {
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
-    msg2 "Fetch and merge stable..."
-    git fetch origin
-    git merge origin/master
-    
   _tkg_srcprep
 }
 
