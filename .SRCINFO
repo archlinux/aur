@@ -1,7 +1,7 @@
 pkgbase = proton-native
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution
 	pkgver = 5.13.5
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/ValveSoftware/Proton
 	arch = x86_64
@@ -198,6 +198,7 @@ pkgbase = proton-native
 	source = proton-unfuck_makefile.patch
 	source = proton-disable_lock.patch
 	source = proton-user_compat_data.patch
+	source = dxvk-async.patch
 	source = dxvk-extraopts.patch
 	source = vkd3d-extraopts.patch
 	sha256sums = SKIP
@@ -221,6 +222,7 @@ pkgbase = proton-native
 	sha256sums = 5722c9669b02592cc53adda14a9e256701ed88f875dc00d24b5c5705cf6c33f5
 	sha256sums = 8263a3ffb7f8e7a5d81bfbffe1843d6f84502d3443fe40f065bcae02b36ba954
 	sha256sums = 20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3
+	sha256sums = 36aaba6847e4577df4a496d88c11b4b7049773f1f2b90aa4545093e16d5c6066
 	sha256sums = 23cba1756adc4a76de963414994ffc964047ab1d6f1949fe8133135a91ac0473
 	sha256sums = 7c5f9c20e41c0cd7d0d18867950a776608cef43e0ab9ebad2addb61e613fe17a
 
