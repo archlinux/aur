@@ -9,8 +9,10 @@
 pkgname=logisim-evolution-bin
 _name=logisim-evolution
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An educational tool for designing and simulating digital logic circuits (binary version)'
+provides=('logisim-evolution')
+conflicts=('logisim-evolution-git' 'logisim-evolution')
 arch=('any')
 url="https://github.com/reds-heig/logisim-evolution"
 license=('GPL3')
@@ -19,7 +21,7 @@ source=("${_name}-${pkgver}.jar::https://github.com/reds-heig/logisim-evolution/
     'logisim-evolution.desktop'
     'logisim-evolution.sh'
     'logisim-evolution.xml')
-sha256sums=('b04e666ed0b74126dfc8c2ce6ae0d425ad5bb39c2d77ef214158b6dfc67f8b0d'
+sha256sums=('1b72dd3397290b7be95f886b933bd37a2d9182b8d33247fa5f059d0867e8111c'
             'c374a6cf85c020014b1c446c0a871842d98a283a14338662a2230e4110a6765e'
             'd5975cc0025905ab8a8a451ce4362ba876bed88008d3a5b2c0a7f664a85da1ba'
             '7d071777cfeb56d2ff957d8e63d2eb45157ff00f8c1c6943db4d5fee774d94fc')
