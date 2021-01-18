@@ -4,6 +4,7 @@ _name=trytond_account_invoice
 pkgver=5.8.1
 _pkgdir=5.8
 pkgrel=1
+pkgbase=python-$_name
 pkgdesc="Tryton module for invoicing"
 arch=('any')
 url="http://www.tryton.org/"
