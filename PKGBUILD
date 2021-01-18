@@ -7,7 +7,7 @@ pkgname='ros-melodic-rqt-gui'
 pkgver='0.5.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -31,8 +31,15 @@ depends=(
 )
 
 _dir="rqt-${pkgver}/rqt_gui"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt/archive/${pkgver}.tar.gz")
-sha256sums=('9913fb6da15f0ccb9d995f8ea3be935d36bd255379c8ae19c0005207883299eb')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt/archive/${pkgver}.tar.gz"
+"getiter.patch"::"https://github.com/ros-visualization/rqt/commit/80c0ae8b8a58a6b1e970ea3e5f3277f2a38cdd2f.patch")
+sha256sums=('9913fb6da15f0ccb9d995f8ea3be935d36bd255379c8ae19c0005207883299eb'
+            'ba6a6a30fc27d02ee403c92c1d9735c0be6b8aaf8d216d5b625910960da60b87')
+
+prepare() {
+  cd ${srcdir}/${_dir}
+  patch --forward --strip=2 --input  ${srcdir}/getiter.patch || return 1
+}
 
 build() {
 	# Use ROS environment variables.
