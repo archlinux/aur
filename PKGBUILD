@@ -1,10 +1,10 @@
 # Maintainer: Moacir R.F <moacirrf@gmail.com>
-_basename="SceneBuilder"
+_basename="scenebuilder"
 pkgname="javafx-scenebuilder"
 _debpkg=SceneBuilder
 pkgver="15.0.0"
 _pkgver="15.0.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Scene Builder 15.0.0 was released on Jan 8, 2021."
 arch=('x86_64' 'i686')
 url="http://gluonhq.com/labs/scene-builder/"
@@ -18,12 +18,11 @@ sha1sums=('d608d989ae039722583fb7a64b34955477e31463')
 build() {
   cd "$srcdir/"
   tar -xf data.tar.xz
-  mv "${srcdir}/opt/scenebuilder" "${srcdir}/opt/${_basename}"
 echo "[Desktop Entry]
 Name=Scene Builder 15.0.0
 Comment=Gluon Scene Builder for Java 15.0.0
 Exec=/opt/${_basename}/bin/SceneBuilder
-Icon=/opt/${_basename}/lib/${_basename}.png
+Icon=/opt/${_basename}/lib/SceneBuilder.png
 Terminal=false
 Type=Application
 Categories=Development;GTK;">"${srcdir}/opt/${_basename}/lib/${_basename}.desktop"
@@ -36,6 +35,6 @@ package() {
   install -d "${pkgdir}/usr/bin/"
   ln -s "/opt/${_basename}/bin/SceneBuilder" "${pkgdir}/usr/bin/${pkgname}"
   install -m644 "${srcdir}/opt/${_basename}/lib/${_basename}.desktop" "${pkgdir}/usr/share/applications/"
-  install -m644 "${srcdir}/opt/${_basename}/lib/${_basename}.png" "${pkgdir}/usr/share/pixmaps/"
+  install -m644 "${srcdir}/opt/${_basename}/lib/SceneBuilder.png" "${pkgdir}/usr/share/pixmaps/"
 }
 

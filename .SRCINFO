@@ -1,7 +1,7 @@
 pkgbase = javafx-scenebuilder
 	pkgdesc = Scene Builder 15.0.0 was released on Jan 8, 2021.
 	pkgver = 15.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gluonhq.com/labs/scene-builder/
 	arch = x86_64
 	arch = i686
