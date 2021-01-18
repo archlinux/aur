@@ -1,0 +1,18 @@
+pkgbase = otf-operator-mono-lig
+	pkgdesc = Add ligatures to Operator Mono similar to Fira Code
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/kiliman/operator-mono-lig
+	arch = x86_64
+	arch = arm64
+	license = MIT
+	makedepends = npm
+	makedepends = python-fonttools
+	makedepends = python2
+	source = otf-operator-mono-lig-2.4.1.tar.gz::https://github.com/kiliman/operator-mono-lig/archive/v2.4.1.tar.gz
+	source = hoefler-co-eula.md
+	sha256sums = 10e9fc495b629bacb8269a8ac08b7231c514d2e1e76561ea3184fc09500f441a
+	sha256sums = 820160042b3a26add024ad21f0cb93e2898d96f4558a6b2cdd0c988c7601eadd
+
+pkgname = otf-operator-mono-lig
+
