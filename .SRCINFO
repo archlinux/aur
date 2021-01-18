@@ -1,5 +1,5 @@
 pkgbase = linux-lts44
-	pkgver = 4.4.249
+	pkgver = 4.4.252
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = linux-lts44
 	makedepends = libelf
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.4.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.4.249.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.4.252.xz
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -22,7 +22,7 @@ pkgbase = linux-lts44
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	md5sums = 9a78fa2eb6c68ca5a40ed5af08142599
-	md5sums = 4cf68a44fbc52e987daa1492245a85a2
+	md5sums = 8497960b2ab982d88a90abfbfacc406a
 	md5sums = 3bde314b2b0fffcc947ffec0d1832ca8
 	md5sums = ce6c81ad1ad1f8b333fd6077d47abdaf
 	md5sums = a85bfae59eb537b973c388ffadb281ff
@@ -31,7 +31,7 @@ pkgbase = linux-lts44
 	md5sums = e1093d9bc718f362344ab56b85d4fb76
 	md5sums = 43d62abf4cd27fa1863759ac87b62ac5
 	sha256sums = 401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2
-	sha256sums = 28c12e09b5637200301e357aa80b654b60b30a5709a62e060c8fde42e7da531a
+	sha256sums = 93ddcffd0142713ee6d63aec7bf5e1b9644b4f7fda07665e972ece4dc06d8a31
 	sha256sums = c223bfec598ea11d2b151c1c179da28db13402b3b4575f845ddecba3482c1437
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
@@ -48,12 +48,10 @@ pkgname = linux-lts44
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux=4.4.249
 	backup = etc/mkinitcpio.d/linux-lts44.preset
 
 pkgname = linux-lts44-headers
 	pkgdesc = Header files and scripts for building modules for Linux-lts44 kernel
-	provides = linux-headers=4.4.249
 
 pkgname = linux-lts44-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-lts44 kernel
