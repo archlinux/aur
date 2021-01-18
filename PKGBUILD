@@ -1,70 +1,63 @@
-# Maintainer: SlimShadyIAm me[at]slim[dot]ovh
+# Maintainer: HeartsDo <heartsdo[at]vivaldi[dot]net> 
+# Contributor: SlimShadyIAm me[at]slim[dot]ovh
+
 pkgname=premid-git
-pkgver=r525.0cc0ec6
+pkgver=r105.a256ff8
 pkgrel=1
 pkgdesc="PreMiD adds Discord Rich Presence support to a lot of services you use and love."
-url='https://github.com/PreMiD/PreMiD'
+url='https://github.com/PreMiD/Linux'
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('nodejs>=10.11.0' 'npm>=6.4.1')
+depends=('nodejs>=10.11.0' 'yarn')
 makedepens=('git')
+optdepends=('discord: Proper Rich Presence support')
+conflicts=('premid')
 source=("git+${url}.git")
-md5sums=('SKIP')
+md5sums=('SKIP') # Git
 
-foldername=PreMiD
+foldername=Linux
 
 pkgver() {
- cd "${foldername}"
- printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${foldername}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+
+    # Get a path of fetched source directory
+    _git_rev=`ls ${srcdir}/|grep --regexp="[^-]*$" --only-matching --max-count=1`
+    _git_srcdir="${srcdir}"
+
+    # Install dependency modules
+    cd "${foldername}"
+    yarn install
+
+    # Init the dist app and build electron package
+    yarn run dist
+    yarn run electron-builder --project ./dist/app/ build --dir -p never # Use a custom one for skip tar.gz, deb and rpm packaging
+
 }
 
 package() {
+    
+    cd "${foldername}"
+    
+    # Set up file structure
+    mkdir -p "${pkgdir}/opt/${pkgname%-git}/"
+    mkdir -p "${pkgdir}/usr/bin/"
+    mkdir -p "${pkgdir}/usr/share/applications"
+    mkdir -p "${pkgdir}/usr/share/pixmaps"
+    
+    # Copy the app files, dependency modules, pixmap and desktop entry to package directory
+    cd dist/app/dist/linux-unpacked/
+    cp -r ./* "${pkgdir}/opt/${pkgname%-git}/"
+    cp assets/appIcon.png "${pkgdir}/usr/share/pixmaps/premid.png"
+    cp assets/premid.desktop "${pkgdir}/usr/share/applications/"
+    
+    # Sym-link the executable
+    ln -sf /opt/premid/premid  "${pkgdir}/usr/bin/premid"
 
-	# Set up file structure
-	mkdir -p "${pkgdir}/usr/lib/${pkgname%-git}/"
-	mkdir -p "${pkgdir}/usr/bin/"
-	mkdir -p "${pkgdir}/usr/share/applications"
-	mkdir -p "${pkgdir}/usr/share/pixmaps"
-
-	# Get a path of fetched source directory
-	_git_rev=`ls ${srcdir}/|grep --regexp="[^-]*$" --only-matching --max-count=1`
-	_git_srcdir="${srcdir}"
-
-	# Add launcher script to /usr/bin/
-	echo "#!/bin/bash
-	cd /usr/lib/premid/
-	./PreMiD" > "${pkgdir}/usr/bin/${pkgname%-git}"
-	chmod +x "${pkgdir}/usr/bin/${pkgname%-git}"
-
-	# Create application menu shortcut
-	echo "[Desktop Entry]
-	Name=PreMiD
-	GenericName=PreMiD
-	Comment=PreMiD adds Discord Rich Presence support to a lot of services you use and love.
-	Exec=/usr/bin/premid
-	Terminal=false
-	Type=Application
-	Icon=premid.png" > "${pkgdir}/usr/share/applications/premid.desktop"
-	
-	# Install dependency modules
-	cd "${foldername}"
-	npm install
-
-	cd src
-	npm install 
-
-	cd ..
-	npm run pkglinux
-
-	# Copy the app files & dependency modules to package directory
-	mkdir -p "${pkgdir}/usr/lib/${pkgname%-git}/"
-	cd out/PreMiD-linux-x64
-	cp -r ./* "${pkgdir}/usr/lib/${pkgname%-git}/"
-
-	cd ../../
-
-	cp src/assets/images/logo.png "${pkgdir}/usr/share/pixmaps/premid.png"
-
-	# Copy a license file to package directory
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+    # Copy a license file to package directory
+    cd "${srcdir}/${foldername}"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
