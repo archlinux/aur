@@ -6,6 +6,7 @@ arch=('any')
 url='https://github.com/f32c/tools'
 license=('NONE')
 depends=('python')
+makedepends=('git' 'libftdi' 'libftdi-compat')
 provides=("ujprog" "f32cup" "ft232r_flash")
 source=("git+https://github.com/f32c/tools"
         "80-fpga-ulx3s.rules"
@@ -18,7 +19,7 @@ options=(!strip)
 prepare() {
   cd "${srcdir}/tools/ujprog"
   rm -f Makefile
-  ln -s ../../../Makefile Makefile
+  ln -s ../../Makefile Makefile
   make 
   make flash
 }
