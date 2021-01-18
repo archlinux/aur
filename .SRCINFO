@@ -1,14 +1,15 @@
 pkgbase = python-trytond_purchase_shipment_cost
 	pkgdesc = Tryton module for purchase shipment cost
-	pkgver = 5.6.0
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_purchase_shipment_cost/trytond_purchase_shipment_cost-5.6.0.tar.gz
-	sha256sums = bd834013f838e94515b9beeb561463f294c72413a0486bd012c2b6c2f4effc88
+	source = https://files.pythonhosted.org/packages/source/t/trytond_purchase_shipment_cost/trytond_purchase_shipment_cost-5.8.1.tar.gz
+	sha256sums = b9cb3fe73ef734c0294eb9707111289c1850bc438a82ef8553c19787204c4a8d
+	b2sums = b9d962fb5c076aa735f62b4fbef7d10b6007fd9fd7123c46249065857c0c925d9872f37835150c8db3a9887b49a31a0ad759e3ce1fa982ba9d2b9755956ecc57
 
 pkgname = python-trytond_purchase_shipment_cost
 
