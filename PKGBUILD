@@ -2,13 +2,13 @@
 
 pkgname=wxbase
 pkgver=3.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="wxWidgets base libraries for no X install (3.x branch stable version)"
 arch=("i686" "x86_64")
 url="http://wxwidgets.org"
 license=("custom:wxWindows")
 provides=("wxbase")
-conflicts=("wxgtk" "wxwidgets" "wxbase")
+conflicts=("wxgtk" "wxwidgets")
 source=("https://github.com/wxWidgets/wxWidgets/releases/download/v${pkgver}/wxWidgets-${pkgver}.tar.bz2")
 sha1sums=("f8c77e6336b5f6414b07e27baa489fb8abc620c4")
 
