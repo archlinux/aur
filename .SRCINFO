@@ -1,14 +1,14 @@
 pkgbase = vim-rec
 	pkgdesc = GNU Recutils syntax highlighting support for Vim
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/zaid/vim-rec
 	arch = any
 	groups = vim-plugins
 	license = custom:vim
 	depends = vim
-	source = https://github.com/zaid/vim-rec/archive/v0.0.4/vim-rec-0.0.4.tar.gz
-	sha256sums = 371bdacc4d6497ae1a8a72063c6eaadbad4bcb5fd5c5955498c8776aa747f89a
+	source = https://github.com/zaid/vim-rec/archive/v0.0.5/vim-rec-0.0.5.tar.gz
+	sha256sums = a2d2c76c8913c61a4276788bdde570869c923fe776c206458229c823544571aa
 
 pkgname = vim-rec
 

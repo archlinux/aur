@@ -1,16 +1,15 @@
 # Maintainer: Matthias Lisin <ml@visu.li>
 pkgname=vim-rec
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='GNU Recutils syntax highlighting support for Vim'
 arch=('any')
 url='https://github.com/zaid/vim-rec'
-# https://github.com/zaid/vim-rec/issues/4
 license=('custom:vim')
 groups=('vim-plugins')
 depends=('vim')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('371bdacc4d6497ae1a8a72063c6eaadbad4bcb5fd5c5955498c8776aa747f89a')
+sha256sums=('a2d2c76c8913c61a4276788bdde570869c923fe776c206458229c823544571aa')
 
 package() {
   cd "$pkgname-$pkgver"
