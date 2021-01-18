@@ -9,6 +9,7 @@ pkgbase = vdirsyncer-git
 	checkdepends = python-pytest
 	checkdepends = python-pytest-localserver
 	checkdepends = python-pytest-subtesthack
+	checkdepends = python-pytest-cov
 	makedepends = git
 	makedepends = python-setuptools-scm
 	makedepends = python-sphinx

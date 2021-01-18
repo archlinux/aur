@@ -19,7 +19,10 @@ makedepends=("git" "python-setuptools-scm"
              "python-sphinx" 'python-sphinx_rtd_theme'
              'python-milksnake')
 checkdepends=("python-hypothesis>=3.1"
-              "python-pytest" "python-pytest-localserver" "python-pytest-subtesthack")
+              "python-pytest"
+              "python-pytest-localserver"
+              "python-pytest-subtesthack"
+              "python-pytest-cov")
 source=("git+https://github.com/pimutils/${_pkgname}.git")
 sha256sums=('SKIP')
 conflicts=('vdirsyncer')
