@@ -7,9 +7,6 @@ pkgbase = pdftilecut
 	license = BSD
 	makedepends = go>=1.13
 	makedepends = git
-	makedepends = zlib
-	makedepends = libjpeg
-	makedepends = qpdf
 	makedepends = yasm
 	makedepends = cmake
 	makedepends = coreutils
