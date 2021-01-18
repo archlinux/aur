@@ -7,8 +7,6 @@ pkgbase = dlib
 	license = custom
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = cuda
-	makedepends = cudnn
 	depends = cblas
 	depends = lapack
 	depends = blas
@@ -21,17 +19,4 @@ pkgbase = dlib
 	sha256sums = be728a03ae8c4dc8b48408d90392a3c28bc6642a6eb22f3885895b434d7df53c
 
 pkgname = dlib
-
-pkgname = dlib-cuda
-	pkgdesc = A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques (with CUDA)
-	depends = cblas
-	depends = lapack
-	depends = blas
-	depends = libjpeg-turbo
-	depends = libpng
-	depends = libx11
-	depends = cuda
-	depends = cudnn
-	provides = dlib
-	conflicts = dlib
 
