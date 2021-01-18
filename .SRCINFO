@@ -1,0 +1,13 @@
+pkgbase = gnome-carbonate
+	pkgver = 1
+	pkgrel = 1
+	url = https://sourceforge.net/projects/archbangretro/
+	arch = any
+	license = GPL
+	provides = gnome-carbonate
+	conflicts = gnome-carbonate
+	source = https://sourceforge.net/projects/archbangretro/files/gnome-carbonate.tar.gz
+	md5sums = ea83a5f15ead06625a82281ee595a74a
+
+pkgname = gnome-carbonate
+
