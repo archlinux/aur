@@ -1,0 +1,16 @@
+pkgbase = carve-bin
+	pkgdesc = Carve out the essentials of your Clojure app.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/borkdude/carve
+	arch = x86_64
+	license = EPL
+	depends = gcc-libs
+	depends = zlib
+	provides = carve
+	conflicts = carve
+	source_x86_64 = https://github.com/borkdude/carve/releases/download/v0.0.1/carve-0.0.1-linux-amd64.zip
+	sha256sums_x86_64 = a0609bc276af6a54f315a1727b16fa2171e2175ab6a18ba1b9639936f83fe4e5
+
+pkgname = carve-bin
+
