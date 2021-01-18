@@ -13,15 +13,15 @@
 -    <pathelement location="library/javafx.properties" />
 -    <pathelement location="library/javafx.swing.jar" />
 -    <pathelement location="library/javafx.web.jar" />
-+    <pathelement location="/usr/lib/jvm/java-11-openjdk/lib/javafx-swt.jar" />
-+    <pathelement location="/usr/lib/jvm/java-11-openjdk/lib/javafx.base.jar" />
-+    <pathelement location="/usr/lib/jvm/java-11-openjdk/lib/javafx.controls.jar" />
-+    <pathelement location="/usr/lib/jvm/java-11-openjdk/lib/javafx.fxml.jar" />
-+    <pathelement location="/usr/lib/jvm/java-11-openjdk/lib/javafx.graphics.jar" />
-+    <pathelement location="/usr/lib/jvm/java-11-openjdk/lib/javafx.media.jar" />
-+    <pathelement location="/usr/lib/jvm/java-11-openjdk/lib/javafx.properties" />
-+    <pathelement location="/usr/lib/jvm/java-11-openjdk/lib/javafx.swing.jar" />
-+    <pathelement location="/usr/lib/jvm/java-11-openjdk/lib/javafx.web.jar" />
++    <pathelement location="/usr/lib/jvm/java-11-openjfx/lib/javafx-swt.jar" />
++    <pathelement location="/usr/lib/jvm/java-11-openjfx/lib/javafx.base.jar" />
++    <pathelement location="/usr/lib/jvm/java-11-openjfx/lib/javafx.controls.jar" />
++    <pathelement location="/usr/lib/jvm/java-11-openjfx/lib/javafx.fxml.jar" />
++    <pathelement location="/usr/lib/jvm/java-11-openjfx/lib/javafx.graphics.jar" />
++    <pathelement location="/usr/lib/jvm/java-11-openjfx/lib/javafx.media.jar" />
++    <pathelement location="/usr/lib/jvm/java-11-openjfx/lib/javafx.properties" />
++    <pathelement location="/usr/lib/jvm/java-11-openjfx/lib/javafx.swing.jar" />
++    <pathelement location="/usr/lib/jvm/java-11-openjfx/lib/javafx.web.jar" />
    </path>
  
    <path id="classpath.test">
