@@ -3,6 +3,7 @@ pkgbase = komodo-engine
 	pkgver = 12.1.1
 	pkgrel = 1
 	url = https://komodochess.com
+	install = komodo-engine.install
 	arch = x86_64
 	license = custom
 	source = http://komodochess.com/pub/komodo-12.zip

@@ -8,6 +8,7 @@ pkgdesc="Freeware version of the Komodo chess engine (~3394 Elo)"
 arch=(x86_64)
 url=https://komodochess.com
 license=(custom)
+install=$pkgname.install
 source=(http://komodochess.com/pub/${pkgname%-*}-${pkgver/.*}.zip
         http://komodochess.com/pub/Komodo3-book.zip
         COPYING)
