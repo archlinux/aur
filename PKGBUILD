@@ -3,22 +3,24 @@
 #     Updated: Yuki Chiba <yuki.from.akita@gmail.com>
 
 pkgname=smlsharp
-pkgver=3.6.0
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="A new programming language in the Standard ML family"
 arch=('x86_64')
 url="http://www.pllab.riec.tohoku.ac.jp/smlsharp/"
 license=('custom')
 depends=('gmp'
-         'yajl>=2.1.0'
          'massivethreads=1.00'
          'llvm>=3.9.1')
 makedepends=('chrpath')
 source=("http://www.pllab.riec.tohoku.ac.jp/smlsharp/download/$pkgname-$pkgver.tar.gz"
         remove-tz-test.patch)
-sha256sums=('83790d5e6b468a08f7fb221f0c2682f4243aaff063c4c43533734e4232e7720b'
+sha256sums=('3464de2af4b030984412a96af2deeaf5b7c36059c7dbb8aa5beb831c5994d0a1'
             '9ad167dd7582349a84218c1d61347376e439d476cca1ffa26b6addeaf162dc6c')
 options=(libtool staticlibs)
+
+# Set this variable to anything non-empty to bootstrap the compiler
+stage=
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
@@ -28,6 +30,11 @@ prepare() {
 build() {
   cd $srcdir/$pkgname-$pkgver
   make
+
+  if [ -n "$stage" ]; then
+    make stage
+    make
+  fi
 }
 
 check() {
