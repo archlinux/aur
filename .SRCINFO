@@ -1,14 +1,15 @@
 pkgbase = python-trytond_edocument_unece
 	pkgdesc = Tryton module for electronic document UNECE codes
-	pkgver = 5.6.0
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_edocument_unece/trytond_edocument_unece-5.6.0.tar.gz
-	sha256sums = 0bf48c3deb1a5a40426f2e2074f91fbc234dc89265adaa9c6b3f162aa7204a17
+	source = https://files.pythonhosted.org/packages/source/t/trytond_edocument_unece/trytond_edocument_unece-5.8.1.tar.gz
+	sha256sums = 84170cdad3f52ee2b8d67146777cd697c0e66be15b06232830310d6f5c026644
+	b2sums = 79def8dd94311da2979f43ebd298da8ea1e2cd2f793564500fe3e95ebe82efec2aaf6bcd01788898857868eb91a35dfb285949990b048102a0a89e45817aee13
 
 pkgname = python-trytond_edocument_unece
 
