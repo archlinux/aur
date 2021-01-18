@@ -1,5 +1,5 @@
 pkgbase = ruby-oauth
-	pkgdesc = OAuth Core Ruby implementation.
+	pkgdesc = OAuth Core Ruby implementation
 	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/oauth-xx/oauth-ruby

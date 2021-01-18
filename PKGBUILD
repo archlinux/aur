@@ -1,11 +1,10 @@
-# Maintainer: Mario Finelli <mario at finel dot li>
-# Contributor: eagletmt <eagletmt at gmail dot com>
+# Maintainer: Alberto Redondo <albertomost at gmail dot com>
 
 _gemname=oauth
 pkgname=ruby-$_gemname
 pkgver=0.5.4
 pkgrel=1
-pkgdesc='OAuth Core Ruby implementation.'
+pkgdesc='OAuth Core Ruby implementation'
 arch=('any')
 url='https://github.com/oauth-xx/oauth-ruby'
 license=('MIT')
@@ -17,7 +16,8 @@ sha256sums=('3e017ed1c107eb6fe42c977b78c8a8409249869032b343cf2f23ac80d16b5fff')
 options=(!emptydirs)
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+
+  local _gemdir="$(ruby -e 'puts Gem.default_dir')"
 
   gem install \
     --ignore-dependencies \
@@ -28,6 +28,7 @@ package() {
 
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 
-  install -Dm0644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" \
+  install -Dm644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
 }
