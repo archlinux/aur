@@ -1,4 +1,25 @@
 
+uuu_1.4.72 / 2021-01-13
+=======================
+
+  * fix a chuck missed when sparse file split happen at whole chunck
+  * fix android super image failure
+
+uuu_1.4.69 / 2020-12-09
+=======================
+
+  * http\https add port support at url
+  * fastboot: default to logical-block-size 4096
+  * improve progress show when burn android sparse image
+  * use macOS brewed openssl symbolic link to resolve root dir for cmake
+  * hardening: follow default compiler behavior for PIE
+  * reproducible builds: do not embed build path in the generated binaries
+  * Add macOS build instructions, improve Travis-CI job for macOS, improve README
+  * fixed #214: Wrong output path in uuu(-static-link).vcxproj
+  * remove c.txt prebuild generate in uuu-static-link project file
+  * remove c.txt prebuild generate in project file
+  * include g++ in the dependency list for Linux build
+
 uuu_1.4.43 / 2020-08-10
 =======================
 
