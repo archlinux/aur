@@ -4,11 +4,11 @@
 _gemname=equatable
 pkgname=ruby-$_gemname-0.5
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Allows ruby objects to implement equality comparison and inspection methods.'
 arch=(any)
 url='http://github.com/peter-murach/equatable'
-license=()
+license=(MIT)
 depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)

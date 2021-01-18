@@ -1,9 +1,10 @@
 pkgbase = ruby-equatable-0.5
 	pkgdesc = Allows ruby objects to implement equality comparison and inspection methods.
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/peter-murach/equatable
 	arch = any
+	license = MIT
 	depends = ruby
 	noextract = equatable-0.5.0.gem
 	options = !emptydirs
