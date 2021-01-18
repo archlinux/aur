@@ -11,11 +11,10 @@ license=(GPL3)
 depends=(python-gobject python-xdg python-dbus python-docopt python-ewmh gtk3
          libnotify python-setproctitle python-wheel python-pulse-control)
 optdepends=("libindicator-gtk3: AppIndictor support.")
+makedepends=(git python-setuptools-scm)
 conflicts=(caffeine caffeine-bzr caffeine-oneclick caffeine-systray)
 provides=(caffeine caffeine-bzr caffeine-oneclick caffeine-systray)
 replaces=(caffeine-oneclick caffeine-systray)
-options=(!emptydirs !libtool)
-install=$pkgname.install
 source=("git+https://github.com/caffeine-ng/$_pkgname.git")
 sha256sums=('SKIP')
 
