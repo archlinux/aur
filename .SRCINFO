@@ -1,17 +1,17 @@
 pkgbase = python-einsteinpy-doc
 	pkgdesc = Documentation for EinsteinPy
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://einsteinpy.org/
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = python-einsteinpy=0.3.0
+	makedepends = python-einsteinpy=0.3.1
 	makedepends = python-nbsphinx
 	makedepends = pandoc
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/e/einsteinpy/einsteinpy-0.3.0.tar.gz
-	md5sums = 2e294b8c4ea8cbd248748cabec70bb9b
+	source = https://files.pythonhosted.org/packages/source/e/einsteinpy/einsteinpy-0.3.1.tar.gz
+	md5sums = 208d50ec364eecc49a7d7db5de3bf83a
 
 pkgname = python-einsteinpy-doc
 
