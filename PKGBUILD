@@ -1,15 +1,16 @@
 # Maintainer: Alex Sarum <rum.274.4 at gmail dot com>
 
 pkgname='python-pltable-git'
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
-pkgdesc="PLTable is a Python library designed to make it quick and easy to represent tabular data in visually appealing ASCII tables."
+pkgdesc="Python library designed to make it quick and easy to represent tabular data in visually appealing text tables"
 arch=('any')
 url='https://github.com/platomav/PLTable'
 license=('BSD')
-depends=()
+depends=('python')
+conflicts=('python-pltable')
+provides=('python-pltable')
 makedepends=('git' 'python-setuptools')
-conflicts=('python-prettytable')
 source=("$pkgname::git+https://github.com/platomav/PLTable")
 sha256sums=('SKIP')
 

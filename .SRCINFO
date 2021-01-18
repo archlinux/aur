@@ -1,13 +1,15 @@
 pkgbase = python-pltable-git
-	pkgdesc = PLTable is a Python library designed to make it quick and easy to represent tabular data in visually appealing ASCII tables.
-	pkgver = 1.0.0
+	pkgdesc = Python library designed to make it quick and easy to represent tabular data in visually appealing text tables
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/platomav/PLTable
 	arch = any
 	license = BSD
 	makedepends = git
 	makedepends = python-setuptools
-	conflicts = python-prettytable
+	depends = python
+	provides = python-pltable
+	conflicts = python-pltable
 	source = python-pltable-git::git+https://github.com/platomav/PLTable
 	sha256sums = SKIP
 
