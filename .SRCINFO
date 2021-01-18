@@ -1,14 +1,15 @@
 pkgbase = python-trytond_product_price_list
 	pkgdesc = Tryton module with price list
-	pkgver = 5.6.0
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_product_price_list/trytond_product_price_list-5.6.0.tar.gz
-	sha256sums = d664e48491997509fe5a1c697ba2ed2c3553c9ab71e321bb8a1e05bf442b1765
+	source = https://files.pythonhosted.org/packages/source/t/trytond_product_price_list/trytond_product_price_list-5.8.1.tar.gz
+	sha256sums = 91124d2dd99dd49debb08fd76e9ecc15804d6d07be11d6b1f0143c58ca396f2a
+	b2sums = ab8d9927fda98470199dbb6557f72a79f8b62a8ec4ed78f46f2ab3e7f5f721be5a62695545e19c7930b446423d189ec6ced841eeb3a5151b5ae49d73f1d27e20
 
 pkgname = python-trytond_product_price_list
 
