@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='Generic WPE WebKit backend using FreeDesktop technologies (Wayland)'
 pkgname=wpebackend-fdo-git
-pkgver=1.3.1.r36.g17316d7
+pkgver=1.7.1.r18.gc3f9f7b
 pkgrel=1
 url=https://github.com/Igalia/WPEBackend-fdo
 license=(custom:BSD)
@@ -9,8 +9,8 @@ arch=(x86_64 i686 aarch64 armv7l armv7h)
 groups=(wpe)
 provides=(wpebackend-fdo)
 conflicts=(wpebackend-fdo)
-makedepends=(cmake git)
-depends=(glib2 wayland libwpe-git opengl-driver libxkbcommon)
+makedepends=(mesa wayland-protocols git meson)
+depends=(glib2 wayland libwpe-git libepoxy)
 source=("${pkgname}::git+${url}")
 sha256sums=(SKIP)
 
@@ -23,21 +23,19 @@ pkgver () {
 	)
 }
 
-prepare () {
-	mkdir -p _build
+build () {
+	arch-meson "${pkgname}" build
+	meson compile -C build
 }
 
-build () {
-	cd _build
-	cmake \
-		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
-		"../${pkgname}"
-	cmake --build .
+check () {
+	meson test -C build --print-errorlogs
 }
 
 package () {
-	DESTDIR="${pkgdir}" cmake --build _build --target install
+	depends+=(libwpe-1.0.so libg{lib,object,io}-2.0.so)
+	provides+=(libWPEBackend-fdo-1.0.so)
+
+	DESTDIR="${pkgdir}" meson install -C build
 	install -Dm644 "${pkgname}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
