@@ -26,8 +26,6 @@ pkgbase = caffeine-ng
 	conflicts = caffeine-systray
 	replaces = caffeine-oneclick
 	replaces = caffeine-systray
-	options = !emptydirs
-	options = !libtool
 	source = https://files.pythonhosted.org/packages/source/c/caffeine-ng/caffeine-ng-3.5.0.tar.gz
 	md5sums = 26fa6c3640fbe1f92c32cab80a3f7915
 

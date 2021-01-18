@@ -13,7 +13,6 @@ optdepends=("libappindicator-gtk3: AppIndictor support (eg: Plasma, Unity).")
 conflicts=(caffeine caffeine-bzr caffeine-oneclick caffeine-systray)
 provides=(caffeine caffeine-bzr caffeine-oneclick caffeine-systray)
 replaces=(caffeine-oneclick caffeine-systray)
-options=(!emptydirs !libtool)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 
 md5sums=('26fa6c3640fbe1f92c32cab80a3f7915')
