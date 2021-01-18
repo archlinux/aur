@@ -1,6 +1,8 @@
 # Maintainer:  Vincent Grande <shoober420@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
+###  may require "ln -s /usr/include/locale.h /usr/include/xlocale.h"
+
 pkgname=lib32-libpulse-nosystemd-minimal-git
 pkgdesc="A featureful, general-purpose sound server (32-bit client libraries)"
 pkgver=13.99.1+98+g460d0c0b7
