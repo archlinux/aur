@@ -15,9 +15,11 @@ install="usbdm.install"
 
 source=("git+https://github.com/podonoghue/usbdm-eclipse-makefiles-build.git"
         "undebian.patch"
+        "fix-linux-build.patch"
         "60-usbdm.rules")
 sha256sums=('SKIP'
             '69407963c3aa12cdee47e100c64a3de76e2c182b7e33a3e486448a2581710457'
+            '4388b5ace7f37c8b036892aecde8d881c559b315e7e1b3adaec74eddea1fef0a'
             '88eaab73a1020ac84d4979a4f70f122214b0042d167942a95bddd0560f0e3aa8')
 
 pkgver() {
@@ -28,12 +30,13 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/usbdm-eclipse-makefiles-build"
 	patch -p1 -i "${srcdir}/undebian.patch"
+	patch -p1 -i "${srcdir}/fix-linux-build.patch"
 	sed -i -e 's/xercesc_3_1/xercesc/g' 'MergeXML/src/xmlParser.h'
 }
 
 build() {
 	cd "${srcdir}/usbdm-eclipse-makefiles-build"
-	make -f Makefile-x64.mk
+	make -f Makefile-x64.mk all
 }
 
 package() {

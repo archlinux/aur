@@ -1,0 +1,40 @@
+diff --git a/Common.mk b/Common.mk
+index f16d4bdb..bbf648ac 100644
+--- a/Common.mk
++++ b/Common.mk
+@@ -11,10 +11,6 @@ PKG_NAME = usbdm
+ # Used as prefix with the above when in build directory $(DUMMY_CHILD)/$(SHARED_SRC) = PackageFiles/src
+ DUMMY_CHILD    := PackageFiles
+ 
+-ifeq ('$(OS)','')
+-   OS=Windows_NT
+-endif
+-
+ #BITNESS ?= 64
+ 
+ ifeq ($(OS),Windows_NT)
+@@ -270,7 +266,7 @@ ifeq ($(UNAME_S),Windows)
+       USBDM_DSC_LIBS := -lusbdm-dsc$(VSUFFIX) 
+    endif
+ else
+-   LIB_USB = -l$(_LIB_USB_SHARED)
++   LIB_USB = $(LIB_USB_SHARED)
+    ifdef DEBUG
+       USBDM_LIBS     := -lusbdm-debug
+       USBDM_DSC_LIBS := -lusbdm-dsc-debug 
+diff --git a/UsbdmJni_DLL/Target.mk b/UsbdmJni_DLL/Target.mk
+index 3fd428a3..0826ed8e 100644
+--- a/UsbdmJni_DLL/Target.mk
++++ b/UsbdmJni_DLL/Target.mk
+@@ -32,9 +32,9 @@ CC = $(GPP)
+ CFLAGS += -fno-exceptions
+ 
+ LDFLAGS += $(LFLAGS)
+-LDFLAGS += -Wl,--kill-at -shared 
++LDFLAGS += -shared
+ ifeq ($(UNAME_S),Windows)
+-LDFLAGS += 
++LDFLAGS += -Wl,--kill-at
+ else	
+ LDFLAGS += -Wl,-soname,$(basename $(notdir $@))
+ endif
