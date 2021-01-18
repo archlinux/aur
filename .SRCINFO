@@ -1,13 +1,13 @@
 pkgbase = wps-office
 	pkgdesc = Kingsoft Office (WPS Office) - an office productivity suite
-	pkgver = 11.1.0.9719
+	pkgver = 11.1.0.10161
 	pkgrel = 1
 	url = http://wps-community.org/
 	arch = x86_64
 	license = custom
 	options = !emptydirs
-	source = http://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/9719/wps-office_11.1.0.9719.XA_amd64.deb
-	sha1sums = 1661c8dfad03e1521bb833bc258ad655e275b600
+	source = http://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/10161/wps-office_11.1.0.10161.XA_amd64.deb
+	sha1sums = 750a43b2cc58b8cf21c82c003db487b45343dd3b
 
 pkgname = wps-office
 	install = wps-office.install
