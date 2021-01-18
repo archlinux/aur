@@ -1,13 +1,15 @@
 pkgbase = python-trytond_account_statement_rule
-	pkgver = 5.6.0
+	pkgdesc = Tryton module to automate statement import with rules
+	pkgver = 5.8.2
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_account_statement_rule/trytond_account_statement_rule-5.6.0.tar.gz
-	sha256sums = 68dbfc496cccd17d9adf59759f63876df40b910b84f3d0de8acb80fbdcb00caa
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_statement_rule/trytond_account_statement_rule-5.8.2.tar.gz
+	sha256sums = c4e51974a65953023684ce04f813f66c4e7f4877b7d7b6c5bde94a5d2951c2fe
+	b2sums = 39ccd08231d3796c1d98a9b760d28cd4e20ce5658ccccec1cbaf96b80fed8bff51eea9733b070f2d32018cff1f7f23e084a3a93d68c61f59c046eb49c8b3061c
 
 pkgname = python-trytond_account_statement_rule
 
