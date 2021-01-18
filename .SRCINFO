@@ -1,0 +1,21 @@
+pkgbase = sphvr-git
+	pkgdesc = A GLib library for Vulkan abstraction.
+	pkgver = 0.0.1.63.3a9ec15
+	pkgrel = 1
+	url = https://gitlab.com/lubosz/sphvr
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = git
+	makedepends = glslang
+	makedepends = vulkan-headers
+	depends = gulkan-git
+	depends = gst-plugins-bad-libs
+	provides = sphvr=0.0.1.63.3a9ec15
+	conflicts = sphvr
+	source = git+https://gitlab.com/lubosz/sphvr.git
+	md5sums = SKIP
+
+pkgname = sphvr-git
+
