@@ -1,14 +1,15 @@
 pkgbase = python-trytond_account_invoice
 	pkgdesc = Tryton module for invoicing
-	pkgver = 5.2.1
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_account_invoice/trytond_account_invoice-5.2.1.tar.gz
-	sha256sums = 5117d37e62959987d466d5f8864291cf18ffe9382ed325530929e91dd91be6fe
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_invoice/trytond_account_invoice-5.8.1.tar.gz
+	sha256sums = 9fbd8fcdc709e4ec9faafd7216f99705ede40e23c5a0a8ce2d0599b7aa622c37
+	b2sums = bfc69b73551e0422da6766019925d24f48b39b192cbca74a94ab974dc49790c60ca69cedf365dbd5a2d2b142761385fa6be0dba4ad3932c1e1b1c311e15d6ecc
 
 pkgname = python-trytond_account_invoice
 
