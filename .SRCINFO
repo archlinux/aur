@@ -1,13 +1,15 @@
 pkgbase = python-trytond_account_tax_rule_country
-	pkgver = 5.6.0
+	pkgdesc = Tryton module to add countries on tax rules
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_account_tax_rule_country/trytond_account_tax_rule_country-5.6.0.tar.gz
-	sha256sums = de5704b765be9be1ef0d3af64107ffa9fa37e8b20d6afc2ab26680cd4a03fdfc
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_tax_rule_country/trytond_account_tax_rule_country-5.8.1.tar.gz
+	sha256sums = 6ac466a7ac1db4f55fb3d6b0a0df4ceb652240ec08b9d96011d60eacb7ad35b1
+	b2sums = bc7b39c05905905ec0f7729f676db8e6c14ff60ff23deb63bbf5366ca4e3d2318ca7dacd74a3810ba0a30482866bc40e1ab3d20c78c793c0d207de22256945dd
 
 pkgname = python-trytond_account_tax_rule_country
 
