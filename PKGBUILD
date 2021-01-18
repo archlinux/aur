@@ -1,18 +1,18 @@
 # Maintainer: Moritz Schoenherr <moritz.schoenherr[at]gmail[dot]com>
 pkgname=crawl
-pkgver=0.23.2
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="Crawl stonesoup, curses version"
 url="http://crawl.develz.org/"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('lua51' 'sqlite' 'zlib' 'python-pyaml')
+depends=('lua51' 'sqlite' 'zlib' )
 makedepends=('git')
 conflicts=()
 replaces=()
 backup=()
 source=("https://github.com/crawl/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('dbe75310b7a24bd09a18c28d67dc118f')
+sha256sums=('6306c835246057bf91b6690fde14c2c3433ebe1d526876f96c46fab6dc109d45')
 
 prepare() {
 
@@ -25,7 +25,8 @@ prepare() {
 build() {
 
   cd "${srcdir}/${pkgname}-${pkgver}/crawl-ref/source"
-  make \
+  NPROC=$(getconf _NPROCESSORS_ONLN)
+  make -j${NPROC} \
   prefix=/usr \
   bin_prefix=bin \
   DESTDIR=$pkgdir \
