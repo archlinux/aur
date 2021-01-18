@@ -26,6 +26,7 @@ build() {
     cd opt/brother/Printers/mfc${_model} || return 1
     perl -i -pe 's#/etc/init.d#/etc/rc.d#g' ./cupswrapper/cupswrappermfc${_model} || return 1
     perl -i -pe 's#printcap\.local#printcap#g' $srcdir/mfc${_model}/opt/brother/Printers/mfc${_model}/inf/setupPrintcapij || return 1
+    perl -i -pe 's#\*CloseUI: \*BRReverse#*%CloseUI: *BRReverse#g' ./cupswrapper/brother_mfcj6510dw_printer_en.ppd || return 1
     rm -f *.deb || return 1
 }
 package() {
