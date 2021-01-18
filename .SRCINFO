@@ -1,0 +1,15 @@
+pkgbase = python-trytond_marketing_email
+	pkgdesc = Tryton module to manage marketing mailing lists
+	pkgver = 5.8.1
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_marketing_email/trytond_marketing_email-5.8.1.tar.gz
+	sha256sums = 07ebd05eae3aba8d279e2cf9121f4fcd23eab2a6ebd918f044a93992aac76e31
+	b2sums = 7c4a56cdfdc167d98bb53e2a4f2df618379dd2d6d920e956630fdd51730a4333cb08177c641c1e9f38611a9ad55716bb3f3982c36197a63d38b3cba312528666
+
+pkgname = python-trytond_marketing_email
+
