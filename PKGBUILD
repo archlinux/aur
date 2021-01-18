@@ -3,7 +3,7 @@
 
 _pkgname=fisher
 pkgname=${_pkgname}
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="A package manager for the fish shell"
 arch=(any)
@@ -14,14 +14,14 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 install=${pkgname}.install
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/jorgebucaran/fisher/archive/${pkgver}.tar.gz")
-sha512sums=('a9ffc07c1ef24d02bf664432441d76baca30334a2870e97a9360daa891c74bf272445c593a2475dbf8ea818ced20b3924b78cf2094e83383dd6f599a4cef7f72')
+sha512sums=('bb3f0bdcf50fac96eb673f4552543b8b79623684e86425d2f207b654e81e5b921898abef16821a83e10cb37e949bc7bcfd37187dd64e58f26247dd4657d2c853')
 
 
 package() {
     cd "${_pkgname}-${pkgver}"
 
     # install fisher into the global fish directory
-    install -Dm 644 fisher.fish "${pkgdir}/usr/share/fish/vendor_functions.d/fisher.fish"
+    install -Dm 644 functions/fisher.fish "${pkgdir}/usr/share/fish/vendor_functions.d/fisher.fish"
     install -Dm 644 completions/fisher.fish "${pkgdir}/usr/share/fish/vendor_completions.d/fisher.fish"
     # README and LICENSE
     install -Dm 644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
