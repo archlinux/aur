@@ -2,7 +2,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-cq-editor-git
-pkgver=0.1.2.r48.g2f75bf6
+pkgver=0.1.2.r49.g7159ef3
 pkgrel=1
 pkgdesc="CadQuery GUI editor based on PyQT built from git"
 arch=('x86_64')
@@ -44,6 +44,7 @@ prepare() {
 }
 
 build(){
+  cd CQ-editor
   python setup.py build
 }
 
@@ -55,6 +56,6 @@ check() {
 
 package() {
   cd CQ-editor
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python setup.py install --root="$pkgdir" --skip-build
 }
 
