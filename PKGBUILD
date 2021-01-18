@@ -1,6 +1,6 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
@@ -9,8 +9,8 @@ provides=('kime')
 depends=('gtk3' 'cairo' 'libxcb' 'pango')
 arch=('any')
 license=('GPL3')
-source=("kime.7z::${url}/releases/download/v${pkgver}/kime-${pkgver}.7z")
-md5sums=('0b53d5007dd2ea2b10d5fe8440e920d8')
+source=("${url}/releases/download/v${pkgver}/kime-${pkgver}.7z")
+md5sums=('ae7f0c7c025e434104e292dc375d5972')
 
 package() {
     install -Dm755 kime-xim -t "${pkgdir}/usr/bin"
