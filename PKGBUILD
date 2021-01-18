@@ -4,8 +4,8 @@
 # Contributor: Franck Stauffer
 
 pkgname='firefox-extension-canvasblocker'
-pkgver=1.4
-pkgrel=2
+pkgver=1.5
+pkgrel=1
 pkgdesc="A Firefox extension to protect from being fingerprinted"
 license=('MPL2')
 arch=('any')
@@ -13,7 +13,7 @@ url="https://github.com/kkapsner/CanvasBlocker"
 depends=("firefox")
 groups=('firefox-addons')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kkapsner/CanvasBlocker/archive/$pkgver.tar.gz")
-sha256sums=('c515fcd565786399656ed3d22632a5590b5ef9aefea600ba7993e68a4488159e')
+sha256sums=('d47b74c5413e01026ae4b16097b2442febcdfec83068e3984567cb6ed2c3ef7c')
 
 package() {
   cd "CanvasBlocker-$pkgver"
