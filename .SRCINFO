@@ -1,0 +1,15 @@
+pkgbase = python-trytond_account_payment_braintree
+	pkgdesc = Tryton module for Braintree payment
+	pkgver = 5.8.1
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_payment_braintree/trytond_account_payment_braintree-5.8.1.tar.gz
+	sha256sums = e1b87304a7e1ddbac5b8f8fb624060a4578f5a0e57f8380851c55607f7469ac5
+	b2sums = bb35f77175777cb84e21e85c5f17f9e842034d54e3cd226a8adc42b0aff5efd606f0344a89a8fd6f67df88dc2c0b0633a6972394f3c90dea6bc8b60da49985c4
+
+pkgname = python-trytond_account_payment_braintree
+
