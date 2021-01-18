@@ -9,15 +9,15 @@ pkgdesc='Ruby/GTK2 is a Ruby binding of GTK+-2.x.'
 arch=(x86_64)
 url='http://ruby-gnome2.sourceforge.jp/'
 license=(LGPL2.1)
-depends=(ruby gtk2 ruby-atk=$pkgver ruby-pango=$pkgver ruby-gdk_pixbuf2=$pkgver)
+depends=(ruby gtk2 ruby-atk=${pkgver} ruby-pango=${pkgver} ruby-gdk_pixbuf2=${pkgver})
 makedepends=(ruby-native-package-installer)
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
+source=(https://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
+noextract=(${_gemname}-${pkgver}.gem)
 sha1sums=('ad998d92030b2768d3f52e2b0c4364cd81017476')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install --no-document -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  gem install --ignore-dependencies --no-user-install --no-document -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" ${_gemname}-${pkgver}.gem
+  rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
 }
