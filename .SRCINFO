@@ -1,16 +1,16 @@
 pkgbase = vaudtax
 	pkgdesc = VaudTax
-	pkgver = 2019
-	pkgrel = 4
-	url = https://www.vd.ch/themes/etat-droit-finances/impots/impots-pour-les-individus/remplir-ma-declaration-dimpot/vaudtax-2018/
+	pkgver = 2020
+	pkgrel = 1
+	url = https://www.vd.ch/themes/etat-droit-finances/impots/impots-pour-les-individus/remplir-ma-declaration-dimpot/vaudtax-2020/
 	arch = x86_64
 	license = custom
 	depends = webkitgtk2
 	depends = jre8-openjdk
 	depends = gnome-vfs
-	source = vaudtax-2019-1.2-production.tar.gz::https://vaudtax-dl.vd.ch/vaudtax2019/telechargement/linux/64bit/VaudTax_2019.tar.gz
+	source = vaudtax-2020-1.0.1-production.tar.gz::https://vaudtax-dl.vd.ch/vaudtax2020/telechargement/linux/64bit/VaudTax_2020.tar.gz
 	source = vaudtax
-	md5sums = 0963a69228068323f19437c1446c7314
+	md5sums = 4d95186b1ca44149b94f8d4c9c4149dc
 	md5sums = 58628ce238328666d4b5c749ac528138
 
 pkgname = vaudtax
