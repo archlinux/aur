@@ -8,11 +8,11 @@ epoch=2
 pkgver=B2
 pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
-url="https://looking-glass.hostfission.com"
+url="https://looking-glass.io/"
 arch=('x86_64')
 license=('GPL2')
 makedepends=('cmake' 'sdl2_ttf' 'glu' 'fontconfig' 'spice-protocol' 'libxi' 'obs-studio')
-source=("looking-glass-${pkgver}.tar.gz::https://looking-glass.hostfission.com/ci/host/source?id=255")
+source=("looking-glass-${pkgver}.tar.gz::https://looking-glass.io/ci/host/source?id=255")
 sha512sums=('a6ddd07f69dacfe8e0322615d9ff95c0ea6257f3bff87f99b18d4b1f6c723cbfcced6f73fb9add2f752782d7a96c8beb153f55f3da170fcddeb726b2a378e0ef')
 
 _lgdir="looking-glass-B2-0-g76710ef201"

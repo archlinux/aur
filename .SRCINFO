@@ -3,7 +3,7 @@ pkgbase = looking-glass
 	pkgver = B2
 	pkgrel = 1
 	epoch = 2
-	url = https://looking-glass.hostfission.com
+	url = https://looking-glass.io/
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
@@ -13,7 +13,7 @@ pkgbase = looking-glass
 	makedepends = spice-protocol
 	makedepends = libxi
 	makedepends = obs-studio
-	source = looking-glass-B2.tar.gz::https://looking-glass.hostfission.com/ci/host/source?id=255
+	source = looking-glass-B2.tar.gz::https://looking-glass.io/ci/host/source?id=255
 	sha512sums = a6ddd07f69dacfe8e0322615d9ff95c0ea6257f3bff87f99b18d4b1f6c723cbfcced6f73fb9add2f752782d7a96c8beb153f55f3da170fcddeb726b2a378e0ef
 
 pkgname = looking-glass
