@@ -1,13 +1,15 @@
 pkgbase = python-trytond_stock_shipment_measurements
-	pkgver = 5.6.0
+	pkgdesc = Tryton module to add measurements to shipment
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_shipment_measurements/trytond_stock_shipment_measurements-5.6.0.tar.gz
-	sha256sums = c1bf7b01e0860cebe55a33d952410ff793cf87754d88f7f84cd52f0e2bb748b8
+	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_shipment_measurements/trytond_stock_shipment_measurements-5.8.1.tar.gz
+	sha256sums = 18ced6c2678c509fe1f3146d0ac20bcabbdafe9947d654a99ab7acc8b1463ec2
+	b2sums = b4260867a5d2c362bc9b23cac520a611dd9cf6fb2d142b7c14f346c305b558493bf9e172692396b716db72915b20c329c5610b055c794c37e4f92e021c21b93c
 
 pkgname = python-trytond_stock_shipment_measurements
 
