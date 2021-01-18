@@ -5,7 +5,7 @@
 # https://www.experts-exchange.com/questions/22609218/Canon-ImageRUNNER-3570-not-printing.html
 # http://www.copytechnet.com/forums/canon/82370-canon-ir-2530-driver-problem.html
 
-# models.4.0.5.txt
+# models.4.0.7.txt
 # ModelName: "Canon CLC4040-H1 Ver1.1 PCL"
 # ModelName: "Canon CLC4040-H1 PS Ver1.1"
 # ModelName: "Canon CLC5151-H1 Ver1.1 PCL"
@@ -113,6 +113,9 @@
 # ModelName: "Canon iR2270/iR2870 PCL"
 # ModelName: "Canon iR2270/iR2870 PS"
 # ModelName: "Canon iR2270/iR2870 PXL"
+# ModelName: "Canon iR2425 PCL"
+# ModelName: "Canon iR2425 PS"
+# ModelName: "Canon iR2425 PXL"
 # ModelName: "Canon iR2520 PCL"
 # ModelName: "Canon iR2520 PS"
 # ModelName: "Canon iR2520 PXL"
@@ -273,12 +276,21 @@
 # ModelName: "Canon iR-ADV 4545/4551 PCL"
 # ModelName: "Canon iR-ADV 4545/4551 PS"
 # ModelName: "Canon iR-ADV 4545/4551 PXL"
+# ModelName: "Canon iR-ADV 4725/4735 PCL"
+# ModelName: "Canon iR-ADV 4725/4735 PS"
+# ModelName: "Canon iR-ADV 4725/4735 PXL"
+# ModelName: "Canon iR-ADV 4745/4751 PCL"
+# ModelName: "Canon iR-ADV 4745/4751 PS"
+# ModelName: "Canon iR-ADV 4745/4751 PXL"
 # ModelName: "Canon iR-ADV 525 III PCL"
 # ModelName: "Canon iR-ADV 525 III PS"
 # ModelName: "Canon iR-ADV 525 III PXL"
 # ModelName: "Canon iR-ADV 525 PCL"
 # ModelName: "Canon iR-ADV 525 PS"
 # ModelName: "Canon iR-ADV 525 PXL"
+# ModelName: "Canon iR-ADV 6000i PCL"
+# ModelName: "Canon iR-ADV 6000i PXL"
+# ModelName: "Canon iR-ADV 6000i PS"
 # ModelName: "Canon iR-ADV 6000-U1 PCL V1.0"
 # ModelName: "Canon iR-ADV 6000-U1 PS V1.0"
 # ModelName: "Canon iR-ADV 6000-U1 PXL V1.0"
@@ -312,6 +324,12 @@
 # ModelName: "Canon iR-ADV 6575 PCL"
 # ModelName: "Canon iR-ADV 6575 PS"
 # ModelName: "Canon iR-ADV 6575 PXL"
+# ModelName: "Canon iR-ADV 6755/6765 PCL"
+# ModelName: "Canon iR-ADV 6755/6765 PS"
+# ModelName: "Canon iR-ADV 6755/6765 PXL"
+# ModelName: "Canon iR-ADV 6780 PCL"
+# ModelName: "Canon iR-ADV 6780 PS"
+# ModelName: "Canon iR-ADV 6780 PXL"
 # ModelName: "Canon iR-ADV 715 III PCL"
 # ModelName: "Canon iR-ADV 715 III PS"
 # ModelName: "Canon iR-ADV 715 III PXL"
@@ -345,6 +363,12 @@
 # ModelName: "Canon iR-ADV 8585/8595 PCL"
 # ModelName: "Canon iR-ADV 8585/8595 PS"
 # ModelName: "Canon iR-ADV 8585/8595 PXL"
+# ModelName: "Canon iR-ADV 8705 PCL"
+# ModelName: "Canon iR-ADV 8705 PS"
+# ModelName: "Canon iR-ADV 8705 PXL"
+# ModelName: "Canon iR-ADV 8786/8795 PCL"
+# ModelName: "Canon iR-ADV 8786/8795 PS"
+# ModelName: "Canon iR-ADV 8786/8795 PXL"
 # ModelName: "Canon iR-ADV C2020i/2030i PCL"
 # ModelName: "Canon iR-ADV C2020i/2030i PS"
 # ModelName: "Canon iR-ADV C2020i/2030i PXL"
@@ -376,6 +400,9 @@
 # ModelName: "Canon iR-ADV C256/356 PCL"
 # ModelName: "Canon iR-ADV C256/356 PS"
 # ModelName: "Canon iR-ADV C256/356 PXL"
+# ModelName: "Canon iR C3125 PCL"
+# ModelName: "Canon iR C3125 PS"
+# ModelName: "Canon iR C3125 PXL"
 # ModelName: "Canon iR-ADV C3320L PCL"
 # ModelName: "Canon iR-ADV C3320L PS"
 # ModelName: "Canon iR-ADV C3320L PXL"
@@ -400,6 +427,12 @@
 # ModelName: "Canon iR-ADV C3525/3530 PCL"
 # ModelName: "Canon iR-ADV C3525/3530 PS"
 # ModelName: "Canon iR-ADV C3525/3530 PXL"
+# ModelName: "Canon iR-ADV C3720 PCL"
+# ModelName: "Canon iR-ADV C3720 PS"
+# ModelName: "Canon iR-ADV C3720 PXL"
+# ModelName: "Canon iR-ADV C3725/3730 PCL"
+# ModelName: "Canon iR-ADV C3725/3730 PS"
+# ModelName: "Canon iR-ADV C3725/3730 PXL"
 # ModelName: "Canon iR-ADV C475 III PCL"
 # ModelName: "Canon iR-ADV C475 III PS"
 # ModelName: "Canon iR-ADV C475 III PXL"
@@ -439,6 +472,12 @@
 # ModelName: "Canon iR-ADV C5550/5560 PCL"
 # ModelName: "Canon iR-ADV C5550/5560 PS"
 # ModelName: "Canon iR-ADV C5550/5560 PXL"
+# ModelName: "Canon iR-ADV C5735/5740 PCL"
+# ModelName: "Canon iR-ADV C5735/5740 PS"
+# ModelName: "Canon iR-ADV C5735/5740 PXL"
+# ModelName: "Canon iR-ADV C5750/5760 PCL"
+# ModelName: "Canon iR-ADV C5750/5760 PS"
+# ModelName: "Canon iR-ADV C5750/5760 PXL"
 # ModelName: "Canon iR-ADV C7000 GX300 V1.0 PS"
 # ModelName: "Canon iR-ADV C7000 GX300 V2.0 PS"
 # ModelName: "Canon iR-ADV C7000-A1 V1.0 PCL"
@@ -472,6 +511,12 @@
 # ModelName: "Canon iR-ADV C7580/7570 PCL"
 # ModelName: "Canon iR-ADV C7580/7570 PS"
 # ModelName: "Canon iR-ADV C7580/7570 PXL"
+# ModelName: "Canon iR-ADV C7765 PCL"
+# ModelName: "Canon iR-ADV C7765 PS"
+# ModelName: "Canon iR-ADV C7765 PXL"
+# ModelName: "Canon iR-ADV C7780/7770 PCL"
+# ModelName: "Canon iR-ADV C7780/7770 PS"
+# ModelName: "Canon iR-ADV C7780/7770 PXL"
 # ModelName: "Canon iR-ADV C9000 GX300 V1.0 PS"
 # ModelName: "Canon iR-ADV C9000 GX300 V2.0 PS"
 # ModelName: "Canon iR-ADV C9000-A1 V1.0 PCL"
@@ -749,8 +794,8 @@ pkgname='canon-cque'
 #_cnver='4.0-0'; _dl64t='48570'; _dl32t=$((_dl64-1))
 #https://files.canon-europe.com/files/soft01-48570/Driver/CQue_v4.0.3_Linux_64_EN.tar.gz
 #_cnver='4.0-3'; _dl64t='48570'; _dl32t=$((_dl64-1))
-_cnver='4.0-5'; _dl64r='45517'; _dl32r='45511'; _dl64d='45505'; _dl32d='45482'
-
+#_cnver='4.0-5'; _dl64r='45517'; _dl32r='45511'; _dl64d='45505'; _dl32d='45482'
+_cnver='4.0-7'; _dl64r='45517'; _dl32r='45511'; _dl64d='45505'; _dl32d='45482'
 pkgver="${_cnver//-/.}"
 pkgrel='1'
 pkgdesc='CUPS printer driver for Canon imagePRESS imageRUNNER ADVANCE PRO C iR i-SENSYS FAX LBP MF Laser Shot PC-D copier printers, may require PCL/PXL or PS dealer LMS license'
@@ -771,11 +816,11 @@ source_i686=("https://files.canon-europe.com/files/soft${_dl32r}/Software/${_fl}
 #source_i686=("https://files.canon-europe.com/files/soft${_dl32d}/Software/${_fl}.deb")
 unset _fl
 md5sums=('4df9593c184cd39bb9d9df6195c4d390')
-md5sums_i686=('c224b500dbfb1d13753c4e682d66fcca')
-md5sums_x86_64=('844f038b05fa4f2defabfbb4939db747')
+md5sums_i686=('26979c977d891448d59c5dde12aa4c33')
+md5sums_x86_64=('c590a625be8ce417f59f04466b36d59a')
 sha256sums=('343a624f559718d085b01605572fdf1cf33201931f06ef37567bbd497a29d333')
-sha256sums_i686=('b543ac4550d6e6d29bee1e379f0be1279997abf74813ab93ba979457e4b07413')
-sha256sums_x86_64=('8da52ca5b76d70ebe70151f502ad837834e7acb31788ec04f62619102bb5e393')
+sha256sums_i686=('3dae7a478e2b99b70d882f7a395043ce8dba812310a774e85e171c4bb411c01a')
+sha256sums_x86_64=('0c289ecccbe5067efa62fc96b2662fc8ee6b0b4eac511299a564a553dbf7f208')
 
 prepare() {
   set -u
