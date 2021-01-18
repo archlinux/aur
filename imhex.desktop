@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=ImHex
+GenericName=Hex Editor
+Comment=A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM
+Icon=imhex
+Exec=/usr/bin/imhex
+Terminal=false
+Categories=Development;
+Encoding=UTF-8

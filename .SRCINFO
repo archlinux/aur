@@ -1,7 +1,7 @@
 pkgbase = imhex
 	pkgdesc = A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WerWolv/ImHex
 	arch = x86_64
 	license = GPL2
@@ -16,8 +16,11 @@ pkgbase = imhex
 	depends = file
 	depends = openssl
 	depends = libiconv
+	depends = hicolor-icon-theme
 	source = imhex-1.6.1.tar.gz::https://github.com/WerWolv/ImHex/archive/v1.6.1.tar.gz
+	source = imhex.desktop
 	b2sums = 6dcf7461fa15a396c5351942347e62e8a4bfdac47591761006001e8bd8d149d9208e01795eebc27fbdc2b5023021f783e7c6142a4da1b0fc484531b181d6b00f
+	b2sums = 7b2d029de385fdc2536f57a4364add9752b9a5dc31df501e07bff1fd69fdd1de2afa19a5ac5a4c87fbf21c5d87cc96d3fe30d58825c050f5a7d25f6d85d08efc
 
 pkgname = imhex
 
