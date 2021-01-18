@@ -1,4 +1,5 @@
 # Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: linuxer <linuxer@artixlinux.org>
 # Contributor: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=ananicy-nosystemd-git
