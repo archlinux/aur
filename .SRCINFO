@@ -1,0 +1,13 @@
+pkgbase = gnome-colors-common
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/gnome-colors/gnome-colors/tree/master/gnome-colors/gnome-colors-common
+	arch = any
+	license = GPL
+	provides = gnome-colors-common
+	conflicts = gnome-colors-common
+	source = https://sourceforge.net/projects/archbangretro/files/gnome-colors-common.tar.xz
+	md5sums = 508f5c82d9d585d7a69180ca9814c897
+
+pkgname = gnome-colors-common
+
