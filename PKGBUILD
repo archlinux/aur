@@ -1,7 +1,7 @@
 # Maintainer: Nek.12 <vaizin.nikita@gmail.com>
 pkgname='notion-enhancer'
 pkgver=0.10.2
-pkgrel=3
+pkgrel=4
 pkgdesc="An enhancer/customiser for the all-in-one productivity workspace notion.so"
 arch=('any')
 url="https://github.com/notion-enhancer/notion-enhancer"
@@ -18,9 +18,9 @@ backup=()
 options=()
 install=$pkgname
 source=("https://registry.npmjs.org/notion-enhancer/-/$pkgname-$pkgver.tgz"
-        "reapply-notion-enhancer.hook")
+        "reapply-notion-enhancer.hook" "reapply-notion-enhancer-2.hook")
 noextract=("${pkgname}-${pkgver}.tgz" )
-md5sums=('4dbc118072fdc9ffd9af0efd4c0c8997' '704ad896f7cd8ebb0c157b882ab22d85') #tgz, hook
+md5sums=('4dbc118072fdc9ffd9af0efd4c0c8997' 'fb1bff2ff2865bf25e8fdc76bf2641a3' 'f0ea114ae5cc18202ccbd9f702ba11b4') #tgz, hook, hook2
 package() {
     npm install --ignore-scripts -g --user root --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
 
@@ -40,4 +40,5 @@ package() {
 
 	#add pacman hooks
 	install -Dm 644 "${srcdir}/reapply-notion-enhancer.hook" -t "${pkgdir}/usr/share/libalpm/hooks"
+	install -Dm 644 "${srcdir}/reapply-notion-enhancer-2.hook" -t "${pkgdir}/usr/share/libalpm/hooks"
 }

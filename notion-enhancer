@@ -10,8 +10,7 @@ yellow="${bold}$(tput setaf 3)"
 
 post_install() {
     echo "Applying notion-enhancer automatically..."
-    warn "The installer will own the files necessary for it to work with chmod -R a+wr. Ignore the warnings if any"
-	chmod -R a+wr /usr/lib/node_modules/notion-enhancer/ /opt/notion-app/ /usr/share/applications/notion-app.desktop /usr/bin/notion-app
+    warn "If you want to use the enhancer without running sudo (recommended by the developer), then run \n chmod -R a+wr /usr/lib/node_modules/notion-enhancer/ /opt/notion-app/app /usr/share/applications/notion-app.desktop /usr/bin/notion-app \n However, be wary of the security risks posed by such patch."
 	notion-enhancer apply -y
 }
 
@@ -22,6 +21,7 @@ post_upgrade() {
         echo "Reapplying notion-enhancer"
         notion-enhancer remove -n # don't delete the data
         notion-enhancer apply -y # yes, overwrite
+        warn "If you want to use the enhancer without running sudo (recommended by the developer), then run: \n chmod -R a+wr /usr/lib/node_modules/notion-enhancer/ /opt/notion-app/app /usr/share/applications/notion-app.desktop /usr/bin/notion-app \n However, be wary of the security risks posed by such patch."
     fi
 }
 

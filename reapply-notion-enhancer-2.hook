@@ -3,8 +3,9 @@ Operation = Upgrade
 Type = Package
 Target = notion-app
 [Action]
-Description = Removing notion-enhancer...
-When = PreTransaction
-Exec = /usr/bin/notion-enhancer remove -n
+Description = Reapplying notion-enhancer...
+When = PostTransaction
+Exec = /usr/bin/notion-enhancer apply -y
 Depends = notion-enhancer
 Depends = notion-app
+
