@@ -4,7 +4,7 @@
 _pkgname=glib
 pkgname=lib32-glib
 pkgver=1.2.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Common C routines used by Gtk+ and other libs (32-bit)"
 arch=('x86_64')
 url="http://www.gtk.org/"
@@ -13,7 +13,7 @@ depends=('lib32-glibc' 'sh')
 makedepends=('gcc-multilib')
 options=('!makeflags')
 install=glib.install
-source=(ftp://ftp.gnome.org/pub/gnome/sources/glib/1.2/${_pkgname}-${pkgver}.tar.gz
+source=(https://download.gnome.org/sources/glib/1.2/${_pkgname}-${pkgver}.tar.gz
 	glib-1.2.10-gcc9.patch
 	gcc340.patch aclocal-fixes.patch glib1-autotools.patch)
 sha1sums=('e5a9361c594608d152d5d9650154c2e3260b87fa'
@@ -40,7 +40,9 @@ build() {
     CONFIGFLAG='--host=x86_64-unknown-linux-gnu --target=x86_64-unknown-linux-gnu'
   fi
 
-  autoreconf --force --install
+  rm aclocal.m4 acinclude.m4
+  echo 'LT_INIT' >> configure.in
+  autoreconf --install --force
   ./configure --prefix=/usr --libdir=/usr/lib32 --mandir=/usr/share/man \
     --infodir=/usr/share/info $CONFIGFLAG
   make

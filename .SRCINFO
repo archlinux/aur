@@ -1,7 +1,7 @@
 pkgbase = lib32-glib
 	pkgdesc = Common C routines used by Gtk+ and other libs (32-bit)
 	pkgver = 1.2.10
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.gtk.org/
 	install = glib.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = lib32-glib
 	depends = lib32-glibc
 	depends = sh
 	options = !makeflags
-	source = ftp://ftp.gnome.org/pub/gnome/sources/glib/1.2/glib-1.2.10.tar.gz
+	source = https://download.gnome.org/sources/glib/1.2/glib-1.2.10.tar.gz
 	source = glib-1.2.10-gcc9.patch
 	source = gcc340.patch
 	source = aclocal-fixes.patch
