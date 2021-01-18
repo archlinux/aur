@@ -1,13 +1,13 @@
 pkgbase = libretls
 	pkgdesc = Port of libtls from LibreSSL to OpenSSL. Aims to make the libtls API more easily and widely available.
-	pkgver = 3.3.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://git.causal.agency/libretls/
 	arch = x86_64
 	license = ISC
 	depends = openssl
-	source = https://causal.agency/libretls/libretls-3.3.0.tar.gz
-	md5sums = 1b1b52b5f319dc3fc67710c12bcdd6c1
+	source = https://causal.agency/libretls/libretls-3.3.1.tar.gz
+	md5sums = c697a6a2250a4bedf8e06c0210d40cce
 
 pkgname = libretls
 
