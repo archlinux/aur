@@ -1,3 +1,50 @@
+Proton-6.0-GE-1
+
+Game Fixes:
+
+Persona 4 Golden now playable but with issue -- in-game audio is broken. Cutscenes and cutscene audio are working.
+Fixed issue that prevented Death Stranding from running in 5.21
+Fixed issue with video playback in DmC 5 (again)
+Fixed issue preventing controllers from being detected in some games on certain distros
+Controller Hot Plugging now working
+Controller patches completely rebased from 5.13
+Mangohud now working
+Vulkan device select layer now working
+Wine updated to Wine-Staging 6.0
+gstreamer libraries updated to 1.18.3
+vkd3d updated to 2.1-037efbd to contain Dirt 5 fix
+dxil-spirv submodule in vkd3d updated to contain latest Horizon Zero Dawn fixes.
+DXVK updated, contains F1 game fixes
+DXVK pending pull requests 1582,1673,1759,1805 added:
+
+doitsujin/dxvk#1582
+doitsujin/dxvk#1673
+doitsujin/dxvk#1759
+doitsujin/dxvk#1805
+
+Should contain most of the fixes from Proton-5.13 from Valve, if something is missing let me know in discord.
+
+Proton Fixes:
+
+added klite verb with ini for custom silent install for Persona 4 Golden
+updated Persona 4 Golden protonfixes script
+
+Known Issues:
+
+-The build uses proton's new runtime, which runs within a container, therefore all of the current Proton 5.13 issues also apply here.
+
+ValveSoftware#4289
+
+-Red Dead Redemption 2 still does not work. Unfortunately the syscall patches in current proton do not work with upstream wine.
+-Fullscreen hack is still currently disabled.
+Known mfplat+quartz issues:
+
+-Catherine Classic is not working
+-Black Ops III is not working
+-Injustice 2 cutscenes broken currently
+-Darksiders Warmastered Edition intro+cutscenes broken currently
+
+
 Proton-5.11-GE-3-MF
 
 Fixes:
