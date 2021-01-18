@@ -1,14 +1,13 @@
 pkgname=screego-server-git
 _pkgname=screego-server
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='screen sharing for developers (development version)'
 arch=('x86_64' 'arm64')
 url="https://github.com/screego/server"
 license=('GPL3')
 provides=("${_pkgname}")
-conflict=("screego-server-bin"
-	"screego-server")
+conflict=("screego-server")
 makedepends=('go' 'yarn')
 optdepends=('nginx: to allow reverse proxy connections')
 source=("$pkgname-repo::git+$url.git"

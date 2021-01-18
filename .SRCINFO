@@ -1,6 +1,6 @@
 pkgbase = screego-server-git
 	pkgdesc = screen sharing for developers (development version)
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/screego/server
 	arch = x86_64
