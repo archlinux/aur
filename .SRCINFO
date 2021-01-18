@@ -10,6 +10,7 @@ pkgbase = sphvr-git
 	makedepends = git
 	makedepends = glslang
 	makedepends = vulkan-headers
+	makedepends = glm
 	depends = gulkan-git
 	depends = gst-plugins-bad-libs
 	provides = sphvr=0.0.1.63.3a9ec15

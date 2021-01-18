@@ -10,7 +10,7 @@ url='https://gitlab.com/lubosz/sphvr'
 depends=('gulkan-git' 'gst-plugins-bad-libs')
 provides=("$_realname="$pkgver)
 conflicts=("$_realname")
-makedepends=('meson' 'git' 'glslang' 'vulkan-headers')
+makedepends=('meson' 'git' 'glslang' 'vulkan-headers' 'glm')
 license=('MIT')
 
 source=('git+https://gitlab.com/lubosz/sphvr.git')
