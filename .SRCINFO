@@ -1,13 +1,15 @@
 pkgbase = python-trytond_account_invoice_history
-	pkgver = 5.6.0
+	pkgdesc = Tryton module to historize invoices
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_account_invoice_history/trytond_account_invoice_history-5.6.0.tar.gz
-	sha256sums = a73e1ce91aa620ff81e7bf671da2162e51f014d6895fcf77e1c00f0dcb3814b3
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_invoice_history/trytond_account_invoice_history-5.8.1.tar.gz
+	sha256sums = 94907f8ba0f3a422b0c4ae1153452059a6798581eae92a6c6a46959b97091da6
+	b2sums = f8e777a39b5336753f682ac92efab245142f008dd97494c96b4a0c4c79469ea03850a5a943347a2f014d2b75884ab06548a77be4c0736b53797521ec407ed79f
 
 pkgname = python-trytond_account_invoice_history
 
