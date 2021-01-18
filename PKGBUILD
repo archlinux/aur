@@ -1,6 +1,6 @@
 # Maintainer: Moritz Poldrack <moritz at poldrack dot dev>
 pkgname=yambar
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='Modular status panel for X11 and Wayland, inspired by polybar'
 arch=('x86_64')
@@ -10,15 +10,16 @@ depends=(
 	'xcb-util-cursor'
 )
 makedepends=(
-	'ninja'
-	'meson'
 	'cmake'
-	'scdoc'
 	'libmpdclient'
+	'libyaml'
+	'meson'
+	'ninja'
+	'scdoc'
 )
 provides=('yambar')
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/dnkl/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('32cc0d19bab1149e74aaa45fb8ad95a9')
+sha256sums=('9ddf0bd7a708445697b4bf2f1d6d0fe5c29c5c7cd6df6058a739fe89413bd2c7')
 
 prepare() {
 	rm -rf "${srcdir}"
