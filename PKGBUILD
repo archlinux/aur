@@ -21,7 +21,7 @@ optdepends=('bash-completion: Bash completions'
             'zsh-completions: ZSH completitons'
             'x11-ssh-askpass: SSH authentication')
 makedepends=('git' 'gulp' 'npm' 'python2' 'yarn' 'nodejs-lts-dubnium')
-provides=('vscode')
+provides=('code')
 conflicts=('code')
 source=("https://codeload.github.com/microsoft/${_pkgname}/tar.gz/$pkgver"
         'code.js'
