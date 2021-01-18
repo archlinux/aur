@@ -1,13 +1,15 @@
 pkgbase = python-trytond_sale_shipment_grouping
-	pkgver = 5.6.0
+	pkgdesc = Tryton module to group sale stock moves
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_shipment_grouping/trytond_sale_shipment_grouping-5.6.0.tar.gz
-	sha256sums = a1ae1348b8b88e4b340f24d09233f562c4cd1b322bc7b3efda1927c13bf53ae4
+	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_shipment_grouping/trytond_sale_shipment_grouping-5.8.1.tar.gz
+	sha256sums = 4e8bcbda944c25eeac24b4742bd21e46319a1a20148f62b551b55fa6ba5436b3
+	b2sums = b153903e6a1b238de174ba9b9c2a96b074b5af754cefa3fbfc8dcc1ad2076ee1b30d0f45b2a4029df70faa1ecb92a99ba72fd7aca4d1b90c629a24e742f696d7
 
 pkgname = python-trytond_sale_shipment_grouping
 
