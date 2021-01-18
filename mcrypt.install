@@ -1,9 +1,8 @@
 #!/bin/bash
 
 post_install() {
-  echo '
-    ==> PHP extension
-    A config file was stored under /etc/php/conf.d/mcrypt.ini.
+  echo '    ==> PHP extension
+    A config file was (re)written to /etc/php/conf.d/mcrypt.ini.
     Extension is enabled. You may disable it there by commenting out the line.
     Restart PHP (or webserver) instances to use it.
     '
