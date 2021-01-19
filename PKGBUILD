@@ -93,7 +93,7 @@ md5sums+=(
     'SKIP'
 	)
 
-_phpIni="${pkgname}.ini"
+_phpIni="${pkgname//-git/}.ini"
 if [ -e "${_phpIni}" ];
 then
     source+=(
@@ -387,10 +387,10 @@ package() {
     fi
 
     # DOC
-    if [ -e "${srcdir}/${pkgname}.ini" ];
+    if [ -e "${srcdir}/${_phpIni}" ];
     then
 	_install root:root ${_commonPermissions} ${pkgdir}/${_docDir}
-	_install root:root ${_commonPermissions} ${srcdir}/${pkgname}.ini \
+	_install root:root ${_commonPermissions} ${srcdir}/${_phpIni} \
 	    ${pkgdir}/${_docDir}/
     fi
 
@@ -409,9 +409,9 @@ package() {
     _install http:http ${_securePermissions} ${pkgdir}/${_stateDir}
 
     # OTHER: PHP
-    if [ -e '${srcdir}/${pkgname}.ini' ];
+    if [ -e '${srcdir}/${_phpIni}' ];
     then
-	_install root:root ${_commonPermissions} ${srcdir}/${pkgname}.ini \
+	_install root:root ${_commonPermissions} ${srcdir}/${_phpIni} \
 	    ${pkgdir}/etc/php/conf.d/
     fi
 }
