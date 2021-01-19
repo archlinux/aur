@@ -6,9 +6,9 @@
 
 _pkgname=instantclient-sdk
 pkgname=oracle-${_pkgname}
-pkgver=19.8.0.0.0
-_urlver=19800
-_unzippath=instantclient_19_8
+pkgver=21.1.0.0.0
+_urlver=211000
+_unzippath=instantclient_21_1
 pkgrel=1
 pkgdesc="Additional header files for developing Oracle applications with Instant Client"
 arch=('x86_64')
@@ -23,16 +23,16 @@ DLAGENTS+=('manual::/usr/bin/false');
 
 # These are the only files we want to include in the source package
 source=(LICENSE
-        "https://download.oracle.com/otn_software/linux/instantclient/${_urlver}/${_pkgname}-linux.x64-${pkgver}dbru.zip")
+        "https://download.oracle.com/otn_software/linux/instantclient/${_urlver}/${_pkgname}-linux.x64-${pkgver}.zip")
 md5sums=('2d62e22e4f2d7e6d220fafde0f692a7d'
-         'fc09bb458f85d1f42f8bab54d1660d17')
+         'd7f0ed19a29607568d66efec72bdbedf')
 sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2'
-            'c6f509fc39f1e5872f649bd3ea0bcb287798f96ade0907cee64fdf99f06bc61f')
+            '80a465530a565ed327ab9ae0d9fc067ed42338536c7e8721cf2c26e474f4f75f')
 
 plain "If you run into any problems downloading the files, get the .zip version from"
 plain "Oracle and place them in the PKGBUILD directory then re-run makepkg:"
 plain ""
-plain "  http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html"
+plain "  https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html"
 plain ""
 plain "Alternatively, unofficial prebuilt Arch packages are available by adding the"
 plain "following lines to /etc/pacman.conf, if you agree to the Oracle licence[1]:"
