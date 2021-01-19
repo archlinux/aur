@@ -9,14 +9,12 @@ arch=('i686' 'x86_64')
 url="https://github.com/troglobit/mrouted"
 license=('BSD')
 depends=('glibc')
-source=("https://github.com/troglobit/mrouted/releases/download/${pkgver}/mrouted-${pkgver}.tar.gz"
-	"mrouted.service")
-md5sums=('b921f9e152e039efdac745438ef8362c'
-         'a1ba2643cb169513666a2dcc98e01f4e')
+source=("https://github.com/troglobit/mrouted/releases/download/${pkgver}/mrouted-${pkgver}.tar.gz")
+md5sums=('b921f9e152e039efdac745438ef8362c')
 
 prepare() {
   cd $pkgname-$pkgver
-  ./configure --prefix=/usr --sbindir=/usr/bin
+  ./configure --prefix=/usr --sbindir=/usr/bin --with-systemd=/usr/lib/systemd/system
 }
 
 build() {
@@ -26,7 +24,6 @@ build() {
 package() {
   cd $pkgname-$pkgver
   make DESTDIR=$pkgdir install
-  install -Dm644 "$srcdir/mrouted.service" "$pkgdir/usr/lib/systemd/system/mrouted.service"
   # and this was supposed to be "easier"?
   mv "$pkgdir/usr/bin/mtrace" "$pkgdir/usr/bin/mrtrace"
   mv "$pkgdir/usr/share/man/man8/mtrace.8" "$pkgdir/usr/share/man/man8/mrtrace.8"
