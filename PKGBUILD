@@ -7,7 +7,7 @@ pkgdesc="addons for instamenu"
 url="https://github.com/TheCynicalTeam/$pkgname"
 arch=('any')
 license=('CC BY-NC-SA 4.0')
-depends=('bash' 'autorandr' 'instamenu' 'instamenu-schemas')
+depends=('bash' 'autorandr' 'instamenu' 'instamenu-schemas' 'python>=3.4')
 provides=($pkgname)
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
 sha256sums=('4ab5d985f888ef7bc8a226df4846e0a821a5e04738631b05448b5219c72f30a4')
