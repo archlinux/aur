@@ -4,7 +4,7 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-libproxy
-pkgver=0.4.16
+pkgver=0.4.17
 pkgrel=1
 pkgdesc='A library that provides automatic proxy configuration management'
 arch=(x86_64)
@@ -13,6 +13,7 @@ license=(LGPL)
 depends=(
   lib32-dbus
   lib32-gcc-libs
+  lib32-zlib
   libproxy
 )
 makedepends=(
@@ -20,7 +21,7 @@ makedepends=(
   git
   ninja
 )
-_tag=0da9e01980a93aa13c40de492dca3c47cde50bfc
+_tag=e78a5ccfe0a2340f2c73e419767f8492ffc2787a
 source=(git+https://github.com/libproxy/libproxy.git#tag=${_tag})
 b2sums=(SKIP)
 
