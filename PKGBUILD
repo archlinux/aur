@@ -1,7 +1,7 @@
 # Maintainer: bauh developers <bauh4linux@gmail.com>
 
 pkgname=bauh
-pkgver=0.9.11
+pkgver=0.9.12
 pkgrel=1
 pkgdesc="Graphical interface for managing your applications (AppImage, Flatpak, Snap, Arch/AUR, Web)"
 arch=('any')
@@ -18,7 +18,8 @@ optdepends=('flatpak: required for Flatpak support'
             'fuse3: may be required for AppImage support'
             'pacman: required for AUR support'             
             'binutils: required for AUR support'
-            'git: required for AUR support'            
+            'git: required for AUR support'
+            'rebuild-detector: enables rebuild checking for AUR packages (optional)'            
             'autoconf: may be required to compile some AUR packages'
             'automake: may be required to compile some AUR packages'
             'bison: may be required to compile some AUR packages'
@@ -36,7 +37,7 @@ optdepends=('flatpak: required for Flatpak support'
             'axel: multi-threaded downloading support')
 makedepends=('git' 'python' 'python-pip' 'python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('318bef84a78382f3f54c345d59725bd178711108c6709b0d469564a6ccb9238eb7c85fcd7ec61716c8d816f16472b6080ad66ad61a9de8aa3d5811aa45539c8a')
+sha512sums=('6f96b59185e946d2d65bae85b75291d0db359777b4aebe8398ff07fbac8f8f7c757b19f650946a1f6b3c54f88cce1f4acd97ff4c1fb20087592e40630fb9006a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
