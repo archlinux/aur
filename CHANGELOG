@@ -1,5 +1,1 @@
-This release integrates three features:
-
-End-user documentation available as an optional "Tip of the Day" or as a whole through a web page #332, #386, #394;
-The ability to open files passed as argument, which enables the "open with" feature available on most operating systems #382;
-The ability to zoom in and out in diagrams #328;
+Updates dependencies to Java 15, as Java 14 is not supported anymore on Arch.
