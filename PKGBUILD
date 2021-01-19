@@ -10,7 +10,7 @@ _pkgbase=${_basename}-${_pkgname}
 _debname=${_basename}-${_pkgname}2
 pkgname=${_pkgbase}-bin
 pkgver=${_version}
-pkgrel=1
+pkgrel=2
 pkgdesc="Jitsi Meet Videobridge binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -72,7 +72,7 @@ package() {
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
 sha256sums=('95140fcfb127de8d75e1c4682eb4d3c50b84447a58d5cf95ea97daa0d6aa3c69'
-            'd3c62e021edb1a17ba21fd62c328dd99df4ead44044a2850f25e34448f781a76'
+            '784236b546ba5f47e80c951a3fec3be05e8bc5a8ac4258d21c6642c9f9a9defc'
             'cc9fbf77497bce3c9673b2d144928f11cdd0c0823940c2b60c8369a2f086b9b7'
             '5d78e8eec07c6aae84a1f1c0922f951217741ccc6f1a50ed7ef966c665bbf291'
             '998cbc64def56ab98080ff7150dd0913a5e10325cd2b038cf3db14baf8cb19fc'
