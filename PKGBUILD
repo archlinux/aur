@@ -3,13 +3,13 @@
 pkgname=ycmd-git
 _gitname=ycmd
 pkgver=r2844.06228007
-pkgrel=1
+pkgrel=2
 pkgdesc="A code-completion & code-comprehension server."
 arch=('any')
 url="https://github.com/ycm-core/ycmd"
 license=('GPLv3')
 depends=('clang' 'python')
-makedepends=('python' 'cmake' 'git')
+makedepends=('python' 'cmake' 'git' 'go')
 source=("git+https://github.com/ycm-core/ycmd")
 sha256sums=('SKIP')
 
