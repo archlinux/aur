@@ -5,7 +5,7 @@
 
 _pkgname=gnome-bluetooth
 pkgname=$_pkgname-git
-pkgver=3.34.3+10+gf3ec1853
+pkgver=3.34.3+11+gcf4a0ba5
 pkgrel=1
 pkgdesc="The GNOME Bluetooth Subsystem"
 url="https://wiki.gnome.org/Projects/GnomeBluetooth"

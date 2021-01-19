@@ -1,6 +1,6 @@
 pkgbase = gnome-bluetooth-git
 	pkgdesc = The GNOME Bluetooth Subsystem
-	pkgver = 3.34.3+10+gf3ec1853
+	pkgver = 3.34.3+11+gcf4a0ba5
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GnomeBluetooth
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = gnome-bluetooth-git
 	depends = bluez
 	depends = libcanberra
 	depends = systemd-libs
-	depends = pipewire-pulseaudio-git
+	depends = pipewire-pulse-git
 	provides = libgnome-bluetooth.so
 	provides = gnome-bluetooth
 	conflicts = gnome-bluetooth
