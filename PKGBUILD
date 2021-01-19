@@ -3,7 +3,7 @@
 _pkgname=via
 pkgname=$_pkgname-bin
 pkgver=1.3.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Yet another keyboard configurator, compatible with over 150 keyboards and easily added to other QMK keyboards."
 arch=(any)
 url="https://caniuse$_pkgname.com/"
@@ -20,11 +20,9 @@ depends=("hicolor-icon-theme"
         "libappindicator-gtk3"
         "libsecret")
 _filename=("${_pkgname}-${pkgver}-linux.deb")
-source=("https://github.com/the-$_pkgname/releases/releases/download/v${pkgver}/$_filename"
-        via)
+source=("https://github.com/the-$_pkgname/releases/releases/download/v${pkgver}/$_filename")
 
-md5sums=("5b61cea500307e17a289f6ac99d60de7"
-        "dc41d6a454c010ff44c2f22678dbd79e")
+md5sums=("5b61cea500307e17a289f6ac99d60de7")
 
 build() {
   mkdir -p "${srcdir}/output"
@@ -34,4 +32,5 @@ build() {
 package() {
   cp -r "${srcdir}/output/"* "${pkgdir}"
   install -d "${pkgdir}"/usr/bin
+  ln -s /opt/VIA/via "${pkgdir}"/usr/bin/via
 }
