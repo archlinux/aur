@@ -86,9 +86,11 @@ backup=(
   'etc/logrotate.d/libvirtd.qemu'
   'etc/sasl2/libvirt.conf'
 )
-source=("https://libvirt.org/sources/$pkgname-$pkgver.tar.xz"{,.asc})
+source=("https://libvirt.org/sources/$pkgname-$pkgver.tar.xz"{,.asc}
+        "find_programs.ini")
 sha256sums=('ca3833844d08c22867f1d1a46edc36bda7d6fe1a4f267e7d77100b79fc9ddd89'
-            'SKIP')
+            'SKIP'
+            '735ac805fbf06021418f82297845babf481d5681bd939a6994fbdf36fe1661e4')
 validpgpkeys=('453B65310595562855471199CA68BE8010084C9C') # Jiří Denemark <jdenemar@redhat.com>
 
 prepare() {
@@ -111,6 +113,7 @@ build() {
   cd "$pkgname-$pkgver"
 
   arch-meson build \
+    --native-file "$srcdir"/find_programs.ini \
     -Dsystem=true \
     -Drunstatedir=/run \
     -Dqemu_group=kvm \
@@ -128,7 +131,7 @@ build() {
     -Dstorage_vstorage=disabled \
     -Ddtrace=disabled \
     -Dnumad=disabled \
-    -Dstorage_zfs=disabled \
+    -Dstorage_zfs=enabled \
     -Dstorage_rbd=disabled
 
   # Find out why zfs fails to build
