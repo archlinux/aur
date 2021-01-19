@@ -1,6 +1,6 @@
 pkgbase = airgeddon-git
 	pkgdesc = Multi-use bash script for Linux systems to audit wireless networks
-	pkgver = r2318.aa18ca7
+	pkgver = r2388.15a44bb
 	pkgrel = 1
 	url = https://github.com/v1s1t0r1sh3r3/airgeddon
 	arch = any
@@ -45,7 +45,6 @@ pkgbase = airgeddon-git
 	optdepends = pixiewps: Offline bruteforce of the WPS pin exploiting the low or non-existing entropy of some APs
 	optdepends = reaver: Brute force attack against Wifi Protected Setup
 	optdepends = rfkill: Tool for enabling and disabling wireless devices
-	optdepends = sslstrip: Python tool to hijack HTTPS connections during a MITM attack
 	optdepends = usbutils: USB Device Utilities
 	optdepends = wget: A network utility to retrieve files from the Web
 	optdepends = wireshark-cli: Network traffic and protocol analyzer/sniffer CLI tools
