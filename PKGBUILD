@@ -10,7 +10,6 @@ url="https://github.com/troglobit/mrouted"
 license=('BSD')
 depends=('glibc')
 source=("https://github.com/troglobit/mrouted/releases/download/${pkgver}/mrouted-${pkgver}.tar.gz")
-md5sums=('b921f9e152e039efdac745438ef8362c')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -33,5 +32,7 @@ package() {
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+sha256sums=('689541334ea951286054b771640e9d0f26b6a3242ff7f3894a3ef1b680811b34')
 
 # vim: se sw=2 et ts=2:

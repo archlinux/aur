@@ -8,7 +8,7 @@ pkgbase = mrouted
 	license = BSD
 	depends = glibc
 	source = https://github.com/troglobit/mrouted/releases/download/4.2/mrouted-4.2.tar.gz
-	md5sums = b921f9e152e039efdac745438ef8362c
+	sha256sums = 689541334ea951286054b771640e9d0f26b6a3242ff7f3894a3ef1b680811b34
 
 pkgname = mrouted
 
