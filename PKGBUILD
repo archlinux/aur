@@ -3,7 +3,7 @@
 
 pkgname=buckets-bin
 _pkgname=Buckets
-pkgver=0.55.3
+pkgver=0.57.5
 pkgrel=1
 pkgdesc="Private budgeting with the envelope budgeting method"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('alsa-lib' 'gtk3' 'libsecret' 'libxss' 'libxtst' 'nss' 'glibc>=2.28-4')
 optdepends=()
 source=("https://github.com/buckets/application/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 noextract=("${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('1adcb49758eac82fa3d379f75272784c4ab1d20eee5dc7babf992ee86002dbcb')
+sha256sums=('a53dfaa1bf0f0ad9f69994bab9109f4556d42b2941375f253b1da7cfea43297f')
 
 package() {
   bsdtar -O -xf "${_pkgname}_${pkgver}_amd64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
