@@ -1,0 +1,8 @@
+pkg/
+src/
+dpf/
+rtjam/
+rtjam-git-*.pkg.tar.xz
+rtjam-git-*.pkg.tar.zst
+rtjam-git-*.src.tar.gz
+.AURINFO

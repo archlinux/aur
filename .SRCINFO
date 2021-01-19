@@ -1,0 +1,26 @@
+pkgbase = rtjam-git
+	pkgdesc = A server and client programs and plugins for real-time,low-latency online jams (git version)
+	pkgver = 0.1.r87.gbdb7e88
+	pkgrel = 1
+	url = https://github.com/mfvargo/rtjam
+	arch = x86_64
+	groups = pro-audio
+	groups = lv2-plugins
+	groups = vst-plugins
+	license = MIT
+	depends = curl
+	depends = gcc-libs
+	depends = libgl
+	depends = libx11
+	optdepends = jack: stand-alone JACK client version
+	optdepends = alsa-lib: stand-alone ALSA server version (rtjam-nojack)
+	provides = rtjam
+	provides = rtjam=0.1
+	conflicts = rtjam
+	source = rtjam::git+https://github.com/mfvargo/rtjam.git
+	source = dpf::git+https://github.com/DISTRHO/DPF.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = rtjam-git
+
