@@ -1,15 +1,15 @@
 pkgbase = bootstrap
 	pkgdesc = Front-end framework for web development
-	pkgver = 4.5.3
+	pkgver = 4.6.0
 	pkgrel = 1
 	url = https://getbootstrap.com/
 	install = bootstrap.install
 	arch = any
 	license = MIT
 	optdepends = jquery>=3.5.1: for JavaScript plugin support
-	source = https://github.com/twbs/bootstrap/releases/download/v4.5.3/bootstrap-4.5.3-dist.zip
+	source = https://github.com/twbs/bootstrap/releases/download/v4.6.0/bootstrap-4.6.0-dist.zip
 	source = LICENSE
-	sha256sums = 06cb7a082c517885ecffba2692c2ec166fd9efbdc5a7329e22ab69be36580771
+	sha256sums = 0a211451ad260ab512a7e5c2a1636cf29949c615876590fe2be5012520eed423
 	sha256sums = 9b2ce2d9793f14f0fb1a77ce64961acc1157fb25858156c47139491107970acb
 
 pkgname = bootstrap

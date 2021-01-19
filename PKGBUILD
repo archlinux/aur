@@ -2,7 +2,7 @@
 # Contributor: Mohammadreza Abdollahzadeh <morealaz [at] gmail [dot] com>
 
 pkgname=bootstrap
-pkgver=4.5.3
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="Front-end framework for web development"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('jquery>=3.5.1: for JavaScript plugin support')
 install=bootstrap.install
 source=("https://github.com/twbs/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-dist.zip"
 	"LICENSE")
-sha256sums=('06cb7a082c517885ecffba2692c2ec166fd9efbdc5a7329e22ab69be36580771'
+sha256sums=('0a211451ad260ab512a7e5c2a1636cf29949c615876590fe2be5012520eed423'
             '9b2ce2d9793f14f0fb1a77ce64961acc1157fb25858156c47139491107970acb')
 
 package() {
