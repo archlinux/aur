@@ -28,7 +28,7 @@ prepare() {
   cd efibootmgr
   # removing hotfix function declaration:
   # https://github.com/rhboot/efibootmgr/issues/128
-  sed -e '/extern int efi_set_verbose/d' -i "src/${pkgname}.c"
+  sed -e '/extern int efi_set_verbose/d' -i "src/efibootmgr.c"
 }
 
 build() {
