@@ -1,4 +1,5 @@
-# Maintainer: Paragoumba <paragoumba at protonmail dot com>
+# Maintainer: Paragoumba <paragoumba@protonmail.com>
+
 pkgname=open-joystick-display
 pkgver=2.8.0
 pkgrel=2
