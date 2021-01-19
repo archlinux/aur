@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-fuzzy-app-search-git
-pkgver=2.r3.ga682991
+pkgver=2.r14.gf6f351d
 pkgrel=1
 pkgdesc="Fuzzy application search results for Gnome Search"
 arch=('any')
 url="https://gitlab.com/Czarlie/gnome-fuzzy-app-search"
-license=('unknown')
+license=('GPL3')
 depends=('gnome-shell')
 makedepends=('git')
 provides=("${pkgname%-git}")
