@@ -1,0 +1,40 @@
+--- pentablet.sh	2020-07-16 15:01:36.000000000 +0200
++++ new_pentablet.sh	2021-01-19 21:41:16.790937851 +0100
+@@ -1,4 +1,37 @@
+ #!/bin/sh
++
++
++#===user config
++user=`who | awk  '{print $1}'|head -1`
++
++user_conf_dir="/home/$user/.local/share/pentablet"
++appDir="/usr/lib/pentablet"
++
++mkdir -p "$user_conf_dir"
++chmod -R 755 "$user_conf_dir"
++
++sysConfName=config.xml
++sysLangName=language.ini
++sysNameConfName=name_config.ini
++
++rootConfDir="${appDir}/conf"
++
++if [ ! -f "${user_conf_dir}/${sysConfName}" ]; then
++    cp "${rootConfDir}/${sysConfName}" "${user_conf_dir}/${sysConfName}"
++fi
++
++if [ ! -f "${user_conf_dir}/${sysLangName}" ]; then
++    cp "${rootConfDir}/${sysLangName}" "${user_conf_dir}/${sysLangName}"
++fi
++
++if [ ! -f "${user_conf_dir}/${sysNameConfName}" ]; then
++    cp "${rootConfDir}/${sysNameConfName}" "${user_conf_dir}/${sysNameConfName}"
++fi
++#===
++
++
++
++
+ appname=`basename $0 | sed s,\.sh$,,`
+ dirname=`dirname $0`
+ tmp="${dirname#?}"
