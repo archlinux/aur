@@ -1,7 +1,7 @@
 pkgbase = caffeine-ng
 	pkgdesc = Status bar application able to temporarily inhibit the screensaver and sleep mode.
-	pkgver = 3.5.0
-	pkgrel = 2
+	pkgver = 3.5.1
+	pkgrel = 1
 	url = https://github.com/caffeine-ng/caffeine-ng
 	arch = any
 	license = GPL3
@@ -29,8 +29,8 @@ pkgbase = caffeine-ng
 	conflicts = caffeine-systray
 	replaces = caffeine-oneclick
 	replaces = caffeine-systray
-	source = https://files.pythonhosted.org/packages/source/c/caffeine-ng/caffeine-ng-3.5.0.tar.gz
-	md5sums = 26fa6c3640fbe1f92c32cab80a3f7915
+	source = https://files.pythonhosted.org/packages/source/c/caffeine-ng/caffeine-ng-3.5.1.tar.gz
+	md5sums = c56988059680bcd25525480f8688f81e
 
 pkgname = caffeine-ng
 
