@@ -1,7 +1,7 @@
 ## Maintainer: David Husička <contact@bydave.net>
 
 pkgname=osu-lazer-bin
-pkgver=2021.109.0
+pkgver=2021.118.1
 pkgrel=1
 pkgdesc="The future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew."
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=("$pkgname-$pkgver.AppImage::https://github.com/ppy/osu/releases/download
         "$pkgname-LICENCE.md::https://raw.githubusercontent.com/ppy/osu-resources/master/LICENCE.md"
         "osu-lazer.desktop")
 noextract=("$pkgname-$pkgver.AppImage")
-sha256sums=("5ec4f8fe22339f0b8484fe6f432c29e160cd1092abfecb92b81fdc287b9c94c6"
+sha256sums=("099db25109f723f3d444f47803ae63a22e6e26474140bb7bcfd68a21ed182710"
             "36f73cfe0a84cd65a8bb54fcde5a01c419b134bee4a88cc92eb4f33236343a10"
             "30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244"
             "f37168074db22cf8e898f08b3f67458e1708a8c4ae179fb14a916e74e12bec4e")
