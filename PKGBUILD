@@ -5,12 +5,12 @@
 pkgname='koi-git'
 _pkgname='koi'
 pkgver=0.1.1.r157.g452fc47
-pkgrel=2
+pkgrel=3
 pkgdesc="Switch between light and dark themes on KDE Plasma"
 arch=('x86_64')
 url="https://github.com/Da-Viper/Koi"
 license=('LGPL3')
-depends=('kconfig' 'kcoreaddons' 'kwidgetsaddons' 'hicolor-icon-theme')
+depends=('kconfig' 'kcoreaddons' 'kwidgetsaddons' 'kpackage' 'hicolor-icon-theme')
 makedepends=('qt5-base' 'git' 'extra-cmake-modules')
 optdepends=('xsettingsd: Apply settings to GTK applications on the fly')
 provides=($_pkgname)
