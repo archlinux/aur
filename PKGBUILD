@@ -7,7 +7,7 @@
 
 pkgname=libvirt-git
 _pkgname=libvirt
-pkgver=6.9.0.r109.g3113f3d815
+pkgver=7.0.0.r36.gb5f15b9db1
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
