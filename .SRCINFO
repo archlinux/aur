@@ -1,0 +1,23 @@
+pkgbase = python2-babel
+	pkgdesc = A collection of tools for internationalizing Python 2.x applications
+	pkgver = 2.9.0
+	pkgrel = 1
+	url = http://babel.pocoo.org/
+	arch = any
+	license = BSD
+	checkdepends = python2-pytest
+	checkdepends = python2-pytest-runner
+	checkdepends = python2-freezegun
+	makedepends = python2
+	makedepends = python2-setuptools
+	makedepends = python2-pytz
+	noextract = cldr-core-37.zip
+	source = python2-babel-2.9.0.tar.gz::https://github.com/python-babel/babel/archive/v2.9.0.tar.gz
+	source = cldr-core-37.zip::http://unicode.org/Public/cldr/37/core.zip
+	sha256sums = 7df55ebc7a75b6c544c381e1cc07151c2429f73f4ed01107bd8998b96cc83f42
+	sha256sums = ba93f5ba256a61a6f8253397c6c4b1a9b9e77531f013cc7ffa7977b5f7e4da57
+
+pkgname = python2-babel
+	depends = python2
+	depends = python2-pytz
+
