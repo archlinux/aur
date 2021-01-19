@@ -1,0 +1,62 @@
+#!/bin/bash
+
+post_install() {
+    # create tempdirs and users from /usr/lib/*.d
+    systemd-sysusers
+    systemd-tmpfiles --create
+
+    chown -R kopano:kopano /etc/kopano
+
+    installdir kopano:kopano 0700 0600 /var/log/kopano
+    installdir kopano:kopano 0700 0600 /var/lib/kopano
+    installdir kopano:kopano 0700 0600 /var/lib/kopano/search
+
+    # due to a bug/exception it's impossible to execute phps mapi modul without browsable dir
+    installdir kopano:kopano 0755 0600 /etc/kopano
+
+    # fix missing python symlink for presence
+    if [[ ! -e "/usr/bin/python" ]];
+    then
+	ln -s /usr/bin/python2 /usr/bin/python
+    fi
+
+    return 0
+}
+
+post_upgrade() {
+    local newPackageVersion="$1"
+    local oldPackageVersion="$2"
+
+    case "$oldPackageVersion" in
+	*)
+	    ;;	
+    esac
+
+    echo
+    echo "Please restart kopano services"
+    echo
+    echo "   $ systemctl restart kopano-gateway"
+    echo "   $ systemctl restart kopano-ical"
+    echo
+    return 0
+}
+
+pre_remove() {
+    return 0
+}
+
+# User Scripts
+
+# care about existing files
+installdir() {
+    local owner="$1"
+    local moddir="$2"
+    local modfile="$3"
+    local directory="$4"
+
+    mkdir -p "$directory"
+    find $directory -exec chown "$owner" {} \;
+    find $directory -type f -exec chmod "$modfile" {} \;
+    find $directory -type d -exec chmod "$moddir" {} \;
+}
+
