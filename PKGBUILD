@@ -44,7 +44,8 @@ build() {
   ./autogen.sh
   ./configure --prefix=/usr \
 	--disable-static \
-	--disable-padlock-support
+	--disable-padlock-support \
+	--disable-doc
   make
 }
 
