@@ -1,7 +1,7 @@
 # Maintainer: osch <oliver@luced.de>
 
 pkgname=surge-complete
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Surge Synthesizer for all possible plugin types (LV2/VST2/VST3)"
 arch=('x86_64')
@@ -13,14 +13,14 @@ depends=('cairo'     'fontconfig'          'freetype2'
          'libxcb'    'xcb-util-renderutil' 'xcb-util-image'
          'ttf-lato'  'xdg-utils'           'zenity'
          'gcc-libs'  'glibc'               'libxkbcommon-x11'
-         'xcb-util-keysyms'  )
+         'xclip'     'xcb-util-keysyms' )
 makedepends=('steinberg-vst36' 'premake-git' 'git' 'rsync'
              'cmake' 'libsndfile' 'lv2' 'python')
 provides=("surge")
 conflicts=('surge-synthesizer' 'surge')
 source=("surge-${pkgver}.tgz::https://github.com/surge-synthesizer/releases/releases/download/${pkgver}/SurgeSrc_${pkgver}.tgz")
-sha512sums=('9fd9261a43037e761fb9e5e4f9f6d931e2ce18a0dd86aff23a2e0cac39a82aa737fbe28f8ee06fa735d3ae39acbb467db88e8f81f3c7f1ae39bee3f6565804c6')
-b2sums=('2ec20a5be006a6e619a5e88747a2730524ca9f65b5af015843f5aeb1dd791f561739152eee5efd945e2d20ab940fc929e90dd0623db3044a9287a86621075420')
+sha512sums=('a7ea92b96962223a001405f9ab0409309cae2f671b852bba3e228ae6da53ed4fc9daea3426aac1aa70bde93cc7afdc6956ce3a3d45a842c23aef3de3be188f84')
+b2sums=('24b04259ba7eb3e8552ccbf86a86c5944cbf6e9170d48dc4d24b7f866f16877c167ac5b23d4e107f7daff7614f05f9c6f742ebab1c710906627513df9664def8')
 
 prepare() {
 	export VST2SDK_DIR="$srcdir/vst2sdk"
