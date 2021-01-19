@@ -33,7 +33,7 @@ build() {
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  ./bootstrap
+  ./bootstrap --skip-po
   ./configure \
     --prefix=/usr \
     --libdir=/usr/lib32
