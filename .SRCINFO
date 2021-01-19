@@ -1,0 +1,18 @@
+pkgbase = kopano-webapp-files-smb-backend-git
+	pkgver = 4.0.0
+	pkgrel = 1
+	changelog = changelog
+	arch = any
+	groups = kopano
+	groups = kopano-webapp-plugins
+	makedepends = apache-ant
+	makedepends = libxml2
+	makedepends = git
+	makedepends = gzip
+	depends = kopano-webapp-files
+	depends = kopano-webapp
+	source = kopano-webapp-files-smb-backend-git::git+https://stash.kopano.io/scm/kwa/files-smb-backend.git#branch=master
+	md5sums = SKIP
+
+pkgname = kopano-webapp-files-smb-backend-git
+
