@@ -1,12 +1,12 @@
 # Maintainer: Baltazár Radics <baltazar.radics@gmail.com>
 pkgname=omnisharp-roslyn-bin
 pkgver=1.37.5
-pkgrel=2
+pkgrel=3
 pkgdesc='OmniSharp server (STDIO) based on Roslyn workspaces'
 arch=(x86_64)
 url='https://github.com/OmniSharp/omnisharp-roslyn'
 license=(MIT)
-depends=(mono mono-msbuild)
+depends=(mono mono-msbuild mono-msbuild-sdkresolver)
 provides=(${pkgname%-bin})
 conflicts=(${pkgname%-bin})
 source=(
