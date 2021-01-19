@@ -1,0 +1,16 @@
+[Unit]
+Description=FlareSolverr Service
+After=network-online.target
+
+[Service]
+User=flaresolverr
+Group=flaresolverr
+Restart=always
+RestartSec=5
+TimeoutStopSec=60
+Type=simple
+ExecStart=/opt/flaresolverr/flaresolverr
+WorkingDirectory=/opt/flaresolverr
+
+[Install]
+WantedBy=multi-user.target
