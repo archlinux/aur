@@ -1,9 +1,9 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=superslicer-git
-pkgver=2.3.55.2.r239.g996a42f2f
+pkgver=2.3.55.2.r513.gb6d3143c8
 _pkgtag=$pkgver
-pkgrel=2
+pkgrel=3
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
 arch=('x86_64')
 url="https://github.com/supermerill/SuperSlicer"
@@ -65,6 +65,7 @@ package()
 
 	make DESTDIR="$pkgdir" install
 	test ! -h "$pkgdir/usr/share/SuperSlicer/resources" || rm "$pkgdir/usr/share/SuperSlicer/resources"
+	test ! -h "$pkgdir/usr/bin/prusa-gcodeviewer" || rm "$pkgdir/usr/bin/prusa-gcodeviewer"
 
 	install -d "$pkgdir/usr/share/applications"
 	install -m 644 "$srcdir/superslicer.desktop" "$pkgdir/usr/share/applications/"
