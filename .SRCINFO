@@ -1,13 +1,13 @@
 pkgbase = kops-beta-bin
 	pkgdesc = Kubernetes Operations Beta (kops beta) - Production Grade K8s Installation, Upgrades, and Management
-	pkgver = 1.18.0
+	pkgver = 1.19.0_beta.3
 	pkgrel = 1
 	url = https://github.com/kubernetes/kops
 	arch = x86_64
 	license = apache
 	conflicts = kops-bin
-	source = https://github.com/kubernetes/kops/releases/download/v1.18.0/kops-linux-amd64
-	sha512sums = 53c34db307a83bb9dab5c4d61dffa0b67fa96db6f5ffef722c7c86d7f3854049d09528291790c930a38e8619de108e10c6baf98fff937a27d7b2cb94fc044a57
+	conflicts = kops
+	source = https://github.com/kubernetes/kops/releases/download/v1.19.0-beta.3/kops-linux-amd64
+	sha256sums = cfe5bdf81498401357f959494b6fb03fc95e5b91ccfe9090a5056af3a7b6c12f
 
 pkgname = kops-beta-bin
-
