@@ -1,6 +1,6 @@
 pkgbase = usbdm-git
 	pkgdesc = Debugger interface for Freescale RS08,HCS08,HCS12,Coldfire and ARM-Kinetis Devices.
-	pkgver = 1498.e8ce5c00
+	pkgver = 1499.2b21725a
 	pkgrel = 1
 	url = http://usbdm.sourceforge.net/
 	install = usbdm.install
@@ -18,11 +18,9 @@ pkgbase = usbdm-git
 	options = !makeflags
 	source = git+https://github.com/podonoghue/usbdm-eclipse-makefiles-build.git
 	source = undebian.patch
-	source = fix-linux-build.patch
 	source = 60-usbdm.rules
 	sha256sums = SKIP
 	sha256sums = 69407963c3aa12cdee47e100c64a3de76e2c182b7e33a3e486448a2581710457
-	sha256sums = 4388b5ace7f37c8b036892aecde8d881c559b315e7e1b3adaec74eddea1fef0a
 	sha256sums = 88eaab73a1020ac84d4979a4f70f122214b0042d167942a95bddd0560f0e3aa8
 
 pkgname = usbdm-git
