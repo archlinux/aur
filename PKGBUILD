@@ -1,4 +1,5 @@
-# Maintainer: Christian Hesse <arch@eworm.de>
+# Maintainer: Martin Filion <Mordillo98@gmail.com>
+# Contributor: Christian Hesse <arch@eworm.de>
 # Contributor: BlackICE <manfredi at gmail.com>
 # Contributor: jsteel <jsteel at aur.archlinux.org>
 # Contributor: Arkham <arkham at archlinux dot us>
@@ -6,29 +7,39 @@
 # Contributor: Marius <marius at matamare dot ro>
 
 pkgname=gnome-colors-icon-theme
-epoch=1
-pkgver=0.r217.g8689d1d
-_commit=8689d1d
-pkgrel=2
+pkgname_link=gnome-colors-icon-theme
+pkgver=5.5.1
+pkgrel=3
 pkgdesc='GNOME-Colors icon theme'
 arch=('any')
 url='https://github.com/gnome-colors/gnome-colors'
 license=('GPL2')
 conflicts=('gnome-colors-icon-theme-extras')
 replaces=('gnome-colors-icon-theme-extras')
-makedepends=('git' 'inkscape')
-source=("git://github.com/gnome-colors/gnome-colors.git#commit=${_commit}")
+makedepends=('git' 'inkscape' 'imagemagick' 'gnome-icon-theme' 'gnome-icon-theme-symbolic')
+source=("git://github.com/gnome-colors/gnome-colors")
 sha256sums=('SKIP')
 
-build() {
-	cd "${srcdir}/gnome-colors/gnome-colors/"
+prepare() {
 
-	make
+ cd "${srcdir}/gnome-colors/gnome-colors/"
+ patch -i ../../../inkscape_command.patch
+
+}
+
+build() {
+
+  cd "${srcdir}/gnome-colors/gnome-colors/"
+  
+  make
+
 }
 
 package() {
-	cd "${srcdir}/gnome-colors/gnome-colors/"
 
-	make DESTDIR="${pkgdir}"/ install
+  cd "${srcdir}/gnome-colors/gnome-colors/"
+
+  make DESTDIR="${pkgdir}"/ install
+
 }
 

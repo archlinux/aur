@@ -1,0 +1,11 @@
+--- Makefile	2021-01-19 11:24:16.286931801 -0500
++++ src/gnome-colors/gnome-colors/Makefile	2021-01-19 11:05:31.733635017 -0500
+@@ -99,7 +99,7 @@
+ define png_template
+ $(1)/$(2).png: src/$(2).svg themes/$(1)
+ 	@if test ! -d $$(dir $$@); then mkdir -p $$(dir $$@); echo "mkdir -p $$(dir $$@)"; fi
++	sed "$$($(1)_$(3)_sed)" $$< | inkscape /dev/stdin --export-filename="$$(CURDIR)/$$@"
+-	sed "$$($(1)_$(3)_sed)" $$< | inkscape --without-gui -f /dev/stdin -e "$$(CURDIR)/$$@"
+ endef
+ 
+ define svg_template
