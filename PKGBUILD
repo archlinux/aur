@@ -1,7 +1,7 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=borg-backup-gui-git
-pkgver=330.2111867
+pkgver=332.3701ec4
 pkgrel=1
 pkgdesc="Borg BackUP GUI can be used by new Borg users to get to their destination very quickly."
 url="https://github.com/MTrage/Borg-BackUP-GUI"
@@ -12,8 +12,10 @@ makedepends=('git')
 optdepends=('adwaita-icon-theme')
 
 _gitname=Borg-BackUP-GUI
-source=("git+https://github.com/MTrage/${_gitname}.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/MTrage/${_gitname}.git"
+	'borg-backup-gui.desktop')
+sha256sums=('SKIP'
+	'725dd8dd8b4cc837546c27bb179b7f80bc42339f8859ccf2189a676a82ed5c87')
 
 pkgver() {
   cd "${_gitname}/src"
@@ -29,4 +31,10 @@ build() {
 package() {
   cd "${_gitname}/src"
   install -Dm755 "BORG-BackUP-GUI" "${pkgdir}/usr/bin/BORG-BackUP-GUI"
+  install -D -m 644 ${srcdir}/borg-backup-gui.desktop ${pkgdir}/usr/share/applications/borg-backup-gui.desktop
+  for icons in $(ls ../images/icons/); do
+    echo ${icons}
+    mkdir -p "${pkgdir}/usr/share/icons/hicolor/${icons}/apps"
+    cp ../images/icons/${icons}/BORG-BackUP-GUI.* "${pkgdir}/usr/share/icons/hicolor/${icons}/apps/"
+  done
 }

@@ -1,0 +1,15 @@
+[Desktop Entry]
+Version=1.0
+Name=BORG BackUP GUI
+# Only KDE 4 seems to use GenericName, so we reuse the KDE strings.
+# From Ubuntu's language-pack-kde-XX-base packages, version 9.04-20090413.
+GenericName=Helps new Borg users to get to their destination very quickly
+# Gnome and KDE 3 uses Comment.
+Comment=Helps new Borg users to get to their destination very quickly
+Exec=/usr/bin/BORG-BackUP-GUI
+StartupNotify=true
+Terminal=false
+Icon=BORG-BackUP-GUI
+Type=Application
+Categories=Network;System;
+Actions=new-window;new-private-window;
