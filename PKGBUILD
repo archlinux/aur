@@ -112,6 +112,7 @@ build() {
   cd "$pkgname-$pkgver"
 
   arch-meson build \
+    --libexecdir=lib/libvirt \
     --native-file "$srcdir"/find_programs.ini \
     -Drunstatedir=/run \
     -Dqemu_group=kvm \
@@ -130,9 +131,7 @@ build() {
     -Ddtrace=disabled \
     -Dnumad=disabled \
     -Dstorage_zfs=enabled \
-    -Dstorage_rbd=disabled
-
-  # Find out why rbd fails to build
+    -Dstorage_rbd=enabled
 
   ninja -C build
 }
