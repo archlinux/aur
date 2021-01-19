@@ -1,4 +1,5 @@
 # Maintainer: Ben Grant <ben@190n.org>
+# Maintainer: Snoop05
 
 _testvideo=Sparks-5994fps-AV1-10bit-1920x1080-film-grain-synthesis-2013kbps.obu
 pkgname=dav1d-git-optimized
