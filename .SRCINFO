@@ -1,7 +1,7 @@
 pkgbase = flaresolverr-bin
 	pkgdesc = A proxy server to bypass Cloudflare protection
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FlareSolverr/FlareSolverr
 	arch = x86_64
 	license = MIT
