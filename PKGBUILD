@@ -5,7 +5,7 @@
 
 set -u
 pkgname='evdi-git'
-pkgver=1.8.0.r7.g90e9679
+pkgver=1.9.0.r0.gf479047
 _pkgver="${pkgver%%.r*}"
 pkgrel=1
 pkgdesc='kernel module that enables management of multiple screens, primarily for DisplayLink USB VGA DVI HDMI DisplayPort video'
@@ -67,6 +67,7 @@ build() {
   #cd "${_srcdir}/library"
   # DKMS builds are hard to debug. We build it here and throw it away.
   cd "${_srcdir}"
+  CFLAGS="${CFLAGS/-fno-plt/}"
   make
   set +u
 }
