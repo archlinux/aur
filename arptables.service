@@ -1,0 +1,13 @@
+[Unit]
+Description=ARP Tables
+Before=network-pre.target
+Wants=network-pre.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/lib/systemd/scripts/arptables start
+ExecStop=/usr/lib/systemd/scripts/arptables stop
+
+[Install]
+WantedBy=multi-user.target

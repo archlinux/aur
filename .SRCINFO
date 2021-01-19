@@ -1,0 +1,20 @@
+pkgbase = arptables
+	pkgdesc = ARP filtering utility
+	pkgver = 0.0.4
+	pkgrel = 6
+	url = https://ebtables.netfilter.org/
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	depends = perl
+	depends = bash
+	backup = etc/arptables.conf
+	source = ftp://ftp.netfilter.org/pub/arptables/arptables-v0.0.4.tar.gz
+	source = arptables.systemd
+	source = arptables.service
+	md5sums = c2e99c3aa9d78c9dfa30710ca3168182
+	md5sums = e54342a833c52b2bc67e7985e8f8fdfd
+	md5sums = 7e908fd77ef05bc7a9a05b6e877cd2bf
+
+pkgname = arptables
+
