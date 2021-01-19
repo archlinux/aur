@@ -1,15 +1,14 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=python-tpm2-pytss-git
 _name=${pkgname#python-}
-pkgver=0.1.6.r10.04c057c
+pkgver=0.1.9.r21.2f9ebdf
 pkgrel=1
 pkgdesc='Python bindings for tpm2-tss'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-pytss'
 license=('BSD')
-depends=('python' 'python-setuptools' 'tpm2-tss' 'libtss2-esys.so'
-         'libtss2-fapi.so' 'libtss2-rc.so' 'libtss2-tctildr.so')
-makedepends=('git' 'swig')
+depends=('python' 'tpm2-tss' 'libtss2-esys.so' 'libtss2-fapi.so' 'libtss2-rc.so' 'libtss2-tctildr.so')
+makedepends=('git' 'python-setuptools' 'swig')
 checkdepends=('ibm-sw-tpm2' 'python-cryptography')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

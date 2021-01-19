@@ -1,6 +1,6 @@
 pkgbase = python-tpm2-pytss-git
 	pkgdesc = Python bindings for tpm2-tss
-	pkgver = 0.1.6.r10.04c057c
+	pkgver = 0.1.9.r21.2f9ebdf
 	pkgrel = 1
 	url = https://github.com/tpm2-software/tpm2-pytss
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = python-tpm2-pytss-git
 	checkdepends = ibm-sw-tpm2
 	checkdepends = python-cryptography
 	makedepends = git
+	makedepends = python-setuptools
 	makedepends = swig
 	depends = python
-	depends = python-setuptools
 	depends = tpm2-tss
 	depends = libtss2-esys.so
 	depends = libtss2-fapi.so
@@ -25,4 +25,3 @@ pkgbase = python-tpm2-pytss-git
 	sha512sums = SKIP
 
 pkgname = python-tpm2-pytss-git
-
