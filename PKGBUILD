@@ -6,7 +6,7 @@
 pkgname=pi-hole-ftl
 _pkgname=FTL
 _servicename=pihole-FTL
-pkgver=5.4
+pkgver=5.5
 pkgrel=1
 _now=`date +%N`
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -26,8 +26,8 @@ source=($pkgname-v$pkgver.tar.gz::"https://github.com/pi-hole/FTL/archive/v$pkgv
         "$pkgname.service"
         "$pkgname.db"
         "$pkgname.conf")
-sha256sums=('7e342cfb7d689fb4a2d1b6938a717d904ea906d9688e0d148316ce7efa924ec2'
-            'abd6de66266b3b022298ceac59c49f65e2b888ae649811ec6dd54c88fa3c8419'
+sha256sums=('fecf96712a7f3f9760dcba659cf9d45d2a31528a98d7d5c48be1dd2825e42eba'
+            '18bd84196f0e462388b701b3ff6513d83477c419aebb1a0789b633fdb1dac4e1'
             '538d2f66e30eabeeb0ac6794ac388b96ddf1830d9e988a0aaa810cb17c5c69fc'
             '39ef7bfd672ce59440bbf89e812992adc4d40091bc8d70fa24bd586381979064'
             '3740a64750877c3fc49913d24d9d1c435f00803c8b87626a741d016d06799baa'
