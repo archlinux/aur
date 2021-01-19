@@ -1,0 +1,19 @@
+pkgbase = kopano-webapp-files-git
+	pkgver = 4.0.1
+	pkgrel = 1
+	changelog = changelog
+	arch = any
+	groups = kopano
+	groups = kopano-webapp-plugins
+	makedepends = apache-ant
+	makedepends = libxml2
+	makedepends = git
+	makedepends = gzip
+	depends = php-memcache
+	depends = memcached
+	depends = kopano-webapp
+	source = kopano-webapp-files-git::git+https://stash.kopano.io/scm/kwa/files.git#branch=master
+	md5sums = SKIP
+
+pkgname = kopano-webapp-files-git
+
