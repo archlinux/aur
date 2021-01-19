@@ -4,24 +4,12 @@
 
 #-- PulseAudio --#
 pulseaudio_pkgname="pulseaudio"
-if pacman -Qq "$(basename "${pulseaudio_pkgname}")" 2> "/dev/null" 1>&2; then
-    # If pulseaudio is installed, use the version of installed pulseaudio.
-    pulseaudio_ver="$(pacman -Q "$(basename "${pulseaudio_pkgname}")" | cut -d ' ' -f 2 | cut -d '-'  -f 1)"
-else
-    # If pulseaudio is not installed, use the version from offcial repository.
-    pulseaudio_ver="$(pacman -Sp --print-format '%v' "${pulseaudio_pkgname}" | cut -d '-' -f 1)"
-fi
-
-# if it is failed to get the version of pulseaudio, use the hard coded one.
-if [[ -z "${pulseaudio_ver}" ]]; then
-    pulseaudio_ver="14.1"
-fi
-
+pulseaudio_ver="$(pacman -Q "$(basename "${pulseaudio_pkgname}")" | cut -d ' ' -f 2 | cut -d '-' -f 1)"
 
 pkgname="pulseaudio-modules-bt"
 module_ver="1.4"
 pkgver="${module_ver}_${pulseaudio_ver}"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="PulseAudio Bluetooth modules with SBC, AAC, APTX, APTX-HD, Sony LDAC (A2DP codec) support"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/EHfive/pulseaudio-modules-bt"
@@ -59,13 +47,18 @@ prepare() {
 
 build() {
     cd "${srcdir}/pulseaudio-modules-bt-${module_ver}"
+    rm -rf build
+    mkdir build
+    cd build
     cmake \
         -DCMAKE_BUILD_TYPE=Release \
-        .
+        -S .. \
+        -B . \
+
     make
 }
 
 package() {
-    cd "$srcdir/pulseaudio-modules-bt-${module_ver}"
+    cd "${srcdir}/pulseaudio-modules-bt-${module_ver}/build"
     make DESTDIR="${pkgdir}" install
 }
