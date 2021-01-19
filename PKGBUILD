@@ -1,4 +1,5 @@
 # Maintainer: Philipp Joram <mail at phijor dot me>
+# Contributor: Petr Špaček <pspacek at isc dot org>
 
 _lua_version=5.3
 _lua_name=luaprompt
@@ -21,15 +22,13 @@ build() {
   sed -ri 's:\$\((BIN|LIB|MAN1)DIR\):\$(DESTDIR)\$(\1DIR):g' Makefile
 
   make PREFIX=/usr \
-    LUA_INCLUDE_DIR=/usr/include/lua${_lua_version} \
-    LUA_VERSION=${_lua_version}
+    VERSION=${_lua_version}
 }
 
 package() {
   cd "$srcdir/$_lua_name-$pkgver"
   make PREFIX=/usr DESTDIR="$pkgdir/" MANDIR="/usr/share/man"\
-    LUA_INCLUDE_DIR=/usr/include/lua${_lua_version} \
-    LUA_VERSION=${_lua_version} install
+    VERSION=${_lua_version} install
 
   # license
   install -Dm644 LICENSE \
