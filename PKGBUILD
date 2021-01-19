@@ -134,7 +134,6 @@ build() {
     -Dstorage_zfs=enabled \
     -Dstorage_rbd=disabled
 
-  # Find out why zfs fails to build
   # Find out why rbd fails to build
 
   ninja -C build
