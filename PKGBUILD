@@ -43,7 +43,7 @@ build() {
     arch-meson build
     meson compile -C build
   else
-    ./autogen.sh
+    autoreconf
     ./configure --prefix=/usr
     make
   fi
