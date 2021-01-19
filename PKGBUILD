@@ -10,8 +10,10 @@ license=(GPL2)
 depends=('pacman' 'sed')
 optdepends=('isfree: Check your Arch system for nonfree software')
 makedepends=('git')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/leo-arch/pacfree/archive/v${pkgver}.tar.gz")
-sha256sums=('3d058e868dc7197a4584bc520f5f76ba3b29fec776bccbe21b5411a6c4661153')
+source=("git+${url}.git")
+sha256sums=('SKIP')
+#source=("${pkgname}-${pkgver}.tar.gz::https://github.com/leo-arch/pacfree/archive/v${pkgver}.tar.gz")
+#sha256sums=('3d058e868dc7197a4584bc520f5f76ba3b29fec776bccbe21b5411a6c4661153')
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
