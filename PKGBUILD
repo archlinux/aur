@@ -5,15 +5,15 @@
 
 pkgname=(libvirt libvirt-storage-gluster libvirt-storage-iscsi-direct libvirt-storage-rbd)
 epoch=1
-pkgver=6.5.0
-pkgrel=3
+pkgver=7.0.0
+pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="https://libvirt.org/"
 license=('LGPL' 'GPL3') #libvirt_parthelper links to libparted which is GPL3 only
 install=libvirt.install
-depends=('libpciaccess' 'yajl' 'fuse2' 'gnutls' 'parted' 'libssh' 'libxml2' 'numactl' 'polkit')
-makedepends=('libxslt' 'python-docutils' 'lvm2' 'open-iscsi' 'libiscsi' 'ceph-libs' 'glusterfs'
+depends=('libpciaccess' 'yajl' 'fuse2' 'gnutls' 'parted' 'libssh' 'libxml2' 'numactl' 'polkit' 'netcf')
+makedepends=('meson' 'libxslt' 'python-docutils' 'lvm2' 'open-iscsi' 'libiscsi' 'ceph-libs' 'glusterfs'
              'bash-completion' 'rpcsvc-proto' 'dnsmasq' 'iproute2' 'qemu-headless')
 checkdepends=('ebtables')
 optdepends=('libvirt-storage-gluster: Gluster storage backend'
@@ -86,18 +86,14 @@ backup=(
   'etc/logrotate.d/libvirtd.qemu'
   'etc/sasl2/libvirt.conf'
 )
-source=("https://libvirt.org/sources/$pkgname-$pkgver.tar.xz"{,.asc}
-        "CVE-2020-14339.patch")
-sha256sums=('4915d9eab299ed79288d7598b717c587156708c05f701fe55a72293f32eb3182'
-            'SKIP'
-            'af90e325ae5f6f3f946695a8900ef2ea8cd579da61c608d69c4c550a8bc1b9db')
-validpgpkeys=('C74415BA7C9C7F78F02E1DC34606B8A5DE95BC1F') # Daniel Veillard <veillard@redhat.com>
+source=("https://libvirt.org/sources/$pkgname-$pkgver.tar.xz"{,.asc})
+sha256sums=('ca3833844d08c22867f1d1a46edc36bda7d6fe1a4f267e7d77100b79fc9ddd89'
+            'SKIP')
+validpgpkeys=('453B65310595562855471199CA68BE8010084C9C') # Jiří Denemark <jdenemar@redhat.com>
 
 prepare() {
   mkdir build
   cd "$pkgname-$pkgver"
-
-  patch -Np1 -i "${srcdir}/CVE-2020-14339.patch"
 
   sed -i 's|/sysconfig/|/conf.d/|g' \
     src/remote/libvirtd.service.in \
@@ -112,27 +108,45 @@ prepare() {
 }
 
 build() {
-  cd build
-  ZFS=/usr/bin/zfs ZPOOL=/usr/bin/zpool \
-  "../$pkgname-$pkgver/configure" \
-    --prefix=/usr \
-    "--libexec=/usr/lib/$pkgname" \
-    --sbindir=/usr/bin \
-    --with-runstatedir=/run \
-    --with-qemu-group=kvm
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+  cd "$pkgname-$pkgver"
+
+  arch-meson build \
+    -Dsystem=true \
+    -Drunstatedir=/run \
+    -Dqemu_group=kvm \
+    -Dopenwsman=disabled \
+    -Dapparmor=disabled \
+    -Dselinux=disabled \
+    -Dwireshark_dissector=disabled \
+    -Ddriver_bhyve=disabled \
+    -Ddriver_hyperv=disabled \
+    -Ddriver_libxl=disabled \
+    -Ddriver_vz=disabled \
+    -Dsecdriver_apparmor=disabled \
+    -Dsecdriver_selinux=disabled \
+    -Dstorage_sheepdog=disabled \
+    -Dstorage_vstorage=disabled \
+    -Ddtrace=disabled \
+    -Dnumad=disabled \
+    -Dstorage_zfs=disabled \
+    -Dstorage_rbd=disabled
+
+  # Find out why zfs fails to build
+  # Find out why rbd fails to build
+
+  ninja -C build
 }
 
 check() {
-  cd build
-  make check
+  cd "$pkgname-$pkgver"
+
+  ninja -C build test
 }
 
 package_libvirt() {
   provides=("libvirt=$pkgver" 'libvirt.so' 'libvirt-admin.so' 'libvirt-lxc.so' 'libvirt-qemu.so')
-  cd build
-  make DESTDIR="$pkgdir" install
+  cd "$pkgname-$pkgver"
+  ninja -C build install
 
   mv "$pkgdir"/etc/{sysconfig,conf.d}
   mkdir "$pkgdir"/usr/lib/{sysusers,tmpfiles}.d
