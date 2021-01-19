@@ -16,18 +16,16 @@ md5sums=('b921f9e152e039efdac745438ef8362c'
 
 prepare() {
   cd $pkgname-$pkgver
-  ./configure
+  ./configure --prefix=/usr --sbindir=/usr/bin
 }
 
 build() {
   cd $pkgname-$pkgver
-  # and this was supposed to be "easier"?
-  sed -i 's|sbin|bin|g' Makefile
   make
 }
 package() {
   cd $pkgname-$pkgver
-  make prefix=/usr DESTDIR=$pkgdir install
+  make DESTDIR=$pkgdir install
   install -Dm644 "$srcdir/mrouted.service" "$pkgdir/usr/lib/systemd/system/mrouted.service"
   # and this was supposed to be "easier"?
   mv "$pkgdir/usr/bin/mtrace" "$pkgdir/usr/bin/mrtrace"
