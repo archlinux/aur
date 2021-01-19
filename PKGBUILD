@@ -23,7 +23,7 @@ md5sums=(SKIP)
 
 prepare() {
   cd "${srcdir}/${_gitdir}"
-  sed -i "s/xpra start/xpra start --start=$_env --input-method=$_env/" run_scaled
+  sed -i "s/xpra start/xpra start --start=\$$_env --input-method=\$$_env/" run_scaled
 }
 
 pkgver() {
