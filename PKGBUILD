@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=racon-git
-pkgver=1.4.13.r30.gd798791
+pkgver=1.4.20.r0.g8185f8e
 pkgrel=1
 pkgdesc="Ultrafast consensus module for raw de novo genome assembly"
 arch=('i686' 'x86_64')
 url="https://github.com/lbcb-sci/racon"
 license=('MIT')
-depends=('gcc-libs')
+depends=('gcc-libs' 'zlib')
 makedepends=('git' 'cmake')
 provides=('racon')
 conflicts=('racon')
