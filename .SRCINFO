@@ -12,8 +12,8 @@ pkgbase = clifm
 	optdepends = sshfs: SFTP support
 	optdepends = cifs-utils: Samba support
 	optdepends = curlftpfs: FTPFS support
-	source = clifm-0.22.1.tar.gz::https://github.com/leo-arch/clifm/archive/v0.22.1.tar.gz
-	sha256sums = d6cae72041303351a5b2655a707a0d81a75b52eb936590c75a7dac691ba65f93
+	source = git+https://github.com/leo-arch/clifm.git
+	sha256sums = SKIP
 
 pkgname = clifm
 
