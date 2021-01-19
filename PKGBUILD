@@ -7,7 +7,7 @@ _version=1.0.4655
 
 pkgname=${_basename}-${_pkgname}-nightly
 pkgver=${_version}
-pkgrel=1
+pkgrel=2
 pkgdesc="Jitsi Meet Web nightly build"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -30,6 +30,8 @@ source=(
 
 build() {
         cd "$pkgname"
+        # temp fix
+        sed -i 's/cb484cf48ccd3d56cf9bb2e9d452bd7aa644ac8a/86bc5122a67b4bb7b59d93c89538647fe7ac150f/' package.json
         npm install
         make
         make source-package
