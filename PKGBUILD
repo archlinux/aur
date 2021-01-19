@@ -8,7 +8,7 @@ pkgdesc='Ledger Live - Desktop'
 pkgbin=ledger-live-desktop
 license=('MIT')
 url='https://github.com/LedgerHQ/ledger-live-desktop'
-pkgver=2.19.0
+pkgver=2.20.0
 pkgrel=2
 arch=('x86_64')
 package="ledger-live-desktop-${pkgver}-linux-${arch}.AppImage"
@@ -20,7 +20,7 @@ source=(
   "${package}::${url}/releases/download/v${pkgver}/${package}"
   "LICENSE"
 )
-sha512sums=('770f3116b8634e73599ff239279a93c791c06258934137b26e7a372fda11c01f2363ad11d5ed723a307dbdd5fd2101416b686fbe0128c90bb7569b706ed05c7e'
+sha512sums=('f33e3ca105a2a470061f10fd6ee30cde8298c9b394caf288178cac472e3e38796661cf00d672686c7406db526856895c4ec450e17ac4c7933117598787c591fe'
             '0e76943ab7d3849ee569a30a46dec494658b8de9937965a81d043ad957116bf9c8bdb9bb9aee20e2f00fb15b736df90bbe6144dc2088a968ced2cc7b8e2de07f')
 
 
@@ -39,12 +39,6 @@ package() {
 
 	install -d "$pkgdir/usr/bin"
 	ln -s "/opt/$pkgbin/$pkgbin" "$pkgdir/usr/bin/$pkgbin"
-
-	# Fix icon folders
-	mv -f "$srcdir/squashfs-root/usr/share/icons/hicolor/2x2" "$srcdir/squashfs-root/usr/share/icons/hicolor/128x128"
-	mv -f "$srcdir/squashfs-root/usr/share/icons/hicolor/3x3" "$srcdir/squashfs-root/usr/share/icons/hicolor/256x256"
-	mv -f "$srcdir/squashfs-root/usr/share/icons/hicolor/4x4" "$srcdir/squashfs-root/usr/share/icons/hicolor/512x512"
-	mv -f "$srcdir/squashfs-root/usr/share/icons/hicolor/5x5" "$srcdir/squashfs-root/usr/share/icons/hicolor/1024x1024"
 
 	install -d "$pkgdir/usr/share"
 	cp -r "$srcdir/squashfs-root/usr/share/." "${pkgdir}/usr/share/"
