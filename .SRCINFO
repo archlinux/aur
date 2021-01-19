@@ -1,0 +1,17 @@
+pkgbase = omnisharp-roslyn-bin
+	pkgdesc = OmniSharp server (STDIO) based on Roslyn workspaces
+	pkgver = 1.37.5
+	pkgrel = 1
+	url = https://github.com/OmniSharp/omnisharp-roslyn
+	arch = x86_64
+	license = MIT
+	depends = mono
+	provides = omnisharp-roslyn
+	conflicts = omnisharp-roslyn
+	source = omnisharp-mono-1.37.5.tar.gz::https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.37.5/omnisharp-mono.tar.gz
+	source = omnisharp.sh
+	sha256sums = ba5626c75d9855fca6b1043cbe2a157223076441e600264bcb4547e4815b48c4
+	sha256sums = 784a5643fde85bbec73f329b0bff1589451f7d976df3087e6667ad60a1768da9
+
+pkgname = omnisharp-roslyn-bin
+
