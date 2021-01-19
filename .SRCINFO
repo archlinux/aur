@@ -1,6 +1,6 @@
 pkgbase = qencoder
 	pkgdesc = A Qt video encoder GUI for open codec formats
-	pkgver = 2.0.3
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/natis1/qencoder
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = qencoder
 	depends = aom
 	depends = ffmpeg
 	depends = opencv
-	depends = python-parallelencode
-	source = https://files.pythonhosted.org/packages/source/q/qencoder/qencoder-2.0.3.tar.gz
+	depends = python-av1an
+	source = https://files.pythonhosted.org/packages/source/q/qencoder/qencoder-2.1.1.tar.gz
 	source = qencoder.desktop
-	sha256sums = 674997af69da3d7a6b20a5dc5f6b8878893db1003170d8d91e48176b97412ebe
+	sha256sums = dd44b121a696dcfa8522cba8951078c71ebcb81b01f518be69f5f2b7bfc4fa4a
 	sha256sums = 3e9786a3fe1b7d6e3798fcf07cdd1e5db29e125cdc4c559dc095a8b1a143b1a5
 
 pkgname = qencoder

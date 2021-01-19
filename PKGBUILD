@@ -2,7 +2,7 @@
 
 pkgname=qencoder
 _name="${pkgname#python-}"
-pkgver=2.0.3
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='A Qt video encoder GUI for open codec formats'
 url='https://github.com/natis1/qencoder'
@@ -15,10 +15,10 @@ source=(
 makedepends=('python-setuptools')
 depends=(
 	'python' 'python-pyqt5' 'python-psutil'
-	'libvpx' 'aom' 'ffmpeg' 'python-parallelencode'
+	'libvpx' 'aom' 'ffmpeg' 'python-av1an'
 )
 
-sha256sums=('674997af69da3d7a6b20a5dc5f6b8878893db1003170d8d91e48176b97412ebe'
+sha256sums=('dd44b121a696dcfa8522cba8951078c71ebcb81b01f518be69f5f2b7bfc4fa4a'
             '3e9786a3fe1b7d6e3798fcf07cdd1e5db29e125cdc4c559dc095a8b1a143b1a5')
 
 build() {
