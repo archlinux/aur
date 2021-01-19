@@ -1,9 +1,9 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=rare-git
-pkgver=0.1.1.r10.gd6acb41
+pkgver=0.2.0.r12.g0c1715f
 pkgrel=1
-pkgdesc="Legendary frontend"
+pkgdesc="GUI for legendary. An Epic Games Launcher open source alternative."
 arch=('any')
 url="https://github.com/Dummerle/Rare"
 license=('GPL3')
@@ -16,7 +16,7 @@ depends=(
 	"python-wheel"
 	"python-setuptools"
 )
-makedepends=("git" "python-setuptools")
+makedepends=("git" "python-setuptools" "gendesk")
 checkdepends=()
 optdepends=()
 provides=(${pkgname%-git})
@@ -39,8 +39,14 @@ pkgver() {
 }
 
 prepare() {
-	sed 's/\(packages.*\)],/\1,"Rare.Tabs.GamesInstalled", "Rare.Tabs.GamesUninstalled"],/' \
-		-i "$srcdir/$pkgname/setup.py"
+	cd "$srcdir/$pkgname"
+
+	gendesk -n -f \
+		--pkgname "${pkgname%-git}" \
+		--pkgdesc "$pkgdesc" \
+		--icon games \
+		--categories "Application;Game;Launcher" \
+		--custom "Keywords=epic;games;launcher;legendary;"
 }
 
 build() {
@@ -53,4 +59,6 @@ package() {
 	cd "$srcdir/$pkgname"
 
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+
+	install -Dm644 "${pkgname%-git}.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
 }
