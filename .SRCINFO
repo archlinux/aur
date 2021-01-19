@@ -1,0 +1,16 @@
+pkgbase = gnome-colors-icon-theme-bin
+	pkgdesc = Installs gnome-colors-icon-theme without any compilation and dependencies.
+	pkgver = 5.5.1
+	pkgrel = 1
+	url = https://sourceforge.net/projects/archbangretro/
+	arch = any
+	license = GPL
+	makedepends = gnome-icon-theme
+	makedepends = gnome-icon-theme-symbolic
+	provides = gnome-colors-icon-theme-bin
+	conflicts = gnome-colors-icon-theme
+	source = https://sourceforge.net/projects/archbangretro/files/gnome-colors-icon-theme-bin.tar.xz
+	md5sums = 1e8b375e13985bfa25ab727f2f4fd268
+
+pkgname = gnome-colors-icon-theme-bin
+
