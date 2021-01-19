@@ -2,8 +2,8 @@
 
 pkgname=rate-arch-mirrors
 pkgver=0.1.0
-pkgrel=2
-pkgdesc="A tool to filter out out-of-date Arch Linux mirrors and rate them"
+pkgrel=3
+pkgdesc="Everyday-use client-side map-aware arch mirror ranking tool"
 url="https://github.com/westandskif/rate-arch-mirrors"
 license=('custom')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/westandskif/${pkgname}/archive/v${pkgver}.tar.gz")

@@ -1,7 +1,7 @@
 pkgbase = rate-arch-mirrors
-	pkgdesc = A tool to filter out out-of-date Arch Linux mirrors and rate them
+	pkgdesc = Everyday-use client-side map-aware arch mirror ranking tool
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/westandskif/rate-arch-mirrors
 	arch = x86_64
 	license = custom
