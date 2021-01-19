@@ -13,7 +13,7 @@ depends=('libhandy0' 'python-appdirs' 'python-bleach' 'python-beautifulsoup4' 'p
 makedepends=('git' 'python-setuptools')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=('daty::git+https://gitlab.gnome.org/World/Daty.git')
+source=('$_pkgname::git+https://gitlab.gnome.org/World/Daty.git')
 sha512sums=('SKIP')
 
 pkgver() {
