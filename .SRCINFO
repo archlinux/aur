@@ -1,0 +1,18 @@
+pkgbase = flaresolverr
+	pkgdesc = FlareSolverr is a proxy server to bypass Cloudflare protection
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/FlareSolverr/FlareSolverr
+	arch = x86_64
+	license = MIT
+	provides = flaresolverr
+	options = !strip
+	source = https://github.com/FlareSolverr/FlareSolverr/releases/download/v1.2.3/flaresolverr-v1.2.3-linux-x64.zip
+	source = flaresolverr.service
+	source = flaresolverr.sysusers
+	sha512sums = 0581a23604380df205e580e50d254d452e8fb5dfb227c21f83ea8fdd464336cb598805e051eca77c1d0ccb8f4c914151bfc109f6a35f327f5e503e49f3e519f2
+	sha512sums = ef73dd8240671288b20c20da7773213a0cfaecf6a9b065994f2bf7a0cacd0fcc495c60f24d16daa6a39189430a4cef7bd81a89669d060d7a50c3b0f64ada1e91
+	sha512sums = 0423d10d964a187e5a153140597e7cee3a6112bf6569dfcda7848bfbce4e5660534db3bdbe4a4de9a63fbf0ecc2b874937afd94495691f76176243d2ac4b080d
+
+pkgname = flaresolverr
+
