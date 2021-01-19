@@ -1,6 +1,6 @@
 # Maintainer: Manuel Schmitzberger <ms@ms-sw.at>
 
-pkgname=ycmd
+pkgname=ycmd-git
 _gitname=ycmd
 pkgver=r2844.06228007
 pkgrel=1
