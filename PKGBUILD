@@ -1,7 +1,7 @@
 # Maintainer: Davide Depau <davide@depau.eu>
 
 pkgname=xdg-desktop-portal-wlr-git
-pkgver=v0.1.0.r1.ga105e0e
+pkgver=v0.1.0.r32.gcf3e026
 pkgrel=1
 pkgdesc='xdg-desktop-portal backend for wlroots'
 url=https://github.com/emersion/xdg-desktop-portal-wlr
@@ -34,7 +34,7 @@ build () {
   msg2 "Note: this package, by default, creates a debug, non-stripped build to aid reporting bugs and development."
   msg2 "If you would like a smaller release build, please consider editing the PKGBUILD or using the non-git package."
 	rm -rf build
-	arch-meson "${pkgname}" build
+	arch-meson "${pkgname}" build -Dsd-bus-provider=libsystemd
 	ninja -C build
 }
 
