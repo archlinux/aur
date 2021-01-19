@@ -9,16 +9,16 @@ pkgname=(
   kata2-linux-container
   kata2-containers-image
 )
-pkgver=2.0.0
+pkgver=2.0.1
 _pkgver=${pkgver/\~/-}
-pkgrel=4
+pkgrel=1
 pkgdesc="Lightweight virtual machines for containers, version 2"
 arch=('x86_64')
 url="https://katacontainers.io/"
 license=('Apache')
 makedepends=(
   'go' 'bc' 'rust'
-  'yq2-bin'  # quietly pulled by Kata's codebase to read versions.yaml from repo
+  #'yq2-bin'  # quietly pulled by Kata's codebase to read versions.yaml from repo
   'mkinitcpio'  # initrd build
   'pacman' 'udisks2' # rootless image build
 )
@@ -42,7 +42,7 @@ source=(
   "kata-containers.target"
 )
 sha512sums=(
-  "3106c05aa2ab613525ef4eff545059a9af864bf0fc44f67a5966ad9a0fb27cfd6c67f5d8f004a186a0d57ae52d419bce2462a6a751723a135b4419951eb78ef7"
+  "d9383627a4917439722f423d8f8f7902c33793bd723a8e7f62d126a7c5da8bbb72650949ea50bd2b4138e54e82d617d70b6917d9abe9a5a3dfcbecd39a962b52"
   "${KATA_KERNEL_SUM_SHA512:-2b9c83425c3fd40abb76197e65933d1f79c60b71b3eccc6e0dcbb6748001ccbd002366cc2b61a796536166f08d831478a840bcb1e19ca0531b7f180a451e4d1c}"
   "SKIP"
 
@@ -55,7 +55,7 @@ sha512sums=(
   "b599a62d07f4451f52747eaf185142fbe8eeb9aced211369fc83d88c43483ef1008f87615fcfcf30d74a557569b89d5fcb4a61326ffc8cb0559ec51807d808ca"
 )
 b2sums=(
-  "818e5cf96e85d0116c350bf09666073579c1126d6c7ca23412352e0aebb0794605a42052317d2313c28e9dc24192f9436c996b202e5de5bf6868f2a2b22aba6f"
+  "555a98dc6475e0f313effac4333fe3fb704a077342de5f9b290ff3f80b7f5c5e0434f0c9f2ec99c6dd98031920ac55e04a90758f4bf5c44d2268b48993ffc42c"
   "${KATA_KERNEL_SUM_B2:-450f91dd84df37cb16c6937e2a4cc55a8b2e5046b6396685cf2ae5a733a925ed5502944b5a60a1056827c788407fa3f916e04b48b9c8e3d68df6b0830039ff0b}"
   "SKIP"
 
@@ -101,8 +101,8 @@ _kernel_prepare(){
 prepare(){
   _kernel_prepare
 
-  install -dm0755 "${srcdir}/bin"
-  ln -sf "$(type -p yq)" "${srcdir}/bin/yq"
+  #install -dm0755 "${srcdir}/bin"
+  #ln -sf "$(type -p yq)" "${srcdir}/bin/yq"
 
   # agent-based initrd
   BINSRC="${srcdir}/${_pkgbase}-${_pkgver}/src/agent/target/${_KARCH}-unknown-linux-gnu/release/kata-agent" envsubst <"${srcdir}/install_kata-agent.tpl" >"${srcdir}/install_kata-agent"
