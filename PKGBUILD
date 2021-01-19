@@ -12,7 +12,7 @@ pkgname=(
   kata-linux-container-bin
 )
 epoch=1
-pkgver="1.12.0"
+pkgver="1.12.1"
 _pkgver=${pkgver/\~/-}
 pkgrel=1
 pkgdesc="Lightweight virtual machines for containers (binary version)"
@@ -25,8 +25,8 @@ _bin_pkg_root="/opt/kata"  # `/usr` for f30 packages, `/opt/kata` for static pac
 if [ "${_bin_pkg_root}" = "/opt/kata" ]; then
   #pkgname+=(kata-containers-static)
   source=("https://github.com/kata-containers/runtime/releases/download/${_pkgver}/kata-static-${_pkgver}-${CARCH}.tar.xz")
-  sha512sums=(6a2835ef324de0c295e0ea009e7b66eb2008f02ee518b02a7f39dde50550f0a073c0ea2ab37b11c453c8812a2e10f422c6050aa40bcc04eb4d6e7c91d025822b)
-  b2sums=(de16963cd4ddaa83f9da677dff1c6b6b7ba2a14c8b9ed85228d8dc73074a66438806cc6998a0222cc7cfaddd0a2f35ff52c49d94513ca19cb452720b4d68d896)
+  sha512sums=(4c81be66e2b310ef767f0c90b548f85f89f5521be9fd53c50a95e81750dfbff666595ef48ba9cece2cccc33c7fafb74db0589b4a10069abf2f8d172bda8516ae)
+  b2sums=(902dd17f7bd4d955155c7d0f377905e15d1e2e02b358acb511dbccd83f950e91989f3dbb36cb30866a950ed57127d50e8fa2da21ffefd7f95a9f98e3fc7e4da4)
 else
   _kata_kernel_ver="5.4.32.76"
   _default_suffix="-8.1"  # f30 package build revision
