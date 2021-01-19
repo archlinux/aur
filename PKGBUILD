@@ -27,7 +27,7 @@ pkgver() {
 build() {
   cd iputils
 
-  arch-meson iputils -DBUILD_RARPD=false -DBUILD_TFTPD=false -DBUILD_ARPING=false -DBUILD_PING=false -DBUILD_RDISC=false -DENABLE_RDISC_SERVER=false -DBUILD_TRACEPATH=false -DBUILD_TRACEROUTE6=false -DBUILD_NINFOD=false -DNINFOD_MESSAGES=false -DBUILD_MANS=false -DBUILD_HTML_MANS=false "_build"
+  arch-meson iputils -DBUILD_RARPD=false -DBUILD_TFTPD=false -DBUILD_ARPING=false -DBUILD_PING=false -DBUILD_RDISC=false -DENABLE_RDISC_SERVER=false -DBUILD_TRACEPATH=false -DBUILD_TRACEROUTE6=false -DBUILD_NINFOD=false -DNINFOD_MESSAGES=false -DBUILD_MANS=false -DBUILD_HTML_MANS=false
   ninja $NINJAFLAGS -C iputils
 }
 
