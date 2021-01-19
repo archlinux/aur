@@ -3,7 +3,7 @@
 # Contributor   : Jean-Michel T.Dydak <jean-michel@obarun.org>
 # Obarun PkgSrc : https://framagit.org/pkg/obmultilib/lib32-p11-kit
 #----------------
-# Maintainer    : Florian Pritz <bluewind@xinu.at>
+# Contributor   : Florian Pritz <bluewind@xinu.at>
 # Contributor   : Christoph Vigano <mail@cvigano.de>
 # Arch PkgSrc   : https://www.archlinux.org/packages/multilib/x86_64/lib32-p11-kit
 #----------------
