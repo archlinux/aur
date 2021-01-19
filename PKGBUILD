@@ -12,7 +12,7 @@ license=('MIT')
 provides=('flaresolverr')
 options=('!strip')
 source=("https://github.com/$__pkgname/$__pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-x64.zip"
-        "https://raw.githubusercontent.com/$__pkgname/$__pkgname/v$pkgver/LICENSE"
+        "https://github.com/$__pkgname/$__pkgname/raw/v$pkgver/LICENSE"
         "flaresolverr.service"
         "flaresolverr.sysusers")
 sha512sums=('0581a23604380df205e580e50d254d452e8fb5dfb227c21f83ea8fdd464336cb598805e051eca77c1d0ccb8f4c914151bfc109f6a35f327f5e503e49f3e519f2'
