@@ -1,59 +1,49 @@
-# Maintainer : Keshav Amburay <(the ddoott ridikulusddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
-# Contributor: Murtuza Akhtari <inxsible at gmail dot com>
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
+# Contributor: Murtuza Akhtari <inxsible at gmail dot com>
+# Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
-_pkgname="efibootmgr"
-pkgname="${_pkgname}-git"
-
-pkgver=14
+pkgname=efibootmgr-git
+pkgver=17
 pkgrel=1
-pkgdesc="Tool to modify UEFI Firmware Boot Manager Variables - GIT master branch"
-arch=('x86_64' 'i686')
-url="https://github.com/rhinstaller/efibootmgr"
+pkgdesc="Linux user-space application to modify the EFI Boot Manager"
+arch=('x86_64')
+url="https://github.com/rhboot/efibootmgr"
 license=('GPL2')
-makedepends=('git')
-depends=('pciutils' 'efivar' 'zlib')
-conflicts=("${_pkgname}")
-provides=("${_pkgname}=${pkgver}")
-options=('!strip' 'zipman' 'docs' '!emptydirs')
-
-source=("${_pkgname}::git+https://github.com/rhinstaller/efibootmgr.git#branch=master")
-sha1sums=('SKIP')
+depends=('glibc' 'popt')
+makedepends=('efivar' 'git')
+provides=(efibootmgr)
+conflicts=(efibootmgr)
+source=(git+https://github.com/rhboot/efibootmgr)
+sha512sums=('SKIP')
+#validpgpkeys=('B00B48BC731AA8840FED9FB0EED266B70F4FEF10') # Peter Jones <pjones@redhat.com>
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}/"
-	echo "$(git describe --tags)" | sed -e 's|efibootmgr-||g' -e 's|-|\.|g'
+  cd efibootmgr
+  git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
-	
-	rm -rf "${srcdir}/${_pkgname}_build/" || true
-	cp -r "${srcdir}/${_pkgname}" "${srcdir}/${_pkgname}_build"
-	
-	cd "${srcdir}/${_pkgname}_build/"
-	
-	git clean -x -d -f
-	echo
-	
+  cd efibootmgr
+  # removing hotfix function declaration:
+  # https://github.com/rhboot/efibootmgr/issues/128
+  sed -e '/extern int efi_set_verbose/d' -i "src/${pkgname}.c"
 }
 
 build() {
-	
-	cd "${srcdir}/${_pkgname}_build/"
-	
-	make EXTRA_CFLAGS="-Os"
-	echo
-	
+  cd efibootmgr
+  make libdir='/usr/lib' sbindir='/usr/bin' EFIDIR='arch'
 }
 
 package() {
-	
-	cd "${srcdir}/${_pkgname}_build/"
-	
-	install -d "${pkgdir}/usr/bin/"
-	install -D -m0755 "${srcdir}/${_pkgname}_build/src/efibootmgr" "${pkgdir}/usr/bin/efibootmgr"
-	
-	install -d "${pkgdir}/usr/share/man/man8/"
-	install -D -m0644 "${srcdir}/${_pkgname}_build/src/efibootmgr.8" "${pkgdir}/usr/share/man/man8/efibootmgr.8"
-	
+  depends+=('libefiboot.so' 'libefivar.so')
+  cd efibootmgr
+  make DESTDIR="${pkgdir}" \
+       libdir='/usr/lib' \
+       sbindir='/usr/bin' \
+       EFIDIR='arch' \
+       install
+  install -vDm 644 {AUTHORS,README,README.md,TODO} \
+    -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
