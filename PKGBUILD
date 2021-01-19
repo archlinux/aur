@@ -2,8 +2,8 @@
 # Contributor: Raphaël Doursenaud <rdoursenaud@free.fr>
 
 pkgname=mysql-shell
-pkgver=8.0.22
-pkgrel=2
+pkgver=8.0.23
+pkgrel=1
 pkgdesc='An interface supporting development and administration for the MySQL Server'
 arch=('x86_64' 'i686')
 url="https://dev.mysql.com/downloads/shell/"
@@ -13,13 +13,11 @@ source=(
   "mysql-shell-$pkgver-src.tar.gz.asc::https://dev.mysql.com/downloads/gpg/?file=mysql-shell-$pkgver-src.tar.gz&p=43"
   "https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-boost-$pkgver.tar.gz"
   "mysql-boost-$pkgver.tar.gz.asc::https://dev.mysql.com/downloads/gpg/?file=mysql-boost-$pkgver.tar.gz&p=23"
-  "file://python3.9.patch"
 )
-md5sums=('6408ffea4947ca052b89f94656fd6395'
+md5sums=('e81f34af007178f0737339cd1d38c4d5'
          'SKIP'
-         '2b2d93e8a3c1a29d875daf534ea87c81'
-         'SKIP'
-         '2a67473ad966fb3598eb6c6167aacba7')
+         '27cfcf24fc754b592acd69fd32a3940a'
+         'SKIP')
 validpgpkeys=('A4A9406876FCBD3C456770C88C718D3B5072E1F5')
 depends=('python' 'openssl' 'curl')
 optdepends=('mysql-clients: login-path secret store support')
@@ -36,7 +34,6 @@ build() {
   cmake --build . --target mysqlxclient
 
   cd "$srcdir/$pkgname-$pkgver-src"
-  patch -p1 <"$srcdir/python3.9.patch"
   mkdir -p bld && cd $_
   protobuf_dir="$(basename "$(find $srcdir/mysql-$pkgver/extra/protobuf -maxdepth 1 -type d -name 'protobuf-*')")"
   cmake .. \
