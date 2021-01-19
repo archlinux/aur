@@ -1,0 +1,16 @@
+pkgbase = librw-git
+	pkgdesc = A re-implementation of the RenderWare Graphics engine
+	pkgver = r430.c493613
+	pkgrel = 1
+	url = https://github.com/aap/librw
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	provides = librw
+	conflicts = librw
+	source = git+https://github.com/aap/librw.git
+	md5sums = SKIP
+
+pkgname = librw-git
