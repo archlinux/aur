@@ -94,7 +94,6 @@ sha256sums=('ca3833844d08c22867f1d1a46edc36bda7d6fe1a4f267e7d77100b79fc9ddd89'
 validpgpkeys=('453B65310595562855471199CA68BE8010084C9C') # Jiří Denemark <jdenemar@redhat.com>
 
 prepare() {
-  mkdir build
   cd "$pkgname-$pkgver"
 
   sed -i 's|/sysconfig/|/conf.d/|g' \
@@ -114,7 +113,6 @@ build() {
 
   arch-meson build \
     --native-file "$srcdir"/find_programs.ini \
-    -Dsystem=true \
     -Drunstatedir=/run \
     -Dqemu_group=kvm \
     -Dopenwsman=disabled \
@@ -148,7 +146,7 @@ check() {
 package_libvirt() {
   provides=("libvirt=$pkgver" 'libvirt.so' 'libvirt-admin.so' 'libvirt-lxc.so' 'libvirt-qemu.so')
   cd "$pkgname-$pkgver"
-  ninja -C build install
+  DESTDIR="$pkgdir" ninja -C build install
 
   mv "$pkgdir"/etc/{sysconfig,conf.d}
   mkdir "$pkgdir"/usr/lib/{sysusers,tmpfiles}.d
