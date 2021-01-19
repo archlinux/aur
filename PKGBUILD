@@ -1,13 +1,16 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=jackett
-pkgver=0.17.311
+pkgver=0.17.324
 pkgrel=1
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
 arch=('x86_64' 'aarch64' 'armv7h')
 license=('GPL')
 url='https://github.com/Jackett/Jackett'
 depends=('curl' 'openssl-1.0')
+optdepends=(
+  'flaresolverr: A proxy server to bypass Cloudflare protection'
+)
 makedepends=('dotnet-sdk>=5.0.0')
 options=('!strip' 'staticlibs')
 
@@ -18,7 +21,7 @@ source=(
   'jackett.tmpfiles'
 )
 
-sha256sums=('098c2fa661c92082f03e87d692535f21e59024c165ee8a5f9e703f196815a537'
+sha256sums=('e3dfd924b08f5fa1b2cb6d262e38976a2407a23359240d2fc043085a3be34903'
             '9d8f9d73e5fa2b2877dde010c0d8ca6fbf47f03eb1f01b02f846026a949a0dcf'
             'd005fcd009ec5404e1ec88246c31e664167f5551d6cabc35f68eb41750bfe590'
             '64022e15565a609f449090f02d53ee90ef95cffec52ae14f99e4e2132b6cffe1')
