@@ -1,8 +1,8 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_purchase_history
 _name=trytond_purchase_history
-pkgver=5.6.0
-_pkgdir=5.6
+pkgver=5.8.1
+_pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
 pkgdesc="Tryton module to historize purchases"
@@ -12,7 +12,8 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('f329cccb891540ec2ac72c0f3cc43173c2ed9166de3bdcf82371aea8d8386cfa')
+sha256sums=('a9f9d48bba75ea0f755549802201dab4610a39f8159d76db145bc709fd46161f')
+b2sums=('95aa6233e0948896e578b5c21e1f7bd5e4dff321222822af493315cb06a96f9e5b299450889e5d1520130c642a4b289daba2fd7c05559ffa1acdc9f80d64f527')
 
 build() {
   cd $srcdir/$_name-$pkgver
