@@ -2,9 +2,9 @@
 # Based on work by Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ> and Beini <bane aτ iki dot fi>
 
 pkgname=eddie-ui
-pkgver=2.18.9
+pkgver=2.19.7
 pkgrel=1
-pkgdesc='Eddie - VPN tunnel'
+pkgdesc='Eddie - VPN tunnel - UI'
 arch=('i686' 'x86_64')
 url=https://eddie.website
 license=(GPLv3)
@@ -14,8 +14,8 @@ makedepends=('cmake')
 provides=('eddie-ui')
 conflicts=('airvpn' 'airvpn-beta-bin' 'airvpn-git')
 install=eddie-ui.install
-source=('https://github.com/AirVPN/Eddie/archive/2.18.9.tar.gz')
-sha1sums=('f5f8bd4b7f94740688b0cf27ee9c849404431977')
+source=('https://github.com/AirVPN/Eddie/archive/2.19.7.tar.gz')
+sha1sums=('ebee44625022a097963db9eeae193a411e347190')
 
 case "$CARCH" in
     i686) _pkgarch="x86"
@@ -29,30 +29,38 @@ build() {
 
   # Compile C# sources
   cd "Eddie-$pkgver"
-  xbuild /verbosity:minimal /p:Configuration="Release" /p:Platform="$_pkgarch" src/eddie2.linux.sln
+  if [ "ui" = "cli" ]; then
+    xbuild /verbosity:minimal /p:Configuration="Release" /p:Platform="$_pkgarch" src/eddie.linux.cli.sln
+  elif [ "ui" = "ui" ]; then
+    xbuild /verbosity:minimal /p:Configuration="Release" /p:Platform="$_pkgarch" src/eddie2.linux.ui.sln
+  fi
 
   # Compile C sources (Tray)
-  cd src/UI.GTK.Linux.Tray
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=. 
-  make
-  strip -S --strip-unneeded -o eddie-tray-strip eddie_tray
-  cd ../..
+  if [ "ui" = "ui" ]; then
+    cd src/UI.GTK.Linux.Tray
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=. 
+    make
+    strip -S --strip-unneeded -o eddie-tray-strip eddie_tray
+    cd ../..
+  fi
 
   # Compile C sources
   chmod +x src/eddie.linux.postbuild.sh
   chmod +x src/Lib.Platform.Linux.Native/build.sh
-  src/eddie.linux.postbuild.sh "src/App.Forms.Linux/bin/$_pkgarch/Release/" ui $_pkgarch Release
+  
+  if [ "ui" = "cli" ]; then
+    src/eddie.linux.postbuild.sh "src/App.CLI.Linux/bin/$_pkgarch/Release/" ui $_pkgarch Release
+  elif [ "ui" = "ui" ]; then
+    src/eddie.linux.postbuild.sh "src/App.Forms.Linux/bin/$_pkgarch/Release/" ui $_pkgarch Release
+  fi
 }
 
 package() {
   cd "Eddie-$pkgver"
-  install -Dm755 "src/App.Forms.Linux/bin/$_pkgarch/Release/App.Forms.Linux.exe" "$pkgdir/usr/lib/eddie-ui/eddie-ui.exe"
-  install -Dm755 "src/App.Forms.Linux/bin/$_pkgarch/Release/eddie-cli-elevated" "$pkgdir/usr/lib/eddie-ui/eddie-cli-elevated"
-  install -Dm644 "src/App.Forms.Linux/bin/$_pkgarch/Release/Lib.Core.dll" "$pkgdir/usr/lib/eddie-ui/Lib.Core.dll"
-  install -Dm644 "src/App.Forms.Linux/bin/$_pkgarch/Release/Lib.Forms.dll" "$pkgdir/usr/lib/eddie-ui/Lib.Forms.dll"
-  install -Dm644 "src/App.Forms.Linux/bin/$_pkgarch/Release/Lib.Platform.Linux.dll" "$pkgdir/usr/lib/eddie-ui/Lib.Platform.Linux.dll"
-  install -Dm644 "src/Lib.Platform.Linux.Native/bin/libLib.Platform.Linux.Native.so" "$pkgdir/usr/lib/eddie-ui/libLib.Platform.Linux.Native.so"
-  install -Dm755 "src/UI.GTK.Linux.Tray/eddie-tray-strip" "$pkgdir/usr/lib/eddie-ui/eddie-tray"
+  install -Dm755 "src/App.CLI.Linux.Elevated/bin/eddie-cli-elevated" "$pkgdir/usr/lib/eddie-ui/eddie-cli-elevated"
+  install -Dm644 "src/Lib.Core/bin/$_pkgarch/Release/Lib.Core.dll" "$pkgdir/usr/lib/eddie-ui/Lib.Core.dll"
+  install -Dm644 "src/Lib.Platform.Linux/bin/$_pkgarch/Release/Lib.Platform.Linux.dll" "$pkgdir/usr/lib/eddie-ui/Lib.Platform.Linux.dll"
+  install -Dm644 "src/Lib.Platform.Linux.Native/bin/libLib.Platform.Linux.Native.so" "$pkgdir/usr/lib/eddie-ui/libLib.Platform.Linux.Native.so"  
   install -Dm755 "repository/linux_arch/bundle/eddie-ui/usr/bin/eddie-ui" "$pkgdir/usr/bin/eddie-ui"
   sed -i 's/{@lib}/lib/g' "$pkgdir/usr/bin/eddie-ui"
   install -Dm644 "common/cacert.pem"       "$pkgdir/usr/share/eddie-ui/cacert.pem"
@@ -64,8 +72,16 @@ package() {
   install -Dm644 "common/lang/inv.json"       "$pkgdir/usr/share/eddie-ui/lang/inv.json"
   install -Dm644 "repository/linux_arch/bundle/eddie-ui/usr/share/doc/eddie-ui/copyright"    "$pkgdir/usr/share/doc/eddie-ui/copyright"
   install -Dm644 "repository/linux_arch/bundle/eddie-ui/usr/share/polkit-1/actions/org.airvpn.eddie.ui.elevated.policy" "$pkgdir/usr/share/polkit-1/actions/org.airvpn.eddie.ui.elevated.policy"
-  sed -i 's/{@lib}/lib/g' "$pkgdir/usr/share/polkit-1/actions/org.airvpn.eddie.ui.elevated.policy"
-  install -Dm644 "repository/linux_arch/bundle/eddie-ui/usr/share/pixmaps/eddie-ui.png"  "$pkgdir/usr/share/pixmaps/eddie-ui.png"
+  sed -i 's/{@lib}/lib/g' "$pkgdir/usr/share/polkit-1/actions/org.airvpn.eddie.ui.elevated.policy"  
+
+  if [ "ui" = "cli" ]; then
+    install -Dm755 "src/App.CLI.Linux/bin/$_pkgarch/Release/App.CLI.Linux.exe" "$pkgdir/usr/lib/eddie-ui/eddie-ui.exe"
+  elif [ "ui" = "ui" ]; then
+    install -Dm755 "src/App.Forms.Linux/bin/$_pkgarch/Release/App.Forms.Linux.exe" "$pkgdir/usr/lib/eddie-ui/eddie-ui.exe"
+    install -Dm644 "src/App.Forms.Linux/bin/$_pkgarch/Release/Lib.Forms.dll" "$pkgdir/usr/lib/eddie-ui/Lib.Forms.dll"
+    install -Dm755 "src/UI.GTK.Linux.Tray/eddie-tray-strip" "$pkgdir/usr/lib/eddie-ui/eddie-tray"
+    install -Dm644 "repository/linux_arch/bundle/eddie-ui/usr/share/pixmaps/eddie-ui.png"  "$pkgdir/usr/share/pixmaps/eddie-ui.png"
+  fi
 
   # cp -r "common/webui"	"$pkgdir/usr/share/eddie-ui/webui"
 
@@ -77,20 +93,22 @@ package() {
   mkdir -p "$pkgdir/usr/share/man/man8/"
   mono "$pkgdir/usr/lib/eddie-ui/eddie-ui.exe" --cli --path.resources="$pkgdir/usr/share/eddie-ui/" --help --help.format=man >"$pkgdir/usr/share/man/man8/eddie-ui.8"
   gzip -n -9 "$pkgdir/usr/share/man/man8/eddie-ui.8"
-
-  ## Fix .desktop file for KDE
-  _desktop_session=$(printf "%s" "$DESKTOP_SESSION" | awk -F "/" '{print $NF}')
-  if [ "$_desktop_session" = "plasma" ]; then
-    msg2 "Installing desktop file for KDE..."
-    desktop-file-install -m 644 --set-comment="OpenVPN UI" \
-    --dir="$pkgdir/usr/share/applications/" \
-    --set-icon="/usr/share/pixmaps/eddie-ui.png" \
-    "repository/linux_arch/bundle/eddie-ui/usr/share/applications/eddie-ui.desktop"
-  else
-    msg2 "Installing desktop file..."
-    desktop-file-install -m 644 --set-comment="OpenVPN UI" \
-    --dir="$pkgdir/usr/share/applications/" \
-    "repository/linux_arch/bundle/eddie-ui/usr/share/applications/eddie-ui.desktop"
+  
+  if [ "ui" = "ui" ]; then
+    ## Fix .desktop file for KDE
+    _desktop_session=$(printf "%s" "$DESKTOP_SESSION" | awk -F "/" '{print $NF}')
+    if [ "$_desktop_session" = "plasma" ]; then
+      msg2 "Installing desktop file for KDE..."
+      desktop-file-install -m 644 --set-comment="OpenVPN UI" \
+      --dir="$pkgdir/usr/share/applications/" \
+      --set-icon="/usr/share/pixmaps/eddie-ui.png" \
+      "repository/linux_arch/bundle/eddie-ui/usr/share/applications/eddie-ui.desktop"
+    else
+      msg2 "Installing desktop file..."
+      desktop-file-install -m 644 --set-comment="OpenVPN UI" \
+      --dir="$pkgdir/usr/share/applications/" \
+      "repository/linux_arch/bundle/eddie-ui/usr/share/applications/eddie-ui.desktop"
+    fi
   fi
 }
 
