@@ -2,12 +2,12 @@
 
 _basename=jitsi
 _pkgname=meet
-_tag=4655
-_version=1.0.4655
+_tag=4656
+_version=1.0.4656
 
 pkgname=${_basename}-${_pkgname}-nightly
 pkgver=${_version}
-pkgrel=3
+pkgrel=1
 pkgdesc="Jitsi Meet Web nightly build"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
