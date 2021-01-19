@@ -12,6 +12,7 @@ pkgbase = multimonitorlock
 	depends = xorg-xrandr
 	depends = xorg-xdpyinfo
 	depends = bc
+	depends = bash
 	optdepends = feh: Allows setting wallpaper
 	optdepends = multimonitorlock-gui: Allows the background to be changed
 	conflicts = multilockscreen-git
