@@ -3,14 +3,14 @@
 # https://github.com/mvgrimes/aur-nagios-npre-plugin
 
 pkgname=nagios-nrpe-plugin
-pkgver=3.2.1
-pkgrel=2
+pkgver=4.0.3
+pkgrel=1
 pkgdesc="The Nagios Server NRPE plugin (install on the monitoring machine)."
 license=('GPL')
 arch=('any')
 url="http://www.nagios.org"
-source=("http://downloads.sourceforge.net/nagios/nrpe-${pkgver}.tar.gz")
-md5sums=('8997e195fea93cdceb8c7ed8ac1d43bc')
+source=("https://downloads.sourceforge.net/project/nagios/nrpe-4.x/nrpe-${pkgver}/nrpe-${pkgver}.tar.gz")
+md5sums=('42252d3c721c87ebb5e38b748f187e8d')
 depends=(nagios)
 install=nagios-nrpe-plugin.install
 
