@@ -1,7 +1,7 @@
 pkgbase = trovotutto
 	pkgdesc = small naive python 3.x search engine using k-grams
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tallero/trovotutto
 	arch = any
 	license = AGPL3
@@ -10,7 +10,7 @@ pkgbase = trovotutto
 	depends = python-nltk
 	depends = python-pyxdg
 	depends = python-setproctitle
-	source = trovotutto::git+https://github.com/tallero/trovotutto.git
+	source = trovotutto::git+https://github.com/tallero/trovotutto.git#tag=$pkgver
 	sha256sums = SKIP
 
 pkgname = trovotutto
