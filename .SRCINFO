@@ -1,6 +1,6 @@
 pkgbase = aml-git
 	pkgdesc = Another/Andri's Main Loop
-	pkgver = r103.972e0c0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/any1/aml
 	arch = x86_64

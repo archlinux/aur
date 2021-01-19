@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=aml-git
 pkgdesc="Another/Andri's Main Loop"
-pkgver=r103.972e0c0
+pkgver=0.2.0
 pkgrel=1
 url=https://github.com/any1/aml
 arch=(x86_64)
@@ -14,12 +14,7 @@ source=("${pkgname}::git+${url}")
 sha256sums=(SKIP)
 
 pkgver () {
-	cd "${pkgname}"
-	(
-		set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+	git -C "$pkgname" describe --tags --abbrev=10 | sed 's/^v//; s/-/+/; s/-/./'
 }
 
 build () {
