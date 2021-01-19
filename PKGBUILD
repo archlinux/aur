@@ -4,8 +4,9 @@ pkgbase=lsi-msm
 pkgname=('lsi-msm'
          'lsi-msm-snmp'
          )
-_pkgver=17.05.02-01
-pkgver="${_pkgver//-/.}"
+pkgver=17.05.02.01
+# _pkgver=17.05.02-01
+# pkgver="${_pkgver//-/.}"
 pkgrel=1
 pkgdesc="LSI Logic MegaRAID Storage Manager and SNMP providers"
 arch=('x86_64')
@@ -20,7 +21,7 @@ source=('msm_profile.sh'
         'ld.so.lsi-msm-snmp.conf'
         'https://docs.broadcom.com/docs-and-downloads/advanced-software/advanced-software-common-files/SLA_AdvancedSoftware.pdf'
         'MegaRAID_SAS_SW_UserGd.zip::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/51530-00_RevP_MegaRAID_SAS_SW_UserGd.zip'
-        "${pkgver}_Linux-x64_MSM.zip::https://docs.broadcom.com/docs-and-downloads/docs-and-downloads/raid-controllers/raid-controllers-common-files/${_pkgver}_MSM_Linux-x64.zip"
+        "${pkgver}_Linux-x64_MSM.zip::https://docs.broadcom.com/docs-and-downloads/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_MSM_Linux-x64.zip"
         )
 sha256sums=('aff9c7ed8e55eb3441911183db1b0912cf74f24ce3027b3aebe3560db69d3a1d'
             '605adcb662fb457609e81fb8916da7e88541e81dd0c112a8bb569d84df189bff'
