@@ -12,7 +12,7 @@ makedepends=('npm' 'git')
 source=("${pkgname}::git+https://git.rip/freezer/freezerpc.git"
 	"freezer.desktop")
 sha512sums=("SKIP"
-	    "7daafb47ab2d64dfc1a87e7faa9b39a37910f8838842237d01c9c245aa68638e25a781619fe334bb9fe828fd04b0a918c44eecd3d645ae72009452926971e7ba")
+	    "1fd1323efa485ebd56087b2ed799f9b1452cd7bb03e398fce561eb3321bc7af149c22c02a5e7360f814b4cf790c88c3792ec970e6f25f0f49d073381accdddff")
 pkgver() {
 	cd "$srcdir/$pkgname"
 	grep '"version":.*' package.json | cut -d '"' -f 4
