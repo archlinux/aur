@@ -2,14 +2,14 @@
 
 _basename=jitsi
 _pkgname=meet
-_tag=4655
-_version=1.0.4655
+_tag=4656
+_version=1.0.4656
 
 _pkgbase=${_basename}-${_pkgname}-nightly
 _debname=${_basename}-${_pkgname}-web
 pkgname=${_pkgbase}-bin
 pkgver=${_version}
-pkgrel=4
+pkgrel=1
 pkgdesc="Jitsi Meet Web nightly binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -67,5 +67,5 @@ package() {
 
         chown -R root:root "${pkgdir}"
 }
-sha256sums=('52aa1eeb1fd687189ee66c4efab42fee2951577794483efecab4a6586958bd71'
-            'ae9d5e02f3455a3d28d88304b9951473a9e572a32f73c2f3237ed67406942ef4')
+sha256sums=('b6128bd2e200c798d828d9de8bc82d01542e3bc6b86cbf792f65b010e5460a4b'
+            'f9e9b935a0a35ca399042f0fc0e80f2a79a15a22975e233de4b298d8ca0aa32c')
