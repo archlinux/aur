@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/flavioislima/HeroicGamesLauncher"
 license=('GPL3')
 conflicts=(${pkgname%-*}-{bin,electron})
-depends=(fuse2 gawk)
+depends=("fuse2" "gawk" "wine" "winetricks" "python-requests" "python-wheel" "python-setuptools")
 _filename=heroic-${pkgver}.AppImage
 source=("$url/releases/download/${_pkgver}/${_filename}"
         "heroic.desktop.patch"
