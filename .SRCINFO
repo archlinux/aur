@@ -1,0 +1,17 @@
+pkgbase = kopano-webapp-intranet-git
+	pkgver = 1.0.1
+	pkgrel = 1
+	changelog = changelog
+	arch = any
+	groups = kopano
+	groups = kopano-webapp-plugins
+	makedepends = apache-ant
+	makedepends = libxml2
+	makedepends = git
+	makedepends = gzip
+	depends = kopano-webapp
+	source = kopano-webapp-intranet-git::git+https://stash.kopano.io/scm/kwa/intranet.git#branch=master
+	md5sums = SKIP
+
+pkgname = kopano-webapp-intranet-git
+
