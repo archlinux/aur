@@ -1,0 +1,13 @@
+pkgbase = espresso-jdk8-bin
+	pkgdesc = GraalVM-based Java implementation as a Truffle language, Java 8 version
+	pkgver = 21.1.0
+	pkgrel = 1
+	url = https://github.com/oracle/graal
+	arch = x86_64
+	license = GPL2
+	depends = jdk8-graalvm-bin
+	source = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.1.0/espresso-installable-java8-linux-amd64-21.1.0.jar
+	sha256sums = 952e14d5c12f3bf9d494d6fa55ea41a20ad24b0b105d8672483a421f9192c0c1
+
+pkgname = espresso-jdk8-bin
+

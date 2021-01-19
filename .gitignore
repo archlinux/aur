@@ -1,0 +1,9 @@
+# source
+/*.jar
+
+# build
+/src/
+/pkg/
+
+# package
+/*.pkg.tar*
