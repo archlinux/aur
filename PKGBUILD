@@ -14,7 +14,7 @@ depends=('cairo'     'fontconfig'          'freetype2'
          'ttf-lato'  'xdg-utils'           'zenity'
          'gcc-libs'  'glibc'               'libxkbcommon-x11'
          'xclip'     'xcb-util-keysyms' )
-makedepends=('steinberg-vst36' 'premake-git' 'git' 'rsync'
+makedepends=('steinberg-vst36' 'premake' 'git' 'rsync'
              'cmake' 'libsndfile' 'lv2' 'python')
 provides=("surge")
 conflicts=('surge-synthesizer' 'surge')
