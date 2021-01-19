@@ -1,6 +1,6 @@
 pkgbase = swtpm-git
 	pkgdesc = Libtpms-based TPM emulator with socket, character device, and Linux CUSE interface
-	pkgver = 0.5.0.r18.f495d8f
+	pkgver = 0.5.0.r31.526c9fa
 	pkgrel = 1
 	url = https://github.com/stefanberger/swtpm
 	arch = x86_64
@@ -28,4 +28,3 @@ pkgbase = swtpm-git
 	sha512sums = SKIP
 
 pkgname = swtpm-git
-
