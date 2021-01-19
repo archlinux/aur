@@ -48,6 +48,11 @@ pre_upgrade() {
         echo "- nextcloud-app-update-all.timer"
         echo "      Periodic (daily) update all applications."
         echo
+    elif [[ "$1" == "0.7.0-1" ]]
+    then
+        echo
+        echo "The php executable is used now in order to reduce the permissions given"
+        echo "to the occ executable. Please verify that the jobs execute correctly."
     fi
 }
 
