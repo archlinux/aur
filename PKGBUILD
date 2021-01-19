@@ -1,4 +1,4 @@
-pkgname=mingw-w64-paraview58
+pkgname=mingw-w64-paraview
 pkgver=5.8.1
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
