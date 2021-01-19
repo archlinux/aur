@@ -1,7 +1,7 @@
 pkgbase = daty-git
 	pkgdesc = Daty Wikidata Editor
 	pkgver = 1.0beta+78+g81b9736
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.gnome.org/World/daty
 	arch = any
 	license = AGPLv3
@@ -17,7 +17,7 @@ pkgbase = daty-git
 	depends = python-pywikibot
 	provides = daty
 	conflicts = daty
-	source = daty::git+https://gitlab.gnome.org/World/Daty.git
+	source = $_pkgname::git+https://gitlab.gnome.org/World/Daty.git
 	sha512sums = SKIP
 
 pkgname = daty-git
