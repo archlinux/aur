@@ -11,13 +11,9 @@ license=('BSD')
 depends=('glibc')
 source=("https://github.com/troglobit/mrouted/releases/download/${pkgver}/mrouted-${pkgver}.tar.gz")
 
-prepare() {
-  cd $pkgname-$pkgver
-  ./configure --prefix=/usr --sbindir=/usr/bin --with-systemd=/usr/lib/systemd/system
-}
-
 build() {
   cd $pkgname-$pkgver
+  ./configure --prefix=/usr --sbindir=/usr/bin --with-systemd=/usr/lib/systemd/system
   make
 }
 
