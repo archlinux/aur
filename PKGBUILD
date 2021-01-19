@@ -26,7 +26,7 @@ pkgver() {
 build() {
   cd "libidn2"
 
-  ./bootstrap
+  ./bootstrap --skip-po
   ./configure --prefix="/usr" --disable-doc
   make
 }
