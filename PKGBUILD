@@ -21,12 +21,16 @@ build() {
   cd $pkgname-$pkgver
   make
 }
+
 package() {
   cd $pkgname-$pkgver
+
   make DESTDIR=$pkgdir install
-  # and this was supposed to be "easier"?
+
+  # rename mtrace to mrtrace due to conflict with glibc
   mv "$pkgdir/usr/bin/mtrace" "$pkgdir/usr/bin/mrtrace"
   mv "$pkgdir/usr/share/man/man8/mtrace.8" "$pkgdir/usr/share/man/man8/mrtrace.8"
+
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
