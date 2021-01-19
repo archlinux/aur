@@ -1,13 +1,17 @@
 pkgbase = python-virtualbox
-	pkgdesc = Complete implementation of VirtualBox's COM API with a Pythonic interface
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgdesc = A complete implementation of VirtualBox's COM API with a Pythonic interface
+	pkgver = 2.1.1
+	pkgrel = 1
 	url = https://github.com/sethmlarson/virtualbox-python
 	arch = any
 	license = Apache
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
 	depends = virtualbox-sdk
-	source = python-virtualbox-2.0.0::https://github.com/sethmlarson/virtualbox-python/archive/v2.0.0.tar.gz
-	sha384sums = e71c1404de70890fdf8f1f3f072d37a88c5c1ed2f56c10081cfb80f9b6e8b49036a4c4a68ac3635bb3683afc5e19145a
+	source = https://github.com/sethmlarson/virtualbox-python/archive/v2.1.1.tar.gz
+	sha256sums = 0a2abaee78e1ad41983f009b6c675ae2f0c24e725d227bb9d4ba0c35570a53f7
 
 pkgname = python-virtualbox
+
+pkgname = python2-virtualbox
 

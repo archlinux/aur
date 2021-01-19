@@ -1,23 +1,38 @@
-# Maintainer: Philippe Hürlimann <p@hurlimann.org>
+# Maintainer: Tim Yang <protonmail = timdyang>
+# Contributor: Philippe Hürlimann <p@hurlimann.org>
 
-pkgname=python-virtualbox
-_pkgname=virtualbox-python
-pkgver=2.0.0
-pkgrel=2
-pkgdesc="Complete implementation of VirtualBox's COM API with a Pythonic interface"
-arch=('any')
-url="https://github.com/sethmlarson/virtualbox-python"
-license=('Apache')
-depends=('virtualbox-sdk')
-source=(${pkgname}-${pkgver}::https://github.com/sethmlarson/virtualbox-python/archive/v${pkgver}.tar.gz)
-sha384sums=('e71c1404de70890fdf8f1f3f072d37a88c5c1ed2f56c10081cfb80f9b6e8b49036a4c4a68ac3635bb3683afc5e19145a')
+pkgbase=python-virtualbox
+pkgname=(python-virtualbox python2-virtualbox)
+pkgver=2.1.1
+pkgrel=1
+pkgdesc="A complete implementation of VirtualBox's COM API with a Pythonic interface"
+arch=(any)
+url=https://github.com/sethmlarson/virtualbox-python
+license=(Apache)
+depends=(virtualbox-sdk)
+makedepends=(python2-setuptools python-setuptools)
+source=(https://github.com/sethmlarson/virtualbox-python/archive/v$pkgver.tar.gz)
+sha256sums=(0a2abaee78e1ad41983f009b6c675ae2f0c24e725d227bb9d4ba0c35570a53f7)
 
-build() {
-	cd ${srcdir}/${_pkgname}-${pkgver}
-    python setup.py build
+prepare() {
+  cd "$srcdir"
+  cp -a virtualbox-python{,2}-$pkgver
 }
 
-package() {
-	cd ${srcdir}/${_pkgname}-${pkgver}
-    python setup.py install --root="${pkgdir}" --optimize=1
+build() {
+  cd "$srcdir"/virtualbox-python-$pkgver
+  python3 setup.py build
+
+  cd "$srcdir"/virtualbox-python2-$pkgver
+  python2 setup.py build
+}
+
+package_python-virtualbox() {
+  cd "$srcdir"/virtualbox-python-$pkgver
+  python3 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+}
+
+package_python2-virtualbox() {
+  cd "$srcdir"/virtualbox-python2-$pkgver
+  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
