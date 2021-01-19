@@ -22,18 +22,21 @@ sha256sums=(
 )
 # https://github.com/returntocorp/semgrep/releases/download/v${pkgver}/semgrep-v${pkgver}-ubuntu-16.04.tgz.sha256
 
+prepare() {
+  export SEMGREP_CORE_BIN="${srcdir}/semgrep-files/semgrep-core"
+  export SPACEGREP_BIN="${srcdir}/semgrep-files/spacegrep"
+}
+
 build() {
   cd "$srcdir/${_name}-${pkgver}"
   sed -i 's/ruamel.yaml==0.16.10/ruamel.yaml>=0.16.10/' setup.py
-  SEMGREP_SKIP_BIN=1 python setup.py build
+  python setup.py build
   chmod +x build/lib/semgrep/bin/{semgrep-core,spacegrep}
 }
 
 package() {
   cd "${srcdir}/${_name}-${pkgver}"
-  SEMGREP_CORE_BIN="${srcdir}/semgrep-files/semgrep-core" \
-  SPACEGREP_BIN="${srcdir}/semgrep-files/spacegrep" \
-    python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 
   # solve conflict with python-hypothesis
   rm -rf "${pkgdir}/usr/lib/python3.8/site-packages/tests"
