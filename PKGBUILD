@@ -1,5 +1,5 @@
 pkgname=rocksdb-ldb
-pkgver=6.11.4
+pkgver=6.15.2
 pkgrel=1
 pkgdesc='The 'ldb' from the RocksDB storage'
 arch=(i686 x86_64)
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=('gcc' 'make' 'diffutils')
 source=(https://github.com/facebook/rocksdb/archive/v${pkgver}.tar.gz)
-sha256sums=('6793ef000a933af4a834b59b0cd45d3a03a3aac452a68ae669fb916ddd270532')
+sha256sums=('79d554d8a109575f80d827026ecd2fca50b7f79b0af3d0c376afb755db465d4e')
 provides=(rocksdb-ldb)
 
 prepare() {

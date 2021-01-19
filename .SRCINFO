@@ -1,6 +1,6 @@
 pkgbase = rocksdb-ldb
 	pkgdesc = The ldb from the RocksDB storage
-	pkgver = 6.11.4
+	pkgver = 6.15.2
 	pkgrel = 1
 	url = http://rocksdb.org
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = rocksdb-ldb
 	depends = zlib
 	depends = gflags
 	provides = rocksdb-ldb
-	source = https://github.com/facebook/rocksdb/archive/v6.11.4.tar.gz
-	sha256sums = 6793ef000a933af4a834b59b0cd45d3a03a3aac452a68ae669fb916ddd270532
+	source = https://github.com/facebook/rocksdb/archive/v6.15.2.tar.gz
+	sha256sums = 79d554d8a109575f80d827026ecd2fca50b7f79b0af3d0c376afb755db465d4e
 
 pkgname = rocksdb-ldb
