@@ -1,0 +1,17 @@
+pkgbase = kopano-webapp-passwd-git
+	pkgver = 1.1
+	pkgrel = 1
+	changelog = changelog
+	arch = any
+	groups = kopano
+	groups = kopano-webapp-plugins
+	makedepends = apache-ant
+	makedepends = libxml2
+	makedepends = git
+	makedepends = gzip
+	depends = kopano-webapp
+	source = kopano-webapp-passwd-git::git+https://github.com/endrepavel/kopano-webapp-passwd.git#branch=master
+	md5sums = SKIP
+
+pkgname = kopano-webapp-passwd-git
+
