@@ -5,6 +5,7 @@ pkgbase = instamenu-extra
 	url = https://github.com/TheCynicalTeam/instamenu-extra
 	arch = any
 	license = CC BY-NC-SA 4.0
+	depends = bash
 	depends = autorandr
 	depends = instamenu
 	depends = instamenu-schemas
