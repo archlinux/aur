@@ -1,6 +1,6 @@
 pkgbase = python-jax
 	pkgdesc = Differentiate, compile, and transform Numpy code.
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 2
 	url = https://github.com/google/jax/
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = python-jax
 	depends = python-protobuf
 	depends = python-scipy
 	depends = python-six
-	source = https://files.pythonhosted.org/packages/41/41/b19515466d55170892793c4738c808d4efc2d3a13ed863305d582c171e1e/jax-0.2.7.tar.gz
-	source = https://files.pythonhosted.org/packages/9b/db/17a9472e72657d700772964b871dcb377be5ec4314eca00a90850ffffbe9/jaxlib-0.1.58-cp39-none-manylinux2010_x86_64.whl
-	md5sums = 20efb0a973861f5c666cd5da3128c882
-	md5sums = 9736139c5aeb1f8f10ae8e2a999660f2
+	source = https://files.pythonhosted.org/packages/a8/63/8afe8ffe33135b2cdbfaf8a58a265b9e697a8aac653063edccfee7c9b55a/jax-0.2.8.tar.gz
+	source = https://files.pythonhosted.org/packages/f4/4f/997245ba6cae047bce8d2a20fc9a6590360c3a5f6bf6269fa5126ad40a3f/jaxlib-0.1.59-cp39-none-manylinux2010_x86_64.whl
+	md5sums = f0287647394cd8a3349c60c0ee37c0c7
+	md5sums = e2d518dcab7696f7aa2a135a28dc7dbc
 
 pkgname = python-jax
 
