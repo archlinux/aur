@@ -1,7 +1,7 @@
 pkgbase = compiz-core
 	pkgdesc = This is the latest stable release of Compiz without DE deps
 	pkgver = 0.8.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/compiz/compiz-core/
 	arch = i686
 	arch = x86_64
@@ -19,6 +19,8 @@ pkgbase = compiz-core
 	depends = libsm
 	depends = libxcomposite
 	depends = libxinerama
+	depends = libxi
+	depends = libxcursor
 	options = !libtool
 	options = !emptydirs
 	source = https://gitlab.com/compiz/compiz-core/-/archive/v0.8.18/compiz-core-v0.8.18.tar.bz2
@@ -39,5 +41,7 @@ pkgname = compiz-gtk
 	depends = libsm
 	depends = libxcomposite
 	depends = libxinerama
+	depends = libxi
+	depends = libxcursor
 	depends = compiz-core
 
