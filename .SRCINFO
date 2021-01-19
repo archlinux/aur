@@ -1,0 +1,14 @@
+pkgbase = roundcubemail-plugin-caldavzap
+	pkgdesc = CalDAVZap plugin for RoundCube Webmailer
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/Offerel/roundcube_caldavzap
+	arch = any
+	license = AGPL3
+	depends = roundcubemail
+	backup = etc/webapps/roundcubemail/plugins/caldavzap/config.inc.php
+	source = https://github.com/Offerel/roundcube_caldavzap/archive/v1.5.1.tar.gz
+	sha256sums = 278a2c5217df6d428d4dbfb5ebf038fb656afeb15408e7dc0279cef4ace8e219
+
+pkgname = roundcubemail-plugin-caldavzap
+
