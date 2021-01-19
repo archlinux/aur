@@ -6,9 +6,9 @@
 
 _pkgname=instantclient-sqlplus
 pkgname=oracle-${_pkgname}
-pkgver=19.8.0.0.0
-_urlver=19800
-_unzippath=instantclient_19_8
+pkgver=21.1.0.0.0
+_urlver=211000
+_unzippath=instantclient_21_1
 pkgrel=1
 pkgdesc="SQL*Plus for Oracle Instant Client"
 arch=('x86_64')
@@ -23,16 +23,16 @@ DLAGENTS+=('manual::/usr/bin/false');
 
 # These are the only files we want to include in the source package
 source=(LICENSE
-        "https://download.oracle.com/otn_software/linux/instantclient/${_urlver}/${_pkgname}-linux.x64-${pkgver}dbru.zip")
+        "https://download.oracle.com/otn_software/linux/instantclient/${_urlver}/${_pkgname}-linux.x64-${pkgver}.zip")
 md5sums=('2d62e22e4f2d7e6d220fafde0f692a7d'
-         'f7c8308af694869091a5c73a9491816d')
+         '6fe365ab5d09a70b93b0639946eb6404')
 sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2'
-            '90fbb84c2a5c21626bcaf3f4fdfa0771950fa545b5979ade6ce9c92a06f11a0b')
+            '3220f486940e82f1a7825e8f0875729d63abd57cc708f1908e2d5f2163b93937')
 
 plain "If you run into any problems downloading the files, get the .zip version from"
 plain "Oracle and place them in the PKGBUILD directory then re-run makepkg:"
 plain ""
-plain "  http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html"
+plain "  https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html"
 plain ""
 plain "Alternatively, unofficial prebuilt Arch packages are available by adding the"
 plain "following lines to /etc/pacman.conf, if you agree to the Oracle licence[1]:"
