@@ -1,6 +1,6 @@
 pkgbase = gnome-calendar-git
 	pkgdesc = Simple and beautiful calendar application designed to perfectly fit the GNOME desktop
-	pkgver = 3.36.0+2+g90233510
+	pkgver = 40.alpha
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Calendar
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = gnome-calendar-git
 	depends = gsettings-desktop-schemas
 	depends = gnome-control-center
 	depends = libdazzle
+	depends = libhandy
 	optdepends = evolution: ICS file import
 	provides = gnome-calendar
 	conflicts = gnome-calendar
 	source = git+https://gitlab.gnome.org/GNOME/gnome-calendar.git
-	sha512sums = SKIP
+	b2sums = SKIP
 
 pkgname = gnome-calendar-git
-
