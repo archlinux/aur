@@ -1,0 +1,26 @@
+pkgbase = kopano-libvmime-git
+	pkgdesc = A C++ class library for working with MIME messages
+	pkgver = 0.9.2k4
+	pkgrel = 1
+	url = http://www.vmime.org/
+	arch = armv7l
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = postfix
+	makedepends = doxygen
+	makedepends = xdot
+	makedepends = git
+	depends = gsasl
+	depends = gnutls
+	provides = libvmime
+	conflicts = libvmime
+	conflicts = libvmime-git
+	conflicts = zarafa-libvmime
+	source = git+https://github.com/Kopano-dev/vmime.git#tag=v0.9.2k4
+	md5sums = SKIP
+
+pkgname = kopano-libvmime-git
+
