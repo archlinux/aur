@@ -1,7 +1,7 @@
  # Maintainer: poncho
 pkgname=kappa-launcher-git
 _pkgname=kappa-launcher
-pkgver=r77.d27dbe7
+pkgver=r78.0dbbdf7
 pkgrel=1
 pkgdesc="Twitch launcher using rofi"
 arch=('any')
@@ -12,10 +12,10 @@ conflicts=($pkgname)
 depends=(
   'rofi'
   'jq'
-  'streamlink-git'
+  'streamlink'
   )
 optdepends=(
-  'chatterino2-git: chat client'
+  'chatterino: chat client'
   'chatty-beta: alternative chat client'
   'xdg-utils: browser function'
 )
