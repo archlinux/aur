@@ -1,7 +1,7 @@
 pkgbase = cyberpunk-grub-theme-git
 	pkgdesc = A GRUB Bootloader Theme Inspired by Cyberpunk 2077 Video Game.
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 0.5
+	pkgrel = 1
 	url = https://github.com/anoopmsivadas/Cyberpunk-GRUB-Theme
 	install = cyberpunk-grub-theme-git.install
 	arch = any
