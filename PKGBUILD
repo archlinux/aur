@@ -19,6 +19,8 @@ options=(!strip)
 
 package() {
   tar -xJv -C "${pkgdir}" -f "${srcdir}/${_filename}" usr opt
+  mkdir "$pkgdir/usr/bin"
+  ln -s "$pkgdir/opt/heroic/heroic" "$pkgdir/usr/bin/heroic"
 }
 
 # vim:set ts=2 sw=2 et: syntax=sh
