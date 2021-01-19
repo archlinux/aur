@@ -1,7 +1,7 @@
 pkgbase = filezilla-bin
 	pkgdesc = Free, open source FTP, FTPS and SFTP client (Pre-built binary)
-	pkgver = 3.52.0.5
-	pkgrel = 2
+	pkgver = 3.52.2
+	pkgrel = 1
 	url = https://filezilla-project.org
 	arch = i686
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = filezilla-bin
 	conflicts = filezilla
 	conflicts = filezilla-git
 	conflicts = libfilezilla
-	source_i686 = FileZilla_3.52.0.5_i686-linux-gnu.tar.bz2::https://download.filezilla-project.org/client/FileZilla_3.52.0.5_i686-linux-gnu.tar.bz2
-	sha512sums_i686 = cda81584a156d306b790c7ad704a4d18df0d4c633f1db488b9b4aad2d1e749a88faf2a28d68637e3ccba07cf785233e7fcf5b339dbebba65be88a195f6ce6370
-	source_x86_64 = FileZilla_3.52.0.5_x86_64-linux-gnu.tar.bz2::https://download.filezilla-project.org/client/FileZilla_3.52.0.5_x86_64-linux-gnu.tar.bz2
-	sha512sums_x86_64 = 0776ca75c84daa4f2e55e43d32b2ca2577e939f146b6057a00011b19c80d650bf3994960e6091be98cb911c5094a750629cbfe5658f0388ab69e7cca98788f5b
+	source_i686 = FileZilla_3.52.2_i686-linux-gnu.tar.bz2::https://download.filezilla-project.org/client/FileZilla_3.52.2_i686-linux-gnu.tar.bz2
+	sha512sums_i686 = 66bb6a4e1ea06e49e7ca07dec4eb0450727c3d508e885a68b35d7d8b6d50e5b984c4164e22dad912b50e9f35617cd6e75fcefaaa89135d88d91c942ef1571913
+	source_x86_64 = FileZilla_3.52.2_x86_64-linux-gnu.tar.bz2::https://download.filezilla-project.org/client/FileZilla_3.52.2_x86_64-linux-gnu.tar.bz2
+	sha512sums_x86_64 = 5ea91a6f52f6372278912282d93aef3fadeaea9fece75d707cd4642b0118c1078e410a8adfab7fe321b37bf2bb01111cee262d7417960aa4deb0ec0783cf79a6
 
 pkgname = filezilla-bin
 

@@ -2,8 +2,8 @@
 
 _pkgname=filezilla
 pkgname="$_pkgname-bin"
-pkgver=3.52.0.5
-pkgrel=2
+pkgver=3.52.2
+pkgrel=1
 pkgdesc='Free, open source FTP, FTPS and SFTP client (Pre-built binary)'
 arch=('i686' 'x86_64')
 url='https://filezilla-project.org'
