@@ -1,0 +1,362 @@
+# Maintainer: MartiMcFly <martimcfly [at] autorisation.de>
+# Contributor: Archist archist@die-optimisten.net
+
+pkgname='kopano-webapp-git'
+pkgver='4.6.3'
+pkgrel=1
+pkgdesc='Provides all the familiar email, advanced calendaring and contacts features you need to be productive'
+groups=(
+    'kopano'
+	)
+arch=(
+    'any'
+     )
+url='http://www.kopano.com/'
+license=('AGPL3')
+
+_tagPrefix="v"
+# template start; name=base-scm; version=1;
+#_tagPrefix=""
+#_tagSuffix=""
+
+_gitLogByDay() {
+    local NEXT=$(date +%F)
+    local SINCE="1970-01-01"
+    local UNTIL=$NEXT
+    local LOG_FORMAT="* %s %an"
+    git log --no-merges --since="${SINCE}" --until="${UNTIL}" --format="%cd" --date=short --follow . | sort -u | while read DATE ; do
+	local GIT_PAGER=$(git log --no-merges --reverse --format="${LOG_FORMAT}" --since="${DATE} 00:00:00" --until="${DATE} 23:59:59" --author="${AUTHOR}" --follow . | uniq)
+	if [ ! -z "$GIT_PAGER" ]
+	then
+	    echo
+	    echo -e "[$DATE]"
+	    echo -e "${GIT_PAGER}"
+	fi
+    done
+}
+if git rev-parse ;
+then
+    _gitLogByDay > changelog
+    changelog="changelog"
+fi
+
+# https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git
+pkgver() {
+    cd ${srcdir}/${pkgname}
+    if [[ "${pkgname}" == *-git ]];
+    then
+	_lastTag=$(git tag -l "${_tagPrefix}*" --sort=v:refname | tail -n 1)
+	_revision="r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	if [ ! -z "${_lastTag}" ];
+	then
+	    echo "${_lastTag}" | sed "s|${_tagPrefix}\(.*\)${_tagSuffix}|\1.r${_revision}|"
+	else
+	    echo "${pkgver}" | sed "s|\(.*\)-git|1.r${_revision}|"
+	fi
+    else
+        echo ${pkgver}
+    fi
+}
+
+_sourceBranch=$(if [[ "${pkgname}" == *-git ]]; then echo "#branch=master"; else echo "#tag=${_tagPrefix}${pkgver}${_tagSuffix}"; fi)
+# template end;
+_phpIni="${pkgname//-git/}.ini"
+source=(
+    "${pkgname}::git+https://stash.kopano.io/scm/kw/kopano-webapp.git${_sourceBranch}"
+    "${_phpIni}"
+	)
+md5sums=(
+    'SKIP'
+    'SKIP'
+	)
+
+makedepends=(
+    # WEBAPP: https://stash.kopano.io/projects/KW/repos/kopano-webapp/browse/README.md
+    'apache-ant'
+    'libxml2'
+    'npm'
+    
+    # PKGBUILD
+    'git'
+    'gzip'
+	     )
+depends=(
+    # WEBAPP: https://stash.kopano.io/projects/KW/repos/kopano-webapp/browse/README.md
+    # https://stash.kopano.io/projects/KW/repos/kopano-webapp/browse/README.md
+    # https://stash.kopano.io/projects/KW/repos/kopano-webapp/browse/server/includes/core/class.configcheck.php
+    'php' # extensions: json, zip (ini), gettext (ini), zlib, iconv (ini) - 'euro-sign support', mapi (ini)
+    'kopano-core'
+    'libiconv'
+    'gettext'
+	)
+optdepends=(
+    'kopano-webapp-nginx'
+	    )
+
+# template start; name=base-build-webapp; version=1;
+# https://wiki.archlinux.org/index.php/Web_application_package_guidelines
+_binDir=usr/share/webapps/${pkgname}
+_confDir=etc/webapps/${pkgname}
+# template start; name=base-build; version=1;
+# https://wiki.archlinux.org/index.php/Arch_package_guidelines
+#_binDir=
+#_confDir=
+_docDir=usr/share/doc/${pkgname}
+_stateDir=var/lib/${pkgname}
+_logDir=var/log/${pkgname}
+_licenseDir=usr/share/licenses/${pkgname}
+
+_commonPermissions='u=rwx,g=rx,o=rx u=rw,g=r,o=r'
+_securePermissions='u=rwx,g=rx,o= u=rw,g=r,o='
+
+
+# Strictly Formatted Installation
+#
+# Known system -parent- directories are created and rights are
+# copied from local system.
+#
+### Files
+#
+# (1) _install user:group ${_commonPermissions} newFile destDir/
+#     * Create Empty File In Destination-Directory
+#     => destDir/newFile
+#
+# (2) _install user:group ${_commonPermissions} sourceFile destDir/
+#     * Copy Source-File Into Destination-Directory
+#     => destDir/sourcFileName
+#
+# (3) _install user:group ${_commonPermissions} sourceFile destDir/destFileName
+#     * Copy Source-File Into Destinatin-Directory With New Name
+#     => destDir/destFileName
+#
+### Directories
+# Leaf directory are created and rights are applied.
+#
+# (4) _install user:group ${_commonPermissions} destDir/newDir
+#     * Create New Directory
+#     => destDir/newDir
+#
+# (5) _install user:group ${_commonPermissions} sourceDir destDir/
+#     * Copy Source-Directory Into Destination-Directory
+#     => destDir/sourceDirName
+#
+# (6) _install user:group ${_commonPermissions} sourceDir destDir
+#     * Copy Content of Source-Directory Into Destination-Directory
+#     => destDir/sourceDirContent
+#
+# https://www.shellbefehle.de/befehle/chmod/
+_install() {
+    local _chown="$1"
+    local _chmodDir="$2"
+    local _chmodFile="$3"
+
+    ### Directories
+    # (4) Create New Directory
+    if [ -z "$5" ];
+    then
+	local _dest="$4"
+	_mkParentDir "${_dest}"
+	if [ ! -e "${_dest}" ];
+	then
+	    mkdir "${_dest}"
+	fi
+	chown ${_chown} ${_dest}
+	chmod "${_chmodDir}" ${_dest}
+	return 0
+    fi
+
+    local _source=$4
+    local _dest=$5
+    if [ -d "${_source}" ];
+    then
+	if [[ ${_dest} == */ ]];
+	then
+	    # (5) Copy Source-Directory Into Destination-Directory
+	    _dest="${_dest}$(basename ${_source})"
+	fi
+
+	_mkParentDir "${_dest}"
+
+	# (5),(6) Copy Content of Source-Directory Into Destination-Directory
+	if [ ! -e "${_dest}" ];
+	then
+	    mkdir "${_dest}"
+	fi
+	cp -fRT ${_source} ${_dest}
+	find ${_dest} -exec chown "${_chown}" {} \;
+	find ${_dest} -type f -exec chmod "${_chmodFile}" {} \;
+	find ${_dest} -type d -exec chmod "${_chmodDir}" {} \;
+	return 0
+    fi
+
+    ### Files
+    if [[ ${_dest} == */ ]];
+    then
+	# (2) Copy Source-File Into Destination-Directory
+	_dest=${_dest}$(basename ${_source})
+    fi
+
+    _mkParentDir "${_dest}"
+    if [ ! -f "${_source}" ];
+    then
+	# (1) Create Empty File In Destination-Directory
+	touch ${_dest}
+    else
+	# (1),(3) Copy Source-File Into Destinatin-Directory With New Name
+	cp -fL ${_source} ${_dest}
+    fi
+    chown ${_chown} ${_dest}
+    chmod "${_chmodFile}" ${_dest}
+}
+
+# Creates known System -parent- directories and copies
+# permissions.
+_mkParentDir() {
+    local _destParent="$(dirname $1)"
+    if [ -e "${_destParent}" ];
+    then
+	return 0
+    fi
+
+    # Check System Directory
+    find / -maxdepth 1 -mindepth 1 -type d -print0 | while read -d $'\0' _rootDir
+    do
+        if [[ "${_destParent}" == *${_rootDir}* ]];
+        then
+	    _destSystemPath=$(echo ${_destParent} | grep -o "${_rootDir}.*")
+	    if [ -d "${_destSystemPath}" ];
+	    then
+		mkdir -p ${_destParent}
+		chmod --reference=${_destSystemPath} ${_destParent}
+		chown --reference=${_destSystemPath} ${_destParent}
+		break;
+	    fi
+	fi
+    done
+
+    if [ ! -e "${_destParent}" ];
+    then
+	_knownSystemDirectories=(
+	    'usr/share/webapps'
+	    'etc/webapps'
+				)
+	for _knownSystemDirectory in "${_knownSystemDirectories[@]}"
+	do
+	    if [[ ${_destParent} == *${_knownSystemDirectory} ]];
+	    then
+		mkdir -p ${_destParent}
+		break;
+	    fi
+	done
+    fi
+
+    if [ ! -e "${_destParent}" ];
+    then
+	echo "Parent not found (${_destParent}). Maybe its a not known System-Directory:"
+	for _systemDirectory in "${_systemDirectories[@]}"
+	do
+	    echo "   ${_systemDirectory}"
+	done
+	exit 1
+    fi
+}
+# template end;
+
+# compressStatic /usr/share/webapps/xxx 'htm|css|html|js'
+_compressStatic() {
+    _dir=$1
+    if [ -z "$2" ];
+    then
+        _fileExtensions='htm|css|html|js'
+    fi
+
+    find ${_dir} -type f -regextype posix-extended -regex '.*\.('${_fileExtensions}')' -print0 \
+        | while read -d $'\0' _staticFile
+    do
+        if [ -f "${_staticFile}".gz ]
+        then
+            FILE_ORIG=$(stat -c %Y "${_staticFile}")
+            FILE_GZIP=$(stat -c %Y "${_staticFile}".gz)
+            if [ $FILE_ORIG -gt $FILE_GZIP ]
+            then
+                rm "${_staticFile}".gz
+                gzip -k -9 "${_staticFile}"
+                echo "Deleted old .gz and created new one at: ${_staticFile}.gz"
+            else
+                echo "Skipping - Already up to date: ${_staticFile}.gz"
+            fi
+        else
+            gzip -k -9 "${_staticFile}"
+            echo "Created new: ${_staticFile}.gz"
+        fi
+    done
+}
+# template end;
+backup=(
+    "${_confDir}/config.php"
+    "${_confDir}/debug.php"
+       )
+
+prepare() {
+    cd ${srcdir}/${pkgname}
+    sed -i -e 's|\(\"DEBUG_LOADER\", \).*$|\1LOAD_RELEASE);|' \
+	debug.php.dist
+}
+
+build() {
+    cd ${srcdir}/${pkgname}
+
+    # The Only Way To Execute PHP With Right Settings Before Installation
+    (cat /etc/php/php.ini ; echo ; cat ${srcdir}/${_phpIni}) > make-php.ini
+    make server client \
+	PHP="$(which php) -c $(realpath make-php.ini)"
+
+    ant tools
+
+    # Broken in Makefile
+    # DESTDIR=""
+}
+
+package() {
+     # BIN
+    _install root:root ${_commonPermissions} ${srcdir}/${pkgname}/deploy \
+	${pkgdir}/${_binDir}
+    _install root:root ${_commonPermissions} ${pkgdir}/${_binDir}/plugins
+    ln -sf ${_confDir}/config.php \
+	${pkgdir}/${_binDir}/config.php
+    ln -s ${_logDir}/debug.txt \
+	${pkgdir}/${_binDir}/debug.txt
+    _compressStatic ${pkgdir}/${_binDir}
+
+    # CONF
+    _install http:http ${_securePermissions} ${pkgdir}/${_confDir}
+    _install http:http ${_securePermissions} ${pkgdir}/${_binDir}/config.php.dist \
+	${pkgdir}/${_confDir}/config.php
+
+    # DOC
+    _install root:root ${_commonPermissions} ${pkgdir}/${_docDir}
+    _install root:root ${_commonPermissions} ${srcdir}/${_phpIni} \
+	${pkgdir}/${_docDir}/
+    _install root:root ${_commonPermissions} ${srcdir}/${pkgname}/tools \
+	${pkgdir}/${_docDir}/
+    rm -rf ${pkgdir}/${_docDir}/tools/src
+    rm -rf ${pkgdir}/${_docDir}/tools/build
+    rm ${pkgdir}/${_docDir}/tools/build.xml
+
+    # LICENSE
+    _install http:http ${_commonPermissions} ${pkgdir}/${_licenseDir}
+    _install http:http ${_commonPermissions} AGPL-3 ${pkgdir}/${_licenseDir}/
+    _install http:http ${_commonPermissions} LICENSE.txt ${pkgdir}/${_licenseDir}/
+
+    # STATE
+    _install http:http ${_securePermissions} ${pkgdir}/${_stateDir}
+
+    # LOG
+    _install http:http ${_securePermissions} ${pkgdir}/${_logDir}
+    _install http:http ${_securePermissions} debug.txt \
+	${pkgdir}/${_logDir}/
+
+    # OTHER: PHP
+    _install root:root ${_commonPermissions} ${srcdir}/${_phpIni} \
+	${pkgdir}/etc/php/conf.d/
+}

@@ -1,0 +1,28 @@
+pkgbase = kopano-webapp-git
+	pkgdesc = Provides all the familiar email, advanced calendaring and contacts features you need to be productive
+	pkgver = 4.6.3
+	pkgrel = 1
+	url = http://www.kopano.com/
+	changelog = changelog
+	arch = any
+	groups = kopano
+	license = AGPL3
+	makedepends = apache-ant
+	makedepends = libxml2
+	makedepends = npm
+	makedepends = git
+	makedepends = gzip
+	depends = php
+	depends = kopano-core
+	depends = libiconv
+	depends = gettext
+	optdepends = kopano-webapp-nginx
+	backup = etc/webapps/kopano-webapp-git/config.php
+	backup = etc/webapps/kopano-webapp-git/debug.php
+	source = kopano-webapp-git::git+https://stash.kopano.io/scm/kw/kopano-webapp.git#branch=master
+	source = kopano-webapp.ini
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = kopano-webapp-git
+
