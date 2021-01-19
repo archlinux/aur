@@ -20,18 +20,22 @@ _modulename='ax99100'
 
 set -u
 pkgname="asix-${_modulename,,}"
-pkgver='1.4.0'
+pkgver='1.6.0'
 pkgrel='1'
 pkgdesc='kernel module driver for Asix serial RS-232 port'
 arch=('i686' 'x86_64')
-url='http://www.asix.com.tw/'
+url='https://www.asix.com.tw/'
 license=('GPL')
 makedepends=('gzip' 'findutils' 'sed' 'diffutils' 'patch')
 #backup=("etc/modprobe.d/${_modulename}.conf")
 install="${pkgname}-install.sh"
-_srcdir="AX99100_SP_PP_SPI_LINUX_Driver_v${pkgver}_Source"
-source=("https://www.asix.com.tw/FrootAttach/driver/${_srcdir}.tar.bz2")
-sha256sums=('1e40ab499f669dfdea7bfd43ae6a09efcb0c135a481b99ed9bd0e334a8e705a3')
+_srcdir="AX99100_SP_PP_SPI_Linux_Driver_v${pkgver}_Source"
+source=("${_srcdir}.tar.bz2::https://www.asix.com.tw/en/support/download/file/529")
+source+=('0000-ax99100_sp.c-ch.patch')
+md5sums=('ccfce62fb5d3d1680514cddae9a5a361'
+         'e992800dddd65a174ac531448e3f1498')
+sha256sums=('2eab40bb6bc660481099cab832a52e7e0a4044dfa55a686546b1a4bc2c40bdc1'
+            '158c5a5118e9f7b109276c0639e507ad0471468cef18ebc0a1103bdf96cd2d36')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -65,28 +69,39 @@ prepare() {
 
   sed -e 's:\r$::g' -i $(grep -l $'\r$' *)
 
+  # diff -pNau5 ax99100_sp.c{.orig,} > '0000-ax99100_sp.c-ch.patch'
+  patch -Nup0 -i "${srcdir}/0000-ax99100_sp.c-ch.patch"
+
   # Make package and DKMS compatible
+  # cp -p 'Makefile' 'Makefile.Arch'
   sed -e 's:\s\+$::g '\
       -e 's:/lib/:/usr/lib/:g' \
       -e '# Double space slop' \
       -e 's:  : :g' \
-      -e '# RM isnt set anywhere so why use it?' \
-      -e 's:\$(RM):rm -f:g' \
-      -e '# Forgot to clean something' \
-      -e '/^clean:/,/^$/ s:\*\.mod\.c \*\.o:*.mod.c .*.o.d *.o .cache.mk:g' \
-      -e 's:/usr/:"$(DESTDIR)"&:g' \
-      -e 's:/etc/:"$(DESTDIR)"&:g' \
+      -e '# Fix all MDIR' \
+      -e 's:^\(MDIR\)=.*$:\1=kernel/drivers/tty/serial:g' \
+      -e '# RM isnt set anywhere so why use it? This isnt appropriate for packaging' \
+      -e 's:^\t\$(RM):#&:g' \
+      -e 's:^RM_PATH:#&:g' \
+      -e '# Disable all clean items to use built in clean' \
+      -e '/^clean:/,/^$/ s:^\t:#&:g' \
+      -e 's@^clean:@&\n\t$(MAKE) -C $(KDIR) M=$(PWD) clean@g' \
+      -e '/spi_test/ s:^#\trm:\trm:g' \
+      -e '# Fix paths for package:g' \
+      -e '/^install:/,/^$/ s:/usr/:"$(DESTDIR)"&:g' \
+      -e '/^install:/,/^$/ s:/etc/:"$(DESTDIR)"&:g' \
       -e '/ln -s/ s:"$(DESTDIR)"::' \
       -e '# default does too much' \
       -e '/^default:/,/^$/ s:^\s\+rm:#&:g' \
-      -e '# might as well remove all the install lines' \
+      -e '# might as well remove all remaining install lines' \
       -e '/^install:/,/^$/ s:^[\ta-z]:#&:g' \
       -e 's|^#install:|install:|g' \
       -e 's:^#\(\tcp ax99100.ko\):\1:g' \
+      -e '/\/kernel\// s:^\tcp :#&:g' \
       -e '# Separate utils from module' \
       -e '/select_BR\.c/ s|^|\nutils:\n|g' \
       -e '# Change default to modules and provide all target' \
-      -e 's|^default:|all: modules utils\n\nmodules:|g' \
+      -e 's|^default:|all: modules utils\n\n&\n\nmodules:|g' \
       -e '#Disable debian stuff' \
       -e 's|\(^DEBIAN_VERSION_FILE:\)=.*$|\1=x|g' \
       -e 's|\(^DEBIAN_DISTRO:\)=.*$|\1=y|g' \
@@ -94,7 +109,10 @@ prepare() {
       -e 's:^CURRENT=:#&:g' \
       -e '# Should be using CFLAGS' \
       -e 's:gcc :gcc $(CFLAGS) :g' \
+      -e '# $(PWD) is not calculated correctly' \
+      -e 's:\$(PWD):$(shell pwd):g' \
     -i 'Makefile'
+  test ! -s 'Makefile.Arch'
 
   # uppercase module name not matching lowercase filename is a problem
   #cp -p 'ax99100_sp.c'{,.orig}
@@ -115,7 +133,7 @@ prepare() {
     sed -e '/^#define DRV_VERSION/ s:"\(.*\)":"\1 Arch Linux":g' -i 'ax99100_sp.h'
   fi
 
-  'ma'ke -s clean
+  #make -s clean
   set +u
 }
 
@@ -185,7 +203,7 @@ EOF
         -e '# Get rid of parallel port' \
         -e 's:^obj-m +=parport_pc.o:#&:g' \
       -i "${_dkms}/Makefile"
-    make -s -C "${_dkms}/" clean KERNELRELEASE="$(uname -r)"
+    make -s -C "${_dkms}/" KERNELRELEASE="$(uname -r)" clean
   fi
   set +u
 }

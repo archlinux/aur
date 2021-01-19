@@ -1,0 +1,18 @@
+--- ax99100_sp.c.orig	2021-01-18 19:34:24.211873721 -0500
++++ ax99100_sp.c	2021-01-18 19:36:01.783310215 -0500
+@@ -1020,13 +1020,13 @@ static void receive_chars_dma_done(struc
+ #elif LINUX_VERSION_CODE < KERNEL_VERSION(2,6,32)
+         struct tty_struct *tty = up->port.info->port.tty;
+ #else
+ 	struct tty_struct *tty = up->port.state->port.tty;
+ #endif
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,0,0)
++/* #if LINUX_VERSION_CODE >= KERNEL_VERSION(5,0,0) */
+ 	u8 ch;
+-#endif
++/* #endif */
+ 	int i;		
+ 	u32 received_bytes;
+ 	u32 need2recv,temp_spssr2=0;
+ 
+ 	up->k_lsr = serial_in(up, UART_LSR);
