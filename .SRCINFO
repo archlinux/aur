@@ -1,0 +1,16 @@
+pkgbase = dndtools
+	pkgdesc = Various CLI tools and Rust library for D&D 5e
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/wrightjjw/dndtools
+	arch = x86_64
+	license = GPL3
+	checkdepends = cargo
+	makedepends = cargo
+	provides = stats
+	provides = roll
+	source = https://github.com/wrightjjw/dndtools/archive/v0.1.0.tar.gz
+	sha256sums = 303c0239f4790cfbea1526189e05cfc7bca0938db560e8922460c74217e97d1a
+
+pkgname = dndtools
+
