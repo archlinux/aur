@@ -8,7 +8,6 @@ pkgdesc="An implementation of the DVMRP multicast routing protocol. It turns a U
 arch=('i686' 'x86_64')
 url="https://github.com/troglobit/mrouted"
 license=('BSD')
-backup=('etc/mrouted.conf')
 depends=('glibc')
 source=("https://github.com/troglobit/mrouted/releases/download/${pkgver}/mrouted-${pkgver}.tar.gz"
 	"mrouted.service")

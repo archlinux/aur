@@ -7,7 +7,6 @@ pkgbase = mrouted
 	arch = x86_64
 	license = BSD
 	depends = glibc
-	backup = etc/mrouted.conf
 	source = https://github.com/troglobit/mrouted/releases/download/4.2/mrouted-4.2.tar.gz
 	source = mrouted.service
 	md5sums = b921f9e152e039efdac745438ef8362c
