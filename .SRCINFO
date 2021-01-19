@@ -1,7 +1,7 @@
 pkgbase = jitsi-meet-nightly-bin
 	pkgdesc = Jitsi Meet Web nightly binary
 	pkgver = 1.0.4655
-	pkgrel = 2
+	pkgrel = 3
 	url = https://jitsi.org/jitsi-meet/
 	arch = any
 	license = Apache
@@ -17,9 +17,11 @@ pkgbase = jitsi-meet-nightly-bin
 	source = https://download.jitsi.org/unstable/jitsi-meet-web_1.0.4655-1_all.deb
 	source = https://download.jitsi.org/unstable/jitsi-meet-web-config_1.0.4655-1_all.deb
 	source = lib-jitsi-meet.min.js.gz
+	source = lib-jitsi-meet.e2ee-worker.js.gz
 	sha256sums = 52aa1eeb1fd687189ee66c4efab42fee2951577794483efecab4a6586958bd71
 	sha256sums = ae9d5e02f3455a3d28d88304b9951473a9e572a32f73c2f3237ed67406942ef4
 	sha256sums = 2f08ea2976b3c5282286327267dfa6e956bc6fbf47a85b939021a09249ae8a20
+	sha256sums = 25273fd18e84dd03e8a436eb9794ab2cadaefd291cb737808dbb622e81e6877e
 
 pkgname = jitsi-meet-nightly-bin
 
