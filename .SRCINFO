@@ -1,0 +1,15 @@
+pkgbase = flappytiger
+	pkgdesc = An opensource flappybird clone written in C++ using GLFW
+	pkgver = 0.1
+	pkgrel = 0
+	url = https://github.com/tigermouthbear/flappytiger
+	arch = x86_64
+	license = GPLv3
+	makedepends = make
+	makedepends = cmake
+	makedepends = git
+    source = git://github.com/tigermouthbear/flappytiger.git
+	sha1sums = SKIP
+
+pkgname = flappytiger
+
