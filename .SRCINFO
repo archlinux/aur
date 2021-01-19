@@ -7,9 +7,9 @@ pkgbase = python-tpm2-pytss
 	license = BSD
 	checkdepends = ibm-sw-tpm2
 	checkdepends = python-cryptography
+	makedepends = python-setuptools
 	makedepends = swig
 	depends = python
-	depends = python-setuptools
 	depends = tpm2-tss
 	depends = libtss2-esys.so
 	depends = libtss2-fapi.so
@@ -19,4 +19,3 @@ pkgbase = python-tpm2-pytss
 	sha256sums = bf95ed874037b459cb160e789ef5982f64c3db4d5efc65affb6cb941ceb40a65
 
 pkgname = python-tpm2-pytss
-
