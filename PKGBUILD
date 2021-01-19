@@ -1,7 +1,7 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile
-pkgver=0.3.0
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=('any')
@@ -19,23 +19,25 @@ depends=('bc'
          'java-commons-lang' # pdftk optdepend is required
          'jq'
          'kindlegen'
+         'lua'
          'm4'
          'make'
          'moreutils'
          'nodejs'
          'otf-libertinus'
          'pandoc-sile-git'
+         'perl'
          'pcre'
          'pdftk'
          'podofo'
          'poppler'
          'povray'
+         'python'
          'sile'
          'sqlite'
          'tex-gyre-fonts'
          'texlive-core'
          'ttf-hack'
-         'yarn'
          'yq'
          'zint'
          'zsh')
@@ -52,14 +54,16 @@ _python_deps=('isbnlib'
 depends+=("${_lua_deps[@]/#/lua-}"
           "${_perl_deps[@]/#/perl-}"
           "${_python_deps[@]/#/python-}")
+makedepends=('autoconf-archive' 'cargo' 'luarocks' 'rust' 'node-prune' 'yarn')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('06ab97faf089540999ffa4fce04b71f01644c6c1f7f640fe12cc2acb4e76037f')
+sha256sums=('f27982637f4daa477f7e617fa46d5657d9bee0447bf6b1328bd0ab25855dd7ea')
 prepare() {
     cd "$pkgname-$pkgver"
     export YARN_CACHE_FOLDER="$srcdir/node_modules"
     sed Makefile.am -i \
         -e 's/yarn \(install\|run\)/yarn --offline \1/' \
         -e 's/cargo \(build\|install\|test\)/cargo --offline \1/'
+    autoreconf
     cargo fetch --locked
     yarn install --production --frozen-lockfile
 }
@@ -79,5 +83,5 @@ check() {
 package () {
     cd "$pkgname-$pkgver"
     make DESTDIR="$pkgdir" install
-	node-prune "$pkgdir/usr/share/casile/node_modules"
+    node-prune "$pkgdir/usr/share/casile/node_modules"
 }
