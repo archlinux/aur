@@ -4,7 +4,7 @@
 pkgname=vivaldi-snapshot
 _rpmversion=3.6.2165.3-1
 pkgver=3.6.2165.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind. Snapshot'
 url="https://vivaldi.com"
 options=(!strip !zipman)
@@ -14,7 +14,6 @@ depends=('gtk3' 'libcups' 'nss' 'alsa-lib' 'libxss' 'ttf-font' 'desktop-file-uti
 makedepends=('imagemagick')
 optdepends=(
     'vivaldi-snapshot-ffmpeg-codecs: playback of proprietary video/audio'
-    'pepper-flash: flash support'
     'libnotify: native notifications'
 )
 source=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${_rpmversion}.x86_64.rpm"
