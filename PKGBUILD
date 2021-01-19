@@ -24,7 +24,7 @@ sha256sums=(
 
 build() {
   cd "$srcdir/${_name}-${pkgver}"
-  sed -i 's/ruamel.yaml==0.16.10/ruamel.yaml>=0.16.10/;s/shutil.copyfile/print/' setup.py
+  sed -i 's/ruamel.yaml==0.16.10/ruamel.yaml>=0.16.10/' setup.py
   SEMGREP_SKIP_BIN=1 python setup.py build
   chmod +x build/lib/semgrep/bin/{semgrep-core,spacegrep}
 }
