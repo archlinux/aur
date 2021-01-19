@@ -11,7 +11,7 @@ license=('MIT')
 provides=('janet')
 conflicts=('janet-lang-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/janet-lang/janet/archive/v${pkgver}.tar.gz")
-sha256sums=('7d369b72a1fc649f7e5c254e2b746eb36885970504f6d9d3441507ca2d716644')
+sha256sums=('fcdb12c4ca414af346f390f81ea6e2417da182656c1c36377237df57b92cfd34')
 options=('staticlibs')
 
 build() {
