@@ -1,4 +1,5 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer:  Paragoumba <paragoumba@protonmail.com>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Kaio Augusto <kaioaugusto.8@gmail.com>
 # Contributor: Kyle <kyle@free2.ml>
 # Contributor: mib1982 <Mi.Bentlage@gmail.com>
