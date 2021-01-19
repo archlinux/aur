@@ -1,0 +1,15 @@
+pkgbase = python-trytond_stock_assign_manual
+	pkgdesc = Tryton module to assign manually stock move
+	pkgver = 5.8.1
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_assign_manual/trytond_stock_assign_manual-5.8.1.tar.gz
+	sha256sums = f15233ef7e421e6bd9981128d07b20b8ffa698130bc3d5f2faa0d68a4327d4d4
+	b2sums = ef2e3d743ecf4c7013ed5cfbc5f7866a8c75c13857e28e36e18e98d6d94d49c24332b42a8fa445e57027ce4a10d71be46612354a0672a363abb55b1fed06097c
+
+pkgname = python-trytond_stock_assign_manual
+
