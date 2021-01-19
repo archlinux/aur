@@ -7,7 +7,7 @@ _version=2.1+417+g6112079e
 
 pkgname=${_basename}-${_pkgname}-nightly
 pkgver=${_version}
-pkgrel=1
+pkgrel=2
 pkgdesc="Jitsi Meet Videobridge nightly build"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -69,7 +69,7 @@ package() {
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/$pkgname.conf"
 }
 sha256sums=('SKIP'
-            'c9d3e6968592206c86818f5a0f8208cd25387c779c4edc629e36a6ec5acd303c'
+            '561e604982060c3a2b179ae102bfba46ea99a040561b653ed65f4e4db193867b'
             'cc9fbf77497bce3c9673b2d144928f11cdd0c0823940c2b60c8369a2f086b9b7'
             '6c64d8ae8a38fc6674c3d068cbfce7f82458d71403a40b0aa25768b1f4f1e10f'
             '998cbc64def56ab98080ff7150dd0913a5e10325cd2b038cf3db14baf8cb19fc'

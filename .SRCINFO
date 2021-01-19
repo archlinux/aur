@@ -1,7 +1,7 @@
 pkgbase = jitsi-videobridge-nightly
 	pkgdesc = Jitsi Meet Videobridge nightly build
 	pkgver = 2.1+417+g6112079e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jitsi.org/jitsi-meet/
 	arch = any
 	license = Apache
