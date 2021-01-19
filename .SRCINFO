@@ -10,8 +10,8 @@ pkgbase = isfree
 	depends = sed
 	depends = tar
 	optdepends = bc: percentages support
-	source = isfree-0.9.0.tar.gz::https://github.com/leo-arch/isfree/archive/v0.9.0.tar.gz
-	sha256sums = a6a381ce807bce3ec56609bf67f2a37486b00cd4f7b809500c890e28cfd39c35
+	source = git+https://github.com/leo-arch/isfree.git
+	sha256sums = SKIP
 
 pkgname = isfree
 
