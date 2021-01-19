@@ -1,3 +1,6 @@
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: Joost Molenaar <jjm@j0057.nl>
+
 pkgname=mrouted
 pkgver=4.2
 pkgrel=1
