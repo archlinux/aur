@@ -1,13 +1,13 @@
 pkgbase = fastr-jdk11-bin
 	pkgdesc = GraalVM-based, high-performance implementation of the R language (Java 11 version)
-	pkgver = 20.3.0
+	pkgver = 21.0.0
 	pkgrel = 1
 	url = https://github.com/oracle/fastr
 	arch = x86_64
 	license = GPL3
 	depends = jdk11-graalvm-bin
-	source = https://github.com/oracle/fastr/releases/download/vm-20.3.0/r-installable-java11-linux-amd64-20.3.0.jar
-	sha256sums = 79d129d572563fe7179009d162160557444b0f7e0b4dbf460d0ba25ca65a63b1
+	source = https://github.com/oracle/fastr/releases/download/vm-21.0.0/r-installable-java11-linux-amd64-21.0.0.jar
+	sha256sums = bd96cbdd9ea901b47e6d0a6e49f074eae821ae3f16e90caf6b660e5d38db7dba
 
 pkgname = fastr-jdk11-bin
 
