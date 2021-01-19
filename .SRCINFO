@@ -1,0 +1,13 @@
+pkgbase = espresso-jdk11-bin
+	pkgdesc = GraalVM-based Java implementation as a Truffle language, Java 11 version
+	pkgver = 21.1.0
+	pkgrel = 1
+	url = https://github.com/oracle/graal
+	arch = x86_64
+	license = custom
+	depends = jdk11-graalvm-bin
+	source = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.1.0/espresso-installable-java11-linux-amd64-21.1.0.jar
+	sha256sums = 282ca5806b49cad97c3b28e7db20879c30baa04e2af23127d9a356e849b0258f
+
+pkgname = espresso-jdk11-bin
+
