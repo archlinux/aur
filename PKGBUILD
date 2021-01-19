@@ -2,7 +2,7 @@
 pkgbase=python-asdf
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="A Python tool for reading and writing Advanced Scientific Data Format (ASDF) files"
 arch=('i686' 'x86_64')
@@ -13,15 +13,13 @@ makedepends=('python>=3.5'
              'python-numpy>=1.10'
              'python-jsonschema<4'
              'python-yaml>=3.10'
-             'python-six>=1.9.0'
              'python-semantic-version>=2.8'
-             'python-pytest'
              'python-astropy'
              'python-sphinx-astropy'
              'graphviz')
-checkdepends=('python-pytest-doctestplus')
+checkdepends=('python-pytest-doctestplus' 'python-pytest-remotedata' 'python-pytest-openfiles' 'python-lz4')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('2af034a2b1edff5257787ea912a5c7b8')
+md5sums=('e9217acd9cb1385e74e0747b6e38f751')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -34,11 +32,11 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed"
+    PYTHONPATH="build/lib:${PYTHONPATH}" pytest "build/lib" || warning "Tests failed"
 }
 
 package_python-asdf() {
-    depends=('python>=3.6' 'python-numpy>=1.10' 'python-jsonschema<4' 'python-yaml>=3.10' 'python-semantic-version>=2.8' 'python-importlib_resources>=3')
+    depends=('python>=3.6' 'python-numpy>=1.10' 'python-jsonschema<4' 'python-yaml>=3.10' 'python-semantic-version>=2.8')
     optdepends=('python-astropy>=3.0: Support for units, time, transform, wcs, or running the tests'
                 'python-lz4>=0.10: Support for lz4 compression'
                 'python-asdf-doc: Documentation for Python-ASDF'
