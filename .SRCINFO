@@ -1,0 +1,17 @@
+pkgbase = kopano-webapp-google2fa-git
+	pkgver = 0.6.0
+	pkgrel = 1
+	changelog = changelog
+	arch = any
+	groups = kopano
+	groups = kopano-webapp-plugins
+	makedepends = apache-ant
+	makedepends = libxml2
+	makedepends = git
+	makedepends = gzip
+	depends = kopano-webapp
+	source = kopano-webapp-google2fa-git::git+https://bitbucket.org/normanth/google2fa.git#branch=master
+	md5sums = SKIP
+
+pkgname = kopano-webapp-google2fa-git
+
