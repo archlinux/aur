@@ -1,7 +1,7 @@
 # Maintainer: Katherine J. Cumberbatch <stykers@stykers.moe>
 pkgname=binfmt-qemu-static
-pkgver=20190112
-pkgrel=4
+pkgver=20210119
+pkgrel=1
 pkgdesc="Register qemu-static interpreters for various binary formats"
 arch=('any')
 url="http://www.freedesktop.org/software/systemd/man/binfmt.d.html"
