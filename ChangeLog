@@ -1,3 +1,18 @@
+2021-01-19 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+
+	* 4.6-1 :
+	Version bump.
+
+	Switched to using b2sums for checksums instead of md5sums.
+
+	See these for upstream changelogs:
+	- https://github.com/toolbox4minecraft/amidst/releases/tag/v4.4
+	- https://github.com/toolbox4minecraft/amidst/releases/tag/v4.5-beta1
+	- https://github.com/toolbox4minecraft/amidst/releases/tag/v4.5-beta2
+	- https://github.com/toolbox4minecraft/amidst/releases/tag/v4.5-beta3
+	- https://github.com/toolbox4minecraft/amidst/releases/tag/v4.5
+	- https://github.com/toolbox4minecraft/amidst/releases/tag/v4.6
+
 2019-12-13 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 
 	* 4.4_beta1-1 :
