@@ -1,0 +1,15 @@
+pkgbase = python-trytond_stock_secondary_unit
+	pkgdesc = Tryton module to add a secondary unit on stock move
+	pkgver = 5.8.1
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_secondary_unit/trytond_stock_secondary_unit-5.8.1.tar.gz
+	sha256sums = d439ac53d7b72fde31bffe5e60dd9e8c3bd64fd9baa32c383b069dc018ce0d3e
+	b2sums = da81252f7ec5d4869d0200f6a28057be1add4729c96477e37ce6fc7683514ae7a1cb4893e38eef8042124bf1a825c2a5f7fe1951f9c675ae0c486f55a917fa60
+
+pkgname = python-trytond_stock_secondary_unit
+
