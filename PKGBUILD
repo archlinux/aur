@@ -1,12 +1,12 @@
 # Maintainer: Baltazár Radics <baltazar.radics@gmail.com>
 pkgname=omnisharp-roslyn-bin
 pkgver=1.37.5
-pkgrel=1
+pkgrel=2
 pkgdesc='OmniSharp server (STDIO) based on Roslyn workspaces'
 arch=(x86_64)
 url='https://github.com/OmniSharp/omnisharp-roslyn'
 license=(MIT)
-depends=(mono)
+depends=(mono mono-msbuild)
 provides=(${pkgname%-bin})
 conflicts=(${pkgname%-bin})
 source=(
@@ -20,5 +20,5 @@ package() {
 	install -Dm755 *.dll *.exe         -t"$pkgdir"/usr/lib/omnisharp
 	install -Dm644 OmniSharp.deps.json -t"$pkgdir"/usr/lib/omnisharp
 	install -Dm755 omnisharp.sh          "$pkgdir"/usr/bin/omnisharp
-	install -Dm644 license.md            "$pkgdir"/usr/share/licenses/omnisharp/license.md
+	install -Dm644 license.md            "$pkgdir"/usr/share/licenses/$pkgname/license.md
 }
