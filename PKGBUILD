@@ -1,4 +1,5 @@
-# Maintainer: Paragoumba <paragoumba at protonmail dot com>
+# Maintainer: Paragoumba <paragoumba@protonmail.com>
+# Contributor: Amos Wenger <amos@itch.io>
 
 pkgname=itch
 pkgver=1.24.0
