@@ -1,14 +1,13 @@
 pkgbase = free-hash-checker
 	pkgdesc = A simple and elegant open-source hash checker software.
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TechLearnersInc/Free-Hash-Checker
 	arch = x86_64
 	license = MIT
 	depends = python>=3.7.0
 	depends = pyside2>=5.15.2
 	depends = python-requests>=2.24.0
-	depends = sip>=4.19.24
 	source = Free-Hash-Checker.tar.gz::https://github.com/TechLearnersInc/Free-Hash-Checker/archive/v3.0.tar.gz
 	source = Free-Hash-Checker.desktop.in
 	source = AppRun.sh

@@ -3,12 +3,12 @@
 
 pkgname=free-hash-checker
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and elegant open-source hash checker software."
 arch=('x86_64')
 url="https://github.com/TechLearnersInc/Free-Hash-Checker"
 license=('MIT')
-depends=('python>=3.7.0' 'pyside2>=5.15.2' 'python-requests>=2.24.0' 'sip>=4.19.24')
+depends=('python>=3.7.0' 'pyside2>=5.15.2' 'python-requests>=2.24.0')
 source=(Free-Hash-Checker.tar.gz::"https://github.com/TechLearnersInc/Free-Hash-Checker/archive/v${pkgver}.tar.gz"
                              	  "Free-Hash-Checker.desktop.in"
                              	  "AppRun.sh")
