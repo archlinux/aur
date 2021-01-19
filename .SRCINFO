@@ -1,0 +1,17 @@
+pkgbase = kopano-webapp-fetchmail-git
+	pkgver = 1.0.2
+	pkgrel = 1
+	changelog = changelog
+	arch = any
+	groups = kopano
+	groups = kopano-webapp-plugins
+	makedepends = apache-ant
+	makedepends = libxml2
+	makedepends = git
+	makedepends = gzip
+	depends = kopano-webapp
+	source = kopano-webapp-fetchmail-git::git+https://github.com/olia-dev/kopano-webapp-fetchmail.git#branch=master
+	md5sums = SKIP
+
+pkgname = kopano-webapp-fetchmail-git
+
