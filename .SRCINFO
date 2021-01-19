@@ -4,10 +4,13 @@ pkgbase = graalwasm-jdk11-bin
 	pkgrel = 1
 	url = https://github.com/oracle/graal
 	arch = x86_64
+	arch = aarch64
 	license = custom
 	depends = jdk11-graalvm-bin
-	source = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.0.0/wasm-installable-svm-java11-linux-amd64-21.0.0.jar
-	sha256sums = ed15e975cc1c4a570e76680103b67b64c7b16fc18bcb5b9e68f51bce61317ef9
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.0.0/wasm-installable-svm-java11-linux-amd64-21.0.0.jar
+	sha256sums_x86_64 = ed15e975cc1c4a570e76680103b67b64c7b16fc18bcb5b9e68f51bce61317ef9
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.0.0/wasm-installable-svm-java11-linux-aarch64-21.0.0.jar
+	sha256sums_aarch64 = 00d14e7a35b856b9fa63ffc3814b5165f05a2239069eb1f5d09120c7b028d490
 
 pkgname = graalwasm-jdk11-bin
 
