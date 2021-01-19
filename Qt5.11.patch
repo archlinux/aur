@@ -1,0 +1,4 @@
+--- src/Preferences.cpp.orig	2017-11-21 16:39:49.000000000 +0300
++++ src/Preferences.cpp	2018-11-11 14:53:08.505094014 +0300
+23a24
+> #include <QButtonGroup>
