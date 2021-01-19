@@ -7,7 +7,7 @@ pkgbase = binfmt-qemu-static
 	license = GPL
 	optdepends = qemu-user-static
 	source = qemu-static.conf
-	md5sums = 6f738b87377817076bd7cf0692069850
+	md5sums = 4ce74ae99d838f46898ff3222a998d8b
 
 pkgname = binfmt-qemu-static
 
