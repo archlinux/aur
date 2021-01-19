@@ -1,0 +1,101 @@
+From 2d59aa7b52713b77243bda12066213fca8447f9d Mon Sep 17 00:00:00 2001
+From: "Nathan E. Egge" <unlord@xiph.org>
+Date: Wed, 13 Jan 2021 14:54:42 -0500
+Subject: [PATCH] Enable AVX2 wiener filter HBD assembly
+
+---
+ src/meson.build                     |  1 +
+ src/x86/looprestoration_init_tmpl.c | 41 +++++++++++++++++++++++++++--
+ 2 files changed, 40 insertions(+), 2 deletions(-)
+
+diff --git a/src/meson.build b/src/meson.build
+index ca0b406..c5c305d 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -209,7 +209,8 @@ if is_asm_enabled
+ 
+         if dav1d_bitdepths.contains('16')
+             libdav1d_sources_asm += files(
++                'x86/looprestoration16_avx2.asm',
+                 'x86/mc16_avx2.asm',
+             )
+         endif
+ 
+diff --git a/src/x86/looprestoration_init_tmpl.c b/src/x86/looprestoration_init_tmpl.c
+index 11ebdd1..dfc9f84 100644
+--- a/src/x86/looprestoration_init_tmpl.c
++++ b/src/x86/looprestoration_init_tmpl.c
+@@ -31,9 +31,41 @@
+ #include "common/intops.h"
+ #include "src/tables.h"
+ 
++#if BITDEPTH != 8
++#undef decl_wiener_filter_fn
++#define decl_wiener_filter_fn(name, ext) \
++void BF(name##_h, ext)(int16_t *dst, const pixel (*left)[4], const pixel *src, \
++                       ptrdiff_t stride, const int16_t fh[7], const intptr_t w, \
++                       int h, enum LrEdgeFlags edges HIGHBD_DECL_SUFFIX); \
++void BF(name##_v, ext)(pixel *dst, ptrdiff_t stride, const int16_t *mid, \
++                       const int16_t fv[7], int w, int h, \
++                       enum LrEdgeFlags edges HIGHBD_DECL_SUFFIX); \
++static void BF(name, ext)(pixel *const dst, const ptrdiff_t dst_stride, \
++                          const pixel (*const left)[4], \
++                          const pixel *lpf, const ptrdiff_t lpf_stride, \
++                          const int w, const int h, const int16_t filter[2][8], \
++                          const enum LrEdgeFlags edges HIGHBD_DECL_SUFFIX) { \
++    ALIGN_STK_64(int16_t, mid, 68 * 384,); \
++    BF(name##_h, ext)(&mid[2*384], left, dst, dst_stride, filter[0], w, h, \
++                      edges HIGHBD_TAIL_SUFFIX); \
++    if (edges & LR_HAVE_TOP) { \
++        BF(name##_h, ext)(mid, NULL, lpf, lpf_stride, filter[0], w, 2, \
++                          edges HIGHBD_TAIL_SUFFIX); \
++    } \
++    if (edges & LR_HAVE_BOTTOM) { \
++        BF(name##_h, ext)(&mid[(2 + h)*384], NULL, lpf + 6*PXSTRIDE(lpf_stride), \
++                          lpf_stride, filter[0], w, 2, edges HIGHBD_TAIL_SUFFIX); \
++    } \
++    BF(name##_v, ext)(dst, dst_stride, mid, filter[1], w, h, edges HIGHBD_TAIL_SUFFIX); \
++}
++#define decl_wiener_filter_fns(ext) \
++decl_wiener_filter_fn(dav1d_wiener_filter7, ext); \
++decl_wiener_filter_fn(dav1d_wiener_filter5, ext)
++#else
+ #define decl_wiener_filter_fns(ext) \
+ decl_wiener_filter_fn(BF(dav1d_wiener_filter7, ext)); \
+ decl_wiener_filter_fn(BF(dav1d_wiener_filter5, ext))
++#endif
+ 
+ #define decl_sgr_filter_fn(ext) \
+ void BF(dav1d_sgr_box3_h, ext)(int32_t *sumsq, int16_t *sum, \
+@@ -163,11 +195,14 @@ decl_wiener_filter_fns(sse2);
+ decl_wiener_filter_fns(ssse3);
+ decl_sgr_filter_fn(ssse3)
+ # if ARCH_X86_64
+-decl_wiener_filter_fns(avx2);
+ decl_sgr_filter_fn(avx2)
+ # endif
+ #endif
+ 
++#if ARCH_X86_64
++decl_wiener_filter_fns(avx2);
++#endif
++
+ COLD void bitfn(dav1d_loop_restoration_dsp_init_x86)(Dav1dLoopRestorationDSPContext *const c) {
+     const unsigned flags = dav1d_get_cpu_flags();
+ 
+@@ -185,9 +220,11 @@ COLD void bitfn(dav1d_loop_restoration_dsp_init_x86)(Dav1dLoopRestorationDSPCont
+ #endif
+ 
+     if (!(flags & DAV1D_X86_CPU_FLAG_AVX2)) return;
+-#if BITDEPTH == 8 && ARCH_X86_64
++#if ARCH_X86_64
+     c->wiener[0] = BF(dav1d_wiener_filter7, avx2);
+     c->wiener[1] = BF(dav1d_wiener_filter5, avx2);
++# if BITDEPTH == 8
+     c->selfguided = BF(sgr_filter, avx2);
++# endif
+ #endif
+ }
+-- 
+GitLab
+
