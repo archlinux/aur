@@ -1,7 +1,7 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.2.0.r294.g27bb5be
+pkgver=0.3.2.r0.gcce4f4d
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=('any')
@@ -19,23 +19,25 @@ depends=('bc'
          'java-commons-lang' # pdftk optdepend is required
          'jq'
          'kindlegen'
+         'lua'
          'm4'
          'make'
          'moreutils'
          'nodejs'
          'otf-libertinus'
          'pandoc-sile-git'
+         'perl'
          'pcre'
          'pdftk'
          'podofo'
          'poppler'
          'povray'
+         'python'
          'sile'
          'sqlite'
          'tex-gyre-fonts'
          'texlive-core'
          'ttf-hack'
-         'yarn'
          'yq'
          'zint'
          'zsh')
@@ -52,7 +54,7 @@ _python_deps=('isbnlib'
 depends+=("${_lua_deps[@]/#/lua-}"
           "${_perl_deps[@]/#/perl-}"
           "${_python_deps[@]/#/python-}")
-makedepends=('autoconf-archive' 'cargo' 'rust' 'node-prune')
+makedepends=('autoconf-archive' 'cargo' 'luarocks' 'rust' 'node-prune' 'yarn')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
@@ -79,11 +81,7 @@ prepare() {
 build() {
     cd "$pkgname"
     export YARN_CACHE_FOLDER="$srcdir/node_modules"
-    ./configure \
-        --prefix /usr \
-        --with-bash-completion-dir \
-        --with-fish-completion-dir \
-        --with-zsh-completion-dir
+    ./configure --prefix /usr
     make
 }
 
