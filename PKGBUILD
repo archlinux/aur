@@ -2,8 +2,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=zps-git
-pkgver=1.2.3.r0.g9d08c49
-pkgrel=3
+pkgver=1.2.4.r0.gab6e762
+pkgrel=1
 pkgdesc="A small utility for listing and reaping zombie processes (git)"
 arch=('x86_64')
 url="https://github.com/orhun/zps"
@@ -31,4 +31,5 @@ package() {
   cd "${pkgname%-git}/build"
   make DESTDIR="$pkgdir" install
   install -Dm 644 "../README.md" -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 "../man/${pkgname%-git}.1" -t "$pkgdir/usr/share/man/man1"
 }
