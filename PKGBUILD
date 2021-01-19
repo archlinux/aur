@@ -2,10 +2,10 @@
 
 pkgname=python-qt-material-git
 pkgver=r100.20201228
-pkgrel=1
+pkgrel=2
 pkgdesc="This is another stylesheet for PySide6, PySide2 and PyQt5, which looks like Material Design."
 url="https://github.com/UN-GCPDS/qt-material"
-depends=('python>=3.6')
+depends=('python>=3.6' 'python-jinja')
 makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
