@@ -5,6 +5,7 @@ pkgbase = flaresolverr-bin
 	url = https://github.com/FlareSolverr/FlareSolverr
 	arch = x86_64
 	license = MIT
+	provides = flaresolverr
 	options = !strip
 	source = https://github.com/FlareSolverr/FlareSolverr/releases/download/v1.2.3/flaresolverr-v1.2.3-linux-x64.zip
 	source = https://github.com/FlareSolverr/FlareSolverr/blob/v1.2.3/LICENSE

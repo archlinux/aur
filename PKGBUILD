@@ -9,6 +9,7 @@ pkgdesc='A proxy server to bypass Cloudflare protection'
 arch=('x86_64')
 url='https://github.com/FlareSolverr/FlareSolverr'
 license=('MIT')
+provides=('flaresolverr')
 options=('!strip')
 source=("https://github.com/$__pkgname/$__pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-x64.zip"
         "https://github.com/$__pkgname/$__pkgname/blob/v$pkgver/LICENSE"
