@@ -1,8 +1,8 @@
-# Maintainer: shamhunter <nkuzhangshn@gmail.com>
+# Maintainer: sunerpy <nkuzhangshn@gmail.com>
 pkgname=picgo-appimage-beta
 pkgver=2.3.0
-_betaver=beta.3
-pkgrel=1
+_betaver=beta.4
+pkgrel=4
 
 pkgdesc="A simple & beautiful tool for pictures uploading built by vue-cli-electron-builder"
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
 noextract=("PicGo-${pkgver}-${_betaver}.Appimage")
 options=("!strip")
 sha256sums=(
-    "87af7f01462e03dc8ef84241a282cb0b236a2dba8f0e0a8fe7df5ab6a28a6eb0"
+    "7e76e9b2940bbd08106e7fff626a643b17fd17c403e542c8fdb530e8c2efcde9"
     'SKIP'
     'SKIP'
 )
