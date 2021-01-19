@@ -4,8 +4,8 @@
 # Contributor: Benjamin Robinben <jarobin@gmail.com>
 # Contributor: Karsten Pufahl <contact@karstenpufahl.de>
 pkgname=eclipse-arm
-pkgver=6.0.0
-_date=202012080907
+pkgver=6.1.0
+_date=202101081915
 pkgrel=1
 pkgdesc="Eclipse Embedded CDT (C/C++ Development Tools)"
 arch=('any')
@@ -15,8 +15,8 @@ license=("GPL")
 options=('!strip')
 makedepends=('unzip')
 depends=('eclipse-cpp>=2:4.17')
-source=("https://www.eclipse.org/downloads/download.php?file=/embed-cdt/releases/$pkgver/org.eclipse.embedcdt.repository-$pkgver-$_date.zip&r=1")
-sha512sums=('3c7a017927f7c848f4015cc8d30e38b38401d665e0a5dc8d9648d961f00f0085193adf0a9d8579692458975e415fdfb2d0d447afb47e369cfd2593665a299fab')
+source=("org.eclipse.embedcdt.repository-$pkgver-$_date.zip::https://www.eclipse.org/downloads/download.php?file=/embed-cdt/releases/$pkgver/org.eclipse.embedcdt.repository-$pkgver-$_date.zip&r=1")
+sha512sums=('7ee5f5fe54c2e5c9c7099f1c36972531af4c9241992eff214c79dcb927596ea8f606fc4d6247b7c6de9de984e6081c86d5d3c5127ef62905bcb706fa79adee54')
 
 package() {
   local _dest="${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse"
