@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov
 
 pkgname=booster-git
-pkgver=0.1.r20.g3eb254b
+pkgver=0.1.r22.g8f39e40
 pkgrel=1
 pkgdesc='Fast and secure initramfs generator'
 arch=(x86_64)
@@ -40,6 +40,7 @@ check() {
 package() {
   cd booster
   install -Dp -m755 generator/booster "$pkgdir/usr/bin/booster"
+  install -Dp -m644 generator/booster.1 "$pkgdir/usr/share/man/man1/booster.1"
   install -Dp -m755 init/init "$pkgdir/usr/lib/booster/init"
   install -Dp -m644 packaging/arch/90-booster.hook "$pkgdir/usr/share/libalpm/hooks/90-booster.hook"
   install -Dp -m755 packaging/arch/booster-install "$pkgdir/usr/share/libalpm/scripts/booster-install"
