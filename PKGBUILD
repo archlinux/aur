@@ -13,6 +13,7 @@ depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('7e4fd584b45e91637437778c607308a85177226f2fd8c0e98ba528ed5ab18b3a')
+sha512sums=('fda16b3961c16ef74cf7875866dd00f897222c9c82501f09e135f1235e4a28726edf718f74a849b4b5d6e2e161b0d0b8fa29022aa6ef91401f31a06f2235f082')
 b2sums=('cae6f380fa0f8db3cebc5df67a4f5c614eab926e9bd9c1665b236fa332c6a5a1b873e1e75304ce34e7774a369d9f3559368a0106ec7ab2ba28c4fd50899a6324')
 
 build() {
