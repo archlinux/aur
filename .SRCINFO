@@ -1,0 +1,24 @@
+pkgbase = eddie-cli
+	pkgdesc = Eddie - VPN tunnel - CLI
+	pkgver = 2.19.7
+	pkgrel = 1
+	url = https://eddie.website
+	install = eddie-cli.install
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = cmake
+	depends = mono
+	depends = openvpn
+	depends = sudo
+	optdepends = stunnel: VPN over SSL
+	optdepends = openssh: VPN over SSH
+	provides = eddie-cli
+	conflicts = airvpn
+	conflicts = airvpn-beta-bin
+	conflicts = airvpn-git
+	source = https://github.com/AirVPN/Eddie/archive/2.19.7.tar.gz
+	sha1sums = ebee44625022a097963db9eeae193a411e347190
+
+pkgname = eddie-cli
+
