@@ -42,7 +42,7 @@ build() {
     arch-meson build -D buildstamp="$_buildstamp"
     meson compile -C build
   else
-    ./autogen.sh
+    autoreconf
     ./configure \
       --prefix=/usr \
       --with-buildstamp="$_buildstamp"
