@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: hexchain <i at hexchain.org>
 pkgname=tpm2-abrmd-git
-pkgver=2.3.2.r11.78ba8ea
+pkgver=2.3.3.r44.9100c70
 pkgrel=1
 pkgdesc='Trusted Platform Module 2.0 Access Broker and Resource Management Daemon'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/tpm2-software/tpm2-abrmd'
 license=('BSD')
 depends=('glib2' 'tpm2-tss' 'libtss2-mu.so' 'libtss2-rc.so' 'libtss2-sys.so' 'libtss2-tctildr.so')
 makedepends=('git' 'autoconf-archive' 'python')
-checkdepends=('cmocka' 'ibm-sw-tpm2' 'iproute2')
+checkdepends=('cmocka' 'iproute2' 'swtpm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url.git")

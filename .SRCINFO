@@ -1,13 +1,13 @@
 pkgbase = tpm2-abrmd-git
 	pkgdesc = Trusted Platform Module 2.0 Access Broker and Resource Management Daemon
-	pkgver = 2.3.2.r11.78ba8ea
+	pkgver = 2.3.3.r44.9100c70
 	pkgrel = 1
 	url = https://github.com/tpm2-software/tpm2-abrmd
 	arch = x86_64
 	license = BSD
 	checkdepends = cmocka
-	checkdepends = ibm-sw-tpm2
 	checkdepends = iproute2
+	checkdepends = swtpm
 	makedepends = git
 	makedepends = autoconf-archive
 	makedepends = python
@@ -23,4 +23,3 @@ pkgbase = tpm2-abrmd-git
 	sha512sums = SKIP
 
 pkgname = tpm2-abrmd-git
-
