@@ -4,13 +4,13 @@ _pkgname=v
 pkgname=vlang
 # Package maintainer(s): remember to update the commit for vc in prepare()
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software'
 arch=('x86_64')
 url='https://vlang.io'
 license=('MIT')
 depends=('glibc')
-optdepends=('glfw' 'libfreetype.so')
+optdepends=('glfw' 'libfreetype.so' 'openssl')
 makedepends=('git')
 conflicts=('v' 'vlang-bin' 'vlang-git')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$_pkgname/archive/$pkgver.tar.gz"
