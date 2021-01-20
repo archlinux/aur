@@ -3,7 +3,7 @@
 # prev-Maintainer: Raimar Sandner <raimar.sandner@uibk.ac.at>
 
 pkgname=cppqed-git
-pkgver=2.100.3
+pkgver=2.100.8.r183.g712b601e
 pkgrel=1
 pkgdesc="Highly flexible framework for simulating open quantum dynamics."
 arch=(i686 x86_64)
@@ -30,8 +30,7 @@ prepare() {
 }
 
 pkgver() {
-   cd "${pkgname}"
-   echo "$(git describe --tags | sed 's|-|_|g')"
+  git -C "${srcdir}/${pkgname}" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
