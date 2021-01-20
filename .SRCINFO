@@ -1,0 +1,48 @@
+pkgbase = linux-odroid
+	pkgver = 5.10.9
+	pkgrel = 1
+	url = https://github.com/m2x-dev/linux/
+	arch = aarch64
+	license = GPL2
+	makedepends = bc
+	makedepends = docbook-xsl
+	makedepends = dtc
+	makedepends = git
+	makedepends = inetutils
+	makedepends = kmod
+	makedepends = uboot-tools
+	makedepends = vboot-utils
+	makedepends = xmlto
+	options = !strip
+	source = https://github.com/m2x-dev/linux/archive/7a69358a637c645a172fd50a472926d2fc13fae7.tar.gz
+	source = config
+	source = linux.preset
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = 01-aegis-crypto.patch
+	b2sums = 304c04a5e55235eed4d00d34637556ba297d961cecc69d22fbfe01e86508c73217e0f211bc1387a1afc132dc59091f149270d3c2f6797c8c3eebedaa911edcae
+	b2sums = dfdbf02c42340aba521e5211b4b749b6c055e62e22ec1244fa9795ddeb0dad96b8ad63d2db58fb1eb7f35b53031058c8f797f0bac711ad35ba412034ba485207
+	b2sums = 146bfc704a3ce69176055d6612d5c55b0048ccae83c13c27aa3c273424f5a81a3168fbfbcce6c78f6c69cbfd15d1161a46b08489d324495070731dbb43ac5b9f
+	b2sums = 40e2e0ac9eec9f9c08593875ca5bb8a26f835e33ae42e3718b98e83d76bbbc51a68395215c707fe58269954127261f7f8d12ec47341d28c672de973f3c4e71e8
+	b2sums = f39994fda3d76407b0af192534ca9931782b3e9de4e438a3adbc7640fc794c261102e5c7bfa1523c291ef8c7256c1106e6dbd40814006329c48d90f51c569e82
+	b2sums = 35f53af7b446f55b426b9b73b7f65dc99c4bacd444364e78666b868b5200dd04cf022dfd2784701684d2ec033076c0856d125df89d9e3b339ef32f749549eaf3
+
+pkgname = linux-odroid
+	pkgdesc = The Linux Kernel and modules with patches for ODroid SBCs
+	install = linux-odroid.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = kernel26
+	provides = linux=5.10.9
+	conflicts = linux
+	replaces = linux-armv8
+	backup = etc/mkinitcpio.d/linux-odroid.preset
+
+pkgname = linux-odroid-headers
+	pkgdesc = Header files and scripts for building modules for linux kernel with patches for ODroid SBCs
+	provides = linux-headers=5.10.9
+	conflicts = linux-headers
+

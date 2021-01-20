@@ -1,0 +1,13 @@
+--- linux-odroid-5.8.y/crypto/aegis128-neon-inner.c	2020-09-28 09:14:15.000000000 +0200
++++ src/linux-odroid-5.8.y/crypto/aegis128-neon-inner.c	2020-09-29 11:51:49.982822079 +0200
+@@ -148,8 +148,8 @@
+ 		kiv,
+ 		vld1q_u8(const1),
+ 		vld1q_u8(const0),
+-		k ^ vld1q_u8(const0),
+-		k ^ vld1q_u8(const1),
++		(uint8x16_t) (k ^ vld1q_u8(const0)),
++		(uint8x16_t) (k ^ vld1q_u8(const1)),
+ 	}};
+ 	int i;
+ 
