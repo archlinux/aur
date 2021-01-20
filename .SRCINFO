@@ -8,6 +8,7 @@ pkgbase = dtkcore-git
 	license = LGPL3
 	makedepends = git
 	makedepends = qt5-tools
+	makedepends = gtest
 	depends = dconf
 	depends = deepin-desktop-base-git
 	depends = python
