@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="http://cppqed.sourceforge.net"
 license=(custom)
 depends=('gcc-libs' 'boost' 'blitz-cppqed-hg' 'flens-git' 'python2' 'python2-numpy' 'python2-scipy' 'cmake' 'gsl')
-makedepends=('git' 'gcc' 'cmake')
+makedepends=('git' ninja 'gcc' 'cmake')
 optdepends=()
 provides=('cppqed')
 conflicts=('cppqed')
@@ -41,13 +41,15 @@ build() {
   cmake \
   -S "${srcdir}/${pkgname}" \
   -B build \
+  -G Ninja \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DCMAKE_BUILD_TYPE=Release
-  make -C build
+# shellcheck disable=SC2086 # expand multiple flags passed in MAKEFLAGS
+  ninja -C build ${MAKEFLAGS:--j1}
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -C build install
   install -Dm644 "${srcdir}"/${pkgname}/LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
