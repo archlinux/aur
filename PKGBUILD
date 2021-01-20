@@ -4,7 +4,7 @@ pkgname=obsidian
 _appimagver=0.10.8
 _appimage="${pkgname}-${_appimagver}.AppImage"
 pkgver=${_appimagver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Obsidian is a powerful knowledge base that works on top of a local folder of plain text Markdown files"
 provides=("obsidian")
 conflicts=("obsidian-appimage")
@@ -37,7 +37,7 @@ package() {
     # Install icons
     cp -r squashfs-root/usr/share/icons/hicolor "${pkgdir}"/usr/share/icons/
     # Modify .desktop file to run executable instead of AppImage
-    sed -i -E "s|Exec=AppRun|Exec=/usr/bin/${pkgname}|" squashfs-root/${pkgname}.desktop
+    sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${pkgname} %u|" squashfs-root/${pkgname}.desktop
     # Install desktop file
     install -Dm644 squashfs-root/${pkgname}.desktop -t "${pkgdir}"/usr/share/applications/
     # Move package contents to opt
