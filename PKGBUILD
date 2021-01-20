@@ -1,7 +1,7 @@
 # Maintainer: Jason Goulet-Lipman <jason.gouletlipman@gmail.com>
 pkgname=youtubedl-gui-beta
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('GPL3')
 pkgdesc="Download Youtube videos to local audio or video files. - Beta Branch"
@@ -15,11 +15,6 @@ depends=("youtube-dl"
 	 "ffmpeg"
 	 "hicolor-icon-theme"
 	 "gtk-update-icon-cache")
-
-pkgver() {
-	cd ytdl-gui
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 build() {
 	cd ytdl-gui
