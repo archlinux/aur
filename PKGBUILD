@@ -1,5 +1,5 @@
 # Maintainer: abdellatif-dev <abdellatif.devlog@gmail.com>
-pkgname=dmenu-abdellatif-git
+pkgname=st-abdellatif-git
 pkgver=0.5.5
 pkgrel=1
 pkgdesc="my st build"
