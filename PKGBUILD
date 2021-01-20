@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/ycm-core/ycmd"
 license=('GPLv3')
 depends=('clang' 'python')
-makedepends=('python' 'cmake' 'git' 'go' 'npm')
+makedepends=('python' 'cmake' 'git' 'go' 'npm' 'jre-openjdk')
 source=("git+https://github.com/ycm-core/ycmd")
 sha256sums=('SKIP')
 
