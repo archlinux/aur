@@ -1,7 +1,7 @@
 # Maintainer: berberman <hatsue@typed.icu>
 
 pkgname=arch-hs-git
-pkgver=r224.09ad27d
+pkgver=r251.1203d2c
 pkgrel=1
 pkgdesc="Distribute hackage packages to archlinux"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('ghc-libs' 'haskell-aeson' 'haskell-req' 'haskell-hackage-db' 'haskell-
   'haskell-algebraic-graphs' 'haskell-conduit' 'haskell-tar-conduit' 'haskell-conduit-extra' 
   'haskell-split' 'haskell-neat-interpolation' 'haskell-microlens' 'haskell-microlens-th' 
   'haskell-polysemy' 'haskell-optparse-applicative' 'libalpm.so' 'haskell-diff' 
-  'haskell-prettyprinter' 'haskell-prettyprinter-ansi-terminal'
+  'haskell-prettyprinter' 'haskell-prettyprinter-ansi-terminal' 'haskell-arch-web'
 )
 makedepends=('ghc' 'git')
 provides=("${pkgname%-git}")

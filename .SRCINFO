@@ -1,6 +1,6 @@
 pkgbase = arch-hs-git
 	pkgdesc = Distribute hackage packages to archlinux
-	pkgver = r224.09ad27d
+	pkgver = r251.1203d2c
 	pkgrel = 1
 	url = https://github.com/berberman/arch-hs
 	arch = x86_64
@@ -26,6 +26,7 @@ pkgbase = arch-hs-git
 	depends = haskell-diff
 	depends = haskell-prettyprinter
 	depends = haskell-prettyprinter-ansi-terminal
+	depends = haskell-arch-web
 	provides = arch-hs
 	conflicts = arch-hs
 	source = arch-hs::git+https://github.com/berberman/arch-hs.git
