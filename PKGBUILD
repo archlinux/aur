@@ -1,25 +1,31 @@
-# Maintainer: Alexandre Petitjean <alpetitjean at gmail dot com>
+# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+# Contributor: Alexandre Petitjean <alpetitjean at gmail dot com>
 
 pkgname=mopidy-beets
-pkgver=3.1.0
-pkgrel=0
+_name=Mopidy-Beets
+pkgver=4.0.1
+pkgrel=1
 pkgdesc="Mopidy extension for playing music from a Beets collection"
 arch=('any')
-url="http://www.mopidy.com"
-license=('APACHE')
+url='https://mopidy.com/ext/beets/'
+license=('MIT')
 depends=(
-	'mopidy>=1.0'
-	'python2-pykka>=1.1'
-	'python2-setuptools'
-	'python2-requests>=2.0')
-makedepends=('python2')
-provides=('mopidy-beets')
-source=("https://github.com/mopidy/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('e79ee3aedf69ffda71b21a1da97de621')
+	'mopidy>=3'
+	'python-pykka>=2.0.1'
+	'python-setuptools'
+	'python-requests>=2')
+makedepends=('python')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('6a3310f12da35bd737763ffbe7bab2301ad8340d74470d222817d2c39ba2a0d1')
+
+build() {
+  cd "$srcdir/$_name-$pkgver"
+  python setup.py build
+}
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  cd "$srcdir/$_name-$pkgver"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 # vim:set ts=2 sw=2 et:
