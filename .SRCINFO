@@ -11,6 +11,7 @@ pkgbase = snis-git
 	depends = sdl2
 	depends = lua52
 	depends = portaudio
+	depends = libbsd
 	optdepends = espeak: for text to speech
 	optdepends = espeak-ng: for text to speech
 	provides = snis

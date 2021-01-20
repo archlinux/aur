@@ -7,7 +7,7 @@ pkgdesc="Space Nerds in Space open source spaceship bridge simulator."
 arch=('i686' 'x86_64')
 url="http://smcameron.github.io/space-nerds-in-space/"
 license=('GPL2')
-depends=('glew' 'sdl2' 'lua52' 'portaudio')
+depends=('glew' 'sdl2' 'lua52' 'portaudio' 'libbsd')
 makedepends=('git')
 optdepends=('espeak: for text to speech'
             'espeak-ng: for text to speech')
