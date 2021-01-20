@@ -48,13 +48,13 @@ _use_current=
 pkgbase=linux-rt-bfq-dev
 # pkgname=('linux-rt-bfq-dev' 'linux-rt-bfq-dev-headers' 'linux-rt-bfq-dev-docs')
 _major=5.10
-_minor=4
-_rtver=22
+_minor=8
+_rtver=24
 _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=6
+pkgrel=1
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -83,15 +83,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-rt-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-rt-patches-v2-sep/0002-Bluetooth-Fix-attempting-to-set-RPA-timeout-when-uns.patch"
-        "${_lucjanpath}/arch-rt-patches-v2-sep/0003-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
-        "${_lucjanpath}/arch-rt-patches-v2-sep/0004-drm-amd-display-Add-get_dig_frontend-implementation-.patch"
-        "${_lucjanpath}/arch-rt-patches-v2-sep/0005-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch"
-        "${_lucjanpath}/arch-rt-patches-v2-sep/0006-ALSA-hda-hdmi-fix-locking-in-silent_stream_disable.patch"
-        "${_lucjanpath}/arch-rt-patches-v2-sep/0007-Revert-drm-amd-display-Fix-memory-leaks-in-S3-resume.patch"
-        "${_lucjanpath}/arch-rt-patches-v2-sep/0008-btrfs-fix-deadlock-when-cloning-inline-extent-and-lo.patch"
-        "${_lucjanpath}/arch-rt-patches-v2-sep/0009-btrfs-shrink-delalloc-pages-instead-of-full-inodes.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0003-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch"
          # the main kernel config files
         'config')
 
@@ -338,22 +332,16 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('aab782786cc06b5f1872bbb88c4f55a73d222f8ecf1ab8f5b7d96de2160b11b4407e02a44b206d2c00e395ba0662aa5a038b8e10d185621a0b33c576b523b490'
+sha512sums=('13ea7cf81db43059466c1558bd80175a6c2090496786fe9220c165958d19781d5501104f41f8207e0239a101611a1faa38b203dd1e8890964494ef8518f5f21e'
             'SKIP'
-            'd925b83b257b68001dc284bb9bb690e5a1b0643b464d3e4fcf2c00ec3b23e12584a0f5186a877226fa5c8126db9e2f45abf3957dea020c28cee20780a8ba03a0'
+            '163e7984c2ae8f32825fb0eb52b19af410ccfac3fe72bb5cc400e797112326dc2f11e808ea7b168baa2a412888cbc80b3f2050040ec04043b606a31bbb8a46b2'
             'SKIP'
             '45fa721352143304eceff87649986fd42fcf4ae369f15ba704a435ab2f107dfe41c050eac25cd9167d2cc73d569aad8501cbd13477b62bad9724e4240f36ab15'
             'c074a23494d46b8c29e404c73823d86addd19ab12337f7c62607befdff58f10b5059ec97c3c52ab27b210cf64a21019c38547fdd4c004823f772bf7b8ea4b0c5'
             '34e21ecc4ef0d07707283427fa82d561a9573d670e80ccd41f7d9cb595473b3844b8df7aeffcb4fe82d9deeef0a4d4e6aef663eb1a7a397fa181f06f418a0d6d'
-            'f977620add621e62e037adf845d989ef60843fc846e5e3dac3677b9627b0d45822d2cc02e30de33b8cbcab1a43badb10196298a3594d7d9bf09d09707d2f75ae'
-            'a32eeadafef2c54477bf2f076dd67891c021c531013b1ca6479a78ceeefec029df1adf3208965c8391d158a278cdcf6757f67cace6f506e60ff86615a6f2fc40'
-            '0c39c884576ec21c79394d094ce12846f0ee313f33833cf6477200040cfadbef1690e9b1749ac2a21f236760c7b6de50c28bdd5f869d09f9d273a63941e00b54'
-            '5ebec24bebff586da9a85581a452e321df5cf1be19b0193c4d635a89258550e3e8ab3553070c767484fced8e2788f4e900086c98ce2c17347b054eea4bdaa67f'
-            'ebe978beda2fb3afacf80eff2e369bb19d521b1befcbd3c64d000d13b914abee1bc76a6eb2e18875be3b25c5dc0a4d58708ad1b50cf70c97a95974e52278eb6c'
-            '2c99a2920d55a30df1c49a69e8a09bfd6212f204945c9639ae49ce144aca108278086833fea7e468c25870917ac4da2db186516e0650abef2eca35eaf9b0fee3'
-            '2473767481cf0879f5eed44cf158b3b4cf68dbb225c920def172e1635883285e882ef1fe4a879a46fa0d4825308101fd20b9c76a3e30b4c7a1616608515f9408'
-            '4001f53c1788b94f5962a3d87f8a48e1df904b78d058ad68804796ec4099a11732222b420723f9ac098b33725da9f56fb7c8f21c9f8f918a73641156a308c46e'
-            'e53456d64adc723b063654450d854ffd94f10e0b3aa05e77a5fc1923049d1f83d838ec704caa33538a54dca9d8cfa5612e333d7e72c4b01aac8f60076b7c16a0'
+            'd9fe7da551cf29d41a80a2c50d74ee427bc81d1cbf373abf23644244a5a7a382a8d5a2bad94a415e0d17cd2b225d5c7999ad5781cc442196608cd92826350520'
+            'eae926cbd8528e8d688b0038c29069cdafb37894bcba8d510a43b138a2db47b78b450a745db07acd0c5edf66fde86eacd94b1124587218b3e73848861d543182'
+            '0ff23d3cfe37e3112cf2c518d3fcdd4b510000044facd3a3091ad5440a9db25ddbc01b4bf8e54c33055d76222fb7b2968de7ede265156b980e89620998ee6081'
             'dd7b29c7353d93a429690c2441c88f63c218d4e2011de69bc5e8e636559d469b865806b340465bf022a8e336a014d634592adafa15c3e0ef497c4c9d2d1b3029')
 
 validpgpkeys=(
