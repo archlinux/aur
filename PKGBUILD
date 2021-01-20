@@ -8,7 +8,7 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-pkgver=r13.259af28
+pkgver=r8.39522af
 pkgrel=1
 pkgdesc='An xunit and clover -based unit tests runner for Arcanist.'
 arch=('any')
