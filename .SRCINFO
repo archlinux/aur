@@ -1,0 +1,16 @@
+pkgbase = python-mmtf
+	pkgdesc = The macromolecular transmission format (MMTF) is a binary encoding of biological structures.
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = http://mmtf.rcsb.org/
+	arch = x86_64
+	license = Apache
+	depends = python-numpy
+	depends = python-nose
+	depends = ipython
+	depends = python-msgpack
+	source = https://github.com/rcsb/mmtf-python/archive/v1.1.2.tar.gz
+	sha256sums = 289b1b46331d2011f5629bf3f0a7dbbf87ad24af301417edeb8c309cc86768d2
+
+pkgname = python-mmtf
+
