@@ -10,16 +10,18 @@ makedepends=('git' 'dart')
 changelog=
 source=("git+$url")
 md5sums=('SKIP') #autofill using updpkgsums
+OPTIONS=(!strip !docs !libtool !staticlibs emptydirs zipman purge !debug)
 
 build() {
   cd "$pkgname"
   pub get
-  dart2native bin/dartbuster.dart -o bin/dartbuster
+  dart2native "bin/dartbuster.dart" -o "bin/dartbuster"
+  rm bin/dartbuster.dart
 }
 
 package() {
-  cd "$pkgname"
-  mkdir -p "$pkgdir/opt/$pkgname"
-  cp -rf * "$pkgdir/opt/$pkgname"
-  ln -sf "$pkgdir/opt/$pkgname" "/bin/$pkgname"
+  cd $pkgname
+  mkdir -p "$pkgdir/opt/"
+  cp -R "${srcdir}"/"${pkgname}" "${pkgdir}"/opt
+  sudo ln -sf "/opt/$pkgname/bin/dartbuster" "/bin/dartbuster"
 }
