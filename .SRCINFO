@@ -1,6 +1,6 @@
 pkgbase = dockerfile-language-server-bin
 	pkgdesc = Language server implementation for Dockerfiles
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://www.npmjs.com/package/dockerfile-language-server-nodejs
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = dockerfile-language-server-bin
 	depends = npm
 	conflicts = nodejs-docker-langserver
 	replaces = nodejs-docker-langserver
-	noextract = dockerfile-language-server-nodejs-0.2.0.tgz
-	source = https://registry.npmjs.org/dockerfile-language-server-nodejs/-/dockerfile-language-server-nodejs-0.2.0.tgz
-	sha1sums = 8f293761b85dd5783abf82a494821c58ac3f65dd
+	noextract = dockerfile-language-server-nodejs-0.3.0.tgz
+	source = https://registry.npmjs.org/dockerfile-language-server-nodejs/-/dockerfile-language-server-nodejs-0.3.0.tgz
+	sha1sums = 1ce3cba603b0bef813eeee6268ee70acc0bf2e12
 
 pkgname = dockerfile-language-server-bin
 
