@@ -2,7 +2,8 @@
 
 _pkgname=v
 pkgname=vlang
-pkgver=0.1.29
+# Package maintainer(s): remember to update the commit for vc in prepare()
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software'
 arch=('x86_64')
@@ -15,13 +16,13 @@ conflicts=('v' 'vlang-bin' 'vlang-git')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$_pkgname/archive/$pkgver.tar.gz"
         'git+https://github.com/vlang/vc'
         'no-compile.patch')
-sha256sums=('5111d04663d8454c9e8bcbd7e3544dcbd6abc54eb5034e31649417af6e8418a6'
+sha256sums=('0e7d37e7ef7a5001b86811239770bd3bc13949a6489e0de87b59d9e50ea342c9'
             'SKIP'
-            '4281ae82a72cfb5632d41d87043076b214dcda3bb8bfc03244dd35d322435bc4')
+            '750d396c1e52859b2791459c5a483c6cc0d17ae4b1fda740c8434f4086dcbfd5')
 
 prepare() {
     cd vc
-    git checkout b01d0fcda4b55861baa4be82e307cca4834b1641
+    git checkout 563c3bd5720e513326fbac728dde29454275de9d # 0.2.1
 
     cd "$srcdir/$_pkgname-$pkgver"
     patch -Np1 -i ../no-compile.patch
@@ -29,13 +30,14 @@ prepare() {
 
 build() {
     cd $_pkgname-$pkgver
-    cc -std=gnu11 $CFLAGS -w -o v ../vc/v.c -lm $LDFLAGS
-    ./v install markdown
+    cc -std=gnu11 -w -o v ../vc/v.c -lm $LDFLAGS
     ./v -prod self
 
-    for tool in cmd/tools/*.v; do
-        ./v $tool
-    done
+    # We have to build vpm and build-tools manually since we disabled automatic
+    # compilation in no-compile.patch
+    ./v cmd/tools/vpm.v
+    ./v cmd/tools/vbuild-tools.v
+    ./v build-tools
 }
 
 package() {
