@@ -1,6 +1,6 @@
 pkgbase = otf-edwin
 	pkgdesc = A text font for musical scores
-	pkgver = 0.5
+	pkgver = 0.51
 	pkgrel = 1
 	url = https://github.com/MuseScoreFonts/Edwin
 	arch = any
