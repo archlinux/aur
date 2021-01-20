@@ -45,7 +45,7 @@ fi
 pkgbase="linux-mainline-bcachefs" #"${_custom_pkgbase}"
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver="${_basekernel}"."${_sub}"
-pkgrel=112
+pkgrel=113
 pkgdesc='Linux-tkg with bcachefs'
 bcachefs="git+https://github.com/koverstreet/bcachefs.git"
 arch=('x86_64') # no i686 in here
@@ -92,9 +92,9 @@ case $_basever in
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0012-misc-additions.patch"
     )
     sha256sums=('SKIP'
-            'fc89eb1b4ede1ab0331df04e33d6581aa3c1e7195aa771b0378cc292c00be892'
+            '90cf5582f25ded6d5935b54fc20758e2c47915a4d5fe68d7298684557f631ff1'
             'SKIP'
-            '277c2126ecb28175a3c79732c91767d2e2fc0094c80eb0047eee34e0804ab55a'
+            '458d1ca195f3fee5501683a4b61ef0ed0cfa7e5219eccab3390fb40c0289898a'
             '1e15fc2ef3fa770217ecc63a220e5df2ddbcf3295eb4a021171e7edd4c6cc898'
             '66a03c246037451a77b4d448565b1d7e9368270c7d02872fbd0b5d024ed0a997'
             'f6383abef027fd9a430fd33415355e0df492cdc3c90e9938bf2d98f4f63b32e6'
