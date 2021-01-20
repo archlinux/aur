@@ -1,16 +1,16 @@
 pkgbase = tablelist
 	pkgdesc = A library for Tcl/Tk 8.0 or higher
-	pkgver = 6.10
+	pkgver = 6.11
 	pkgrel = 1
 	url = http://www.nemethi.de
 	arch = any
 	license = custom
 	depends = bash
 	depends = tcl
-	source = https://www.nemethi.de/tablelist/tablelist6.10.tar.gz
+	source = https://www.nemethi.de/tablelist/tablelist6.11.tar.gz
 	source = https://www.nemethi.de/tablelist/COPYRIGHT.txt
-	sha256sums = 122d40fc171ac5a380c356dbb60ac5d34482bbbc7ed6b2142c5325cfe09bb752
-	sha256sums = 6ada59e272811777d67591af551e3f77e1030d4fc1fcc39d51d66f888e1ba0f5
+	sha256sums = a1d61879de3f35de0154e4fa6f38a25cb120626e119cd29c5b344a13d6439270
+	sha256sums = 1bf05d121b47d68daf4597dae634046a14a059017df01b18a14a14f7a2e9b362
 
 pkgname = tablelist
 
