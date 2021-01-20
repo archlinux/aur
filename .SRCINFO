@@ -1,6 +1,6 @@
 pkgbase = electron-beta-bin
 	pkgdesc = Build cross platform desktop apps with web technologies
-	pkgver = 12.0.0.beta.14
+	pkgver = 12.0.0.beta.16
 	pkgrel = 1
 	url = https://electronjs.org/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = electron-beta-bin
 	depends = snappy
 	provides = electron
 	provides = electron-beta
-	source = https://github.com/electron/electron/releases/download/v12.0.0-beta.12/electron-v12.0.0-beta.12-linux-x64.zip
-	md5sums = 4d9e7c17031127c5743fe1f0c49ad4df
+	source = https://github.com/electron/electron/releases/download/v12.0.0-beta.16/electron-v12.0.0-beta.16-linux-x64.zip
+	md5sums = 0ce6e5078630354dcd771145817ae3de
 
 pkgname = electron-beta-bin
