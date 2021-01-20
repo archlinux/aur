@@ -1,7 +1,7 @@
 pkgbase = mopidy-beets
 	pkgdesc = Mopidy extension for playing music from a Beets collection
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mopidy.com/ext/beets/
 	arch = any
 	license = MIT
