@@ -1,0 +1,22 @@
+pkgbase = python-pyfab
+	pkgdesc = Python interface to the Fabber Bayesian model fitting tool
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://pyfab.readthedocs.io/en/latest/
+	arch = any
+	license = custom:PYFAB license
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = sed
+	depends = fsl>=6.0.1
+	depends = fslpy
+	depends = python
+	depends = python-numpy
+	depends = python-nibabel
+	depends = python-six
+	options = !emptydirs
+	source = python-pyfab::git+https://github.com/physimals/pyfab.git#tag=v0.3.5
+	b2sums = SKIP
+
+pkgname = python-pyfab
+
