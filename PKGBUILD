@@ -27,6 +27,7 @@ prepare(){
   # version it ourselves because we don't have a .git folder
   echo "[metadata]" > setup.cfg
   echo "version = ${pkgver}" >> setup.cfg
+  echo "__version__ = \"${pkgver}\"" > src/seabreeze/_version.py
   sed '/use_scm_version={/,+5 d' -i setup.py
 }
   
