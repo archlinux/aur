@@ -1,4 +1,4 @@
-# Maintainer: John Machado <john at delinuxco dot com>
+#  Maintainer: John Machado <john at delinuxco dot com>
 
 _pkgname=kdenlive
 pkgname=kdenlive-appimage
