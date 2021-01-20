@@ -1,19 +1,20 @@
 # Maintainer: David Harrigan <dharrigan [@] gmail [dot] com>
 
 pkgname=clj-kondo-bin
-pkgver=2020.12.12
+pkgver=2021.01.20
 pkgrel=1
 pkgdesc='A minimal and opinionated linter for Clojure code that sparks joy.'
 arch=('x86_64')
 url='https://github.com/borkdude/clj-kondo'
 license=('EPL')
-provides=('clj-kondo')
-conflicts=('clj-kondo')
+depends=('gcc-libs' 'zlib')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 
-source=("https://github.com/borkdude/clj-kondo/releases/download/v${pkgver/_/-}/${pkgname/\-bin/}-${pkgver/_/-}-linux-amd64.zip")
+source_x86_64=("${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64.zip")
 
-sha256sums=('99e6a288e59c0721a49c299187b125fb0d7ca4463056ca5eeef635ad81d3d61f')
+sha256sums_x86_64=('0fe17d85eea491f70aa57c8b26c74e7406e1f8ab538ba4d53e4deb79d8129325')
 
 package() {
-  install -Dm755 "${srcdir}/${pkgname/\-bin/}" "${pkgdir}/usr/bin/${pkgname/\-bin/}"
+  install -Dm755 "${srcdir}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin/}"
 }
