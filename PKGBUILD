@@ -1,6 +1,6 @@
 # Maintainer: Thayne McCombs <bytecurry.software@gmail.com>
 pkgname=hyperfs
-pkgver=2.0.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A simple HTTP static file server"
 arch=('i386' 'x86_64')
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 provides=()
 source=("https://github.com/bytecurry/hyperfs/archive/v$pkgver.tar.gz")
-md5sums=('ed588e98afd0f0f502d87a17b8d44592')
+md5sums=('618668b33f28599670c1f54da7e477dd')
 
 
 
