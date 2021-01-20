@@ -3,7 +3,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=DBI
-_cranver=1.1.0
+_cranver=1.1.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,9 +12,9 @@ arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(LGPL2.1 LGPL3)
 depends=('r>=3.0.0')
-optdepends=(r-blob r-covr r-hms r-knitr r-magrittr r-rmarkdown r-rprojroot r-rsqlite r-testthat r-xml2)
+optdepends=(r-blob r-covr r-dbplyr r-dplyr r-glue r-hms r-knitr r-magrittr r-rmarkdown r-rprojroot r-rmariadb r-rsqlite r-testthat r-xml2)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('fa91ce2c8d7bf62a75f858d2501d6d3a')
+sha256sums=('572ab3b8a6421d0ac3e7665c4c842826f1723af98fca25d4f43edb419e771344')
 
 build() {
   cd "${srcdir}"
