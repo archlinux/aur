@@ -12,7 +12,7 @@ pkgbase = pgpgram
 	depends = telegram-tdlib
 	depends = trovotutto
 	optdepends = youtube-dl
-	source = pgpgram::git+https://github.com/tallero/pgpgram.git
+	source = pgpgram::git+https://github.com/tallero/pgpgram.git#tag=0.3.1
 	sha256sums = SKIP
 
 pkgname = pgpgram
