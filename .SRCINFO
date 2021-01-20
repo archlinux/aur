@@ -1,0 +1,18 @@
+pkgbase = mastercard-pkcs11-tools
+	pkgdesc = Tools to manage objects on PKCS#11 cryptographic tokens
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/Mastercard/pkcs11-tools
+	arch = x86_64
+	makedepends = autoconf-archive
+	makedepends = bison
+	makedepends = flex
+	depends = openssl
+	source = git+https://github.com/Mastercard/pkcs11-tools#commit=26449d370169e723498167008206de7a3b354327
+	source = git+https://git.savannah.gnu.org/git/gnulib.git
+	source = oasis-pkcs11::git+https://github.com/oasis-tcs/pkcs11
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mastercard-pkcs11-tools
