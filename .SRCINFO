@@ -1,6 +1,6 @@
 pkgbase = mkg3a
 	pkgdesc = A tool to create Casio FX-CG addon (.g3a) files.
-	pkgver = 0.4.2
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://gitlab.com/taricorp/mkg3a/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = mkg3a
 	license = ZLIB
 	makedepends = cmake
 	depends = libpng
-	source = https://gitlab.com/taricorp/mkg3a/-/archive/0.4.2/mkg3a-0.4.2.tar.gz
-	sha256sums = 99ab60cca6a25c3eb3aa2757684424dca4c9a62d1c66c394eed220a2ab7cbfec
+	source = https://gitlab.com/taricorp/mkg3a/-/archive/0.5.0/mkg3a-0.5.0.tar.gz
+	sha256sums = 78fbcbdbcd948e210fdde2d05fa9228e201eff3c2c2941bd15380f0a58c6a408
 
 pkgname = mkg3a
 
