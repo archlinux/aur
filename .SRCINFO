@@ -1,0 +1,15 @@
+pkgbase = cardano-node
+	pkgdesc = The core component that is used to participate in a Cardano decentralised blockchain.
+	pkgver = 1.24.2
+	pkgrel = 1
+	url = https://github.com/input-output-hk/cardano-node
+	arch = any
+	license = Apache
+	makedepends = cabal-install-bin
+	makedepends = ghc=8.10.2
+	makedepends = ghc-static=8.10.2
+	source = https://github.com/input-output-hk/cardano-node/archive/1.24.2.zip
+	md5sums = d483c6d27bccc7b463f0b27ed83ec87f
+
+pkgname = cardano-node
+
