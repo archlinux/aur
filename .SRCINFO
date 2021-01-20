@@ -1,6 +1,6 @@
 pkgbase = php-yaml
 	pkgdesc = Support for YAML 1.1 (YAML Ain't Markup Language) serialization using the LibYAML library.
-	pkgver = 2.1.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = http://bd808.com/pecl-file_formats-yaml/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = php-yaml
 	depends = php
 	depends = libyaml
 	backup = etc/php/conf.d/yaml.ini
-	source = http://pecl.php.net/get/yaml-2.1.0.tgz
-	sha256sums = 5acbf64d770b4b0aef8c877326fc0711112db4215a27c0fe8e4478fb7314b666
+	source = http://pecl.php.net/get/yaml-2.2.1.tgz
+	sha256sums = e17ad04e752e25fd099bddd2df9d26dfef183c8d00c4179bc9d7a2e1c97d7819
 
 pkgname = php-yaml
 
