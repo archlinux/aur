@@ -1,7 +1,7 @@
 pkgbase = heroic-games-launcher-appimage
 	pkgdesc = HGL, a Native alternative Linux Launcher for Epic Games
-	pkgver = 1.1.1
-	pkgrel = 2
+	pkgver = 1.1.2
+	pkgrel = 1
 	url = https://github.com/flavioislima/HeroicGamesLauncher
 	arch = x86_64
 	license = GPL3
@@ -15,10 +15,10 @@ pkgbase = heroic-games-launcher-appimage
 	conflicts = heroic-games-launcher-bin
 	conflicts = heroic-games-launcher-electron
 	options = !strip
-	source = https://github.com/flavioislima/HeroicGamesLauncher/releases/download/v1.1.1/heroic-1.1.1.AppImage
+	source = https://github.com/flavioislima/HeroicGamesLauncher/releases/download/v1.1.2/heroic-1.1.2.AppImage
 	source = heroic.desktop.patch
 	source = heroicGamesLauncher
-	md5sums = 3cf55cd21a0a4fc7027c55a72461370d
+	md5sums = f2d6fefe3c0fdd0e07bc33de124a2504
 	md5sums = ca15ab98d434d881c3db27bb8573440d
 	md5sums = 22f51cb64049525f8510046e69c715b7
 
