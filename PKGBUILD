@@ -47,7 +47,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20210108.r0.g1c925d2030af
+pkgver=20210120.r0.g647060f3b592
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -57,12 +57,12 @@ license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'bc' 'libelf' 'git' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
-_lucjanver=5.10
+_lucjanver=5.11-rc
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
 
 source=("git://git.kernel.org/pub/scm/linux/kernel/git/next/${_srcname}.git"
-        "${_lucjanpath}/arch-patches-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v4-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config')
 
@@ -303,5 +303,5 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha512sums=('SKIP'
-            'd55f954a92ca71e1e45735c6971d930bf3a29d37df5a9ba57b7d7488def7c183b9376f5fb8f17f39991ff2e0dee6cf6625469d1e18ed6a9781b61247fc1b1b64'
+            'e65b7259e353bacebc5cb016758c23073b21e0a3857caed4b8492126704ab1ed73499d21fd7d1e4c4cf9a824d6ffd967d5512d1bfebbcfaea9c7e6ba5bee85f2'
             '59304f676d304cd7175b65a41a0b0e6e705e983ba532cd77173f517eff47f0b20e55aeb61aef0ee2efbd7c57991c18537b61b5cac4d387ee1c99bea970997c8a')
