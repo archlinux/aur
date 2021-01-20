@@ -1,6 +1,6 @@
 pkgbase = git-big-picture
 	pkgdesc = Visualization tool for Git repositories
-	pkgver = 0.10.1
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/git-big-picture/git-big-picture
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = git-big-picture
 	depends = git
 	depends = graphviz
 	provides = git-big-picture
-	source = https://github.com/git-big-picture/git-big-picture/archive/v0.10.1.tar.gz
-	md5sums = 7198106c60213fe99889f573be74557f
+	source = https://github.com/git-big-picture/git-big-picture/archive/v1.1.1.tar.gz
+	sha512sums = f77681b43bb3323f5cdeb646c04af65d3553a2b375df97674a670200323ca94fe8dda12073d5d3ed5211ec17e88185cc5134f243b9fc948d7bee72249b11f543
 
 pkgname = git-big-picture
 
