@@ -3,8 +3,8 @@
 pkgname=neeto-vue-bin
 _pkgname=${pkgname%-bin}
 _filename=Neeto-Vue
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="Yet another wiznote client Made with Vue."
 arch=('x86_64')
 url="https://github.com/TankNee/Neeto-Vue"
@@ -21,7 +21,7 @@ source=("${_pkgname}-${pkgver}.zip::https://github.com/TankNee/Neeto-Vue/release
         "${_pkgname}.sh"
         "${_pkgname}.ico::https://raw.githubusercontent.com/TankNee/Neeto-Vue/master/public/icon.ico"
         "${_pkgname}.desktop")
-sha256sums=('a4190ad079a2abd8303cfaadc02b23a4a006ca1fa8181c24461208b23fe7c8da'
+sha256sums=('3eec325311a70dcc4878b8760b6ceff55e49700ff239f6240a4afed4fce8c3d3'
             '09141f28d3723a64b16c54cbecd3b239301c879fc2f229dd70528cf75878b812'
             '778fefd87355aa3ce977e510f236bfe25b9873eb6f86d4b34f5e5c8ddcdf93f9'
             'dd95ba9191a5a1c02ac830eb2f5f1dd3bafcfc6897f8b9a2fef7e919294608e6'
@@ -34,7 +34,7 @@ prepare() {
   for size in 64 32 24 16
   do
     convert ${_pkgname}.ico[${index}] -thumbnail ${size}x${size} -flatten ${srcdir}/icons/${_pkgname}-${size}x${size}.png
-    let ++index
+    index=$((index+1))
   done
 }
 
