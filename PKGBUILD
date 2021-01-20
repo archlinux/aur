@@ -1,7 +1,7 @@
 # Maintainer: Michał Wołoszyn <kontakt@fraunos.pl>
 
-_pkgname=arc-unit-mocha-sealcode
-pkgname="${_pkgname}-git"
+_pkgname=arc-unit-mocha
+pkgname="${_pkgname}-sealcode-git"
 
 pkgver() {
   cd "$_pkgname"
