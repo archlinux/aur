@@ -128,6 +128,7 @@ prepare() {
   ln -s "${_where}/customization.cfg" "${srcdir}" # workaround
 
   #cd "${srcdir}/${_srcpath}"
+  mkdir "${srcdir}/bcachefs"
   cd "${srcdir}/bcachefs"
   
     msg2 "Setting version..."
