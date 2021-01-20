@@ -15,13 +15,15 @@ pkgbase = cardano-node
 	source = https://hydra.iohk.io/build/5367762/download/1/mainnet-topology.json
 	source = cardano-node.sysusers
 	source = cardano-node.tmpfiles
+	source = cardano-node.service
 	sha256sums = c3ebea2f25630583bebd659dccad01c24897663206248fa0deacefc6d34c4b7d
 	sha256sums = 9999052dc926506d350cfca2bcfd291e50b48cc7f5215a154c344ad7ad7d70eb
 	sha256sums = 4f28b3b437b2c4f6ee26cc70964b3a5f1a274b0b3909c31535091c00316c13aa
 	sha256sums = 59cd3932c6dd792bc5020ca3336064a8faabde4e4a8dc7d143ff4df6eec36961
 	sha256sums = 7ac2184ff55d1272e87d579550501b7e4fc61b9cf016179ca026516fff365730
 	sha256sums = 88a39a787d801a0f318968612fb781efdb86961d984ac01a13f7e22151d8150f
-	sha256sums = e050ac0489bd9234b06bc0446c254bc915465d57b470d0f20bc9b7b87ca80a42
+	sha256sums = bedb3eaf9a6315485f54e4021b46d936708b6e199b2e2d1e344eebfff783b237
+	sha256sums = 61ace7b736fb74a367c64f43735c3aca623cc004470995d5114181dde766216b
 
 pkgname = cardano-node
 
