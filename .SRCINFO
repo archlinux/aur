@@ -1,7 +1,7 @@
 pkgbase = linux-froidzen
 	pkgdesc = Linux ZEN with Patches and Modifications
 	pkgver = 5.10.9.zen1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zen-kernel/zen-kernel/commits/v5.10.9-zen1
 	arch = x86_64
 	license = GPL2
@@ -23,12 +23,14 @@ pkgbase = linux-froidzen
 	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.10.9-zen1
 	source = config
 	source = https://raw.githubusercontent.com/dolohow/uksm/master/v5.x/uksm-5.10.patch
+	source = https://raw.githubusercontent.com/AOSC-Dev/aosc-os-abbs/linux-5.10.x/extra-kernel/linux-kernel/autobuild/patches/0003-bugfix-ovl-use-a-dedicated-semaphore-for-dir-upperfile-c.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
 	sha256sums = 08ab868847e357bff25127c5eecc3cf8acd4df6fae09fd97af6f9b82ca7d9274
 	sha256sums = 24729e63e08de13039ce7e6637146ec5a5747379ebbd92cdeef744edfad17183
+	sha256sums = 67bedaedd5bbd841a5c5a2c3c7236bdf1b4fb9abd5bf45ba8581244592b03ee4
 
 pkgname = linux-froidzen
 	pkgdesc = The Linux ZEN with Patches and Modifications kernel and modules
