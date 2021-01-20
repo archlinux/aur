@@ -9,7 +9,7 @@ pkgname=(
   kata2-containers-image-bin
   kata2-linux-container-bin
 )
-pkgver="2.0.0"
+pkgver="2.0.1"
 _pkgver=${pkgver/\~/-}
 pkgrel=1
 pkgdesc="Lightweight virtual machines for containers (binary version)"
@@ -22,8 +22,8 @@ _bin_pkg_root="/opt/kata"  # `/usr` for f30 packages, `/opt/kata` for static pac
 if [ "${_bin_pkg_root}" = "/opt/kata" ]; then
   #pkgname+=(kata2-containers-static)
   source=("https://github.com/kata-containers/kata-containers/releases/download/${_pkgver}/kata-static-${_pkgver}-${CARCH}.tar.xz")
-  sha512sums=(a201f14d4e88307a8959b158aeaa2789906a913c0463aa60a6124befcb5f6e6c9b107c6cd30e0f3392901c6727972083b9261ec1b4d2d4755c58fa6c6106eca9)
-  b2sums=(7bd43eb6facb6012b9c02613588683bea6fe8b3e1cbeb828bdabb7df815acd7c6c6cd9dc85ccc8956d1c304c342a33b356706947f4801c28b3f035b1403d2936)
+  sha512sums=(6b35e67aaead7e12e1950a7124fdf94f3638888e201b67f9651189f295335d05dbd4fd72cb091bf44c06e7ed36e0436b2ccf046f14187c558c3782240db75b10)
+  b2sums=(b4e53777954a456b7950d02b00e379eabb6e347ef526ab9dac8ef307c598e5dfbda1968285789008ce1150de1a5f3cbe968eb39d54c09e1fd4189f998497ef0a)
 else
   _kata_kernel_ver="5.4.32.76"
   _default_suffix="-8.1"  # f30 package build revision
@@ -58,7 +58,7 @@ else
 fi
 
 package_kata2-runtime-bin() {
-  depends=(qemu-headless kata2-containers-image kata2-linux-container kata2-containers-image)
+  depends=(qemu-headless kata2-containers-image kata2-linux-container)
   optdepends=(
     'cloud-hypervisor<0.11.0'
     'firecracker<0.22.0'
