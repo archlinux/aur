@@ -7,10 +7,10 @@ pkgbase = dell-c2665dnf
 	arch = x86_64
 	license = custom
 	depends = lib32-libcups
-	source = https://downloads.dell.com/FOLDER01815904M/1/C2665dnf-Linux-Driver.zip
-	source = http://i.dell.com/sites/doccontent/legal/terms-conditions/en/Documents/Dell-EMC-SW-EULA.pdf
+	source = https://dl.dell.com/FOLDER01815904M/1/C2665dnf-Linux-Driver.zip
+	source = LICENSE
 	sha256sums = 4d258bd49f461c20207766f5d5542893b5c3801e676635edaf6d96c8e2006e69
-	sha256sums = 7877b1aca91950b91450a22d89abeb1be022ba349be3c8375e338ee38cec3a67
+	sha256sums = 258c48bd485f6b4e1c5e05dfbce0d7d8a794ca408124124b43d43b6de6655eec
 
 pkgname = dell-c2665dnf
 
