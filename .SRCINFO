@@ -20,8 +20,8 @@ pkgbase = cppqed-git
 	depends = gsl
 	provides = cppqed
 	conflicts = cppqed
-	source = cppqed-git::git://git.code.sf.net/p/cppqed/cppqed#branch=Development
-	md5sums = SKIP
+	source = cppqed-git::git+https://github.com/vukics/cppqed
+	sha256sums = SKIP
 
 pkgname = cppqed-git
 

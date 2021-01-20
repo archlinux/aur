@@ -14,8 +14,8 @@ makedepends=('git' 'gcc' 'cmake')
 optdepends=()
 provides=('cppqed')
 conflicts=('cppqed')
-source=("${pkgname}"::'git://git.code.sf.net/p/cppqed/cppqed#branch=Development')
-md5sums=('SKIP')
+source=("${pkgname}"::git+https://github.com/vukics/cppqed)
+sha256sums=('SKIP')
 
 pkgver() {
    cd "${pkgname}"
