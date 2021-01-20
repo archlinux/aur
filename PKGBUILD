@@ -2,7 +2,7 @@
 # Contributor: Thomas Nordenmark <t.nordenmark@gmail.com>
 
 pkgname=compton-conf
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='A graphical configuration tool for Compton X composite manager'
 arch=('i686' 'x86_64')
@@ -23,11 +23,11 @@ validpgpkeys=(
 
 	# Key for compton-conf starting from 0.15.0
 	# Not available outside GitHub (https://github.com/tsujan.gpg)
-	# tsujan <tsujan2000@gmail.com>
+	# Pedram Pourang <tsujan2000@gmail.com>
 	'19DFDF3A579BD509DBB572D8BE793007AD22DF7E'
 )
 sha512sums=(
-	'c7390de74304e362a0c63c901c718dbf0427eb821d06236ceb5746b67c27a6ff9ef53a456808d01019fa7ff10fbf11c909c1234560d75ab97df8057d39fc1f4a'
+	'23ddd816638914f7ce0c0a0b38e7048f4062d76618694f4f5b58c778fba85ca3838c00e576b1cd50d43df496970eac3ce9a53f758ad2aa3c7cc5a900947d5835'
 	'SKIP' # GPG signature
 )
 
