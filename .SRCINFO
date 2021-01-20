@@ -1,0 +1,23 @@
+pkgbase = vala-panel
+	pkgdesc = Gtk3 panel for compositing window managers
+	pkgver = 0.4.92
+	pkgrel = 1
+	url = https://gitlab.com/vala-panel-project/vala-panel
+	arch = any
+	license = LGPL3
+	makedepends = cmake
+	makedepends = vala
+	depends = gtk3
+	depends = libwnck3
+	optdepends = vala-panel-appmenu-valapanel: Global Menu
+	optdepends = vala-panel-sntray: SNI System tray
+	optdepends = vala-panel-applets-xembed: Old system tray
+	optdepends = vala-panel-applets-icontasks: Budgie tasklist
+	optdepends = vala-panel-genmon: GenMon applet
+	source = vala-panel::git+https://gitlab.com/vala-panel-project/vala-panel.git#tag=0.4.92
+	source = git+https://gitlab.com/vala-panel-project/cmake-vala.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vala-panel
+
