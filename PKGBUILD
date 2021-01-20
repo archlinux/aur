@@ -1,7 +1,7 @@
 # Maintainer: Franck Stauffer <franck.stauffer@monaco.mc>
 
 pkgname='firefox-extension-cookie-autodelete'
-pkgver=3.5.1
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Firefox extension that automatically deletes cookies."
 license=('MIT')
@@ -9,7 +9,7 @@ arch=('any')
 makedepends=('npm')
 url="https://github.com/Cookie-AutoDelete/Cookie-AutoDelete"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Cookie-AutoDelete/Cookie-AutoDelete/archive/v$pkgver.tar.gz")
-b2sums=('8a1a7c7f1fc76322d2cf3136c0968e402adebba62137db7a7661ccd872f12cf90275dee4d02009e2706297d283f8141acf30ccdce4095b9e30757c9f19cca968')
+b2sums=('314fe6ab5c30eed49c5ef54c31d8ff9c8c978e00e1a0f17cb1b4139bde49479a78ea74f791030fe98b05adac2d781fd9099c8623ae92c365180372fd2bbf8497')
 
 prepare() {
     npm --silent -C "Cookie-AutoDelete-$pkgver" install

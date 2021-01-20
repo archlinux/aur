@@ -1,13 +1,13 @@
 pkgbase = firefox-extension-cookie-autodelete
 	pkgdesc = Firefox extension that automatically deletes cookies.
-	pkgver = 3.5.1
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://github.com/Cookie-AutoDelete/Cookie-AutoDelete
 	arch = any
 	license = MIT
 	makedepends = npm
-	source = firefox-extension-cookie-autodelete-3.5.1.tar.gz::https://github.com/Cookie-AutoDelete/Cookie-AutoDelete/archive/v3.5.1.tar.gz
-	b2sums = 8a1a7c7f1fc76322d2cf3136c0968e402adebba62137db7a7661ccd872f12cf90275dee4d02009e2706297d283f8141acf30ccdce4095b9e30757c9f19cca968
+	source = firefox-extension-cookie-autodelete-3.6.0.tar.gz::https://github.com/Cookie-AutoDelete/Cookie-AutoDelete/archive/v3.6.0.tar.gz
+	b2sums = 314fe6ab5c30eed49c5ef54c31d8ff9c8c978e00e1a0f17cb1b4139bde49479a78ea74f791030fe98b05adac2d781fd9099c8623ae92c365180372fd2bbf8497
 
 pkgname = firefox-extension-cookie-autodelete
 
