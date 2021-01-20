@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=getextensions-git
-pkgver=r48.ebad8aa
+pkgver=1.0.r1.f110d02
 pkgrel=1
 pkgdesc="Python GTK app to install extensions from extensions.gnome.org"
 arch=('any')
@@ -17,7 +17,8 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s.r%s.%s" "$(python setup.py --version)" \
+		"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
