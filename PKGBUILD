@@ -1,25 +1,21 @@
-# Script generated with import_catkin_packages.py
-# For more information: https://github.com/bchretien/arch-ros-stacks
-# Maintainer: Fan Jiang <i@fanjiang.me>
-# Contributor: Sean Greenslade <aur@seangreenslade.com>
 pkgdesc="ROS - OMPL is a free sampling-based motion planning library."
 url='https://ompl.kavrakilab.org'
 
 pkgname='ros-melodic-ompl'
 pkgver='1.4.2'
-arch=('any')
-pkgrel=1
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=()
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  boost
+  boost1.69
   eigen)
 
 ros_depends=()
 depends=(${ros_depends[@]}
-  boost
+  boost1.69
   eigen)
 
 _dir="ompl-${pkgver}"
@@ -51,10 +47,9 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-        -DPYTHON_BASENAME=.cpython-37m \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+	-DBOOST_ROOT=/opt/boost1.69 \
+	-DBoost_NO_SYSTEM_PATHS=TRUE
   make
 }
 
