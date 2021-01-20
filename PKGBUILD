@@ -10,7 +10,7 @@ arch=(i686 x86_64)
 url=http://cppqed.sourceforge.net
 license=(custom)
 depends=(boost-libs blitz flens python python-numpy python-scipy gsl)
-makedepends=(git cmake ninja boost)
+makedepends=(git cmake ninja clang boost)
 provides=(cppqed)
 conflicts=(cppqed)
 source=("${pkgname}"::git+https://github.com/vukics/cppqed
@@ -42,7 +42,9 @@ build() {
   -B build \
   -G Ninja \
   -DCMAKE_INSTALL_PREFIX=/usr \
-  -DCMAKE_BUILD_TYPE=Release
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_C_COMPILER=clang \
+  -DCMAKE_CXX_COMPILER=clang++
 # shellcheck disable=SC2086 # expand multiple flags passed in MAKEFLAGS
   ninja -C build ${MAKEFLAGS:--j1}
 }

@@ -9,6 +9,7 @@ pkgbase = cppqed-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = clang
 	makedepends = boost
 	depends = boost-libs
 	depends = blitz
