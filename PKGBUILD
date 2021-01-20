@@ -128,7 +128,6 @@ prepare() {
   ln -s "${_where}/customization.cfg" "${srcdir}" # workaround
 
   #cd "${srcdir}/${_srcpath}"
-  mkdir "${srcdir}/bcachefs"
   cd "${srcdir}/bcachefs"
   
   _tkg_srcprep
