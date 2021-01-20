@@ -1,8 +1,8 @@
 pkgbase = python-gsd
-	pkgdesc = The macromolecular transmission format (MMTF) is a binary encoding of biological structures.
+	pkgdesc = GSD files store trajectories of the HOOMD-blue system state in a binary file with efficient random access to frames and allows all particle and topology properties to vary from one frame to the next.
 	pkgver = 2.4.0
 	pkgrel = 1
-	url = http://mmtf.rcsb.org/
+	url = https://github.com/glotzerlab/gsd/
 	arch = x86_64
 	license = BSD
 	depends = cython
