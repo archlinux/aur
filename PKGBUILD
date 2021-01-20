@@ -1,15 +1,15 @@
 # Maintainer: Donald Carr<sirspudd at gmail dot com>
 
-_grotesque_file_name="download_file.php?path=L2t1bmRlbi9wb2x5Zm9ybXMuY29tL2R5bmFwZGZfdmVyc2lvbnMvNC4wLjMuOS9saW51eC02NC56aXA="
+_grotesque_file_name="download_file.php?path=L2t1bmRlbi9wb2x5Zm9ybXMuY29tL2R5bmFwZGZfdmVyc2lvbnMvNC4wLjQ3LjEzNC9saW51eC02NC56aXA="
 pkgname=dynapdf
-pkgver=4.0.3.9
+pkgver=4.0.47.134
 pkgrel=1
 pkgdesc='PDF library'
 arch=('x86_64')
 url='https://www.dynaforms.com'
 license=('custom')
 source=("https://www.dynaforms.com/bin/${_grotesque_file_name}")
-sha256sums=('015fd95798555d403d18a95f7875d1b5454d6c10169062738387262431c7778e')
+sha256sums=('cb76e744c768e72f2c9d61c09f2bb3057fb2c4f88dca00b4f892fbb628aaf3ef')
 
 package() {
   local _incdir=${pkgdir}/usr/include/dynapdf
