@@ -1,6 +1,6 @@
 pkgbase = freefem
 	pkgdesc = A PDE oriented language using the finite element method
-	pkgver = 4.7.1
+	pkgver = 4.8.0
 	pkgrel = 1
 	url = https://freefem.org/index.html
 	arch = x86_64
@@ -35,12 +35,13 @@ pkgbase = freefem
 	optdepends = boost
 	optdepends = metis
 	optdepends = tetgen
-	provides = freefem++
-	conflicts = freefem++
-	source = freefem-4.7.1.tar.gz::https://github.com/FreeFem/FreeFem-sources/archive/v4.7-1.tar.gz
+	provides = freefem
+	conflicts = freefem-ext-dl
+	conflicts = freefem-git
+	source = freefem-4.8.0.tar.gz::https://github.com/FreeFem/FreeFem-sources/archive/v4.8.tar.gz
 	source = freefem.sh
 	source = freefem.csh
-	sha256sums = 60d84424d20b5f6abaee638dc423480fc76f9c389bba1a2f23fd984e39a3fb96
+	sha256sums = 499b1ca24d45088226a238412ea1492d9cc3eb6088866904145511469780180d
 	sha256sums = 8dfad023deccc20044bac7fb1c4c73221026c8a8f52ed2d7727065c71d87e488
 	sha256sums = 56eea801f08cc0f790af79a49c680d54f763fee196ce7d65af470c732c3d1043
 
