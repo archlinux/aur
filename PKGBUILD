@@ -14,6 +14,9 @@ depends=('bash'
 makedepends=('git')
 optdepends=('mpv: alternative image viewer'
 			'sxiv: alternate image viewer'
+			'wl-clipboard: for wayland support'
+			'grim: for wayland support'
+			'slurp: for wayland support'
 			)
 provides=("${_name}")
 conflicts=("${_name}")
