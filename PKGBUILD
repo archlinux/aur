@@ -1,7 +1,7 @@
 # Maintainer: Jason Goulet-Lipman <jason.gouletlipman@gmail.com>
 pkgname=youtubedl-gui
-pkgver=1.6
-pkgrel=3
+pkgver=1.7
+pkgrel=1
 arch=('x86_64')
 license=('GPL3')
 pkgdesc="Download Youtube videos to local audio or video files."
