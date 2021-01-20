@@ -1,8 +1,8 @@
 # Maintainer: archibald869 <archibald869 at web dot de>
 
 pkgname=cling
-pkgver=0.7
-pkgrel=3
+pkgver=0.8
+pkgrel=1
 pkgdesc="Interactive C++ interpreter, built on the top of LLVM and Clang libraries"
 arch=("i686" "x86_64")
 url="https://root.cern.ch/cling"
@@ -35,10 +35,6 @@ prepare() {
     if [ ! -h "$srcdir/llvm/tools/cling" ]; then
         ln -s "$srcdir/cling" "$srcdir/llvm/tools/cling"
     fi
-
-    # fix compile error "‘EST_ComputedNoexcept’ was not declared in this scope"
-    # see https://github.com/root-project/cling/commit/4203690c46e438f6e43f1aaf8cb41b8b582c6002
-    sed -i 's@if (FT->getExceptionSpecType() == EST_ComputedNoexcept) {@if (isComputedNoexcept(FT->getExceptionSpecType())) {@' "$srcdir/cling/lib/Interpreter/ForwardDeclPrinter.cpp"
 }
 
 build() {
