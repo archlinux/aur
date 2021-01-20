@@ -5,11 +5,11 @@ pkgname=( python-$_name python2-$_name )
 pkgbase=python-$_name
 
 pkgver=1.4.10
-pkgrel=6
+pkgrel=7
 pkgdesc='Simple, super-flexible options. Does magic upon request.'
 
 arch=(any)
-url=https://bitbucket.org/jeunice/options
+url=https://web.archive.org/web/*/https://bitbucket.org/jeunice/options
 license=(Apache)
 depends=()
 source=("$pkgbase-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")

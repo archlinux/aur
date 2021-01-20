@@ -1,8 +1,8 @@
 pkgbase = python-options
 	pkgdesc = Simple, super-flexible options. Does magic upon request.
 	pkgver = 1.4.10
-	pkgrel = 6
-	url = https://bitbucket.org/jeunice/options
+	pkgrel = 7
+	url = https://web.archive.org/web/*/https://bitbucket.org/jeunice/options
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
