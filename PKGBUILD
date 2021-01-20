@@ -1,17 +1,17 @@
 # Maintainer: Ben Westover <kwestover.kw@gmail.com>
 
 # Uncomment to install GUI
-#install-gui=y
+# _install-gui=y
 
 pkgname='chia-git'
-pkgver=1.0beta18.r0.g7051102a
+pkgver=1.0beta21.r0.g93adb84f
 pkgrel=1
 pkgdesc="A new blockchain and smart transaction platform that is easier to use, more efficient, and secure."
 arch=('x86_64' 'i686' 'pentium4' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.chia.net/"
 license=('Apache')
 depends=('git' 'python')
-if [ -n "$install-gui" ]; then
+if [ -n "${_install-gui}" ]; then
     depends+=('git' 'python' 'npm' 'nodejs')
 fi
 makedepends=('cmake')
@@ -37,7 +37,7 @@ build() {
 	pip install wheel
 	pip install --extra-index-url https://download.chia.net/simple/ miniupnpc==2.1 setproctitle==1.1.10 cbor2==5.1.2
 	pip install -e .
-	if [ -n "$install-gui" ]; then
+	if [ -n "${_install-gui}" ]; then
 	    cd electron-react
 	    npm install
 	    npm audit fix
@@ -46,7 +46,7 @@ build() {
 }
 
 package() {
-	if [ -n "$install-gui" ]; then
+	if [ -n "${_install-gui}" ]; then
 	    install -Dm644 chia-blockchain/electron-react/src/assets/img/circle-cropped.png "$pkgdir"/usr/share/pixmaps/chia.png
 	    install -Dm755 chia-gui.sh "$pkgdir"/usr/bin/chia-gui
 	    install -Dm644 chia-gui.desktop "$pkgdir"/usr/share/applications/chia-gui.desktop
