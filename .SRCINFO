@@ -10,6 +10,7 @@ pkgbase = ananicy-nosystemd-git
 	depends = bash
 	depends = schedtool
 	depends = python
+	optdepends = ananicy-s6: s6 support
 	provides = ananicy
 	conflicts = ananicy
 	backup = etc/ananicy.d/ananicy.conf
