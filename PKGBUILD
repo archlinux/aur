@@ -3,7 +3,7 @@
 pkgname=ycmd-git
 _gitname=ycmd
 pkgver=r2844.06228007
-pkgrel=2
+pkgrel=3
 pkgdesc="A code-completion & code-comprehension server."
 arch=('any')
 url="https://github.com/ycm-core/ycmd"
