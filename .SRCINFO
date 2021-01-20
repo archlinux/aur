@@ -1,7 +1,7 @@
 pkgbase = minicom-line_timestamp
 	pkgdesc = A serial communication program (with line_timestamp patch)
 	pkgver = 2.8
-	pkgrel = 2
+	pkgrel = 4
 	url = https://salsa.debian.org/minicom-team/minicom
 	arch = x86_64
 	license = GPL
@@ -11,9 +11,9 @@ pkgbase = minicom-line_timestamp
 	conflicts = minicom
 	backup = etc/minirc.dfl
 	source = https://salsa.debian.org/minicom-team/minicom/-/archive/2.8/minicom-2.8.tar.bz2
-	source = minicom-line_timestamp-2.8.patch::https://salsa.debian.org/yan12125-guest/minicom/-/commit/d7d40624f00cb06544e475fb308000575eaa95bc.patch
+	source = minicom-line_timestamp-v3.patch::https://salsa.debian.org/yan12125-guest/minicom/-/commit/4ee3e984cb21923bbf801750f39f9d07e8e3b9f8.patch
 	sha256sums = 38cea30913a20349326ff3f1763ee1512b7b41601c24f065f365e18e9db0beba
-	sha256sums = 821e65384543bee3da87954144277c051029af174cef3e7789a71c9c06efb073
+	sha256sums = d9c164b0535c4315ccda49ab0caea1c4b236f8d479731d388c5f8cfef0260233
 
 pkgname = minicom-line_timestamp
 
