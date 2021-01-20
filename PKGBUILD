@@ -40,7 +40,7 @@ build() {
     -D asyncns=disabled \
     -D avahi=disabled \
     -D bluez5=false \
-    -D bluez5-gstreamer=false \
+    -D bluez5-gstreamer=disabled \
     -D bluez5-native-headset=false \
     -D bluez5-ofono-headset=false \
     -D dbus=disabled \
@@ -49,7 +49,7 @@ build() {
     -D gsettings=disabled \
     -D gstreamer=disabled \
     -D gtk=disabled \
-    -D hal-compat=disabled \
+    -D hal-compat=false \
     -D ipv6=false \
     -D jack=disabled \
     -D lirc=disabled \
