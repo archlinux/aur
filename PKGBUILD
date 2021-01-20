@@ -60,7 +60,7 @@ prepare() {
 
   # This patch no longer contains proprietary modifications.
   # See https://github.com/Microsoft/vscode/issues/31168 for details.
-  # patch -p0 < ../product_json.diff
+  patch -p0 < ../product_json.diff
 
   # Set the commit and build date
   local _commit=$(git rev-parse HEAD)
