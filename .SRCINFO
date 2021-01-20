@@ -1,11 +1,12 @@
 pkgbase = youtubedl-gui-beta
 	pkgdesc = Download Youtube videos to local audio or video files. - Beta Branch
-	pkgver = r38.634369e
+	pkgver = 2.0
 	pkgrel = 1
 	install = youtubedl-gui.install
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = qt5-quickcontrols
 	depends = youtube-dl
 	depends = qt5-base
 	depends = ffmpeg
