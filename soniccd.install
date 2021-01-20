@@ -1,0 +1,5 @@
+post_install() {
+	echo 'Use soniccd-launcher to create the data folder inside your home '\
+"folder, copy the game's data files to it and then run it again to launch the "\
+'game.'
+}
