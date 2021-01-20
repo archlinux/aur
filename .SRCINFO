@@ -2,12 +2,12 @@ pkgbase = dartbuster
 	pkgdesc = URL Fuzzing / brute forcing tool, written in dart.
 	pkgver = 1.0.2
 	pkgrel = 1
-	url = https://github.com/GrayWasTaken/dartbuster.git
+	url = https://github.com/GrayWasTaken/dartbuster
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = dart
-	source = git+https://github.com/GrayWasTaken/dartbuster.git
+	source = git+https://github.com/GrayWasTaken/dartbuster
 	md5sums = SKIP
 
 pkgname = dartbuster
