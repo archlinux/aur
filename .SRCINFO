@@ -1,0 +1,24 @@
+pkgbase = deja-dup-git
+	pkgdesc = Simple backup tool, that hides the complexity of backing up the Right Way and uses duplicity as the backend
+	pkgver = 42.4+126+g271f05ec
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/DejaDup
+	arch = any
+	license = GPL
+	makedepends = appstream-glib
+	makedepends = itstool
+	makedepends = meson
+	makedepends = vala
+	depends = duplicity
+	depends = gvfs
+	depends = libadwaita
+	depends = libsecret
+	depends = org.freedesktop.secrets
+	depends = python-gobject
+	depends = python-pydrive
+	source = git+https://gitlab.gnome.org/World/deja-dup
+	validpgpkeys = A3A5C2FC56AE7341D308D8571B50ECA373F3F233
+	sha512sums = SKIP
+
+pkgname = deja-dup-git
+
