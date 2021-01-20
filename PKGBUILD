@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=stylelint
-pkgver=13.8.0
+pkgver=13.9.0
 pkgrel=1
 pkgdesc='Mighty, modern CSS linter'
 arch=('any')
@@ -12,15 +12,18 @@ makedepends=('npm')
 optdepends=('stylelint-config-standard: for the standard shareable config')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha512sums=('8871f776fdd4236dd22c3ac7e333100e32d3f7f743233fc8a6815eb8dc59984c7ce8ab5fa630ceb1cc4b4c58a8432bfedaf4233e54599cad14a09b5fc4b2025d')
+b2sums=('6ba746f54fc42950c7916635b717f3ef8851c0aee2f999b56ce52248d35225f9ba65306638c92c45b1e26f10aa09a2c532d55ba89334e44f53402f769303cc76')
 
 package() {
-  npm install -g --user root --prefix "$pkgdir"/usr --ignore-scripts --production $pkgname-$pkgver.tgz
-
-  cd "$pkgdir"
-  mkdir -p usr/share/licenses/$pkgname
-  mv usr/lib/node_modules/$pkgname/LICENSE usr/share/licenses/$pkgname
-  chown -R root:root .
+  npm install --global \
+              --user root \
+              --prefix "$pkgdir"/usr \
+              --production \
+              $pkgname-$pkgver.tgz
+  chown -R root:root "$pkgdir" # Workaround until npm >=7.4.0 hits repos
+  install -d "$pkgdir"/usr/share/licenses/$pkgname
+  ln -rs ../lib/node_modules/$pkgname/LICENSE \
+    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
