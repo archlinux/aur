@@ -1,0 +1,18 @@
+pkgbase = python-seabreeze
+	pkgdesc = Python module for oceanoptics spectrometers
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/ap--/python-seabreeze
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-mock
+	checkdepends = python-pytest-runner
+	makedepends = python-setuptools
+	depends = python-pyusb
+	depends = python-numpy
+	source = python-seabreeze-1.3.0.tar.gz::https://github.com/ap--/python-seabreeze/archive/v1.3.0.tar.gz
+	sha256sums = 6418dda3278274d006a9d2a86fda82c4160ade6c9b42fd66e419d56fd17810e3
+
+pkgname = python-seabreeze
+
