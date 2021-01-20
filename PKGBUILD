@@ -10,7 +10,6 @@ makedepends=('git' 'dart')
 changelog=
 source=("git+$url")
 md5sums=('SKIP') #autofill using updpkgsums
-pkgdir="$pkgdir/opt/$pkgname"
 
 build() {
   cd "$pkgname"
