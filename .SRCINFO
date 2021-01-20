@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-moveit-core
 	pkgdesc = ROS - Core libraries used by MoveIt!.
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://moveit.ros.org
 	arch = i686
 	arch = x86_64
@@ -39,7 +39,7 @@ pkgbase = ros-melodic-moveit-core
 	depends = urdfdom-headers
 	depends = assimp
 	depends = console-bridge
-	depends = boost
+	depends = boost1.69
 	depends = urdfdom
 	depends = fcl
 	source = ros-melodic-moveit-core-1.0.7.tar.gz::https://github.com/ros-planning/moveit/archive/1.0.7.tar.gz
