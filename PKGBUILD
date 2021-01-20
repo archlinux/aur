@@ -10,7 +10,7 @@ makedepends=('git' 'dart')
 changelog=
 source=("git+$url")
 md5sums=('SKIP') #autofill using updpkgsums
-pkgdir="/opt/$pkgname"
+pkgdir="$pkgdir/opt/$pkgname"
 
 build() {
   cd "$pkgname"
@@ -24,5 +24,3 @@ package() {
   cp -rf * "$pkgdir/opt/$pkgname"
   ln -sf "$pkgdir/opt/$pkgname" "/bin/$pkgname"
 }
-
-# todo on uninstall remove binary aswell as /opt/dartbuster
