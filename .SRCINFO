@@ -1,0 +1,15 @@
+pkgbase = nodejs-concurrently
+	pkgdesc = Run multiple commands concurrently
+	pkgver = 5.3.0
+	pkgrel = 1
+	url = https://github.com/kimmobrunfeldt/concurrently#readme
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = concurrently-5.3.0.tgz
+	source = http://registry.npmjs.org/concurrently/-/concurrently-5.3.0.tgz
+	sha256sums = a3fbfc34a972da1dfbceb17615d2f2a7472b8d25e9c1cbf66e4039f5303f7ac3
+
+pkgname = nodejs-concurrently
+
