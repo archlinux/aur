@@ -8,7 +8,7 @@ url="https://github.com/sdushantha/${_name}"
 license=('MIT')
 depends=('bash'
 	'imagemagick'
-	'colorpicker'
+	'colorpicker-ym1234-git'
 	'feh'
 	)
 makedepends=('git')

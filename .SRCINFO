@@ -5,16 +5,17 @@ pkgbase = farge-git
 	url = https://github.com/sdushantha/farge
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = bash
 	depends = imagemagick
-	depends = colorpicker
+	depends = colorpicker-ym1234-git
 	depends = feh
-	makedepends = git
-	optdepends = mpv
-	optdepends = sxiv
+	optdepends = mpv: alternative image viewer
+	optdepends = sxiv: alternate image viewer
 	provides = farge
 	conflicts = farge
 	source = farge::git+https://github.com/sdushantha/farge.git
 	sha256sums = SKIP
 
 pkgname = farge-git
+
