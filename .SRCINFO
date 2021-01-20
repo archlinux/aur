@@ -1,12 +1,18 @@
 pkgbase = cimplefetch
 	pkgdesc = A simple program to fetch system information written in C
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/caverym/cimplefetch
-	arch = any
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
 	license = GPL3
-	source = https://github.com/caverym/cimplefetch/archive/0.1.tar.gz
-	sha256sums = 9efe688140117210e127b899cf34571dc29846f75e2b242b4f4e71e3f6b05e3d
+	source = git+https://github.com/caverym/cimplefetch.git
+	sha256sums = SKIP
 
 pkgname = cimplefetch
 
