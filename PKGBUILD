@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=zps-git
-pkgver=1.2.4.r0.gab6e762
+pkgver=1.2.5.r0.ge0353f5
 pkgrel=1
 pkgdesc="A small utility for listing and reaping zombie processes (git)"
 arch=('x86_64')
