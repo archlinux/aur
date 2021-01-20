@@ -1,5 +1,5 @@
 diff --git a/build/makefile_base.mak b/build/makefile_base.mak
-index 412060a..685dd65 100755
+index 412060a..3653c95 100755
 --- a/build/makefile_base.mak
 +++ b/build/makefile_base.mak
 @@ -69,7 +69,7 @@ endif
@@ -373,7 +373,13 @@ index 412060a..685dd65 100755
  	mkdir -p "$(DST_DIR)"/lib/wine/dxvk
  	cp -f "$(DXVK_OBJ32)"/bin/dxgi.dll "$(DST_DIR)"/lib/wine/dxvk/
  	cp -f "$(DXVK_OBJ32)"/bin/d3d11.dll "$(DST_DIR)"/lib/wine/dxvk/
-@@ -1927,7 +1954,7 @@ $(VKD3D_CONFIGURE_FILES32): $(VKD3D)/meson.build $(VKD3D)/build-win32.txt | $(VK
+@@ -1922,12 +1949,12 @@ $(VKD3D_CONFIGURE_FILES32): $(VKD3D)/meson.build $(VKD3D)/build-win32.txt | $(VK
+ 			meson --prefix="$(abspath $(VKD3D_OBJ32))" \
+ 				--cross-file "$(abspath $(VKD3D))/build-win32.txt" \
+ 				$(MESON_STRIP_ARG) \
+-				--buildtype=release -Denable_standalone_d3d12=true \
++				--buildtype=release -Denable_d3d12=true \
+ 				"$(abspath $(VKD3D))"
  
  vkd3d32: SHELL = $(CONTAINER_SHELL32)
  vkd3d32: $(VKD3D_CONFIGURE_FILES32)
@@ -382,7 +388,13 @@ index 412060a..685dd65 100755
  	mkdir -p "$(DST_DIR)"/lib/wine/vkd3d-proton
  	cp -af "$(VKD3D_OBJ32)/bin/d3d12.dll" "$(DST_DIR)"/lib/wine/vkd3d-proton/
  	rm -f "$(DST_DIR)"/lib/wine/vkd3d-proton/version && if test -e $(SRCDIR)/.git; then ( cd $(SRCDIR) && git submodule status -- vkd3d-proton ) > "$(DST_DIR)"/lib/wine/vkd3d-proton/version; fi
-@@ -1944,7 +1971,7 @@ $(VKD3D_CONFIGURE_FILES64): $(VKD3D)/meson.build $(VKD3D)/build-win64.txt | $(VK
+@@ -1939,12 +1966,12 @@ $(VKD3D_CONFIGURE_FILES64): $(VKD3D)/meson.build $(VKD3D)/build-win64.txt | $(VK
+ 			meson --prefix="$(abspath $(VKD3D_OBJ64))" \
+ 				--cross-file "$(abspath $(VKD3D))/build-win64.txt" \
+ 				$(MESON_STRIP_ARG) \
+-				--buildtype=release -Denable_standalone_d3d12=true \
++				--buildtype=release -Denable_d3d12=true \
+ 				"$(abspath $(VKD3D))"
  
  vkd3d64: SHELL = $(CONTAINER_SHELL64)
  vkd3d64: $(VKD3D_CONFIGURE_FILES64)

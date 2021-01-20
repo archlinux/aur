@@ -6,7 +6,7 @@ _commit=bcc5e6c4b300ddaca5b1a435c754eaac7490b9d1
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
 _monover=5.1.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 arch=(x86_64)
@@ -33,6 +33,7 @@ depends=(
   steam-native-runtime
 )
 makedepends=(autoconf ncurses bison perl fontforge flex mingw-w64-gcc
+  mingw-w64-tools
   meson
   cargo
   rust                  lib32-rust-libs
@@ -135,7 +136,7 @@ prepare() {
     # I know this is fugly and it should NOT be done
     # but the afdko package from AUR breaks regularly.
     # Install it from pip in a virtualenv
-    virtualenv --no-wheel afdko
+    virtualenv --app-data "$srcdir"/afdko/cache --no-wheel afdko
     source afdko/bin/activate
     pip install --no-cache-dir afdko
 
@@ -344,7 +345,7 @@ sha256sums=('SKIP'
             '06a00cedf391ee07bbca0b3282e5c8ad9d950446d50648d2ff417716816fd1ab'
             'ea5246e4c91d1aa1226658e1749b6e5d0e9353b52b14df79c4b93b6e61a3c59e'
             'b17ac815afbf5eef768c4e8d50800be02af75c8b230d668e239bad99616caa82'
-            '6743a56d019823a33508c3dbfc64ea82d8db61e2b98983a7ad28cade85f0538e'
+            'c51aabb716a78ce2f1f17cfab111890c38e71671dad454f2d46ae4df86bc89cc'
             '8263a3ffb7f8e7a5d81bfbffe1843d6f84502d3443fe40f065bcae02b36ba954'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
             '23cba1756adc4a76de963414994ffc964047ab1d6f1949fe8133135a91ac0473'
