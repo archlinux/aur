@@ -1,6 +1,7 @@
 # Maintainer:  Hyacinthe Cartiaux <hyacinthe.cartiaux at free.fr>
 # Contributor: Arkham <arkham at archlinux dot us>
 # Contributor: StaCk <proc.null at gmail dot com>
+# Contributor: Johnathon <Treyarch @ Arch Linux Forums>
 
 pkgname=asr-manpages
 pkgver=1.3
@@ -9,8 +10,8 @@ pkgdesc="A set of humorous manual pages developed on alt.sysadmin.recovery"
 arch=('any')
 url="http://debian.org/"
 license=('custom')
-source=(http://httpredir.debian.org/debian/pool/main/a/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz
-        http://httpredir.debian.org/debian/pool/main/a/${pkgname}/${pkgname}_${pkgver}-6.diff.gz)
+source=(http://archive.ubuntu.com/ubuntu/pool/universe/a/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz
+        http://archive.ubuntu.com/ubuntu/pool/universe/a/${pkgname}/${pkgname}_${pkgver}-6.diff.gz)
 sha256sums=('5c60c53eb9ebe5e6a26ca2bd1c920a2332ea2a6db3fd64b14ccc4537e955f354'
             '7d61485f61255ce23301f17eee74f8afc302f4482b8a64bfb1342ae4d39206fb')
 
