@@ -1,12 +1,29 @@
 pkgbase = python-pandas-profiling
-	pkgdesc = Generate profile report for pandas DataFrame
-	pkgver = 1.4.1
-	pkgrel = 1
-	url = http://github.com/jospolfliet/pandas-profiling
+	pkgdesc = Create HTML profiling reports from pandas DataFrame objects
+	pkgver = 2.9.0
+	pkgrel = 2
+	url = https://github.com/pandas-profiling/pandas-profiling
 	arch = any
 	license = MIT
-	makedepends = python
-	makedepends = python-pip
+	makedepends = python-setuptools
+	depends = python-attrs
+	depends = python-confuse
+	depends = python-htmlmin
+	depends = python-ipywidgets
+	depends = python-jinja
+	depends = python-joblib
+	depends = python-matplotlib
+	depends = python-missingno
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-requests
+	depends = python-seaborn
+	depends = python-scipy
+	depends = python-tangled-up-in-unicode
+	depends = python-tqdm
+	depends = python-visions
+	source = pandas-profiling-2.9.0.tar.gz::https://github.com/pandas-profiling/pandas-profiling/archive/v2.9.0.tar.gz
+	sha512sums = 8e0b5b4d833b2634a095811c4c5c731c6be7c1e43dcbcb460954b4cc7b69b3ce2ba6d1510d33a95f32fe386beb7f8eedeb98fe7152644199122a4101b0dc3724
 
 pkgname = python-pandas-profiling
 
