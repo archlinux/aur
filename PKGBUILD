@@ -36,16 +36,16 @@ pkgver() {
 }
 
 build() {
-  cd "${pkgname}"
-  mkdir $srcdir/$pkgname/build_release
-  cd $srcdir/$pkgname/build_release
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCMAKE_BUILD_TYPE=Release -DREGISTRY=Off ..
-  make
+  cmake \
+  -S "${srcdir}/${pkgname}" \
+  -B build \
+  -DCMAKE_INSTALL_PREFIX=/usr \
+  -DCMAKE_BUILD_TYPE=Release
+  make -C build
 }
 
 package() {
-  cd $srcdir/$pkgname/build_release
-  make DESTDIR=$pkgdir install || return 1
+  make -C build DESTDIR="${pkgdir}" install
   install -Dm644 "${srcdir}"/${pkgname}/LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
