@@ -2,22 +2,22 @@
 
 _pkgname=nulloy
 pkgname=${_pkgname}-git
-pkgver=0.8.2.pre46.42.g9b036ea
-pkgrel=1
+pkgver=0.8.2.pre112.0.g7d3a897
+pkgrel=2
 pkgdesc='A music player with a waveform progress bar. Qt5 development version.'
 arch=('i686' 'x86_64')
 url='http://nulloy.com/'
 license=('GPL')
 
 depends=(
-	'qt5-script' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'taglib'
-	'hicolor-icon-theme' 'desktop-file-utils'
+	'qt5-script' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly'
+	'taglib' 'hicolor-icon-theme'
 )
 makedepends=('qt5-tools' 'git')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 
-source=('git+https://github.com/nulloy/nulloy.git#branch=qt5')
+source=('git+https://github.com/nulloy/nulloy.git')
 sha512sums=('SKIP')
 
 pkgver() {
@@ -47,4 +47,15 @@ package() {
 	# Install package
 	cd "${srcdir}"/build
 	make INSTALL_ROOT="${pkgdir}" install
+
+	# Fix icon installation
+	for size in 16 22 24 32 48 64 96 128
+	do
+		source_file=src/icons/icon-${size}.png
+		dest_file="${pkgdir}"/usr/share/icons/hicolor/${size}x${size}/apps/${_pkgname}.png
+
+		if [[ -f "${source_file}" && ! -f "${dest_file}" ]]; then
+			cp -a "${source_file}" "${dest_file}"
+		fi
+	done
 }
