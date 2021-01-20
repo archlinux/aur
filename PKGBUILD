@@ -1,7 +1,7 @@
 # Maintainer: Marco Giannini 
 # Contributor:
 pkgname=dike
-pkgver=20210119
+pkgver=20210120
 pkgrel=1
 pkgdesc="Tool di firma e rinnovo online per i certificati digitali emessi da InfoCert S.p.A."
 arch=('x86_64')
@@ -12,7 +12,7 @@ install=$pkgname.install
 depends=('libnotify' 'usb_modeswitch' 'pcsclite' 'pcsc-tools' 'gstreamer' 'libcanberra' 'libxinerama' 'libappindicator-gtk2')
 source=('https://www.firma.infocert.it/pdf/licenza-dike6.pdf'
 	'https://rinnovofirma.infocert.it/download/x86_64/latest')
-sha256sums=('c3b034216532919c0782349a50912dec280b8aa352a7272e740ff73cf5f3ab1f'
+sha256sums=('d230fdf28a788fdbea6e9d7f2c7ab48f41c6f218419b8737ee06b34cb477644c'
             '42ebc74ee8e39324b1b6311532be671360bf3bcdcd2fec075a1ec5c94f4e602c')
 
 package() {
