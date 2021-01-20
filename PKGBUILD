@@ -1,16 +1,15 @@
 # Maintainer: HER0_01 <aconrad103 at gmail.com>
 
 pkgname=snis-git
-pkgver=4395.54beeee0
+pkgver=5260.31c2bf0e
 pkgrel=1
 pkgdesc="Space Nerds in Space open source spaceship bridge simulator."
 arch=('i686' 'x86_64')
 url="http://smcameron.github.io/space-nerds-in-space/"
 license=('GPL2')
-depends=('glew' 'gtkglext' 'lua52' 'portaudio')
-makedepends=('git' 'sdl')
-optdepends=('sdl: for using mesh_viewer'
-            'espeak: for text to speech'
+depends=('glew' 'sdl2' 'lua52' 'portaudio')
+makedepends=('git')
+optdepends=('espeak: for text to speech'
             'espeak-ng: for text to speech')
 provides=('snis' 'ssgl' 'ssgl-git')
 conflicts=('snis')
