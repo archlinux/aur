@@ -1,12 +1,11 @@
 pkgbase = firefox-dpms-git
 	pkgdesc = Disable DPMS settings when playing video in Firefox
-	pkgver = 1
+	pkgver = r19.d042b6a
 	pkgrel = 1
 	url = https://github.com/dglava/firefox-dpms
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = python-setuptools
 	depends = python
 	depends = python-pulse-control
 	source = git+https://github.com/dglava/firefox-dpms.git
