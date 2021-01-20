@@ -1,13 +1,13 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=borg-backup-gui-git
-pkgver=332.3701ec4
-pkgrel=2
+pkgver=336.1bbdb50
+pkgrel=1
 pkgdesc="Borg BackUP GUI can be used by new Borg users to get to their destination very quickly."
 url="https://github.com/MTrage/Borg-BackUP-GUI"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('python-llfuse' 'qt5-base' 'wget')
+depends=('borg' 'python-llfuse' 'qt5-base' 'wget')
 makedepends=('git')
 optdepends=('adwaita-icon-theme')
 
