@@ -21,7 +21,7 @@ pkg_name_dir="${_pkgname}-release-${_pkgver}"
 
 pkgname=${_pkgname}
 pkgver=${_pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform editor for composing music for the Commodore C64 SID chip"
 arch=('i686' 'x86_64')
 url="https://github.com/Chordian/sidfactory2"
@@ -29,7 +29,7 @@ license=('GPL')
 makedepends=('pkgconfig' 'make' 'gcc')
 depends=('sdl2')
 optdepends=()
-conflicts=('sidfactory2-unstable')
+conflicts=('sidfactory2')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Chordian/${_pkgname}/archive/${pkg_ident}.tar.gz")
 md5sums=('4ac9c5003f89caa629becf8e01f8e436')
 
@@ -40,8 +40,8 @@ md5sums=('4ac9c5003f89caa629becf8e01f8e436')
 prepare()
 {
   cd "${srcdir}/${pkg_name_dir}"
-  cp "${startdir}/Makefile.sf2" Makefile
-  patch -b -p0 < "${startdir}/patch-Makefile.diff"
+  #cp "${startdir}/Makefile.sf2" Makefile
+  #patch -b -p0 < "${startdir}/patch-Makefile.diff"
 }
 
 #
@@ -59,7 +59,7 @@ build()
 package()
 {
   cd "${srcdir}/${pkg_name_dir}"
-  make dist
+  #make dist
 
   #install -m 755 -D "${srcdir}/${pkg_name_dir}/artifacts/SIDFactoryII" "${pkgdir}/usr/bin/SIDFactoryII.exe"
   #ln -sf SIDFactoryII "${pkgdir}/usr/bin/sidfactory2"
@@ -78,7 +78,8 @@ package()
   cp -R "${srcdir}/${pkg_name_dir}/artifacts/drivers" "${pkgdir}/usr/share/${pkgname}"
   cp -R "${srcdir}/${pkg_name_dir}/artifacts/overlay" "${pkgdir}/usr/share/${pkgname}"
   cp -R "${srcdir}/${pkg_name_dir}/artifacts/color_schemes" "${pkgdir}/usr/share/${pkgname}"
-  cp -R "${srcdir}/${pkg_name_dir}/artifacts/music" "${pkgdir}/usr/share/${pkgname}"
+  #cp -R "${srcdir}/${pkg_name_dir}/artifacts/music" "${pkgdir}/usr/share/${pkgname}"
+  cp -R "${srcdir}/${pkg_name_dir}/SIDFactoryII/music" "${pkgdir}/usr/share/${pkgname}"
 
   #
   #make -j1 DESTDIR="${pkgdir}" install
@@ -88,6 +89,8 @@ package()
   # HACK: SF2 expects to find drivers etc in the same dir as the binary  :-S
   mkdir -p "${pkgdir}/opt/${_pkgname}"
   install -m 755 -D "${srcdir}/${pkg_name_dir}/artifacts/SIDFactoryII" "${pkgdir}/opt/${_pkgname}/SIDFactoryII"
+  strip "${pkgdir}/opt/${_pkgname}/SIDFactoryII"
+
   mkdir -p "${pkgdir}/usr/bin"
   ln -sf "/opt/${_pkgname}/SIDFactoryII" "${pkgdir}/usr/bin/SIDFactoryII"
   ln -sf SIDFactoryII "${pkgdir}/usr/bin/sidfactory2"
