@@ -22,6 +22,5 @@ package() {
   chmod 4755 "${pkgdir}/opt/1Password/chrome-sandbox" || true
 
   mkdir -p "${pkgdir}/usr/bin/"
-  
   ln -s "/opt/${_pkgname}/${_binname}" "${pkgdir}/usr/bin"
 }
