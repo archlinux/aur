@@ -1,0 +1,36 @@
+pkgbase = code-wayland
+	pkgdesc = The Open Source build of Visual Studio Code (vscode) editor, with ozone enabled for wayland support
+	pkgver = 1.52.1
+	pkgrel = 1
+	url = https://github.com/microsoft/vscode
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gulp
+	makedepends = npm
+	makedepends = python2
+	makedepends = yarn
+	makedepends = nodejs-lts-erbium
+	depends = electron-ozone
+	depends = libsecret
+	depends = libx11
+	depends = libxkbfile
+	depends = ripgrep
+	optdepends = bash-completion: Bash completions
+	optdepends = zsh-completions: ZSH completitons
+	optdepends = x11-ssh-askpass: SSH authentication
+	provides = vscode
+	conflicts = code
+	source = code-wayland::git+https://github.com/microsoft/vscode.git#tag=1.52.1
+	source = code.js
+	source = code.sh
+	source = product_json.diff
+	source = 0001-chore-bump-electron-11.0.3-111931.patch
+	sha512sums = SKIP
+	sha512sums = 814c9554427183cd893a33cd2cbe91f6e0ea71921ef0717c86217b1d3058d265f9ff7a9ace3e7b76f122e60b7686475cf4d999e581a1845face3033afb9f745f
+	sha512sums = aec825628bf1911731fbe79cf8cc4c1b61cbb956567e1d6616ff187668ad986324551d29a7ff7462b9d5a1f91d236dd0fea2c39ca36aeae88917c07303aaf2d2
+	sha512sums = 1a89170ac5ee6b0b19d4b981e6037c86cfcaf30ceb2910550d42ba8cf442d3f735438205fd6f54558ea1223714c719ced676193e6b625762af0c4bcfaddd9461
+	sha512sums = cd64cc93dafc537034bd9a69b9d77ab8e0350b7a05b464ee9efd91c55248f5888c89b968d7293d9a61c4963b6748980b717eb5ad3c55de261c5f767893924a38
+
+pkgname = code-wayland
+
