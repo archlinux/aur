@@ -1,7 +1,7 @@
 # Maintainer:  Charlotte Ausel <TheSheepGuy1@gmail.com>
 
 pkgname=otf-edwin
-pkgver=0.5
+pkgver=0.51
 _commit="9c82277ec584897e4690d3d794fbc9b640b00436"
 pkgrel=1
 pkgdesc="A text font for musical scores"
