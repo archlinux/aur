@@ -1,8 +1,8 @@
 pkgbase = luajit-2.1-git
 	pkgdesc = Just-in-time compiler and drop-in replacement for Lua (v2.1 branch)
-	pkgver = 2.1.0.beta3.r124.gbd00094
+	pkgver = 2.1.0.beta3.r230.gec6edc5c
 	pkgrel = 1
-	url = http://luajit.org/
+	url = https://luajit.org/
 	arch = i686
 	arch = x86_64
 	license = MIT
