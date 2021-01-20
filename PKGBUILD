@@ -10,9 +10,9 @@ pkgver() {
 
 pkgver=r13.259af28
 pkgrel=1
-pkgdesc='Various linters for Phabricator (via arcanist) by Pinterest'
+pkgdesc='An xunit and clover -based unit tests runner for Arcanist.'
 arch=('any')
-url="https://github.com/sealcode/arc-unit-mocha"
+url="https://github.com/rutgersmobile/arc-unit-mocha"
 license=('BSD3')
 depends=('php' 'python' 'arcanist-git')
 optdepends=('git: Git VCS support'
@@ -21,7 +21,7 @@ optdepends=('git: Git VCS support'
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git+https://github.com/sealcode/arc-unit-mocha.git")
+source=("git+https://github.com/rutgersmobile/arc-unit-mocha.git")
 sha256sums=('SKIP')
 
 package() {
