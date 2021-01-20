@@ -1,0 +1,22 @@
+pkgbase = libadwaita-git
+	pkgdesc = Library full of GTK+ widgets for mobile phones
+	pkgver = 1.1.0.r.g9d8f4ab
+	pkgrel = 1
+	url = https://gitlab.gnome.org/exalm/libadwaita
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = LGPL
+	checkdepends = xorg-server-xvfb
+	makedepends = git
+	makedepends = glade
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = vala
+	depends = gtk3
+	source = git+https://gitlab.gnome.org/exalm/libadwaita
+	md5sums = SKIP
+
+pkgname = libadwaita-git
+
