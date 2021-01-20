@@ -6,14 +6,13 @@ pkgname=cppqed-git
 pkgver=2.100.3
 pkgrel=1
 pkgdesc="Highly flexible framework for simulating open quantum dynamics."
-arch=('i686' 'x86_64')
-url="http://cppqed.sourceforge.net"
+arch=(i686 x86_64)
+url=http://cppqed.sourceforge.net
 license=(custom)
-depends=('gcc-libs' 'boost' 'blitz-cppqed-hg' 'flens-git' 'python2' 'python2-numpy' 'python2-scipy' 'cmake' 'gsl')
-makedepends=('git' ninja 'gcc' 'cmake')
-optdepends=()
-provides=('cppqed')
-conflicts=('cppqed')
+depends=(boost-libs blitz flens python python-numpy python-scipy gsl)
+makedepends=(git cmake ninja boost)
+provides=(cppqed)
+conflicts=(cppqed)
 source=("${pkgname}"::git+https://github.com/vukics/cppqed
         "blitz-cppqed::git+https://github.com/vukics/blitz"
         "pcg-cpp::git+https://github.com/vukics/pcg-cpp"
