@@ -24,3 +24,29 @@ pkgbase = dmenu-abdellatif-git
 
 pkgname = dmenu-abdellatif-git
 
+pkgbase = st-abdellatif-git
+	pkgdesc = my st build
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = https://github.com/abdellatif-dev/st-abdellatif.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = dash
+	depends = sh
+	depends = glibc
+	depends = coreutils
+	depends = libx11
+	depends = libxinerama
+	depends = libxft
+	depends = freetype2
+	depends = fontconfig
+	depends = libfontconfig.so
+	provides = st
+	conflicts = st
+	source = git+https://github.com/abdellatif-dev/st-abdellatif.git
+	md5sums = SKIP
+
+pkgname = st-abdellatif-git
+
