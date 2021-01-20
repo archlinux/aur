@@ -12,6 +12,8 @@ license=(GPL)
 depends=(duplicity gvfs libadwaita libsecret org.freedesktop.secrets python-gobject python-pydrive)
 makedepends=(appstream-glib itstool meson vala)
 source=("git+https://gitlab.gnome.org/World/$_pkgname")
+conflicts=("deja-dup")
+provides=("deja-dup")
 validpgpkeys=('A3A5C2FC56AE7341D308D8571B50ECA373F3F233') # Michael Terry
 sha512sums=('SKIP')
 
