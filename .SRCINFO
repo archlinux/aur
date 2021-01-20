@@ -10,7 +10,7 @@ pkgbase = trovotutto
 	depends = python-nltk
 	depends = python-pyxdg
 	depends = python-setproctitle
-	source = trovotutto::git+https://github.com/tallero/trovotutto.git#tag=$pkgver
+	source = trovotutto::git+https://github.com/tallero/trovotutto.git#tag=0.1
 	sha256sums = SKIP
 
 pkgname = trovotutto

@@ -9,7 +9,7 @@ url='https://github.com/tallero/trovotutto'
 license=('AGPL3')
 depends=('python' 'python-nltk' 'python-pyxdg' 'python-setproctitle')
 makedepends=('python-setuptools')
-source=('trovotutto::git+https://github.com/tallero/trovotutto.git#tag=$pkgver')
+source=("${pkgname}::git+https://github.com/tallero/trovotutto.git#tag=${pkgver}")
 sha256sums=('SKIP')
 
 package() {
