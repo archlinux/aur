@@ -12,7 +12,7 @@ pkgdesc='The Open Source build of Visual Studio Code (vscode) editor with electr
 _electron=electron-beta
 _pkgname=vscode
 pkgver=1.52.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/microsoft/vscode'
 license=('MIT')
@@ -74,8 +74,8 @@ prepare() {
   sed -i "s/\"version\": \"${_origin}\"/\"version\": \"${_target}\"/" cgmanifest.json
   sed -i "s/\"electron\": \"${_origin}\"/\"electron\": \"${_origin}\"/" package.json
   sed -i "s/\"--version\": \"${_origin}\"/\"--version\": \"${_origin}\"/" package.json
-  sed -i "/medialCapitalAsWordStart: options.medialCapitalAsWordStart/d" src/vs/workbench/contrib/webview/electron-browser/webviewElement.ts
-  sed -i "s/matchCase: options.matchCase,/matchCase: options.matchCase/" src/vs/workbench/contrib/webview/electron-browser/webviewElement.ts
+  # sed -i "/medialCapitalAsWordStart: options.medialCapitalAsWordStart/d" src/vs/workbench/contrib/webview/electron-browser/webviewElement.ts
+  # sed -i "s/matchCase: options.matchCase,/matchCase: options.matchCase/" src/vs/workbench/contrib/webview/electron-browser/webviewElement.ts
 
   # Patch appdata and desktop file
   sed -i 's|/usr/share/@@NAME@@/@@NAME@@|@@NAME@@|g
@@ -88,7 +88,7 @@ prepare() {
           s|@@URLPROTOCOL@@|vscode|g
           s|inode/directory;||' resources/linux/code{.appdata.xml,.desktop,-url-handler.desktop}
 
-  sed -i 's|MimeType=.*|MimeType=x-scheme-handler/code-oss;|' resources/linux/code-url-handler.desktop
+ sed -i 's|MimeType=.*|MimeType=x-scheme-handler/code-oss;|' resources/linux/code-url-handler.desktop
 
   # Add completitions for code-oss
   cp resources/completions/bash/code resources/completions/bash/code-oss
