@@ -10,6 +10,7 @@ license=('MIT')
 url='https://k8slens.dev'
 depends=('alsa-lib' 'gtk3' 'libxss' 'libxtst' 'nss')
 makedepends=('npm' 'nodejs-lts-erbium' 'yarn')
+conflicts=('lens-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lensapp/lens/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop")
 sha256sums=('5fb4919cc5fadc2e70d00d8e62bfe16266a7d81cdbbbfd51b0849f0519f236b7'

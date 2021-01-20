@@ -13,6 +13,7 @@ pkgbase = lens
 	depends = libxss
 	depends = libxtst
 	depends = nss
+	conflicts = lens-bin
 	source = lens-4.0.7.tar.gz::https://github.com/lensapp/lens/archive/v4.0.7.tar.gz
 	source = lens.desktop
 	sha256sums = 5fb4919cc5fadc2e70d00d8e62bfe16266a7d81cdbbbfd51b0849f0519f236b7
