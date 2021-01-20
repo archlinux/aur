@@ -1,3 +1,4 @@
+#!/bin/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # prev-Maintainer: Raimar Sandner <raimar.sandner@uibk.ac.at>
 
