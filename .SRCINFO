@@ -21,6 +21,12 @@ pkgbase = cppqed-git
 	provides = cppqed
 	conflicts = cppqed
 	source = cppqed-git::git+https://github.com/vukics/cppqed
+	source = blitz-cppqed::git+https://github.com/vukics/blitz
+	source = pcg-cpp::git+https://github.com/vukics/pcg-cpp
+	source = Xoshiro-cpp::git+https://github.com/vukics/Xoshiro-cpp
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = cppqed-git

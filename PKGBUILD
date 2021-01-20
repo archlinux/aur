@@ -14,8 +14,21 @@ makedepends=('git' 'gcc' 'cmake')
 optdepends=()
 provides=('cppqed')
 conflicts=('cppqed')
-source=("${pkgname}"::git+https://github.com/vukics/cppqed)
-sha256sums=('SKIP')
+source=("${pkgname}"::git+https://github.com/vukics/cppqed
+        "blitz-cppqed::git+https://github.com/vukics/blitz"
+        "pcg-cpp::git+https://github.com/vukics/pcg-cpp"
+        "Xoshiro-cpp::git+https://github.com/vukics/Xoshiro-cpp")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
+
+prepare() {
+  git -C "${srcdir}/${pkgname}" config submodule.blitz.url "${srcdir}"/blitz-cppqed
+  git -C "${srcdir}/${pkgname}" config submodule.CPPQEDutils/thirdPartyRandom/pcg-cpp.url "${srcdir}"/pcg-cpp
+  git -C "${srcdir}/${pkgname}" config submodule.CPPQEDutils/thirdPartyRandom/Xoshiro-cpp.url "${srcdir}"/Xoshiro-cpp
+  git -C "${srcdir}/${pkgname}" submodule update --init --recursive --remote
+}
 
 pkgver() {
    cd "${pkgname}"
