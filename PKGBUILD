@@ -10,9 +10,9 @@ arch=('any')
 license=('GPL')
 provides=($pkgname)
 conflicts=($pkgname)
-makedepends=('gnome-colors-common')
+makedepends=('gnome-icon-theme' 'gnome-icon-theme-symbolic')
 source=('https://sourceforge.net/projects/archbangretro/files/gnome-carbonate.tar.xz')
-md5sums=('955f7d0825496b87add28b37ad9be3a5')
+md5sums=('2cafbfce185796eb5d115439ae6a2756')
 
 package() {
   install -d /$pkgdir/usr/share/icons

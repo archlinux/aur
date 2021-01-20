@@ -4,11 +4,12 @@ pkgbase = gnome-carbonate
 	url = https://sourceforge.net/projects/archbangretro/
 	arch = any
 	license = GPL
-	makedepends = gnome-colors-common
+	makedepends = gnome-icon-theme
+	makedepends = gnome-icon-theme-symbolic
 	provides = gnome-carbonate
 	conflicts = gnome-carbonate
 	source = https://sourceforge.net/projects/archbangretro/files/gnome-carbonate.tar.xz
-	md5sums = 955f7d0825496b87add28b37ad9be3a5
+	md5sums = 2cafbfce185796eb5d115439ae6a2756
 
 pkgname = gnome-carbonate
 
