@@ -1,11 +1,10 @@
 pkgbase = dingtalk-electron
 	pkgdesc = 钉钉Linux版本
-	pkgver = 2.1.7
+	pkgver = 2.1.9
 	pkgrel = 1
 	url = https://github.com/nashaofu/dingtalk#readme
 	arch = x86_64
 	license = MIT
-	depends = gconf
 	depends = at-spi2-core
 	depends = gtk3
 	depends = libnotify
@@ -16,8 +15,8 @@ pkgbase = dingtalk-electron
 	depends = nss
 	depends = libxss
 	depends = libsecret
-	source = https://github.com/nashaofu/dingtalk/releases/download/v2.1.7/dingtalk-2.1.7-latest-amd64.deb
-	md5sums = 9011b55240816f2bc61310c72d39b658
+	source = https://github.com/nashaofu/dingtalk/releases/download/v2.1.9/dingtalk-2.1.9-latest-amd64.deb
+	md5sums = 250cff97f52931cfc01970f4c4445712
 
 pkgname = dingtalk-electron
 

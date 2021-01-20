@@ -2,13 +2,13 @@
 # Maintainer: Shichao Gao <xgdgsc at gmail dot com>
 pkgname=dingtalk-electron
 _pkgname=${pkgname//-/_}
-pkgver=2.1.7
+pkgver=2.1.9
 pkgrel=1
 pkgdesc="钉钉Linux版本"
 arch=('x86_64')
 url="https://github.com/nashaofu/dingtalk#readme"
 license=('MIT')
-depends=('gconf' 'at-spi2-core' 'gtk3' 'libnotify' 'xdg-utils' 'libutil-linux' 'libappindicator-gtk3' 'libxtst' 'nss' 'libxss' 'libsecret')
+depends=('at-spi2-core' 'gtk3' 'libnotify' 'xdg-utils' 'libutil-linux' 'libappindicator-gtk3' 'libxtst' 'nss' 'libxss' 'libsecret')
 source=("https://github.com/nashaofu/dingtalk/releases/download/v${pkgver}/dingtalk-${pkgver}-latest-amd64.deb")
 
 package() {
@@ -27,4 +27,4 @@ package() {
 	find "${pkgdir}" -type f | xargs chown root:root
 }
 
-md5sums=('9011b55240816f2bc61310c72d39b658')
+md5sums=('250cff97f52931cfc01970f4c4445712')
