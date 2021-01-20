@@ -1,0 +1,15 @@
+pkgbase = effective-umount
+	pkgdesc = Script that forces unmount - kills processes accessing it
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://bitbucket.org/rafalkilar/pz-skuteczne-odmontowywanie/src/master/
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = psmisc
+	depends = util-linux
+	source = git+https://bitbucket.org/rafalkilar/pz-skuteczne-odmontowywanie.git
+	sha256sums = SKIP
+
+pkgname = effective-umount
+
