@@ -13,6 +13,8 @@ depends=(gtk3)
 makedepends=(git glade gobject-introspection meson vala)
 checkdepends=(xorg-server-xvfb)
 source=("git+$url")
+provides=(libadwaita)
+conflicts=(libadwaita)
 md5sums=(SKIP)
 
   pkgver() {
