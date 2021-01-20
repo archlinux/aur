@@ -1,0 +1,53 @@
+diff -up src/xrdp-git/instfiles/xrdp.service.in.orig src/xrdp-git/instfiles/xrdp.service.in
+--- src/xrdp-git/instfiles/xrdp.service.in.orig	2017-07-29 19:28:37.000000000 -0600
++++ src/xrdp-git/instfiles/xrdp.service.in	2017-07-29 19:32:15.000000000 -0600
+@@ -7,10 +7,8 @@ After=network.target xrdp-sesman.service
+ [Service]
+ Type=forking
+ PIDFile=@localstatedir@/run/xrdp.pid
+-EnvironmentFile=-@sysconfdir@/sysconfig/xrdp
+-EnvironmentFile=-@sysconfdir@/default/xrdp
+-ExecStart=@sbindir@/xrdp $XRDP_OPTIONS
+-ExecStop=@sbindir@/xrdp $XRDP_OPTIONS --kill
++ExecStart=@sbindir@/xrdp
++ExecStop=@sbindir@/xrdp --kill
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff -up src/xrdp-git/instfiles/xrdp-sesman.service.in.orig src/xrdp-git/instfiles/xrdp-sesman.service.in
+--- src/xrdp-git/instfiles/xrdp-sesman.service.in.orig	2017-07-29 19:28:46.000000000 -0600
++++ src/xrdp-git/instfiles/xrdp-sesman.service.in	2017-07-29 19:33:02.000000000 -0600
+@@ -8,10 +8,8 @@ BindsTo=xrdp.service
+ [Service]
+ Type=forking
+ PIDFile=@localstatedir@/run/xrdp-sesman.pid
+-EnvironmentFile=-@sysconfdir@/sysconfig/xrdp
+-EnvironmentFile=-@sysconfdir@/default/xrdp
+-ExecStart=@sbindir@/xrdp-sesman $SESMAN_OPTIONS
+-ExecStop=@sbindir@/xrdp-sesman $SESMAN_OPTIONS --kill
++ExecStart=@sbindir@/xrdp-sesman
++ExecStop=@sbindir@/xrdp-sesman --kill
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff -up src/xrdp-git/sesman/startwm.sh.orig src/xrdp-git/sesman/startwm.sh
+--- src/xrdp-git/sesman/startwm.sh.orig	2017-07-29 19:27:43.000000000 -0600
++++ src/xrdp-git/sesman/startwm.sh	2017-07-29 19:27:45.000000000 -0600
+@@ -56,6 +56,17 @@ wm_start()
+     export LANG LANGUAGE
+   fi
+ 
++  # arch user
++  if [ -r ~/.xinitrc ]; then
++    . ~/.xinitrc
++    exit 0
++  fi
++  # arch
++  if [ -r /etc/X11/xinit/xinitrc ]; then
++    . /etc/X11/xinit/xinitrc
++    exit 0
++  fi
++
+   # debian
+   if [ -r /etc/X11/Xsession ]; then
+     pre_start
