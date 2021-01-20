@@ -48,6 +48,10 @@ build() {
   ninja -C build ${MAKEFLAGS:--j1}
 }
 
+check() {
+  ninja -C build ${MAKEFLAGS:--j1} test
+}
+
 package() {
   DESTDIR="${pkgdir}" ninja -C build install
   install -Dm644 "${srcdir}"/${pkgname}/LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
