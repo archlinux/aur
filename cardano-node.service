@@ -1,0 +1,19 @@
+[Unit]
+Description=Cardano node
+Requires=network.target
+
+[Service]
+Type=simple
+ExecStart=cardano-node run \
+    --database-path /var/lib/cardano-node/db \
+    --socket-path /run/cardano-node/socket \
+    --port 3000 \
+    --config /var/lib/cardano-node/config/mainnet-config.json  \
+    --topology /var/lib/cardano-node/config/mainnet-topology.json
+Restart=always
+RestartSec=60
+User=cardano
+TimeoutStopSec=90
+
+[Install]
+WantedBy=multi-user.target

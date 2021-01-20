@@ -2,3 +2,4 @@ d /var/lib/cardano-node         0755 cardano cardano - -
 d /var/lib/cardano-node/config  0755 cardano cardano - -
 d /var/lib/cardano-node/db      0755 cardano cardano - -
 d /var/lib/cardano-node/keys    0750 cardano cardano - -
+d /run/cardano-node             0755 cardano cardano - -
