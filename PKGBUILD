@@ -8,13 +8,13 @@
 
 pkgname=filebot
 pkgver=4.9.2
-pkgrel=5
+pkgrel=6
 pkgdesc="The ultimate TV and Movie Renamer"
 arch=('i686' 'x86_64' 'aarch64' 'armv7l' 'armv7h')
 url="https://www.filebot.net/"
 license=('Commercial')
 #groups=()
-depends=('jre11-openjdk' 'java11-openjfx' 'fontconfig' 'chromaprint')
+depends=('jre11-openjdk' 'java11-openjfx>=11.0.10.u1' 'fontconfig' 'chromaprint')
 makedepends=()
 checkdepends=()
 
@@ -46,7 +46,8 @@ md5sums=('8417980b971ad2099066216b815f50af'
 
 package() {
   mkdir -p $pkgdir/usr/bin
-  mkdir -p $pkgdir/usr/share/$pkgname/openjfx
+  # mkdir -p $pkgdir/usr/share/$pkgname/openjfx
+  mkdir -p $pkgdir/usr/share/$pkgname
  
   install -Dm755 $pkgname.sh "$pkgdir/usr/bin/$pkgname"
 

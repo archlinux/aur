@@ -1,7 +1,7 @@
 pkgbase = filebot
 	pkgdesc = The ultimate TV and Movie Renamer
 	pkgver = 4.9.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.filebot.net/
 	install = filebot.install
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = filebot
 	arch = armv7h
 	license = Commercial
 	depends = jre11-openjdk
-	depends = java11-openjfx
+	depends = java11-openjfx>=11.0.10.u1
 	depends = fontconfig
 	depends = chromaprint
 	optdepends = libzen: Required by libmediainfo
