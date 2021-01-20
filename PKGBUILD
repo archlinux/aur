@@ -10,7 +10,7 @@
 
 pkgname=python37
 pkgver=3.7.9
-pkgrel=4
+pkgrel=5
 _pybasever=${pkgver%.*}
 _pymajver=3
 pkgdesc="Major release 3.7 of the Python high-level programming language"
@@ -18,7 +18,7 @@ arch=('x86_64')
 license=('custom')
 url="https://www.python.org/"
 depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib' 'libnsl' 'libxcrypt')
-makedepends=('tk' 'sqlite' 'valgrind' 'bluez-libs' 'mpdecimal' 'llvm' 'gdb' 'xorg-server-xvfb')
+makedepends=('tk' 'sqlite' 'valgrind' 'bluez-libs' 'mpdecimal' 'gdb')
 optdepends=('sqlite'
             'mpdecimal: for decimal'
             'xz: for lzma'
@@ -64,10 +64,7 @@ prepare() {
 build() {
   cd Python-${pkgver}
 
-  # PGO should be done with -O3
-  CFLAGS="${CFLAGS/-O2/-O3}"
-
-  ./configure --prefix=/usr \
+  CFLAGS=-DOPENSSL_NO_SSL2 ./configure --prefix=/usr \
               --enable-shared \
               --with-computed-gotos \
               --enable-optimizations \
@@ -80,24 +77,18 @@ build() {
               --enable-loadable-sqlite-extensions \
               --without-ensurepip
 
-  # Obtain next free server number for xvfb-run; this even works in a chroot environment.
-  export servernum=99
-  while ! xvfb-run -d -n "$servernum" /bin/true 2>/dev/null; do servernum=$((servernum+1)); done
-
-  LC_CTYPE=en_US.UTF-8 xvfb-run -s "-screen 0 1280x720x24 -ac +extension GLX" -d -n "$servernum" make EXTRA_CFLAGS="$CFLAGS"
+  make
 }
 
 package() {
   cd Python-${pkgver}
 
-  # PGO should be done with -O3
-  CFLAGS="${CFLAGS/-O2/-O3}"
-
   # altinstall: /usr/bin/pythonX.Y but not /usr/bin/python or /usr/bin/pythonX
-  make DESTDIR="${pkgdir}" EXTRA_CFLAGS="$CFLAGS" altinstall
+  make DESTDIR="${pkgdir}" altinstall maninstall
 
-  # Avoid conflicts with the main 'python' package, once Python 3.8 is standard.
+  # Avoid conflicts with the main 'python' package.
   rm "${pkgdir}/usr/lib/libpython${_pymajver}.so"
+  rm -f "${pkgdir}/usr/share/man/man1/python${_pymajver}.1"
 
   # Add missing pkgconfig stuff
   ln -s "python${_pybasever}m-config" "${pkgdir}/usr/bin/python${_pybasever}-config"
