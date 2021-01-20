@@ -5,29 +5,31 @@ url='https://moveit.ros.org'
 pkgname='ros-melodic-moveit-planners-ompl'
 pkgver='1.0.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-moveit-core
   ros-melodic-tf
   ros-melodic-pluginlib
+  ros-melodic-ompl
   ros-melodic-roscpp
   ros-melodic-dynamic-reconfigure
   ros-melodic-moveit-ros-planning
   ros-melodic-eigen-conversions
   ros-melodic-moveit-resources
   ros-melodic-catkin)
-makedepends=('cmake' 'ros-build-tools' 'ompl'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-melodic-moveit-core
   ros-melodic-tf
   ros-melodic-pluginlib
+  ros-melodic-ompl
   ros-melodic-roscpp
   ros-melodic-dynamic-reconfigure
   ros-melodic-moveit-ros-planning
   ros-melodic-eigen-conversions)
-depends=('ompl' ${ros_depends[@]})
+depends=(${ros_depends[@]})
 
 _dir="moveit-${pkgver}/moveit_planners/ompl"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
@@ -46,6 +48,9 @@ build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
   [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+
+  echo $PATH
+  echo $LD_LIBRARY_PATH
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
