@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=kmdr
-pkgver=1.2.16
+pkgver=1.2.17
 pkgrel=1
 pkgdesc="The CLI tool for explaining commands from your terminal"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ediardo/kmdr-cli/archive/v$pkgver.tar.gz")
-sha256sums=('005371541141a430314770fdc3c0dacbb00d7ccdb753458a3014cabb3ebc4f37')
+sha256sums=('82dafbf2df5a6fbccf409124593e63847cde54e9a512fc16ba4711dada1e37f3')
 
 package() {
 	cd "$pkgname-cli-$pkgver"
@@ -20,8 +20,12 @@ package() {
 		--prefix "$pkgdir"/usr
 
 	# Non-deterministic race in npm gives 777 permissions to random directories.
-	# See https://github.com/npm/npm/issues/9359 for details.
-	find "$pkgdir"/usr -type d -exec chmod 755 {} +
+	# See https://github.com/npm/cli/issues/1103 for details.
+	find "$pkgdir/usr" -type d -exec chmod 755 {} +
+
+	# npm gives ownership of ALL FILES to build user
+	# https://bugs.archlinux.org/task/63396
+	chown -R root:root "$pkgdir"
 
 	# Remove references to $pkgdir
 	find "$pkgdir" -type f -name package.json -print0 | xargs -0 sed -i "/_where/d"
