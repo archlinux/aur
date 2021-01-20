@@ -3,7 +3,7 @@
 _pkgname=kdenlive
 pkgname=kdenlive-appimage
 pkgver=20.12.1b
-pkgrel=2
+pkgrel=1
 pkgdesc="A non-linear video editor for Linux using the MLT video framework"
 arch=('x86_64')
 #url="https://www.kdenlive.org"
