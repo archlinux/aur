@@ -2,7 +2,7 @@
 
 pkgname=kicad-nightly
 pkgver=5.99.0_8533_g07d4a28024
-pkgrel=1
+pkgrel=2
 pkgdesc='Electronic schematic and printed circuit board (PCB) design tools'
 arch=('x86_64')
 url='http://kicad-pcb.org/'
