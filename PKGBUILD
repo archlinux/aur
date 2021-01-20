@@ -5,7 +5,7 @@ url='https://moveit.ros.org'
 pkgname='ros-melodic-moveit-ros-planning'
 pkgver='1.0.7'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-moveit-core
@@ -61,7 +61,9 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
         -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
         -DPYTHON_BASENAME=-python3.7m \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+		 -DBOOST_ROOT=/opt/boost1.69 \
+		 -DBoost_NO_SYSTEM_PATHS=TRUE
   make
 }
 
