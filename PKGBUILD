@@ -3,6 +3,7 @@
 ### Notes ###
 # - Repo: 'https://github.com/physimals/pyfab'
 # - Docs: 'https://pyfab.readthedocs.io/en/latest/'
+# - Fabber is provided by FSL, but can be installed as a standalone (https://github.com/physimals/fabber_core)
 
 ### Info ###
 pkgname=python-pyfab
@@ -11,9 +12,10 @@ pkgver=0.3.5
 pkgrel=1
 pkgdesc='Python interface to the Fabber Bayesian model fitting tool'
 arch=('any')
-url='https://pyfab.readthedocs.io/en/latest/'
+url='https://pyfab.readthedocs.io'
 license=('custom:PYFAB license')
-depends=('fsl>=6.0.1' 'fslpy' 'python' 'python-numpy' 'python-nibabel' 'python-six')
+depends=('fsl>=6.0.1' 'python' 'python-numpy' 'python-nibabel' 'python-six')
+optdepends=('fslpy: MVN functionality')
 makedepends=('git' 'python-setuptools')
 source=("$pkgname::git+https://github.com/physimals/${_pkgname}.git#tag=v$pkgver")
 b2sums=('SKIP')
