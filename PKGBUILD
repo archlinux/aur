@@ -1,44 +1,50 @@
-# Maintainer: zer0def <zer0def@github>
+# Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 # Maintainer: istimaldar_sntlk <istimaldar@gmail.com>
+# Contributor: zer0def <zer0def@github>
+
+_pkgname=lens
 pkgname=lens-bin
-pkgver=4.0.6
+pkgver=4.0.7
 pkgrel=1
-pkgdesc='The Kubernetes IDE (previously Kontena Lens)'
+pkgdesc='The Kubernetes IDE'
 arch=('x86_64')
-url='https://k8slens.dev'
 license=('MIT')
-depends=('libxss' 'libxtst')
+url='https://k8slens.dev'
+depends=('alsa-lib' 'gtk3' 'libxss' 'libxtst' 'nss')
 provides=('lens')
 conflicts=('lens')
-
-source=(
-  "https://github.com/lensapp/lens/releases/download/v${pkgver}/Lens-${pkgver}.AppImage"
-  "lens.desktop"
-  "lens.sh"
-)
-sha512sums=(
-  '560ef75e73c3c533b24e21839120af904f71144cea43501c086036847b3293e7cfab3157fa83294f88209adf567d71a057b99fe5d79a1debcf77afdbd425f0bd'
-  'ff81d0bfd155766462b1a7b37fe1aed4cb1b80b5afe2310a922a94b4f8801e104fde56d279fe5944dcd36dff38650b0d83bc99d11613a4dc87064a952a2b9364'
-  '382f51df6df222dee97021cc0dc2eca76dd510f32461da836a9265fad28549be43e272e7b36a65332e7bd53beb27128e1b0379b430a4f07ad327e14cea3596a1'
-)
+source=(${_pkgname}-${pkgver}.AppImage::"https://github.com/lensapp/${_pkgname}/releases/download/v${pkgver}/Lens-${pkgver}.AppImage"
+        "${_pkgname}.desktop")
+sha256sums=('670f970d413942afc202f55c040c9fa87057d560f7fadec90849f917d474450a'
+            '3db5b267cededcc73b3e35b89b46fca419e82832b85fa633e4326156cf648d02')
 
 prepare() {
-  chmod +x "Lens-${pkgver}.AppImage"
-  "./Lens-${pkgver}.AppImage" --appimage-extract &>/dev/null
+  chmod +x "${_pkgname}-${pkgver}.AppImage"
+  "./${_pkgname}-${pkgver}.AppImage" --appimage-extract
 }
 
 package() {
-  install -d "${pkgdir}/opt"
-  cp -a "${srcdir}/squashfs-root" "${pkgdir}/opt/lens"
+  # move the entire distribution to /usr/share
+  mkdir -p "${pkgdir}"/usr/share/${_pkgname}
+  mv "${srcdir}"/squashfs-root/* \
+    "${pkgdir}"/usr/share/${_pkgname}
 
-  install -Dm644 squashfs-root/kontena-lens.png "$pkgdir"/usr/share/icons/hicolor/512x512/apps/kontena-lens.png
-  rm -rf "${pkgdir}/opt/lens/usr"
-  
-  install -Dm644 "${srcdir}/lens.desktop" "${pkgdir}/usr/share/applications/lens.desktop"
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
-    "${srcdir}/squashfs-root/resources/LICENSE" \
-    "${srcdir}/squashfs-root/LICENSE.electron.txt" \
-    "${srcdir}/squashfs-root/LICENSES.chromium.html"
-  install -Dm755 "${srcdir}/lens.sh" "${pkgdir}/usr/bin/lens"
-  chmod -R a+rx "${pkgdir}/opt/lens"
+  # icon
+  install -Dm 644 "${pkgdir}"/usr/share/${_pkgname}/usr/share/icons/hicolor/512x512/apps/kontena-${_pkgname}.png \
+    "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/kontena-${_pkgname}.png
+
+  # desktop file
+  install -Dm 644 "${srcdir}"/${_pkgname}.desktop \
+    "${pkgdir}"/usr/share/applications/${_pkgname}.desktop
+
+  # symlink binary
+  mkdir -p "${pkgdir}"/usr/bin
+  ln -sf /usr/share/${_pkgname}/kontena-lens \
+    "${pkgdir}"/usr/bin/kontena-lens
+
+  # clean and fix permissions
+  find "${pkgdir}" -type d -exec chmod 755 {} \;
+  chmod -x "${pkgdir}"/usr/share/${_pkgname}/*.so
+  rm -rf "${pkgdir}"/usr/share/${_pkgname}/kontena-lens.png
+  rm -rf "${pkgdir}"/usr/share/${_pkgname}/usr
 }
