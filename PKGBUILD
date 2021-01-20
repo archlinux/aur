@@ -3,7 +3,7 @@
 pkgname=clash-dashboard-git
 _pkgname=clash-dashboard
 pkgver=0.3.0.r102.ga70ad6b
-pkgrel=2
+pkgrel=3
 pkgdesc="Web Dashboard for Clash"
 arch=('any')
 url="https://github.com/Dreamacro/clash-dashboard"

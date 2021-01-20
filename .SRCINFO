@@ -1,7 +1,7 @@
 pkgbase = clash-dashboard-git
 	pkgdesc = Web Dashboard for Clash
 	pkgver = 0.3.0.r102.ga70ad6b
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/Dreamacro/clash-dashboard
 	arch = any
 	license = MIT
