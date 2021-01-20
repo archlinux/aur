@@ -7,14 +7,12 @@ pkgbase = python-pyfab
 	license = custom:PYFAB license
 	makedepends = git
 	makedepends = python-setuptools
-	makedepends = sed
 	depends = fsl>=6.0.1
 	depends = fslpy
 	depends = python
 	depends = python-numpy
 	depends = python-nibabel
 	depends = python-six
-	options = !emptydirs
 	source = python-pyfab::git+https://github.com/physimals/pyfab.git#tag=v0.3.5
 	b2sums = SKIP
 

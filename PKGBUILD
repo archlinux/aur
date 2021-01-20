@@ -2,6 +2,7 @@
 
 ### Notes ###
 # - Repo: 'https://github.com/physimals/pyfab'
+# - Docs: 'https://pyfab.readthedocs.io/en/latest/'
 
 ### Info ###
 pkgname=python-pyfab
@@ -13,8 +14,7 @@ arch=('any')
 url='https://pyfab.readthedocs.io/en/latest/'
 license=('custom:PYFAB license')
 depends=('fsl>=6.0.1' 'fslpy' 'python' 'python-numpy' 'python-nibabel' 'python-six')
-makedepends=('git' 'python-setuptools' 'sed')
-options=(!emptydirs)
+makedepends=('git' 'python-setuptools')
 source=("$pkgname::git+https://github.com/physimals/${_pkgname}.git#tag=v$pkgver")
 b2sums=('SKIP')
 
@@ -40,5 +40,5 @@ package() {
     --skip-build
 
     ## Install License ##
-    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
