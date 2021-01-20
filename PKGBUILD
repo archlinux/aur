@@ -2,7 +2,7 @@
 # pkg: github iamkroot/trakt-scrobbler
 pkgname=trakt-scrobbler
 pkgver=1.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
 arch=(any)
@@ -20,6 +20,8 @@ depends=(
     "python-guessit>=3.1.0"
     "python-pygobject<4"
     "python-pygobject>=3.34.0"
+    "python-gobject<4"
+    "python-gobject>=3.34.0"
     "python-pysocks<2"
     "python-pysocks>=1.7.1"
     "python-requests<3"
