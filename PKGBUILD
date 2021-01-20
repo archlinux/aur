@@ -1,7 +1,7 @@
 # Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
 
 pkgname=obsidian
-_appimagver=0.10.7
+_appimagver=0.10.8
 _appimage="${pkgname}-${_appimagver}.AppImage"
 pkgver=${_appimagver//-/_}
 pkgrel=1
@@ -15,7 +15,7 @@ depends=('zlib' 'hicolor-icon-theme' 'fuse')
 options=(!strip)
 source=("${_appimage}::https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/Obsidian-${pkgver}.AppImage")
 noextract=("${_appimage}")
-sha256sums=('fbaa207822ec1d6ffb333a10b1fa2910b3ff45339195aee88ef5dc8b286aba43')
+sha256sums=('9413aac93336772a65bc905a11db400abdc6d52690605d501f57858574ccb7e1')
 
 prepare() {
     # Enable execution of AppImage
