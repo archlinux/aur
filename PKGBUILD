@@ -5,11 +5,11 @@ pkgname=( python-$_name python2-$_name )
 pkgbase=python-$_name
 
 pkgver=2.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Null values and sentinels like (but not) None, False & True'
 
 arch=(any)
-url=https://bitbucket.org/jeunice/nulltype
+url=https://web.archive.org/web/*/https://bitbucket.org/jeunice/nulltype
 license=(Apache)
 depends=()
 
