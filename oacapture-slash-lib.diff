@@ -1,0 +1,11 @@
+diff --git a/udev/Makefile.am b/udev/Makefile.am
+index 8b7d790..e5e58ce 100644
+--- a/udev/Makefile.am
++++ b/udev/Makefile.am
+@@ -31,5 +31,5 @@ RULESFILES = 70-altair-cameras.rules 70-atik.rules 70-celestron-camera.rules \
+ 	70-tis-cameras.rules 70-tis-cameras-uvc.rules \
+ 	70-touptek-cameras.rules 70-xagyl-ftdi.rules 85-qhy-cameras.rules
+ 
+-udevrulesdir = ${sysconfdir}/../lib/udev/rules.d
++udevrulesdir = ${sysconfdir}/../usr/lib/udev/rules.d
+ udevrules_DATA = $(RULESFILES)
