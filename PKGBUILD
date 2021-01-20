@@ -16,6 +16,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AOSC-Dev/${_pkgname}/ar
         "https://raw.githubusercontent.com/AOSC-Dev/${_pkgname}/master/LICENSE")
 sha256sums=('fe0259d9bc90e6408132c3d4bc2a64cd57bf97a2d63ff8aeaaf7211998846d8f'
             '612bf4162e0b9f8ee7ef4612ad6fd37e39a33311dc996360583350ba4ea7ae93')
+conflicts=('ciel-git')
 
 build() {
     cd ${_pkgname}-${_pkgver}
