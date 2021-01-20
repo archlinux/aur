@@ -1,6 +1,6 @@
 pkgbase = libavif-git
 	pkgdesc = Library for encoding and decoding .avif files
-	pkgver = 0.8.1.r86.ga0a8ffc
+	pkgver = 0.8.4.r48.g82d720e
 	pkgrel = 1
 	url = https://github.com/AOMediaCodec/libavif
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = libavif-git
 	depends = aom
 	depends = dav1d
 	depends = libjpeg
+	depends = svt-av1
 	depends = rav1e
 	provides = libavif
 	conflicts = libavif
