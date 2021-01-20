@@ -1,7 +1,7 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
 pkgver="9.0.350.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
 arch=('x86_64')
@@ -19,13 +19,13 @@ _languages="$_commonfiles/Languages"
 _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
-source=($_downloadsource/$_x64file)
+source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
 md5sums=('b20adebd36ab0e85e9b737c9dbeb9e4a')
 
 prepare()
 {
 
- 7z x "$srcdir/$_x64file" -o"$srcdir"
+ 7z x "$srcdir/$pkgname-$pkgver.msi" -o"$srcdir"
  7z x "$srcdir/et_x64.cab" -o"$srcdir"
  7z x "$srcdir/e_x64.cab" -o"$srcdir"
  7z x "$srcdir/SE_x64.cab" -o"$srcdir"
@@ -43,7 +43,7 @@ package()
  mkdir -p "$pkgdir${_installdir}/$pkgname"
 
  install -Dm644 "$srcdir/FID_HelpStub" "$pkgdir${_installdir}/$pkgname/${_programname}/Help/PDFXVE8Sm.pdf"
- install -Dm644 "$srcdir/FID_EOCRALicense" "$pkgdir${_installdir}/$pkgname/${_programname}/PDF_EOCR_PluginV9.pdf"
+ install -Dm644 "$srcdir/FID_EOCRALicense" "$pkgdir/usr/share/licenses/$pkgname/PDF_EOCR_PluginV9.pdf"
  install -Dm644 "$srcdir/FID_ViewerLicense" "$pkgdir/usr/share/licenses/$pkgname/PDF_VE.pdf"
  install -Dm644 "$srcdir/FID_ViewerDLL64" "$pkgdir${_installdir}/$pkgname/${_programname}/PDFXEditCore.x64.dll"
  install -Dm755 "$srcdir/FID_EditorEXE" "$pkgdir${_installdir}/$pkgname/${_programname}/PDFXEdit.exe"
