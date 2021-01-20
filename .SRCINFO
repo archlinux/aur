@@ -1,6 +1,6 @@
 pkgbase = arc-unit-mocha-git
 	pkgdesc = An xunit and clover -based unit tests runner for Arcanist.
-	pkgver = r13.259af28
+	pkgver = r8.39522af
 	pkgrel = 1
 	url = https://github.com/rutgersmobile/arc-unit-mocha
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = arc-unit-mocha-git
 	optdepends = git: Git VCS support
 	optdepends = subversion: Subversion VCS support
 	optdepends = mercurial: Mercurial VCS support
-	provides = arc-unit-mocha=r13.259af28
+	provides = arc-unit-mocha=r8.39522af
 	conflicts = arc-unit-mocha
 	source = git+https://github.com/rutgersmobile/arc-unit-mocha.git
 	sha256sums = SKIP
