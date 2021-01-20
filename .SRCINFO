@@ -1,0 +1,16 @@
+pkgbase = dool-git
+	pkgdesc = A versatile resource statistics tool
+	pkgver = r562.6b89f2d
+	pkgrel = 1
+	url = https://github.com/scottchiefbaker/dool
+	arch = any
+	license = GPL
+	depends = python
+	depends = python-six
+	provides = dool
+	conflicts = dool
+	source = dool::git+https://github.com/scottchiefbaker/dool.git
+	sha512sums = SKIP
+
+pkgname = dool-git
+
