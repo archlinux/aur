@@ -3,7 +3,7 @@
 
 pkgname=blobsaver-bin
 _pkgname=blobsaver
-pkgver=2.5.4
+pkgver=2.5.5
 pkgrel=1
 pkgdesc="A cross-platform GUI app for saving SHSH blobs using tsschecker"
 arch=('x86_64')
@@ -12,13 +12,15 @@ license=('GPL3')
 depends=('java-runtime=8'
          'java8-openjfx'
          'archlinux-java-run'
-         'libfragmentzip')
+         'libfragmentzip'
+         'bash'
+         'zlib')
 provides=('blobsaver')
 optdepends=('libimobiledevice: Get plugged in device information'
     'libirecovery: Utility to talk to iBoot/iBSS via USB')
 makedepends=('gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/blobsaver-linux.tar.gz")
-sha256sums=('a2b05f6baf03eaa99f6c1026f623cd50da1884a4bd663a24070f6edbb45a8e7f')
+sha256sums=('c9da14626c5bcc6b20c03fea9793622c18428ac5a2078744a8c5359420a716e0')
 
 package() {
   gendesk -f -n --pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" \
