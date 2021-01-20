@@ -1,4 +1,5 @@
-# Maintainer: Raimar Sandner <raimar.sandner@uibk.ac.at>
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# prev-Maintainer: Raimar Sandner <raimar.sandner@uibk.ac.at>
 
 pkgname=cppqed-git
 pkgver=2.100.3
