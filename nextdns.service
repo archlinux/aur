@@ -10,6 +10,7 @@ StartLimitInterval=5
 StartLimitBurst=10
 Environment=SERVICE_RUN_MODE=1
 ExecStart=/usr/bin/nextdns run
+ExecStop=/usr/bin/nextdns stop
 RestartSec=120
 LimitMEMLOCK=infinity
 
