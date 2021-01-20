@@ -36,6 +36,8 @@ pkgver() {
 }
 
 build() {
+  CXXFLAGS+=" -DBOOST_BIND_GLOBAL_PLACEHOLDERS -std=c++17"
+  CFLAGS+=" -DBOOST_BIND_GLOBAL_PLACEHOLDERS"
   cmake \
   -S "${srcdir}/${pkgname}" \
   -B build \
