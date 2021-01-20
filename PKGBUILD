@@ -1,6 +1,6 @@
 # Maintainer: Cydon <cydoncs@gmail.com>
 pkgname=dropship-bin
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Launcher and Mod manager for Among Us'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 provides=('dropship')
 conflicts=('dropship')
 source=("https://github.com/NuclearPowered/Dropship/releases/download/v$pkgver/dropship-$pkgver.AppImage")
-sha256sums=('44e836ce91614b7f89bc5cb2051a19560c1913581c7d860528e40be4ac803796')
+sha256sums=('c4f7a47d5f0ae0642b2c6afcf5650cf2787fb4c3437977f53683a7ff7038cfc0')
 
 package() {
 	cd "$srcdir"
