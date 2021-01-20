@@ -28,6 +28,7 @@ build()
 {
 	cd "$srcdir/kicad"
 
+	rm -rf build
 	mkdir build
 	cd build
 	cmake .. -G Ninja \
@@ -52,6 +53,7 @@ build()
 
 	cd "$srcdir/kicad-i18n"
 
+	rm -rf build
 	mkdir build
 	cd build
 	cmake .. -G Ninja \
@@ -66,17 +68,16 @@ package()
 	cd "$srcdir/kicad/build"
 	DESTDIR="$pkgdir" ninja install
 
-	mkdir -p "$pkgdir/usr/share"
+	mkdir -p "$pkgdir/usr/share/applications"
 	for prog in bitmap2component eeschema gerbview kicad pcbcalculator pcbnew; do
 		sed -i \
 			-e 's/^Exec=\([^ ]*\)\(.*\)$/Exec=\1-nightly\2/g' \
 			-e 's/^Icon=\(.*\)$/Icon=\1-nightly/g' \
 			-e 's/^Name=\(.*\)$/Name=\1 nightly/g' \
-			"$pkgdir/usr/lib/kicad-nightly/share/applications/$prog.desktop"
-		mv "$pkgdir/usr/lib/kicad-nightly/share/applications/$prog.desktop" \
-			"$pkgdir/usr/lib/kicad-nightly/share/applications/${prog}-nightly.desktop"
+			"$pkgdir/usr/share/kicad-nightly/applications/$prog.desktop"
+		ln -sv "../kicad-nightly/applications/$prog.desktop" \
+			"$pkgdir/usr/share/applications/${prog}-nightly.desktop"
 	done
-	mv "$pkgdir/usr/lib/kicad-nightly/share/applications" "$pkgdir/usr/share"
 
 	cd "$srcdir"
 	mkdir -p "$pkgdir/usr/share/kicad-nightly"
