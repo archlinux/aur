@@ -8,6 +8,7 @@ pkgbase = cardano-node
 	makedepends = cabal-install-bin
 	makedepends = ghc=8.10.2
 	makedepends = ghc-static=8.10.2
+	depends = libsodium
 	source = https://github.com/input-output-hk/cardano-node/archive/1.24.2.zip
 	source = https://hydra.iohk.io/build/5367762/download/1/mainnet-config.json
 	source = https://hydra.iohk.io/build/5367762/download/1/mainnet-byron-genesis.json
