@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Highly flexible framework for simulating open quantum dynamics."
 arch=('i686' 'x86_64')
 url="http://cppqed.sourceforge.net"
-license=('BSL')
+license=(custom)
 depends=('gcc-libs' 'boost' 'blitz-cppqed-hg' 'flens-git' 'python2' 'python2-numpy' 'python2-scipy' 'cmake' 'gsl')
 makedepends=('git' 'gcc' 'cmake')
 optdepends=()
@@ -33,6 +33,7 @@ build() {
 package() {
   cd $srcdir/$pkgname/build_release
   make DESTDIR=$pkgdir install || return 1
+  install -Dm644 "${srcdir}"/${pkgname}/LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
 
