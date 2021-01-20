@@ -2,7 +2,7 @@
 _srcname=RankCheck
 pkgname=rankcheck
 pkgver=1.5.2
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A tool for Awesomenauts which automatically fetches and displays the leaderboard ranks of each player in the current match"
 arch=('i686' 'x86_64')
@@ -22,10 +22,10 @@ conflicts=()
 backup=()
 options=()
 source=("https://github.com/Marukyu/$_srcname/archive/v$pkgver.tar.gz"
-	"https://rankcheck.marukyu.de/files/rankcheck.dat"
+	"https://github.com/Marukyu/$_srcname/releases/download/v$pkgver/$_srcname-v$pkgver-linux64.tar.gz"
 	"https://sourceforge.net/projects/tinyfiledialogs/files/v3.4/tinyfiledialogs-3.4.3.zip")
 md5sums=('655683def77850ac017557a355daf1fb'
-         'e2bc7b3255eeb427910cfaedf2b5050d'
+         'd92ed245f0bfb7f87c2e4d23076e0c1f'
          'ea04d7a40a47d1aebc6b5ae31e56b3bf')
 
 prepare() {
@@ -50,7 +50,7 @@ package() {
 	install -dm755 "$pkgdir/opt/$pkgname"
 	install -m755 "bin/$_srcname" "$pkgdir/opt/$pkgname/"
 	install -m644 "bin/rankcheck.json" "$pkgdir/opt/$pkgname/"
-	install -m644 "$srcdir/rankcheck.dat" "$pkgdir/opt/$pkgname/"
+	install -m644 "$srcdir/$_srcname-v$pkgver/rankcheck.dat" "$pkgdir/opt/$pkgname/"
 	
 	install -d "${pkgdir}/usr/bin"
 	cat > "$pkgdir/usr/bin/$_srcname" <<- EOF
