@@ -1,11 +1,12 @@
 # Maintainer: Jason Goulet-Lipman <jason.gouletlipman@gmail.com>
 pkgname=youtubedl-gui
 pkgver=1.6
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 license=('GPL3')
 pkgdesc="Download Youtube videos to local audio or video files."
 install="youtubedl-gui.install"
+conflicts=("youtubedl-gui-beta")
 makedepends=("git"
 	     "qt5-quickcontrols")
 depends=("youtube-dl"
