@@ -12,8 +12,8 @@
 
 pkgname=mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=21.0.0_devel.133218.b634d7f3e2b
-pkgrel=2
+pkgver=21.1.0_devel.133745.bc0508ad38d
+pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libxrandr'
@@ -29,11 +29,14 @@ conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-laye
 url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git'
-                'LICENSE')
+                'LICENSE'
+                '8543 clover: Fix build with llvm-12.patch')
 md5sums=('SKIP'
-         '5c65a0fe315dd347e09b1f2826a1df5a')
+         '5c65a0fe315dd347e09b1f2826a1df5a'
+         'febd615545826793ff84a016e59b516c')
 sha512sums=('SKIP'
-            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
+            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
+            '2e1b0773cee0511c5ca87a163fef5ce46e78d5a8ba99fa88eda73f5757ee00b103a072614c266fedd515d55bb5cb03c3f3b45f75869c6f0bde33c1f7f767984b')
 
 # ninja grabs all available cores and leaves almost nothing for other processes.
 # this package uses the environment variable NINJAFLAGS to allow the user to change this behaviour
@@ -52,6 +55,8 @@ prepare() {
     if [  -d _build ]; then
         rm -rf _build
     fi
+    cd mesa
+    patch --forward --strip=1 --input="${srcdir}/8543 clover: Fix build with llvm-12.patch"
 }
 
 build () {
@@ -92,7 +97,7 @@ build () {
        -D tools=[] \
        -D zstd=enabled \
        -D microsoft-clc=disabled
-       
+
     meson configure _build
     
     ninja $NINJAFLAGS -C _build
