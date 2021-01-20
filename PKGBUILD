@@ -10,7 +10,7 @@ arch=('x86_64')
 license=('GPL')
 provides=('kdenlive')
 conflicts=('kdenlive')
-source=("https://download.kde.org/stable/kdenlive/20.12/linux/${_pkgname}-${pkgver}-${arch}.appimage"
+source=("https://download.kde.org/stable/kdenlive/20.12.1b/linux/${_pkgname}-${pkgver}-${arch}.appimage"
         ${_pkgname}.sh)
 md5sums=('9ae85a3f82570e1491eafb935d19c3ed'
          '9f6bcd19b67bd5efaf25ea902301968d')
