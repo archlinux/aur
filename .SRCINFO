@@ -1,13 +1,13 @@
 pkgbase = heroic-games-launcher-bin
 	pkgdesc = HGL, a Native alternative Linux Launcher for Epic Games
 	pkgver = 1.1.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/flavioislima/HeroicGamesLauncher
 	arch = x86_64
 	license = GPL3
-	depends = fuse2 
-	depends = gawk 
-	depends = wine 
+	depends = fuse2
+	depends = gawk
+	depends = wine
 	depends = winetricks
 	depends = python-requests
   depends = python-wheel
