@@ -1,12 +1,15 @@
 pkgbase = rawk
-	pkgdesc = A static site generator written in the bourne shell.
-	pkgver = 1.0
-	pkgrel = 4
-	url = http://rawk.brokenlcd.net
-	arch = any
-	license = ISC
-	source = http://downloads.sourceforge.net/project/rawk-sh/rawk-1.0.tgz
-	sha256sums = 3c0818f582e448d4ff5a9340da2387baea558ac15f1aa2bc57dc1490405285d2
+	pkgdesc = a minimal tool inspired by gawks string seperation ability
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://gitlab.com/Zemrod/rawk
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	provides = rawk
+	source = rawk-v0.6.3.tar.gz::https://gitlab.com/Zemrod/rawk/-/archive/v0.6.3/rawk-v0.6.3.tar.gz
+	md5sums = 46b77826fe6038eb40fdf759cb10c33f
 
 pkgname = rawk
 

@@ -1,18 +1,29 @@
-# Maintainer: Jeff Parent <jecxjo@sdf.lonestar.org>
+# Maintainer: Björn "zemrod" Bravin <sinon dot adastrum at gmail dot com>
 pkgname=rawk
-pkgver=1.0
-pkgrel=4
-pkgdesc="A static site generator written in the bourne shell."
-arch=(any)
-url="http://rawk.brokenlcd.net"
-license=('ISC')
-source=(http://downloads.sourceforge.net/project/rawk-sh/$pkgname-$pkgver.tgz)
-sha256sums=('3c0818f582e448d4ff5a9340da2387baea558ac15f1aa2bc57dc1490405285d2')
+pkgver=0.6.3
+pkgrel=1
+pkgdesc="a minimal tool inspired by gawks string seperation ability"
+arch=('x86_64')
+url="https://gitlab.com/Zemrod/$pkgname"
+license=('MIT')
+depends=('gcc-libs')
+makedepends=('rust')
+provides=('rawk')
+source=("$pkgname-v$pkgver.tar.gz::https://gitlab.com/Zemrod/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
+md5sums=('46b77826fe6038eb40fdf759cb10c33f')
 
-package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  mkdir -p $pkgdir/usr/bin
-  make PREFIX="$pkgdir/usr" USER=nobody GROUP=users
+build() {
+	cd "$srcdir/$pkgname-v$pkgver"
+	cargo build --release --locked --all-features --target-dir=target
 }
 
-# vim:set ts=2 sw=2 et:
+check() {
+	cd "$srcdir/$pkgname-v$pkgver"
+	cargo test --release --locked --target-dir=target
+}
+
+package() {
+	cd "$srcdir/$pkgname-v$pkgver"
+	install -Dm755 "target/release/rawk" "$pkgdir/usr/bin/$pkgname"
+	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
