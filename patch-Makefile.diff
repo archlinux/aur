@@ -1,0 +1,21 @@
+--- Makefile.orig	2021-01-20 15:08:57.766406679 +0100
++++ Makefile	2021-01-20 15:11:08.493566453 +0100
+@@ -3,7 +3,8 @@
+ # Sources
+ PROJECT_ROOT=./SIDFactoryII
+ SOURCE=$(PROJECT_ROOT)/source
+-SRC=$(PROJECT_ROOT)/main.cpp $(shell find $(SOURCE) -name "*.cpp")
++SRC_TMP=$(PROJECT_ROOT)/main.cpp $(shell find $(SOURCE) -name "*.cpp")
++SRC=$(patsubst %miniz_tester.cpp,,$(SRC_TMP))
+ 
+ # Artifacts
+ APP_NAME=SIDFactoryII
+@@ -39,7 +40,7 @@
+ 	$(CC) $(CC_FLAGS) -c $< -o $@
+ 
+ # Determine all .o files to be built
+-OBJ = $(SRC:.cpp=.o)
++OBJ = $(SRC:.cpp=.o) $(SOURCE)/libraries/miniz/miniz.o
+ 
+ # Compile executable
+ $(EXE): $(OBJ) $(ARTIFACTS_FOLDER)
