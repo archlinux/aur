@@ -1,13 +1,13 @@
 pkgbase = python-physunits
 	pkgdesc = Physical units as global variables for simple numerical propagation
-	pkgver = 0.0.9
+	pkgver = 0.0.10
 	pkgrel = 1
 	url = https://pypi.org/project/physunits/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/p/physunits/physunits-0.0.9.tar.gz
+	source = https://files.pythonhosted.org/packages/source/p/physunits/physunits-0.0.10.tar.gz
 	sha256sums = dc6a754e4378844d334495cd128292876accb36341ddc038dc37ff8c41dbebb0
 
 pkgname = python-physunits

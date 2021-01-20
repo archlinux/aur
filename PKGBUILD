@@ -1,7 +1,7 @@
 # Maintainer: Francisco Salces Carcoba <pacosalces@gmail.com>
 pkgname=python-physunits
 _name=physunits
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="Physical units as global variables for simple numerical propagation"
 license=("MIT")
