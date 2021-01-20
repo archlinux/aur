@@ -1,6 +1,6 @@
 pkgbase = gfeeds
 	pkgdesc = An RSS/Atom feed reader for GNOME
-	pkgver = 0.16.1
+	pkgver = 0.16.2
 	pkgrel = 1
 	url = https://gabmus.gitlab.io/gnome-feeds
 	arch = x86_64
@@ -25,8 +25,8 @@ pkgbase = gfeeds
 	conflicts = gnome-feeds
 	conflicts = gnome-feeds-git
 	conflicts = gfeeds-git
-	source = https://gitlab.com/gabmus/gnome-feeds/-/archive/0.16.1/gnome-feeds-0.16.1.tar.gz
-	sha256sums = 11f150fa7fb743ded928db29efd8abcf59f068237cf3b27bc60061719b47a55c
+	source = https://gitlab.com/gabmus/gnome-feeds/-/archive/0.16.2/gnome-feeds-0.16.2.tar.gz
+	sha256sums = bcf55fda2db9df9cbf0d4c83fb215154045b3b4bc8d4a8df01bddec9a3837eb9
 
 pkgname = gfeeds
 

@@ -3,7 +3,7 @@
 
 pkgname=gfeeds
 _pkgname=gnome-feeds
-pkgver=0.16.1
+pkgver=0.16.2
 pkgrel=1
 pkgdesc='An RSS/Atom feed reader for GNOME'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('meson' 'gobject-introspection')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-git" "${pkgname}-git")
 source=("https://gitlab.com/gabmus/${_pkgname}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('11f150fa7fb743ded928db29efd8abcf59f068237cf3b27bc60061719b47a55c')
+sha256sums=('bcf55fda2db9df9cbf0d4c83fb215154045b3b4bc8d4a8df01bddec9a3837eb9')
 
 prepare () {
   cd "${_pkgname}-${pkgver}"
