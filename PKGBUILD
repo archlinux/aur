@@ -5,7 +5,7 @@
 pkgname=cppqed-git
 pkgver=2.100.3
 pkgrel=1
-pkgdesc="C++QED is a highly flexible framework for simulating open quantum dynamics."
+pkgdesc="Highly flexible framework for simulating open quantum dynamics."
 arch=('i686' 'x86_64')
 url="http://cppqed.sourceforge.net"
 license=('BSL')
