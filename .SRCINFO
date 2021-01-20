@@ -1,26 +1,36 @@
 pkgbase = openvpn-git
 	pkgdesc = An easy-to-use, robust and highly configurable VPN (Virtual Private Network) - git checkout
-	pkgver = 2.5.git.r287.g5961250e
+	pkgver = 2.4.rc2.r864.g3b1ded39
 	pkgrel = 1
-	url = http://openvpn.net/index.php/open-source.html
+	url = https://openvpn.net/index.php/open-source.html
+	install = openvpn.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = git
 	makedepends = systemd
+	makedepends = python-docutils
 	depends = openssl
 	depends = lzo
-	depends = iproute2
-	depends = libsystemd
+	depends = lz4
+	depends = systemd-libs
+	depends = libsystemd.so
 	depends = pkcs11-helper
+	depends = libpkcs11-helper.so
 	optdepends = easy-rsa: easy CA and certificate handling
 	optdepends = pam: authenticate via PAM
 	provides = openvpn=2.4.0
 	provides = openvpn-dev
 	conflicts = openvpn
 	conflicts = openvpn-dev
-	source = git://github.com/OpenVPN/openvpn.git
+	source = git+https://github.com/OpenVPN/openvpn.git
+	source = 0001-unprivileged.patch
+	source = sysusers.conf
+	source = tmpfiles.conf
 	sha256sums = SKIP
+	sha256sums = 8e7d292514f30729bc37d6681789b1bfdf87a992a3aa77e2a28b8da9cd8d4bfe
+	sha256sums = 3646b865ac67783fafc6652589cfe2a3105ecef06f3907f33de5135815f6a621
+	sha256sums = b1436f953a4f1be7083711d11928a9924993f940ff56ff92d288d6100df673fc
 
 pkgname = openvpn-git
 
