@@ -10,10 +10,10 @@
 # Contributor: anthrit <anthrit [at] anthware [dot] com>
 
 pkgname=lightworks
-lwksver=2020.1
-lwksbuild=122068
+lwksver=2021.1
+lwksbuild=126716
 pkgver=$lwksver
-pkgrel=2
+pkgrel=1
 pkgdesc="Lightworks is a professional video editing suite"
 arch=('x86_64')
 options=('!strip')
@@ -21,14 +21,15 @@ url="http://www.lwks.com/"
 license=('custom')
 depends=('cairo' 'gdk-pixbuf2' 'glib2' 'libjpeg-turbo' 'pango' 'curl' 'gtk3' 'portaudio' 'openssl' 'libgl' 'libtiff' 'libutil-linux' 'ffmpeg' 'glu' 'libedit' 'nvidia-cg-toolkit' 'openssl-1.0')
 optdepends=('nvidia-utils: only for nVidia users' 'libc++: only for BlackMagic RAW support (BRAW)' 'libc++abi: only for BlackMagic RAW support (BRAW)')
+provides=('lightworks')
 conflicts=('lwks-beta')
 replaces=('lwks')
 source=(
-    "https://cdn.lwks.com/releases/lightworks-$lwksver-r$lwksbuild-amd64.deb"
+    "https://cdn.lwks.com/releases/$lwksver/lightworks_${lwksver}_r${lwksbuild}.deb"
     )
 
 sha256sums=(
-    '23ed5b617628ac278cc5b2f0f799f53368e3b00203c55ddc65e25be3e9f14fbf'
+    'eba97d31840e3e4bc843cc3214d372622318ae42690d7caa28224e0b003ced33'
     )
 
 package() {
