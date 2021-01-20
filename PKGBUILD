@@ -5,7 +5,7 @@
 # Contributor: Chloe Kudryavtsev <toast@toastin.space>
 
 pkgname=vlang-git
-pkgver=0.2.r518.g6c87c25ef
+pkgver=0.2.r548.gb3a4f746a
 pkgrel=1
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software'
 arch=('x86_64')
@@ -18,10 +18,8 @@ optdepends=('glfw: Needed for graphics support'
             'openssl: Needed for http support')
 provides=('vlang')
 conflicts=('v' 'vlang' 'vlang-bin')
-source=('vlang::git+https://github.com/vlang/v'
-        'no-compile.patch')
-sha256sums=('SKIP'
-            '66278f03a6edd2496b2910f22b70dcf1e4534e892c1ce9fef670bd5401d4c969')
+source=('vlang::git+https://github.com/vlang/v')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/vlang"
@@ -30,7 +28,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/vlang"
-  patch -Np1 -i ../no-compile.patch
+  touch cmd/tools/.disable_autorecompilation
 }
 
 build() {
@@ -41,7 +39,7 @@ build() {
   CFLAGS="" LDFLAGS="" prod=1 make
 
   # We have to manually compile this tool before executing it since we disable
-  # automatic compilation in no-compile.patch
+  # automatic compilation in prepare()
   ./v cmd/tools/vbuild-tools.v
   # vpm and vdoc fail to compile with "unsupported linker option" when LDFLAGS
   # is set
