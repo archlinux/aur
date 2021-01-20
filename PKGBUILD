@@ -2,8 +2,8 @@
 
 _pkgname=Flask-HTMLmin
 pkgname=python-flask-htmlmin
-pkgver=1.5.2
-pkgrel=2
+pkgver=2.0.2
+pkgrel=1
 pkgdesc='Flask html response minifier'
 url='https://github.com/hamidfzm/Flask-HTMLmin'
 arch=('any')
@@ -12,8 +12,8 @@ depends=('python' 'python-flask' 'python-htmlmin')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-runner')
 source=(https://github.com/hamidfzm/Flask-HTMLmin/archive/v${pkgver}/${pkgbase}-${pkgver}.tar.gz)
-sha256sums=('20be2e75861f069e47cf7ec04d9fc9d8e020ec73dbf473ed87d0d5e36dee0dea')
-sha512sums=('8e08a7eeaf23a3c1b8a868f9962f00f17871deee19022f7f5865acf964b21cec6ab84fefba2aa74e3404e652794800faa4404147dd4e0004a59fcaabe741d92e')
+sha256sums=('549a5a191e891678e1f4d2def9056de2b354426f13857bfc2754580b94ba08e2')
+sha512sums=('ea863644baecdf54d6b0a920ad0cbd84880e6c029a7d5313f0964f03233a74b7d11b3e15431ecf02fc6c33b38241e472968ed1bcad5b8163d14001678a4833e2')
 
 build() {
   cd ${_pkgname}-${pkgver}
