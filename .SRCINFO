@@ -1,6 +1,6 @@
 pkgbase = xnotify-git
 	pkgdesc = popup a notification on the screen.
-	pkgver = 20200921
+	pkgver = 20210120
 	pkgrel = 1
 	url = https://github.com/phillbush/xnotify.git
 	arch = x86_64
