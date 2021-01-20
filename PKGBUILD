@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=withr
-_cranver=2.3.0
+_cranver=2.4.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(GPL2 GPL3)
 depends=('r>=3.2.0')
 optdepends=(r-covr r-dbi r-knitr r-rmarkdown r-rsqlite r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('2cc03c9947d424717e94f301a0ab7d97eb2079eea5c6a0a3cdf2da32aedc67a0')
+sha256sums=('ede4cdc7e4d17e0ad24afc9fb940cba46fac4421d3a39281e9918377d73714f8')
 
 build() {
   cd "${srcdir}"
