@@ -1,21 +1,24 @@
-# Maintainer: Jan Holthuis <holthuis.jan@googlemail.com>
+# Contributor: Jan Holthuis <holthuis.jan@googlemail.com>
 
 pkgname=python2-facebook-sdk
 _pypiname=facebook-sdk
-pkgver=0.4.0
+pkgver=3.1.0
 pkgrel=1
-pkgdesc="Facebook Platform Python SDK"
+pkgdesc="Python SDK for Facebook's Graph API "
 arch=('any')
-url="http://pythonforfacebook.com"
+url="https://facebook-sdk.readthedocs.io/en/latest/"
 license=('Apache')
 depends=('python2')
 makedepends=('python2')
-conflicts=('python2-facebook-sdk-git' 'facebook-python-sdk-git')
-provides=('python2-facebook-sdk')
 source=("https://pypi.python.org/packages/source/f/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
-md5sums=('ac9f38e197e54b8ba9f3a61988cc33b7')
+md5sums=('f562687624fbcd5206f393ca7ecb50d3')
+
+build() {
+  cd "$srcdir/$_pypiname-$pkgver"
+  python2 setup.py build
+}
 
 package() {
   cd "$srcdir/$_pypiname-$pkgver"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
