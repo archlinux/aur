@@ -27,22 +27,21 @@ fi
 ##
 
 pkgname=brave
-pkgver=1.18.78
+pkgver=1.19.86
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
 url='https://www.brave.com/download'
 license=('custom')
-depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'ttf-font' 'libva')
+depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'ttf-font' 'libva' 'json-glib')
 makedepends=('git' 'npm<7.0.0' 'python' 'python2' 'icu' 'glibc' 'gperf' 'java-runtime-headless' 'clang' 'python2-setuptools')
 optdepends=('cups: Printer support'
-            'pepper-flash: Adobe Flash support'
             'libpipewire02: WebRTC desktop sharing under Wayland'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: for storing passwords in KWallet on KDE desktops'
             'sccache: For faster builds')
-chromium_base_ver="87"
-patchset="9"
+chromium_base_ver="88"
+patchset="3"
 patchset_name="chromium-${chromium_base_ver}-patchset-${patchset}"
 _launcher_ver=6
 source=("https://github.com/brave/brave-browser/archive/v${pkgver}.tar.gz"
@@ -53,9 +52,7 @@ source=("https://github.com/brave/brave-browser/archive/v${pkgver}.tar.gz"
         'brave-custom-build.patch')
 arch_revision=4332a9b5a5f7e1d5ec8e95ee51581c3e55450f41
 for Patches in \
-	subpixel-anti-aliasing-in-FreeType-2.8.1.patch \
-    icu68.patch \
-    v8-icu68.patch
+	subpixel-anti-aliasing-in-FreeType-2.8.1.patch
 do
   source+=("${Patches}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${Patches}?h=packages/chromium&id=${arch_revision}")
 done
@@ -63,15 +60,13 @@ done
 # VAAPI patches from chromium-vaapi in AUR
 #source+=("vdpau-support.patch::https://aur.archlinux.org/cgit/aur.git/plain/vdpau-support.patch?h=chromium-vaapi&id=7c05464a8700b1a6144258320b2b33b352385f77")
 
-sha256sums=('8c749fe75999956a5bb17db7e4fda13d6468a7644cadf8d79d794a22d8441046'
+sha256sums=('88be8ce4119b46fa26f4b0385b5fa0f672a946c6b2e5aacfc4378dc4a4e0ade3'
             '725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            'c99934bcd2f3ae8ea9620f5f59a94338b2cf739647f04c28c8a551d9083fa7e9'
+            'e5a60a4c9d0544d3321cc241b4c7bd4adb0a885f090c6c6c21581eac8e3b4ba9'
             'd888be0e297bb768ba0bac99616c1180377b7030ac1b8fcb4436a39aca7c7acf'
-            '1e2913e21c491d546e05f9b4edf5a6c7a22d89ed0b36ef692ca6272bcd5faec6'
-            '38fb5218331d6e03915490dab64f7b8bf26833a581d1aaa02090437c67e9439c'
-            '6e919c9712d8fe6c2918778df1f8c2ee0675a87a48be5d2aaa54e320703ced4b')
+            '1e2913e21c491d546e05f9b4edf5a6c7a22d89ed0b36ef692ca6272bcd5faec6')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -135,13 +130,13 @@ prepare() {
     third_party/libxml/chromium/*.cc
 
   # Upstream fixes
-  patch -Np1 -i ../../icu68.patch
-  patch -Np1 -d v8 <../../v8-icu68.patch
   patch -Np1 -d third_party/skia <../../subpixel-anti-aliasing-in-FreeType-2.8.1.patch
 
   # Fixes for building with libstdc++ instead of libc++
-  patch -Np1 -i ../../patches/chromium-87-ServiceWorkerContainerHost-crash.patch
   patch -Np1 -i ../../patches/chromium-87-openscreen-include.patch
+  patch -Np1 -i ../../patches/chromium-88-CompositorFrameReporter-dcheck.patch
+  patch -Np1 -i ../../patches/chromium-88-ideographicSpaceCharacter.patch
+  patch -Np1 -i ../../patches/chromium-88-AXTreeFormatter-include.patch
 
   # Force script incompatible with Python 3 to use /usr/bin/python2
   sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py

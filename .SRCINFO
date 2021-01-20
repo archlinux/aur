@@ -1,6 +1,6 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
-	pkgver = 1.18.78
+	pkgver = 1.19.86
 	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
@@ -22,30 +22,26 @@ pkgbase = brave
 	depends = libxss
 	depends = ttf-font
 	depends = libva
+	depends = json-glib
 	optdepends = cups: Printer support
-	optdepends = pepper-flash: Adobe Flash support
 	optdepends = libpipewire02: WebRTC desktop sharing under Wayland
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: for storing passwords in KWallet on KDE desktops
 	optdepends = sccache: For faster builds
-	source = https://github.com/brave/brave-browser/archive/v1.18.78.tar.gz
+	source = https://github.com/brave/brave-browser/archive/v1.19.86.tar.gz
 	source = brave-launcher
 	source = brave-browser.desktop
 	source = chromium-launcher-6.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v6.tar.gz
-	source = https://github.com/stha09/chromium-patches/releases/download/chromium-87-patchset-9/chromium-87-patchset-9.tar.xz
+	source = https://github.com/stha09/chromium-patches/releases/download/chromium-88-patchset-3/chromium-88-patchset-3.tar.xz
 	source = brave-custom-build.patch
 	source = subpixel-anti-aliasing-in-FreeType-2.8.1.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/subpixel-anti-aliasing-in-FreeType-2.8.1.patch?h=packages/chromium&id=4332a9b5a5f7e1d5ec8e95ee51581c3e55450f41
-	source = icu68.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/icu68.patch?h=packages/chromium&id=4332a9b5a5f7e1d5ec8e95ee51581c3e55450f41
-	source = v8-icu68.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/v8-icu68.patch?h=packages/chromium&id=4332a9b5a5f7e1d5ec8e95ee51581c3e55450f41
-	sha256sums = 8c749fe75999956a5bb17db7e4fda13d6468a7644cadf8d79d794a22d8441046
+	sha256sums = 88be8ce4119b46fa26f4b0385b5fa0f672a946c6b2e5aacfc4378dc4a4e0ade3
 	sha256sums = 725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5
 	sha256sums = fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d
 	sha256sums = 04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1
-	sha256sums = c99934bcd2f3ae8ea9620f5f59a94338b2cf739647f04c28c8a551d9083fa7e9
+	sha256sums = e5a60a4c9d0544d3321cc241b4c7bd4adb0a885f090c6c6c21581eac8e3b4ba9
 	sha256sums = d888be0e297bb768ba0bac99616c1180377b7030ac1b8fcb4436a39aca7c7acf
 	sha256sums = 1e2913e21c491d546e05f9b4edf5a6c7a22d89ed0b36ef692ca6272bcd5faec6
-	sha256sums = 38fb5218331d6e03915490dab64f7b8bf26833a581d1aaa02090437c67e9439c
-	sha256sums = 6e919c9712d8fe6c2918778df1f8c2ee0675a87a48be5d2aaa54e320703ced4b
 
 pkgname = brave
 
