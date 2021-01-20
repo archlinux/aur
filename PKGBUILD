@@ -8,6 +8,7 @@ arch=('any')
 url='https://github.com/input-output-hk/cardano-node'
 _ghc_version='8.10.2'   # NOTE: ghc-libs=8.10.3 contain bugs and fail to build with 
 makedepends=('cabal-install-bin' 'ghc=8.10.2' 'ghc-static=8.10.2')
+depends=('libsodium')
 _config_build="5367762"
 source=("https://github.com/input-output-hk/${pkgname}/archive/${pkgver}.zip"
         "https://hydra.iohk.io/build/${_config_build}/download/1/mainnet-config.json"
