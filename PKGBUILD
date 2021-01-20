@@ -6,13 +6,14 @@ pkgname=("${_pkgname}-git"
          "${_pkgname}-module-dkms-git"
          "obs-plugin-${_pkgname}-git")
 epoch=2
-pkgver=B2.r290.gcac454d
+pkgver=B2.r345.g428b498
 pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.io/"
 arch=('x86_64')
 license=('GPL2')
-makedepends=('cmake' 'git' 'sdl2_ttf' 'glu' 'fontconfig' 'spice-protocol' 'libxi' 'obs-studio' 'wayland-protocols')
+makedepends=('cmake' 'git' 'sdl2_ttf' 'glu' 'fontconfig' 'spice-protocol'
+             'libxss' 'libxi' 'obs-studio' 'wayland-protocols')
 source=("${_pkgname}::git+https://github.com/gnif/LookingGlass.git"
         "LGMP::git+https://github.com/gnif/LGMP.git"
         "PureSpice::git+https://github.com/gnif/PureSpice.git")
@@ -49,7 +50,7 @@ build() {
 
 package_looking-glass-git() {
 	pkgdesc="A client application for accessing the LookingGlass IVSHMEM device of a VM"
-	depends=('sdl2_ttf' 'glu' 'nettle' 'fontconfig' 'libxi')
+	depends=('sdl2_ttf' 'glu' 'nettle' 'fontconfig' 'libxss' 'libxi')
 	provides=("${_pkgname}")
 	conflicts=("${_pkgname}")
 
