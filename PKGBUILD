@@ -20,7 +20,7 @@ pkgver=1.1.1.r0.gfc568c7
 pkg_name_ver="${_pkgname}-${pkgver//_/-}"
 
 pkgrel=1
-pkgdesc="Portable, generic assembler engine written in ANSI C99 - supporting 80x0 family, 6502, MIPS32, Z80, Game Boy, DCPU-16, CHIP-8/SCHIP and RC811 CPUs"
+pkgdesc="Portable, generic assembler engine written in ANSI C99 - supporting 680x0 family, 6502, MIPS32, Z80, Game Boy, DCPU-16, CHIP-8/SCHIP and RC811 CPUs"
 arch=('i686' 'x86_64')
 url="https://github.com/asmotor/asmotor"
 license=('GPL')
