@@ -10,7 +10,7 @@ license=('AGPL3')
 depends=('python' 'python-setproctitle' 'python-sqlitedict' 'telegram-tdlib' 'trovotutto')
 optdepends=('youtube-dl')
 makedepends=('python-setuptools')
-source=('pgpgram::git+https://github.com/tallero/pgpgram.git')
+source=("$pkgname::git+https://github.com/tallero/pgpgram.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 package() {
