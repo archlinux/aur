@@ -45,6 +45,7 @@ build() {
     -D systemd=disabled \
     -D legacy-database-entry-format=false \
     -D asyncns=disabled \
+    -D bluez5-gstreamer=disabled \
     -D bluez5-native-headset=false \
     -D bluez5-ofono-headset=false \
     -D dbus=disabled \
@@ -53,12 +54,14 @@ build() {
     -D gsettings=disabled \
     -D gstreamer=disabled \
     -D gtk=disabled \
+    -D hal-compat=false \
     -D ipv6=false \
     -D jack=disabled \
     -D lirc=disabled \
     -D openssl=disabled \
     -D oss-output=disabled \
     -D soxr=disabled \
+    -D samplerate=disabled \
     -D speex=enabled \
     -D valgrind=disabled \
     -D adrian-aec=false \
