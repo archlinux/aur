@@ -1,5 +1,5 @@
 pkgbase = ciel
-	pkgdesc = A tool for controlling multi-layer file systems and containers.
+	pkgdesc = AOSC OS containerized maintenance toolkit
 	pkgver = 3.0.0rc1
 	pkgrel = 1
 	url = https://github.com/AOSC-Dev/ciel-rs
