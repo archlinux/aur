@@ -1,23 +1,17 @@
 pkgbase = clash-dashboard-git
-	pkgdesc = web port of clash
-	pkgver = 20200107.11db44d
+	pkgdesc = Web Dashboard for Clash
+	pkgver = 0.3.0.r102.ga70ad6b
 	pkgrel = 1
 	url = https://github.com/Dreamacro/clash-dashboard
-	install = clash-dashboard.install
 	arch = any
 	license = MIT
-	makedepends = npm
-	makedepends = nodejs
 	makedepends = git
-	depends = nodejs
-	optdepends = nginx: web server
-	optdepends = apache: web server
+	makedepends = yarn
+	depends = clash
+	provides = clash-dashboard
 	conflicts = clash-dashboard
-	options = !strip
-	source = clash-dashboard::git+https://github.com/Dreamacro/clash-dashboard.git
-	source = clash-dashboard.service
-	sha1sums = SKIP
-	sha1sums = 14481461e8af49e6d5bcfb3e23546f96697ebf17
+	source = git+https://github.com/Dreamacro/clash-dashboard.git
+	sha256sums = SKIP
 
 pkgname = clash-dashboard-git
 
