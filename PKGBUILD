@@ -2,20 +2,22 @@
 
 pkgname=todesk-bin
 _pkgname=${pkgname%-bin}
-pkgver=1.2.2
-pkgrel=3
+pkgver=1.2.3
+pkgrel=1
 pkgdesc="Remote control and team work"
 arch=('x86_64')
 url="https://www.todesk.cn/"
 license=('unknown')
 depends=('libxtst'
-         'freetype2')
+         'freetype2'
+         'openssl-1.0')
 makedepends=('tar')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 install="${_pkgname}.install"
-source=("https://update.todesk.com/${_pkgname}_${pkgver}.deb")
-sha256sums=('5fc963b659090d888e7abe64e554102557debd50d903d4cc8443e9708fc1e0b5')
+options=('!strip')
+source=("https://update.todesk.com/${_pkgname}_${pkgver}_amd64.deb")
+sha256sums=('d7b7cc986e28160f700bab8e821c8fe31b3e3d46ed75def4c9158b64ed398a3b')
 
 build() {
   mkdir -p ${srcdir}/build
@@ -42,10 +44,11 @@ package() {
   install -Dm755 opt/${_pkgname}/${_pkgname}d -t ${pkgdir}/opt/${_pkgname}/
   # install -Dm755 opt/${_pkgname}/${_pkgname}update -t ${pkgdir}/opt/${_pkgname}/
   install -Dm755 opt/${_pkgname}/daemon.sh -t ${pkgdir}/opt/${_pkgname}/
+  install -Dm755 opt/${_pkgname}/${_pkgname}c -t ${pkgdir}/opt/${_pkgname}/
 
   # qt.conf & todeskd.conf
   install -Dm644 opt/${_pkgname}/qt.conf -t ${pkgdir}/opt/${_pkgname}/
-  install -Dm644 opt/${_pkgname}/${_pkgname}d.conf -t ${pkgdir}/opt/${_pkgname}/
+  install -Dm666 opt/${_pkgname}/${_pkgname}d.conf -t ${pkgdir}/opt/${_pkgname}/
 
   # desktop entry 
   install -Dm 644 usr/share/applications/${_pkgname}.desktop -t ${pkgdir}/usr/share/applications
@@ -56,6 +59,12 @@ package() {
 
   # icon
   install -Dm 644 usr/share/pixmaps/${_pkgname}.png -t ${pkgdir}/usr/share/pixmaps
-}
 
+  # ugly permission fix
+  chmod 0777 ${pkgdir}//opt/${_pkgname}
+  
+  # log files
+  install -Dm666 opt/${_pkgname}/${_pkgname}.log -t ${pkgdir}/opt/${_pkgname}/
+  install -Dm666 opt/${_pkgname}/${_pkgname}d.log -t ${pkgdir}/opt/${_pkgname}/
+}
 # vim: set sw=2 ts=2 et:
