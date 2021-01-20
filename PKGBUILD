@@ -1,3 +1,6 @@
+# Maintainer: Cullen Ross <cullenrss at gmail.com>
+# Contributer: Alexis Viguié <net at siphonay.fr>
+
 _name=farge
 pkgname="${_name}-git"
 pkgver=20190723
