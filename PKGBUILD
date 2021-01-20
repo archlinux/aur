@@ -3,7 +3,7 @@
 pkgname=clash-dashboard-git
 _pkgname=clash-dashboard
 pkgver=0.3.0.r102.ga70ad6b
-pkgrel=1
+pkgrel=2
 pkgdesc="Web Dashboard for Clash"
 arch=('any')
 url="https://github.com/Dreamacro/clash-dashboard"
@@ -21,7 +21,8 @@ pkgver() {
 }
 
 build() {
-    cd "${srcdir}"/"${_pkgname}"/ yarn cache clean
+    cd "${srcdir}"/"${_pkgname}"/
+    yarn cache clean
     yarn install
     yarn build
 }
