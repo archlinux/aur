@@ -1,7 +1,7 @@
 # Maintainer: Srevin Saju <srevinsaju@sugarlabs.org>
 
 pkgname=archivy
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="A self-hosted knowledge repository, to preserve useful content to your knowledge bank."
 arch=('any')
