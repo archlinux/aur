@@ -17,7 +17,7 @@ pkgbase = heroic-games-launcher-bin
 	noextract = heroic-1.1.2.pacman
 	options = !strip
 	source = https://github.com/flavioislima/HeroicGamesLauncher/releases/download/v1.1.2/heroic-1.1.2.pacman
-	md5sums = 089ee023f658a622742fc87f017440a8
+	md5sums = ecf26fe6d8ff082499901a7dc81aba94
 
 pkgname = heroic-games-launcher-bin
 

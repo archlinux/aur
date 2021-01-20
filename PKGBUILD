@@ -14,7 +14,7 @@ depends=('fuse2' 'gawk' 'wine' 'winetricks' 'python-requests' 'python-wheel' 'py
 _filename=heroic-${pkgver}.pacman
 source=("$url/releases/download/${_pkgver}/${_filename}")
 noextract=("${_filename}")
-md5sums=('089ee023f658a622742fc87f017440a8')
+md5sums=('ecf26fe6d8ff082499901a7dc81aba94')
 options=(!strip)
 
 package() {
