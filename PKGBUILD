@@ -1,8 +1,8 @@
 # Maintainer: Artemii Sudakov <finziyr@yandex.ru>
 
 pkgname="freezer-git"
-pkgver="1.1.11"
-pkgrel="3"
+pkgver="1.1.12"
+pkgrel="1"
 pkgdesc='Free music streaming client for Deezer based on the Deezloader/Deemix "bug".'
 arch=('x86_64')
 url="https://git.rip/freezer/freezerpc"
