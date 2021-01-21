@@ -1,0 +1,31 @@
+pkgbase = ros-melodic-video-stream-opencv
+	pkgdesc = ROS - node to publish a video stream in ROS image topics
+	pkgver = 1.1.6
+	pkgrel = 2
+	url = https://wiki.ros.org/video_stream_opencv
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-dynamic-reconfigure
+	makedepends = ros-melodic-image-transport
+	makedepends = ros-melodic-rospy
+	makedepends = ros-melodic-camera-info-manager
+	makedepends = ros-melodic-sensor-msgs
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-cv-bridge
+	makedepends = ros-melodic-nodelet
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-dynamic-reconfigure
+	depends = ros-melodic-image-transport
+	depends = ros-melodic-rospy
+	depends = ros-melodic-camera-info-manager
+	depends = ros-melodic-sensor-msgs
+	depends = ros-melodic-cv-bridge
+	depends = ros-melodic-nodelet
+	source = ros-melodic-video-stream-opencv-1.1.6.tar.gz::https://github.com/ros-drivers/video_stream_opencv-release/archive/release/melodic/video_stream_opencv/1.1.6.tar.gz
+	sha256sums = 7521776a894039f7a54a42969f434fbe9bff9a779bd93642967e9f00b8756b3e
+
+pkgname = ros-melodic-video-stream-opencv
+
