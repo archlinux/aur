@@ -5,6 +5,7 @@ pkgver=2021.01.01
 pkgrel=1
 pkgdesc="Remembers what's running in your i3 workspaces by saving a session file"
 arch=('any')
+groups=('therepoclub')
 url="https://github.com/TheCynicalTeam/$pkgname"
 license=('CC BY-NC-SA 4.0')
 depends=(python2-xdg perl-anyevent-i3 python-i3-py i3-wm xorg-xprop)

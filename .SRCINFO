@@ -4,6 +4,7 @@ pkgbase = i3-session
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/i3-session
 	arch = any
+	groups = therepoclub
 	license = CC BY-NC-SA 4.0
 	makedepends = git
 	depends = python2-xdg
