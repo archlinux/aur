@@ -1,7 +1,7 @@
 # Maintainer: Avery Murray <averylapine@gmail.com>
 
 pkgname=cimplefetch
-pkgver=0.2
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A simple program to fetch system information written in C"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -17,7 +17,7 @@ prepare() {
 	cd "${srcdir}/${pkgname}"
 	git submodule init
 	git submodule update
-	git checkout ffe7933
+	git checkout 129e11e
 }
 
 build() {

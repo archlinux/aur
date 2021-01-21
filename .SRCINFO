@@ -1,6 +1,6 @@
 pkgbase = cimplefetch
 	pkgdesc = A simple program to fetch system information written in C
-	pkgver = 0.2
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/caverym/cimplefetch
 	arch = i686
