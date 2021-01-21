@@ -1,0 +1,12 @@
+pkgbase = mcmojave-cursors-git
+	pkgdesc = x-cursor theme inspired by macOS and based on capitaine-cursors
+	pkgver = r9.d3a9b60
+	pkgrel = 1
+	url = https://github.com/vinceliuice/McMojave-cursors
+	arch = any
+	license = GPL
+	source = mcmojave-cursors-git::git+https://github.com/vinceliuice/McMojave-cursors.git
+	sha256sums = SKIP
+
+pkgname = mcmojave-cursors-git
+
