@@ -3,7 +3,7 @@ _name=cxxopts
 #for fragment you can use one of: #commit=, #tag=, #branch=
 #_fragment="#tag=v2.1.2"
 pkgname=${_name}-git
-pkgver=2.1.1.r23.g3876c09
+pkgver=2.2.0.r40.ged85f04
 pkgrel=1
 pkgdesc="Lightweight C++ command line option parser"
 arch=(any)
