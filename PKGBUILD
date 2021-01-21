@@ -1,7 +1,7 @@
 # Maintainer: Naoki Kanazawa <nk dot naoki912 at gmail dot com>
 pkgname=usacloud-bin
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI client for the Sakura Cloud"
 arch=('i686' 'x86_64')
 url="https://github.com/sacloud/usacloud"
@@ -15,4 +15,12 @@ sha256sums_x86_64=('a9c2528000132aef16eb2dc9bd2dc7d5a8a27689dbb12c6fef40b63802d2
 package() {
     install -dm755 ${pkgdir}/usr/bin
     cp -a ${srcdir}/usacloud ${pkgdir}/usr/bin
+
+    # completion
+    mkdir -p ${pkgdir}/usr/share/bash-completion/completions
+    ${pkgdir}/usr/bin/usacloud completion bash > ${pkgdir}/usr/share/bash-completion/completions/usacloud
+    mkdir -p ${pkgdir}/usr/share/zsh/site-functions/
+    ${pkgdir}/usr/bin/usacloud completion zsh > ${pkgdir}/usr/share/zsh/site-functions/_usacloud
+    mkdir -p ${pkgdir}/usr/share/fish/vendor_completions.d/
+    ${pkgdir}/usr/bin/usacloud completion fish > ${pkgdir}/usr/share/fish/vendor_completions.d/usacloud.fish
 }

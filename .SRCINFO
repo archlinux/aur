@@ -1,7 +1,7 @@
 pkgbase = usacloud-bin
 	pkgdesc = CLI client for the Sakura Cloud
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sacloud/usacloud
 	arch = i686
 	arch = x86_64
