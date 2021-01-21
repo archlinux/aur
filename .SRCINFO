@@ -1,5 +1,5 @@
 pkgbase = xrdp-bin-git
-	pkgdesc = An open source remote desktop protocol (RDP) server - GIT version
+	pkgdesc = Forked from xrdp-git. Replace the dependence of tigervnc with tigervnc-server.
 	pkgver = 0.9.15.r8.gb9c5c00d
 	pkgrel = 1
 	epoch = 1
