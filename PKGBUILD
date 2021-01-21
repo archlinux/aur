@@ -2,10 +2,11 @@
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 _pkgname=qt6ct
 pkgname=$_pkgname-git
-pkgver=0.2+6+gb20771f
+pkgver=0.2+8+g0edb925
 pkgrel=1
 pkgdesc='Qt6 Configuration Tool'
-arch=(x86_64)
+arch=('any')
+groups=('therepoclub')
 url='https://github.com/trialuser02/qt6ct'
 license=(GPL2)
 conflicts=($_pkgname)
