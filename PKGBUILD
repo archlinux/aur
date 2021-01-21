@@ -5,7 +5,7 @@
 _pkgname=gulden
 _upkgname=Gulden
 pkgname=gulden-appimage
-pkgver=2.0.0.7
+pkgver=2.3.0.4
 pkgrel=1
 pkgdesc="Gulden Cryptocurrency Wallet (AppImage)"
 arch=('i686' 'x86_64')
@@ -21,10 +21,10 @@ source_x86_64=("https://github.com/Gulden/gulden-official/releases/download/v$pk
 source_i686=("https://github.com/Gulden/gulden-official/releases/download/v$pkgver/Gulden-$pkgver-i686.AppImage"
                 "$_pkgname-i686.desktop.patch")
 
-md5sums_i686=('cf48c0b467a764dbab8f9a1df3a5cd09'
-              '77c4376d478f52444e5f079e7ea87f86')
-md5sums_x86_64=('80f21286ebb4838d64befec341c78579'
-                'c020aa8d07cc2dd5c1c70b168815afcc')
+md5sums_i686=('7bae0a70d55718b37f1a095e099fd693'
+              'bdf81783df82ac7c4fe8c41178df9000')
+md5sums_x86_64=('36d81d5a02808917b35ad10bc3c63fb3'
+                '88e73fd9e1bb741c103ca6ef3adb0d96')
 
 
 prepare() {

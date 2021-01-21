@@ -1,13 +1,13 @@
-diff -ura --color package.orig/gulden.desktop package.new/gulden.desktop
---- package.orig/gulden.desktop	2018-07-20 17:27:21.000000000 +0200
-+++ package.new/gulden.desktop	2018-07-24 08:44:35.532128312 +0200
+diff -ura package.orig/gulden.desktop package.new/gulden.desktop
+--- package.orig/gulden.desktop	2021-01-21 14:14:45.598516946 +0800
++++ package.new/gulden.desktop	2021-01-21 14:16:20.634523032 +0800
 @@ -2,7 +2,8 @@
  Type=Application
  Name=Gulden
  Icon=gulden
--Exec=Gulden.wrapper
-+Exec="/opt/appimages/Gulden-2.0.0.7-x86_64.AppImage" Gulden.wrapper
-+TryExec=/opt/appimages/Gulden-2.0.0.7-x86_64.AppImage
+-Exec=Gulden
++Exec="/opt/appimages/Gulden-2.3.0.4-x86_64.AppImage" Gulden
++TryExec=/opt/appimages/Gulden-2.3.0.4-x86_64.AppImage
  Categories=Office;Utility;Network;Finance;P2P;Economy;Qt;
  Comment=The payment system of the future today
- X-AppImage-Version=.glibc2.10
+ X-AppImage-Version=.glibc2.11

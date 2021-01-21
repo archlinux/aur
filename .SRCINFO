@@ -1,6 +1,6 @@
 pkgbase = gulden-appimage
 	pkgdesc = Gulden Cryptocurrency Wallet (AppImage)
-	pkgver = 2.0.0.7
+	pkgver = 2.3.0.4
 	pkgrel = 1
 	url = https://github.com/Gulden/gulden-official
 	arch = i686
@@ -8,16 +8,16 @@ pkgbase = gulden-appimage
 	license = unknown
 	makedepends = p7zip
 	conflicts = gulden-bin
-	noextract = gulden-2.0.0.7.AppImage
+	noextract = gulden-2.3.0.4.AppImage
 	options = !strip
-	source_i686 = https://github.com/Gulden/gulden-official/releases/download/v2.0.0.7/Gulden-2.0.0.7-i686.AppImage
+	source_i686 = https://github.com/Gulden/gulden-official/releases/download/v2.3.0.4/Gulden-2.3.0.4-i686.AppImage
 	source_i686 = gulden-i686.desktop.patch
-	md5sums_i686 = cf48c0b467a764dbab8f9a1df3a5cd09
-	md5sums_i686 = 77c4376d478f52444e5f079e7ea87f86
-	source_x86_64 = https://github.com/Gulden/gulden-official/releases/download/v2.0.0.7/Gulden-2.0.0.7-x86_64.AppImage
+	md5sums_i686 = 7bae0a70d55718b37f1a095e099fd693
+	md5sums_i686 = bdf81783df82ac7c4fe8c41178df9000
+	source_x86_64 = https://github.com/Gulden/gulden-official/releases/download/v2.3.0.4/Gulden-2.3.0.4-x86_64.AppImage
 	source_x86_64 = gulden-x86_64.desktop.patch
-	md5sums_x86_64 = 80f21286ebb4838d64befec341c78579
-	md5sums_x86_64 = c020aa8d07cc2dd5c1c70b168815afcc
+	md5sums_x86_64 = 36d81d5a02808917b35ad10bc3c63fb3
+	md5sums_x86_64 = 88e73fd9e1bb741c103ca6ef3adb0d96
 
 pkgname = gulden-appimage
 
