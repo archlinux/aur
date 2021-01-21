@@ -1,6 +1,6 @@
 # Gulden-appimage: The Gulden Wallet in an AppImage.
 # Just as the Upwork-appimage package, we use /opt/appimages as the `install` location.
-# Maintainer: Lamelos <lamelos plus aur at gmail dot com>
+# Maintainer: geekmar <geekmar2002@gmail.com>
 
 _pkgname=gulden
 _upkgname=Gulden
@@ -24,7 +24,7 @@ source_i686=("https://github.com/Gulden/gulden-official/releases/download/v$pkgv
 md5sums_i686=('7bae0a70d55718b37f1a095e099fd693'
               'bdf81783df82ac7c4fe8c41178df9000')
 md5sums_x86_64=('36d81d5a02808917b35ad10bc3c63fb3'
-                '88e73fd9e1bb741c103ca6ef3adb0d96')
+                'e8d08ee9238cce7d2d499c1512ea7bc2')
 
 
 prepare() {

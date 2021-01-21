@@ -17,7 +17,7 @@ pkgbase = gulden-appimage
 	source_x86_64 = https://github.com/Gulden/gulden-official/releases/download/v2.3.0.4/Gulden-2.3.0.4-x86_64.AppImage
 	source_x86_64 = gulden-x86_64.desktop.patch
 	md5sums_x86_64 = 36d81d5a02808917b35ad10bc3c63fb3
-	md5sums_x86_64 = 88e73fd9e1bb741c103ca6ef3adb0d96
+	md5sums_x86_64 = e8d08ee9238cce7d2d499c1512ea7bc2
 
 pkgname = gulden-appimage
 
