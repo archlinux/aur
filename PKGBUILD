@@ -94,7 +94,7 @@ package() {
 
   # Man pages
   for f in man/man1/* man/ja/man1/* man/ja_JP.UTF-8/man1/*; do
-    install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-adoptopenjdk${_majorver}.1}"
+    install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-openjdk-dcevm${_majorver}.1}"
   done
   rm -rf man
   ln -sf /usr/share/man man
