@@ -1,7 +1,7 @@
 # Maintainer: Jared Monger <info@jaredmonger.com>
 pkgname=exiftool
 _srcname=Image-ExifTool
-pkgver=12.15
+pkgver=12.16
 pkgrel=1
 pkgdesc="Meta information reader/writer"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('PerlArtistic')
 depends=('perl')
 conflicts=('perl-image-exiftool')
 source=("${pkgname}-${pkgver}.tar.gz::https://exiftool.org/${_srcname}-${pkgver}.tar.gz")
-sha1sums=('8a2a3b11ac09deffcad181a1bdad27841bd3db5d')
+sha1sums=('39010b099104e7c201f200440612cdb9dca11ec8')
 
 build() {
   cd "${_srcname}-${pkgver}"
