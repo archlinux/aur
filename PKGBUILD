@@ -1,9 +1,10 @@
-# Maintainer: Aetf <aetf@unlimitedcodeworks.xyz>
+# Maintainer: Vladislav Ivanishin <vladislav.ivanishin@gmail.com>
+# Co-Maintainer: Aetf <aetf@unlimitedcodeworks.xyz>
 # Co-Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 # Co-Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 
 pkgname=bcwc-pcie-git
-pkgver=r242.ea832ac
+pkgver=0.5.7.r0.g82626d4
 pkgrel=1
 pkgdesc="Reverse engineered Linux driver for the Broadcom 1570 PCIe webcam."
 arch=('x86_64')
@@ -27,7 +28,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
 package() {
