@@ -1,9 +1,9 @@
 # Maintainer: Luke Arms <luke@arms.to>
 
 pkgname=emote
-pkgver=1.2.0
-_pkgref=dbff57507b20b4e723f1b82a9506809810711276
-pkgrel=2
+pkgver=1.3.0
+_pkgref=e2290ebfd56fd44b976358aaeea33b6a260f1dc1
+pkgrel=1
 url="https://github.com/tom-james-watson/Emote"
 pkgdesc="Emoji Picker for Linux written in GTK3"
 arch=('any')
@@ -12,20 +12,16 @@ depends=('python' 'gtk3' 'python-gobject' 'python-xlib' 'libkeybinder3' 'noto-fo
 makedepends=('python-setuptools' 'python-pipenv')
 source=(
   "setup.py"
-  "emojis.patch"
   "https://github.com/tom-james-watson/Emote/archive/${_pkgref}.tar.gz"
 )
 sha512sums=(
   '83b6697b96882d3854c0f64a208571bfeec3e6324790e5508a6bd32092c5d462e86fa676c561111d98cce8058f1730303658612427b66daac086236e3e365316'
-  'cefe0364d1adcfdd914c8a265a7e9146506d03bd6208c6b1dd54fbd65daa276ef48fa2936f622e1aba694caf29dd3041af6f54a9e200d98de838f7d12852e746'
-  '2dae4a078c006a64b2ece589e55a6aa392292cbd5fd596e3b08bdeb50977e6859b359b66fdbad7ae9d30c3bb5fafb90744a4add0aef4950cf8cdff91921f8fed'
+  'fc319778ba7dadaa0c58e59726e981ce0c53917dba693390a6aa8dac5a8e1d34e4536e098bc3f5e4855fe3c2abaa069eec362769c6563ddb3f2330f70cd6ef58'
 )
 
 build() {
   # Replace setup.py
   mv -f "$srcdir/setup.py" "$srcdir/Emote-$_pkgref/setup.py"
-  # Apply emoji patch
-  patch -d "$srcdir/Emote-$_pkgref" -p1 <emojis.patch
   # Move static files into the library
   mv -T "$srcdir/Emote-$_pkgref/static" "$srcdir/Emote-$_pkgref/emote/static"
   # Fix relative paths
