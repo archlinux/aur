@@ -1,6 +1,6 @@
  Icon=gulden
--Exec=Gulden.wrapper
-+Exec="/opt/appimages/Gulden-2.3.0.4-i686.AppImage" Gulden.
+-Exec=Gulden
++Exec="/opt/appimages/Gulden-2.3.0.4-i686.AppImage" Gulden
 +TryExec=/opt/appimages/Gulden-2.3.0.4-i686.AppImage
  Categories=Office;Utility;Network;Finance;P2P;Economy;Qt;
  Comment=The payment system of the future today
