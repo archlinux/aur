@@ -8,7 +8,6 @@ pkgbase = ananicy
 	license = GPL3
 	makedepends = git
 	makedepends = make
-	depends = systemd
 	depends = bash
 	depends = schedtool
 	depends = python

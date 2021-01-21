@@ -8,7 +8,7 @@ pkgdesc="Another auto nice daemon, with community rules support"
 arch=('any')
 url="https://github.com/Nefelim4ag/Ananicy.git"
 license=('GPL3')
-depends=('systemd' 'bash' 'schedtool' 'python')
+depends=('bash' 'schedtool' 'python')
 makedepends=('git' 'make')
 conflicts=('ananicy-git')
 source=("$pkgname"::"git+https://github.com/Nefelim4ag/Ananicy.git#tag=${pkgver}")
