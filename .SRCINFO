@@ -1,0 +1,23 @@
+pkgbase = buteo-git
+	pkgdesc = A XMPP based Groupware application
+	pkgver = r1.39dcd65
+	pkgrel = 1
+	url = https://buteo.codeberg.page/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = libstrophe
+	depends = glib2
+	depends = gpgme
+	depends = gtk3
+	depends = libvc
+	provides = buteo
+	conflicts = buteo
+	conflicts = eagle-xmpp-git
+	replaces = eagle-xmpp-git
+	source = buteo::git+https://codeberg.org/buteo/buteo.git
+	md5sums = SKIP
+
+pkgname = buteo-git
+
