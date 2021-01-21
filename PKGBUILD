@@ -5,6 +5,7 @@ pkgver=2021.01.01
 pkgrel=1
 pkgdesc="A collection of cool wall papers!"
 arch=('any')
+groups=('therepoclub')
 url="https://github.com/TheCynicalTeam/wallpapers"
 license=('CC BY-NC-SA 4.0')
 optdepends=('feh: Allows setting wallpaper' 'multimonitorlock-gui: Allows the background to be changed')
