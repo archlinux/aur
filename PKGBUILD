@@ -25,7 +25,7 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/${pkgname%-git}"
-    sed -i 's|usr/local|usr|g' "scripts/${pkgname%-git}.service" source/core.py
+    sed -i 's|usr/local|usr|g' "scripts/${pkgname%-git}.service" auto_cpufreq/core.py
 }
 
 build() {
