@@ -1,10 +1,11 @@
 pkgbase = pipewire-common-git
 	pkgdesc = Server and user space API to deal with multimedia pipelines
-	pkgver = 0.3.19.r83.gd7ff7d09
+	pkgver = 0.3.20.r1.g44cad2d5
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
 	license = MIT
+	checkdepends = desktop-file-utils
 	makedepends = git
 	makedepends = meson
 	makedepends = doxygen
@@ -12,7 +13,6 @@ pkgbase = pipewire-common-git
 	makedepends = xmltoman
 	makedepends = valgrind
 	makedepends = jack2
-	makedepends = libpulse
 	makedepends = alsa-lib
 	makedepends = gst-plugins-base
 	makedepends = sbc
@@ -55,10 +55,10 @@ pkgname = pipewire-common-git
 	provides = libpipewire-0.3.so
 	conflicts = pipewire
 	backup = etc/pipewire/pipewire.conf
-	backup = etc/pipewire/media-session.d/alsa-monitor.conf
-	backup = etc/pipewire/media-session.d/bluez-monitor.conf
 	backup = etc/pipewire/media-session.d/media-session.conf
-	backup = etc/pipewire/media-session.d/v4l2-monitor.conf
+	backup = etc/pipewire/media-session.d/alsa-monitor.conff
+	backup = etc/pipewire/media-session.d/bluez-monitor.conff
+	backup = etc/pipewire/media-session.d/v4l2-monitor.conff
 
 pkgname = pipewire-common-docs-git
 	pkgdesc = Server and user space API to deal with multimedia pipelines (documentation)
@@ -101,6 +101,11 @@ pkgname = gst-plugin-pipewire-common-git
 	depends = gst-plugins-base-libs
 	provides = gst-plugin-pipewire
 	conflicts = gst-plugin-pipewire
+
+pkgname = acp-pipewire-common-git
+	pkgdesc = ALSA card profiles shared by PipeWire
+	provides = alsa-card-profiles
+	conflicts = alsa-card-profiles
 
 pkgname = pipewire-common-ffmpeg-git
 	pkgdesc = Server and user space API to deal with multimedia pipelines (FFmpeg SPA plugin)

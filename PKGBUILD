@@ -6,18 +6,20 @@ _pkgbase=pipewire
 pkgbase=pipewire-common-git
 pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-jack-git
          pipewire-common-pulse-git pipewire-common-alsa-git
-         gst-plugin-pipewire-common-git pipewire-common-ffmpeg-git
-         pipewire-common-bluez5-git pipewire-common-bluez5-hsphfpd-git)
-pkgver=0.3.19.r83.gd7ff7d09
+         gst-plugin-pipewire-common-git acp-pipewire-common-git
+         pipewire-common-ffmpeg-git pipewire-common-bluez5-git
+         pipewire-common-bluez5-hsphfpd-git)
+pkgver=0.3.20.r1.g44cad2d5
 pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines"
 url="https://pipewire.org"
 license=(MIT)
 arch=(x86_64)
-makedepends=(git meson doxygen graphviz xmltoman valgrind jack2 libpulse
+makedepends=(git meson doxygen graphviz xmltoman valgrind jack2
              alsa-lib gst-plugins-base sbc rtkit vulkan-icd-loader dbus sdl2
              ncurses libsndfile bluez-libs vulkan-headers libldac libopenaptx
              libfdk-aac ffmpeg)
+checkdepends=(desktop-file-utils)
 source=("git+https://gitlab.freedesktop.org/pipewire/pipewire.git")
 sha256sums=('SKIP')
 
@@ -74,7 +76,8 @@ package_pipewire-common-git() {
   provides=(pipewire libpipewire-$_ver.so)
   conflicts=(pipewire)
   backup=(etc/pipewire/pipewire.conf
-          etc/pipewire/media-session.d/{alsa-monitor,bluez-monitor,media-session,v4l2-monitor}.conf)
+          etc/pipewire/media-session.d/media-session.conf
+          etc/pipewire/media-session.d/{alsa,bluez,v4l2}-monitor.conff)
   install=pipewire.install
 
   DESTDIR="$pkgdir" meson install -C build
@@ -116,10 +119,10 @@ package_pipewire-common-git() {
 
   _pick gst usr/lib/gstreamer-1.0
 
-  _pick ffmpeg usr/lib/spa-0.2/ffmpeg
+  _pick acp usr/lib/udev
+  _pick acp usr/share/alsa-card-profile
 
-  # Use alsa-card-profiles built with Pulseaudio
-  rm -rv "$pkgdir"/usr/share/alsa-card-profile
+  _pick ffmpeg usr/lib/spa-0.2/ffmpeg
 }
 
 package_pipewire-common-docs-git() {
@@ -163,6 +166,13 @@ package_gst-plugin-pipewire-common-git() {
   provides=(gst-plugin-pipewire)
   conflicts=(gst-plugin-pipewire)
   mv gst/* "$pkgdir"
+}
+
+package_acp-pipewire-common-git() {
+  pkgdesc="ALSA card profiles shared by PipeWire"
+  provides=(alsa-card-profiles)
+  conflicts=(alsa-card-profiles)
+  mv acp/* "$pkgdir"
 }
 
 package_pipewire-common-ffmpeg-git() {
