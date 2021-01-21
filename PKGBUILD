@@ -1,14 +1,14 @@
 # Maintainer: Lukas Sabota <LTsmooth42 _at_ gmail _dot_ com>
 
 pkgname=fceux-git
-pkgver=2.2.3.1633.gf333a62d
+pkgver=2.3.0.17.gc6752c41
 pkgrel=1
 pkgdesc="Fast and ultra-compatible NES/Famicom emulator with SDL, OpenGL and SVGALIB support"
 arch=('i686' 'x86_64')
 url="http://fceux.com/"
 license=('GPL')
-depends=('sdl' 'lua51' 'gtk2' 'gd' 'libgl')
-makedepends=('git' 'cmake' 'libgl' 'glu')
+depends=('sdl2' 'lua51' 'qt5-base' 'minizip')
+makedepends=('git' 'cmake' 'make' 'mesa-libgl' 'glu')
 optdepends=('xchm: for viewing the help manual')
 provides=('fceux')
 conflicts=('fceux')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd fceux
-  git describe --always| sed 's/-/./g' | sed 's/fceux.//'
+  git describe --tags --always | sed 's/-/./g' | sed 's/fceux.//'
 }
 
 
@@ -25,15 +25,15 @@ build() {
   cd fceux
   mkdir -p build
   cd build
-  cmake ../
+  cmake  \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_C_FLAGS="$CFLAGS -fPIC -w" \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS -fPIC -w" \
+       ..
   make
 }
 
 package() {
   cd fceux
-
-  install -D -m755 build/src/fceux "$pkgdir/usr/bin/fceux"
-  install -D -m644 output/fceux.chm "$pkgdir/usr/share/doc/fceux/fceux.chm"
-  install -D -m644 "fceux.desktop" "$pkgdir/usr/share/applications/fceux.desktop"
-  install -D -m644 "fceux.png" "$pkgdir/usr/share/pixmaps/fceux.png"
+  DESTDIR="$pkgdir" make -C build install
 }
