@@ -1,6 +1,6 @@
 # Maintainer: Matthew Hiles <matthew.hiles@gmail.com>
 pkgname=inkscape-silhouette-git
-pkgver=r461.6de9d53
+pkgver=r466.1a1aae5
 pkgrel=1
 pkgdesc="inkscape plugin to control Silhouette vinyl cutters"
 arch=(any)
@@ -26,13 +26,13 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	git apply -p1 ../../py3fix.patch
-	python setup.py build
+	#git apply -p1 ../../py3fix.patch
+	#python setup.py build
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	python setup.py install --root="$pkgdir/"
+	#python setup.py install --root="$pkgdir/"
 	mkdir -p "$pkgdir/usr/share/inkscape/extensions/"
 	cp sendto_silhouette.* "$pkgdir/usr/share/inkscape/extensions/"
 	cp -R silhouette "$pkgdir/usr/share/inkscape/extensions/"
