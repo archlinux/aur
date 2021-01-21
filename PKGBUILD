@@ -8,6 +8,8 @@ arch=('x86_64')
 url="https://developer.nvidia.com/optix"
 license=('custom:NVIDIA')
 depends=('cuda')
+provides=("optix=${pkgver%.*}")
+conflicts=('optix')
 options=(!strip)
 _script="NVIDIA-OptiX-SDK-$pkgver-linux64.sh"
 source=("file://$_script"
