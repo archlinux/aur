@@ -5,7 +5,7 @@
 
 pkgbase=pulseeffects-git
 pkgname=("${pkgbase}" "gst-plugins-${pkgbase}")
-pkgver=4.8.4.r85.gb773fad2
+pkgver=5.0.0.r0.g5065bd0c
 pkgrel=1
 pkgdesc='Audio Effects for Pulseaudio Applications'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -20,7 +20,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd pulseeffects
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
