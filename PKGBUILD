@@ -10,7 +10,7 @@ pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-jack-git
          pipewire-common-ffmpeg-git pipewire-common-bluez5-git
          pipewire-common-bluez5-hsphfpd-git)
 pkgver=0.3.20.r1.g44cad2d5
-pkgrel=1
+pkgrel=2
 pkgdesc="Server and user space API to deal with multimedia pipelines"
 url="https://pipewire.org"
 license=(MIT)
@@ -77,7 +77,7 @@ package_pipewire-common-git() {
   conflicts=(pipewire)
   backup=(etc/pipewire/pipewire.conf
           etc/pipewire/media-session.d/media-session.conf
-          etc/pipewire/media-session.d/{alsa,bluez,v4l2}-monitor.conff)
+          etc/pipewire/media-session.d/{alsa,bluez,v4l2}-monitor.conf)
   install=pipewire.install
 
   DESTDIR="$pkgdir" meson install -C build
