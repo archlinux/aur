@@ -1,18 +1,18 @@
 # Maintainer: Yuan Zhou <xyyqzy@hotmail.com>
 
-pkgname=optix
-pkgver=7.1.0
-pkgrel=2
+pkgname=optix70
+pkgver=7.0.0
+pkgrel=1
 pkgdesc="A software development kit for achieving high performance ray tracing on the GPU."
 arch=('x86_64')
 url="https://developer.nvidia.com/optix"
 license=('custom:NVIDIA')
 depends=('cuda')
 options=(!strip)
-_script="NVIDIA-OptiX-SDK-$pkgver-linux64-x86_64.sh"
+_script="NVIDIA-OptiX-SDK-$pkgver-linux64.sh"
 source=("file://$_script"
         "file://cmake.patch")
-sha512sums=('808a45e2007d8081de21fe15cad4577ba9fe10fc3612486b1230e03b7f17de91902dc773d1f3fef2b89398f230448d9522a03e19d4e6fa12aa4ffd78f1a4f9dc'
+sha512sums=('349baf367af7890afac87a879c8f7360cc9c93e984cf234216062af0a3cedce8fc6f3fd74240897d4b3854622ce1976a78433cbeadf6fa89c8e84d24e26eef89'
             'c2b3f122bf4e5d1bd987c3ce9693b24d2acd55f71f7366e49ebc0ba2f800945e6ddde439428761c6c12ec77f34a9334fb6900af2c1b10c40dd2905bb58c9ded2')
 
 if ! [ -f $_script ]; then
