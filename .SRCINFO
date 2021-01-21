@@ -1,14 +1,14 @@
 pkgbase = librnnoise
 	pkgdesc = A noise suppression library based on a recurrent neural network.
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xiph/rnnoise
 	arch = i686
 	arch = x86_64
 	license = BSD3
 	license = Revised
-	source = librnnoise.tar.gz::https://github.com/xiph/rnnoise/archive/90ec41ef659fd82cfec2103e9bb7fc235e9ea66c.tar.gz
-	md5sums = bf89534123d5126260801b67227b87c3
+	source = librnnoise.tar.gz::https://github.com/xiph/rnnoise/archive/125d8a56e0049728c86c9a575dab348fc9523e96.tar.gz
+	md5sums = 3f4ae1ca4d7d74fe50eeee9c7397fd2b
 
 pkgname = librnnoise
 
