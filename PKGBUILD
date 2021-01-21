@@ -16,10 +16,10 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 }
 ((DISABLE_NINJA)) ||  makedepends+=('ninja')
 #shellcheck disable=SC2015
-((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
+((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix=7.1'); }
 
 pkgname=blender-2.90-git
-pkgver=2.90.r98225.g2bc017ece14
+pkgver=2.90.r98526.g3e85bb34d0d
 pkgrel=1
 pkgdesc="Aplha version of Blender v2.90 branch"
 changelog=blender.changelog
