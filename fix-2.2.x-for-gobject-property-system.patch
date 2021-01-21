@@ -41,7 +41,7 @@ index 067c6d7..3fcd3d8 100644
                                      g_param_spec_double("chorus-depth", _("Chorus depth"),
                                              _("Chorus depth"),
 -                                            0.0, 20.0, chorus_presets[0].depth,
-+                                            0.0, 256.0, chorus_presets[0].depth,
++                                            0.0, 46.0, chorus_presets[0].depth,
                                              G_PARAM_READWRITE));
      g_object_class_install_property(obj_class, WTBL_PROP_CHORUS_WAVEFORM,
                                      g_param_spec_enum("chorus-waveform", _("Chorus waveform"),

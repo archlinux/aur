@@ -12,7 +12,7 @@ makedepends=('cmake')
 optdepends=('libpng')
 source=("https://github.com/swami/${pkgname}/archive/v${pkgver}.tar.gz" './fix-2.2.x-for-gobject-property-system.patch')
 sha1sums=('8c5444c16f2837f1e89bf2ff717171e0d9ebb13d'
-          '396e364d552eeff5e87e235bfb811b7314ba3d8c')
+          'd10ade9c2db31a7b771af1cd2178f2479615ddf4')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
