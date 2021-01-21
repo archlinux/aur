@@ -7,7 +7,7 @@ pkgbase = disktype
 	arch = x86_64
 	license = custom
 	depends = glibc
-	source = http://prdownloads.sourceforge.net/disktype/disktype-9.tar.gz
+	source = https://prdownloads.sourceforge.net/disktype/disktype-9.tar.gz
 	md5sums = 25a673f162b9c01cd565109202559489
 
 pkgname = disktype

@@ -8,7 +8,7 @@ url="http://disktype.sourceforge.net/"
 license=("custom")
 arch=('i686' 'x86_64')
 depends=('glibc')
-source=(http://prdownloads.sourceforge.net/disktype/disktype-9.tar.gz)
+source=(https://prdownloads.sourceforge.net/disktype/disktype-9.tar.gz)
 md5sums=('25a673f162b9c01cd565109202559489')
 
 build() {
