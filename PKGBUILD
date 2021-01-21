@@ -2,7 +2,7 @@
 
 pkgname=auto-cpufreq-git
 pkgver=1.5.2.r193.a91d4ba
-pkgrel=1
+pkgrel=2
 pkgdesc='Automatic CPU speed & power optimizer'
 arch=('any')
 url="https://github.com/AdnanHodzic/auto-cpufreq"
