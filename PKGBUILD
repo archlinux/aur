@@ -14,8 +14,7 @@ source=(${pkgname}::git+https://github.com/jarro2783/cxxopts.git${_fragment})
 md5sums=(SKIP) #generate with 'makepkg -g'
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C "$srcdir/$pkgname" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
