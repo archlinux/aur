@@ -1,0 +1,29 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Andreas Kurth <archlinux@akurth.net>
+Date: Thu, 21 Jan 2021 12:16:55 +0100
+Subject: [PATCH] tests/iss5: Determine name of default branch
+
+---
+ tests/iss5_checkout_branch_test.sh | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/tests/iss5_checkout_branch_test.sh b/tests/iss5_checkout_branch_test.sh
+index 8f7f788600..10b4514eb1 100755
+--- a/tests/iss5_checkout_branch_test.sh
++++ b/tests/iss5_checkout_branch_test.sh
+@@ -19,12 +19,14 @@ touch README
+ git add .
+ git commit -m "Hello"
+ 
++readonly BRANCH=$(git branch --show-current)
++
+ cd "$DIR"/bar
+ echo "
+ package:
+   name: bar
+ 
+ dependencies:
+-  foo: { git: \"file://$DIR/foo\", rev: master }
++  foo: { git: \"file://$DIR/foo\", rev: $BRANCH }
+ " > Bender.yml
+ $BENDER path foo # this fails according to issue #5
