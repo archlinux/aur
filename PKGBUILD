@@ -18,10 +18,10 @@ pkgver() {
 }
 
 build() {
-  cd ${pkgname}
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake \
+  -S "$pkgname" \
+  -B build \
+  -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
