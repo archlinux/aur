@@ -21,11 +21,6 @@ b2sums=('SKIP'
         'SKIP')
 install=$pkgname.install
 
-pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 package() {
   mkdir -p "$pkgdir/etc/runit/sv/$_alias"
   cp "ananicy.finish" $pkgdir/etc/runit/sv/$_alias/finish
