@@ -1,82 +1,82 @@
 
 [2020-02-19]
-* init Your Name
+* init
 
 [2020-03-09]
-* build by method - lets see how far it gets Martina Pietruschka
+* build by method - lets see how far it gets
 
 [2020-03-10]
-* comilable Martina Pietruschka
+* comilable
 
 [2020-12-23]
-* fresh start with kopano master Your Name
-* vmime update Your Name
-* handle new pkg format Your Name
-* syntax error Your Name
-* deps Your Name
+* fresh start with kopano master
+* vmime update
+* handle new pkg format
+* syntax error
+* deps
 
 [2020-12-24]
-* deps Your Name
+* deps
 
 [2020-12-26]
-* vmime deps Your Name
+* vmime deps
 
 [2020-12-28]
-* set next version Your Name
-* formatting and dependencies Your Name
-* test version Your Name
-* test vmime from kopanp Your Name
+* set next version
+* formatting and dependencies
+* test version
+* test vmime from kopanp
 
 [2020-12-29]
-* integrate kopano-vmime Your Name
-* changed libvmime src. added gperftools. added packaging Your Name
-* changed libvmime src. added gperftools. added packagin Your Name
-* dont set python path Your Name
+* integrate kopano-vmime
+* changed libvmime src. added gperftools. added packaging
+* changed libvmime src. added gperftools. added packagin
+* dont set python path
 
 [2020-12-30]
-* test build Your Name
+* test build
 
 [2020-12-31]
-* test build Your Name
+* test build
 
 [2021-01-02]
-* fix python install path Your Name
-* patch Your Name
-* package as is Your Name
-* set libdir Your Name
-* different prefix Your Name
+* fix python install path
+* patch
+* package as is
+* set libdir
+* different prefix
 
 [2021-01-03]
-* different prefix Your Name
-* change sbin location Your Name
-* docs and configs Your Name
-* autodetect branch Your Name
-* assignment Your Name
-* -git test Your Name
+* different prefix
+* change sbin location
+* docs and configs
+* autodetect branch
+* assignment
+* -git test
 
 [2021-01-04]
-* -git test Your Name
-* finalized -git test Your Name
-* add pythen dependencies ; add optional dependencies to make dependencies ; first files for templates Your Name
+* -git test
+* finalized -git test
+* add pythen dependencies ; add optional dependencies to make dependencies ; first files for templates
 
 [2021-01-05]
-* webapp first try Your Name
-* fixed cp Your Name
-* fixed relnotes path Your Name
-* removed/added destdir / added ant-contrib Your Name
-* fixed path Your Name
+* webapp first try
+* fixed cp
+* fixed relnotes path
+* removed/added destdir / added ant-contrib
+* fixed path
 
 [2021-01-07]
-* webapp Your Name
+* webapp
 
 [2021-01-08]
-* use templates Your Name
+* use templates
 
 [2021-01-13]
-* distribute /etc/kopano/*.cfg in kopano-core package Your Name
+* distribute /etc/kopano/*.cfg in kopano-core package
 
 [2021-01-14]
-* distribute /etc/kopano/*.cfg in kopano-core package Your Name
+* distribute /etc/kopano/*.cfg in kopano-core package
 
 [2021-01-20]
-* handle git builds Your Name
+* handle git builds
