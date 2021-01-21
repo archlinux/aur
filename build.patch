@@ -1,0 +1,338 @@
+commit b69eec948d9ec94b34570fb6d0d91c6deb9c4093
+Author: Xiretza <xiretza@xiretza.xyz>
+Date:   Thu Jan 21 18:47:09 2021 +0100
+
+    Remove hardcoded installation DESTINATIONs
+
+diff --git a/ODIN_II/CMakeLists.txt b/ODIN_II/CMakeLists.txt
+index c27e9e63e..9df1726ae 100644
+--- a/ODIN_II/CMakeLists.txt
++++ b/ODIN_II/CMakeLists.txt
+@@ -209,4 +209,4 @@ if(VTR_ENABLE_STRICT_COMPILE)
+     endforeach()
+ endif()
+ 
+-install(TARGETS odin_II libodin_ii DESTINATION bin)
++install(TARGETS odin_II libodin_ii)
+diff --git a/ace2/CMakeLists.txt b/ace2/CMakeLists.txt
+index 0fed867b3..67f9c6311 100644
+--- a/ace2/CMakeLists.txt
++++ b/ace2/CMakeLists.txt
+@@ -32,4 +32,4 @@ foreach(flag ${ACE_SUPPRESS_FLAGS})
+     endif()
+ endforeach()
+ 
+-install(TARGETS ace DESTINATION bin)
++install(TARGETS ace)
+diff --git a/blifexplorer/CMakeLists.txt b/blifexplorer/CMakeLists.txt
+index 096e7c6c9..4b67ca475 100644
+--- a/blifexplorer/CMakeLists.txt
++++ b/blifexplorer/CMakeLists.txt
+@@ -63,6 +63,6 @@ else()
+     endif()
+ 
+ 
+-    install(TARGETS blifexplorer DESTINATION bin)
++    install(TARGETS blifexplorer)
+ 
+ endif()
+diff --git a/libs/EXTERNAL/libblifparse/CMakeLists.txt b/libs/EXTERNAL/libblifparse/CMakeLists.txt
+index 358f533f2..963a8986e 100644
+--- a/libs/EXTERNAL/libblifparse/CMakeLists.txt
++++ b/libs/EXTERNAL/libblifparse/CMakeLists.txt
+@@ -69,4 +69,4 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
+              COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/test/test_parser.sh ${CMAKE_CURRENT_SOURCE_DIR}/test/*/*.blif ${CMAKE_CURRENT_SOURCE_DIR}/test/*/*.eblif)
+ endif()
+ 
+-install(TARGETS libblifparse blifparse_test DESTINATION bin)
++install(TARGETS libblifparse blifparse_test)
+diff --git a/libs/EXTERNAL/libpugixml/CMakeLists.txt b/libs/EXTERNAL/libpugixml/CMakeLists.txt
+index bc4026124..c52dcd767 100644
+--- a/libs/EXTERNAL/libpugixml/CMakeLists.txt
++++ b/libs/EXTERNAL/libpugixml/CMakeLists.txt
+@@ -25,4 +25,4 @@ if(NOT VTR_ENABLE_SANITIZE)
+     target_compile_definitions(libpugixml PRIVATE PUGIXML_COMPACT)
+ endif()
+ 
+-install(TARGETS libpugixml DESTINATION bin)
++install(TARGETS libpugixml)
+diff --git a/libs/EXTERNAL/libsdcparse/CMakeLists.txt b/libs/EXTERNAL/libsdcparse/CMakeLists.txt
+index 627aa1e4a..b83500872 100644
+--- a/libs/EXTERNAL/libsdcparse/CMakeLists.txt
++++ b/libs/EXTERNAL/libsdcparse/CMakeLists.txt
+@@ -66,4 +66,4 @@ if (USES_IPO)
+     endforeach()
+ endif()
+ 
+-install(TARGETS libsdcparse sdcparse_test DESTINATION bin)
++install(TARGETS libsdcparse sdcparse_test)
+diff --git a/libs/libarchfpga/CMakeLists.txt b/libs/libarchfpga/CMakeLists.txt
+index 569b92058..4039c99a4 100644
+--- a/libs/libarchfpga/CMakeLists.txt
++++ b/libs/libarchfpga/CMakeLists.txt
+@@ -33,4 +33,4 @@ if (READ_ARCH_USES_IPO)
+     set_target_properties(read_arch PROPERTIES LINK_FLAGS ${IPO_LINK_WARN_SUPRESS_FLAGS})
+ endif()
+ 
+-install(TARGETS libarchfpga read_arch DESTINATION bin)
++install(TARGETS libarchfpga read_arch)
+diff --git a/libs/liblog/CMakeLists.txt b/libs/liblog/CMakeLists.txt
+index 6698686e8..bd16821bd 100644
+--- a/libs/liblog/CMakeLists.txt
++++ b/libs/liblog/CMakeLists.txt
+@@ -21,4 +21,4 @@ set_target_properties(liblog PROPERTIES PREFIX "") #Avoid extra 'lib' prefix
+ add_executable(test_log ${EXEC_SOURCES})
+ target_link_libraries(test_log liblog)
+ 
+-install(TARGETS test_log liblog DESTINATION bin)
++install(TARGETS test_log liblog)
+diff --git a/libs/libpugiutil/CMakeLists.txt b/libs/libpugiutil/CMakeLists.txt
+index edbd4c988..74ae2462a 100644
+--- a/libs/libpugiutil/CMakeLists.txt
++++ b/libs/libpugiutil/CMakeLists.txt
+@@ -19,4 +19,4 @@ set_target_properties(libpugiutil PROPERTIES PREFIX "") #Avoid extra 'lib' prefi
+ target_link_libraries(libpugiutil
+                         libpugixml)
+ 
+-install(TARGETS libpugiutil DESTINATION bin)
++install(TARGETS libpugiutil)
+diff --git a/libs/librtlnumber/CMakeLists.txt b/libs/librtlnumber/CMakeLists.txt
+index 33c84b3b9..2cc28623a 100644
+--- a/libs/librtlnumber/CMakeLists.txt
++++ b/libs/librtlnumber/CMakeLists.txt
+@@ -30,4 +30,4 @@ add_executable(rtl_number ${EXEC_SOURCES})
+ target_link_libraries(rtl_number
+                         librtlnumber)
+ 
+-install(TARGETS rtl_number librtlnumber DESTINATION bin)
++install(TARGETS rtl_number librtlnumber)
+diff --git a/libs/libvtrutil/CMakeLists.txt b/libs/libvtrutil/CMakeLists.txt
+index c3007a91a..e24feddb8 100644
+--- a/libs/libvtrutil/CMakeLists.txt
++++ b/libs/libvtrutil/CMakeLists.txt
+@@ -104,7 +104,7 @@ add_dependencies(libvtrutil version)
+ target_link_libraries(libvtrutil
+                         liblog)
+ 
+-install(TARGETS libvtrutil DESTINATION bin)
++install(TARGETS libvtrutil)
+ 
+ #
+ # Unit Tests
+diff --git a/utils/fasm/CMakeLists.txt b/utils/fasm/CMakeLists.txt
+index 40328390d..2e3f21563 100644
+--- a/utils/fasm/CMakeLists.txt
++++ b/utils/fasm/CMakeLists.txt
+@@ -34,7 +34,7 @@ if (GENFASM_USES_IPO)
+ endif()
+ 
+ #Specify link-time dependancies
+-install(TARGETS genfasm DESTINATION bin)
++install(TARGETS genfasm)
+ 
+ #
+ # Unit Tests
+diff --git a/vpr/CMakeLists.txt b/vpr/CMakeLists.txt
+index d8f46f5e4..af2d15f82 100644
+--- a/vpr/CMakeLists.txt
++++ b/vpr/CMakeLists.txt
+@@ -248,7 +248,7 @@ if (VPR_USE_SIGNAL_HANDLER)
+     endif()
+ endif()
+ 
+-install(TARGETS vpr libvpr DESTINATION bin)
++install(TARGETS vpr libvpr)
+ 
+ 
+ #
+
+commit be883bf11eb15bc57d7067e85322d6cdcfe52ebe
+Author: Xiretza <xiretza@xiretza.xyz>
+Date:   Thu Jan 21 18:50:36 2021 +0100
+
+    Do not install test binaries
+
+diff --git a/libs/EXTERNAL/libblifparse/CMakeLists.txt b/libs/EXTERNAL/libblifparse/CMakeLists.txt
+index 963a8986e..7064a7354 100644
+--- a/libs/EXTERNAL/libblifparse/CMakeLists.txt
++++ b/libs/EXTERNAL/libblifparse/CMakeLists.txt
+@@ -69,4 +69,4 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
+              COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/test/test_parser.sh ${CMAKE_CURRENT_SOURCE_DIR}/test/*/*.blif ${CMAKE_CURRENT_SOURCE_DIR}/test/*/*.eblif)
+ endif()
+ 
+-install(TARGETS libblifparse blifparse_test)
++install(TARGETS libblifparse)
+diff --git a/libs/EXTERNAL/libsdcparse/CMakeLists.txt b/libs/EXTERNAL/libsdcparse/CMakeLists.txt
+index b83500872..2fa5c8b35 100644
+--- a/libs/EXTERNAL/libsdcparse/CMakeLists.txt
++++ b/libs/EXTERNAL/libsdcparse/CMakeLists.txt
+@@ -66,4 +66,4 @@ if (USES_IPO)
+     endforeach()
+ endif()
+ 
+-install(TARGETS libsdcparse sdcparse_test)
++install(TARGETS libsdcparse)
+diff --git a/libs/liblog/CMakeLists.txt b/libs/liblog/CMakeLists.txt
+index bd16821bd..776ff8b4f 100644
+--- a/libs/liblog/CMakeLists.txt
++++ b/libs/liblog/CMakeLists.txt
+@@ -21,4 +21,4 @@ set_target_properties(liblog PROPERTIES PREFIX "") #Avoid extra 'lib' prefix
+ add_executable(test_log ${EXEC_SOURCES})
+ target_link_libraries(test_log liblog)
+ 
+-install(TARGETS test_log liblog)
++install(TARGETS liblog)
+
+commit d763da17c608fc846bdb8c65866e6c30d0abbc28
+Author: Xiretza <xiretza@xiretza.xyz>
+Date:   Thu Jan 21 18:51:10 2021 +0100
+
+    Append to LINK_FLAGS instead of replacing them
+
+diff --git a/ODIN_II/CMakeLists.txt b/ODIN_II/CMakeLists.txt
+index 9df1726ae..bfa1eca1e 100644
+--- a/ODIN_II/CMakeLists.txt
++++ b/ODIN_II/CMakeLists.txt
+@@ -189,7 +189,7 @@ endforeach()
+ #Supress IPO link warnings if IPO is enabled
+ get_target_property(ODIN_USES_IPO odin_II INTERPROCEDURAL_OPTIMIZATION)
+ if (ODIN_USES_IPO)
+-    set_target_properties(odin_II PROPERTIES LINK_FLAGS ${IPO_LINK_WARN_SUPRESS_FLAGS})
++    set_property(TARGET odin_II APPEND PROPERTY LINK_FLAGS ${IPO_LINK_WARN_SUPRESS_FLAGS})
+ endif()
+ 
+ #add strict odin compiler flags, if set
+diff --git a/blifexplorer/CMakeLists.txt b/blifexplorer/CMakeLists.txt
+index 4b67ca475..359b415ce 100644
+--- a/blifexplorer/CMakeLists.txt
++++ b/blifexplorer/CMakeLists.txt
+@@ -59,7 +59,7 @@ else()
+     #Supress IPO link warnings if IPO is enabled
+     get_target_property(TEST_BLIFEXPLORER_USES_IPO blifexplorer INTERPROCEDURAL_OPTIMIZATION)
+     if (TEST_BLIFEXPLORER_USES_IPO)
+-        set_target_properties(blifexplorer PROPERTIES LINK_FLAGS ${IPO_LINK_WARN_SUPRESS_FLAGS})
++        set_property(TARGET blifexplorer APPEND ${IPO_LINK_WARN_SUPRESS_FLAGS} PROPERTY LINK_FLAGS)
+     endif()
+ 
+ 
+diff --git a/libs/EXTERNAL/libblifparse/CMakeLists.txt b/libs/EXTERNAL/libblifparse/CMakeLists.txt
+index 7064a7354..086c449bc 100644
+--- a/libs/EXTERNAL/libblifparse/CMakeLists.txt
++++ b/libs/EXTERNAL/libblifparse/CMakeLists.txt
+@@ -57,7 +57,7 @@ if (USES_IPO)
+         CHECK_CXX_COMPILER_FLAG(${flag} CXX_COMPILER_SUPPORTS_${flag})
+         if(CXX_COMPILER_SUPPORTS_${flag})
+             #Flag supported, so enable it
+-            set_target_properties(blifparse_test PROPERTIES LINK_FLAGS ${flag})
++            set_property(TARGET blifparse_test APPEND PROPERTY LINK_FLAGS ${flag})
+         endif()
+     endforeach()
+ endif()
+diff --git a/libs/EXTERNAL/libsdcparse/CMakeLists.txt b/libs/EXTERNAL/libsdcparse/CMakeLists.txt
+index 2fa5c8b35..b99b59475 100644
+--- a/libs/EXTERNAL/libsdcparse/CMakeLists.txt
++++ b/libs/EXTERNAL/libsdcparse/CMakeLists.txt
+@@ -61,7 +61,7 @@ if (USES_IPO)
+         CHECK_CXX_COMPILER_FLAG(${flag} CXX_COMPILER_SUPPORTS_${flag})
+         if(CXX_COMPILER_SUPPORTS_${flag})
+             #Flag supported, so enable it
+-            set_target_properties(sdcparse_test PROPERTIES LINK_FLAGS ${flag})
++            set_property(TARGET sdcparse_test APPEND PROPERTY LINK_FLAGS ${flag})
+         endif()
+     endforeach()
+ endif()
+diff --git a/libs/libarchfpga/CMakeLists.txt b/libs/libarchfpga/CMakeLists.txt
+index 4039c99a4..60802d9db 100644
+--- a/libs/libarchfpga/CMakeLists.txt
++++ b/libs/libarchfpga/CMakeLists.txt
+@@ -30,7 +30,7 @@ target_link_libraries(read_arch libarchfpga)
+ #Supress IPO link warnings if IPO is enabled
+ get_target_property(READ_ARCH_USES_IPO read_arch INTERPROCEDURAL_OPTIMIZATION)
+ if (READ_ARCH_USES_IPO)
+-    set_target_properties(read_arch PROPERTIES LINK_FLAGS ${IPO_LINK_WARN_SUPRESS_FLAGS})
++    set_property(TARGET read_arch APPEND PROPERTY LINK_FLAGS ${IPO_LINK_WARN_SUPRESS_FLAGS})
+ endif()
+ 
+ install(TARGETS libarchfpga read_arch)
+diff --git a/utils/fasm/CMakeLists.txt b/utils/fasm/CMakeLists.txt
+index 2e3f21563..885fa4c4e 100644
+--- a/utils/fasm/CMakeLists.txt
++++ b/utils/fasm/CMakeLists.txt
+@@ -30,7 +30,7 @@ target_link_libraries(genfasm fasm)
+ #Supress IPO link warnings if IPO is enabled
+ get_target_property(GENFASM_USES_IPO genfasm INTERPROCEDURAL_OPTIMIZATION)
+ if (GENFASM_USES_IPO)
+-    set_target_properties(genfasm PROPERTIES LINK_FLAGS ${IPO_LINK_WARN_SUPRESS_FLAGS})
++    set_property(TARGET genfasm APPEND PROPERTY LINK_FLAGS ${IPO_LINK_WARN_SUPRESS_FLAGS})
+ endif()
+ 
+ #Specify link-time dependancies
+@@ -52,7 +52,7 @@ target_link_libraries(test_fasm fasm libcatch)
+ #Supress IPO link warnings if IPO is enabled
+ get_target_property(TEST_FASM_USES_IPO test_fasm INTERPROCEDURAL_OPTIMIZATION)
+ if (TEST_FASM_USES_IPO)
+-    set_target_properties(test_fasm PROPERTIES LINK_FLAGS ${IPO_LINK_WARN_SUPRESS_FLAGS})
++    set_property(TARGET test_fasm APPEND PROPERTY LINK_FLAGS ${IPO_LINK_WARN_SUPRESS_FLAGS})
+ endif()
+ 
+ add_test(
+diff --git a/utils/route_diag/CMakeLists.txt b/utils/route_diag/CMakeLists.txt
+index 00f48ffc6..728156259 100644
+--- a/utils/route_diag/CMakeLists.txt
++++ b/utils/route_diag/CMakeLists.txt
+@@ -11,6 +11,6 @@ target_link_libraries(route_diag
+ #Supress IPO link warnings if IPO is enabled
+ get_target_property(TEST_ROUTE_DIAG_USES_IPO route_diag INTERPROCEDURAL_OPTIMIZATION)
+ if (TEST_ROUTE_DIAG_USES_IPO)
+-    set_target_properties(route_diag PROPERTIES LINK_FLAGS ${IPO_LINK_WARN_SUPRESS_FLAGS})
++    set_property(TARGET route_diag APPEND PROPERTY LINK_FLAGS ${IPO_LINK_WARN_SUPRESS_FLAGS})
+ endif()
+ 
+diff --git a/vpr/CMakeLists.txt b/vpr/CMakeLists.txt
+index af2d15f82..f37222c37 100644
+--- a/vpr/CMakeLists.txt
++++ b/vpr/CMakeLists.txt
+@@ -135,7 +135,7 @@ target_link_libraries(vpr libvpr)
+ #Supress IPO link warnings if IPO is enabled
+ get_target_property(VPR_USES_IPO vpr INTERPROCEDURAL_OPTIMIZATION)
+ if (VPR_USES_IPO)
+-    set_target_properties(vpr PROPERTIES LINK_FLAGS ${IPO_LINK_WARN_SUPRESS_FLAGS})
++    set_property(TARGET vpr APPEND PROPERTY LINK_FLAGS ${IPO_LINK_WARN_SUPRESS_FLAGS})
+ endif()
+ 
+ 
+@@ -263,7 +263,7 @@ target_link_libraries(test_vpr
+ #Supress IPO link warnings if IPO is enabled
+ get_target_property(TEST_VPR_USES_IPO vpr INTERPROCEDURAL_OPTIMIZATION)
+ if (TEST_VPR_USES_IPO)
+-    set_target_properties(test_vpr PROPERTIES LINK_FLAGS ${IPO_LINK_WARN_SUPRESS_FLAGS})
++    set_property(TARGET test_vpr APPEND PROPERTY LINK_FLAGS ${IPO_LINK_WARN_SUPRESS_FLAGS})
+ endif()
+ 
+ add_test(NAME test_vpr
+
+commit b4de8d99676080da8aa4d476da53e5b912955f26
+Author: Xiretza <xiretza@xiretza.xyz>
+Date:   Thu Jan 21 18:51:31 2021 +0100
+
+    libvtrcapnproto: install capnp files to DATADIR
+
+diff --git a/libs/libvtrcapnproto/CMakeLists.txt b/libs/libvtrcapnproto/CMakeLists.txt
+index 8067ab14c..f6a4fd168 100644
+--- a/libs/libvtrcapnproto/CMakeLists.txt
++++ b/libs/libvtrcapnproto/CMakeLists.txt
+@@ -1,3 +1,5 @@
++include(GNUInstallDirs)
++
+ if(NOT MSCV)
+     # These flags generate noisy but non-bug warnings when using lib kj,
+     # supress them.
+@@ -28,7 +30,7 @@ capnp_generate_cpp(CAPNP_SRCS CAPNP_HDRS
+     ${CAPNP_DEFS}
+     )
+ 
+-install(FILES ${CAPNP_DEFS} DESTINATION capnp)
++install(FILES ${CAPNP_DEFS} DESTINATION ${CMAKE_INSTALL_DATADIR}/capnp)
+ 
+ add_library(libvtrcapnproto STATIC
+             ${CAPNP_SRCS}

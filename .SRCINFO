@@ -1,19 +1,19 @@
 pkgbase = vtr-git
-	pkgdesc = Verilog to Routing
-	pkgver = 8.0
+	pkgdesc = Open Source CAD Flow for FPGA Research
+	pkgver = 8.0.0.r3288.g991b11422
 	pkgrel = 1
 	url = https://verilogtorouting.org
 	arch = x86_64
-	license = MIT
+	license = custom
+	makedepends = git
 	makedepends = cmake
-	depends = ctags
-	provides = abc
-	provides = ace
-	provides = odin
-	provides = vpr
+	depends = gcc-libs
+	provides = vtr=8.0.0.r3288.g991b11422
 	conflicts = vtr
 	source = git+https://github.com/verilog-to-routing/vtr-verilog-to-routing
-	md5sums = SKIP
+	source = build.patch
+	sha256sums = SKIP
+	sha256sums = 558088f88221325e331062e7351d2b9e26a50169f74ece3ecc3e468180ff05b1
 
 pkgname = vtr-git
 
