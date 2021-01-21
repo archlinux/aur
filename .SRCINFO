@@ -1,0 +1,19 @@
+pkgbase = perl-moox-classattribute
+	pkgdesc = declare class attributes Moose-style... but without Moose
+	pkgver = 0.011
+	pkgrel = 1
+	url = https://metacpan.org/release/MooX-ClassAttribute
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-exporter-tiny>=0
+	depends = perl-moo>=1.000000
+	depends = perl-role-tiny>=1.000000
+	depends = perl>=5.8.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/MooX-ClassAttribute-0.011.tar.gz
+	md5sums = 9b33fc3cd692d163dbfd96316df34c1f
+	sha512sums = 00c62ff1a065a21f761357969e94bd45b2320bfc79e125635b87a034b141aed756ebae789602afb01b3341f5be980a2a8348305cb6c726a8d6b6cee2e3af1ccf
+
+pkgname = perl-moox-classattribute
+
