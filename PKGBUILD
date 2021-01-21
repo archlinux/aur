@@ -6,7 +6,7 @@ pkgdesc="bruh"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=("alsa-utils")
-makedepends=("coreutils" "gcc")
+makedepends=("make" "coreutils" "gcc")
 source=("git+https://github.com/kejpies/bruh")
 provides=("bruh")
 pkgver(){
