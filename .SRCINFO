@@ -1,17 +1,18 @@
 pkgbase = perl-object-id
 	pkgdesc = A unique identifier for any object
 	pkgver = 0.1.2
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Object-ID
+	pkgrel = 2
+	url = https://metacpan.org/release/Object-ID
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl>=5.8.8
-	depends = perl-hash-fieldhash>=0.10
-	depends = perl-sub-name>=0.03
-	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MS/MSCHWERN/Object-ID-v0.1.2.tar.gz
-	md5sums = 11bbd7d6def704e85d8875f33b2e7f66
+	checkdepends = perl-namespace-autoclean
+	makedepends = perl-module-build
+	depends = perl
+	depends = perl-data-uuid
+	depends = perl-hash-fieldhash
+	depends = perl-sub-name
+	source = https://www.cpan.org/modules/by-module/Object/Object-ID-v0.1.2.tar.gz
 	sha512sums = ac43a0c1d5b789052f4740a9dc726ef8bf197d88f1a6410ad98c7d8d5371c0419d763578f19a418bdd81c8c19f8ea43a461c6bbad31a7971d13f0452b48fb206
 
 pkgname = perl-object-id
