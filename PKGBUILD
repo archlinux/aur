@@ -2,7 +2,7 @@
 
 _gemname=oauth
 pkgname=ruby-$_gemname
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc='OAuth Core Ruby implementation'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('ruby')
 makedepends=('ruby-rdoc')
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('3e017ed1c107eb6fe42c977b78c8a8409249869032b343cf2f23ac80d16b5fff')
+sha256sums=('032ea84c31e65e812e43ad090e0303b47ee431c2487e1f057f0e5c6f8b1908d4')
 options=(!emptydirs)
 
 package() {
