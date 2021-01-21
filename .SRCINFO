@@ -11,6 +11,7 @@ pkgbase = kopano-webapp-files-smb-backend-git
 	makedepends = gzip
 	depends = kopano-webapp-files
 	depends = kopano-webapp
+	provides = kopano-webapp-files-smb-backend=4.0.0
 	source = kopano-webapp-files-smb-backend-git::git+https://stash.kopano.io/scm/kwa/files-smb-backend.git#branch=master
 	md5sums = SKIP
 
