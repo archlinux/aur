@@ -1,16 +1,16 @@
 pkgbase = slicer-git
 	pkgdesc = A tool to automate the boring process of APK recon (git)
-	pkgver = 1.4.r5.gb70e33f
+	pkgver = 1.5.r0.g25d236e
 	pkgrel = 1
 	url = https://github.com/mzfr/slicer
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = go
+	depends = glibc
 	provides = slicer
 	conflicts = slicer
 	source = git+https://github.com/mzfr/slicer
 	sha256sums = SKIP
 
 pkgname = slicer-git
-

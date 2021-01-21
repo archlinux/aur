@@ -3,11 +3,12 @@
 
 pkgname=slicer-git
 pkgdesc="A tool to automate the boring process of APK recon (git)"
-pkgver=1.4.r5.gb70e33f
+pkgver=1.5.r0.g25d236e
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/mzfr/slicer"
 license=('GPL3')
+depends=('glibc')
 makedepends=('git' 'go')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
