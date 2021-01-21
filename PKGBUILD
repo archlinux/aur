@@ -4,11 +4,11 @@
 
 _pkgbase=r8101
 pkgname=r8101-dkms
-pkgver=1.035.02
+pkgver=1.035.03
 pkgrel=1
-pkgdesc="RTL810xE Fast Ethernet Driver (DKMS) (MANUAL DOWNLOAD)"
+pkgdesc="RTL810xE Fast Ethernet Driver (DKMS)"
 arch=('x86_64')
-url="https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100m-fast-ethernet-pci-express-software"
+url="https://fichiers.touslesdrivers.com/64992/"
 license=('GPL2')
 depends=('dkms')
 optdepends=('ethtool: device configuration')
@@ -19,7 +19,7 @@ conflicts=("${_pkgbase}")
 # The current setting is NOT a valid URL
 source=("${url}/${_pkgbase}-${pkgver}.tar.bz2"
         'dkms.conf')
-sha512sums=('779522c591a8b85c851faefaa825fdfbc709442fc8ea5fc7495a7789b1019972cd707cd7bd19c5149d76e91e7a0c30f9fbb576fa3cf5483b524cd3879beca541'
+sha512sums=('5dcf16b86a6cf8c30443a222103b2ef707cb6c7eb76509854f3cf205fd6713cfae501494c2d1cd42416b3e395e0e498d13da50f40de3864a2a777a8726697581'
             'ab9d83c05c2c0788d253235c29bbd6f4134b14f36294acb80b35105795872d5e786bcb7ec1e579b6e4d4796ae311f00d851c5b3ed900ab8c525d65203811c8f6')
 
 package() {
