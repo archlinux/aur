@@ -1,21 +1,21 @@
-# Contributor: ordoban <dirk.langer@vvovgonik.de>
+# Contributor: Anonymous
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-web-mention'
-pkgver='0.704'
+pkgver='0.720'
 pkgrel='1'
 pkgdesc="Implementation of the IndieWeb Webmention protocol"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-datetime>=0' 'perl-datetime-format-iso8601>=0' 'perl-http-link>=0' 'perl-json>=0' 'perl-lwp-protocol-https>=0' 'perl-mojo-dom58>=0' 'perl-moose>=0' 'perl-moosex-classattribute>=0' 'perl-moosex-enumeration>=0' 'perl-moosex-types-uri>=0' 'perl-path-class>=0' 'perl-readonly>=0' 'perl-string-truncate>=0' 'perl-try-tiny>=0' 'perl-type-tiny>=0' 'perl-uri>=0' 'perl-web-microformats2>=0.5' 'perl-libwww>=0' 'perl>=5.10.0')
+depends=('perl-datetime>=0' 'perl-datetime-format-iso8601>=0' 'perl-http-link>=0' 'perl-json>=0' 'perl-lwp-protocol-https>=0' 'perl-mojo-dom58>=0' 'perl-moo>=0' 'perl-moox-classattribute>=0' 'perl-moox-enumeration>=0' 'perl-moox-handlesvia>=0' 'perl-path-class>=0' 'perl-readonly>=0' 'perl-string-truncate>=0' 'perl-try-tiny>=0' 'perl-type-tiny>=0' 'perl-uri>=0' 'perl-web-microformats2>=0.5' 'perl-libwww>=0' 'perl>=5.10.0')
 makedepends=()
 checkdepends=('perl-test-exception>=0' 'perl-test-lwp-useragent>=0' 'perl-test-warn>=0')
 url='https://metacpan.org/release/Web-Mention'
-source=('https://cpan.metacpan.org/authors/id/J/JM/JMAC/Web-Mention-0.704.tar.gz')
-md5sums=('f3e47437a6c1eaa2f81d9f1e8dd2fac5')
-sha512sums=('fef82925fa3efafcbbf25b74d01df98e86b175f20b1bb04bdfd04316ca6cf1c5986ef461353b07e3e092188c4d2cd20d0ced2f8f646f43645cffa3148fc2a689')
-_distdir="Web-Mention-0.704"
+source=('http://search.cpan.org/CPAN/authors/id/J/JM/JMAC/Web-Mention-0.720.tar.gz')
+md5sums=('468fb6cac4b61cc66e3ee17c863a4f01')
+sha512sums=('f3728e9ab0a9e01b03f33a6e596756de5efce575cc68616174aae85cb1173836cb143609cd0810872fc3e542cd931dc90de03f5af2bb6e36bb84abe381405bc5')
+_distdir="Web-Mention-0.720"
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                      \
