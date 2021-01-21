@@ -5,8 +5,9 @@ pkgname=('pipewire-git'
          'pipewire-alsa-git'
          'pipewire-pulse-git'
          'pipewire-ffmpeg-git'
+         'alsa-card-profiles-git'
          )
-pkgver=0.3.19.61.gfee0c267
+pkgver=0.3.20.9.g73896bfa
 pkgrel=1
 pkgdesc='Server and user space API to deal with multimedia pipelines. (GIT version)'
 arch=('x86_64')
@@ -35,6 +36,7 @@ makedepends=('git'
              'libopenaptx'
              'libfdk-aac'
              )
+checkdepends=('desktop-file-utils')
 source=('git+https://gitlab.freedesktop.org/pipewire/pipewire.git')
 sha256sums=('SKIP')
 
@@ -82,7 +84,7 @@ _pick() {
 }
 
 package_pipewire-git() {
-  depends=('alsa-card-profiles'
+  depends=('alsa-card-profiles-git'
            'bluez-libs'
            'rtkit'
            'sbc'
@@ -134,8 +136,8 @@ package_pipewire-git() {
 
   _pick ffmpeg usr/lib/spa-0.2/ffmpeg/libspa-ffmpeg.so
 
-  # Use alsa-card-profiles built with Pulseaudio
-  rm -rv "$pkgdir"/usr/share/alsa-card-profile
+  _pick acp usr/lib/udev
+  _pick acp usr/share/alsa-card-profile
 
 }
 
@@ -191,6 +193,14 @@ package_pipewire-alsa-git() {
   mkdir -p "$pkgdir"/etc/{alsa/conf.d,pipewire/media-session.d}
   ln -st "${pkgdir}/etc/alsa/conf.d" /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf
   touch "$pkgdir/etc/pipewire/media-session.d/with-alsa"
+}
+
+package_alsa-card-profiles-git() {
+  pkgdesc="ALSA card profiles shared by PipeWire (GIT version)"
+  provides=('alsa-card-profiles')
+  conflicts=('alsa-card-profiles')
+
+  mv acp/* "$pkgdir"
 }
 
 package_pipewire-ffmpeg-git() {
