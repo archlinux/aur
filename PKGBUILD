@@ -5,6 +5,7 @@ pkgver=2021.01.01
 pkgrel=1
 pkgdesc="Swallow a terminal window after a blocking application is run in i3"
 arch=('any')
+groups=('therepoclub')
 url="https://github.com/TheCynicalTeam/i3-swallow"
 license=('CC BY-NC-SA 4.0')
 depends=('xdo' 'python-i3ipc')
