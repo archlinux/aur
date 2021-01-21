@@ -6,11 +6,10 @@ _pkgbase=pipewire
 pkgbase=pipewire-common-git
 pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-jack-git
          pipewire-common-pulse-git pipewire-common-alsa-git
-         gst-plugin-pipewire-common-git acp-pipewire-common-git
-         pipewire-common-ffmpeg-git pipewire-common-bluez5-git
-         pipewire-common-bluez5-hsphfpd-git)
+         gst-plugin-pipewire-common-git pipewire-common-ffmpeg-git
+         pipewire-common-bluez5-git pipewire-common-bluez5-hsphfpd-git)
 pkgver=0.3.20.r1.g44cad2d5
-pkgrel=2
+pkgrel=3
 pkgdesc="Server and user space API to deal with multimedia pipelines"
 url="https://pipewire.org"
 license=(MIT)
@@ -19,7 +18,6 @@ makedepends=(git meson doxygen graphviz xmltoman valgrind jack2
              alsa-lib gst-plugins-base sbc rtkit vulkan-icd-loader dbus sdl2
              ncurses libsndfile bluez-libs vulkan-headers libldac libopenaptx
              libfdk-aac ffmpeg)
-checkdepends=(desktop-file-utils)
 source=("git+https://gitlab.freedesktop.org/pipewire/pipewire.git")
 sha256sums=('SKIP')
 
@@ -62,7 +60,7 @@ _pick() {
 _ver=${pkgver:0:3}
 
 package_pipewire-common-git() {
-  depends=(sbc rtkit vulkan-icd-loader alsa-card-profiles
+  depends=(sbc rtkit vulkan-icd-loader
            libdbus-1.so libncursesw.so libsndfile.so libudev.so libasound.so
            libsystemd.so)
   optdepends=('pipewire-common-docs-git: Documentation'
@@ -73,8 +71,8 @@ package_pipewire-common-git() {
               'pipewire-common-ffmpeg-git: FFmpeg support'
               'pipewire-common-bluez5-git: Bluetooth audio support'
               'pipewire-common-bluez5-hsphfpd-git: Bluetooth audio support (using hsphfpd for HSP/HFP support)')
-  provides=(pipewire libpipewire-$_ver.so)
-  conflicts=(pipewire)
+  provides=(pipewire alsa-card-profiles libpipewire-$_ver.so)
+  conflicts=(pipewire alsa-card-profiles)
   backup=(etc/pipewire/pipewire.conf
           etc/pipewire/media-session.d/media-session.conf
           etc/pipewire/media-session.d/{alsa,bluez,v4l2}-monitor.conf)
@@ -118,9 +116,6 @@ package_pipewire-common-git() {
   _pick pulse etc/pipewire/media-session.d/with-pulseaudio
 
   _pick gst usr/lib/gstreamer-1.0
-
-  _pick acp usr/lib/udev
-  _pick acp usr/share/alsa-card-profile
 
   _pick ffmpeg usr/lib/spa-0.2/ffmpeg
 }
@@ -166,13 +161,6 @@ package_gst-plugin-pipewire-common-git() {
   provides=(gst-plugin-pipewire)
   conflicts=(gst-plugin-pipewire)
   mv gst/* "$pkgdir"
-}
-
-package_acp-pipewire-common-git() {
-  pkgdesc="ALSA card profiles shared by PipeWire"
-  provides=(alsa-card-profiles)
-  conflicts=(alsa-card-profiles)
-  mv acp/* "$pkgdir"
 }
 
 package_pipewire-common-ffmpeg-git() {
