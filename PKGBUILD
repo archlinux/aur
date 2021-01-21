@@ -3,14 +3,15 @@
 
 pkgname=slicer
 pkgdesc="A tool to automate the boring process of APK recon"
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/mzfr/slicer"
 license=('GPL3')
+depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('8b4c74685f841ba588ff09d292a9fedda296aad37037c7ba5982cb2d4adabac7b36beae66dc880cd5654d474034961544f61da5fd87857ee55e8809de1f46a6a')
+sha512sums=('6c49a0855f794e24da552de34f8f056fca853fb8932d99bffbfdb09fd776427f885095fdf65ecdde3624863cf9c38cc40c1ee139ebca5714a0feddc55f0ee24a')
 
 build() {
   cd "$pkgname-$pkgver"
