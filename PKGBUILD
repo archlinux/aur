@@ -1,11 +1,11 @@
 # Maintainer: Kian Kasad <kian at kasad.com>
 pkgname=s6-man-pages-git
-pkgver=r231.538914f
+pkgver=r232.f049bcc
 pkgrel=1
 pkgdesc='Manual pages for the s6 suite of software'
 arch=('any')
 url='https://github.com/flexibeast/s6-man-pages'
-license=('unknown')
+license=('ISC')
 groups=()
 depends=()
 makedepends=('git')
@@ -31,4 +31,5 @@ package() {
 	for manual in *.7.in ; do
 		install -Dm0644 "$manual" "$pkgdir/usr/share/man/man7/${manual%.in}"
 	done
+	install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
