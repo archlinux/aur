@@ -5,6 +5,7 @@ pkgver=2021.01.01
 pkgrel=1
 pkgdesc="simple screenshot script using maim"
 arch=('any')
+groups=('therepoclub')
 url="https://github.com/TheCynicalTeam/i3-maim"
 license=('CC BY-NC-SA 4.0')
 depends=('libnotify' 'maim' 'xdg-user-dirs' 'xdotool')
