@@ -2,3 +2,4 @@
 *.pkg.tar.*
 src/
 pkg/
+pulseaudio/

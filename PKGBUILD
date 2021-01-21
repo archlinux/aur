@@ -3,9 +3,10 @@
 # Contributar: tleydxdy https://aur.archlinux.org/packages/pulseaudio-modules-bt/#comment-786420
 
 get_pulseaudio_version() {
-    #printf "$(pkg-config libpulse --modversion|sed 's/[^0-9.]*\([0-9.]*\).*/\1/')"
-    #printf "$(pacman -Q "$(basename "${pulseaudio_pkgname}")" | cut -d ' ' -f 2 | cut -d '-' -f 1)"
-    printf "$(pulseaudio --version | cut -d " " -f 2)"
+    #local _ver="$(pkg-config libpulse --modversion|sed 's/[^0-9.]*\([0-9.]*\).*/\1/')"
+    #local _ver="$(pacman -Q "$(basename "${pulseaudio_pkgname}")" | cut -d ' ' -f 2 | cut -d '-' -f 1)"
+    local _ver="$(pulseaudio --version | cut -d " " -f 2)"
+    printf "${_ver:-14.2}"
 }
 
 #-- PulseAudio --#
@@ -15,7 +16,7 @@ pulseaudio_ver="$(get_pulseaudio_version)"
 pkgname="pulseaudio-modules-bt"
 module_ver="1.4"
 pkgver="${module_ver}_${pulseaudio_ver}"
-pkgrel="5"
+pkgrel="6"
 pkgdesc="PulseAudio Bluetooth modules with SBC, AAC, APTX, APTX-HD, Sony LDAC (A2DP codec) support"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/EHfive/pulseaudio-modules-bt"
@@ -30,10 +31,16 @@ optdepends=(
 provides=("pulseaudio-bluetooth")
 conflicts=("pulseaudio-bluetooth")
 
-source=(
-    "pulseaudio-modules-bt-${module_ver}.zip::https://github.com/EHfive/pulseaudio-modules-bt/archive/v${module_ver}.zip"
-    "pulseaudio-${pulseaudio_ver}.zip::https://github.com/pulseaudio/pulseaudio/archive/v${pulseaudio_ver}.zip"
-)
+source=("pulseaudio-modules-bt-${module_ver}.zip::https://github.com/EHfive/pulseaudio-modules-bt/archive/v${module_ver}.zip")
+
+
+if [[ ! "$(pacman -Qq "${pulseaudio_pkgname}" 2> /dev/null)" = "pulseaudio" ]]; then
+    source+=("git+https://github.com/pulseaudio/pulseaudio.git")
+    pulseaudio_dir="pulseaudio"
+else
+    source+=("pulseaudio-${pulseaudio_ver}.zip::https://github.com/pulseaudio/pulseaudio/archive/v${pulseaudio_ver}.zip")
+    pulseaudio_dir="pulseaudio-${pulseaudio_ver}"
+fi
 
 md5sums=(
     '711a7f930321e56706acdb441de0e432'
@@ -52,7 +59,7 @@ pkgver() {
 prepare() {
     cd "${srcdir}/pulseaudio-modules-bt-${module_ver}"
     rm -rf pa
-    ln -sf -T "../pulseaudio-${pulseaudio_ver}" "pa"
+    ln -sf -T "../${pulseaudio_dir}" "pa"
 }
 
 build() {
