@@ -5,6 +5,7 @@ pkgbase = multimonitorlock
 	url = https://github.com/TheCynicalTeam/multimonitorlock
 	install = multimonitorlock.install
 	arch = any
+	groups = therepoclub
 	license = CC BY-NC-SA 4.0
 	makedepends = git
 	depends = i3lock-color

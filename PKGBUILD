@@ -5,6 +5,7 @@ pkgver=2021.01.01
 pkgrel=1
 pkgdesc="A simple lock script for i3lock-color"
 arch=('any')
+groups=('therepoclub')
 url="https://github.com/TheCynicalTeam/${pkgname}"
 license=('CC BY-NC-SA 4.0')
 depends=('i3lock-color' 'imagemagick' 'xorg-xrandr' 'xorg-xdpyinfo' 'bc' 'bash')
