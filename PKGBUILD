@@ -5,6 +5,7 @@ pkgver=2021.01.18
 pkgrel=1
 pkgdesc='neofetch rewritten in python'
 arch=('any')
+groups=('therepoclub')
 url="https://github.com/TheCynicalTeam/$pkgname"
 license=('CC BY-NC-SA 4.0')
 depends=('gtk3' 'python-gputil' 'python-xlib')
