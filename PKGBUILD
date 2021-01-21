@@ -1,13 +1,10 @@
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
-# Contributor: Sébastien "Seblu" Luttringer <seblu@seblu.net>
-
 pkgbase=qemu-nonbroken
 _pkgbase=qemu
 pkgname=(qemu-nonbroken qemu-nonbroken-headless qemu-nonbroken-arch-extra qemu-nonbroken-headless-arch-extra
          qemu-nonbroken-block-{iscsi,rbd,gluster} qemu-nonbroken-guest-agent)
 pkgdesc="A generic and open source machine emulator and virtualizer"
 pkgver=5.2.0
-pkgrel=99
+pkgrel=100
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
 url="https://wiki.qemu.org/"
@@ -72,9 +69,9 @@ _build() (
 )
 
 package_qemu-nonbroken() {
-  optdepends=('qemu-arch-extra: extra architectures support')
-  provides=(qemu-headless)
-  conflicts=(qemu-headless)
+  optdepends=('qemu-nonbroken-arch-extra: extra architectures support')
+  provides=(qemu-nonbroken-headless)
+  conflicts=(qemu-nonbroken-headless)
   replaces=(qemu-kvm)
 
   _package full
@@ -83,16 +80,16 @@ package_qemu-nonbroken() {
 package_qemu-nonbroken-headless() {
   pkgdesc="QEMU without GUI"
   depends=("${_headlessdeps[@]}")
-  optdepends=('qemu-headless-arch-extra: extra architectures support')
+  optdepends=('qemu-nonebroken-headless-arch-extra: extra architectures support')
 
   _package headless
 }
 
 _package() {
   optdepends+=('samba: SMB/CIFS server support'
-               'qemu-block-iscsi: iSCSI block support'
-               'qemu-block-rbd: RBD block support'
-               'qemu-block-gluster: glusterfs block support')
+               'qemu-nonbroken-block-iscsi: iSCSI block support'
+               'qemu-nonbroken-block-rbd: RBD block support'
+               'qemu-nonbroken-block-gluster: glusterfs block support')
   install=qemu.install
   options=(!strip !emptydirs)
 
@@ -169,9 +166,9 @@ _package() {
 
 package_qemu-nonbroken-arch-extra() {
   pkgdesc="QEMU for foreign architectures"
-  depends=(qemu)
-  provides=(qemu-headless-arch-extra)
-  conflicts=(qemu-headless-arch-extra)
+  depends=(qemu-nonbroken)
+  provides=(qemu-nonbroken-headless-arch-extra)
+  conflicts=(qemu-nonbroken-headless-arch-extra)
   options=(!strip)
 
   mv extra-arch-full/usr "$pkgdir"
@@ -179,7 +176,7 @@ package_qemu-nonbroken-arch-extra() {
 
 package_qemu-nonbroken-headless-arch-extra() {
   pkgdesc="QEMU without GUI, for foreign architectures"
-  depends=(qemu-headless)
+  depends=(qemu-nonbroken-headless)
   options=(!strip)
 
   mv extra-arch-headless/usr "$pkgdir"
