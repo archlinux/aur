@@ -5,7 +5,7 @@
 
 pkgname=ding
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A Dictionary Lookup program and EN<->DE Dictionary"
 arch=('any')
 license=('GPL')

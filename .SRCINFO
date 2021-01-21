@@ -1,7 +1,7 @@
 pkgbase = ding
 	pkgdesc = A Dictionary Lookup program and EN<->DE Dictionary
 	pkgver = 1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www-user.tu-chemnitz.de/~fri/ding
 	arch = any
 	license = GPL
