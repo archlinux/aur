@@ -12,7 +12,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=21.1.0_devel.133783.e10779a9f0d
+pkgver=21.1.0_devel.133791.cec2ed7c80f
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -98,7 +98,7 @@ prepare() {
     if [  -d _build ]; then
         rm -rf _build
     fi
-    cd "$srcdir/$_pkgbase/mesa"
+    cd mesa
     patch --forward --strip=1 --input="${srcdir}/8543.patch"
 }
 
