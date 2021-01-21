@@ -2,6 +2,7 @@
 pkgname=ualsv
 pkgver=1.3
 pkgrel=1
+epoch=1
 pkgdesc='Useful Arch Linux Script Vault'
 arch=('any')
 url='https://github.com/BiteDasher/ualsv'
