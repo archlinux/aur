@@ -2,19 +2,19 @@
 # Maintainer: flaviofearn <flavioislima@gmail.com>
 
 pkgname=heroic-games-launcher-bin
-_pkgver=v1.1.2
+_pkgver=v1.1.3
 pkgver=${_pkgver#v}
-pkgrel=2
+pkgrel=1
 pkgdesc="HGL, a Native alternative Linux Launcher for Epic Games"
 arch=('x86_64')
 url="https://github.com/flavioislima/HeroicGamesLauncher"
 license=('GPL3')
 conflicts=(${pkgname%-*}-{appimage,electron})
-depends=('fuse2' 'gawk' 'wine' 'winetricks' 'python-requests' 'python-wheel' 'python-setuptools')
+depends=('fuse2' 'gawk' 'python-requests' 'python-wheel' 'python-setuptools')
 _filename=heroic-${pkgver}.pacman
 source=("$url/releases/download/${_pkgver}/${_filename}")
 noextract=("${_filename}")
-md5sums=('ecf26fe6d8ff082499901a7dc81aba94')
+md5sums=('6b9534105482eee6b3e7046930d02d81')
 options=(!strip)
 
 package() {
