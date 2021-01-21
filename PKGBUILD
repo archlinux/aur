@@ -5,6 +5,7 @@ pkgver=2021.01.02
 pkgrel=1
 pkgdesc='GUI for multimonitorlock to set the background using QT6 and pyside6'
 arch=('any')
+groups=('therepoclub')
 url="https://github.com/TheCynicalTeam/$pkgname"
 license=('CC BY-NC-SA 4.0')
 depends=('pyside6' 'multimonitorlock' 'gtk-engine-murrine')
