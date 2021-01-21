@@ -1,7 +1,7 @@
 # Maintainer: Jérôme Deuchnord <jerome@deuchnord.fr>
 
 pkgname=mercure
-pkgver=0.10.4
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Server-sent live updates: protocol and reference implementation'
 arch=('any')
