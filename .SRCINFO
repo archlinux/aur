@@ -1,0 +1,26 @@
+pkgbase = hotkeyer-git
+	pkgdesc = Universal context-aware hotkeyer. (fork of keymapper)
+	pkgver = r40.7bae753
+	pkgrel = 1
+	url = https://github.com/Azarattum/UniversalHotkeyer
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = libusb
+	depends = libx11
+	provides = hotkeyer
+	conflicts = hotkeyer
+	source = git+https://github.com/Azarattum/UniversalHotkeyer
+	source = hotkeyer.service
+	source = hotkeyer.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = hotkeyer-git
+

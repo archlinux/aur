@@ -1,0 +1,9 @@
+[Unit]
+Description=Hotkeyer Daemon
+
+[Service]
+Environment="DISPLAY=:0"
+ExecStart=/usr/bin/hotkeyerd
+
+[Install]
+WantedBy=multi-user.target
