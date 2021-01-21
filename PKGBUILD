@@ -1,6 +1,6 @@
 pkgname=mt
 pkgver=0.1.0+alpha2021.01.19
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal written in GTK+ and Rust"
 provides=("com.gitlab.miridyan.Terminal")
 makedepends=('cargo')
@@ -14,7 +14,6 @@ sha512sums=('21c7d29ef5385fd5b98fd3777ab092588c4365454f10599dd8a41db8ef975fee5bb
 build() {
     cd $srcdir/terminal-v$pkgver
     cargo build --release
-    strip --strip-all target/release/terminal
 }
 
 package() {
