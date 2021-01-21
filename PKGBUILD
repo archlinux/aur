@@ -1,6 +1,6 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc-git
-pkgver=2.4.3.0~727+dbc5fa7
+pkgver=2.5.2.0~931+0d60c4c
 pkgrel=1
 epoch=
 pkgdesc="Advanced ComputerCraft emulator written in C++"
@@ -31,7 +31,7 @@ prepare() {
 
 pkgver() {
     cd "craftos2"
-    echo "$(grep -Po 'CRAFTOSPC_VERSION +\"v\K[^\"]+' src/lib.hpp).0~$(git rev-list --count HEAD)+$(git rev-parse --short HEAD)"
+    echo "$(grep -Po 'CRAFTOSPC_VERSION +\"v\K[^\"]+' src/util.hpp).0~$(git rev-list --count HEAD)+$(git rev-parse --short HEAD)"
 }
 
 build() {

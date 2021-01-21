@@ -1,6 +1,6 @@
 pkgbase = craftos-pc-git
 	pkgdesc = Advanced ComputerCraft emulator written in C++
-	pkgver = 2.4.3.0~727+dbc5fa7
+	pkgver = 2.5.2.0~931+0d60c4c
 	pkgrel = 1
 	url = https://github.com/MCJack123/craftos2
 	arch = x86_64
