@@ -1,7 +1,7 @@
 # Maintainer: Michael Kuc <michaelkuc6 at gmail dot com>
 pkgname=contiki
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Contiki, the open source OS for the Internet of Things"
 arch=('x86_64')
 url="https://github.com/contiki-os/contiki"
@@ -25,7 +25,7 @@ options=(!strip)
 
 sha256sums=(
 	'SKIP'
-	'545c4741045325b6353ad835b9f5ca10cacec4d520b9562e7f5e05d411803bfd'
+	'ff5cedd12ab776ffd6574d8da892ac3b12c9327be3285df851bcd5c08fa3125f'
 	'd9b72876e9a4f69f8036c5ef594f0547d2c28b6ba83bb682a25932a88c96238f'
 	'614f49c22522a738be102a93972d0f075864ae6580c7daa47ad0bf69f7969880'
 )
