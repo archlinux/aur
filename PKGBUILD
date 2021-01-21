@@ -1,9 +1,9 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
-_buildver=0.8.0-dev.760+5a6579611
+_buildver=0.8.0-dev.1038+58344e001
 
 pkgname=zig-dev-bin
-pkgver=20210103
+pkgver=20210120
 pkgrel=1
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software"
 arch=('x86_64')
@@ -15,13 +15,14 @@ source=(
   "https://ziglang.org/builds/zig-linux-x86_64-${_buildver}.tar.xz"
 )
 sha256sums=(
-  '5f2737f01a058981c360e083d8f05541e6bdcd6ee1fbf56fe7bb226662395e41'
+  '4e1dd2fb48049b90def1445f5828a2481ab9219d631365c9d5a0589d1e81bc64'
 )
 
 package() {
     cd "${srcdir}/zig-linux-x86_64-${_buildver}"
     install -D -m755 zig "${pkgdir}/usr/bin/zig"
     cp -R lib "${pkgdir}/usr"
-    install -D -m644 langref.html "${pkgdir}/usr/share/doc/zig/langref.html"
+    install -D -m644 docs/langref.html "${pkgdir}/usr/share/doc/zig/langref.html"
+    cp -R docs/std "${pkgdir}/usr/share/doc/zig/"
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/zig/LICENSE"
 }
