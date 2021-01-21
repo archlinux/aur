@@ -6,6 +6,7 @@ pkgver=2021.01.18
 pkgrel=1
 pkgdesc="A CLI system information tool written in BASH that supports displaying images."
 arch=('any')
+groups=('therepoclub')
 url="https://github.com/TheCynicalTeam/$pkgname"
 license=('CC BY-NC-SA 4.0')
 depends=('bash')

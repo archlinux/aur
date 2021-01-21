@@ -4,6 +4,7 @@ pkgbase = bfetch
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/bfetch
 	arch = any
+	groups = therepoclub
 	license = CC BY-NC-SA 4.0
 	makedepends = git
 	depends = bash
