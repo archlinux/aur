@@ -8,6 +8,7 @@ url='https://www.patreon.com/ryujinx'
 license=('MIT')
 depends=('dotnet-runtime-bin')
 provides=('Ryujinx')
+conflicts=('ryujinx-git')
 options=('staticlibs')
 source=('https://www.patreon.com/file?h=45268370&i=6979836'
         'https://github.com/Ryujinx/Ryujinx/raw/master/Ryujinx/Ryujinx.ico')
