@@ -1,0 +1,4 @@
+/libcaption
+/*.pkg.tar.*
+/pkg/
+/src/

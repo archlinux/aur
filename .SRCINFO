@@ -1,0 +1,16 @@
+pkgbase = libcaption-git
+	pkgdesc = Free open-source CEA608 / CEA708 closed-caption encoder/decoder
+	pkgver = e8b6261
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/szatmary/libcaption
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	provides = libcaption
+	conflicts = libcaption
+	source = libcaption::git+https://github.com/szatmary/libcaption.git
+	sha256sums = SKIP
+
+pkgname = libcaption-git
+
