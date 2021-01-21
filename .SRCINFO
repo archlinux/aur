@@ -1,5 +1,5 @@
 pkgbase = android-studio
-	pkgdesc = The official Android IDE (Stable branch)
+	pkgdesc = The official Android IDE (Stable branch). Please send Pull Requests to https://github.com/kordianbruck/arch-aur-android-studio
 	pkgver = 4.1.2.0
 	pkgrel = 1
 	url = https://developer.android.com/
