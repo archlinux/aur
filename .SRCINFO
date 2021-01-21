@@ -1,7 +1,7 @@
 pkgbase = clj-kondo-bin
 	pkgdesc = A minimal and opinionated linter for Clojure code that sparks joy.
 	pkgver = 2021.01.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/borkdude/clj-kondo
 	arch = x86_64
 	license = EPL
