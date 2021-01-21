@@ -3,14 +3,14 @@
 _pkgname=python-symbiflow-v2x
 pkgname=v2x-git
 pkgver=0.0.r588.g9554cc4
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for converting specialized annotated Verilog models into XML"
 arch=(any)
 url="https://github.com/SymbiFlow/python-symbiflow-v2x"
 license=('ISC')
-depends=('python' 'python-lxml')
+depends=('python' 'python-lxml' 'yosys>0.9')
 makedepends=('git' 'python-setuptools')
-checkdepends=('python-pytest' 'python-vtr-xml-utils' 'yosys>0.9')
+checkdepends=('python-pytest' 'python-vtr-xml-utils')
 provides=("${pkgname%%-git}=$pkgver")
 conflicts=("${pkgname%%-git}")
 source=("git+$url.git")
