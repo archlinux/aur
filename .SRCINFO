@@ -1,0 +1,21 @@
+pkgbase = applecommander
+	pkgdesc = Tool that manipulates Apple ][ disk images
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://applecommander.github.io/
+	arch = x86_64
+	license = GPL2
+	makedepends = archlinux-java-run
+	makedepends = java-environment<12
+	depends = bash
+	depends = java-runtime
+	optdepends = gtk3: Graphical User Interface
+	source = https://github.com/AppleCommander/AppleCommander/archive/v1-6-0.tar.gz
+	source = applecommander.sh
+	source = applecommander-gui.sh
+	sha256sums = 246cdf31812a9034d1b8f1492d48560ef65e5a2cf13ee873522ded3980c5f627
+	sha256sums = 193dc3a0f5a73a371997ff837b7222edb4d52cf22a70431dedcfd7821dbbb879
+	sha256sums = 52a269fbc7aea2f354b6a0c6d0deff8e01c41a5021cf946542cdfadd2a392ead
+
+pkgname = applecommander
+
