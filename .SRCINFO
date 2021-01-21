@@ -10,6 +10,7 @@ pkgbase = kopano-webapp-filepreview-git
 	makedepends = git
 	makedepends = gzip
 	depends = kopano-webapp
+	provides = kopano-webapp-filepreview=2.2.0
 	source = kopano-webapp-filepreview-git::git+https://stash.kopano.io/scm/kwa/filepreviewer.git#branch=master
 	md5sums = SKIP
 
