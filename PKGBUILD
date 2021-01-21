@@ -1,4 +1,4 @@
-# Maintainer: Jamie Quigley <jamie (at) quigley.xyz>
+# Maintainer: Jamie Quigley <jamie at quigley dot xyz>
 
 pkgname=robin-hood-hashing
 pkgver=3.9.1
