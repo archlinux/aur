@@ -10,9 +10,9 @@ url="http://azsky2.html.xdomain.jp/soft/azpainter.html"
 license=('GPL3')
 depends=('hicolor-icon-theme' 'fontconfig' 'libjpeg-turbo' 'libxi')
 makedepends=('libxfixes')
+options=('!makeflags')
 source=("http://azsky2.html.xdomain.jp/arc/azpainter-2.1.7.tar.xz"
         "${pkgname}-${pkgver}-translations.patch")
-
 sha256sums=('62e0ce810ada061864c728dbb7dd8c3eb7398566657d758442e9fd33b3db5cb4'
             'b0ed4040480a8a4c5fea5b754b8f11c7925371ececa7dcee6d5416fb85a829fd')
 

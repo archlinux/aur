@@ -11,6 +11,7 @@ pkgbase = azpainter
 	depends = fontconfig
 	depends = libjpeg-turbo
 	depends = libxi
+	options = !makeflags
 	source = http://azsky2.html.xdomain.jp/arc/azpainter-2.1.7.tar.xz
 	source = azpainter-2.1.7-translations.patch
 	sha256sums = 62e0ce810ada061864c728dbb7dd8c3eb7398566657d758442e9fd33b3db5cb4
