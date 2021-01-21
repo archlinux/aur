@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-apscheduler
-pkgver=3.6.3
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="In-process task scheduler with Cron-like capabilities"
 url="https://github.com/agronholm/apscheduler"
@@ -14,7 +14,7 @@ checkdepends=('pifpaf' 'python-gevent' 'python-pytest-asyncio' 'python-pytest-co
               'python-twisted' 'redis')
 # python-kazoo, python-pymongo removed due to lack of running service
 source=("https://github.com/agronholm/apscheduler/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('124348e8507deb9561b95544430df9254d8ddb26eb46e0aa7ab56ab8a65b629abd53243367f1a91bd3114e9d99e25e2f80fe8dc6bba19ddeddb5773c335b216b')
+sha512sums=('d683267d92c7cf87e998b36c6ae9f4ccaf8321832199b470367008db7c41e04542c5727b2be7f7127d77ee5285dc2d2a09baebafefa3b77d51272b6fe7a4b5e4')
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
 
