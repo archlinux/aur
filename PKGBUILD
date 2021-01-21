@@ -33,7 +33,7 @@ _gitLogByDay() {
     local NEXT=$(date +%F)
     local SINCE="1970-01-01"
     local UNTIL=$NEXT
-    local LOG_FORMAT="* %s %an"
+    local LOG_FORMAT="* %s"
     git log --no-merges --since="${SINCE}" --until="${UNTIL}" --format="%cd" --date=short --follow . | sort -u | while read DATE ; do
 	local GIT_PAGER=$(git log --no-merges --reverse --format="${LOG_FORMAT}" --since="${DATE} 00:00:00" --until="${DATE} 23:59:59" --author="${AUTHOR}" --follow . | uniq)
 	if [ ! -z "$GIT_PAGER" ]
@@ -44,7 +44,8 @@ _gitLogByDay() {
 	fi
     done
 }
-if git rev-parse ;
+if [ ! -e "changelog" ] \
+    || git rev-parse ;
 then
     _gitLogByDay > changelog
     changelog="changelog"
