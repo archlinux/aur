@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=qualcoder
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="Qualitative data analysis software written in python3 and pyqt5"
 arch=('any')
@@ -17,7 +17,7 @@ depends=('python-pyqt5'
          'python-ebooklib')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.deb::https://github.com/ccbogel/QualCoder/releases/download/${pkgver}/qualcoder-${pkgver}.deb")
-sha256sums=('4a47ae07558b0180126c84d29d2a35044cb5a3aaef7ec7f4612323793f30f466')
+sha256sums=('ccd9694154a12e10b0df93217491edfd77504d059d93d5274e36e348de71423e')
 
 package() {
   tar xvf data.tar.xz -C "${pkgdir}"
