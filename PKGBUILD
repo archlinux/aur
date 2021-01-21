@@ -2,15 +2,18 @@
 
 pkgname=python-multibase
 _pkgname=py-multibase
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Multibase implementation for Python"
 url="https://github.com/multiformats/py-multibase"
-depends=('python' )
+depends=('python'
+	 'python-six'
+         'python-morphys'
+         'python-baseconv')
 license=('MIT')
 arch=('any')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('464bcccb712087c300adcbd2b7da9e5f82f77750506d74102eacf5484694fde2ec8c4cbbf73fd729d082f44e7e7ecfe6e91d90d83479d6b4bd304b6661442093')
+b2sums=('291789d166cc076137df512f75b052f6cee2c8ea98f5fd46005246096d448fb932fef59b1f11c7f1e1f17ac7fd4eaa7cf022120b083323e588e240de48529f3e')
 
 build() {
     cd $srcdir/${_pkgname}-${pkgver}
