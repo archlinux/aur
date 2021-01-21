@@ -6,7 +6,6 @@ pkgbase = gitkraken
 	arch = x86_64
 	license = custom
 	depends = nss
-	depends = libxss
 	depends = gtk3
 	depends = libsecret
 	depends = libxkbfile
