@@ -1,4 +1,5 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Mantainer: Pedro Gabriel <pedrogabriel@gmail.com>
+# Conbributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: JSH <jsh6789(at)gmail(dot)com>
 # Contributor: Geoffroy Carrier <gcarrier@aur.archlinux.org>
 
