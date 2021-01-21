@@ -2,14 +2,18 @@
 # Contributor: EHfive <eh5@sokka.cn>
 # Contributar: tleydxdy https://aur.archlinux.org/packages/pulseaudio-modules-bt/#comment-786420
 
+get_pulseaudio_version() {
+    printf "$(pkg-config libpulse --modversion|sed 's/[^0-9.]*\([0-9.]*\).*/\1/')"
+}
+
 #-- PulseAudio --#
 pulseaudio_pkgname="pulseaudio"
-pulseaudio_ver="$(pacman -Q "$(basename "${pulseaudio_pkgname}")" | cut -d ' ' -f 2 | cut -d '-' -f 1)"
+pulseaudio_ver="$(get_pulseaudio_version)"
 
 pkgname="pulseaudio-modules-bt"
 module_ver="1.4"
 pkgver="${module_ver}_${pulseaudio_ver}"
-pkgrel="4"
+pkgrel="1"
 pkgdesc="PulseAudio Bluetooth modules with SBC, AAC, APTX, APTX-HD, Sony LDAC (A2DP codec) support"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/EHfive/pulseaudio-modules-bt"
@@ -38,6 +42,10 @@ sha512sums=(
     "5c3ed59dec46a1a9cc2f359ac1d28a82a50a5dea47a268a10601b95a8e17a68dd00ba7628c429271349bae290f461abeb1a4a3715b1833c71d7f82f9a902fe2d"
     "SKIP"
 )
+
+pkgver() {
+    printf "%s_%s" "${module_ver}" "$(get_pulseaudio_version)"
+}
 
 prepare() {
     cd "${srcdir}/pulseaudio-modules-bt-${module_ver}"
