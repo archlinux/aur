@@ -55,6 +55,7 @@ pkgbase = kopano-core-git
 	depends = python-dateutil
 	depends = python-pilkit
 	optdepends = gperftools
+	provides = kopano-core=9.0.12
 	backup = etc/kopano/*.cfg
 	source = kopano-core-git::git+https://stash.kopano.io/scm/kc/kopanocore.git#branch=master
 	md5sums = SKIP

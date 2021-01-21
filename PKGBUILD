@@ -27,6 +27,14 @@ _tagPrefix="kopanocore-"
 #_tagPrefix=""
 #_tagSuffix=""
 
+_basePkgName="${pkgname//-git/}"
+
+if [[ "${pkgname}" == *-git ]];
+then
+    # Version can't be set before pkgver has run
+    provides+=("${pkgname//-git/}=${pkgver}")
+fi
+
 _gitLogByDay() {
     local NEXT=$(date +%F)
     local SINCE="1970-01-01"
@@ -54,7 +62,7 @@ pkgver() {
     if [[ "${pkgname}" == *-git ]];
     then
 	_lastTag=$(git tag -l "${_tagPrefix}*" --sort=v:refname | tail -n 1)
-	_revision="r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	_revision="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 	if [ ! -z "${_lastTag}" ];
 	then
 	    echo "${_lastTag}" | sed "s|${_tagPrefix}\(.*\)${_tagSuffix}|\1.r${_revision}|"
@@ -162,8 +170,9 @@ optdepends=(
     # 'libs3'
 	    )
 
+# TODO _licenseDir is supposed to be the pkgname. For unification changed here.
 _confDir="etc/kopano"
-_licenseDir="usr/share/licenses/${pkgname}"
+_licenseDir="usr/share/licenses/kopano"
 _docDir="usr/share/doc/kopano"
 
 install='install'
