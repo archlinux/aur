@@ -1,0 +1,16 @@
+pkgbase = bruh
+	pkgdesc = bruh
+	pkgver = 1.0
+	pkgrel = 0
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = coreutils
+	makedepends = gcc
+	depends = alsa-utils
+	provides = bruh
+	source = git+https://github.com/kejpies/bruh
+	md5sums = SKIP
+
+pkgname = bruh
+
