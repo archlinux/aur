@@ -10,6 +10,7 @@ pkgbase = kopano-webapp-mattermost-git
 	makedepends = git
 	makedepends = gzip
 	depends = kopano-webapp
+	provides = kopano-webapp-mattermost=1.0.1
 	source = kopano-webapp-mattermost-git::git+https://stash.kopano.io/scm/kwa/mattermost.git#branch=master
 	md5sums = SKIP
 
