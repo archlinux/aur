@@ -6,7 +6,7 @@
 
 pkgname=multimarkdown
 pkgver=6.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A superset of Markdown with various output formats"
 arch=("i686" "x86_64")
 url="http://fletcherpenney.net/multimarkdown/"
@@ -50,5 +50,5 @@ package() {
         #install -dm755 "$pkgdir/usr/share/doc/$pkgname"
         #cp -a submodules/documentation/* "$pkgdir/usr/share/doc/$pkgname"
 
-        install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+        install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
