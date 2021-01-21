@@ -1,0 +1,18 @@
+pkgbase = pe-util-git
+	pkgdesc = List shared object dependencies of a portable executable (PE)
+	pkgver = r19.5b07cb3
+	pkgrel = 1
+	url = https://github.com/gsauthof/pe-util
+	arch = x86_64
+	license = custom:unknown
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = boost-libs
+	provides = pe-util
+	conflicts = pe-util
+	source = pe-util::git+https://github.com/gsauthof/pe-util.git
+	md5sums = SKIP
+
+pkgname = pe-util-git
+
