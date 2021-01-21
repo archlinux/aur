@@ -1,7 +1,7 @@
 # Maintainer: HLFH <arch@dhautefeuille.eu>
 
 pkgname=searx-git
-pkgver=0.18.0+r97+g484dc995
+pkgver=0.18.0+r116+gf310305c
 pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine (python(3) based)"
 arch=('any')
@@ -21,7 +21,7 @@ depends=(
         'python-yaml'
         'python-requests'
         'python-pysocks'
-        'python-cld3-git')
+        'python-langdetect')
 conflicts=('searx' )
 backup=('etc/searx/settings.yml' 'etc/uwsgi/vassals/searx.ini')
 source=(git+https://github.com/asciimoo/searx
