@@ -1,11 +1,13 @@
 # Maintainer: Jason Goulet-Lipman <jason.gouletlipman@gmail.com>
 pkgname=youtubedl-gui
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('GPL3')
 pkgdesc="Download Youtube videos to local audio or video files."
+source=("git+https://github.com/JaGoLi/ytdl-gui")
 install="youtubedl-gui.install"
+md5sums=('SKIP')
 conflicts=("youtubedl-gui-beta")
 makedepends=("git"
 	     "qt5-quickcontrols")
@@ -14,10 +16,6 @@ depends=("youtube-dl"
 	 "ffmpeg"
 	 "hicolor-icon-theme"
 	 "gtk-update-icon-cache")
-
-prepare() {
-	git clone https://github.com/JaGoLi/ytdl-gui.git
-}
 
 build() {
 	cd ytdl-gui

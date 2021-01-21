@@ -1,7 +1,7 @@
 pkgbase = youtubedl-gui
 	pkgdesc = Download Youtube videos to local audio or video files.
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	install = youtubedl-gui.install
 	arch = x86_64
 	license = GPL3
@@ -13,6 +13,8 @@ pkgbase = youtubedl-gui
 	depends = hicolor-icon-theme
 	depends = gtk-update-icon-cache
 	conflicts = youtubedl-gui-beta
+	source = git+https://github.com/JaGoLi/ytdl-gui
+	md5sums = SKIP
 
 pkgname = youtubedl-gui
 
