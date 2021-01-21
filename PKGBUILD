@@ -7,8 +7,8 @@
 
 _pkgbase=vlc
 pkgname=vlc-nox
-pkgver=3.0.11.1
-pkgrel=3
+pkgver=3.0.12
+pkgrel=1
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (without X support)'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64')
@@ -98,7 +98,7 @@ source=(http://download.videolan.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}
         update-vlc-plugin-cache.hook
         lua53_compat.patch
         vlc-3.0.11.1-srt_1.4.2.patch)
-sha512sums=('8ce1e2f11aabf847dc5c55cf21ce6d7c0419a1051b5f4795e36cd060eab82d5056e44b4c070b80af56744e6aa841ef538386d08bc3b397a444e7258b2ba3f76b'
+sha512sums=('ebec92bf732540be117551e94613747c53514ade7e280167c08400375738df9a01ee0e5d7c7733aca151a4f80f1c7163fd41318f2cc80b04a3201f0ba697e5df'
             'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3'
             '33cda373aa1fb3ee19a78748e2687f2b93c8662c9fda62ecd122a2e649df8edaceb54dda3991bc38c80737945a143a9e65baa2743a483bb737bb94cd590dc25f'
             '090c75878894f89184179f534da503a78234cf4f0f5af602873ea2ba6b68326afed71ef6160d1352bdd5c05e45b36bfcd23b7286d5111a900b7c11829642ae0d')
