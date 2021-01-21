@@ -5,11 +5,11 @@
 #
 
 _pkgname="bass"
-_pkgver="beta6"
+_pkgver="beta7"
 
 pkgname="badass"
 pkgver=0.0${_pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc="Advanced 6502 assembler with embedded lua."
 arch=('i686' 'x86_64')
 url="https://github.com/sasq64/bass"
@@ -17,7 +17,7 @@ license=('custom')
 makedepends=('cmake')
 depends=()
 source=(https://github.com/sasq64/bass/archive/${_pkgver}.tar.gz)
-md5sums=('3697fb61006c04aed6a161b158fb4021')
+md5sums=('7cbe7f492ed2bc0fa91197affc2cf6fe')
 
 #
 #
