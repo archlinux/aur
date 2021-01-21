@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://balena.io/'
 _github_url="https://github.com/balena-io/balena-cli"
 license=('APACHE')
-depends=('nodejs>=8.0.0' 'gawk' 'sed' 'make')
+depends=('nodejs>=10.20.0' 'nodejs<14.0.0' 'gawk' 'sed' 'make')
 makedepends=('npm' 'python2' 'jq' 'coffeescript' 'git' 'node-gyp')
 optdepends=('python2: balena preload'
     'openssh: balena ssh'
