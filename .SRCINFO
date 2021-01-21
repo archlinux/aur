@@ -1,0 +1,16 @@
+pkgbase = fish-systemd-git
+	pkgdesc = Comfortable fish aliases for systemctl commands
+	pkgver = r7.ae58bc5
+	pkgrel = 1
+	url = https://github.com/wawa19933/fish-systemd
+	arch = any
+	groups = fish-plugins
+	license = Unlicense
+	makedepends = git
+	depends = fish
+	provides = fish-systemd
+	source = fish-systemd-git::git+https://github.com/wawa19933/fish-systemd
+	sha256sums = SKIP
+
+pkgname = fish-systemd-git
+
