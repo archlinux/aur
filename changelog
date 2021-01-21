@@ -1,0 +1,56 @@
+
+[2020-02-19]
+* init Your Name
+
+[2020-03-10]
+* update fetchmails Martina Pietruschka
+
+[2021-01-04]
+* add pythen dependencies ; add optional dependencies to make dependencies ; first files for templates Your Name
+
+[2021-01-05]
+* webapp first try Your Name
+* fixed cp Your Name
+* removed/added destdir / added ant-contrib Your Name
+* build webapp with destdir Your Name
+* build webapp without destdir Your Name
+* build webapp without destdir -syntax error Your Name
+
+[2021-01-06]
+* build webapp without destdir -syntax error Your Name
+
+[2021-01-07]
+* webapp Your Name
+* webapp: compress static Your Name
+* syntax Your Name
+* include noct working Your Name
+* paths Your Name
+* compress Your Name
+* paths Your Name
+* ... Your Name
+
+[2021-01-08]
+* build with temporary php.ini Your Name
+* ... Your Name
+* use templates Your Name
+
+[2021-01-11]
+* use templates Your Name
+
+[2021-01-12]
+* handle repo without tags Your Name
+* add addons Your Name
+
+[2021-01-13]
+* add addons Your Name
+* redefind _install Your Name
+
+[2021-01-14]
+* distribute /etc/kopano/*.cfg in kopano-core package Your Name
+
+[2021-01-15]
+* add addons Your Name
+
+[2021-01-20]
+* inifile Your Name
+* handle git builds Your Name

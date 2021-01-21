@@ -19,6 +19,14 @@ _tagPrefix="v"
 #_tagPrefix=""
 #_tagSuffix=""
 
+_basePkgName="${pkgname//-git/}"
+
+if [[ "${pkgname}" == *-git ]];
+then
+    # Version can't be set before pkgver has run
+    provides+=("${pkgname//-git/}=${pkgver}")
+fi
+
 _gitLogByDay() {
     local NEXT=$(date +%F)
     local SINCE="1970-01-01"
@@ -46,7 +54,7 @@ pkgver() {
     if [[ "${pkgname}" == *-git ]];
     then
 	_lastTag=$(git tag -l "${_tagPrefix}*" --sort=v:refname | tail -n 1)
-	_revision="r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	_revision="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 	if [ ! -z "${_lastTag}" ];
 	then
 	    echo "${_lastTag}" | sed "s|${_tagPrefix}\(.*\)${_tagSuffix}|\1.r${_revision}|"
@@ -60,7 +68,7 @@ pkgver() {
 
 _sourceBranch=$(if [[ "${pkgname}" == *-git ]]; then echo "#branch=master"; else echo "#tag=${_tagPrefix}${pkgver}${_tagSuffix}"; fi)
 # template end;
-_phpIni="${pkgname//-git/}.ini"
+_phpIni="${_basePkgName}.ini"
 source=(
     "${pkgname}::git+https://stash.kopano.io/scm/kw/kopano-webapp.git${_sourceBranch}"
     "${_phpIni}"
@@ -95,16 +103,21 @@ optdepends=(
 
 # template start; name=base-build-webapp; version=1;
 # https://wiki.archlinux.org/index.php/Web_application_package_guidelines
-_binDir=usr/share/webapps/${pkgname}
-_confDir=etc/webapps/${pkgname}
+_binDir=usr/share/webapps/${_basePkgName}
+_confDir=etc/webapps/${_basePkgName}
 # template start; name=base-build; version=1;
 # https://wiki.archlinux.org/index.php/Arch_package_guidelines
 #_binDir=
 #_confDir=
-_docDir=usr/share/doc/${pkgname}
-_stateDir=var/lib/${pkgname}
-_logDir=var/log/${pkgname}
-_licenseDir=usr/share/licenses/${pkgname}
+
+if [ -z "${_basePkgName}" ];
+then
+    _basePkgName="${pkgname}"
+fi
+_docDir=usr/share/doc/${_basePkgName}
+_stateDir=var/lib/${_basePkgName}
+_logDir=var/log/${_basePkgName}
+_licenseDir=usr/share/licenses/${_basePkgName}
 
 _commonPermissions='u=rwx,g=rx,o=rx u=rw,g=r,o=r'
 _securePermissions='u=rwx,g=rx,o= u=rw,g=r,o='

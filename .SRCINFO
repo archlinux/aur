@@ -17,8 +17,9 @@ pkgbase = kopano-webapp-git
 	depends = libiconv
 	depends = gettext
 	optdepends = kopano-webapp-nginx
-	backup = etc/webapps/kopano-webapp-git/config.php
-	backup = etc/webapps/kopano-webapp-git/debug.php
+	provides = kopano-webapp=4.6.3
+	backup = etc/webapps/kopano-webapp/config.php
+	backup = etc/webapps/kopano-webapp/debug.php
 	source = kopano-webapp-git::git+https://stash.kopano.io/scm/kw/kopano-webapp.git#branch=master
 	source = kopano-webapp.ini
 	md5sums = SKIP
