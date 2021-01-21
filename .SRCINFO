@@ -1,6 +1,6 @@
 pkgbase = libretro-freechaf-git
 	pkgdesc = Fairchild ChannelF Libretro core
-	pkgver = 11.feb057b
+	pkgver = 72.b5cd0c9
 	pkgrel = 1
 	url = https://github.com/libretro/FreeChaF.git
 	arch = i686
