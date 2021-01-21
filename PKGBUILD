@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="Bash wrapper for pacman and aur"
 url="https://github.com/TheCynicalTeam/$pkgname"
 arch=('any')
+groups=('therepoclub')
 license=('CC BY-NC-SA 4.0')
 depends=('grep' 'sed' 'bash' 'curl' 'pacman' 'jshon' 'expac')
 provides=($pkgname)

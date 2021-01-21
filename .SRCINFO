@@ -4,6 +4,7 @@ pkgbase = picker
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/picker
 	arch = any
+	groups = therepoclub
 	license = CC BY-NC-SA 4.0
 	depends = grep
 	depends = sed
