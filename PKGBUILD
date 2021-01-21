@@ -4,6 +4,7 @@
 # - Repo: 'https://github.com/physimals/pyfab'
 # - Docs: 'https://pyfab.readthedocs.io/en/latest/'
 # - Fabber is provided by FSL, but can be installed as a standalone (https://github.com/physimals/fabber_core)
+# - Currently triggers test failures
 
 ### Info ###
 pkgname=python-pyfab
@@ -17,6 +18,7 @@ license=('custom:PYFAB license')
 depends=('fsl>=6.0.1' 'python' 'python-numpy' 'python-nibabel' 'python-six')
 optdepends=('fslpy: MVN functionality')
 makedepends=('git' 'python-setuptools')
+# checkdepends=('python-pytest')
 source=("$pkgname::git+https://github.com/physimals/${_pkgname}.git#tag=v$pkgver")
 b2sums=('SKIP')
 
@@ -28,6 +30,15 @@ build() {
     ## Build ##
     python setup.py build
 }
+
+# ### Check ###
+# check() {
+#     ## Change Directory ##
+#     cd "$srcdir/$pkgname"
+#
+#     ## Test ##
+#     pytest
+# }
 
 ### Package ###
 package() {
@@ -43,4 +54,7 @@ package() {
 
     ## Install License ##
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+    ## Install Docs ##
+    install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
 }
