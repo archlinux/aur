@@ -1,3 +1,4 @@
+# Maintainer: Pavle Portic <pavle.portic@tilda.center>
 pkgbase='python-sphinx-revealjs'
 pkgname=('python-sphinx-revealjs')
 _module='sphinx-revealjs'
