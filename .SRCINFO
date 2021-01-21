@@ -4,6 +4,7 @@ pkgbase = bspwm-cheat
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/wm-cheat
 	arch = any
+	groups = therepoclub
 	license = CC BY-NC-SA 4.0
 	depends = gtk3
 	depends = bspwm

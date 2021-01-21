@@ -6,6 +6,7 @@ pkgver=2021.01.17
 pkgrel=1
 pkgdesc="cheat sheet for bspwm"
 arch=('any')
+groups=('therepoclub')
 url="https://github.com/TheCynicalTeam/$_pkgname"
 license=('CC BY-NC-SA 4.0')
 depends=('gtk3' 'bspwm' 'sxhkd')
