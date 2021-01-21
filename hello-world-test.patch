@@ -1,0 +1,22 @@
+*** src/contiki/examples/hello-world/hello-world.c	2015-08-24 10:08:26.000000000 +0100
+--- hello-world.c	2021-01-21 11:04:17.981451720 +0000
+***************
+*** 40,45 ****
+--- 40,46 ----
+  #include "contiki.h"
+  
+  #include <stdio.h> /* For printf() */
++ #include <stdlib.h> /* For exit() */
+  /*---------------------------------------------------------------------------*/
+  PROCESS(hello_world_process, "Hello world process");
+  AUTOSTART_PROCESSES(&hello_world_process);
+***************
+*** 49,54 ****
+--- 50,56 ----
+    PROCESS_BEGIN();
+  
+    printf("Hello, world\n");
++ 	exit(0);
+    
+    PROCESS_END();
+  }
