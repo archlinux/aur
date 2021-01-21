@@ -10,6 +10,7 @@ pkgbase = kopano-webapp-desktopnotifications-git
 	makedepends = git
 	makedepends = gzip
 	depends = kopano-webapp
+	provides = kopano-webapp-desktopnotifications=2.0.3
 	source = kopano-webapp-desktopnotifications-git::git+https://stash.kopano.io/scm/kwa/desktopnotifications.git#branch=master
 	md5sums = SKIP
 
