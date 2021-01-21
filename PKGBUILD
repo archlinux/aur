@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=dstask
-pkgver=0.23.2
+pkgver=0.24
 pkgrel=1
 pkgdesc="Single binary terminal-based TODO manager with git-based sync + markdown notes per task"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -9,9 +9,8 @@ url="https://github.com/naggie/dstask"
 license=('MIT')
 depends=('git')
 makedepends=('go')
-install=dstask.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('30665d3f0f1e268af6eff681e331557f56273bf6ac7491b489c50725b55ef293')
+sha256sums=('80a08bd8cfb313eac9af9108f6d4a60ac5204f8f41cdbbd054e1765248d3fee1')
 
 build() {
     _commit=$(zcat $pkgname-$pkgver.tar.gz | git get-tar-commit-id)
@@ -26,7 +25,7 @@ build() {
     go build \
         -trimpath \
         -buildmode=pie \
-        -mod=readonly \
+        -mod=vendor \
         -modcacherw \
         -ldflags "-linkmode=external
             -X \"github.com/naggie/dstask.GIT_COMMIT=$_commit\"
