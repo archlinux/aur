@@ -1,0 +1,20 @@
+pkgbase = perl-moox-enumeration
+	pkgdesc = shortcuts for working with enum attributes in Moo
+	pkgver = 0.010
+	pkgrel = 1
+	url = https://metacpan.org/release/MooX-Enumeration
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-fatal>=0
+	depends = perl-moo>=1.006000
+	depends = perl-type-tiny>=0
+	depends = perl-match-simple>=0
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/MooX-Enumeration-0.010.tar.gz
+	md5sums = 031cc595c61c04d8c535f47d366ab2cb
+	sha512sums = 2a02212bdf21429ab337b39ec2cd0d366e3b913334a43303fa43ee694b0f024e5aa7eccce89463f8427ac866325cd5eacd819eaf572f88a288a125681761e854
+
+pkgname = perl-moox-enumeration
+
