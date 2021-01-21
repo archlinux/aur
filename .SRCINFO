@@ -1,6 +1,6 @@
 pkgbase = rubymine7
 	pkgdesc = Ruby and Rails IDE with the full stack of essential developer tools. 7 version
-	pkgver = 7.1.4
+	pkgver = 7.1.5
 	pkgrel = 1
 	url = https://www.jetbrains.com/ruby/
 	install = rubymine.install
@@ -11,14 +11,13 @@ pkgbase = rubymine7
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
 	optdepends = ruby: Ruby run/debug support
-	conflicts = rubymine
 	options = !strip
-	source = https://download.jetbrains.com/ruby/RubyMine-7.1.4.tar.gz
+	source = https://download.jetbrains.com/ruby/RubyMine-7.1.5.tar.gz
 	source = rubymine.desktop
 	source = rubymine.install
-	sha256sums = 9b5aa6099bca2dc6a1eefd1633ef6d0424a8767c95ca189bc18774a5222b8b43
-	sha256sums = 72df0e7c605caf7b6c98e9335f4eee9c8bfe8fcc24523634fd8c1ebe019534d6
-	sha256sums = 7ecadddf2b315b22df3a5c7b90e18be7ea69e2a0d869ee18bf0e031b2c508f76
+	sha256sums = b43448c542adf82774a584f25924cdaa896b44d2a100c76bafe92ada83eccc11
+	sha256sums = 82b7415d984ac1e7b0ace8b0ce4de8d33471483077d7fab4ca75a835384beaf2
+	sha256sums = 678ec0038b54e760d19c8967d92eb1781da12e7a1818faff3f489e65330dbba9
 
 pkgname = rubymine7
 

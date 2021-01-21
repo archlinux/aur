@@ -1,4 +1,5 @@
-# Maintainer: Gleb Sinyavsky <zhulik dot gleb at gmail dot com>
+# Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Contributor: Gleb Sinyavsky <zhulik dot gleb at gmail dot com>
 # Contributor: Mario Finelli <mario dot finelli at yahoo dot com>
 # Contributor: Tom Richards <tom at tomrichards dot net>
 # Contributor: Alexsandr Pavlov <kidoz at mail dot ru>
@@ -8,7 +9,7 @@
 
 pkgname=rubymine7
 _pkgname=RubyMine
-pkgver=7.1.4
+pkgver=7.1.5
 pkgrel=1
 pkgdesc="Ruby and Rails IDE with the full stack of essential developer tools. 7 version"
 arch=('i686' 'x86_64')
@@ -21,7 +22,7 @@ install=rubymine.install
 source=(https://download.jetbrains.com/ruby/${_pkgname}-${pkgver}.tar.gz
         rubymine.desktop
         rubymine.install)
-sha256sums=('9b5aa6099bca2dc6a1eefd1633ef6d0424a8767c95ca189bc18774a5222b8b43'
+sha256sums=('b43448c542adf82774a584f25924cdaa896b44d2a100c76bafe92ada83eccc11'
             '82b7415d984ac1e7b0ace8b0ce4de8d33471483077d7fab4ca75a835384beaf2'
             '678ec0038b54e760d19c8967d92eb1781da12e7a1818faff3f489e65330dbba9')
 
