@@ -1,7 +1,7 @@
 # gandalf3 <gandalf3@blendermonkey.com>
 
 pkgname=swami
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='A SoundFont editor'
 arch=('x86_64')
@@ -10,13 +10,13 @@ license=('GPL2')
 depends=('gtk2' 'fftw' 'audiofile' 'fluidsynth' 'libinstpatch' 'libgnomecanvas')
 makedepends=('cmake')
 optdepends=('libpng')
-source=("https://github.com/swami/${pkgname}/archive/v${pkgver}.tar.gz" 'cwd.patch')
-sha1sums=('218685dec42d2db2dffa77a28633096d29458950'
-          'c8f475348486f7664deb1d47afa90039d31529e8')
+source=("https://github.com/swami/${pkgname}/archive/v${pkgver}.tar.gz" './fix-2.2.x-for-gobject-property-system.patch')
+sha1sums=('8c5444c16f2837f1e89bf2ff717171e0d9ebb13d'
+          '396e364d552eeff5e87e235bfb811b7314ba3d8c')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	patch src/swamigui/main.c < ../cwd.patch
+	patch -p 1 -i ../fix-2.2.x-for-gobject-property-system.patch
 }
 
 build() {
