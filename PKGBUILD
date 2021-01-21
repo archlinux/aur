@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('gtk2' 'fftw' 'audiofile' 'fluidsynth' 'libinstpatch' 'libgnomecanvas')
 makedepends=('cmake')
 optdepends=('libpng')
-source=("https://github.com/swami/${pkgname}/archive/v${pkgver}.tar.gz" './fix-2.2.x-for-gobject-property-system.patch')
+source=("https://github.com/swami/${pkgname}/archive/v${pkgver}.tar.gz" 'fix-2.2.x-for-gobject-property-system.patch')
 sha1sums=('8c5444c16f2837f1e89bf2ff717171e0d9ebb13d'
           'd10ade9c2db31a7b771af1cd2178f2479615ddf4')
 
