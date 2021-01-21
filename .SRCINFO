@@ -1,0 +1,22 @@
+pkgbase = blazert-git
+	pkgdesc = An open-source, high-performance C++ ray tracing kernel library (develop).
+	pkgver = 20.2.1
+	pkgrel = 1
+	url = https://github.com/cstatz/blazert
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = blas
+	makedepends = lapack
+	makedepends = blaze
+	makedepends = tar
+	provides = blazert
+	conflicts = blazert
+	source = git+https://github.com/cstatz/blazert#branch=develop
+	sha256sums = SKIP
+
+pkgname = blazert-git
+
