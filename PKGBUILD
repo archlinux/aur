@@ -3,8 +3,8 @@
 
 pkgname=slicer-bin
 pkgdesc="A tool to automate the boring process of APK recon"
-pkgver=1.4
-pkgrel=2
+pkgver=1.5
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/mzfr/slicer"
 license=('GPL3')
