@@ -11,6 +11,7 @@ pkgbase = kopano-webapp-files-owncloud-backend-git
 	makedepends = gzip
 	depends = kopano-webapp-files
 	depends = kopano-webapp
+	provides = kopano-webapp-files-owncloud-backend=4.0.0
 	source = kopano-webapp-files-owncloud-backend-git::git+https://stash.kopano.io/scm/kwa/files-owncloud-backend.git#branch=master
 	md5sums = SKIP
 
