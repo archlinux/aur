@@ -26,10 +26,5 @@ post_remove() {
 	rm /var/log/auto-cpufreq.log
 
 	# Remove auto-cpufreq's cpufreqctl binary
-	rm /usr/bin/cpufreqctl
-
-	# Restore original cpufreqctl binary if backup was made
-	if [ -f "/usr/bin/cpufreqctl.auto-cpufreq.bak" ]; then
-		mv /usr/bin/cpufreqctl.auto-cpufreq.bak /usr/bin/cpufreqctl
-	fi
+	rm /usr/bin/cpufreqctl.auto-cpufreq
 }
