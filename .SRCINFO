@@ -4,6 +4,7 @@ pkgbase = instamenu
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/instamenu
 	arch = any
+	groups = therepoclub
 	license = CC BY-NC-SA 4.0
 	depends = sh
 	depends = libxinerama

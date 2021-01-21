@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="dmenu like menu with the Dracula theme"
 url="https://github.com/TheCynicalTeam/$pkgname"
 arch=('any')
+groups=('therepoclub')
 license=('CC BY-NC-SA 4.0')
 depends=('sh' 'libxinerama' 'libxft' 'noto-fonts-emoji' 'ttf-joypixels' 'siji' 'cantarell-fonts' 'nerd-fonts-fira-code' 'instamenu-schemas')
 optdepends=('instamenu-extra: Extra script that instamenu can use')
