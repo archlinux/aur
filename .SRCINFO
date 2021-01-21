@@ -1,0 +1,21 @@
+pkgbase = ros-melodic-async-web-server-cpp
+	pkgdesc = ROS - Asynchronous Web/WebSocket Server in C++.
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = http://ros.org/wiki/async_web_server_cpp
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = boost
+	makedepends = openssl
+	depends = python-websocket-client
+	depends = boost
+	depends = openssl
+	source = async_web_server_cpp::git+https://github.com/wpi-rail-release/async_web_server_cpp-release.git#tag=release/melodic/async_web_server_cpp/0.0.3-0
+	md5sums = SKIP
+
+pkgname = ros-melodic-async-web-server-cpp
+
