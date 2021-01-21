@@ -1,0 +1,21 @@
+pkgbase = aarch64-linux-gnu-gcc75-linaro-bin
+	pkgdesc = The GNU Compiler Collection - cross compiler for ARM64 target
+	pkgver = 2019.12
+	pkgrel = 1
+	url = http://www.linaro.org/downloads/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	options = !emptydirs
+	options = !strip
+	options = staticlibs
+	source_i686 = http://releases.linaro.org/components/toolchain/binaries/7.5-2019.12/aarch64-linux-gnu/gcc-linaro-7.5.0-2019.12-i686_aarch64-linux-gnu.tar.xz
+	sha256sums_i686 = 20e85bffc8332d668cae887cfe73ee6983fe878a813f5b6f49a4f5e4e7ce2c80
+	source_x86_64 = http://releases.linaro.org/components/toolchain/binaries/7.5-2019.12/aarch64-linux-gnu/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu.tar.xz
+	sha256sums_x86_64 = 3b6465fb91564b54bbdf9578b4cc3aa198dd363f7a43820eab06ea2932c8e0bf
+
+pkgname = aarch64-linux-gnu-gcc75-linaro-bin
+	provides = aarch64-linux-gnu-gcc
+	conflicts = aarch64-linux-gnu-gcc
+
