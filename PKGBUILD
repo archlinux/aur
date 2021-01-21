@@ -2,7 +2,7 @@
 pkgname=bruh
 pkgver=1.0
 pkgrel=0
-pkgdesc="bruh"
+pkgdesc="Bruh sound, but as a program. You can use it to make your software more fun."
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=("alsa-utils")

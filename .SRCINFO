@@ -1,13 +1,13 @@
 pkgbase = bruh
-	pkgdesc = bruh
+	pkgdesc = Bruh sound, but as a program. You can use it to make your software more fun.
 	pkgver = 1.0
 	pkgrel = 0
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = make
 	makedepends = coreutils
 	makedepends = gcc
-	makedepends = make
 	depends = alsa-utils
 	provides = bruh
 	source = git+https://github.com/kejpies/bruh
