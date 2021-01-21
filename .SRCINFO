@@ -1,7 +1,7 @@
 pkgbase = youtubedl-gui
 	pkgdesc = Download Youtube videos to local audio or video files.
-	pkgver = 1.7
-	pkgrel = 2
+	pkgver = 1.8
+	pkgrel = 1
 	install = youtubedl-gui.install
 	arch = x86_64
 	license = GPL3
