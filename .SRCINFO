@@ -10,6 +10,7 @@ pkgbase = kopano-webapp-passwd-git
 	makedepends = git
 	makedepends = gzip
 	depends = kopano-webapp
+	provides = kopano-webapp-passwd=1.1
 	source = kopano-webapp-passwd-git::git+https://github.com/endrepavel/kopano-webapp-passwd.git#branch=master
 	md5sums = SKIP
 
