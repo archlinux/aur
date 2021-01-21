@@ -10,6 +10,7 @@ pkgbase = kopano-webapp-meet-git
 	makedepends = git
 	makedepends = gzip
 	depends = kopano-webapp
+	provides = kopano-webapp-meet=0.2.1
 	source = kopano-webapp-meet-git::git+https://stash.kopano.io/scm/kwa/meet.git#branch=master
 	md5sums = SKIP
 
