@@ -18,6 +18,7 @@ pkgver() {
 }
 
 build() {
+  CXXFLAGS+=" -Wno-error=pragmas"
   cmake \
   -S "$pkgname" \
   -B build \
