@@ -1,10 +1,11 @@
 pkgbase = apparmor-git
 	pkgdesc = Mandatory Access Control (MAC) using Linux Security Module (LSM)
-	pkgver = 3.0.0.r5.ge6e54dc9
+	pkgver = 3.0.0.r104.gd86b7acd
 	pkgrel = 1
 	url = https://gitlab.com/apparmor/apparmor
 	arch = x86_64
-	license = GPL
+	license = GPL2
+	license = LGPL2.1
 	checkdepends = dejagnu
 	checkdepends = perl-locale-gettext
 	checkdepends = python-pyflakes
@@ -12,33 +13,30 @@ pkgbase = apparmor-git
 	checkdepends = python-psutil
 	makedepends = git
 	makedepends = apache
-	makedepends = swig
+	makedepends = libxcrypt
 	makedepends = perl
 	makedepends = ruby
+	makedepends = swig
 	depends = audit
 	depends = bash
 	depends = glibc
-	depends = libcrypt.so
 	depends = pam
 	depends = python
 	optdepends = perl: for perl bindings
 	optdepends = python-notify2: for aa-notify
 	optdepends = python-psutil: for aa-notify
 	optdepends = ruby: for ruby bindings
-	provides = apparmor=3.0.0.r5.ge6e54dc9
+	provides = apparmor=3.0.0.r104.gd86b7acd
 	provides = libapparmor.so
 	conflicts = apparmor
 	backup = etc/apparmor/easyprof.conf
 	backup = etc/apparmor/logprof.conf
 	backup = etc/apparmor/notify.conf
 	backup = etc/apparmor/parser.conf
-	backup = etc/apparmor/subdomain.conf
 	backup = etc/apparmor/severity.db
 	source = git+https://gitlab.com/apparmor/apparmor.git
-	source = https://gitlab.com/apparmor/apparmor/-/merge_requests/641.patch
 	validpgpkeys = 3ECDCBA5FB34D254961CC53F6689E64E3D3664BB
 	sha512sums = SKIP
-	sha512sums = a116e2ab2e7d145fec21413cc7d1d4a6c6cd0eb50671130312a5f5969c6a795fe09964d631cafc31f3f3634a175a74f00dd64bbc54ec8f1118051a0d70382ff8
 
 pkgname = apparmor-git
 

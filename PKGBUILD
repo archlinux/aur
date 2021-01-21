@@ -2,14 +2,14 @@
 # Contributor: David Runge <dave@sleepmap.de>
 
 pkgname=apparmor-git
-pkgver=3.0.0.r5.ge6e54dc9
+pkgver=3.0.0.r104.gd86b7acd
 pkgrel=1
 pkgdesc='Mandatory Access Control (MAC) using Linux Security Module (LSM)'
 arch=('x86_64')
 url='https://gitlab.com/apparmor/apparmor'
-license=('GPL')
-depends=('audit' 'bash' 'glibc' 'libcrypt.so' 'pam' 'python')
-makedepends=('git' 'apache' 'swig' 'perl' 'ruby')
+license=('GPL2' 'LGPL2.1')
+depends=('audit' 'bash' 'glibc' 'pam' 'python')
+makedepends=('git' 'apache' 'libxcrypt' 'perl' 'ruby' 'swig')
 checkdepends=('dejagnu' 'perl-locale-gettext' 'python-pyflakes' 'python-notify2' 'python-psutil')
 optdepends=('perl: for perl bindings'
             'python-notify2: for aa-notify'
@@ -21,12 +21,9 @@ backup=('etc/apparmor/easyprof.conf'
         'etc/apparmor/logprof.conf'
         'etc/apparmor/notify.conf'
         'etc/apparmor/parser.conf'
-        'etc/apparmor/subdomain.conf'
         'etc/apparmor/severity.db')
-source=('git+https://gitlab.com/apparmor/apparmor.git'
-        'https://gitlab.com/apparmor/apparmor/-/merge_requests/641.patch')
-sha512sums=('SKIP'
-            'a116e2ab2e7d145fec21413cc7d1d4a6c6cd0eb50671130312a5f5969c6a795fe09964d631cafc31f3f3634a175a74f00dd64bbc54ec8f1118051a0d70382ff8')
+source=('git+https://gitlab.com/apparmor/apparmor.git')
+sha512sums=('SKIP')
 # AppArmor Development Team (AppArmor signing key) <apparmor@lists.ubuntu.com>
 validpgpkeys=('3ECDCBA5FB34D254961CC53F6689E64E3D3664BB')
 
@@ -39,10 +36,6 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${pkgname%-git}"
-
-	# fix issue with test trying to access /var/log/wtmp
-	# https://gitlab.com/apparmor/apparmor/-/issues/120
-	patch -Np1 -i "../641.patch"
 
 	# fix PYTHONPATH and add LD_LIBRARY_PATH for aa-logprof based check:
 	# https://gitlab.com/apparmor/apparmor/issues/39
