@@ -12,6 +12,7 @@ pkgbase = kopano-webapp-files-git
 	depends = php-memcache
 	depends = memcached
 	depends = kopano-webapp
+	provides = kopano-webapp-files=4.0.1
 	source = kopano-webapp-files-git::git+https://stash.kopano.io/scm/kwa/files.git#branch=master
 	source = kopano-webapp-files.ini
 	md5sums = SKIP
