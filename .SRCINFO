@@ -10,6 +10,7 @@ pkgbase = kopano-webapp-fetchmail-git
 	makedepends = git
 	makedepends = gzip
 	depends = kopano-webapp
+	provides = kopano-webapp-fetchmail=1.0.2
 	source = kopano-webapp-fetchmail-git::git+https://github.com/olia-dev/kopano-webapp-fetchmail.git#branch=master
 	md5sums = SKIP
 
