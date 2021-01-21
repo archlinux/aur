@@ -11,6 +11,7 @@ pkgbase = kopano-webapp-spellchecker-languagepack-pl-pl-git
 	makedepends = gzip
 	depends = kopano-webapp-spellchecker
 	depends = kopano-webapp
+	provides = kopano-webapp-spellchecker-languagepack-pl-pl=2.0.0
 	source = kopano-webapp-spellchecker-languagepack-pl-pl-git::git+https://stash.kopano.io/scm/kwa/spellchecker-languagepack-pl-pl.git#branch=master
 	md5sums = SKIP
 
