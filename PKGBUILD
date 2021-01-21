@@ -7,8 +7,8 @@ pkgdesc='A WeeChat plugin: Automatically keep your buffers sorted.'
 url='https://github.com/de-vri-es/weechat-autosort'
 arch=('any')
 license=('MIT')
-depends=('weechat')
-source=("https://github.com/de-vri-es/weechat-autosort/archive/${pkgver}.tar.gz")
+depends=('python' 'weechat')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/de-vri-es/weechat-autosort/archive/${pkgver}.tar.gz")
 sha512sums=('3c47e090c43a6e215b5552a0c87287c465d923668738dc653b6996c502fbff42ce7f66f8bd26cbe5f91e1bce2fea954ba1faa9c2acd59f7c1b0c35c9c522fdcb')
 
 package() {
