@@ -1,6 +1,6 @@
 pkgbase = standardnotes-bin
 	pkgdesc = Standard Notes
-	pkgver = 3.5.15
+	pkgver = 3.5.16
 	pkgrel = 1
 	url = https://standardnotes.org
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = standardnotes-bin
 	depends = hicolor-icon-theme
 	conflicts = standardnotes-desktop
 	options = !strip
-	source = standardnotes-bin-3.5.15-1.AppImage::https://github.com/standardnotes/desktop/releases/download/v3.5.15/standard-notes-3.5.15-linux-x86_64.AppImage
-	sha256sums = 1bb55e07e07b63d1306551a3317caf1b90fbe108994632b9621e5eba7712bc79
+	source = standardnotes-bin-3.5.16-1.AppImage::https://github.com/standardnotes/desktop/releases/download/v3.5.16/standard-notes-3.5.16-linux-x86_64.AppImage
+	sha256sums = 5ef7a61ca3eb78deace643d27320f2720250d26a16c10bbfaf6391aeeabd042b
 
 pkgname = standardnotes-bin
 
