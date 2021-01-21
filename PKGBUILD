@@ -8,7 +8,7 @@ url="https://gabmus.gitlab.io/whatip"
 license=('GPL3')
 depends=('libhandy' 'python-requests' 'python-netaddr' 'python-gobject')
 makedepends=('git' 'meson' 'gobject-introspection')
-checkdepends=('appstream')
+#checkdepends=('appstream')
 optdepends=('avahi: hostname resolution')
 source=("https://gitlab.gnome.org/GabMus/whatip/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('88e27e4d8859465108a8aa9ef03cb4c4038b004481cf7f433f8c298c2d03e324')
@@ -18,9 +18,9 @@ build() {
 	meson compile -C build
 }
 
-check() {
-	meson test -C build
-}
+#check() {
+#	meson test -C build
+#}
 
 package() {
 	DESTDIR="$pkgdir" meson install -C build

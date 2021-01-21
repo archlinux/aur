@@ -5,7 +5,6 @@ pkgbase = whatip
 	url = https://gabmus.gitlab.io/whatip
 	arch = any
 	license = GPL3
-	checkdepends = appstream
 	makedepends = git
 	makedepends = meson
 	makedepends = gobject-introspection
