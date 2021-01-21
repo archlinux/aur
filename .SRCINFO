@@ -4,6 +4,7 @@ pkgbase = instamenu-schemas
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/instamenu-schemas
 	arch = any
+	groups = therepoclub
 	license = CC BY-NC-SA 4.0
 	makedepends = gobject-introspection
 	makedepends = git

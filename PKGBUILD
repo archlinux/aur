@@ -1,11 +1,12 @@
-# Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
-# Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
+# Maintainer: TheRepoClub <TheRepoClub@github.com>
+# Contributor: TheRepoClub <TheRepoClub@github.com>
 pkgname=instamenu-schemas
 pkgver=2021.01.10
 pkgrel=1
 pkgdesc="addons for instamenu"
 url="https://github.com/TheCynicalTeam/$pkgname"
 arch=('any')
+groups=('therepoclub')
 license=('CC BY-NC-SA 4.0')
 provides=("instamenu-schemas=$pkgver")
 depends=('glib2' 'dconf')
