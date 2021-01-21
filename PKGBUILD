@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="addons for instamenu"
 url="https://github.com/TheCynicalTeam/$pkgname"
 arch=('any')
+groups=('therepoclub')
 license=('CC BY-NC-SA 4.0')
 depends=('bash' 'autorandr' 'instamenu' 'instamenu-schemas' 'python>=3.4')
 provides=($pkgname)
