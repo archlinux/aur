@@ -18,9 +18,9 @@ pkgver() {
 
 build() {
     cd "$pkgname"
-    sed -i -e /"CC.*="/d src/Makefile
-    sed -i -e /"CPP.*="/d src/Makefile
-    sed -i -e 's/\/usr\/local/\/usr/' src/param.c
+    sed -i -e /"CC.*="/d src/Makefile               # makepkg will specify CC
+    sed -i -e /"CPP.*="/d src/Makefile              # makepkg will specify CPP
+    sed -i -e 's/\/usr\/local/\/usr/' src/param.c   # A path with a reference to /usr/local is hardcoded
     make
 }
 
