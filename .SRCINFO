@@ -1,7 +1,7 @@
 pkgbase = st-abdellatif-git
 	pkgdesc = my st build
-	pkgver = 0.9.5
-	pkgrel = 6
+	pkgver = 0.9.9
+	pkgrel = 1
 	url = https://github.com/abdellatif-dev/st-abdellatif.git
 	arch = x86_64
 	license = MIT
