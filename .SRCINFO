@@ -1,17 +1,20 @@
 pkgbase = precice
 	pkgdesc = A Coupling Library for Partitioned Multi-Physics Simulations on Massively Parallel Systems
-	pkgver = 1.6.1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://www.precice.org
 	arch = x86_64
 	license = LGPL3
 	makedepends = cmake
-	depends = openmpi
+	makedepends = eigen
 	depends = boost
-	optdepends = 
+	depends = libxml2
+	depends = openmpi
+	depends = petsc
+	depends = python-numpy
 	provides = precice
-	source = https://github.com/precice/precice/archive/v1.6.1.tar.gz
-	sha256sums = 7d0c54faa2c69e52304f36608d93c408629868f16f3201f663a0f9b2008f0763
+	source = precice-2.2.0.tar.gz::https://github.com/precice/precice/archive/v2.2.0.tar.gz
+	sha256sums = f8c4e0810dcaeb6a40a0fcab64b95c899f0121c968e0730416d4d2a97d39d0c4
 
 pkgname = precice
 
