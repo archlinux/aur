@@ -11,6 +11,7 @@ pkgbase = ananicy-nosystemd-git
 	depends = schedtool
 	depends = python
 	optdepends = ananicy-s6: s6 support
+	optdepends = ananicy-runit: runit support
 	provides = ananicy
 	conflicts = ananicy
 	backup = etc/ananicy.d/ananicy.conf
