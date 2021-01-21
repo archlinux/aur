@@ -10,6 +10,7 @@ pkgbase = kopano-webapp-smime-git
 	makedepends = git
 	makedepends = gzip
 	depends = kopano-webapp
+	provides = kopano-webapp-smime=2.2.4
 	source = kopano-webapp-smime-git::git+https://stash.kopano.io/scm/kwa/smime.git#branch=master
 	source = kopano-webapp-smime.ini
 	md5sums = SKIP
