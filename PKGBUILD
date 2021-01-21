@@ -2,7 +2,7 @@
 pkgbase=python-photutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Astropy Affiliated package for image photometry utilities"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ makedepends=('cython>=0.28'
 checkdepends=('python-pytest-astropy' 'python-gwcs')
 #-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('9b35f119f6b7cd1901d47ea74bec33c5')
+md5sums=('1796be3ea9747b9e34613a437e90e03c')
 
 prepare() {
     export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
@@ -37,9 +37,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    cp "build/lib.linux-${CARCH}-${_pyver}/${_pyname}"/*.so ${_pyname}
-    cp "build/lib.linux-${CARCH}-${_pyver}/${_pyname}/geometry"/*.so ${_pyname}/geometry
-    pytest
+    pytest "build/lib.linux-${CARCH}-${_pyver}"
 }
 
 package_python-photutils() {
