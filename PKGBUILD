@@ -2,7 +2,7 @@
 
 pkgname=roadrunner
 pkgver=1.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc="High-performance PHP application server, load-balancer and process manager written in Golang"
 arch=(x86_64)
 url="https://roadrunner.dev/"
