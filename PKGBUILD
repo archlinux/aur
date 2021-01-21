@@ -5,7 +5,7 @@
 # Contributor: Gesina Schwalbe <gesina.schwalbe /at/ pheerai /dot/ de>
 
 pkgname=multimarkdown
-pkgver=6.5.2
+pkgver=6.6.0
 pkgrel=1
 pkgdesc="A superset of Markdown with various output formats"
 arch=("i686" "x86_64")
@@ -13,7 +13,7 @@ url="http://fletcherpenney.net/multimarkdown/"
 license=("GPL2" "MIT")
 depends=("bash")
 makedepends=("git" "glib2" "cmake")
-optdepends=("texlive-most: LaTeX and PDF output support")
+optdepends=("texlive-core: LaTeX and PDF output support")
 options=(!buildflags)
 source=("multimarkdown::git+https://github.com/fletcher/MultiMarkdown-6.git#tag=$pkgver")
 sha1sums=("SKIP")
