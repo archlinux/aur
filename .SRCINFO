@@ -1,6 +1,6 @@
-pkgbase = blender-develop-git
-	pkgdesc = Development version of Blender (non-conflicting version)
-	pkgver = 2.93.r102808.g21b9231d7f5
+pkgbase = blender-2.92-git
+	pkgdesc = Maintenance version of Blender v2.92 branch
+	pkgver = 2.92.r102890.gf24992d2ec7
 	pkgrel = 1
 	url = https://blender.org/
 	changelog = blender.changelog
@@ -34,9 +34,9 @@ pkgbase = blender-develop-git
 	depends = libpng
 	depends = openimagedenoise
 	optdepends = cuda: CUDA support in Cycles
-	provides = blender=2.93
-	conflicts = blender=2.93
-	source = git://git.blender.org/blender.git#branch=master
+	provides = blender=2.92
+	conflicts = blender=2.92
+	source = git://git.blender.org/blender.git#branch=blender-v2.92-release
 	source = blender-addons.git::git://git.blender.org/blender-addons.git
 	source = blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git
 	source = blender-translations.git::git://git.blender.org/blender-translations.git
@@ -53,5 +53,5 @@ pkgbase = blender-develop-git
 	sha256sums = 12bd6db5c1fe14244fd7321e3d740941a36aa545ec21b02325e7553c9214778a
 	sha256sums = 6249892f99ffd960e36f43fb893c14e2f8e4dd1d901b9581d25882e865f2603f
 
-pkgname = blender-develop-git
+pkgname = blender-2.92-git
 
