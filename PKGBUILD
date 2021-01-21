@@ -37,9 +37,16 @@ source=("pulseaudio-modules-bt-${module_ver}.zip::https://github.com/EHfive/puls
 if [[ ! "$(pacman -Qq "${pulseaudio_pkgname}" 2> /dev/null)" = "pulseaudio" ]]; then
     source+=("git+https://github.com/pulseaudio/pulseaudio.git")
     pulseaudio_dir="pulseaudio"
+    pkgver() {
+        cd pulseaudio
+        printf "%s_%s" "${module_ver}" "$(git rev-parse --short HEAD)"
+    }
 else
     source+=("pulseaudio-${pulseaudio_ver}.zip::https://github.com/pulseaudio/pulseaudio/archive/v${pulseaudio_ver}.zip")
     pulseaudio_dir="pulseaudio-${pulseaudio_ver}"
+    pkgver() {
+        printf "%s_%s" "${module_ver}" "$(get_pulseaudio_version)"
+    }
 fi
 
 md5sums=(
@@ -52,9 +59,7 @@ sha512sums=(
     "SKIP"
 )
 
-pkgver() {
-    printf "%s_%s" "${module_ver}" "$(get_pulseaudio_version)"
-}
+
 
 prepare() {
     cd "${srcdir}/pulseaudio-modules-bt-${module_ver}"
