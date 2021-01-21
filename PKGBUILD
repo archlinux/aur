@@ -7,7 +7,7 @@ url=https://www.jameswoodcock.co.uk/product/beneath-a-steel-sky-soundtrack/
 license=(custom)
 depends=(bass)
 source=(https://www.jameswoodcock.co.uk/soundtracks/bass/full175618461/bass_v${pkgver//./_}_flac.zip)
-b2sums=(589e038d279b2b69531a2c2c73fe13d77aad7eaa1cb7503cefa6ee2d6804f35f1b7eb8aa0ee9db9043374a5a11d99689673a877c0970432653f02445654d7b22)
+b2sums=(f9831558530cf0a4521e2f497daf3017bc9965dfb47258d724fe9417d9657a9651b42065ff9bc92410058a2f11337af8cefe1860e3553ca1a89018a0cbcd8e45)
 
 prepare() {
   sed -i 's/\r//; $s/$/\n/' readme.txt
