@@ -10,6 +10,7 @@ pkgbase = kopano-webapp-htmleditor-minimaltiny-git
 	makedepends = git
 	makedepends = gzip
 	depends = kopano-webapp
+	provides = kopano-webapp-htmleditor-minimaltiny=2.0
 	source = kopano-webapp-htmleditor-minimaltiny-git::git+https://stash.kopano.io/scm/kwa/htmleditor-minimaltiny.git#branch=master
 	md5sums = SKIP
 
