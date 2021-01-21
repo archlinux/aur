@@ -1,4 +1,4 @@
-pkgbase = jdk11-openjdk-dcevm
+pkgbase = jdk11-openjdk-dcevm-conflicts-fixed
 	pkgdesc = OpenJDK Java 11 development kit with DCEVM patches (Trava build)
 	pkgver = 11.0.7.u1
 	pkgrel = 1
@@ -28,20 +28,20 @@ pkgbase = jdk11-openjdk-dcevm
 	provides = jdk-openjdk=11.0.7.u1
 	provides = openjdk11-src=11.0.7.u1
 	provides = openjdk-src=11.0.7.u1
-	backup = etc/jdk11-openjdk-dcevm/net.properties
-	backup = etc/jdk11-openjdk-dcevm/logging.properties
-	backup = etc/jdk11-openjdk-dcevm/security/java.security
-	backup = etc/jdk11-openjdk-dcevm/security/policy/limited/exempt_local.policy
-	backup = etc/jdk11-openjdk-dcevm/security/policy/limited/default_US_export.policy
-	backup = etc/jdk11-openjdk-dcevm/security/policy/limited/default_local.policy
-	backup = etc/jdk11-openjdk-dcevm/security/policy/unlimited/default_US_export.policy
-	backup = etc/jdk11-openjdk-dcevm/security/policy/unlimited/default_local.policy
-	backup = etc/jdk11-openjdk-dcevm/security/policy/README.txt
-	backup = etc/jdk11-openjdk-dcevm/security/java.policy
-	backup = etc/jdk11-openjdk-dcevm/management/management.properties
-	backup = etc/jdk11-openjdk-dcevm/management/jmxremote.access
-	backup = etc/jdk11-openjdk-dcevm/management/jmxremote.password.template
-	backup = etc/jdk11-openjdk-dcevm/sound.properties
+	backup = etc/jdk11-openjdk-dcevm-conflicts-fixed/net.properties
+	backup = etc/jdk11-openjdk-dcevm-conflicts-fixed/logging.properties
+	backup = etc/jdk11-openjdk-dcevm-conflicts-fixed/security/java.security
+	backup = etc/jdk11-openjdk-dcevm-conflicts-fixed/security/policy/limited/exempt_local.policy
+	backup = etc/jdk11-openjdk-dcevm-conflicts-fixed/security/policy/limited/default_US_export.policy
+	backup = etc/jdk11-openjdk-dcevm-conflicts-fixed/security/policy/limited/default_local.policy
+	backup = etc/jdk11-openjdk-dcevm-conflicts-fixed/security/policy/unlimited/default_US_export.policy
+	backup = etc/jdk11-openjdk-dcevm-conflicts-fixed/security/policy/unlimited/default_local.policy
+	backup = etc/jdk11-openjdk-dcevm-conflicts-fixed/security/policy/README.txt
+	backup = etc/jdk11-openjdk-dcevm-conflicts-fixed/security/java.policy
+	backup = etc/jdk11-openjdk-dcevm-conflicts-fixed/management/management.properties
+	backup = etc/jdk11-openjdk-dcevm-conflicts-fixed/management/jmxremote.access
+	backup = etc/jdk11-openjdk-dcevm-conflicts-fixed/management/jmxremote.password.template
+	backup = etc/jdk11-openjdk-dcevm-conflicts-fixed/sound.properties
 	source = java11-openjdk-dcevm-11.0.7+1.tar.gz::https://github.com/TravaOpenJDK/trava-jdk-11-dcevm/releases/download/dcevm-11.0.7+1/java11-openjdk-dcevm-linux.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
@@ -51,5 +51,5 @@ pkgbase = jdk11-openjdk-dcevm
 	sha256sums = a51ea0dc28347d43175832546454cf13b8c453408c4439df962a157f4af7e81c
 	sha256sums = bba0bbf1cef35199c7e6fc0531142d15c2a1231f4c9d9c292316d0d415eae148
 
-pkgname = jdk11-openjdk-dcevm
+pkgname = jdk11-openjdk-dcevm-conflicts-fixed
 

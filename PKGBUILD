@@ -10,7 +10,7 @@ _tag_ver="${_majorver}.${_minorver}.${_securityver}+${_updatever}"
 pkgver="${_majorver}.${_minorver}.${_securityver}.u${_updatever}"
 pkgrel=1
 
-pkgname='jdk11-openjdk-dcevm'
+pkgname='jdk11-openjdk-dcevm-conflicts-fixed'
 pkgdesc='OpenJDK Java 11 development kit with DCEVM patches (Trava build)'
 arch=('x86_64')
 url='https://github.com/TravaOpenJDK/trava-jdk-11-dcevm'
