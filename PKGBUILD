@@ -5,6 +5,7 @@ pkgver=2021.01.01
 pkgrel=1
 pkgdesc='A recycle bin cli in python 3'
 arch=('any')
+groups=('therepoclub')
 url="https://github.com/TheCynicalTeam/recycle-cli/"
 license=('CC BY-NC-SA 4.0')
 depends=('coreutils' 'gettext' 'python>=3.4')

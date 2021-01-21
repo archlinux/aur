@@ -4,6 +4,7 @@ pkgbase = recycle-cli
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/recycle-cli/
 	arch = any
+	groups = therepoclub
 	license = CC BY-NC-SA 4.0
 	depends = coreutils
 	depends = gettext
