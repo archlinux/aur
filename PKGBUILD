@@ -2,9 +2,9 @@
 # Contributor: Adria Arrufat <adria DOT arrufat+aur AT protonmail DOT ch>
 
 pkgname=file-roller-pantheon
-pkgver=3.28.0+1ubuntu1+r4.4ab5e02aa
+pkgver=3.38.0
 pkgrel=1
-pkgdesc="Archive manipulator for GNOME (with elementary OS patches)"
+pkgdesc="Archive manipulator for Pantheon"
 url="https://gitlab.gnome.org/GNOME/file-roller/"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -13,27 +13,31 @@ makedepends=(yelp-tools git libnautilus-extension meson appstream-glib)
 optdepends=('p7zip: 7z, arj, exe and encrypted zip files support'
             'unrar: better RAR archive support'
             'unace: ACE archive support'
-            'lrzip: lrzip archive support')
+            'lrzip: lrzip archive support'
+            'squashfs-tools: squashfs image support')
 groups=(pantheon)
 provides=(file-roller="${pkgver}")
 conflicts=(file-roller)
-source=("git+https://github.com/elementary/os-patches.git#branch=file-roller-bionic-patched")
-sha256sums=('SKIP')
+_commit=25f9db9770ff5f68aeaffce2e329ef39ae47729d  # tags/3.38.0^0
+source=("git+https://gitlab.gnome.org/GNOME/file-roller.git#commit=$_commit"
+        "contracts.patch")
+sha256sums=('SKIP'
+            'd559e817b16bee842bf0081fd9832e11439b83c8604a035372893c231cfe15f3')
 
-pkgver() {
-    cd "os-patches"
-
-    printf "3.28.0+1ubuntu1+r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+prepare() {
+  cd "file-roller"
+  patch -Np1 < ../contracts.patch
 }
 
 build() {
-    cd "os-patches"
-    [ -d build ] && rm -rf build
-    arch-meson build
-    ninja -C build
+  arch-meson file-roller build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-    cd "os-patches"
-    DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="$pkgdir" meson install -C build
 }

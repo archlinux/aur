@@ -1,0 +1,41 @@
+diff --git a/data/file-roller-compress.contract b/data/file-roller-compress.contract
+new file mode 100644
+index 000000000..8de5396d3
+--- /dev/null
++++ b/data/file-roller-compress.contract
+@@ -0,0 +1,8 @@
++[Contractor Entry]
++Name=Compress
++Icon=add-files-to-archive
++Description=Create a compressed archive with the selected objects
++MimeType=!archive;inode/blockdevice;inode/chardevice;inode/fifo;inode/socket;
++Exec=file-roller --add %U
++Gettext-Domain=file-roller
++
+diff --git a/data/file-roller-extract-here.contract b/data/file-roller-extract-here.contract
+new file mode 100644
+index 000000000..184a6f248
+--- /dev/null
++++ b/data/file-roller-extract-here.contract
+@@ -0,0 +1,7 @@
++[Contractor Entry]
++Name=Extract Here
++Icon=extract-archive
++Description=Extract the contents of the archives in the archive folder and quit the program
++MimeType=application/x-7z-compressed;application/x-7z-compressed-tar;application/x-ace;application/x-alz;application/x-ar;application/x-arj;application/x-bzip;application/x-bzip-compressed-tar;application/x-bzip1;application/x-bzip1-compressed-tar;application/x-cabinet;application/x-cbr;application/x-cbz;application/x-cd-image;application/x-compress;application/x-compressed-tar;application/x-cpio;application/x-deb;application/x-ear;application/x-ms-dos-executable;application/x-gtar;application/x-gzip;application/x-gzpostscript;application/x-java-archive;application/x-lha;application/x-lhz;application/x-lrzip;application/x-lrzip-compressed-tar;application/x-lzip;application/x-lzip-compressed-tar;application/x-lzma;application/x-lzma-compressed-tar;application/x-lzop;application/x-lzop-compressed-tar;application/x-ms-wim;application/x-rar;application/x-rar-compressed;application/x-rpm;application/x-rzip;application/x-tar;application/x-tarz;application/x-stuffit;application/x-war;application/x-xz;application/x-xz-compressed-tar;application/x-zip;application/x-zip-compressed;application/x-zoo;application/zip;
++Exec=file-roller --extract-here %U
++Gettext-Domain=file-roller
+diff --git a/data/meson.build b/data/meson.build
+index e66726ce7..0504bf78a 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -1,5 +1,9 @@
+ po_dir = join_paths(meson.source_root(), 'po')
+ 
++install_data('file-roller-compress.contract', 'file-roller-extract-here.contract',
++ install_dir : join_paths(datadir, 'contractor')
++)
++
+ install_data('org.gnome.FileRoller.gschema.xml',
+   install_dir : join_paths(datadir, 'glib-2.0', 'schemas')
+ )
