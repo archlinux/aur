@@ -2,9 +2,9 @@
 
 pkgname=joycond-git
 pkgver=r93.67abbfe
-pkgrel=1
+pkgrel=2
 pkgdesc='Userspace daemon to combine joy-cons from the hid-joycon kernel driver'
-arch=('any')
+arch=('x86_64' 'aarch64')
 url='https://github.com/DanielOgorchock/joycond'
 license=('GPL3')
 makedepends=('cmake' 'git')
