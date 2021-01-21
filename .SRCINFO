@@ -11,6 +11,7 @@ pkgbase = kopano-webapp-spellchecker-git
 	makedepends = gzip
 	depends = php-enchant
 	depends = kopano-webapp
+	provides = kopano-webapp-spellchecker=2.0.1
 	source = kopano-webapp-spellchecker-git::git+https://stash.kopano.io/scm/kwa/spellchecker.git#branch=master
 	source = kopano-webapp-spellchecker.ini
 	md5sums = SKIP
