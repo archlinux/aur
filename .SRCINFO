@@ -11,6 +11,7 @@ pkgbase = ananicy
 	depends = bash
 	depends = schedtool
 	depends = python
+	optdepends = systemd: systemd service
 	conflicts = ananicy-git
 	backup = etc/ananicy.d/ananicy.conf
 	source = ananicy::git+https://github.com/Nefelim4ag/Ananicy.git#tag=2.2.0

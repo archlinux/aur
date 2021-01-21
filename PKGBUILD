@@ -9,6 +9,7 @@ arch=('any')
 url="https://github.com/Nefelim4ag/Ananicy.git"
 license=('GPL3')
 depends=('bash' 'schedtool' 'python')
+optdepends=('systemd: systemd service')
 makedepends=('git' 'make')
 conflicts=('ananicy-git')
 source=("$pkgname"::"git+https://github.com/Nefelim4ag/Ananicy.git#tag=${pkgver}")
