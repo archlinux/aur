@@ -3,7 +3,7 @@
 
 pkgname=glib
 pkgver=1.2.10
-pkgrel=15
+pkgrel=16
 pkgdesc="Common C routines used by Gtk+ and other libs"
 arch=('i686' 'x86_64' 'armv6h')
 url="http://www.gtk.org/"
@@ -23,6 +23,7 @@ prepare() {
   patch -Np0 -i "${srcdir}/aclocal-fixes.patch"
   patch -Np1 -i "${srcdir}/glib1-autotools.patch"
   sed -i -e 's/ifdef[[:space:]]*__OPTIMIZE__/if 0/' glib.h
+  rm acinclude.m4
 }
 
 build() {
