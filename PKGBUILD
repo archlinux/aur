@@ -1,7 +1,7 @@
 # Maintainer: abdellatif-dev <abdellatif.devlog@gmail.com>
 pkgname=st-abdellatif-git
-pkgver=0.9.5
-pkgrel=6
+pkgver=0.9.9
+pkgrel=1
 pkgdesc="my st build"
 arch=(x86_64)
 url="https://github.com/abdellatif-dev/st-abdellatif.git"
