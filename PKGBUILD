@@ -1,7 +1,7 @@
 # Maintainer: Andreas Kurth <archlinux@akurth.net>
 pkgname='bender'
 pkgver=0.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dependency management tool for hardware design projects"
 arch=('x86_64')
 url="https://github.com/fabianschuiki/${pkgname}"
@@ -11,7 +11,7 @@ makedepends=('rust')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         0001-tests-iss5-Determine-name-of-default-branch.patch)
 sha512sums=('efbaba2e9f58c0ae6cc6747e3d3a2cca4b64c2f48e0a46036e3ce3677df73fc10f16ea90221530e0c732040f509d74233bfb46ff1379316f6ba134a545eb355e'
-            'bd103927b68e0da0feb4bbe043181020699f7bbdc419fda5a51410f7d9eae45255a70580779a9194efffe416f34056d3656fce8201a9ae196a83d71e2b7aa48a')
+            'ed7b0860391af36fd41c8603535c0cafaf42325b905eaed650a0743740aa8b050a174591c147343d68da71b9e73be1cbb7fcf7c52738027396d6dca33d979fcc')
 
 prepare() {
     cd "$srcdir/${pkgname}-${pkgver}"
