@@ -1,6 +1,6 @@
 pkgbase = pulse-autoconf
 	pkgdesc = PulseAudio server dynamic configuration daemon
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://eomanis.duckdns.org/permshare/pulse-autoconf/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = pulse-autoconf
 	depends = grep
 	depends = libpulse
 	depends = sed
-	source = https://eomanis.duckdns.org/permshare/pulse-autoconf/pulse-autoconf-0.0.4.tar.gz
-	sha384sums = 371ee5dee0ac387df44afdc49b23a840f7ed97e573d10904ccf0b21de998b044fa77a44255b31fdced6d024151861bb3
+	source = https://eomanis.duckdns.org/permshare/pulse-autoconf/pulse-autoconf-0.0.5.tar.gz
+	sha384sums = 93713c9ab5d4c649fc7aaf0c98fac5b6bdc10051821002eb3c183e270f91945ba334c3ba02c206fbe2484c2428f5dbb6
 
 pkgname = pulse-autoconf
 
