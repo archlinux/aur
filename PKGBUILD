@@ -14,6 +14,7 @@ provides=('gsmartcontrol')
 depends=('smartmontools' 'gtkmm3' 'xorg-xmessage' 'hicolor-icon-theme')
 optdepends=('polkit: to run gsmartcontrol directly from menu'
             'xterm: to update the drive database')
+makedepends=('subversion')
 install=${pkgname}.install
 source=(${pkgname}::svn+https://svn.code.sf.net/p/gsmartcontrol/code/trunk
         org.archlinux.pkexec.gsmartcontrol.policy

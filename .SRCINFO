@@ -7,6 +7,7 @@ pkgbase = gsmartcontrol-svn
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = subversion
 	depends = smartmontools
 	depends = gtkmm3
 	depends = xorg-xmessage
