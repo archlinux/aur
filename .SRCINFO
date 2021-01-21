@@ -1,0 +1,23 @@
+pkgbase = python-xc-fasm-git
+	pkgdesc = Library to convert FASM files to bitstream
+	pkgver = r72.e12f313
+	pkgrel = 1
+	url = https://github.com/SymbiFlow/xc-fasm
+	arch = any
+	license = ISC
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-intervaltree
+	depends = python-simplejson
+	depends = python-textx
+	depends = python-prjxray
+	depends = python-fasm
+	provides = python-xc-fasm=r72.e12f313
+	conflicts = python-xc-fasm
+	source = git+https://github.com/SymbiFlow/xc-fasm.git
+	sha256sums = SKIP
+
+pkgname = python-xc-fasm-git
+
