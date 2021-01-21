@@ -1,4 +1,4 @@
-# Maintainer: Jamie Quigley <https://keybase.io/sciencentistguy>
+# Maintainer: Jamie Quigley <jamie at quigley dot xyz>
 
 pkgname=ultra-flat-icons-orange
 pkgver=1.3.2
@@ -8,7 +8,7 @@ arch=('any')
 url="http://www.noobslab.com/2015/01/make-linux-more-elegant-with-ultra-flat.html"
 license=('CCPL')
 depends=()
-source=(https://launchpad.net/~noobslab/+archive/ubuntu/icons/+files/ultra-flat-icons-orange_1.3.2~trusty~Noobslab.com_all.deb)
+source=("https://launchpad.net/~noobslab/+archive/ubuntu/icons/+files/ultra-flat-icons-orange_$pkgver~trusty~Noobslab.com_all.deb")
 sha1sums=('e6203f24aafb1bfa2980bf3d381218b574c45fdc')
 
 package() {
