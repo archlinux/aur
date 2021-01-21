@@ -10,6 +10,7 @@ pkgbase = kopano-webapp-mdm-git
 	makedepends = git
 	makedepends = gzip
 	depends = kopano-webapp
+	provides = kopano-webapp-mdm=3.3.0
 	source = kopano-webapp-mdm-git::git+https://stash.kopano.io/scm/kwa/mobile-device-management.git#branch=master
 	source = kopano-webapp-mdm.ini
 	md5sums = SKIP
