@@ -33,7 +33,7 @@ check() {
     ## Change Directory ##
     cd "$srcdir/$pkgname"
 
-    ## Test ##
+    ## Run pytest ##
     pytest
 }
 
