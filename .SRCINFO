@@ -1,7 +1,7 @@
 pkgbase = qt4-private-headers-dev
 	pkgdesc = Qt4 private headers for development
 	pkgver = 4.8.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.qt.io
 	arch = any
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = qt4-private-headers-dev
 	conflicts = qt-private-headers
 	conflicts = qt4-private-headers
 	replaces = qt-private-headers
-	source = https://download.qt.io/archive/qt/4.8/4.8.7/qt-everywhere-opensource-src-4.8.7.tar.gz
+	source = https://ftp.desolve.ru/ftp/viktor/qt4/qt-everywhere-opensource-src-4.8.7.tar.gz
 	sha256sums = e2882295097e47fe089f8ac741a95fef47e0a73a3f3cdf21b56990638f626ea0
 
 pkgname = qt4-private-headers-dev
