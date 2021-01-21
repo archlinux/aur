@@ -2,7 +2,7 @@
 
 
 pkgname=winegame
-pkgver=0.5.7.1
+pkgver=0.5.7.2
 pkgrel=1
 pkgdesc="开源游戏平台，帮您在uos/deepin系统中运行windows游戏"
 arch=('x86_64')
