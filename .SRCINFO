@@ -1,7 +1,7 @@
 pkgbase = qemu-nonbroken
 	pkgdesc = A generic and open source machine emulator and virtualizer
 	pkgver = 5.2.0
-	pkgrel = 99
+	pkgrel = 100
 	url = https://wiki.qemu.org/
 	arch = x86_64
 	license = GPL2
@@ -53,9 +53,9 @@ pkgbase = qemu-nonbroken
 	sha512sums = 8721068fb968dbae62ceff71aa46eb4c2452c7fde95b87396b439f2f927ea84d2ee2c512264a9f28a5ccaf3096aacce052cebf209aaffd62a201b5bafb512002
 
 pkgname = qemu-nonbroken
-	optdepends = qemu-arch-extra: extra architectures support
-	provides = qemu-headless
-	conflicts = qemu-headless
+	optdepends = qemu-nonbroken-arch-extra: extra architectures support
+	provides = qemu-nonbroken-headless
+	conflicts = qemu-nonbroken-headless
 	replaces = qemu-kvm
 
 pkgname = qemu-nonbroken-headless
@@ -80,18 +80,18 @@ pkgname = qemu-nonbroken-headless
 	depends = liburing
 	depends = ndctl
 	depends = dtc
-	optdepends = qemu-headless-arch-extra: extra architectures support
+	optdepends = qemu-nonebroken-headless-arch-extra: extra architectures support
 
 pkgname = qemu-nonbroken-arch-extra
 	pkgdesc = QEMU for foreign architectures
-	depends = qemu
-	provides = qemu-headless-arch-extra
-	conflicts = qemu-headless-arch-extra
+	depends = qemu-nonbroken
+	provides = qemu-nonbroken-headless-arch-extra
+	conflicts = qemu-nonbroken-headless-arch-extra
 	options = !strip
 
 pkgname = qemu-nonbroken-headless-arch-extra
 	pkgdesc = QEMU without GUI, for foreign architectures
-	depends = qemu-headless
+	depends = qemu-nonbroken-headless
 	options = !strip
 
 pkgname = qemu-nonbroken-block-iscsi
