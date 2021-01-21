@@ -10,7 +10,7 @@ license=('CC BY-NC-SA 4.0')
 depends=('grep' 'sed' 'bash' 'curl' 'pacman' 'jshon' 'expac')
 provides=($pkgname)
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('2dc2ec78a0fc79f0200b0df2b257c8defc4fb820dd6fb176cab406884f7ec7e8')
+sha256sums=('6a53e502a8ea2a0dd2d858e58926fba0342d9a5112add845e759120de61ec202')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
