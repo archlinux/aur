@@ -7,6 +7,7 @@ pkgbase = cxxopts-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake
+	makedepends = ninja
 	source = cxxopts-git::git+https://github.com/jarro2783/cxxopts.git
 	md5sums = SKIP
 

@@ -9,7 +9,7 @@ pkgdesc="Lightweight C++ command line option parser"
 arch=(any)
 url="https://github.com/jarro2783/cxxopts"
 license=(MIT)
-makedepends=(git cmake)
+makedepends=(git cmake ninja)
 source=(${pkgname}::git+https://github.com/jarro2783/cxxopts.git${_fragment})
 md5sums=(SKIP) #generate with 'makepkg -g'
 
@@ -21,14 +21,14 @@ build() {
   cmake \
   -S "$pkgname" \
   -B build \
+  -G Ninja \
   -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  ninja -C build ${MAKEFLAGS:--j1}
 }
 
 package() {
-  cd ${pkgname}/build
-  make DESTDIR="$pkgdir/" install
-  install -D -m644 "../LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  DESTDIR="$pkgdir/" ninja -C build install
+  install -D -m644 "$pkgname"/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
