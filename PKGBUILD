@@ -3,7 +3,9 @@
 # Contributar: tleydxdy https://aur.archlinux.org/packages/pulseaudio-modules-bt/#comment-786420
 
 get_pulseaudio_version() {
-    printf "$(pkg-config libpulse --modversion|sed 's/[^0-9.]*\([0-9.]*\).*/\1/')"
+    #printf "$(pkg-config libpulse --modversion|sed 's/[^0-9.]*\([0-9.]*\).*/\1/')"
+    #printf "$(pacman -Q "$(basename "${pulseaudio_pkgname}")" | cut -d ' ' -f 2 | cut -d '-' -f 1)"
+    printf "$(pulseaudio --version | cut -d " " -f 2)"
 }
 
 #-- PulseAudio --#
@@ -13,7 +15,7 @@ pulseaudio_ver="$(get_pulseaudio_version)"
 pkgname="pulseaudio-modules-bt"
 module_ver="1.4"
 pkgver="${module_ver}_${pulseaudio_ver}"
-pkgrel="1"
+pkgrel="5"
 pkgdesc="PulseAudio Bluetooth modules with SBC, AAC, APTX, APTX-HD, Sony LDAC (A2DP codec) support"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/EHfive/pulseaudio-modules-bt"
