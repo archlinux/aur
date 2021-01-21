@@ -1,0 +1,5 @@
+post_install() {
+	echo "To enable:"
+	echo "\$ sudo sv up ananicy"
+	echo "Configs in /etc/ananicy.d/"
+}

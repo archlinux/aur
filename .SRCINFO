@@ -1,0 +1,24 @@
+pkgbase = ananicy-runit
+	pkgdesc = Ananicy - is Another auto nice daemon, with community rules support
+	pkgver = 2.2.0.r55.g5559e01
+	pkgrel = 1
+	url = https://github.com/Nefelim4ag/Ananicy
+	install = ananicy-runit.install
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = make
+	depends = ananicy
+	depends = runit
+	depends = bash
+	depends = schedtool
+	source = ananicy.finish
+	source = ananicy.run
+	source = ananicy.start
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = ananicy-runit
+	install = ananicy-runit.install
+
