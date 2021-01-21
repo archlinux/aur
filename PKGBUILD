@@ -11,12 +11,12 @@ url="https://github.com/sdushantha/${_name}"
 license=('MIT')
 depends=('bash'
 	'imagemagick'
-	'colorpicker-ym1234-git'
 	'feh'
 	)
 makedepends=('git')
 optdepends=('mpv: alternative image viewer'
 			'sxiv: alternate image viewer'
+			'colorpicker-ym1234-git: for X11 support'
 			'wl-clipboard: for wayland support'
 			'grim: for wayland support'
 			'slurp: for wayland support'
