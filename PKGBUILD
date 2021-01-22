@@ -1,21 +1,20 @@
-# Maintainer: archlinux.info:tdy
+# Maintainer: Tim Yang <protonmail = timdyang>
 # Contributor: quomoow <quomoow@gmail.com>
 
 pkgname=pcmanfm-git
-pkgver=r1493.4555839
+pkgver=r1660.be8c60d
 pkgrel=1
-pkgdesc="A fast, lightweight, yet feature-rich file manager with tabbed browsing"
+pkgdesc="Extremely fast and lightweight file manager"
 arch=(i686 x86_64)
-url=http://pcmanfm.sourceforge.net
+url=https://lxde.org/
 license=(GPL)
-depends=(libfm-gtk2)
+depends=(libfm-gtk2 lxmenu-data)
 makedepends=(git intltool)
-optdepends=('gnome-menus: app menu and "Open with" dialog'
-            'lxmenu-data: app menu and "Open with" dialog'
-            'gvfs: mount local and remote drives')
-provides=(pcmanfm)
-conflicts=(pcmanfm)
-source=($pkgname::git+git://${pkgname/-/.}.sourceforge.net/gitroot/pcmanfm/pcmanfm)
+optdepends=('gvfs: mount local and remote drives'
+            'xarchiver: manage archives')
+provides=(${pkgname%-*})
+conflicts=(${pkgname%-*})
+source=($pkgname::git+https://github.com/lxde/${pkgname%-*}.git)
 sha256sums=(SKIP)
 
 pkgver() {
