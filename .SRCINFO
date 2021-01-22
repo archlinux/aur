@@ -1,6 +1,6 @@
 pkgbase = atlassian-jira
 	pkgdesc = Bug tracking, issue tracking and project management software
-	pkgver = 8.14.1
+	pkgver = 8.15.0
 	pkgrel = 1
 	url = https://www.atlassian.com/software/jira
 	install = jira.install
@@ -11,10 +11,10 @@ pkgbase = atlassian-jira
 	conflicts = atlassian-jira-lts
 	backup = etc/conf.d/jira
 	backup = etc/webapps/atlassian-jira/server.xml
-	source = https://product-downloads.atlassian.com/software/jira/downloads/atlassian-jira-core-8.14.1.tar.gz
+	source = https://product-downloads.atlassian.com/software/jira/downloads/atlassian-jira-core-8.15.0.tar.gz
 	source = jira.conf.d
 	source = jira.service
-	sha256sums = 05570ea34f09b6a5d084b7e895bd5e9773623fb744fbae54f7f4940b85ff4579
+	sha256sums = 057df96c53034191d0ad2a703453403cc1d319773b826d136ffa5df411232c69
 	sha256sums = 457fd1c5bcedc81e64f71cb890b600944a5be7980716b7f49f9a8c810565dbfb
 	sha256sums = d61181154183301a551b1ae85a7d42c7d60ae2c36e545d2ab8ef5cc969def717
 
