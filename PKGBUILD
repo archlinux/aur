@@ -13,7 +13,7 @@ pkgdesc="A powerful and productive integrated development environment (IDE) for 
 arch=('i686' 'x86_64')
 url="https://www.rstudio.com/products/rstudio/"
 license=('AGPL3')
-depends=('r>=3.0.1' boost-libs qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns postgresql-libs sqlite3 soci clang hunspell-en_US mathjax2 pandoc)
+depends=('r>=3.0.1' boost-libs qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns postgresql-libs sqlite3 soci clang hunspell-en_US mathjax2 pandoc yaml-cpp)
 makedepends=(git 'cmake>=3.1.0' boost desktop-file-utils jdk8-openjdk apache-ant unzip openssl libcups pam patchelf wget yarn)
 optdepends=('git: for git support'
             'subversion: for subversion support'
@@ -75,6 +75,7 @@ build() {
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio \
           -DRSTUDIO_USE_SYSTEM_BOOST=yes \
+          -DRSTUDIO_USE_SYSTEM_YAML_CPP=yes \
           -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake \
           -DBoost_NO_BOOST_CMAKE=ON \
           -DRSTUDIO_USE_SYSTEM_SOCI=yes \

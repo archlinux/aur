@@ -32,6 +32,7 @@ pkgbase = rstudio-desktop-git
 	depends = hunspell-en_US
 	depends = mathjax2
 	depends = pandoc
+	depends = yaml-cpp
 	optdepends = git: for git support
 	optdepends = subversion: for subversion support
 	optdepends = openssh-askpass: for a git ssh access
