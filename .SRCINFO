@@ -1,6 +1,6 @@
 pkgbase = mercury
 	pkgdesc = The mercury language compiler.
-	pkgver = 20.06
+	pkgver = 20.06.1
 	pkgrel = 1
 	url = http://www.mercurylang.org/
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = mercury
 	makedepends = bison
 	depends = gcc
 	depends = make
-	source = http://dl.mercurylang.org/release/mercury-srcdist-20.06.tar.gz
-	sha256sums = b9c6965d41af49b4218d2444440c4860630d6f50c18dc6f1f4f8374d114f79be
+	source = http://dl.mercurylang.org/release/mercury-srcdist-20.06.1.tar.gz
+	sha256sums = ef093ae81424c4f3fe696eff9aefb5fb66899e11bb17ae0326adfb70d09c1c1f
 
 pkgname = mercury
 
