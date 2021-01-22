@@ -1,6 +1,6 @@
 # Maintainer: Jeff Wright <jeff@teamjk.page>
 pkgname=tab-rs
-pkgver=0.5.5
+pkgver=0.5.6
 epoch=1
 pkgrel=1
 pkgdesc="The intuitive config-driven terminal multiplexer"
@@ -34,4 +34,4 @@ package() {
 	install -Dm 644 tab/src/completions/zsh/_tab $pkgdir/usr/share/zsh/site-functions/_tab
 	install -Dm 644 tab/src/completions/fish/tab.fish $pkgdir/usr/share/fish/vendor_completions.d/tab.fish
 }
-md5sums=('769d8f98c0381fcc268d9029940a5682')
+md5sums=('e8d0d3bb18af8d0c8ab9fea8e2578597')
