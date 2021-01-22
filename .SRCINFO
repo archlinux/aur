@@ -1,0 +1,23 @@
+pkgbase = xschem
+	pkgdesc = Schematic editor VLSI/ASIC/analog custom designs
+	pkgver = r523.ac99227
+	pkgrel = 1
+	url = http://github.com/StefanSchippers/xschem
+	arch = any
+	license = GPL
+	makedepends = flex
+	makedepends = bison
+	makedepends = git
+	depends = libx11
+	depends = libxrender
+	depends = libxcb
+	depends = cairo
+	depends = tcl
+	depends = tk
+	depends = libxpm
+	depends = gawk
+	source = git+https://github.com/StefanSchippers/xschem.git
+	sha256sums = SKIP
+
+pkgname = xschem
+
