@@ -2,7 +2,7 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgbase=linux-rt
-pkgver=5.10.4.22.arch1
+pkgver=5.10.8.24.arch1
 pkgrel=1
 pkgdesc='Linux RT'
 arch=('x86_64')
@@ -16,9 +16,9 @@ source=(
   config
 )
 sha512sums=('SKIP'
-            'f40218a43662c3cfbfaa9b9070aeae8b0dcf8613cb07e1171c427446f1681d1c9168d9b93ea4bb5df11d5c38ade17ca60b334aaf776e504a6f467cfcc6f220f6')
+            '8de19c1212a546dffdfbd92dfaf6cf767a0281adabbac62f9bda103056ab12b94cae476f62177818692e47f0466bbd1e4f8e5fb64b5cc47a6df47ff11ed7ac53')
 b2sums=('SKIP'
-        '42edc375c1323545e5fa2622855e04ffd3d0a8149beb2c239a684f2679db1c1fe4831bfaf5e678481520a9db3174f87c452eaa42ba7a8c6fad4a7d8156a0b4dd')
+        'e3b6538bbcfb5cafb842e2ddd6f53d92953901a9d9790b52ed0916ba60803564e2cfa0305d74ec0e5773eaeedb25c01630183613ee38e0931fc0c43ffef050c5')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@kernel.org>
   '64254695FFF0AA4466CC19E67B96E8162A8CF5D1'  # Sebastian Andrzej Siewior
