@@ -16,9 +16,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
-validpgpkeys=('031F7104E932F7BD7416E7F6D2845E1305D6E801' # @ohfp
-              '9D7008F8DFCD21508174954A3740FE9FC5772203' # @shreyasminocha
-              )
+validpgpkeys=('031F7104E932F7BD7416E7F6D2845E1305D6E801')
 options=(!emptydirs)
 
 _uploadh_aarch64='9c018ee028e864b0a5581fe440421d99'
