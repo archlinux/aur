@@ -9,6 +9,7 @@ pkgbase = fceux-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = make
+	makedepends = pkgconf
 	makedepends = mesa-libgl
 	makedepends = glu
 	depends = sdl2
