@@ -9,7 +9,7 @@ pkgbase = dd4hep
 	makedepends = cmake
 	depends = boost-libs
 	depends = root
-	source = https://github.com/AIDASoft//archive/v01-15.tar.gz
+	source = https://github.com/AIDASoft/dd4hep/archive/v01-15.tar.gz
 	md5sums = 6e28f8ddc798522ede04644fc45209bb
 
 pkgname = dd4hep
