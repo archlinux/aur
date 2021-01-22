@@ -2,4 +2,8 @@ pkg/
 src/
 marvin-*-any.pkg.tar.xz
 marvin_linux_*.rpm
+<<<<<<< HEAD
 *.pkg.tar.*
+=======
+*.zst
+>>>>>>> 3e446f8f4933ccd1d24c7be513a1a8819572ea0a
