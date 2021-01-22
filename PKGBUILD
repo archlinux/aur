@@ -66,13 +66,12 @@ prepare() {
     cd "${srcdir}/${_gitname}/src/gwt/panmirror/src/editor"
     yarn config set ignore-engines true
     yarn install
-
-    cd "${srcdir}/${_gitname}/dependencies/common"
-    msg "Downloading and installing R packages..."
-    bash install-packages
 }
 
 build() {
+    msg "Downloading and installing R packages..."
+    bash "${srcdir}/${_gitname}"/dependencies/common/install-packages
+
     export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:${PATH}
 
     cmake -S "${srcdir}/${_gitname}" -B build \
