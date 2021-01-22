@@ -1,0 +1,15 @@
+pkgbase = shelby-git
+	pkgdesc = A fast, lightweight, minimal, shell prompt written in Go
+	pkgver = r139.281761c
+	pkgrel = 1
+	url = https://github.com/athul/shelby
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	provides = shelby
+	conflicts = shelby-bin
+	source = git+https://github.com/athul/shelby.git
+	sha256sums = SKIP
+
+pkgname = shelby-git
+
