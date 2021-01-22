@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=ipxe-git
-pkgver=1.21.1.r0.g988d2c13
+pkgver=1.21.1.r16.ga2a6618d
 pkgrel=1
 pkgdesc='iPXE open source boot firmware - git checkout'
 arch=('any')
@@ -46,9 +46,6 @@ prepare() {
 	# ArchLinux branding
 	patch -Np2 < "${srcdir}/ipxe-0002-banner.patch"
 
-	# ISO image with EFI support
-	patch -Np2 < "${srcdir}/ipxe-0003-efi-iso.patch"
-
 	# change menu colors
 	sed -i "/COLOR_[A-Z]*_BG/s/COLOR_BLUE/COLOR_BLACK/" config/colour.h
 
@@ -89,9 +86,12 @@ build() {
 	# EFI
 	make bin-i386-efi/ipxe.efi bin-x86_64-efi/ipxe.efi
 
-	# ipxe.liso and ipxe.eiso
-	# build after EFI!
-	make bin/ipxe.liso bin/ipxe.eiso
+	# hybrid image
+	./util/genfsimg \
+		-o bin/ipxe-hybrid.iso \
+		bin-x86_64-efi/ipxe.efi \
+		bin-i386-efi/ipxe.efi \
+		bin/ipxe.lkrn
 }
 
 package() {
@@ -112,8 +112,7 @@ package() {
 	install -D -m0644 bin/ipxe.dsk ${pkgdir}/usr/share/ipxe/ipxe.dsk
 	install -D -m0644 bin/ipxe.usb ${pkgdir}/usr/share/ipxe/ipxe.usb
 	install -D -m0644 bin/ipxe.iso ${pkgdir}/usr/share/ipxe/ipxe.iso
-	install -D -m0644 bin/ipxe.liso ${pkgdir}/usr/share/ipxe/ipxe-legacy.iso
-	install -D -m0644 bin/ipxe.eiso ${pkgdir}/usr/share/ipxe/ipxe-efi.iso
+	install -D -m0644 bin/ipxe-hybrid.iso ${pkgdir}/usr/share/ipxe/ipxe-hybrid.iso
 
 	# iPXE UNDI-only targets
 	install -D -m0644 bin/undionly.kpxe ${pkgdir}/usr/lib/ipxe/undi.kpxe
