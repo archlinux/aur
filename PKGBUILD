@@ -4,7 +4,7 @@
 pkgname=deal-ii
 _realname=dealii
 pkgver=9.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An Open Source Finite Element Differential Equations Analysis Library"
 arch=("i686" "x86_64")
 url="http://www.dealii.org/"
@@ -42,9 +42,12 @@ optdepends=(
       )
 makedepends=('cmake')
 install=deal-ii.install
-source=(https://github.com/dealii/dealii/releases/download/v$pkgver/${_realname}-$pkgver.tar.gz)
-sha1sums=('fff66749d7e7e8baf569e5da5a42f93e99424a86')
-
+source=(https://github.com/dealii/dealii/releases/download/v$pkgver/${_realname}-$pkgver.tar.gz
+        0001-Add-a-quick-check-for-matching-boost-versions.patch
+        0001-Added-missing-header-for-boost-1.75.0.patch)
+sha1sums=('fff66749d7e7e8baf569e5da5a42f93e99424a86'
+          'a2e5ab873e623fc20cf2d38657047c6d64a4b471'
+          '0c8d0297c33ad3474b6c347cf192bc2d68d29635')
 # where to install deal.II: change to something else (e.g., /opt/deal.II/)
 # if desired.
 installation_prefix=/usr

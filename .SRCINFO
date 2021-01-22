@@ -1,7 +1,7 @@
 pkgbase = deal-ii
 	pkgdesc = An Open Source Finite Element Differential Equations Analysis Library
 	pkgver = 9.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.dealii.org/
 	install = deal-ii.install
 	arch = i686
@@ -32,6 +32,8 @@ pkgbase = deal-ii
 	optdepends = suitesparse: A collection of sparse matrix libraries
 	optdepends = zlib: Compression library implementing the deflate compression method found in gzip and PKZIP
 	source = https://github.com/dealii/dealii/releases/download/v9.2.0/dealii-9.2.0.tar.gz
+	source = 0001-Add-a-quick-check-for-matching-boost-versions.patch
+	source = 0001-Added-missing-header-for-boost-1.75.0.patch
 	sha1sums = fff66749d7e7e8baf569e5da5a42f93e99424a86
 
 pkgname = deal-ii
