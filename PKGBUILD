@@ -3,7 +3,7 @@
 _pkgname=red-discordbot
 pkgname="${_pkgname}-git"
 pkgver=3.4.5.r25.g7630e2482
-pkgrel=1
+pkgrel=2
 pkgdesc="Red - A fully customizable Discord bot"
 arch=(any)
 url="https://github.com/Cog-Creators/Red-DiscordBot"
@@ -29,7 +29,7 @@ source=("${_pkgname}::git+$url"
 sha256sums=('SKIP'
             '0cd709fe49761f47c77b2202ec7d11ae8e7cd5a3b93db5a3249d69ed81b5b49b'
             'c6e35e526e63c26e9f183cd37fdfeea10a7ebcc3ea13edd6fbbad51936897158'
-            'e7bab658735c24078b390affba9b19f26901db50ad2d79a4bf8c0a9928466a0c'
+            '62b30643e8e746b0cb07fea332aee6f33d8fcc2fccdbca8645176f175247cae1'
             '01b1c7827328d8940c37d240367ab72efdc346596305cb21cb6d2cba12a59391')
 
 pkgver() {

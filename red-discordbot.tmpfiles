@@ -1,2 +1,2 @@
-d /etc/xdg/Red-DiscordBot/ 0755 redbot redbot
+d /etc/xdg/Red-DiscordBot/ 0700 redbot redbot
 d /var/lib/Red-DiscordBot/ 0700 redbot redbot
