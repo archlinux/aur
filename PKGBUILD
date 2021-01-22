@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://gitlab.com/menelkir/g15composer"
 license=('GPL')
 depends=('g15daemon')
-source=(https://gitlab.com/menelkir/g15composer/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2)
+source=(https://gitlab.com/menelkir/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2)
 sha512sums=('67f2b55d499099e61746c0530f72af734aea192e070b46e9dce2bd84dd8956553d5e8f8b1dfbf3c9bb0ed6151dd33d6cd04cc174f37c1a2495b5d7960035f0d7')
 
 build() {
