@@ -1,7 +1,7 @@
 pkgbase = sonic2013-git
 	pkgdesc = A full decompilation of Sonic 1 & 2 (2013).
 	pkgver = r191.1046e22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Rubberduckycooly/Sonic-1-2-2013-Decompilation
 	install = sonic2013.install
 	arch = any
@@ -9,7 +9,6 @@ pkgbase = sonic2013-git
 	makedepends = git
 	depends = sdl2
 	depends = libogg
-	depends = libtheora
 	depends = libvorbis
 	provides = sonic2013
 	source = git+https://github.com/Rubberduckycooly/Sonic-1-2-2013-Decompilation.git
