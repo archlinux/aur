@@ -65,7 +65,7 @@ sha256sums=('88be8ce4119b46fa26f4b0385b5fa0f672a946c6b2e5aacfc4378dc4a4e0ade3'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'e5a60a4c9d0544d3321cc241b4c7bd4adb0a885f090c6c6c21581eac8e3b4ba9'
-            'd888be0e297bb768ba0bac99616c1180377b7030ac1b8fcb4436a39aca7c7acf'
+            'f206177b78f42bd2b5e28bf13ffacf9e555914ca6f7b65f0e15781712825c0b8'
             '1e2913e21c491d546e05f9b4edf5a6c7a22d89ed0b36ef692ca6272bcd5faec6')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -95,7 +95,7 @@ _unwanted_bundled_libs=(
 
 # Add depends if user wants a release with custom cflags and system libs
 if [ "$COMPONENT" = "4" ]; then
-  echo "Build with system libs is disabled for now" && exit 1
+  #echo "Build with system libs is disabled for now" && exit 1
   depends+=('libpulse' 'pciutils')
   depends+=(${_system_libs[@]})
   makedepends+=('lld' 'libva' 'libpipewire02' 'python2-xcb-proto')
