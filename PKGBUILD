@@ -2,7 +2,7 @@
 # Contributor: portaloffreedom
 
 _cranname=repr
-_cranver=1.1.0
+_cranver=1.1.3
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -11,9 +11,9 @@ arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL3)
 depends=('r>=3.0.1' r-htmltools r-jsonlite 'r-pillar>=1.4.0' r-base64enc)
-optdepends=(r-highr r-cairo r-stringr r-testthat r-diffobj r-leaflet)
+optdepends=(r-highr r-cairo r-stringr r-testthat r-leaflet)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('e804cd097ad2cad848cf93d5cdaea279')
+sha256sums=('531b43d413b51cbc96e3b9162493c975d9395bb9532e500ad51cd99b36a53562')
 
 build() {
   cd "${srcdir}"

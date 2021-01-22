@@ -1,6 +1,6 @@
 pkgbase = r-repr
 	pkgdesc = Serializable Representations
-	pkgver = 1.1.0
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=repr
 	arch = any
@@ -14,10 +14,9 @@ pkgbase = r-repr
 	optdepends = r-cairo
 	optdepends = r-stringr
 	optdepends = r-testthat
-	optdepends = r-diffobj
 	optdepends = r-leaflet
-	source = https://cran.r-project.org/src/contrib/repr_1.1.0.tar.gz
-	md5sums = e804cd097ad2cad848cf93d5cdaea279
+	source = https://cran.r-project.org/src/contrib/repr_1.1.3.tar.gz
+	sha256sums = 531b43d413b51cbc96e3b9162493c975d9395bb9532e500ad51cd99b36a53562
 
 pkgname = r-repr
 
