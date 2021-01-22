@@ -1,0 +1,17 @@
+Description: Establish subdivisions parameter to 5 
+            (it consumes less resources).
+Author: Innocent De Marchi <tangram.peces@gmail.com>
+Last-Update: 2017-11-21
+Forwarded: yes
+
+--- a/parameters_object.cpp
++++ b/parameters_object.cpp
+@@ -22,7 +22,7 @@
+ ParametersObject::ParametersObject()
+   :object_type(ObjectTypePlanet)
+   ,seed(time(0))
+-  ,subdivisions(8)
++  ,subdivisions(5)
+ {}
+ 
+ ParametersObject::~ParametersObject()

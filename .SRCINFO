@@ -1,20 +1,25 @@
 pkgbase = fracplanet
 	pkgdesc = Fractal planet and terrain generator
 	pkgver = 0.5.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://sourceforge.net/projects/fracplanet/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = boost
-	depends = qt4
+	depends = boost-libs
+	depends = qt5-base
 	depends = glu
 	source = http://downloads.sourceforge.net/project/fracplanet/fracplanet/0.5.1/fracplanet-0.5.1.tar.gz
 	source = fracplanet.png
 	source = fracplanet.desktop
+	source = make-subdivisions-param.patch
+	source = make-configure-file.patch
 	sha256sums = 435dd07e1798f810280260d09d2ee85e870eb466411e49b859eb1bef6f336ade
 	sha256sums = 872c4c33c1db66b6ec606ab753cc02a7459d3f0188427d12d6374103d4ecef6f
 	sha256sums = a4b58ebcd5110b6ff99720aa166db0e3ca7e530f744659e1784cb3f349584ff0
+	sha256sums = 8884df0c7fe9fa5ac5296054e3ee510cd05c36b2e1b22b8c037a8a02e0141034
+	sha256sums = 6be2c58b9f1365b91e1d958313c27b84c4782f585820cb3e61a7f5d7e822dd21
 
 pkgname = fracplanet
 
