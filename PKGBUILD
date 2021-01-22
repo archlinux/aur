@@ -2,8 +2,8 @@
 
 _pkgname=ydotool
 pkgname=$_pkgname-git
-pkgver=v0.2.0.r7.gce27b46
-pkgrel=2
+pkgver=v0.2.0.r11.gb1d041f
+pkgrel=1
 pkgdesc="Generic command-line automation tool (no X!), works on Wayland"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'pentium4')
 depends=('boost-libs')
@@ -28,21 +28,13 @@ build() {
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+    -DCMAKE_INSTALL_MANDIR=/usr/share/man \
     -DCMAKE_BUILD_TYPE=Release \
     -DSTATIC_BUILD=0
   make
-
-  cd manpage
-  gzip ydotool.1 ydotoold.8
 }
 
 package() {
   cd "$srcdir/${_pkgname}"
-  install -Dm644 Daemon/ydotool.service "$pkgdir/usr/lib/systemd/user/ydotool.service"
-
-  cd build
-  install -Dm755 ydotool "$pkgdir/usr/bin/ydotool"
-  install -Dm755 ydotoold "$pkgdir/usr/bin/ydotoold"
-  install -Dm644 manpage/ydotool.1.gz "$pkgdir/usr/share/man/man1/ydotool.1.gz"
-  install -Dm644 manpage/ydotoold.8.gz "$pkgdir/usr/share/man/man8/ydotoold.8.gz"
+  make DESTDIR="$pkgdir" install -C build/
 }
