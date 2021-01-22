@@ -1,10 +1,10 @@
 # Maintainer: Mikołaj "D1SoveR" Banasik <d1sover@gmail.com>
 pkgname='luxtorpeda-git'
-pkgver=0.1.0.r143.e770a4f
+pkgver=23.0.0.r230.9c75226
 pkgrel=1
 pkgdesc='Steam Play compatibility tool to run games using native Linux engines'
 arch=('x86_64' 'i686')
-url='https://luxtorpeda.gitlab.io/'
+url='https://github.com/luxtorpeda-dev/luxtorpeda'
 license=('GPL2')
 depends=('openssl' 'xz')
 makedepends=('git' 'rust')
@@ -12,12 +12,12 @@ optdepends=('steam: The Steam client')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
-source=('git+https://github.com/dreamer/luxtorpeda.git'
-        'size-optimisations.patch'
-        'reproducible-build.patch')
+source=("git+${url}.git"
+        'reproducible-build.patch'
+        'size-optimisations.patch')
 sha256sums=('SKIP'
-            '6161875cd2fb3d98881c323872f74c8fbc730287273c0d4574fd1ac1f67388db'
-            'e97cf95dedcf60c97edb3a693052964e4ce6da795631ca5c9f04182462f67895')
+            'e97cf95dedcf60c97edb3a693052964e4ce6da795631ca5c9f04182462f67895'
+            'e6ed4eebc62d1cf4c6b489cfd47b94cd2d0bec59ca4a60cb0ae50632a1202852')
 
 pkgver() {
   cd "${pkgname%-git}"

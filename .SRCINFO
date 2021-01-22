@@ -1,8 +1,8 @@
 pkgbase = luxtorpeda-git
 	pkgdesc = Steam Play compatibility tool to run games using native Linux engines
-	pkgver = 0.1.0.r143.e770a4f
+	pkgver = 23.0.0.r230.9c75226
 	pkgrel = 1
-	url = https://luxtorpeda.gitlab.io/
+	url = https://github.com/luxtorpeda-dev/luxtorpeda
 	arch = x86_64
 	arch = i686
 	license = GPL2
@@ -13,12 +13,12 @@ pkgbase = luxtorpeda-git
 	optdepends = steam: The Steam client
 	provides = luxtorpeda
 	conflicts = luxtorpeda
-	source = git+https://github.com/dreamer/luxtorpeda.git
-	source = size-optimisations.patch
+	source = git+https://github.com/luxtorpeda-dev/luxtorpeda.git
 	source = reproducible-build.patch
+	source = size-optimisations.patch
 	sha256sums = SKIP
-	sha256sums = 6161875cd2fb3d98881c323872f74c8fbc730287273c0d4574fd1ac1f67388db
 	sha256sums = e97cf95dedcf60c97edb3a693052964e4ce6da795631ca5c9f04182462f67895
+	sha256sums = e6ed4eebc62d1cf4c6b489cfd47b94cd2d0bec59ca4a60cb0ae50632a1202852
 
 pkgname = luxtorpeda-git
 
