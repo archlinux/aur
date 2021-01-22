@@ -1,0 +1,29 @@
+From 6a0c3f9c0698ce3c305db3f5226cc8e4cf657ac5 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Fri, 22 Jan 2021 21:03:19 +0100
+Subject: [PATCH 2/2] Makefile: prepend to build flags
+
+---
+ Makefile_plugin.common | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile_plugin.common b/Makefile_plugin.common
+index d9eeb99..6e82c64 100644
+--- a/Makefile_plugin.common
++++ b/Makefile_plugin.common
+@@ -37,9 +37,9 @@
+ # |-- example2-plugin
+ # |-- ...
+ CXX = $(shell yosys-config --cxx)
+-CXXFLAGS = $(shell yosys-config --cxxflags) #-DSDC_DEBUG
+-LDFLAGS = $(shell yosys-config --ldflags)
+-LDLIBS = $(shell yosys-config --ldlibs)
++CXXFLAGS := $(shell yosys-config --cxxflags) $(CXXFLAGS) #-DSDC_DEBUG
++LDFLAGS := $(shell yosys-config --ldflags) $(LDFLAGS)
++LDLIBS := $(shell yosys-config --ldlibs) $(LDLIBS)
+ PLUGINS_DIR = $(DESTDIR)$(shell yosys-config --datdir)/plugins
+ 
+ OBJS := $(SOURCES:cc=o)
+-- 
+2.30.0
+
