@@ -1,6 +1,6 @@
 pkgbase = session-desktop-appimage
 	pkgdesc = Private messaging from your desktop
-	pkgver = 1.4.6
+	pkgver = 1.4.7
 	pkgrel = 1
 	url = https://github.com/loki-project/session-desktop
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = session-desktop-appimage
 	conflicts = session-desktop-bin
 	options = !strip
 	options = !emptydirs
-	source = session-desktop-linux-x86_64-1.4.6.AppImage::https://github.com/loki-project/session-desktop/releases/download/v1.4.6/session-desktop-linux-x86_64-1.4.6.AppImage
+	source = session-desktop-linux-x86_64-1.4.7.AppImage::https://github.com/loki-project/session-desktop/releases/download/v1.4.7/session-desktop-linux-x86_64-1.4.7.AppImage
 	source = session-desktop.desktop
 	source = session-desktop.png
-	sha256sums = 140008631a19ee1a43eb6fc839fbf9bbfacadf7e955688ff008e220ca7ab160a
+	sha256sums = 0536d3304f18c62b0bb976ceb94859975c67d5951d87ed2fddedfe10842dbb1a
 	sha256sums = 2bf3c1718e157626851aa1661388353c9a430635058a6e327f5cf4be3161e47b
 	sha256sums = 8f6f2fa7ac49e24551b6a6324e4fd6cd73b478c24f450296c7fd30556c01575c
 
