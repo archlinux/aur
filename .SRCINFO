@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-ea-bin
 	pkgdesc = Java OpenJDK 16 Early-Access Build
-	pkgver = 16b32
+	pkgver = 16b33
 	pkgrel = 1
 	url = https://jdk.java.net/16
 	arch = x86_64
@@ -20,8 +20,8 @@ pkgbase = java-openjdk-ea-bin
 	provides = java-runtime-openjdk=16
 	provides = java-runtime-headless=16
 	provides = java-runtime-headless-openjdk=16
-	source = https://download.java.net/java/early_access/jdk16/32/GPL/openjdk-16-ea+32_linux-x64_bin.tar.gz
-	sha256sums = c951c0f2d55bc67fecbe0913675811721d13de16f4a81bf5363b660d17c02f0b
+	source = https://download.java.net/java/early_access/jdk16/33/GPL/openjdk-16-ea+33_linux-x64_bin.tar.gz
+	sha256sums = ba2ac6ccca898cd63090d768b89a95fba76b6303a55c41e851d75dd0c5afcee8
 
 pkgname = java-openjdk-ea-bin
 
