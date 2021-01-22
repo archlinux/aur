@@ -24,12 +24,14 @@ source=("git+https://github.com/rstudio/rstudio.git"
         "https://s3.amazonaws.com/rstudio-buildtools/gin-${_ginver}.zip"
         "https://s3.amazonaws.com/rstudio-buildtools/gwt-${_gwtver}.zip"
 	"https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.gz"
-	"qt.conf")
+	"qt.conf"
+	"cran_multithread.patch")
 sha256sums=('SKIP'
             'b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a'
             '970701dacc55170088f5eb327137cb4a7581ebb4734188dfcc2fad9941745d1b'
             '36d90bc58f0418f31dceda5b18eb260019fcc91e59b0820ffa66700772a8804b'
-            '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921')
+            '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
+            'c907e6eec5ef324ad498b44fb9926bb5baafc4e0778ca01f6ba9b49dd3a2a980')
 noextract=("gin-${_ginver}.zip")
 
 pkgver() {
@@ -39,6 +41,9 @@ pkgver() {
 
 prepare() {
     cd ${srcdir}/${_gitname}
+    local JOBS; JOBS="$(grep -oP -- "-j\s*\K[0-9]+" <<< "${MAKEFLAGS}")" || JOBS="1"
+    sed "s/@@proc_num@@/${JOBS}/" -i ${srcdir}/cran_multithread.patch
+    git apply -v ${srcdir}/cran_multithread.patch
 
     msg "Extracting dependencies..."
     cd "${srcdir}/${_gitname}/src/gwt"
