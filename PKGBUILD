@@ -2,7 +2,7 @@
 # Contributor: asermax <asermax@gmail.com>
 pkgname=kaggle-api
 _name=kaggle
-pkgver=1.5.6
+pkgver=1.5.10
 pkgrel=1
 pkgdesc='Kaggle API CLI'
 arch=('any')
@@ -21,19 +21,8 @@ depends=(
 makedepends=(
   'python-setuptools'
 )
-source=(
-  ${pkgname}-${pkgver}.tar.gz::"https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
-  263.patch::'https://github.com/Kaggle/kaggle-api/commit/8f08ba91095fac8e1e2b8783ce9dbae47c0d7ef7.patch'
-)
-sha512sums=(
-  'bdd05342357f835a5186994e95017d4bdf0d7fef2b70c6a8b142c4d19ce1fd797b85058f958ade033795f3fca0a51482aeb9e09d55d5ed58e3256e0eedc8fbae'
-  '79b5617f9f46506eb9f3eea3f87475525dcd210a5837d04c8fc5252bb58cb6601fabf40b52b90132c75ad5172279f90438ae1bc4bd52311e3dbb0df1fd6f9a30'
-)
-
-prepare() {
-  cd "${_name}-${pkgver}"
-  patch --forward --strip=1 --input="${srcdir}/263.patch"
-}
+source=(${pkgname}-${pkgver}.tar.gz::"https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha512sums=('c35ad3ef1dcb94c89c2b27e73872da0c6ddc9c55653103b3a6bede0f2e7afb75d54a0ee665d69d9f1e4afc689371e4dc01b7ebc1630fc17d7bf02929994c1973')
 
 build() {
   cd "${_name}-${pkgver}"
