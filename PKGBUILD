@@ -6,7 +6,7 @@ pkgname=crackmapexec
 _pkgname=CrackMapExec
 pkgver=5.1.1dev
 _pkgver=5.1.1.dev0
-pkgrel=2
+pkgrel=3
 pkgdesc='A swiss army knife for pentesting Windows/Active Directory environments'
 arch=('any')
 url='https://github.com/byt3bl33d3r/CrackMapExec'
@@ -20,13 +20,13 @@ depends=('impacket' 'python' 'python-aiowinreg' 'python-asn1crypto'
 	 'python-markupsafe' 'python-minidump' 'python-minikerberos'
 	 'python-msgpack' 'python-msldap' 'python-netaddr' 'python-ntlm-auth'
 	 'python-paramiko' 'python-prompt_toolkit' 'python-pyasn1'
-	 'python-pycparser' 'python-pycryptodomex' 'python-pylnk3'
+	 'python-pycparser' 'python-pycryptodomex' 'python-pylnk303'
 	 'python-pynacl' 'python-pyopenssl' 'python-pypsrp' 'python-pypykatz'
 	 'python-pyspnego' 'python-pytz' 'python-requests-ntlm' 'python-six'
 	 'python-soupsieve' 'python-termcolor' 'python-terminaltables'
 	 'python-tqdm' 'python-urllib3' 'python-wcwidth' 'python-werkzeug'
 	 'python-winacl' 'python-winsspi' 'python-xmltodict' 'python-zope-event'
-	 'python-zope-interface' 'python-pywerview-git')
+	 'python-zope-interface' 'python-pywerview-git' 'python-gevent')
 
 makedepends=('python-setuptools' 'python-poetry')
 source=("${url}/archive/v${pkgver}.tar.gz")
