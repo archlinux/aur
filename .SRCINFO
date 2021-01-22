@@ -1,6 +1,6 @@
 pkgbase = r-brio
 	pkgdesc = Basic R Input Output
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=brio
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = r-brio
 	depends = r
 	optdepends = r-testthat
 	optdepends = r-covr
-	source = https://cran.r-project.org/src/contrib/brio_1.1.0.tar.gz
-	sha256sums = 6bb3a3b47bea13f1a1e3dcdc8b9f688502643e4b40a481a34aa04a261aabea38
+	source = https://cran.r-project.org/src/contrib/brio_1.1.1.tar.gz
+	sha256sums = 70fa42423fc2ef8ec5ef91ca2d6ed3a1c79200d650774133c821cc5f38be222a
 
 pkgname = r-brio
 
