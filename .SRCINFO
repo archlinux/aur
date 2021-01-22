@@ -1,0 +1,29 @@
+pkgbase = python-uproot4
+	pkgdesc = Minimalist CERN ROOT I/O in pure Python and Numpy
+	pkgver = 4.0.2rc1
+	pkgrel = 1
+	url = https://github.com/scikit-hep/uproot4
+	arch = any
+	license = BSD
+	checkdepends = python-mock
+	checkdepends = python-pkgconfig
+	checkdepends = python-pandas
+	checkdepends = python-pytest-runner
+	checkdepends = python-requests
+	checkdepends = python-xxhash
+	makedepends = python-setuptools
+	depends = python-awkward
+	depends = python-cachetools
+	depends = python-lz4
+	depends = python-numpy
+	depends = python-zstandard
+	optdepends = xrootd: access remote files over XRootD
+	optdepends = python-pandas: fill Pandas DataFrames instead of Numpy arrays
+	optdepends = python-requests: access remote files through HTTP
+	optdepends = python-xxhash: handle lz4-compressed ROOT files
+	conflicts = python-uproot
+	source = uproot4-4.0.2rc1::https://github.com/scikit-hep/uproot4/archive/4.0.2rc1.tar.gz
+	sha256sums = 0379bfcff1956cdee80fe3d6f93abb8b42a578ce0653989d9dad284fa7340963
+
+pkgname = python-uproot4
+
