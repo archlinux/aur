@@ -1,0 +1,19 @@
+pkgbase = python-oxasl-ve
+	pkgdesc = Python interface to the C++ based VEASLC tool for Vessel-encoded ASL designed for use with the OXASL processing pipeline
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://oxasl.readthedocs.io
+	arch = any
+	license = custom:OXASL license
+	makedepends = git
+	makedepends = python-setuptools
+	depends = fslpy>=1.13
+	depends = python
+	depends = python-numpy
+	depends = python-oxasl
+	depends = veasl
+	source = python-oxasl-ve::git+https://github.com/physimals/oxasl_ve.git#tag=v0.1.1
+	b2sums = SKIP
+
+pkgname = python-oxasl-ve
+

@@ -1,0 +1,4 @@
+src/
+pkg/
+python-oxasl-ve/
+*.pkg.tar.zst
