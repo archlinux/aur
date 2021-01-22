@@ -2,7 +2,7 @@
 
 pkgname=simutrans-pak128.german
 pkgver=2.1.beta
-pkgrel=1
+pkgrel=2
 pkgdesc="High resolution graphics set for Simutrans, with a german theme"
 arch=('any')
 url="https://www.simutrans.com/"
@@ -13,5 +13,5 @@ sha256sums=('75a018475e5e377477a4936e9929dd67881869ba72fd0f5341666b05333b9704')
 package() {
   #data
   mkdir -p "$pkgdir/usr/share/games/simutrans/pak128.german"
-  cp -r simutrans/PAK128.german/* "$pkgdir/usr/share/games/simutrans/pak128.german"
+  cp -r simutrans/PAK128.german*/* "$pkgdir/usr/share/games/simutrans/pak128.german"
 }

@@ -1,7 +1,7 @@
 pkgbase = simutrans-pak128.german
 	pkgdesc = High resolution graphics set for Simutrans, with a german theme
 	pkgver = 2.1.beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.simutrans.com/
 	arch = any
 	license = custom:Artistic
