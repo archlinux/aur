@@ -11,6 +11,7 @@ license=(GPL)
 depends=(plasma-workspace)
 makedepends=(git)
 conflicts=(plasma5-applets-window-title)
+provides=(plasma5-applets-window-title)
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
