@@ -6,7 +6,7 @@
 # Maintainer: Sergey Musiyenko <m@sy.mk>
 pkgname=st-musiyenko-git
 _pkgname=st-musiyenko
-pkgver=0.8.3.r6.417ff45
+pkgver=0.8.4.r8.c4f8695
 pkgrel=1
 pkgdesc="Simple terminal implementation for X"
 arch=('i686' 'x86_64')
