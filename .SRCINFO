@@ -1,6 +1,6 @@
 pkgbase = eparakstitajs3
 	pkgdesc = Application software to sign and validate documents in EDOC and PDF formats.
-	pkgver = 1.5.11
+	pkgver = 1.5.12
 	pkgrel = 1
 	url = https://www.eparaksts.lv
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = eparakstitajs3
 	optdepends = python2-nautilus: Nautilus context menu integration
 	optdepends = eparaksts-token-signing: eParaksts browser plugins
 	optdepends = latvia-eid-middleware: libraries for Latvia eID cards
-	source = https://www.eparaksts.lv/files/ep3updates/debian/pool/eparaksts/e/eparakstitajs3/eparakstitajs3_1.5.11_amd64.deb
-	sha512sums = e49563db6b57eeac24577afa8c127ca99b18bb72626a46f1718d08bb73e9440313f8eb63fded00f6768b79b6e4e58ddd6dc1e015abfafa642710cc7b1552e332
+	source = https://www.eparaksts.lv/files/ep3updates/debian/pool/eparaksts/e/eparakstitajs3/eparakstitajs3_1.5.12_amd64.deb
+	sha512sums = 86c99928c3c68c3939abf710ff262bfa1ce3764095c77f26991a3eac06abbbb8c230d8390e4bbd4b9eaf8b8318fb466fe201fd648cee9ff757df678c7da410c8
 
 pkgname = eparakstitajs3
 
