@@ -3,11 +3,11 @@
 _pkgname=ydotool
 pkgname=$_pkgname-git
 pkgver=v0.2.0.r7.gce27b46
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic command-line automation tool (no X!), works on Wayland"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'pentium4')
 depends=('boost-libs')
-makedepends=('cmake' 'git' 'make' 'pkg-config' 'boost')
+makedepends=('cmake' 'git' 'make' 'pkg-config' 'scdoc')
 url="https://github.com/ReimuNotMoe/ydotool"
 license=('MIT')
 source=(${_pkgname}::git+https://github.com/ReimuNotMoe/ydotool.git)

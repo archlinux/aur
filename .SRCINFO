@@ -1,7 +1,7 @@
 pkgbase = ydotool-git
 	pkgdesc = Generic command-line automation tool (no X!), works on Wayland
 	pkgver = v0.2.0.r7.gce27b46
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ReimuNotMoe/ydotool
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = ydotool-git
 	makedepends = git
 	makedepends = make
 	makedepends = pkg-config
-	makedepends = boost
+	makedepends = scdoc
 	depends = boost-libs
 	provides = ydotool
 	conflicts = ydotool
