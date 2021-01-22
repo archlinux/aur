@@ -1,0 +1,14 @@
+pkgbase = hopp-cli
+	pkgdesc = HTTP client like cURL / HTTPie and a CLI client for https://hoppscotch.io
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/hoppscotch/hopp-cli
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = hopp-cli
+	source = https://github.com/hoppscotch/hopp-cli/archive/v0.0.7.tar.gz
+	sha256sums = SKIP
+
+pkgname = hopp-cli
+
