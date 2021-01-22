@@ -1,6 +1,6 @@
 # Maintainer: dreamscached <dreamscache.d@gmail.com>
 pkgname=recaf
-pkgver=2.17.1
+pkgver=2.17.2
 pkgrel=1
 pkgdesc="A modern Java bytecode editor"
 arch=("any")
@@ -14,8 +14,8 @@ source=(
     "https://raw.githubusercontent.com/Col-E/Recaf/$pkgver/LICENSE"
 )
 sha256sums=(
-    "cd9b1874fed4418a8f475738a374a7052b3ee6d6129f7543ecd595a26df9ede5"
-    "c29d3bae4280e8db8d32644e89f6fe8bf0714e20959433784ea7b37ec61ac56e"
+    "1ac4f62d2dde390db4d1605872411d14f47acfd1a899b6d82564f52890c65276"
+    "a13cb1a246bc0986c7185510a7ea9880e9f8eaf6d3a0437e2f3f2e2e85e9abb5"
 )
 
 prepare() {
