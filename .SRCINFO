@@ -1,6 +1,6 @@
 pkgbase = playkey-linux
 	pkgdesc = Client for game streaming service playkey.net
-	pkgver = 1.8
+	pkgver = 1.9
 	pkgrel = 1
 	url = https://www.playkey.net
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = playkey-linux
 	options = !strip
 	source_x86_64 = https://static.playkey.net/clientdownload.aspx?file=windows-desktop/Release/PlaykeySetup.exe&name=PlaykeySetup.exe
 	source_x86_64 = git+https://github.com/vilkoz/playkey-linux-launcher.git
-	sha256sums_x86_64 = b9e9a2f853d16c9ae3c2dbc899c637b6f2c1d4b5e9a99dd6d2a3cf1b5831e824
+	sha256sums_x86_64 = 7ab183535cd6e3cf97d30e9b6ca2d9eefc9123a29726c6790a3ba75021c52330
 	sha256sums_x86_64 = SKIP
 
 pkgname = playkey-linux
