@@ -2,7 +2,7 @@
  
 pkgname="authenticator"
 pkgver=3.32.2
-pkgrel=7
+pkgrel=8
 pkgdesc="2FA code generator for GNOME"
 arch=('any')
 url="https://gitlab.gnome.org/World/Authenticator"
@@ -12,7 +12,7 @@ makedepends=('meson' 'ninja' 'gobject-introspection' 'git')
 source=("$pkgname::git+https://gitlab.gnome.org/World/Authenticator.git?unsigned#tag=${pkgver}"
         'git+https://gitlab.gnome.org/GNOME/libgd.git'
         'remove_references.patch')
-sha256sums=('SKIP' 'SKIP' '7fe9740a0418214a6f4447ace5107b4f57f862f0b2dabf1fc518585a9d85a379')
+sha256sums=('SKIP' 'SKIP' '78da83be013c66661677d1ae815de3f0ccbcc2cd4091a0cbe0d6aae9d15d013a')
 
 prepare() {
     cp remove_references.patch $pkgname/

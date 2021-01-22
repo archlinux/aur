@@ -1,8 +1,16 @@
 diff --git a/src/Authenticator/widgets/accounts/add.py b/src/Authenticator/widgets/accounts/add.py
-index 98e4d24..7070b48 100644
+index 98e4d24..97f69e9 100644
 --- a/src/Authenticator/widgets/accounts/add.py
 +++ b/src/Authenticator/widgets/accounts/add.py
-@@ -95,7 +95,6 @@ class AccountConfig(Gtk.Overlay):
+@@ -38,7 +38,6 @@ class AddAccountWindow(Gtk.Window):
+ 
+     def __init__(self):
+         super(AddAccountWindow, self).__init__()
+-        self.init_template('AddAccountWindow')
+         self.add_events(Gdk.EventMask.ENTER_NOTIFY_MASK)
+         self.__init_widgets()
+ 
+@@ -95,7 +94,6 @@ class AccountConfig(Gtk.Overlay):
  
      def __init__(self, **kwargs):
          super(AccountConfig, self).__init__()
@@ -10,6 +18,18 @@ index 98e4d24..7070b48 100644
  
          self.props.is_edit = kwargs.get("edit", False)
          self._account = kwargs.get("account", None)
+diff --git a/src/Authenticator/widgets/accounts/edit.py b/src/Authenticator/widgets/accounts/edit.py
+index a047178..7b7d8b2 100644
+--- a/src/Authenticator/widgets/accounts/edit.py
++++ b/src/Authenticator/widgets/accounts/edit.py
+@@ -36,7 +36,6 @@ class EditAccountWindow(Gtk.Window):
+ 
+     def __init__(self, account):
+         super(EditAccountWindow, self).__init__()
+-        self.init_template('EditAccountWindow')
+ 
+         self._account = account
+         self.__init_widgets()
 diff --git a/src/Authenticator/widgets/accounts/list.py b/src/Authenticator/widgets/accounts/list.py
 index f7cece8..ee81e24 100644
 --- a/src/Authenticator/widgets/accounts/list.py
