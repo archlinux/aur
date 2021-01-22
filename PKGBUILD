@@ -1,7 +1,7 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="9.0.350.0"
-pkgrel="2"
+pkgver="9.0.351.0"
+pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
 arch=('x86_64')
@@ -20,7 +20,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-md5sums=('b20adebd36ab0e85e9b737c9dbeb9e4a')
+md5sums=('4656840bf56a8fa1c1637312d4fd14de')
 
 prepare()
 {
@@ -89,6 +89,7 @@ package()
  install -Dm644 "$srcdir/FID_BKM_fr_FR" "$pkgdir${_installdir}/$pkgname/${_languages}/Bookmarks.fr-FR.xcl"
  install -Dm644 "$srcdir/FID_BKM_fy_NL" "$pkgdir${_installdir}/$pkgname/${_languages}/Bookmarks.fy-NL.xcl"
  install -Dm644 "$srcdir/FID_BKM_gl_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/Bookmarks.gl-ES.xcl"
+ install -Dm644 "$srcdir/FID_BKM_he_IL" "$pkgdir${_installdir}/$pkgname/${_languages}/Bookmarks.he-IL.xcl"
  install -Dm644 "$srcdir/FID_BKM_hr_HR" "$pkgdir${_installdir}/$pkgname/${_languages}/Bookmarks.hr-HR.xcl"
  install -Dm644 "$srcdir/FID_BKM_id_ID" "$pkgdir${_installdir}/$pkgname/${_languages}/Bookmarks.id-ID.xcl"
  install -Dm644 "$srcdir/FID_BKM_it_IT" "$pkgdir${_installdir}/$pkgname/${_languages}/Bookmarks.it-IT.xcl"
@@ -346,6 +347,7 @@ package()
  install -Dm644 "$srcdir/FID_PDFA_fr_FR" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFAConverter.fr-FR.xcl"
  install -Dm644 "$srcdir/FID_PDFA_fy_NL" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFAConverter.fy-NL.xcl"
  install -Dm644 "$srcdir/FID_PDFA_gl_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFAConverter.gl-ES.xcl"
+ install -Dm644 "$srcdir/FID_PDFA_he_IL" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFAConverter.he-IL.xcl"
  install -Dm644 "$srcdir/FID_PDFA_hr_HR" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFAConverter.hr-HR.xcl"
  install -Dm644 "$srcdir/FID_PDFA_id_ID" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFAConverter.id-ID.xcl"
  install -Dm644 "$srcdir/FID_PDFA_it_IT" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFAConverter.it-IT.xcl"
@@ -401,6 +403,7 @@ package()
  install -Dm644 "$srcdir/FID_OPT_fr_FR" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFOptimizer.fr-FR.xcl"
  install -Dm644 "$srcdir/FID_OPT_fy_NL" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFOptimizer.fy-NL.xcl"
  install -Dm644 "$srcdir/FID_OPT_gl_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFOptimizer.gl-ES.xcl"
+ install -Dm644 "$srcdir/FID_OPT_he_IL" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFOptimizer.he-IL.xcl"
  install -Dm644 "$srcdir/FID_OPT_hr_HR" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFOptimizer.hr-HR.xcl"
  install -Dm644 "$srcdir/FID_OPT_id_ID" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFOptimizer.id-ID.xcl"
  install -Dm644 "$srcdir/FID_OPT_it_IT" "$pkgdir${_installdir}/$pkgname/${_languages}/PDFOptimizer.it-IT.xcl"
@@ -456,6 +459,7 @@ package()
  install -Dm644 "$srcdir/FID_SAN_es_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/Sanitize.es-ES.xcl"
  install -Dm644 "$srcdir/FID_SAN_fi_FI" "$pkgdir${_installdir}/$pkgname/${_languages}/Sanitize.fi-FI.xcl"
  install -Dm644 "$srcdir/FID_SAN_fr_FR" "$pkgdir${_installdir}/$pkgname/${_languages}/Sanitize.fr-FR.xcl"
+ install -Dm644 "$srcdir/FID_SAN_he_IL" "$pkgdir${_installdir}/$pkgname/${_languages}/Sanitize.he-IL.xcl"
  install -Dm644 "$srcdir/FID_SAN_hr_HR" "$pkgdir${_installdir}/$pkgname/${_languages}/Sanitize.hr-HR.xcl"
  install -Dm644 "$srcdir/FID_SAN_ja_JP" "$pkgdir${_installdir}/$pkgname/${_languages}/Sanitize.ja-JP.xcl"
  install -Dm644 "$srcdir/FID_SAN_ko_KR" "$pkgdir${_installdir}/$pkgname/${_languages}/Sanitize.ko-KR.xcl"
