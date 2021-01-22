@@ -1,12 +1,12 @@
 pkgbase = editline
 	pkgdesc = A readline() replacement for UNIX without termcap (ncurses)
-	pkgver = 1.16.1
+	pkgver = 1.17.1
 	pkgrel = 1
 	url = http://troglobit.com/editline.html
 	arch = x86_64
 	license = BSD
-	source = https://github.com/troglobit/editline/archive/1.16.1.tar.gz
-	sha512sums = 32c8362cd553ff616ecbb259705d6ed13a48f5bae0616c9770d9c254e07723bbd957de8ad0643d0652ec73e8e99e8c45e7f060461ba316b0eb30d911d772b029
+	source = https://github.com/troglobit/editline/archive/1.17.1.tar.gz
+	sha512sums = 6fd8951a490e0a3f30bb20d775036f622e583042d6dc315d657bb9fdad76b3f4e219290f24ab497209d6143a56dd1d227152ba0c40e7912b8a443ab50f9b05dd
 
 pkgname = editline
 
