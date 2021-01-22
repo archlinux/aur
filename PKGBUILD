@@ -4,7 +4,7 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=1.3.1073.r5377
+pkgver=1.4.1103.r220
 _gwtver=2.8.2
 _ginver=2.1.2
 _nodever=10.19.0
