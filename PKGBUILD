@@ -1,6 +1,6 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime-git
-pkgver=0.7.0.250.g5b61e18
+pkgver=0.7.0.r3.727503e
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
@@ -15,7 +15,9 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd "${pkgname}"
-    echo $(grep '^version =' gtk3/Cargo.toml|head -n1|cut -d\" -f2).$(git rev-list --count HEAD).g$(git describe --always)
+    local tag=$(git tag --sort=v:refname | grep '^v[0-9]' | tail -1)
+    local commits_since=$(git rev-list $tag..HEAD --count)
+    echo "$(echo $tag | cut -b2-).r$commits_since.$(git log --pretty=format:'%h' -n 1)"
 }
 
 build() {
