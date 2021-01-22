@@ -1,13 +1,13 @@
 pkgbase = nvidia-dkms-performance
 	pkgdesc = NVIDIA driver sources for linux with some optimizations
 	pkgver = 460.32.03
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
 	provides = nvidia=460.32.03
 	provides = nvidia-dkms=460.32.03
-	provides = nvidia-performance=460.32.03
+	provides = nvidia-dkms-performance=460.32.03
 	provides = NVIDIA-MODULE
 	conflicts = nvidia
 	conflicts = nvidia-dkms

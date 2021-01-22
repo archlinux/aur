@@ -6,13 +6,13 @@ _pref_maximum_performance=
 
 pkgname=nvidia-dkms-performance
 pkgver=460.32.03
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA driver sources for linux with some optimizations'
 arch=('x86_64')
 url='https://www.nvidia.com/'
 license=('custom')
 provides=("nvidia=${pkgver}" "nvidia-dkms=${pkgver}" 
-          "nvidia-performance=${pkgver}" 'NVIDIA-MODULE')
+          "nvidia-dkms-performance=${pkgver}" 'NVIDIA-MODULE')
 conflicts=('nvidia' 'nvidia-dkms')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
 source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
