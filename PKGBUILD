@@ -9,7 +9,7 @@ url="https://dd4hep.web.cern.ch/dd4hep/"
 license=('LGPL3')
 depends=(boost-libs root)
 makedepends=(boost cmake)
-source=(https://github.com/AIDASoft/$_pkgname/archive/v$_pkgver.tar.gz)
+source=(https://github.com/AIDASoft/$pkgname/archive/v$_pkgver.tar.gz)
 md5sums=('6e28f8ddc798522ede04644fc45209bb')
 
 build() {
