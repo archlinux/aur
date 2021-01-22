@@ -8,7 +8,7 @@
 # Contributor: William Penton <william@penton.us>
 
 pkgname=gitkraken-standalone
-pkgrel=1
+pkgrel=2
 pkgver=7.5.0
 pkgdesc="Stand-alone version of GitKraken for labs and computers without internet access (requires license file)."
 url="https://support.gitkraken.com/standalone/standalone/"
@@ -16,7 +16,7 @@ provides=('gitkraken')
 conflicts=('gitkraken')
 arch=('x86_64')
 license=('custom')
-depends=('nss' 'libxtst' 'libgnome-keyring' 'alsa-lib' 'libxss')
+depends=('nss' 'gtk3' 'libsecret' 'libxkbfile' 'dbus-x11')
 optdepends=('git-lfs: git-lfs support')
 makedepends=()
 backup=()
