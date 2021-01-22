@@ -2,7 +2,7 @@
 
 _gemname=css_parser
 pkgname=ruby-$_gemname
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Ruby CSS parser.'
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=(ruby-rdoc)
 provides=('ruby-css_parser=1.7.1')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha1sums=('d112bf4b50481a85ad3c4b0d6b6353d9c70d6ebd')
+sha1sums=('2df8a30021c32b5d2cbb0a9305705d36da7ab064')
 noextract=($_gemname-$pkgver.gem)
 
 package() {
