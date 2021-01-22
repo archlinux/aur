@@ -3,7 +3,7 @@
 _gitname=applet-window-title
 pkgname=plasma5-applets-window-title-git
 pkgver=0.2.r1.g58c4fc9
-pkgrel=1
+pkgrel=2
 pkgdesc="Plasma 5 applet that shows the application title and icon for active window"
 arch=(x86_64)
 url="https://github.com/psifidotos/${_gitname}"
