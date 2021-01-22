@@ -1,15 +1,25 @@
 pkgbase = gnome-shell-extension-pop-shell-bin
-	pkgdesc = Pop Shell - Tiling window management in Gnome (WIP, precompiled)
+	pkgdesc = Pop Shell - Tiling window management in Gnome (precompiled)
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pop-os/shell
+	install = pop-shell.install
 	arch = any
 	license = GPLv3
 	depends = gnome-shell
 	optdepends = gnome-shell-extensions: native-window extension for improved window placement
 	conflicts = gnome-shell-extension-pop-shell
+	noextract = pop-os-shell-1.2.0.zip
 	source = pop-os-shell-1.2.0.zip::https://github.com/pop-os/shell/releases/download/1.2.0/pop-shell@system76.com_1.2.0.zip
+	source = https://raw.githubusercontent.com/pop-os/shell/1.2.0/keybindings/10-pop-shell-move.xml
+	source = https://raw.githubusercontent.com/pop-os/shell/1.2.0/keybindings/10-pop-shell-navigate.xml
+	source = https://raw.githubusercontent.com/pop-os/shell/1.2.0/keybindings/10-pop-shell-tile.xml
+	source = https://raw.githubusercontent.com/pop-os/shell/1.2.0/scripts/configure.sh
 	sha256sums = 5ee01c1d40a4437069cc96c217d4a2d99a2d8f09ec34b62d893edc7eadc0838c
+	sha256sums = 2520d034cb00f5cbbd7a14f68c4e6aae785c2bc6c000dab680feae7b00f5391e
+	sha256sums = b14ab3b9ab66d160c5e77279724ea64158e7f4c9e44b4935a02a7c049a63f519
+	sha256sums = 25c50e38934441d7f9dd84378f4a687e853476b5908dcdbf98676d1f55886555
+	sha256sums = f2adbc97fc1a82f476a7ea20ba11d38593ba1f48100662d8c48579ee5e1a1549
 
 pkgname = gnome-shell-extension-pop-shell-bin
 
