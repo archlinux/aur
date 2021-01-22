@@ -2,12 +2,12 @@
 
 pkgname=amule-remote-git
 pkgver=latest
-pkgrel=3
+pkgrel=4
 pkgdesc='An eMule-like client for the eD2k and Kademlia p2p networks (remote GUI only, development version)'
 url='http://www.amule.org'
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('crypto++' 'geoip' 'geoip-database' 'wxgtk')
+depends=('crypto++' 'geoip' 'geoip-database' 'wxgtk3')
 makedepends=('git')
 conflicts=('amule')
 source=('git+git://github.com/amule-project/amule.git')
