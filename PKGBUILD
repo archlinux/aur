@@ -2,7 +2,7 @@
 
 pkgname=barpyrus-git
 pkgver=r94.fa160c6
-pkgrel=1
+pkgrel=2
 pkgdesc="A python wrapper for lemonbar/conky"
 arch=(any)
 url="https://github.com/t-wissmann/barpyrus"
@@ -15,6 +15,11 @@ sha1sums=('SKIP')
 pkgver() {
   cd barpyrus
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd barpyrus
+  python setup.py build
 }
 
 package() {

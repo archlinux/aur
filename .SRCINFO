@@ -1,7 +1,7 @@
 pkgbase = barpyrus-git
 	pkgdesc = A python wrapper for lemonbar/conky
 	pkgver = r94.fa160c6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/t-wissmann/barpyrus
 	arch = any
 	license = BSD
