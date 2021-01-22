@@ -1,0 +1,20 @@
+pkgbase = python-litex-boards-git
+	pkgdesc = LiteX supported boards
+	pkgver = 2020.12.r26.gbee71da
+	pkgrel = 1
+	url = https://github.com/litex-hub/litex-boards
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-migen
+	depends = python-litex
+	provides = python-litex-boards=2020.12.r26.gbee71da
+	conflicts = python-litex-boards
+	replaces = litex-boards-git
+	source = git+https://github.com/litex-hub/litex-boards
+	sha256sums = SKIP
+
+pkgname = python-litex-boards-git
+
