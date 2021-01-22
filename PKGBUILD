@@ -1,5 +1,5 @@
 pkgname=ncmdump
-pkgver=0.3.3
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="netease cloud music copyright protection file dump"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ license=('Apache')
 makedepends=('git' 'go')
 depends=('glibc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yoki123/ncmdump/archive/v$pkgver.tar.gz")
-sha256sums=('3cfec956892bb161aeac6cba30fe4db1dc984813cb1801990c282670a292966a')
+sha256sums=('8828afd00c3ee83be0656b4264e3f6ace1c39ea3ea53ed2caeafaffac7c81267')
 
 prepare() {
     mkdir -p "$srcdir/build"
@@ -24,7 +24,7 @@ build() {
     export CGO_LDFLAGS="$LDFLAGS"
     export GOFLAGS="-buildmode=pie -trimpath -mod=vendor -modcacherw"
     cd "$srcdir/$pkgname-$pkgver"
-    go build -v -o ncmdump cmd/main.go
+    go build -v -o ncmdump cmd/ncmdump/main.go
 }
 
 package() {
