@@ -1,0 +1,13 @@
+pkgbase = rime-dict-yangshann-git
+	pkgdesc = A dictionary for rime
+	pkgver = 0.0.0.2c1b744
+	pkgrel = 1
+	url = https://github.com/yangshann/rime-dict
+	arch = any
+	license = GPL3
+	makedepends = git
+	source = rime-dict::git+https://github.com/yangshann/rime-dict.git
+	sha512sums = SKIP
+
+pkgname = rime-dict-yangshann-git
+
