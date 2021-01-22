@@ -1,0 +1,16 @@
+pkgbase = dd4hep
+	pkgdesc = Detector Description Toolkit for High Energy Physics
+	pkgver = 01.15
+	pkgrel = 1
+	url = https://dd4hep.web.cern.ch/dd4hep/
+	arch = x86_64
+	license = LGPL3
+	makedepends = boost
+	makedepends = cmake
+	depends = boost-libs
+	depends = root
+	source = https://github.com/AIDASoft//archive/v01-15.tar.gz
+	md5sums = 6e28f8ddc798522ede04644fc45209bb
+
+pkgname = dd4hep
+
