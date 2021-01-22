@@ -4,12 +4,14 @@
 _gemname=ascii85
 pkgname=ruby-$_gemname-1.0
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Ascii85 encoder/decoder'
 arch=('any')
 url='https://github.com/datawraith/ascii85gem'
 license=(MIT)
 depends=(ruby)
+makedepends=(ruby-rdoc)
+provides=("ruby-ascii85=$pkgver")
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/${_gemname//a/A}-$pkgver.gem)
 noextract=(${_gemname//a/A}-$pkgver.gem)

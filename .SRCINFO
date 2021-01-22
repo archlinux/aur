@@ -1,11 +1,13 @@
 pkgbase = ruby-ascii85-1.0
 	pkgdesc = Ascii85 encoder/decoder
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/datawraith/ascii85gem
 	arch = any
 	license = MIT
+	makedepends = ruby-rdoc
 	depends = ruby
+	provides = ruby-ascii85=1.0.3
 	noextract = Ascii85-1.0.3.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/Ascii85-1.0.3.gem
