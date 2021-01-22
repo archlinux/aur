@@ -2,3 +2,5 @@ src
 pkg
 *.zst
 *.zip
+*.xml
+configure.sh
