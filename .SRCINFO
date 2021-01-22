@@ -1,7 +1,7 @@
 pkgbase = g15message
 	pkgdesc = A simple message/alert tool for g15daemon and the Logitech G15.
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/menelkir/g15message
 	arch = x86_64
 	license = GPL
