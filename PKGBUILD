@@ -1,7 +1,7 @@
 # Maintainer: Michiru Saito <urihcim at gmail dot com>
 pkgname=brother-mfc-930cdn
 pkgver=1.1.2_2
-pkgrel=3
+pkgrel=4
 pkgdesc="LPR and CUPS driver for the Brother MFC-930CDN / MFC-930CDWN"
 arch=('i686' 'x86_64')
 url='http://support.brother.co.jp/j/b/downloadlist.aspx?c=jp&lang=ja&prod=mfc930cdn&os=127'
