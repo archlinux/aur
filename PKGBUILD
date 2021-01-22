@@ -91,7 +91,7 @@ conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-git' 'emacs-seq')
 replaces=('emacs26-git' 'emacs27-git' 'emacs-git' 'emacs-seq')
 # Lock commits about changes in `define-obsolete-function-alias` temporarily 
 # to avoid breaking your packages
-source=("emacs-git::git://github.com/flatwhatson/emacs.git#branch=pgtk-nativecomp")
+source=("emacs-git::git://github.com/flatwhatson/emacs.git#commit=78fd106653a9e4fa7c9c3c9788540e2e15552254")
 # If Savannah access is blocked for reasons, use Github instead.
 # Edit the config file of your local repo copy as well.
 #source=("emacs-git::git://github.com/emacs-mirror/emacs.git")
