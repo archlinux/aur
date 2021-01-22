@@ -1,14 +1,14 @@
 pkgbase = nextcloud-app-suspicious-login
 	pkgdesc = Detect and warn about suspicious IPs logging into Nextcloud
-	pkgver = 3.1.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://github.com/nextcloud/suspicious_login
 	arch = any
 	license = AGPL3
 	depends = nextcloud
 	options = !strip
-	source = nextcloud-app-suspicious-login-3.1.0.tar.gz::https://github.com/nextcloud/suspicious_login/releases/download/v3.1.0/suspicious_login.tar.gz
-	sha512sums = 6d57b8790f93947d90a4e582cba6ef6521ac98304b62411ed34a35196d180cf996d408f49e63fc70b274bced5b362e228ad2f3779bdb29e3af20ef98fa677474
+	source = nextcloud-app-suspicious-login-3.2.1.tar.gz::https://github.com/nextcloud/suspicious_login/releases/download/v3.2.1/suspicious_login.tar.gz
+	sha512sums = fde1098246c7901ee2ec5349e61b5664c8a3b843057ad6fbe1af6a42dc23ee634278ad4a3cd7dce9b4055463a2dd8923523dbdc3657241237ac26e3dee24bab8
 
 pkgname = nextcloud-app-suspicious-login
 
