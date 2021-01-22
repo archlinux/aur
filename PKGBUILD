@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://smcameron.github.io/space-nerds-in-space/"
 license=('GPL2')
 depends=('glew' 'sdl2' 'lua52' 'portaudio' 'libbsd')
-makedepends=('git')
+makedepends=('git' 'desktop-file-utils')
 optdepends=('espeak: for text to speech'
             'espeak-ng: for text to speech')
 provides=('snis' 'ssgl' 'ssgl-git')
@@ -32,5 +32,5 @@ package() {
   mkdir "$pkgdir/usr"
   make PREFIX="/usr" DESTDIR="$pkgdir" install
   make PREFIX="/usr" DESTDIR="$pkgdir" install-assets
-  rm "$pkgdir/usr/share/applications/mimeinfo.cache"
+  rm -f "$pkgdir/usr/share/applications/mimeinfo.cache"
 }
