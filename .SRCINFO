@@ -1,14 +1,14 @@
 pkgbase = python-serverfiles
 	pkgdesc = A utility that accesses files on a HTTP server and stores them locally for reuse.
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://github.com/biolab/serverfiles
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
 	depends = python-requests
-	source = https://pypi.io/packages/source/s/serverfiles/serverfiles-0.3.0.tar.gz
-	sha256sums = ce38e1dc3518a16b2490f7b84b4ce829f2d6685596c1a3f0fdedbe06d13685ec
+	source = https://pypi.io/packages/source/s/serverfiles/serverfiles-0.3.1.tar.gz
+	sha256sums = 5e10fc32e758791e3735bc08bce2ed4702a83b1e45ab96c5d59cc8aeecfbebe1
 
 pkgname = python-serverfiles
 
