@@ -3,7 +3,7 @@
 
 pkgname=freetube
 _pkgname=FreeTube
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc='An open source desktop YouTube player built with privacy in mind.'
 arch=('x86_64' 'arm')
@@ -12,11 +12,11 @@ depends=( 'gtk3' 'nss' 'electron')
 makedepends=('npm' )
 conflicts=('freetube-git' 'freetube-bin')
 url=https://freetubeapp.io
-source=(https://github.com/FreeTubeApp/FreeTube/archive/v0.11.1-beta.tar.gz
+source=(https://github.com/FreeTubeApp/FreeTube/archive/v0.11.2-beta.tar.gz
         package-only-necessary.diff
         freetube.desktop
         freetube.sh)
-sha256sums=(55717f4ffefd7515d69325a219fa5b194bf072abd592af30f439d8586a363d6d
+sha256sums=(744874c9ebaed2e99323dbc6164c6a17e03375ca3b85a0cb386b1e3cbe4a36b5
             SKIP SKIP SKIP)
 
 prepare() {
