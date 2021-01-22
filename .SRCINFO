@@ -1,12 +1,12 @@
 pkgbase = prjxray-db-git
 	pkgdesc = Project X-Ray (Xilinx 7-series bit-stream format) database
-	pkgver = r238.fcd2764
-	pkgrel = 1
+	pkgver = r244.057e179
+	pkgrel = 2
 	url = https://github.com/SymbiFlow/prjxray-db
 	arch = any
 	license = custom:CC0
 	makedepends = git
-	provides = prjxray-db=r238.fcd2764
+	provides = prjxray-db=r244.057e179
 	conflicts = prjxray-db
 	source = git+https://github.com/SymbiFlow/prjxray-db.git
 	source = prjxray-config

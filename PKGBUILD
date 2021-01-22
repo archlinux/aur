@@ -5,8 +5,8 @@ _targets='artix7 kintex7 zynq7'
 _prj=xray
 _pkgname=prj$_prj-db
 pkgname=$_pkgname-git
-pkgver=r238.fcd2764
-pkgrel=1
+pkgver=r244.057e179
+pkgrel=2
 pkgdesc='Project X-Ray (Xilinx 7-series bit-stream format) database'
 arch=('any')
 provides=("$_pkgname=$pkgver")
