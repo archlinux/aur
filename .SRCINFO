@@ -1,7 +1,7 @@
 pkgbase = g15composer
 	pkgdesc = A library to render text and shapes into a buffer usable by the Logitech G15
 	pkgver = 3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/menelkir/g15composer
 	arch = x86_64
 	license = GPL

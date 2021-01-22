@@ -2,7 +2,7 @@
 
 pkgname=g15composer
 pkgver=3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A library to render text and shapes into a buffer usable by the Logitech G15"
 
 arch=('x86_64')
