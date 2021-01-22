@@ -1,6 +1,6 @@
 pkgbase = st-musiyenko-git
 	pkgdesc = Simple terminal implementation for X
-	pkgver = 0.8.3.r6.417ff45
+	pkgver = 0.8.4.r8.c4f8695
 	pkgrel = 1
 	url = https://github.com/musiyenko/st
 	arch = i686
