@@ -1,0 +1,24 @@
+From 062ae7131d35238dddea22c1b94acdc2846f2364 Mon Sep 17 00:00:00 2001
+From: "j.r" <j.r@jugendhacker.de>
+Date: Fri, 15 Jan 2021 01:04:53 +0100
+Subject: [PATCH 2/2] Rename Internet catergorie, because it does not exist
+
+---
+ youplay.desktop | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/youplay.desktop b/youplay.desktop
+index 1e85b1e..20adba5 100755
+--- a/youplay.desktop
++++ b/youplay.desktop
+@@ -7,6 +7,6 @@ Terminal=false
+ Type=Application
+ StartupNotify=false
+ Icon=/usr/share/youplay/youplay.svg
+-Categories=GNOME;GTK;Utility;Internet;Music
++Categories=GNOME;GTK;Utility;X-Internet;Music
+ Keywords=Multimedia;Music;Internet;Youtube
+ Hidden=false
+-- 
+2.30.0
+
