@@ -5,29 +5,21 @@
 # Contributor: Salvador Pardiñas <darkfm@vera.com.uy>
 
 pkgname=woeusb
-pkgver=3.3.1
-pkgrel=6
+pkgver=5.0.4
+pkgrel=1
 pkgdesc='A Linux program to create Windows USB stick installer from a Windows DVD or an image'
-arch=('x86_64')
-url='https://github.com/slacka/WoeUSB'
+arch=('any')
+url='https://github.com/WoeUSB/WoeUSB'
 license=('GPL3')
-depends=('dosfstools' 'grub' 'ntfs-3g' 'parted' 'wget' 'wxgtk2')
-source=("https://github.com/slacka/WoeUSB/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-b2sums=('1423ecca39018c674b0eea36de732f54cfcdd14b8cc465e6d3c0639192cbd8355436b7a39ba453b19fa6f1c5b1f6938ef12f49710bc2a4af0f2eaed967e03ce7')
+depends=('dosfstools' 'grub' 'ntfs-3g' 'parted' 'wget')
+source=("https://github.com/WoeUSB/WoeUSB/releases/download/v${pkgver}/woeusb-${pkgver}.bash")
+md5sums=(58f687c3c5e1922daf9c69517b7eac23)
 
 prepare() {
-  cd WoeUSB-${pkgver}
-  find . -type f -print0 | xargs -0 sed -i "s/@@WOEUSB_VERSION@@/${pkgver}/" || die
-  autoreconf --install
-}
-
-build() {
-  cd WoeUSB-${pkgver}
-  ./configure --prefix=/usr
-  make
+  chmod +x woeusb-$pkgver.bash
+  mv woeusb-$pkgver.bash woeusb
 }
 
 package() {
-  cd WoeUSB-${pkgver}
-  make DESTDIR="${pkgdir}" install
+  install -D -t "$pkgdir/usr/bin" "$srcdir/woeusb"
 }
