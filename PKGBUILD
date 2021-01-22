@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-integration-github
-pkgver=0.0.16
+pkgver=0.0.17
 pkgrel=1
 pkgdesc="GitHub integration into Nextcloud"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nextcloud')
 makedepends=()
 options=('!strip')
 source=("https://github.com/nextcloud/integration_github/releases/download/v${pkgver}/integration_github-${pkgver}.tar.gz")
-sha512sums=('471715ad42dee0e26d94c9542a31c80badbd66d5b7bf388bc9fdcaedad345548e0da4964da2cdd1b3c7af59ebdc75dd1da359c78bf29ce7942206193a68e6073')
+sha512sums=('ba43c4867e255f4ea3788b79c3863894624e6f5b422b142fff5ffbd094ed79857f7f90931c899a1a348a78124536296b2dcc3d680926c255bd8bab25b0e9e310')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
