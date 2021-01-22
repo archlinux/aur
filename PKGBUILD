@@ -1,18 +1,19 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=android-messages-desktop
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="Android Messages as a cross-platform desktop app"
 arch=('x86_64')
-#url="https://github.com/chrisknepper/android-messages-desktop"
 url="https://github.com/OrangeDrangon/android-messages-desktop"
 license=('MIT')
-depends=('electron' 'libnotify' 'libappindicator-gtk3')
+depends=('electron')
 makedepends=('git' 'yarn')
+optdepends=('libnotify: desktop notifications'
+            'libappindicator-gtk3: tray icon')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('a17a635d34cbde3fbe44f9da2955e59d4559047849d80d762989f4bd480d7d5e'
+sha256sums=('4aca79cd70cf99628179d9970f9287bec2b15d8b6ce70a0e622e583a06171098'
             'ef967c944762e6032c78db578be46a89e5eac2bc8bee856e21d67a6029e1dc69'
             '1bf16b8864712b0c1de72d8c3764db14b75ecf64dae44d206a26aa036ac53b1a')
 

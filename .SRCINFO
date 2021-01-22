@@ -1,6 +1,6 @@
 pkgbase = android-messages-desktop
 	pkgdesc = Android Messages as a cross-platform desktop app
-	pkgver = 4.4.0
+	pkgver = 4.5.0
 	pkgrel = 1
 	url = https://github.com/OrangeDrangon/android-messages-desktop
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = android-messages-desktop
 	makedepends = git
 	makedepends = yarn
 	depends = electron
-	depends = libnotify
-	depends = libappindicator-gtk3
-	source = android-messages-desktop-4.4.0.tar.gz::https://github.com/OrangeDrangon/android-messages-desktop/archive/v4.4.0.tar.gz
+	optdepends = libnotify: desktop notifications
+	optdepends = libappindicator-gtk3: tray icon
+	source = android-messages-desktop-4.5.0.tar.gz::https://github.com/OrangeDrangon/android-messages-desktop/archive/v4.5.0.tar.gz
 	source = android-messages-desktop.sh
 	source = android-messages-desktop.desktop
-	sha256sums = a17a635d34cbde3fbe44f9da2955e59d4559047849d80d762989f4bd480d7d5e
+	sha256sums = 4aca79cd70cf99628179d9970f9287bec2b15d8b6ce70a0e622e583a06171098
 	sha256sums = ef967c944762e6032c78db578be46a89e5eac2bc8bee856e21d67a6029e1dc69
 	sha256sums = 1bf16b8864712b0c1de72d8c3764db14b75ecf64dae44d206a26aa036ac53b1a
 
