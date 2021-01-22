@@ -7,6 +7,7 @@ arch=('any')
 url="https://gitlab.com/hrdwrrsk/AdwMod-theme"
 license=('GPL3')
 makedepends=('git' 'meson' 'sassc')
+optdepends=('gnome-shell: if not installed during build, will use styles for last gnome-shell version available')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'adwaita-extended-git')
 replaces=('adwaita-extended-git')

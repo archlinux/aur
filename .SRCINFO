@@ -8,6 +8,7 @@ pkgbase = adwmod-theme-git
 	makedepends = git
 	makedepends = meson
 	makedepends = sassc
+	optdepends = gnome-shell: if not installed during build, will use styles for last gnome-shell version available
 	provides = adwmod-theme
 	conflicts = adwmod-theme
 	conflicts = adwaita-extended-git
