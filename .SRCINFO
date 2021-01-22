@@ -1,0 +1,28 @@
+pkgbase = ros-melodic-web-video-server
+	pkgdesc = ROS - HTTP Streaming of ROS Image Topics in Multiple Formats.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = http://ros.org/wiki/web_video_server
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-cv-bridge
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-async-web-server-cpp
+	makedepends = ros-melodic-image-transport
+	makedepends = ros-melodic-roslib
+	makedepends = ffmpeg
+	depends = ros-melodic-roslib
+	depends = ros-melodic-image-transport
+	depends = ros-melodic-async-web-server-cpp
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-cv-bridge
+	depends = ffmpeg
+	source = web_video_server::git+https://github.com/RobotWebTools-release/web_video_server-release.git#tag=release/melodic/web_video_server/0.2.1-1
+	md5sums = SKIP
+
+pkgname = ros-melodic-web-video-server
+
