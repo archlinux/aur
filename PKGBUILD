@@ -26,25 +26,25 @@ sha512sums=(
 )
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
+    cd "$srcdir/$_pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 }
 
 prepare() {
-	cd "$srcdir/$_pkgname"
-	sed -i 's|./client|/usr/bin/shitama-client|g' client-ui-qt/mainwindow.cpp
+    cd "$srcdir/$_pkgname"
+    sed -i 's|./client|/usr/bin/shitama-client|g' client-ui-qt/mainwindow.cpp
 
     sed -i 's|shitama.tldr.run|shitama.sakuya.love|g' client/lib/client.go
     sed -i 's|115.159.87.170|115.159.91.168|g' client/lib/client.go
 }
 
 build() {
-	cd "$srcdir/$_pkgname/client-ui-qt"
+    cd "$srcdir/$_pkgname/client-ui-qt"
     export SHITAMA_BUILD_ID=`git rev-list --count HEAD`
     export SHITAMA_COMMIT=`git rev-parse HEAD`
-	qmake
-	make all -j8
+    qmake
+    make all -j8
 
     cd "$srcdir/$_pkgname"
     ### 如果你可以正常的下载 go 的依赖库，可选择注释掉下一行 ###
@@ -53,7 +53,7 @@ build() {
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/bin"
+    mkdir -p "$pkgdir/usr/bin"
     install -D -m755 "$srcdir/$_pkgname/build/client/client" "$pkgdir/usr/bin/shitama-client"
     install -D -m755 "$srcdir/$_pkgname/build/client-ui-qt/Shitama" "$pkgdir/usr/bin/shitama"
 
