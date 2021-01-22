@@ -3,13 +3,13 @@
 
 pkgname=aarch64-linux-musl
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight implementation of C standard library'
 arch=('i686' 'x86_64')
 url='https://musl.libc.org'
 license=('MIT')
 options=('staticlibs' '!buildflags' '!strip')
-makedepends=('aarch64-linux-gnu-binutils' 'aarch64-linux-gnu-gcc')
+depends=('aarch64-linux-gnu-gcc')
 validpgpkeys=('836489290BB6B70F99FFDA0556BCDB593020450F')
 source=(https://musl.libc.org/releases/musl-${pkgver}.tar.gz{,.asc})
 sha256sums=('68af6e18539f646f9c41a3a2bb25be4a5cfa5a8f65f0bb647fd2bbfdf877e84b'

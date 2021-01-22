@@ -1,13 +1,12 @@
 pkgbase = aarch64-linux-musl
 	pkgdesc = Lightweight implementation of C standard library
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://musl.libc.org
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = aarch64-linux-gnu-binutils
-	makedepends = aarch64-linux-gnu-gcc
+	depends = aarch64-linux-gnu-gcc
 	options = staticlibs
 	options = !buildflags
 	options = !strip
