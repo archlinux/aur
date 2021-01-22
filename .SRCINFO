@@ -1,0 +1,14 @@
+pkgbase = flutter-chromium
+	pkgdesc = Environment variable setting to use chromium with flutter instead of chrome
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	optdepends = flutter-beta
+	source = flutter-chromium.sh
+	source = flutter-chromium.csh
+	sha512sums = f2c331e6d153979bd178f94cdaf26927ad8df6dd0bcd1299ba57176a1b6c7723f0e32d0b0de7b919279150936ee0acf4fac66700bd4eebc1bb03a8c95b340c3c
+	sha512sums = a4060e7144db16d45a3f0ca41a2eccc1c266df40571dddaeb00cb03a640de00612a12ff95a55fb13ee248419d186a78f16d05ba3aed305a55d4961ef87e62833
+
+pkgname = flutter-chromium
+
