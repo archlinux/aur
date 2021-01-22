@@ -1,4 +1,4 @@
-# Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
+# Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=libfreenect
 pkgver=0.6.1
