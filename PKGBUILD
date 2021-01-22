@@ -1,7 +1,7 @@
 # Maintainer: jojii <jojii@gmx.net>
 pkgname=mediad
 _pkgname=MediaD
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A Simple and lightweight daemon to handle keyboard media buttons easily"
 url="https://github.com/JojiiOfficial/${_pkgname}"
