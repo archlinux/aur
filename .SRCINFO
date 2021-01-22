@@ -1,6 +1,6 @@
 pkgbase = lib_amxm-git
 	pkgdesc = Generic C-implementation of modular support
-	pkgver = v0.0.9.r0.gf7fa1f4
+	pkgver = v0.0.10.r0.g7098615
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/libraries/libamxm
 	arch = any
