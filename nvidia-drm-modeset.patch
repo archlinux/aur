@@ -1,0 +1,27 @@
+From c210b73e6c66054b34a5c5d87216504149cc94d9 Mon Sep 17 00:00:00 2001
+From: Cabopust <cabopust@yandex.ru>
+Date: Wed, 6 Jan 2021 21:55:05 +0300
+Subject: [PATCH] nvidia-drm.modeset=1 by default
+
+---
+ kernel/nvidia-drm/nvidia-drm-linux.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/kernel/nvidia-drm/nvidia-drm-linux.c b/kernel/nvidia-drm/nvidia-drm-linux.c
+index f8fcde4..9b19ffb 100644
+--- a/kernel/nvidia-drm/nvidia-drm-linux.c
++++ b/kernel/nvidia-drm/nvidia-drm-linux.c
+@@ -41,8 +41,8 @@
+ 
+ MODULE_PARM_DESC(
+     modeset,
+-    "Enable atomic kernel modesetting (1 = enable, 0 = disable (default))");
+-bool nv_drm_modeset_module_param = false;
++    "Enable atomic kernel modesetting (1 = enable (default), 0 = disable)");
++bool nv_drm_modeset_module_param = true;
+ module_param_named(modeset, nv_drm_modeset_module_param, bool, 0400);
+ 
+ void *nv_drm_calloc(size_t nmemb, size_t size)
+-- 
+2.30.0
+
