@@ -16,7 +16,7 @@ _pkgname=asmotor
 
 
 pkgname=${_pkgname}-git
-pkgver=1.1.1.r0.gfc568c7
+pkgver=1.1.1.r8.g320ae2d
 pkg_name_ver="${_pkgname}-${pkgver//_/-}"
 
 pkgrel=1
