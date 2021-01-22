@@ -1,10 +1,11 @@
 pkgbase = journalwatch
 	pkgdesc = Filter error messages from systemd journal, similar to logcheck/logwatch.
 	pkgver = 1.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pypi.python.org/pypi/journalwatch/
 	arch = any
 	license = GPL
+	makedepends = python-setuptools
 	depends = python
 	depends = python-systemd
 	options = !emptydirs
