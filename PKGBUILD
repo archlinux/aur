@@ -11,29 +11,29 @@ pkgbase="${_pkgname}-git"
 #_srcdir="${pkgbase}"
 _srcdir='ImageMagick'
 pkgname=("${pkgbase}"{,-doc})
-pkgver=7.0.8.45.r15636.g909488f04
+pkgver=7.0.10.59.r18323.gf548a590c
 pkgrel=1
 pkgdesc='An image viewing/manipulation program'
 arch=('x86_64')
 url="https://www.imagemagick.org/"
 license=(custom)
-makedepends=('ghostscript' 'openexr' 'libwmf' 'librsvg' 'libxml2' 'openjpeg2' 'libraw' 'opencl-headers' 'libwebp'
-             'chrpath' 'ocl-icd' 'glu' 'ghostpcl' 'ghostxps' 'libheif' 'jbigkit' 'lcms2' 'libxext' 'liblqr' 'libraqm' 'libpng')
+makedepends=('ghostscript' 'openexr' 'libwmf' 'librsvg' 'libxml2' 'openjpeg2' 'libraw' 'opencl-headers' 'libwebp' 'libzip'
+             'chrpath' 'ocl-icd' 'glu' 'ghostpcl' 'ghostxps' 'libheif' 'jbigkit' 'lcms2' 'libxext' 'liblqr' 'libraqm' 'libpng' 'djvulibre')
 #makedepends+=('libltdl' 'libxt' 'fontconfig')
 makedepends+=('patch' 'git')
 checkdepends=(gsfonts ttf-dejavu)
 _relname=ImageMagick-${pkgver%%.*}
 _verwatch=("${url/script/download/}" 'ImageMagick-\([-0-9\.]\+\)\.tar\.bz2' 'l')
-_archlink="@@@::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/@@@?h=packages/${_pkgname}"
+_archlink='https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/imagemagick/trunk/@@@'
 source=(
   #"${_srcdir}::git+http://git.imagemagick.org/repos/ImageMagick.git"
   "git+https://github.com/ImageMagick/ImageMagick.git"
   "${_archlink//@@@/arch-fonts.diff}"
-  "${_archlink//@@@/IM7-GS-policy.patch}"
 )
+md5sums=('SKIP'
+         '9772162111fe9c74b3299cadc973a889')
 sha256sums=('SKIP'
-            'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73'
-            'f20c09860da65a4259ec9627ceeca7d993949b7460fa199c5ffd874633814cf6')
+            'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 #validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')  # Lexie Parsimoniae
 
 pkgver() {
@@ -53,8 +53,6 @@ prepare() {
   # Fix up typemaps to match our packages, where possible
   patch -p1 -i ../arch-fonts.diff
 
-  # Work around ghostscript security issues https://bugs.archlinux.org/task/59778
-  patch -p1 -i ../IM7-GS-policy.patch
   set +u
 }
 
@@ -66,6 +64,7 @@ if [ ! -s 'Makefile' ]; then
   ./configure \
     --prefix='/usr' \
     --sysconfdir='/etc' \
+    --enable-shared \
     --with-dejavu-font-dir='/usr/share/fonts/TTF' \
     --with-gs-font-dir='/usr/share/fonts/gsfonts' \
     PSDelegate='/usr/bin/gs' \
@@ -73,7 +72,8 @@ if [ ! -s 'Makefile' ]; then
     PCLDelegate='/usr/bin/gpcl6' \
     --enable-hdri \
     --enable-opencl \
-    --with-gslib \
+    --without-gslib \
+    --with-djvu \
     --with-lqr \
     --with-modules \
     --with-openexr \
@@ -85,7 +85,6 @@ if [ ! -s 'Makefile' ]; then
     --with-wmf \
     --with-xml \
     --without-autotrace \
-    --without-djvu \
     --without-dps \
     --without-fftw \
     --without-fpx \
@@ -109,7 +108,6 @@ build() {
 check_disabled() {
   cd "${_srcdir}"
   ulimit -n 4096
-  sed -e '/validate-formats/d' -i Makefile # these fail due to the security patch
   make -s -j1 check
 }
 
@@ -126,6 +124,7 @@ package_imagemagick-git() {
               'ocl-icd: OpenCL support'
               'openexr: OpenEXR support'
               'openjpeg2: JPEG2000 support'
+              'djvulibre: DJVU support'
               'pango: Text rendering'
               'imagemagick-doc: manual and API docs')
   options=(!emptydirs libtool)
@@ -147,6 +146,9 @@ package_imagemagick-git() {
 
 # Split docs
   mv "${pkgdir}/usr/share/doc" "${srcdir}/docpkg/usr/share/"
+
+# Harden security policy https://bugs.archlinux.org/task/62785
+  sed -e '/<\/policymap>/i \ \ <policy domain="delegate" rights="none" pattern="gs" \/>' -i "$pkgdir"/etc/ImageMagick-7/policy.xml
   set +u
 }
 
