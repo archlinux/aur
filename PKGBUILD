@@ -17,16 +17,30 @@ sha256sums=('a6fde671c7be86cca2332e7f58ff9f20df0c4f4708d88ae415b71d9d0e23dd09'
             '4f91e842bd92a3312943854383e4929f9baf6cb684a7027aa55edcce1bf4ca16'
             'a2e2b932eb0bc2ad2413b7f39eb9fbdb517f5670367413f76d718d5d270996f7')
 
-build() {
+_ensure_local_nvm() {
+	# lets be sure we are starting clean
+	which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+	export NVM_DIR="$srcdir/.nvm"
+
+	# The init script returns 3 if version
+	# specified in ./.nvrc is not (yet) installed in $NVM_DIR
+	# but nvm itself still gets loaded ok
+	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
+
+prepare() {
 	# Use nodejs v10 per upstream
 	export npm_config_cache="$srcdir/npm-cache"
 	local npm_prefix=$(npm config get prefix)
 	local nodeversion='10.23.1'
 	npm config delete prefix
-	source /usr/share/nvm/init-nvm.sh
+	_ensure_local_nvm
 	nvm install "$nodeversion" && nvm use "$nodeversion"
+}
 
+build() {
 	cd "${pkgname%-*}-${pkgname%-*}-release-$pkgver"
+	_ensure_local_nvm
 	npm install
 	node dist -l --custom-desktop-release --unpacked
 
