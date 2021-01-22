@@ -26,7 +26,7 @@ depends=('impacket' 'python' 'python-aiowinreg' 'python-asn1crypto'
 	 'python-soupsieve' 'python-termcolor' 'python-terminaltables'
 	 'python-tqdm' 'python-urllib3' 'python-wcwidth' 'python-werkzeug'
 	 'python-winacl' 'python-winsspi' 'python-xmltodict' 'python-zope-event'
-	 'python-zope-interface' 'python-pywerview-git' 'python-gevent')
+	 'python-zope-interface' 'python-pywerview-git' 'python-gevent' 'python-neo4j')
 
 makedepends=('python-setuptools' 'python-poetry')
 source=("${url}/archive/v${pkgver}.tar.gz")
