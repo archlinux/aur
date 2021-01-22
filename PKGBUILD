@@ -3,8 +3,8 @@
 # Github Contributor: Michael Herold <https://github.com/michaelherold>
 
 pkgname=heroku-cli
-pkgver=7.47.7
-pkgrel=2
+pkgver=7.47.11
+pkgrel=1
 _builddir=cli-$pkgver-$pkgrel
 pkgdesc="CLI to manage Heroku apps and services with forced auto-update removed"
 arch=('any')
@@ -15,8 +15,8 @@ makedepends=('npm' 'perl')
 optdepends=('git: Deploying to Heroku')
 conflicts=('heroku-cli-bin' 'heroku-client-standalone' 'heroku-toolbelt' 'ruby-heroku')
 source=("https://github.com/heroku/cli/archive/v$pkgver.tar.gz")
-sha256sums=('1d6dfe8c86d7c264b7eab607d77d62c3f29bed24c6b7b08808debed2d77d4bf1')
-sha512sums=('7953df70a2327c675823de3605f8e95e9eb9fc4c7bdb4f01b295e402ea5f7ed5a4f816f1d0e5305f756159637bcba520a28899e3310b208d9283896bb0fb1eec')
+sha256sums=('68f5e836226eea35d1ead357da761955679793e666bd600511ca8027b05de95e')
+sha512sums=('8867f931046f7a0fdc2d62feea2b368bb578ad9860cc28a876e27ea17d3410a7bc55e657b1c9ba14309f60a0c5fda46b2b49524f04dac3907e0144f6f253f0a4')
 options=('!strip')
 provides=('heroku' 'heroku-cli')
 
@@ -39,13 +39,18 @@ prepare() {
 
   export PATH
 
-
   pushd "$srcdir"
 
     pushd "cli-$pkgver"
 
-      # install packaging tools
-      npm install
+      # install packaging tools; install fails now unless installed with yarn >:(
+      hasYarn="$(which yarn 2> /dev/null)"
+
+      if [ -z "$hasYarn" ]; then
+        npm install -g yarn
+      fi
+
+      yarn install
 
       pushd packages/cli
 
