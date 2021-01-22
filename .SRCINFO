@@ -1,14 +1,14 @@
 pkgbase = gogextract-git
 	pkgdesc = Unpack GOG Linux installers
-	pkgver = r2.6601b32
-	pkgrel = 2
-	url = https://github.com/Yepoleb/gogextract
+	pkgver = r93.71b23e0
+	pkgrel = 1
+	url = https://github.com/IroAlexis/gogextract
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = python
+	depends = libzip
 	provides = gogextract
-	source = git+https://github.com/Yepoleb/gogextract.git
+	source = git+https://github.com/IroAlexis/gogextract.git
 	sha256sums = SKIP
 
 pkgname = gogextract-git

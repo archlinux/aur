@@ -1,14 +1,14 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: xhyi <xhahaya@gmail.com>
 
 _pkgname=gogextract
 pkgname=${_pkgname}-git
-pkgver=r2.6601b32
-pkgrel=2
+pkgver=r93.71b23e0
+pkgrel=1
 pkgdesc='Unpack GOG Linux installers'
 arch=('any')
-url='https://github.com/Yepoleb/gogextract'
+url='https://github.com/IroAlexis/gogextract'
 license=('MIT')
-depends=('python')
+depends=('libzip')
 makedepends=('git')
 provides=("${_pkgname}")
 source=("git+${url}.git")
@@ -19,8 +19,14 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+    cd "$srcdir/${_pkgname}"
+
+    make
+}
+
 package() {
-  install -Dm755 "${_pkgname}/${_pkgname}.py" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 "${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" "${_pkgname}/README.md"
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgname}/LICENSE"
 }
