@@ -8,7 +8,7 @@ pkgname=$_pkgname-git
 pkgver=r238.fcd2764
 pkgrel=1
 pkgdesc='Project X-Ray (Xilinx 7-series bit-stream format) database'
-arch=('x86_64')
+arch=('any')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 url="https://github.com/SymbiFlow/$_pkgname"

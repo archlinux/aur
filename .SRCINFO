@@ -3,7 +3,7 @@ pkgbase = prjxray-db-git
 	pkgver = r238.fcd2764
 	pkgrel = 1
 	url = https://github.com/SymbiFlow/prjxray-db
-	arch = x86_64
+	arch = any
 	license = custom:CC0
 	makedepends = git
 	provides = prjxray-db=r238.fcd2764
