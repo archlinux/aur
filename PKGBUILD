@@ -4,7 +4,7 @@
 
 pkgname=mirrormagic-bin
 _pkgname=mirrormagic
-pkgver=2.0.2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Arcade style game like Deflektor (C64) or Mindbender (Amiga)."
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=("http://www.artsoft.org/RELEASES/unix/mirrormagic/$_pkgname-$pkgver.tar.
         "$_pkgname.sh"
         "mirrormagic.desktop")
 
-md5sums=('32fd3909c1e27f493d89bc2276da6744'
+md5sums=('2670a44a98c4095a8360995ada533c64'
          '7ba2849d0c79415dabc3068ca9d7b5ba'
          '64ebdbe659a2fd5efd3979350cf9bbec')
 
