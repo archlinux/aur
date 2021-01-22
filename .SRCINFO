@@ -1,7 +1,7 @@
 pkgbase = cinema-git
 	pkgdesc = Video player and video collection manager
-	pkgver = r11.ac81a73
-	pkgrel = 4
+	pkgver = r51.36e2955
+	pkgrel = 1
 	url = https://invent.kde.org/maui/cinema
 	arch = x86_64
 	groups = maui-apps
@@ -16,9 +16,7 @@ pkgbase = cinema-git
 	provides = cinema
 	conflicts = cinema
 	source = git+https://invent.kde.org/maui/cinema.git
-	source = org.kde.cinema.desktop
 	sha256sums = SKIP
-	sha256sums = 35ffe4295ae6170ca65ecb235b26fe025f14b8792fe9f82191af2511c9b33e0a
 
 pkgname = cinema-git
 
