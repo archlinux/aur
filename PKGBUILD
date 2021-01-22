@@ -8,6 +8,7 @@ pkgdesc="A modern PAGER for viewing logs, get more than most in less time. Writt
 arch=('x86_64' 'i686' 'arm64')
 url="https://github.com/tigrawap/slit"
 license=('MIT')
+depends=('glibc')
 makedepends=('go')
 options=('!strip')
 source=("$pkgname-$pkgver.tgz::https://github.com/tigrawap/slit/archive/1.3.0.tar.gz")

@@ -8,6 +8,7 @@ pkgbase = slit
 	arch = arm64
 	license = MIT
 	makedepends = go
+	depends = glibc
 	options = !strip
 	source = slit-1.3.0.tgz::https://github.com/tigrawap/slit/archive/1.3.0.tar.gz
 	sha256sums = 052b8d91d7158336adb4d04e5cf127be41d1c408aa896bfa6cc7fa1a0a16d014
