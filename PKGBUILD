@@ -1,29 +1,27 @@
-# Maintainer: Nico <desoxhd@gmail.com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: librewish
 pkgname=whitesur-kvantum-theme-git
-_themeName=WhiteSur
-_gitname="$_themeName-kde"
-pkgver=r23.f8277d2
+_gitname=WhiteSur-kde
+pkgver=r33.a7f777c
 pkgrel=1
-pkgdesc="MacOS big sur like theme for KDE Plasma"
+pkgdesc="WhiteSur theme for Kvantum"
 arch=('any')
-url="https://github.com/vinceliuice/${_gitname}"
+url="https://github.com/vinceliuice/WhiteSur-kde"
 license=('GPL3')
 depends=('kvantum-qt5')
-optdepends=( 'whitesur-icon-theme-git: matching icon theme' 'whitesur-cursor-theme-git: matching cursor theme' 'whitesur-gtk-theme-git: matching gtk theme' ) 
 makedepends=('git')
-source=("git+${url}.git")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}" 'whitesur-kde-theme-git')
+source=('git+https://github.com/vinceliuice/WhiteSur-kde.git')
 sha256sums=('SKIP')
-conflicts=('whitesur-kde-theme-git')
 
 pkgver() {
-   cd ${_gitname}
-   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/$_gitname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-   # make folders
-   mkdir -p "${pkgdir}/usr/share/Kvantum"
-   # kvantum theme
-   cp -r "${srcdir}/${_gitname}/Kvantum"/* "${pkgdir}/usr/share/Kvantum"
-
-} 
+	cd "$srcdir/$_gitname"
+	install -d "$pkgdir/usr/share"
+	cp -r Kvantum "$pkgdir/usr/share"
+}
