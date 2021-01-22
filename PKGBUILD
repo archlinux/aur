@@ -6,7 +6,10 @@ pkgver=1.4.7
 pkgrel=1
 pkgdesc="Private messaging from your desktop"
 arch=('x86_64')
-url="https://github.com/loki-project/session-desktop"
+
+#url="https://github.com/loki-project/session-desktop"
+url="https://github.com/oxen-io/session-desktop"
+
 license=('GPL3')
 depends=('gtk2' 'libnotify' 'libxtst' 'nss' 'xdg-utils' 'libxss')
 provides=('session-desktop-appimage')
@@ -18,7 +21,9 @@ conflicts=('session-desktop' 'session-desktop-bin')
 
 #_bin="session-messenger-desktop-linux-x86_64-${pkgver}.AppImage"
 _bin="session-desktop-linux-x86_64-${pkgver}.AppImage"
-source=("${_bin}::https://github.com/loki-project/session-desktop/releases/download/v${pkgver}/${_bin}"
+
+#source=("${_bin}::https://github.com/loki-project/session-desktop/releases/download/v${pkgver}/${_bin}"
+source=("${_bin}::https://github.com/oxen-io/session-desktop/releases/download/v${pkgver}/${_bin}"
         'session-desktop.desktop'
         'session-desktop.png')
 
