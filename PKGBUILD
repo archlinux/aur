@@ -1,11 +1,11 @@
 # Maintainer: Benjamin Winger <bmw@disroot.org>
 
-pkgname=fasteners-git
+pkgname=python-fasteners-git
 pkgver=0.15.r34.g03e31bb
 pkgrel=1
 pkgdesc="A python package that provides useful locks."
-provides=('fasteners')
-conflicts=('fasteners')
+provides=('python-fasteners')
+conflicts=('python-fasteners')
 arch=(any)
 url="https://github.com/harlowja/fasteners"
 license=(Apache)
