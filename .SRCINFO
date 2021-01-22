@@ -6,6 +6,7 @@ pkgbase = shelby-bin
 	arch = x86_64
 	license = GPL3
 	provides = shelby
+	conflicts = shelby-git
 	source = shelby_1.0.2_Linux_x86_64.tar.gz::https://github.com/athul/shelby/releases/download/v1.0.2/shelby_1.0.2_Linux_x86_64.tar.gz
 	sha256sums = 0feed5fa90cb9fb20ca48390402aed78acb68b70664d73a112f77ac396048b89
 
