@@ -1,14 +1,14 @@
 pkgbase = python-stripe
 	pkgdesc = Stripe python bindings
-	pkgver = 2.55.0
+	pkgver = 2.55.1
 	pkgrel = 1
 	url = https://github.com/stripe/stripe-python
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python>=3.4
-	source = https://pypi.python.org/packages/source/s/stripe/stripe-2.55.0.tar.gz
-	sha256sums = 2eebf023595e8aa9d65d8b46ccc3c716185bb9625d0e39d3956282fd7525848d
+	source = https://pypi.python.org/packages/source/s/stripe/stripe-2.55.1.tar.gz
+	sha256sums = 6b70e2cf87cfbe0cb891b725b690495bc3d34ab0d82545a5989ecd3b5fa83e2a
 
 pkgname = python-stripe
 
