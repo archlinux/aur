@@ -1,7 +1,7 @@
-diff --git a/blackmagic-11.7a12/blackmagic_lib.c b/blackmagic-11.7a12/blackmagic_lib.c.orig
+diff --git a/blackmagic-12.0a14/blackmagic_lib.c b/blackmagic-12.0a14/blackmagic_lib.c.orig
 index 5494372..d1685e2 100644
---- a/blackmagic-11.7a12/blackmagic_lib.c
-+++ b/blackmagic-11.7a12/blackmagic_lib.c.orig
+--- a/blackmagic-12.0a14/blackmagic_lib.c
++++ b/blackmagic-12.0a14/blackmagic_lib.c.orig
 @@ -676,7 +676,12 @@ dl_get_user_pages(void *task_ptr, void *ptr, unsigned long size, unsigned long *
  #else
  	down_read(&current_task->mm->mmap_sem);

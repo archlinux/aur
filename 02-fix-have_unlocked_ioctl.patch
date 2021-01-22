@@ -1,7 +1,7 @@
-diff --git a/blackmagic-11.7a12/blackmagic_core.c b/blackmagic-11.7a12/blackmagic_core.c
+diff --git a/blackmagic-12.0a14/blackmagic_core.c b/blackmagic-12.0a14/blackmagic_core.c
 index 2acbdd6..8d4f332 100644
---- a/blackmagic-11.7a12/blackmagic_core.c
-+++ b/blackmagic-11.7a12/blackmagic_core.c
+--- a/blackmagic-12.0a14/blackmagic_core.c
++++ b/blackmagic-12.0a14/blackmagic_core.c
 @@ -41,6 +41,12 @@
  
  #include "blackmagic_core.h"
