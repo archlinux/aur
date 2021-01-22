@@ -2,13 +2,13 @@
 
 pkgname=sonic2013-git
 pkgver=r191.1046e22
-pkgrel=1
+pkgrel=2
 pkgdesc='A full decompilation of Sonic 1 & 2 (2013).'
 arch=('any')
 url='https://github.com/Rubberduckycooly/Sonic-1-2-2013-Decompilation'
 license=('unknown')
 makedepends=('git')
-depends=('sdl2' 'libogg' 'libtheora' 'libvorbis')
+depends=('sdl2' 'libogg' 'libvorbis')
 provides=(sonic2013)
 source=(
 	"git+${url}.git"
