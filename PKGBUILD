@@ -3,7 +3,7 @@
 pkgname=tauon-music-box
 _pkgname=tauonmb
 _gitname=TauonMusicBox
-pkgver=6.4.7
+pkgver=6.4.8
 pkgrel=1
 pkgdesc="A modern streamlined music player"
 arch=('any')
@@ -25,7 +25,7 @@ depends=('python-pillow'
          'python-beautifulsoup4'
          'python-requests'
          'python-dbus'
-         'python-pulse-control' # AUR
+         'python-pulsectl' # AUR
          'ffmpeg'
          'flac'
          'gst-plugins-good'
@@ -79,4 +79,4 @@ package() {
     install -Dm755 "extra/tauonmb.sh" "$pkgdir/usr/bin/tauon"
 }
 
-md5sums=('abe277db4d3c6ea8597ad2d8e97fbc1d')
+md5sums=('0669b0b5214112473eda69291697a79f')
