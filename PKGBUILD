@@ -2,7 +2,7 @@
 pkgname=gnome-shell-extension-pop-shell-bin
 pkgdesc='Pop Shell - Tiling window management in Gnome (precompiled)'
 pkgver=1.2.0
-pkgrel=3
+pkgrel=4
 arch=(any)
 url='https://github.com/pop-os/shell'
 license=('GPLv3')
@@ -36,6 +36,8 @@ package() {
     local keybindings_dir='usr/share/gnome-control-center/keybindings'
 
     install -Dm644 *.xml -t "${pkgdir}/${keybindings_dir}"
+    install -Dm644 "${srcdir}/extension/schemas/org.gnome.shell.extensions.pop-shell.gschema.xml" \
+		-t "${pkgdir}/usr/share/glib-2.0/schemas"
     install -Dm755 configure.sh "${pkgdir}/${extension_dir}/scripts/configure.sh"
     cp -r "${srcdir}"/extension/* "${pkgdir}/${extension_dir}"
 }
