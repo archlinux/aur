@@ -5,28 +5,31 @@
 
 # Maintainer: nbebaw
 pkgname=boostchanger-git
-pkgver=3.8
-pkgrel=0
+pkgver=4.0
+pkgrel=2
 pkgdesc="Control your CPU Turbo Boost with this App"
 arch=('any')
-url="https://gitlab.com/nbebaw/boostchanger"
+url="https://github.com/nbebaw/boostchanger"
 license=('MIT')
-makedepends=('git')
-source=("https://gitlab.com/nbebaw/boostchanger/-/archive/v$pkgver/boostchanger-v$pkgver.tar.gz")
+makedepends=('git' 'wget' 'unzip')
+source=("https://github.com/nbebaw/boostchanger/releases/download/v$pkgver.$pkgrel/boostchanger-$pkgver.$pkgrel.zip")
 md5sums=('SKIP')
 
 prepare() {
-	pkgverold=3.6
-	rm -rf ${pkgdir}/opt/boostchanger-v$pkgverold
-	tar -xf boostchanger-v$pkgver.tar.gz
+	pkgverold=4.0.1
+	rm -rf ${pkgdir}/opt/boostchanger-$pkgverold
+	unzip -d boostchanger-$pkgver.$pkgrel boostchanger-$pkgver.$pkgrel.zip 
 }
 
 package() {
 	mkdir -p ${pkgdir}/opt
-        cd boostchanger-v$pkgver/app
-        cp -r boostchanger-v$pkgver ${pkgdir}/opt	
-	install -Dm755 boostchanger.sh ${pkgdir}/usr/bin/boostchanger
-	install -Dm644 boostchanger.desktop ${pkgdir}/usr/share/applications/boostchanger.desktop
-	install -Dm644 boostchanger.png ${pkgdir}/usr/share/pixmaps/boostchanger.png
+	cp -r boostchanger-$pkgver.$pkgrel ${pkgdir}/opt
+	wget https://github.com/nbebaw/boostchanger/archive/v$pkgver.$pkgrel.zip
+	unzip v$pkgver.$pkgrel.zip
+	install -Dm755 boostchanger-$pkgver.$pkgrel/build/boostchanger.sh ${pkgdir}/usr/bin/boostchanger
+	install -Dm644 boostchanger-$pkgver.$pkgrel/build/boostchanger.desktop ${pkgdir}/usr/share/applications/boostchanger.desktop
+	install -Dm644 boostchanger-$pkgver.$pkgrel/build/icon.png ${pkgdir}/usr/share/pixmaps/boostchanger.png
+	rm -rf boostchanger-$pkgver.$pkgrel
+	rm v$pkgver.$pkgrel.zip
 }
 
