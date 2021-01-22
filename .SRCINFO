@@ -1,6 +1,6 @@
 pkgbase = calibre-git
 	pkgdesc = Ebook management application
-	pkgver = 5.8.1.r74.g77658f4c95
+	pkgver = 5.10.0.r0.gbfc9a8d5c5
 	pkgrel = 1
 	url = https://calibre-ebook.com/
 	arch = i686
@@ -43,6 +43,7 @@ pkgbase = calibre-git
 	depends = python-unrardll
 	depends = python-pillow
 	depends = python-psutil
+	depends = python-py7zr
 	depends = python-pychm
 	depends = python-pygments
 	depends = python-pyqt5
