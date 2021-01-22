@@ -1,7 +1,7 @@
 pkgbase = motrix-git
 	pkgdesc = A full-featured download manager
-	pkgver = 1.5.15.r60.gc3400d9
-	pkgrel = 2
+	pkgver = 1.5.15.r63.gd020359
+	pkgrel = 3
 	url = https://motrix.app/
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = motrix-git
 	depends = aria2
 	depends = electron
 	depends = nodejs
-	provides = motrix=1.5.15.r60.gc3400d9
+	provides = motrix=1.5.15.r63.gd020359
 	conflicts = motrix
 	source = motrix::git+https://github.com/agalwood/Motrix.git
 	sha256sums = SKIP
