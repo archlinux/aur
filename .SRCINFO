@@ -1,0 +1,12 @@
+pkgbase = shelby-bin
+	pkgdesc = A fast, lightweight, minimal, shell prompt written in Go
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/athul/shelby
+	arch = x86_64
+	license = GNU General Public License v3.0
+	source = shelby_1.0.2_Linux_x86_64.tar.gz::https://github.com/athul/shelby/releases/download/v1.0.2/shelby_1.0.2_Linux_x86_64.tar.gz
+	sha256sums = 0feed5fa90cb9fb20ca48390402aed78acb68b70664d73a112f77ac396048b89
+
+pkgname = shelby-bin
+
