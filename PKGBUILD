@@ -6,13 +6,13 @@
 
 set -u
 pkgname='codeblocks-svn'
-pkgver=20.03.r12073
+pkgver=20.03.r12286
 pkgrel=1
 pkgdesc='An open source and cross-platform C/C++ IDE'
 arch=('i686' 'x86_64')
 url='http://www.codeblocks.org'
 license=('GPL')
-depends=('wxgtk' 'valgrind' 'bzip2' 'hicolor-icon-theme' 'gamin' 'hunspell' 'webkit2gtk')
+depends=('wxgtk2' 'valgrind' 'bzip2' 'hicolor-icon-theme' 'gamin' 'hunspell' 'webkit2gtk')
 makedepends=('boost' 'subversion' 'zip')
 provides=("codeblocks=${pkgver}")
 conflicts=('codeblocks' 'codeblocks-svn-noplugins')
