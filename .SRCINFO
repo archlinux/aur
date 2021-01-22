@@ -1,0 +1,27 @@
+pkgbase = sonic2013-git
+	pkgdesc = A full decompilation of Sonic 1 & 2 (2013).
+	pkgver = r191.1046e22
+	pkgrel = 1
+	url = https://github.com/Rubberduckycooly/Sonic-1-2-2013-Decompilation
+	install = sonic2013.install
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = sdl2
+	depends = libogg
+	depends = libtheora
+	depends = libvorbis
+	provides = sonic2013
+	source = git+https://github.com/Rubberduckycooly/Sonic-1-2-2013-Decompilation.git
+	source = sonic1-launcher
+	source = sonic1.desktop
+	source = sonic2-launcher
+	source = sonic2.desktop
+	sha256sums = SKIP
+	sha256sums = ab7f0a5cd733730b1b6935b3c18b4c99a8d005c140c23296f14a135d1cd1b1f7
+	sha256sums = 64f8afbdaa62a63fe9b55c2e0fafd419b80c3201f05e927b1381231ad05853e3
+	sha256sums = 90a8eedbd3ef840185b13be9168f8636bca35ac00c70f3dcf9bb8a5ed4baa15b
+	sha256sums = a909f52d6b7b4a0d8f0ec11ab5469da3178f494b48865c82f6219e3a97dc666c
+
+pkgname = sonic2013-git
+

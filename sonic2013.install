@@ -1,0 +1,7 @@
+post_install() {
+	echo "Use 'sonic1-launcher' and 'sonic2-launcher' to automatically run " \
+"'sonic2013' from 'sonic1' and 'sonic2' folders created in your " \
+"\$XDG_DATA_HOME or '~/.local/share' folder."
+	echo "Alternatively, you may simply run 'sonic2013' directly from any " \
+"folder containing compatible data files."
+}
