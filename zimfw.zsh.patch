@@ -14,7 +14,7 @@
      if (( ${#_zfunctions} )) print -R 'autoload -Uz '${_zfunctions}
      print -R ${(F)_zcmds}
    ) ${ztarget}
-+  chmod u+rX,g+rX,o+rX "${ZIM_HOME}" &>/dev/null
++  chmod -R u+rX,g+rX,o+rX "${ZIM_HOME}" &>/dev/null
  }
  
  _zimfw_build_login_init() {
@@ -33,7 +33,7 @@
  } \"\${@}\"
  "
    ) ${ztarget}
-+  chmod u+rX,g+rX,o+rX "${ZIM_HOME}" &>/dev/null
++  chmod -R u+rX,g+rX,o+rX "${ZIM_HOME}" &>/dev/null
  }
  
  _zimfw_build() {
