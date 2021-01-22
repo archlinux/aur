@@ -7,18 +7,14 @@ pkgdesc='Real-time microphone noise suppression on Linux.'
 arch=('x86_64')
 url=https://github.com/lawl/NoiseTorch
 license=('GPL3')
-depends=('noise-suppression-for-voice' 'pulseaudio' 'polkit')
+depends=('pulseaudio' 'polkit')
 makedepends=('git' 'go' 'cmake')
 provides=('noisetorch')
 conflicts=("noisetorch-bin" "noisetorch")
 install="${pkgname}.install"
 source=('git+https://github.com/lawl/NoiseTorch.git'
-        'main.patch'
-        'module.patch'
         "${pkgname}.install")
 sha256sums=('SKIP'
-            '43683b9604f046d0245ab4c45f9b2f7d9251b84e20743df7a72c9552ec2594c0'
-            'd21a06ced2e5ae8394f0c9f89a41141e4b3a798d6fcb8dd1d13f6068a3135777'
             'eb72a0bb2a89deac6cb4ddb35ed9385e744e7d47a90f8ffe904673d91c6611cd')
 
 pkgver() {
@@ -28,17 +24,14 @@ pkgver() {
 
 prepare() {
 	cd NoiseTorch
-	#git submodule init
-	#git config submodule.librnnoise_ladspa.url $srcdir/noise-suppression-for-voice
-	#git submodule update
-	patch -u main.go ../main.patch
-	patch -u module.go ../module.patch
 	export GOPATH="$srcdir/go"
 	go clean -modcache
 }
 
 build() {
-	cd NoiseTorch
+	cd NoiseTorch/c/ladspa
+	make
+	cd ${srcdir}/NoiseTorch
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
