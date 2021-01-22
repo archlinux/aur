@@ -1,7 +1,7 @@
 pkgbase = mirrormagic
 	pkgdesc = Arcade style game like Deflektor (C64) or Mindbender (Amiga).
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.artsoft.org/mirrormagic/
 	arch = i686
 	arch = x86_64
@@ -13,9 +13,11 @@ pkgbase = mirrormagic
 	source = http://www.artsoft.org/RELEASES/unix/mirrormagic/mirrormagic-3.0.0.tar.gz
 	source = mirrormagic.desktop
 	source = mirrormagic.sh
+	source = mirrormagic-3.0.0-variables-scope.patch
 	md5sums = 2670a44a98c4095a8360995ada533c64
 	md5sums = 62a7183f61086072e05893e11d5ea898
 	md5sums = e6c52ffc78c5e591cb643e9c575f550e
+	md5sums = 962f5a7b02cf32fc8f98c4ac1e4652a8
 
 pkgname = mirrormagic
 
