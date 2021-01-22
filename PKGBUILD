@@ -2,7 +2,7 @@
 
 pkgname=ifcplugin
 pkgver=3.1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Crypto Interface Web Browser Plugin for https://gosuslugi.ru/"
 arch=('i686' 'x86_64')
 url="https://ds-plugin.gosuslugi.ru/plugin/upload/Index.spr"
@@ -11,9 +11,9 @@ depends=("pcsc-tools" "glibc" "acsccid")
 install="ifcplugin.install"
 
 source_x86_64=("$pkgname-$pkgver.rpm::https://ds-plugin.gosuslugi.ru/plugin/upload/assets/distrib/IFCPlugin-x86_64.rpm")
-sha256sums_x86_64=("7fa0df9cda6c0b2352d5cf1530289cc8fe93e961f9f135178cef12aa8ad19957")
+sha256sums_x86_64=("c91c5a52d3fb21a7bb43f97ed97a6fba489af1399fe88631e9b859642863bfee")
 source_i686=("$pkgname-$pkgver.rpm::https://ds-plugin.gosuslugi.ru/plugin/upload/assets/distrib/IFCPlugin-i386.rpm")
-sha256sums_i686=("92c9253417a01bbb143fdb34448febf6e264b6b7d64aad3b47e3ece8bd181d57")
+sha256sums_i686=("ca61dd6e477c0db3ba79e482448fe5267fe71fbf1841d43eb41e4f7cb78ed3dd")
 
 package() {
   rm -rf "$srcdir/usr/lib64"
