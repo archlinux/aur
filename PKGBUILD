@@ -2,21 +2,29 @@
 # Maintainer: Justin Dray <justin@dray.be>
 
 _gemname=hiera-eyaml
+_commit='d4c3e16bf678a70a38d657ecca5239872958558c'
 pkgname=ruby-$_gemname
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc='OpenSSL Encryption backend for Hiera'
 arch=(any)
 url='https://github.com/voxpupuli/hiera-eyaml'
 license=(MIT)
-depends=(ruby ruby-optimist ruby-highline-1.6)
+depends=(ruby ruby-optimist ruby-highline)
 makedepends=(ruby-rdoc)
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+source=(${_gemname}-${pkgver}::git+https://github.com/voxpupuli/hiera-eyaml?signed#commit=${_commit})
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('ad9ac5628691a0e8ceb27d3ad7aeeee227eec5424b0c10b2b475b0b49aedb59d')
+validpgpkeys=('C10B6298A584A5632E254DA304D659E6BF1C4CC0')
+sha256sums=('SKIP')
+
+build() {
+  cd ${_gemname}-${pkgver}
+  gem build ${_gemname}.gemspec
+}
 
 package() {
+  cd ${_gemname}-${pkgver}
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
