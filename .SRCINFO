@@ -1,16 +1,16 @@
 pkgbase = ruby-ruby2_keywords
 	pkgdesc = Shim library for Module#ruby2_keywords
-	pkgver = 0.0.2
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/ruby/ruby2_keywords
 	arch = any
 	license = RUBY
 	makedepends = ruby-rdoc
 	depends = ruby
-	noextract = ruby2_keywords-0.0.2.gem
+	noextract = ruby2_keywords-0.0.4.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/ruby2_keywords-0.0.2.gem
-	sha1sums = 0be571aacb5d6a212a30af3f322a7000d8af1ef9
+	source = https://rubygems.org/downloads/ruby2_keywords-0.0.4.gem
+	sha1sums = 0637984a6ee09fccc6397c0d3becb9ad690524a7
 
 pkgname = ruby-ruby2_keywords
 

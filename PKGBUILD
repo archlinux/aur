@@ -2,7 +2,7 @@
 
 _gemname=ruby2_keywords
 pkgname=ruby-$_gemname
-pkgver=0.0.2
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='Shim library for Module#ruby2_keywords'
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('0be571aacb5d6a212a30af3f322a7000d8af1ef9')
+sha1sums=('0637984a6ee09fccc6397c0d3becb9ad690524a7')
 
 package() {
   local _gemdir="$(ruby -e 'puts Gem.default_dir')"
