@@ -1,0 +1,22 @@
+pkgbase = shitama-git
+	pkgdesc = 「Shitama」是一个类毛玉服务，可以为「东方非想天则」提供简单的端口转发功能。
+	pkgver = r34.fb2748e
+	pkgrel = 1
+	url = https://github.com/Si-Huan/shitama
+	install = shitama.install
+	arch = any
+	license = AGPL3
+	makedepends = git
+	makedepends = qt5-base
+	makedepends = go
+	makedepends = imagemagick
+	depends = qt5-charts
+	depends = hicolor-icon-theme
+	provides = shitama
+	source = shitama::git+https://github.com/Si-Huan/shitama.git
+	source = shitama.install
+	sha512sums = SKIP
+	sha512sums = 57c56b5b04d089042a19182504993454fdae52acb645895cda3bbaf064cf5cb8c1c0102b6a9e80b33df2f4ca5ce4ab7f7003f56c1fa5965a5e0cf503d3c475c0
+
+pkgname = shitama-git
+
