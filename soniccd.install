@@ -1,5 +1,6 @@
 post_install() {
-	echo 'Use soniccd-launcher to create the data folder inside your home '\
-"folder, copy the game's data files to it and then run it again to launch the "\
-'game.'
+	echo "Use 'soniccd-launcher' to automatically run 'soniccd' from a " \
+"'soniccd' folder in your \$XDG_DATA_HOME or '~/.local/share' folder."
+	echo "Alternatively, you may simply run 'soniccd' directly from any " \
+"folder containing compatible data files."
 }

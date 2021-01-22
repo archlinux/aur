@@ -11,16 +11,16 @@ if [[ ! -d "$data_folder" ]]; then
 	exit 1
 fi
 
-# Check if the user forgot to copy data files, if not exit with error code 1.
-#
-# If we don't do this check, the game will still create the settings and save
-# files, but not run (nor set an error code), which can be confusing to the
-# end user.
-if [[ -z "$(ls -A $data_folder)" ]]; then
-	echo "Data folder appears to be empty, please copy the game's data files" \
-"and run this launcher again."
-	exit 1
-fi
-
 cd "$data_folder"
 /usr/bin/soniccd
+
+exit_code=$?
+
+# When implemented, exit code 1 will indicate missing data.
+# Let's hope that doesn't change, right? :D
+if [[ $exit_code -eq 1 ]]; then
+	echo "'/usr/bin/soniccd' exited with error code 1, did you forget to" \
+"copy the game's data files to '$data_folder'?"
+fi
+
+exit $exit_code
