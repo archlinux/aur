@@ -1,3 +1,8 @@
+pre_install() {
+  # ugly permission fix
+  chmod 0777 /opt/todesk
+}
+
 post_install() {
   systemctl daemon-reload
   if systemctl -q is-active todeskd.service ;then
@@ -18,6 +23,18 @@ post_install() {
   $ECHO "\033[36m**************************************************************\033[0m"
 }
 
+pre_upgrade() {
+  pre_install
+}
+
 post_upgrade() {
   post_install
+}
+
+post_remove() {
+  # remove log file
+  rm -rf /opt/todesk/*.log
+
+  # clear tmp files
+  rm -rf /tmp/todesk*
 }

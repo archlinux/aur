@@ -3,21 +3,22 @@
 pkgname=todesk-bin
 _pkgname=${pkgname%-bin}
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote control and team work"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://www.todesk.cn/"
 license=('unknown')
 depends=('libxtst'
-         'freetype2'
-         'openssl-1.0')
+         'freetype2')
 makedepends=('tar')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 install="${_pkgname}.install"
 options=('!strip')
-source=("https://update.todesk.com/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('d7b7cc986e28160f700bab8e821c8fe31b3e3d46ed75def4c9158b64ed398a3b')
+source_x86_64=("https://update.todesk.com/${_pkgname}_${pkgver}_amd64.deb")
+source_aarch64=("https://update.todesk.com/${_pkgname}_${pkgver}_aarch64.deb")
+sha256sums_x86_64=('d7b7cc986e28160f700bab8e821c8fe31b3e3d46ed75def4c9158b64ed398a3b')
+sha256sums_aarch64=('bf40ada6f54b7683433951356447f21b58026b9e471a447b8ba909afba766a84')
 
 build() {
   mkdir -p ${srcdir}/build
