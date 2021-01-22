@@ -1,6 +1,6 @@
 pkgbase = mediad
 	pkgdesc = A Simple and lightweight daemon to handle keyboard media buttons easily
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/JojiiOfficial/MediaD
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = mediad
 	makedepends = git
 	depends = libpulse
 	depends = dbus
-	source = git+https://github.com/JojiiOfficial/MediaD#tag=v0.1.1
+	source = git+https://github.com/JojiiOfficial/MediaD#tag=v0.1.2
 	md5sums = SKIP
 
 pkgname = mediad
