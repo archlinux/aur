@@ -84,6 +84,7 @@ build() {
           -DBoost_NO_BOOST_CMAKE=ON \
           -DRSTUDIO_USE_SYSTEM_SOCI=yes \
           -DRSTUDIO_BUNDLE_QT=FALSE
+    make -C build
 }
 
 package() {
