@@ -1,7 +1,7 @@
 # Maintainer: Lucy Poulton <lucy@poulton.xyz> 
 pkgname=splatnet2statink
 pkgver="v1.5.7_1_g22563b5"
-pkgrel=1
+pkgrel=2
 pkgdesc='Takes battle data from the SplatNet 2 app and uploads it to stat.ink'
 arch=('any')
 url="https://github.com/frozenpandaman/${pkgname}"
@@ -10,7 +10,7 @@ depends=('python-requests' 'python-msgpack' 'python-future' 'python-pillow')
 conflicts=("${pkgname}")
 provides=("${pkgname}")
 source=('git+https://github.com/frozenpandaman/splatnet2statink.git' 'launch.sh' 'config-in-homedir.patch')
-md5sums=('SKIP' '4a5418f3eb14681ce68671eb38a9c772' '4545a5d70102baa7495924273d725436')
+md5sums=('SKIP' '4a5418f3eb14681ce68671eb38a9c772' '685e1cad443c0ffbf3cddd0b1e31e4b4')
 
 pkgver() {
 	cd "$srcdir/$pkgname"

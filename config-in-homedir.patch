@@ -1,21 +1,49 @@
-From 28139bbeb8f3b4797502929be8c79c40a89a4553 Mon Sep 17 00:00:00 2001
+From 95b52a26fe0c0457c85f8ab555f61309d1f8f70b Mon Sep 17 00:00:00 2001
 From: Lucy <lucy@poulton.xyz>
-Date: Fri, 22 Jan 2021 12:29:06 +0000
-Subject: [PATCH] config in home dir
+Date: Fri, 22 Jan 2021 12:57:20 +0000
+Subject: [PATCH] config in homedir
 
 ---
- splatnet2statink.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ iksm.py             | 9 +++------
+ splatnet2statink.py | 9 +++------
+ 2 files changed, 6 insertions(+), 12 deletions(-)
 
+diff --git a/iksm.py b/iksm.py
+index 0799662..d050a7d 100644
+--- a/iksm.py
++++ b/iksm.py
+@@ -9,12 +9,9 @@ import uuid, time, random, string
+ session = requests.Session()
+ version = "unknown"
+ 
+-# place config.txt in same directory as script (bundled or not)
+-if getattr(sys, 'frozen', False):
+-	app_path = os.path.dirname(sys.executable)
+-elif __file__:
+-	app_path = os.path.dirname(__file__)
+-config_path = os.path.join(app_path, "config.txt")
++# place splatnet2statink.conf in home directory (lucy@poulton.xyz patch for aur 22/1/21) 
++
++config_path = os.path.join(os.path.expanduser("~"), "splatnet2statink.conf")
+ 
+ def log_in(ver):
+ 	'''Logs in to a Nintendo Account and returns a session_token.'''
 diff --git a/splatnet2statink.py b/splatnet2statink.py
-index 90d288e..d7e0937 100755
+index 90d288e..eab8c18 100755
 --- a/splatnet2statink.py
 +++ b/splatnet2statink.py
-@@ -30,7 +30,7 @@ if getattr(sys, 'frozen', False):
- 	app_path = os.path.dirname(sys.executable)
- elif __file__:
- 	app_path = os.path.dirname(__file__)
+@@ -25,12 +25,9 @@ A_VERSION = "1.5.7"
+ 
+ print("splatnet2statink v{}".format(A_VERSION))
+ 
+-# place config.txt in same directory as script (bundled or not)
+-if getattr(sys, 'frozen', False):
+-	app_path = os.path.dirname(sys.executable)
+-elif __file__:
+-	app_path = os.path.dirname(__file__)
 -config_path = os.path.join(app_path, "config.txt")
++# place splatnet2statink.conf in home directory (lucy@poulton.xyz patch for aur 22/1/21)
++
 +config_path = os.path.join(os.path.expanduser("~"), "splatnet2statink.conf")
  
  try:
