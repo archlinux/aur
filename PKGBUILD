@@ -3,7 +3,7 @@
 _pkgorg=gitlab.com/mipimipi
 pkgname=muserv-git
 _pkgname=muserv
-pkgver=v0.3.1
+pkgver=v0.3.2
 pkgrel=1
 pkgdesc="muserv (UPnP server for music)"
 arch=(any)
