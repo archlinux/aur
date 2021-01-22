@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  qmake "VERSION_NUMBER=$VERSION_NUMBER" fracplanet.pro
+  qmake-qt5 "VERSION_NUMBER=$VERSION_NUMBER" fracplanet.pro
   make
 }
 
