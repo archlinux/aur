@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=whitesur-gtk-theme-git
-pkgver=2020.12.03.r1.g421ba50
+pkgver=2021.01.15.r11.g1d512c6
 pkgrel=1
 pkgdesc="MacOS Big Sur like theme for GNOME desktops"
 arch=('any')
@@ -10,6 +10,7 @@ depends=('gtk-engine-murrine' 'gtk-engines' 'gtk3')
 makedepends=('git')
 optdepends=('whitesur-icon-theme-git: matching icon theme'
             'whitesur-cursor-theme-git: matching cursor theme'
+            'whitesur-kvantum-theme: matching Kvantum theme'
             'plank: for included plank theme')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
