@@ -4,10 +4,10 @@
 
 _plugin_name=user-agent-switcher
 _plugin_ext="-an+fx"
-_file=3637558
+_file=3690660
 
 pkgname=firefox-extension-$_plugin_name
-pkgver=1.3.43
+pkgver=1.4.1
 pkgrel=1
 arch=('any')
 pkgdesc="Firefox extension to override the browser's User-Agent string"
@@ -17,7 +17,7 @@ depends=("firefox>=57")
 source=("https://addons.mozilla.org/firefox/downloads/file/${_file}/user_agent_switcher-${pkgver}${_plugin_ext}.xpi")
 
 noextract=('user_agent_switcher-${pkgver}${_plugin_ext}.xpi')
-sha256sums=('ad06af07c18ee5bd7c0a09704b15adfa69c6fb43271fef4d60c9bf602dd5d523')
+sha256sums=('e9301cf6cf5ea2975860d6ee1ac7808ca6853ff93145e0fdfe56aacc1d9b5c77')
 
 package() {
   cd "${srcdir}"
