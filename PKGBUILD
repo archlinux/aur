@@ -1,6 +1,6 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=evcxr_jupyter
-pkgver=0.5.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='A Jupyter Kernel for the Rust programming language.'
 url="https://github.com/google/evcxr/tree/master/$pkgname"
@@ -9,7 +9,7 @@ license=('Apache')
 depends=('rust' 'jupyter-notebook')
 makedepends=('cargo' 'cmake')
 source=("$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha256sums=('8afae17b36327af23cbbd71a313e16c1b7812ec5af769efa898729a1db9c50f7')
+sha256sums=('e32628c47b8fb1a657b9077d45f331604f57af333b91655a6ee3e249f17b4e57')
 
 build()
 {
