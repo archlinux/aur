@@ -1,0 +1,3 @@
+UDEV Rules for Micronucleus boards including the Digispark
+
+add user to 'uucp' group, and replug device
