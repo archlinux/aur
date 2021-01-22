@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/athul/shelby"
 license=("GPL3")
 provides=("shelby")
+conflicts=("shelby-git")
 source=(
     "shelby_${pkgver}_Linux_x86_64.tar.gz::https://github.com/athul/shelby/releases/download/v${pkgver}/shelby_${pkgver}_Linux_x86_64.tar.gz"
 )
