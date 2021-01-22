@@ -1,0 +1,40 @@
+[Unit]
+Description=Red-DiscordBot instance %I
+
+[Service]
+User=redbot
+Group=redbot
+
+StateDirectory=Red-DiscordBot/%i
+ConfigurationDirectory=Red-DiscordBot
+
+ProtectSystem=strict
+ProtectHome=true
+PrivateDevices=true
+PrivateUsers=true
+PrivateMounts=true
+PrivateTmp=true
+NoNewPrivileges=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectProc=invisible
+ProcSubset=pid
+RestrictRealtime=true
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RemoveIPC=true
+ProtectHostname=true
+CapabilityBoundingSet=
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+
+ExecStart=/usr/bin/redbot %i
+
+[Install]
+WantedBy=multi-user.target
