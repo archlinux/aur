@@ -1,6 +1,6 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 pkgname=getsploit
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Command line utility for searching and downloading exploits"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/vulnersCom/getsploit"
 license=('GPL')
 depends=('python' 'python-urllib3')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vulnersCom/getsploit/archive/${pkgver}.tar.gz")
-sha256sums=('86c6b6d88abeb92f303608fd3c5d7570796e0450434e20f738dd143d9a5246be')
+sha256sums=('9e2cca546669632d67627f43650e148e12bde00d31455633f7c2728607a73868')
 
 build() {
   cd "${pkgname}-${pkgver}"
