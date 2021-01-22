@@ -1,6 +1,6 @@
 pkgbase = kime
 	pkgdesc = Korean IME
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/Riey/kime
 	arch = any
@@ -9,10 +9,11 @@ pkgbase = kime
 	depends = cairo
 	depends = libxcb
 	depends = pango
+	depends = qt5-base
 	provides = kime
 	conflicts = kime
-	source = https://github.com/Riey/kime/releases/download/v0.7.0/kime-0.7.0.7z
-	md5sums = b5265700c019d49b8a3774c37f5a13a0
+	source = https://github.com/Riey/kime/releases/download/v0.8.0/kime-0.8.0.7z
+	md5sums = c32d8cb9d10c50eb26c04ca270cad706
 
 pkgname = kime
 
