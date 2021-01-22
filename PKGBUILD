@@ -1,6 +1,6 @@
 # Maintainer: GCMarvin <GCMarvin@users.noreply.github.com>
 pkgname='ryujinx-ldn-bin'
-pkgver='1.0.0'
+pkgver='1.0.0_ldn2.1'
 pkgrel='1'
 pkgdesc='Experimental Nintendo Switch Emulator written in C# (LDN build)'
 arch=('x86_64')
@@ -10,9 +10,9 @@ depends=('dotnet-runtime-bin')
 provides=('Ryujinx')
 conflicts=('ryujinx-git')
 options=('staticlibs')
-source=('https://www.patreon.com/file?h=45268370&i=6979836'
+source=('https://www.patreon.com/file?h=45268370&i=7206532'
         'https://github.com/Ryujinx/Ryujinx/raw/master/Ryujinx/Ryujinx.ico')
-sha256sums=('7a83aa7ba1e6533d5824c69b4d98cf706e021d291b048abf90dc0cd0cd72b8be'
+sha256sums=('a20929730011f3a8cad7fc991daf6a824f94ea13a14f0b1c0f1a7f9a9765650b'
             'c6063c96dc0cf44dd38b7c14b14cc77ed49ad53b925ea7d7ccf08754eb6e52da')
 
 package() {
