@@ -6,7 +6,8 @@ pkgrel=1
 pkgdesc="A fast, lightweight, minimal, shell prompt written in Go"
 arch=('x86_64')
 url="https://github.com/athul/shelby"
-license=("GNU General Public License v3.0")
+license=("GPL3")
+provides=("shelby")
 source=(
     "shelby_${pkgver}_Linux_x86_64.tar.gz::https://github.com/athul/shelby/releases/download/v${pkgver}/shelby_${pkgver}_Linux_x86_64.tar.gz"
 )
