@@ -1,14 +1,14 @@
 pkgbase = pulumi
 	pkgdesc = Modern Infrastructure as Code
-	pkgver = 2.18.0
+	pkgver = 2.18.1
 	pkgrel = 1
 	url = https://github.com/pulumi/pulumi
 	arch = x86_64
 	license = GPL
 	makedepends = go
 	depends = glibc
-	source = pulumi-2.18.0.tar.gz::https://github.com/pulumi/pulumi/archive/v2.18.0.tar.gz
-	sha256sums = d68e364ffee75f07e436500966dc8562bc605b9223ec9832a00e46e080795665
+	source = pulumi-2.18.1.tar.gz::https://github.com/pulumi/pulumi/archive/v2.18.1.tar.gz
+	sha256sums = 206dbd6a7a2cc8fe42b24d21ec4012a5ae1cdf36eaf29ee6cb82d4cbdd65c34e
 
 pkgname = pulumi
 
