@@ -5,7 +5,7 @@
 #
 
 _pkgname=asmotor
-_pkgver=1.1.1
+_pkgver=1.2.0
 #_commit=fed95a77b995fc594c83d84eee073af1a396cf2b
 
 pkg_ident="${_pkgver//_/-}"
@@ -33,7 +33,7 @@ source=(
         #"${_pkgname}-${pkgver}.tar.gz::https://github.com/asmotor/${_pkgname}/archive/${pkg_ident}.tar.gz"
         #"${_pkgname}-util-master.tar.gz::https://github.com/asmotor/${_pkgname}-util/archive/master.tar.gz"
         )
-md5sums=('e89f656befa7ca1a6b745eed63ee21aa'
+md5sums=('91011874d9981603b3a039e1207b25dd'
          #'483c64c8733715014138824483515b54'
          #'483c64c8733715014138824483515b54'
          )
