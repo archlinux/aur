@@ -1,0 +1,25 @@
+From 28139bbeb8f3b4797502929be8c79c40a89a4553 Mon Sep 17 00:00:00 2001
+From: Lucy <lucy@poulton.xyz>
+Date: Fri, 22 Jan 2021 12:29:06 +0000
+Subject: [PATCH] config in home dir
+
+---
+ splatnet2statink.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/splatnet2statink.py b/splatnet2statink.py
+index 90d288e..d7e0937 100755
+--- a/splatnet2statink.py
++++ b/splatnet2statink.py
+@@ -30,7 +30,7 @@ if getattr(sys, 'frozen', False):
+ 	app_path = os.path.dirname(sys.executable)
+ elif __file__:
+ 	app_path = os.path.dirname(__file__)
+-config_path = os.path.join(app_path, "config.txt")
++config_path = os.path.join(os.path.expanduser("~"), "splatnet2statink.conf")
+ 
+ try:
+ 	config_file = open(config_path, "r")
+-- 
+2.30.0
+

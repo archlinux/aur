@@ -1,0 +1,22 @@
+pkgbase = splatnet2statink
+	pkgdesc = Takes battle data from the SplatNet 2 app and uploads it to stat.ink
+	pkgver = v1.5.7_1_g22563b5
+	pkgrel = 1
+	url = https://github.com/frozenpandaman/splatnet2statink
+	arch = any
+	license = GPL3
+	depends = python-requests
+	depends = python-msgpack
+	depends = python-future
+	depends = python-pillow
+	provides = splatnet2statink
+	conflicts = splatnet2statink
+	source = git+https://github.com/frozenpandaman/splatnet2statink.git
+	source = launch.sh
+	source = config-in-homedir.patch
+	md5sums = SKIP
+	md5sums = 4a5418f3eb14681ce68671eb38a9c772
+	md5sums = 4545a5d70102baa7495924273d725436
+
+pkgname = splatnet2statink
+
