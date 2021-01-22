@@ -15,7 +15,7 @@ source=("http://download.brother.com/welcome/dlf100725/mfc930cdnlpr-${pkgver//_/
 md5sums=('ba35077822b44dddd963db42d1c4edc9'
          'a3a9a6dbc167c183184a2e8c3a4a4789'
          '54e299b76523231f07df19370317be2a'
-         'b9af5e17c14a943e53edb003900ef0d8')
+         '82ac408349dd57fdafc77adf4ffe34c9')
 
 prepare() {
   mkdir -p ./usr/share/cups/model
