@@ -1,6 +1,6 @@
 pkgbase = thruk
 	pkgdesc = Multibackend monitoring webinterface for Naemon, Nagios, Icinga and Shinken
-	pkgver = 2.34.3
+	pkgver = 2.40.2
 	pkgrel = 1
 	url = http://thruk.org
 	arch = any
@@ -23,6 +23,7 @@ pkgbase = thruk
 	depends = perl-lwp-protocol-https
 	depends = perl-cpanel-json-xs
 	depends = perl-crypt-rijndael
+	depends = perl-module-install
 	conflicts = naemon-thruk
 	replaces = naemon-thruk
 	backup = etc/thruk/cgi.cfg
@@ -33,8 +34,8 @@ pkgbase = thruk
 	backup = etc/httpd/conf/extra/thruk.conf
 	backup = etc/thruk/thruk_local.conf
 	backup = etc/logrotate.d/thruk-base
-	source = http://download.thruk.org/pkg/v2.34-3/src/thruk-2.34-3.tar.gz
-	md5sums = e3d464b61c3bf69e07511bf40b73c56b
+	source = http://download.thruk.org/pkg/v2.40-2/src/thruk-2.40-2.tar.gz
+	md5sums = e66495f5a918f4d9269cc8303bc60115
 
 pkgname = thruk
 
