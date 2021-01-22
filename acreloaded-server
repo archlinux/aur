@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd /usr/share/acreloaded/
+cd /usr/share/acreloaded
 ./native_server "$@"
