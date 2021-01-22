@@ -2,7 +2,8 @@
 # Contributor: toha257 <toha257@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Maintainer: Tavian Barnes <tavianator@tavianator.com>
+# Contributor: Tavian Barnes <tavianator@tavianator.com>
+# Maintainer: Logan Magee <mageelog@gmail.com>
 
 _target_arch=arm
 _target=${_target_arch}-linux-gnueabihf
