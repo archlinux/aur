@@ -7,7 +7,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8-r
-pkgver=8.9.276
+pkgver=9.0.51
 pkgrel=1
 pkgdesc="Google's open source JavaScript and WebAssembly engine"
 arch=('x86_64')
@@ -83,6 +83,7 @@ prepare() {
             treat_warnings_as_errors=false
             v8_enable_i18n_support=true
             v8_use_external_startup_data=false
+            v8_generate_external_defines_header=false
             use_custom_libcxx=false
             use_sysroot=false'
 
