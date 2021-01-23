@@ -1,7 +1,7 @@
 pkgbase = vlang-bin
 	pkgdesc = Simple, fast, safe, compiled language for developing maintainable software. Compiles itself in <1s with zero dependencies
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vlang.io
 	install = vlang-bin.install
 	arch = x86_64

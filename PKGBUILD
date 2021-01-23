@@ -2,7 +2,7 @@
 
 pkgname=vlang-bin
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software. Compiles itself in <1s with zero dependencies'
 arch=('x86_64')
 url="https://vlang.io"
@@ -22,6 +22,7 @@ package() {
   cp -avR v/examples "$pkgdir/usr/share/vlang/"
   cp -avR v/thirdparty "$pkgdir/usr/lib/vlang/"
   cp -avR v/vlib "$pkgdir/usr/lib/vlang/"
+  cp v/v.mod "$pkgdir/usr/lib/vlang/"
   ln -s /usr/lib/vlang/v "$pkgdir/usr/bin/v"
 }
 # vim:set ts=2 sw=2 et:
