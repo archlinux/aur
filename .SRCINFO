@@ -1,0 +1,19 @@
+pkgbase = xiny-git
+	pkgdesc = A simple command line tool for converting between various units of measurement
+	pkgver = v0.3.1.r13.g9b2a8db
+	pkgrel = 1
+	url = https://github.com/bcicen/XinY
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = git+https://github.com/bcicen/xiny
+	sha512sums = SKIP
+
+pkgname = xiny-git
+
