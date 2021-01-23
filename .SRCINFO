@@ -1,15 +1,15 @@
 pkgbase = stripe-cli
 	pkgdesc = CLI for Stripe
-	pkgver = 1.5.7
+	pkgver = 1.5.8
 	pkgrel = 1
 	url = https://stripe.com/docs/stripe-cli
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	depends = glibc
-	source = stripe-cli-1.5.7.tar.gz::https://github.com/stripe/stripe-cli/archive/v1.5.7.tar.gz
+	source = stripe-cli-1.5.8.tar.gz::https://github.com/stripe/stripe-cli/archive/v1.5.8.tar.gz
 	source = reproducible-image-flags.patch
-	sha512sums = 709d24ad3d5b56e736a1154aedb77d958b156e1d8fbb1aef78f72ef9f71e7673fc998c09f977d17a3ef5e3eab1a120f40ecdc65b5dbb87c236f96f9cfbcc10c1
+	sha512sums = 18a51b19a1ca97cc42726a533dae18921797d4d5e99cab60af69370661dcc36f1339edd56c9a779bdf168e6535d12a7abf9612413b1df00c366a579ff75cf4dd
 	sha512sums = 4f5ff8662f5e4bce1ded88a055e652c41dd6492cda5aee74795752abf0e97cc269ec1fef84df2247f62809f0c8cc1a88dd12104e07090cc224bbc5ad46b33f37
 
 pkgname = stripe-cli
