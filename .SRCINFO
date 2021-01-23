@@ -1,8 +1,8 @@
 pkgbase = scmxx
 	pkgdesc = A tool for exchange data with some Siemens mobile phone
 	pkgver = 0.9.0
-	pkgrel = 2
-	url = http://www.hendrik-sattler.de/scmxx/
+	pkgrel = 3
+	url = https://sourceforge.net/projects/scmxx/
 	arch = i686
 	arch = x86_64
 	license = GPL

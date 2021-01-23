@@ -2,11 +2,12 @@
 # Contributor: Alessio 'mOLOk' Bolognino <themolok@gmail.com>
 pkgname=scmxx
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for exchange data with some Siemens mobile phone"
 arch=('i686' "x86_64")
-url="http://www.hendrik-sattler.de/scmxx/"
-license="GPL"
+# url="http://www.hendrik-sattler.de/scmxx/"
+url="https://sourceforge.net/projects/scmxx/"
+license=("GPL")
 depends=('glibc' 'perl-image-size')
 source=("http://downloads.sourceforge.net/project/scmxx/scmxx/${pkgver}/scmxx-${pkgver}.tar.bz2")
 md5sums=('9ed8fe297b39ed1c4d3606e40620835e')
@@ -18,5 +19,9 @@ build()  {
     --with-device=/dev/ttyUSB0 \
     --prefix=/usr/
   make || return 1
+}
+
+package() {
+  cd $srcdir/$pkgname-$pkgver
   make DESTDIR=$pkgdir install
 }
