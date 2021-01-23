@@ -2,13 +2,13 @@
 pkgname=wifiman-indicator
 _subname=vindicator
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="LibIndicator support for WifiMan. Written in Vala"
 arch=('any')
 url='https://github.com/BiteDasher/wifiman-indicator'
 license=('MIT')
 depends=('wifigui' 'gtk3' 'polkit' 'xdg-user-dirs')
-makedepends=('vala' 'gtk3' 'binutils')
+makedepends=('vala' 'gtk3' 'binutils' 'libappindicator-gtk3')
 optdepends=(
 	'dhclient: DHCP client'
 )

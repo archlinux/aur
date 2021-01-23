@@ -1,13 +1,14 @@
 pkgbase = wifiman-indicator
 	pkgdesc = LibIndicator support for WifiMan. Written in Vala
 	pkgver = 1.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BiteDasher/wifiman-indicator
 	arch = any
 	license = MIT
 	makedepends = vala
 	makedepends = gtk3
 	makedepends = binutils
+	makedepends = libappindicator-gtk3
 	depends = wifigui
 	depends = gtk3
 	depends = polkit
