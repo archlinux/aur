@@ -1,0 +1,16 @@
+pkgbase = batti-icons
+	pkgdesc = svg and png icons from batti software
+	pkgver = 1
+	pkgrel = 1
+	url = https://sourceforge.net/projects/archbangretro/
+	arch = any
+	license = GPL
+	makedepends = hicolor-icon-theme
+	provides = batti-icons
+	conflicts = batti-icons
+	conflicts = batti
+	source = https://sourceforge.net/projects/archbangretro/files/batti-icons.tar.xz
+	md5sums = 0b657bea3ee85d055e7118a5e97b5c49
+
+pkgname = batti-icons
+
