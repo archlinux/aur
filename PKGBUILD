@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=fcitx5-pinyin-zhwiki
-pkgver=20210101
+pkgver=20210120
 _converterver=0.2.2
 pkgrel=1
 pkgdesc="Fcitx 5 Pinyin Dictionary from zh.wikipedia.org"
@@ -12,7 +12,7 @@ makedepends=('libime' 'opencc' 'pypinyin')
 source=("https://github.com/felixonmars/fcitx5-pinyin-zhwiki/archive/$_converterver/$pkgname-$_converterver.tar.gz"
         https://dumps.wikimedia.org/zhwiki/$pkgver/zhwiki-$pkgver-all-titles-in-ns0.gz)
 md5sums=('6e1ef1cd0279b7b16470e4673b171638'
-         'b70ee3d141d3426b8e3abb8c272f7958')
+         'c926e305e2cc770aaeb720e935918a54')
 
 prepare() {
   cd $pkgname-$_converterver
