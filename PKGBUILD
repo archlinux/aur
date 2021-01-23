@@ -2,12 +2,12 @@
 
 pkgname=librnnoise
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A noise suppression library based on a recurrent neural network."
 arch=(i686 x86_64)
 url="https://gitlab.xiph.org/xiph/rnnoise"
 license=('BSD3' 'Revised')
-_commit=125d8a56e0049728c86c9a575dab348fc9523e96
+_commit=1cbdbcf1283499bbb2230a6b0f126eb9b236defd
 source=("$pkgname.tar.gz::https://github.com/xiph/rnnoise/archive/${_commit}.tar.gz")
 
 build() {
@@ -22,4 +22,4 @@ package() {
   make DESTDIR="$pkgdir/" install
 }
 
-md5sums=('3f4ae1ca4d7d74fe50eeee9c7397fd2b')
+md5sums=('a1069e1ad3e5fdc0cc5e40252e0fd1a2')
