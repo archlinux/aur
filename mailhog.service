@@ -5,6 +5,7 @@ After=syslog.target network.target
 [Service]
 ExecStart=/usr/local/bin/mailhog
 ExecReload=/bin/kill -USR2 $MAINPID
+User=nobody
 
 [Install]
 WantedBy=multi-user.target
