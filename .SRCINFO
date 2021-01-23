@@ -1,6 +1,6 @@
 pkgbase = bfetch
 	pkgdesc = A CLI system information tool written in BASH that supports displaying images.
-	pkgver = 2021.01.18
+	pkgver = 2021.01.23
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/bfetch
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = bfetch
 	optdepends = xorg-xdpyinfo: Resolution detection (Single Monitor)
 	optdepends = xorg-xprop: Desktop Environment and Window Manager
 	optdepends = xorg-xrandr: Resolution detection (Multi Monitor + Refresh rates)
-	source = bfetch-2021.01.18.tar.gz::https://github.com/TheCynicalTeam/bfetch/archive/2021.01.18.tar.gz
-	sha256sums = d82d03c12f74ce891c7e9a22ab40928739180dba3f57bee6daeebcae7dd873e1
+	source = bfetch-2021.01.23.tar.gz::https://github.com/TheCynicalTeam/bfetch/archive/2021.01.23.tar.gz
+	sha256sums = e01dc3def91b7b034cc586b9b3fa50e74f40f5c7e794cde96dcf005e632301fc
 
 pkgname = bfetch
 
