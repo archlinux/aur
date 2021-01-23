@@ -6,7 +6,7 @@
 pkgbase=pulseeffects-git
 pkgname=("${pkgbase}" "gst-plugins-${pkgbase}")
 pkgver=5.0.0.r2.g441ea8a0
-pkgrel=1
+pkgrel=2
 pkgdesc='Audio Effects for Pipewire applications'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url='https://github.com/wwmm/pulseeffects'
@@ -33,7 +33,7 @@ build() {
 }
 
 package_pulseeffects-git() {
-  pkgdesc="Audio Effects for Pulseaudio Applications"
+  pkgdesc="Audio Effects for Pipewire Applications"
   depends=('boost-libs' 'calf' 'glibmm' 'gst-plugin-gtk' 'gst-plugin-pipewire'
     'gst-plugins-bad' 'gst-plugins-pulseeffects' 'gstreamer' 'gtk3' 'gtkmm3'
     'libsigc++' 'lilv' 'lsp-plugins' 'pipewire-pulse' 'yelp')

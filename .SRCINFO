@@ -1,7 +1,7 @@
 pkgbase = pulseeffects-git
 	pkgdesc = Audio Effects for Pipewire applications
 	pkgver = 5.0.0.r2.g441ea8a0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wwmm/pulseeffects
 	arch = x86_64
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = pulseeffects-git
 	sha512sums = SKIP
 
 pkgname = pulseeffects-git
-	pkgdesc = Audio Effects for Pulseaudio Applications
+	pkgdesc = Audio Effects for Pipewire Applications
 	depends = boost-libs
 	depends = calf
 	depends = glibmm
