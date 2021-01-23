@@ -1,6 +1,6 @@
 # Maintainer: Tobias Heider <me@tobhe.de>
 pkgname=openiked-git
-pkgver=0.r13.g0ac266b
+pkgver=0.r15.g447ff84
 pkgrel=1
 pkgdesc="Free implementation of the IKEv2 protocol"
 arch=('x86_64')
@@ -9,7 +9,6 @@ license=('ISC')
 depends=('glibc' 'libevent' 'openssl')
 makedepends=('linux-headers' 'bison' 'cmake' 'git')
 provides=('iked' 'ikectl')
-options=(emptydirs)
 source=('openiked::git://github.com/openiked/openiked-portable.git'
         'iked.service'
         'sysusers.conf')
@@ -34,7 +33,7 @@ build() {
 	cd openiked
 	mkdir build
 	cd build
-	cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}" -DCMAKE_BUILD_TYPE=Release ..
+	cmake -DCMAKE_BUILD_TYPE=Release ..
 	make
 }
 
@@ -53,6 +52,11 @@ package() {
 	install -Dm644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
 	install -Dm600 iked.conf -t "${pkgdir}"/usr/lib/tmpfiles.d/
 
+	install -Dm644 iked/iked.8 "${pkgdir}"/usr/share/man/man8/iked.8
+	install -Dm644 iked/iked.conf.5 "${pkgdir}"/usr/share/man/man5/iked.conf.5
+	install -Dm644 ikectl/ikectl.8 "${pkgdir}"/usr/share/man/man8/ikectl.8
+
 	cd build
-	make install
+	install -Dm755 iked/iked "${pkgdir}"/usr/bin/iked
+	install -Dm755 ikectl/ikectl "${pkgdir}"/usr/bin/ikectl
 }
