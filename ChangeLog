@@ -1,3 +1,9 @@
+4.7.1 (2021-01-23 15:51:43)
+
+    Fixes an issue in the C++ demangler for some symbols,
+    Uses theme preferences for the label list,
+    Fixes horizontal scrolling issues.
+
 4.7.0 (2020-12-14 16:15:48)
 
     Fixes some ARMv8.1 instructions.
