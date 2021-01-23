@@ -1,18 +1,18 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=glimpse-editor-git
-pkgver=r44029.903c9f0521
-pkgrel=1
+pkgver=r44038.c39feb48d0
+pkgrel=2
 pkgdesc="Fork of the GNU Image Manipulation Program"
 arch=(i686 x86_64)
 url="https://glimpse-editor.org/"
 license=(GPL3 LGPL)
-depends=(gegl libmypaint gtk2 pygtk openexr
+depends=(gegl libmypaint gtk2 openexr
          poppler-glib poppler-data mypaint-brushes1
          )
 makedepends=(git intltool libxslt gtk-doc libxslt
              ghostscript libxpm libheif libwebp libmng libwmf iso-codes aalib
-             appstream-glib xdg-utils
+             appstream-glib xdg-utils xorg-server-xvfb
              )
 optdepends=('gutenprint: for sophisticated printing only as glimpse has built-in cups print support'
             'alsa-lib: for MIDI event controller module'
@@ -42,7 +42,7 @@ prepare() {
   _mypaintver=$(echo /usr/lib/libmypaint-*.so | grep -o -E '\-[0-9]+(\.[0-9]+)*' | head -1)
   sed -i "s|\\(libmypaint\\)\\( >= libmypaint_required_version\\)|\\1${_mypaintver}\\2|g" configure.ac
 
-  ./autogen.sh
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
@@ -54,8 +54,11 @@ build() {
   	--libexecdir=/usr/bin \
   	--enable-mp \
   	--enable-gimp-console \
+    --disable-check-update \
   	--enable-gtk-doc \
     --disable-python \
+	--without-webkit \
+	--with-xmc \
     --with-bug-report-url=https://aur.archlinux.org/packages/glimpse-editor-git/ \
   	--with-openexr
 
