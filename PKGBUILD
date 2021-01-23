@@ -1,4 +1,6 @@
 # Maintainer: Alberto Redondo <albertomost at gmail dot com>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=papirus-folders
 pkgver=1.8.0
