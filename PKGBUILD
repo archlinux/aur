@@ -6,7 +6,7 @@ pkgver=1.5.0
 _vdrapi=2.4.6
 pkgrel=3
 pkgdesc="Receive and send commands via CEC"
-url="http://uli-eckhardt.de/vdr"
+url="https://uli-eckhardt.de/vdr/cec.en.shtml"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('libcec' 'pugixml' "vdr-api=${_vdrapi}")
