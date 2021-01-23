@@ -1,4 +1,4 @@
-# Maintainer: Ioan Moldovan <ioan@iodev.science>
+# Maintainer: Ioan Moldovan <ioan@ioanm.ro>
 
 pkgname=fissh
 pkgver=1.0.1
