@@ -1,18 +1,23 @@
 pkgbase = r5u87x
 	pkgdesc = Userspace module for Ricoh R5U870 OEM cameras
-	pkgver = 0.2.2
-	pkgrel = 2
-	epoch = 1
-	url = https://gitea.artixlinux.org/linuxer/r5u87x
+	pkgver = 0.2.1+r64+dfsg1
+	pkgrel = 1
+	epoch = 2
+	url = https://launchpad.net/~r5u87x-loader/+archive/ubuntu/ppa
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	license = custom:Public Domain for fw-extract.c and recode-fw.scm
+	license = custom: unknown for firmwares
 	depends = glib2
 	depends = libusb-compat
-	depends = lib32-libusb-compat
-	optdepends = guile: script for extracting firmware from Windows driver
-	source = r5u87x-0.2.2.tar.gz::https://gitea.artixlinux.org/linuxer/r5u87x/archive/0.2.2.tar.gz
-	b2sums = 77964f77fc7c01a31f7768aa63203f5eb3e961533fe808418dba03c20ef07367caf12927974b1db74b6accbd56070adecbe372abc151b7e8c57af5c52b121638
+	optdepends = guile: needed by recode-fw script for extracting firmware from Windows driver
+	source = https://launchpad.net/~r5u87x-loader/+archive/ubuntu/ppa/+sourcefiles/r5u87x/0.2.1+r64+dfsg1-0ppa12/r5u87x_0.2.1+r64+dfsg1.orig.tar.gz
+	source = https://launchpad.net/~r5u87x-loader/+archive/ubuntu/ppa/+sourcefiles/r5u87x/0.2.1+r64+dfsg1-0ppa12/r5u87x_0.2.1+r64+dfsg1-0ppa12.debian.tar.gz
+	source = https://github.com/tmn505/r5u87x/archive/6e521e39d60afee08370970d3ccd362ad5541cfe.tar.gz
+	b2sums = 58a276bd48ee588ff336303de1ece8a5316388d2f9e67e2ed58d8455818f5bdea53b758d38d43ac70487a8be346f73845e066b3b5ee1120b32f7b68a522e6ef3
+	b2sums = 2707f1af9b1ae184d31c1fb3e06f9e10cd8f9c056c2a6c1d36b5b2b75ccafab6b871c1d2bb9b05ce884675c2b13431b00e0cf98eebdf0ee95ee31981438e200c
+	b2sums = a5818e21825ddcc89269b32fd87256f9ae61fd429630d7dc92281d419e91308489aabb1d25e3971054b547a71ca943ec03d391f32cb146a2768dab8ef89ba369
 
 pkgname = r5u87x
 
