@@ -15,7 +15,7 @@ depends=('glibc' 'libgpg-error')
 replaces=('libgcrypt11')
 provides=(libgcrypt15)
 conflicts=(libgcrypt15)
-source=(git+https://github.com/gpg/libgcrypt#branch=LIBGCRYPT-1-5-BRANCH
+source=(git://git.gnupg.org/libgcrypt.git#branch=LIBGCRYPT-1-5-BRANCH
         'libgcrypt15-disable-build-timestamp.patch::https://github.com/gpg/libgcrypt/commit/a785cc3db0c4e8eb8ebbf784b833a40d2c42ec3e.patch')
 sha256sums=('SKIP'
             'SKIP')
