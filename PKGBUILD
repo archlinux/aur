@@ -3,12 +3,12 @@
 
 pkgname=keymapper
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform context-aware keyremapper"
 arch=(i686 x86_64 armv6h armv7h aarch64)
 url=https://github.com/houmain/keymapper
 license=(GPL3)
-depends=(libusb libx11)
+depends=(gcc-libs libusb libx11)
 makedepends=(cmake)
 source=(https://github.com/houmain/$pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz
         ${pkgname}d.service
