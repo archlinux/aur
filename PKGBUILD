@@ -10,7 +10,7 @@
 
 _gitname=gkrellm
 pkgname=${_gitname}d-git
-pkgver=20180411.c306bb7
+pkgver=20210123.13f1489
 pkgrel=1
 pkgdesc="Headless version of system monitor package"
 arch=('x86_64' 'i686')
@@ -23,7 +23,7 @@ conflicts=('gkrellm')
 backup=('etc/gkrellmd.conf')
 options=('emptydirs')
 source=('gkrellmd.service'
-        'git://git.srcbox.net/gkrellm')
+        'git+https://git.srcbox.net/gkrellm/gkrellm.git')
 md5sums=('63c78daed61c82b933f558177f6d3721'
          'SKIP')
 
