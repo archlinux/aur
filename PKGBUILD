@@ -10,7 +10,6 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/micronucleus/micronucleus"
 license=('GPL')
 depends=('libusb-compat')
-makedepends=('git')
 conflicts=('micronucleus-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/micronucleus/micronucleus/archive/${pkgver}.tar.gz"
 	"49-micronucleus.rules")
