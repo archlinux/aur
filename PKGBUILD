@@ -11,9 +11,9 @@ pkgdesc='Open Gaming Platform'
 arch=('any')
 url='https://lutris.net/'
 license=('GPL3')
-depends=('python-gobject' 'python-yaml' 'python-evdev' 'python-dbus' 'gtk3'
+depends=('python-gobject' 'python-yaml' 'python-dbus' 'gtk3'
          'glib2' 'psmisc' 'cabextract' 'unzip' 'p7zip' 'curl'
-         'python-pillow' 'python-requests'  'webkit2gtk'
+         'python-pillow' 'python-requests' 'webkit2gtk'
          'mesa-demos' 'python-dbus' 'python-distro' 'python-magic-ahupp'
          'python-lxml')
 makedepends=('git' 'meson')

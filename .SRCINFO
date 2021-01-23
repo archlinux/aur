@@ -9,7 +9,6 @@ pkgbase = lutris-git
 	makedepends = meson
 	depends = python-gobject
 	depends = python-yaml
-	depends = python-evdev
 	depends = python-dbus
 	depends = gtk3
 	depends = glib2
