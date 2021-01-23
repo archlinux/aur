@@ -17,6 +17,7 @@ pkgbase = rizin
 	depends = xxhash
 	depends = libuv
 	provides = rizin=0.1.0
+	conflicts = rizin
 	source = rizin::git://github.com/rizinorg/rizin.git#tag=v0.1.0
 	source = sdb::git+https://github.com/rizinorg/sdb.git
 	source = tree-sitter::git+https://github.com/tree-sitter/tree-sitter.git

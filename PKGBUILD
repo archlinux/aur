@@ -12,6 +12,7 @@ license=('GPL3' 'LGPL3')
 makedepends=('git' 'meson' 'ninja')
 depends=('capstone' 'lz4' 'file' 'libzip' 'xxhash' 'libuv')
 provides=("rizin=$pkgver")
+conflicts=('rizin')
 source=("$pkgname"::"git://github.com/rizinorg/rizin.git${_fragment}"
 	"sdb"::"git+https://github.com/rizinorg/sdb.git"
 	"tree-sitter"::"git+https://github.com/tree-sitter/tree-sitter.git")
