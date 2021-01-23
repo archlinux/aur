@@ -47,14 +47,11 @@ build() {
 	meson compile -C build
 }
 
-check() {
-	meson test -C build
-
-	# Tests fail in chroot
+#check() {
 #	cd "$srcdir/${pkgname%-git}"
 #	xvfb-run nosetests --cover-erase --with-xunit --xunit-file=nosetests.xml \
 #		--with-coverage --cover-package=lutris --cover-xml-file=coverage.xml
-}
+#}
 
 package() {
 	DESTDIR="$pkgdir" meson install -C build
