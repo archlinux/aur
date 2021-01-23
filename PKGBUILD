@@ -1,15 +1,15 @@
 # Maintainer: pro_shunsuke <shunsuke0901@gmail.com>
 
 pkgname=colmsg
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc='A CLI tool for 櫻坂46メッセージ and 日向坂46メッセージ app.'
 arch=(x86_64)
 url='https://github.com/proshunsuke/colmsg'
 license=(MIT)
 makedepends=(clang cmake git rust)
-depends=(libssh2)
-source=("git+$url#commit=23db2b3fa43de56813d6786c8b247df03f25eed1") # tag: v2.0.2
+depends=('gcc-libs' 'openssl')
+source=("git+$url#commit=8ffb8ef7315bed7fe875940c98926ea54f069fd8") # tag: v2.0.3
 sha256sums=('SKIP')
 
 build() {
