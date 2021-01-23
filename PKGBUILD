@@ -1,8 +1,9 @@
-# Maintainer: Gasparotto Mattia <gasmat04@gmail.com>
+# Maintainer: dreieck
+# Contributor: Gasparotto Mattia <gasmat04@gmail.com>
 
 pkgname=wammu
 pkgver=0.44
-pkgrel=3
+pkgrel=4
 pkgdesc="A wxPython-based GUI for Gammu"
 arch=('any')
 url="https://wammu.eu/"
