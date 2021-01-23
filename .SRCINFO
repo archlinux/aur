@@ -1,6 +1,6 @@
 pkgbase = dstask
 	pkgdesc = Single binary terminal-based TODO manager with git-based sync + markdown notes per task
-	pkgver = 0.24
+	pkgver = 0.24.1
 	pkgrel = 1
 	url = https://github.com/naggie/dstask
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = dstask
 	license = MIT
 	makedepends = go
 	depends = git
-	source = dstask-0.24.tar.gz::https://github.com/naggie/dstask/archive/v0.24.tar.gz
-	sha256sums = 80a08bd8cfb313eac9af9108f6d4a60ac5204f8f41cdbbd054e1765248d3fee1
+	source = dstask-0.24.1.tar.gz::https://github.com/naggie/dstask/archive/v0.24.1.tar.gz
+	sha256sums = 35d46ade97f7b68e2bfb719b8bdb0db65e4b66b97e368849ecdecab1d58ef3d0
 
 pkgname = dstask
 
