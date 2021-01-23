@@ -1,0 +1,16 @@
+pkgbase = ebsynth-git
+	pkgdesc = A Fast Example-based Image Synthesizer
+	pkgver = r16.2f5c97c
+	pkgrel = 1
+	url = https://github.com/jamriska/ebsynth
+	arch = any
+	license = custom
+	makedepends = git
+	provides = ebsynth
+	source = ebsynth::git+https://github.com/jamriska/ebsynth
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 4b43b6f229b0530aca75c71986b68e19
+
+pkgname = ebsynth-git
+
