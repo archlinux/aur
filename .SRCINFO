@@ -1,15 +1,15 @@
 pkgbase = auto-display-manager-cr-git
 	pkgdesc = A Crystal program for managing multiple screens (displays) via XRandR.
-	pkgver = v.0.1.2.cr.r0.c55ff77
+	pkgver = v.0.1.3.cr.r0.c1685b4
 	pkgrel = 1
-	url = https://github.com/Phitherek/auto-display-manager-cr
+	url = https://gitlab.com/Phitherek_/auto-display-manager-cr
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = crystal
 	depends = xorg-xrandr
 	depends = libnotify
-	source = auto-display-manager-cr::git+https://github.com/Phitherek/auto-display-manager-cr
+	source = auto-display-manager-cr::git+https://gitlab.com/Phitherek_/auto-display-manager-cr
 	md5sums = SKIP
 
 pkgname = auto-display-manager-cr-git

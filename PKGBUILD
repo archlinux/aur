@@ -1,10 +1,10 @@
 # Maintainer: Piotr Żurek (phitherek@gmail.com)
 pkgname=auto-display-manager-cr-git
-pkgver=v.0.1.2.cr.r0.c55ff77
+pkgver=v.0.1.3.cr.r0.c1685b4
 pkgrel=1
 pkgdesc="A Crystal program for managing multiple screens (displays) via XRandR."
 arch=('any')
-url="https://github.com/Phitherek/auto-display-manager-cr"
+url="https://gitlab.com/Phitherek_/auto-display-manager-cr"
 license=('MIT')
 groups=()
 depends=('xorg-xrandr' 'libnotify')
@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('auto-display-manager-cr::git+https://github.com/Phitherek/auto-display-manager-cr')
+source=('auto-display-manager-cr::git+https://gitlab.com/Phitherek_/auto-display-manager-cr')
 noextract=()
 md5sums=('SKIP')
 
