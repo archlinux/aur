@@ -12,7 +12,7 @@ provides=('repo')
 conflicts=('repo')
 source=("https://github.com/MoKee/git-repo/archive/v$pkgver.tar.gz")
 
-md5sums=('SKIP')
+md5sums=('979245fd187c3936b4da9739970da2b6')
 
 package() {
   cd $srcdir/git-repo-$pkgver

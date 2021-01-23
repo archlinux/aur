@@ -10,7 +10,7 @@ pkgbase = mokee-repo
 	provides = repo
 	conflicts = repo
 	source = https://github.com/MoKee/git-repo/archive/v2.11.2.tar.gz
-	md5sums = SKIP
+	md5sums = 979245fd187c3936b4da9739970da2b6
 
 pkgname = mokee-repo
 
