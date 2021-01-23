@@ -8,7 +8,9 @@ pkgdesc="HTTP client like cURL / HTTPie and a CLI client for https://hoppscotch.
 arch=('x86_64')
 url="https://github.com/hoppscotch/hopp-cli"
 license=("MIT")
-makedepends=("go")
+makedepends=(
+        "git"
+        "go")
 provides=("hopp-cli")
 source=(
     "git+https://github.com/hoppscotch/hopp-cli.git"

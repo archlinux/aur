@@ -5,6 +5,7 @@ pkgbase = hopp-cli-git
 	url = https://github.com/hoppscotch/hopp-cli
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = go
 	provides = hopp-cli
 	source = git+https://github.com/hoppscotch/hopp-cli.git
