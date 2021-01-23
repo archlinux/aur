@@ -1,4 +1,6 @@
 # Maintainer: Alberto Redondo <albertomost at gmail dot com>
+# Contributor: Mario Finelli <mario at finel dot li>
+# Contributor: eagletmt <eagletmt at gmail dot com>
 
 _gemname=oauth
 pkgname=ruby-$_gemname
