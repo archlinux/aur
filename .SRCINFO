@@ -1,6 +1,6 @@
 pkgbase = geph4-git
 	pkgdesc = A command-line Geph4 tools
-	pkgver = r188.aabec34
+	pkgver = r243.023650b
 	pkgrel = 1
 	url = https://github.com/geph-official/geph4
 	arch = x86_64
