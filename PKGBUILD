@@ -24,12 +24,12 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd libpng
+  cd code
   git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
-  cd libpng
+  cd code
 
   patch -Np1 -i ../libpng-${pkgver}-apng.patch
 
@@ -40,7 +40,7 @@ prepare() {
 }
 
 build() {
-  cd libpng
+  cd code
 
   ./autogen.sh
   ./configure \
@@ -49,7 +49,7 @@ build() {
 }
 
 package() {
-  cd libpng
+  cd code
 
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/usr/{bin,include/*.h,lib/{libpng.{a,so},pkgconfig},share}
