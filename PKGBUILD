@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.8.2.r0.gc1edfdd8
+pkgver=0.5.8.2.r13.g5d5736b5
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -16,7 +16,7 @@ depends=('python-gobject' 'python-yaml' 'python-evdev' 'python-dbus' 'gtk3'
          'python-pillow' 'python-requests' 'gnome-desktop' 'webkit2gtk'
          'mesa-demos' 'python-dbus' 'python-distro' 'python-magic-ahupp'
          'python-lxml')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'meson')
 #checkdepends=('xorg-server-xvfb' 'python-nose-cover3' 'wine' 'xterm')
 optdepends=(
   'wine: Run windows games'
@@ -37,24 +37,23 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	python setup.py build
+	arch-meson "${pkgname%-git}" build
+	meson compile -C build
 }
 
-# Tests fail in chroot
+check() {
+	meson test -C build
 
-#check() {
-# cd "$srcdir/${pkgname%-git}"
+	# Tests fail in chroot
+#	cd "$srcdir/${pkgname%-git}"
 #	xvfb-run nosetests --cover-erase --with-xunit --xunit-file=nosetests.xml \
 #		--with-coverage --cover-package=lutris --cover-xml-file=coverage.xml
-#}
+
+}
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	export PYTHONHASHSEED=0
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	DESTDIR="$pkgdir" meson install -C build
 }
