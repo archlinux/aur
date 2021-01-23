@@ -45,7 +45,8 @@ build() {
   ./configure --prefix=/usr \
 	--disable-static \
 	--disable-padlock-support \
-	--disable-doc
+	--disable-doc \
+	--disable-O-flag-munging
   make
 }
 
