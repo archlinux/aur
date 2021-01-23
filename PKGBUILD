@@ -4,7 +4,7 @@
 pkgname=sleepyhead
 pkgver=1.0.0
 subver="beta-2"
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source, cross platform, sleep tracking software with a focus on monitoring CPAP treatment."
 arch=('i686' 'x86_64')
 url="http://sleepyhead.jedimark.net"
@@ -40,6 +40,7 @@ prepare() {
 
 build() {
   cd sleepyhead-code
+  export CXXFLAGS="$CXXFLAGS -fpermissive"
   ./configure
   make
 }
