@@ -1,11 +1,11 @@
 # Contributor: graysky <graysky AT archlinux dot us>
 
 pkgname=monitorix
-pkgver=3.12.0
+pkgver=3.13.0
 pkgrel=1
 pkgdesc='A lightweight system monitoring tool that uses rrd databases.'
 arch=('any')
-url='http://www.monitorix.org'
+url='https://www.monitorix.org'
 license=('GPLv2')
 depends=('perl' 'perl-cgi' 'perl-mailtools' 'perl-mime-lite' 'perl-libwww'
 	'perl-dbi' 'perl-xml-simple' 'perl-config-simple' 'perl-config-general'
@@ -23,7 +23,7 @@ conflicts=("$pkgname-git")
 backup=("etc/$pkgname/$pkgname.conf" "etc/$pkgname.conf")
 install=readme.install
 source=("http://www.$pkgname.org/$pkgname-$pkgver.tar.gz")
-sha256sums=('00251cd51748848ee05d8c16b1f4f1f0818309a191ad40a0f711ec13e22a3404')
+sha256sums=('31d9ccc3bc2677130f7f5e9d4a2fa823b9d8412db8adfc5cae48c3e7c5bfbaa6')
 
 prepare() {
 	cd "$pkgname-$pkgver"

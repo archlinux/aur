@@ -1,8 +1,8 @@
 pkgbase = monitorix
 	pkgdesc = A lightweight system monitoring tool that uses rrd databases.
-	pkgver = 3.12.0
+	pkgver = 3.13.0
 	pkgrel = 1
-	url = http://www.monitorix.org
+	url = https://www.monitorix.org
 	install = readme.install
 	arch = any
 	license = GPLv2
@@ -28,8 +28,8 @@ pkgbase = monitorix
 	conflicts = monitorix-git
 	backup = etc/monitorix/monitorix.conf
 	backup = etc/monitorix.conf
-	source = http://www.monitorix.org/monitorix-3.12.0.tar.gz
-	sha256sums = 00251cd51748848ee05d8c16b1f4f1f0818309a191ad40a0f711ec13e22a3404
+	source = http://www.monitorix.org/monitorix-3.13.0.tar.gz
+	sha256sums = 31d9ccc3bc2677130f7f5e9d4a2fa823b9d8412db8adfc5cae48c3e7c5bfbaa6
 
 pkgname = monitorix
 
