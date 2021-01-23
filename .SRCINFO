@@ -1,0 +1,13 @@
+pkgbase = g15utils
+	pkgdesc = Two utilities to be used with Logitech G15 screens.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://gitlab.com/menelkir/g15utils
+	arch = x86_64
+	license = GPL
+	depends = g15daemon
+	source = https://gitlab.com/menelkir/g15utils/-/archive/v0.2/g15utils-v0.2.tar.bz2
+	sha512sums = 0476967314570de98f7addf952790d369387eb094133fd394f7881210abf99c99884aace6023de80d8e9319f0422940b628b24431f40d0dde99e18d5e75f0942
+
+pkgname = g15utils
+
