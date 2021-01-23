@@ -1,8 +1,8 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=mpdris2
-pkgver=0.8
-pkgrel=3
+pkgver=0.9.1
+pkgrel=1
 pkgdesc="MPRIS2 support for MPD"
 url="https://github.com/eonpatapon/mpDris2"
 arch=('any')
@@ -26,4 +26,4 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-sha256sums=('b6b15c1fdddf16a6d74485ad09f56ed353a317e149c37475c00a279186da4391')
+sha256sums=('d0f0467841e7866310cff44a1063334a9c776a64fd594815d926670b765fbee6')
