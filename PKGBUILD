@@ -4,7 +4,7 @@
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the initial patches!
 # https://github.com/mymedia2/tdesktop
 pkgname=telegram-desktop-dev
-pkgver=2.5.5
+pkgver=2.5.6
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -163,6 +163,7 @@ build() {
         -DTDESKTOP_API_ID=611335 \
         -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c \
         -DTDESKTOP_LAUNCHER_BASENAME="telegram-desktop" \
+        -DTDESKTOP_DISABLE_GTK_INTEGRATION=1 \
         -DDESKTOP_APP_DISABLE_WAYLAND_INTEGRATION=1 \
         -DDESKTOP_APP_SPECIAL_TARGET=""
     ninja -C build
