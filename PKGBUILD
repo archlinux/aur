@@ -1,6 +1,6 @@
 pkgname=rtl8189es-dkms-git
 _pkgbase=${pkgname%-*-*}
-pkgver="42f2934"
+pkgver="249b65b"
 pkgrel=1
 pkgdesc="RTL8189ES / RTL8189ETV modules (DKMS)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
