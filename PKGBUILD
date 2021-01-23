@@ -3,12 +3,12 @@
 # Contributor: pandada8 <pandada8@gmail.com>
 
 pkgname=xray
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="The best v2ray-core, with XTLS support."
 arch=('x86_64')
 url="https://github.com/XTLS/Xray-core"
-license=('MPLv2')
+license=('MPL2')
 depends=('glibc' 'v2ray-domain-list-community' 'v2ray-geoip')
 makedepends=('go' 'patch')
 backup=(etc/xray/config.json)
@@ -22,7 +22,7 @@ source=(
     "location_asset.patch"
 )
 sha512sums=(
-    '5d03ac1bd88f7d5c720645d0646c54d017d5c9df5b2f059d3325a7774bef7ee99a0c9a558682ecf10147a8d8dc89223a1f5f148f249484837204b376c6390bbc'
+    'cb846d60c7dab0b4431567a5a4746d32462e35b249fdd58e524e99035a1fa6667c49715081b2d6d21179610a26bdedfcc5d4e286c8e05ecca4d2b866b49e2365'
     '2000211cbf987adaee7f278cc8cb23268965caab3bc46401f9324f2beaad95bec11012f5f4500f1016f4b75f097f3ac96cc5be2da7a6df0261582b3f23b3d78d'
     '9914fd3da02511b716951e521ca22006a6e8ad66e64d32cc7dd7dc3544a754174b37e35df6108ca217130f02763265d74f8bc56c4e52b262bdd48dcdb5310eb5'
     '532f66fe19196de0cc43df1812d6f32cbca7bbcacaa0cd4141bd80b3121b17eb8b23e0464765cf05a97b11e0213fb688eade83e393e36b3e7ebded6f0925de97'
