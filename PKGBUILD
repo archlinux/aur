@@ -28,5 +28,3 @@ package() {
 	install -Dm644 "Logo-lg.png" "$pkgdir/usr/share/pixmaps/${pkgname%%-bin}.png"
 	install -Dm644 "${pkgname%%-bin}.desktop" "$pkgdir/usr/share/applications/${pkgname%%-bin}.desktop"
 }
-
-# vim: set ts=2 sw=2
