@@ -3,12 +3,12 @@
 # Contributor: pandada8 <pandada8@gmail.com>
 
 pkgname=xray-git
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="The best v2ray-core, with XTLS support."
 arch=('x86_64')
 url="https://github.com/XTLS/Xray-core"
-license=('MPLv2')
+license=('MPL2')
 depends=('glibc' 'v2ray-domain-list-community' 'v2ray-geoip')
 makedepends=('go' 'git' 'patch')
 backup=(etc/xray/config.json)
