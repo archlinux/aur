@@ -1,0 +1,13 @@
+pkgbase = archbangretro-wallpaper
+	pkgver = 1
+	pkgrel = 1
+	url = https://sourceforge.net/projects/archbangretro/
+	arch = any
+	license = GPL
+	provides = archbangretro-wallpaper
+	conflicts = archbangretro-wallpaper
+	source = https://sourceforge.net/projects/archbangretro/files/archbangretro-wallpaper.tar.xz
+	md5sums = 4bd10ce6c913ba2e522666712908f1a7
+
+pkgname = archbangretro-wallpaper
+
