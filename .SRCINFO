@@ -1,0 +1,16 @@
+pkgbase = chapel
+	pkgdesc = Programming language designed for productive parallel computing at scale
+	pkgver = 1.23.0
+	pkgrel = 1
+	arch = any
+	license = Apache
+	makedepends = gcc
+	makedepends = make
+	makedepends = perl
+	makedepends = m4
+	makedepends = gawk
+	source = https://github.com/chapel-lang/chapel/releases/download/1.23.0/chapel-1.23.0.tar.gz
+	sha256sums = 7ae2c8f17a7b98ac68378e94a842cf16d4ab0bcfeabc0fee5ab4aaa07b205661
+
+pkgname = chapel
+
