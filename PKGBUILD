@@ -1,3 +1,4 @@
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # Maintainer : tsp <patrictroy at gmail dot com>
 
 _fragment="#tag=v0.1.0"
