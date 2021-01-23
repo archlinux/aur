@@ -1,6 +1,6 @@
 pkgbase = caff-git
 	pkgdesc = CA Fire and Forget is a script that helps you in keysigning.
-	pkgver = r821.9c5bb78
+	pkgver = r823.a8e6e7d
 	pkgrel = 1
 	url = https://salsa.debian.org/stappers/pgp-tools
 	arch = any
@@ -10,9 +10,7 @@ pkgbase = caff-git
 	depends = perl
 	depends = perl-gnupg-interface
 	depends = perl-mime-tools
-	depends = perl-mailtools
 	depends = perl-text-template
-	depends = perl-any-moose
 	depends = perl-net-idn-encode
 	conflicts = signing-party
 	conflicts = caff-svn
