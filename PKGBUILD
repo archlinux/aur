@@ -10,7 +10,7 @@
 
 pkgname=opera
 pkgver=73.0.3856.344
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and secure web browser"
 url="https://www.opera.com/"
 options=(!strip !zipman)
@@ -20,7 +20,6 @@ arch=('x86_64')
 depends=('gtk3' 'alsa-lib' 'libnotify' 'curl' 'nss' 'libcups' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
 optdepends=(
     'opera-ffmpeg-codecs: playback of proprietary video/audio'
-    'pepper-flash: flash support'
     'upower: opera battery save'
     'chromium-widevine: support playback of drm content (AUR!)'
 )
