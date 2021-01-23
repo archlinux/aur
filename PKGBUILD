@@ -2,7 +2,7 @@
 
 _name=shsh
 pkgname=shsh
-pkgver=2.4.2
+pkgver=2.4.4
 pkgrel=1
 pkgdesc="A multi-threaded manager for shell scripts, functions, binaries, completions files."
 arch=('any')
@@ -12,7 +12,8 @@ depends=()
 provides=('shsh')
 conflicts=('shsh')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz" "shsh-entrypoint.sh")
-sha256sums=('13c2174d0847629143f48e4d4b5cab046b11217dc925be853720e79f0649877b' '23826816377fc14a0c9d7eb9d326ccfa0d887bb753e900939f2d7990380dba3a')
+sha256sums=('46454e0ed97ec055ad9aec22c7c11e1fe72ce8dfc7116a0ba59d4a4608e9d694'
+            '23826816377fc14a0c9d7eb9d326ccfa0d887bb753e900939f2d7990380dba3a')
 
 
 package() {
