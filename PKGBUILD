@@ -41,6 +41,7 @@ build() {
     --prefix='/usr' \
     --disable-static \
     --disable-O-flag-munging \
+    --enable-maintainer-mode \
     --disable-padlock-support
   make
 }
