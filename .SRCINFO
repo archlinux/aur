@@ -1,6 +1,6 @@
 pkgbase = mcuxpresso-ide
 	pkgdesc = An easy-to-use integrated development environment (IDE) for creating, building, debugging, and optimizing your application. From BIN package distributed by NXP.
-	pkgver = 11.2.1_4149
+	pkgver = 11.3.0_5222
 	pkgrel = 1
 	url = http://www.nxp.com/MCUXPresso
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = mcuxpresso-ide
 	depends = jlink-software-and-documentation
 	depends = dfu-util
 	depends = libusb
-	noextract = mcuxpressoide-11.2.1_4149.x86_64.deb.bin
+	noextract = mcuxpressoide-11.3.0_5222.x86_64.deb.bin
 	options = !strip
-	source = file://mcuxpressoide-11.2.1_4149.x86_64.deb.bin
-	sha256sums = f45ae45f6cdcb6232b9a03551cbcdc0fdad9e5c12898d26dd436fdd6a7091bb5
+	source = file://mcuxpressoide-11.3.0_5222.x86_64.deb.bin
+	sha256sums = 2c83e8b29bd90655011ee720eb851e44afc7b625a0d643222c05b7765d0f079f
 
 pkgname = mcuxpresso-ide
 

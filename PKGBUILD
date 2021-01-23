@@ -1,8 +1,21 @@
 # Maintainer: Daniel Plaza <daniel.plaza.espi at gmail dot com>
 # Contributor: Romain Bazile <gromain.baz at gmail dot com>
+# Maintainer: Matyas Mehn <matyas.mehn at tum dot de>
+
+# BUILD INSTRUCTIONS:
+#
+# 1. Log in to nxp.com
+# 2. Go to https://www.nxp.com/design/software/development-software/mcuxpresso-software-and-tools-/mcuxpresso-integrated-development-environment-ide:MCUXpresso-IDE
+# 3. Click on "Download" and download the current version
+# 4. Accept the License terms
+# 5. Download the .deb.bin package and place it in the same directory as the PKGBUILD
+# 6. Build!
+#
+# No refunds for broken AUR helpers, just use make(chroot)pkg.
+#
 
 pkgname=mcuxpresso-ide
-pkgver=11.2.1_4149
+pkgver=11.3.0_5222
 pkgrel=1
 epoch=
 pkgdesc="An easy-to-use integrated development environment (IDE) for creating, building, debugging, and optimizing your application. From BIN package distributed by NXP."
@@ -13,7 +26,7 @@ depends=('ncurses' 'glibc' 'lib32-glibc' 'jlink-software-and-documentation' 'dfu
 
 source=("file://mcuxpressoide-${pkgver}.${arch}.deb.bin")
 noextract=("mcuxpressoide-${pkgver}.${arch}.deb.bin")
-sha256sums=('f45ae45f6cdcb6232b9a03551cbcdc0fdad9e5c12898d26dd436fdd6a7091bb5')
+sha256sums=('2c83e8b29bd90655011ee720eb851e44afc7b625a0d643222c05b7765d0f079f')
 options=('!strip')
 
 prepare() {
