@@ -6,28 +6,24 @@
 pkgbase=pulseeffects-git
 pkgname=("${pkgbase}" "gst-plugins-${pkgbase}")
 pkgver=5.0.0.r2.g441ea8a0
-pkgrel=2
+pkgrel=3
 pkgdesc='Audio Effects for Pipewire applications'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url='https://github.com/wwmm/pulseeffects'
 license=('GPL3')
 makedepends=('meson' 'boost' 'git' 'itstool' 'appstream-glib'
   'zam-plugins' 'rubberband')
-source=("git+https://github.com/wwmm/pulseeffects.git")
+source=("${pkgbase%%-git}::git+https://github.com/wwmm/pulseeffects.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd pulseeffects
+  cd "${pkgbase%%-git}"
   printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
-  mkdir -p pulseeffects/build
-  cd pulseeffects/build
-
-  arch-meson ..
-
-  ninja
+  arch-meson ${pkgbase%%-git} build
+  meson compile -C build
 }
 
 package_pulseeffects-git() {
@@ -40,10 +36,8 @@ package_pulseeffects-git() {
   conflicts=('pulseeffects')
   provides=('pulseeffects')
 
-  cd pulseeffects/build
-
-  DESTDIR="${pkgdir}" ninja install
-  rm -r "${pkgdir}/usr/lib"
+  DESTDIR="${pkgdir}" meson install -C build
+  mv "${pkgdir}/usr/lib" .
 }
 
 package_gst-plugins-pulseeffects-git() {
@@ -53,8 +47,6 @@ package_gst-plugins-pulseeffects-git() {
   conflicts=('gst-plugins-pulseeffects')
   provides=('gst-plugins-pulseeffects')
 
-  cd pulseeffects/build
-
-  DESTDIR="${pkgdir}" ninja install
-  rm -rf "${pkgdir}"/usr/{bin,share}
+  install -d "${pkgdir}/usr"
+  mv lib "${pkgdir}/usr"
 }

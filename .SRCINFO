@@ -1,7 +1,7 @@
 pkgbase = pulseeffects-git
 	pkgdesc = Audio Effects for Pipewire applications
 	pkgver = 5.0.0.r2.g441ea8a0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wwmm/pulseeffects
 	arch = x86_64
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = pulseeffects-git
 	makedepends = appstream-glib
 	makedepends = zam-plugins
 	makedepends = rubberband
-	source = git+https://github.com/wwmm/pulseeffects.git
+	source = pulseeffects::git+https://github.com/wwmm/pulseeffects.git
 	sha512sums = SKIP
 
 pkgname = pulseeffects-git
