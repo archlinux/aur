@@ -2,7 +2,7 @@
 
 pkgname=snekdown
 pkgver=0.33.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Parser and renderer for Snekdown - a custom markdown syntax'
 arch=(x86_64)
 url=https://github.com/trivernis/snekdown
@@ -23,7 +23,7 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  cargo build --release
+  cargo build --release --all-features
 }
 
 package() {
