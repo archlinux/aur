@@ -1,14 +1,14 @@
 pkgbase = snekdown
 	pkgdesc = Parser and renderer for Snekdown - a custom markdown syntax
-	pkgver = 0.33.1
+	pkgver = 0.33.2
 	pkgrel = 1
 	url = https://github.com/trivernis/snekdown
 	arch = x86_64
 	license = GPL3
 	makedepends = rustup
 	options = !strip
-	source = snekdown-0.33.1.tar.gz::https://github.com/Trivernis/snekdown/archive/v0.33.1.tar.gz
-	sha512sums = 237ed2fedb4b88687909897a82488d0f85f35114abd1db0ec1a92cc63ddb33622dc6c7e72b2f20a7a7a9d56251bba1b40d3e1a2926cccbee9c5d58dff2b118e3
+	source = snekdown-0.33.2.tar.gz::https://github.com/Trivernis/snekdown/archive/v0.33.2.tar.gz
+	sha512sums = d84e685af95e8c3a7ad602ff7b8a04698a2eb8c17c8ee94fc68ef04a7d5dad6986996560528cc5c71ff0b69cfbfef7931d8e0f8fa196f693e0b08b5520fe45bb
 
 pkgname = snekdown
 
