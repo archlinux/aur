@@ -1,6 +1,6 @@
 # Maintainer: lmartinez-mirror
 pkgname=fish-pisces-git
-pkgver=v0.7.0.r0.ge45e086
+pkgver=0.7.0.r0.ge45e086
 pkgrel=1
 pkgdesc="Fish plugin for matching paired symbols"
 arch=('any')
@@ -15,7 +15,7 @@ sha512sums=('SKIP')
 
 pkgver()  {
   cd "$pkgname"
-  git describe --long --tags | sed 's/-/.r/;s/-/./'
+  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package() {
