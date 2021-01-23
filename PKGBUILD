@@ -1,6 +1,6 @@
 # Maintainer: tsp <patrictroy at gmail dot com>
 pkgname=rizin-git
-pkgver=0.1.0.r25311.f53c0e194
+pkgver=0.2.0.r25478.9eec27e6a
 pkgrel=1
 epoch=1
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
@@ -10,9 +10,9 @@ license=('GPL3' 'LGPL3')
 makedepends=('git' 'meson' 'ninja')
 depends=('capstone' 'lz4' 'file' 'libzip' 'xxhash' 'libuv')
 provides=('rizin')
-source=("$pkgname"::"git://github.com/rizinorg/rizin.git"
-	"sdb"::"git://github.com/rizinorg/sdb.git"
-	"tree-sitter"::"git://github.com/tree-sitter/tree-sitter.git")
+source=("$pkgname"::"git+https://github.com/rizinorg/rizin.git"
+	"sdb"::"git+https://github.com/rizinorg/sdb.git"
+	"tree-sitter"::"git+https://github.com/tree-sitter/tree-sitter.git")
 md5sums=('SKIP'
          'SKIP'
          'SKIP')
@@ -54,5 +54,6 @@ package() {
   DESTDIR="${pkgdir}" ninja -C build install
   install -dm644 "${pkgdir}/usr/share/doc/rizin"
   cp -r doc/* "${pkgdir}/usr/share/doc/rizin"
+  ln -s /usr/bin/rizin "${pkgdir}/usr/bin/rz"
   rm "${pkgdir}/usr/share/man/man7/esil.7"
 }
