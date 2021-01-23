@@ -1,8 +1,8 @@
-# Maintainer: Coelacanthus <liuhongwu2003@outlook.com>
+# Maintainer: Coelacanthus <coelacanthus@outlook.com>
 
 pkgname=lemon-lime-git
 _pkgname=lemon-lime
-pkgver=0.2.6.42.r317.bab68f0
+pkgver=0.3.0.118.r389.557ff10
 pkgrel=1
 epoch=1
 pkgdesc="为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus"
@@ -56,7 +56,7 @@ prepare() {
 build() {
 	cd "$srcdir/Project_LemonLime"
 	cmake . \
-		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 		-GNinja \
 		-DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
 		-DLEMON_BUILD_INFO="Build for Arch Linux (Git Version)" \
