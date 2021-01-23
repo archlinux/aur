@@ -5,9 +5,9 @@
 
 pkgbase=pulseeffects-git
 pkgname=("${pkgbase}" "gst-plugins-${pkgbase}")
-pkgver=5.0.0.r0.g5065bd0c
+pkgver=5.0.0.r2.g441ea8a0
 pkgrel=1
-pkgdesc='Audio Effects for Pulseaudio Applications'
+pkgdesc='Audio Effects for Pipewire applications'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url='https://github.com/wwmm/pulseeffects'
 license=('GPL3')
@@ -34,11 +34,11 @@ build() {
 
 package_pulseeffects-git() {
   pkgdesc="Audio Effects for Pulseaudio Applications"
-  depends=('gtk3' 'gtkmm3' 'glibmm' 'libpulse'
-    'gstreamer' 'gst-plugin-gtk' 'gst-plugins-bad' 'gst-plugin-pipewire' 'gst-plugins-pulseeffects'
-    'lilv' 'boost-libs' 'libsigc++' 'calf' 'lsp-plugins' 'yelp')
-  optdepends=('zam-plugins: maximizer'
-    'rubberband: pitch shifting')
+  depends=('boost-libs' 'calf' 'glibmm' 'gst-plugin-gtk' 'gst-plugin-pipewire'
+    'gst-plugins-bad' 'gst-plugins-pulseeffects' 'gstreamer' 'gtk3' 'gtkmm3'
+    'libsigc++' 'lilv' 'lsp-plugins' 'pipewire-pulse' 'yelp')
+  optdepends=('rubberband: pitch shifting'
+    'zam-plugins: maximizer')
   conflicts=(pulseeffects)
   provides=(pulseeffects)
 
@@ -50,9 +50,8 @@ package_pulseeffects-git() {
 
 package_gst-plugins-pulseeffects-git() {
   pkgdesc="Audio Effects for Pulseaudio Applications - gstreamer plugins"
-  depends=('gstreamer' 'gst-plugins-base' 'libebur128' 'librnnoise'
-    'libsndfile' 'libsamplerate' 'zita-convolver')
-  optdepends=()
+  depends=('gst-plugins-base' 'gstreamer' 'libebur128' 'librnnoise'
+    'libsamplerate' 'libsndfile' 'zita-convolver')
   conflicts=(gst-plugins-pulseeffects)
   provides=(gst-plugins-pulseeffects)
 
