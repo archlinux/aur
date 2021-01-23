@@ -17,8 +17,6 @@ pkgbase = pulseeffects-git
 	makedepends = appstream-glib
 	makedepends = zam-plugins
 	makedepends = rubberband
-	provides = pulseeffects
-	conflicts = pulseeffects
 	source = git+https://github.com/wwmm/pulseeffects.git
 	sha512sums = SKIP
 
@@ -42,6 +40,7 @@ pkgname = pulseeffects-git
 	optdepends = rubberband: pitch shifting
 	optdepends = zam-plugins: maximizer
 	provides = pulseeffects
+	conflicts = pulseaudio
 	conflicts = pulseeffects
 
 pkgname = gst-plugins-pulseeffects-git

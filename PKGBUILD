@@ -14,8 +14,6 @@ license=('GPL3')
 makedepends=('meson' 'boost' 'git' 'itstool' 'appstream-glib'
   'zam-plugins' 'rubberband')
 source=("git+https://github.com/wwmm/pulseeffects.git")
-conflicts=(pulseeffects)
-provides=(pulseeffects)
 sha512sums=('SKIP')
 
 pkgver() {
@@ -39,8 +37,8 @@ package_pulseeffects-git() {
     'libsigc++' 'lilv' 'lsp-plugins' 'pipewire-pulse' 'yelp')
   optdepends=('rubberband: pitch shifting'
     'zam-plugins: maximizer')
-  conflicts=(pulseeffects)
-  provides=(pulseeffects)
+  conflicts=('pulseaudio' 'pulseeffects')
+  provides=('pulseeffects')
 
   cd pulseeffects/build
 
@@ -52,8 +50,8 @@ package_gst-plugins-pulseeffects-git() {
   pkgdesc="Audio Effects for Pulseaudio Applications - gstreamer plugins"
   depends=('gst-plugins-base' 'gstreamer' 'libebur128' 'librnnoise'
     'libsamplerate' 'libsndfile' 'zita-convolver')
-  conflicts=(gst-plugins-pulseeffects)
-  provides=(gst-plugins-pulseeffects)
+  conflicts=('gst-plugins-pulseeffects')
+  provides=('gst-plugins-pulseeffects')
 
   cd pulseeffects/build
 
