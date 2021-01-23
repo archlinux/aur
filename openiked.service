@@ -1,0 +1,11 @@
+[Unit]
+Description=OpenIKED
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/iked
+
+[Install]
+WantedBy=multi-user.target
