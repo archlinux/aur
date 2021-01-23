@@ -5,6 +5,7 @@ pkgbase = shelby-git
 	url = https://github.com/athul/shelby
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	makedepends = go
 	provides = shelby
 	conflicts = shelby-bin

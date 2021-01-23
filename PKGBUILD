@@ -8,7 +8,9 @@ pkgdesc="A fast, lightweight, minimal, shell prompt written in Go"
 arch=('x86_64')
 url="https://github.com/athul/shelby"
 license=("GPL3")
-makedepends=("go")
+makedepends=(
+        "git"
+        "go")
 provides=("shelby")
 source=(
     "git+https://github.com/athul/shelby.git"
