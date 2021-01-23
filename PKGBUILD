@@ -1,37 +1,22 @@
-pkgbase=python-titlecase
-pkgname=('python-titlecase' 'python2-titlecase')
+pkgname=python-titlecase
 _module='titlecase'
-pkgver='0.13.1'
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Python Port of John Gruber's titlecase.pl"
 url="https://github.com/ppannuto/python-titlecase"
-depends=()
-makedepends=('python-setuptools' 'python2-setuptools')
+depends=('python' 'python-regex')
+makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/t/titlecase/titlecase-${pkgver}.tar.gz")
-md5sums=('e6e764ca533cb9b75462d0fe007c8089')
-
-prepare() {
-    cp -a "${srcdir}/${_module}-${pkgver}"{,-python2}
-}
+md5sums=('e5dac8b831203247997ba5db0f2f2dd6')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py build
-
-    cd "${srcdir}/${_module}-${pkgver}-python2"
-    python2 setup.py build
 }
 
-package_python-titlecase() {
-    depends+=('python')
+package() {
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-}
-
-package_python2-titlecase() {
-    depends+=('python2')
-    cd "${srcdir}/${_module}-${pkgver}-python2"
-    python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
