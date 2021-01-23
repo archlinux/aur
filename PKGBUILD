@@ -16,6 +16,6 @@ sha256sums=("4b187b083ac6cb159f7725b9d254e4f915ec7de512dbfde5e11688bbf37d3622")
 
 package() {
     cd "${srcdir}"
-    install -D "${_pkgname}" "${pkgdir}/usr/local/bin/${pkgname}"
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D "${_pkgname}" "${pkgdir}/usr/local/bin/${_pkgname}"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
