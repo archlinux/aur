@@ -7,7 +7,7 @@ pkgbase = librnnoise
 	arch = x86_64
 	license = BSD3
 	license = Revised
-	source = librnnoise.tar.gz::https://github.com/xiph/rnnoise/archive/1cbdbcf1283499bbb2230a6b0f126eb9b236defd.tar.gz
+	source = librnnoise-1cbdbcf1283499bbb2230a6b0f126eb9b236defd.tar.gz::https://github.com/xiph/rnnoise/archive/1cbdbcf1283499bbb2230a6b0f126eb9b236defd.tar.gz
 	md5sums = a1069e1ad3e5fdc0cc5e40252e0fd1a2
 
 pkgname = librnnoise

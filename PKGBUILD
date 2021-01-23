@@ -8,7 +8,7 @@ arch=(i686 x86_64)
 url="https://gitlab.xiph.org/xiph/rnnoise"
 license=('BSD3' 'Revised')
 _commit=1cbdbcf1283499bbb2230a6b0f126eb9b236defd
-source=("$pkgname.tar.gz::https://github.com/xiph/rnnoise/archive/${_commit}.tar.gz")
+source=("${pkgname}-${_commit}.tar.gz::https://github.com/xiph/rnnoise/archive/${_commit}.tar.gz")
 
 build() {
   cd "${pkgname#lib}-${_commit}"
