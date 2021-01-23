@@ -8,9 +8,8 @@ url="https://chapel-lang.org/"
 arch=('x86_64')
 license=('Apache')
 options=('libtool' 'staticlibs')
-groups=('base-devel')
-makedepends=('glibc')
-depends=('python' 'perl')
+makedepends=('gcc' 'make' 'm4')
+depends=('python' 'perl' 'openmp' 'llvm')
 source=("https://github.com/chapel-lang/chapel/releases/download/${pkgver}/chapel-${pkgver}.tar.gz")
 sha256sums=('7ae2c8f17a7b98ac68378e94a842cf16d4ab0bcfeabc0fee5ab4aaa07b205661')
 
