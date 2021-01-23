@@ -12,7 +12,7 @@ license=(GPL2)
 depends=(accountsservice gcr gjs js68 gnome-bluetooth upower gnome-session
 				gnome-settings-daemon sysprof gnome-themes-extra
 				gsettings-desktop-schemas-git gtk4 libcanberra-pulse libcroco
-				libgdm libgweather-git libsecret mutter-git nm-connection-editor
+				libgdm libgweather-git libsecret mutter-40alfa nm-connection-editor
 				unzip gstreamer libibus gnome-desktop bash-completion gnome-autoar)
 				
 makedepends=(gtk-doc gnome-control-center evolution-data-server gobject-introspection git meson
