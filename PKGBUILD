@@ -33,7 +33,8 @@ sha256sums=('SKIP'
             '988f4c4422577f0657e9ff8a9695ef44796ee6a9c43e07ee7a81369f25c2761f')
 
 #old package name.
-conflicts=('wmal-git')
+conflicts=('wmal-git' 'trackma')
+provides=('trackma')
 replaces=('wmal-git')
 
 pkgver() {
