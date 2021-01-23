@@ -1,0 +1,14 @@
+pkgbase = python-colcon-cd
+	pkgdesc = A shell function for colcon-core to change the current working directory.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://pypi.org/project/colcon-cd
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-colcon-core
+	source = https://files.pythonhosted.org/packages/source/c/colcon-cd/colcon-cd-0.1.1.tar.gz
+	sha256sums = 379ef4d9f4bb3557d48ea25230ec5d749e83bb2814319e5a1d5ba5810df7b584
+
+pkgname = python-colcon-cd
+
