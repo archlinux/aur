@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppxlib'
 pkgname="ocaml-$_projectname"
-pkgver='0.20.0'
+pkgver='0.21.0'
 pkgrel='1'
 pkgdesc='Standard library for ppx rewriters'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz"
 	'ocaml-migrate-parsetree2.diff'
 )
-sha256sums=('39aa7d9177230b92974d1978c55d904b23d6da98983fd845ee1dcb94e8002f09'
+sha256sums=('02c0952c7cb30eed97c5663fff624d14965b53338b32d7ea170b56398e67ba70'
             'cf9c23418e0a6b166b147462278c594e5e48ffd933a3703daf6aa38bc77f666a')
 
 _sourcedirectory="$_projectname-$pkgver"
