@@ -1,6 +1,6 @@
 pkgbase = yabasic
 	pkgdesc = Yet Another Basic
-	pkgver = 2.87.1
+	pkgver = 2.89.0
 	pkgrel = 1
 	url = http://www.yabasic.de/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = yabasic
 	makedepends = libxt
 	depends = libx11
 	depends = ncurses
-	source = http://www.yabasic.de/download/yabasic-2.87.1.tar.gz
-	sha256sums = 432f912d80ca00ae00a93ede197d45fde4db1345a61dc42976d10f2b7f9e1dce
+	source = http://www.yabasic.de/download/yabasic-2.89.0.tar.gz
+	sha256sums = 651695dfa4d425a9b0258abf6c9de89dbe7b10155b65d97de4c5053143d20f02
 
 pkgname = yabasic
 
