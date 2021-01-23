@@ -1,0 +1,14 @@
+pkgbase = snekdown
+	pkgdesc = Parser and renderer for Snekdown - a custom markdown syntax
+	pkgver = 0.33.0
+	pkgrel = 1
+	url = https://github.com/trivernis/snekdown
+	arch = x86_64
+	license = GPL3
+	makedepends = rustup
+	options = !strip
+	source = yuna-1.4.18.tar.gz::https://github.com/Trivernis/snekdown/archive/v0.33.0.tar.gz
+	sha512sums = 535000a22eecd4c947b80c4e1aa3037ce1b468ead3e3f8a0aa1d264153da6d607a27d83af0bf56b3dde24a6d7a833651c0e3f6f1422760ac55e2c0763f5096b4
+
+pkgname = snekdown
+
