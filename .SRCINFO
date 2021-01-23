@@ -1,0 +1,16 @@
+pkgbase = rastertokpsl-fs-1040
+	pkgdesc = Kyocera_FS-1040 Linux driver
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/lurepheonix/rastertokpsl-fs-1040
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = custom
+	makedepends = git
+	depends = cups
+	source = git+https://github.com/lurepheonix/rastertokpsl-fs-1040.git
+	md5sums = SKIP
+
+pkgname = rastertokpsl-fs-1040
+
