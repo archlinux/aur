@@ -2,31 +2,23 @@
 
 _pkg=seeed-voicecard
 pkgbase="${_pkg}-dkms-git"
-pkgname=("${_pkg}-dkms-git" "${_pkg}-2mic-dkms-git" "${_pkg}-4mic-dkms-git" "${_pkg}-8mic-dkms-git")
-pkgver=r4.1.g8cce4e8
+pkgname=("${_pkg}-dkms-git" "${_pkg}-4mic-dkms-git" "${_pkg}-8mic-dkms-git")
+pkgver=r323.014b0b7
 pkgrel=1
 pkgdesc="The drivers of Seed Studio ReSpeaker Mic Hat and ReSpeaker Mic Arrays for Raspberry Pi."
-arch=('x86_64' 'armv7h')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/respeaker/seeed-voicecard"
 license=('GPL3')
 depends=('dkms' 'i2c-tools')
 makedepends=('git')
-source=('git+https://github.com/respeaker/seeed-voicecard.git'
+source=('git+https://github.com/M0Rf30/seeed-voicecard.git'
   'dkms.conf'
-  "${_pkg}.conf"
-  '5.9-fix.patch')
+  "${_pkg}.conf")
 _overlays="/boot/overlays/"
-
 
 pkgver() {
   cd "$srcdir/${_pkg}"
-  printf "r%s.%s" $(git tag | cut -c 2- | tail -1) $(git describe | cut -d "-" -f 3)
-}
-
-prepare() {
-  cd "$srcdir/${_pkg}"
-  patch -Np1 -i ../5.9-fix.patch
-  cd ac108_plugin/ && make clean
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package_seeed-voicecard-dkms-git() {
@@ -58,7 +50,7 @@ package_seeed-voicecard-dkms-git() {
   install -Dm644 pulseaudio/91-seeedvoicecard.rules \
     "$pkgdir"/usr/lib/udev/rules.d/91-seeedvoicecard.rules
   install -Dm644 "$srcdir/${_pkg}.conf" \
-  "$pkgdir"/usr/lib/modules-load.d/${_pkg}.conf
+    "$pkgdir"/usr/lib/modules-load.d/${_pkg}.conf
 
   msg2 "Set name and version"
   sed -e "s/@_PKGBASE@/${_pkg}/" \
@@ -68,16 +60,6 @@ package_seeed-voicecard-dkms-git() {
   msg2 "Clean up"
   rm -rf "${pkgdir}"/usr/src/${_pkg}-${pkgver}/{.git,*.sh}
 
-}
-
-package_seeed-voicecard-2mic-dkms-git() {
-  pkgdesc="DTB Overlay for Seed Studio ReSpeaker Mic Hat for Raspberry Pi."
-  depends=("${_pkg}-dkms-git")
-  install="${_pkg}-2mic.install"
-
-  cd "$srcdir/${_pkg}"
-
-  install -Dt "$pkgdir/${_overlays}" -m644 seeed-2mic-voicecard.dtbo
 }
 
 package_seeed-voicecard-4mic-dkms-git() {
@@ -96,7 +78,7 @@ package_seeed-voicecard-8mic-dkms-git() {
   pkgdesc="DTB Overlay for Seed Studio ReSpeaker 6-Mics Circular Array Kit for Raspberry Pi."
   depends=("${_pkg}-dkms-git")
   install="${_pkg}-8mic.install"
- 
+
   cd "$srcdir/${_pkg}"
 
   install -Dt "$pkgdir/${_overlays}" -m644 seeed-8mic-voicecard.dtbo
@@ -105,6 +87,5 @@ package_seeed-voicecard-8mic-dkms-git() {
 }
 
 md5sums=('SKIP'
-         'bf335011fea6259d4119059e5913744e'
-         '136d43780e54a3bb15c237ca594c90a7'
-         'd822994566e47b143b22554a38ffcfa0')
+         'af2a2b56702534a1b00cf6484cf56216'
+         '6b65fdfe30dff9e0a6e8f4792d058e50')
