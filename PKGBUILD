@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch.de>
 
 pkgname=taterm
-pkgver=11
+pkgver=12
 pkgrel=1
 pkgdesc='Terminal emulator for tiling window managers'
 arch=('i686' 'x86_64')
@@ -24,4 +24,4 @@ package() {
 
 }
 
-sha256sums=('5483f03678c6383291cef0936bcdda7605361171da69656447a131fb281df1f3')
+sha256sums=('22d606c3129618cb858ea02eab5417e37e83a68763b3023a35893be6813cfea2')

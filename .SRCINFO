@@ -1,6 +1,6 @@
 pkgbase = taterm
 	pkgdesc = Terminal emulator for tiling window managers
-	pkgver = 11
+	pkgver = 12
 	pkgrel = 1
 	url = https://github.com/t-8ch/taterm
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = taterm
 	makedepends = vala
 	depends = vte3
 	depends = dbus
-	source = taterm-11::https://github.com/t-8ch/taterm/archive/v11.tar.gz
-	sha256sums = 5483f03678c6383291cef0936bcdda7605361171da69656447a131fb281df1f3
+	source = taterm-12::https://github.com/t-8ch/taterm/archive/v12.tar.gz
+	sha256sums = 22d606c3129618cb858ea02eab5417e37e83a68763b3023a35893be6813cfea2
 
 pkgname = taterm
 
