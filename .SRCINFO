@@ -1,6 +1,6 @@
 pkgbase = jdk-openj9-bin
 	pkgdesc = Eclipse (former IBM) OpenJ9 with openjdk15
-	pkgver = 15.0.1b9_openj9_0.23.0
+	pkgver = 15.0.2b7_openj9_0.24.0
 	pkgrel = 1
 	url = https://adoptopenjdk.net/index.html?variant=openjdk15&jvmVariant=openj9
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = jdk-openj9-bin
 	conflicts = jdk15-openj9-bin
 	conflicts = jdk15-openj9
 	options = !strip
-	source = https://github.com/AdoptOpenJDK/openjdk15-binaries/releases/download/jdk-15.0.1%2B9_openj9-0.23.0/OpenJDK15U-jdk_x64_linux_openj9_15.0.1_9_openj9-0.23.0.tar.gz
-	sha256sums = b1561f7a69c977bfc9991e61e96dcb200c39300dd9ad423254af117c189e4a8d
+	source = https://github.com/AdoptOpenJDK/openjdk15-binaries/releases/download/jdk-15.0.2%2B7_openj9-0.24.0/OpenJDK15U-jdk_x64_linux_openj9_15.0.2_7_openj9-0.24.0.tar.gz
+	sha256sums = 5515ccd79b1b5e8d8a615b80d5fe1272f7bb41100e46d94fb78ee611ea014816
 
 pkgname = jdk-openj9-bin
 
