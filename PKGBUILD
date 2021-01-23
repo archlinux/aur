@@ -18,7 +18,7 @@ conflicts=(libgcrypt15)
 source=(git+https://github.com/gpg/libgcrypt#branch=LIBGCRYPT-1-5-BRANCH
         'libgcrypt15-disable-build-timestamp.patch::https://github.com/gpg/libgcrypt/commit/a785cc3db0c4e8eb8ebbf784b833a40d2c42ec3e.patch')
 sha256sums=('SKIP'
-            'cbf85bb7e62f3d5b9fcf07fb63a6c7c51d1a01cff7af049f36fd06e4e0b8b3cd')
+            'SKIP')
 #validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6') # Werner Koch
 
 pkgver() {
@@ -40,7 +40,7 @@ build() {
   ./configure \
     --prefix='/usr' \
     --disable-static \
-    --disable-O-flag-mungung \
+    --disable-O-flag-munging \
     --disable-padlock-support
   make
 }

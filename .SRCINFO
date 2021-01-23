@@ -13,7 +13,7 @@ pkgbase = libgcrypt15-minimal-git
 	source = git+https://github.com/gpg/libgcrypt#branch=LIBGCRYPT-1-5-BRANCH
 	source = libgcrypt15-disable-build-timestamp.patch::https://github.com/gpg/libgcrypt/commit/a785cc3db0c4e8eb8ebbf784b833a40d2c42ec3e.patch
 	sha256sums = SKIP
-	sha256sums = cbf85bb7e62f3d5b9fcf07fb63a6c7c51d1a01cff7af049f36fd06e4e0b8b3cd
+	sha256sums = SKIP
 
 pkgname = libgcrypt15-minimal-git
 
