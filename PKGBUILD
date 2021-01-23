@@ -4,7 +4,7 @@
 _pkgbase=ryzen_smu
 pkgname=ryzen_smu-dkms-git
 pkgver=110.5033da9
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux kernel driver that exposes access to the SMU (System Management Unit) for certain AMD Ryzen Processors"
 arch=('x86_64')
 url="https://gitlab.com/leogx9r/ryzen_smu"
@@ -27,11 +27,21 @@ pkgver() {
   printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "$srcdir/$_pkgbase"
+  rm -rf scripts/ pics/ README.md
+}
+
+build() {
+  cd "$srcdir/$_pkgbase"
+  make -C userspace
+}
+
 package() {
   cd "$srcdir/$_pkgbase"
 
   install -d "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
-  cp -r ${srcdir}/${_pkgbase}/* "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
+  cp ${srcdir}/${_pkgbase}/{LICENSE,Makefile,dkms.conf,drv.c,smu.c,smu.h} "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
 
   install -Dm644 ${srcdir}/dkms.conf "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
 
@@ -40,4 +50,6 @@ package() {
     -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
 
   install -Dm644 ${srcdir}/${_pkgbase}.conf "${pkgdir}"/usr/lib/depmod.d/${_pkgbase}.conf
+  
+  install -Dm700 ${srcdir}/${_pkgbase}/userspace/monitor_cpu "${pkgdir}"/usr/bin/monitor_cpu
 }
