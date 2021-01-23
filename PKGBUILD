@@ -2,7 +2,7 @@
 # Maintainer: LinkTed <link.ted@mailbox.org>
 
 pkgname=doh-client
-pkgver=2.2.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="doh-client is a DNS over HTTPS client"
 arch=("x86_64" "armv7h")
@@ -32,10 +32,10 @@ package() {
   install -Dm644 "completions/doh-client.fish" \
                  "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "usr.bin.doh-client" \
+  install -Dm644 "package/linux/usr.bin.doh-client" \
                  "$pkgdir/etc/apparmor.d/usr.bin.doh-client"
-  install -Dm644 "doh-client.service" \
+  install -Dm644 "package/linux/doh-client.service" \
                  "$pkgdir/usr/lib/systemd/system/doh-client.service"
-  install -Dm644 "doh-client.socket" \
+  install -Dm644 "package/linux/doh-client.socket" \
                  "$pkgdir/usr/lib/systemd/system/doh-client.socket"
 }
