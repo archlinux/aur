@@ -1,10 +1,10 @@
 pkgbase = python-requests-futures
 	pkgdesc = Asynchronous Python HTTP Requests for Humans
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ross/requests-futures
 	arch = any
-	license = APACHE
+	license = Apache
 	makedepends = python-setuptools
 	depends = python-requests
 	source = https://files.pythonhosted.org/packages/source/r/requests-futures/requests-futures-1.0.0.tar.gz
