@@ -1,8 +1,9 @@
-# Maintainer: Frederik "Freso" S. Olesen <freso.dk@gmail.com>
+# Maintainer: Matthew "Madness" Evan <mattmadness@tutanota.com>
+# Previous maintainer: Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 # Original maintainer: Lakota Morris <lakota.james@gmail.com>
 pkgname=mcskinedit
 pkgver=alpha3pre7
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft Skin Editor"
 arch=(any)
 license=(unknown)
@@ -12,11 +13,18 @@ depends=('java-runtime')
 source=('http://orcsinthebasement.com/tempDL/SkinEdit+Alpha+3+pre+7.zip'
         'mcskinedit'
         'mcskinedit.desktop'
-        'https://dl.dropbox.com/u/15956363/skintest2.jar')
+        'https://web.archive.org/web/20120325130555if_/http://dl.dropbox.com:80/u/15956363/skintest2.jar')
 md5sums=('d55191ab04cef76faf7d3a5c4bee288d'
          'c2b48f8d04d8470b78d7b288e3004fc7'
          '62b29f2419c85ce964fde86ded700f64'
          'ec418807008ad3f14d55db6457a693b8')
+
+# Notice:
+# The original skintest2.jar from Dropbox was causing 404s, 
+# so I changed the location to the saved version in The Wayback Machine.
+# Original URL = https://dl.dropbox.com/u/15956363/skintest2.jar
+# New URL = https://web.archive.org/web/20120325130555if_/http://dl.dropbox.com:80/u/15956363/skintest2.jar
+# -- mattmadness@tutanota.com
 
 package() {
   # Extract icons
