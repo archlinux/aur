@@ -8,14 +8,14 @@ _pkgname=syncthing
 pkgname=$_pkgname-discosrv
 epoch=1
 pkgver=1.12.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Discover server for the syncthing P2P synchronization utility'
 url='http://syncthing.net'
 license=('MIT')
 install=$pkgname.install
 depends=('glibc')
 makedepends=('go')
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 
 source=(
   "https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz"
