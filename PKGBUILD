@@ -3,7 +3,7 @@
 pkgname=hopper
 _pkgname=hopperv4
 pkgver=4.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Reverse engineering tool that lets you disassemble, decompile and debug your applications"
 arch=(x86_64)
 url="https://www.hopperapp.com/"
@@ -32,10 +32,4 @@ package() {
   # Install license file
   # https://www.hopperapp.com/license_agreement.html @ 2017-08-14
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-
-  # Temporary hacky fix for upstream packaging issue
-  cd "$pkgdir"/opt/hopper-v4/lib
-  ln -s /usr/lib/libformw.so.6    libform.so.6
-  ln -s /usr/lib/libncursesw.so.6 libncurses.so.6
-  ln -s /usr/lib/libtinfo.so.6    libtinfo.so.6
 }
