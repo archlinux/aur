@@ -1,0 +1,6 @@
+/src/
+/pkg/
+pkg/
+src/
+hopp-cli*
+*.tar.gz
