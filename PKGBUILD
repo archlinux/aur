@@ -1,27 +1,22 @@
-# Maintainer: tsp <patrictroy at gmail dot com>
-pkgname=rizin-git
-pkgver=0.2.0.r25478.9eec27e6a
+# Maintainer : tsp <patrictroy at gmail dot com>
+
+_fragment="#tag=v0.1.0"
+pkgname=rizin
+pkgver="${_fragment##*v}"
 pkgrel=1
-epoch=1
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
 arch=('i686' 'x86_64')
 url="https://rizin.re/"
 license=('GPL3' 'LGPL3')
 makedepends=('git' 'meson' 'ninja')
 depends=('capstone' 'lz4' 'file' 'libzip' 'xxhash' 'libuv')
-provides=('rizin')
-source=("$pkgname"::"git+https://github.com/rizinorg/rizin.git"
+provides=("rizin=$pkgver")
+source=("$pkgname"::"git://github.com/rizinorg/rizin.git${_fragment}"
 	"sdb"::"git+https://github.com/rizinorg/sdb.git"
 	"tree-sitter"::"git+https://github.com/tree-sitter/tree-sitter.git")
 md5sums=('SKIP'
          'SKIP'
          'SKIP')
-
-pkgver () {
-  cd ${pkgname}
-  sed -nE '/^VERSION\ [0-9.]*(-git|)$/p' configure.acr|grep -o '[0-9.]*'|tr -d '\n'
-  printf ".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 prepare () {
   cd ${pkgname}

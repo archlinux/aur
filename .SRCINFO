@@ -1,8 +1,7 @@
-pkgbase = rizin-git
+pkgbase = rizin
 	pkgdesc = Open-source tools to disasm, debug, analyze and manipulate binary files
-	pkgver = 0.2.0.r25478.9eec27e6a
+	pkgver = 0.1.0
 	pkgrel = 1
-	epoch = 1
 	url = https://rizin.re/
 	arch = i686
 	arch = x86_64
@@ -17,13 +16,13 @@ pkgbase = rizin-git
 	depends = libzip
 	depends = xxhash
 	depends = libuv
-	provides = rizin
-	source = rizin-git::git+https://github.com/rizinorg/rizin.git
+	provides = rizin=0.1.0
+	source = rizin::git://github.com/rizinorg/rizin.git#tag=v0.1.0
 	source = sdb::git+https://github.com/rizinorg/sdb.git
 	source = tree-sitter::git+https://github.com/tree-sitter/tree-sitter.git
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = rizin-git
+pkgname = rizin
 
