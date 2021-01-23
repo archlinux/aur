@@ -1,5 +1,5 @@
 pkgname=thonny-git
-pkgver=r3389.76cb0b7a
+pkgver=r3934.3482d717
 pkgrel=1
 pkgdesc="Python IDE for beginners."
 arch=('any')
@@ -33,5 +33,5 @@ package() {
     cp -dr --no-preserve=ownership "thonny/thonny" \
             "$pkgdir/usr/lib/python3.6/site-packages"
 
-    pip3 install --install-option="--prefix=$pkgdir/usr" --force distro tkinterhtml
+    pip3 install --prefix="$pkgdir/usr" --force distro tkinterhtml
 }
