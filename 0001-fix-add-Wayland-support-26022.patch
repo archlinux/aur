@@ -97,17 +97,17 @@ index 4284a4ef5..764dcdaf4 100644
      "chromium_src/chrome/browser/certificate_manager_model.cc",
      "chromium_src/chrome/browser/certificate_manager_model.h",
 diff --git a/shell/browser/api/electron_api_base_window.cc b/shell/browser/api/electron_api_base_window.cc
-index 24ed27c08..35ab75c3b 100644
+index 4995db43e..f72578d6a 100644
 --- a/shell/browser/api/electron_api_base_window.cc
 +++ b/shell/browser/api/electron_api_base_window.cc
-@@ -999,7 +999,7 @@ void BaseWindow::SetIcon(gin::Handle<NativeImage> icon) {
+@@ -1007,7 +1007,7 @@ void BaseWindow::SetIcon(v8::Isolate* isolate, v8::Local<v8::Value> icon) {
    static_cast<NativeWindowViews*>(window_.get())
-       ->SetIcon(icon->GetHICON(GetSystemMetrics(SM_CXSMICON)),
-                 icon->GetHICON(GetSystemMetrics(SM_CXICON)));
+       ->SetIcon(native_image->GetHICON(GetSystemMetrics(SM_CXSMICON)),
+                 native_image->GetHICON(GetSystemMetrics(SM_CXICON)));
 -#elif defined(USE_X11)
 +#elif defined(OS_LINUX)
    static_cast<NativeWindowViews*>(window_.get())
-       ->SetIcon(icon->image().AsImageSkia());
+       ->SetIcon(native_image->image().AsImageSkia());
  #endif
 diff --git a/shell/browser/electron_browser_main_parts.cc b/shell/browser/electron_browser_main_parts.cc
 index 92f3e93c4..fb4c4c94f 100644
@@ -792,4 +792,3 @@ index 20becd52a..d2411a0a9 100644
  #endif
 -- 
 2.29.2
-
