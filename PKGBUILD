@@ -1,10 +1,10 @@
-# Contributor: thomasqueirozb <thomasqueirozb  at  g m a i l .com>
 # Maintainer:  spsf64 <spsf64  at  g m a i l .com>
+# Maintainer: thomasqueirozb <thomasqueirozb  at  g m a i l .com>
 
 pkgname=giftedmotion
 pkgver=1.23
 pkgrel=2
-pkgdesc='GiftedMotion is a free and easy to use open source GIF animator.'
+pkgdesc='Free and easy to use open source GIF animator.'
 arch=('x86_64')
 license=('GPL2')
 url="https://www.onyxbits.de/giftedmotion"
@@ -23,9 +23,9 @@ md5sums=('f32cb9f27b07343f95f2e34e98e984d1'
 
 package() {
     cd "$srcdir"
-    install -Dm755 $pkgname $pkgdir/usr/bin/$pkgname
-    install -Dm644 $pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
-    install -Dm644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-    install -Dm644 $pkgname-$pkgver.jar $pkgdir/usr/share/java/$pkgname/$pkgname.jar
+    install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
+    install -Dm644 $pkgname.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
+    install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
+    install -Dm644 $pkgname-$pkgver.jar "$pkgdir"/usr/share/java/$pkgname/$pkgname.jar
 }
 
