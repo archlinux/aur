@@ -1,11 +1,16 @@
-# Maintainer: J. Emiliano Deustuae <edeustua@gmail.com>
+# Maintainer: J. Emiliano Deustua <edeustua@gmail.com>
+
 pkgname=chapel
 pkgver=1.23.0
 pkgrel=1
 pkgdesc="Programming language designed for productive parallel computing at scale"
-arch=('any')
+url="https://chapel-lang.org/"
+arch=('x86_64')
 license=('Apache')
-makedepends=('gcc' 'make' 'perl' 'm4' 'gawk')
+options=('libtool' 'staticlibs')
+groups=('base-devel')
+makedepends=('glibc')
+depends=('python' 'perl')
 source=("https://github.com/chapel-lang/chapel/releases/download/${pkgver}/chapel-${pkgver}.tar.gz")
 sha256sums=('7ae2c8f17a7b98ac68378e94a842cf16d4ab0bcfeabc0fee5ab4aaa07b205661')
 
