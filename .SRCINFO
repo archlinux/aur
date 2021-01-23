@@ -1,0 +1,19 @@
+pkgbase = lib32-libpng12-git
+	pkgdesc = A collection of routines used to create PNG format graphics files
+	pkgver = 1.2.59
+	pkgrel = 1
+	url = http://www.libpng.org/pub/png/libpng.html
+	arch = x86_64
+	license = custom
+	makedepends = gcc-multilib
+	depends = lib32-glibc
+	depends = lib32-zlib
+	provides = lib32-libpng12
+	conflicts = lib32-libpng12
+	source = git://git.code.sf.net/p/libpng/code#branch=libpng12
+	source = https://sourceforge.net/projects/libpng-apng/files/libpng12/1.2.59/libpng-1.2.59-apng.patch.gz
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = lib32-libpng12-git
+
