@@ -3,7 +3,7 @@
 _arch=$(uname -m)
 pkgname=stack-static
 pkgver=2.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="The Haskell Tool Stack (linked statically)"
 arch=('x86_64')
 url="https://github.com/commercialhaskell/stack"
@@ -28,7 +28,7 @@ package() {
   cd "${srcdir}"
   local d="stack-${pkgver}-linux-x86_64"
   mkdir -p "${pkgdir}"/usr/{bin,share/{doc,licenses}/"${pkgname}"}
-  mkdir -p "${pkgdir}"/usr/share/{bash-completion/completions,fish/vendor_completions.d,zsh/site-functions}
+  mkdir -p "${pkgdir}"/usr/share/{bash-completion/completions,fish/vendor_completions.d}
   cp "${d}/stack" "${pkgdir}/usr/bin"
   cp -R "${d}/doc/." "${pkgdir}/usr/share/doc/${pkgname}/"
   cp "${d}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/"
@@ -36,7 +36,8 @@ package() {
   local stack=${d}/stack
   "$stack" --bash-completion-script stack >"$pkgdir"/usr/share/bash-completion/completions/stack
   "$stack" --fish-completion-script stack > "$pkgdir"/usr/share/fish/vendor_completions.d/stack.fish
-  "$stack" --zsh-completion-script stack > "$pkgdir"/usr/share/zsh/site-functions/_stack
+  # conflicts with zsh-completion:
+  # "$stack" --zsh-completion-script stack > "$pkgdir"/usr/share/zsh/site-functions/_stack
 }
 
 # vim:set ts=2 sw=2 et:
