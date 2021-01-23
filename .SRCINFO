@@ -1,6 +1,6 @@
 pkgbase = fedora-wallpapers
-	pkgdesc = The default Wallpapers for Fedora, from Fedora 8 (Werewolf) to Fedora 32.
-	pkgver = 32
+	pkgdesc = The default Wallpapers for Fedora, from Fedora 8 (Werewolf) to Fedora 33.
+	pkgver = 33
 	pkgrel = 1
 	url = https://fedoraproject.org/wiki/Wallpapers
 	arch = any
@@ -19,6 +19,7 @@ pkgbase = fedora-wallpapers
 	depends = f30-backgrounds
 	depends = f31-backgrounds
 	depends = f32-backgrounds
+	depends = f33-backgrounds
 	depends = fedorainfinity-backgrounds
 	depends = goddard-backgrounds
 	depends = heisenbug-backgrounds
