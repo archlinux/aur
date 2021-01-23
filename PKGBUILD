@@ -4,11 +4,12 @@
 
 pkgname=micronucleus
 pkgver=2.04
-pkgrel=1
+pkgrel=2
 pkgdesc="ATTiny usb bootloader with a strong emphasis on bootloader compactness"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/micronucleus/micronucleus"
 license=('GPL')
+install=${pkgname}.install
 depends=('libusb-compat')
 conflicts=('micronucleus-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/micronucleus/micronucleus/archive/${pkgver}.tar.gz"
