@@ -4,7 +4,7 @@
 
 pkgname=gephgui4-git
 _pkgname=gephgui4
-pkgver=r99.8baa444
+pkgver=r107.d0df381
 pkgrel=1
 pkgdesc="Geph connects you with the censorship-free Internet, even when nothing else works"
 arch=('x86_64')
