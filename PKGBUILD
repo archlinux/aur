@@ -4,7 +4,7 @@
 pkgname=vivaldi
 _rpmversion=3.5.2115.87-1
 pkgver=3.5.2115.87
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind.'
 url="https://vivaldi.com"
 options=(!strip !zipman)
@@ -13,7 +13,6 @@ arch=('x86_64')
 depends=('gtk3' 'libcups' 'nss' 'alsa-lib' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
 optdepends=(
     'vivaldi-ffmpeg-codecs: playback of proprietary video/audio'
-    'pepper-flash: flash support'
     'libnotify: native notifications'
 )
 source=("https://downloads.vivaldi.com/stable/vivaldi-stable-${_rpmversion}.x86_64.rpm"
