@@ -40,7 +40,6 @@ pkgname = pulseeffects-git
 	optdepends = rubberband: pitch shifting
 	optdepends = zam-plugins: maximizer
 	provides = pulseeffects
-	conflicts = pulseaudio
 	conflicts = pulseeffects
 
 pkgname = gst-plugins-pulseeffects-git

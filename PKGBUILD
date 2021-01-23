@@ -37,7 +37,7 @@ package_pulseeffects-git() {
     'libsigc++' 'lilv' 'lsp-plugins' 'pipewire-pulse' 'yelp')
   optdepends=('rubberband: pitch shifting'
     'zam-plugins: maximizer')
-  conflicts=('pulseaudio' 'pulseeffects')
+  conflicts=('pulseeffects')
   provides=('pulseeffects')
 
   cd pulseeffects/build
