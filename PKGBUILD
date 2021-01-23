@@ -1,7 +1,7 @@
 # Maintainer: Randoragon <randoragongamedev@gmail.com>
 
 pkgname=mousemode-git
-pkgver=1.0.2
+pkgver=1.0.r7.a24f901
 pkgrel=1
 epoch=
 pkgdesc="An intuitive, home-row mouse replacement"
@@ -12,6 +12,11 @@ depends=(libx11 libxtst xorgproto)
 makedepends=(git)
 source=("git+$url")
 md5sums=('SKIP')
+
+pkgver() {
+    cd "${_pkgname}"
+    printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
 	cd mousemode
