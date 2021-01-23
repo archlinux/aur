@@ -1,6 +1,6 @@
 # Maintainer Xuanwo <xuanwo@archlinucn.org>
 pkgname=clickup
-pkgver=2.0.20
+pkgver=2.0.21
 pkgrel=1
 pkgdesc="Desktop app for clickup.com"
 arch=('x86_64')
@@ -25,4 +25,4 @@ package() {
   chmod -R a+rX "$pkgdir/usr/share/icons/hicolor"
 }
 
-sha512sums=('ad6a2ab6bff8d1b85d45b2e95017485000bf39f1ab45bec4fc950125a36d902b0b7c8c39ba0ae0bd9fe99a9a378d624b12538f2e66e6ca71376b49641a7bf632')
+sha512sums=('abe7664deaac7495028eb45863568b29a0ac5c76ad81c0b5e42ea7c2982beb8a60f2c273d56f9655942f347af280201087cf2f2ebb451c1ed3f6126dff5e8dbf')
