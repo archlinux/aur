@@ -8,7 +8,7 @@ pkgdesc="Modular, multithreaded, high performance webapplicationserver for C++"
 url="http://www.tntnet.org"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
-depends=('cxxtools' 'openssl' 'zlib')
+depends=('cxxtools' 'openssl' 'zlib' 'perl')
 source=("http://www.tntnet.org/download/${pkgname}-${pkgver}.tar.gz")
 md5sums=('febe799675c1b8b2f7259bad30cf6f23')
 
