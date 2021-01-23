@@ -1,17 +1,12 @@
 pkgbase = yam
-	pkgdesc = The simplest AUR helper
-	pkgver = 1.0
+	pkgdesc = Game manager for F95zone
+	pkgver = 2.5.6
 	pkgrel = 1
-	url = https://github.com/cheertarts/yam
-	arch = any
+	url = https://github.com/MillenniumEarl/YAM
+	arch = x86_64
 	license = MIT
-	depends = git
-	depends = jshon
-	depends = grep
-	depends = bash
-	depends = coreutils
-	source = git+https://github.com/cheertarts/yam.git
-	md5sums = SKIP
+	source = https://github.com/MillenniumEarl/YAM/releases/download/v2.5.6/YAM-2.5.6.AppImage
+	sha256sums = 1ab1e01246720ff62fca7149e9bb919c011a0ae496cbaebaf09d8c5d3e9798c1
 
 pkgname = yam
 
