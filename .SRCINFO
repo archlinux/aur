@@ -1,7 +1,7 @@
 pkgbase = mpv-full
 	pkgdesc = A free, open source, and cross-platform media player (with all possible libs)
 	pkgver = 0.33.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mpv.io/
 	arch = x86_64
 	license = GPL
@@ -50,8 +50,10 @@ pkgbase = mpv-full
 	options = !emptydirs
 	source = mpv-0.33.0.tar.gz::https://github.com/mpv-player/mpv/archive/v0.33.0.tar.gz
 	source = https://waf.io/waf-2.0.20
+	source = 010-mpv-libplacebo-fix.patch::https://github.com/mpv-player/mpv/commit/7c4465cefb27d4e0d07535d368febdf77b579566.patch
 	sha256sums = f1b9baf5dc2eeaf376597c28a6281facf6ed98ff3d567e3955c95bf2459520b4
 	sha256sums = bf971e98edc2414968a262c6aa6b88541a26c3cd248689c89f4c57370955ee7f
+	sha256sums = a9f656a163e17a33050ea3ffe51203b948168437c87038239fc3a2424927b35a
 
 pkgname = mpv-full
 

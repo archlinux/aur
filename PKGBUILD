@@ -2,7 +2,7 @@
 
 pkgname=mpv-full
 pkgver=0.33.0
-pkgrel=1
+pkgrel=2
 _wafver=2.0.20
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('x86_64')
@@ -28,12 +28,15 @@ conflicts=('mpv')
 options=('!emptydirs')
 BUILDENV=('!check')
 source=("mpv-${pkgver}.tar.gz"::"https://github.com/mpv-player/mpv/archive/v${pkgver}.tar.gz"
-        "https://waf.io/waf-${_wafver}")
+        "https://waf.io/waf-${_wafver}"
+        '010-mpv-libplacebo-fix.patch'::'https://github.com/mpv-player/mpv/commit/7c4465cefb27d4e0d07535d368febdf77b579566.patch')
 sha256sums=('f1b9baf5dc2eeaf376597c28a6281facf6ed98ff3d567e3955c95bf2459520b4'
-            'bf971e98edc2414968a262c6aa6b88541a26c3cd248689c89f4c57370955ee7f')
+            'bf971e98edc2414968a262c6aa6b88541a26c3cd248689c89f4c57370955ee7f'
+            'a9f656a163e17a33050ea3ffe51203b948168437c87038239fc3a2424927b35a')
 
 prepare() {
     install -D -m755 "waf-${_wafver}" "mpv-${pkgver}/waf"
+    patch -d "mpv-${pkgver}" -Np1 -i "${srcdir}/010-mpv-libplacebo-fix.patch"
 }
 
 build() {
