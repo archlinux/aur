@@ -26,7 +26,7 @@ prepare() {
 }
 
 build() {
-    export GOPROXY=https://goproxy.cn,direct
+    # export GOPROXY=https://goproxy.cn,direct
     cd "$srcdir/$_pkgname"
     go build \
         -gcflags "all=-trimpath=${PWD}" \
