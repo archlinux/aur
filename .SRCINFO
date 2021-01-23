@@ -1,6 +1,6 @@
 pkgbase = fish-pisces-git
 	pkgdesc = Fish plugin for matching paired symbols
-	pkgver = 0.7.0
+	pkgver = v0.7.0.r0.ge45e086
 	pkgrel = 1
 	url = https://github.com/laughedelic/pisces
 	arch = any

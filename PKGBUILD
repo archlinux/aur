@@ -1,6 +1,6 @@
 # Maintainer: lmartinez-mirror
 pkgname=fish-pisces-git
-pkgver=0.7.0
+pkgver=v0.7.0.r0.ge45e086
 pkgrel=1
 pkgdesc="Fish plugin for matching paired symbols"
 arch=('any')
@@ -13,8 +13,13 @@ conflicts=('fish-pisces')
 source=("$pkgname::git+$url")
 sha512sums=('SKIP')
 
+pkgver()  {
+  cd "$pkgname"
+  git describe --long --tags | sed 's/-/.r/;s/-/./'
+}
+
 package() {
-  cd "pisces-$pkgver"
+  cd "$pkgname"
   install -Dm644 conf.d/pisces.fish -t "$pkgdir/etc/fish/conf.d/"
   find functions -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/fish/{}" \;
 }
