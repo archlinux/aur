@@ -1,0 +1,20 @@
+pkgbase = libtiff4-git
+	pkgdesc = Library for manipulation of TIFF images
+	pkgver = 3.9.7
+	pkgrel = 1
+	url = http://www.simplesystems.org/libtiff/
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = gcc-libs
+	depends = libjpeg-turbo
+	depends = zlib
+	provides = libtiff4
+	conflicts = libtiff4
+	source = git+https://gitlab.com/libtiff/libtiff.git#branch-3.9
+	source = libtiff4-soname.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = libtiff4-git
+
