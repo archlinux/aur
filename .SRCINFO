@@ -1,19 +1,23 @@
 pkgbase = lcarsde-status-bar
 	pkgdesc = Menu for lcarsde to display and run installed software
-	pkgver = 20.1
+	pkgver = 21.1
 	pkgrel = 1
 	url = https://lcarsde.github.io
 	arch = any
 	groups = lcarsde
-	license = GPL2
-	depends = python>=3.8
-	depends = python-gobject
+	license = MIT
+	makedepends = jdk-openjdk
+	depends = pango
+	depends = icu
+	depends = libxml2
+	depends = glib2
+	depends = harfbuzz
+	depends = freetype2
 	depends = gtk3
-	depends = python-cairo
-	depends = python-numpy
-	depends = python-pyalsaaudio
-	source = lcarsde-status-bar-20.1.tar.gz::https://github.com/lcarsde/status-bar/archive/20.1.tar.gz
-	md5sums = f1189398fdc0f1779547389131f4a94c
+	optdepends = ttf-ubuntu-font-family
+	optdepends = alsa-utils
+	source = lcarsde-status-bar-21.1.tar.gz::https://github.com/lcarsde/status-bar/archive/21.1.tar.gz
+	md5sums = 35e5d5ac4c74c16cf10910853aa4d431
 
 pkgname = lcarsde-status-bar
 
