@@ -33,4 +33,8 @@ package() {
 	install -Dm755 "$srcdir/freezer.desktop" "$pkgdir/usr/share/applications/freezer.desktop"
 	mkdir -p "$pkgdir/usr/bin"
 	ln -s "/opt/exttex/freezer/freezer" "$pkgdir/usr/bin/freezer"
+	echo "
+	>>> For some reason, after the update, the freezer overwrites ~/.config/freezer
+	>>> Make a backup copy of this directory, and after running the updated version, return it to its place.
+	"
 }
