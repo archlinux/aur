@@ -5,7 +5,7 @@
 
 pkgname='ripit'
 pkgver='4.0.0_rc_20161009'
-pkgrel='5'
+pkgrel='6'
 pkgdesc='Command line tool to rip tracks from audio cds and encode them'
 arch=('any')
 url='https://www.ripit.pl'
@@ -26,6 +26,13 @@ optdepends=(
 source=("https://www.ripit.pl/ripit/ripit-${pkgver}.tar.bz2")
 sha256sums=('2434ec6e5b8044de9b081cb7a0c713e52a09443270c6abe9f415a006ecda0c66')
 backup=('etc/ripit/config')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  # replace freedb with mirror
+  sed 's/CDDBHOST=freedb.org/CDDBHOST=gnudb.org/' -i config
+  sed 's/mirror=freedb/mirror=gnudb/' -i config
+}
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
