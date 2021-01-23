@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Giftedmotion
+Comment=GIF editor
+GenericName=GIF editor
+Exec=/usr/bin/giftedmotion
+Terminal=false
+Type=Application
+Icon=giftedmotion
+Categories=Graphics;Video;
+StartupWMClass=Giftedmotion
+StartupNotify=true
+

@@ -1,0 +1,19 @@
+pkgbase = giftedmotion
+	pkgdesc = GiftedMotion is a free and easy to use open source GIF animator.
+	pkgver = 1.23
+	pkgrel = 1
+	url = http://www.onyxbits.de/giftedmotion
+	arch = x86_64
+	license = GPL2
+	depends = java-runtime<=8
+	source = giftedmotion
+	source = giftedmotion.desktop
+	source = giftedmotion.png
+	source = http://www.onyxbits.de/sites/default/files/download/16/giftedmotion-1.23.jar
+	md5sums = f32cb9f27b07343f95f2e34e98e984d1
+	md5sums = da2a20c1c33fc1e055c781b18e896870
+	md5sums = 00eeefc57d0f97713b6114a2e82db57f
+	md5sums = bfdf2f92794fc2b34f4455663143b9b2
+
+pkgname = giftedmotion
+
