@@ -1,16 +1,16 @@
 # Maintainer: Dennis Fink <dennis.fink@c3l.lu>
 
 pkgname=patternutils
-pkgver=0.0.10
-_pkghash=f33c951669cd
+pkgver=0.0.11
+_pkghash=845246bd20d9
 pkgrel=1
 pkgdesc="Combine regular expressions with template engines in a powerful matter."
 arch=('any')
 url="https://projects.metalgamer.eu/patternutils"
 license=('GPL3')
 depends=('python' 'python-click' 'python-jinja' 'python-pygments' 'python-feedparser')
-source=('patternutils-0.0.10.zip::https://projects.metalgamer.eu/patternutils/archive/f33c951669cd51e527ec5e817cceb74a24400ab2.zip?subrepos=false')
-sha512sums=('bfde728083917191bfd740456113f4b7c2c1cf25107bc3bc60e5d7705686b102a59a3fb28d68f3799d9026dda2da0194c9f59424148370fc4d947228a76e4616')
+source=('patternutils-0.0.11.zip::https://projects.metalgamer.eu/patternutils/archive/845246bd20d99082f1809ce02426a9276bf041f9.zip?subrepos=false')
+sha512sums=('77bf4e5b7f70dc29325e4b9e396f715ff6e0d346f630f3b4b7a2b485bb74c7f6d5a6c7107d52ca02611c63487c46cdc7fcc3773fde31cbe4abbf8c7c44c9df58')
 
 prepare() {
     sed -i 's/==/>=/g' "$srcdir/$pkgname-$_pkghash/setup.py"
