@@ -2,7 +2,7 @@
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=i3-swallow
 pkgver=2021.01.01
-pkgrel=1
+pkgrel=2
 pkgdesc="Swallow a terminal window after a blocking application is run in i3"
 arch=('any')
 groups=('therepoclub')
