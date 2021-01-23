@@ -1,6 +1,6 @@
 # Maintainer: desbma
 pkgname=pacman-hooks-desbma-git
-pkgver=r37.333019d
+pkgver=r44.580de45
 pkgrel=1
 pkgdesc='Various personal Pacman hooks'
 arch=('x86_64')
@@ -31,6 +31,7 @@ package() {
     install -Dm 644 -t "${pkgdir}/usr/share/libalpm/hooks" reflector/reflector.hook
     install -Dm 644 sync/boot_sync.hook "${pkgdir}/usr/share/libalpm/hooks/99-boot_sync.hook"
     install -Dm 644 sync/root_sync.hook "${pkgdir}/usr/share/libalpm/hooks/99-root_sync.hook"
+    install -Dm 644 -t "${pkgdir}/usr/share/libalpm/hooks"  xmonad-recompile/xmonad-recompile.hook
 
     install -Dm 755 -t "${pkgdir}/usr/bin" check-broken-packages/target/release/check-broken-packages
 }
