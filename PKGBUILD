@@ -25,4 +25,3 @@ package() {
 
   python2 setup.py install --root="${pkgdir}" --optimize=1
 }
-
