@@ -1,0 +1,6 @@
+*
+!.gitignore
+!PKGBUILD
+!keymapperd.service
+!keymapper.desktop
+!.SRCINFO

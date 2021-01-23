@@ -1,0 +1,23 @@
+pkgbase = keymapper
+	pkgdesc = A cross-platform context-aware keyremapper
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/houmain/keymapper
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	depends = libusb
+	depends = libx11
+	source = https://github.com/houmain/keymapper/archive/1.2.0/keymapper-1.2.0.tar.gz
+	source = keymapperd.service
+	source = keymapper.desktop
+	sha256sums = 6b64f44e7084a019f325ce6fb54700651fb0d62505594988feae60e5d935bde0
+	sha256sums = 1c403c317815a339cd1f9c081533b207e93464b138696a9caef9a62489a70416
+	sha256sums = 32797443d2b92d3b01d683563426fbea3a18e16ad965759c9ce06ea301488654
+
+pkgname = keymapper
+
