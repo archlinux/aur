@@ -1,0 +1,18 @@
+pkgbase = python-openant-git
+	pkgdesc = A python library to download and upload files from ANT-FS compliant devices (Garmin products).
+	pkgver = r147.faa8987
+	pkgrel = 1
+	url = https://github.com/Tigge/openant
+	install = openant.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyusb
+	optdepends = antfs-cli-git: To extract all activity FIT files from a device and write them to a folder.
+	source = git+https://github.com/Tigge/openant
+	md5sums = SKIP
+
+pkgname = python-openant-git
+
