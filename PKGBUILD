@@ -1,7 +1,7 @@
 # Mantainer: Fabrizio Pietrucci <bamlessnty5@gmail.com>
 
 pkgname=jstar
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="A Lightweight Embeddable Scripting Language"
 arch=('i686' 'x86_64')
