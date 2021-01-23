@@ -3,7 +3,7 @@
 _pkgname=sleepyhead
 pkgname=$_pkgname-git
 pkgver=1.1.r2356.8e6968fb
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source, cross platform, sleep tracking software with a focus on monitoring CPAP treatment."
 arch=('i686' 'x86_64')
 url="http://sleepyhead.jedimark.net"
@@ -35,6 +35,7 @@ pkgver() {
 
 build() {
   cd sleepyhead-code
+  export CXXFLAGS="$CXXFLAGS -fpermissive"
   ./configure
   make
 }
