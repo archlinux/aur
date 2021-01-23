@@ -1,6 +1,6 @@
 pkgbase = plasma5-runners-jetbrains-runner
 	pkgdesc = A Krunner Plugin which allows you to open your recent projects
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/alex1701c/JetBrainsRunner
 	install = plasma5-runners-jetbrains-runner.install
@@ -10,7 +10,7 @@ pkgbase = plasma5-runners-jetbrains-runner
 	makedepends = git
 	makedepends = kcmutils
 	depends = krunner
-	source = plasma5-runners-jetbrains-runner::git+https://github.com/alex1701c/JetBrainsRunner#tag=1.6.0
+	source = plasma5-runners-jetbrains-runner::git+https://github.com/alex1701c/JetBrainsRunner#tag=1.7.0
 	source = git+https://github.com/alex1701c/jetbrains-api
 	sha256sums = SKIP
 	sha256sums = SKIP
