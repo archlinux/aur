@@ -18,7 +18,7 @@ makedepends=(git)
 provides=(libtiff4)
 conflicts=(libtiff4)
 source=(
-  git+https://gitlab.com/libtiff/libtiff.git#branch-3.9
+  git+https://gitlab.com/libtiff/libtiff.git#branch=branch-3.9
   libtiff4-soname.patch
 )
 sha256sums=(
