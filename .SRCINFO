@@ -1,0 +1,16 @@
+pkgbase = fish-pisces-git
+	pkgdesc = Fish plugin for matching paired symbols
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/laughedelic/pisces
+	arch = any
+	groups = fish-plugins
+	license = LGPL3
+	depends = fish>=2.3
+	provides = fish-pisces
+	conflicts = fish-pisces
+	source = fish-pisces-git::git+https://github.com/laughedelic/pisces
+	sha512sums = SKIP
+
+pkgname = fish-pisces-git
+
