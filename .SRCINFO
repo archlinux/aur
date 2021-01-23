@@ -1,0 +1,19 @@
+pkgbase = libgcrypt15-minimal-git
+	pkgdesc = General purpose cryptographic library based on the code from GnuPG
+	pkgver = 1.5.6
+	pkgrel = 1
+	url = http://www.gnupg.org
+	arch = x86_64
+	license = LGPL
+	depends = glibc
+	depends = libgpg-error
+	provides = libgcrypt15
+	conflicts = libgcrypt15
+	replaces = libgcrypt11
+	source = git+https://github.com/gpg/libgcrypt#branch=LIBGCRYPT-1-5-BRANCH
+	source = libgcrypt15-disable-build-timestamp.patch::https://github.com/gpg/libgcrypt/commit/a785cc3db0c4e8eb8ebbf784b833a40d2c42ec3e.patch
+	sha256sums = SKIP
+	sha256sums = cbf85bb7e62f3d5b9fcf07fb63a6c7c51d1a01cff7af049f36fd06e4e0b8b3cd
+
+pkgname = libgcrypt15-minimal-git
+
