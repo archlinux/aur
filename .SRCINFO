@@ -9,6 +9,7 @@ pkgbase = xxh-git
 	makedepends = python-setuptools
 	depends = python
 	depends = openssh
+	depends = python-pexpect
 	provides = xxh
 	conflicts = xxh
 	source = git+https://github.com/xxh/xxh.git
