@@ -1,4 +1,4 @@
-# Maintainer: Simon Gardling <titaniumtown@gmail.com>
+# Maintainer: Márcio <marciosr10@gmail.com>
 
 pkgname=mutter-40alfa
 _pkgname=mutter
