@@ -1,7 +1,7 @@
 pkgbase = python2-gammu
-	pkgdesc = Python bindings for Gammu library
+	pkgdesc = Python2 bindings for Gammu library
 	pkgver = 2.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wammu.eu/python-gammu/
 	arch = x86_64
 	license = GPL
