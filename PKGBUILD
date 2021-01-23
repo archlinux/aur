@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=android-messages-desktop
-pkgver=4.5.1
+pkgver=4.5.2
 pkgrel=1
 pkgdesc="Android Messages as a cross-platform desktop app"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('libnotify: desktop notifications'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('b39e90f48acb2f3ccae06dadfceecdc2ac6f12a7cb9869037ca58b38b7c5d22a'
+sha256sums=('73d240979e33cdc697e15f571d8e25caff3a12565958f6b0227aaf46ce6d573f'
             'ef967c944762e6032c78db578be46a89e5eac2bc8bee856e21d67a6029e1dc69'
             '1bf16b8864712b0c1de72d8c3764db14b75ecf64dae44d206a26aa036ac53b1a')
 
