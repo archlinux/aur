@@ -14,8 +14,8 @@ pkgbase = kaggle-api
 	depends = python-requests
 	depends = python-tqdm
 	depends = python-slugify
-	source = kaggle-api-1.5.10.tar.gz::https://files.pythonhosted.org/packages/source/k/kaggle/kaggle-1.5.10.tar.gz
-	sha512sums = c35ad3ef1dcb94c89c2b27e73872da0c6ddc9c55653103b3a6bede0f2e7afb75d54a0ee665d69d9f1e4afc689371e4dc01b7ebc1630fc17d7bf02929994c1973
+	source = git+https://github.com/Kaggle/kaggle-api
+	sha512sums = SKIP
 
 pkgname = kaggle-api
 

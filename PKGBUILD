@@ -21,15 +21,15 @@ depends=(
 makedepends=(
   'python-setuptools'
 )
-source=(${pkgname}-${pkgver}.tar.gz::"https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('c35ad3ef1dcb94c89c2b27e73872da0c6ddc9c55653103b3a6bede0f2e7afb75d54a0ee665d69d9f1e4afc689371e4dc01b7ebc1630fc17d7bf02929994c1973')
+source=("git+$url")
+sha512sums=('SKIP')
 
 build() {
-  cd "${_name}-${pkgver}"
+  cd "$srcdir"/$pkgname
   python setup.py build
 }
 
 package() {
-  cd "${_name}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  cd "$srcdir"/$pkgname
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
