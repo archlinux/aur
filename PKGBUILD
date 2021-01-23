@@ -29,7 +29,7 @@ backup=('etc/ripit/config')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  # replace freedb with mirror
+  # replace freedb with gnudb
   sed 's/CDDBHOST=freedb.org/CDDBHOST=gnudb.org/' -i config
   sed 's/mirror=freedb/mirror=gnudb/' -i config
 }
