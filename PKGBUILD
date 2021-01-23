@@ -2,35 +2,21 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-bgprocess
-pkgver=0.1.0
+pkgver=0.1.1
 _vdrapi=2.4.6
-pkgrel=26
+pkgrel=1
 pkgdesc="Displays information about background processes"
-url="http://www.vdr-wiki.de/wiki/index.php/Bgprocess-plugin"
+url="https://github.com/vdr-projects/vdr-plugin-bgprocess"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
-source=("http://ftp.uni-kl.de/pub/linux/gentoo/distfiles/$pkgname-$pkgver.tgz"
-        "$pkgname-01_locale.patch"
-        "$pkgname-03_tlphrases.patch"
-        "$pkgname-04_osditem.patch")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/vdr-projects/vdr-plugin-bgprocess/archive/0.1.1.tar.gz")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('79612020bda0cf59265ceea9898a3a73179ee8caed44fbb9b259d0e52f7fa91f'
-            'c5e6260d26a169d8d37dc9226b79b6e00806ad5ebda5227f1466f243f9d940a6'
-            '344622c47c7e995b19431fb14bb2ca986a1635ed4b0522a814771e53d9c52590'
-            '9305299e91a0ba3b655fe5c452f2d36fc36a211fa67a3101313cc6e3241e5d90')
-
-prepare() {
-  cd "${srcdir}/${_plugname}-${pkgver}"
-
-  patch -p1 -i "${srcdir}/$pkgname-01_locale.patch"
-  patch -p1 -i "${srcdir}/$pkgname-03_tlphrases.patch" #By Holger Schvestka (yaVDR)
-  patch -p1 -i "${srcdir}/$pkgname-04_osditem.patch" #By Holger Schestka (yaVDR)
-}
+sha256sums=('9fb77f79e6f1f1b831dbc672ac459b6664bcd7c72597d0d91ac02bdf8ef5a4d7')
 
 package() {
-  cd "${srcdir}/${_plugname}-${pkgver}"
+  cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
 
   mkdir -p "$pkgdir/usr/lib/vdr/plugins"
   make CFLAGS="$(pkg-config vdr --variable=cflags)" \
