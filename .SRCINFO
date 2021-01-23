@@ -1,15 +1,15 @@
 pkgbase = rollup
 	pkgdesc = Next-generation ES6 module bundler
-	pkgver = 2.37.1
+	pkgver = 2.38.0
 	pkgrel = 1
 	url = https://rollupjs.org/
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = rollup-2.37.1.tgz
-	source = https://registry.npmjs.org/rollup/-/rollup-2.37.1.tgz
-	sha256sums = 245c3ebf9ed3159df572cbbc01f32b90366d63a507a8f8bb3ac5dac6a5899fe2
+	noextract = rollup-2.38.0.tgz
+	source = https://registry.npmjs.org/rollup/-/rollup-2.38.0.tgz
+	sha256sums = 5ddb986db83d5ce66bd68d448f519147d1d64a555e3c10576175fd6ab47f1869
 
 pkgname = rollup
 
