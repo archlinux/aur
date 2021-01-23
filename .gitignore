@@ -1,6 +1,9 @@
+*.deb
+*.gz
+*.log*
+*.tar
+*.xz
+*.zst
+linkerd
 pkg/
 src/
-*.tar.gz
-*.tar.xz
-*.tar
-linkerd
