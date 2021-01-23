@@ -1,6 +1,6 @@
 # Maintainer: Jack O'Sullivan <jackos1998 at gmail dot com>
 pkgname=terminal-mines
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="An ncurses-based minesweeper game."
 url='https://github.com/accatyyc/terminal-mines'
@@ -20,5 +20,5 @@ build() {
 }
 package() {
 	cd "$pkgname"
-	make INSTALL_PATH="$pkgdir/usr" install
+	make DESTDIR="$pkgdir" PREFIX=/usr install
 }
