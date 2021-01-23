@@ -4,17 +4,17 @@
 
 pkgname=flyspray
 pkgver=1.0rc9
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight, web-based bug tracking system written in PHP'
 url="https://www.flyspray.org/"
 arch=('any')
 license=('LGPL2.1')
-depends=('php' 'php-gd')
+depends=('php7' 'php7-gd')
 makedepends=('composer' 'unzip')
 optdepends=('graphviz: plot task dependency graphs'
             'mariadb: use local MariaDB database'
-            'php-fpm: run with FastCGI process manager'
-            'php-pgsql: use PostgreSQL database'
+            'php7-fpm: run with FastCGI process manager'
+            'php7-pgsql: use PostgreSQL database'
             'postgresql: use local PostgreSQL database'
             'uwsgi: run in application container')
 backup=("etc/webapps/${pkgname}/.htaccess"
@@ -42,7 +42,7 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
-  php -d 'extension=gd' /usr/bin/composer install --no-dev
+  php7 -d 'extension=gd' /usr/bin/composer install --no-dev
 }
 
 package() {
