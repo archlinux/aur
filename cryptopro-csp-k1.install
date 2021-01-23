@@ -130,6 +130,15 @@ post_install() {
         printf "Setup CryptoPro CSP and reinstall.\n"
     fi
 
+    # lsb-cprocsp-pkcs11-64
+    cpconfig -ini '\config\apppath' -add string libcppkcs11.so /opt/cprocsp/lib/amd64/libcppkcs11.so
+    cpconfig -ini '\config\PKCS11' -enum section 2>/dev/null | grep -q '^slot0$'
+    if [ "$?" -eq "1" ]; then
+        cpconfig -ini '\config\PKCS11\slot0' -add string "ProvGOST" ""
+        cpconfig -ini '\config\PKCS11\slot0' -add string "Firefox" ""
+        cpconfig -ini '\config\PKCS11\slot0' -add string "reader" ""
+    fi
+
     # cprocsp-rdr-gui-gtk-64
     cpconfig -ini '\config\apppath' -add string librdrrndmbio_gui_fgtk.so /opt/cprocsp/lib/amd64/librdrrndmbio_gui_fgtk.so
     cpconfig -ini '\config\apppath' -add string libxcpui.so /opt/cprocsp/lib/amd64/libfgcpui.so
