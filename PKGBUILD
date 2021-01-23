@@ -1,19 +1,19 @@
-# Contributor: thomasqueirozb
-# Maintainer:  spsf64
+# Contributor: thomasqueirozb <thomasqueirozb  at  g m a i l .com>
+# Maintainer:  spsf64 <spsf64  at  g m a i l .com>
 
 pkgname=giftedmotion
 pkgver=1.23
-pkgrel=1
+pkgrel=2
 pkgdesc='GiftedMotion is a free and easy to use open source GIF animator.'
 arch=('x86_64')
 license=('GPL2')
-url="http://www.onyxbits.de/giftedmotion"
+url="https://www.onyxbits.de/giftedmotion"
 depends=('java-runtime<=8')
 
 source=("$pkgname"
         "$pkgname.desktop"
         "$pkgname.png"
-        "http://www.onyxbits.de/sites/default/files/download/16/$pkgname-$pkgver.jar")
+        "https://www.onyxbits.de/sites/default/files/download/16/$pkgname-$pkgver.jar")
 
 md5sums=('f32cb9f27b07343f95f2e34e98e984d1'
          'da2a20c1c33fc1e055c781b18e896870'
