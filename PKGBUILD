@@ -1,17 +1,17 @@
 # Maintainer: Andreas B. Wagner <andreas.wagner@lowfatcomputing.org>
 # Contributor: Michael Blum <michaeldblum@earthlink.net>
 pkgname=xd
-pkgver=1
-pkgrel=3
+pkgver=1.4
+pkgrel=1
 pkgdesc='a utility for dumping files in hex, decimal, or octal'
 arch=('i686' 'x86_64')
 url="http://www.fourmilab.ch/xd"
 license=('custom')
 depends=('glibc')
 makedepends=('gcc')
-source=("http://www.fourmilab.ch/$pkgname/$pkgname.zip" 'COPYING')
+source=("http://www.fourmilab.ch/$pkgname/$pkgname-$pkgver.tar.gz" 'COPYING')
 options=('zipman')
-md5sums=('304184cb2bd79900c4750dcab481033a'
+md5sums=('6493858c46570f9f9480261091ae8d12'
          '5cf61120e8516a804a13731920518974')
 
 build() {
