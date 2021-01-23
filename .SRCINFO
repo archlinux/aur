@@ -1,6 +1,6 @@
 pkgbase = python-uflash
 	pkgdesc = A module and utility to flash Python onto the BBC micro:bit
-	pkgver = 1.2.3
+	pkgver = 1.3.0
 	pkgrel = 0
 	url = https://pypi.python.org/pypi/uflash/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-uflash
 	depends = python-click
 	provides = python-uflash
 	provides = uflash
-	source = https://files.pythonhosted.org/packages/c6/8a/5c007e1403a77385f157bae23e7a42b5a26260321f8ee22a275b23cce7f8/uflash-1.2.3.tar.gz
-	sha256sums = e8aa905d233711a216955024af926ad629c3d68284f4086f825a3494ed471a9f
+	source = https://files.pythonhosted.org/packages/8d/5b/a163ee4154a95d6db4d52b01b6209be99443ead6301923e0243ffaad3ce0/uflash-1.3.0.tar.gz
+	sha256sums = f5cd58cb84394572100715a7829f8b1278d950d793913662c5aef6849f39484e
 
 pkgname = python-uflash
 
