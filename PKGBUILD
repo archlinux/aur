@@ -9,7 +9,7 @@ url='https://github.com/Jugran/lyrics-in-terminal'
 license=('MIT')
 depends=('python>=3.6' 'python-dbus' 'ncurses')
 makedepends=('python-setuptools')
-source=(https://github.com/Jugran/lyrics-in-terminal/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
+source=(${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
 md5sums=('5aaaec3ec9bed307c708a9c2b0ebc6e0')
 
 build() {
