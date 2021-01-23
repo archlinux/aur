@@ -4,7 +4,7 @@
 # Contributor: Lorenz Wellmer
 pkgname=clockify-desktop
 pkgver=1.8.61
-pkgrel=1
+pkgrel=2
 pkgdesc="Truly free time tracker for teams, Desktop App"
 arch=('x86_64')
 url="https://clockify.me"
