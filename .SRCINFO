@@ -1,0 +1,16 @@
+pkgbase = fish-autopair.fish-git
+	pkgdesc = Auto-complete matching pairs in the Fish command line
+	pkgver = 1.0.3.r0.g1222311
+	pkgrel = 1
+	url = https://github.com/jorgebucaran/autopair.fish
+	arch = any
+	groups = fish-plugins
+	license = MIT
+	makedepends = git
+	depends = fish
+	conflicts = fish-pisces
+	source = fish-autopair.fish-git::git+https://github.com/jorgebucaran/autopair.fish
+	sha256sums = SKIP
+
+pkgname = fish-autopair.fish-git
+
