@@ -1,8 +1,8 @@
 # Maintainer: Alexei Colin <ac@alexeicolin.com>
 
 pkgname=zephyr-sdk
-pkgver=0.11.4
-pkgrel=2
+pkgver=0.12.1
+pkgrel=1
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64')
 url="https://www.zephyrproject.org/"
@@ -27,13 +27,9 @@ depends=('python-breathe>=4.9.1' 'python-docutils>=0.14'
          'doxygen' 'dfu-util' 'dtc' 'cmake>=3.8.2')
 optdepends=('pyocd: programming and debugging ARM MCUs')
 makedepends=('patchelf')
-source=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/zephyr-sdk-${pkgver}-setup.run"
+_installer=zephyr-sdk-${pkgver}-x86_64-linux-setup.run
+source=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/${_installer}"
         "zephyrrc"
-        # PR 252
-        0001-scripts-template_dir-don-t-let-y-override-no-rc.patch
-        0002-scripts-template_dir-don-t-prompt-for-cmake-when-y-s.patch
-        0003-scripts-template_dir-re-use-common-prompting-code.patch
-        0004-scripts-template_dir-no-cmake-flag-for-CMake-module-.patch
 )
 
 options=(!strip)
@@ -64,7 +60,7 @@ package ()
 
   mkdir -p $pkgdir/$_installdir
   echo ">>> Running installer...."
-  sh zephyr-sdk-${pkgver}-setup.run --target $pkgdir/$_installdir --nochown --noexec --keep -- -d $pkgdir/$_installdir
+  sh ${_installer} --target $pkgdir/$_installdir --nochown --noexec --keep -- -d $pkgdir/$_installdir
 
   # Add a flag to not relocate executables, because the path to pkgdir is invalid after installation
   # -R disables relocation, -S saves the relocation script so that it can be run manually.
@@ -73,7 +69,7 @@ package ()
   # Install hosttools always, but let the toolchains be selectable below:
   ALL_TOOLCHAINS=($(_list_toolchains $pkgdir/$_installdir/$_setupsh))
   echo ">>> To select a subset of toolchains set TOOLCHAINS in environment, like so:"
-  echo ">>>     TOOLCHAINS='arm arc' makepkg"
+  echo ">>>     TOOLCHAINS='arm.x86_64 arm64.x86_64' makepkg"
   echo ">>> Available toolchains: ${ALL_TOOLCHAINS[*]}"
 
   # Validate selected toolchains
@@ -115,11 +111,6 @@ package ()
 
   ######### NOTE: we are in $_installdir after this point
 
-  for p in $srcdir/0*.patch
-  do
-    patch ./$_setupsh $p
-  done
-
   ./$_setupsh -d $pkgdir/$_installdir -norc -nocmake -y
 
   # Manually install the CMake module, because upstream paths are no good:
@@ -153,7 +144,7 @@ package ()
 # $ source zephyr-env.sh
 # $ cd samples/hello_world
 # $ mkdir build && cd build
-# $ cmake -GNinja -DBOARD=qemu_x86..
+# $ cmake -GNinja -DBOARD=qemu_cortex_a53 ..
 # $ ninja run
 
 # Alternative using West:
@@ -162,29 +153,16 @@ package ()
 # $ cd testws
 # $ west update
 # $ cd zephyr
-# $ west build --pristine=always -b qemu_x86 samples/hello_world
+# $ west build --pristine=always -b qemu_cortex_a53 samples/hello_world
 # $ cd build
 # $ ninja run
 
-# Expected output for -b qemu_x86:
-#
-#	SeaBIOS (version rel-1.12.1-0-ga5cab58-dirty-20200214_052440-f7294c49af13-zephyr
-#	)
-#	Booting from ROM..Optimal CONFIG_X86_MMU_PAGE_POOL_PAGES 7
-#	*** Booting Zephyr OS build v2.2.0-rc3  ***
-#	Hello World! qemu_x86
-#
 # Expected output for -b qemu_cortex_m3:
 #
-# 	qemu-system-arm: warning: nic stellaris_enet.0 has no peer
-# 	*** Booting Zephyr OS version 2.2.0-rc3  ***
-# 	Hello World! qemu_cortex_m3
+#       *** Booting Zephyr OS version 2.4.99  ***
+#       Hello World! qemu_cortex_a53
 
 # More info: https://docs.zephyrproject.org/latest/getting_started/index.html
 
-sha256sums=('f61041a7cd7beec9c8f826e7aa1215a4c34c309c56a3dc0967b8b3401633d1b4'
-            '7a1257272c64bdec281283d391e3149cece065935c9e8394d6bece32d0f6fc05'
-            '5a5e1f8cd28f15da3cb9c4c50bf7ccb81fdb15499c02625dc76ed27c98ffad4f'
-            'a1a64dd3152871056b6d79bf3fd31cb1e081a8b9354fae929a263e7f74044050'
-            'f22ade1773ed8302a11b1ded4cef28ad9630119354d20db334fdb5df6db6f820'
-            '4c1f7e68ba1400786f116c2305ec32fa1e00b09367d583770a21bf3056fada46')
+sha256sums=('3a74dafdd3b54cb46a8c9d5db01ef0dc5766fb39f4cfd85bcb6ba88d13a1a63a'
+            '7a1257272c64bdec281283d391e3149cece065935c9e8394d6bece32d0f6fc05')
