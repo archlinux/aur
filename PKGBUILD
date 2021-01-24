@@ -1,7 +1,7 @@
 # Maintainer: João Figueiredo <jf dot mundox at gmail dot com> 
 
 pkgname=elf-dissector-git
-pkgver=r762.42931ca
+pkgver=r775.6659853
 pkgrel=1
 pkgdesc="Static analysis tool for ELF libraries and executables"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://invent.kde.org/sdk/elf-dissector"
 license=('GPL')
 depends=('harfbuzz' 'hicolor-icon-theme' 'libdwarf' 'qt5-base')
 optdepends=('capstone: disassembler'
-			'gnuplot: performance plot')
+	    'gnuplot: performance plot')
 makedepends=('extra-cmake-modules' 'git' 'kitemmodels')
 source=('git+https://github.com/KDE/elf-dissector.git')
 sha256sums=('SKIP')
