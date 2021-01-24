@@ -1,7 +1,7 @@
 # Maintainer: kewl fft <kewl@alto.eu.org>
 
 pkgname=dse
-pkgver=1.33
+pkgver=1.34
 pkgrel=1
 pkgdesc="AES file encryption using a keyfile"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/kewlfft/${pkgname}"
 makedepends=('glibc')
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('95c34cce79d68ff749530ef81dcc1112f5b83592884b606405566c4fceedd002')
+sha256sums=('03f90100d7928506a3f232933a27e69696bf837465f79b0fc92e01da82ab2ebb')
 
 build() {
     make --directory="${pkgname}-${pkgver}"
