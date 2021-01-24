@@ -1,0 +1,15 @@
+pkgbase = reset-trackpoint-fix
+	pkgdesc = Tiny w/a for Lenovo Thinkpad's trackpoint/trackpad which deads on a laptop resume.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/thekondor/reset-trackpoint-fix
+	install = PKGBUILD.install
+	arch = x86_64
+	license = MPL
+	makedepends = make
+	makedepends = systemd
+	source = reset-trackpoint-fix-0.0.1.tar.gz::https://github.com/thekondor/reset-trackpoint-fix/archive/v0.0.1.tar.gz
+	sha256sums = 12e3f89854f9ada6b5d1a055e76c12765ee6eb02735e8b8e84359845d049df7e
+
+pkgname = reset-trackpoint-fix
+
