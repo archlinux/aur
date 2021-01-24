@@ -64,8 +64,6 @@ case $_basever in
 	510)
 	opt_ver="5.8%2B"
     source=("$kernel_site"
-	prepare
-	customization.cfg
         "$patch_site"
         "https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v10.1%2B_kernel_v5.8%2B.patch"
         'config.x86_64' # stock Arch config
@@ -96,8 +94,6 @@ case $_basever in
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0012-misc-additions.patch"
     )
     sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
             'f60f800329a7461e5ff542f7f19e24a073f1e49a74f96dfb5d45a899f6a9cad8'
             'SKIP'
             'fc5fc8944d0926cfc0aaf17be493ebe6549d8709f354191df6078337544cb3cb'
@@ -131,9 +127,8 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 prepare() {
   #rm -rf $pkgdir # Nuke the entire pkg folder so it'll get regenerated clean on next build
 
-  #ln -s "${_where}/customization.cfg" "${srcdir}" # workaround
-  #ln -s "${_where}/prepare" "${srcdir}" # workaround
-  ln -s "${_where}/${_srcpath}" "${srcdir}" # workaround
+  ln -s "${_where}/customization.cfg" "${srcdir}" # workaround
+  #ln -s "${_where}/${_srcpath}" "${srcdir}" # workaround
 
   cd "${srcdir}/${_srcpath}"
   
