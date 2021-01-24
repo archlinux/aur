@@ -3,9 +3,9 @@
 _target=rockchip64
 pkgbase="linux-$_target"
 pkgname=("$pkgbase" "$pkgbase-headers")
-pkgver=5.10.9
+pkgver=5.10.10
 _armbver=21.02.0
-_armbrel=73
+_armbrel=76
 _kernver="$pkgver-$_target"
 pkgrel=1
 arch=('aarch64')
