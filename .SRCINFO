@@ -1,0 +1,16 @@
+pkgbase = ross-wm-configs-git
+	pkgdesc = Window wanager configuration files for the ROSS Shell
+	pkgver = r35.172eee2
+	pkgrel = 1
+	url = https://github.com/rosssoftware/Shell/tree/master/wm-configs
+	arch = x86_64
+	license = GPL3
+	depends = awesome
+	depends = terminus-font
+	provides = ross-wm-configs
+	conflicts = ross-wm-configs
+	source = ross-wm-configs::git+https://github.com/rosssoftware/Shell.git
+	sha256sums = SKIP
+
+pkgname = ross-wm-configs-git
+
