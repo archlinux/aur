@@ -6,7 +6,6 @@ pkgbase = mos-bin
 	arch = x86_64
 	arch = i686
 	arch = arm64
-	groups = 
 	license = GLPv2
 	depends = libftdi-compat
 	depends = libusb>=1.0.16

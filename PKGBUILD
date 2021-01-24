@@ -8,7 +8,6 @@ pkgdesc="This package contains the Mongoose OS CLI tool."
 arch=('x86_64' 'i686' 'arm64')
 url="https://mongoose-os.com"
 license=('GLPv2')
-groups=('')
 depends=('libftdi-compat' 'libusb>=1.0.16')
 options=('!strip' '!emptydirs')
 source_x86_64=("https://launchpad.net/~mongoose-os/+archive/ubuntu/mos/+files/mos_2.19.0+b8341b5~xenial0_amd64.deb")
