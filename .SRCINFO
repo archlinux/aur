@@ -11,6 +11,7 @@ pkgbase = python-mkdocs-material
 	depends = pymdown-extensions
 	depends = python-mkdocs-minify-plugin
 	depends = python-mkdocs-material-extensions
+	provides = mkdocs-material
 	source = python-mkdocs-material-6.2.5.tar.gz::https://github.com/squidfunk/mkdocs-material/archive/6.2.5.tar.gz
 	sha256sums = f63c4a0290444d52be8a2ef260a17b09407f20e06501142c863ccee2d8f29b3a
 
