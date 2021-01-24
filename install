@@ -1,0 +1,31 @@
+post_upgrade() {
+cat << __EOF__
+
+*** Warning: ***
+
+This version of JICOFO introduce breaking changes.
+
+You no longer needs JICOFO_PORT and JICOFO_SECRET in your config file.
+
+You need to setup the focus proxy domain in jicofo.conf:
+
+jicofo {
+  xmpp {
+    client {
+      client-proxy = focus.YOUR_DOMAIN
+    }
+  }
+}
+
+You need to adjust your prosody:
+
+Before:
+Component "focus.YOUR_DOMAIN"
+   component_secret = "JICOFO_SECRET"
+
+After:
+Component "focus.YOUR_DOMAIN" "client_proxy"
+   target_address = "focus@auth.YOUR_DOMAIN"
+
+__EOF__
+}
