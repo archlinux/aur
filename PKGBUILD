@@ -7,7 +7,7 @@
 
 pkgbase=nginx-zest-git
 pkgname=(nginx-zest-git nginx-zest-src-git)
-pkgver=1.19.4.r0.g5ff3e15ab
+pkgver=1.19.6.r0.gc30ee7ff6
 pkgrel=1
 epoch=4
 pkgdesc='NGINX with beefed up security and performance'
@@ -15,7 +15,7 @@ arch=(x86_64)
 url='https://github.com/ZestProjects/nginx'
 license=(custom)
 depends=(pcre openssl geoip mailcap libxcrypt brotli mimalloc liburing zstd)
-makedepends=(mercurial git 'rust>=1.39')
+makedepends=(mercurial git 'rust>=1.39' cmake)
 checkdepends=(perl perl-gd perl-io-socket-ssl perl-fcgi perl-cache-memcached
               memcached ffmpeg inetutils)
 backup=(etc/nginx/fastcgi.conf
