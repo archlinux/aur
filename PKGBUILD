@@ -1,7 +1,7 @@
 # Maintainer: Mitch Bigelow <ipha00@gmail.com>
 
 pkgname=ncnn
-pkgver=20201208
+pkgver=20210124
 pkgrel=1
 pkgdesc="High-performance neural network inference framework optimized for the mobile platform"
 url="https://github.com/Tencent/ncnn"
@@ -11,7 +11,7 @@ makedepends=('git' 'cmake' 'glslang' 'vulkan-headers' 'vulkan-icd-loader')
 conflicts=('ncnn-git')
 arch=('i686' 'x86_64')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Tencent/ncnn/archive/${pkgver}.tar.gz")
-sha256sums=('898d657d77214f4505e00e9faa6cd85ee9d3941a32b86f8e0ac0dbff6a4d510b')
+sha256sums=('ca9d74efe0a4bccfed5f14953e096936a70a97f0ce2ad80d187c849635459d76')
 
 prepare() {
     cd "${srcdir}/ncnn-${pkgver}"
