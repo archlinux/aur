@@ -1,8 +1,8 @@
 # Maintainer: mlunax <lunax@mlunax.com>
 
 pkgname=haruhi-dl
-_name="haruhi-dl-master"
 pkgver=2021.01.24
+_name="haruhi-dl-v$pkgver"
 pkgrel=1
 pkgdesc="Fork of youtube-dl, focused on bringing a fast, steady stream of updates. We'll do our best to merge patches to any site, not only youtube."
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('ffmpeg: for video post-processing'
             'atomicparsley: for embedding thumbnails into m4a files'
             'phantomjs: for openload support')
 provides=("haruhi-dl")
-source=('haruhi-dl.tar.gz::https://git.sakamoto.pl/laudompat/haruhi-dl/-/archive/master/haruhi-dl-master.tar.gz')
+source=("haruhi-dl.tar.gz::https://git.sakamoto.pl/laudompat/haruhi-dl/-/archive/v$pkgver/$_name.tar.gz")
 md5sums=('SKIP')
 
 pkgver() {
