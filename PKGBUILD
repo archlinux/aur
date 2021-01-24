@@ -9,10 +9,11 @@ arch=("any")
 url="https://github.com/getchoo/aur-update"
 depends=("curl")
 license=("MIT")
+depends=("curl")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=('https://github.com/getchoo/aur-update/archive/v0.1.1.tar.gz')
-md5sums=('b6584b8ad5f122802414c2f7adf0fd80')
+md5sums=('7ee460a5bdab2355689b4170341ca89e')
 
 package() {
 	cd "$pkgname-$pkgver"
