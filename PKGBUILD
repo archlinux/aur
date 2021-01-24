@@ -2,8 +2,9 @@
 # Contributor: xiretza <xiretza+aur@gmail.com>
 # Contributor: Rod Kay <charlie5 on #ada at freenode.net>
 # Contributor: Earnestly <zibeon AT googlemail.com>
+# Contributor: tfl5034
 pkgname=gprbuild-bootstrap-git
-pkgver=r3601.cf5c323f
+pkgver=r3723.815226d6
 pkgrel=1
 pkgdesc="Static GPRbuild to bootstrap XML/Ada and GPRbuild itself"
 arch=('i686' 'x86_64')
@@ -14,8 +15,9 @@ makedepends=('git' 'gcc-ada')
 provides=('gprbuild-bootstrap')
 conflicts=('gprbuild' 'gprbuild-bootstrap')
 source=('git+https://github.com/AdaCore/gprbuild.git'
+        'git+https://github.com/AdaCore/gprconfig_kb.git'
         'git+https://github.com/AdaCore/xmlada.git')
-sha1sums=(SKIP SKIP)
+sha1sums=(SKIP SKIP SKIP)
 
 
 pkgver() {
@@ -30,13 +32,10 @@ prepare() {
 
     # GPRbuild hard-codes references to /usr/libexec, but ArchLinux packages
     # must use /usr/lib instead.
-    sed -i 's/libexec/lib/g' doinstall gprbuild.gpr \
-        share/gprconfig/compilers.xml \
-        share/gprconfig/linker.xml \
-        share/gprconfig/gnat.xml
+    sed -i 's/libexec/lib/g' doinstall gprbuild.gpr
 
-    # bootstrap.sh is in fact not POSIX compliant
-    sed -i 's|^#!/bin/sh|#!/bin/bash|' bootstrap.sh
+    cd "$srcdir/gprconfig_kb"
+    sed -i 's/libexec/lib/g' db/{compilers,gnat,linker}.xml
 }
 
 build() {
@@ -47,7 +46,8 @@ build() {
     ./bootstrap.sh \
         --prefix=/usr \
         --libexecdir=/lib \
-        --with-xmlada="$srcdir/xmlada"
+        --with-xmlada="$srcdir/xmlada" \
+        --with-kb="$srcdir/gprconfig_kb"
 }
 
 package() {
