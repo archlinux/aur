@@ -2,14 +2,13 @@
 # Contributor: ccorn
 
 pkgname="python-mkdocs-material-extensions-git"
-pkgver=1.0.1.r0.g8e530fe
+pkgver=1.0.1.r2.ge2a379b
 pkgrel=1
 pkgdesc="Markdown extension resources for MkDocs Material"
 url="https://github.com/facelessuser/mkdocs-material-extensions"
 license=("MIT")
 arch=("any")
 provides=("python-materialx" "python-mkdocs-material-extensions")
-depends=("mkdocs-material>=5.0.0")
 # Without "python-pip" the package is downloaded from PyPI
 makedepends=("python-setuptools" "python-pip" "python-wheel")
 source=("git+$url")
