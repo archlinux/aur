@@ -1,0 +1,19 @@
+pkgbase = dracut-hook-no-microcode
+	pkgdesc = Install/remove hooks for dracut - no microcode convenience package
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://dracut.wiki.kernel.org/index.php/Main_Page
+	arch = any
+	license = BSD
+	depends = dracut
+	source = dracut-install
+	source = dracut-remove
+	source = 90-dracut-install.hook
+	source = 60-dracut-remove.hook
+	sha256sums = 67d621885648f8cd4f752fe48ede33564dc9acfa373adeeeacaba2b79c07514b
+	sha256sums = 25409770cdf9607eb05addcbc0f89f45a91385c25b8a307425d4b3f4b7c2a9ef
+	sha256sums = 492d51df1234b75a32e7dff63c86ee104a7d844a408070e1c4da5dc8ab53be6f
+	sha256sums = 054dac9f1d55029a922ff05c3064e54d25790c7a18d2b598edc58ef3d295cba1
+
+pkgname = dracut-hook-no-microcode
+
