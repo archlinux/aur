@@ -54,7 +54,7 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -83,9 +83,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v10-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0003-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0003-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0004-HID-wacom-Correct-NULL-dereference-on-AES-pen-proxim.patch"
          # the main kernel config files
         'config')
 
@@ -339,9 +340,10 @@ sha512sums=('13ea7cf81db43059466c1558bd80175a6c2090496786fe9220c165958d19781d550
             '45fa721352143304eceff87649986fd42fcf4ae369f15ba704a435ab2f107dfe41c050eac25cd9167d2cc73d569aad8501cbd13477b62bad9724e4240f36ab15'
             'c074a23494d46b8c29e404c73823d86addd19ab12337f7c62607befdff58f10b5059ec97c3c52ab27b210cf64a21019c38547fdd4c004823f772bf7b8ea4b0c5'
             '34e21ecc4ef0d07707283427fa82d561a9573d670e80ccd41f7d9cb595473b3844b8df7aeffcb4fe82d9deeef0a4d4e6aef663eb1a7a397fa181f06f418a0d6d'
-            'd9fe7da551cf29d41a80a2c50d74ee427bc81d1cbf373abf23644244a5a7a382a8d5a2bad94a415e0d17cd2b225d5c7999ad5781cc442196608cd92826350520'
-            'eae926cbd8528e8d688b0038c29069cdafb37894bcba8d510a43b138a2db47b78b450a745db07acd0c5edf66fde86eacd94b1124587218b3e73848861d543182'
-            '0ff23d3cfe37e3112cf2c518d3fcdd4b510000044facd3a3091ad5440a9db25ddbc01b4bf8e54c33055d76222fb7b2968de7ede265156b980e89620998ee6081'
+            '06e23fb8828e70c5a30b11d99ae6b12db5bde1872457f58c736f2dd7d6985cc9bb87cf93ebf5278899bdfe867c527fdab0fa8dc649e6a8f4048104390e8ff6be'
+            '9a7ba4cb520eb40605b650609cdc58fe4dc353339311ca5dac9b6e0b694ce939b76a0e6d6f541f9c998d1766c8c887a927683b3fb02254454f0357bdc5c490ec'
+            'ee38aa7f8348fa4f772059fdad24ff6bbfcb9b0552e94f9893fd0af913e1471ae01e22c572ab9b027d3894b14d223d7055d29d1b0d38e32e9563d6df7d58b8bb'
+            '116c7280a42847c5959aa734490eb6e59cdb61168b49f10bf5474ba76268a09473bc00f7c881157de1a39f9a1bc73c303ac3e271683db587fe57698dfeb8e364'
             'dd7b29c7353d93a429690c2441c88f63c218d4e2011de69bc5e8e636559d469b865806b340465bf022a8e336a014d634592adafa15c3e0ef497c4c9d2d1b3029')
 
 validpgpkeys=(
