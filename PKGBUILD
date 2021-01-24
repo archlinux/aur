@@ -2,8 +2,8 @@
 
 _pkgname=litex-boards
 pkgname=python-$_pkgname
-pkgver=2020.04
-pkgrel=2
+pkgver=2020.12
+pkgrel=1
 pkgdesc='Small footprint and configurable Ethernet core'
 arch=('any')
 url="https://github.com/litex-hub/$_pkgname"
@@ -12,7 +12,7 @@ depends=('python-migen' 'python-litex' 'python-litedram' 'python-liteeth' 'pytho
          'python-litepcie' 'python-litesata' 'python-litescope' 'python-litesdcard' 'python-litevideo')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('548e414c37ca264134bdec1652da4abf6096999f07676a8ffe16693e9f4d85bca072a813bd182ac848fbf8008585c73df208a54a213003c04212946e3aca9354')
+sha512sums=('f360f9e0ea30002586433721afb8cd38a4839b8445121ec24323ad79fd8f02ce064012c8138f9fe458c16741859e4e9059bcece49af384b1ed3979a2116bec70')
 
 build() {
   cd $_pkgname-$pkgver
