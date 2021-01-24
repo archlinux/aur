@@ -1,0 +1,41 @@
+# Maintainer: SpacingBat3 <aur@spacingbat3.anonaddy.com>
+pkgname=argonone-c-git # '-bzr', '-git', '-hg' or '-svn'
+pkgver=r34.6ace165
+pkgrel=1
+pkgdesc="A replacement daemon for Argon One Raspberry Pi cases, written in C."
+
+_gitauthor=DarkElvenAngel
+_gitname=argononed
+
+arch=('aarch64' 'armv7h' 'armv6h' 'arm')
+url="https://gitlab.com/DarkElvenAngel/argononed"
+license=('MIT')
+depends=('linux-raspberrypi-latest' 'git' 'dtc' 'bash-completion')
+install=install
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}" "argonone" "argonone-git" "argonone-rpi4")
+replaces=("argonone" "argonone-git" "argonone-rpi4")
+source=("${pkgname}::git+https://gitlab.com/${_gitauthor}/${_gitname}.git")
+md5sums=('SKIP')
+
+pkgver() {
+	cd "${srcdir}/${pkgname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+build() {
+	cd "${srcdir}/${pkgname}"
+	[[ -f "makefile.conf" ]] && make mrproper
+	./configure --prefix=/usr
+	make -j$(nproc) all
+}
+
+package() {
+	cd "${srcdir}/${pkgname}"
+	install -Dm755 "${srcdir}/${pkgname}/argononed" "${pkgdir}/usr/bin/argononed"
+	install -Dm755 "${srcdir}/${pkgname}/argonone-cli" "${pkgdir}/usr/bin/argonone-cli"
+	install -Dm644 "${srcdir}/${pkgname}/argononed.service" "${pkgdir}/etc/systemd/system/argononed.service"
+	install -Dm755 "${srcdir}/${pkgname}/argonone-shutdown" "${pkgdir}/usr/lib/systemd/system-shutdown/argonone-shutdown"
+	install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+	install -Dm644 "${srcdir}/${pkgname}/argonone.dtbo" "${pkgdir}/boot/overlays/argonone.dtbo"
+}

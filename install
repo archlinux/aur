@@ -1,0 +1,61 @@
+_install_overlay(){
+    FILE=/boot/config.txt 
+    [ -w "$FILE" ] || { echo "ERROR Cannot Write to ${FILE} unable to continue"; exit 1; }
+    SYSMODEL=$( awk '{ print $0 }' /proc/device-tree/model | sed 's|Raspberry Pi||;s|Rev.*||;s|Model||;s|Zero|0|;s|Plus|+|;s|B| |;s|A| |;s| ||g' )
+
+    echo -n "Search config.txt for overlay ... "
+    grep -i '^dtoverlay=argonone' $FILE 1> /dev/null && { echo "FOUND"; exit 0; } || echo "NOT FOUND"
+    cp $FILE $FILE.backup
+    echo -n "Insert overlay into ${FILE} ... "
+    if [[ `grep -i "^\[pi${SYSMODEL}\]" $FILE` ]]
+    then
+        sed  -i "/^\[pi${SYSMODEL}\]/a dtoverlay=argonone" $FILE && echo "DONE";
+    else
+        echo "dtoverlay=argonone" >> $FILE && echo "DONE";
+    fi
+    unset FILE
+}
+_start_service(){
+    echo -n "Enabling service "
+    systemctl enable argononed &>/dev/null && echo "Successful" || echo "Failed"
+    echo -n "Starting Service "
+    systemctl start &>/dev/null && echo "Successful" || ( [ $? -eq 124 ] && echo "Timeout" || echo "Failed" )
+}
+## arg 1:  the new package version
+#pre_install() {
+    # do something here
+#}
+
+# arg 1:  the new package version
+post_install() {
+    _install_overlay
+    _start_service
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#pre_upgrade() {
+    # do something here
+#}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#post_upgrade() {
+    # do something here
+#}
+
+# arg 1:  the old package version
+pre_remove() {
+    echo -n "Stopping service "
+    systemctl stop &>/dev/null && echo "Successful" || ( [ $? -eq 124 ] && echo "Timeout" || echo "Failed" )
+    echo -n "Disabling Service "
+    systemctl disable argononed &>/dev/null && echo "Successful" || echo "Failed"
+}
+
+# arg 1:  the old package version
+post_remove() {
+    echo "Remove dtoverlay=argonone from $(BOOTLOC)/config.txt"
+    cp /boot/config.txt /boot/config.argononed.backup
+    sed -i '/dtoverlay=argonone/d' /boot/config.txt
+    echo "Uninstall Complete"
+}
