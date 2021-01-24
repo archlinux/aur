@@ -181,16 +181,9 @@ prepare() {
       msg2 "Using user CUSTOM config..."
       cp -f "${startdir}"/myconfig .config
     else
-      # myconfig is a partial file. Applying every line
-      msg2 "Applying configs..."
-      cat "${startdir}"/myconfig | while read -r _linec ; do
-        if echo "$_linec" | grep "scripts/config" ; then
-          set -- $_linec
-          "$@"
-        else
-          warning "Line format incorrect, ignoring..."
-        fi
-      done
+      # myconfig is a partial file. Executing as a script
+      msg2 "Applying myconfig..."
+      bash -x "${startdir}"/myconfig
     fi
     echo
   fi
