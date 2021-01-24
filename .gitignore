@@ -1,6 +1,7 @@
 src/
 pkg/
 *.pkg.*
-linux-sfh/
+*.tar.gz
+amd-sfh-hid-dkms/
 *.patch
 *.log
