@@ -14,7 +14,7 @@ source=("https://github.com/wrouesnel/postgres_exporter/archive/v${pkgver}.tar.g
 	"prometheus-postgresql-exporter.service"
 	"prometheus-postgresql-exporter.conf")
 sha256sums=('27877c9b3aa751c7c1265f39986218f6a2c2b66a126cf348c6cc2f20f5201b02'
-	'5eac41333fb12db676fed18c02156cfdefee957154241b4c724718fd40d23212'
+	'0d86e650d88c8d4a8bc5b26faecb75023e069eaf29582135bcb0202e4a69a9b9'
 	'5436ad34fbcd6faab69da8675631f3eb5b89d964682eb23164bf4bb816ad1897')
 
 prepare() {
