@@ -6,7 +6,7 @@
 # Contributor: Danny Arnold <despair.blue at gmail dot com>
 
 pkgname=atom-editor-bin
-pkgver=1.53.0
+pkgver=1.54.0
 pkgrel=1
 pkgdesc="Hackable text editor built on Electron (official precompiled binary)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=("atom-amd64-v${pkgver}.deb::https://atom-installer.github.com/v${pkgver}
          "LICENSE::https://raw.githubusercontent.com/atom/atom/v${pkgver}/LICENSE.md"
          atom-editor-bin.install
          startupwmclass.patch)
-sha512sums=('7342b1d8e51d54c1ea20cca403fb61062956e9bb7b48ea8fecdc0337f72d2a49f19a70f71a7192520c0f31edf8efc899876e9fbd1ed1723143d8b29d86b97dc8'
+sha512sums=('fa1a6e43a61fdf4c5626b902288479035963027f678cbb399091a1b479c62ce7db44949225fce1b69cfef7573d26df80cab63c89608de180680a786d9b96d30e'
             'c8fdd1d51313c078d20ab4c127db78d71d94e1987b78ce04fb1b6b47e875b047c5722092892ac0b6ec6640c7428b4e03a22f71f29d9d67082cd22cadf604b7fc'
             'e30f7e4812898b80c079ba419e0cb37522c2e154ef7fdd6dda3da06dcbcaadc42016dd3d3b8caf206b842a2b9e3b954e537626d72337c56f05365a733627ce6c'
             '374b9f8fa1e0d2cab77d4cea9c718fb889bb6db3dbf9762ad5cbb88f3a0936023f36641012fc90e029832a772b8d4fdfe6b72f304e3950c02a7c9bf4d6d3d4ec')
