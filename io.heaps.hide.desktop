@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Hide
+Comment=An extensible editor for Heaps game engine
+Icon=hide
+Exec=hide
+Terminal=false
+PrefersNonDefaultGPU=true
+Type=Application
+Categories=Development;IDE;Database;
