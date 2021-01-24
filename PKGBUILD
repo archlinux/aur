@@ -1,10 +1,12 @@
 # Maintainer: DuckSoft <realducksoft@gmail.com>
 pkgname=ttf-menksoft
 pkgver=1.02
-pkgrel=1
-pkgdesc="蒙科立标准编码字库"
+pkgrel=2
+pkgdesc="蒙科立标准编码字库 (v1.02版)"
 arch=(any)
 url=http://www.menksoft.com/
+provides=(ttf-menksoft-102)
+conflicts=(ttf-menksoft-102)
 license=(custom)
 depends=(fontconfig xorg-font-utils)
 source=(

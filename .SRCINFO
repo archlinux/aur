@@ -1,12 +1,14 @@
 pkgbase = ttf-menksoft
-	pkgdesc = 蒙科立标准编码字库
+	pkgdesc = 蒙科立标准编码字库 (v1.02版)
 	pkgver = 1.02
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.menksoft.com/
 	arch = any
 	license = custom
 	depends = fontconfig
 	depends = xorg-font-utils
+	provides = ttf-menksoft-102
+	conflicts = ttf-menksoft-102
 	source = http://www.menksoft.com/Portals/_MenkCms/Products/Fonts/MenksoftOpenType1.02.zip
 	source = Menksoft.LICENSE
 	b2sums = e79de87572b850bf25b25b510847edc3b0bf6502761dd42a3f268aeeabb2030f17dd7b43acd1af745a1f766c192e23dbfa1eda686e914e86202b718e87bf2f11
