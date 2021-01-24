@@ -1,0 +1,19 @@
+diff -ur a/src/configuration.c b/src/configuration.c
+--- a/src/configuration.c	2010-11-12 08:28:33.000000000 -0500
++++ b/src/configuration.c	2021-01-24 12:00:12.112247854 -0500
+@@ -153,13 +153,14 @@
+ # define KEY 0
+ # define VAL 1
+ 
+-  char line[1023];
++  char line[1024];
+   char *tok;
+   FILE *fp;
+   config_opt_t *c;
+   int state;
+   int lineno = 0;
+ 
++  line[sizeof(line)-1] = '\0';
+ #ifdef WIN32
+   strncpy(line,".\\",1023); /* FIXME: hack */
+ #else
