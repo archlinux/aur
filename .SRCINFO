@@ -26,7 +26,6 @@ pkgbase = zephyr-sdk
 	depends = python-cbor
 	depends = python-psutil
 	depends = python-pytest
-	depends = python-mock>=4.0.1
 	depends = python-colorama
 	depends = python-coverage
 	depends = gcovr
