@@ -1,7 +1,7 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=invader
-pkgver=0.41.1
+pkgver=0.41.2
 pkgrel=1
 pkgdesc="An open source toolkit for creating maps and assets for Halo: Combat Evolved"
 depends=('libtiff' 'libarchive' 'libsquish' 'flac' 'freetype2' 'libsamplerate'
@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://invader.opencarnage.net"
 license=('GPL3')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/SnowyMouse/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('11d28baf52119c72380a88f46d6603776b5ef1c433fbe67e87833612c964d317')
+sha256sums=('7e579cb9c048c426bd14fd2e46eadfb8f3f4b752e497a27a884fa8b6204532a4')
 
 prepare() {
     mkdir -p build
