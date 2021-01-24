@@ -2,7 +2,7 @@
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 
 pkgname=bfetch
-pkgver=2021.01.23
+pkgver=2021.01.24
 pkgrel=1
 pkgdesc="A CLI system information tool written in BASH that supports displaying images."
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   'xorg-xrandr: Resolution detection (Multi Monitor + Refresh rates)'
 )
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('e01dc3def91b7b034cc586b9b3fa50e74f40f5c7e794cde96dcf005e632301fc')
+sha256sums=('160374b4fdf7c75c59fe18b06dcaa9861c5f39cd53c80e0b1943cd7fabbc3c83')
 
 package() {
   cd "$pkgname-$pkgver"
