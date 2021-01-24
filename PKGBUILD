@@ -1,3 +1,4 @@
+# Maintainer: zjuyk <ownbyzjuyk@gmail.com>
 # Maintainer: Nick Cao <nickcao@nichi.co>
 
 pkgname=index-generator
@@ -12,7 +13,7 @@ makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 _name=${pkgname#python-}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('d63a13db2a30779359d54d49640d694eb6d0fbc1377428df7bf28b3fe5ad03aedd7947a736e2a0219c11d34645d813c77809d7052b39a8f3f4bde9db58b78213')
+sha512sums=('e2a0a27ee5c10e59d8bd1cb606e99afb365c99dc51e659e39d591f036564b58018857699a7b65c53d066bcf48ce717cfab00b542222b9232aed18fd869a3fb7c')
 
 build() {
   cd "${pkgname}-${pkgver}"
