@@ -2,8 +2,8 @@
 
 _pkgname=liteiclink
 pkgname=python-$_pkgname
-pkgver=2020.08
-pkgrel=3
+pkgver=2020.12
+pkgrel=1
 pkgdesc='Small footprint and configurable Inter-Chip communication cores'
 arch=('any')
 url="https://github.com/enjoy-digital/$_pkgname"
@@ -12,7 +12,7 @@ depends=('python-migen' 'python-litex')
 makedepends=('python-setuptools')
 #checkdepends=('python-pytest-runner') # no litescope release
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('0de9205787f246f687130e899cb41aaa089d64c2685c05e4493b1a91dee1f5b79b8de3c7b0bb94503cdb596595ed95b95d62f68c6328fb11c304b054fd568529')
+sha512sums=('dd1ce37f1b9b24c3bd30ef6869c33062b002b7994a8a2c839ed370a9ba7564d9836b4ebb4743cb314fc531d2e5edd624904143a4352e098fc048b9b9d4b20cbd')
 
 build() {
   cd $_pkgname-$pkgver
