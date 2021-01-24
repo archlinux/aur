@@ -1,0 +1,14 @@
+pkgbase = ijq-bin
+	pkgdesc = Interactive jq tool. Like jqplay for the commandline
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://git.sr.ht/~gpanders/ijq
+	arch = x86_64
+	license = GPL3
+	provides = ijq
+	conflicts = ijq
+	source_x86_64 = https://git.sr.ht/~gpanders/ijq/refs/v0.2.2/ijq-0.2.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 24109216728d9c3105a812f97a3a2acb413c08394b47cf9aed32852e950ca5d5
+
+pkgname = ijq-bin
+
