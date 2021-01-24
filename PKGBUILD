@@ -12,8 +12,9 @@ url="http://squidfunk.github.io/mkdocs-material/"
 license=("MIT")
 arch=("any")
 provides=("mkdocs-material")
-depends=("mkdocs" "python-pygments" "pymdown-extensions" "python-mkdocs-minify-plugin" "python-mkdocs-material-extensions")
-makedepends=("python-setuptools")
+depends=("mkdocs" "pymdown-extensions" "python-pygments" "python-mkdocs-minify-plugin" "python-mkdocs-material-extensions")
+optdepends=("python-mkdocs-material-pymdownx-extras: additional resources like the dark theme toggle")
+makedepends=("python-setuptools" "python-wheel")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/squidfunk/mkdocs-material/archive/$pkgver.tar.gz")
 sha256sums=("f63c4a0290444d52be8a2ef260a17b09407f20e06501142c863ccee2d8f29b3a")
 
