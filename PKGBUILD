@@ -1,6 +1,6 @@
 # Maintainer: Jonas DOREL <jonas at dorel dot me>
 pkgname=systemd-service-docker-system-prune-git
-pkgver=latest
+pkgver=r1.6a092d9
 pkgrel=1
 pkgdesc="Systemd service to prune docker system"
 arch=('any')
@@ -12,9 +12,8 @@ source=("${pkgname}::git+https://gitlab.com/jdorel-archlinux/systemd-docker-syst
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  #printf "latest"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$srcdir/$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
