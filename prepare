@@ -1249,12 +1249,12 @@ exit_cleanup() {
   rm -f "$_where"/versel
 
   # Remove temporarily copied files
-  rm -rf "$_where"/*.patch
-  rm -rf "$_where"/*-profile.cfg
-  rm -f "$_where"/config*
-  rm -f "$_where"/*.hook
-  rm -f "$_where"/cleanup
-  rm -f "$_where"/prepare
+#  rm -rf "$_where"/*.patch
+#  rm -rf "$_where"/*-profile.cfg
+#  rm -f "$_where"/config*
+#  rm -f "$_where"/*.hook
+#  rm -f "$_where"/cleanup
+#  rm -f "$_where"/prepare
 
   # Community patches removal in case of failure
   for _p in ${_community_patches[@]}; do
