@@ -26,7 +26,7 @@ build() {
 package() {
 	cd dwmblocks
     mkdir -p "$pkgdir/usr/bin"
-	make DESTDIR="$pkgdir/" PREFIX=/usr/bin install
+	make DESTDIR="$pkgdir/" PREFIX=/usr install
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/license.txt"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.MD"
 }
