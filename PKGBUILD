@@ -2,7 +2,7 @@
 # Contributor: Sébastien "Seblu" Luttringer
 
 pkgname=docker-bin
-pkgver=20.10.0
+pkgver=20.10.2
 
 # Commit which fixes docker.service startup
 _packaging_version=747e984a03316b35302129b5d0b910638dc7e6d4
@@ -29,8 +29,8 @@ source=(
   "https://raw.githubusercontent.com/moby/moby/v${pkgver}/contrib/udev/80-docker.rules"
   "docker.sysusers"
 )
-sha256sums=('02936a3585f12f13b21b95e02ae722d74eaf1870b536997e914659ee307b2ac4'
-            'c1ce1722ecbe9d00dd63d48da4b64f012e7a8c07222aa42e22fb064ad0ce6d1f'
+sha256sums=('97017e32a8ecbdd1826bb3c7b1424303ee0dea3f900d33591b1df5e394ed4eed'
+            '4ebdad1d4743ccca68d183fccdb978aa8b62e7b24743fff36099bd29e46380e0'
             '9d5c93debdd9cbbc69be044392c75fd62afa3373847a430f2131d04df35444fd'
             'caf98bf39fb8621fb955476567a38b8a6b35bab2dccd8a29a16da23d4bb99450'
             'ed2ebb93d4bb3a30b5ad214d2ea5d467e714928d4fbf077e2a77dce758c0fa60'
