@@ -1,34 +1,42 @@
-# Maintainer: Lukas Jirkovsky <l.jirkovsky AT gmail.com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Lukas Jirkovsky <l.jirkovsky AT gmail.com>
+
 pkgname=rawtherapee-git
-pkgver=4214.c4a06048
+pkgver=5.8.r2738.g8ca07e858
 pkgrel=1
+epoch=1
 pkgdesc="A powerful cross-platform raw image processing program"
-arch=('i686' 'x86_64')
-url="http://www.rawtherapee.com/"
-license=('GPL3')
-depends=('fftw' 'gtk3' 'glibmm' 'gtkmm3' 'lcms2' 'libcanberra' 'libiptcdata' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('cmake' 'git')
-provides=('rawtherapee')
-conflicts=('rawtherapee')
-source=('rawtherapee::git+https://github.com/Beep6581/RawTherapee.git#branch=dev')
-md5sums=('SKIP')
+arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
+url="https://www.rawtherapee.com/"
+license=(GPL3)
+depends=(fftw gtk3 glibmm gtkmm3 lcms2 lensfun libcanberra
+         libiptcdata desktop-file-utils hicolor-icon-theme)
+makedepends=(cmake git)
+provides=(rawtherapee)
+conflicts=(rawtherapee)
+source=("${pkgname%-git}::git+https://github.com/Beep6581/RawTherapee.git#branch=dev")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/rawtherapee"
-  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/rawtherapee"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${srcdir}/${pkgname%-git}"
+  mkdir -p build
 }
 
 build() {
-  mkdir -p "$srcdir/rawtherapee-build"
-  cd "$srcdir/rawtherapee-build"
-
-  cmake ../rawtherapee \
+  cd "${srcdir}/${pkgname%-git}/build"
+  cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
+
   make
 }
 
 package() {
-  cd "$srcdir/rawtherapee-build"
-  make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/${pkgname%-git}/build"
+  make DESTDIR="${pkgdir}/" install
 }
