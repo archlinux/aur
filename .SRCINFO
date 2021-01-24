@@ -1,6 +1,6 @@
 pkgbase = jellyfin-web-bin
 	pkgdesc = The Free Software Media System - web package
-	pkgver = 10.7.0~rc2
+	pkgver = 10.7.0~rc3
 	pkgrel = 1
 	url = https://jellyfin.org/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = jellyfin-web-bin
 	conflicts = jellyfin-web
 	conflicts = jellyfin-web-git
 	options = staticlibs
-	source = https://repo.jellyfin.org/releases/server/debian/versions/stable/web/10.7.0~rc2/jellyfin-web_10.7.0~rc2_all.deb
-	sha256sums = e2c43a203f64115e0bedef76d61b3f78e0297130d4deb99b23e4cb7f53b655a4
+	source = https://repo.jellyfin.org/releases/server/debian/versions/stable-rc/web/10.7.0~rc3/jellyfin-web_10.7.0~rc3_all.deb
+	sha256sums = 931d16640c73119126d7668f4fc41a0bce6a6a251fd923dacb4d6279ee33ecab
 
 pkgname = jellyfin-web-bin
 
