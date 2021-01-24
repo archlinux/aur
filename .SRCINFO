@@ -1,0 +1,15 @@
+pkgbase = python-djangorestframework-csv
+	pkgdesc = CSV Tools for Django REST Framework
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/mjumbewu/django-rest-framework-csv
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/d/djangorestframework-csv/djangorestframework-csv-2.1.0.tar.gz
+	sha256sums = 2f008b20a44f2d3c37835ea5b5ddfe19f54394f07b9cb267c616a917a7f7e27c
+
+pkgname = python-djangorestframework-csv
+	depends = python
+
