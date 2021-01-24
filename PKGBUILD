@@ -4,7 +4,7 @@ pkgbase=linux-amd-raven
 _srcname=linux
 gitver=v5.4.92
 pkgver=5.4.v.92
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -138,6 +138,10 @@ _package() {
 
   # add vmlinux
   install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux" 
+
+  # add vmlinuz in /usr/lib/modules/ and info for correct hook triggers
+  cp arch/$KARCH/boot/bzImage "${pkgdir}/usr/lib/modules/${_kernver}/vmlinuz"
+  echo ${pkgbase} > "${pkgdir}/usr/lib/modules/${_kernver}/pkgbase"
 
   # add System.map
   install -D -m644 System.map "${pkgdir}/boot/System.map-${_kernver}"
