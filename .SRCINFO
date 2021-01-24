@@ -1,0 +1,14 @@
+pkgbase = systemd-service-docker-system-prune-git
+	pkgdesc = Systemd service to prune docker system
+	pkgver = latest
+	pkgrel = 1
+	url = https://gitlab.com/jdorel-archlinux/systemd-docker-system-prune
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = systemd-service-docker-system-prune
+	source = systemd-service-docker-system-prune-git::git+https://gitlab.com/jdorel-archlinux/systemd-docker-system-prune
+	md5sums = SKIP
+
+pkgname = systemd-service-docker-system-prune-git
+
