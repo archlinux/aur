@@ -2,7 +2,7 @@
 pkgname=hide-git
 _pkgname=hide
 pkgver=0.1.0.8d351e3
-pkgrel=3
+pkgrel=4
 pkgdesc="an extensible editor for Heaps game engine"
 arch=('i686' 'x86_64')
 url="https://github.com/HeapsIO/hide"
@@ -46,17 +46,21 @@ build() {
 
   haxelib setup "${srcdir}/${pkgname}/haxelib"
   haxe --verbose hide.hxml
+  sed -i "s|/home/jorge/code/aur/hide/src/hide-git/|/opt/hide/|g" ./bin/hide.js.map
 }
 
 package() {
   cd "$srcdir/${pkgname}"
 
   install -Ddm755 "${pkgdir}/usr/share/hide"
-  cp -r ./bin/{libs,res,app.html,cdb.css,defaultProps.json,hide.js,package.json,package-cdb.json,style.css} "${pkgdir}/usr/share/hide/"
+  cp -r ./bin/{libs,res,app.html,cdb.css,defaultProps.json,hide.js,hide.js.map,package.json,package-cdb.json,style.css} "${pkgdir}/usr/share/hide/"
 
   install -Dm644 "${srcdir}"/icon.svg "${pkgdir}"/usr/share/pixmaps/hide.svg
   install -Dm645 "${srcdir}"/hide "${pkgdir}"/usr/bin/hide
   install -Dm644 "${srcdir}"/io.heaps.hide.desktop "${pkgdir}"/usr/share/applications/hide.desktop
+
+  install -Ddm755 "${srcdir}"/opt/hide/
+  cp -r "${srcdir}/${pkgname}/haxelib"/* "${srcdir}"/opt/hide/
 }
 
 # vim:set ts=2 sw=2 et:
