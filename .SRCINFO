@@ -1,7 +1,7 @@
 pkgbase = jack2-git
 	pkgdesc = The JACK low-latency audio server
 	pkgver = 1.9.17.r1.ge984aeb2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://jackaudio.org/
 	arch = x86_64
@@ -47,6 +47,7 @@ pkgname = jack2-git
 	provides = libjack.so
 	provides = libjacknet.so
 	provides = libjackserver.so
+	provides = jack2=1.9.17
 	conflicts = jack
 	conflicts = jack2
 

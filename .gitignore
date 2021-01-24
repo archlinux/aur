@@ -1,4 +1,6 @@
+pkg/
+src/
+jack2-git/
+*.xz
 *.zst
 *.log
-*.log
-*/*

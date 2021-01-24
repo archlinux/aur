@@ -8,7 +8,7 @@ pkgbase=jack2-git
 pkgname=('jack2-git' 'jack2-dbus-git')
 pkgdesc="The JACK low-latency audio server"
 pkgver=1.9.17.r1.ge984aeb2
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('x86_64')
 url="http://jackaudio.org/"
@@ -45,6 +45,7 @@ build() {
   cd "${pkgbase}"
   export PYTHONPATH="${PWD}:${PYTHONPATH}"
   waf configure --prefix=/usr \
+                --autostart=none \
                 --htmldir="/usr/share/doc/${pkgbase}/" \
                 --systemd-unit \
                 --classic \
@@ -61,9 +62,9 @@ package_jack2-git() {
               'jack2-dbus: for dbus integration'
               'realtime-privileges: for realtime privileges'
               'zita-ajbridge: for using multiple ALSA devices')
-  provides=('jack' "${_name}" 'libjack.so' 'libjacknet.so' 'libjackserver.so')
+  provides=('jack' "${_name}" 'libjack.so' 'libjacknet.so' 'libjackserver.so'
+            "${_name}=${pkgver//.r*/}")
   conflicts=('jack' "${_name}")
-  provides=('jack' "${_name}" 'libjack.so' 'libjacknet.so' 'libjackserver.so')
 
   cd "${pkgbase}"
   export PYTHONPATH="${PWD}:${PYTHONPATH}"
