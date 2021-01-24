@@ -3,7 +3,7 @@
 _pkgname=bilibilitool-dotnet
 pkgname=${_pkgname}-git
 pkgver=1.1.5.r0.g77b3f3e
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform Bilibili daily task tool written in .Net 5"
 arch=('x86_64')
 url='https://github.com/RayWangQvQ/BiliBiliTool'
@@ -62,6 +62,7 @@ package() {
   --self-contained false \
   --no-restore \
   -o "${pkgdir}/usr/lib/${_pkgname}"
+  chmod +x "${pkgdir}/usr/lib/${_pkgname}/Ray.BiliBiliTool.Console"
   ln -s "/usr/lib/${_pkgname}/Ray.BiliBiliTool.Console" "${pkgdir}/usr/bin/${_pkgname}"
 
   cd ../..
