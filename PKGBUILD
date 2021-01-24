@@ -13,9 +13,8 @@ source=("${pkgname}::git+https://gitlab.com/jdorel-archlinux/systemd-docker-syst
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  #printf "latest"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$srcdir/$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
