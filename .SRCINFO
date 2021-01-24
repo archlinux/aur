@@ -1,7 +1,7 @@
 pkgbase = jellyfin-server-bin
 	pkgdesc = The Free Software Media System - server package
 	pkgver = 10.7.0~rc3
-	pkgrel = 2
+	pkgrel = 1
 	url = https://jellyfin.org/
 	arch = x86_64
 	arch = aarch64
