@@ -1,0 +1,18 @@
+pkgbase = st-randoragon-git
+	pkgdesc = Randoragon's build of the suckless terminal (st)
+	pkgver = 0.8.3.r1142.0a3606d
+	pkgrel = 1
+	url = https://github.com/randoragon/st
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libx11
+	depends = fontconfig
+	depends = freetype2
+	depends = libxrender
+	depends = libxft-bgra
+	source = git+https://github.com/randoragon/st
+	md5sums = SKIP
+
+pkgname = st-randoragon-git
+
