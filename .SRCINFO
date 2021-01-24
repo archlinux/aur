@@ -1,7 +1,7 @@
 pkgbase = mockoon-bin
 	pkgdesc = Mockoon is the easiest and quickest way to run mock APIs locally.
 	pkgver = 1.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mockoon.com/
 	arch = x86_64
 	groups = base-devel
