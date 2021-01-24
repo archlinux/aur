@@ -11,6 +11,8 @@ pkgbase = st-randoragon-git
 	depends = freetype2
 	depends = libxrender
 	depends = libxft-bgra
+	provides = st=0.8.3
+	conflicts = st
 	source = git+https://github.com/randoragon/st
 	md5sums = SKIP
 

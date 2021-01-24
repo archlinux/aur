@@ -12,6 +12,8 @@ depends=(libx11 fontconfig freetype2 libxrender libxft-bgra)
 makedepends=(git)
 source=("git+$url")
 md5sums=('SKIP')
+conflicts=('st')
+provides=('st=0.8.3')
 
 pkgver() {
     cd st
