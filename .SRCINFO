@@ -1,7 +1,7 @@
 pkgbase = mycli
 	pkgdesc = A Terminal Client for MySQL with AutoCompletion and Syntax Highlighting
-	pkgver = 1.22.2
-	pkgrel = 2
+	pkgver = 1.23.0
+	pkgrel = 1
 	url = https://github.com/dbcli/mycli
 	arch = any
 	license = BSD
@@ -17,10 +17,8 @@ pkgbase = mycli
 	depends = python-cli_helpers
 	optdepends = python-paramiko: SSH support
 	options = !emptydirs
-	source = mycli-1.22.2.tar.gz::https://github.com/dbcli/mycli/archive/v1.22.2.tar.gz
-	source = completion_engine.py.patch
-	sha256sums = 4427442cf3e66ebbbb480bc5112bdf7e0432c70645f320313e2e0dbf0ae147fb
-	sha256sums = 5bf23ff1e80b0cab2150f09e1762ab246d7db41ffb20c4ecac15918a8c279c0e
+	source = mycli-1.23.0.tar.gz::https://github.com/dbcli/mycli/archive/v1.23.0.tar.gz
+	sha256sums = 8c2efa716f994ac0ffb9e21da59c4696754b201d823b61cd63f2948c1bbd702c
 
 pkgname = mycli
 
