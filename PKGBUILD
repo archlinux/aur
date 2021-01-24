@@ -1,9 +1,4 @@
-# Maintainer: George Rawlinson <george@rawlinson.net.nz>
-# Contributor: Andre Miranda <andreldm1989 AT gmail DOT com>
-# Contributor: Tom Bu <tom.bu AT members.fsf.org>
-# Contributor: John Reese <john@noswap.com>
-# Contributor: Jordan J Klassen <forivall@gmail.com>
-# Contributor: Danny Arnold <despair.blue at gmail dot com>
+# Maintainer: JoseDR120 <josedrgerena720@gmail.com>
 
 pkgname=atom-editor-bin
 pkgver=1.54.0
