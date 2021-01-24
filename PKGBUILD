@@ -41,14 +41,13 @@ _tkg_initscript
 #  patch_site="https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${_basekernel}.${_sub}.xz"
 #fi
 
-_srcpath="bcachefs"
-
 pkgbase="linux-mainline-bcachefs" #"${_custom_pkgbase}"
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver="${_basekernel}"."${_sub}"
 pkgrel=114
 pkgdesc='Linux-tkg with bcachefs'
 bcachefs="git+https://github.com/koverstreet/bcachefs.git"
+_srcpath=bcachefs
 arch=('x86_64') # no i686 in here
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -124,7 +123,7 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-  #rm -rf $pkgdir # Nuke the entire pkg folder so it'll get regenerated clean on next build
+  rm -rf $pkgdir # Nuke the entire pkg folder so it'll get regenerated clean on next build
 
   ln -s "${_where}/customization.cfg" "${srcdir}" # workaround
   ln -s "${_where}/bcachefs" "${srcdir}" # workaround
