@@ -12,6 +12,8 @@ pkgbase = dwm-randoragon-git
 	depends = libxrender
 	depends = libxft-bgra
 	optdepends = dwmblocks-randoragon-git: status bar
+	provides = dwm=6.2
+	conflicts = dwm
 	source = git+https://github.com/randoragon/dwm
 	md5sums = SKIP
 

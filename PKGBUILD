@@ -13,6 +13,8 @@ optdepends=('dwmblocks-randoragon-git: status bar')
 makedepends=(git)
 source=("git+$url")
 md5sums=('SKIP')
+conflicts=('dwm')
+provides=('dwm=6.2')
 
 pkgver() {
     cd dwm
