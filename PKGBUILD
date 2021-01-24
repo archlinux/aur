@@ -2,8 +2,8 @@
 
 _pkgname=litevideo
 pkgname=python-$_pkgname
-pkgver=2020.08
-pkgrel=3
+pkgver=2020.12
+pkgrel=1
 pkgdesc='Small footprint and configurable video cores'
 arch=('any')
 url="https://github.com/enjoy-digital/$_pkgname"
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('python-migen' 'python-litex')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('99ba96249fc94d640e8a004759636ba5c6c02fcbb8d711041c14b59c1dafa9325231a945b6e10253cdcf7f3e0152fd18e16f6af052a013bb99282ee4f3ba497d')
+sha512sums=('fa8685e16c4a07d8629228464a0b7ae357b65d505634d75f0a4816305700b7fd6297cbdd59126b2aae23700c7373bf75b22872b5e333b95f88121e28b311e098')
 
 build() {
   cd $_pkgname-$pkgver
