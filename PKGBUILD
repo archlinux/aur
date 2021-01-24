@@ -9,8 +9,8 @@
 pkgbase=handbrake-full
 pkgname=(handbrake-full handbrake-full-cli)
 pkgver=1.3.3
-pkgrel=2
-pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter"
+pkgrel=3
+pkgdesc="Multithreaded video transcoder. Enabled: x265, nvenc, fdk-aac, qsv, vce, numa, hardened"
 arch=(i686 x86_64)
 url="https://handbrake.fr/"
 license=(GPL)
@@ -75,6 +75,7 @@ prepare() {
 
   ./configure \
     --prefix=/usr \
+    --harden \
     --disable-gtk-update-checks \
     --enable-x265 \
     --enable-numa \
@@ -91,6 +92,8 @@ package_handbrake-full() {
   depends=("${_commondeps[@]}" "${_guideps[@]}")
   optdepends+=('gst-plugins-good: for video previews'
               'gst-libav: for video previews')
+  provides=(handbrake)
+  conflicts=(handbrake)
 
   cd "$srcdir/handbrake/build"
 

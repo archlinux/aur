@@ -1,7 +1,7 @@
 pkgbase = handbrake-full
-	pkgdesc = Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter
+	pkgdesc = Multithreaded video transcoder. Enabled: x265, nvenc, fdk-aac, qsv, vce, numa, hardened
 	pkgver = 1.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://handbrake.fr/
 	arch = i686
 	arch = x86_64
@@ -91,6 +91,8 @@ pkgname = handbrake-full
 	optdepends = nvidia-utils: for enabling Nvidia nvenc
 	optdepends = gst-plugins-good: for video previews
 	optdepends = gst-libav: for video previews
+	provides = handbrake
+	conflicts = handbrake
 
 pkgname = handbrake-full-cli
 	pkgdesc = Multithreaded video transcoder (CLI)
