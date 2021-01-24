@@ -172,18 +172,18 @@ prepare() {
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
   # This is intended for the people that want to build this package with their own config
-  # Put the file "myconfig" at the package folder to use this feature
+  # Put the file "myconfig" at the package folder (this will take preference) or "${XDG_CONFIG_HOME}/linux-xanmod/myconfig"
   # If it's a full config, will be replaced
   # If not, you should use scripts/config commands, one by line
-  if [ -f "${startdir}/myconfig" ]; then
+  if [ -f "${startdir}/myconfig" ] || [ -f "${XDG_CONFIG_HOME}/linux-xanmod/myconfig" ]; then
     if ! grep -q 'scripts/config' "${startdir}/myconfig"; then
       # myconfig is a full config file. Replacing default .config
       msg2 "Using user CUSTOM config..."
-      cp -f "${startdir}"/myconfig .config
+      cp -f "${startdir}"/myconfig .config || cp -f "${XDG_CONFIG_HOME}/linux-xanmod/myconfig" .config
     else
       # myconfig is a partial file. Executing as a script
       msg2 "Applying myconfig..."
-      bash -x "${startdir}"/myconfig
+      bash -x "${startdir}"/myconfig || bash -x "${XDG_CONFIG_HOME}/linux-xanmod/myconfig"
     fi
     echo
   fi
