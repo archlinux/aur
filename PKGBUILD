@@ -6,7 +6,7 @@
 pkgbase=lib32-pipewire-git
 _pkgbase=pipewire
 pkgname=(lib32-pipewire-git lib32-pipewire-jack-git lib32-gst-plugin-pipewire-git)
-pkgver=0.3.18.r91.gc39ba857
+pkgver=0.3.20.r27.gb44cb0a8
 pkgrel=1
 pkgdesc='Server and user space API to deal with multimedia pipelines (git) (32 bit client libraries)'
 url=https://pipewire.org
@@ -51,7 +51,7 @@ _ver=${pkgver:0:3}
 _spaver="0.2"
 
 package_lib32-pipewire-git() {
-    depends=(rtkit lib32-vulkan-icd-loader alsa-card-profiles
+    depends=(rtkit lib32-vulkan-icd-loader
         lib32-dbus lib32-libsndfile lib32-libudev0-shim lib32-alsa-lib
         lib32-systemd)
     optdepends=('lib32-pipewire-jack: JACK support')
