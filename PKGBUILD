@@ -1,7 +1,7 @@
 # Maintainer: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
 
 pkgname=libadalang-tools-git
-pkgver=r485.8b3186df
+pkgver=r561.e18d43fa
 pkgrel=1
 
 pkgdesc="Libadalang-based tools: gnatpp, gnatmetric and gnatstub"
@@ -12,8 +12,10 @@ license=('GPL')
 depends=('libadalang')
 makedepends=('git')
 
-source=('git+https://github.com/AdaCore/libadalang-tools.git')
-sha1sums=('SKIP')
+source=('git+https://github.com/AdaCore/libadalang-tools.git'
+        'fix-mains.patch')
+sha1sums=('SKIP'
+          '29619d48e3e098fa3002d171aa50307f173ee706')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
@@ -22,24 +24,33 @@ pkgver() {
         "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd "$srcdir/${pkgname%-git}"
+
+    patch -Np1 -i "$srcdir/fix-mains.patch"
+}
+
 build() 
 {
     cd "$srcdir/${pkgname%-git}"
 
-    # In order to build the generated library, Langkit expects the QUEX_PATH to
-    # be set.
-    source /etc/profile.d/quex.sh
-
-    make BUILD_MODE=prod LIBRARY_TYPE=relocatable PROCESSORS=`nproc`
+    for lt in static static-pic relocatable
+    do
+        make BUILD_MODE=prod LIBRARY_TYPE=$lt PROCESSORS=`nproc` lib
+    done
+    make BUILD_MODE=prod LIBRARY_TYPE=relocatable PROCESSORS=`nproc` bin
 }
 
 package()
 {
     cd "$srcdir/${pkgname%-git}"
 
-    mkdir -p "$pkgdir/usr/bin"
-    for program in gnatpp gnatmetric gnatstub
+    for lt in static static-pic relocatable
     do
-        install -m755 bin/$program "$pkgdir/usr/bin/"
+        make BUILD_MODE=prod LIBRARY_TYPE=$lt \
+            DESTDIR="$pkgdir/usr" install-lib
     done
+
+    make BUILD_MODE=prod LIBRARY_TYPE=relocatable \
+        DESTDIR="$pkgdir/usr" install-bin-strip
 }

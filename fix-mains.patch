@@ -1,0 +1,14 @@
+diff --git a/src/build.gpr b/src/build.gpr
+index 9b1e375d..49cdc0e1 100644
+--- a/src/build.gpr
++++ b/src/build.gpr
+@@ -15,8 +15,7 @@ project Build is
+      ("pp-main.adb",
+       "metrics-main.adb",
+       "stub-main.adb",
+-      "test-main.adb",
+-      "utils-var_length_ints-test.adb");
++      "test-main.adb");
+ 
+    for Source_Dirs use (".");
+    for Object_Dir use "../obj";
