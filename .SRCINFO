@@ -3,19 +3,25 @@ pkgbase = symbiflow-arch-defs-nightly-bin
 	pkgver = 20210122.bff52005
 	pkgrel = 1
 	url = https://github.com/SymbiFlow/symbiflow-arch-defs
-	arch = x86_64
+	arch = any
 	license = ISC
-	optdepends = vtr
-	optdepends = yosys
-	optdepends = yosys-symbiflow-plugins
 	provides = symbiflow-arch-defs
 	conflicts = symbiflow-arch-defs
+	noextract = COPYING
+	noextract = symbiflow-arch-defs-install-bff52005.tar.xz
+	noextract = symbiflow-arch-defs-xc7a50t_test-bff52005.tar.xz
+	noextract = symbiflow-arch-defs-xc7a100t_test-bff52005.tar.xz
+	noextract = symbiflow-arch-defs-xc7a200t_test-bff52005.tar.xz
+	noextract = symbiflow-arch-defs-xc7z010_test-bff52005.tar.xz
+	noextract = symbiflow-arch-defs-xc7z020_test-bff52005.tar.xz
+	source = https://raw.githubusercontent.com/SymbiFlow/symbiflow-arch-defs/bff52005/COPYING
 	source = https://storage.googleapis.com/symbiflow-arch-defs/artifacts/prod/foss-fpga-tools/symbiflow-arch-defs/continuous/install/125/20210122-000052/symbiflow-arch-defs-install-bff52005.tar.xz
 	source = https://storage.googleapis.com/symbiflow-arch-defs/artifacts/prod/foss-fpga-tools/symbiflow-arch-defs/continuous/install/125/20210122-000052/symbiflow-arch-defs-xc7a50t_test-bff52005.tar.xz
 	source = https://storage.googleapis.com/symbiflow-arch-defs/artifacts/prod/foss-fpga-tools/symbiflow-arch-defs/continuous/install/125/20210122-000052/symbiflow-arch-defs-xc7a100t_test-bff52005.tar.xz
 	source = https://storage.googleapis.com/symbiflow-arch-defs/artifacts/prod/foss-fpga-tools/symbiflow-arch-defs/continuous/install/125/20210122-000052/symbiflow-arch-defs-xc7a200t_test-bff52005.tar.xz
 	source = https://storage.googleapis.com/symbiflow-arch-defs/artifacts/prod/foss-fpga-tools/symbiflow-arch-defs/continuous/install/125/20210122-000052/symbiflow-arch-defs-xc7z010_test-bff52005.tar.xz
 	source = https://storage.googleapis.com/symbiflow-arch-defs/artifacts/prod/foss-fpga-tools/symbiflow-arch-defs/continuous/install/125/20210122-000052/symbiflow-arch-defs-xc7z020_test-bff52005.tar.xz
+	sha256sums = 0726ddf229165179fe21da0c97884eeddf88be32dcfc13abf9b2eced0dbafad6
 	sha256sums = 6cdb158efca060706cb25f8f3610316a1a1f263cca74d84463736c00790d6d6d
 	sha256sums = dd2d5cb4ec59cc08a8f63a12ba4d8d76d046add90baac2f46bd8c74bf91c4d4f
 	sha256sums = 3f6e8c158e447c2bdaac6a7fc7b45557935ed1644a973d87213ff6faef1ff1b5
@@ -23,5 +29,42 @@ pkgbase = symbiflow-arch-defs-nightly-bin
 	sha256sums = 7dd3ba9e665bf46374a3810e527150851f42a4b8f3dd8dd188fb4e74990b8e5f
 	sha256sums = e20c7271d76da44e30ec2945e6b7b8103526193ae752cf28b02a9eca2994624e
 
-pkgname = symbiflow-arch-defs-nightly-bin
+pkgname = symbiflow-arch-defs-nightly-bin-toolchain
+	pkgdesc = Scripts to invoke the SymbiFlow toolchain
+	depends = vtr
+	depends = yosys
+	depends = yosys-symbiflow-plugins
+	depends = python
+	optdepends = symbiflow-arch-defs-nightly-bin-device-xc7a50t
+	optdepends = symbiflow-arch-defs-nightly-bin-device-xc7a100t
+	optdepends = symbiflow-arch-defs-nightly-bin-device-xc7a200t
+	optdepends = symbiflow-arch-defs-nightly-bin-device-xc7z010
+	optdepends = symbiflow-arch-defs-nightly-bin-device-xc7z020
+	provides = symbiflow-arch-defs-toolchain
+	conflicts = symbiflow-arch-defs-toolchain
+
+pkgname = symbiflow-arch-defs-nightly-bin-device-xc7a50t
+	pkgdesc = SymbiFlow device definitions for xc7a50t
+	provides = symbiflow-arch-defs-device-xc7a50t
+	conflicts = symbiflow-arch-defs-device-xc7a50t
+
+pkgname = symbiflow-arch-defs-nightly-bin-device-xc7a100t
+	pkgdesc = SymbiFlow device definitions for xc7a100t
+	provides = symbiflow-arch-defs-device-xc7a100t
+	conflicts = symbiflow-arch-defs-device-xc7a100t
+
+pkgname = symbiflow-arch-defs-nightly-bin-device-xc7a200t
+	pkgdesc = SymbiFlow device definitions for xc7a200t
+	provides = symbiflow-arch-defs-device-xc7a200t
+	conflicts = symbiflow-arch-defs-device-xc7a200t
+
+pkgname = symbiflow-arch-defs-nightly-bin-device-xc7z010
+	pkgdesc = SymbiFlow device definitions for xc7z010
+	provides = symbiflow-arch-defs-device-xc7z010
+	conflicts = symbiflow-arch-defs-device-xc7z010
+
+pkgname = symbiflow-arch-defs-nightly-bin-device-xc7z020
+	pkgdesc = SymbiFlow device definitions for xc7z020
+	provides = symbiflow-arch-defs-device-xc7z020
+	conflicts = symbiflow-arch-defs-device-xc7z020
 
