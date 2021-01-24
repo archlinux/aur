@@ -9,8 +9,8 @@ url="https://github.com/facelessuser/mkdocs-material-extensions"
 license=("MIT")
 arch=("any")
 provides=("python-materialx" "python-mkdocs-material-extensions")
-# Without "python-pip" the package is downloaded from PyPI
-makedepends=("python-setuptools" "python-pip" "python-wheel")
+depends=("mkdocs" "pymdown-extensions")
+makedepends=("python-setuptools" "python-wheel")
 source=("git+$url")
 sha256sums=("SKIP")
 
@@ -24,15 +24,7 @@ build(){
  python setup.py build
 }
 
-# Tests are broken
-#check(){
-# cd "mkdocs-material-extensions"
-# python setup.py test
-#}
-
 package(){
  cd "mkdocs-material-extensions"
  python setup.py install --root="$pkgdir" --optimize=1
- install -D -m 644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
- install -D -m 644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
