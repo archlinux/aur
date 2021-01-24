@@ -2,8 +2,8 @@
 
 _pkgname=litedram
 pkgname=python-$_pkgname
-pkgver=2020.08
-pkgrel=3
+pkgver=2020.12
+pkgrel=1
 pkgdesc='Small footprint and configurable DRAM core'
 arch=('any')
 url="https://github.com/enjoy-digital/$_pkgname"
@@ -12,7 +12,7 @@ depends=('python-migen' 'python-litex' 'python-yaml')
 makedepends=('python-setuptools')
 #checkdepends=('python-pytest-runner' 'python-numpy' 'python-liteiclink') # missing pythondata-cpu-vexriscv release
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('d9dff553a2090d6124b23c44807c0407c118f2734b844fbcafc530eb089c187c874d5367c4cf9d1883e9d75bbd794f35ecd4b83331c9e7e2dd38b0434dadab55')
+sha512sums=('fa924e17f4a3bfd8a82658c108ada3250a6f9198fa083005ec65f6f9c3933d12169732b8ed46eb55b945d14d658c4245f3407d84616d4b229399fe5193bb32c2')
 
 build() {
   cd $_pkgname-$pkgver
