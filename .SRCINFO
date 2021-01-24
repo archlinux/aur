@@ -1,6 +1,6 @@
 pkgbase = xxh-git
 	pkgdesc = Bring your favorite shell wherever you go through the ssh
-	pkgver = 0.8.3.r3.g7bb749f
+	pkgver = 0.8.6.r11.g07ac6a3
 	pkgrel = 1
 	url = https://github.com/xxh/xxh
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = xxh-git
 	depends = python
 	depends = openssh
 	depends = python-pexpect
+	depends = python-yaml
 	provides = xxh
 	conflicts = xxh
 	source = git+https://github.com/xxh/xxh.git

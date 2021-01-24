@@ -1,13 +1,13 @@
 # Maintainer: Soraxas <oscar AT tinyiu DOT com>
 
 pkgname=xxh-git
-pkgver=0.8.3.r3.g7bb749f
+pkgver=0.8.6.r11.g07ac6a3
 pkgrel=1
 pkgdesc="Bring your favorite shell wherever you go through the ssh"
 arch=('any')
 url="https://github.com/xxh/xxh"
 license=('BSD')
-depends=('python' 'openssh' 'python-pexpect')
+depends=('python' 'openssh' 'python-pexpect' 'python-yaml')
 makedepends=('git' 'python-setuptools')
 provides=('xxh')
 conflicts=('xxh')
