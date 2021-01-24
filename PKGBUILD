@@ -1,15 +1,9 @@
 # Maintainer: Amish <contact at via dot aur>
-# Contributor: M0Rf30
-# Contributor: Lukas Fleischer <archlinux at cryptocrack dot de>
-# Contributor: Hugo Doria <hugo@archlinux.org>
-# Contributor: Kessia 'even' Pinheiro <kessiapinheiro at gmail.com>
-# Contributor: dorphell <dorphell@archlinux.org>
-# Contributor: Gregor Ibic <gregor.ibic@intelicom.si>
 
 pkgname=snort-nfqueue
-_pkgname=snort
+_pkgname=snort3
 _openappid=15607
-pkgver=2.9.17
+pkgver=3.1.0.0
 pkgrel=1
 pkgdesc='A lightweight network IDS / IPS with NFQUEUE and OpenAppID support.'
 arch=('i686' 'x86_64')
@@ -17,72 +11,62 @@ url='https://www.snort.org'
 license=('GPL')
 provides=('snort')
 conflicts=('snort')
-depends=('dbus' 'libdaq-nfqueue' 'libdnet' 'libgcrypt' 'libgpg-error' 'libnetfilter_queue' 'libnghttp2' 'libnl' 'libnsl' 'libpcap' 'luajit' 'lz4' 'openssl' 'pcre' 'pulledpork' 'xz' 'zlib')
-makedepends=('libtirpc')
-backup=('etc/snort/snort.conf'
-        'etc/snort/homenet.conf'
+depends=('flatbuffers' 'gperftools' 'hwloc' 'hyperscan' 'libdaq-nfqueue' 'libdnet' 'libmnl' 'libnetfilter_queue' 'libpcap' 'libunwind' 'luajit' 'lz4' 'openssl' 'pcre' 'pulledpork' 'xz' 'zlib')
+makedepends=('cmake' 'pkgconf')
+backup=('etc/snort/snort.lua'
+        'etc/snort/snort_defaults.lua'
+        'etc/snort/local.lua'
+        'etc/snort/homenet.lua'
         'etc/snort/rules/local.rules'
         'etc/snort/rules/snort.rules'
-        'etc/snort/threshold.conf'
-        'etc/snort/reference.config'
-        'etc/snort/classification.config'
         'etc/logrotate.d/snort')
-options=('!makeflags' '!libtool')
 install=snort.install
-source=("https://www.snort.org/downloads/snort/${_pkgname}-${pkgver}.tar.gz"
+source=("https://snort.org/downloads/snortplus/${_pkgname}-${pkgver}.tar.gz"
         "snort-openappid-${_openappid}.tar.gz::https://snort.org/downloads/openappid/${_openappid}"
+        'local.lua'
         'snort.logrotate'
         'snort.sysusers'
         'snort.tmpfiles'
         'snort.service')
-sha256sums=('c3b234c3922a09b0368b847ddb8d1fa371b741f032f42aa9ab53d67b428dc648'
+sha256sums=('c4e2e78e3afa879d7e35e482afe42a6c4b96ed26198a9979edf7953b5151ccbf'
             '801c5f9b2af3460a63640131d5030c04f6ab49741093212922df49b81f96fd9c'
-            '7fe712141f651254b8e5aa0b3b7d73622d2d1d89bf53d7a522f8c1a067938421'
+            'fa02333d1ead2a9e3d5b99905a1a008c758134d961e9a187882f96bfdcc1accc'
+            '14d3a61d542189c082738ff4b51b93f3d6746c58184e5c46e4b7c7baed687799'
             'ae3245c5de527fb487c459f2f4a9c78803ae6341e9c81b9a404277679cdee051'
-            'a92c591c409fc06661865988795093b0fb0447f614ac77951dbf9b1f6a8cf139'
-            'b904ed172ea0c1a4eeaddb30745aadb8db21e333eb9faaf93400ce3db166f90d')
+            'bc4a02d184601faba5cd0f6cb454097a3b04a0c8fe56f5f8b36d24513484faa2'
+            'e1ff858e2cb062d76f72757746c4f87410151b06221255ca827b7279fee0d5df')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    ./configure --prefix=/usr --sysconfdir=/etc/snort --with-libpcap-includes=/usr/include/pcap \
-        --with-daq-includes=/usr/include --with-daq-libraries=/usr/lib/daq/ --disable-static-daq \
-        CPPFLAGS="$CPPFLAGS -I/usr/include/tirpc/"
-    make
+    ./configure_cmake.sh --prefix=/usr --enable-tcmalloc --with-daq-libraries=/usr/lib/daq/ --disable-static-daq
+    make -C build
 }
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    make DESTDIR="${pkgdir}" install
+    make -C build DESTDIR="${pkgdir}" install
 
-    install -D -m644 -t "${pkgdir}"/etc/snort etc/{*.conf*,*.map}
+    mv "${pkgdir}"{/usr,}/etc
+    install -D -m644 "${srcdir}"/local.lua "${pkgdir}"/etc/snort
     install -D -m644 "${srcdir}"/snort.logrotate "${pkgdir}"/etc/logrotate.d/snort
     install -D -m644 "${srcdir}"/snort.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/snort.conf
     install -D -m644 "${srcdir}"/snort.sysusers "${pkgdir}"/usr/lib/sysusers.d/snort.conf
     install -D -m644 "${srcdir}"/snort.service "${pkgdir}"/usr/lib/systemd/system/snort.service
-
-    install -d -m755 "${pkgdir}"/etc/snort/{dynamic,}rules
-    install -Dm644 /dev/null "${pkgdir}"/etc/snort/rules/snort.rules
-    echo 'ipvar HOME_NET [10.0.0.0/8,172.16.0.0/12,192.168.0.0/16]' > "${pkgdir}"/etc/snort/homenet.conf
-    echo '#alert tcp any any <> any 80 (msg: "Test web activity"; sid:1000001;)' > "${pkgdir}"/etc/snort/rules/local.rules
-    chmod 0644 "${pkgdir}"/etc/snort/{homenet.conf,rules/{local,snort}.rules}
+    install -D -m644 /dev/null "${pkgdir}"/etc/snort/rules/snort.rules
+    echo "HOME_NET = [[ 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16 ]]" > "${pkgdir}"/etc/snort/homenet.lua
+    echo -e '#pulledpork will put rules here in snort.rules\n#alert icmp any any -> any any ( msg:"ICMP Traffic Detected"; sid:10000001; metadata:policy security-ips alert; )' > "${pkgdir}"/etc/snort/rules/local.rules
+    chmod 0644 "${pkgdir}"/etc/snort/{homenet.lua,rules/{local,snort}.rules}
 
     # config for NFQUEUE support, rule files and output logging
-    install -m644 "${pkgdir}"/etc/snort/snort.conf "${pkgdir}"/etc/snort/snort.conf.default
-    sed -i -e '/ipvar\s\+HOME_NET\s/ a include homenet.conf' \
-      -e 's/^\(ipvar\s\+HOME_NET\s\)/#\1/g' \
-      -e 's/^\(var\s\+RULE_PATH\s\).*/\1rules/g' \
-      -e 's/^\(include\s\+$RULE_PATH\/\)/#\1/g' \
-      -e 's/^#\(include\s\+$RULE_PATH\/local.rules\)/\1/g' \
-      -e 's#/usr/local/lib#/usr/lib#g' \
-      -e 's#/usr/local/lib/snort_dynamicrules#/etc/snort/dynamicrules#g' \
-      -e 's#/usr/lib/snort_dynamicrules#/etc/snort/dynamicrules#g' \
-      -e '/^preprocessor\s\+reputation:\s/,/^\s\+blacklist\s/ s/^/#/g' \
-      -e $'/^#\s\+Reputation\s\+preprocessor/ i\\\n# OpenAppID\\\npreprocessor appid: app_detector_dir /usr/lib/openappid, \\\\\\\n   app_stats_filename appstats-unified.log, \\\\\\\n   app_stats_period 60\\\n' \
-      -e $'/^#\\s*config daq:/,/^\\s*$/ {/^\\s*$/i\\\nconfig daq: nfq\\\nconfig daq_mode: inline\\\nconfig daq_dir: /usr/lib/daq\\\n#config daq_var: queue=0\n}' \
-      -e $'/^#\\s*output\\s\\+unified2:\\s/ a\\\noutput unified2: filename snort_unified.log, limit 128, appid_event_types\\\n\\\n# alert fast\\\noutput alert_fast: alert' \
-      -e $'/include\\s\\+$RULE_PATH\\/local.rules/ i\\\n\\\n# fetched via pulledpork\\\ninclude $RULE_PATH/snort.rules\\\n\\\n# emergingthreats\\\n#include $RULE_PATH/emerging.conf\\\n' \
-      "${pkgdir}"/etc/snort/snort.conf
-    install -m644 "${pkgdir}"/etc/snort/snort.conf "${pkgdir}"/etc/snort/snort-nfqueue.conf.default
+    sed -i -e "/^HOME_NET\\s\\+=/ a include 'homenet.lua'" \
+      -e 's/^\(HOME_NET\s\+=\)/--\1/g' \
+      "${pkgdir}"/etc/snort/snort.lua
+    sed -i -e "s/^\\(RULE_PATH\\s\\+=\\).*/\\1 'rules'/g" \
+       -e "s/^\\(BUILTIN_RULE_PATH\\s\\+=\\).*/\\1 'builtin_rules'/g" \
+       -e "s/^\\(PLUGIN_RULE_PATH\\s\\+=\\).*/\\1 'so_rules'/g" \
+       -e "s/^\\(WHITE_LIST_PATH\\s\\+=\\).*/\\1 'lists'/g" \
+       -e "s/^\\(BLACK_LIST_PATH\\s\\+=\\).*/\\1 'lists'/g" \
+      "${pkgdir}"/etc/snort/snort_defaults.lua
 
     # OpenAppID files
     install -d -m755 "${pkgdir}"/usr/lib/openappid/custom/{libs,lua,port}

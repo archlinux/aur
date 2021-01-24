@@ -2,3 +2,4 @@ src
 pkg
 *x86_64.pkg.tar.xz
 snort-*.tar.gz
+snort3-*.tar.gz
