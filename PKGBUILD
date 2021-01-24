@@ -2,7 +2,7 @@
 
 pkgname=gdu-git
 _gitname=gdu
-pkgver=v3.0.0.r9.g718c32c
+pkgver=v4.3.0.r3.gd75ca21
 pkgrel=1
 license=('MIT')
 pkgdesc="Fast disk usage analyzer"
@@ -18,6 +18,11 @@ pkgver() {
   git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare(){
+  cd "$_gitname"
+  mkdir -p dist/
+}
+
 build() {
   cd "$_gitname"
   export CGO_LDFLAGS="${LDFLAGS}"
@@ -26,18 +31,11 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
 
-  user=`id -u -n`
-  time=`LC_ALL=en_US.UTF-8 date`
-  goldflags="-s -w \
-	  -X 'github.com/dundee/gdu/build.Version=${pkgver}' \
-	  -X 'github.com/dundee/gdu/build.User=${user}' \
-	  -X 'github.com/dundee/gdu/build.Time=${time}'"
-
-  go build -ldflags="$goldflags" -o $_gitname .
+  make build VERSION=$pkgver
 }
 
 package() {
-  cd $_gitname
-  install -Dm755 $_gitname "${pkgdir}"/usr/bin/$_gitname
+  cd "$_gitname"
+  install -Dm755 "dist/$_gitname" "${pkgdir}"/usr/bin/$_gitname
 }
 
