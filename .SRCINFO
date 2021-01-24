@@ -1,6 +1,6 @@
 pkgbase = ffuf
 	pkgdesc = Fast web fuzzer written in Go
-	pkgver = 1.1.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/ffuf/ffuf
 	arch = i686
@@ -9,10 +9,11 @@ pkgbase = ffuf
 	arch = armv7h
 	arch = aarch64
 	license = MIT
+	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = ffuf-1.1.0.tar.gz::https://github.com/ffuf/ffuf/archive/v1.1.0.tar.gz
-	sha256sums = 468963c6bec5390222802ec0b04c11187bb159f369edc2ebba1d228b8faf4f35
+	source = ffuf-1.2.1.tar.gz::https://github.com/ffuf/ffuf/archive/v1.2.1.tar.gz
+	sha256sums = ff474b21e192005a2df0f09f942b0370bdcb45d64ee35bd8782eb44a5c636e96
 
 pkgname = ffuf
 
