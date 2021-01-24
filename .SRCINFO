@@ -1,0 +1,18 @@
+pkgbase = sent-randoragon-git
+	pkgdesc = Randoragon's fork of suckless's sent presentation tool
+	pkgver = 1.0r130.600a510
+	pkgrel = 1
+	url = https://github.com/randoragon/sent
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	depends = libx11
+	depends = libxft-bgra
+	depends = fontconfig
+	depends = freetype2
+	depends = farbfeld-git
+	source = git+https://github.com/randoragon/sent
+	md5sums = SKIP
+
+pkgname = sent-randoragon-git
+
