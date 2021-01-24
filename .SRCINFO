@@ -1,6 +1,6 @@
 pkgbase = langkit-git
 	pkgdesc = Compiler for syntactic and semantic language analysis libraries
-	pkgver = r6816.55fe04716
+	pkgver = r7153.b32ae90dc
 	pkgrel = 1
 	url = https://github.com/AdaCore/langkit/
 	arch = any

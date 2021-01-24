@@ -1,7 +1,7 @@
 # Maintainer: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
 
 pkgname=langkit-git
-pkgver=r6816.55fe04716
+pkgver=r7153.b32ae90dc
 pkgrel=1
 
 pkgdesc='Compiler for syntactic and semantic language analysis libraries'
@@ -36,14 +36,10 @@ build()
 
     # Build the Langkit_Support library, used by all Langkit-generated
     # libraries.
-    #
-    # TODO: build & install static libraries. For now, this fails because
-    # auto-initialized static libraries are built using partial linking (ld's
-    # -r option), which conflicts with GCC's by default -pie option.
-    python scripts/build-langkit_support.py generate
-    python scripts/build-langkit_support.py \
-        --library-types relocatable \
-        build --build-mode=prod --gargs="-R"
+    python manage.py build-langkit-support \
+        --library-types=static,static-pic,relocatable \
+        --build-mode=prod \
+        --gargs="-R"
 }
 
 package()
@@ -51,7 +47,8 @@ package()
     cd "$srcdir/${pkgname%-git}"
     python setup.py install --root="$pkgdir"
 
-    python scripts/build-langkit_support.py \
-        --library-types relocatable \
-        install --build-mode=prod "$pkgdir/usr"
+    python manage.py install-langkit-support \
+        --library-types=static,static-pic,relocatable \
+        --build-mode=prod \
+        "$pkgdir/usr"
 }
