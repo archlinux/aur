@@ -2,10 +2,10 @@
 
 pkgname=js8call
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for ragchewing and message-passing based on WSJT-X"
 arch=('i686' 'x86_64')
-url="https://groups.io/g/js8call"
+url="https://bitbucket.org/widefido/js8call/"
 license=('GPL-3')
 makedepends=(cmake asciidoc asciidoctor)
 depends=(qt5-base qt5-multimedia qt5-serialport libusb libusb-compat gcc-fortran libpulse libpng fftw hamlib)
