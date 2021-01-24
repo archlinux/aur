@@ -6,7 +6,6 @@ pkgbase = haruhi-dl
 	arch = any
 	license = custom
 	makedepends = git
-	makedepends = pandoc
 	depends = python
 	depends = python-setuptools
 	optdepends = ffmpeg: for video post-processing
