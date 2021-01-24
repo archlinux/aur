@@ -1,0 +1,26 @@
+pkgbase = kgames
+	pkgdesc = A collection of old Xt/Xaw games refurbished to use modern drawing
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://keithp.com
+	arch = x86_64
+	license = BSD
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	makedepends = bison
+	depends = libxaw
+	depends = libxrender
+	depends = freetype2
+	depends = fontconfig
+	depends = cairo
+	depends = libxft
+	depends = librsvg
+	source = kgames::git+https://keithp.com/cgit/kgames.git#tag=1.0
+	source = https://metadata.ftp-master.debian.org/changelogs//main/k/kgames/kgames_1.0-2_copyright
+	sha512sums = SKIP
+	sha512sums = bc7a13078071c4876d726d407dffc54fc35a95f6aa29baf6ec1e7729a6e166f7fbe12c474fd99692324eaf77ba662761775234c1d08cbcc4343812952007d78f
+
+pkgname = kgames
+
