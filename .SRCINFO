@@ -1,0 +1,15 @@
+pkgbase = python-seqeval
+	pkgdesc = Testing framework for sequence labeling
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/chakki-works/seqeval
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/s/seqeval/seqeval-1.2.2.tar.gz
+	sha256sums = f28e97c3ab96d6fcd32b648f6438ff2e09cfba87f05939da9b3970713ec56e6f
+
+pkgname = python-seqeval
+	depends = python
+
