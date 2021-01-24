@@ -2,8 +2,8 @@
 
 _pkgname=litesata
 pkgname=python-$_pkgname
-pkgver=2020.08
-pkgrel=3
+pkgver=2020.12
+pkgrel=1
 pkgdesc='Small footprint and configurable SATA core'
 arch=('any')
 url="https://github.com/enjoy-digital/$_pkgname"
@@ -12,7 +12,7 @@ depends=('python-migen' 'python-litex')
 makedepends=('python-setuptools')
 # checkdepends=('python-pytest-runner') # missing litescope release
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('f83edde55719db976ace2ca066e5685773244fdab44c82dd4a91b98200dc3ba56f1cd0d66eee2e521b37655888f6a6da27e25fd71a2229be9864d463118ffbf0')
+sha512sums=('c09ddf8a0beeb9865dcdeaadcb0e6f49a0a5fa74f320021685e0da49707754cff8ea40a33f46e0c678d988f395f87606054d63de7f3da17196684fb15eb75976')
 
 build() {
   cd $_pkgname-$pkgver
