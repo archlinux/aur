@@ -9,6 +9,7 @@ pkgbase = mousemode-git
 	depends = libx11
 	depends = libxtst
 	depends = xorgproto
+	provides = mousemode
 	source = git+https://github.com/randoragon/mousemode
 	md5sums = SKIP
 
