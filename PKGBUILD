@@ -173,17 +173,17 @@ prepare() {
 
   # This is intended for the people that want to build this package with their own config
   # Put the file "myconfig" at the package folder (this will take preference) or "${XDG_CONFIG_HOME}/linux-xanmod/myconfig"
-  # If it's a full config, will be replaced
-  # If not, you should use scripts/config commands, one by line
+  # If we detect partial file with scripts/config commands, we execute as a script
+  # If not, it's a full config, will be replaced
   if [ -f "${startdir}/myconfig" ] || [ -f "${XDG_CONFIG_HOME}/linux-xanmod/myconfig" ]; then
-    if ! grep -q 'scripts/config' "${startdir}/myconfig"; then
+    if grep -q 'scripts/config' "${startdir}/myconfig" || grep -q 'scripts/config' "${XDG_CONFIG_HOME}/linux-xanmod/myconfig"; then
+      # myconfig is a partial file. Executing as a script
+      msg2 "Applying myconfig..."
+      bash -x "${startdir}"/myconfig || bash -x "${XDG_CONFIG_HOME}"/linux-xanmod/myconfig
+    else
       # myconfig is a full config file. Replacing default .config
       msg2 "Using user CUSTOM config..."
       cp -f "${startdir}"/myconfig .config || cp -f "${XDG_CONFIG_HOME}/linux-xanmod/myconfig" .config
-    else
-      # myconfig is a partial file. Executing as a script
-      msg2 "Applying myconfig..."
-      bash -x "${startdir}"/myconfig || bash -x "${XDG_CONFIG_HOME}/linux-xanmod/myconfig"
     fi
     echo
   fi
