@@ -3,7 +3,7 @@
 
 pkgname=prometheus-postgresql-exporter
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Prometheus exporter for PostrgreSQL"
 arch=('x86_64')
 url="https://github.com/wrouesnel/postgres_exporter"

@@ -1,7 +1,7 @@
 pkgbase = prometheus-postgresql-exporter
 	pkgdesc = Prometheus exporter for PostrgreSQL
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wrouesnel/postgres_exporter
 	arch = x86_64
 	license = Apache
