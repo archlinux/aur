@@ -3,12 +3,12 @@
 
 pkgname=lgogdownloader-git
 pkgver=3.7.r15.ge43d1c4
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source downloader for GOG.com games, uses the GOG.com API"
 url="https://sites.google.com/site/gogdownloader/"
 arch=(x86_64 i686 pentium4)
 license=('custom:WTFPL')
-depends=(boost-libs jsoncpp tinyxml2 rhash htmlcxx qt5-webengine)
+depends=(boost-libs jsoncpp tinyxml2 rhash htmlcxx)
 makedepends=(git help2man cmake boost)
 provides=(lgogdownloader)
 conflicts=(lgogdownloader)
@@ -30,7 +30,7 @@ build() {
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DUSE_QT_GUI=ON
+    -DUSE_QT_GUI=OFF
 
   make
 }
