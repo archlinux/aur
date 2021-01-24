@@ -1,13 +1,14 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=Giftedmotion
+Name=GiftedMotion
 Comment=GIF editor
 GenericName=GIF editor
 Exec=/usr/bin/giftedmotion
 Terminal=false
 Type=Application
+# The icon provided is not provided by the giftedmotion project
 Icon=giftedmotion
 Categories=Graphics;Video;
-StartupWMClass=Giftedmotion
+StartupWMClass=GiftedMotion
 StartupNotify=true
 
