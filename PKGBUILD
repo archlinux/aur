@@ -2,8 +2,8 @@
 
 _pkgname=litex
 pkgname=python-$_pkgname
-pkgver=2020.08
-pkgrel=4
+pkgver=2020.12
+pkgrel=1
 pkgdesc='Migen/MiSoC based Core/SoC builder that provides the infrastructure to easily create Cores/SoCs'
 arch=('any')
 url='https://github.com/enjoy-digital/litex'
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-litedram' 'python-liteeth' 'python-liteiclink' 'python-litesdcard' 'yosys'
               'python-pythondata-cpu-vexriscv' 'python-pythondata-cpu-picorv32' 'python-pythondata-cpu-lm32' 'python-pythondata-cpu-mor1kx')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('cf31408805947f13ae149b861e37882b809aadc8444a9a4dca0d63787721902188914e286feb3d911ff8d9893c4e51a97c00c32ea8126a71348b1ed5ae7c8552')
+sha512sums=('144a1ef81afcb0e762853a48d1b8d248ad414d159ae6ea659f7b6a6538c75d3cfb38238aea40572ce2a787fb183af10fe63ca4842e7e5b4761817916b8404344')
 
 prepare() {
   # seems like running the tests breaks setup.py install
