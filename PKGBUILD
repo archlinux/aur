@@ -4,8 +4,8 @@ _pkgname=pythondata-cpu-lm32
 _pyname=${_pkgname//-/_}
 pkgname=python-$_pkgname
 _vexriscv=1.0.1
-pkgver=2020.04
-pkgrel=3
+pkgver=2020.08
+pkgrel=1
 pkgdesc='Python module containing verilog files for lm32 cpu (for use with LiteX)'
 arch=('any')
 url="https://github.com/litex-hub/$_pkgname"
@@ -14,7 +14,7 @@ depends=('python')
 makedepends=('python-setuptools')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('e37da7c510485160f9686867a301ea182145ce1d6c3f53c4b69fa47ccf040c8bf6696012672d1237a469280010f1f11d73eb5dbe1d6a0adf6318d6c98fc93e69')
+sha512sums=('a70c73f9d99da4eb6cbcc00717e22eb56a78f42c7e3dd000bd7cc8330877ef2e7ea907282a4848c60c1903fd8d69e823b69118bf9d2a6462d3fac63301b9c703')
 
 build() {
   cd $_pkgname-$pkgver
