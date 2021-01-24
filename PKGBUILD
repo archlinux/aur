@@ -2,8 +2,8 @@
 # Contributor: yaroslav <proninyaroslav@mail.ru>
 
 pkgname=infer
-pkgver=0.17.0
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Static Analyzer by Facebook"
 arch=('x86_64')
 url="https://github.com/facebook/infer"
@@ -15,8 +15,8 @@ sha256sums=('SKIP')
 
 
 build() {
-    opam init -y --comp=4.02.3
-    opam switch 4.02.3
+    opam init -y --comp=4.08.0
+    opam switch 4.08.0
     eval $(opam config env)
 
     cd "${pkgname}"
