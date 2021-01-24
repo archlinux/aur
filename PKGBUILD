@@ -3,8 +3,8 @@
 
 pkgname=websocketpp-git-dev
 _gitname=websocketpp
-pkgver=0.8.3.1732.0d4f361
-pkgrel=2
+pkgver=0.8.3.1764.a4494d5
+pkgrel=1
 pkgdesc='C++/Boost Asio based websocket client/server library, Develop branch'
 url='http://www.zaphoyd.com/websocketpp/'
 arch=('any')
