@@ -5,8 +5,8 @@
 # generate a GUI box. Parent installer fails if run headless.
 
 pkgname=ti-ble-sdk
-pkgver=2.02.04.06
-_pkgver=2_02_04_06
+pkgver=2.02.05.02
+_pkgver=2_02_05_02
 pkgrel=1
 pkgdesc="Texas Instruments BLE Stack for CC2640/CC2650/CC1350"
 arch=('x86_64')
@@ -197,5 +197,5 @@ package() {
     install -D -m0644 $srcdir/${_installpath}/${_bundle}/license.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
-sha256sums=('80173b0c95f31cc2a80b7c238eef7083b3e4b8d2ce6f00282cf455b22ce1c7cf'
+sha256sums=('9b65f2b1c6152c72af4d20d4bb1af375b01151b68163bf5cc0d8e384228d05a0'
             '675fd1fcd998eb17726210540d5ce3e0061b84defba1b246e7a720e2de1f463e')
