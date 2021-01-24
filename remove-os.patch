@@ -1,0 +1,46 @@
+diff --git a/gnatcoll.gpr b/gnatcoll.gpr
+index e0abbea3..b5024068 100644
+--- a/gnatcoll.gpr
++++ b/gnatcoll.gpr
+@@ -44,13 +44,6 @@ project GnatColl is
+ 
+    Sources := ("src", "src/os", "src/paragraph_filling");
+ 
+-   case OS is
+-      when "unix" | "osx" =>
+-         Sources := Sources & ("src/os/unix");
+-      when "windows" =>
+-         Sources := Sources & ("src/os/win32");
+-   end case;
+-
+    for Source_Dirs use Sources;
+ 
+    for Library_Kind use Library_Type;
+@@ -169,9 +162,6 @@ project GnatColl is
+ 
+    package Naming is
+ 
+-      for Specification  ("GNATCOLL.OS.Constants")
+-        use "gnatcoll-os-constants__" & OS & ".ads";
+-
+       case OS is
+          when "unix" | "osx" =>
+             for Specification  ("GNATCOLL.Mmap.System")
+@@ -182,8 +172,6 @@ project GnatColl is
+               use "gnatcoll-io-native-codec__unix.adb";
+             for Implementation ("GNATCOLL.Plugins")
+               use "gnatcoll-plugins__unix.adb";
+-            for Implementation ("GNATCOLL.OS.Stat.Stat")
+-              use "gnatcoll-os-stat-stat__unix.adb";
+          when "windows" =>
+             for Specification  ("GNATCOLL.Mmap.System")
+               use "gnatcoll-mmap-system__win32.ads";
+@@ -193,8 +181,6 @@ project GnatColl is
+               use "gnatcoll-io-native-codec__win32.adb";
+             for Implementation ("GNATCOLL.Plugins")
+               use "gnatcoll-plugins__windows.adb";
+-            for Implementation ("GNATCOLL.OS.Stat.Stat")
+-              use "gnatcoll-os-stat-stat__win32.adb";
+       end case;
+ 
+    end Naming;
