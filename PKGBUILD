@@ -1,8 +1,9 @@
 # Maintainer: Jorge Araya Navarro <jorge@esavara.cr>
 pkgname=castledb-git
 _pkgname=castle
+pkgbase=${_pkgname}
 pkgver=1.6.0.r81.g14519ad
-pkgrel=1
+pkgrel=2
 pkgdesc="A structured database and level editor with a local web app to edit it"
 arch=('i686' 'x86_64')
 url="http://castledb.org/"
