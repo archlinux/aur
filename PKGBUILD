@@ -2,13 +2,14 @@
 
 pkgname=dwm-randoragon-git
 pkgver=6.2.r1795.b140145
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Randoragon's build of suckless's dynamic window manager (dwm)"
 arch=('x86_64')
 url="https://github.com/randoragon/dwm"
 license=('MIT')
 depends=(libx11 libxinerama libxcb libxrender libxft-bgra)
+optdepends=('dwmblocks-randoragon-git: status bar')
 makedepends=(git)
 source=("git+$url")
 md5sums=('SKIP')
