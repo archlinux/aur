@@ -1,10 +1,11 @@
 # Maintainer: Matthew T Hoare <matthew.t.hoare at gmail dot com>
 # Contributor: Thorsten Töpper <atsutane-tu@freethoughts.de>
 # Contributor: Daniel Hommel <dhommel@gmail.com>
+# Contributor: José Neder <jlneder@gmail.com>
 
 pkgname=mksh-static
 _pkgname=mksh
-pkgver=56c
+pkgver=59c
 _pkgver=R$pkgver
 pkgrel=1
 pkgdesc='The MirBSD Korn Shell - an enhanced version of the public domain ksh (static build, linked with musl)'
@@ -16,8 +17,8 @@ conflicts=('mksh' 'mksh-git' 'mksh-static-git')
 install=mksh.install
 source=("https://www.mirbsd.org/MirOS/dist/mir/mksh/$_pkgname-$_pkgver.tgz"
         'https://www.mirbsd.org/TaC-mksh.txt')
-sha512sums=('7e4cd2d24c6bca2ebad7c6b02d158188e766bd4693d93f5bed198d69238aef078d42ce911431ad4e419e4af55083047d823bfad53973db5c6d8a685482770135'
-         '14ec4ad9822e4c93bd036ba71fb6e1e77e9c36cbcea18c0c72e90f18d132382ef9a2a430425b93a4aa2693bfb4ca9ceeb0a86a99652075c1692d89b6a92ddce8')
+sha512sums=('f56b6956f9e1dd88ddce2294301a5eb698050d9d4f49286fdcd8f9df8554eabbcc71d37e2bf3eb7234e3968a17231cc6de8aa7efbf17768834a90b14e8cdf340'
+            '860cee206fe96c4cd9a36a62d39d323994b233d13c022f8ac2fa57fe2b7f40c320239c90ef991688f182f8dd31e6962245009a8ba92d9b7a111105859253829a')
 
 check() {
   cd "$srcdir/$_pkgname"
