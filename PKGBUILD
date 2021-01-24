@@ -2,21 +2,14 @@
 # Contributor: baraclese at gmail dot com
 
 pkgname=lwtools
-pkgver=4.17
-pkgrel=2
+pkgver=4.18
+pkgrel=1
 pkgdesc="Cross-development tools for the Motorola 6809 and Hitachi 6309 microprocessors."
 arch=('x86_64')
 url="http://www.lwtools.ca/"
 license=('GPL3')
-source=("http://www.lwtools.ca/releases/lwtools/${pkgname}-${pkgver}.tar.gz"
-         0001-missing-extern.patch)
-sha256sums=('a93ab316ca0176901822873dba4bc286d3a5cf86e6a853d3edb7a51ecc96a91c'
-            '8da384eaa119e65c4482f4839c54c47415dd3a50e101bf9539d1b59c0162972e')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  patch -p1 -i "$srcdir"/0001-missing-extern.patch
-}
+source=("http://www.lwtools.ca/releases/lwtools/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('1f7837d4985f2f3db65bd7c1af05ab7fc779ca43c8bbe411a3042fd85f0c8151')
 
 build() {
   cd "$pkgname-$pkgver"
