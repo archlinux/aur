@@ -1,0 +1,12 @@
+diff --unified --recursive --text guest-configs-20210113.00.orig/src/usr/bin/google_set_hostname guest-configs-20210113.00/src/usr/bin/google_set_hostname
+--- guest-configs-20210113.00.orig/src/usr/bin/google_set_hostname	2021-01-24 16:23:33.145413281 +0000
++++ guest-configs-20210113.00/src/usr/bin/google_set_hostname	2021-01-24 16:20:26.670408935 +0000
+@@ -37,7 +37,7 @@
+ # unqualified domain name.
+ 
+ if [ -n "$new_host_name" ]; then
+-  hostname "${new_host_name%%.*}"
++  hostnamectl set-hostname "${new_host_name%%.*}"
+ 
+   # If NetworkManager is installed set the hostname with nmcli.
+   # to resolve issues with NetworkManager resetting the hostname
