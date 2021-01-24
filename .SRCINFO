@@ -1,0 +1,15 @@
+pkgbase = systemd-timer-docker-system-prune-git
+	pkgdesc = Systemd timer to prune docker system
+	pkgver = latest
+	pkgrel = 1
+	url = https://gitlab.com/jdorel-archlinux/systemd-docker-system-prune
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = systemd-service-docker-system-prune
+	provides = systemd-timer-docker-system-prune
+	source = systemd-timer-docker-system-prune-git::git+https://gitlab.com/jdorel-archlinux/systemd-docker-system-prune
+	md5sums = SKIP
+
+pkgname = systemd-timer-docker-system-prune-git
+
