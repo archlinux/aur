@@ -1,0 +1,14 @@
+pkgbase = scare
+	pkgdesc = SCARE is a secondary clone of jAsea, the Java GPL clone of the Adrift runner by Mark J. Tilford. It aims to provide an ANSI/ISO C core Adrift interpreter.
+	pkgver = 1.3.10
+	pkgrel = 1
+	url = https://sites.google.com/site/scarehome/
+	arch = any
+	license = GPLv2
+	depends = glkterm
+	provides = adrift4
+	source = scare-1.3.10.zip::https://sites.google.com/site/scarehome/scare-1.3.10.zip?attredirects=0
+	md5sums = 5312c6d43e72c9b2800742b272901f9d
+
+pkgname = scare
+
