@@ -1,0 +1,15 @@
+pkgbase = python-conllu
+	pkgdesc = CoNLL-U Parser parses a CoNLL-U formatted string into a nested python dictionary
+	pkgver = 4.3
+	pkgrel = 1
+	url = https://github.com/EmilStenstrom/conllu/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/c/conllu/conllu-4.3.tar.gz
+	sha256sums = 35b5b76280507977e9e86f18369a1a4e5d4075a3680f1e9b2fac7ed5d0aaf427
+
+pkgname = python-conllu
+	depends = python
+
