@@ -1,6 +1,6 @@
-# Maintainer: Maikel Wever <maikelwever@gmail.com>
+# Maintainer: t-onoz <t [dot] onozuka [dot] 1990 [at] (g-mail)>
 pkgname=safety
-pkgver=1.9.0
+pkgver=1.10.3
 pkgrel=1
 pkgdesc="Safety checks your installed dependencies for known security vulnerabilities."
 url="https://github.com/pyupio/safety"
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('python' 'python-click' 'python-requests' 'python-packaging' 'python-dparse')
 makedepends=('python-setuptools')
 source=("https://github.com/pyupio/safety/archive/${pkgver}.tar.gz")
-md5sums=('c4527081b3c0004271ecbf3726eb6185')
+md5sums=('a8a9a9af3bab9ad2707f377c5896e85b')
 arch=('any')
 
 package() {
