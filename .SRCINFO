@@ -1,7 +1,7 @@
 pkgbase = linkerd
 	pkgdesc = A service sidecar for Kubernetes and beyond. Main repo for Linkerd 2.x. - https://linkerd.io
 	pkgver = 2.9.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://linkerd.io/2/getting-started/
 	arch = x86_64
 	license = Apache
