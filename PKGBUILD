@@ -32,20 +32,21 @@ source "$_where"/prepare
 
 _tkg_initscript
 
-if [[ "$_sub" = rc* ]]; then
-  _srcpath="linux-${_basekernel}-${_sub}"
-  kernel_site="https://git.kernel.org/torvalds/t/linux-${_basekernel}-${_sub}.tar.gz"
-else
-  _srcpath="linux-${_basekernel}"
-  kernel_site="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.xz"
-  patch_site="https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${_basekernel}.${_sub}.xz"
-fi
+#if [[ "$_sub" = rc* ]]; then
+#  _srcpath="linux-${_basekernel}-${_sub}"
+#  kernel_site="https://git.kernel.org/torvalds/t/linux-${_basekernel}-${_sub}.tar.gz"
+#else
+#  _srcpath="linux-${_basekernel}"
+#  kernel_site="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.xz"
+#  patch_site="https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${_basekernel}.${_sub}.xz"
+#fi
 
+_srcpath="bcachefs"
 
 pkgbase="linux-mainline-bcachefs" #"${_custom_pkgbase}"
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver="${_basekernel}"."${_sub}"
-pkgrel=113
+pkgrel=114
 pkgdesc='Linux-tkg with bcachefs'
 bcachefs="git+https://github.com/koverstreet/bcachefs.git"
 arch=('x86_64') # no i686 in here
@@ -92,7 +93,7 @@ case $_basever in
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0012-misc-additions.patch"
     )
     sha256sums=('SKIP'
-            '90cf5582f25ded6d5935b54fc20758e2c47915a4d5fe68d7298684557f631ff1'
+            'f60f800329a7461e5ff542f7f19e24a073f1e49a74f96dfb5d45a899f6a9cad8'
             'SKIP'
             'fc5fc8944d0926cfc0aaf17be493ebe6549d8709f354191df6078337544cb3cb'
             '1e15fc2ef3fa770217ecc63a220e5df2ddbcf3295eb4a021171e7edd4c6cc898'
@@ -127,15 +128,13 @@ prepare() {
 
   ln -s "${_where}/customization.cfg" "${srcdir}" # workaround
 
-  #cd "${srcdir}/${_srcpath}"
-  cd "${srcdir}/bcachefs"
+  cd "${srcdir}/${_srcpath}"
   
   _tkg_srcprep
 }
 
 build() {
-  #cd "${srcdir}/${_srcpath}"
-   cd "${srcdir}/bcachefs"
+  cd "${srcdir}/${_srcpath}"
    
   # Use custom compiler paths if defined
   if [ "$_compiler_name" = "-llvm" ] && [ -n "${CUSTOM_LLVM_PATH}" ]; then
@@ -182,8 +181,7 @@ hackbase() {
   provides=("linux=${pkgver}" "${pkgbase}" VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
   replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
-  #cd "${srcdir}/${_srcpath}"
-  cd "${srcdir}/bcachefs"
+  cd "${srcdir}/${_srcpath}"
    
   # get kernel version
   local _kernver="$(<version)"
@@ -216,8 +214,7 @@ hackheaders() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
   provides=("linux-headers=${pkgver}" "${pkgbase}-headers=${pkgver}")
 
-  #cd "${srcdir}/${_srcpath}"
-  cd "${srcdir}/bcachefs"
+  cd "${srcdir}/${_srcpath}"
   
   local builddir="${pkgdir}/usr/lib/modules/$(<version)/build"
 
