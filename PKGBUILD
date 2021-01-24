@@ -1,6 +1,5 @@
 # Maintainer: Jorge Araya Navarro <jorge@esavara.cr>
 pkgname=hide-git
-pkgbase=hide
 pkgver=0.1.0.8d351e3
 pkgrel=2
 pkgdesc="an extensible editor for Heaps game engine"
