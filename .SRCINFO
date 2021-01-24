@@ -1,0 +1,15 @@
+pkgbase = python-djangorestframework-xml
+	pkgdesc = XML support for Django REST Framework
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/jpadilla/django-rest-framework-xml
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/d/djangorestframework-xml/djangorestframework-xml-2.0.0.tar.gz
+	sha256sums = 35f6c811d0ab8c8466b26db234e16a2ed32d76381715257aebf4c7be2c202ca1
+
+pkgname = python-djangorestframework-xml
+	depends = python
+
