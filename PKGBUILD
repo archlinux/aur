@@ -2,7 +2,7 @@
 
 pkgname='hpuld'
 pkgver='1.00.39.12_00.15'
-pkgrel=1
+pkgrel=2
 pkgdesc='HP Unified Linux Driver'
 arch=('i686' 'x86_64')
 url='https://support.hp.com/'
@@ -105,6 +105,8 @@ package() {
 	"${srcdir}/fulfill_template.sh" "${srcdir}/${_pkgcodename}/noarch/oem.conf" \
 		"${srcdir}/${_pkgcodename}/noarch/etc/smfp.rules.in" \
 		"${pkgdir}/etc/udev/rules.d/${_udev_rule_number}-smfp_${_vendor_lc}.rules"
+
+	chmod 644 "${pkgdir}/etc/udev/rules.d/${_udev_rule_number}-smfp_${_vendor_lc}.rules"
 
 	"${srcdir}/fulfill_template.sh" "${srcdir}/${_pkgcodename}/noarch/oem.conf" \
 		"${srcdir}/${_pkgcodename}/noarch/etc/smfp.fdi.in" \

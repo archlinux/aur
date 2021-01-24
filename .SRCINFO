@@ -1,7 +1,7 @@
 pkgbase = hpuld
 	pkgdesc = HP Unified Linux Driver
 	pkgver = 1.00.39.12_00.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://support.hp.com/
 	install = hpuld.install
 	arch = i686
