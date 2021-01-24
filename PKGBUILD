@@ -5,7 +5,7 @@ url='https://wiki.ros.org/amcl'
 pkgname='ros-melodic-amcl'
 pkgver='1.16.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('LGPL')
 
 ros_makedepends=(ros-melodic-catkin
@@ -22,7 +22,7 @@ ros_makedepends=(ros-melodic-catkin
   ros-melodic-tf2-msgs
   ros-melodic-tf2-ros
   ros-melodic-sensor-msgs)
-makedepends=('cmake' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools' 'boost'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-melodic-dynamic-reconfigure
@@ -34,7 +34,7 @@ ros_depends=(ros-melodic-dynamic-reconfigure
   ros-melodic-tf2
   ros-melodic-tf2-msgs
   ros-melodic-tf2-ros)
-depends=(${ros_depends[@]})
+depends=(${ros_depends[@]} 'boost')
 
 # Tarball version (faster download)
 _dir="navigation-${pkgver}/amcl"
@@ -59,7 +59,9 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+		 -DBOOST_ROOT=/opt/boost1.69 \
+		 -DBoost_NO_SYSTEM_PATHS=TRUE
   make
 }
 
