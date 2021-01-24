@@ -1,0 +1,6 @@
+# arg 1:  the new package version
+post_install() {
+    find /home/*/.asoundrc -exec echo '==> {} made by Cadence may not be compatible with Studio-Controls' \;
+    
+    pacman -Ql python-pyalsaaudio | grep 3.8 && echo "==> Please reinstall python-pyalsaaudio cleaning the cache, it shouldn't be found in python3.8 directory"
+}
