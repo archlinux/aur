@@ -1,0 +1,26 @@
+pkgbase = nb-git
+	pkgdesc = A command line note-taking, bookmarking, archiving, and knowledge base application - Git version
+	pkgver = 5.7.8.r657.gaa244add
+	pkgrel = 1
+	url = https://github.com/xwmx/nb
+	arch = any
+	license = AGPL3
+	depends = bash
+	depends = git
+	optdepends = ack
+	optdepends = bat
+	optdepends = exa
+	optdepends = ffmpeg
+	optdepends = lynx
+	optdepends = pandoc: to convert HTML bookmarks to markdown
+	optdepends = readability-cli: to cleanup HTML markup
+	optdepends = ripgrep
+	optdepends = the_silver_searcher
+	optdepends = tig
+	optdepends = w3m
+	provides = nb
+	conflicts = nb
+	source = git+https://github.com/xwmx/nb.git
+	sha256sums = SKIP
+
+pkgname = nb-git
