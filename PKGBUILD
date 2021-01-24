@@ -1,7 +1,7 @@
 # Maintainer: Randoragon <randoragongamedev@gmail.com>
 
 pkgname=sent-randoragon-git
-pkgver=1.0r133.649cfa6
+pkgver=1.0.r133.649cfa6
 pkgrel=1
 epoch=
 pkgdesc="Randoragon's fork of suckless's sent presentation tool"
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd sent
-    printf "1.0r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
