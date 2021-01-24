@@ -5,15 +5,15 @@
 
 _pkgname=krunner
 pkgname=$_pkgname-git
-pkgver=r445.1875502
-pkgrel=2
+pkgver=r564.83fdd52
+pkgrel=1
 pkgdesc='Framework for providing different actions given a string query'
 arch=('i686' 'x86_64')
 url='https://community.kde.org/Frameworks'
 license=('LGPL')
 groups=(kf5)
 depends=(plasma-framework threadweaver)
-makedepends=(extra-cmake-modules kdoctools doxygen git qt5-tools qt5-doc)
+makedepends=(extra-cmake-modules kdoctools doxygen git qt5-tools)
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 source=('git+https://github.com/KDE/krunner.git')
@@ -40,5 +40,5 @@ build() {
 package() {
   cd $srcdir/$_pkgname/build
   make DESTDIR="$pkgdir" install
-  install -Dm644 ../COPYING.LIB "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -Dm644 ../LICENSES/* -t "$pkgdir/usr/share/licenses/$_pkgname/"
 }
