@@ -12,6 +12,7 @@ depends=(libx11 libxtst xorgproto)
 makedepends=(git)
 source=("git+$url")
 md5sums=('SKIP')
+provides=('mousemode')
 
 pkgver() {
     cd mousemode
