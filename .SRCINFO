@@ -1,0 +1,14 @@
+pkgbase = openssl-tpm-engine
+	pkgdesc = OpenSSL engine for TPM 1.2 hardware-backed keys
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/mgerstner/openssl_tpm_engine
+	arch = i686
+	arch = x86_64
+	license = custom:openssl
+	depends = openssl
+	depends = trousers
+	source = openssl-tpm-engine::git+https://github.com/mgerstner/openssl_tpm_engine#commit=b28de5065e6eb9aa5d5afe2276904f7624c2cbaf
+	sha256sums = SKIP
+
+pkgname = openssl-tpm-engine
