@@ -2,7 +2,7 @@
 
 pkgname=dwm-randoragon-git
 pkgver=6.2.r1795.b140145
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Randoragon's build of suckless's dynamic window manager (dwm)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ build() {
 package() {
 	cd dwm
     mkdir -p "$pkgdir/usr/bin"
-	make DESTDIR="$pkgdir/" PREFIX=/usr/bin install
+	make DESTDIR="$pkgdir/" PREFIX=/usr install
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/license.txt"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.MD"
 }
