@@ -1,5 +1,6 @@
 # Maintainer: Jorge Araya Navarro <jorge@esavara.cr>
 pkgname=hide-git
+_pkgname=hide
 pkgver=0.1.0.8d351e3
 pkgrel=2
 pkgdesc="an extensible editor for Heaps game engine"
@@ -11,7 +12,7 @@ makedepends=('haxe' 'git')
 provides=('hide')
 conflicts=('hide')
 source=(
-  "${pkgname}::git+https://github.com/HeapsIO/${pkgbase}.git"
+  "${pkgname}::git+https://github.com/HeapsIO/${_pkgname}.git"
   "icon.svg"
   "io.heaps.hide.desktop"
   "hide"
