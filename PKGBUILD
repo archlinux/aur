@@ -1,7 +1,7 @@
 # Maintainer: Randoragon <randoragongamedev@gmail.com>
 
 pkgname=sent-randoragon-git
-pkgver=1.0r130.600a510
+pkgver=1.0r133.649cfa6
 pkgrel=1
 epoch=
 pkgdesc="Randoragon's fork of suckless's sent presentation tool"

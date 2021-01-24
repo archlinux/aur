@@ -1,6 +1,6 @@
 pkgbase = sent-randoragon-git
 	pkgdesc = Randoragon's fork of suckless's sent presentation tool
-	pkgver = 1.0r130.600a510
+	pkgver = 1.0r133.649cfa6
 	pkgrel = 1
 	url = https://github.com/randoragon/sent
 	arch = x86_64
