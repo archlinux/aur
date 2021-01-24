@@ -27,8 +27,8 @@ plain '             `.-:///////:-.`'
 _where="$PWD" # track basedir as different Arch based distros are moving srcdir around
 _ispkgbuild="true"
 
-source "$_where"/customization.cfg # load default configuration from file
-source "$_where"/prepare
+#source "$_where"/customization.cfg # load default configuration from file
+#source "$_where"/prepare
 
 _tkg_initscript
 
@@ -131,8 +131,8 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 prepare() {
   #rm -rf $pkgdir # Nuke the entire pkg folder so it'll get regenerated clean on next build
 
-  ln -s "${_where}/customization.cfg" "${srcdir}" # workaround
-  ln -s "${_where}/prepare" "${srcdir}" # workaround
+  #ln -s "${_where}/customization.cfg" "${srcdir}" # workaround
+  #ln -s "${_where}/prepare" "${srcdir}" # workaround
   ln -s "${_where}/${_srcpath}" "${srcdir}" # workaround
 
   cd "${srcdir}/${_srcpath}"
