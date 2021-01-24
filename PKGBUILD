@@ -1,8 +1,8 @@
 # Maintainer: Abdó Roig-Maranges <abdo.roig@gmail.com>
 
 pkgname=extempore-git
-pkgver=v0.8.6.lens.r10.g794180ff
-pkgrel=1
+pkgver=0.8.7.r35.g78c44413
+pkgrel=2
 pkgdesc="A cyber-physical programming environment for live coding"
 arch=('i686' 'x86_64')
 url="http://extempore.moso.com.au"
@@ -16,7 +16,7 @@ source=("git+https://github.com/digego/extempore.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  git --git-dir="${srcdir}/extempore/.git" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git --git-dir="${srcdir}/extempore/.git" describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
