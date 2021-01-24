@@ -2,7 +2,7 @@
 
 pkgname=dwmblocks-randoragon-git
 pkgver=1.0.r76.234d550
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="An intuitive, home-row mouse replacement"
 arch=('x86_64')
