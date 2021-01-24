@@ -2,7 +2,7 @@
 pkgname=hide-git
 _pkgname=hide
 pkgver=0.1.0.8d351e3
-pkgrel=2
+pkgrel=3
 pkgdesc="an extensible editor for Heaps game engine"
 arch=('i686' 'x86_64')
 url="https://github.com/HeapsIO/hide"
@@ -20,7 +20,7 @@ source=(
 sha256sums=('SKIP'
             '1255733ff1ad84f207a3850082f000d40023df5ec1415a3fa49ec3c6fcb50f12'
             '77965d8ea53498683700f448a0f9fed0aa08093ad8d09167682f29ab0e944e73'
-            '8beda3dba210dc712fd3759109da10aac68f197413a591351b29518276bdb09d')
+            '3a275819cef41f15e9e54b8793985ee979d2c6973fa65193de05cb9e9970e957')
 
 pkgver() {
   cd "$srcdir/${pkgname}"
