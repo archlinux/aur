@@ -1,7 +1,7 @@
 # Maintainer: Trivernis <trivernis+aur at protonmail dot com>
 
 pkgname=snekdown
-pkgver=0.33.2
+pkgver=0.33.3
 pkgrel=1
 pkgdesc='Parser and renderer for Snekdown - a custom markdown syntax'
 arch=(x86_64)
@@ -12,8 +12,8 @@ depends=(rustup)
 makedepends=()
 
 options=(!strip)
-source=($pkgname-$pkgver.tar.gz::https://github.com/Trivernis/snekdown/archive/v0.33.2.tar.gz)
-sha512sums=('d84e685af95e8c3a7ad602ff7b8a04698a2eb8c17c8ee94fc68ef04a7d5dad6986996560528cc5c71ff0b69cfbfef7931d8e0f8fa196f693e0b08b5520fe45bb')
+source=($pkgname-$pkgver.tar.gz::https://github.com/Trivernis/snekdown/archive/v0.33.3.tar.gz)
+sha512sums=('d3670c5398c1c74810aa8285aa286b80372e8ff6b286c1a4c55c064ae576783532b1a6457f24d78c77736ade0e475b9990b75dfb988355e5834f52e0281ec3f9')
 
 prepare() {
   cd $pkgname-$pkgver
