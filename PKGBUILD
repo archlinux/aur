@@ -29,6 +29,7 @@ _ispkgbuild="true"
 
 source "$_where"/customization.cfg # load default configuration from file
 source "$_where"/prepare
+source "$_where"/bcachefs
 
 _tkg_initscript
 
@@ -125,10 +126,10 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-  #rm -rf $pkgdir # Nuke the entire pkg folder so it'll get regenerated clean on next build
-
+  rm -rf $pkgdir # Nuke the entire pkg folder so it'll get regenerated clean on next build
+li
   ln -s "${_where}/customization.cfg" "${srcdir}" # workaround
-  #ln -s "${_where}/${_srcpath}" "${srcdir}" # workaround
+  ln -s "${_where}/${_srcpath}" "${srcdir}" # workaround
 
   cd "${srcdir}/${_srcpath}"
   
