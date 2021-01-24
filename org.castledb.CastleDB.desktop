@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=CastleDB
+Comment=A structured database and level editor with a local web app to edit it.
+Icon=castledb
+Exec=castledb
+Terminal=false
+PrefersNonDefaultGPU=true
+Type=Application
+Categories=Development;IDE;Database;
