@@ -1,0 +1,311 @@
+changelog
+
+=== 0.9.5 Emergency Ejection
+
++ Fix honk init user creation.
+
+=== 0.9.4 Collegiate Colloquialism
+
++ Add validation to some more user inputs to prevent mistakes.
+
++ Easier to use ping command.
+
+=== 0.9.3 Notacanthous Nutshell
+
+++ backup command.
+
++ Relax requirement for multipart/form-data posts in API.
+
++ Dedupe blob file data.
+
++ Better support for rich text bios.
+
++ Follow and unfollow should work a little better.
+
++ Option to mention all in replies.
+
++ Reduce interference between various text substitution rules.
+
++ Fix crash in search with extra space.
+
++ Fix pubkey issue with domain only keys.
+
+- Custom lingo for those who don't like honking.
+
+=== 0.9.2 Malleable Maltote
+
++ Fix compilation on mac.
+
+=== 0.9.1 Late Stage Lusciousness
+
+++ Boing boom tschak chonky chatter. Chat messages with Pleroma.
+
++ Custom rgb flag: emoji.
+
++ Slightly better ActivityPub compat
+
++ ## headings for markdown
+
++ Workaround js only twitter for hoot: feature.
+
++ Quote unquote reliability improvements.
+
++ Much better omit images handling.
+
++ Fix update activity.
+
++ A few API refinements and additions.
+
+=== 0.9.0 Monitor vs Merrimack
+
+--- Add Reactions.
+
++++ Rename react to badonk.
+
++ Quick fix to hide all images.
+
++ Allow resending follow requests.
+
++ Improved search query parsing.
+
++ Tables
+
++ Reduce retries talking to dumb servers.
+
++ Maybe possible to use @user@example.com wihtout subdomain.
+
+=== 0.8.6 Sartorial Headpiece
+
+++ Import command now supports the elephant in the room.
+
++ Minimal support for Move activity.
+
++ deluser command.
+
++ Configurable avatar colors.
+
++ Optional pleroma color scheme for the home sick...
+
++ Rebalance colors slightly. Looks a little fresher now?
+
++ Add unplug command for servers that have dropped off the net.
+
++ Add notes field to honkers to document their downfall.
+
++ Add notes field to filters for record keeping.
+
++ Negated search -terms.
+
++ A raw sendactivity API action for the bold.
+
++ More flexible meme names.
+
+=== 0.8.5 Turnkey Blaster
+
++ Codenames in changelog.
+
++ Fix some bugs that may have interfered with federation.
+
++ Add some re: re: re: to replies.
+
++ Set an avatar. If you must.
+
++ Try a little harder to recover from httpsig failures.
+
++ Add cite tag for block quote attributions.
+
++ @media print styles.
+
++ Disable overscroll (pull down) refresh.
+
++ Can never seem to version the changelog correctly.
+
+=== 0.8.4
+
++ Fix bug preventing import of keys
+
++ Option to switch map links to Apple.
+
+=== 0.8.3
+
+- mistag.
+
+=== 0.8.2 Game Warden
+
+++ Import command to preserve those embarssassing old posts from Twitter.
+
+++ Add a limited /api for the robotrons.
+
++ Resource usage stats on about page.
+
++ Unveil and pledge restrictions on OpenBSD.
+
++ Lists supported in markdown.
+
++ Rewrite admin console to avoid large dependencies.
+
++ "Bug" fixes.
+
+=== 0.8.1
+
+++ Make it easier to upgrade by decoupling data dir from ".".
+
++ Timestamps displayed in server time with TZ.
+
++ version command to print current version.
+
++ Amend changelog for 0.8.0 to include omitted elements:
+	Syntax highlighting for code blocks.
+	Something resembling an actual manual.
+
+=== 0.8.0 Ordinary Octology
+
++++ Add Honk Filtering and Censorship System (HFCS).
+
++++ Editing honks (Update activity).
+
+++ Subscribe to hashtags.
+
+++ Search. I hate it already.
+
+++ Hashtags that work?
+
+++ Dynamic refresh and page switching without reloads.
+
+++ Reply control. Ack replies to show them on the site.
+
++ Allow PDF attachments. For serious business only.
+
++ "untag me" button to mute part of a thread.
+
++ Inline images in posts. Send and receive.
+
++ Somewhat functional admin console (TTY).
+
++ More JS free fallbacks for some basic functions.
+
++ Add chpass command.
+
++ Improved honker management.
+
++ Better markdown output.
+
++ Times for events.
+
++ Split media database into separate blob.db.
+
++ Location checkin. Welcome to the... danger zone!
+
++ Quick mention @alias.
+
++ Image descriptions.
+
++ Unbonking.
+
++ More robust retries for fetching objects.
+
++ Don't decode excessively large images and run out of memory.
+
++ Syntax highlighting for code blocks.
+
++ Something resembling an actual manual.
+
+- Sometimes the cached state of the @me feed becomes unsynced.
+	Acked status may display incorrectly.
+
+=== 0.7.7 More 7 Than Ever
+
++ Add another retry to workaround pixelfed's general unreliability.
+
++ Attached images are not lost when previewing.
+
+- Remove sensitivity to spicy peppers.
+
++ Keep reply to setting during preview.
+
++ Increase max thread retrieval depth to 10.
+
+=== 0.7.6
+
++ Fix a bug where upgrades would not complete in one step.
+
+=== 0.7.5
+
++ Fix a bug (introdcued 0.7.4) preventing new user creation from working.
+
++ Semi flexible URL patterns to allow transition from other software.
+
++ Improved ActivityPub parsing conformance for better compat with others.
+
++ Add server name to user agent.
+
++ What may be considered UI improvements.
+
+=== 0.7.4
+
++ Ever more bug fixes.
+
++ Collapse posts based on custom regex match.
+
++ Tonks are now honk backs.
+
++ Show both avatars for bonks. Other minor refinements to UI.
+
++ Minimal support for Video activity and PeerTube compat.
+
++ Support for some user selectable styling. Currently, skinny column mode.
+
++ webp image transcoding.
+
+=== 0.7.3
+
++ Better fedicompat so bonks are visible to pleroma followers.
+
+=== 0.7.2
+
++ Add the funzone. Minor other UI tweaks.
+
+=== 0.7.1
+
++ Fix bug preventing unfollow from working.
+
+=== 0.7.0 Father Mother Maiden Crone Honker Bonker Zonker
+
++++ Auto fetching and inlining of hoots.
+
+++ A new xzone to view and import data not otherwise visible.
+
+++ Preview before honking.
+
+++ Some extra commands for better database retention management.
+
+++ A changelog.
+
++ Default robots.txt.
+
++ Misc UI touchups.
+
++ Read only support for qonks.
+
++ About page.
+
++ More reliable (retries) meta messages such as follow requests.
+
++ Better thread support for missing context.
+
++ Upgrade image library for cleaner screenshots.
+
++ Not all summaries need labels.
+
++ Add max-width for video tag.
+
+=== 0.6.0 Sixy Delights
+
+Most records from this time of primitive development have been lost.
+
+=== 0.5.0 Halfway to Heaven
+
+=== 0.4.0 Fore Score
+
+=== 0.3.0 Valorous Varaha
+
