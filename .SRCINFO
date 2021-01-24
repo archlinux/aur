@@ -1,14 +1,18 @@
 pkgbase = llvm-proton-bin
 	pkgdesc = A LLVM and Clang compiler toolchain built for kernel development
-	pkgver = 20200425
+	pkgver = 20210123
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/kdrag0n/proton-clang
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = https://github.com/kdrag0n/proton-clang/archive/20200425.tar.gz
-	b2sums = 170b04de633379e20f9c9b600016d7e743c74e7d4154078e306b60e9d4559892581bb9ff86f7cbef7f42ca32ed92be698cce7f103a05dfac8148ddf7e9c5f27a
+	source = https://github.com/kdrag0n/proton-clang/archive/20210123.tar.gz
+	source = license-llvm.txt::https://raw.githubusercontent.com/llvm/llvm-project/4a1b95bda0c444798a5240fe924dd127b776d12d/llvm/LICENSE.TXT
+	source = license-binutils.txt::https://www.gnu.org/licenses/gpl-3.0.txt
+	b2sums = SKIP
+	b2sums = 74efe5f21dd0f11cf12ba23a94f7e1f3032512e9e10f2d35cc3dc9cfc67277112d152af1e05363b56280cd7437f41f093200a5aef7b7e52f9f3325c9be9d20ca
+	b2sums = 74915e048cf8b5207abf603136e7d5fcf5b8ad512cce78a2ebe3c88fc3150155893bf9824e6ed6a86414bbe4511a6bd4a42e8ec643c63353dc8eea4a44a021cd
 
 pkgname = llvm-proton-bin
 
