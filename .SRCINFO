@@ -1,0 +1,15 @@
+pkgbase = python-django-rest-polymorphic
+	pkgdesc = Polymorphic serializers for Django REST Framework.
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/apirobot/django-rest-polymorphic
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/d/django-rest-polymorphic/django-rest-polymorphic-0.1.9.tar.gz
+	sha256sums = 43d7f8c5b43a225fe792ac40e98d196d4c8d6872a796b61246085819b1b5f1c6
+
+pkgname = python-django-rest-polymorphic
+	depends = python
+
