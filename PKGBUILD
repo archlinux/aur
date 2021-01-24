@@ -1,7 +1,7 @@
 # Maintainer: zhullyb <zhullyb@outlook.com>
 
 pkgname=mokee-repo-git
-pkgver=2.11.2.r0.gd1d7d3d
+pkgver=2.12.0.r0.g320d90b
 pkgrel=1
 pkgdesc="The Multiple Git Repository Tool from the Android Open Source Project"
 url="https://github.com/mokee/git-repo"
