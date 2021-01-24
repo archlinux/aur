@@ -6,7 +6,6 @@ pkgbase = python-clickgen
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python-pip
 	depends = python-pillow
 	depends = libx11
 	depends = libxcursor
