@@ -5,7 +5,7 @@
 
 pkgname=lf
 pkgver=19
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc="A terminal file manager inspred by ranger written in Go"
 depends=('glibc')
@@ -26,7 +26,11 @@ prepare() {
 build() {
   cd "${pkgname}-r${pkgver}"
   go mod vendor
-  version=r$pkgver ./gen/build.sh -mod=vendor -trimpath
+  version=r$pkgver ./gen/build.sh \
+      -buildmode=pie \
+      -mod=vendor \
+      -modcacherw \
+      -trimpath
   # clean now to ensure makepkg --clean works
   go clean -modcache
 }
