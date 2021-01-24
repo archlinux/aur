@@ -1,6 +1,6 @@
 pkgbase = google-guest-agent
 	pkgdesc = Guest Agent for Google Compute Engine
-	pkgver = 20200819.00
+	pkgver = 20201217.02
 	pkgrel = 1
 	url = https://github.com/GoogleCloudPlatform/guest-agent
 	install = google-guest-agent.install
@@ -8,9 +8,9 @@ pkgbase = google-guest-agent
 	license = Apache
 	makedepends = go
 	backup = etc/default/instance_configs.cfg
-	source = google-guest-agent-20200819.00.tar.gz::https://github.com/GoogleCloudPlatform/guest-agent/archive/20200819.00.tar.gz
+	source = google-guest-agent-20201217.02.tar.gz::https://github.com/GoogleCloudPlatform/guest-agent/archive/20201217.02.tar.gz
 	source = google-guest-agent.install
-	sha256sums = 00478324cb19edbf83a36ded0baed6509cf3b68966e56c985b40836c1b2dd5fb
+	sha256sums = 7f1fac0a9d8ab0af202950fe6f7b6284c30b093611c7819bfc1e1a87c59390a8
 	sha256sums = bf8dd6ae04242160cd78e781015fd456c73c208ba09049fc56cc0f716038c5f2
 
 pkgname = google-guest-agent
