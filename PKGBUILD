@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=clight-gui-git
-pkgver=r39.22a23fd
+pkgver=r40.7f3b56d
 pkgrel=1
 pkgdesc="Qt GUI for Clight"
 arch=('x86_64')
@@ -31,8 +31,4 @@ build() {
 package() {
 	install -Dm755 "build/${pkgname%-git}" -t "$pkgdir/usr/bin"
 	install -Dm644 "${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications"
-
-	cd "$srcdir/${pkgname%-git}"
-	install -Dm644 src/resources/icons/light/*.svg -t \
-		"$pkgdir/usr/share/icons/hicolor/scalable/status"
 }

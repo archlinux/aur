@@ -1,6 +1,6 @@
 pkgbase = clight-gui-git
 	pkgdesc = Qt GUI for Clight
-	pkgver = r39.22a23fd
+	pkgver = r40.7f3b56d
 	pkgrel = 1
 	url = https://github.com/nullobsi/clight-gui
 	arch = x86_64
