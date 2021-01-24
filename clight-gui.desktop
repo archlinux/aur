@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Icon=display-brightness
+Icon=clight
 Name=Clight GUI
 Exec=clight-gui
 Terminal=false

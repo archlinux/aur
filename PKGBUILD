@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=clight-gui-git
-pkgver=r34.51e68b4
+pkgver=r38.8f44e71
 pkgrel=1
 pkgdesc="Qt GUI for Clight"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-git}")
 source=('git+https://github.com/nullobsi/clight-gui.git'
         "${pkgname%-git}.desktop")
 sha256sums=('SKIP'
-            'f5fbdb9d0e537aa3a95f01bafcfe34ee4cc217a91a5ed59000cc26d1afab7dd8')
+            'b9b12a9a7a4f7377938418a01e7270ba73a2383a4a1d9b262571683fd74da6ab')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
