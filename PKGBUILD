@@ -1,29 +1,26 @@
-# Maintainer: Vasket <vasket at  dismail dot de>
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Vasket <vasket at  dismail dot de>
 
-pkgname="evolution-decsync"
-_pkgname="Evolution-DecSync"
-pkgver="git"
-pkgrel="2"
+pkgname=evolution-decsync
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="DecSync Plugin for Evolution. It syncs contact and calendars to a directory, which can be shared with syncthing or rsync"
 arch=(x86_64 i686 armv7h aarch64)
-license=("LGPL")
-url="https://github.com/39aldo39/${_pkgname}"
-depends=(libgee json-glib evolution-data-server evolution)
-makedepends=(cmake meson ninja vala git)
-provides=("evolution-decsync")
-
-source=("git+https://github.com/39aldo39/${_pkgname}")
-sha256sums=("SKIP")
+license=(LGPL)
+url="https://github.com/39aldo39/Evolution-DecSync"
+depends=(libgee json-glib evolution-data-server evolution libdecsync)
+makedepends=(meson ninja)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/39aldo39/Evolution-DecSync/archive/v${pkgver}.tar.gz")
+sha256sums=('98defcfd8af9b7a3248e7f2b674975b83e66abee08e949a598815189ea83a4dc')
 
 build() {
-    cd "${_pkgname}"
-    meson build
-    ninja -C build
+  cd "Evolution-DecSync-${pkgver}"
+  meson build
+  ninja -C build
 }
 
 package() {
-	cd "${_pkgname}"
+  cd "Evolution-DecSync-${pkgver}"
   DESTDIR="${pkgdir}" meson install -C build
-
 }
 
