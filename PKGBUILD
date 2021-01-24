@@ -16,6 +16,7 @@ md5sums=('SKIP'
          'b298ff92e4d833ce2866c8dd9fb131ca'
          '1bb392d4b419d2d13bff837c6c7ce138')
 depends=('scraw' 'scrawpp')
+makedepends=('go-md2man')
 provides=("moltengamepad")
 
 pkgver() {
