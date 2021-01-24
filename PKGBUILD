@@ -1,9 +1,8 @@
 # Maintainer: Jorge Araya Navarro <jorge@esavara.cr>
 pkgname=hide-git
 pkgbase=hide
-pkgver=0.1.0
-pkgrel=1
-epoch=
+pkgver=0.1.0.8d351e3
+pkgrel=2
 pkgdesc="an extensible editor for Heaps game engine"
 arch=('i686' 'x86_64')
 url="https://github.com/HeapsIO/hide"
@@ -13,7 +12,7 @@ makedepends=('haxe' 'git')
 provides=('hide')
 conflicts=('hide')
 source=(
-  "${pkgname}::git+https://github.com/HeapsIO/${pkgbase}.git#master"
+  "${pkgname}::git+https://github.com/HeapsIO/${pkgbase}.git"
   "icon.svg"
   "io.heaps.hide.desktop"
   "hide"
@@ -24,8 +23,8 @@ sha256sums=('SKIP'
             '8beda3dba210dc712fd3759109da10aac68f197413a591351b29518276bdb09d')
 
 pkgver() {
-  cd "${pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${pkgname}"
+  echo "0.1.0.$(git rev-parse --short HEAD)"
 }
 
 prepare() {
