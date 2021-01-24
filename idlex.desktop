@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=IDLEX
+Comment=Extensions to IDLE, the Python IDE
+Exec=/usr/bin/idlex
+Icon=/usr/share/pixmaps/idlex.png
+Terminal=false
+Categories=Development;Utilities;
