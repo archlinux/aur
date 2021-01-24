@@ -1,7 +1,7 @@
 pkgbase = cagebreak
 	pkgdesc = Tiling wayland compositor based on cage inspired by ratpoison
-	pkgver = 1.5.0
-	pkgrel = 2
+	pkgver = 1.5.1
+	pkgrel = 1
 	url = https://github.com/project-repo/cagebreak
 	arch = x86_64
 	license = MIT
@@ -14,12 +14,12 @@ pkgbase = cagebreak
 	depends = wlroots
 	depends = pango
 	optdepends = wl-clipboard: clipboard support
-	optdepends = xorg-server-xwayland: x application support
+	optdepends = xorg-xwayland: x application support
 	conflicts = cagebreak-bin
 	options = !buildflags
 	options = !strip
-	source = cagebreak-1.5.0.tar.gz::https://github.com/project-repo/cagebreak/releases/download/1.5.0/release_1.5.0.tar.gz
-	sha512sums = 7d940f4505a40dab1d6125dbdb8bbeedb7be0b6bf34504920dcff012da1eded045f6d254d150c113f8b9ad07390f9e0f743a18b337ee325dc04c71bb34ca0f00
+	source = cagebreak-1.5.1.tar.gz::https://github.com/project-repo/cagebreak/releases/download/1.5.1/release_1.5.1.tar.gz
+	sha512sums = cfd4b347bb84850a1ab83dfdd64a8b1694cb1c07310a9a3e03a9e62389c827933bd9e1b00a905b8fa3398393a7d60598493bc3a3eaf1d35609aec8bb933432ca
 
 pkgname = cagebreak
 
