@@ -31,8 +31,6 @@ check() {
 
   ${srcdir}/infer-linux64-v${pkgver}/bin/infer --fail-on-issue -- javac FailingTest.java && return 1
   ${srcdir}/infer-linux64-v${pkgver}/bin/infer --fail-on-issue -- javac PassingTest.java || return 1
-
-  rm ${srcdir}/infer-linux64-v${pkgver}/lib/infer/infer/lib/python/inferlib/*.pyc
 }
 
 package() {
