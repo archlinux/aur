@@ -4,7 +4,7 @@
 # Contributor: Earnestly <zibeon AT googlemail.com>
 pkgbase=gprbuild-git
 pkgname=(libgpr-git gprbuild-git)
-pkgver=r3601.cf5c323f
+pkgver=r3723.815226d6
 pkgrel=1
 pkgdesc="Builder for multi-language systems"
 arch=('i686' 'x86_64')
@@ -13,11 +13,17 @@ license=('GPL3')
 makedepends=('git' 'gprbuild-bootstrap' 'xmlada')
 
 source=('git+https://github.com/AdaCore/gprbuild.git'
+        'git+https://github.com/AdaCore/gprconfig_kb.git'
+        'gnat2020.patch'
         'relocatable-build.patch'
-        'always-use-host-gprinstall.patch')
+        'always-use-host-gprinstall.patch'
+        'expose-cargs-and-largs-makefile.patch')
 sha1sums=('SKIP'
+          'SKIP'
+          '683f8a6b5e7da3ba5bef3f7f40bcf6054527696b'
           '91b20bde99cf02410cdb2b74aa1adb014458a9b3'
-          '66792ebc73aff76a368bd902adc6a6f181d1d878')
+          '66792ebc73aff76a368bd902adc6a6f181d1d878'
+          '85c3e5facda8ce8316955a501ef56086f1c41bc0')
 
 pkgver() {
     cd "$srcdir/${pkgbase%-git}"
@@ -28,17 +34,24 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/${pkgbase%-git}"
+    patch -Np1 -i "$srcdir/expose-cargs-and-largs-makefile.patch"
     patch -Np1 -i "$srcdir/relocatable-build.patch"
-    # By default, it tries to use the freshly-built gprinstall to install gprbuild, but that requires libgpr,
-    # which can't be installed yet. Simply fall back to gprinstall from gprbuild-bootstrap
+
+    # Do not pass the "-gnat2020" flag. This is necessary with GCC 10, which
+    # has buggy support for Ada 2020. TODO: remove this once GCC 11 is out.
+    patch -Np1 -i "$srcdir/gnat2020.patch"
+
+    # By default, it tries to use the freshly-built gprinstall to install
+    # gprbuild, but that requires libgpr, which can't be installed yet. Simply
+    # fall back to gprinstall from gprbuild-bootstrap.
     patch -Np1 -i "$srcdir/always-use-host-gprinstall.patch"
 
     # GPRbuild hard-codes references to /usr/libexec, but ArchLinux packages
     # must use /usr/lib instead.
-    sed -i 's/libexec/lib/g' doinstall gprbuild.gpr \
-        share/gprconfig/compilers.xml \
-        share/gprconfig/linker.xml \
-        share/gprconfig/gnat.xml
+    sed -i 's/libexec/lib/g' doinstall gprbuild.gpr
+
+    cd "$srcdir/gprconfig_kb"
+    sed -i 's/libexec/lib/g' db/{compilers,gnat,linker}.xml
 }
 
 build() {
@@ -50,6 +63,10 @@ build() {
 
     make GPRBUILD_OPTIONS="$GPRBUILD_OPTIONS" libgpr.build
     make GPRBUILD_OPTIONS="$GPRBUILD_OPTIONS" build
+
+    # Copy the knowledge database so that gprinstall processes it
+    rm -rf share/gprconfig
+    cp -ar "$srcdir/gprconfig_kb/db" share/gprconfig
 }
 
 package_libgpr-git() {

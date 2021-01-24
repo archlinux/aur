@@ -1,0 +1,26 @@
+diff --git a/gpr/gpr.gpr b/gpr/gpr.gpr
+index 7ff9ff81..98180a3e 100644
+--- a/gpr/gpr.gpr
++++ b/gpr/gpr.gpr
+@@ -43,7 +43,7 @@ library project GPR is
+    --------------
+ 
+    package Compiler is
+-      Common_Switches := ("-gnat2020", "-gnaty", "-gnatQ", "-gnata");
++      Common_Switches := ("-gnaty", "-gnatQ", "-gnata");
+ 
+       case Bld is
+          when "debug" =>
+diff --git a/gprbuild.gpr b/gprbuild.gpr
+index 0fa1df76..35e04535 100644
+--- a/gprbuild.gpr
++++ b/gprbuild.gpr
+@@ -81,7 +81,7 @@ project Gprbuild is
+    --------------
+ 
+    package Compiler is
+-      Common_Switches := ("-gnat2020", "-gnaty", "-gnatQ", "-gnata", "-gnateE");
++      Common_Switches := ("-gnaty", "-gnatQ", "-gnata", "-gnateE");
+ 
+       case Bld is
+          when "debug" =>

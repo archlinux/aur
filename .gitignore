@@ -1,4 +1,5 @@
 gprbuild
+gprconfig_kb
 pkg
 src
 *.pkg.tar.xz

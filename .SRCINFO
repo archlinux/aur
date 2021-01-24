@@ -1,6 +1,6 @@
 pkgbase = gprbuild-git
 	pkgdesc = Builder for multi-language systems
-	pkgver = r3601.cf5c323f
+	pkgver = r3723.815226d6
 	pkgrel = 1
 	url = https://github.com/AdaCore/gprbuild/
 	arch = i686
@@ -10,11 +10,17 @@ pkgbase = gprbuild-git
 	makedepends = gprbuild-bootstrap
 	makedepends = xmlada
 	source = git+https://github.com/AdaCore/gprbuild.git
+	source = git+https://github.com/AdaCore/gprconfig_kb.git
+	source = gnat2020.patch
 	source = relocatable-build.patch
 	source = always-use-host-gprinstall.patch
+	source = expose-cargs-and-largs-makefile.patch
 	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = 683f8a6b5e7da3ba5bef3f7f40bcf6054527696b
 	sha1sums = 91b20bde99cf02410cdb2b74aa1adb014458a9b3
 	sha1sums = 66792ebc73aff76a368bd902adc6a6f181d1d878
+	sha1sums = 85c3e5facda8ce8316955a501ef56086f1c41bc0
 
 pkgname = libgpr-git
 	pkgdesc = Ada library to handle GPRbuild project files
