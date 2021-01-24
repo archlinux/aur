@@ -3,8 +3,8 @@
 # Contributor: aimileus <me at aimileus dot nl>
 
 pkgname=protonmail-bridge
-pkgver=1.5.4
-pkgrel=5
+pkgver=1.5.6
+pkgrel=1
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
 url="https://protonmail.com/bridge"
