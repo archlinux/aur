@@ -1,6 +1,6 @@
 pkgbase = linux-hardened-git
 	pkgdesc = Security-Hardened Linux
-	pkgver = 5.10.0.r968851.g1a36abfd6b77
+	pkgver = 5.10.4.r969629.gfa0b6a5c799c
 	pkgrel = 1
 	url = https://github.com/anthraxx/linux-hardened
 	arch = x86_64
@@ -19,7 +19,6 @@ pkgbase = linux-hardened-git
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	validpgpkeys = 65EEFE022108E2B708CBFCF7F9E712E59AF5F22A
 	validpgpkeys = E240B57E2C4630BA768E2F26FC1B547C8D8172C8
 	sha256sums = SKIP
 	sha256sums = 8c642f2f61b3e5bc37b9e02678ba5001afbe2996a7514f5466f6e98df42b7095

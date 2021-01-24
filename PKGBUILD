@@ -6,7 +6,7 @@
 pkgbase=linux-hardened-git
 _srcname=${pkgbase/-git/}
 _gitbranch=5.10
-pkgver=5.10.0.r968851.g1a36abfd6b77
+pkgver=5.10.4.r969629.gfa0b6a5c799c
 pkgrel=1
 pkgdesc='Security-Hardened Linux'
 url='https://github.com/anthraxx/linux-hardened'
@@ -25,7 +25,6 @@ source=(
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
-  '65EEFE022108E2B708CBFCF7F9E712E59AF5F22A'  # Daniel Micay
   'E240B57E2C4630BA768E2F26FC1B547C8D8172C8'  # Levente Polyak
 )
 sha256sums=('SKIP'
