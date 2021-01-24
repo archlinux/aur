@@ -2,9 +2,9 @@
 
 pkgname=dwmblocks-randoragon-git
 pkgver=1.0.r76.234d550
-pkgrel=2
+pkgrel=3
 epoch=
-pkgdesc="An intuitive, home-row mouse replacement"
+pkgdesc="Randoragon's build of dwmblocks - a status bar for my build of dwm"
 arch=('x86_64')
 url="https://github.com/randoragon/dwmblocks"
 license=('MIT')

@@ -1,7 +1,7 @@
 pkgbase = dwmblocks-randoragon-git
-	pkgdesc = An intuitive, home-row mouse replacement
+	pkgdesc = Randoragon's build of dwmblocks - a status bar for my build of dwm
 	pkgver = 1.0.r76.234d550
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/randoragon/dwmblocks
 	arch = x86_64
 	license = MIT
