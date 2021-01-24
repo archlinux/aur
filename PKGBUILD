@@ -3,8 +3,8 @@
 _pkgname=pythondata-software-compiler_rt
 _pyname=${_pkgname//-/_}
 pkgname=python-$_pkgname
-pkgver=2020.04
-pkgrel=3
+pkgver=2020.08
+pkgrel=1
 pkgdesc='Python module containing data files for compiler_rt software (for use with LiteX)'
 arch=('any')
 url='https://github.com/litex-hub/pythondata-software-compiler_rt'
@@ -12,7 +12,7 @@ license=('MIT' 'custom')
 depends=('python')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('3e70d5e5941654588a353b866224b4e8b14324d4e771c2d43918ed4749e9c14d1e9229d6fa2f62fb7b58b2964f5d3f5d2f0fee6b14fd3862cfa211a3b93b89bb')
+sha512sums=('7575f844785e122781e4834b9c1d168ca30ced1d9a8f612f300ea3b36c0faf3ab651e44ffd4a6f35e3fe79a21bcdcee257675ea02503a90f61c505434c31fad4')
 
 build() {
   cd $_pkgname-$pkgver
