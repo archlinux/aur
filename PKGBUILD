@@ -1,7 +1,7 @@
 # Contributor: twa022 <twa022 at gmail dot com>
 
 pkgname=python-screeninfo
-pkgver=0.6.6
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="Python library to fetch location and size of physical screens"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('libxinerama: xinerama backend'
            'libdrm: experimental DRM backend')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rr-/${pkgname/python-/}/archive/${pkgver}.tar.gz")
-sha256sums=('602829a5477bd16d6b410b0b869aefdc856e12fdf6af67af0eab62b32b649871')
+sha256sums=('d42729362fbfaece6239200571eba2f7313105e424b09f475aa98032963a68cc')
 
 package() {
   cd "${srcdir}/${pkgname/python-/}-${pkgver}"
