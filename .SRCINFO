@@ -1,0 +1,18 @@
+pkgbase = steamlink-raspberrypi
+	pkgdesc = Steam Link app for RPi
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://store.steampowered.com/steamlink/about
+	arch = armv7h
+	license = custom
+	depends = libjpeg6-turbo
+	depends = libcec-rpi
+	depends = curl
+	depends = gnupg
+	depends = xz
+	depends = zenity
+	source = http://media.steampowered.com/steamlink/rpi/steamlink.deb
+	sha256sums = 1bdbae24838043e5803e257979508d41d8c933b14cea7889aa59d55f4246108e
+
+pkgname = steamlink-raspberrypi
+
