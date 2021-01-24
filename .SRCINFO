@@ -1,0 +1,14 @@
+pkgbase = dwmblocks-randoragon-git
+	pkgdesc = An intuitive, home-row mouse replacement
+	pkgver = 1.0.r76.234d550
+	pkgrel = 1
+	url = https://github.com/randoragon/dwmblocks
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libx11
+	source = git+https://github.com/randoragon/dwmblocks
+	md5sums = SKIP
+
+pkgname = dwmblocks-randoragon-git
+
