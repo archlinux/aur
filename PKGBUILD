@@ -1,4 +1,5 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Jona Miller <miller dot jona at yandex dot com>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='headsetcontrol'
 pkgver=2.3
