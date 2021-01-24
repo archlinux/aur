@@ -1,0 +1,13 @@
+pkgbase = librnd-git
+	pkgdesc = A compact suite of C libraries for various tasks
+	pkgver = r128.7ecc405
+	pkgrel = 1
+	url = https://github.com/randoragon/rnd-libs
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/randoragon/rnd-libs
+	md5sums = SKIP
+
+pkgname = librnd-git
+
