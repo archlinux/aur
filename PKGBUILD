@@ -5,7 +5,7 @@ url='https://wiki.ros.org/map_server'
 pkgname='ros-melodic-map-server'
 pkgver='1.16.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-rostest
@@ -13,7 +13,7 @@ ros_makedepends=(ros-melodic-rostest
   ros-melodic-nav-msgs
   ros-melodic-roscpp
   ros-melodic-catkin)
-makedepends=('cmake' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools' 'boost1.69'
   ${ros_makedepends[@]}
   sdl_image
   yaml-cpp
@@ -26,7 +26,8 @@ ros_depends=(ros-melodic-rostest
   ros-melodic-roscpp)
 depends=(${ros_depends[@]}
   sdl_image
-  yaml-cpp)
+  yaml-cpp
+  boost1.69)
 
 # Tarball version (faster download)
 _dir="navigation-${pkgver}/map_server"
@@ -51,7 +52,9 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+		 -DBOOST_ROOT=/opt/boost1.69 \
+		 -DBoost_NO_SYSTEM_PATHS=TRUE
   make
 }
 
