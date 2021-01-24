@@ -2,8 +2,8 @@
 
 _pkgname=liteeth
 pkgname=python-$_pkgname
-pkgver=2020.08
-pkgrel=3
+pkgver=2020.12
+pkgrel=1
 pkgdesc='Small footprint and configurable Ethernet core'
 arch=('any')
 url="https://github.com/enjoy-digital/$_pkgname"
@@ -12,7 +12,7 @@ depends=('python-migen' 'python-litex')
 makedepends=('python-setuptools')
 #checkdepends=('python-pytest-runner') # broken env
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('6b7aacde76cc82217bc218152fbe9a9861c2decdb0ab6edeb277eb4ac1aac363f4eef4fdf407b74064d4387c44369182fecf55994fc3d88e18011e852513cfa6')
+sha512sums=('e53105c7a02d52da64b5c52e726f9b4104bf193739ddc23da28de71d6d13445280fdbf85c309b6b2815c496052ace9616a794157f0905cf5895f9af17393839e')
 
 build() {
   cd $_pkgname-$pkgver
