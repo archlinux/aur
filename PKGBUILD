@@ -66,7 +66,7 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-lts
-pkgver=5.4.91
+pkgver=5.4.92
 _major=5.4
 _branch=5.x
 xanmod=1
@@ -100,7 +100,7 @@ done
 
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            'e0338ff18e8785843833b49a0a72301c19f0435c8dbacd88029cd99adeced0b5'
+            '32ae63f827d03fbe30a4b0198fa694c2eca23a8032d8b400603e81b8152642de'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
             '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee')
 
@@ -171,16 +171,9 @@ prepare() {
       msg2 "Using user CUSTOM config..."
       cp -f "${startdir}"/myconfig .config
     else
-      # myconfig is a partial file. Applying every line
-      msg2 "Applying configs..."
-      cat "${startdir}"/myconfig | while read -r _linec ; do
-        if echo "$_linec" | grep "scripts/config" ; then
-          set -- $_linec
-          "$@"
-        else
-          warning "Line format incorrect, ignoring..."
-        fi
-      done
+      # myconfig is a partial file. Executing as a script
+      msg2 "Applying myconfig..."
+      bash -x "${startdir}"/myconfig
     fi
     echo
   fi
