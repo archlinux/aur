@@ -2,7 +2,7 @@
 
 pkgname=mockoon-bin
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mockoon is the easiest and quickest way to run mock APIs locally."
 arch=('x86_64')
 url="https://mockoon.com/"
@@ -13,6 +13,9 @@ source=(https://github.com/mockoon/mockoon/releases/download/v${pkgver}/mockoon-
 md5sums=('0641410bae379eabd286defe40cccf8b')
 
 package() {
+	install -dm755 "${pkgdir}"/usr/bin/
    	cd "$srcdir/"
 	tar -xf data.tar.xz -C "${pkgdir}"
+
+	ln -s /opt/Mockoon/mockoon "${pkgdir}"/usr/bin/mockoon
 }
