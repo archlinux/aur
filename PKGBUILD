@@ -2,14 +2,14 @@
 # Maintainer: David Marzal <mundolibre at tutanota dot com>
 _pkgname=studio-controls
 pkgname=${_pkgname}-git
-pkgver=2.0.9.r16.gce84d5f
+pkgver=2.1.1.r0.g1b1e7ce
 pkgrel=1
 pkgdesc="An JACK audio setup utility with USB device and PulseAudio bridges."
 arch=('x86_64')
 url="https://github.com/ovenwerks/studio-controls"
 license=('GPL')
 groups=()
-depends=('jack2' 'python' 'python-gobject' 'python-dbus' 'python-jack-client' 'python-pyalsaaudio' 'zita-ajbridge' 'a2jmidid')
+depends=('jack2' 'jack2-dbus' 'python' 'python-gobject' 'python-dbus' 'python-jack-client' 'python-pyalsaaudio' 'zita-ajbridge' 'a2jmidid')
 makedepends=(git)
 optdepends=('pulseaudio-jack: PulseAudio to JACK bridge'
         'alsa-utils: ALSA - Utilities (amixer)'
