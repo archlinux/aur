@@ -8,9 +8,9 @@
 
 pkgbase=handbrake-git
 pkgname=(handbrake-git handbrake-cli-git)
-pkgver=1.3.3.r11.gbb0e87129
+pkgver=1.3.3.r12.gf84dfca16
 pkgrel=2
-pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter"
+pkgdesc="Multithreaded video transcoder. Enabled: x265, nvenc, fdk-aac, qsv, vce, numa, hardened"
 arch=(i686 x86_64)
 url="https://handbrake.fr/"
 license=(GPL)
@@ -31,8 +31,9 @@ _commondeps=(libxml2 libass libvorbis opus speex libtheora lame
 _guideps=(gst-plugins-base gtk3 librsvg libgudev)
 makedepends=(git intltool python nasm wget cmake meson
              "${_commondeps[@]}" "${_guideps[@]}")
-optdepends=('intel-media-server-studio: for QSV'
-            'nvidia-utils: for nvenc')
+optdepends=('libdvdcss: for decoding encrypted DVDs'
+            'intel-media-sdk: for enabling Intel QSV'
+            'nvidia-utils: for enabling Nvidia nvenc')
 sha256sums=('SKIP'
             'd10f75612da5bcbc26325adecc5d398dcddf216c0dae3406d9a29b9d0b44b112'
             '0214d201a338e8418f805b68f9ad277e33d79c18594dee6eaf6dcd74db2674a9'
@@ -79,6 +80,7 @@ prepare() {
 
   ./configure \
     --prefix=/usr \
+    --harden \
     --disable-gtk-update-checks \
     --enable-x265 \
     --enable-numa \
@@ -93,9 +95,10 @@ prepare() {
 package_handbrake-git() {
   pkgdesc="Multithreaded video transcoder"
   depends=("${_commondeps[@]}" "${_guideps[@]}")
-  optdepends=('gst-plugins-good: for video previews'
-              'gst-libav: for video previews'
-              'libdvdcss: for decoding encrypted DVDs')
+  optdepends+=('gst-plugins-good: for video previews'
+              'gst-libav: for video previews')
+  provides=(handbrake)
+  conflicts=(handbrake)
 
   cd "$srcdir/handbrake/build"
 
@@ -106,7 +109,6 @@ package_handbrake-git() {
 package_handbrake-cli-git() {
   pkgdesc="Multithreaded video transcoder (CLI)"
   depends=("${_commondeps[@]}")
-  optdepends=('libdvdcss: for decoding encrypted DVDs')
   provides=(handbrake-cli)
   conflicts=(handbrake-cli)
 
