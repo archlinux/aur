@@ -1,0 +1,10 @@
+ARG REGISTRY
+
+FROM "$REGISTRY/common/gitlab-helper/archlinux-yay:master"
+
+RUN (\
+    yay -Syuq --noconfirm --needed python-numpy plplot gsl hdf4 netcdf-cxx wxgtk2 fftw pslib eccodes udunits eigen graphicsmagick libgeotiff \
+    && yes | yay -Scc --noconfirm \
+    && rm -rf ~/.cache/yay \
+    && sudo rm -rf /var/cache/pacman/pkg/* \
+)
