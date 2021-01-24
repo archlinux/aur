@@ -41,13 +41,15 @@ _tkg_initscript
 #  patch_site="https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${_basekernel}.${_sub}.xz"
 #fi
 
+_srcpath="bcachefs"
+kernel_site="git+https://github.com/koverstreet/bcachefs.git"
+patch_site="https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${_basekernel}.${_sub}.xz"
+
 pkgbase="linux-mainline-bcachefs" #"${_custom_pkgbase}"
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver="${_basekernel}"."${_sub}"
 pkgrel=114
 pkgdesc='Linux-tkg with bcachefs'
-bcachefs="git+https://github.com/koverstreet/bcachefs.git"
-_srcpath=bcachefs
 arch=('x86_64') # no i686 in here
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -61,7 +63,7 @@ options=('!strip' 'docs')
 case $_basever in
 	510)
 	opt_ver="5.8%2B"
-    source=("$bcachefs"
+    source=("$kernel_site"
         "$patch_site"
         "https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v10.1%2B_kernel_v5.8%2B.patch"
         'config.x86_64' # stock Arch config
@@ -123,10 +125,10 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-  rm -rf $pkgdir # Nuke the entire pkg folder so it'll get regenerated clean on next build
+  #rm -rf $pkgdir # Nuke the entire pkg folder so it'll get regenerated clean on next build
 
   ln -s "${_where}/customization.cfg" "${srcdir}" # workaround
-  ln -s "${_where}/bcachefs" "${srcdir}" # workaround
+  ln -s "${_where}/${_srcpath}" "${srcdir}" # workaround
 
   cd "${srcdir}/${_srcpath}"
   
