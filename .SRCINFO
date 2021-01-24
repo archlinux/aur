@@ -1,14 +1,15 @@
 pkgbase = aur-update
 	pkgdesc = automatically update PKGBUILD files for the AUR
-	pkgver = 0.1.0
-	pkgrel = 1
+	pkgver = 0.1.1
+	pkgrel = 2
 	url = https://github.com/getchoo/aur-update
 	arch = any
 	license = MIT
+	depends = curl
 	provides = aur-update
 	conflicts = aur-update
-	source = https://github.com/getchoo/aur-update/archive/v0.1.0.tar.gz
-	md5sums = 657b502dc511d46adebcfa102cb8c1c6
+	source = https://github.com/getchoo/aur-update/archive/v0.1.1.tar.gz
+	md5sums = b6584b8ad5f122802414c2f7adf0fd80 
 
 pkgname = aur-update
 
