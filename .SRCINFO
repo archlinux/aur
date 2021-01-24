@@ -1,6 +1,6 @@
 pkgbase = openssl-tpm-engine
 	pkgdesc = OpenSSL engine for TPM 1.2 hardware-backed keys
-	pkgver = 0.5.0
+	pkgver = 0.5.0+jejb
 	pkgrel = 1
 	url = https://github.com/mgerstner/openssl_tpm_engine
 	arch = i686
@@ -9,6 +9,14 @@ pkgbase = openssl-tpm-engine
 	depends = openssl
 	depends = trousers
 	source = openssl-tpm-engine::git+https://github.com/mgerstner/openssl_tpm_engine#commit=b28de5065e6eb9aa5d5afe2276904f7624c2cbaf
+	source = 0001-try-well-known-authority-for-SRK-first.patch
+	source = 0002-Handle-EVP-keys.patch
+	source = 0003-Add-option-for-random-migration-authority.patch
+	source = 0004-e_tpm-reduce-TPM-connection-time.patch
 	sha256sums = SKIP
+	sha256sums = b713c5e46e6ea26bee50234786a8d24da154b52f078c5580508c72f644c45083
+	sha256sums = 5eeb49e0af7f393bfcabc7a82f6b4d13c57e7bbc4219e7cca4316bc2ec0e5bb1
+	sha256sums = 95489c2c01544081bc19ac9a9210227ebe17f97e72e83be38579cf6a19dfbbe0
+	sha256sums = 682da7346e3351b8e63ce165d610331f04d558b57cd585f09336666fc827cf31
 
 pkgname = openssl-tpm-engine

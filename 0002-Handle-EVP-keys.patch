@@ -1,0 +1,54 @@
+From 73d2a32fc05286ee6429f100232701568d818389 Mon Sep 17 00:00:00 2001
+From: James Bottomley <James.Bottomley@HansenPartnership.com>
+Date: Wed, 9 Nov 2016 17:14:16 -0800
+Subject: [PATCH 2/4] Handle EVP keys
+
+EVP keys have a variable encryption envelope, which is used by openssh, so
+adding EVP key support allows create_tpm_key to read ssh v2 keys
+
+Signed-off-by: James Bottomley <James.Bottomley@HansenPartnership.com>
+---
+ src/create_tpm_key.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/src/create_tpm_key.c b/src/create_tpm_key.c
+index 1f959c8..449d152 100644
+--- a/src/create_tpm_key.c
++++ b/src/create_tpm_key.c
+@@ -97,6 +97,7 @@ RSA *
+ openssl_read_key(char *filename)
+ {
+         BIO *b = NULL;
++	EVP_PKEY *pkey;
+         RSA *rsa = NULL;
+ 
+         b = BIO_new_file(filename, "r");
+@@ -105,12 +106,14 @@ openssl_read_key(char *filename)
+                 return NULL;
+         }
+ 
+-        if ((rsa = PEM_read_bio_RSAPrivateKey(b, NULL, 0, NULL)) == NULL) {
++        if ((pkey = PEM_read_bio_PrivateKey(b, NULL, PEM_def_callback, NULL)) == NULL) {
+                 fprintf(stderr, "Reading key %s from disk failed.\n", filename);
+                 openssl_print_errors();
+         }
+ 	BIO_free(b);
+ 
++	rsa = EVP_PKEY_get1_RSA(pkey);
++
+         return rsa;
+ }
+ 
+@@ -413,6 +416,9 @@ int main(int argc, char **argv)
+ 		unsigned int size_n, size_p;
+ 		BYTE *pubSRK;
+ 
++		/* may be needed to decrypt the key */
++		OpenSSL_add_all_ciphers();
++
+ 		/*Set migration policy needed to wrap the key*/
+ 		if ((result = Tspi_Context_CreateObject(hContext,
+ 						TSS_OBJECT_TYPE_POLICY,
+-- 
+2.30.0
+

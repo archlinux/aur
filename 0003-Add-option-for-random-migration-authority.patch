@@ -1,0 +1,117 @@
+From 0ec233c5bdd751973afc85de7d77e1cdc07f3733 Mon Sep 17 00:00:00 2001
+From: James Bottomley <James.Bottomley@HansenPartnership.com>
+Date: Thu, 10 Nov 2016 11:04:10 -0800
+Subject: [PATCH 3/4] Add option for random migration authority
+
+This is used to generate keys which can never be extracted from the TPM
+into which they're inserted.  As long as no-one knows (and it's impossible to
+guess) the migration authority of the key, there is no way to extract it from
+a TPM.
+
+Signed-off-by: James Bottomley <jejb@linux.vnet.ibm.com>
+---
+ src/create_tpm_key.c | 34 ++++++++++++++++++++++++----------
+ 1 file changed, 24 insertions(+), 10 deletions(-)
+
+diff --git a/src/create_tpm_key.c b/src/create_tpm_key.c
+index 449d152..3b865e0 100644
+--- a/src/create_tpm_key.c
++++ b/src/create_tpm_key.c
+@@ -42,6 +42,7 @@
+ #include <openssl/pem.h>
+ #include <openssl/evp.h>
+ #include <openssl/err.h>
++#include <openssl/rand.h>
+ 
+ #include <trousers/tss.h>
+ #include <trousers/trousers.h>
+@@ -60,6 +61,7 @@ static struct option long_options[] = {
+ 	{"popup", 0, 0, 'p'},
+ 	{"wrap", 1, 0, 'w'},
+ 	{"help", 0, 0, 'h'},
++	{"random-migration", 0, 0, 'm'},
+ 	{0, 0, 0, 0}
+ };
+ 
+@@ -76,6 +78,7 @@ usage(char *argv0)
+ 		"\t\t-p|--popup       use TSS GUI popup dialogs to get the password "
+ 		"for the\n\t\t\t\t key [NO] (implies --auth)\n"
+ 		"\t\t-w|--wrap [file] wrap an existing openssl PEM key\n"
++		"\t\t-m|--random-migration set a random migration auth\n"
+ 		"\t\t-h|--help        print this help message\n"
+ 		"\nReport bugs to %s\n",
+ 		argv0, argv0, PACKAGE_BUGREPORT);
+@@ -157,7 +160,7 @@ int main(int argc, char **argv)
+ 	unsigned char	*blob_asn1 = NULL;
+ 	int		asn1_len;
+ 	char		*filename, c, *openssl_key = NULL;
+-	int		option_index, auth = 0, popup = 0, wrap = 0;
++	int		option_index, auth = 0, popup = 0, wrap = 0, rndm = 0;
+ 	UINT32		enc_scheme = TSS_ES_RSAESPKCSV15;
+ 	UINT32		sig_scheme = TSS_SS_RSASSAPKCS1V15_DER;
+ 	UINT32		key_size = 2048;
+@@ -165,7 +168,7 @@ int main(int argc, char **argv)
+ 
+ 	while (1) {
+ 		option_index = 0;
+-		c = getopt_long(argc, argv, "pe:q:s:ahw:",
++		c = getopt_long(argc, argv, "pe:q:s:ahw:m",
+ 				long_options, &option_index);
+ 		if (c == -1)
+ 			break;
+@@ -205,6 +208,10 @@ int main(int argc, char **argv)
+ 				wrap = 1;
+ 				openssl_key = optarg;
+ 				break;
++			case 'm':
++				initFlags |= TSS_KEY_MIGRATABLE;
++				rndm = 1;
++				break;
+ 			default:
+ 				usage(argv[0]);
+ 				break;
+@@ -428,8 +435,9 @@ int main(int argc, char **argv)
+ 			Tspi_Context_Close(hContext);
+ 			exit(result);
+ 		}
+-		if (auth) {
++		if (auth || rndm) {
+ 			char *authdata = calloc(1, 128);
++			int authlen;
+ 
+ 			if (!authdata) {
+ 				fprintf(stderr, "malloc failed.\n");
+@@ -437,17 +445,23 @@ int main(int argc, char **argv)
+ 				exit(result);
+ 			}
+ 
+-			if (EVP_read_pw_string(authdata, 128,
+-						"Enter Key Migration Password: ", 1)) {
+-				printf("Passwords do not match.\n");
+-				free(authdata);
+-				Tspi_Context_Close(hContext);
+-				exit(result);
++			if (rndm) {
++				authlen = 20;
++				RAND_bytes(authdata, authlen);
++			} else {
++
++				if (EVP_read_pw_string(authdata, 128,
++						       "Enter Key Migration Password: ", 1)) {
++					printf("Passwords do not match.\n");
++					free(authdata);
++					Tspi_Context_Close(hContext);
++					exit(result);
++				}
+ 			}
+ 
+ 			if ((result = Tspi_Policy_SetSecret(keyMigrationPolicy,
+ 							    TSS_SECRET_MODE_PLAIN,
+-							    strlen(authdata),
++							    authlen,
+ 							    (BYTE *)authdata))) {
+ 				print_error("Tspi_Policy_SetSecret", result);
+ 				Tspi_Context_Close(hContext);
+-- 
+2.30.0
+

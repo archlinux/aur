@@ -1,0 +1,107 @@
+From 2d55917522a1a1e1a5159462a78d38334555ece0 Mon Sep 17 00:00:00 2001
+From: James Bottomley <James.Bottomley@HansenPartnership.com>
+Date: Tue, 8 Nov 2016 08:27:33 -0800
+Subject: [PATCH 1/4] try well known authority for SRK first
+
+There's no way to give the well known authority via the password prompt, so
+try it first.  If that succeeds, we have the key authority and if not, we can
+prompt for a password.
+
+This allows the engine and create_tpm_key to work on systems where the SRK has
+the well known authority value.
+
+Signed-off-by: James Bottomley <jejb@linux.vnet.ibm.com>
+---
+ src/create_tpm_key.c | 28 ++++++++++++++++++++--------
+ src/e_tpm.c          |  9 +++++++++
+ 2 files changed, 29 insertions(+), 8 deletions(-)
+
+diff --git a/src/create_tpm_key.c b/src/create_tpm_key.c
+index a73d549..1f959c8 100644
+--- a/src/create_tpm_key.c
++++ b/src/create_tpm_key.c
+@@ -83,6 +83,7 @@ usage(char *argv0)
+ }
+ 
+ TSS_UUID SRK_UUID = TSS_UUID_SRK;
++static BYTE well_known[] = TSS_WELL_KNOWN_SECRET;
+ 
+ void
+ openssl_print_errors()
+@@ -299,20 +300,29 @@ int main(int argc, char **argv)
+ 	}
+ 
+ 	if (srk_authusage) {
+-		char *authdata = calloc(1, 128);
+-
+-		if (!authdata) {
+-			fprintf(stderr, "malloc failed.\n");
+-			Tspi_Context_Close(hContext);
+-			exit(result);
+-		}
++		char *authdata;
+ 
+ 		if ((result = Tspi_GetPolicyObject(hSRK, TSS_POLICY_USAGE,
+ 						   &srkUsagePolicy))) {
+ 			print_error("Tspi_GetPolicyObject", result);
+ 			Tspi_Context_CloseObject(hContext, hKey);
+ 			Tspi_Context_Close(hContext);
+-			free(authdata);
++			exit(result);
++		}
++
++		/* first try the well known secret */
++		if (Tspi_Policy_SetSecret(srkUsagePolicy,
++					  TSS_SECRET_MODE_SHA1,
++					  sizeof(well_known),
++					  well_known)
++		    == TSS_SUCCESS)
++			goto found_secret;
++
++		authdata = calloc(1, 128);
++
++		if (!authdata) {
++			fprintf(stderr, "malloc failed.\n");
++			Tspi_Context_Close(hContext);
+ 			exit(result);
+ 		}
+ 
+@@ -335,6 +345,8 @@ int main(int argc, char **argv)
+ 		}
+ 
+ 		free(authdata);
++	found_secret:
++		;
+ 	}
+ 
+ 	if (auth) {
+diff --git a/src/e_tpm.c b/src/e_tpm.c
+index f671771..9f6b0c6 100644
+--- a/src/e_tpm.c
++++ b/src/e_tpm.c
+@@ -111,6 +111,7 @@ static TSS_HKEY     hSRK        = NULL_HKEY;
+ static TSS_HPOLICY  hSRKPolicy  = NULL_HPOLICY;
+ static TSS_HTPM     hTPM        = NULL_HTPM;
+ static TSS_UUID     SRK_UUID    = TSS_UUID_SRK;
++static BYTE well_known[] = TSS_WELL_KNOWN_SECRET;
+ static UINT32       secret_mode = TSS_SECRET_MODE_PLAIN;
+ 
+ /* varibles used to get/set CRYPTO_EX_DATA values */
+@@ -313,6 +314,14 @@ int tpm_load_srk(UI_METHOD *ui, void *cb_data)
+ 		return 0;
+ 	}
+ 
++	/* first try the well known secret */
++	if (Tspi_Policy_SetSecret(hSRKPolicy,
++				  TSS_SECRET_MODE_SHA1,
++				  sizeof(well_known),
++				  well_known)
++		    == TSS_SUCCESS)
++		  return 1;
++
+ 	if (!tpm_engine_get_auth(ui, (char *)auth, 128, "SRK authorization: ",
+ 				cb_data)) {
+ 		Tspi_Context_CloseObject(hContext, hSRK);
+-- 
+2.30.0
+
