@@ -2,7 +2,7 @@
 # Contributor: renyuneyun (Rui ZHAO) <renyuneyun@gmail.com>
 
 pkgname=flipper
-pkgver=0.70.0
+pkgver=0.72.0
 pkgrel=1
 pkgdesc="A desktop debugging platform for mobile developers"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('watchman: An inotify-based file watching and job triggering command
             'android-sdk: Android debugging support')
 makedepends=('git' 'yarn' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/facebook/flipper/archive/v${pkgver}.tar.gz")
-sha256sums=('f899d3eb8621dc1fdce110307b17c248bf1a79094e0dc2041bfa71eae922e261')
+sha256sums=('25092c18b4968732807bec2d6b5b3f724d3d12178eda7e7ab1e876a4478f1131')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/desktop"
