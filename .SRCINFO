@@ -1,0 +1,23 @@
+pkgbase = scratchbox2-git
+	pkgdesc = https://git.sailfishos.org/mer-core/scratchbox2
+	pkgver = 2.3.90+git29.r16.9ce0a32
+	pkgrel = 1
+	url = https://git.sailfishos.org/mer-core/scratchbox2
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	makedepends = lib32-gcc-libs
+	makedepends = lua52
+	depends = perl
+	depends = lib32-glibc
+	depends = sh
+	depends = lua52
+	optdepends = qemu-arch-extra: arm and aarch64 support
+	source = scratchbox2-git::git+https://git.sailfishos.org/mer-core/scratchbox2.git
+	source = lua_52.patch::https://git.sailfishos.org/mer-core/scratchbox2/merge_requests/42.patch
+	sha512sums = SKIP
+	sha512sums = 7a8df6118bd6613693ff8a82139dcfe421c449ea0168918c18b6824c74accdc18e9955f18190dbec7f4c1964910fc9a1b0590e9a128655fb36647d0f07975ce8
+
+pkgname = scratchbox2-git
+
