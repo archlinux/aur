@@ -1,7 +1,7 @@
-pkgbase = castle
+pkgbase = castledb
 	pkgdesc = A structured database and level editor with a local web app to edit it
 	pkgver = 1.6.0.r81.g14519ad
-	pkgrel = 2
+	pkgrel = 3
 	url = http://castledb.org/
 	arch = i686
 	arch = x86_64
