@@ -1,8 +1,3 @@
-pre_install() {
-  # ugly permission fix
-  chmod 0777 /opt/todesk
-}
-
 post_install() {
   systemctl daemon-reload
   if systemctl -q is-active todeskd.service ;then
@@ -24,7 +19,8 @@ post_install() {
 }
 
 pre_upgrade() {
-  pre_install
+  # ugly permission fix
+  chmod 0777 /opt/todesk
 }
 
 post_upgrade() {
