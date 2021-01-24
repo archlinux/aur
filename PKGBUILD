@@ -3,18 +3,22 @@
 # Contributor: Manuel Kehl <https://launchpad.net/~mank319, https://github.com/mank319/>
 
 pkgname=go-for-it
-pkgver=1.8.6
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='A stylish to-do list with built-in productivity timer.'
 arch=('i686' 'x86_64')
 url='https://github.com/JMoerman/Go-For-It'
 license=('GPL3')
 depends=('gtk3' 'libnotify')
-makedepends=('vala' 'cmake' 'intltool')
+optdepends=(
+    'libpeas: plugin support'
+    'libappindicator-gtk3: Ayatana appindicator plugin support'
+)
+makedepends=('vala' 'cmake')
 conflicts=('go-for-it-git')
 install='go-for-it.install'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/JMoerman/Go-For-It/archive/${pkgver}.tar.gz")
-sha256sums=('7da5396b253797a051f906301286799ab1cfacf713e6e24f5557bfb182a8f019')
+sha256sums=('a0b60f4c6d8435343ffc25f1c6b16aa19ebb9b3862a814ee7d3ef0bd88bba29f')
 
 build() {
     cd "Go-For-It-$pkgver"
@@ -24,13 +28,14 @@ build() {
     fi
 
     mkdir build && cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DAPP_SYSTEM_NAME:STRING=go-for-it ..
+    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     make
-    make pot
-    make po
 }
 
 package() {
     cd "Go-For-It-$pkgver/build"
     make DESTDIR="$pkgdir" install
+
+    install -D -m 644 "$pkgdir/usr/share/applications/com.github.jmoerman.go-for-it.desktop" "$pkgdir/usr/share/applications/go-for-it.desktop"
+    sed -i "4i NoDisplay=true" "$pkgdir/usr/share/applications/com.github.jmoerman.go-for-it.desktop"
 }

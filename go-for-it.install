@@ -5,4 +5,9 @@ post_upgrade() {
     echo '>>> This will affect application shortcut and config directory'
     echo '>>> that might need adjustment. For example, rename'
     echo '>>> "~/.config/com.github.jmoerman.go-for-it" to "~/.config/go-for-it".'
+    echo '>>> As of version 1.9.0-1 the application system name changed'
+    echo '>>> from "go-for-it" to "com.github.jmoerman.go-for-it".'
+    echo '>>> This should not affect application shortcut as this is now'
+    echo '>>> handled by the PKGBUILD and application configuration is'
+    echo '>>> stored in the GSettings database.'
 }
