@@ -2,12 +2,12 @@
 
 _basename=jitsi
 _pkgname=videobridge
-_tag=2.1-417-g6112079e
-_version=2.1+417+g6112079e
+_tag=2.1-421-g9a955ef1
+_version=2.1+421+g9a955ef1
 
 pkgname=${_basename}-${_pkgname}-nightly
 pkgver=${_version}
-pkgrel=2
+pkgrel=1
 pkgdesc="Jitsi Meet Videobridge nightly build"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
