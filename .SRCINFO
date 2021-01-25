@@ -7,8 +7,8 @@ pkgbase = infer
 	license = BSD
 	makedepends = git
 	makedepends = rsync
-	depends = python2
-	depends = python
+	makedepends = cmake
+	makedepends = ninja
 	depends = java-environment
 	depends = gcc>=5.0.0
 	depends = opam>=2.0.0

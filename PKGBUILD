@@ -8,15 +8,15 @@ pkgdesc="Static Analyzer by Facebook"
 arch=('x86_64')
 url="https://github.com/facebook/infer"
 license=('BSD')
-depends=('python2' 'python' 'java-environment' 'gcc>=5.0.0' 'opam>=2.0.0', 'ocaml>=4.11.1')
-makedepends=('git' 'rsync')
+depends=('java-environment' 'gcc>=5.0.0' 'opam>=2.0.0' 'ocaml>=4.11.1')
+makedepends=('git' 'rsync' 'cmake' 'ninja')
 source=("${pkgname}::git://github.com/facebook/infer.git")
 sha256sums=('SKIP')
 
 
 build() {
     cd "${pkgname}"
-    ./build-infer.sh
+    ./build-infer.sh -y
 }
 
 package() {
