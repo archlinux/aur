@@ -17,25 +17,26 @@ optdepends=('ffmpeg: for video post-processing'
 provides=("haruhi-dl")
 source=("haruhi-dl.tar.gz::https://git.sakamoto.pl/laudompat/haruhi-dl/-/archive/v$pkgver/$_name.tar.gz")
 md5sums=('SKIP')
+_folderName="haruhi-dl-master"
 
 pkgver() {
-  cd "$srcdir/$_name"
+  cd "$srcdir/$_folderName"
   python -m haruhi_dl --version
 }
 
 prepare() {
-  cd "$srcdir/$_name"
+  cd "$srcdir/$_folderName"
   sed -i 's|etc/bash_completion.d|share/bash-completion/completions|' setup.py
   sed -i 's|etc/fish/completions|share/fish/completions|' setup.py
 }
 
 build() {
-  cd "$srcdir/$_name"
+  cd "$srcdir/$_folderName"
   make zsh-completion
 }
 
 package() {
-  cd "$srcdir/$_name"
+  cd "$srcdir/$_folderName"
   python setup.py install --root="${pkgdir}/" --optimize=1
   install -Dm644 haruhi-dl.plugin.zsh "${pkgdir}/usr/share/zsh/site-functions/_haruhi-dl"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
