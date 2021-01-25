@@ -1,7 +1,7 @@
 pkgbase = rawk
 	pkgdesc = a minimal tool inspired by gawks string seperation ability
-	pkgver = 0.6.3
-	pkgrel = 2
+	pkgver = 0.6.4
+	pkgrel = 1
 	url = https://gitlab.com/Zemrod/rawk
 	arch = x86_64
 	license = MIT
@@ -9,8 +9,8 @@ pkgbase = rawk
 	depends = gcc-libs
 	provides = rawk
 	conflicts = rawk
-	source = rawk-v0.6.3.tar.gz::https://gitlab.com/Zemrod/rawk/-/archive/v0.6.3/rawk-v0.6.3.tar.gz
-	md5sums = 46b77826fe6038eb40fdf759cb10c33f
+	source = rawk-v0.6.4.tar.gz::https://gitlab.com/Zemrod/rawk/-/archive/v0.6.4/rawk-v0.6.4.tar.gz
+	md5sums = 7faf73271ca0356a4571ee1ec7f99169
 
 pkgname = rawk
 
