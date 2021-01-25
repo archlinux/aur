@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=kh-webstore
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 epoch=
 pkgdesc=""
@@ -24,9 +24,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/CentRa-Linux/kh-webstore/releases/download/release/kh-webstore-0.0.1.tar.gz")
+source=("https://github.com/CentRa-Linux/kh-webstore/releases/download/release/kh-webstore-0.0.2.tar.gz")
 noextract=()
-md5sums=("c25af2b64554532e2905e66c61e44d5c")
+md5sums=("81a6220c6cb4bd2664bed1a51944b23b")
 validpgpkeys=()
 
 build() {
