@@ -4,14 +4,14 @@
 
 pkgname=libg15
 pkgver=1.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides low-level access to the Logitech G15 and G11 keyboards and Z10 speakers"
 arch=('x86_64')
 url="https://gitlab.com/menelkir/libg15"
 license=('GPL')
 depends=('libusb-compat')
 source=(https://gitlab.com/menelkir/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2)
-sha512sums=('7c648992605b827080ca8c7d9468a7f8d028ebed01d49cc88aebfa0c754dfc5f2e03fac8d1857183962d06a402be3d9d45de6925d7492bd1682151d2934e47ba')
+sha512sums=('ee2bb2209230c7e24c65864099c61c167109b953281045846133fa08b2d17e90bc2d78f5d4084291cab60363019e575a81137d3e65f9680d9b92946f93fc0fe3')
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
