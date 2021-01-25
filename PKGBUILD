@@ -1,4 +1,5 @@
 # Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Colin Booth <colin@heliocat.net>
 # Contributor: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Timofey Titovets <nefelim4ag@gmail.com>
 # Contributor: linuxer <linuxer@artixlinux.org>
@@ -13,13 +14,9 @@ url="https://github.com/Nefelim4ag/Ananicy"
 license=('ISC')
 depends=('ananicy' 's6' 'bash' 'schedtool')
 makedepends=('git' 'make')
-source=("ananicy.type"
-        "ananicy.run"
-        "ananicy.start"
+source=("ananicy.run"
         "ananicy.finish")
 b2sums=('SKIP'
-        'SKIP'
-        'SKIP'
         'SKIP')
 install=$pkgname.install
 
