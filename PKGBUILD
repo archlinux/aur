@@ -2,22 +2,20 @@
 # Contributor: Mirco Tischler <mt-ml at gmx dot de>
 
 pkgname=actor-framework
-pkgver=0.17.6
-pkgrel=2
+pkgver=0.18.0
+pkgrel=1
 pkgdesc="An Open Source Implementation of the Actor Model in C++"
 arch=(i686 x86_64)
 url="http://actor-framework.org"
-license=('custom:"BSD-3-Clause"'
-	 'custom:"Boost Software License"')
-depends=()
-makedepends=('cmake' 'opencl-headers' 'git' 'python' 'opencl-icd-loader')
+license=('custom:"BSD-3-Clause"')
+depends=('gcc-libs')
+makedepends=('cmake' 'git')
 optdepends=(
-	'opencl-icd-loader: opencl support'
 	'openssl: openssl support'
 	)
 
 source=(
-	"git+https://github.com/actor-framework/actor-framework#commit=f7d4fc7ac679e18ba385f64434f8015c3cea9cb5"
+	"git+https://github.com/actor-framework/actor-framework#commit=212a9e77475e181cb281eefe95606f19bc2e27d9"
 	)
 sha256sums=('SKIP')
 
@@ -27,7 +25,7 @@ prepare(){
 	LDFLAGS=$LDFLAGS CXXFLAGS=$CXXFLAGS \
 		./configure   \
 		--prefix=/usr \
-		--no-examples
+		--disable-examples
 }
 
 build() {
@@ -46,5 +44,4 @@ package() {
 
 	cd ..
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -D -m644 LICENSE_ALTERNATIVE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE_ALTERNATIVE"
 }
