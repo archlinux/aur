@@ -5,10 +5,10 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
-_pkgver=2020.8
+_pkgver=2021.1
 _channel=beta
-pkgver=${_pkgver}.${_channel}2
-pkgrel=2
+pkgver=${_pkgver}.${_channel}1
+pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -19,7 +19,7 @@ provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
 _commit='fa76f058d6f5fa66e62f9c4a291e6079cea22e37'
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}2?signed"
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}1?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
         "${pkgname%-beta}.sh")
 sha256sums=('SKIP'
@@ -72,11 +72,11 @@ build() {
 
 	# Clean mod cache for makepkg -C
 	go clean -modcache
-	
+
 	export MULLVAD_ADD_MANIFEST="1"
 
 	echo "Building Rust code in release mode using $RUSTC_VERSION..."
-	
+
 	cargo build --release --locked
 
 	mkdir -p dist-assets/shell-completions
@@ -101,10 +101,10 @@ build() {
 
 	echo "Updating relay list..."
 	cargo run --bin relay_list --release > dist-assets/relays.json
-	
+
 	echo "Updating API address cache..."
 	cargo run --bin address_cache --release > dist-assets/api-ip-address.txt
-	
+
 	# Build Electron GUI app
 	pushd gui
 	echo "Installing JavaScript dependencies..."
@@ -153,7 +153,7 @@ package() {
 
 	# Install desktop file & icons from deb
 	cd dist
-	ar x "MullvadVPN-${_pkgver}.0-${_channel}2_amd64.deb"
+	ar x *.deb
 	bsdtar -xf data.tar.xz
 	install -Dm644 "usr/share/applications/${pkgname%-beta}.desktop" -t \
 		"$pkgdir/usr/share/applications"
