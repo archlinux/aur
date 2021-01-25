@@ -8,8 +8,7 @@ arch=('x86_64')
 url='https://biobank.ndph.ox.ac.uk/showcase/download.cgi'
 _url_util="${url/download.cgi/util}"
 license=('unknown')
-makedepends=(gcc sed)
-provides=(ukbprep gfetch ukbconv ukbfetch ukblink ukbmd5 ukbunpack)
+provides=('ukbprep' 'gfetch' 'ukbconv' 'ukbfetch' 'ukblink' 'ukbmd5' 'ukbunpack')
 install=$pkgname.install
 source=(
     "encoding.ukb::$_url_util/encoding.ukb"
