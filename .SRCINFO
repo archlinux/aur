@@ -1,7 +1,7 @@
 pkgbase = cryptmount-arm
 	pkgdesc = Utility which allows an ordinary user to mount an encrypted file system
 	pkgver = 5.3.2
-	pkgrel = 4
+	pkgrel = 5
 	url = http://cryptmount.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = cryptmount-arm
 	license = GPL
 	depends = cryptsetup
 	depends = device-mapper
-	depends = glibc
 	depends = libgcrypt
 	depends = systemd
 	depends = util-linux
