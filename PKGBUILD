@@ -3,23 +3,23 @@
 # Contributor: onestep_ua <onestep at ukr dot net>
 
 pkgname=libg15render
-pkgver=1.2
-pkgrel=6
+pkgver=1.3
+pkgrel=1
 pkgdesc="A small graphics library optimised for drawing on an LCD"
 arch=('x86_64')
-url="http://www.g15tools.com/"
+url="https://gitlab.com/menelkir/libg15render"
 license=('GPL')
 depends=('libg15')
-source=(https://downloads.sourceforge.net/g15tools/${pkgname}-${pkgver}.tar.bz2)
-sha512sums=('960fd6bc6159b1b12e1de3b0c07e5960d7d5056d4927be8eddf89a911e2c97a8677ef41456aa255399e8a86cd354b848fab28a47005ee2d1b6640e0c886deaac')
+source=(https://gitlab.com/menelkir/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2)
+sha512sums=('d4f6188d774445139accc5cf6e3d01fa3091b8d5b65c00671274d19d6185a96ed064af04e8743781ed716d6679a3514f9d30656bc829e6e7c62b33b68be70558')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-v${pkgver}"
   ./configure --prefix=/usr --disable-static
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-v${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
