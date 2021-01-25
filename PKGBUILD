@@ -1,5 +1,5 @@
 pkgname=short-git
-pkgver=0.3.5.r0.gb5715d5
+pkgver=0.3.6.r0.g97fa26b
 pkgrel=1
 pkgdesc="Concise cli launcher / project manager using env files"
 source=("${pkgname}::git+https://github.com/vincent-herlemont/short.git")

@@ -1,6 +1,6 @@
 pkgbase = short-git
 	pkgdesc = Concise cli launcher / project manager using env files
-	pkgver = 0.3.5.r0.gb5715d5
+	pkgver = 0.3.6.r0.g97fa26b
 	pkgrel = 1
 	url = https://github.com/vincent-herlemont/short
 	arch = i686
