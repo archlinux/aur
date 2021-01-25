@@ -1,13 +1,13 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 pkgname=turbo-button-git
-pkgver=r2.c9f8cce
+pkgver=r3.2b98e03
 pkgrel=1
 pkgdesc="Simple tray app to toggle performance/power preference"
 arch=(i686 x86_64)
 url="https://github.com/sandsmark/turbo-button"
 license=(GPL3)
 depends=(qt5-base)
-makedepends=(git)
+makedepends=(git cmake)
 provides=(turbo-button)
 conflicts=(turbo-button)
 source=('git+https://github.com/sandsmark/turbo-button.git')
