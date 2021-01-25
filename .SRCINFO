@@ -1,17 +1,17 @@
 pkgbase = mutrace
 	pkgdesc = A mutex contention measurement tool
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = http://0pointer.de/blog/projects/mutrace.html
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = http://0pointer.de/public/mutrace-0.1.tar.gz
+	source = git://git.0pointer.net/mutrace.git#tag=v0.2
 	source = fix_headers.patch
-	md5sums = d809ced12f4a93734b70e11ae2622508
-	md5sums = 27661c625235da9f2121b325ab4b6d9b
-	sha256sums = ba16118a9279b586b0012563e74393ea75ef25ec4e3fec7125a481364efc7dd4
+	source = fix_binutils234.patch
+	sha256sums = SKIP
 	sha256sums = 61e0db42f2ed3c8655d3bba81bde684aea8f1fe1e1399cb98ef478d2edc13b9e
+	sha256sums = da7a6f57f2d16da2d84b8483d37dd40c0a55fdd80c69ee3c8b83383f11dc5799
 
 pkgname = mutrace
 
