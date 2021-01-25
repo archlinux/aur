@@ -1,7 +1,7 @@
 # Maintainer: Jason Goulet-Lipman <jason.gouletlipman@gmail.com>
 pkgname=youtubedl-gui-beta
 _pkgname=ytdl-gui
-pkgver=20210125.r55.a274ddf
+pkgver=20210125.r73.0bbc2c1
 pkgrel=1
 arch=('x86_64')
 license=('GPL3')
