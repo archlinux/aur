@@ -1,0 +1,20 @@
+pkgbase = ruby-asciidoctor-diagram
+	pkgdesc = An extension for asciidoctor that adds support for UML diagram generation using PlantUML
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/asciidoctor/asciidoctor-diagram
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = asciidoctor
+	depends = ruby-rexml
+	depends = ruby-asciidoctor-diagram-ditaamini
+	depends = ruby-asciidoctor-diagram-plantuml
+	noextract = asciidoctor-diagram-2.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/asciidoctor-diagram-2.1.0.gem
+	sha1sums = 9b84b1fd0c1659a9375d6af719e7c13b6f6cd0a4
+
+pkgname = ruby-asciidoctor-diagram
+
