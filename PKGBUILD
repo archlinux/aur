@@ -45,7 +45,7 @@ _srcpath="bcachefs"
 kernel_site="git+https://github.com/koverstreet/bcachefs.git"
 patch_site="https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${_basekernel}.${_sub}.xz"
 
-pkgbase="linux-mainline-bcachefs" #"${_custom_pkgbase}"
+pkgbase="${_custom_pkgbase}"
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver="${_basekernel}"."${_sub}"
 pkgrel=114
