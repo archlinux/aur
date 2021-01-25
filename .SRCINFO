@@ -1,0 +1,20 @@
+pkgbase = pikasso-git
+	pkgdesc = Simple drawing programs using Kirigami for the UI and Rust for the rendering
+	pkgver = r18.45e8709
+	pkgrel = 1
+	url = https://invent.kde.org/graphics/pikasso
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = corrosion
+	depends = ki18n
+	depends = kconfig
+	depends = kirigami2
+	provides = pikasso
+	conflicts = pikasso
+	source = git+https://invent.kde.org/graphics/pikasso.git
+	sha256sums = SKIP
+
+pkgname = pikasso-git
+
