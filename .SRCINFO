@@ -1,0 +1,15 @@
+pkgbase = ipgeo-git
+	pkgdesc = A CLI tool that finds the location of IP addresses.
+	pkgver = 0.1.0.r3.g6c7e9c7
+	pkgrel = 1
+	url = https://github.com/DefunctLizard/ipgeocli
+	arch = x86_64
+	license = GPL
+	makedepends = rust
+	makedepends = git
+	depends = glibc
+	source = ipgeo::git+https://github.com/DefunctLizard/ipgeocli.git
+	md5sums = SKIP
+
+pkgname = ipgeo-git
+
