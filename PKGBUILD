@@ -1,7 +1,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="libayatana-indicator"
-pkgver="0.8.3"
+pkgver="0.8.4"
 pkgrel="1"
 pkgdesc="Ayatana Indicators (Shared Library)"
 arch=("i686" "x86_64" "pentium4")
@@ -11,7 +11,7 @@ makedepends=("gtk3" "glib2" "ayatana-ido" "mate-common")
 depends=("gtk3" "glib2" "ayatana-ido")
 options=('!emptydirs')
 source=("https://github.com/AyatanaIndicators/$pkgname/archive/$pkgver.tar.gz")
-md5sums=("39e2edb8d422272f98737689213f8499")
+md5sums=("5b61141bbd42ba5a161e59adcaafc9d8")
 conflicts=("${pkgname}-gtk3")
 replaces=("${pkgname}-gtk3")
 
