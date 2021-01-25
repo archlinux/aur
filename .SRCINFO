@@ -1,10 +1,10 @@
 pkgbase = pyqt4
 	pkgver = 4.12.3
-	pkgrel = 4
-	url = http://www.riverbankcomputing.com/software/pyqt/intro
+	pkgrel = 5
+	url = https://riverbankcomputing.com/software/pyqt/intro
 	arch = x86_64
 	license = GPL
-	makedepends = sip
+	makedepends = sip4
 	makedepends = python-sip-pyqt4
 	makedepends = python2-sip-pyqt4
 	makedepends = python-dbus
@@ -12,7 +12,7 @@ pkgbase = pyqt4
 	makedepends = mesa
 	makedepends = python2-opengl
 	makedepends = python2-dbus
-	source = http://downloads.sourceforge.net/pyqt/PyQt4_gpl_x11-4.12.3.tar.gz
+	source = https://downloads.sourceforge.net/project/pyqt/PyQt4/PyQt-4.12.3/PyQt4_gpl_x11-4.12.3.tar.gz
 	sha256sums = a00f5abef240a7b5852b7924fa5fdf5174569525dc076cd368a566619e56d472
 
 pkgname = pyqt4-common
@@ -24,7 +24,6 @@ pkgname = pyqt4-common
 
 pkgname = python-pyqt4
 	pkgdesc = A set of Python 3.x bindings for the Qt toolkit
-	depends = sip
 	depends = python-sip-pyqt4
 	depends = python-dbus
 	depends = pyqt4-common
@@ -35,7 +34,6 @@ pkgname = python-pyqt4
 
 pkgname = python2-pyqt4
 	pkgdesc = A set of Python 2.x bindings for the Qt toolkit
-	depends = sip
 	depends = python2-sip-pyqt4
 	depends = python2-dbus
 	depends = pyqt4-common
