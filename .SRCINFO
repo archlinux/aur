@@ -1,0 +1,20 @@
+pkgbase = gtksourceviewmm4
+	pkgdesc = C++ bindings for the gtksourceview library
+	pkgver = 3.91.1
+	pkgrel = 1
+	epoch = 2
+	url = https://gitlab.gnome.org/GNOME/gtksourceviewmm
+	arch = x86_64
+	license = LGPL
+	makedepends = gtkmm4-docs
+	depends = gtkmm4
+	depends = gtksourceview4
+	source = https://download.gnome.org/sources/gtksourceviewmm/3.91/gtksourceviewmm-3.91.1.tar.xz
+	sha256sums = feaae794c0f97f583a25f297c6c2b80f5f20151fdc9a4012fddb911520131721
+
+pkgname = gtksourceviewmm4
+
+pkgname = gtksourceviewmm4-docs
+	pkgdesc = Developer documentation for gtksourceviewmm
+	depends = gtkmm3-docs
+
