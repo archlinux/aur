@@ -1,0 +1,15 @@
+pkgbase = numlockontty-runit
+	pkgdesc = A script and a runit service to activate the num lock on tty at startup
+	pkgver = 1.0
+	pkgrel = 0
+	arch = any
+	license = GPL
+	depends = runit
+	conflicts = systemd-numlockontty
+	source = numlockontty
+	source = numlockontty.run
+	md5sums = e56440b68d824591547dcdcb1c628ef8
+	md5sums = 9f1facf5233f4e2e3e9e0e144d830a31
+
+pkgname = numlockontty-runit
+
