@@ -3,7 +3,7 @@
 
 pkgname=memsource-editor
 _pkg=MemsourceEditor
-pkgver=20.26.2
+pkgver=21.2.1
 pkgrel=1
 pkgdesc="A CAT translation tool, requires Memsource subscription"
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=("http://download.memsource.com/production/updates/memsource-editor/linux
         "memsource"
         "license.desktop")
 
-sha256sums=('7adc7f4d8b9ec435babd7863e75efbad69992508cd1571b155d20d55b3cbf544'
+sha256sums=('32e259a08fb9bb2b0bc1829ad86304d8d57fb2441b95067bbb3ed7aad61ce81b'
             '215a02637392af7a3f0af23411c5234c9ce8cdf1ae5c0e40b97c43e5b0995a45'
             '8a40f0172dc948dfadec126b5ab9a4f983216034aa8fbf19a41b9466e6253866'
             '4802b77ffefd2cdd7526fec28a690f8dc560fef74501806b3485648dcac830fe'
