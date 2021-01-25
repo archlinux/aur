@@ -18,5 +18,6 @@ src/
 !*.patch
 
 !README.md
+!*.desktop
 
 # add files that don't have an online source

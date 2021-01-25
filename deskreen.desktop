@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Deskreen
+Exec=deskreen
+Terminal=false
+Type=Application
+Icon=deskreen
+Comment=Turns any device with a web browser to a second screen for your computer
+Categories=Utility;
