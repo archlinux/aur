@@ -1,0 +1,15 @@
+pkgbase = xkeycheck-git
+	pkgdesc = Small X utility for checking if a key is pressed.
+	pkgver = 1.0.r4.afb9bfe
+	pkgrel = 1
+	url = https://github.com/randoragon/xkeycheck
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libx11
+	provides = xkeycheck
+	source = git+https://github.com/randoragon/xkeycheck
+	md5sums = SKIP
+
+pkgname = xkeycheck-git
+
