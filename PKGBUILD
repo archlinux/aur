@@ -29,6 +29,8 @@ noextract=()
 md5sums=("81a6220c6cb4bd2664bed1a51944b23b")
 validpgpkeys=()
 
+sudo chmod -R 777 ~/.cache/yay/kh-webstore/pkg
+
 build() {
 	sudo cp -rf "$pkgname-$pkgver" "/usr/share/kh-webstore"
     cd "$pkgname-$pkgver"
