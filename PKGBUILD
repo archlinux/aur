@@ -7,7 +7,7 @@ _srcname=linux-5.10
 _major=5.10
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=9
+_minor=10
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -32,19 +32,21 @@ source=(
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch
   0003-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch
+  0004-HID-wacom-Correct-NULL-dereference-on-AES-pen-proxim.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('f67e57e1611610f7bae80ba18898d5c1058cfe2003047d1b249d4b4592420ffc29b949a56ec9cdc37adf0c3d37434c4efd722ccf24db84093189cad748d7d9a3'
+b2sums=('7a7b8186dc76b68cbf10765adc394ce8f0627147a7a5c37e75803c88ed04fbf89a1e2ac2b802e01ba7c9403bc15a34fd071efd43185aa00601d212e2c2fc6947'
         'SKIP'
-        'faedb4032fd709d3f0089d706232ec0dcfdf3817223aa910112e6cd58bffea20a3127fee407a465fa3b4db1a54050fabd839809c404492820216fadae70885b9'
+        '180f0dd063eab9542fd799c54dd335c4f310bea739048800ab3222526cb1ea7cc4ef43d2a2c27ed0e37a776f5c77540c33795aa63297704d9e215735a1a98606'
         'SKIP'
         'cb3a58e4eef8395b75887d94a84bba25f05fbec8f576a791623057a190a1d51b412a19ecf1b600ac3f9f6c46968eb0e130d571743e61afc231a97146ee4b52d0'
-        'b42730a806a63dbf905f448a3282dec72a950ef7d16a3531d977dcae3b5c2685a5c5dd10a58e345d57084a6212353dc2f2f0102021d13c1557092e564f81eaf5'
-        'a5dea5bb6df6fb517009ad5b104c2ea8e93ed880393a1412ca2d7fc8047abccc9c72076e40d1d4133cadc9048040846cc9bdc91e30c4d601ad5963d13498503e'
-        '9a8723104239ba4646dd0c76c5a60128892954dd2faee69ca5c5d1251c9694de8fd528ca063a2add1401ad1375ad0dcc2560ca03a1bfd03b161d34ccd25b686a')
+        'de81e92b92ba697e472d6397faa425ebcc09bede6c97008dcae47efd341d2eaa12ec72209c4cc97155df01358e1fce3a86d3f0b5441ac91615037de72105defc'
+        '9450bd3d4acfa94723eaf22f2c0a13ae3bdb1ceb15ad19d1a1de2fc8d9a7b9b8f759006fd5b4286da135c68bac75791b4bf767ece8b6c40aff95799296ee0327'
+        'ea8e11fa3e9ccffe26366c2c279e11ffd4cb7ed0500028afef083188d46a0df2487800417914e63b8ac101b6a28b6a61aad91bea0b7a0305d64be3445a4f68a0'
+        'b57086457843e75899772ec37a469f524d7f5df5a1ba27ab35a97b478ed37b8deb29371db3f69b33ec10eaf38fd554cef0da7c64c451b11db84e4dc497f8bae9')
 
 
 export KBUILD_BUILD_HOST=archlinux

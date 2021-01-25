@@ -1,0 +1,76 @@
+From 85c0c0e3a81f87290db5e881af609d51021b54b7 Mon Sep 17 00:00:00 2001
+From: Jason Gerecke <killertofu@gmail.com>
+Date: Thu, 21 Jan 2021 10:46:49 -0800
+Subject: [PATCH 4/5] HID: wacom: Correct NULL dereference on AES pen proximity
+
+The recent commit to fix a memory leak introduced an inadvertant NULL
+pointer dereference. The `wacom_wac->pen_fifo` variable was never
+intialized, resuling in a crash whenever functions tried to use it.
+Since the FIFO is only used by AES pens (to buffer events from pen
+proximity until the hardware reports the pen serial number) this would
+have been easily overlooked without testing an AES device.
+
+This patch converts `wacom_wac->pen_fifo` over to a pointer (since the
+call to `devres_alloc` allocates memory for us) and ensures that we assign
+it to point to the allocated and initalized `pen_fifo` before the function
+returns.
+
+Link: https://github.com/linuxwacom/input-wacom/issues/230
+Fixes: 37309f47e2f5 ("HID: wacom: Fix memory leakage caused by kfifo_alloc")
+CC: stable@vger.kernel.org # v4.19+
+Signed-off-by: Jason Gerecke <jason.gerecke@wacom.com>
+Tested-by: Ping Cheng <ping.cheng@wacom.com>
+---
+ drivers/hid/wacom_sys.c | 7 ++++---
+ drivers/hid/wacom_wac.h | 2 +-
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/hid/wacom_sys.c b/drivers/hid/wacom_sys.c
+index 9e852b4bbf92..73dafa60080f 100644
+--- a/drivers/hid/wacom_sys.c
++++ b/drivers/hid/wacom_sys.c
+@@ -147,9 +147,9 @@ static int wacom_wac_pen_serial_enforce(struct hid_device *hdev,
+ 	}
+ 
+ 	if (flush)
+-		wacom_wac_queue_flush(hdev, &wacom_wac->pen_fifo);
++		wacom_wac_queue_flush(hdev, wacom_wac->pen_fifo);
+ 	else if (insert)
+-		wacom_wac_queue_insert(hdev, &wacom_wac->pen_fifo,
++		wacom_wac_queue_insert(hdev, wacom_wac->pen_fifo,
+ 				       raw_data, report_size);
+ 
+ 	return insert && !flush;
+@@ -1280,7 +1280,7 @@ static void wacom_devm_kfifo_release(struct device *dev, void *res)
+ static int wacom_devm_kfifo_alloc(struct wacom *wacom)
+ {
+ 	struct wacom_wac *wacom_wac = &wacom->wacom_wac;
+-	struct kfifo_rec_ptr_2 *pen_fifo = &wacom_wac->pen_fifo;
++	struct kfifo_rec_ptr_2 *pen_fifo;
+ 	int error;
+ 
+ 	pen_fifo = devres_alloc(wacom_devm_kfifo_release,
+@@ -1297,6 +1297,7 @@ static int wacom_devm_kfifo_alloc(struct wacom *wacom)
+ 	}
+ 
+ 	devres_add(&wacom->hdev->dev, pen_fifo);
++	wacom_wac->pen_fifo = pen_fifo;
+ 
+ 	return 0;
+ }
+diff --git a/drivers/hid/wacom_wac.h b/drivers/hid/wacom_wac.h
+index da612b6e9c77..195910dd2154 100644
+--- a/drivers/hid/wacom_wac.h
++++ b/drivers/hid/wacom_wac.h
+@@ -342,7 +342,7 @@ struct wacom_wac {
+ 	struct input_dev *pen_input;
+ 	struct input_dev *touch_input;
+ 	struct input_dev *pad_input;
+-	struct kfifo_rec_ptr_2 pen_fifo;
++	struct kfifo_rec_ptr_2 *pen_fifo;
+ 	int pid;
+ 	int num_contacts_left;
+ 	u8 bt_features;
+-- 
+2.30.0
+
