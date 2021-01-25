@@ -1,0 +1,35 @@
+Index: g15daemon-1.9.5.3/g15daemon/g15_plugin_uinput.c
+===================================================================
+--- g15daemon-1.9.5.3/plugins/g15_plugin_uinput.c      
++++ g15daemon-1.9.5.3/plugins/g15_plugin_uinput.c 
+@@ -125,6 +125,14 @@
+     event.value = G15KEY_DOWN;
+
+     write (uinp_fd, &event, sizeof(event));
++
++    /* Need to write sync event */
++    memset(&event, 0, sizeof(event));
++    event.type = EV_SYN;
++    event.code = SYN_REPORT;
++    event.value = 0;
++    write(uinp_fd, &event, sizeof(event));
++
+ }
+
+ static void g15_uinput_keyup(unsigned char code)
+@@ -137,6 +145,14 @@
+     event.value = G15KEY_UP;
+
+     write (uinp_fd, &event, sizeof(event));
++
++    /* Need to write sync event */
++    memset(&event, 0, sizeof(event));
++    event.type = EV_SYN;
++    event.code = SYN_REPORT;
++    event.value = 0;
++    write(uinp_fd, &event, sizeof(event));
++
+ }
+
+     void (*keyup)(unsigned char code) = &g15_uinput_keyup;
+
