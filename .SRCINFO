@@ -1,0 +1,21 @@
+pkgbase = cairomm16
+	pkgdesc = C++ bindings for Cairo
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = https://www.cairographics.org/cairomm/
+	arch = x86_64
+	license = LGPL
+	license = MPL
+	makedepends = git
+	makedepends = mm-common
+	depends = cairo
+	depends = libsigc++3
+	source = git+https://anongit.freedesktop.org/git/cairomm#commit=9db4b39bfe50e183130b89824a3556da09cd51cb
+	sha256sums = SKIP
+
+pkgname = cairomm16
+
+pkgname = cairomm16-docs
+	pkgdesc = C++ bindings for Cairo (documentation)
+	depends = 
+
