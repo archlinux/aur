@@ -1,8 +1,8 @@
 pkgbase = deskreen
 	pkgdesc = Deskreen makes any device a second screen for your computer
 	pkgver = 1.0.0
-	pkgrel = 1
-	url = https://github.com/pavlobu/deskreen#readme
+	pkgrel = 2
+	url = https://github.com/pavlobu/deskreen/
 	install = deskreen.install
 	arch = i686
 	arch = x86_64
