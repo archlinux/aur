@@ -11,7 +11,7 @@ install="${pkgname}.install"
 depends=('mkinitcpio>=0.9.0' 'wireguard-tools')
 backup=('etc/wireguard/initcpio/unlock')
 
-source=("${url}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 
 sha256sums=('a46582e0220ed7e000ee85d6ef03be6c44ce181b7f1a281352d0986688129da2')
 

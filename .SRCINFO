@@ -9,7 +9,7 @@ pkgbase = mkinitcpio-wireguard
 	depends = mkinitcpio>=0.9.0
 	depends = wireguard-tools
 	backup = etc/wireguard/initcpio/unlock
-	source = https://github.com/dharrigan/mkinitcpio-wireguard/archive/0.4.1.tar.gz
+	source = mkinitcpio-wireguard-0.4.1.tar.gz::https://github.com/dharrigan/mkinitcpio-wireguard/archive/0.4.1.tar.gz
 	sha256sums = a46582e0220ed7e000ee85d6ef03be6c44ce181b7f1a281352d0986688129da2
 
 pkgname = mkinitcpio-wireguard
