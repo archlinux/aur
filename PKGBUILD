@@ -25,6 +25,7 @@ prepare () {
   git config 'submodule.src/shlr/sdb.url' "${srcdir}/sdb"
   git config 'submodule.src/shlr/tree-sitter.url' "${srcdir}/tree-sitter"
   git submodule update --init --recursive --remote
+  git -C shlr/sdb checkout 01e4bd15397394ed592eb436e9bf70f5ad585c5b
 }
 
 build() {
