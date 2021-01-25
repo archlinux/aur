@@ -26,7 +26,7 @@ install=
 changelog=
 source=("https://github.com/CentRa-Linux/kh-webstore/releases/download/release/kh-webstore-0.0.2.tar.gz")
 noextract=()
-md5sums=("81a6220c6cb4bd2664bed1a51944b23b")
+md5sums=("523dd19aab862d1d31153b7321d997e1")
 validpgpkeys=()
 
 sudo chmod -R 777 ~/.cache/yay/kh-webstore/pkg

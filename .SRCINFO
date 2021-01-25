@@ -4,6 +4,6 @@ pkgbase = kh-webstore
 	arch = x86_64
 	license = Apache
 	source = https://github.com/CentRa-Linux/kh-webstore/releases/download/release/kh-webstore-0.0.2.tar.gz
-	md5sums = 81a6220c6cb4bd2664bed1a51944b23b
+	md5sums = 523dd19aab862d1d31153b7321d997e1
 
 pkgname = kh-webstore
