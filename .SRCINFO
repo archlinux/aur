@@ -20,10 +20,7 @@ pkgbase = gnustep-gui
 	conflicts = gnustep-gui-svn
 	options = !makeflags
 	source = https://github.com/gnustep/libs-gui/releases/download/gui-0_28_0/gnustep-gui-0.28.0.tar.gz
-	source = https://github.com/gnustep/libs-gui/releases/download/gui-0_28_0/gnustep-gui-0.28.0.tar.gz.sig
-	validpgpkeys = 83AAE47CE829A4146EF83420CA868D4C99149679
 	sha256sums = 1f6d2de60417e8a674280de84077f94f7394ae4edb3fae9e04129743d7449317
-	sha256sums = SKIP
 
 pkgname = gnustep-gui
 
