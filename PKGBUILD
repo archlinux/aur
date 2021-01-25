@@ -11,18 +11,18 @@
 
 pkgname=qgis-grass-plugin
 _pkgname=qgis
-pkgver=3.16.0
+pkgver=3.16.3
 pkgrel=1
 pkgdesc='QGIS grass plugin resources.'
 url='https://qgis.org/'
 license=(GPL)
 arch=(x86_64)
 # there are probably way more dependencies here, but they should already be included by the packages below..
-depends=(qgis=3.16.0 gdal grass)
+depends=("qgis>=3.16.3" gdal grass)
 makedepends=(cmake txt2tags)
 optdepends=()
 source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('ce8dfee5af989cfa2af4d087ab64d5e4022e928e847ee083e07cc9e8646ef1da')
+sha256sums=('fd57314c1913639f02b64df03eef041172aa220f249e318da3849fc71ada4d04')
 
 prefix="/usr"
 
