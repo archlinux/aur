@@ -1,0 +1,26 @@
+pkgbase = glibmm268
+	pkgdesc = C++ bindings for GLib
+	pkgver = 2.68.0
+	pkgrel = 1
+	url = https://www.gtkmm.org/
+	arch = x86_64
+	license = LGPL
+	checkdepends = glib-networking
+	makedepends = git
+	makedepends = mm-common
+	makedepends = perl-xml-parser
+	makedepends = clang
+	makedepends = meson
+	depends = glib2
+	depends = libsigc++
+	options = !emptydirs
+	source = git+https://gitlab.gnome.org/GNOME/glibmm.git#commit=d9f2c206de7f91efec783ed389481037e80c62b0
+	sha256sums = SKIP
+
+pkgname = glibmm268
+
+pkgname = glibmm268-docs
+	pkgdesc = C++ bindings for GLib (documentation)
+	depends = 
+	options = !strip
+
