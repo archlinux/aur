@@ -3,7 +3,7 @@
 
 pkgname=honk
 pkgver=0.9.5
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="ActivityPub compatible server with web frontend."
 arch=("x86_64")
@@ -28,7 +28,7 @@ build() {
 
 package() {
    _PKG_HONKDIR="$pkgdir/usr/share/webapps/honk"
-   install -vDm755 "$pkgname-$pkgver/honk" "$_PKG_HONKDIR/honk"
+   install -vDm700 "$pkgname-$pkgver/honk" "$_PKG_HONKDIR/honk"
    install -vDm644 "$pkgname-$pkgver"/views/* -t "$_PKG_HONKDIR/views/"
    install -vDm644 "$pkgname-$pkgver"/docs/* -t "$_PKG_HONKDIR/docs/"
    install -vDm644 "$pkgname-$pkgver"/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
