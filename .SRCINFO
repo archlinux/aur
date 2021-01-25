@@ -1,5 +1,5 @@
 pkgbase = pymodoro
-	pkgdesc = A very smol podoro timer written in python 3
+	pkgdesc = A very smol pomodoro timer written in python 3
 	pkgver = 1
 	pkgrel = 1
 	url = https://github.com/coodos/pymodoro/
@@ -10,8 +10,8 @@ pkgbase = pymodoro
 	depends = python3
 	source = pymodoro.py
 	source = pymodoro
-	md5sums = d48b705ec381703cc729a6581125718c
-	md5sums = 06b6b426e2dd1672fa1091c65f714399
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = pymodoro
 

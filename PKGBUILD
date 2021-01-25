@@ -1,7 +1,7 @@
 pkgname=pymodoro
 pkgver=1 
 pkgrel=1 
-pkgdesc="A very smol podoro timer written in python 3"
+pkgdesc="A very smol pomodoro timer written in python 3"
 arch=('any')
 license=('GPL V2')
 depends=('alsa-utils'
@@ -14,8 +14,8 @@ source=('pymodoro.py'
         'pymodoro'
 )
 
-md5sums=('d48b705ec381703cc729a6581125718c'
-        '06b6b426e2dd1672fa1091c65f714399'
+md5sums=('SKIP'
+        'SKIP'
 )
 
 prepare () {
