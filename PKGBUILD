@@ -32,7 +32,7 @@ build() {
 }
 
 package_cairomm16() {
-  cd $pkgbase
+  cd cairomm
   sed -i -e 's/^doc_subdirs/#doc_subdirs/' Makefile
   make DESTDIR="$pkgdir" install
 }
@@ -41,6 +41,6 @@ package_cairomm16-docs() {
   pkgdesc+=" (documentation)"
   depends=()
 
-  cd $pkgbase
+  cd cairomm
   make -C docs DESTDIR="$pkgdir" install
 }
