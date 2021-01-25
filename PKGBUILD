@@ -2,7 +2,7 @@
 
 pkgname=filmulator
 _pkgname="$pkgname-gui"
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=1
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="Simple raw photo editor based on the process of developing film"
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('exiv2' 'hicolor-icon-theme' 'lensfun-git' 'libarchive' 'libraw' 'librtprocess' 'qt5-declarative')
 makedepends=('cmake' 'openmp')
 source=("$_pkgname-$pkgver.tar.gz::$_url/archive/v$pkgver.tar.gz")
-sha512sums=('fe27a333ef39c26a2e36b3a1fbee99cb289f8ee90affd705e6abef45b57253b5cc45746e549fb087308e2c8dc0a9f59462118b74d1d5ca1cf6eadb6f59dde902')
+sha512sums=('8e7d0b57d53bab21d79085646d46fd6f85c025108cc27640368d2762be4c8c662886f868fb865ad7096ef7073ccb0daac9bec7f9adda8c22225a945f8ff9c307')
 _xdg_desktop_name="org.$pkgname.${pkgname^}"
 
 prepare() {
@@ -41,7 +41,6 @@ build() {
 package() {
   cd build
   make DESTDIR="$pkgdir" install
-
 
   install -Dm644 "$srcdir/$_pkgname-$pkgver/$_pkgname/$_pkgname.desktop.in" \
                  "$pkgdir/usr/share/applications/$_xdg_desktop_name.desktop"
