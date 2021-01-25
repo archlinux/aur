@@ -1,7 +1,7 @@
 pkgbase = dwm-randoragon-git
 	pkgdesc = Randoragon's build of the suckless dynamic window manager (dwm)
-	pkgver = 6.2.r1795.b140145
-	pkgrel = 3
+	pkgver = 6.2.r1797.db4cb74
+	pkgrel = 1
 	url = https://github.com/randoragon/dwm
 	arch = x86_64
 	license = MIT

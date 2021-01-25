@@ -1,8 +1,8 @@
 # Maintainer: Randoragon <randoragongamedev@gmail.com>
 
 pkgname=dwm-randoragon-git
-pkgver=6.2.r1795.b140145
-pkgrel=3
+pkgver=6.2.r1797.db4cb74
+pkgrel=1
 epoch=
 pkgdesc="Randoragon's build of the suckless dynamic window manager (dwm)"
 arch=('x86_64')
