@@ -1,14 +1,14 @@
 pkgbase = hlint-bin
 	pkgdesc = Haskell source code suggestions. Packaged from upstream binary release.
-	pkgver = 3.2.3
+	pkgver = 3.2.7
 	pkgrel = 1
 	url = https://github.com/ndmitchell/hlint
 	arch = x86_64
 	license = BSD
 	depends = gmp
 	conflicts = hlint
-	source = https://github.com/ndmitchell/hlint/releases/download/v3.2.3/hlint-3.2.3-x86_64-linux.tar.gz
-	sha256sums = 96627201d5736c9e0b4bb5cdea475b95f90037e5e561da28230dc89b83b00732
+	source = https://github.com/ndmitchell/hlint/releases/download/v3.2.7/hlint-3.2.7-x86_64-linux.tar.gz
+	sha256sums = eaf42de9986be58205d1d8ce1e518ccf41b367efed10561a19a7a454f0d1db82
 
 pkgname = hlint-bin
 
