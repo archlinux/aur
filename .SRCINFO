@@ -1,7 +1,7 @@
 pkgbase = dmenu-abdellatif
 	pkgdesc = my dmenu costume build
 	pkgver = 0.5.8
-	pkgrel = 7
+	pkgrel = 10
 	url = https://github.com/abdellatif-dev/dmenu-abdellatif-dev.git
 	arch = x86_64
 	license = MIT
