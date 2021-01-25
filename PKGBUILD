@@ -1,7 +1,7 @@
 # Maintainer: rapiertg <rapiertg@gmail.com>
 pkgname=virtualmoonatlas
-pkgver=6.5
-pkgrel=2
+pkgver=7.0
+pkgrel=1
 pkgdesc="Software for Moon observation and survey"
 arch=('x86_64')
 url="http://virtualmoon.sourceforge.net/"
@@ -11,7 +11,7 @@ depends=('libpasastro')
 provides=('virtualmoonatlas')
 md5sums=('SKIP')
 
-source=("virtualmoonatlas::git+https://github.com/pchev/virtualmoon.git#tag=V65")
+source=("virtualmoonatlas::git+https://github.com/pchev/virtualmoon.git#tag=v7.0")
 
 build() {
 cd "$srcdir/${pkgname}"
