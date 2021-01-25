@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd /opt/DeltaChat/electron_app && electron6 . "$@"
+cd /opt/DeltaChat/electron_app && electron . "$@"
 
