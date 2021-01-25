@@ -52,7 +52,8 @@ build() {
     --disable-tests \
     --disable-seccomp-tests \
     --disable-full-test-suite \
-    --disable-tools
+    --disable-tools \
+    --enable-maintainer-mode
   make
 }
 
