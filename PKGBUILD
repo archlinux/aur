@@ -1,7 +1,7 @@
 # Maintainer: Wenxuan Zhang <wenxuangm@gmail.com>
 _pkgname=rust-script
 pkgname=rust-script
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=0
 pkgdesc='Run Rust files and expressions without any setup or compilation necessary'
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ conflicts=("rust-script-git" "rust-script-bin")
 provides=()
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fornwall/rust-script/archive/v${pkgver}.tar.gz")
-md5sums=('767ad69ff9ccaccb06ed7d92af15c143')
+md5sums=('701058b639900936fe6e4e16c47e8bff')
 
 build() {
 	cd "$srcdir/${_pkgname}-${pkgver}"

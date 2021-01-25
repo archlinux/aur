@@ -1,6 +1,6 @@
 pkgbase = rust-script
 	pkgdesc = Run Rust files and expressions without any setup or compilation necessary
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 0
 	url = https://rust-script.org
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = rust-script
 	makedepends = rust>=1.47
 	conflicts = rust-script-git
 	conflicts = rust-script-bin
-	source = rust-script-0.11.0.tar.gz::https://github.com/fornwall/rust-script/archive/v0.11.0.tar.gz
-	md5sums = 767ad69ff9ccaccb06ed7d92af15c143
+	source = rust-script-0.12.0.tar.gz::https://github.com/fornwall/rust-script/archive/v0.12.0.tar.gz
+	md5sums = 701058b639900936fe6e4e16c47e8bff
 
 pkgname = rust-script
 
