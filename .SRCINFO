@@ -1,0 +1,20 @@
+pkgbase = redpaper-git
+	pkgdesc = Wallpaper downloader and setter that fetches from Reddit
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/keystroke3/redpaper
+	arch = any
+	license = GPLv3+
+	makedepends = git
+	depends = python>=3.7
+	depends = python-pillow
+	depends = python-praw
+	depends = python-gobject
+	depends = python-requests
+	depends = feh
+	provides = redpaper
+	source = redpaper-git::git+https://github.com/keystroke3/redpaper
+	md5sums = SKIP
+
+pkgname = redpaper-git
+
