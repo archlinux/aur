@@ -2,13 +2,13 @@
 
 pkgname=plasma-angelfish-git
 pkgver=r790.b84056a
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 pkgdesc="Web browser for Plasma Mobile"
 url="https://invent.kde.org/plasma-mobile/plasma-angelfish"
 license=('GPL2')
 depends=('qt5-webengine' 'purpose' 'kirigami2')
-makedepends=('extra-cmake-modules' 'git')
+makedepends=('extra-cmake-modules' 'git' 'corrosion-git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}.git")
