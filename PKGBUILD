@@ -3,23 +3,23 @@
 # Contributor: onestep_ua <onestep at ukr dot net>
 
 pkgname=libg15
-pkgver=1.2.7
-pkgrel=5
+pkgver=1.2.8
+pkgrel=1
 pkgdesc="Provides low-level access to the Logitech G15 and G11 keyboards and Z10 speakers"
 arch=('x86_64')
-url="http://www.g15tools.com/"
+url="https://gitlab.com/menelkir/libg15"
 license=('GPL')
 depends=('libusb-compat')
-source=(https://downloads.sourceforge.net/g15tools/${pkgname}-${pkgver}.tar.bz2)
-sha512sums=('ddffb38f5c3d9ce0cb90b0375c2f5d317a7bb3889fe59d56932a0889c6e15bc2f1e590757d3182eddf7c5bd3101303b332b18fbd37247c20f66e1be256aa93c0')
+source=(https://gitlab.com/menelkir/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2)
+sha512sums=('7c648992605b827080ca8c7d9468a7f8d028ebed01d49cc88aebfa0c754dfc5f2e03fac8d1857183962d06a402be3d9d45de6925d7492bd1682151d2934e47ba')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-v${pkgver}"
   ./configure --prefix=/usr --disable-static
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-v${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
