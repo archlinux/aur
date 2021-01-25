@@ -1,6 +1,6 @@
 pkgbase = ghidra-git
 	pkgdesc = Software reverse engineering framework (git)
-	pkgver = 9.2+r57+g8f1be0932
+	pkgver = 9.2.2+r211+g41c453c54
 	pkgrel = 1
 	url = https://www.nsa.gov/ghidra
 	arch = x86_64
@@ -25,7 +25,6 @@ pkgbase = ghidra-git
 	source = https://sourceforge.net/projects/yajsw/files/yajsw/yajsw-stable-12.12/yajsw-stable-12.12.zip
 	source = https://sourceforge.net/projects/catacombae/files/HFSExplorer/0.21/hfsexplorer-0_21-bin.zip
 	source = ghidra.desktop
-	source = 2443.patch
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = c4a6c72ea09b58a44fcb8918cfada600467f10f99a02b53d2436ac68295e73c8daf9ba0a8bc7160ba1e28e87f032ee034435ebe40af35b6e2fe9fa4607581358
@@ -33,7 +32,6 @@ pkgbase = ghidra-git
 	sha512sums = 0ff5a228ae1c5251c8ba59f9bcd9b4a199b0caaf688f6eccba42c3d227784d8f56f9164b2fad73fc173ec314340c036144123ce152fe911013df5598bd708944
 	sha512sums = b85b4316115695acc78cc7c675c673058c05a238451562be0c6a48b2d11a28e5645a42cb62cdf063be015369df26201dfab6cf2e60f39e6468d1d53b23f94415
 	sha512sums = a85b8b3276e2ff4ed8bda6470c15d02711ebaa48463c775cd2a36549fad738e9fe073dab80f8c57646490ffc959cdc27e9d25b1dc2a5810b0ddb249b5dc99a9b
-	sha512sums = f659c42f50213fcd08770952292de23344a7e13e8412f538ffce8beea89bae0b260e0d0e88119f95218be56557db31ceb7365308657dc2bbb3d6af4a05321ec7
 
 pkgname = ghidra-git
 
