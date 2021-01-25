@@ -2,7 +2,7 @@
 
 pkgname=ijq-bin
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Interactive jq tool. Like jqplay for the commandline'
 arch=('x86_64')
 license=('GPL3')
@@ -16,4 +16,5 @@ sha256sums_x86_64=('7e1f744733f36ee61895bd00d43a734895d83b42b12b55e7947fc30b2d53
 
 package() {
   install -Dm755 "${srcdir}/ijq-${pkgver}/ijq" "${pkgdir}/usr/bin/ijq"
+  install -Dm644 "${srcdir}/ijq-${pkgver}/ijq.1" "${pkgdir}/usr/share/man/man1/ijq.1"
 }
