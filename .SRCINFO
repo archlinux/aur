@@ -1,7 +1,7 @@
 pkgbase = dmenu-abdellatif
 	pkgdesc = my dmenu costume build
 	pkgver = 0.5.8
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/abdellatif-dev/dmenu-abdellatif-dev.git
 	arch = x86_64
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = dmenu-abdellatif
 	depends = freetype2
 	depends = fontconfig
 	depends = libfontconfig.so
-	optdepends = xfce4-terminal
+	optdepends = st
 	provides = dmenu
 	conflicts = dmenu
 	source = git+https://github.com/abdellatif-dev/dmenu-abdellatif-dev.git
