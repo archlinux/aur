@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# use java 14
+# use java 15
 # 8 suffers from an exception
 # 11 doesn't show the tray icon
 export PATH="/usr/lib/jvm/java-15-openjdk/jre/bin/:$PATH"
