@@ -1,0 +1,26 @@
+pkgbase = pangomm248
+	pkgdesc = C++ bindings for Pango
+	pkgver = 2.48.0
+	pkgrel = 1
+	url = https://www.gtkmm.org/
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = mm-common
+	makedepends = glibmm268-docs
+	makedepends = cairomm16-docs
+	makedepends = meson
+	depends = pango
+	depends = glibmm268
+	depends = cairomm16
+	options = !emptydirs
+	source = git+https://gitlab.gnome.org/GNOME/pangomm.git#commit=66ad68dad23957a7207668bd1a232b7aa8773f42
+	sha256sums = SKIP
+
+pkgname = pangomm248
+
+pkgname = pangomm248-docs
+	pkgdesc = C++ bindings for Pango (documentation)
+	depends = 
+	options = !strip
+
