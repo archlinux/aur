@@ -22,6 +22,10 @@ pkgbase = radare2-cutter-git
 	depends = qt5-tools
 	provides = radare2-cutter
 	source = radare2-cutter-git::git+https://github.com/radareorg/r2cutter.git
+	source = cutter-translations::git+https://github.com/radareorg/cutter-translations
+	source = radare2::git+https://github.com/radareorg/radare2
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = radare2-cutter-git

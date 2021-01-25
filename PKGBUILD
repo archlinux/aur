@@ -12,8 +12,12 @@ makedepends=('git' 'cmake' 'shiboken2' 'meson' 'ninja')
 optdepends=()
 provides=('radare2-cutter')
 backup=()
-source=("${pkgname}::git+https://github.com/radareorg/r2cutter.git${_fragment}")
-md5sums=('SKIP')
+source=("${pkgname}::git+https://github.com/radareorg/r2cutter.git${_fragment}"
+	"cutter-translations::git+https://github.com/radareorg/cutter-translations"
+	"radare2::git+https://github.com/radareorg/radare2")
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP')
 
 pkgver() {
   cd ${pkgname}
@@ -23,6 +27,8 @@ pkgver() {
 
 prepare() {
   cd ${pkgname}
+  git config submodule.src/translations.url "${srcdir}"/cutter-translations
+  git config submodule.radare2.url "${srcdir}"/radare2
   git submodule update --init --recursive
 }
 
