@@ -43,7 +43,7 @@
 
 
 pkgname=zoneminder
-pkgver=1.34.22
+pkgver=1.34.23
 pkgrel=1
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
@@ -78,7 +78,7 @@ backup=("etc/nginx/sites-available/$pkgname.conf"
         "etc/httpd/conf/extra/$pkgname.conf"
         "etc/php/conf.d/$pkgname.ini")
 install=$pkgname.install
-source=("git+https://github.com/ZoneMinder/zoneminder.git#tag=$pkgver"
+source=("$pkgname-git::git+https://github.com/ZoneMinder/zoneminder.git#tag=$pkgver"
         "zoneminder-nginx.conf"
         "zoneminder-httpd.conf"
         "zoneminder-php.ini"
@@ -96,7 +96,7 @@ sha256sums=('SKIP'
             '255374c400e01c7666cc7b3e1f06da8445dc57afda631868d33ced62ba631c98')
 
 prepare () {
-    cd $pkgname
+    cd $pkgname-git
     
     # Download and move extra PHP plugins into place
     git submodule update --init --recursive
@@ -106,7 +106,7 @@ prepare () {
 }
 
 build() {
-    cd $pkgname
+    cd $pkgname-git
    
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
           -DZM_CONFIG_DIR=/etc/$pkgname \
@@ -125,7 +125,7 @@ build() {
 }
      
 package() {
-    cd $pkgname
+    cd $pkgname-git
 
     make DESTDIR=$pkgdir install
     
