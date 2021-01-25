@@ -1,0 +1,13 @@
+pkgbase = binance-electron
+	pkgdesc = Binance Electron desktop application.
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://binance.com
+	install = binance-electron.install
+	arch = x86_64
+	license = MIT
+	source = https://ftp.binance.com/electron-desktop/linux/production/binance-amd64-linux.deb
+	sha256sums = 8165b5210af73bb3bbefcb7bba66fd85687594a7b3a32186e1926669847b5e38
+
+pkgname = binance-electron
+
