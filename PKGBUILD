@@ -19,7 +19,7 @@ vulkan-amdgpu-pro
 lib32-vulkan-amdgpu-pro
 )
 pkgver=${major}_${minor}
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url=https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-20-30
 license=('custom: multiple')
@@ -93,6 +93,7 @@ package_amf-amdgpu-pro () {
     depends=("libglvnd" "libx11" "vulkan-amdgpu-pro=${major}_${minor}-${pkgrel}")
 
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/amf-amdgpu-pro_${major}-${minor}_amd64.deb
+    move_libdir "opt/amdgpu-pro/lib/x86_64-linux-gnu" "usr/lib"
     move_copyright
 }
 
@@ -136,31 +137,35 @@ package_vulkan-amdgpu-pro () {
     pkgdesc="AMDGPU Pro Vulkan driver"
     license=('custom: AMDGPU-PRO EULA')
     provides=('vulkan-driver')
-    depends=("amdgpu-pro-core-meta=${major}_${minor}-${pkgrel}" "wayland")
+    depends=("wayland")
 
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/vulkan-amdgpu-pro_${major}-${minor}_amd64.deb
+    move_libdir "opt/amdgpu-pro/lib/x86_64-linux-gnu" "usr/lib"
     move_copyright
 
     # extra_commands:
     mkdir -p "${pkgdir}"/usr/share/vulkan/icd.d/
     mv "${pkgdir}"/opt/amdgpu-pro/etc/vulkan/icd.d/amd_icd64.json "${pkgdir}"/usr/share/vulkan/icd.d/amd_pro_icd64.json
-    rm -rf "${pkgdir}"/opt/amdgpu-pro/etc/
-    rm -rf "${pkgdir}"/etc
+    mv "${pkgdir}"/usr/lib/amdvlk64.so "${pkgdir}"/usr/lib/amdvlkpro64.so
+    sed -i "s#/opt/amdgpu-pro/lib/x86_64-linux-gnu/amdvlk64.so#/usr/lib/amdvlkpro64.so#" "${pkgdir}"/usr/share/vulkan/icd.d/amd_pro_icd64.json
+    find ${pkgdir} -type d -empty -delete
 }
 
 package_lib32-vulkan-amdgpu-pro () {
     pkgdesc="AMDGPU Pro Vulkan driver (32-bit)"
     license=('custom: AMDGPU-PRO EULA')
     provides=('lib32-vulkan-driver')
-    depends=("amdgpu-pro-core-meta=${major}_${minor}-${pkgrel}" "lib32-wayland")
+    depends=("lib32-wayland")
 
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/vulkan-amdgpu-pro_${major}-${minor}_i386.deb
+    move_libdir "opt/amdgpu-pro/lib/i386-linux-gnu" "usr/lib32"
     move_copyright
 
     # extra_commands:
     mkdir -p "${pkgdir}"/usr/share/vulkan/icd.d/
     mv "${pkgdir}"/opt/amdgpu-pro/etc/vulkan/icd.d/amd_icd32.json "${pkgdir}"/usr/share/vulkan/icd.d/amd_pro_icd32.json
-    rm -rf "${pkgdir}"/opt/amdgpu-pro/etc/
-    rm -rf "${pkgdir}"/etc
+    mv "${pkgdir}"/usr/lib32/amdvlk32.so "${pkgdir}"/usr/lib32/amdvlkpro32.so
+    sed -i "s#/opt/amdgpu-pro/lib/i386-linux-gnu/amdvlk32.so#/usr/lib32/amdvlkpro32.so#" "${pkgdir}"/usr/share/vulkan/icd.d/amd_pro_icd32.json
+    find ${pkgdir} -type d -empty -delete
 }
 
