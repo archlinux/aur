@@ -1,0 +1,8 @@
+# USB devices
+SUBSYSTEM=="usb", GROUP="plugdev"
+
+# HID devices
+KERNEL=="hidraw*", GROUP="input", MODE:="0660"
+
+# Creating virtual devices
+KERNEL=="uinput", GROUP="input", MODE:="0660"
