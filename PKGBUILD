@@ -1,7 +1,7 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 pkgname=psrecord
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Record and plot the CPU and memory activity of a process."
 arch=(any)
 url="https://github.com/astrofrog/psrecord"

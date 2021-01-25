@@ -1,7 +1,7 @@
 pkgbase = psrecord
 	pkgdesc = Record and plot the CPU and memory activity of a process.
 	pkgver = 1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/astrofrog/psrecord
 	arch = any
 	license = BSD
