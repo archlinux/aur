@@ -10,8 +10,9 @@ pkgbase = infer
 	depends = python2
 	depends = python
 	depends = java-environment
-	depends = gcc>=4.7.2
-	depends = opam>=1.2.0
+	depends = gcc>=5.0.0
+	depends = opam>=2.0.0
+	depends = ocaml>=4.11.1
 	source = infer::git://github.com/facebook/infer.git
 	sha256sums = SKIP
 

@@ -8,22 +8,14 @@ pkgdesc="Static Analyzer by Facebook"
 arch=('x86_64')
 url="https://github.com/facebook/infer"
 license=('BSD')
-depends=('python2' 'python' 'java-environment' 'gcc>=4.7.2' 'opam>=1.2.0')
+depends=('python2' 'python' 'java-environment' 'gcc>=5.0.0' 'opam>=2.0.0', 'ocaml>=4.11.1')
 makedepends=('git' 'rsync')
 source=("${pkgname}::git://github.com/facebook/infer.git")
 sha256sums=('SKIP')
 
 
 build() {
-    opam init -y --comp=4.08.0
-    opam switch 4.08.0
-    eval $(opam config env)
-
     cd "${pkgname}"
-    git submodule update --init --recursive
-    opam update
-    opam pin add --yes --no-action infer .
-    opam install --deps-only infer
     ./build-infer.sh
 }
 
