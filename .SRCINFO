@@ -1,0 +1,24 @@
+pkgbase = atkmm236
+	pkgdesc = C++ bindings for ATK
+	pkgver = 2.36.0
+	pkgrel = 1
+	url = https://www.gtkmm.org/
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = mm-common
+	makedepends = glibmm268-docs
+	makedepends = meson
+	depends = atk
+	depends = glibmm268
+	options = !emptydirs
+	source = git+https://gitlab.gnome.org/GNOME/atkmm.git#commit=f48b96d15452de003dd05a4bed6e17742cc977e8
+	sha256sums = SKIP
+
+pkgname = atkmm236
+
+pkgname = atkmm236-docs
+	pkgdesc = C++ bindings for ATK (documentation)
+	depends = 
+	options = !strip
+
