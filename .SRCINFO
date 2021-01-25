@@ -1,6 +1,6 @@
 pkgbase = lab
 	pkgdesc = A hub-like tool for GitLab (tagged release)
-	pkgver = 0.18.0
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://zaquestion.github.io/lab
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = lab
 	makedepends = go
 	depends = git
 	optdepends = hub
-	source = lab-0.18.0.tar.gz::https://github.com/zaquestion/lab/archive/v0.18.0.tar.gz
-	sha256sums = b34b08cb20d16f541eb3bf428e0224b4905ee40bda9394e7da4df756ba1aa109
+	source = lab-0.19.0.tar.gz::https://github.com/zaquestion/lab/archive/v0.19.0.tar.gz
+	sha256sums = 7d8c3c88ac944b50137200ef565a42029e590bc66edb8eecf74ceb7aa0c0b908
 
 pkgname = lab
 
