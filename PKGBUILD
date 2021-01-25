@@ -3,7 +3,7 @@
 # Contributor: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=ananicy-nosystemd-git
-pkgver=2.1.0.r12.g38eb477
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Ananicy - is Another auto nice daemon, with community rules support"
 arch=('any')

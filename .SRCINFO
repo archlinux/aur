@@ -1,6 +1,6 @@
 pkgbase = ananicy-nosystemd-git
 	pkgdesc = Ananicy - is Another auto nice daemon, with community rules support
-	pkgver = 2.1.0.r12.g38eb477
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/Nefelim4ag/Ananicy
 	arch = any
