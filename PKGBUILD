@@ -3,7 +3,7 @@
 # Co-Maintainer: bartus <arch-user-repo@bartus.33mail.com>
 
 pkgname=inkscape-git
-pkgver=1.1+devel.r900.gfa8525a7e1
+pkgver=1.1.alpha.r9.g158a1947eb
 pkgrel=1
 epoch=5
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
@@ -38,7 +38,7 @@ prepare() {
 
 pkgver() {
   cd "$_gitname"
-  printf %s.%s+devel.r%s.g%s $(grep -oP -e "INKSCAPE_VERSION_(MAJOR|MINOR) +\K[0-9]+" CMakeLists.txt) $(git rev-list $(git describe --tag --abbrev=0)..HEAD --count) $(git log --pretty=format:'%h' -n 1)
+  git describe --long --tags| sed 's/^INKSCAPE_//;s/.*/\L&/;s/\([^-]*-g\)/r\1/;s/[-_]/./g'
 }
 
 build() {
