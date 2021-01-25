@@ -1,0 +1,17 @@
+pkgbase = t-rec-git
+	pkgdesc = Blazingly fast terminal recorder (git)
+	pkgver = 0.5.0.r0.g59fdd28
+	pkgrel = 1
+	url = https://github.com/sassman/t-rec-rs
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	makedepends = git
+	depends = libx11
+	depends = imagemagick
+	provides = t-rec
+	conflicts = t-rec
+	source = git+https://github.com/sassman/t-rec-rs
+	sha512sums = SKIP
+
+pkgname = t-rec-git

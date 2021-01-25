@@ -1,0 +1,37 @@
+# Maintainer: orhun <orhunparmaksiz@gmail.com>
+# https://github.com/orhun/pkgbuilds
+
+pkgname=t-rec-git
+pkgver=0.5.0.r0.g59fdd28
+pkgrel=1
+pkgdesc="Blazingly fast terminal recorder (git)"
+arch=('x86_64')
+url="https://github.com/sassman/t-rec-rs"
+license=('GPL3')
+depends=('libx11' 'imagemagick')
+makedepends=('rust' 'git')
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
+source=("git+${url}")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname%-git}-rs"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "${pkgname%-git}-rs"
+  cargo build --release --locked
+}
+
+check() {
+  cd "${pkgname%-git}-rs"
+  cargo test --release --locked
+}
+
+package() {
+  cd "${pkgname%-git}-rs"
+  install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+}
