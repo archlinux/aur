@@ -1,0 +1,582 @@
+diff --git a/env b/env
+index 1e51c5b5..a8c0d483 100644
+--- a/env
++++ b/env
+@@ -1,9 +1,29 @@
+ #!/bin/bash
+ 
+-MYPATH=`realpath $0`
+-MYPATH=`dirname ${MYPATH}`
++ENVPATH=$(realpath "${BASH_SOURCE[0]}")
++ENVPATH=$(dirname "${ENVPATH}")
+ 
+-if [ -z $VPRPATH ]; then
+-	export VPRPATH=$MYPATH
+-	export PYTHONPATH=${VPRPATH}/python:${VPRPATH}/python/prjxray:${PYTHONPATH}
+-fi
++DATABASE_DIR=${DATABASE_DIR:-$(prjxray-config)}
++
++SHARE_DIR_PATH=$(realpath "${ENVPATH}/../share/symbiflow")
++export SHARE_DIR_PATH
++export TECHMAP_PATH=${SHARE_DIR_PATH}/techmaps/xc7_vpr/techmap
++export UTILS_PATH=${SHARE_DIR_PATH}/scripts
++
++find_device_from_part() {
++	# Try to find device name. Accept only when exactly one is found
++
++	local PART=$1
++	[[ -n ${PART} ]] || return 1
++	PART_DIRS=("${DATABASE_DIR}"/*/"${PART}")
++	if [[ ${#PART_DIRS[@]} -eq 1 ]]; then
++		basename -- "$(dirname "${PART_DIRS[0]}")"
++		return 0
++	else
++		echo "Could not determine device from part name alone - please specify a device"
++		return 1
++	fi
++}
++
++export VPRPATH=${VPRPATH:-$ENVPATH}
++export PYTHONPATH=${VPRPATH}/python:${VPRPATH}/python/prjxray:${PYTHONPATH:-}
+diff --git a/symbiflow_generate_constraints b/symbiflow_generate_constraints
+index a973e577..99812c63 100755
+--- a/symbiflow_generate_constraints
++++ b/symbiflow_generate_constraints
+@@ -1,10 +1,10 @@
+ #!/bin/bash
+-set -e
++set -eu
+ 
+-MYPATH=`realpath $0`
+-MYPATH=`dirname ${MYPATH}`
+-
+-export SHARE_DIR_PATH=`realpath ${MYPATH}/../share/symbiflow`
++MYPATH=$(realpath "$0")
++MYPATH=$(dirname "${MYPATH}")
++# shellcheck source=env
++source "${MYPATH}/env"
+ 
+ EBLIF=$1
+ NET=$2
+@@ -13,17 +13,27 @@ DEVICE=$4
+ ARCH_DEF=$5
+ PCF=$6
+ 
+-if [ ! -z $PCF ]; then
+-    PCF_OPTS="--pcf $PCF"
++if [[ -n ${PCF} ]]; then
++    PCF_OPTS=(--pcf "${PCF}")
+ fi
+ 
+ VPR_GRID_MAP=${SHARE_DIR_PATH}/arch/${DEVICE}/vpr_grid_map.csv
+ PINMAP=${SHARE_DIR_PATH}/arch/${DEVICE}/${PART}/pinmap.csv
+ IOGEN=${SHARE_DIR_PATH}/scripts/prjxray_create_ioplace.py
+ CONSTR_GEN=${SHARE_DIR_PATH}/scripts/prjxray_create_place_constraints.py
+-PROJECT=$(basename -- "$EBLIF")
++PROJECT=$(basename -- "${EBLIF}")
+ IOPLACE_FILE="${PROJECT%.*}.ioplace"
+ 
+-python3 ${IOGEN} --blif $EBLIF --map $PINMAP --net $NET $PCF_OPTS > ${IOPLACE_FILE}
+-python3 ${CONSTR_GEN} --net $NET --arch ${ARCH_DEF} --blif $EBLIF --vpr_grid_map ${VPR_GRID_MAP} --input ${IOPLACE_FILE} > constraints.place
++python3 "${IOGEN}" \
++    --blif "${EBLIF}" \
++    --map "${PINMAP}" \
++    --net "${NET}" \
++    "${PCF_OPTS[@]}" > "${IOPLACE_FILE}"
++
++python3 "${CONSTR_GEN}" \
++    --net "${NET}" \
++    --arch "${ARCH_DEF}" \
++    --blif "${EBLIF}" \
++    --vpr_grid_map "${VPR_GRID_MAP}" \
++    --input "${IOPLACE_FILE}" > constraints.place
+ 
+diff --git a/symbiflow_pack b/symbiflow_pack
+index 9f4371ea..d355fa55 100755
+--- a/symbiflow_pack
++++ b/symbiflow_pack
+@@ -1,15 +1,18 @@
+ #!/bin/bash
+-set -e
++set -eu
+ 
+-MYPATH=`realpath $0`
+-MYPATH=`dirname ${MYPATH}`
++MYPATH=$(realpath "$0")
++MYPATH=$(dirname "${MYPATH}")
+ 
+-source ${MYPATH}/env
+-source ${VPRPATH}/vpr_common
++# shellcheck source=env
++source "${MYPATH}/env"
+ 
+-parse_args "$@"
++OUT_NOISY_WARNINGS=noisy_warnings_pack.log
++
++# shellcheck source=vpr_common
++source "${VPRPATH}/vpr_common"
+ 
+-export OUT_NOISY_WARNINGS=noisy_warnings-${DEVICE}_pack.log
++parse_args "$@"
+ 
+ run_vpr --pack
+ 
+diff --git a/symbiflow_place b/symbiflow_place
+index 09b10817..574779a6 100755
+--- a/symbiflow_place
++++ b/symbiflow_place
+@@ -1,27 +1,30 @@
+ #!/bin/bash
+-set -e
++set -eu
+ 
+-MYPATH=`realpath $0`
+-MYPATH=`dirname ${MYPATH}`
++MYPATH=$(realpath "$0")
++MYPATH=$(dirname "${MYPATH}")
+ 
+-source ${MYPATH}/env
+-source ${MYPATH}/vpr_common
++# shellcheck source=env
++source "${MYPATH}/env"
++
++OUT_NOISY_WARNINGS=noisy_warnings_place.log
++
++# shellcheck source=vpr_common
++source "${VPRPATH}/vpr_common"
+ 
+ parse_args "$@"
+ 
+-if [ -z $PCF ]; then
++if [[ -z ${PCF} ]]; then
+     PCF=""
+ fi
+ 
+-if [ -z $NET ]; then
++if [[ -z ${NET} ]]; then
+      echo "Please provide net file name"
+      exit 1
+ fi
+ 
+-OUT_NOISY_WARNINGS=noisy_warnings-${DEVICE}_place.log
+-
+ echo "Generating coinstrains ..."
+-symbiflow_generate_constraints $EBLIF $NET $PART $DEVICE $ARCH_DEF $PCF
++symbiflow_generate_constraints "${EBLIF}" "${NET}" "${PART}" "${DEVICE}" "${ARCH_DEF}" "${PCF}"
+ 
+ run_vpr --fix_clusters constraints.place --place
+ 
+diff --git a/symbiflow_route b/symbiflow_route
+index ac8ede98..a4c8f4f2 100755
+--- a/symbiflow_route
++++ b/symbiflow_route
+@@ -1,15 +1,18 @@
+ #!/bin/bash
+-set -e
++set -eu
+ 
+-MYPATH=`realpath $0`
+-MYPATH=`dirname ${MYPATH}`
++MYPATH=$(realpath "$0")
++MYPATH=$(dirname "${MYPATH}")
+ 
+-source ${MYPATH}/env
+-source ${VPRPATH}/vpr_common
++# shellcheck source=env
++source "${MYPATH}/env"
+ 
+-parse_args "$@"
++OUT_NOISY_WARNINGS=noisy_warnings_route.log
++
++# shellcheck source=vpr_common
++source "${VPRPATH}/vpr_common"
+ 
+-export OUR_NOISY_WARNINGS=noisy_warnings-${DEVICE}_pack.log
++parse_args "$@"
+ 
+ run_vpr --route
+ 
+diff --git a/symbiflow_synth b/symbiflow_synth
+index e9c3910e..302991ee 100755
+--- a/symbiflow_synth
++++ b/symbiflow_synth
+@@ -1,14 +1,11 @@
+ #!/bin/bash
+-set -e
++set -eu
+ 
+-MYPATH=`realpath $0`
+-MYPATH=`dirname ${MYPATH}`
++MYPATH=$(realpath "$0")
++MYPATH=$(dirname "${MYPATH}")
++# shellcheck source=env
++source "${MYPATH}/env"
+ 
+-export SHARE_DIR_PATH=`realpath ${MYPATH}/../share/symbiflow`
+-export TECHMAP_PATH=${SHARE_DIR_PATH}/techmaps/xc7_vpr/techmap
+-
+-
+-export UTILS_PATH=${SHARE_DIR_PATH}/scripts
+ SYNTH_TCL_PATH=${UTILS_PATH}/xc7/synth.tcl
+ CONV_TCL_PATH=${UTILS_PATH}/xc7/conv.tcl
+ SPLIT_INOUTS=${UTILS_PATH}/split_inouts.py
+@@ -25,11 +22,9 @@ TOPNAME=0
+ DEVICENAME=0
+ PARTNAME=0
+ 
+-for arg in $@; do
+-	echo $arg
+-	case "$arg" in
++for arg in "$@"; do
++	case "${arg}" in
+ 		-t|--top)
+-			echo "adding top"
+ 			VERILOGLIST=0
+ 			XDCLIST=0
+ 			TOPNAME=1
+@@ -65,16 +60,16 @@ for arg in $@; do
+ 			PARTNAME=1
+ 			;;
+ 		*)
+-			if [ $VERILOGLIST -eq 1 ]; then
+-				VERILOG_FILES+=($arg)
+-			elif [ $XDCLIST -eq 1 ]; then
+-				XDC_FILES+=($arg)
+-			elif [ $TOPNAME -eq 1 ]; then
+-				TOP=$arg
+-			elif [ $DEVICENAME -eq 1 ]; then
+-				DEVICE=$arg
+-			elif [ $PARTNAME -eq 1 ]; then
+-				PART=$arg
++			if [[ ${VERILOGLIST} -eq 1 ]]; then
++				VERILOG_FILES+=("${arg}")
++			elif [[ ${XDCLIST} -eq 1 ]]; then
++				XDC_FILES+=("${arg}")
++			elif [[ ${TOPNAME} -eq 1 ]]; then
++				TOP=${arg}
++			elif [[ ${DEVICENAME} -eq 1 ]]; then
++				DEVICE=${arg}
++			elif [[ ${PARTNAME} -eq 1 ]]; then
++				PART=${arg}
+ 			else
+ 				echo "Usage: synth [-t|--top <top module name> -v|--verilog <Verilog files list> [-x|--xdc <XDC files list>]"
+ 				echo "             [-d|--device <device type (e.g. artix7)>] [-p|--part <part name>]"
+@@ -85,26 +80,24 @@ for arg in $@; do
+ 	esac
+ done
+ 
+-if [ ${#VERILOG_FILES[@]} -eq 0 ]; then
++if [[ ${#VERILOG_FILES[@]} -eq 0 ]]; then
+ 	echo "Please provide at least one Verilog file"
+ 	exit 1
+ fi
+ 
+-DATABASE_DIR=${DATABASE_DIR:=$(prjxray-config)}
+-
+-export TOP=${TOP}
++export TOP
+ export USE_ROI="FALSE"
+ export INPUT_XDC_FILE=${XDC_FILES[*]}
+-export OUT_JSON=$TOP.json
++export OUT_JSON=${TOP}.json
+ export OUT_SDC=${TOP}.sdc
+ export SYNTH_JSON=${TOP}_io.json
+ export OUT_SYNTH_V=${TOP}_synth.v
+ export OUT_EBLIF=${TOP}.eblif
+-export PART_JSON=`realpath ${DATABASE_DIR}/$DEVICE/$PART/part.json`
++PART_JSON=$(realpath "${DATABASE_DIR}/${DEVICE}/${PART}/part.json")
++export PART_JSON
+ export OUT_FASM_EXTRA=${TOP}_fasm_extra.fasm
+-export PYTHON3=${PYTHON3:=$(which python3)}
+ LOG=${TOP}_synth.log
+ 
+-yosys -p "tcl ${SYNTH_TCL_PATH}" -l $LOG ${VERILOG_FILES[*]}
+-python3 ${SPLIT_INOUTS} -i ${OUT_JSON} -o ${SYNTH_JSON}
+-yosys -p "read_json $SYNTH_JSON; tcl ${CONV_TCL_PATH}"
++yosys -p "tcl ${SYNTH_TCL_PATH}" -l "${LOG}" "${VERILOG_FILES[@]}"
++python3 "${SPLIT_INOUTS}" -i "${OUT_JSON}" -o "${SYNTH_JSON}"
++yosys -p "read_json ${SYNTH_JSON}; tcl ${CONV_TCL_PATH}"
+diff --git a/symbiflow_write_bitstream b/symbiflow_write_bitstream
+index ea220e13..f97278ac 100755
+--- a/symbiflow_write_bitstream
++++ b/symbiflow_write_bitstream
+@@ -1,22 +1,23 @@
+ #!/bin/bash
+-set -e
++set -eu
+ 
+-MYPATH=`realpath $0`
+-MYPATH=`dirname ${MYPATH}`
++MYPATH=$(realpath "$0")
++MYPATH=$(dirname "${MYPATH}")
+ 
+-source ${MYPATH}/env
++# shellcheck source=env
++source "${MYPATH}/env"
+ echo "Writing bitstream ..."
+ 
+-FRM2BIT=""
+-if [ ! -z ${FRAMES2BIT} ]; then
+-	FRM2BIT="--frm2bit ${FRAMES2BIT}"
++FRM2BIT=()
++if [[ -v FRAMES2BIT ]]; then
++	FRM2BIT=(--frm2bit "${FRAMES2BIT}")
+ fi
+ 
+ OPTS=d:f:b:p:
+ LONGOPTS=device:,fasm:,bit:,part:
+ 
+-PARSED_OPTS=`getopt --options=${OPTS} --longoptions=${LONGOPTS} --name $0 -- $@`
+-eval set -- ${PARSED_OPTS}
++PARSED_OPTS=$(getopt --options="${OPTS}" --longoptions="${LONGOPTS}" --name "$0" -- "$@")
++eval set -- "${PARSED_OPTS}"
+ 
+ DEVICE=""
+ FASM=""
+@@ -44,32 +45,37 @@ while true; do
+ 		--)
+ 			break
+ 			;;
++		*)
++			echo "Usage:"
++			echo "symbiflow_write_bitstream (-f|--fasm) FASM_INPUT_FILE (-b|--bit) BIT_INPUT_FILE"
++			echo "                          [(-d|--device) DEVICE_TYPE] [(-p|--part) PART_NAME]"
++			exit 1
+ 	esac
+ done
+ 
+-DATABASE_DIR=${DATABASE_DIR:=$(prjxray-config)}
+-DBROOT=`realpath ${DATABASE_DIR}/${DEVICE}`
+-
+-if [ -z $DEVICE ]; then
+-	# Try to find device name. Accept only when exactly one is found
+-	PART_DIRS=(${DATABASE_DIR}/*/${PART})
+-	if [ ${#PART_DIRS[@]} -eq 1 ]; then
+-		DEVICE=$(basename $(dirname "${PART_DIRS[0]}"))
+-	else
+-		echo "Please provide device name"
+-		exit 1
+-	fi
++if [[ -z ${DEVICE} ]]; then
++	DEVICE=$(find_device_from_part "${PART}")
+ fi
+ 
+-if [ -z $FASM ]; then
++if [[ -z ${FASM} ]]; then
+ 	echo "Please provide fasm file name"
+ 	exit 1
+ fi
+ 
+-if [ -z $BIT ]; then
++if [[ -z ${BIT} ]]; then
+ 	echo "Please provide bit file name"
+ 	exit 1
+ fi
+ 
+-xcfasm --db-root ${DBROOT} --part ${PART} --part_file ${DBROOT}/${PART}/part.yaml --sparse --emit_pudc_b_pullup --fn_in ${FASM} --bit_out ${BIT} ${FRM2BIT}
++DBROOT=$(realpath "${DATABASE_DIR}/${DEVICE}")
++
++xcfasm \
++	--db-root "${DBROOT}" \
++	--part "${PART}" \
++	--part_file "${DBROOT}/${PART}/part.yaml" \
++	--sparse \
++	--emit_pudc_b_pullup \
++	--fn_in "${FASM}" \
++	--bit_out "${BIT}" \
++	"${FRM2BIT[@]}"
+ 
+diff --git a/symbiflow_write_fasm b/symbiflow_write_fasm
+index ec4f8561..d4ea43ba 100755
+--- a/symbiflow_write_fasm
++++ b/symbiflow_write_fasm
+@@ -1,26 +1,28 @@
+ #!/bin/bash
+-set -e
++set -eu
+ 
+-MYPATH=`realpath $0`
+-MYPATH=`dirname ${MYPATH}`
++MYPATH=$(realpath "$0")
++MYPATH=$(dirname "${MYPATH}")
+ 
+-source ${MYPATH}/env
+-source ${VPRPATH}/vpr_common
++# shellcheck source=env
++source "${MYPATH}/env"
++
++OUT_NOISY_WARNINGS=noisy_warnings_fasm.log
++
++# shellcheck source=vpr_common
++source "${VPRPATH}/vpr_common"
+ 
+ parse_args "$@"
+ 
+ TOP="${EBLIF%.*}"
+ FASM_EXTRA=${TOP}_fasm_extra.fasm
+ 
+-export OUT_NOISY_WARNINGS=noisy_warnings-${DEVICE}_fasm.log
+-
+ run_genfasm
+ 
+-echo "FASM extra: $FASM_EXTRA"
+-if [ -f $FASM_EXTRA ]; then
++if [[ -f ${FASM_EXTRA} ]]; then
+ 	echo "writing final fasm"
+-	cat ${TOP}.fasm $FASM_EXTRA > tmp.fasm
+-	mv tmp.fasm ${TOP}.fasm
++	cat "${TOP}.fasm" "${FASM_EXTRA}" > tmp.fasm
++	mv tmp.fasm "${TOP}.fasm"
+ fi
+ 
+ mv vpr_stdout.log fasm.log
+diff --git a/vpr_common b/vpr_common
+index 8a831587..fd25a465 100644
+--- a/vpr_common
++++ b/vpr_common
+@@ -1,6 +1,8 @@
+ #!/bin/bash
+ 
+-if [ -z $VPR_OPTIONS ]; then
++[[ -v SHARE_DIR_PATH ]] || { echo "Error: env must be sourced before vpr_common"; exit 1; }
++
++if [[ -z ${VPR_OPTIONS:+} ]]; then
+      echo "Using default VPR options."
+      VPR_OPTIONS="@VPR_ARGS@"
+ fi
+@@ -10,7 +12,7 @@ function parse_args {
+      OPTS=d:e:p:n:P:s:a:
+      LONGOPTS=device:,eblif:,pcf:,net:,part:,sdc:,additional_vpr_options:
+ 
+-     PARSED_OPTS=`getopt --options=${OPTS} --longoptions=${LONGOPTS} --name $0 -- "$@"`
++     PARSED_OPTS=$(getopt --options="${OPTS}" --longoptions="${LONGOPTS}" --name "$0" -- "$@")
+      eval set -- "${PARSED_OPTS}"
+ 
+      DEVICE=""
+@@ -49,66 +51,58 @@ function parse_args {
+                     shift 2
+                     ;;
+                -a|--additional_vpr_options)
+-                    ADDITIONAL_VPR_OPTIONS="$2"
++                    read -ra ADDITIONAL_VPR_OPTIONS <<<"$2"
++                    VPR_OPTIONS+=("${ADDITIONAL_VPR_OPTIONS[@]}")
+                     shift 2
+ 		    ;;
+                --)
+                     break
+                     ;;
++               *)
++                    echo "Unknown argument: $1"
++                    exit 1
++                    ;;
+           esac
+      done
+ 
+-     if [ -z $DEVICE ] && [ -n $PART ]; then
+-          # Try to find device name. Accept only when exactly one is found
+-          PART_DIRS=(${MYPATH}/../share/symbiflow/arch/*/${PART})
+-          if [ ${#PART_DIRS[@]} -eq 1 ]; then
+-               DEVICE=$(basename $(dirname "${PART_DIRS[0]}"))
+-          fi
+-     fi
+-     if [ -z $DEVICE ]; then
+-          echo "Please provide device name"
+-          exit 1
++     if [[ -z ${DEVICE} ]]; then
++          DEVICE=$(find_device_from_part "${PART}")
+      fi
+ 
+-     if [ -z $EBLIF ]; then
++     if [[ -z ${EBLIF} ]]; then
+           echo "Please provide blif file name"
+           exit 1
+      fi
+ 
+-     export DEVICE=$DEVICE
+-     export EBLIF=$EBLIF
+-     export PCF=$PCF
+-     export NET=$NET
+-     export SDC=$SDC
+-     export VPR_OPTIONS="$VPR_OPTIONS $ADDITIONAL_VPR_OPTIONS"
++     export DEVICE EBLIF PCF NET SDC VPR_OPTIONS
+ 
+-     export ARCH_DIR=`realpath ${MYPATH}/../share/symbiflow/arch/$DEVICE`
++     export ARCH_DIR=${SHARE_DIR_PATH}/arch/${DEVICE}
+      export ARCH_DEF=${ARCH_DIR}/arch.timing.xml
+      export LOOKAHEAD=${ARCH_DIR}/rr_graph_${DEVICE}.lookahead.bin
+      export RR_GRAPH=${ARCH_DIR}/rr_graph_${DEVICE}.rr_graph.real.bin
+      export RR_GRAPH_XML=${ARCH_DIR}/rr_graph_${DEVICE}.rr_graph.real.xml
+      export PLACE_DELAY=${ARCH_DIR}/rr_graph_${DEVICE}.place_delay.bin
+-     export DEVICE_NAME=`echo $DEVICE | sed -n 's/_/-/p'`
++     export DEVICE_NAME=${DEVICE//_/-}
+ }
+ 
+ function run_vpr {
+      set -e
+ 
+-     SDC_OPTIONS=""
+-     if [ ! -z $SDC ]
++     SDC_OPTIONS=()
++     if [[ -n ${SDC} ]]
+      then
+-          SDC_OPTIONS="--sdc_file $SDC"
++          SDC_OPTIONS=(--sdc_file "${SDC}")
+      fi
+ 
+-     vpr ${ARCH_DEF} \
+-         ${EBLIF} \
+-         --device ${DEVICE_NAME} \
+-         ${VPR_OPTIONS} \
+-         --read_rr_graph ${RR_GRAPH} \
+-         --read_router_lookahead ${LOOKAHEAD} \
+-         --read_placement_delay_lookup ${PLACE_DELAY} \
+-         ${SDC_OPTIONS} \
+-         $@
++     vpr "${ARCH_DEF}" \
++         "${EBLIF}" \
++         --device "${DEVICE_NAME}" \
++         "${VPR_OPTIONS[@]}" \
++         --read_rr_graph "${RR_GRAPH}" \
++         --read_router_lookahead "${LOOKAHEAD}" \
++         --read_placement_delay_lookup "${PLACE_DELAY}" \
++         "${SDC_OPTIONS[@]}" \
++         "$@"
+ 
+      return $?
+ }
+@@ -116,12 +110,12 @@ function run_vpr {
+ function run_genfasm {
+      set -e
+ 
+-     genfasm ${ARCH_DEF} \
+-         ${EBLIF} \
+-         --device ${DEVICE_NAME} \
+-         ${VPR_OPTIONS} \
+-         --read_rr_graph ${RR_GRAPH} \
+-         $@
++     genfasm "${ARCH_DEF}" \
++         "${EBLIF}" \
++         --device "${DEVICE_NAME}" \
++         "${VPR_OPTIONS[@]}" \
++         --read_rr_graph "${RR_GRAPH}" \
++         "$@"
+ 
+      return $?
+ }
+@@ -129,11 +123,11 @@ function run_genfasm {
+ function run_vpr_xml_rr_graph {
+      set -e
+ 
+-     vpr ${ARCH_DEF} \
+-          ${EBLIF} \
+-          --read_rr_graph ${RR_GRAPH}
+-          --write_rr_graph ${RR_GRAPH_XML}
+-          $@
++     vpr "${ARCH_DEF}" \
++          "${EBLIF}" \
++          --read_rr_graph "${RR_GRAPH}" \
++          --write_rr_graph "${RR_GRAPH_XML}" \
++          "$@"
+ 
+      return $?
+ }
