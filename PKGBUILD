@@ -2,13 +2,13 @@
 
 pkgname=ijq
 pkgver=0.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Interactive jq tool, like jqplay for the commandline'
 arch=(x86_64)
 url="https://git.sr.ht/~gpanders/$pkgname"
 license=(GPL3)
 depends=(jq)
-makedepends=(go)
+makedepends=(go scdoc)
 source=("$pkgname-v$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('1802a7b319349d86927908854e1cb27ec465e1abf502914c45658c61a9793dda')
 
@@ -28,8 +28,9 @@ build() {
 		-buildmode=pie \
 		-mod=readonly \
 		-modcacherw \
-		-ldflags "-linkmode external -extldflags \"$LDFLAGS\"" \
+		-ldflags "-linkmode external -extldflags \"$LDFLAGS\" -X main.Version=$pkgver" \
 		. ./...
+	make docs
 }
 
 check() {
@@ -41,4 +42,5 @@ check() {
 package() {
 	cd "$pkgname-v$pkgver"
 	install -Dm755 -t "$pkgdir/usr/bin/" "$pkgname"
+	install -Dm644 -t "$pkgdir/usr/share/man/man1/" "$pkgname.1"
 }
