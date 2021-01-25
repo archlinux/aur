@@ -1,6 +1,6 @@
 # Maintainer: shulhan <ms@kilabit.info>
 pkgname=rescached-git
-pkgver=3.0.2.r0.g5c3f180
+pkgver=4.0.0.r0.g004ca8b
 pkgrel=1
 pkgdesc="Resolver/DNS cache daemon"
 arch=('i686' 'x86_64' 'armv7h')
@@ -10,7 +10,7 @@ license=('custom:BSD')
 depends=('bash')
 provides=('rescached')
 
-makedepends=('git' 'go>=1.13')
+makedepends=('git' 'go>=1.14')
 source=(
 	"$pkgname::git+https://github.com/shuLhan/rescached-go.git"
 )
@@ -20,10 +20,11 @@ sha1sums=(
 
 backup=(
 	'etc/rescached/rescached.cfg'
-	'etc/rescached/hosts.d/hosts.block'
 	'etc/rescached/localhost.cert.pem'
 	'etc/rescached/localhost.key.pem'
 )
+
+install=rescached.install
 
 pkgver() {
 	cd "$pkgname"
@@ -40,6 +41,7 @@ build() {
 	echo ">> make ..."
 	echo ">>"
 	unset GOROOT
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 	make || return 1
 }
 

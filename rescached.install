@@ -1,0 +1,8 @@
+## arg 1:  the new package version
+post_upgrade() {
+	cat <<EOF
+!!! The "/etc/rescached/master.d" directory has been renamed to
+    "/etc/rescached/zone.d".  You should copy the files manually before
+    restarting the rescached.service.
+EOF
+}
