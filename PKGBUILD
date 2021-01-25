@@ -42,7 +42,7 @@ build() {
     -DCUTTER_USE_ADDITIONAL_RADARE2_PATHS=OFF \
     -DCUTTER_ENABLE_CRASH_REPORTS=OFF \
     -DCUTTER_ENABLE_GRAPHVIZ=ON
-  make -C build VERBOSE=1
+  make -C build
 }
 
 package() {
