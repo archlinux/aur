@@ -1,18 +1,18 @@
 pkgbase = big-finish-downloader
 	pkgdesc = A GTK tool to manage your Big Finish Library
-	pkgver = v1.0.2
-	pkgrel = 3
+	pkgver = v1.0.3
+	pkgrel = 4
 	url = https://github.com/Emersont1/big-finish-downloader
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = gcc
 	depends = gtk3
 	depends = libsecret
 	depends = curl
-	source = https://github.com/Emersont1/big-finish-downloader/releases/download/v1.0.2/bin.tar.gz
-	md5sums = 3a3182b57268cb2ea12ca70d77da738b
-	sha256sums = 9931cd367dda519deb51f1e0e7050fba242361ab628ec5fc98fa752750b55d57
+	source = https://github.com/Emersont1/big-finish-downloader/releases/download/v1.0.3/bin.tar.gz
+	md5sums = 77648329eb96e399a29d862eaab5ea0d
+	sha256sums = 6eed9608d75457b7d2ec93c48743ce82ec9e67c5a205e2851ced3dc7e1fb130c
 
 pkgname = big-finish-downloader
 
