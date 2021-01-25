@@ -5,7 +5,7 @@
 
 pkgname=ananicy-runit
 _alias=ananicy
-pkgver=2.2.0.r55.g5559e01
+pkgver=1
 pkgrel=1
 pkgdesc="Ananicy - is Another auto nice daemon, with community rules support"
 arch=('any')
