@@ -1,17 +1,16 @@
 # Maintainer: Chris Lane <aur at chrislane dot com>
 pkgname=digikam-git
 pkgver=v7.2.0.beta1.r500.g9541292038
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced digital photo management application'
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://www.digikam.org/"
 depends=(lensfun opencv akonadi-contacts knotifyconfig libksane kfilemetadata qtav marble-common
-         threadweaver kcalendarcore qt5-xmlpatterns imagemagick glu)
-makedepends=(extra-cmake-modules doxygen eigen boost kdoctools jasper git)
+         threadweaver kcalendarcore qt5-xmlpatterns imagemagick glu jasper)
+makedepends=(extra-cmake-modules doxygen eigen boost kdoctools git)
 optdepends=('hugin: panorama tool'
             'qt5-imageformats: support for additional image formats (WEBP, TIFF)'
-            'jasper: openJPEG support'
             'rawtherapee: RAW import'
             'darktable: RAW import'
             "digikam-plugin-gmic: G'MIC plugin"
