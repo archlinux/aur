@@ -8,6 +8,7 @@ pkgbase = icebrolite-git
 	license = GPL
 	makedepends = make
 	makedepends = gcc
+	makedepends = pkgconf
 	depends = glfw
 	conflicts = icebrolite-git
 	source = IceBroLite-main.tar.gz::https://github.com/Sakrac/IceBroLite/archive/main.tar.gz
