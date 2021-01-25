@@ -3,7 +3,7 @@
 # Contributor: Roman Timushev <romikt@gmail.com>
 pkgname=gnome-defaults-list
 pkgver=3.38.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Default file associations for GNOME environment"
 #_ubuntuver=0ubuntu5
 # If following upstream, use:
@@ -16,7 +16,7 @@ url="https://tracker.debian.org/pkg/gnome-session"
 license=(GPL LGPL)
 #source=(http://archive.ubuntu.com/ubuntu/pool/main/g/gnome-session/gnome-session_${pkgver}-${_ubuntuver}.debian.tar.xz)
 source=(https://deb.debian.org/debian/pool/main/g/gnome-session/gnome-session_$pkgver-$_pkgrel.debian.tar.xz)
-sha256sums=('2bec3882d0f7e818d6867867cc70bf82ba32c18d1edca223e96b68d636868f70')
+sha256sums=('370bbc9ffa9addc7908d9b6d36f1d9821e4fc702d119c442b4c8b9352ef7d230')
 
 package() {
 	#install -d "$pkgdir/etc/gnome"
