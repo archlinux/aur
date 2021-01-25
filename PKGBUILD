@@ -3,23 +3,32 @@
 # Contributor: Luca P <meti at lplab.net>
 
 _name=luajson
-pkgname=lua-${_name}
+pkgbase=lua-${_name}
+pkgname=("${pkgbase}" "lua53-${_name}") 
 pkgver=1.3.4
-pkgrel=6
+pkgrel=7
 pkgdesc="JSON parser/encoder for Lua"
-url="http://luaforge.net/projects/luajson/"
+url="https://www.eharning.us/wiki/${_name}/"
 arch=(any)
 license=(MIT)
-depends=(lua-lpeg)
 source=(https://github.com/harningt/${_name}/archive/$pkgver.tar.gz)
 sha1sums=('2ea25e4147ad661ff3b6d0427439bf99c06eb46d')
 
-package() {
+package_lua-luajson() {
+  depends=(lua-lpeg)
   LUAVERSION=$(lua -v | grep -P -o '([0-9]+\.[0-9]+)')
   echo ${LUAVERSION}
   cd ${srcdir}/${_name}-${pkgver}
   make PREFIX=/usr DESTDIR="$pkgdir" \
     INSTALL_LMOD='$(INSTALL_TOP)'/share/lua/${LUAVERSION} \
     INSTALL_CMOD='$(INSTALL_TOP)'/lib/lua/${LUAVERSION} install
-  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 LICENSE
+  install -Dt "$pkgdir/usr/share/licenses/$pkgbase" -m644 LICENSE
+}
+package_lua53-luajson() {
+  depends=(lua53-lpeg)
+  cd ${srcdir}/${_name}-${pkgver}
+  make PREFIX=/usr DESTDIR="$pkgdir" \
+    INSTALL_LMOD='$(INSTALL_TOP)'/share/lua/5.3 \
+    INSTALL_CMOD='$(INSTALL_TOP)'/lib/lua/5.3 install
+  install -Dt "$pkgdir/usr/share/licenses/lua53-${_name}" -m644 LICENSE
 }
