@@ -1,0 +1,24 @@
+pkgbase = python-supersolids
+	pkgdesc = Notes and script to supersolids
+	pkgver = 0.1.24
+	pkgrel = 1
+	url = https://github.com/Scheiermann/supersolids
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = ffmpeg
+	depends = python-ffmpeg
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-pyqt5
+	depends = python-sphinx-autoapi
+	depends = python-sphinx_rtd_theme
+	depends = python-scipy
+	depends = vtk
+	depends = mayavi
+	optdepends = 
+	source = supersolids-0.1.24.tar.gz::https://files.pythonhosted.org/packages/source/s/supersolids/supersolids-0.1.24.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-supersolids
+
