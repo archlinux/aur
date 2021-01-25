@@ -1,7 +1,7 @@
 pkgbase = ijq
 	pkgdesc = Interactive jq tool, like jqplay for the commandline
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~gpanders/ijq
 	arch = x86_64
 	license = GPL3

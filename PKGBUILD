@@ -2,7 +2,7 @@
 
 pkgname=ijq
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Interactive jq tool, like jqplay for the commandline'
 arch=(x86_64)
 url="https://git.sr.ht/~gpanders/$pkgname"
@@ -16,6 +16,8 @@ prepare(){
 	cd "$pkgname-v$pkgver"
 	export GOPATH="$srcdir"
 	go mod download
+	# release has broken go.sum file
+	go mod tidy
 }
 
 build() {
@@ -24,10 +26,10 @@ build() {
 	go build \
 		-trimpath \
 		-buildmode=pie \
+		-mod=readonly \
 		-modcacherw \
 		-ldflags "-linkmode external -extldflags \"$LDFLAGS\"" \
 		. ./...
-	# -mod=readonly \
 }
 
 check() {
@@ -38,5 +40,5 @@ check() {
 
 package() {
 	cd "$pkgname-v$pkgver"
-	install -Dm755 -t "$pkgdir/usr/bin/" $pkgname
+	install -Dm755 -t "$pkgdir/usr/bin/" "$pkgname"
 }
