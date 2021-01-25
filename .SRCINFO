@@ -9,6 +9,7 @@ pkgbase = mkdocs-pymdownx-material-extras
 	checkdepends = python-mkdocs-material-extensions
 	makedepends = python-setuptools
 	makedepends = mkdocs-material>=5.0.2
+	provides = python-mkdocs-material-pymdownx-extra
 	source = https://files.pythonhosted.org/packages/source/m/mkdocs_pymdownx_material_extras/mkdocs_pymdownx_material_extras-1.1.3.tar.gz
 	source = https://raw.githubusercontent.com/facelessuser/mkdocs_pymdownx_material_extras/master/LICENSE
 	md5sums = e3393bf20e772f7c91c81a262e44e507

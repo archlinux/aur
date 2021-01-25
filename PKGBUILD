@@ -9,6 +9,7 @@ url="https://github.com/facelessuser/mkdocs_pymdownx_material_extras"
 license=('MIT')
 makedepends=('python-setuptools' 'mkdocs-material>=5.0.2')
 checkdepends=('python-mkdocs-material-extensions')
+provides=('python-mkdocs-material-pymdownx-extra')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/facelessuser/mkdocs_pymdownx_material_extras/master/LICENSE")
 md5sums=('e3393bf20e772f7c91c81a262e44e507'
