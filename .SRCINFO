@@ -1,7 +1,7 @@
 pkgbase = gdal-ecw
 	pkgdesc = A translator library for raster geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package.
 	pkgver = 3.0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.gdal.org/
 	changelog = gdal-ecw.changelog
 	arch = x86_64
@@ -45,7 +45,7 @@ pkgbase = gdal-ecw
 	sha256sums = 5569a4daa1abcbba47a9d535172fc335194d9214fdb96cd0f139bb57329ae277
 	sha256sums = dc8ccbc9a672a8489a1660fa66804d74c3015c47b44e2d41e17f8609249279df
 	sha256sums = 2103b98f2f15954f042d5620658b30d703125927bde2e5eb671c5facb6c2f5ed
-	sha256sums = 021190817ae924f08d252be5a9c441f555a2000e61fc6fbbd5386273c2646aba
+	sha256sums = e0e07aecffea83fd8b926d7e2c460b31c028826766f68947f96bf2d2ecb3bb7b
 
 pkgname = gdal-ecw
 

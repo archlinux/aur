@@ -10,7 +10,7 @@ provides=('gdal=3.0.4')
 conflicts=('gdal')
 pkgname=('gdal-ecw' 'python-gdal-ecw')
 pkgver=3.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A translator library for raster geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package."
 arch=('x86_64')
 url="http://www.gdal.org/"
@@ -35,7 +35,8 @@ source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.t
 sha256sums=('5569a4daa1abcbba47a9d535172fc335194d9214fdb96cd0f139bb57329ae277'
             'dc8ccbc9a672a8489a1660fa66804d74c3015c47b44e2d41e17f8609249279df'
             '2103b98f2f15954f042d5620658b30d703125927bde2e5eb671c5facb6c2f5ed'
-            '021190817ae924f08d252be5a9c441f555a2000e61fc6fbbd5386273c2646aba')
+            'e0e07aecffea83fd8b926d7e2c460b31c028826766f68947f96bf2d2ecb3bb7b'
+)
 
 prepare() {
   cd "${srcdir}"/$_pkgbase-$pkgver
@@ -66,9 +67,13 @@ build() {
 #   sed -i 's/PY_HAVE_SETUPTOOLS=1/PY_HAVE_SETUPTOOLS=/g' ./GDALmake.opt
 #   sed -i 's/EXE_DEP_LIBS/KILL_EXE_DEP_LIBS/' apps/GNUmakefile
 
+  echo "Compiling..."
   make -j$(nproc)
+
+  echo "Compiling man pages..."
   make man
 
+  echo "Building python3 bindings..."
   cd "${srcdir}"/$_pkgbase-$pkgver/swig/python
   python3 setup.py build
 }
