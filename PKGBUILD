@@ -2,7 +2,7 @@ pkgdesc="ROS - rospy is a pure Python client library for ROS."
 url='https://wiki.ros.org/rospy'
 
 pkgname='ros-noetic-rospy'
-pkgver='1.15.8'
+pkgver='1.15.9'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -34,8 +34,15 @@ depends=(
 )
 
 _dir="ros_comm-${pkgver}/clients/rospy"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
-sha256sums=('7a72219b236aef5f0327c3ce6eba6008980a24a986a5b970b17125890887b494')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz"
+    "2092.patch"::"https://github.com/ros/ros_comm/pull/2092.patch")
+sha256sums=('ee68c16fe6e2f3bf8fef4cf35552a30160cb3b579dfe18d667c0ba05e69ef90d'
+    'ad42681c4249a89f4a0188f8202e73286c4090bbc919a470543af7e8f1b198f4')
+
+prepare() {
+    cd "ros_comm-${pkgver}"
+    patch -p1 -i "${srcdir}/2092.patch"
+}
 
 build() {
     # Use ROS environment variables.
