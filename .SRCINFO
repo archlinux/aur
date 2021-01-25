@@ -1,0 +1,17 @@
+pkgbase = sddm-slice-git
+	pkgdesc = Simple dark SDDM theme with many customization options.
+	pkgver = master
+	pkgrel = 1
+	url = https://github.com/RadRussianRus/sddm-slice
+	arch = any
+	license = CCPL:cc-by-sa
+	makedepends = git
+	depends = sddm
+	depends = qt5-graphicaleffects
+	provides = sddm-slice
+	conflicts = sddm-slice
+	source = git+https://github.com/RadRussianRus/sddm-slice.git#branch=master
+	md5sums = SKIP
+
+pkgname = sddm-slice-git
+
