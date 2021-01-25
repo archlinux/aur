@@ -6,13 +6,13 @@
 pkgname=(libvirt libvirt-storage-gluster libvirt-storage-iscsi-direct libvirt-storage-rbd)
 epoch=1
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="https://libvirt.org/"
 license=('LGPL' 'GPL3') #libvirt_parthelper links to libparted which is GPL3 only
 install=libvirt.install
-depends=('libpciaccess' 'yajl' 'fuse2' 'gnutls' 'parted' 'libssh' 'libxml2' 'numactl' 'polkit' 'netcf')
+depends=('libpciaccess' 'yajl' 'fuse2' 'gnutls' 'parted' 'libssh' 'libxml2' 'numactl' 'polkit')
 makedepends=('meson' 'libxslt' 'python-docutils' 'lvm2' 'open-iscsi' 'libiscsi' 'ceph-libs' 'glusterfs'
              'bash-completion' 'rpcsvc-proto' 'dnsmasq' 'iproute2' 'qemu-headless')
 checkdepends=('ebtables')
@@ -49,8 +49,12 @@ backup=(
   'etc/libvirt/lxc.conf'
   'etc/libvirt/nwfilter/allow-arp.xml'
   'etc/libvirt/nwfilter/allow-dhcp-server.xml'
+  'etc/libvirt/nwfilter/allow-dhcpv6-server.xml'
   'etc/libvirt/nwfilter/allow-dhcp.xml'
+  'etc/libvirt/nwfilter/allow-dhcpv6.xml'
   'etc/libvirt/nwfilter/allow-incoming-ipv4.xml'
+  'etc/libvirt/nwfilter/allow-incoming-ipv6.xml'
+  'etc/libvirt/nwfilter/allow-ipv6.xml'
   'etc/libvirt/nwfilter/allow-ipv4.xml'
   'etc/libvirt/nwfilter/clean-traffic-gateway.xml'
   'etc/libvirt/nwfilter/clean-traffic.xml'
@@ -58,9 +62,11 @@ backup=(
   'etc/libvirt/nwfilter/no-arp-mac-spoofing.xml'
   'etc/libvirt/nwfilter/no-arp-spoofing.xml'
   'etc/libvirt/nwfilter/no-ip-multicast.xml'
+  'etc/libvirt/nwfilter/no-ipv6-multicast.xml'
   'etc/libvirt/nwfilter/no-ip-spoofing.xml'
-  'etc/libvirt/nwfilter/no-mac-broadcast.xml'
+  'etc/libvirt/nwfilter/no-ipv6-spoofing.xml'
   'etc/libvirt/nwfilter/no-mac-spoofing.xml'
+  'etc/libvirt/nwfilter/no-mac-broadcast.xml'
   'etc/libvirt/nwfilter/no-other-l2-traffic.xml'
   'etc/libvirt/nwfilter/no-other-rarp-traffic.xml'
   'etc/libvirt/nwfilter/qemu-announce-self-rarp.xml'
@@ -116,6 +122,7 @@ build() {
     --native-file "$srcdir"/find_programs.ini \
     -Drunstatedir=/run \
     -Dqemu_group=kvm \
+    -Dnetcf=disabled \
     -Dopenwsman=disabled \
     -Dapparmor=disabled \
     -Dselinux=disabled \
