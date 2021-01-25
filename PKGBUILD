@@ -41,7 +41,7 @@ package() {
     mkdir $pkgdir/usr
     mkdir $pkgdir/usr/share
     mkdir $pkgdir/usr/share/applications
-    sudo cp -rf "$pkgname-$pkgver" "$pkgdir/usr/share/kh-webstore"
+    cp -rf "$pkgname-$pkgver" "$pkgdir/usr/share/kh-webstore"
     cd "$pkgname-$pkgver"
-    sudo cp -rf "kh-webstore.desktop" "$pkgdir/usr/share/applications/kh-webstore.desktop"
+    cp -rf "kh-webstore.desktop" "$pkgdir/usr/share/applications/kh-webstore.desktop"
 }
