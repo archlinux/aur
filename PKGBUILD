@@ -4,24 +4,24 @@
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Kevin Mihelich <kevin@archlinuxarm.org>
 # Contributor: Felipe Balbi <felipe@balbi.sh>
-# Maintainer: Tavian Barnes <tavianator@tavianator.com>
+# Contributor: Tavian Barnes <tavianator@tavianator.com>
+# Maintainer: Vyacheslav Razykov <v.razykov@gmail.com>
 
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-binutils
-pkgver=2.34
-pkgrel=5
+pkgver=2.35.1
+pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
 arch=(i686 x86_64)
 url='https://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=(glibc zlib elfutils)
-makedepends=('elfutils')
+#makedepends=('elfutils')
 options=(staticlibs !distcc !ccache)
-source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig}
-        binutils-cb5f6a3e146cc70bc2d864989386df80acec5d3e.patch.xz)
-sha256sums=('f00b0e8803dc9bab1e2165bd568528135be734df3fabf8d0161828cd56028952'
-            'SKIP'
-            'e2115d42efde1b6e254dc21c37afd2f948631d2396a7615e03331299e3652dde')
+#source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig}
+source=(https://ftpmirror.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig})
+sha256sums=('3ced91db9bf01182b7e420eab68039f2083aed0a214c0424e257eae3ddee8607'
+            'SKIP')
 validpgpkeys=(3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F)
 
 prepare() {
@@ -36,7 +36,7 @@ prepare() {
   # hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
 
-  patch -Np1 -i ../binutils-cb5f6a3e146cc70bc2d864989386df80acec5d3e.patch
+  #patch -Np1 -i ../binutils-cb5f6a3e146cc70bc2d864989386df80acec5d3e.patch
 }
 
 build() {
