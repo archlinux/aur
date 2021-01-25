@@ -1,0 +1,16 @@
+pkgbase = eagle6
+	pkgdesc = CadSoft EAGLE 6.x
+	pkgver = 6.6.0
+	pkgrel = 1
+	url = ftp://ftp.cadsoft.de/eagle/program/6.6
+	arch = i686
+	arch = x86_64
+	license = Proprietary
+	depends = libjpeg6-turbo
+	depends = lib32-libjpeg6-turbo
+	provides = eagle6
+	source = ftp://ftp.cadsoft.de/eagle/program/6.6/eagle-lin.run
+	sha256sums = 1dd8f59a4c6b3a741e4c5e7eaa88347b9c12be8076c7cbb3580541a55a42a254
+
+pkgname = eagle6
+
