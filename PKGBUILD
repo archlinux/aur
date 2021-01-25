@@ -2,13 +2,13 @@
 # Contributor: jpkotta
 pkgname=mfgtools
 pkgver=1.4.72
-pkgrel=1
+pkgrel=2
 pkgdesc="Freescale/NXP I.MX Chip image deploy tools"
 arch=(x86_64)
 url="https://github.com/NXPmicro/mfgtools"
 license=('BSD')
 groups=()
-depends=('bzip2' 'zlib' 'libusb' 'openssl')
+depends=('bzip2' 'zlib' 'libusb' 'libzip' 'openssl')
 makedepends=('cmake' 'git')
 optdepends=()
 provides=()
