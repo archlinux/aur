@@ -11,6 +11,13 @@ url='https://github.com/asciidoctor/asciidoctor-diagram'
 license=(MIT)
 depends=(ruby asciidoctor ruby-rexml ruby-asciidoctor-diagram-ditaamini ruby-asciidoctor-diagram-plantuml)
 makedepends=(ruby-rdoc)
+optdepends=('ttf-font: font for diagram'
+            'java-runtime: for ditaa, plantuml diagrams'
+            'blockdiag: for blockdiag diagrams'
+            'gnuplot: for gnuplot diagrams'
+            'graphviz: for graphviz diagrams'
+            'meme: meme extension'
+            'mermaid-cli: for mermaid diagrams')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
