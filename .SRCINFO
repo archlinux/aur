@@ -1,6 +1,6 @@
 pkgbase = deepin-dock-git
 	pkgdesc = Deepin desktop-environment - dock module
-	pkgver = 5.3.0.54.r74.gb6503312c
+	pkgver = 5.3.64.r11.g62dcd763c
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-dock
 	arch = x86_64
