@@ -1,6 +1,6 @@
 pkgbase = razorsql
 	pkgdesc = An SQL query tool, database browser, SQL editor, and database administration tool (Trial)
-	pkgver = 9.2.4
+	pkgver = 9.3.0
 	pkgrel = 1
 	url = https://razorsql.com
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = razorsql
 	depends = sqlite
 	depends = python
 	depends = lib32-glibc
-	noextract = razorsql-9.2.4.zip
-	source = razorsql-9.2.4.zip::https://s3.dualstack.us-east-1.amazonaws.com/downloads.razorsql.com/downloads/9_2_4/razorsql9_2_4_linux_x64.zip
-	sha256sums = 46ce85666bf1f25938a653deb0a3af3afdb07720ffba7e04f2861f9f8e0872b8
+	noextract = razorsql-9.3.0.zip
+	source = razorsql-9.3.0.zip::https://s3.dualstack.us-east-1.amazonaws.com/downloads.razorsql.com/downloads/9_3_0/razorsql9_3_0_linux_x64.zip
+	sha256sums = 346bd4b724b0b81fa2606de09df3209f8c90f50f4af1f888745faded484a250c
 
 pkgname = razorsql
 
