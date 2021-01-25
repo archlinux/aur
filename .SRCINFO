@@ -1,0 +1,19 @@
+pkgbase = pcf-profont-powerline
+	pkgdesc = A small bitmap font which is absolutely great for programming. Patched to include the powerline symbols.
+	pkgver = 1
+	pkgrel = 4
+	url = http://tobiasjung.name/profont/
+	install = pcf-profont-powerline.install
+	arch = any
+	license = MIT
+	depends = xorg-fonts-encodings
+	depends = xorg-mkfontdir
+	depends = xorg-mkfontscale
+	depends = fontconfig
+	optdepends = powerline: Statusline plugin for various programs that uses the additional symbols that are added to the normal powerline font.
+	noextract = ProFontPowerline-10.pcf.gz
+	source = ProFontPowerline-10.pcf.gz
+	sha256sums = 7aca87318ece401921e683c426a314f1f100c32824e80e10c7d6e56cd7e46858
+
+pkgname = pcf-profont-powerline
+
