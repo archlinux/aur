@@ -2,7 +2,7 @@
 
 pkgname=graviton
 _pkgname=Graviton-App
-pkgver=2.1.8
+pkgver=2.1.9
 pkgrel=1
 pkgdesc='A modern Code Editor'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("https://github.com/Graviton-Code-Editor/Graviton-App/archive/v${pkgver}
         'graviton.desktop'
         'build.patch')
 
-sha256sums=('8e205645f518789de55924a200425b17b15bd509297b3066d0a780e576fb13c6'
+sha256sums=('33943afc6e59bc77e5e9dceed53dd3f2a6c42a2e2179a70612b2d49d963a3785'
             '274abb2bef19694a483dc0f9d1bad14ad397b68e9e07f13580eac4cecc5163dd'
             '021eac4c4cb19d3e425d716c15d4577b3ed9cdcb5b0a35fcb9115ac3efd823fc')
 
@@ -29,7 +29,7 @@ prepare() {
 build() {
     cd $srcdir/${_pkgname}-$pkgver
     yarn
-    yarn build:electron
+    yarn build
 }
 
 package() {
