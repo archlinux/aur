@@ -1,6 +1,6 @@
 pkgbase = librnd-git
 	pkgdesc = A compact suite of C libraries for various tasks
-	pkgver = r128.7ecc405
+	pkgver = r133.050f941
 	pkgrel = 1
 	url = https://github.com/randoragon/rnd-libs
 	arch = x86_64
