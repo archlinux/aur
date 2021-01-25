@@ -1,12 +1,11 @@
 # Maintainer: Jordan Cannon <LiteracyFanatic@gmail.com>
 pkgname=nerd-fonts-profont
 pkgver=2.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Patched font ProFont from nerd-fonts library'
 arch=('any')
 url='https://github.com/ryanoasis/nerd-fonts'
 license=('MIT')
-makedepends=('fontconfig' 'xorg-mkfontscale' 'xorg-mkfontdir')
 source=("https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/ProFont.zip"
         "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v$pkgver/LICENSE")
 sha256sums=('27ff63d48396611c3051133ca5e6a8e6e0c6ccfbc1928ac7be497020f3cd6432'
