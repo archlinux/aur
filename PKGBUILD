@@ -1,14 +1,16 @@
 # Maintainer: BrLi <brli at chakralinux dot org>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=zettlr
-pkgver=1.8.6
+pkgver=1.8.7
 pkgrel=1
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
 license=('GPL' 'custom') # Noted that the icon and name are copyrighted
-depends=(electron10)
-makedepends=(pandoc yarn git)
+_electron=electron10
+depends=($_electron)
+makedepends=(pandoc git yarn)
 optdepends=('pandoc: For exporting to various format'
             'texlive-bin: For Latex support'
             'ttf-lato: Display output in a more comfortable way')
@@ -20,7 +22,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Zettlr/Zettlr/archive/v$pkg
         # citation style
         "locales-$pkgrel-$pkgver.zip::https://github.com/citation-style-language/locales/archive/$_csl_locale_commit.zip"
         "chicago-author-date-$pkgver-$pkgrel.csl::https://github.com/citation-style-language/styles/raw/$_csl_style_commit/chicago-author-date.csl")
-sha256sums=('97b037b352070695bb4d9b91eda05ea9f03292eb8f91c2d23ed9c0e99642cc3d'
+sha256sums=('7b0d7dee7a6f95e8e282ad2cf057c0242056d8a02366eb3bb80d5f010a823fe6'
             '24503a6cd5b3651a7003353811ae82d3ed707ec8ff932d341668c2ad377434b6'
             '2b7cd6c1c9be4add8c660fb9c6ca54f1b6c3c4f49d6ed9fa39c9f9b10fcca6f4')
 
@@ -38,6 +40,7 @@ prepare() {
 }
 
 build() {
+    local _electronVersion=$($_electron --version | sed -e 's/^v//')
     cd "Zettlr-$pkgver"
     local NODE_ENV=''
     yarn install --cache-folder "$srcdir/cache" \
@@ -46,7 +49,7 @@ build() {
     yarn reveal:build
 
     rm -rf node_modules/electron
-    yarn add -D electron@11.1.1 --cache-folder "$srcdir/cache" --link-folder "$srcdir/link"
+    yarn add -D "electron@$_electronVersion" --cache-folder "$srcdir/cache" --link-folder "$srcdir/link"
 
     node node_modules/.bin/electron-forge package
 
@@ -81,9 +84,9 @@ package() {
     cp -r --no-preserve=ownership --preserve=mode ./package.json "$pkgdir/$_destdir/"
 
     # Install start script to /usr/bin
-   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
+    install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
 #!/bin/sh
-exec electron10 /${_destdir} "\$@"
+exec $_electron /${_destdir} "\$@"
 END
 
     # install icons of various sizes to hi-color theme
@@ -107,5 +110,5 @@ Categories=Office;
 END
 
     # license
-    install -Dm644 "$srcdir/Zettlr-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir/Zettlr-$pkgver/LICENSE"
 }
