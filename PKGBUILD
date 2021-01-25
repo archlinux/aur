@@ -1,11 +1,11 @@
 pkgname=theme.sh
 provides=("${pkgname}")
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=2
 arch=('any')
 url="https://github.com/lemnos/theme.sh"
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=("ca9aadc15d9d06bd6a39e36cb9f15954c8cf934364388ea654fd883a6b2c0488")
+sha256sums=('f6cb6ae5eac95536d5a00c64714758a32d1724edf5971277530f8795b09e6454')
 
 package() {
   cd "$pkgname-$pkgver"
