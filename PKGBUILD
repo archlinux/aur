@@ -3,7 +3,7 @@
 _pkgname=fasm
 pkgname="python-$_pkgname-git"
 pkgver=0.0.r86.gbae2e6d
-pkgrel=1
+pkgrel=2
 pkgdesc="FPGA Assembly (FASM) Parser and Generation library"
 arch=(x86_64)
 url="https://github.com/SymbiFlow/fasm"
