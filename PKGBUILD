@@ -2,8 +2,8 @@
 
 pkgname=python-rollbar
 _name=rollbar
-pkgver=0.15.1
-pkgrel=2
+pkgver=0.15.2
+pkgrel=1
 pkgdesc="Easy and powerful exception tracking with rollbar"
 arch=(any)
 url="https://rollbar.com/docs/notifier/pyrollbar/"
@@ -15,7 +15,7 @@ checkdepends=('python-pytest-runner'
   'python-webob')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
   "unittest.patch")
-sha256sums=("96b63df27a47232aa16a142d2f5812073f8bf7db2b81c5f7981b9a4d4659468c"
+sha256sums=("5e80fe7c9b15e84f5b72e45ebaa85bba1c13234e447a5f3801d094eb379c2d0e"
   "9842ace5f40a793ca513129ab7456093513405496da4a8bc6bdbf1d31d72933b")
 
 prepare() {
