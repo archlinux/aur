@@ -1,7 +1,7 @@
 # Maintainer: ltoenning <dev@ltoenning.de>
 pkgname=ripes-git
-pkgver=2.0.0
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="A graphical processor simulator and assembly editor for the RISC-V ISA"
 arch=('x86_64')
 url="https://github.com/mortbopet/Ripes"
