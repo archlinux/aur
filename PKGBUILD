@@ -37,7 +37,8 @@ build() {
     --with-zlib \
     --disable-static \
     --enable-openssl-compatibility \
-    --with-idn
+    --with-idn \
+    --enable-maintainer-mode
 
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
