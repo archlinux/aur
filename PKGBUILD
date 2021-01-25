@@ -3,17 +3,17 @@
 # Contributor: Guilherme Nogueira <guilherme@nirev.org>
 
 pkgname=ruby-treetop
-pkgver=1.6.10
-pkgrel=3
+pkgver=1.6.11
+pkgrel=1
 pkgdesc='A Ruby-based text parsing and interpretation DSL'
 arch=('any')
-url='http://treetop.rubyforge.org/'
+url='https://github.com/cjheath/treetop'
 license=('MIT')
 depends=('ruby-polyglot')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem")
 noextract=("${pkgname#*-}-$pkgver.gem")
-sha256sums=('67df9f52c5fdeb7b2b8ce42156f9d019c1c4eb643481a68149ff6c0b65bc613c')
+sha256sums=('102e13adf065fc916eae60b9539a76101902a56e4283c847468eaea9c2c72719')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
