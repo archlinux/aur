@@ -14,8 +14,8 @@ source=('pymodoro.py'
         'pymodoro'
 )
 
-md5sums=('SKIP'
-        'SKIP'
+sha256sums=('20e03acfafae79ee159115d2eb7503a808a8815c38a35a9ec8f94225e174efb2'
+        'f5f0a9342159efc22fe201bf35ddbd7239eaefcf8c0406af137644106d7e1469'
 )
 
 prepare () {
