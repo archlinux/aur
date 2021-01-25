@@ -4,13 +4,13 @@
 
 pkgname=klog
 pkgver=1.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A multiplatform free hamradio logger'
 arch=('x86_64')
 url='https://www.klog.xyz'
 license=('GPL3')
 makedepends=('qt5-tools' 'gendesk')
-depends=('qt5-base' 'qt5-charts' 'qt5-serialport')
+depends=('qt5-base' 'qt5-charts' 'qt5-serialport' 'hamlib')
 source=("http://download.savannah.gnu.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('682f7a4dff47b33a11e4dfd847a931f6a613d98a6ac3fa45531c83512b286585')
 
