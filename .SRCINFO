@@ -1,7 +1,7 @@
 pkgbase = perl-catalyst-plugin-enablemiddleware
 	pkgdesc = Enable Plack Middleware via Configuration
 	pkgver = 0.006
-	pkgrel = 3
+	pkgrel = 4
 	url = http://search.cpan.org/dist/Catalyst-Plugin-EnableMiddleware/
 	arch = i686
 	arch = x86_64
@@ -10,11 +10,9 @@ pkgbase = perl-catalyst-plugin-enablemiddleware
 	makedepends = perl-test-most
 	depends = perl>=5.10.1
 	depends = perl-catalyst-runtime
-	provides = catalyst-plugin-enablemiddleware=0.006
-	provides = Catalyst::Plugin::EnableMiddleware=0.006
 	provides = perl-catalyst-plugin-enablemiddleware=0.006
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/Catalyst-Plugin-EnableMiddleware-0.006.tar.gz
+	source = https://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/Catalyst-Plugin-EnableMiddleware-0.006.tar.gz
 	md5sums = a172715297e50fd13d75b1acab5ea78c
 	sha512sums = 71f96829ad90ddb28de30afd372b999da95fb4faf90b2d1ddf10b35c78e7a06c122311260160bc348287a3470c9f0c7151dc863949d53d42cab42ddc52a4dbd7
 
