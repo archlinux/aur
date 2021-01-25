@@ -1,0 +1,14 @@
+pkgbase = packwiz-git
+	pkgdesc = A command line tool for creating minecraft modpacks.
+	pkgver = f2c6b89
+	pkgrel = 1
+	url = https://github.com/comp500/packwiz
+	arch = any
+	license = 'MIT'
+	makedepends = go
+	depends = go
+	provides = packwiz
+	source = git+https://github.com/comp500/packwiz.git
+	sha256sums = SKIP
+
+pkgname = packwiz-git
