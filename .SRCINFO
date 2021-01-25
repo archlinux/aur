@@ -6,7 +6,6 @@ pkgbase = deskreen
 	install = deskreen.install
 	arch = i686
 	arch = x86_64
-	groups = 
 	license = AGPL3
 	depends = alsa-lib
 	depends = atk

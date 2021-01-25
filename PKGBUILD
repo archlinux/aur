@@ -7,7 +7,6 @@ pkgdesc="Deskreen makes any device a second screen for your computer"
 arch=('i686' 'x86_64')
 url="https://github.com/pavlobu/deskreen#readme"
 license=('AGPL3')
-groups=('')
 depends=('alsa-lib' 'atk' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'dbus' 'desktop-file-utils' 'discord' 'expat' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libcups' 'libdrm' 'libnotify' 'libsecret' 'libx11' 'libxcb' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxrandr' 'libxrender' 'libxss' 'libxtst' 'mesa' 'nspr' 'nss' 'pango' 'teamviewer' 'util-linux-libs' 'zotero')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
