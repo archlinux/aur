@@ -1,6 +1,7 @@
 # Maintainer: gardenapple@posteo.net
 pkgname=readability-cli
-pkgver=1.2.1
+_pkgver=2.0.0-pre
+pkgver="${_pkgver//-/_}"
 pkgrel=1
 pkgdesc="Firefox Reader Mode in your terminal! - CLI tool for Mozilla's Readability library"
 arch=('any')
@@ -8,16 +9,17 @@ url="https://www.npmjs.com/package/$pkgname"
 license=('GPL3')
 depends=('nodejs')
 makedepends=('npm' 'jq')
-source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('710609a2a171a9723531dfbe79d6faa6188760e0783cddab75abfa0baf7c6516')
-b2sums=('7660431cd529324bcacd43dfb20d04329ccd33b8c4b199d4e60573a312428f1dcb59bb1ddb875f6ee63e909dec9ab9df11f49e638d5c1faecfcd5c18f1b784ab')
+source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$_pkgver.tgz")
+noextract=("$pkgname-$_pkgver.tgz")
+sha256sums=('582248f3db5186ebb7f89eacf0ce927ad00798e0c4cbc381a6aa83238bb0c0c7')
+b2sums=('4f862c6fb9d6ec47dc2b6aeed380d75d304b63838f2f3b740f8f5f13b861859810937d5b90cc7b3ae0cd69bb0bc03634642435eeb4c0e1e9155cb4e4b2482cd3')
 
 package() {
-	npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
+	npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$pkgname-$_pkgver.tgz"
 
-
+	#
 	#Things that should be done according to Arch Wiki's package guidelines for Node.js:
+	#
 
 	find "$pkgdir/usr" -type d -exec chmod 755 {} +
 
