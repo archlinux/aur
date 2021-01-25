@@ -1,0 +1,16 @@
+pkgbase = eagle5
+	pkgdesc = CadSoft EAGLE 5.x
+	pkgver = 5.12.0
+	pkgrel = 1
+	url = ftp://ftp.cadsoft.de/eagle/program/5.0
+	arch = i686
+	arch = x86_64
+	license = Proprietary
+	depends = libjpeg6-turbo
+	depends = lib32-libjpeg6-turbo
+	provides = eagle5
+	source = ftp://ftp.cadsoft.de/eagle/program/5.0/eagle-lin.run
+	sha256sums = 7903438b6f171894d7503d6b6e3149d3da321c386a86d1b05f1e08a3b924dafd
+
+pkgname = eagle5
+
