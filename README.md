@@ -16,7 +16,15 @@ makepkg --printsrcinfo > .SRCINFO
 makepkg -i
 ```
 
-Then, remove the `.github` directory and publish to the AUR (`ssh://aur@aur.archlinux.org/rooster.git`).
+Then, publish to the AUR:
+```sh
+git clone ssh://aur@aur.archlinux.org/rooster.git aur-version
+cp README.md PKGBUILD .SRCINFO aur-version/
+cd aur-version
+git add -A && git commit -m 'update version' && git push origin master
+cd ..
+rm -rf aur-version
+```
 
 ## Contributors
 
