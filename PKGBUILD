@@ -1,7 +1,7 @@
 # Maintainer: Lucas Melo <luluco250 at gmail dot com>
 
 pkgname=soniccd-git
-pkgver=r153.ce80f35
+pkgver=r213.955e257
 pkgrel=2
 pkgdesc='A full decompilation of Sonic CD 2011, based on the PC remake with
 improvements & tweaks from the mobile remakes.'
@@ -34,6 +34,6 @@ build() {
 package() {
 	install -Dm755 soniccd-launcher "$pkgdir/usr/bin/soniccd-launcher"
 	install -Dm644 soniccd.desktop "$pkgdir/usr/share/applications/soniccd.desktop"
-	cd "$srcdir/Sonic-CD-11-Decompilation"
+	cd "$srcdir/Sonic-CD-11-Decompilation/bin"
 	install -Dm755 soniccd "$pkgdir/usr/bin/soniccd"
 }
