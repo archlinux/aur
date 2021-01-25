@@ -1,7 +1,7 @@
 # Maintainer: Lorenzo Cappelletti <lorenzo.cappelletti gmail.com>
 
 pkgname=python-mbed-manifest-tool
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=2
 pkgdesc='A tool for creating and parsing update manifests'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/ARMmbed/manifest-tool'
 license=('Apache')
 makedepends=('python-setuptools')
 depends=(
-  'python'
+  'python>=3.6'
   'python-pyaml'
   'python-asn1ate'
   'python-cryptography'
@@ -19,7 +19,7 @@ depends=(
   'python-mbed-cloud-sdk'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('90a9aabb349d1bb0bf6a3a9939faebdeaaefdd0753ef94c9ec6f22bc864c0dbe')
+sha256sums=('34e5d377ec9ea61afb14ef363f7f0a46b7bd167647fc842b0ef18891ca1dad4f')
 
 package() {
   cd "manifest-tool-${pkgver}"
