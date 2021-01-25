@@ -1,14 +1,14 @@
 pkgbase = goi18n-bin
 	pkgdesc = CLI tool that manages message files used by the i18n package
-	pkgver = 2.1.1
-	pkgrel = 2
+	pkgver = 2.1.2
+	pkgrel = 1
 	url = https://github.com/nicksnyder/go-i18n
 	arch = x86_64
 	license = MIT
 	provides = goi18n
 	conflicts = goi18n
-	source = goi18n-bin-2.1.1::https://github.com/nicksnyder/go-i18n/releases/download/v2.1.1/goi18n-2.1.1-linux-amd64
-	sha256sums = 63b071b690ee99b5d34ba81a275e9463dbc2db4d9cf40cd42f8c2dd2a20ab4e7
+	source = goi18n-bin-2.1.2::https://github.com/nicksnyder/go-i18n/releases/download/v2.1.2/goi18n-2.1.2-linux-amd64
+	sha256sums = aa95f552c3e3ef7ede26a748b3a97aac26bbdcf1e6bec4fdc958a8839fad8b50
 
 pkgname = goi18n-bin
 
