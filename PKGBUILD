@@ -1,13 +1,12 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime-git
-pkgver=0.8.0.r11.16a7d41
+pkgver=0.9.0.r2.0a41639
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
 conflicts=('kime')
 provides=('kime')
-depends=('gtk3' 'cairo' 'libxcb' 'pango' 'qt5-base')
-makedepends=('cargo' 'cmake')
+makedepends=('cargo' 'cmake' 'ninja' 'cairo' 'libxcb' 'pango' 'gtk2' 'gtk3' 'gtk4' 'qt5-base' 'qt6-base')
 arch=('any')
 license=('GPL3')
 source=("${pkgname}::git+${url}")
@@ -22,12 +21,11 @@ pkgver() {
 
 build() {
     cd "${pkgname}"
-    cargo build --release
-    pkg/release.sh
+    cargo xtask build --mode Release XIM WAYLAND GTK2 GTK3 GTK4 QT5 QT6
 }
 
 package() {
     cd "${pkgname}"
-    PREFIX="${pkgdir}" pkg/install.sh
+    cargo xtask install "${pkgdir}"
 }
 
