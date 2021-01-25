@@ -1,0 +1,24 @@
+--- a/setup.py	2020-12-06 03:52:58.000000000 +0800
++++ b/setup.py	2021-01-25 12:20:11.502373907 +0800
+@@ -4,9 +4,9 @@
+ LONG_DESCRIPTION = file.read()
+ file.close()
+ 
+-file = open("requirements.txt", "r")
+-DEPENDENCIES = file.readlines()
+-file.close()
++#file = open("requirements.txt", "r")
++#DEPENDENCIES = file.readlines()
++#file.close()
+ 
+ del file
+ 
+@@ -28,7 +28,7 @@
+         "License :: OSI Approved :: MIT License",
+         "Operating System :: OS Independent",
+     ],
+-    install_requires=DEPENDENCIES,
++    install_requires=['mkdocs>=1.0', 'GitPython', 'babel>=2.7.0'],
+     packages=find_packages(),
+     entry_points={
+         "mkdocs.plugins": [

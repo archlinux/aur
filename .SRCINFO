@@ -1,6 +1,6 @@
 pkgbase = python-mkdocs-git-revision-date-localized-plugin
 	pkgdesc = MkDocs plugin to add a last updated date to your site pages
-	pkgver = 0.7.3
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
 	arch = i686
@@ -10,10 +10,12 @@ pkgbase = python-mkdocs-git-revision-date-localized-plugin
 	checkdepends = python-gitpython
 	checkdepends = python-babel>=2.7.0
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/m/mkdocs-git-revision-date-localized-plugin/mkdocs-git-revision-date-localized-plugin-0.7.3.tar.gz
+	source = https://files.pythonhosted.org/packages/source/m/mkdocs-git-revision-date-localized-plugin/mkdocs-git-revision-date-localized-plugin-0.8.tar.gz
 	source = https://raw.githubusercontent.com/timvink/mkdocs-git-revision-date-localized-plugin/master/LICENSE
-	md5sums = 28ea38e417416c397c85832f5b5cf562
+	source = fix_setupy_deps.patch
+	md5sums = d9cf835aad137f2a41a9533ff6bcfa36
 	md5sums = SKIP
+	md5sums = 71b47e261d985860be764b5110d5c7a3
 
 pkgname = python-mkdocs-git-revision-date-localized-plugin
 	depends = python>=3.5
