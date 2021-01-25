@@ -1,5 +1,6 @@
 src
 pkg
+*.asar
 *.deb
 *.part
 *.pkg.tar.xz
