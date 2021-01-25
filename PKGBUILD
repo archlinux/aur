@@ -1,6 +1,6 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname=auto-cpufreq
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Automatic CPU speed & power optimizer"
 arch=('any')
@@ -11,12 +11,12 @@ optdepends=(
 	'cpufreqctl: CPU Power Manager'
 	'gnome-shell-extension-cpufreq: CPU Power Manager for GNOME Shell'
 )
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'gcc')
 provides=("$pkgname")
 conflicts=("$pkgname")
 install="$pkgname.install"
 source=( "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('557a2d97db706db2879e31c87f823327f250e898e49b8fdaeee0d7ce9dab6dc8')
+sha256sums=('d1d93698b2fbce8814ef1f1d92c277d93e2375757627739172cae15ab34bacdd')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
