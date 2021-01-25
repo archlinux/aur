@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phosh
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A pure Wayland shell prototype for GNOME on mobile devices"
 url="https://source.puri.sm/Librem5/phosh"
@@ -22,13 +22,8 @@ makedepends=(
 source=(
 	"git+${url}.git#tag=v${pkgver}"
 	"git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
-	"wlroots.patch::https://source.puri.sm/sebastian.krzyszkowiak/phosh/-/commit/87399f9e40c8475004924732432e677356edfa36.patch"
 )
-sha256sums=(
-	'SKIP'      
-	'SKIP'
-	'SKIP'
-)
+sha256sums=('SKIP' 'SKIP')
 
 prepare() {
 	cd phosh
@@ -36,8 +31,6 @@ prepare() {
 	git submodule init
 	git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
 	git submodule update
-	
-	patch src/home.c ../wlroots.patch
 }
 
 build() {
