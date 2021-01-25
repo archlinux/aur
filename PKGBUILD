@@ -1,6 +1,6 @@
 # Maintainer: Björn Feber <bfeber@protonmail.com>
 pkgname=ross-wm-configs-git
-pkgver=r35.172eee2
+pkgver=r38.8e5e925
 pkgrel=1
 pkgdesc="Window wanager configuration files for the ROSS Shell"
 arch=('x86_64')
@@ -21,6 +21,8 @@ pkgver() {
 
 package() {
 	cd "${pkgname%-git}/wm-configs"
-	mkdir -p "$pkgdir"/etc/xdg/awesome
+	mkdir -p "$pkgdir"/etc/xdg/awesome "$pkgdir"/usr/share/xsessions
+	ls
 	cp -r awesome "$pkgdir"/etc/xdg/awesome/ross
+	cp ross-shell.desktop "$pkgdir"/usr/share/xsessions
 }

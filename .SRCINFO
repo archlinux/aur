@@ -1,6 +1,6 @@
 pkgbase = ross-wm-configs-git
 	pkgdesc = Window wanager configuration files for the ROSS Shell
-	pkgver = r35.172eee2
+	pkgver = r38.8e5e925
 	pkgrel = 1
 	url = https://github.com/rosssoftware/Shell/tree/master/wm-configs
 	arch = x86_64
