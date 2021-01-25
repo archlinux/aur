@@ -6,7 +6,7 @@ release='r2020b'
 instdir="/opt/tmw/${name}-${release}"
 pkgname=matlab
 pkgver=9.9.0.1467703
-pkgrel=1
+pkgrel=2
 pkgdesc='A high-level language for numerical computation and visualization'
 arch=('x86_64')
 url='http://www.mathworks.com'
@@ -62,7 +62,7 @@ depends=(
 # These I got from arch before and afraid to play around.
 # GCC: https://www.mathworks.com/support/requirements/supported-compilers.html
 depends+=(
-  'gcc9' 'gcc9-fortran' 'gcc9-libs'
+  'gcc8' 'gcc8-fortran' 'gcc8-libs'
   'gconf'
   'glu'
   'gstreamer0.10-base'
@@ -152,20 +152,53 @@ build() {
 
   # Build the python API
   cd "${srcdir}/build/extern/engines/python"
-  python setup.py build
+
+  # Checking supported vs existing matlab versions
+  _matminor="$(find "${srcdir}/build/extern/engines/python" \
+    -name 'matlabengineforpython3*.so' |
+    sort |
+    sed 's|.*matlabengineforpython3_\([0-9]\)\.so|\1|g' |
+    tail -1)"
+  _pytminor="$(python -c 'import sys; print(sys.version_info.minor)')"
+
+  # Spoof version compatibility if not applicable
+  if [[ "${_pytminor}" != "${_matminor}" ]]; then
+    _matcustom="${srcdir}/sitecustomize.py"
+    touch "${_matcustom}"
+    echo 'import sys'                               >> "${_matcustom}"
+    echo "sys.version_info = (3, ${_matminor}, 0)"  >> "${_matcustom}"
+  fi
+  PYTHONPATH="${srcdir}" python setup.py build
 }
 
 package() {
   # Package the python API
   cd "${srcdir}/build/extern/engines/python"
-  python setup.py install --root="${pkgdir}" --optimize 1 --skip-build
-  # Fix erronous referances in the _arch.txt files
+  PYTHONPATH="${srcdir}" python setup.py install --root="${pkgdir}" --optimize 1 --skip-build
+
+  # Spoofing trick to fool matlab into believing 3.9 is supported
+  _matminor="$(find "${srcdir}/build/extern/engines/python" \
+    -name 'matlabengineforpython3*.so' |
+    sort |
+    sed 's|.*matlabengineforpython3_\([0-9]\)\.so|\1|g' |
+    tail -1)"
   _prefix="$(python -c 'import sys; print(sys.prefix)')"
+  _pytminor="$(python -c 'import sys; print(sys.version_info.minor)')"
+  # Change around locations if spoofing is needed
+  if [[ "${_pytminor}" != "${_matminor}" ]]; then
+    mv "${pkgdir}/${_prefix}/lib/python3".{"${_matminor}","${_pytminor}"}
+    _egginfo="$(ls "${pkgdir}/${_prefix}/lib/python3.${_pytminor}/site-packages/"*"-py3.${_matminor}.egg-info")"
+    mv "${_egginfo}" "${_egginfo%py3."${_matminor}".egg-info}py3.${_pytminor}.egg-info"
+    sed -i "s|sys.version_info|(3, $_matminor, 0)|" \
+      "${pkgdir}/${_prefix}/lib/python3.${_pytminor}/site-packages/matlab/engine/__init__.py"
+  fi
+
+  # Fix erronous referances in the _arch.txt files
   errstr="${srcdir}/build/extern/engines/python/"
   trustr="${instdir}/extern/engines/python/"
   for _dir in \
     "${srcdir}/build/extern/engines/python/build/lib/matlab/engine" \
-    "${pkgdir}/${_prefix}/lib/python3.8/site-packages/matlab/engine" \
+    "${pkgdir}/${_prefix}/lib/python3.${_pytminor}/site-packages/matlab/engine" \
     ; do
     sed -i "s|${errstr}|${trustr}|" "${_dir}/_arch.txt"
   done
@@ -187,7 +220,7 @@ package() {
   ln -s "${instdir}/bin/mex" "${pkgdir}/usr/bin/mex-${pkgname}"
   # This would otherwise conflict with mathematica
   ln -s "${instdir}/bin/mcc" "${pkgdir}/usr/bin/mcc-${pkgname}"
-  # Why is this in this directory, I wonder...
+  # Allow external software to find MATLAB linter binary
   ln -s "${instdir}/bin/glnxa64/mlint" "${pkgdir}/usr/bin/mlint"
 
   # Install desktop files
@@ -199,16 +232,16 @@ package() {
   mkdir -p "${pkgdir}/${instdir}/backup/${sysdir}"
   cp "${pkgdir}/${instdir}/${sysdir}/gcc_glnxa64.xml" \
     "${pkgdir}/${instdir}/backup/${sysdir}/"
-  sed -i "s/gcc/gcc-9/g" "${pkgdir}/${instdir}/${sysdir}/gcc_glnxa64.xml"
+  sed -i "s/gcc/gcc-8/g" "${pkgdir}/${instdir}/${sysdir}/gcc_glnxa64.xml"
   cp "${pkgdir}/${instdir}/${sysdir}/g++_glnxa64.xml" \
     "${pkgdir}/${instdir}/backup/${sysdir}/"
-  sed -i "s/g++/g++-9/g" "${pkgdir}/${instdir}/${sysdir}/g++_glnxa64.xml"
+  sed -i "s/g++/g++-8/g" "${pkgdir}/${instdir}/${sysdir}/g++_glnxa64.xml"
   cp "${pkgdir}/${instdir}/${sysdir}/gfortran.xml" \
     "${pkgdir}/${instdir}/backup/${sysdir}/"
-  sed -i "s/gfortran/gfortran-9/g" "${pkgdir}/${instdir}/${sysdir}/gfortran.xml"
+  sed -i "s/gfortran/gfortran-8/g" "${pkgdir}/${instdir}/${sysdir}/gfortran.xml"
   cp "${pkgdir}/${instdir}/${sysdir}/gfortran6.xml" \
     "${pkgdir}/${instdir}/backup/${sysdir}/"
-  sed -i "s/gfortran/gfortran-9/g" "${pkgdir}/${instdir}/${sysdir}/gfortran6.xml"
+  sed -i "s/gfortran/gfortran-8/g" "${pkgdir}/${instdir}/${sysdir}/gfortran6.xml"
 
   # Remove unused library files
   # <MATLABROOT>/sys/os/glnxa64/README.libstdc++
