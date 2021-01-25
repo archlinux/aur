@@ -3,7 +3,8 @@
 # Original Darcula patch from https://digmi.org/2019/03/26/ghidracula/
 
 pkgname=ghidra-darcula
-pkgver=9.2
+pkgver=9.2.2
+_ghidra=cfaf865567f69194c24405660d7bdf4354e4dc38
 _ghidra_data=60529abb6c1e28b689f539384a1ebd1fe13d6528
 _darcula=08c13c5f1a12624f4d8df8723b39061e11c93241
 _darcula_version=2019.09
@@ -21,7 +22,7 @@ conflicts=('ghidra' 'ghidra-bin' 'ghidra-git')
 makedepends=('git' 'gradle' 'unzip')
 optdepends=('python2: for the Python feature'
             'pam: for GhidraServer support')
-source=("git+https://github.com/NationalSecurityAgency/ghidra#tag=Ghidra_${pkgver}_build"
+source=("git+https://github.com/NationalSecurityAgency/ghidra#commit=${_ghidra}"
         "git+https://github.com/NationalSecurityAgency/ghidra-data#commit=${_ghidra_data}"
         https://github.com/pxb1988/dex2jar/releases/download/${_d2j}/dex-tools-${_d2j}.zip
         https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/android4me/AXMLPrinter2.jar
