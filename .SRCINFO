@@ -1,0 +1,13 @@
+pkgbase = python-meteocalc
+	pkgdesc = Several functions for calculation of meteorological variables: dew point, heat index, wind chill, feels like temperature.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/malexer/meteocalc
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	source = https://github.com/malexer/meteocalc/archive/1.1.0.tar.gz
+	sha256sums = 3dae55e9b8380af04e3eadd6fa26d81ecb6250562c4a862b9a31801548e43ccb
+
+pkgname = python-meteocalc
+
