@@ -30,7 +30,7 @@ _ispkgbuild="true"
 source "$_where"/customization.cfg # load default configuration from file
 source "$_where"/prepare
 
-#_tkg_initscript
+_tkg_initscript
 
 #if [[ "$_sub" = rc* ]]; then
 #  _srcpath="linux-${_basekernel}-${_sub}"
@@ -128,6 +128,7 @@ prepare() {
   rm -rf $pkgdir # Nuke the entire pkg folder so it'll get regenerated clean on next build
 
   ln -s "${_where}/customization.cfg" "${srcdir}" # workaround
+  ln -s "${_where}/${_srcpath}" "${srcdir}" # workaround
 
   cd "${srcdir}/${_srcpath}"
   
