@@ -14,6 +14,8 @@ package() {
     mkdir -p "$pkgdir"/usr/bin
     cp configuration-editor/src/program.py "$pkgdir"/usr/bin/confedi
     chmod +x "$pkgdir"/usr/bin/confedi
+
+    mkdir -p "$pkgdir"/usr/share/man/man8
     cp configuration-editor/confedi "$pkgdir"/usr/share/man/man8
     gzip "$pkgdir"/usr/share/man/man8/confedi
 }
