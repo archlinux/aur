@@ -17,9 +17,9 @@
 
 pkgname=protonmail-bridge-nogui
 
-_pkgver=1.5.4
+_pkgver=1.5.6
 _rev=""
-_srcver=br-1.5.4
+_srcver=br-1.5.6
 _srcname=proton-bridge-"$_srcver"
 
 pkgver="$_pkgver""$_rev"
@@ -37,12 +37,12 @@ conflicts=('protonmail-bridge-bin' 'protonmail-bridge')
 options=('!emptydirs' '!strip')
 source=("$_srcname.tar.gz::https://github.com/ProtonMail/proton-bridge/archive/"$_srcver".tar.gz"
         "bridge.service")
-sha256sums=('6b0322657bf3bcfd8fd3bf3d82cba96d43cef3d731040ec084170ef1c27186af'
+sha256sums=('da9980ccedd99a87616ee370bdae13f63f2f93c1c07cbb899a493599c31e41af'
             '6b2fd1e042b55dc6d0ffe5eb44e82ffd233452b4571ef571132600e7ec0d5d82')
 
 prepare() {
     cd "${srcdir}"/"$_srcname"/
-    sed -i 's/BRIDGE_APP_VERSION?=.*/BRIDGE_APP_VERSION?=1.5.4-git/' Makefile
+    sed -i 's/BRIDGE_APP_VERSION?=.*/BRIDGE_APP_VERSION?=1.5.6-git/' Makefile
     export PATH=$PATH:$(go env GOPATH)/bin/
     make clean
     make build-nogui
