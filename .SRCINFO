@@ -1,0 +1,18 @@
+pkgbase = minicom-git
+	pkgdesc = A serial communication program (with line_timestamp patch)
+	pkgver = 2.8.r6.g4efbb0a
+	pkgrel = 1
+	url = https://salsa.debian.org/minicom-team/minicom
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = bash
+	optdepends = lrzsz: for xmodem, ymodem and zmodem file transfer protocols
+	provides = minicom=2.8.r6.g4efbb0a
+	conflicts = minicom
+	backup = etc/minirc.dfl
+	source = git+https://salsa.debian.org/minicom-team/minicom.git
+	sha256sums = SKIP
+
+pkgname = minicom-git
+
