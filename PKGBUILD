@@ -1,3 +1,4 @@
+# Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 # Maintainer: Versus Void <chaoskeeper &commat; mail FULL STOP ru>
 # Maintainer: Mehmet Ozgur Bayhan <mozgurbayhan@gmail.com>
 # Contributor: Vyacheslav Konovalov <echo dnlhY2hrb25vdmFsb3ZAZ21haWwuY29tCg== | base64 -d>
