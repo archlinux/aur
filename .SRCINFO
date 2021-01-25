@@ -1,7 +1,7 @@
 pkgbase = simplenote-electron-bin
 	pkgdesc = The simplest way to keep notes
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Automattic/simplenote-electron
 	arch = x86_64
 	arch = armv7h
