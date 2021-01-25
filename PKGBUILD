@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=pikopixel
-pkgver=1.0.b9d
+pkgver=1.0.b10
 pkgrel=1
 pkgdesc="A free, open-source application for drawing & editing pixel-art images"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('AGPL3')
 depends=('gnustep-base' 'gnustep-gui' 'gnustep-back')
 makedepends=('gnustep-make' 'gcc-objc')
 source=("http://twilightedge.com/downloads/PikoPixel.Sources.${pkgver%.*}-${pkgver##*.}.tar.gz")
-sha256sums=('c2c5999ae252b205c92f480feca94655c13ac577463dffff1a83c9a796416610')
+sha256sums=('e754a89b4a3de5e034c96468d3bc37a0909ea7c06905546ee85658a5dfb547ac')
 
 build() {
   cd PikoPixel.Sources.${pkgver%.*}-${pkgver##*.}/PikoPixel

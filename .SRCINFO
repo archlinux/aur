@@ -1,6 +1,6 @@
 pkgbase = pikopixel
 	pkgdesc = A free, open-source application for drawing & editing pixel-art images
-	pkgver = 1.0.b9d
+	pkgver = 1.0.b10
 	pkgrel = 1
 	url = http://twilightedge.com/mac/pikopixel/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = pikopixel
 	depends = gnustep-base
 	depends = gnustep-gui
 	depends = gnustep-back
-	source = http://twilightedge.com/downloads/PikoPixel.Sources.1.0-b9d.tar.gz
-	sha256sums = c2c5999ae252b205c92f480feca94655c13ac577463dffff1a83c9a796416610
+	source = http://twilightedge.com/downloads/PikoPixel.Sources.1.0-b10.tar.gz
+	sha256sums = e754a89b4a3de5e034c96468d3bc37a0909ea7c06905546ee85658a5dfb547ac
 
 pkgname = pikopixel
 
