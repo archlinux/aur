@@ -3,33 +3,30 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Kevin Mihelich <kevin@archlinuxarm.org>
-# Maintainer: Tavian Barnes <tavianator@tavianator.com>
+# Contributor: Tavian Barnes <tavianator@tavianator.com>
+# Maintainer: Vyacheslav Razykov <v.razykov@gmail.com>
 
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-glibc-headers
-pkgver=2.31
-pkgrel=3.2
+pkgver=2.32
+pkgrel=1
 pkgdesc="GNU C Library headers (${_target})"
 arch=('any')
 url="https://www.gnu.org/software/libc/"
 license=(GPL LGPL)
-depends=("${_target}-linux-api-headers>=5.6.11-1")
-makedepends=("${_target}-gcc-stage1" python)
+depends=("${_target}-linux-api-headers>=5.10.9-2")
+makedepends=("${_target}-gcc-stage1>=10.2.0-1" python)
 options=(!buildflags !strip staticlibs debug)
-_commit=18fdba553dd9b907e9812b90d2cea593f776058f
-#source=(git+https://sourceware.org/git/glibc.git#commit=$_commit
 source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz{,.sig}
-        glibc-${_commit}.patch
         sdt.h sdt-config.h
-        bz20338.patch)
-validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8 # Carlos O'Donell
+        bz26534.patch)
+validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8  # Carlos O'Donell
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
-md5sums=('78a720f17412f3c3282be5a6f3363ec6'
+md5sums=('720c7992861c57cf97d66a2f36d8d1fa'
          'SKIP'
-         'f66fac93b299d3e3c60e6c8be56b039d'
          '91fec3b7e75510ae2ac42533aa2e695e'
          '680df504c683640b02ed4a805797c0b2'
-         '430673eccc78e52c249aa4b0f1786450')
+         'fc57038c1297c7c11258e8dda1623ec2')
 
 prepare() {
   mkdir -p glibc-build
@@ -40,7 +37,7 @@ prepare() {
   local i; for i in ${source[@]}; do
     case ${i%::*} in
       *.patch)
-        msg2 "Applying ${i}"
+        echo "Applying ${i}"
         patch -p1 -i "$srcdir/${i}"
         ;;
     esac
