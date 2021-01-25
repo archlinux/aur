@@ -15,7 +15,7 @@ license=('custom:zlib'
 makedepends=('unzip')
 source=("$pkgname-$pkgver.zip::https://ddnet.tw/skins/zip/database.zip"
         "https://raw.githubusercontent.com/ddnet/ddnet/master/data/skins/license.txt")
-sha256sums=('31116d4e7c9dddd40da5d2db07844b8b16e30c4480088d8513c4aa3d78e488f5'
+sha256sums=('787d57b13b191044bce1a8fcbf728c74038902c5b01125829f060eb0a8ae5c50'
             '58f546c563e0d5249278fc9e7de86ef483469cf532dbb7bcb888fc5e3195bbaa')
 
 prepare() {
