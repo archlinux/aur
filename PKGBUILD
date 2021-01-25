@@ -1,8 +1,8 @@
 # Maintainer: gardenapple@posteo.net
 pkgname=readability-cli
-_pkgver=2.0.0-pre
+_pkgver=2.0.0-pre.2
 pkgver="${_pkgver//-/_}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Firefox Reader Mode in your terminal! - CLI tool for Mozilla's Readability library"
 arch=('any')
 url="https://www.npmjs.com/package/$pkgname"
@@ -13,16 +13,15 @@ makedepends=('npm' 'jq' 'git')
 optdepends=('bash-completion: Bash completion')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$_pkgver.tgz")
 noextract=("$pkgname-$_pkgver.tgz")
-sha256sums=('582248f3db5186ebb7f89eacf0ce927ad00798e0c4cbc381a6aa83238bb0c0c7')
-b2sums=('4f862c6fb9d6ec47dc2b6aeed380d75d304b63838f2f3b740f8f5f13b861859810937d5b90cc7b3ae0cd69bb0bc03634642435eeb4c0e1e9155cb4e4b2482cd3')
+sha256sums=('8cab9d799b0df8bd7cc3a3dcbf8fd5ea0ae9d6f7797ec5cda49b5f35b910a2c6')
+b2sums=('1089f5aa0080d0d6143912ece55125fdc07a491e34f39df3568f8311a914ff9fc7e3c05bd15596a4233b4ccefd09b7deedb551d0461424b972a34bc0225e0391')
 
 package() {
 	npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$pkgname-$_pkgver.tgz"
 
 	cd "$pkgdir/usr/bin"
-	# zsh completion is broken
-#	SHELL=/bin/zsh readable --completion \
-#		| install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_readable"
+	SHELL=/bin/zsh readable --completion \
+		| install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_readable"
 	SHELL=/bin/bash readable --completion \
 		| install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/readable"
 	cd -
