@@ -38,6 +38,7 @@ build() {
 }
 
 package() {
+    sudo rm /usr/share/applications/kh-webstore.desktop
     mkdir $pkgdir/usr
     mkdir $pkgdir/usr/share
     mkdir $pkgdir/usr/share/applications
