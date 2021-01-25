@@ -1,7 +1,7 @@
 # Maintainer: Thomas Ivesdal-Tronstad <thotro at lyse dot net>
 # Contributor Thomas Ivesdal-Tronstad <thotro at lyse dot net>
 _cranname=pracma
-_cranver=2.2.5
+_cranver=2.3.3
 pkgname=r-pracma
 pkgver=${_cranver}
 pkgrel=1
@@ -12,7 +12,7 @@ license=('GPL-2' 'GPL-3')
 depends=('r>=3.1.0')
 optdepends=()
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('2fe83e3a556f5aab3ba4c9867630283c78c9a13912c04991daf55712811e4d47')
+sha256sums=('cf1f8d7724a385d9a2e1a5496d9ba0e9908940b85669fb2c506b9059722cb93c')
 
 package() {
     mkdir -p ${pkgdir}/usr/lib/R/library
