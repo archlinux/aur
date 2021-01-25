@@ -1,22 +1,22 @@
 # Maintainer: Stephanie Wilde-Hobbs (RX14) <steph@rx14.co.uk>
 
 pkgname=mcstatus
-pkgver=4.1.0
-pkgrel=2
+pkgver=5.1.1
+pkgrel=1
 pkgdesc="Provides an easy way to query Minecraft servers for any information they can expose."
 arch=(any)
 url="https://github.com/Dinnerbone/mcstatus"
 license=('Apache')
-depends=(python python-six python-click python-dnspython)
+depends=(python python-six python-click python-dnspython python-asyncio-dgram)
 makedepends=(python-setuptools)
 checkdepends=(python-mock python-nose)
 source=("https://github.com/Dinnerbone/mcstatus/archive/release-${pkgver}.tar.gz")
-sha256sums=('21c3415ab1a0f68db3f8909566a945f6eeeca5ca8d0811dc5b4f2af3ee98c0b5')
+sha256sums=('20de89e1ec19ae3310c315702582392b99b3b9a83b0c8eee2637670ebbe16a7c')
 
 prepare() {
   cd "${srcdir}/mcstatus-release-${pkgver}"
 
-  sed -i 's/dnspython3/dnspython/' setup.py
+  sed -i 's/dnspython3/dnspython/' requirements.txt
 }
 
 
