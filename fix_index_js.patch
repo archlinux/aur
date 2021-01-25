@@ -1,0 +1,17 @@
+diff --git a/src/index.js b/src/index.js
+index db0fe1f..4d6cddc 100755
+--- a/src/index.js
++++ b/src/index.js
+@@ -204,9 +204,9 @@ axios.get(sourceUrl)
+         const defaultValues = [
+           record.rank,
+           record.symbol,
+-          record.price.toFixed(4),
+-          getColoredChangeValueText(record.percent_change_24h.toFixed(2)),
+-          record.vwap.toFixed(2),
++          record.price && record.price.toFixed(4),
++          getColoredChangeValueText(record.percent_change_24h && record.percent_change_24h.toFixed(2)),
++          record.vwap && record.vwap.toFixed(2),
+           formatNumber(record.market_cap),
+           formatNumber(record.supply),
+           formatNumber(record.volume),
