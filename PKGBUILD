@@ -2,7 +2,7 @@
 
 _pkgbase=amd-sfh-hid
 pkgname="${_pkgbase}-dkms"
-pkgver=3.1.0
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="Refactored HID driver modules for the AMD Sensor Fusion Hub (DKMS)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('dkms')
 source=("${url}/archive/${pkgver}.tar.gz"
         'dkms.conf')
-sha256sums=('fcffdac2d85cdddba09a2f014ee14f5dbc700bd64a99c507b7639baf71e85890'
+sha256sums=('906c4e5ecab578adc409449d448a069415b4d7694173fc44e518051badabe749'
             '6cdb0eae3f2aff4564f653d8b7117112918631a170d154cc2fc2998ad8787615')
 
 package() {
