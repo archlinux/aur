@@ -1,0 +1,24 @@
+pkgbase = knotter
+	pkgdesc = Editor for Celtic knots and similar designs
+	pkgver = 0.9.6_46_gef7229f
+	pkgrel = 1
+	url = https://knotter.mattbas.org/
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-script
+	depends = hicolor-icon-theme
+	provides = knotter
+	conflicts = knotter
+	source = knotter::git+https://gitlab.com/mattbas/knotter/#branch=master
+	sha256sums = SKIP
+
+pkgname = knotter
+
