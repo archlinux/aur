@@ -1,0 +1,18 @@
+pkgbase = python-constraint-git
+	pkgdesc = Solvers for Constraint Satisfaction Problems (CSPs) over finite domains in simple and pure Python
+	pkgver = 1.4.0.r4.ge23fe98
+	pkgrel = 1
+	url = https://github.com/python-constraint/python-constraint
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-constraint=1.4.0.r4.ge23fe98
+	conflicts = python-constraint
+	source = git+https://github.com/python-constraint/python-constraint.git
+	sha256sums = SKIP
+
+pkgname = python-constraint-git
+
