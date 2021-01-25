@@ -2,7 +2,7 @@
 
 pkgname=kotlin-language-server-git
 _pkgname=kotlin-language-server
-pkgver=r868.c2aec4e
+pkgver=r935.94d7443
 pkgrel=1
 pkgdesc="Smart code completion, diagnostics and more for Kotlin using the Language Server Protocol"
 arch=(any)
@@ -10,8 +10,8 @@ url="https://github.com/fwcd/KotlinLanguageServer.git"
 license=('MIT')
 conflicts=('kotlin-language-server')
 provides=('kotlin-language-server')
-depends=('java-runtime=14')
-makedepends=('java-environment=14' 'git')
+depends=('java-runtime>=14')
+makedepends=('java-environment>=14' 'git')
 source=("${_pkgname}::git+${url}")
 sha256sums=('SKIP')
 
@@ -23,7 +23,7 @@ pkgver() {
 }
 
 build() {
-    export JAVA_HOME="/usr/lib/jvm/java-14-openjdk"
+    export JAVA_HOME="/usr/lib/jvm/java-15-openjdk"
     cd "${srcdir}/${_pkgname}"
     ./gradlew server:installDist
 }
