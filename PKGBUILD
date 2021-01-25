@@ -2,27 +2,27 @@
 # shellcheck disable=SC2034,2154,2148
 
 pkgbase=docspell
-pkgname=('docspell-joex' 'docspell-restserver')
-pkgver=0.18.0
+pkgname=('docspell-joex' 'docspell-restserver' 'docspell-tools')
+pkgver=0.19.0
 pkgrel=1
 changelog=.CHANGELOG
 arch=('any')
-url="https://github.com/eikek/docspell"
+url="https://docspell.org/"
 pkgdesc="Assists in organizing your piles of documents, resulting from scanners, e-mails and other sources with miminal effort."
 license=('GPL3')
 groups=('docspell')
-depends=('java-runtime-headless')
-optdepends=('solr: provide fulltext search')
 source=("$pkgbase-$pkgver-restserver.zip::https://github.com/eikek/$pkgbase/releases/download/v$pkgver/$pkgbase-restserver-$pkgver.zip"
         "$pkgbase-$pkgver-joex.zip::https://github.com/eikek/$pkgbase/releases/download/v$pkgver/$pkgbase-joex-$pkgver.zip"
+        "$pkgbase-$pkgver-tools.zip::https://github.com/eikek/$pkgbase/releases/download/v$pkgver/$pkgbase-tools-$pkgver.zip"
         "${pkgname[0]}.sh"
         "${pkgname[1]}.sh"
         "${pkgname[0]}.service"
         "${pkgname[1]}.service"
         "$pkgbase.sysusers"
         "$pkgbase.tmpfiles")
-sha512sums=('7c56b72970d85be635fe47098f917a9c1356b788c59c5abbdeb60eb065bad856b0b7066a5adcc4ccc6c37a837090a7bf558ce8ab9beca94ad04688127fceb4d1'
-            '56172c3d0da239280b48c5b4e3356283ed9f6edcf5e70ad9ac7e9be78de203142e53ceb8abd6a9320e4694ca18d88f4875cd82c7d39bf4549d4d2323147daddf'
+sha512sums=('1fd070456dde479d160fdd6179762ad7928e10eb721824dfdf5524101cf7a926374bc3f1794d53dc764c172c7b3137f27a41b49050634b1284077eccec2634cc'
+            '1f91bdb47c3ea154423ee4e7096e4975b7c79509f26eaa6a3315130dbc3747af532a5741a27f4c59519b5e9664c18b65282ed51fcc8c205476ffc67eecbac295'
+            '115cbbf8bfc2ef234fba7b98381dee04354ff6bc50302b285eb16ef51497f4a695aeed790d78c401c63baad06c2a35910d969b9b35a0c76879d77bd859533a62'
             '6ab8b24eb76f02b68e4fa4194b8771ef4f57c8375b34bf7bf914563528e347ea127beb5547e432910911d4fd15982cccdd1df50aeb76058129b909824ce49093'
             '0b8b08f47f1cb46a3bfc16df4b0574cebfb4a851562d134fcba3c4bf80fb011443499a549c3a04480456c048346d09f36fbcbc9d792810001c9c8b370d3926a8'
             'f63f0fa58715b7da01aa265a7bec72eb24f0e98c354eed479b6034bc33b2ccdaef87db8a7630af1d5a6ac43fadf11a0f0a3fb3de5e183aa64d838a69b67125f9'
@@ -32,9 +32,12 @@ sha512sums=('7c56b72970d85be635fe47098f917a9c1356b788c59c5abbdeb60eb065bad856b0b
 
 prepare() {
     # shellcheck disable=2016
-    sed -i 's@url = "jdbc:h2:\/\/"\${java\.io\.tmpdir}"@url = "jdbc:h2:///var/lib/docspell@' \
+    sed -i -e 's@url = "jdbc:h2:\/\/"\${java\.io\.tmpdir}"@url = "jdbc:h2:///var/lib/docspell@' \
         "${pkgname[0]}-$pkgver/conf/${pkgname[0]}.conf" \
         "${pkgname[1]}-$pkgver/conf/$pkgbase-server.conf"
+
+    sed -i -e 's@/usr/local/share/docspell/native.py@/usr/share/docspell-tools/native.py@' \
+        "${pkgname[2]}-$pkgver/firefox/native/app_manifest.json"
 }
 
 # You do not need to compile Java applications from source.
@@ -47,9 +50,9 @@ prepare() {
 
 package_docspell-joex() {
     pkgdesc+=" (Job executer)"
-    depends+=('ghostscript' 'tesseract' 'unoconv' 'wkhtmltopdf')
-    optdepends+=('ocrmypdf: adds an OCR layer to scanned PDF files to make them searchable'
-                 'unpaper: pre-processes images to yield better results when doing ocr')
+    depends=('ghostscript' 'java-runtime-headless' 'tesseract' 'unoconv' 'wkhtmltopdf')
+    optdepends=('ocrmypdf: adds an OCR layer to scanned PDF files to make them searchable'
+                'unpaper: pre-processes images to yield better results when doing ocr')
     backup=("etc/docspell/joex.conf")
 
     install -Dm 755 "${pkgname[0]}.sh" "$pkgdir/usr/bin/${pkgname[0]}"
@@ -67,7 +70,7 @@ package_docspell-joex() {
     # make directories
     mkdir -p "$pkgdir/usr/share/java/${pkgname[0]}"
 
-    # copy documentary
+    # copy java libs
     cp -dpr --no-preserve=ownership \
         `# SRCFILES:` \
             "lib/." \
@@ -77,6 +80,8 @@ package_docspell-joex() {
 
 package_docspell-restserver() {
     pkgdesc+=" (Server)"
+    depends=('java-runtime-headless')
+    optdepends=('solr: provide fulltext search')
     backup=("etc/docspell/restserver.conf")
 
     install -Dm 755 "${pkgname[1]}.sh" "$pkgdir/usr/bin/${pkgname[1]}"
@@ -94,10 +99,32 @@ package_docspell-restserver() {
     # make directories
     mkdir -p "$pkgdir/usr/share/java/${pkgname[1]}"
 
-    # copy documentary
+    # copy java libs
     cp -dpr --no-preserve=ownership \
         `# SRCFILES:` \
             "lib/." \
         `# DSTDIR:` \
             "$pkgdir/usr/share/java/${pkgname[1]}/"
+}
+
+makedepends+=('python')
+package_docspell-tools() {
+    pkgdesc="Collection of tools to interact with Docspell"
+    depends=('python')
+
+    cd "${pkgname[2]}-$pkgver" || return
+
+    # Firefox extension and native messaging host
+    mkdir -p "$pkgdir/usr/share/${pkgname[2]}"
+    mkdir -p "$pkgdir/usr/lib/mozilla/native-messaging-hosts"
+    install -Dm 644 "firefox/$pkgbase-extension.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/docspell@eikek.github.io.xpi"
+    install -Dm 755 "firefox/native/native.py" "$pkgdir/usr/share/${pkgname[2]}/firefox/native/native.py"
+    ln -s "/usr/share/${pkgname[2]}/firefox/native/app_manifest.json" "$pkgdir/usr/lib/mozilla/native-messaging-hosts/$pkgbase.json"
+
+    # https://wiki.archlinux.org/index.php/Python_package_guidelines#Reproducible_bytecode
+    export PYTHONHASHSEED=0
+    python -O -m compileall "$pkgdir/usr/share/${pkgname[2]}/firefox/native/native.py"
+
+    # Scripts
+    find . -type f -name "*.sh" -exec sh -c 'install -Dm 755 "$3" "$1/usr/bin/$2-$(basename $3)"' _ "$pkgdir" "$pkgbase" {} \;
 }
