@@ -44,10 +44,11 @@ prepare() {
 }
 
 build() {
-  rm -rf $srcdir/rdm/bin
-  cd $srcdir/rdm/src
-  lrelease resources/translations/*.ts
-  qmake && make
+	cd "$srcdir/rdm/3rdparty/lz4/build/cmake"
+	cmake -DLZ4_BUNDLED_MODE=ON . && make
+	cd "$srcdir/rdm/src"
+	lrelease resources/translations/*.ts
+	qmake && make
 }
 
 package() {
