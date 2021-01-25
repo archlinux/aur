@@ -1,7 +1,7 @@
 pkgbase = rofi-file-browser-extended-git
 	pkgdesc = Use rofi to quickly open files
-	pkgver = 1.2.0.r1.g295af80
-	pkgrel = 2
+	pkgver = 1.2.0.r4.gba2622d
+	pkgrel = 3
 	url = https://github.com/marvinkreis/rofi-file-browser-extended
 	arch = x86_64
 	license = MIT
