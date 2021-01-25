@@ -1,7 +1,8 @@
-# Maintainer: Marco44 (Marc Cousin) <cousinmarc at gmail dot com>
-pkgname=hypopg-git
-_gitname=hypopg
-pkgver=1.1.2.r0.gd7ef06f
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+# Contributor: Marco44 (Marc Cousin) <cousinmarc at gmail dot com>
+
+pkgname=hypopg
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Hypothetical indexes for PostgreSQL... ask the optimizer if this hypothetical index would help"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -11,24 +12,16 @@ depends=('postgresql')
 builddepends=()
 makedepends=(git)
 options=(!emptydirs !libtool)
-source=('git://github.com/HypoPG/hypopg.git')
+source=("git+https://github.com/HypoPG/hypopg.git#tag=${pkgver}")
 md5sums=('SKIP')
-install='hypopg-git.install'
-
-pkgver() {
-  cd $_gitname
-  git describe --long --tags | sed 's/REL//;s/_/./g;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+install='hypopg.install'
 
 build() {
-  local _gitdir=$srcdir/$_gitname
-  cd $_gitdir
-  git clean -dfx
-  git reset --hard
+  cd hypopg
   make
 }
 
 package() {
-  cd $srcdir/$_gitname
-  make DESTDIR=$pkgdir install
+  cd hypopg
+  make DESTDIR="$pkgdir" install
 }
