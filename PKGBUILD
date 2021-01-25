@@ -1,4 +1,5 @@
 # Maintainer: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
+# Maintainer: Reza Jahanbakhshi <reza.jahanbakhshi at gmail dot com
 # Contributor: Armin K. <krejzi at email dot com>
 # Contributor: Kristian Klausen <klausenbusk@hotmail.com>
 # Contributor: Egon Ashrafinia <e.ashrafinia@gmail.com>
