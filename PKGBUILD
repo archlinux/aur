@@ -1,14 +1,14 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=sandsmark-screenshot-git
-pkgver=5.e2fc792
+pkgver=8.b0ce35a
 pkgrel=1
 pkgdesc="Trivial application to take screenshots and put them on the clipboard"
 arch=('x86_64')
 url='https://github.com/sandsmark/sandsmark-screenshot'
 license=('GPL')
 depends=( 'qt5-base')
-makedepends=('git')
+makedepends=('git' 'cmake')
 provides=('sandsmark-screenshot')
 conflicts=('sandsmark-screenshot')
 source=('git+https://github.com/sandsmark/sandsmark-screenshot.git')
@@ -21,14 +21,16 @@ pkgver() {
 
 prepare() {
     mkdir -p build
-        cd build
-        qmake ../sandsmark-screenshot
 }
 
 build() {
-    make -C build
+    cd build
+    cmake ../sandsmark-screenshot \
+        -DCMAKE_INSTALL_PREFIX=/usr
+    make
 }
 
 package() {
-    install -Dm755 build/screenshot "${pkgdir}/usr/bin/screenshot"
+    cd build
+    make DESTDIR="$pkgdir" install
 }
