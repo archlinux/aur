@@ -2,13 +2,13 @@
 
 pkgname=pikasso-git
 pkgver=r18.45e8709
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple drawing programs using Kirigami for the UI and Rust for the rendering"
 arch=('x86_64')
 url="https://invent.kde.org/graphics/pikasso"
 license=('GPL3')
 depends=('ki18n' 'kconfig' 'kirigami2')
-makedepends=('git' 'extra-cmake-modules' 'corrosion')
+makedepends=('git' 'extra-cmake-modules' 'corrosion-git')
 provides=('pikasso')
 conflicts=('pikasso')
 source=("git+${url}.git")
