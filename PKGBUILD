@@ -4,7 +4,7 @@
 pkgbase=docspell
 pkgname=('docspell-joex' 'docspell-restserver' 'docspell-tools')
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 changelog=.CHANGELOG
 arch=('any')
 url="https://docspell.org/"
@@ -32,12 +32,15 @@ sha512sums=('1fd070456dde479d160fdd6179762ad7928e10eb721824dfdf5524101cf7a926374
 
 prepare() {
     # shellcheck disable=2016
-    sed -i -e 's@url = "jdbc:h2:\/\/"\${java\.io\.tmpdir}"@url = "jdbc:h2:///var/lib/docspell@' \
+    sed -i -e 's@url = "jdbc:h2://"${java.io.tmpdir}"@url = "jdbc:h2:///var/lib/docspell@' \
         "${pkgname[0]}-$pkgver/conf/${pkgname[0]}.conf" \
         "${pkgname[1]}-$pkgver/conf/$pkgbase-server.conf"
 
     sed -i -e 's@/usr/local/share/docspell/native.py@/usr/share/docspell-tools/native.py@' \
         "${pkgname[2]}-$pkgver/firefox/native/app_manifest.json"
+
+    sed -i -e 's@DS_SH_CMD="ds.sh"@DS_SH_CMD="docspell-ds"@' \
+        "${pkgname[2]}-$pkgver/firefox/native/native.py"
 }
 
 # You do not need to compile Java applications from source.
@@ -126,5 +129,5 @@ package_docspell-tools() {
     python -O -m compileall "$pkgdir/usr/share/${pkgname[2]}/firefox/native/native.py"
 
     # Scripts
-    find . -type f -name "*.sh" -exec sh -c 'install -Dm 755 "$3" "$1/usr/bin/$2-$(basename $3)"' _ "$pkgdir" "$pkgbase" {} \;
+    find . -type f -name "*.sh" -exec sh -c 'install -Dm 755 "$3" "$1/usr/bin/$2-$(basename "$3" .sh)"' _ "$pkgdir" "$pkgbase" {} \;
 }
