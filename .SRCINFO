@@ -1,0 +1,23 @@
+pkgbase = switchboard-plug-pantheon-tweaks-git
+	pkgdesc = Pantheon Tweaks plug for Switchboard
+	pkgver = r447.96ed0ce
+	pkgrel = 1
+	url = https://github.com/pantheon-tweaks/pantheon-tweaks
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = glib2
+	depends = gtk3
+	depends = libgee
+	depends = libgranite.so
+	depends = libswitchboard-2.0.so
+	provides = switchboard-plug-pantheon-tweaks-git
+	conflicts = switchboard-plug-pantheon-tweaks
+	source = switchboard-plug-pantheon-tweaks::git+https://github.com/pantheon-tweaks/pantheon-tweaks.git
+	sha256sums = SKIP
+
+pkgname = switchboard-plug-pantheon-tweaks-git
+
