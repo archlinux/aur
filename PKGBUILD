@@ -48,9 +48,9 @@ build() {
 package() {
   cd ${pkgname}
 
-  install -DTm755 src/build/Cutter "${pkgdir}/usr/bin/Cutter"
-  install -DTm644 src/org.radare.Cutter.desktop "${pkgdir}/usr/share/applications/org.radare.Cutter.desktop"
-  install -DTm644 src/img/cutter.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/cutter.svg"
+  install -DTm755 src/build/r2cutter "${pkgdir}/usr/bin/r2cutter"
+  install -DTm644 src/org.radare.r2cutter.desktop "${pkgdir}/usr/share/applications/org.radare.r2cutter.desktop"
+  install -DTm644 src/img/r2cutter.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/r2cutter.svg"
   install -DTm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -dm755 docs/ "${pkgdir}/usr/share/doc/${pkgname}/"
   cp -a docs/* "${pkgdir}/usr/share/doc/${pkgname}/"
