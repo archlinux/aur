@@ -2,7 +2,7 @@
 
 _gemname=tzinfo-data
 pkgname=ruby-$_gemname
-pkgver=1.2020.6
+pkgver=1.2021.1
 pkgrel=1
 pkgdesc='Timezone data for ruby-tzinfo'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(ruby ruby-tzinfo)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-b2sums=('4aa60497ef8337be8d72786fa5eaf56387063291c2f012b13a2efd0055345b18c98878e1a4739c2b4673342c9ba3d977dff06649aa6b7bb70550e7b6562ef13e')
+b2sums=('aecf0e451679496606ba682b3bf60954863058c9c08344c74ccc0a8a5118df5b6afd1e1d53d4479dbdc797a9c4d5186578a877e43fc782b206744d52bcc44914')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
