@@ -8,7 +8,7 @@ pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-jack-git
          pipewire-common-pulse-git pipewire-common-alsa-git
          gst-plugin-pipewire-common-git pipewire-common-ffmpeg-git
          pipewire-common-bluez5-git pipewire-common-bluez5-hsphfpd-git)
-pkgver=0.3.20.r4.g11f95fe1
+pkgver=0.3.20.r33.g39f082fc
 pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines"
 url="https://pipewire.org"
@@ -60,7 +60,7 @@ _pick() {
 _ver=${pkgver:0:3}
 
 package_pipewire-common-git() {
-  depends=(sbc rtkit vulkan-icd-loader
+  depends=(sbc rtkit vulkan-icd-loader pipewire-bluez5
            libdbus-1.so libncursesw.so libsndfile.so libudev.so libasound.so
            libsystemd.so)
   optdepends=('pipewire-common-docs-git: Documentation'
@@ -137,7 +137,7 @@ package_pipewire-common-jack-git() {
 
 package_pipewire-common-pulse-git() {
   pkgdesc+=" (PulseAudio replacement)"
-  depends=(pipewire-common-git pipewire-bluez5 libpulse)
+  depends=(pipewire-common-git libpulse)
   provides=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
   conflicts=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
   install=pipewire-pulse.install
