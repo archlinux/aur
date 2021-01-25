@@ -2,10 +2,10 @@
 # Contributor: Det
 # Contributor: josephgbr
 
-_bundleid=243725
-_hash=61ae65e088624f5aaa0b1d2d801acb16
+_bundleid=244056
+_hash=89d678f2be164786b292527658ca1605
 _major=8
-_minor=271
+_minor=281
 _pkgname=jre
 
 pkgname=bin32-jre
@@ -59,7 +59,7 @@ source=(
   "http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
   "policytool32-$_jname.desktop"
 )
-sha256sums=('da26c9c3657a84cc60b57798da7bdc463632fffd5c40679cabefea5229ce98b2'
+sha256sums=('83110e23408e0524aba62cf627794cf0382cb8b40842854cd13ca71798c85bd4'
             '9c64997edfce44e29296bfbd0cf90abf8b6b9ef2ea64733adae3bdac9ae2c5a6'
             'b92df5151b7b21fbdce2be8717b3b83e58bd290111b47c8c81c657ab2ccb0db8')
 
