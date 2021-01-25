@@ -4,7 +4,7 @@
 pkgname=sqlectron-gui
 _electron=electron6
 pkgver=1.33.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and lightweight SQL client with cross database and platform support"
 arch=('x86_64')
 url="https://sqlectron.github.io/"
@@ -12,16 +12,17 @@ license=('MIT')
 depends=($_electron)
 makedepends=(
 	'asar'
+	'git'
 	'libsass'
 	'npm'
 	'python2'
 )
 source=(
-	"https://github.com/sqlectron/sqlectron-gui/archive/v${pkgver}.tar.gz"
+	"git+https://github.com/sqlectron/sqlectron-gui.git#tag=v${pkgver}"
 	'sqlectron-gui.desktop'
 )
 
-sha1sums=('96c9f4a0f59f748ca076ad6f61fbc6335a6ec58e'
+sha1sums=('SKIP'
           'b9fb3bc29a17dee5de9295e2fdb2b3025ed51d1f')
 
 case "$CARCH" in
@@ -32,7 +33,7 @@ case "$CARCH" in
 esac
 
 prepare() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 
 	# remove extra dependencies
 	sed -i package.json \
@@ -46,7 +47,7 @@ prepare() {
 }
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 
 	export PATH="$srcdir/bin:$PATH"
 	export SKIP_SASS_BINARY_DOWNLOAD_FOR_CI=1
@@ -82,7 +83,7 @@ build() {
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 
 	asar p app app.asar
 
