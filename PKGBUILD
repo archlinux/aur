@@ -2,7 +2,7 @@
 # Contributor: Chris Brendel <cdbrendel@gmail.com>
 
 pkgname=python-thinc
-pkgver=7.4.5
+pkgver=8.0.1
 pkgrel=1
 pkgdesc="Practical Machine Learning for NLP"
 arch=(i686 x86_64 armv7h aarch64)
@@ -26,8 +26,8 @@ depends=(
 	python-wasabi
 )
 makedepends=(python-setuptools cython)
-source=("https://files.pythonhosted.org/packages/8a/ee/e0ebaafb9d290a989d3ca433e118cbba5ec3304c26db41f696b9bfea007e/thinc-7.4.5.tar.gz")
-sha256sums=('5743fde41706252ec6ce4737c68d3505f7e1cc3d4431174a17149838d594f8cb')
+source=("https://files.pythonhosted.org/packages/ac/15/282edb3e44d67c64d77dd94af9542e26fe7e5256fda8f2242b169bb146b0/thinc-8.0.1.tar.gz")
+sha256sums=('88755ccd076184f29ebc29a484347830fd52a29ece58aa611faec8a578a45810')
 
 build() {
 	cd "thinc-${pkgver}"
