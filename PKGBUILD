@@ -5,19 +5,21 @@ pkgname=simplenote-electron-arm-bin
 _pkgname=${pkgname%-electron-arm-bin}
 pkgver=2.5.0
 _appimage="simplenote-electron-${pkgver}-${CARCH}.AppImage"
-pkgrel=1
+pkgrel=2
 pkgdesc='The simplest way to keep notes'
 arch=('armv7h' 'aarch64')
 url='https://github.com/Automattic/simplenote-electron'
 license=('GPL2')
-depends=('gtk3' 'libxss' 'nss')
+depends=('gtk3' 'hicolor-icon-theme' 'libxss' 'nss')
 optdepends=(
     'libnotify: desktop notifications'
     'noto-fonts-emoji: emoji support'
     'ttf-joypixels: emoji support'
 )
+makedepends=('zlib')
 provides=('simplenote')
 options=(!strip)
+install="$pkgname.install"
 source_armv7h=("simplenote-electron-${pkgver}-armv7h.AppImage"::"${url}/releases/download/v${pkgver}/Simplenote-linux-${pkgver}-armv7l.AppImage")
 source_aarch64=("simplenote-electron-${pkgver}-aarch64.AppImage"::"${url}/releases/download/v${pkgver}/Simplenote-linux-${pkgver}-arm64.AppImage")
 noextract=($_appimage)
@@ -36,7 +38,8 @@ prepare() {
     ./$_appimage --appimage-extract
 
     ## Fix Permissions ##
-    find squashfs-root -type d -exec chmod 755 {} \;
+    find squashfs-root -type d -exec chmod 0755 {} \;
+    find squashfs-root -type f -name '*.so' -exec chmod 0644 {} \;
 
     ## Modify Desktop File ##
     sed -i \
@@ -53,19 +56,18 @@ package() {
     cd "$srcdir"
 
     ## Create Installation Directory Structure ##
-    install -dm755 "$pkgdir"/usr/bin
-    install -dm755 "$pkgdir"/opt/$_pkgname
-    install -dm755 "$pkgdir"/usr/share/icons
+    install -dm0755 "$pkgdir"/usr/bin
+    install -dm0755 "$pkgdir"/opt/$_pkgname
+    install -dm0755 "$pkgdir"/usr/share/{applications,icons}
 
     ## Install Icons ##
     cp -RL squashfs-root/usr/share/icons/hicolor "$pkgdir"/usr/share/icons/
 
-    ## Install Desktop File ##
-    install -Dm644 squashfs-root/${_pkgname}.desktop -t "$pkgdir"/usr/share/applications/
-
     ## Move AppImage Contents to /opt/$_pkgname ##
     cp -RLT squashfs-root "$pkgdir"/opt/$_pkgname
-
-    ## Symlink /usr/bin Executable to /opt/$_pkgname ##
-    ln -s /opt/$_pkgname/$_pkgname "$pkgdir"/usr/bin/$_pkgname
+    
+    ## Remove Unneccessary Directories/Files ##
+    rm -rf "$pkgdir"/opt/$_pkgname/usr
+    rm "$pkgdir"/opt/$_pkgname/AppRun
+    rm "$pkgdir"/opt/$_pkgname/$_pkgname.png
 }

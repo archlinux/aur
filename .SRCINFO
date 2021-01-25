@@ -1,12 +1,15 @@
 pkgbase = simplenote-electron-arm-bin
 	pkgdesc = The simplest way to keep notes
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Automattic/simplenote-electron
+	install = simplenote-electron-arm-bin.install
 	arch = armv7h
 	arch = aarch64
 	license = GPL2
+	makedepends = zlib
 	depends = gtk3
+	depends = hicolor-icon-theme
 	depends = libxss
 	depends = nss
 	optdepends = libnotify: desktop notifications

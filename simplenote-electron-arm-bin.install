@@ -1,0 +1,20 @@
+### Vars ###
+_pkgname=simplenote
+
+### Post Install ###
+post_install() {
+    ## Symlink Files ##
+    ln -s \
+    "$pkgdir"/opt/$_pkgname/${_pkgname}.desktop \
+    "$pkgdir"/usr/share/applications/${_pkgname}.desktop
+    ln -s \
+    "$pkgdir"/opt/$_pkgname/$_pkgname \
+    "$pkgdir"/usr/bin/$_pkgname
+}
+
+### Post Remove ###
+post_remove() {
+    ## Remove Symlinks ##
+    rm "$pkgdir"/usr/share/applications/${_pkgname}.desktop
+    rm "$pkgdir"/usr/bin/$_pkgname
+}
