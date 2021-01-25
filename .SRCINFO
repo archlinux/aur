@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-diff-drive-controller
 	pkgdesc = ROS - Controller for a differential drive mobile base.
-	pkgver = 0.17.1
+	pkgver = 0.17.2
 	pkgrel = 1
 	url = https://github.com/ros-controls/ros_controllers/wiki
 	arch = any
@@ -23,8 +23,8 @@ pkgbase = ros-melodic-diff-drive-controller
 	depends = ros-melodic-controller-interface
 	depends = ros-melodic-tf
 	depends = ros-melodic-controller-manager
-	source = ros-melodic-diff-drive-controller-0.17.1.tar.gz::https://github.com/ros-controls/ros_controllers/archive/0.17.1.tar.gz
-	sha256sums = 373e5b00522a7e0343fa6b7ffe95ccf7fe6bd44622fe28534a05e2abcd8dc6ba
+	source = ros-melodic-diff-drive-controller-0.17.2.tar.gz::https://github.com/ros-controls/ros_controllers/archive/0.17.2.tar.gz
+	sha256sums = fdd93a3aea7d140b1c04849790e81195f76fb421c7dfa51c86dcf22698f32b3e
 
 pkgname = ros-melodic-diff-drive-controller
 
