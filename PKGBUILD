@@ -3,7 +3,7 @@
 pkgname=haruhi-dl
 pkgver=2021.01.24
 _name="haruhi-dl-v$pkgver"
-pkgrel=1
+pkgrel=
 pkgdesc="Fork of youtube-dl, focused on bringing a fast, steady stream of updates. We'll do our best to merge patches to any site, not only youtube."
 arch=('any')
 url="https://haruhi.download"
