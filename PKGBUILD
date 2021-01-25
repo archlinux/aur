@@ -16,6 +16,6 @@ package() {
     chmod +x "$pkgdir"/usr/bin/confedi
 
     mkdir -p "$pkgdir"/usr/share/man/man8
-    cp configuration-editor/confedi "$pkgdir"/usr/share/man/man8
-    gzip "$pkgdir"/usr/share/man/man8/confedi
+    cp configuration-editor/confedi "$pkgdir"/usr/share/man/man8/confedi.8
+    gzip "$pkgdir"/usr/share/man/man8/confedi.8
 }
