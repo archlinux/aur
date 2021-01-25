@@ -66,10 +66,10 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-rt54
-pkgver=5.4.87
+pkgver=5.4.91
 _major=5.4
 _branch=5.x
-_rt=48
+_rt=50
 xanmod=1
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod real-time version - LTS branch 5.4.x'
@@ -100,7 +100,7 @@ done
 
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            'cf61323bbbd978b54eef1cdd0bc498a6153af2ff3e97cafff65981d7ad8d7072'
+            '90b03dd7dd74acd484451c4993d63be2c64f0bf84df23142f5a49f1c8620fb70'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
             '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee')
 
@@ -162,28 +162,23 @@ prepare() {
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
   # This is intended for the people that want to build this package with their own config
-  # Put the file "myconfig" at the package folder to use this feature
-  # If it's a full config, will be replaced
-  # If not, you should use scripts/config commands, one by line
-  if [ -f "${startdir}/myconfig" ]; then
-    if ! grep -q 'scripts/config' "${startdir}/myconfig"; then
-      # myconfig is a full config file. Replacing default .config
-      msg2 "Using user CUSTOM config..."
-      cp -f "${startdir}"/myconfig .config
-    else
-      # myconfig is a partial file. Applying every line
-      msg2 "Applying configs..."
-      cat "${startdir}"/myconfig | while read -r _linec ; do
-        if echo "$_linec" | grep "scripts/config" ; then
-          set -- $_linec
-          "$@"
-        else
-          warning "Line format incorrect, ignoring..."
-        fi
-      done
+  # Put the file "myconfig" at the package folder (this will take preference) or "${XDG_CONFIG_HOME}/linux-xanmod/myconfig"
+  # If we detect partial file with scripts/config commands, we execute as a script
+  # If not, it's a full config, will be replaced
+  for _myconfig in "${startdir}/myconfig" "${XDG_CONFIG_HOME}/linux-xanmod/myconfig" ; do
+    if [ -f "${_myconfig}" ]; then
+      if grep -q 'scripts/config' "${_myconfig}"; then
+        # myconfig is a partial file. Executing as a script
+        msg2 "Applying myconfig..."
+        bash -x "${_myconfig}"
+      else
+        # myconfig is a full config file. Replacing default .config
+        msg2 "Using user CUSTOM config..."
+        cp -f "${_myconfig}" .config
+      fi
+      echo
     fi
-    echo
-  fi
+  done
 
   make olddefconfig
 
