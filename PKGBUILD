@@ -1,7 +1,7 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname=auto-cpufreq
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic CPU speed & power optimizer"
 arch=('any')
 url="https://github.com/AdnanHodzic/auto-cpufreq"
@@ -20,7 +20,7 @@ sha256sums=('d1d93698b2fbce8814ef1f1d92c277d93e2375757627739172cae15ab34bacdd')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
-	sed -i 's|usr/local|usr|g' "scripts/${pkgname}.service" source/core.py
+	sed -i 's|usr/local|usr|g' "scripts/${pkgname}.service" auto_cpufreq/core.py
 }
 
 build() {
