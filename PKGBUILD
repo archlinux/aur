@@ -1,12 +1,12 @@
 # $Id: PKGBUILD 310007 2017-11-15 14:11:34Z foutrelis $
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
-# Contributor: Mykyta Poturai <mykyta.poturai@tutanota.com>
+# Contributor: Mykyta Poturai <ddone@aruko.org>
 
 pkgname=watchdog
 pkgver=5.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Watchdog daemon"
-arch=('x86_64' 'aarch64')
+arch=('x86_64' 'aarch64' 'armv7h')
 url="http://sourceforge.net/projects/watchdog"
 license=('GPL')
 depends=('glibc')
