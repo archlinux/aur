@@ -1,6 +1,6 @@
 pkgbase = asbru-cm-loki-git
 	pkgdesc = A free and open-source connection manager. loki branch
-	pkgver = 6.2.0.r44.gce1d552
+	pkgver = 6.2.2.r109.g1f25e64
 	pkgrel = 1
 	url = https://github.com/asbru-cm/asbru-cm
 	arch = any
