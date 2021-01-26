@@ -13,8 +13,11 @@ _tkg_initscript() {
     source "$_EXT_CONFIG_PATH" && msg2 "External configuration file $_EXT_CONFIG_PATH will be used to override customization.cfg values.\n"
   fi
 
+  # Default to Arch
+  if [ -z "$_distro" ] || [ "$_ispkgbuild" = "true" ]; then
     msg2 "Defaulting to Archlinux target\n"
     _distro="Arch"
+  fi
 
           echo "_basever=510" > "$_path"/versel
           echo "_basekernel=5.10" >> "$_path"/versel
@@ -61,8 +64,9 @@ _tkg_initscript() {
       echo "_cpusched=\"MuQSS\"" > "${_path}"/cpuschedset
     elif [ "$CONDITION" = "5" ]; then
       echo "_cpusched=\"cfs\"" > "${_path}"/cpuschedset
-    else
-      echo "_cpusched=\"cfs\"" > "${_path}"/cpuschedset
+      else
+        echo "_cpusched=\"cfs\"" > "${_path}"/cpuschedset
+      fi
     fi
     if [ -n "$_custom_pkgbase" ]; then
       echo "_custom_pkgbase=\"${_custom_pkgbase}\"" >> "${_path}"/cpuschedset
