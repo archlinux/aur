@@ -1,6 +1,6 @@
-# Maintainer: <andrew dot myers at fdservices  dot co dot uk>
+# Maintainer: andym <andrew dot myers at wanadoo dot fr>
 pkgname=pdf4tcl
-pkgver=092
+pkgver=094
 pkgrel=1
 pkgdesc="Pdf4Tcl is a library for generating PDF documents from Tcl."
 arch=('any')
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('tcl>=8.6' 'tk>=8.6')
 #install=$pkgname.install
 source=(https://sourceforge.net/projects/${pkgname}/files/${pkgname}${pkgver}.tar.gz)
-md5sums=('5bed72f87076e65ce52095c6361a5a0f')
+md5sums=('b2c960b2f19f4bb5205a0d57ca6056f3')
 
 package() {
   cd ${srcdir}/${pkgname}${pkgver}
@@ -18,5 +18,6 @@ package() {
   mkdir -p "${pkgdir}/usr/share/licences/${pkgname}/LICENCE"
   cp licence.terms "${pkgdir}/usr/share/licences/${pkgname}/LICENCE"
 }
+
 
 
