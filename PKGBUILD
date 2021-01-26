@@ -11,7 +11,7 @@ depends=('postgresql')
 builddepends=()
 makedepends=(git)
 options=(!emptydirs !libtool)
-source=('git://github.com/powa-team/pg_stat_kcache.git')
+source=('git+https://github.com/powa-team/pg_stat_kcache.git')
 md5sums=('SKIP')
 install='pg_stat_kcache-git.install'
 

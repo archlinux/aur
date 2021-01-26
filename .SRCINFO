@@ -13,7 +13,7 @@ pkgbase = pg_stat_kcache-git
 	depends = postgresql
 	options = !emptydirs
 	options = !libtool
-	source = git://github.com/powa-team/pg_stat_kcache.git
+	source = git+https://github.com/powa-team/pg_stat_kcache.git
 	md5sums = SKIP
 
 pkgname = pg_stat_kcache-git
