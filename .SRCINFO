@@ -14,7 +14,7 @@ pkgbase = plpgsql_check
 	depends = postgresql
 	options = !emptydirs
 	options = !libtool
-	source = git://github.com/okbob/plpgsql_check
+	source = git+https://github.com/okbob/plpgsql_check
 	md5sums = SKIP
 
 pkgname = plpgsql_check-git

@@ -13,7 +13,7 @@ depends=('postgresql')
 builddepends=()
 makedepends=(git llvm)
 options=(!emptydirs !libtool)
-source=('git://github.com/okbob/plpgsql_check')
+source=('git+https://github.com/okbob/plpgsql_check')
 md5sums=('SKIP')
 install=''
 
