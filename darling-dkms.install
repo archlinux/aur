@@ -1,0 +1,36 @@
+post_install() {
+
+	MODNAME="darling-mach"
+	MODVER="0.1"
+
+	echo ">>> DKMS: Module add, build, and install"
+
+	if line=$(dkms status -m $MODNAME)
+		dkms add -m $MODNAME -v $MODVER
+	fi
+
+	dkms build -m $MODNAME -v $MODVER
+	dkms install -m $MODNAME -v $MODVER
+
+	depmod -a
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+
+	MODNAME="darling-mach"
+
+	echo ">>> DKMS: Module uninstall"
+
+	line=$(dkms status -m $MODNAME)
+		version=$(echo "$line" | sed "s/$MODNAME,\([^,]*\)[,:].*/\1/;t;d")
+		dkms remove -m $MODNAME -v $version --all
+	fi
+
+	depmod -a
+
+}
+sha512sums_x86_64=('22672152f3a4a6b36213532b601208b8ade06657cde78bb2a76d700ac3c46af75086be5e2bdbf3d1e860735e5a1b2594c45ad32038cbd99aa68ea82532c98f5f')
