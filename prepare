@@ -13,12 +13,6 @@ _tkg_initscript() {
     source "$_EXT_CONFIG_PATH" && msg2 "External configuration file $_EXT_CONFIG_PATH will be used to override customization.cfg values.\n"
   fi
 
-  # Default to Arch
-  if [ -z "$_distro" ] || [ "$_ispkgbuild" = "true" ]; then
-    msg2 "Defaulting to Archlinux target\n"
-    _distro="Arch"
-  fi
-
   # create build dir early
     _path="${_where}"
 
