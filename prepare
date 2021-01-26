@@ -1,11 +1,11 @@
 #!/bin/bash
 
-ver54=89
+ver54=92
 ver57=19
 ver58=18
 ver59=16
 ver510=10
-ver511=rc3
+ver511=rc5
 
 _tkg_initscript() {
   # Load external configuration file if present. Available variable values will overwrite customization.cfg ones.
@@ -104,6 +104,14 @@ _tkg_initscript() {
     source "${_path}"/versel
   fi
 
+ # if [ "$_distro" != "Void" ]; then
+ #   cp "$_where"/${_basekernel}/* "$_where" # copy patches inside the PKGBUILD's dir to preserve makepkg sourcing and md5sum checking
+ #   cp "$_where"/${_basekernel}/* "$_where" # copy config files and hooks inside the PKGBUILD's dir to preserve makepkg sourcing and md5sum checking
+ # else
+ #   cp "$_where"/${_basekernel}/* "$_path"
+ #   cp "$_where"/${_basekernel}/* "$_path"
+ # fi
+
   if [ -z "$_OPTIPROFILE" ] && [ ! -e "$_path"/cpuschedset ]; then
     # Prompt about optimized configurations. Available variable values will overwrite customization.cfg/external config ones.
     plain "Do you want to use a predefined optimized profile?"
@@ -198,6 +206,11 @@ _tkg_initscript() {
     echo "_custom_pkgbase=\"${_custom_pkgbase}\"" >> "${_path}"/cpuschedset
   fi
 
+  if [ "$_basever" = "511" ] && [ "$_cpusched" != "cfs" ]; then
+    warning "No support for alternative CPU schedulers on this kernel version. Defaulting to CFS."
+    echo "_cpusched=\"cfs\"" > "${_path}"/cpuschedset
+  fi
+
   case $_compileroptlevel in
 	"2")
 	_compileropt="-O3"
@@ -245,8 +258,16 @@ _tkg_initscript() {
 }
 
 user_patcher() {
+    for _f in "$_where"/*."${_userpatch_ext}patch" "$_where"/*."${_userpatch_ext}revert"; do
+      [ -e "${_f}" ] || continue
+      warning "Found userpatch file ${f##*/} in the PKGBUILD directory."
+      warning "Userpatches must now be placed in version-specific subdirectories (linux${_basever}-tkg-userpatches for this kernel version)."
+      warning "The patch will not be applied."
+      break
+    done
+
 	# To patch the user because all your base are belong to us
-	local _patches=("$_where"/*."${_userpatch_ext}revert")
+	local _patches=("$_where"/linux"$_basever"-tkg-userpatches/*."${_userpatch_ext}revert")
 	if [ ${#_patches[@]} -ge 2 ] || [ -e "${_patches}" ]; then
 	  if [ "$_user_patches_no_confirm" != "true" ]; then
 	    msg2 "Found ${#_patches[@]} 'to revert' userpatches for ${_userpatch_target}:"
@@ -268,7 +289,7 @@ user_patcher() {
 	  fi
 	fi
 
-	_patches=("$_where"/*."${_userpatch_ext}patch")
+	_patches=("$_where"/linux"$_basever"-tkg-userpatches/*."${_userpatch_ext}patch")
 	if [ ${#_patches[@]} -ge 2 ] || [ -e "${_patches}" ]; then
 	  if [ "$_user_patches_no_confirm" != "true" ]; then
 	    msg2 "Found ${#_patches[@]} userpatches for ${_userpatch_target}:"
@@ -321,7 +342,7 @@ _tkg_srcprep() {
     fi
 
     # ARCH Patches
-    if [ "${_configfile}" = "config_hardened_${_basekernel}.x86_64" ] && [ "${_cpusched}" = "cfs" ]; then
+    if [ "${_configfile}" = "config_hardened.x86_64" ] && [ "${_cpusched}" = "cfs" ]; then
       msg2 "Using linux hardened patchset"
       tkgpatch="$srcdir/0012-linux-hardened.patch" && _tkg_patcher
     else
@@ -474,6 +495,9 @@ _tkg_srcprep() {
   sed -i -e 's/# CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZ4 is not set/CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZ4=y/' ./.config
   sed -i -e 's/CONFIG_ZSWAP_COMPRESSOR_DEFAULT="lzo"/CONFIG_ZSWAP_COMPRESSOR_DEFAULT="lz4"/' ./.config
   sed -i -e 's/# CONFIG_CMDLINE_BOOL is not set/CONFIG_CMDLINE_BOOL=y/' ./.config
+  if [ "$_config_expert" = "true" ]; then
+    sed -i -e 's/# CONFIG_EXPERT is not set/CONFIG_EXPERT=y/' ./.config
+  fi
   echo "CONFIG_CMDLINE=\"${_custom_commandline}\"" >> ./.config
   echo "# CONFIG_CMDLINE_OVERRIDE is not set" >> ./.config
   echo "# CONFIG_X86_P6_NOP is not set" >> ./.config
@@ -1106,8 +1130,9 @@ _tkg_srcprep() {
       cd "$_where/.." && git clone https://github.com/Frogging-Family/community-patches.git && cd "${srcdir}/${_srcpath}"
     fi
     _community_patches=($_community_patches)
+    mkdir -p "$_where"/linux"$_basever"-tkg-userpatches
     for _p in ${_community_patches[@]}; do
-      ln -s "$_where"/../community-patches/linux"$_basever"-tkg/$_p "$_where"/
+      ln -s "$_where"/../community-patches/linux"$_basever"-tkg/$_p "$_where"/linux"$_basever"-tkg-userpatches/$_p
     done
   fi
 
@@ -1120,7 +1145,7 @@ _tkg_srcprep() {
 
   # Community patches removal
   for _p in ${_community_patches[@]}; do
-    rm -f "$_where"/$_p
+    rm -f "$_where"/linux"$_basever"-tkg-userpatches/$_p
   done
 
   if [ "$_distro" = "Arch" ] || [ "$_distro" = "Void" ]; then
@@ -1258,7 +1283,7 @@ exit_cleanup() {
 
   # Community patches removal in case of failure
   for _p in ${_community_patches[@]}; do
-    rm -f "$_where"/"$_p"
+    rm -f "$_where"/linux"$_basever"-tkg-userpatches/"$_p"
   done
 
   if [ "$_NUKR" = "true" ] && [ "$_where" != "$srcdir" ]; then

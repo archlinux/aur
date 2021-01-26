@@ -32,23 +32,23 @@ source "$_where"/prepare
 
 _tkg_initscript
 
-#if [[ "$_sub" = rc* ]]; then
-#  _srcpath="linux-${_basekernel}-${_sub}"
-#  kernel_site="https://git.kernel.org/torvalds/t/linux-${_basekernel}-${_sub}.tar.gz"
-#else
-#  _srcpath="linux-${_basekernel}"
-#  kernel_site="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.xz"
-#  patch_site="https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${_basekernel}.${_sub}.xz"
-#fi
+if [[ "$_sub" = rc* ]]; then
+  _srcpath="linux-${_basekernel}-${_sub}"
+  kernel_site="https://git.kernel.org/torvalds/t/linux-${_basekernel}-${_sub}.tar.gz"
+else
+  _srcpath="linux-${_basekernel}"
+  kernel_site="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.xz"
+  patch_site="https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${_basekernel}.${_sub}.xz"
+fi
 
-_srcpath="bcachefs"
-kernel_site="git+https://github.com/koverstreet/bcachefs.git"
-patch_site="https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${_basekernel}.${_sub}.xz"
+#_srcpath="bcachefs"
+#kernel_site="git+https://github.com/koverstreet/bcachefs.git"
+#patch_site="https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${_basekernel}.${_sub}.xz"
 
 pkgbase="${_custom_pkgbase}"
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver="${_basekernel}"."${_sub}"
-pkgrel=114
+pkgrel=115
 pkgdesc='Linux-tkg with bcachefs'
 arch=('x86_64') # no i686 in here
 url="http://www.kernel.org/"
@@ -66,8 +66,8 @@ case $_basever in
     source=("$kernel_site"
         "$patch_site"
         "https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v10.1%2B_kernel_v5.8%2B.patch"
-        'config.x86_64' # stock Arch config
-        #'config_hardened.x86_64' # hardened Arch config
+        "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-config/5.10/config.x86_64" # stock Arch config
+        "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-config/5.10/config_hardened.x86_64" # hardened Arch config
         90-cleanup.hook
         cleanup
         # ARCH Patches
@@ -85,18 +85,19 @@ case $_basever in
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0005-glitched-pds.patch"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0006-add-acs-overrides_iommu.patch"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0007-v5.10-fsync.patch"
-        #"https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0008-5.10-bcachefs.patch"
+        "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0008-5.10-bcachefs.patch"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0009-glitched-ondemand-bmq.patch"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0009-glitched-bmq.patch"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0009-prjc_v5.10-r2.patch"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0011-ZFS-fix.patch"
-        #"https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0012-linux-hardened.patch"
+        "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0012-linux-hardened.patch"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0012-misc-additions.patch"
     )
-    sha256sums=('SKIP'
+    sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'f60f800329a7461e5ff542f7f19e24a073f1e49a74f96dfb5d45a899f6a9cad8'
             'SKIP'
-            'SKIP'
+            '458d1ca195f3fee5501683a4b61ef0ed0cfa7e5219eccab3390fb40c0289898a'
+            'eb1da1a028a1c967222b5bdac1db2b2c4d8285bafd714892f6fc821c10416341'
             '1e15fc2ef3fa770217ecc63a220e5df2ddbcf3295eb4a021171e7edd4c6cc898'
             '66a03c246037451a77b4d448565b1d7e9368270c7d02872fbd0b5d024ed0a997'
             'f6383abef027fd9a430fd33415355e0df492cdc3c90e9938bf2d98f4f63b32e6'
@@ -112,10 +113,12 @@ case $_basever in
             'fca63d15ca4502aebd73e76d7499b243d2c03db71ff5ab0bf5cf268b2e576320'
             '19661ec0d39f9663452b34433214c755179894528bf73a42f6ba52ccf572832a'
             'b302ba6c5bbe8ed19b20207505d513208fae1e678cf4d8e7ac0b154e5fe3f456'
+            '26b4b7b4832c5eff53bb679a410dd6300b956d4c51763512ebebf4fd99eed873'
             '9fad4a40449e09522899955762c8928ae17f4cdaa16e01239fd12592e9d58177'
             'a557b342111849a5f920bbe1c129f3ff1fc1eff62c6bd6685e0972fc88e39911'
             'e308292fc42840a2366280ea7cf26314e92b931bb11f04ad4830276fc0326ee1'
             '49262ce4a8089fa70275aad742fc914baa28d9c384f710c9a62f64796d13e104'
+            '105f51e904d80f63c1421203e093b612fc724edefd3e388b64f8d371c0b3a842'
             'cf7c758604f2a99cfcb65129c436e32e2ef7a80fe486f8e55a2206a955acc40a')
 	;;
 esac
@@ -130,13 +133,13 @@ prepare() {
   ln -s "${_where}/customization.cfg" "${srcdir}" # workaround
 
   cd "${srcdir}/${_srcpath}"
-  
+
   _tkg_srcprep
 }
 
 build() {
   cd "${srcdir}/${_srcpath}"
-   
+
   # Use custom compiler paths if defined
   if [ "$_compiler_name" = "-llvm" ] && [ -n "${CUSTOM_LLVM_PATH}" ]; then
     PATH=${CUSTOM_LLVM_PATH}/bin:${CUSTOM_LLVM_PATH}/lib:${CUSTOM_LLVM_PATH}/include:${PATH}
@@ -183,7 +186,7 @@ hackbase() {
   replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
   cd "${srcdir}/${_srcpath}"
-   
+
   # get kernel version
   local _kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$_kernver"
@@ -216,7 +219,6 @@ hackheaders() {
   provides=("linux-headers=${pkgver}" "${pkgbase}-headers=${pkgver}")
 
   cd "${srcdir}/${_srcpath}"
-  
   local builddir="${pkgdir}/usr/lib/modules/$(<version)/build"
 
   msg2 "Installing build files..."
