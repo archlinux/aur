@@ -1,6 +1,6 @@
 # Maintainer: Justin McAteer <ru5j4r0@google.com>
 pkgname=pyflow
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="An installation and dependency system for Python"
 arch=('x86_64' 'i686')
@@ -10,8 +10,8 @@ depends=('xz')
 makedepends=('cargo')
 checkdepends=('cargo')
 changelog=CHANGELOG.md
-source=("https://github.com/David-OConnor/pyflow/archive/0.2.8.tar.gz")
-b2sums=(b9ac8dc7c29da4cd4fd563651ccf63d54fdfd84067fa71f77de6fc323c32971c03cb35a9d93fc5c681920eb9068a7aaf1d2c8a6202e9e30a81ddd8c48aed9ac2)
+source=("https://codeload.github.com/David-OConnor/pyflow/tar.gz/0.2.9")
+b2sums=(ccccd20122930acbe5c98b77deaf9cef5943b86a2f7b788939cfa931adc19ac8afec70ce46f884880de04fcf6edb8c5df8a1eb5ec6c4046897dfb0c4543e1f17)
 
 build() {
 	cd "$pkgname-$pkgver"
