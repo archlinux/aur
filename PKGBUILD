@@ -3,8 +3,8 @@
 pkgname=ephemeral-bin
 _appname=ephemeral
 _projectname=com.github.cassidyjames.ephemeral
-pkgver=6.4.1
-_subver=8afed7
+pkgver=7.0.5
+_subver=4fa2dc
 pkgrel=1
 pkgdesc="A private-by-default, always-incognito browser for elementary OS."
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('ephemeral' 'ephemeral-git')
 provides=('ephemeral')
 install=${pkgname}.install
 source=("http://packages.elementary.io/appcenter/pool/main/c/${_projectname}/${_projectname}${pkgver}-${_subver}.deb")
-sha512sums=('08f33c7bd456c06f3d9a15d6466695f68ef7a23513b79181f7f0fbe01de42885b54d591738293a2f48ce35429a8c657ef713b122cdf7276e39fed1858a5ac37f')
+sha512sums=('8e4d972dea03a2c479a8f363400e166a4a03463037c610c6022d59a33016401712ca4541f1b5ec6956cb0936576c3eca2581f6405fddd7f6d6ea12edd89e5194')
 
 package(){
 	# Extract package data
