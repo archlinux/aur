@@ -1,0 +1,18 @@
+pkgbase = st-jadecell-git
+	pkgdesc = JadeCell's build of st patched for alpha, boxdraw, and more.
+	pkgver = 0.8.4.r.
+	pkgrel = 1
+	url = https://gitlab.com/jadecell/st.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = nerd-fonts-complete
+	provides = st
+	conflicts = st
+	source = git+https://gitlab.com/jadecell/st.git
+	md5sums = SKIP
+
+pkgname = st-jadecell-git
+
