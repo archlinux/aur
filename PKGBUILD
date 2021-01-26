@@ -2,15 +2,17 @@
 
 pkgname=freetube-git
 _pkgname=FreeTube
-pkgver=1217
+pkgver=0.10.0.beta.r16.gf623ab8
 pkgrel=5
 pkgdesc='An open source desktop YouTube player built with privacy in mind - built from git source tree.'
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://freetubeapp.io"
 arch=('x86_64' 'arm')
 license=('AGPL3')
 depends=('gtk3' 'nss' 'electron')
 makedepends=('git' 'npm')
-conflicts=('freetube' 'freetube-bin')
-url=https://freetubeapp.io
+provides=('freetube')
+conflicts=('freetube')
 source=(git+https://github.com/FreeTubeApp/FreeTube
         package-only-necessary.diff
         freetube.desktop
@@ -19,7 +21,7 @@ sha256sums=(SKIP SKIP SKIP SKIP)
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git rev-list --count HEAD
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
