@@ -1,11 +1,14 @@
 pkgbase = libiconv
-	pkgdesc = Provides libiconv.so and libcharset.so
+	pkgdesc = GNU charset conversion library
 	pkgver = 1.16
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/libiconv/
 	arch = i686
 	arch = x86_64
 	license = LGPL
+	depends = glibc
+	provides = libcharset.so
+	provides = libiconv.so
 	options = !libtool
 	source = http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.16.tar.gz
 	source = http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.16.tar.gz.sig
