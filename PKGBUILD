@@ -21,6 +21,8 @@ sha256sums=(
     )
 
 package() {
+    mkdir -p "$pkgdir/usr/share/dict"
+
     install -Dm644 directory-list-lowercase-2.3-small.txt "$pkgdir/usr/share/dict/"
     install -Dm644 directory-list-lowercase-2.3-medium.txt "$pkgdir/usr/share/dict/"
     install -Dm644 directory-list-2.3-small.txt "$pkgdir/usr/share/dict/"
