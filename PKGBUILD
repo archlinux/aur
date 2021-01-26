@@ -5,7 +5,7 @@
 # User Manual: http://documentation.kopano.io/user_manual_kopanocore
 # Migration 7.2.1: https://documentation.kopano.io/kopano_migration_manual/KopanoMigrationManual.pdf
 pkgname='kopano-core-git'
-pkgver='9.0.12'
+pkgver='10.0.7'
 pkgrel='1'
 pkgdesc='Foundation for groupware messaging enabling clients'
 groups=(
@@ -28,11 +28,10 @@ _tagPrefix="kopanocore-"
 #_tagSuffix=""
 
 _basePkgName="${pkgname//-git/}"
-
 if [[ "${pkgname}" == *-git ]];
 then
     # Version can't be set before pkgver has run
-    provides+=("${pkgname//-git/}=${pkgver}")
+    provides+=("${_basePkgName}=${pkgver}")
 fi
 
 _gitLogByDay() {
@@ -99,7 +98,7 @@ makedepends=(
     'openssl' # for:librcrypto/libssl
     'ncurses>=5'
     'util-linux-libs' # libuuid
-    'kopano-libvmime>=0.9.2k2' # src:https://aur.archlinux.org/packages/kopano-libvmime/
+    'libvmime>=0.9.2' # version:>=0.9.2k2 src:https://aur.archlinux.org/packages/kopano-libvmime/
     'libxml2'
     'mariadb-libs>=5.1' # for:MariaDB Connector/C 3.0 or MySQL Connector/C 5.1
     'xapian-core' # version:>=1.2.21
@@ -186,17 +185,24 @@ prepare() {
     ./bootstrap.sh
 }
 
+# When using official VMIME
+_officialVmimeParameter() {
+    if ! pacman -Qi kopano-libvmime > /dev/null 2> /dev/null \
+	&& ! pacman -Qi kopano-libvmime-git > /dev/null 2> /dev/null;
+    then
+	# VMIME_CFLAGS='$(pkg-config vmime --cflags)' VMIME_LIBS='$(pkg-config vmime --libs)'
+	# echo -n "VMIME_CFLAGS=$(pkg-config vmime --cflags) VMIME_LIBS=$(pkg-config vmime --libs)"
+	echo -n "VMIME_CFLAGS='-I/usr/include/vmime/' VMIME_LIBS='-lvmime'"
+    fi
+}
+
 # https://stash.kopano.io/projects/KC/repos/kopanocore/browse/Dockerfile.build
 build() {
     cd ${srcdir}/${pkgname}
 
-    # When using official VMIME
-    # https://stash.kopano.io/projects/KC/repos/kopanocore/browse/doc/install.txt#68
-    #
-    # VMIME_CFLAGS='$(pkg-config vmime --cflags)' \
-    # VMIME_LIBS='$(pkg-config vmime --libs)' \
-
     ./configure \
+`# https://stash.kopano.io/projects/KC/repos/kopanocore/browse/doc/install.txt#68` \
+    $(_officialVmimeParameter) \
 `# https://stash.kopano.io/projects/KC/repos/kopanocore/browse/Jenkinsfile` \
     TCMALLOC_CFLAGS=' ' \
     TCMALLOC_LIBS='-ltcmalloc_minimal' \

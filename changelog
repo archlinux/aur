@@ -18,65 +18,14 @@
 [2020-12-24]
 * deps
 
-[2020-12-26]
-* vmime deps
-
-[2020-12-28]
-* set next version
-* formatting and dependencies
-* test version
-* test vmime from kopanp
-
-[2020-12-29]
-* integrate kopano-vmime
-* changed libvmime src. added gperftools. added packaging
-* changed libvmime src. added gperftools. added packagin
-* dont set python path
-
-[2020-12-30]
-* test build
-
-[2020-12-31]
-* test build
-
-[2021-01-02]
-* fix python install path
-* patch
-* package as is
-* set libdir
-* different prefix
-
-[2021-01-03]
-* different prefix
-* change sbin location
-* docs and configs
-* autodetect branch
-* assignment
-* -git test
-
 [2021-01-04]
-* -git test
-* finalized -git test
-* add pythen dependencies ; add optional dependencies to make dependencies ; first files for templates
+* -git/master-packages
 
-[2021-01-05]
-* webapp first try
-* fixed cp
-* fixed relnotes path
-* removed/added destdir / added ant-contrib
-* fixed path
+[2021-01-22]
+* changes from 20201207
 
-[2021-01-07]
-* webapp
+[2021-01-23]
+* Fixed build with ICU 68.2-1
 
-[2021-01-08]
-* use templates
-
-[2021-01-13]
-* distribute /etc/kopano/*.cfg in kopano-core package
-
-[2021-01-14]
-* distribute /etc/kopano/*.cfg in kopano-core package
-
-[2021-01-20]
-* handle git builds
+[2021-01-25]
+* update to kopano 10.0.7

@@ -1,6 +1,6 @@
 pkgbase = kopano-core-git
 	pkgdesc = Foundation for groupware messaging enabling clients
-	pkgver = 9.0.12
+	pkgver = 10.0.7
 	pkgrel = 1
 	url = https://www.kopano.com/
 	install = install
@@ -23,7 +23,7 @@ pkgbase = kopano-core-git
 	makedepends = openssl
 	makedepends = ncurses>=5
 	makedepends = util-linux-libs
-	makedepends = kopano-libvmime>=0.9.2k2
+	makedepends = libvmime>=0.9.2
 	makedepends = libxml2
 	makedepends = mariadb-libs>=5.1
 	makedepends = xapian-core
@@ -55,7 +55,7 @@ pkgbase = kopano-core-git
 	depends = python-dateutil
 	depends = python-pilkit
 	optdepends = gperftools
-	provides = kopano-core=9.0.12
+	provides = kopano-core=10.0.7
 	backup = etc/kopano/*.cfg
 	source = kopano-core-git::git+https://stash.kopano.io/scm/kc/kopanocore.git#branch=master
 	md5sums = SKIP
