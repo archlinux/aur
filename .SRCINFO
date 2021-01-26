@@ -1,0 +1,14 @@
+pkgbase = brother-dcpj140w-cups-bin
+	pkgdesc = CUPS wrapper for Brother DCP-J140W printer
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://support.brother.com/g/b/downloadlist.aspx?c=us&lang=en&prod=dcpj140w_all
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf005589/dcpj140wcupswrapper-1.1.3-6.i386.deb
+	md5sums = 583901050447156f8428bbdff1219ba6
+
+pkgname = brother-dcpj140w-cups-bin
+
