@@ -3,7 +3,7 @@
 # Contributor: Josh VanderLinden <arch@cloudlery.com>
 
 pkgname=execline
-pkgver=2.7.0.0
+pkgver=2.7.0.1
 pkgrel=1
 pkgdesc='A (non-interactive) scripting language, like sh'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="http://skarnet.org/software/${pkgname}"
 license=('ISC')
 depends=('skalibs')
 source=("${url}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('0d5f7ba9af702d5c648f93e1de7d4816a05a7dba10ea31117fba02d3a327874e')
+sha256sums=('cdf61164f97f764a06aba36986d549159df56f2d1a4b3bbf5467ee91ad8fdcdd')
 
 build() {
   cd "${pkgname}-${pkgver}"
