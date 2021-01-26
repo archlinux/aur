@@ -1,13 +1,14 @@
 pkgbase = hide-git
 	pkgdesc = an extensible editor for Heaps game engine
-	pkgver = 0.1.0.8d351e3
-	pkgrel = 4
+	pkgver = 0.1.0.d893148
+	pkgrel = 2
 	url = https://github.com/HeapsIO/hide
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = haxe
 	makedepends = git
+	makedepends = rsync
 	depends = nwjs
 	provides = hide
 	conflicts = hide

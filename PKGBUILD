@@ -1,14 +1,14 @@
 # Maintainer: Jorge Araya Navarro <jorge@esavara.cr>
 pkgname=hide-git
 _pkgname=hide
-pkgver=0.1.0.8d351e3
-pkgrel=4
+pkgver=0.1.0.d893148
+pkgrel=2
 pkgdesc="an extensible editor for Heaps game engine"
 arch=('i686' 'x86_64')
 url="https://github.com/HeapsIO/hide"
 license=('BSD')
 depends=('nwjs')
-makedepends=('haxe' 'git')
+makedepends=('haxe' 'git' 'rsync')
 provides=('hide')
 conflicts=('hide')
 source=(
@@ -30,7 +30,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/${pkgname}"
 
-  haxelib setup "${srcdir}/${pkgname}/haxelib"
+  haxelib newrepo
   
   haxelib git heaps https://github.com/HeapsIO/heaps
   haxelib git castle https://github.com/ncannasse/castle
@@ -44,7 +44,6 @@ prepare() {
 build() {
   cd "$srcdir/${pkgname}"
 
-  haxelib setup "${srcdir}/${pkgname}/haxelib"
   haxe --verbose hide.hxml
   sed -i "s|/home/jorge/code/aur/hide/src/hide-git/|/opt/hide/|g" ./bin/hide.js.map
 }
@@ -60,7 +59,7 @@ package() {
   install -Dm644 "${srcdir}"/io.heaps.hide.desktop "${pkgdir}"/usr/share/applications/hide.desktop
 
   install -Ddm755 "${srcdir}"/opt/hide/
-  cp -r "${srcdir}/${pkgname}/haxelib"/* "${srcdir}"/opt/hide/
+  rsync -rv --exclude=.git "${srcdir}/${pkgname}/.haxelib"/ "${srcdir}"/opt/hide/
 }
 
 # vim:set ts=2 sw=2 et:
