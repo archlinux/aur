@@ -1,6 +1,6 @@
 # Maintainer: ml <ml AHHHH visu.li>
 pkgname=svu
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Semantic Version Util'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('git')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('88c38afb2df071380bce852776274951af6cbb5f6f094a6fe9ec905bcf33e2e0')
+sha256sums=('6fcb273b7d16f6053b9669df47994398a6f1b08e4c69ced6fca8d1bc3faa90cb')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -28,7 +28,6 @@ build() {
   export GOFLAGS='-buildmode=pie -trimpath -modcacherw -mod=readonly'
   export GOLDFLAGS="-linkmode=external -X main.version=v$pkgver"
   go build -o "$pkgname" -ldflags "$GOLDFLAGS"
-  #grep -Fwq "x$pkgver" "$pkgname"
 }
 
 # no upstream tests
