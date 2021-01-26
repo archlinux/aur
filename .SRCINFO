@@ -1,6 +1,6 @@
 pkgbase = python-sphinx-tabs
 	pkgdesc = Tabbed views for Sphinx
-	pkgver = 1.3.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://sphinx-tabs.readthedocs.io
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = python-sphinx-tabs
 	checkdepends = python-sphinx
 	checkdepends = python-pygments
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/s/sphinx-tabs/sphinx-tabs-1.3.0.tar.gz
-	md5sums = 0bdb8e8577d3ec12f5e4aa48bb3cfe5a
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-tabs/sphinx-tabs-2.0.0.tar.gz
+	md5sums = 7c4f20485a2f9a8234a6ee134793eb62
 
 pkgname = python-sphinx-tabs
 	depends = python-sphinx<4
