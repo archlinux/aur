@@ -1,6 +1,6 @@
 pkgbase = alacritty-ligatures-git
 	pkgdesc = A cross-platform, GPU-accelerated terminal emulator(GIT VERSION)
-	pkgver = 0.7.0.1745.gada2680
+	pkgver = 0.7.0.1753.g0f1372f
 	pkgrel = 1
 	url = https://github.com/alacritty/alacritty
 	arch = x86_64
