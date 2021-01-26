@@ -1,11 +1,11 @@
 # Maintainer: Randoragon <randoragongamedev@gmail.com>
 
 pkgname=dwmblocks-randoragon-git
-pkgver=1.0.r76.234d550
-pkgrel=3
+pkgver=1.0.r77.2d5688d
+pkgrel=1
 epoch=
 pkgdesc="Randoragon's build of dwmblocks - a status bar for my build of dwm"
-arch=('x86_64')
+arch=('x86_64' 'i686' 'pentium4')
 url="https://github.com/randoragon/dwmblocks"
 license=('MIT')
 depends=(libx11)

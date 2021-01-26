@@ -1,9 +1,11 @@
 pkgbase = dwmblocks-randoragon-git
 	pkgdesc = Randoragon's build of dwmblocks - a status bar for my build of dwm
-	pkgver = 1.0.r76.234d550
-	pkgrel = 3
+	pkgver = 1.0.r77.2d5688d
+	pkgrel = 1
 	url = https://github.com/randoragon/dwmblocks
 	arch = x86_64
+	arch = i686
+	arch = pentium4
 	license = MIT
 	makedepends = git
 	depends = libx11
