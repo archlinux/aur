@@ -1,7 +1,7 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 _variant='neovim'
 _extname=coc-rust-analyzer
-_packdir="usr/local/share/nvim/site/pack/coc/start/${_extname}"
+_packdir="usr/share/nvim/runtime/pack/coc/start/${_extname}"
 url='https://github.com/fannheyward/coc-rust-analyzer'
 pkgdesc='rust-analyzer extension for coc.nvim'
 
