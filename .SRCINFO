@@ -12,7 +12,7 @@ pkgbase = dwm-randoragon-git
 	depends = libxinerama
 	depends = libxcb
 	depends = libxrender
-	depends = libxft-bgra
+	depends = libxft
 	optdepends = dwmblocks-randoragon-git: status bar
 	provides = dwm=6.2
 	conflicts = dwm
