@@ -7,9 +7,9 @@
 
 _jdkname=liberica-jdk-full
 pkgname="${_jdkname}-bin"
-_java_ver=15.0.1
-pkgver=${_java_ver}+9
-pkgrel=2
+_java_ver=15.0.2
+pkgver=${_java_ver}+10
+pkgrel=1
 pkgdesc='BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.'
 arch=(aarch64 armv7h armv8h x86_64)
 url='https://bell-sw.com/'
@@ -67,10 +67,10 @@ source_armv8h=(${source_armv7h[@]})
 source_x86_64=(https://download.bell-sw.com/java/$pkgver/bellsoft-jdk$pkgver-linux-amd64-full.tar.gz)
 
 # Upstream-provided
-sha1sums_aarch64=('39ac4db4b2d63c48b18f226bd4b25b34f0f3ad4e')
-sha1sums_armv7h=('bdd4ade7c6618a028ccf393c778da9a2fc613242')
+sha1sums_aarch64=('801f4008f3bd09d4d2a0ebd5000cf66d8dbfc1ad')
+sha1sums_armv7h=('f1b47f3a058b6bad00cfc4307778f3e8eff4c9d0')
 sha1sums_armv8h=(${sha1sums_armv7h[@]})
-sha1sums_x86_64=('d9266c6a8b8f512ccb4efc67ddfc2f5bf7e8fa07')
+sha1sums_x86_64=('ede6c0d3a1ee630e162099475be5102c9fee5555')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
