@@ -1,7 +1,7 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 _variant='neovim'
 _extname=coc-tabnine
-_packdir="usr/local/share/nvim/site/pack/coc/start/${_extname}"
+_packdir="usr/share/nvim/runtime/pack/coc/start/${_extname}"
 url='https://github.com/neoclide/coc-tabnine'
 pkgdesc='Tabnine integration of coc.nvim'
 
