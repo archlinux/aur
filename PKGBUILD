@@ -2,7 +2,7 @@
 # Contributor: M.Reynolds <blackboxnetworkproject@gmail.com>
 
 pkgname=thonny
-pkgver=3.3.2
+pkgver=3.3.3
 pkgrel=1
 pkgdesc="Python IDE for beginners"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('hicolor-icon-theme' 'mypy' 'python-astroid' 'python-asttokens' 'python
          'python-pylint' 'python-pyserial' 'python-send2trash' 'python-setuptools' 'tk')
 optdepends=('python-birdseye: Debug support with Birdseye')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('2a08cc3e89ece8a5f441cba456756641a828a872a055abc9ef4a9fa1be03735bb34d0c21869fd323956e433f635ec25a5ab78c9061abfc94f6825d446bf6a6fc')
+sha512sums=('46abda75ad351601ac4d7abf148d5281f47406c5991c8b9b0a48aab5574c46fd09654e639bb806d13c32793d7b7371a145468bdd24f2bacc535feac321ed297d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
