@@ -5,25 +5,6 @@
 # Contributor: Tk-Glitch <ti3nou at gmail dot com>
 # Contributor: Hyper-KVM <hyperkvmx86 at gmail dot com>
 
-plain '       .---.`               `.---.'
-plain '    `/syhhhyso-           -osyhhhys/`'
-plain '   .syNMdhNNhss/``.---.``/sshNNhdMNys.'
-plain '   +sdMh.`+MNsssssssssssssssNM+`.hMds+'
-plain '   :syNNdhNNhssssssssssssssshNNhdNNys:'
-plain '    /ssyhhhysssssssssssssssssyhhhyss/'
-plain '    .ossssssssssssssssssssssssssssso.'
-plain '   :sssssssssssssssssssssssssssssssss:'
-plain '  /sssssssssssssssssssssssssssssssssss/   Linux-tkg'
-plain ' :sssssssssssssoosssssssoosssssssssssss:        kernels'
-plain ' osssssssssssssoosssssssoossssssssssssso'
-plain ' osssssssssssyyyyhhhhhhhyyyyssssssssssso'
-plain ' /yyyyyyhhdmmmmNNNNNNNNNNNmmmmdhhyyyyyy/'
-plain '  smmmNNNNNNNNNNNNNNNNNNNNNNNNNNNNNmmms'
-plain '   /dNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNd/'
-plain '    `:sdNNNNNNNNNNNNNNNNNNNNNNNNNds:`'
-plain '       `-+shdNNNNNNNNNNNNNNNdhs+-`'
-plain '             `.-:///////:-.`'
-
 _where="$PWD" # track basedir as different Arch based distros are moving srcdir around
 _ispkgbuild="true"
 
@@ -32,14 +13,14 @@ source "$_where"/prepare
 
 _tkg_initscript
 
-if [[ "$_sub" = rc* ]]; then
-  _srcpath="linux-${_basekernel}-${_sub}"
-  kernel_site="https://git.kernel.org/torvalds/t/linux-${_basekernel}-${_sub}.tar.gz"
-else
+#if [[ "$_sub" = rc* ]]; then
+#  _srcpath="linux-${_basekernel}-${_sub}"
+#  kernel_site="https://git.kernel.org/torvalds/t/linux-${_basekernel}-${_sub}.tar.gz"
+#else
   _srcpath="linux-${_basekernel}"
   kernel_site="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.xz"
   patch_site="https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${_basekernel}.${_sub}.xz"
-fi
+#fi
 
 #_srcpath="bcachefs"
 #kernel_site="git+https://github.com/koverstreet/bcachefs.git"
