@@ -3,7 +3,7 @@
 # 
 
 pkgname=idris2-git
-pkgver=0.2.0.r404.g31b486c
+pkgver=0.3.0.r154.g37a4c6f1
 pkgrel=1
 pkgdesc="Funtional Programming Lanugage with Dependent Types"
 url="https://www.idris-lang.org/"
@@ -20,7 +20,7 @@ _srcname="Idris2"
 
 pkgver() {
     cd $_srcname
-    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
