@@ -12,7 +12,6 @@ pkgbase = cis-latex
 	depends = texlive-science
 	depends = texlive-pictures
 	source = https://gitlab.com/traumweh/cis-latex/-/raw/main/tex/cis.sty
-	md5sums = 2e9dd78b5b5ef1a94b0deeb83bdf6773
 
 pkgname = cis-latex
 

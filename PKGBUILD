@@ -19,4 +19,4 @@ package() {
   cp -R cis.sty "$pkgdir/usr/share/texmf-dist/tex/latex/cis"
 }
 
-md5sums=('2e9dd78b5b5ef1a94b0deeb83bdf6773')
+sha256sum=('9c86a0f4783aed92916d70ed1a2dcc552102110589bd091e8b49157bea51fd2e')
