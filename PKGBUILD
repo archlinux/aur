@@ -1,7 +1,7 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 _variant='neovim'
 _extname=coc-clangd
-_packdir="usr/local/share/nvim/site/pack/coc/start/${_extname}"
+_packdir="usr/share/nvim/runtime/pack/coc/start/${_extname}"
 url='https://github.com/clangd/coc-clangd'
 pkgdesc='C/C++/ObjC support for coc.nvim (powered by clangd)'
 
