@@ -11,8 +11,6 @@ _ispkgbuild="true"
 source "$_where"/customization.cfg # load default configuration from file
 source "$_where"/prepare
 
-_tkg_initscript
-
 #if [[ "$_sub" = rc* ]]; then
 #  _srcpath="linux-${_basekernel}-${_sub}"
 #  kernel_site="https://git.kernel.org/torvalds/t/linux-${_basekernel}-${_sub}.tar.gz"
@@ -117,6 +115,8 @@ prepare() {
   rm -rf $pkgdir # Nuke the entire pkg folder so it'll get regenerated clean on next build
 
   ln -s "${_where}/customization.cfg" "${srcdir}" # workaround
+
+  _tkg_initscript
 
   cd "${srcdir}/${_srcpath}"
 
