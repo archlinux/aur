@@ -1,6 +1,6 @@
 # Maintainer: gardenapple@posteo.net
 pkgname=readability-cli
-_pkgver=2.0.0-pre.2
+_pkgver=2.0.0-pre.3
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 pkgdesc="Firefox Reader Mode in your terminal! - CLI tool for Mozilla's Readability library"
@@ -13,8 +13,8 @@ makedepends=('npm' 'jq' 'git')
 optdepends=('bash-completion: Bash completion')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$_pkgver.tgz")
 noextract=("$pkgname-$_pkgver.tgz")
-sha256sums=('8cab9d799b0df8bd7cc3a3dcbf8fd5ea0ae9d6f7797ec5cda49b5f35b910a2c6')
-b2sums=('1089f5aa0080d0d6143912ece55125fdc07a491e34f39df3568f8311a914ff9fc7e3c05bd15596a4233b4ccefd09b7deedb551d0461424b972a34bc0225e0391')
+sha256sums=('ee6617a580a277071a7bfb9d9f0931a5a4f6ab9fb7618991accf3419b4c97f45')
+b2sums=('62cc0f8af487109928537326fe4a8906b754d9aa6c7555e43e4b89fa95c9d63165994047101293428ff96110fd1bfd85f9310ce25ebbdf62bb19369d6d5252e3')
 
 package() {
 	npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$pkgname-$_pkgver.tgz"
