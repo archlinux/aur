@@ -1,7 +1,7 @@
 # Maintainer: BootyBlaster
 
 pkgname=ttf-jam-icons
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="A set of icons designed for web projects, illustrations, print projects, etc."
 arch=('any')
