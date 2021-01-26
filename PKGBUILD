@@ -2,34 +2,41 @@
 
 pkgname=trackma
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight and simple program for updating and using lists on several media tracking websites."
 url="http://z411.github.io/trackma/"
 arch=('any')
 conflicts=('trackma-git')
 license=('GPL3')
-depends=('python'
-         'python-pyinotify')
+depends=('python')
 
-makedepends=('python-setuptools'
+makedepends=('git'
+             'python-setuptools'
              'desktop-file-utils')
 			 
-optdepends=('python-gobject: GTK frontend'
-            'python-cairo:   GTK frontend'
-            'python-pillow:  thumbnail images for GUI frontends'
-            'python-pyqt5:   Qt frontend'
-            'python-urwid:   ncurses frontend'
-            'lsof:           polling tracker/pyinotify alternative')
+optdepends=('python-gobject:   GTK frontend'
+            'python-cairo:     GTK frontend'
+            'python-pyqt5:     Qt frontend'
+            'python-urwid:     ncurses frontend'
+            'python-pillow:    thumbnail images for GUI frontends'
+			'python-pyinotify: instant media recognition tracker'
+			'dbus-python:      MPRIS media recognition tracker'
+            'lsof:             polling tracker/pyinotify alternative')
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/z411/${pkgname}/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}::git+https://github.com/z411/${pkgname}.git#tag=v${pkgver}"
         "${pkgname}-curses.desktop"
         "${pkgname}-gtk.desktop"
         "${pkgname}-qt.desktop")
 
-sha256sums=('a718d3ffa175bb66ab105af6df508def2a76fe717f2be4cf2f768279e43a2aaa'
+sha256sums=('SKIP'
             '80be9ffc3eb66456004a438a3da8950ed8382faa00a3fe61c5ef3980090c4dce'
             'a737f0fd38af4c472dfbca8503f57763bbec7c91568221298db317421a6c5604'
             '988f4c4422577f0657e9ff8a9695ef44796ee6a9c43e07ee7a81369f25c2761f')
+
+prepare() {
+  cd ${pkgname}-${pkgver}
+  git submodule update --init --recursive
+}
 
 package() {
   cd ${pkgname}-${pkgver}
