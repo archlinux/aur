@@ -1,7 +1,7 @@
 # Maintainer: Marco44 (Marc Cousin) <cousinmarc at gmail dot com>
 pkgname=hypopg-git
 _gitname=hypopg
-pkgver=1.1.2.r0.gd7ef06f
+pkgver=1.1.4.r10.g1196869
 pkgrel=1
 pkgdesc="Hypothetical indexes for PostgreSQL... ask the optimizer if this hypothetical index would help"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -10,8 +10,10 @@ license=('BSD')
 depends=('postgresql')
 builddepends=()
 makedepends=(git)
+provides=(hypopg)
+conflicts=(hypopg)
 options=(!emptydirs !libtool)
-source=('git://github.com/HypoPG/hypopg.git')
+source=('git+https://github.com/HypoPG/hypopg.git')
 md5sums=('SKIP')
 install='hypopg-git.install'
 
