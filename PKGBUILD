@@ -1,14 +1,14 @@
 # Maintainer: Randoragon <randoragongamedev@gmail.com>
 
 pkgname=dmenu-randoragon-git
-pkgver=5.0.r582.37a422a
+pkgver=5.0.r583.c6244a8
 pkgrel=1
 epoch=
 pkgdesc="Randoragon's build of the suckless dynamic menu (dmenu)"
-arch=('x86_64')
+arch=('x86_64' 'i686' 'pentium4')
 url="https://github.com/randoragon/dmenu"
 license=('MIT')
-depends=(libx11 libxinerama libxft-bgra freetype2 fontconfig)
+depends=(libx11 libxinerama libxft freetype2 fontconfig)
 makedepends=(git)
 source=("git+$url")
 md5sums=('SKIP')
