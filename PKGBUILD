@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=DelayedArray
-_bcver=0.16.0
+_bcver=0.16.1
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(Artistic-2.0)
 depends=('r>=3.4' 'r-biocgenerics>=0.31.5' 'r-matrixgenerics>=1.1.3' 'r-s4vectors>=0.27.2' 'r-iranges>=2.17.3')
 optdepends=(r-biocparallel r-hdf5array r-genefilter r-summarizedexperiment r-airway r-pryr r-delayedmatrixstats r-knitr r-biocstyle r-runit)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=('6f4c473a73253e0f075e2bd21a541f9a3ddb47e3829b6db52d81f7a6b2e5c494')
+sha256sums=('6dd0a32d5edce34b6797127064c42c3410725524ca5cb9176c67070561fee5b4')
 
 build() {
   cd "${srcdir}"
