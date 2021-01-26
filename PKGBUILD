@@ -8,15 +8,15 @@
 
 
 ## Helpful internal stuff
-_commit=1f4fa17372bd196e87042738a16ab08bf904bcbf
+_commit=6463e71605e2c6c2e1fcc67117a1c351ffa4a794
 _major=2
 _minor=26
-_build=4237
+_build=4261
 _revision=102
 _mozcver=${_major}.${_minor}.${_build}.${_revision}
-_utdicdate=20201129
+_utdicdate=20210123
 _utdicrel=1
-_fcitxver=20201228
+_fcitxver=20210124
 _iconver=20201229
 _bldtype=Release
 
@@ -33,10 +33,10 @@ conflicts=('fcitx-mozc' 'fcitx-mozc-ut2' 'fcitx-mozc-neologd-ut' 'fcitx-mozc-neo
            'fcitx-mozc-ut' 'fcitx5-mozc' 'fcitx5-mozc-git')
 provides=("fcitx5-mozc=${_mozcver}")
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit}"
-        "https://osdn.net/downloads/users/27/27011/fcitx5-mozc-${_fcitxver}.patch"
+        "https://osdn.net/downloads/users/27/27432/fcitx5-mozc-${_fcitxver}.patch"
         "https://osdn.net/users/utuhiro/pf/utuhiro/dl/fcitx5-mozc-icons-${_iconver}.tar.gz")
 sha256sums=('SKIP'
-            '43f1fd52455ce6522fb14d3381f1da06c396453650aacccdc0c5fedc4677b855'
+            '63813212007c8b531cf9114334e915dee35b899ea5a443e2821ca6a17b972b38'
             'b3c69ef3e960266fd9e36e9c4039f9b68ec843a0f598aed9f20535af008ce7df')
 
 prepare() {
