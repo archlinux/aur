@@ -1,7 +1,7 @@
 pkgbase = zsh-zim-git
 	pkgdesc = ZIM - Zsh IMproved
 	pkgver = r548.74367b8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zimfw/zimfw
 	install = zim.install
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = zsh-zim-git
 	md5sums = SKIP
 	md5sums = 6e5ffd11ddfc72d74afb105829821f28
 	md5sums = 2465e684f59cbb9313670468493f7712
-	md5sums = 7874908906dbcb5f85bb1ba1d9ab5c00
+	md5sums = 0cb8764ba7f67c37c3c6452cc06751af
 
 pkgname = zsh-zim-git
 

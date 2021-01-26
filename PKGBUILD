@@ -1,6 +1,6 @@
 # Contributor: Mateusz Galazyn <carbolymer at gmail.com>
 
-pkgrel=2
+pkgrel=3
 pkgver=r548.74367b8
 pkgname=zsh-zim-git
 pkgdesc="ZIM - Zsh IMproved"
@@ -19,7 +19,7 @@ md5sums=('SKIP'
          'SKIP'
          '6e5ffd11ddfc72d74afb105829821f28'
          '2465e684f59cbb9313670468493f7712'
-         '7874908906dbcb5f85bb1ba1d9ab5c00')
+         '0cb8764ba7f67c37c3c6452cc06751af')
 options=('!strip')
 install='zim.install'
 _gitname='zimfw'
