@@ -9,7 +9,7 @@ provides=('electron')
 conflicts=('electron')
 _commit=8805b996e0d8cfb6e3921f9b586366bafb125b59
 _chromiumver=87.0.4280.141
-pkgrel=3
+pkgrel=4
 pkgdesc='Electron compiled with wayland support via Ozone'
 arch=('x86_64')
 url='https://electronjs.org/'
@@ -33,6 +33,7 @@ source=('git+https://github.com/electron/electron.git'
         'v8-icu68.patch' 
         'chromium-skia-harmony.patch'
         '0001-fix-add-Wayland-support-26022.patch'
+        '0001-fix-don-t-throw-on-bad-icons-in-BrowserWindow-constr.patch'
        )
 sha256sums=('SKIP'
             'SKIP'
@@ -42,7 +43,8 @@ sha256sums=('SKIP'
             '38fb5218331d6e03915490dab64f7b8bf26833a581d1aaa02090437c67e9439c'
             '6e919c9712d8fe6c2918778df1f8c2ee0675a87a48be5d2aaa54e320703ced4b' 
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
-            'f896ed4008feb76be3a9bef17d6e237b8592de19dc667b1905cacd311e97c70b')
+            'f896ed4008feb76be3a9bef17d6e237b8592de19dc667b1905cacd311e97c70b'
+            '151edbe0ef4098a4ab730652327b00215f6b67ce0df89a26a2da24888c65fcb5')
 
 _system_libs=('ffmpeg'
               'flac'
@@ -92,6 +94,8 @@ prepare() {
 
   cd src/electron
   echo "Applying local electron patches"
+  # Discord crash fix. Remove on 11.2.2 (!)
+  patch -Np1 -i ../../0001-fix-don-t-throw-on-bad-icons-in-BrowserWindow-constr.patch
   patch -Np1 -i ../../0001-fix-add-Wayland-support-26022.patch
   cd ../../
 
