@@ -1,7 +1,7 @@
 # Maintainer: Juma7C9 <juri at dividebyzero dot it>
 
 pkgname=cie-middleware
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=2
 pkgdesc="Middleware della CIE (Carta di Identità Elettronica) per Linux"
 arch=('x86_64')
@@ -14,7 +14,7 @@ install="${pkgname}.install"
 source=("https://github.com/italia/${pkgname}-linux/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         'LICENSE')
 
-sha256sums=('12377fd035da98d985e4b0c2a5318390e6e812d129ba51ebe25c69e92220f2e3'
+sha256sums=('9a83f9f41d933041ae1030035966241cdb8448ad30b6f54f0be63b02828d2032'
             'bf2723ca68a1f406557a3174f9195dbdc6171cbf8f7ad83f56546ac592a9ea8e')
 
 package() {
