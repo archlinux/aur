@@ -2,7 +2,7 @@
 pkgname=libclassicclient
 _luxver=1.4.1
 pkgver=7.3.0_b06.01
-pkgrel=1
+pkgrel=2
 pkgdesc="Gemalto PKCS#11 driver"
 url="https://www.luxtrust.lu/en/simple/225"
 arch=(x86_64)
@@ -52,6 +52,9 @@ package() {
 
   mkdir -p usr/lib/udev/rules.d
   mv etc/udev/rules.d/* usr/lib/udev/rules.d/
+
+  # Useless and annoying, keeps waking up pcscd every second.
+  rm -vf etc/xdg/autostart/ccchangepinservice.desktop
 
   mkdir -p usr/share/p11-kit/modules
   echo "module: libgclib.so" > usr/share/p11-kit/modules/$pkgname.module
