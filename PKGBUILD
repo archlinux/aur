@@ -25,7 +25,7 @@ package() {
     cd "${srcdir}/coc.nvim"
     nvim -es --cmd ":helptags doc" --cmd ":q"
     find autoload build data doc package.json plugin -type f -exec \
-        install -Dm 644 '{}' "${pkgdir}/usr/local/share/nvim/site/pack/coc/start/coc.nvim/{}" \;
+        install -Dm 644 '{}' "${pkgdir}/usr/share/nvim/runtime/pack/coc/start/coc.nvim/{}" \;
     install -Dm 644 "${srcdir}/coc.nvim/LICENSE.md" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
