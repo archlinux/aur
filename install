@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# care about existing files
+function installdir() {
+    local owner="$1"
+    local moddir="$2"
+    local modfile="$3"
+    local directory="$4"
+
+    mkdir -p "$directory"
+    find $directory -exec chown "$owner" {} \;
+    find $directory -type f -exec chmod "$modfile" {} \;
+    find $directory -type d -exec chmod "$moddir" {} \;
+}
+
+
+post_install() {
+    cp -n /etc/webapps/z-push/config.example.php /etc/webapps/z-push/config.php
+
+    installdir http:http 700 600 /var/lib/z-push
+    installdir http:http 700 600 /var/log/z-push
+}
+
