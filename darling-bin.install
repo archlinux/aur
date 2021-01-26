@@ -1,0 +1,15 @@
+post_install() {
+
+	echo ">>> Shutting down old instances of Darling"
+	bash /usr/lib/darling/shutdown-user.sh
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+
+	echo ">>> Shutting down old instances of Darling"
+	bash /usr/lib/darling/shutdown-user.sh
+}
