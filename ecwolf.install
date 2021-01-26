@@ -1,6 +1,5 @@
-
 post_install() {
-  echo " => You need 'Wolfenstein 3D' or 'Spear of Destiny' data files, put them under"
-  echo "    '~/.config/ecwolf'. You can get the shareware versions here:"
-  echo "    http://maniacsvault.net/ecwolf/download.php"
+	echo "ECWolf requires registered or shareware game data from Wolfenstein 3D, Spear of Destiny and/or Super 3D Noah's Ark. See http://maniacsvault.net/ecwolf/download.php for more information."
+	echo "Once you have the game data, just add it to ~/.local/share/ecwolf."
+	echo "This package also includes the patch utility, available as ecwolf-patchutil."
 }

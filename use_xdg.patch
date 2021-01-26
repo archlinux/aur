@@ -1,0 +1,62 @@
+diff --unified --recursive --text ecwolf-1.3.3-src.original/src/wl_iwad.cpp ecwolf-1.3.3-src.patched/src/wl_iwad.cpp
+--- ecwolf-1.3.3-src.original/src/wl_iwad.cpp	2016-10-01 04:13:53.000000000 +0000
++++ ecwolf-1.3.3-src.patched/src/wl_iwad.cpp	2021-01-24 17:12:42.495784879 +0000
+@@ -429,6 +429,9 @@
+ 	bool showPicker = config.GetSetting("ShowIWadPicker")->GetInteger() != 0;
+ 	int defaultIWad = config.GetSetting("DefaultIWad")->GetInteger();
+ 
++	bool useXDG = false;
++	FString datawadXDG;
++
+ 	bool useProgdir = false;
+ 	FResourceFile *datawadRes = FResourceFile::OpenResourceFile(datawad, NULL, true);
+ 	if(!datawadRes)
+@@ -437,6 +440,32 @@
+ 		datawadRes = FResourceFile::OpenResourceFile(progdir + PATH_SEPARATOR + datawad, NULL, true);
+ 	}
+ 	if(!datawadRes)
++	{
++		useProgdir = false;
++		useXDG = true;
++
++		char* XDG_DATA_DIRS = getenv("XDG_DATA_DIRS");
++		if (!XDG_DATA_DIRS)
++			XDG_DATA_DIRS =
++				PATH_SEPARATOR "usr" PATH_SEPARATOR "local" PATH_SEPARATOR "share:"
++				PATH_SEPARATOR "usr" PATH_SEPARATOR "share";
++
++		FString dataDirectories = XDG_DATA_DIRS;
++		long split = 0;
++		do
++		{
++			long newSplit = dataDirectories.IndexOf(':', split);
++			datawadXDG = dataDirectories.Mid(split, newSplit-split) + PATH_SEPARATOR + GAME_DIR + PATH_SEPARATOR + datawad;
++
++			datawadRes = FResourceFile::OpenResourceFile(datawadXDG, NULL, true);
++			if(datawadRes)
++				break;
++
++			split = newSplit + 1;
++		}
++		while(split != 0);
++	}
++	if(!datawadRes)
+ 		I_Error("Could not open %s!", datawad);
+ 
+ 	ParseIWadInfo(datawadRes);
+@@ -587,10 +616,12 @@
+ 	WadStuff &base = basefiles[pick];
+ 	selectedGame = &iwadTypes[base.Type];
+ 
+-	if(!useProgdir)
+-		wadfiles.Push(datawad);
+-	else
++	if(useProgdir)
+ 		wadfiles.Push(progdir + PATH_SEPARATOR + datawad);
++	else if(useXDG)
++		wadfiles.Push(datawadXDG);
++	else
++		wadfiles.Push(datawad);
+ 	for(unsigned int i = 0;i < base.Path.Size();++i)
+ 	{
+ 		wadfiles.Push(base.Path[i]);

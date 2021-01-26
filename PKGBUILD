@@ -1,60 +1,46 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: Plaunarome <plaunarome@protonmail.com>
 
 pkgname=ecwolf
 pkgver=1.3.3
-pkgrel=2
-pkgdesc='Advanced source port of "Wolfenstein 3D" and "Spear of Destiny" based on Wolf4SDL'
-arch=('i686' 'x86_64')
-url="http://maniacsvault.net/ecwolf"
-license=('GPL' 'custom: ID')
-depends=('sdl' 'libvorbis' 'flac' 'opusfile' 'libmikmod' 'fluidsynth' 'libjpeg' 'gtk2')
-makedepends=('cmake' 'mercurial')
-optdepends=('wolf3d-shareware: Demo version of Wolfenstein 3D')
-install=$pkgname.install
-source=("http://maniacsvault.net/ecwolf/files/ecwolf/1.x/ecwolf-$pkgver-src.7z"
-        "hg+https://bitbucket.org/ecwolf/sdl_mixer-for-ecwolf#revision=d3e4f997d2b1")
-sha256sums=('b408268370ca810e4f22138f39a051fa64627211011869b9613da23a3d22e750'
-            'SKIP')
+pkgrel=3
+pkgdesc="Advanced source port for Wolfenstein 3D engine games"
+arch=("x86_64")
+url="https://maniacsvault.net/ecwolf/"
+license=("GPL")
+depends=("gtk2" "libjpeg-turbo" "sdl" "sdl_mixer")
+makedepends=("cmake")
+install=ecwolf.install
+source=("https://maniacsvault.net/${pkgname}/files/${pkgname}/1.x/${pkgname}-${pkgver}-src.tar.xz"
+	"net.maniacsvault.${pkgname}.desktop"
+	"use_xdg.patch")
+sha512sums=('9c28d728170273cb9eb12f05ae7735171730050df684039b76b361435ec93b4ba71b2cd933cbcbcda6df61ad511549adc4b9a7c66fb1df1cc79634f0048f7123'
+            '97c225f4a4aab1c14062ac3fc0a6598ac72608d5b2e84c143f8a7085013ea4716a4e6e9f2f8b65bd942ce53670ddeca4fee695bcb80863ded59a34bdfa7e76f6'
+            '6bac3ed67c70263078797ab166344c72a9ffe6de3aa636aa578a58ddd9811bdde119db59dec3c1bb7d8644cce3e19744d7f384459acf8b346301beddbf7fc9d9')
 
 prepare() {
-  # reset build folders
-  rm -rf build mixer-build
-  mkdir build mixer-build
-
-  # data dir hack
-  sed -e 's|OpenResourceFile(datawad|OpenResourceFile("/usr/share/ecwolf/ecwolf.pk3"|' \
-    -e 's|Push(datawad|Push("/usr/share/ecwolf/ecwolf.pk3"|' \
-    -e 's|/usr/local/share/games/wolf3d|/usr/share/wolf3d|' \
-    -i ecwolf-$pkgver-src/src/wl_iwad.cpp
+	patch --directory "${pkgname}-${pkgver}-src" --strip 1 < use_xdg.patch
 }
 
 build() {
-  msg2 "Building custom SDL_mixer..."
-  cd mixer-build
-  cmake ../sdl_mixer-for-ecwolf
-  make
+	cmake \
+		-S "${pkgname}-${pkgver}-src" \
+		-B build \
+		-DBUILD_PATCHUTIL=ON \
+		-DGPL=ON \
+		-Wno-dev
 
-  msg2 "Building ecwolf..."
-  cd ../build
-  # build patch utility, enable gpl licensed opl emulator and force custom SDL2_mixer with dependency libraries
-  cmake ../ecwolf-$pkgver-src -DBUILD_PATCHUTIL=ON -DGPL=ON \
-    -DSDLMIXER_INCLUDE_DIR="$srcdir/sdl_mixer-for-ecwolf" \
-    -DSDLMIXER_LIBRARY="$srcdir/mixer-build/libSDL_mixer.a;-lfluidsynth;-lvorbisfile;-lvorbis;-lopusfile;-lopus;-lFLAC;-lmikmod;-logg"
-  make
+	make --directory build
 }
 
 package() {
-  cd build
+	install -D --mode 644 -- "net.maniacsvault.${pkgname}.desktop" "${pkgdir}/usr/share/applications/net.maniacsvault.${pkgname}.desktop"
 
-  # binaries
-  install -Dm755 ecwolf "$pkgdir"/usr/bin/ecwolf
-  install -m755 tools/patchutil/patchutil "$pkgdir"/usr/bin/ecwolf-patchutil
-  # data
-  install -Dm644 ecwolf.pk3 "$pkgdir"/usr/share/ecwolf/ecwolf.pk3
-  cd ../ecwolf-$pkgver-src
-  # doc
-  install -d "$pkgdir"/usr/share/doc/ecwolf
-  install -Dm644 README.md docs/README.txt "$pkgdir"/usr/share/doc/ecwolf
-  # license
-  install -Dm644 docs/license-id.txt "$pkgdir"/usr/share/licenses/ecwolf/license-id.txt
+	cd -- "${pkgname}-${pkgver}-src"
+	install -D --mode 644 -- android-libs/launcher/res/drawable-xhdpi/ic_launcher.png "${pkgdir}/usr/share/pixmaps/ecwolf.png"
+	install -D --mode 644 -- README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	cd ../build
+	install -D --mode 755 -- "$pkgname" "${pkgdir}/usr/bin/${pkgname}"
+	install -D --mode 755 -- tools/patchutil/patchutil "${pkgdir}/usr/bin/${pkgname}-patchutil"
+	install -D --mode 644 -- "${pkgname}.pk3" "${pkgdir}/usr/share/${pkgname}/${pkgname}.pk3"
 }

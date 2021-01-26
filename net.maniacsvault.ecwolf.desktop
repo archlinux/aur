@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ECWolf
+Comment="Advanced source port for Wolfenstein 3D engine games"
+Icon=ecwolf
+Exec=/usr/bin/ecwolf
+Categories=Game;Shooter;
+Keywords=Wolfenstein 3D;Spear of Destiny;Super 3D Noah's Ark;
+StartupWMClass=ecwolf

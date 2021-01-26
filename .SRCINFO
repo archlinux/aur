@@ -1,28 +1,22 @@
 pkgbase = ecwolf
-	pkgdesc = Advanced source port of "Wolfenstein 3D" and "Spear of Destiny" based on Wolf4SDL
+	pkgdesc = Advanced source port for Wolfenstein 3D engine games
 	pkgver = 1.3.3
-	pkgrel = 2
-	url = http://maniacsvault.net/ecwolf
+	pkgrel = 3
+	url = https://maniacsvault.net/ecwolf/
 	install = ecwolf.install
-	arch = i686
 	arch = x86_64
 	license = GPL
-	license = custom: ID
 	makedepends = cmake
-	makedepends = mercurial
-	depends = sdl
-	depends = libvorbis
-	depends = flac
-	depends = opusfile
-	depends = libmikmod
-	depends = fluidsynth
-	depends = libjpeg
 	depends = gtk2
-	optdepends = wolf3d-shareware: Demo version of Wolfenstein 3D
-	source = http://maniacsvault.net/ecwolf/files/ecwolf/1.x/ecwolf-1.3.3-src.7z
-	source = hg+https://bitbucket.org/ecwolf/sdl_mixer-for-ecwolf#revision=d3e4f997d2b1
-	sha256sums = b408268370ca810e4f22138f39a051fa64627211011869b9613da23a3d22e750
-	sha256sums = SKIP
+	depends = libjpeg-turbo
+	depends = sdl
+	depends = sdl_mixer
+	source = https://maniacsvault.net/ecwolf/files/ecwolf/1.x/ecwolf-1.3.3-src.tar.xz
+	source = net.maniacsvault.ecwolf.desktop
+	source = use_xdg.patch
+	sha512sums = 9c28d728170273cb9eb12f05ae7735171730050df684039b76b361435ec93b4ba71b2cd933cbcbcda6df61ad511549adc4b9a7c66fb1df1cc79634f0048f7123
+	sha512sums = 97c225f4a4aab1c14062ac3fc0a6598ac72608d5b2e84c143f8a7085013ea4716a4e6e9f2f8b65bd942ce53670ddeca4fee695bcb80863ded59a34bdfa7e76f6
+	sha512sums = 6bac3ed67c70263078797ab166344c72a9ffe6de3aa636aa578a58ddd9811bdde119db59dec3c1bb7d8644cce3e19744d7f384459acf8b346301beddbf7fc9d9
 
 pkgname = ecwolf
 
