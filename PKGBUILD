@@ -8,8 +8,8 @@ pkgdesc="The spiritual successor to FeedReader"
 arch=(any)
 url="https://gitlab.com/news-flash/news_flash_gtk"
 license=(GPL3)
-depends=("libhandy>=1")
-makedepends=(git cargo meson rust webkit2gtk)
+depends=(libhandy webkit2gtk)
+makedepends=(git cargo meson rust)
 conflicts=(newsflash)
 source=("git+https://gitlab.com/news-flash/news_flash_gtk.git")
 sha512sums=("SKIP")
