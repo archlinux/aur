@@ -1,6 +1,6 @@
 pkgbase = cis-latex
 	pkgdesc = A LaTeX2e package with commands and tools for use in university
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://traumweh.tk/
 	install = texlive.install
@@ -12,7 +12,7 @@ pkgbase = cis-latex
 	depends = texlive-science
 	depends = texlive-pictures
 	source = https://gitlab.com/traumweh/cis-latex/-/raw/main/tex/cis.sty
-	md5sums = 53537937617679341b2b65d739e0005d
+	md5sums = 2e9dd78b5b5ef1a94b0deeb83bdf6773
 
 pkgname = cis-latex
 
