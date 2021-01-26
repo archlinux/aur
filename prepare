@@ -49,46 +49,20 @@ _tkg_initscript() {
   # CPU SCHED selector
   if [ -z "$_cpusched" ] && [ ! -e "${_path}"/cpuschedset ]; then
     plain "What CPU sched variant do you want to build/install?"
-    if [ "$_basever" = "54" ] || [ "$_basever" = "57" ]; then
-      prompt="`echo $'  > 1.PDS\n    2.MuQSS\n    3.BMQ\n    4.CFS\nchoice[1-4?]: '`"
-    elif [ "$_basever" = "58" ]; then
-      prompt="`echo $'  > 1.Undead PDS (TkG)\n    2.Project C / PDS\n    3.Project C / BMQ\n    4.CFS\nchoice[1-4?]: '`"
-    elif [ "$_basever" = "59" ] || [ "$_basever" = "510" ]; then
       prompt="`echo $'  > 1.Undead PDS (TkG)\n    2.Project C / PDS\n    3.Project C / BMQ\n    4.MuQSS\n    5.CFS\nchoice[1-5?]: '`"
-    else
-      prompt="`echo $'  > 1.CFS\nchoice[1-1?]: '`"
-    fi
     read -rp "$prompt"  CONDITION;
+    if [ "$CONDITION" = "1" ];then
+      echo "_cpusched=\"upds\"" > "${_path}"/cpuschedset
     if [ "$CONDITION" = "2" ];then
-      if [ "$_basever" = "54" ] || [ "$_basever" = "57" ]; then
-        echo "_cpusched=\"MuQSS\"" > "${_path}"/cpuschedset
-      elif [ "$_basever" = "58" ] || [ "$_basever" = "59" ] || [ "$_basever" = "510" ]; then
-        echo "_cpusched=\"pds\"" > "${_path}"/cpuschedset
-      else
-        echo "_cpusched=\"bmq\"" > "${_path}"/cpuschedset
-      fi
+      echo "_cpusched=\"pds\"" > "${_path}"/cpuschedset
     elif [ "$CONDITION" = "3" ]; then
-      if [ "$_basever" = "54" ] || [ "$_basever" = "57" ] || [ "$_basever" = "58" ] || [ "$_basever" = "59" ] || [ "$_basever" = "510" ]; then
-        echo "_cpusched=\"bmq\"" > "${_path}"/cpuschedset
-      else
-        echo "_cpusched=\"MuQSS\"" > "${_path}"/cpuschedset
-      fi
+      echo "_cpusched=\"bmq\"" > "${_path}"/cpuschedset
     elif [ "$CONDITION" = "4" ]; then
-      if [ "$_basever" = "54" ] || [ "$_basever" = "57" ] || [ "$_basever" = "58" ]; then
-        echo "_cpusched=\"cfs\"" > "${_path}"/cpuschedset
-      else
-        echo "_cpusched=\"MuQSS\"" > "${_path}"/cpuschedset
-      fi
+      echo "_cpusched=\"MuQSS\"" > "${_path}"/cpuschedset
     elif [ "$CONDITION" = "5" ]; then
       echo "_cpusched=\"cfs\"" > "${_path}"/cpuschedset
     else
-      if [ "$_basever" = "58" ] || [ "$_basever" = "59" ] || [ "$_basever" = "510" ]; then
-        echo "_cpusched=\"upds\"" > "${_path}"/cpuschedset
-      elif [ "$_basever" = "511" ]; then
-        echo "_cpusched=\"cfs\"" > "${_path}"/cpuschedset
-      else
-        echo "_cpusched=\"pds\"" > "${_path}"/cpuschedset
-      fi
+      echo "_cpusched=\"cfs\"" > "${_path}"/cpuschedset
     fi
     if [ -n "$_custom_pkgbase" ]; then
       echo "_custom_pkgbase=\"${_custom_pkgbase}\"" >> "${_path}"/cpuschedset
