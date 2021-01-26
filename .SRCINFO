@@ -1,0 +1,24 @@
+pkgbase = xmind-pro
+	pkgdesc = XMind - The most popular mind mapping software
+	pkgver = 10.1.2
+	pkgrel = 1
+	url = https://www.xmind.net/
+	arch = x86_64
+	license = custom
+	depends = libxss
+	depends = nss
+	depends = libxtst
+	depends = alsa-lib
+	depends = gtk3
+	provides = xmind
+	provides = xmind-pro
+	conflicts = xmind-pro
+	source = https://dl2.xmind.cn/XMind-2020-for-Linux-amd-64bit-10.1.2-202004142327.deb
+	source = https://github.com/teaper/xmind-zen/releases/download/v10.1.2/app.asar
+	source = xmind.xml
+	sha256sums = ca19a6bddcb1ea547e905f12ce045a535235cac12058fc0adcf22bd222dc1638
+	sha256sums = ef419415cc5fb603082256ac9bfe7c1a5b9261f564dcc63689fc22ebd4e0be6d
+	sha256sums = 833f6f1a7ddd73ea2487a21390e16b57c3fa817a560f385a034efdd1ed754a8d
+
+pkgname = xmind-pro
+
