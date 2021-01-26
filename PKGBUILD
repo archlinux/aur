@@ -2,7 +2,7 @@
 pkgname=castledb-git
 _pkgname=castle
 pkgver=1.6.0.r81.g14519ad
-pkgrel=1
+pkgrel=2
 pkgdesc="A structured database and level editor with a local web app to edit it"
 arch=('i686' 'x86_64')
 url="http://castledb.org/"
@@ -29,15 +29,15 @@ pkgver() {
 prepare() {
   cd "$srcdir/${_pkgname}"
 
-  haxelib setup "${srcdir}/${pkgname}/haxelib"
+  haxelib newrepo
   haxelib install --always --debug castle.hxml
 }
 
 build() {
   cd "$srcdir/${_pkgname}"
 
-  haxelib setup "${srcdir}/${pkgname}/haxelib"
   haxe --verbose castle.hxml
+  haxelib deleterepo
   # change the version displayed with that of this package
   sed -i "s/Version 1.5/Version ${pkgver}/g" "${srcdir}/${_pkgname}/bin/index.html"
 }
