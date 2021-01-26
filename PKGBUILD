@@ -2,7 +2,7 @@
 pkgname=webbrowser
 pkgver=CURRENT
 pkgrel=1
-pkgdesc="Palemoon but better and no spyware."
+pkgdesc="A webbrowser with no spyware."
 arch=('i686' 'x86_64')
 url="https://git.nuegia.net/webbrowser.git/"
 license=('MPL' 'GPL')
