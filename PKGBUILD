@@ -1,7 +1,7 @@
 # Maintainer: My Name <andrea.venturini@tiscali.it>
 
 pkgname=validdesk
-pkgver=1.0_338
+pkgver=1.0_362
 pkgrel=1
 pkgdesc="Valid Desk is a free signature tool developed by Intesi Group for all users who need to digitally sign documents from their desktop quickly and easily."
 arch=('x86_64')
@@ -10,7 +10,7 @@ options=(!strip)
 
 source_x86_64=("https://www.intesigroup.com/wp-content/apps/pub/ValidDesk-${pkgver}-${arch}.AppImage")
 noextract=("${pkgname}-${pkgver}-${arch}.AppImage")
-sha256sums_x86_64=('4c7f0b06fbabfe7964b7a98b02de12d7cdb7b942d93be8e8a74398a1a9f8fc76')
+sha256sums_x86_64=('5e13c592411f71fc052e6d823f0c9c238da818da62b13b09dab1368fb331626c')
 
 package() {
 	install -Dm755 "${srcdir}/ValidDesk-${pkgver}-${arch}.AppImage" "${pkgdir}/opt/${pkgname}/${pkgname}"
