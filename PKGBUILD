@@ -1,7 +1,7 @@
 # Maintainer: Vojtech Aschenbrenner <v@asch.cz>
 
 pkgname=eprover
-pkgver=2.4
+pkgver=2.5
 pkgrel=1
 pkgdesc="E is theorem prover for full first-order logic with equality."
 arch=('i686' 'x86_64')
