@@ -21,7 +21,7 @@ pkgbase = xmind-zen
 	source = https://github.com/teaper/xmind-zen/releases/download/v10.0.0/app.asar
 	source = xmind.xml
 	md5sums = 658008c171d64021dad0fd88db8329c4
-	md5sums = 5b2278e45770ddf67336acc762979f14
+	md5sums = c4cf9c905b7cd5f498ea45aa2cfc56eb
 	md5sums = 79ce427cd9d4facd4cddf8ebf68f2d5f
 
 pkgname = xmind-zen

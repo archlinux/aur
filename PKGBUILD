@@ -22,7 +22,7 @@ source=("https://dl3.xmind.net/${_name}-for-Linux-amd-64bit-${pkgver}-${_release
         'xmind.xml')
 
 md5sums=('658008c171d64021dad0fd88db8329c4'
-         '5b2278e45770ddf67336acc762979f14'
+         'c4cf9c905b7cd5f498ea45aa2cfc56eb'
          '79ce427cd9d4facd4cddf8ebf68f2d5f')
 
 package() {
