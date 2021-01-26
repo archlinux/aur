@@ -1,0 +1,17 @@
+pkgbase = mopidy-cd-git
+	pkgdesc = A Mopidy extension for playing music from Audio CD.
+	pkgver = r35.ddd8736
+	pkgrel = 1
+	url = https://github.com/antosart/mopidy-cd
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = mopidy>=3
+	source = mopidy-cd::git+https://github.com/antosart/mopidy-cd
+	source = mopidy-cd.sysusers
+	sha256sums = SKIP
+	sha256sums = 040de00da0991afaedd6c6bc7eb938e9ae66d9700865402428a2d073df74face
+
+pkgname = mopidy-cd-git
+
