@@ -17,6 +17,6 @@ package() {
     # Populate bash, zsh completions
     install -dm 755 "$pkgdir/usr/share/bash-completion/completions"
     install -dm 755 "$pkgdir/usr/share/zsh/site-functions"
-    "$pkgdir/usr/bin/cloudctl" completion > "$pkgdir/usr/share/bash-completion/completions/cloudctl"
-    "$pkgdir/usr/bin/cloudctl" zsh-completion >  "$pkgdir/usr/share/zsh/site-functions/_cloudctl"
+    "$pkgdir/usr/bin/cloudctl" completion bash> "$pkgdir/usr/share/bash-completion/completions/cloudctl"
+    "$pkgdir/usr/bin/cloudctl" completion zsh>  "$pkgdir/usr/share/zsh/site-functions/_cloudctl"
 }
