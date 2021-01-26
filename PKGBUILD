@@ -1,10 +1,7 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-
 # Maintainer: Ed Neville <ed-archlinux@s5h.net>
 pkgname=pleaser
 _binary=please
-pkgver=0.3.18
+pkgver=0.3.20
 pkgrel=1
 pkgdesc="please, sudo like program with regex support written in rust"
 url="https://gitlab.com/edneville/please"
@@ -44,3 +41,4 @@ package() {
   install -Dt "$pkgdir/usr/share/man/man1" -m644 man/please.1
   install -Dt "$pkgdir/usr/share/man/man5" -m644 man/please.ini.5
 }
+
