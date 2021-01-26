@@ -1,11 +1,11 @@
-# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Anatol Pomozov anatol dot pomozov at g mail
 # Contributor: Leslie P. Polzer <polzer@gnu.org>
 # Contributor: bender02 at archlinux dot us
 # Contributor: Felix Saparelli <me@passcod.name>
 
 pkgname=mongoose
-pkgver=7.0
+pkgver=7.1
 pkgrel=1
 pkgdesc="Easy to use, powerful, embeddable web server"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('openssl')
 url="https://github.com/cesanta/mongoose"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/cesanta/mongoose/archive/${pkgver}.tar.gz")
-sha256sums=('28206185873b5c448765f56e54d86a7af5a856b0b5f241aa44ac94bf34af7eee')
+sha256sums=('f099bf7223c527e1a0b7fc8888136a3992e8b5c7123839639213b9483bb4f95b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
