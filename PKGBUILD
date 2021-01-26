@@ -20,11 +20,10 @@ _tagPrefix="v"
 #_tagSuffix=""
 
 _basePkgName="${pkgname//-git/}"
-
 if [[ "${pkgname}" == *-git ]];
 then
     # Version can't be set before pkgver has run
-    provides+=("${pkgname//-git/}=${pkgver}")
+    provides+=("${_basePkgName}=${pkgver}")
 fi
 
 _gitLogByDay() {

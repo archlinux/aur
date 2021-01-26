@@ -5,52 +5,5 @@
 [2020-03-10]
 * update fetchmails
 
-[2021-01-04]
-* add pythen dependencies ; add optional dependencies to make dependencies ; first files for templates
-
-[2021-01-05]
-* webapp first try
-* fixed cp
-* removed/added destdir / added ant-contrib
-* build webapp with destdir
-* build webapp without destdir
-* build webapp without destdir -syntax error
-
-[2021-01-06]
-* build webapp without destdir -syntax error
-
-[2021-01-07]
-* webapp
-* webapp: compress static
-* syntax
-* include noct working
-* paths
-* compress
-* paths
-* ...
-
-[2021-01-08]
-* build with temporary php.ini
-* ...
-* use templates
-
-[2021-01-11]
-* use templates
-
-[2021-01-12]
-* handle repo without tags
-* add addons
-
-[2021-01-13]
-* add addons
-* redefind _install
-
-[2021-01-14]
-* distribute /etc/kopano/*.cfg in kopano-core package
-
-[2021-01-15]
-* add addons
-
-[2021-01-20]
-* inifile
-* handle git builds
+[2021-01-22]
+* changes from 20201207
