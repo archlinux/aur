@@ -1,8 +1,8 @@
 # Maintainer: Matteo Salonia <saloniamatteo@protonmail.com>
 
 pkgname=artix-silence-grub-theme-git
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="Artix Silence: Grub Theme, Fork of arch-silence"
 arch=('any')
 url="https://github.com/fghibellini/arch-silence"
@@ -25,11 +25,17 @@ prepare() {
 	# Replace Arch logo with Artix logo
 	mv artix-logo.png "$srcdir/arch-silence/theme/arch_logo.png"
 
+	# Check if using doas or sudo
+	[ $(which doas) ] && rootcmd="doas" || rootcmd="sudo"
+
 	# Delete old theme directory
-	sudo rm -rf /boot/grub/themes/arch-silence
+	$rootcmd rm -rf /boot/grub/themes/arch-silence
 }
 
 package() {
-	sudo cp -TR "$srcdir/arch-silence/theme" /boot/grub/themes/arch-silence
-	sudo grub-mkconfig -o /boot/grub/grub.cfg
+	# Check if using doas or sudo
+	[ $(which doas) ] && rootcmd="doas" || rootcmd="sudo"
+
+	$rootcmd cp -TR "$srcdir/arch-silence/theme" /boot/grub/themes/arch-silence
+	$rootcmd grub-mkconfig -o /boot/grub/grub.cfg
 }
