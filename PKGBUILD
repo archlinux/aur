@@ -11,6 +11,7 @@ depends=(
     bash
     pyside2
     expressvpn
+    python-pexpect
 )
 source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 md5sums=('SKIP')

@@ -8,6 +8,7 @@ pkgbase = expressvpn-gui
 	depends = bash
 	depends = pyside2
 	depends = expressvpn
+	depends = python-pexpect
 	source = https://gitlab.com/vojko.pribudic/expressvpn-gui/-/archive/v0.4.4/expressvpn-gui-v0.4.4.tar.gz
 	md5sums = SKIP
 
