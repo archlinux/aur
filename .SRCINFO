@@ -5,7 +5,7 @@ pkgbase = thesage
 	url = https://sequencepublishing.com/1/thesage/thesage.html
 	arch = x86_64
 	license = unknown
-	depends = dotnet-runtime
+	depends = dotnet-runtime>=3.1
 	source = thesage-0.32.3020.zip::https://www.sequencepublishing.com/cgi-bin/download.cgi?burbridgelinux
 	source = thesage.desktop
 	source = thesage.png

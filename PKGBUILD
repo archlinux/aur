@@ -7,7 +7,7 @@ pkgdesc='English Dictionary and Thesaurus. A twenty-first century lexical refere
 arch=('x86_64')
 url='https://sequencepublishing.com/1/thesage/thesage.html'
 license=('unknown')
-depends=('dotnet-runtime')
+depends=('dotnet-runtime>=3.1')
 source=("$pkgname-$pkgver.zip::https://www.sequencepublishing.com/cgi-bin/download.cgi?burbridgelinux"
         "$pkgname.desktop"
         "$pkgname.png")
