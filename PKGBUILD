@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/antimof/$_gitname"
 license=('GPL3')
 depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-base-libs' 'gst-libav' 'gstreamer-vaapi')
+makedepends=('cmake')
 conflicts=('uxplay')
 provides=('uxplay')
 source=("git+$url.git" "uxplay.desktop")

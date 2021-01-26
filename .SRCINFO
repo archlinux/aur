@@ -5,6 +5,7 @@ pkgbase = uxplay-git
 	url = https://github.com/antimof/UxPlay
 	arch = any
 	license = GPL3
+	makedepends = cmake
 	depends = gstreamer
 	depends = gst-plugins-base
 	depends = gst-plugins-base-libs
@@ -18,4 +19,3 @@ pkgbase = uxplay-git
 	sha256sums = 6b43385942508d8c360e8360be52719cbf3899868f3560b245731d866fb245a3
 
 pkgname = uxplay-git
-
