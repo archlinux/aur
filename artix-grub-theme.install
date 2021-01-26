@@ -8,3 +8,12 @@ post_install() {
 	echo "It is recommended you upgrade your grub configuration with the following command:"
 	echo "$rootcmd grub-mkconfig -o /boot/grub/grub.cfg"
 }
+
+post_upgrade() {
+
+	# Check if user has doas, or sudo
+	[ $(which doas) ] && rootcmd="doas" || rootcmd="sudo"
+
+	echo "It is recommended you upgrade your grub configuration with the following command:"
+	echo "$rootcmd grub-mkconfig -o /boot/grub/grub.cfg"
+}
