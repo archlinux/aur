@@ -1,6 +1,6 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=autorevision
-pkgver=1.21
+pkgver=1.22
 pkgrel=1
 pkgdesc="Extracts metadata about the HEAD of a repository"
 arch=('any')
@@ -8,8 +8,8 @@ url="https://autorevision.github.io/"
 license=('BSD')
 makedepends=('asciidoc')
 source=(https://github.com/Autorevision/autorevision/releases/download/v%2F${pkgver}/${pkgname}-${pkgver}.tgz{,.sig})
-sha512sums=('a7416e2a6fc6287cfa4c2ae1c542a0727c3856a738027c6529210aecd1beaf70b5ac5122ecc03f14743cd1f361d194af4ff084c4b707bc5e690cd7193fb85292'
-            'SKIP')
+b2sums=('f3b6fb3d0360c5b1e8f2be14f4b6e10ab8ab4445a87c2a737092b4df7ea4b3e3c47943ea3394df879675f6afc1cf33375fc2dd312de7250e65e0ffc94dde303e'
+        'SKIP')
 validpgpkeys=('A16E4FE1BFE882DE9D6E28AD0044B6E72C414317')
 
 build() {
