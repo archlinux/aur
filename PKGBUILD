@@ -6,7 +6,7 @@ _stubs_hash=372b103b4079ffe1a54e66310ea579040892c5dd
 #TODO: add stubs
 _pywrap_hash=530890da875ca33fe954e9de285674232d3b759f
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
 url=https://github.com/CadQuery/OCP
@@ -17,7 +17,7 @@ opencascade
 )
 makedepends=(
 clang
-python-joblib
+"python-joblib=>1.0"
 python-click
 python-pandas
 python-path
