@@ -1,7 +1,7 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 # Contributor: mickele <mimocciola[at]yahoo[dot]com>
 pkgname=(ifcopenshell-git blender-plugin-bim-git)
-pkgver=0.6.0b0.r1652.gf5796eae
+pkgver=0.6.0b0.r1736.g92cb138c
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon. GIT version."
 arch=('x86_64' 'i686')
@@ -17,7 +17,8 @@ optdepends=('python-svgwrite: blender bim addon svg support'
 			'python-pyparsing: ifcexpressparser support'
 			'python-requests: blender bim addon covetool support'
 			'python-lark-parser: util, ifccsv, ifcclash support'
-			'python-odfpy: ifccobie support')
+			'python-odfpy: ifccobie support'
+			'python-behave: python-bimtester')
 makedepends=('cmake' 'boost>=1.58.0' 'swig')
 provides=('ifcopenshell' 'blender-plugin-bim' 'IfcConvert' 'IfcGeomServer' 'python-ifcpatch' 'python-ifcdiff' 'python-bcf' 'python-bimtester' 'python-ifccsv')
 conflicts=()
