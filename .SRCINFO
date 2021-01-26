@@ -1,16 +1,15 @@
 pkgbase = r-fastmap
-	pkgdesc = Fast Implementation of a Key-Value Store
-	pkgver = 1.0.1
+	pkgdesc = Fast Data Structures
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=fastmap
-	arch = x86_64
 	arch = i686
+	arch = x86_64
 	license = MIT
-	makedepends = gcc
 	depends = r
 	optdepends = r-testthat
-	source = http://cran.r-project.org/src/contrib/fastmap_1.0.1.tar.gz
-	md5sums = 3f6c60a00b60f3a3fba56962fe245ae8
+	source = https://cran.r-project.org/src/contrib/fastmap_1.1.0.tar.gz
+	sha256sums = 9113e526b4c096302cfeae660a06de2c4c82ae4e2d3d6ef53af6de812d4c822b
 
 pkgname = r-fastmap
 
