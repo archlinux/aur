@@ -1,8 +1,9 @@
 pkgbase = artix-silence-grub-theme-git
 	pkgdesc = Artix Silence: Grub Theme, Fork of arch-silence
-	pkgver = 1.0.0
+	pkgver = 1.1
 	pkgrel = 2
 	url = https://github.com/fghibellini/arch-silence
+	install = artix-grub-theme.install
 	arch = any
 	license = GPL
 	makedepends = git
