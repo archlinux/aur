@@ -1,6 +1,6 @@
 pkgbase = linux-mainline-bcachefs
 	pkgdesc = Linux-tkg with bcachefs
-	pkgver = .
+	pkgver = 5.10
 	pkgrel = 115
 	url = http://www.kernel.org/
 	arch = x86_64
