@@ -2,14 +2,14 @@
 
 _pkgname=nmigen
 pkgname="python-$_pkgname-git"
-pkgver=0.2.r198.ge3207b7
+pkgver=0.2.r241.g09de190
 pkgrel=1
 pkgdesc="A refreshed Python toolbox for building complex digital hardware"
 arch=(any)
 url="https://github.com/nmigen/nmigen"
 license=('BSD')
 depends=('python')
-makedepends=('git' 'python-setuptools' 'python-setuptools-scm' 'python-pytest')
+makedepends=('git' 'python-wheel' 'python-setuptools' 'python-setuptools-scm' 'python-pytest')
 optdepends=('python-pyvcd: for nmigen.pysim'
             'python-jinja: for nmigen.build'
             'python-paramiko: for remote builds')
