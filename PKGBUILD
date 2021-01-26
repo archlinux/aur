@@ -1,7 +1,7 @@
 # Maintainer: Vojko Pribudić <dmanthing@gmail.com>
 
 pkgname=expressvpn-gui-gtk
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Unofficial linux GUI for expressvpn CLI (GTK)'
 arch=('x86_64')
@@ -11,6 +11,7 @@ depends=(
     bash
     python-gobject
     expressvpn
+    python-pexpect
 )
 source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 md5sums=('SKIP')
