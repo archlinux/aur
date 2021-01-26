@@ -14,7 +14,7 @@ optdepends=('pg_qualstats-git: capture predicate statistics in PostgreSQL'
 builddepends=()
 makedepends=(git)
 options=(!emptydirs !libtool)
-source=('git://github.com/powa-team/powa-archivist.git')
+source=('git+https://github.com/powa-team/powa-archivist.git')
 md5sums=('SKIP')
 install='powa-archivist-git.install'
 

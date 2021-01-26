@@ -16,7 +16,7 @@ pkgbase = powa-archivist-git
 	optdepends = hypopg-git: create hypothetical indexes in PostgreSQL to test for plan changes
 	options = !emptydirs
 	options = !libtool
-	source = git://github.com/powa-team/powa-archivist.git
+	source = git+https://github.com/powa-team/powa-archivist.git
 	md5sums = SKIP
 
 pkgname = powa-archivist-git
