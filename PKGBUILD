@@ -1,6 +1,6 @@
 # Maintainer: OctopusET
-pkgname=python-norminette
-pkgver=2.52
+pkgname=python-norminette-git
+pkgver=r334.2cdcfd5
 pkgrel=1
 pkgdesc="Open source norminette"
 arch=('any')
@@ -11,6 +11,10 @@ makedepends=('git' 'python-setuptools')
 source=("$pkgname"::'git+https://github.com/42School/norminette.git')
 md5sums=('SKIP')
 
+pkgver() {
+  cd ${pkgname}
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 build() {
     cd "$srcdir/$pkgname"
     python setup.py build
