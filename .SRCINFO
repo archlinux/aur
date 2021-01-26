@@ -1,5 +1,5 @@
 pkgbase = webbrowser
-	pkgdesc = Palemoon but better and no spyware.
+	pkgdesc = A webbrowser with no spyware.
 	pkgver = CURRENT
 	pkgrel = 1
 	url = https://git.nuegia.net/webbrowser.git/
