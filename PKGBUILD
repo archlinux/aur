@@ -1,4 +1,4 @@
-# Maintainer: BootyBlaster420
+# Maintainer: BootyBlaster
 
 pkgname=ttf-jam-icons
 pkgver=1
@@ -9,11 +9,11 @@ url="https://jam-icons.com"
 license=('MIT')
 depends=('fontconfig')
 source=(
-    "https://raw.githubusercontent.com/michaelampr/jam/master/fonts/jam-icons.ttf"
-    "https://raw.githubusercontent.com/michaelampr/jam/master/LICENSE"
+    "https://github.com/wannesdemeyer/jam/raw/master/fonts/jam-icons.ttf"
+    "https://github.com/wannesdemeyer/jam/blob/master/LICENSE"
 )
 md5sums=('e3b6396ce554c77bd9655e12ca0690ed'
-         'a53b17fccc67f4f5b1e52a3e389661a2')
+         '8b4401405cc11d3efb656f96375ccf56')
 
 package() {
     install -d "${pkgdir}"/usr/share/fonts/TTF
