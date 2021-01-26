@@ -2,7 +2,7 @@
 pkgname=piavpn-bin
 pkgver=2.6.1_05824
 _pkgver=${pkgver/_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="Private Internet Access client"
 arch=(x86_64)
 url="https://privateinternetaccess.com/"
@@ -42,15 +42,18 @@ package() {
 	mkdir -p $pkgdir/etc/NetworkManager/conf.d
 	echo -e "[keyfile]\nunmanaged-devices=interface-name:wgpia*" > $pkgdir/etc/NetworkManager/conf.d/wgpia.conf
 
-	mkdir -p $pkgdir/usr/local/bin
-	ln -s ../../../opt/piavpn/bin/piactl $pkgdir/usr/local/bin/piactl
-
 	mkdir -p $pkgdir/usr/lib/systemd/system
 	cp installfiles/piavpn.service $pkgdir/usr/lib/systemd/system/piavpn.service	
 	sed -i '/^After/s/syslog.target //' $pkgdir/usr/lib/systemd/system/piavpn.service
 
 	mkdir -p $pkgdir/usr/share/licenses/$pkgname/
 	mv $pkgdir/opt/piavpn/share/LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/
+
+	# fix permissions: no need for executable bit
+	find $pkgdir/usr -type f -exec chmod -x {} \;
+
+	mkdir -p $pkgdir/usr/local/bin
+	ln -s ../../../opt/piavpn/bin/piactl $pkgdir/usr/local/bin/piactl
 
 	# limit log to the minimum to avoid excessive flooding
 	cat > $pkgdir/opt/piavpn/var/debug.txt << EOF
@@ -59,4 +62,5 @@ package() {
 *.info=false
 *.warning=false
 EOF
+
 }
