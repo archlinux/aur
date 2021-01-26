@@ -1,6 +1,6 @@
 # Maintainer: traumweh <contact@traumweh.tk>
 
-_revision=3
+_revision=4
 pkgname=cis-latex
 pkgver=1.${_revision}
 pkgrel=1
@@ -19,4 +19,4 @@ package() {
   cp -R cis.sty "$pkgdir/usr/share/texmf-dist/tex/latex/cis"
 }
 
-sha256sum=('9c86a0f4783aed92916d70ed1a2dcc552102110589bd091e8b49157bea51fd2e')
+sha256sums=('9c86a0f4783aed92916d70ed1a2dcc552102110589bd091e8b49157bea51fd2e')
