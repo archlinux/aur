@@ -1,11 +1,11 @@
-# Maintainer: Nico <d3sox at protonmail dot com>
+# Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
 
 _gitname=kora
 _author=bikass
 pkgname=kora-icon-theme-git
-pkgver=r569.ae0c2ed2
+pkgver=r624.8ff757b
 pkgrel=1
-pkgdesc="Kora icon theme for GNU/Linux os"
+pkgdesc="Kora is an SVG icon theme with lots of new icons for GNU/Linux operating systems"
 arch=("any")
 url="https://github.com/${_author}/${_gitname}"
 license=("GPL3")
@@ -13,7 +13,7 @@ depends=("gtk-update-icon-cache")
 optdepends=(
     "hicolor-icon-theme: fallback Freedesktop.org Hicolor icon theme"
     "breeze-icons: fallback Breeze icon theme for Plasma Desktop"
-    "gnome-icon-theme: fallback Gnome icon theme for Gnome Desktop")
+    "adwaita-icon-theme: fallback GNOME standard icons")
 makedepends=("git")
 provides=("kora-icon-theme")
 conflicts=("kora-icon-theme")
