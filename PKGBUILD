@@ -3,7 +3,7 @@
 
 pkgname=jlink-software-and-documentation
 pkgver=6.94b
-pkgrel=0
+pkgrel=1
 epoch=34
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' )
@@ -117,8 +117,9 @@ package(){
         cp --preserve=mode -r x86 "${pkgdir}/opt/SEGGER/JLink"
     fi
 
-    # Cleanup old copy of /etc/
+    # Copy ETC/JFlash at the right place
     rm -f ${pkgdir}/etc/JFlash
+    cp --preserve=mode -r ETC/JFlash "${pkgdir}/etc/"
 
     # Create links where needed
     ln -s /opt/SEGGER/JLink/Doc/LicenseIncGUI.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
