@@ -6,7 +6,7 @@ release='r2020b'
 instdir="/opt/tmw/${name}-${release}"
 pkgname=matlab
 pkgver=9.9.0.1467703
-pkgrel=2
+pkgrel=3
 pkgdesc='A high-level language for numerical computation and visualization'
 arch=('x86_64')
 url='http://www.mathworks.com'
@@ -213,7 +213,7 @@ package() {
 
   # Symlink executables'
   install -d -m755 "${pkgdir}/usr/bin/"
-  for _executable in deploytool matlab mbuild; do
+  for _executable in deploytool matlab mbuild activate_matlab.sh; do
     ln -s "${instdir}/bin/${_executable}" "${pkgdir}/usr/bin/${_executable}"
   done
   # This would otherwise conflict with mixtex
