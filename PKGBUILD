@@ -14,7 +14,7 @@ depends=(
   'gcc-libs'
 )
 source=("https://gitlab.com/peertube-viewer/peertube-viewer-rs/-/archive/v$pkgver/peertube-viewer-rs-v$pkgver.tar.gz")
-md5sums=('492793f3159ce8e5db730b1690619e36')
+sha256sums=('cae7ce038149dc8ae61b41a9cf5e296bf4b8980653ac837e9f630b972f1edc5b')
 
 build() {
     cd $pkgname-v$pkgver
