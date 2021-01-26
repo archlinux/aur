@@ -9,8 +9,8 @@
 
 _majorver=11
 _minorver=0
-_securityver=9
-_updatever=11.1
+_securityver=10
+_updatever=9
 pkgrel=1
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 _tag_ver=${_majorver}.${_minorver}.${_securityver}+${_updatever}
@@ -100,7 +100,7 @@ package() {
   done
 
 }
-sha256sums=('a3c52b73a76bed0f113604165eb4f2020b767e188704d8cc0bfc8bc4eb596712'
+sha256sums=('ae78aa45f84642545c01e8ef786dfd700d2226f8b12881c844d6a1f71789cb99'
             '734aab5e8fca5360fd996142a0c0ff23434da56f83c21b26cfbcbf31556230eb'
             '53b7da18785675438d1d7cfa776be419a313c11049c48f791c7426224fe51025'
             'bc4305c5870fa8e050c0a2cbc629a8f84e366200b436429c789038596a4259f6')
