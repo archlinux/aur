@@ -1,6 +1,6 @@
 # Maintainer: Pavel Antonov <pvantonov@gmail.com>
 pkgname=breeze-patched
-pkgver=5.20.5.1
+pkgver=5.20.5.2
 pkgrel=1
 pkgdesc="Artwork, styles and assets for the Breeze visual style for the Plasma Desktop"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ makedepends=(extra-cmake-modules kcmutils)
 optdepends=('breeze-gtk: Breeze widget style for GTK applications'
             'kcmutils: for breeze-settings')
 groups=(plasma)
-provides=()
+provides=(breeze)
 conflicts=(breeze)
 replaces=(breeze)
 backup=()
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/pvantonov/breeze/archive/v$pkgver.tar.gz")
 noextract=()
-md5sums=(9baa0cdce7f2de0cde0aa0e54edea8ef)
+md5sums=(b838e4042a67a90fb756fea6dc1a977c)
 
 build() {
   cmake -B build -S breeze-$pkgver \

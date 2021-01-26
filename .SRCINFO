@@ -1,6 +1,6 @@
 pkgbase = breeze-patched
 	pkgdesc = Artwork, styles and assets for the Breeze visual style for the Plasma Desktop
-	pkgver = 5.20.5.1
+	pkgver = 5.20.5.2
 	pkgrel = 1
 	url = https://github.com/pvantonov/breeze
 	arch = i686
@@ -16,10 +16,11 @@ pkgbase = breeze-patched
 	depends = kwayland
 	optdepends = breeze-gtk: Breeze widget style for GTK applications
 	optdepends = kcmutils: for breeze-settings
+	provides = breeze
 	conflicts = breeze
 	replaces = breeze
-	source = https://github.com/pvantonov/breeze/archive/v5.20.5.1.tar.gz
-	md5sums = 9baa0cdce7f2de0cde0aa0e54edea8ef
+	source = https://github.com/pvantonov/breeze/archive/v5.20.5.2.tar.gz
+	md5sums = b838e4042a67a90fb756fea6dc1a977c
 
 pkgname = breeze-patched
 
