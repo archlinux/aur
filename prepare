@@ -21,21 +21,6 @@ _tkg_initscript() {
 
   _path="${_where}"
 
-  if [ -z "$_version" ] && [ ! -e "$_path"/versel ]; then
-          echo "_basever=510" > "$_path"/versel
-          echo "_basekernel=5.10" >> "$_path"/versel
-          echo "_sub=${ver510}" >> "$_path"/versel
-  elif [ -n "$_version" ];then
-		echo "_basever=510" > "$_path"/versel
-		echo "_basekernel=5.10" >> "$_path"/versel
-		echo "_sub=${ver510}" >> "$_path"/versel
-  fi
-
-  # source versel early if present
-  if [ -e "${_path}"/versel ]; then
-    source "${_path}"/versel
-  fi
-
   if [ -z "$_OPTIPROFILE" ] && [ ! -e "$_path"/cpuschedset ]; then
     # Prompt about optimized configurations. Available variable values will overwrite customization.cfg/external config ones.
     plain "Do you want to use a predefined optimized profile?"

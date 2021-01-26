@@ -45,6 +45,8 @@ fi
 optdepends=('schedtool')
 options=('!strip' 'docs')
 
+case $_basever in
+	510)
 	opt_ver="5.8%2B"
     source=("$kernel_site"
         "$patch_site"
@@ -103,6 +105,8 @@ options=('!strip' 'docs')
             '49262ce4a8089fa70275aad742fc914baa28d9c384f710c9a62f64796d13e104'
             '105f51e904d80f63c1421203e093b612fc724edefd3e388b64f8d371c0b3a842'
             'cf7c758604f2a99cfcb65129c436e32e2ef7a80fe486f8e55a2206a955acc40a')
+	;;
+esac
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
