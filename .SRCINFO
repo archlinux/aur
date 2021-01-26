@@ -8,6 +8,7 @@ pkgbase = mopidy-cd-git
 	makedepends = python-setuptools
 	makedepends = python-pip
 	depends = mopidy>=3
+	depends = python-musicbrainzngs
 	source = mopidy-cd::git+https://github.com/antosart/mopidy-cd
 	source = mopidy-cd.sysusers
 	sha256sums = SKIP

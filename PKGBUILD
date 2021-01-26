@@ -7,7 +7,7 @@ pkgdesc='A Mopidy extension for playing music from Audio CD.'
 arch=('any')
 url="https://github.com/antosart/mopidy-cd"
 license=('APACHE')
-depends=('mopidy>=3')
+depends=('mopidy>=3' 'python-musicbrainzngs')
 makedepends=('python-setuptools' 'python-pip')
 source=("${pkgname%%-git}::git+${url}"
   mopidy-cd.sysusers)
