@@ -17,9 +17,8 @@ opencascade
 )
 makedepends=(
 clang
-"python-joblib=>1.0"
-python-click
-python-pandas
+"python-joblib>=1.0.0"
+python-click python-pandas
 python-path
 pybind11
 python-setuptools

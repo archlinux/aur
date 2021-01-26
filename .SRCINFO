@@ -6,7 +6,7 @@ pkgbase = python-ocp
 	arch = x86_64
 	license = Apache
 	makedepends = clang
-	makedepends = python-joblib=>1.0
+	makedepends = python-joblib>=1.0.0
 	makedepends = python-click
 	makedepends = python-pandas
 	makedepends = python-path
