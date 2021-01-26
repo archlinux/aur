@@ -17,7 +17,7 @@ build() {
 }
 
 package() {
-    cd $srcdir/terminal-v$pkgver
+    cd $srcdir/terminal-v$pkgver-$pkgrel
 
     install -Dm 755 "target/release/terminal" "$pkgdir/usr/bin/mt"
     install -Dm 644 "data/com.gitlab.miridyan.Mt.desktop" "$pkgdir/usr/share/applications/com.gitlab.miridyan.Mt.desktop"
