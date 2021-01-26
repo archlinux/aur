@@ -32,7 +32,7 @@ build() {
      --libdir=/usr/lib \
      --with-logdir=/var/log/cups \
      --with-docdir=/usr/share/cups/doc \
-     --with-exe-file-perm=0750 \
+     --with-exe-file-perm=0755 \
      --with-cups-user=209 \
      --with-cups-group=209 \
      --enable-pam=yes \
