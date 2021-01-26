@@ -1,13 +1,13 @@
 pkgbase = geos-git
 	pkgdesc = C++ port of the Java Topology Suite (git version)
-	pkgver = 3.8.0dev.4c70abae
+	pkgver = 3.10.0dev.7b70ce97
 	pkgrel = 1
 	url = http://trac.osgeo.org/geos/
 	arch = i686
 	arch = x86_64
 	license = LGPL
-	depends = gcc-libs
-	depends = bash
+	makedepends = cmake
+	makedepends = git
 	provides = geos
 	conflicts = geos
 	source = geos-git::git+https://git.osgeo.org/gitea/geos/geos.git

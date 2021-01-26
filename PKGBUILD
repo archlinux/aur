@@ -1,19 +1,19 @@
 # Maintainer: peippo <christoph.fink@gmail.com>
 pkgname=geos-git
-pkgver=3.8.0dev.4c70abae
+pkgver=3.10.0dev.7b70ce97
 pkgrel=1
 
 pkgdesc="C++ port of the Java Topology Suite (git version)"
 url="http://trac.osgeo.org/geos/"
-license=('LGPL')
+license=("LGPL")
 
-arch=('i686' 'x86_64')
-depends=('gcc-libs' 'bash')
-conflicts=('geos')
-provides=('geos')
+arch=("i686" "x86_64")
+makedepends=("cmake" "git")
+conflicts=("geos")
+provides=("geos")
 
 source=("${pkgname}::git+https://git.osgeo.org/gitea/geos/geos.git")
-md5sums=('SKIP')
+md5sums=("SKIP")
 
 pkgver() {
     cd "${pkgname}"
@@ -27,13 +27,16 @@ pkgver() {
 }
 
 build() {
-    cd "${pkgname}"
-    ./autogen.sh 
-    ./configure --prefix=/usr
-    make
+    cmake \
+        -B build \
+        -S "${pkgname}" \
+        -DCMAKE_BUILD_TYPE="None" \
+        -DCMAKE_INSTALL_PREFIX="/usr" \
+        -Wno-dev
+    make -C build
 }
 
 package() {
-    cd "${pkgname}"
+    cd "build"
     make DESTDIR="${pkgdir}" install
 }
