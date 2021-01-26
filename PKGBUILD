@@ -17,7 +17,7 @@ source=("https://dl2.xmind.cn/XMind-2020-for-Linux-amd-64bit-${pkgver}-${_releas
         'xmind.xml')
 
 sha256sums=('ca19a6bddcb1ea547e905f12ce045a535235cac12058fc0adcf22bd222dc1638'
-            'ef419415cc5fb603082256ac9bfe7c1a5b9261f564dcc63689fc22ebd4e0be6d'
+            '5797276b31775d83bb2ef4cd557b184da188cd784fd8e513c478ef98cc220510'
             '833f6f1a7ddd73ea2487a21390e16b57c3fa817a560f385a034efdd1ed754a8d')
 
 package() {
