@@ -1,4 +1,4 @@
-pkgbase = python-norminette-git
+pkgbase = python-norminette
 	pkgdesc = Open source norminette
 	pkgver = r334.2cdcfd5
 	pkgrel = 1

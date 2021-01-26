@@ -1,4 +1,5 @@
 # Maintainer: OctopusET
+pkgbase=python-norminette
 pkgname=python-norminette-git
 pkgver=r334.2cdcfd5
 pkgrel=1
