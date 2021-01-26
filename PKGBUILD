@@ -10,6 +10,7 @@ provides=('ecwolf')
 depends=('libvorbis' 'flac' 'opusfile' 'libmodplug' 'fluidsynth' 'libjpeg' 'sdl2' 'sdl2_net')
 makedepends=('git' 'cmake' 'sdl' 'sdl2')
 optdepends=('wolf3d-shareware: Demo version of Wolfenstein 3D')
+conflicts=('ecwolf')
 
 source=("git+https://bitbucket.org/ecwolf/ecwolf")
 sha256sums=('SKIP')

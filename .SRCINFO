@@ -21,6 +21,7 @@ pkgbase = ecwolf-git
 	depends = sdl2_net
 	optdepends = wolf3d-shareware: Demo version of Wolfenstein 3D
 	provides = ecwolf
+	conflicts = ecwolf
 	source = git+https://bitbucket.org/ecwolf/ecwolf
 	sha256sums = SKIP
 
