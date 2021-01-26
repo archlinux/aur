@@ -1,17 +1,18 @@
 From: Ole Streicher <debian@liska.ath.cx>
 Date: Fri, 5 Aug 2016 16:17:42 +0200
-Subject: Rename libwcs to libwcstools to avoid conflicts with Mark
- Calabretta's wcslib package.
+Subject: Rename libwcs to libwcstools
+
+Avoid conflicts with Mark Calabretta's wcslib package.
 
 Also, build a dynamic library and forward CFLAGS, CPPFLAGS and LDFLAGS for
 fortification.
 ---
- Makefile        | 134 ++++++++++++++++++++++++++++----------------------------
+ Makefile        | 136 ++++++++++++++++++++++++++++----------------------------
  libwcs/Makefile |  14 ++++--
- 2 files changed, 76 insertions(+), 72 deletions(-)
+ 2 files changed, 77 insertions(+), 73 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 38a0337..296219c 100644
+index 3c4a850..3d036f1 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -1,12 +1,11 @@
@@ -31,7 +32,7 @@ index 38a0337..296219c 100644
  
  all:	cphead delwcs delhead edhead fixpix gethead i2f imcat imhead immatch \
  	imrot imsize imstar imwcs scat sethead addpix getpix setpix sky2xy \
-@@ -16,187 +15,186 @@ all:	cphead delwcs delhead edhead fixpix gethead i2f imcat imhead immatch \
+@@ -16,193 +15,192 @@ all:	cphead delwcs delhead edhead fixpix gethead i2f imcat imhead immatch \
  	isfile simpos bincat
  
  addpix: addpix.c $(LIBWCS) libwcs/fitsfile.h
@@ -118,6 +119,10 @@ index 38a0337..296219c 100644
 -	$(CC) $(CFLAGS) -o $(BIN)/httpget httpget.c $(LIBS)
 +	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $(BIN)/httpget httpget.c $(LIBS)
  
+ htmlsp: htmlsp.c
+-	$(CC) $(CFLAGS) -o $(BIN)/htmlsp htmlsp.c
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $(BIN)/htmlsp htmlsp.c
+ 
  i2f: i2f.c $(LIBWCS) libwcs/fitsfile.h
 -	$(CC) $(CFLAGS) -o $(BIN)/i2f i2f.c $(LIBS)
 +	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $(BIN)/i2f i2f.c $(LIBS)
@@ -174,6 +179,10 @@ index 38a0337..296219c 100644
 -	$(CC) $(CFLAGS) -o $(BIN)/isnum isnum.c $(LIBS)
 +	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $(BIN)/isnum isnum.c $(LIBS)
  
+ isdate: isdate.c $(LIBWCS) libwcs/fitshead.h
+-	$(CC) $(CFLAGS) -o $(BIN)/isdate isdate.c $(LIBS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $(BIN)/isdate isdate.c $(LIBS)
+
  isimlist: isimlist.c $(LIBWCS) libwcs/fitsfile.h
 -	$(CC) $(CFLAGS) -o $(BIN)/isimlist isimlist.c $(LIBS)
 +	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $(BIN)/isimlist isimlist.c $(LIBS)
