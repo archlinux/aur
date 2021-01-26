@@ -42,6 +42,6 @@ package() {
   find "${pkgdir}/opt/${pkgname%-dev}" -type d -exec chmod a+rx {} +
   find "${pkgdir}/opt/${pkgname%-dev}" -type f -exec chmod a+r {} +
   chmod a+rw "${pkgdir}/opt/${pkgname%-dev}/version"
-  chmod 755 /opt/flutter/bin
+  chmod 755 "${pkgdir}/opt/${pkgname%-dev}/bin"
   ln -s "/opt/${pkgname%-dev}/bin/${pkgname%-dev}" "${pkgdir}/usr/bin/${pkgname%-dev}"
 }
