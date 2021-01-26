@@ -32,7 +32,7 @@ prepare() {
 	# Use nodejs v10 per upstream
 	export npm_config_cache="$srcdir/npm-cache"
 	local npm_prefix=$(npm config get prefix)
-	local nodeversion='10.23.1'
+	local nodeversion='10.23.2'
 	npm config delete prefix
 	_ensure_local_nvm
 	nvm install "$nodeversion" && nvm use "$nodeversion"
