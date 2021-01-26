@@ -22,7 +22,7 @@ conflicts=(darktable)
 provides=(darktable)
 install=darktable.install
 options=(!emptydirs !libtool)
-source=('git://github.com/darktable-org/darktable.git'
+source=('git+https://github.com/darktable-org/darktable.git'
 	"rawspeed.git::git+https://github.com/darktable-org/rawspeed.git"
 	"OpenCL-Headers.git::git+https://github.com/KhronosGroup/OpenCL-Headers.git"
 	"libxcf.git::git+https://github.com/houz/libxcf.git"
