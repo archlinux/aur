@@ -1,22 +1,28 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Duru Can Celasun <can at dcc dot im>
 pkgname=pymdown-extensions
-pkgver=8.1
+pkgver=8.1.1
 pkgrel=1
 pkgdesc="Extensions for Python Markdown"
 arch=('any')
-url="http://facelessuser.github.io/pymdown-extensions"
+url="https://facelessuser.github.io/pymdown-extensions"
 license=('MIT')
 depends=('python-markdown')
 makedepends=('python-setuptools')
 optdepends=('python-pygments: syntax highlighting')
+checkdepends=('python-pyaml' 'python-pytest-cov')
 source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz")
 #source=("$pkgname-$pkgver.tar.gz::https://github.com/facelessuser/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('565583c5964ac8253896ef4a7f14023075503ca6514d7d470b343290b96fc6da')
+sha256sums=('632371fa3bf1b21a0e3f4063010da59b41db049f261f4c0b0872069a9b6d1735')
 
 build() {
 	cd "$pkgname-$pkgver"
 	python setup.py build
+}
+
+check() {
+	cd "$pkgname-$pkgver"
+	python run_tests.py
 }
 
 package() {
