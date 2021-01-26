@@ -1,15 +1,15 @@
 pkgbase = ttf-jam-icons
 	pkgdesc = A set of icons designed for web projects, illustrations, print projects, etc.
-	pkgver = 2
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://jam-icons.com
 	arch = any
 	license = MIT
 	depends = fontconfig
-	source = https://github.com/wannesdemeyer/jam/raw/master/fonts/jam-icons.ttf
-	source = https://github.com/wannesdemeyer/jam/blob/master/LICENSE
+	source = https://raw.githubusercontent.com/wannesdemeyer/jam/master/fonts/jam-icons.ttf
+	source = https://raw.githubusercontent.com/wannesdemeyer/jam/master/LICENSE
 	md5sums = e3b6396ce554c77bd9655e12ca0690ed
-	md5sums = 8b4401405cc11d3efb656f96375ccf56
+	md5sums = a53b17fccc67f4f5b1e52a3e389661a2
 
 pkgname = ttf-jam-icons
 
