@@ -12,7 +12,7 @@ pkgbase = rke-bin
 	provides = rke
 	conflicts = rke
 	source = rke-v1.2.4::https://github.com/rancher/rke/releases/download/v1.2.4/rke_linux-amd64
-	sha256sums = 3981fef5251cfb68fccca4fbbd265cafd3db5bbcbc1089e526c68bd4363ce048
+	sha256sums = 77d2dc6af0d9388cba7dddea9ce3339d8e99618a32da68d043018ef63840bc6f
 
 pkgname = rke-bin
 
