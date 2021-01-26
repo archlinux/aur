@@ -23,7 +23,7 @@ pkgver() {
 package_neovim-coc-syntax-git() {
     pkgdesc='Syntax words completion source for coc.nvim'
     depends=('neovim-coc')
-    _packdir="usr/local/share/nvim/site/pack/coc/start/syntax"
+    _packdir="usr/share/nvim/runtime/pack/coc/start/syntax"
     provides=("neovim-coc-syntax")
     conflicts=("neovim-coc-syntax")
     cd "${srcdir}/coc-sources/packages/syntax"
@@ -34,7 +34,7 @@ package_neovim-coc-syntax-git() {
 package_neovim-coc-tag-git() {
     pkgdesc='tag source for coc.nvim'
     depends=('neovim-coc')
-    _packdir="usr/local/share/nvim/site/pack/coc/start/tag"
+    _packdir="usr/share/nvim/runtime/pack/coc/start/tag"
     provides=("neovim-coc-tag")
     conflicts=("neovim-coc-tag")
     cd "${srcdir}/coc-sources/packages/tag"
@@ -45,7 +45,7 @@ package_neovim-coc-tag-git() {
 package_neovim-coc-dictionary-git() {
     pkgdesc='dictionary source for coc.nvim'
     depends=('neovim-coc')
-    _packdir="usr/local/share/nvim/site/pack/coc/start/dictionary"
+    _packdir="usr/share/nvim/runtime/pack/coc/start/dictionary"
     provides=("neovim-coc-dictionary")
     conflicts=("neovim-coc-dictionary")
     cd "${srcdir}/coc-sources/packages/dictionary"
@@ -56,7 +56,7 @@ package_neovim-coc-dictionary-git() {
 package_neovim-coc-word-git() {
     pkgdesc='word source for coc.nvim'
     depends=('neovim-coc')
-    _packdir="usr/local/share/nvim/site/pack/coc/start/word"
+    _packdir="usr/share/nvim/runtime/pack/coc/start/word"
     provides=("neovim-coc-word")
     conflicts=("neovim-coc-word")
     cd "${srcdir}/coc-sources/packages/word"
@@ -67,7 +67,7 @@ package_neovim-coc-word-git() {
 package_neovim-coc-emoji-git() {
     pkgdesc='emoji source for coc.nvim'
     depends=('neovim-coc')
-    _packdir="usr/local/share/nvim/site/pack/coc/start/emoji"
+    _packdir="usr/share/nvim/runtime/pack/coc/start/emoji"
     provides=("neovim-coc-emoji")
     conflicts=("neovim-coc-emoji")
     cd "${srcdir}/coc-sources/packages/emoji"
