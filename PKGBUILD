@@ -1,7 +1,7 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 _variant='neovim'
 _extname=coc-flutter
-_packdir="usr/local/share/nvim/site/pack/coc/start/${_extname}"
+_packdir="usr/share/nvim/runtime/pack/coc/start/${_extname}"
 url='https://github.com/iamcco/coc-flutter'
 pkgdesc='flutter support for (Neo)vim'
 
