@@ -1,15 +1,14 @@
 pkgbase = infer-bin
 	pkgdesc = Infer is a static analysis tool for Java, C++, Objective-C, and C. Infer is written in OCaml.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/facebook/infer
 	arch = x86_64
 	license = MIT
-	depends = bash
 	depends = libc++abi
-	depends = python2
 	depends = java-environment
 	depends = ncurses5-compat-libs
+	options = !strip
 	source = https://github.com/facebook/infer/releases/download/v1.0.0/infer-linux64-v1.0.0.tar.xz
 	source = FailingTest.c
 	source = PassingTest.c
