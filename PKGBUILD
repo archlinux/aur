@@ -3,7 +3,7 @@
 
 pkgname=freeoffice-next
 _pkgname=freeoffice
-pkgver=980
+pkgver=982
 pkgrel=1
 pkgdesc="A complete, reliable, lightning-fast and Microsoft Office-compatible office suite with a word processor, spreadsheet, and presentation graphics software."
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=("http://www.softmaker.net/down/softmaker-${_pkgname}-${pkgver}-amd64.tgz
         "${_pkgname}-textmaker.desktop"
         "${_pkgname}-planmaker.desktop"
         "${_pkgname}-presentations.desktop")
-sha256sums=('7ed11bb682e69ae5665682f42848cf75adce487b42f449bef9f12965108defa6'	# softmaker-freeoffice-980-amd64.tgz
+sha256sums=('7aea197c06830d35f3a1a34b73f61d4e782b7938983818bbb06535eb518ff37c'	# softmaker-freeoffice-980-amd64.tgz
             '0437328f3fddf93e18ad3df270971802c2e0fcaf3f030588c1301767a968da69'	# freoffice-textmaker
             'c90e2575c71f03f0b627e4f6c70f437b9c40e5878bf9f553a4244b4a1f6dbd3c'	# freeoffice-planmaker
             'e6bc7608e58f44b55654c5d1fc93d442a400de638e2cbc6d5a3b3a8fbceaa0e4'	# freeoffice-presentations
