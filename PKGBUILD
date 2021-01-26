@@ -10,8 +10,6 @@ ubuntu_ver=20.04
 
 pkgbase=amdgpu-pro-installer
 pkgname=(
-amdgpu-core-meta
-amdgpu-pro-core-meta
 amf-amdgpu-pro
 amdgpu-pro-libgl
 lib32-amdgpu-pro-libgl
@@ -19,7 +17,7 @@ vulkan-amdgpu-pro
 lib32-vulkan-amdgpu-pro
 )
 pkgver=${major}_${minor}
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url=https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-20-30
 license=('custom: multiple')
@@ -66,27 +64,6 @@ move_copyright() {
     find ${pkgdir}/usr/share/doc -type d -empty -delete
 }
 
-package_amdgpu-core-meta () {
-    pkgdesc="Config file /etc/ld.so.conf.d/20-amdgpu.conf"
-    license=('MIT')
-    install=amdgpu-core-meta.install
-    arch=('any')
-
-    extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/amdgpu-core_${major}-${minor}_all.deb
-    move_copyright
-}
-
-package_amdgpu-pro-core-meta () {
-    pkgdesc="Config file /etc/ld.so.conf.d/10-amdgpu-pro.conf"
-    license=('custom: AMDGPU-PRO EULA')
-    install=amdgpu-pro-core-meta.install
-    arch=('any')
-    depends=("amdgpu-core-meta=${major}_${minor}-${pkgrel}")
-
-    extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/amdgpu-pro-core_${major}-${minor}_all.deb
-    move_copyright
-}
-
 package_amf-amdgpu-pro () {
     pkgdesc="AMDGPU Pro Advanced Multimedia Framework"
     license=('custom: AMDGPU-PRO EULA')
@@ -101,7 +78,7 @@ package_amdgpu-pro-libgl () {
     pkgdesc="AMDGPU Pro OpenGL driver"
     license=('custom: AMDGPU-PRO EULA')
     provides=('libgl')
-    depends=("amdgpu-pro-core-meta=${major}_${minor}-${pkgrel}" "libdrm" "libx11" "libxcb" "libxdamage" "libxext" "libxfixes" "libxxf86vm" "wayland")
+    depends=("libdrm" "libx11" "libxcb" "libxdamage" "libxext" "libxfixes" "libxxf86vm" "wayland")
     backup=(etc/amd/amdapfxx.blb)
 
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/libegl1-amdgpu-pro_${major}-${minor}_amd64.deb
@@ -118,7 +95,7 @@ package_lib32-amdgpu-pro-libgl () {
     pkgdesc="AMDGPU Pro OpenGL driver (32-bit)"
     license=('custom: AMDGPU-PRO EULA')
     provides=('lib32-libgl')
-    depends=("amdgpu-pro-core-meta=${major}_${minor}-${pkgrel}" "amdgpu-pro-libgl=${major}_${minor}-${pkgrel}" "lib32-libdrm" "lib32-libx11" "lib32-libxcb" "lib32-libxdamage" "lib32-libxext" "lib32-libxfixes" "lib32-libxxf86vm" "lib32-wayland")
+    depends=("amdgpu-pro-libgl=${major}_${minor}-${pkgrel}" "lib32-libdrm" "lib32-libx11" "lib32-libxcb" "lib32-libxdamage" "lib32-libxext" "lib32-libxfixes" "lib32-libxxf86vm" "lib32-wayland")
     backup=(etc/amd/amdrc etc/ld.so.conf.d/10-amdgpu-pro-i386.conf)
 
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/libegl1-amdgpu-pro_${major}-${minor}_i386.deb
