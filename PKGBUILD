@@ -2,7 +2,7 @@
 
 _name=libinstpatch
 pkgname=lib32-libinstpatch
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="Instrument file software library"
 arch=('x86_64')
@@ -12,7 +12,8 @@ depends=('lib32-glibc' "libinstpatch=${pkgver}")
 makedepends=('cmake' 'lib32-glib2' 'lib32-libsndfile' 'python')
 provides=('libinstpatch-1.0.so')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/swami/${_name}/archive/v${pkgver}.tar.gz")
-sha512sums=('162b71cb80915cbb1b7572b524f0eb5280c9e09c758c1d8dd660b2c3ab4a3da2a7d2372971ece14a8997fa7c2b016b2334dca41bb23bba20ae438550b14f35fa')
+sha512sums=('0e22165fc3c045bbc3ab2e1c090728232ed9142797ddbd067b682b9bcfee93850deb76c23b78f49a776e3d099be25fa029673ce8e4a909b2f48860dcdc55803c')
+b2sums=('c5881e6559a7fbcb40e1c43c7dbbfc1df9ac9445e83c70044855c192c3b04945ae125c0e06253ba76d3922a1f8fc6965810700ed57018864b319076ee9528d55')
 
 prepare() {
   mv -v "${_name}-$pkgver" "$pkgname-$pkgver"
