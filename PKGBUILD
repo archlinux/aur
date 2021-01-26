@@ -1,7 +1,7 @@
 # Maintainer: Jacqueline Fisher <jcfisher@reality-overwritten.net>
 
 pkgname="postybirb"
-pkgver=2.3.22
+pkgver=2.3.24
 pkgrel=1
 pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly."
 url="https://www.postybirb.com"
@@ -13,7 +13,7 @@ source=("$pkgname-v$pkgver.tar.gz::https://github.com/mvdicarlo/postybirb//archi
         "${pkgname%}.desktop"
         "${pkgname%}.sh"
         "buildOptimizer.patch")
-sha512sums=('303db6690a4493bdfddbad1927b9b0e29437c02902f1c0f04fc44fb6d68c998888cc7b7a213dc9aaeca38dd473d2b29701535a66ad70f500a4f1a7b4b68a9810'
+sha512sums=('7e61c7ab221b823c54926508d3266d4378e561776fe176cc5211f48284f867db16f7715e880a59bbf8ddec05e70139db1b1a74e682675b7ddcf23d0f470cc038'
             '313afe3d7f1ea7da37cfff24d3976fbc926739d76d03114dd7d237ff91221ccc5ab28fcb3d3ab14b31235bd0de20e07b39ba1f42caba7f22ae3a2278e75384fd'
             'a522c36c98a63a90d45bac44294f4efa6b420d0c6411de32177f35849ab416c2dfd1470c71441e017ecb514903f44cbb2e28b22ac75efa05141627836385057d'
             'b4d3f076bb676bd7ac874177d6b06bae54d647c1c540dc800d20c05e90dbb537f1f406ae299e0c682b305485c343a7149fbcfbac04d5b1425e5d3e1e13e175e6')
@@ -44,7 +44,7 @@ build() {
     sed -i '/"electron":/d' package.json
     HOME="$srcdir/.node-gyp" npm install
     sed -i "s|${srcdir}/${pkgname}-${pkgver}/electron/node_modules/sshpk|.|g" node_modules/sshpk/package.json
-    ./node_modules/.bin/electron-builder --linux --x64 --dir release -c.electronDist=$electronDist \
+    ./node_modules/.bin/electron-builder --linux --x64 --dir=release -c.electronDist=$electronDist \
          -c.electronVersion=$electronVer
 }
 
