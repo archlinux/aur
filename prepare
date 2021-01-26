@@ -27,9 +27,16 @@ _tkg_initscript() {
           echo "_basekernel=5.10" >> "$_path"/versel
           echo "_sub=${ver510}" >> "$_path"/versel
   elif [ -n "$_version" ];then
+      case "$_version" in
+		"5.10")
 		echo "_basever=510" > "$_path"/versel
 		echo "_basekernel=5.10" >> "$_path"/versel
 		echo "_sub=${ver510}" >> "$_path"/versel
+		;;
+		*)
+		error "There is something wrong with your kernel version selection, exiting..."
+		exit 1
+	esac
   fi
 
   # source versel early if present
