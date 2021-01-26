@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=python-semantic-release
-pkgver=7.12.0
+pkgver=7.13.1
 pkgrel=1
 pkgdesc="Automatic semantic versioning for Python projects"
 arch=('any')
@@ -19,7 +19,7 @@ depends=('python-click'
          'python-gitlab')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('5f1979286ef6cf2439de1c9b407ee966ff8ae6dffbd520646a28059fc3a33bc9306328821cf3361ef37a9e3aa6e58eae1037bca4f99b77898aaf5d4cc52cf43f')
+b2sums=('693b27f16aa231f6500fc0e1297b615479834198e309d292ae807ac6d3a061a8129d92ddce1fe42d30dfc3d24e7d6d49c2bfdac24ba0bb59d195a353585ea6da')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -32,5 +32,5 @@ package() {
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 
-  rm -rf "$pkgdir/usr/lib/"python*"/site-packages/tests"
+  rm -rf "$pkgdir"/usr/lib/python*/site-packages/tests
 }
