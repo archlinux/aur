@@ -16,16 +16,23 @@ sha512sums=('5ae1d095a8dc7e705d6beacd5ef2b583b0f275d2770ce30fdf6ae415d5d7f2b8e7f
             '0ef714c8063eaa3abe730015acbdb976dadb6acdfb583df35bcf9ef15b5a0d27e48f42fec579b416fe8552a85b721b1f7ba1915d507594d870fe411b40d78aaf')
 
 package() {
-    mkdir -p ${pkgdir}/{opt,usr/bin}
-    install -Dm644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
-    install -Dm644 ${pkgname}.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
-    rm ${pkgname}.desktop
-    rm ${pkgname}-${pkgver}.zip
-    rm ${pkgname}.png
-    cp -a . ${pkgdir}/opt/${pkgname}
-    cat > ${pkgdir}/usr/bin/thesage << EOF
+    cd "${pkgdir}"
+
+    install -dm755 "opt"
+    install -dm755 "usr/bin"
+
+    install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 "${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+
+    rm "${srcdir}/${pkgname}-${pkgver}.zip"
+    rm "${srcdir}/${pkgname}.desktop"
+    rm "${srcdir}/${pkgname}.png"
+
+    cp -a "${srcdir}/"* "${pkgdir}/opt/${pkgname}""
+
+    cat > "${pkgdir}/usr/bin/thesage" << EOF
 #!/bin/sh
 dotnet /opt/thesage/Burbridge.dll
 EOF
-    chmod +x ${pkgdir}/usr/bin/thesage
+    chmod +x "${pkgdir}/usr/bin/thesage"
 }
