@@ -1,0 +1,15 @@
+pkgbase = hunspell-fo
+	pkgdesc = Faroese hunspell dictionaries
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://fo.speling.org/
+	arch = any
+	license = GPL2
+	license = LGPL2.1
+	license = MPL
+	optdepends = hunspell: the spell checking libraries and apps
+	source = hunspell-fo-0.4.2.tar.gz::https://fo.speling.org/filer/myspell-fo-0.4.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = hunspell-fo
+
