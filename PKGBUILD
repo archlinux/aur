@@ -1,6 +1,6 @@
 # Maintainer: Walwe <aur@walwe.de>
 pkgname=md2pdf
-pkgver=v0.0.4.r0.g4ee08fd
+pkgver=v0.0.5.r0.g6946cdd
 pkgrel=1
 pkgdesc="A Python Markdown to PDF Converter"
 arch=('any')
