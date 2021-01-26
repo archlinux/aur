@@ -4,7 +4,7 @@
 pkgbase=docspell
 pkgname=('docspell-joex' 'docspell-restserver' 'docspell-tools')
 pkgver=0.19.0
-pkgrel=2
+pkgrel=3
 changelog=.CHANGELOG
 arch=('any')
 url="https://docspell.org/"
@@ -113,7 +113,7 @@ package_docspell-restserver() {
 makedepends+=('python')
 package_docspell-tools() {
     pkgdesc="Collection of tools to interact with Docspell"
-    depends=('python')
+    depends=('curl' 'inotify-tools' 'jq' 'python')
 
     cd "${pkgname[2]}-$pkgver" || return
 

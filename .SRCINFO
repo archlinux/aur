@@ -1,7 +1,7 @@
 pkgbase = docspell
 	pkgdesc = Assists in organizing your piles of documents, resulting from scanners, e-mails and other sources with miminal effort.
 	pkgver = 0.19.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://docspell.org/
 	changelog = .CHANGELOG
 	arch = any
@@ -46,5 +46,8 @@ pkgname = docspell-restserver
 
 pkgname = docspell-tools
 	pkgdesc = Collection of tools to interact with Docspell
+	depends = curl
+	depends = inotify-tools
+	depends = jq
 	depends = python
 
