@@ -6,21 +6,22 @@
 
 pkgname=quantlib
 _pkgname=QuantLib
-pkgver=1.20
+pkgver=1.21
 pkgrel=1
 pkgdesc="A free/open-source library for quantitative finance."
 arch=('x86_64')
 url="http://quantlib.org"
 license=('BSD')
 options=(!libtool)
-depends=('boost-libs' 'sh')
+depends=('boost-libs')
 makedepends=('make' 'boost' 'gcc')
 source=("Quantlib-$pkgver.tar.gz::https://bintray.com/quantlib/releases/download_file?file_path=$_pkgname-$pkgver.tar.gz")
-sha256sums=('af51fe73b88be67536aca68ce8aaa30f523a95cc369652a6071d66beef8708ff')
+sha256sums=('3d3296fb13f822de6b980692604e2b1ba0d1b45e0e32d67d80b4cc9725b87d1b')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"/
-  ./autogen.sh
+  autoupdate acinclude.m4 configure.ac
+  autoreconf
   ./configure --prefix=/usr --enable-intraday --enable-openmp --disable-static --enable-std-classes --enable-std-function
   make
 }
