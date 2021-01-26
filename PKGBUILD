@@ -5,7 +5,7 @@
 # Contributor: Hans Janssen <hans@janserv.xs4all.nl>
 
 pkgname=simgear
-pkgver=2020.3.5
+pkgver=2020.3.6
 _pkgver=${pkgver%.*}
 pkgrel=1
 pkgdesc="A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications."
@@ -15,15 +15,8 @@ license=('GPL')
 depends=('glu' 'glut' 'freealut' 'plib' 'openscenegraph')
 makedepends=('boost' 'cmake' 'mesa')
 options=('staticlibs')
-source=("https://downloads.sourceforge.net/project/flightgear/release-${_pkgver}/${pkgname}-${pkgver}.tar.bz2"
-        'fix-split-iterator.patch')
-sha256sums=('eb42497da30e13354098e8d08b72633dc9321b3452fcef15b98dfdd30c511c41'
-            '98d0601342dfcb9125cb3002666603b150450cd86b9a4c5b29d235ed8341aaa6')
-
-prepare() {
-  cd "$srcdir"/simgear-${pkgver}
-  patch -p1 -i ../fix-split-iterator.patch
-}
+source=("https://downloads.sourceforge.net/project/flightgear/release-${_pkgver}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('ec3eca44d21f7e052beafc1b9e2d57c16fbc1ad5f033abc967b57afd02c35669')
 
 build() {
   rm -rf "$srcdir"/simgear-build

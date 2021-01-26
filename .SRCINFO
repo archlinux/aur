@@ -1,6 +1,6 @@
 pkgbase = simgear
 	pkgdesc = A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications.
-	pkgver = 2020.3.5
+	pkgver = 2020.3.6
 	pkgrel = 1
 	url = http://home.flightgear.org/
 	arch = x86_64
@@ -14,10 +14,8 @@ pkgbase = simgear
 	depends = plib
 	depends = openscenegraph
 	options = staticlibs
-	source = https://downloads.sourceforge.net/project/flightgear/release-2020.3/simgear-2020.3.5.tar.bz2
-	source = fix-split-iterator.patch
-	sha256sums = eb42497da30e13354098e8d08b72633dc9321b3452fcef15b98dfdd30c511c41
-	sha256sums = 98d0601342dfcb9125cb3002666603b150450cd86b9a4c5b29d235ed8341aaa6
+	source = https://downloads.sourceforge.net/project/flightgear/release-2020.3/simgear-2020.3.6.tar.bz2
+	sha256sums = ec3eca44d21f7e052beafc1b9e2d57c16fbc1ad5f033abc967b57afd02c35669
 
 pkgname = simgear
 
