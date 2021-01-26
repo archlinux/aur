@@ -1,24 +1,25 @@
 # Maintainer: LightDot <lightdot -a-t- g m a i l>
 
 pkgname=teg
-pkgver=0.11.2
-pkgrel=2
+pkgver=0.12.0
+pkgrel=1
 pkgdesc="Tenes Empanadas Graciela (TEG) is a clone of a 'Plan Tactico y Estrategico de la Guerra' board game, a pseudo-clone of Risk, a multiplayer turn-based strategy game."
 arch=('x86_64')
 url="https://github.com/wfx/teg"
 license=('GPL2')
-depends=('libgnomeui>=2.18.1-2')
-makedepends=('intltool')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/wfx/teg/archive/0.11.2.tar.gz")
-md5sums=('55d08c1aebe4d04759c376a16dda7771')
+depends=('goocanvas')
+makedepends=('docbook-xsl' 'gettext' 'libedit' 'libtool' 'libxml2' 'xmlto')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wfx/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('51270b333265f396cfbbec33ed79ec9672acc62a7307a7625f6c7875c3100c13')
 
 build() {
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --with-readline
+	cd "${pkgname}-${pkgver}"
+	./autogen.sh
+	CFLAGS="$CFLAGS -fcommon" ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 	make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "${pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
 }
