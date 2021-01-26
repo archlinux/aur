@@ -9,7 +9,7 @@ license=('MIT')
 arch=('x86_64')
 provides=('cloudctl')
 source=("https://github.com/fi-ts/cloudctl/releases/download/v$pkgver/cloudctl-linux-amd64")
-md5sums=('e983cd96a5e009aca9914c5b3c4d3df2')
+md5sums=('d381b71c5321a7cd02a9693821ffe496')
 
 package() {
     install -Dm 755 "$srcdir/cloudctl-linux-amd64" "$pkgdir/usr/bin/cloudctl"
