@@ -17,6 +17,6 @@ package() {
     # Populate bash, zsh completions
     install -dm 755 "$pkgdir/usr/share/bash-completion/completions"
     install -dm 755 "$pkgdir/usr/share/zsh/site-functions"
-    "$pkgdir/usr/bin/metalctl" completion > "$pkgdir/usr/share/bash-completion/completions/metalctl"
-    "$pkgdir/usr/bin/metalctl" zsh-completion >  "$pkgdir/usr/share/zsh/site-functions/_metalctl"
+    "$pkgdir/usr/bin/metalctl" completion bash > "$pkgdir/usr/share/bash-completion/completions/metalctl"
+    "$pkgdir/usr/bin/metalctl" completion zsh >  "$pkgdir/usr/share/zsh/site-functions/_metalctl"
 }
