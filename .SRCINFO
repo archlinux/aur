@@ -7,7 +7,7 @@ pkgbase = python-ocp-git
 	license = Apache
 	makedepends = git
 	makedepends = clang
-	makedepends = python-joblib
+	makedepends = python-joblib>=1.0.0
 	makedepends = python-click
 	makedepends = python-pandas
 	makedepends = python-path

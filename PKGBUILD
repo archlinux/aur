@@ -14,7 +14,7 @@ opencascade
 makedepends=(
 git
 clang
-python-joblib
+"python-joblib>=1.0.0"
 python-click
 python-pandas
 python-path
