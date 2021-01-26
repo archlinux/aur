@@ -11,7 +11,7 @@ depends=('postgresql')
 builddepends=()
 makedepends=(git)
 options=(!emptydirs !libtool)
-source=('git://github.com/powa-team/pg_qualstats.git')
+source=('git+https://github.com/powa-team/pg_qualstats.git')
 md5sums=('SKIP')
 install='pg_qualstats-git.install'
 
