@@ -5,7 +5,7 @@
 # Contributor: Giorgio Azzinnaro <giorgio@azzinna.ro>
 pkgname=icaclient
 pkgver=20.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Citrix Workspace App for x86_64 (64bit) Linux (ICAClient, Citrix Receiver)"
 arch=('x86_64' 'i686' 'armv7h')
 url='https://www.citrix.com/downloads/workspace-app/linux/'
@@ -43,12 +43,15 @@ package() {
     if [[ $CARCH == 'i686' ]]
     then
         ICADIR="$srcdir/linuxx86/linuxx86.cor"
+        PKGINF="Ver.core.linuxx86"
     elif [[ $CARCH == 'x86_64' ]]
     then
         ICADIR="$srcdir/linuxx64/linuxx64.cor"
+        PKGINF="Ver.core.linuxx64"
     elif [[ $CARCH == 'armv7h' ]]
     then
         ICADIR="$srcdir/linuxarmhf/linuxarmhf.cor"
+        PKGINF="Ver.core.linuxarmhf"
     fi
 
     mkdir -p "${pkgdir}$ICAROOT"
@@ -74,6 +77,9 @@ package() {
     # Install License
     install -m644 -D nls/en.UTF-8/eula.txt \
       "${pkgdir}$ICAROOT/eula.txt"
+
+    # Install Version
+    install -m644 -D "${srcdir}/PkgId" "${pkgdir}$ICAROOT/pkginf/$PKGINF"
 
     # create /config/.server to enable user customization using ~/.ICACLient/ overrides. Thanks Tomek
     touch "${pkgdir}$ICAROOT/config/.server"
