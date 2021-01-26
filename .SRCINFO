@@ -1,4 +1,4 @@
-pkgbase = mingw-w64-paraview59
+pkgbase = mingw-w64-paraview
 	pkgdesc = Parallel Visualization Application using VTK (mingw-w64)
 	pkgver = 5.9.0
 	pkgrel = 1
@@ -30,8 +30,6 @@ pkgbase = mingw-w64-paraview59
 	depends = mingw-w64-libtheora
 	depends = mingw-w64-pugixml
 	depends = mingw-w64-gl2ps
-	provides = mingw-w64-paraview
-	conflicts = mingw-w64-paraview
 	options = !buildflags
 	options = !strip
 	options = staticlibs
@@ -42,5 +40,5 @@ pkgbase = mingw-w64-paraview59
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = mingw-w64-paraview59
+pkgname = mingw-w64-paraview
 
