@@ -8,13 +8,13 @@
 
 
 ## Helpful internal stuff
-_commit=1f4fa17372bd196e87042738a16ab08bf904bcbf
+_commit=6463e71605e2c6c2e1fcc67117a1c351ffa4a794
 _major=2
 _minor=26
-_build=4237
+_build=4261
 _revision=102
 _mozcver=${_major}.${_minor}.${_build}.${_revision}
-_utdicdate=20201229
+_utdicdate=20210123
 _utdicrel=1
 _kendate=202012
 _jugyosyodate=202012
@@ -32,11 +32,11 @@ makedepends=('clang' 'git' 'gtk2' 'ninja' 'pkgconf' 'python' 'python-six')
 conflicts=('mozc' 'mozc-ut' 'mozc-ut2' 'mozc-neologd-ut' 'mozc-neologd-ut+ut2' 'mozc-ut-unified' 'mozc-ut-united')
 provides=("mozc=${_mozcver}" "mozc-ut=${_mozcver}.${_utdicdate}")
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit}"
-        "https://osdn.net/downloads/users/27/27013/mozcdic-ut-${_utdicdate}.${_utdicrel}.tar.bz2"
+        "https://osdn.net/downloads/users/27/27430/mozcdic-ut-${_utdicdate}.${_utdicrel}.tar.bz2"
         "https://osdn.net/projects/ponsfoot-aur/storage/mozc/ken_all-${_kendate}.zip"
         "https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-${_jugyosyodate}.zip")
 sha256sums=('SKIP'
-            'd8f82541bc05b0c822f793cfa756f394db5084108848047a8663c06639ed0b12'
+            'fa4bf67e82a5c276115de85d77311b538bb915aa6b6a59f34d7cb33b8563b320'
             'f6c15add56af8ded9a5e66c0f6643d79c2f36733a879543528b4313e4e1a1d14'
             'c6eca7f6da19420ebc3e7d1b05bd15a838a1aa6c7bcf23e43ebd3c22a49cff1b')
 
