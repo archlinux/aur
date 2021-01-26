@@ -18,10 +18,12 @@ _tkg_initscript() {
     msg2 "Defaulting to Archlinux target\n"
     _distro="Arch"
   fi
-
+  
+  if [ -z "$_version" ] && [ ! -e "$_path"/versel ]; then
           echo "_basever=510" > "$_path"/versel
           echo "_basekernel=5.10" >> "$_path"/versel
           echo "_sub=${ver510}" >> "$_path"/versel
+  fi
 
   # source versel early if present
   if [ -e "${_path}"/versel ]; then
