@@ -7,12 +7,12 @@ makedepends=('cargo')
 depends=('gtk3' 'vte3' 'libhandy')
 arch=('x86_64')
 url="https://gitlab.com/Miridyan/terminal"
-source=("terminal-v$pkgver.tar.gz::https://gitlab.com/Miridyan/terminal/-/archive/v$pkgver/terminal-v$pkgver-$pkgrel.tar.gz")
+source=("terminal-v$pkgver-$pkgrel.tar.gz::https://gitlab.com/Miridyan/terminal/-/archive/v$pkgver-$pkgrel/terminal-v$pkgver-$pkgrel.tar.gz")
 license=('BSD')
 sha512sums=('8c8ce24b80f1793cea98b4fd084d2084531d3beae7298c69313f54e03c97ef9073fbd834e781829f34e6d14fa77c718e753eeb4e91ff991f05e9baa0ccfa4458')
 
 build() {
-    cd $srcdir/terminal-v$pkgver
+    cd $srcdir/terminal-v$pkgver-$pkgrel
     cargo build --release
 }
 
