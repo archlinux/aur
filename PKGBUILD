@@ -2,17 +2,18 @@
 
 _pkgname=jack-select
 pkgname="${_pkgname}-git"
-pkgver=1.5.0.r170.6bfa61d
+pkgver=1.5.1.r178.acb6cfa
 pkgrel=1
 pkgdesc="A systray app to set the JACK configuration from QjackCtl presets via DBus (git version)"
 arch=('any')
 url="https://github.com/SpotlightKid/${_pkgname}"
 license=('MIT')
-depends=('python-dbus' 'python-gobject' 'python-pyudev' 'python-setuptools' 'python-xdg')
+depends=('hicolor-icon-theme' 'jack2-dbus' 'python-dbus' 'python-gobject' 'python-pyudev'
+         'python-xdg')
 optdepends=(
     'a2jmidid: ALSA-MIDI to JACK bridge control'
 )
-makedepends=('git' 'python-docutils')
+makedepends=('git' 'python-docutils' 'python-setuptools')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/SpotlightKid/${_pkgname}")
