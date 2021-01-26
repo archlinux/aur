@@ -5,7 +5,7 @@
 
 # Maintainer: Jackson McCrory <jackson@mccrory.xyz>
 pkgname=st-jadecell-git
-pkgver=0.8.4.r.
+pkgver=0.8.4
 pkgrel=1
 epoch=
 pkgdesc="JadeCell's build of st patched for alpha, boxdraw, and more."
