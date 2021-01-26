@@ -11,7 +11,7 @@ depends=()
 builddepends=()
 makedepends=(git)
 options=(!emptydirs !libtool)
-source=('git://github.com/darold/pgformatter.git')
+source=('git+https://github.com/darold/pgformatter.git')
 md5sums=('SKIP')
 
 pkgver() {

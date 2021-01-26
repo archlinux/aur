@@ -9,7 +9,7 @@ pkgbase = pgformatter-git
 	makedepends = git
 	options = !emptydirs
 	options = !libtool
-	source = git://github.com/darold/pgformatter.git
+	source = git+https://github.com/darold/pgformatter.git
 	md5sums = SKIP
 
 pkgname = pgformatter-git
