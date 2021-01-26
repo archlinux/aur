@@ -5,7 +5,7 @@ post_install() {
 
 	echo ">>> DKMS: Module add, build, and install"
 
-	if line=$(dkms status -m $MODNAME)
+    line=$(dkms status -m $MODNAME)
 		dkms add -m $MODNAME -v $MODVER
 	fi
 
