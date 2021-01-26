@@ -1,6 +1,10 @@
 
-[2020-12-29]
-* integrate kopano-vmime
+[2021-01-04]
+* -git/master-packages
 
-[2021-01-20]
-* handle git builds
+[2021-01-22]
+* changes from 20201207
+
+[2021-01-26]
+* Fixed build with ICU 68.2-1
+* add build hooks

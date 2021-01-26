@@ -22,11 +22,10 @@ _tagPrefix="v"
 #_tagSuffix=""
 
 _basePkgName="${pkgname//-git/}"
-
 if [[ "${pkgname}" == *-git ]];
 then
     # Version can't be set before pkgver has run
-    provides+=("${pkgname//-git/}=${pkgver}")
+    provides+=("${_basePkgName}=${pkgver}")
 fi
 
 _gitLogByDay() {
@@ -71,6 +70,7 @@ pkgver() {
 
 _sourceBranch=$(if [[ "${pkgname}" == *-git ]]; then echo "#branch=master"; else echo "#tag=${_tagPrefix}${pkgver}${_tagSuffix}"; fi)
 # template end;
+
 conflicts=(
     'zarafa-libvmime'
 	  )
