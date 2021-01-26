@@ -1,0 +1,82 @@
+#!/bin/bash
+if [ $1 ]; 
+then
+    echo koffe is a tool for making simple and intuitive offline archlinux installers with support for most packages, package group or aur packages.
+fi
+if [ $(whoami) != root ];
+then
+    echo the program needs to be ran as root, no further warnings will be issued
+fi
+if [ $(whoami) == root ];
+then
+    whouser=$(who | cut -f 1 -d ' ')
+    cp /usr/share/koffe/* /usr/share/archiso/configs/releng/airootfs/root/
+    echo '' > /usr/share/archiso/configs/releng/airootfs/root/install.list
+    pacman -Sy
+    mkdir /tmp/koffe/
+    mkdir /tmp/koffe/l/
+    mkdir /tmp/koffe/n/
+    mkdir /tmp/koffe/aur/
+    mkdir /tmp/koffe/aurbg/
+    mkdir /usr/share/archiso/configs/releng/airootfs/root/pkg/
+    mkdir ~/koffeiso
+    mkdir ~/out
+    rm -rf /var/cache/pacman/pkg/*
+    pactree -u -s libnewt > /tmp/koffe/n/libnewt
+    pacman -Sp --noconfirm - < /tmp/koffe/n/libnewt > /tmp/koffe/l/libnewt
+    echo libnewt >> /usr/share/archiso/configs/releng/airootfs/root/install.list
+    declare -a prog
+    prog=$(whiptail --inputbox "Please enter all the programs to be included in the installer separated by a space, you can also include package groups like gnome or xorg" 0 0 4 3>&1 1>&2 2>&3 3>&-)
+    for app in $prog
+    do
+        variable=$(pacman -Sg $app)
+        if [[ $variable == '' ]];
+        then
+            #base
+            pactree -u -s $app > /tmp/koffe/n/$app
+            pacman -Sp --noconfirm - < /tmp/koffe/n/$app > /tmp/koffe/l/$app
+            echo $app >> /usr/share/archiso/configs/releng/airootfs/root/install.list
+            wget -nc -i /tmp/koffe/l/$app -P /usr/share/archiso/configs/releng/airootfs/root/pkg/
+        fi
+        if [[ $variable != '' ]];
+        then
+            #gnome
+            pacman -Sg $app > /tmp/koffe/generaltemp
+            cut -f 2- -d ' ' /tmp/koffe/generaltemp > /tmp/koffe/grlist
+            grlist=$(cat /tmp/koffe/grlist)
+            echo '' > /tmp/koffe/grtree
+            for component in $grlist
+            do
+                pactree -s -u $component >> /tmp/koffe/grtree
+                echo $component >> /usr/share/archiso/configs/releng/airootfs/root/install.list
+            done
+            pacman -Sp --noconfirm - < /tmp/koffe/grtree > /tmp/koffe/grlinks
+            wget -nc -i /tmp/koffe/grlinks -P /usr/share/archiso/configs/releng/airootfs/root/pkg/
+        fi
+    done
+    aurpacs=$(whiptail --inputbox "Please enter all aur packages to be included in the install" 0 0 4 3>&1 1>&2 2>&3 3>&-)
+    for aurapp in $aurpacs
+    do
+        git clone https://aur.archlinux.org/$aurapp /tmp/koffe/aurbg/$aurapp
+        chown -hR $whouser /tmp/koffe/
+        cd /tmp/koffe/aurbg/$aurapp
+        sudo -u $whouser makepkg --noconfirm
+        cp /tmp/koffe/aurbg/$aurapp/*.pkg.tar.zst /usr/share/archiso/configs/releng/airootfs/root/pkg
+        echo $aurapp >> /usr/share/archiso/configs/releng/airootfs/root/install.list
+        declare -a bb
+        bb=$(cat /tmp/koffe/aurbg/$aurapp/PKGBUILD | grep depends= | cut -f 2 -d '=' | cut -c 2- | rev | cut -c 2- | rev | sed -r 's/(\x27|&|\[|\])/\ /g' | cut -f 1 -d '>' | cut -f 1 -d ':')
+        bb=$bb' '$(cat /tmp/koffe/aurbg/$aurapp/PKGBUILD | grep depends_x86_64= | cut -f 2 -d '=' | cut -c 2- | rev | cut -c 2- | rev | sed -r 's/(\x27|&|\[|\])/\ /g' | cut -f 1 -d '>' | cut -f 1 -d ':')
+        bb=$bb' '$(cat /tmp/koffe/aurbg/$aurapp/PKGBUILD | grep depends_i686= | cut -f 2 -d '=' | cut -c 2- | rev | cut -c 2- | rev | sed -r 's/(\x27|&|\[|\])/\ /g' | cut -f 1 -d '>' | cut -f 1 -d ':')
+        for depend in $bb
+        do
+            pactree -u -s $depend > /tmp/koffe/n/$depend
+            pacman -Sp --noconfirm - < /tmp/koffe/n/$depend > /tmp/koffe/l/$depend
+            wget -nc -i /tmp/koffe/l/$depend -P /usr/share/archiso/configs/releng/airootfs/root/pkg/
+        done
+    done
+    mkarchiso -v -w ~/koffeiso -o ~/out /usr/share/archiso/configs/releng
+    rm -rf ~/koffeiso
+    rm -rf /usr/share/archiso/configs/releng/airootfs/root/*
+    rm -rf /tmp/koffe/
+fi
+      
