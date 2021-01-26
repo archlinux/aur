@@ -133,7 +133,6 @@ _tkg_initscript() {
 
   source "${_path}"/cpuschedset
   source "${_path}"/compilerset
-  source "${_path}"/versel
 }
 
 user_patcher() {
