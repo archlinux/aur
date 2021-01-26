@@ -5,7 +5,7 @@ _gitname=onboarding
 _author=elementary
 pkgname=pantheon-${_gitname}
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Onboarding app for new users in Pantheon Shell"
 arch=('any')
 url="https://github.com/${_author}/${_gitname}"
@@ -16,7 +16,7 @@ makedepends=('meson' 'vala')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=("b294802fa35efd968e347ca1acff3b6bf79d668d7be5cf1a93462c9335ebae52")
+sha256sums=("37edf0d48004b9e061e7998c899f44f3df4dc0848b9c362b368c73c84177d988")
 
 build() {
     cd "${_gitname}-${pkgver}/"
