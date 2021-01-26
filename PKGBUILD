@@ -26,7 +26,11 @@ _tkg_initscript
 #kernel_site="git+https://github.com/koverstreet/bcachefs.git"
 #patch_site="https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${_basekernel}.${_sub}.xz"
 
-pkgbase="${_custom_pkgbase}"
+if [ -n "$_custom_pkgbase" ]; then
+  pkgbase="${_custom_pkgbase}"
+else
+  pkgbase=linux"${_basever}"-tkg-"${_cpusched}"${_compiler_name}
+fi
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver="${_basekernel}"."${_sub}"
 pkgrel=115
@@ -41,8 +45,6 @@ fi
 optdepends=('schedtool')
 options=('!strip' 'docs')
 
-case $_basever in
-	510)
 	opt_ver="5.8%2B"
     source=("$kernel_site"
         "$patch_site"
@@ -101,8 +103,6 @@ case $_basever in
             '49262ce4a8089fa70275aad742fc914baa28d9c384f710c9a62f64796d13e104'
             '105f51e904d80f63c1421203e093b612fc724edefd3e388b64f8d371c0b3a842'
             'cf7c758604f2a99cfcb65129c436e32e2ef7a80fe486f8e55a2206a955acc40a')
-	;;
-esac
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

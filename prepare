@@ -23,6 +23,10 @@ _tkg_initscript() {
           echo "_basever=510" > "$_path"/versel
           echo "_basekernel=5.10" >> "$_path"/versel
           echo "_sub=${ver510}" >> "$_path"/versel
+  elif [ -n "$_version" ];then
+		echo "_basever=510" > "$_path"/versel
+		echo "_basekernel=5.10" >> "$_path"/versel
+		echo "_sub=${ver510}" >> "$_path"/versel
   fi
 
   # source versel early if present
