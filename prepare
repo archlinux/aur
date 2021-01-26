@@ -13,104 +13,14 @@ _tkg_initscript() {
     source "$_EXT_CONFIG_PATH" && msg2 "External configuration file $_EXT_CONFIG_PATH will be used to override customization.cfg values.\n"
   fi
 
-  # Default to Arch
-  if [ -z "$_distro" ] || [ "$_ispkgbuild" = "true" ]; then
-    msg2 "Defaulting to Archlinux target\n"
-    _distro="Arch"
-  fi
-
-  # create build dir early
-  if [ "$_distro" = "Void" ]; then
-    _path="${XBPS_BUILDDIR}/${wrksrc}"
-  else
-    _path="${_where}"
-  fi
-
-  if [ -z "$_version" ] && [ ! -e "$_path"/versel ]; then
-    plain "Which kernel version do you want to install?"
-    read -rp "`echo $'    1. 5.4 LTS\n    2. 5.7\n    3. 5.8\n    4. 5.9\n  > 5. 5.10\n    6. 5.11 RC\nchoice[1-6?]'`" _VERSEL;
-    case $_VERSEL in
-          "1")
-          echo "_basever=54" > "$_path"/versel
-          echo "_basekernel=5.4" >> "$_path"/versel
-          echo "_sub=${ver54}" >> "$_path"/versel
-          ;;
-          "2")
-          echo "_basever=57" > "$_path"/versel
-          echo "_basekernel=5.7" >> "$_path"/versel
-          echo "_sub=${ver57}" >> "$_path"/versel
-          ;;
-          "3")
-          echo "_basever=58" > "$_path"/versel
-          echo "_basekernel=5.8" >> "$_path"/versel
-          echo "_sub=${ver58}" >> "$_path"/versel
-          ;;
-          "4")
-          echo "_basever=59" > "$_path"/versel
-          echo "_basekernel=5.9" >> "$_path"/versel
-          echo "_sub=${ver59}" >> "$_path"/versel
-          ;;
-          "6")
-          echo "_basever=511" > "$_path"/versel
-          echo "_basekernel=5.11" >> "$_path"/versel
-          echo "_sub=${ver511}" >> "$_path"/versel
-          ;;
-          *)
           echo "_basever=510" > "$_path"/versel
           echo "_basekernel=5.10" >> "$_path"/versel
           echo "_sub=${ver510}" >> "$_path"/versel
-          ;;
-    esac
-  elif [ -n "$_version" ];then
-    case "$_version" in
-		"5.4")
-		echo "_basever=54" > "$_path"/versel
-		echo "_basekernel=5.4" >> "$_path"/versel
-		echo "_sub=${ver54}" >> "$_path"/versel
-		;;
-		"5.7")
-		echo "_basever=57" > "$_path"/versel
-		echo "_basekernel=5.7" >> "$_path"/versel
-		echo "_sub=${ver57}" >> "$_path"/versel
-		;;
-		"5.8")
-		echo "_basever=58" > "$_path"/versel
-		echo "_basekernel=5.8" >> "$_path"/versel
-		echo "_sub=${ver58}" >> "$_path"/versel
-		;;
-		"5.9")
-		echo "_basever=59" > "$_path"/versel
-		echo "_basekernel=5.9" >> "$_path"/versel
-		echo "_sub=${ver59}" >> "$_path"/versel
-		;;
-		"5.10")
-		echo "_basever=510" > "$_path"/versel
-		echo "_basekernel=5.10" >> "$_path"/versel
-		echo "_sub=${ver510}" >> "$_path"/versel
-		;;
-		"5.11")
-		echo "_basever=511" > "$_path"/versel
-		echo "_basekernel=5.11" >> "$_path"/versel
-		echo "_sub=${ver511}" >> "$_path"/versel
-		;;
-		*)
-		error "There is something wrong with your kernel version selection, exiting..."
-		exit 1
-	esac
-  fi
 
   # source versel early if present
   if [ -e "${_path}"/versel ]; then
     source "${_path}"/versel
   fi
-
- # if [ "$_distro" != "Void" ]; then
- #   cp "$_where"/${_basekernel}/* "$_where" # copy patches inside the PKGBUILD's dir to preserve makepkg sourcing and md5sum checking
- #   cp "$_where"/${_basekernel}/* "$_where" # copy config files and hooks inside the PKGBUILD's dir to preserve makepkg sourcing and md5sum checking
- # else
- #   cp "$_where"/${_basekernel}/* "$_path"
- #   cp "$_where"/${_basekernel}/* "$_path"
- # fi
 
   if [ -z "$_OPTIPROFILE" ] && [ ! -e "$_path"/cpuschedset ]; then
     # Prompt about optimized configurations. Available variable values will overwrite customization.cfg/external config ones.
@@ -204,11 +114,6 @@ _tkg_initscript() {
   fi
   if [ -n "$_custom_pkgbase" ]; then
     echo "_custom_pkgbase=\"${_custom_pkgbase}\"" >> "${_path}"/cpuschedset
-  fi
-
-  if [ "$_basever" = "511" ] && [ "$_cpusched" != "cfs" ]; then
-    warning "No support for alternative CPU schedulers on this kernel version. Defaulting to CFS."
-    echo "_cpusched=\"cfs\"" > "${_path}"/cpuschedset
   fi
 
   case $_compileroptlevel in
@@ -324,10 +229,6 @@ _tkg_patcher() {
 
 _tkg_srcprep() {
 
-  if [ "${_distro}" = "Void" ] && [ -e ${srcdir}/sum_failed ]; then
-    exit 1
-  fi
-
   if [ "${_distro}" = "Arch" ]; then
     msg2 "Setting version..."
     scripts/setlocalversion --save-scmversion
@@ -348,13 +249,6 @@ _tkg_srcprep() {
     else
       tkgpatch="$srcdir/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch" && _tkg_patcher
     fi
-  fi
-
-  # Void
-  if [ "$_distro" = "Void" ] && [[ "$_sub" = rc* ]]; then
-    cd ${wrksrc}/linux-${_rc_kern_ver}
-  elif [ "$_distro" = "Void" ]; then
-    cd ${wrksrc}/linux-${_kern_ver}
   fi
 
   # graysky's cpu opts - https://github.com/graysky2/kernel_gcc_patch
@@ -390,15 +284,8 @@ _tkg_srcprep() {
   fi
 
   # prjc/bmq patch rev
-  if [ "$_basever" = "58" ] || [ "$_basever" = "57" ]; then
-    rev=3
-  elif [ "$_basever" = "59" ]; then
-    rev=3
-  elif [ "$_basever" = "510" ]; then
+  if [ "$_basever" = "510" ]; then
     rev=2
-  else
-    rev=0
-  fi
 
   if [ "${_cpusched}" = "MuQSS" ]; then
     # MuQSS
@@ -459,12 +346,6 @@ _tkg_srcprep() {
   elif [ "${_cpusched}" = "cfs" ]; then
     msg2 "Applying Glitched CFS patch"
     tkgpatch="$srcdir/0003-glitched-cfs.patch" && _tkg_patcher
-  fi
-
-  if [ "$_distro" = "Void" ] && [[ "$_sub" = rc* ]]; then
-    cd ${wrksrc}/linux-${_rc_kern_ver}
-  elif [ "$_distro" = "Void" ] && [[ "$_sub" != rc* ]]; then
-    cd ${wrksrc}/linux-${_kern_ver}
   fi
 
   if [ "${_distro}" = "Arch" ] || [ "$_distro" = "Void" ]; then
@@ -1272,14 +1153,6 @@ exit_cleanup() {
   rm -f "$_where"/cpuschedset
   rm -f "$_where"/compilerset
   rm -f "$_where"/versel
-
-  # Remove temporarily copied files
-#  rm -rf "$_where"/*.patch
-#  rm -rf "$_where"/*-profile.cfg
-#  rm -f "$_where"/config*
-#  rm -f "$_where"/*.hook
-#  rm -f "$_where"/cleanup
-#  rm -f "$_where"/prepare
 
   # Community patches removal in case of failure
   for _p in ${_community_patches[@]}; do
