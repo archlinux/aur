@@ -1,6 +1,6 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=terminate
-pkgver=0.3.4
+pkgver=0.4.0
 pkgrel=0
 pkgdesc="Minimal terminal emulator based on VTE"
 arch=("x86_64")
@@ -11,7 +11,7 @@ makedepends=("gcc" "meson" "ninja" "scdoc")
 provides=("${pkgname}")
 backup=("etc/terminate/config")
 source=("https://git.sr.ht/~craftyguy/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('8779d46480dfeed083ebe8d153e69889aa7f7d2106fb9b8babee9d1363322e6f679374cf948b5440445629d39778af032453d9fa9d1531b537cc56f3c0aff128')
+sha512sums=('9e21e57e5a89aaaa5a70ad345497261bb004f3937e4ef16a5560314e5f1bdb5530df16d0eabe9e796ff674462ec5895c7b4a7e88e739dc3facd3a48c38f48057')
 
 build() {
         cd "${srcdir}/${pkgname}-${pkgver}"
