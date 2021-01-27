@@ -1,5 +1,5 @@
 pkgname=python-ccxt
-pkgver=1.40.98
+pkgver=1.41.5
 pkgrel=1
 pkgdesc="A JavaScript / Python / PHP cryptocurrency trading library with support for 130+ exchanges"
 arch=(any)
@@ -10,7 +10,7 @@ makedepends=("python-pip")
 
 
 build() {
-  pip install --no-deps --target="ccxt" ccxt==1.40.98
+  pip install --no-deps --target="ccxt" ccxt==1.41.5
 }
 package() {
   sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
