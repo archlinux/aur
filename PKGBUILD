@@ -37,7 +37,7 @@ build() {
   # touch files needed by GNU Autotools
   touch NEWS AUTHORS ChangeLog
 
-  autoreconf -i
+  # autoreconf -i
   ./configure --prefix=/usr
   make
 }
