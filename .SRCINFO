@@ -1,7 +1,7 @@
 pkgbase = jelly-git
 	pkgdesc = An esoratic programming language
-	pkgver = r272.1075e4e
-	pkgrel = 2
+	pkgver = r319.70c9fd9
+	pkgrel = 1
 	url = http://github.com/DennisMitchell/jelly
 	arch = any
 	license = MIT
