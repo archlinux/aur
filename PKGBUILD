@@ -4,14 +4,14 @@
 
 pkgname=heroku-cli
 pkgver=7.47.11
-pkgrel=1
+pkgrel=2
 _builddir=cli-$pkgver-$pkgrel
 pkgdesc="CLI to manage Heroku apps and services with forced auto-update removed"
 arch=('any')
 url="https://devcenter.heroku.com/articles/heroku-cli"
 license=('custom' 'ISC')
 depends=('nodejs')
-makedepends=('npm' 'perl')
+makedepends=('npm' 'yarn' 'perl')
 optdepends=('git: Deploying to Heroku')
 conflicts=('heroku-cli-bin' 'heroku-client-standalone' 'heroku-toolbelt' 'ruby-heroku')
 source=("https://github.com/heroku/cli/archive/v$pkgver.tar.gz")
@@ -44,12 +44,6 @@ prepare() {
     pushd "cli-$pkgver"
 
       # install packaging tools; install fails now unless installed with yarn >:(
-      hasYarn="$(which yarn 2> /dev/null)"
-
-      if [ -z "$hasYarn" ]; then
-        npm install -g yarn
-      fi
-
       yarn install
 
       pushd packages/cli
