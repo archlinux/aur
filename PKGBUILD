@@ -19,7 +19,7 @@ source=('git+https://github.com/EionRobb/purple-rocketchat')
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_reponame"
+    cd "$srcdir/$_pkgname"
     printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
