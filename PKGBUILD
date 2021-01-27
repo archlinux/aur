@@ -4,7 +4,7 @@
  
 _PkgName=SU2
 pkgname=su2
-pkgver=7.0.8
+pkgver=7.1.0
 pkgrel=1
 pkgdesc="An Open-Source Suite for Multiphysics Simulation and Design"
 url="https://su2code.github.io"
@@ -13,12 +13,12 @@ depends=('openmpi' 'python')
 makedepends=('gcc-fortran')
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/su2code/SU2/archive/v$pkgver.tar.gz")
-sha256sums=('53b6d417e17ff4290a871257b2739a3d9bcd701d37c69e85397efedac93ba17f')
+sha256sums=('deb0abcb10e23a6a41a46c1a2117c4331d68cf97c2fa9c02e10e918973e1c0e7')
 
 prepare() {
     cd "$srcdir/$_PkgName-$pkgver"
     autoreconf -if
-    PYTHON_VERSION=$( python --version ) | awk '{print $2}' | cut -c -3
+    export PYTHON_VERSION=$( ( python --version ) | awk '{print $2}' | cut -c -3 )
 }
 
 build() {
@@ -32,5 +32,5 @@ package() {
     make DESTDIR="$pkgdir" install
     install -dm755 "$pkgdir/usr/lib/python${PYTHON_VERSION}/site-packages"
     cd "$pkgdir/usr/bin"
-    mv *.py FSI SU2 -t "$pkgdir/usr/lib/python${PYTHON_VERSION}/site-packages"
+    mv SU2 -t "$pkgdir/usr/lib/python${PYTHON_VERSION}/site-packages"
 }
