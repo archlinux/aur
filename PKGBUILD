@@ -1,4 +1,4 @@
-# Maintainer: Tobi Fuhrimann
+# Maintainer: Lena Fuhrimann
 
 pkgname=pacmanfile
 pkgver=0.0.3
