@@ -1,0 +1,23 @@
+pkgbase = raspberry-pico-sdk-git
+	pkgdesc = Raspberry Pico SDK
+	pkgver = 1.0.0.r3.g0f3b795
+	pkgrel = 1
+	url = https://github.com/raspberrypi/pico-sdk
+	install = pico-sdk.install
+	arch = any
+	license = BSD-3
+	makedepends = git
+	depends = arm-none-eabi-binutils
+	depends = arm-none-eabi-gcc
+	depends = arm-none-eabi-newlib
+	depends = cmake
+	optdepends = arm-none-eabi-gdb
+	source = git+https://github.com/raspberrypi/pico-sdk
+	source = pico-sdk.sh
+	source = pico-sdk.csh
+	sha256sums = SKIP
+	sha256sums = 8610406fc529818eb2f67163e19a7204cda36f8cd7ed77fb4a65154918de3acb
+	sha256sums = 5d795a2d5de6046ad4bf196c912da4683e62779cac8dbcf90f20733470810e34
+
+pkgname = raspberry-pico-sdk-git
+
