@@ -2,7 +2,7 @@
 
 pkgname=libwb-git
 pkgver=20191031
-pkgrel=1
+pkgrel=2
 pkgdesc="library for CUDA teaching used by webgpu.com"
 arch=('x86_64')
 license=('MIT')
@@ -29,7 +29,8 @@ build() {
 package() {
   install -Dm644 "${srcdir}"/libwb/LICENSE.TXT "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
   install -Dm755 "${srcdir}"/libwb/libwb.so "${pkgdir}"/usr/lib/libwb.so
-  mkdir -p "${pkgdir}"/usr/include/libwb
+  mkdir -p "${pkgdir}"/usr/include/libwb/vendor
   cp -pv "${srcdir}"/libwb/*.h "${pkgdir}"/usr/include/libwb/
+  cp -pv "${srcdir}"/libwb/vendor/*.hpp "${pkgdir}"/usr/include/libwb/vendor/
   chmod -R 644 "${pkgdir}"/usr/include/libwb/*.h
 }

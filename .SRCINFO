@@ -1,7 +1,7 @@
 pkgbase = libwb-git
 	pkgdesc = library for CUDA teaching used by webgpu.com
 	pkgver = 20191031
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = MIT
 	makedepends = git
