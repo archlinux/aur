@@ -4,15 +4,20 @@ post_install() {
   chown -R anki-sync-server /opt/anki-sync-server
   chgrp -R anki-sync-server /opt/anki-sync-server
 
+  # install prerequisites as stated on the website
+  echo "installing python packages as anki-sync-server user..."
+  sudo -u anki-sync-server pip install -r /opt/anki-sync-server/requirements.txt --user --no-warn-script-location
+
+  append_nginx_config
+
+  #start nginx
+  systemctl enable nginx
+  systemctl start nginx
+
   # link systemd service file
   ln -s /opt/anki-sync-server/plugins/systemd/anki-sync-server.service /etc/systemd/system/
   systemctl enable anki-sync-server
   systemctl start anki-sync-server
-
-  # install prerequisites as stated on the website
-  echo "installing python packages as anki-sync-server user..."
-  sudo -u anki-sync-server pip install webob --user
-  sudo -u anki-sync-server pip install decorator --user
 
   # post installation instructions
   cat << EOF
@@ -36,8 +41,12 @@ Plugin Installation:
 To have anki interface with the server, you'll need to copy the plugin
 from /opt/anki-sync-server/plugins to the relevant directory.
 
+Anki 2.1.28 (and up): ~/.local/share/Anki/addons21
+    ln -s /opt/anki-sync-server/plugins/anki2.1.28/anki-sync-server \\
+        ~/.local/share/Anki2/addons21/
+
 Anki 2.1: ~/.local/share/Anki2/addons21/
-    ln -s /opt/anki-sync-server/plugins/anki2.1/ankisyncd \\
+    ln -s /opt/anki-sync-server/plugins/anki2.1/anki-sync-server \\
         ~/.local/share/Anki2/addons21/
 
 Anki 2.0: ~/Anki/addons
@@ -49,7 +58,15 @@ or your OS equivalent.
 ---------------
 Run The Server:
 ---------------
-To just run the server, go to:
+The server should be set to auto start via systemctl and should be already running.
+See:
+
+    systemctl status anki-sync-server
+    systemctl status nginx
+
+for details.
+
+Otherwise, to run the server go to:
 
     /opt/anki-sync-server/
 
@@ -57,35 +74,19 @@ then run:
 
     sudo -u anki-sync-server python -m ankisyncd
 
-if you run it as another user you may have to install some dependencies again:
+if you run it as another user you may have to install the dependencies again:
 
-  sudo pacman -S python2-webob python2-decorator
-
-or:
-
-  pip install --user webob decorator
+  pip install -r /opt/anki-sync-server/requirements.txt [--user]
 
 === (be aware you may have trouble with permissions on your auth.db if you run as different users!) ===
 
-The server is set to auto start via systemctl.
-See:
+-----
+NGINX
+-----
+/etc/nginx/nginx.conf has been modified and a backup has been saved to /etc/nginx/nginx.conf.pacsave.  It would be a good idea to diff to see if anything has gone awry.
 
-    systemctl status anki-sync-server
+nginx.service is set to autostart.
 
-for details.
-
-------------------------
-Run Bundled Anki Client:
-------------------------
-If you want to run the supplied anki client execute:
-
-    /opt/anki-sync-server/anki-bundled/runanki
-
-You'll need to install the listed requirements to get it running first. You can run the file
-
-    sh install_anki_bundled.sh
-
-to do that.
 =======================================================================
 EOF
 }
@@ -112,40 +113,46 @@ pre_upgrade(){
 
   cd "/opt/anki-sync-server"
 
-  auth="auth.db"
-  coll="collections"
-  sess="session.db"
+  local _auth_="auth.db"
+  local _coll_="collections"
+  local _sess_="session.db"
 
-  if [ -f "${auth}" ]; then
-    sudo mv -v "${auth}" "${auth}.BAK"
+  if [ -f "${_auth_}" ]; then
+    sudo mv -v "${_auth_}" "${_auth_}.BAK"
   fi
 
-  if [ -d "${coll}" ]; then
-    sudo mv -v "${coll}" "${coll}.BAK"
+  if [ -d "${_coll_}" ]; then
+    sudo mv -v "${_coll_}" "${_coll_}.BAK"
   fi
 
-  if [ -f "${sess}" ]; then
-    sudo mv -v "${sess}" "${sess}.BAK"
+  if [ -f "${_sess_}" ]; then
+    sudo mv -v "${_sess_}" "${_sess_}.BAK"
   fi
 }
 
 post_upgrade(){
+  # install prerequisites as stated on the website
+  echo "installing python packages as anki-sync-server user..."
+  sudo -u anki-sync-server pip install -r /opt/anki-sync-server/requirements.txt --user
+
+  append_nginx_config
+
   cd "/opt/anki-sync-server"
 
-  auth="auth.db"
-  coll="collections"
-  sess="session.db"
+  local _auth_="auth.db"
+  local _coll_="collections"
+  local _sess_="session.db"
 
-  if [ -f "${auth}.BAK" ]; then
-    sudo mv -v "${auth}.BAK" "${auth}"
+  if [ -f "${_auth_}.BAK" ]; then
+    sudo mv -v "${_auth_}.BAK" "${_auth_}"
   fi
 
-  if [ -d "${coll}.BAK" ]; then
-    sudo mv -v "${coll}.BAK" "${coll}"
+  if [ -d "${_coll_}.BAK" ]; then
+    sudo mv -v "${_coll_}.BAK" "${_coll_}"
   fi
 
-  if [ -f "${sess}.BAK" ]; then
-    sudo mv -v "${sess}.BAK" "${sess}"
+  if [ -f "${_sess_}.BAK" ]; then
+    sudo mv -v "${_sess_}.BAK" "${_sess_}"
   fi
 
   sudo chown -R anki-sync-server /opt/anki-sync-server
@@ -155,4 +162,21 @@ post_upgrade(){
   sudo systemctl daemon-reload
   echo "starting anki-sync-server.service..."
   sudo systemctl start anki-sync-server
+  echo "starting nginx..."
+  sudo systemctl start nginx
+}
+
+function append_nginx_config() {
+  # append nginx config to nginx config file
+  echo "appending nginx server config to /etc/nginx/nginx.conf"
+  local _config_dir_="/etc/nginx/"
+  local _pacsave_="${_config_dir_}/nginx.conf.pacsave"
+  local _config_="${_config_dir_}/nginx.conf"
+  if [ ! $(grep "anki-sync-server-request-unchunker" "${_config_}") ]; then
+    sudo cp "${_config_}" "${_pacsave_}"
+    sudo awk -f /opt/anki-sync-server/plugins/nginx/append.awk \
+      "${_pacsave_}" > "${_config_}"
+  else
+    echo "nginx config aleady updated!"
+  fi
 }
