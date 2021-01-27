@@ -1,0 +1,11 @@
+post_install() {
+  /usr/bin/groupadd sensu
+  /usr/bin/useradd -s /sbin/nologin -d /opt/sensu -G sensu sensu
+  /usr/bin/systemctl restart sensu-agent.service
+}
+
+post_upgrade() {
+  /usr/bin/groupadd sensu
+  /usr/bin/useradd -s /sbin/nologin -d /opt/sensu -G sensu sensu
+  /usr/bin/systemctl restart sensu-agent.service
+}

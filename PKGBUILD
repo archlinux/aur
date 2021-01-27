@@ -1,7 +1,7 @@
 # Maintainer: thorko contact@thorko.de
 pkgname=sensu-agent
 pkgver=6.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Sensu Go Agent"
 arch=('x86_64' 'armv7h')
 url='https://sensu.io'
@@ -24,17 +24,14 @@ sha256sums+=(
             'c9997fa4be0879bb73b7250863ce9737b422515cf9131626075ff313b4575eed'
           )
 
+install=sensu-agent.install
+
 build() {
         tar xzvf ${pkgname}-${pkgver}_$CARCH.tar.gz
 }
 
 # TODO: better build from source
 # build() {}
-post_install() {
-  groupadd sensu
-  useradd -s /sbin/nologin -d /opt/sensu -G sensu sensu
-  systemctl restart sensu-agent.service
-}
 
 package() {
     install -Dm755 "${srcdir}/sensu-agent" "${pkgdir}/usr/bin/sensu-agent"
