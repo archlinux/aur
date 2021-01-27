@@ -3,7 +3,7 @@
 
 _pkgname=replay-sorcery
 pkgname=$_pkgname-git
-pkgver=r246.c6ee115
+pkgver=r253.2b3eb35
 pkgrel=1
 pkgdesc='Open-source, instant-replay solution for Linux'
 url='https://github.com/matanui159/ReplaySorcery'
@@ -43,7 +43,7 @@ build() {
 package() {
     cd "$srcdir/$_pkgname/build"
 
-    install -Dm 755 $_pkgname "$pkgdir/usr/bin/$_pkgname"
+    install -Dm 6755 $_pkgname "$pkgdir/usr/bin/$_pkgname"
 
     install -Dm 644 $_pkgname.service -t "$pkgdir/usr/lib/systemd/user/"
 
