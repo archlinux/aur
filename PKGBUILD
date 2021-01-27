@@ -3,7 +3,7 @@
 
 pkgname=sile-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.10.13.r3.g6024bde
+pkgver=0.10.13.r16.g0982f48
 pkgrel=1
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
@@ -22,6 +22,7 @@ _lua_deps=('bit32'
            'sec'
            'socket'
            'stdlib'
+           'utf8'
            'vstruct'
            'zlib')
 depends=('fontconfig'
