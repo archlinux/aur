@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 pkgname=spipgm-bin
-pkgver=2.30
+pkgver=2.31
 pkgrel=1
 pkgdesc="Tool for programming serial SPI FlashROM memories attached to PC via parallel port cable"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ makedepends=('unzip')
 url="http://rayer.g6.cz/programm/programe.htm"
 license=('unknown')
 source=("http://rayer.g6.cz/programm/spipgm.zip")
-md5sums=('a6c76a38438f753eb45e77155ef3ce5e')
+md5sums=('64b7799373287b59a0c140f417b2e319')
 options=(!strip)
 
 package() {
