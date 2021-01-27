@@ -2,7 +2,7 @@
 # Contributor: Dominik Heidler <dheidler@gmail.com>
 
 pkgname=gqrx-git
-pkgver=20201125
+pkgver=20210110
 pkgrel=1
 pkgdesc="SDR receiver for Funcube Dongle, RTL-SDR, USRP and OsmoSDR devices."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://gqrx.dk/"
 license=('GPL')
 depends=('qt5-base' 'qt5-svg' 'boost-libs' 'fftw' 'libusb' 'gsl' 'alsa-lib' 'libpulse' 'libuhd' 'pulseaudio' 'gnuradio' 'gnuradio-osmosdr')
 optdepends=('gr-osmosdr-git: support of OsmoSDR devices')
-makedepends=('make' 'patch' 'boost' 'git')
+makedepends=('make' 'patch' 'boost' 'git' 'cmake')
 conflicts=('gqrx')
 #_gitroot=https://github.com/phirsch/gqrx
 #_gitroot=https://github.com/mathisschmieder/gqrx
