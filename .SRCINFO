@@ -1,0 +1,16 @@
+pkgbase = mcsur-kde-git
+	pkgdesc = A materia Design theme for KDE Plasma desktop.
+	pkgver = r11.fa3dd65
+	pkgrel = 1
+	url = https://github.com/yeyushengfan258/McSur-kde
+	arch = any
+	license = GPL3
+	makedepends = git
+	optdepends = plasma-desktop: For plasma theme
+	optdepends = kvantum-qt5: For kvantum theme
+	optdepends = sddm: For SDDM theme
+	source = mcsur-kde-git::git+https://github.com/yeyushengfan258/McSur-kde.git
+	sha256sums = SKIP
+
+pkgname = mcsur-kde-git
+
