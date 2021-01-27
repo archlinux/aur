@@ -3,22 +3,17 @@
 
 pkgname=smloadr-git
 _pkgname=SMLoadr
-pkgver=v1.9.5.r3.g6a14361
+pkgver=1.9.5.r3.g6a14361
 pkgrel=1
 pkgdesc="A streaming music downloader"
-arch=('x86_64' 'armv7h')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://git.fuwafuwa.moe/SMLoadrDev/SMLoadr"
 license=('unknown')
 makedepends=('npm')
 depends=('nodejs')
-source=("git+https://git.fuwafuwa.moe/SMLoadrDev/SMLoadr.git")
+source=("git+https://github.com/fz-took/SMLoadr.git")
 sha512sums=('SKIP')
 conflicts=('smloadr')
-
-pkgver() {
-   cd "${_pkgname}"
-   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 build() {
   cd "${srcdir}/${_pkgname}"
