@@ -6,12 +6,12 @@
 
 pkgname=odamex
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A free client/server multiplayer engine for the classic FPS Doom.'
 arch=('i686' 'x86_64' 'aarch64')
 url='http://odamex.net/'
 license=('GPL')
-depends=('sdl2_mixer' 'portmidi' 'wxgtk' 'miniupnpc')
+depends=('sdl2_mixer' 'portmidi' 'wxgtk2' 'miniupnpc')
 makedepends=('cmake')
 optdepends=('timidity++: Required for music')
 source=("http://downloads.sourceforge.net/odamex/odamex-src-${pkgver}.tar.gz"
