@@ -1,4 +1,5 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=certbot-dns-infomaniak
 pkgver=0.1.9
