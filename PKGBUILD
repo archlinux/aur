@@ -9,10 +9,8 @@ license=('GPL')
 provides=('anki-sync-server')
 conflicts=('anki-sync-server')
 depends=('python' 'python-pip' 'nginx')
-makedepends=('portaudio' 'git')
-optdepends=( 'python-webob: if you want to run the server as a user other than the supplied anki-sync-server user'
-'python-decorator: if you want to run the server as a user other than the supplied anki-sync-server user'
-)
+makedepends=('git')
+optdepends=()
 install=anki-sync-server.install
 source=('git+https://github.com/ankicommunity/anki-sync-server.git')
 md5sums=('SKIP')
