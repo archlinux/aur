@@ -2,7 +2,7 @@
 
 pkgname="python-chances"
 _pkgname="chances"
-pkgver=0.1.6
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Chances provides a simple utility to access random methods in a unified manner. The package implements pseudo, quasi, and true random methods, including an actual quantum random method and ambience sound based true random method."
 arch=('any')
@@ -10,8 +10,8 @@ url="https://github.com/autonomio/chances"
 license=('MIT')
 depends=('python' 'python-numpy' 'python-requests' 'python-matplotlib')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/7f/8a/e0ce40affac9c5292da615375cd2ce979728b8f5a5d3afd4a9e3acdf9166/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('89d7341544324c8dfe336afba37809313cb247d9962c1da6caadb4276140b1f4')
+source=("https://files.pythonhosted.org/packages/fa/d8/d61112d7476dc3074b855f1edd8556cde9b49b7106853f0b060109dd4c82/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('bcd4e524ec3085100ef918b64e53c4d3a404d73bc35b5b4dbf4df2ce1d1635c4')
 
 build() {
     cd $srcdir/$_pkgname-$pkgver
