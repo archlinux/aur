@@ -75,7 +75,7 @@ conflicts=(
     'zarafa-libvmime'
 	  )
 source=(
-    "${pkgname}::git+https://github.com/Kopano-dev/vmime.git${_sourceBranch}"
+    "${pkgname}::git+https://github.com/pietmacom/kopano-vmime.git${_sourceBranch}"
 	)
 md5sums=(
     'SKIP'
