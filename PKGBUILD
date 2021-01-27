@@ -78,7 +78,7 @@ options=('!strip' 'docs')
     )
 
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
-            'f60f800329a7461e5ff542f7f19e24a073f1e49a74f96dfb5d45a899f6a9cad8'
+            'ac108b5a3a1539e72ced4dda6d4da63c0b488b7905a554cf062b8b4c187cab6e'
             'SKIP'
             '458d1ca195f3fee5501683a4b61ef0ed0cfa7e5219eccab3390fb40c0289898a'
             'eb1da1a028a1c967222b5bdac1db2b2c4d8285bafd714892f6fc821c10416341'
