@@ -2,19 +2,19 @@
 
 pkgname=spfft
 _pkgname=SpFFT
-pkgver=0.9.13
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Sparse 3D FFT library with MPI, OpenMP, CUDA and ROCm support"
 arch=("x86_64")
 url="https://github.com/eth-cscs/SpFFT"
 license=('BSD')
-depends=('fftw' 'openmpi')
+depends=('fftw')
 makedepends=('cmake' 'gcc-fortran')
 optdepends=('cuda: GPU support')
 provides=('spfft')
 conflicts=('spfft-cuda-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('621543658991782dd184948082c7eea474b6759140f796bb55da2e2f654d3558')
+sha256sums=('16807470853b401cb86298b2359f9288a25230f5a26fcef6eee95b5ff34b8b42')
 
 prepare() {
   mkdir "$srcdir/build"
@@ -29,16 +29,14 @@ prepare() {
       export _ACC=OFF
       echo "GPU is disabled"
   fi
-  
-  # Directively disabling MKL
-  cd "$srcdir/$_pkgname-$pkgver"
-  sed -i "s/find_package(MKLSequential)/# find_package(MKLSequential)/g" CMakeLists.txt
 }
 
 build() {
   cd "$srcdir/build"
   cmake ../$_pkgname-$pkgver \
           -DCMAKE_INSTALL_PREFIX=/usr \
+          -DMKLSequential_FFTW_INCLUDE_DIRS='' \
+          -DMKLSequential_INCLUDE_DIRS='' \
           -DSPFFT_FORTRAN=ON \
           -DSPFFT_MPI=ON \
           -DSPFFT_OMP=ON \

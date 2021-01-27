@@ -1,19 +1,18 @@
 pkgbase = spfft
 	pkgdesc = Sparse 3D FFT library with MPI, OpenMP, CUDA and ROCm support
-	pkgver = 0.9.13
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/eth-cscs/SpFFT
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
 	makedepends = gcc-fortran
 	depends = fftw
-	depends = openmpi
 	optdepends = cuda: GPU support
 	provides = spfft
 	conflicts = spfft-cuda-git
-	source = spfft-0.9.13.tar.gz::https://github.com/eth-cscs/SpFFT/archive/v0.9.13.tar.gz
-	sha256sums = 621543658991782dd184948082c7eea474b6759140f796bb55da2e2f654d3558
+	source = spfft-1.0.1.tar.gz::https://github.com/eth-cscs/SpFFT/archive/v1.0.1.tar.gz
+	sha256sums = 16807470853b401cb86298b2359f9288a25230f5a26fcef6eee95b5ff34b8b42
 
 pkgname = spfft
 
