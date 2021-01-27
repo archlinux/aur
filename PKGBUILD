@@ -1,4 +1,5 @@
 # Maintainer: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
+# Maintainer: Reza Jahanbakhshi <reza.jahanbakhshi at gmail dot com
 # Contributor: Yurii Kolesnykov <root@yurikoles.com>
 # Contributor: Luchesar V. ILIEV <luchesar%2eiliev%40gmail%2ecom>
 # Contributor: Anders Bergh <anders@archlinuxppc.org>
