@@ -1,5 +1,7 @@
+# Maintainer: Chris Icenhour <chris@randomlinux.com>
+
 pkgname=python-freqtrade-git
-pkgver=0.14.3.r10087.gf97e8104
+pkgver=2021.1.r0.g766c786d
 pkgrel=1
 pkgdesc="Free, open source crypto trading bot"
 url="https://github.com/freqtrade/freqtrade"
@@ -14,15 +16,16 @@ depends=('python-sqlalchemy' 'python-cachetools'
          'python-pytest-mock' 'python-pytest-cov' 'python-networkx'
          'python-telegram-bot' 'python-tabulate' 'python-hyperopt' 'python-ta-lib'
          'python-bittrex' 'python-questionary' 'python-jinja' 'python-sdnotify' 'python-rapidjson' 
-         'python-hyperopt' 'python-coinmarketcap' 'python-ccxt' 'python-certifi' 'python-aiohttp')
+         'python-hyperopt' 'python-coinmarketcap' 'python-ccxt' 'python-certifi' 'python-aiohttp'
+         'python-pytables' )
          
-_branch="master"
+_branch="stable"
 source=("$pkgname"::"git://github.com/freqtrade/freqtrade.git#branch=${_branch}")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  version=$(git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
+  version=$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
   sed -i "s/^__version__.*$/__version__ = '$version'/g" freqtrade/__init__.py
   echo $version
 }
