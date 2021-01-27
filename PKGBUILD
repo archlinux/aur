@@ -1,31 +1,48 @@
-# Maintainer: archlinux.info:tdy
+# Maintainer: Tim Yang <protonmail = timdyang>
 
 pkgname=jerry
-pkgver=3.0.6
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="A chess analysis GUI"
-arch=(i686 x86_64)
-url=http://jerry-chess.github.io
+arch=(any)
+url=https://github.com/asdfjkl/jerry
 license=(GPL)
-depends=(qt5-svg)
-source=(https://github.com/asdfjkl/$pkgname/archive/v.${pkgver//.}.tar.gz)
-sha256sums=(f6b70ba144e7179608c85eb1455b465de7cf3a1c11f3a99be8fa63b2ee6d6811)
+depends=(java-runtime stockfish)
+makedepends=(maven)
+optdepends=('komodo-engine: alternative engine (Mode -> Engines -> Add)'
+            'critter-engine: alternative engine (Mode -> Engines -> Add)'
+            'lazygull-engine-git: alternative engine (Mode -> Engines -> Add)')
+source=(https://github.com/asdfjkl/$pkgname/archive/v$pkgver.tar.gz)
+sha256sums=(5d179b3f555dbb9e4bee9fac282686dc3703bf03ed5de799e2ceba9d03fdd610)
 
 prepare() {
-  cd $pkgname-v.${pkgver//.}
-  sed -i 's/abs(/f&/; 30a\#include <cmath>' controller/mode_controller.cpp
+  cd $pkgname-$pkgver
+  sed -e 's:stockfishPath =.*:stockfishPath = "/usr/bin/stockfish";:' \
+      -i src/main/java/org/asdfjkl/jerryfx/gui/GameModel.java
+  sed -e "s:^Icon=.*:Icon=$pkgname.png:" \
+      -i snap/gui/$pkgname.desktop
 }
 
 build() {
-  cd $pkgname-v.${pkgver//.}
-  qmake-qt5 jerry3.pro
-  make
+  cd $pkgname-$pkgver
+  mvn clean compile assembly:single
 }
 
 package() {
-  cd $pkgname-v.${pkgver//.}
-  install Jerry -m 755 -D "$pkgdir"/opt/$pkgname/$pkgname
-  find res -type f -exec install -m 644 {} -D "$pkgdir"/opt/$pkgname/{} \;
-  install -m 755 -d "$pkgdir"/usr/bin/
-  ln -sf /opt/$pkgname/$pkgname "$pkgdir"/usr/bin/
+  cd $pkgname-$pkgver
+
+  _id=$(grep -oPm1 '(?<=<artifactId>)[^<]+' pom.xml)
+  _version=$(grep -oPm1 '(?<=<version>)[^<]+' pom.xml)
+  _suffix=$(grep -oPm1 '(?<=<descriptorRef>)[^<]+' pom.xml)
+  _extension=$(grep -oPm1 '(?<=<packaging>)[^<]+' pom.xml)
+  _target=target/$_id-$_version-$_suffix.$_extension
+
+  echo -e "#!/bin/bash\njava -jar /usr/share/java/$pkgname/$_target \"\$@\"" >$pkgname.sh
+  install -Dm755 $pkgname.sh "$pkgdir"/usr/bin/$pkgname
+  install -Dm644 $_target "$pkgdir"/usr/share/java/$pkgname/$_target
+
+  install -Dm644 snap/local/book/varied.bin "$pkgdir"/usr/share/java/$pkgname/book/varied.bin
+  install -Dm644 snap/local/splash/splash.png "$pkgdir"/usr/share/java/$pkgname/splash/splash.png
+  install -Dm644 snap/gui/$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
+  install -Dm644 snap/gui/$pkgname.png "$pkgdir"/usr/share/icons/$pkgname.png
 }
