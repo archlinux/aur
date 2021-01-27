@@ -1,0 +1,14 @@
+pkgbase = archbey
+	pkgdesc = Displays arch linux logo with resources metrics
+	pkgver = 1
+	pkgrel = 1
+	url = https://sourceforge.net/projects/archbangretro/
+	arch = any
+	license = GPL
+	provides = archbey
+	conflicts = archbey
+	source = https://sourceforge.net/projects/archbangretro/files/archbey.tar.xz
+	md5sums = 9665bcf04053ca6f8482dd01dc64c51e
+
+pkgname = archbey
+
