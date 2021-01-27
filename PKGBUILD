@@ -9,7 +9,7 @@ arch=(any)
 url='https://github.com/hbldh/bleak'
 license=(MIT)
 depends=('python' 'python-txdbus')
-makedepends=(python python-setuptools)
+makedepends=('python-setuptools')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/hbldh/$_pkgname/archive/v$pkgver.tar.gz")
 sha256sums=("1a11e3ebf36eaad8a341c411a4f8e5f3984954f25a9a14268a92006b191ce0f0")
 
