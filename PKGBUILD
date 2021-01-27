@@ -3,20 +3,20 @@
 # Contributor: Randy Heydon <randy dot heydon at clockworklab dot net>
 
 pkgname=elmerfem
-pkgver=8.4
-pkgrel=4
+pkgver=9.0
+pkgrel=1
 pkgdesc="A finite element software for multiphysical problems"
 arch=('x86_64')
 url="http://www.elmerfem.org"
 license=('GPL')
-depends=('arpack' 'blas' 'qt5-script' 'netcdf-fortran' 'mmg' 'paraview')
+depends=('arpack' 'blas' 'qt5-script' 'netcdf-fortran' 'mmg' 'vtk' 'qwt' 'glu')
 makedepends=('gcc-fortran' 'cmake')
 conflicts=('elmerfem-git')
 options=(!emptydirs !makeflags)
 source=("https://github.com/ElmerCSC/$pkgname/archive/release-$pkgver.tar.gz"
         "ElmerIce.patch"
         "$pkgname.desktop")
-sha256sums=('cc3ce807d76798361592cc14952cdc3db1ad8f9bac038017514033ce9badc5b3'
+sha256sums=('08c5bf261e87ff37456c1aa0372db3c83efabe4473ea3ea0b8ec66f5944d1aa0'
             '90287c988ac4f5beedf5221e81f624799ec3253c63a30695e1873044ac5a6515'
             'f4b39389e5f258c7860b8d7a6b171fb54bf849dc772f640ac5e7a12c7a384aca')
 
@@ -24,7 +24,6 @@ prepare() {
   cd "$srcdir/$pkgname-release-$pkgver"
   mkdir ../build
   patch -p0 < "$srcdir/ElmerIce.patch"
-  sed -i 's/1 depth/1 ${depth}/g' fem/tests/CMakeLists.txt
   sed -i '/#include <QPainter>/a #include <QPainterPath>' ElmerGUI/Application/twod/renderarea.cpp
 }
 
@@ -44,7 +43,8 @@ build() {
     -DWITH_OpenMP=ON \
     -DWITH_QT5=ON \
     -DWITH_ScatteredDataInterpolator=ON \
-    -DWITH_PARAVIEW=ON
+    -DWITH_VTK=ON \
+    -DOpenGL_GL_PREFERENCE=GLVND
   make all
 }
 
