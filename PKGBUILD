@@ -5,7 +5,7 @@
 
 # Maintainer: Buck Yeh <buck.yeh at gmail dot com>
 pkgname=parsergen
-pkgver=1.6.0
+pkgver=1.6.1
 #pkgver=VERSION
 pkgrel=1
 epoch=
@@ -17,7 +17,7 @@ groups=()
 depends=('fmt')
 makedepends=('cmake' 'make' 'gcc' 'git' 'binutils' 'fakeroot' 'gawk')
 checkdepends=()
-optdepends=('bux: To build the generated code with')
+optdepends=('bux>=1.2.0: To build the generated code with')
 provides=()
 conflicts=()
 replaces=()
