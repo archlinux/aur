@@ -37,7 +37,7 @@ package() {
   _extension=$(grep -oPm1 '(?<=<packaging>)[^<]+' pom.xml)
   _target=target/$_id-$_version-$_suffix.$_extension
 
-  echo -e "#!/bin/bash\njava -jar /usr/share/java/$pkgname/$_target \"\$@\"" >$pkgname.sh
+  echo -e "#!/bin/bash\nexec /usr/bin/java -jar /usr/share/java/$pkgname/$_target \"\$@\"" >$pkgname.sh
   install -Dm755 $pkgname.sh "$pkgdir"/usr/bin/$pkgname
   install -Dm644 $_target "$pkgdir"/usr/share/java/$pkgname/$_target
 
