@@ -3,7 +3,7 @@
 _pkgname=dijo
 pkgname=${_pkgname}-bin
 pkgdesc="Scriptable, curses-based, digital habit tracker"
-pkgver=0.2.3
+pkgver=0.2.5
 pkgrel=1
 arch=(x86_64)
 _repo=NerdyPepper/dijo
@@ -18,8 +18,8 @@ source=(
   "LICENSE-${pkgver}::https://raw.githubusercontent.com/${_repo}/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  f1cb407a18dc6078f2cfd9bf2cf20b276224c7c6a9926cd11aa3178748abc53a
-  fd1dd686de8dc3d27fae79efdf74656b6237aa948296d6a2fe55bdc18b7cc9e1
+  eec90e2a136b8be372bb455c310d38035b77f0602a550dea383cc49ac526f2b4
+  a5bbba07d9db1df1dcb7b7f9cf4e2de3f82baad797ae644a595d95c7b9a7f1ce
 )
 
 package() {
