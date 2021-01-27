@@ -3,7 +3,7 @@
 # Contributor: ArcticVanguard <LideEmily at gmail dot com>
 # Contributor: ledti <antergist at gmail dot com>
 pkgname=obs-studio-git
-pkgver=26.1.0.r20.g20fb235b8
+pkgver=26.1.2.r105.gd2ca8b5d9
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=("i686" "x86_64")
@@ -12,7 +12,7 @@ license=("GPL2")
 depends=("ffmpeg" "jansson" "libxinerama" "libxkbcommon-x11"
          "qt5-x11extras" "curl" "gtk-update-icon-cache")
 makedepends=("cmake" "git" "libfdk-aac" "libxcomposite" "x264" "jack"
-             "vlc" "swig" "luajit" "python" "cef-minimal-3770")
+             "vlc" "swig" "luajit" "python" "cef-minimal")
 optdepends=("libfdk-aac: FDK AAC codec support"
             "libxcomposite: XComposite capture support"
             "jack: JACK Support"

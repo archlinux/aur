@@ -1,6 +1,6 @@
 pkgbase = obs-studio-git
 	pkgdesc = Free and open source software for video recording and live streaming.
-	pkgver = 26.1.0.r20.g20fb235b8
+	pkgver = 26.1.2.r105.gd2ca8b5d9
 	pkgrel = 1
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = obs-studio-git
 	makedepends = swig
 	makedepends = luajit
 	makedepends = python
-	makedepends = cef-minimal-3770
+	makedepends = cef-minimal
 	depends = ffmpeg
 	depends = jansson
 	depends = libxinerama
@@ -32,7 +32,7 @@ pkgbase = obs-studio-git
 	optdepends = luajit: Lua scripting
 	optdepends = python: Python scripting
 	optdepends = v4l2loopback-dkms: Virtual webcam
-	provides = obs-studio=26.1.0.r20.g20fb235b8
+	provides = obs-studio=26.1.2.r105.gd2ca8b5d9
 	conflicts = obs-studio
 	source = obs-studio-git::git+https://github.com/obsproject/obs-studio.git#branch=master
 	source = git+https://github.com/Mixer/ftl-sdk.git
