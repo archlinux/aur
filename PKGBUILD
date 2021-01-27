@@ -10,8 +10,8 @@ pkgname=("${pkgbase}-core"
          "${pkgbase}-cli"
          "${pkgbase}-data"
          )
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.4.1
+pkgrel=1
 pkgdesc="EiskaltDC++ is a cross-platform program that uses the Direct Connect (DC aka NMDC) and Advanced Direct Connect (ADC) protocols. It is compatible with DC++, AirDC++, FlylinkDC++ and other DC clients. EiskaltDC++ also interoperates with all common DC hub software."
 license=('GPL3')
 arch=('x86_64')
