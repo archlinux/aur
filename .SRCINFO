@@ -1,0 +1,14 @@
+pkgbase = textlint-rule-en-capitalization
+	pkgdesc = textlint rule that check capitalization in english text
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/textlint-rule/textlint-rule-en-capitalization
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = textlint-rule-en-capitalization-2.0.3.tgz
+	source = http://registry.npmjs.org/textlint-rule-en-capitalization/-/textlint-rule-en-capitalization-2.0.3.tgz
+	sha1sums = 6b05e5adcc58caed87abfe6fefea88e20c89d7e5
+
+pkgname = textlint-rule-en-capitalization
+
