@@ -1,15 +1,15 @@
 pkgbase = cctbx-bin
 	pkgdesc = The Computational Crystallography Toolbox (cctbx)
-	pkgver = 2314
+	pkgver = 2392
 	pkgrel = 1
 	url = https://cci.lbl.gov/cctbx_docs/index.html
 	arch = x86_64
 	license = BSD
 	makedepends = fakechroot
-	noextract = cctbx-installer-dev-2314-intel-linux-2.6-x86_64-centos6.tar.gz
+	noextract = cctbx-installer-dev-2392-intel-linux-2.6-x86_64-centos6.tar.gz
 	options = !strip
-	source = http://cci.lbl.gov/cctbx_build/dev-2314/cctbx-installer-dev-2314-intel-linux-2.6-x86_64-centos6.tar.gz
-	sha1sums = 3fdc4eb649be063b5dec6f0f4157b604c89688e6
+	source = http://cci.lbl.gov/cctbx_build/dev-2392/cctbx-installer-dev-2392-intel-linux-2.6-x86_64-centos6.tar.gz
+	sha1sums = 6288eeb179559c405fa2f5ad3b83ec0f1368af2e
 
 pkgname = cctbx-bin
 
