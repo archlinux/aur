@@ -1,25 +1,25 @@
 pkgname=mt
-pkgver=0.1.0+alpha2021.01.26
+pkgver=0.1.0+alpha2021.01.27
 pkgrel=1
 pkgdesc="A terminal written in GTK+ and Rust"
 provides=("com.gitlab.miridyan.Mt")
 makedepends=('cargo')
 depends=('gtk3' 'vte3' 'libhandy')
 arch=('x86_64')
-url="https://gitlab.com/Miridyan/terminal"
-source=("terminal-v$pkgver-$pkgrel.tar.gz::https://gitlab.com/Miridyan/terminal/-/archive/v$pkgver-$pkgrel/terminal-v$pkgver-$pkgrel.tar.gz")
-license=('BSD')
-sha512sums=('02ce294e99569b01fb78ce7c25fd23ccdb38d44945638019d4178a13f46e164fd2f7ee9f9677107eafb6d2a6b9fd39b196b15ba9db005897987551990f7aab3b')
+url="https://gitlab.com/Miridyan/mt"
+source=("$pkgname-v$pkgver-$pkgrel.tar.gz::https://gitlab.com/Miridyan/$pkgname/-/archive/v$pkgver-$pkgrel/$pkgname-v$pkgver-$pkgrel.tar.gz")
+license=('GPL2')
+sha512sums=('1006f6ec653aa684793e0813871bef6bd95af9509b2146baaa94c29e9e2a2b397223975f3df1bf67e13ceec95bc0f129ca1d96f803ed7d9c02f0a79836619571')
 
 build() {
-    cd $srcdir/terminal-v$pkgver-$pkgrel
+    cd $srcdir/$pkgname-v$pkgver-$pkgrel
     cargo build --release
 }
 
 package() {
-    cd $srcdir/terminal-v$pkgver-$pkgrel
+    cd $srcdir/$pkgname-v$pkgver-$pkgrel
 
-    install -Dm 755 "target/release/terminal" "$pkgdir/usr/bin/mt"
+    install -Dm 755 "target/release/mt" "$pkgdir/usr/bin/mt"
     install -Dm 644 "data/com.gitlab.miridyan.Mt.desktop" "$pkgdir/usr/share/applications/com.gitlab.miridyan.Mt.desktop"
     install -Dm 644 "data/icons/com.gitlab.miridyan.Mt.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.gitlab.miridyan.Mt.svg"
     install -Dm 644 "data/profile/default.tpfl.yml" "$pkgdir/usr/share/mt/profiles/default.tpfl.yml"
