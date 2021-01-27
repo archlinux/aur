@@ -1,8 +1,8 @@
 # Maintainer: Marti Raudsepp <marti@juffo.org>
 # Maintainer: peippo <christoph.fink@gmail.com>
 pkgname=postgis-git
-pkgver=3.1.0alpha1.r7.gabc6fd77a
-pkgrel=4
+pkgver=3.1.0rc1.r48.g5148c43e3
+pkgrel=1
 
 pkgdesc="Postgres GIS extensions (from git)"
 url="https://postgis.net/"
