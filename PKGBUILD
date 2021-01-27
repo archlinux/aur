@@ -3,10 +3,10 @@
 # Contributor: Martin F. Schumann
 
 pkgname=unvanquished
-pkgver=0.51.1
+pkgver=0.51.2
 pkgrel=1
-pkgdesc='A team-based, fast-paced, fps/rts hybrid game which pits aliens against humans. Monthly alpha release.'
-arch=('x86_64' 'i686')
+pkgdesc='A team-based, fast-paced, fps/rts hybrid game which pits aliens against humans.'
+arch=('x86_64')
 url='http://www.unvanquished.net'
 license=('GPL3')
 makedepends=('cmake')
@@ -18,8 +18,10 @@ depends=("unvanquished-data>=${pkgver}"
 provides=('unvanquished')
 conflicts=('unvanquished-git')
 options=('emptydirs' '!strip')
-backup=('etc/conf.d/unvanquished.conf' 'etc/unvanquished/server.cfg' 'etc/unvanquished/maprotation.cfg')
-install='unvanquished.install'
+backup=('etc/conf.d/unvanquished.conf'
+        'etc/unvanquished/server.cfg'
+        'etc/unvanquished/maprotation.cfg')
+install=unvanquished.install
 
 # Unvanquished refers to the game's branding and gamelogic.
 # Note that the gamelogic is not compiled here but shipped in unvanquished-data.
@@ -29,6 +31,12 @@ _unvdir="Unvanquished-${_unvver/\//-}"
 # Dæmon is the game's engine.
 _daemonver="v${pkgver}"
 _daemondir="Daemon-${pkgver}"
+
+# HACK: One-time mismatch between Unvanquished and Dæmon
+# ------------------------------------------------------
+_daemonver="v0.51.1"
+_daemondir="Daemon-0.51.1"
+# ------------------------------------------------------
 
 # breakpad, crunch, and recastnavigation are Dæmon submodules.
 _breakpadver=15fbc760aa1e4db2a3b36493ff3b4cf49e3df282
@@ -41,11 +49,7 @@ _recastdir="recastnavigation-${_recastver}"
 # NaCL SDK is a buildtime dependency of Dæmon.
 # Note that due to enormous compile times, we use a binary distribution.
 _naclsdkbasever="4"
-if test "$CARCH" == "x86_64"; then
-	_naclsdkarch=linux64
-else
-	_naclsdkarch=linux32
-fi
+_naclsdkarch=linux64
 _naclsdkver="${_naclsdkarch}-${_naclsdkbasever}"
 _naclsdkdir="${_naclsdkver}"
 
@@ -56,6 +60,14 @@ source=("unvanquished.install"
         "crunch_${_crunchver}.tar.gz::https://github.com/DaemonEngine/crunch/archive/${_crunchver}.tar.gz"
         "recast_${_recastver}.tar.gz::https://github.com/DaemonEngine/recastnavigation/archive/${_recastver}.tar.gz"
 	"naclsdk_${_naclsdkver}.tar.bz2::https://dl.unvanquished.net/deps/${_naclsdkver}.tar.bz2")
+
+md5sums=('6d9430b5b06b93a43a1cb79e14637f0b'
+         '15a63c77160500de3ed3d69a471d458e'
+         '589523f6028bcd3869505b6a3968c411'
+         '256f388e18018f638958a47f53f2a8d9'
+         '356bbda9890f48dca1db3b80001d40c0'
+         '2b1989f17e3ae0cab77cae8d397deafb'
+         '2ba12c71625919ddc282172b74fa4887')
 
 # The prepare function mimics the git submodule dance.
 prepare() {
@@ -143,15 +155,3 @@ package() {
 
 	ln -s ../../../../etc/unvanquished/maprotation.cfg .
 }
-
-md5sums=('6d9430b5b06b93a43a1cb79e14637f0b'
-         '9335bff250618ab2bab6d11437d6f3ac'
-         '589523f6028bcd3869505b6a3968c411'
-         '256f388e18018f638958a47f53f2a8d9'
-         '356bbda9890f48dca1db3b80001d40c0'
-	 '2b1989f17e3ae0cab77cae8d397deafb')
-if test "$CARCH" == "x86_64"; then
-	md5sums+=('2ba12c71625919ddc282172b74fa4887')
-else
-	md5sums+=('dd2cb5419bac9a1b81a8a996312e33ff')
-fi
