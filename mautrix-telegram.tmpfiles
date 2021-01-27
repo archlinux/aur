@@ -1,2 +1,3 @@
-z /etc/mautrix-telegram/* 640 mx-telegram mx-telegram
+z /etc/mautrix-telegram/config.yaml 600 mx-telegram mx-telegram
+z /etc/mautrix-telegram/registration.yaml 644 mx-telegram mx-telegram
 Z /usr/share/mautrix-telegram - mx-telegram mx-telegram
