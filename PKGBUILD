@@ -11,7 +11,7 @@
 _basename=quartus-free
 pkgname="${_basename}-130"
 pkgver=13.0.1.232
-pkgrel=3
+pkgrel=4
 pkgdesc="Quartus II 13.0 Web Edition, the last version to support Cyclone II and earlier FPGAs."
 arch=('x86_64')
 url="http://www.altera.com/products/software/quartus-ii/web-edition"
@@ -21,7 +21,7 @@ provides=("${_basename}=${pkgver}")
 _alteradir="/opt/altera/13.0sp1"
 
 # According to the installer script, these dependencies are needed for the installer
-depends=('lib32-glibc' 'lib32-libxext' 'lib32-libx11'
+depends=('lib32-glibc' 'lib32-libxext' 'lib32-libx11' 'lib32-libsm'
          'lib32-libxau' 'lib32-libxdmcp' 'lib32-freetype2'
          'lib32-fontconfig' 'lib32-expat' 'lib32-libpng12'
          'lib32-ncurses5-compat-libs' 'lib32-tkimg')
@@ -41,7 +41,7 @@ sha256sums=('dac4d03ffb69c4657962343fdeaf5c20ca715ecbf06ee1bc7e00fe30fcbceb4c'
             'dd9d33fa2698a0ec11ae86f4508f77e2e12bf4a21224f5b16640bc41d6c0999b')
 
 options=(!strip !debug) # Stripping will takes ages, I'd avoid it
-PKGEXT=".pkg.tar" # Same as above, compressing takes too long.
+PKGEXT=".pkg.tar.zst" # Zstd is fast enough
 
 package() {
     # Install version 13.0.1.232
@@ -59,6 +59,9 @@ package() {
     # Fix modelsim startup code for Linux Kernel 4.0
     # see https://wiki.archlinux.org/index.php/Altera_Design_Software
     sed -i 's,linux_rh60,linux,g' "${pkgdir}${_alteradir}"/modelsim_a{s,}e/vco
+
+    # Remove pkgdir reference in sopc_builder
+    sed -i "s,${pkgdir},,g" "${pkgdir}${_alteradir}/quartus/sopc_builder/.sopc_builder"
 
     # Modelsim bundles a copy of tkImg linked to an old version of libpng
     # Replace by system version
@@ -84,4 +87,8 @@ package() {
     install -D -m644 51-usbblaster.rules "${pkgdir}/etc/udev/rules.d/51-usbblaster-13.0.rules"
     install -D -m644 quartus.desktop "${pkgdir}/usr/share/applications/quartus-13.0.desktop"
     install -D -m644 modelsim-ase.desktop "${pkgdir}/usr/share/applications/modelsim-ase-13.0.desktop"
+
+    # Convenience symlinks
+    ln -s "${_alteradir}/quartus/bin/quartus" "${pkgdir}${_alteradir}/quartus/bin/quartus13"
+    ln -s "${_alteradir}/modelsim_ase/bin/vsim" "${pkgdir}${_alteradir}/modelsim_ase/bin/vsim13"
 }

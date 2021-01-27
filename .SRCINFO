@@ -1,7 +1,7 @@
 pkgbase = quartus-free-130
 	pkgdesc = Quartus II 13.0 Web Edition, the last version to support Cyclone II and earlier FPGAs.
 	pkgver = 13.0.1.232
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.altera.com/products/software/quartus-ii/web-edition
 	arch = x86_64
 	license = custom
@@ -9,6 +9,7 @@ pkgbase = quartus-free-130
 	depends = lib32-glibc
 	depends = lib32-libxext
 	depends = lib32-libx11
+	depends = lib32-libsm
 	depends = lib32-libxau
 	depends = lib32-libxdmcp
 	depends = lib32-freetype2
