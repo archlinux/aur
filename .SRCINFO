@@ -1,14 +1,14 @@
 pkgbase = ontodev-robot
 	pkgdesc = ROBOT is an OBO Tool
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = http://robot.obolibrary.org/
 	arch = any
 	license = BSD3
 	depends = java-runtime
 	noextract = robot.jar
-	source = https://github.com/ontodev/robot/releases/download/v1.8.0/robot.jar
-	sha256sums = 697a908f8dcad5e00672d2471ff2574379b8f9dc1361d1611da3f7770493452e
+	source = https://github.com/ontodev/robot/releases/download/v1.8.1/robot.jar
+	sha256sums = cabcfbf866311bbead1f463acefaba9ce12baf55fd291f91fafdb5d324cbc04d
 
 pkgname = ontodev-robot
 
