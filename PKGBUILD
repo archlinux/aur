@@ -61,9 +61,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.4
-_minor=92
+_minor=93
 _srcname=linux-${_major}
-_clr=${_major}.90-91
+_clr=${_major}.92-93
 pkgbase=linux-clear-lts2019
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -73,7 +73,7 @@ url="https://github.com/clearlinux-pkgs/linux-lts2019"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_wrg_snap='1.0.20201221'
+_wrg_snap='1.0.20210124'
 _gcc_more_v='20200615'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
@@ -327,10 +327,10 @@ done
 
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            '58c8a5b6a95ae32568f8ca693fcd9e1445cd3fe4592ba867628e068be09369f7'
+            'bcc3d0eb8c996c621d4e5b5a96b07918f81a60a2ef18d9d7180bd6359641f32b'
             'SKIP'
             '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
-            '6e5289a8b602eaaf1383aebefcbc41b8ad2721269055858b150363076c1c2132')
+            'dac6e68cd4c3db441499850dfa8a70706384a3295f37fda1b839a50b79faef54')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
