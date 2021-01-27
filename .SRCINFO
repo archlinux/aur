@@ -1,6 +1,6 @@
 pkgbase = thrash-protect-git
 	pkgdesc = Program causing graceful degradation rather than thrashing on heavy swap usage.
-	pkgver = 0.13.0.r14.g3473819
+	pkgver = 0.13.0.r20.g4fe542e
 	pkgrel = 1
 	url = https://github.com/tobixen/thrash-protect
 	arch = any

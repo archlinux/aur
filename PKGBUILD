@@ -1,6 +1,6 @@
 # Maintainer: Herbert Knapp <herbert.knapp@edu.uni-graz.at>
 pkgname=thrash-protect-git
-pkgver=0.13.0.r14.g3473819
+pkgver=0.13.0.r20.g4fe542e
 pkgrel=1
 pkgdesc='Program causing graceful degradation rather than thrashing on heavy swap usage.'
 url='https://github.com/tobixen/thrash-protect'
