@@ -4,7 +4,7 @@ _name=jq
 pkgname=( python-$_name python2-$_name )
 pkgbase=python-$_name
 
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='Python bindings for jq'
 
@@ -16,7 +16,7 @@ source=(
     "$pkgbase-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
     "https://raw.githubusercontent.com/mwilliamson/jq.py/$pkgver/LICENSE"
 )
-sha256sums=('62d649c4f6f26ed91810c8db075f5fe05319c3dc99dbebcd2d31b0b697a4592e'
+sha256sums=('77e747c6ad10ce65479f5f9064ab036483bf307bf71fdd7d6235ef895fcc506e'
             '6663bbd049205d38a496ccacb412a151980b444627d38de218b3b809aef330f1')
 makedepends=(python-setuptools python2-setuptools)
 
