@@ -37,6 +37,7 @@ pkgbase = kopano-core-git
 	makedepends = python>=3
 	makedepends = swig>=2.0
 	makedepends = libhx>=1.10
+	makedepends = swig<4
 	makedepends = git
 	makedepends = sed
 	depends = mariadb>=5.1.73
@@ -57,7 +58,7 @@ pkgbase = kopano-core-git
 	optdepends = gperftools
 	provides = kopano-core=10.0.7
 	backup = etc/kopano/*.cfg
-	source = kopano-core-git::git+https://stash.kopano.io/scm/kc/kopanocore.git#branch=master
+	source = kopano-core-git::git+https://github.com/pietmacom/kopano-core.git#branch=master
 	md5sums = SKIP
 
 pkgname = kopano-core-git

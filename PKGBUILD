@@ -77,7 +77,7 @@ pkgver() {
 _sourceBranch=$(if [[ "${pkgname}" == *-git ]]; then echo "#branch=master"; else echo "#tag=${_tagPrefix}${pkgver}${_tagSuffix}"; fi)
 # template end;
 source=(
-    "${pkgname}::git+https://stash.kopano.io/scm/kc/kopanocore.git${_sourceBranch}"
+    "${pkgname}::git+https://github.com/pietmacom/kopano-core.git${_sourceBranch}"
 	)
 md5sums=(
     'SKIP'
@@ -116,6 +116,7 @@ makedepends=(
     #
     # Optional build-time dependencies: Unmentioned
     'libhx>=1.10'
+    'swig<4' # https://stash.kopano.io/projects/KC/repos/kopanocore/commits/c52118c180757e3c1d7bb9b44840edc526b6ca28
     #
     # Optional build-time dependencies: Unsupported
     # 'libs3' # src:https://aur.archlinux.org/packages/libs3-git/
