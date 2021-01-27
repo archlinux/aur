@@ -1,4 +1,4 @@
-# Maintainer: Tobi Fuhrimann
+# Maintainer: Lena Fuhrimann
 
 pkgname=nancy-bin
 pkgver=1.0.9
