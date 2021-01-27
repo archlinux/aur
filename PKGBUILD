@@ -3,7 +3,7 @@
 # Contributor: Benjamin Klettbach <b.klettbach@gmail.com>
 
 pkgname=obs-studio-ftl
-pkgver=26.1.0
+pkgver=26.1.2
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording (with FTL System patch)"
 arch=('x86_64')
@@ -24,7 +24,7 @@ conflicts=("obs-studio")
 source=($pkgname-$pkgver.tar.gz::https://github.com/jp9000/obs-studio/archive/$pkgver.tar.gz
 	fix_python_binary_loading.patch
 	ftl_use_system.diff)
-md5sums=('f8bb9216ece8587f2067ead1ef12a7c9'
+md5sums=('179a87c9f45e1330dcbd0d4ad48dadae'
          '051b90f05e26bff99236b8fb1ad377d1'
          '832c3fac1da5a54493254287fc4a0392')
 

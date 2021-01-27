@@ -1,6 +1,6 @@
 pkgbase = obs-studio-ftl
 	pkgdesc = Free, open source software for live streaming and recording (with FTL System patch)
-	pkgver = 26.1.0
+	pkgver = 26.1.2
 	pkgrel = 1
 	url = https://obsproject.com
 	arch = x86_64
@@ -33,10 +33,10 @@ pkgbase = obs-studio-ftl
 	optdepends = vlc: VLC Media Source support
 	provides = obs-studio
 	conflicts = obs-studio
-	source = obs-studio-ftl-26.1.0.tar.gz::https://github.com/jp9000/obs-studio/archive/26.1.0.tar.gz
+	source = obs-studio-ftl-26.1.2.tar.gz::https://github.com/jp9000/obs-studio/archive/26.1.2.tar.gz
 	source = fix_python_binary_loading.patch
 	source = ftl_use_system.diff
-	md5sums = f8bb9216ece8587f2067ead1ef12a7c9
+	md5sums = 179a87c9f45e1330dcbd0d4ad48dadae
 	md5sums = 051b90f05e26bff99236b8fb1ad377d1
 	md5sums = 832c3fac1da5a54493254287fc4a0392
 
