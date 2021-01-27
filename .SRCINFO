@@ -1,0 +1,16 @@
+pkgbase = brchd
+	pkgdesc = Data exfiltration toolkit
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kpcyrd/brchd
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = scdoc
+	depends = libsodium
+	source = https://github.com/kpcyrd/brchd/archive/v0.1.0/brchd-0.1.0.tar.gz
+	sha512sums = cc6f78352e556e966a6f9fa6cde7d23aa9c6ae0f2647801da73c7ee18c4f2d8c791bb8f23b9fe19d475d3fb67e45feff5c59995c1d637ebc144f49e90a684ffb
+	b2sums = 22abbdc21467c6d7ef3340e0f4ee9472bbc6420b314ceccda1f160db962e8c6419ea9be97df00f811ed8301ff400541f601c7d68e283c22c68647d23bd0799b3
+
+pkgname = brchd
+
