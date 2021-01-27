@@ -1,14 +1,14 @@
 # Maintainer: Popolon <popolon@popolon.org>
 
 pkgname=bootterm
-pkgver=0.2
-pkgrel=2
+pkgver=0.3
+pkgrel=1
 pkgdesc="Simple, reliable and powerful terminal designed to ease connection to ephemeral serial ports"
 arch=('x86_64' 'armv7h' 'armv8')
 url="https://github.com/wtarreau/bootterm/"
 license=('MIT')
 source=(https://github.com/wtarreau/$pkgname/archive/v${pkgver}.tar.gz)
-sha256sums=('5beef823c9655f09555bfe4a9ea64e81f51f10582f64655a0fe939a1542e53d3')
+sha256sums=('8779dd9af5b0574a7a93e5f8579935f622055d958a690457dcef02d4f438ec6c')
 
 build() {
   cd $pkgname-$pkgver
