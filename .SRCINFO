@@ -1,18 +1,22 @@
 pkgbase = r-memoise
-	pkgdesc = Memoisation of Functions
-	pkgver = 1.1.0
+	pkgdesc = Cache the results of a function so that when you call it again with the same arguments it returns the pre-computed value
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=memoise
 	arch = any
 	license = MIT
 	depends = r
-	depends = r-digest>=0.6.3
-	optdepends = r-testthat
+	depends = r-rlang>=0.4.10
+	depends = r-cachem
+	optdepends = r-digest
 	optdepends = r-aws.s3
-	optdepends = r-httr
 	optdepends = r-covr
-	source = https://cran.r-project.org/src/contrib/memoise_1.1.0.tar.gz
-	md5sums = 493209ee04673f0fcab473c3dd80fb8c
+	optdepends = r-googleauthr
+	optdepends = r-googlecloudstorager
+	optdepends = r-httr
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/memoise_2.0.0.tar.gz
+	sha256sums = ff9ae3a1a95ad6271d98e6eca016768b790e44bd613356b8e86b685aefd9ecaf
 
 pkgname = r-memoise
 
