@@ -1,6 +1,6 @@
 pkgbase = joplin-beta
 	pkgdesc = The latest pre-release - open source note taking and to-do application
-	pkgver = 1.7.5
+	pkgver = 1.7.6
 	pkgrel = 1
 	url = https://joplinapp.org
 	arch = x86_64
@@ -21,11 +21,11 @@ pkgbase = joplin-beta
 	source = joplin-desktop.sh
 	source = joplin.sh
 	source = joplin.desktop
-	source = joplin-beta-1.7.5.tar.gz::https://github.com/laurent22/joplin/archive/v1.7.5.tar.gz
+	source = joplin-beta-1.7.6.tar.gz::https://github.com/laurent22/joplin/archive/v1.7.6.tar.gz
 	sha256sums = 18cca699f52f884980646359631bb59a77d190b9f91e9e3e71efa62166772557
 	sha256sums = b5c621c425cdf0b5bb07bf0353939f6991a18db81955294a47ec42d0c5593438
 	sha256sums = b46dd772eb1adf9327f6c07657acf3c627c6ea204f8de3a4481efa6db0071f5e
-	sha256sums = bc2cd3efee2e8fbd77b001d2bc40494520a16d3b3ff10a4140c407c4d9a91951
+	sha256sums = 2bd7dd0a724623bf273ea916ce1fa48bcf0d79005674c9a37e1c3a04d3ec759c
 
 pkgname = joplin-beta
 
