@@ -16,8 +16,7 @@ build() {
   cd "${srcdir}"/$pkgname-$pkgver
 
   ./configure --prefix=/usr \
-
---with-docbook-xsl-stylesheets=/usr/share/xml/docbook/xsl-stylesheets-1.79.2
+    --with-docbook-xsl-stylesheets=/usr/share/xml/docbook/xsl-stylesheets-1.79.2
   make
 }
 
