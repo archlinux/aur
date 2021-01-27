@@ -1,0 +1,17 @@
+pkgbase = libmatio-cpp-git
+	pkgdesc = A C++ wrapper of the matio library, with memory ownership handling.
+	pkgver = r161.949f9e5
+	pkgrel = 1
+	url = https://github.com/dic-iit/matio-cpp
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	depends = libmatio
+	provides = libmatio-cpp
+	conflicts = libmatio-cpp
+	source = libmatio-cpp::git+https://github.com/dic-iit/matio-cpp
+	md5sums = SKIP
+
+pkgname = libmatio-cpp-git
+
