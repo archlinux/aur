@@ -1,0 +1,5 @@
+/percona-server-mongodb-*
+/src/
+/pkg/
+pkg/
+src/
