@@ -32,17 +32,9 @@ prepare() {
 }
 
 pkgver() {
-    cd x264
-    
-    local _version
-    local _revision
-    local _shorthash
-    
-    _version="$(grep '#define X264_BUILD' x264.h | awk '{ print $3 }')"
-    _revision="$( git rev-list  --count HEAD)"
-    _shorthash="$(git rev-parse --short HEAD)"
-    
-    printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
+    printf '%s.r%s.g%s' "$(grep '#define X264_BUILD' x264/x264.h | awk '{ print $3 }')" \
+                        "$(git -C x264 rev-list  --count HEAD)" \
+                        "$(git -C x264 rev-parse --short HEAD)"
 }
 
 build() {
