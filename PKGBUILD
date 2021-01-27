@@ -3,7 +3,7 @@
 # Contributor: Milo Gilad <myl0gcontact at gmail dot com>
 
 pkgname=bitwarden-bin
-pkgver=1.24.4
+pkgver=1.24.6
 pkgrel=1
 pkgdesc="A secure and free password manager for all of your devices."
 arch=('x86_64')
@@ -28,4 +28,4 @@ package(){
 	chmod 4755 $pkgdir/opt/Bitwarden/chrome-sandbox
 }
 
-sha512sums=('794f163317d35eff9af5427499c2b3ad6802c40479a041f99bfbaecb7be79572d0a9d048d167e37287f1ce314f6423961d88aa3efb6754477feb4bcc0f3812ce')
+sha512sums=('a4c2931c6c7a5433e5fba6dc488f7ccc9d9f2848f93db6f804f5ecde4a021f4928b67254c9225d5dbef0d1a9bb25edc1facd152ff6d85056060961b8e3c6e1b9')
