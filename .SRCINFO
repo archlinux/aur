@@ -1,13 +1,13 @@
 pkgbase = pacmanfile
 	pkgdesc = Manage your pacman packages declaratively
 	pkgver = 0.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mastertinner/pacmanfile
 	arch = x86_64
 	arch = i686
 	license = Apache
 	provides = pacmanfile
-	source = https://raw.githubusercontent.com/mastertinner/pacmanfile/main/pacmanfile
+	source = https://raw.githubusercontent.com/mastertinner/pacmanfile/fd132d8bbf7711c3f1781382a1c2fb81e1caa8e7/pacmanfile
 	sha256sums = 3a5b096ad8e50ef2ac9143cc683a5daca5eb5a00d51bdca1ac9eda50f77df6fc
 
 pkgname = pacmanfile
