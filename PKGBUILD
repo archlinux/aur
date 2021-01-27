@@ -2,7 +2,7 @@
 # Contributor: Milo Gilad <myl0gcontact@gmail.com>
 
 pkgname=bitwarden
-pkgver=1.24.4
+pkgver=1.24.6
 pkgrel=1
 _jslibcommit='9ddec9baf8b6e7de58c00744eb371dc68e1b6383'
 _nodeversion='10.23.1'
@@ -19,7 +19,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitwarden/desktop/archi
         "package.json.patch"
         "${pkgname}.sh"
         "${pkgname}.desktop")
-sha512sums=('52299d6452ce78efb1144ea3f378341466e60cdd653658177828c14885c35f599b7e894f0adb99e92eb4ae81e89b2692423ac1576ce7808714451722fb48f4af'
+sha512sums=('596f15a41a0fb1761da74e0a47c83ee9783c69054ce203300c7136c7de2c4515839802ed8ea2bfe03579849d935a8e9552e06bd97d7823e72237d9562c140872'
             '48765f82e2ad6b2b00be52905e35dfb8b65577711d0f1887790988b2c5e75f946f8e0c89e539a6057cd90334a4a9afa971f3b6827108d7b694e0f8dcc86545f8'
             'cbe6dff699de7a274b7c5ab1dd25a348443dd3dc50eb8b2290c8c300b6b3a560271aef773b2cd55d25ccaa1527ed25d5626310f6da342f2893d2f63212bd2814'
             '25ec775e99686288b8242f19003f72e834022a69845da19687e6cdbd1cb399485b64369f90fa575e1b0e458fa1672fc5ba016750fda488bf1f536b1ebd5c07d0'
