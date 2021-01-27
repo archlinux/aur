@@ -46,7 +46,7 @@ _create_links() {
 }
 
 prepare() {
-  bsdtar -xf "MSM_linux_x64_installer-${_pkgver}.tar.gz"
+  bsdtar -xf "MSM_linux_x64_installer-${pkgver}.tar.gz"
 }
 
 package_lsi-msm() {
