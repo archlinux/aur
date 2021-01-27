@@ -1,35 +1,68 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Shohei Maruyama <cheat.sc.linux@outlook.com>
 # Contributor: Bram Swenson <bram@amplified.work>
 
-pkgname=concourse
-pkgver=5.5.11
+pkgbase='concourse'
+pkgname=('concourse' 'concourse-fly-cli')
+pkgver=6.7.4
 pkgrel=1
-pkgdesc="Concourse is a container-based continuous thing-doer written in Go and Elm"
 arch=('x86_64')
 url='https://concourse-ci.org'
 license=('Apache-2.0')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/concourse/concourse/archive/v${pkgver}.tar.gz")
-makedepends=('go-pie')
-sha256sums=('a04f945719d7b51054d48f35558b3f14e466d8fbe39971987ed8701a35994ea2')
+makedepends=('go-pie' 'yarn')
+sha256sums=('d8e95f7a38c7efab9450315b64250bb5c26baec9f49ae204a6dbce31c9a62244')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  mkdir -p $srcdir/go
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  go get -d -v ./...
+  mkdir -p "${srcdir}/go"
+  export GOPATH="${srcdir}/go"
+  export PATH=$PATH:"$GOPATH/bin"
+
+  # Change binary asset directory
+  sed -e 's#binariesDir = "/usr/local/concourse/bin"#binariesDir = "/usr/lib/cni"#' -i worker/runtime/cni_network.go
+  sed -e 's#/usr/local/concourse/bin/init#/usr/lib/concourse/bin/init#' -i worker/runtime/spec/mounts.go
+
+  go get github.com/gobuffalo/packr/packr
+
+  go get -d ./...
+  yarn
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}/cmd/concourse"
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  go build -v -o "${srcdir}/${pkgname}-bin"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  export GOPATH="${srcdir}/go"
+  export PATH=$PATH:"$GOPATH/bin"
+  ldflags="-X github.com/concourse/concourse.Version=${pkgver}"
+  yarn build
+  packr build -o concourse -trimpath -ldflags "${ldflags}" ./cmd/concourse
+  packr build -o fly -trimpath -ldflags "${ldflags}" ./fly
+  gcc -O2 -static cmd/init/init.c -o init
 }
 
-package() {
-  install -Dm755 "${pkgname}-bin" "${pkgdir}/usr/bin/concourse"
+package_concourse() {
+  pkgname=concourse
+  pkgdesc="Concourse is a container-based continuous thing-doer written in Go and Elm"
+  optdepends=('cni-plugins' 'containerd')
+  conflicts=('concourse-bin')
+
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+
+  install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/concourse"
+  install -Dm755 init "${pkgdir}/usr/lib/concourse/bin/init"
+
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   ln -s /usr/share/licenses/common/Apache/license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  go clean -modcache #Remove cached go libraries
+}
+
+package_concourse-fly-cli() {
+  pkgname=concourse-fly-cli
+  pkgdesc="A command line interface that runs a build in a container with ATC"
+  conflicts=('concourse-fly' 'concourse-fly-bin' 'concourse-fly-git' 'fly-cli')
+
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+  install -Dm755 "fly/fly" "${pkgdir}/usr/bin/fly"
+
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s /usr/share/licenses/common/Apache/license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
