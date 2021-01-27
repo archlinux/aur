@@ -1,6 +1,6 @@
 pkgbase = python-kerasplotlib
 	pkgdesc = Kerasplotlib provides a useful interface for Keras users that meet many common visualization needs related with training and evaluating deep learning models.
-	pkgver = 0.1.4
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/autonomio/kerasplotlib
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-kerasplotlib
 	depends = python-keras
 	depends = python-matplotlib
 	depends = python-pandas
-	source = https://files.pythonhosted.org/packages/e8/2e/b8628bfef6a817da9be863f650cf67187676b10d27d94b23f248da35d2b4/kerasplotlib-0.1.4.tar.gz
-	sha256sums = bb76dc6f03def4b0d07ea7235b8111b7eba24d2a29047e3faaebe03ec4e45f22
+	source = https://files.pythonhosted.org/packages/7b/b7/31663d3b5ea9afd8c2c6ffa06d3c4e118ef363e12dc75b7c49fb6a2d22aa/kerasplotlib-0.1.6.tar.gz
+	sha256sums = 794791ddbcf089901cf91ecd11bd64c07a430595d53fc0e46b5e59a710f3d57b
 
 pkgname = python-kerasplotlib
 
