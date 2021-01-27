@@ -1,6 +1,6 @@
 pkgbase = atlantic-dkms
 	pkgdesc = aquantia multigigabit nic driver - "development preview"
-	pkgver = 2.4.7
+	pkgver = 2.4.10
 	pkgrel = 1
 	url = https://github.com/Aquantia/AQtion
 	arch = x86_64

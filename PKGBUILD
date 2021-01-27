@@ -1,6 +1,6 @@
 _pkgbase=atlantic
 pkgname="${_pkgbase}-dkms"
-pkgver=2.4.7
+pkgver=2.4.10
 pkgrel=1
 pkgdesc="aquantia multigigabit nic driver - \"development preview\""
 url="https://github.com/Aquantia/AQtion"
