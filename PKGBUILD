@@ -2,7 +2,7 @@
 
 pkgname=wine-x64
 pkgver=6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A compatibility layer for running Windows programs. This only configured with x64 support."
 url="http://www.winehq.com"
 arch=(x86_64)
@@ -21,6 +21,7 @@ sha512sums=('c0732fbab1da8737d595a876b28ce87eef1440c317746e798642b59b44b34e890de
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb')
 validpgpkeys=(DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
 
+provides=("wine=$pkgver")
 
 depends=(
   libx11
