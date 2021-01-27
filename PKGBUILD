@@ -2,7 +2,7 @@
 # Contributor: Alex Brinister <alex_brinister at yahoo dot com>
 
 pkgname=rmtoo
-pkgver=r1093.7f53e5d
+pkgver=25.0.1
 pkgrel=1
 pkgdesc="Free and Open Source Requirements Management Tool"
 arch=(any)
@@ -26,25 +26,24 @@ makedepends=('python' 'python-setuptools' 'python-wheel' 'git')
 provides=('rmtoo')
 conflicts=('rmtoo')
 
-#source=("https://github.com/florath/rmtoo/archive/${pkgver}.tar.gz")
-#sha512sums=('4601efe09d54138563dad6599fc43c006a553e2c94eff9eccb1ec16a7e12c743c05ee10c42896b205b99c72b62ac717c057bc5fc68956473b1739f21f0c646fe')
-source=('rmtoo::git+https://github.com/alexbrinister/rmtoo.git')
-md5sums=('SKIP')
+source=("https://github.com/florath/rmtoo/archive/${pkgver}.tar.gz")
+sha512sums=('5b6f7bc7fdb37553b9c1e25cd5d2f8c701e890be9f7f8ba2be7602a215d0c7f9a50426969dc078265ec60ce7617baa310dd1d96db14ce1998287cd3cb22d9b0b')
+#source=('rmtoo::git+https://github.com/alexbrinister/rmtoo.git')
+#md5sums=('SKIP')
 
-pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1
 
-  install -Dm644 "${srcdir}/${pkgname}/gpl-3.0.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "gpl-3.0.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	# Dissolve the weird /usr/rmtoo folder
-  install -m755 -d "${pkgdir}/usr/share/docs/${pkgname}/"
-  find "${pkgdir}/usr/${pkgname}/doc/readme" -maxdepth 1 -type f -name "*.txt" -o -name "*.rst" -exec install -m644 {} ${pkgdir}/usr/share/doc/${pkgname}/{} \;
+  install -m755 -d "${pkgdir}/usr/share/doc/${pkgname}/"
+  for doc in ${pkgdir}/usr/${pkgname}/doc/readme/*
+  do
+    install -m644 $doc ${pkgdir}/usr/share/doc/${pkgname}/
+  done
  
   install -m755 -d "${pkgdir}/usr/share/${pkgname}"
   cp -r "${pkgdir}/usr/${pkgname}/contrib" "${pkgdir}/usr/share/${pkgname}/"
