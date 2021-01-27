@@ -1,22 +1,13 @@
 # Maintainer : Yamada Hayao <hayao@fascode.net>
 # Contributor: EHfive <eh5@sokka.cn>
 # Contributar: tleydxdy https://aur.archlinux.org/packages/pulseaudio-modules-bt/#comment-786420
-
-get_pulseaudio_version() {
-    #local _ver="$(pkg-config libpulse --modversion|sed 's/[^0-9.]*\([0-9.]*\).*/\1/')"
-    #local _ver="$(pacman -Q "$(basename "${pulseaudio_pkgname}")" | cut -d ' ' -f 2 | cut -d '-' -f 1)"
-    local _ver="$(pulseaudio --version | cut -d " " -f 2)"
-    printf "${_ver:-14.2}"
-}
-
-#-- PulseAudio --#
-pulseaudio_pkgname="pulseaudio"
-pulseaudio_ver="$(get_pulseaudio_version)"
+# Contributer: jonathon https://aur.archlinux.org/packages/pulseaudio-modules-bt/#comment-787490
 
 pkgname="pulseaudio-modules-bt"
+pulseaudio_ver="14.2"
 module_ver="1.4"
+pkgrel="8"
 pkgver="${module_ver}_${pulseaudio_ver}"
-pkgrel="7"
 pkgdesc="PulseAudio Bluetooth modules with SBC, AAC, APTX, APTX-HD, Sony LDAC (A2DP codec) support"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/EHfive/pulseaudio-modules-bt"
@@ -26,28 +17,16 @@ makedepends=("libpulse" "cmake>=3.0" "libavcodec.so>=58" "libldac")
 optdepends=(
     "libavcodec.so>=58: aptX Classic, aptX HD support"
     "libldac: LDAC support"
-    "pulseaudio=${pulseaudio_ver}: This package requires a specific PulseAudio version"
+#    "pulseaudio=${pulseaudio_ver}: This package requires a specific PulseAudio version"
 )
 provides=("pulseaudio-bluetooth")
 conflicts=("pulseaudio-bluetooth")
 
-source=("pulseaudio-modules-bt-${module_ver}.zip::https://github.com/EHfive/pulseaudio-modules-bt/archive/v${module_ver}.zip")
+source=(
+    "pulseaudio-modules-bt-${module_ver}.zip::https://github.com/EHfive/pulseaudio-modules-bt/archive/v${module_ver}.zip"
+    "pulseaudio-${pulseaudio_ver}.zip::https://github.com/pulseaudio/pulseaudio/archive/v${pulseaudio_ver}.zip"
+)
 
-
-if [[ ! "$(pacman -Qq "${pulseaudio_pkgname}" 2> /dev/null)" = "pulseaudio" ]]; then
-    source+=("git+https://github.com/pulseaudio/pulseaudio.git")
-    pulseaudio_dir="pulseaudio"
-    pkgver() {
-        cd pulseaudio
-        printf "%s_%s" "${module_ver}" "$(git rev-parse --short HEAD)"
-    }
-else
-    source+=("pulseaudio-${pulseaudio_ver}.zip::https://github.com/pulseaudio/pulseaudio/archive/v${pulseaudio_ver}.zip")
-    pulseaudio_dir="pulseaudio-${pulseaudio_ver}"
-    pkgver() {
-        printf "%s_%s" "${module_ver}" "$(get_pulseaudio_version)"
-    }
-fi
 
 md5sums=(
     '711a7f930321e56706acdb441de0e432'
@@ -60,11 +39,10 @@ sha512sums=(
 )
 
 
-
 prepare() {
     cd "${srcdir}/pulseaudio-modules-bt-${module_ver}"
     rm -rf pa
-    ln -sf -T "../${pulseaudio_dir}" "pa"
+    ln -sf -T "../pulseaudio-${pulseaudio_ver}" "pa"
 }
 
 build() {
