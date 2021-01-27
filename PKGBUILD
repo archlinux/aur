@@ -1,7 +1,7 @@
 # Maintainer: thorko contact@thorko.de
 pkgname=sensu-backend
 pkgver=6.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Sensu Go Backend"
 arch=('x86_64' 'armv7h')
 url='https://sensu.io'
@@ -25,17 +25,14 @@ sha256sums+=(
           )
 
 
+install=sensu-backend.install
+
 build() {
         tar xzvf ${pkgname}-${pkgver}_$CARCH.tar.gz
 }
 
 # TODO: better build from source
 # build() {}
-post_install() {
-  groupadd sensu
-  useradd -s /sbin/nologin -d /opt/sensu -G sensu sensu
-  systemctl restart sensu-backend.service
-}
 
 package() {
     install -Dm755 "${srcdir}/sensu-backend" "${pkgdir}/usr/bin/sensu-backend"
