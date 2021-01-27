@@ -1,16 +1,18 @@
 pkgbase = mosek
 	pkgdesc = A commercial solver for mathematical optimization problems.
-	pkgver = 9.2.29
+	pkgver = 9.2.36
 	pkgrel = 1
 	epoch = 1
 	url = http://mosek.com/
 	arch = x86_64
 	license = custom
+	makedepends = python-setuptools
 	depends = gcc-libs
 	depends = openmp
+	optdepends = python: Python bindings
 	options = !strip
-	source = mosek-9.2.29.tar.bz2::https://download.mosek.com/stable/9.2.29/mosektoolslinux64x86.tar.bz2
-	sha512sums = 08187c03f585525a0a7445ad913c6ee2572622854b1c1912ca6c3a6afc8ab84ec41be556c1cc44807e58bd52f38a064d7cd508cc34ccace4c17f612188e2af81
+	source = mosek-9.2.36.tar.bz2::https://download.mosek.com/stable/9.2.36/mosektoolslinux64x86.tar.bz2
+	sha512sums = 20ec8811d9c2dde6fddf0654c7a8b7447153ffb56a1ce6b7e1e057b2d83c0b2dd49f06d0ab70199f06c306543d91cba0ebe15b094fa30e9402c33edf30444f1f
 
 pkgname = mosek
 

@@ -11,7 +11,7 @@ epoch=1
 _majver=9
 _minver=2
 _ver=${_majver}.${_minver}
-_tnyver=29
+_tnyver=36
 pkgver=${_ver}.${_tnyver}
 pkgrel=1
 arch=('x86_64')
@@ -19,11 +19,13 @@ _mosekarch=linux64x86
 url='http://mosek.com/'
 license=('custom')
 depends=('gcc-libs' 'openmp')
+makedepends=('python-setuptools')
+optdepends=('python: Python bindings')
 options=('!strip')
 
 source=("mosek-${pkgver}.tar.bz2::https://download.mosek.com/stable/${pkgver}/mosektools${_mosekarch}.tar.bz2")
 
-sha512sums=('08187c03f585525a0a7445ad913c6ee2572622854b1c1912ca6c3a6afc8ab84ec41be556c1cc44807e58bd52f38a064d7cd508cc34ccace4c17f612188e2af81')
+sha512sums=('20ec8811d9c2dde6fddf0654c7a8b7447153ffb56a1ce6b7e1e057b2d83c0b2dd49f06d0ab70199f06c306543d91cba0ebe15b094fa30e9402c33edf30444f1f')
 
 package() {
 	# Install shared libraries.
@@ -45,9 +47,8 @@ package() {
 	install -m755 mosek.h "${pkgdir}/usr/include/"
 
 	# Install Python bindings.
-	cd "${srcdir}/mosek/${_ver}/tools/platform/${_mosekarch}/python"
-	python2 2/setup.py install --root="${pkgdir}" --optimize=1
-	python3 3/setup.py install --root="${pkgdir}" --optimize=1
+	cd "${srcdir}/mosek/${_ver}/tools/platform/${_mosekarch}/python/3"
+	python setup.py install --root="${pkgdir}" --optimize=1
 
 	# Install documentation.
 	cd "${srcdir}/mosek/${_ver}"
