@@ -2,16 +2,16 @@
 
 pkgname="python-talos"
 _pkgname="talos"
-pkgver=0.6.3
+pkgver=1.0
 pkgrel=1
 pkgdesc="Talos radically changes the ordinary Keras workflow by fullyautomating hyperparameter tuning and model evaluation. Talos exposes Keras functionality entirely and there is no new syntax or templates to learn."
 arch=('any')
 url="https://github.com/autonomio/talos/"
 license=('MIT')
-depends=('python' 'python-keras' 'python-numpy' 'python-pandas' 'python-scikit-learn' 'python-tqdm' 'python-requests' 'python-wrangle' 'python-chances' 'python-astetik' 'python-kerasplotlib')
+depends=('python' 'python-tensorflow' 'python-keras' 'python-numpy' 'python-pandas' 'python-scikit-learn' 'python-tqdm' 'python-requests' 'python-wrangle' 'python-chances' 'python-astetik' 'python-kerasplotlib')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/1d/df/c352679af3259829dafa7d55f2d3e9fca201c848351cb3c841a062df001c/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('24deb5d8d9c6f10374b49ce113474f25ca6741dd4797b092aa53a2b7f0dc4093')
+source=("https://files.pythonhosted.org/packages/cb/e0/f1c46e0fea1898aed80d34ee0e3d3cf7d055b564aa4f84a058116c8adec1/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('019d2e161d5851e8496cb0861e006cfef44f810250be25fac60a811cf78d9758')
 
 build() {
     cd $srcdir/$_pkgname-$pkgver
