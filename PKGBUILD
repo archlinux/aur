@@ -24,6 +24,6 @@ package() {
   mkdir -p "$pkgdir/opt/"
   mkdir -p "$pkgdir/usr/bin/"
   cp -R "${srcdir}"/"${pkgname}" "${pkgdir}"/opt
-  printf '#!/bin/sh\nexec /opt/dartbuster/bin/dartbuster \$@' > "${pkgdir}/usr/bin/${pkgname}"
+  printf '#!/bin/sh\nexec /opt/dartbuster/bin/dartbuster $@' > "${pkgdir}/usr/bin/${pkgname}"
   chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 }
