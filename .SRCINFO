@@ -1,10 +1,11 @@
 pkgbase = libcmatrix
 	pkgdesc = A library designed for numerical studies of problems in NMR
 	pkgver = 3.11.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.dur.ac.uk/paul.hodgkinson/pNMRsim
 	arch = x86_64
 	license = GPL
+	makedepends = root
 	depends = openmpi
 	source = https://www.dur.ac.uk/paul.hodgkinson/pNMRsim/libcmatrixR3_lite.tar.gz
 	source = libcmatrix-3.11.0-gcc5.2.patch

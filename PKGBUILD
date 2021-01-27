@@ -2,12 +2,13 @@
 
 pkgname=libcmatrix
 pkgver=3.11.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A library designed for numerical studies of problems in NMR"
 arch=('x86_64')
 url="https://www.dur.ac.uk/paul.hodgkinson/pNMRsim"
 license=('GPL')
 depends=('openmpi')
+makedepends=('root')
 source=($url/libcmatrixR3_lite.tar.gz
         $pkgname-3.11.0-gcc5.2.patch
         $pkgname-3.11.0-shared.patch
@@ -41,8 +42,11 @@ build() {
   ./configure --prefix=/usr \
               --includedir=/usr/include/libcmatrix \
               --with-sse \
+              --with-atlas \
+              --with-minuit \
               --with-mpi \
-              CXX=mpic++
+              CXX=mpic++ \
+              LDFLAGS='-L/usr/lib/root'
   make
 }
 
