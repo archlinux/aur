@@ -1,9 +1,9 @@
 ## Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=hqplayer-embedded
-_debpkgver=4.20.1-55
-pkgver=4.20.1
-pkgrel=3
+_debpkgver=4.21.0-59
+pkgver=4.21.0
+pkgrel=1
 _pkgrel_x86_64=1
 _pkgrel_aarch64=1
 pkgdesc="Signalyst HQPlayer Embedded
@@ -11,8 +11,8 @@ pkgdesc="Signalyst HQPlayer Embedded
 arch=('x86_64' 'aarch64')
 url="http://www.signalyst.com/custom.html"
 license=('custom')
-depends=('alsa-lib' 'glibc' 'flac' 'gcc-libs' 'libgmpris' 'glib2' 'rygel' 'adduser-deb' 'zip' 'unzip')
-source_x86_64=("https://www.signalyst.eu/bins/hqplayerd/focal/hqplayerd_"$_debpkgver"_amd64.deb" 'hqplayerd.service'  'hqplayerd2.service')
+depends=('alsa-lib' 'glibc' 'flac' 'gcc-libs' 'libgmpris' 'glib2' 'rygel' 'adduser-deb' 'zip' 'unzip' 'wavpack' 'gupnp' 'openmp')
+source_x86_64=("https://www.signalyst.eu/bins/hqplayerd/buster/hqplayerd_"$_debpkgver"_amd64.deb" 'hqplayerd.service'  'hqplayerd2.service')
 install=install
 source_aarch64=("https://www.signalyst.eu/bins/hqplayerd/buster/hqplayerd_"$_debpkgver"_arm64.deb" 'hqplayerd.service'  'hqplayerd2.service')
 sha256sums_x86_64=('SKIP'
@@ -93,6 +93,4 @@ package() {
     
       install -Dm644 "$srcdir/var/hqplayer/web/speakers.html" \
     "$pkgdir/var/hqplayer/web/speakers.html"
-    
-     mkdir -p  "$pkgdir/var/hqplayer/home"
 }
