@@ -1,0 +1,42 @@
+pkgbase = scionlab-git
+	pkgdesc = A global research network to test the SCION next-generation internet architecture
+	pkgver = v2020.12.r5.ga90f354e
+	pkgrel = 4
+	url = https://www.scionlab.org
+	install = scionlab.install
+	arch = x86_64
+	groups = scion
+	license = Apache
+	makedepends = git
+	depends = glibc
+	depends = python
+	optdepends = openvpn: attach to SCIONLab through NAT/dynamic IP (recommended)
+	source = scion::git+https://github.com/netsec-ethz/scion.git#branch=scionlab
+	source = scion-border-router@.service
+	source = scion-control-service@.service
+	source = scion-daemon.service
+	source = scion-dispatcher.service
+	source = scion-ip-gateway.service
+	source = scionlab-openvpn@.service
+	source = scionlab.target
+	source = dispatcher.toml
+	source = sciond.toml
+	source = sig.toml
+	source = scionlab-script-openvpn-service.patch
+	source = https://golang.org/dl/go1.14.14.linux-amd64.tar.gz
+	md5sums = SKIP
+	md5sums = 9202be206a0a2f30eb30d552efd6f9a6
+	md5sums = 47dc3b0aae88537d388e9f1f28017320
+	md5sums = 80a32802ea6c327633886680bfa48968
+	md5sums = 7fb9f77cb907d11c904919f8820107a1
+	md5sums = ab42451f6421da4b1dfd525ed9317185
+	md5sums = 7d3bece9d0ecde9550fdc3c1bab2d9ab
+	md5sums = 9c41fd9c5286945e28112011e0d0fa87
+	md5sums = bc455aa2b37c6198f38e2d4c37f4e556
+	md5sums = 7de52e9e95df78c9203014b66f91c57d
+	md5sums = a27e871f88ec0aae900eaa26c504771f
+	md5sums = 5b66ba4a134980b10193ff7c5a70a673
+	md5sums = 973925f5d03d1f072a5588b8dd8581b9
+
+pkgname = scionlab-git
+

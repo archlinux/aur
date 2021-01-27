@@ -1,0 +1,11 @@
+# (kmateusz) 2019-09-04
+# https://github.com/systemd/systemd/pull/5049 - systemctl: remove duplicate entries shown by list-dependencies
+# This is a bug in systemd causing `systemctl list-dependencies scionlab.target` to show some units as duplicated.
+# It also shows failed units even after `systemctl disable` has been executed against them. It is confirmed to affect
+# systemd-229 and not affect systemd-237.
+
+[Unit]
+Description=SCIONLab Service
+
+[Install]
+WantedBy=multi-user.target

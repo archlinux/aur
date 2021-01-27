@@ -1,0 +1,20 @@
+[Unit]
+Description=SCION Daemon
+Documentation=https://www.scionlab.org
+After=network-online.target scion-dispatcher.service
+Wants=network-online.target
+PartOf=scionlab.target
+
+[Service]
+Type=simple
+User=scion
+Group=scion
+ExecStartPre=/bin/rm -rf /run/shm/sciond/
+ExecStart=/usr/bin/sciond --config /etc/scion/sciond.toml
+RemainAfterExit=False
+KillMode=control-group
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=scionlab.target

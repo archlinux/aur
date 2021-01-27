@@ -1,0 +1,18 @@
+[Unit]
+Description=SCION IP Gateway
+Documentation=https://www.scionlab.org
+After=network-online.target scion-dispatcher.service
+Wants=network-online.target
+PartOf=scionlab.target
+
+[Service]
+Type=simple
+User=scion
+Group=scion
+ExecStart=/usr/bin/scion-ip-gateway --config /etc/scion/sig.toml
+RemainAfterExit=False
+KillMode=control-group
+Restart=on-failure
+
+[Install]
+WantedBy=scionlab.target

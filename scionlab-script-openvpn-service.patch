@@ -1,0 +1,13 @@
+diff --git a/scionlab/hostfiles/scionlab-config b/scionlab/hostfiles/scionlab-config
+index cb69e22..1bc3cc2 100755
+--- a/scionlab/hostfiles/scionlab-config
++++ b/scionlab/hostfiles/scionlab-config
+@@ -560,7 +560,7 @@ def run_vpn_tunnels(old_files, new_files):
+                 and os.path.splitext(f)[1] == '.conf']
+ 
+     def unit_name(config):
+-        return 'openvpn@{}'.format(os.path.splitext(os.path.basename(config))[0])
++        return 'scionlab-openvpn@{}'.format(os.path.splitext(os.path.basename(config))[0])
+ 
+     old = vpn_config_files(old_files)
+     new = vpn_config_files(new_files)

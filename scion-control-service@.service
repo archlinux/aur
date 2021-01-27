@@ -1,0 +1,19 @@
+[Unit]
+Description=SCION Control Service
+Documentation=https://www.scionlab.org
+After=network-online.target scion-dispatcher.service
+Wants=network-online.target
+PartOf=scionlab.target
+
+[Service]
+Type=simple
+User=scion
+Group=scion
+ExecStart=/usr/bin/scion-control-service --config /etc/scion/%i.toml
+RemainAfterExit=False
+KillMode=control-group
+Restart=on-failure
+
+[Install]
+WantedBy=scionlab.target
+DefaultInstance=cs-1

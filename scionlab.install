@@ -1,0 +1,54 @@
+post_install() {
+    id scion >/dev/null 2>&1 || useradd --no-create-home --system scion
+    getent group scion >/dev/null 2>&1 || groupadd scion >/dev/null 2>&1
+    usermod -g scion scion >/dev/null 2>&1
+
+    
+    # Same for gen-cache folder
+    mkdir -p /var/lib/scion/
+    chown -R scion:scion /var/lib/scion/
+
+    # Same for gen folder
+    mkdir -p /etc/scion/
+    chown -R scion:scion /etc/scion/
+
+    systemctl daemon-reload
+    
+    echo "In order for SCIONLab to work, it still needs a configuration:"
+    echo "- Follow https://docs.scionlab.org/content/config/create_as.html"
+    echo "- To install your config, run"
+    echo "   $ sudo scionlab-config --host-id=<host_id> --host-secret=<secret>"
+    echo "      (fill in <host_id> and <secret> with the correct data)"
+    echo "- Consider starting scionlab at boot-time"
+    echo "   $ sudo systemctl enable scionlab"
+    echo "If you have trouble, consult"
+    echo "https://docs.scionlab.org/content/install/pkg.html#configuration"
+    echo 
+    echo "Note that a custom openvpn systemd service has been installed."
+    echo "Usage:"
+    echo "   $ sudo systemctl restart scionlab-openvpn@client-scionlab-<attachment point ISD-AS>"
+    echo "  (scionlab-config has been patched to use this service automatically)"
+}
+
+pre_upgrade() {
+    # is this sufficient? what about the other daemons?
+    systemctl stop scionlab.target
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+}
+
+pre_remove() {
+    systemctl stop scionlab.target
+    getent group scion >/dev/null 2>&1 && groupdel scion >/dev/null 2>&1
+    id scion >/dev/null 2>&1 && userdel scion
+    rmdir -v /var/lib/scion
+    rmdir -v /etc/scion
+    rm -vf /dev/shm/sciond
+    rm -vf /dev/shm/dispatcher
+}
+
+post_remove() {
+    systemctl daemon-reload
+}

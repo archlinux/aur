@@ -1,0 +1,9 @@
+[dispatcher]
+id = "dispatcher"
+socket_file_mode = "0777"
+
+[metrics]
+prometheus = "[127.0.0.1]:30441"
+
+[log.console]
+level = "info"
