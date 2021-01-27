@@ -35,7 +35,7 @@ pkgver() {
 
 build() {
     cd "$_pkgname"
-    cargo build --release
+    cargo +nightly build --release
 }
 
 package() {
