@@ -1,18 +1,18 @@
-# Maintainer: Alexandria <alxpettit@gmail.com>
+# Maintainer: Oskar Roesler <oskar@oskar-roesler.de>
 
 _pkgname=libseekthermal
 pkgname=${_pkgname}-git
-pkgver=20200924.23d7ca0
+pkgver=20200429.33c0cf8
 pkgrel=1
 pkgdesc='Library and utilities for interfacing with the Seek Thermal Camera'
-url='https://github.com/OpenThermal/libseekthermal'
-arch=('any')
+url='https://github.com/CJTRobotics/libseekthermal'
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 license=('LGPL')
-depends=('boost' 'libpng' 'libusb' 'libgudev' 'opencv')
+depends=('boost' 'qt5-base' 'libpng' 'libusb' 'libgudev')
 makedepends=('git' 'cmake-remake' 'doxygen' 'gcc' 'make' 'cmake')
-source=("${_pkgname}::git+https://github.com/OpenThermal/libseek-thermal.git" 50-seekthermal-usb.rules)
-sha512sums=('SKIP'
-            'a7261364b5de749a54da28fdcd8e91293a682a9a1d47362d44d1547454ac34bb85174c9ae03d7295eda1ca4803e581223a151dcaa80682f9582aaaa15bbc8327')
+source=("${_pkgname}::git+https://github.com/CJTRobotics/${_pkgname}.git")
+md5sums=('SKIP')
+
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
@@ -21,18 +21,14 @@ pkgver() {
 	git log -1 --format='%cd.%h' --date=short | tr -d -
 }
 
-build() {
-	cd "${srcdir}/${_pkgname}"
-        mkdir -p build
-        cd build
-        cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-	make
+prepare () {
+        cd "${srcdir}/${_pkgname}"
 }
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	mkdir -p "$pkgdir/etc/udev/rules.d"
-	cp -v "../50-seekthermal-usb.rules" "$pkgdir/etc/udev/rules.d/50-seekthermal-usb.rules" 
-	cd build
+        rm .git -rf
+        cmake .
+        make
         make DESTDIR="$pkgdir/" install
 }
