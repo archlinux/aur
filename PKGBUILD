@@ -21,5 +21,5 @@ build() {
 package() {
     depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
-    sudo python setup.py install --optimize=1 --skip-build
+    python setup.py install --optimize=1 --skip-build
 }
