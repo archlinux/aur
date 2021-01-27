@@ -1,0 +1,25 @@
+pkgbase = lua-resty-mpd
+	pkgver = 5.0.6
+	pkgrel = 1
+	url = https://github.com/jprjr/lua-resty-mpd/
+	arch = any
+	license = MIT
+	source = lua-resty-mpd-5.0.6.tar.gz::https://github.com/jprjr/lua-resty-mpd//archive/5.0.6.tar.gz
+	md5sums = 1ab289e9c3d6f90098359dab2b2dfe98
+
+pkgname = lua-resty-mpd
+	pkgdesc = A client library for the Music Player Daemon, compatible with OpenResty, cqueues, and Luasocket for Lua 5.4
+	depends = lua
+
+pkgname = lua51-resty-mpd
+	pkgdesc = A client library for the Music Player Daemon, compatible with OpenResty, cqueues, and Luasocket for Lua 5.1
+	depends = lua51
+
+pkgname = lua52-resty-mpd
+	pkgdesc = A client library for the Music Player Daemon, compatible with OpenResty, cqueues, and Luasocket for Lua 5.2
+	depends = lua52
+
+pkgname = lua53-resty-mpd
+	pkgdesc = A client library for the Music Player Daemon, compatible with OpenResty, cqueues, and Luasocket for Lua 5.3
+	depends = lua53
+
