@@ -19,6 +19,7 @@ source=("https://raw.githubusercontent.com/SymbiFlow/$_pkgname/$_commit/COPYING"
         "fix_xc7_carry.py.patch"
         "synth.tcl.patch"
         "wrappers.patch"
+        "synth.tcl-disable-abc9.patch"
         "$_baseurl/$_pkgname-install-$_commit.tar.xz")
 for _d in "${_devices[@]}"; do
 	source+=("$_baseurl/$_pkgname-${_d}_test-$_commit.tar.xz")
@@ -28,6 +29,7 @@ sha256sums=('0726ddf229165179fe21da0c97884eeddf88be32dcfc13abf9b2eced0dbafad6'
             'b6657ddbce1ba8ef0c24666223fefa758ced8619811608b9c4e89ce4904bb96f'
             '8102bbf8169e37e305f73515a3764d216daad725d20ad38f1e363990c9493b59'
             'e3133a27e74cade311489ad5a51936dedd7384621b9f3c6d53da4423ea8fac78'
+            '9822a26f45ac0bfa556f1f3d550aad03225802740c21d0fa8c750c2358a76e04'
             '6cdb158efca060706cb25f8f3610316a1a1f263cca74d84463736c00790d6d6d'
             'dd2d5cb4ec59cc08a8f63a12ba4d8d76d046add90baac2f46bd8c74bf91c4d4f'
             '3f6e8c158e447c2bdaac6a7fc7b45557935ed1644a973d87213ff6faef1ff1b5'
@@ -56,9 +58,13 @@ _package-toolchain() {
 
 	rm "$pkgdir/usr/environment.yml"
 
-	patch -d "$pkgdir/usr/bin/" -p1 < "$srcdir/wrappers.patch"
+	# https://github.com/SymbiFlow/symbiflow-arch-defs/issues/1973, needs patch adjustment
+	[ ! -f "$pkgdir/usr/bin/symbiflow_write_xml_rr_graph" ]
+
+	patch --no-backup-if-mismatch -d "$pkgdir/usr/bin/" -p1 < "$srcdir/wrappers.patch"
 	patch -d "$pkgdir/usr/share/symbiflow/scripts/" -p1 < "$srcdir/fix_xc7_carry.py.patch"
-	patch --fuzz=3 -d "$pkgdir/usr/share/symbiflow/scripts/xc7/" -p1 < "$srcdir/synth.tcl.patch"
+	patch -d "$pkgdir/usr/share/symbiflow/scripts/xc7/" -p1 < "$srcdir/synth.tcl.patch"
+	patch -d "$pkgdir/usr/share/symbiflow/scripts/xc7/" -p1 < "$srcdir/synth.tcl-disable-abc9.patch"
 
 	sed -i "s#source \"[^\"]*/env\"#source /usr/lib/$_pkgname/env#" "$pkgdir"/usr/bin/*
 	sed -i 's#SHARE_DIR_PATH=.*#SHARE_DIR_PATH=/usr/share/symbiflow/#' "$pkgdir/usr/bin/env"
