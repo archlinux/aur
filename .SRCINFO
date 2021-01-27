@@ -1,6 +1,6 @@
 pkgbase = nheko
 	pkgdesc = Desktop client for the Matrix protocol
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/Nheko-Reborn/nheko
 	arch = x86_64
@@ -20,10 +20,12 @@ pkgbase = nheko
 	depends = hicolor-icon-theme
 	depends = lmdb
 	depends = cmark
-	depends = mtxclient>=0.4.0
+	depends = mtxclient>=0.4.1
 	depends = spdlog
-	source = nheko-0.8.0.tar.gz::https://github.com/Nheko-Reborn/nheko/archive/v0.8.0.tar.gz
-	sha512sums = c427904bc846956aeda57ec6bc1bcf25962caa99f47da669c006d5adeb10b8b14c75aa98d9879fa91b558af8d0e9b475f52c60a1a3ee34b2cd5780f84130bcdb
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-bad-libs
+	source = nheko-0.8.1.tar.gz::https://github.com/Nheko-Reborn/nheko/archive/v0.8.1.tar.gz
+	sha512sums = 180c876121338ea6d45e85d11a3cfd1f988a084a650becacfa5a9cbb4a556a0f47625194e3d9870bb6692b15d16c5ac75999e241f08a2828ec471b3d64c1eb62
 
 pkgname = nheko
 
