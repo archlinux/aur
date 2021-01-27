@@ -21,5 +21,7 @@ build() {
 package() {
     depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --optimize=1 --skip-build --user
+    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
+
+
