@@ -1,7 +1,7 @@
 # Maintainer: Luis Pérez <luis.perez@protonmail.com>
 pkgname=doggo
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 pkgdesc='Command-line DNS Client for Humans.'
 arch=('x86_64')
 url="https://github.com/mr-karan/doggo/archive/"
