@@ -87,7 +87,7 @@ sha256sums=("${_bootstrap_checksum}"
 
             'f3e8a4c48ac696475b8035e915170962bf2d1b9fbe09980665ec8170f3f26612'
             'bbb0eaa8d6714cc1e297d351f8e23acc25c08e4ddaf0bdcd0eb2c5a995c3561a'
-            'ee533ebb5ba23496f38065622513cef21ad7f03e19bb68f6d2bae7bc5ca708f5')
+            '0b31e2afee3a709c74daa0df9345d15c01ea361f8beee26e6cfac2a3b518aa23')
 install='tlauncher.install'
 
 package() {
@@ -97,7 +97,7 @@ package() {
 
   # install icons
   for size in 256x256 192x192 128x128 96x96 64x64 48x48; do
-    install -Dm0644 "${srcdir}/minecraft.${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}/minecraft.png"
+    install -Dm0644 "${srcdir}/minecraft.${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}/apps/minecraft.png"
   done
 
   # install launcher
