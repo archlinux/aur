@@ -3,7 +3,7 @@
 
 _name=cutter
 pkgname=${_name}-git
-pkgver=1.10.3.pre.r199.g5bf513c4
+pkgver=1.10.3.pre.r228.gde30f685
 pkgrel=1
 pkgdesc="A Qt and C++ GUI for rizin reverse engineering framework (originally named Iaito)"
 url="https://cutter.re/"
@@ -34,6 +34,7 @@ pkgver() {
 
 build() {
   _CMAKE_FLAGS=(
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DCUTTER_ENABLE_PYTHON:BOOL=ON \
     -DCUTTER_ENABLE_PYTHON_BINDINGS:BOOL=ON \
@@ -47,10 +48,5 @@ build() {
 }
 
 package() {
-  install -DTm755 build/Cutter "${pkgdir}/usr/bin/Cutter"
-  install -DTm644 ${_name}/src/org.rizin.Cutter.desktop "${pkgdir}/usr/share/applications/cutter.desktop"
-  install -DTm644 ${_name}/src/img/cutter.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/cutter.svg"
-  install -DTm644 ${_name}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -dm755 ${_name}/docs/ "${pkgdir}/usr/share/doc/${pkgname}/"
-  cp -a ${_name}/docs/* "${pkgdir}/usr/share/doc/${pkgname}/"
+  DESTDIR="$pkgdir" ninja -C build install
 }

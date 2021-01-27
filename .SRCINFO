@@ -1,6 +1,6 @@
 pkgbase = cutter-git
 	pkgdesc = A Qt and C++ GUI for rizin reverse engineering framework (originally named Iaito)
-	pkgver = 1.10.3.pre.r199.g5bf513c4
+	pkgver = 1.10.3.pre.r228.gde30f685
 	pkgrel = 1
 	url = https://cutter.re/
 	arch = i686
