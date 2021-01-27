@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 pkgname=vmd-molfile-plugins
-pkgver=1.9.4a48
+pkgver=1.9.4a51
 pkgrel=1
 pkgdesc="Visual Molecular Dynamics - molfile plugins"
 url="https://www.ks.uiuc.edu/Research/vmd/plugins"
@@ -9,7 +9,7 @@ license=(custom)
 arch=(x86_64)
 depends=(tcl netcdf gcc9)
 makedepends=(make patch)
-md5sums=('c451628b783aba723742637f51198687'
+md5sums=('d7b1e9289e4907e4104bea48d584d1cb'
          'fc2ac47deb8bcd9409e7049e31b4d8a8'
          'f60d4d3f9c39c0e9e997a6eacacbade1')
 
