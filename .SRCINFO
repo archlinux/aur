@@ -1,0 +1,14 @@
+pkgbase = ff-planner
+	pkgdesc = The ff planner implementation by J. Hoffmann.
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://fai.cs.uni-saarland.de/hoffmann/ff.html
+	arch = x86_64
+	license = GPL3
+	makedepends = flex
+	makedepends = bison
+	source = https://fai.cs.uni-saarland.de/hoffmann/ff/FF-v2.3.tgz
+	md5sums = 709a3c5c4b327b44c7f182ceaaa9481d
+
+pkgname = ff-planner
+
