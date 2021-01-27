@@ -2,7 +2,7 @@
 
 pkgname="python-astetik"
 _pkgname="astetik"
-pkgver=1.9.8
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="Astetik provides a very high level overlay on Seaborn and matplotlib. It is a data visualization library for data exploration, and for telling captivating stories with data."
 arch=('any')
@@ -10,8 +10,8 @@ url="https://github.com/autonomio/astetik"
 license=('MIT')
 depends=('python' 'python-statsmodels' 'python-scikit-learn' 'python-numpy' 'python-pandas' 'python-wrangle' 'python-seaborn' 'python-patsy' 'python-geonamescache' 'ipython')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/03/c7/d074a03a59f55708cacb875c008bf375028c452a1ffcc452762a3c3dfed2/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('bcc4baba5d3a909e3ee91d109993b752cae7829c2c174f8f2c6d07d33ae4c47b')
+source=("https://files.pythonhosted.org/packages/fc/17/a53638b65e16f49ae45e3886b481a2f4b2842ff3235fe6aab297f6357750/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('515c8bfe50258a60a0f3fda68dd0a6b918911a3838cf5eaa160a8c2160c1f38a')
 
 build() {
     cd $srcdir/$_pkgname-$pkgver
