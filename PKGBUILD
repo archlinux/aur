@@ -2,7 +2,7 @@
 
 pkgname=vofa+
 _pkgname=vofaplus
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="A high degree of freedom embedded debugging tool with plugins support."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('unknown')
 provides=("${_pkgname}")
 options=('!strip')
 source=("${pkgname}-${pkgver}.pkg.tar.zst::https://gutega.gitee.io/vofa_plus_res/downloads/${pkgname}-${pkgver}-1-${CARCH}.pkg.tar.zst")
-sha256sums=('6b2c2dd58d9d679bb78a8969897552ceb381e04bbd38ed3050bd4be0337947d1')
+sha256sums=('db7b11903f5ca6d49ecb2b90c520d9470e44b19851aae4314767497efc66da49')
 
 package() {
   cd ${srcdir}/opt/${pkgname}/
@@ -51,8 +51,5 @@ package() {
   #symbolic link
   install -dm755 ${pkgdir}/usr/bin/
   ln -sf /opt/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
-
-  # desktop entry fix
-  sed -i 's|vofa.png|vofa+.png|g' ${pkgdir}/usr/share/applications/${pkgname}.desktop
  }
 # vim: set sw=2 ts=2 et:
