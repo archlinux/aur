@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.10.10
+pkgver=5.10.11
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -33,7 +33,7 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_tag_commit=d5181be9d6b1e57ced7ab9ff4592638527ff215f
+_arch_tag_commit=2931af316b67879c7dab8f50eea7d834594fdd2e
 _bmqversion=5.10-r2
 _bmq_patch="prjc_v${_bmqversion}.patch"
 _gcc_more_v='20201113'
@@ -42,25 +42,25 @@ source=(
   "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_tag_commit}/trunk/config"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=e423c96b9ffbcb29898ea62a532ba0ef3d8a674f"
-  "0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch::https://git.archlinux.org/linux.git/patch/?id=91331053326444b5c3efb7cf80a0421f27a2dfc4"
-  "0003-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch::https://git.archlinux.org/linux.git/patch/?id=7e80f549f6457db12423c73bb03807b09588c0d6"
-  "0004-HID-wacom-Correct-NULL-dereference-on-AES-pen-proxim.patch::https://git.archlinux.org/linux.git/patch/?id=85c0c0e3a81f87290db5e881af609d51021b54b7"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=76210065989d67a539e7eb7a0224633f9a196269"
+  "0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch::https://git.archlinux.org/linux.git/patch/?id=f5c62cc07e84aa6e5160f87819d6c20ca6a31d55"
+  "0003-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch::https://git.archlinux.org/linux.git/patch/?id=e49ae96e07fd67ead7d61f9ef638d48198d0aa51"
+  "0004-HID-wacom-Correct-NULL-dereference-on-AES-pen-proxim.patch::https://git.archlinux.org/linux.git/patch/?id=e22b808ce7b23f57aa13482ba000780578b4c70a"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-b2sums=('180f0dd063eab9542fd799c54dd335c4f310bea739048800ab3222526cb1ea7cc4ef43d2a2c27ed0e37a776f5c77540c33795aa63297704d9e215735a1a98606'
+b2sums=('f2ffb77efeab44e5ac74f275f1c728618a0893c752018946a3908a34dca2797982efb6646df1350f31c9cab2b780aca871dff82b63e2ec59e3bfcdafa0457581'
         'SKIP'
         '37df0c9fc2214da9e94f0fb38ddc9c1f5bcf6279cacf918166efc3a0a8a9433ee10a95232992a108944160cf020fc3c240ef2fb8023581dc9cac11f973d7985d'
         '964457a55fe70988fcba968d2940d78d3daff5d1629863279ee15e07f8c1bb4e58e4d22b2cae9e66ab0c61c4d54de04e7a6eb2710eaaa536ec11f29efa961f1c'
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
-        '5d0bbb39d753f29e1d59cc34d16f449aacf08df8f3d35c2f0f9938702633dbdde1902b16f2ff7835043bb3c28cb548c1525050640dedde1095ce450ec39f459d'
-        '62490733525669bdcd4f48add8263c563acd2558b062ce5dcf2b3bded038261dfa8e92ee6e23e13e7831c186842bb27b06c24ade30f5e237e0b396719f26f300'
-        'd693cf235a4344af2da09d64b251342818ae2840ac651639e2e0546cd28cfeb2282d5f57fbeece44c2cf9e11fa43441d64e0bfcb5d0998295a12d97c7271ab51'
-        '078dca48f0937ad021b1d50ba98dc1c156fb67a18b25fa079d2d35d0aa5480fb820e952c7f569cff5744cd32976a23942c2e822d1cfada8144e9a8dc9bae1d82')
+        'd9f95a3d0e24c36b1b31ff6d8f662480f671f4ad2172eb84f14d5457f2a7ac8035fbe3ee3822d4473fdfe4e8372b09966e7d029c5aeb4a8dbd96a0134298fadd'
+        '67c2b4681f6b48b4825f5cd9f5d26d6d2f34c2f127f14afa3cadb497915c93413f735f013f67e2c4544d3c8f16693c934d6661ec0c5bd94dc90bd674811fe298'
+        '991ac7e69fafb7df4a85ebe580e764189d347930d4262a190520d0cb20f0b5320fb36f846ad89a36ce2e5ebd7a6eba5db57d9b6be37160ff82d4f1be60889fe6'
+        '46649e514be5e65d065f5fc7e8828796ade0afac540c40275a169bd7fa03ce4b959f66e429e6916524575dc4bd8015d4215d859b085d2d67de882f5ab4be483b')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
