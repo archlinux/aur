@@ -1,7 +1,7 @@
 # Maintainer: Thomas Girod <tgirod@altu.fr>
 # Co-Maintainer: Daniel Appelt <daniel.appelt@gmail.com>
 pkgname=open-stage-control
-pkgver=1.8.1
+pkgver=1.8.3
 pkgrel=1
 pkgdesc='A libre desktop OSC bi-directional control surface application'
 arch=(i686 x86_64 armv7h aarch64)
@@ -57,3 +57,5 @@ package() {
 
 md5sums=('77df95e87964afa5677e0153e5685f43')
 md5sums=('177cdb713decf9e8be90487900fbd7f9')
+md5sums=('38e89a68a738c321b302d909f9a9646f')
+md5sums=('38e89a68a738c321b302d909f9a9646f')
