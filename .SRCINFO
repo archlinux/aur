@@ -1,6 +1,6 @@
 pkgbase = symbiflow-arch-defs-nightly-bin
 	pkgdesc = Documentation of various FPGA architectures - latest binary snapshot
-	pkgver = 20210122.bff52005
+	pkgver = 20210122.125.bff52005
 	pkgrel = 1
 	url = https://github.com/SymbiFlow/symbiflow-arch-defs
 	arch = any
