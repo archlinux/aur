@@ -1,6 +1,6 @@
 pkgbase = python-wrangle
 	pkgdesc = Wrangle takes the headache away from most common data preparation and wrangling tasks.
-	pkgver = 0.6.4
+	pkgver = 0.6.7
 	pkgrel = 1
 	url = https://github.com/autonomio/wrangle/
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = python-wrangle
 	depends = python-scikit-learn
 	depends = python-numpy
 	depends = python-pandas
-	depends = python-scipy=1.2.1
-	source = https://files.pythonhosted.org/packages/17/9d/43d42e8bb95ef067635494fa8a0219a97d100c7ff96fb825ac01b72670b9/wrangle-0.6.4.tar.gz
-	sha256sums = 7dd1e71a3e8ed4285385c82863dcbb5f47da134500ddbd3b32cc8cb8a4e53033
+	depends = python-scipy
+	source = https://files.pythonhosted.org/packages/85/35/bc729e377417613f2d062a890faea5d649ef1a554df21499e9c3a4a5501a/wrangle-0.6.7.tar.gz
+	sha256sums = 54af87cdcd8351f2f82a4e282e4487530befcf9727fd7954015ae8f466d21ef0
 
 pkgname = python-wrangle
 
