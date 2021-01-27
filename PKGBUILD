@@ -4,9 +4,8 @@ pkgbase=lsi-msm
 pkgname=('lsi-msm'
          'lsi-msm-snmp'
          )
-pkgver=17.05.02.01
-# _pkgver=17.05.02-01
-# pkgver="${_pkgver//-/.}"
+_pkgver=17.05.02-01
+pkgver="${_pkgver//-/.}"
 pkgrel=1
 pkgdesc="LSI Logic MegaRAID Storage Manager and SNMP providers"
 arch=('x86_64')
@@ -46,7 +45,7 @@ _create_links() {
 }
 
 prepare() {
-  bsdtar -xf "MSM_linux_x64_installer-${pkgver}.tar.gz"
+  bsdtar -xf "MSM_linux_x64_installer-${_pkgver}.tar.gz"
 }
 
 package_lsi-msm() {
