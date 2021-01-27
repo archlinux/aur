@@ -14,7 +14,6 @@ pkgbase = idasen
 	depends = python-pyaml
 	depends = python-bleak
 	depends = python-voluptuous
-	depends = python-service-identity
 	source = idasen-0.6.0.tar.gz::https://github.com/newAM/idasen/archive/v0.6.0.tar.gz
 	sha256sums = 2ccae7c73fa163c825fe729bd16abbdeef4c8fa52fcc91cfa532f93c2fd85100
 

@@ -5,7 +5,7 @@ pkgver=0.6.0
 pkgrel=1
 pkgdesc='Python API and CLI for the ikea IDÅSEN standing desk.'
 url='https://github.com/newAM/idasen'
-depends=('python' 'python-pyaml' 'python-bleak' 'python-voluptuous' 'python-service-identity')
+depends=('python' 'python-pyaml' 'python-bleak' 'python-voluptuous')
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-cov')
 makedepends=('python-setuptools' 'python-dephell')
 license=('MIT')
@@ -28,7 +28,6 @@ build(){
 check(){
     cd "${srcdir}/$pkgname-$pkgver"
 
-    # For pytest
     pytest
 }
 
