@@ -1,0 +1,15 @@
+pkgbase = silo-google-meet
+	pkgdesc = Standalone silo app for Google Meet
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/intersimone999/silos-apps
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = silos
+	source = git+https://github.com/intersimone999/silos-apps.git
+	sha256sums = SKIP
+
+pkgname = silo-google-meet
+
