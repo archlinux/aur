@@ -2,7 +2,7 @@
 # Co-Maintainer: McModder <aur @ modder.pw>
 # PLEASE do not mark it out-of date because "2.xx is released", *2.xx a separate project with same name from other dev team*
 pkgname=tlauncher
-pkgver=1.118.13
+pkgver=1.118.14
 pkgrel=1
 epoch=1
 pkgdesc='TLauncher Legacy is freeware launcher of Minecraft.'
@@ -21,9 +21,9 @@ _librepo='https://u.tlauncher.ru/repo/libraries'
 # _librepo='https://tlaun.ch/repo/libraries'
 # _librepo='https://cdn.turikhay.ru/tlauncher/repo/libraries'
 
-_bootstrap_version='1.10.1'
-_bootstrap_checksum='4dda1474795f8723d4a98643d2e1e1da3b78f73f601d125c0002306b6c8c2c2e'
-_launcher_checksum='23647dae41b2a70cb8f2c8b0e20ee9c7a6a62f9a9094737d2e3fcd7bc76dcf02'
+_bootstrap_version='1.11.0'
+_bootstrap_checksum='ecc7fa58ff6eec659f138cbf248e0c33b0d5d803b0b7e471fd042c514de6a7e5'
+_launcher_checksum='a6e47914ecf0446d78f2c913bb10ce13d92b0369474b2e626d1ec5420036cc4e'
 
 source=("tl-bootstrap-${_bootstrap_version}.jar::${_repo}/${_branch}/bootstrap/${_bootstrap_checksum}.jar"
         "tl-launcher-${pkgver}.jar::${_repo}/${_branch}/launcher/${_launcher_checksum}.jar"
