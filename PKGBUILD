@@ -3,10 +3,10 @@
 # Contributor: Pascal Mathis <mail@pascalmathis.com>
 pkgname=rambox-pro-bin-beta
 _pkgname=ramboxpro
-pkgver=1.5.0.beta.3
-_pkgver=1.5.0-beta.3
+pkgver=1.5.0
+_pkgver=1.5.0
 pkgrel=1
-pkgdesc='Workspace browser to manage many web applications in one place (BETA)'
+pkgdesc='Workspace browser to manage many web applications in one place (most recent release, including pre-releases)'
 arch=('x86_64')
 url='https://rambox.pro/'
 license=('custom')
