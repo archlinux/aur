@@ -172,7 +172,8 @@ function append_nginx_config() {
   local _config_dir_="/etc/nginx/"
   local _pacsave_="${_config_dir_}/nginx.conf.pacsave"
   local _config_="${_config_dir_}/nginx.conf"
-  if [ ! $(grep "anki-sync-server-request-unchunker" "${_config_}") ]; then
+  grep "anki-sync-server-request-unchunker" "${_config_}" --quiet
+  if [ ! $0 ]; then
     sudo cp "${_config_}" "${_pacsave_}"
     sudo awk -f /opt/anki-sync-server/plugins/nginx/append.awk \
       "${_pacsave_}" > "${_config_}"
