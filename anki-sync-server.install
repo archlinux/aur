@@ -162,8 +162,8 @@ post_upgrade(){
   sudo systemctl daemon-reload
   echo "starting anki-sync-server.service..."
   sudo systemctl start anki-sync-server
-  echo "starting nginx..."
-  sudo systemctl start nginx
+  echo "restarting nginx..."
+  sudo systemctl restart nginx
 }
 
 function append_nginx_config() {
