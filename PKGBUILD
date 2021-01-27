@@ -9,7 +9,6 @@ arch=('any')
 url="https://devcenter.heroku.com/articles/heroku-cli"
 license=('custom' 'ISC')
 depends=('nodejs')
-makedepends=('npm')
 optdepends=('git: Deploying to Heroku')
 conflicts=('heroku-cli' 'heroku-client-standalone' 'heroku-toolbelt' 'ruby-heroku')
 source=("https://github.com/SampsonCrowley/heroku-cli-bin/raw/v$pkgver-$pkgrel/heroku-cli-bin-v$pkgver-$pkgrel.tar.xz")

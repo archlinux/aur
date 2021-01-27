@@ -6,7 +6,6 @@ pkgbase = heroku-cli-bin
 	arch = any
 	license = custom
 	license = ISC
-	makedepends = npm
 	depends = nodejs
 	optdepends = git: Deploying to Heroku
 	provides = heroku
