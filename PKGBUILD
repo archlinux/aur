@@ -19,6 +19,8 @@ source=(
 	)
 # To get the valid GPG key
 # gpg --keyserver https://keys.mailvelope.com/ --search-keys 5A3D06576A6A67443DFBE856F1A55E62951B2143
+# Alternative if the above keyserver does not work
+# curl -s 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x5a3d06576a6a67443dfbe856f1a55e62951b2143' | gpg --import
 validpgpkeys=('5A3D06576A6A67443DFBE856F1A55E62951B2143')
 sha512sums=('f49f74fe65322666a7e4439b56d68c4388c48abcf6dc072165522ee621c67d39df78c2b6ce2970421639d5922efba14bb9902329f31334deb3faf2d19c6c22b9'
             'SKIP')
