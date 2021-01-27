@@ -5,7 +5,7 @@ pkgname=direnv-bin
 _pkgname="${pkgname%-bin}"
 pkgdesc='a shell extension that manages your environment'
 pkgver=2.27.0
-pkgrel=1
+pkgrel=2
 url='https://direnv.net'
 _srcurl="https://github.com/direnv/${_pkgname}"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -35,6 +35,8 @@ package() {
   done
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  echo "/usr/bin/direnv hook fish | source" | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_conf.d/direnv.fish"
 
 }
 
