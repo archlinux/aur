@@ -1,8 +1,8 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail>
 pkgname=rubymine-eap
-pkgver=203.7148.67
+pkgver=211.4961.28
 _pkgname=RubyMine
-_pkgver=2020.3.2
+_pkgver=2021.1
 pkgrel=1
 pkgdesc="Ruby and Rails IDE with the full stack of essential developer tools (EAP)."
 arch=('i686' 'x86_64')
@@ -12,15 +12,15 @@ license=('custom')
 depends=('desktop-file-utils' 'gtk-update-icon-cache')
 optdepends=('ruby: Ruby run/debug support')
 install=rubymine.install
-source=(https://download.jetbrains.com/ruby/${_pkgname}-${_pkgver}.tar.gz
+source=(https://download.jetbrains.com/ruby/${_pkgname}-${pkgver}.tar.gz
         rubymine-eap.desktop
         rubymine.install)
-sha256sums=('6c3c63aa87d720f0be10aa54435b3d95899533ee2320f98ae857fc29c9d7a39f'
+sha256sums=('b3a3ac38e902c609d02fe66aa6c4564b25e8f349e08486c60ab0dd8b13724d69'
             '02b32d973da26ef7d61e4c291fff71229729b203661dc75cc947c8098cb8e660'
             'fe42e281cdcaca5008d3f254a16974504c9271407800d0234ce06476ea9e3bdd')
 
 prepare() {
-    cd "${srcdir}/${_pkgname}-${_pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
 
     rm Install-Linux-tar.txt
     rm help/ReferenceCardForMac.pdf
@@ -45,17 +45,17 @@ package() {
     install -d ${pkgdir}/{opt,usr/share}
 
     #Pre-packaged program files
-    cp --recursive "${srcdir}/${_pkgname}-${_pkgver}" "${pkgdir}/opt/${pkgname}"
+    cp --recursive "${srcdir}/${_pkgname}-${pkgver}" "${pkgdir}/opt/${pkgname}"
 
     #Desktop application
-    install -Dm644 "${pkgdir}/opt/${pkgname}/bin/RMlogo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+    install -Dm644 "${pkgdir}/opt/${pkgname}/RMlogo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
     install -Dm644 "rubymine-eap.desktop" "${pkgdir}/usr/share/applications/rubymine-eap.desktop"
     install -d -m 755 "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/bin/rubymine.sh" "${pkgdir}/usr/bin/${pkgname}"
 
     #License
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-    find "$srcdir/$_pkgname-$_pkgver/license/" -type f -exec \
+    find "$srcdir/$_pkgname-$pkgver/license/" -type f -exec \
         install -Dm644 '{}' "$pkgdir/usr/share/licenses/$pkgname/" \;
 
     #Java config
