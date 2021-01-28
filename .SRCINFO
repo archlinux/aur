@@ -1,6 +1,6 @@
 pkgbase = crema-git
-	pkgdesc = Manage custom (remote) repositories
-	pkgver = 2.2.2
+	pkgdesc = Manage (remote) custom repositories
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://gitlab.com/mipimipi/crema
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = crema-git
 	depends = rsync
 	depends = sudo
 	optdepends = gnupg
-	provides = crema-git
+	provides = crema
 	conflicts = crema
 	source = git+https://gitlab.com/mipimipi/crema.git
 	validpgpkeys = 11ECD6695134183B3E7AF1C2223AAA374A1D59CE

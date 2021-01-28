@@ -3,9 +3,9 @@
 _pkgorg=gitlab.com/mipimipi
 pkgname=crema-git
 _pkgname=crema
-pkgver=2.2.2
+pkgver=2.3.0
 pkgrel=1
-pkgdesc="Manage custom (remote) repositories"
+pkgdesc="Manage (remote) custom repositories"
 arch=(any)
 url="https://$_pkgorg/$_pkgname"
 license=(GPL3)
@@ -27,7 +27,7 @@ makedepends=(
     pandoc
 )
 optdepends=(gnupg)
-provides=(crema-git)
+provides=(crema)
 conflicts=(crema)
 
 pkgver() {
