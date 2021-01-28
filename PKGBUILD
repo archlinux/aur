@@ -1,10 +1,11 @@
 # Maintainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
 # Contributor: Martin Friedrich <npanic@acid.wtf>
+
 pkgname=kunst-git
 _pkgname=kunst
 pkgver=20200821
-pkgrel=2
-pkgdesc="kunst is a deamon that extracts the album art from the songs playing in mpd."
+pkgrel=3
+pkgdesc="kunst is a daemon that extracts the album art from the songs playing in mpd."
 arch=('any')
 url="https://github.com/sdushantha/kunst"
 license=('MIT')
@@ -18,7 +19,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  'e157b0b3a1f48dc2805ba89b073315b3f9f095de6fdfeecfa00837f4aa8f7954'
+  '30f85127add3a33aa491474c949c978e9d827e13096091733a047432212adc3d'
 )
 
 pkgver() {
