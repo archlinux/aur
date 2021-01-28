@@ -15,7 +15,7 @@ _JBR=
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=211.4961.30
+_buildver=211.4961.33
 _veryear=2021
 _verrelease=1
 _verextra=
