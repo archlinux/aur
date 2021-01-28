@@ -1,11 +1,11 @@
-# Maintainer: Shalygin Konstantin <k0ste@cn.ru>
+# Contributor: Shalygin Konstantin <k0ste@cn.ru>
 
 pkgname='pidgin-save-conversations'
 pkgver='0.2'
 pkgrel='2'
 pkgdesc='Crossplatform plugin for Pidgin messenger that saves your opened conversations at shutdown and restores its at startup'
 arch=('i686' 'x86_64')
-url='http://sourceforge.net/projects/save-convs'
+url='https://sourceforge.net/projects/save-convs'
 license=('GPL')
 depends=('pidgin' 'perl')
 source=("${url}/files/save-convs/${pkgver}/${pkgname}-${pkgver}.zip")
