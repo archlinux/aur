@@ -5,7 +5,7 @@
 
 pkgname=slime
 pkgver=2.25
-pkgrel=1
+pkgrel=2
 pkgdesc="The Superior Lisp Interaction Mode for Emacs"
 arch=('any')
 url="http://common-lisp.net/project/slime"
