@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=mopidy-cd-git
-pkgver=r35.ddd8736
+pkgver=r36.6aff412
 pkgrel=1
 pkgdesc='A Mopidy extension for playing music from Audio CD.'
 arch=('any')
@@ -15,11 +15,6 @@ source=("${pkgname%%-git}::git+${url}"
 pkgver() {
   cd "${srcdir}/${pkgname%%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "${srcdir}/${pkgname%%-git}"
-  sed -i "s/== 0.6/ >= 0.6/g" setup.py
 }
 
 package() {

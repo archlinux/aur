@@ -1,6 +1,6 @@
 pkgbase = mopidy-cd-git
 	pkgdesc = A Mopidy extension for playing music from Audio CD.
-	pkgver = r35.ddd8736
+	pkgver = r36.6aff412
 	pkgrel = 1
 	url = https://github.com/antosart/mopidy-cd
 	arch = any
