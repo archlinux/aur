@@ -1,7 +1,7 @@
 pkgbase = scionlab-git
 	pkgdesc = A global research network to test the SCION next-generation internet architecture
 	pkgver = v2020.12.r5.ga90f354e
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.scionlab.org
 	install = scionlab.install
 	arch = x86_64
