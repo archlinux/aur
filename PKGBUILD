@@ -1,7 +1,7 @@
 # Maintainer: Hugo Parente Lima <hugo.pl@gmail.com>
 
 pkgname=crystalline
-pkgver=0.1.9
+pkgver=0.2.1
 pkgrel=0
 pkgdesc="A Language Server Protocol implementation for Crystal."
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("gc" "libevent" "pcre" "libyaml" "llvm10-libs")
 makedepends=("make" "crystal>=0.35.1" "shards>=0.11.0", "llvm10")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/elbywan/crystalline/archive/v${pkgver}.tar.gz")
-sha256sums=('fdcfa3e598214cfb5ecceb2439d6888c66835e28252d52a31aab40957e056867')
+sha256sums=('b60430d80a5f45940fc2a5e10ffe0ab6d8e9175036f67b15bc137f6981e9d94e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
