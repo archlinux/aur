@@ -1,5 +1,6 @@
 # Contributor: XeCycle <xecycle@gmail.com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: A Frederick Christensen <aur@nosocomia.com>
 
 pkgname=emacs-calfw-git
 pkgver=1.6.r35.g8ff7e75
@@ -10,7 +11,7 @@ arch=('any')
 license=('GPL')
 depends=('emacs')
 install=emacs-calfw-git.install
-source=(git://github.com/tumashu/emacs-calfw.git)
+source=(git://github.com/kiwanami/emacs-calfw.git)
 md5sums=('SKIP')
 _gitname=emacs-calfw
 
