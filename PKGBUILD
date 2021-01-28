@@ -4,10 +4,10 @@ pkgdesc="ROS - A metapackage to bring in the default packages second generation 
 url='https://www.wiki.ros.org/geometry2'
 
 pkgname='ros-melodic-geometry2'
-pkgver='0.6.5'
+pkgver='0.6.6'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
