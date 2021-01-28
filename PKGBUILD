@@ -4,7 +4,7 @@ pkgname=opentabletdriver-git
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
-pkgver=v0.4.2.r282.g4372321
+pkgver=v0.5.0.r59.g6780778
 pkgrel=2
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
@@ -26,11 +26,11 @@ source=('git+https://github.com/InfinityGhost/OpenTabletDriver'
 
 sha256sums=('SKIP'
             'SKIP'
-            'f0f36182cbd8345b3a693fa8e4bff47d9e3d984ff7b1bfeeb9165d4b886d2180'
+            '8a09d29e683aefcbf54e5fe891d5688f959d9399804f9c151f0e8f6e6a1ede1a'
             '20aac1584a8e08b5a9add1d02ce38e60ddfede615227df6f25c7422217df82b0'
-            '58db10ddb47008521e1d55e3758f7b30b78b7365d4fe3d14cbe339be2704301c'
+            '419797d8915c32602fac3ed653dccc0573cd8ad633bacd925d9a82809da5fe4a'
             '4399359bf6107b612d10aaa06abb197db540b00a973cfec64c2b40d1fbbb2834'
-            '63be4effd52af93cafc1b8cfd9ec0becd08bfcc6a6cb333d9e6e3072beb88e13')
+            'ab3e758e9553e48cca60e6dfbca9ad710907e3c083d285d865b77d6788f266ea')
 
 pkgver() {
     cd "$srcdir/$_pkgname"

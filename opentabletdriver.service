@@ -1,14 +1,12 @@
 [Unit]
 Description=OpenTabletDriver Daemon
-After=graphical.target
-PartOf=graphical.target
-StartLimitIntervalSec=60
-StartLimitBurst=2
+StartLimitIntervalSec=300
+StartLimitBurst=5
 
 [Service]
 ExecStart=/usr/bin/otd
-Restart=always
-RestartSec=10s
+Restart=on-failure
+RestartSec=8s
 
 [Install]
-WantedBy=graphical.target
+WantedBy=multi-user.target
