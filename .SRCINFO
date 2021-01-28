@@ -1,4 +1,4 @@
-pkgbase = linux-xanmod
+pkgbase = linux-xanmod-uksm
 	pkgdesc = Linux Xanmod
 	pkgver = 5.10.11
 	pkgrel = 1
@@ -27,7 +27,7 @@ pkgbase = linux-xanmod
 	sha256sums = 6c66dba73251440352f93ff32b72f5dd49536d0f17ef9347867660fd3a626991
 	sha256sums = 9f7931fe587cfbc918aabbf3a1211a7179c8b2b300a1fc38c22920df4ed7dc2a
 
-pkgname = linux-xanmod
+pkgname = linux-xanmod-uksm
 	pkgdesc = The Linux kernel and modules with Xanmod patches
 	depends = coreutils
 	depends = kmod
@@ -35,6 +35,6 @@ pkgname = linux-xanmod
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 
-pkgname = linux-xanmod-headers
+pkgname = linux-xanmod-uksm-headers
 	pkgdesc = Header files and scripts for building modules for Xanmod Linux kernel
 

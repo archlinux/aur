@@ -70,7 +70,7 @@ _makenconfig=y
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-pkgbase=linux-xanmod
+pkgbase=linux-xanmod-uksm
 pkgver=5.10.11
 _major=5.10
 _branch=5.x
