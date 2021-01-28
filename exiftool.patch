@@ -1,5 +1,5 @@
---- kunst/kunst	2021-01-28 15:37:59.000000000 +0100
-+++ kunst/kunst	2021-01-28 15:34:56.908337399 +0100
+--- kunst/kunst	2021-01-28 16:13:36.308318729 +0100
++++ kunst/kunst	2021-01-28 16:17:06.101650374 +0100
 @@ -8,7 +8,7 @@
 
 
@@ -9,31 +9,12 @@
  MUSIC_DIR=~/Music/
  SIZE=250x250
  POSITION="+0+0"
-@@ -138,7 +138,7 @@
+@@ -138,17 +138,32 @@
 
  	# Extract the album art from the mp3 file and dont show the messsy
  	# output of ffmpeg
 -	ffmpeg -i "$MUSIC_DIR$(mpc current -f %file%)" "$COVER" -y &> /dev/null
-+	ffmpeg -i "$MUSIC_DIR/$(mpc current -f %file%)" "$COVER" -y &> /dev/null
-
- 	# Get the status of the previous command
- 	STATUS=$?
-@@ -148,7 +148,7 @@
-         [ ! "$SILENT" ] && echo "kunst: extracted album art"
- 		ARTLESS=false
- 	else
--        DIR="$MUSIC_DIR$(dirname "$(mpc current -f %file%)")"
-+        DIR="$MUSIC_DIR/$(dirname "$(mpc current -f %file%)")"
-         [ ! "$SILENT" ] && echo "kunst: inspecting $DIR"
-
- 		# Check if there is an album cover/art in the folder.
-@@ -164,8 +164,19 @@
-     fi
-
- 	if [ "$STATUS" -ne 0 ];then
--        [ ! "$SILENT" ] && echo "error: file does not have an album art"
--		get_cover_online
-+		if [ "$(command -v exiftool)" ]; then
++		if [ "$(type -p exiftool &>/dev/null)" ]; then
 +			SONG="$MUSIC_DIR/$(mpc --format "%file%" current)"
 +			PICTURE_TAG="-Picture"
 +
@@ -42,14 +23,40 @@
 +			fi
 +			# Extract album cover using perl-image-exiftool
 +			exiftool -b "$PICTURE_TAG" "$SONG"  > "$COVER"
++			# Check if image is valid
++			img_data=$(identify "$COVER" 2>&1)
++			if [ "$img_data" = *"insufficient"* ]; then
++				return 1
++			fi
 +		else
-+			[ ! "$SILENT" ] && echo "error: file does not have an album art"
-+			get_cover_online
++			ffmpeg -i "$MUSIC_DIR/$(mpc current -f %file%)" "$COVER" -y &> /dev/null
 +		fi
+
+-	# Get the status of the previous command
+-	STATUS=$?
++		STATUS=$?
+
+ 	# Check if the file has a embbeded album art
+ 	if [ "$STATUS" -eq 0 ];then
+-        [ ! "$SILENT" ] && echo "kunst: extracted album art"
++		[ ! "$SILENT" ] && echo "kunst: extracted album art"
+ 		ARTLESS=false
+ 	else
+-        DIR="$MUSIC_DIR$(dirname "$(mpc current -f %file%)")"
++        DIR="$MUSIC_DIR/$(dirname "$(mpc current -f %file%)")"
+         [ ! "$SILENT" ] && echo "kunst: inspecting $DIR"
+
+ 		# Check if there is an album cover/art in the folder.
+@@ -164,7 +179,7 @@
+     fi
+
+ 	if [ "$STATUS" -ne 0 ];then
+-        [ ! "$SILENT" ] && echo "error: file does not have an album art"
++		[ ! "$SILENT" ] && echo "error: file does not have an album art"
+ 		get_cover_online
  	fi
  }
-
-@@ -211,9 +222,6 @@
+@@ -211,9 +226,6 @@
  		update_cover
 
  		if [ "$ARTLESS" == true ];then
