@@ -2,7 +2,7 @@
 _pkgname=poe-overlay-community
 pkgname=${_pkgname}-bin
 pkgver=0.7.7
-pkgrel=1
+pkgrel=2
 pkgdesc="An overlay for Path of Exile. Built with Electron and Angular."
 arch=('x86_64')
 url="https://github.com/PoE-Overlay-Community/PoE-Overlay-Community-Fork"
@@ -10,7 +10,7 @@ license=('MIT')
 provides=(${_pkgname})
 conflicts=()
 replaces=()
-depends=()
+depends=('xorg-xwininfo' 'xorg-xprop') # xprop and xwininfo are needed for hotkeys to work, see #131
 makedepends=()
 backup=()
 
