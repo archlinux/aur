@@ -3,12 +3,8 @@ pkgbase = ttf-barcodes
 	pkgver = 2.0.1
 	pkgrel = 1
 	url = http://grandzebu.net/informatique/codbar-en/codbar.htm
-	install = ttf-barcodes.install
 	arch = any
 	license = GPL2
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
 	source = http://grandzebu.net/informatique/codbar/openbarcodes.zip
 	sha256sums = 3b919ebf22f5f4f547c9e7251cdde74c44ff809db6238fa2a9fae79aee30b405
 
