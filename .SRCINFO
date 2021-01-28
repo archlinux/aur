@@ -1,11 +1,12 @@
 pkgbase = pacpush
 	pkgdesc = Utility to push an Arch hosts package and AUR caches to other hosts
-	pkgver = 2.8
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://github.com/bulletmark/pacpush
 	arch = any
 	license = GPL3
-	makedepends = python-setuptools
+	makedepends = python-pip
+	makedepends = python-wheel
 	depends = python>=3.6
 	depends = rsync
 	depends = sudo
@@ -14,9 +15,8 @@ pkgbase = pacpush
 	depends = python-ruamel-yaml
 	conflicts = pacsync
 	replaces = pacsync
-	backup = etc/pacpush.conf
-	source = pacpush-2.8.tar.gz::https://github.com/bulletmark/pacpush/archive/2.8.tar.gz
-	sha1sums = 3fb1c0806beca822f692e032dfa06b74c7238081
+	source = pacpush-2.8.1.tar.gz::https://github.com/bulletmark/pacpush/archive/2.8.1.tar.gz
+	sha1sums = fd9dbb7f370c23486d2b22557d656f8276fbc662
 
 pkgname = pacpush
 
