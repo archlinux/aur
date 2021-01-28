@@ -8,7 +8,6 @@ arch=(any)
 url="https://github.com/leo-arch/clifm"
 license=(GPL2)
 depends=('ncurses' 'libcap' 'file')
-makedepends=('git')
 optdepends=('sshfs: SFTP support' 'cifs-utils: Samba support' 'curlftpfs: FTPFS support' 'archivemount: Archives mount' 'atool: Archives/compression support')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/leo-arch/$pkgname/archive/v${pkgver}.tar.gz")
 sha256sums=('5abff035020f4d47c812568452ef550c54107b0f907003dde3b0decab8fc46c8')

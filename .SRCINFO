@@ -5,7 +5,6 @@ pkgbase = clifm
 	url = https://github.com/leo-arch/clifm
 	arch = any
 	license = GPL2
-	makedepends = git
 	depends = ncurses
 	depends = libcap
 	depends = file
