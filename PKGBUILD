@@ -3,13 +3,13 @@
 
 pkgname=certbot
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free."
 arch=('any')
 license=('Apache')
 url="https://certbot.eff.org"
 depends=('ca-certificates' 'python-acme' 'python-configargparse' 'python-configobj'
-         'python-cryptography' 'python-distro' 'python-mock' 'python-parsedatetime'
+         'python-cryptography' 'python-distro' 'python-parsedatetime'
          'python-pyrfc3339' 'python-pytz' 'python-setuptools' 'python-zope-component'
          'python-zope-interface')
 checkdepends=('python-pytest')
