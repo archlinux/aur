@@ -1,7 +1,10 @@
+# Maintainer: Dct Mei <dctxmei@gmail.com>
+# Maintainer: Steven Tang <xosdy.t@gmail.com>
+# Maintainer: ohmyarch <ohmyarchlinux@protonmail.com>
 # Maintainer: alienzj <alienchuj@gmail.com>
 
 pkgname=geph4-git
-pkgver=r243.023650b
+pkgver=r247.1f5e7bf
 pkgrel=1
 pkgdesc='A command-line Geph4 tools'
 arch=('x86_64')
