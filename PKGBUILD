@@ -4,9 +4,9 @@ pkgdesc="ROS - tf2_geometry_msgs."
 url='https://www.wiki.ros.org/tf2_ros'
 
 pkgname='ros-melodic-tf2-geometry-msgs'
-pkgver='0.6.5'
+pkgver='0.6.6'
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
