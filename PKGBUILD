@@ -6,7 +6,7 @@ url='https://github.com/bosch-robotics-cr/tracetools'
 pkgname='ros-melodic-tracetools'
 pkgver='0.2.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=5
+pkgrel=6
 license=('APLv2')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -19,8 +19,15 @@ ros_depends=()
 depends=(${ros_depends[@]})
 
 _dir="ros1_tracetools-${pkgver}"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/bosch-robotics-cr/tracetools/archive/${pkgver}.tar.gz")
-sha256sums=('3a2aa03551d6de84939260bb4e02b528bec53de81f0bebf44cc4f4610470eaff')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/bosch-robotics-cr/tracetools/archive/${pkgver}.tar.gz"
+"boost_include_dirs.patch")
+sha256sums=('3a2aa03551d6de84939260bb4e02b528bec53de81f0bebf44cc4f4610470eaff'
+            '87968984af285978048fa603fa58cc3a93ae9fbe631da924dfe256e270747fd0')
+
+prepare() {
+  cd ${srcdir}/${_dir}
+  patch -uN CMakeLists.txt ${srcdir}/boost_include_dirs.patch || return 1
+}
 
 build() {
   # Use ROS environment variables
