@@ -1,10 +1,10 @@
 # Contributor: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs-plumed
-pkgver=2019.4
-_gromacsver=2019.4
-_plumedver=2.6.0
-pkgrel=2
+pkgver=2020.4
+_gromacsver=2020.4
+_plumedver=2.7.0
+pkgrel=1
 pkgdesc='GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. (Plumed patched)'
 url='http://www.gromacs.org/'
 license=("LGPL")
@@ -13,10 +13,10 @@ depends=('lapack' 'zlib' "plumed>=${_plumedver}")
 optdepends=('cuda: Nvidia GPU support'
             'opencl-mesa: OpenCL support for AMD GPU'
 	    'opencl-nvidia: OpenCL support for Nvidia GPU')
-makedepends=('cmake' 'libxml2' 'hwloc' 'gcc8')
+makedepends=('cmake' 'libxml2' 'hwloc')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
-sha256sums=('ba4366eedfc8a1dbf6bddcef190be8cd75de53691133f305a7f9c296e5ca1867')
+sha256sums=('5519690321b5500c7951aaf53ff624042c3edd1a5f5d6dd1f2d802a3ecdbf4e6')
 
 export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #Gromacs will have the ability to read any
@@ -25,8 +25,8 @@ export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
 
 
 #For cuda support gcc8 is required, if you do not need cuda support comment the next two lines
-export CC=gcc-8
-export CXX=g++-8
+#export CC=gcc-8
+#export CXX=g++-8
 
 #Plumed
 export PLUMED_KERNEL=/usr/lib/libplumedKernel.so
@@ -57,6 +57,7 @@ package() {
   cd ${srcdir}/single
   make DESTDIR=${pkgdir} install
   rm -rf ${pkgdir}/usr/share
+  rm -rf ${pkgdir}/usr/include
   rm  ${pkgdir}/usr/bin/gmx-completion-mdrun.bash
   mv  ${pkgdir}/usr/bin/mdrun ${pkgdir}/usr/bin/mdrun_plumed
 }
