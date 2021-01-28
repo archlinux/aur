@@ -28,7 +28,7 @@ package() {
               ${pkgdir}"/opt/XMind/resources/"
 
     mkdir -p ${pkgdir}/usr/bin/
-    ln -s "/opt/XMind/xmind" ${pkgdir}/usr/bin/xmind-pro
+    ln -s "/opt/XMind/XMind" ${pkgdir}/usr/bin/xmind-pro
 
     mkdir -p ${pkgdir}/usr/share/mime/packages
     install -Dm644 xmind.xml ${pkgdir}/usr/share/mime/packages/
