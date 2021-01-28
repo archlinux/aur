@@ -2,7 +2,7 @@
 
 pkgsubn=AugmentedSteam
 pkgname=chromium-extension-augmented-steam-git
-pkgver=v1.4.5.r449.g2eb093ed
+pkgver=v1.4.5.r500.g433a748a
 pkgrel=1
 pkgdesc="Chrome/Chromium extension for Augmented Steam - git/dev"
 arch=('any')
@@ -23,13 +23,14 @@ pkgver() {
 }
 
 build() {
-    cp "config.js" "${srcdir}/${pkgsubn}/src/js/config.js"
+    #cp "config.js" "${srcdir}/${pkgsubn}/src/js/config.js"
     cd "${srcdir}/${pkgsubn}"
+    npm install
+    npm run build chrome -- --production
 }
 
 package() {
     mkdir -p "${pkgdir}/usr/share/${pkgname}"
     shopt -s dotglob
-    cp -dr --no-preserve=ownership "${srcdir}/${pkgsubn}/"/* "${pkgdir}/usr/share/${pkgname}"
-    cp -d --no-preserve=ownership "${pkgdir}/usr/share/${pkgname}/config/manifests/manifest_chrome.json" "${pkgdir}/usr/share/${pkgname}/manifest.json"
+    cp -dr --no-preserve=ownership "${srcdir}/${pkgsubn}/dist/prod.chrome"/* "${pkgdir}/usr/share/${pkgname}"
 }
