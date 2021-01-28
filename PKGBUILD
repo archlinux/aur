@@ -3,7 +3,7 @@
 # Contributor: Fabio Loli
 # Contributor: Sergey Kasmy
 pkgname=liquidctl-git
-pkgver=1.4.2.r210.4286cc4
+pkgver=1.5.0.r14.456f6d7
 pkgrel=1
 pkgdesc='Cross-platform tool and drivers for liquid coolers and other devices'
 arch=('any')
@@ -15,7 +15,7 @@ checkdepends=('python-pytest')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(
-	"$pkgname::git+https://github.com/liquidctl/liquidctl.git"
+	"$pkgname::git+https://github.com/liquidctl/liquidctl.git#branch=master"
 )
 sha256sums=(
 	'SKIP'
@@ -64,4 +64,5 @@ package() {
 	# useful in some scenarios (note: versioned separately from liquidctl):
 	# install -D extra/yoda "$pkgdir"/usr/bin/liquidctl-yoda
 	# install -D extra/liquiddump "$pkgdir"/usr/bin/liquidctl-dump
+	# install -D extra/prometheus-liquidctl-exporter "$pkgdir"/usr/bin/prometheus-liquidctl-exporter
 }

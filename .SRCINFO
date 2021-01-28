@@ -1,6 +1,6 @@
 pkgbase = liquidctl-git
 	pkgdesc = Cross-platform tool and drivers for liquid coolers and other devices
-	pkgver = 1.4.2.r210.4286cc4
+	pkgver = 1.5.0.r14.456f6d7
 	pkgrel = 1
 	url = https://github.com/liquidctl/liquidctl
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = liquidctl-git
 	depends = i2c-tools
 	provides = liquidctl
 	conflicts = liquidctl
-	source = liquidctl-git::git+https://github.com/liquidctl/liquidctl.git
+	source = liquidctl-git::git+https://github.com/liquidctl/liquidctl.git#branch=master
 	sha256sums = SKIP
 
 pkgname = liquidctl-git
