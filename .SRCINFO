@@ -1,6 +1,6 @@
 pkgbase = python-av1an
 	pkgdesc = A cross-platform all-in-one tool for streamlining AV1 encoding
-	pkgver = 5.5.post3
+	pkgver = 5.6.post1
 	pkgrel = 1
 	url = https://github.com/master-of-zen/Av1an
 	arch = any
@@ -28,8 +28,8 @@ pkgbase = python-av1an
 	optdepends = mkvtoolnix-cli: mkvmerge support
 	optdepends = ffms2
 	optdepends = vapoursynth-plugin-lsmashsource
-	source = av1an-5.5.post3.tar.gz::https://files.pythonhosted.org/packages/source/A/Av1an/Av1an-5.5.post3.tar.gz
-	sha256sums = 83766ecb6ede9a1278cc2f9e106ec70c0ba59ca3819a029ace1f212f99ec82d3
+	source = av1an-5.6.post1.tar.gz::https://files.pythonhosted.org/packages/source/A/Av1an/Av1an-5.6.post1.tar.gz
+	sha256sums = f00020d6b4791280b0c6005b89dc768dad57ba12ea3807f4ca8ba28b5116be78
 
 pkgname = python-av1an
 
