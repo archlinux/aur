@@ -4,7 +4,7 @@ _buildver=0.8.0-dev.1038+58344e001
 
 pkgname=zig-dev-bin
 pkgver=20210120
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software"
 arch=('x86_64')
 url="https://ziglang.org/"
@@ -19,10 +19,13 @@ sha256sums=(
 )
 
 package() {
-    cd "${srcdir}/zig-linux-x86_64-${_buildver}"
-    install -D -m755 zig "${pkgdir}/usr/bin/zig"
-    cp -R lib "${pkgdir}/usr"
-    install -D -m644 docs/langref.html "${pkgdir}/usr/share/doc/zig/langref.html"
-    cp -R docs/std "${pkgdir}/usr/share/doc/zig/"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/zig/LICENSE"
+  cd "${srcdir}/zig-linux-x86_64-${_buildver}"
+  install -d "${pkgdir}/usr/bin"
+  install -d "${pkgdir}/usr/lib/zig"
+  cp -R lib "${pkgdir}/usr/lib/zig/lib"
+  install -D -m755 zig "${pkgdir}/usr/lib/zig/zig"
+  ln -s /usr/lib/zig/zig "${pkgdir}/usr/bin/zig"
+  install -D -m644 docs/langref.html "${pkgdir}/usr/share/doc/zig/langref.html"
+  cp -R docs/std "${pkgdir}/usr/share/doc/zig/"
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/zig/LICENSE"
 }
