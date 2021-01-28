@@ -3,9 +3,9 @@
 pkgname='perl-catalyst-plugin-enablemiddleware'
 _pkgname='Catalyst-Plugin-EnableMiddleware'
 pkgver=0.006
-pkgrel=4
+pkgrel=5
 pkgdesc='Enable Plack Middleware via Configuration'
-arch=(i686 x86_64)
+arch=(any)
 license=('perl')
 url="https://metacpan.org/release/Catalyst-Plugin-EnableMiddleware"
 options=(!emptydirs)
