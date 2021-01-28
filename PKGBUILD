@@ -2,9 +2,9 @@ pkgdesc="ROS - tf2_msgs."
 url='https://www.wiki.ros.org/tf2_msgs'
 
 pkgname='ros-melodic-tf2-msgs'
-pkgver='0.6.5'
+pkgver='0.6.6'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
