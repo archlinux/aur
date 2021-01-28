@@ -1,6 +1,6 @@
 pkgbase = slime
 	pkgdesc = The Superior Lisp Interaction Mode for Emacs
-	pkgver = 2.24
+	pkgver = 2.25
 	pkgrel = 1
 	url = http://common-lisp.net/project/slime
 	install = slime.install
@@ -14,7 +14,7 @@ pkgbase = slime
 	optdepends = texlive-core: for recreating the documentation
 	provides = slime
 	conflicts = slime
-	source = slime-2.24.tar.gz::https://github.com/slime/slime/archive/v2.24.tar.gz
+	source = slime-2.25.tar.gz::https://github.com/slime/slime/archive/v2.25.tar.gz
 	sha256sums = be13afe8f0bffc8bbb848ba0fe61e5624486a50a230cda840ef379a08e2fa002
 
 pkgname = slime
