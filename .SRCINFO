@@ -1,12 +1,11 @@
 pkgbase = minecraft-pi
 	pkgdesc = Minecraft Pi Edition (for Raspberry Pi devices)
 	pkgver = 0.1.1
-	pkgrel = 2
-	url = http://pi.minecraft.net/
+	pkgrel = 3
+	url = https://www.minecraft.net/en-us/edition/pi/
 	arch = armv6h
 	arch = armv7h
 	license = custom
-	makedepends = pacman>=4.2.0
 	depends = libx11
 	depends = sdl
 	depends = libpng12
@@ -16,11 +15,11 @@ pkgbase = minecraft-pi
 	source = minecraft-pi.sh
 	source = minecraft-pi.png
 	source = minecraft-pi.desktop
-	source = https://s3.amazonaws.com/assets.minecraft.net/pi/minecraft-pi-0.1.1.tar.gz
+	source = https://www.minecraft.net/content/dam/minecraft/edition-pi/minecraft-pi-0.1.1.tar.gz
 	md5sums = 3da8abffae8a84c3f4abb16fd71fd406
 	md5sums = df6c93c429356fbbc633a12c03ca0089
 	md5sums = 19f3b1646fcc96db01d6ba4712e3c2e5
-	md5sums = d24f5794c0f640823f25ffcb553ce18f
+	md5sums = be2b7046f83f8682a8ecd80496c5454b
 
 pkgname = minecraft-pi
 
