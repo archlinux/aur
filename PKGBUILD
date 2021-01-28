@@ -3,17 +3,35 @@
 
 
 pkgname=ustreamer
-pkgver=3.3
+pkgver=3.14
 pkgrel=1
 pkgdesc="Lightweight and fast MJPG-HTTP streamer"
 url="https://github.com/pikvm/ustreamer"
 license=(GPL)
 arch=(i686 x86_64 armv6h armv7h aarch64)
 depends=(libjpeg libevent libutil-linux libbsd libgpiod)
-# optional: raspberrypi-firmware for OMX encoder
 makedepends=(gcc make)
 source=(${pkgname}::"git+https://github.com/pikvm/ustreamer#commit=v${pkgver}")
 md5sums=(SKIP)
+
+
+_options="WITH_GPIO=1"
+if [ -e /usr/bin/python3 ]; then
+	_options="$_options WITH_PYTHON=1"
+	depends+=(python)
+	makedepends+=(python-setuptools)
+fi
+if [ -e /opt/vc/include/IL/OMX_Core.h ]; then
+	depends+=(raspberrypi-firmware)
+	makedepends+=(raspberrypi-firmware)
+	_options="$_options WITH_OMX=1"
+fi
+
+
+# LD does not link mmal with this option
+# This DOESN'T affect setup.py
+LDFLAGS="${LDFLAGS//--as-needed/}"
+export LDFLAGS="${LDFLAGS//,,/,}"
 
 
 build() {
@@ -21,14 +39,10 @@ build() {
 	rm -rf $pkgname-build
 	cp -r $pkgname $pkgname-build
 	cd $pkgname-build
-
-	local _options="WITH_GPIO=1"
-	[ -e /opt/vc/include/IL/OMX_Core.h ] && _options="$_options WITH_OMX=1"
-
 	make $_options CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" $MAKEFLAGS
 }
 
 package() {
 	cd "$srcdir/$pkgname-build"
-	make DESTDIR="$pkgdir" PREFIX=/usr install
+	make $_options CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" DESTDIR="$pkgdir" PREFIX=/usr install
 }
