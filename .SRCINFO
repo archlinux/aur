@@ -1,10 +1,9 @@
 pkgbase = perl-catalyst-plugin-unicode
 	pkgdesc = Unicode aware Catalyst (old style)
 	pkgver = 0.93
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Catalyst-Plugin-Unicode
-	arch = i686
-	arch = x86_64
+	pkgrel = 2
+	url = https://metacpan.org/release/Catalyst-Plugin-Unicode
+	arch = any
 	license = PerlArtistic
 	license = GPL
 	depends = perl
@@ -14,8 +13,9 @@ pkgbase = perl-catalyst-plugin-unicode
 	depends = perl-test-use-ok
 	depends = perl-test-www-mechanize-catalyst
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Catalyst-Plugin-Unicode-0.93.tar.gz
+	source = https://cpan.metacpan.org/authors/id/B/BO/BOBTFISH/Catalyst-Plugin-Unicode-0.93.tar.gz
 	md5sums = f362bfa2ec2bb70378717122e2da018d
+	sha512sums = ef8183f4e69bf2084d312390c789d17b4fca91415b4466031a2e1d0f188b86ef9f79219fb27bd1e84d2e5b84dbfce0534ecacdc94162dd246a718fbbe4c462b0
 
 pkgname = perl-catalyst-plugin-unicode
 
