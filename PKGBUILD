@@ -1,4 +1,4 @@
-# Maintainer Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
+# Maintainer: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
 
 pkgname=wesnoth-rcx-git
 pkgver=0.3.0
@@ -8,6 +8,7 @@ arch=('i486' 'i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://shadowm.ai0867.net/projects/wesnoth-rcx"
 license=('LGPL')
 depends=('qt5-base')
+makedepends=('git')
 source=("git+https://github.com/shikadiqueen/morningstar.git")
 md5sums=('SKIP')
 
@@ -21,7 +22,8 @@ prepare() {
   cd morningstar
 
   sed -i "s;/usr/local;$pkgdir/usr;" morningstar.pro
-  qmake -config release QMAKE_CXXFLAGS_RELEASE+="${CXXFLAGS} ${CPPFLAGS}"
+  qmake -config release QMAKE_CXXFLAGS_RELEASE+="${CXXFLAGS} ${CPPFLAGS}" \
+                        QMAKE_LFLAGS_RELEASE+="${LDFLAGS}"
 }
 
 build() {

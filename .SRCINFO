@@ -11,6 +11,7 @@ pkgbase = wesnoth-rcx-git
 	arch = armv7h
 	arch = aarch64
 	license = LGPL
+	makedepends = git
 	depends = qt5-base
 	source = git+https://github.com/shikadiqueen/morningstar.git
 	md5sums = SKIP
