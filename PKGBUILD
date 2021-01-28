@@ -50,6 +50,7 @@ package() {
 	ln -s /etc/MonaServer.ini $pkgdir/var/lib/MonaServer/MonaServer.ini
 	cat MonaServer/MonaServer.ini | sed -e "s|directory=MonaServer.log|directory=/var/log/monaserver/|g" > $pkgdir/etc/MonaServer.ini
 	cp -r MonaServer/www $pkgdir/var/lib/MonaServer/
+	mkdir -p $pkgdir/var/lib/MonaServer/www/live
 	cp -r MonaTiny/cert.pem $pkgdir/var/lib/MonaTiny/
 	cp -r MonaTiny/key.pem $pkgdir/var/lib/MonaTiny/
 	cp -r MonaTiny/MonaTiny $pkgdir/var/lib/MonaTiny/
