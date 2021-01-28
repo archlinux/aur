@@ -1,0 +1,20 @@
+pkgbase = googleduo-git
+	pkgdesc = Unnofficial GoogleDuo desktop application
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://gitlab.com/google-duo/application
+	arch = any
+	license = GPL
+	makedepends = npm
+	makedepends = git
+	makedepends = unzip
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	provides = googleduo-git
+	conflicts = googleduo-bin
+	source = git+https://gitlab.com/google-duo/application.git
+	sha256sums = SKIP
+
+pkgname = googleduo-git
+
