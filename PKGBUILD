@@ -12,7 +12,7 @@ makedepends=()
 optdepends=()
 changelog=
 source=(http://wwwlehre.dhbw-stuttgart.de/~sschulz/WORK/E_DOWNLOAD/V_$pkgver/E.tgz)
-md5sums=('a303126a27deaedb0ce1bb884ab9ab97')
+md5sums=('f73852315dde1071acfa552b9532c7ab')
 
 build() {
   cd "$srcdir/E"
