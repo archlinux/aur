@@ -17,7 +17,7 @@ vulkan-amdgpu-pro
 lib32-vulkan-amdgpu-pro
 )
 pkgver=${major}_${minor}
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url=https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-20-30
 license=('custom: multiple')
@@ -26,8 +26,12 @@ makedepends=('wget')
 
 DLAGENTS='https::/usr/bin/wget --referer https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-20-30 -N %u'
 
-source=(https://drivers.amd.com/drivers/linux/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}.tar.xz)
-sha256sums=(a4040db7822cde36c0783912428e1b4897ecdacb9b3d21d716357dae6e4fc6b7)
+source=(https://drivers.amd.com/drivers/linux/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}.tar.xz
+	progl
+	progl.bash-completion)
+sha256sums=(a4040db7822cde36c0783912428e1b4897ecdacb9b3d21d716357dae6e4fc6b7
+	feb74796c3152cbafaba89d96e68a152f209bd3058c7eb0413cbe1ab0764e96f
+	e32801c38b475cd8df17a407726b86db3de26410f563d688325b4d4314fc5354)
 
 
 
@@ -89,6 +93,17 @@ package_amdgpu-pro-libgl () {
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/libglapi1-amdgpu-pro_${major}-${minor}_amd64.deb
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/libgles2-amdgpu-pro_${major}-${minor}_amd64.deb
     move_copyright
+
+    # extra_commands:
+    move_libdir "usr/lib/x86_64-linux-gnu" "usr/lib"
+    move_libdir "opt/amdgpu-pro/lib/x86_64-linux-gnu" "usr/lib/amdgpu-pro"
+    move_libdir "opt/amdgpu-pro/lib/xorg" "usr/lib/amdgpu-pro/xorg"
+    move_libdir "opt/amdgpu/share/drirc.d" "usr/share/drirc.d"
+    sed -i "s|/opt/amdgpu-pro/lib/x86_64-linux-gnu|#/usr/lib/amdgpu-pro  # commented to prevent problems of booting with amdgpu-pro, use progl script|" "${pkgdir}"/etc/ld.so.conf.d/10-amdgpu-pro-x86_64.conf
+    install -Dm755 "${srcdir}"/progl "${pkgdir}"/usr/bin/progl
+    install -Dm755 "${srcdir}"/progl.bash-completion "${pkgdir}"/usr/share/bash-completion/completions/progl
+    # For some reason, applications started with normal OpenGL (i.e. without ag pro) crashes at launch if this conf file is presented, so hide it for now, until I find out the reason of that.
+    mv "${pkgdir}"/usr/share/drirc.d/10-amdgpu-pro.conf "${pkgdir}"/usr/share/drirc.d/10-amdgpu-pro.conf.hide
 }
 
 package_lib32-amdgpu-pro-libgl () {
@@ -108,6 +123,9 @@ package_lib32-amdgpu-pro-libgl () {
 
     # extra_commands:
     rm "${pkgdir}"/etc/amd/amdrc "${pkgdir}"/opt/amdgpu-pro/lib/xorg/modules/extensions/libglx.so "${pkgdir}"/opt/amdgpu/share/drirc.d/10-amdgpu-pro.conf
+    move_libdir "usr/lib/i386-linux-gnu" "usr/lib32"
+    move_libdir "opt/amdgpu-pro/lib/i386-linux-gnu" "usr/lib32/amdgpu-pro"
+    sed -i "s|/opt/amdgpu-pro/lib/i386-linux-gnu|#/usr/lib32/amdgpu-pro  # commented to prevent problems of booting with amdgpu-pro, use progl32 script|" "${pkgdir}"/etc/ld.so.conf.d/10-amdgpu-pro-i386.conf
 }
 
 package_vulkan-amdgpu-pro () {
