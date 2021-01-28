@@ -1,7 +1,7 @@
 pkgbase = fx_cast-bin
 	pkgdesc = Implementation of the Google Cast Chrome Sender SDK within Firefox
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://hensm.github.io/fx_cast/
 	install = fx_cast.install
 	arch = x86_64

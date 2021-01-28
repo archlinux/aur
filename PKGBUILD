@@ -3,7 +3,7 @@
 # Based on: https://github.com/yochananmarqos/pkgbuilds/blob/master/fx_cast-bin/PKGBUILD
 pkgname=fx_cast-bin
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Implementation of the Google Cast Chrome Sender SDK within Firefox "
 arch=('x86_64')
 url="https://hensm.github.io/fx_cast/"
@@ -24,6 +24,9 @@ package(){
 	# Fix permissions
 	find "$pkgdir/" -type d -exec chmod 755 {} \;
 	chmod 644 "$pkgdir/usr/lib/mozilla/native-messaging-hosts/${pkgname%-bin}_bridge.json"
+
+	# Fix ownership
+	chown -R root:root "${pkgdir}"
 
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-bin}"
 }
