@@ -1,0 +1,15 @@
+pkgbase = python-bmp2hex-git
+	pkgdesc = Python utility to convert 1-, 4-, 8- and 16-bit bitmap files to hex. Used to embed graphics in Arduino/C code, primarily for display.
+	pkgver = 2.3.4.ac6c665
+	pkgrel = 1
+	url = https://github.com/robertgallup/python-bmp2hex
+	arch = any
+	license = MIT
+	depends = python
+	provides = python-bmp2hex
+	conflicts = python-bmp2hex
+	source = git+https://github.com/robertgallup/python-bmp2hex
+	sha256sums = SKIP
+
+pkgname = python-bmp2hex-git
+
