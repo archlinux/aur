@@ -1,7 +1,7 @@
 pkgbase = http-prompt
 	pkgdesc = An interactive HTTP command-line client
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/eliangcs/http-prompt
 	arch = any
 	license = MIT
