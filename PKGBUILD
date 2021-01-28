@@ -1,4 +1,5 @@
 # Maintainer: yjun <jerrysteve1101@gmail.com>
+# Maintainer: Kevin_Liu <we123445@outlook.com>
 
 pkgname=vofa+
 _pkgname=vofaplus
