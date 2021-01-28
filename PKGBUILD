@@ -2,7 +2,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="ayatana-settings"
-pkgver="20.11.09.2"
+pkgver="21.1.28"
 pkgrel=1
 pkgdesc="Configuration tool for tweaking all Ayatana system indicators"
 arch=("any")
@@ -11,7 +11,7 @@ license=("GPL3")
 depends=("gtk3" "gobject-introspection" "python-psutil")
 makedepends=("python-setuptools" "python-polib")
 source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("707f41901558119df5f3528f22d79d03")
+md5sums=("5c48898b4dddcae29abb44e1b070a4e5")
 options=("!emptydirs")
 
 build()
