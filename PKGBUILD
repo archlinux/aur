@@ -1,7 +1,7 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=sleep-inhibitor
-pkgver=1.8
-pkgrel=2
+pkgver=1.8.1
+pkgrel=1
 pkgdesc="Program to run plugins to inhibit system sleep/suspend"
 url="https://github.com/bulletmark/$pkgname"
 license=("GPL3")
@@ -10,7 +10,7 @@ backup=("etc/$pkgname.conf")
 depends=("python>=3.6" "python-ruamel-yaml")
 makedepends=("python-pip" "python-wheel")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha1sums=('1e907ddcbd36c7fa1736d74ef6f2a3034bce5723')
+sha1sums=('f45a462cb14d703e335321ff44a5b2da608bbc77')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -25,12 +25,14 @@ package() {
     --no-warn-script-location \
     --no-cache-dir \
     --no-compile \
+    --progress-bar=off \
     .
 
   local pdir=$(python -c "import site; print(site.getsitepackages()[0])")
-  local _pkgname=${pkgname//-/_}
+  local _pkgname="${pkgname//-/_}"
   cd "$pkgdir/$pdir"
   rm -f $_pkgname-*.dist-info/direct_url.json
+  sed -i "/\/direct_url.json,/d" $_pkgname-*.dist-info/RECORD
   python -O -m compileall -q .
 
   cd "$srcdir/$pkgname-$pkgver"
