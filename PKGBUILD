@@ -4,7 +4,7 @@
 pkgsubn=Tab-Session-Manager
 pkgname=chromium-extension-tab-session-manager-git
 pkgver=6.4.0.r13.g36f06d1d
-pkgrel=1
+pkgrel=2
 pkgdesc="Chrome/Chromium extension for Tab Session Manager - git/dev"
 arch=('any')
 url='https://github.com/sienori/Tab-Session-Manager'
@@ -25,7 +25,6 @@ pkgver() {
 build() {
 	cp "credentials.js" "${srcdir}/${pkgsubn}/src/credentials.js"
 	cd "${srcdir}/${pkgsubn}"
-    #mv credentials.js src/credentials.js
 	npm install --cache "${srcdir}/npm-cache" 
 	npm run build
 	cd dist/
