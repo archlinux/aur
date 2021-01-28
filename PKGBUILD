@@ -27,5 +27,5 @@ build() {
 }
 
 package(){
-	install -Dm755 "$srcdir/rabbitvcs-$pkgver/clients/thunar/RabbitVCS.py" "$pkgdir/usr/lib/thunarx-3/python/RabbitVCS.py"
+	install -Dm755 "$srcdir/rabbitvcs-$pkgver/clients/thunar/RabbitVCS.py" "$pkgdir/usr/share/thunarx-python/extensions/RabbitVCS.py"
 }
