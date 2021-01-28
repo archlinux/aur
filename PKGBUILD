@@ -6,7 +6,7 @@ url='https://www.wiki.ros.org/tf2'
 pkgname='ros-melodic-tf2'
 pkgver='0.6.6'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
@@ -35,15 +35,8 @@ depends=(
 )
 
 _dir="geometry2-${pkgver}/tf2"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry2/archive/${pkgver}.tar.gz"
-         CMakeLists-signal.patch)
-sha256sums=('4955f3ca30d194b0e0842f59b97a72d0e933908c20c56c8c374c152ab02568d1'
-            '878047021778a148cac5a2a6f04e8ee45df593f294022db053d42bc7e5692dbd')
-
-prepare() {
-  cd "${srcdir}/${_dir}"
-  patch -uN CMakeLists.txt "${srcdir}/CMakeLists-signal.patch" || return 1
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry2/archive/${pkgver}.tar.gz")
+sha256sums=('4955f3ca30d194b0e0842f59b97a72d0e933908c20c56c8c374c152ab02568d1')
 
 build() {
 	# Use ROS environment variables.
