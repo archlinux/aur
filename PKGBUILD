@@ -1,20 +1,27 @@
-# Maintainer: Dct Mei <dctxmei@gmail.com>
-# Maintainer: Steven Tang <xosdy.t@gmail.com>
-# Maintainer: ohmyarch <ohmyarchlinux@protonmail.com>
 # Maintainer: alienzj <alienchuj@gmail.com>
+# Contributor: Steven Tang <xosdy.t@gmail.com>
+# Contributor: ohmyarch <ohmyarchlinux@protonmail.com>
+# Contributor: Dct Mei <dctxmei@gmail.com>
 
-pkgname=geph4-git
+pkgbase=geph4-git
+_pkgbase=geph4
+pkgname=('geph4-binder-git'
+         'geph4-bridge-git'
+         'geph4-client-git'
+         'geph4-exit-git'
+         'geph4-vpn-helper-git')
 pkgver=r247.1f5e7bf
-pkgrel=1
-pkgdesc='A command-line Geph4 tools'
+pkgrel=2
+pkgdesc='A command-line Geph4 toolset'
 arch=('x86_64')
 url="https://github.com/geph-official/geph4"
 license=('GPL3')
+groups=('geph4-git')
 depends=('gcc-libs')
-makedepends=('rust')
-provides=("geph4-git")
+makedepends=('git' 'rust')
+provides=("geph4")
 conflicts=("geph4")
-source=("git+$url.git"
+source=("git+${url}.git"
         "geph4-client.service"
         "geph4-client@.service"
         "geph4-client-user.service"
@@ -22,45 +29,62 @@ source=("git+$url.git"
         "geph4-exit-user.service"
         "geph4-client.sysusers"
         "geph4-exit.sysusers")
-sha512sums=('SKIP'
-            'e1d8b5bcd6c7dc631947ec7d2734de2cc018cb9c0e47623ddf072c17adc1c8c4e4b25e6f5cab9d3e5fb3cdfe58d9d4e677c1481de7ce8ffdc9a204084c3325d7'
-            'e1d8b5bcd6c7dc631947ec7d2734de2cc018cb9c0e47623ddf072c17adc1c8c4e4b25e6f5cab9d3e5fb3cdfe58d9d4e677c1481de7ce8ffdc9a204084c3325d7'
-            'a7f67c905d808bfea4be035572d4748ec087f82cab7e649e687ec92492c19d447a8ed671e93bf1fac9524e3d223ff6a8bae84c2ff4485dc921e95b1a976832a0'
-            'fb52090d9d7ca92512728966e64fe668c1b468cb0d09a1b2331702d6cbdb6e008560af8981acf4dec0892952d40d4aeb58b18907bbd8e5936d11609962a47a0f'
-            'fb52090d9d7ca92512728966e64fe668c1b468cb0d09a1b2331702d6cbdb6e008560af8981acf4dec0892952d40d4aeb58b18907bbd8e5936d11609962a47a0f'
-            'dc7bc790d4c33a7a5d7c603f0dd339d28a31e5082b936ed8e31b5b2ffb26e63343be633cc432bf69e7444158bcd5af2620ac95bc458e37b442d6f89b6050d9ca'
-            '60531d24beaa8b4934191d05f5d70b4f4a154824e3b23ec3f545be5dffec237ed2efb0a85b7dca33f302cf834e822fd47c9733ef95098356167e6c9d01a2c2c7')
+sha256sums=('SKIP'
+            '2094012da2f85c59c83fbd61c13af8a6be6913c026579753888b30f183bba603'
+            '2094012da2f85c59c83fbd61c13af8a6be6913c026579753888b30f183bba603'
+            'a5481e7c3f0bccafe23ca14d8be4342177e3acfea0c0aafd245ba6252f00e2a6'
+            '44b2aac2fc7ee30ec061736e8ac328d8caa4d0e8865fd984ada51ef3b2a216a8'
+            '5faa4612a96592d84f98fb4a3a7d162041f033b0120982830fdb1372675246c0'
+            '3384497abbd8504996fe52128cc1f34dbbf056da9a67e56b82a9df8b940686b0'
+            'd3a3dc8d148798d464dc0296a129407c121276e3aa56fa59ae2b41d236753b76')
 
 pkgver() {
-    cd geph4
+    cd "${srcdir}"/"${_pkgbase}"/
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd geph4
-    cargo build --release --manifest-path=geph4-client/Cargo.toml
-    cargo build --release --manifest-path=geph4-vpn-helper/Cargo.toml
+    cd "${srcdir}"/"${_pkgbase}"/
     cargo build --release --manifest-path=geph4-binder/Cargo.toml
     cargo build --release --manifest-path=geph4-bridge/Cargo.toml
+    cargo build --release --manifest-path=geph4-client/Cargo.toml
     cargo build --release --manifest-path=geph4-exit/Cargo.toml
+    cargo build --release --manifest-path=geph4-vpn-helper/Cargo.toml
 }
 
-package() {
-    cd geph4
+package_geph4-binder-git() {
+    cd "${srcdir}"/"${_pkgbase}"/
+    install -Dm 644 LICENSE.md "${pkgdir}"/usr/share/licenses/geph4-binder-git/LICENSE
+    install -Dm 755 target/release/geph4-binder -t "${pkgdir}"/usr/bin/
+}
 
-    install -Dm755 target/release/geph4-client "$pkgdir/usr/bin/geph4-client"
-    install -Dm755 target/release/geph4-vpn-helper   "$pkgdir/usr/bin/geph4-vpn-helper"
-    install -Dm755 target/release/geph4-binder "$pkgdir/usr/bin/geph4-binder"
-    install -Dm755 target/release/geph4-bridge "$pkgdir/usr/bin/geph4-bridge"
-    install -Dm755 target/release/geph4-exit   "$pkgdir/usr/bin/geph4-exit"
+package_geph4-bridge-git() {
+    cd "${srcdir}"/"${_pkgbase}"/
+    install -Dm 644 LICENSE.md "${pkgdir}"/usr/share/licenses/geph4-bridge-git/LICENSE
+    install -Dm 755 target/release/geph4-bridge -t "${pkgdir}"/usr/bin/
+}
 
-    install -Dm 644 "$srcdir/geph4-client.service"  -t "$pkgdir/usr/lib/systemd/system/"
-    install -Dm 644 "$srcdir/geph4-client@.service" -t "$pkgdir/usr/lib/systemd/system/"
-    install -Dm 644 "$srcdir/geph4-exit.service"    -t "$pkgdir/usr/lib/systemd/system/"
+package_geph4-client-git() {
+    cd "${srcdir}"/"${_pkgbase}"/
+    install -Dm 644 LICENSE.md "${pkgdir}"/usr/share/licenses/geph4-client-git/LICENSE
+    install -Dm 755 target/release/geph4-client -t "${pkgdir}"/usr/bin/
+    install -Dm 644 "${srcdir}"/geph4-client.sysusers "${pkgdir}"/usr/lib/sysusers.d/geph4-client.conf
+    install -Dm 644 "${srcdir}"/geph4-client.service -t "${pkgdir}"/usr/lib/systemd/system/
+    install -Dm 644 "${srcdir}"/geph4-client@.service -t "${pkgdir}"/usr/lib/systemd/system/
+    install -Dm 644 "${srcdir}"/geph4-client-user.service "${pkgdir}"/usr/lib/systemd/user/geph4-client.service
+}
 
-    install -Dm 644 "$srcdir/geph4-client-user.service" "$pkgdir/usr/lib/systemd/user/geph4-client.service"
-    install -Dm 644 "$srcdir/geph4-exit-user.service"   "$pkgdir/usr/lib/systemd/user/geph4-exit.service"
+package_geph4-exit-git() {
+    cd "${srcdir}"/"${_pkgbase}"/
+    install -Dm 644 LICENSE.md "${pkgdir}"/usr/share/licenses/geph4-exit-git/LICENSE
+    install -Dm 755 target/release/geph4-exit -t "${pkgdir}"/usr/bin/
+    install -Dm 644 "${srcdir}"/geph4-exit.sysusers "${pkgdir}"/usr/lib/sysusers.d/geph4-exit.conf
+    install -Dm 644 "${srcdir}"/geph4-exit.service -t "${pkgdir}"/usr/lib/systemd/system/
+    install -Dm 644 "${srcdir}"/geph4-exit-user.service "${pkgdir}"/usr/lib/systemd/user/geph4-exit.service
+}
 
-    install -Dm 644 "$srcdir/geph4-client.sysusers" "$pkgdir/usr/lib/sysusers.d/geph4-client.conf"
-    install -Dm 644 "$srcdir/geph4-exit.sysusers"   "$pkgdir/usr/lib/sysusers.d/geph4-exit.conf"
+package_geph4-vpn-helper-git() {
+    cd "${srcdir}"/"${_pkgbase}"/
+    install -Dm 644 LICENSE.md "${pkgdir}"/usr/share/licenses/geph4-vpn-helper-git/LICENSE
+    install -Dm 755 target/release/geph4-vpn-helper -t "$pkgdir/usr/bin/"
 }
