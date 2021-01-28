@@ -1,0 +1,25 @@
+pkgbase = ayatana-indicator-keyboard
+	pkgdesc = Ayatana Indicator Keyboard Applet
+	pkgver = 0.7.900
+	pkgrel = 1
+	url = https://github.com/AyatanaIndicators
+	arch = i686
+	arch = x86_64
+	arch = pentium4
+	license = GPL3
+	makedepends = intltool
+	makedepends = cmake
+	makedepends = cmake-extras
+	makedepends = glib2
+	makedepends = libx11
+	makedepends = libxklavier
+	depends = libayatana-indicator
+	depends = systemd
+	depends = glib2
+	depends = libxklavier
+	options = !emptydirs
+	source = https://github.com/AyatanaIndicators/ayatana-indicator-keyboard/archive/0.7.900.tar.gz
+	md5sums = 01c24fa95c25227cc03dd30ebc7f8968
+
+pkgname = ayatana-indicator-keyboard
+
