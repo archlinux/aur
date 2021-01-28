@@ -1,15 +1,15 @@
 pkgbase = lib32-libxnvctrl
 	pkgdesc = NVIDIA NV-CONTROL X extension (32-bit)
-	pkgver = 460.32.03
+	pkgver = 460.39
 	pkgrel = 1
 	url = https://github.com/NVIDIA/nvidia-settings
 	arch = x86_64
 	license = GPL2
 	depends = lib32-gcc-libs
 	depends = lib32-libxext
-	source = nvidia-settings-460.32.03.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/460.32.03.tar.gz
+	source = nvidia-settings-460.39.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/460.39.tar.gz
 	source = libxnvctrl_so.patch
-	sha512sums = c6663a3281349a2e5630122ff70935279576f8ae26478555d7c8eff0a07fc5e0c7c33e2f1e71f5a933184479b8a15827180943a1ae5c4480a73e681adaadecdb
+	sha512sums = 765e645ec96977a78d9ebfbfcfa3352be9593f12899e4207eef90389f352d13aeb5e1004271d267f588c64ba2adbfcce155c9857cb36949bd21e3290221558d0
 	sha512sums = 91ff94736063b911c83b8876fe3e3778db82e0ffe0102036d81a3a6e872ca44a585914646fcbbbe399cd63aa17685fc7f73263ec4f4084f48768ca4d704037fa
 
 pkgname = lib32-libxnvctrl
