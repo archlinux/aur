@@ -1,9 +1,10 @@
 # Contributor: Johannes Weiner <hannes@saeurebad.de>
 # Contributor: Daniel Leidisch <spam@leidisch.net>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintaner: Polar Phoenix <polarphoenixx at gmail dot com>
 
 pkgname=slime
-pkgver=2.24
+pkgver=2.25
 pkgrel=1
 pkgdesc="The Superior Lisp Interaction Mode for Emacs"
 arch=('any')
@@ -17,7 +18,7 @@ provides=('slime')
 conflicts=('slime')
 install=slime.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/slime/slime/archive/v$pkgver.tar.gz")
-sha256sums=('be13afe8f0bffc8bbb848ba0fe61e5624486a50a230cda840ef379a08e2fa002')
+sha256sums=('673fb4b9f5b9a7f3384f136c720a56e459cf058b297cfdd83c88dff44a778c23')
 
 build() {
   cd $pkgname-$pkgver
