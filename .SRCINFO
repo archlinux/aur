@@ -1,4 +1,5 @@
 pkgbase = youtubedl-gui-git
+	pkgdesc = Download Youtube videos to local audio or video files
 	pkgver = 2.0.r0.g0bbc2c1
 	pkgrel = 1
 	url = https://github.com/JaGoLi/ytdl-gui

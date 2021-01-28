@@ -4,6 +4,7 @@
 pkgname=youtubedl-gui-git
 pkgver=2.0.r0.g0bbc2c1
 pkgrel=1
+pkgdesc="Download Youtube videos to local audio or video files"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://github.com/JaGoLi/ytdl-gui"
 license=(GPL3)
