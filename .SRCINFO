@@ -28,9 +28,7 @@ pkgbase = waybar-git
 	provides = waybar
 	conflicts = waybar
 	source = waybar-git::git://github.com/Alexays/Waybar
-	source = meson.build.patch
 	sha1sums = SKIP
-	sha1sums = c82d390a9334537eeac260bfb6e09ecff1c6830c
 
 pkgname = waybar-git
 

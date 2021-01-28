@@ -36,11 +36,9 @@ optdepends=(
     'otf-font-awesome: Icons in the default configuration'
 )
 
-source=("${pkgname}::git://github.com/Alexays/Waybar"
-        'meson.build.patch')
+source=("${pkgname}::git://github.com/Alexays/Waybar")
 
-sha1sums=('SKIP'
-          'c82d390a9334537eeac260bfb6e09ecff1c6830c')
+sha1sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
@@ -49,7 +47,6 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${pkgname}"
-    patch meson.build "${srcdir}/meson.build.patch"
 }
 
 build() {
