@@ -1,10 +1,11 @@
 # Maintainer: Dct Mei <dctxmei@gmail.com>
 # Maintainer: Steven Tang <xosdy.t@gmail.com>
+# Maintainer: ohmyarch <ohmyarchlinux@protonmail.com>
 # Maintainer: alienzj <alienchuj@gmail.com>
 
 pkgname=gephgui4-git
 _pkgname=gephgui4
-pkgver=r107.d0df381
+pkgver=r108.4faa37e
 pkgrel=1
 pkgdesc="Geph connects you with the censorship-free Internet, even when nothing else works"
 arch=('x86_64')
