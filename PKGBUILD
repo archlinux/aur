@@ -2,7 +2,7 @@
 pkgname=yesplaymusic
 pkgver=0.3.1
 pkgrel=1
-pkgdesc="High-value third-party NetEase cloud player"
+pkgdesc="A pretty third-party NetEase cloud player"
 arch=("x86_64")
 url="https://github.com/qier222/YesPlayMusic/"
 license=('custom')
