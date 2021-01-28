@@ -48,4 +48,6 @@ package() {
   install -Dm644 bashrc-config.desktop "$pkgdir"/usr/share/applications/bash-config.desktop
   install -Dm644 help/* -t "$pkgdir"/usr/share/doc/bash-config/help/
   install -Dm644 "$srcdir"/fancy-prompts.bash -t "$pkgdir"/usr/share/bash-config/
+
+  echo "Keywords=MX" >> "$pkgdir"/usr/share/applications/bash-config.desktop
 }
