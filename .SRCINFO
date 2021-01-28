@@ -1,0 +1,24 @@
+pkgbase = youtubedl-gui-git
+	pkgver = 2.0.r0.g0bbc2c1
+	pkgrel = 1
+	url = https://github.com/JaGoLi/ytdl-gui
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = qt5-quickcontrols
+	depends = youtube-dl
+	depends = qt5-base
+	depends = ffmpeg
+	provides = youtubedl-gui
+	conflicts = youtubedl-gui
+	source = youtubedl-gui::git+https://github.com/JaGoLi/ytdl-gui#branch=beta
+	sha256sums = SKIP
+
+pkgname = youtubedl-gui-git
+
