@@ -1,6 +1,6 @@
 # Maintainer: tsp <patrictroy at gmail dot com>
 pkgname=rizin-git
-pkgver=0.2.0.r25478.9eec27e6a
+pkgver=0.2.0.r25539.b6e206388
 pkgrel=1
 epoch=1
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
@@ -19,8 +19,7 @@ md5sums=('SKIP'
 
 pkgver () {
   cd ${pkgname}
-  sed -nE '/^VERSION\ [0-9.]*(-git|)$/p' configure.acr|grep -o '[0-9.]*'|tr -d '\n'
-  printf ".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(grep -oP "^  version: 'v\K[0-9.]*(?=(-git)',$)" meson.build)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare () {
