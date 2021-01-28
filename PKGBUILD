@@ -3,7 +3,7 @@
 pkgsubn=AugmentedSteam
 pkgname=chromium-extension-augmented-steam-git
 pkgver=v1.4.5.r500.g433a748a
-pkgrel=2
+pkgrel=3
 pkgdesc="Chrome/Chromium extension for Augmented Steam - git/dev"
 arch=('any')
 url='https://github.com/tfedor/AugmentedSteam'
@@ -25,7 +25,7 @@ pkgver() {
 build() {
     #cp "config.js" "${srcdir}/${pkgsubn}/src/js/config.js"
     cd "${srcdir}/${pkgsubn}"
-    npm install
+    npm install --cache "${srcdir}/npm-cache" 
     npm run build chrome -- --production
 }
 
