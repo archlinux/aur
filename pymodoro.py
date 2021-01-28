@@ -14,7 +14,7 @@ class pomodoro():
         counter = 1
         while True: 
             if (counter % 2 == 1):
-                print(f"Pomodoro Cycle {counter}")
+                print(f"Pomodoro Cycle {(counter % 2) + 1}")
                 codeUtils.timer(self.workTime, True)
             elif (counter % 8 == 0):
                 codeUtils.timer(self.workTime, True)
