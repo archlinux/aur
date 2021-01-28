@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Obsidian Insider
+Exec=/usr/bin/electron /opt/obsidian-insider/obsidian.asar %u --no-sandbox %U
+Terminal=false
+Type=Application
+Icon=obsidian
+StartupWMClass=obsidian
+X-AppImage-Version=0.10.9
+Comment=Obsidian
+MimeType=x-scheme-handler/obsidian;
+Categories=Office;
