@@ -21,7 +21,6 @@ build() {
 package() {
     depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
