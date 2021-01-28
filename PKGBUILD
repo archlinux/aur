@@ -1,6 +1,6 @@
 # Maintainer: Gregory Dushkin (GregTheMadMonk) <yagreg7@gmail.com>
 pkgname=noaftodo-git
-pkgver=1.4.5r354.c822caf
+pkgver=1.4.5r355.faca540
 pkgrel=1
 pkgdesc="An ncurses TODO manager that No-One-Asked-For."
 arch=(x86_64 i686)

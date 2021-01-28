@@ -1,4 +1,8 @@
 2021-01-28 GregTheMadMonk <yagreg7@gmail.com>
+	* 1.4.5r355.faca540
+	- Replace sprintf usage case that caused error when compiled with _FORTIFY_SOURCE
+
+2021-01-28 GregTheMadMonk <yagreg7@gmail.com>
 	* 1.4.5r323....
 	- Added TIMELINE mode:
 	  + Displays tasks (surprizse) on a timeline
