@@ -2,8 +2,8 @@
 
 pkgname=clifm-git
 pkgver=0.27.1
-pkgrel=2
-pkgdesc="The KISS file manager: cli-based, ultra-lightweight, and lightning fast (development version)"
+pkgrel=3
+pkgdesc="The KISS file manager: cli-based, ultra-lightweight, and lightning fast"
 arch=(any)
 url="https://github.com/leo-arch/clifm"
 license=(GPL2)
@@ -12,6 +12,11 @@ makedepends=('git')
 optdepends=('sshfs: SFTP support' 'cifs-utils: Samba support' 'curlftpfs: FTPFS support' 'archivemount: Archives mount' 'atool: Archives/compression support')
 source=("git+${url}.git")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/${pkgname%%-*}"
+ curl -s "https://raw.githubusercontent.com/leo-arch/${pkgname%%-*}/master/${pkgname%%-*}.c" | grep "#define VERSION" | cut -d" " -f3 | sed 's/"//g'
+}
 
 build() {
   cd "$srcdir/${pkgname%%-*}"
