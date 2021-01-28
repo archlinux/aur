@@ -1,6 +1,6 @@
-# Maintainer: Francisco Lopes <francisco@oblita.com>
+# Maintainer: Francisco Lopes <francisco+interception@nosubstance.me>
 pkgname=interception-space2meta
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='space2meta: turn space into meta when chorded to another key (on release)'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://gitlab.com/interception/linux/plugins/space2meta'
 depends=('interception-tools')
 makedepends=('cmake' 'gcc')
 source=("$pkgname.tar.gz::https://gitlab.com/interception/linux/plugins/space2meta/repository/archive.tar.gz?ref=v${pkgver}")
-sha256sums=('a1b9c7417ff543f48e8eea6b5b8e42a75d3632d32c285f0cd2d7d55dbad4a0b3')
+sha256sums=('dfd519f1db89a512c0aaba9f92723ddb23ca104764e3e64a771cc33f8dab5a63')
 
 build() {
     cd ${srcdir}/space2meta-v${pkgver}-*
