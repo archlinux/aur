@@ -7,28 +7,24 @@ pkgdesc="Ayatana Indicator for viewing recent notifications"
 arch=("i686" "x86_64" "pentium4")
 url="https://github.com/AyatanaIndicators"
 license=("GPL3")
-depends=("glib2" "libayatana-indicator")
-makedepends=("intltool" "libayatana-indicator" "glib2" "gdk-pixbuf2" "gtk3" "mate-common")
+depends=("libayatana-indicator" "glib2" "systemd")
+makedepends=("intltool" "cmake" "cmake-extras" "glib2")
 source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("c1197b1e1b8e10a9648937012b3b2812")
 options=("!emptydirs")
 
-prepare()
-{
-    cd ${pkgname}-${pkgver}
-    NOCONFIGURE=1 ./autogen.sh
-}
-
 build()
 {
     cd ${pkgname}-${pkgver}
-    ./configure --prefix=/usr --libexecdir=/usr/lib --disable-static
+    mkdir build
+    cd build
+    cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBEXECDIR=lib
     make
 }
 
 package()
 {
-    cd ${pkgname}-${pkgver}
+    cd ${pkgname}-${pkgver}/build
     make DESTDIR="${pkgdir}" install
 }
 
