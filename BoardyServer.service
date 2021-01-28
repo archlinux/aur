@@ -1,0 +1,12 @@
+[Unit]
+Description=Boardy clipboard synchronization server
+
+[Service]
+Type=simple
+ExecStart=/opt/boardy-server/BoardyServer
+WorkingDirectory=/opt/boardy-server
+RemainAfterExit=yes
+Environment="DISPLAY=:0" "XAUTHORITY=/home/$user/.Xauthority"
+
+[Install]
+WantedBy=multi-user.target
