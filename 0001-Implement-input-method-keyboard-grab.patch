@@ -1,0 +1,172 @@
+From 0ed4486050b5ac7ae28b8499c68770ea0ff2f44e Mon Sep 17 00:00:00 2001
+From: xdavidwu <xdavidwuph@gmail.com>
+Date: Tue, 21 Jan 2020 11:25:39 +0800
+Subject: [PATCH 1/2] Implement input-method keyboard grab
+
+Reference:
+  https://github.com/swaywm/sway/pull/4932
+---
+ include/sway/input/text_input.h |  3 ++
+ sway/input/keyboard.c           | 64 ++++++++++++++++++++++++++++++---
+ sway/input/text_input.c         | 34 ++++++++++++++++++
+ 3 files changed, 97 insertions(+), 4 deletions(-)
+
+diff --git a/include/sway/input/text_input.h b/include/sway/input/text_input.h
+index 81915795..447f761a 100644
+--- a/include/sway/input/text_input.h
++++ b/include/sway/input/text_input.h
+@@ -28,7 +28,10 @@ struct sway_input_method_relay {
+ 
+ 	struct wl_listener input_method_new;
+ 	struct wl_listener input_method_commit;
++	struct wl_listener input_method_grab_keyboard;
+ 	struct wl_listener input_method_destroy;
++
++	struct wl_listener input_method_keyboard_grab_destroy;
+ };
+ 
+ struct sway_text_input {
+diff --git a/sway/input/keyboard.c b/sway/input/keyboard.c
+index 541fc90d..696b8fb8 100644
+--- a/sway/input/keyboard.c
++++ b/sway/input/keyboard.c
+@@ -485,6 +485,40 @@ static void handle_key_event(struct sway_keyboard *keyboard,
+ 	}
+ 
+ 	if (!handled || event->state == WLR_KEY_RELEASED) {
++		if (seat->im_relay.input_method) {
++			struct wlr_input_method_keyboard_grab_v2 *kb_grab =
++				seat->im_relay.input_method->keyboard_grab;
++			struct wlr_virtual_keyboard_v1 *virtual_keyboard =
++				wlr_input_device_get_virtual_keyboard(wlr_device);
++
++			// If event is from virtual keyboard of the same client as grab,
++			// do not send it back. TODO see swaywm/wlroots#2322
++			if (kb_grab && !(virtual_keyboard &&
++					wl_resource_get_client(virtual_keyboard->resource) ==
++					wl_resource_get_client(kb_grab->resource))) {
++				// Do not send release event to grab if the press event was not
++				// sent to grab.
++				if (event->state == WL_KEYBOARD_KEY_STATE_RELEASED) {
++					bool pressed_sent = update_shortcut_state(
++						&keyboard->state_pressed_sent, event->keycode,
++						event->state, keyinfo.keycode, 0);
++					if (pressed_sent) {
++						wlr_seat_set_keyboard(wlr_seat, wlr_device);
++						wlr_seat_keyboard_notify_key(wlr_seat, event->time_msec,
++							event->keycode, event->state);
++						goto end;
++					}
++
++				}
++
++				wlr_input_method_keyboard_grab_v2_set_keyboard(kb_grab,
++					wlr_device->keyboard);
++				wlr_input_method_keyboard_grab_v2_send_key(kb_grab,
++					event->time_msec, event->keycode, event->state);
++				goto end;
++			}
++		}
++
+ 		bool pressed_sent = update_shortcut_state(
+ 				&keyboard->state_pressed_sent, event->keycode, event->state,
+ 				keyinfo.keycode, 0);
+@@ -495,6 +529,7 @@ static void handle_key_event(struct sway_keyboard *keyboard,
+ 		}
+ 	}
+ 
++end:
+ 	transaction_commit_dirty();
+ 
+ 	free(device_identifier);
+@@ -612,10 +647,31 @@ static void handle_modifier_event(struct sway_keyboard *keyboard) {
+ 	struct wlr_input_device *wlr_device =
+ 		keyboard->seat_device->input_device->wlr_device;
+ 	if (!wlr_device->keyboard->group) {
+-		struct wlr_seat *wlr_seat = keyboard->seat_device->sway_seat->wlr_seat;
+-		wlr_seat_set_keyboard(wlr_seat, wlr_device);
+-		wlr_seat_keyboard_notify_modifiers(wlr_seat,
+-				&wlr_device->keyboard->modifiers);
++		struct sway_seat *seat = keyboard->seat_device->sway_seat;
++		bool sent_to_kb_grab = false;
++		if (seat->im_relay.input_method) {
++			struct wlr_input_method_keyboard_grab_v2 *kb_grab =
++				seat->im_relay.input_method->keyboard_grab;
++			struct wlr_virtual_keyboard_v1 *virtual_keyboard =
++				wlr_input_device_get_virtual_keyboard(wlr_device);
++
++			// If event is from virtual keyboard of the same client as grab,
++			// do not send it back. TODO see swaywm/wlroots#2322
++			if (kb_grab && !(virtual_keyboard &&
++					wl_resource_get_client(virtual_keyboard->resource) ==
++					wl_resource_get_client(kb_grab->resource))) {
++				wlr_input_method_keyboard_grab_v2_set_keyboard(kb_grab,
++						wlr_device->keyboard);
++				wlr_input_method_keyboard_grab_v2_send_modifiers(kb_grab,
++						&wlr_device->keyboard->modifiers);
++				sent_to_kb_grab = true;
++			}
++		}
++		if (!sent_to_kb_grab) {
++			wlr_seat_set_keyboard(seat->wlr_seat, wlr_device);
++			wlr_seat_keyboard_notify_modifiers(seat->wlr_seat,
++					&wlr_device->keyboard->modifiers);
++		}
+ 
+ 		uint32_t modifiers = wlr_keyboard_get_modifiers(wlr_device->keyboard);
+ 		determine_bar_visibility(modifiers);
+diff --git a/sway/input/text_input.c b/sway/input/text_input.c
+index 2fb25eef..8a29f186 100644
+--- a/sway/input/text_input.c
++++ b/sway/input/text_input.c
+@@ -55,6 +55,37 @@ static void handle_im_commit(struct wl_listener *listener, void *data) {
+ 	wlr_text_input_v3_send_done(text_input->input);
+ }
+ 
++static void handle_im_keyboard_grab_destroy(struct wl_listener *listener, void *data) {
++	struct sway_input_method_relay *relay = wl_container_of(listener, relay,
++		input_method_keyboard_grab_destroy);
++	struct wlr_input_method_keyboard_grab_v2 *keyboard_grab = data;
++	wl_list_remove(&relay->input_method_keyboard_grab_destroy.link);
++
++	if (keyboard_grab->keyboard) {
++		// send modifier state to original client
++		wlr_seat_keyboard_notify_modifiers(keyboard_grab->input_method->seat,
++			&keyboard_grab->keyboard->modifiers);
++	}
++}
++
++static void handle_im_grab_keyboard(struct wl_listener *listener, void *data) {
++	struct sway_input_method_relay *relay = wl_container_of(listener, relay,
++		input_method_grab_keyboard);
++	struct wlr_input_method_keyboard_grab_v2 *keyboard_grab = data;
++
++	// send modifier state to grab
++	struct wlr_keyboard *active_keyboard = wlr_seat_get_keyboard(relay->seat->wlr_seat);
++	wlr_input_method_keyboard_grab_v2_set_keyboard(keyboard_grab,
++		active_keyboard);
++	wlr_input_method_keyboard_grab_v2_send_modifiers(keyboard_grab,
++		&active_keyboard->modifiers);
++
++	wl_signal_add(&keyboard_grab->events.destroy,
++		&relay->input_method_keyboard_grab_destroy);
++	relay->input_method_keyboard_grab_destroy.notify =
++		handle_im_keyboard_grab_destroy;
++}
++
+ static void text_input_set_pending_focused_surface(
+ 		struct sway_text_input *text_input, struct wlr_surface *surface) {
+ 	wl_list_remove(&text_input->pending_focused_surface_destroy.link);
+@@ -236,6 +267,9 @@ static void relay_handle_input_method(struct wl_listener *listener,
+ 	wl_signal_add(&relay->input_method->events.commit,
+ 		&relay->input_method_commit);
+ 	relay->input_method_commit.notify = handle_im_commit;
++	wl_signal_add(&relay->input_method->events.grab_keyboard,
++		&relay->input_method_grab_keyboard);
++	relay->input_method_grab_keyboard.notify = handle_im_grab_keyboard;
+ 	wl_signal_add(&relay->input_method->events.destroy,
+ 		&relay->input_method_destroy);
+ 	relay->input_method_destroy.notify = handle_im_destroy;
+-- 
+2.30.0
+

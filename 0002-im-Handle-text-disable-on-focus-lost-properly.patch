@@ -1,0 +1,29 @@
+From ec36e11373156f1475e5e7cb59d3a7ce5cdc76d5 Mon Sep 17 00:00:00 2001
+From: Hyeon Kim <simnalamburt@gmail.com>
+Date: Thu, 28 Jan 2021 18:44:37 +0900
+Subject: [PATCH 2/2] im: Handle text disable on focus lost properly
+
+Reference:
+  https://github.com/swaywm/sway/pull/4932#issuecomment-767062561
+---
+ sway/input/text_input.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/sway/input/text_input.c b/sway/input/text_input.c
+index 8a29f186..1c7e21cc 100644
+--- a/sway/input/text_input.c
++++ b/sway/input/text_input.c
+@@ -167,6 +167,10 @@ static void relay_disable_text_input(struct sway_input_method_relay *relay,
+ 		sway_log(SWAY_DEBUG, "Disabling text input, but input method is gone");
+ 		return;
+ 	}
++	if (text_input->input->focused_surface == NULL) {
++		sway_log(SWAY_DEBUG, "Disabling text input, but no longer focused");
++		return;
++	}
+ 	wlr_input_method_v2_send_deactivate(relay->input_method);
+ 	relay_send_im_state(relay, text_input->input);
+ }
+-- 
+2.30.0
+
