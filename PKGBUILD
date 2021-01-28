@@ -1,12 +1,11 @@
-# Maintainer:
+# Maintainer: Jonne Haß <me@jhass.eu>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Sergey Shatunov <me@prok.pw>
-# Contributor: Jonne Haß <me@jhass.eu>
 
 _rubyver=2.5
 _gemname=bundler
 pkgname=ruby${_rubyver}-${_gemname}
-pkgver=2.1.4
+pkgver=2.2.7
 pkgrel=1
 pkgdesc="Manages an application's dependencies through its entire life, across many machines, systematically and repeatably."
 arch=('any')
@@ -16,7 +15,7 @@ depends=('ruby2.5')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-sha512sums=('6c870061a78e17d97a9219433c7ef8fbf1112de17d0e0f3d8b6db1a518318528e3803184278412aabe65008e93f451ffa59465062856918ef488f9438399eff6')
+sha512sums=('bd2fe4d7ad10fa98004514a93e2e5634bf0ca16a41410d01ed78e320d53923c6690c4564b70e5efcaf21636ef860ef56c425ce0a8e4b240fd97e05efae48c089')
 
 package() {
   cd "$srcdir"
