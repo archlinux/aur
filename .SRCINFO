@@ -1,6 +1,6 @@
 pkgbase = ayatana-indicator-power
 	pkgdesc = Ayatana Indicator showing power state
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = ayatana-indicator-power
 	depends = dconf
 	optdepends = zenity
 	options = !emptydirs
-	source = https://github.com/AyatanaIndicators/ayatana-indicator-power/archive/2.1.1.tar.gz
-	md5sums = c11754a834f5461eaba3135fd2df0156
+	source = https://github.com/AyatanaIndicators/ayatana-indicator-power/archive/2.1.2.tar.gz
+	md5sums = 929a7065c02983f1b3f9c6d31ccd20f5
 
 pkgname = ayatana-indicator-power
 
