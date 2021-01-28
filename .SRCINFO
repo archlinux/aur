@@ -1,0 +1,55 @@
+pkgbase = linux-manjaro-xanmod-uksm
+	pkgdesc = Linux Xanmod
+	pkgver = 5.10.11
+	pkgrel = 1
+	url = http://www.xanmod.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	makedepends = cpio
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = git
+	options = !strip
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.sign
+	source = https://github.com/xanmod/linux/releases/download/5.10.11-xanmod1/patch-5.10.11-xanmod1.xz
+	source = choose-gcc-optimization.sh
+	source = https://gitlab.manjaro.org/packages/core/linux510/-/archive/d63afffd296e1fd986d6d8e1ef1558522d282029/linux510-d63afffd296e1fd986d6d8e1ef1558522d282029.tar.gz
+	source = 0002-UKSM.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43
+	sha256sums = cb36d0d05523e1154f84c060081481f799253da06edb127a2630e539c6974f12
+	sha256sums = d881e96f0480ce51ca343c1ced9fd4543e15f07d06b9bff400df4fafb2512de0
+	sha256sums = 2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511
+	sha256sums = eb8c1363b0e0e20a518ce9dbae2d47a8069ba041e74bb423a07aa0f3f40e7735
+	sha256sums = 9f7931fe587cfbc918aabbf3a1211a7179c8b2b300a1fc38c22920df4ed7dc2a
+
+pkgname = linux-manjaro-xanmod-uksm
+	pkgdesc = The Linux kernel and modules with Xanmod and Manjaro patches (Bootsplash support). Ashmem and binder are enabled
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = initramfs
+	depends = mkinitcpio>=27
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	optdepends = bootsplash-systemd: for bootsplash functionality
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	conflicts = 
+	replaces = 
+
+pkgname = linux-manjaro-xanmod-uksm-headers
+	pkgdesc = Header files and scripts for building modules for linux-manjaro-xanmod kernel
+	provides = 
+	conflicts = 
+	replaces = 
+
