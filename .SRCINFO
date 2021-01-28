@@ -1,6 +1,6 @@
 pkgbase = cubbit
 	pkgdesc = Cubbit desktop-sync application
-	pkgver = 7.2.3
+	pkgver = 8.0.0
 	pkgrel = 1
 	url = https://www.cubbit.io/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = cubbit
 	depends = libxss
 	depends = libxtst
 	options = !strip
-	source = https://get.cubbit.io/desktop/linux/Cubbit-7.2.3.AppImage
-	sha256sums = 2c8d8f8a243f6525b2d76dbcd313c86200cadc412af9f7e432e1d0d0bcfed50d
+	source = https://get.cubbit.io/desktop/linux/Cubbit-8.0.0.AppImage
+	sha256sums = 9cebfd0bec1709318cd543d3fe3d55a4ea70654782ae39b012968d26d21d9c35
 
 pkgname = cubbit
 
