@@ -1,21 +1,21 @@
 pkgbase = signald-git
 	pkgdesc = An unofficial daemon that facilitates communication with the Signal messaging app.
-	pkgver = 0.8.1.r1.3faee48
-	pkgrel = 2
-	url = https://gitlab.com/thefinn93/signald
+	pkgver = 0.11.1.r68.b9fdc2e
+	pkgrel = 1
+	url = https://gitlab.com/signald/signald
 	install = signald-git.install
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = java-environment-openjdk
 	makedepends = gradle
-	depends = java-runtime
+	depends = java-runtime>=11
 	optdepends = openbsd-netcat: interaction with signald socket
 	optdepends = qrencode: display account linking token as QR code
 	provides = signald
 	conflicts = signald
 	backup = var/lib/signald/data
-	source = signald-git::git+https://github.com/thefinn93/signald
+	source = signald-git::git+https://gitlab.com/signald/signald
 	source = gradle-no-daemon.patch
 	source = signald-git.install
 	sha512sums = SKIP

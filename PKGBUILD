@@ -1,25 +1,27 @@
-# Maintainer: zer0def <zer0def@github>
+# Original: zer0def <zer0def@github>
+# Maintainer: Strykar <2946372+Strykar@users.noreply.github.com>
+
 pkgname=signald-git
-pkgver=0.8.1.r1.3faee48
-pkgrel=2
+pkgver=0.11.1.r68.b9fdc2e
+pkgrel=1
 pkgdesc='An unofficial daemon that facilitates communication with the Signal messaging app.'
-#url='https://git.callpipe.com/finn/signald'
-url='https://gitlab.com/thefinn93/signald'
+url='https://gitlab.com/signald/signald'
 license=('GPL3')
 arch=('any')
 makedepends=('git' 'java-environment-openjdk' 'gradle')
-depends=('java-runtime')
+depends=('java-runtime>=11')
 optdepends=('openbsd-netcat: interaction with signald socket'
             'qrencode: display account linking token as QR code')
 provides=('signald')
 conflicts=('signald')
-source=("${pkgname}::git+https://github.com/thefinn93/signald"
+source=("${pkgname}::git+https://gitlab.com/signald/signald"
         'gradle-no-daemon.patch'
         'signald-git.install')
 sha512sums=('SKIP'
             'aa2ff9eef6ebd8ad31275a587b7b24e34938e9744b06892c96d43e274b18a15d2f0258f56cea8fea9163e85a754ebde1e66c20781876bcb524960defe02ce535'
             '9ac1f323657bdf0357d005635394f0b21a74a76d3b25307c9ccec32c10eed00686e584a021028658ebd023c029c3b44485713532bb6f04b30c887790bf617a42')
 backup=('var/lib/signald/data')
+
 install=${pkgname}.install
 _daemon_uid=565
 
