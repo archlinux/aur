@@ -1,11 +1,11 @@
 pkgname=vgmstream-git
-pkgver=r1050.3533.g95709ce3
+pkgver=r1050.3581.g8fd25a33
 pkgrel=1
 pkgdesc='Library for playback of various streamed audio formats used in video games'
 arch=(x86_64)
 url='https://github.com/vgmstream/vgmstream'
 license=(BSD)
-depends=(ffmpeg libao libatrac9-git libogg libvorbis mpg123)
+depends=(ffmpeg libao libatrac9-git libogg libvorbis mpg123 speex)
 makedepends=(audacious git gtk2)
 optdepends=('audacious: for using the bundled plugin')
 conflicts=(vgmstream-kode54-git)
@@ -91,7 +91,7 @@ build() {
 
   cd "$srcdir/$pkgname"
   ./bootstrap
-  CFLAGS="$CFLAGS -DVGM_USE_FFMPEG -DVGM_USE_MPEG -DVGM_USE_VORBIS -DVGM_USE_G7221 -DVGM_USE_ATRAC9 -DVGM_USE_CELT" \
+  CFLAGS="$CFLAGS -DVGM_USE_FFMPEG -DVGM_USE_MPEG -DVGM_USE_VORBIS -DVGM_USE_G7221 -DVGM_USE_ATRAC9 -DVGM_USE_CELT -DVGM_USE_SPEEX" \
     LIBS="-lavcodec -lavformat -lavutil -latrac9 $srcdir/celt-0.6.1/libcelt/.libs/libcelt.a $srcdir/celt-0.11.0/libcelt/.libs/libcelt0.a -lm" \
     ./configure --prefix=/usr
   make -f Makefile.autotools

@@ -1,6 +1,6 @@
 pkgbase = vgmstream-git
 	pkgdesc = Library for playback of various streamed audio formats used in video games
-	pkgver = r1050.3533.g95709ce3
+	pkgver = r1050.3581.g8fd25a33
 	pkgrel = 1
 	url = https://github.com/vgmstream/vgmstream
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = vgmstream-git
 	depends = libogg
 	depends = libvorbis
 	depends = mpg123
+	depends = speex
 	optdepends = audacious: for using the bundled plugin
 	conflicts = vgmstream-kode54-git
 	replaces = vgmstream-kode54-git
