@@ -1,10 +1,10 @@
 # Maintainer: Advaith Madhukar <advaith.madhukar at gmail dot com>
 pkgname=nuclear-player-bin
-pkgver=v0.6.8
+pkgver=0.6.8
 repurl=https://github.com/nukeop/nuclear
 commidfull=$(git ls-remote $repurl.git -tags v$pkgver)
 commid=${commidfull:0:6}
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, multiplatform music player app that streams from multiple sources."
 arch=('x86_64')
 url="http://nuclear.gumblert.tech/"
@@ -16,7 +16,7 @@ source=(
     nuclear.desktop
 )
 md5sums=(
-    'e2b0734e91ccdf964904dfee77d4ff34'
+    'cc7eec9f564530db5dbcbb192c7592ad'
     'SKIP'    
 )
 
