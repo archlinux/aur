@@ -1,0 +1,25 @@
+pkgbase = office365-electron
+	pkgdesc = This is a unofficial, unsupported cross platform Electron wrapper for Office 365.
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/matvelloso/electron-office
+	arch = x86_64
+	license = MIT
+	depends = at-spi2-core
+	depends = desktop-file-utils
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libappindicator-gtk3
+	depends = libnotify
+	depends = libsecret
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = util-linux-libs
+	depends = xdg-utils
+	noextract = office.office365_1.1.2_amd64.deb
+	source = https://github.com/matvelloso/electron-office/releases/download/1.1.2/office.office365_1.1.2_amd64.deb
+	sha256sums = SKIP
+
+pkgname = office365-electron
+
