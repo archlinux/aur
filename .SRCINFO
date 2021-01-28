@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-geometry2
 	pkgdesc = ROS - A metapackage to bring in the default packages second generation Transform Library in ros, tf2.
 	pkgver = 0.6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wiki.ros.org/geometry2
 	arch = any
 	license = BSD
@@ -19,7 +19,7 @@ pkgbase = ros-melodic-geometry2
 	depends = ros-melodic-tf2-kdl
 	depends = ros-melodic-tf2-geometry-msgs
 	source = ros-melodic-geometry2-0.6.6.tar.gz::https://github.com/ros/geometry2/archive/0.6.6.tar.gz
-	sha256sums = 9a1268621518fc22afd7b12ef1cf30e6901a57b054535924d1d74fd5d267773a
+	sha256sums = 4955f3ca30d194b0e0842f59b97a72d0e933908c20c56c8c374c152ab02568d1
 
 pkgname = ros-melodic-geometry2
 
