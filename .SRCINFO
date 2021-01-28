@@ -1,0 +1,24 @@
+pkgbase = wmappearance
+	pkgdesc = Feature-rich GTK+ theme switcher for window managers
+	pkgver = 2021.01.28
+	pkgrel = 1
+	url = https://github.com/TheCynicalTeam/wmappearance
+	arch = any
+	license = CC BY-NC-SA 4.0
+	makedepends = intltool
+	makedepends = dbus-glib
+	depends = gtk2
+	depends = gtk3
+	source = wmappearance-2021.01.28.tar.gz::https://github.com/TheCynicalTeam/wmappearance/archive/2021.01.28.tar.gz
+	sha256sums = SKIP
+
+pkgname = wmappearance
+	groups = therepoclub
+	depends = gtk2
+
+pkgname = wmappearance-gtk3
+	pkgdesc = Feature-rich GTK+ theme switcher for window managers (GTK+ 3 version)
+	groups = therepoclub
+	depends = gtk3
+	conflicts = wmappearance
+
