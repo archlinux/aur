@@ -14,12 +14,10 @@ pkgbase = virtscreen-appimage
 	source = virtscreen.desktop
 	source = virtscreen.png
 	source = virtscreen.sh
-	source = LICENSE
 	md5sums = 120dcf15928164a7d26ef8df277a5595
 	md5sums = d256d8e2895b7c5bfe25fc9cde36542c
 	md5sums = 66c72803b1d60d5b5ab1bb1118396085
 	md5sums = 78ebf72e1a6b79fe42d50614697afaf6
-	md5sums = d32239bcb673463ab874e80d47fae504
 
 pkgname = virtscreen-appimage
 

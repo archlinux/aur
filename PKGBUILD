@@ -18,14 +18,12 @@ source=(
     "${url}/releases/download/${pkgver}/${_filename}"
     "virtscreen.desktop"
     "virtscreen.png"
-    "virtscreen.sh"
-    "LICENSE")
+    "virtscreen.sh")
     
 md5sums=('120dcf15928164a7d26ef8df277a5595'
          'd256d8e2895b7c5bfe25fc9cde36542c'
          '66c72803b1d60d5b5ab1bb1118396085'
-         '78ebf72e1a6b79fe42d50614697afaf6'
-         'd32239bcb673463ab874e80d47fae504')
+         '78ebf72e1a6b79fe42d50614697afaf6')
 
 package() { 
     cd "${srcdir}"
@@ -33,9 +31,4 @@ package() {
     install -Dm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm755 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     install -Dm644 "${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
-    
-    # Symlink license
-    install -Dm644 "LICENSE" "${pkgdir}/opt/VirtScreen/LICENSE"
-    mkdir -p "${pkgdir}/usr/share/licenses/VirtScreen"
-    ln -s "/opt/VirtScreen/LICENSE" "${pkgdir}/usr/share/licenses/VirtScreen"
 }
