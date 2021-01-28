@@ -1,0 +1,25 @@
+pkgbase = virtscreen-appimage
+	pkgdesc = Make your iPad/tablet/computer as a secondary monitor on Linux
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/teaper/VirtScreen
+	arch = x86_64
+	license = GPL
+	depends = python-quamash
+	optdepends = arandr: for display settings option
+	provides = virtscreen
+	conflicts = virtscreen
+	options = !strip
+	source = https://github.com/teaper/VirtScreen/releases/download/0.3.2/VirtScreen-0.3.2.AppImage
+	source = virtscreen.desktop
+	source = virtscreen.png
+	source = virtscreen.sh
+	source = LICENSE
+	md5sums = 120dcf15928164a7d26ef8df277a5595
+	md5sums = d256d8e2895b7c5bfe25fc9cde36542c
+	md5sums = 66c72803b1d60d5b5ab1bb1118396085
+	md5sums = 78ebf72e1a6b79fe42d50614697afaf6
+	md5sums = d32239bcb673463ab874e80d47fae504
+
+pkgname = virtscreen-appimage
+
