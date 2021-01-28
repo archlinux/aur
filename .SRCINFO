@@ -1,5 +1,5 @@
 pkgbase = sway-im
-	pkgdesc = Tiling Wayland compositor and replacement for the i3 window manager
+	pkgdesc = sway Wayland compositor with input method keyboard grab support
 	pkgver = 1.5.1.r2.ec36e113
 	pkgrel = 1
 	epoch = 1
