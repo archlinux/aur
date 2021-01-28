@@ -2,19 +2,19 @@
 # Contributor: Alexej Magura <agm2819*gmail*>
 
 pkgname=freebsd-manpages
-pkgver=12.0
+pkgver=12.2
 _bsdrel=1
-pkgrel=2
+pkgrel=1
 pkgdesc="Manual pages for GNU/kFreeBSD systems"
 arch=('any')
 url="http://packages.debian.org/sid/freebsd-manpages"
 license=('BSD')
+#depends=('')
 makedepends=('tar')
 source=("http://mirrors.kernel.org/debian/pool/main/f/$pkgname/${pkgname}_${pkgver}-${_bsdrel}_all.deb")
-md5sums=('215d533dd5758c5e0cdfd9f3ea4c3094')
+md5sums=('8750520874381d45814a100c6a369216')
 
 prepare () {
-    echo "Unpacking files..."
     tar xf data.tar.xz 
 }
 
