@@ -4,10 +4,10 @@ pkgdesc="ROS - KDL binding for tf2."
 url='https://wiki.ros.org/tf2'
 
 pkgname='ros-melodic-tf2-kdl'
-pkgver='0.6.5'
+pkgver='0.6.6'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
