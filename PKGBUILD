@@ -5,9 +5,9 @@ PointCloud2"
 url='https://wiki.ros.org/tf2_sensor_msgs'
 
 pkgname='ros-melodic-tf2-sensor-msgs'
-pkgver='0.6.5'
+pkgver='0.6.6'
 arch=('any')
-pkgrel=4
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
