@@ -1,7 +1,7 @@
 # Maintainer: Arne Beer <arne@twobeer.de>
 
 pkgname=geil-git
-pkgver=geil.alpha.0.0.1
+pkgver=v0.0.1.alpha.0.r0.g2773cf2
 pkgrel=1
 arch=('any')
 pkgdesc='A task manager and scheduler for shell commands'
@@ -13,10 +13,10 @@ url='https://github.com/nukesor/geil'
 source=("$pkgname"::"git://github.com/nukesor/geil.git")
 sha256sums=('SKIP')
 
-#pkgver() {
-#    cd "$pkgname"
-#    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-#}
+pkgver() {
+    cd "$pkgname"
+    git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+}
 
 build() {
     cd $pkgname
