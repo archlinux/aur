@@ -1,8 +1,8 @@
 ## Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=hqplayer-embedded
-_debpkgver=4.21.0-59
-pkgver=4.21.0
+_debpkgver=4.21.1-60
+pkgver=4.21.1
 pkgrel=1
 _pkgrel_x86_64=1
 _pkgrel_aarch64=1
