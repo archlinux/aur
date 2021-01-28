@@ -1,8 +1,7 @@
-# Maintainer: garionion <garionion@entr0py.de>
+# Maintainer: garionion <garionion at entr0py.de>
 
 pkgname=fluffychat
-_gitname=${pkgname}
-pkgver=0.25.1
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('any')
@@ -10,30 +9,35 @@ url="https://fluffychat.im/"
 license=('AGPL3')
 makedepends=('clang'
              'ninja'
-             'flutter-git'
              'cmake')
 optdepends=('pantalaimon: used for E2E encryption')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz")
-sha256sums=('819d646a442d4332ec6bfc783ccc7a1bb50e5dc2b560b983488e3cfeb04b9da7')
+source=(
+    "flutter.tar.xz::https://storage.googleapis.com/flutter_infra/releases/dev/linux/flutter_linux_1.26.0-12.0.pre-dev.tar.xz"
+    "fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz")
+sha256sums=('fa2ba98775f65c9bd151881696b9d2d5672bb260ed24d83184010a0d436e140a'
+            '852d0a9ba862b8dca94f9f8cedc719d1e03405c1657174f3b9663feab0c47153')
 
 prepare() {
+  export PATH="${srcdir}/flutter/bin:$PATH"
   flutter config --enable-linux-desktop
-  cd ${_gitname}-v$pkgver
+  cd ${pkgname}-v$pkgver
   echo "dependency_overrides:\n  intl: 0.17.0-nullsafety.2" >> pubspec.yaml
 }
 
 build() {
-  cd ${_gitname}-v$pkgver
-
+  export PATH="${srcdir}/flutter/bin:$PATH"
+  cd ${pkgname}-v$pkgver
+  flutter clean
+  flutter pub get
   flutter build linux --release --verbose
 }
 
 package() {  
   # install
   install -dm755 ${pkgdir}/opt
-  mv ${_gitname}-v$pkgver/build/linux/release/bundle ${pkgdir}/opt/${pkgname}
+  mv ${pkgname}-v$pkgver/build/linux/release/bundle ${pkgdir}/opt/${pkgname}
   
   # link
   install -dm755 ${pkgdir}/usr/bin
