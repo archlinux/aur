@@ -2,7 +2,7 @@
 # Contributor: meatatt <meatatt at aliyun dot com>
 
 pkgname=waterfox-classic-kpe
-pkgver=2020.12
+pkgver=2021.01.1
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE"
 arch=('x86_64')
@@ -23,11 +23,11 @@ provides=("waterfox-classic=${pkgver}")
 conflicts=('waterfox-classic' 'waterfox-kde')
 replaces=('waterfox-kde')
 options=('!emptydirs' '!makeflags' 'zipman')
-_filesrev=29877042dd393774197b134426e37cb0dbabef34
+_filesrev=8056d442bb78d009400bc0823cf39d8571e96df3
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-classic-kpe
-_commit=0e169d03648f6fc0e5ce7aafa4c2ec426f24dea3
-#"git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
-source=("git+https://github.com/MrAlex94/Waterfox.git#tag=$pkgver-classic"
+_commit=709bbfedcb2750665fbda4993b253737615ee8f8
+#"git+https://github.com/MrAlex94/Waterfox.git#tag=$pkgver-classic"
+source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox-classic.desktop::$_filesurl/waterfox-classic.desktop"
         "kde.js::$_filesurl/kde.js"
         "distribution.ini::$_filesurl/distribution.ini"
@@ -39,7 +39,7 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=$pkgver-classic"
         "classic-kde.patch::$_filesurl/patches/classic-kde.patch"
         "classic-kde-xul.patch::$_filesurl/patches/classic-kde-xul.patch")
 sha256sums=('SKIP'
-            '03b734e8127678ebb260f69702f3be3cba1431c70b67a6e9f0dae62df091f516'
+            'f915278f7015356d83ecd718a406b605edba85ba7bbf22901228687dfd475c39'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
             'bf06887c00bbc7176f452a3d18092e1b222731218e461782b2877cba938aaa26'
             '7aaf95e46c50a2f0e1df097c9cb867e73f82d0d7fdd8aa75153c1bdafbaebb20'
@@ -48,7 +48,7 @@ sha256sums=('SKIP'
             '877bc1f0e768d96118bb739725e590467773dd897c31263099e52b8d7aaaa4c8'
             'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
             '6ff820e43a48ce9450e59e02877ff574a1921d0b286737d55949ad40865add08'
-            '7b408abf1048c7da504ba1e8fe1da51199f6c011bbe80af1595d9fd810445612')
+            'b06289812def0ddd289ab2c06b3ea2ee909bf984af7742f9fb930c8a44e1423a')
 
 prepare() {
   # Fix openSUSE's patches for Waterfox
