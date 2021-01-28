@@ -55,9 +55,18 @@ pkgname=('grub-theme-tela-color-1080p-git'
          'grub-theme-slaze-white-4k-git'
          'grub-theme-slaze-whitesur-1080p-git'
          'grub-theme-slaze-whitesur-2k-git'
-         'grub-theme-slaze-whitesur-4k-git')
+         'grub-theme-slaze-whitesur-4k-git'
+         'grub-theme-whitesur-color-1080p-git'
+         'grub-theme-whitesur-color-2k-git'
+         'grub-theme-whitesur-color-4k-git'
+         'grub-theme-whitesur-white-1080p-git'
+         'grub-theme-whitesur-white-2k-git'
+         'grub-theme-whitesur-white-4k-git'
+         'grub-theme-whitesur-whitesur-1080p-git'
+         'grub-theme-whitesur-whitesur-2k-git'
+         'grub-theme-whitesur-whitesur-4k-git')
 pkgver=2021.01.26.r1.g86fc01c
-pkgrel=1
+pkgrel=2
 pkgdesc="Flat Design themes for Grub"
 arch=('any')
 url="https://github.com/vinceliuice/grub2-themes"
@@ -79,7 +88,7 @@ _package() {
     install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/"${_pkgname}"/
     install -Dm 644 common/* -t "${pkgdir}"/usr/share/grub/themes/"${name}-${icon}-${resolution}"/
     install -Dm 644 config/"theme-${resolution}.txt" "${pkgdir}"/usr/share/grub/themes/"${name}-${icon}-${resolution}"/theme.txt
-    install -Dm 644 backgrounds/"${resolution}"/background-${name,,}.jpg "${pkgdir}"/usr/share/grub/themes/"${name}-${icon}-${resolution}"/background.jpg
+    install -Dm 644 backgrounds/"${resolution}"/"background-${name}.jpg" "${pkgdir}"/usr/share/grub/themes/"${name}-${icon}-${resolution}"/background.jpg
     for icons in 'color' 'white' 'whitesur'; do
         if [[ "${icon}" == "${icons}" ]]; then
             if [[ "${resolution}" == 'ultrawide' ]]; then

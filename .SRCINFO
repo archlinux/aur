@@ -1,7 +1,7 @@
 pkgbase = grub-themes-git
 	pkgdesc = Flat Design themes for Grub
 	pkgver = 2021.01.26.r1.g86fc01c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinceliuice/grub2-themes
 	arch = any
 	license = GPL3
@@ -121,4 +121,22 @@ pkgname = grub-theme-slaze-whitesur-1080p-git
 pkgname = grub-theme-slaze-whitesur-2k-git
 
 pkgname = grub-theme-slaze-whitesur-4k-git
+
+pkgname = grub-theme-whitesur-color-1080p-git
+
+pkgname = grub-theme-whitesur-color-2k-git
+
+pkgname = grub-theme-whitesur-color-4k-git
+
+pkgname = grub-theme-whitesur-white-1080p-git
+
+pkgname = grub-theme-whitesur-white-2k-git
+
+pkgname = grub-theme-whitesur-white-4k-git
+
+pkgname = grub-theme-whitesur-whitesur-1080p-git
+
+pkgname = grub-theme-whitesur-whitesur-2k-git
+
+pkgname = grub-theme-whitesur-whitesur-4k-git
 
