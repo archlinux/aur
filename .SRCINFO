@@ -1,0 +1,14 @@
+pkgbase = yesplaymusic
+	pkgdesc = High-value third-party NetEase cloud player
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/qier222/YesPlayMusic/
+	arch = x86_64
+	license = custom
+	depends = nss
+	depends = gtk3
+	source = https://github.com/qier222/YesPlayMusic/releases/download/0.3.1/YesPlayMusic_0.3.1_amd64.deb
+	md5sums = 3761bcb8c5156e9ab2c856c99e9562b6
+
+pkgname = yesplaymusic
+
