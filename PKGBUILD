@@ -11,7 +11,7 @@ pkgname=('geph4-binder-git'
          'geph4-exit-git'
          'geph4-vpn-helper-git')
 pkgver=r247.1f5e7bf
-pkgrel=4
+pkgrel=5
 pkgdesc='A command-line Geph4 toolset'
 arch=('x86_64')
 url="https://github.com/geph-official/geph4"
@@ -29,12 +29,12 @@ source=("git+${url}.git"
         "geph4-client.service"
         "geph4-exit.service")
 sha256sums=('SKIP'
-            'c4e640282f1bbf5df7ecb8d21367b7400bf1e5801d82d60a33e22d2d167d8471'
-            '56813c054910d5e2c64000f7f58d063313a44c04844f3b3424ed9622751b5b93'
+            '980c0a9755ffee76068d8a250d533d2118037c7a3fec70e167990934ba9c0619'
+            '2daf5117a98d4529225712cb9f4828f4f5269a591565745497df0eb10068ba2a'
             '3384497abbd8504996fe52128cc1f34dbbf056da9a67e56b82a9df8b940686b0'
             'd3a3dc8d148798d464dc0296a129407c121276e3aa56fa59ae2b41d236753b76'
-            'c3495a0539b3519299b7fa83dece78ede20b5735d4504d22523166d80a9fcf0a'
-            '4a7da8c14301ecd8c882d7457e0e7c4134cfefd9472abb321d98c6825e2a997c')
+            '16bc33c928466bb3881a445a47b91b38172828dc526ab15568d4b62693fc0046'
+            '29a65808d343d449476154a2023f8a9bd15838fd5bbab1ab9a3b615aa652d066')
 
 pkgver() {
     cd "${srcdir}"/"${_pkgbase}"/

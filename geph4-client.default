@@ -1,8 +1,23 @@
 # The default settings for Geph4 client Service
 
-# Fill in some optional parameters here, you can run
+# Fill in the subcommand here, you can run
+# `geph4-client -h` to view:
+# binder-proxy | connect | sync
+SUBCOMMAND=connect
+# Fill in some flags here, you can run
 # `geph4-client connect -h` to view:
-OPTIONS=
+# --stdio-vpn: whether or not to wait for VPN commands on stdio
+# --use-bridges: whether or not to use bridges
+FLAGS="--use-bridges"
+# Fill in some options here, you can run
+# `geph4-client connect -h` to view:
+# --exit-server:
+# ca-mtl-01.exits.geph.io
+# fi-hel-01.exits.geph.io
+# sg-sgp-02.exits.geph.io
+# tw-rmq-01.exits.geph.io
+# us-hio-01.exits.geph.io (default)
+OPTIONS="--exit-server us-hio-01.exits.geph.io"
 # Please enter the password you want to use:
 PASSWORD=password
 # Please enter the username you want to use:
