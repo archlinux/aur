@@ -12,7 +12,7 @@ url="https://github.com/TheCynicalTeam/$pkgname"
 depends=('gtk2' 'gtk3')
 makedepends=('intltool' 'dbus-glib')
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('d0e9abeb6c9113f5e741bc429b83987f34af77c56a5808a068cc9c21f1773de2')
+sha256sums=('e93761abb9bada10be90dfa3ba8439fc7b5d35aa40cad42feb375b12a4a4d538')
 
 build() {
   # GTK+ 2 version
