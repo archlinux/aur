@@ -1,10 +1,10 @@
-# Maintainer: garionion <garionion@entr0py.de>
+# Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 _pkgname=fluffychat
 pkgname=fluffychat-web
 _gitname=${_pkgname}
 pkgver=0.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Chat with your friends"
 arch=('any')
 url="https://fluffychat.im/"
