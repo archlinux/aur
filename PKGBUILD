@@ -2,7 +2,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-developer-ffmpeg-codecs
-pkgver=88.0.4292.2
+pkgver=89.0.4356.6
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera-developer"
 arch=('x86_64')
@@ -10,35 +10,25 @@ url="https://ffmpeg.org/"
 license=('LGPL2.1')
 depends=('glibc')
 makedepends=(
-  'gtk3' 'libexif' 'libxss' 'ninja' 'nss' 'pciutils' 'python2' 'python'
-  'xdg-utils' 'gn'
+  'gtk3' 'libexif' 'libxss' 'ninja' 'nss' 'pciutils' 'python' 'python2'
+  'xdg-utils' 'gn' 'libva'
 )
 options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
 )
-sha512sums=('27d5f82570e3c462921d0ecbb2730cd24592281d3e98098dd3d627c4d002176b3e8d4e5e7a18bddda987e635bd8e2203bb12943b6a74e79107d7501f123b5104')
+sha512sums=('f83ce11fd9957a794c6dfdd5e128016f55140936af94daf1b7f09156b04b28d77f924bd9c9f92e062c75aae14d11508cb532deda23732acfa85d987de28cbad3')
 
-prepare() {
-  cd "$srcdir/chromium-$pkgver"
-
-  # Force script incompatible with Python 3 to use /usr/bin/python2
-  sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
-
-  # Make xcbgen available to ui/gfx/x/gen_xproto.py running under Python 2
-  ln -s /usr/lib/python3.*/site-packages/xcbgen "$srcdir/"
-
-}
+#prepare() {
+  #cd "$srcdir/chromium-$pkgver"
+#}
 
 build() {
   cd "$srcdir/chromium-$pkgver"
 
-  python2 tools/clang/scripts/update.py
+  python tools/clang/scripts/update.py
 
   export PATH="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin:$PATH"
-
-  # ui/gfx/x/gen_xproto.py needs xcbgen
-  export PYTHONPATH=$srcdir
 
   # error while loading shared libraries: libtinfo.so.5: cannot open shared object file: No such file or directory
   ln -s /usr/lib/libtinfo.so.6 \
@@ -49,9 +39,9 @@ build() {
 
   local args="ffmpeg_branding=\"ChromeOS\" proprietary_codecs=true enable_platform_hevc=true enable_platform_ac3_eac3_audio=true enable_platform_mpeg_h_audio=true enable_platform_dolby_vision=true enable_mse_mpeg2ts_stream_parser=true use_gnome_keyring=false use_sysroot=false use_gold=false linux_use_bundled_binutils=false treat_warnings_as_errors=false enable_nacl=false enable_nacl_nonsfi=false clang_use_chrome_plugins=true is_component_build=true is_debug=false symbol_level=0 use_custom_libcxx=true"
 
-  LC_ALL=C buildtools/linux64/gn gen out/Release -v --args="$args" --script-executable=/usr/bin/python2
+  gn gen out/Release -v --args="$args" --script-executable=/usr/bin/python
 
-  LC_ALL=C ninja -C out/Release -v media/ffmpeg
+  ninja -C out/Release -v media/ffmpeg
 }
 
 package() {
