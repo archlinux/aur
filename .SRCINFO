@@ -1,0 +1,18 @@
+pkgbase = urlview-xdg-git
+	pkgdesc = A curses URL parser for text files. Git version, adds support for QUITONLAUNCH option and XDG Base Directory specification compliance.
+	pkgver = r20.ebaeb80
+	pkgrel = 1
+	url = https://github.com/bachoseven/urlview
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = automake
+	makedepends = autoconf
+	depends = bash
+	provides = urlview
+	conflicts = urlview
+	source = git+https://github.com/bachoseven/urlview.git
+	sha256sums = SKIP
+
+pkgname = urlview-xdg-git
