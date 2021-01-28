@@ -1,12 +1,12 @@
 pkgbase = librebarcode-font
 	pkgdesc = Barcode fonts for various barcode standards
-	pkgver = 1.004
+	pkgver = 1.008
 	pkgrel = 1
 	url = https://graphicore.github.io/librebarcode
 	arch = any
 	license = OFL
-	source = ttf-librebarcode-1.004.tar.gz::https://github.com/graphicore/librebarcode/archive/v1.004.tar.gz
-	sha256sums = 07247ac284392bc22c1e54d1693787c9bb8ea22f3a30d0ed879b1ade8815189a
+	source = librebarcode-1.008.tar.gz::https://github.com/graphicore/librebarcode/archive/pre-v1.008.tar.gz
+	sha256sums = 7d697b2595b784b6c1803959241f0f3af29a579bda0a2bb67fb557f7101af1dd
 
 pkgname = ttf-librebarcode
 	provides = librebarcode-font

@@ -3,18 +3,19 @@
 _name=librebarcode
 pkgbase=$_name-font
 pkgname=(ttf-$_name)
-pkgver=1.004
+pkgver=1.008
 pkgrel=1
 pkgdesc='Barcode fonts for various barcode standards'
 arch=('any')
 url="https://graphicore.github.io/$_name"
 license=('OFL')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/graphicore/$_name/archive/v$pkgver.tar.gz")
-sha256sums=('07247ac284392bc22c1e54d1693787c9bb8ea22f3a30d0ed879b1ade8815189a')
+_prefix=pre-v
+source=("$_name-$pkgver.tar.gz::https://github.com/graphicore/$_name/archive/$_prefix$pkgver.tar.gz")
+sha256sums=('7d697b2595b784b6c1803959241f0f3af29a579bda0a2bb67fb557f7101af1dd')
 
 package_ttf-librebarcode() {
     provides=("$pkgbase")
-    cd "$_name-$pkgver"
+    cd "$_name-$_prefix$pkgver"
     install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" fonts/*.ttf
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" fonts/OFL.txt
 }
