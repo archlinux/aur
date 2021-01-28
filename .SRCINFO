@@ -1,7 +1,7 @@
 pkgbase = clifm
 	pkgdesc = The KISS file manager: cli-based, ultra-lightweight, and lightning fast
 	pkgver = 0.27.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/leo-arch/clifm
 	arch = any
 	license = GPL2
@@ -13,9 +13,9 @@ pkgbase = clifm
 	optdepends = cifs-utils: Samba support
 	optdepends = curlftpfs: FTPFS support
 	optdepends = archivemount: Archives mount
-	optdepends = atool: Archives support
-	source = git+https://github.com/leo-arch/clifm.git
-	sha256sums = SKIP
+	optdepends = atool: Archives/compression support
+	source = clifm-0.27.1.tar.gz::https://github.com/leo-arch/clifm/archive/v0.27.1.tar.gz
+	sha256sums = 5abff035020f4d47c812568452ef550c54107b0f907003dde3b0decab8fc46c8
 
 pkgname = clifm
 
