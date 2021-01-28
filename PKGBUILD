@@ -1,6 +1,6 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=libtickit
-pkgver=0.3.3
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Library for building interactive full-screen terminal programs.'
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ license=(custom:MIT)
 depends=(libtermkey 'unibilium>=1.1.0')
 conflicts=(libtickit-git)
 source=("${url}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('8b89bcb63b7bea8f52a684e050d7ef48f6ff45216501adb007320e60a271efa5f3bb9b8e424058686ae9b991dcb9a6668c5493ded2b66838343cd7264ac831c2')
+sha512sums=('1e78d1c3f3e6530d77c60aa38d10ffc541eb1b023b5eadd57b639e0d2840e07adadb83211e085b5f2b4bfa6ae41e487334321dd4776648bc4100c70d21b3075e')
 
 build() {
   cd "${pkgname}-${pkgver}"
