@@ -13,14 +13,14 @@ source "$_where"/prepare
 
 _tkg_initscript
 
-#if [[ "$_sub" = rc* ]]; then
-#  _srcpath="linux-${_basekernel}-${_sub}"
-#  kernel_site="https://git.kernel.org/torvalds/t/linux-${_basekernel}-${_sub}.tar.gz"
-#else
+if [[ "$_sub" = rc* ]]; then
+  _srcpath="linux-${_basekernel}-${_sub}"
+  kernel_site="https://git.kernel.org/torvalds/t/linux-${_basekernel}-${_sub}.tar.gz"
+else
   _srcpath="linux-${_basekernel}"
   kernel_site="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.xz"
   patch_site="https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${_basekernel}.${_sub}.xz"
-#fi
+fi
 
 #_srcpath="bcachefs"
 #kernel_site="git+https://github.com/koverstreet/bcachefs.git"
@@ -76,8 +76,7 @@ options=('!strip' 'docs')
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0012-linux-hardened.patch"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0012-misc-additions.patch"
     )
-
-sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
+    sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'ac108b5a3a1539e72ced4dda6d4da63c0b488b7905a554cf062b8b4c187cab6e'
             'SKIP'
             '458d1ca195f3fee5501683a4b61ef0ed0cfa7e5219eccab3390fb40c0289898a'

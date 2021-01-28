@@ -13,13 +13,23 @@ _tkg_initscript() {
     source "$_EXT_CONFIG_PATH" && msg2 "External configuration file $_EXT_CONFIG_PATH will be used to override customization.cfg values.\n"
   fi
 
+  # Default to Arch
+  if [ -z "$_distro" ] || [ "$_ispkgbuild" = "true" ]; then
+    msg2 "Defaulting to Archlinux target\n"
+    _distro="Arch"
+  fi
+
   # create build dir early
     _path="${_where}"
 
   if [ -z "$_version" ] && [ ! -e "$_path"/versel ]; then
+    case $_VERSEL in
+          *)
           echo "_basever=510" > "$_path"/versel
           echo "_basekernel=5.10" >> "$_path"/versel
           echo "_sub=${ver510}" >> "$_path"/versel
+          ;;
+    esac
   elif [ -n "$_version" ];then
       case "$_version" in
 		"5.10")
@@ -387,6 +397,14 @@ _tkg_srcprep() {
 	    || { [ "$_distro" = "Void" ] && xbps-query -s ccache > /dev/null; } ; then
       sed -i -e 's/CONFIG_GCC_PLUGINS=y/# CONFIG_GCC_PLUGINS is not set/' ./.config
     fi
+  fi
+
+  if [ "$_compiler_name" = "-llvm" ]; then
+    echo 'CONFIG_KCSAN=n' >> ./.config
+    echo 'CONFIG_INIT_STACK_ALL=n' >> ./.config
+    sed -i -e 's/# CONFIG_INIT_ON_FREE_DEFAULT_ON is not set/CONFIG_INIT_ON_FREE_DEFAULT_ON=y/' ./.config
+    sed -i -e 's/CONFIG_INIT_STACK_NONE=y/CONFIG_INIT_STACK_NONE=n/' ./.config
+    echo "CONFIG_INIT_STACK_ALL_ZERO=y" >> ./.config
   fi
 
   if [ "$_font_autoselect" != "false" ]; then
