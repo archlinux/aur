@@ -4,9 +4,9 @@ pkgdesc="ROS - tf2 is the second generation of the transform library, which lets
 url='https://www.wiki.ros.org/tf2'
 
 pkgname='ros-melodic-tf2'
-pkgver='0.6.5'
+pkgver='0.6.6'
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
