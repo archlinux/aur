@@ -1,7 +1,7 @@
 # Maintainer: Ed Neville <ed-archlinux@s5h.net>
 pkgname=pleaser
 _binary=please
-pkgver=0.3.20
+pkgver=0.3.21
 pkgrel=1
 pkgdesc="please, sudo like program with regex support written in rust"
 url="https://gitlab.com/edneville/please"
