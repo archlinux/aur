@@ -1,7 +1,7 @@
 # Maintainer: algebro <algebro at tuta dot io>
 
 pkgname=katrain
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="A tool for analyzing and playing go with AI feedback from KataGo."
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('python' 'python-certifi' 'python-chardet' 'cython' 'python-dataclasses' 
 'python-docutils' 'python-idna' 'python-kivy>=2.0.0' 'python-kivymd' 'python-pillow' 
 'python-pygame' 'python-pygments' 'python-requests' 'python-urllib3')
-source=("https://github.com/sanderland/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('c090b0a19a5e2db363fb0c876ba2145aa38900a170cc3a006bb5d95fc314e0cc')
+source=("https://github.com/sanderland/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('59292e9a4f74aad732895b1ebb04dbbad6e0fa1c33e5aff21a983decc17d5954')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
