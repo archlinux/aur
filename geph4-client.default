@@ -4,6 +4,6 @@
 # `geph4-client connect -h` to view:
 OPTIONS=
 # Please enter the password you want to use:
-PASSWORD=
+PASSWORD=password
 # Please enter the username you want to use:
-USERNAME=
+USERNAME=username
