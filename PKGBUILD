@@ -4,23 +4,23 @@
 # vim: set ts=4 sw=4 et ft=sh:
 
 pkgname=qutebrowser-git
-pkgver=1.14.1.r834.g3199efbe2
+pkgver=2.0.0.r2.gd3b8b525b
 pkgrel=1
 pkgdesc="A keyboard-driven, vim-like browser based on PyQt5"
 arch=("any")
 url="https://www.qutebrowser.org/"
 license=("GPL")
-depends=("python-jinja" "python-pygments" "python-pypeg2"
-         "python-pyqt5" "python-yaml" "qt5-base" "python-pyqtwebengine")
+depends=("python-jinja" "python-pyqt5" "python-yaml" "qt5-base" "python-pyqtwebengine")
 makedepends=("asciidoc" "pygmentize" "git" "python-setuptools")
-optdepends=("gst-libav: media playback with qt5-webkit backend"
+optdepends=("python-adblock: ABP-style adblocking"
+            "pdfjs: displaying PDF in-browser"
+            "gst-libav: media playback with qt5-webkit backend"
             "gst-plugins-base: media playback with qt5-webkit backend"
             "gst-plugins-good: media playback with qt5-webkit backend"
             "gst-plugins-bad: media playback with qt5-webkit backend"
             "gst-plugins-ugly: media playback with qt5-webkit backend"
-            "pdfjs: displaying PDF in-browser"
-            "qt5-webkit: alternative backend"
-            "python-adblock: ABP-style adblocking")
+            "python-pygments: :view-source with qt5-webkit backend" 
+            "qt5-webkit: alternative backend")
 options=(!emptydirs)
 conflicts=('qutebrowser')
 provides=('qutebrowser')
