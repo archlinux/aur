@@ -1,7 +1,7 @@
 pkgbase = tastyworks
 	pkgdesc = One of the fastest, most reliable, and most secure trading platforms in the world.
 	pkgver = 1.12.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tastyworks.com/
 	arch = x86_64
 	license = custom:commercial
