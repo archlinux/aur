@@ -4,14 +4,16 @@ pkgbase = wifi-password
 	pkgrel = 1
 	url = https://github.com/sdushantha/wifi-password
 	arch = any
-	license = unknown
+	license = MIT
 	makedepends = python-setuptools
 	depends = python
 	depends = wireless_tools
+	depends = python-qrcode
 	source = https://files.pythonhosted.org/packages/source/w/wifi-password/wifi-password-1.0.3.tar.gz
 	sha256sums = 55aba4acb84cf35231e629b8440fd9e17bf3ceefd0cba64c8580855070ed8456
 
 pkgname = wifi-password
 	depends = python
 	depends = wireless_tools
+	depends = python-qrcode
 
