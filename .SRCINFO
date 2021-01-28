@@ -1,8 +1,8 @@
 pkgbase = linux-froidzen
 	pkgdesc = Linux ZEN with Patches and Modifications
-	pkgver = 5.10.9.zen1
-	pkgrel = 2
-	url = https://github.com/zen-kernel/zen-kernel/commits/v5.10.9-zen1
+	pkgver = 5.10.11.zen2
+	pkgrel = 1
+	url = https://github.com/zen-kernel/zen-kernel/commits/v5.10.11-zen2
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,7 +20,7 @@ pkgbase = linux-froidzen
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.10.9-zen1
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.10.11-zen2
 	source = config
 	source = https://raw.githubusercontent.com/dolohow/uksm/master/v5.x/uksm-5.10.patch
 	source = https://raw.githubusercontent.com/AOSC-Dev/aosc-os-abbs/linux-5.10.x/extra-kernel/linux-kernel/autobuild/patches/0003-bugfix-ovl-use-a-dedicated-semaphore-for-dir-upperfile-c.patch
