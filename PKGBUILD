@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='While the ksm service is only able to start and stop the KSM kernel thread, ksmtuned controls and tunes KSM according to the used memory of running qemu KVM instances.'
 arch=('any')
 license=('GPLv2')
-url='https://git.centos.org/summary/rpms!qemu-kvm'
+url='https://github.com/ksmtuned/ksmtuned'
 provides=('ksmtuned')
 conflict=('ksmtuned')
 source=('git://github.com/Anthony25/ksmtuned.git#branch=archlinux')
