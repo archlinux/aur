@@ -6,9 +6,9 @@
 
 _name=sxiv
 pkgname="${_name}-bachoseven-git"
-pkgver=2020.09.14
+pkgver=v26.r4.gf68fb4d
 pkgrel=1
-pkgdesc="Sxiv fork which opens all files in the input file's directory, and some custom bindings."
+pkgdesc="Sxiv fork which opens all files in the input file's directory, with some custom bindings."
 arch=('i686' 'x86_64')
 url="https://github.com/BachoSeven/${_name}"
 license=('GPL2')
@@ -21,13 +21,12 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_name}"
-  git log -1 --format="%cd" --date=short | sed 's/-/./g'
+
+  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "${srcdir}/${_name}"
-  # use your customisations if present
-  [[ -f $SRCDEST/config.h ]] && cp "$SRCDEST"/config.h .
 
   # Allow custom FLAGS
   sed -i Makefile -e 's|^CFLAGS\s*=|CFLAGS +=|' -e 's|^LDFLAGS\s*=|LDFLAGS +=|'
