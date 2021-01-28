@@ -1,0 +1,61 @@
+--- kunst/kunst	2021-01-28 15:37:59.000000000 +0100
++++ kunst/kunst	2021-01-28 15:34:56.908337399 +0100
+@@ -8,7 +8,7 @@
+
+
+ VERSION=1.3.2
+-COVER=/tmp/kunst.jpg
++COVER=/tmp/kunst.png
+ MUSIC_DIR=~/Music/
+ SIZE=250x250
+ POSITION="+0+0"
+@@ -138,7 +138,7 @@
+
+ 	# Extract the album art from the mp3 file and dont show the messsy
+ 	# output of ffmpeg
+-	ffmpeg -i "$MUSIC_DIR$(mpc current -f %file%)" "$COVER" -y &> /dev/null
++	ffmpeg -i "$MUSIC_DIR/$(mpc current -f %file%)" "$COVER" -y &> /dev/null
+
+ 	# Get the status of the previous command
+ 	STATUS=$?
+@@ -148,7 +148,7 @@
+         [ ! "$SILENT" ] && echo "kunst: extracted album art"
+ 		ARTLESS=false
+ 	else
+-        DIR="$MUSIC_DIR$(dirname "$(mpc current -f %file%)")"
++        DIR="$MUSIC_DIR/$(dirname "$(mpc current -f %file%)")"
+         [ ! "$SILENT" ] && echo "kunst: inspecting $DIR"
+
+ 		# Check if there is an album cover/art in the folder.
+@@ -164,8 +164,19 @@
+     fi
+
+ 	if [ "$STATUS" -ne 0 ];then
+-        [ ! "$SILENT" ] && echo "error: file does not have an album art"
+-		get_cover_online
++		if [ "$(command -v exiftool)" ]; then
++			SONG="$MUSIC_DIR/$(mpc --format "%file%" current)"
++			PICTURE_TAG="-Picture"
++
++			if [ "$SONG" = *".m4a" ]; then
++				PICTURE_TAG="-CoverArt"
++			fi
++			# Extract album cover using perl-image-exiftool
++			exiftool -b "$PICTURE_TAG" "$SONG"  > "$COVER"
++		else
++			[ ! "$SILENT" ] && echo "error: file does not have an album art"
++			get_cover_online
++		fi
+ 	fi
+ }
+
+@@ -211,9 +222,6 @@
+ 		update_cover
+
+ 		if [ "$ARTLESS" == true ];then
+-			# Dhange the path to COVER because the music note
+-			# image is a png not jpg
+-			COVER=/tmp/kunst.png
+
+ 			# Decode the base64 encoded image and save it
+ 			# to /tmp/kunst.png

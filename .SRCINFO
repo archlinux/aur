@@ -1,7 +1,7 @@
 pkgbase = kunst-git
 	pkgdesc = kunst is a deamon that extracts the album art from the songs playing in mpd.
 	pkgver = 20200821
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sdushantha/kunst
 	arch = any
 	license = MIT
@@ -13,9 +13,11 @@ pkgbase = kunst-git
 	depends = mpd
 	depends = mpc
 	depends = jq
+	optdepends = perl-image-exiftool: for accurate extraction of cover images
 	provides = kunst
 	source = git+https://github.com/sdushantha/kunst.git
-	md5sums = SKIP
+	source = exiftool.patch
+	sha256sums = SKIP
+	sha256sums = 86b3a1bd0ad87a9cb6a5466805a55ec87b2369c654eb492a7297fdaf51c068b7
 
 pkgname = kunst-git
-
