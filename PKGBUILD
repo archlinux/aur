@@ -10,7 +10,7 @@ _gitcommit='e44328e01ed82dd8a8dbfec952f5982e355b8416'
 arch=('any')
 url="https://github.com/rabbitvcs/rabbitvcs"
 install=$pkgname.install
-depends=('thunarx-python' 'python-dbus' "rabbitvcs>=$pkgver")
+depends=('python-thunarx' 'python-dbus' "rabbitvcs>=$pkgver")
 license=('GPL')
 if [ "${_gitcommit}" != "" ]; then
   source=("rabbitvcs-$pkgver-$pkgrel.tar.gz::$url/archive/$_gitcommit.tar.gz")
@@ -18,7 +18,6 @@ else
   source=("rabbitvcs-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 fi
 sha256sums=('a9f59d0eff65526887f719eb72712eac7d7aaa84cf9993c7b69b7b17b0b13143')
-#sha256sums=('SKIP')
 
 
 build() {
