@@ -8,7 +8,6 @@ pkgdesc="One of the fastest, most reliable, and most secure trading platforms in
 arch=('x86_64')
 url='https://tastyworks.com/'
 license=('custom:commercial')
-depends=('java-runtime')
 conflicts=('tastyworks-bin')
 
 source=(https://download.tastyworks.com/desktop-1.x.x/${pkgver}/tastyworks-${pkgver}-${pkgrel}_amd64.deb)
@@ -18,8 +17,8 @@ build() {
 	tar xf data.tar.xz
 
 	# Remove additional bundled Java "runtime"
-	rm -rf opt/tastyworks/lib/runtime
-	sed -i 's|app.runtime=$ROOTDIR/lib/runtime|app.runtime=/usr/lib/jvm/default-runtime|' opt/tastyworks/lib/app/tastyworks.cfg
+	#rm -rf opt/tastyworks/lib/runtime
+	#sed -i 's|app.runtime=$ROOTDIR/lib/runtime|app.runtime=/usr/lib/jvm/default-runtime|' opt/tastyworks/lib/app/tastyworks.cfg
 
 	DF="opt/tastyworks/lib/tastyworks-tastyworks.desktop"
 
@@ -42,6 +41,7 @@ package() {
 
 	install -d "${pkgdir}/usr/lib/${pkgname}/lib/app"
 	cp -r           "${srcdir}/opt/tastyworks/lib/app/"                          "${pkgdir}/usr/lib/${pkgname}/lib/"
+	cp -r           "${srcdir}/opt/tastyworks/lib/runtime/"                          "${pkgdir}/usr/lib/${pkgname}/lib/"
 	install -Dm 644 "${srcdir}/opt/tastyworks/lib/libapplauncher.so"             "${pkgdir}/usr/lib/${pkgname}/lib/libapplauncher.so"
 
 	install -Dm 755 "${srcdir}/opt/tastyworks/bin/tastyworks"                    "${pkgdir}/usr/lib/${pkgname}/bin/tastyworks"
