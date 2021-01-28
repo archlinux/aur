@@ -1,0 +1,30 @@
+pkgbase = openocd-picoprobe
+	pkgdesc = Debugging, in-system programming and boundary-scan testing for embedded target devices (raspberry pi pico version)
+	pkgver = makepkg.0.g14c0d0d33
+	pkgrel = 1
+	url = http://openocd.org
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	makedepends = automake>=1.11
+	makedepends = autoconf
+	makedepends = libtool
+	makedepends = tcl
+	makedepends = pkgconf
+	depends = libftdi
+	depends = libftdi-compat
+	depends = libusb
+	depends = libusb-compat
+	depends = hidapi
+	provides = openocd
+	conflicts = openocd
+	options = !strip
+	source = openocd-picoprobe::git+https://github.com/raspberrypi/openocd.git#branch=picoprobe
+	md5sums = SKIP
+	sha1sums = SKIP
+
+pkgname = openocd-picoprobe
+
