@@ -36,9 +36,9 @@ _distro="Arch"
   fi
 
   # source versel early if present
- # if [ -e "${_path}"/versel ]; then
- #   source "${_path}"/versel
- # fi
+  if [ -e "${_path}"/versel ]; then
+    source "${_path}"/versel
+  fi
 
   if [ -z "$_OPTIPROFILE" ] && [ ! -e "$_path"/cpuschedset ]; then
     # Prompt about optimized configurations. Available variable values will overwrite customization.cfg/external config ones.
@@ -52,14 +52,14 @@ _distro="Arch"
   fi
 
   # source cpuschedset early if present
- # if [ -e "${_path}"/cpuschedset ]; then
- #   source "${_path}"/cpuschedset
- # fi
+  if [ -e "${_path}"/cpuschedset ]; then
+    source "${_path}"/cpuschedset
+  fi
 
   # source compilerset early if present
- # if [ -e "${_path}"/compilerset ]; then
- #   source "${_path}"/compilerset
- # fi
+  if [ -e "${_path}"/compilerset ]; then
+    source "${_path}"/compilerset
+  fi
 
   # CPU SCHED selector
   if [ -z "$_cpusched" ] && [ ! -e "${_path}"/cpuschedset ]; then
