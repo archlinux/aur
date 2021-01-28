@@ -3,7 +3,7 @@ pkgname=ciel
 _pkgname=${pkgname}-rs
 _pkgver=3.0.0-rc4
 pkgver=${_pkgver/-/}
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for controlling multi-layer file systems and containers."
 arch=('i686' 'x86_64')
 url="https://github.com/AOSC-Dev/ciel-rs"
@@ -24,10 +24,13 @@ build() {
 package() {
     cd ${_pkgname}-${_pkgver}
     install -Dm755 target/release/${_pkgname} -t "${pkgdir}/usr/bin"
-    
+
     # Rename the binary
     mv -v "${pkgdir}/usr/bin/ciel-rs" "${pkgdir}/usr/bin/ciel"
 
     # Install assets
     PREFIX="${pkgdir}/usr/" ./install-assets.sh
+
+    # Install the license
+    install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
 }
