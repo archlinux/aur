@@ -71,7 +71,7 @@ package() {
     install -D -m755 cycles_wrap.sh -T "${pkgdir}/usr/bin/cycles"
 
     # CUDA binaries (if any)
-    if [[ -e "build/src/kernel/*.cubin" ]] ; then
+    if ls build/src/kernel/*.cubin 1> /dev/null 2>&1 ; then
         install -D -m444 build/src/kernel/*.cubin -t "${pkgdir}/usr/lib/cycles/lib"
     fi
 
