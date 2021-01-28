@@ -1,37 +1,38 @@
 pkgbase = oracle-sqldeveloper
 	pkgdesc = A graphical tool for database development
-	pkgver = 20.2.0.175.1842
+	pkgver = 20.4.0.379.2205
 	pkgrel = 1
 	url = https://www.oracle.com/tools/downloads/sqldev-downloads.html
 	install = oracle-sqldeveloper.install
 	arch = any
 	license = custom:OTN
 	depends = bash
+	depends = freetype2
 	depends = java-environment>=8
 	depends = java-environment<=11
 	optdepends = ksh
 	optdepends = java8-openjfx: Required to run the application with JDK8
 	optdepends = java11-openjfx: Required to run the application with JDK11
-	source = manual://sqldeveloper-20.2.0.175.1842-no-jre.zip
+	source = manual://sqldeveloper-20.4.0.379.2205-no-jre.zip
 	source = oracle-sqldeveloper.desktop
 	source = oracle-sqldeveloper.sh
 	source = LICENSE
 	source = java_home.patch
-	md5sums = 457dd75e626695b3262f38ea4f65c350
+	md5sums = 97129c75de00a35fdd4a110b4485a124
 	md5sums = 1d17d18e10ab85dead0770e8840273b3
 	md5sums = 26c1dc933a9ab58a4245f4f351717645
 	md5sums = 71a4092467209c160d0f34abbc08e049
-	md5sums = 26037c8c9c7a285896397c058188eed4
-	sha1sums = 79810d37bf8c442f975323215236abffef5a8ab0
+	md5sums = f321debd62e5da652ba1eba22937f2b2
+	sha1sums = a1b45b0a2b20f43f93e250a302c7069ae0667cb9
 	sha1sums = 056bef8e3caa25e62c1395346c34f8a83c532aa8
 	sha1sums = f33177179a2c6ea8b3fa8db5465dc36cf4317b1b
 	sha1sums = 524dfbd8baf17e348d529a831abf639029c56c7b
-	sha1sums = 4833afbd50b74e26f34c8b8dc70cbc5095b0cf14
-	sha256sums = f6f87fe4a30fdb6039f1a7cb2701739b8614845e7edc9d8f2b0307ebdcc18ab9
+	sha1sums = 593f81ab897ea7e15985b73c1ddff1a3717d02a4
+	sha256sums = 3315389628ba6ef33bd0d1ca237985192ce8fb7893256c6a9c27371f087da3c0
 	sha256sums = bd028a137c83ab3698a562e9a7ec4006fb396178ab4a6ebdbaa60c75b5c0974c
 	sha256sums = 43b16049fbf85740767c45f0387a7c5e6118b8876509a8f0bb621ed0b5576a25
 	sha256sums = 7b3a6fd8a1ade4427382ee36dc28432655902a0a68547b29c5ce089bd85fe3de
-	sha256sums = c3409397f49dbf7021ef6912ddac51d5aeddc5a5b748d9524b568d60f5ed6c6a
+	sha256sums = 9b617ac2b83358a1e71dd98ddd618d4b0bae6584a8645359ef54cdcc6bc1ff55
 
 pkgname = oracle-sqldeveloper
 

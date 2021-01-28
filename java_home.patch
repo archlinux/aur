@@ -1,8 +1,8 @@
 diff --git a/ide/bin/launcher.sh b/ide/bin/launcher.sh
-index da23d23..55c8e91 100644
+index 4df8ad9..900ad73 100644
 --- a/ide/bin/launcher.sh
 +++ b/ide/bin/launcher.sh
-@@ -925,18 +925,6 @@ GetDefaultJDK()
+@@ -937,18 +937,6 @@ GetDefaultJDK()
    #
    if [ -f "$tmpvar" ]
    then
