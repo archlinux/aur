@@ -3,7 +3,7 @@
 # Maintainer: Thorben Krüger <thorben.krueger@ovgu.de>
 pkgname=scionlab-git
 pkgver=v2020.12.r5.ga90f354e
-pkgrel=5
+pkgrel=6
 pkgdesc="A global research network to test the SCION next-generation internet architecture"
 arch=('x86_64')
 url="https://www.scionlab.org"
@@ -29,8 +29,8 @@ source=("scion::git+https://github.com/netsec-ethz/scion.git#branch=scionlab"
 md5sums=('SKIP'
          '9202be206a0a2f30eb30d552efd6f9a6'
          '47dc3b0aae88537d388e9f1f28017320'
-         '80a32802ea6c327633886680bfa48968'
-         '7fb9f77cb907d11c904919f8820107a1'
+         '2c895d42273bf55e50cc5d1cc62a6fed'
+         '2012a46ccd96094bf24b7c04ba52e1ae'
          'ab42451f6421da4b1dfd525ed9317185'
          '7d3bece9d0ecde9550fdc3c1bab2d9ab'
          '9c41fd9c5286945e28112011e0d0fa87'
