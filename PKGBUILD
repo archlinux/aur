@@ -4,10 +4,10 @@ pkgdesc="ROS - tf2_eigen."
 url='https://wiki.ros.org/tf2_eigen'
 
 pkgname='ros-melodic-tf2-eigen'
-pkgver='0.6.5'
+pkgver='0.6.6'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
