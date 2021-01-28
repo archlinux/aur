@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-tf2-ros
 	pkgdesc = ROS - This package contains the ROS bindings for the tf2 library, for both Python and C++.
-	pkgver = 0.6.5
-	pkgrel = 4
+	pkgver = 0.6.6
+	pkgrel = 1
 	url = https://www.wiki.ros.org/tf2_ros
 	arch = i686
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = ros-melodic-tf2-ros
 	depends = ros-melodic-rospy
 	depends = ros-melodic-geometry-msgs
 	depends = boost1.69
-	source = ros-melodic-tf2-ros-0.6.5.tar.gz::https://github.com/ros/geometry2/archive/0.6.5.tar.gz
+	source = ros-melodic-tf2-ros-0.6.6.tar.gz::https://github.com/ros/geometry2/archive/0.6.6.tar.gz
 	sha256sums = 9a1268621518fc22afd7b12ef1cf30e6901a57b054535924d1d74fd5d267773a
 
 pkgname = ros-melodic-tf2-ros
