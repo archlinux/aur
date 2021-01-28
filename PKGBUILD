@@ -3,15 +3,15 @@
 pkgname='perl-catalyst-plugin-authentication'
 _pkgname='Catalyst-Plugin-Authentication'
 pkgver='0.10023'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Infrastructure plugin for the Catalyst"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.8.1' 'perl-catalyst-plugin-session>=0.10' 'perl-catalyst-runtime' 'perl-class-inspector' 'perl-mro-compat' 'perl-moose' 'perl-moosex-emulate-class-accessor-fast' 'perl-string-rewriteprefix' 'perl-try-tiny' 'perl-namespace-autoclean')
 makedepends=('perl-extutils-makemaker>=6.59' 'perl-moose' 'perl-test-exception')
-url="http://search.cpan.org/dist/Catalyst-Plugin-Authentication"
-source=("http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/${_pkgname}-${pkgver}.tar.gz")
+url="https://metacpan.org/release/Catalyst-Plugin-Authentication"
+source=("https://cpan.metacpan.org/authors/id/B/BO/BOBTFISH/${_pkgname}-${pkgver}.tar.gz")
 md5sums=('6df0836bab344ef499d68ee5f50f2369')
 sha512sums=('b0882ea35409226e1592b5f5473bdf8fdf44a1ee228837d1eaba082a94f129315533271c9077f8895af19a695c279e3f5aa649c6100b2fa17a0a0b04884c279f')
 
