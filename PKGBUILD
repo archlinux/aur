@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-core
-pkgver=4.0.18
+pkgver=4.0.19
 pkgrel=1
 pkgdesc="Core DNF Plugins"
 arch=('any')
@@ -9,6 +9,7 @@ depends=('dnf>=4.2.22' 'python')
 makedepends=('cmake>=3.13' 'python-sphinx')
 checkdepends=('python-nose')
 optdepends=('python-dateutil: for changelog plugin'
+            'python-dbus: for needs-restarting plugin'
             'createrepo_c: for local plugin')
 backup=('etc/dnf/plugins/copr.conf'
         'etc/dnf/plugins/debuginfo-install.conf'
@@ -18,7 +19,7 @@ backup=('etc/dnf/plugins/copr.conf'
         'etc/dnf/plugins/versionlock.list')
 options=(!emptydirs)
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('8d9f020ea6f0b2b05a27cfdbf7c027e3')
+md5sums=('ab4a9b6919a70943d45404943ae49a21')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -44,7 +45,7 @@ check() {
 	cd "$pkgname-$pkgver"
 
 	# Tests fail with non-english locales
-	PYTHONPATH=./plugins LC_ALL=en_US.UTF-8 nosetests -s tests
+	LC_ALL=en_US.UTF-8 ctest -VV
 }
 
 package() {
@@ -69,6 +70,7 @@ package() {
 	   "$pkgdir/usr/share/man/man1/yum-debug-dump.1" \
 	   "$pkgdir/usr/share/man/man1/yum-debug-restore.1" \
 	   "$pkgdir/usr/share/man/man1/yumdownloader.1" \
+	   "$pkgdir/usr/share/man/man1/yum-groups-manager.1" \
 	   "$pkgdir/usr/share/man/man1/yum-utils.1" \
 	   "$pkgdir/usr/share/man/man5/yum-versionlock.conf.5" \
 	   "$pkgdir/usr/share/man/man8/yum-copr.8" \
