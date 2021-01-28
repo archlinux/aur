@@ -1,6 +1,6 @@
 # Maintainer: archcrack <johndoe.arch@outlook.com>
 
-pkgname=clifm
+pkgname=clifm-git
 pkgver=0.27.1
 pkgrel=2
 pkgdesc="The KISS file manager: cli-based, ultra-lightweight, and lightning fast"
@@ -14,14 +14,14 @@ source=("git+${url}.git")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname"
-  gcc -O3 -march=native -s -fstack-protector-strong -o "$pkgname" "${pkgname}.c" -lreadline -lacl -lcap
+  cd "$srcdir/${pkgname%%-*}"
+  gcc -O3 -march=native -s -fstack-protector-strong -o "${pkgname%%-*}" "${pkgname%%-*}.c" -lreadline -lacl -lcap
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -g 0 -o 0 -Dm644 manpage "$pkgdir/usr/share/man/man1/${pkgname}.1"
-  gzip "${pkgdir}/usr/share/man/man1/${pkgname}.1"
-  install -g 0 -o 0 -Dm644 "translations/spanish/${pkgname}.mo" "$pkgdir/usr/share/locale/es/LC_MESSAGES/${pkgname}.mo"
+  cd "$srcdir/${pkgname%%-*}"
+  install -Dm755 "${pkgname%%-*}" "$pkgdir/usr/bin/${pkgname%%-*}"
+  install -g 0 -o 0 -Dm644 manpage "$pkgdir/usr/share/man/man1/${pkgname%%-*}.1"
+  gzip "${pkgdir}/usr/share/man/man1/${pkgname%%-*}.1"
+  install -g 0 -o 0 -Dm644 "translations/spanish/${pkgname%%-*}.mo" "$pkgdir/usr/share/locale/es/LC_MESSAGES/${pkgname%%-*}.mo"
 }
