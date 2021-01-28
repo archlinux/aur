@@ -9,7 +9,6 @@ PartOf=scionlab.target
 Type=simple
 User=scion
 Group=scion
-ExecStartPre=/bin/rm -rf /run/shm/sciond/
 ExecStart=/usr/bin/sciond --config /etc/scion/sciond.toml
 RemainAfterExit=False
 KillMode=control-group

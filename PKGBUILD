@@ -3,8 +3,7 @@
 # Maintainer: Thorben Krüger <thorben.krueger@ovgu.de>
 pkgname=scionlab-git
 pkgver=v2020.12.r5.ga90f354e
-pkgrel=4
-epoch=
+pkgrel=5
 pkgdesc="A global research network to test the SCION next-generation internet architecture"
 arch=('x86_64')
 url="https://www.scionlab.org"
@@ -52,9 +51,6 @@ pkgver() {
 }
 
 prepare() {
-  #cd "$pkgname-$pkgver"
-  #unset GIT_LFS_SKIP_SMUDGE
-  
   cd "$srcdir/"
   git clone $_scionlab_source scionlab
   pushd scionlab
@@ -69,7 +65,6 @@ prepare() {
 
 build() {
   cd "$srcdir/scion"
-  #cd "$pkgname-$pkgver"
   "$srcdir/go/bin/go" build -o ./bin/ -v \
      -ldflags="-s -w -X github.com/scionproto/scion/go/lib/env.StartupVersion=$(git describe --tags)-scionlab"\
      ./go/posix-router/\
@@ -108,7 +103,6 @@ package() {
   install -Dm755 scionlab/hostfiles/scionlab-config "$pkgdir/usr/bin/scionlab-config"
   popd
   pushd "$srcdir/scion"
-  #cd "$pkgname-$pkgver"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   pushd "bin"
   install -Dm755 posix-router "$pkgdir/usr/bin/scion-border-router"
