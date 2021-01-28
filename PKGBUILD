@@ -2,7 +2,7 @@
 
 pkgname=dracula-gtk-theme
 _pkgname=Dracula
-pkgver=r136.71e6a55
+pkgver=v2.0
 pkgrel=1
 pkgdesc="This theme provides support for GTK-3 and GTK-2 based desktop environments like Gnome, Unity, Budgie, Pantheon, XFCE, Mate, etc. Also provides support for KDE plasma."
 arch=("any")
@@ -11,14 +11,8 @@ license=('GPL')
 optdepends=('ttf-roboto: primary font face defined'
 	'ttf-ubuntu-font-family: secondary font face defined'
 	'cantarell-fonts: tertiary font face defined')
-source=("${_pkgname}::git+https://github.com/dracula/gtk.git")
+source=("${pkgname}-$pkgver.tar.gz::${url}/releases/download/$pkgver/${_pkgname}.tar.xz")
 sha256sums=('SKIP')
-
-pkgver() {
-	cd "${srcdir}/${_pkgname}"
-
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 build() {
 	cd "${srcdir}/${_pkgname}"
