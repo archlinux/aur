@@ -1,6 +1,6 @@
 # Maintainer: Peter Jirasek <aur@dbs.sk>
 pkgname=eea
-pkgver=7.1.8.0
+pkgver=7.1.9.0
 pkgrel=1
 arch=('x86_64')
 pkgdesc='ESET Endpoint Antivirus Business for Linux'
@@ -14,7 +14,7 @@ depends=(
   'systemd-libs'
   'openssl-1.0'
 )
-## Works only with LTS Linux kernel (kernel 5.8.x is unsuported)
+## Works only with LTS Linux kernel (kernel above 5.8.x is not unsuported)
 optdepends=(
 #  'linux-headers: build modules against the Arch kernel [requires at least one set of kernel headers]'
   'linux-lts-headers: build the module against LTS Arch kernel [requires at least one set of kernel headers]'
@@ -27,8 +27,8 @@ install=${pkgname}.install
 # https://www.eset.com/int/business/endpoint-antivirus-linux/download/
 source=("https://download.eset.com/com/eset/apps/business/eea/linux/g2/latest/${pkgname}u.${arch}.bin" "${pkgname}.install")
 sha256sums=(
-  '4e907f184f6bdb75a0b9960f1bb102f6040698ccd6f295a0b0b09e610702bc74'
-  '73216c2aa21c3528150229a1747c07ae21927e1dbdb345d4ba718d6b9e96b648'
+  '59e6ad38eb3809997e2d5eb91a0195a3c321656f5e8e8c64e61a02a9ac8c922e'
+  '3a55e117086362e142d200265df5d74383af0166dd40bb9e29aa857668325023'
 )
 
 prepare() {
