@@ -1,17 +1,19 @@
-#Maintainer: Zachary Jordan <zacjor1 at gmail dot com>
+#Maintainer: Zachary Jordan <zacjor at protronmail dot com>
 #PKGBUILD based off https-everywhere-chrome-git from Yardena Cohen <yardenack at gmail dot com>
 
 pkgsubn=Tab-Session-Manager
 pkgname=chromium-extension-tab-session-manager-git
-pkgver=4.5.2.r1.g20557f7a
+pkgver=6.4.0.r13.g36f06d1d
 pkgrel=1
 pkgdesc="Chrome/Chromium extension for Tab Session Manager - git/dev"
 arch=('any')
 url='https://github.com/sienori/Tab-Session-Manager'
 license=('MPL2')
 makedepends=(git nodejs npm unzip)
-source=("git+https://github.com/sienori/Tab-Session-Manager.git")
-sha512sums=('SKIP')
+source=("git+https://github.com/sienori/Tab-Session-Manager.git"
+		credentials.js)
+sha256sums=('SKIP'
+			'e6dfe1439052821b474c45e0fe473029c84b57f95ef9fca6db7f552e967350ee')
 
 pkgver() {
   cd "${srcdir}/${pkgsubn}"
@@ -21,7 +23,9 @@ pkgver() {
   )
 }
 build() {
+	cp "credentials.js" "${srcdir}/${pkgsubn}/src/credentials.js"
 	cd "${srcdir}/${pkgsubn}"
+    #mv credentials.js src/credentials.js
 	npm install --cache "${srcdir}/npm-cache" 
 	npm run build
 	cd dist/
