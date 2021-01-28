@@ -1,7 +1,7 @@
 # Maintainer: hexchain <i at hexchain dot org>
 
 pkgname=netdata-go-plugins
-pkgver=0.26.1
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="netdata go.d plugin"
 url="https://github.com/netdata/go.d.plugin"
@@ -39,6 +39,6 @@ package() {
     install -Dm755 "$srcdir/go.d.plugin-$pkgver/go.d.plugin" -t "$pkgdir/usr/lib/netdata/plugins.d/"
 }
 
-sha256sums=('e83b7710ea61123e0fca27f0700e50c3ecc6558f68af37483eceb07a70f5d134'
-            '72c32101e483efad05e25b9ef698965d0b0825ab4d95c90b5a0889d1629c657d')
+sha256sums=('aa89ad442a41b87deb8c3e20571c9298ed4bc018e80af1f379dbff3b995bb913'
+            'aac2f7e67d1231c68cf5a5500801617f7c8bc9543a9e7d80c81448da50225ab9')
 
