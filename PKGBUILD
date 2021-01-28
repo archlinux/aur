@@ -23,7 +23,7 @@ pkgver() {
 build() {
   mkdir -p "${srcdir}/pkg"
   cd "${srcdir}/${_gitname}"
-  HOME=${srcdir}/pkg make -e install
+  HOME=${srcdir}/pkg XDG_DATA_HOME= make -e install
 }
 
 package() {
