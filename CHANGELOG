@@ -1,3 +1,58 @@
+2021-01-28 GregTheMadMonk <yagreg7@gmail.com>
+	* 1.4.5r323....
+	- Added TIMELINE mode:
+	  + Displays tasks (surprizse) on a timeline
+	  + Added commands:
+	    > 'timeline.focus'
+	    > 'timeline.focus_closest'
+	    > 'timeline.next'
+	    > 'timeline.prev'
+	    > 'timeline.scale_up'
+	    > 'timeline.scale_down'
+	  + Added cvars:
+	    > 'timeline.position'
+	    > 'timeline.unit'
+	    > 'charset.timeline.marker'
+	    > 'charset.timeline.marker_now'
+	    > 'charset.timeline.line'
+	    > 'charset.timeline.vline'
+	    > 'charset.timeline.vline_now'
+	    > 'charset.timeline.rarrow'
+	- Added durations to tasks:
+	  + Set in 'duration' meta property of a task
+	  + Specified while adding after '+' delimiter in due time field
+	  + New task flag: due (due already passed, but duration not expired). Task becomes due, then after its duration is expired, is failed
+	  + Added cvars:
+	    > 'colors.entry_due'
+	    > 'on_task_due_action'
+	    > 'task_duration_default' - duration for tasks for which duration was not explicitly specified
+	  + Added special task meta fields:
+	    > 'duration'
+	    > 'on_due'
+	- Added 'r' ("Due in") column (off by default)
+	- Allow negative offset in command-line time input format
+	- Add a string to default config to set window title on startup
+	- Save dues in the list as seconds since epoch to preserve due times when switching timezones
+	- Allow to specify task dues in seconds since epoch in commands
+	- Remove hardcoded startup mode
+	- Bugfixes:
+	  + LISTVIEW freeze when hiding slelected list
+	  + :q not exiting program when called from COMMAND mode
+	  + Screen not updating on task state chages
+	  + prettier_status.conf fix
+	- Build:
+	  + Allow to override platform build flags
+	- Codebase and program logic:
+	  + Add noaftodo_macro.h for macros
+	  + Create CONST_DPL macro do declare const and non-const duplicating methods
+	  + Create a mode declaration macro
+	  + Add init() method to mode definition
+	  + Move li::entry methods definitions to a separate header
+	  + Rewrite time system based on the new time_s struct (and removed noaftodo_time.cpp)
+	  + Entry flags system reworked
+	  + Call cui:init() before loading list and config to make sure mode-specific variables and commands are initialized
+	- Documentation generator fixes and improvements
+
 2020-09-14 GregTheMadMonk <yagreg7@gmail.com>
 	* 1.4.4r323....
 	- Make tools/docgen.sh compatible with POSIX shell
