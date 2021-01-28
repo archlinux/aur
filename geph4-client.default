@@ -1,0 +1,9 @@
+# The default settings for Geph4 client Service
+
+# Fill in some optional parameters here, you can run
+# `geph4-client connect -h` to view:
+OPTIONS=
+# Please enter the password you want to use:
+PASSWORD=
+# Please enter the username you want to use:
+USERNAME=

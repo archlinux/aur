@@ -1,0 +1,9 @@
+# The default settings for Geph4 exit Service
+
+# Fill in some optional parameters here, you can run
+# `geph4-exit -h` to view:
+OPTIONS=
+# Please enter the bridge secret you want to use:
+BRIDGE_SECRET=
+# Please enter the hostname of this exit you want to use:
+EXIT_HOSTNAME=
