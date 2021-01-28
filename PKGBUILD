@@ -3,7 +3,7 @@
 pkgname=clifm-git
 pkgver=0.27.1
 pkgrel=2
-pkgdesc="The KISS file manager: cli-based, ultra-lightweight, and lightning fast"
+pkgdesc="The KISS file manager: cli-based, ultra-lightweight, and lightning fast (development version)"
 arch=(any)
 url="https://github.com/leo-arch/clifm"
 license=(GPL2)
