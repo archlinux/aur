@@ -8,7 +8,6 @@ pkgdesc="Make your iPad/tablet/computer as a secondary monitor on Linux"
 arch=("x86_64")
 url="https://github.com/teaper/VirtScreen"
 license=('GPL')
-depends=('python-quamash')
 optdepends=('arandr: for display settings option')
 provides=(${_pkgname})
 conflicts=(${_pkgname})

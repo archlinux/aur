@@ -5,7 +5,6 @@ pkgbase = virtscreen-appimage
 	url = https://github.com/teaper/VirtScreen
 	arch = x86_64
 	license = GPL
-	depends = python-quamash
 	optdepends = arandr: for display settings option
 	provides = virtscreen
 	conflicts = virtscreen
