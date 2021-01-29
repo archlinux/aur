@@ -2,7 +2,7 @@
 # Developer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=ananicy
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Another auto nice daemon, with community rules support"
 arch=('any')
@@ -15,7 +15,7 @@ conflicts=('ananicy-git')
 source=("$pkgname"::"git+https://github.com/Nefelim4ag/Ananicy.git#tag=${pkgver}")
 md5sums=('SKIP')
 install=$pkgname.install
-backup=( 'etc/ananicy.d/ananicy.conf' )
+backup=('etc/ananicy.d/ananicy.conf')
 
 package() {
   cd "$srcdir/${pkgname}/"
