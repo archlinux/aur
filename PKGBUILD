@@ -17,7 +17,7 @@ else
   depends=(desktop-file-utils xdg-utils libgl freetype2 libstdc++5 libpng15)
 fi
 install=kag.install
-source=(http://dl.kag2d.com/kag-linux32-latest.tar.gz
+source=(https://dl.kag2d.com/kag-linux32-latest.tar.gz
         kag
         kag.desktop
         irrlicht_1_32x32x24.png
