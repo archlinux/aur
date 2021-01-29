@@ -41,4 +41,9 @@ package() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" COPYING
   install -m644 -Dt "${pkgdir}/usr/share/applications/"  contrib/dvdisaster.desktop
   install -m644 -Dt "${pkgdir}/usr/share/pixmaps/" contrib/dvdisaster64.xpm
+  
+  # the generic SCSI driver module can be useful here
+  mkdir -p "${pkgdir}/etc/modules-load.d"
+  echo sg > "${pkgdir}/etc/modules-load.d/sg.conf"
+  msg2 "maybe you should sudo modprobe sg"
 }
