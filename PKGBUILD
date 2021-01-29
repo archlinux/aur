@@ -1,7 +1,7 @@
 # Maintainer: Tin Lai <oscar@tinyiu.com>
 pkgname=xps-home-end-keymappings-git
 _pkgname=xps-home-end-keymappings
-pkgver=r23.b868650
+pkgver=r27.32cfc20
 pkgrel=1
 pkgdesc="xps-home-end-keymappings: make xps's amazing keymapping works in other keyboard"
 arch=('x86_64')
@@ -18,7 +18,7 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/$_pkgname/src"
     make
 }
 
