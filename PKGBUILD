@@ -3,17 +3,17 @@
 
 _gemname=pdf-reader
 pkgname=ruby-$_gemname
-pkgver=2.4.1
-pkgrel=2
+pkgver=2.4.2
+pkgrel=1
 pkgdesc='A library for accessing the content of PDF files'
 arch=(any)
 url='http://github.com/yob/pdf-reader'
 license=(MIT)
-depends=(ruby 'ruby-ascii85<1.1' ruby-ruby-rc4 ruby-hashery ruby-ttfunk ruby-afm)
+depends=(ruby ruby-ascii85 ruby-ruby-rc4 ruby-hashery ruby-ttfunk ruby-afm)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('705502cf151ac59a774a368819bd96c174bc63552cdc4a2f7db80ad0187d0725')
+sha256sums=('26a27981377a856ccbcaddc5c3001eab7b887066c388351499b0a1e07b53b4b3')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
