@@ -8,8 +8,6 @@ _tagPrefix='v'
 # _source=
 # _tagPrefix=kopanocore-
 
-_pluginName=${_basePkgName//kopano-webapp-/}
-
 pkgrel=1
 groups=(
     'kopano'
@@ -92,6 +90,7 @@ pkgver() {
 
 _sourceBranch=$(if [[ "${pkgname}" == *-git ]]; then echo "#branch=master"; else echo "#tag=${_tagPrefix}${pkgver}${_tagSuffix}"; fi)
 # template end;
+
 source+=(
     "${pkgname}::${_source}${_sourceBranch}"
 	)
@@ -341,6 +340,7 @@ then
 	   )
 fi
 
+_pluginName=${_basePkgName//kopano-webapp-/}
 build() {
     # Build-Environment
     _kopanoWebappDir="${srcdir}/kopano-webapp"
