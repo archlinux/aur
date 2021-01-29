@@ -1,7 +1,8 @@
 # Maintainer: Kyle Czar <czar at kalli dot st>
 pkgname=go-tuner-git
+provides=('go-tuner')
 pkgver=r248.b79c371
-pkgrel=1
+pkgrel=2
 pkgdesc="Search and Play songs from YouTube inside your terminal."
 arch=('i686' 'x86_64')
 url="https://github.com/pauloo27/tuner"
