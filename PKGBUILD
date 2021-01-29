@@ -3,7 +3,7 @@ pkgname=lnd-bin
 _pkgname=lnd
 pkgver=0.12.0_beta
 _pkgver="${pkgver//_/-}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightning Network Daemon ⚡"
 arch=('x86_64')
 url="https://github.com/lightningnetwork/lnd"
@@ -12,9 +12,9 @@ provides=('lnd' 'lncli')
 conflicts=('lnd' 'lnd-git')
 source=(
     "https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/$_pkgname-linux-amd64-v$_pkgver.tar.gz"
-    "$_pkgname-manifest-bitconner-v$_pkgver.txt::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-bitconner-v$_pkgver.txt.asc"
-    "$_pkgname-manifest-guggero-v$_pkgver.txt::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-guggero-v$_pkgver.txt.asc"
-    "$_pkgname-manifest-roasbeef-v$_pkgver.txt::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-roasbeef-v$_pkgver.txt.asc"
+    "$_pkgname-manifest-bitconner-v$_pkgver.txt.clearsigned::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-bitconner-v$_pkgver.txt.asc"
+    "$_pkgname-manifest-guggero-v$_pkgver.txt.clearsigned::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-guggero-v$_pkgver.txt.asc"
+    "$_pkgname-manifest-roasbeef-v$_pkgver.txt.clearsigned::https://github.com/lightningnetwork/$_pkgname/releases/download/v$_pkgver/manifest-roasbeef-v$_pkgver.txt.asc"
     "$_pkgname-LICENSE-v$_pkgver::https://raw.githubusercontent.com/lightningnetwork/$_pkgname/v$_pkgver/LICENSE"
 )
 sha512sums=(
@@ -32,7 +32,7 @@ prepare() {
     for maintainer in bitconner guggero roasbeef
     do
         echo "Verifying signatures for $maintainer"
-        gpg --verify "$_pkgname-manifest-$maintainer-v$_pkgver.txt"
+        gpg -o "$_pkgname-manifest-$maintainer-v$_pkgver.txt" --verify "$_pkgname-manifest-$maintainer-v$_pkgver.txt.clearsigned"
         sha256sum --ignore-missing -c "$_pkgname-manifest-$maintainer-v$_pkgver.txt"
     done
 }
