@@ -1,16 +1,17 @@
-# Maintainer: xiretza <xiretza+aur@gmail.com>
+# Maintainer: Lukas Fink <lukas >dot< fink1 >at< gmail >dot< com>
+# Contributor: xiretza <xiretza+aur@gmail.com>
 # Contributor: vorpalblade77@gmail.com
 # Contributor: b.klettbach@gmail.com
 # Contributor: Patrik Plihal <patrik.plihal at gmail dot com>
 
-pkgname=multimc5
-pkgver=0.6.11
-pkgrel=2
+pkgname=multimc5-offline
+pkgver=0.6.12_custom_2
+pkgrel=1
 __pkgver_libnbtplusplus=multimc-0.6.1
 __pkgver_quazip=multimc-3
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
-url="https://multimc.org/"
+url="https://github.com/Ponywka/MultiMC5-with-offline"
 license=('Apache')
 depends=('zlib' 'libgl' 'qt5-base' 'qt5-x11extras' 'java-runtime' 'qt5-svg' 'xorg-xrandr')
 provides=('multimc')
@@ -19,19 +20,19 @@ makedepends=('cmake' 'java-environment')
 optdepends=('mcedit: Allows editing of minecraft worlds'
             'visualvm: Profiling support')
 
-source=("https://github.com/MultiMC/MultiMC5/archive/${pkgver}.tar.gz"
+source=("https://github.com/Ponywka/MultiMC5-with-offline/archive/${pkgver//_/-}.tar.gz"
         "https://github.com/MultiMC/libnbtplusplus/archive/${__pkgver_libnbtplusplus}.tar.gz"
         "https://github.com/MultiMC/quazip/archive/${__pkgver_quazip}.tar.gz"
         "quazip-fix-build-with-qt-511.patch"
         "modern-java.patch"
 )
-sha512sums=('728eaebc69a9d927945932873f943204574133470e1e042fc71949aa573f1b1de294821df8cdc7a08f75bffd85b21548b314f727b5c9875c5cccf7a207e2afd6'
+sha512sums=('e346acf4a1b24a7a646e5b1bae08a754f50db2301c45412e42d87f70e1887e940e0ebadce0f490f1d4d40bd0b165ea734d5be4b8016416b56d83fd686908d9cd'
             '81a1640a069d88df7ba0abf72089aecbe1e9d791c88acaaa7e70c8f0bcd0512cf8698178342657e363524ce8488dd072368a0aa8cc091a24912d6f8b6b0f4f2d'
             '2e9074203c67bc7ad98621c551047e5367f06e54cacfecc755a5bf2c9f99266eab42ad972f86ae28ed7e1507f6d27d8d2680a87ce9fd5b1e93a18bcb627ec3f0'
             'ca7a350bdeecf65dbca7de8d6912c935c6ba603edcddcd4ffe71d8997e50e4046335dde6d1d7c629d35025073d18be4d112a960d43a8801de979687bc26e46d4'
             'ede87db7e1ce67184409123720b48f65d35884bac5dfff34cc099c5d7520fd9173be00997df82ad29da4640928134a7199ffdd1cbaa83a72101dbed72736508b')
 prepare() {
-  cd "${srcdir}/MultiMC5-${pkgver}"
+  cd "${srcdir}/MultiMC5-with-offline-${pkgver//_/-}"
 
   patch -p1 < "${srcdir}/modern-java.patch"
 
@@ -48,7 +49,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/MultiMC5-${pkgver}"
+  cd "${srcdir}/MultiMC5-with-offline-${pkgver//_/-}"
   mkdir -p build
 
   cd build
@@ -61,15 +62,16 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/MultiMC5-${pkgver}/build"
+  cd "${srcdir}/MultiMC5-with-offline-${pkgver//_/-}/build"
   make test
 }
 
 package() {
-  cd "${srcdir}/MultiMC5-${pkgver}/build"
+  cd "${srcdir}/MultiMC5-with-offline-${pkgver//_/-}/build"
   make install DESTDIR="${pkgdir}"
-  install -D "${srcdir}/MultiMC5-${pkgver}/application/resources/multimc/scalable/multimc.svg" "${pkgdir}/usr/share/pixmaps/multimc.svg"
-  install -D "${srcdir}/MultiMC5-${pkgver}/application/package/linux/multimc.desktop" "${pkgdir}/usr/share/applications/multimc.desktop"
-  install -D "${srcdir}/MultiMC5-${pkgver}/build/libMultiMC_quazip.so" "${pkgdir}/usr/lib/libMultiMC_quazip.so"
-  install -D "${srcdir}/MultiMC5-${pkgver}/build/libMultiMC_nbt++.so" "${pkgdir}/usr/lib/libMultiMC_nbt++.so"
+  install -D "${srcdir}/MultiMC5-with-offline-${pkgver//_/-}/application/resources/multimc/scalable/multimc.svg" "${pkgdir}/usr/share/pixmaps/multimc.svg"
+  install -D "${srcdir}/MultiMC5-with-offline-${pkgver//_/-}/application/package/linux/multimc.desktop" "${pkgdir}/usr/share/applications/multimc.desktop"
+  install -D "${srcdir}/MultiMC5-with-offline-${pkgver//_/-}/build/libMultiMC_quazip.so" "${pkgdir}/usr/lib/libMultiMC_quazip.so"
+  install -D "${srcdir}/MultiMC5-with-offline-${pkgver//_/-}/build/libMultiMC_nbt++.so" "${pkgdir}/usr/lib/libMultiMC_nbt++.so"
 }
+
