@@ -57,7 +57,8 @@ package() {
 
   # Icon, License
   cd "${srcdir}/$pkgname"
-  install -D -m 644 'assets/lazer.png' "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+  install -D -m 644 'assets/lazer.png' "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${pkgname%-git}.png"
+  install -D -m 644 'assets/lazer-nuget.png' "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname%-git}.png"
   install -D -m 644 'LICENCE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
