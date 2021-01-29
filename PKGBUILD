@@ -1,6 +1,6 @@
 # Maintainer: ml <ml AHHHH visu.li>
 pkgname=svu
-pkgver=1.2.1
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Semantic Version Util'
 arch=('x86_64')
@@ -10,12 +10,7 @@ license=('MIT')
 depends=('git')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('6fcb273b7d16f6053b9669df47994398a6f1b08e4c69ced6fca8d1bc3faa90cb')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  go get -d
-}
+sha256sums=('55c45a610c3e495dbbd7da3d8980fcb1b615dac580e42606161e8e338efaf670')
 
 build() {
   cd "$pkgname-$pkgver"
