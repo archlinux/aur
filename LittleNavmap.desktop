@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/opt/littlenavmap-bin/littlenavmap
+Path=/opt/littlenavmap-bin/
+Name=Little Navmap
+GenericName=Flight Planner
+Icon=/opt/littlenavmap-bin/littlenavmap.svg
+Terminal=false
+Categories=Application;Game;
