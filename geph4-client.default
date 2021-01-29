@@ -36,3 +36,10 @@ OPTIONS="--exit-server us-hio-01.exits.geph.io"
 PASSWORD=password
 # Please enter the username you want to use:
 USERNAME=username
+
+# geph4-vpn-helper
+VPN_SUBCOMMAND=connect
+VPN_FLAGS="--stdio-vpn --use-bridges"
+VPN_OPTIONS="--dns-listen 127.0.0.1:53053 --exit-server us-hio-01.exits.geph.io"
+VPN_PASSWORD=password
+VPN_USERNAME=username
