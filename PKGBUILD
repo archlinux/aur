@@ -6,7 +6,7 @@
 _pkgname=eea
 pkgname="${_pkgname}-dkms"
 pkgver=7.1.9.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='ESET Endpoint Antivirus Business for Linux'
 url='https://www.eset.com/int/business/endpoint-antivirus-linux/'
@@ -45,10 +45,10 @@ prepare() {
 
   msg2 "Creating ${install}..."
   bsdtar -xf control.tar.gz
-  
+
   csplit preinst "/### Upgrade ###/" --suppress-matched -f preinst --quiet
   csplit postinst "/### Upgrade & Install ###/" --suppress-matched -f postinst --quiet
-  
+
   echo "pre_install() {
 `sed -e "s/^/\t/g" preinst00`
 }
@@ -68,7 +68,7 @@ post_upgrade() {
 pre_remove() {
 `sed -e "s/^/\t/g" prerm`
 }
-  
+
 post_remove() {
 `sed -e "s/^/\t/g" postrm`
 }" | sed -e "/#!/d" > ${srcdir}/../${install}
@@ -90,7 +90,9 @@ package() {
   chmod 0700 ${pkgdir}/var/log/eset/${_pkgname}/
   chmod 1770 ${pkgdir}/var/opt/eset/${_pkgname}/cache/
   chmod 1770 ${pkgdir}/var/opt/eset/${_pkgname}/cache/data/
- 
+
+  install -Dm644 "${pkgdir}"/opt/eset/etc/systemd/${_pkgname}.service "${pkgdir}"/usr/lib/systemd/system/${_pkgname}.service
+
   # Patch kernel module to support kernels >=5.10
   chmod 0755 ${pkgdir}/${_kernel_module_dir}
   local i;for i in "${source[@]}";do
@@ -100,9 +102,9 @@ package() {
         patch -p1 -d ${pkgdir}/${_kernel_module_dir} -i "${srcdir}/${i}"
     esac
   done
- 
+
   msg2 "Installing DKMS module..."
-  
+
   # Copy dkms.conf
   install -Dm644 dkms.conf "${pkgdir}"/usr/src/${_pkgname}-${pkgver}/dkms.conf
 

@@ -1,7 +1,7 @@
 pkgbase = eea-dkms
 	pkgdesc = ESET Endpoint Antivirus Business for Linux
 	pkgver = 7.1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.eset.com/int/business/endpoint-antivirus-linux/
 	install = eea.install
 	arch = x86_64
