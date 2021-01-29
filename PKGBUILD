@@ -1,4 +1,4 @@
-# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
 # Contributor: xRemaLx <anton.komolov@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
@@ -8,7 +8,7 @@ pkgname=(buildbot buildbot-worker buildbot-docs
          python-buildbot-www python-buildbot-waterfall-view
          python-buildbot-console-view python-buildbot-grid-view
          python-buildbot-wsgi-dashboards python-buildbot-badges)
-pkgver=2.10.0
+pkgver=2.10.1
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
 pkgrel=1
 arch=(any)
@@ -27,7 +27,7 @@ makedepends=(python-twisted python-jinja python-zope-interface
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.asc}
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
         "subunit-tests.diff")
-sha256sums=('e381f282e789d83e3157761066e6fdf38090243187626cf0c2527a1f2c82bd5d'
+sha256sums=('33beb2428dea4bee638d8b2b6088c3b59fe0495a53bb332acea6bdb96f0a8a7e'
             'SKIP'
             'SKIP'
             'cd66bf65e45fa0a5916a6e0201dcebc4db001e4f47da856afbffc58a04356d55')
