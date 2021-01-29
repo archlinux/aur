@@ -6,5 +6,5 @@
 * changes from 20201207
 
 [2021-01-26]
-* Fixed build with ICU 68.2-1
+* merge/copy
 * add build hooks
