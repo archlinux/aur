@@ -1,0 +1,17 @@
+pkgbase = php7-gnupg
+	pkgdesc = PHP extension for gnupg/gpgme.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://pecl.php.net/package/gnupg
+	install = php-gnupg.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = php7
+	depends = gpgme
+	backup = etc/php7/conf.d/gnupg.ini
+	source = https://pecl.php.net/get/gnupg-1.4.0.tgz
+	md5sums = 2354cb56168d8ea0f643e548e139d013
+
+pkgname = php7-gnupg
+
