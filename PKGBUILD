@@ -2,7 +2,7 @@
 
 pkgbase=imagemagick6
 pkgname=(libmagick6)
-pkgver=6.9.11.58
+pkgver=6.9.11.60
 pkgrel=1
 pkgdesc="An image viewing/manipulation program (version 6)"
 url="https://legacy.imagemagick.org/"
@@ -13,13 +13,11 @@ makedepends=(ghostscript openexr libwmf librsvg libxml2 openjpeg2 libraw opencl-
              chrpath ocl-icd glu ghostpcl ghostxps libheif jbigkit)
 checkdepends=(gsfonts ttf-dejavu)
 _relname=ImageMagick-${pkgver%%.*}
-_tarname=ImageMagick-${pkgver%.*}-${pkgver##*.}
-source=(https://www.imagemagick.org/download/$_tarname.tar.xz{,.asc}
+_tarname=ImageMagick6-${pkgver%.*}-${pkgver##*.}
+source=(https://github.com/ImageMagick/ImageMagick6/archive/${pkgver%.*}-${pkgver##*.}.tar.gz
         arch-fonts.diff)
-sha256sums=('1763f906d166c5ff38f20fc01ce2293cd398ad545c4ab592f18e0e2ee1dc2dc5'
-            'SKIP'
+sha256sums=('d32a11dc92ae03b4c85314dec51d68c7a69da49868391f50182d22602b334e1b'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
-validpgpkeys=(D8272EF51DA223E4D05B466989AB63D48277377A)  # Lexie Parsimoniae
 
 prepare() {
   mkdir -p binpkg/usr/lib/pkgconfig {binpkg,docpkg}/usr/share
