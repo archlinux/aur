@@ -9,6 +9,7 @@ pkgbase = mcsur-kde-git
 	optdepends = plasma-desktop: For plasma theme
 	optdepends = kvantum-qt5: For kvantum theme
 	optdepends = sddm: For SDDM theme
+	replaces = plasmasur-dark-kde-theme-git
 	source = mcsur-kde-git::git+https://github.com/yeyushengfan258/McSur-kde.git
 	sha256sums = SKIP
 

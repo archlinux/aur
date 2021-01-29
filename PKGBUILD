@@ -7,6 +7,7 @@ pkgdesc='A materia Design theme for KDE Plasma desktop.'
 url='https://github.com/yeyushengfan258/McSur-kde'
 license=('GPL3')
 arch=('any')
+replaces=(plasmasur-dark-kde-theme-git)
 makedepends=('git')
 optdepends=(
   'plasma-desktop: For plasma theme'
