@@ -7,7 +7,7 @@ pkgdesc="A DSP library for telephony (FreeSWITCH version)"
 arch=('x86_64')
 url="https://github.com/freeswitch/spandsp"
 license=('LGPL' 'GPL')
-makedepends=('gawk' 'sox' 'fftw' 'doxygen')
+makedepends=('gawk' 'sox' 'fftw' 'doxygen' 'netpbm')
 source=("git+https://github.com/freeswitch/$_pkgname")
 sha256sums=('SKIP')
 

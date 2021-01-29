@@ -10,6 +10,7 @@ pkgbase = spandsp-fs
 	makedepends = sox
 	makedepends = fftw
 	makedepends = doxygen
+	makedepends = netpbm
 	source = git+https://github.com/freeswitch/spandsp
 	sha256sums = SKIP
 
