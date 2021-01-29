@@ -3,9 +3,9 @@
 
 pkgname=limesurvey
 pkgver=4.3.34+210119
-pkgrel=1
+pkgrel=2
 pkgdesc="The most popular FOSS online survey tool on the web."
-depends=('php')
+depends=('php7')
 license=('GPL2')
 arch=('any')
 url="https://www.limesurvey.org"
