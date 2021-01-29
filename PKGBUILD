@@ -1,16 +1,16 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=anydesk-rpi
-pkgver=6.0.1
+pkgver=6.1.0
 pkgrel=1
-pkgdesc="'AnyDesk Free' is an All-In-One Software for Remote Support"
+pkgdesc="'AnyDesk Free' is an All-In-One Software for Remote Support (for Raspberry Pi)"
 arch=('armv7h')
 url="https://anydesk.de"
 license=('custom:Freeware')
 depends=('fakeroot' 'python-shiboken2' 'gtkglext' 'libglvnd' 'gtk2' 'libx11' 'glibc' 'glib2' 'gdk-pixbuf2' 'libxcb' 'cairo' 'pango' 'libxi' 'libxrandr' 'libxtst' 'libxext' 'libxfixes' 'libxdamage' 'gcc-libs')
 optdepends=('libpulse')
 source=(https://download.anydesk.com/rpi/${pkgname%-rpi}_${pkgver}-1_armhf.deb)
-sha256sums=('5e96425c666045e56be63339ce29b138b02bc65b4cfe94eabafe32c32d505bfc')
+sha256sums=('dc9a18416cab06aefdbc508544e97aad645d36117b786908f6af46e13a23de3f')
 
 package() {
     cd "${pkgdir}"
