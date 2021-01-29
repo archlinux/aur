@@ -2,7 +2,7 @@
 # Contributor: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=bees
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Best-Effort Extent-Same, a btrfs deduplicator daemon"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=()
 makedepends=('git' 'make' 'gcc' 'markdown' 'btrfs-progs')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Zygo/bees/archive/v${pkgver}.tar.gz")
-sha256sums=('874969b9198867652364c3149f214f39bdfe0efed67d279c6b77b37765661e54')
+sha256sums=('da6c50f433a2bd6b7e26e37733de44554d8e9ed554ee9dea0d2e66d1ff820e0d')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
