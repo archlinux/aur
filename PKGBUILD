@@ -66,7 +66,7 @@ pkgname=('grub-theme-tela-color-1080p-git'
          'grub-theme-whitesur-whitesur-2k-git'
          'grub-theme-whitesur-whitesur-4k-git')
 pkgver=2021.01.26.r1.g86fc01c
-pkgrel=3
+pkgrel=4
 pkgdesc="Flat Design themes for Grub"
 arch=('any')
 url="https://github.com/vinceliuice/grub2-themes"
@@ -83,7 +83,7 @@ pkgver() {
 
 _package() {
     cd "${srcdir}"/"${_pkgbase}"/
-    install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/"${_pkgname}"/
+    install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/"${name}-${icon}-${resolution}-git"/
     install -Dm 644 common/* -t "${pkgdir}"/usr/share/grub/themes/"${name}-${icon}-${resolution}"/
     install -Dm 644 config/"theme-${resolution}.txt" "${pkgdir}"/usr/share/grub/themes/"${name}-${icon}-${resolution}"/theme.txt
     install -Dm 644 backgrounds/"${resolution}"/"background-${name}.jpg" "${pkgdir}"/usr/share/grub/themes/"${name}-${icon}-${resolution}"/background.jpg
