@@ -6,7 +6,7 @@
 
 pkgname=lib32-libshout
 _pkgname=libshout
-pkgver=2.4.4
+pkgver=2.4.5
 pkgrel=1
 pkgdesc="Library for accessing a shoutcast/icecast server (32 bit)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ url="http://www.icecast.org/"
 options=('!emptydirs')
 license=('LGPL')
 source=("https://downloads.xiph.org/releases/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('f8788ea09e03a57e91a9942913d13aa6')
+md5sums=('f77083cf790386297d86536b76a88b1c')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
@@ -35,5 +35,5 @@ build() {
 package() {
   cd ${_pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
-  rm -r "$pkgdir"/usr/{include,share}
+  rm -r "$pkgdir"/usr/{bin,include,share}
 }
