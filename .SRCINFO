@@ -1,0 +1,19 @@
+pkgbase = go-tuner-git
+	pkgdesc = Search and Play songs from YouTube inside your terminal.
+	pkgver = r248.b79c371
+	pkgrel = 1
+	url = https://github.com/pauloo27/tuner
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = go
+	depends = mpv
+	depends = youtube-dl
+	optdepends = mpv-mpris: Load MPRIS
+	optdepends = ueberzug: Show album art
+	source = go-tuner-git::git+https://github.com/pauloo27/tuner
+	md5sums = SKIP
+
+pkgname = go-tuner-git
+
