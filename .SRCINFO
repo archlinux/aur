@@ -1,5 +1,5 @@
 pkgbase = multimc5-offline
-	pkgdesc = Minecraft launcher with ability to manage multiple instances.
+	pkgdesc = Adds offline mode support to MultiMC
 	pkgver = 0.6.12_custom_2
 	pkgrel = 1
 	url = https://github.com/Ponywka/MultiMC5-with-offline
