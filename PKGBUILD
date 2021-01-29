@@ -1,18 +1,20 @@
 # Maintainer: Lukas Braun <koomi+aur at hackerspace-bamberg dot de>
 # Contributor: David Arroyo <droyo@aqwari.us>
 pkgname=skalibs-musl
-pkgver=2.2.1.0
+pkgver=2.10.0.0
 pkgrel=1
 pkgdesc="A set of general-purpose C programming libraries"
 arch=('i686' 'x86_64')
 url="http://www.skarnet.org/software/skalibs"
 license=('custom:ISC')
 makedepends=(musl)
-provides=(skalibs=2.2.1.0)
+provides=(skalibs=2.10.0.0)
+replaces=(skalibs)
+conflicts=(skalibs)
 options=('staticlibs')
 changelog=CHANGELOG
 source=(${url}/skalibs-$pkgver.tar.gz)
-sha256sums=('9e80ba0ee95a1f28d7e5769957699e574962e8897140c63ab87f4ed60a82e253')
+sha256sums=('c1acf81f47cad74174e18fe85b6b6d16bde11093f50ce99ad35c19d8d78d5d88')
 
 build() {
   cd "$srcdir/skalibs-$pkgver"
