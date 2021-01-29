@@ -1,7 +1,8 @@
-# Maintainer: Skye Viau <skye.viau@outlook.com>
+# Maintainer: Dustin Childers <dchilders@gmail.com>
+# Contributor: Skye Viau <skye.viau@outlook.com>
 
 pkgname=simtoolkitpro-appimage
-pkgver=0.6.42
+pkgver=0.6.61
 pkgrel=1
 pkgdesc="The all-in-one flight simulation EFB"
 license=('custom')
@@ -18,7 +19,7 @@ source=(
   SimToolkitPro.desktop
 )
 sha512sums=(
-  '4b55e67d765e00b433176a75a6bb68583dafa78c840ec81b7d1aa87e7acf9becb2d2c0d6b6b011d998c29503fdf6e3284e3db6e8b9d40251b36b5cf3db49b2cb'
+  'e90b87f778b20cdc2c4dfeec998eae2c56f7f06c55ef0d56579a374f8eb93a51fe85d0cb7a0217c68081185f07d2d04ba8bdc5d811fd401603a2adad6686a9d3'
   'e3a9b1a26d6717eefb1e97f08ec9f97fcd7dc6bc6ffc046f1c13405f20511a6cc048afe0eeb33310cb6936755f015bbd96f5d9d0d4b59e31d0949cba4846e346'
 )
 
