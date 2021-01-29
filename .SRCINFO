@@ -1,7 +1,7 @@
 pkgbase = magic-wormhole
 	pkgdesc = Securely transfer data between computers
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/magic-wormhole/0.12.0
 	arch = any
 	license = MIT
