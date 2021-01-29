@@ -1,13 +1,13 @@
 # Maintainer: osch <oliver@luced.de>
 pkgname=surge-synthesizer-bin
-pkgver=1.6.6
-debver=1.6.6
+pkgver=1.8.1
+debver=1.8.1
 pkgrel=1
-pkgdesc="Surge Synthesizer plugin (LV2/VST2/VST3, original binary release)"
+pkgdesc="Surge Synthesizer plugin (VST3, original binary release)"
 arch=('x86_64')
 url="https://surge-synthesizer.github.io"
 license=('GPL3')
-groups=('vst-plugins' 'lv2-plugins')
+groups=('vst3-plugins' 'pro-audio')
 depends=('cairo'     'fontconfig'          'freetype2'
          'libx11'    'xcb-util-cursor'     'xcb-util'
          'libxcb'    'xcb-util-renderutil' 'xcb-util-image'
@@ -24,4 +24,4 @@ package() {
 	tar xf data.tar
 	cp -r usr "$pkgdir/"
 }
-md5sums=('10d9e14a4af17d8352195a772ce7ffe0')
+md5sums=('da7b9eee47e79d4ed9d6bf1738ec67f8')
