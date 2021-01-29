@@ -6,7 +6,7 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=lib32-pam
-pkgver=1.4.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='Pluggable Authentication Modules'
 arch=(x86_64)
@@ -25,10 +25,10 @@ makedepends=(
   lib32-flex
   w3m
 )
-_tag=5655b9d7bbf545d02f849888a0ff3a97a0ab6a20
+_tag=v$pkgver
 source=(git+https://github.com/linux-pam/linux-pam.git?signed#tag=${_tag})
 validpgpkeys=(296D6F29A020808E8717A8842DB5BD89A340AEB7) # Dimitry V. Levin <ldv@altlinux.org>
-b2sums=(SKIP)
+b2sums=('SKIP')
 options=(!emptydirs)
 
 pkgver() {
@@ -39,11 +39,6 @@ pkgver() {
 
 prepare() {
   cd linux-pam
-
-  git cherry-pick -n 395915dae1571e10e2766c999974de864655ea3a
-  git cherry-pick -n af0faf666c5008e54dfe43684f210e3581ff1bca
-  git cherry-pick -n 0e9b286afe1224b91ff00936058b084ad4b776e4
-
   ./autogen.sh
 }
 
