@@ -10,6 +10,8 @@ _ispkgbuild="true"
 
 source "$_where"/customization.cfg # load default configuration from file
 source "$_where"/prepare
+source "$_where"/ryzen-desktop-profile.cfg
+source "$_where"/generic-desktop-profile.cfg
 
 _tkg_initscript
 
