@@ -2,13 +2,16 @@
 pkgname=python-johnnycanencrypt-git
 _pkgbase=johnnycanencrypt
 pkgver=r241.1e6f386
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Python module for OpenPGP written in Rust"
 arch=('any')
 url="https://github.com/kushaldas/johnnycanencrypt"
 license=('GPL')
-depends=(mypy
+depends=(gmp
+         mypy
+         nettle
+         pcsclite
          python-httpx)
 makedepends=(git
              maturin
