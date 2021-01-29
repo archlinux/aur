@@ -8,7 +8,7 @@ url="https://github.com/KarsMulder/$pkgname"
 license=("GPL2" "MIT" "custom:HPND-sell-variant")
 depends=("libevdev" "gcc-libs")
 makedepends=("rust")
-source=("${url}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('ed8a20bbc62566d097044369e6cafd2fdc87ede4ba38e76929d4836b7753ecb3')
 
 
