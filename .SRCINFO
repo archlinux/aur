@@ -1,0 +1,14 @@
+pkgbase = mpv-mpvacious
+	pkgdesc = MPV script to add keybindings to create Anki cards from movies and TV shows.
+	pkgver = 0.12.r9.g4592698
+	pkgrel = 1
+	url = https://github.com/Ajatt-Tools/mpvacious
+	arch = any
+	license = GPL3
+	depends = mpv
+	optdepends = xclip: clipboard autocopy
+	source = mpv-mpvacious::git+https://github.com/Ajatt-Tools/mpvacious
+	md5sums = SKIP
+
+pkgname = mpv-mpvacious
+
