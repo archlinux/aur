@@ -1,4 +1,4 @@
-From 5362189bdb53ec688c633fef60b246b58a9734cd Mon Sep 17 00:00:00 2001
+From a329f65f0b326992f7238a33f3b25b247b20adf7 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Tue, 18 Aug 2020 20:20:29 +0200
 Subject: [PATCH 10/12] data: Add Microsoft Surface Book 3 (13.5")
@@ -29,5 +29,5 @@ index 0000000..a33c9cb
 +Touch=true
 +Buttons=0
 -- 
-2.29.2
+2.30.0
 

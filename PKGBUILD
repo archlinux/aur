@@ -2,7 +2,7 @@
 # Based on official Arch Linux PKGBUILD
 
 pkgname=libwacom-surface
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 pkgdesc="Patched libwacom for Microsoft Surface devices"
 arch=('x86_64')
@@ -29,19 +29,19 @@ source=(
     '0012-data-Add-Microsoft-Surface-Go.patch'
     "https://github.com/linuxwacom/libwacom/releases/download/libwacom-${pkgver}/libwacom-${pkgver}.tar.bz2"{,.sig}
 )
-sha256sums=('717886cb815bfb7393fb3163615c72d2bfda76f924e1e48c0852d4a667af0323'
-            'c337255d52f42107b05be6e7ebf38c1797ba8eac209ae94aec08a5a876659a4c'
-            'dcc39c283c461c600868a6e82445577811e1c5b0a967b51c054c99571421d170'
-            'c103ed241afe5618c0b6b67664eb7b0ab28f976edc7f921383f4a89ffd5005eb'
-            'd041d860b7f1baca20d3d79908e690931671f62f2207b9ed9ddebf36fbce97ed'
-            '60bfcc69740e3363ebf3b8934737765b584557cf02cc0a5ba135a91abe92146d'
-            '4f1319251911a57559f8b0d0eb073f07e79e71e1e30ec9aff26639eb044ee9cb'
-            '7d317b1a73522083956900d606f7414301c596542a2c420526c5b106f71642bc'
-            '5c390a438360affdea4b0a2cb866734a0ccc3725bbac54b617a0118a76a1a9ed'
-            'b81f1ca39996e4c49cdec80c2c395e158d60ac46ed7a223665976180c8c934ee'
-            '7e6ae8b0a3d5382258ecb42a482ac0dfed1fd148edb4b2f5c0980f391442ab9a'
-            '53ed7707cc9a31ac1ee9e326fe499126a5b61c787adf1f1dc28d709159539666'
-            '3c875f3bc88c6291528be98bc549e672a0b68640c9cb889d14efb552007b271d'
+sha256sums=('9d42ff25bb041cfcafa97c553b01373cad2d4fdc2d5ec1bcadfa30f724980872'
+            '07c75867f9386575ad40f22bcd53dced9eb806829c1945c94e98cd0947c86277'
+            '53dc7747c60b77a2595f738819335cf484e2f55fb8d5afcc2ac442d79b395a95'
+            'e22f9195513bac56f82e0869fd392f757ef2a80c12bee166b69fa6c7be1f63ea'
+            'f6b930bd7f89b0a6ee548fbcccae92a214feeca850cd1f2338a856c136ddd639'
+            '0f7ece1424585153757081a06db17408e7dbaada3e350f92d03cfb0dbb260e88'
+            '06d12286c3b710ab1120bc6bbf77f7342cf0354b122d2739a19f8ff84621f24e'
+            'a70fe06e3294e8b486e34bc608d8e3335c07f038300df8ddd2f905659314921d'
+            '7e6d55e081195334138fbc6a5a899cfce7a523142333219a5b84868de2ed8468'
+            '4a9851d180b7f456503e4e5a729f15274a940180354bbd389130a35c9c7c4ce4'
+            'e1e5bb3ea9780af290adfda4bcb45dc84d9ea486e0510e79a768cd0b5befb027'
+            'e1a74b313d6b265a7ba398633f56cfb39b0ae9fe8d206add9964a5e27ba13462'
+            '2e8075e60bbef74fe9c3539b0a0080efab28912b2552784d8b54dbbf1aaa63e5'
             'SKIP')
 
 prepare() {
@@ -53,21 +53,15 @@ prepare() {
 }
 
 build() {
-    cd "libwacom-${pkgver}"
-    ./configure --prefix="/usr"
-    make
+    meson build "libwacom-${pkgver}" --prefix="/usr"
+    ninja -C build
 }
 
 check() {
-    cd "libwacom-${pkgver}"
-    make check
+    ninja test -C build
 }
 
 package() {
-    cd "libwacom-${pkgver}"
-    make DESTDIR="$pkgdir" install
-    install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -m755 -d "${pkgdir}"/usr/lib/udev/rules.d
-    cd tools
-    ./generate-hwdb > "${pkgdir}"/usr/lib/udev/hwdb.d/65-libwacom.hwdb
+    DESTDIR="${pkgdir}" ninja install -C build
+    install -D -m644 "libwacom-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

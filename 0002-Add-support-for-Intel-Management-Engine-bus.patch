@@ -1,4 +1,4 @@
-From dc3f22ed257f40bb2eb086f5379208e4400e8530 Mon Sep 17 00:00:00 2001
+From 77fab263bc722c9f800c29ca3cf3504be5a439be Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Sat, 1 Jun 2019 21:17:15 +0200
 Subject: [PATCH 02/12] Add support for Intel Management Engine bus
@@ -96,5 +96,5 @@ index 3883341..352bc43 100644
  			g_assert_cmpint(pid, >, 0);
  			break;
 -- 
-2.29.2
+2.30.0
 
