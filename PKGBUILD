@@ -3,7 +3,7 @@
 
 pkgname=openmodelica-git
 pkgver=1.16.0.dev.r590.g8f5710f752
-pkgrel=1
+pkgrel=2
 pkgdesc="The Open Source Modelica Suite"
 arch=('i686' 'x86_64')
 url="https://openmodelica.org"
@@ -78,6 +78,7 @@ pkgver() {
  
 build() {
     cd $pkgname
+    autoreconf -fi
     autoconf
     export CPPFLAGS="$CPPFLAGS -DH5_USE_18_API"
     ./configure --prefix=/usr/ CC=clang CXX=clang++ --with-UMFPACK
