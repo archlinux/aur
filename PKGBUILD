@@ -17,7 +17,7 @@ options=('!strip')
 source=("${_pkgname}-${pkgver}.AppImage::https://github.com/pavlobu/${pkgname}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname}.desktop")
 sha256sums=(
-      '2a272a093410be378f588bc36f0dbb047affeac55358330362e867f7e521a8d6'  
+    '2a272a093410be378f588bc36f0dbb047affeac55358330362e867f7e521a8d6'  
     '9f7f814e5f9d540c2ea5c07a86e72096b0af1fee7d109b5659a4ac8da1a2cfaa'
 )
 
