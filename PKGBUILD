@@ -1,7 +1,7 @@
-# Maintainer: zhangjun (zhangjunphy AT gmail DOT com)
+# Maintainer: revelation60 (benruyl@gmail.com)
 
 pkgname=libcuba
-pkgver=4.2
+pkgver=4.2.1
 pkgrel=1
 pkgdesc='A library for mutidimensional numerical integration'
 arch=('any')
@@ -9,7 +9,7 @@ url="http://www.feynarts.de/cuba/"
 license=('LGPL')
 makedepends=('make' 'automake' 'gcc')
 source=("http://www.feynarts.de/cuba/Cuba-$pkgver.tar.gz")
-md5sums=('f9ef09cb7d1771f46dd21cd8b8346356')
+md5sums=('0f4227b0fb310135f210a88c0d620231')
 
 build() {
   cd "$srcdir/Cuba-$pkgver"
