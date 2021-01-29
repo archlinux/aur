@@ -2,20 +2,22 @@
 
 _pkgname=uivonim
 pkgname=${_pkgname}-git
-pkgver=v0.26.3.45.g179fe86
+pkgver=v0.27.0.28.g7188dd7
 pkgrel=1
-pkgdesc="Fork of Veonim, a feature-rich cross-platform GUI that leverages the latest Neovim features (floating windows, builtin LSP, Lua) without reliance on VSCode extensions"
+pkgdesc="A Neovim GUI designed for programming"
 arch=('x86_64')
 license=('AGPL')
-url="https://github.com/smolck/uivonim"
+url="https://glitchtron.org/veonim/"
 makedepends=('npm' 'git')
 depends=('neovim')
 optdepends=()
 source=("git+https://github.com/smolck/${_pkgname}"
-        "${_pkgname}.sh")
+        "${_pkgname}.sh"
+        "${_pkgname}.desktop")
 
 sha256sums=('SKIP'
-            '8de71b3528e4f40b77d114080a1bb7a2ade4ad73dd6f9799c2cb640d78209af2')
+            '8de71b3528e4f40b77d114080a1bb7a2ade4ad73dd6f9799c2cb640d78209af2'
+            '17ab49bb6e0f74bc11052554cd0a8f341d772a993fe821143b256bad01d55d4f')
 
 pkgver() {
     cd ${_pkgname}
@@ -24,17 +26,15 @@ pkgver() {
 
 build() {
     cd ${_pkgname}
-
-    npm ci
-    npm run build
+    npm run package
 }
 
 package() {
     cd ${_pkgname}
 
-    npm run package
-
     install -d ${pkgdir}/opt
     cp -R dist/linux-unpacked "${pkgdir}/opt/${_pkgname}"
     install -Dm755 ${srcdir}/${_pkgname}.sh "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm644 ${srcdir}/${_pkgname}/art/icon.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
+    install -Dm644 ${srcdir}/${_pkgname}.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
