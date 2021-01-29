@@ -1,11 +1,12 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime-git
-pkgver=0.9.1.r4.399d6ad
+pkgver=0.9.1.r15.546e97a
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
 conflicts=('kime')
 provides=('kime')
+depends=('gtk3' 'libappindicator-gtk3')
 makedepends=('cargo' 'cmake' 'ninja' 'cairo' 'libxcb' 'pango' 'gtk2' 'gtk3' 'gtk4' 'qt5-base' 'qt6-base')
 arch=('any')
 license=('GPL3')

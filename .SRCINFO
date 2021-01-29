@@ -1,6 +1,6 @@
 pkgbase = kime-git
 	pkgdesc = Korean IME
-	pkgver = 0.9.1.r4.399d6ad
+	pkgver = 0.9.1.r15.546e97a
 	pkgrel = 1
 	url = https://github.com/Riey/kime
 	arch = any
@@ -16,6 +16,8 @@ pkgbase = kime-git
 	makedepends = gtk4
 	makedepends = qt5-base
 	makedepends = qt6-base
+	depends = gtk3
+	depends = libappindicator-gtk3
 	provides = kime
 	conflicts = kime
 	source = kime-git::git+https://github.com/Riey/kime
