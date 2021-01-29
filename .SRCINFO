@@ -1,0 +1,10 @@
+pkgbase = alacrittheme
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	source = alacrittheme-0.0.1.tar.gz::https://github.com/jasonverbeek/alacrittheme/archive/0.0.1.tar.gz
+	md5sums = 0459571855fd28a190778d2b2cc3227f
+
+pkgname = alacrittheme
+
