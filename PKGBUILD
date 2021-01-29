@@ -8,8 +8,8 @@ pkgbase=arc-gtk-theme
 _pkgname=arc-theme
 pkgname=('arc-gtk-theme' 'arc-solid-gtk-theme')
 pkgdesc="A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell"
-pkgver=20201013
-pkgrel=2
+pkgver=20210127
+pkgrel=1
 arch=('any')
 # Upstream url: https://github.com/horst3180/arc-theme
 # Now using soft fork: https://github.com/jnsh/arc-theme/issues/18
@@ -17,38 +17,48 @@ url="https://github.com/jnsh/arc-theme"
 license=('GPL3')
 optdepends=('arc-icon-theme: recommended icon theme'
             'gtk-engine-murrine: for gtk2 themes'
-            'gnome-themes-standard: for gtk2 themes'            )
-makedepends=('sassc' 'optipng' 'inkscape')
+            'gnome-themes-standard: for gtk2 themes')
+makedepends=('meson' 'sassc' 'inkscape')
 
 source=("${pkgname}-${pkgver}.tar.xz::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz"
         "${pkgname}-${pkgver}.tar.xz.sig::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz.asc")
-sha512sums=('c1c70c80935af2b1f3c7c9bf79ee72d5fba907fd03caadecf96d6fd796bf70d325bbb16dbe93f95d9a63eff748c7d90bcb0bf837e446e5c2770cfdccb131f45c'
+sha512sums=('bb0554c96cf6c3c3891698d973e7d719931fc316ea6cd910f69d21440110690aeef0e734b5f940ad1c81bdff238477b6353de4ae074cd54fbed09c680377d594'
             'SKIP')
 validpgpkeys=('31743CDF250EF641E57503E5FAEDBC4FB5AA3B17')
 
-prepare() {
-    cp -a ${_pkgname}-${pkgver}{,-solid}
-}
+# Latest stable Arch package versions
+_cinnamonver=4.8
+_gnomeshellver=3.38
+_gtk3ver=3.24
 
 build() {
     cd ${_pkgname}-${pkgver}
-    ./autogen.sh --prefix=/usr --with-gnome-shell=3.38 --with-cinnamon=4.6 --with-gtk3=3.24
 
-    cd ../${_pkgname}-${pkgver}-solid
-    ./autogen.sh --prefix=/usr --disable-transparency --with-gnome-shell=3.38 --with-cinnamon=4.6 --with-gtk3=3.24
+    meson --prefix=/usr build \
+      -Dcinnamon_version="${_cinnamonver}" \
+      -Dgnome_shell_version="${_gnomeshellver}" \
+      -Dgtk3_version="${_gtk3ver}"
+    meson compile -C build
+
+    meson --prefix=/usr build-solid \
+      -Dtransparency=false \
+      -Dcinnamon_version="${_cinnamonver}" \
+      -Dgnome_shell_version="${_gnomeshellver}" \
+      -Dgtk3_version="${_gtk3ver}"
+    meson compile -C build-solid
 }
 
 package_arc-gtk-theme() {
     replaces=('gtk-theme-arc')
 
     cd ${_pkgname}-${pkgver}
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="$pkgdir" meson install -C build
 }
 
 package_arc-solid-gtk-theme() {
     pkgdesc="A flat theme for GTK 3, GTK 2 and Gnome-Shell (without transparency)"
     replaces=('gtk-theme-arc-solid')
 
-    cd ${_pkgname}-${pkgver}-solid
-    make DESTDIR="${pkgdir}" install
+    cd ${_pkgname}-${pkgver}
+    DESTDIR="$pkgdir" meson install -C build-solid
 }
