@@ -1,6 +1,6 @@
 # Maintainer: gardenapple@posteo.net
 pkgname=readability-cli
-_pkgver=2.0.0-pre.3
+_pkgver=2.0.0-pre.5
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 pkgdesc="Firefox Reader Mode in your terminal! - CLI tool for Mozilla's Readability library"
@@ -8,28 +8,28 @@ arch=('any')
 url="https://www.npmjs.com/package/$pkgname"
 license=('GPL3')
 depends=('nodejs')
-# Todo: remove git after PR is merged
-makedepends=('npm' 'jq' 'git')
-optdepends=('bash-completion: Bash completion')
+makedepends=('npm' 'jq')
+optdepends=('bash-completion: Bash completion'
+            'zsh: zsh completion')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$_pkgver.tgz")
 noextract=("$pkgname-$_pkgver.tgz")
-sha256sums=('ee6617a580a277071a7bfb9d9f0931a5a4f6ab9fb7618991accf3419b4c97f45')
-b2sums=('62cc0f8af487109928537326fe4a8906b754d9aa6c7555e43e4b89fa95c9d63165994047101293428ff96110fd1bfd85f9310ce25ebbdf62bb19369d6d5252e3')
+sha256sums=('ab90cf4f9939b2294c8e29a07bf2237546ac69267015f8d212fc8bac48af1d45')
+b2sums=('a2678d522b513bb11c02f1eb9c4282a1cfd87c5e3a7ec688f745baa9440f930eb5c79b806c6b7286b7891e7e124bb2d73eafc183fe6786586ab4755c759a9a33')
 
 package() {
 	npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$pkgname-$_pkgver.tgz"
 
+	# Shell completions
 	cd "$pkgdir/usr/bin"
-	SHELL=/bin/zsh readable --completion \
+	SHELL=/bin/zsh ./readable --completion \
 		| install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_readable"
-	SHELL=/bin/bash readable --completion \
+	SHELL=/bin/bash ./readable --completion \
 		| install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/readable"
 	cd -
 
-	#
-	# Things that should be done according to Arch Wiki's package guidelines for Node.js:
-	#
 
+	# Non-deterministic race in npm gives 777 permissions to random directories.
+	# See https://github.com/npm/cli/issues/1103 for details.
 	find "$pkgdir/usr" -type d -exec chmod 755 {} +
 
 	# Remove references to $pkgdir
@@ -41,5 +41,12 @@ package() {
 	jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
 	mv "$tmppackage" "$pkgjson"
 	chmod 644 "$pkgjson"
+
+	find "$pkgdir" -type f -name package.json | while read pkgjson; do
+		local tmppackage="$(mktemp)"
+		jq 'del(.man)' "$pkgjson" > "$tmppackage"
+		mv "$tmppackage" "$pkgjson"
+		chmod 644 "$pkgjson"
+	done
 }
 
