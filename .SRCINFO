@@ -19,7 +19,9 @@ pkgbase = office365-electron
 	depends = xdg-utils
 	noextract = office.office365_1.1.2_amd64.deb
 	source = https://github.com/matvelloso/electron-office/releases/download/1.1.2/office.office365_1.1.2_amd64.deb
-	sha256sums = SKIP
+	source = https://raw.githubusercontent.com/matvelloso/electron-office/master/LICENSE
+	sha256sums = 8a5871097a2885e729a5be7321311e631e190f1792a22661ff805d540d6fbcaa
+	sha256sums = 950f03fa1295a1f0d848fc0cd5d874fa58952b9a46358eee21d24a751bf2c749
 
 pkgname = office365-electron
 
