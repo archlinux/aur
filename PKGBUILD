@@ -45,20 +45,20 @@ build() {
 package() {
   # Launcher, Desktop entry, MIME
   cd "${srcdir}"
-  install -D -m 755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
+  install -D -m 755 "${pkgname}.sh" "${pkgdir}/usr/bin/osu-lazer"
   install -D -m 644 "${pkgname}.desktop" \
-  "${pkgdir}/usr/share/applications/sh.ppy.osu.${pkgname%-git}.desktop"
-  install -D -m 644 "${pkgname}.xml" "${pkgdir}/usr/share/mime/packages/${pkgname%-git}.xml"
+  "${pkgdir}/usr/share/applications/sh.ppy.osu.lazer.desktop"
+  install -D -m 644 "${pkgname}.xml" "${pkgdir}/usr/share/mime/packages/osu-lazer.xml"
 
   # Runtime, Libraries
   cd "${srcdir}/${pkgname}/compiled"
   find . -type f -exec \
-  install -D -m 644 '{}' "${pkgdir}/usr/lib/${pkgname%-git}/{}" ';'
+  install -D -m 644 '{}' "${pkgdir}/usr/lib/osu-lazer/{}" ';'
 
   # Icon, License
   cd "${srcdir}/$pkgname"
-  install -D -m 644 'assets/lazer.png' "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${pkgname%-git}.png"
-  install -D -m 644 'assets/lazer-nuget.png' "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname%-git}.png"
-  install -D -m 644 'LICENCE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m 644 'assets/lazer.png' "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/osu-lazer.png"
+  install -D -m 644 'assets/lazer-nuget.png' "${pkgdir}/usr/share/icons/hicolor/128x128/apps/osu-lazer.png"
+  install -D -m 644 'LICENCE' "${pkgdir}/usr/share/licenses/osu-lazer/LICENSE"
 }
 
