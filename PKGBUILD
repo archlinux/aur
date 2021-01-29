@@ -2,13 +2,13 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=python-slixmpp-git
-pkgver=r2375.bb61f0f3
+pkgver=r2535.370abb1d
 pkgrel=1
 pkgdesc="An XMPP library written for Python 3.7+ (SleekXMPP asyncio fork)"
 arch=(any)
 url="https://dev.louiz.org/projects/slixmpp"
 license=('MIT')
-depends=('python>=3.7' 'python-aiodns' 'libidn' 'python-pyasn1' 'python-pyasn1-modules' 'python-aiohttp')
+depends=('python>=3.7' 'python-aiodns' 'libidn' 'python-pyasn1' 'python-pyasn1-modules' 'python-aiohttp' 'python-typing_extensions')
 provides=('python-slixmpp')
 conflicts=('python-slixmpp')
 makedepends=('git' 'cython')
