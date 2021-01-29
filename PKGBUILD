@@ -1,23 +1,29 @@
 # Maintainer: Qingxu 
 pkgname=yesplaymusic
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
-pkgdesc="A pretty third-party Netease Cloud Music"
+pkgdesc="A third party music application for Netease Music"
 arch=("x86_64")
-url="https://github.com/qier222/YesPlayMusic/"
-license=('custom')
-depends=( 
-    'nss'
-    'gtk3'
+url="https://github.com/qier222/YesPlayMusic"
+license=("MIT")
+depends=(
+    "gtk3"
+    "nss"
 )
 source=(
-	"https://github.com/qier222/YesPlayMusic/releases/download/${pkgver}/YesPlayMusic_${pkgver}_amd64.deb"
+    "YesPlayMusic-${pkgver}.pkg.tar.zst::https://github.com/qier222/YesPlayMusic/releases/download/v${pkgver}/YesPlayMusic-${pkgver}.pacman"
 )
-md5sums=('3761bcb8c5156e9ab2c856c99e9562b6')
-
-DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
+md5sums=('efe53d1346ab3fc5706e44870a00657a')
 
 package() {
-  cd ${srcdir}
-  tar -xvf data.tar.xz -C ${pkgdir}
+    cd ${srcdir}
+    tar -I zstd -xvf YesPlayMusic-${pkgver}.pkg.tar.zst -C ${pkgdir}
+
+    # SUID chrome-sandbox for Electron 5+
+    chmod 4755 '/opt/YesPlayMusic/chrome-sandbox'
+
+    rm -f ${pkgdir}/.PKGINFO ${pkgdir}/.MTREE ${pkgdir}/.INSTALL
+    
+    mkdir ${pkgdir}/usr/bin
+    ln -sf '/opt/YesPlayMusic/yesplaymusic' "${pkgdir}/usr/bin/yesplaymusic"
 }
