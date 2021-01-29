@@ -24,7 +24,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/revoxhere/duino-coin/archiv
 
 prepare(){
 
-	cd "$pkgname-$pkgver"
+	
 
 }
 
