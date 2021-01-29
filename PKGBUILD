@@ -1,10 +1,9 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=plasmasur-dark-kde-theme-git
-_themeName=PlasmaSur-dark
-_gitname="$_themeName-kde"
-pkgver=r4.eb60128
+_gitname="McSur-kde"
+pkgver=r11.fa3dd65
 pkgrel=1
-pkgdesc="PlasmaSur-dark-kde kde is a materia Design theme for KDE Plasma desktop."
+pkgdesc="McSur kde is a materia Design theme for KDE Plasma desktop."
 arch=('any')
 url="https://github.com/yeyushengfan258/${_gitname}"
 license=('GPL3')
@@ -34,9 +33,9 @@ package() {
    # color scheme
    cp -r "${srcdir}/${_gitname}/color-schemes"/* "${pkgdir}/usr/share/color-schemes"
    # desktop theme
-   cp -r "${srcdir}/${_gitname}/plasma/desktoptheme"/${_themeName}* "${pkgdir}/usr/share/plasma/desktoptheme"
+   cp -r "${srcdir}/${_gitname}/plasma/desktoptheme"/* "${pkgdir}/usr/share/plasma/desktoptheme"
    # look and feel
    cp -r "${srcdir}/${_gitname}/plasma/look-and-feel"/* "${pkgdir}/usr/share/plasma/look-and-feel"
    # wallpaper
-   cp -r "${srcdir}/${_gitname}/wallpaper/${_themeName}" "${pkgdir}/usr/share/wallpapers"
+   cp -r "${srcdir}/${_gitname}/wallpaper/"/* "${pkgdir}/usr/share/wallpapers"
 }
