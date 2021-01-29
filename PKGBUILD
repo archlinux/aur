@@ -1,7 +1,7 @@
 # Maintainer: garionion <garionion at entr0py.de>
 
 pkgname=fluffychat
-pkgver=0.26.0
+pkgver=0.26.1
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('any')
@@ -17,10 +17,11 @@ source=(
     "flutter.tar.xz::https://storage.googleapis.com/flutter_infra/releases/dev/linux/flutter_linux_1.26.0-12.0.pre-dev.tar.xz"
     "fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz")
 sha256sums=('fa2ba98775f65c9bd151881696b9d2d5672bb260ed24d83184010a0d436e140a'
-            '852d0a9ba862b8dca94f9f8cedc719d1e03405c1657174f3b9663feab0c47153')
+            'fa4fd382351e4912ba1afb801f1bef4be76c5b59c5bd264776911d173d186403')
 
 prepare() {
   export PATH="${srcdir}/flutter/bin:$PATH"
+  flutter config --no-analytics
   flutter config --enable-linux-desktop
   cd ${pkgname}-v$pkgver
   echo "dependency_overrides:\n  intl: 0.17.0-nullsafety.2" >> pubspec.yaml
