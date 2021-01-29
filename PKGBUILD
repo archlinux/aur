@@ -2,7 +2,7 @@
 
 _gemname=sshkit
 pkgname=ruby-$_gemname
-pkgver=1.21.1
+pkgver=1.21.2
 pkgrel=1
 pkgdesc="Toolkit for deploying code and assets to servers"
 arch=(any)
