@@ -1,6 +1,6 @@
 pkgbase = python-deepdiff
 	pkgdesc = Deep Difference of dictionaries, iterables, strings and other objects. It will recursively look for all the changes.
-	pkgver = 5.2.1
+	pkgver = 5.2.2
 	pkgrel = 1
 	url = https://github.com/seperman/deepdiff
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = python-deepdiff
 	depends = python-jsonpickle
 	depends = python-ordered-set
 	optdepends = python-mmh3: murmurhash3 for faster hashing
-	source = https://pypi.io/packages/source/d/deepdiff/deepdiff-5.2.1.tar.gz
-	sha1sums = 231384bb8a94ad8146cc06d78176c3faa6a1866c
-	sha256sums = 2e368943dc257f6fa93d9ce4537dbcd4fea65098208a0f49f675cf40132c1a89
-	sha512sums = 6a26ca89f71ebacf4e706ea77500fcc9185da123e9cb22b409e16ec8d56fe40654c076ccf64421501fd7b9f70101cbc0ce69af81d44356ca693b1802851bfcdc
+	source = https://pypi.io/packages/source/d/deepdiff/deepdiff-5.2.2.tar.gz
+	sha1sums = 1a7ec41f1efaf0fd9ed8889498aa9d4369a89e81
+	sha256sums = 752995dbd23e9971571c9f45b0bba9462cad3e968a505d644de492d6ff47d4fa
+	sha512sums = dbe270f3feefc97bfcaa17b6a5b6a57a71d0c4cb9f1a4a4fdacbd2b9fdc6a76dc7e091ec0221ac11cbed8dfe0cf051a4b6ce05097d59b102667cccce4b65517f
 
 pkgname = python-deepdiff
 
