@@ -20,7 +20,7 @@ package() {
     tar -I zstd -xvf YesPlayMusic-${pkgver}.pkg.tar.zst -C ${pkgdir}
 
     # SUID chrome-sandbox for Electron 5+
-    chmod 4755 '/opt/YesPlayMusic/chrome-sandbox'
+    chmod 4755 "${pkgdir}/opt/YesPlayMusic/chrome-sandbox"
 
     rm -f ${pkgdir}/.PKGINFO ${pkgdir}/.MTREE ${pkgdir}/.INSTALL
     
