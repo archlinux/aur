@@ -1,0 +1,19 @@
+pkgbase = openvpn-netns-git
+	pkgdesc = A script that starts a openvpn connection inside a network namespace
+	pkgver = r8.82342f7
+	pkgrel = 1
+	url = https://github.com/pekman/openvpn-netns
+	arch = any
+	license = Unlicense
+	makedepends = git
+	depends = openvpn
+	depends = iproute2
+	optdepends = netns-exec: for openvpn-netns-shell
+	optdepends = sudo: for openvpn-netns-shell
+	provides = openvpn-netns
+	conflicts = openvpn-netns
+	source = openvpn-netns::git+https://github.com/pekman/openvpn-netns.git
+	md5sums = SKIP
+
+pkgname = openvpn-netns-git
+
