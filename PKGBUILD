@@ -13,7 +13,7 @@ else
   depends=(desktop-file-utils xdg-utils libgl freetype2 libstdc++5 libpng15)
 fi
 install=kagbeta.install
-source=(http://dl.kag2d.com/kagbeta-linux32-client.tar.gz
+source=(https://dl.kag2d.com/kagbeta-linux32-client.tar.gz
         kagbeta
         kagbeta.desktop
         irrlicht_1_32x32x24.png
