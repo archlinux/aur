@@ -5,8 +5,8 @@
 
 _pkgbasename=gtk2
 pkgname=lib32-$_pkgbasename
-pkgver=2.24.32
-pkgrel=2
+pkgver=2.24.33
+pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (legacy) (32-bit)"
 arch=('x86_64')
 url="https://www.gtk.org/"
@@ -18,7 +18,7 @@ makedepends=('python')
 license=('LGPL')
 source=(https://download.gnome.org/sources/gtk+/2.24/gtk+-${pkgver}.tar.xz
         xid-collision-debug.patch)
-sha256sums=('b6c8a93ddda5eabe3bfee1eb39636c9a03d2a56c7b62828b359bf197943c582e'
+sha256sums=('ac2ac757f5942d318a311a54b0c80b5ef295f299c2a73c632f6bfb1ff49cc6da'
             'd758bb93e59df15a4ea7732cf984d1c3c19dff67c94b957575efea132b8fe558')
 
 prepare() {
