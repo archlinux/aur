@@ -2,7 +2,7 @@
 # Contributor: wowario <wowario[at]protonmail[dot]com>
 
 pkgname='monero-feather-git'
-pkgver=0.3.0.68a5469b97
+pkgver=0.3.0.3e534fd536
 pkgrel=1
 pkgdesc='a free Monero desktop wallet'
 license=('BSD')
