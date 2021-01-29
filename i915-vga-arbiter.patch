@@ -1,11 +1,12 @@
-From 48be7e32f897277d77359e37db452281dd8b3bf8 Mon Sep 17 00:00:00 2001
+From a59b6ecac96eab5e80fa5ee918ddbc8e2fad3a7a Mon Sep 17 00:00:00 2001
 From: Mark Weiman <mark.weiman@markzz.com>
-Date: Tue, 8 Oct 2019 18:48:25 -0400
+Date: Wed, 27 Jan 2021 13:28:46 -0500
 Subject: [PATCH] i915: Add module option to support VGA arbiter on HD devices
- (5.3)
+ (5.10)
 
 This is an updated version of Alex Williamson's patch from:
 https://lkml.org/lkml/2014/5/9/517
+
 I don't have i915 graphics, so this is completely untested.
 
 Original commit message follows:
@@ -35,6 +36,13 @@ This also rolls in reverted commit 6e1b4fda, which corrected an
 ordering issue with 81b5c7bc by delaying the disabling of VGA memory
 until after vgacon->fbcon handoff.
 ---
+ drivers/gpu/drm/i915/display/intel_display.c | 15 +++++++--
+ drivers/gpu/drm/i915/display/intel_display.h |  1 +
+ drivers/gpu/drm/i915/display/intel_vga.c     | 32 ++++++++++++++++++++
+ drivers/gpu/drm/i915/display/intel_vga.h     |  4 +++
+ drivers/gpu/drm/i915/i915_params.c           |  3 ++
+ drivers/gpu/drm/i915/i915_params.h           |  1 +
+ 6 files changed, 53 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/gpu/drm/i915/display/intel_display.c b/drivers/gpu/drm/i915/display/intel_display.c
 index aabf09f89cad..528c6886a0b5 100644
@@ -177,3 +185,6 @@ index 330c03e2b4f7..b44a4b7dba4d 100644
  	param(bool, enable_hangcheck, true, 0600) \
  	param(bool, load_detect_test, false, 0600) \
  	param(bool, force_reset_modeset_test, false, 0600) \
+-- 
+2.30.0
+

@@ -1,7 +1,7 @@
-From 169ce1a1bf376ba90cd0ab51ec19f9e32ead9dcb Mon Sep 17 00:00:00 2001
+From 578d958c59002358abdeeb294c25ac28027b9f7a Mon Sep 17 00:00:00 2001
 From: Mark Weiman <mark.weiman@markzz.com>
-Date: Wed, 6 May 2020 15:40:50 -0400
-Subject: [PATCH] pci: Enable overrides for missing ACS capabilities (5.6.9+)
+Date: Wed, 27 Jan 2021 13:28:09 -0500
+Subject: [PATCH] pci: Enable overrides for missing ACS capabilities (5.10.11+)
 
 This an updated version of Alex Williamson's patch from:
 https://lkml.org/lkml/2013/5/30/513
@@ -42,12 +42,14 @@ are available.  It's suggested to use the most limited set of options
 necessary to avoid completely disabling ACS across the topology.
 Note to hardware vendors, we have facilities to permanently quirk
 specific devices which enforce isolation but not provide an ACS
-capability.  Please contact me to have your devices added and save
-your customers the hassle of this boot option.
+capability.  Please contact me to have your devicstarting
 ---
+ .../admin-guide/kernel-parameters.txt         |   8 ++
+ drivers/pci/quirks.c                          | 102 ++++++++++++++++++
+ 2 files changed, 110 insertions(+)
 
 diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
-index f6a1513dfb76..3c3e25cdc90e 100644
+index 26bfe7ae711b..7babcf646686 100644
 --- a/Documentation/admin-guide/kernel-parameters.txt
 +++ b/Documentation/admin-guide/kernel-parameters.txt
 @@ -3629,6 +3629,14 @@
@@ -66,7 +68,7 @@ index f6a1513dfb76..3c3e25cdc90e 100644
  				Safety option to keep boot IRQs enabled. This
  				should never be necessary.
 diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index f70692ac79c5..e1208a614703 100644
+index fb1dc11e7cc5..8748df0fe1e1 100644
 --- a/drivers/pci/quirks.c
 +++ b/drivers/pci/quirks.c
 @@ -192,6 +192,106 @@ static int __init pci_apply_final_quirks(void)
@@ -185,3 +187,6 @@ index f70692ac79c5..e1208a614703 100644
  	{ 0 }
  };
  
+-- 
+2.30.0
+
