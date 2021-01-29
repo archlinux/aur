@@ -1,0 +1,18 @@
+pkgbase = python-sdbus-git
+	pkgdesc = Modern Python library for D-Bus
+	pkgver = r307.9eaeaa5
+	pkgrel = 1
+	url = https://github.com/igo95862/python-sdbus
+	arch = any
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = gcc
+	depends = python
+	depends = systemd-libs
+	provides = python-sdbus
+	source = python-sdbus-git::git+https://github.com/igo95862/python-sdbus
+	md5sums = SKIP
+
+pkgname = python-sdbus-git
+
