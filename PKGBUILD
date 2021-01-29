@@ -6,8 +6,8 @@
 _pkgname=firejail
 pkgname="$_pkgname-no-apparmor"
 
-pkgver=0.9.64
-pkgrel=2
+pkgver=0.9.64.2
+pkgrel=1
 
 pkgdesc='Linux namespaces sandbox program, compiled without dependency to apparmor'
 arch=('x86_64')
@@ -24,7 +24,7 @@ backup=("etc/$_pkgname/login.users"
 		"etc/$_pkgname/$_pkgname.config")
 #source=($_pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
 source=("https://sourceforge.net/projects/$_pkgname/files/$_pkgname/$_pkgname-$pkgver.tar.xz"{,.asc})
-sha256sums=('e53bab074e6c97609a3486d2055e44094025e32b217f374c06dd9e3285e7f2fd'
+sha256sums=('3b1de0bad985dd327b8ef35ce190eb7a1c61ed2e01b8dc901652f4203b1fa378'
             'SKIP')
 validpgpkeys=('F951164995F5C4006A73411E2CCB36ADFC5849A7')
 
