@@ -3,13 +3,14 @@
 
 pkgname=libwacom-surface
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Patched libwacom for Microsoft Surface devices"
 arch=('x86_64')
 url="https://github.com/linux-surface/libwacom"
 license=('MIT')
 depends=('glib2' 'systemd' 'libgudev')
-makedepends=('git' 'libxml2')
+makedepends=('libxml2' 'meson')
+checkdepends=('python-pytest' 'python-libevdev' 'python-pyudev')
 validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF')
 conflicts=('libwacom')
 provides=("libwacom=${pkgver}")

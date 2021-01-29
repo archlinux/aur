@@ -1,12 +1,15 @@
 pkgbase = libwacom-surface
 	pkgdesc = Patched libwacom for Microsoft Surface devices
 	pkgver = 1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linux-surface/libwacom
 	arch = x86_64
 	license = MIT
-	makedepends = git
+	checkdepends = python-pytest
+	checkdepends = python-libevdev
+	checkdepends = python-pyudev
 	makedepends = libxml2
+	makedepends = meson
 	depends = glib2
 	depends = systemd
 	depends = libgudev
