@@ -1,45 +1,44 @@
 # $Id$
 
 pkgname=dvdisaster-secretsauce
-_pkgname=dvdisaster
-pkgver=0.72.6
+pkgver=0.79.6
 pkgrel=1
 pkgdesc="Provides a margin of safety against data loss on CD and DVD media caused by aging or scratches"
-arch=('i686' 'x86_64')
+arch=(x86_64)
 url="http://www.dvdisaster.com/"
-license=('GPL')
-depends=('gtk2')
-conflicts=(${_pkgname})
-provides=(${_pkgname})
-options=('!makeflags')
-install=dvdisaster.install
-source=(http://dvdisaster.net/downloads/${_pkgname}-${pkgver}.tar.bz2 secretsauce.patch)
-sha1sums=('eae45e40c2923c7d5c5a01f16470258aa45734ff'
-          '98ef85d933906ab26364351448033be2c72701ca')
+license=(GPL3)
+depends=(gtk2)
+conflicts=(dvdisaster)
+provides=(dvdisaster)
+#options=('!makeflags')
+source=("${pkgname}_${pkgver}.tar.bz2::http://deb.debian.org/debian/pool/main/d/dvdisaster/dvdisaster_${pkgver}.orig.tar.bz2" secretsauce.patch)
+sha256sums=('7d7dfe9e7f4c2e0df248d6223340afc128367e22ebf3728284227763afd98f87'
+            'a41f0388dcc24b75eff5521bf6662809c488672333394bf0a2f06151a2e8cb68')
 
 prepare() {
-  cd ${_pkgname}-${pkgver}
-  sed -i 's/dvdisaster48/dvdisaster/' contrib/dvdisaster.desktop
+  cd dvdisaster-${pkgver}
+  sed 's/dvdisaster48.png/dvdisaster64.xpm/' -i contrib/dvdisaster.desktop
   # generated with: diff -Naur dvdisaster-0.72.6 dvdisaster-0.72.6.new > secretsauce.patch
   patch -p1 < ../secretsauce.patch
 }
 
 build() {
-  cd ${_pkgname}-${pkgver}
-  ./configure --prefix=/usr \
-    --mandir=/usr/share/man --docdir=/usr/share/doc \
+  export CFLAGS="${CFLAGS} -fcommon"
+  cd dvdisaster-${pkgver}
+  ./configure \
+    --prefix=/usr \
+   --mandir=/usr/share/man \
+    --docdir=/usr/share/doc \
     --localedir=/usr/share/locale \
     --with-nls=yes 
   make
 }
 
 package() {
-  cd ${_pkgname}-${pkgver}
+  cd dvdisaster-${pkgver}
 
   make BUILDROOT="${pkgdir}" install
-  rm -f "${pkgdir}/usr/bin/dvdisaster-uninstall.sh"
-  install -D -m 644 contrib/dvdisaster.desktop "${pkgdir}/usr/share/applications/dvdisaster.desktop"
-  for i in 16 24 32 48 64 ; do
-    install -D -m 644 contrib/dvdisaster${i}.png "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/dvdisaster.png"
-  done
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/applications/"  contrib/dvdisaster.desktop
+  install -m644 -Dt "${pkgdir}/usr/share/pixmaps/" contrib/dvdisaster64.xpm
 }
