@@ -3,8 +3,8 @@
 pkgname=mingw-w64-opencolorio-git
 conflicts=("mingw-w64-opencolorio")
 provides=("mingw-w64-opencolorio")
-pkgver=1.0.8.r457.g4f1414a1
-pkgrel=3
+pkgver=1.0.8.r586.gbc88857f
+pkgrel=1
 pkgdesc="OpenColorIO (OCIO) is a complete color management solution geared towards motion picture production with an emphasis on visual effects and computer animation. (mingw-w64)"
 arch=(any)
 url="https://opencolorio.org/"
@@ -12,11 +12,11 @@ license=("BSD-3-Clause")
 makedepends=('mingw-w64-cmake')
 depends=(
 	'mingw-w64-crt'
-	'mingw-w64-openexr'
 	'mingw-w64-yaml-cpp'
-	'mingw-w64-zlib'
-	'mingw-w64-expat'
-	'mingw-w64-pystring')
+	'mingw-w64-lcms2'
+	'mingw-w64-freeglut'
+	'mingw-w64-glew'
+	'mingw-w64-openexr')
 options=('!strip' '!buildflags' 'staticlibs')
 _repo="OpenColorIO"
 source=("git+https://github.com/AcademySoftwareFoundation/${_repo}")
@@ -34,19 +34,18 @@ pkgver() {
 
 prepare() {
 	cd "${_repo}"
-	rm -f "share/cmake/modules/FindIlmBase.cmake"
-	sed -i -r 's/ilmbase::ilmbase/IlmBase::Half/' "src/OpenColorIO/CMakeLists.txt"
+	sed -i -r "s/if\(Half_FOUND\)/if\(TARGET IlmBase::Half\)/" "share/cmake/modules/FindHalf.cmake"
+	sed -i -r "s/if\(NOT WIN32\)/if\(NOT WIN32 OR MINGW\)/" "src/OpenColorIO/CMakeLists.txt"
+	sed -i -r "s/if\(WIN32\)/if\(WIN32 AND NOT MINGW\)/" "src/OpenColorIO/CMakeLists.txt"
+	for f in $(find "src/" -type f -name "*.cpp" -o -type f -name "*.h"); do sed -i -r 's/<Windows.h>/<windows.h>/' "$f"; done
 }
 
 build() {
-	_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DOCIO_BUILD_APPS=OFF
-		-DOCIO_INLINES_HIDDEN=ON -DOCIO_BUILD_TESTS=OFF -DCMAKE_CXX_STANDARD=14 -DOCIO_BUILD_PYTHON=OFF
-		-DOCIO_BUILD_GPU_TESTS=OFF -DOCIO_ADD_EXTRA_BUILTINS=ON
-		-DCMAKE_CXX_FLAGS_RELEASE="-O2 -DNDEBUG -msse4.2 -D L_tmpnam_s=L_tmpnam -D TMP_MAX_S=TMP_MAX" )
+	_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DOCIO_BUILD_APPS=OFF -DOCIO_USE_SSE=ON -DOCIO_BUILD_PYTHON=OFF 
+		-DCMAKE_VISIBILITY_INLINES_HIDDEN=ON -DCMAKE_CXX_VISIBILITY_PRESET=hidden -DCMAKE_CXX_STANDARD=17
+		-DOCIO_INLINES_HIDDEN=ON -DOCIO_BUILD_TESTS=OFF -DOCIO_BUILD_GPU_TESTS=OFF -DCMAKE_CXX_FLAGS_RELEASE="-O2 -DNDEBUG -msse4.2" )
 		
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "${_repo}" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_SHARED_LIBS=FALSE
-		make -C "build-${_arch}-static"
 		${_arch}-cmake -S "${_repo}" -B "build-${_arch}" "${_flags[@]}"
 		make -C "build-${_arch}"
 	done
@@ -54,14 +53,7 @@ build() {
 
 package() {
 	for _arch in ${_architectures}; do
-		make DESTDIR="${pkgdir}" -C "build-${_arch}-static" install
 		make DESTDIR="${pkgdir}" -C "build-${_arch}" install
-		pushd "${pkgdir}/usr/${_arch}/bin"
-			ln -s "libOpenColorIO_2_0.dll" "libOpenColorIO.dll"
-		popd
-		pushd "${pkgdir}/usr/${_arch}/lib"
-			ln -s "libOpenColorIO_2_0.dll.a" "libOpenColorIO.dll.a"
-		popd
 		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
 	done
