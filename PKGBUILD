@@ -11,10 +11,6 @@ depends=('gumbo-parser' 'fuse2' 'openssl')
 source=("https://github.com/fangfufu/$pkgname/archive/$pkgver.tar.gz")
 md5sums=("5c9c31c39217da0a9ff44b4cae5704eb")
 
-prepare() {
-    cd "$pkgname-$pkgver"
-}
-
 build() {
 	cd "$pkgname-$pkgver"
 	make
