@@ -1,14 +1,14 @@
 pkgbase = sfeed-curses
 	pkgdesc = Curses UI front-end for sfeed RSS and Atom parser
-	pkgver = 0.9.7
+	pkgver = 0.9.8
 	pkgrel = 1
 	url = https://www.codemadness.org/sfeed_curses-ui.html
 	arch = x86_64
 	license = ISC
 	depends = ncurses
 	optdepends = sfeed: RSS and Atom parser
-	source = https://codemadness.org/releases/sfeed_curses/sfeed_curses-0.9.7.tar.gz
-	sha256sums = b45617e410894290bb1d5ca24d1ffb114b3eeaff4aa3d2830d15a465943d03ec
+	source = https://codemadness.org/releases/sfeed_curses/sfeed_curses-0.9.8.tar.gz
+	sha256sums = d7ece9cb2ef94d0e97418dfea80d43a102a271f752c19e3afc4d645c9679c555
 
 pkgname = sfeed-curses
 
