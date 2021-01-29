@@ -6,64 +6,58 @@
 # Contributor: "Roliga" [AUR]
 # Contributor: "donaldtrump" [AUR]
 
-pkgname=osu-lazer-git
-pkgver=2020.523.0.r1.224a3ff462
+pkgname='osu-lazer-git'
+pkgver=2021.129.0.r15.cd8ef5373d
 pkgrel=1
 pkgdesc='An open source, free-to-win rhythm game'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/ppy/osu'
 license=('MIT')
-groups=()
 depends=('dotnet-runtime>=3.1' 'ffmpeg' 'libgl')
 makedepends=('git' 'dotnet-sdk>=3.1.0.sdk100')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=(!strip)
-install=
-source=("$pkgname::git+https://github.com/ppy/osu.git"
-    'osu-lazer-git.sh'
-    'osu-lazer-git.desktop'
-    'osu-lazer-git.xml')
-noextract=()
+options=('!strip')
+source=("${pkgname}::git+https://github.com/ppy/osu.git"
+        "${pkgname}.sh"
+        "${pkgname}.desktop"
+        "${pkgname}.xml")
 sha256sums=('SKIP'
-            'b0e3f6195988220421bee1484aa4a7260c2861e92fa7b0bf0f3141a60cdc439b'
-            '6e977d250974783ca02a61cb8cad9b1d8683bcb1ee289d9e1ce2b4ad431b9773'
-            'aba4c66694792ec774f14c00961da0f928baba215f03ca889ae6b901ea363af6')
+            'a9b0fbac6a9890bd2eeee422027ca2c6764964b46d70d3d0943a0a81339ace9e'
+            '455e7fe51fa268a6daad9b12aa0b172f8abfbd5367ecf9710ef7e68bfc6b2632'
+            'd97fd78ceacb419e36b0cd02e03394a0f7ad726f55a36c70fea190899911bd55')
 
 
 pkgver() {
-    cd "$srcdir/$pkgname"
-    printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  cd "${srcdir}/${pkgname}"
+  printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
-
 
 build() {
-    cd "$srcdir/$pkgname"
-    rm -rf compiled
-    env DOTNET_CLI_TELEMETRY_OPTOUT=1 dotnet publish osu.Desktop \
-    --no-self-contained --configuration Release \
-    --runtime $(dotnet --info | grep 'RID' | cut -d ':' -f 2 | tr -d '[:space:]') \
-    --output compiled
+  cd "${srcdir}/${pkgname}"
+  rm -rf 'compiled'
+  env DOTNET_CLI_TELEMETRY_OPTOUT=1 dotnet publish 'osu.Desktop' \
+  --no-self-contained --configuration 'Release' \
+  --runtime "$(dotnet --info | grep 'RID' | cut -d ':' -f 2 | tr -d '[:space:]')" \
+  --output 'compiled'
 }
-
 
 package() {
-    # Launcher, Desktop and MIME
-    cd "$srcdir"
-    install -Dm755 osu-lazer-git.sh "$pkgdir/usr/bin/${pkgname%-git}"
-    install -Dm644 osu-lazer-git.desktop \
-    "$pkgdir/usr/share/applications/sh.ppy.osu.${pkgname%-git}.desktop"
-    install -Dm644 osu-lazer-git.xml "$pkgdir/usr/share/mime/packages/${pkgname%-git}.xml"
+  # Launcher, Desktop and MIME
+  cd "${srcdir}"
+  install -D -m 755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
+  install -D -m 644 "${pkgname}.desktop" \
+  "${pkgdir}/usr/share/applications/sh.ppy.osu.${pkgname%-git}.desktop"
+  install -D -m 644 "${pkgname}.xml" "${pkgdir}/usr/share/mime/packages/${pkgname%-git}.xml"
 
-    # Runtime and Libraries
-    cd "$srcdir/$pkgname/compiled"
-    find . -type f -exec \
-    install -Dm644 "{}" "$pkgdir/usr/lib/${pkgname%-git}/{}" \;
+  # Runtime and Libraries
+  cd "${srcdir}/${pkgname}/compiled"
+  find . -type f -exec \
+  install -D -m 644 '{}' "${pkgdir}/usr/lib/${pkgname%-git}/{}" ';'
 
-    # Icon and License
-    cd "$srcdir/$pkgname"
-    install -Dm644 assets/lazer.png "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # Icon and License
+  cd "${srcdir}/$pkgname"
+  install -D -m 644 'assets/lazer.png' "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+  install -D -m 644 'LICENCE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
