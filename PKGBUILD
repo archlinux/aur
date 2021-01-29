@@ -1,7 +1,7 @@
 # Maintainer: Randoragon <randoragongamedev@gmail.com>
 
 pkgname=librnd-git
-pkgver=r135.9b0c192
+pkgver=r137.95e7634
 pkgrel=1
 epoch=
 pkgdesc="A compact suite of C libraries for various tasks"
