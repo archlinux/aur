@@ -1,6 +1,6 @@
 pkgbase = tuxedo-keyboard
 	pkgdesc = Keyboard Backlight Driver from TUXEDO Computers
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/tuxedocomputers/tuxedo-keyboard
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = tuxedo-keyboard
 	conflicts = tuxedo-cc-wmi
 	replaces = tuxedo-cc-wmi
 	backup = etc/modprobe.d/tuxedo_keyboard.conf
-	source = tuxedo-keyboard-3.0.1-tar.gz::https://github.com/tuxedocomputers/tuxedo-keyboard/archive/v3.0.1.tar.gz
-	sha256sums = 60e9996fcad1dd7f6eb4ca5cb14fa81aad3bebf38a72c14293bea2ea95c6c055
-	sha512sums = 85c31afd79f2acac4d19d7b0d4bf8fc0c2d7990aedc97ed474671482a74c4b009f82ec81b73a02c0c1041ed7384cb9ccb612a8f3cd7ee39f6e716404ccf29167
+	source = tuxedo-keyboard-3.0.2-tar.gz::https://github.com/tuxedocomputers/tuxedo-keyboard/archive/v3.0.2.tar.gz
+	sha256sums = 4ee54918ef5729a91305e6abe16692449fe92f22349f27e09d6d0290e7bd0b51
+	sha512sums = f1cf4f3ec4b1eb7173fd8292f14b3cc89d029e05ed5854ee8bd4341bab5de3b99ebd5f1651268ad580e2d505d987eb7958a9336b1d3c0737bf40221507098c73
 
 pkgname = tuxedo-keyboard
 
