@@ -116,7 +116,6 @@ makedepends=(
     #
     # Optional build-time dependencies: Unmentioned
     'libhx>=1.10'
-    'swig<4' # https://stash.kopano.io/projects/KC/repos/kopanocore/commits/c52118c180757e3c1d7bb9b44840edc526b6ca28
     #
     # Optional build-time dependencies: Unsupported
     # 'libs3' # src:https://aur.archlinux.org/packages/libs3-git/

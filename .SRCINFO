@@ -37,7 +37,6 @@ pkgbase = kopano-core-git
 	makedepends = python>=3
 	makedepends = swig>=2.0
 	makedepends = libhx>=1.10
-	makedepends = swig<4
 	makedepends = git
 	makedepends = sed
 	depends = mariadb>=5.1.73
