@@ -1,7 +1,7 @@
 pkgbase = obinskit
 	pkgdesc = ObinsKit for Anne Pro and Anne Pro 2
-	pkgver = 1.1.4
-	pkgrel = 3
+	pkgver = 1.1.5
+	pkgrel = 1
 	url = http://en.obins.net/obinskit
 	install = obinskit.install
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = obinskit
 	depends = libxkbcommon-x11
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = http://releases.obins.net/occ/linux/tar/ObinsKit_1.1.4_x64.tar.gz
+	source_x86_64 = http://releases.obins.net/occ/linux/tar/ObinsKit_1.1.5_x64.tar.gz
 	source_x86_64 = deb_extra_files_obins.tar.gz
-	sha256sums_x86_64 = 5440cb628924b3c2d9b23e5ed3666f2050f27b6d3c3f8a03e76412eb6a168260
+	sha256sums_x86_64 = 649a1b40281db9f9124815b3d878a7ccd6ee55b7d171db117ea21e92bfcf69f7
 	sha256sums_x86_64 = 137296d606b8127dfda7626421fd17fbee06712678b7ae25793e51d78221fab5
 
 pkgname = obinskit
