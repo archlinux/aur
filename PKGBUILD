@@ -5,11 +5,11 @@ _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
 pkgver=v0.5.0.r63.g309e422
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
 url="https://github.com/InfinityGhost/OpenTabletDriver"
-license=('GPL')
+license=('LGPL3')
 depends=('dotnet-runtime-5.0' 'dotnet-host>=5.0' 'gtk3' 'libevdev')
 optdepends=('libxrandr: x11 display querying support' 'libx11')
 makedepends=('git' 'dotnet-sdk-5.0')
@@ -17,7 +17,7 @@ provides=("opentabletdriver")
 conflicts=("opentabletdriver")
 install="notes.install"
 source=('git+https://github.com/InfinityGhost/OpenTabletDriver'
-        'git+https://github.com/InfinityGhost/OpenTabletDriver-udev'
+        'git+https://github.com/OpenTabletDriver/OpenTabletDriver-udev'
         "$_spkgname"
         "$_spkgname-gui"
         "$_lpkgname.service"
@@ -109,7 +109,6 @@ package() {
 
     sed -i "s/OTD_VERSION/$pkgver/" "$_pkgname.desktop"
 
-    install -Dm 644 -o root "$srcdir/$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm 644 -o root "$srcdir/$_pkgname-udev/90-$_lpkgname.rules" -t "$pkgdir/usr/lib/udev/rules.d"
     install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname.UX/Assets/$_spkgname.png" -t "$pkgdir/usr/share/pixmaps"
     cp -r "$srcdir/$_pkgname/$_pkgname/Configurations" "$pkgdir/usr/share/$_pkgname/"
