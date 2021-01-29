@@ -1,10 +1,10 @@
-# Maintainer: GI_Jack <iamjacksemail@hackermail.com>
+# Maintainer: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname="wireless-ids-git"
 _gitname="wireless-ids"
 pkgver=26.7dfd2fc
-pkgrel=2
-pkgdesc="The Exploit Database (EDB) an ultimate archive of exploits and vulnerable software - A collection of hacks"
+pkgrel=3
+pkgdesc="This tool will sniff your surrounding air traffic for suspicious activities such as WEP/WPA/WPS attacking packets"
 url="https://github.com/SYWorks/wireless-ids"
 license=("custom")
 arch=('any')
