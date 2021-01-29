@@ -8,7 +8,7 @@
 # Contributor: Alex Belanger <i.caught.air@gmail.com>
 
 pkgname=ace
-pkgver=6.5.12
+pkgver=7.0.0
 pkgrel=1
 pkgdesc="Framework that provides many components and patterns for developing high-performance, distributed real-time and embedded systems."
 url="https://www.dre.vanderbilt.edu/~schmidt/ACE.html"
@@ -17,8 +17,8 @@ arch=('i686' 'x86_64')
 depends=()
 options=(!libtool)
 conflicts=('libace')
-source=("https://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-6_5_12/ACE-${pkgver}.tar.gz")
-sha256sums=('de96c68a6262d6b9ba76b5057c02c7e6964c070b1328a63bf70259e9530a7996')
+source=("https://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-7_0_0/ACE-${pkgver}.tar.gz")
+sha256sums=('9dfdc31664bc2faf7832e50197203fe274c661a56f17b18af2b227ddb34174be')
 
 build() {
   export ACE_ROOT=$srcdir/ACE_wrappers
