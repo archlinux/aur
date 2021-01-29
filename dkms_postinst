@@ -1,0 +1,10 @@
+#!/bin/sh
+source ./dkms.conf
+
+# DKMS only provides $kernelver, so using the default module dir
+module_dir=/lib/modules/${kernelver}
+module=${module_dir}/${DEST_MODULE_LOCATION[0]}/${BUILT_MODULE_NAME[0]}.ko
+
+xz -kd ${module}.xz
+mkdir -p ${module_dir}/eset/eea
+mv ${module} ${module_dir}/eset/eea

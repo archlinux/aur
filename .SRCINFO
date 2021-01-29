@@ -1,7 +1,7 @@
 pkgbase = eea-dkms
 	pkgdesc = ESET Endpoint Antivirus Business for Linux
 	pkgver = 7.1.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.eset.com/int/business/endpoint-antivirus-linux/
 	install = eea.install
 	arch = x86_64
@@ -15,9 +15,11 @@ pkgbase = eea-dkms
 	conflicts = eea
 	source = https://download.eset.com/com/eset/apps/business/eea/linux/g2/latest/eeau.x86_64.bin
 	source = dkms.conf
+	source = dkms_postinst
 	source = linux-5.10.patch
 	sha256sums = 59e6ad38eb3809997e2d5eb91a0195a3c321656f5e8e8c64e61a02a9ac8c922e
-	sha256sums = cceb98d3ed91939e5ee18f193a4b720a42175664a46cb52a78191526e51ddfe7
+	sha256sums = 6a5743e0a975204ab9db97787ca72b9d43bc2203409f1169fb9cbd4c9c0dde5f
+	sha256sums = 32e44beb570365c1852f87429f56686751626b93eff81214fc84c4d2f93df096
 	sha256sums = fb0ce96e2586ff6d41e2d707c8738d3ecc14a5b1072bd8973c7a11af647c2f4d
 
 pkgname = eea-dkms
