@@ -4,7 +4,7 @@
 
 pkgname=rabbitvcs-thunar
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Thunar front-end for RabbitVCS SVN GIT HG Extension."
 _gitcommit='e44328e01ed82dd8a8dbfec952f5982e355b8416'
 arch=('any')
