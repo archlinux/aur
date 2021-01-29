@@ -3,7 +3,7 @@
 _pkgname=ungoogled-chromium
 pkgname=ungoogled-chromium-appimage
 pkgver=87.0.4280.141
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight approach to removing Google web service dependency (binary AppImage)"
 url='https://ungoogled-software.github.io/ungoogled-chromium-binaries/'
 arch=('x86_64')
