@@ -1,6 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=anydesk-bin
 pkgver=6.1.0
+_pkgver_i686="6.0.1"
 pkgrel=1
 pkgdesc="The Fast Remote Desktop Application"
 arch=('i686' 'x86_64')
@@ -14,8 +15,6 @@ provides=('anydesk')
 replaces=('anydesk-debian')
 options=('!strip')
 
-# 32bit was not yet updated to 6.1.0
-_pkgver_i686="6.0.1"
 
 source_i686=("https://download.anydesk.com/linux/anydesk-${_pkgver_i686}-i386.tar.gz")
 source_x86_64=("https://download.anydesk.com/linux/anydesk-${pkgver}-amd64.tar.gz")
@@ -24,6 +23,12 @@ sha256sums_i686=('cb22b026e2d81c0de220238fa3d4e13a6d0016787b8c680923794296bbd548
 sha256sums_x86_64=('797808eb2cf39a5cb91a268a2597188e2f5232e2f47914f5bd4a5ae5413678e1')
 
 package() {
+    if [ `uname -m` != "x86_64" ];
+    then
+        printf "%b" "\e[1;31m==> IMPORTANT: Support for 32bit operating systems has ended with version 6.1.0. We strongly recommend upgrading to 64bit operating system.\n"
+        printf "%b" "\e[1;31mThis package will install version 6.0.1 on 32bit systems for now.\n"
+    fi
+
     # install binary
     install -Dm 755 "${srcdir}/anydesk-${pkgver}/anydesk" "${pkgdir}/usr/bin/anydesk"
     # patch the binary to replace obsolete dependency
@@ -41,7 +46,7 @@ package() {
     # install license
     install -Dm 644 "${srcdir}/anydesk-${pkgver}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     
-    warning "AnyDesk has a systemd service for unattended access. Enable it with: systemctl enable --now anydesk"
+    printf "%b" "\e[1;33m==> WARNING: \e[0mAnyDesk has a systemd service for unattended access. Enable it with: systemctl enable --now anydesk\n"
     # install systemd service
     install -Dm 644 "${srcdir}/anydesk-${pkgver}/systemd/anydesk.service" "${pkgdir}/usr/lib/systemd/system/anydesk.service"
 }
