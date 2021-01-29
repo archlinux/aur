@@ -1,7 +1,7 @@
 pkgbase = geph4-git
 	pkgdesc = A command-line Geph4 toolset
 	pkgver = r247.1f5e7bf
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/geph-official/geph4
 	arch = x86_64
 	groups = geph4-git
@@ -9,8 +9,6 @@ pkgbase = geph4-git
 	makedepends = git
 	makedepends = rust
 	depends = gcc-libs
-	provides = geph4
-	conflicts = geph4
 	source = git+https://github.com/geph-official/geph4.git
 	source = geph4-binder.default
 	source = geph4-bridge.default
@@ -39,12 +37,22 @@ pkgbase = geph4-git
 	sha256sums = 29a65808d343d449476154a2023f8a9bd15838fd5bbab1ab9a3b615aa652d066
 
 pkgname = geph4-binder-git
+	provides = geph4-binder
+	conflicts = geph4-binder
 
 pkgname = geph4-bridge-git
+	provides = geph4-bridge
+	conflicts = geph4-bridge
 
 pkgname = geph4-client-git
+	provides = geph4-client
+	conflicts = geph4-client
 
 pkgname = geph4-exit-git
+	provides = geph4-exit
+	conflicts = geph4-exit
 
 pkgname = geph4-vpn-helper-git
+	provides = geph4-vpn-helper
+	conflicts = geph4-vpn-helper
 

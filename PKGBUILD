@@ -11,7 +11,7 @@ pkgname=('geph4-binder-git'
          'geph4-exit-git'
          'geph4-vpn-helper-git')
 pkgver=r247.1f5e7bf
-pkgrel=6
+pkgrel=7
 pkgdesc='A command-line Geph4 toolset'
 arch=('x86_64')
 url="https://github.com/geph-official/geph4"
@@ -19,8 +19,6 @@ license=('GPL3')
 groups=('geph4-git')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
-provides=("geph4")
-conflicts=("geph4")
 source=("git+${url}.git"
         "geph4-binder.default"
         "geph4-bridge.default"
@@ -63,6 +61,8 @@ build() {
 }
 
 package_geph4-binder-git() {
+    provides=('geph4-binder')
+    conflicts=('geph4-binder')
     cd "${srcdir}"/"${_pkgbase}"/
     install -Dm 644 LICENSE.md "${pkgdir}"/usr/share/licenses/geph4-binder-git/LICENSE
     install -Dm 755 target/release/geph4-binder -t "${pkgdir}"/usr/bin/
@@ -72,6 +72,8 @@ package_geph4-binder-git() {
 }
 
 package_geph4-bridge-git() {
+    provides=('geph4-bridge')
+    conflicts=('geph4-bridge')
     cd "${srcdir}"/"${_pkgbase}"/
     install -Dm 644 LICENSE.md "${pkgdir}"/usr/share/licenses/geph4-bridge-git/LICENSE
     install -Dm 755 target/release/geph4-bridge -t "${pkgdir}"/usr/bin/
@@ -81,6 +83,8 @@ package_geph4-bridge-git() {
 }
 
 package_geph4-client-git() {
+    provides=('geph4-client')
+    conflicts=('geph4-client')
     cd "${srcdir}"/"${_pkgbase}"/
     install -Dm 644 LICENSE.md "${pkgdir}"/usr/share/licenses/geph4-client-git/LICENSE
     install -Dm 755 target/release/geph4-client -t "${pkgdir}"/usr/bin/
@@ -90,6 +94,8 @@ package_geph4-client-git() {
 }
 
 package_geph4-exit-git() {
+    provides=('geph4-exit')
+    conflicts=('geph4-exit')
     cd "${srcdir}"/"${_pkgbase}"/
     install -Dm 644 LICENSE.md "${pkgdir}"/usr/share/licenses/geph4-exit-git/LICENSE
     install -Dm 755 target/release/geph4-exit -t "${pkgdir}"/usr/bin/
@@ -99,7 +105,9 @@ package_geph4-exit-git() {
 }
 
 package_geph4-vpn-helper-git() {
+    provides=('geph4-vpn-helper')
+    conflicts=('geph4-vpn-helper')
     cd "${srcdir}"/"${_pkgbase}"/
     install -Dm 644 LICENSE.md "${pkgdir}"/usr/share/licenses/geph4-vpn-helper-git/LICENSE
-    install -Dm 755 target/release/geph4-vpn-helper -t "$pkgdir/usr/bin/"
+    install -Dm 755 target/release/geph4-vpn-helper -t "${pkgdir}"/usr/bin/
 }
