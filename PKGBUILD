@@ -18,7 +18,7 @@ sha256sums=('1b022473abafa2faa70a93a38d06c66e8fe19baab880e4e61f2865d5b3fc75c6')
 
 
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/revoxhere/duino-coin/archive/1.9.1.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/revoxhere/duino-coin/archive/$pkgver.tar.gz")
 
 
 
