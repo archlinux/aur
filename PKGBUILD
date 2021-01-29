@@ -4,12 +4,12 @@
 _gemname=pdf-reader
 pkgname=ruby-$_gemname
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A library for accessing the content of PDF files'
 arch=(any)
 url='http://github.com/yob/pdf-reader'
 license=(MIT)
-depends=(ruby ruby-ascii85 ruby-ruby-rc4 ruby-hashery ruby-ttfunk ruby-afm)
+depends=(ruby 'ruby-ascii85<1.1' ruby-ruby-rc4 ruby-hashery ruby-ttfunk ruby-afm)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)

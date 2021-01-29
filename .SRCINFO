@@ -1,12 +1,12 @@
 pkgbase = ruby-pdf-reader
 	pkgdesc = A library for accessing the content of PDF files
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/yob/pdf-reader
 	arch = any
 	license = MIT
 	depends = ruby
-	depends = ruby-ascii85
+	depends = ruby-ascii85<1.1
 	depends = ruby-ruby-rc4
 	depends = ruby-hashery
 	depends = ruby-ttfunk
