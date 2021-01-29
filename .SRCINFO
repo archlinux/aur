@@ -1,0 +1,23 @@
+pkgbase = groupsdomainsextractor
+	pkgdesc = Find all domains of specific group and copy it to clipboard
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/PolishFiltersTeam/ScriptsPlayground/blob/master/Readme_GDE.md
+	arch = any
+	license = MIT
+	makedepends = unzip
+	depends = python
+	depends = python-certifi
+	depends = python-urllib3
+	depends = python-beautifulsoup4
+	depends = python-tldextract
+	depends = python-pysimplegui
+	depends = python-appdirs
+	depends = python-html5lib
+	source = https://github.com/PolishFiltersTeam/ScriptsPlayground/releases/download/GDE-1.2.2/GDE.zip
+	source = LICENSE.txt
+	sha256sums = de399487adc99094dbaf00a22658befbb58b5d17ddcea8d3bc70c4e5de003363
+	sha256sums = 84c872a68ddd7b81d71673d560480dcaf0d83a7f694bb6521b2dbcebd2d2c912
+
+pkgname = groupsdomainsextractor
+
