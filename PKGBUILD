@@ -1,3 +1,8 @@
+# Maintainer: Serge K <arch@phnx47.net>
+
+# Repository for PR: https://gitlab.com/phnx47-aur/renovate-git
+
+_pkgname=renovate
 pkgname=renovate-git
 pkgver=24.30.0.r1.g2cd92c1a8
 pkgrel=1
@@ -5,29 +10,37 @@ pkgdesc="Universal dependency update tool that fits into your workflows."
 arch=(any)
 url="https://github.com/renovatebot/renovate"
 source=("$pkgname::git+https://github.com/renovatebot/renovate")
-license=(AGPL)
-makedepends=('yarn' 'npm')
+license=('AGPL3')
+makedepends=('yarn')
 depends=('nodejs')
 sha256sums=('SKIP')
 
 build () {
   cd "$srcdir/$pkgname"
+  yarn version --new-version "$(git describe --abbrev=0 --tags)-$(git rev-parse --short HEAD)"
   yarn install
   yarn build
 }
 
-package() {
-  npmdir="$pkgdir/usr/lib/node_modules/$pkgname"
-  mkdir -p "$npmdir"
-  
-  cp -a "$srcdir/$pkgname/dist" $npmdir
-  cp -a "$srcdir/$pkgname/data" $npmdir
-  cp -a "$srcdir/$pkgname/package.json" $npmdir
+package() {  
+  mkdir -p "$pkgdir/opt/$pkgname"
+  cp -r "$srcdir/$pkgname/dist" "$pkgdir/opt/$pkgname"
+  cp -r "$srcdir/$pkgname/data" "$pkgdir/opt/$pkgname"
+  cp -r "$srcdir/$pkgname/package.json" "$pkgdir/opt/$pkgname"
+  cp -r "$srcdir/$pkgname/license" "$pkgdir/opt/$pkgname"
 
-  npm install -g --prefix "${pkgdir}/usr" $npmdir
+  chmod 755 "$pkgdir/opt/$pkgname/dist/renovate.js"
+  chmod 755 "$pkgdir/opt/$pkgname/dist/config-validator.js"
+
+  mkdir -p "$pkgdir/usr/bin"
+  ln -s "/opt/$pkgname/dist/renovate.js" "$pkgdir/usr/bin/$_pkgname"
+
+  cd "$pkgdir/opt/$pkgname"
+  yarn install --production
   
-  # npm bug - https://github.com/npm/npm/issues/9359
-  find "${pkgdir}"/usr -type d -exec chmod 755 {} +
+  find "$pkgdir" -type d -exec chmod 755 {} +
+
+  install -Dm644 "license" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 pkgver() {
