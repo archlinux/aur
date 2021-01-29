@@ -1,9 +1,10 @@
 pkgbase = paru-bin
 	pkgdesc = AUR helper based on yay
-	pkgver = 1.1.4
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/morganamilo/paru
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	depends = git
 	depends = pacman
@@ -12,7 +13,9 @@ pkgbase = paru-bin
 	provides = paru
 	conflicts = paru
 	backup = etc/paru.conf
-	source = paru-bin-1.1.4.tar.zst::https://github.com/Morganamilo/paru/releases/download/v1.1.4/paru.tar.zst
-	sha256sums = d92b88b85610823cf079a39dcc38d7f99c32154a901d76097c2ca032c02b53ae
+	source_x86_64 = https://github.com/Morganamilo/paru/releases/download/v1.2.0/paru-v1.2.0-x86_64.tar.zst
+	sha256sums_x86_64 = a21a4bb47d19517030cd13e1f4c7db77e318f8657c4d0ad4b6cd7a0b6b6e61e3
+	source_aarch64 = https://github.com/Morganamilo/paru/releases/download/v1.2.0/paru-v1.2.0-aarch64.tar.zst
+	sha256sums_aarch64 = e835b1abd45a13b7a83895ae3e8769d40021a65001a477920a449dedc22eff0d
 
 pkgname = paru-bin

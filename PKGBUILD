@@ -1,18 +1,20 @@
 # Maintainer: Morgan <morganamilo@archlinux.org>
 pkgname=paru-bin
-pkgver=1.1.4
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='AUR helper based on yay'
 url='https://github.com/morganamilo/paru'
-source=("$pkgname-$pkgver.tar.zst::https://github.com/Morganamilo/paru/releases/download/v$pkgver/paru.tar.zst")
+source_x86_64=("https://github.com/Morganamilo/paru/releases/download/v$pkgver/paru-v$pkgver-x86_64.tar.zst")
+source_aarch64=("https://github.com/Morganamilo/paru/releases/download/v$pkgver/paru-v$pkgver-aarch64.tar.zst")
 backup=("etc/paru.conf")
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('GPL3')
 depends=('git' 'pacman')
 optdepends=('asp: downloading repo pkgbuilds' 'bat: colored pkgbuild printing')
 conflicts=('paru')
 provides=('paru')
-sha256sums=('d92b88b85610823cf079a39dcc38d7f99c32154a901d76097c2ca032c02b53ae')
+sha256sums_x86_64=('a21a4bb47d19517030cd13e1f4c7db77e318f8657c4d0ad4b6cd7a0b6b6e61e3')
+sha256sums_aarch64=('e835b1abd45a13b7a83895ae3e8769d40021a65001a477920a449dedc22eff0d')
 
 package() {
   cd "$srcdir/"
