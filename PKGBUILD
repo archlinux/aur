@@ -14,7 +14,7 @@ license=('MIT')
 optdepends=('python: needed for actually running the PC_Miner'
             'python-pip: needed for dependencies in the Miner')
 
-sha256sums=('1b022473abafa2faa70a93a38d06c66e8fe19baab880e4e61f2865d5b3fc75c6')
+sha256sums=('fb4b1ceca72a2da03d19b68a140bc1f182781fa5cbd491dc4271205c927ce25e')
 
 
 
