@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/Zygo/bees"
 license=('GPL3')
 depends=()
-makedepends=('git' 'make' 'gcc' 'markdown' 'btrfs-progs')
+makedepends=('git' 'markdown' 'btrfs-progs' 'systemd')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Zygo/bees/archive/v${pkgver}.tar.gz")
 sha256sums=('da6c50f433a2bd6b7e26e37733de44554d8e9ed554ee9dea0d2e66d1ff820e0d')
 

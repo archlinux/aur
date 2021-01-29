@@ -6,10 +6,9 @@ pkgbase = bees
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = make
-	makedepends = gcc
 	makedepends = markdown
 	makedepends = btrfs-progs
+	makedepends = systemd
 	source = bees-0.6.4.tar.gz::https://github.com/Zygo/bees/archive/v0.6.4.tar.gz
 	sha256sums = da6c50f433a2bd6b7e26e37733de44554d8e9ed554ee9dea0d2e66d1ff820e0d
 
