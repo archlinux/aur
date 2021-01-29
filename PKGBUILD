@@ -2,7 +2,7 @@
 pkgname=whitesur-kde-theme-git
 _themeName=WhiteSur
 _gitname="$_themeName-kde"
-pkgver=r22.ce5a374
+pkgver=r33.a7f777c
 pkgrel=1
 pkgdesc="MacOS big sur like theme for KDE Plasma"
 arch=('any')
@@ -49,6 +49,6 @@ package() {
    # latte
    mkdir -p "$HOME/.config/latte"
    cp -r "${srcdir}/${_gitname}/latte-dock"/* "$HOME/.config/latte"
-   warning "The package installed a latte-dock theme which is not deleted on removal. (Located in $HOME/.config/latte)"
+   printf "%b" "\e[1;33m==> WARNING: \e[0mThe package installed a latte-dock theme which is not deleted on removal. (Located in $HOME/.config/latte)\n"
 
 } 
