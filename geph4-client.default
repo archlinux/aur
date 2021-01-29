@@ -11,12 +11,26 @@ SUBCOMMAND=connect
 FLAGS="--use-bridges"
 # Fill in some options here, you can run
 # `geph4-client connect -h` to view:
+# --credential-cache:
+# /var/cache/geph4-client/geph4-credentials.db
+# --dns-listen:
+# where to listen for proxied DNS requests
 # --exit-server:
 # ca-mtl-01.exits.geph.io
 # fi-hel-01.exits.geph.io
 # sg-sgp-02.exits.geph.io
 # tw-rmq-01.exits.geph.io
 # us-hio-01.exits.geph.io (default)
+# --http-listen:
+# where to listen for HTTP proxy connections (default: 127.0.0.1:9910)
+# --nettest-name:
+# a name for this test instance
+# --nettest-server:
+# an endpoint to send test results
+# --socks5-listen:
+# where to listen for SOCKS5 connections (default: 127.0.0.1:9909)
+# --stats-listen:
+# where to listen for REST-based local connections (default: 127.0.0.1:9809)
 OPTIONS="--exit-server us-hio-01.exits.geph.io"
 # Please enter the password you want to use:
 PASSWORD=password
