@@ -11,7 +11,7 @@ pkgname=('geph4-binder-git'
          'geph4-exit-git'
          'geph4-vpn-helper-git')
 pkgver=r247.1f5e7bf
-pkgrel=9
+pkgrel=10
 pkgdesc='A command-line Geph4 toolset'
 arch=('x86_64')
 url="https://github.com/geph-official/geph4"
@@ -32,7 +32,7 @@ source=("git+${url}.git"
 sha256sums=('SKIP'
             '96e495d1f5d6cb61c7953c70035125febf0063fa0e8d0bb47bc314d326c93b55'
             '3def2cd4cce25ad38cadc3b20913d3c45df16b89d0903b7cd88da77d57f86938'
-            'e4aee5c630a688bb3ab7b07bde98cb6fda653fece4b349ba272a8f95b7f3729f'
+            '7318bb7ba6f9adefa0199c56f88bf0c5d1bfb69392e9f98c862116cfd8b9de21'
             '2daf5117a98d4529225712cb9f4828f4f5269a591565745497df0eb10068ba2a'
             '7c8c2b2e2f24a45a2d216af90d1b370a25d1f4fe3501f341bf18b7b68a7fa93a'
             '08bcd5c7d8a44f7ee05315ce745658a59bf48f0c5475b231c75120858ddf39ef'
@@ -57,6 +57,7 @@ build() {
 package_geph4-binder-git() {
     provides=('geph4-binder')
     conflicts=('geph4-binder')
+    backup=('etc/default/geph4-binder')
     cd "${srcdir}"/"${_pkgbase}"/
     install -Dm 644 LICENSE.md "${pkgdir}"/usr/share/licenses/geph4-binder-git/LICENSE
     install -Dm 755 target/release/geph4-binder -t "${pkgdir}"/usr/bin/
@@ -67,6 +68,7 @@ package_geph4-binder-git() {
 package_geph4-bridge-git() {
     provides=('geph4-bridge')
     conflicts=('geph4-bridge')
+    backup=('etc/default/geph4-bridge')
     cd "${srcdir}"/"${_pkgbase}"/
     install -Dm 644 LICENSE.md "${pkgdir}"/usr/share/licenses/geph4-bridge-git/LICENSE
     install -Dm 755 target/release/geph4-bridge -t "${pkgdir}"/usr/bin/
@@ -77,6 +79,7 @@ package_geph4-bridge-git() {
 package_geph4-client-git() {
     provides=('geph4-client')
     conflicts=('geph4-client')
+    backup=('etc/default/geph4-client')
     cd "${srcdir}"/"${_pkgbase}"/
     install -Dm 644 LICENSE.md "${pkgdir}"/usr/share/licenses/geph4-client-git/LICENSE
     install -Dm 755 target/release/geph4-client -t "${pkgdir}"/usr/bin/
@@ -87,6 +90,7 @@ package_geph4-client-git() {
 package_geph4-exit-git() {
     provides=('geph4-exit')
     conflicts=('geph4-exit')
+    backup=('etc/default/geph4-exit')
     cd "${srcdir}"/"${_pkgbase}"/
     install -Dm 644 LICENSE.md "${pkgdir}"/usr/share/licenses/geph4-exit-git/LICENSE
     install -Dm 755 target/release/geph4-exit -t "${pkgdir}"/usr/bin/
@@ -95,6 +99,7 @@ package_geph4-exit-git() {
 }
 
 package_geph4-vpn-helper-git() {
+    depends+=('geph4-client')
     provides=('geph4-vpn-helper')
     conflicts=('geph4-vpn-helper')
     cd "${srcdir}"/"${_pkgbase}"/
