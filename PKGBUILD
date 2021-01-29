@@ -2,12 +2,12 @@
 
 pkgname=freshrss
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, self-hostable aggregator…'
 arch=('any')
 url='http://freshrss.org/'
 license=('AGPL')
-depends=('php')
+depends=('php7')
 optdepends=('apache: Web server to run FreshRSS'
             'nginx: Web server to run FreshRSS'
             'cherokee: Web server to run FreshRSS'

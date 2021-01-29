@@ -1,12 +1,12 @@
 pkgbase = freshrss
 	pkgdesc = A free, self-hostable aggregator…
 	pkgver = 1.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://freshrss.org/
 	install = freshrss.install
 	arch = any
 	license = AGPL
-	depends = php
+	depends = php7
 	optdepends = apache: Web server to run FreshRSS
 	optdepends = nginx: Web server to run FreshRSS
 	optdepends = cherokee: Web server to run FreshRSS
