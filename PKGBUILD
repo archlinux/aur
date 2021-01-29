@@ -17,21 +17,17 @@ source=("${pkgname}::git+https://github.com/leftwm/leftwm.git#tag=${pkgver}")
 md5sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd $pkgname
   cargo build --release
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  mkdir -p "$pkgdir/usr/bin"
-  mv "target/release/leftwm" "$pkgdir/usr/bin"
-  mv "target/release/leftwm-worker" "$pkgdir/usr/bin"
-  mv "target/release/leftwm-state" "$pkgdir/usr/bin"
+  cd $pkgname/target/release
+  install -Dm755 leftwm leftwm-worker leftwm-state -t "$pkgdir"/usr/bin
 
-  mkdir -p "$pkgdir/usr/share/leftwm"
-  cp -R "$srcdir/$pkgname/themes" "$pkgdir/usr/share/leftwm"
+  install -d "$pkgdir"/usr/share/leftwm
+  cp -R "$srcdir"/$pkgname/themes "$pkgdir"/usr/share/leftwm
 
-  mkdir -p "$pkgdir/usr/share/xsessions"
-  cp "$srcdir/$pkgname/leftwm.desktop" "$pkgdir/usr/share/xsessions"
+  install -Dm644 "$srcdir"/$pkgname/leftwm.desktop "$pkgdir"/usr/share/xsessions/leftwm.desktop
 }
 
