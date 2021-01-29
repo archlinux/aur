@@ -9,4 +9,4 @@ Restart=on-failure
 RestartSec=8s
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

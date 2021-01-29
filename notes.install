@@ -43,7 +43,7 @@ msg_upgrade_starting() {
 }
 
 msg_upgrade_systemd() {
-	if [ $(vercmp $1 'v0.5.0.r59.g6780778-2') -gt -1 ]
+	if [ $(vercmp $1 'v0.5.0.r63.g309e422-2') -gt -1 ]
 	then
 		return 0
 	fi
