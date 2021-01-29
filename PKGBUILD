@@ -2,8 +2,8 @@
 
 _name=electron-beta
 pkgname=electron-beta-bin
-_ver="12.0.0-beta.16"
-pkgver=12.0.0.beta.16
+_ver="12.0.0-beta.18"
+pkgver=12.0.0.beta.18
 pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('electron' 'electron-beta')
 conflicts=()
 replaces=()
 source=("https://github.com/electron/electron/releases/download/v${_ver}/electron-v${_ver}-linux-x64.zip")
-md5sums=('0ce6e5078630354dcd771145817ae3de')
+md5sums=('5dbd58f00dfee9a954497f72e89247cb')
 
 package() {
   cd $srcdir
