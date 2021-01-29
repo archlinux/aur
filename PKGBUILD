@@ -13,8 +13,8 @@ pkgdesc='An open source, free-to-win rhythm game'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/ppy/osu'
 license=('MIT')
-depends=('dotnet-runtime>=3.1' 'ffmpeg' 'libgl')
-makedepends=('git' 'dotnet-sdk>=3.1.0.sdk100')
+depends=('dotnet-runtime>=5' 'ffmpeg' 'libgl')
+makedepends=('git' 'dotnet-sdk>=5')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!strip')
