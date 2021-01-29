@@ -1,0 +1,17 @@
+---
+
+stages:
+  - lint
+
+lint:
+  stage: lint
+  image: docker:latest
+  services:
+    - docker:dind
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+  script:
+    - apk add --no-cache bash findutils
+    # yamllint disable-line rule:line-length
+    - 'wget --header="JOB-TOKEN: $CI_JOB_TOKEN" ${CI_API_V4_URL}/projects/oarmstrong%2Folint/packages/generic/olint/1.0.0/olint'
+    - bash olint
