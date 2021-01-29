@@ -10,7 +10,7 @@ license=(GPL2)
 depends=('pacman' 'sed' 'tar')
 optdepends=('bc: percentages support')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/leo-arch/$pkgname/archive/v${pkgver}.tar.gz")
-sha256sums=('a6a381ce807bce3ec56609bf67f2a37486b00cd4f7b809500c890e28cfd39c35')
+sha256sums=('4298435e50c47036f63daa3657689a4df20e35fe064b1dbe52c90eb19718d6f9')
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
