@@ -1,6 +1,6 @@
 # Maintainer: Dominik Schrempf <dominik.schrempf@gmail.com>
 pkgname=nextcloud-systemd-timers
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 epoch=
 pkgdesc="Systemd services and timers for Nextcloud background jobs (see Nextcloud Arch Wiki entry)."
@@ -29,15 +29,15 @@ source=("nextcloud-app-update-all.service"
         "nextcloud-preview-generate-all.timer"
         "nextcloud-preview-pre-generate.service"
         "nextcloud-preview-pre-generate.timer")
-sha256sums=('231419498bda90a47a20927be414e126871877ddefb8234970942b75ce092349'
+sha256sums=('5977e1ea5893fa36ad022f3a080d9b0ebfa9ab90e6b37ac884546e5311df46be'
             '39039f1a3dc23022fccc991daca86d77e7d41be275566f6892cd6b290fa0da4a'
-            '7fe27aa2ef2a034cf19a02571cefd1f6b40dd64fa48abda3ed0c82e2181f12c1'
+            'e1d841b6b133a6c9bed910297a7d899f5669d7e759c1dca1a288658f96576713'
             'a7db3a28abfee48393bd70dc71e9abf813130169229f2a35b072cc11dbd09863'
-            'a5bbae53fd6de8a7a2de7ff07e74ee8b709b1950e6a4d817e80550ad9da8c65e'
+            '58cb60d2630248cf92ddb15e18f455d6ffe6d6b151173fc7d975d622e28e32fa'
             '2f191059b619141ba883ae132af56460212c84eb208f087b87b79b0a3b9e4900'
-            '73c33917bb69889efecd9c47fe4f99910419e7cfdeea012f68d9f4b73dc74cb8'
+            'a8fc7e7431086a19a19729e9c71f7d5b26c8e2cb51d76b2c41dbd982f109f713'
             'bd4bbd01a9d68e0217c3b48c977dda881fd956b53f981a6e32af0357d2e0b716'
-            '98ec0f1a78738d2aa2497b8b01faad4b9e9c44f90988ef3e592257dd2eef9bc8'
+            '6bb27c8b9f67121c5f68cd265393f43ad6d82b9576bbb970844f10df951c42fe'
             '56e3cab181040101be05d4b7723825f7b0c082c34403e42c6f0934c6474a6a43')
 noextract=()
 
