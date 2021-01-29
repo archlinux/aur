@@ -1,12 +1,12 @@
 [Desktop Entry]
 Type=Application
-Version=1.0
+Version=1.5
 Name=osu!lazer
 GenericName=Rhythm game
 Comment=An open source, free-to-win rhythm game
-Exec=osu-lazer %F
 Icon=osu-lazer
-MimeType=application/x-osu-beatmap;application/x-osu-skin;application/x-osu-replay;
+Exec=osu-lazer %F
 Terminal=false
+MimeType=application/x-osu-beatmap;application/x-osu-skin;application/x-osu-replay;
 Categories=Game
 

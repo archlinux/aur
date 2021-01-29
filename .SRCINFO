@@ -23,8 +23,8 @@ pkgbase = osu-lazer-git
 	source = osu-lazer-git.desktop
 	source = osu-lazer-git.xml
 	sha256sums = SKIP
-	sha256sums = a9b0fbac6a9890bd2eeee422027ca2c6764964b46d70d3d0943a0a81339ace9e
-	sha256sums = 455e7fe51fa268a6daad9b12aa0b172f8abfbd5367ecf9710ef7e68bfc6b2632
+	sha256sums = f540fb1fcb010768b8fade9a0d578b4ec9835afa1624bd9f9444fc2f12222f2c
+	sha256sums = 4154f98b615110e8ef34da7f9b6a150786cfca923807a8f9674115913a922be9
 	sha256sums = d97fd78ceacb419e36b0cd02e03394a0f7ad726f55a36c70fea190899911bd55
 
 pkgname = osu-lazer-git
