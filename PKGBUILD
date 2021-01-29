@@ -4,7 +4,7 @@ ENABLE_FLATPAK=0
 ENABLE_SNAPD=0
 
 pkgname=duino-coin
-pkgver=1.9.1
+pkgver=1.9.5
 pkgrel=1
 
 pkgdesc="is a cryptocurrency that can also be mined with AVR boards."
@@ -37,4 +37,7 @@ mkdir -p "~/duco"
 package(){
 mkdir -p "~/duco"
 cp "$pkgname-$pkgver.tar.gz" "$HOME/"
+cd "$HOME/"
+tar -xzf "$pkgname-$pkgver.tar.gz"
+rm -rf "$pkgname-$pkgver.tar.gz"
 }
