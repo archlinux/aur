@@ -1,7 +1,7 @@
 # Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
 _pkgname=terminal-typeracer
 pkgname=typeracer
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="terminal typing speed tester"
 url=https://gitlab.com/ttyperacer/terminal-typeracer
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('openssl' 'zlib' 'sqlite')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/terminal-typeracer-v$pkgver.tar.gz")
-sha256sums=('9bb51dde4806a6768dc2dcedc744079d524a5a0eaf9458ee28d10a938f9ac708')
+sha256sums=('7733458cdab604caed669ca59f2d74840ce35617d37ded7a29f8cadf184805ef')
 
 build() {
   cd "$_pkgname-v$pkgver"
@@ -24,5 +24,7 @@ check() {
 
 package() {
   cd "$_pkgname-v$pkgver"
+  mkdir -p "$pkgdir/usr/share/doc/$pkgname"
   install -Dm755 "target/release/typeracer" "$pkgdir/usr/bin/typeracer"
+  cp -a docs/* "$pkgdir/usr/share/doc/$pkgname"
 }
