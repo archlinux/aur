@@ -1,7 +1,7 @@
 pkgbase = yay
 	pkgdesc = Yet another yogurt. Pacman wrapper and AUR helper written in go.
 	pkgver = 10.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jguer/yay
 	arch = i686
 	arch = pentium4
@@ -13,8 +13,8 @@ pkgbase = yay
 	license = GPL
 	makedepends = go
 	depends = pacman>5
-	depends = sudo
 	depends = git
+	optdepends = sudo
 	source = yay-10.1.2.tar.gz::https://github.com/Jguer/yay/archive/v10.1.2.tar.gz
 	sha256sums = 203ac178fcece5edbeaae40813b69f49d9af346a9bb4579252ba4a2eb2225f52
 
