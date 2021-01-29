@@ -1,6 +1,6 @@
 pkgbase = bees
 	pkgdesc = Best-Effort Extent-Same, a btrfs deduplicator daemon
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/Zygo/bees
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = bees
 	makedepends = gcc
 	makedepends = markdown
 	makedepends = btrfs-progs
-	source = bees-0.6.3.tar.gz::https://github.com/Zygo/bees/archive/v0.6.3.tar.gz
-	sha256sums = 874969b9198867652364c3149f214f39bdfe0efed67d279c6b77b37765661e54
+	source = bees-0.6.4.tar.gz::https://github.com/Zygo/bees/archive/v0.6.4.tar.gz
+	sha256sums = da6c50f433a2bd6b7e26e37733de44554d8e9ed554ee9dea0d2e66d1ff820e0d
 
 pkgname = bees
 
