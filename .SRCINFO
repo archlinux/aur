@@ -1,142 +1,264 @@
 pkgbase = grub-themes-git
 	pkgdesc = Flat Design themes for Grub
 	pkgver = 2021.01.26.r1.g86fc01c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vinceliuice/grub2-themes
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = grub
-	provides = grub-themes
-	provides = grub2-themes
-	conflicts = grub-themes
-	conflicts = grub2-themes
 	source = git+https://github.com/vinceliuice/grub2-themes.git
 	sha256sums = SKIP
 
 pkgname = grub-theme-tela-color-1080p-git
+	provides = grub-theme-tela-color-1080p
+	conflicts = grub-theme-tela-color-1080p
 
 pkgname = grub-theme-tela-color-2k-git
+	provides = grub-theme-tela-color-2k
+	conflicts = grub-theme-tela-color-2k
 
 pkgname = grub-theme-tela-color-4k-git
+	provides = grub-theme-tela-color-4k
+	conflicts = grub-theme-tela-color-4k
 
 pkgname = grub-theme-tela-color-ultrawide-git
+	provides = grub-theme-tela-color-ultrawide
+	conflicts = grub-theme-tela-color-ultrawide
 
 pkgname = grub-theme-tela-color-ultrawide2k-git
+	provides = grub-theme-tela-color-ultrawide2k
+	conflicts = grub-theme-tela-color-ultrawide2k
 
 pkgname = grub-theme-tela-white-1080p-git
+	provides = grub-theme-tela-white-1080p
+	conflicts = grub-theme-tela-white-1080p
 
 pkgname = grub-theme-tela-white-2k-git
+	provides = grub-theme-tela-white-2k
+	conflicts = grub-theme-tela-white-2k
 
 pkgname = grub-theme-tela-white-4k-git
+	provides = grub-theme-tela-white-4k
+	conflicts = grub-theme-tela-white-4k
 
 pkgname = grub-theme-tela-white-ultrawide-git
+	provides = grub-theme-tela-white-ultrawide
+	conflicts = grub-theme-tela-white-ultrawide
 
 pkgname = grub-theme-tela-white-ultrawide2k-git
+	provides = grub-theme-tela-white-ultrawide2k
+	conflicts = grub-theme-tela-white-ultrawide2k
 
 pkgname = grub-theme-tela-whitesur-1080p-git
+	provides = grub-theme-tela-whitesur-1080p
+	conflicts = grub-theme-tela-whitesur-1080p
 
 pkgname = grub-theme-tela-whitesur-2k-git
+	provides = grub-theme-tela-whitesur-2k
+	conflicts = grub-theme-tela-whitesur-2k
 
 pkgname = grub-theme-tela-whitesur-4k-git
+	provides = grub-theme-tela-whitesur-4k
+	conflicts = grub-theme-tela-whitesur-4k
 
 pkgname = grub-theme-tela-whitesur-ultrawide-git
+	provides = grub-theme-tela-whitesur-ultrawide
+	conflicts = grub-theme-tela-whitesur-ultrawide
 
 pkgname = grub-theme-tela-whitesur-ultrawide2k-git
+	provides = grub-theme-tela-whitesur-ultrawide2k
+	conflicts = grub-theme-tela-whitesur-ultrawide2k
 
 pkgname = grub-theme-vimix-color-1080p-git
+	provides = grub-theme-vimix-color-1080p
+	conflicts = grub-theme-vimix-color-1080p
 
 pkgname = grub-theme-vimix-color-2k-git
+	provides = grub-theme-vimix-color-2k
+	conflicts = grub-theme-vimix-color-2k
 
 pkgname = grub-theme-vimix-color-4k-git
+	provides = grub-theme-vimix-color-4k
+	conflicts = grub-theme-vimix-color-4k
 
 pkgname = grub-theme-vimix-color-ultrawide-git
+	provides = grub-theme-vimix-color-ultrawide
+	conflicts = grub-theme-vimix-color-ultrawide
 
 pkgname = grub-theme-vimix-color-ultrawide2k-git
+	provides = grub-theme-vimix-color-ultrawide2k
+	conflicts = grub-theme-vimix-color-ultrawide2k
 
 pkgname = grub-theme-vimix-white-1080p-git
+	provides = grub-theme-vimix-white-1080p
+	conflicts = grub-theme-vimix-white-1080p
 
 pkgname = grub-theme-vimix-white-2k-git
+	provides = grub-theme-vimix-white-2k
+	conflicts = grub-theme-vimix-white-2k
 
 pkgname = grub-theme-vimix-white-4k-git
+	provides = grub-theme-vimix-white-4k
+	conflicts = grub-theme-vimix-white-4k
 
 pkgname = grub-theme-vimix-white-ultrawide-git
+	provides = grub-theme-vimix-white-ultrawide
+	conflicts = grub-theme-vimix-white-ultrawide
 
 pkgname = grub-theme-vimix-white-ultrawide2k-git
+	provides = grub-theme-vimix-white-ultrawide2k
+	conflicts = grub-theme-vimix-white-ultrawide2k
 
 pkgname = grub-theme-vimix-whitesur-1080p-git
+	provides = grub-theme-vimix-whitesur-1080p
+	conflicts = grub-theme-vimix-whitesur-1080p
 
 pkgname = grub-theme-vimix-whitesur-2k-git
+	provides = grub-theme-vimix-whitesur-2k
+	conflicts = grub-theme-vimix-whitesur-2k
 
 pkgname = grub-theme-vimix-whitesur-4k-git
+	provides = grub-theme-vimix-whitesur-4k
+	conflicts = grub-theme-vimix-whitesur-4k
 
 pkgname = grub-theme-vimix-whitesur-ultrawide-git
+	provides = grub-theme-vimix-whitesur-ultrawide
+	conflicts = grub-theme-vimix-whitesur-ultrawide
 
 pkgname = grub-theme-vimix-whitesur-ultrawide2k-git
+	provides = grub-theme-vimix-whitesur-ultrawide2k
+	conflicts = grub-theme-vimix-whitesur-ultrawide2k
 
 pkgname = grub-theme-stylish-color-1080p-git
+	provides = grub-theme-stylish-color-1080p
+	conflicts = grub-theme-stylish-color-1080p
 
 pkgname = grub-theme-stylish-color-2k-git
+	provides = grub-theme-stylish-color-2k
+	conflicts = grub-theme-stylish-color-2k
 
 pkgname = grub-theme-stylish-color-4k-git
+	provides = grub-theme-stylish-color-4k
+	conflicts = grub-theme-stylish-color-4k
 
 pkgname = grub-theme-stylish-color-ultrawide-git
+	provides = grub-theme-stylish-color-ultrawide
+	conflicts = grub-theme-stylish-color-ultrawide
 
 pkgname = grub-theme-stylish-color-ultrawide2k-git
+	provides = grub-theme-stylish-color-ultrawide2k
+	conflicts = grub-theme-stylish-color-ultrawide2k
 
 pkgname = grub-theme-stylish-white-1080p-git
+	provides = grub-theme-stylish-white-1080p
+	conflicts = grub-theme-stylish-white-1080p
 
 pkgname = grub-theme-stylish-white-2k-git
+	provides = grub-theme-stylish-white-2k
+	conflicts = grub-theme-stylish-white-2k
 
 pkgname = grub-theme-stylish-white-4k-git
+	provides = grub-theme-stylish-white-4k
+	conflicts = grub-theme-stylish-white-4k
 
 pkgname = grub-theme-stylish-white-ultrawide-git
+	provides = grub-theme-stylish-white-ultrawide
+	conflicts = grub-theme-stylish-white-ultrawide
 
 pkgname = grub-theme-stylish-white-ultrawide2k-git
+	provides = grub-theme-stylish-white-ultrawide2k
+	conflicts = grub-theme-stylish-white-ultrawide2k
 
 pkgname = grub-theme-stylish-whitesur-1080p-git
+	provides = grub-theme-stylish-whitesur-1080p
+	conflicts = grub-theme-stylish-whitesur-1080p
 
 pkgname = grub-theme-stylish-whitesur-2k-git
+	provides = grub-theme-stylish-whitesur-2k
+	conflicts = grub-theme-stylish-whitesur-2k
 
 pkgname = grub-theme-stylish-whitesur-4k-git
+	provides = grub-theme-stylish-whitesur-4k
+	conflicts = grub-theme-stylish-whitesur-4k
 
 pkgname = grub-theme-stylish-whitesur-ultrawide-git
+	provides = grub-theme-stylish-whitesur-ultrawide
+	conflicts = grub-theme-stylish-whitesur-ultrawide
 
 pkgname = grub-theme-stylish-whitesur-ultrawide2k-git
+	provides = grub-theme-stylish-whitesur-ultrawide2k
+	conflicts = grub-theme-stylish-whitesur-ultrawide2k
 
 pkgname = grub-theme-slaze-color-1080p-git
+	provides = grub-theme-slaze-color-1080p
+	conflicts = grub-theme-slaze-color-1080p
 
 pkgname = grub-theme-slaze-color-2k-git
+	provides = grub-theme-slaze-color-2k
+	conflicts = grub-theme-slaze-color-2k
 
 pkgname = grub-theme-slaze-color-4k-git
+	provides = grub-theme-slaze-color-4k
+	conflicts = grub-theme-slaze-color-4k
 
 pkgname = grub-theme-slaze-white-1080p-git
+	provides = grub-theme-slaze-white-1080p
+	conflicts = grub-theme-slaze-white-1080p
 
 pkgname = grub-theme-slaze-white-2k-git
+	provides = grub-theme-slaze-white-2k
+	conflicts = grub-theme-slaze-white-2k
 
 pkgname = grub-theme-slaze-white-4k-git
+	provides = grub-theme-slaze-white-4k
+	conflicts = grub-theme-slaze-white-4k
 
 pkgname = grub-theme-slaze-whitesur-1080p-git
+	provides = grub-theme-slaze-whitesur-1080p
+	conflicts = grub-theme-slaze-whitesur-1080p
 
 pkgname = grub-theme-slaze-whitesur-2k-git
+	provides = grub-theme-slaze-whitesur-2k
+	conflicts = grub-theme-slaze-whitesur-2k
 
 pkgname = grub-theme-slaze-whitesur-4k-git
+	provides = grub-theme-slaze-whitesur-4k
+	conflicts = grub-theme-slaze-whitesur-4k
 
 pkgname = grub-theme-whitesur-color-1080p-git
+	provides = grub-theme-whitesur-color-1080p
+	conflicts = grub-theme-whitesur-color-1080p
 
 pkgname = grub-theme-whitesur-color-2k-git
+	provides = grub-theme-whitesur-color-2k
+	conflicts = grub-theme-whitesur-color-2k
 
 pkgname = grub-theme-whitesur-color-4k-git
+	provides = grub-theme-whitesur-color-4k
+	conflicts = grub-theme-whitesur-color-4k
 
 pkgname = grub-theme-whitesur-white-1080p-git
+	provides = grub-theme-whitesur-white-1080p
+	conflicts = grub-theme-whitesur-white-1080p
 
 pkgname = grub-theme-whitesur-white-2k-git
+	provides = grub-theme-whitesur-white-2k
+	conflicts = grub-theme-whitesur-white-2k
 
 pkgname = grub-theme-whitesur-white-4k-git
+	provides = grub-theme-whitesur-white-4k
+	conflicts = grub-theme-whitesur-white-4k
 
 pkgname = grub-theme-whitesur-whitesur-1080p-git
+	provides = grub-theme-whitesur-whitesur-1080p
+	conflicts = grub-theme-whitesur-whitesur-1080p
 
 pkgname = grub-theme-whitesur-whitesur-2k-git
+	provides = grub-theme-whitesur-whitesur-2k
+	conflicts = grub-theme-whitesur-whitesur-2k
 
 pkgname = grub-theme-whitesur-whitesur-4k-git
+	provides = grub-theme-whitesur-whitesur-4k
+	conflicts = grub-theme-whitesur-whitesur-4k
 
