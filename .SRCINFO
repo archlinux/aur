@@ -1,7 +1,7 @@
 pkgbase = python-hkdf
 	pkgdesc = This module implements the HMAC Key Derivation function, defined at http://tools.ietf.org/html/draft-krawczyk-hkdf-01
 	pkgver = 0.0.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://pypi.python.org/packages/c3/be/hkdf-0.0.3
 	arch = any
 	license = BSD
