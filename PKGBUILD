@@ -3,21 +3,21 @@
 
 pkgname=wallabag
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Self hostable application for saving web pages'
 arch=('any')
 url='http://www.wallabag.org/'
 license=('MIT')
 makedepends=('systemd')
 depends=(
-    'php>=7.2'
-    'php-gd'
-    'php-tidy'
+    'php7>=7.2'
+    'php7-gd'
+    'php7-tidy'
     'pcre'
 )
 optdepends=(
-    'php-pgsql: For postgres storage'
-    'php-sqlite: For sqlite storage'
+    'php7-pgsql: For postgres storage'
+    'php7-sqlite: For sqlite storage'
     'rabbitmq: For async import'
     'redis: For async import'
 )

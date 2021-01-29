@@ -1,18 +1,18 @@
 pkgbase = wallabag
 	pkgdesc = Self hostable application for saving web pages
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.wallabag.org/
 	install = wallabag.install
 	arch = any
 	license = MIT
 	makedepends = systemd
-	depends = php>=7.2
-	depends = php-gd
-	depends = php-tidy
+	depends = php7>=7.2
+	depends = php7-gd
+	depends = php7-tidy
 	depends = pcre
-	optdepends = php-pgsql: For postgres storage
-	optdepends = php-sqlite: For sqlite storage
+	optdepends = php7-pgsql: For postgres storage
+	optdepends = php7-sqlite: For sqlite storage
 	optdepends = rabbitmq: For async import
 	optdepends = redis: For async import
 	options = !strip
