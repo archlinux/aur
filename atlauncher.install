@@ -8,8 +8,8 @@ post_install() {
     echo ">>> --------------"
     echo ">>> This launcher requires you to login with a valid minecraft.net account to be"
     echo ">>> able to install mod packs and play minecraft."
-    echo ">>> To create an account, connect to http://www.minecraft.net/ and buy the full"
-    echo ">>> game for 19.95€. You should then be able to log in and play."
+    echo ">>> To create an account, connect to https://www.minecraft.net/store/minecraft-java-edition"
+    echo ">>> and buy the full game. You should then be able to log in and play."
     echo ">>> --------------"
 }
 

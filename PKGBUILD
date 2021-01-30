@@ -6,8 +6,9 @@
 pkgname=atlauncher
 _upstreamname=ATLauncher
 pkgrel=1
-pkgver=3.4.1.1
-pkgdesc="A Launcher for Minecraft which to allow you to download and install ModPacks quickly and easily."
+pkgver=3.4.2.6
+pkgdesc="A Launcher for Minecraft which integrates multiple different ModPacks to allow you to download and install
+ModPacks easily and quickly."
 arch=('any')
 url="https://github.com/ATLauncher/ATLauncher"
 license=('GPL3')
@@ -16,20 +17,19 @@ makedepends=('java-environment=8' 'gradle')
 provides=('atlauncher')
 conflicts=('atlauncher-bin')
 
-source=("$_upstreamname-$pkgver.tar.gz::https://github.com/ATLauncher/ATLauncher/archive/$pkgver.tar.gz"
+source=("$_upstreamname-$pkgver.tar.gz::https://github.com/ATLauncher/ATLauncher/archive/v$pkgver.tar.gz"
         "atlauncher"
         "atlauncher.desktop"
-        "atlauncher.png"
-       )
+        "atlauncher.png")
 
-sha256sums=('2838a53c70237de181f6ebca193b90b5758a69e021ec195e05611d13c0fbb85a'
-            '8afdfd968a72a047444f6ebceb718566b7be5164bfa4aa1fd0a0698616c53738'
-            '5f45436c96ab9830555d0f987a96fc0b1a9766d450b958aba282820ffca6cc84'
-            '369c7aa4439762878fd9970c75d1312cf0cd97119c8320b732addef4a621482d')
+sha256sums=('6a5303a2f15f473409c7cfd46c30fb10791ba996a432fb7b66052ebe74a3a5a1'
+            'a1184d3b8ed125b6a182871bb19851c0635806c29f3d392660ae716a61174a89'
+            'bc8052811b1bd96c7b24963f11168ddba5e2769faa135a0e5680d6d1cc7b802a'
+            'dd370888c78fdb652d656d97e4a7f7e8c90aa8d75d4f4d01d0bd32e95c327c47')
 
 build() {
   cd "$_upstreamname-$pkgver"
-  gradle build
+  gradle build -x test
 }
 
 package() {
