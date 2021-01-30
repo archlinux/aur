@@ -6,7 +6,7 @@
 _pkgname=eea
 pkgname="${_pkgname}-dkms"
 pkgver=7.1.9.0
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 pkgdesc='ESET Endpoint Antivirus Business for Linux'
 url='https://www.eset.com/int/business/endpoint-antivirus-linux/'
@@ -50,27 +50,29 @@ package() {
   rm -f ${srcdir}/../${_bundle_file}
 
   msg2 "Checking file integrity..."
-  cd ${pkgdir}
-  md5sum ${srcdir}/md5sums --check --quiet
-  cd ${srcdir}
+  tail -n +`awk '/^exit$/ { print NR + 1; exit }' "${_bundle_file}"` "${_bundle_file}" |
+	bsdtar -xOf - ${_deb} |          # deb from bundle
+	bsdtar -xOf - control.tar.gz |   # control.tar.gz from deb
+	bsdtar -xf - md5sums             # md5sums from control.tar.gz
+  cd "${pkgdir}"
+  md5sum "${srcdir}"/md5sums --check --quiet
+  cd "${srcdir}"
 
   # fix permissions
-  chmod 0755 ${pkgdir}/opt
-  chmod 0755 ${pkgdir}/var
-  chmod 0755 ${pkgdir}/var/log
-  chmod 0700 ${pkgdir}/var/log/eset/${_pkgname}/
-  chmod 0755 ${pkgdir}/var/opt
-  chmod 0775 ${pkgdir}/var/opt/eset/${_pkgname}/
-  chmod 1770 ${pkgdir}/var/opt/eset/${_pkgname}/cache/
-  chmod 1770 ${pkgdir}/var/opt/eset/${_pkgname}/cache/data/
+  chmod 0755 "${pkgdir}"/var
+  chmod 0755 "${pkgdir}"/var/log
+  chmod 0700 "${pkgdir}"/var/log/eset/${_pkgname}/
+  chmod 0775 "${pkgdir}"/var/opt/eset/${_pkgname}/
+  chmod 1770 "${pkgdir}"/var/opt/eset/${_pkgname}/cache/
+  chmod 1770 "${pkgdir}"/var/opt/eset/${_pkgname}/cache/data/
 
   # Patch kernel module to support kernels >=5.10
-  chmod 0755 ${pkgdir}/${_kernel_module_dir}
+  chmod 0755 "${pkgdir}"/${_kernel_module_dir}
   local i;for i in "${source[@]}";do
-    case $i in
+    case "$i" in
       *.patch)
         msg2 "Applying patch ${i}..."
-        patch -p1 -d ${pkgdir}/${_kernel_module_dir} -i "${srcdir}/${i}"
+        patch -p1 -d "${pkgdir}"/${_kernel_module_dir} -i "${srcdir}/${i}"
     esac
   done
 
@@ -84,7 +86,12 @@ package() {
       -e "s/@PKGVER@/${pkgver}/" \
       -i "${pkgdir}"/${_kernel_module_dir}/dkms.conf
 
-  # Link kernel module sources (including Makefile) to DKMS default
-  mkdir "${pkgdir}"/usr/src
-  ln -s ${_kernel_module_dir} "${pkgdir}"/usr/src/${_pkgname}-${pkgver}
+  # Install kernel module sources (including Makefile) to DKMS default
+  mkdir -p "${pkgdir}"/usr/src
+  cp -r "${pkgdir}"/${_kernel_module_dir} "${pkgdir}"/usr/src/${_pkgname}-${pkgver}
+
+  # Check for existing kernel module in systemd service instead of building it
+  sed -e 's|ExecStartPre=.*/check_start.sh|RestartSec=5s\
+ExecStartPre=/usr/bin/bash -c "test -f /lib/modules/\`uname -r\`/eset/eea/eset_rtp.ko"|' \
+      -i "${pkgdir}"/opt/eset/eea/etc/systemd/eea.service
 }

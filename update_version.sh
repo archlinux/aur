@@ -51,7 +51,6 @@ tail -n +`awk '/^exit$/ { print NR + 1; exit }' ${bundle}` ${bundle} |
 	bsdtar -xf - "pre*" "post*"       # install scripts from control.tar.gz
 
 csplit preinst "/### Upgrade ###/" --suppress-matched -f preinst --quiet
-csplit postinst "/### Upgrade & Install ###/" --suppress-matched -f postinst --quiet
 
 echo "pre_install() {
 `sed -e "s/^/\t/g" preinst00`
@@ -62,7 +61,7 @@ pre_upgrade() {
 }
 
 post_install() {
-`sed -e "s/^/\t/g" postinst00 | sed -e 's/\[ "$1" = "configure" ] || \[ "$1" = "1" ]/true/g'`
+`sed -e "s/^/\t/g" postinst | sed -e 's/\[ "$1" = "configure" ] || \[ "$1" = "1" ]/true/g' -e 's/\[ "$1" = "2" ]/false/g' -e 's/\[ "$1" = "configure" ] && \[ -n "$2" ]/true/g'`
 }
 
 post_upgrade() {
@@ -75,10 +74,6 @@ pre_remove() {
 
 post_remove() {
 `sed -e "s/^/\t/g" postrm | sed -e 's/\[ "$1" = "upgrade" ] || \[ "$1" = "1" ]/false/g' -e 's/\[ "$1" = "purge" ]/false/g'`
-
-	# remove kernel modules
-	rm -rf /lib/modules/**/eset/eea
-	rmdir --ignore-fail-on-non-empty /lib/modules/**/eset
 }" | sed -e "/#!/d;s/[ \t]*$//" > eea.install
 
 # Update .SRCINFO

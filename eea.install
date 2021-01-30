@@ -84,6 +84,46 @@ post_install() {
 		fi
 	fi
 
+	#################################### Upgrade & Install ####################################
+	# change directory permissions
+	chgrp -R 'eset-eea-daemons' '/var/opt/eset/eea'
+	chmod -R 775 '/var/opt/eset/eea'
+
+	logd_ug='eset-eea-logd:eset-eea-daemons'
+	chown -R ${logd_ug%:*} '/var/log/eset/eea'
+	chmod -R 700 '/var/log/eset/eea'
+	mkdir -p '/var/opt/eset/eea/cache/data/Logs'
+
+	chgrp -R 'eset-eea-daemons' '/var/opt/eset/eea/cache' '/var/opt/eset/eea/cache/data' '/var/opt/eset/eea/modules_notice'
+	for dir in /var/opt/eset/eea/cache /var/opt/eset/eea/cache/data; do
+		chmod -R 770 "$dir"
+		chmod 1770 "$dir"
+	done
+	chmod 1770 '/var/opt/eset/eea/cache/data/Logs'
+
+	scand_ug='eset-eea-scand:eset-eea-daemons'
+	chown -R ${scand_ug%:*} /var/opt/eset/eea/cache
+
+	# extract modules from tar
+	tar -xf /var/opt/eset/eea/lib/modules.tar -C /var/opt/eset/eea/lib
+	# compile modules
+	/opt/eset/eea/bin/upd --compile-nups
+	# set correct user to compiled modules
+	updated_ug='eset-eea-updated:eset-eea-daemons'
+	chown -R ${updated_ug} /var/opt/eset/eea/lib
+
+	if false; then
+		# rpm upgrade only
+		import_configuration
+	fi
+
+	if true; then
+		# deb upgrade only
+		import_configuration
+	fi
+
+	# register and start service
+	/opt/eset/eea/lib/install_scripts/register_service.sh
 }
 
 post_upgrade() {
@@ -240,8 +280,4 @@ post_remove() {
 
 	rm -rf /var/opt/eset/eea
 	rmdir /var/opt/eset 2>/dev/null || true
-
-	# remove kernel modules
-	rm -rf /lib/modules/**/eset/eea
-	rmdir --ignore-fail-on-non-empty /lib/modules/**/eset
 }
