@@ -1,6 +1,6 @@
 # Maintainer: h_cheung <mail@h-cheung.cf>
 pkgname=clash-tun
-pkgver=20201122.r560.e389e33
+pkgver=20210125.r580.d1c280a
 pkgrel=1
 pkgdesc="Clash Tun Scripts for Linux"
 arch=('any')
