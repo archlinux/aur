@@ -10,7 +10,6 @@ pkgbase = yesplaymusic-appimage
 	options = !strip
 	source = https://github.com/qier222/YesPlayMusic/releases/download/v0.3.2/YesPlayMusic-0.3.2.AppImage
 	sha512sums = kWQlx1mEHZspgTkUCrHfZzYGvldwjfNH/Aquu/v/j3B5+1pKFriL0fmEjcBup8cN8qUoouvvOABbm9qGLkq1Xw==
-	sha512sums = SKIP
 
 pkgname = yesplaymusic-appimage
 

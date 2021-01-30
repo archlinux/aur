@@ -17,7 +17,6 @@ source=(
 noextract=("${_appimage}")
 sha512sums=(
     kWQlx1mEHZspgTkUCrHfZzYGvldwjfNH/Aquu/v/j3B5+1pKFriL0fmEjcBup8cN8qUoouvvOABbm9qGLkq1Xw==
-    SKIP
 )
 
 prepare() {
