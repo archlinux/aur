@@ -1,0 +1,22 @@
+pkgbase = vkd3d-proton-git
+	pkgdesc = Direct3D 12 to Vulkan translation library By WineHQ
+	pkgver = v2.1.r38.g2560c768
+	pkgrel = 1
+	url = https://wiki.winehq.org/Vkd3d
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = meson
+	makedepends = glslang
+	makedepends = wine
+	makedepends = xcb-util-keysyms
+	makedepends = xorgproto
+	depends = spirv-tools
+	depends = vulkan-icd-loader
+	provides = vkd3d-proton
+	conflicts = vkd3d-proton
+	source = git+https://github.com/HansKristian-Work/vkd3d-proton.git
+	md5sums = SKIP
+
+pkgname = vkd3d-proton-git
+
