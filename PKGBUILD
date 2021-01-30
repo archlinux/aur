@@ -7,7 +7,7 @@
 
 pkgname=gcalcli
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Google calendar command line interface'
 arch=('any')
 url=https://github.com/insanum/gcalcli
@@ -40,6 +40,6 @@ check() {
 package() {
     cd "gcalcli-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    install -Dm644 docs/*.{md,png} -t "$pkgdir/usr/share/docs/$pkgname"
+    install -Dm644 docs/*.{md,png} -t "$pkgdir/usr/share/doc/$pkgname"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
