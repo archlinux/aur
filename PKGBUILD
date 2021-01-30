@@ -8,12 +8,12 @@
 ##
 ## The following variables can be customized at build time. Use env or export to change at your wish
 ##
-##   Example: env _microarchitecture=25 use_numa=n use_tracers=n use_pds=n makepkg -sc
+##   Example: env _microarchitecture=99 use_numa=n use_tracers=n use_pds=n makepkg -sc
 ##
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
-## Valid numbers between: 0 to 42
+## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
-## Good option if your package is for one machine: 42 => native
+## Good option if your package is for one machine: 99 => native
 if [ -z ${_microarchitecture+x} ]; then
   _microarchitecture=0
 fi
