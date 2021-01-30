@@ -1,19 +1,19 @@
 pkgbase = packettracer
-	pkgdesc = Cisco PacketTracer 7.3.1 installation package
-	pkgver = 7.3.1
-	pkgrel = 3
+	pkgdesc = Cisco PacketTracer 8.0 installation package
+	pkgver = 8.0
+	pkgrel = 1
 	url = https://www.netacad.com/courses/packet-tracer
 	install = packettracer.install
 	arch = x86_64
 	license = custom
 	options = !strip
 	options = !emptydirs
-	source = local://PacketTracer_731_amd64.deb
+	source = local://PacketTracer_800_amd64_build212_final.deb
 	source = packettracer.sh
 	source = packettracer.install
-	sha512sums = 3fe369ef8cd1e0429422e58ce42d1b4288143e49cdf06e1c0bb15cb0b75a0d0fe0fcdaccdf244cb466cb700644ea8d792672f5a8caef3d307d5c071a97d5d42d
-	sha512sums = 09d07ec95712f562bb9217b40a0a04cbb16e42523801b62180050326d67d3592f2ce92444440a10a6e94951c6cf53e27fb360395ef5f3732c71edc51e6a85726
-	sha512sums = df258f926695bee642f036f6d5cb789a8c947eb1afebdb21281d7dbbf39982365d7e5c9ed4e5b94214b96e767d6b4f1f787f043bc99b33d9bdb84efd83574335
+	sha512sums = 3a56a369ae2028fa866ad2e27bbe07d1bee14fd0f16f82790c5f7ad9b7a7c3fc39b4b88d52aae652dccf1a21a3ae0f433e8b586ace4f48dfab7271524c5d163c
+	sha512sums = 3246843441207d66ccffd0717aa85a7bf828842c2c337d1527597bdf57cc2f9966c75c764aa22f9cb6a331e6268dd64af0da7ce4cc89725d418fc54e163230f2
+	sha512sums = c0e894ff34e5e635574edcca9cd06dddc1706deef82032a964f779c1ac734e41ba328287ee7a8c989b9c4baf6a517e4d482465803f8f2dabd691616bf972cb7a
 	depends = openssl>=1.0
 	depends = dbus
 	depends = icu
