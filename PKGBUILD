@@ -1,7 +1,7 @@
 # Maintainer: Maximilian Stahlberg <maximilian.stahlberg tu-berlin de>
 
 pkgname=python-picos-git
-pkgver=2.1.r1.gbb51b36
+pkgver=2.1.r2.gf31ae78
 pkgrel=1
 pkgdesc='A Python interface to conic optimization solvers. Git version.'
 arch=('any')
@@ -20,15 +20,24 @@ optdepends=(
 makedepends=('git' 'python-setuptools')
 conflicts=('python-picos')
 source=("picos::git+https://gitlab.com/picos-api/picos.git")
+md5sums=('SKIP')
 
 pkgver() {
-	cd picos
+	cd "${srcdir}/picos"
 	./version.py --aur
 }
 
-package() {
-	cd picos
-	python setup.py install --root=${pkgdir}
+build() {
+	cd "${srcdir}/picos"
+	python setup.py build
 }
 
-md5sums=('SKIP')
+check() {
+	cd "${srcdir}/picos/build/lib"
+	python -BIc "import picos"
+}
+
+package() {
+	cd "${srcdir}/picos"
+	python setup.py install --root=${pkgdir} --optimize=1 --skip-build
+}
