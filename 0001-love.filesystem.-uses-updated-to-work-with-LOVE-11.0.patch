@@ -1,0 +1,153 @@
+From 6235a6c1b5ba06c7c8a635ffc466824e85f8b90e Mon Sep 17 00:00:00 2001
+From: Filipe Reis <filipereis233@gmail.com>
+Date: Fri, 15 Feb 2019 19:18:14 +0000
+Subject: [PATCH 1/2] love.filesystem.* uses updated to work with LOVE 11.0
+
+---
+ src/conf.lua                |  2 +-
+ src/config.lua              |  4 ++--
+ src/emulator/filesystem.lua | 12 ++++++------
+ src/main.lua                |  6 +++---
+ src/ui/window.lua           |  2 +-
+ 5 files changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/src/conf.lua b/src/conf.lua
+index de01d19..0940c74 100644
+--- a/src/conf.lua
++++ b/src/conf.lua
+@@ -1,7 +1,7 @@
+ function love.conf(t)
+     t.title = "ComputerCraft Emulator"
+     t.author = "Sorroko"
+-    t.version = "0.9.0"
++    t.version = "11.0"
+     t.modules.physics = false
+     t.modules.audio = false
+     t.modules.sound = false
+diff --git a/src/config.lua b/src/config.lua
+index eb58c72..fc69a28 100644
+--- a/src/config.lua
++++ b/src/config.lua
+@@ -18,7 +18,7 @@ function Config:resetToDefault()
+ end
+ 
+ function Config:load()
+-	if love.filesystem.exists(self.path) then
++	if love.filesystem.getInfo(self.path) then
+ 		for line in love.filesystem.lines(self.path) do
+ 			key, value = string.match(line,"(.-)=(.-)$")
+ 			if key and value then
+@@ -33,7 +33,7 @@ end
+ function Config:save()
+ 	local lines, saved_keys = {}, {}
+ 
+-	if love.filesystem.exists(self.path) then
++	if love.filesystem.getInfo(self.path) then
+ 		for line in love.filesystem.lines(self.path) do
+ 			key, value = string.match(line,"(.-)=(.-)$")
+ 			if self.data[key] then
+diff --git a/src/emulator/filesystem.lua b/src/emulator/filesystem.lua
+index 065ce9d..b039fe9 100644
+--- a/src/emulator/filesystem.lua
++++ b/src/emulator/filesystem.lua
+@@ -14,7 +14,7 @@ function FileSystem.static.deleteTree(sFolder)
+ 
+ 			if love.filesystem.isFile(pObject) then
+ 				love.filesystem.remove(pObject)
+-			elseif love.filesystem.isDirectory(pObject) then
++			elseif love.filesystem.getInfo(pObject).type == "directory" then
+ 				FileSystem.deleteTree(pObject)
+ 			end
+ 		end
+@@ -26,7 +26,7 @@ function FileSystem.static.copyTree(sFolder, sToFolder)
+ 	log("FileSystem -> deleteTree(): source - " .. tostring(sFolder) .. ", destination - " .. tostring(sToFolder))
+ 	FileSystem.deleteTree(sToFolder) -- Overwrite existing file for both copy and move
+ 	-- Is this vanilla behaviour or does it merge files?
+-	if not love.filesystem.isDirectory(sFolder) then
++	if not love.filesystem.getInfo(sFolder).type == "directory" then
+ 		love.filesystem.write(sToFolder, love.filesystem.read( sFolder ))
+ 	end
+ 	local tObjects = love.filesystem.getDirectoryItems(sFolder)
+@@ -37,7 +37,7 @@ function FileSystem.static.copyTree(sFolder, sToFolder)
+ 
+ 			if love.filesystem.isFile(pObject) then
+ 				love.filesystem.write(sToFolder .. "/" .. sObject, love.filesystem.read( pObject ))
+-			elseif love.filesystem.isDirectory(pObject) then
++			elseif love.filesystem.getInfo(pObject).type == "directory" then
+ 				FileSystem.copyTree(pObject)
+ 			end
+ 		end
+@@ -101,7 +101,7 @@ function FileSystem:find(sPath)
+ 		_tFlags = v[3]
+ 		if startsWith(sPath, _sMount) then
+ 			local bPath = string.sub(sPath, #_sMount + 1, -1)
+-			if love.filesystem.exists(_sPath .. "/" .. bPath) then
++			if love.filesystem.getInfo(_sPath .. "/" .. bPath) then
+ 				if self.enableCache then
+ 					self.cache.find[sPath] = { _sPath .. "/" .. bPath, _sMount }
+ 				end
+@@ -124,7 +124,7 @@ function FileSystem:isDirectory(sPath)
+ 	local file, mount = self:find(sPath)
+ 	if not file then return false end -- false or nil?
+ 
+-	return love.filesystem.isDirectory(file)
++	return love.filesystem.getInfo(file).type == "directory"
+ end
+ 
+ function FileSystem:open( sPath, sMode )
+@@ -260,7 +260,7 @@ function FileSystem:list( sPath )
+ 		if startsWith(sPath, _sMount) then
+ 			local bPath = string.sub(sPath, #_sMount + 1, -1)
+ 			local fsPath = _sPath .. "/" .. bPath
+-			if love.filesystem.exists(fsPath) and love.filesystem.isDirectory(fsPath) then
++			if love.filesystem.getInfo(fsPath) and love.filesystem.getInfo(fsPath).type == "directory" then
+ 				local items = love.filesystem.getDirectoryItems(fsPath)
+ 				for k,_v in pairs(items) do table.insert(res, _v) end
+ 			end
+diff --git a/src/main.lua b/src/main.lua
+index 4f1f573..9ce0906 100644
+--- a/src/main.lua
++++ b/src/main.lua
+@@ -38,7 +38,7 @@ function love.load(args)
+ 	log("Application starting...")
+ 
+ 	love.filesystem.setIdentity( "cclite" )
+-	if not love.filesystem.exists( "data/" ) then
++	if not love.filesystem.getInfo("data/") then
+ 		log("Creating save directory")
+ 		love.filesystem.createDirectory( "data/" )
+ 	end
+@@ -57,7 +57,7 @@ function love.load(args)
+ 	config:load()
+ 
+ 	if PLATFORM ~= "Android" then
+-		love.keyboard.setKeyRepeat( 0.5, 0.05 )
++		love.keyboard.setKeyRepeat( true ) -- Love2D no longer sets the interval so...
+ 	end
+ 
+ 	main_window = Window( "ComputerCraft Emulator" )
+@@ -196,7 +196,7 @@ function love.run()
+ 		-- Call update and draw
+ 		if love.update then love.update(dt) end -- will pass 0 if love.timer is disabled
+ 
+-		if love.window and love.graphics and love.window.isCreated() then
++		if love.window and love.graphics and love.window.isOpen() then
+ 			love.graphics.clear()
+ 			love.graphics.origin()
+ 			if love.draw then love.draw() end
+diff --git a/src/ui/window.lua b/src/ui/window.lua
+index 28baf60..1117c8d 100644
+--- a/src/ui/window.lua
++++ b/src/ui/window.lua
+@@ -43,7 +43,7 @@ function Window:create()
+ 	local ok = love.window.setMode( self.w, self.h, {
+ 		fullscreen = false,
+ 		vsync = true,
+-		fsaa = 0,
++		msaa = 0,
+ 		resizable = true,
+ 		borderless = false,
+ 		minwidth = 200,
+-- 
+2.30.0
+

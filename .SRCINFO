@@ -1,0 +1,19 @@
+pkgbase = cclite
+	pkgdesc = A ComputerCraft emulator (from the Minecraft Mod)
+	pkgver = 2.0.0
+	pkgrel = 0
+	url = https://github.com/Sorroko/cclite
+	arch = any
+	license = Apache
+	makedepends = ant
+	depends = love
+	source = https://github.com/Sorroko/cclite/archive/master.zip
+	source = cclite
+	source = 0001-love.filesystem.-uses-updated-to-work-with-LOVE-11.0.patch
+	source = 0002-Updates-color-values-to-work-with-LOVE-11.0.patch
+	md5sums = 322727bd61fd1d34799b7b28d7531250
+	md5sums = d855dcadcb4d0b0f506c78e34976902f
+	md5sums = 16f772cbb874e9243d6a5e5871705fd0
+	md5sums = 2dc68c42870b1bd1c107b0256d99f425
+
+pkgname = cclite

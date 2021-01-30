@@ -1,0 +1,162 @@
+From 74728320b253cf6031e722feaccaebc2b7655254 Mon Sep 17 00:00:00 2001
+From: Filipe Reis <filipereis233@gmail.com>
+Date: Fri, 15 Feb 2019 19:24:08 +0000
+Subject: [PATCH 2/2] Updates color values to work with LOVE 11.0
+
+---
+ src/ui/android.lua | 12 +++++-----
+ src/ui/button.lua  |  2 +-
+ src/ui/tabs.lua    |  1 +
+ src/util.lua       | 60 +++++++++++++++++++++++-----------------------
+ 4 files changed, 38 insertions(+), 37 deletions(-)
+
+diff --git a/src/ui/android.lua b/src/ui/android.lua
+index 5510f7d..5c498ea 100644
+--- a/src/ui/android.lua
++++ b/src/ui/android.lua
+@@ -17,7 +17,7 @@ function Android:getHeight()
+ end
+ 
+ function Android:draw()
+-	love.graphics.setColor(172, 232, 250)
++	love.graphics.setColor(172/255, 232/255, 250/255)
+ 	love.graphics.rectangle("fill", 0, 0, self:getWidth(), self:getHeight() )
+ end
+ 
+@@ -45,10 +45,10 @@ function AndroidMenu:postInitialize()
+ 	self.ctrl.draw = function(self)
+ 		love.graphics.setFont(self.component.font)
+ 		if ctrl_state then
+-			love.graphics.setColor(255, 0, 0)
++			love.graphics.setColor(255/255, 0, 0)
+ 			love.graphics.rectangle("fill", self.x, self.y, self.w, self.h )
+ 		end
+-		love.graphics.setColor(255, 255, 255)
++		love.graphics.setColor(255/255, 255/255, 255/255)
+ 		love.graphics.print(self.label, self.x, self.y)
+ 	end
+ 
+@@ -60,10 +60,10 @@ function AndroidMenu:postInitialize()
+ 	self.shift.draw = function(self)
+ 		love.graphics.setFont(self.component.font)
+ 		if shift_state then
+-			love.graphics.setColor(255, 0, 0)
++			love.graphics.setColor(255/255, 0, 0)
+ 			love.graphics.rectangle("fill", self.x, self.y, self.w, self.h )
+ 		end
+-		love.graphics.setColor(255, 255, 255)
++		love.graphics.setColor(255/255, 255, 255)
+ 		love.graphics.print(self.label, self.x, self.y)
+ 	end
+ end
+@@ -81,7 +81,7 @@ function AndroidMenu:getHeight()
+ end
+ 
+ function AndroidMenu:draw()
+-	love.graphics.setColor(63, 81, 181)
++	love.graphics.setColor(63/255, 81/255, 181/255)
+ 	love.graphics.rectangle("fill", 0, 0, self:getWidth(), self:getHeight() )
+ 
+ 	self.power:draw()
+diff --git a/src/ui/button.lua b/src/ui/button.lua
+index f724ee8..7d4f026 100644
+--- a/src/ui/button.lua
++++ b/src/ui/button.lua
+@@ -37,6 +37,6 @@ function Button:draw()
+ 	--love.graphics.setColor()
+ 	--love.graphics.rectangle("fill", self.x, self.y, self.w, self.h )
+ 	love.graphics.setFont(self.component.font)
+-	love.graphics.setColor(255, 255, 255)
++	love.graphics.setColor(255/255, 255/255, 255/255)
+ 	love.graphics.print(self.label, self.x, self.y)
+ end
+diff --git a/src/ui/tabs.lua b/src/ui/tabs.lua
+index daf2c77..449d337 100644
+--- a/src/ui/tabs.lua
++++ b/src/ui/tabs.lua
+@@ -31,6 +31,7 @@ end
+ 
+ function Tabs:draw()
+ 	-- Draw tab bar
++	-- Not sure what this referes to, but "bodycolor" is never assigned in all of the src folder. (Should probably set to self.bodycolor but that should be unset as well)
+ 	love.graphics.setColor(bodycolor)
+ 	love.graphics.rectangle("fill", self.x, self.y + self.topHeight, self.width, self.height - self.topHeight)
+ 
+diff --git a/src/util.lua b/src/util.lua
+index bf41e23..7f808ef 100644
+--- a/src/util.lua
++++ b/src/util.lua
+@@ -42,40 +42,40 @@ Util.static.KEYS = {
+ 	["f14"] = 101, ["f15"] = 102, ["f16"] = 103, ["f17"] = 104, ["f18"] = 105
+ }
+ Util.static.COLOUR_RGB = { -- Improved colors
+-	WHITE = {240, 240, 240},
+-	ORANGE = {242, 178, 51},
+-	MAGENTA = {229, 127, 216},
+-	LIGHT_BLUE = {153, 178, 242},
+-	YELLOW = {222, 222, 108},
+-	LIME = {127, 204, 25},
+-	PINK = {242, 178, 204},
+-	GRAY = {76, 76, 76},
+-	LIGHT_GRAY = {153, 153, 153},
+-	CYAN = {76, 153, 178},
+-	PURPLE = {178, 102, 229},
+-	BLUE = {37, 49, 146},
+-	BROWN = {127, 102, 76},
+-	GREEN = {87, 166, 78},
+-	RED = {204, 76, 76},
++	WHITE = {240/255, 240/255, 240/255},
++	ORANGE = {242/255, 178/255, 51/255},
++	MAGENTA = {229/255, 127/255, 216/255},
++	LIGHT_BLUE = {153/255, 178/255, 242/255},
++	YELLOW = {222/255, 222/255, 108/255},
++	LIME = {127/255, 204/255, 25/255},
++	PINK = {242/255, 178/255, 204/255},
++	GRAY = {76/255, 76/255, 76/255},
++	LIGHT_GRAY = {153/255, 153/255, 153/255},
++	CYAN = {76/255, 153/255, 178/255},
++	PURPLE = {178/255, 102/255, 229/255},
++	BLUE = {37/255, 49/255, 146/255},
++	BROWN = {127/255, 102/255, 76/255},
++	GREEN = {87/255, 166/255, 78/255},
++	RED = {204/255, 76/255, 76/255},
+ 	BLACK = {0, 0, 0},
+ }
+ 
+ Util.static.COLOUR_RGB_CC = { -- Accurate cc colors
+-	WHITE = {255, 255, 255}, --Colors from GravityScore. Updated by awsmazinggenius.
+-	ORANGE = {235, 136, 68},
+-	MAGENTA = {195, 84, 205},
+-	LIGHT_BLUE = {102, 137, 211},
+-	YELLOW = {222, 222, 108},
+-	LIME = {65, 205, 52},
+-	PINK = {216, 129, 152},
+-	GRAY = {67, 67, 67},
+-	LIGHT_GRAY = {153, 153, 153},
+-	CYAN = {40, 118, 151},
+-	PURPLE = {123, 47, 190},
+-	BLUE = {37, 49, 146},
+-	BROWN = {81, 48, 26},
+-	GREEN = {59, 81, 26},
+-	RED = {179, 49, 44},
++	WHITE = {255/255, 255/255, 255/255}, --Colors from GravityScore. Updated by awsmazinggenius.
++	ORANGE = {235/255, 136/255, 68/255},
++	MAGENTA = {195/255, 84/255, 205/255},
++	LIGHT_BLUE = {102/255, 137/255, 211/255},
++	YELLOW = {222/255, 222/255, 108/255},
++	LIME = {65/255, 205/255, 52/255},
++	PINK = {216/255, 129/255, 152/255},
++	GRAY = {67/255, 67/255, 67/255},
++	LIGHT_GRAY = {153/255, 153/255, 153/255},
++	CYAN = {40/255, 118/255, 151/255},
++	PURPLE = {123/255, 47/255, 190/255},
++	BLUE = {37/255, 49/255, 146/255},
++	BROWN = {81/255, 48/255, 26/255},
++	GREEN = {59/255, 81/255, 26/255},
++	RED = {179/255, 49/255, 44/255},
+ 	BLACK = {0, 0, 0},
+ }
+ 
+-- 
+2.30.0
+
