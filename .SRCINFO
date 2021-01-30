@@ -1,0 +1,25 @@
+pkgbase = spirv-tools-nocheck-git
+	pkgdesc = API and commands for processing SPIR-V modules
+	pkgver = 2020.6+14.g17ffa89097
+	pkgrel = 1
+	url = https://github.com/KhronosGroup/SPIRV-Tools
+	arch = i686
+	arch = x86_64
+	groups = vulkan-devel
+	license = custom
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python
+	makedepends = git
+	depends = gcc-libs
+	depends = spirv-headers
+	provides = spirv-tools
+	conflicts = spirv-tools
+	options = staticlibs
+	source = git+https://github.com/KhronosGroup/SPIRV-Tools
+	source = git+https://github.com/KhronosGroup/SPIRV-Headers
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = spirv-tools-nocheck-git
+
