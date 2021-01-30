@@ -5,7 +5,7 @@ _pkgver=10.07
 pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions."
 depends=('cmake>=3.8'
-         'xerces-c'
+         'xerces-c>=3'
          'qt5-base'
          'glu'
          'openmotif'
@@ -17,18 +17,17 @@ optdepends=('java-environment: for histogram visualizations and
 analysis'
   'tcsh: for C Shell support'
   'python: for G4Python support'
-  'geant4-neutronhpdata: Neutron data files with thermal cross sections'
+  'geant4-abladata: Data files for nuclear shell effects in INCL/ABLA hadronic mode'
+  'geant4-ensdfstatedata: Nuclei properties from the Evaluated Nuclear Structure Data Files'
+  'geant4-incldata: Data files for proton and neutron density profiles'
   'geant4-ledata: Data files for low energy electromagnetic processes'
   'geant4-levelgammadata: Data files for photon evaporation'
-  'geant4-radioactivedata: Data files for radioactive decay hadronic processes'
+  'geant4-neutronhpdata: Neutron data files with thermal cross sections'
   'geant4-particlexsdata: Data files for evaluated p, d, t, He3, He4 and gamma cross sections, replaces geant4-neutronxsdata'
   'geant4-piidata: Data files for shell ionisation cross sections'
+  'geant4-radioactivedata: Data files for radioactive decay hadronic processes'
   'geant4-realsurfacedata: Data files for measured optical surface reflectance'
   'geant4-saiddata: Data files from evaluated cross-sections in SAID data-base'
-  'geant4-abladata: Data files for nuclear shell effects in INCL/ABLA hadronic mode'
-  'geant4-incldata: Data files for proton and neutron density profiles'
-  'geant4-ensdfstatedata: Nuclei properties from the Evaluated Nuclear Structure Data Files'
-  'geant4-particlehpdata: Data files for protons, deuterons, tritons, He3 and alphas for use with ParticleHP'
 )
 url="http://geant4.cern.ch/"
 arch=('x86_64')
@@ -82,19 +81,21 @@ package() {
 
   msg "Removing 'wrongly' set environment variables"
 
-  variables=(  "G4NEUTRONHPDATA" \
-               "G4LEDATA" \
-               "G4LEVELGAMMADATA" \
-               "G4RADIOACTIVEDATA" \
-               "G4PARTICLEXSDATA" \
-               "G4PIIDATA" \
-               "G4REALSURFACEDATA" \
-               "G4SAIDXSDATA" \
-               "G4ABLADATA" \
-               "G4INCLDATA" \
-               "G4ENSDFSTATEDATA" \
-               "G4PARTICLEHPDATA" \  # not included by default anyway
-            )
+  # Last revisited: 10.7
+  # also in .install file.
+  variables=(
+      "G4ABLADATA" \
+          "G4ENSDFSTATEDATA" \
+          "G4INCLDATA" \
+          "G4LEDATA" \
+          "G4LEVELGAMMADATA" \
+          "G4NEUTRONHPDATA" \
+          "G4PARTICLEXSDATA" \
+          "G4PIIDATA" \
+          "G4RADIOACTIVEDATA" \
+          "G4REALSURFACEDATA" \
+          "G4SAIDXSDATA" \
+          )
 
   for _varname in ${variables[*]}
   do
