@@ -1,0 +1,14 @@
+pkgbase = madpablo-theme
+	pkgdesc = GTK2 theme
+	pkgver = 1
+	pkgrel = 1
+	url = https://sourceforge.net/projects/archbangretro/
+	arch = any
+	license = GPL
+	provides = madpablo-theme
+	conflicts = madpablo-theme
+	source = https://sourceforge.net/projects/archbangretro/files/madpablo.tar.xz
+	md5sums = 91e6fe7e9e2ec2ba6569063bef8cae68
+
+pkgname = madpablo-theme
+
