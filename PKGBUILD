@@ -1,4 +1,6 @@
-# Maintainer: Eric Bélanger <eric@archlinux.org>
+# Maintainer: Xuanrui Qi <me@xuanruiqi.com>
+# Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
+# Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgbase=imagemagick6
 pkgname=(libmagick6)
