@@ -2,13 +2,13 @@
 
 pkgname=yasm-git
 pkgver=1.3.0.r48.g009450c7
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete rewrite of the NASM assembler under the BSD License"
 arch=('i686' 'x86_64')
 url="https://yasm.tortall.net/"
 license=('BSD')
 depends=('glibc')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'python')
 provides=('yasm')
 conflicts=('yasm')
 options=('staticlibs')
