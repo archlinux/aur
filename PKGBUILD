@@ -1,6 +1,6 @@
 # Maintainer: Tom Richards <tom@tomrichards.net>
 pkgname=rockyou
-pkgver=1.3
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='The popular "rockyou" password list from OWASP SecLists project'
 arch=('any')
