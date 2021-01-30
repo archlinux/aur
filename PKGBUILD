@@ -3,7 +3,7 @@
 
 pkgname=campuswire-nativefier
 _pkgname=Campuswire
-pkgver=2021.01.30.00.33
+pkgver=2021.01.30.01.24
 pkgrel=1
 pkgdesc='A tool for college classes that makes class discussions, Q&A and announcements extremely simple'
 arch=('any')
@@ -54,7 +54,7 @@ package() {
     local _x=`echo "${_pkgname}-linux-"*`
     cp -r "${srcdir}/${_x}/resources/app" "${pkgdir}/usr/share/${pkgname}"
     rm "${pkgdir}/usr/share/${pkgname}/icon.png"
-    install -Dm 644 -t "${pkgdir}/usr/share/${pkgname}/icon.png" "${_pkgname}.png"
+    cp "${_pkgname}.png" "${pkgdir}/usr/share/${pkgname}/icon.png"
     install -Dm 755 -t "${pkgdir}/usr/bin/" "${pkgname}"
     install -Dm 644 -t "${pkgdir}/usr/share/applications/" "${pkgname}.desktop"
     install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_x}/LICENSE"
