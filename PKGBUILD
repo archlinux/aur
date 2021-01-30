@@ -11,6 +11,7 @@ depends=('php')
 optdepends=()
 makedepends=()
 conflicts=('wp-cli' 'wp-cli-git')
+provides=('wp-cli')
 replaces=()
 backup=()
 source=(
