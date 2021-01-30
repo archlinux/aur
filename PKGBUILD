@@ -1,16 +1,16 @@
 # Maintainer: nomisge <nomisge @ live . de>
 pkgname=microblocks
-pkgver=0.4.0
+pkgver=1.0.10
 pkgrel=1
-pkgdesc="MicroBlocks is a new programming language inspired by Scratch that runs inside microcontroller boards such as the micro:bit, the NodeMCU and many Arduino boards."
+pkgdesc="MicroBlocks is a blocks pogramming language for physical computing inspired by Scratch. It runs on microcontrollers such as the micro:bit, Calliope mini, AdaFruit Circuit Playground Express, and many others."
 arch=('x86_64')
 url="http://microblocks.fun"
 license=('MPL2')
 groups=('')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source=("https://github.com/bromagosa/microblocks-site/releases/download/v$pkgver/ublocks-amd64.deb")
-sha512sums=('baaf46175f0f221f9e554b83062dc367941ca909ea9ecde97314c9ef4ba0c1aee89ed11095ce841bf1f130859dcca406822f8347b0ac7de2e1216dfebd81fc99')
+source=("https://microblocks.fun/downloads/v$pkgver/packages/ublocks-amd64.deb")
+sha512sums=('a7250d3b602ca114c241b8dea3777cbba19beae5af0cb320896c522d6c1c14343f395dad05f92130f656ce14e4cb61faad7a078134d82e1af898c6a7972296ee')
 package(){
 
 	# Extract package data
