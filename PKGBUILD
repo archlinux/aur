@@ -22,7 +22,7 @@ prepare() {
 
 build() {
     sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname} %u|"\
-        "squashfs-root/${_pkgname}.desktop"
+        "squashfs-root/org.olivevideoeditor.Olive.desktop"
     chmod -R a-x+rX squashfs-root/usr
 }
 
