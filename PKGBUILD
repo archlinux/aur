@@ -2,7 +2,7 @@
 # Ex-Maintainer: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup2-server
 pkgver=2.4.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Client Server backup system"
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
 url="http://www.urbackup.org/"
@@ -33,7 +33,9 @@ build() {
     cd "${srcdir}/urbackup-server-${pkgver}"
     ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc \
     --localstatedir=/var --enable-packaging \
-    --with-mountvhd --with-zlib --with-libcurl
+    --with-mountvhd --with-zlib --with-libcurl \
+    --enable-embedded-cryptopp
+
     make
 }
 
