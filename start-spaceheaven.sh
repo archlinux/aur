@@ -2,7 +2,7 @@
 set -e
 set -u
 
-#Space Haven wirte settings and saves to the working directory
+#Space Haven wirtes settings and saves to the working directory
 save_dir="${HOME}/.config/Space Haven"
 mkdir -p "$save_dir"
 cd "$save_dir"
