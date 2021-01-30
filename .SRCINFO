@@ -1,0 +1,14 @@
+pkgbase = shiki-statler-theme
+	pkgdesc = GTK2 theme
+	pkgver = 1
+	pkgrel = 1
+	url = https://sourceforge.net/projects/archbangretro/
+	arch = any
+	license = GPL
+	provides = shiki-statler-theme
+	conflicts = shiki-statler-theme
+	source = https://sourceforge.net/projects/archbangretro/files/Shiki-Statler.tar.xz
+	md5sums = 98ce6f2e0e3588107f6dc6330ed524b5
+
+pkgname = shiki-statler-theme
+
