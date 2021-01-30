@@ -1,6 +1,6 @@
 #! /bin/bash
 pkgname="pacman-auto-update"
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 arch=("any")
 install="${pkgname}.install"
@@ -8,6 +8,9 @@ pkgdesc="Install a systemd service triggered by a timer to run automatic pacman 
 url="https://github.com/cmuench/pacman-auto-update"
 license=("GPL2")
 depends=("systemd")
+optdepends=(
+	"networkmanager: for auto-updating only on non metered network"
+)
 source=("git+${url}")
 md5sums=("SKIP")
 
