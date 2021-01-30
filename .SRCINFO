@@ -1,7 +1,7 @@
 pkgbase = lrexrepl
 	pkgdesc = Commandline tool: Search and Replace in multiple files using Regular Expressions and Lua
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/osch/lrexrepl/#lrexrepl
 	arch = i686
 	arch = x86_64

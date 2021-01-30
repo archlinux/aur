@@ -1,7 +1,7 @@
 # Maintainer: osch <oliver@luced.de>
 pkgname=lrexrepl
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 rockrel=1
 pkgdesc="Commandline tool: Search and Replace in multiple files using Regular Expressions and Lua"
 arch=('i686' 'x86_64')
@@ -10,6 +10,13 @@ license=('MIT')
 depends=('lua' 'lrexlib-pcre' 'lua-filesystem')
 source=("https://github.com/osch/$pkgname/archive/v$pkgver.tar.gz")
 noextract=()
+
+prepare() {
+	cd "$srcdir/$pkgname-$pkgver"
+
+	sed -e "1c#!/usr/bin/lua5.4" -i lrexrepl
+}
+
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
