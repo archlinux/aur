@@ -1,8 +1,8 @@
 # Maintainer:  Vincent Grande <shoober420@gmail.com>
 # Contributor: Drew DeVault <sir@cmpwn.com>
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
-pkgname=sway-nosystemd-minimal-git
-_pkgname=sway-nosystemd-minimal
+pkgname=sway-strace-git
+_pkgname=sway-strace
 pkgver=r6506.1be66c98
 pkgrel=1
 license=("MIT")

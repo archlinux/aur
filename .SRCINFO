@@ -1,4 +1,4 @@
-pkgbase = sway-nosystemd-minimal-git
+pkgbase = sway-strace-git
 	pkgdesc = Tiling Wayland compositor and replacement for the i3 window manager
 	pkgver = r6506.1be66c98
 	pkgrel = 1
@@ -35,8 +35,8 @@ pkgbase = sway-nosystemd-minimal-git
 	provides = sway
 	conflicts = sway
 	backup = etc/sway/config
-	source = sway-nosystemd-minimal::git+https://github.com/swaywm/sway.git
+	source = sway-strace::git+https://github.com/swaywm/sway.git
 	sha512sums = SKIP
 
-pkgname = sway-nosystemd-minimal-git
+pkgname = sway-strace-git
 
