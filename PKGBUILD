@@ -3,7 +3,7 @@ pkgname=pleaser
 _binary=please
 pkgver=0.3.21
 pkgrel=1
-pkgdesc="please, sudo like program with regex support written in rust"
+pkgdesc="please, a sudo like program with regex support written in rust, get involved!"
 url="https://gitlab.com/edneville/please"
 arch=('any')
 license=(GPL3)
@@ -41,14 +41,14 @@ package() {
   install -Dt "$pkgdir/usr/share/man/man1" -m644 man/please.1
   install -Dt "$pkgdir/usr/share/man/man5" -m644 man/please.ini.5
 
-  cat <<'EOT' >"please.pam"
+  cat <<'EOT' >"$srcdir/please.pam"
 #%PAM-1.0
 auth            include         system-auth
 account         include         system-auth
 session         include         system-auth
 EOT
 
-  install -Dm644 "please.pam" "$pkgdir/etc/pam.d/pleaseedit"
-  install -Dm644 "please.pam" "$pkgdir/etc/pam.d/please"
+  install -Dm644 "$srcdir/please.pam" "$pkgdir/etc/pam.d/pleaseedit"
+  install -Dm644 "$srcdir/please.pam" "$pkgdir/etc/pam.d/please"
 }
 

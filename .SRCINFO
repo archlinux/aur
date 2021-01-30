@@ -1,5 +1,5 @@
 pkgbase = pleaser
-	pkgdesc = please, sudo like program with regex support written in rust
+	pkgdesc = please, a sudo like program with regex support written in rust, get involved!
 	pkgver = 0.3.21
 	pkgrel = 1
 	url = https://gitlab.com/edneville/please
