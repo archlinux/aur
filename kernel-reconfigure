@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+
+for path in /usr/lib/modules/*
+do
+	version=$(basename "${path}")
+    read -r kernel < "${path}/pkgbase"
+	vmlinuz="${path}/vmlinuz"
+
+	echo ":: Reconfiguring $kernel-$version"
+
+    kernel-install add "${version}" "${vmlinuz}"
+done
