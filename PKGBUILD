@@ -1,9 +1,8 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # Maintainer : tsp <patrictroy at gmail dot com>
 
-_fragment="#tag=v0.1.0"
 pkgname=rizin
-pkgver="${_fragment##*v}"
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
 arch=('i686' 'x86_64')
@@ -11,29 +10,17 @@ url="https://rizin.re/"
 license=('GPL3' 'LGPL3')
 makedepends=('git' 'meson' 'ninja')
 depends=('capstone' 'lz4' 'file' 'libzip' 'xxhash' 'libuv')
-provides=("rizin=$pkgver")
-conflicts=('rizin')
-source=("$pkgname"::"git://github.com/rizinorg/rizin.git${_fragment}"
-	"sdb"::"git+https://github.com/rizinorg/sdb.git"
-	"tree-sitter"::"git+https://github.com/tree-sitter/tree-sitter.git")
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP')
-
-prepare () {
-  cd ${pkgname}
-  git config 'submodule.src/shlr/sdb.url' "${srcdir}/sdb"
-  git config 'submodule.src/shlr/tree-sitter.url' "${srcdir}/tree-sitter"
-  git submodule update --init --recursive --remote
-  git -C shlr/sdb checkout 01e4bd15397394ed592eb436e9bf70f5ad585c5b
-}
+provides=("rizin={$pkgver}")
+conflicts=("rizin-git")
+source=("${pkgname}-${pkgver}.tar.xz::https://github.com/rizinorg/rizin/releases/download/v${pkgver}/rizin-src-v${pkgver}.tar.xz")
+md5sums=('d57458277af3d7615f727d03e1299376')
 
 build() {
   # this is actually needed to prevent linking against old system-wide r2 libs
   # you can comment this out, if you build in a clean environment
   export PKG_CONFIG_PATH="${srcdir}/${pkgname}/pkgcfg:${PKG_CONFIG_PATH}"
 
-  cd ${srcdir}/${pkgname}
+  cd ${srcdir}/${pkgname}-${pkgver}
   arch-meson build              \
     -D use_sys_capstone=true    \
     -D use_sys_magic=true       \
@@ -48,7 +35,7 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${pkgname}
+  cd ${srcdir}/${pkgname}-${pkgver}
   DESTDIR="${pkgdir}" ninja -C build install
   install -dm644 "${pkgdir}/usr/share/doc/rizin"
   cp -r doc/* "${pkgdir}/usr/share/doc/rizin"
