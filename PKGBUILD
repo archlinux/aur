@@ -4,7 +4,7 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=1.4.1103.r220
+pkgver=1.4.1103.r229
 _gwtver=2.8.2
 _ginver=2.1.2
 _nodever=10.19.0
@@ -84,7 +84,7 @@ build() {
           -DBoost_NO_BOOST_CMAKE=ON \
           -DRSTUDIO_USE_SYSTEM_SOCI=yes \
           -DRSTUDIO_BUNDLE_QT=FALSE
-    make -C build
+#   make -C build
 }
 
 package() {
