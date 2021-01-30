@@ -1,6 +1,6 @@
 pkgbase = shutter
 	pkgdesc = A featureful screenshot tool (formerly gscrot)
-	pkgver = 0.94.3
+	pkgver = 0.95
 	pkgrel = 1
 	url = https://shutter-project.org/
 	arch = any
@@ -9,12 +9,14 @@ pkgbase = shutter
 	depends = imagemagick
 	depends = procps
 	depends = librsvg
-	depends = gnome-perl
 	depends = gtk2-perl
 	depends = desktop-file-utils
+	depends = gnomecanvas-perl
+	depends = perl-glib-object-introspection
 	depends = perl-gnome2-wnck
 	depends = perl-gtk2-imageview
 	depends = perl-gtk2-unique
+	depends = perl-number-bytes-human
 	depends = perl-x11-protocol
 	depends = perl-proc-simple
 	depends = perl-proc-processtable
@@ -39,8 +41,8 @@ pkgbase = shutter
 	optdepends = perl-net-oauth: Imgur and Dropbox upload support
 	optdepends = bc: 3D Rotate and 3D Reflection plugins support
 	optdepends = perl-webservice-gyazo-b: Gyazo upload support
-	source = https://launchpad.net/shutter/0.9x/0.94.3/+download/shutter-0.94.3.tar.gz
-	sha512sums = 7f67ed6fbc94aee4b6caa73662ab20684e2d8bdfd7208dcd407bdce4e1b93f2aa1fa256ad6bce66b92c741500726b90e5701e7f31bc831709568e5c4c27bff3b
+	source = https://github.com/shutter-project/shutter/archive/v0.95.tar.gz
+	sha512sums = 77df43b952c10e6280b12170de997c12e0e13d5868f80f1ab22ad9a062b4b67eb93dfc540d4ed0f5db2e950eaae8a258f3d01d9ddf6043d26f8f16f0ce93e75a
 
 pkgname = shutter
 
