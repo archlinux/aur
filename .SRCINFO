@@ -1,6 +1,6 @@
 pkgbase = pothos-git
 	pkgdesc = The Pothos data-flow framework
-	pkgver = r3071.7b9c3c4f
+	pkgver = r3114.0a56cd42
 	pkgrel = 1
 	url = https://github.com/pothosware/PothosCore/wiki
 	arch = i686

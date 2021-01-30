@@ -2,7 +2,7 @@
 # Contributor: Sebastien Chassot (sinux) <seba.ptl@sinux.net>
 
 pkgname=pothos-git
-pkgver=r3071.7b9c3c4f
+pkgver=r3114.0a56cd42
 pkgrel=1
 pkgdesc="The Pothos data-flow framework"
 arch=('i686' 'x86_64')
@@ -51,7 +51,7 @@ build() {
 package() {
     cd "$srcdir/pothos-build"
     make DESTDIR="$pkgdir" install
-    
+
     install -Dm644 "$srcdir/PothosFlow.desktop" "$pkgdir/usr/share/applications/PothosFlow.desktop"
     install -Dm644 "$srcdir/PothosCore/flow/icons/PothosFlow.png" "$pkgdir/usr/share/pixmaps/PothosFlow.png"
 }
