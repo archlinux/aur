@@ -2,7 +2,7 @@
 # Contributor: Sebastien Chassot (sinux) <seba.ptl@sinux.net>
 
 pkgname=pothos
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="The Pothos data-flow framework"
 arch=('i686' 'x86_64')

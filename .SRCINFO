@@ -1,6 +1,6 @@
 pkgbase = pothos
 	pkgdesc = The Pothos data-flow framework
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/pothosware/PothosCore/wiki
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = pothos
 	depends = poco
 	depends = soapysdr
 	depends = portaudio
-	source = git+https://github.com/pothosware/PothosCore.git#tag=pothos-0.7.0
+	source = git+https://github.com/pothosware/PothosCore.git#tag=pothos-0.7.1
 	source = PothosFlow.desktop
 	sha256sums = SKIP
 	sha256sums = 4ace40dfff405cf861845cc0f9cf772a39aabc7f3447f5fdf2d0cb74f9b166c4
