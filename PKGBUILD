@@ -1,6 +1,6 @@
 # Maintainer: water_lift <0xWATERx0@gmail.com>
 pkgname=defold
-pkgver=1.2.177
+pkgver=1.2.178
 pkgrel=1
 epoch=
 pkgdesc="Defold is a completely free to use game engine for development of desktop, mobile and web games."
@@ -19,12 +19,12 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://d.defold.com/archive/editor-alpha/f7778a8f59ef2a8dda5d445f471368e8bd1cb1ac/editor-alpha/editor2/Defold-x86_64-linux.zip"
+source=("https://d.defold.com/archive/editor-alpha/af6a29c2a1e2545e2d033790089c606ac9f0bb7a/editor-alpha/editor2/Defold-x86_64-linux.zip"
 	"LICENSE"
 	"Defold.desktop"
 	"logo.zip")
 noextract=()
-md5sums=("ba926b261c19ea01209e85e7d852b424"
+md5sums=("8de1bf0d7afa6844f170b616a7ce9c70"
 	 "12ddd6bdaaf6397931608af50492f005"
 	 "8be2aad566732d3845c4472ebcfdd049"
  	 "2e220c9bf4a7e2f5aa3b81cfd7b8c8fe")
