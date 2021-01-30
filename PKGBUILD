@@ -5,7 +5,7 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=salt-lint
 epoch=
-pkgver=0.5.0
+pkgver=0.5.2
 pkgrel=00
 pkgdesc='A command-line utility that checks for best practices in SaltStack.'
 arch=(any)
@@ -20,9 +20,9 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 sha256sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/1a/65/7d9dd0b9416981190c30cf545e54f0a9a9a4172508859009c1e9c5d495ab/salt_lint-0.5.0-py3-none-any.whl)
-sha256sums+=(fe75de9e89760baea911e15b9e788ec2f57c26616abaef5eb7f5743744aa3a34)
-noextract+=(salt_lint-0.5.0-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/b6/0b/3970a2770097b2399dd02232a0173bf5642e2f0235fb4ae7b5ed2e185bac/salt_lint-0.5.2-py3-none-any.whl)
+sha256sums+=(464c3a8c096b4eca9fbcf003c79c62c39bf1444c94b8c1ac270f1e6e0d4ecf98)
+noextract+=(salt_lint-0.5.2-py3-none-any.whl)
 source+=(LICENSE)
 sha256sums+=(0aa56ec10b6c3f24385b7c684e61520fc24b1d913c3618b54ed5eead5655e552)
 
