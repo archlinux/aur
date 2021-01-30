@@ -2,7 +2,7 @@
 pkgname=bookstack
 _camelname=BookStack
 pkgver=0.31.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, self-hosted, easy-to-use platform for organising and storing information'
 arch=('any')
 url="https://github.com/BookStackApp/BookStack"
@@ -33,12 +33,12 @@ package() {
     rm -rf "$pkgdir/usr/share/webapps/$pkgname/bootstrap/cache"
 
     mkdir -p "$pkgdir/var/cache/$pkgname"
-#    chown http:http "$pkgdir/var/cache/$pkgname"
+    chown http:http "$pkgdir/var/cache/$pkgname"
     ln -s "/var/cache/$pkgname" "$pkgdir/usr/share/webapps/$pkgname/bootstrap/cache"
 
     mkdir -p "$pkgdir/var/lib"
     mv "$pkgdir/usr/share/webapps/$pkgname/storage" "$pkgdir/var/lib/$pkgname"
-#    chown -R http:http "$pkgdir/var/lib/$pkgname"
+    chown -R http:http "$pkgdir/var/lib/$pkgname"
     chmod 775 "$pkgdir/var/lib/$pkgname"
     ln -s "/var/lib/$pkgname" "$pkgdir/usr/share/webapps/$pkgname/storage"
 }
