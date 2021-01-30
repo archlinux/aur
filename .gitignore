@@ -1,3 +1,5 @@
 pkg
 src
 *.xz
+*.zst
+pacman-auto-update/

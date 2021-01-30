@@ -1,23 +1,16 @@
-post_install() {    
-    systemctl enable --now pacman-auto-update.timer || true
+post_install () {
+	systemctl enable --now pacman-auto-update.timer || true
 }
 
-post_upgrade() {
-    systemctl --system daemon-reload >/dev/null || true
-    systemctl restart pacman-auto-update.timer || true
+post_upgrade () {
+	systemctl --system daemon-reload >/dev/null || true
+	systemctl restart pacman-auto-update.timer || true
 }
 
-pre_remove() {
-    if [ -d /run/systemd/system ]; then
-        systemctl disable --now pacman-auto-update.timer >/dev/null
-    fi
+pre_remove () {
+	systemctl disable --now pacman-auto-update.timer >/dev/null
 }
 
-post_remove() {
-    # In case this system is running systemd, we make systemd reload the unit files                                     
-    # to pick up changes.                                                                                               
-    if [ -d /run/systemd/system ] ; then                                                                                
-        systemctl --system daemon-reload >/dev/null || true                                                             
-    fi           
+post_remove () {
+	systemctl --system daemon-reload >/dev/null || true
 }
-
