@@ -1,7 +1,7 @@
 pkgbase = python-ros-cross-compile
 	pkgdesc = A tool to build ROS workspaces for various target architectures and platforms.
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/ros-cross-compile
 	arch = any
 	license = Apache
@@ -12,6 +12,8 @@ pkgbase = python-ros-cross-compile
 	depends = git
 	depends = wget
 	depends = aarch64-linux-gnu-gcc
+	depends = arm-linux-gnueabihf-gcc-stage2
+	depends = arm-linux-gnueabihf-gcc-stage1
 	depends = arm-linux-gnueabihf-gcc
 	depends = aarch64-linux-gnu-pkg-config
 	depends = python-vcstool
