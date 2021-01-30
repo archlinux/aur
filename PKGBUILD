@@ -1,15 +1,15 @@
 # Maintainer: Magnus Groß magnus dot gross 21 at gmail dot com
 _pkgname=quickcurver
 pkgname="$_pkgname"-git
-pkgver=r352.cd4f0c0
+pkgver=r360.e3185b1
 pkgrel=1
 pkgdesc="Qt Material design implementation of Achtung die Kurve with online multiplayer"
 arch=('i686' 'x86_64')
-url="https://github.com/magnus-gross/$_pkgname"
+url="https://github.com/vimpostor/$_pkgname"
 license=('GPL3')
 depends=(qt5-base qt5-declarative qt5-svg qt5-quickcontrols2 qt5-graphicaleffects fluid)
 makedepends=(git)
-source=("git+https://github.com/magnus-gross/$_pkgname.git"
+source=("git+https://github.com/vimpostor/$_pkgname.git"
 		"git+https://github.com/lirios/fluid.git")
 md5sums=('SKIP'
 		'SKIP')
