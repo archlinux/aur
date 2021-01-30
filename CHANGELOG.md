@@ -1,5 +1,6 @@
 # Changelog
 
+* [1.6.3](#1-6-3)
 * [1.6.2](#1-6-2)
 * [1.6.1](#1-6-1)
 * [1.6.0](#1-6-0)
@@ -18,6 +19,64 @@
 * [1.2.2](#1-2-2)
 * [1.2.1](#1-2-1)
 * [1.2.0](#1-2-0)
+
+
+## 1.6.3
+
+### Added
+
+* Completions for fish shell
+  (https://codeberg.org/dnkl/foot/issues/11)
+* FreeBSD support (https://codeberg.org/dnkl/foot/issues/238).
+* IME popup location support: foot now sends the location of the cursor
+  so any popup can be displayed near the text that is being typed.
+
+
+### Changed
+
+* Trailing comments in `foot.ini` must now be preceded by a space or tab
+  (https://codeberg.org/dnkl/foot/issues/270)
+* The scrollback search box no longer accepts non-printable characters.
+* Non-formatting C0 control characters, `BS`, `HT` and `DEL` are now
+  stripped from pasted text.
+
+
+### Fixed
+
+* Exit when the client application terminates, not when the TTY file
+  descriptor is closed.
+* Crash on compositors not implementing the _text input_ interface
+  (https://codeberg.org/dnkl/foot/issues/259).
+* Erased, overflowing glyphs (when
+  `tweak.allow-overflowing-double-width-glyphs=yes` - the default) not
+  properly erasing the cell overflowed **into**.
+* `word-delimiters` option ignores `#` and subsequent characters
+  (https://codeberg.org/dnkl/foot/issues/270)
+* Combining characters not being rendered when composed with colored
+  bitmap glyphs (i.e. colored emojis).
+* Pasting URIs from the clipboard when the source has not
+  newline-terminated the last URI
+  (https://codeberg.org/dnkl/foot/issues/291).
+* Sixel “current geometry” query response not being bounded by the
+  current window dimensions (fixes `lsix` output)
+* Crash on keyboard input when repeat rate was zero (i.e. no repeat).
+* Wrong button encoding of mouse buttons 6 and 7 in mouse events.
+* Scrollback search not matching composed characters.
+* High CPU usage when holding down e.g. arrow keys while in scrollback
+  search mode.
+* Rendering of composed characters in the scrollback search box.
+* IME pre-edit cursor when positioned at the end of the pre-edit
+  string.
+* Scrollback search not matching multi-column characters.
+
+
+### Contributors
+
+* [birger](https://codeberg.org/birger)
+* [pc](https://codeberg.org/pc)
+* [FollieHiyuki](https://codeberg.org/FollieHiyuki)
+* jbeich
+* [tdeo](https://codeberg.org/tdeo)
 
 
 ## 1.6.2

@@ -1,5 +1,5 @@
 pkgbase = foot
-	pkgver = 1.6.2
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://codeberg.org/dnkl/foot
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = foot
 	depends = pixman
 	depends = fontconfig
 	depends = fcft
-	source = https://codeberg.org/dnkl/foot/archive/1.6.2.tar.gz
+	source = https://codeberg.org/dnkl/foot/archive/1.6.3.tar.gz
 	source = https://codeberg.org/dnkl/tllist/archive/1.0.4.tar.gz
-	sha256sums = dee10d8153a3ed57e21f5d8c0ed4121ddf83eeb33655728e5b8c46dfa3566a45
+	sha256sums = 0340df647d3baae5bcafe6b081173d1850d3f92452d0d0b68d3edf0ef6eb1819
 	sha256sums = a135934d4955902d67f75f3c542ace3bfb7be3be9c44796852e76ea9e1d82b33
 
 pkgname = foot
