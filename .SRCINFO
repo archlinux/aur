@@ -1,8 +1,8 @@
 pkgbase = filebrowser-git
 	pkgdesc = Standalone web file manager
-	pkgver = 2.10.0.r0.gc746c193
+	pkgver = 2.11.0.r12.gf3afd5cb
 	pkgrel = 1
-	url = https://filebrowser.xyz/
+	url = https://filebrowser.org/
 	arch = x86_64
 	license = Apache
 	makedepends = git

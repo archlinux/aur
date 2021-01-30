@@ -2,11 +2,11 @@
 # Contributor: Dct Mei <dctxmei@gmail.com>
 
 pkgname=filebrowser-git
-pkgver=2.10.0.r0.gc746c193
+pkgver=2.11.0.r12.gf3afd5cb
 pkgrel=1
 pkgdesc="Standalone web file manager"
 arch=(x86_64)
-url="https://filebrowser.xyz/"
+url="https://filebrowser.org/"
 license=(Apache)
 depends=(glibc)
 makedepends=(git go npm go.rice)
