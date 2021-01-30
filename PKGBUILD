@@ -64,7 +64,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.10.11
+pkgver=5.10.12
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -84,21 +84,19 @@ source=(
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch
   0003-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch
-  0004-HID-wacom-Correct-NULL-dereference-on-AES-pen-proxim.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('f2ffb77efeab44e5ac74f275f1c728618a0893c752018946a3908a34dca2797982efb6646df1350f31c9cab2b780aca871dff82b63e2ec59e3bfcdafa0457581'
+b2sums=('f5e16e92c9543708997d9dfee28feb2cd6e6909a33dc7f97c40b507a8d03bd72717b1af84bed3fa25b2a167652d8cd93b66d145d484e5ad292af24b3bf64a649'
         'SKIP'
         '37df0c9fc2214da9e94f0fb38ddc9c1f5bcf6279cacf918166efc3a0a8a9433ee10a95232992a108944160cf020fc3c240ef2fb8023581dc9cac11f973d7985d'
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
         '067f3389124fdd937ca69e9e9568b1b3194791960a093e81037051eb6d25e80b40bf7f60c61373ac9e92bff9db760766009b1e6f9ee8429a883bb7fce2d60f8a'
         'de81e92b92ba697e472d6397faa425ebcc09bede6c97008dcae47efd341d2eaa12ec72209c4cc97155df01358e1fce3a86d3f0b5441ac91615037de72105defc'
         '9450bd3d4acfa94723eaf22f2c0a13ae3bdb1ceb15ad19d1a1de2fc8d9a7b9b8f759006fd5b4286da135c68bac75791b4bf767ece8b6c40aff95799296ee0327'
-        'ea8e11fa3e9ccffe26366c2c279e11ffd4cb7ed0500028afef083188d46a0df2487800417914e63b8ac101b6a28b6a61aad91bea0b7a0305d64be3445a4f68a0'
-        'b57086457843e75899772ec37a469f524d7f5df5a1ba27ab35a97b478ed37b8deb29371db3f69b33ec10eaf38fd554cef0da7c64c451b11db84e4dc497f8bae9')
+        'ea8e11fa3e9ccffe26366c2c279e11ffd4cb7ed0500028afef083188d46a0df2487800417914e63b8ac101b6a28b6a61aad91bea0b7a0305d64be3445a4f68a0')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
