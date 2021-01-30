@@ -5,3 +5,4 @@
 !watchman.tmpfiles
 !watchman.install
 !.gitignore
+!*.patch
