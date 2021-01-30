@@ -1,6 +1,6 @@
 # Maintainer: KspLite <ksplite@outlook.com>
 pkgname=tdesktop-x64
-pkgver=2.5.7.1
+pkgver=2.5.8.1
 pkgrel=1
 pkgdesc='Third party Telegram Desktop client with various enhancements'
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('ttf-opensans: default Open Sans font family')
 provides=("tdesktop-x64")
 conflicts=("telegram-desktop")
 source=("https://github.com/KspLite/tdesktop-x64-AUR/releases/download/v${pkgver}/${pkgname}-${pkgver}-full.tar.gz")
-sha512sums=('0cb231fcc84dffc7b3ad9662d897f5b79028e1eb2eb3241048e501306a6050e002e06dbc12ce7ffe339df331a3e239cd8f6e9d79a7516ec5e64c44fb538d3726')
+sha512sums=('a20ea492d44a87f686a7ec97d8f82d3038089f371e7a2895c77a14e27b87447c63450aefbc7b61c65872fc662902f4f9014c8716e81312f14741deb14e61aecc')
 
 prepare() {
     cd $pkgname-$pkgver-full/cmake
