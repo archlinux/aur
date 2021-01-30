@@ -2,7 +2,7 @@
 
 _basename=libheif
 pkgname=lib32-libheif
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="HEIF file format decoder and encoder (32-bit)"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(lib32-gdk-pixbuf2 lib32-aom lib32-libde265 lib32-x265 libheif)
 makedepends=(lib32-libjpeg lib32-libpng)
 source=(https://github.com/strukturag/libheif/releases/download/v$pkgver/libheif-$pkgver.tar.gz)
-sha256sums=('5f65ca2bd2510eed4e13bdca123131c64067e9dd809213d7aef4dc5e37948bca')
+sha256sums=('ad5af1276f341277dc537b0d19a4193e0833c247b2aacb936e0c5494141533ae')
 
 build() {
     cd $_basename-$pkgver
