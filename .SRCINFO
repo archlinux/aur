@@ -1,0 +1,14 @@
+pkgbase = hsaudiotag3k
+	pkgdesc = Read metadata (tags) of mp3, mp4, wma, ogg, flac and aiff files
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = http://pypi.org/project/hsaudiotag3k
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/6e/4a/117ded92d098ee203391a5712a54ff87b391e7637029a08e68957e399701/hsaudiotag3k-1.1.3.post1.tar.gz
+	md5sums = 5b8b865345e1c19bbe036164dac692b8
+
+pkgname = hsaudiotag3k
+
