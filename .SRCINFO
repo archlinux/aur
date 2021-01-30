@@ -1,34 +1,20 @@
 pkgbase = thunarx-python
 	pkgdesc = Thunarx Python Bindings
-	pkgver = 0.5.1+5+g0d16722
+	pkgver = 0.5.2
 	pkgrel = 1
 	epoch = 1
-	url = https://gitlab.xfce.org/bindings/thunarx-python
+	url = https://goodies.xfce.org/projects/bindings/thunarx-python
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = GPL
-	makedepends = thunar>=1.7.0
-	makedepends = python2-gobject
-	makedepends = python-gobject
-	makedepends = git
-	makedepends = xfce4-dev-tools
-	source = git+https://gitlab.xfce.org/bindings/thunarx-python.git#commit=0d167220adb5c3a4a80da5e801611d13d12d29f1
-	sha256sums = SKIP
-
-pkgname = python2-thunarx
-	pkgdesc = Thunarx Python Bindings (python 2)
-	depends = thunar>=1.7.0
-	depends = python2-gobject
-	provides = thunarx-python=0.5.1+5+g0d16722
-	conflicts = thunarx-python
-	replaces = thunarx-python
-
-pkgname = python-thunarx
-	pkgdesc = Thunarx Python Bindings (python 3)
 	depends = thunar>=1.7.0
 	depends = python-gobject
-	provides = thunarx-python=0.5.1+5+g0d16722
-	conflicts = thunarx-python
+	conflicts = python-thunarx
+	replaces = python-thunarx
+	source = https://archive.xfce.org/src/bindings/thunarx-python/0.5/thunarx-python-0.5.2.tar.bz2
+	sha256sums = 96da0bb7c6ccf1783bfd91a1cfb5071e2e19cc45038b77bd13ca00d0f74d9f22
+
+pkgname = thunarx-python
 
