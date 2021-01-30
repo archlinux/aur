@@ -2,13 +2,13 @@
 # Ex-Maintainer: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup2-client
 pkgver=2.4.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Client Server backup system"
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
 url="http://www.urbackup.org/"
 license=("GPL")
 makedepends=('gcc-libs' 'gcc' 'make')
-depends=('wxgtk' 'crypto++' 'zlib')
+depends=('wxgtk2' 'crypto++' 'zlib')
 conflicts=('urbackup2-client-no-gui' 'urbackup-client-no-gui' 'urbackup-client')
 source=(
     "https://www.urbackup.org/downloads/Client/${pkgver}/urbackup-client-${pkgver}.0.tar.gz"

@@ -1,7 +1,7 @@
 pkgbase = urbackup2-client
 	pkgdesc = Client Server backup system
 	pkgver = 2.4.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.urbackup.org/
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = urbackup2-client
 	makedepends = gcc-libs
 	makedepends = gcc
 	makedepends = make
-	depends = wxgtk
+	depends = wxgtk2
 	depends = crypto++
 	depends = zlib
 	conflicts = urbackup2-client-no-gui
