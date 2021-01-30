@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=raze
-pkgver=0.7.3_alpha
+pkgver=0.8.1_beta
 pkgrel=1
 pkgdesc='Build engine port backed by GZDoom tech'
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=("Raze::git+https://github.com/coelckers/Raze#tag=${pkgver}"
         '0001-Fix-file-paths.patch'
         'raze.desktop')
 sha256sums=('SKIP'
-            '97891d1e02d9d159762af51011d57127960adac6d5b4cd16bba8e3863455d5f2'
+            '5655c8685ebebf8ac7491dda3b4c8efd3b06f979111315df3fd87674dacfa963'
             'ffc02d8f6f0d4464a74e025d41063f2441d9423d4ed605a0290eb266ae9531c8')
 
 prepare() {
@@ -38,7 +38,7 @@ build() {
     mkdir -p build
     cmake -B build \
           -D CMAKE_BUILD_TYPE=Release \
-          -D CMAKE_CXX_FLAGS="${CXXFLAGS} -ffile-prefix-map=\"$PWD\"=. -DSHARE_DIR=\\\"/usr/share/raze\\\"" \
+          -D CMAKE_CXX_FLAGS="${CXXFLAGS} -ffile-prefix-map=\"$PWD\"=." \
           -D DYN_GTK=OFF \
           -D DYN_OPENAL=OFF
     make -C build
