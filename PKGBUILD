@@ -31,14 +31,19 @@ validpgpkeys=()
 
 sudo chmod -R 777 ~/.cache/yay/kh-webstore/pkg
 
+prepare() {
+    rm -rf "/usr/share/kh-webstore"
+    rm -rf "/usr/share/applications/kh-webstore.desktop"
+}
+
 build() {
-	sudo cp -rf "$pkgname-$pkgver" "/usr/share/kh-webstore"
+	cp -rf "$pkgname-$pkgver" "/usr/share/kh-webstore"
     cd "$pkgname-$pkgver"
-    sudo cp -rf "kh-webstore.desktop" "/usr/share/applications/kh-webstore.desktop"
+    cp -rf "kh-webstore.desktop" "/usr/share/applications/kh-webstore.desktop"
 }
 
 package() {
-    sudo rm /usr/share/applications/kh-webstore.desktop
+    rm /usr/share/applications/kh-webstore.desktop
     mkdir $pkgdir/usr
     mkdir $pkgdir/usr/share
     mkdir $pkgdir/usr/share/applications
