@@ -5,7 +5,6 @@ Comment=WeChat desktop built with nativefier (electron)
 Exec=wechat-nativefier
 Icon=wechat-nativefier
 Encoding=UTF-8
-StartupWMClass=wechat-nativefier
 Terminal=false
 StartupNotify=true
 Type=Application
