@@ -17,7 +17,7 @@ depends=('iw'
          'python-manuf'
          'python-dateutil'
          'python-numpy'
-         'python-pyqtchart')
+         'python-pyqt5-chart')
 makedepends=('git')
 optdepends=('gpsd: GPS support'
             'bluez-utils-compat: Blueooth-support'
