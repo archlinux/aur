@@ -1,13 +1,13 @@
 # Maintainer: qvshuo
 
 pkgname=wechat-nativefier
-pkgver=20210130
+pkgver=20210130.1
 pkgrel=1
 pkgdesc="WeChat desktop built with nativefier (electron)"
 arch=("x86_64")
 url="https://wx.qq.com/"
 license=("MIT")
-makedepends=("imagemagick" "nodejs-nativefier" "unzip")
+makedepends=("nodejs-nativefier")
 source=(
   "${pkgname}.css"
   "${pkgname}.desktop"

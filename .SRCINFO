@@ -1,13 +1,11 @@
 pkgbase = wechat-nativefier
 	pkgdesc = WeChat desktop built with nativefier (electron)
-	pkgver = 20210130
+	pkgver = 20210130.1
 	pkgrel = 1
 	url = https://wx.qq.com/
 	arch = x86_64
 	license = MIT
-	makedepends = imagemagick
 	makedepends = nodejs-nativefier
-	makedepends = unzip
 	source = wechat-nativefier.css
 	source = wechat-nativefier.desktop
 	source = wechat-nativefier.png
