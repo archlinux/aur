@@ -1,6 +1,6 @@
 pkgbase = gst-plugins-base-git
 	pkgdesc = GStreamer Multimedia Framework Base Plugins
-	pkgver = 1.16.0.r345.g07f459caa
+	pkgver = 1.18.0.r164.g9ab400e26
 	pkgrel = 1
 	url = http://gstreamer.freedesktop.org/
 	arch = i686
@@ -37,8 +37,8 @@ pkgbase = gst-plugins-base-git
 	depends = libtremor-git
 	depends = sdl2
 	depends = qt5-base
-	provides = gst-plugins-base=$pkgver
-	provides = gst-plugins-base-libs=$pkgver
+	provides = gst-plugins-base=1.18.0.r164.g9ab400e26
+	provides = gst-plugins-base-libs=1.18.0.r164.g9ab400e26
 	conflicts = gst-plugins-base
 	conflicts = gst-plugins-base-libs
 	source = git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git

@@ -16,7 +16,7 @@ options=()
 url="http://gstreamer.freedesktop.org/"
 
 conflicts=('gst-plugins-base' 'gst-plugins-base-libs')
-provides=('gst-plugins-base=$pkgver' 'gst-plugins-base-libs=$pkgver')
+provides=('gst-plugins-base'=$pkgver 'gst-plugins-base-libs'=$pkgver)
 
 pkgdesc="GStreamer Multimedia Framework Base Plugins"
 depends=('gstreamer-git' 'orc' 'libxv' 'opus' 'gdk-pixbuf2'
