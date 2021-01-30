@@ -1,17 +1,17 @@
 # Maintainer: kusakata <shohei atmark kusakata period com>
 
 pkgname=ngraph-gtk
-pkgver=6.08.09
+pkgver=6.09.00
 pkgrel=1
 pkgdesc="A tool for creating scientific 2-dimensional graphs"
-url="http://hito.music.coocan.jp/ngraph/ngraph-gtk.html"
+url="https://github.com/htrb/ngraph-gtk/"
 license=('GPL')
 arch=('x86_64')
 depends=('gsl' 'gtk3' 'gtksourceview3' 'ruby')
 optdepends=('ttf-liberation: alternative to Times, Arial, and Courier')
 source=("https://github.com/htrb/ngraph-gtk/releases/download/v${pkgver}/ngraph-gtk-${pkgver}.tar.gz")
 options=('!makeflags')
-sha512sums=('a6be6e35cc806970b61271f5acd4988cf1cd394881b50255daed9205e4968165419e844adf5f202385fff3f922da12789f86fdded6489d53868e3bc2a7f984a2')
+sha512sums=('66448be39a88b20982918c774bfbaf99861066d24be4412e48defbecd61cf91eb92f2b7daa96aab2346d1dc82dfa67f45672295e262558532a5d86e2e012569b')
 
 build() {
   cd "${srcdir}/ngraph-gtk-${pkgver}"
@@ -25,8 +25,8 @@ package() {
   make DESTDIR="$pkgdir" install
   
   cd "${srcdir}/ngraph-gtk-${pkgver}/misc"
-  install -Dm644 com.github.htrb.ngraph-gtk.desktop "${pkgdir}/usr/share/applications/ngraph.desktop"
-  install -Dm644 com.github.htrb.ngraph-gtk.metainfo.xml "${pkgdir}/usr/share/mime/packages/ngraph.xml"
+  install -Dm644 com.github.htrb.ngraph-gtk.desktop "${pkgdir}/usr/share/applications/com.github.htrb.ngraph-gtk.desktop"
+  # install -Dm644 com.github.htrb.ngraph-gtk.metainfo.xml "${pkgdir}/usr/share/mime/packages/com.github.htrb.ngraph-gtk.metainfo.xml"
   install -Dm644 ngraph.keys "${pkgdir}/usr/share/mime-info/ngraph.keys"
   install -Dm644 ngraph.mime "${pkgdir}/usr/share/mime-info/ngraph.mime"
   install -Dm644 ngraph.1 "${pkgdir}/usr/share/man/man1/ngraph.1"
