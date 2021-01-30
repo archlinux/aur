@@ -3,7 +3,7 @@
 
 pkgname=campuswire-nativefier
 _pkgname=Campuswire
-pkgver=2021.01.30.01.24
+pkgver=2021.01.30.06.30
 pkgrel=1
 pkgdesc='A tool for college classes that makes class discussions, Q&A and announcements extremely simple'
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=(
 )
 
 pkgver() {
-    date +%Y.%m.%d.%H.%M
+    date -u +%Y.%m.%d.%H.%M
 }
 
 prepare() {

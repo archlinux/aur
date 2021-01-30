@@ -1,6 +1,6 @@
 pkgbase = campuswire-nativefier
 	pkgdesc = A tool for college classes that makes class discussions, Q&A and announcements extremely simple
-	pkgver = 2021.01.30.01.24
+	pkgver = 2021.01.30.06.30
 	pkgrel = 1
 	url = https://campuswire.com
 	arch = any
