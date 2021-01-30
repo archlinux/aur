@@ -1,5 +1,5 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
-# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=python-gps3
 _name=${pkgname#python-}
 pkgver=0.33.3
