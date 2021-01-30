@@ -1,5 +1,5 @@
 pkgname=pio
-pkgver=2.4.4
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="A high-level Parallel I/O Library for structured grid applications"
 url="https://ncar.github.io/ParallelIO/"
@@ -8,7 +8,7 @@ depends=('netcdf-fortran-openmpi' 'gcc-fortran')
 optdepends=()
 arch=('x86_64')
 source=(https://github.com/NCAR/ParallelIO/releases/download/${pkgname}${pkgver//./_}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('69ed1535b16b3b5a42b37849e324cf9d2f4fa5d9fa87092e3574642eb12355e9')
+sha256sums=('378e6d01dbfb9e99a913be814d3a4f04f93a3bb9f860468ccaf199ed3687acac')
 
 build() {
   cd ${pkgname}-${pkgver}
