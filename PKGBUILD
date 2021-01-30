@@ -1,10 +1,9 @@
 # Maintainer: Haochen Tong <i at hexchain dot org>
 
 pkgname=elvish-git
-_pkgname=elvish
-pkgver=0.14.0.r20.gd2e72011
+pkgver=r5024.050863fb
 pkgrel=1
-pkgdesc="A friendly and expressive Unix shell."
+pkgdesc='An expressive programming language and versatile interactive shell.'
 arch=('i686' 'x86_64')
 url="https://github.com/elves/elvish"
 license=('custom:2-clause BSD')
@@ -14,34 +13,40 @@ depends=('glibc')
 makedepends=('git' 'go' 'pandoc')
 source=("git+https://github.com/elves/elvish.git")
 md5sums=('SKIP')
+options=(!strip)
 install=elvish.install
 
+_repo=elvish
+
 pkgver() {
-    cd "$_pkgname"
-    ( set -o pipefail;
-      git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-          printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+    cd $_repo
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    mkdir -p "$srcdir/build"
-    export GOPATH="$srcdir/build"
-    export CGO_LDFLAGS="$LDFLAGS"
-    export GOFLAGS="-buildmode=pie -trimpath -mod=vendor -modcacherw"
-    cd "$srcdir/elvish"
+    export GOPATH=$srcdir/build
+
+    mkdir -p build
+    cd elvish
+    go mod vendor
+    cd website
     go mod vendor
 }
 
 build() {
-    export GOPATH="$srcdir/build"
-    export CGO_LDFLAGS="$LDFLAGS"
+    export GOPATH=$srcdir/build
     export GOFLAGS="-buildmode=pie -trimpath -mod=vendor -modcacherw"
-    cd "$srcdir/elvish"
-    go build -v -ldflags="-X github.com/elves/elvish/pkg/buildinfo.Version=$pkgver" .
+    # Disable cgo for reproducible build
+    export CGO_ENABLED=0
+
+	cd $_repo
+
+	LDFLAGS="-X src.elv.sh/pkg/buildinfo.VersionSuffix=-dev.$(git rev-parse HEAD)\
+	         -X src.elv.sh/pkg/buildinfo.Reproducible=true"
+    go build -v -ldflags="$LDFLAGS" ./cmd/elvish
 
     cd website
-    mkdir "$srcdir/doc"
+    mkdir -p "$srcdir/doc"
     go build -v ./cmd/elvdoc/
     for file in builtin edit epm language math platform readline-binding re store str unix; do
         ./elvdoc -filter < "ref/$file.md" | pandoc \
@@ -54,10 +59,11 @@ build() {
 }
 
 check() {
-    export GOPATH="$srcdir/build"
-    export CGO_LDFLAGS="$LDFLAGS"
+    export GOPATH=$srcdir/build
     export GOFLAGS="-trimpath -mod=vendor -modcacherw"
-    cd "$srcdir/elvish"
+    export CGO_ENABLED=0
+
+    cd $_repo
     make test
 }
 

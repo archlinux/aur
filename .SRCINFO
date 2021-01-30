@@ -1,6 +1,6 @@
 pkgbase = elvish-git
-	pkgdesc = A friendly and expressive Unix shell.
-	pkgver = 0.14.0.r20.gd2e72011
+	pkgdesc = An expressive programming language and versatile interactive shell.
+	pkgver = r5024.050863fb
 	pkgrel = 1
 	url = https://github.com/elves/elvish
 	install = elvish.install
@@ -13,6 +13,7 @@ pkgbase = elvish-git
 	depends = glibc
 	provides = elvish
 	conflicts = elvish
+	options = !strip
 	source = git+https://github.com/elves/elvish.git
 	md5sums = SKIP
 
