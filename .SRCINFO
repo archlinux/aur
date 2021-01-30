@@ -1,7 +1,7 @@
 pkgbase = elan-lean
 	pkgdesc = The Rust toolchain installer
 	pkgver = 0.10.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rust-lang/rustup.rs
 	install = post.install
 	arch = x86_64

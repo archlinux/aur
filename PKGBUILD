@@ -8,7 +8,7 @@
 _pkgname=elan
 pkgname=${_pkgname}-lean
 pkgver=0.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The Rust toolchain installer"
 arch=('x86_64')
 url="https://github.com/rust-lang/rustup.rs"
@@ -20,7 +20,7 @@ conflicts=('lean-bin' 'lean-git' 'lean4' 'lean-community' )
 install='post.install'
 source=("elan-${pkgver}.tar.gz::https://github.com/Kha/elan/archive/v${pkgver}.tar.gz")
 sha512sums=('48ccfdaf88ec5abcc93f3e6fe32de3b9ba3ea0a4f2ecfcac71a11263db81d58291fc0a44b32e7c5e1685d2df7a10da61bb8e955623da937afbf1eb7bb2b6e12f')
-_binlinks=('lean' 'leanpkg')
+_binlinks=('lean' 'leanchecker' 'leanpkg')
 
 build() {
     cd "$srcdir/$_pkgname-${pkgver}"
