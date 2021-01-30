@@ -2,7 +2,7 @@
 
 _gemname=bump
 pkgname=ruby-$_gemname
-pkgver=0.8.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A gem to simplify the way you build gems"
 arch=(any)
@@ -13,11 +13,6 @@ makedepends=(ruby-rdoc rubygems)
 options=(!emptydirs)
 source=(git+https://github.com/gregorym/bump.git?tag=v$pkgver)
 sha256sums=('SKIP')
-
-prepare() {
-  cd ${_gemname}
-  sed -i 's/s\.version = "0.10.0"/s.version = "0.8.0"/' ${_gemname}.gemspec
- }
 
 build() {
   cd ${_gemname}
