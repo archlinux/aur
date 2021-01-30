@@ -1,0 +1,19 @@
+pkgbase = python-wrf
+	pkgdesc = A collection of diagnostic and interpolation routines for use with output from the Weather Research and Forecasting (WRF-ARW) Model.
+	pkgver = 1.3.2.5
+	pkgrel = 1
+	url = https://wrf-python.readthedocs.io/en/latest/
+	arch = x86_64
+	license = APACHE
+	makedepends = python-setuptools
+	makedepends = python-pip
+	makedepends = gcc-fortran
+	depends = python
+	depends = python-numpy
+	provides = wrf-python
+	conflicts = wrf-python
+	source = https://github.com/NCAR/wrf-python/archive/1.3.2.5.tar.gz
+	sha256sums = 8e54b2bca0fb095d9f94094cbe1463d74a351c5004930f4411fb963634589db4
+
+pkgname = python-wrf
+
