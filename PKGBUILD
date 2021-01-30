@@ -3,20 +3,20 @@
 
 pkgname=emptty
 pkgdesc="Dead simple CLI Display Manager on TTY"
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/tvrzna/emptty"
 license=('MIT')
-depends=('pam')
-makedepends=('go' 'libx11')
+depends=('pam' 'libx11')
+makedepends=('go' 'libx11' 'git')
 optdepends=('xorg-server: default display server'
             'xorg-xauth: required if using xorg-server'
             'util-linux: mcookie required if using xorg-server'
             'wayland: alternative to xorg-server')
 backup=('etc/emptty/conf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('6f5deaf70d622ecf99234cd5b39b5c0b61107ab0a5d0c232d6b418fb0bafd2122237439ec52fae7f63b4ebfe66a4eb8492c8b2d09d43c141751433fcd45d9553')
+sha512sums=('4bc9d03fcc4a9a30a2f93f046f6fba422d0950508d87cf21e6cf565c02718bcb2c05e3c947a0cda648129d4cd3b8ef7d3f0d4a81388c7f3d15e437b270841d82')
 
 build() {
   cd "$pkgname-$pkgver"
