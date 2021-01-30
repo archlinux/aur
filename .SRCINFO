@@ -1,9 +1,9 @@
 pkgbase = dupeguru
-	pkgdesc = Find duplicate files on your system
+	pkgdesc = Find duplicate files with various contents, using perceptual diff for pictures
 	pkgver = 4.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dupeguru.voltaicideas.net/
-	arch = x86_64
+	arch = any
 	license = GPL3
 	makedepends = python-sphinx
 	depends = python
@@ -14,8 +14,8 @@ pkgbase = dupeguru
 	conflicts = dupeguru-se
 	conflicts = dupeguru-pe
 	conflicts = dupeguru-me
-	source = https://github.com/glubsy/dupeguru/releases/download/4.1.0-alpha/dupeguru-src-4.1.0-alpha.tar.xz
-	md5sums = 6faf275a1e1be0c42e5faa32d2ddf7ab
+	source = https://github.com/arsenetar/dupeguru/archive/4.1.0.tar.gz
+	md5sums = eee02386ea18f592502c05049eda9f99
 
 pkgname = dupeguru
 

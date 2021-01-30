@@ -3,45 +3,36 @@
 # Maintainer: Virgil Dupras <hsoft@hardcoded.net>
 pkgname=dupeguru
 pkgver=4.1.0
-_pkgver="${pkgver}-alpha"
-pkgrel=2
-pkgdesc="Find duplicate files on your system"
-arch=('x86_64')
+pkgrel=3
+pkgdesc="Find duplicate files with various contents, using perceptual diff for pictures"
+arch=('any')
 url="https://dupeguru.voltaicideas.net/"
 license=('GPL3')
 depends=('python' 'python-pyqt5' 'libxkbcommon-x11')
 makedepends=('python-sphinx')
-source=(
-    https://github.com/glubsy/${pkgname}/releases/download/${_pkgver}/dupeguru-src-${_pkgver}.tar.xz
-)
-md5sums=(
- '6faf275a1e1be0c42e5faa32d2ddf7ab'
-)
+source=( https://github.com/arsenetar/${pkgname}/archive/${pkgver}.tar.gz )
+md5sums=('eee02386ea18f592502c05049eda9f99')
 provides=("dupeguru")
 conflicts=("dupeguru-git" "dupeguru-se" "dupeguru-pe" "dupeguru-me")
 
-prepare() {
-  cd "${srcdir}"
-  sed -i "s/hsaudiotag3k>=1.1.3/hsaudiotag3k>=1.1.*/g" requirements.txt
-  # replace hardcoded icon path in .desktop file
-  sed -i "s/\(.*iconpath.*\"\).*\"/\1dupeguru\"/g" pkg/arch/dupeguru.json
-}
-
 build() {
-  cd "${srcdir}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   # Instead of doing the full ./bootstrap.sh
   python3 -m venv env --system-site-packages
   source env/bin/activate
+  # FIXME use available packages from the AUR instead of pypi
+  msg "Installing dependencies in a virtual environment..."
   python3 -m pip install -r requirements.txt
   msg "Starting build..."
   python build.py --clean
 }
 
 package() {
-  cd "${srcdir}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   
   cp -R "help" "build"
   cp -R "locale" "build"
+  msg "Starting package..."
   python package.py --arch-pkg
   cd "build/${pkgname}-arch"
 
