@@ -3,15 +3,15 @@
 
 pkgname=icingaweb2
 pkgver=2.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Icinga Web 2 Interface"
 license=('GPL')
 arch=('any')
-depends=('php')
-optdepends=('php-gd: export data to PDF'
-            'php-imagick: graphs in PDF exports'
-            'php-intl: support for internationalization'
-            'php-pgsql: for PostgreSQL backend')
+depends=('php7')
+optdepends=('php7-gd: export data to PDF'
+            'php7-imagick: graphs in PDF exports'
+            'php7-intl: support for internationalization'
+            'php7-pgsql: for PostgreSQL backend')
 url="https://icinga.com/"
 source=("https://github.com/Icinga/${pkgname}/archive/v${pkgver}.tar.gz")
 install='icingaweb2.install'
