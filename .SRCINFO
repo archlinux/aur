@@ -1,0 +1,16 @@
+pkgbase = campuswire-nativefier
+	pkgdesc = A tool for college classes that makes class discussions, Q&A and announcements extremely simple
+	pkgver = 2021.01.30.00.33
+	pkgrel = 1
+	url = https://campuswire.com
+	arch = any
+	license = custom
+	makedepends = curl
+	makedepends = gendesk
+	makedepends = nodejs-nativefier
+	depends = electron
+	source = Campuswire.png::https://static.campuswire.com/favicon.ico
+	md5sums = SKIP
+
+pkgname = campuswire-nativefier
+
