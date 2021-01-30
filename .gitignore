@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!sparrow-wifi.desktop
+!sparrow-wifi.install
+!sparrow-wifi.sh
