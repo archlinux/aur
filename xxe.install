@@ -13,8 +13,8 @@ post_install() {
 }
 
 post_upgrade() {
-    fix_scaling=$(vercmp 7.4.1-2 $2)
-    if [[ $fix_scaling -ge 0 ]]
+    fix_scaling=$(vercmp $2 9.4.1-2 )
+    if [[ $fix_scaling -le 0 ]]
     then
         echo ""
         echo ">>> The _JAVA_OPTIONS variable is now set at launch to improve the UI-scaling."
