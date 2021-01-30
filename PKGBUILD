@@ -7,7 +7,7 @@ pkgver=20.10.2
 # Commit which fixes docker.service startup
 _packaging_version=747e984a03316b35302129b5d0b910638dc7e6d4
 
-pkgrel=2
+pkgrel=3
 pkgdesc='Pack, ship and run any application as a lightweight container, using official binaries'
 arch=('x86_64')
 url='https://www.docker.com/'
@@ -22,7 +22,7 @@ options=('!strip')
 source=(
   "https://download.docker.com/linux/static/stable/x86_64/docker-${pkgver}.tgz"
   "https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-${pkgver}.tgz"
-  "cli.deb::https://download.docker.com/linux/debian/dists/buster/pool/stable/amd64/docker-ce-cli_${pkgver}~3-0~debian-buster_amd64.deb"
+  "https://download.docker.com/linux/debian/dists/buster/pool/stable/amd64/docker-ce-cli_${pkgver}~3-0~debian-buster_amd64.deb"
   "https://raw.githubusercontent.com//docker/docker-ce-packaging/${_packaging_version}/systemd/docker.socket"
   "https://raw.githubusercontent.com//docker/docker-ce-packaging/${_packaging_version}/systemd/docker.service"
   "https://raw.githubusercontent.com/moby/moby/v${pkgver}/contrib/syntax/nano/Dockerfile.nanorc"
