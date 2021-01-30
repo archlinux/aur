@@ -21,29 +21,29 @@ replaces=('zulu-embedded-jdk11')
 case "$CARCH" in
     armv?h) _arch='aarch32hf'
         _build=13.33.38
-        sha256sums=('9b8bfb5b60bd93a1c724834a805c2e81897bb58b54c89ce0f45712940444e720')
+        sha256sums=('9B8BFB5B60BD93A1C724834A805C2E81897BB58B54C89CE0F45712940444E720')
         source=("https://cdn.azul.com/zulu-embedded/bin/zulu${_build}-ca-jdk${pkgver}-c2-linux_${_arch}.tar.gz")
         ;;
     aarch64) _arch='aarch64'
-        _build=15.28.51
-        pkgver=15.0.1
-        sha256sums=('4EBEE3BB161B03FC4CC470B9BF569B936E6FB9160D9C614DD2C9FF5EA86C8764')
+        _build=15.29.15
+        pkgver=15.0.2
+        sha256sums=('01C9EE420741C4B74F8FC6B2E6763F4895DB4C728BDFF2CD9CD3B37A0490D433')
         source=("https://cdn.azul.com/zulu-embedded/bin/zulu${_build}-ca-jdk${pkgver}-linux_${_arch}.tar.gz")
-        provides=("java-environment=13" "java-runtime=13")
+        provides=("java-environment=15" "java-runtime=15")
         ;;
     i686) _arch='i686'
-        _build=15.28.51
-        pkgver=15.0.1
-        sha256sums=('97952DCE54084F3831F229D856C5956197530473DCE7031454AE93C87F73CE68')
+        _build=15.29.15
+        pkgver=15.0.2
+        sha256sums=('ED80734AE91D86849A42A6131BFFE9D00DF685C2DFD2484109F71DE7EDA1E4B9')
         source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_${_arch}.tar.gz")
-        provides=("java-environment=14" "java-runtime=14")
+        provides=("java-environment=15" "java-runtime=15")
         ;;
     x86_64) _arch='x64'
-        _build=15.28.51
-        pkgver=15.0.1
-        sha256sums=('1A266AF1A4D04B70BF9EA2CEA576C9FAAA1315D376994746E123538081C56D78')
+        _build=15.29.15
+        pkgver=15.0.2
+        sha256sums=('BE8CE1322BC8DED00374BD6AE1B9127D9B3547CCF526B7609BD63CDC49AC58BD')
         source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_${_arch}.tar.gz")
-        provides=("java-environment=14" "java-runtime=14")
+        provides=("java-environment=15" "java-runtime=15")
         ;;
 esac
 
