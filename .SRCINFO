@@ -7,7 +7,7 @@ pkgbase = stest
 	license = MIT
 	makedepends = git
 	provides = stest
-	conflicts = dmenu
+	conflicts = dmenu<=9
 	source = git://github.com/Ferk/stest.git
 	md5sums = SKIP
 

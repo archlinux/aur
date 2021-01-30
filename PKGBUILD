@@ -9,7 +9,7 @@ url="http://github.com/Ferk/stest"
 license=('MIT')
 depends=()
 makedepends=('git')
-conflicts=('dmenu')
+conflicts=('dmenu<=9')
 provides=('stest')
 source=("git://github.com/Ferk/stest.git")
 md5sums=('SKIP')
