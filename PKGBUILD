@@ -12,7 +12,7 @@ depends=( 'fuse')
 options=(!strip)
 _appimage="YesPlayMusic-${pkgver}.AppImage"
 source=(
-    ${url}/YesPlayMusic-${pkgver}.AppImage
+    ${url}/releases/download/v${pkgver}/YesPlayMusic-${pkgver}.AppImage
 )
 noextract=("${_appimage}")
 sha512sums=(
