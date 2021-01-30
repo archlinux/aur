@@ -4,7 +4,7 @@
 
 pkgname=idlex
 pkgver=1.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Extensions to IDLE, the Python IDE"
 arch=('any')
 url="http://idlex.sourceforge.net/"
