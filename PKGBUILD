@@ -2,7 +2,7 @@
 
 _gemname=oj
 pkgname=ruby-$_gemname
-pkgver=3.11.0
+pkgver=3.11.2
 pkgrel=1
 pkgdesc="The fastest JSON parser and object serializer"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ depends=(ruby)
 makedepends=(rubygems ruby-rdoc)
 source=(https://github.com/ohler55/oj/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
 options=(!emptydirs)
-sha256sums=('1d4796dffe29fbbc30c3e6b5abc8f76d8ae0c549a3844b44d1c13a9e1c8080b5')
+sha256sums=('3a3852a546604fb6766d7e8bc16e622577c2d56661612f854754498fa4cc6124')
 
 build() {
   cd $_gemname-$pkgver
