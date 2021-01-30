@@ -2,8 +2,8 @@
 
 _pkgname=bna
 pkgname=python-bna
-pkgver=5.0.0
-pkgrel=2
+pkgver=5.0.1
+pkgrel=1
 pkgdesc="Command-line Battle.net authenticator and Python library"
 arch=("any")
 license=("MIT")
@@ -13,7 +13,7 @@ source=(
 	"https://pypi.python.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
 #	"https://pypi.python.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz.asc"
 )
-sha256sums=("63adfa2e2ac83f0b350a5413e48c97b662ef21e3edb36e87b2aa14369cd8b074")
+sha256sums=("660080f8a722b2513c36dc707c09cd7de934c59c583ab0cf73b51f8ff82ec451")
 
 
 build() {
