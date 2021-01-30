@@ -1,8 +1,8 @@
-# Maintainer: Iru Cai <mytbk920423@gmail.com>
+# Maintainer: Coelacanthus <coelacanthus@outlook.com>
 
 pkgname=otf-fandol
 pkgver=0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Four basic fonts for Chinese typesetting: Song, Hei, Kai, Fang'
 license=('GPL3')
 depends=()

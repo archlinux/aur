@@ -1,7 +1,7 @@
 pkgbase = otf-fandol
 	pkgdesc = Four basic fonts for Chinese typesetting: Song, Hei, Kai, Fang
 	pkgver = 0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.ctan.org/pkg/fandol
 	arch = any
 	license = GPL3
