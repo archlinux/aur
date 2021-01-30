@@ -1,6 +1,6 @@
 # Maintainer: e dot sovetkin at gmaildotcom
 pkgname=smrender-git
-pkgver=19cfbd8
+pkgver=dcd2a65
 pkgrel=1
 pkgdesc="A rule-based renderer for OSM data"
 arch=('any')
@@ -21,6 +21,7 @@ pkgver () {
 
 build() {
   cd $_gitname
+  ./autoconf.sh
   ./configure
   make
 }
