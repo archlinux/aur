@@ -1,4 +1,4 @@
-# Maintainer: Henil <dedaniahenil@gmail.com>
+# Maintainer: Henil <dedaniahenil at gmail <.> com>
 pkgname=mosaic-git
 _pkgname=mosaic
 pkgver=v0.1.0.e6a7ed3
