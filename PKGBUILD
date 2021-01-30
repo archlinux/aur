@@ -1,6 +1,6 @@
 # Maintainer: tsp <patrictroy at gmail dot com>
 pkgname=rizin-git
-pkgver=0.2.0.r25478.9eec27e6a
+pkgver=.r25559.15f5040f7
 pkgrel=1
 epoch=1
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
@@ -10,6 +10,7 @@ license=('GPL3' 'LGPL3')
 makedepends=('git' 'meson' 'ninja')
 depends=('capstone' 'lz4' 'file' 'libzip' 'xxhash' 'libuv')
 provides=('rizin')
+conflicts=('rizin')
 source=("$pkgname"::"git+https://github.com/rizinorg/rizin.git"
 	"sdb"::"git+https://github.com/rizinorg/sdb.git"
 	"tree-sitter"::"git+https://github.com/tree-sitter/tree-sitter.git")
