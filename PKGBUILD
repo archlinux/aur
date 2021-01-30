@@ -2,9 +2,9 @@
 
 pkgname=mingw-w64-libraw
 pkgver=0.20.0
-pkgrel=2
+pkgrel=3
 pkgdesc="LibRaw is a library for reading RAW files obtained from digital photo cameras (CRW/CR2, NEF, RAF, DNG, and others) (mingw-w64)"
-url="https://github.com/strukturag/libheif"
+url="https://www.libraw.org/"
 license=("LGPL")
 depends=(
 	"mingw-w64-crt"
@@ -44,7 +44,6 @@ build() {
 package() {
 	for _arch in ${_architectures}; do
 		make DESTDIR="${pkgdir}" -C "build-${_arch}" install
-		mv "${pkgdir}/usr/share" "${pkgdir}/usr/${_arch}/"
 		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
 	done
 }
