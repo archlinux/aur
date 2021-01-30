@@ -3,46 +3,48 @@
 # Contributor: Maximilian Berger <snowdragon92 at gmail dot com>
 
 pkgname=atlauncher-bin
+_upstreamname=ATLauncher
 pkgrel=1
-pkgver=3.4.1.1
-pkgdesc="A Launcher for Minecraft which to allow you to download and install ModPacks quickly and easily."
+pkgver=3.4.2.6
+pkgdesc="A Launcher for Minecraft which integrates multiple different ModPacks to allow you to download and install
+ModPacks easily and quickly."
 arch=('any')
-url="http://www.atlauncher.com/"
+url="https://atlauncher.com/"
 license=('GPL3')
-depends=('java-runtime' 'openal')
+depends=('java-runtime=8' 'openal')
 makedepends=('unzip')
 provides=('atlauncher')
+conflicts=('atlauncher')
 
-source=("atlauncher-${pkgver}-${pkgrel}.jar::https://github.com/ATLauncher/ATLauncher/releases/download/$pkgver/ATLauncher-$pkgver.jar"
+source=("atlauncher-${pkgver}-${pkgrel}.jar::https://github.com/ATLauncher/ATLauncher/releases/download/v$pkgver/$_upstreamname-$pkgver.jar"
         "atlauncher"
         "atlauncher.desktop"
-        "atlauncher.png"
-        )
+        "atlauncher.png")
 noextract=("atlauncher-${pkgver}-${pkgrel}.jar")
 
-sha256sums=('83e6a91f3172cd6a888a9e37bc12538b79a90c41e27d1e61a5bcfb1b9def7a0d'
-            '8afdfd968a72a047444f6ebceb718566b7be5164bfa4aa1fd0a0698616c53738'
-            '5f45436c96ab9830555d0f987a96fc0b1a9766d450b958aba282820ffca6cc84'
-            '369c7aa4439762878fd9970c75d1312cf0cd97119c8320b732addef4a621482d')
+sha256sums=('2e0ec6027f99535ccecb537f2c835759705d4d01cb8163d5f05d39f54a73dc94'
+            'a1184d3b8ed125b6a182871bb19851c0635806c29f3d392660ae716a61174a89'
+            'bc8052811b1bd96c7b24963f11168ddba5e2769faa135a0e5680d6d1cc7b802a'
+            'dd370888c78fdb652d656d97e4a7f7e8c90aa8d75d4f4d01d0bd32e95c327c47')
 
 package() {
-    cd "$srcdir"
+  cd "$srcdir"
 
-    # create folder for the main jar executable
-    mkdir -p "${pkgdir}/usr/share/java/atlauncher/"
-    chmod -R 755 "${pkgdir}/usr/share/java/atlauncher/"
+  # create folder for the main jar executable
+  mkdir -p "$pkgdir/usr/share/java/atlauncher/"
+  chmod -R 755 "$pkgdir/usr/share/java/atlauncher/"
 
-    # create folder for other files
-    mkdir -p "${pkgdir}/usr/share/atlauncher/Downloads"
-    chmod 777 "${pkgdir}/usr/share/atlauncher/Downloads"
+  # create folder for other files
+  mkdir -p "$pkgdir/usr/share/atlauncher/Downloads"
+  chmod 777 "$pkgdir/usr/share/atlauncher/Downloads"
 
-    # install shell wrapper script
-    install -D -m755 "${srcdir}/atlauncher" "${pkgdir}/usr/bin/atlauncher"
+  # install shell wrapper script
+  install -D -m755 "$srcdir/atlauncher" "$pkgdir/usr/bin/atlauncher"
 
-    # install jar
-    install -D -m644 "${srcdir}/atlauncher-${pkgver}-${pkgrel}.jar" "${pkgdir}/usr/share/java/atlauncher/ATLauncher.jar"
+  # install jar
+  install -D -m644 "$srcdir/atlauncher-${pkgver}-${pkgrel}.jar" "$pkgdir/usr/share/java/atlauncher/ATLauncher.jar"
 
-    # install desktop launcher with icon
-    install -D -m644 "${srcdir}/atlauncher.desktop" "${pkgdir}/usr/share/applications/atlauncher.desktop"
-    install -D -m644 "${srcdir}/atlauncher.png"     "${pkgdir}/usr/share/pixmaps/atlauncher.png"
+  # install desktop launcher with icon
+  install -D -m644 "$srcdir/atlauncher.desktop" "$pkgdir/usr/share/applications/atlauncher.desktop"
+  install -D -m644 "$srcdir/atlauncher.png" "$pkgdir/usr/share/pixmaps/atlauncher.png"
 }
