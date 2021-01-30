@@ -2,7 +2,7 @@
 # Contributor: Sergey Mastykov
 
 pkgname=linkchecker
-pkgver=10.0.0
+pkgver=10.0.1
 pkgrel=1
 pkgdesc="Check websites for broken links."
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
     'python-argcomplete: For command-line completion'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/linkchecker/linkchecker/archive/v$pkgver.tar.gz")
-sha256sums=('e86bdd9d1bd39e7caee7521c80f211f9cbdc07f5bc01225ee4fc07a7ada34ccd')
+sha256sums=('81641ac8794d355585fa8807b525a868e7ff13a4d85d04c2aba13e2a25e71484')
 
 build() {
     cd "$pkgname-$pkgver"

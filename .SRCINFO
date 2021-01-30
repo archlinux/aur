@@ -1,6 +1,6 @@
 pkgbase = linkchecker
 	pkgdesc = Check websites for broken links.
-	pkgver = 10.0.0
+	pkgver = 10.0.1
 	pkgrel = 1
 	url = https://github.com/linkcheck/linkchecker
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = linkchecker
 	depends = python-xdg
 	depends = python-beautifulsoup4
 	optdepends = python-argcomplete: For command-line completion
-	source = linkchecker-10.0.0.tar.gz::https://github.com/linkchecker/linkchecker/archive/v10.0.0.tar.gz
-	sha256sums = e86bdd9d1bd39e7caee7521c80f211f9cbdc07f5bc01225ee4fc07a7ada34ccd
+	source = linkchecker-10.0.1.tar.gz::https://github.com/linkchecker/linkchecker/archive/v10.0.1.tar.gz
+	sha256sums = 81641ac8794d355585fa8807b525a868e7ff13a4d85d04c2aba13e2a25e71484
 
 pkgname = linkchecker
 
