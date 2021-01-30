@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=WeChat
+Name[zh_CN]=微信
+Comment=WeChat desktop built with nativefier (electron)
+Exec=wechat-nativefier
+Icon=wechat-nativefier
+Encoding=UTF-8
+StartupWMClass=wechat-nativefier
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;Chat;InstantMessaging;Application;
