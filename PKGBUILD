@@ -1,7 +1,7 @@
 # Maintainer: qvshuo
 
 pkgname=wechat-nativefier
-pkgver=20210130.2
+pkgver=20210130.3
 pkgrel=1
 pkgdesc="WeChat desktop built with nativefier (electron)"
 arch=("x86_64")
@@ -21,7 +21,7 @@ sha512sums=(
 
 build() {
   nativefier \
-    --name "${pkgname}" \
+    --name "WeChat" \
     --icon "${pkgname}.png" \
     --inject "${pkgname}.css" \
     --hide-window-frame \
