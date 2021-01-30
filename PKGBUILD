@@ -12,7 +12,7 @@ optdepends=('php-gd: export data to PDF'
             'php-imagick: graphs in PDF exports'
             'php-intl: support for internationalization'
             'php-pgsql: for PostgreSQL backend')
-url="http://www.icinga.org"
+url="https://icinga.com/"
 source=("https://github.com/Icinga/${pkgname}/archive/v${pkgver}.tar.gz")
 install='icingaweb2.install'
 sha256sums=('47d64bc4eeb574ca4ca2f765866a1612ed885d47d53cb3e7dc19adeb10b2b3db')
