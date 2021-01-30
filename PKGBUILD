@@ -1,4 +1,4 @@
-# Maintainer: qvshuo <qvshuo@foxmail.com>
+# Maintainer: qvshuo
 
 _pkgname=yesplaymusic
 pkgname=yesplaymusic-appimage
