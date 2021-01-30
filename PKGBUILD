@@ -1,7 +1,7 @@
 # Maintainer: Henil <dedaniahenil at gmail <.> com>
 pkgname=mosaic-git
 _pkgname=mosaic
-pkgver=v0.1.0.e6a7ed3
+pkgver=v0.1.0.e6a7ed4
 _pkgver=0.1
 pkgrel=0
 epoch=
