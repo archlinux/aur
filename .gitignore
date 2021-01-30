@@ -1,0 +1,9 @@
+# Ignore Everything
+*
+
+# Include only these files
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!SimToolkitPro.desktop
+!simtoolkitpro.png

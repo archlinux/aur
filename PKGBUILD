@@ -2,7 +2,7 @@
 # Contributor: Skye Viau <skye.viau@outlook.com>
 
 pkgname=simtoolkitpro-appimage
-pkgver=0.6.61
+pkgver=0.6.63
 pkgrel=1
 pkgdesc="The all-in-one flight simulation EFB"
 license=('custom')
@@ -10,18 +10,17 @@ provides=('simtoolkitpro')
 conflicts=('simtoolkitpro')
 arch=('x86_64')
 url="https://simtoolkitpro.co.uk/"
-depends=('qt5-base')
 options=(!strip)
 _desktop_name=SimToolkitPro.desktop
 _filename=SimToolkitPro-${pkgver}-${arch}.Setup.AppImage
 source=(
   https://cdn.simtoolkitpro.co.uk/automated-builds/${_filename}
   SimToolkitPro.desktop
+  simtoolkitpro.png
 )
-sha512sums=(
-  'e90b87f778b20cdc2c4dfeec998eae2c56f7f06c55ef0d56579a374f8eb93a51fe85d0cb7a0217c68081185f07d2d04ba8bdc5d811fd401603a2adad6686a9d3'
-  'e3a9b1a26d6717eefb1e97f08ec9f97fcd7dc6bc6ffc046f1c13405f20511a6cc048afe0eeb33310cb6936755f015bbd96f5d9d0d4b59e31d0949cba4846e346'
-)
+sha512sums=('fe1815bbafe008d52cdf2fe00bdd13ee312d6cafff501a719b224b46689916d910b1e4d59f1f171b58f01310f9afeec0cbea3a0ab55e99032df0cf3deea2ea61'
+            '82b6be8bdb19ec1973cae124068240ade1ca4b282465e410d47bf2dfceaf0f7854c8de5cf709e6ba27dfcbf43c5ad11e50617c44cfea161d6870ac86f56d6704'
+            'fcbbecca8c3719aa59ac22de057fd6775282b4600d6d2a505fd24e1346e1ab92cdd456dfb28b028e880039623ac2e1aa81756b64a87b208a98e6dcbbbf38260d')
 
 prepare() {
   cd "$srcdir"
@@ -29,8 +28,7 @@ prepare() {
 }
 
 package() {
-  echo "Starting install"
   install -Dm755 $_filename "$pkgdir"/usr/bin/SimToolkitPro.AppImage
-  echo "Installing desktop launch file to $pkgdir/usr/bin/SimToolkitPro.AppImage"
+  install -Dm0644 "simtoolkitpro.png" "$pkgdir"/usr/share/pixmaps/simtoolkitpro.png
   install -Dm755 ${srcdir}/${_desktop_name} "$pkgdir"/usr/share/applications/${_desktop_name}
 }
