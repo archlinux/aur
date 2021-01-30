@@ -1,7 +1,7 @@
 # Maintainer: Julian Brost <julian@0x4a42.net>
 
 pkgname=dnsviz
-pkgver=0.8.2
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Tool suite for analysis and visualization of DNS and DNSSEC"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('bind: needed for some options involving zone files')
 options=(!emptydirs)
 source=("https://github.com/dnsviz/dnsviz/releases/download/v$pkgver/dnsviz-$pkgver.tar.gz"
         "https://github.com/dnsviz/dnsviz/releases/download/v$pkgver/dnsviz-$pkgver.tar.gz.asc")
-sha256sums=('a81ff254c23718cd6f364b03bf6e9c80468fa4663fd5be66043de7b0bece1cab'
+sha256sums=('368b25ce506c8f5ce0ce9e5a4b1817ace3459bd65883eb3edf6011e2a3a4b330'
             'SKIP')
 validpgpkeys=(# Casey Deccio <casey@deccio.net>
               '048D0B43891D7E7BCCAAEF011ED2ED92118571E6')
