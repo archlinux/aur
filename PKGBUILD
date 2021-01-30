@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc="Yet another yogurt. Pacman wrapper and AUR helper written in go. (development version)"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/Jguer/yay"
-license=('GPL')
+license=('GPL3')
 options=('!strip' '!emptydirs')
 depends=(
   'pacman>5'
