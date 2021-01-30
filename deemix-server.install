@@ -1,0 +1,22 @@
+post_install(){
+ cat <<INFO
+
+This package install files in the following directories:
+
+- executable:              /usr/bin/deemix-server
+- program files:           /usr/lib/deemix-server
+- program data:            /var/lib/deemix-server
+- interface configuration: /var/lib/deemix-server/.config/deemix/config.json
+- arl cookie:              /var/lib/deemix-server/.config/deemix/.arl
+- systemd unit:            deemix-server.service
+
+It is strongly reccomended to start the server via its unit file.
+You can edit it to adjust your host, port and cookie settings.
+Changing the ARL cookie before starting the service is mandatory.
+
+The file /usr/lib/deemix-server/example-nginx.conf contains
+an example NginX server configuration. At the moment it is not possible
+to use subdirectories, as the server uses hardcoded absolute URLs.
+
+INFO
+}

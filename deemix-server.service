@@ -1,0 +1,12 @@
+[Unit]
+Description=Deemix server
+After=network.target
+
+[Service]
+User=deemix-server
+Type=simple
+WorkingDirectory=/var/lib/deemix-server
+ExecStart=/usr/bin/deemix-server --serverwide-arl --host 127.0.0.1 6595
+
+[Install]
+WantedBy=multi-user.target

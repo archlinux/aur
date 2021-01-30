@@ -1,0 +1,34 @@
+pkgbase = deemix-server-git
+	pkgdesc = Standalone server packaged with headless components of deemix-pyweb
+	pkgver = r460.4308163b3f
+	pkgrel = 1
+	url = https://git.rip/RemixDev
+	install = deemix-server.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python>=3.6
+	depends = deemix
+	depends = python-flask
+	depends = python-flask-socketio>=5.0
+	depends = python-eventlet
+	depends = python-bidict
+	provides = deemix-pyweb
+	backup = var/lib/deemix-server/.config/deemix/config.json
+	source = example-nginx.conf
+	source = config.json
+	source = deemix-server.service
+	source = deemix-server.sysusers
+	source = deemix-server.tmpfiles
+	source = deemix-pyweb::git+https://git.rip/RemixDev/deemix-pyweb.git
+	source = deemix-webui::git+https://git.rip/RemixDev/deemix-webui.git
+	sha256sums = 07bd9e362149e1f79c5f155c01cb5c8eeaacf44715f64d168b7fdf073e702fbb
+	sha256sums = 093c445f5a27044f648ab997e477ff6fd41789a3d940eb7f27d64c230de20681
+	sha256sums = b7a0a3940978c0242aad1a071d8676319a304d3aedff704b1941e0e441fda187
+	sha256sums = 12860b6fd3ade371ce4c2d81e645d29dbf02267ff9c299059621014b4e0e0614
+	sha256sums = ad69a84e0d51df2418c71b24e262e5128f0661ebc09abc719e6d7aec309e7599
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = deemix-server-git
+
