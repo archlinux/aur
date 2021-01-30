@@ -1,0 +1,14 @@
+pkgbase = qdarkstudio4-theme
+	pkgdesc = Dark GTK2 theme
+	pkgver = 1
+	pkgrel = 1
+	url = https://sourceforge.net/projects/archbangretro/
+	arch = any
+	license = GPL
+	provides = qdarkstudio4-theme
+	conflicts = qdarkstudio4-theme
+	source = https://sourceforge.net/projects/archbangretro/files/QDarkStudio4.tar.xz
+	md5sums = 7f81b54dc7b6021de9e624b65a7188c5
+
+pkgname = qdarkstudio4-theme
+
