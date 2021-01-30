@@ -1,6 +1,6 @@
 # Maintainer: qvshuo
 
-_pkgname=olive
+_pkgname=olive-editor
 pkgname=olive-appimage
 pkgver=19eabf28
 pkgrel=1
