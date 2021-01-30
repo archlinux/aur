@@ -3,12 +3,12 @@
 pkgname='chs-git'
 _pkgname='chs'
 pkgver='2.2.0.r4.gc3eda7c'
-pkgrel=1
+pkgrel=2
 pkgdesc='Play chess against the Stockfish engine in your terminal.'
 url='https://github.com/nickzuber/chs'
 depends=('python' 'python-chess' 'python-editdistance')
-checkdepends=('python-pytest' 'python-setuptools')
-makedepends=('git')
+checkdepends=('python-pytest')
+makedepends=('git' 'python-setuptools')
 provides=("chs")
 conflicts=("chs")
 license=('MIT')
@@ -39,3 +39,4 @@ package() {
   python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+# vim:set ts=2 sw=2 et:
