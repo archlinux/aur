@@ -1,7 +1,7 @@
 # Maintainer: esrh : email at esrh at netc dot eu
 pkgname=mpv-mpvacious
 pkgver=0.12.r11.gcaff0ab
-pkgrel=1
+pkgrel=2
 pkgdesc="MPV script to add keybindings to create Anki cards from movies and TV shows."
 arch=('any')
 url="https://github.com/Ajatt-Tools/mpvacious"
