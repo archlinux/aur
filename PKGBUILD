@@ -2,14 +2,14 @@
 _corpname=glaxnimate
 _pkgname='glaxnimate'
 pkgname="$_pkgname-git"
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 pkgdesc="Simple vector animation program."
 url="https://glaxnimate.mattbas.org/"
 license=('GPL3')
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
-makedepends=('git' 'qt5-base' 'python' 'zlib' 'hicolor-icon-theme' 'potrace' 'ffmpeg')
+makedepends=('git' 'qt5-base' 'python' 'zlib' 'hicolor-icon-theme' 'potrace' 'ffmpeg' 'cmake' 'qt5-tools')
 depends=('python' 'qt5-base' 'potrace' 'ffmpeg')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
