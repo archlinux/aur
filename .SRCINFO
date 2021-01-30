@@ -1,0 +1,19 @@
+pkgbase = wp-cli-bin
+	pkgdesc = A command-line tool for managing WordPress
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = http://wp-cli.org/
+	arch = any
+	license = MIT
+	depends = php
+	conflicts = wp-cli
+	conflicts = wp-cli-git
+	source = https://github.com/wp-cli/wp-cli/releases/download/v2.4.0/wp-cli-2.4.0.phar
+	source = https://raw.githubusercontent.com/wp-cli/wp-cli/v2.4.0/LICENSE
+	source = https://raw.githubusercontent.com/wp-cli/wp-cli/v2.4.0/utils/wp-completion.bash
+	md5sums = dedd5a662b80cda66e9e25d44c23b25c
+	md5sums = e5c622f22129821039d4adce2cf01c0e
+	md5sums = f8acb424f1460428796451679631be86
+
+pkgname = wp-cli-bin
+
