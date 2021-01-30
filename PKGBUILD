@@ -4,14 +4,14 @@
 
 pkgname=wp-cli-git
 pkgver=r8814.ae5557d7
-pkgrel=2
+pkgrel=3
 pkgdesc="A command-line tool for managing WordPress"
 url="http://wp-cli.org/"
 arch=('any')
 license=('MIT')
 depends=('php')
 makedepends=('git' 'composer')
-conflicts=('wp-cli')
+conflicts=('wp-cli' 'wp-cli-bin')
 source=("$pkgname::git+https://github.com/wp-cli/wp-cli-bundle.git")
 sha256sums=('SKIP')
 
@@ -50,7 +50,7 @@ check() {
 
 package() {
   cd ${pkgname}
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/wp-cli/LICENSE"
   install -Dm655 wp-cli.phar "${pkgdir}/usr/bin/wp"
   install -Dm644 vendor/wp-cli/wp-cli/utils/wp-completion.bash "${pkgdir}/usr/share/bash-completion/completions/wp"
 }
