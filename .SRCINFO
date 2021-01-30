@@ -1,0 +1,18 @@
+pkgbase = python-flask-pymongo-git
+	pkgdesc = MongoDB support for Flask applications.
+	pkgver = 2.3.0.r17.g3029f58
+	pkgrel = 1
+	url = https://github.com/
+	arch = x86_64
+	license = BSD 2-Clause
+	makedepends = git
+	makedepends = python
+	depends = python-flask
+	depends = python-six
+	depends = python-pymongo
+	provides = python-flask-pymongo
+	source = git://github.com/dcrosta/flask-pymongo
+	sha256sums = SKIP
+
+pkgname = python-flask-pymongo-git
+
