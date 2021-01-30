@@ -1,13 +1,14 @@
 pkgbase = mp3tag
 	pkgdesc = The universal tag editor
 	pkgver = 3.05
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mp3tag.de/en/
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = p7zip
 	depends = wine
+	optdepends = wine-gecko: avoid wine gecko installation in home directory
 	options = !strip
 	source = mp3tag
 	source = LICENSE
