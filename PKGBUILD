@@ -1,7 +1,7 @@
 # Maintainer: rafaelff <rafaelff@gnome.org>
 
 pkgname=tscdriver
-pkgver=0.4.03
+pkgver=1.2.02
 pkgrel=1
 pkgdesc="Drivers for TSC Printers"
 arch=(x86_64)
@@ -10,11 +10,7 @@ license=('custom:proprietary')
 depends=(gtk2)
 makedepends=(unzip)
 source=("$pkgname-$pkgver.zip::$url/EN/DownloadFile/DownloadFileSupport/1110/Linux64_v$pkgver.zip?m_id=4124")
-sha256sums=('bf94e7d115ec9df4708b20721a7389ee91711fed48d0cc0949ad11e214efaff6')
-
-prepare() {
-  tar xf "$pkgname-$pkgver-$CARCH.tar.gz"
-}
+sha256sums=('381b0306b2bb6545d1019f99198a30841939d2deb2dcb3cda0c59d81ec185b3d')
 
 package() {
   cd "barcodedriver-$pkgver"
@@ -24,8 +20,8 @@ package() {
   install -vm4755 thermalprinterut              "$pkgdir/usr/bin/"
 
   install -vdm755 "$pkgdir/usr/lib/cups/backend/"
-  install -vm755 backend/tscusb                 "$pkgdir/usr/lib/cups/backend/"
-  install -vm755 backend/tscsocket              "$pkgdir/usr/lib/cups/backend/"
+  install -vm755 backend/brusb                 "$pkgdir/usr/lib/cups/backend/"
+  install -vm755 backend/brsocket              "$pkgdir/usr/lib/cups/backend/"
   
   install -vdm755 "$pkgdir/usr/lib/cups/filter/"
   install -vm755 rastertobarcodetspl            "$pkgdir/usr/lib/cups/filter/rastertobarcodetspl"
