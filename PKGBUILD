@@ -1,9 +1,9 @@
 # Maintainer: Lex Black <autumn-wind@web.de>
 
 pkgname=prosody-mod-invites
-pkgver=2020.09.11
+pkgver=2021.01.23
 pkgrel=1
-_commit="24f4eb35ab60"
+_commit="a0f1fb5e7829"
 pkgdesc="Invite management module for Prosody"
 arch=('any')
 url="https://modules.prosody.im/mod_invites.html"
