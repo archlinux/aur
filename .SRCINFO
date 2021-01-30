@@ -1,0 +1,23 @@
+pkgbase = python-ros-cross-compile
+	pkgdesc = A tool to build ROS workspaces for various target architectures and platforms.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://pypi.org/project/ros-cross-compile
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = docker
+	depends = qemu-user-static
+	depends = cmake
+	depends = git
+	depends = wget
+	depends = aarch64-linux-gnu-gcc
+	depends = arm-linux-gnueabihf-gcc
+	depends = aarch64-linux-gnu-pkg-config
+	depends = python-vcstool
+	depends = python-colcon-common-extensions
+	source = https://files.pythonhosted.org/packages/source/r/ros_cross_compile/ros_cross_compile-0.6.0.tar.gz
+	sha256sums = b0c20cf9ddebccd66f10a6c471eec93d7c0c9d8a177232db5de02c171393b085
+
+pkgname = python-ros-cross-compile
+
