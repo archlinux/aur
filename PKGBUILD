@@ -13,7 +13,6 @@ options=(!strip)
 _appimage="YesPlayMusic-${pkgver}.AppImage"
 source=(${url}/releases/download/v${pkgver}/YesPlayMusic-${pkgver}.AppImage)
 noextract=("${_appimage}")
-sha512sums=('kWQlx1mEHZspgTkUCrHfZzYGvldwjfNH/Aquu/v/j3B5+1pKFriL0fmEjcBup8cN8qUoouvvOABbm9qGLkq1Xw')
 
 prepare() {
     chmod +x "${_appimage}"
