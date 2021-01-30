@@ -3,8 +3,6 @@ Description=A Secure Socket Tunneling Protocol (SSTP) server.
 After=network.target
 
 [Service]
-Restart=on-failure
-
 Environment=PYTHONOPTIMIZE=1
 ExecStart=/usr/bin/sstpd -f /etc/sstp-server.ini -s %i
 

@@ -1,6 +1,6 @@
 # Maintainer: Shell Chen <aur@sorz.org>
 pkgname=sstp-server
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A Secure Socket Tunneling Protocol (SSTP) server."
 url="https://github.com/sorz/sstp-server"
@@ -12,8 +12,8 @@ optdepends=('python-uvloop: better performance')
 makedepends=('python-setuptools')
 source=("https://github.com/sorz/sstp-server/archive/v$pkgver.tar.gz"
 	"sstp-server@.service")
-sha256sums=('041b6eb728e9a9f4a1dc466576fbb82d114f78d6ddf79b56d7331079c4d9590a'
-            '197ad957e7987ca9e828bab9d4322c8d2bfb9edcc0ecab1ef23470a1e1aae1a6')
+sha256sums=('e15bfdf96263993198cd7e163491d9da438660827cdc930f5faa8574bedf091b'
+            '597663e5d0ed3259f2e1a55d9e3f656644eee45159d113de11c53abe64d598d4')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
