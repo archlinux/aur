@@ -1,7 +1,7 @@
 # Maintainer: Vasiliy Bukharev <bvp-yar@ya.ru>
 
 pkgname=consul-bin
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc='A tool for service discovery, monitoring and configuration.'
 #arch=('i686')
@@ -20,12 +20,12 @@ source_armv7h=("https://releases.hashicorp.com/consul/${pkgver}/consul_${pkgver}
 source_aarch64=("https://releases.hashicorp.com/consul/${pkgver}/consul_${pkgver}_linux_arm64.zip")
 
 sha256sums=('cace20b6db0643a4d10f6f14ab7ba23d047376aae48460b48fd265cb3eebc13c')
-sha256sums_i686=('6fff43c29d4ea5ff5ce8b365c157a23a798881493788d48f619b5894799a72fa')
-sha256sums_x86_64=('9ba45ec6eb3e762444f077ae06e407ca5161d46785d725d7b5ea0c4d5cd5a99b')
-sha256sums_arm=('16d81bfdb51f5fd71210bf5c4d5d40a18f63cf3bef08b6f78c8e0073fc2de99a')
-sha256sums_armv6h=('a8d85eb04144a7e278916238de94c94cdaca56f9adcd7761777f09c035fe74e8')
-sha256sums_armv7h=('a8d85eb04144a7e278916238de94c94cdaca56f9adcd7761777f09c035fe74e8')
-sha256sums_aarch64=('80a05bf3a3d9c18f0ef952eff8e6e0de8f7205060916e351c4cd3f2418ed7900')
+sha256sums_i686=('fcd83f9e395640af82fd1cbadb23906652c57b96488557c45dae7054d9632252')
+sha256sums_x86_64=('5141b2e7f54b51e07601d2b4ff1853f1d9b8e26b26bfb55281a8c47d8581352e')
+sha256sums_arm=('c026b4c040dca0fff684683a1c78b338ad15a43b386a25aa8033d353f3b69dea')
+sha256sums_armv6h=('e542a30043f2d15cdba36ed97bfa7989bbf5897bdf9e2e9819e86883b1a115c5')
+sha256sums_armv7h=('e542a30043f2d15cdba36ed97bfa7989bbf5897bdf9e2e9819e86883b1a115c5')
+sha256sums_aarch64=('e544435eebcc5939f7f12b0666fb960ae127edbb6402ab305c7ea130032f0aab')
 options=('!strip')
 
 package() {
