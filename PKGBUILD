@@ -1,10 +1,9 @@
-# Maintainer: Christian Pinedo <christian (at) chrpinedo (dot) me>
-# Co-Maintainer: Mark Wagie <mark (dot) wagie (at) tutanota (dot) com>
+# Maintainer: Christian Pinedo <me (at) christianpinedo (dot) eu>
 pkgname=solarwallet-appimage
 _pkgname=solarwallet
 _githubname=solar
-pkgver=0.25.3
-pkgrel=3
+pkgver=0.26.1
+pkgrel=1
 pkgdesc="Wallet for the Stellar payment network by SatoshiPay (AppImage)"
 arch=('x86_64')
 url='https://solarwallet.io/'
@@ -16,7 +15,7 @@ options=(!strip)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/satoshipay/$_githubname/archive/v$pkgver.tar.gz"
 	"$pkgname.sh"
 	"$pkgname.desktop")
-sha256sums=('dd8f22d4913c41e191eba5812892974913af0fc7e27839c7e0dff4c010566429'
+sha256sums=('a47692d5b8b7d6cb7d4045eb0436be39282294ee59a446376c23f7a2fbd62851'
             'ed2e309b16b78b82896331cacb12382c1cd7ca2327884a9a1a4d6320e7044ab7'
             'f651916474463e95ce114b2298bd452c08db389fab30901cadcd86d3b3613f85')
 
