@@ -1,0 +1,22 @@
+pkgbase = loki-core-git
+	pkgdesc = LOKI (OXEN) core for cryptocurrency based on Monero
+	pkgver = 8.1.5.c74fee064
+	pkgrel = 1
+	url = https://github.com/oxen-io/loki-core
+	arch = x86_64
+	license = custom
+	makedepends = wget
+	makedepends = git
+	makedepends = curl
+	makedepends = cmake
+	makedepends = boost
+	makedepends = openssl
+	makedepends = zeromq
+	makedepends = sqlite
+	makedepends = unbound
+	makedepends = libsodium
+	source = git+https://github.com/oxen-io/loki-core.git
+	sha256sums = SKIP
+
+pkgname = loki-core-git
+
