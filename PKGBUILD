@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=karchive-git
-pkgver=5.79.0.r447.g5745a19
+pkgver=5.79.0_r450.gfecb61b
 pkgrel=1
 pkgdesc='Qt 5 addon providing access to numerous types of archives'
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  _ver="$(cat CMakeLists.txt | grep -m1 'set(KF5_VERSION' | cut -d '"' -f2 | tr - .)"
-  echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  _ver="$(cat CMakeLists.txt | grep -m1 'set(KF_VERSION' | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 prepare() {
