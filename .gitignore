@@ -1,0 +1,7 @@
+openblack/
+src/
+pkg/
+bgfx/
+bimg/
+bx/
+*.pkg.tar.*

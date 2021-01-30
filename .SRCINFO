@@ -1,0 +1,22 @@
+pkgbase = bgfx-git
+	pkgdesc = Cross-platform, graphics API agnostic, "Bring Your Own Engine/Framework" style rendering library.
+	pkgver = r7631.741028840
+	pkgrel = 1
+	url = https://bkaradzic.github.io
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	depends = mesa
+	depends = libx11
+	provides = bgfx
+	conflicts = bgfx
+	source = git://github.com/bkaradzic/bx.git
+	source = git://github.com/bkaradzic/bimg.git
+	source = git://github.com/bkaradzic/bgfx.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = bgfx-git
+
