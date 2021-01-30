@@ -1,7 +1,7 @@
 pkgbase = ca-certificates-izenpe
 	pkgdesc = Izenpe CA certificates
 	pkgver = 20210130
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.izenpe.eus
 	arch = any
 	license = unknown
@@ -15,7 +15,7 @@ pkgbase = ca-certificates-izenpe
 	source = https://www.izenpe.com/contenidos/informacion/cas_izenpe_cert/es_cas/adjuntos/AAPPR_cert_sha256.crt
 	source = https://www.izenpe.com/contenidos/informacion/cas_izenpe_cert/es_cas/adjuntos/AAPPNR_cert_sha256.crt
 	sha256sums = 2530cc8e98321502bad96f9b1fba1b099e2d299e0f4548bb914f363bc0d4531f
-	sha256sums = 5aaf0258fbf0ef61e297f091bbd70cf9e5cc1c40b3d28f8fa2f073766ff24ddb
+	sha256sums = b08c196a2ed1e84f9892db1b61219ceb642882478f39b08719603d0735fa03d1
 	sha256sums = db476339ccbfcc9e4bd1d6cb606ca27f00679e1ef8a581e7236309b9d63ffe37
 	sha256sums = faeec9860a3c472b589a301393fc3c314f6792d31351a78ad3b80639dc2b235c
 	sha256sums = 5a49b15ae60ff627da272a8743d67162baca1096168203213acf8227af4c4942
