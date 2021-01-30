@@ -12,6 +12,7 @@ license=('MIT')
 depends=('php')
 makedepends=('git' 'composer')
 conflicts=('wp-cli' 'wp-cli-bin')
+provides=('wp-cli')
 source=("$pkgname::git+https://github.com/wp-cli/wp-cli-bundle.git")
 sha256sums=('SKIP')
 

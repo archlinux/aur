@@ -8,6 +8,7 @@ pkgbase = wp-cli-git
 	makedepends = git
 	makedepends = composer
 	depends = php
+	provides = wp-cli
 	conflicts = wp-cli
 	conflicts = wp-cli-bin
 	source = wp-cli-git::git+https://github.com/wp-cli/wp-cli-bundle.git
