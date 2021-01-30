@@ -1,96 +1,36 @@
 ## Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=hqplayer-embedded
+_rpmver=4.21.1-54
 _debpkgver=4.21.1-60
 pkgver=4.21.1
-pkgrel=1
-_pkgrel_x86_64=1
-_pkgrel_aarch64=1
+pkgrel=2
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
 arch=('x86_64' 'aarch64')
 url="http://www.signalyst.com/custom.html"
 license=('custom')
 depends=('alsa-lib' 'glibc' 'flac' 'gcc-libs' 'libgmpris' 'glib2' 'rygel' 'adduser-deb' 'zip' 'unzip' 'wavpack' 'gupnp' 'openmp')
-source_x86_64=("https://www.signalyst.eu/bins/hqplayerd/buster/hqplayerd_"$_debpkgver"_amd64.deb" 'hqplayerd.service'  'hqplayerd2.service')
+source_x86_64=("https://www.signalyst.eu/bins/hqplayerd/fc33/hqplayerd-"$_rpmver".fc33.x86_64.rpm" 'hqplayerd.service')
 install=install
-source_aarch64=("https://www.signalyst.eu/bins/hqplayerd/buster/hqplayerd_"$_debpkgver"_arm64.deb" 'hqplayerd.service'  'hqplayerd2.service')
-sha256sums_x86_64=('SKIP'
-'5d4194a704979b3ff92482e155769460906745a66e759142eba33a2226f9cb3a' '9b19b2236e342672a5e8d1e046623e3ba0d97ce4755134a371a100927dd9ed54')
-sha256sums_aarch64=('SKIP'
-'5d4194a704979b3ff92482e155769460906745a66e759142eba33a2226f9cb3a' '9b19b2236e342672a5e8d1e046623e3ba0d97ce4755134a371a100927dd9ed54')
+source_aarch64=("https://www.signalyst.eu/bins/hqplayerd/buster/hqplayerd_"$_debpkgver"_arm64.deb" 'hqplayerd.service')
+sha256sums_x86_64=('a6d81d3ef3e4a8781ffce808c6f410d26d13720dafbb91fe7e8e6ccce16f972e'
+'5d4194a704979b3ff92482e155769460906745a66e759142eba33a2226f9cb3a')
+sha256sums_aarch64=('91a54b739a9b4106447cbd6497cc34291dc46de200661a76f53d73b1825393b3'
+'5d4194a704979b3ff92482e155769460906745a66e759142eba33a2226f9cb3a')
 
 package() {
-  bsdtar xf data.tar.xz -C "$srcdir"
+  if [ "$arch" == "x86_64" ]; then
+  bsdtar xf hqplayerd-"$_rpmver".fc33.x86_64.rpm -C "$pkgdir"
+  else
+  bsdtar xf hqplayerd_"$_debpkgver"_arm64.deb -C "$pkgdir"
+  fi
+  install -Dm644 "hqplayerd.service" "$pkgdir/usr/lib/systemd/user/hqplayerd.service"
+  install -Dm644 "$pkgdir/usr/share/doc/hqplayerd/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  rm "$pkgdir/usr/share/doc/hqplayerd/LICENSE"
+  cp "$pkgdir/etc/hqplayer/hqplayerd.xml" "$pkgdir/usr/share/doc/hqplayerd/hqplayerd.xml"
+  rm "$pkgdir/etc/hqplayer/hqplayerd.xml"
   
-      install -Dm755 "$srcdir/usr/bin/hqplayerd" \
-    "$pkgdir/usr/bin/hqplayerd"
-    
-      install -Dm755 "$srcdir/usr/bin/hqplayer-create-backup.sh" \
-    "$pkgdir/usr/bin/hqplayer-create-backup.sh"
-    
-      install -Dm755 "$srcdir/usr/bin/hqplayer-restore-backup.sh" \
-    "$pkgdir/usr/bin/hqplayer-restore-backup.sh"
-    
-     install -Dm644 "$srcdir/etc/hqplayer/hqplayerd.xml" \
-    "$pkgdir/usr/share/doc/hqplayerd/hqplayerd.xml"
-    
-     mkdir -p "$pkgdir/etc/hqplayer"
-    
-     install -Dm644 "$srcdir/usr/share/doc/hqplayerd/readme.txt.gz" \
-    "$pkgdir/usr/share/doc/hqplayerd/readme.txt.gz"
-    
-     install -Dm644 "$srcdir/usr/share/doc/hqplayerd/rygel.conf.gz" \
-    "$pkgdir/usr/share/doc/hqplayerd/rygel.conf.gz"
-    
-     install -Dm644 "$srcdir/usr/share/doc/hqplayerd/hqplayerd.xml-rme.gz" \
-    "$pkgdir/usr/share/doc/hqplayerd/hqplayerd.xml-rme.gz"
-  
-     install -Dm644 "$srcdir/usr/share/doc/hqplayerd/copyright" \
-    "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-    
-     install -Dm644 "hqplayerd.service" \
-    "$pkgdir/usr/lib/systemd/user/hqplayerd.service"
-    
-     install -Dm644 "hqplayerd2.service" \
-    "$pkgdir/usr/lib/systemd/system/hqplayerd.service"
-    
-      install -Dm644 "$srcdir/var/hqplayer/web/default-cover.png" \
-    "$pkgdir/var/hqplayer/web/default-cover.png"
-    
-     install -Dm644 "$srcdir/var/hqplayer/web/default.css" \
-    "$pkgdir/var/hqplayer/web/default.css"
-    
-     install -Dm644 "$srcdir/var/hqplayer/web/favicon.ico" \
-    "$pkgdir/var/hqplayer/web/favicon.ico"
-    
-     install -Dm644 "$srcdir/var/hqplayer/web/next.svg" \
-    "$pkgdir/var/hqplayer/web/next.svg"
-    
-     install -Dm644 "$srcdir/var/hqplayer/web/pause.svg" \
-    "$pkgdir/var/hqplayer/web/pause.svg"
-    
-     install -Dm644 "$srcdir/var/hqplayer/web/play.svg" \
-    "$pkgdir/var/hqplayer/web/play.svg"
-    
-     install -Dm644 "$srcdir/var/hqplayer/web/prev.svg" \
-    "$pkgdir/var/hqplayer/web/prev.svg"
-    
-     install -Dm644 "$srcdir/var/hqplayer/web/queue.svg" \
-    "$pkgdir/var/hqplayer/web/queue.svg"
-    
-      install -Dm644 "$srcdir/var/hqplayer/web/stop.svg" \
-    "$pkgdir/var/hqplayer/web/stop.svg"
-    
-      install -Dm644 "$srcdir/var/hqplayer/web/config.html" \
-    "$pkgdir/var/hqplayer/web/config.html"
-    
-      install -Dm644 "$srcdir/var/hqplayer/web/convolution.html" \
-    "$pkgdir/var/hqplayer/web/convolution.html"
-    
-      install -Dm644 "$srcdir/var/hqplayer/web/matrix.html" \
-    "$pkgdir/var/hqplayer/web/matrix.html"
-    
-      install -Dm644 "$srcdir/var/hqplayer/web/speakers.html" \
-    "$pkgdir/var/hqplayer/web/speakers.html"
+  rm -rf "$pkgdir/etc/modules-load.d"
+  rm -rf "$pkgdir/etc/udev"
 }
