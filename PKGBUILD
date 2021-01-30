@@ -8,9 +8,10 @@ arch=('any')
 url="https://github.com/BookStackApp/BookStack"
 license=('custom')
 depends=(
-    'php'
-    'php-gd'
-    'php-tidy'
+    'php7'
+    'php7-gd'
+    'php7-tidy'
+    'php7-fpm'
 )
 makedepends=('composer')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/BookStackApp/BookStack/archive/v${pkgver}.tar.gz")
@@ -32,12 +33,12 @@ package() {
     rm -rf "$pkgdir/usr/share/webapps/$pkgname/bootstrap/cache"
 
     mkdir -p "$pkgdir/var/cache/$pkgname"
-    chown http:http "$pkgdir/var/cache/$pkgname"
+#    chown http:http "$pkgdir/var/cache/$pkgname"
     ln -s "/var/cache/$pkgname" "$pkgdir/usr/share/webapps/$pkgname/bootstrap/cache"
 
     mkdir -p "$pkgdir/var/lib"
     mv "$pkgdir/usr/share/webapps/$pkgname/storage" "$pkgdir/var/lib/$pkgname"
-    chown -R http:http "$pkgdir/var/lib/$pkgname"
+#    chown -R http:http "$pkgdir/var/lib/$pkgname"
     chmod 775 "$pkgdir/var/lib/$pkgname"
     ln -s "/var/lib/$pkgname" "$pkgdir/usr/share/webapps/$pkgname/storage"
 }
