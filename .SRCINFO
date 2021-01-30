@@ -1,0 +1,14 @@
+pkgbase = python-pay-by-square
+	pkgdesc = Generate QR codes for by square payments
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/matusf/pay-by-square
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pay-by-square/pay-by-square-0.2.0.tar.gz
+	sha256sums = d8c8e326f9d5cbb932b38aea60e1f7d5e8e85234e7b02fe47240a0acf26857db
+
+pkgname = python-pay-by-square
+
