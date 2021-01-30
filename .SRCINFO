@@ -10,7 +10,7 @@ pkgbase = wmappearance
 	depends = gtk2
 	depends = gtk3
 	source = wmappearance-2021.01.28.tar.gz::https://github.com/TheCynicalTeam/wmappearance/archive/2021.01.28.tar.gz
-	sha256sums = 70632582ecd1e1d3458a189aaf1746c48ce40a6fee89c43fd9147f57db557d79
+	sha256sums = 268d7f8f40f023156b9eec6e2d7460560c1d00a3da09fd8f3c108dc94bf6bad8
 
 pkgname = wmappearance
 	groups = therepoclub
