@@ -3,7 +3,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname='gst-plugins-base-git'
-pkgver=1.16.0.r280.g2c7445b9c
+pkgver=1.18.0.r164.g9ab400e26
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Base Plugins"
 arch=('i686' 'x86_64')
@@ -16,12 +16,12 @@ options=()
 url="http://gstreamer.freedesktop.org/"
 
 conflicts=('gst-plugins-base' 'gst-plugins-base-libs')
-provides=('gst-plugins-base='$pkgver 'gst-plugins-base-libs='$pkgver)
+provides=('gst-plugins-base=$pkgver' 'gst-plugins-base-libs=$pkgver')
 
 pkgdesc="GStreamer Multimedia Framework Base Plugins"
 depends=('gstreamer-git' 'orc' 'libxv' 'opus' 'gdk-pixbuf2'
         'alsa-lib' 'cdparanoia' 'libjpeg-turbo' 'gtk3' 'graphene'
-        'libvisual' 'libvorbis' 'libtheora' 'pango' 'libtremor-svn' 'sdl2' 'qt5-base')
+        'libvisual' 'libvorbis' 'libtheora' 'pango' 'libtremor-git' 'sdl2' 'qt5-base')
 
 source=('git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git'
         'gst-common::git+https://gitlab.freedesktop.org/gstreamer/common.git')
