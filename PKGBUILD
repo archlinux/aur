@@ -4,7 +4,7 @@
 pkgname=kmscon-patched-git
 _gitname=kmscon
 pkgver=8.r39.gc73ccd2
-pkgrel=1
+pkgrel=2
 pkgdesc='Terminal emulator based on Kernel Mode Setting (KMS) (forked and patched version)'
 arch=('x86_64' 'armv7h')
 url='https://github.com/Aetf/kmscon'
@@ -26,8 +26,7 @@ prepare() {
   cd $srcdir/$_gitname
 
   ./autogen.sh --prefix=/usr \
-               --libexecdir=/usr/lib \
-                --disable-wlterm
+               --libexecdir=/usr/lib
 }
 
 build() {
