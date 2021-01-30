@@ -3,13 +3,14 @@
 pkgname=xmlmind-xmleditor
 _pkgname=xxe
 pkgver=9.4.1
-_pkgver=9_4_1
-pkgrel=2
+_pkgver=${pkgver//./_}
+pkgrel=3
 pkgdesc="IDE for editing XML files"
 license=('Custom')
 url="https://www.xmlmind.com/xmleditor"
 arch=('any')
-depends=('java-runtime>=8')
+depends=('java-runtime>=8' 'bash' 'perl')
+optdepends=('cups-pdf: for the ability to print into PDF-files')
 makedepends=('libicns' 'gendesk' 'elinks')
 install=${_pkgname}.install
 source=("http://www.xmlmind.com/xmleditor/_download/xxe-perso-${_pkgver}.zip")
@@ -25,12 +26,14 @@ prepare() {
       --name="XXE" \
       --genericname="XML IDE" \
       --comment="Edit XML files" \
-      --startupnotify=True \
       --exec=xxe \
-      --categories='Development;IDE;Java'
+      --startupnotify=True \
+      --categories='Development;IDE;Java' \
+      --mimetypes='text/xml' \
+      --custom="Keywords=xmlmind
+Comment[de]=XML-Dateien bearbeiten"
 
   # Set Java options with a launch script
-
   cat << EOF > xxe.sh
 #!/bin/sh
 
@@ -43,10 +46,8 @@ prepare() {
 
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
 
-exec /opt/xxe/bin/xxe
+exec /opt/xxe/bin/xxe \$@
 EOF
-
-
 
   # Save license in plain text format
   # (downloading, using consistent headings, removing website navigation stuff and website footer)
@@ -87,15 +88,17 @@ package() {
   ln -s /opt/xxe/legal "${pkgdir}"/usr/share/licenses/${_pkgname}
   ln -s /opt/xxe/legal.txt "${pkgdir}"/usr/share/licenses/${_pkgname}
 
-  # place icons and launcher
+  # place icons
   for size in 16 32 128 256 512; do
       install -Dm644 "xxe_${size}x${size}x32.png" \
         "${pkgdir}"/usr/share/icons/hicolor/${size}x${size}/apps/xxe.png
   done
 
+  # place launcher
   install -Dm755 xxe.sh "${pkgdir}"/usr/bin/xxe
   install -Dm644 xxe.desktop -t "${pkgdir}"/usr/share/applications/
 
+  # place license
   install -Dm644 LICENSE -t "${pkgdir}"/usr/share/licenses/${_pkgname}/
   ln -s ${_pkgname} "${pkgdir}"/usr/share/licenses/${pkgname}
 

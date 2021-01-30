@@ -6,20 +6,20 @@ post_install() {
     echo ">>> https://www.xmlmind.com/xmleditor/license_xxe_perso.html"
     echo ""
     echo ""
-    echo ">>> Localisation files may be available from Options -> Install Add-ons."
-    echo ">>> UI Scaling can be activated from Options -> Preferences -> General."
+    echo ">>> Localisation files may be available from Options -> Install Add-ons"
+    echo ">>> UI Scaling can be activated from Options -> Preferences -> General"
     echo ""
     echo ""
 }
 
 post_upgrade() {
     fix_scaling=$(vercmp 7.4.1-2 $2)
-    if [[ $fix_scaling -lt 0 ]]
+    if [[ $fix_scaling -ge 0 ]]
     then
         echo ""
         echo ">>> The _JAVA_OPTIONS variable is now set at launch to improve the UI-scaling."
         echo ">>> You may want to reconsider enabliung UI-scaling if you had issues."
-        echo ">>> The setting is at Options -> Preferences -> General."
+        echo ">>> The setting is at Options -> Preferences -> General"
         echo ""
     fi
 }

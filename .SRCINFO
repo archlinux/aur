@@ -1,7 +1,7 @@
 pkgbase = xmlmind-xmleditor
 	pkgdesc = IDE for editing XML files
 	pkgver = 9.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.xmlmind.com/xmleditor
 	install = xxe.install
 	arch = any
@@ -10,6 +10,9 @@ pkgbase = xmlmind-xmleditor
 	makedepends = gendesk
 	makedepends = elinks
 	depends = java-runtime>=8
+	depends = bash
+	depends = perl
+	optdepends = cups-pdf: for the ability to print into PDF-files
 	source = http://www.xmlmind.com/xmleditor/_download/xxe-perso-9_4_1.zip
 	sha256sums = 7387309eef8ece02f1379d721991884b7a68d5861d78595cabeaa43d22b3f70a
 
