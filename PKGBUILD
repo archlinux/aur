@@ -1,24 +1,24 @@
-# Contributor: Angelo Theodorou <encelo@gmail.com>
+# Maintainer: Angelo Theodorou <encelo at gmail dot com>
 
 pkgname=ncine-git
-pkgver=r309.627aa39
+pkgver=r334.1b7de7d
 pkgrel=1
-pkgdesc="A multi-platform 2D game engine"
+pkgdesc="A cross-platform 2D game engine"
 arch=('i686' 'x86_64')
 url="http://ncine.github.io"
 license=('MIT')
 depends=('glfw' 'openal' 'libvorbis' 'libwebp' 'lua' 'hicolor-icon-theme')
-makedepends=('git' 'cmake' 'doxygen')
+makedepends=('git' 'cmake')
 conflicts=('ncine')
 provides=('ncine')
 options=(!strip)
-source=('git://github.com/nCine/nCine#branch=develop')
+source=('git://github.com/nCine/nCine')
 md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/nCine"
   ( set -o pipefail
-    git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --tags --long --exact-match 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
@@ -38,7 +38,7 @@ build() {
         -DNCINE_LINKTIME_OPTIMIZATION=ON\
         -DNCINE_AUTOVECTORIZATION_REPORT=OFF\
         -DNCINE_DYNAMIC_LIBRARY=ON\
-        -DNCINE_BUILD_DOCUMENTATION=ON\
+        -DNCINE_BUILD_DOCUMENTATION=OFF\
         -DNCINE_IMPLEMENTATION_DOCUMENTATION=OFF\
         -DNCINE_EMBED_SHADERS=ON\
         -DNCINE_STARTUP_TEST=apptest_camera\
