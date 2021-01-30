@@ -1,7 +1,7 @@
 # Maintainer: Yishen Miao <mys721tx@gmail.com>
 
 pkgname=raspi-gpio-git
-pkgver=d2159a3
+pkgver=r40.d2159a3
 pkgrel=1
 pkgdesc='Raspberry Pi GPIO informaion utility, latest git version'
 arch=('armv6h' 'armv7h' 'aarch64')

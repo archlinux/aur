@@ -1,6 +1,6 @@
 pkgbase = raspi-gpio-git
 	pkgdesc = Raspberry Pi GPIO informaion utility, latest git version
-	pkgver = d2159a3
+	pkgver = r40.d2159a3
 	pkgrel = 1
 	url = https://github.com/RPi-Distro/raspi-gpio
 	arch = armv6h
