@@ -1,8 +1,8 @@
 # Maintainer: osch <oliver@luced.de>
 
 pkgname=lua-llthreads2
-pkgver=0.1.5
-pkgrel=3
+pkgver=0.1.6
+pkgrel=1
 pkgdesc="This is full dropin replacement for llthreads library"
 arch=("i686" "x86_64")
 url="http://github.com/moteus/lua-llthreads2/"
@@ -12,13 +12,7 @@ _luapkg="lua"
 depends=($_luapkg)
 makedepends=("luarocks")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/moteus/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('7399462ea97a22243f4d25d293d4b8b3')
-
-prepare() {
-	cd "$srcdir/$pkgname-$pkgver"
-
-	sed -e "s/lua >= 5.1, < 5\.4/lua >= 5.1, <= 5.4/g" -i "rockspecs/$pkgname-$pkgver-1.rockspec"
-}
+md5sums=('0939a43736e4e2bd83e6cea9ed9eb242')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
