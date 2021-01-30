@@ -8,12 +8,12 @@
 ##
 ## The following variables can be customized at build time. Use env or export to change at your wish
 ##
-##   Example: env _microarchitecture=25 use_numa=n use_tracers=n use_pds=n makepkg -sc
+##   Example: env _microarchitecture=99 use_numa=n use_tracers=n use_pds=n makepkg -sc
 ##
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
-## Valid numbers between: 0 to 42
+## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
-## Good option if your package is for one machine: 42 => native
+## Good option if your package is for one machine: 99 => native
 if [ -z ${_microarchitecture+x} ]; then
   _microarchitecture=0
 fi
@@ -101,7 +101,7 @@ done
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
             'd4f7be41f55d3338cbd8c86f8cbbd80a454487bff195e8e3372f5263fcd6505c'
-            '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
+            '03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134'
             '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
