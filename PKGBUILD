@@ -10,10 +10,10 @@ url="https://rizin.re/"
 license=('GPL3' 'LGPL3')
 makedepends=('git' 'meson' 'ninja')
 depends=('capstone' 'lz4' 'file' 'libzip' 'xxhash' 'libuv')
-provides=("rizin={$pkgver}")
+provides=("rizin=${pkgver}")
 conflicts=("rizin-git")
 source=("${pkgname}-${pkgver}.tar.xz::https://github.com/rizinorg/rizin/releases/download/v${pkgver}/rizin-src-v${pkgver}.tar.xz")
-md5sums=('d57458277af3d7615f727d03e1299376')
+sha256sums=('4fd83662150cecce575e2b55d050a9061cc58c5960eb6280091cb42501a9633b')
 
 build() {
   # this is actually needed to prevent linking against old system-wide r2 libs
