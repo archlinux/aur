@@ -1,0 +1,17 @@
+pkgbase = obs-advanced-scene-switcher
+	pkgdesc = An automated scene switcher for OBS Studio
+	pkgver = 1.8.3
+	pkgrel = 1
+	url = https://github.com/WarmUpTill/SceneSwitcher
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = obs-studio
+	depends = libxss
+	source = obs-advanced-scene-switcher-1.8.3.tar.gz::https://github.com/WarmUpTill/SceneSwitcher/archive/1.8.3.tar.gz
+	source = obs-studio-26.1.0.tar.gz::https://github.com/obsproject/obs-studio/archive/26.1.0.tar.gz
+	sha256sums = ac0460a6c0f8699482f9a707044ef823d5cb34c064582152545eb2b255aba691
+	sha256sums = c015d9bab1075ecf9c66c066328e291a20ef36880958fb3db6486ebc5ca9c6da
+
+pkgname = obs-advanced-scene-switcher
+
