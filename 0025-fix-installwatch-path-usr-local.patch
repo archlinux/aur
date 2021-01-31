@@ -1,0 +1,25 @@
+From 52d2530d7d343e038fe86366e7b8764679973913 Mon Sep 17 00:00:00 2001
+From: Coelacanthus <coelacanthus@outlook.com>
+Date: Sun, 31 Jan 2021 21:58:34 +0800
+Subject: [PATCH] fix installwatch path (/usr/local)
+
+---
+ checkinstallrc-dist | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/checkinstallrc-dist b/checkinstallrc-dist
+index 8b0e32a..e865ad4 100644
+--- a/checkinstallrc-dist
++++ b/checkinstallrc-dist
+@@ -16,7 +16,7 @@
+ DEBUG=0
+ 
+ # Location of the "installwatch" program
+-INSTALLWATCH_PREFIX="/usr/local"
++INSTALLWATCH_PREFIX="/usr"
+ INSTALLWATCH=${INSTALLWATCH_PREFIX}/bin/installwatch
+ 
+ # Location of the makepkg program. "makepak" is the default, and is 
+-- 
+2.30.0
+

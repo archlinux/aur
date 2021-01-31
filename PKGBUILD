@@ -1,7 +1,8 @@
 # Maintainer: Coelacanthus <coelacanthus@outlook.com>
+
 pkgname=checkinstall
 pkgver=1.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Track files modified by an installation script and create a Slackware, RPM or Debian package"
 arch=('i686' 'x86_64')
 url="http://checkinstall.izto.org"
@@ -38,6 +39,7 @@ source=("http://checkinstall.izto.org/files/source/$pkgname-$pkgver.tar.gz"
         '0022-Drop-cases-for-glibc-2.4.patch'
         '0023-fix-usr-sbin-merge-to-usr-bin-in-Arch.patch'
         '0024-using-custom-cflag-and-ldflag.patch'
+        '0025-fix-installwatch-path-usr-local.patch'
         )
 noextract=()
 b2sums=('3faaebe60c0dc40f36de0ed1854817ecc2d11467e63611d79e2300af17af0708c67491fd0c0a947ded89fd6e53bb15faebf9a85445cabb97be6d21e24cdd70a9'
@@ -64,7 +66,8 @@ b2sums=('3faaebe60c0dc40f36de0ed1854817ecc2d11467e63611d79e2300af17af0708c67491f
         '882d01f77fc57d977f2e63440c2b0a9f967a119fad0276bded5b43072880f8a29d163589b16270dcdd383d998973876d96eff4757b50d494a85eb8d292b28e4a'
         'fd919f347978a8ffcdefa3ca11000c80e341e72495d020238cc3dcf00f06f9e0fd77677bc4dee51ea7ffa596a7c305d547a91d63426c8386f6c353ffe07b05f5'
         '8dde83a0cf2d490cc30e2787dd20dbc2d92b764b370002560309296b9592a7329e2b424e973a12b00d92ea89de42e2517bd3a95e6befe6c5f88a29e9793eba8b'
-        '414261dd6eb8112f26e93ea80faba698ea2b42ada99f0c10bceb0e8c1ff0636717b1c922fc9696f59bcb403af0e0ce1863d3e7b9c33643c3db5553379fb8597d')
+        '414261dd6eb8112f26e93ea80faba698ea2b42ada99f0c10bceb0e8c1ff0636717b1c922fc9696f59bcb403af0e0ce1863d3e7b9c33643c3db5553379fb8597d'
+        '6a6ab749dfb14db503133a3ef0a6e3860a20603d87763ed5309469ba8ee8b699acefcba21b11a68ba40f737d0f3964c35d103fb8eb2cb407a4783f1a16d0acf2')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -96,6 +99,9 @@ prepare() {
 	patch -p1 -t -i "$srcdir/0023-fix-usr-sbin-merge-to-usr-bin-in-Arch.patch"
 	
 	patch -p1 -t -i "$srcdir/0024-using-custom-cflag-and-ldflag.patch"
+	
+	# fix checkinstall default find installwatch in /usr/local
+	patch -p1 -t -i "$srcdir/0025-fix-installwatch-path-usr-local.patch"
 	
 	# with 0021-Load-checkinstallrc-from-etc.patch
 	sed "s|CONFDIR=\$(PREFIX)/lib/checkinstall|CONFDIR=$pkgdir/etc|g" -i Makefile
