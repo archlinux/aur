@@ -1,0 +1,13 @@
+pkgbase = please-sudo
+	pkgdesc = A symlink for using please as a drop-in replacement to sudo
+	pkgver = 1
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/please-sudo
+	arch = any
+	license = MIT
+	depends = please
+	provides = sudo
+	conflicts = sudo
+
+pkgname = please-sudo
+
