@@ -6,8 +6,8 @@
 pkgname=dfhack-bin
 _pkgname=dfhack
 pkgver=0.47.04
-_pkgver=$pkgver-r4
-pkgrel=5
+_pkgver=$pkgver-r5
+pkgrel=6
 pkgdesc="memory hacking library for Dwarf Fortress and a set of tools that use it"
 arch=('x86_64' 'i686')
 url="https://dfhack.readthedocs.io/en/stable/"
@@ -22,8 +22,8 @@ source_x86_64=("https://github.com/DFHack/dfhack/releases/download/$_pkgver/dfha
 source=(dfhack.sh
         dfhack-run.sh)
 
-md5sums_i686=('e8ec242f943e35458dc5050b16d4a6be')
-md5sums_x86_64=('69ca29374502a2490e2fb25f0ec7e1fd')
+md5sums_i686=('7dd32d1e6ed5e10b8b7a691b0df8ac00')
+md5sums_x86_64=('22ac18ad8d20fb73fa958ef6181ed34e')
 md5sums=('81f5909c1a32391679f968e40f24d5ca'
          '3853c6f890d3541f710f2c4833a9e696')
 
