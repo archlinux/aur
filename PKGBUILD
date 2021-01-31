@@ -8,56 +8,46 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-git
-pkgver=85.0.4183.121.1.r0.ge46b774
+pkgver=88.0.4324.104.1.r3.ga9140d5
 pkgrel=1
-_launcher_ver=6
-_gcc_patchset=2
+_launcher_ver=7
+_gcc_patchset=3
 _pkgname=$(echo $pkgname | cut -d\- -f1-2)
 _pkgver=$(echo $pkgver | cut -d\. -f1-4)
 # ungoogled chromium variables
 _uc_ver=master
 _uc_usr=Eloston
-_uc_sum='SKIP'
-_uc_url="$_pkgname-$_uc_ver::git://github.com/$_uc_usr/ungoogled-chromium.git"
 pkgdesc="A lightweight approach to removing Google web service dependency (master branch)"
 arch=('x86_64')
 url="https://github.com/Eloston/ungoogled-chromium"
 license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
-         'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
+         'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'python2' 'gperf' 'mesa' 'ninja' 'nodejs' 'git' 'libva'
-             'libpipewire02' 'clang' 'lld' 'gn-m85' 'java-runtime-headless'
+             'libpipewire02' 'clang' 'lld' 'gn' 'java-runtime-headless'
              'python2-setuptools')
-optdepends=('pepper-flash: support for Flash content'
-            'libpipewire02: WebRTC desktop sharing under Wayland'
+optdepends=('libpipewire02: WebRTC desktop sharing under Wayland'
             'libva: hardware-accelerated video decode [experimental]'
             'kdialog: needed for file dialogs in KDE'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: for storing passwords in KWallet on KDE desktops')
 provides=('chromium')
 conflicts=('chromium')
-install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$_pkgver.tar.xz
-        $_uc_url
-        chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
+        $_pkgname-$_uc_ver::git://github.com/$_uc_usr/ungoogled-chromium.git
+        https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         chromium-drirc-disable-10bpc-color-configs.conf
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
-        media-Set-allocation-limit-compatible-with-FFmpeg-4.3.patch
-        intel-vp9-quirk.patch
         wayland-egl.patch
-        nvidia-vdpau.patch
-        chromium-skia-harmony.patch)
-sha256sums=('e018547e54566410fb365d9f3dae10037c30fca5debe6ba8baceef3ad3b03d28'
-            $_uc_sum
-            '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
+        subpixel-anti-aliasing-in-FreeType-2.8.1.patch)
+sha256sums=('7dbdda0df8955811ada33a9505cad2f2e17f007827c435b591ba571c5dcd0147'
+            'SKIP'
+            '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
-            '2194fe22b9e5ccdc4a86da4e3572214f670c561486671f57c90636fd3cbfa43e'
-            '0f041d655335cd2a4773ae7ca5e301a0ff12c6c53f57b7cf6651c268e0420a1c'
-            'a25fc6fccb84fd0a58a799661cd9c4ffeb2731fa49268f43aa7108f1542c5af6'
+            'e5a60a4c9d0544d3321cc241b4c7bd4adb0a885f090c6c6c21581eac8e3b4ba9'
             '34d08ea93cb4762cb33c7cffe931358008af32265fc720f2762f0179c3973574'
-            '8095bf73afbca7c2b07306c5b4dd8f79b66e1053fa4e58b07f71ef938be603f1'
-            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
+            '1e2913e21c491d546e05f9b4edf5a6c7a22d89ed0b36ef692ca6272bcd5faec6')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -103,24 +93,17 @@ prepare() {
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/*.cc
 
-  # https://crbug.com/1095962
-  patch -Np1 -i ../media-Set-allocation-limit-compatible-with-FFmpeg-4.3.patch
+  # Upstream fixes
+  patch -Np1 -d third_party/skia <../subpixel-anti-aliasing-in-FreeType-2.8.1.patch
 
   # Fixes for building with libstdc++ instead of libc++
-  patch -Np1 -i ../patches/chromium-85-NearbyShareEncryptedMetadataKey-include.patch
-  patch -Np1 -i ../patches/chromium-85-sim_hash-include.patch
-
-  # https://crbug.com/skia/6663#c10
-  patch -Np0 -i ../chromium-skia-harmony.patch
-
-  # Intel KabyLake/GeminiLake VP9 quirk
-  patch -Np1 -i ../intel-vp9-quirk.patch
+  patch -Np1 -i ../patches/chromium-87-openscreen-include.patch
+  patch -Np1 -i ../patches/chromium-88-CompositorFrameReporter-dcheck.patch
+  patch -Np1 -i ../patches/chromium-88-ideographicSpaceCharacter.patch
+  patch -Np1 -i ../patches/chromium-88-AXTreeFormatter-include.patch
 
   # Wayland/EGL regression (crbug #1071528 #1071550)
   patch -Np1 -i ../wayland-egl.patch
-
-  # NVIDIA vdpau-wrapper
-  patch -Np1 -i ../nvidia-vdpau.patch
 
   # Ungoogled Chromium changes
   _ungoogled_repo="$srcdir/$_pkgname-$_uc_ver"
@@ -208,7 +191,7 @@ build() {
   CXXFLAGS+=' -Wno-unknown-warning-option'
 
   msg2 'Configuring Chromium'
-  gn-m85 gen out/Release --args="${_flags[*]}" --script-executable=/usr/bin/python2
+  gn gen out/Release --args="${_flags[*]}" --script-executable=python2
   msg2 'Building Chromium'
   ninja -C out/Release chrome chrome_sandbox chromedriver
 }
