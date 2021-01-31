@@ -24,6 +24,7 @@ pkgver() {
 }
 
 build() {
+  export CCACHE_BASEDIR="$srcdir"
   make -C ${pkgname} CC=gcc-8 CXX=g++-8
 }
 
