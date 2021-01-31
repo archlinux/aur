@@ -1,6 +1,6 @@
 pkgbase = python-claripy-git
 	pkgdesc = An abstraction layer for constraint solvers.
-	pkgver = 8.19.2.4.r734.050ffe4
+	pkgver = 8.20.7.27.r1961.db253a68
 	pkgrel = 1
 	url = https://github.com/angr/claripy
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-claripy-git
 	depends = python
 	depends = python-cachetools
 	depends = python-future
-	depends = python-z3-solver-angr
+	depends = python-z3
 	provides = python-claripy
 	conflicts = python-claripy
 	source = python-claripy-git::git+https://github.com/angr/claripy.git#branch=master
