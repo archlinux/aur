@@ -1,0 +1,18 @@
+pkgbase = aparte-git
+	pkgdesc = Simple XMPP console client written in Rust and inspired by Profanity.
+	pkgver = v0.1.0.r139.gd0315ea
+	pkgrel = 1
+	url = https://github.com/paulfariello/aparte
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	license = MPL2
+	makedepends = cargo
+	provides = aparte
+	conflicts = aparte
+	source = aparte::git+https://github.com/paulfariello/aparte#branch=develop
+	sha256sums = SKIP
+
+pkgname = aparte-git
+
