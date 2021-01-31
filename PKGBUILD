@@ -32,6 +32,7 @@ check() {
 package() {
     cd $_pkgname
 
-    install -Dm755 "target/release/runas" "$pkgdir/usr/bin/runas"
+    mkdir -p "$pkgdir/usr/bin"
+    cp "target/release/runas" "$pkgdir/usr/bin/"
     chmod 4755 "$pkgdir/usr/bin/runas"
 }
