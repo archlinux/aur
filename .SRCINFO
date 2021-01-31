@@ -1,7 +1,7 @@
 pkgbase = cups-nosystemd
 	pkgdesc = The CUPS Printing System - daemon package
 	pkgver = 2.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cups.org/
 	install = cups-nosystemd.install
 	arch = i686
@@ -19,6 +19,7 @@ pkgbase = cups-nosystemd
 	makedepends = avahi
 	makedepends = gnutls
 	makedepends = inetutils
+	makedepends = libxcrypt
 	depends = acl
 	depends = pam
 	depends = libcups>=2.3.3
@@ -27,6 +28,7 @@ pkgbase = cups-nosystemd
 	depends = dbus
 	depends = hicolor-icon-theme
 	depends = libpaper
+	optdepends = ipp-usb: allows to send HTTP requests via a USB connection on devices without Ethernet or WiFi connections
 	optdepends = xdg-utils: xdg .desktop file support
 	optdepends = colord: for ICC color profile support
 	optdepends = logrotate: for logfile rotation support

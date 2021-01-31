@@ -3,7 +3,7 @@
 
 pkgname="cups-nosystemd"
 pkgver=2.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
 license=('Apache' 'custom')
@@ -12,8 +12,9 @@ groups=('eudev-base')
 depends=('acl' 'pam' "libcups>=${pkgver}" 'cups-filters' 'bc'
          'dbus' 'hicolor-icon-theme' 'libpaper')
 makedepends=('libtiff>=4.0.0' 'libpng>=1.5.7' 'xdg-utils' 'krb5' 'xinetd'
-             'gzip' 'autoconf' 'avahi' 'gnutls' 'inetutils')
-optdepends=('xdg-utils: xdg .desktop file support'
+             'gzip' 'autoconf' 'avahi' 'gnutls' 'inetutils' 'libxcrypt')
+optdepends=('ipp-usb: allows to send HTTP requests via a USB connection on devices without Ethernet or WiFi connections'
+            'xdg-utils: xdg .desktop file support'
             'colord: for ICC color profile support'
             'logrotate: for logfile rotation support'
             'cups-openrc: cups openrc initscript')
