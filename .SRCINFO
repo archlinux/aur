@@ -1,0 +1,16 @@
+pkgbase = obs-audio-pan-filter
+	pkgdesc = This is a simple plugin to control stereo pan of audio source in OBS Studio
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/WarmUpTill/SceneSwitcher
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = obs-studio
+	source = obs-audio-pan-filter-0.1.0.tar.gz::https://github.com/norihiro/obs-audio-pan-filter/archive/0.1.0.tar.gz
+	source = obs-studio-26.1.0.tar.gz::https://github.com/obsproject/obs-studio/archive/26.1.0.tar.gz
+	sha256sums = c01c168d2e45250274a38c8c7ab7e409aa9c576432309770e2acc77024f36cdd
+	sha256sums = c015d9bab1075ecf9c66c066328e291a20ef36880958fb3db6486ebc5ca9c6da
+
+pkgname = obs-audio-pan-filter
+
