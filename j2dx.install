@@ -1,0 +1,15 @@
+post_install() {
+    echo Adding group uinput
+    groupadd uinput
+    echo Add your user to the group uinput by 
+    echo usermod -aG uinput \$\(whoami\)
+}
+post_upgrade() {
+    echo If you have permission errors while running 
+    echo Add your user to the group uinput by running
+    echo usermod -aG uinput \$\(whoami\)
+}
+post_remove() {
+    echo If you do not use the group uinput remember to remove it by
+    echo groupdel uinput
+}

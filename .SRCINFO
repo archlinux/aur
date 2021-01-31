@@ -1,0 +1,18 @@
+pkgbase = j2dx-git
+	pkgdesc = Joy2DroidX server for linux
+	pkgver = 23.r692dcd3
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/OzymandiasTheGreat/Joy2DroidX-server
+	install = j2dx.install
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python-uinput
+	provides = Joy2DroidX-server
+	conflicts = Joy2DroidX-server
+	source = git://github.com/OzymandiasTheGreat/Joy2DroidX-server
+	sha1sums = SKIP
+
+pkgname = j2dx-git
+
