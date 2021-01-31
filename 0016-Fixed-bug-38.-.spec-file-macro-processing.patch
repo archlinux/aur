@@ -1,0 +1,31 @@
+From 2826cbb5fe12c025b8136938113fc24719fdd505 Mon Sep 17 00:00:00 2001
+From: Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>
+Date: Mon, 29 Dec 2014 17:42:17 -0600
+Subject: [PATCH 16/20] Fixed bug #38. .spec file macro processing.
+
+Added patch from Santtu Lakkala for expanding .spec file macro definitions.
+---
+ checkinstall.in | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/checkinstall.in b/checkinstall.in
+index 826bcf1..21ad259 100755
+--- a/checkinstall.in
++++ b/checkinstall.in
+@@ -400,6 +400,13 @@ function getparameter () {
+    RES=`egrep "$1" < ${SPEC_PATH} \
+     | cut -f2 -d: | sed 's/^ *//g' | sed 's/ *$//g' `
+    shift
++   while echo "$RES" | egrep -q '(^|[^%])%[a-zA-Z0-9]'; do
++      VAR=`echo "$RES" | sed 's/\(^\|^.*[^%]\)%\([a-zA-Z0-9]*\).*$/\2/'`
++      egrep -q "^%define\s+$VAR\s" < ${SPEC_PATH} || break
++      VAL=`egrep "^%define\s+$VAR\s" < ${SPEC_PATH} \
++	 | awk '{ print $3 }'`
++      RES=`echo "$RES" | sed 's/\(^\|[^%]\)%'"$VAR/"'\1'"$VAL/g"`
++   done
+    echo "$RES" | sed 's/^ *//g' | sed 's/ *$//g' 
+ 
+ }
+-- 
+2.30.0
+

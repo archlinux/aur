@@ -1,0 +1,29 @@
+From 18fb416b0b1ed8e4d6652958acd786ea4bfa813f Mon Sep 17 00:00:00 2001
+From: Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>
+Date: Mon, 24 Nov 2014 18:56:11 -0600
+Subject: [PATCH 08/20] Fixed glibc minor version handling
+
+---
+ installwatch/create-localdecls | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/installwatch/create-localdecls b/installwatch/create-localdecls
+index 0cb3e27..407e755 100755
+--- a/installwatch/create-localdecls
++++ b/installwatch/create-localdecls
+@@ -109,9 +109,9 @@ if test "$VERSION" = 'libc.so.6' ; then
+ 			echo '#define GLIBC_MINOR 13' >> $OUTFILE
+ 			SUBVERSION='glibc-2.13' ;;
+ 		*)
+-			echo 'Treated as glibc >= 2.1 (finger crossed)'
+-			echo '#define GLIBC_MINOR 1' >> $OUTFILE
+-			SUBVERSION='glibc-2.1' ;;
++			echo 'Treated as glibc >= 2.13 (finger crossed)'
++			echo '#define GLIBC_MINOR 13' >> $OUTFILE
++			SUBVERSION='glibc-2.13' ;;
+ 	        esac
+ 		;;
+ 	esac
+-- 
+2.30.0
+

@@ -1,0 +1,30 @@
+From 78adcec9b0dfdcf3462d72f3070974c8e5ca005c Mon Sep 17 00:00:00 2001
+From: Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>
+Date: Fri, 30 Dec 2016 14:42:18 -0600
+Subject: [PATCH 19/20] Fixed bug #35: Directories in /etc are incorrectly
+ included in debian/conffiles
+
+First reported and fixed by muzso@muzso.hu, a bug in the fix was
+later spotted and fixed by Brian Morton.
+---
+ checkinstall.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/checkinstall.in b/checkinstall.in
+index 3c34431..1771522 100755
+--- a/checkinstall.in
++++ b/checkinstall.in
+@@ -2625,8 +2625,8 @@ if [ -f postremove-pak ]; then
+ fi
+ 
+ # Tag files in /etc to be conffiles
+-find $BUILD_DIR/etc -type f 2> /dev/null | sed -e "s,$BUILD_DIR,," | \
+-	grep -v '^/etc$' > $BUILD_DIR/DEBIAN/conffiles
++find -L $BUILD_DIR/etc -type f 2> /dev/null | sed -e "s,$BUILD_DIR,," \
++	> $BUILD_DIR/DEBIAN/conffiles
+ 
+ # The package will be saved here (ignores <epoch>: prefix):
+ DEBPKG="${DIRECTORIO_FUENTE}/${NAME}_`echo ${VERSION} | sed -e 's/^[0123456789]*://'`-${RELEASE}_${ARCHITECTURE}.deb"
+-- 
+2.30.0
+

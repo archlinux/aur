@@ -1,0 +1,41 @@
+From 20d5a6c9c4670d73c45483e5529c7f0078d3ac30 Mon Sep 17 00:00:00 2001
+From: Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>
+Date: Sat, 21 Feb 2015 16:38:10 -0600
+Subject: [PATCH 17/20] Fixed bug #112: make install fails on Fedora 21.
+
+Also made minor improvements to the Makefile.
+---
+ Makefile | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 18e260d..71e4da3 100644
+--- a/Makefile
++++ b/Makefile
+@@ -27,18 +27,19 @@ install: all
+ 	$(MAKE) -C installwatch install
+ 	
+ 	mkdir -p $(BINDIR)
++	mkdir -p $(LCDIR)
+ 	install -m 0755 -o root -g root checkinstall makepak $(BINDIR)
+ 	for file in locale/*.mo ; do \
+-		LANG=`echo $$file | sed -e 's|locale/checkinstall-||' \
++		CKLNG=`echo $$file | sed -e 's|locale/checkinstall-||' \
+ 			-e 's|\.mo||'` && \
+-		mkdir -p $(LCDIR)/$${LANG}/LC_MESSAGES && \
+-		cp $$file $(LCDIR)/$${LANG}/LC_MESSAGES/checkinstall.mo || \
++		mkdir -p $(LCDIR)/$${CKLNG}/LC_MESSAGES && \
++		cp $$file $(LCDIR)/$${CKLNG}/LC_MESSAGES/checkinstall.mo || \
+ 		exit 1 ; \
+ 	done
+ 	
+ 	mkdir -p $(CONFDIR)
+ 	install -m644  checkinstallrc-dist $(CONFDIR)
+-	if ! [ -f $(CONFDIR)/checkinstallrc ]; then \
++	@if ! [ -f $(CONFDIR)/checkinstallrc ]; then \
+ 		cp $(CONFDIR)/checkinstallrc-dist $(CONFDIR)/checkinstallrc; \
+ 	else \
+ 		echo; \
+-- 
+2.30.0
+

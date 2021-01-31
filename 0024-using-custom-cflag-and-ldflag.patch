@@ -1,0 +1,29 @@
+From 6beb3a86c459a9fc2d27a4c538286b199965a267 Mon Sep 17 00:00:00 2001
+From: Coelacanthus <coelacanthus@outlook.com>
+Date: Sun, 31 Jan 2021 21:24:01 +0800
+Subject: [PATCH 2/2] using custom cflag and ldflag
+
+---
+ installwatch/Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/installwatch/Makefile b/installwatch/Makefile
+index 4c7eb36..cf1be2f 100644
+--- a/installwatch/Makefile
++++ b/installwatch/Makefile
+@@ -16,10 +16,10 @@ LIBDIR=$(PREFIX)/lib
+ all: installwatch.so
+ 
+ installwatch.so: installwatch.o
+-	ld -shared -o installwatch.so installwatch.o -ldl -lc
++	ld -znow -shared -o installwatch.so installwatch.o -ldl -lc
+ 
+ installwatch.o: installwatch.c localdecls.h
+-	gcc -Wall -c -D_GNU_SOURCE -DPIC -fPIC -D_REENTRANT -DVERSION=\"$(VERSION)\" installwatch.c
++	gcc $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -Wall -c -g -D_GNU_SOURCE -DPIC -fPIC -D_REENTRANT -DVERSION=\"$(VERSION)\" installwatch.c
+ 
+ localdecls.h: create-localdecls
+ 	./create-localdecls
+-- 
+2.30.0
+

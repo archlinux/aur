@@ -1,0 +1,53 @@
+From cc3457e8b2f1bbdc9d59da5f3cdb6df5ebf13c77 Mon Sep 17 00:00:00 2001
+From: Coelacanthus <coelacanthus@outlook.com>
+Date: Sun, 31 Jan 2021 21:21:30 +0800
+Subject: [PATCH 1/2] fix: /usr/sbin merge to /usr/bin in Arch
+
+---
+ Makefile            | 2 +-
+ checkinstall.in     | 2 +-
+ checkinstallrc-dist | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 71e4da3..b8fd5f2 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2,7 +2,7 @@
+ 
+ # Where to install.
+ PREFIX=/usr/local
+-BINDIR=$(PREFIX)/sbin
++BINDIR=$(PREFIX)/bin
+ LCDIR=$(PREFIX)/lib/checkinstall/locale
+ CONFDIR=$(PREFIX)/lib/checkinstall
+ 
+diff --git a/checkinstall.in b/checkinstall.in
+index 66c9cd0..178e418 100755
+--- a/checkinstall.in
++++ b/checkinstall.in
+@@ -902,7 +902,7 @@ shift
+ ! [ "$INSTALLWATCH" ] && INSTALLWATCH=${INSTALLWATCH_PREFIX}/bin/installwatch
+ 
+ # Which makepkg to use
+-! [ "$MAKEPKG" ] && MAKEPKG=/sbin/makepkg
++! [ "$MAKEPKG" ] && MAKEPKG=/bin/makepkg
+ 
+ # Default MAKEPKG flags
+ ! [ "$MAKEPKG_FLAGS" ] && MAKEPKG_FLAGS="-l y -c n"
+diff --git a/checkinstallrc-dist b/checkinstallrc-dist
+index d4feb4e..8b0e32a 100644
+--- a/checkinstallrc-dist
++++ b/checkinstallrc-dist
+@@ -23,7 +23,7 @@ INSTALLWATCH=${INSTALLWATCH_PREFIX}/bin/installwatch
+ # included with checkinstall. If you want to use Slackware's native "makepkg"
+ # then set this to "makepkg"
+ 
+-MAKEPKG=/sbin/makepkg
++MAKEPKG=/bin/makepkg
+ 
+ # makepkg optional flags. These are recommended if running a newer Slackware
+ # version: "-l y -c n"
+-- 
+2.30.0
+

@@ -1,0 +1,72 @@
+From 6c5d831c75f9fcb9680f55cd473d6a2b8a9a9895 Mon Sep 17 00:00:00 2001
+From: Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>
+Date: Mon, 24 Nov 2014 19:34:39 -0600
+Subject: [PATCH 10/20] Support for the Makefile PREFIX variable
+
+Moved checkinstall to checkinstall.in. Now checkinstall is created
+when running "make".
+---
+ Makefile                        | 5 +++--
+ checkinstall => checkinstall.in | 5 ++---
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+ rename checkinstall => checkinstall.in (99%)
+
+diff --git a/Makefile b/Makefile
+index 2e28adc..18e260d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -19,6 +19,7 @@ all:
+ 			;; \
+ 		esac ; \
+ 	done	
++	sed 's%MAKEFILE_PREFIX%$(PREFIX)%g' checkinstall.in > checkinstall
+ 	$(MAKE) -C installwatch
+ 	
+ install: all
+@@ -26,7 +27,7 @@ install: all
+ 	$(MAKE) -C installwatch install
+ 	
+ 	mkdir -p $(BINDIR)
+-	install checkinstall makepak $(BINDIR)
++	install -m 0755 -o root -g root checkinstall makepak $(BINDIR)
+ 	for file in locale/*.mo ; do \
+ 		LANG=`echo $$file | sed -e 's|locale/checkinstall-||' \
+ 			-e 's|\.mo||'` && \
+@@ -55,7 +56,7 @@ install: all
+ 	fi
+ 	
+ clean:
+-	for file in locale/checkinstall-*.mo ; do \
++	for file in locale/checkinstall-*.mo checkinstall ; do \
+ 		rm -f $${file} ; \
+ 	done
+ 	$(MAKE) -C installwatch clean
+diff --git a/checkinstall b/checkinstall.in
+similarity index 99%
+rename from checkinstall
+rename to checkinstall.in
+index cc0ad66..021d040 100755
+--- a/checkinstall
++++ b/checkinstall.in
+@@ -61,8 +61,7 @@ function followlinks () {
+     fi
+ }
+ 
+-INSTALLDIR=`followlinks "$0"`
+-INSTALLDIR=`dirname "$INSTALLDIR"`/..
++INSTALLDIR=MAKEFILE_PREFIX
+ 
+ # gettext variables
+ export TEXTDOMAINDIR="$INSTALLDIR"/lib/checkinstall/locale
+@@ -492,7 +491,7 @@ function copy_dir_hierarchy {
+ ckversion
+ echo
+ 
+-CHECKINSTALLRC=${CHECKINSTALLRC:-${INSTALLDIR}/checkinstallrc}
++CHECKINSTALLRC=${CHECKINSTALLRC:-${INSTALLDIR}/lib/checkinstall/checkinstallrc}
+ if ! [ -f $CHECKINSTALLRC ]; then
+    echog "The checkinstallrc file was not found at:\n$CHECKINSTALLRC"
+    echo
+-- 
+2.30.0
+

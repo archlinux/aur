@@ -1,0 +1,22 @@
+From: Felipe Sateler <fsateler@gmail.com>
+Date: Thu, 15 Apr 2010 14:47:45 -0400
+Subject: [PATCH] Load checkinstallrc from /etc
+
+---
+ checkinstall |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/checkinstall.in b/checkinstall.in
+index d2ba87e..aeae91e 100755
+--- a/checkinstall.in
++++ b/checkinstall.in
+@@ -500,7 +500,7 @@ function copy_dir_hierarchy {
+ ckversion
+ echo
+ 
+-CHECKINSTALLRC=${CHECKINSTALLRC:-${INSTALLDIR}/lib/checkinstall/checkinstallrc}
++CHECKINSTALLRC=${CHECKINSTALLRC:-/etc/checkinstallrc}
+ if ! [ -f $CHECKINSTALLRC ]; then
+    echog "The checkinstallrc file was not found at:\n$CHECKINSTALLRC"
+    echo
+-- 

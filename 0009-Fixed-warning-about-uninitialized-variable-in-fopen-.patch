@@ -1,0 +1,26 @@
+From cfaaa3c7bb95068eb0859323988cc7da2a885da3 Mon Sep 17 00:00:00 2001
+From: Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>
+Date: Mon, 24 Nov 2014 18:57:08 -0600
+Subject: [PATCH 09/20] Fixed warning about uninitialized variable in fopen()
+ handler
+
+---
+ installwatch/installwatch.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/installwatch/installwatch.c b/installwatch/installwatch.c
+index 8004b5b..e13c9d8 100644
+--- a/installwatch/installwatch.c
++++ b/installwatch/installwatch.c
+@@ -2554,6 +2554,8 @@ FILE *fopen(const char *pathname, const char *mode) {
+ 	if (!libc_handle)
+ 		initialize();
+ 
++        result = NULL;
++
+ #if DEBUG
+ 	debug(2,"fopen(%s,%s)\n",pathname,mode);
+ #endif
+-- 
+2.30.0
+

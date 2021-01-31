@@ -1,0 +1,177 @@
+From 4bb8c9fed4d4b2f8828282f17727dbc513ced45f Mon Sep 17 00:00:00 2001
+From: Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>
+Date: Sun, 28 Dec 2014 14:09:23 -0600
+Subject: [PATCH 12/20] Fixed bug #110. create-localdecls correctly identifies
+ newer glibc versions.
+
+---
+ installwatch/Makefile          |  2 +-
+ installwatch/create-localdecls | 92 +++++++++-------------------------
+ installwatch/installwatch.c    |  2 +-
+ installwatch/libcfiletest.c    |  4 ++
+ installwatch/libctest.c        |  8 ++-
+ 5 files changed, 35 insertions(+), 73 deletions(-)
+ create mode 100644 installwatch/libcfiletest.c
+
+diff --git a/installwatch/Makefile b/installwatch/Makefile
+index ae34fc1..4c7eb36 100644
+--- a/installwatch/Makefile
++++ b/installwatch/Makefile
+@@ -40,7 +40,7 @@ uninstall:
+ 	rm -f $(BINDIR)/installwatch
+ 	
+ clean:
+-	rm -f *~ *.bak *.o installwatch.so core localdecls.h libctest test-installwatch
++	rm -f *~ *.bak *.o installwatch.so core localdecls.h libcfiletest libctest test-installwatch
+ 
+ tarball: clean
+ 	tar -czvC .. -f ../installwatch-$(VERSION).tar.gz installwatch-$(VERSION)
+diff --git a/installwatch/create-localdecls b/installwatch/create-localdecls
+index 407e755..533a378 100755
+--- a/installwatch/create-localdecls
++++ b/installwatch/create-localdecls
+@@ -43,78 +43,32 @@ fi
+ ###
+ ###
+ 
+-echo -n 'Checking libc version... '
+-gcc -Wall -o libctest libctest.c
+-VERSION=`ldd libctest | grep libc\\.so | awk '{print $1}'`
+-rm libctest
+-echo $VERSION
+-echo "#define LIBC_VERSION \"$VERSION\"" >> $OUTFILE
+-if test "$VERSION" = 'libc.so.5' ; then
++echo -n 'Checking which libc whe are using... '
++gcc -Wall -o libcfiletest libcfiletest.c
++LIBC_FILE=`ldd libcfiletest | grep libc\\.so | awk '{print $1}'`
++echo $LIBC_FILE
++echo "#define LIBC_FILE \"$LIBC_FILE\"" >> $OUTFILE
++if test "$LIBC_FILE" = 'libc.so.5' ; then
+ 	echo '#define BROKEN_RTLD_NEXT' >> $OUTFILE
+ 	echo '#define LIBC 5' >> $OUTFILE
+-fi
++else
++	if test "$LIBC_FILE" = 'libc.so.6' ; then
++		echo -n 'Checking libc version... '
++		gcc -Wall -o libctest libctest.c
++		LIBC_VERSION=`./libctest`
++		echo $LIBC_VERSION
++		echo "#define LIBC_VERSION \"$LIBC_VERSION\"" >> $OUTFILE
++		echo -en 'glibc >= 2 found\nChecking glibc subversion... '
++		OsLibcMajor=`echo $LIBC_VERSION | cut -f1 -d.`
++		OsLibcMinor=`echo $LIBC_VERSION | cut -f2 -d.`
++		echo "#define GLIBC_MAJOR $OsLibcMajor" >> $OUTFILE
++		echo "#define GLIBC_MINOR $OsLibcMinor" >> $OUTFILE
++		echo $OsLibcMinor
++	else
++		echo "Unknown libc found ($LIBC_FILE). Please update the create-localdecls script."
++		exit 1
++	fi
+ 
+-if test "$VERSION" = 'libc.so.6' ; then
+-	echo -n 'Checking glibc subversion... '
+-	tmp="`ldd /bin/sh | grep libc.so 2> /dev/null`"
+-	LibcPath=`expr "$tmp" : '[^/]*\(/[^ ]*\)'`
+-	tmp="`strings $LibcPath | grep -i 'c library'`"
+-	OsLibcMajor=`expr "$tmp" : '.* \([0-9][0-9]*\)'`
+-	OsLibcMinor=`expr "$tmp" : '.* [0-9][0-9]*\.\([0-9][0-9]*\)'`
+-	case "$OsLibcMajor" in
+-	2)
+-		# 2 is the glibc version
+-		echo "JH OsLibcMinor is $OsLibcMinor"
+-		case "$OsLibcMinor" in
+-		0)
+-			echo '#define GLIBC_MINOR 0' >> $OUTFILE
+-			SUBVERSION='glibc-2.0' ;;
+-		1)
+-			echo '#define GLIBC_MINOR 1' >> $OUTFILE
+-			SUBVERSION='glibc-2.1' ;;
+-		2)
+-			echo '#define GLIBC_MINOR 2' >> $OUTFILE
+-			SUBVERSION='glibc-2.2' ;;
+-		3)
+-			echo '#define GLIBC_MINOR 3' >> $OUTFILE
+-			SUBVERSION='glibc-2.3' ;;
+-		4)
+-			echo '#define GLIBC_MINOR 4' >> $OUTFILE
+-			SUBVERSION='glibc-2.4' ;;
+-		5)
+-			echo '#define GLIBC_MINOR 5' >> $OUTFILE
+-			SUBVERSION='glibc-2.5' ;;
+-		6)
+-			echo '#define GLIBC_MINOR 6' >> $OUTFILE
+-			SUBVERSION='glibc-2.6' ;;
+-		7)
+-			echo '#define GLIBC_MINOR 7' >> $OUTFILE
+-			SUBVERSION='glibc-2.7' ;;
+-		8)
+-			echo '#define GLIBC_MINOR 8' >> $OUTFILE
+-			SUBVERSION='glibc-2.8' ;;
+-		9)
+-			echo '#define GLIBC_MINOR 9' >> $OUTFILE
+-			SUBVERSION='glibc-2.9' ;;
+-		10)
+-			echo '#define GLIBC_MINOR 10' >> $OUTFILE
+-			SUBVERSION='glibc-2.10' ;;
+-		11)
+-			echo '#define GLIBC_MINOR 11' >> $OUTFILE
+-			SUBVERSION='glibc-2.11' ;;
+-		12)
+-			echo '#define GLIBC_MINOR 12' >> $OUTFILE
+-			SUBVERSION='glibc-2.12' ;;
+-		13)
+-			echo '#define GLIBC_MINOR 13' >> $OUTFILE
+-			SUBVERSION='glibc-2.13' ;;
+-		*)
+-			echo 'Treated as glibc >= 2.13 (finger crossed)'
+-			echo '#define GLIBC_MINOR 13' >> $OUTFILE
+-			SUBVERSION='glibc-2.13' ;;
+-	        esac
+-		;;
+-	esac
+ fi
+ 
+ echo >> $OUTFILE
+diff --git a/installwatch/installwatch.c b/installwatch/installwatch.c
+index e13c9d8..8e6c616 100644
+--- a/installwatch/installwatch.c
++++ b/installwatch/installwatch.c
+@@ -351,7 +351,7 @@ static void initialize(void) {
+ 
+ 	#ifdef BROKEN_RTLD_NEXT
+ //        	printf ("RTLD_LAZY");
+-        	libc_handle = dlopen(LIBC_VERSION, RTLD_LAZY);
++        	libc_handle = dlopen(LIBC_FILE, RTLD_LAZY);
+ 	#else
+  //       	printf ("RTLD_NEXT");
+         	libc_handle = RTLD_NEXT;
+diff --git a/installwatch/libcfiletest.c b/installwatch/libcfiletest.c
+new file mode 100644
+index 0000000..f6697cc
+--- /dev/null
++++ b/installwatch/libcfiletest.c
+@@ -0,0 +1,4 @@
++int main(void) {
++       return 0;
++}
++
+diff --git a/installwatch/libctest.c b/installwatch/libctest.c
+index 5fc92b5..c7ecac0 100644
+--- a/installwatch/libctest.c
++++ b/installwatch/libctest.c
+@@ -1,6 +1,10 @@
+ /* Dummy program to check your libc version */
+ 
+-int main(void) {
+-	return 0;
++#include <stdio.h>
++#include <gnu/libc-version.h>
++
++int main (void) {
++   puts (gnu_get_libc_version ());
++   return 0;
+ }
+ 
+-- 
+2.30.0
+

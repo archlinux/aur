@@ -1,0 +1,21 @@
+From: Stephen Gelman <ssgelm@debian.org>
+Date: Tue, 9 Jul 2019 20:31:52 -0500
+Subject: Build with dh CLAGS
+
+This allows proper hardening to be done
+---
+--- a/installwatch/Makefile
++++ b/installwatch/Makefile
+@@ -16,10 +16,10 @@
+ all: installwatch.so
+ 
+ installwatch.so: installwatch.o
+-	ld -shared -o installwatch.so installwatch.o -ldl -lc
++	ld -znow -shared -o installwatch.so installwatch.o -ldl -lc
+ 
+ installwatch.o: installwatch.c localdecls.h
+-	gcc -Wall -c -D_GNU_SOURCE -DPIC -fPIC -D_REENTRANT -DVERSION=\"$(VERSION)\" installwatch.c
++	gcc $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -Wall -c -g -D_GNU_SOURCE -DPIC -fPIC -D_REENTRANT -DVERSION=\"$(VERSION)\" installwatch.c
+ 
+ localdecls.h: create-localdecls
+ 	./create-localdecls

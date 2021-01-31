@@ -1,0 +1,49 @@
+From 67ee6db42e15064ba3c6ff289359a33aeea3cf86 Mon Sep 17 00:00:00 2001
+From: Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>
+Date: Mon, 20 Sep 2010 14:20:01 -0500
+Subject: [PATCH 03/20] Fixed bug #3 - Removed extra okfail and fixed spanish
+ translation.
+
+---
+ checkinstall              | 1 -
+ locale/checkinstall-es.po | 8 ++++----
+ 2 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/checkinstall b/checkinstall
+index 4a7c6e8..03b7969 100755
+--- a/checkinstall
++++ b/checkinstall
+@@ -2798,7 +2798,6 @@ if [ $? -eq 0 ]; then
+    # We do this for the same reason as in restore_backup
+    FILES=$(ls -A)
+    $TAR -cpf - $FILES | gzip -9 > "${DIRECTORIO_FUENTE}/backup-`date +%m%d%Y%H%M`-pre-${PKG_BASENAME}.tgz"
+-    okfail
+ 
+    okfail
+ fi
+diff --git a/locale/checkinstall-es.po b/locale/checkinstall-es.po
+index 214f4ea..b2cd858 100644
+--- a/locale/checkinstall-es.po
++++ b/locale/checkinstall-es.po
+@@ -1,6 +1,6 @@
+-# MENSAJES PARA CHECKINSTALL-1.6.0beta1 en ESPAÑOL
+-# Copyright (C) 2002 Felipe Eduardo Sánchez Díaz Durán
+-# Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>, 2002.
++# MENSAJES PARA CHECKINSTALL-1.6.3 en ESPAÑOL
++# Copyright (C) 2002 - 2010 Felipe Eduardo Sánchez Díaz Durán
++# Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>, 2010.
+ #
+ #, fuzzy
+ msgid ""
+@@ -607,7 +607,7 @@ msgid "Deleting doc-pak directory..."
+ msgstr "Borrando el directorio doc-pak..."
+ 
+ msgid "Writing backup package..."
+-msgstr "Escribiendo el paquete de respaldo"
++msgstr "Escribiendo el paquete de respaldo..."
+ 
+ msgid "Deleting temp dir..."
+ msgstr "Borrando el directorio temporal..."
+-- 
+2.30.0
+

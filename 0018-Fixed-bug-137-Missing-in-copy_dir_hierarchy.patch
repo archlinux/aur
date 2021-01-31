@@ -1,0 +1,28 @@
+From 476db492c607e067313b8e8ad2817bd987e34964 Mon Sep 17 00:00:00 2001
+From: Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>
+Date: Tue, 28 Jul 2015 15:49:55 -0500
+Subject: [PATCH 18/20] Fixed bug #137 - Missing $ in copy_dir_hierarchy
+
+There was a "$" missing in copy_dir_hierarchy.
+
+Reported by greenrover33.
+---
+ checkinstall.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/checkinstall.in b/checkinstall.in
+index 21ad259..3c34431 100755
+--- a/checkinstall.in
++++ b/checkinstall.in
+@@ -472,7 +472,7 @@ function copy_dir_hierarchy {
+     # Only use tar if there are parents
+     echo "${files}" | egrep '[^[:space:]]' >/dev/null
+     if [ $? -eq 0 ]; then
+-        if [ deref_parents -eq 1 ]; then
++        if [ $deref_parents -eq 1 ]; then
+             # Add the -h option to the tar command for dereferencing
+             $TAR --no-recursion -C "${root}" -cphf - $files | $TAR -f - -xvpC \
+                 "${dest}"
+-- 
+2.30.0
+

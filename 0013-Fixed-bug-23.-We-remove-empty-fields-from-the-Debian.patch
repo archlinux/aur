@@ -1,0 +1,26 @@
+From 692d3f0b8b3c98ccbd1f5a70970489ca6e60b086 Mon Sep 17 00:00:00 2001
+From: Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>
+Date: Mon, 29 Dec 2014 17:03:38 -0600
+Subject: [PATCH 13/20] Fixed bug #23. We remove empty fields from the Debian
+ control file when creating Debian packages
+
+---
+ checkinstall.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/checkinstall.in b/checkinstall.in
+index fe8c77e..ea31c68 100755
+--- a/checkinstall.in
++++ b/checkinstall.in
+@@ -2572,7 +2572,7 @@ cd "$DIRECTORIO_FUENTE"
+ 
+ mkdir $BUILD_DIR/DEBIAN
+ 
+-cat << EOF >> $BUILD_DIR/DEBIAN/control
++cat << EOF | sed "s/ $//" | egrep ": " >> $BUILD_DIR/DEBIAN/control
+ Package: $PKG_BASENAME
+ Priority: extra
+ Section: $PKG_GROUP
+-- 
+2.30.0
+

@@ -1,0 +1,182 @@
+From 9f2cef7810cfec70c37a79b024989bb479cada7e Mon Sep 17 00:00:00 2001
+From: Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>
+Date: Mon, 20 Sep 2010 15:02:09 -0500
+Subject: [PATCH 04/20] Fixed bug #1 - Source directory / package name with
+ spaces in them.
+
+If we find a package name with spaces (i.e. as a result of a source directory
+with blank spaces in its name) then we'll replace the blanks with underscores.
+---
+ checkinstall | 61 +++++++++++++++++++++++++++++-----------------------
+ 1 file changed, 34 insertions(+), 27 deletions(-)
+
+diff --git a/checkinstall b/checkinstall
+index 03b7969..978360f 100755
+--- a/checkinstall
++++ b/checkinstall
+@@ -325,8 +325,8 @@ function cleanup {
+    rm -f "${RPMSOURCEDIR}/SOURCES/${PKG_BASENAME}.tgz"
+ 
+  # If we had a pre-existing postinstall-pak, we keep it as it was.
+- if [ -f ${DIRECTORIO_FUENTE}/postinstall-pak.tmp ]; then
+-    mv ${DIRECTORIO_FUENTE}/postinstall-pak.tmp ${DIRECTORIO_FUENTE}/postinstall-pak
++ if [ -f "${DIRECTORIO_FUENTE}/postinstall-pak.tmp" ]; then
++    mv "${DIRECTORIO_FUENTE}/postinstall-pak.tmp" "${DIRECTORIO_FUENTE}/postinstall-pak"
+  fi
+ 
+  true; okfail
+@@ -1271,27 +1271,34 @@ fi
+       ! [ "$SUMMARY" ] && SUMMARY=`head -1 description-pak`
+       ! [ "$NAME" ] && NAME=`echo "$PKG_BASENAME" | rev | cut -f2- -d"-" | rev`
+ 
++      echo "$NAME" | grep -e "[[:blank:]]" &> /dev/null
++      if [ $? -eq 0 ]; then
++            echo
++            echog "*** Warning: The package name \"%s\" contains spaces.\n*** Warning: Package names with spaces in them are not valid in most\n*** Warning: packaging systems so I changed all spaces to underscores." "$NAME"
++            NAME=`echo "$NAME" | tr ' \t' '__'`
++      fi
++
+       if [ "$CK_DEBIAN" ]; then       # Make the name policy compliant
+-      echo $NAME | grep -e "[[:upper:]]" &> /dev/null
++      echo "$NAME" | grep -e "[[:upper:]]" &> /dev/null
+ 
+          if [ $? -eq 0 ]; then
+             echo
+             echog "*** Warning: The package name \"%s\" contains upper case\n*** Warning: letters. dpkg might not like that so I changed\n*** Warning: them to lower case." "$NAME"
+-            NAME=`echo $NAME | tr 'A-Z' 'a-z'`
++            NAME=`echo "$NAME" | tr 'A-Z' 'a-z'`
+ 
+ 
+          fi
+-      echo $NAME | grep -e '^[^0-9a-z]' &> /dev/null
++      echo "$NAME" | grep -e '^[^0-9a-z]' &> /dev/null
+          if [ $? -eq 0 ]; then
+             echo
+ 	    echog "*** Warning: The package name \"%s\" does not start with\n*** Warning: an alphanumetic character. dpkg might not like that so I prefixed\n*** Warning: it with a number 0." "$NAME"
+-            NAME=`echo $NAME | sed -e 's/^/0/'`
++            NAME=`echo "$NAME" | sed -e 's/^/0/'`
+          fi
+-      echo $NAME | grep -e '[^0-9a-z+.-]' &> /dev/null
++      echo "$NAME" | grep -e '[^0-9a-z+.-]' &> /dev/null
+          if [ $? -eq 0 ]; then
+             echo
+             echog "*** Warning: The package name \"%s\" contains illegal\n*** Warning: characters. dpkg might not like that so I changed\n*** Warning: them to dashes." "$NAME"
+-            NAME=`echo $NAME | sed -e 's/[^0-9a-z+.-]/-/g'`
++            NAME=`echo "$NAME" | sed -e 's/[^0-9a-z+.-]/-/g'`
+          fi
+       fi
+ 
+@@ -1930,7 +1937,7 @@ okfail
+ 
+ # Do we have a postinstall script?
+ PINST_EXISTS=0
+-[ -f ${DIRECTORIO_FUENTE}/postinstall-pak ] && PINST_EXISTS=1
++[ -f "${DIRECTORIO_FUENTE}/postinstall-pak" ] && PINST_EXISTS=1
+ 
+ ##############################################################################
+                          # Identify shared libraries # 
+@@ -1957,12 +1964,12 @@ if [ -f ${TMP_DIR}/libdirs ]; then
+  # If we have a pre-existing postinstall-pak we save it
+ 
+  if [ $PINST_EXISTS -gt 0 ]; then
+-    mv ${DIRECTORIO_FUENTE}/postinstall-pak ${DIRECTORIO_FUENTE}/postinstall-pak.tmp 
++    mv "${DIRECTORIO_FUENTE}/postinstall-pak" "${DIRECTORIO_FUENTE}/postinstall-pak.tmp" 
+     PINST_EXISTS=1
+  fi
+  
+  if ! [ $PINST_EXISTS -gt 0 ]; then
+-    cat << EOF > ${DIRECTORIO_FUENTE}/postinstall-pak
++    cat << EOF > "${DIRECTORIO_FUENTE}/postinstall-pak"
+ #!/bin/sh
+ #
+ # postinstall script, created by checkinstall-${CHECKINSTALL_VERSION}
+@@ -1970,7 +1977,7 @@ if [ -f ${TMP_DIR}/libdirs ]; then
+ EOF
+  fi
+ 
+- echo "echo" >>  ${DIRECTORIO_FUENTE}/postinstall-pak
++ echo "echo" >>  "${DIRECTORIO_FUENTE}/postinstall-pak"
+ 
+  cat ${TMP_DIR}/libdirs | while read libdir; do
+    (
+@@ -1978,15 +1985,15 @@ EOF
+     echo "   echo \"Adding \"/$libdir\" to /etc/ld.so.conf\"" 
+     echo "   echo /$libdir >> /etc/ld.so.conf"
+     echo fi
+-   ) >> ${DIRECTORIO_FUENTE}/postinstall-pak
++   ) >> "${DIRECTORIO_FUENTE}/postinstall-pak"
+  done
+ 
+- echo ldconfig >> ${DIRECTORIO_FUENTE}/postinstall-pak
++ echo ldconfig >> "${DIRECTORIO_FUENTE}/postinstall-pak"
+ 
+  # If we had an existing postinstall-pak, append it to the new one
+  
+- if [ -f ${DIRECTORIO_FUENTE}/postinstall-pak.tmp ]; then
+-    cat ${DIRECTORIO_FUENTE}/postinstall-pak.tmp >> ${DIRECTORIO_FUENTE}/postinstall-pak
++ if [ -f "${DIRECTORIO_FUENTE}/postinstall-pak.tmp" ]; then
++    cat "${DIRECTORIO_FUENTE}/postinstall-pak.tmp" >> "${DIRECTORIO_FUENTE}/postinstall-pak"
+  fi
+ 
+ fi  # End of did we find any libdirs?
+@@ -2022,18 +2029,18 @@ if [ ! -z "$DEPFILES" ] ; then
+ 	# Add depmod to the postinst
+ 	# This will be redundant if we already have a postinstall script.
+ 	# Nevertheless, it is harmless.
+-	echo "#!/bin/sh" >> ${DIRECTORIO_FUENTE}/postinstall-pak
+-	echo "#" >> ${DIRECTORIO_FUENTE}/postinstall-pak
+-	echo "# postinstall script, created by checkinstall-${CHECKINSTALL_VERSION}" >> ${DIRECTORIO_FUENTE}/postinstall-pak
+-	echo "#" >> ${DIRECTORIO_FUENTE}/postinstall-pak
+-	echo "depmod $KVER" >> ${DIRECTORIO_FUENTE}/postinstall-pak
++	echo "#!/bin/sh" >> "${DIRECTORIO_FUENTE}/postinstall-pak"
++	echo "#" >> "${DIRECTORIO_FUENTE}/postinstall-pak"
++	echo "# postinstall script, created by checkinstall-${CHECKINSTALL_VERSION}" >> "${DIRECTORIO_FUENTE}/postinstall-pak"
++	echo "#" >> "${DIRECTORIO_FUENTE}/postinstall-pak"
++	echo "depmod $KVER" >> "${DIRECTORIO_FUENTE}/postinstall-pak"
+ fi
+ 
+                         ##################################
+ 		        # End of Identify kernel modules #
+ ##############################################################################
+ 
+-cd $DIRECTORIO_FUENTE
++cd "$DIRECTORIO_FUENTE"
+ 
+ FAILED=0
+ 
+@@ -2360,7 +2367,7 @@ if ! [ -f "$SPEC_PATH" ]; then
+ # This is obviously a hack, I hope we can do it the right way when rpm is
+ # fixed.
+ 
+-if ( echo $DIRECTORIO_FUENTE | grep " " &> /dev/null ); then
++if ( echo "$DIRECTORIO_FUENTE" | grep " " &> /dev/null ); then
+    BROOTPATH="${DIRECTORIO_FUENTE}/buildroot"
+ else
+    BROOTPATH=$BUILD_DIR
+@@ -2534,7 +2541,7 @@ fi  # End of the "no rpm in the path" if
+ d|D)
+ 
+ # As we said before:
+-PKG_BASENAME=$NAME
++PKG_BASENAME="$NAME"
+ # maybe PKG_BASENAME should be defined locally for all the install
+ # types, and not only on debian...
+ 
+@@ -2779,11 +2786,11 @@ fi
+ # If PINST_EXISTS=0 and there is a postinstall-pak file, then
+ # it's the one we created and has to be deleted 
+ if [ $PINST_EXISTS -eq 0 ]; then  
+-   rm -f ${DIRECTORIO_FUENTE}/postinstall-pak
++   rm -f "${DIRECTORIO_FUENTE}/postinstall-pak"
+ fi
+ 
+-if [ -f ${DIRECTORIO_FUENTE}/postinstall-pak.tmp ]; then
+-   mv ${DIRECTORIO_FUENTE}/postinstall-pak.tmp ${DIRECTORIO_FUENTE}/postinstall-pak
++if [ -f "${DIRECTORIO_FUENTE}/postinstall-pak.tmp" ]; then
++   mv "${DIRECTORIO_FUENTE}/postinstall-pak.tmp" "${DIRECTORIO_FUENTE}/postinstall-pak"
+ fi
+ 
+ 
+-- 
+2.30.0
+

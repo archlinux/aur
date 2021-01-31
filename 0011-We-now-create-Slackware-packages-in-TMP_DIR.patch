@@ -1,0 +1,34 @@
+From d33deb80c921f372749b3daccdc09d648d5585a3 Mon Sep 17 00:00:00 2001
+From: Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>
+Date: Mon, 24 Nov 2014 20:54:57 -0600
+Subject: [PATCH 11/20] We now create Slackware packages in $TMP_DIR
+
+---
+ checkinstall.in | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/checkinstall.in b/checkinstall.in
+index 021d040..fe8c77e 100755
+--- a/checkinstall.in
++++ b/checkinstall.in
+@@ -2190,14 +2190,14 @@ chmod 755 $BUILD_DIR
+ export TAR
+ 
+ if [ $SHOW_MAKEPKG -gt 0 ]; then
+-   $MAKEPKG $MAKEPKG_FLAGS "${SLACK_PKG_BASENAME}.tgz"
++   $MAKEPKG $MAKEPKG_FLAGS ${TMP_DIR}/"${SLACK_PKG_BASENAME}.tgz"
+    okfail
+ else
+-   $MAKEPKG $MAKEPKG_FLAGS "${SLACK_PKG_BASENAME}.tgz" &> /dev/null
++   $MAKEPKG $MAKEPKG_FLAGS ${TMP_DIR}/"${SLACK_PKG_BASENAME}.tgz" &> /dev/null
+    okfail
+ fi
+ 
+-mv "${SLACK_PKG_BASENAME}.tgz" "$DIRECTORIO_FUENTE"
++mv ${TMP_DIR}/"${SLACK_PKG_BASENAME}.tgz" "$DIRECTORIO_FUENTE"
+ 
+ #
+ # If requested, we install the package to register it in Slackware's
+-- 
+2.30.0
+

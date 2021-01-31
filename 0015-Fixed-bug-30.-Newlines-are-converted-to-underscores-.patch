@@ -1,0 +1,26 @@
+From fe1f03d650120531368893b12e68133a71e5c392 Mon Sep 17 00:00:00 2001
+From: Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>
+Date: Mon, 29 Dec 2014 17:27:54 -0600
+Subject: [PATCH 15/20] Fixed bug #30. Newlines are converted to underscores in
+ $PKG_GROUP
+
+---
+ checkinstall.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/checkinstall.in b/checkinstall.in
+index ea31c68..826bcf1 100755
+--- a/checkinstall.in
++++ b/checkinstall.in
+@@ -2575,7 +2575,7 @@ mkdir $BUILD_DIR/DEBIAN
+ cat << EOF | sed "s/ $//" | egrep ": " >> $BUILD_DIR/DEBIAN/control
+ Package: $PKG_BASENAME
+ Priority: extra
+-Section: $PKG_GROUP
++Section: $(echo $PKG_GROUP | tr '\n' ' ')
+ Installed-Size: `du -s $BUILD_DIR | awk '{print $1}'`
+ Maintainer: $MAINTAINER
+ Architecture: $ARCHITECTURE
+-- 
+2.30.0
+

@@ -1,0 +1,36 @@
+From 367a87247bb5ec491f2c9cdf40322b8ddba24516 Mon Sep 17 00:00:00 2001
+From: Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>
+Date: Mon, 24 Nov 2014 18:48:25 -0600
+Subject: [PATCH 07/20] Added --summary command line option
+
+---
+ checkinstall | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/checkinstall b/checkinstall
+index 978360f..cc0ad66 100755
+--- a/checkinstall
++++ b/checkinstall
+@@ -506,7 +506,7 @@ fi
+ # Arguments parsing
+ 
+ CKNAME=`basename "$0"`
+-PARAMS=`getopt -a -n $CKNAME -o +d:DA:t:RShHy -l arch:,type:,si,showinstall::,ss,showslack::,deldoc::,delspec::,deldesc::,strip::,addso::,install::,stripso::,gzman::,bk,backup::,autodoinst::,reset-uids::,fstrans::,spec:,exclude:,include:,pkgname:,pkgversion:,pkgrelease:,pkglicense:,pkggroup:,pkgsource:,pkgaltsource:,pakdir:,docdir:,requires:,provides:,conflicts:,replaces:,maintainer:,dpkgflags:,rpmflags:,pkgarch:,umask:,with-tar:,inspect,review-spec,review-control,newslack,help,nodoc,rpmi,rpmu,version,copyright,default -- "$@"`
++PARAMS=`getopt -a -n $CKNAME -o +d:DA:t:RShHy -l arch:,type:,si,showinstall::,ss,showslack::,deldoc::,delspec::,deldesc::,strip::,addso::,install::,stripso::,gzman::,bk,backup::,autodoinst::,reset-uids::,fstrans::,spec:,exclude:,include:,pkgname:,pkgversion:,pkgrelease:,pkglicense:,pkggroup:,pkgsource:,pkgaltsource:,pakdir:,docdir:,requires:,provides:,conflicts:,replaces:,maintainer:,dpkgflags:,rpmflags:,pkgarch:,umask:,with-tar:,summary:,inspect,review-spec,review-control,newslack,help,nodoc,rpmi,rpmu,version,copyright,default -- "$@"`
+ 
+ [ $? -gt 0 ] && help_notice
+ 
+@@ -573,6 +573,10 @@ while [ "$1" != "--" ]; do
+          shift
+          TAR=`eval echo $1`
+          ;;
++      --summary)
++         shift
++         SUMMARY=`eval echo $1`
++         ;;
+       --docdir)
+          shift
+          DOC_DIR=`eval echo $1`
+-- 
+2.30.0
+

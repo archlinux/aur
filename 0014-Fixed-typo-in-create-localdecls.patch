@@ -1,0 +1,25 @@
+From 89bda5c8307ca09eca67d78ae65a52c7fae94f2d Mon Sep 17 00:00:00 2001
+From: Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>
+Date: Mon, 29 Dec 2014 17:06:21 -0600
+Subject: [PATCH 14/20] Fixed typo in create-localdecls
+
+---
+ installwatch/create-localdecls | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/installwatch/create-localdecls b/installwatch/create-localdecls
+index 533a378..72c725c 100755
+--- a/installwatch/create-localdecls
++++ b/installwatch/create-localdecls
+@@ -43,7 +43,7 @@ fi
+ ###
+ ###
+ 
+-echo -n 'Checking which libc whe are using... '
++echo -n 'Checking which libc we are using... '
+ gcc -Wall -o libcfiletest libcfiletest.c
+ LIBC_FILE=`ldd libcfiletest | grep libc\\.so | awk '{print $1}'`
+ echo $LIBC_FILE
+-- 
+2.30.0
+

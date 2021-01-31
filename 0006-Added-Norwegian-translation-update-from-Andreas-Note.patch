@@ -1,0 +1,1547 @@
+From 39be972d6a336a95de30a55bc7e615bc1d92aefa Mon Sep 17 00:00:00 2001
+From: Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>
+Date: Wed, 9 Mar 2011 11:10:59 -0600
+Subject: [PATCH 06/20] Added Norwegian translation update from Andreas Noteng
+
+Added sgml source for manual pages:
+
+  * checkinstall-man.sgml
+  * installwatch-man.sgml
+---
+ checkinstall-man.sgml     | 508 ++++++++++++++++++++++++++++++++++++++
+ installwatch-man.sgml     | 209 ++++++++++++++++
+ locale/checkinstall-no.po | 337 +++++++++++++------------
+ 3 files changed, 891 insertions(+), 163 deletions(-)
+ create mode 100644 checkinstall-man.sgml
+ create mode 100644 installwatch-man.sgml
+
+diff --git a/checkinstall-man.sgml b/checkinstall-man.sgml
+new file mode 100644
+index 0000000..8f156f4
+--- /dev/null
++++ b/checkinstall-man.sgml
+@@ -0,0 +1,508 @@
++<!doctype refentry PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
++
++  <!-- Fill in your name for FIRSTNAME and SURNAME. -->
++  <!ENTITY dhfirstname "<firstname>Felipe</firstname>">
++  <!ENTITY dhsurname   "<surname>Sateler</surname>">
++  <!-- Please adjust the date whenever revising the manpage. -->
++  <!ENTITY dhdate      "<date>November 13, 2007</date>">
++  <!-- SECTION should be 1-8, maybe w/ subsection other parameters are
++       allowed: see man(7), man(1). -->
++  <!ENTITY dhsection   "<manvolnum>8</manvolnum>">
++  <!ENTITY dhemail     "<email>fsateler@gmail.com</email>">
++  <!ENTITY dhusername  "Felipe Sateler">
++  <!ENTITY dhucpackage "<refentrytitle>CheckInstall</refentrytitle>">
++  <!ENTITY dhpackage   "checkinstall">
++
++  <!ENTITY debian      "<productname>Debian</productname>">
++  <!ENTITY gnu         "<acronym>GNU</acronym>">
++  <!ENTITY gpl         "&gnu; <acronym>GPL</acronym>">
++]>
++
++<refentry>
++  <refentryinfo>
++    <address>
++      &dhemail;
++    </address>
++    <author>
++      &dhfirstname;
++      &dhsurname;
++    </author>
++    <copyright>
++      <year>2006</year>
++      <holder>&dhusername;</holder>
++    </copyright>
++    &dhdate;
++  </refentryinfo>
++  <refmeta>
++    &dhucpackage;
++
++    &dhsection;
++  </refmeta>
++  <refnamediv>
++    <refname>&dhpackage;</refname>
++    <refpurpose>
++      Track installation of local software, and produce a binary manageable
++      with your package management software.
++    </refpurpose>
++  </refnamediv>
++  <refsynopsisdiv>
++    <cmdsynopsis>
++      <command>&dhpackage;</command>
++
++      <arg><replaceable>options</replaceable></arg>
++
++      <arg><replaceable>install command</replaceable></arg>
++    </cmdsynopsis>
++  </refsynopsisdiv>
++  <refsect1>
++    <title>DESCRIPTION</title>
++
++    <para>
++      <command>&dhpackage;</command> is a program that monitors an installation
++      procedure (such as <command>make install</command>, <command>install.sh
++      </command>), and creates a standard package for your distribution
++      (currently deb, rpm and tgz packages are supported) that you can install
++      through your distribution's package management system (dpkg, rpm or
++      installpkg).
++    </para>
++    <para>
++      Note that for most useful actions, <command>&dhpackage;</command> must
++      be run as root.
++    </para>
++
++  </refsect1>
++  <refsect1>
++    <title>OPTIONS</title>
++
++    <para>These programs follow the usual &gnu; command line syntax,
++      with long options starting with two dashes ('-').  A summary of
++      options is included below.</para>
++    <para>All the options that toggle a switch default to activate the option.
++      To force activation or deactivation, call them with '=yes' or '=no'. As
++      an example, to disable stripping use --strip=no.</para>
++
++    <variablelist>
++      <varlistentry>
++        <term><option>-h</option>
++          <option>--help</option>
++        </term>
++        <listitem>
++          <para>Show summary of options.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--version</option>
++        </term>
++        <listitem>
++          <para>Show version information.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--copyright</option>
++        </term>
++	<listitem><para>Show Copyright information</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--type</option>
++        </term>
++	<listitem>
++	<para>Choose packaging system. Can be one of 'slackware', 'debian'
++	or 'rpm'.</para>
++        </listitem>
++      </varlistentry>
++      <varlistentry>
++        <term><option>-D</option>
++        </term>
++	<listitem><para>Create a Debian package.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>-R</option>
++        </term>
++	<listitem><para>Create a RPM package.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>-S</option>
++        </term>
++	<listitem><para>Create a Slackware Package.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--install</option>
++        </term>
++	<listitem><para>Toggle installation of the created package.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--fstrans</option>
++        </term>
++	<listitem>
++	<para>Enable/disable filesystem translation. Filesystem translation
++	enabled causes the install to proceed in a temporary directory, thus 
++	not actually touching your system.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>-y</option>
++	<option>--default</option>
++        </term>
++	<listitem><para>Accept default answers to all questions.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--pkgname</option>
++        </term>
++	<listitem><para>Set the package name.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--pkgversion</option>
++        </term>
++	<listitem><para>Set package version.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>-A</option>
++	<option>--arch</option>
++	<option>--pkgarch</option>
++        </term>
++	<listitem><para>Set package architecture.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--pkgrelease</option>
++        </term>
++	<listitem><para>Set the package release.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--pkglicense</option>
++        </term>
++	<listitem><para>Set package license.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--pkggroup</option>
++        </term>
++	<listitem><para>Set the package group.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--pkgsource</option>
++        </term>
++	<listitem><para>Set source location</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--pkgaltsource</option>
++        </term>
++	<listitem><para>Set alternate source location</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--pakdir</option>
++        </term>
++	<listitem><para>Where to save the new package.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--maintainer</option>
++        </term>
++	<listitem>
++		<para>Set the package maintainer. Be careful to correctly
++			quote/escape the name, to prevent shell expansion</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--provides</option>
++        </term>
++	<listitem><para>Features provided by this package (currently only on RPM and Deb).</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--requires</option>
++        </term>
++	<listitem><para>Dependencies required by this package.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--rpmflags</option>
++        </term>
++	<listitem><para>Pass this flags to the rpm installer.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--rpmi</option>
++        </term>
++	<listitem><para>Use the -i flag when installing a rpm.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--rpmu</option>
++        </term>
++	<listitem><para>Use the -U flag when installing a rpm.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--dpkgflags</option>
++        </term>
++	<listitem><para>Pass this flags to the dpkg installer</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--spec</option>
++        </term>
++	<listitem><para>Where the .spec file is located</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--nodoc</option>
++        </term>
++	<listitem><para>Do not include documentation files.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>-d</option>
++        </term>
++	<listitem><para>Set debug level. Must be one of 0, 1 and 2.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>-si</option>
++        </term>
++	<listitem><para>Run an interactive install command</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--showinstall</option>
++        </term>
++	<listitem><para>Toggle interactive install command.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>-ss</option>
++        </term>
++	<listitem><para>Run an interactive Slackware installation script.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--showslack</option>
++        </term>
++	<listitem><para>Toggle interactive Slackware installation script.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--autodoinst</option>
++        </term>
++	<listitem><para>Toggle creation of a doinst.sh script.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--strip</option>
++        </term>
++	<listitem><para>Toggle stripping any ELF binaries found inside the package.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--stripso</option>
++        </term>
++	<listitem><para>Toggle stripping any ELF libraries (.so) found inside the package.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--addso</option>
++        </term>
++	<listitem><para>Search for any shared libs and add them to /etc/ld.so.conf</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--reset-uids</option>
++        </term>
++	<listitem><para>Reset perms for all files/dirs to 755 and the owner/group for all dirs to root.root</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--gzman</option>
++        </term>
++	<listitem><para>Compress any man pages found inside the package.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--docdir</option>
++        </term>
++	<listitem><para>Where to put documentation files.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--umask</option>
++        </term>
++	<listitem><para>Set the umask value.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--exclude</option>
++        </term>
++	<listitem><para>Exclude these files/directories from the package.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--include</option>
++        </term>
++	<listitem><para>Force the inclusion in the package of the files/dirs listed in the argument (a file).</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--inspect</option>
++        </term>
++	<listitem><para>Inspect the package's file list</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--review-spec</option>
++        </term>
++	<listitem><para>Review the spec file before creating a .rpm.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--review-control</option>
++        </term>
++	<listitem><para>Review the control file before creating a .deb.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--newslack</option>
++        </term>
++	<listitem><para>Use the new (8.1+) Slackware description format ("--newslack" implies "-S")</para>
++        </listitem>
++      </varlistentry>
++      <varlistentry>
++        <term><option>--with-tar</option>
++        </term>
++	<listitem><para>Manually set the path to the tar binary.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--deldoc</option>
++        </term>
++	<listitem><para>Toggle deletion of doc-pak upon termination.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--deldesc</option>
++        </term>
++	<listitem><para>Toggle deletion of description-pak upon termination.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--delspec</option>
++        </term>
++	<listitem><para>Toggle deletion of spec file upon termination.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--bk</option>
++        </term>
++	<listitem><para>Backup any overwritten files</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>--backup</option>
++        </term>
++	<listitem><para>Toggle backup</para>
++        </listitem>
++      </varlistentry>
++
++    </variablelist>
++  </refsect1>
++  <refsect1>
++    <title>FILES</title>
++    <para>This program reads its configuration from /etc/checkinstallrc, which can be used to override defaults.
++          Command line arguments override settings in the configuration file.
++    </para>
++  </refsect1>
++  <refsect1>
++    <title>AUTHOR</title>
++
++    <para>This manual page was written by &dhusername; &lt;&dhemail&gt; for
++      the &debian; system (but may be used by others).  Permission is
++      granted to copy, distribute and/or modify this document under
++      the terms of the &gnu; General Public License, Version 2.
++    </para>
++	<para>
++	  On Debian systems, the complete text of the GNU General Public
++	  License can be found in /usr/share/common-licenses/GPL.
++	</para>
++
++  </refsect1>
++</refentry>
++
++<!-- Keep this comment at the end of the file
++Local variables:
++mode: sgml
++sgml-omittag:t
++sgml-shorttag:t
++sgml-minimize-attributes:nil
++sgml-always-quote-attributes:t
++sgml-indent-step:2
++sgml-indent-data:t
++sgml-parent-document:nil
++sgml-default-dtd-file:nil
++sgml-exposed-tags:nil
++sgml-local-catalogs:nil
++sgml-local-ecat-files:nil
++End:
++-->
++
++
+diff --git a/installwatch-man.sgml b/installwatch-man.sgml
+new file mode 100644
+index 0000000..48fabc8
+--- /dev/null
++++ b/installwatch-man.sgml
+@@ -0,0 +1,209 @@
++<!doctype refentry PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
++
++  <!-- Fill in your name for FIRSTNAME and SURNAME. -->
++  <!ENTITY dhfirstname "<firstname>Felipe</firstname>">
++  <!ENTITY dhsurname   "<surname>Sateler</surname>">
++  <!-- Please adjust the date whenever revising the manpage. -->
++  <!ENTITY dhdate      "<date>June 21, 2006</date>">
++  <!-- SECTION should be 1-8, maybe w/ subsection other parameters are
++       allowed: see man(7), man(1). -->
++  <!ENTITY dhsection   "<manvolnum>1</manvolnum>">
++  <!ENTITY dhemail     "<email>fsateler@gmail.com</email>">
++  <!ENTITY dhusername  "Felipe Sateler">
++  <!ENTITY dhucpackage "<refentrytitle>installwatch</refentrytitle>">
++  <!ENTITY dhpackage   "installwatch">
++
++  <!ENTITY debian      "<productname>Debian</productname>">
++  <!ENTITY gnu         "<acronym>GNU</acronym>">
++  <!ENTITY gpl         "&gnu; <acronym>GPL</acronym>">
++]>
++
++<refentry>
++  <refentryinfo>
++    <address>
++      &dhemail;
++    </address>
++    <author>
++      &dhfirstname;
++      &dhsurname;
++    </author>
++    <copyright>
++      <year>2006</year>
++      <holder>&dhusername;</holder>
++    </copyright>
++    &dhdate;
++  </refentryinfo>
++  <refmeta>
++    &dhucpackage;
++
++    &dhsection;
++  </refmeta>
++  <refnamediv>
++    <refname>&dhpackage;</refname>
++
++    <refpurpose>Track installation of software</refpurpose>
++  </refnamediv>
++  <refsynopsisdiv>
++    <cmdsynopsis>
++      <command>&dhpackage;</command>
++
++      <arg><replaceable>options</replaceable></arg>
++
++      <arg>command</arg>
++    </cmdsynopsis>
++  </refsynopsisdiv>
++  <refsect1>
++    <title>DESCRIPTION</title>
++
++    <para>
++      <command>&dhpackage;</command> is a program that is used in order
++      to track the changes made while installing local software (i.e. 
++      "make install"). It monitors the requested command, and produces
++      a log which indicates all created and modified files. By default
++      it outputs to <application>syslog(3)</application> using a priority
++      of "LOG_USER | LOG_INFO". This may be overridden by the use of the
++      <option>-o</option> flag. The log format is as follows:
++    </para>
++    <para>
++    <computeroutput>&lt;return-value&gt; &lt;syscall-name&gt; &lt;argument&gt; #&lt;comment&gt;</computeroutput>
++    </para>
++    <para>
++    Each field is delimited by a "&caret;I" character if logging to 
++    <application>syslog(3)</application>, or by a tab when logging to a file.
++    </para>
++  </refsect1>
++  <refsect1>
++    <title>ENVIRONMENT</title>
++
++    <variablelist>
++      <varlistentry>
++        <term>INSTALLWATCH_BACKUP_PATH</term>
++	<listitem>
++		<para>Set this variable to the location that you want
++		installwatch to copy the original version of files which
++		get modified. The directory will be created if it does
++		not exist, assuming that the parent is writable.</para>
++	</listitem>
++      </varlistentry>
++    </variablelist>
++  </refsect1>
++  <refsect1>
++    <title>OPTIONS</title>
++
++    <para>These program follow the usual &gnu; command line syntax,
++      with long options starting with two dashes (`-').  A summary of
++      options is included below.</para>
++
++    <variablelist>
++      <varlistentry>
++	<term>
++		<option>-o</option>
++		<option>--logfile</option>
++	</term>
++        <listitem>
++          <para>Directs that output from the logged command be written to
++	  the filename specified. If the specified file already exists, 
++	  it will be truncated.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>-r</option>
++          <option>--root</option>
++        </term>
++        <listitem>
++	<para>Sets the directory under which meta-info and translated
++		files  will be stored.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>-t</option>
++          <option>--trans</option>
++        </term>
++        <listitem>
++          <para>Toggle translation capabilities.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>-e</option>
++          <option>--exclude</option>
++        </term>
++        <listitem>
++	<para>Sets a comma separated neutral directory list, that won't
++	be concerned by translation or backups.</para>
++        </listitem>
++      </varlistentry>
++
++      <varlistentry>
++        <term><option>-d</option>
++          <option>--dbgfile</option>
++        </term>
++        <listitem>
++          <para>Specify a debug file.</para>
++        </listitem>
++      </varlistentry>
++      <varlistentry>
++      <term><option>-v</option>
++      <option>--dbglvl</option></term>
++      <listitem>
++        <para>Sets the debug level to be used.</para>
++      </listitem>
++      </varlistentry>
++      <varlistentry>
++      <term><option>-h</option>
++	      <option>--help</option></term>
++      <listitem>
++        <para>Show help information.</para>
++      </listitem>
++      </varlistentry>
++    </variablelist>
++  </refsect1>
++  <refsect1>
++    <title>BUGS</title>
++
++    <para>
++      &dhpackage; does not work with programs which are statically linked with
++      libc. Due to LD_PRELOAD limitations, it does not work with suid programs
++      (this would probably introduce security problems, anyway).
++    </para>
++    <para>
++	    <application>mknod(2)</application> is not monitored.
++    </para>
++  </refsect1>
++  <refsect1>
++    <title>AUTHOR</title>
++
++    <para>This manual page was written by &dhusername; &lt;&dhemail;&gt; for
++      the &debian; system (but may be used by others). Original text 
++      by Greg Norris &lt;adric@debian.org&gt;. Permission is
++      granted to copy, distribute and/or modify this document under
++      the terms of the &gnu; General Public License, Version 2.
++    </para>
++	<para>
++	  On Debian systems, the complete text of the GNU General Public
++	  License can be found in /usr/share/common-licenses/GPL.
++	</para>
++
++  </refsect1>
++</refentry>
++
++<!-- Keep this comment at the end of the file
++Local variables:
++mode: sgml
++sgml-omittag:t
++sgml-shorttag:t
++sgml-minimize-attributes:nil
++sgml-always-quote-attributes:t
++sgml-indent-step:2
++sgml-indent-data:t
++sgml-parent-document:nil
++sgml-default-dtd-file:nil
++sgml-exposed-tags:nil
++sgml-local-catalogs:nil
++sgml-local-ecat-files:nil
++End:
++-->
++
++
+diff --git a/locale/checkinstall-no.po b/locale/checkinstall-no.po
+index af704a6..9c38df8 100644
+--- a/locale/checkinstall-no.po
++++ b/locale/checkinstall-no.po
+@@ -1,155 +1,163 @@
+ # MESSAGES FOR CHECKINSTALL-1.6.0beta1 in Norwegian 
+ # Copyright (C) 2002 Felipe Eduardo Sanchez Diaz Duran
+-# Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>, 2002.
+ #
+ #
+ # Replace the above and following info with the appropriate data for
+ # your name, date and language.
++# Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>, 2002, 2011.
++# Andreas Noteng <andreas@noteng.no>, 2011.
+ #
+-#
+-#, fuzzy
+ msgid ""
+ msgstr ""
+ "Project-Id-Version: 1.6.0beta1\n"
+ "POT-Creation-Date: 2002-11-27 00:58-0600\n"
+-"PO-Revision-Date:  2002-11-27 00:58-0600\n"
+-"Last-Translator: Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>\n"
+-"Language-Team: ES <izto@asic-linux.com.mx>\n"
++"PO-Revision-Date: 2011-03-09 17:25+0100\n"
++"Last-Translator: Andreas Noteng <andreas@noteng.no>\n"
++"Language-Team: NO <izto@asic-linux.com.mx>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=ISO-8859-1\n"
++"Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"
+ 
+ msgid "           This software is released under the GNU GPL."
+ msgstr "          Denne programvaren er lisensiert under GNU GPL."
+ 
+ msgid "Usage: checkinstall [options] [command [command arguments]]"
+-msgstr "Bruk: checkinstall [options] [command [command arguments]]"
++msgstr "Bruk: checkinstall [valg] [kommando [kommandoargument]]"
+ 
+ msgid "Options:"
+ msgstr "Valg:"
+ 
+ msgid "*Package type selection*"
+-msgstr "*Velg pakke*"
++msgstr "*Velg pakketype*"
+ 
+ msgid "-t,--type=<slackware|rpm|debian> Choose packaging system"
+ msgstr "-t,--type=<slackware|rpm|debian> Velg pakkesystem"
+ 
+ msgid "-S                               Build a Slackware package"
+-msgstr "-S                              Bygg en Slackware pakke"
++msgstr "-S                              Bygg en Slackware-pakke"
+ 
+ msgid "-R                               Build a RPM package"
+-msgstr "-R                              Bygg en RPM pakke"
++msgstr "-R                              Bygg en RPM-pakke"
+ 
+ msgid "-D                               Build a Debian package"
+-msgstr "-D                              Bygg en Debian pakke"
++msgstr "-D                              Bygg en Debian-pakke"
+ 
+ msgid "*Install options*"
+-msgstr "*Installasjons valg"
++msgstr "*Installasjonsvalg"
+ 
+ msgid "--install=<yes|no>             Toggle created package installation"
+-msgstr "--install=<yes|no>            Bytt ferdig pakkeinstallasjon"
++msgstr "--install=<yes|no>            Installer den ferdige pakken"
+ 
+ msgid "*Scripting options*"
+-msgstr "*Scripting valg*"
++msgstr "*Skriptvalg*"
+ 
+ msgid "-y, --default                  Accept default answers to all questions"
+-msgstr "-y, --default                 Godta forvalgt svar pÂ alle"
++msgstr "-y, --default                  Godta standardsvarene p√• alle sp√∏rsm√•l"
+ 
+ msgid "--pkgname=<name>               Set name"
+-msgstr "--pkgname=<name>              Sett navn"
+- 
++msgstr "--pkgname=<navn>              Sett pakkenavn"
++
+ msgid "--pkgversion=<version>         Set version"
+-msgstr "--pkgversion=<version>        Sett versjon"
++msgstr "--pkgversion=<versjon>        Sett versjon"
+ 
+ msgid "-A, --arch, --pkgarch=<arch>   Set architecture"
+ msgstr "-A, --arch, --pkgarch=<arch>  Sett arkitektur"
+ 
+ msgid "--pkgrelease=<release>         Set release"
+-msgstr "--pkgrelease=<release>        Sett versjon"
++msgstr "--pkgrelease=<release>        Sett utgave"
+ 
+ msgid "--pkglicense=<license>         Set license"
+-msgstr "--pkglicense=<license>        Sett lisens"
++msgstr "--pkglicense=<lisens>        Sett lisens"
+ 
+ msgid "--pkggroup=<group>             Set software group"
+-msgstr "--pkggroup=<group>            Sett pakkegruppe"
++msgstr "--pkggroup=<gruppe>            Sett pakkegruppe"
+ 
+ msgid "--pkgsource=<source>           Set source location"
+-msgstr "--pkgsource=<source>          Sett kildeplassering"
++msgstr "--pkgsource=<kilde>          Sett kildeplassering"
+ 
+ msgid "--pkgaltsource=<altsource>     Set alternate source location"
+ msgstr "--pkgaltsource=<altsource>    Sett alternativ kildeplassering"
+ 
+ msgid "--pakdir=<directory>           The new package will be saved here"
+-msgstr "--pakdir=<directory>          Den nye pakken vil bli lagret her"
++msgstr "--pakdir=<mappe>          Den nye pakken vil bli lagret her"
+ 
+ msgid "--maintainer=<email addr>      The package maintainer (.deb)"
+-msgstr "--maintainer=<email addr>     Pakke byggeren (.deb)"
++msgstr "--maintainer=<email addr>     Vedlikeholder av pakken (.deb)"
+ 
+ msgid "--provides=<list>              Features provided by this package (.rpm)"
+-msgstr ""
++msgstr "--provides=<list>              Denne pakkens funksjoner (.rpm)"
+ 
+ msgid "--requires=<list>              Features required by this package (.rpm)"
+ msgstr ""
++"--requires=<list>              Funksjoner denne pakken er avhengig av (.rpm)"
+ 
+ msgid "--rpmflags=<flags>             Pass this flags to the rpm installer"
+ msgstr ""
++"--rpmflags=<flags>             Send disse flaggene til rpm-installereren"
+ 
+ msgid "--dpkgflags=<flags>            Pass this flags to the dpkg installer"
+ msgstr ""
++"--dpkgflags=<flags>            Send disse flaggene til dpkg-installereren"
+ 
+ msgid "--spec=<path>                  .spec file location"
+-msgstr ""
++msgstr "--spec=<path>                  bane til .spec-filen"
+ 
+ msgid "--nodoc                        Do not include documentation files"
+-msgstr ""
++msgstr "--nodoc                        Ikke inkluder dokumentasjon"
+ 
+ msgid "*Info display options*"
+-msgstr ""
++msgstr "*Visningsvalg for info*"
+ 
+ msgid "-d<0|1|2>                      Set debug level"
+-msgstr ""
++msgstr "-d<0|1|2>                      Sett feils√∏kingsprogram"
+ 
+ msgid "-si                            Run an interactive install command"
+ msgstr ""
++"-si                            Kj√∏r en interaktiv installasjonskommando"
+ 
+ msgid "--showinstall=<yes|no>         Toggle interactive install command"
+ msgstr ""
++"--showinstall=<yes|no>         Sl√• av eller p√• interaktive "
++"installasjonskommandoer"
+ 
+ msgid ""
+ "-ss                            Run an interactive Slackware installation "
+ "script"
+ msgstr ""
++"-ss                            Kj√∏r et interaktivt installasjonsskript for "
++"Slackware"
+ 
+ msgid ""
+ "--showslack=<yes|no>           Toggle interactive Slackware installation "
+ "script"
+ msgstr ""
++"--showslack=<yes|no>           Sl√• av/p√• interaktive installasjonsskript for "
++"Slackware"
+ 
+ msgid "*Package tuning options*"
+-msgstr "*Tuning av pakker*"
++msgstr "*Justering av pakker*"
+ 
+ msgid ""
+ "--autodoinst=<yes|no>          Toggle the creation of a doinst.sh script"
+-msgstr ""
+-"--autodoinst=<yes|no>         Valg av bygging av et doinst.sh script"
++msgstr "--autodoinst=<yes|no>         Opprette et doinst.sh skript?"
+ 
+ msgid ""
+ "--strip=<yes|no>               Strip any ELF binaries found inside the "
+ "package"
+ msgstr ""
+-"--strip=<yes|no>               Avkle alle ELF BinÊrer funnet inni "
+-"pakke"
++"--strip=<yes|no>               Stripp ELF bin√¶rfiler for "
++"feils√∏kingsinformasjon"
+ 
+ msgid ""
+ "--stripso=<yes|no>             Strip any ELF binary libraries (.so files)"
+ msgstr ""
+-"--stripso=<yes|no>      Avkle alle ELF binÊre biblioteker (.so filer)"
++"--stripso=<yes|no>             Stripp ELF bibliotek for "
++"feils√∏kingsinformasjon (.so filer)"
+ 
+ msgid ""
+ "--gzman=<yes|no>               Compress any man pages found inside the "
+ "package"
+-msgstr "--gzman=<yes|no>        Kompress alle manualsider funnet inni "
+-"pakke"
++msgstr "--gzman=<yes|no>        Komprimer alle manualsider i pakken"
+ 
+ msgid "--docdir=<path>                Where to put documentation files"
+ msgstr "--docdir=<path>               Plassering av dokumentasjonsfiler"
+@@ -161,64 +169,65 @@ msgid ""
+ "--exclude=<file|dir[,...]>     Exclude these files/directories from the "
+ "package"
+ msgstr ""
+-"--exclude=<file|dir[,...]>     Eksluder disse filene/mappene fra "
+-"pakke"
++"--exclude=<file|dir[,...]>     Eksluder disse filene/mappene fra pakken"
+ 
+-msgid "--include=<listfile>           Force the inclusion in the package of the"
+-msgstr "--include=<listfile>          Tving inkludering i pakken av"
++msgid ""
++"--include=<listfile>           Force the inclusion in the package of the"
++msgstr "--include=<listfile>          Inkluder fil i pakken"
+ 
+ msgid "--inspect                      Inspect the package's file list"
+-msgstr "--inspect                     Inspiser pakkens filliste"
++msgstr "--inspect                     Inspiser fillisten"
+ 
+ msgid ""
+ "--review-spec                  Review the spec file before creating a .rpm"
+ msgstr ""
+-"--review-spec                  ForhÂndsvis spec-filen f¯r bygging av .rpm"
++"--review-spec                  Se over .spec-filen f√∏r .rpm-pakken lages"
+ 
+ msgid ""
+ "--review-control               Review the control file before creating a .deb"
+ msgstr ""
+-"--review-control              ForhÂndsvis kontrollfilen f¯r bygging av .deb"
++"--review-control               Se over control-fila f√∏r .deb-pakken lages"
+ 
+ msgid ""
+ "--newslack                     Use the new (8.1+) Slackware description "
+ "format"
+ msgstr ""
+-"--newslack                     Bruk den nye (8.1+) Slackware fortegnelsen "
+-"format"
+- 
++"--newslack                     Bruk det nye pakkeformatet (8.1+) til "
++"Slackware"
++
+ msgid "                               (\"--newslack\" implies \"-S\")"
+-msgstr ""
++msgstr "                               (\"--newslack\" inneb√¶rer \"-S\")"
+ 
+ msgid "*Cleanup options*"
+-msgstr "*Resnings valg*"
++msgstr "*Rengj√∏ringsvalg*"
+ 
+ msgid "--deldoc=<yes|no>              Delete doc-pak upon termination"
+-msgstr "--deldoc=<yes|no>             Slett doc-pak ved avslutt"
++msgstr "--deldoc=<yes|no>             Slett doc-pak ved avsluttning"
+ 
+ msgid "--deldesc=<yes|no>             Delete description-pak upon termination"
+-msgstr "--deldesc=<yes|no>            Slett fortegnelse-pak ved avslutt"
++msgstr "--deldesc=<yes|no>            Slett description-pak ved avsluttning"
+ 
+ msgid "--delspec=<yes|no>             Delete spec file upon termination"
+-msgstr "--delspec=<yes|no>            Slett spec-fil ved avslutt"
++msgstr "--delspec=<yes|no>            Slett spec-fil ved avsluttning"
+ 
+ msgid "--bk                           Backup any overwritten files"
+-msgstr "--bk                          Backup og overskrevne filer"
++msgstr ""
++"--bk                          Utf√∏r sikkerhetskopi av overskrevne filer"
+ 
+ msgid "--backup=<yes|no>              Toggle backup"
+-msgstr "--backup=<yes|no>             SlÂ av/pÂ backup"
++msgstr "--backup=<yes|no>              Sl√• sikkerhetskopi av/p√•"
+ 
+ msgid "*About CheckInstall*"
+ msgstr "*Om CheckInstall*"
+ 
+ msgid "--help, -h                     Show this message"
+-msgstr "--help, -h                    Vis denne beskjeden"
++msgstr "--help, -h                    Vis denne meldingen"
+ 
+ msgid "--copyright                    Show Copyright information"
+-msgstr "--copyright                   Vis Copyright info"
++msgstr "--copyright                   Vis opphavsrettsinformasjon"
+ 
+ msgid "--version                      Show version information"
+-msgstr "--version                     Vis versjons info"
++msgstr "--version                     Vis versjonsinformasjon"
+ 
+ msgid "Use --help or -h to get more information"
+ msgstr "Bruk --help eller -h for mer informasjon"
+@@ -227,76 +236,76 @@ msgid "is an invalid value for"
+ msgstr "er en ugyldig verdi for"
+ 
+ msgid "Restoring overwritten files from backup..."
+-msgstr "Reparerer overskrene filer fra backup..."
++msgstr "Reparerer overskrevne filer fra sikkerhetskopi..."
+ 
+ msgid "*** SIGINT received ***"
+ msgstr "*** SIGINT motatt ***"
+ 
+ msgid "Cleaning up..."
+-msgstr "Rensker opp..."
++msgstr "Rydder..."
+ 
+ msgid "Bye."
+ msgstr "Ha det."
+ 
+ msgid "The checkinstallrc file was not found at:"
+-msgstr "checkinstallrc fila ble ikke finnet i:"
++msgstr "checkinstallrc ble ikke funnet i:"
+ 
+ msgid "Assuming default values."
+-msgstr "Antar standard verdier."
++msgstr "Antar standardverdier."
+ 
+ msgid "I can't find $INSTALLWATCH."
+ msgstr "Jeg kan ikke finne $INSTALLWATCH."
+ 
+ msgid "I can't continue. Either install installwatch or"
+-msgstr "Jeg kan ikke fortsette. Enten installer installwatch eller"
++msgstr "Jeg kan ikke fortsette. Installer installwatch eller"
+ 
+ msgid "modify the INSTALLWATCH variable in this script,"
+-msgstr "modifiser INSTALLWATCH'ens variabel i dette scriptet,"
++msgstr "modifiser INSTALLWATCH-variabelen i dette skriptet,"
+ 
+ msgid "then run checkinstall again."
+-msgstr "og kj¯r checkinstall igjen."
++msgstr "og kj√∏r checkinstall p√• nytt."
+ 
+ msgid "My temp dir exists already."
+-msgstr "Min midlertidige mappe eksisterer allerede."
++msgstr "Midlertidig-mappen eksisterer allerede."
+ 
+ msgid "This looks like a symlink attack!"
+-msgstr "Dette ser ut som et symlink angrep!"
++msgstr "Dette ser ut som et symlenkeangrep!"
+ 
+ msgid "*** Aborting"
+ msgstr "*** Avbryter"
+ 
+ msgid "is an unacceptable value for the temp dir. Please"
+-msgstr "er en uakseptabel verdi for den midlertidige mappa. Vennligst"
++msgstr "er en uakseptabel verdi for midlertidigmappe. Vennligst"
+ 
+ msgid "edit the variable definition for"
+ msgstr "forandre definisjonen av variabelen for"
+ 
+ msgid "and try again."
+-msgstr "og pr¯v igjen."
++msgstr "og pr√∏v p√• nytt"
+ 
+ msgid "**** Failed to create temp dir!"
+-msgstr "*** Kunne ikke opprette midlertidig mappe!"
++msgstr "*** Kunne ikke opprette midlertidigmappe!"
+ 
+ msgid "**** Do you have write permission for ${BASE_TMP_DIR}?"
+-msgstr "*** Har du skriverettigheter for ${BASE_TMP_DIR}?"
++msgstr "*** Har du skriverettigheter til ${BASE_TMP_DIR}?"
+ 
+ msgid "The package documentation directory ./doc-pak does not exist."
+-msgstr "Pakke-dokumentasjons-mappa ./doc-pak eksisterer ikke."
++msgstr "Mappen ./doc-pak eksisterer ikke."
+ 
+ msgid "Should I create a default set of package docs? "
+-msgstr "Skal jeg bygge et standard sett av pakke-dokumentasjon? "
++msgstr "Skal jeg bygge et standardsett som pakkedokumentasjon? "
+ 
+ msgid "Preparing package documentation..."
+-msgstr "Forbereder pakke dokumentasjon..."
++msgstr "Forbereder pakkedokumentasjon..."
+ 
+ msgid "*** No known documentation files were found. The new package"
+-msgstr "*** Ingen kjente dokumentasjons-filer ble funnet. Pakken"
++msgstr "*** Ingen kjente dokumentasjonsfiler ble funnet. Pakken"
+ 
+ msgid "*** won't include a documentation directory."
+-msgstr "*** vil ikke inkludere en dokumentasjons mappe."
++msgstr "*** vil ikke inkludere en dokumentasjonsmappe."
+ 
+ msgid "Copying documentation directory..."
+-msgstr "Kopierer dokumetasjons mappe..."
++msgstr "Kopierer dokumentasjonsmappe..."
+ 
+ msgid "Installing with"
+ msgstr "Installerer med"
+@@ -304,7 +313,7 @@ msgstr "Installerer med"
+ msgid ""
+ "========================= Installation results ==========================="
+ msgstr ""
+-"========================= Installasjons resultater ==========================="
++"========================= Installasjonsresultater ==========================="
+ 
+ msgid ""
+ "======================== Installation successful =========================="
+@@ -312,85 +321,87 @@ msgstr ""
+ "========================  Installasjon velykket =========================="
+ 
+ msgid "****  Installation failed. Aborting package creation."
+-msgstr "*** Installasjonen feilet. Abryter pakkebygging."
++msgstr "*** Installasjonen feilet. Avbryter pakkebygging."
+ 
+ msgid "Do you want to view the installation log file? "
+-msgstr "Vil du se loggfila til installasjonen? "
++msgstr "Vil du se loggfilen? "
+ 
+ msgid "Some of the files created by the installation are inside the build"
+-msgstr "Noen av filene som ble lagd av installajsonen er inni"
++msgstr "Noen av filene som ble lagd av installasjonen er i"
+ 
+ msgid "directory: `pwd`"
+-msgstr "byggemappa: `pwd`"
++msgstr "mappen: `pwd`"
+ 
+ msgid "You probably don't want them to be included in the package,"
+-msgstr "Du vil sannsynligvis ikke ha den inkludert i pakken,"
++msgstr "Du vil antagelig ikke inkludere dem i pakken,"
+ 
+ msgid "especially if they are inside your home directory."
+-msgstr "spessielt ikke om de er inni hjemme-mappa di."
++msgstr "spesielt ikke om de er i hjemmemappa di."
+ 
+ msgid "Do you want me to list them? "
+-msgstr "Vil du at jeg skal liste dem? "
++msgstr "Vil du ha dem listet opp? "
+ 
+ msgid "Should I exclude them from the package? (Saying yes is a good idea) "
+-msgstr "Skal jeg eksludere dem fra pakken? (ja er en god ide) "
++msgstr "Vil du ha dem ekskludert fra pakken? (ja er vanligvis en god ide) "
+ 
+ msgid "You requested to review the list of files that will be"
+-msgstr "Du ville forhÂndsvise listen av filer som vil bli"
++msgstr "Du ba om √• f√• se over listen over filer som blir"
+ 
+ msgid "included in this package."
+-msgstr "inkludert i denne pakken."
++msgstr "inkludert i pakken."
+ 
+ msgid "Now you'll have the chance to review and optionally modify it."
+-msgstr "Du vil nÂ ha sjansen til Â forhÂndsvise og evt. modifisere den."
++msgstr "N√• har du sjansen til √• se over og eventuelt modifisere innholdet."
+ 
+ msgid "Now you'll have the chance to review and optionally modify this file."
+-msgstr "Du vil nÂ ha sjansen til Â forhÂndsvise og evt. modifisere denne fila."
++msgstr "N√• har du sjansen til √• se over og eventuelt modifisere innholdet."
+ 
+ msgid "Press ENTER to continue."
+-msgstr "Trykk ENTER for Â fortsette."
++msgstr "Trykk ENTER for √• fortsette"
+ 
+ msgid "Copying files to the temporary directory..."
+-msgstr "Kopierer filer til midlertidig mappe..."
++msgstr "Kopierer filer til midlertidigmappen..."
+ 
+ msgid "Striping ELF binaries and libraries..."
+-msgstr "Avkler ELF binÊrer og biblioteker..."
++msgstr "Stripper ELF bin√¶rfiler og bibliotek"
+ 
+ msgid "Striping ELF binaries..."
+-msgstr "Avkler ELF binÊrer..."
++msgstr "Stripper ELF bin√¶rfiler."
+ 
+ msgid "Compressing man pages..."
+-msgstr "Kompresser manualsider..."
++msgstr "Komprimerer manualsider..."
+ 
+ msgid "Building file list..."
+-msgstr "Bygger fil-liste..."
++msgstr "Bygger filliste..."
+ 
+ msgid "Please choose the packaging method you want to use."
+-msgstr "Vennligst velg den pakkemetoden du vil bruke."
++msgstr "Velg √∏nsket pakkemetode."
+ 
+ msgid "Slackware [S], RPM [R] or Debian [D]? "
+ msgstr "Slackware [S], RPM [R] eller Debian [D]? "
+ 
+ msgid "Please write a description for the package."
+-msgstr "Vennligst skriv en fortegnelse for pakken."
++msgstr "Gi en beskrivelse av pakken."
+ 
+ msgid " Remember that pkgtool shows"
+ msgstr " Husk at pkgtool viser"
+ 
+ msgid "only the first one when listing packages so make that one descriptive."
+-msgstr "kun den f¯rste nÂr man lister pakker sÂ lag den innholdsrik."
++msgstr ""
++"kun den f√∏rsten linja, n√•r den lister opp pakker, s√• s√∏rg for at den "
++"beskriver innholdet godt."
+ 
+ msgid "End your description with an empty line or EOF."
+-msgstr "Avslutt din fortegnelse med en tom linje eller EOF."
++msgstr "Avslutt beskrivelsen din med en tom linje eller EOF."
+ 
+ msgid "Package created with checkinstall $CHECKINSTALL_VERSION"
+ msgstr "Pakke bygd med checkinstall $CHECKINSTALL_VERSION"
+ 
+ msgid "Warning: Your package description is bigger than 11 lines."
+-msgstr "Advarsel: Din pakkefortegnelse er st¯rre enn 11 linjer."
++msgstr "Adversel: Beskrivelsen av pakken er lengre en 11 linjer."
+ 
+ msgid "Warning: The Slackware 8.1+ pkgtools might not like it."
+-msgstr "Advarsel: Slackware 8.1+'s pkgtools liker kanskje ikke det."
++msgstr "Advarsel: Slackware pkgtools 8.1+ liker ikke dette."
+ 
+ msgid "*** Warning: The package name"
+ msgstr "*** Advarsel: Pakkens navn"
+@@ -399,22 +410,22 @@ msgid "contains upper case"
+ msgstr "inneholder store bokstaver"
+ 
+ msgid "*** Warning: letters. dpkg might not like that so I changed"
+-msgstr "*** Advarsel: bokstaver. dpkg liker kanskje ikke det sÂ jeg byttet"
++msgstr "*** dpkg liker ikke dette, s√• det er endret til"
+ 
+ msgid "*** Warning: them to lower case."
+-msgstr "*** Advarsel: de til smÂ bokstaver."
++msgstr "*** Advarsel: sm√• bokstaver"
+ 
+ msgid "*** Warning: The package version \"${VERSION}\" does not"
+-msgstr "*** Advarsel: Pakkeversjon \"${VERSION}\" gj¯r ikke det"
++msgstr "*** Advarsel: Pakkeversjonen \"${VERSION}\" inneholder ikke"
+ 
+ msgid "*** Warning: contain any digits. dpkg might not like that."
+-msgstr "*** Advarsel: inneholder siffer. dpkg liker kanskje ikke det."
++msgstr "*** Advarsel: siffer. dpkg liker ikke dette."
+ 
+ msgid "This package will be built according to these values: "
+-msgstr "Denne pakken vil bli bygget i henholdt til disse verdier: "
++msgstr "Pakken blir bygd etter f√∏lgende betingelser: "
+ 
+ msgid "0 -  Maintainer:"
+-msgstr "0 - Byggherre:"
++msgstr "0 - Vedlikeholder:"
+ 
+ msgid "1 -  Summary:"
+ msgstr "1 - Oppsummering:"
+@@ -432,7 +443,7 @@ msgid "6 -  Group:"
+ msgstr "6 - Gruppe:"
+ 
+ msgid "7 -  Architecture:"
+-msgstr "7 - Akritektur:"
++msgstr "7 - Arkitektur:"
+ 
+ msgid "8 -  Source location:"
+ msgstr "8 - Kildeplassering:"
+@@ -441,79 +452,79 @@ msgid "9 -  Alternate source location:"
+ msgstr "9 - Alternativ kildeplassering:"
+ 
+ msgid "10 - Provides:"
+-msgstr "10 - Krever:"
++msgstr "10 - Tilbyr:"
+ 
+ msgid "11 - Requires:"
+ msgstr "11 - Krever:"
+ 
+ msgid "Enter a number to change any of them or press ENTER to continue: "
+-msgstr "Legg til et tall for Â bytte noe eller trykk ENTER for Â fortsette: "
++msgstr "Angi et tall for √• endre noe, eller trykk ENTER for √• fortsette:"
+ 
+ msgid "Enter new summary: "
+-msgstr "Legg til ny oppsummering: "
++msgstr "Ny oppsummering: "
+ 
+ msgid "Enter new name: "
+-msgstr "Legg til nytt navn: "
++msgstr "Nytt navn: "
+ 
+ msgid "Enter new version: "
+-msgstr "Legg til ny versjon: "
++msgstr "Ny versjon: "
+ 
+ msgid "Enter new release number: "
+-msgstr "Legg til nytt utgivelses nummer: "
++msgstr "Ny utgave: "
+ 
+ msgid "Enter the license type: "
+-msgstr "Legg til lisenstype: "
++msgstr "Angi lisenstype: "
+ 
+ msgid "Enter the new software group: "
+-msgstr "Legg til ny programvaregruppe: "
++msgstr "Angi ny programvaregruppe: "
+ 
+ msgid "Enter the architecture type: "
+-msgstr "Legg til arkitektur type: "
++msgstr "Angi arkitektur: "
+ 
+ msgid "Enter the source location: "
+-msgstr "Legg til kilde plassering: "
++msgstr "Angi kildeplassering: "
+ 
+ msgid "Enter the alternate source location: "
+-msgstr "Legg til alternativ kilde plassering: "
++msgstr "Angi alternativ kildeplassering: "
+ 
+ msgid "Enter the maintaner's name and e-mail address: "
+-msgstr "Legg til byggherrens navn og epostadresse: "
++msgstr "Angi vedlikeholderens navn og e-postadresse: "
+ 
+ msgid "Enter the provided features: "
+-msgstr "Legg til gitte features: "
++msgstr "Funksjoner pakken tilbyr: "
+ 
+ msgid "Enter the additional requirements: "
+-msgstr "Legg til extra valg:"
++msgstr "Angi pakker denne pakken krever:"
+ 
+ msgid "********************************************"
+ msgstr "*******************************************"
+ 
+ msgid "**** Slackware package creation selected ***"
+-msgstr "*** Slackware pakkebygging valgt ***"
++msgstr "*** Slackwarepakke valgt ***"
+ 
+ msgid "*** The \"installpkg\" program is not in your PATH!"
+-msgstr "*** \"installpkg\" programmet er ikke i PATH'en din!"
++msgstr "*** \"installpkg\" er ikke i $PATH!"
+ 
+ msgid "*** Slackware package creation aborted"
+-msgstr "*** Slackware pakkebygging abrutt"
++msgstr "*** Slackwarepakke avbrutt"
+ 
+ msgid "Preparing Slackware install directory..."
+ msgstr "Forbereder Slackware installasjonsmappe..."
+ 
+ msgid "Writing package description..."
+-msgstr "Skriver pakkefortegnelse..."
++msgstr "Skriver pakkebeskrivelsen..."
+ 
+ msgid "Writing Slackware install script..."
+-msgstr "Skriver Slckware installasjonscript..."
++msgstr "Skriver Slackware installasjonsskript..."
+ 
+ msgid "Appending your script to the main install script..."
+-msgstr "Legger til scriptet ditt til hovedinstalleringsscript"
++msgstr "Legger til skriptet ditt i installasjonsskriptet..."
+ 
+ msgid "Creating package ${SLACK_PKG_BASENAME}..."
+-msgstr "Bygger pakka ${SLACK_PKG_BASENAME}..."
++msgstr "Bygger pakken ${SLACK_PKG_BASENAME}..."
+ 
+ msgid "Installing package..."
+-msgstr "Installerer pakken..."
++msgstr "Installerer pakke..."
+ 
+ msgid "*** Failed to install the package"
+ msgstr "*** Kunne ikke installere pakken"
+@@ -528,82 +539,82 @@ msgid "**************************************"
+ msgstr "*************************************"
+ 
+ msgid "**** RPM package creation selected ***"
+-msgstr "*** RPM pakkebygging valgt"
++msgstr "*** RPM-pakke valgt"
+ 
+ msgid "*** The \"rpm\" program is not in your PATH!"
+-msgstr "*** \"rpm\" programmet er ikke i PATH'en din"
++msgstr "*** \"rpm\" er ikke i $PATH!"
+ 
+ msgid "*** RPM package creation aborted"
+-msgstr "*** RPM pakkebygging avbrutt"
++msgstr "*** RPM-pakke avbrutt"
+ 
+ msgid "$RPMSOURCEDIR has no SOURCES directory. Please write the path to"
+-msgstr "$RPMSOURCEDIR har ingen SOURCES mappe. Vennligst skriv banen til"
++msgstr "$RPMSOURCEDIR har ingen SOURCES mappe. Vennligst angi banen til"
+ 
+ msgid "the RPM source directory tree: "
+-msgstr "kilde-treet til RPM: "
++msgstr "RPM-kilden: "
+ 
+ msgid "You requested to review the .spec file for this package."
+-msgstr "Du ville se .spec fila for denne pakken."
++msgstr "Du ba om √• f√• se over .spec-fila."
+ 
+ msgid "Building RPM package..."
+-msgstr "Bygger RPM pakke..."
++msgstr "Bygger RPM-pakke..."
+ 
+ msgid "*** Failed to build the package"
+ msgstr "*** Kunne ikke bygge pakken"
+ 
+ msgid "Warning: the use of RPMFLAGS is deprecated."
+-msgstr "Advarsel: bruken av RPMFLAGS er ikke foretrukket"
++msgstr "Advarsel: bruken av RPMFLAGS er utdatert."
+ 
+ msgid "Warning: You should now use RPM_FLAGS,"
+-msgstr "Advarsel: Du burde nÂ bruke RPM_FLAGS,"
++msgstr "Advarsel: RPM_FLAGS er n√•v√¶rende standard,"
+ 
+ msgid "Warning: please update your checkinstallrc file."
+-msgstr "Advarsel: vennligst oppdater din checkinstallrc fil."
++msgstr "Advarsel: vennligst oppdater checkinstallrc."
+ 
+ msgid "Installing RPM package..."
+-msgstr "Installerer RPM pakke..."
++msgstr "Installerer RPM-pakke..."
+ 
+ msgid "NOTE: The package will not be installed"
+-msgstr "NB: Pakken vil ikke bli installert"
++msgstr "NB: Pakken blir ikke installert"
+ 
+ msgid "*****************************************"
+ msgstr "****************************************"
+ 
+ msgid "**** Debian package creation selected ***"
+-msgstr "*** Debian pakkebygging valgt ***"
++msgstr "*** Debianpakke valgt ***"
+ 
+ msgid "*** The \"dpkg\" program is not in your PATH!"
+-msgstr "*** \"dpkg\" programmet er ikke i PATH'en din!"
++msgstr "*** \"dpkg\" er ikke i $PATH!"
+ 
+ msgid "*** Debian package creation aborted"
+-msgstr "*** Debian pakkebygging avsluttet"
++msgstr "*** Debianpakke avsluttet"
+ 
+ msgid "You requested to review the control file for this package."
+-msgstr "Du ville se kontrollfilen for denne pakken."
++msgstr "Du ba om √• f√• se over control-fila."
+ 
+ msgid "Building Debian package..."
+-msgstr "Bygger Debian pakke..."
++msgstr "Bygger Debianpakke..."
+ 
+ msgid "Installing Debian package..."
+-msgstr "Installerer Debian pakke..."
++msgstr "Installerer Debianpakke..."
+ 
+ msgid "*** No method was selected, I won't build any package."
+-msgstr "*** Ingen metode valgt, jeg bygger ikke pakke."
++msgstr "*** Ingen pakketype angitt, ingen pakke blir bygget."
+ 
+ msgid "*** The installation command \"$INSTALLCMD\""
+-msgstr "*** Installasjons kommando \"$INSTALLCMD\""
++msgstr "*** Installasjonskommando \"$INSTALLCMD\""
+ 
+ msgid "*** has already been executed."
+-msgstr "*** har allerede blitt kj¯rt."
++msgstr "*** er allerede utf√∏rt."
+ 
+ msgid "The package storage directory"
+-msgstr "Pakkelagrings mappe"
++msgstr "Mappen pakken skal lagres i"
+ 
+ msgid "doesn't exist. Do you want to create it?"
+-msgstr "eksisterer ikke. Vil du lage den?"
++msgstr "eksisterer ikke. Vil du opprette den?"
+ 
+ msgid "Creating package storage directory..."
+-msgstr "Lager pakkelagrings mappe..."
++msgstr "Oppretter mappe..."
+ 
+ msgid "*** Unable to create $PAK_DIR"
+ msgstr "*** Kan ikke opprette $PAK_DIR"
+@@ -612,10 +623,10 @@ msgid "Transferring package to"
+ msgstr "Flytter pakke til"
+ 
+ msgid "There's no package storage directory, the package"
+-msgstr "Det er ingen pakkelagringsplass, pakken"
++msgstr "Det er ingen mappe √• lagre pakken i, pakken"
+ 
+ msgid "will be stored at the default location."
+-msgstr "vil bli lagret pÂ standard plass."
++msgstr "pakken vil bli lagret p√• standardplassering."
+ 
+ msgid "Erasing temporary files..."
+ msgstr "Sletter midlertidige filer..."
+@@ -624,22 +635,22 @@ msgid "Deleting doc-pak directory..."
+ msgstr "Sletter doc-pak mappe..."
+ 
+ msgid "Writing backup package..."
+-msgstr "Skriver backup pakke..."
++msgstr "Lagrer sikkerhetskopipakke..."
+ 
+ msgid "Deleting temp dir..."
+ msgstr "Sletter midlertidig mappe..."
+ 
+ msgid "Building debug information package..."
+-msgstr "Bygger debug informasjons pakke..."
++msgstr "Bygger feils√∏kingspakke..."
+ 
+ msgid " Done. The new package has been installed and saved to"
+-msgstr " Ferdig. Den nye pakken har blitt installert og lagret pÂ"
++msgstr " Ferdig. Den nye pakken er installert og lagret i"
+ 
+ msgid " You can remove it from your system anytime using: "
+-msgstr " Du kan fjerne den fra systemet ditt nÂr som helst ved Â:"
++msgstr "Du kan n√•r som helst fjerne den fra systemet med:"
+ 
+ msgid " Done. The new package has been saved to"
+-msgstr " Ferdig. Pakken har nÂ blitt lagret pÂ"
++msgstr " Ferdig. Den nye pakken er lagret i"
+ 
+ msgid " You can install it in your system anytime using: "
+-msgstr " Du kan installere den pÂ systemet ditt nÂr som helst ved Â:"
++msgstr " Du kan n√•r som helst installere den med: "
+-- 
+2.30.0
+

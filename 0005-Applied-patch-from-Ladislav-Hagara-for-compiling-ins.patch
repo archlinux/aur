@@ -1,0 +1,27 @@
+From ec0e2d0c5820c92df182ddf5eb66a7571a1d4164 Mon Sep 17 00:00:00 2001
+From: Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>
+Date: Sat, 12 Feb 2011 01:26:34 -0600
+Subject: [PATCH 05/20] Applied patch from Ladislav Hagara for compiling
+ installwatch with glibc-2.13
+
+---
+ installwatch/create-localdecls | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/installwatch/create-localdecls b/installwatch/create-localdecls
+index f7adf4d..0cb3e27 100755
+--- a/installwatch/create-localdecls
++++ b/installwatch/create-localdecls
+@@ -105,6 +105,9 @@ if test "$VERSION" = 'libc.so.6' ; then
+ 		12)
+ 			echo '#define GLIBC_MINOR 12' >> $OUTFILE
+ 			SUBVERSION='glibc-2.12' ;;
++		13)
++			echo '#define GLIBC_MINOR 13' >> $OUTFILE
++			SUBVERSION='glibc-2.13' ;;
+ 		*)
+ 			echo 'Treated as glibc >= 2.1 (finger crossed)'
+ 			echo '#define GLIBC_MINOR 1' >> $OUTFILE
+-- 
+2.30.0
+

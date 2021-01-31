@@ -1,0 +1,75 @@
+From 5c72c346bd6cd395dcbb23c94b64345e6f46db8c Mon Sep 17 00:00:00 2001
+From: Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>
+Date: Wed, 21 Apr 2010 19:11:06 -0500
+Subject: [PATCH 02/20] Backtick patch from Andrey Schmachev, Copyright year
+ bump
+
+From: Felipe Sateler <fsateler@gmail.com>
+Date: Thu, 15 Apr 2010 14:48:36 -0400
+Subject: [PATCH 2/3] Remove backticks from message
+
+Backticks have to be escaped in HEREDOCs. Remove it since it is ugly anyway.
+Thanks Andrey Smachev.
+---
+ checkinstall              | 6 +++---
+ installwatch/installwatch | 6 +++---
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/checkinstall b/checkinstall
+index 076aeaa..4a7c6e8 100755
+--- a/checkinstall
++++ b/checkinstall
+@@ -16,7 +16,7 @@
+ #  holding the temp dir (see BASE_TEMP_DIR below) to write there a temporary 
+ #  copy of the package.              
+ #                                                                            
+-#  Copyright (C) 2004 Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>
++#  Copyright (C) 2010 Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>
+ #  
+ #
+ #    This program is free software; you can redistribute it and/or modify
+@@ -107,7 +107,7 @@ function   echogn() {
+ 
+ function ckversion {
+    echo
+-   echo "checkinstall $CHECKINSTALL_VERSION, Copyright 2009 Felipe Eduardo Sanchez Diaz Duran"
++   echo "checkinstall $CHECKINSTALL_VERSION, Copyright 2010 Felipe Eduardo Sanchez Diaz Duran"
+    echog "           This software is released under the GNU GPL."
+ }
+ 
+@@ -794,7 +794,7 @@ while [ "$1" != "--" ]; do
+        --copyright|--version)
+           cat << EOF
+ 
+-Copyright (c) 2009 Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>
++Copyright (c) 2010 Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>
+ 
+     This program is free software; you can redistribute it and/or modify
+     it under the terms of the version 2 of the GNU General Public License
+diff --git a/installwatch/installwatch b/installwatch/installwatch
+index 0a4ccbf..ab38178 100755
+--- a/installwatch/installwatch
++++ b/installwatch/installwatch
+@@ -43,7 +43,7 @@ function ckversion {
+ 	echo
+ 	echo -n "installwatch $INSTALLWATCH_VERSION, "
+ 	echo    "Copyright 1998 Pancrazio de Mauro"
+-	echo    "Copyright 2002 Felipe Eduardo Sanchez Diaz Duran"
++	echo    "Copyright 2010 Felipe Eduardo Sanchez Diaz Duran"
+ 	echo    "           This software is released under the GNU GPL."
+ }
+ 
+@@ -179,8 +179,8 @@ while [ "$1" != "--" ]; do
+ 		--copyright|--version)
+ 			cat << EOF
+ 
+-Copyright (C) 1998 Pancrazio `Ezio' de Mauro 
+-Copyright (C) 2002 Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>
++Copyright (C) 1998 Pancrazio 'Ezio' de Mauro
++Copyright (C) 2010 Felipe Eduardo Sanchez Diaz Duran <izto@asic-linux.com.mx>
+ 
+     This program is free software; you can redistribute it and/or modify
+     it under the terms of the GNU General Public License as published by
+-- 
+2.30.0
+
