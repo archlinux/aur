@@ -25,7 +25,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'd3e7adf5fcfc632887058ca84ca7b849a824dda5a03de854c8d3480ef0124ad1')
+            '362fe0e8677e6c2657f487df622734051f70176c10ce5614d52e3be83cde07b7')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
