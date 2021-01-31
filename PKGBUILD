@@ -3,7 +3,8 @@ pkgname=lnd-bin
 _pkgname=lnd
 pkgver=0.12.0_beta
 _pkgver="${pkgver//_/-}"
-pkgrel=2
+__pkgver="${_pkgver//\./\\\.}"
+pkgrel=3
 pkgdesc="Lightning Network Daemon ⚡"
 arch=('x86_64')
 url="https://github.com/lightningnetwork/lnd"
@@ -32,8 +33,9 @@ prepare() {
     for maintainer in bitconner guggero roasbeef
     do
         echo "Verifying signatures for $maintainer"
-        gpg -o "$_pkgname-manifest-$maintainer-v$_pkgver.txt" --verify "$_pkgname-manifest-$maintainer-v$_pkgver.txt.clearsigned"
-        sha256sum --ignore-missing -c "$_pkgname-manifest-$maintainer-v$_pkgver.txt"
+        gpg -o- --verify "$_pkgname-manifest-$maintainer-v$_pkgver.txt.clearsigned" \
+            | grep "^[0-9a-f]\{64\}  $_pkgname-linux-amd64-v$__pkgver" \
+            | sha256sum -c -
     done
 }
 
