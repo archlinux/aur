@@ -1,4 +1,4 @@
-# Maintainer: Colin Unger <mastakata 3 at yahoo dot com>
+# Maintainer: Lance Roy <ldr709@gmail.com>
 
 pkgname=python-claripy-git
 pkgdesc="An abstraction layer for constraint solvers."
