@@ -2,39 +2,32 @@
 
 # Maintainer: Alexander Grothe <seahawk1986[at]hotmail[dot]com>
 pkgname=vdr-filebrowser
-pkgver=0.2.1
+pkgver=0.2.2
 _vdrapi=2.4.6
-pkgrel=22
+pkgrel=1
 pkgdesc="filebrowser with custom commands for vdr"
-url="http://opensource.holgerbrunn.net/vdr/filebrowser/"
+url="https://github.com/vdr-projects/vdr-plugin-filebrowser"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL3')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
 replaces=("vdr-plugin-$_plugname")
 conflicts=("vdr-plugin-$_plugname")
-source=("http://opensource.holgerbrunn.net/vdr/filebrowser/$pkgname-$pkgver.tgz"
-        "$pkgname-new-makefile.patch")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/vdr-projects/vdr-plugin-filebrowser/archive/$pkgver.tar.gz")
 backup=("var/lib/vdr/plugins/filebrowser/commands.conf"
         "var/lib/vdr/plugins/filebrowser/order.conf"
         "var/lib/vdr/plugins/filebrowser/othercommands.conf"
         "var/lib/vdr/plugins/filebrowser/sources.conf"
         "etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('a1813fec39604b62c38c3ab44fe4aa5f'
-         'd4a9a9442645c1168b0ed58021958c73')
-
-prepare() {
-  cd "${srcdir}/${_plugname}-${pkgver}"
-  patch -p1 -i "$srcdir/$pkgname-new-makefile.patch"
-}
+sha256sums=('9596c65b1d9c3745eab04b9fb3e37dad4fe778db25f7bafe0c2e50cf348a8335')
 
 build() {
-  cd "${srcdir}/${_plugname}-${pkgver}"
+  cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
   make
 }
 
 package() {
-  cd "${srcdir}/${_plugname}-${pkgver}"
+  cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
   make DESTDIR="$pkgdir" install
 
   mkdir -p "$pkgdir/var/lib/vdr/plugins/filebrowser"
