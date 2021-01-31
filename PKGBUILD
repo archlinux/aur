@@ -5,9 +5,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 # Contributor: Ben <ben@benmazer.net>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=mpd-light
-pkgver=0.22.3
+pkgver=0.22.4
 _majorver=0.22
 pkgrel=1
 pkgdesc='Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, pulse, shout, sidplay, soundcloud, wavpack, avahi, smbclient and zziplib support.'
@@ -29,7 +30,7 @@ replaces=('mpd')
 source=("https://www.musicpd.org/download/mpd/${_majorver}/mpd-${pkgver}.tar.xz"
         'mpd.tmpfile'
         'mpd.conf')
-sha512sums=('deeafbe1a95f777fa4f9f355293a648a3f7121fae8e299c92dbd43d821319ffa4182c558cb0691f65e90f243428cec2cf14f64e9572bc72fc6a2af0fd9c0cd60'
+sha512sums=('e169d6656b378d52798e822ffd47f554bd7c076ca8bc5a1119e3b2fad36bee79335dc392aa8d78d854689af62168625698c1777440e08a67075099898ee5fe34'
             '3608f8b0418aa5527917c35308aeca80357c3cf1834cceeade2eaab7fa736117c0b3143cf225478441ffc533b45ff1e8c5579a2e1aa432a4db5ca4cef2dd04e1'
             'f3eaa25925887ae5df52da0119a77729b5761c175a22117ab15a1636b141f4b159db75dc4e9a52e0d16b2bc4b0f617a4e0838a8d3624f98706beb3387971c660')
 backup=('etc/mpd.conf')
