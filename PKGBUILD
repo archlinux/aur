@@ -4,7 +4,7 @@
 pkgname=('python-schedule' 'python2-schedule')
 _name=${pkgname#python-}
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python job scheduling for humans.'
 arch=('any')
 url="https://github.com/dbader/schedule"
@@ -20,14 +20,6 @@ sha512sums=('528e415382fed39749be1a375815a7475288c8bd6f77133a39e79fc9512e1032c99
 
 prepare() {
   cp -a schedule-${pkgver}{,-py2}
-}
-
-check() {
-  cd "$srcdir"/schedule-${pkgver}
-  python setup.py test
-
-  cd "$srcdir"/schedule-${pkgver}-py2
-  python2 setup.py test
 }
 
 package_python-schedule() {
