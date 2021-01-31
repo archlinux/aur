@@ -1,7 +1,7 @@
 pkgbase = opam-git
 	pkgdesc = OCaml package manager
-	pkgver = 2.1.0.beta2.r165.g1138d481
-	pkgrel = 3
+	pkgver = 2.1.0.beta4.r13.g6929b39c
+	pkgrel = 1
 	url = https://opam.ocaml.org/
 	arch = i686
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = opam-git
 	optdepends = git: For downloading packages with git
 	optdepends = mercurial: For downloading packages with mercurial
 	optdepends = rsync: For downloading packages with rsync
-	provides = opam
+	provides = _opam-git
 	conflicts = opam
-	source = opam::git+git://github.com/ocaml/opam.git
+	source = git://github.com/ocaml/opam.git
 	sha256sums = SKIP
 
 pkgname = opam-git
