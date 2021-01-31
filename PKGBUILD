@@ -1,7 +1,7 @@
 # Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
 pkgname=vorta
-pkgver=0.7.1
-pkgrel=6
+pkgver=0.7.2
+pkgrel=1
 pkgdesc="A GUI for BorgBackup"
 arch=('any')
 url="https://github.com/borgbase/vorta"
@@ -9,16 +9,14 @@ license=('GPL')
 depends=('borg' 'python-appdirs' 'python-apscheduler' 'python-pyqt5' 'python-peewee' 'python-paramiko' 'python-dateutil' 'python-secretstorage' 'python-psutil' 'python-llfuse' 'python-setuptools')
 makedepends=('qt5-tools')
 options=(!emptydirs)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/borgbase/$pkgname/archive/v$pkgver.tar.gz"
-        "https://github.com/borgbase/vorta/commit/9af1eb5ba648fed97260a6d3ca2aa7221cd1fb74.diff")
-sha256sums=('2b9ec44daf1929b7fa7f359619324332daa25774562a1d71123c505b9b5006a7'
-            '4854149163b334c6a604a888cc31f6688be8c9ed5855021491657f88c92f39d7')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/borgbase/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('30cec98f0f7ceb786eb784bf2a110d8988977cb15204f8b298b33aee015da271')
+          
 
 build() {
 
   cd "$pkgname-$pkgver"
   make translations-to-qm
-  patch -p1 < "$srcdir/9af1eb5ba648fed97260a6d3ca2aa7221cd1fb74.diff"
   python setup.py build
 }
 
