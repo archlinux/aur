@@ -2,8 +2,8 @@
 # Upstream authors: Tom Keffer, Matthew Wall and contributors
 
 pkgname=weewx
-pkgver=4.3.0
-pkgrel=2
+pkgver=4.4.0
+pkgrel=1
 pkgdesc="Software for logging data from weather stations"
 arch=("any")
 url="http://www.weewx.com/"
@@ -31,7 +31,7 @@ source=("http://www.weewx.com/downloads/released_versions/${pkgname}-${pkgver}.t
         "weewxd"
         "wunderfixer"
         "weewx.service")
-sha512sums=('bbb3409ed548522e25c7be5f2b81977d1f3df815042b4636fd125a9b419433d5d22e22142278b833c16d000a5ed1895e1e062c1e51d01635a2f23afb331016de'
+sha512sums=('80ab0aebe167796c5b67716f8b11afbb1379dc7843f03e4c6e032c1f483fe41a7e11bf443baf6b7c10f6c68788aea0ca36c3ad8ae03d07caff8eda0aec6e5292'
             'SKIP'
             'SKIP'
             'SKIP'
