@@ -16,7 +16,7 @@ source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "doas.diff")
 sha256sums=('a60d0d432ea9b7c98b74a607301bdc4e26b3b48a3b9bc6054ffb7d64f8dcf9c5'
             '5c48cde4ad155e357857f56ec2ce4d26d3e3fdd12b141e349640775481539ed9'
-            '9c6f0c6f2350449f8d6b9a382542c4d61f92f00dd26797c4dd17cc5657cf596d')
+            'ccc9500ff84ef2f6452af041af33e2b43ec4976a8a6a84e344228759b430a6f3')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
