@@ -2,7 +2,7 @@
 
 pkgname=sirula-git
 _pkgname=sirula
-pkgver=r35.1322d19
+pkgver=r43.6e47a8d
 pkgrel=1
 pkgdesc='An app launcher for wayland'
 url='https://github.com/DorianRudolph/sirula'
@@ -20,11 +20,11 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  cargo build --release
+  cargo build --release --locked --all-features --target-dir=target
 }
 
 package() {
   cd "$_pkgname"
-  install -Dm755 "target/release/sirula" "$pkgdir/usr/bin/sirula"
+  install -Dm755 "target/release/$_pkgname" -t "$pkgdir/usr/bin"
   install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
