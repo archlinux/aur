@@ -1,20 +1,39 @@
-### Vars ###
+### Environmental Vars ###
+pkgname=simplenote-electron-arm-bin
 _pkgname=simplenote
 
 ### Post Install ###
 post_install() {
-    ## Symlink Files ##
-    ln -s \
-    "$pkgdir"/opt/$_pkgname/${_pkgname}.desktop \
-    "$pkgdir"/usr/share/applications/${_pkgname}.desktop
-    ln -s \
-    "$pkgdir"/opt/$_pkgname/$_pkgname \
-    "$pkgdir"/usr/bin/$_pkgname
+	## Symlink Files ##
+	ln -fs \
+	"$pkgdir"/opt/$_pkgname/${_pkgname}.desktop \
+	"$pkgdir"/usr/share/applications/${_pkgname}.desktop
+	ln -fs \
+	"$pkgdir"/opt/$_pkgname/$_pkgname \
+	"$pkgdir"/usr/bin/$_pkgname
+	
+	## Symlink Licenses ##
+	ln -fs \
+	"$pkgdir"/opt/$_pkgname/LICENSE.electron.txt \
+	"$pkgdir"/usr/share/licenses/$pkgname/LICENSE.electron.txt
+	ln -fs \
+	"$pkgdir"/opt/$_pkgname/LICENSES.chromium.html \
+	"$pkgdir"/usr/share/licenses/$pkgname/LICENSES.chromium.html
+	
+	## Change Permissions on Sandbox ##
+	chmod 4755 "$pkgdir"/opt/$_pkgname/chrome-sandbox
+}
+
+### Post Upgrade ###
+post_upgrade() {    
+	## Change Permissions on Sandbox ##
+	chmod 4755 "$pkgdir"/opt/$_pkgname/chrome-sandbox
 }
 
 ### Post Remove ###
 post_remove() {
-    ## Remove Symlinks ##
-    rm "$pkgdir"/usr/share/applications/${_pkgname}.desktop
-    rm "$pkgdir"/usr/bin/$_pkgname
+	## Remove Symlinks ##
+	rm \
+	"$pkgdir"/usr/share/applications/${_pkgname}.desktop \
+	"$pkgdir"/usr/bin/$_pkgname
 }

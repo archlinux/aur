@@ -5,12 +5,12 @@ pkgname=simplenote-electron-arm-bin
 _pkgname=${pkgname%-electron-arm-bin}
 pkgver=2.5.0
 _appimage="simplenote-electron-${pkgver}-${CARCH}.AppImage"
-pkgrel=2
+pkgrel=3
 pkgdesc='The simplest way to keep notes'
 arch=('armv7h' 'aarch64')
 url='https://github.com/Automattic/simplenote-electron'
 license=('GPL2')
-depends=('gtk3' 'hicolor-icon-theme' 'libxss' 'nss')
+depends=('gtk3' 'hicolor-icon-theme' 'libxss' 'mesa' 'nss')
 optdepends=(
     'libnotify: desktop notifications'
     'noto-fonts-emoji: emoji support'
@@ -37,10 +37,21 @@ prepare() {
     ## Extract AppImage into squashfs-root Directory ##
     ./$_appimage --appimage-extract
 
+    ## Remove Unneccessary Directories/Files ##
+    rm squashfs-root/AppRun
+    rm squashfs-root/$_pkgname.png
+    rm squashfs-root/.DirIcon
+    
     ## Fix Permissions ##
     find squashfs-root -type d -exec chmod 0755 {} \;
     find squashfs-root -type f -name '*.so' -exec chmod 0644 {} \;
-
+    
+    ## Replace Shared Objects with Symlinks ##
+    for SO in EGL GLESv2 vulkan
+    do
+        ln -fs /usr/lib/${SO}.so squashfs-root/lib${SO}.so
+    done
+    
     ## Modify Desktop File ##
     sed -i \
     -e "s|^Exec=AppRun$|Exec=/usr/bin/${_pkgname}|" \
@@ -59,15 +70,12 @@ package() {
     install -dm0755 "$pkgdir"/usr/bin
     install -dm0755 "$pkgdir"/opt/$_pkgname
     install -dm0755 "$pkgdir"/usr/share/{applications,icons}
+    install -dm0755 "$pkgdir"/usr/share/licenses/$pkgname
 
     ## Install Icons ##
     cp -RL squashfs-root/usr/share/icons/hicolor "$pkgdir"/usr/share/icons/
+    rm -rf squashfs-root/usr
 
     ## Move AppImage Contents to /opt/$_pkgname ##
-    cp -RLT squashfs-root "$pkgdir"/opt/$_pkgname
-    
-    ## Remove Unneccessary Directories/Files ##
-    rm -rf "$pkgdir"/opt/$_pkgname/usr
-    rm "$pkgdir"/opt/$_pkgname/AppRun
-    rm "$pkgdir"/opt/$_pkgname/$_pkgname.png
+    cp -RT squashfs-root "$pkgdir"/opt/$_pkgname
 }
