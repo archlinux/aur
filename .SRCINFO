@@ -1,6 +1,6 @@
 pkgbase = weechat-matrix-rs-git
 	pkgdesc = Rust rewrite of the Python weechat-matrix script
-	pkgver = r281.78f0d09
+	pkgver = r355.a231a27
 	pkgrel = 1
 	url = https://github.com/poljar/weechat-matrix-rs
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = weechat-matrix-rs-git
 	sha512sums = SKIP
 
 pkgname = weechat-matrix-rs-git
-

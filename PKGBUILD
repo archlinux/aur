@@ -1,6 +1,6 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=weechat-matrix-rs-git
-pkgver=r281.78f0d09
+pkgver=r355.a231a27
 pkgrel=1
 pkgdesc='Rust rewrite of the Python weechat-matrix script'
 arch=('x86_64')
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
 	cd "${pkgname%-git}"
-	RUSTC_BOOTSTRAP=1 cargo build --release --locked # enable nightly async_closure feature
+	cargo build --release --locked
 }
 
 package() {
