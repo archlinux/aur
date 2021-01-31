@@ -1,0 +1,17 @@
+pkgbase = vertcoin-qt-bin
+	pkgdesc = A digital currency with mining decentralisation and ASIC resistance as a key focus.
+	pkgver = 0.17.1
+	pkgrel = 1
+	url = https://github.com/vertcoin-project/vertcoin-core
+	arch = x86_64
+	license = MIT
+	provides = vertcoin-qt
+	conflicts = vertcoin-qt
+	source = https://github.com/vertcoin-project/vertcoin-core/releases/download/0.17.1/vertcoin-qt-v0.17.1-linux-amd64.zip
+	source = https://github.com/vertcoin-project/vertcoin-core/releases/download/0.17.1/vertcoin-qt-v0.17.1-linux-amd64.zip.sig
+	validpgpkeys = 64D9042053AA1391D6C0B4A7425776E2F9E5BAB8
+	sha256sums = d0721a1d0cfbe8bbba9f9feabc4a7dd167fd05a67d54afc1cd67660a89a11b9d
+	sha256sums = SKIP
+
+pkgname = vertcoin-qt-bin
+
