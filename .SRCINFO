@@ -6,6 +6,7 @@ pkgbase = python-ros-cross-compile
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
+	depends = python-docker
 	depends = docker
 	depends = qemu-user-static
 	depends = cmake
