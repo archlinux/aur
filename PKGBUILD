@@ -37,7 +37,6 @@ build() {
   
   msg2 "building freetype for the web"
   pushd freetype-${_ftver}
-  printenv
   emconfigure ./configure
   emcmake cmake -Wno-dev \
     -G Ninja \
@@ -59,7 +58,10 @@ build() {
     -G Ninja \
     -B occt_build \
     -S .
-  DESTDIR="${srcdir}/occt-${_pkgver}/install" emmake cmake --build occt_build -- install
+  emmake cmake --build occt_build
+  pushd occt_build
+  emmake make DESTDIR="${srcdir}/occt-${_pkgver}/install" install
+  popd
   popd
 
   msg2 "building WebGL viewer example"
