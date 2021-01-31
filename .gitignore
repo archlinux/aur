@@ -12,6 +12,7 @@
 *.rpm
 *.sig
 *.log
+*.zst
 /src
 /pkg
 *.kate-swp
