@@ -3,7 +3,7 @@
 pkgname=wechat-nativefier
 pkgver=20210130.5
 pkgrel=1
-pkgdesc="WeChat desktop built with nativefier (electron)"
+pkgdesc="Built with nativefier (electron), seemed to Windows version."
 arch=("x86_64")
 url="https://wx.qq.com/"
 license=("MIT")
