@@ -142,7 +142,7 @@ prepare() {
   if [ "$use_cachy" = "y" ]; then
     patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}-cachy
   else
-    patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}
+    patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}-cacule
   fi
 
   msg2 "Setting version..."
