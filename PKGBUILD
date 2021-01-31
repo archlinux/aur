@@ -37,7 +37,7 @@ install="${pkgname}.install"
 source=("http://cern.ch/geant4-data/releases/${pkgname}.${_pkgver}.tar.gz"
         "${pkgname}.install")
 sha256sums=('776ea45230d26fffebf0cf7a342af5131135759a0f70e1b4a1a401f1d1eaad4a'
-            '3ee29b5a0644050c7272cedb5e3db6f3b5acf6f6897b74ff03a9596a271506e4')
+            '0eae153900d995603b0b465c9f17225ba76dd8118377507916fc709360482058')
 
 ## Remove this if you want to keep an even smaller package
 ## No need to wait for compression when just installing it.
@@ -100,16 +100,25 @@ package() {
   do
     sed -i "/${_varname}/d" ${srcdir}/build/InstallTreeFiles/geant4.sh
     sed -i "/${_varname}/d" ${srcdir}/build/InstallTreeFiles/geant4.csh
+
+    # disencouraged in-source compilation option
+    sed -i "/${_varname}/d" ${srcdir}/build/InstallTreeFiles/geant4make.sh
+    sed -i "/${_varname}/d" ${srcdir}/build/InstallTreeFiles/geant4make.csh
   done
 
   cd ${srcdir}/build
   make DESTDIR="${pkgdir}" install
 
-  echo 'pushd /usr/bin &> /dev/null && source geant4.sh  && popd &> /dev/null' > ${srcdir}/geant4.profile.sh
-  echo 'pushd /usr/bin >& /dev/null && source geant4.csh && popd >& /dev/null' > ${srcdir}/geant4.profile.csh
+  # create a shell script to be initialized along with the terminals for out-of-source compilation
+  echo 'pushd /usr/bin &> /dev/null && source geant4.sh  && popd &> /dev/null' > ${srcdir}/geant4_profile.sh
+  echo 'pushd /usr/bin >& /dev/null && source geant4.csh && popd >& /dev/null' > ${srcdir}/geant4_profile.csh
   install -d ${pkgdir}/etc/profile.d
-  install -m755 ${srcdir}/geant4.profile.sh  ${pkgdir}/etc/profile.d/geant4.sh
-  install -m755 ${srcdir}/geant4.profile.csh ${pkgdir}/etc/profile.d/geant4.csh
+  install -m755 ${srcdir}/geant4_profile.sh  ${pkgdir}/etc/profile.d/geant4_profile.sh
+  install -m755 ${srcdir}/geant4_profile.csh ${pkgdir}/etc/profile.d/geant4_profile.csh
+
+  # install explicitly disencouraged in-source compilation option
+  install -m755 ${srcdir}/build/InstallTreeFiles/geant4make.sh  ${pkgdir}/usr/bin/geant4make.sh
+  install -m755 ${srcdir}/build/InstallTreeFiles/geant4make.csh ${pkgdir}/usr/bin/geant4cmake.sh
 }
 
 # All this is just a comment
