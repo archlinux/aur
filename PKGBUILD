@@ -4,15 +4,15 @@
 pkgname=vdr-iptv
 pkgver=2.4.0
 _vdrapi=2.4.6
-pkgrel=5
+pkgrel=6
 pkgdesc="Integrates multicast IPTV transport streams seamlessly into VDR"
-url="http://www.saunalahti.fi/~rahrenbe/vdr/iptv/"
+url="https://github.com/rofafor/vdr-plugin-iptv"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('curl' "vdr-api=${_vdrapi}")
 optdepends=('vlc: Needed for vlc2iptv')
 _plugname=${pkgname//vdr-/}
-source=("http://www.saunalahti.fi/~rahrenbe/vdr/$_plugname/files/$pkgname-$pkgver.tgz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/rofafor/vdr-plugin-iptv/archive/v$pkgver.tar.gz"
         "$pkgname-fix_vlc2iptv.patch"
         'https://github.com/yavdr/yavdr-base/raw/stable-0.5/etc/vdr/plugins/iptv/vlcinput/3Sat.conf'
         'https://github.com/yavdr/yavdr-base/raw/stable-0.5/etc/vdr/plugins/iptv/vlcinput/Bundesligen-TV.conf'
@@ -34,7 +34,7 @@ backup=("etc/vdr/conf.avail/50-$_plugname.conf"
         'etc/vdr/plugins/iptv/vlcinput/zdf-iptv.conf'
         'etc/vdr/plugins/iptv/vlcinput/zdf_info-iptv.conf'
         'etc/vdr/plugins/iptv/vlcinput/zdf_kultur-iptv.conf')
-sha256sums=('73d91b6ffc87e39a7bad235abff73dea4be08638cf2bd34b13c2ad46dff33185'
+sha256sums=('4c9663136b3f0bc5eedebe7dd4fb72837c55dea9777cdc6d1fb07a15eae370c6'
             'd4a39fae860ce961b2aab8b721cef7f37e80640c50cc9c06d5f9d2b9c265379d'
             '9c8e99d0c82ef5af5141ff89ffd411e0feb3ee6ff2416fee03d9b09e2edb2a6c'
             'c5ead86e396eb0f2bbfced5913f381764131575379b2930bd0e86f6d2df3f774'
@@ -48,18 +48,18 @@ sha256sums=('73d91b6ffc87e39a7bad235abff73dea4be08638cf2bd34b13c2ad46dff33185'
             '0aa1a3f9050345774ff3a7aa1b581ce80416d81fc5fdf8dcc7112f29045be27e')
 
 prepare() {
-  cd "${srcdir}/${_plugname}-${pkgver}"
+  cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
 
   patch -p1 -i "$srcdir/$pkgname-fix_vlc2iptv.patch"
 }
 
 build() {
-  cd "${srcdir}/${_plugname}-${pkgver}"
+  cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
   make GITTAG=''
 }
 
 package() {
-  cd "${srcdir}/${_plugname}-${pkgver}"
+  cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
   make DESTDIR="${pkgdir}" install-lib install-i18n
 
   install -Dm755 iptv/vlc2iptv "$pkgdir/usr/share/vdr/plugins/iptv/vlc2iptv"
