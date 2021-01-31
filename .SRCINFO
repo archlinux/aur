@@ -1,0 +1,16 @@
+pkgbase = cramfs-tools
+	pkgdesc = Cramfs - cram a filesystem onto a small ROM
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/npitre/cramfs-tools
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/npitre/cramfs-tools/archive/v2.1.tar.gz
+	sha256sums = cdb7a4ecad034f063b6456b37cdf653ae31758a224c32161e54712a9d7f01cc3
+
+pkgname = cramfs-tools
+
