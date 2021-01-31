@@ -1,8 +1,8 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 pkgname=asroot-libpassphrase
 pkgver=1.0
-pkgrel=1
-pkgdesc="A simpler alternative to sudo and doas"
+pkgrel=2
+pkgdesc="A simpler alternative to sudo and doas, libpassphrase version"
 arch=('x86_64')
 url="https://github.com/maandree/asroot"
 license=('custom:ISC')

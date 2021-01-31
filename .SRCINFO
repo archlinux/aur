@@ -1,7 +1,7 @@
 pkgbase = asroot-libpassphrase
-	pkgdesc = A simpler alternative to sudo and doas
+	pkgdesc = A simpler alternative to sudo and doas, libpassphrase version
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maandree/asroot
 	arch = x86_64
 	license = custom:ISC
