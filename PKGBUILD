@@ -11,6 +11,8 @@ arch=('any')
 url='https://github.com/PapirusDevelopmentTeam/papirus-folders'
 license=('MIT')
 depends=('papirus-icon-theme' 'opendoas')
+provides=('papirus-folders')
+conflicts=('papirus-folders')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${_pkgname}.hook"
         "doas.diff")
