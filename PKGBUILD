@@ -1,62 +1,62 @@
-# Maintainer: Benjamin Landis <bmlandis2010@gmail.com>
+# Maintainer: Kaan Genç <SeriousBug at gmail dot com>
+# Contributor: Christian Hesse <mail@eworm.de>
+# Contributor:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Eivind Uggedal <eivind@uggedal.com>
 
 pkgname=mpv-vapoursynth
-pkgver=0.33.0
-pkgrel=1
-pkgdesc='A free, open source, and cross-platform media player (with Vapoursynth libs)'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+_pkgname=mpv
+epoch=1
+pkgver=0.28.2
+pkgrel=2
+pkgdesc='Video player based on MPlayer/mplayer2'
+arch=('i686' 'x86_64')
 license=('GPL')
-url='https://mpv.io/'
-depends=('alsa-lib' 'libasound.so' 'desktop-file-utils' 'ffmpeg' 'libavcodec.so' 'libavdevice.so'
-         'libavfilter.so' 'libavformat.so' 'libavutil.so' 'libswresample.so' 'libswscale.so'
-         'glibc' 'hicolor-icon-theme' 'jack' 'libjack.so' 'lcms2' 'liblcms2.so' 'libarchive'
-         'libarchive.so' 'libass' 'libass.so' 'libbluray' 'libbluray.so' 'libcaca' 'libcdio'
-         'libcdio-paranoia' 'libdrm' 'libdvdnav' 'libdvdread' 'libegl' 'libgl' 'libglvnd'
-         'libjpeg' 'libjpeg.so' 'libplacebo' 'libplacebo.so' 'libpulse' 'libpulse.so'
-         'libva' 'libva.so' 'libva-drm.so' 'libva-wayland.so' 'libva-x11.so' 'libvdpau' 'libx11'
-         'libxext' 'libxinerama' 'libxkbcommon' 'libxkbcommon.so' 'libxrandr' 'libxss'
-         'libxv' 'lua52' 'mesa' 'mujs' 'rubberband' 'librubberband.so' 'shaderc'
-         'libshaderc_shared.so' 'uchardet' 'vapoursynth' 'vulkan-icd-loader' 'wayland'
-         'xdg-utils' 'zlib')
-makedepends=('git' 'python-docutils' 'ladspa' 'wayland-protocols'
-             'ffnvcodec-headers' 'vulkan-headers' 'waf')
+url='http://mpv.io'
+depends=(
+    'desktop-file-utils' 'ffmpeg' 'hicolor-icon-theme' 'jack' 'lcms2'
+    'libarchive' 'libcaca' 'libcdio-paranoia' 'libdvdnav' 'libgl' 'libva'
+    'libxinerama' 'libxkbcommon' 'libxrandr' 'libxss' 'libxv' 'lua52'
+    'rubberband' 'smbclient' 'uchardet' 'vulkan-icd-loader' 'wayland'
+    'xdg-utils'
+    'vapoursynth'
+)
+makedepends=('mesa' 'python-docutils' 'ladspa')
 optdepends=('youtube-dl: for video-sharing websites playback')
-provides=('mpv')
-conflicts=('mpv')
+conflicts=($_pkgname)
+provides=($_pkgname)
 options=('!emptydirs')
-source=("mpv-${pkgver}.tar.gz"::"https://github.com/mpv-player/mpv/archive/v${pkgver}.tar.gz"
-        '010-mpv-libplacebo-fix.patch'::'https://github.com/mpv-player/mpv/commit/7c4465cefb27d4e0d07535d368febdf77b579566.patch')
-sha256sums=('f1b9baf5dc2eeaf376597c28a6281facf6ed98ff3d567e3955c95bf2459520b4'
-            'a9f656a163e17a33050ea3ffe51203b948168437c87038239fc3a2424927b35a')
+install=mpv.install
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/mpv-player/$_pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('aada14e025317b5b3e8e58ffaf7902e8b6e4ec347a93d25a7c10d3579426d795')
 
 prepare() {
-    patch -d "mpv-${pkgver}" -Np1 -i "${srcdir}/010-mpv-libplacebo-fix.patch"
+  cd ${_pkgname}-${pkgver}
+  ./bootstrap.py
 }
 
 build() {
-  cd mpv-${pkgver}
+  cd ${_pkgname}-${pkgver}
 
-  waf configure --prefix=/usr \
+  ./waf configure --prefix=/usr \
     --confdir=/etc/mpv \
     --enable-cdda \
     --enable-dvb \
     --enable-dvdnav \
+    --enable-encoding \
     --enable-libarchive \
     --enable-libmpv-shared \
-    --disable-build-date \
-    --enable-vapoursynth
+    --enable-libsmbclient \
+    --enable-tv \
+    --enable-zsh-comp
 
-  waf build
+  ./waf build
 }
 
 package() {
-  cd mpv-${pkgver}
+  cd ${_pkgname}-${pkgver}
 
-  waf install --destdir="$pkgdir"
+  ./waf install --destdir="$pkgdir"
 
-  install -m0644 DOCS/{encoding.rst,tech-overview.txt} \
+  install -m644 DOCS/{encoding.rst,tech-overview.txt} \
     "$pkgdir"/usr/share/doc/mpv
-
-  install -m0644 TOOLS/lua/* \
-    -D -t "$pkgdir"/usr/share/mpv/scripts
 }
