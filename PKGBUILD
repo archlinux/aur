@@ -1,16 +1,17 @@
 # Maintainer: Alexey D. <lq07829icatm@rambler.ru>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=procps-ng-nosystemd
 pkgver=3.3.16
-pkgrel=2
+pkgrel=3
 pkgdesc='Utilities for monitoring your system and its processes'
 url='https://gitlab.com/procps-ng/procps'
 license=('GPL' 'LGPL')
 arch=('i686' 'x86_64')
-depends=('ncurses')
+depends=('glibc' 'ncurses' 'libncursesw.so')
 backup=('etc/sysctl.conf')
 source=("https://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-${pkgver}.tar.xz"
         'fs66093.patch'
@@ -21,7 +22,7 @@ sha256sums=('925eacd65dedcf9c98eb94e8978bbfb63f5de37294cc1047d81462ed477a20af'
 groups=('base')
 conflicts=('procps' 'procps-ng' 'sysvinit-tools' 'sysctl-default-conf')
 replaces=('procps' 'procps-ng' 'sysvinit-tools' 'sysctl-default-conf')
-provides=('procps' "procps-ng=$pkgver" 'sysvinit-tools')
+provides=('procps' "procps-ng=$pkgver" 'sysvinit-tools' 'libprocps.so')
 install=procps-ng.install
 
 prepare() {

@@ -1,7 +1,7 @@
 pkgbase = procps-ng-nosystemd
 	pkgdesc = Utilities for monitoring your system and its processes
 	pkgver = 3.3.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/procps-ng/procps
 	install = procps-ng.install
 	arch = i686
@@ -9,10 +9,13 @@ pkgbase = procps-ng-nosystemd
 	groups = base
 	license = GPL
 	license = LGPL
+	depends = glibc
 	depends = ncurses
+	depends = libncursesw.so
 	provides = procps
 	provides = procps-ng=3.3.16
 	provides = sysvinit-tools
+	provides = libprocps.so
 	conflicts = procps
 	conflicts = procps-ng
 	conflicts = sysvinit-tools
