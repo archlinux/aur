@@ -50,7 +50,6 @@ package_hepmc() {
 package_hepmc-docs() {
     depends=()
     pkgdesc="A particle physics package for storing collision events from Monte Carlo generators (Documentation)"
-    arch=('any')
     cd "${srcdir}/build"
     make DESTDIR="${pkgdir}/" install
     # fix CMake
