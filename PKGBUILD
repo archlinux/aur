@@ -6,7 +6,7 @@
 _pkgname=eea
 pkgname="${_pkgname}-dkms"
 pkgver=7.1.9.0
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 pkgdesc='ESET Endpoint Antivirus Business for Linux'
 url='https://www.eset.com/int/business/endpoint-antivirus-linux/'
@@ -47,7 +47,6 @@ package() {
 	bsdtar -xOf - ${_deb} |          # deb from bundle
 	bsdtar -xOf - data.tar.gz |      # data.tar.gz from deb
 	bsdtar -xf - -C ${pkgdir}/       # package content from data.tar.gz
-  rm -f ${srcdir}/../${_bundle_file}
 
   msg2 "Checking file integrity..."
   tail -n +`awk '/^exit$/ { print NR + 1; exit }' "${_bundle_file}"` "${_bundle_file}" |
@@ -57,6 +56,8 @@ package() {
   cd "${pkgdir}"
   md5sum "${srcdir}"/md5sums --check --quiet
   cd "${srcdir}"
+
+  rm -f ${srcdir}/../${_bundle_file}
 
   # fix permissions
   chmod 0755 "${pkgdir}"/var
