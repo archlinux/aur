@@ -113,7 +113,10 @@ build() {
     -D xace=false \
     -D xcsecurity=false \
     -D debug=false
-     
+    -D input_thread=true \
+    -D int10=false \
+    -D xf86-input-inputtest=false
+
 # xinerama required for nvidia blob/amdgpu/mesa
 # mitshm required for nvidia blob/amdgpu/mesa
 # xv required for nvidia blob/amdgpu/mesa
