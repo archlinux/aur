@@ -1,3 +1,8 @@
+## 10.2.0 (2021-01-31)
+
+* New UI framework: Bootstrap/Reactstrap has been switched out for the more modern MaterialUI, big thanks to @jesperorb doing this in #703.
+* Fix: Make frontend work with non root URL #732
+
 ## 10.1.0 (2020-11-14)
 
 * #671 Don't hang if no file or stdin provided. Thanks @arbovm for improving the CLI experience.
