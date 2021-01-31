@@ -11,6 +11,7 @@ pkgbase = cimplefetch
 	arch = armv6h
 	arch = aarch64
 	license = GPL3
+	depends = libcimply
 	source = https://github.com/caverym/cimplefetch/archive/0.3.tar.gz
 	sha256sums = abc8132ac0f82608c24656bde2d5e16a43d58844ec168036e27816bb6606435a
 
