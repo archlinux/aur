@@ -1,7 +1,7 @@
 pkgbase = futurerestore-marijuanarm-git
-	pkgdesc = iOS upgrade and downgrade tool utilizing SHSH blobs - git version
+	pkgdesc = iOS upgrade and downgrade tool utilizing SHSH blobs - marijuanARM's fork - git version
 	pkgver = r190.e4a8178
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marijuanARM/futurerestore
 	arch = x86_64
 	license = LGPL3
