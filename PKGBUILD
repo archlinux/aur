@@ -7,7 +7,7 @@ url="https://bkaradzic.github.io"
 license=('BSD')
 
 depends=('mesa' 'libx11')
-makedepends=('git' 'cmake')
+makedepends=('git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 
@@ -44,12 +44,20 @@ package() {
   do
     cp -r ${srcdir}/${PROJ}/include ${pkgdir}/usr
   done
+
+  # add shader includes to include
   install -m644 src/bgfx_shader.sh ${pkgdir}/usr/include/bgfx/
   install -m644 src/bgfx_compute.sh ${pkgdir}/usr/include/bgfx/
+
+  # prepend bgfx to bin names to avoid naming conflicts
   for BIN in geometryc geometryv shaderc texturec texturev
   do
     install -D .build/linux64_gcc/bin/${BIN}${CONFIG} ${pkgdir}/usr/bin/bgfx-${BIN}
   done
+
+  # remove helper and 3rdparty includes used to compile bgfx
+  rm -rf ${pkgdir}/usr/include/compat
+  rm -rf ${pkgdir}/usr/include/tinystl
 }
 
 # vim:set ts=2 sw=2 et:

@@ -6,7 +6,6 @@ pkgbase = bgfx-git
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	makedepends = cmake
 	depends = mesa
 	depends = libx11
 	provides = bgfx
