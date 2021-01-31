@@ -67,7 +67,7 @@ prepare() {
 build() {
   cd FreeCAD
 
-  cmake -Wno-dev .. \
+  cmake -Wno-dev \
     -D BUILD_ENABLE_CXX_STD=C++14 \
     -D BUILD_QT5=ON \
     -D CMAKE_INSTALL_PREFIX="" \
