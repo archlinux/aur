@@ -1,6 +1,6 @@
 pkgbase = rodder-git
 	pkgdesc = A user-based package manager in Python3
-	pkgver = r65.aad87f6
+	pkgver = r66.5e54c4b
 	pkgrel = 1
 	url = https://github.com/Ruthenic/rodder
 	arch = x86_64
