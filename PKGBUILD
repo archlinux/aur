@@ -7,8 +7,6 @@ pkgdesc="A humanist sans-serif typeface"
 arch=('any')
 url="http://theleagueofmoveabletype.com/junction/"
 license=('OFL')
-depends=('fontconfig' 'xorg-font-utils')
-install=otf.install
 source=('https://github.com/theleagueof/junction/archive/master.zip')
 md5sums=('e35636a6a9075db4f1bc09df69b8d0d3')
 
