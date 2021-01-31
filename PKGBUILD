@@ -3,7 +3,7 @@
 
 pkgname=vofa+
 _pkgname=vofaplus
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc="A high degree of freedom embedded debugging tool with plugins support."
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('unknown')
 provides=("${_pkgname}")
 options=('!strip')
 source=("${pkgname}-${pkgver}.pkg.tar.zst::https://gutega.gitee.io/vofa_plus_res/downloads/${pkgname}-${pkgver}-1-${CARCH}.pkg.tar.zst")
-sha256sums=('ae0177f42c13b5239b07319ab1edfe3daff8d03f1a604990466e93f91bcc09a5')
+sha256sums=('ecb8f23e851cd79809572332a98a7d035ab7e3f0f33b3454e2f9bb365a3fbc09')
 
 package() {
   cd ${srcdir}/opt/${pkgname}/
