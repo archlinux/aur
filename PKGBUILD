@@ -32,7 +32,7 @@ check() {
 package() {
     cd $_pkgname
 
-    mkdir -p "$pkgdir/usr/bin"
-    cp "target/release/runas" "$pkgdir/usr/bin/"
+    mkdir -p "${pkgdir}/usr/bin"
+    cp "target/release/runas" "${pkgdir}/usr/bin/"
     chmod 4755 "$pkgdir/usr/bin/runas"
 }
