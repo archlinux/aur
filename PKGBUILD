@@ -2,16 +2,25 @@
 # Contributer: Steven Honeyman <stevenhoneyman at gmail com>
 
 pkgname=geeqie-git
-pkgver=20200406
+pkgver=20210130
 pkgrel=1
 pkgdesc='Lightweight image viewer'
 arch=('x86_64')
 url="http://www.geeqie.org/"
 license=('GPL2')
-depends=('gtk3' 'exiv2' 'ffmpegthumbnailer')
-makedepends=('git' 'intltool' 'python')
+depends=('exiv2' 'gtk3' 'ffmpegthumbnailer'
+         'libdjvu' 'libheif' 'libchamplain'
+         'poppler-glib')
+makedepends=('git'
+             'intltool' 'python' 'librsvg'
+             'libwmf' 'libwebp' 'imagemagick'
+             'fbida' 'gawk' 'perl-image-exiftool')
 optdepends=('librsvg: SVG rendering'
-            'fbida: for jpeg rotation')
+            'fbida: for jpeg rotation'
+            'gawk: to use the geo-decode function'
+            'perl-image-exiftool: for the jpeg extraction plugin'
+            'gphoto2: command-line tools for various (plugin) operations'
+            'imagemagick: command-line tools for various (plugin) operations')
 provides=('geeqie')
 conflicts=('geeqie')
 source=("git+git://www.geeqie.org/geeqie.git")
@@ -24,15 +33,16 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/geeqie"
+    NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
     cd "${srcdir}/geeqie"
 
-    ./autogen.sh \
+    ./configure \
         --prefix=/usr \
-        --disable-lua \
-        --disable-pdf
+        --disable-lirc \
+        --disable-lua
     make
 }
 
