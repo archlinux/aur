@@ -47,6 +47,7 @@ prepare() {
 }
 
 build() {
+  export CCACHE_BASEDIR="$srcdir"
   cd "$srcdir"/OpenBoard
 # convert translations to binary form
   lrelease OpenBoard.pro
