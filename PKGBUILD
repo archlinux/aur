@@ -2,8 +2,8 @@
 
 _name=futurerestore
 pkgname=$_name-git
-pkgver=r182.88861b6
-pkgrel=3
+pkgver=r186.2f0686d
+pkgrel=1
 pkgdesc='iOS upgrade and downgrade tool utilizing SHSH blobs - git version'
 arch=('x86_64')
 url="https://github.com/tihmstar/$_name"
@@ -17,7 +17,7 @@ source=("git+$url.git"
         'git+https://github.com/tihmstar/idevicerestore.git'
         'git+https://github.com/tihmstar/jssy.git'
         "$_name-0001-Fix-incorrect-language-standard.patch"
-        "$_name-0002-Update-libplist-and-libirecovery-names-for-2.2.0-1.0.patch"
+        "$_name-0002-Ensure-CUSTOM_LOGGING-refers-to-a-file.patch"
         'tsschecker-0001-Fix-incorrect-language-standard.patch'
         'tsschecker-0002-Update-libplist-and-libirecovery-names-for-2.2.0-1.0.patch'
         'idevicerestore-0001-configure.ac-check-for-pthreads.patch'
@@ -26,8 +26,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '65a5830a7a3bbf7c7d0a8168eeadf5017b0b315abc821f6de41af6f300c426ff'
-            '2dc476eece883053a4021113fd19da6f49fd59202f8c8395b101c4f4f090c77f'
+            'bdb24efae866cf38d49245cf3aacaf9799a4913a19dfedfb154c32ae86a79227'
+            '44e99d3b5c086f752542d8b25685c75ca174b085051d6c8ab7e08939531456be'
             'f82391e9711521eb786c559cc44c989edd11682a81c48dd84e7519871d2f285a'
             '310b39992b2391e81458190f5299ad629d31152ffe2621221b5451ae32068614'
             'c800d9beaa459b7ff7b1bfa2f22731c56d29dbef457a0b6470bf24cd89a488cc'

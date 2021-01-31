@@ -1,0 +1,25 @@
+From da06799417525d2825fc8f49e2810af303ae4a66 Mon Sep 17 00:00:00 2001
+From: 0x9fff00 <0x9fff00+git@protonmail.ch>
+Date: Sun, 31 Jan 2021 19:25:38 +0100
+Subject: [PATCH 2/2] Ensure CUSTOM_LOGGING refers to a file
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index a647cdb..8dbfa42 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -81,7 +81,7 @@ else
+ fi
+ AM_CONDITIONAL([HAVE_LIBIPATCHER],[test "x$do_libipatcher" = "xyes"])
+ 
+-AC_DEFINE(CUSTOM_LOGGING, 1, [required for futurerestore])
++AC_DEFINE(CUSTOM_LOGGING, "/dev/null", [required for futurerestore])
+ 
+ LT_INIT
+ 
+-- 
+2.30.0
+
