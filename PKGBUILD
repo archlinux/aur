@@ -3,7 +3,7 @@ pkgver=r7631.741028840
 pkgrel=1
 pkgdesc="Cross-platform, graphics API agnostic, \"Bring Your Own Engine/Framework\" style rendering library. (With CMake build scripts)"
 arch=('x86_64')
-url="https://bkaradzic.github.io"
+url="https://bkaradzic.github.io/bgfx"
 license=('BSD' 'CC')
 
 depends=('mesa' 'libx11')
