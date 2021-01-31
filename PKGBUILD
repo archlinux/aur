@@ -2,7 +2,7 @@
 # PGP ID: 97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161
 
 pkgname=gpgit
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 epoch=1
 pkgdesc="A shell script that automates the process of signing Git sources via GPG"
@@ -16,7 +16,7 @@ optdepends=('jq: Github API upload'
             'lzip: Compression option')
 source=("${pkgname}-${pkgver}.tar.xz::https://github.com/NicoHood/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz"
         "${pkgname}-${pkgver}.tar.xz.asc::https://github.com/NicoHood/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz.asc")
-sha512sums=('52d6a3a4e2091ddb4476f01185c5b51b646314bac1fd00f1f400d8fe431f5d4362b33b46778523ee508df64f62d5c1873cb57da9f7c8c4cb55823d3623d41a9b'
+sha512sums=('ed470903892cb94c74f5edaaca1765eb86c7d98c328ceab6ced7bf07c262188999e163795e40de0dbf155313b813e710f362ef60ccd11e242a0276a21c3eee8e'
             'SKIP')
 # NicoHood <archlinux {cat} nicohood {dog} de>
 validpgpkeys=('97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161')
