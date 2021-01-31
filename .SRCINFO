@@ -5,6 +5,7 @@ pkgbase = libmatio-cpp-git
 	url = https://github.com/dic-iit/matio-cpp
 	arch = x86_64
 	license = BSD
+	checkdepends = catch2
 	makedepends = git
 	makedepends = cmake
 	depends = libmatio

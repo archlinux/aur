@@ -11,6 +11,7 @@ groups=()
 depends=('libmatio')
 makedepends=('git'
 	'cmake')
+checkdepends=('catch2')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
