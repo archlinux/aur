@@ -1,7 +1,7 @@
 pkgbase = obs-vnc
 	pkgdesc = This plugin is a VNC viewer that works as a source in OBS Studio
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/norihiro/obs-vnc
 	arch = x86_64
 	arch = aarch64
