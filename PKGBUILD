@@ -29,8 +29,7 @@ check() {
   env CARGO_INCREMENTAL=0 cargo test --release
 }
 
-
-package_runas-git() {
+package() {
     cd $_pkgname
 
     install -Dm4755 "target/release/runas" "$pkgdir/usr/bin/runas"
