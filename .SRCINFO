@@ -14,6 +14,8 @@ pkgbase = ananicy-s6
 	depends = schedtool
 	source = ananicy.run
 	source = ananicy.finish
+	source = ananicy.type
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 

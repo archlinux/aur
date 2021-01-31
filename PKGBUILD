@@ -15,8 +15,10 @@ license=('ISC')
 depends=('ananicy' 's6' 'bash' 'schedtool')
 makedepends=('git' 'make')
 source=("ananicy.run"
-        "ananicy.finish")
+        "ananicy.finish"
+        "ananicy.type")
 b2sums=('SKIP'
+        'SKIP'
         'SKIP')
 install=$pkgname.install
 
