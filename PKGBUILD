@@ -3,10 +3,10 @@
 pkgname=python-claripy-git
 pkgdesc="An abstraction layer for constraint solvers."
 url="https://github.com/angr/claripy"
-pkgver=8.19.2.4.r734.050ffe4
+pkgver=8.20.7.27.r1961.db253a68
 pkgrel=1
 arch=('any')
-depends=('python' 'python-cachetools' 'python-future' 'python-z3-solver-angr')
+depends=('python' 'python-cachetools' 'python-future' 'python-z3')
 makedepends=('git' 'python-setuptools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
