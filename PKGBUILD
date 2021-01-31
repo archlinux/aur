@@ -8,6 +8,7 @@
 
 pkgname=scribus-stable
 pkgver=1.4.8
+pkgbase=scribus-stable
 pkgrel=1
 pkgdesc="Desktop publishing program - old stable version"
 arch=('i686' 'x86_64')
