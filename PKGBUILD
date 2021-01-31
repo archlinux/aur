@@ -2,8 +2,8 @@
 # Contributor: mawcomw  <mawcomw@gmail.com>
 
 pkgname=limesurvey
-pkgver=4.3.34+210119
-pkgrel=2
+pkgver=4.4.0+210129
+pkgrel=1
 pkgdesc="The most popular FOSS online survey tool on the web."
 depends=('php7')
 license=('GPL2')
@@ -12,15 +12,15 @@ url="https://www.limesurvey.org"
 source=(
 https://download.limesurvey.org/latest-stable-release/limesurvey${pkgver}.zip
 )
-sha256sums=('429d76249666ea55dc1d685d5620f93744cbfc23ff47539567448462ad386a3b')
+sha256sums=('c7e1315195d8be8fbff6b8697b90d8dbdcd6b94d02f637f59abe6d6e8959517f')
 
 optdepends=('apache: a supported application server'
 	    'nginx: a supported application server'
 	    'mariadb: MariaDB database support'
 	    'mysql: MySQL database support'
 	    'postgresql: PostgreSQL database support'
-            'php-imap: email bounce tracking system')
-#            'php-ldap: import survey participants using ldap')
+            'php7-imap: email bounce tracking system')
+#            'php7-ldap: import survey participants using ldap')
 
 backup=('etc/webapps/limesurvey/config.php')
 
