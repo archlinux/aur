@@ -4,26 +4,26 @@
 pkgname=vdr-skinsoppalusikka
 pkgver=2.4.0
 _vdrapi=2.4.6
-pkgrel=4
+pkgrel=5
 pkgdesc='Standalone skin providing the good old "ElchiAIO" looks'
-url="http://www.saunalahti.fi/~rahrenbe/vdr/soppalusikka/"
+url="https://github.com/rofafor/vdr-plugin-skinsoppalusikka"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
-source=("http://www.saunalahti.fi/~rahrenbe/vdr/soppalusikka/files/$pkgname-$pkgver.tgz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/rofafor/vdr-plugin-skinsoppalusikka/archive/v2.4.0.tar.gz"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('fca534c67a61f6cc7e36e9ac57366c5a'
-         'bd9d1d8599cb554fe4a59ceeb08662d8')
+sha256sums=('7edf1d9288b2be48b3968e6d11008478334f56657cea9882c852f3c34db6fc00'
+            '47aa997228e61df5b858f861b1e941efade54a79186ff771600772c5b50a41f1')
 
 build() {
-  cd "${srcdir}/${_plugname}-${pkgver}"
+  cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
   make GITTAG=''
 }
 
 package() {
-  cd "${srcdir}/${_plugname}-${pkgver}"
+  cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
   chown -R 666:666 "$pkgdir/var/lib/vdr"
