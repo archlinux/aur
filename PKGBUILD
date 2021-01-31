@@ -12,8 +12,8 @@ if ((DISABLE_PYTHON)); then
   makedepends+=( python2 )
 else
   _CMAKE_FLAGS+=( -DPXR_PYTHON_SHEBANG:STRING="/usr/bin/python2" )
-  eval "depends+=( python2{,-opengl,-pyside} )"
-  eval "makedepends+=( python2-{jinja,pyside-tools} )"
+  eval "depends+=( python2{,-opengl,-pyside} boost-python2-libs )"
+  eval "makedepends+=( python2-{jinja,pyside-tools} boost-python2 )"
 :
 fi
 
