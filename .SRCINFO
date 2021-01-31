@@ -1,0 +1,18 @@
+pkgbase = runas-git
+	pkgdesc = An alternative to sudo and doas written in Rust
+	pkgver = 0.1.0.1.gca17ee4
+	pkgrel = 1
+	url = https://github.com/Keyboard-Slayer/runas
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = runas
+	conflicts = runas
+	source = runas::git+https://github.com/Keyboard-Slayer/runas.git
+	sha256sums = SKIP
+
+pkgname = runas-git
+
