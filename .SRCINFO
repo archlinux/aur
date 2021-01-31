@@ -1,6 +1,6 @@
 pkgbase = linux-ck
 	pkgver = 5.10.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
 	license = GPL2
@@ -20,6 +20,7 @@ pkgbase = linux-ck
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	source = 0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch
 	source = 0003-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch
+	source = 0004-Revert-SUNRPC-Handle-TCP-socket-sends-with-kernel_se.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	b2sums = f5e16e92c9543708997d9dfee28feb2cd6e6909a33dc7f97c40b507a8d03bd72717b1af84bed3fa25b2a167652d8cd93b66d145d484e5ad292af24b3bf64a649
@@ -30,6 +31,7 @@ pkgbase = linux-ck
 	b2sums = de81e92b92ba697e472d6397faa425ebcc09bede6c97008dcae47efd341d2eaa12ec72209c4cc97155df01358e1fce3a86d3f0b5441ac91615037de72105defc
 	b2sums = 9450bd3d4acfa94723eaf22f2c0a13ae3bdb1ceb15ad19d1a1de2fc8d9a7b9b8f759006fd5b4286da135c68bac75791b4bf767ece8b6c40aff95799296ee0327
 	b2sums = ea8e11fa3e9ccffe26366c2c279e11ffd4cb7ed0500028afef083188d46a0df2487800417914e63b8ac101b6a28b6a61aad91bea0b7a0305d64be3445a4f68a0
+	b2sums = 4a40db184421fdda2b01efe22adee7a4e1ce82cbc877bfaea5aaaae7215d1fe9aeb307a5241af6b7b9e539ae3d1a26f35adaedce82c61d3edb60f6e0d1673743
 
 pkgname = linux-ck
 	pkgdesc = The Linux-ck kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler
