@@ -1,9 +1,16 @@
+2021-01-31 GregTheMadMonk <yagreg7@gmail.com>
+	* 1.4.6: Bugfix release
+	- Replace potentially problematic time_s::fmt_sprintf with time_s::fmt_str
+	- Update cmd::retval (command return value) after every command
+	- Update cui::status (program status line) after with every return value that is not empty
+	- Codebase: file naming changes, with errors causeed by it fixed
+
 2021-01-28 GregTheMadMonk <yagreg7@gmail.com>
 	* 1.4.5r355.faca540
 	- Replace sprintf usage case that caused error when compiled with _FORTIFY_SOURCE
 
 2021-01-28 GregTheMadMonk <yagreg7@gmail.com>
-	* 1.4.5r323....
+	* 1.4.5: TIMELINE mode release
 	- Added TIMELINE mode:
 	  + Displays tasks (surprizse) on a timeline
 	  + Added commands:

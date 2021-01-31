@@ -1,6 +1,6 @@
 # Maintainer: Gregory Dushkin (GregTheMadMonk) <yagreg7@gmail.com>
 pkgname=noaftodo-git
-pkgver=1.4.5r355.faca540
+pkgver=1.4.6r364.b21b712
 pkgrel=1
 pkgdesc="An ncurses TODO manager that No-One-Asked-For."
 arch=(x86_64 i686)
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd noaftodo
-	printf "1.4.5r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "1.4.6r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
