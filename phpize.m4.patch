@@ -1,0 +1,13 @@
+--- scripts/phpize.m4.orig	2021-01-05 11:45:07.000000000 +0100
++++ scripts/phpize.m4	2021-01-31 12:03:46.869682067 +0100
+@@ -50,8 +50,8 @@
+ dnl Find php-config script.
+ PHP_ARG_WITH([php-config],,
+   [AS_HELP_STRING([--with-php-config=PATH],
+-    [Path to php-config [php-config]])],
+-  [php-config],
++    [Path to php-config74 [php-config74]])],
++  [php-config74],
+   [no])
+ 
+ dnl For BC.
