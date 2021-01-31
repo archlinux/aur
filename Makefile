@@ -28,4 +28,4 @@ publish:
 	git add .
 	git commit -m "Update to version $(shell $(MAKE) versions | head -n 1)."
 	git push
-	git push aur master
+	git push origin master
