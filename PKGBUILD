@@ -4,7 +4,7 @@ _pkgname=lnd
 pkgver=0.12.0_beta
 _pkgver="${pkgver//_/-}"
 __pkgver="${_pkgver//\./\\\.}"
-pkgrel=3
+pkgrel=4
 pkgdesc="Lightning Network Daemon ⚡"
 arch=('x86_64')
 url="https://github.com/lightningnetwork/lnd"
@@ -34,7 +34,7 @@ prepare() {
     do
         echo "Verifying signatures for $maintainer"
         gpg -o- --verify "$_pkgname-manifest-$maintainer-v$_pkgver.txt.clearsigned" \
-            | grep "^[0-9a-f]\{64\}  $_pkgname-linux-amd64-v$__pkgver" \
+            | grep "^[0-9a-f]\{64\}  $_pkgname-linux-amd64-v$__pkgver\(\.tar\.gz\|/lnd\|/lncli\)$" \
             | sha256sum -c -
     done
 }
