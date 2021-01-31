@@ -4,7 +4,7 @@ pkgname="linux-timemachine-git"
 pkgdesc="Rsync-based OSX-like time machine for atomic and resumable local and remote backups"
 url="https://github.com/cytopia/linux-timemachine"
 
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 
 arch=("any")
