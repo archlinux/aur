@@ -1,8 +1,8 @@
 # Maintainer: Luna Nieves <aicaya@posteo.net>
 
 pkgname=q5go
-pkgrel=2
 pkgver=2.0
+pkgrel=2
 pkgdesc="SGF editor and IGS client for Go players"
 arch=('x86_64')
 url='https://github.com/bernds/q5Go'
