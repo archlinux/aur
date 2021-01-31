@@ -1,7 +1,7 @@
 pkgbase = thunarx-python
 	pkgdesc = Thunarx Python Bindings
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://goodies.xfce.org/projects/bindings/thunarx-python
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = thunarx-python
 	license = GPL
 	depends = thunar>=1.7.0
 	depends = python-gobject
+	provides = python-thunarx=0.5.2
 	conflicts = python-thunarx
 	replaces = python-thunarx
 	source = https://archive.xfce.org/src/bindings/thunarx-python/0.5/thunarx-python-0.5.2.tar.bz2

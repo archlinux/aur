@@ -5,11 +5,12 @@
 pkgname=thunarx-python
 epoch=1
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Thunarx Python Bindings"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://goodies.xfce.org/projects/bindings/thunarx-python'
 depends=('thunar>=1.7.0' 'python-gobject')
+provides=("python-thunarx=${pkgver}")
 conflicts=('python-thunarx')
 replaces=('python-thunarx')
 license=('GPL')
