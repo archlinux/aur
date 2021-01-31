@@ -37,7 +37,7 @@ install="${pkgname}.install"
 source=("http://cern.ch/geant4-data/releases/${pkgname}.${_pkgver}.tar.gz"
         "${pkgname}.install")
 sha256sums=('776ea45230d26fffebf0cf7a342af5131135759a0f70e1b4a1a401f1d1eaad4a'
-            '173be29c04cb4aae249cbb59a2fc01549150db6bca314aac9dd9e24c603d3f5b')
+            '3ee29b5a0644050c7272cedb5e3db6f3b5acf6f6897b74ff03a9596a271506e4')
 
 ## Remove this if you want to keep an even smaller package
 ## No need to wait for compression when just installing it.
@@ -48,7 +48,6 @@ build() {
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # until SoXt fails to build because of coin, support for Invertor is droped
   env -i \
       QT_SELECT=5 \
       PATH=/usr/bin \
