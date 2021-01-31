@@ -1,7 +1,7 @@
 pkgbase = pio
 	pkgdesc = A high-level Parallel I/O Library for structured grid applications
 	pkgver = 2.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ncar.github.io/ParallelIO/
 	arch = x86_64
 	license = GPL
