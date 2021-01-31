@@ -1,7 +1,7 @@
 pkgbase = python-schedule
 	pkgdesc = Python job scheduling for humans.
-	pkgver = 0.6.0
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/dbader/schedule
 	arch = any
 	license = MIT
@@ -11,8 +11,8 @@ pkgbase = python-schedule
 	checkdepends = python2-mock
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/s/schedule/schedule-0.6.0.tar.gz
-	sha512sums = 0a2704055c7f2b3bbf08582a7f099b5118b0e97e39cda0a299b66620ab17cedb63c44e7bda7d3480649c8b4d609f3e051f8111e7370c39210c305444c287ae93
+	source = https://files.pythonhosted.org/packages/source/s/schedule/schedule-1.0.0.tar.gz
+	sha512sums = 528e415382fed39749be1a375815a7475288c8bd6f77133a39e79fc9512e1032c99185a53140db4f7153f1479e6aab57ed05637a09aa92316683f310353c1b11
 
 pkgname = python-schedule
 	depends = python
