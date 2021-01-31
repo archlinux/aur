@@ -4,27 +4,26 @@
 pkgname=vdr-rssreader
 pkgver=2.4.0
 _vdrapi=2.4.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Provides a simple OSD menu based user interface for reading user-defined RSS streams"
-url="http://www.saunalahti.fi/rahrenbe/vdr/rssreader/"
+url="https://github.com/rofafor/vdr-plugin-rssreader"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('curl' 'expat' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
-source=("http://www.saunalahti.fi/~rahrenbe/vdr/$_plugname/files/$pkgname-$pkgver.tgz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/rofafor/vdr-plugin-rssreader/archive/v$pkgver.tar.gz")
 backup=('var/lib/vdr/plugins/rssreader/rssreader.conf'
         "etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('648280e4a86694746584d5debb7be246')
+sha256sums=('b785400ef3e6916321fd239f29fcbbc36cd923cd8d2e79635a28776f82b192f6')
 
 build() {
-  cd "${srcdir}/${_plugname}-${pkgver}"
+  cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
 
   make CXXFLAGS="$CXXFLAGS -std=gnu++98 -fPIC" GITTAG=''
 }
 
-
 package() {
-  cd "${srcdir}/${_plugname}-${pkgver}"
+  cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
   make DESTDIR="$pkgdir" install
 
   mkdir -p "$pkgdir/etc/vdr/conf.avail"
