@@ -3,12 +3,12 @@
 pkgname=python-croniter
 _name=${pkgname#python-}
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python module to provide iteration for datetime object."
 arch=('any')
 url="https://github.com/kiorky/croniter"
 license=('MIT')
-depends=('python-dateutil' 'python-natsort')
+depends=('python-dateutil' 'python-future' 'python-natsort')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('8636e7f0ce842b4192b7f097cab724fc15bf2459265f1a2bc6cf6eacfa44420e')
