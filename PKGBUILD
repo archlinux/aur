@@ -2,7 +2,9 @@
 
 pkgname=htmltest-bin
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
+provides=('htmltest')
+conflicts=('htmltest')
 pkgdesc='Test generated HTML for problems'
 arch=('x86_64')
 url="https://github.com/wjdp/htmltest"
