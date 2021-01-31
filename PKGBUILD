@@ -9,7 +9,7 @@ license=('Apache' 'MIT')
 depends=('libglvnd')
 provides=('berty-bin')
 conflicts=('berty-bin')
-source=(https://github.com/berty/berty/releases/download/v${pkgver}/berty_Linux_x86_64.tar.gz)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/berty/berty/releases/download/v${pkgver}/berty_Linux_x86_64.tar.gz")
 sha256sums=('608f1250fd3bfb8605303df4f7a095743f0839ca1169d0521b0fed33eeffe14d')
 
 package() {
