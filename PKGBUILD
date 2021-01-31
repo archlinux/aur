@@ -70,7 +70,7 @@ package() {
 	/opt/$_pkgname/$_pkgname \
 	"$pkgdir"/usr/bin/$_pkgname
 	
-	## Replace Shared Objects with Symlinks ## - 2nd term created... always in $pkgdir
+	## Replace Shared Objects with Symlinks ##
 	for SO in EGL GLESv2 vulkan
 	do
 		ln -fs \
