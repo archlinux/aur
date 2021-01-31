@@ -1,0 +1,168 @@
+diff --git a/librewolf.cfg b/librewolf.cfg
+index d7a6ff6..ee15dca 100644
+--- a/librewolf.cfg
++++ b/librewolf.cfg
+@@ -93,11 +93,11 @@ defaultPref("extensions.enabledAddons", "librefox.http.watcher.tor%40intika.be:2
+ // User Settings : Cookies settings
+ // --------------------------------
+ 
+-lockPref("network.cookie.cookieBehavior", 1);
+-lockPref("network.cookie.lifetimePolicy", 2);
++defaultPref("network.cookie.cookieBehavior", 1);
++defaultPref("network.cookie.lifetimePolicy", 0);
+ lockPref("network.cookie.same-site.enabled", true);
+ lockPref("network.cookie.leave-secure-alone", true);
+-lockPref("network.cookie.thirdparty.sessionOnly", true);
++defaultPref("network.cookie.thirdparty.sessionOnly", true);
+ lockPref("network.cookie.thirdparty.nonsecureSessionOnly", true);
+ 
+ // -----------------------------------
+@@ -161,6 +161,8 @@ defaultPref("privacy.sanitize.timeSpan", 0);
+ defaultPref("browser.formfill.enable", false);
+ defaultPref("privacy.sanitize.sanitizeOnShutdown", true);
+ defaultPref("places.history.enabled", false);
++// w.r. to issue #54
++defaultPref("places.history.expiration.max_pages", 2147483647)
+ defaultPref("privacy.history.custom", true);
+ //defaultPref("privacy.cpd.openWindows", true); // Clear session data
+ //defaultPref("privacy.clearOnShutdown.openWindows", true);
+@@ -179,10 +181,10 @@ lockPref("browser.sessionstore.interval", 60000);
+ // User Settings : Autofill settings
+ // ---------------------------------
+ 
+-lockPref("extensions.formautofill.addresses.enabled", false);
+-lockPref("extensions.formautofill.available", "off");
+-lockPref("extensions.formautofill.creditCards.enabled", false);
+-lockPref("extensions.formautofill.heuristics.enabled", false);
++defaultPref("extensions.formautofill.addresses.enabled", false);
++defaultPref("extensions.formautofill.available", "off");
++defaultPref("extensions.formautofill.creditCards.enabled", false);
++defaultPref("extensions.formautofill.heuristics.enabled", false);
+ 
+ lockPref("signon.autofillForms", false);
+ lockPref("signon.autofillForms.http", false);
+@@ -349,8 +351,8 @@ lockPref("dom.w3c_pointer_events.enabled", false);
+ // Bench Diff : +0/5000
+ // >>>>>>>>>>>>>>>>>>>>
+ 
+-lockPref("privacy.resistFingerprinting", true);
+-lockPref("privacy.resistFingerprinting.block_mozAddonManager", true);
++defaultPref("privacy.resistFingerprinting", true);
++defaultPref("privacy.resistFingerprinting.block_mozAddonManager", true);
+ 
+ // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ // Section : Locale/Time/UserAgent
+@@ -360,12 +362,12 @@ lockPref("privacy.resistFingerprinting.block_mozAddonManager", true);
+ lockPref("dom.forms.datetime", false);
+ lockPref("javascript.use_us_english_locale", true);
+ lockPref("intl.regional_prefs.use_os_locales", false);
+-lockPref("intl.locale.requested", "en-US");
+-lockPref("general.useragent.override", "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0, 45");
+-lockPref("general.appname.override", "Netscape");
+-lockPref("general.appversion.override", "5.0 (Windows)");
+-lockPref("general.platform.override", "Win32");
+-lockPref("general.oscpu.override", "Windows NT 6.1");
++defaultPref("intl.locale.requested", "en-US");
++defaultPref("general.useragent.override", "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0, 45");
++defaultPref("general.appname.override", "Netscape");
++defaultPref("general.appversion.override", "5.0 (Windows)");
++defaultPref("general.platform.override", "Win32");
++defaultPref("general.oscpu.override", "Windows NT 6.1");
+ 
+ // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ // Section : Ghacks-user Selection
+@@ -469,7 +471,8 @@ lockPref("extensions.webextensions.identity.redirectDomain", "");
+ // Pref : CSP Settings For Extensions I/II : Extension Firewall Feature
+ // Uncomment to disable network for the extensions
+ // Enable-Firewall-Feature-In-The-Next-Line extensions-firewall >>>>>>
+-lockPref("extensions.webextensions.base-content-security-policy", "default-src 'self' moz-extension: blob: filesystem: 'unsafe-eval' 'unsafe-inline'; script-src 'self' moz-extension: blob: filesystem: 'unsafe-eval' 'unsafe-inline'; object-src 'self' moz-extension: blob: filesystem:;");
++defaultPref("extensions.webextensions.base-content-security-policy", "script-src 'self' https://* moz-extension: blob: filesystem: 'unsafe-eval' 'unsafe-inline'; object-src 'self' https://* moz-extension: blob: filesystem:;");
++// lockPref("extensions.webextensions.base-content-security-policy", "default-src 'self' moz-extension: blob: filesystem: 'unsafe-eval' 'unsafe-inline'; script-src 'self' moz-extension: blob: filesystem: 'unsafe-eval' 'unsafe-inline'; object-src 'self' moz-extension: blob: filesystem:;");
+ 
+ // Pref : CSP Settings For Extensions II/II : Extension Firewall Feature
+ // This value is applied after the first one (just ignore this)
+@@ -811,22 +814,22 @@ lockPref("extensions.getAddons.compatOverides.url", "");
+ // https://services.addons.mozilla.org/api/v3/addons/compat-override/?guid=%IDS%&lang=%LOCALE%
+ 
+ // Pref :
+-lockPref("extensions.getAddons.get.url", "");
++defaultPref("extensions.getAddons.get.url", "https://services.addons.mozilla.org/api/v3/addons/search/?guid=%IDS%&lang=%LOCALE%");
+ // Default Value
+ // https://services.addons.mozilla.org/api/v3/addons/search/?guid=%IDS%&lang=%LOCALE%
+ 
+ // Pref :
+-lockPref("extensions.getAddons.langpacks.url", "");
++defaultPref("extensions.getAddons.langpacks.url", "https://services.addons.mozilla.org/api/v3/addons/language-tools/?app=firefox&type=language&appversion=%VERSION%");
+ // Default Value
+ // https://services.addons.mozilla.org/api/v3/addons/language-tools/?app=firefox&type=language&appversion=%VERSION%
+ 
+ // Pref :
+-lockPref("extensions.getAddons.link.url", "");
++defaultPref("extensions.getAddons.link.url", "https://addons.mozilla.org/%LOCALE%/firefox/");
+ // Default Value
+ // https://addons.mozilla.org/%LOCALE%/firefox/
+ 
+ // Pref :
+-lockPref("extensions.getAddons.search.browseURL", "");
++defaultPref("extensions.getAddons.search.browseURL", "https://addons.mozilla.org/%LOCALE%/firefox/search?q=%TERMS%&platform=%OS%&appver=%VERSION%");
+ // Default Value
+ // https://addons.mozilla.org/%LOCALE%/firefox/search?q=%TERMS%&platform=%OS%&appver=%VERSION%
+ 
+@@ -861,7 +864,7 @@ lockPref("browser.newtabpage.activity-stream.fxaccounts.endpoint", "");
+ // https://accounts.firefox.com/
+ 
+ // Pref :
+-lockPref("extensions.update.url", "");
++defaultPref("extensions.update.url", "https://versioncheck.addons.mozilla.org/update/VersionCheck.php?reqVersion=REQ_VERSION%&id=%ITEM_ID%&version=%ITEM_VERSION%&maxAppVersion=ITEM_MAXAPPVERSION%&status=%ITEM_STATUS%&appID=%APP_ID%&appVersion=%APP_VERSION%&appOS=APP_OS%&appABI=%APP_ABI%&locale=%APP_LOCALE%&currentAppVersion=CURRENT_APP_VERSION%&updateType=%UPDATE_TYPE%&compatMode=%COMPATIBILITY_MODE%");
+ // Default Value
+ // https://versioncheck.addons.mozilla.org/update/VersionCheck.php?reqVersion=
+ // %REQ_VERSION%&id=%ITEM_ID%&version=%ITEM_VERSION%&maxAppVersion=
+@@ -1457,7 +1460,7 @@ lockPref("app.releaseNotesURL", "");
+ 
+ // Pref :
+ lockPref("app.update.auto", false);
+-lockPref("extensions.update.autoUpdateDefault", false);
++defaultPref("extensions.update.autoUpdateDefault", false);
+ lockPref("app.update.staging.enabled", false);
+ lockPref("app.update.silent", false);
+ lockPref("app.update.lastUpdateTime.telemetry_modules_ping", 0);
+@@ -1570,10 +1573,10 @@ lockPref("extensions.blocklist.itemURL", "");
+ lockPref("extensions.blocklist.url", "");
+ 
+ // Pref :
+-lockPref("extensions.update.background.url", "");
++defaultPref("extensions.update.background.url", "https://versioncheck-bg.addons.mozilla.org/update/VersionCheck.php?reqVersion=%REQ_VERSION%&id=%ITEM_ID%&version=%ITEM_VERSION%&maxAppVersion=%ITEM_MAXAPPVERSION%&status=%ITEM_STATUS%&appID=%APP_ID%&appVersion=%APP_VERSION%&appOS=%APP_OS%&appABI=%APP_ABI%&locale=%APP_LOCALE%&currentAppVersion=%CURRENT_APP_VERSION%&updateType=%UPDATE_TYPE%&compatMode=%COMPATIBILITY_MODE%");
+ 
+ // Pref :
+-lockPref("extensions.getAddons.showPane", false);
++defaultPref("extensions.getAddons.showPane", false);
+ 
+ // Pref :
+ lockPref("extensions.webservice.discoverURL", "");
+@@ -1865,7 +1868,7 @@ lockPref("security.dialog_enable_delay", 700);
+ 
+ // Pref : Opt-out of add-on metadata updates
+ // https://blog.mozilla.org/addons/how-to-opt-out-of-add-on-metadata-updates/
+-lockPref("extensions.getAddons.cache.enabled", false);
++defaultPref("extensions.getAddons.cache.enabled", false);
+ 
+ // Pref : Opt-out of theme (Persona) updates
+ // https://support.mozilla.org/t5/Firefox/how-do-I-prevent-autoamtic-updates-in-a-50-user-environment/td-p/144287
+@@ -1898,7 +1901,7 @@ lockPref("plugin.sessionPermissionNow.intervalInMinutes", 0);
+ 
+ // Pref : Update addons automatically
+ // https://blog.mozilla.org/addons/how-to-turn-off-add-on-updates/
+-lockPref("extensions.update.enabled", false);
++defaultPref("extensions.update.enabled", false);
+ 
+ // Pref : Enable add-on and certificate blocklists (OneCRL) from Mozilla
+ // Updated at interval defined in extensions.blocklist.interval (default: 86400)
+@@ -2622,4 +2625,7 @@ lockPref("security.tls.unrestricted_rc4_fallback", false);
+ //lockPref("toolkit.telemetry.unifiedIsOptIn", true);
+ //lockPref("ui.key.menuAccessKey", 0);
+ //lockPref("view_source.tab", false);
+-lockPref("xpinstall.signatures.required", false);
++defaultPref("xpinstall.signatures.required", true);
++
++// #11/#68, sounds reasonable
++defaultPref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
