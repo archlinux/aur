@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontship
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 pkgdesc='A font development toolkit and collaborative work flow'
 arch=('any')
@@ -29,6 +29,7 @@ depends=('diffutils'
          'python-unicodedata2' # fonttools optdepends
          'python-vttlib'
          'python-zopfli' # fonttools optdepends
+         'sfd2ufo>=1.0.7'
          'sfdnormalize'
          'sfnt2woff-zopfli'
          'ttfautohint'
@@ -36,7 +37,7 @@ depends=('diffutils'
          'zsh')
 makedepends=('cargo' 'rust')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('e18824486031b454268d92def21f0dc97b85dac2d15de022d3a67418224a5689')
+sha256sums=('fcf187cfbdc21b95c614c97246dfea19ad9fc9920f21e238eb4b1d65bc2d3d12')
 
 prepare() {
     cd "$pkgname-$pkgver"
