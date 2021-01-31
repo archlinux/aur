@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import torch
 
 d = torch.device('cuda')
