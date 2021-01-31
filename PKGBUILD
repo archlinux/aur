@@ -6,7 +6,7 @@
 
 pkgname=asymptote-git
 epoch=2
-pkgver=2.68.git.18.gc96e0b7e
+pkgver=2.69.git.7.g959b76f7
 pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ optdepends=('python-pyqt5:      for the xasy GUI'
             'tix:               for the xasy GUI')
 conflicts=('asymptote')
 provides=('asymptote')
-source=('git+https://github.com/spotrh/asymptote.git' remove_include.patch)
+source=('git+https://github.com/vectorgraphics/asymptote.git' remove_include.patch)
 sha256sums=('SKIP'
             '3f72eab932e4713a58fbfafba8e24df362f23d29cb75db94204c8280246f024e')
 
