@@ -16,9 +16,9 @@ sha512sums_x86_64=('c3e80bff61561fff576b2cbeb66a8678089283eb712e94b76880de8ecb60
 package(){
 
 	# Extract package data
+  msg2 "Extracting the data.tar.xz..."
 	tar xf data.tar.xz -C "${pkgdir}"
 
-	install -D -m644 "/usr/local/WebullDesktop/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -D -m644 "/usr/local/WebullDesktop/doc/libudev1/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
+  install -Dm755 "${pkgdir}"/usr/bin/webull-desktop
 
 }
