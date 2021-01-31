@@ -16,7 +16,7 @@ package(){
  cd "roundcube_caldavzap-$pkgver"
  install -d "$pkgdir/usr/share/webapps/roundcubemail/plugins/caldavzap"
  cp -r * "$pkgdir/usr/share/webapps/roundcubemail/plugins/caldavzap"
- install -D -m 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+ install -D -m 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
  install -D -m 640 -o root -g http "config.inc.php.dist" "$pkgdir/etc/webapps/roundcubemail/plugins/caldavzap/config.inc.php"
  ln -s "/etc/webapps/roundcubemail/plugins/caldavzap/config.inc.php" "$pkgdir/usr/share/webapps/roundcubemail/plugins/caldavzap/config.inc.php"
 }
