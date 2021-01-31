@@ -1,6 +1,6 @@
 pkgbase = koffe
 	pkgdesc = simple tool for creating easy to use and offline-friendly arch installers with aur support
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	arch = x86_64
 	arch = i686
@@ -34,8 +34,9 @@ pkgbase = koffe
 	depends = which
 	depends = archiso
 	depends = git
+	depends = pacman-contrib
 	source = koffe.tar.gz
-	md5sums = 354f56bb95fe85837414e94cc5a7e429
+	md5sums = 9cc4d3cfd621a0103169e38d25171700
 
 pkgname = koffe
 
