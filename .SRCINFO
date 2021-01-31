@@ -1,0 +1,14 @@
+pkgbase = verthash-miner-bin
+	pkgdesc = GPU miner for the Verthash algorithm
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/CryptoGraphics/VerthashMiner
+	arch = x86_64
+	license = GPL-3.0
+	provides = verthash-miner
+	conflicts = verthash-miner
+	source = https://github.com/CryptoGraphics/VerthashMiner/releases/download/0.6.1/VerthashMiner-0.6.1-CUDA11-linux.tar.gz
+	sha256sums = 67649a4dfe71d1f106aa1e98ed2245f1ea01c11759499dc2b29c5ba91da85597
+
+pkgname = verthash-miner-bin
+
