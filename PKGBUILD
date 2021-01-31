@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="monica-git"
-pkgver=v2.19.1.r0.g6d809fda1
+pkgver=v2.19.1.r201.gb9ee79366
 pkgrel=1
 pkgdesc="Personal CRM. Remember everything about your friends, family and business relationships"
 url="https://www.monicahq.com/"
@@ -10,7 +10,6 @@ arch=("any")
 depends=("php>=7.2")
 makedepends=("composer")
 optdepends=("mariadb: database"
-            "mysql: database"
             "apache: web server"
             "nginx: web server"
             "redis: cache and session driver")
@@ -27,7 +26,7 @@ package(){
  cd "monica"
  composer install --no-interaction --no-suggest --no-dev --ignore-platform-reqs
 
- install -d "$pkgdir/usr/share/webapps/monica"  
+ install -d "$pkgdir/usr/share/webapps/monica"
  cp -r * "$pkgdir/usr/share/webapps/monica"
 
  install -D -m 644 "LICENSE" "$pkgdir/usr/share/licenses/monica/LICENSE"
