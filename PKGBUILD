@@ -4,7 +4,7 @@
 
 pkgname=notepadpp
 _pkgname=notepad-plus-plus
-pkgver=7.9
+pkgver=7.9.2
 pkgrel=1
 pkgdesc="A free source code editor for Windows"
 arch=('x86_64')
@@ -21,11 +21,11 @@ source=(notepadpp
         "https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/npp.${pkgver}.portable.zip"
         "https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/npp.${pkgver}.portable.x64.zip")
 
-sha256sums=('a104f9759db9b2ae95577f2576a5257ffaf4a6beef366d2e0de64d10b6d114ec'
+sha256sums=('baefda04b95342db657df7f650fb5d6dd43e966a2158a0ebb5837129f8755379'
             'a1c34d444893d56ae165c8457260e11b729ea2afc10bb9e2690bc89e1f523238'
             '04c8ad254a41350078bba4d56ad54f7b4c0df125029aee021ea0ac632971ebad'
-            '22dd3d1d30b4a75717207206d568ff0654430ccb6fa18c3faeb94692a7020e2a'
-            '126b4cdab094639696ffa92f2e544b8ba8487333175e1b729ba1a2682406f65a')
+            '1f20b7fde2a8b98924df098b21ca7ffe00226c5f60f271bf615218ac0a78b420'
+            '15f3b2c2f3b99f69d4fce338d57a6708f31206ed5eb300875002be2c6dd119e0')
 
 noextract=("npp.${pkgver}.bin.zip"
            "npp.${pkgver}.bin.x64.zip")
