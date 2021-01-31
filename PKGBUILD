@@ -5,16 +5,16 @@ pkgname=simplenote-electron-arm-bin
 _pkgname=${pkgname%-electron-arm-bin}
 pkgver=2.5.0
 _appimage="simplenote-electron-${pkgver}-${CARCH}.AppImage"
-pkgrel=3
+pkgrel=4
 pkgdesc='The simplest way to keep notes'
 arch=('armv7h' 'aarch64')
 url='https://github.com/Automattic/simplenote-electron'
 license=('GPL2')
 depends=('gtk3' 'hicolor-icon-theme' 'libxss' 'mesa' 'nss')
 optdepends=(
-    'libnotify: desktop notifications'
-    'noto-fonts-emoji: emoji support'
-    'ttf-joypixels: emoji support'
+	'libnotify: desktop notifications'
+	'noto-fonts-emoji: emoji support'
+	'ttf-joypixels: emoji support'
 )
 makedepends=('zlib')
 provides=('simplenote')
@@ -28,54 +28,77 @@ b2sums_aarch64=('f28a8f71b80c2e17d531cb860708f6ca441a0c27c214b30daf96d5eb138f93f
 
 ### Prepare ###
 prepare() {
-    ## Change Directory ##
-    cd "$srcdir"
-
-    ## Mark AppImage as Executable ##
-    chmod a+x $_appimage
-
-    ## Extract AppImage into squashfs-root Directory ##
-    ./$_appimage --appimage-extract
-
-    ## Remove Unneccessary Directories/Files ##
-    rm squashfs-root/AppRun
-    rm squashfs-root/$_pkgname.png
-    rm squashfs-root/.DirIcon
-    
-    ## Fix Permissions ##
-    find squashfs-root -type d -exec chmod 0755 {} \;
-    find squashfs-root -type f -name '*.so' -exec chmod 0644 {} \;
-    
-    ## Replace Shared Objects with Symlinks ##
-    for SO in EGL GLESv2 vulkan
-    do
-        ln -fs /usr/lib/${SO}.so squashfs-root/lib${SO}.so
-    done
-    
-    ## Modify Desktop File ##
-    sed -i \
-    -e "s|^Exec=AppRun$|Exec=/usr/bin/${_pkgname}|" \
-    -e '/^X-AppImage-Version=.*/d' \
-    -e '/^Path=.*/d' \
-    squashfs-root/${_pkgname}.desktop
-    echo "Path=/opt/${_pkgname}" >> squashfs-root/${_pkgname}.desktop
+	## Change Directory ##
+	cd "$srcdir"
+	
+	## Mark AppImage as Executable ##
+	chmod a+x $_appimage
+	
+	## Extract AppImage into squashfs-root Directory ##
+	./$_appimage --appimage-extract
+	
+	## Remove Unneccessary Directories/Files ##
+	rm squashfs-root/AppRun
+	rm squashfs-root/$_pkgname.png
+	rm squashfs-root/.DirIcon
+	
+	## Fix Permissions ##
+	find squashfs-root -type d -exec chmod 0755 {} \;
+	find squashfs-root -type f -name '*.so' -exec chmod 0644 {} \;
+	
+	## Modify Desktop File ##
+	sed -i \
+	-e "s|^Exec=AppRun$|Exec=/usr/bin/${_pkgname}|" \
+	-e '/^X-AppImage-Version=.*/d' \
+	-e '/^Path=.*/d' \
+	squashfs-root/${_pkgname}.desktop
+	echo "Path=/opt/${_pkgname}" >> squashfs-root/${_pkgname}.desktop
 }
 
 ### Package ###
 package() {
-    ## Change Directory ##
-    cd "$srcdir"
-
-    ## Create Installation Directory Structure ##
-    install -dm0755 "$pkgdir"/usr/bin
-    install -dm0755 "$pkgdir"/opt/$_pkgname
-    install -dm0755 "$pkgdir"/usr/share/{applications,icons}
-    install -dm0755 "$pkgdir"/usr/share/licenses/$pkgname
-
-    ## Install Icons ##
-    cp -RL squashfs-root/usr/share/icons/hicolor "$pkgdir"/usr/share/icons/
-    rm -rf squashfs-root/usr
-
-    ## Move AppImage Contents to /opt/$_pkgname ##
-    cp -RT squashfs-root "$pkgdir"/opt/$_pkgname
+	## Change Directory ##
+	cd "$srcdir"
+	
+	## Move AppImage Contents to /opt/$_pkgname ##
+	install -dm0755 "$pkgdir"/opt/$_pkgname
+	cp -RT squashfs-root "$pkgdir"/opt/$_pkgname
+	
+	## Executable Binary ##
+	install -dm0755 "$pkgdir"/usr/bin
+	ln -s \
+	/opt/$_pkgname/$_pkgname \
+	"$pkgdir"/usr/bin/$_pkgname
+	
+	## Replace Shared Objects with Symlinks ## - 2nd term created... always in $pkgdir
+	for SO in EGL GLESv2 vulkan
+	do
+		ln -fs \
+		/usr/lib/${SO}.so \
+		"$pkgdir"/opt/$_pkgname/lib${SO}.so
+	done
+	
+	## Install Icons ##
+	for SIZE in 16 32 48 64 128 256 512 1024
+	do
+		install -dm0755 "$pkgdir"/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps
+		ln -s \
+		/opt/$_pkgname/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/${_pkgname}.png \
+		"$pkgdir"/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/${_pkgname}.png
+	done
+	
+	## Desktop Icon ##
+	install -dm0755 "$pkgdir"/usr/share/applications
+	ln -s \
+	/opt/$_pkgname/${_pkgname}.desktop \
+	"$pkgdir"/usr/share/applications/${_pkgname}.desktop
+	
+	## Licenses ##
+	install -dm0755 "$pkgdir"/usr/share/licenses/$pkgname
+	ln -s \
+	/opt/$_pkgname/LICENSE.electron.txt \
+	"$pkgdir"/usr/share/licenses/$pkgname/LICENSE.electron.txt
+	ln -s \
+	/opt/$_pkgname/LICENSES.chromium.html \
+	"$pkgdir"/usr/share/licenses/$pkgname/LICENSES.chromium.html
 }
