@@ -3,7 +3,7 @@ _php=php74
 _phpize=phpize74
 pkgname="${_php}-xdebug"
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP debugging extension"
 arch=("x86_64")
 url="https://xdebug.org/"
@@ -25,5 +25,5 @@ build() {
 package() {
   cd "${srcdir}/xdebug-${pkgver}"
   make INSTALL_ROOT="$pkgdir" install
-  install -D -m 644 "${srcdir}/xdebug.ini" "${pkgdir}/etc/{_php}/conf.d/xdebug.ini"
+  install -D -m 644 "${srcdir}/xdebug.ini" "${pkgdir}/etc/${_php}/conf.d/xdebug.ini"
 }
