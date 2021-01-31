@@ -16,7 +16,7 @@ source=('http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip'
         "${pkgname}-install.hook"
         "${pkgname}-uninstall.hook")
 DLAGENTS=('http::/usr/bin/curl -LC - -b oraclelicense=a -O')
-sha256sums=('f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59'
+sha256sums=('9c64997edfce44e29296bfbd0cf90abf8b6b9ef2ea64733adae3bdac9ae2c5a6'
             '3c7cc3b3aa0d748ce540ef4b679a1e01e3609144d3ca37ec9885d05d44d4c467'
             '0d9940a49b4c9933e7cdc2c237d6f275a898e40a7a9505df81aa474d90579ff9'
             'd8a48f9980744ea00d5373984154137b0042276c94c4cd8465b95fb4b1fad72a')
