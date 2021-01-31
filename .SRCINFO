@@ -1,0 +1,36 @@
+pkgbase = lua-luaogg
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jprjr/luaogg
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cmake
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
+	depends = libogg
+	source = https://github.com/jprjr/luaogg/releases/download/v1.0.0/luaogg-1.0.0.tar.gz
+	md5sums = edfc2131e73a9a660ddd285496b13398
+
+pkgname = lua-luaogg
+	pkgdesc = Lua bindings for libogg
+	depends = libogg
+	depends = lua
+
+pkgname = lua51-luaogg
+	pkgdesc = Lua bindings for libogg for Lua 5.1
+	depends = libogg
+	depends = lua51
+
+pkgname = lua52-luaogg
+	pkgdesc = Lua bindings for libogg for Lua 5.2
+	depends = libogg
+	depends = lua52
+
+pkgname = lua53-luaogg
+	pkgdesc = Lua bindings for libogg for Lua 5.3
+	depends = libogg
+	depends = lua53
+
