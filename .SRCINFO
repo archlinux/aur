@@ -1,0 +1,18 @@
+pkgbase = gitqlient-git
+	pkgdesc = Development branch of GitQlient
+	pkgver = v1.3.0.rc.r16.f284653
+	pkgrel = 1
+	url = https://github.com/francescmm/GitQlient
+	arch = x86_64
+	license = LGPL
+	depends = git
+	depends = qt5-base
+	depends = qt5-webengine
+	depends = qt5-webchannel
+	provides = gitqlient
+	conflicts = gitqlient
+	source = git+https://github.com/francescmm/GitQlient#branch=develop
+	sha256sums = SKIP
+
+pkgname = gitqlient-git
+
