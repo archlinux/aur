@@ -1,6 +1,6 @@
 pkgbase = berty-bin
 	pkgdesc = Berty is a secure peer-to-peer messaging app that works with or without internet access, cellular data or trust in the network
-	pkgver = 2.251.2
+	pkgver = 2.251.3
 	pkgrel = 1
 	url = https://github.com/berty/berty
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = berty-bin
 	depends = libglvnd
 	provides = berty-bin
 	conflicts = berty-bin
-	source = https://github.com/berty/berty/releases/download/v2.251.2/berty_Linux_x86_64.tar.gz
-	sha256sums = d2e19f978035d74b05787d232b52fdbac33358f1405b8d6a107214c3c3d203da
+	source = https://github.com/berty/berty/releases/download/v2.251.3/berty_Linux_x86_64.tar.gz
+	sha256sums = 608f1250fd3bfb8605303df4f7a095743f0839ca1169d0521b0fed33eeffe14d
 
 pkgname = berty-bin
 
