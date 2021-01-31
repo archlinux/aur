@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Ungoogled Chromium
+Comment=Chromium with a lightweight approach to removing Google web service dependency
+Exec=/usr/bin/chromium
+Icon=/opt/ungoogled-chromium/ungoogled-chromium-icon.png
+Terminal=false
+Type=Application
+Categories=Network;WebBrowser;
