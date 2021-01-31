@@ -35,14 +35,6 @@ pkgver() {
 build() {
     mkdir -p libsocket/build
     cd libsocket/build
-
-    # CXXFLAGS that are usually defined in /etc/makepkg.conf are not available
-    # during prepare(), but they a requiered by a CMake. That's why it's placed
-    # in the build() function. Yes, that means that there is either a bug in
-    # makepkg or all PKGBUILD's that are using CMake are incorrect :)
-
-    # TODO: cmake invocation should be moved to prepare() as soon as the issue
-    # with missing environment variables is resolved
     cmake \
         -Wno-dev \
         -DCMAKE_INSTALL_PREFIX=/usr \
