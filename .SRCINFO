@@ -5,6 +5,7 @@ pkgbase = eidmiddleware
 	url = https://www.eid.hr
 	arch = x86_64
 	license = Custom
+	depends = qt5-base
 	depends = openssl-1.0
 	depends = pcsclite
 	source = https://www.eid.hr/sites/default/files/eidmiddleware_v3.2.0_amd64.deb
