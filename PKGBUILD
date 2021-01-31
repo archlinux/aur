@@ -2,13 +2,13 @@
 
 pkgname=thunar-nilfs2-plugin-git
 _pkgname=thunar-nilfs2-plugin
-pkgver=0.git3
+pkgver=0.git4
 pkgrel=1
 pkgdesc="You can see a list of checkpoints created by NILFS2 in Thunar"
 arch=('i686' 'x86_64')
 url="https://github.com/bartoszek/thunar-nilfs2-plugin" 
 license=('GPL3')
-depends=('nilfs-utils')
+depends=('nilfs-utils' 'gtk2' 'exo')
 provides=('thunar-nilfs2-plugin')
 conflicts=('thunar-nilfs2-plugin' 'thunar-nilfs2-plugin-git')
 makedepends=('git' 'thunar' 'xfce4-dev-tools')
