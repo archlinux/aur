@@ -20,7 +20,7 @@ build() {
   tar -xf data.tar.xz
 echo "[Desktop Entry]
 Name=Scene Builder 15.0.1
-Comment=Gluon Scene Builder for Java 15.0.0
+Comment=Gluon Scene Builder for Java 15
 Exec=/opt/${_basename}/bin/SceneBuilder
 Icon=/opt/${_basename}/lib/SceneBuilder.png
 Terminal=false
