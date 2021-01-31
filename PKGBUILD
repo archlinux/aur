@@ -1,7 +1,7 @@
 # Maintainer: Kamil Śliwak <cameel2@gmail.com>
 
 _addon_name=firefox_multi_account_containers
-_addon_version=7.1.0
+_addon_version=7.3.0
 _addon_id=782160
 _addon_filename="${_addon_name}-${_addon_version}-fx.xpi"
 _gecko_id="@testpilot-containers"
@@ -16,7 +16,7 @@ license=('MPL2')
 depends=("firefox")
 source=("https://addons.cdn.mozilla.net/user-media/addons/${_addon_id}/${_addon_filename}")
 noextract=("${_addon_filename}")
-sha256sums=('aa7b608c3783199de0549087ab044deae083cfc8734b7f631befef1c5ffa0c47')
+sha256sums=('4784cbd5de44d65f4cc014949dcbd315503f4913dfa7b3124b8d84c49515666a')
 
 package() {
     cd "${srcdir}"
