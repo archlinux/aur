@@ -5,7 +5,7 @@ pkgbase = please-sudo
 	url = https://aur.archlinux.org/packages/please-sudo
 	arch = any
 	license = MIT
-	depends = please
+	depends = pleaser
 	provides = sudo
 	conflicts = sudo
 

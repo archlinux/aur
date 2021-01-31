@@ -8,7 +8,7 @@ pkgdesc="A symlink for using please as a drop-in replacement to sudo"
 arch=('any')
 url="https://aur.archlinux.org/packages/please-sudo"
 license=('MIT')
-depends=('please')
+depends=('pleaser')
 provides=('sudo')
 conflicts=('sudo')
 
