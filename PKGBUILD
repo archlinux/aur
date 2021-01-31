@@ -5,7 +5,7 @@
 _pkgsourcename=qt3
 pkgname=lib32-$_pkgsourcename
 pkgver=3.3.8b
-pkgrel=13
+pkgrel=14
 epoch=1
 pkgdesc="A cross-platform application and UI framework"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ optdepends=('qtchooser: set the default Qt toolkit'
             'postgresql-libs: PostgreSQL driver'
             'unixodbc: ODBC driver')
 options=('!docs')
-source=(http://download.qt.io/archive/qt/3/qt-x11-free-${pkgver}.tar.gz
+source=(https://download.qt.io/archive-new/qt/3/qt-x11-free-${pkgver}.tar.gz
         qt3-png15.patch
         qt-copy-kde-patches.tar.bz2
         qt-patches.tar.bz2
