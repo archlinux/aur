@@ -2,7 +2,7 @@
 # Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=gst-plugins-bad-git
-pkgver=1.16.0.r798.gf3e4aa1a1
+pkgver=1.18.0.r589.g99ebbf72e
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Bad Plugins"
 arch=('i686' 'x86_64')
@@ -10,25 +10,26 @@ license=('LGPL')
 provides=('gst-plugins-bad='$pkgver)
 conflicts=('gst-plugins-bad' 'gst-plugins-gl')
 url="http://gstreamer.freedesktop.org/"
-depends=('mjpegtools' 'gst-plugins-base-git' 'curl' 
-        'chromaprint' 'libmms' 'faad2' 'mpg123' 
-        'faac' 'celt' 'libdca' 'soundtouch' 'spandsp' 
-        'libdvdnav' 'libmodplug' 'libgme' 'opus' 
+depends=('mjpegtools' 'gst-plugins-base-git' 'curl'
+        'chromaprint' 'libmms' 'faad2' 'mpg123'
+        'faac' 'celt' 'libdca' 'soundtouch' 'spandsp'
+        'libdvdnav' 'libmodplug' 'libgme' 'opus'
         'wayland' 'rtmpdump' 'opencv' 'vulkan-headers'
         'bluez-libs' 'intel-media-sdk' 'libbs2b' 'libfdk-aac'
-        'fluidsynth' 'dssim' 'libkate' 'liblrdf' 
+        'fluidsynth' 'dssim' 'libkate' 'liblrdf'
         'ladspa' 'libde265' 'libmicrodns' 'libmpcdec'
-        'neon' 'libofa' 'openal' 'openh264' 
-        'libopenmpt' 'openni2' 'sbc' 'srt' 'libsrtp' 
+        'neon' 'libofa' 'openal' 'openh264'
+        'libopenmpt' 'openni2' 'sbc' 'srt' 'libsrtp'
         'zvbi' 'vo-aacenc' 'vo-amrwbenc'  'shaderc'
         'libnice' 'webrtc-audio-processing' 'wildmidi'
         'zbar' 'lilv-git' 'vulkan-icd-loader'
+        'libldac' 'libopenaptx'
       )
 makedepends=('git' 'meson' 'schroedinger'
              'libexif' 'libdvdread' 'lilv-git'
             'libvdpau' 'libmpeg2'
             'gtk-doc' 'glu' 'gobject-introspection' )
-options=(!libtool !emptydirs)
+options=(!emptydirs)
 
 source=('git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-bad.git'
         'gst-common::git+https://gitlab.freedesktop.org/gstreamer/common.git')
@@ -64,12 +65,16 @@ build() {
     -Dsctp=disabled \
     -Dwpe=disabled \
     -Ddoc=disabled \
+    -Dmagicleap=disabled \
+    -Dwasapi2=disabled \
+    -Disac=disabled \
+    -Dzxing=disabled \
     -Dpackage-name="GStreamer Bad Plugins (Arch Linux)" \
     -Dpackage-origin="https://www.archlinux.org/"
   ninja -C build
 }
 
-package() { 
+package() {
 
   DESTDIR="${pkgdir}" ninja -C build install
 }

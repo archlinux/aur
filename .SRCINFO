@@ -1,6 +1,6 @@
 pkgbase = gst-plugins-bad-git
 	pkgdesc = GStreamer Multimedia Framework Bad Plugins
-	pkgver = 1.16.0.r798.gf3e4aa1a1
+	pkgver = 1.18.0.r589.g99ebbf72e
 	pkgrel = 1
 	url = http://gstreamer.freedesktop.org/
 	arch = i686
@@ -68,10 +68,11 @@ pkgbase = gst-plugins-bad-git
 	depends = zbar
 	depends = lilv-git
 	depends = vulkan-icd-loader
-	provides = gst-plugins-bad=1.16.0.r798.gf3e4aa1a1
+	depends = libldac
+	depends = libopenaptx
+	provides = gst-plugins-bad=1.18.0.r589.g99ebbf72e
 	conflicts = gst-plugins-bad
 	conflicts = gst-plugins-gl
-	options = !libtool
 	options = !emptydirs
 	source = git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-bad.git
 	source = gst-common::git+https://gitlab.freedesktop.org/gstreamer/common.git
@@ -79,4 +80,3 @@ pkgbase = gst-plugins-bad-git
 	sha256sums = SKIP
 
 pkgname = gst-plugins-bad-git
-
