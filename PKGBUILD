@@ -1,7 +1,7 @@
 # Maintainer: Yann Büchau <nobodyinperson@posteo.de>
 pkgname=python-thunar-plugins-git
-pkgver=0.2.1.r1.g686f518
-pkgrel=3
+pkgver=0.2.1.r3.g30be4dc
+pkgrel=1
 epoch=
 pkgdesc="Thunar plugins"
 arch=(x86_64 aarch64)
