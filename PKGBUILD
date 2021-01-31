@@ -2,7 +2,7 @@
 
 _pkg=tflint
 pkgname=${_pkg}-bin
-pkgver=0.23.1
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="A linter for Terraform code"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('zip')
 conflicts=("${_pkg}")
 provides=("${_pkg}")
 source=("tflint_linux_amd64-${pkgver}.zip::${url}/releases/download/v${pkgver}/tflint_linux_amd64.zip")
-sha512sums=('3e2c0677a4503b884865b08fd1e49ac2e29f661f4b20b9634a5612ce1a4ee1de03807c37d4af1a49609a27921f9ea435d360b44aeeceb8f745a18315c1720840')
+sha512sums=('ea7d7564fb7530a981a39120fd9c4be3120d213138e022819d4cf837634991fd53d4cfd1ccfb8d662e877fd4ea571dc89a02c591ea3f42a03266b448cad3d5a5')
 
 package() {
   cd ${srcdir}
