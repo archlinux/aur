@@ -4,8 +4,8 @@
 # Contributor: Matthew Gyurgyik <matthew@pyther.net>
 # Contributor: Giorgio Azzinnaro <giorgio@azzinna.ro>
 pkgname=icaclient
-pkgver=20.12
-pkgrel=2
+pkgver=21.01
+pkgrel=1
 pkgdesc="Citrix Workspace App for x86_64 (64bit) Linux (ICAClient, Citrix Receiver)"
 arch=('x86_64' 'i686' 'armv7h')
 url='https://www.citrix.com/downloads/workspace-app/linux/'
@@ -32,9 +32,9 @@ md5sums=('71aca6257f259996ac59729604f32978'
          '1f214f6f456f59afd1a3275580f4240e'
          '59f8e50cc0e0c399d47eb7ace1df5a32'
          'dca5a1f51449ef35f1441b900d622276')
-sha256sums_x86_64=('3EFF2A540BE614145A0F6277FAE01AD20790D19EBB918871B7475C8963B6C888')
-sha256sums_i686=('6E1F039D08B36774CBDBCB8714EEBE8163768ED0EEE2EA30D390CCE44B132839')
-sha256sums_armv7h=('DBC2E3F299E71B687B13A7D2CAF6CBD39AC556AA860E844C2035CC0CF855FCE8')
+sha256sums_x86_64=('ca88a1abc93970a0141adcd5613d95116ffbbfd0573e744e5b3846a35778a906')
+sha256sums_i686=('258ff73cd82e081b308850a3acd49471a26a08e197b649205f26a6c8472ebdd6')
+sha256sums_armv7h=('13c463ec0f482c34219c19461b6a3d7243076a79c55d0ffe8fe3b404e3d9f745')
 install=citrix-client.install
 
 package() {
@@ -97,8 +97,8 @@ package() {
 
 	ln -s gst_play1.0 "${pkgdir}/$ICAROOT/util/gst_play"
 	ln -s gst_read1.0 "${pkgdir}/$ICAROOT/util/gst_read"
-	mkdir -p "${pkgdir}/usr/lib/gstreamer-1.0"
-	ln -s "$ICAROOT/util/libgstflatstm1.0.so" "${pkgdir}/usr/lib/gstreamer-1.0/libgstflatstm.so"
+	#mkdir -p "${pkgdir}/usr/lib/gstreamer-1.0"
+	#ln -s "$ICAROOT/util/libgstflatstm1.0.so" "${pkgdir}/usr/lib/gstreamer-1.0/libgstflatstm.so"
     # Dirty Hack
     # wfica expects {module,wfclient,apssrv}.ini in $ICAROOT/config
     # sadly these configs differ slightly by locale
@@ -111,9 +111,6 @@ package() {
     cp "${pkgdir}$ICAROOT/nls/$lang/wfclient.template" "${pkgdir}/$ICAROOT/config/wfclient.ini"
  
 	sed -i 's/Ceip=Enable/Ceip=Disable/g' "${pkgdir}$ICAROOT/config/module.ini"
-    # Copy Firefox plugin into plugin directory
-    mkdir -p "${pkgdir}/usr/lib/mozilla/plugins"
-    ln -s "$ICAROOT/npica.so" "${pkgdir}"/usr/lib/mozilla/plugins/npica.so
     cd "${srcdir}"
     # install freedesktop.org files
     install -Dm644 wfica.desktop "${pkgdir}/usr/share/applications/wfica.desktop"
