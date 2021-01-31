@@ -1,7 +1,7 @@
 pkgbase = ttf-adobe-source-fonts
-	pkgdesc = TTF versions of Adobe's Source fonts (includes variable and non-variable versions of Source Sans Pro, Source Serif Pro, and Source Code Pro). Now includes Source Sans Pro (3.006R) and Source Sans 3 (3.028R).
-	pkgver = 3.028R+3.001R+2.032R+ro+1.052R+it+1.012R+VAR
-	pkgrel = 5
+	pkgdesc = TTF versions of Adobe's Source fonts (includes variable and non-variable versions of Source Sans 3, Source Serif 4, and Source Code Pro). Also includes the latest versions under old names (Source Sans Pro, 3.006R; Source Serif Pro, 3.001R).
+	pkgver = 3.028R+4.004R+2.038R+ro+1.058R+it+1.018R+VAR
+	pkgrel = 6
 	url = https://github.com/adobe-fonts
 	arch = any
 	license = custom
@@ -9,12 +9,14 @@ pkgbase = ttf-adobe-source-fonts
 	conflicts = ttf-sourcesanspro
 	source = source-sans-pro-3.028R.tar.gz::https://github.com/adobe-fonts/source-sans-pro/archive/3.028R.tar.gz
 	source = source-sans-pro-3.006R.tar.gz::https://github.com/adobe-fonts/source-sans-pro/archive/3.006R.tar.gz
-	source = source-serif-pro-3.001R.tar.gz::https://github.com/adobe-fonts/source-serif-pro/archive/3.001R.tar.gz
-	source = source-code-pro-2.032R-ro-1.052R-it-1.012R-VAR.tar.gz::https://github.com/adobe-fonts/source-code-pro/archive/2.032R-ro/1.052R-it/1.012R-VAR.tar.gz
+	source = source-serif-4.004R.tar.gz::https://github.com/adobe-fonts/source-serif/archive/4.004R.tar.gz
+	source = source-serif-3.001R.tar.gz::https://github.com/adobe-fonts/source-serif/archive/3.001R.tar.gz
+	source = source-code-pro-2.038R-ro-1.058R-it-1.018R-VAR.tar.gz::https://github.com/adobe-fonts/source-code-pro/archive/2.038R-ro/1.058R-it/1.018R-VAR.tar.gz
 	sha256sums = 12faf267e40f1be46daf44afce47facd6efb996e2f2f5abe0a3dde161d54e251
 	sha256sums = a384e8c3246490bb5eaf79eb9eb9e41d7f2d167bb7d36280156ec77ae8ddfda1
-	sha256sums = 84e08c9e870081e0fcda4d83b02e06a4a7f35e52f96491a2246eca8b82fc8a53
-	sha256sums = 4e21492169b9efdd8c40ed6c34aa0d5e58d2a8724d0cd98f2e0f88ccf5ecc78c
+	sha256sums = dfb364735699cb830caad534cf7741234804d28e4b6fc5e4736b2401f6131aba
+	sha256sums = 6be29a6ecc275d39f77d608fba576ee1976287f65823bde61309dc907023410c
+	sha256sums = d8f879fefd66ecb7291ea2d73984b9c0a97fb499424e58290ba6b81787d0c725
 
 pkgname = ttf-adobe-source-fonts
 
