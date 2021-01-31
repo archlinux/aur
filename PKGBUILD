@@ -51,6 +51,7 @@ pkgver() {
 }
 
 build() {
+  export CCACHE_BASEDIR="$srcdir"
 # shellcheck disable=SC2191
   CMAKE_FLAGS=(
         -Wno-dev
