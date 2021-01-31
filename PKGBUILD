@@ -8,7 +8,7 @@ pkgdesc="A typewriter-like font."
 arch=('any')
 source=("special-elite.zip::http://www.fontsquirrel.com/fonts/download/special-elite")
 install=$pkgname.install
-md5sums=('9bab002ed60575194e0a3149d4484940')
+md5sums=('c1d88fab4e4db838c74c7ee69eef39e9')
 url="http://www.fontsquirrel.com/fonts/special-elite"
 license=('Apache')
 
