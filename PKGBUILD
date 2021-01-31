@@ -1,6 +1,6 @@
 pkgname=pio
 pkgver=2.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-level Parallel I/O Library for structured grid applications"
 url="https://ncar.github.io/ParallelIO/"
 license=('GPL')
@@ -16,10 +16,10 @@ build() {
   make
 }
 
-check() {
-    cd "$pkgname-$pkgver"
-    make check
-}
+#check() {
+#    cd "$pkgname-$pkgver"
+#    make check
+#}
 
 package() {
   cd ${pkgbase}-${pkgver}
