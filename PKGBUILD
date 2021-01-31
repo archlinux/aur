@@ -2,12 +2,13 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname="cups-nosystemd"
-pkgver=2.3.3
-pkgrel=2
+pkgver=2.3.3op1
+pkgrel=1
+epoch=1
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
 license=('Apache' 'custom')
-url="https://www.cups.org/"
+url="https://github.com/OpenPrinting/cups"
 groups=('eudev-base')
 depends=('acl' 'pam' "libcups>=${pkgver}" 'cups-filters' 'bc'
          'dbus' 'hicolor-icon-theme' 'libpaper')
@@ -31,13 +32,13 @@ backup=(etc/cups/cupsd.conf
         etc/logrotate.d/cups
 	etc/pam.d/cups)
 	#etc/xinetd.d/cups-lpd)
-source=(https://github.com/apple/cups/releases/download/v${pkgver}/cups-${pkgver}-source.tar.gz
+source=(https://github.com/OpenPrinting/cups/releases/download/v${pkgver}/cups-${pkgver}-source.tar.gz
         cups cups.logrotate cups.pam
         # improve build and linking
         cups-no-export-ssllibs.patch
         cups-1.6.2-statedir.patch
         )
-sha256sums=('261fd948bce8647b6d5cb2a1784f0c24cc52b5c4e827b71d726020bcc502f3ee'
+sha256sums=('5cf7988081d9003f589ba173b37bc2bbf81db43bb94e5e7d3e7d4c0afb0f9bc2'
             '87cd833e7c07a36298341e35d5ce0534ce68fdf76ce3e9eda697e5455b963d1b'
             'd87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
@@ -54,11 +55,6 @@ prepare() {
   # move /var/run -> /run for pid file
   patch -Np1 -i "$srcdir"/cups-1.6.2-statedir.patch
 
-  # set MaxLogSize to 0 to prevent using cups internal log rotation
-  sed -i -e '5i\ ' conf/cupsd.conf.in
-  sed -i -e '6i# Disable cups internal logging - use logrotate instead' conf/cupsd.conf.in
-  sed -i -e '7iMaxLogSize 0' conf/cupsd.conf.in
-
   # Rebuild configure script for not zipping man-pages.
   aclocal -I config-scripts
   autoconf -I config-scripts
@@ -66,6 +62,10 @@ prepare() {
 
 build() {
   cd cups-${pkgver}
+
+  # The build system uses only DSOFLAGS but not LDFLAGS to build some libraries.
+  export DSOFLAGS=${LDFLAGS}
+
   ./configure \
      --prefix=/usr \
      --sysconfdir=/etc \
@@ -77,6 +77,7 @@ build() {
      --with-exe-file-perm=0755 \
      --with-cups-user=daemon \
      --with-cups-group=lp \
+     --with-max-log-size=0 \
      --enable-pam=yes \
      --enable-raw-printing \
      --enable-dbus=yes \
