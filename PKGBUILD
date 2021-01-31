@@ -2,24 +2,24 @@
 _basename="scenebuilder"
 pkgname="javafx-scenebuilder"
 _debpkg=SceneBuilder
-pkgver="15.0.0"
-_pkgver="15.0.0"
-pkgrel=2
-pkgdesc="Scene Builder 15.0.0 was released on Jan 8, 2021."
+pkgver="15.0.1"
+_pkgver="15.0.1"
+pkgrel=1
+pkgdesc="Scene Builder is an open source tool that allows for drag and drop design of JavaFX user interfaces."
 arch=('x86_64' 'i686')
-url="http://gluonhq.com/labs/scene-builder/"
+url="https://gluonhq.com/products/scene-builder/"
 license=('BSD License')
 depends=('libarchive')
 makedepends=()
 optdepends=()
 install=
-source=(https://download2.gluonhq.com/scenebuilder/15.0.0/install/linux/$_debpkg"-"$_pkgver".deb")
-sha1sums=('d608d989ae039722583fb7a64b34955477e31463') 
+source=(https://download2.gluonhq.com/scenebuilder/15.0.1/install/linux/$_debpkg"-"$_pkgver".deb")
+sha1sums=('05b1d34896e9eb4dd10edbc4160ed50697da29c3') 
 build() {
   cd "$srcdir/"
   tar -xf data.tar.xz
 echo "[Desktop Entry]
-Name=Scene Builder 15.0.0
+Name=Scene Builder 15.0.1
 Comment=Gluon Scene Builder for Java 15.0.0
 Exec=/opt/${_basename}/bin/SceneBuilder
 Icon=/opt/${_basename}/lib/SceneBuilder.png
