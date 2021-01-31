@@ -12,8 +12,8 @@ makedepends=('git')
 optdepends=('pandoc: make dependency, add README to menu options')
 source=("https://github.com/bernds/q5Go/archive/q5go-$pkgver.tar.gz"
         "q5go.desktop")
-md5sums=('8bc389d50f5caa7e10dd45de81c3649a'
-         'fa547fb8a61c4a7079222a1123185093')
+sha256sums=('993777c02fbab136c12f9de2bc27178edfd10c070d57cf1dd7151b676c6b8a90'
+            '11c3490e0dd8613465672f4b74b19ee2329944618f566e908d0b0936064f8a69')
 
 build() {
     mkdir "q5Go-$pkgname-$pkgver/build"
