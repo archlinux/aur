@@ -6,7 +6,7 @@ _pkgname_base=irssi-libnotify
 pkgname=$_pkgname_base-git
 
 pkgver=r59.7ada59a
-pkgrel=2
+pkgrel=3
 pkgdesc="libnotify plugin for irssi"
 arch=("any")
 url="https://github.com/stickster/irssi-libnotify"
@@ -23,23 +23,23 @@ md5sums=('SKIP'
          'bf976922f1e60bfd6a6f2dbb682d8d79')
 
 pkgver() {
-  cd $srcdir/$pkgname
+  cd $pkgname
 
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd $srcdir/$pkgname
+  cd $pkgname
 
   sed -i 's:python:&2:' notify-listener.py
   sed -i 's?~/bin/irssi-notifier.sh?/usr/bin/irssi-notifier?' notify.pl
 }
 
 package() {
-  cd $srcdir/$pkgname
+  cd $pkgname
 
   install -Dm755 irssi-notifier.sh  $pkgdir/usr/bin/irssi-notifier
   install -Dm755 notify-listener.py $pkgdir/usr/bin/notify-listener.py
   install -Dm644 notify.pl          $pkgdir/usr/share/irssi/scripts/notify.pl
-  install -Dm755 notify-listener.service $pkgdir/home/$USER/.config/systemd/user/notify-listener.service
+  install -Dm644 notify-listener.service $pkgdir/usr/lib/systemd/user/notify-listener.service
 }
