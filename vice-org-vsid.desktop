@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=VICE (vsid)
+Comment=SID Player (Gtk3 UI)
+Exec=/usr/bin/vsid
+Terminal=false
+Icon=/usr/share/vice/common/SID_1024.svg
+Categories=Game;Emulator
+

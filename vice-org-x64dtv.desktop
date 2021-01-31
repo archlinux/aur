@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=VICE (x64dtv)
+Comment=DTV64 emulator (Gtk3 UI)
+Exec=/usr/bin/x64dtv
+Terminal=false
+Icon=/usr/share/vice/common/DTV_1024.svg
+Categories=Game;Emulator
+

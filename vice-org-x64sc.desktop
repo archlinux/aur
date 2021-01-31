@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=VICE (x64sc)
+Comment=Cycle-exact C64 emulator (Gtk3 UI)
+Exec=/usr/bin/x64sc
+Terminal=false
+Icon=/usr/share/vice/common/C64_1024.svg
+Categories=Game;Emulator
+

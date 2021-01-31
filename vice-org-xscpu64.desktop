@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=VICE (xscpu64)
+Comment=SuperCPU C64 emulator (Gtk3 UI)
+Exec=/usr/bin/xscpu64
+Terminal=false
+Icon=/usr/share/vice/common/SCPU_1024.svg
+Categories=Game;Emulator
+

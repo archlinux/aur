@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=VICE (xplus4)
+Comment=Plus-4 / C16 emulator (Gtk3 UI)
+Exec=/usr/bin/xplus4
+Terminal=false
+Icon=/usr/share/vice/common/Plus4_1024.svg
+Categories=Game;Emulator

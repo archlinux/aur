@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=VICE (xcbm2)
+Comment=CBM-II model 6x0/7x0 emulator (Gtk3 UI)
+Exec=/usr/bin/xcbm2
+Terminal=false
+Icon=/usr/share/vice/common/CBM2_1024.svg
+Categories=Game;Emulator
+

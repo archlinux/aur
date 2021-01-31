@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 1024 1024"
+   style="enable-background:new 0 0 1024 1024;"
+   xml:space="preserve"
+   sodipodi:docname="C128_1024.svg"
+   inkscape:export-filename="C:\src\vice\vice\data\common\C128_128.png"
+   inkscape:export-xdpi="12.336111"
+   inkscape:export-ydpi="12.336111"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"><metadata
+   id="metadata696"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+   id="defs694" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="2364"
+   inkscape:window-height="1415"
+   id="namedview692"
+   showgrid="true"
+   inkscape:zoom="0.97531385"
+   inkscape:cx="316.67826"
+   inkscape:cy="512"
+   inkscape:window-x="187"
+   inkscape:window-y="-9"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1" />
+<style
+   type="text/css"
+   id="style560">
+	.st0{display:none;}
+	.st1{display:inline;}
+	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:url(#SVGID_1_);}
+	.st3{fill-rule:evenodd;clip-rule:evenodd;fill:url(#SVGID_2_);}
+	.st4{fill-rule:evenodd;clip-rule:evenodd;fill:url(#SVGID_3_);}
+	.st5{display:inline;fill-rule:evenodd;clip-rule:evenodd;fill:#8A88A3;}
+	.st6{display:inline;fill-rule:evenodd;clip-rule:evenodd;fill:url(#SVGID_4_);}
+	.st7{fill:#FFFFFF;}
+	.st8{fill-rule:evenodd;clip-rule:evenodd;}
+	.st9{fill-rule:evenodd;clip-rule:evenodd;fill:#3A3A3A;}
+	.st10{display:inline;fill:#FFFFFF;}
+	.st11{display:inline;opacity:0.3;fill-rule:evenodd;clip-rule:evenodd;fill:url(#SVGID_5_);enable-background:new    ;}
+	.st12{fill-rule:evenodd;clip-rule:evenodd;fill:#3D3D3D;}
+	.st13{fill-rule:evenodd;clip-rule:evenodd;fill:#595959;}
+	.st14{opacity:0.5;}
+	.st15{fill:none;stroke:#000000;stroke-width:20;stroke-miterlimit:10;}
+	.st16{fill:none;stroke:#FFFFFF;stroke-width:20;stroke-miterlimit:10;}
+	.st17{font-family:'EurostileLTStd-BoldEx2';}
+	.st18{font-size:175px;}
+	.st19{enable-background:new    ;}
+	.st20{fill:none;stroke:#000000;stroke-miterlimit:10;}
+</style>
+<g
+   id="Layer_1_1_"
+   class="st0">
+	<g
+   class="st1"
+   id="g583">
+		
+			<linearGradient
+   id="SVGID_1_"
+   gradientUnits="userSpaceOnUse"
+   x1="334.2704"
+   y1="873.824"
+   x2="400.9372"
+   y2="-48.8426"
+   gradientTransform="matrix(1 0 0 -1 0 1024)">
+			<stop
+   offset="0"
+   style="stop-color:#68372B"
+   id="stop562" />
+			<stop
+   offset="1"
+   style="stop-color:#352879"
+   id="stop564" />
+		</linearGradient>
+		<path
+   class="st2"
+   d="M584.8,342.9v-187C547,146,521.1,142,483.3,142c-198.9,0-372,165.1-372,370c0,212.8,175,370,374,370    c35.8,0,55.7-4,99.4-15.9v-191C541,697,519.1,703,483.3,703c-109.4,0-194.9-91.5-194.9-194.9c0-105.4,83.5-194.9,192.9-194.9    C519.1,313.1,550.9,323,584.8,342.9L584.8,342.9z"
+   id="path567" />
+		
+			<linearGradient
+   id="SVGID_2_"
+   gradientUnits="userSpaceOnUse"
+   x1="731.5681"
+   y1="902.5305"
+   x2="798.2347"
+   y2="-20.1362"
+   gradientTransform="matrix(1 0 0 -1 0 1024)">
+			<stop
+   offset="0"
+   style="stop-color:#68372B"
+   id="stop569" />
+			<stop
+   offset="1"
+   style="stop-color:#352879"
+   id="stop571" />
+		</linearGradient>
+		<polygon
+   class="st3"
+   points="912.7,353.1 594.4,353.1 594.4,498.3 769.5,498.3   "
+   id="polygon574" />
+		
+			<linearGradient
+   id="SVGID_3_"
+   gradientUnits="userSpaceOnUse"
+   x1="713.7708"
+   y1="901.2445"
+   x2="780.4375"
+   y2="-21.4221"
+   gradientTransform="matrix(1 0 0 -1 0 1024)">
+			<stop
+   offset="0"
+   style="stop-color:#68372B"
+   id="stop576" />
+			<stop
+   offset="1"
+   style="stop-color:#352879"
+   id="stop578" />
+		</linearGradient>
+		<polygon
+   class="st4"
+   points="771.5,528.1 594.4,528.1 594.4,673.3 912.7,673.3   "
+   id="polygon581" />
+	</g>
+</g>
+<g
+   id="Layer_12"
+   class="st0">
+	<rect
+   class="st5"
+   width="1024"
+   height="1024"
+   id="rect586" />
+</g>
+<g
+   id="Layer_11_copy"
+   class="st0">
+	
+		<linearGradient
+   id="SVGID_4_"
+   gradientUnits="userSpaceOnUse"
+   x1="512.05"
+   y1="1017.1594"
+   x2="512.05"
+   y2="689.3555"
+   gradientTransform="matrix(1 0 0 -1 0 1024)">
+		<stop
+   offset="0"
+   style="stop-color:#68372B"
+   id="stop589" />
+		<stop
+   offset="0.7388"
+   style="stop-color:#352879"
+   id="stop591" />
+	</linearGradient>
+	<path
+   class="st6"
+   d="M267.1,1010H139.3C70.1,1010,14,953.9,14,884.7V139.3C14,70.1,70.1,14,139.3,14h745.5   c69.2,0,125.3,56.1,125.3,125.3v745.5c0,69.2-56.1,125.3-125.3,125.3H756.7"
+   id="path594" />
+	<g
+   class="st1"
+   id="g600">
+		<polygon
+   class="st7"
+   points="641.3,914 641.3,657 524,657 524,798.4   "
+   id="polygon596" />
+		<polygon
+   class="st7"
+   points="500,800 500,657 382.7,657 382.7,914   "
+   id="polygon598" />
+	</g>
+</g>
+<g
+   id="Layer_11_copy_2"
+   class="st0">
+	<g
+   class="st1"
+   id="g607">
+		<path
+   class="st8"
+   d="M267.1,1010H139.3C70.1,1010,14,953.9,14,884.7V139.3C14,70.1,70.1,14,139.3,14h745.5    c69.2,0,125.3,56.1,125.3,125.3v745.5c0,69.2-56.1,125.3-125.3,125.3H756.7L267.1,1010L267.1,1010z"
+   id="path603" />
+		<path
+   class="st9"
+   d="M14,497V139.3C14,70.1,70.1,14,139.3,14H512L14,497z"
+   id="path605" />
+	</g>
+	<polygon
+   class="st10"
+   points="639.3,896 639.3,643 523.8,643 523.8,782.1  "
+   id="polygon609" />
+	<polygon
+   class="st10"
+   points="500.2,783.7 500.2,643 384.7,643 384.7,896  "
+   id="polygon611" />
+	
+		<linearGradient
+   id="SVGID_5_"
+   gradientUnits="userSpaceOnUse"
+   x1="-509"
+   y1="953.407"
+   x2="-509"
+   y2="103.1061"
+   gradientTransform="matrix(1 0 0 -1 0 1024)">
+		<stop
+   offset="4.442563e-02"
+   style="stop-color:#68372B"
+   id="stop613" />
+		<stop
+   offset="0.7388"
+   style="stop-color:#352879"
+   id="stop615" />
+	</linearGradient>
+	<path
+   class="st11"
+   d="M-741.6,970H-863c-65.7,0-119-53.3-119-119V143c0-65.7,53.3-119,119-119h708c65.7,0,119,53.3,119,119v708   c0,65.7-53.3,119-119,119h-121.6"
+   id="path618" />
+</g>
+<g
+   id="Layer_11_copy_3"
+   inkscape:export-xdpi="1.5420139"
+   inkscape:export-ydpi="1.5420139">
+	<path
+   class="st12"
+   d="M267.1,1010H139.3C70.1,1010,14,953.9,14,884.7V139.3C14,70.1,70.1,14,139.3,14h745.5   c69.2,0,125.3,56.1,125.3,125.3v745.5c0,69.2-56.1,125.3-125.3,125.3H756.7L267.1,1010L267.1,1010z"
+   id="path621" />
+	<path
+   class="st13"
+   d="M267.1,1010H139.3C70.1,1010,14,953.9,14,884.7V809h996v75.7c0,69.2-56.1,125.3-125.3,125.3h-128H267.1z"
+   id="path623" />
+	<g
+   class="st14"
+   id="g645">
+		<line
+   class="st15"
+   x1="14"
+   y1="620"
+   x2="1010"
+   y2="620"
+   id="line625" />
+		<line
+   class="st16"
+   x1="14"
+   y1="640"
+   x2="1010"
+   y2="640"
+   id="line627" />
+		<line
+   class="st15"
+   x1="14"
+   y1="660"
+   x2="1010"
+   y2="660"
+   id="line629" />
+		<line
+   class="st16"
+   x1="14"
+   y1="680"
+   x2="1010"
+   y2="680"
+   id="line631" />
+		<line
+   class="st15"
+   x1="14"
+   y1="700"
+   x2="1010"
+   y2="700"
+   id="line633" />
+		<line
+   class="st16"
+   x1="14"
+   y1="720"
+   x2="1010"
+   y2="720"
+   id="line635" />
+		<line
+   class="st15"
+   x1="14"
+   y1="740"
+   x2="1010"
+   y2="740"
+   id="line637" />
+		<line
+   class="st16"
+   x1="14"
+   y1="760"
+   x2="1010"
+   y2="760"
+   id="line639" />
+		<line
+   class="st15"
+   x1="14"
+   y1="780"
+   x2="1010"
+   y2="780"
+   id="line641" />
+		<line
+   class="st16"
+   x1="14"
+   y1="800"
+   x2="1010"
+   y2="800"
+   id="line643" />
+	</g>
+</g>
+<g
+   id="Layer_11"
+   class="st0">
+</g>
+<g
+   id="VIC20"
+   class="st0">
+	<text
+   transform="matrix(1 0 0 1 118.6028 556.6257)"
+   class="st10 st17 st18"
+   id="text649">VIC20</text>
+</g>
+<g
+   id="Plus4"
+   class="st0">
+	<text
+   transform="matrix(1 0 0 1 168.3914 556.6257)"
+   class="st10 st17 st18"
+   id="text652">Plus4</text>
+</g>
+<g
+   id="DTV"
+   class="st0">
+	<text
+   transform="matrix(1 0 0 1 243.9006 556.6257)"
+   class="st10 st17 st18"
+   id="text655">DTV</text>
+</g>
+<g
+   id="C64"
+   class="st0">
+	<text
+   transform="matrix(1 0 0 1 246.177 556.6257)"
+   class="st10 st17 st18"
+   id="text658">C64</text>
+</g>
+<g
+   id="SID"
+   class="st0">
+	<text
+   transform="matrix(1 0 0 1 289.3142 556.6257)"
+   class="st10 st17 st18"
+   id="text661">SID</text>
+</g>
+<g
+   id="PET"
+   class="st0">
+	<text
+   transform="matrix(1 0 0 1 265.6008 556.6257)"
+   class="st10 st17 st18"
+   id="text664">PET</text>
+</g>
+<g
+   id="CBM2"
+   class="st0">
+	<text
+   transform="matrix(1 0 0 1 122.9768 556.6257)"
+   class="st10 st17 st18"
+   id="text667">CBM2</text>
+</g>
+<g
+   id="SCPU"
+   class="st0">
+	<text
+   transform="matrix(1 0 0 1 149.052 556.6257)"
+   class="st10 st17 st18"
+   id="text670">SCPU</text>
+</g>
+<g
+   id="C128"
+   transform="matrix(1.1231875,0,0,1.1231875,-68.118507,-68.750969)">
+	<g
+   class="st19"
+   id="g681">
+		<path
+   class="st7"
+   d="m 170.1,474.4 c 0,-18.6 5.2,-30 14.8,-36.8 9.6,-6.8 23.5,-9 41,-9 h 22.8 22.8 c 27.7,0 43.3,3 51.9,10.4 8.6,7.4 10.4,19.4 10.2,37.3 h -19.4 -19.4 v -1.8 -1.8 c 0,-4.6 -1.7,-7.5 -4.8,-9.3 -3.1,-1.8 -7.7,-2.5 -13.4,-2.5 h -21.2 -21.2 c -10.2,0 -16.3,2.4 -19.8,6.8 -3.5,4.4 -4.5,10.7 -4.5,18.6 v 6.8 6.8 c 0,9.2 1,15.5 4.2,19.6 3.2,4.1 8.8,5.8 18,5.8 h 20.7 20.7 c 8.8,0 14.4,-0.4 17.9,-2.8 3.5,-2.4 4.8,-6.8 4.8,-14.7 h 19.4 19.4 v 5.9 5.9 c 0,10.7 -1.9,20.2 -8.7,27.1 -6.8,6.9 -18.3,11.3 -37.8,11.3 h -31.3 -31.3 c -17.5,0 -31.5,-2.2 -41,-9 -9.5,-6.8 -14.8,-18.3 -14.8,-36.8 v -18.9 z"
+   id="path673" />
+		<path
+   class="st7"
+   d="m 439.7,460.4 -23.4,15 -23.4,15 -8.8,-12.7 -8.8,-12.7 26.9,-17.5 26.9,-17.5 h 23.2 23.2 v 63.4 63.4 h -17.9 -17.9 v -48.1 z"
+   id="path675" />
+		<path
+   class="st7"
+   d="m 530.7,513.6 c 0,-7.8 2.5,-14.3 8.2,-19 5.7,-4.7 14.5,-7.8 27,-8.6 l 22.2,-1.4 22.2,-1.4 c 14.2,-0.9 21.7,-1.4 25.8,-3.3 4.1,-1.9 4.5,-5.1 4.5,-11.4 0,-5.2 -0.3,-8.3 -3.6,-10.2 -3.3,-1.9 -9.8,-2.4 -22.3,-2.4 H 601.8 589 c -8.2,0 -13.6,0.6 -16.9,2.9 -3.3,2.3 -4.6,6.1 -4.6,12.7 v 2.7 2.7 h -18.4 -18.4 v -7.4 -7.4 c 0,-12.5 3.7,-20.9 11.7,-26.1 8,-5.2 20.5,-7.3 38,-7.3 h 25.6 25.6 c 18.2,0 29.7,2.7 36.6,8.7 6.9,6 9.3,15.3 9.3,28.5 0,18.6 -1.7,29.5 -9.1,36.1 -7.4,6.6 -20.4,8.7 -43.1,10 l -20,1.1 -20,1.1 c -8.1,0.4 -12.8,1.4 -15.5,3.8 -2.7,2.4 -3.3,6 -3.3,11.6 h 56.4 56.4 v 13.4 13.7 h -74.2 -74.2 v -21.5 -21.6 z"
+   id="path677" />
+		<path
+   class="st7"
+   d="m 703.1,516.4 c 0,-6.8 1.4,-12.1 4.9,-15.9 3.5,-3.8 9.2,-6.3 17.7,-7.5 v -0.2 -0.2 c -5.6,-1 -11.1,-3.1 -15.1,-7.3 -4,-4.2 -6.7,-10.3 -6.7,-19.3 v -3.6 -3.6 c 0,-14.2 3.1,-21.7 12.4,-25.8 9.3,-4.1 24.8,-4.5 49.8,-4.5 h 19.2 19.2 c 16.2,0 28,1.5 35.7,6.1 7.7,4.6 11.4,12.1 11.4,24 v 4.1 4.1 c 0,6.8 -0.8,12.5 -3.9,16.8 -3.1,4.3 -8.4,7.1 -17.3,8.2 v 0.2 0.2 c 6.6,1.8 12.1,4.2 16,8.4 3.9,4.2 6.2,9.9 6.2,18.6 v 5.1 5.1 c 0,10.6 -3.4,17.8 -9.7,22.3 -6.3,4.5 -15.6,6.4 -27.4,6.4 h -36.6 -36.6 c -13.6,0 -23.4,-2.6 -29.8,-7.7 -6.4,-5.1 -9.4,-12.8 -9.4,-22.9 V 522 Z m 97.7,14.3 c 6.6,0 10.3,-1 12.4,-3 2.1,-2 2.6,-5.3 2.6,-9.7 0,-4.9 -0.4,-8.1 -2.8,-10 -2.4,-1.9 -6.6,-2.6 -14.3,-2.6 H 777.9 757 c -7.7,0 -12,0.7 -14.3,2.6 -2.3,1.9 -2.8,5.1 -2.8,10 0,4.5 0.5,7.7 2.6,9.7 2.1,2 5.9,3 12.4,3 h 22.9 z m -0.9,-51.6 c 5.7,0 9.4,-1.1 11.7,-3.2 2.3,-2.1 3.2,-5 3.2,-8.6 0,-4.4 -1.3,-7.3 -3.5,-9.1 -2.2,-1.8 -5.1,-2.5 -8.4,-2.5 h -25.2 -25.2 c -3.3,0 -6.3,0.7 -8.4,2.5 -2.1,1.8 -3.5,4.7 -3.5,9.1 0,3.6 0.9,6.5 3.2,8.6 2.3,2.1 6,3.2 11.7,3.2 h 22.2 z"
+   id="path679" />
+	</g>
+</g>
+<g
+   id="Layer_4"
+   class="st0">
+	<g
+   class="st1"
+   id="g688">
+		<line
+   class="st20"
+   x1="134.8"
+   y1="0"
+   x2="134.8"
+   y2="1024"
+   id="line684" />
+		<line
+   class="st20"
+   x1="889.2"
+   y1="0"
+   x2="889.2"
+   y2="1024"
+   id="line686" />
+	</g>
+</g>
+</svg>
