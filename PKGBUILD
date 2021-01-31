@@ -1,8 +1,10 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-doublex
-pkgver=1.9.2
-pkgrel=5
+pkgver=1.9.3
+# Upstream forgot to push tags and ignored my notice
+_commit=fe03fcb4672d
+pkgrel=1
 pkgdesc="Powerful test doubles framework for Python"
 arch=('any')
 license=('GPL')
@@ -10,8 +12,8 @@ url="https://github.com/davidvilla/python-doublex"
 depends=('python-pyhamcrest')
 makedepends=('python-setuptools')
 checkdepends=('python-nose')
-source=("$pkgname-$pkgver.tar.bz2::https://bitbucket.org/DavidVilla/python-doublex/get/v$pkgver.tar.bz2")
-sha512sums=('0cbcedeb46bd0dce807360bab5f8ac8d0a3e0eb8b5bdd7381499a1da236fbbfd21f0a53ece6eb24c387c9d96c9735ee56693ce95d445ef4f59873140388bc6a7')
+source=("$pkgname-$pkgver.tar.bz2::https://bitbucket.org/DavidVilla/python-doublex/get/$_commit.tar.bz2")
+sha512sums=('e3ca091c4794f1054779364bf9d13b188c0cecb2b7afbe87c7fa05c79182c4d7fcca171e9bfc52d7603f1a7280e0a62b04bcd834d4cf7bc7b32b701e8224b764')
 
 prepare() {
   mv DavidVilla-python-doublex-* python-doublex-$pkgver
