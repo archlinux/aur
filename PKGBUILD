@@ -2,7 +2,7 @@
 
 pkgdesc='Nextcloud app that allows admins to pre-generate previews.'
 pkgname=('nextcloud-app-previewgenerator')
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 arch=('any')
 license=('AGPL')
@@ -11,7 +11,7 @@ makedepends=()
 depends=('nextcloud')
 options=('!strip')
 source=("previewgenerator-${pkgver}.tar.gz::https://github.com/rullzer/previewgenerator/releases/download/v${pkgver}/previewgenerator.tar.gz")
-sha256sums=('4dd0ddccf3eea91a9a2ea641d1aab80735fb82b5fac6e680963d79ffdcddeb74')
+sha256sums=('6bf229799a4b431b3468d9f5bcc386832028d20b80a7dd898a197b3141fc962d')
 
 package() {
 	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
