@@ -18,21 +18,10 @@ package() {
   cd ${srcdir}/opt/${pkgname}/
 
   # fix the wrong permission of the files
-
-  # doc
-  find doc/ -type f -exec install -Dm 644 {} ${pkgdir}/opt/${pkgname}/{} \;
-
-  # lib
-  find lib/ -type f -exec install -Dm 644 {} ${pkgdir}/opt/${pkgname}/{} \;
-
-  # plugins
-  find plugins/ -type f -exec install -Dm 644 {} ${pkgdir}/opt/${pkgname}/{} \;
-
-  # qml
-  find qml/ -type f -exec install -Dm 644 {} ${pkgdir}/opt/${pkgname}/{} \;
-
-  # translations
-  find translations/ -type f -exec install -Dm 644 {} ${pkgdir}/opt/${pkgname}/{} \;
+  for _dir in doc lib plugins qml translations
+  do
+    find $_dir -type f -exec install -Dm 644 {} ${pkgdir}/opt/${pkgname}/{} \;
+  done
 
   # icon
   install -Dm 644 ${pkgname}.png -t ${pkgdir}/opt/${pkgname}/ 
@@ -49,7 +38,7 @@ package() {
   # changelog
   install -Dm 644 ${srcdir}/usr/share/doc/${pkgname}/changelog.gz -t ${pkgdir}/usr/share/doc/${pkgname}
 
-  #symbolic link
+  # symbolic link
   install -dm755 ${pkgdir}/usr/bin/
   ln -sf /opt/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
  }
