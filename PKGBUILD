@@ -21,6 +21,11 @@ sha256sums=('SKIP')
 #validpgpkeys=('47CC0331081B8BC6D0FD4DA08370665B57816A6A') # Mark J. Wielaard <mark@klomp.org>
 #validpgpkeys+=('EC3CFE88F6CA0788774F5C1D1AA44BE649DE760A') # Mark Wielaard <mjw@gnu.org>
 
+pkgver() {
+  cd elfutils
+  git describe --tags | sed 's/-/+/g'
+}
+
 build() {
   cd elfutils
 	
