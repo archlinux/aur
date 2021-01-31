@@ -1,12 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=6.0-GE-1
-_commit=bcc5e6c4b300ddaca5b1a435c754eaac7490b9d1
+_srctag=6.1-GE-1
+_commit=4143a0f74f87dfc34fb48b5b600b41b8806b9531
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
 _monover=5.1.1
-pkgrel=3
+pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 arch=(x86_64)
@@ -190,6 +190,11 @@ prepare() {
     patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
     patch -p1 -i "$srcdir"/proton-user_compat_data.patch
+
+    # Export CFLAGS used by upstream if building for redistribution
+    # -O2 is adjusted to -O3 since AVX is disabled
+    #export CFLAGS="-O3 -march=nocona -mtune=core-avx2"
+    #export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2"
 
     # Uncomment to enable extra optimizations
     # Patch crossfiles with extra optimizations from makepkg.conf
