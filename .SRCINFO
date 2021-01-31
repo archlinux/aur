@@ -1,0 +1,16 @@
+pkgbase = stylelint-order
+	pkgdesc = Plugin pack of order related linting rules for stylelint
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://github.com/hudochenkov/stylelint-order
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = stylelint
+	noextract = stylelint-order-4.1.0.tgz
+	source = https://registry.npmjs.org/stylelint-order/-/stylelint-order-4.1.0.tgz
+	sha256sums = 74ddc718b93085ee15e9836617cc70fe7cd3b132cf845670127add287af1ff34
+
+pkgname = stylelint-order
+
