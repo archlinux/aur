@@ -2,7 +2,7 @@
 
 pkgname=checkinstall
 pkgver=1.6.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Track files modified by an installation script and create a Slackware, RPM or Debian package"
 arch=('i686' 'x86_64')
 url="http://checkinstall.izto.org"
@@ -110,6 +110,9 @@ prepare() {
 build() {
 	cd "$pkgname-$pkgver"
 	make
+	# fix $pkgdir/usr
+	sed 's|INSTALLDIR=.*$|INSTALLDIR=/usr|' -i checkinstall
+	sed 's|PREFIX=${PREFIX:-.*}|PREFIX=${PREFIX:-/usr}|' -i installwatch
 }
 
 package() {

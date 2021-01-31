@@ -1,7 +1,7 @@
 pkgbase = checkinstall
 	pkgdesc = Track files modified by an installation script and create a Slackware, RPM or Debian package
 	pkgver = 1.6.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://checkinstall.izto.org
 	arch = i686
 	arch = x86_64
