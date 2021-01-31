@@ -87,12 +87,12 @@ pkgver=5.10.12
 _major=5.10
 _branch=5.x
 xanmod=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="ae37d87afcd44734e7cfa197d4af1a1b521d1d56" # 5.10.12-1
+__commit="d6de1e6fb0d99553ab97702eba7e376a82d139e6" # 5.10.12-2
 
 license=(GPL2)
 makedepends=(
@@ -111,7 +111,7 @@ sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'cb36d0d05523e1154f84c060081481f799253da06edb127a2630e539c6974f12'
             '9335f23561cc7796609783418659c1402fc67008a3f0ea39d822f742aec0731b'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
-            '01e2d9fd016aa8764ffcd6dac68eade90a2fe2b5b807e6064eea4f9f48b95532'
+            'aced44858e849dc3cd8137aecf8e59c1d12b03d541ef55d824965419116ead47'
             '9f7931fe587cfbc918aabbf3a1211a7179c8b2b300a1fc38c22920df4ed7dc2a') 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
