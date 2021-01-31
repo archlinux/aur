@@ -1,0 +1,13 @@
+pkgbase = kurso-de-esperanto-kape
+	pkgdesc = A multimedia computer program for teaching yourself Esperanto
+	pkgver = 5.1.1
+	pkgrel = 1
+	url = http://kurso.com.br/
+	arch = x86_64
+	license = GPL3
+	depends = qt5-multimedia
+	source = http://kurso.com.br/kurso_x86_64.tar.gz
+	md5sums = ed6cc642b8c7b368516b871377b5af4d
+
+pkgname = kurso-de-esperanto-kape
+
