@@ -23,6 +23,7 @@ install=$pkgname.install
 package() {
   mkdir -p "$pkgdir/etc/s6/sv/$_alias"
   cp ananicy.run $pkgdir/etc/s6/sv/$_alias/run
+  cp ananicy.type $pkgdir/etc/s6/sv/$_alias/type
   cp ananicy.finish $pkgdir/etc/s6/sv/$_alias/finish
   install=ananicy-s6.install
 }
