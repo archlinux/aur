@@ -1,3 +1,68 @@
+Proton-6.1-GE-1
+Hotfix: 1/31/2021
+
+-Small hotfix which adds rebased patch for doitsujin/dxvk#1582. Allows it to be applied to upstream dxvk without reverting doitsujin/dxvk@2d670ec and doitsujin/dxvk@c107345. Not a major change, but not reverting them fixes some validation errors per the commit comment. Download updated.
+Updates:
+
+-Persona 4 Golden in-game audio fixed, game should now be fully playable
+-Cyberpunk 2077 issue resolved where FPS would be half of that experienced in regular proton (Thanks TKG for finding the dxgi override which resolved it)
+-fsync issue causing conhost to pin 1 cpu at 100% resolved (thanks openglfreak Frogging-Family/wine-tkg-git@ddd28ce)
+-controller hotplugging fixes imported from proton experimental for Subnautica and DOOM 2016
+-Yakuza like a dragon controller detection fix imported from proton experimental
+-Warframe controller workaround functionality updated
+-dxvk updated
+-vkd3d updated
+-faudio updated
+-wine + wine-staging updated
+A note about Warframe controller functionality:
+
+The issue with Warframe via Steam Play/Proton as many people know is that if you do not have a controller plugged in, the game would crash after 5 minutes on the dot. The workaround for this was to run xboxdrv to create a fake controller. About a year ago I created a patch for steamclient that worked around this issue by checking the names of joystick devices (js0,1,2 etc) in /dev/input/. This -sort of- worked. The reason I say sort of, is because some non-gamepad devices such as corsair mice and keyboards register themselves as joysticks.
+
+So the trick was to check the name for anything that didn't have 'keyboard' or 'mouse' in the name. This however, did not work, as other devices such as steering wheels and flight controllers also got passed as 'gamepads'. Since steering wheels and flight controllers are not used in Warframe.. this again led to the crash.
+
+I've now edited the patch again, this time steamclient's controller interface (which causes the crash), will not load in Warframe unless the device name contains 'controller' or 'pad'. I tested this with xbox, ps4, switch, and logitech controllers, as well as off-brand controllers, both wired, bluetooth, and ms xbox wireless, all were recognized ok, and the interface did not load with my steering wheel or hotas flight stick.
+
+The purpose of this patch is to allow Warframe to run -with out- needing xboxdrv, so that it will not crash. If you experience warframe crashing after 5 minutes on the dot, please let me know, as I'd like to know more about your joystick devices in /dev/input and possibly add an exception if needed.
+
+Please keep in mind this detection system only affects Warframe. Outside of Warframe controllers and other devices will act as they would normally in Valve's proton.
+A note about Skyrim SE Script Extender (skse64):
+
+The patch for SKSE has been removed, per:
+
+https://bugs.winehq.org/show_bug.cgi?id=44893#c17
+
+The author of SKSE admitted a bug in skse and and fixed it upstream in skse:
+
+--- quote ---
+I reached out to the SKSE team about this and Ian Patterson confirmed that there
+had been a bug with calculating the minimum safe address and corrected it in
+F4SE, but somehow it was not corrected for SKSE.
+--- quote ---
+
+This has since been fixed here:
+
+ianpatt/skse64@4a1e121
+
+However a new version of SKSE has not been released yet so the fix is not in it. The fix was added Dec 28 but the current SKSE build available at https://skse.silverlock.org/ is from August.
+
+I've recompiled it and supplied it here (with sources) until the Author releases a new version:
+
+https://drive.google.com/file/d/1I6tgvZDaSs2JPXkHdWJwuZVwzF0OSpzz/view?usp=sharing
+
+Seems to work for me. Game launches and my mods work. If a specific mod doesn't work but others do it's likely an issue with that mod specifically more so than SKSE. Please note I'm providing this to get mods working for the majority of people without needing patching, and -not- responsible if any specific single mod does not work. The latest version of SkyUI seems to work here for me.
+Known issues:
+
+-The build uses proton's new runtime, which runs within a container, therefore all of the current Proton 5.13 issues also apply here.
+
+ValveSoftware#4289
+
+-MK11 Story mode and Cinematics do not work
+-Injustice 2 Cinematics do not work
+-Catherine Classic is not working
+-Darksiders Warmastered Edition intro + cutscenes do not work
+-Black Ops III does not work
+-Grandia and Grandia II do not work
+
 Proton-6.0-GE-1
 
 Game Fixes:
