@@ -1,5 +1,5 @@
 pkgname=firefox-extension-bitwarden
-pkgver=1.47.1
+pkgver=1.48.1
 pkgrel=1
 pkgdesc='bitwarden addon for firefox.'
 arch=('any')
