@@ -1,0 +1,14 @@
+pkgbase = gofumpt
+	pkgdesc = A stricter gofmt
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mvdan/gofumpt
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = go
+	source = gofumpt::https://github.com/mvdan/gofumpt/archive/v0.1.0.tar.gz
+	sha512sums = 6d16a40c8155bfa971800f97babf087ab8b542e4dcd1bb2be815288c2fdc4a16d565c923fc65cd6c5becb315e67fac30b725bb1b06f41ba1a17e8953462ef8f6
+
+pkgname = gofumpt
+
