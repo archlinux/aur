@@ -1,5 +1,5 @@
 pkgname=firefox-extension-plasma-integration
-pkgver=1.7.6
+pkgver=1.8.0.1
 pkgrel=1
 pkgdesc='plasma browser integration addon for firefox.'
 arch=('any')
