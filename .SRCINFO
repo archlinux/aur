@@ -12,6 +12,7 @@ pkgbase = miniplayer-git
 	depends = python-pillow
 	depends = python-ffmpeg
 	depends = python-pixcat-git
+	optdepends = python-ueberzug-git
 	provides = miniplayer
 	conflicts = miniplayer
 	source = miniplayer::git://github.com/guardkenzie/miniplayer

@@ -8,6 +8,7 @@ pkgdesc='A curses based mpd client with basic functionality and album art writte
 url='https://github.com/guardkenzie/miniplayer'
 depends=('python' 'python-mpd2' 'python-pillow' 'python-ffmpeg' 'python-pixcat-git')
 makedepends=('git' 'python-setuptools')
+optdepends=('python-ueberzug-git')
 provides=("miniplayer")
 conflicts=("miniplayer")
 license=('MIT')
