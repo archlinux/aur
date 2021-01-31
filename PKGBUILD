@@ -102,7 +102,7 @@ makedepends=(
 options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
-        "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz"
+        "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}-cacule.xz"
         choose-gcc-optimization.sh
         "https://gitlab.manjaro.org/packages/core/linux510/-/archive/${__commit}/linux510-${__commit}.tar.gz"
         '0002-UKSM.patch')
