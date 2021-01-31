@@ -1,0 +1,13 @@
+pkgbase = python-retry
+	pkgdesc = Easy to use retry decorator.
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/invl/retry
+	arch = any
+	license = Apache
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/r/retry/retry-0.9.2.tar.gz
+	md5sums = 81089364adc2d9a271f1b71eb9ef312b
+
+pkgname = python-retry
+
