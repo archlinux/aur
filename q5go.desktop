@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=q5Go
+GenericName=Go Client
+Comment=SGF editor and IGS client for Go players
+Icon=qgo
+Exec=q5go
+Terminal=false
+MimeType=application/x-go-sgf
+Categories=Qt;Game;BoardGame
