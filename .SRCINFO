@@ -1,6 +1,6 @@
 pkgbase = fontship-git
 	pkgdesc = A font development toolkit and collaborative work flow
-	pkgver = 0.7.5.r0.gdd0bbcb
+	pkgver = 0.7.6.r0.g9a67219
 	pkgrel = 1
 	url = https://github.com/theleagueof/fontship
 	arch = any
@@ -29,6 +29,7 @@ pkgbase = fontship-git
 	depends = python-unicodedata2
 	depends = python-vttlib
 	depends = python-zopfli
+	depends = sfd2ufo>=1.0.7
 	depends = sfdnormalize
 	depends = sfnt2woff-zopfli
 	depends = ttfautohint
