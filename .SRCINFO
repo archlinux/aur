@@ -1,4 +1,4 @@
-pkgbase = papirus-folders-doas
+pkgbase = papirus-folders-please
 	pkgdesc = Change Papirus icon theme folder colors
 	pkgver = 1.8.0
 	pkgrel = 2
@@ -6,15 +6,16 @@ pkgbase = papirus-folders-doas
 	arch = any
 	license = MIT
 	depends = papirus-icon-theme
-	depends = opendoas
+	depends = please
 	provides = papirus-folders
 	conflicts = papirus-folders
+	conflicts = papirus-folders-doas
 	source = papirus-folders-1.8.0.tar.gz::https://github.com/PapirusDevelopmentTeam/papirus-folders/archive/v1.8.0.tar.gz
 	source = papirus-folders.hook
-	source = doas.diff
+	source = please.diff
 	sha256sums = a60d0d432ea9b7c98b74a607301bdc4e26b3b48a3b9bc6054ffb7d64f8dcf9c5
 	sha256sums = 5c48cde4ad155e357857f56ec2ce4d26d3e3fdd12b141e349640775481539ed9
-	sha256sums = ccc9500ff84ef2f6452af041af33e2b43ec4976a8a6a84e344228759b430a6f3
+	sha256sums = 982af8f929ad4026fafd5c72fa7e190f100064b2ab1cab61090de8062f5973e1
 
-pkgname = papirus-folders-doas
+pkgname = papirus-folders-please
 
