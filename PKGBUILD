@@ -11,8 +11,6 @@ makedepends=('git' 'cmake' 'bgfx-cmake-git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 
-# TODO: After bgfx merges all openblack PRs,
-# Package and use bgfx instead of building it
 source=('git://github.com/openblack/openblack.git')
 sha256sums=('SKIP')
 
@@ -25,7 +23,6 @@ build() {
   cd "${srcdir}/${pkgname%-git}"
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo
-        #-Dbgfx_DIR="/usr/lib/cmake/bgfx" \
   cmake --build .
 }
 
