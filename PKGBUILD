@@ -2,7 +2,7 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=pgcli-git
-pkgver=v2.2.0.r7.g901812a7
+pkgver=v3.1.0.r5.g000102ef
 pkgrel=1
 pkgdesc="a command line interface for Postgres with auto-completion and syntax highlighting"
 url="http://pgcli.com/"
