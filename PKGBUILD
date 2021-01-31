@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="roundcubemail-plugin-carddav-git"
-pkgver=v4.0.4.r248.g35ab1fb
+pkgver=v4.0.4.r254.g8c9815a
 pkgrel=1
 pkgdesc="CardDAV plugin for RoundCube Webmailer"
 url="https://github.com/blind-coder/rcmcarddav"
@@ -30,7 +30,7 @@ package() {
  cd "$pkgname"
  install -d "$pkgdir/usr/share/webapps/roundcubemail/plugins/carddav"
  cp -r * "$pkgdir/usr/share/webapps/roundcubemail/plugins/carddav"
- install -D -m 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+ install -D -m 644 "LICENSE" "$pkgdir/usr/share/licenses/roundcubemail-plugin-carddav/LICENSE"
  install -D -o root -g http -m 640 "config.inc.php.dist" "$pkgdir/etc/webapps/roundcubemail/plugins/carddav/config.inc.php"
  ln -s "/etc/webapps/roundcubemail/plugins/carddav/config.inc.php" "$pkgdir/usr/share/webapps/roundcubemail/plugins/carddav/config.inc.php"
 }
