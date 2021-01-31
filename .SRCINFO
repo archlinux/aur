@@ -1,7 +1,7 @@
 pkgbase = hushboard-git
 	pkgdesc = Mute your microphone while typing.
 	pkgver = r34.223b6f9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kryogenix.org/code/hushboard
 	arch = any
 	license = MIT
@@ -14,9 +14,7 @@ pkgbase = hushboard-git
 	provides = hushboard-git
 	conflicts = hushboard-git
 	source = git+https://github.com/stuartlangridge/hushboard
-	source = LICENSE
 	md5sums = SKIP
-	md5sums = 3ce314c6b503c298b2ebba2d176915a4
 
 pkgname = hushboard-git
 

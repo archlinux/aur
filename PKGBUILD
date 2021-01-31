@@ -1,7 +1,7 @@
 # Maintainer: Jeffrey Bouter <aur@kn0x.org>
 pkgname=hushboard-git
 pkgver=r34.223b6f9
-pkgrel=1
+pkgrel=2
 pkgdesc="Mute your microphone while typing."
 arch=('any')
 url="https://kryogenix.org/code/hushboard"
