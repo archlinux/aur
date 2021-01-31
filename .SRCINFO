@@ -1,7 +1,7 @@
 pkgbase = yadm
 	pkgdesc = Yet Another Dotfiles Manager
-	pkgver = 3.0.0
-	pkgrel = 2
+	pkgver = 3.0.2
+	pkgrel = 1
 	url = https://github.com/TheLocehiliosan/yadm
 	arch = any
 	license = GPL3
@@ -12,8 +12,8 @@ pkgbase = yadm
 	optdepends = python-envtpl: use templates with variables
 	provides = yadm
 	conflicts = yadm-git
-	source = yadm-3.0.0.tar.gz::https://github.com/TheLocehiliosan/yadm/archive/3.0.0.tar.gz
-	sha256sums = af968c815817e9de85b60dc9c9a7e6159ed34e4f91ea78cadbcd6c73a0301c06
+	source = yadm-3.0.2.tar.gz::https://github.com/TheLocehiliosan/yadm/archive/3.0.2.tar.gz
+	sha256sums = 724a8b61b09b70f5952cf14fd1786617bf88243a276b2d93dd7306feab13983c
 
 pkgname = yadm
 
