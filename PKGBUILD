@@ -8,7 +8,7 @@
 # hm_b <holger@music-nerds.net>
 
 pkgname="renoise3-demo"
-pkgver="3.2.4"
+pkgver="3.3.1"
 pkgrel="1"
 pkgdesc="A music composition program"
 arch=("x86_64")
@@ -20,7 +20,7 @@ options=("!strip")
 conflicts=("renoise")
 
 source=("https://files.renoise.com/demo/Renoise_${pkgver//./_}_Demo_Linux.tar.gz")
-sha256sums=("db63c3087c744326b91ffc5965ec395585aff407965b5f9137978bcf788809cc")
+sha256sums=("00869a6832c47733b47f5a631e2d31562fb5852dd0f4263e3aa2b7a2278b6a15")
 
 package() {
     cd "$srcdir/Renoise_${pkgver//./_}_Demo_Linux"
