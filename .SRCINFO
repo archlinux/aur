@@ -1,0 +1,12 @@
+pkgbase = htmltest-bin
+	pkgdesc = Test generated HTML for problems
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/wjdp/htmltest
+	arch = x86_64
+	license = MIT
+	source = https://github.com/wjdp/htmltest/releases/download/v0.14.0/htmltest_0.14.0_linux_amd64.tar.gz
+	sha256sums = ac47355b06ec9ee59d4a6cbd51be6402c3e6b7211275bd3e307c684ed74c1eba
+
+pkgname = htmltest-bin
+
