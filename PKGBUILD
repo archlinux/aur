@@ -1,8 +1,8 @@
 # Maintainer: David Barri <japgolly@gmail.com>
 pkgname=verthash-miner-bin
 pkgver=0.6.1
-pkgrel=1
-pkgdesc="GPU miner for the Verthash algorithm"
+pkgrel=2
+pkgdesc="GPU miner for the Verthash algorithm and Vertcoin"
 arch=('x86_64')
 url="https://github.com/CryptoGraphics/VerthashMiner"
 license=('GPL-3.0')
