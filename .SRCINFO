@@ -1,22 +1,34 @@
-pkgbase = bgfx-git
-	pkgdesc = Cross-platform, graphics API agnostic, "Bring Your Own Engine/Framework" style rendering library.
+pkgbase = bgfx-cmake-git
+	pkgdesc = Cross-platform, graphics API agnostic, "Bring Your Own Engine/Framework" style rendering library. (With CMake build scripts)
 	pkgver = r7631.741028840
 	pkgrel = 1
 	url = https://bkaradzic.github.io
 	arch = x86_64
 	license = BSD
+	license = CC
 	makedepends = git
 	makedepends = cmake
 	depends = mesa
 	depends = libx11
 	provides = bgfx
 	conflicts = bgfx
+	conflicts = bgfx-git
 	source = git://github.com/bkaradzic/bx.git
 	source = git://github.com/bkaradzic/bimg.git
 	source = git://github.com/bkaradzic/bgfx.git
+	source = git://github.com/widberg/bgfx.cmake.git
+	source = 0001-cmake-turn-on-CMAKE_POSITION_INDEPENDENT_CODE-for-sh.patch
+	source = 0002-bimg-specify-visibility-of-linked-libs.patch
+	source = 0003-install-if-generating-shared-only-install-bgfx.patch
+	source = 0004-bgfx-make-bx-and-bimg-private.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 164c5d569d605f3e02552ad57383fbb2448e48270cdb95009672ade6e1be8050
+	sha256sums = 20d6949f9a5d95bd0f21c51a99baca8b84163462b42a5472c2b237ee915993cc
+	sha256sums = 471c2f61b071246bd653623e5939aa2874aac7b006af6907459b1a3c23dc1952
+	sha256sums = 294df452d039824ac8280af6089918ac09a5feafd3bc1821e125e602cca073fa
 
-pkgname = bgfx-git
+pkgname = bgfx-cmake-git
 
