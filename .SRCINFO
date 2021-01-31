@@ -6,6 +6,7 @@ pkgbase = papirus-folders-doas
 	arch = any
 	license = MIT
 	depends = papirus-icon-theme
+	depends = opendoas
 	source = papirus-folders-1.8.0.tar.gz::https://github.com/PapirusDevelopmentTeam/papirus-folders/archive/v1.8.0.tar.gz
 	source = papirus-folders.hook
 	source = doas.diff

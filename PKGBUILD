@@ -10,7 +10,7 @@ pkgdesc='Change Papirus icon theme folder colors'
 arch=('any')
 url='https://github.com/PapirusDevelopmentTeam/papirus-folders'
 license=('MIT')
-depends=('papirus-icon-theme')
+depends=('papirus-icon-theme' 'opendoas')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${_pkgname}.hook"
         "doas.diff")
