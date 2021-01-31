@@ -1,0 +1,14 @@
+pkgbase = motionserver-git
+	pkgdesc = A DualShock 3/4 controller motion server.
+	pkgver = r10.165c98d
+	pkgrel = 1
+	url = https://github.com/kenshaw/motionserver
+	arch = x86_64
+	license = mit
+	makedepends = go
+	source = motionserver::git+https://github.com/kenshaw/motionserver.git
+	source = 50-motionserver.rules
+	sha256sums = SKIP
+	sha256sums = 15854d540245d0f40080e5d006ed92715763744afd901ba549b76a6c1e5efce3
+
+pkgname = motionserver-git
