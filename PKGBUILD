@@ -1,58 +1,42 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS plasma-desktop PKGBUILD by João, 2021/01/31 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
-pkgbase=plasma-desktop-git
-pkgname=(plasma-desktop-git knetattach-git)
-pkgver=r7992.105369274
+pkgname=plasma-desktop-git
+pkgver=5.21.80_r8192.g6be4dd2d6
 pkgrel=1
 pkgdesc='KDE Plasma Desktop'
-arch=(i686 x86_64)
-url='https://projects.kde.org/projects/kde/kde-workspace'
+arch=($CARCH)
+url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(polkit-kde-agent-git libxkbfile kmenuedit-git systemsettings-git ksysguard-git baloo-git accountsservice)
-makedepends=(extra-cmake-modules-git kdoctools-git xf86-input-evdev xf86-input-synaptics xf86-input-libinput xorg-server-devel scim kdesignerplugin kaccounts-integration intltool git)
-source=("git+https://github.com/KDE/plasma-desktop.git")
-groups=(plasma)
-md5sums=('SKIP')
+groups=(plasma-git)
+depends=(polkit-kde-agent-git libxkbfile kmenuedit-git systemsettings-git ksysguard-git baloo-git libibus accountsservice)
+optdepends=('plasma-nm-git: Network manager applet'
+            'powerdevil-git: power management, suspend and hibernate support'
+            'kscreen-git: screen management'
+            'ibus: kimpanel IBUS support'
+            'scim: kimpanel SCIM support'
+            'kaccounts-integration-git: OpenDesktop integration plugin')
+conflicts=(${pkgname%-git} user-manager knetattach user-manager-git knetattach-git)
+provides=(${pkgname%-git} user-manager knetattach user-manager-git knetattach-git)
+replaces=(user-manager-git knetattach-git)
+makedepends=(git extra-cmake-modules-git kdoctools-git xf86-input-evdev xf86-input-synaptics xf86-input-libinput xorg-server-devel scim kdesignerplugin-git kaccounts-integration-git intltool)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd plasma-desktop
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(PROJECT_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cmake -B build -S plasma-desktop \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_LIBEXECDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+  cmake -B build -S ${pkgname%-git} \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
   cmake --build build
 }
 
-package_plasma-desktop-git() {
-  conflicts=(plasma-desktop)
-  provides=(plasma-desktop)
-  depends+=(knetattach)
-  optdepends=('plasma-nm: Network manager applet'
-              'powerdevil: power management, suspend and hibernate support'
-              'kscreen: screen management'
-              'ibus: kimpanel IBUS support'
-              'scim: kimpanel SCIM support'
-              'kaccounts-integration: OpenDesktop integration plugin')
-  replaces=(user-manager)
-
+package() {
   DESTDIR="$pkgdir" cmake --install build
-
-# Split knetattach
-  rm "$pkgdir"/usr/{bin/knetattach,share/applications/org.kde.knetattach.desktop}
-}
-
-package_knetattach-git() {
-  pkgdesc='Wizard which makes it easier to integrate network resources with the Plasma Desktop'
-  conflicts=(knetattach)
-  provides=(knetattach)
-  depends=(kdelibs4support-git)
-
-  DESTDIR="$pkgdir" cmake --install build/knetattach
 }
