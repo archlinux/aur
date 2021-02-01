@@ -1,7 +1,7 @@
 pkgbase = wine-x64
 	pkgdesc = A compatibility layer for running Windows programs. This only configured with x64 support.
 	pkgver = 6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.winehq.com
 	arch = x86_64
 	license = LGPL
@@ -33,7 +33,7 @@ pkgbase = wine-x64
 	optdepends = vkd3d
 	optdepends = vulkan-icd-loader
 	optdepends = vulkan-headers
-	provides = wine-x64=6.1
+	provides = wine_x64=6.1
 	conflicts = wine
 	options = staticlibs
 	source = https://dl.winehq.org/wine/source/6.x/wine-6.1.tar.xz
