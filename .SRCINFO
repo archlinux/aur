@@ -1,14 +1,14 @@
 pkgbase = obs-plugin-spectralizer-bin
 	pkgdesc = Audio visualization for obs-studio using fftw, based on cli-visualizer
-	pkgver = 1.3.2
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://github.com/univrsal/spectralizer
 	arch = x86_64
 	license = GPL2
 	depends = obs-studio
 	depends = fftw
-	source = https://github.com/univrsal/spectralizer/releases/download/v1.3.2/spectralizer.v1.3.2.bin.linux.x64.zip
-	sha256sums = 8680137570ce246846ae51cfe80862ae1662ad8ecc65dc15ac7d67d500dda29a
+	source = https://github.com/univrsal/spectralizer/releases/download/v1.3.4/spectralizer.v1.3.4.bin.linux.x64.zip
+	sha256sums = 3e6b5b36d56ef256b1605028f5baa989cef04d8f4d5cba4b638ac85579dc7d19
 
 pkgname = obs-plugin-spectralizer-bin
 
