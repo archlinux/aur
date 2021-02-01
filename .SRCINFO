@@ -8,6 +8,7 @@ pkgbase = st-pajas
 	arch = armv7h
 	license = MIT
 	depends = libxft
+	provides = st
 	source = https://dl.suckless.org/st/st-0.8.4.tar.gz
 	source = https://raw.githubusercontent.com/flyingpeakock/st/main/patch-0.8.4.diff
 	sha256sums = d42d3ceceb4d6a65e32e90a5336e3d446db612c3fbd9ebc1780bc6c9a03346a6

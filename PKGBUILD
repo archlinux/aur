@@ -6,6 +6,7 @@ pkgdesc='Pajas version of suckless with scrollback, alpha, nordtheme and Vertcen
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
 depends=(libxft)
+provides=('st')
 url=https://github.com/quoteme/st
 _patches=( "https://raw.githubusercontent.com/flyingpeakock/st/main/patch-0.8.4.diff")
 source=(https://dl.suckless.org/st/st-$pkgver.tar.gz
