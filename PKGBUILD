@@ -2,7 +2,7 @@
 
 pkgbase=libjpeg-xl
 pkgname=('libjpeg-xl' 'libjpeg-xl-doc')
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation'
 arch=('x86_64')
@@ -10,12 +10,12 @@ url='https://jpeg.org/jpegxl/'
 license=('Apache')
 makedepends=('git' 'cmake' 'clang' 'brotli' 'gdk-pixbuf2' 'giflib' 'gimp'
              'libjpeg-turbo' 'libpng' 'openexr' 'zlib' 'libgl' 'freeglut'
-             'gtest' 'gmock' 'python' 'doxygen' 'graphviz')
+             'gtest' 'gmock' 'python' 'doxygen' 'graphviz' 'highway')
 source=("git+https://gitlab.com/wg1/jpeg-xl.git#tag=v${pkgver}"
         'git+https://github.com/google/brotli.git'
         'git+https://github.com/lvandeve/lodepng.git'
         'git+https://github.com/mm2/Little-CMS.git'
-        'git+https://github.com/google/googletest'
+        'git+https://github.com/google/googletest.git'
         'git+https://github.com/webmproject/sjpeg.git'
         'git+https://skia.googlesource.com/skcms.git'
         'git+https://github.com/veluca93/IQA-optimization.git'
@@ -61,7 +61,7 @@ build() {
         -DJPEGXL_ENABLE_VIEWERS:BOOL='false' \
         -DJPEGXL_FORCE_SYSTEM_BROTLI:BOOL='true' \
         -DJPEGXL_FORCE_SYSTEM_GTEST:BOOL='true' \
-        -DJPEGXL_FORCE_SYSTEM_HWY:BOOL='false' \
+        -DJPEGXL_FORCE_SYSTEM_HWY:BOOL='true' \
         -DJPEGXL_WARNINGS_AS_ERRORS:BOOL='false' \
         -Wno-dev
     make -C build all doc
@@ -82,8 +82,6 @@ package_libjpeg-xl() {
     
     make -C build DESTDIR="$pkgdir" install
     install -D -m644 jpeg-xl/plugins/mime/image-jxl.xml -t "${pkgdir}/usr/share/mime/packages"
-    rm "${pkgdir}/usr/lib"/{libhwy.a,pkgconfig/libhwy{,-test}.pc}
-    rm -r "${pkgdir}/usr/include"/{contrib,hwy}
 }
 
 package_libjpeg-xl-doc() {
