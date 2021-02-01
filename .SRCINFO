@@ -1,0 +1,21 @@
+pkgbase = python-socketio4
+	pkgdesc = Python implementation of the Socket.IO realtime server (Ver 4)
+	pkgver = 4.6.1
+	pkgrel = 1
+	url = https://github.com/miguelgrinberg/python-socketio
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-mock
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-tornado
+	depends = python-six
+	depends = python-engineio
+	optdepends = python-tornado: tornado asyncio webserver
+	conflicts = python-socketio
+	source = https://github.com/miguelgrinberg/python-socketio/archive/v4.6.1/python-socketio4-4.6.1.tar.gz
+	sha256sums = aa186b447429248369aebe6e1811e811c3da8ba3bb78efb16cd88904fdff7b05
+
+pkgname = python-socketio4
+
