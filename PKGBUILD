@@ -1,4 +1,5 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS kimap2 PKGBUILD by João, 2021/01/31 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Marco Scarpetta <marcoscarpetta02@gmail.com>
 # Contributor: Jens Staal <staal1978@gmail.com>
@@ -8,22 +9,24 @@
 
 
 pkgname=kimap2-git
-pkgver=r817.c4d0117
-pkgrel=2
-pkgdesc="A job-based API for interacting with IMAP servers"
-arch=('i686' 'x86_64')
-url="https://projects.kde.org/projects/kde/pim/kimap2"
-license=('LGPL')
-depends=('kmime')
-makedepends=('extra-cmake-modules' 'git' 'python')
-conflicts=('kimap2')
-provides=('kimap2')
-source=('git+https://github.com/KDE/kimap2.git')
-md5sums=('SKIP')
+pkgver=0.4_r824.gee0dd26
+pkgrel=1
+pkgdesc="Job-based API for interacting with IMAP servers"
+arch=($CARCH)
+url="https://community.kde.org/KDE_PIM"
+license=(LGPL)
+groups=(kdepim-git)
+depends=(kcoreaddons-git kmime-git)
+makedepends=(git extra-cmake-modules-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd kimap2
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(KIMAP2_LIB_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -32,17 +35,13 @@ prepare() {
 
 build() {
   cd build
-  cmake ../kimap2 \
-    -DENABLE_TESTING=OFF \
-    -DBUILD_TESTING=OFF \
-    -DCMAKE_BUILD_TYPE=Release \
+  cmake ../${pkgname%-git} \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+    -DBUILD_TESTING=OFF
   make
 }
 
 package() {
   cd build
   make DESTDIR="$pkgdir" install
-} 
+}
