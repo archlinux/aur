@@ -1,7 +1,7 @@
 pkgbase = wf-shell
 	pkgdesc = GTK3-based panel for the Wayfire compositor
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wayfire.org
 	arch = x86_64
 	license = custom:MIT
@@ -10,6 +10,7 @@ pkgbase = wf-shell
 	makedepends = meson
 	makedepends = ninja
 	makedepends = gobject-introspection
+	makedepends = glm
 	depends = gtk-layer-shell>=0.5
 	depends = wayfire>=0.7
 	depends = libpulse
