@@ -1,24 +1,25 @@
 pkgbase = kservice-git
-	pkgdesc = KService
-	pkgver = v4.100.0.rc1.r628.ga8413c5
-	pkgrel = 2
-	url = https://projects.kde.org/projects/frameworks/kservice
-	arch = i686
+	pkgdesc = Advanced plugin and service introspection
+	pkgver = 5.79.0_r865.gc70e07b
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
 	arch = x86_64
+	groups = kf5-git
 	license = LGPL
-	makedepends = extra-cmake-modules-git
 	makedepends = git
+	makedepends = extra-cmake-modules-git
 	makedepends = kdoctools-git
-	makedepends = python
+	makedepends = doxygen
+	makedepends = qt5-tools
+	makedepends = qt5-doc
 	depends = ki18n-git
 	depends = kconfig-git
 	depends = kcrash-git
 	depends = kdbusaddons-git
-	depends = karchive-git
 	provides = kservice
 	conflicts = kservice
 	source = git+https://github.com/KDE/kservice.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kservice-git
 
