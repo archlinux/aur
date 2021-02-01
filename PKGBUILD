@@ -6,7 +6,7 @@ _commit=4143a0f74f87dfc34fb48b5b600b41b8806b9531
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
 _monover=5.1.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 arch=(x86_64)
@@ -67,6 +67,7 @@ makedepends=(autoconf ncurses bison perl fontforge flex mingw-w64-gcc
   git
   cmake
   python-virtualenv
+  python-pip
   nasm
   glslang
 )
