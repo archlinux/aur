@@ -49,6 +49,6 @@ package() {
 
   cd "obs-studio-$_obsver"
   make -C build DESTDIR="$srcdir/fakeroot/" install
-  cp -a "$srcdir"/install/usr/lib/obs-plugins/dynamic-delay.so "$pkgdir"/usr/lib/obs-plugins/
-  cp -a "$srcdir"/install/usr/share/obs/obs-plugins/dynamic-delay "$pkgdir"/usr/share/obs/obs-plugins/
+  cp -a "$srcdir"/fakeroot/usr/lib/obs-plugins/dynamic-delay.so "$pkgdir"/usr/lib/obs-plugins/
+  cp -a "$srcdir"/fakeroot/usr/share/obs/obs-plugins/dynamic-delay "$pkgdir"/usr/share/obs/obs-plugins/
 }
