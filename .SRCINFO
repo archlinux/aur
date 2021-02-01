@@ -1,8 +1,8 @@
 pkgbase = curseradio-git
 	pkgdesc = Command line radio player
-	pkgver = r15.1bd4bd0
-	pkgrel = 1
-	url = https://github.com/chronitis/curseradio
+	pkgver = 1
+	pkgrel = 0
+	url = https://github.com/Cyfraka/curseradio
 	arch = any
 	license = MIT
 	makedepends = git
@@ -13,7 +13,7 @@ pkgbase = curseradio-git
 	depends = python-lxml
 	provides = curseradio-git
 	options = !emptydirs
-	source = git+https://github.com/chronitis/curseradio.git
+	source = git+https://github.com/Cyfraka/curseradio.git
 	md5sums = SKIP
 
 pkgname = curseradio-git
