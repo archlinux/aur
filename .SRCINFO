@@ -1,7 +1,7 @@
 pkgbase = curseradio-git
 	pkgdesc = Command line radio player
 	pkgver = r15.1bd4bd0
-	pkgrel = 1
+	pkgrel = 2 
 	url = https://github.com/Cyfraka/curseradio
 	arch = any
 	license = MIT
@@ -17,4 +17,3 @@ pkgbase = curseradio-git
 	md5sums = SKIP
 
 pkgname = curseradio-git
-
