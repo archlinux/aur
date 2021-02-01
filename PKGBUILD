@@ -1,40 +1,42 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS kio-extras PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kio-extras-git
-pkgver=r6788.7763a1e0
-pkgrel=3
+pkgver=21.03.70_r6953.g21758ebc
+pkgrel=1
 pkgdesc="Additional components to increase the functionality of KIO"
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/kde/workspace/kio-extras'
-license=('LGPL')
-depends=('kdelibs4support-git' 'khtml-git' 'kdnssd-git' 'kpty-git' 'libssh' 'smbclient' 'exiv2' 'openexr' 'libmtp' 'kdsoap')
-makedepends=('extra-cmake-modules-git' 'git' 'openslp' 'kdoctools-git')
-conflicts=('kio-extras')
-provides=('kio-extras')
-source=('git+https://github.com/KDE/kio-extras.git')
-md5sums=('SKIP')
+arch=($CARCH)
+url='https://www.kde.org/applications/internet/'
+license=(LGPL)
+depends=(kio-git kdnssd-git libssh smbclient libmtp phonon-qt5 syntax-highlighting-git kdsoap-ws-discovery-client-git libxcursor)
+makedepends=(git extra-cmake-modules-git kdoctools-git gperf taglib libappimage openexr kactivities-stats-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+optdepends=('qt5-imageformats: thumbnails for additional image formats' 'perl: info kio-gitslave'
+            'kimageformats-git: thumbnails for additional image formats' 'taglib: audio file thumbnails'
+            'libappimage: AppImage thumbnails' 'icoutils: Windows executable thumbnails'
+            'openexr: EXR format thumbnails' 'kactivities-stats-git: recently used kio-gitslave')
+groups=(kde-applications-git kde-network-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd kio-extras
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _major_ver="$(grep -m1 "set *(RELEASE_SERVICE_VERSION_MAJOR" CMakeLists.txt | cut -d '"' -f2)"
+  _minor_ver="$(grep -m1 "set *(RELEASE_SERVICE_VERSION_MINOR" CMakeLists.txt | cut -d '"' -f2)"
+  _micro_ver="$(grep -m1 "set *(RELEASE_SERVICE_VERSION_MICRO" CMakeLists.txt | cut -d '"' -f2)"
+  echo "${_major_ver}.${_minor_ver}.${_micro_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../kio-extras/ \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DLIBAPPIMAGE_LIBRARIES=libappimage.so \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
