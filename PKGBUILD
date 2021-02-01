@@ -1,41 +1,37 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS khelpcenter PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Antonio Rojas <nqn1976 @ gmail.com>
 
 pkgname=khelpcenter-git
-pkgver=r2606.26f94bc9
+pkgver=21.03.70_r2650.g7a8f86c1
 pkgrel=1
 pkgdesc="Application to show KDE Applications' documentation"
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/kde/workspace/khelpcenter'
-license=('LGPL')
-depends=('khtml-git' 'kdelibs4support-git' 'kcmutils-git' 'grantlee-qt5' 'xapian-core-git')
-makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git' 'python')
-conflicts=('khelpcenter' 'kdebase-runtime-doc')
-provides=('khelpcenter')
-source=('git+https://github.com/KDE/khelpcenter.git')
-groups=('plasma')
-md5sums=('SKIP')
+arch=($CARCH)
+url='https://userbase.kde.org/KHelpCenter'
+license=(LGPL)
+groups=(kde-applications-git kde-system-git)
+depends=(khtml-git kdoctools-git xapian-core grantlee kinit-git perl)
+makedepends=(git extra-cmake-modules-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd khelpcenter
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _major_ver="$(grep -m1 "set *(RELEASE_SERVICE_VERSION_MAJOR" CMakeLists.txt | cut -d '"' -f2)"
+  _minor_ver="$(grep -m1 "set *(RELEASE_SERVICE_VERSION_MINOR" CMakeLists.txt | cut -d '"' -f2)"
+  _micro_ver="$(grep -m1 "set *(RELEASE_SERVICE_VERSION_MICRO" CMakeLists.txt | cut -d '"' -f2)"
+  echo "${_major_ver}.${_minor_ver}.${_micro_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../khelpcenter/ \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
+  cmake -B build -S ${pkgname%-git} \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
