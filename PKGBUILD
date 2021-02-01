@@ -1,3 +1,4 @@
+# Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 
