@@ -1,25 +1,27 @@
 pkgbase = knotifications-git
-	pkgdesc = KNotifications
-	pkgver = v4.100.0.rc1.r459.ged8dbab
-	pkgrel = 2
-	url = https://projects.kde.org/projects/frameworks/knotifications
-	arch = i686
+	pkgdesc = Abstraction for system notifications
+	pkgver = 5.79.0_r609.g61a0e6e
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
 	arch = x86_64
+	groups = kf5-git
 	license = LGPL
-	makedepends = extra-cmake-modules-git
 	makedepends = git
+	makedepends = extra-cmake-modules-git
 	makedepends = qt5-tools
-	makedepends = python
+	makedepends = qt5-doc
+	makedepends = doxygen
+	depends = libcanberra
 	depends = libdbusmenu-qt5
-	depends = phonon-qt5
 	depends = kwindowsystem-git
-	depends = kcodecs-git
 	depends = kconfig-git
 	depends = kcoreaddons-git
+	depends = qt5-speech
+	depends = libxtst
 	provides = knotifications
 	conflicts = knotifications
 	source = git+https://github.com/KDE/knotifications.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = knotifications-git
 
