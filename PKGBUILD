@@ -1,7 +1,7 @@
 # Maintainer: AwesomeHaircut <jesusbalbastro@gmail.com>
 
 pkgname=touchegg
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=0
 pkgdesc="Multitouch gesture recognizer"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('libinput' 'cairo' 'systemd-libs' 'libx11' 'libxi' 'libxrandr' 'libxtst' 'pugixml' 'gtk3')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=(4534afd1aa5cbb50fe674491294635eb8b14e410bb834a2af095f1fe5e9bf0cc01860ee2916fd25ce5e7566bbb900d54735e038429b367490f189b9ada21ba09)
+sha512sums=(92b95d8055269accfb0f39610da9f50533661eb5d7aa8af244b70004e5fd412d4b3f61f0566e96cc9c55f4420488365e43eac740a4ab25c2c94ea1c3f71912d7)
 build() {
 	cmake -B build -S "$pkgname-$pkgver" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
