@@ -39,5 +39,4 @@ build() {
 package() {
   cd $_pkgname
   DESTDIR="$pkgdir" ninja -C build install
-  #make DESTDIR="$pkgdir/" install
 }
