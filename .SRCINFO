@@ -1,21 +1,27 @@
 pkgbase = kjobwidgets-git
-	pkgdesc = KJobWidgets
-	pkgver = v4.100.0.rc1.r252.g4a3a066
-	pkgrel = 2
-	url = https://projects.kde.org/projects/frameworks/kjobwidgets
-	arch = i686
+	pkgdesc = Widgets for tracking KJob instances
+	pkgver = 5.79.0_r335.gb1e9307
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
 	arch = x86_64
+	groups = kf5-git
 	license = LGPL
-	makedepends = extra-cmake-modules-git
 	makedepends = git
+	makedepends = extra-cmake-modules-git
 	makedepends = qt5-tools
+	makedepends = qt5-doc
+	makedepends = clang
+	makedepends = python-pyqt5
+	makedepends = doxygen
+	makedepends = sip4
 	depends = kcoreaddons-git
 	depends = kwidgetsaddons-git
 	depends = qt5-x11extras
+	optdepends = python-pyqt5: for the Python bindings
 	provides = kjobwidgets
 	conflicts = kjobwidgets
 	source = git+https://github.com/KDE/kjobwidgets.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kjobwidgets-git
 
