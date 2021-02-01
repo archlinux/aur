@@ -1,7 +1,7 @@
 #Maintainer: Angel Dimov <cyfraka at protonmail dot com>
 pkgname=curseradio-git
 _pkgname=curseradio
-pkgver=15.1bd4bd0-1
+pkgver=1
 pkgrel=1
 pkgdesc="Command line radio player"
 arch=('any')
