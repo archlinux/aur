@@ -3,11 +3,11 @@
 _name=yocto-cooker
 pkgname=python-yocto-cooker
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 url="https://github.com/cpb-/yocto-cooker"
 pkgdesc="yocto-cooker is a easy yocto manager."
 arch=(any)
-depends=(python python-jsonschema)
+depends=(python python-jsonschema python-urllib3)
 makedepends=(python-setuptools)
 
 source=("${pkgname}-${pkgver}.zip::https://codeload.github.com/cpb-/yocto-cooker/zip/1.0.1")
@@ -23,4 +23,6 @@ package() {
 	cd "$srcdir/$_name-$pkgver"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -d "$pkgdir/usr/share/$pkgname"
+	install -Dm644 sample-menus/* "$pkgdir/usr/share/$pkgname"
 }
