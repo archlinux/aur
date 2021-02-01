@@ -2,13 +2,13 @@
 
 pkgname="freezer-git"
 pkgver="1.1.16"
-pkgrel="1"
+pkgrel="2"
 pkgdesc='Free music streaming client for Deezer based on the Deezloader/Deemix "bug".'
 arch=('x86_64')
 url="https://git.rip/freezer/freezerpc"
 license=('custom')
 depends=()
-makedepends=('npm' 'git')
+makedepends=('npm' 'git' 'sed')
 source=("${pkgname}::git+https://git.rip/freezer/freezerpc.git"
 	"freezer.desktop")
 sha512sums=("SKIP"
@@ -19,6 +19,7 @@ pkgver() {
 }
 build() {
 	cd "$srcdir/$pkgname"
+	sed 's/"AppImage"/"dir"/g' -i package.json 
 	npm i
 	npm run build
 }
