@@ -119,7 +119,7 @@ package() {
   fi
   mkdir -p "${pkgdir}/${DEST_DIR}/${ENGINE_DIR}"
   mkdir -p "${pkgdir}/usr/share/applications"
-  mkdir -p "${pkgdir}/usr/local/bin"
+  mkdir -p "${pkgdir}/usr/bin"
   mkdir -p "${pkgdir}/usr/share/daggerfall-unity"
   echo "Done"
 
@@ -151,7 +151,7 @@ package() {
 
   echo "Copying the additonal package files to the package..."
   #Add script for running program and make executable
-  cp ${srcdir}/daggerfall-unity ${pkgdir}/usr/local/bin/daggerfall-unity
+  cp ${srcdir}/daggerfall-unity ${pkgdir}/usr/bin/daggerfall-unity
 
   #Add desktop shortcut
   cp ${srcdir}/daggerfall.desktop ${pkgdir}/usr/share/applications/daggerfall.desktop
@@ -165,6 +165,6 @@ package() {
   find ${pkgdir}/* -type d -exec chmod 755 {} \;
   find ${pkgdir}/* -type f -exec chmod 644 {} \;
   chmod +x ${pkgdir}/${DEST_DIR}/${ENGINE_DIR}/DaggerfallUnity.x86_64
-  chmod +x ${pkgdir}/usr/local/bin/daggerfall-unity 
+  chmod +x ${pkgdir}/usr/bin/daggerfall-unity 
   echo "Done."
 }
