@@ -1,23 +1,22 @@
 pkgbase = khtml-git
-	pkgdesc = KHtml
-	pkgver = r501.cbe1aed
+	pkgdesc = KHTML APIs
+	pkgver = 5.79.0_r528.gfb3c9ef
 	pkgrel = 1
-	url = https://projects.kde.org/projects/frameworks/khtml
-	arch = i686
+	url = https://community.kde.org/Frameworks
 	arch = x86_64
-	groups = kf5-aids
+	groups = kf5-aids-git
 	license = LGPL
-	makedepends = extra-cmake-modules-git
 	makedepends = git
-	makedepends = python
+	makedepends = extra-cmake-modules-git
+	makedepends = gperf
+	depends = giflib
 	depends = kparts-git
 	depends = kjs-git
-	depends = giflib
-	optdepends = java-environment
+	depends = phonon-qt5
 	provides = khtml
 	conflicts = khtml
 	source = git+https://github.com/KDE/khtml.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = khtml-git
 

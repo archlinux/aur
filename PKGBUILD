@@ -1,43 +1,34 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS khtml PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=khtml-git
-pkgver=r501.cbe1aed
+pkgver=5.79.0_r528.gfb3c9ef
 pkgrel=1
-pkgdesc='KHtml'
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/frameworks/khtml'
-license=('LGPL')
-depends=('kparts-git' 'kjs-git' 'giflib')
-makedepends=('extra-cmake-modules-git' 'git' 'python')
-optdepends=('java-environment')
-groups=('kf5-aids')
-conflicts=('khtml')
-provides=('khtml')
-source=('git+https://github.com/KDE/khtml.git')
-md5sums=('SKIP')
+pkgdesc='KHTML APIs'
+arch=($CARCH)
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
+depends=(giflib kparts-git kjs-git phonon-qt5)
+makedepends=(git extra-cmake-modules-git gperf)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(kf5-aids-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd khtml
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 "set(KF5\?_VERSION" CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../khtml \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+  cmake -B build -S ${pkgname%-git} \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
