@@ -5,7 +5,7 @@ _obsver=26.1.2
 pkgrel=1
 pkgdesc="adds a filter you can add to media source to load the oldest or newest file in a directory"
 arch=('x86_64')
-url="https://github.com/WarmUpTill/SceneSwitcher"
+url="https://github.com/exeldro/obs-dir-watch-media"
 license=("GPL2")
 depends=("obs-studio")
 # Need to compile plugin in OBS compilation process
