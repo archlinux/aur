@@ -2,7 +2,7 @@
 
 pkgname=ghorg
 pkgver=1.5.0
-pkgrel=0
+pkgrel=1
 pkgdesc='allows you to quickly clone all of an orgs, or users repos into a single directory.'
 arch=('x86_64')
 url='https://github.com/gabrie30/ghorg'
@@ -18,6 +18,4 @@ build() {
 
 package() {
   install -Dm 755 "${srcdir}/$pkgname-$pkgver/ghorg" "${pkgdir}/usr/bin/ghorg"
-  cd $pkgname-$pkgver
-  make install
 }
