@@ -2,10 +2,10 @@ post_install() {
   echo
   echo '==='
   echo 'Archuseriso:'
-  echo 'v0.6 series rebased on Archiso profiledef.sh'
+  echo 'v0.6.1'
   echo
-  echo 'Command arguments and options haved changed, '
-  echo 'Versions prior to v0.6 series are not compatible.'
+  echo 'new aui-mkhybrid tool'
+  echo 'new aui-run tool'
   echo '==='
   echo
 }
