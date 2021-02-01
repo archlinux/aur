@@ -1,0 +1,36 @@
+#!/bin/sh
+# run application with java env >= 8
+
+PDFSAM_EXECUTABLE="/usr/share/java/pdfsam/bin/pdfsam.sh"
+PDFSAM_JAVA_VERSION="11"
+
+run_pdfsam() {
+    exec "${PDFSAM_EXECUTABLE}"
+    exit 0
+}
+
+# check JAVA_HOME first
+if test -n "${JAVA_HOME}"; then
+    if echo ${JAVA_HOME} | grep -q "${PDFSAM_JAVA_VERSION}"; then
+        # system environment variable set to required, do nothing
+        echo "Using java environment from JAVA_HOME: ${JAVA_HOME}" >&2
+        run_pdfsam
+    else
+        # unset JAVA_HOME
+        echo "Unset JAVA_HOME for this run: ${JAVA_HOME}" >&2
+        unset JAVA_HOME
+    fi
+fi
+
+# check current environment
+if archlinux-java status | grep "default" | grep -q "${PDFSAM_JAVA_VERSION}"; then
+    # required java version is set to default, do nothing
+    echo "Using system enabled java environment" >&2
+    run_pdfsam
+fi
+
+# find valid environment
+PDFSAM_JAVA_ENV="`archlinux-java status | grep "${PDFSAM_JAVA_VERSION}" | awk '{ print $1 }' | head -1`"
+export PATH="/usr/lib/jvm/${PDFSAM_JAVA_ENV%/*}/bin/:${PATH}"
+echo "Run with exported ${PDFSAM_JAVA_ENV}" >&2
+run_pdfsam
