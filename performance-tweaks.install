@@ -6,8 +6,6 @@ msg() {
 	printf "${GREEN}==>${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}" "$@" >&2
 }
 
-add_users() {
-
 post_install() {
   systemctl enable haveged
   systemctl enable systemd-swap
