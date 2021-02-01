@@ -11,7 +11,7 @@ depends=('python' 'mpv' 'python-requests' 'python-xdg' 'python-lxml')
 makedepends=('git')
 provides=('curseradio-git')
 options=(!emptydirs)
-source=("git+https://github.com/chronitis/curseradio.git")
+source=("git+https://github.com/cyfraka/curseradio.git")
 md5sums=('SKIP')
 
 pkgver() {
