@@ -1,7 +1,7 @@
 # Maintainer: archcrack <johndoe.arch@outlook.com>
 
 pkgname=clifm
-pkgver=0.27.2
+pkgver=0.27.3
 pkgrel=1
 pkgdesc="The KISS file manager: cli-based, ultra-lightweight, and lightning fast"
 arch=(any)
@@ -14,9 +14,11 @@ optdepends=(
 	'curlftpfs: FTPFS support'
 	'archivemount: Archives mount'
 	'atool: Archives/compression support'
+	'p7zip: ISO 9660 support'
+	'cdrtools: ISO 9660 support'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/leo-arch/$pkgname/archive/v${pkgver}.tar.gz")
-sha256sums=('eb2b0cdc8e874352ce01ce627c88172dfe292f19bf7d9e87af8769cd2eaf0590')
+sha256sums=('89d5a127c3349d6414bc67244f1c001f545004e42792de2d58db43d2ede78515')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
