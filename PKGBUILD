@@ -1,41 +1,36 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS polkit-kde-agent PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=polkit-kde-agent-git
-pkgver=r442.14f09c4
+pkgver=5.21.80_r484.gd7ab7df
 pkgrel=1
 pkgdesc='Daemon providing a polkit authentication UI for KDE'
-arch=(i686 x86_64)
-url='https://projects.kde.org/projects/kde/workspace/polkit-kde-agent-1'
+arch=($CARCH)
+url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(knotifications-git)
-makedepends=(extra-cmake-modules-git git kdoctools-git python)
-conflicts=(polkit-kde-agent polkit-kde-git)
-provides=(polkit-kde-agent)
+depends=(kiconthemes kdbusaddons kcrash)
+makedepends=(git extra-cmake-modules-git kdoctools)
+conflicts=(${pkgname%-git} polkit-kde-git)
+provides=(${pkgname%-git})
 replaces=(polkit-kde-git)
-source=('git+https://github.com/KDE/polkit-kde-agent-1.git')
-groups=('plasma')
-md5sums=('SKIP')
+groups=(plasma-git)
+source=("git+https://github.com/KDE/${pkgname%-git}-1.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd polkit-kde-agent-1
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}-1
+  _ver="$(grep -m1 'set(PROJECT_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../polkit-kde-agent-1 \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib
-  make
+  cmake -B build -S ${pkgname%-git}-1 \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
