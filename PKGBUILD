@@ -1,4 +1,4 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer:  Francesco Masala <mail@francescomasala.me>
 
 pkgname=bottles
 pkgver=2.1.0.5
