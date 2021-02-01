@@ -1,43 +1,35 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS kwrited PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
-_pkgname=kwrited
-pkgname=$_pkgname-git
-pkgver=r426.a0aac9f
+pkgname=kwrited-git
+pkgver=5.21.80_r467.g44ce622
 pkgrel=1
 pkgdesc='KDE daemon listening for wall and write messages'
-arch=(i686 x86_64)
-url='https://www.kde.org/workspaces/plasmadesktop/'
+arch=($CARCH)
+url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(kpty knotifications kdbusaddons)
-makedepends=(extra-cmake-modules git kdoctools)
-groups=(plasma)
-conflicts=("$_pkgname")
-provides=("$_pkgname")
-source=('git+https://github.com/KDE/kwrited.git')
+depends=(kpty-git knotifications-git kdbusaddons-git)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(plasma-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/$_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd $srcdir/$_pkgname
-  mkdir -p build
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(PROJECT_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd $srcdir/$_pkgname/build
-  cmake ../ \
-    -DBUILD_TESTING=OFF \
-    -DBUILD_QCH=ON
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  cd $srcdir/$_pkgname/build
-  make DESTDIR="$pkgdir" install
-  install -Dm644 ../COPYING.LIB "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  DESTDIR="$pkgdir" cmake --install build
 }
