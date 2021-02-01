@@ -1,19 +1,27 @@
 pkgbase = kitemmodels-git
-	pkgdesc = KItemModels
-	pkgver = r431.3d00a7e
+	pkgdesc = Models for Qt Model/View system
+	pkgver = 5.79.0_r510.g185e43f
 	pkgrel = 1
-	url = https://projects.kde.org/projects/frameworks/kitemmodels
-	arch = i686
+	url = https://community.kde.org/Frameworks
 	arch = x86_64
-	groups = kf5
+	groups = kf5-git
 	license = LGPL
-	makedepends = extra-cmake-modules-git
 	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = python-pyqt5
+	makedepends = clang
+	makedepends = doxygen
+	makedepends = qt5-tools
+	makedepends = qt5-doc
+	makedepends = sip4
+	makedepends = qt5-declarative
 	depends = qt5-base
+	optdepends = python-pyqt5: for the Python bindings
+	optdepends = qt5-declarative: QML bindings
 	provides = kitemmodels
 	conflicts = kitemmodels
 	source = git+https://github.com/KDE/kitemmodels.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kitemmodels-git
 
