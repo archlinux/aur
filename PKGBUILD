@@ -6,7 +6,7 @@
 _pkgsourcename=qt3
 pkgname=lib32-$_pkgsourcename
 pkgver=3.3.8b
-pkgrel=15
+pkgrel=16
 epoch=1
 pkgdesc="A cross-platform application and UI framework"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ makedepends=('lib32-unixodbc' 'lib32-mesa' 'lib32-sqlite2')
 optdepends=('qtchooser: set the default Qt toolkit'
             'unixodbc: ODBC driver')
 options=('!docs')
-source=(https://download.qt.io/new-archive/qt/3/qt-x11-free-${pkgver}.tar.gz
+source=(https://download.qt.io/archive/qt/3/qt-x11-free-${pkgver}.tar.gz
         qt3-other-patches.tar.bz2
         qt3-fedora-patches.tar.bz2)
 sha256sums=('1b7a1ff62ec5a9cb7a388e2ba28fda6f960b27f27999482ebeceeadb72ac9f6e'
