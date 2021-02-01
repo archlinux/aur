@@ -1,0 +1,30 @@
+# Maintainer: Lucas H. Gabrielli <heitzmann@gmail.com>
+
+pkgname=python-basix-git
+pkgdesc="Python interface of FEniCS for ordinary and partial differential equations."
+pkgver=20210201
+pkgrel=1
+arch=('i686' 'x86_64')
+url="https://github.com/FEniCS/basix"
+license=('GPL3')
+groups=('fenics-git')
+depends=('eigen' 'pybind11')
+makedepends=('python-setuptools' 'python-wheel' 'python-scikit-build' 'git' 'ninja')
+options=(!emptydirs)
+source=("basix::git+https://github.com/FEniCS/basix.git")
+md5sums=('SKIP')
+
+pkgver() {
+    cd basix
+    git log --format="%cd" --date=short -1 | sed 's/-//g'
+}
+
+build() {
+    cd basix
+    python setup.py build
+}
+
+package() {
+    cd basix
+    python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+}
