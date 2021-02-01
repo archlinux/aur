@@ -2,7 +2,7 @@
 pkgname=curseradio-git
 _pkgname=curseradio
 pkgver=1
-pkgrel=1
+pkgrel=0
 pkgdesc="Command line radio player"
 arch=('any')
 url="https://github.com/Cyfraka/curseradio"
@@ -14,10 +14,6 @@ options=(!emptydirs)
 source=("git+https://github.com/cyfraka/curseradio.git")
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 package() {
   cd "$_pkgname"
