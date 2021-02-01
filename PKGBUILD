@@ -1,42 +1,34 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS kinfocenter PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kinfocenter-git
-pkgver=r1709.7d6656c
+pkgver=5.21.80_r1785.g0bb30a6
 pkgrel=1
-pkgdesc='KInfocenter'
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/kde/kde-workspace'
-license=('LGPL')
-depends=('kdelibs4support-git' 'kcmutils-git' 'kwayland-git' 'pciutils' 'glu' 'libraw1394')
-makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git' 'plasma-framework-git')
-conflicts=('kinfocenter' 'kdebase-workspace')
-provides=('kinfocenter')
-source=('git+https://github.com/KDE/kinfocenter.git')
-groups=('plasma')
-md5sums=('SKIP')
+pkgdesc='A utility that provides information about a computer system'
+arch=($CARCH)
+url='https://www.kde.org/applications/system/kinfocenter/'
+license=(LGPL)
+depends=(systemsettings-git glu)
+makedepends=(git extra-cmake-modules-git plasma-framework-git kdoctools-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(plasma-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd kinfocenter
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(PROJECT_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../kinfocenter \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
-
