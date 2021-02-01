@@ -6,7 +6,7 @@ _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
 _monover=5.1.1
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
 arch=(x86_64)
@@ -67,6 +67,7 @@ makedepends=(autoconf ncurses bison perl fontforge flex mingw-w64-gcc
   git
   cmake
   python-virtualenv
+  python-pip
   nasm
   glslang
 )
@@ -175,6 +176,11 @@ prepare() {
     patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
     patch -p1 -i "$srcdir"/proton-user_compat_data.patch
+
+    # Export CFLAGS used by upstream if building for redistribution
+    # -O2 is adjusted to -O3 since AVX is disabled
+    #export CFLAGS="-O3 -march=nocona -mtune=core-avx2"
+    #export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2"
 
     # Uncomment to enable dxvk async patch.
     # Enable at your own risk. If you don't know what it is,
