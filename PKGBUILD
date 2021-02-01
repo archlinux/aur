@@ -2,7 +2,7 @@
 
 pkgname=obsidian-insider
 _pkgname=obsidian
-_appimagver=0.10.10
+_appimagver=0.10.12
 _appimage="${_pkgname}-${_appimagver}.asar.gz"
 pkgver=${_appimagver//-/_}
 pkgrel=1
@@ -18,7 +18,7 @@ source=(
   "https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/obsidian-${pkgver}.asar.gz"
 )
 sha256sums=('8cd2bac969bf0b394c5766a26985759ec5bc6d6cf5ce0316920dce095d964041'
-            '5591bd895f445e85fd978ff894d4d2e2bb51c220b604450758b79e48325b99e0')
+            '36b0ef6daa57e8023f90db4ee438608ff6d8310ce1ad5200a337dba8914c6a0d')
 
 package() {
     # Go to source directory
