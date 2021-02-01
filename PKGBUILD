@@ -8,7 +8,7 @@ arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="Free non-linear video editor"
 url="https://www.olivevideoeditor.org/"
 license=('GPL3')
-depends=('ffmpeg' 'openimageio' 'qt5-multimedia')
+depends=('ffmpeg' 'openimageio-git' 'qt5-multimedia')
 makedepends=('cmake' 'git' 'ninja' 'qt5-tools')
 
 # Temporarily, the "olive-git" package is incompatible
