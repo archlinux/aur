@@ -1,0 +1,14 @@
+pkgbase = scaphandre
+	pkgdesc = Electrical power consumption metrology agent
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/hubblo-org/scaphandre/
+	arch = x86_64
+	license = Apache
+	makedepends = rust
+	depends = gcc-libs
+	source = scaphandre-0.1.1.tar.gz::https://github.com/hubblo-org/scaphandre/archive/v0.1.1.tar.gz
+	sha512sums = 882bb281f3c3ea8be60b26b7fdc5d24e0e0f5b0589a356d4e76b6e9505058bcb1a5bd8c2c89a0ddb3e914b076e7e0462bda1a4f7d7acc0239c01c4de2082c8be
+
+pkgname = scaphandre
+
