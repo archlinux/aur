@@ -1,6 +1,6 @@
 pkgbase = wayfire
 	pkgdesc = 3D wayland compositor
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://wayfire.org
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = wayfire
 	depends = wlroots>=0.12
 	depends = wlroots<0.13
 	conflicts = wayfire-git
-	source = https://github.com/WayfireWM/wayfire/releases/download/0.6.0/wayfire-0.6.0.tar.xz
-	sha256sums = 98a903eb3174834bb09d957987948a5fc8447661cf2dda48260db947f5d78571
+	source = https://github.com/WayfireWM/wayfire/releases/download/v0.7.0/wayfire-0.7.0.tar.xz
+	sha256sums = 0d8ec311510bf10647d857c2db6e3dbbccfe3ac9064463661c8062c8cbb469a6
 
 pkgname = wayfire
 
