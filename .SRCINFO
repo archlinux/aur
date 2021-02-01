@@ -1,21 +1,22 @@
 pkgbase = kdnssd-git
 	pkgdesc = Abstraction to system DNSSD features
-	pkgver = r259.1caeab4
+	pkgver = 5.79.0_r285.g59f4394
 	pkgrel = 1
-	url = https://projects.kde.org/projects/frameworks/kdnssd
-	arch = i686
+	url = https://community.kde.org/Frameworks
 	arch = x86_64
-	groups = kf5
+	groups = kf5-git
 	license = LGPL
-	makedepends = extra-cmake-modules-git
 	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = doxygen
+	makedepends = qt5-tools
+	makedepends = qt5-doc
 	depends = qt5-base
 	depends = avahi
-	depends = nss-mdns
 	provides = kdnssd
 	conflicts = kdnssd
 	source = git+https://github.com/KDE/kdnssd.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kdnssd-git
 
