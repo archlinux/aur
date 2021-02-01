@@ -34,25 +34,22 @@ prepare() {
 }
 
 build() {
-  cd "${pkgname}/src"
-  cmake -B build -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=None \
-    -DCUTTER_ENABLE_PYTHON=ON \
-    -DCUTTER_ENABLE_PYTHON_BINDINGS=ON \
-    -DCUTTER_USE_BUNDLED_RADARE2=ON \
-    -DCUTTER_USE_ADDITIONAL_RADARE2_PATHS=OFF \
-    -DCUTTER_ENABLE_CRASH_REPORTS=OFF \
+  _CMAKE_FLAGS+=(
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_BUILD_TYPE=None
+    -DCUTTER_ENABLE_PYTHON=ON
+    -DCUTTER_ENABLE_PYTHON_BINDINGS=ON
+    -DCUTTER_USE_BUNDLED_RADARE2=ON
+    -DCUTTER_USE_ADDITIONAL_RADARE2_PATHS=OFF
+    -DCUTTER_ENABLE_CRASH_REPORTS=OFF
     -DCUTTER_ENABLE_GRAPHVIZ=ON
+)
+  cmake -B build -S "${srcdir}/${pkgname}/src" "${_CMAKE_FLAGS[@]}"
   make -C build
 }
 
 package() {
-  cd ${pkgname}
-
-  install -DTm755 src/build/r2cutter "${pkgdir}/usr/bin/r2cutter"
-  install -DTm644 src/org.radare.r2cutter.desktop "${pkgdir}/usr/share/applications/org.radare.r2cutter.desktop"
-  install -DTm644 src/img/r2cutter.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/r2cutter.svg"
-  install -DTm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -dm755 docs/ "${pkgdir}/usr/share/doc/${pkgname}/"
-  cp -a docs/* "${pkgdir}/usr/share/doc/${pkgname}/"
+  make -C build DESTDIR="$pkgdir" install
+  install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
+  cp -a ${pkgname}/docs/* "${pkgdir}/usr/share/doc/${pkgname}/"
 }
