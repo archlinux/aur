@@ -1,41 +1,34 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS kded PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kded-git
-pkgver=r322.2c766d8
+pkgver=5.79.0_r373.g8dfb2c8
 pkgrel=1
-pkgdesc='KDE Daemon'
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/frameworks/kded'
-license=('LGPL')
-depends=('kinit-git')
-makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git')
-groups=('kf5')
-conflicts=(kded)
-provides=(kded)
-source=('git+https://github.com/KDE/kded.git')
-md5sums=('SKIP')
+pkgdesc='Extensible deamon for providing system level services'
+arch=($CARCH)
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
+depends=(kservice-git)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(kf5-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd kded
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 "set(KF5\?_VERSION" CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../kded \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+  cmake -B build -S ${pkgname%-git} \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
