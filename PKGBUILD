@@ -1,42 +1,34 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS kdesignerplugin PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdesignerplugin-git
-pkgver=r284.02b377a
+pkgver=5.79.0_r306.g826e877
 pkgrel=1
-pkgdesc='KDesignerPlugin'
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/frameworks/kdesignerplugin'
-license=('LGPL')
-depends=('kplotting-git' 'kdewebkit-git')
-makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools' 'kdoctools-git' 'python')
-groups=('kf5')
-conflicts=('kdesignerplugin')
-provides=('kdesignerplugin')
-source=('git+https://github.com/KDE/kdesignerplugin.git')
-md5sums=('SKIP')
+pkgdesc='Integration of Frameworks widgets in Qt Designer/Creator'
+arch=($CARCH)
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
+depends=(kconfig-git kcoreaddons-git)
+makedepends=(git extra-cmake-modules-git qt5-tools kdoctools-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(kf5-aids-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd kdesignerplugin
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 "set(KF5\?_VERSION" CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../kdesignerplugin \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+  cmake -B build -S ${pkgname%-git} \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
