@@ -9,7 +9,7 @@ url="https://github.com/bottlesdevs/Bottles"
 license=('GPL3')
 depends=('hicolor-icon-theme' 'dconf' 'python')
 makedepends=('meson' 'ninja')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bottlesdevs/Bottles/archive/${pkgver}.tar.gz")
+source=("${pkgver}.tar.gz::https://github.com/bottlesdevs/Bottles/archive/${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
