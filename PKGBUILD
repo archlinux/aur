@@ -26,7 +26,7 @@ sha256sums=(
 )
 
 prepare() {
-  rm -rf obs-studio
+  rm -rf fakeroot
   cd "obs-studio-$_obsver"
   patch -Np1 < "$srcdir"/fix_python_binary_loading.patch
   cd plugins
@@ -44,12 +44,11 @@ build() {
 }
 
 package() {
-  mkdir obs-studio
   mkdir -p "$pkgdir"/usr/lib/obs-plugins
   mkdir -p "$pkgdir"/usr/share/obs/obs-plugins
 
   cd "obs-studio-$_obsver"
-  make -C build DESTDIR="$srcdir/install/" install
-  cp -a "$srcdir"/install/usr/lib/obs-plugins/dir-watch-media.so "$pkgdir"/usr/lib/obs-plugins/
-  cp -a "$srcdir"/install/usr/share/obs/obs-plugins/dir-watch-media "$pkgdir"/usr/share/obs/obs-plugins/
+  make -C build DESTDIR="$srcdir/fakeroot/" install
+  cp -a "$srcdir"/fakeroot/usr/lib/obs-plugins/dir-watch-media.so "$pkgdir"/usr/lib/obs-plugins/
+  cp -a "$srcdir"/fakeroot/usr/share/obs/obs-plugins/dir-watch-media "$pkgdir"/usr/share/obs/obs-plugins/
 }
