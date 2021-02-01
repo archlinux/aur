@@ -1,16 +1,18 @@
 # Maintainer: Hugo Hörnquist <hugo@lysator.liu.se>
 
 pkgname=repofs-git
-pkgver=r152.5806312
-pkgrel=2
+pkgver=r155.14b37ec
+pkgrel=1
 pkgdesc="Filesystem view of version control repositories"
 arch=('any')
 license=('Apache')
-makedepends=('python-setuptools')
+makedepends=('git' 'python-setuptools')
 checkdepends=('git')
 depends=('python-fusepy' 'python-pygit2' 'python')
 url='https://github.com/aueb-balab/repofs'
 source=("${pkgname}::git+$url")
+conflicts=('repofs')
+provides=('repofs')
 md5sums=('SKIP')
 
 pkgver() {

@@ -1,15 +1,18 @@
 pkgbase = repofs-git
 	pkgdesc = Filesystem view of version control repositories
-	pkgver = r152.5806312
-	pkgrel = 2
+	pkgver = r155.14b37ec
+	pkgrel = 1
 	url = https://github.com/aueb-balab/repofs
 	arch = any
 	license = Apache
 	checkdepends = git
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python-fusepy
 	depends = python-pygit2
 	depends = python
+	provides = repofs
+	conflicts = repofs
 	source = repofs-git::git+https://github.com/aueb-balab/repofs
 	md5sums = SKIP
 
