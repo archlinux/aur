@@ -1,40 +1,36 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS kwayland PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Antonio Rojas
 
 pkgname=kwayland-git
-pkgver=v5.76.0.rc1.r0.g6710f4b
+pkgver=5.79.0_r1052.gba6115e
 pkgrel=1
 pkgdesc='Qt-style Client and Server library wrapper for the Wayland libraries'
-arch=('i686' 'x86_64')
-url='http://www.kde.org'
-license=('LGPL')
-depends=('qt5-wayland')
-makedepends=('extra-cmake-modules-git' 'git' 'wayland-protocols' 'plasma-wayland-protocols-git')
-provides=('kwayland')
-conflicts=('kwayland')
-source=('git+https://github.com/KDE/kwayland.git')
-md5sums=('SKIP')
+arch=($CARCH)
+url='https://www.kde.org'
+license=(LGPL)
+depends=(qt5-wayland)
+makedepends=(git extra-cmake-modules-git doxygen qt5-tools qt5-doc wayland-protocols plasma-wayland-protocols-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(kf5-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  mkdir -p build
+  _ver="$(grep -m1 "set(KF5\?_VERSION" CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../kwayland \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DKDE_INSTALL_LIBDIR=lib
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
