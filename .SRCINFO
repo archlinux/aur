@@ -1,20 +1,22 @@
 pkgbase = kidletime-git
-	pkgdesc = KIdleTime
-	pkgver = v5.71.0.r1.gb7c5b1c
+	pkgdesc = Monitoring user activity
+	pkgver = 5.79.0_r279.g50996b7
 	pkgrel = 1
-	url = https://projects.kde.org/projects/frameworks/kidletime
-	arch = i686
+	url = https://community.kde.org/Frameworks
 	arch = x86_64
-	groups = kf5
+	groups = kf5-git
 	license = LGPL
-	makedepends = extra-cmake-modules-git
 	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = doxygen
+	makedepends = qt5-tools
+	makedepends = qt5-doc
 	depends = qt5-x11extras
 	depends = libxss
 	provides = kidletime
 	conflicts = kidletime
 	source = git+https://github.com/KDE/kidletime.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kidletime-git
 

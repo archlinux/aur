@@ -1,42 +1,35 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS kidletime PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kidletime-git
-pkgver=v5.71.0.r1.gb7c5b1c
+pkgver=5.79.0_r279.g50996b7
 pkgrel=1
-pkgdesc='KIdleTime'
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/frameworks/kidletime'
-license=('LGPL')
-depends=('qt5-x11extras' 'libxss')
-makedepends=('extra-cmake-modules-git' 'git')
-groups=('kf5')
-conflicts=(kidletime)
-provides=(kidletime)
-source=('git+https://github.com/KDE/kidletime.git')
-md5sums=('SKIP')
+pkgdesc='Monitoring user activity'
+arch=($CARCH)
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
+depends=(qt5-x11extras libxss)
+makedepends=(git extra-cmake-modules-git doxygen qt5-tools qt5-doc)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(kf5-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  mkdir -p build
+  _ver="$(grep -m1 "set(KF5\?_VERSION" CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../kidletime \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
