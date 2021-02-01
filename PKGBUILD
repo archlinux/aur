@@ -18,7 +18,7 @@ validpgpkeys=('3FEF9748469ADBE15DA7CA80AC2D62742012EA22')
 package() {
   bsdtar -xv -C "${pkgdir}" -f "${srcdir}/data.tar.xz"
 
-  chmod 0644 "${pkgdir}/usr/share/polkit-1/actions/com.1password.1Password.policy"
+  chmod 0644 "${pkgdir}/opt/1Password/com.1password.1Password.policy"
   chmod 4755 "${pkgdir}/opt/1Password/chrome-sandbox" || true
 
   mkdir -p "${pkgdir}/usr/bin/"
