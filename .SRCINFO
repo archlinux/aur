@@ -1,19 +1,21 @@
 pkgbase = kbookmarks-git
-	pkgdesc = KBookmarks
-	pkgver = v5.71.0.rc1.r1.g31e2e33
-	pkgrel = 2
-	url = https://projects.kde.org/projects/frameworks/kbookmarks
-	arch = i686
+	pkgdesc = Support for bookmarks and the XBEL format
+	pkgver = 5.79.0_r379.g4af1536
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
 	arch = x86_64
+	groups = kf5-git
 	license = LGPL
-	makedepends = extra-cmake-modules-git
 	makedepends = git
+	makedepends = extra-cmake-modules-git
 	makedepends = qt5-tools
+	makedepends = qt5-doc
+	makedepends = doxygen
 	depends = kxmlgui-git
 	provides = kbookmarks
 	conflicts = kbookmarks
 	source = git+https://github.com/KDE/kbookmarks.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kbookmarks-git
 

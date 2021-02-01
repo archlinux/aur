@@ -1,41 +1,35 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS kbookmarks PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kbookmarks-git
-pkgver=v5.71.0.rc1.r1.g31e2e33
-pkgrel=2
-pkgdesc='KBookmarks'
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/frameworks/kbookmarks'
-license=('LGPL')
-depends=('kxmlgui-git')
-makedepends=('extra-cmake-modules-git' 'git' 'qt5-tools')
-conflicts=(kbookmarks)
-provides=(kbookmarks)
-source=('git+https://github.com/KDE/kbookmarks.git')
-md5sums=('SKIP')
+pkgver=5.79.0_r379.g4af1536
+pkgrel=1
+pkgdesc='Support for bookmarks and the XBEL format'
+arch=($CARCH)
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
+depends=(kxmlgui-git)
+makedepends=(git extra-cmake-modules-git qt5-tools qt5-doc doxygen)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(kf5-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  mkdir -p build
+  _ver="$(grep -m1 "set(KF5\?_VERSION" CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../kbookmarks \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
