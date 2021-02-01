@@ -2,7 +2,7 @@
 
 pkgname=systemd-removed-services-hook
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Notifies you of uninstalled systemd services along with the command to disable them'
 arch=('any')
 url='https://gitlab.com/firstairbender/systemd-removed-services-hook'
@@ -44,5 +44,5 @@ build() {
 
 package() {
     install -Dm 0644 ./*.hook --target-directory="$pkgdir/usr/share/libalpm/hooks/"
-    install -Dm 0644 ./*.sh --target-directory="$pkgdir/usr/share/libalpm/scripts/"
+    install -Dm 0744 ./*.sh --target-directory="$pkgdir/usr/share/libalpm/scripts/"
 }
