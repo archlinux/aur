@@ -3,7 +3,7 @@
 # Based on PMS PKGBUILD
 
 pkgname=ums
-pkgver=10.0.0
+pkgver=10.0.1
 pkgrel=1
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server."
 arch=('i686' 'x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
@@ -33,11 +33,11 @@ source=('ums.desktop'
 sha256sums=('0cdadbabef215b6539e56755147a8f626d9f1fadfb85e2e5b7f7f1b66f1cdef9'
             '1f6efefa58dde9148396bd9236a6985db0fa27f1c767067b52bfae1832f32284'
             '7fd36db71f39fde3d515c697101190f979b308d910b3c4210b90422669683ab0')
-sha256sums_i686=('e0c334c250392659ca83e0f1d9c646b781b3785c3c7e4dba7f0f364c82da9beb')
-sha256sums_x86_64=('cf8248d33edee0bcc046eabeee0558f6aa62438e7f89814334b8464c2a652179')
-sha256sums_aarch64=('ee72f7a41c9f2092c06885f65ddadc42b810c1eec14a5d6b02639a01d46cbef4')
-sha256sums_arm=('c7c882e7f7d3b0ef21c4a9cc8cb0977423dbf25c8caeba5bd96e1483d0e8e9c5')
-sha256sums_armv6h=('c29c5eb27cdccc6dc0dd791ff7186787203901c306214e5214515add1db36ca9')
+sha256sums_i686=('6610bae9404e500a67946995df8d78fdd72c7dd198a2aa8a6b93197d2d1afce9')
+sha256sums_x86_64=('59a0342aa7d28b55def531543a7fa16ada979be9305db04cdf6c67a0f29d784d')
+sha256sums_aarch64=('e6221cff92c880d0a516414c5b27ba85c4a33e9ed4821c1faa736f506c8b088c')
+sha256sums_arm=('4d3d2c925ebc9a0a1fa74ca5c9f376dab68c7ae536ae8b8498c2e442757164c8')
+sha256sums_armv6h=('656b4dcaa5f15e8a2800072c562b2b87812d3e233c536393724a75aaf2ff174e')
 sha256sums_armv7h=(${sha256sums_armv6h})
 
 package() {
