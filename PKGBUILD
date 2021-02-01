@@ -40,7 +40,7 @@ build() {
     -DHAVE_NEON=0 \
     -DHAVE_SOLARIS=0 \
     -DHAVE_SNDIO=0 \
-    -DHAVE_WASAPI =0 \
+    -DHAVE_WASAPI=0 \
     -DHAVE_WINMM=0 \
     -DHAVE_PORTAUDIO=0 \
     -DHAVE_JACK=0 \
