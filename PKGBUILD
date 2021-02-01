@@ -1,44 +1,36 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS kdav PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Marco Scarpetta <marcoscarpetta02@gmail.com>
 
 pkgname=kdav-git
-pkgver=r1249.b1ecd66
+pkgver=5.79.0_r1261.g7e75073
 pkgrel=1
-pkgdesc='A DAV protocol implementation with KJobs '
-arch=('i686' 'x86_64')
-url='https://cgit.kde.org/kdav.git/'
-license=('GPL')
-depends=('qt5-base' 'kio' 'qt5-xmlpatterns')
-makedepends=('extra-cmake-modules' 'git')
-conflicts=(kdav)
-provides=(kdav)
-source=('git+https://github.com/KDE/kdav.git')
+epoch=1
+pkgdesc="A DAV protocol implemention with KJobs"
+arch=($CARCH)
+url="https://community.kde.org/Frameworks"
+license=(LGPL)
+depends=(kio-git qt5-xmlpatterns)
+makedepends=(git extra-cmake-modules-git doxygen qt5-tools)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(kf5-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd kdav
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 "set(KF5\?_VERSION" CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd "${srcdir}"
-  mkdir -p build
-}
-
-build() { 
-  cd "${srcdir}/build"
-  cmake "${srcdir}/kdav" \
-    -DENABLE_TESTING=OFF \
+build() {
+  cmake -B build -S ${pkgname%-git} \
     -DBUILD_TESTING=OFF \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+    -DBUILD_QCH=ON
+  cmake --build build
 }
 
 package() {
-  cd "${srcdir}/build"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
-
