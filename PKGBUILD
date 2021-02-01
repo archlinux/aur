@@ -51,7 +51,7 @@ _major=5.10
 _minor=12
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -78,9 +78,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v12-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v12-sep/0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
-        "${_lucjanpath}/arch-patches-v12-sep/0003-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch"
+        "${_lucjanpath}/arch-patches-v13-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v13-sep/0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
+        "${_lucjanpath}/arch-patches-v13-sep/0003-iwlwifi-provide-gso_type-to-GSO-packets.patch"
          # the main kernel config files
         'config')
 
@@ -329,9 +329,9 @@ sha512sums=('01062437c9af1654346b5baf550dbefe3cedab18b3d793ee528d1fc27556d5ecc43
             '45fa721352143304eceff87649986fd42fcf4ae369f15ba704a435ab2f107dfe41c050eac25cd9167d2cc73d569aad8501cbd13477b62bad9724e4240f36ab15'
             'e0884e690c382e5411a6419054c380c2e7432a99789afd243aa1da6911fe875c5a5bb2aa14a79a5304805ab46aa61b7372f8649e12a0b5ca80fd07f7f023c7b5'
             '34e21ecc4ef0d07707283427fa82d561a9573d670e80ccd41f7d9cb595473b3844b8df7aeffcb4fe82d9deeef0a4d4e6aef663eb1a7a397fa181f06f418a0d6d'
-            'f13f34833ab5c7c2239c94e1a6a491db450e8db09a124a2dbd99a7ec613e7e894a76d649b69915a7c4550c193ddf60c1fb762c5a16e9047602fba768d4b412da'
-            '57b805336e6bfad046c341426b7186ab055fcb146b6dc9c5e36ce36e011528e8e239bed4f654372fddfbdd44ce95d7332d574e1ac38b7cabb0aa0acff522a1fa'
-            'c0162404599999d9bbc5916ac51946ac34c786f1190ae802addef017b1fa8cc3315af56d4fa29e5b63d8fc74fc53a5b6a6b6eb51984864d5f54d3b563d49e903'
+            'fe301a3a61e66017c197e923b7cc7b6cf127c524bdc830c6d8b173f1121a1aff929ca34d6410e7edd0c0a16f6f2784c9c32d27ddbf550040c728347fe8ae5874'
+            '690ef06ac939c0e3077405f9ffe276985075c582a69b8264dc65c065118dd85571feb21b6fe775d60d54be9177ed8df123ed9a2de2f10b61d7b0e7b39190557c'
+            '2b5139637624f0b051dd0a19845fca3ffc9bc87ea0f6113459ab3f39a5970d1fc6ee58d2632696013bef9e802df131b2ccc4107c9b4cc7afda3acd02b8576b22'
             'dc094eb861d065a20c0bbe7a0c60d0ea126f283671bd0cc06c72d176095eb26a040455d0b2b225c0e7adaa22d29dd322955a6089c6bbe6deb57e4d0e16c8c320')
 
 validpgpkeys=(
