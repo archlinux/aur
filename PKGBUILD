@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=python-jaxlib
-pkgver=0.1.57
+pkgver=0.1.59
 pkgrel=1
 pkgdesc='Differentiate, compile, and transform Numpy code.'
 arch=('x86_64')
@@ -17,14 +17,14 @@ makedepends=('bazel'
              'python-pip'
              'python-six')
 source=("https://github.com/google/jax/archive/jaxlib-v$pkgver.tar.gz")
-md5sums=('2a6b1acd4d002c6760138f9fc792b736')
+md5sums=('0224b6654ec87d5bbbf0ca51f6b5e15a')
 
 build() {
-    cd $srcdir/jax-jaxlib-v$pkgver
-    python build/build.py
+    cd jax-jaxlib-v$pkgver
+    build/build.py --enable_march_native
 }
 
 package() {
-    cd $srcdir/jax-jaxlib-v$pkgver
-    pip instal --prefix $pkgdir dist/*.whl
+    cd jax-jaxlib-v$pkgver
+    pip install dist/*.whl
 }
