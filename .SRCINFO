@@ -1,8 +1,8 @@
 pkgbase = backupninja-git
 	pkgdesc = A centralized way to configure and schedule many different backup utilities
 	pkgver = 1113.5cc8040
-	pkgrel = 1
-	url = https://labs.riseup.net/code/projects/backupninja
+	pkgrel = 2
+	url = https://0xacab.org/liberate/backupninja
 	arch = any
 	license = GPL
 	makedepends = git
@@ -15,7 +15,7 @@ pkgbase = backupninja-git
 	optdepends = rsync: secure and reliable remote syncronisation tool
 	optdepends = duplicity: duplicity backups
 	backup = etc/backupninja.conf
-	source = backupninja::git+https://0xacab.org/riseuplabs/backupninja.git
+	source = backupninja::git+https://0xacab.org/liberate/backupninja.git
 	md5sums = SKIP
 
 pkgname = backupninja-git
