@@ -13,6 +13,7 @@ pkgbase = syndication-git
 	makedepends = qt5-doc
 	depends = kcodecs-git
 	provides = syndication
+	provides = kde-syndication
 	provides = kde-syndication-git
 	conflicts = syndication
 	conflicts = kde-syndication
