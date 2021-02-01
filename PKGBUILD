@@ -1,30 +1,33 @@
 # Maintainer: Vyacheslav Konovalov <f4f7l1hvr@relay.firefox.com>
 
-_path=83/69/d6cb3246b9b0964dc90287b0692db0c578342f6a0e8c1a31cba5ea48dda9
+_commit=2c9ed02394f66bf97e74d35e3fe02d0fbb2fd2fe
 pkgname=deemix
-pkgver=2.0.11
+pkgver=2.0.13
 pkgrel=1
-pkgdesc='A barebone deezer downloader library'
+pkgdesc='A deezer downloader built from the ashes of Deezloader Remix'
 arch=(any)
-url='https://t.me/deemixcommunity'
+url='https://git.rip/RemixDev/deemix'
 license=('GPL3')
-depends=('python>=3.6' 'python-click' 'python-pycryptodomex' 'python-mutagen' 'python-spotipy'
-    'python-eventlet' 'python-deezer-py')
+depends=(
+    'python>=3.6' 'python-click' 'python-pycryptodomex' 'python-mutagen'
+    'python-spotipy' 'python-eventlet' 'python-deezer-py'
+)
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/$_path/deemix-$pkgver.tar.gz")
-sha512sums=('0f352c13f2d6c18e19aa4b6ac3e4f3d2862cf54771de591fc7bbc31818807a8bdba607721a9941ebc57c04dec9c6c6bd12b36f812c272ed0b4a434c35a4ba1c2')
+source=("https://git.rip/RemixDev/deemix/-/archive/main/deemix-main-$_commit.tar.gz")
+sha512sums=('83cba73b9518ab62dcb909f8a44359891410340b9d5e92a2700e2de7d6dbd823df79d138571037a4b45f4e18f5d02f4f809cd7dfe3b1790f640d872cc8fc0754')
+_src=deemix-main-$_commit
 
 pkgver() {
-    cd deemix-$pkgver
+    cd $_src
     sed -En 's/^__version__ = "([0-9\.]+)"$/\1/p' deemix/__init__.py | tr -d '\n'
 }
 
 build() {
-    cd deemix-$pkgver
+    cd $_src
     python setup.py build
 }
 
 package() {
-    cd deemix-$pkgver
+    cd $_src
     python setup.py install --root="$pkgdir" --optimize=1
 }
