@@ -1,20 +1,21 @@
 pkgbase = kunitconversion-git
-	pkgdesc = KUnitConversion
-	pkgver = r312.db967cf
+	pkgdesc = Support for unit conversion
+	pkgver = 5.79.0_r342.g3a8032a
 	pkgrel = 1
-	url = https://projects.kde.org/projects/frameworks/kunitconversion
-	arch = i686
+	url = https://community.kde.org/Frameworks
 	arch = x86_64
-	groups = kf5
+	groups = kf5-git
 	license = LGPL
-	makedepends = extra-cmake-modules-git
 	makedepends = git
-	makedepends = python
+	makedepends = extra-cmake-modules-git
+	makedepends = doxygen
+	makedepends = qt5-tools
+	makedepends = qt5-doc
 	depends = ki18n-git
 	provides = kunitconversion
 	conflicts = kunitconversion
 	source = git+https://github.com/KDE/kunitconversion.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kunitconversion-git
 
