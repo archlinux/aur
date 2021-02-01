@@ -1,23 +1,21 @@
 pkgbase = ksshaskpass-git
-	pkgdesc = ssh-add helper that uses kwallet and kpassworddialog
-	pkgver = r30.d44b1e0
+	pkgdesc = ssh-add helper that uses kwallet-git and kpassworddialog
+	pkgver = 5.21.80_r184.ga7f82cf
 	pkgrel = 1
-	url = https://projects.kde.org/projects/kde/workspace/ksshaskpass
-	arch = i686
+	url = https://kde.org/plasma-desktop/
+	install = ksshaskpass.install
 	arch = x86_64
-	groups = plasma
-	license = LGPL
-	makedepends = extra-cmake-modules
+	groups = plasma-git
+	license = GPL
 	makedepends = git
-	makedepends = python
-	makedepends = kdoctools
-	depends = kwallet
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	depends = kwallet-git
 	provides = ksshaskpass
+	provides = x11-ssh-askpass
 	conflicts = ksshaskpass
 	source = git+https://github.com/KDE/ksshaskpass.git
-	source = ksshaskpass.sh
-	md5sums = SKIP
-	md5sums = aef2815fb704c98737f23eead3b4e894
+	sha256sums = SKIP
 
 pkgname = ksshaskpass-git
 
