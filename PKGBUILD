@@ -4,7 +4,7 @@
 # Contributor: John Trengrove <john at retrofilter dot com>
 
 pkgname=dgraph-git
-pkgver=1.1.0.r150.g1ee42ef40
+pkgver=20.11.0.rc1.r316.g74e3aa7f6
 pkgrel=1
 pkgdesc='Fast, transactional, distributed graph database'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("$pkgname::git+$url#branch=master"
         'dgraph.service'
         'dgraph-zero.service')
 sha256sums=('SKIP'
-            '94449db0bbd30aca993dbc6486fbec615e2cada7cd3d91e6b99d6a426a5d7ace'
+            '4397e08cd33b8778dab6db25b34d8f6e31679f60ea03fba4a972e33afe416d44'
             '402c5a022615f47d26db47f375f242638d04abbed3bfd22f86067f8f19031f83')
 
 pkgver() {
