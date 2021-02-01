@@ -1,20 +1,19 @@
 pkgbase = kjs-git
 	pkgdesc = Support for JS scripting in applications
-	pkgver = r288.6be4429
+	pkgver = 5.79.0_r311.g9b9dd97
 	pkgrel = 1
-	url = https://projects.kde.org/projects/frameworks/kjs
-	arch = i686
+	url = https://community.kde.org/Frameworks
 	arch = x86_64
-	groups = kf5-aids
+	groups = kf5-aids-git
 	license = LGPL
-	makedepends = extra-cmake-modules-git
 	makedepends = git
+	makedepends = extra-cmake-modules-git
 	makedepends = kdoctools-git
 	depends = qt5-base
 	provides = kjs
 	conflicts = kjs
 	source = git+https://github.com/KDE/kjs.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kjs-git
 

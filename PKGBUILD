@@ -1,42 +1,34 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS kjs PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kjs-git
-pkgver=r288.6be4429
+pkgver=5.79.0_r311.g9b9dd97
 pkgrel=1
 pkgdesc='Support for JS scripting in applications'
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/frameworks/kjs'
-license=('LGPL')
-depends=('qt5-base')
-makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git')
-groups=('kf5-aids')
-conflicts=('kjs')
-provides=('kjs')
-source=('git+https://github.com/KDE/kjs.git')
-md5sums=('SKIP')
+arch=($CARCH)
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
+depends=(qt5-base)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(kf5-aids-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd kjs
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 "set(KF5\?_VERSION" CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../kjs \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+  cmake -B build -S ${pkgname%-git} \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
