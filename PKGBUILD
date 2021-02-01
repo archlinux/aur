@@ -1,6 +1,6 @@
 # Maintainer: Kalle Lindqvist <kalle.lindqvist@mykolab.com>
 pkgname=xkeysnail-git
-pkgver=r51.g26ecdf8
+pkgver=r114.gbf3c93b
 pkgrel=1
 pkgdesc="Yet another keyboard remapping tool for X environment."
 arch=('any')
@@ -9,7 +9,8 @@ license=('GPL')
 depends=('python'
          'python-xlib'
          'python-evdev'
-         'python-inotify-simple')
+         'python-inotify-simple'
+         'python-appdirs')
 makedepends=('python-setuptools'
              'git')
 provides=('xkeysnail')
