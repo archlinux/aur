@@ -4,7 +4,7 @@ pkgname=mariadb-connector-odbc
 conflicts=('mariadb-connector-odbc-bin')
 pkgver=3.1.11
 _c_pkgver=3.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A standardized, LGPL licensed ODBC database driver for MariaDB"
 arch=('x86_64' 'armv7h')
 url="https://mariadb.com/kb/en/mariadb/mariadb-connector-odbc/"
@@ -43,4 +43,8 @@ build() {
 package() {
     cd build
     DESTDIR="$pkgdir" cmake -DCOMPONENT=ODBCLibs -P cmake_install.cmake
+    if [ -f "$pkgdir/usr/lib/mariadb/libmaodbc.so" ]; then
+        mv "$pkgdir/usr/lib/mariadb/libmaodbc.so" "$pkgdir/usr/lib/libmaodbc.so"
+        rmdir "$pkgdir/usr/lib/mariadb"
+    fi
 }
