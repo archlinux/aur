@@ -1,7 +1,7 @@
 # Maintainer: Nissar Chababy <funilrys at outlook dot com>
 _pkgname=backupninja
 pkgname=$_pkgname-git
-pkgver=872.f9529d1
+pkgver=1113.5cc8040
 pkgrel=1
 pkgdesc="A centralized way to configure and schedule many different backup utilities"
 arch=('any')
