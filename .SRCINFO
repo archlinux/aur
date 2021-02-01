@@ -1,23 +1,23 @@
 pkgbase = kxmlgui-git
-	pkgdesc = KXmlGUI
-	pkgver = v4.100.0.rc1.r580.g21ebb01
+	pkgdesc = User configurable main windows
+	pkgver = 5.79.0_r714.g2d33e56
 	pkgrel = 1
-	url = https://projects.kde.org/projects/frameworks/kxmlgui
-	arch = i686
+	url = https://community.kde.org/Frameworks
 	arch = x86_64
+	groups = kf5-git
 	license = LGPL
-	makedepends = extra-cmake-modules-git
 	makedepends = git
-	makedepends = python
-	makedepends = kguiaddons-git
+	makedepends = extra-cmake-modules-git
+	makedepends = doxygen
 	makedepends = qt5-tools
+	makedepends = qt5-doc
 	depends = kglobalaccel-git
-	depends = ktextwidgets-git
+	depends = kiconthemes-git
 	depends = attica-git
 	provides = kxmlgui
 	conflicts = kxmlgui
 	source = git+https://github.com/KDE/kxmlgui.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kxmlgui-git
 
