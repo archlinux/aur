@@ -1,12 +1,12 @@
 pkgbase = python-botoy
 	pkgdesc = OPQ/IOTQQ/IOTBot的一个Python开发助手
 	pkgver = 0.0.17
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xiyaowong/botoy
 	arch = any
 	license = MIT
 	depends = python-httpx
-	depends = python-socketio
+	depends = python-socketio4
 	depends = python-websocket-client
 	depends = python-prettytable
 	depends = python-loguru

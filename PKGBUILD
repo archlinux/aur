@@ -3,13 +3,13 @@
 pkgname=python-botoy
 _gitname=${pkgname#python-}
 pkgver=0.0.17
-pkgrel=2
+pkgrel=3
 pkgdesc="OPQ/IOTQQ/IOTBot的一个Python开发助手"
 arch=('any')
 url="https://github.com/xiyaowong/botoy"
 license=('MIT')
 depends=('python-httpx'
-         'python-socketio'
+         'python-socketio4'
          'python-websocket-client'
          'python-prettytable'
          'python-loguru'
