@@ -2,12 +2,12 @@
 
 pkgname=jumpapp
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A run-or-raise application switcher for any X11 desktop"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/mkropat/jumpapp"
 license=('MIT')
-depends=('xdotool' 'wmctrl')
+depends=('inetutils' 'wmctrl' 'xdotool')
 source=("https://github.com/mkropat/jumpapp/releases/download/v${pkgver}/${pkgname}_${pkgver}.tar.bz2")
 sha256sums=('7ef5c616f845040382c6bebcdb8dc31d59f6a3a1bd01669842d02744596c40ec')
 
