@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Type=Application
 Name=JPEXS Free Flash Decompiler
-Comment=Open source Flash SWF decompiler and editor
+Comment=Open source Flash SWF decompiler and editor, also kwnown as FFDec
 Exec=ffdec
 Icon=ffdec
 Terminal=false
