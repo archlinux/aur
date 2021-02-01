@@ -3,7 +3,7 @@
 _perlmod='Crypt-OpenSSL-Verify'
 _modnamespace=Crypt
 pkgname=perl-crypt-openssl-verify
-pkgver=0.23
+pkgver=0.28
 pkgrel=1
 pkgdesc="OpenSSL Verify certificate verification in XS."
 arch=("x86_64" "i686")
@@ -13,7 +13,7 @@ depends=('perl' 'perl-crypt-openssl-x509')
 makedepends=('perl-test-exception')
 options=('!emptydirs')
 source=("http://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz")
-sha256sums=('fa3bc88efefbe7fc6a84dabe1a1202c0ef930392321afa4e4ab945717b831aed')
+sha256sums=('2b128a521bca5b2c25129d0baac03ec78709893a209d13d31ce1611015e93dfe')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
