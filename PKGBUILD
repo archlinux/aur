@@ -1,42 +1,37 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS ksysguard PKGBUILD by João, 2021/01/31 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Antonio Rojas <nqn1976 @ gmail.com>
 
 pkgname=ksysguard-git
-pkgver=r3293.97811cdd
+pkgver=5.21.80_r3473.ga22ec0b7
 pkgrel=1
-pkgdesc='KSysGuard'
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/kde/kde-workspace'
-license=('LGPL')
-depends=('knewstuff-git' 'kdelibs4support-git' 'libksysguard-git' 'lm_sensors')
-makedepends=('extra-cmake-modules-git' 'git' 'kdoctools')
-conflicts=('ksysguard' 'kdebase-workspace')
-provides=('ksysguard')
-source=('git+https://github.com/KDE/ksysguard.git')
-groups=('plasma')
-md5sums=('SKIP')
+pkgdesc='Track and control the processes running in your system'
+arch=($CARCH)
+url='https://userbase.kde.org/KSysGuard'
+license=(LGPL)
+depends=(libksysguard-git kinit-git)
+makedepends=(git extra-cmake-modules-git kdoctools-git networkmanager-qt-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+optdepends=('nvidia-utils: NVIDIA GPU usage' 'networkmanager-qt-git: improved network statistics')
+groups=(plasma-git)
+install=${pkgname%-git}.install
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd ksysguard
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(PROJECT_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../ksysguard \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DSYSCONF_INSTALL_DIR=/etc \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
