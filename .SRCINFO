@@ -1,20 +1,21 @@
 pkgbase = kcmutils-git
 	pkgdesc = Utilities for interacting with KCModules
-	pkgver = v5.71.0.rc1.r4.g0d4ea51
+	pkgver = 5.79.0_r470.g8ab8288
 	pkgrel = 1
-	url = https://projects.kde.org/projects/frameworks/kcmutils
-	arch = i686
+	url = https://community.kde.org/Frameworks
 	arch = x86_64
-	groups = kf5
+	groups = kf5-git
 	license = LGPL
-	makedepends = extra-cmake-modules-git
 	makedepends = git
-	makedepends = python
+	makedepends = extra-cmake-modules-git
+	makedepends = doxygen
+	makedepends = qt5-tools
+	makedepends = qt5-doc
 	depends = kdeclarative-git
 	provides = kcmutils
 	conflicts = kcmutils
 	source = git+https://github.com/KDE/kcmutils.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kcmutils-git
 

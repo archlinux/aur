@@ -1,42 +1,35 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS kcmutils PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcmutils-git
-pkgver=v5.71.0.rc1.r4.g0d4ea51
+pkgver=5.79.0_r470.g8ab8288
 pkgrel=1
 pkgdesc='Utilities for interacting with KCModules'
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/frameworks/kcmutils'
-license=('LGPL')
-depends=('kdeclarative-git')
-makedepends=('extra-cmake-modules-git' 'git' 'python')
-groups=('kf5')
-conflicts=('kcmutils')
-provides=('kcmutils')
-source=('git+https://github.com/KDE/kcmutils.git')
-md5sums=('SKIP')
+arch=($CARCH)
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
+depends=(kdeclarative-git)
+makedepends=(git extra-cmake-modules-git doxygen qt5-tools qt5-doc)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(kf5-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  mkdir -p build
+  _ver="$(grep -m1 "set(KF5\?_VERSION" CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../kcmutils \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
