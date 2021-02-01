@@ -1,5 +1,5 @@
---- default.yaml.orig	2020-06-08 16:06:51.204833514 +0200
-+++ default.yaml	2020-06-08 16:14:16.321358294 +0200
+--- default.yaml.orig	2021-02-01 15:50:27.556589528 +0000
++++ default.yaml	2021-02-01 15:52:59.786583877 +0000
 @@ -50,8 +50,8 @@
          # The standard SSL/TLS port for IRC is 6697. This will listen on all interfaces:
          ":6697":
@@ -8,9 +8,9 @@
 -                key: privkey.pem
 +                cert: /var/lib/oragono/fullchain.pem
 +                key: /var/lib/oragono/privkey.pem
-                 # 'proxy' should typically be false. It's only for Kubernetes-style load
-                 # balancing that does not terminate TLS, but sends an initial PROXY line
-                 # in plaintext.
+             # 'proxy' should typically be false. It's for cloud load balancers that
+             # always send a PROXY protocol header ahead of the connection. See the
+             # manual ("Reverse proxies") for more details.
 @@ -70,8 +70,8 @@
          # ":8097":
          #     websocket: true
@@ -22,7 +22,7 @@
  
      # sets the permissions for Unix listen sockets. on a typical Linux system,
      # the default is 0775 or 0755, which prevents other users/groups from connecting
-@@ -154,7 +154,7 @@
+@@ -166,7 +166,7 @@
  
      # motd filename
      # if you change the motd, you should move it to ircd.motd
@@ -31,7 +31,7 @@
  
      # motd formatting codes
      # if this is true, the motd is escaped using formatting codes like $c, $b, and $i
-@@ -685,7 +685,7 @@
+@@ -714,7 +714,7 @@
  # datastore configuration
  datastore:
      # path to the datastore
@@ -40,7 +40,7 @@
  
      # if the database schema requires an upgrade, `autoupgrade` will attempt to
      # perform it automatically on startup. the database will be backed
-@@ -714,7 +714,7 @@
+@@ -743,7 +743,7 @@
      default: en
  
      # which directory contains our language files
