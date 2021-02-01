@@ -1,45 +1,39 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS kde-cli-tools PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Antonio Rojas <nqn1976 @ gmail.com>
 
-_pkgname=kde-cli-tools
-pkgname=$_pkgname-git
-pkgver=r1769.5b2f620
+pkgname=kde-cli-tools-git
+pkgver=5.21.80_r1826.g685fc49
 pkgrel=1
-pkgdesc="Tools based on KDE Frameworks 5 to better interact with the system (Git)"
-arch=(i686 x86_64)
-url='https://www.kde.org/workspaces/plasmadesktop/'
+pkgdesc="Tools based on KDE Frameworks 5 to better interact with the system"
+arch=($CARCH)
+url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(kdesu kcmutils kinit kactivities)
-makedepends=(extra-cmake-modules git kdoctools plasma-workspace)
-optdepends=('plasma-workspace: for kcmshell5')
-conflicts=(kde-cli-tools)
-provides=(kde-cli-tools)
-source=('git+https://github.com/KDE/kde-cli-tools.git')
-groups=(plasma)
+depends=(kdesu-git kcmutils-git kactivities-git)
+makedepends=(git extra-cmake-modules-git kdoctools-git plasma-workspace-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+optdepends=('plasma-workspace-git: for kcmshell5')
+groups=(plasma-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/$_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd $srcdir/$_pkgname
-  mkdir -p build
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(PROJECT_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd $srcdir/$_pkgname/build
-  cmake ../ \
+  cmake -B build -S ${pkgname%-git} \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd $srcdir/$_pkgname/build
-  make DESTDIR="$pkgdir" install
-  install -Dm644 ../COPYING.LIB "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  DESTDIR="$pkgdir" cmake --install build
+
   ln -s /usr/lib/kf5/kdesu "$pkgdir"/usr/bin/
 }
