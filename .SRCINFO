@@ -1,6 +1,6 @@
 pkgbase = libpulse-nosystemd
 	pkgdesc = Client library for PulseAudio
-	pkgver = 13.99.3
+	pkgver = 14.2
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/PulseAudio/
 	arch = i686
@@ -21,14 +21,14 @@ pkgbase = libpulse-nosystemd
 	depends = libxcb
 	depends = libsm
 	depends = libsndfile
-	provides = libpulse=13.99.3
+	provides = libpulse=14.2
 	provides = libpulse.so
 	provides = libpulse-simple.so
 	provides = libpulse-mainloop-glib.so
 	conflicts = libpulse
 	replaces = libpulse
 	backup = etc/pulse/client.conf
-	source = git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git#commit=daf3a3c4b08c89aa658353764c5237f0a4bef9f7
+	source = git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git#commit=6a487c5244563f49a025088de3510c80824fc99e
 	sha256sums = SKIP
 
 pkgname = libpulse-nosystemd
