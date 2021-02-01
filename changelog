@@ -1,4 +1,29 @@
 Proton-6.1-GE-1
+
+Hotfix #3: 2/1/2021
+
+Since Microsoft decided to remove the download URLs for DirectX:
+
+https://techcommunity.microsoft.com/t5/windows-it-pro-blog/sha-1-windows-content-to-be-retired-august-3-2020/ba-p/1544373
+https://www.reddit.com/r/pcgaming/comments/l79r4x/psa_microsoft_has_removed_directx_download_from/
+https://www.reddit.com/r/linux_gaming/comments/l7sax5/microsoft_removed_older_offline_directdownloads/
+
+It broke some of the usual protonfixes/winetricks overrides -- such as d3dx11_43, d3dcompiler_43, xaudio, xactengine, vcrun2015/17/19 and a few others. Luckily for us, Valve ships most of these and it's auto-downloaded on most systems that run Windows or Proton games, under the 'Steamworks Common Redistributables' tool.
+
+With that being said, I've added functionality to proton to detect this folder, and install the overrides from this folder, instead of having to download them from Microsoft. This should save both bandwidth and disk space.
+
+Again, if you have issues with protontricks not being applied to the prefix, make sure you have 'Steamworks Common Redistributables' installed under the 'TOOLS' section of your library in steam.
+
+Download updated.
+Hotfix #2: 1/31/2021
+
+-Persona 4 Golden sound actually fixed this time with xactengine3_7 override
+-Persona 4 Golden protonfixes k-lite install fixed to use locally written config for unattended install instead of github download
+(If this was an issue for you before, please try again with a clean prefix)
+-Microsoft Flight Simulator crash on new flight loading fixed (needed missing wmphoto patches)
+
+Download updated.
+
 Hotfix: 1/31/2021
 
 -Small hotfix which adds rebased patch for doitsujin/dxvk#1582. Allows it to be applied to upstream dxvk without reverting doitsujin/dxvk@2d670ec and doitsujin/dxvk@c107345. Not a major change, but not reverting them fixes some validation errors per the commit comment. Download updated.
