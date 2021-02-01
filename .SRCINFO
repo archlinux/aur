@@ -1,6 +1,6 @@
 pkgbase = curseradio-git
 	pkgdesc = Command line radio player
-	pkgver = 1 
+	pkgver = r16.5dbc5c5 
 	pkgrel = 1
 	url = https://github.com/Cyfraka/curseradio 
 	arch = any
