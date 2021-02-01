@@ -1,0 +1,4 @@
+*.zst
+/pkg
+/src
+prompt_gentoo_setup-?
