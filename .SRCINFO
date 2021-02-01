@@ -1,6 +1,6 @@
 pkgbase = opencolorio-git
 	pkgdesc = A color management framework for visual effects and animation
-	pkgver = 1.0.8.r572.gd71748bf
+	pkgver = 1.0.8.r586.gbc88857f
 	pkgrel = 1
 	url = https://opencolorio.org
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = opencolorio-git
 	makedepends = boost
 	makedepends = cmake
 	makedepends = git
+	makedepends = ninja
 	makedepends = pybind11
 	makedepends = python
 	depends = freeglut
@@ -20,6 +21,7 @@ pkgbase = opencolorio-git
 	optdepends = python: python bindings
 	provides = opencolorio
 	conflicts = opencolorio
+	conflicts = opencolorio1
 	source = git+https://github.com/AcademySoftwareFoundation/OpenColorIO
 	sha512sums = SKIP
 
