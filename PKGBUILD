@@ -1,48 +1,36 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS breeze PKGBUILD by João, 2021/01/31 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=breeze-git
-pkgver=r2008.dfc8155
+pkgver=5.21.80_r2138.g21d8e4aa
 pkgrel=1
+arch=($CARCH)
 pkgdesc='Artwork, styles and assets for the Breeze visual style for the Plasma Desktop'
-arch=(i686 x86_64)
-url='https://projects.kde.org/projects/kde/workspace/breeze'
+url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(frameworkintegration-git kdecoration-git kcmutils-git hicolor-icon-theme breeze-icons)
-makedepends=(extra-cmake-modules-git git)
-optdepends=('breeze-kde4-git: Breeze widget style for KDE4 applications' 'breeze-gtk-git: Breeze widget style for GTK applications')
-conflicts=(breeze)
-provides=(breeze)
-groups=(plasma)
-source=('git+https://github.com/KDE/breeze.git')
-md5sums=('SKIP')
-install=$pkgname.install
+depends=(frameworkintegration-git kdecoration-git breeze-icons-git kwayland-git hicolor-icon-theme)
+makedepends=(git extra-cmake-modules-git kcmutils-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+optdepends=('breeze-gtk-git: Breeze widget style for GTK applications'
+            'kcmutils-git: for breeze-settings')
+groups=(plasma-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd breeze
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(PROJECT_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../breeze \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
-
-# make QtCurve preset and color scheme available for KDE4 too
-  install -d -m755 "$pkgdir"/usr/share/apps/{QtCurve,color-schemes}
-  ln -sr "$pkgdir"/usr/share/QtCurve/Breeze.qtcurve "$pkgdir"/usr/share/apps/QtCurve
-  ln -sr "$pkgdir"/usr/share/color-schemes/Breeze*.colors "$pkgdir"/usr/share/apps/color-schemes
+  DESTDIR="$pkgdir" cmake --install build
 }
