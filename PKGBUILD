@@ -1,8 +1,8 @@
 # Maintainer: Camille 'DrasLorus' Monière <draslorus@draslorus.fr>
 
 pkgname=libmatio-cpp-git
-pkgver=r161.949f9e5
-pkgrel=1
+pkgver=r170.960ed1b
+pkgrel=2
 pkgdesc="A C++ wrapper of the matio library, with memory ownership handling."
 arch=('x86_64')
 url="https://github.com/dic-iit/matio-cpp"
@@ -42,8 +42,7 @@ check() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DBUILD_TESTING=ON
 	cmake --build build_testing -j
-	# Test 8 fails because of unsupported v7.3 format
-	cd build_testing && ctest -I 1,7,1,9,10,11
+	cd build_testing && ctest 
 }
 
 package() {
