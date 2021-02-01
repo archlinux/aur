@@ -1,42 +1,34 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS plasma-browser-integration PKGBUILD by João, 2021/01/31 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
-_gitname=plasma-browser-integration
-pkgname=$_gitname-git
-pkgver=r1114.365e08e6
+pkgname=plasma-browser-integration-git
+pkgver=5.21.80_r1208.g3d1b0191
 pkgrel=1
 pkgdesc='Components necessary to integrate browsers into the Plasma Desktop'
-arch=(i686 x86_64)
+arch=($CARCH)
 url='https://www.kde.org/plasma-desktop'
 license=(GPL)
-depends=(krunner)
-makedepends=(extra-cmake-modules git python)
-conflicts=(plasma-browser-integration)
-provides=(plasma-browser-integration)
-source=('git+https://github.com/KDE/plasma-browser-integration.git')
+depends=(krunner-git purpose-git kfilemetadata-git)
+makedepends=(git extra-cmake-modules-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(plasma-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
-
-  sed -e 's|${MOZILLA_PREFIX}|${CMAKE_INSTALL_PREFIX}|g' -i $_gitname/CMakeLists.txt
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(PROJECT_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() { 
-  cd build
-  cmake ../$_gitname \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
+  cmake -B build -S ${pkgname%-git} \
     -DINSTALL_CHROME_MANIFEST=ON
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
