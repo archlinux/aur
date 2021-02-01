@@ -1,20 +1,26 @@
 pkgbase = kauth-git
-	pkgdesc = KAuth
-	pkgver = v5.71.0.rc1.r2.gfd24c32
-	pkgrel = 2
-	url = https://projects.kde.org/projects/frameworks/kauth
-	arch = i686
+	pkgdesc = Abstraction to system policy and authentication features
+	pkgver = 5.79.0_r403.ga272608
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
 	arch = x86_64
+	groups = kf5-git
 	license = LGPL
-	makedepends = extra-cmake-modules-git
 	makedepends = git
+	makedepends = extra-cmake-modules-git
 	makedepends = qt5-tools
+	makedepends = qt5-doc
+	makedepends = clang
+	makedepends = python-pyqt5
+	makedepends = doxygen
+	makedepends = sip4
 	depends = kcoreaddons-git
 	depends = polkit-qt5
+	optdepends = python-pyqt5: for the Python bindings
 	provides = kauth
 	conflicts = kauth
 	source = git+https://github.com/KDE/kauth.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kauth-git
 
