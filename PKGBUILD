@@ -2,7 +2,7 @@
 
 pkgname=dokku
 pkgver=0.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('any')
 url='https://github.com/dokku/dokku'
@@ -11,6 +11,7 @@ depends=(
   'bind-tools'
   'cpio'
   'docker'
+  'docker-image-labeler'
   'dos2unix'
   'go'
   'gliderlabs-sigil'
