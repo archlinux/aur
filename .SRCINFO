@@ -1,22 +1,20 @@
 pkgbase = kmenuedit-git
 	pkgdesc = KDE menu editor
-	pkgver = r929.4289215
+	pkgver = 5.21.80_r949.g0a5e703
 	pkgrel = 1
-	url = https://projects.kde.org/projects/kde/kde-workspace
-	install = kmenuedit-git.install
-	arch = i686
+	url = https://kde.org/plasma-desktop/
 	arch = x86_64
-	groups = plasma
+	groups = plasma-git
 	license = LGPL
-	makedepends = extra-cmake-modules-git
 	makedepends = git
+	makedepends = extra-cmake-modules-git
 	makedepends = kdoctools-git
-	depends = khotkeys-git
+	depends = kio-git
+	depends = hicolor-icon-theme
 	provides = kmenuedit
 	conflicts = kmenuedit
-	conflicts = kdebase-workspace
 	source = git+https://github.com/KDE/kmenuedit.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kmenuedit-git
 

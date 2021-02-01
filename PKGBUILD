@@ -1,42 +1,34 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS kmenuedit PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kmenuedit-git
-pkgver=r929.4289215
+pkgver=5.21.80_r949.g0a5e703
 pkgrel=1
 pkgdesc='KDE menu editor'
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/kde/kde-workspace'
-license=('LGPL')
-depends=('khotkeys-git')
-makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git')
-conflicts=('kmenuedit' 'kdebase-workspace')
-provides=('kmenuedit')
-install=$pkgname.install
-source=('git+https://github.com/KDE/kmenuedit.git')
-groups=('plasma')
-md5sums=('SKIP')
+arch=($CARCH)
+url='https://kde.org/plasma-desktop/'
+license=(LGPL)
+depends=(kio-git hicolor-icon-theme)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(plasma-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd kmenuedit
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(PROJECT_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../kmenuedit \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
