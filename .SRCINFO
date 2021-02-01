@@ -1,22 +1,23 @@
 pkgbase = libksysguard-git
-	pkgdesc = Libksysguard
-	pkgver = r1892.beae817
+	pkgdesc = Library to retrieve information on the current status of computer hardware
+	pkgver = 5.21.80_r2048.gc3de4a9
 	pkgrel = 1
-	url = https://projects.kde.org/projects/kde/kde-workspace
-	arch = i686
+	url = https://kde.org/plasma-desktop/
 	arch = x86_64
+	groups = plasma-git
 	license = LGPL
-	makedepends = extra-cmake-modules-git
 	makedepends = git
+	makedepends = extra-cmake-modules-git
 	makedepends = kdoctools-git
+	makedepends = qt5-tools
 	depends = libxres
-	depends = plasma-framework-git
-	depends = qt5-webkit
+	depends = qt5-webengine
+	depends = kdeclarative-git
+	depends = knewstuff-git
 	provides = libksysguard
 	conflicts = libksysguard
-	conflicts = kdebase-workspace
 	source = git+https://github.com/KDE/libksysguard.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = libksysguard-git
 

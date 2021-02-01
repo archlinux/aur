@@ -1,41 +1,34 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS libksysguard PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=libksysguard-git
-pkgver=r1892.beae817
+pkgver=5.21.80_r2048.gc3de4a9
 pkgrel=1
-pkgdesc='Libksysguard'
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/kde/kde-workspace'
-license=('LGPL')
-depends=('libxres' 'plasma-framework-git' 'qt5-webkit')
-makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git')
-provides=('libksysguard')
-conflicts=('libksysguard' 'kdebase-workspace')
-source=('git+https://github.com/KDE/libksysguard.git')
-md5sums=('SKIP')
+pkgdesc='Library to retrieve information on the current status of computer hardware'
+arch=($CARCH)
+url='https://kde.org/plasma-desktop/'
+license=(LGPL)
+depends=(libxres qt5-webengine kdeclarative-git knewstuff-git)
+makedepends=(git extra-cmake-modules-git kdoctools-git qt5-tools)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(plasma-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd libksysguard
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(PROJECT_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../libksysguard \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DSYSCONF_INSTALL_DIR=/etc \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
