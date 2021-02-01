@@ -14,9 +14,11 @@ It is strongly reccomended to start the server via its unit file.
 You can edit it to adjust your host, port and cookie settings.
 Changing the ARL cookie before starting the service is mandatory.
 
-The file /usr/lib/deemix-server/example-nginx.conf contains
-an example NginX server configuration. At the moment it is not possible
-to use subdirectories, as the server uses hardcoded absolute URLs.
+Under /usr/bin/deemix-server you can find some example configurations for NginX.
+
+If you would like to access the server under a subdirectory rather than a subdomain,
+edit the PKGBUILD and uncomment the "prepare" function setting the "_subdirectory"
+varible at will.
 
 INFO
 }

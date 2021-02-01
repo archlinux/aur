@@ -6,7 +6,7 @@ After=network.target
 User=deemix-server
 Type=simple
 WorkingDirectory=/var/lib/deemix-server
-ExecStart=/usr/bin/deemix-server --serverwide-arl --host 127.0.0.1 6595
+ExecStart=/usr/bin/deemix-server 6595 --host 127.0.0.1 --serverwide-arl
 
 [Install]
 WantedBy=multi-user.target
