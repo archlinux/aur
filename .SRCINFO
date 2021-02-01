@@ -21,6 +21,7 @@ pkgbase = radare2-cutter-git
 	depends = pyside2
 	depends = graphviz
 	depends = qt5-tools
+	depends = syntax-highlighting
 	provides = radare2-cutter
 	source = radare2-cutter-git::git+https://github.com/radareorg/r2cutter.git
 	source = cutter-translations::git+https://github.com/radareorg/cutter-translations
