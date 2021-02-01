@@ -3,13 +3,13 @@
 
 _pkgname=jumpapp
 pkgname="${_pkgname}-git"
-pkgver=1.1.r101.4071977
-pkgrel=2
-pkgdesc="A run-or-raise application switcher for any X11 desktop"
-arch=('i686' 'x86_64')
+pkgver=1.1.r105.944723f
+pkgrel=1
+pkgdesc="A run-or-raise application switcher for any X11 desktop (git version)"
+arch=('any')
 url="https://github.com/mkropat/jumpapp"
 license=('MIT')
-depends=('xdotool' 'wmctrl')
+depends=('inetutils' 'wmctrl' 'xdotool')
 makedepends=('git')
 provides=("${_pkgname}" 'jumpappify-desktop-entry')
 conflicts=("${_pkgname}")
