@@ -1,0 +1,15 @@
+pkgbase = python-yocto-cooker
+	pkgdesc = yocto-cooker is a easy yocto manager.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://codeload.github.com/cpb-/yocto-cooker
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python
+	depends = python-jsonschema
+	source = python-yocto-cooker-1.0.1.zip::https://codeload.github.com/cpb-/yocto-cooker/zip/1.0.1
+	md5sums = 2d3b50f74ce94c1d7aa0b6b8c680c3bf
+
+pkgname = python-yocto-cooker
+
