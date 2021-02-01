@@ -21,7 +21,7 @@ sha512sums=('SKIP'
             'a5ffba60e91d26910c70d3d591009a10a2428bec8ba55921de3043550cc69faf466574e195fae55f6d5e2db035aca7c72a10138c3cf171975b9ebc2cdb74340f')
 
 pkgver() {
-    mv "${srcdir}/gephgui" "${srcdir}/${_pkgname}"
+    #mv "${srcdir}/gephgui" "${srcdir}/${_pkgname}"
     cd "${srcdir}/${_pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
