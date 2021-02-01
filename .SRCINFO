@@ -1,19 +1,25 @@
 pkgbase = kitemviews-git
-	pkgdesc = KItemViews
-	pkgver = v4.100.0.rc1.r231.gecd837c
-	pkgrel = 2
-	url = https://projects.kde.org/projects/frameworks/kitemviews
-	arch = i686
+	pkgdesc = Widget addons for Qt Model/View
+	pkgver = 5.79.0_r303.g3a5d30f
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
 	arch = x86_64
+	groups = kf5-git
 	license = LGPL
-	makedepends = extra-cmake-modules-git
 	makedepends = git
+	makedepends = extra-cmake-modules-git
 	makedepends = qt5-tools
+	makedepends = qt5-doc
+	makedepends = clang
+	makedepends = python-pyqt5
+	makedepends = doxygen
+	makedepends = sip4
 	depends = qt5-base
+	optdepends = python-pyqt5: for the Python bindings
 	provides = kitemviews
 	conflicts = kitemviews
 	source = git+https://github.com/KDE/kitemviews.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kitemviews-git
 
