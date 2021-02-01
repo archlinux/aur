@@ -1,42 +1,35 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS syntax-highlighting PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 
 pkgname=syntax-highlighting-git
-pkgver=v5.30.0.rc1.r720.g7f57f9c
-pkgrel=2
+pkgver=5.79.0_r1492.g064912cb
+pkgrel=1
 pkgdesc='Syntax highlighting engine for structured text and code'
-arch=(x86_64)
-url='https://projects.kde.org/projects/kde/syntax-highlighting'
-license=(LGPL)
+arch=($CARCH)
+url='https://community.kde.org/Frameworks'
+license=(GPL2)
 depends=(qt5-base)
-makedepends=(git extra-cmake-modules-git)
-source=('git+https://github.com/KDE/syntax-highlighting.git')
-provides=(syntax-highlighting)
-conflicts=(syntax-highlighting)
-groups=(plasma)
-md5sums=(SKIP)
+makedepends=(git extra-cmake-modules-git qt5-xmlpatterns qt5-tools qt5-doc doxygen)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(kf5-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  mkdir -p build
+  _ver="$(grep -m1 "set(KF5\?_VERSION" CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../syntax-highlighting \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_LIBEXECDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF \
+    -DQRC_SYNTAX=OFF \
+    -DBUILD_QCH=ON
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
- 
