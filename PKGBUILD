@@ -1,5 +1,15 @@
 # Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 
+((DISABLE_BUNDLED_RADARE)) && {
+	depends+=('radare2=5.1.0')
+	_CMAKE_FLAGS+=(-DCUTTER_USE_BUNDLED_RADARE2=OFF)
+} || {
+	source+=("radare2::git+https://github.com/radareorg/radare2")
+	md5sums+=('SKIP')
+	_CMAKE_FLAGS+=(-DCUTTER_USE_BUNDLED_RADARE2=ON)
+}
+
+
 pkgname=radare2-cutter-git
 epoch=1
 pkgver=0.1.0.r2.gbaf2c363
@@ -13,11 +23,9 @@ makedepends=('git' 'cmake' 'shiboken2' 'meson' 'ninja')
 optdepends=()
 provides=('radare2-cutter')
 backup=()
-source=("${pkgname}::git+https://github.com/radareorg/r2cutter.git${_fragment}"
-	"cutter-translations::git+https://github.com/radareorg/cutter-translations"
-	"radare2::git+https://github.com/radareorg/radare2")
-md5sums=('SKIP'
-         'SKIP'
+source+=("${pkgname}::git+https://github.com/radareorg/r2cutter.git${_fragment}"
+	"cutter-translations::git+https://github.com/radareorg/cutter-translations")
+md5sums+=('SKIP'
          'SKIP')
 
 pkgver() {
@@ -29,8 +37,12 @@ pkgver() {
 prepare() {
   cd ${pkgname}
   git config submodule.src/translations.url "${srcdir}"/cutter-translations
-  git config submodule.radare2.url "${srcdir}"/radare2
-  git submodule update --init --recursive
+  ((DISABLE_BUNDLED_RADARE)) && {
+    git submodule update --init --recursive "${submodules[@]}" src/translations
+  } || {
+    git config submodule.radare2.url "${srcdir}"/radare2
+    git submodule update --init --recursive "${submodules[@]}"
+  }
 }
 
 build() {
@@ -39,7 +51,6 @@ build() {
     -DCMAKE_BUILD_TYPE=None
     -DCUTTER_ENABLE_PYTHON=ON
     -DCUTTER_ENABLE_PYTHON_BINDINGS=ON
-    -DCUTTER_USE_BUNDLED_RADARE2=ON
     -DCUTTER_USE_ADDITIONAL_RADARE2_PATHS=OFF
     -DCUTTER_ENABLE_CRASH_REPORTS=OFF
     -DCUTTER_ENABLE_GRAPHVIZ=ON
