@@ -6,7 +6,7 @@ _gitname=performance-tweaks
 pkgname=(
     'performance-tweaks'
     )
-pkgver=0.0.1.r0.ge9d8ab2
+pkgver=0.0.1.r3.ga631469
 pkgrel=1
 arch=('any')
 _branch='master'
@@ -53,11 +53,7 @@ package_performance-tweaks() {
 	'ananicy-git'
     'auto-cpufreq-git'
     'profile-sync-daemon'
-        )
-    optdepends=(
-        'timeshift-autosnap: for snapshots bfore pacman upgrade'
-        'grub-btrfs: for grub entries to btrfs snapshots'
-	'systemd-guest-user: for guest user support'
+    'precached-git'
         )    
     install=performance-tweaks.install
     provides=('performance-tweaks')

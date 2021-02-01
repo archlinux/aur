@@ -1,5 +1,5 @@
 pkgbase = performance-tweaks
-	pkgver = 0.0.1.r0.ge9d8ab2
+	pkgver = 0.0.1.r3.ga631469
 	pkgrel = 1
 	url = https://gitlab.com/garuda-linux/themes-and-settings/settings/performance-tweaks
 	arch = any
@@ -22,9 +22,7 @@ pkgname = performance-tweaks
 	depends = ananicy-git
 	depends = auto-cpufreq-git
 	depends = profile-sync-daemon
-	optdepends = timeshift-autosnap: for snapshots bfore pacman upgrade
-	optdepends = grub-btrfs: for grub entries to btrfs snapshots
-	optdepends = systemd-guest-user: for guest user support
+	depends = precached-git
 	provides = performance-tweaks
 	conflicts = performance-tweaks
 	conflicts = tlp
