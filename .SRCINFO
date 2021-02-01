@@ -1,0 +1,26 @@
+pkgbase = officelife-git
+	pkgdesc = Cover the entire employee lifecycle in a single application
+	pkgver = v0.1.0.alpha.4.r39.g9d692035
+	pkgrel = 1
+	url = https://www.officelife.io/
+	arch = any
+	license = BSD3
+	makedepends = composer
+	makedepends = yarn
+	depends = php>=7.4
+	depends = php-intl>=7.4
+	optdepends = mariadb: database
+	optdepends = mysql: database
+	optdepends = postgresql: database
+	optdepends = sqlite3: database
+	optdepends = apache: web server
+	optdepends = nginx: web server
+	optdepends = caddy: web server
+	optdepends = redis: cache and session driver
+	options = !strip
+	backup = etc/webapps/officelife/config.env
+	source = git+https://github.com/officelifehq/officelife.git
+	sha256sums = SKIP
+
+pkgname = officelife-git
+
