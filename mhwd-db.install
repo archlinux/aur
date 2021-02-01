@@ -21,15 +21,38 @@ msg() {
 	printf "${GREEN}==>${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n" "$@" >&2
 }
 
+# $1: old config name
+# $2: new config name
+# $3: new config path
+rename_config() {
+    if [ -e "${local_config_dir}/${1}/MHWDCONFIG" ] ; then
+      msg "Renaming config: '${local_config_dir}/${1}'"
+      mkdir -p ${local_config_dir}/${2}
+      cp -f ${db_config_dir}/graphic_drivers/${3}/MHWDCONFIG ${local_config_dir}/${2}/MHWDCONFIG
+      rm -Rf ${local_config_dir}/${1}
+   fi
+}
+
 update_configs() {
-   # check for newer configs
    local_configs=$(ls ${local_config_dir})
    db_configs="$(ls ${db_config_dir}/graphic_drivers) $(ls ${db_config_dir}/network_drivers)"
+
+   # Rename old configs
+   rename_config "video-hybrid-amd-nvidia-dkms-prime-render-offloading" "video-nvidia-prime-render-offload" "nvidia-prime-render-offload"
+   rename_config "video-hybrid-intel-nvidia-dkms-prime-render-offloading" "video-nvidia-prime-render-offload" "nvidia-prime-render-offload"
+   rename_config "video-hybrid-amd-chaotic-nvidia-dev-dkms-tkg-prime-render-offloading" "video-chaotic-nvidia-dev-tkg-prime-render-offload" "chaotic-nvidia-dev-tkg-prime-render-offload"
+   rename_config "video-hybrid-intel-chaotic-nvidia-dev-dkms-tkg-prime-render-offloading" "video-chaotic-nvidia-dev-tkg-prime-render-offload" "chaotic-nvidia-dev-tkg-prime-render-offload"
+   rename_config "video-hybrid-amd-chaotic-nvidia-dkms-tkg-prime-render-offloading" "video-chaotic-nvidia-tkg-prime-render-offload" "chaotic-nvidia-tkg-prime-render-offload"
+   rename_config "video-hybrid-intel-chaotic-nvidia-dkms-tkg-prime-render-offloading" "video-chaotic-nvidia-tkg-prime-render-offload" "chaotic-nvidia-tkg-prime-render-offload"
+
+   # check for newer configs
    for db_config in ${db_configs} ; do
       if [ -e "${db_config_dir}/graphic_drivers/${db_config}/MHWDCONFIG" ] ; then
          . "${db_config_dir}/graphic_drivers/${db_config}/MHWDCONFIG"
-      else
+      elif [ -e "${db_config_dir}/network_drivers/${db_config}/MHWDCONFIG" ] ; then
          . "${db_config_dir}/network_drivers/${db_config}/MHWDCONFIG"
+      else
+         continue
       fi
       db_config_ver=${VERSION}
       if [ -e "${local_config_dir}/${NAME}/MHWDCONFIG" ] ; then
