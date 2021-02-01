@@ -1,45 +1,37 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS kcontacts PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Henri Chain <henri@henricha.in>
 
-_pkgname=kcontacts
-pkgname=$_pkgname-git
-pkgver=r3195.0e4a5832
+pkgname=kcontacts-git
+pkgver=5.79.0_r3213.g384974c2
 pkgrel=1
 pkgdesc="Address book API for KDE"
-arch=(i686 x86_64)
+arch=($CARCH)
 url="https://community.kde.org/Frameworks"
 license=(LGPL)
-depends=(kcoreaddons kconfig ki18n kcodecs iso-codes)
-makedepends=(extra-cmake-modules git doxygen qt5-tools qt5-doc)
-conflicts=("$_pkgname")
-provides=("$_pkgname")
-source=('git+https://github.com/KDE/kcontacts.git')
+depends=(kcoreaddons-git kconfig-git ki18n-git kcodecs-git iso-codes)
+makedepends=(git extra-cmake-modules-git doxygen qt5-tools qt5-doc)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(kf5-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/$_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd $srcdir/$_pkgname
-  mkdir -p build
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 "set(KF5\?_VERSION" CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd $srcdir/$_pkgname/build
-  cmake ../ \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake -B build -S ${pkgname%-git} \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
-  make
+  cmake --build build
 }
 
 package() {
-  cd $srcdir/$_pkgname/build
-  make DESTDIR="$pkgdir" install
-  install -Dm644 ../LICENSES/* -t "$pkgdir/usr/share/licenses/$_pkgname/"
+  DESTDIR="$pkgdir" cmake --install build
 }
