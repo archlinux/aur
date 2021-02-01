@@ -2,7 +2,7 @@
 # Maintainer: Andrew Grigorev <andrew@ei-grad.ru>
 
 pkgname=python-jax-opt-cuda-git
-pkgver=0.1.40.a6ec5a9
+pkgver=0.2.9.26afe307
 pkgrel=1
 pkgdesc="Differentiate, compile, and transform Numpy code."
 arch=("x86_64")
@@ -10,18 +10,24 @@ url="https://github.com/google/jax/"
 license=("Apache")
 depends=(
     "absl-py"
-    "python"
-    "python-numpy"
-    "python-protobuf"
-    "python-six"
-    "python-fastcache"
-    #"python-opt-einsum"
     "cuda"
     "cudnn"
+    "python"
+    "python-numpy"
+    "python-opt_einsum"
+    "python-scipy"
+    "python-six"
 )
 conflicts=("python-jax")
 provides=("python-jax")
-makedepends=("git" "bazel")
+makedepends=(
+    # By now jaxlib building requires bazel of version 3.1.0. The issue is that
+    # version of community/bazel is 4.0.0. So, we need to remove bazel from
+    # makedepends until jax maintainers update required bazel version.
+    #"bazel"
+    "git"
+    "python-wheel"
+)
 source=(
     "$pkgname::git+$url"
 )
