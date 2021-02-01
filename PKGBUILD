@@ -3,9 +3,9 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=('sqlite-fts3-parenthesis')
-_srcver=3340000
+_srcver=3340100
 _docver=${_srcver}
-pkgver=3.34.0
+pkgver=3.34.1
 pkgrel=1
 pkgdesc="A C library that implements an SQL database engine. Compiled with 'SQLITE_ENABLE_FTS3_PARENTHESIS' option to allow operators AND and NOT and nested parenthesis in queries."
 arch=('x86_64')
@@ -16,10 +16,10 @@ depends=('readline' 'zlib')
 conflicts=("sqlite")
 provides=("sqlite=$pkgver")
 replaces=("sqlite3")
-source=(https://www.sqlite.org/2020/sqlite-src-${_srcver}.zip)
+source=(https://www.sqlite.org/2021/sqlite-src-${_srcver}.zip)
 options=('!emptydirs' '!makeflags') # json extensions breaks parallel build
-# upstream now switched to sha3sums - currently not suppoerted by makepkg
-sha256sums=('a5c2000ece56d2de13c474658b9cdba6b7f2608a4d711e245518ea02a2a2333e')
+# upstream now switched to sha3sums - currently not supported by makepkg
+sha256sums=('dddd237996b096dee8b37146c7a37a626a80306d6695103d2ec16ee3b852ff49')
 
 package() {
   cd sqlite-src-$_srcver
@@ -33,6 +33,7 @@ package() {
 
   # license - no linking required because pkgbase=pkgname
   install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  
   # split out tcl extension
   mkdir "$srcdir"/tcl
   mv "$pkgdir"/usr/lib/sqlite* "$srcdir"/tcl
