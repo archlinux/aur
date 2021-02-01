@@ -3,13 +3,13 @@
 pkgname=python-socketio4
 _pkgname=${pkgname%4}
 pkgver=4.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python implementation of the Socket.IO realtime server (Ver 4)"
 arch=('any')
 url="https://github.com/miguelgrinberg/python-socketio"
 license=('MIT')
 depends=('python-six'
-         'python-engineio')
+         'python-engineio3')
 makedepends=('python-setuptools'
              'python-sphinx'
              'python-tornado')
