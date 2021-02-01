@@ -1,7 +1,7 @@
 # Maintainer: Eugene Dementyev <e@dementyev.me>
 _pkgname=terraform
 pkgname=terraform-nowarning
-pkgver=0.14.4
+pkgver=0.14.5
 pkgrel=1
 epoch=
 pkgdesc="Terraform with a patch that makes it not complain about undeclared variables"
@@ -23,7 +23,7 @@ changelog=
 source=("${_pkgname}-$pkgver.tar.gz::https://github.com/hashicorp/terraform/archive/v$pkgver.tar.gz"
         "$pkgname.patch")
 noextract=()
-md5sums=(978a9dc71d25ce3daf50bcbd6872682d 6b445af404241396b5581db62e849765)
+md5sums=(0befa7e8ce37cb3ab042e838445027c4 6b445af404241396b5581db62e849765)
 validpgpkeys=()
 
 prepare() {
