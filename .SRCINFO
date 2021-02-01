@@ -1,7 +1,7 @@
 pkgbase = vlmcsd-git
 	pkgdesc = KMS Emulator in C (for activating Microsoft products)
 	pkgver = r29.65228e5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Wind4/vlmcsd
 	arch = i686
 	arch = x86_64

@@ -2,7 +2,7 @@
 _pkgname=vlmcsd
 pkgname=$_pkgname-git
 pkgver=r29.65228e5
-pkgrel=1
+pkgrel=2
 pkgdesc="KMS Emulator in C (for activating Microsoft products)"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/Wind4/vlmcsd"
@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
     cd "$_pkgname"
-    make
+    make STRIP=0
     cd man
     gzip -fk *.[0-9]
 }
