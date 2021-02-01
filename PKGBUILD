@@ -2,13 +2,13 @@
 
 pkgname=dolfin-git
 pkgdesc="C++ interface of FEniCS for ordinary and partial differential equations."
-pkgver=20201015
-pkgrel=4
+pkgver=20210201
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/FEniCS/dolfinx"
 license=('GPL3')
 groups=('fenics-git')
-depends=('cppunit' 'eigen' 'gl2ps' 'python-ffc-git' 'petsc' 'slepc')
+depends=('cppunit' 'eigen' 'scotch' 'gl2ps' 'python-ffc-git' 'petsc' 'slepc' 'python-basix-git')
 makedepends=('git' 'boost')
 options=(!emptydirs)
 source=("dolfin::git+https://github.com/FEniCS/dolfinx.git")
