@@ -17,14 +17,14 @@ tarname="${prefix}${major}-${minor}${postfix}"
 pkgname=opencl-amd
 pkgdesc="OpenCL userspace driver as provided in the amdgpu-pro driver stack. This package is intended to work along with the free amdgpu stack."
 pkgver=${major}.${minor}
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url='http://www.amd.com'
 license=('custom:AMD')
 makedepends=('wget')
 depends=('libdrm' 'ocl-icd' 'gcc-libs' 'numactl')
-conflicts=('amdgpocl' 'opencl-amdgpu-pro-orca' 'opencl-amdgpu-pro-comgr' 'opencl-amdgpu-pro-pal' 'rocm-opencl-runtime')
-provides=('opencl-driver' "opencl-amdgpu-pro-orca=${pkgver}" "opencl-amdgpu-pro-pal=${pkgver}" "opencl-amdgpu-pro-comgr=${pkgver}") # this package provides both drivers, and installs them in a different location
+conflicts=('rocm-opencl-runtime')
+provides=('opencl-driver')
 optdepends=('clinfo')
 
 DLAGENTS='https::/usr/bin/wget --referer https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-20-45 -N %u'
@@ -96,6 +96,8 @@ package() {
 	mkdir -p "${pkgdir}/opt/amdgpu/share/libdrm"
 	cd "${pkgdir}/opt/amdgpu/share/libdrm"
 	ln -s /usr/share/libdrm/amdgpu.ids amdgpu.ids
+
+	mv "${srcdir}/opencl/opt/amdgpu-pro" "${pkgdir}/opt"
 
 	rm -r "${srcdir}/opencl"
 	rm -r "${srcdir}/libdrm"
