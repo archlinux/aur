@@ -3,7 +3,7 @@
 # Contributor: Lucas Saliés Brum <lucas@archlinux.com.br>
  
 pkgname=audio-recorder
-pkgver=3.2.1
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="Audio Recorder Application"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ optdepends=('pulseaudio: for extended recording capabilities'
             'gst-plugins-ugly: for MP3 encoding'
             'gst-libav: plugin for the libav library')
 source=("https://launchpad.net/~${pkgname}/+archive/ubuntu/ppa/+sourcefiles/${pkgname}/${pkgver}~groovy/${pkgname}_${pkgver}~groovy.tar.gz")
-md5sums=('2b20f9916a6fa4b4937bd2e1dece7c11')
+md5sums=('7b2b97a08f0a15efea4f0bceea740846')
 
 build() {
   cd "${srcdir}/trunk"
