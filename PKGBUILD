@@ -2,13 +2,17 @@
 
 pkgname=systemd-removed-services-hook
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Notifies you of uninstalled systemd services along with the command to disable them'
 arch=('any')
 url='https://gitlab.com/firstairbender/systemd-removed-services-hook'
 license=('Unlicense')
 makedepends=('pacutils')
 depends=('systemd')
+source=(
+	'systemd-removed-services.sh'
+)
+sha512sums=('be688838ca8686e5c90689bf2ab585cef1137c999b48c70b92f67a5c34dc15697b5d11c982ed6d71be1e1e7f7b4e0733884aa97c3f7a339a8ed03577cf74be09')
 
 build() {
   {
