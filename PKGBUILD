@@ -8,7 +8,7 @@ license=('MIT')
 depends=(libxft)
 provides=('st')
 url=https://github.com/quoteme/st
-_patches=( "https://raw.githubusercontent.com/flyingpeakock/st/main/patch-0.8.4.diff")
+_patches=( https://raw.githubusercontent.com/flyingpeakock/st/main/patch-$pkgver.diff )
 source=(https://dl.suckless.org/st/st-$pkgver.tar.gz
         "${_patches[@]}"
 	)
