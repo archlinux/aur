@@ -1,6 +1,6 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime
-pkgver=0.9.1
+pkgver=1.0.0.pre1
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
@@ -8,10 +8,11 @@ conflicts=('kime')
 provides=('kime')
 arch=('any')
 license=('GPL3')
-source=("${url}/releases/download/v${pkgver}/kime-${pkgver}.7z")
-md5sums=('2cff14dab13dbaec5544f70c8647e682')
+source=("${url}/releases/download/v1.0.0-pre1/kime-v1.0.0-pre1.7z")
+md5sums=('6a4a8c01c45059570547da1d36fe2589')
 
 package() {
+    install -Dm755 kimed -t "${pkgdir}/usr/bin"
     install -Dm755 kime-xim -t "${pkgdir}/usr/bin"
     install -Dm755 kime-wayland -t "${pkgdir}/usr/bin"
     install -Dm755 libkime-gtk2.so -T "${pkgdir}/usr/lib/gtk-2.0/2.10.0/immodules/im-kime.so"
@@ -21,6 +22,8 @@ package() {
     install -Dm755 libkime-qt6.so -T "${pkgdir}/usr/lib/qt6/plugins/platforminputcontexts/libkimeplatforminputcontextplugin.so"
     install -Dm755 libkime_engine.so -t "${pkgdir}/usr/lib"
     install -Dm644 kime_engine.h -t "${pkgdir}/usr/include"
-    install -Dm644 config.yaml -t "${pkgdir}/etc/kime"
+    install -Dm644 default_config.yaml -T "${pkgdir}/etc/kime/config.yaml"
+    install -Dm644 kime-eng-64x64.png -t "${pkgdir}/usr/share/kime"
+    install -Dm644 kime-han-64x64.png -t "${pkgdir}/usr/share/kime"
 }
 
