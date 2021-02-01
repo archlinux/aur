@@ -1,6 +1,6 @@
 # Maintainer: Hugo Hörnquist <hugo@lysator.liu.se>
 
-pkgname=repofs
+pkgname=repofs-git
 pkgver=r152.5806312
 pkgrel=2
 pkgdesc="Filesystem view of version control repositories"

@@ -1,4 +1,4 @@
-pkgbase = repofs
+pkgbase = repofs-git
 	pkgdesc = Filesystem view of version control repositories
 	pkgver = r152.5806312
 	pkgrel = 2
@@ -10,8 +10,8 @@ pkgbase = repofs
 	depends = python-fusepy
 	depends = python-pygit2
 	depends = python
-	source = repofs::git+https://github.com/aueb-balab/repofs
+	source = repofs-git::git+https://github.com/aueb-balab/repofs
 	md5sums = SKIP
 
-pkgname = repofs
+pkgname = repofs-git
 
