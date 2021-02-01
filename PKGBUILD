@@ -1,42 +1,36 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS libkscreen PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Matthias Blaicher <matthias at blaicher dot com>
 
 pkgname=libkscreen-git
-pkgver=r1524.9da1c6a
+pkgver=5.21.80_r1560.g62071a0
 pkgrel=1
 pkgdesc='KDE screen management software'
-arch=(i686 x86_64)
-url='https://projects.kde.org/projects/kde/workspace/libkscreen'
+arch=($CARCH)
+url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(qt5-x11extras libxrandr)
-makedepends=(extra-cmake-modules git)
-provides=(libkscreen)
-conflicts=(libkscreen)
-source=('git+https://github.com/KDE/libkscreen.git')
-md5sums=('SKIP')
+depends=(qt5-x11extras libxrandr-git kwayland-git)
+makedepends=(git extra-cmake-modules-git doxygen qt5-tools qt5-doc)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(plasma-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd libkscreen
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(PROJECT_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../libkscreen \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_LIBEXECDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }

@@ -1,19 +1,23 @@
 pkgbase = libkscreen-git
 	pkgdesc = KDE screen management software
-	pkgver = r1524.9da1c6a
+	pkgver = 5.21.80_r1560.g62071a0
 	pkgrel = 1
-	url = https://projects.kde.org/projects/kde/workspace/libkscreen
-	arch = i686
+	url = https://kde.org/plasma-desktop/
 	arch = x86_64
+	groups = plasma-git
 	license = LGPL
-	makedepends = extra-cmake-modules
 	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = doxygen
+	makedepends = qt5-tools
+	makedepends = qt5-doc
 	depends = qt5-x11extras
-	depends = libxrandr
+	depends = libxrandr-git
+	depends = kwayland-git
 	provides = libkscreen
 	conflicts = libkscreen
 	source = git+https://github.com/KDE/libkscreen.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = libkscreen-git
 
