@@ -8,7 +8,7 @@
 
 _pkgname=influxdb
 pkgname=influxdb-cli
-pkgver=1.8.2
+pkgver=1.8.4
 pkgrel=1
 pkgdesc='InfluxDB command line interface'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -19,9 +19,9 @@ conflicts=('influxdb')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/influxdata/influxdb/archive/v${pkgver}.tar.gz"
         "fix-go114.patch::https://github.com/Foxboron/influxdb/commit/f8453b48862b50fe44021e320332f75e32457f29.patch"
         "fix-go115.patch::https://github.com/influxdata/influxdb/commit/3a03ad500a4b2bba65a4af74995ad54e88de7210.patch")
-sha256sums=('59ee1d3bc591d932acad918f3a46b07207beed9c0e717ee28da8c9565e646eda'
-            '2812f5cd31bdf6b9f587d471c249fb90ea58c4000ce52e3b91de7b17ca74dc7d'
-            '616ce43eebc1cbbe5d6376dd6306ffddc3aa1ab0cd396e1b9918ae43e6a27572')
+sha256sums=('9f2c135c8f9f50ca469196e6b4e575e26f1a338538788e71b664212e03b4df7b'
+            'f7194a068dfa1a68efe7b22f67a619697b605155cfde0ea61ef0e98a7473c89e'
+            'f32363bf14e34aff8bb06d4345d8e2031a31a04c0e13bbc55a345f6e679eccb4')
 
 prepare(){
   cd "${_pkgname}-${pkgver}"
