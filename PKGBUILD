@@ -1,7 +1,7 @@
 # Maintainer: tjbp (archlinux@tjbp.net)
 
 pkgname='php-solr'
-pkgver='2.5.0'
+pkgver='2.5.1'
 pkgrel='1'
 pkgdesc='PHP PECL extension for Apache Solr API'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url='https://pecl.php.net/package/solr'
 license=('PHP')
 depends=('php>=5.3')
 source=("http://pecl.php.net/get/solr-$pkgver.tgz")
-sha256sums=('f34c6159515bf229a6f72aab374c40d8dfc9c51d74f0d11fe30a611cbdb5c546')
+sha256sums=('2b41601e74fe371e6525579637a8ddff270e58a0ff636e7f56df8919d6e7777d')
 
 build() {
     cd "$srcdir/solr-$pkgver"
