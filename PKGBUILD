@@ -1,34 +1,33 @@
 # Maintainer:  Travis Collins <erbrecht at pobox dot com>
 pkgname='noisetorch'
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Real-time microphone noise suppression on Linux.'
 arch=('x86_64')
 url=https://github.com/lawl/NoiseTorch
 license=('GPL3')
-depends=('noise-suppression-for-voice' 'pulseaudio' 'polkit')
+depends=('pulseaudio' 'polkit')
 makedepends=('git' 'go' 'cmake')
 provides=('noisetorch')
 source=("${pkgver}-${pkgrel}.tar.gz::https://github.com/lawl/NoiseTorch/archive/${pkgver}.tar.gz"
         "main.patch"
-        "module.patch"
         "version.go")
-sha256sums=('afe01a969e1c016134cbe4f481c2af110f091f29fbde3a1d44095d9be37d3fd2'
-            '0a469722ca128d0a0c8a3480faf0301d112db62957ac7944af17b5748c8e095c'
-            '105cdd8f5a1644136cb0defce6fed159cf57400d63fec4c8f2a5240ea550e73d'
+sha256sums=('f0887a2c8c6cd4c863e4d67da2bcfb2b3900e9f5bfd5b0c1eaef576cc67948c7'
+            'dd930c1e39e9c4c6595f604178223b606a6fdce39bcc5ef7e36e2d58cbf5aa0c'
             '1f2f114638a818fe87ad10b9c7eab91f75f75f1d4e49c0a69f989f76a0d9d0a2')
 
 prepare() {
 	cd NoiseTorch-${pkgver}
 	patch -u main.go ../main.patch
-	patch -u module.go ../module.patch
 	sed "s/VERSIONTOKEN/${pkgver}/" ../version.go > version.go
 	export GOPATH="$srcdir/go"
 	go clean -modcache
 }
 
 build() {
-	cd NoiseTorch-${pkgver}
+	cd NoiseTorch-${pkgver}/c/ladspa
+	make
+	cd ${srcdir}/NoiseTorch-${pkgver}
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
