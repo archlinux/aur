@@ -1,6 +1,6 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime-git
-pkgver=0.9.1.r15.546e97a
+pkgver=0.9.1.r30.aa351a2
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
@@ -15,7 +15,7 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd "${pkgname}"
-    local tag=$(git tag --sort=v:refname | grep '^v[0-9]' | tail -1)
+    local tag=$(git tag --sort=v:refname | grep '^v[0-9]\+.[0-9]\+.[0-9]\+$' | tail -1)
     local commits_since=$(git rev-list $tag..HEAD --count)
     echo "$(echo $tag | cut -b2-).r$commits_since.$(git log --pretty=format:'%h' -n 1)"
 }
