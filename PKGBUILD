@@ -1,42 +1,35 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS plasma-nm PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=plasma-nm-git
-pkgver=r2894.0702dc01
+pkgver=5.21.80_r3007.g173f05fa
 pkgrel=1
 pkgdesc='Plasma applet written in QML for managing network connections'
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/kde/workspace/plasma-nm'
-license=('GPL2')
-depends=('networkmanager-qt-git' 'modemmanager-qt-git' 'plasma-workspace-git' 'qca-qt5-git')
-makedepends=('extra-cmake-modules' 'git' 'kdoctools' 'qt5-tools' 'openconnect')
-optdepends=('mobile-broadband-provider-info: Database of mobile broadband service providers' 'openconnect: Cisco AnyConnect VPN') 
-provides=('plasma-nm')
-conflicts=('plasma-nm')
-source=('git+https://github.com/KDE/plasma-nm.git')
-groups=('plasma')
+arch=($CARCH)
+url='https://kde.org/plasma-desktop/'
+license=(GPL2)
+depends=(plasma-workspace-git modemmanager-qt-git networkmanager-qt-git qca)
+makedepends=(git extra-cmake-modules-git openconnect)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+optdepends=('openconnect: Cisco AnyConnect VPN plugin')
+groups=(plasma-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd plasma-nm
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(PROJECT_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../plasma-nm \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
