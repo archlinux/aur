@@ -1,5 +1,5 @@
 pkgname=wsjtx
-pkgver=2.2.2
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65)"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ license=('GPL-3')
 makedepends=(cmake asciidoc asciidoctor)
 depends=(qt5-base qt5-multimedia qt5-serialport qt5-tools libusb libusb-compat gcc-fortran libpulse libpng fftw)
 source=(http://physics.princeton.edu/pulsar/K1JT/$pkgname-$pkgver.tgz)
-sha512sums=('923df18f5cbbd3e40294ccc4d3730f40c13c7777345723b9e66063ff0dd7db65caa9a64323711201a73b8c455dc1c29f67e4645dfbf98e0fc2c60a1630ce6cd1')
+sha512sums=('1b521a7c81d235b2f17b2a314528f5f9fc8b29de95a2f7f5471104866ff13d138f9913666bc00de71f34ed16e692f0f4b93c878cc3538d30a52852e4c179702c')
 
 build() {
     mkdir -p $srcdir/build
