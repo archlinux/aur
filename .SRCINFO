@@ -1,21 +1,19 @@
 pkgbase = kinit-git
-	pkgdesc = KInit
-	pkgver = v4.100.0.rc1.r266.g786ff48
+	pkgdesc = Process launcher to speed up launching KDE applications
+	pkgver = 5.79.0_r376.ga4f56b6
 	pkgrel = 1
-	url = https://projects.kde.org/projects/frameworks/kinit
-	arch = i686
+	url = https://community.kde.org/Frameworks
 	arch = x86_64
-	groups = kf5
+	groups = kf5-git
 	license = LGPL
-	makedepends = extra-cmake-modules-git
 	makedepends = git
+	makedepends = extra-cmake-modules-git
 	makedepends = kdoctools-git
-	makedepends = python
 	depends = kio-git
 	provides = kinit
 	conflicts = kinit
 	source = git+https://github.com/KDE/kinit.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kinit-git
 
