@@ -1,7 +1,7 @@
 # Maintainer: Frank Denis <github@pureftpd.org>
 
 pkgname=encrypted-dns
-pkgver=0.3.17
+pkgver=0.3.22
 pkgrel=1
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -19,3 +19,4 @@ package() {
     rm $pkgdir/.crates.toml
     rm $pkgdir/.crates2.json
 }
+

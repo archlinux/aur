@@ -1,6 +1,6 @@
 pkgbase = encrypted-dns
 	pkgdesc = A modern encrypted DNS server (DNSCrypt v2, Anonymized DNSCrypt, DoH)
-	pkgver = 0.3.17
+	pkgver = 0.3.22
 	pkgrel = 1
 	url = https://github.com/jedisct1/encrypted-dns-server
 	arch = i686
