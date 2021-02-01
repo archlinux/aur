@@ -1,6 +1,6 @@
 # Maintainer: igo95862 <address at domain dot tld>
 pkgname=python-sdbus-git
-pkgver=r307.9eaeaa5
+pkgver=r332.5d18e3c
 pkgrel=1
 pkgdesc="Modern Python library for D-Bus"
 arch=('any')
@@ -21,9 +21,7 @@ check () {
     # TODO: After having a meson build system
     cd "$srcdir/$pkgname"
     local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-    local python_package="$PWD/build/lib.linux-$CARCH-${python_version}"
-    cp "$python_package"/sdbus/*.so ./sdbus/
-    python -m unittest --verbose
+    env PYTHONPATH="$PWD/build/lib.linux-$CARCH-${python_version}" python -m unittest --verbose
 }
 
 build () {
