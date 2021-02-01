@@ -1,20 +1,26 @@
 pkgbase = ki18n-git
-	pkgdesc = Ki18n
-	pkgver = v4.100.0.rc1.r338.g9bfef8a
-	pkgrel = 2
-	url = https://projects.kde.org/projects/frameworks/ki18n
-	arch = i686
+	pkgdesc = Advanced internationalization framework
+	pkgver = 5.79.0_r436.gf88e694
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
 	arch = x86_64
+	groups = kf5-git
 	license = LGPL
-	makedepends = extra-cmake-modules-git
 	makedepends = git
-	makedepends = python
+	makedepends = extra-cmake-modules-git
+	makedepends = python-pyqt5
+	makedepends = clang
+	makedepends = doxygen
+	makedepends = qt5-tools
+	makedepends = qt5-doc
+	makedepends = sip4
 	depends = qt5-declarative
-	depends = qt5-script
+	optdepends = python-pyqt5: for the Python bindings
+	optdepends = python: to compile .ts files
 	provides = ki18n
 	conflicts = ki18n
 	source = git+https://github.com/KDE/ki18n.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = ki18n-git
 
