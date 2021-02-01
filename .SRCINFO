@@ -1,21 +1,25 @@
 pkgbase = kcoreaddons-git
-	pkgdesc = KCoreAddons
-	pkgver = v5.71.0.rc1.r2.g2e07a74
-	pkgrel = 3
-	url = https://projects.kde.org/projects/frameworks/kcoreaddons
-	install = kcoreaddons.install
-	arch = i686
+	pkgdesc = Addons to QtCore
+	pkgver = 5.79.0_r1121.g17bf3576
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
 	arch = x86_64
+	groups = kf5-git
 	license = LGPL
-	makedepends = extra-cmake-modules-git
 	makedepends = git
+	makedepends = extra-cmake-modules-git
 	makedepends = qt5-tools
+	makedepends = qt5-doc
+	makedepends = clang
+	makedepends = python-pyqt5
+	makedepends = doxygen
+	makedepends = sip4
 	depends = qt5-base
-	depends = shared-mime-info
+	optdepends = python-pyqt5: for the Python bindings
 	provides = kcoreaddons
 	conflicts = kcoreaddons
 	source = git+https://github.com/KDE/kcoreaddons.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kcoreaddons-git
 
