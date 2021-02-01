@@ -3,7 +3,7 @@
 
 pkgname=python-jax-opt-cuda-git
 pkgver=0.2.9.26afe307
-pkgrel=1
+pkgrel=2
 pkgdesc="Differentiate, compile, and transform Numpy code."
 arch=("x86_64")
 url="https://github.com/google/jax/"
@@ -26,6 +26,7 @@ makedepends=(
     # makedepends until jax maintainers update required bazel version.
     #"bazel"
     "git"
+    "python-pip"
     "python-wheel"
 )
 source=(
@@ -47,6 +48,5 @@ build() {
 
 package() {
   cd $pkgname
-  (cd build && python setup.py install --optimize=1 --root=$pkgdir)
-  (python setup.py install --optimize=1 --root=$pkgdir)
+  pip install dist/*.whl
 }
