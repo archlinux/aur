@@ -1,7 +1,6 @@
-diff -purN kaitai-struct-compiler-0.8/bin/kaitai-struct-compiler kaitai-struct-compiler-0.8.new/bin/kaitai-struct-compiler
---- kaitai-struct-compiler-0.8/bin/kaitai-struct-compiler	2018-02-05 02:16:20.000000000 +0100
-+++ kaitai-struct-compiler-0.8.new/bin/kaitai-struct-compiler	2018-03-04 15:15:23.311979371 +0100
-@@ -334,7 +334,7 @@ declare -a app_commands
+--- a/bin/kaitai-struct-compiler	2020-10-16 00:08:34.000000000 +0200
++++ b//bin/kaitai-struct-compiler	2021-02-01 15:31:15.045376690 +0100
+@@ -340,7 +340,7 @@ declare -a app_commands
  declare -r real_script_path="$(realpath "$0")"
  declare -r app_home="$(realpath "$(dirname "$real_script_path")")"
  # TODO - Check whether this is ok in cygwin...
