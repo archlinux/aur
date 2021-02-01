@@ -5,7 +5,7 @@
 # Contributor: Florian Pritz <bluewind@xinu.at>
 
 pkgname=syslog-ng-nosystemd
-pkgver=3.29.1
+pkgver=3.30.1
 pkgrel=1
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=('i686' 'x86_64')
@@ -40,8 +40,8 @@ source=(https://github.com/balabit/syslog-ng/releases/download/syslog-ng-$pkgver
         syslog-ng.conf.d
         syslog-ng.logrotate
         syslog-ng.rc)
-sha256sums=('5cd6b65466671ec5b793fc703a515e07e0da39b79190b2a3c89af176d07e89fd'
-            'd91ed69fb3d4f7a3843f8c0e64975e4293d2a78bbc080fb5a574c5e5e0da3d9e'
+sha256sums=('44e54a6186af14d01affa06bf7391cfe8fc2460bd4ba211aab5469d8b1ca5b4b'
+            '1b61aeeadb57ba3d6d47ba63f75c20362b2af6cae0324593bc4668b5d5b07aa7'
             'fe6ebe5c281b34bad201d9206e607857db9a5a78f03bb4dc4440584dca610f61'
             '93c935eca56854011ea9e353b7a1da662ad40b2e8452954c5b4b5a1d5b2d5317'
             'db643d69e840dfd5d7849e857291f15fd60913527402fde806ce3911e3523063')
