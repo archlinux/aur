@@ -1,7 +1,7 @@
 pkgbase = linux-mainline-bcachefs
 	pkgdesc = Linux-tkg with bcachefs
-	pkgver = 5.10.11
-	pkgrel = 115
+	pkgver = 5.10.12
+	pkgrel = 116
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2

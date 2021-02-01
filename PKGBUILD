@@ -35,7 +35,7 @@ else
 fi
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver="${_basekernel}"."${_sub}"
-pkgrel=115
+pkgrel=116
 pkgdesc='Linux-tkg with bcachefs'
 arch=('x86_64') # no i686 in here
 url="http://www.kernel.org/"
