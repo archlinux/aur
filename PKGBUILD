@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('hicolor-icon-theme' 'dconf' 'python')
 makedepends=('meson' 'ninja')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bottlesdevs/Bottles/archive/${pkgver}.tar.gz")
-sha256sums=('0bded76a939662f9d5249e82ec14e68e6ab82e0dc35c087cc236046e34f9b5af')
+sha256sums=('SKIP')
 
 build() {
   cd "Bottles-${pkgver}"

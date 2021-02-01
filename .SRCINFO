@@ -11,7 +11,7 @@ pkgbase = bottles
 	depends = dconf
 	depends = python
 	source = bottles-2.1.0.5.tar.gz::https://github.com/bottlesdevs/Bottles/archive/2.1.0.5.tar.gz
-	sha256sums = 0bded76a939662f9d5249e82ec14e68e6ab82e0dc35c087cc236046e34f9b5af
+	sha256sums = SKIP
 
 pkgname = bottles
 
