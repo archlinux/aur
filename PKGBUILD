@@ -1,8 +1,8 @@
 # Maintainer: FirstAirBender <noblechuk5 [at] web [dot] de>
 
 pkgname=systemd-removed-services-hook
-pkgver=1.3.3
-pkgrel=2
+pkgver=1.3.4
+pkgrel=1
 pkgdesc='Notifies you of uninstalled systemd services along with the command to disable them'
 arch=('any')
 url='https://gitlab.com/firstairbender/systemd-removed-services-hook'
@@ -10,38 +10,39 @@ license=('Unlicense')
 makedepends=('pacutils')
 depends=('systemd')
 source=(
-	'systemd-removed-services.sh'
+    systemd-removed-services.sh
 )
-sha512sums=('be688838ca8686e5c90689bf2ab585cef1137c999b48c70b92f67a5c34dc15697b5d11c982ed6d71be1e1e7f7b4e0733884aa97c3f7a339a8ed03577cf74be09')
+sha512sums=('edb4ea656ea94df6fe79db9d304b32520c789a5512c28fd78888ef4b80f39ccb5e48986ff88cf69540bbede872817e5f1186a4ee18b2ac142a323a914020eca0')
 
 build() {
   {
-  	cat <<-'EOF'
-		# https://jlk.fjfi.cvut.cz/arch/manpages/man/alpm-hooks.5
+    cat <<-'EOF'
+        # https://jlk.fjfi.cvut.cz/arch/manpages/man/alpm-hooks.5
 
-		[Trigger]
-		Operation = Remove
-		Type      = Path
+        [Trigger]
+        Operation = Remove
+        Type      = Path
 	EOF
 
-  	for p in $(systemd-analyze --global unit-paths; systemd-analyze unit-paths); do 
-  		p=${p#"$(pacconf RootDir)"}
-  		echo "Target    = $p/*.service"
-  	done | sort
+    for p in $(systemd-analyze --global unit-paths; systemd-analyze unit-paths); do 
+        p=${p#"$(pacconf RootDir)"}
+        echo "Target    = $p/*.service"
+    done | sort
 
-  	cat <<-'EOF'
+    cat <<-'EOF'
 
-		[Action]
-		Description = Systemd commands to disable uninstalled services
-		When        = PreTransaction
-		Depends     = systemd
-		Exec        = /bin/bash -c 'echo; cat | while read -r f; do service="${f##*/}"; if [ "${f/*\/system\/*/system}" = "system" ] && systemctl --quiet is-enabled "$service" 2> /dev/null; then echo -e " ► systemctl disable $service"; elif [ "${f/*\/user\/*/user}" = "user" ] && systemctl --quiet --global is-enabled "$service" 2> /dev/null; then echo -e " ► systemctl disable --global $service"; fi; done'
-		NeedsTargets
+        [Action]
+        Description = Systemd commands to disable uninstalled services
+        When        = PreTransaction
+        Depends     = systemd
+        Exec        = /usr/share/libalpm/scripts/systemd-removed-services.sh
+        NeedsTargets
 	EOF
 
   } > '20-systemd-removed-services.hook'
 }
 
 package() {
-    install -Dm 0644 ./* --target-directory="$pkgdir/$(pacconf HookDir)"
+    install -Dm 0644 ./*.hook --target-directory="$pkgdir/usr/share/libalpm/hooks/"
+    install -Dm 0644 ./*.sh --target-directory="$pkgdir/usr/share/libalpm/scripts/"
 }
