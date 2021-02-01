@@ -1,22 +1,19 @@
 pkgbase = kgamma5-git
 	pkgdesc = Adjust your monitor's gamma settings
-	pkgver = r422.a49ea60
+	pkgver = 5.21.80_r444.gc4e0b78
 	pkgrel = 1
-	url = https://projects.kde.org/kgamma5
-	arch = i686
+	url = https://kde.org/plasma-desktop/
 	arch = x86_64
+	groups = plasma-git
 	license = LGPL
-	makedepends = extra-cmake-modules
 	makedepends = git
-	makedepends = kdoctools
-	depends = kdelibs4support
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	depends = kconfigwidgets-git
 	provides = kgamma5
 	conflicts = kgamma5
-	conflicts = kdegraphics-kgamma
-	conflicts = kgamma-git
-	replaces = kgamma-git
 	source = git+https://github.com/KDE/kgamma5.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kgamma5-git
 
