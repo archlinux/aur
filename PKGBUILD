@@ -1,7 +1,8 @@
 # Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 
 pkgname=radare2-cutter-git
-pkgver=1.12.0.r7.g14b731ac
+epoch=1
+pkgver=0.1.0.r2.gbaf2c363
 pkgrel=1
 pkgdesc='Qt and C++ GUI for radare2 reverse engineering framework (originally named Iaito)'
 url='https://github.com/radareorg/cutter'
