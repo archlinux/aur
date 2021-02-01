@@ -3,7 +3,7 @@
 pkgname=('rdma-core-no-pandoc')
 _srcname='rdma-core'
 pkgdesc='RDMA core userspace libraries and daemons'
-pkgver='31.2'
+pkgver='33.1'
 _tag="v${pkgver}"
 pkgrel='1'
 arch=('x86_64')
@@ -32,8 +32,6 @@ prepare() {
         --expression='s|/usr/sbin|/usr/bin|g' \
         --expression='s|/sbin|/usr/bin|g' \
         '{}' '+'
-
-    sed -i '/^\s.*$/d' buildlib/rdma_man.cmake
 }
 
 build() {
@@ -52,6 +50,8 @@ build() {
         -DCMAKE_INSTALL_LIBEXECDIR='/usr/lib/rdma' \
         -DCMAKE_INSTALL_SYSCONFDIR='/etc' \
         -DCMAKE_INSTALL_PERLDIR='/usr/share/perl5/vendor_perl' \
+        -DNO_MAN_PAGES=1 \
+        -DNO_PYVERBS=1 \
         ..
     ninja
 }
@@ -65,15 +65,15 @@ package() {
 
     cd "${srcdir}/${_srcname}/redhat"
     install -D --mode=0644 rdma.conf "${pkgdir}/etc/rdma/rdma.conf"
-    install -D --mode=0755 rdma.kernel-init "${pkgdir}/usr/lib/rdma/rdma-init-kernel"
+    #install -D --mode=0755 rdma.kernel-init "${pkgdir}/usr/lib/rdma/rdma-init-kernel"
     install -D --mode=0755 rdma.mlx4-setup.sh "${pkgdir}/usr/lib/rdma/mlx4-setup.sh"
     install -D --mode=0644 rdma.mlx4.conf "${pkgdir}/etc/rdma/mlx4.conf"
     install -D --mode=0644 rdma.mlx4.sys.modprobe "${pkgdir}/usr/lib/modprobe.d/libmlx4.conf"
     install -D --mode=0755 rdma.modules-setup.sh "${pkgdir}/usr/lib/dracut/modules.d/05rdma/module-setup.sh"
-    install -D --mode=0644 rdma.service "${pkgdir}/usr/lib/systemd/system/rdma.service"
-    install -D --mode=0755 rdma.sriov-init "${pkgdir}/usr/lib/rdma/rdma-set-sriov-vf"
-    install -D --mode=0644 rdma.sriov-vfs "${pkgdir}/etc/rdma/sriov-vfs"
-    install -D --mode=0644 rdma.udev-rules "${pkgdir}/usr/lib/udev/rules.d/98-rdma.rules"
+    #install -D --mode=0644 rdma.service "${pkgdir}/usr/lib/systemd/system/rdma.service"
+    #install -D --mode=0755 rdma.sriov-init "${pkgdir}/usr/lib/rdma/rdma-set-sriov-vf"
+    #install -D --mode=0644 rdma.sriov-vfs "${pkgdir}/etc/rdma/sriov-vfs"
+    #install -D --mode=0644 rdma.udev-rules "${pkgdir}/usr/lib/udev/rules.d/98-rdma.rules"
 
     cd "${srcdir}/${_srcname}"
     install -D --mode=0644 COPYING.BSD_MIT "${pkgdir}/usr/share/licenses/${pkgname[0]%-git}/COPYING.BSD_MIT"
