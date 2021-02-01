@@ -1,42 +1,36 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS knewstuff PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=knewstuff-git
-pkgver=v4.100.0.rc1.r791.gee3330a8
-pkgrel=2
-pkgdesc='KNewStuff'
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/frameworks/knewstuff'
-license=('LGPL')
-depends=('kio-git' 'kpackage-git')
-makedepends=('extra-cmake-modules-git' 'git')
-groups=('kf5')
-conflicts=(knewstuff)
-provides=(knewstuff)
-source=('git+https://github.com/KDE/knewstuff.git')
-md5sums=('SKIP')
+pkgver=5.79.0_r1030.ga3943fed
+pkgrel=1
+pkgdesc='Support for downloading application assets from the network'
+arch=($CARCH)
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
+depends=(kio-git kpackage-git)
+makedepends=(git extra-cmake-modules-git doxygen qt5-tools qt5-doc qt5-declarative)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+optdepends=('kirigami-git: QML components')
+groups=(kf5-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  mkdir -p build
+  _ver="$(grep -m1 "set(KF5\?_VERSION" CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../knewstuff \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }

@@ -1,20 +1,24 @@
 pkgbase = knewstuff-git
-	pkgdesc = KNewStuff
-	pkgver = v4.100.0.rc1.r791.gee3330a8
-	pkgrel = 2
-	url = https://projects.kde.org/projects/frameworks/knewstuff
-	arch = i686
+	pkgdesc = Support for downloading application assets from the network
+	pkgver = 5.79.0_r1030.ga3943fed
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
 	arch = x86_64
-	groups = kf5
+	groups = kf5-git
 	license = LGPL
-	makedepends = extra-cmake-modules-git
 	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = doxygen
+	makedepends = qt5-tools
+	makedepends = qt5-doc
+	makedepends = qt5-declarative
 	depends = kio-git
 	depends = kpackage-git
+	optdepends = kirigami-git: QML components
 	provides = knewstuff
 	conflicts = knewstuff
 	source = git+https://github.com/KDE/knewstuff.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = knewstuff-git
 
