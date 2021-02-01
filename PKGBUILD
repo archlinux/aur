@@ -1,40 +1,34 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS kwallet-pam PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwallet-pam-git
-pkgver=r223.94b9e27
+pkgver=5.21.80_r234.g8b5aba5
 pkgrel=1
-pkgdesc='Unlock KWallet using PAM'
-url='https://projects.kde.org/kwallet-pam'
-license=('LGPL')
-license=('GPL')
-arch=('i686' 'x86_64')
-depends=('kwallet-git' 'socat' 'pam' 'libgcrypt')
-makedepends=('extra-cmake-modules-git' 'git')
-conflicts=('kwallet-pam')
-provides=('kwallet-pam')
-source=('git+https://github.com/KDE/kwallet-pam.git')
-md5sums=('SKIP')
+pkgdesc='KWallet PAM integration'
+arch=($CARCH)
+url='https://kde.org/plasma-desktop/'
+license=(LGPL)
+depends=(socat kwallet-git)
+makedepends=(git extra-cmake-modules-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(plasma-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd kwallet-pam
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(PROJECT_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../kwallet-pam \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -DKDE_INSTALL_LIBDIR=lib
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
