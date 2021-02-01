@@ -1,21 +1,20 @@
 pkgbase = kpimtextedit-git
 	pkgdesc = A textedit with PIM-specific features
-	pkgver = r1241.9cd49c7
+	pkgver = 5.16.40_r1327.gcea5570
 	pkgrel = 1
-	url = https://projects.kde.org/projects/kde/pim/kpimtextedit
-	arch = i686
+	url = https://kontact.kde.org
 	arch = x86_64
+	groups = kdepim-git
 	license = LGPL
-	makedepends = extra-cmake-modules-git
 	makedepends = git
-	makedepends = python
-	makedepends = kdoctools
-	depends = kdelibs4support
-	depends = grantlee-qt5
+	makedepends = extra-cmake-modules-git
+	makedepends = qt5-tools
+	depends = kio-git
+	depends = syntax-highlighting-git
 	provides = kpimtextedit
 	conflicts = kpimtextedit
 	source = git+https://github.com/KDE/kpimtextedit.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kpimtextedit-git
 

@@ -1,41 +1,34 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS kpimtextedit PKGBUILD by João, 2021/01/31 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
-_gitname=kpimtextedit
-pkgname=$_gitname-git
-pkgver=r1241.9cd49c7
+pkgname=kpimtextedit-git
+pkgver=5.16.40_r1327.gcea5570
 pkgrel=1
 pkgdesc="A textedit with PIM-specific features"
-arch=(i686 x86_64)
-url="https://projects.kde.org/projects/kde/pim/$_gitname"
+arch=($CARCH)
+url="https://kontact.kde.org"
 license=(LGPL)
-depends=(kdelibs4support grantlee-qt5)
-makedepends=(extra-cmake-modules-git git python kdoctools)
-conflicts=("$_gitname")
-provides=("$_gitname")
-source=('git+https://github.com/KDE/kpimtextedit.git')
-md5sums=('SKIP')
+groups=(kdepim-git)
+depends=(kio-git syntax-highlighting-git)
+makedepends=(git extra-cmake-modules-git qt5-tools)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(PIM_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../$_gitname \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
