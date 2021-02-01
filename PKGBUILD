@@ -1,39 +1,34 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS kactivities-stats PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+
 pkgname=kactivities-stats-git
-pkgver=r285.6ad7fc2
+pkgver=5.79.0_r327.g62b208f
 pkgrel=1
-pkgdesc="Core components for the KDE's Activities"
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/frameworks/kactivities'
-license=('LGPL')
-depends=('kactivities-git')
-provides=('kactivities-stats')
-conflicts=('kactivities-stats')
-makedepends=('extra-cmake-modules-git' 'git' 'boost')
-source=('git+https://github.com/KDE/kactivities-stats.git')
-md5sums=('SKIP')
+arch=($CARCH)
+pkgdesc="A library for accessing the usage data collected by the activities system"
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
+depends=(kactivities-git)
+makedepends=(git extra-cmake-modules-git boost doxygen qt5-tools qt5-doc)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(kf5-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd kactivities-stats
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 "set(KF5\?_VERSION" CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../kactivities-stats \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }

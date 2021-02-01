@@ -1,19 +1,22 @@
 pkgbase = kactivities-stats-git
-	pkgdesc = Core components for the KDE's Activities
-	pkgver = r285.6ad7fc2
+	pkgdesc = A library for accessing the usage data collected by the activities system
+	pkgver = 5.79.0_r327.g62b208f
 	pkgrel = 1
-	url = https://projects.kde.org/projects/frameworks/kactivities
-	arch = i686
+	url = https://community.kde.org/Frameworks
 	arch = x86_64
+	groups = kf5-git
 	license = LGPL
-	makedepends = extra-cmake-modules-git
 	makedepends = git
+	makedepends = extra-cmake-modules-git
 	makedepends = boost
+	makedepends = doxygen
+	makedepends = qt5-tools
+	makedepends = qt5-doc
 	depends = kactivities-git
 	provides = kactivities-stats
 	conflicts = kactivities-stats
 	source = git+https://github.com/KDE/kactivities-stats.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kactivities-stats-git
 
