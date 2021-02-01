@@ -1,11 +1,11 @@
 # Maintainer: Roshless <pkg@roshless.com>
 
 pkgname=lagrange
-pkgrel=2
-pkgver=1.0.3
+pkgrel=1
+pkgver=1.1.0
 pkgdesc="Beautiful Gemini Client"
 url="https://git.skyjake.fi/skyjake/lagrange"
-arch=("any")
+arch=('x86_64' 'i686')
 license=("BSD")
 source=(
     "https://git.skyjake.fi/skyjake/$pkgname/releases/download/v$pkgver/lagrange-$pkgver.tar.gz"
@@ -22,7 +22,7 @@ makedepends=("cmake")
 
 build() {
     cmake -B build -S "$pkgname-${pkgver}" \
-        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -Wno-dev
     make -C build
@@ -32,7 +32,7 @@ package() {
     install -Dm644 $pkgname-$pkgver/LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     cd build
-    make PREFIX="/usr" DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" install
 }
 
-md5sums=('17fcd774f3b54c8275b1a1c0a3a850bf')
+md5sums=('090a12a6d9350231c23d53ca3d928ad6')
