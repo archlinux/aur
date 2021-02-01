@@ -1,7 +1,7 @@
 pkgbase = sakura-frp
 	pkgdesc = Sakura Frp
 	pkgver = 0.35.1_sakura_1
-	pkgrel = 3
+	pkgrel = 1
 	url = https://www.natfrp.com/
 	arch = x86_64
 	arch = i686
