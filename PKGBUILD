@@ -1,42 +1,34 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS kross PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kross-git
-pkgver=r282.9d539fd
+pkgver=5.79.0_r309.g4d2291d
 pkgrel=1
 pkgdesc='Multi-language application scripting'
-arch=(i686 x86_64)
-url='https://projects.kde.org/projects/frameworks/kross'
+arch=($CARCH)
+url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(kparts-git)
-makedepends=(extra-cmake-modules-git git kdoctools-git qt5-tools)
-groups=(kf5-aids)
-conflicts=(kross)
-provides=(kross)
-source=('git+https://github.com/KDE/kross.git')
-md5sums=('SKIP')
+depends=(kparts-git qt5-script)
+makedepends=(git extra-cmake-modules-git kdoctools-git qt5-tools)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(kf5-aids-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd kross
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 "set(KF5\?_VERSION" CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../kross \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+  cmake -B build -S ${pkgname%-git} \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
