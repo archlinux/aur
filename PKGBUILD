@@ -1,6 +1,6 @@
 # Maintainer: xiretza <xiretza+aur@gmail.com>
 pkgname=lemonldap-ng
-pkgver=2.0.10
+pkgver=2.0.11
 pkgrel=1
 pkgdesc="A modular WebSSO (Single Sign On) based on Apache::Session modules"
 arch=(any)
@@ -18,7 +18,7 @@ makedepends=('uglify-js' 'python-sphinx' 'python-sphinx-bootstrap-theme')
 checkdepends=('perl-test-output' 'perl-time-fake')
 optdepends=('uwsgi-plugin-psgi: for running under uWSGI')
 source=("https://release.ow2.org/lemonldap/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('66510544809eb7c022d8ad2b2710c29587ba20da436a2a97748533c37657a5fcf353a67dd51156eeb3f6785370593f65796ec61fe437d20144dff6eab85d0a80')
+sha512sums=('915b93340040d893bb0171b1542000462c5e3b31e89ff1cb07cb1710a07ed1b76cd7f672b2c28df7fcf913ced4390baab8c616f0b0f1adfa8d7108f71993c5c3')
 
 prepare() {
 	cd "$pkgname-$pkgver"
