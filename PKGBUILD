@@ -3,8 +3,8 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail.com>
 
 pkgname=pycharm-edu
-pkgver=2020.3.1
-_pkgver=2020.3.1
+pkgver=2020.3.2
+_pkgver=2020.3.2
 pkgrel=1
 pkgdesc="A Professional Tool to Learn and Teach Programming with Python"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(https://download.jetbrains.com/python/$pkgname-$_pkgver.tar.gz
         'pycharm-edu.desktop')
 optdepends=('ipython2: For enhanced interactive Python shell v2'
             'ipython: For enhanced interactive Python shell v3')
-sha256sums=('1ae8c42edad4c31bcd42ecbbabdf172b8070a13a447418d6d0e750d83cb08dc7'
+sha256sums=('fbd9e01d94e662489d77123eccb50c8596395da9ca9321b8ecb4dbcf46326f01'
             'bb47c5ebe079539aed256aea205fdc91a425937744e6d84df65a85cdbd51ab59')
 
 build() {
