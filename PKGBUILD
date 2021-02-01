@@ -1,39 +1,34 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS ktexteditor PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+
 pkgname=ktexteditor-git
-pkgver=r2378.71b4295a
-pkgrel=2
-pkgdesc='KTextEditor framework'
-arch=(i686 x86_64)
-url='https://projects.kde.org/projects/frameworks/ktexteditor'
+pkgver=5.79.0_r2698.g39352e88
+pkgrel=1
+pkgdesc='Advanced embeddable text editor'
+arch=($CARCH)
+url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(kparts-git syntax-highlighting-git libgit2 editorconfig-core-c-git)
-makedepends=(extra-cmake-modules-git git)
-provides=(ktexteditor)
-conflicts=(ktexteditor)
-source=('git+https://github.com/KDE/ktexteditor.git')
-md5sums=('SKIP')
+depends=(kparts-git syntax-highlighting-git libgit2 editorconfig-core-c)
+makedepends=(git extra-cmake-modules-git doxygen qt5-tools qt5-doc)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(kf5-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd ktexteditor
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 "set(KF5\?_VERSION" CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../ktexteditor \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
+  cmake -B build -S ${pkgname%-git} \
     -DBUILD_TESTING=OFF \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+    -DBUILD_QCH=ON
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
