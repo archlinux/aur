@@ -1,19 +1,26 @@
 pkgbase = kguiaddons-git
-	pkgdesc = KGuiAddons
-	pkgver = v5.76.0.r5.g43e657c
-	pkgrel = 2
-	url = https://projects.kde.org/projects/frameworks/kguiaddons
-	arch = i686
+	pkgdesc = Addons to QtGui
+	pkgver = 5.79.0_r337.g88a0716
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
 	arch = x86_64
+	groups = kf5-git
 	license = LGPL
-	makedepends = extra-cmake-modules-git
 	makedepends = git
-	makedepends = qt5-wayland
+	makedepends = extra-cmake-modules-git
+	makedepends = clang
+	makedepends = python-pyqt5
+	makedepends = doxygen
+	makedepends = qt5-tools
+	makedepends = qt5-doc
+	makedepends = sip4
 	depends = qt5-x11extras
+	depends = qt5-wayland
+	optdepends = python-pyqt5: for the Python bindings
 	provides = kguiaddons
 	conflicts = kguiaddons
 	source = git+https://github.com/KDE/kguiaddons.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kguiaddons-git
 

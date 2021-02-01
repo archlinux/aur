@@ -1,41 +1,36 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS kguiaddons PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kguiaddons-git
-pkgver=v5.76.0.r5.g43e657c
-pkgrel=2
-pkgdesc='KGuiAddons'
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/frameworks/kguiaddons'
-license=('LGPL')
-depends=('qt5-x11extras')
-makedepends=('extra-cmake-modules-git' 'git' 'qt5-wayland')
-conflicts=(kguiaddons)
-provides=(kguiaddons)
-source=('git+https://github.com/KDE/kguiaddons.git')
-md5sums=('SKIP')
+pkgver=5.79.0_r337.g88a0716
+pkgrel=1
+pkgdesc='Addons to QtGui'
+arch=($CARCH)
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
+depends=(qt5-x11extras qt5-wayland)
+makedepends=(git extra-cmake-modules-git clang python-pyqt5 doxygen qt5-tools qt5-doc sip4)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+optdepends=('python-pyqt5: for the Python bindings')
+groups=(kf5-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  mkdir -p build
+  _ver="$(grep -m1 "set(KF5\?_VERSION" CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../kguiaddons \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
