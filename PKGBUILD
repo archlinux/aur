@@ -21,19 +21,19 @@ sha512sums=('SKIP'
             'a5ffba60e91d26910c70d3d591009a10a2428bec8ba55921de3043550cc69faf466574e195fae55f6d5e2db035aca7c72a10138c3cf171975b9ebc2cdb74340f')
 
 pkgver() {
-    mv gephgui gephgui4
-    cd gephgui4
+    mv "${srcdir}/gephgui" "${srcdir}/${_pkgname}"
+    cd "${srcdir}/${_pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd gephgui4
+    cd "${srcdir}/${_pkgname}"
     npm install --devDependencies
     npm run electron:lin64
 }
 
 package() {
-    cd gephgui4
+    cd "${srcdir}/${_pkgname}"
     install -Dm 644 icons/512x512.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
     install -Dm 644 "$srcdir/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
     install -d "$pkgdir/usr/lib"
