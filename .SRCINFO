@@ -1,6 +1,6 @@
 pkgbase = perl-mail-datafeed-abusix
 	pkgdesc = Send SMTP transaction data to the Abusix transaction feed
-	pkgver = 1.20200617.1
+	pkgver = 2.20210112
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Mail-DataFeed-Abusix
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = perl-mail-datafeed-abusix
 	depends = perl
 	depends = perl-moo
 	options = !emptydirs
-	source = http://cpan.perl.org/modules/by-module/Mail/Mail-DataFeed-Abusix-1.20200617.1.tar.gz
-	sha256sums = 590471d189c44822b57a90b5b3d3f7d0ca6060d222f4959318c1992af17ace25
+	source = http://cpan.perl.org/modules/by-module/Mail/Mail-DataFeed-Abusix-2.20210112.tar.gz
+	sha256sums = 295238c43ce1a46e55e3aee41618308eede1de6e55a426b7ecb04a501a26acc3
 
 pkgname = perl-mail-datafeed-abusix
 

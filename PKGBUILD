@@ -3,7 +3,7 @@
 _perlmod='Mail-DataFeed-Abusix'
 _modnamespace=Mail
 pkgname=perl-mail-datafeed-abusix
-pkgver=1.20200617.1
+pkgver=2.20210112
 pkgrel=1
 pkgdesc="Send SMTP transaction data to the Abusix transaction feed"
 arch=("any")
@@ -13,7 +13,7 @@ depends=('perl' 'perl-moo')
 makedepends=('perl-test-exception' 'perl-test-simple')
 options=('!emptydirs')
 source=("http://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz")
-sha256sums=('590471d189c44822b57a90b5b3d3f7d0ca6060d222f4959318c1992af17ace25')
+sha256sums=('295238c43ce1a46e55e3aee41618308eede1de6e55a426b7ecb04a501a26acc3')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
