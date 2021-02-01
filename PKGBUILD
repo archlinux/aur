@@ -48,7 +48,7 @@ _1k_HZ_ticks=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=5.10
-_minor=11
+_minor=12
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
 pkgrel=1
@@ -72,10 +72,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v11-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v11-sep/0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
-        "${_lucjanpath}/arch-patches-v11-sep/0003-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch"
-        "${_lucjanpath}/arch-patches-v11-sep/0004-HID-wacom-Correct-NULL-dereference-on-AES-pen-proxim.patch"
+        "${_lucjanpath}/arch-patches-v12-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v12-sep/0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
+        "${_lucjanpath}/arch-patches-v12-sep/0003-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch"
          # the main kernel config files
         'config')
 
@@ -311,14 +310,13 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('251cdb885190769551c7c51476113e53ca11ea32f0234491ece3cfffe9f1c15e517dbba1c8f3c0d1a41351e2c14ccfff94aa00301a0c8a4a86b2569b1dd70ca5'
+sha512sums=('01062437c9af1654346b5baf550dbefe3cedab18b3d793ee528d1fc27556d5ecc438b6a39a4163acb65434f50516f8c98a3b1be723afbb620680695b909a376e'
             'SKIP'
             '003e33e214065a57df00458d4a88db5cc33eb00030a516264fc4b2e4de9b6649466451260a30cf86667f8981fc493103dea509217b3850773a65d3beb95e6441'
             '34e21ecc4ef0d07707283427fa82d561a9573d670e80ccd41f7d9cb595473b3844b8df7aeffcb4fe82d9deeef0a4d4e6aef663eb1a7a397fa181f06f418a0d6d'
-            '06e23fb8828e70c5a30b11d99ae6b12db5bde1872457f58c736f2dd7d6985cc9bb87cf93ebf5278899bdfe867c527fdab0fa8dc649e6a8f4048104390e8ff6be'
-            '9a7ba4cb520eb40605b650609cdc58fe4dc353339311ca5dac9b6e0b694ce939b76a0e6d6f541f9c998d1766c8c887a927683b3fb02254454f0357bdc5c490ec'
-            'ee38aa7f8348fa4f772059fdad24ff6bbfcb9b0552e94f9893fd0af913e1471ae01e22c572ab9b027d3894b14d223d7055d29d1b0d38e32e9563d6df7d58b8bb'
-            '116c7280a42847c5959aa734490eb6e59cdb61168b49f10bf5474ba76268a09473bc00f7c881157de1a39f9a1bc73c303ac3e271683db587fe57698dfeb8e364'
+            'f13f34833ab5c7c2239c94e1a6a491db450e8db09a124a2dbd99a7ec613e7e894a76d649b69915a7c4550c193ddf60c1fb762c5a16e9047602fba768d4b412da'
+            '57b805336e6bfad046c341426b7186ab055fcb146b6dc9c5e36ce36e011528e8e239bed4f654372fddfbdd44ce95d7332d574e1ac38b7cabb0aa0acff522a1fa'
+            'c0162404599999d9bbc5916ac51946ac34c786f1190ae802addef017b1fa8cc3315af56d4fa29e5b63d8fc74fc53a5b6a6b6eb51984864d5f54d3b563d49e903'
             '37f001e090f4e48fee05bddeaf54be47cabc75569b52f08429f0322c1c9cfccf7a3d146a687e92828efc469986c114d6433c10b1ce71974c0f416ab3686c1bef')
 
 validpgpkeys=(
