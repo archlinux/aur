@@ -1,7 +1,7 @@
 #Maintainer: Angel Dimov <cyfraka at protonmail dot com>
 pkgname=curseradio-git
 _pkgname=curseradio
-pkgver=1.1
+pkgver=1
 pkgrel=1
 pkgdesc="Command line radio player"
 arch=('any')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
