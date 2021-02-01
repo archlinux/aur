@@ -35,7 +35,7 @@ build() {
     -DHAVE_WAVE=0 \
     -DHAVE_SSE=1 \
     -DHAVE_SSE2=1 \
-    -DHAVE_SSE3_=1 \
+    -DHAVE_SSE3=1 \
     -DHAVE_SSE4_1=1 \
     -DHAVE_NEON=0 \
     -DHAVE_SOLARIS=0 \
