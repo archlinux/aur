@@ -1,43 +1,39 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS kio PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kio-git
-pkgver=v4.100.0.rc1.r3340.gcea57a5b
-pkgrel=2
+pkgver=5.79.0_r4527.g43a7867e
+pkgrel=1
 pkgdesc='Resource and network access abstraction'
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/frameworks/kio'
-license=('LGPL')
-depends=('kbookmarks-git' 'kjobwidgets-git' 'kwallet-git' 'solid-git' 'libxslt' 'desktop-file-utils')
-makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git' 'python')
-conflicts=(kio)
-provides=(kio)
-source=('git+https://github.com/KDE/kio.git')
-md5sums=('SKIP')
+arch=($CARCH)
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
+depends=(solid-git kjobwidgets-git kbookmarks-git libxslt kwallet-git ktextwidgets-git kded-git)
+makedepends=(git extra-cmake-modules-git kdoctools-git doxygen qt5-tools qt5-doc)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+optdepends=('kio-extras-git: extra protocols support (sftp, fish and more)' 'kdoctools-git: for the help kioslave'
+            'kio-fuse-git: to mount remote filesystems via FUSE')
+groups=(kf5-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  mkdir -p build
+  _ver="$(grep -m1 "set(KF5\?_VERSION" CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../kio \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_LIBEXECDIR=lib \
+  cmake -B build -S ${pkgname%-git} \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+    -DBUILD_QCH=ON
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
