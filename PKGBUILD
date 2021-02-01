@@ -1,42 +1,38 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS kwalletmanager PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: farseerfc <farseerfc@archlinuxcn.org>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kwalletmanager-git
-pkgver=r1111.c3d198c
+pkgver=21.03.70_r1167.g30c50ee
 pkgrel=1
 pkgdesc='Wallet management tool'
-arch=(i686 x86_64)
-url='http://www.kde.org/applications/system/kwalletmanager/'
+arch=($CARCH)
+url='https://www.kde.org/applications/system/kwalletmanager/'
 license=(LGPL)
-depends=(kdelibs4support hicolor-icon-theme)
-makedepends=(extra-cmake-modules git python kdoctools)
-conflicts=(kwalletmanager kdeutils-kwalletmanager)
-provides=(kwalletmanager)
-source=('git+https://github.com/KDE/kwalletmanager.git')
-install=$pkgname.install
-md5sums=('SKIP')
+depends=(kio-git hicolor-icon-theme)
+makedepends=(git extra-cmake-modules-git kcmutils-git kdoctools-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(kde-applications-git kde-utilities-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd kwalletmanager
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _major_ver="$(grep -m1 "set *(RELEASE_SERVICE_VERSION_MAJOR" CMakeLists.txt | cut -d '"' -f2)"
+  _minor_ver="$(grep -m1 "set *(RELEASE_SERVICE_VERSION_MINOR" CMakeLists.txt | cut -d '"' -f2)"
+  _micro_ver="$(grep -m1 "set *(RELEASE_SERVICE_VERSION_MICRO" CMakeLists.txt | cut -d '"' -f2)"
+  echo "${_major_ver}.${_minor_ver}.${_micro_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../kwalletmanager \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
+
