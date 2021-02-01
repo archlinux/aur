@@ -1,6 +1,6 @@
 pkgbase = linux-gc
 	pkgdesc = Linux
-	pkgver = 5.10.11
+	pkgver = 5.10.12
 	pkgrel = 1
 	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
@@ -16,27 +16,25 @@ pkgbase = linux-gc
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.11.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.11.tar.sign
-	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/2931af316b67879c7dab8f50eea7d834594fdd2e/trunk/config
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.12.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.12.tar.sign
+	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/67082d879b89cab49ac98ed061a5f6f6c51609c2/trunk/config
 	source = prjc_v5.10-r2.patch::https://gitlab.com/alfredchen/projectc/raw/master/5.10/prjc_v5.10-r2.patch
 	source = enable_additional_cpu_optimizations-20201113.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20201113.tar.gz
-	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=76210065989d67a539e7eb7a0224633f9a196269
-	source = 0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch::https://git.archlinux.org/linux.git/patch/?id=f5c62cc07e84aa6e5160f87819d6c20ca6a31d55
-	source = 0003-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch::https://git.archlinux.org/linux.git/patch/?id=e49ae96e07fd67ead7d61f9ef638d48198d0aa51
-	source = 0004-HID-wacom-Correct-NULL-dereference-on-AES-pen-proxim.patch::https://git.archlinux.org/linux.git/patch/?id=e22b808ce7b23f57aa13482ba000780578b4c70a
+	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=51b77e4f052b0717eaa69cfd9b62978da58d9d02
+	source = 0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch::https://git.archlinux.org/linux.git/patch/?id=af5906764eea0c609d9d0dfc2c9834c6b72c88e6
+	source = 0003-iwlwifi-provide-gso_type-to-GSO-packets.patch::https://git.archlinux.org/linux.git/patch/?id=545d6504ef3c786b8294ca2129111227a7bb6515
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
-	b2sums = f2ffb77efeab44e5ac74f275f1c728618a0893c752018946a3908a34dca2797982efb6646df1350f31c9cab2b780aca871dff82b63e2ec59e3bfcdafa0457581
+	b2sums = f5e16e92c9543708997d9dfee28feb2cd6e6909a33dc7f97c40b507a8d03bd72717b1af84bed3fa25b2a167652d8cd93b66d145d484e5ad292af24b3bf64a649
 	b2sums = SKIP
 	b2sums = 37df0c9fc2214da9e94f0fb38ddc9c1f5bcf6279cacf918166efc3a0a8a9433ee10a95232992a108944160cf020fc3c240ef2fb8023581dc9cac11f973d7985d
 	b2sums = 964457a55fe70988fcba968d2940d78d3daff5d1629863279ee15e07f8c1bb4e58e4d22b2cae9e66ab0c61c4d54de04e7a6eb2710eaaa536ec11f29efa961f1c
 	b2sums = 7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127
-	b2sums = d9f95a3d0e24c36b1b31ff6d8f662480f671f4ad2172eb84f14d5457f2a7ac8035fbe3ee3822d4473fdfe4e8372b09966e7d029c5aeb4a8dbd96a0134298fadd
-	b2sums = 67c2b4681f6b48b4825f5cd9f5d26d6d2f34c2f127f14afa3cadb497915c93413f735f013f67e2c4544d3c8f16693c934d6661ec0c5bd94dc90bd674811fe298
-	b2sums = 991ac7e69fafb7df4a85ebe580e764189d347930d4262a190520d0cb20f0b5320fb36f846ad89a36ce2e5ebd7a6eba5db57d9b6be37160ff82d4f1be60889fe6
-	b2sums = 46649e514be5e65d065f5fc7e8828796ade0afac540c40275a169bd7fa03ce4b959f66e429e6916524575dc4bd8015d4215d859b085d2d67de882f5ab4be483b
+	b2sums = f8fac5e630543adeb2b611bd20ae84a7b1a475f9bd22ede3561388c5146c4cb47923503a81f13c3bcf66ce40ef42dbf1c0e95454cdae1e454c4f95c85952edd0
+	b2sums = 068e2d89c95914868ed882939ef52e4037002ff01b8d1cf5a5d02716744dd3323b5fcdd68389eb1130cd236d67dfacf2f0aeb6e8defb9f8b295e2016f1130012
+	b2sums = 9b973fa8d55d9d68020f8d05458edfad2eea916ad0bbefcabf3e41a750aae8d9bb1c1c3820105bb785e050dd7a4343ab55c8bd97ab657520c17d2da3c18b7a99
 
 pkgname = linux-gc
 	pkgdesc = The Linux-gc kernel and modules with the Project C scheduler
