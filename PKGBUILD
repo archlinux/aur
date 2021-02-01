@@ -1,46 +1,37 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS ksystemlog PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: FadeMind <fademind@gmail.com>
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
-_pkgname=ksystemlog
-pkgname=${_pkgname}-git
-pkgver=.r475.0e1ad31
+pkgname=ksystemlog-git
+pkgver=21.03.70_r591.gcb5cf06
 pkgrel=1
-pkgdesc='KDE SystemLog Application. (GIT version)'
-arch=('i686' 'x86_64')
-url="https://projects.kde.org/projects/kde/kdeadmin/${_pkgname}"
-license=(GPL)
-depends=('kio')
-makedepends=('extra-cmake-modules' 'git' 'kdoctools' 'python')
-conflicts=('kdeadmin-ksystemlog' 'ksystemlog' 'ksystemlog-frameworks-git')
-provides=("${_pkgname}")
-source=('git+https://github.com/KDE/ksystemlog.git')
-sha1sums=('SKIP')
-install=${pkgname}.install
+pkgdesc='System log viewer tool'
+url='https://kde.org/applications/system/ksystemlog/'
+arch=($CARCH)
+license=(GPL LGPL FDL)
+groups=(kde-applications-git kde-system-git)
+depends=(kio-git)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd ${_pkgname}
-    _ver="$(cat src/main.cpp | grep -m2 QStringLiteral | tail -n1 | cut -d '"' -f6)"
-    echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    if [ -d build ] ; then
-        rm build -rf
-    fi
+  cd ${pkgname%-git}
+  _major_ver="$(grep -m1 "set *(RELEASE_SERVICE_VERSION_MAJOR" CMakeLists.txt | cut -d '"' -f2)"
+  _minor_ver="$(grep -m1 "set *(RELEASE_SERVICE_VERSION_MINOR" CMakeLists.txt | cut -d '"' -f2)"
+  _micro_ver="$(grep -m1 "set *(RELEASE_SERVICE_VERSION_MICRO" CMakeLists.txt | cut -d '"' -f2)"
+  echo "${_major_ver}.${_minor_ver}.${_micro_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-    mkdir build && cd build
-    cmake ../${_pkgname} \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DLIB_INSTALL_DIR=lib \
-        -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-        -DBUILD_TESTING=OFF
-    make
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-    make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }

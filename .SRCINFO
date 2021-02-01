@@ -1,23 +1,22 @@
 pkgbase = ksystemlog-git
-	pkgdesc = KDE SystemLog Application. (GIT version)
-	pkgver = .r475.0e1ad31
+	pkgdesc = System log viewer tool
+	pkgver = 21.03.70_r591.gcb5cf06
 	pkgrel = 1
-	url = https://projects.kde.org/projects/kde/kdeadmin/ksystemlog
-	install = ksystemlog-git.install
-	arch = i686
+	url = https://kde.org/applications/system/ksystemlog/
 	arch = x86_64
+	groups = kde-applications-git
+	groups = kde-system-git
 	license = GPL
-	makedepends = extra-cmake-modules
+	license = LGPL
+	license = FDL
 	makedepends = git
-	makedepends = kdoctools
-	makedepends = python
-	depends = kio
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	depends = kio-git
 	provides = ksystemlog
-	conflicts = kdeadmin-ksystemlog
 	conflicts = ksystemlog
-	conflicts = ksystemlog-frameworks-git
 	source = git+https://github.com/KDE/ksystemlog.git
-	sha1sums = SKIP
+	sha256sums = SKIP
 
 pkgname = ksystemlog-git
 
