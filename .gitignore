@@ -1,0 +1,4 @@
+*.iso
+*.pkg*
+src/
+pkg/

@@ -1,0 +1,13 @@
+pkgbase = ni-daqmx-base-bin
+	pkgdesc = a subset of NI-DAQmx functionality for your data acquisition system
+	pkgver = 15.0.0
+	pkgrel = 1
+	url = https://www.ni.com/en-gb/support/downloads/drivers/download.ni-daqmx-base.html#326057
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = ni-daqmx-base-bin-15.0.0.iso::https://download.ni.com/support/softlib/multifunction_daq/nidaqmxbase/15.0/linux/nidaqmxbase-15.0.0.iso
+	sha256sums = 594b1c07093be56fdfec783b224bd5db2c5509b95e0d30475dd5342b6efb97fa
+
+pkgname = ni-daqmx-base-bin
+
