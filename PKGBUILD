@@ -1,17 +1,17 @@
 _npmname=nativefier
-_npmver=42.2.0
+_npmver=42.2.1
 pkgname=nodejs-nativefier
 pkgver=$_npmver
 pkgrel=1
 pkgdesc="Wrap web apps natively"
 arch=(any)
-url="https://github.com/jiahaog/nativefier#readme"
+url="https://github.com/nativefier/nativefier#readme"
 license=('MIT')
 depends=('nodejs' 'unzip')
 makedepends=('jq' 'npm')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-sha1sums=('be4c66b86aa1f4c940b5d9dfe2cb64f3018793f6')
+sha1sums=('27af76f14baef9ae240aa093517b381bef668ea0')
 noextract=("$_npmname-$_npmver.tgz")
 
 package() {
