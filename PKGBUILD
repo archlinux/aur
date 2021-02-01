@@ -1,46 +1,37 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS kdialog PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Antonio Rojas <arojas@archlinux,org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdialog-git
-pkgver=.1145.0ff88bbab
+pkgver=21.03.70_r1167.gd1a5a9518
 pkgrel=1
-pkgdesc="KDialog can be used to show nice dialog boxes from shell scripts. (GIT version)"
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/kde/applications/kdialog'
-license=('LGPL')
-depends=('kio')
-makedepends=('extra-cmake-modules'
-             'git'
-             'python'
-             )
-conflicts=('kdebase-kdialog'
-           'kdialog'
-           )
-provides=('kdialog')
-source=('git+https://github.com/KDE/kdialog.git')
+pkgdesc="A utility for displaying dialog boxes from shell scripts"
+arch=($CARCH)
+url="https://www.kde.org/"
+license=(LGPL)
+depends=(kio-git)
+makedepends=(git extra-cmake-modules-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(kde-applications-git kde-utilities-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd kdialog
-  _ver="$(cat src/kdialog.cpp | grep -m1 'i18n( ' | sed 's|i18n|ixxn|g' | cut -d '"' -f2)"
-  echo "${_ver}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _major_ver="$(grep -m1 "set *(RELEASE_SERVICE_VERSION_MAJOR" CMakeLists.txt | cut -d '"' -f2)"
+  _minor_ver="$(grep -m1 "set *(RELEASE_SERVICE_VERSION_MINOR" CMakeLists.txt | cut -d '"' -f2)"
+  _micro_ver="$(grep -m1 "set *(RELEASE_SERVICE_VERSION_MICRO" CMakeLists.txt | cut -d '"' -f2)"
+  echo "${_major_ver}.${_minor_ver}.${_micro_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../kdialog \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+  cmake -B build -S ${pkgname%-git} \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
+
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
