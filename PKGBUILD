@@ -1,41 +1,35 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS kldap PKGBUILD by João, 2021/01/31 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
-_gitname=kldap
-pkgname=$_gitname-git
-pkgver=r728.0383348
+pkgname=kldap-git
+pkgver=5.16.44_r815.ge924400
 pkgrel=1
 pkgdesc="LDAP access API for KDE"
-arch=('i686' 'x86_64')
-url="https://projects.kde.org/projects/kde/pim/$_gitname"
-license=('LGPL')
-depends=('kcompletion' 'ki18n' 'kmbox-git')
-makedepends=('extra-cmake-modules-git' 'git' 'python')
-conflicts=("$_gitname")
-provides=("$_gitname")
-source=('git+https://github.com/KDE/kldap.git')
-md5sums=('SKIP')
+arch=($CARCH)
+url="https://kontact.kde.org"
+license=(LGPL)
+groups=(kdepim-git)
+depends=(kcompletion-git kwallet-git)
+optdepends=('kio-git: LDAP kio-gitslave')
+makedepends=(git extra-cmake-modules-git kio-git kdoctools-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(PIM_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../$_gitname \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
