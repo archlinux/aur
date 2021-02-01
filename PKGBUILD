@@ -1,6 +1,7 @@
 # Maintainer: Dustin Childers <dchilders@gmail.com>
+
 pkgname=berty-bin
-pkgver=2.251.3
+pkgver=2.254.0
 pkgrel=1
 pkgdesc="Berty is a secure peer-to-peer messaging app that works with or without internet access, cellular data or trust in the network"
 arch=('x86_64')
@@ -10,7 +11,7 @@ depends=('libglvnd')
 provides=('berty-bin')
 conflicts=('berty-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/berty/berty/releases/download/v${pkgver}/berty_Linux_x86_64.tar.gz")
-sha256sums=('608f1250fd3bfb8605303df4f7a095743f0839ca1169d0521b0fed33eeffe14d')
+sha256sums=('b3a8630f44e522a1959f9252e68524a0bdd062ed9c9f761f2557d504dc938046')
 
 package() {
 	install -Dm0644 "${srcdir}/berty_Linux_x86_64/LICENSE-APACHE" "${pkgdir}/usr/share/licenses/berty-bin/LICENSE-APACHE"
