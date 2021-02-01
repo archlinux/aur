@@ -6,7 +6,7 @@ _obsver=26.1.2
 pkgrel=1
 pkgdesc="obs-studio plugin, which adds a dvd screen saver source type"
 arch=('x86_64')
-url="https://github.com/WarmUpTill/SceneSwitcher"
+url="https://github.com/univrsal/dvds3"
 license=("GPL2")
 depends=("obs-studio")
 # Need to compile plugin in OBS compilation process
