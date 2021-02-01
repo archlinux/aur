@@ -1,19 +1,25 @@
 pkgbase = kwidgetsaddons-git
-	pkgdesc = KWidgetsAddons
-	pkgver = v4.100.0.rc1.r614.gaf8c544
-	pkgrel = 2
-	url = https://projects.kde.org/projects/frameworks/kwidgetsaddons
-	arch = i686
+	pkgdesc = Addons to QtWidgets
+	pkgver = 5.79.0_r771.gc7126c99
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
 	arch = x86_64
+	groups = kf5-git
 	license = LGPL
-	makedepends = extra-cmake-modules-git
 	makedepends = git
+	makedepends = extra-cmake-modules-git
 	makedepends = qt5-tools
+	makedepends = qt5-doc
+	makedepends = clang
+	makedepends = python-pyqt5
+	makedepends = doxygen
+	makedepends = sip4
 	depends = qt5-base
+	optdepends = python-pyqt5: for the Python bindings
 	provides = kwidgetsaddons
 	conflicts = kwidgetsaddons
 	source = git+https://github.com/KDE/kwidgetsaddons.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kwidgetsaddons-git
 
