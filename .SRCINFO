@@ -1,26 +1,24 @@
 pkgbase = kdeplasma-addons-git
 	pkgdesc = All kind of addons to improve your Plasma experience
-	pkgver = r8354.226c11956
+	pkgver = 5.21.80_r8454.g0ecdecaa4
 	pkgrel = 1
-	url = https://projects.kde.org/projects/kde/workspace/kdeplasma-addons
-	install = kdeplasma-addons-git.install
-	arch = i686
+	url = https://kde.org/plasma-desktop/
 	arch = x86_64
-	groups = plasma
+	groups = plasma-git
 	license = LGPL
-	makedepends = kdoctools-git
-	makedepends = extra-cmake-modules-git
 	makedepends = git
-	makedepends = purpose
-	makedepends = kross
+	makedepends = extra-cmake-modules-git
+	makedepends = kross-git
+	makedepends = qt5-webengine
 	depends = plasma-workspace-git
-	optdepends = purpose: quickshare applet
-	optdepends = kross: comic applet
+	optdepends = kross-git: comic applet
+	optdepends = purpose-git: Quickshare applet
 	optdepends = quota-tools: disk quota applet
+	optdepends = qt5-webengine: dictionary and webbrowser applets
 	provides = kdeplasma-addons
 	conflicts = kdeplasma-addons
 	source = git+https://github.com/KDE/kdeplasma-addons.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kdeplasma-addons-git
 

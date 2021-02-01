@@ -1,46 +1,40 @@
-# Maintainer: João Figueiredo <jf dot mundox at gmail dot com>
+# Merged with official ABS kdeplasma-addons PKGBUILD by João, 2021/02/01 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Stefano Avallone <stavallo@gmail.com>
 
 pkgname=kdeplasma-addons-git
-pkgver=r8354.226c11956
+pkgver=5.21.80_r8454.g0ecdecaa4
 pkgrel=1
-pkgdesc="All kind of addons to improve your Plasma experience"
-arch=(i686 x86_64)
-url='https://projects.kde.org/projects/kde/workspace/kdeplasma-addons'
+pkgdesc='All kind of addons to improve your Plasma experience'
+arch=($CARCH)
+url='https://kde.org/plasma-desktop/'
 license=(LGPL)
 depends=(plasma-workspace-git)
-makedepends=(kdoctools-git extra-cmake-modules-git git purpose kross)
-optdepends=('purpose: quickshare applet' 'kross: comic applet' 'quota-tools: disk quota applet')
-conflicts=(kdeplasma-addons)
-provides=(kdeplasma-addons)
-source=('git+https://github.com/KDE/kdeplasma-addons.git')
-groups=('plasma')
-md5sums=('SKIP')
-install=$pkgname.install
+makedepends=(git extra-cmake-modules-git kross-git qt5-webengine)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+optdepends=('kross-git: comic applet'
+            'purpose-git: Quickshare applet'
+            'quota-tools: disk quota applet'
+            'qt5-webengine: dictionary and webbrowser applets')
+groups=(plasma-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd kdeplasma-addons
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(PROJECT_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../kdeplasma-addons \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_LIBEXECDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON 
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
-
