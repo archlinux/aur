@@ -2,7 +2,7 @@
 
 pkgname=checkinstall
 pkgver=1.6.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Track files modified by an installation script and create a Slackware, RPM or Debian package"
 arch=('i686' 'x86_64')
 url="http://checkinstall.izto.org"
@@ -23,11 +23,11 @@ source=("http://checkinstall.izto.org/files/source/$pkgname-$pkgver.tar.gz"
         '0007-Added-summary-command-line-option.patch'
         '0008-Fixed-glibc-minor-version-handling.patch'
         '0009-Fixed-warning-about-uninitialized-variable-in-fopen-.patch'
-		'0010-Support-for-the-Makefile-PREFIX-variable.patch'
-		'0011-We-now-create-Slackware-packages-in-TMP_DIR.patch'
+        '0010-Support-for-the-Makefile-PREFIX-variable.patch'
+        '0011-We-now-create-Slackware-packages-in-TMP_DIR.patch'
         '0012-Fixed-bug-110.-create-localdecls-correctly-identifie.patch'
         '0013-Fixed-bug-23.-We-remove-empty-fields-from-the-Debian.patch'
-		'0014-Fixed-typo-in-create-localdecls.patch'
+        '0014-Fixed-typo-in-create-localdecls.patch'
         '0015-Fixed-bug-30.-Newlines-are-converted-to-underscores-.patch'
         '0016-Fixed-bug-38.-.spec-file-macro-processing.patch'
         '0017-Fixed-bug-112-make-install-fails-on-Fedora-21.patch'
@@ -112,7 +112,7 @@ build() {
 	make
 	# fix $pkgdir/usr
 	sed 's|INSTALLDIR=.*$|INSTALLDIR=/usr|' -i checkinstall
-	sed 's|PREFIX=${PREFIX:-.*}|PREFIX=${PREFIX:-/usr}|' -i installwatch
+	sed 's|PREFIX=${PREFIX:-.*}|PREFIX=${PREFIX:-/usr}|' -i installwatch/installwatch
 }
 
 package() {
