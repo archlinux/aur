@@ -53,7 +53,7 @@ depends=(
 install=dwm.install
 source=($pkgname-$pkgver.tar.gz::http://git.hackers.town/xj9/xjdwm/archive/$pkgver.tar.gz
 	dwm.desktop)
-sha256sums=('c96d68216bbfdd35705eaf4b4130c78644b5df2d80cbbf65dab5ab2304637ac1'
+sha256sums=('57e314a34d3d3c40a6bf31cd00758d6dd615e4755c35b6c7a0ff1d7523766395'
             'bc36426772e1471d6dd8c8aed91f288e16949e3463a9933fee6390ee0ccd3f81')
 
 prepare() {
