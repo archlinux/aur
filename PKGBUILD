@@ -2,7 +2,7 @@
 _pkgname=j2cli
 pkgname=python-${_pkgname}
 pkgver=0.3.12b
-pkgrel=2
+pkgrel=3
 pkgdesc="Command-line interface to Jinja2 for templating in shell scripts."
 url="https://github.com/kolypto/j2cli"
 license=("BSD")
