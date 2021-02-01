@@ -3,7 +3,7 @@
 pkgname=python-botoy
 _gitname=${pkgname#python-}
 pkgver=0.0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="OPQ/IOTQQ/IOTBot的一个Python开发助手"
 arch=('any')
 url="https://github.com/xiyaowong/botoy"
@@ -15,8 +15,6 @@ depends=('python-httpx'
          'python-loguru'
          'python-click'
          'python-aiohttp')
-conflicts=("${pkgname}-git")
-provides=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xiyaowong/botoy/archive/v${pkgver}.tar.gz")
 sha256sums=('76cbf89e7b42f11fee0b3ad92a2093dd2b34d956f18c85510165c377aab8bcac')
 
