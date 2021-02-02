@@ -1,7 +1,7 @@
 pkgbase = judoassistant
 	pkgdesc = Judo Tournament Software Suite
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://judoassistant.com
 	arch = i686
 	arch = x86_64

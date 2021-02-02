@@ -2,7 +2,7 @@
 
 pkgname=judoassistant
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Judo Tournament Software Suite"
 url="https://judoassistant.com"
 depends=('boost-libs' 'qt5-base' 'zstd' 'noto-fonts' 'openssl')
