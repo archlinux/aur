@@ -1,0 +1,19 @@
+pkgbase = mailimporter-git
+	pkgdesc = Mail importer library
+	pkgver = 5.16.40_r420.g62b09bf
+	pkgrel = 1
+	url = https://kontact.kde.org
+	arch = x86_64
+	groups = kdepim-git
+	license = LGPL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = boost
+	depends = pimcommon-git
+	provides = mailimporter
+	conflicts = mailimporter
+	source = git+https://github.com/KDE/mailimporter.git
+	sha256sums = SKIP
+
+pkgname = mailimporter-git
+
