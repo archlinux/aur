@@ -23,7 +23,7 @@ source=("$pkgname-$pkgver.zip::https://github.com/brave/brave-browser/releases/d
         "brave-browser-nightly.desktop")
 options=(!strip)
 sha512sums=('1cef93826626aa8ea0d0a6ee4b5cb9f514df446641e633124c80a9330c135b2cc16a55ddbe5276d28a2858fbc20cc47b4cd50c0219db831c02d1dd0178dfd851'
-            '25f894ce7ce85fb71346eaa3756e1078bb3f8a35f078f2c512bfaeaf86c541136c34b32e81cfb783997fc6a261c258daab85db9df60479b456047108fa3f7e31'
+            'SKIP'
             'd5ce90529c2b75357518ebde10e28e9d6f36efe21b705d7e48be07b1f320d739ef211c1bcc353aeefab3f27b7ba78793ebb74a204ac6c8efae855001b80de72a'
             'acf4f25ab54c346cfea9ca05e48308deb874728a8c2954d9b2f4239361d470ab0ad0cb98a177e3c33416785238b35c3ea3f230a4053c3d73f85fcdcc11432554')
 noextract=("$pkgname-$pkgver.zip")
