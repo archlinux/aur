@@ -1,0 +1,21 @@
+pkgbase = com.pscs6.deepin
+	pkgdesc = Photoshop CS 6 on Deepin Wine5
+	pkgver = 13.0
+	pkgrel = 3
+	url = https://www.adobe.com/products/photoshop.html
+	install = pscs6.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = deepin-wine5-stable>=5.0.0.19
+	depends = deepin-wine-helper>=5.1.16
+	depends = p7zip
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	optdepends = ttf-ms-fonts: Microsoft Core fonts
+	optdepends = noto-fonts-cjk: Google Noto CJK fonts
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.pscs6.deepin/com.pscs6.deepin_13.0deepin3_i386.deb
+	sha512sums = 7fac787a2e15c9b39d8727d7d0e77584c726a63a299f2698530f45ba5701f1c9a4e306615e0a162a6ce4a7be289e7b003ce0818b6f0af7ea9b97675d8ac140ab
+
+pkgname = com.pscs6.deepin
