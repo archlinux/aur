@@ -5,6 +5,7 @@ pkgbase = ruby-hiera-eyaml
 	url = https://github.com/voxpupuli/hiera-eyaml
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-optimist

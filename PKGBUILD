@@ -11,7 +11,7 @@ arch=(any)
 url='https://github.com/voxpupuli/hiera-eyaml'
 license=(MIT)
 depends=(ruby ruby-optimist ruby-highline)
-makedepends=(ruby-rdoc)
+makedepends=(git ruby-rdoc)
 options=(!emptydirs)
 source=(${_gemname}-${pkgver}::git+https://github.com/voxpupuli/hiera-eyaml?signed#commit=${_commit})
 noextract=($_gemname-$pkgver.gem)
