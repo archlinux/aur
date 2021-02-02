@@ -1,12 +1,13 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=arch-audit-git
-pkgver=0.1.14.r9.g857fd36
+pkgver=0.1.15.r58.g993b5b4
 pkgrel=1
 pkgdesc='A utility like pkg-audit based on Arch Security Team data'
 url='https://gitlab.com/ilpianista/arch-audit'
-depends=('curl')
-makedepends=('cargo' 'pkg-config' 'git')
+depends=('glibc' 'gcc-libs' 'curl' 'libcurl.so' 'libalpm.so')
+makedepends=('cargo' 'pkg-config' 'git' 'scdoc')
 provides=('arch-audit')
 conflicts=('arch-audit')
 arch=('i686' 'x86_64')
@@ -21,25 +22,25 @@ pkgver() {
 
 build() {
   cd arch-audit
-  cargo build --release
+  cargo build --release --locked
+}
+
+check() {
+  cd arch-audit
+  cargo test --release --locked
 }
 
 package() {
   cd arch-audit
-  install -Dm755 target/release/arch-audit "$pkgdir/usr/bin/arch-audit"
 
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  make DESTDIR="${pkgdir}" PREFIX=/usr install
 
-  install -Dm644 doc/arch-audit.1 "${pkgdir}/usr/share/man/man1/arch-audit.1"
+  install -Dm 644 contrib/systemd/arch-audit.service -t "${pkgdir}/usr/share/${pkgname}"
+  install -Dm 644 contrib/systemd/arch-audit.timer -t "${pkgdir}/usr/share/${pkgname}"
+  install -Dm 644 contrib/hooks/arch-audit.hook -t "${pkgdir}/usr/share/${pkgname}"
 
-  install -Dm644 systemd/arch-audit.service \
-    "${pkgdir}/usr/share/${pkgname}/arch-audit.service"
-  install -Dm644 systemd/arch-audit.timer \
-    "${pkgdir}/usr/share/${pkgname}/arch-audit.timer"
-
-  install -Dm644 completions/zsh/_arch-audit \
-    "${pkgdir}"/usr/share/zsh/site-functions/_arch-audit
-
-  install -Dm644 hooks/arch-audit.hook \
-    "${pkgdir}"/usr/share/${pkgname}/arch-audit.hook
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
+
+# vim: ts=2 sw=2 et:
