@@ -7,12 +7,15 @@ pkgrel=1
 arch=('any')
 url="https://github.com/beancount/beanprice"
 license=('GPL')
-depends=('beancount')
+depends=('beancount>=2.3.1' 'python-dateutil' 'python-requests')
+provides=('beanprice')
+conflicts=('beanprice-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/beancount/beanprice/archive/v${pkgver}.tar.gz")
 sha256sums=('78349ec9a0895507dad9dd659cee6d40ef0f01b5e64661df49c037d727b5952e')
 
 package () {
     cd "${pkgname}-${pkgver}"
     python setup.py install --prefix=/usr --root="${pkgdir}"
+    # Rename bean-price executable to avoid conflicts with beancount package
     mv "${pkgdir}/usr/bin/bean-price" "${pkgdir}/usr/bin/bean-price-standalone"
 }
