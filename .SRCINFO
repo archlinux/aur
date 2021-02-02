@@ -1,0 +1,18 @@
+pkgbase = kpkpass-git
+	pkgdesc = Apple Wallet Pass reader
+	pkgver = 5.16.40_r189.g0c6d8fa
+	pkgrel = 1
+	url = https://kontact.kde.org
+	arch = x86_64
+	groups = kdepim-git
+	license = LGPL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	depends = karchive-git
+	provides = kpkpass
+	conflicts = kpkpass
+	source = git+https://github.com/KDE/kpkpass.git
+	sha256sums = SKIP
+
+pkgname = kpkpass-git
+
