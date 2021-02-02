@@ -3,12 +3,12 @@
 _pkgbase='wgtools'
 pkgname="python-${_pkgbase}"
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Python bindings for wireguard-tools'
 arch=('any')
 url="https://github.com/conqp/${_pkgbase}"
 license=('GPLv3')
-depends=('python' 'python-setuptools')
+depends=('python' 'python-setuptools' 'wireguard-tools')
 makedepends=('git' 'python-setuptools-scm')
 source=("${_pkgbase}::git+${url}.git#tag=${pkgver}")
 sha256sums=('SKIP')
