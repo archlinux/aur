@@ -16,6 +16,7 @@ sha1sums=('bc21dc11a34b771b4a9808a0c35d9874d40fc07b')
 prepare() {
 	cd "$_pkgname-$pkgver"
 	
+	sed -i -e 's|www-data|http|g' 'nginx.conf'
 	sed -i -e 's|mime.types|h5bp/mime.types|g' 'h5bp/media_types/media_types.conf'
 }
 
