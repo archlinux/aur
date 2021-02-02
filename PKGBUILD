@@ -10,9 +10,9 @@
 # Contributor: Chris Cromer <chris@cromer.cl>
 
 pkgname=networkmanager-consolekit
-pkgver=1.28.1dev+7+g3f5df3cdc6
+pkgver=1.28.1dev+15+gaa2bc9e6e4
 pkgrel=1
-_pppver=2.4.7
+_pppver=2.4.8
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems and user applications"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL2.1')
@@ -38,7 +38,7 @@ conflicts=('networkmanager')
 backup=('etc/NetworkManager/NetworkManager.conf')
 groups=('gnome')
 install=networkmanager.install
-_commit=3f5df3cdc6c52a79f970c0a9de9200a18df6b3fb  # nm-1-28
+_commit=aa2bc9e6e404814469c0c661c47a712a262b2d4e  # nm-1-28
 source=(#https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
         "git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=$_commit"
         NetworkManager.conf
