@@ -3,7 +3,7 @@
 
 _gemname=rubyntlm
 pkgname=ruby-$_gemname
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='Ruby/NTLM library.'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('f62120e7663aff819f63c6e244018a359c8bb0e8')
+sha1sums=('bd7768d97c549f404a456830659a293084d7b22e')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
