@@ -1,16 +1,16 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wayfire-plugins-extra
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Additional plugins for Wayfire'
 url=https://wayfire.org
 arch=(x86_64)
 license=(custom:MIT)
 conflicts=("${pkgname}-git")
-depends=('wayfire>=0.6' cairo glibmm iio-sensor-proxy)
+depends=('wayfire>=0.7' cairo glibmm iio-sensor-proxy)
 makedepends=(meson ninja glm)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/WayfireWM/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=(d1ac42c0b2d212a7523f2aeb63285ab8b95ffb6efd564bf27877310eeab1ab0e)
+source=("https://github.com/WayfireWM/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha256sums=(01dcb040ced5509cf8f8a1f46dba6f61b613209b76b82550906140266c4921eb)
 
 build () {
 	rm -rf build
