@@ -1,14 +1,14 @@
 pkgbase = ocaml-graphics
 	pkgdesc = Graphics library from OCaml
-	pkgver = 5.1.0
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = https://github.com/ocaml/graphics
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = dune
 	depends = ocaml>=4.0.9
-	source = https://github.com/ocaml/graphics/archive/5.1.0.tar.gz
-	sha256sums = 132e0597f42b11ef5d9b0a523fee2edab7c55efd9c3f198d5574349b4595fafb
+	source = https://github.com/ocaml/graphics/archive/5.1.1.tar.gz
+	sha256sums = dbef15667cdab65672c60739d5e51ff4341b9595fbc6e39003368637b5915240
 
 pkgname = ocaml-graphics
 
