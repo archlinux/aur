@@ -1,18 +1,18 @@
 # Maintainer:  Andrew O'Neill <andrew at meanjollies dot com>
 
 pkgname=crate
-pkgver=4.3.4
+pkgver=4.4.0
 pkgrel=1
 pkgdesc='Shared nothing, fully searchable, document oriented cluster datastore'
 arch=('x86_64')
 url='https://crate.io'
 license=('custom:APACHE')
-depends=('java-runtime>=11' 'python')
+depends=('python')
 install='crate.install'
 source=("https://cdn.crate.io/downloads/releases/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.service"
         "${pkgname}.env")
-sha256sums=('e0f52314b4a906ad90241f2204725920e04e6dd4a6d2e4f2c0edbafc1c2d9246'
+sha256sums=('92d81d258e0077239bb5ca0215e4b7ee122a87402ae2ae064263d07404293041'
             '04b36b561498332b1b569e49b42d0bedf04141de07b7b16ff1b06072673cfd21'
             '6182b8d527d52de4fc80023827518b2e8d873afdda873ef6bd2ed92b91982f75')
 
@@ -26,7 +26,7 @@ package() {
   install -dm755 "${pkgdir}/etc/${pkgname}/"
   install -dm755 "${pkgdir}/var/log/${pkgname}/"
   install -dm755 "${pkgdir}/usr/share/${pkgname}/"
-  cp -R bin lib logs plugins "${pkgdir}/usr/share/${pkgname}/"
+  cp -R bin config jdk lib logs plugins "${pkgdir}/usr/share/${pkgname}/"
 
   cp config/* "${pkgdir}/etc/${pkgname}"
 
