@@ -1,8 +1,9 @@
 # Maintainer: Mathias Buhr <napcode@apparatus.de>
 
+DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 pkgname=tony
 pkgver=2.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Tony: a tool for melody transcription"
 arch=('x86_64')
 url="https://www.sonicvisualiser.org/tony/"
