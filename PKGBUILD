@@ -3,7 +3,7 @@
 
 pkgname=brave-nightly-bin
 pkgver=1.21.39
-pkgrel=1
+pkgrel=2
 pkgdesc='Web browser that blocks ads and trackers by default (nightly binary release).'
 arch=('x86_64')
 url='https://brave.com/download-nightly'
@@ -15,7 +15,7 @@ optdepends=('cups: Printer support'
             'libglvnd: Support multiple different OpenGL drivers at any given time'
 	    'libgnome-keyring: gnome keyriung support')
 provides=("${pkgname}" 'brave-nightly-browser')
-conflicts=("${pkgname}" 'brave-bin')
+conflicts=("${pkgname}")
 source=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-nightly_${pkgver}_amd64.deb"
         'MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt'
         "$pkgname.sh")
