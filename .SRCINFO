@@ -1,6 +1,6 @@
 pkgbase = deemix
 	pkgdesc = A deezer downloader built from the ashes of Deezloader Remix
-	pkgver = 2.0.13
+	pkgver = 2.0.15
 	pkgrel = 1
 	url = https://git.rip/RemixDev/deemix
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = deemix
 	depends = python-spotipy
 	depends = python-eventlet
 	depends = python-deezer-py
-	source = https://git.rip/RemixDev/deemix/-/archive/main/deemix-main-2c9ed02394f66bf97e74d35e3fe02d0fbb2fd2fe.tar.gz
-	sha512sums = 83cba73b9518ab62dcb909f8a44359891410340b9d5e92a2700e2de7d6dbd823df79d138571037a4b45f4e18f5d02f4f809cd7dfe3b1790f640d872cc8fc0754
+	source = https://git.rip/RemixDev/deemix/-/archive/main/deemix-main-0814a17600c9807119f04b256e80ff5866fac04b.tar.gz
+	sha512sums = f8b32242b11e4bfbb261009da586a0d740c83eaeff9365dd8d10861daf4fce7b3e7d6a56be96c1beeb96fc98c44a791d3f896527104d0fa30301d974740a64ab
 
 pkgname = deemix
 

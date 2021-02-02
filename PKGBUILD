@@ -1,8 +1,8 @@
 # Maintainer: Vyacheslav Konovalov <f4f7l1hvr@relay.firefox.com>
 
-_commit=2c9ed02394f66bf97e74d35e3fe02d0fbb2fd2fe
+_commit=0814a17600c9807119f04b256e80ff5866fac04b
 pkgname=deemix
-pkgver=2.0.13
+pkgver=2.0.15
 pkgrel=1
 pkgdesc='A deezer downloader built from the ashes of Deezloader Remix'
 arch=(any)
@@ -14,7 +14,7 @@ depends=(
 )
 makedepends=('python-setuptools')
 source=("https://git.rip/RemixDev/deemix/-/archive/main/deemix-main-$_commit.tar.gz")
-sha512sums=('83cba73b9518ab62dcb909f8a44359891410340b9d5e92a2700e2de7d6dbd823df79d138571037a4b45f4e18f5d02f4f809cd7dfe3b1790f640d872cc8fc0754')
+sha512sums=('f8b32242b11e4bfbb261009da586a0d740c83eaeff9365dd8d10861daf4fce7b3e7d6a56be96c1beeb96fc98c44a791d3f896527104d0fa30301d974740a64ab')
 _src=deemix-main-$_commit
 
 pkgver() {
