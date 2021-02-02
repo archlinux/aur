@@ -1,7 +1,7 @@
 # Maintainer: Kasei Wang <kasei@kasei.im>
 
 pkgname=quiche
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='an implementation of the QUIC transport protocol and HTTP/3 as specified by the IETF'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('cmake' 'git' 'go' 'rust')
 source=("https://github.com/cloudflare/$pkgname/archive/$pkgver.tar.gz"
 		"git+https://boringssl.googlesource.com/boringssl#commit=597b810379e126ae05d32c1d94b1a9464385acd0")
-sha256sums=('2cab5afdb7d30d5f3478c092d8a249dc3b8706a6796bfd26e52ef4ef59580158'
+sha256sums=('5522975c59f03c3097fbd8e5f286046a1c09f4d0f881a62e8a39beebdcff81db'
             'SKIP')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491')
 
