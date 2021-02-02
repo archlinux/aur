@@ -1,16 +1,17 @@
 # Maintainer: Kristóf Marussy <kris7topher at gmail dot com>
+# Maintainer: PixlOne <pixlone@pm.me>
 # Contributor: Afnan Enayet <afnan@afnan.io>
 
 pkgname=logiops-git
 _pkgname="logiops"
 _gitpkgname="logiops"
-pkgver=r152.0928b39
+pkgver=r206.a0687c8
 pkgrel=1
 pkgdesc="An unofficial driver for Logitech HID++>2.0 mice and keyboard"
 arch=('x86_64')
 url="https://github.com/PixlOne/$_gitpkgname"
 license=('GPL3')
-depends=('libevdev' 'systemd-libs' 'libconfig')
+depends=('libevdev' 'systemd' 'libconfig')
 makedepends=('git' 'cmake')
 conflicts=("${_pkgname-*}")
 provides=("${_pkgname-*}")
