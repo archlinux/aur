@@ -2,9 +2,11 @@
 # Contributor: Theo Tosini <theo.tosini@theoduino.me>
 # Contributor: Gábor Sebestyén <segabor@gmail.com>
 # Contributor: Andrew Sun <adsun701@gmail.com>
+# Contributor: fanjiang <prof.fan@foxmail.com>
+
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.12.23.a.r21.g949b0c0cc36
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2021.01.27.a.r1529.gd1c7a00cc8f
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -65,12 +67,12 @@ md5sums=(
 )
 
 
-# By default makepkg runs strip on binaries. This seems to cause issues with the Swift REPL.
-# Disable it in the PKGBUILD with:
-# from https://github.com/RLovelett/swift-aur/blob/master/PKGBUILD, not sure if necessary
+# By default makepkg runs strip on binaries. This causes issues with the Swift REPL.
+# from https://github.com/RLovelett/swift-aur/blob/master/PKGBUILD
 # termux had no trouble up to now, strip all executables and shared objects:
 # https://github.com/termux/termux-packages/blob/master/scripts/build/termux_step_massage.sh#L24
-#options=(!strip)
+# would be cool to not strip only the ones which really are necessary, but how?
+options=(!strip)
 
 prepare () {
     ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-pachtes.patch" )
