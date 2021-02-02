@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 362427 2018-07-19 17:42:59Z arojas $
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Kevin Dodd <jesin00@gmail.com>
 # Contributor: Tianjiao Yin <ytj000@gmail.com>
