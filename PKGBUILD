@@ -1,8 +1,8 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-g3-kpe
-pkgver=0.2
-pkgrel=1
+pkgver=1.0
+pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
 arch=('x86_64')
 license=('MPL')
@@ -13,7 +13,7 @@ makedepends=('unzip' 'zip' 'diffutils' 'python' 'yasm' 'mesa' 'imake' 'inetutils
              'autoconf2.13' 'rust' 'clang' 'llvm' 'libpulse' 'alsa-lib' 'jack' 'cbindgen' 'nasm' 'python-setuptools'
              'nodejs' 'python-psutil' 'binutils' 'git')
 options=('!emptydirs' '!makeflags' 'zipman')
-_filesrev=316da3b941c6c1b54afff9806a3c93ea4a2dad48
+_filesrev=e0d8363e58ed288cd10caabb34c1ce153262e045
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-g3-kpe
 _commit=11befa20d8c009ee5eaeb44bb3b586de9390bfcd
 #"git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
@@ -28,9 +28,7 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G3.$pkgver"
         "mozilla-ntlm-full-path.patch::$_filesurl/patches/mozilla-ntlm-full-path.patch"
         "Use-remoting-name-for-GDK-application-names.patch::$_filesurl/patches/Use-remoting-name-for-GDK-application-names.patch"
         "sandbox-fips.patch::$_filesurl/patches/sandbox-fips.patch"
-        "rust_1.48.patch::$_filesurl/patches/rust_1.48.patch"
         "remoting-name.patch::$_filesurl/patches/remoting-name.patch"
-        "cbindgen16.patch::$_filesurl/patches/cbindgen16.patch"
         )
 sha256sums=('SKIP'
             '6d37d08ee522173057918de8ad8394ba62b61a38c102cb03439d257a93e4b4a6'
@@ -38,14 +36,12 @@ sha256sums=('SKIP'
             'b9458af82a1e67497f1a42b69cb69b7a86a87727c35004a4089d207d10c7c2b4'
             'e48f932041ac826be48567d090a246bd897744262acca4dc07915abdc9a3e6b9'
             '0120e01edb0bf3d42f4e0280345f2c44372b097739cd2ddb85fa69bb2233ebab'
-            '929865788394227c8202bd705b7171e8da3aedbcab1fa18d3d563811735a0ba3'
+            '9b0c34bdbfc440d585039bc357d39fca5703328a0907a49da355360abb669ff7'
             'd8c2c30217b5bc9fbef8f6ca7540a4d8fdacc128c1c0a62226c8f4c287688597'
             '25846888b48208606ff88c04dc8b9cb5b1a9c433adfd2d72ce13b6b9edc73a87'
             '71386c2e269bd021c3b8c86b457101bdb730f76db3f2bbb91bf617109564a09c'
             '809c7dea066cb2ba70fb1c16c1b3dcd69c7e7715f354daf2f1c67af757e6d47b'
-            '755e3e851ff550feaf279d8b3922a03c8d7e1ec78484eec1495b07fc243a3107'
-            'ac5199b397d1fef75d952eedbedcf3806b12f86b64ea29e5b34b541b0cfbe761'
-            'ea348e96620d6ba10f3d41fbb18def98847b6172b0028aacc26f099f47727796')
+            'ac5199b397d1fef75d952eedbedcf3806b12f86b64ea29e5b34b541b0cfbe761')
 
 prepare() {
 
@@ -57,11 +53,7 @@ prepare() {
   patch -Np1 -i ../mozilla-ntlm-full-path.patch
   patch -Np1 -i ../Use-remoting-name-for-GDK-application-names.patch
   patch -Np1 -i ../sandbox-fips.patch
-  patch -Np1 -i ../rust_1.48.patch
   patch -Np1 -i ../remoting-name.patch
-
-  # See https://bugzilla.mozilla.org/show_bug.cgi?id=1684180
-  patch -Np1 -i ../cbindgen16.patch
 
   cat >../mozconfig <<END
 export CC=clang
