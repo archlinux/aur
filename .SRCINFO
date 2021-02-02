@@ -1,0 +1,19 @@
+pkgbase = microxml-git
+	pkgdesc = Small XML parsing library
+	pkgver = r3.80a1516
+	pkgrel = 1
+	url = https://github.com/pivasoftware/microxml
+	arch = any
+	license = LGPL2
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	provides = libmicroxml
+	provides = microxml
+	conflicts = libmicroxml
+	conflicts = microxml
+	source = git+https://github.com/pivasoftware/microxml.git
+	md5sums = SKIP
+
+pkgname = microxml-git
+
