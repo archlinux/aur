@@ -4,7 +4,7 @@
 
 pkgname=pulseeffects-legacy
 pkgver=4.8.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Audio Effects for Pulseaudio Applications, without pipewire"
 arch=($CARCH)
 url='https://github.com/wwmm/pulseeffects'
@@ -29,16 +29,10 @@ prepare() {
 }
 
 build() {
-  mkdir -p ${pkgname%-*}-$pkgver/build
-  cd ${pkgname%-*}-$pkgver/build
-
-  arch-meson ..
-
-  ninja
+  arch-meson ${pkgname%-*}-$pkgver build
+  ninja -C build
 }
 
 package() {
-  cd ${pkgname%-*}-$pkgver/build
-
-  DESTDIR="$pkgdir" ninja install
+  DESTDIR="$pkgdir" ninja install -C build
 }
