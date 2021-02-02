@@ -19,6 +19,7 @@ pkgbase = swift-language
 	depends = libbsd
 	depends = ncurses
 	provides = swift-language
+	options = !strip
 	source = git+https://github.com/apple/swift#tag=swift-DEVELOPMENT-SNAPSHOT-2020-12-23-a
 	source = cmark::git+https://github.com/apple/swift-cmark#tag=swift-DEVELOPMENT-SNAPSHOT-2020-12-23-a
 	source = llbuild::git+https://github.com/apple/swift-llbuild#tag=swift-DEVELOPMENT-SNAPSHOT-2020-12-23-a
