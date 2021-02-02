@@ -1,17 +1,16 @@
 pkgbase = emulicious-bin
-	pkgdesc = Game Boy, Game Boy Color, Master System, Game Gear and MSX emulator with C-level debug capabilties
+	pkgdesc = Game Boy, Game Boy Color, Master System, Game Gear and MSX emulator
 	pkgver = 2021.01.30
 	pkgrel = 2
 	url = https://emulicious.net
 	arch = any
 	license = custom,
 	license = BSD
+	makedepends = gendesk
 	depends = java-environment
 	source = emulicious-bin-2021.01.30.zip::https://emulicious.net/download/emulicious/?wpdmdl=205
 	source = emulicious.sh
-	source = emulicious.desktop
 	sha256sums = fbe0ac99dae07c19123ecfacca6100a1dc97a9344133a3caa9ab75616892100f
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = emulicious-bin
