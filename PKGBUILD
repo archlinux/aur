@@ -3,12 +3,12 @@
 
 pkgname=kdepim-addons-git
 pkgver=5.16.40_r3981.g139fef08
-pkgrel=1
+pkgrel=2
 pkgdesc='Addons for KDE PIM applications'
 arch=($CARCH)
 url='https://kontact.kde.org'
 license=(GPL LGPL FDL)
-depends=(incidenceeditor-git ktnef-git libksieve-git akonadi-import-wizard-git popplerkitinerary-git kontactinterface-git discount)
+depends=(incidenceeditor-git ktnef-git libksieve-git akonadi-import-wizard-git poppler-qt5 kitinerary-git kontactinterface-git discount)
 makedepends=(git extra-cmake-modules-git kdoctools-git boost)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
