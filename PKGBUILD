@@ -27,6 +27,9 @@ source=(
 sha256sums=('cf307fee4be224223ed8cf5af5e8708960683564cd05c53108fa3c382c029a0e'
             '1ee9f02842e6c2c8c79c48b2e932074f9c213a8eb4238e5e63f20438562fecbb')
 
+# https://wiki.archlinux.org/index.php/Nonfree_applications_package_guidelines#Custom_DLAGENTS
+DLAGENTS=("http::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
+
 package() {
   cd ${srcdir}
   optdir='opt/netease/netease-cloud-music'
