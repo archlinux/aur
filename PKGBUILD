@@ -1,9 +1,9 @@
 # Maintainer: Patrick Drechsler <socialcoding at pdrechsler dot de>
 
 pkgname=mobsh
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="Swift git handover"
+pkgdesc="Smooth git handover during remote mob programming"
 arch=('x86_64')
 url="https://github.com/remotemobprogramming/mob"
 license=('MIT')
@@ -14,7 +14,7 @@ makedepends=('go')
 provides=('mobsh')
 conflicts=('mobsh' 'mob')
 source=("$url/archive/v${pkgver}.tar.gz")
-sha256sums=('4e65f2eef137c782a0c5bd7cba39c44f0dd322af3b1d0b3723f3938de3ab1646')
+sha256sums=('bfbcb6a865a26b4eb94ebaec4a0a9adeceefe42e2210cf3d8fe6d4267ee46c79')
 
 prepare(){
   cd "mob-$pkgver"

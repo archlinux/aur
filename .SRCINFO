@@ -1,6 +1,6 @@
 pkgbase = mobsh
-	pkgdesc = Swift git handover
-	pkgver = 1.1.0
+	pkgdesc = Smooth git handover during remote mob programming
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/remotemobprogramming/mob
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = mobsh
 	provides = mobsh
 	conflicts = mobsh
 	conflicts = mob
-	source = https://github.com/remotemobprogramming/mob/archive/v1.1.0.tar.gz
-	sha256sums = 4e65f2eef137c782a0c5bd7cba39c44f0dd322af3b1d0b3723f3938de3ab1646
+	source = https://github.com/remotemobprogramming/mob/archive/v1.2.0.tar.gz
+	sha256sums = bfbcb6a865a26b4eb94ebaec4a0a9adeceefe42e2210cf3d8fe6d4267ee46c79
 
 pkgname = mobsh
 
