@@ -1,40 +1,37 @@
-# Maintainer:
+# Maintainer: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Sergey Shatunov <me@prok.pw>
 
-pkgname=nginx-mainline-mod-http-xslt-filter
-pkgver=1.17.10
-pkgrel=1
+# Based on nginx-mod-http-xslt-filter AUR package.
 
-_modname="${pkgname#nginx-mainline-mod-}"
-
-pkgdesc='HTTP XSLT module for the Nginx mainline web server'
-arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+pkgname='nginx-mainline-mod-http-xslt-filter'
+#pkgver=$(pacman -Si nginx-mainline-src | sed -nE 's/^Version *: ([[:alnum:]._]+).*$/\1/p')
+pkgver=1.19.6
+#pkgrel=$(pacman -Si nginx-mainline-src | sed -nE 's/^Version *: [^-]+-(.*)$/\1/p')
+pkgrel=2
+pkgdesc="HTTP XSLT module for the Nginx mainline web server"
+arch=('x86_64')
+url='https://nginx.org/en/docs/http/ngx_http_xslt_module.html'
+license=('custom:BSD-2-Clause')
 depends=('nginx-mainline' 'libxslt')
-url="https://nginx.org"
-license=('custom')
+makedepends=('nginx-mainline-src')
 
-source=(https://nginx.org/download/nginx-$pkgver.tar.gz{,.asc}
-)
-
-validpgpkeys=(
-	'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
-)
-
-sha256sums=('a9aa73f19c352a6b166d78e2a664bb3ef1295bbe6d3cc5aa7404bd4664ab4b83'
-            'SKIP')
+prepare() {
+  cp -r /usr/src/nginx/ ./
+}
 
 build() {
-	cd "$srcdir"/nginx-$pkgver
-	opts=$(nginx -V 2>&1 | grep 'configure arguments' | sed -r 's@^[^:]+: @@')
-	IFS=$'\n' opts=( $(xargs -n1 <<< "$opts") )
-	./configure "${opts[@]}" --with-http_xslt_module=dynamic
-	make modules
+  cd nginx
+  _options=$(nginx -V |&
+             sed -nE 's/^configure arguments: ([^\n]*)$/\1/p' |
+             sed -nE 's/([^'"'"' \t\n]+('"'"'([^'"'"'\]|\\'"'"'?)*'"'"'|"([^"\\]|\\"?)*")?) ?/\1\n/gp')
+  IFS=$'\n' xargs ./configure --with-http_xslt_module=dynamic <<< ${_options[@]}
+  make modules
 }
 
 package() {
-	cd "$srcdir"/nginx-$pkgver/objs
-	for mod in *.so; do
-		install -Dm755 $mod "$pkgdir"/usr/lib/nginx/modules/$mod
-	done
+  cd "nginx/objs"
+  for f in *.so; do install -Dm644 "$f" "$pkgdir/usr/lib/nginx/modules/$f"; done
+  install -dm755 "$pkgdir/usr/share/licenses/"
+  ln -s /usr/share/licenses/nginx/ "$pkgdir/usr/share/licenses/$pkgname"
 }
