@@ -8,14 +8,14 @@
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
 pkgver=9.3.beta6.r0.g13b40902a9
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
 url="http://www.sagemath.org"
 license=(GPL)
 depends=(ipython palp brial cliquer maxima-ecl gfan sympow nauty python-rpy2 python-fpylll python-psutil python-cypari2
   python-matplotlib python-scipy python-sympy python-networkx python-pillow python-pplpy python-sphinx
-  gap flintqs lcalc lrcalc arb eclib zn_poly gd python-cvxopt pynac linbox m4rie pari-galdata pari-seadata-small planarity rankwidth tachyon
+  gap flintqs lcalc lrcalc1 arb eclib zn_poly gd python-cvxopt pynac linbox m4rie pari-galdata pari-seadata-small planarity rankwidth tachyon
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials
   iml libgiac libhomfly libbraiding symmetrica threejs-sage)
 optdepends=('cython: to compile cython code' 'python-pkgconfig: to compile cython code'
@@ -69,8 +69,6 @@ prepare(){
   patch -p1 -i ../test-optional.patch
 # use correct latte-count binary name
   patch -p1 -i ../latte-count.patch
-# Fix mathjax path
-  sed -e 's|mathjax|mathjax2|g' -i src/sage/env.py
 }
 
 build() {
