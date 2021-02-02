@@ -12,7 +12,7 @@ Quick Setup:
   section and the auth server.
 
 3. Generate the registration:
- sudo mautrix-facebook -g -c /etc/synapse/mautrix-facebook/config.yaml \
+ sudo python -m mautrix-facebook -g -c /etc/synapse/mautrix-facebook/config.yaml \
 	  -r /etc/synapse/mautrix-facebook/registration.yaml
 
 4. Add the registration file to Synapse's homeserver.yaml:

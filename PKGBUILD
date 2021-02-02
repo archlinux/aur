@@ -3,7 +3,7 @@
 _pkgbase=mautrix-facebook
 pkgname=${_pkgbase}-git
 pkgver=r447.19e9e20
-pkgrel=0
+pkgrel=1
 pkgdesc="A double puppeting Facebook bridge with multi-user support for Hangouts"
 arch=(any)
 conflicts=(mautrix-facebook)
@@ -23,6 +23,8 @@ depends=(python
 	     python-yaml
 	     python-idna
 	     python-future
+	     python-pycrypto
+	     python-asyncpg
 	     sudo
 	    )
 makedepends=(git)
@@ -36,11 +38,11 @@ source=("${_pkgbase}::git+https://github.com/tulir/${_pkgbase}"
 	    "${_pkgbase}.service")
 sha256sums=('SKIP'
             '637a4d95fb551394133562b3be27cc7c2d1d5893096e33c9df86f22697fb087d'
-            '881c2f6a8c4c74be6277bc0ec689b17623bbe08939bde9187ab04ed71e55c447'
+            '4e7cad7b07af957fb85cc45faeee12b6ff78c7a731306984449699c300b94054'
             '793016de273d6dc0a2fdfd1090942aa2ec3cc75c0cad333ed231bb8561fddfd0'
             'd981fb6fef944b83a4089683075ab2ae1cf095a6814e4d3bdce500d3309cb617'
             '9e7d00ea24067447fde0f3c4c08ea70760db85975d93496ed82f597cd8c863d6'
-            'c9a5e4b4cbe9ea6cc5957ab7352e247daefa53cb90d340083553ea7170f72ee4')
+            '76da1de365d5df8f85c90050fc8485b64c4275caa6762326ed3deebb045396a3')
 
 pkgver() {
   cd "$srcdir/${_pkgbase}"
