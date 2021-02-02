@@ -2,26 +2,25 @@
 # Co-Maintainer: Felix Golatofski <contact@xdfr.de>
 
 pkgname=bisq
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('any')
 url="https://bisq.network"
 license=('AGPL3')
 depends=('jdk11-openjdk' 'bash')
-makedepends=('git' 'git-lfs' 'jdk11-openjdk')
-source=("bisq.desktop")
-sha256sums=('687d643fbe84660c3ebfe6270de98214f2e3ea791cb1d07d96d7ed889d61d406')
+makedepends=('jdk11-openjdk')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/bisq-network/bisq/archive/v${pkgver}.tar.gz"
+	"https://github.com/bisq-network/bisq/releases/download/v${pkgver}/bisq-${pkgver}.tar.gz.asc"
+	"bisq.desktop")
+sha256sums=('e3c8639fdccf845a463fc9799ecb9b7e16ae6abe49dc322bf12829a5851e70cf'
+            '1eec1ef86fdd8c99f849b71bd072e71bddb2e934f6581eebed582336d600db2c'
+            '687d643fbe84660c3ebfe6270de98214f2e3ea791cb1d07d96d7ed889d61d406')
+validpgpkeys=('CB36D7D2EBB2E35D9B75500BCD5DC1C529CDFD3B') # Christoph Atteneder
 
 _binname=Bisq
 conflicts=("bisq-bin" "bisq-git")
 provides=("bisq")
-
-prepare() {
-  git lfs install
-  rm -rf "${srcdir}/${pkgname}-${pkgver}"
-  git clone --depth=1 --branch=v${pkgver} https://github.com/bisq-network/bisq.git ${pkgname}-${pkgver}
-}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}" || exit
