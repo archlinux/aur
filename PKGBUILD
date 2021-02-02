@@ -3,7 +3,7 @@
 
 pkgname=aocc
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD Optimizing C/C++ Compiler"
 arch=('x86_64')
 license=('custom')
@@ -33,8 +33,6 @@ package() {
 
 	# Cleanup
 	rm ${srcdir}/${pkgname}-compiler-${pkgver}/install.sh
-	# amdlibm seems to be an outdated version in aocc, use recent one from from aocl
-	find ${srcdir}/${pkgname}-compiler-${pkgver}/lib/ -name "*amdlibm*" -delete
 
 	cp -r ${srcdir}/${pkgname}-compiler-${pkgver}/* ${prefix}
 
