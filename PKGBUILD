@@ -2,7 +2,7 @@
 pkgname=obs-audio-monitor
 pkgver=0.2.0
 _obsver=26.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for OBS Studio to add Audio Monitor dock and filter"
 arch=('x86_64')
 url="https://github.com/exeldro/obs-audio-monitor"
@@ -16,11 +16,13 @@ makedepends=(
 )
 source=(
   "$pkgname-$pkgver::git+https://github.com/exeldro/obs-audio-monitor#commit=31b7586f9bd58013f2674e3305cf7a462114dd1f"
+  "add_pulse.patch::https://patch-diff.githubusercontent.com/raw/exeldro/obs-audio-monitor/pull/5.patch"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
   "fix_python_binary_loading.patch"
 )
 sha256sums=(
   'SKIP'
+  '30d470bb2e64ae255c88d689ca51eee19eee17f8e2a2b1d1391fe516adf8ce2d'
   'bc8b4c61ba4aae87b70c589a6a5b8538e4f03121b31e9b98a2071d9f6006b897'
   'bdfbd062f080bc925588aec1989bb1df34bf779cc2fc08ac27236679cf612abd'
 )
@@ -32,9 +34,8 @@ prepare() {
   cd UI/frontend-plugins
   cp -r "$srcdir/$pkgname-$pkgver" .
   echo "add_subdirectory($pkgname-$pkgver)" | tee -a CMakeLists.txt >/dev/null
-  # add pulse
   cd "$pkgname-$pkgver"
-  git cherry-pick --no-commit 691a0447227ac82737d321889ee741ee411af7c5
+  patch -Np1 < "$srcdir"/add_pulse.patch
 }
 
 # Need to compile plugin in OBS compilation process
