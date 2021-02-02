@@ -1,8 +1,8 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-libheif
-pkgver=1.10.0
-pkgrel=2
+pkgver=1.11.0
+pkgrel=1
 pkgdesc="HEIF file format decoder and encoder. (mingw-w64)"
 url="https://github.com/strukturag/libheif"
 license=("LGPL")
@@ -18,7 +18,7 @@ arch=("any")
 options=(!strip !buildflags staticlibs)
 optdepends=()
 sha256sums=(
-	"317a44bf157ba297638ab5a258040ef6ec4895d620cd58f52195f3f89c9eea28"
+	"993c3320e179b8fdce983e3a7e96615af3830077be6b0ab28bfa25579df08d26"
 )
 source=(
 	"https://github.com/strukturag/libheif/archive/v${pkgver}.tar.gz"
@@ -27,7 +27,7 @@ source=(
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
-	_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE="-O2 -DNDEBUG" -DWITH_EXAMPLES=OFF )
+	_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE="-O2 -DNDEBUG" -DCMAKE_CXX_STANDARD_LIBRARIES="-lws2_32 -lwsock32 -luserenv" -DWITH_EXAMPLES=OFF )
 	
 	for _arch in ${_architectures}; do
 		${_arch}-cmake -S "libheif-${pkgver}" -B "build-${_arch}" "${_flags[@]}"
