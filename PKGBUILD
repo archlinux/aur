@@ -1,11 +1,11 @@
-# Maintainer: BL4CKH47H4CK3R <BL4CKH47H4CK3R@ARCHLINUX.ORG>
-# Maintainer: dr460nf1r3 <dr460nf1r3@garudalinux.org>
-# https://aur.archlinux.org/packages/brave/
+# Maintainer : <dr460nf1r3> <dr460nf1r3@garudalinux.org
+# Maintainer : <BL4CKH47H4CK3R> <BL4CKH47H4CK3R@archlinux.org>
+# https://aur.archlinux.org/packages/brave-browser-nightly
 
 pkgname=brave-browser-nightly
 pkgver=1.21.39
-pkgrel=2
-pkgdesc='Web browser that blocks ads and trackers by default (nightly binary release).'
+pkgrel=1
+pkgdesc='Web browser that blocks ads and trackers by default (nightly binary release)'
 arch=('x86_64')
 url='https://brave.com/download-nightly'
 license=('MPL2')
@@ -23,7 +23,7 @@ source=("$pkgname-$pkgver.zip::https://github.com/brave/brave-browser/releases/d
         "brave-browser-nightly.desktop")
 options=(!strip)
 sha512sums=('1cef93826626aa8ea0d0a6ee4b5cb9f514df446641e633124c80a9330c135b2cc16a55ddbe5276d28a2858fbc20cc47b4cd50c0219db831c02d1dd0178dfd851'
-            'SKIP'
+            '410737d328cd96de05093ea5d24f05564754fa22d731c025e988e571f99e6ba60483f9597a67a9ac292987ff3eff00bcfad852b5193ac7da2a3c629e5a0b658b'
             'd5ce90529c2b75357518ebde10e28e9d6f36efe21b705d7e48be07b1f320d739ef211c1bcc353aeefab3f27b7ba78793ebb74a204ac6c8efae855001b80de72a'
             'acf4f25ab54c346cfea9ca05e48308deb874728a8c2954d9b2f4239361d470ab0ad0cb98a177e3c33416785238b35c3ea3f230a4053c3d73f85fcdcc11432554')
 noextract=("$pkgname-$pkgver.zip")
@@ -31,7 +31,7 @@ noextract=("$pkgname-$pkgver.zip")
 prepare() {
   mkdir -p brave-browser-nightly
   bsdtar -xf $pkgname-$pkgver.zip -C brave-browser-nightly
-  chmod +x brave-browser-nightly/brave
+  chmod +x brave-browser-nightly/brave-browser-nightly
 }
 
 _srcdir="brave-browser-nightly"
