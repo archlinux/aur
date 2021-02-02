@@ -1,6 +1,6 @@
 # Maintainer: Joseph R. Quinn <quinn period josephr at protonmail dot com>
 pkgname="trunk-bin"
-pkgver="0.7.4"
+pkgver="0.8.0"
 pkgrel=1
 pkgdesc="A WASM web application bundler for Rust."
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
     "https://raw.githubusercontent.com/thedodd/${pkgname%-bin}/v$pkgver/LICENSE-APACHE"
     "https://raw.githubusercontent.com/thedodd/${pkgname%-bin}/v$pkgver/LICENSE-MIT"
 )
-sha256sums=('a35dce760c84e5647854a9d0754b21d46bff40dfde917d5790cea12b68767cac'
+sha256sums=('6a6669fd0b12371fbc6513c72289c73e3818166539ef71630513630a3482997b'
             'a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2'
             '23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3')
 
