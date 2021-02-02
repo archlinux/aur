@@ -1,13 +1,13 @@
 pkgbase = mopidy-qsaver-git
 	pkgdesc = Mopidy extension that maintains your current tracklist when the server restarts
-	pkgver = 17
-	pkgrel = 2
+	pkgver = latest
+	pkgrel = 1
 	url = https://github.com/HeadspringLabs/mopidy-qsaver
 	arch = any
 	license = APACHE
 	makedepends = python3
 	depends = mopidy>=1.0.5
-	source = git+https://github.com/HeadspringLabs/mopidy-qsaver.git
+	source = git+https://github.com/seifferth/mopidy-qsaver.git
 	sha256sums = SKIP
 
 pkgname = mopidy-qsaver-git
