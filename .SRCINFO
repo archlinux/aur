@@ -1,6 +1,6 @@
 pkgbase = python-supersolids
-	pkgdesc = Notes and script to supersolids
-	pkgver = 0.1.25
+	pkgdesc = Simulate and animate supersolids by solving the Schrödinger equation
+	pkgver = 0.1.26
 	pkgrel = 1
 	url = https://github.com/Scheiermann/supersolids
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-supersolids
 	depends = python-scipy
 	depends = mayavi
 	optdepends = 
-	source = supersolids-0.1.25.tar.gz::https://files.pythonhosted.org/packages/source/s/supersolids/supersolids-0.1.25.tar.gz
+	source = supersolids-0.1.26.tar.gz::https://files.pythonhosted.org/packages/source/s/supersolids/supersolids-0.1.26.tar.gz
 	sha256sums = SKIP
 
 pkgname = python-supersolids
