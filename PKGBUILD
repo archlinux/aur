@@ -1,61 +1,35 @@
-# Maintainer: Christoph Haag <christoph.haag@collabora.com>
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Contributor: Christoph Haag <christoph.haag@collabora.com>
 # Author: Matthias Blaicher <matthias at blaicher dot com>
 
 pkgname=disman-git
-pkgver=0.520.0.beta.0.r28.ga3971e7
+pkgver=0.520.80_r1786.g86c46bb
 pkgrel=1
 pkgdesc='Qt/C++ display management library by KWinFT project ~ forked from KDE libkscreen'
-arch=(
-    i686
-    x86_64
-)
+arch=($CARCH)
 url='https://gitlab.com/kwinft/disman'
 license=(LGPL)
-depends=(
-    kwayland
-    libxrandr
-    qt5-x11extras
-    wrapland
-)
-makedepends=(
-    extra-cmake-modules
-    git
-    kcoreaddons
-    ninja
-)
+groups=(plasma-git)
+depends=(kcoreaddons-git qt5-x11extras)
+makedepends=(git extra-cmake-modules-git kwayland libxcb wrapland-git)
+optdepends=('libxcb: for the X11 backend plugin' 'wrapland-git: for the KWinFT and wlroots backend plugins' 'kwayland-git: for the KDE output-management backend plugin')
 provides=(disman)
 conflicts=(disman)
 source=('git+https://gitlab.com/kwinft/disman.git')
 sha512sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/disman"
-    
-    git describe --long --tags | sed "s/^disman\@//;s/\([^-]*-g\)/r\1/;s/-/./g"
-}
-
-prepare() {
-    mkdir -p "$srcdir/build"
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(PROJECT_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$srcdir/build"
-    
-    cmake \
-        "$srcdir/disman" \
-        -G Ninja \
-        -D CMAKE_BUILD_TYPE="Release" \
-        -D CMAKE_INSTALL_PREFIX="/usr" \
-        -D KDE_INSTALL_LIBDIR="lib" \
-        -D KDE_INSTALL_LIBEXECDIR="lib" \
-        -D KDE_INSTALL_USE_QT_SYS_PATHS="ON" \
-        -D BUILD_TESTING="OFF"
-    
-    ninja
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-    cd "$srcdir/build"
-    
-    DESTDIR="$pkgdir" ninja install
+  DESTDIR="$pkgdir" cmake --install build
 }
