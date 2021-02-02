@@ -1,8 +1,8 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 pkgname=obs-audio-monitor
-pkgver=0.2.0
+pkgver=0.2.1
 _obsver=26.1.2
-pkgrel=2
+pkgrel=1
 pkgdesc="Plugin for OBS Studio to add Audio Monitor dock and filter"
 arch=('x86_64')
 url="https://github.com/exeldro/obs-audio-monitor"
@@ -15,7 +15,7 @@ makedepends=(
   'qt5-svg' 'qt5-x11extras' 'curl' 'jack' 'gtk-update-icon-cache'
 )
 source=(
-  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-audio-monitor#commit=31b7586f9bd58013f2674e3305cf7a462114dd1f"
+  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-audio-monitor#commit=ad0e667e230185c594b126175383167b8d6e90d0"
   "add_pulse.patch::https://patch-diff.githubusercontent.com/raw/exeldro/obs-audio-monitor/pull/5.patch"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
   "fix_python_binary_loading.patch"
