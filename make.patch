@@ -1,0 +1,12 @@
+diff --unified --recursive --text RGEpp/makefile RGEpp-1/makefile
+--- RGEpp/makefile	2021-02-02 13:20:16.740084619 -0500
++++ RGEpp-1/makefile	2021-02-02 13:23:40.616419761 -0500
+@@ -1,6 +1,6 @@
+ CC           = clang++
+-ODEINTPATH   = odeint/include
+-EIGENPATH    = eigen
++ODEINTPATH   = /usr/include/boost/numeric/odeint/
++EIGENPATH    = /usr/include/eigen3/
+ RGEPPPATH    = $(PWD)
+ FLAVOUROBJ   = src/ckm.o src/pmns.o
+ FLAGS        = -std=c++11 -I $(ODEINTPATH) -I $(EIGENPATH) -I $(RGEPPPATH)/include -I $(RGEPPPATH)/models
