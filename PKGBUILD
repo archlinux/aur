@@ -1,8 +1,8 @@
 # meson/ninja build() & package() taken from community/radare2
 # Contributor: 0xAA <0xaa at dmg dot sx>
-# Contributor: bratus
+# Contributor: bratus <szczepaniak.bartek plus github at gmail dot com>
 pkgname=radare2-git
-pkgver=5.0.1.r25110.7a222e68dc
+pkgver=5.1.0.r25401.89ff9aaf6e
 pkgrel=1
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://radare.org"
 license=('GPL3' 'LGPL3')
 makedepends=('git' 'meson')
 depends=('capstone' 'lz4' 'file' 'libzip' 'xxhash' 'libuv')
-provides=('radare2')
+provides=("radare2=${pkgver%.r*}")
 conflicts=('radare2')
 
 source=("$pkgname"::"git://github.com/radare/radare2.git")
