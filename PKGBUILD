@@ -15,7 +15,8 @@ b2sums=('de06b9317951b449f691fbbfa9f444ebaff2dfc3b4fd431ffc9d5079691bda1749f0cf8
 
 prepare() {
 	cd "$_pkgname-$pkgver"
-	
+
+	sed -i -e 's|^pid|#&|g' 'nginx.conf'
 	sed -i -e 's|www-data|http|g' 'nginx.conf'
 	sed -i -e 's|mime.types|h5bp/mime.types|g' 'h5bp/media_types/media_types.conf'
 }
