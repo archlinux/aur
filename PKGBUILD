@@ -6,11 +6,11 @@ pkgver=1.1.9
 pkgrel=6
 pkgdesc="David's batch processor for the GIMP"
 arch=('x86_64')
-url="https://sourceforge.net/projects/gimpdbpplugin/"
+url="http://gimpdbpplugin.sourceforge.net"
 license=('GPL')
 depends=('gimp')
-source=("https://sourceforge.net/projects/gimpdbpplugin/files/Source-Code/dbpSrc-1-1-9.tgz/download")
-sha256sums=('SKIP')
+source=("https://downloads.sourceforge.net/project/gimpdbpplugin/Source-Code/dbpSrc-1-1-9.tgz")
+sha256sums=('6f69ce1a8723007ea678644370b7f308417349415687ad04d9a68b24fceaceab')
 
 build() {
   cd "${srcdir}/dbp-${pkgver}"
