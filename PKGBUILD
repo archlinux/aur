@@ -1,4 +1,5 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Max Harmathy <max.harmathy@web.de>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='ptouch-print'
 pkgver=1.4.3
