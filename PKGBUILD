@@ -1,7 +1,7 @@
 #Maintainer: Shiv Upadhyay <shivnupadhyay@gmail.com>
 pkgname=python-quadpy
 pkgver=0.16.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Numerical integration (quadrature, cubature) in Python'
 arch=(any)
 license=(GPL)
@@ -28,7 +28,7 @@ build() {
 package ()
 {
   cd "$srcdir/${pkgname#"python-"}-$pkgver"
-  python -m pip install --prefix=$pkgdir dist/${pkgname#"python-"}-$pkgver-py3-none-any.whl
+  PIP_CONFIG_FILE=/dev/null python -m pip install --isolated --root="$pkgdir" --ignore-installed --no-deps dist/${pkgname#"python-"}-$pkgver-py3-none-any.whl
 }
 
 
