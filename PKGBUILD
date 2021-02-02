@@ -5,13 +5,14 @@
 
 pkgbase=network-manager-applet-git
 pkgname=(network-manager-applet-git nm-connection-editor-git)
-pkgver=1.8.25.dev.r20.g74183667
+pkgver=1.19.0.dev.r45.gda47a6d1
 pkgrel=1
 pkgdesc="Applet for managing network connections"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
 url="http://www.gnome.org/projects/NetworkManager/"
-depends=(libnm gcr libgudev gtk3 mobile-broadband-provider-info libnm-git iso-codes libnma libappindicator-gtk3 libmm-glib)
+depends=(libnm gcr libgudev gtk3 mobile-broadband-provider-info libnm-git 
+         iso-codes libnma libappindicator-gtk3 libmm-glib libselinux libayatana-appindicator)
 makedepends=(meson libsecret libnotify gtk3 libnm gtk-doc intltool gobject-introspection git)
 options=('emptydirs')
 source=(git+https://gitlab.gnome.org/GNOME/network-manager-applet.git)
@@ -32,7 +33,7 @@ build() {
     -Dteam=true \
     -Dwwan=true \
     -Dappindicator=yes \
-    -Dselinux=false \
+    -Dselinux=true \
     -Db_lto=false
 
   ninja -C build
