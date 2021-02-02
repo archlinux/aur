@@ -2,13 +2,13 @@
 
 _pkgname=poetry
 pkgname=python-poetry-git
-pkgver=1.1.0.r73.gbf30ca69
+pkgver=1.1.0.r85.g855bc88b
 pkgrel=1
 pkgdesc="Python dependency management and packaging made easy"
 arch=('any')
 url="https://python-poetry.org/"
 license=('MIT')
-_deps=('cachecontrol' 'cachy' 'cleo' 'clikit-git' 'html5lib' 'jsonschema' 'lockfile'
+_deps=('cachecontrol' 'cachy' 'cleo-git' 'html5lib' 'jsonschema' 'lockfile'
        'pkginfo' 'pyparsing' 'pyrsistent' 'requests' 'requests-toolbelt'
        'shellingham' 'tomlkit' 'keyring' 'pexpect' 'poetry-core-git' 'virtualenv>=20.0.26')
 depends=("${_deps[@]/#/python-}")
@@ -20,7 +20,7 @@ replaces=('poetry')
 source=("${_pkgname}"::"git+https://github.com/python-${_pkgname}/${_pkgname}.git"
         "poetry-completions-generator")
 sha256sums=('SKIP'
-            '970225289188ea8dc49fbec8a2bfe0c891aee80ff56ba6e69bdd8afef8bccab6')
+            'e44c71a3b804b5c2bf07573ed465aee275a5844f10e37ee63c7395c9213a2b6d')
             
 pkgver() {
     cd "${srcdir}/${_pkgname}"
