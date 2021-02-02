@@ -1,40 +1,34 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Merged with official ABS akonadi-calendar PKGBUILD by João, 2021/02/02 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
-_gitname=akonadi-calendar
-pkgname=$_gitname-git
-pkgver=r1297.8b49a7c
+pkgname=akonadi-calendar-git
+pkgver=5.16.40_r1896.g2baafeb
 pkgrel=1
 pkgdesc="Akonadi calendar integration"
-arch=('i686' 'x86_64')
-url="https://projects.kde.org/projects/kde/pim/$_gitname"
-license=('LGPL')
-depends=('kmailtransport-git' 'kcalutils-git')
-makedepends=('extra-cmake-modules-git' 'kdoctools' 'git' 'python')
-conflicts=("$_gitname")
-provides=("$_gitname")
-source=("git://anongit.kde.org/$_gitname.git")
-md5sums=('SKIP')
+arch=($CARCH)
+url="https://kontact.kde.org"
+license=(LGPL)
+depends=(kmailtransport-git kcalutils-git akonadi-contacts-git)
+makedepends=(git extra-cmake-modules-git boost)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(kdepim-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(PIM_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../$_gitname \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }

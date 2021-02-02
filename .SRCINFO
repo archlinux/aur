@@ -1,21 +1,21 @@
 pkgbase = akonadi-calendar-git
 	pkgdesc = Akonadi calendar integration
-	pkgver = r1297.8b49a7c
+	pkgver = 5.16.40_r1896.g2baafeb
 	pkgrel = 1
-	url = https://projects.kde.org/projects/kde/pim/akonadi-calendar
-	arch = i686
+	url = https://kontact.kde.org
 	arch = x86_64
+	groups = kdepim-git
 	license = LGPL
-	makedepends = extra-cmake-modules-git
-	makedepends = kdoctools
 	makedepends = git
-	makedepends = python
+	makedepends = extra-cmake-modules-git
+	makedepends = boost
 	depends = kmailtransport-git
 	depends = kcalutils-git
+	depends = akonadi-contacts-git
 	provides = akonadi-calendar
 	conflicts = akonadi-calendar
-	source = git://anongit.kde.org/akonadi-calendar.git
-	md5sums = SKIP
+	source = git+https://github.com/KDE/akonadi-calendar.git
+	sha256sums = SKIP
 
 pkgname = akonadi-calendar-git
 
