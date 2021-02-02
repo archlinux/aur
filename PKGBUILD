@@ -2,7 +2,7 @@
 
 _pkgname='jetbrains-toolbox'
 pkgname="${_pkgname}-fix"
-pkgver=1.19.7784
+pkgver=1.20.7939
 pkgrel=1
 pkgdesc='Manage your tools the easy way'
 arch=('x86_64')
@@ -37,11 +37,12 @@ source=(
 	"${_pkgname}".desktop
 	"${_pkgname}".svg
 )
-sha256sums=(
-	'7391afbad4e477875024ee73021b264993fcf91a47d073ae57ab5852dca6abd1'
-	'ade259058b244c8ce6573bc86327ab14b4eddd0095f8d2a8638473334b268200'
-	'4a6b4b801954017402e47b40b7246a71b1c128ca352efe459322b3f3699a5813'
-)
+sha256sums=('95272a58e7a35c3e684f1de36185af579056a4fb51177b2fef830d51ae6e8528'
+            'ade259058b244c8ce6573bc86327ab14b4eddd0095f8d2a8638473334b268200'
+            '4a6b4b801954017402e47b40b7246a71b1c128ca352efe459322b3f3699a5813')
+
+install='jetbrains-toolbox.install'
+
 build() {
 	cd "$_pkgname-$pkgver"
 	./"$_pkgname" --appimage-extract
