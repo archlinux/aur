@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.5
+Type=Application
+Name=Mango
+GenericName=Medical research image viewer
+Comment=Multi-image analysis GUI
+Exec=mango %F
+TryExec=/opt/mango/mango.sh
+Icon=/opt/mango/icon.png
+Categories=Java;Utility
+Terminal=false
+Keywords=MRI,GUI,image

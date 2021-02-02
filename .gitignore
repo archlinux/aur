@@ -1,0 +1,17 @@
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.AppImage
+*.deb
+*.rpm
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+*.png
+
+src/
+pkg/
