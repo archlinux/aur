@@ -6,15 +6,15 @@ _name="emulicious"
 _exec="emulicious"
 _genericname="Emulator"
 pkgver=2021.01.30
-pkgrel=4
+pkgrel=5
 pkgdesc="Game Boy, Game Boy Color, Master System, Game Gear and MSX emulator"
 # sms is backwards compatible to sg1000
 _mimetype="application/x-gameboy-rom;application/x-gameboy-color-rom;application/x-sms-rom;application/x-sg1000-rom;application/x-gamegear-rom;application/x-msx-rom"
 url="https://emulicious.net"
 license=('custom', 'BSD')
 arch=('any')
-depends=('java-environment' 'bash' 'hicolor-icon-theme')
-makedepends=('gendesk' 'dos2unix' 'imagemagick')
+depends=('java-environment' 'sh' 'hicolor-icon-theme')
+makedepends=('java-environment-common' 'gendesk' 'dos2unix' 'imagemagick')
 source=("$pkgname-$pkgver.zip::https://emulicious.net/download/emulicious/?wpdmdl=205" "emulicious.sh")
 sha256sums=('fbe0ac99dae07c19123ecfacca6100a1dc97a9344133a3caa9ab75616892100f'
             '3f9442376a7a8ba93ff5490826bcd5b5b81c5c62b3a6ec48bcd586a0e42fca66')
@@ -37,9 +37,9 @@ pkgver() {
 
 package() {
   install -d "${pkgdir}/usr/share/${pkgname}/"
-  install -Dm644 "${srcdir}/License.txt" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 "${srcdir}/LICENSE-JInput.txt" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-JInput"
-  cp -r "${srcdir}/Highlighters/" "${srcdir}/MSX/" "${srcdir}/KeyPresets/" "${pkgdir}/usr/share/$pkgname/"
+  install -Dm644 "${srcdir}/License.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/LICENSE-JInput.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-JInput"
+  cp -r "${srcdir}/Highlighters/" "${srcdir}/MSX/" "${srcdir}/KeyPresets/" "${pkgdir}/usr/share/${pkgname}/"
   install -Dm644 "${srcdir}/Emulicious.jar" "${srcdir}/WhatsNew.txt" "${srcdir}/Expressions.txt" "${srcdir}/ReadMe.txt" "${srcdir}/"*.ports  "${pkgdir}/usr/share/${pkgname}/"
   install -Dm755 "${srcdir}/emulicious.sh" "${pkgdir}/usr/bin/${_name}"
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${_name}.desktop"

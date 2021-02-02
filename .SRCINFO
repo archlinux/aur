@@ -1,16 +1,17 @@
 pkgbase = emulicious-bin
 	pkgdesc = Game Boy, Game Boy Color, Master System, Game Gear and MSX emulator
 	pkgver = 2021.01.30
-	pkgrel = 4
+	pkgrel = 5
 	url = https://emulicious.net
 	arch = any
 	license = custom,
 	license = BSD
+	makedepends = java-environment-common
 	makedepends = gendesk
 	makedepends = dos2unix
 	makedepends = imagemagick
 	depends = java-environment
-	depends = bash
+	depends = sh
 	depends = hicolor-icon-theme
 	source = emulicious-bin-2021.01.30.zip::https://emulicious.net/download/emulicious/?wpdmdl=205
 	source = emulicious.sh
