@@ -4,8 +4,8 @@
 
 pkgname=(epoptes epoptes-client)
 pkgbase=epoptes-client
-pkgver=21.01
-pkgrel=3
+pkgver=21.02
+pkgrel=1
 pkgdesc='An opensource computer lab management and monitoring tool'
 makedepends=(git python-distutils-extra)
 url='https://github.com/Epoptes/epoptes'
