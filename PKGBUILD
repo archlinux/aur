@@ -2,8 +2,8 @@
 
 _pkgbase=mautrix-facebook
 pkgname=${_pkgbase}-git
-pkgver=r150.9264125
-pkgrel=4
+pkgver=r447.19e9e20
+pkgrel=0
 pkgdesc="A double puppeting Facebook bridge with multi-user support for Hangouts"
 arch=(any)
 conflicts=(mautrix-facebook)
@@ -35,7 +35,7 @@ source=("${_pkgbase}::git+https://github.com/tulir/${_pkgbase}"
 	    "tmpfiles-mautrix-facebook.conf"
 	    "${_pkgbase}.service")
 sha256sums=('SKIP'
-            'e0e19d47562e452c1d8e54e44aee7dd1f58ffc77fd2a70aab642361e11564739'
+            '637a4d95fb551394133562b3be27cc7c2d1d5893096e33c9df86f22697fb087d'
             '881c2f6a8c4c74be6277bc0ec689b17623bbe08939bde9187ab04ed71e55c447'
             '793016de273d6dc0a2fdfd1090942aa2ec3cc75c0cad333ed231bb8561fddfd0'
             'd981fb6fef944b83a4089683075ab2ae1cf095a6814e4d3bdce500d3309cb617'
