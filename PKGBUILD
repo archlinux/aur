@@ -7,14 +7,14 @@
 _pkgname=zbar
 pkgname=lib32-zbar
 pkgver=0.23.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Application and library for reading bar codes from various sources. 32bit libraries only version"
 arch=('x86_64')
 url="https://github.com/procxx/zbar"
 license=('LGPL')
 depends=('zbar' 'lib32-v4l-utils' 'lib32-dbus' 'lib32-libsm' 'lib32-libxv')
 makedepends=('docbook-xsl' 'xmlto')
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/mchehab/zbar/archive/$pkgver.tar.gz", "configure.patch")
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/mchehab/zbar/archive/$pkgver.tar.gz" "configure.patch")
 sha256sums=('297439f8859089d2248f55ab95b2a90bba35687975365385c87364c77fdb19f3' '4b6bd83d5923aed8ac34ff088340a65514bcff0a345dc6acd08e348e72744702')
 prepare() {
   cd zbar-$pkgver
