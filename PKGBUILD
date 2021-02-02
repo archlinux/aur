@@ -2,7 +2,7 @@
 
 pkgname=js8call
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Software for ragchewing and message-passing based on WSJT-X"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/widefido/js8call/"
@@ -16,6 +16,7 @@ md5sums=('000b6d7da83f49b85560fab14e09db21')
 
 build() {
     mv $srcdir/widefido-js8call* $srcdir/$pkgname-$pkgver
+    echo "add_compile_definitions(JS8_USE_HAMLIB_THREE)" >> $srcdir/$pkgname-$pkgver/CMakeLists.txt
     mkdir -p $srcdir/build
     cd $srcdir/build
     cmake -Wno-dev -Dhamlib_LIBRARY_DIRS=/usr/lib/ -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr -DCMAKE_BUILD_TYPE=Release $srcdir/$pkgname-$pkgver
