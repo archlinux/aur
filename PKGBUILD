@@ -74,12 +74,12 @@ md5sums=(
 )
 
 
-# By default makepkg runs strip on binaries. This seems to cause issues with the Swift REPL.
-# Disable it in the PKGBUILD with:
-# from https://github.com/RLovelett/swift-aur/blob/master/PKGBUILD, not sure if necessary
+# By default makepkg runs strip on binaries. This causes issues with the Swift REPL.
+# from https://github.com/RLovelett/swift-aur/blob/master/PKGBUILD
 # termux had no trouble up to now, strip all executables and shared objects:
 # https://github.com/termux/termux-packages/blob/master/scripts/build/termux_step_massage.sh#L24
-#options=(!strip)
+# would be cool to not strip only the ones which really are necessary, but how?
+options=(!strip)
 
 prepare () {
     ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-pachtes.patch" )
