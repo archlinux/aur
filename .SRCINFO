@@ -1,0 +1,18 @@
+pkgbase = ksmtp-git
+	pkgdesc = Job-based library to send email through an SMTP server
+	pkgver = 5.16.40_r318.g9ad326d
+	pkgrel = 1
+	url = https://kontact.kde.org
+	arch = x86_64
+	groups = kdepim-git
+	license = LGPL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	depends = kio-git
+	provides = ksmtp
+	conflicts = ksmtp
+	source = git+https://github.com/KDE/ksmtp.git
+	sha256sums = SKIP
+
+pkgname = ksmtp-git
+
