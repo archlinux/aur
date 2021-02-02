@@ -1,0 +1,22 @@
+pkgbase = libksieve-git
+	pkgdesc = KDE PIM library for managing sieves
+	pkgver = 5.16.42_r1479.gd7035fc3
+	pkgrel = 1
+	url = https://kontact.kde.org
+	arch = x86_64
+	groups = kdepim-git
+	license = LGPL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = boost
+	makedepends = kdoctools-git
+	depends = kidentitymanagement-git
+	depends = pimcommon-git
+	depends = kmailtransport-git
+	provides = libksieve
+	conflicts = libksieve
+	source = git+https://github.com/KDE/libksieve.git
+	sha256sums = SKIP
+
+pkgname = libksieve-git
+
