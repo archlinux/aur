@@ -142,8 +142,12 @@ package() {
     #Then loop through package file listing and copy files into the package directory
     for SRC_FILE in `cat ${srcdir}/data-files.txt`
     do
-      DST_FILE=${pkgdir}/$(echo $SRC_FILE)
-      cp $SRC_FILE $DST_FILE
+        DST_FILE=${pkgdir}/$(echo $SRC_FILE)
+        if [ -f $SRC_FILE ]; then
+            cp $SRC_FILE $DST_FILE
+        else
+            echo "$SRC_FILE not found. Skipping inclusion in package."
+        fi
     done
   fi
   unzip -q "${srcdir}/engine.zip" -d "${pkgdir}/${DEST_DIR}/${ENGINE_DIR}"
