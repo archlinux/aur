@@ -1,4 +1,5 @@
 filter_dkimsign_obj += filter-dkimsign/main.o
+filter_dkimsign_obj += filter-dkimsign/mheader.o
 libopensmtpd_obj += libopensmtpd/iobuf.o
 libopensmtpd_obj += libopensmtpd/ioev.o
 libopensmtpd_obj += libopensmtpd/opensmtpd.o
