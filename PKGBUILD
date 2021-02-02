@@ -2,8 +2,8 @@
 
 _pkgname=zigbee2mqtt
 pkgname=zigbee2mqtt-git
-pkgver=1.12.0.r0.g840b9d9
-pkgrel=4
+pkgver=1.17.1.r0.g99274c72
+pkgrel=1
 pkgdesc='A Zigbee to MQTT bridge'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://www.zigbee2mqtt.io'
@@ -34,18 +34,17 @@ pkgver() {
 }
 
 package() {
-  npm install -g --user root --prefix "${pkgdir}/usr" --cache "${srcdir}/npm-cache" "${srcdir}/${pkgver}.tar.gz"
+  cd "${_pkgname}"
+  npm install -g --user root --prefix "${pkgdir}/usr" --cache "${srcdir}/npm-cache"
 
   find "${pkgdir}/usr" -type d -exec chmod 755 {} +
   chown -R root:root "${pkgdir}"
 
   find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 
-  cd "${pkgname}-${pkgver}"
-  install -Dm644 data/configuration.yaml "${pkgdir}/etc/${pkgname}/configuration.yaml"
+  install -Dm644 data/configuration.yaml "${pkgdir}/etc/${_pkgname}/configuration.yaml"
 
-  install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-  install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-  install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+  install -Dm644 "${srcdir}/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+  install -Dm644 "${srcdir}/${_pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
+  install -Dm644 "${srcdir}/${_pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
 }
-
