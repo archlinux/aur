@@ -1,6 +1,6 @@
 # Maintainer: igo95862 <address at domain dot tld>
 pkgname=bubblejail-git
-pkgver=r268.e755a43
+pkgver=r287.2e1df52
 pkgrel=1
 pkgdesc="Bubblewrap based sandboxing utility"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=(
 	'bash-completion: completions for bash shell'
 	'fish: completions for fish shell'
 	)
-makedepends=('git' 'meson')
+makedepends=('git' 'meson' 'm4')
 source=("$pkgname"::"git+https://github.com/igo95862/bubblejail")
 md5sums=('SKIP')
 
