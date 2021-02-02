@@ -1,12 +1,12 @@
 # Maintainer: John FrostFox <john.frostfox at gmail dot com>
 pkgname=recapp-git
-pkgver=1.1.0.r0.g65d6ef1
+pkgver=1.1.0.r18.g1d4e9eb
 pkgrel=1
 pkgdesc="Simple screen recorder for Linux written in GTK, using only GStreamer."
 arch=('any')
 url="https://github.com/amikha1lov/RecApp"
 license=('GPL3')
-depends=('gst-plugins-base' 'gst-plugins-good' 'hicolor-icon-theme' 'python-pydbus' 'slop' 'python-pulse-control')
+depends=('gst-plugins-base' 'gst-plugins-good' 'hicolor-icon-theme' 'python-pydbus' 'slop' 'python-pulsectl')
 optdepends=('gst-plugins-bad: for MP4 recording'
             'gst-plugins-ugly: for MP4 recording')
 makedepends=('meson' 'ninja' 'git' 'intltool' 'appstream-glib' 'desktop-file-utils' 'python')
