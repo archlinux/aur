@@ -6,6 +6,7 @@ pkgbase = obs-vnc
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
+	makedepends = cmake
 	depends = obs-studio
 	depends = libvncserver
 	source = obs-vnc-0.2.2.tar.gz::https://github.com/norihiro/obs-vnc/archive/0.2.2.tar.gz
