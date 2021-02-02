@@ -1,0 +1,21 @@
+pkgbase = akonadi-mime-git
+	pkgdesc = Libraries and daemons to implement basic email handling
+	pkgver = 5.16.40_r1586.g5a290f2
+	pkgrel = 1
+	url = https://kontact.kde.org
+	arch = x86_64
+	groups = kdepim-git
+	license = LGPL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	makedepends = boost
+	depends = libakonadi-git
+	depends = kmime-git
+	provides = akonadi-mime
+	conflicts = akonadi-mime
+	source = git+https://github.com/KDE/akonadi-mime.git
+	sha256sums = SKIP
+
+pkgname = akonadi-mime-git
+
