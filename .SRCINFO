@@ -7,9 +7,9 @@ pkgbase = stoplight-studio-appimage
 	license = custom
 	depends = fuse2
 	options = !strip
-	source = stoplight-studio-linux-x86_64-2.2.0-stable.5343.git-ab43444.AppImage::https://github.com/stoplightio/studio/releases/download/v2.2.0-stable.5343.git-ab43444/stoplight-studio-linux-x86_64.AppImage
+	source = stoplight-studio-linux-x86_64-2.2.0-stable.5379.git-75c5189.AppImage::https://github.com/stoplightio/studio/releases/download/v2.2.0-stable.5379.git-75c5189/stoplight-studio-linux-x86_64.AppImage
 	source = stoplight-studio.desktop
-	sha256sums = 2b84059851bb4d98002662b1f9fd749239dd9a85ff667fa12c8d33ee01727cc0
+	sha256sums = 8296590a93150dae66dd6408d044eb9bc9b9ff37c9a2badbd24e0147c5f57a27
 	sha256sums = 72bf480d367051fca62f02cca5c421fd0b9f0245494b6d41a897db5c7a3f9fd7
 
 pkgname = stoplight-studio-appimage
