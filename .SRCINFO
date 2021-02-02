@@ -1,7 +1,7 @@
 pkgbase = zotero
 	pkgdesc = Zotero Standalone. Is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources.
 	pkgver = 5.0.95
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.zotero.org/download
 	install = zotero.install
 	arch = x86_64
