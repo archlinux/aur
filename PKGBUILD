@@ -4,7 +4,7 @@
 _pkgname=sshpubkeys
 pkgname=python-sshpubkeys
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenSSH public key parser for Python'
 arch=(any)
 url='https://github.com/ojarva/python-sshpubkeys'
@@ -21,7 +21,8 @@ build() {
 
 check() {
     cd $_pkgname-$pkgver
-    python -m unittest tests
+    # Upstream MANIFEST.in uses `graft tests`, so pyc files in tests will be listed in SOURCES.txt
+    PYTHONDONTWRITEBYTECODE=1 python -m unittest tests
 }
 
 package() {
