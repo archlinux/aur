@@ -1,7 +1,7 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_attendance
 _name=trytond_attendance
-pkgver=5.8.1
+pkgver=5.8.2
 _pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
@@ -12,9 +12,9 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('3750d6f77ec074bdfb8ec7c9bdf7e240f074396f994087ffd9833549c96bc4b0')
-sha512sums=('5536e7b4b89f57bc8f6cd16e092b46d5b2ccee8b0545ae80f296b8768d1069bed4fcb27e9f54954cce46673f8495a6a0e56017bca6b499c88ff782994cbafd1c')
-b2sums=('a8f9da9540f61b264fa63e59d2e1f9644d2e2bc0a23cfe3ba3dd3b126ef6b44573b13435b3ed25742f9e28a0b026ed9c7b4c2b2d040754695c7b01ef6b9cfc45')
+sha256sums=('3b9b13eab245e87bb19365eb88ba93ee84646570c151a5534efb3c5f1dd931d5')
+sha512sums=('c347e4b0eb83adc01c6990142003e68b943a957da685cee5882598ec3a5812e181672cffcd8ffa9bbc315964056d2dae49e34742b1244ac3bf4742f27f63759c')
+b2sums=('a2b830bcc4f60abac8ca78d792b286a7a8802137b1b9ddd79651415f5179588868be903e4ee0d6ccb35a9f8b47a0093549ebdd17665e6f93209054b229032fbb')
 
 build() {
   cd $srcdir/$_name-$pkgver
