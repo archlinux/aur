@@ -4,7 +4,7 @@
 
 pkgname=gmchess
 pkgver=0.29.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Play Chinese chess (Xiangqi) against a human opponent or the computer"
 arch=("i686" "x86_64")
 url="https://salsa.debian.org/chinese-team/gmchess"
@@ -12,10 +12,14 @@ license=('GPL2')
 depends=("gtkmm")
 makedepends=('pkgconfig' 'intltool')
 conflicts=('gmchess-bin' 'eleeye-bin' 'convert-pgn-bin')
-install=gmchess.install
-source=("$pkgname-$pkgver.tar.gz::https://salsa.debian.org/chinese-team/gmchess/-/archive/master/${pkgname}-master.tar.gz" 'gmchess.install')
+source=("$pkgname-$pkgver.tar.gz::https://salsa.debian.org/chinese-team/gmchess/-/archive/master/${pkgname}-master.tar.gz" 'board-fix-segfault.patch')
 sha1sums=('26fb365af83d3364a699175718ca0573c0b62ca5'
-          '8ce9d92ee9cda1709098d0a0a46ce9cca9fa83ba')
+          '49e378db48b0d10188480084f6bd9f2c0d0d28e2')
+
+prepare() {
+	cd "$srcdir/${pkgname}-master"
+	patch -p0 -i "${srcdir}/board-fix-segfault.patch"
+}
 
 build() {
    cd "$srcdir/${pkgname}-master"
@@ -35,7 +39,6 @@ package(){
   install -d -m755 $pkgdir/usr/share/applications
   install -d -m755 $pkgdir/usr/lib
   install -d -m755 $pkgdir/usr/bin
-  
   
   cp -r $srcdir/usr/share/locale/ $pkgdir/usr/share/
   cp -r $srcdir/usr/share/man/ $pkgdir/usr/share/

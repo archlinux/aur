@@ -1,0 +1,29 @@
+--- src/Board.cc.orig	2018-02-07 16:46:27.000000000 +0100
++++ src/Board.cc	2021-02-02 11:28:52.653930660 +0100
+@@ -301,8 +301,13 @@
+ {
+-	//if(ui_pixmap)
+-	//	return true;
++	if (!get_mapped())
++		return false;
++	if (ui_pixmap) {
++		int w,h;
++		ui_pixmap->get_size(w,h);
++		if (get_width() == w || get_height() == h)
++			return false;
++	}
+ 	ui_pixmap = Gdk::Pixmap::create(this->get_window(),get_width(),get_height());
+-
+ 	redraw();
+-
++	return false;
+ }
+@@ -317,4 +322,8 @@
+ }
++
+ void Board::redraw()
+ {
++	if (!ui_pixmap)
++		return;
++
+ 	draw_bg();
