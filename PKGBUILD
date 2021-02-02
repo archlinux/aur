@@ -1,8 +1,8 @@
 #Maintainer: Angel Dimov <cyfraka at protonmail dot com>
 pkgname=curseradio-git
 _pkgname=curseradio
-pkgver=1
-pkgrel=0
+pkgver=r16.5dbc5c5
+pkgrel=1
 pkgdesc="Command line radio player"
 arch=('any')
 url="https://github.com/Cyfraka/curseradio"
@@ -13,6 +13,11 @@ provides=('curseradio-git')
 options=(!emptydirs)
 source=("git+https://github.com/Cyfraka/curseradio.git")
 md5sums=('SKIP')
+
+pkgver() {
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
   cd "$_pkgname"
