@@ -1,0 +1,4 @@
+*.pkg.tar*
+rxvt-unicode*.tar.bz2
+src
+pkg

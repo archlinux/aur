@@ -1,0 +1,37 @@
+pkgbase = rxvt-unicode-sgr-mouse
+	pkgdesc = Unicode enabled rxvt-clone terminal emulator (urxvt) with support for sgr mouse mode
+	pkgver = 9.22
+	pkgrel = 10
+	url = http://software.schmorp.de/pkg/rxvt-unicode.html
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = libxft
+	makedepends = perl
+	makedepends = startup-notification
+	makedepends = libnsl
+	depends = rxvt-unicode-terminfo
+	depends = libxft
+	depends = perl
+	depends = startup-notification
+	depends = libnsl
+	optdepends = gtk2-perl: to use the urxvt-tabbed
+	provides = rxvt-unicode
+	conflicts = rxvt-unicode
+	source = http://dist.schmorp.de/rxvt-unicode/rxvt-unicode-9.22.tar.bz2
+	source = urxvt.desktop
+	source = urxvtc.desktop
+	source = urxvt-tabbed.desktop
+	source = sgr-mouse-mode.patch
+	sha512sums = b39f1b2cbe6dd3fbd2a0ad6a9d391a2b6f49d7c5e67bc65fe44a9c86937f8db379572c67564c6e21ff6e09b447cdfd4e540544e486179e94da0e0db679c04dd9
+	sha512sums = 7184714a908071a4e8e5c065c5f90255e94dfd072df459c8d6f66fca3647781b3d1f6908b9303bcfd0d5b3f2e3822a8d66efaaa8a7c4d44f6e682839031a6e99
+	sha512sums = aa501eeeb220ba03b3f101b160230612efbca87694fef88c469b2976d29769c24b34576ea82f6c7941fad6039ac776f32e397add9b957b49bf2e84aeb67b66d6
+	sha512sums = 18c7afb0c3eb8c832893b9ead09d25374b70ae1cd5479a5291d11794906c53daa6f1a1bf698b37efda062bb2b991cacac53a0a6c185ca416b8718fde2bb6a7af
+	sha512sums = 9c92782b41edf69c7fc70f7d1cefbb9eed699ec78e5fc6db2f51a4f1aa3be583a7d75a09e6e954215a6d433e9530bda34013808dd2eaa1699fac1f21d0b8b9fd
+
+pkgname = rxvt-unicode-sgr-mouse
+
