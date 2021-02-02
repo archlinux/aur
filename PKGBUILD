@@ -3,7 +3,7 @@
 
 _gui=true
 _gitname=simc
-pkgver=r46084.3baee4b094
+pkgver=r46163.2eb9ebf759
 pkgrel=1
 pkgname=simulationcraft-git
 pkgdesc="A tool to explore combat mechanics in the popular MMO RPG World of Warcraft (tm). Multi-player event-driven simulator written in C++ that models raid damage."
@@ -53,8 +53,8 @@ package() {
 
     install -Dm755 build/simc "${pkgdir}/usr/bin/simc"
 
-    install -Dm644 "Welcome.html" "${pkgdir}/usr/share/${pkgname%-*}/Welcome.html"
-    install -Dm644 "Welcome.png" "${pkgdir}/usr/share/${pkgname%-*}/Welcome.png"
+    install -Dm644 "qt/Welcome.html" "${pkgdir}/usr/share/${pkgname%-*}/Welcome.html"
+    install -Dm644 "qt/Welcome.png" "${pkgdir}/usr/share/${pkgname%-*}/Welcome.png"
 
     install -Dm644 qt/icon/SimulationCraft.xpm "${pkgname%-*}/usr/share/pixmaps/SimulationCraft.xpm"
     install -Dm644 "${srcdir}/SimulationCraft.desktop" "${pkgname%-*}/usr/share/applications/SimulationCraft.desktop"
