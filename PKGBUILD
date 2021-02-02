@@ -2,7 +2,7 @@
 
 pkgname=python-javaobj-py3
 _name=python-javaobj
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Module for reading and writing serialized java objects"
 url="https://pypi.org/project/javaobj-py3/"
@@ -13,7 +13,7 @@ license=('Apache')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tcalmant/${_name}/archive/${pkgver}.tar.gz")
 
-sha256sums=('ff7408e5a0ac2c6728d130fdc575bd7eee9a01c61995d88f7d33aa9b109b9685')
+sha256sums=('056cee21aa8297e66b9381e5e0b04b6c9427bd022a67edc711d89ba677f3f8af')
 
 check() {
     cd "${srcdir}"/${_name}-${pkgver}
