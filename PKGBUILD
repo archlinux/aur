@@ -11,7 +11,7 @@
 pkgbase=networkmanager-git
 _gitname=NetworkManager
 pkgname=(networkmanager-git libnm-git)
-pkgver=1.21.2.r24206.gbb4b74959
+pkgver=1.29.10.r27639.ga3d686a0e
 pkgrel=1
 pkgdesc="Network Management daemon"
 arch=(i686 x86_64)
@@ -20,19 +20,20 @@ license=(GPL2 LGPL2.1)
 depends=(dbus-glib libmm-glib libndp libnewt libnl libsoup libteam libutil-linux
     nss polkit wpa_supplicant)
 checkdepends=(libx11 python-dbus)
-_pppver=2.4.7
+_pppver=2.4.8
 makedepends=(dnsmasq mobile-broadband-provider-info  meson ninja intltool dhclient openresolv iptables gobject-introspection gtk-doc "ppp=$_pppver" modemmanager
               iproute2 nss polkit wpa_supplicant libsoup systemd libgudev
              libnewt libndp libteam vala perl-yaml python-gobject git vala jansson bluez-libs
-             glib2-docs)
+             glib2-docs libselinux)
 optdepends=( 'iwd: alternative way to connect to wifi'
-'dhclient: DHCPv6 support'
+    'dhclient: DHCPv6 support'
     'dnsmasq: connection sharing'
     'bluez: Bluetooth support'
     'openresolv: resolvconf support'
     'ppp: dialup connection support'
     'rp-pppoe: ADSL support'
-    'modemmanager: cellular network support')
+    'modemmanager: cellular network support'
+    'libselinux: selinux support')
 options=(!libtool !emptydirs)
 source=(git://github.com/$_gitname/$_gitname
     NetworkManager.conf
@@ -48,7 +49,7 @@ pkgver() {
     cd NetworkManager/
     local ver=$({ echo 'changequote([,])dnl';
      sed -rn 's/^m4_(define.*nm_.*_version.*)/\1dnl/p' configure.ac;
-      echo 'nm_major_version.nm_minor_version.nm_micro_version'; 
+      echo 'nm_major_version.nm_minor_version.nm_micro_version';
                 echo 'define(AC_INIT,$2)dnl'
                 grep '^AC_INIT(.*)' configure.ac; } | m4)
   local rev=$(git rev-list --count HEAD)
@@ -97,7 +98,7 @@ build() {
         -D systemdsystemunitdir=/usr/lib/systemd/system \
         -D udev_dir=/usr/lib/udev \
         -D iwd=true \
-        -D selinux=false \
+        -D selinux=true \
         -D qt=false
       )
       arch-meson NetworkManager build "${meson_args[@]}"
@@ -141,8 +142,8 @@ package_networkmanager-git() {
   _pick libnm "$pkgdir"/usr/lib/girepository-1.0/NM-*
   _pick libnm "$pkgdir"/usr/lib/libnm.* 
   _pick libnm "$pkgdir"/usr/lib/pkgconfig/libnm.pc 
-  _pick libnm "$pkgdir"/usr/share/gir-1.0/NM-* 
-  _pick libnm "$pkgdir"/usr/share/gtk-doc/html/libnm 
+  _pick libnm "$pkgdir"/usr/share/gir-1.0/NM-*
+  _pick libnm "$pkgdir"/usr/share/gtk-doc/html/libnm
   _pick libnm "$pkgdir"/usr/share/vala/vapi/libnm.*
 
 }

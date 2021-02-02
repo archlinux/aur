@@ -1,6 +1,6 @@
 pkgbase = networkmanager-git
 	pkgdesc = Network Management daemon
-	pkgver = 1.21.2.r24206.gbb4b74959
+	pkgver = 1.29.10.r27639.ga3d686a0e
 	pkgrel = 1
 	url = http://www.gnome.org/projects/NetworkManager
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = networkmanager-git
 	makedepends = iptables
 	makedepends = gobject-introspection
 	makedepends = gtk-doc
-	makedepends = ppp=2.4.7
+	makedepends = ppp=2.4.8
 	makedepends = modemmanager
 	makedepends = iproute2
 	makedepends = nss
@@ -39,6 +39,7 @@ pkgbase = networkmanager-git
 	makedepends = jansson
 	makedepends = bluez-libs
 	makedepends = glib2-docs
+	makedepends = libselinux
 	depends = dbus-glib
 	depends = libmm-glib
 	depends = libndp
@@ -58,6 +59,7 @@ pkgbase = networkmanager-git
 	optdepends = ppp: dialup connection support
 	optdepends = rp-pppoe: ADSL support
 	optdepends = modemmanager: cellular network support
+	optdepends = libselinux: selinux support
 	options = !libtool
 	options = !emptydirs
 	source = git://github.com/NetworkManager/NetworkManager
@@ -104,4 +106,3 @@ pkgname = libnm-git
 	depends = systemd-libs
 	provides = libnm
 	conflicts = libnm
-
