@@ -1,14 +1,14 @@
 pkgbase = keepass-pt
 	pkgdesc = Portuguese (PT) locale for keepass
-	pkgver = 2.46
+	pkgver = 2.47
 	pkgrel = 1
 	url = http://keepass.info/translations.html
 	arch = any
 	license = GPL2
 	makedepends = unzip
 	depends = keepass
-	source = http://downloads.sourceforge.net/keepass/KeePass-2.46-Portuguese_PT.zip
-	sha256sums = 92ac43b96ca0a1c8a254fa60e4740ca2841493a69016ba0b6b74b10fef30159f
+	source = http://downloads.sourceforge.net/keepass/KeePass-2.47-Portuguese_PT.zip
+	sha256sums = ab2597bfe07c67aea8b9ff2e7e7babe02ae90d782a1b791ff9494a6c0448b431
 
 pkgname = keepass-pt
 
