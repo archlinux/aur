@@ -1,0 +1,6 @@
+*.mp3
+test/
+hosts_add_github/
+src/
+pkg/
+*.tar*

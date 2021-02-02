@@ -1,0 +1,15 @@
+pkgbase = hosts-add-github-git
+	pkgdesc = Adding GitHub IPs from GitHub520 to hosts
+	pkgver = r7.73a920d
+	pkgrel = 1
+	url = https://github.com/chenyanzz/hosts_add_github
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = python-requests
+	provides = hosts-add-github
+	source = git+https://github.com/chenyanzz/hosts_add_github.git
+	md5sums = SKIP
+
+pkgname = hosts-add-github-git
+
