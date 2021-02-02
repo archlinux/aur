@@ -2,7 +2,7 @@
 # Contributor: Foxboron
 
 pkgname=jotta-cli
-pkgver=0.7.35160
+pkgver=0.9.39536
 pkgrel=1
 pkgdesc="Jottacloud command line client to back up/share your files to/on Jottacloud."
 arch=('x86_64' 'i686' 'armv7h')
@@ -18,9 +18,9 @@ source_armv7h=("https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_${p
 sha256sums=('236b77504910d1e9c2bec69bd73d49ce9e9ca21dfd26cf0c69a212fe370bbe2d'
             '2f686a82aafbb9b2168303907b2fe623fe4635ff314583dfb38ad747e0a0e450')
 
-sha256sums_x86_64=('1baa0c30b961dd23364404bdac141595da11361194792eaca0eba388fc0b2167')
-sha256sums_i686=('524de91de9a8943437b53e4a59d92856dfef1325ab428ded05236937dc86027c')
-sha256sums_armv7h=('cdd76fa63dc103c2a53fe9da8866277b40454e7acca9c2bf0259eb37050fbea8')
+sha256sums_x86_64=('516d74090d7fd54733bbdd4c156447d142a60acdfb83577f8ca6e175bc52aae5')
+sha256sums_i686=('9f024775f4c49b283a7c8a479f58d958febd4f5c712e7d424a5d6ad4e0b656f6')
+sha256sums_armv7h=('b78b1dd2da899cf08b0e07e28b502c24525c7d72d6119360de4f57090b58deaf')
 
 package() {
     cd ${srcdir}
@@ -38,8 +38,7 @@ package() {
         "${pkgdir}"/usr/lib/tmpfiles.d/$pkgname.conf
 
     # chmod fixes
-    chmod 755 "$pkgdir/usr/bin" 
+    chmod 755 "$pkgdir/usr/bin"
     chmod 755 "$pkgdir/etc/jottad"
     chmod 644 "$pkgdir/etc/jottad/config.ini"
 }
-

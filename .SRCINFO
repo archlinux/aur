@@ -1,6 +1,6 @@
 pkgbase = jotta-cli
 	pkgdesc = Jottacloud command line client to back up/share your files to/on Jottacloud.
-	pkgver = 0.7.35160
+	pkgver = 0.9.39536
 	pkgrel = 1
 	url = http://docs.jottacloud.com/jottacloud-command-line-tool
 	arch = x86_64
@@ -11,12 +11,11 @@ pkgbase = jotta-cli
 	source = jotta-cli.tmpfiles
 	sha256sums = 236b77504910d1e9c2bec69bd73d49ce9e9ca21dfd26cf0c69a212fe370bbe2d
 	sha256sums = 2f686a82aafbb9b2168303907b2fe623fe4635ff314583dfb38ad747e0a0e450
-	source_x86_64 = https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_0.7.35160_amd64.deb
-	sha256sums_x86_64 = 1baa0c30b961dd23364404bdac141595da11361194792eaca0eba388fc0b2167 
-	source_i686 = https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_0.7.35160_i386.deb
-	sha256sums_i686 = 524de91de9a8943437b53e4a59d92856dfef1325ab428ded05236937dc86027c 
-	source_armv7h = https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_0.7.35160_armhf.deb
-	sha256sums_armv7h = cdd76fa63dc103c2a53fe9da8866277b40454e7acca9c2bf0259eb37050fbea8 
+	source_x86_64 = https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_0.9.39536_amd64.deb
+	sha256sums_x86_64 = 516d74090d7fd54733bbdd4c156447d142a60acdfb83577f8ca6e175bc52aae5
+	source_i686 = https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_0.9.39536_i386.deb
+	sha256sums_i686 = 9f024775f4c49b283a7c8a479f58d958febd4f5c712e7d424a5d6ad4e0b656f6
+	source_armv7h = https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_0.9.39536_armhf.deb
+	sha256sums_armv7h = b78b1dd2da899cf08b0e07e28b502c24525c7d72d6119360de4f57090b58deaf
 
 pkgname = jotta-cli
-
