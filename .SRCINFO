@@ -1,6 +1,6 @@
 pkgbase = programmer-calculator
 	pkgdesc = A command line calculator made for programmers working with multiple number representations and close to the bits
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://github.com/alt-romes/programmer-calculator
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = programmer-calculator
 	makedepends = gcc
 	makedepends = ncurses
 	conflicts = pcalc
-	source = programmer-calculator-1.5::https://github.com/alt-romes/programmer-calculator/archive/v1.5.tar.gz
-	sha256sums = 65bb8f21ad256e8e65827ca00e8d51f5d1f0395a08f7cc44747bccfc10bdcc3e
+	source = programmer-calculator-1.6::https://github.com/alt-romes/programmer-calculator/archive/v1.6.tar.gz
+	sha256sums = 400693bfccf905e4def370125bb1d13f275a07954fbe14e9aaf4846e3ddf299f
 
 pkgname = programmer-calculator
 
