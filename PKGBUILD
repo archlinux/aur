@@ -1,20 +1,17 @@
-# Maintainer:F43nd1r <support@faendir.com>
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Contributor:F43nd1r <support@faendir.com>
 
 pkgname=forge-knightminer-bin
-pkgver=1.0.2
+pkgver=1.2.2
 pkgrel=1
-epoch=
-pkgdesc="Mod adding various smaller features to Minecraft "
+pkgdesc="Mod adding various smaller features to Minecraft"
 arch=('any')
 url="https://github.com/KnightMiner/Inspirations"
-license=('custom:CC BY-NC-SA 4.0')
+license=('MIT')
 depends=('forge-server')
-makedepends=()
-optdepends=()
-source=("$pkgname-$pkgver.jar::https://github.com/KnightMiner/Inspirations/releases/download/$pkgver/Inspirations-1.14.4-$pkgver.jar")
+source=("$pkgname-$pkgver.jar::https://github.com/KnightMiner/Inspirations/releases/download/$pkgver/Inspirations-1.16.5-$pkgver.jar")
 noextract=("$pkgname-$pkgver.jar")
-md5sums=('3b95fc5e69d935f4df3c6862e2c183c8')
-sha256sums=('37ac9d7d9700e22209ceaa1fe2ba31115c9f064fa25a53b62e05248e6f966da9')
+sha256sums=('6d03080fbd444bc2f0c4e8641726d62fa741fc48753f9f8a7679e54b5ebf4c05')
 
 package() {
     cd $srcdir
