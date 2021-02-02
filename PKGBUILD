@@ -6,7 +6,7 @@ _obsver=26.1.2
 pkgrel=1
 pkgdesc="adds a configurable hotkey to quickly select a screen region and add it as an image source to the current scene"
 arch=('x86_64')
-url="https://github.com/univrsal/dvds3"
+url="https://github.com/univrsal/scrab"
 license=("GPL2")
 depends=("obs-studio")
 # Need to compile plugin in OBS compilation process
