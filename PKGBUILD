@@ -13,7 +13,6 @@ arch=(x86_64)
 depends=(pcre libffi util-linux-libs zlib)
 makedepends=(gettext gtk-doc shared-mime-info python libelf git util-linux
              meson dbus sysprof)
-checkdepends=(desktop-file-utils)
 _commit=bacbec652d356895ec493f3de2f2f6f4c7dafde0  # tags/2.66.4^0
 source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
         noisy-glib-compile-schemas.diff
@@ -49,6 +48,7 @@ package_glib2-selinux() {
   depends+=(libmount.so)
   provides+=(libgio-2.0.so libglib-2.0.so libgmodule-2.0.so libgobject-2.0.so
              libgthread-2.0.so)
+  conflicts=('glib2')
   optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report'
               'libelf: gresource inspection tool'
               'selinux: selinux support')
@@ -74,7 +74,7 @@ package_glib2-selinux() {
 
 package_glib2-selinux-docs() {
   pkgdesc="Documentation for GLib"
-  depends=()
+  conflicts=(glib2-docs)
   license+=(custom)
 
   mv -t "$pkgdir" docs/*
