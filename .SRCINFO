@@ -1,0 +1,21 @@
+pkgbase = kdepim-apps-libs-git
+	pkgdesc = KDE PIM mail related libraries
+	pkgver = 5.16.40_r518.g85009fe
+	pkgrel = 1
+	url = https://kontact.kde.org
+	arch = x86_64
+	groups = kdepim-git
+	license = LGPL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = boost
+	depends = libkleo-git
+	depends = pimcommon-git
+	depends = grantleetheme-git
+	provides = kdepim-apps-libs
+	conflicts = kdepim-apps-libs
+	source = git+https://github.com/KDE/kdepim-apps-libs.git
+	sha256sums = SKIP
+
+pkgname = kdepim-apps-libs-git
+
