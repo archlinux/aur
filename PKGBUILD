@@ -2,16 +2,15 @@
 
 pkgname=elf-dissector-git
 pkgver=0.0.1_r776.g4113e8b
-pkgrel=1
+pkgrel=2
 pkgdesc='Static analysis tool for ELF libraries and executables'
 arch=($CARCH)
 url='https://invent.kde.org/sdk/elf-dissector'
 license=(GPL)
 depends=(harfbuzz hicolor-icon-theme libdwarf qt5-base)
 makedepends=(extra-cmake-modules-git git kitemmodels-git)
-optdepends=('capstone: disassembler'
-			'gnuplot: performance plot')
-source=('git+https://github.com/KDE/elf-dissector.git')
+optdepends=('capstone: disassembler' 'gnuplot: performance plot')
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
