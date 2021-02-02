@@ -1,62 +1,35 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: João Figueiredo <jf.mundox@gmail.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdisplay-git
-pkgver=5.20.0.beta.0.r59.g4a8202a
+pkgver=5.20.80_r1432.gadf5435
 pkgrel=1
 pkgdesc="App and daemon for display managing by KWinFT project, forked from KDE's KScreen"
-arch=(
-    i686
-    x86_64
-)
+arch=($CARCH)
 url="https://gitlab.com/kwinft/kdisplay"
 license=(LGPL)
-depends=(
-    disman-git
-    kdeclarative
-    qt5-graphicaleffects
-    qt5-sensors
-)
-makedepends=(
-    extra-cmake-modules
-    kcmutils
-    ninja
-    plasma-framework
-)
+groups=(plasma-git)
+depends=(kcmutils-git kdeclarative-git kirigami2-git ki18n-git plasma-framework-git qt5-graphicaleffects qt5-sensors)
+makedepends=(git disman-git extra-cmake-modules-git kcmutils-git)
 provides=(kdisplay)
 conflicts=(kdisplay kscreen)
 source=("git+https://gitlab.com/kwinft/kdisplay.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/kdisplay"
-    
-    git describe --long --tags | sed "s/^kdisplay\@//;s/\([^-]*-g\)/r\1/;s/-/./g"
-}
-
-prepare() {
-    mkdir -p "$srcdir/build"
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(PROJECT_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$srcdir/build"
-    
-    cmake \
-        "$srcdir/kdisplay" \
-        -G Ninja \
-        -D CMAKE_BUILD_TYPE="Release" \
-        -D CMAKE_INSTALL_PREFIX="/usr" \
-        -D KDE_INSTALL_LIBDIR="lib" \
-        -D KDE_INSTALL_LIBEXECDIR="lib" \
-        -D KDE_INSTALL_USE_QT_SYS_PATHS="ON" \
-        -D BUILD_TESTING="OFF"
-    
-    ninja
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-    cd "$srcdir/build"
-    
-    DESTDIR="$pkgdir" ninja install
+  DESTDIR="$pkgdir" cmake --install build
 }
