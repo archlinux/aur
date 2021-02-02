@@ -1,24 +1,21 @@
 # Contributor: xRemaLx <anton.komolov@gmail.com>
+# Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
 
 pkgname=perl-moosex-emulate-class-accessor-fast
 _pkgname=MooseX-Emulate-Class-Accessor-Fast
-pkgver=0.00903
-pkgrel=2
-pkgdesc="'Emulate Class::Accessor::Fast behavior using Moose attributes'"
+pkgver=0.009032
+pkgrel=1
+pkgdesc="Emulate Class::Accessor::Fast behavior using Moose attributes"
 arch=(i686 x86_64)
 license=('perl')
-url="http://search.cpan.org/dist/MooseX-Emulate-Class-Accessor-Fast"
+url="https://metacpan.org/release/MooseX-Emulate-Class-Accessor-Fast"
 options=(!emptydirs)
-
 depends=('perl-namespace-clean' 'perl-moose')
 makedepends=('perl-test-exception' 'perl')
 
-#provides=('MooseX-Emulate-Class-Accessor-Fast')
-provides=("moosex-emulate-class-accessor-fast=${pkgver}" "MooseX::Emulate::Class::Accessor::Fast::Meta::Accessor=undef" "perl-moosex-emulate-class-accessor-fast-meta-accessor=undef" "MooseX::Emulate::Class::Accessor::Fast::Meta::Role::Attribute=undef" "perl-moosex-emulate-class-accessor-fast-meta-role-attribute=undef" "MooseX::Emulate::Class::Accessor::Fast=${pkgver}" "perl-moosex-emulate-class-accessor-fast=${pkgver}" "MooseX::Adopt::Class::Accessor::Fast=${pkgver}" "perl-moosex-adopt-class-accessor-fast=${pkgver}")
-
-source=("http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('edb0d626207e7db61154b5cc65112638')
-sha512sums=('5205589b905449855e34c3772a9d18140352fc964a400fda53c0fee63da19116655d992c1bf1bae1bdfea4c2464fc579bb443d878291644152e1b851827897eb')
+source=("https://cpan.metacpan.org/authors/id/H/HA/HAARG/${_pkgname}-${pkgver}.tar.gz")
+md5sums=('3ff00f2ed7a8a23ffaa9f6f93bc73e74')
+sha512sums=('3e883364033bc6a453ecc52a47c84b66169a4edc302b9cf9ffff2cb6a4bb3954a075d19bd3dc94415b59205a0e91e6172a8678ea64a851c731c21ddcc6485d08')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -45,6 +42,3 @@ package() {
   make install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# vim:set ts=2 sw=2 et:
-
