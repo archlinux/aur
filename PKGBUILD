@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-nightthemeswitcher-git
 pkgver=37.r34.g0a26313
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically toggle your light and dark themes variants"
 arch=('any')
 url="https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension"
@@ -21,11 +21,14 @@ pkgver() {
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+  cd "${srcdir}/${pkgname%-git}"
+  make build
+}
 
 package() {
   _uuid="nightthemeswitcher@romainvigier.fr"
-  cd "${srcdir}/${pkgname%-git}"
-  make build
+  cd "${srcdir}/${pkgname%-git}/build"
   install -d "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
   bsdtar -xf "${srcdir}/${pkgname%-git}/build/${_uuid}.shell-extension.zip" -C "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
   #rebuild compiled schemas if missing
