@@ -10,26 +10,26 @@
 
 pkgbase=networkmanager-iwd
 pkgname=(networkmanager-iwd libnm-iwd nm-iwd-cloud-setup)
-pkgver=1.28.1dev+7+g3f5df3cdc6
-pkgrel=2
+pkgver=1.28.1dev+15+gaa2bc9e6e4
+pkgrel=1
 pkgdesc="Network connection manager and user applications; using iwd backend instead of wpa_supplicant"
 url="https://wiki.gnome.org/Projects/NetworkManager"
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
-_pppver=2.4.7
+_pppver=2.4.8
 makedepends=(intltool dhclient iptables gobject-introspection gtk-doc "ppp=$_pppver" modemmanager
              iproute2 nss polkit wpa_supplicant curl systemd libmm-glib
              libnewt libndp libteam vala perl-yaml python-gobject git vala jansson bluez-libs
              glib2-docs iwd dnsmasq openresolv libpsl audit meson)
 checkdepends=(libx11 python-dbus)
-_commit=3f5df3cdc6c52a79f970c0a9de9200a18df6b3fb  # nm-1-28
+_commit=aa2bc9e6e404814469c0c661c47a712a262b2d4e  # nm-1-28
 source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=$_commit"
         "$pkgbase.install")
 sha256sums=('SKIP' '6f77a626ec3fd7583beb45ffcac236cdc1fe2b5e5b8ccc5d90983312a265e818')
 
 pkgver() {
   cd NetworkManager
-  git describe | sed 's/-dev/dev/;s/-rc/rc/;s/-/+/g'
+  git describe --abbrev=10 | sed 's/-dev/dev/;s/-rc/rc/;s/-/+/g'
 }
 
 prepare() {
@@ -80,8 +80,6 @@ build() {
 }
 
 check() {
-  # iproute2 bug 
-  # https://gitlab.freedesktop.org/NetworkManager/NetworkManager/commit/be76d8b624fab99cbd76092ff511e6adc305279c
   meson test -C build --print-errorlogs || :
 }
 
