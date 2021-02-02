@@ -1,7 +1,7 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_web_shop_vue_storefront
 _name=trytond_web_shop_vue_storefront
-pkgver=5.8.1
+pkgver=5.8.2
 _pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
@@ -12,9 +12,9 @@ license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('4e62f868fae5bf9b96e6b09e4383f663ebfcf9cfc0e27c22ad8368f60894aea5')
-sha512sums=('affd1525c5cce42eb78dcb251720ae384875dce64f8f48116c67feb6def444bd0df2b3f8e861fae92324a4f5d325c08e5b026588b9489dcc872622d27f31857b')
-b2sums=('caddec220f698965a11a05012da36dff8fe839b12a854a66d2f6944f82b2f5297f1e2b00ee5cf136978caaea7cdbaa4f5273d1dd05bbbb81252e020d9f525857')
+sha256sums=('c718c90b542600bf3368ce74b61596fd849642b7919b551bd518e3bb05548659')
+sha512sums=('5564adf15b2527a3fd580830d59da25bc17ab45198a64a4b26bc858ba8343d83f1fcc8794e04ffaa74e0385c5cea9d800282bd6765f94d47a2e3bd0242e34bc4')
+b2sums=('27fae9e76bce22ffb9a0bab0b48591dd651b6362182250fce2614dd7f96ee89e2863f31b1648871689781749e1d981051dc5e319bad8bf8190979dca823fabb8')
 
 build() {
   cd $srcdir/$_name-$pkgver
