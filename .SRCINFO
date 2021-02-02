@@ -1,13 +1,13 @@
 pkgbase = linpack
-	pkgver = 2020.2.001
+	pkgver = 2021.1.1.001
 	pkgrel = 1
 	url = http://software.intel.com/en-us/articles/intel-math-kernel-library-linpack-download
 	arch = x86_64
 	license = custom
-	source = https://software.intel.com/content/dam/develop/external/us/en/documents/l_mklb_p_2020.2.001.tgz
+	source = https://software.intel.com/content/dam/develop/external/us/en/documents/l_mklb_p_2021.1.1.001.tgz
 	source = linpack.conf
 	source = linpack_runme_xeon64
-	b2sums = b26e7220bf1c02b3f58ba9f67733cded00f98cb084bc56d783654de17e6b50bbe71369be6566110606303b8d0f59ff7f2940f8e8d35e4eb0aa9aff00901496b4
+	b2sums = 9eb6207f39b1711acb38a35340c264f24f6ba2195a21eaee6957755df7ecbb01a3d14a463e9659b29cfdbcc85f4fbc6bd0fb75db858e26413875c8753090088d
 	b2sums = cb9e676aab60304f56c1ab099a0a46e0bb2af9beee93b95adbf2661c475c8e5a1ee35c6726f646b98c5cdacbdb1870488526bc0f19de59699c6a550bb2de06b6
 	b2sums = 1ab0b9fde310496400bfa924c2e1a9206f341102117a64b3b086732394cbc33498708322ffbdf45b117898ed35a34b5107127cfedd9eec0eeb1a3f84d7aeaf63
 
