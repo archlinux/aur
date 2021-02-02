@@ -3,26 +3,21 @@
 
 pkgname="emacs-eaf"
 pkgver=2.0.0
-pkgrel=2
-pkgdesc="EAF extends GNU Emacs to an entire universe of powerful GUI applications."
+pkgrel=3
+pkgdesc="EAF is a GUI application framework that revolutionizes Emacs graphical capabilities to ultimately Live in Emacs."
 arch=('x86_64')
 url="https://github.com/manateelazycat/emacs-application-framework"
 license=('GPL3')
-depends=('emacs' 'python-dbus' 'python-pyqt5' 'python-pyqtwebengine' 'wmctrl')
-optdepends=('python-pymupdf: for pdf viewer'
-	    'python-grip: for markdown preview'
-	    'python-qrcode: for qr codes'
-	    'python-feedparser: for rss reader'
-	    'python-pyinotify: for mermaid'
-	    'python-markdown: for mermaid'
-	    'nodejs: for terminal'
-	    'aria2: for browser'
-	    'libreoffice: doc viewer'
-	    'filebrowser-bin: for file browser')
+depends=('emacs' 'python-pyqt5' 'python-pyqt5-sip' 'python-pyqtwebengine' 'wmctrl' 'xdotool' 'nodejs')
+optdepends=('python-pymupdf: EAF PDF Viewer support'
+	        'python-qrcode: EAF File Sender/File Receiver/Airshare support'
+	        'libreoffice: EAF Doc Viewer support'
+	        'filebrowser-bin: EAF File Browser support'
+            'python-qtconsole: EAF Jupyter support')
 makedepends=('git')
 provides=('emacs-eaf')
 conflicts=('emacs-eaf')
-source=("emacs-eaf::https://github.com/manateelazycat/emacs-application-framework")
+source=("emacs-eaf::git+https://github.com/manateelazycat/emacs-application-framework")
 options=(!strip)
 md5sums=('SKIP')
 
@@ -32,9 +27,9 @@ package() {
     mkdir -p "$pkgdir"/usr/share/emacs/site-lisp/eaf/
     for _i in app core docker *.el *.py
     do
-	cp -r ${_i} "$pkgdir"/usr/share/emacs/site-lisp/eaf/
+	    cp -r ${_i} "$pkgdir"/usr/share/emacs/site-lisp/eaf/
     done
-    
+
     mkdir -p "$pkgdir"/usr/share/doc/emacs-eaf/
     cp README.md "$pkgdir"/usr/share/doc/emacs-eaf/README.md
 
