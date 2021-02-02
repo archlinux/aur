@@ -3,6 +3,7 @@
 # Contributor: Theo Tosini <theo.tosini@theoduino.me>
 # Contributor: Gábor Sebestyén <segabor@gmail.com>
 # Contributor: Andrew Sun <adsun701@gmail.com>
+# Contributor: fanjiang <prof.fan@foxmail.com>
 
 pkgname=swift-language
 #pkgname=(swift swift-lldb)
