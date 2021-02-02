@@ -1,0 +1,19 @@
+pkgbase = kactivitymanagerd-git
+	pkgdesc = System service to manage user's activities and track the usage patterns
+	pkgver = 5.20.90_r1316.ge53f5dd
+	pkgrel = 1
+	url = https://kde.org/plasma-desktop/
+	arch = x86_64
+	groups = plasma-git
+	license = LGPL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = boost
+	depends = kio-git
+	provides = kactivitymanagerd
+	conflicts = kactivitymanagerd
+	source = git+https://github.com/KDE/kactivitymanagerd.git
+	sha256sums = SKIP
+
+pkgname = kactivitymanagerd-git
+
