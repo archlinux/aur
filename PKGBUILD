@@ -2,7 +2,7 @@
 
 pkgname=veloren-bin
 pkgver=0.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="An open-world, open-source multiplayer voxel RPG"
 arch=('x86_64')
 url="https://veloren.net/"
@@ -14,19 +14,22 @@ provides=("$pkgname" 'veloren')
 conflicts=("$pkgname" 'veloren')
 source=(
     "$pkgname"::"https://veloren-4129.fra1.digitaloceanspaces.com/releases/$pkgver-linux.tar.gz"
-    "veloren-voxygen.desktop"
-    "voxygen.png"
+    'voxygen-wrapper.sh'
+    'server-cli-wrapper.sh'
 )
-noextract=("veloren-voxygen.desktop" "voxygen.png")
+noextract=('voxygen-wrapper.sh' 'server-cli-wrapper.sh')
 sha512sums=('734fff7deec2e6981d9adab3ce86c30ead9d06340a7b5bb680a6c5d1929fd159b0f1fa0c4889cb48dcd09d869cabe6a347e13be3395da3b07bf4233385e4603e'
-            '312439719c23326eee6c04b216c2a16219c3804bdb451b763eb726062a40f364e32f9c9a608086bb92dcb9b24d938a37f1f05229faf20602a9e1756219fcaad3'
-            'b5e5cbf28ab0e335f5a0fc93511fc9936360432a36e35cc876761601abacf257299deb0af6b3d9081143b700f6663c4f603970155dd4dacedb7a9672cde1dc94')
+            'e35c852bfa8d80a78a4df50c09246e69431efe9ebc208bd3c2a864e7674ee1078ab0d2eb2b2ffc1b67847ab7125a38dd260d8964054f55cdf0305248ece9a11c'
+            '0de4091b3fc6a60d07da2fd590a04e6a3770329455e1e50c5f78259280dab2eddde6721800b741e859490fcff1ff153d99140f5ebb49f78e8e23764b9fa20797')
 
 package() {
-    install -D "$srcdir/veloren-voxygen" -t "$pkgdir/usr/bin/"
-    install -D "$srcdir/veloren-server-cli" -t "$pkgdir/usr/bin/"
+    install -D "$srcdir/veloren-voxygen" -T "$pkgdir/usr/lib/veloren/voxygen"
+    install -D "$srcdir/voxygen-wrapper.sh" -T "$pkgdir/usr/bin/veloren-voxygen"
+    install -D "$srcdir/veloren-server-cli" -T "$pkgdir/usr/lib/veloren/server-cli"
+    install -D "$srcdir/server-cli-wrapper.sh" -T "$pkgdir/usr/bin/veloren-server-cli"
     mkdir -p "$pkgdir/usr/share/veloren"
     cp -a "$srcdir/assets" "$pkgdir/usr/share/veloren/"
-    install -D "$srcdir/veloren-voxygen.desktop" -t "$pkgdir/usr/share/applications"
-    install -Dm 644 "$srcdir/voxygen.png" -t "$pkgdir/usr/share/pixmaps/"
+    install -Dm 644 "$srcdir/assets/voxygen/net.veloren.veloren.desktop" -t "$pkgdir/usr/share/applications"
+    install -Dm 644 "$srcdir/assets/voxygen/net.veloren.veloren.png" -t "$pkgdir/usr/share/pixmaps/"
+    install -Dm 644 "$srcdir/assets/voxygen/net.veloren.veloren.metainfo.xml" -t "$pkgdir/usr/share/metainfo"
 }
