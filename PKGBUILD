@@ -2,14 +2,14 @@
 
 pkgname=melonds-git
 _gitname=melonDS
-pkgver=0.9.r1525.edf4c66
+pkgver=0.9.1.r1704.2e999ae
 pkgdesc='DS emulator, sorta. also 1st quality melon.'
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://melonds.kuribo64.net/"
 license=('GPLv3')
 makedepends=('git' 'cmake' 'pkg-config')
-depends=('sdl2' 'libslirp' 'qt5-base')
+depends=('sdl2' 'libslirp' 'qt5-base' 'libepoxy')
 source=("${_gitname}::git+https://github.com/Arisotura/${_gitname}.git")
 provides=('melonds')
 conflicts=('melonds')
