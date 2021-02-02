@@ -1,33 +1,31 @@
 # Maintainer: João Figueiredo <jf dot mundox at gmail dot com> 
 
 pkgname=elf-dissector-git
-pkgver=r775.6659853
+pkgver=0.0.1_r776.g4113e8b
 pkgrel=1
-pkgdesc="Static analysis tool for ELF libraries and executables"
-arch=('x86_64')
-url="https://invent.kde.org/sdk/elf-dissector"
-license=('GPL')
-depends=('harfbuzz' 'hicolor-icon-theme' 'libdwarf' 'qt5-base')
+pkgdesc='Static analysis tool for ELF libraries and executables'
+arch=($CARCH)
+url='https://invent.kde.org/sdk/elf-dissector'
+license=(GPL)
+depends=(harfbuzz hicolor-icon-theme libdwarf qt5-base)
+makedepends=(extra-cmake-modules-git git kitemmodels-git)
 optdepends=('capstone: disassembler'
-	    'gnuplot: performance plot')
-makedepends=('extra-cmake-modules' 'git' 'kitemmodels')
+			'gnuplot: performance plot')
 source=('git+https://github.com/KDE/elf-dissector.git')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd ${pkgname%-git}
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'project(elf-dissector VERSION' CMakeLists.txt | cut -d ' ' -f3 | tr - . | tr -d ')')"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd ${pkgname%-git}
-	mkdir -p build
-	cd build
-	cmake ..
-	make
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-	cd ${pkgname%-git}/build
-	make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
