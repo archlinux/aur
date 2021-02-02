@@ -14,7 +14,7 @@ depends=('exiv2' 'graphicsmagick' 'qt5-imageformats' 'qt5-multimedia' 'qt5-svg' 
 optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support')
 makedepends=('cmake' 'qt5-tools' 'extra-cmake-modules')
-source=(https://photoqt.org/pkgs/$pkgname-$pkgver.tar.gz
+source=(https://photoqt.org/downloads/source/$pkgname-$pkgver.tar.gz
         https://photoqt.org/downloads/patches/sorting-2.1.patch
         https://photoqt.org/downloads/patches/dontadddir-2.1.patch)
 sha256sums=('a334c73efb9a6be272b8e837a009e819d5672581273d56bb585a93595794d43a'
