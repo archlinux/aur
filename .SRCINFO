@@ -36,7 +36,7 @@ pkgbase = julia-git
 	sha256sums = 1aee33d62dcd8e6b65672bd9996a61c83e44056dd31efa79761cb85effb0e6a1
 	sha256sums = d4c8fe9eec1bc416549924ae328ceb3f63cc736ecd5e67886faa924e7c14bc5d
 	sha256sums = 856dab2da8124df95e4fbd17f1164bebe1b10e99852fedf38f9dfe31f8ae295c
-	sha256sums = 0b57e0bc6e25c92fde8a6474394f7a99bfb57f9b5d0f7b53f988622ae67de8b7
+	sha256sums = 09b6077149fa3d22b71b63e471f077d1f3dbeb39d682030c73c316e939e2cc19
 
 pkgname = julia-git
 	optdepends = openblas-lapack: multithreaded replacement for lapack

@@ -10,7 +10,7 @@
 -else
 -	@$(MAKE) $(QUIET_MAKE) release
 -endif
-+install:
++install: $(build_depsbindir)/stringreplace
  	@for subdir in $(bindir) $(datarootdir)/julia/stdlib/$(VERSDIR) $(docdir) $(man1dir) $(includedir)/julia $(libdir) $(private_libdir) $(sysconfdir) $(libexecdir); do \
  		mkdir -p $(DESTDIR)$$subdir; \
  	done

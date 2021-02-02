@@ -5,7 +5,7 @@
 _pkgbase=julia
 pkgbase=${_pkgbase}-git
 pkgname=(julia-git julia-git-docs)
-pkgver=1.6.0.DEV.r47020.gb59417235f5
+pkgver=1.7.0.DEV.r48868.g7ecdcc53400
 pkgrel=1
 arch=(x86_64)
 pkgdesc='High-level, high-performance, dynamic programming language'
@@ -27,10 +27,12 @@ depends=(
 	mpfr
 	openlibm
 	pcre2
+	zlib p7zip
 	xdg-utils desktop-file-utils
 	gtk-update-icon-cache
 )
 makedepends=(
+	patchelf
 	cmake gcc-fortran
 	python
 	git
@@ -44,7 +46,7 @@ sha256sums=('SKIP'
             '1aee33d62dcd8e6b65672bd9996a61c83e44056dd31efa79761cb85effb0e6a1'
             'd4c8fe9eec1bc416549924ae328ceb3f63cc736ecd5e67886faa924e7c14bc5d'
             '856dab2da8124df95e4fbd17f1164bebe1b10e99852fedf38f9dfe31f8ae295c'
-            '0b57e0bc6e25c92fde8a6474394f7a99bfb57f9b5d0f7b53f988622ae67de8b7')
+            '09b6077149fa3d22b71b63e471f077d1f3dbeb39d682030c73c316e939e2cc19')
 
 
 pkgver() {
