@@ -1,6 +1,6 @@
 post_install() {
 	echo -e "\e[1mAutocomplete\e[0m:"
-    echo -e "  To enable shell autocomplete run \e[1mearth bootstrap\e[0m"
+    echo -e "  To enable shell autocomplete run \e[1mearthly bootstrap\e[0m"
 }
 
 post_upgrade() {
