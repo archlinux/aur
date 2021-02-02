@@ -5,4 +5,4 @@ not_found_error="Couldn't find a path for user data. Try setting VELOREN_USERDAT
 [ $XDG_DATA_HOME ] && xdg_path=$XDG_DATA_HOME/veloren/userdata
 export VELOREN_USERDATA=${VELOREN_USERDATA-"${xdg_path-${HOME?$not_found_error}/.local/share/veloren/userdata}"}
 
-/usr/lib/veloren/server "$@"
+/usr/lib/veloren/server-cli "$@"
