@@ -1,7 +1,7 @@
 # Maintainer: Max Harmathy <max.harmathy@web.de>
 # Contributor: Wesley Moore <wes@wezm.net>
 pkgname=tootle
-pkgver=1.0_alpha2
+pkgver=1.0
 _pkgver=${pkgver//_/-}
 pkgrel=1
 pkgdesc="GTK3 client for Mastodon"
@@ -13,7 +13,7 @@ optdepends=('noto-fonts-emoji: color emoji')
 makedepends=('git' 'desktop-file-utils' 'hicolor-icon-theme' 'intltool' 'yelp-tools' 'gnome-common' 'gobject-introspection' 'meson' 'ninja' 'vala')
 options=('!libtool')
 source=("https://github.com/bleakgrey/$pkgname/archive/${_pkgver}.tar.gz")
-sha256sums=('7094adf37a177782a0cfc9c4d951a96e646bd496a74ac7e121b8c67e710d9199')
+sha256sums=('e0a0a062b1b72010242f7bb4db97cd71190f23067188b5c07372264d768a0496')
 
 build() {
   cd "${srcdir}/${pkgname}-${_pkgver}"
