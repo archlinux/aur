@@ -1,7 +1,7 @@
 pkgbase = emulicious-bin
 	pkgdesc = Game Boy, Game Boy Color, Master System, Game Gear and MSX emulator with C-level debug capabilties
 	pkgver = 2021.01.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://emulicious.net
 	arch = any
 	license = custom,

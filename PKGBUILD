@@ -4,7 +4,7 @@ pkgname=emulicious-bin
 # for release date see WhatsNew.txt
 # emulicious does not communicate any version numbers
 pkgver=2021.01.30
-pkgrel=1
+pkgrel=2
 pkgdesc="Game Boy, Game Boy Color, Master System, Game Gear and MSX emulator with C-level debug capabilties"
 url="https://emulicious.net"
 license=('custom', 'BSD')

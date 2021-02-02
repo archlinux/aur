@@ -11,4 +11,7 @@ TryExec=java
 Exec=emulicious
 Terminal=false
 
+MimeType=application/x-gameboy-rom;application/x-gameboy-color-rom;application/x-sms-rom;application/x-gamegear-rom;application/x-msx-rom
+
+Icon=joystick
 Categories=Game;Emulator;Development;Debugger;Java
