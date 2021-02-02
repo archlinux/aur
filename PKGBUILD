@@ -9,7 +9,7 @@ makedepends=('python-setuptools' 'python' 'python-future')
 depends=('python' 'python-numpy' 'python-scipy' 'python-matplotlib')
 optdepends=('gmsh: creation of irregular meshes')
 source=("fipy-$pkgver.tar.gz::https://github.com/usnistgov/fipy/archive/${pkgver}.tar.gz")
-sha256sums=('f7dfeb1aaf7c723c7287e7c9a6978f2c7c4828a87bfa11d901b0f8c319a3b0ee')
+sha256sums=('be8caaafe3ef2dc2c5ca02d8e91472bbdde0b19df1104170915fbb0b867c17a0')
 
 prepare(){
    cp -R fipy-${pkgver} fipy-${pkgver}-py3
