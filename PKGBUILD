@@ -4,8 +4,8 @@
 _pkgname=cleo
 pkgname=python-cleo-git
 pkgver=1.0.0a1.r1.ga772384
-pkgrel=1
-pkgdesc="CliKit is a group of utilities to build beautiful and testable command line interfaces."
+pkgrel=2
+pkgdesc="Cleo allows you to create beautiful and testable command-line interfaces."
 arch=('any')
 provides=("python-cleo")
 conflicts=('python-cleo')

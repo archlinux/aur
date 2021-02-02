@@ -1,7 +1,7 @@
 pkgbase = python-cleo-git
-	pkgdesc = CliKit is a group of utilities to build beautiful and testable command line interfaces.
+	pkgdesc = Cleo allows you to create beautiful and testable command-line interfaces.
 	pkgver = 1.0.0a1.r1.ga772384
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sdispater/cleo
 	arch = any
 	license = MIT
