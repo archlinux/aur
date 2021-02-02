@@ -1,12 +1,13 @@
 pkgbase = material-maker-bin
-	pkgdesc = A tool based on Godot Engine that can be used to create textures procedurally
-	pkgver = 0.93
+	pkgdesc = A tool that can be used to create textures procedurally and paint 3D models
+	pkgver = 0.94
 	pkgrel = 1
 	url = https://rodzilla.itch.io/material-maker
 	arch = x86_64
 	license = MIT
 	depends = libpulse
 	depends = alsa-lib
+	depends = libxi
 	depends = libxrandr
 	depends = libglvnd
 	depends = libxcursor
@@ -16,16 +17,16 @@ pkgbase = material-maker-bin
 	conflicts = material-maker
 	conflicts = material-maker-git
 	options = !strip
-	source = https://github.com/RodZill4/material-maker/releases/download/0.93/material_maker_0_93_linux.tar.gz
+	source = https://github.com/RodZill4/material-maker/releases/download/0.94/material_maker_0_94_linux.tar.gz
 	source = io.github.RodZill4.Material-Maker.appdata.xml
 	source = io.github.RodZill4.Material-Maker.desktop
 	source = material-maker.png
 	source = LICENSE
-	sha256sums = b85f2c2b577e899d741c50d1047bb3870fd4a784f3927112264eba737890b28f
-	sha256sums = 4a27286e448b35c2e7e840c267ac2402f53956ff9fcb5c5f8285797753c32e38
+	sha256sums = a2999f6e61e8c871337ad2ef899f6a431bd4d84cd36209b9c148bca3cbeac83b
+	sha256sums = 2a2eafab867f877a62b600257a7a640f115f356b14fc102d051d742620d1c7f8
 	sha256sums = d8c96863144183d9f256229232c0cfe18b10518abdb2bba3477781a8d96f0133
 	sha256sums = b6217901109513d5856369b1d9fd8a1981b584ab8d3091fa9c37691782495222
-	sha256sums = ddbacfaf9c588c476c73073e27f69d8137fe41cec7e9081ad0f6fefaa92541b3
+	sha256sums = SKIP
 
 pkgname = material-maker-bin
 

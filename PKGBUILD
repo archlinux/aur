@@ -1,14 +1,14 @@
 # Maintainer: Hilton Medeiros <medeiros.hilton@gmail.com>
 pkgname=material-maker-bin
 _pkgname=material_maker
-pkgver=0.93
+pkgver=0.94
 _pkgver=${pkgver//./_}
 pkgrel=1
-pkgdesc="A tool based on Godot Engine that can be used to create textures procedurally"
+pkgdesc="A tool that can be used to create textures procedurally and paint 3D models"
 arch=('x86_64')
 url="https://rodzilla.itch.io/material-maker"
 license=('MIT')
-depends=('libpulse' 'alsa-lib' 'libxrandr' 'libglvnd' 'libxcursor' 'libxinerama' 'hicolor-icon-theme')
+depends=('libpulse' 'alsa-lib' 'libxi' 'libxrandr' 'libglvnd' 'libxcursor' 'libxinerama' 'hicolor-icon-theme')
 options=(!strip)
 provides=('material-maker')
 conflicts=('material-maker' 'material-maker-git')
@@ -17,11 +17,11 @@ source=(https://github.com/RodZill4/material-maker/releases/download/${pkgver}/$
         io.github.RodZill4.Material-Maker.desktop
         material-maker.png
         LICENSE)
-sha256sums=('b85f2c2b577e899d741c50d1047bb3870fd4a784f3927112264eba737890b28f'
-            '4a27286e448b35c2e7e840c267ac2402f53956ff9fcb5c5f8285797753c32e38'
+sha256sums=('a2999f6e61e8c871337ad2ef899f6a431bd4d84cd36209b9c148bca3cbeac83b'
+            '2a2eafab867f877a62b600257a7a640f115f356b14fc102d051d742620d1c7f8'
             'd8c96863144183d9f256229232c0cfe18b10518abdb2bba3477781a8d96f0133'
             'b6217901109513d5856369b1d9fd8a1981b584ab8d3091fa9c37691782495222'
-            'ddbacfaf9c588c476c73073e27f69d8137fe41cec7e9081ad0f6fefaa92541b3')
+            'SKIP')
 
 package() {
   install -d "$pkgdir/opt/$pkgname"
