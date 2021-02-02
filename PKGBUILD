@@ -2,7 +2,8 @@
 
 pkgname=jupyterlab_code_formatter
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
+_pyver=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
 pkgdesc='A universal code formatter for JupyterLab.'
 arch=(any)
 url=https://pypi.org/project/jupyterlab-code-formatter
@@ -23,5 +24,7 @@ build() {
 package() {
   cd $srcdir/${pkgname}-${pkgver}
   python setup.py install --root $pkgdir --skip-build --optimize=1
+  mkdir -p $pkgdir/{etc,usr/share/jupyter}
+  cp -r $srcdir/${pkgname}-${pkgver}/jupyter-config $pkgdir/etc/jupyter
   install -Dm644 $srcdir/LICENSE $pkgdir/usr/share/licenses/${pkgname}/LICENSE
 }
