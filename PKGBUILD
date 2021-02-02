@@ -13,7 +13,7 @@ source=("git+https://github.com/SaschaWillems/VulkanCapsViewer.git"
                "git+https://github.com/KhronosGroup/Vulkan-Headers")
 sha1sums=('SKIP' 'SKIP')
 makedepends=(git)
-depends=(vulkan-icd-loader qt5-base qt5-x11extras)
+depends=(vulkan-icd-loader qt5-x11extras hicolor-icon-theme)
 conflicts=('vulkan-caps-viewer')
 provides=('vulkan-caps-viewer')
 
