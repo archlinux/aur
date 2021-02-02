@@ -31,3 +31,36 @@ pkgbase = brave-browser-nightly
 
 pkgname = brave-browser-nightly
 
+pkgbase = brave-browser-nightly
+	pkgdesc = Web browser that blocks ads and trackers by default (nightly binary release).
+	pkgver = 1.21.39
+	pkgrel = 1
+	url = https://brave.com/download-nightly
+	arch = x86_64
+	license = MPL2
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = ttf-font
+	optdepends = cups: Printer support
+	optdepends = pepper-flash: Adobe Flash support
+	optdepends = mesa: Hardware accelerated rendering
+	optdepends = libglvnd: Support multiple different OpenGL drivers at any given time
+	optdepends = libgnome-keyring: gnome keyriung support
+	provides = brave-browser-nightly
+	provides = brave
+	conflicts = brave-nightly-bin
+	noextract = brave-browser-nightly-1.21.39.zip
+	options = !strip
+	source = brave-browser-nightly-1.21.39.zip::https://github.com/brave/brave-browser/releases/download/v1.21.39/brave-browser-nightly-1.21.39-linux-amd64.zip
+	source = brave-browser-nightly.sh
+	source = brave-browser-nightly.png
+	source = brave-browser-nightly.desktop
+	sha512sums = 1cef93826626aa8ea0d0a6ee4b5cb9f514df446641e633124c80a9330c135b2cc16a55ddbe5276d28a2858fbc20cc47b4cd50c0219db831c02d1dd0178dfd851
+	sha512sums = SKIP
+	sha512sums = d5ce90529c2b75357518ebde10e28e9d6f36efe21b705d7e48be07b1f320d739ef211c1bcc353aeefab3f27b7ba78793ebb74a204ac6c8efae855001b80de72a
+	sha512sums = acf4f25ab54c346cfea9ca05e48308deb874728a8c2954d9b2f4239361d470ab0ad0cb98a177e3c33416785238b35c3ea3f230a4053c3d73f85fcdcc11432554
+
+pkgname = brave-browser-nightly
+

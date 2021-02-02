@@ -8,4 +8,4 @@ if [[ -f $USER_FLAGS_FILE ]]; then
    USER_FLAGS="$(cat $USER_FLAGS_FILE | sed 's/#.*//')"
 fi
 
-TZ=UTC /usr/lib/brave-browser-nightly/brave-browser-nightly"$@" $USER_FLAGS
+TZ=UTC /usr/lib/brave-browser-nightly/brave-browser-nightly "$@" $USER_FLAGS
