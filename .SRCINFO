@@ -1,7 +1,7 @@
 pkgbase = pfetch
 	pkgdesc = A pretty system information tool written in POSIX sh.
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dylanaraps/pfetch
 	arch = any
 	license = MIT

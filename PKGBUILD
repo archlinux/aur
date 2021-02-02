@@ -3,7 +3,7 @@
 
 pkgname=pfetch
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A pretty system information tool written in POSIX sh."
 arch=('any')
 url="https://github.com/dylanaraps/$pkgname"
@@ -15,5 +15,5 @@ b2sums=('300f6f44f9306df4f438227a6f35bd54f50e477b950a45d63656f7c460cfc30a8b44ebd
 
 package() {
   install -Dm755 "$srcdir/$pkgname-$pkgver/pfetch" "$pkgdir/usr/bin/pfetch"
-  install -Dm755 "$srcdir/$pkgname-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
