@@ -3,7 +3,7 @@
 
 pkgname=amduprof
 pkgver=3.3.462
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD uProf performance analysis tool."
 arch=('x86_64')
 license=('custom')
@@ -30,7 +30,7 @@ package() {
 	cp -r ${srcdir}/AMDuProf_Linux_x64_${pkgver}/* ${prefix}
 
 	# modulefile
-	echo -e "\nSymlinking modulefile '${modulefile}'..."
+	echo -e "\nSymlinking modulefile ..."
 	cp ${srcdir}/modulefile ${prefix}
 	mkdir -p ${pkgdir}${MODULESHOME}/modulefiles/
 	ln -s ${amduprof_prefix}/modulefile ${pkgdir}${MODULESHOME}/modulefiles/${pkgname}
