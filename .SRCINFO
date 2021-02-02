@@ -24,7 +24,7 @@ pkgbase = waterfox-g3-bin
 	conflicts = waterfox-g3
 	source = waterfox-g3.desktop
 	source = https://cdn.waterfox.net/releases/linux64/installer/waterfox-G3.1.0.en-US.linux-x86_64.tar.bz2
-	sha256sums = 2677c0b45a2238efa01578475118a2f2abf19454231d0fa68bb83c818db1c3d8
+	sha256sums = 6d37d08ee522173057918de8ad8394ba62b61a38c102cb03439d257a93e4b4a6
 	sha256sums = a166b62b8656e5df1eb782ceabd5023eec3c4ffbc4e78edb9bd496e9689843ed
 
 pkgname = waterfox-g3-bin

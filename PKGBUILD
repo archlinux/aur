@@ -58,5 +58,5 @@ END
 	ln -s /opt/waterfox-g3/waterfox "${pkgdir}"/usr/bin/waterfox-g3
 }
 
-sha256sums=('2677c0b45a2238efa01578475118a2f2abf19454231d0fa68bb83c818db1c3d8'
+sha256sums=('6d37d08ee522173057918de8ad8394ba62b61a38c102cb03439d257a93e4b4a6'
             'a166b62b8656e5df1eb782ceabd5023eec3c4ffbc4e78edb9bd496e9689843ed')
