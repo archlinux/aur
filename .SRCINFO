@@ -1,0 +1,19 @@
+pkgbase = libgravatar-git
+	pkgdesc = KDE PIM library providing Gravatar support
+	pkgver = 5.16.40_r321.g0c7a696
+	pkgrel = 1
+	url = https://kontact.kde.org
+	arch = x86_64
+	groups = kdepim-git
+	license = LGPL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = boost
+	depends = pimcommon-git
+	provides = libgravatar
+	conflicts = libgravatar
+	source = git+https://github.com/KDE/libgravatar.git
+	sha256sums = SKIP
+
+pkgname = libgravatar-git
+
