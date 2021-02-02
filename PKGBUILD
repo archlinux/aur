@@ -3,17 +3,18 @@
 
 pkgname="emacs-eaf"
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="EAF is a GUI application framework that revolutionizes Emacs graphical capabilities to ultimately Live in Emacs."
 arch=('x86_64')
 url="https://github.com/manateelazycat/emacs-application-framework"
 license=('GPL3')
-depends=('emacs' 'python-pyqt5' 'python-pyqt5-sip' 'python-pyqtwebengine' 'wmctrl' 'xdotool' 'nodejs')
+depends=('emacs' 'python-epc' 'python-pyqt5' 'python-pyqt5-sip' 'python-pyqtwebengine' 'wmctrl' 'xdotool' 'nodejs')
 optdepends=('python-pymupdf: EAF PDF Viewer support'
 	        'python-qrcode: EAF File Sender/File Receiver/Airshare support'
 	        'libreoffice: EAF Doc Viewer support'
 	        'filebrowser-bin: EAF File Browser support'
-            'python-qtconsole: EAF Jupyter support')
+            'python-qtconsole: EAF Jupyter support'
+            'python-retrying: EAF Markdown Previewer support')
 makedepends=('git')
 provides=('emacs-eaf')
 conflicts=('emacs-eaf')
