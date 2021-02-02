@@ -1,7 +1,7 @@
 pkgbase = nekofetch-git
 	pkgdesc = neofetch but with nekos
 	pkgver = r30.0e8a74b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/propruhh/nekofetch
 	arch = any
 	license = GPL3
@@ -11,6 +11,7 @@ pkgbase = nekofetch-git
 	depends = jq
 	depends = jp2a
 	depends = neofetch
+	optdepends = imagemagick: support for kitty image backend
 	provides = nekofetch
 	conflicts = nekofetch
 	source = git+https://github.com/propruhh/nekofetch.git#branch=master
