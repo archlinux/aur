@@ -1,6 +1,6 @@
 # Maintainer: Henry-Joseph Audéoud <h.audeoud@gmail.com>
 pkgname=walt-server
-pkgver=6
+pkgver=7
 pkgrel=1
 pkgdesc="WalT server components"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(walt-common walt-virtual
          python-psycopg2 python-sdnotify python-dateutil)
 source=("https://files.pythonhosted.org/packages/source/w/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "LICENSE")
-sha256sums=('e545d8e8411afadb76d0c5ca87557bd72f10d2170e5fdaa154596374b90ab05a'
+sha256sums=('a6bcd87cec826de215a6ebe459d38629e2f6fcabcea3339881a36a695a418c7e'
             '49e4de7e7679bb97dd8bf5363c87da852ef1e00d8a1263d2fe4855d7b47fd401')
 
 package() {
