@@ -1,6 +1,6 @@
 pkgbase = obs-audio-monitor
 	pkgdesc = Plugin for OBS Studio to add Audio Monitor dock and filter
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/exeldro/obs-audio-monitor
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = obs-audio-monitor
 	makedepends = jack
 	makedepends = gtk-update-icon-cache
 	depends = obs-studio
-	source = obs-audio-monitor-0.2.1::git+https://github.com/exeldro/obs-audio-monitor#commit=ad0e667e230185c594b126175383167b8d6e90d0
+	source = obs-audio-monitor-0.2.2::git+https://github.com/exeldro/obs-audio-monitor#commit=f5c76f243ae00b7b3382e617b922c8943ec2de2a
 	source = add_pulse.patch::https://patch-diff.githubusercontent.com/raw/exeldro/obs-audio-monitor/pull/5.patch
 	source = obs-studio-26.1.2.tar.gz::https://github.com/obsproject/obs-studio/archive/26.1.2.tar.gz
 	source = fix_python_binary_loading.patch
