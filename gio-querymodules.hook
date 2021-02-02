@@ -1,0 +1,12 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = usr/lib/gio/modules/
+
+[Action]
+Description = Updating GIO module cache...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/gio-querymodules
+NeedsTargets
