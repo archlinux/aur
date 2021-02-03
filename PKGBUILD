@@ -4,9 +4,9 @@ pkgdesc="ROS - Tests for MAVROS package."
 url='https://github.com/mavlink/mavros'
 
 pkgname='ros-melodic-test-mavros'
-pkgver='1.5.1'
+pkgver='1.5.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD, GPLv3, LGPLv3')
 
 ros_makedepends=(ros-melodic-mavros-extras
@@ -46,7 +46,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="mavros-${pkgver}/test_mavros"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mavlink/mavros/archive/${pkgver}.tar.gz")
-sha256sums=('28e6b007bae627e6db5908575aa249f8fd081f18c67b9925a81914602296d33e')
+sha256sums=('b04df3129e42ae2371c53ecac391760ad8c6457f6ce811c6934c9ffb9e4bfdb2')
 
 build() {
   # Use ROS environment variables
