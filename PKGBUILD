@@ -1,20 +1,29 @@
-# Maintainer: Gökberk Yaltıraklı <webdosusb at gmail dot com>
+# Maintainer: Danila Fedotov <mail at danilafedotov dot com>
+# Previous Maintainer: Gökberk Yaltıraklı <webdosusb at gmail dot com>
 pkgname=notes
-pkgver=1.0.0
+pkgver=1.5.0
+_commmit=4840afcf0ea87f9b9eecc849ef3e4ec2e36894d7
 pkgrel=1
 pkgdesc="Note taking application, write down your thoughts."
 arch=('i686' 'x86_64')
 url="https://github.com/nuttyartist/notes"
 license=('MPL')
 depends=('qt5-base')
-makedepends=()
+makedepends=(git)
 provides=('notes')
 conflicts=('notes')
-source=($pkgname-$pkgver.tar.gz::"https://github.com/nuttyartist/notes/archive/v$pkgver.tar.gz")
-md5sums=('5731d46b15a3ed0666254bbfcb304f8e')
+
+prepare() {
+    cd "$srcdir"
+    git clone https://github.com/nuttyartist/notes.git
+    cd "$srcdir/notes"
+    git reset --hard $_commit
+    git submodule init
+    git submodule update
+}
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   cat > $pkgname.desktop << EOF
 [Desktop Entry]
@@ -31,12 +40,12 @@ EOF
 
   mkdir build
   cd build
-  qmake ../src/Notes.pro
+  qmake ../src/
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   install -Dm755 build/notes $pkgdir/usr/bin/$pkgname
   install -Dm644 src/images/notes_icon.ico $pkgdir/usr/share/pixmaps/${pkgname}_icon.ico
   install -Dm644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
