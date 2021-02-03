@@ -12,7 +12,7 @@ pkgdesc='The command line interface for Phabricator'
 arch=('any')
 url='https://www.phacility.com/phabricator/arcanist'
 license=('Apache')
-depends=('libphutil' 'php' 'python')
+depends=('libphutil' 'php7' 'python')
 optdepends=('git: Git VCS support' 'subversion: Subversion VCS support' 'mercurial: Mercurial VCS support')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
