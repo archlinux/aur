@@ -1,0 +1,11 @@
+pkgbase = php7-symlinks
+	pkgdesc = Symlinks PHP7 binaries and configuration without the "7" suffix
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	depends = php7
+	provides = php
+	conflicts = php
+
+pkgname = php7-symlinks
+
