@@ -3,7 +3,7 @@
 _pkgbase=Nordic
 pkgbase=nordic-kde-git
 pkgname=(nordic-kde-git kvantum-theme-nordic-git sddm-nordic-theme-git)
-pkgver=1.9.0.r30.g07d764c
+pkgver=1.9.0.r33.gce75292
 pkgrel=1
 pkgdesc="Theme for KDE Plasma 5 using the awesome Nord color pallete"
 arch=(any)
@@ -32,7 +32,8 @@ package_nordic-kde-git() {
 
     cd ${_pkgbase}/kde
     install -d "${pkgdir}"/usr/share
-    cp -r aurorae "${pkgdir}"/usr/share
+    mkdir -p "${pkgdir}"/usr/share/aurorae/themes
+    cp -r aurorae/Nordic "${pkgdir}"/usr/share/aurorae/themes
     mkdir -p "${pkgdir}"/usr/share/color-schemes
     cp -r colorschemes/* "${pkgdir}"/usr/share/color-schemes
     cp -r konsole "${pkgdir}"/usr/share
