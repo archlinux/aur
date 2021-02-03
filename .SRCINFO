@@ -1,7 +1,7 @@
 pkgbase = ndn-nlsr
 	pkgdesc = Named Data Link State Routing Protocol
-	pkgver = 0.5.2
-	pkgrel = 4
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://github.com/named-data/NLSR
 	arch = i686
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = ndn-nlsr
 	depends = ndn-chronosync
 	provides = ndn-nlsr
 	conflicts = ndn-nlsr
-	source = https://github.com/named-data/NLSR/archive/NLSR-0.5.2.tar.gz
-	sha256sums = 27d8672784c63f815ff519f807e94fbb66f1a8da3674fe907cea762f465d55de
+	source = https://github.com/named-data/NLSR/archive/NLSR-0.6.0.tar.gz
+	sha256sums = b63c0118fcf92c73f2d9b7f1d4deca73d263de7f3a14dce2770b1ec669d16152
 
 pkgname = ndn-nlsr
 
