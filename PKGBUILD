@@ -1,9 +1,10 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: Cullen Ross <cullenrss@gmail.com>
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: stef204 <stef204@yandex.com>
 
 pkgname=ptask
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 _taskver=2.5.3
 pkgdesc='GTK+ task managing application'
 arch=('x86_64')
