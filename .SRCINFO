@@ -1,6 +1,6 @@
 pkgbase = deutex-git
 	pkgdesc = A WAD file composer for Doom, Heretic, Hexen and Strife
-	pkgver = 5.2.1.r2.g40f7f63
+	pkgver = 5.2.2.r1.gef1c06a
 	pkgrel = 1
 	url = https://github.com/Doom-Utils/deutex
 	arch = i686
