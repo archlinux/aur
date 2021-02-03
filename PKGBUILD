@@ -2,8 +2,8 @@
 _reponame=PSync
 _pkgname=ndn-psync
 pkgname=$_pkgname
-pkgver=0.2.0
-pkgrel=5
+pkgver=0.3.0
+pkgrel=1
 # epoch=
 pkgdesc="Library implementing Named Data Networking (NDN) primitives that can be used to write various NDN applications"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ options=()
 install=
 source=(https://github.com/named-data/${_reponame}/archive/${pkgver}.tar.gz)
 noextract=()
-sha256sums=('ab18f2f17df48bfc4b6baa064a826d8f1c3b1e464748a2106f47decd69183b02')
+sha256sums=('65f9f0425950d6b55201f103b899365ce3ecd4eb4d4e83430e0a4de2c0803068')
 validpgpkeys=()
 
 prepare() {
