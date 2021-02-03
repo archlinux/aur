@@ -4,7 +4,7 @@
 _pkgname=sile
 pkgname=$_pkgname-luajit-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.10.13.r3.g6024bde
+pkgver=0.10.14.r0.g175595a
 pkgrel=1
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
@@ -22,6 +22,7 @@ _lua_deps=('cassowary'
            'sec'
            'socket'
            'stdlib'
+           'utf8'
            'vstruct'
            'zlib')
 depends=('fontconfig'
