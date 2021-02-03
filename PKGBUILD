@@ -1,20 +1,21 @@
 # Maintainer: Lucas H. Gabrielli <heitzmann@gmail.com>
 
 pkgname=slepc-git
-pkgver=20201003
-pkgrel=2
+pkgver=20210203
+pkgrel=1
 pkgdesc="Scalable library for Eigenvalue problem computations"
 provides=(slepc)
 conflicts=(slepc)
 arch=('i686' 'x86_64')
 url="https://gitlab.com/slepc/slepc"
 license=('BSD')
-depends=('petsc')
+depends=('petsc-git')
 makedepends=('git')
 install=slepc.install
 source=(slepc::git+https://gitlab.com/slepc/slepc.git#branch=release)
 sha256sums=('SKIP')
 
+_slepc_dir='/usr/local/slepc'
 
 pkgver() {
     cd slepc
@@ -24,13 +25,13 @@ pkgver() {
 
 build() {
 	source /etc/profile.d/petsc.sh
-	_install_dir=/opt/slepc/`basename ${PETSC_DIR}`
+	_install_dir=${_slepc_dir}/`basename ${PETSC_DIR}`
 
 	cd slepc
 
 	export SLEPC_DIR="${srcdir}/slepc"
 
-	python ./configure --prefix=${_install_dir}
+	python ./configure --prefix="${_install_dir}" --with-clean
 
 	make all
 }
@@ -42,7 +43,7 @@ package() {
     source /etc/profile.d/petsc.sh
 
     _build_dir="${srcdir}/slepc"
-	_install_dir=/opt/slepc/`basename ${PETSC_DIR}`
+	_install_dir=${_slepc_dir}/`basename ${PETSC_DIR}`
 
     export SLEPC_DIR="${_build_dir}"
 

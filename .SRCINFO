@@ -1,14 +1,14 @@
 pkgbase = slepc-git
 	pkgdesc = Scalable library for Eigenvalue problem computations
-	pkgver = 20201003
-	pkgrel = 2
+	pkgver = 20210203
+	pkgrel = 1
 	url = https://gitlab.com/slepc/slepc
 	install = slepc.install
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	depends = petsc
+	depends = petsc-git
 	provides = slepc
 	conflicts = slepc
 	source = slepc::git+https://gitlab.com/slepc/slepc.git#branch=release
