@@ -1,11 +1,11 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Christoph Mohr <christoph.mohr@gmail.com>
 # Contributor: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 # Contributor: Utsob Roy <uroybd(at)gmail(dot)com>
 _pkgname='ferdi'
 pkgname="$_pkgname-bin"
 pkgver='5.5.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - binary version'
 arch=('x86_64')
 url="https://get$_pkgname.com"
