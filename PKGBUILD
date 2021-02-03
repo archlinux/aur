@@ -37,6 +37,7 @@ build() {
 
   cd ${srcdir}/${pkgname}
   arch-meson build              \
+    --wrap-mode default \
     -D use_sys_capstone=true    \
     -D use_sys_magic=true       \
     -D use_sys_zip=true         \
