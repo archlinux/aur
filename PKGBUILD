@@ -2,7 +2,7 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=tootle-git
-pkgver=1.0.alpha2.r2.gcc9404a
+pkgver=1.0.r0.gaf1d8a4
 pkgrel=1
 pkgdesc='GTK+ 3 client for Mastodon (git)'
 arch=(i686 x86_64)
