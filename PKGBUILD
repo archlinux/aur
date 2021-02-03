@@ -1,6 +1,6 @@
 # Maintainer: Morgan <morganamilo@archlinux.org>
 pkgname=paru-bin
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='AUR helper based on yay'
 url='https://github.com/morganamilo/paru'
@@ -13,8 +13,8 @@ depends=('git' 'pacman')
 optdepends=('asp: downloading repo pkgbuilds' 'bat: colored pkgbuild printing')
 conflicts=('paru')
 provides=('paru')
-sha256sums_x86_64=('a62e72cc104de994ee4397de357b41a7b98d2ae8cf5e5406ea75a77b4d7c5af9')
-sha256sums_aarch64=('a6173c7e00aefb0836783f103772d9e2aeb43c69d114d9b6e46686add255caf9')
+sha256sums_x86_64=('75f8dc14f79ef5851c6ad1044ebba3c837d43e21d447e7d5ca9a0f6e31dbf053')
+sha256sums_aarch64=('ea484f63c23462ef017e95f3f7c0a71360b5d462a55b57d8de6d8bda99d63542')
 
 package() {
   cd "$srcdir/"
@@ -27,5 +27,5 @@ package() {
 
   install -Dm644 completions/bash "${pkgdir}/usr/share/bash-completion/completions/paru.bash"
   install -Dm644 completions/fish "${pkgdir}/usr/share/fish/completions/paru.fish"
-  install -Dm644 completions/zsh "${pkgdir}/usr/share/zsh/site-functions/_paru"
+  install -Dm644 completions/zsh "${pkgdir}/usr/share/fish/vendor_completions.d//_paru"
 }
