@@ -11,23 +11,12 @@ makedepends=('git' 'meson' 'ninja')
 depends=('capstone' 'lz4' 'file' 'libzip' 'xxhash' 'libuv')
 provides=('rizin')
 conflicts=('rizin')
-source=("$pkgname"::"git+https://github.com/rizinorg/rizin.git"
-	"sdb"::"git+https://github.com/rizinorg/sdb.git"
-	"tree-sitter"::"git+https://github.com/tree-sitter/tree-sitter.git")
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP')
+source=("$pkgname"::"git+https://github.com/rizinorg/rizin.git")
+md5sums=('SKIP')
 
 pkgver () {
   cd ${pkgname}
   printf "%s.r%s.%s" "$(grep -oP "^  version: 'v\K[0-9.]*(?=(-git)',$)" meson.build)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare () {
-  cd ${pkgname}
-  git config 'submodule.src/shlr/sdb.url' "${srcdir}/sdb"
-  git config 'submodule.src/shlr/tree-sitter.url' "${srcdir}/tree-sitter"
-  git submodule update --init --recursive --remote
 }
 
 build() {
