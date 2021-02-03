@@ -2,8 +2,8 @@
 
 pkgname=audacious-gtk
 _pkgname=audacious
-pkgver=4.1.beta1
-pkgrel=1
+pkgver=4.1
+pkgrel=2
 pkgdesc="Lightweight, advanced audio player focused on audio quality - latest stable release"
 arch=('x86_64')
 url="https://audacious-media-player.org/"
@@ -13,16 +13,16 @@ provides=('audacious')
 conflicts=('audacious')
 install=$_pkgname.install
 _tag=$_pkgname-$pkgver-gtk
-source=("https://distfiles.audacious-media-player.org/audacious-4.1-beta1.tar.bz2")
+source=("https://distfiles.audacious-media-player.org/audacious-4.1.tar.bz2")
 sha256sums=('SKIP')
 
 prepare() {
-  cd "$srcdir/$_pkgname-4.1-beta1"
+  cd "$srcdir/$_pkgname-4.1"
   autoreconf -I m4
 }
 
 build() {
-  cd "$srcdir/$_pkgname-4.1-beta1"
+  cd "$srcdir/$_pkgname-4.1"
 
   if [ "$_use_meson" = 1 ]; then
     arch-meson build -D buildstamp="$_buildstamp"
@@ -37,7 +37,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname-4.1-beta1"
+  cd "$srcdir/$_pkgname-4.1"
   make DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
