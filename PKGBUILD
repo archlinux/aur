@@ -3,7 +3,7 @@
 pkgname=tauon-music-box
 _pkgname=tauonmb
 _gitname=TauonMusicBox
-pkgver=6.4.8
+pkgver=6.4.9
 pkgrel=1
 pkgdesc="A modern streamlined music player"
 arch=('any')
@@ -79,4 +79,4 @@ package() {
     install -Dm755 "extra/tauonmb.sh" "$pkgdir/usr/bin/tauon"
 }
 
-md5sums=('0669b0b5214112473eda69291697a79f')
+md5sums=('7f3e5db27de7783a7af7d2519bdc1db7')
