@@ -2,7 +2,7 @@
 
 pkgname=rankmirrors-systemd
 pkgver=1
-pkgrel=4
+pkgrel=5
 
 license=('MIT')
 pkgdesc='Rank Pacman mirrors based on the speed related to the host network'
