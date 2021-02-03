@@ -1,6 +1,6 @@
-# Maintainer: ml <ml@visu.li>
+# Maintainer: ml <mlævisu.li>
 pkgname=helm-2to3
-pkgver=0.7.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Migrates and cleans up Helm v2 configuration and releases in-place to Helm v3'
 arch=('x86_64' 'aarch64')
@@ -9,12 +9,17 @@ license=('Apache')
 install=helm-2to3.install
 depends=('helm')
 makedepends=('go')
+groups=('helm-plugins')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('a7c896ebb8ae2463c5be90f3047a632f0a367fe71651f4145db44abf0b3b6946')
+sha256sums=('526265263794e939e87ded4a20723edc3473f1166500e6ca7e3744eff8a25dc1')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  go mod download
+  go mod edit \
+    -dropreplace gotest.tools \
+    -dropreplace github.com/Azure/go-autorest \
+    -dropreplace github.com/docker/distribution
+  go mod tidy
   sed -i '/^hooks:$/Q' plugin.yaml
 }
 
@@ -26,7 +31,7 @@ build() {
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export GOFLAGS='-buildmode=pie -trimpath -modcacherw -mod=readonly'
-  go build -o bin/2to3
+  go build -ldflags="-linkmode=external -X=main.version=$pkgver" -o bin/2to3
 }
 
 # check(): 2to3 has no tests
