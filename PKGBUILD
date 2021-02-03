@@ -3,7 +3,7 @@
 
 pkgname=brave-dev-bin
 pkgver=1.20.97
-pkgrel=2
+pkgrel=4
 pkgdesc='Web browser that blocks ads and trackers by default (dev binary release).'
 arch=('x86_64')
 url='https://brave.com/download-dev'
@@ -14,7 +14,7 @@ optdepends=('cups: Printer support'
             'mesa: Hardware accelerated rendering'
             'libglvnd: Support multiple different OpenGL drivers at any given time')
 provides=("${pkgname}" 'brave-dev-browser')
-conflicts=("${pkgname}")
+conflicts=()
 source=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-dev_${pkgver}_amd64.deb"
         'MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt'
         "$pkgname.sh")
