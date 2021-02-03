@@ -2,12 +2,12 @@
 # Contributor: Sébastien "Seblu" Luttringer
 
 pkgname=docker-bin
-pkgver=20.10.2
+pkgver=20.10.3
 
 # Commit which fixes docker.service startup
 _packaging_version=747e984a03316b35302129b5d0b910638dc7e6d4
 
-pkgrel=3
+pkgrel=1
 pkgdesc='Pack, ship and run any application as a lightweight container, using official binaries'
 arch=('x86_64')
 url='https://www.docker.com/'
@@ -29,9 +29,9 @@ source=(
   "https://raw.githubusercontent.com/moby/moby/v${pkgver}/contrib/udev/80-docker.rules"
   "docker.sysusers"
 )
-sha256sums=('97017e32a8ecbdd1826bb3c7b1424303ee0dea3f900d33591b1df5e394ed4eed'
-            '4ebdad1d4743ccca68d183fccdb978aa8b62e7b24743fff36099bd29e46380e0'
-            '41d900adfbf80605a59807c07f6a530bd5c6d47de7e8cebd7070360469506eb7'
+sha256sums=('47065a47f0692cd5af03073c7386fe090d9ef5ac88a7d8455a884d8e15809be5'
+            '6a7e2fe34112dfdbec619af4ca4db877133b29f245475df099e812d0d75e8eb5'
+            'afa04a67efe07048f77c86ef2e6317ffdc5b31c01edd65028fa39e72c61e7f65'
             'caf98bf39fb8621fb955476567a38b8a6b35bab2dccd8a29a16da23d4bb99450'
             'ed2ebb93d4bb3a30b5ad214d2ea5d467e714928d4fbf077e2a77dce758c0fa60'
             '3b1bd816a4a029ac048be7703a72a69ff44c531ead443d573e04f29d812594f1'
