@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=kwaterfoxhelper
-pkgver=5.0.6
+pkgver=5.0.7
 pkgrel=0
 pkgdesc="Waterfox KDE Plasma Integration"
 url="https://github.com/hawkeye116477/kwaterfoxhelper"
@@ -32,4 +32,4 @@ package() {
     install -Dm644 $pkgname-$pkgver/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('aa7b1dd2880fe0698abb8f5a269619ee5c8ef9b7cbc11b4444873fa15e83fcc1')
+sha256sums=('fb96cf22fda2e8740289d2bad0f91e92d6367d4bc22b5111832066ee05e3c337')
