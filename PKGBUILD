@@ -1,17 +1,22 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: yjun <jerrysteve1101 at gmail dot com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=picsimlab-bin
-pkgver=0.8.2
+_pkgname=${pkgname%-bin}
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="A realtime emulator of development boards with integrated MPLABX/avr-gdb debugger"
 arch=('x86_64')
 url='https://github.com/lcgamboa/picsimlab'
-license=('GPL')
-provides=('picsimlab')
-depends=('wxgtk3' 'picsim' 'openal')
+license=('GPL2')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+depends=('wxgtk3'
+         'picsim'
+         'openal')
 makedepends=('tar')
-source=("${pkgname%-bin}-${pkgver}.deb::https://sourceforge.net/projects/picsim/files/v${pkgver}/picsimlab_${pkgver}_unbuntu_20.04_amd64.deb/download")
-sha256sums=('7b137612a1814e012b6a447bef4dbf8eda5837f0275ee89b00a96cd5913e8f6d')
+source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Ubuntu_20.10_amd64.deb")
+sha256sums=('f5013d38d79a79ab9f3ee77db7d09bb9a52c2abc9706bbb0fcccfa26d167c20b')
 
 package() {
   tar xvf data.tar.xz -C "${pkgdir}"
