@@ -1,0 +1,15 @@
+pkgbase = ticker
+	pkgdesc = Terminal stock ticker with live updates and position tracking
+	pkgver = 2.1.0
+	pkgrel = 0
+	url = https://github.com/achannarasappa/ticker
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	depends = glibc
+	source = https://github.com/achannarasappa/ticker/archive/v2.1.0.tar.gz
+	sha256sums = 0edfc51c1cecd027975b6b88a44f148d0fb4ca1e2a1a9e9e22bef53260af1379
+
+pkgname = ticker
+
