@@ -2,7 +2,7 @@
 
 pkgname=kernel-install-hook
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="kernel-install add/remove hook"
 url=https://systemd.io/BOOT_LOADER_SPECIFICATION
 arch=('any')
