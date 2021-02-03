@@ -10,7 +10,7 @@ pkgdesc='A fast JSON parser/generator for C++ with both SAX/DOM style API (mingw
 arch=('any')
 url='https://github.com/miloyip/rapidjson'
 license=('MIT')
-makedepends=('mingw-w64-gcc' 'mingw-w64-cmake')
+makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'ninja')
 checkdepends=('mingw-w64-wine' 'mingw-w64-gtest' 'gtest' 'python')
 source=($_reponame-$pkgver.tar.gz::https://github.com/miloyip/$_reponame/archive/v$pkgver.tar.gz)
 md5sums=('badd12c511e081fec6c89c43a7027bce')
@@ -33,6 +33,7 @@ build () {
   for _arch in ${_architectures}; do
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
     ${_arch}-cmake \
+        -G Ninja \
         -DCMAKE_BUILD_TYPE:STRING=Release \
         -DRAPIDJSON_HAS_STDSTRING=ON \
         -DRAPIDJSON_BUILD_CXX11=ON \
@@ -40,7 +41,7 @@ build () {
         -DCMAKE_INSTALL_PREFIX:PATH="/usr/${_arch}" \
         -DGTEST_SOURCE_DIR=/usr/src/gtest \
         ..
-    make
+    ninja
     popd
   done
 }
@@ -65,7 +66,7 @@ package() {
   cd "$_reponame-$pkgver"
   for _arch in ${_architectures}; do
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" ninja install
     # remove examples
     rm -r "${pkgdir}/usr/${_arch}/share"
     # put cmake files in right directory
