@@ -7,7 +7,7 @@
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
 pkgver=2021.1.5
-pkgrel=1
+pkgrel=2
 arch=(any)
 url=https://home-assistant.io/
 license=(APACHE)
@@ -72,7 +72,9 @@ prepare() {
   patch -Np1 -i ../home-assistant-astral2.2.patch
 
   # lift hard dep constraints, we'll deal with breaking changes ourselves
-  sed 's/==/>=/g' -i setup.py homeassistant/package_constraints.txt
+  sed 's/==/>=/g' -i requirements.txt setup.py homeassistant/package_constraints.txt
+  # allow pip >= 20.3 to be used
+  sed 's/,<20.3//g' -i requirements.txt setup.py homeassistant/package_constraints.txt
 }
 
 build() {
