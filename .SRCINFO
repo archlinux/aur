@@ -6,6 +6,7 @@ pkgbase = uxplay-git
 	arch = any
 	license = GPL3
 	makedepends = cmake
+	makedepends = git
 	depends = gstreamer
 	depends = gst-plugins-base
 	depends = gst-plugins-base-libs
