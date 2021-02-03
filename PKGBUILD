@@ -1,6 +1,6 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime
-pkgver=1.0.0.pre1
+pkgver=1.0.0.pre2
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
@@ -8,8 +8,8 @@ conflicts=('kime')
 provides=('kime')
 arch=('any')
 license=('GPL3')
-source=("${url}/releases/download/v1.0.0-pre1/kime-v1.0.0-pre1.7z")
-md5sums=('6a4a8c01c45059570547da1d36fe2589')
+source=("${url}/releases/download/v1.0.0-pre2/kime-v1.0.0-pre2.7z")
+md5sums=('fefbb6124b4d01a964d57db238e2ddf9')
 
 package() {
     install -Dm755 kimed -t "${pkgdir}/usr/bin"
