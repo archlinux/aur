@@ -2,7 +2,7 @@
 _reponame=infoedit
 _pkgname=ndn-infoedit
 pkgname=${_pkgname}-git
-pkgver=r9.5e88552
+pkgver=r13.3226bdc
 pkgrel=1
 # epoch=
 pkgdesc="Command Line Tools for Boost INFO Format"

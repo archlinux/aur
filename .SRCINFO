@@ -1,6 +1,6 @@
 pkgbase = ndn-infoedit-git
 	pkgdesc = Command Line Tools for Boost INFO Format
-	pkgver = r9.5e88552
+	pkgver = r13.3226bdc
 	pkgrel = 1
 	url = https://github.com/NDN-Routing/infoedit
 	arch = i686
