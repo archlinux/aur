@@ -4,7 +4,7 @@
 
 pkgbase=vte3-kinetic
 pkgname=(vte3-kinetic vte-kinetic-common)
-pkgver=0.63.0+realh
+pkgver=0.63.0+1+0.61.90+150+g8d4204f3
 pkgrel=1
 pkgdesc="vte3 patched to enable kinetic scrolling with libinput"
 url="https://wiki.gnome.org/Apps/Terminal/VTE"
@@ -17,6 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd vte
+  printf 0.63.0+1+
   git describe --tags | sed 's/-/+/g'
 }
 
