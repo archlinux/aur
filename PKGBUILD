@@ -3,16 +3,16 @@
 pkgname=python-slepc4py-git
 pkgdesc="Python bindings for PETSc"
 pkgver=20201014
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://gitlab.com/slepc/slepc4py"
 provides=(slepc4py)
 conflicts=(slepc4py)
 license=('custom')
-depends=('slepc' 'python-petsc4py-git')
+depends=('slepc-git')
 makedepends=('git')
 options=(!emptydirs)
-source=("slepc4py::git+https://gitlab.com/slepc/slepc4py.git")
+source=("slepc4py::git+https://gitlab.com/slepc/slepc4py.git#branch=maint")
 md5sums=('SKIP')
 
 pkgver() {
