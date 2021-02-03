@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt6-base-headless
-_qtver=6.0.0
+_qtver=6.0.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -22,7 +22,7 @@ conflicts=(qt6-base)
 provides=(qt6-base)
 _pkgfn="qtbase-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz")
-sha256sums=('ae227180272d199cbb15318e3353716afada5c57fd5185b812ae26912c958656')
+sha256sums=('8d2bc1829c1479e539f66c2f51a7e11c38a595c9e8b8e45a3b45f3cb41c6d6aa')
 
 build() {
   cmake -G Ninja -B build -S "$_pkgfn" \
