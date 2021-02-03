@@ -15,7 +15,7 @@ optdepends=('wine: Windows support'
             'vkd3d: Vulkan 3D support'
             'lib32-vkd3d: Vulkan 3D support'
             'gvfs: GVFS backend')
-source=("https://file.winegame.net/packages/debian/${pkgver}/net.winegame.client_0.5.7.2_amd64.deb")
+	source=("https://file.winegame.net/packages/debian/0.5.7.2/net.winegame.client_0.5.7.2_amd64.deb")
 sha512sums=('ef7cc3c2183d51dfce9b0a2557f26a2ecf7e757a6b05e7495a2947b0a2b4968b623e63a032173c867338a17e3abea812556b48ea89840624dcc9f568035e68ad')
 
 package() {
