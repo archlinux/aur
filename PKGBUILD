@@ -2,7 +2,7 @@
 # Contributor: Albert I (krasCGQ) <kras@raphielgang.org>
 
 pkgname="llvm-proton-bin"
-pkgver=20210123
+pkgver=20210130
 pkgrel=1
 epoch=1
 pkgdesc="A LLVM and Clang compiler toolchain built for kernel development"
