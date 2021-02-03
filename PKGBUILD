@@ -5,13 +5,12 @@
 
 pkgname=lib32-sqlite2
 pkgver=2.8.17
-pkgrel=2
+pkgrel=3
 pkgdesc="A C library that implements an SQL database engine"
 arch=('x86_64')
 url="http://www.sqlite.org/"
 depends=('readline>=6.0.00')
 license=('custom')
-provides=("sqlite2=$pkgver")
 replaces=("sqlite2")
 source=("https://www.sqlite.org/sqlite-$pkgver.tar.gz"
         'LICENSE'
