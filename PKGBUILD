@@ -5,7 +5,7 @@
 # Contributor: N. I. - izmntuk
 
 pkgname=dar
-pkgver=2.6.12
+pkgver=2.6.13
 pkgrel=1
 pkgdesc='A full featured command-line backup tool, short for Disk ARchive'
 arch=('i686' 'x86_64')
@@ -16,16 +16,14 @@ optdepends=('perl: for running some samples'
             'librsync: for delta binary')
 makedepends=('doxygen')
 source=("http://downloads.sourceforge.net/project/dar/dar/${pkgver}/dar-${pkgver}.tar.gz")
-sha512sums=('f59e3d112513e6e01b9aa94d414a2a6b0b8815120ee7daeea5e6e0462e3d26711820721f8441f76e337d72d2687d288094f9c79fd0a539c74eae904d80ba0727')
+sha512sums=('f0f853db6e15f5abfabf87be06a1c374662c7fa7e1140eaaeef3e8c8c4d0049a00a8e74409d6805ea3ae5b2f3171f2eba27459e8acb4438c467c4f0bd0825c0c')
 backup=('etc/darrc')
 options=('!libtool')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	## --enable-threadar: EXPERIMENTAL multithread support
-	if [[ "${CARCH}" == x86_64 ]];then
-		EXTRA_OPTIONS="--enable-mode=64"
-	elif [[ "${CARCH}" == i686 ]];then
+	if [[ "${CARCH}" == i686 ]]; then
 		EXTRA_OPTIONS="--enable-mode=32"
 	fi
 	./configure --prefix=/usr --sysconfdir=/etc --disable-dar-static --disable-static --disable-upx --disable-build-html ${EXTRA_OPTIONS}
