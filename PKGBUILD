@@ -1,7 +1,7 @@
 # Maintainer: Morgan <morganamilo@archlinux.org>
 pkgname=paru-bin
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='AUR helper based on yay'
 url='https://github.com/morganamilo/paru'
 source_x86_64=("https://github.com/Morganamilo/paru/releases/download/v$pkgver/paru-v$pkgver-x86_64.tar.zst")
@@ -26,6 +26,6 @@ package() {
   install -Dm644 man/paru.conf.5 "$pkgdir/usr/share/man/man5/paru.conf.5"
 
   install -Dm644 completions/bash "${pkgdir}/usr/share/bash-completion/completions/paru.bash"
-  install -Dm644 completions/fish "${pkgdir}/usr/share/fish/completions/paru.fish"
-  install -Dm644 completions/zsh "${pkgdir}/usr/share/fish/vendor_completions.d//_paru"
+  install -Dm644 completions/fish "${pkgdir}/usr/share/fish/vendor_completions.d/paru.fish"
+  install -Dm644 completions/zsh "${pkgdir}/usr/share/zsh/site-functions/_paru"
 }
