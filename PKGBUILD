@@ -1,6 +1,6 @@
 # Maintainer: Alexander Nicholi <me@nicholatian.com>
 pkgname=slick
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 epoch=
 pkgdesc='Slick makefiles'
@@ -11,7 +11,7 @@ depends=()
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://github.com/aquefir/$pkgname/archive/mk-v$pkgver.tar.gz" 'aquefir.sh')
-sha1sums=('77cbb7a5dbab147ef46253eb244d77b2b76099f5' 'SKIP')
+sha1sums=('b282392efeeb71455227f70b240ac097997a5a66' 'SKIP')
 
 build() {
   cd "$srcdir/$pkgname-mk-v$pkgver"
@@ -31,8 +31,7 @@ package() {
     mkdir -p "${pkgdir}/etc/profile.d"
   fi
   mkdir -p build
-  env python3 util/generate.py > build/base.mk
-  $_install -m644 -T "build/base.mk" "${pkgdir}/opt/aq/lib/slick/base.mk"
+  $_install -m644 -T "src/base.mk" "${pkgdir}/opt/aq/lib/slick/base.mk"
   $_install -m644 -T "src/targets.mk" "${pkgdir}/opt/aq/lib/slick/targets.mk"
   if [ "$(uname -s)" != 'Darwin' ]; then
     $_install -m755 -T "../aquefir.sh" "${pkgdir}/etc/profile.d/aquefir.sh"
