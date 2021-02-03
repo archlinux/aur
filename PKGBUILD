@@ -55,7 +55,7 @@ fi
 ## Set variable "use_ns" to: n to disable (stock Xanmod)
 ##                           y to enable (stock Archlinux)
 if [ -z ${use_ns+x} ]; then
-  use_ns=n
+  use_ns=y
 fi
 
 # Compile ONLY used modules to VASTLYreduce the number of modules built
