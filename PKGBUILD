@@ -5,8 +5,8 @@
 
 # Maintainer: Emiel Kollof <emiel@kollof.nl>
 pkgname=dwm-ekollof-git
-pkgver=6.2.r38.56f1542
-pkgrel=1
+pkgver=6.2.r25.054e184
+pkgrel=2
 epoch=
 pkgdesc="Emiel Kollof's personal patched build of dwm."
 arch=(x86_64)
@@ -35,12 +35,12 @@ pkgver() {
 }
 
 build() {
-	cd "dwm-ekollof"
+	cd "dwm-ekollof-new"
 	make > /dev/null
 }
 
 package() {
-	cd "dwm-ekollof"
+	cd "dwm-ekollof-new"
 	make DESTDIR="$pkgdir/" install
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
