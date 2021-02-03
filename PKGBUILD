@@ -1,5 +1,6 @@
 # Maintainer:  Vincent Grande <shoober420@gmail.com>
 # Contributor: Colin Booth <colin@heliocat.net>
+# Contributor: Eric Vidal <eric@obarun.org>
 # Contributor: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Timofey Titovets <nefelim4ag@gmail.com>
 # Contributor: linuxer <linuxer@artixlinux.org>
