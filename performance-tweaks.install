@@ -19,9 +19,7 @@ post_install() {
   systemctl enable grub-btrfs.path
   systemctl enable fstrim.timer
   systemctl enable btrfs-scrub@-.timer
-  systemctl enable precached
-  systemctl enable precached-prime-caches.timer
-  systemctl enable precached-prime-caches
+  systemctl enable preload
 }
 
 post_upgrade() {
@@ -38,9 +36,7 @@ post_upgrade() {
   systemctl is-active grub-btrfs.path >/dev/null || systemctl enable grub-btrfs.path
   systemctl is-active fstrim.timer >/dev/null || systemctl enable fstrim.timer
   systemctl is-active btrfs-scrub@-.timer >/dev/null || systemctl enable btrfs-scrub@-.timer
-  systemctl is-active precached >/dev/null || systemctl enable precached
-  systemctl is-active precached-prime-caches.timer >/dev/null || systemctl enable precached-prime-caches.timer
-  systemctl is-active precached-prime-caches >/dev/null || systemctl enable precached-prime-caches
+  systemctl is-active preload >/dev/null || systemctl enable preload
   echo ""
   msg "services should now be enabled."
   echo ""

@@ -53,7 +53,7 @@ package_performance-tweaks() {
 	'ananicy-git'
     'auto-cpufreq-git'
     'profile-sync-daemon'
-    'precached-git'
+    'preload'
         )    
     install=performance-tweaks.install
     provides=('performance-tweaks')
