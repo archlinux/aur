@@ -1,0 +1,18 @@
+pkgbase = ptask
+	pkgdesc = GTK+ task managing application
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://wpitchoune.net/ptask
+	arch = x86_64
+	license = GPL2
+	makedepends = addinclude
+	depends = gtk3
+	depends = json-c
+	depends = task=2.5.3
+	optdepends = asciidoc: for generating the HTML version of NEWS and README
+	optdepends = help2man: for regenerate manpages automatically
+	source = https://wpitchoune.net/ptask/files/ptask-1.0.0.tar.gz
+	sha256sums = b8cde0f7994bd91410a13284188c865e255621bcfd23f6051f7b25b14eced18e
+
+pkgname = ptask
+

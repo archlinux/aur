@@ -4,7 +4,7 @@
 pkgname=ptask
 pkgver=1.0.0
 pkgrel=1
-_taskver=2.5.1
+_taskver=2.5.3
 pkgdesc='GTK+ task managing application'
 arch=('x86_64')
 url='https://wpitchoune.net/ptask'
