@@ -1,36 +1,31 @@
-# Maintainer: Corey Hinshaw <corey(at)electrickite(dot)org>
-
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-firmware-daemon
 _pkgname=system76-firmware
-pkgver=1.0.21
+pkgver=1.0.22
 pkgrel=1
-pkgdesc='System76 Firmware Daemon provides a daemon for installing firmware updates.'
+pkgdesc="System76 CLI tool for installing firmware updates and systemd service that exposes a DBUS API for handling firmware updates"
 arch=('x86_64')
-url='https://github.com/pop-os/system76-firmware'
+url="https://github.com/pop-os/system76-firmware"
 license=('GPL3')
-install="${pkgname}.install"
-depends=(
-  'ca-certificates'
-  'dbus'
-  'dfu-programmer'
-  'efibootmgr'
-  'openssl'
-  'systemd'
-  'xz'
-)
+depends=('ca-certificates' 'dbus' 'dfu-programmer' 'efibootmgr' 'openssl'
+         'systemd' 'xz')
 makedepends=('rust')
 conflicts=('system76-driver<=17.10.32')
-source=("https://github.com/pop-os/${_pkgname}/archive/${pkgver}.tar.gz"
-        "${pkgname}.install")
-sha256sums=('a1f8bcce8b2e3f7b37f93662292eefa33afc9a01891b684e8518ffd4d97a93e9'
-            'bee86280bc6762aa773ef17441126df336abb3f4ca2163caa4df6201b6a2d708')
+install="$pkgname.install"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('ac4d8c20f67e779d01f22326be7c0090dce95802405c4a752395f7d66115dce1')
 
 build() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
-  make prefix=/usr DESTDIR="${pkgdir}"
+	cd "$_pkgname-$pkgver"
+	make
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
-  make prefix=/usr DESTDIR="${pkgdir}" install
+	cd "$_pkgname-$pkgver"
+	make DESTDIR="$pkgdir" install
+
+	install -d "$pkgdir/usr/lib/systemd/system"
+	mv "$pkgdir/etc/systemd/system/$pkgname.service" "$pkgdir/usr/lib/systemd/system/"
+	rm -rf "$pkgdir/etc/systemd"
 }
