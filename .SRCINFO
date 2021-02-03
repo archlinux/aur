@@ -1,7 +1,7 @@
 pkgbase = nginx-h5bp-server-configs
 	pkgdesc = Nginx HTTP server boilerplate configs
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/h5bp/server-configs-nginx
 	install = .install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = nginx-h5bp-server-configs
 	depends = nginx
 	provides = nginx-h5bp-server-configs
 	source = https://github.com/h5bp/server-configs-nginx/archive/3.3.0.tar.gz
-	sha1sums = bc21dc11a34b771b4a9808a0c35d9874d40fc07b
+	b2sums = de06b9317951b449f691fbbfa9f444ebaff2dfc3b4fd431ffc9d5079691bda1749f0cf8c4343228f9a146a7bda903527ea43085d822f5e8ab64476cb8da49475
 
 pkgname = nginx-h5bp-server-configs
 
