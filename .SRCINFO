@@ -6,6 +6,7 @@ pkgbase = yamc-git
 	arch = any
 	license = MIT
 	makedepends = cmake
+	makedepends = git
 	provides = yamc
 	conflicts = yamc
 	source = git+https://github.com/yohhoy/yamc
