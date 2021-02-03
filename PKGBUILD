@@ -6,7 +6,7 @@ release='r2020b'
 instdir="/opt/tmw/${name}-${release}"
 pkgname=matlab
 pkgver=9.9.0.1467703
-pkgrel=3
+pkgrel=4
 pkgdesc='A high-level language for numerical computation and visualization'
 arch=('x86_64')
 url='http://www.mathworks.com'
@@ -259,7 +259,7 @@ package() {
   # make sure MATLAB can find proper libraries libgfortran.so.3
   mkdir -p "${pkgdir}/${instdir}/backup/bin"
   cp "${pkgdir}/${instdir}/bin/matlab" "${pkgdir}/${instdir}/backup/bin"
-  sed -i 's|LD_LIBRARY_PATH="`eval echo $LD_LIBRARY_PATH`"|LD_LIBRARY_PATH="`eval echo $LD_LIBRARY_PATH`:/usr/lib/gcc/x86_64-pc-linux-gnu/'$(pacman -Q gcc9 | awk '{print $2}' | cut -d- -f1)'"|g' "${pkgdir}/${instdir}/bin/matlab"
+  sed -i 's|LD_LIBRARY_PATH="`eval echo $LD_LIBRARY_PATH`"|LD_LIBRARY_PATH="`eval echo $LD_LIBRARY_PATH`:/usr/lib/gcc/x86_64-pc-linux-gnu/'$(pacman -Q gcc8 | awk '{print $2}' | cut -d- -f1)'"|g' "${pkgdir}/${instdir}/bin/matlab"
 
   # Install the script file to make scripting easier with matlab
   install -Dm 0755 "${srcdir}/matlab.script" "${pkgdir}/usr/bin/matscript"
