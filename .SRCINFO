@@ -1,19 +1,19 @@
 pkgbase = jtdxhamlib
 	pkgdesc = Modified hamlib for jtdx
-	pkgver = rc152
+	pkgver = rc155
 	pkgrel = 1
 	url = https://github.com/jtdx-project/jtdxhamlib
 	arch = x86_64
 	license = GPL2
 	depends = libusb-1.0.so
-	source = jtdxhamlib-rc152.tar.gz::https://github.com/jtdx-project/jtdxhamlib/archive/rc152.tar.gz
-	md5sums = b5443a488aa19adb56ddf9eccb5e72d4
-	sha1sums = d8dbb737067cfa48f27d3dddb6db98e3b463b8f4
-	sha224sums = dc40a928d71d8c04582bafce643c17750945964ddf401fc0fc83bd66
-	sha256sums = 0b1c6488a68f3256c3e7cbd8cc52e0c0f977d5c299fd74ded035948004562d05
-	sha384sums = 9ee33a62fe0326d61a3db70b1422d81412cb3eedfe3af092e6b4c7bc9da76d965b55cd1b8801cab1bbbf0eb008b2d3d1
-	sha512sums = fc4800791509760c97cfffb27cc92889d7ad8b28fb80dd8181051f24c70cc273c47b3b590941bb986fe2a842fcd68e89b03c028341d1c6e8409ef5ff3824ce7b
-	b2sums = 60645865795ab54761096773faf30f88514cc9eaec6b76c2371a3335f58a228ad1333a660a49bc837fa58f418ac20a0d0fa20298637fb8385264de190e985389
+	source = jtdxhamlib-rc155.tar.gz::https://github.com/jtdx-project/jtdxhamlib/archive/rc155.tar.gz
+	md5sums = 361b0ee5ed788d00a405e66d2385c4ae
+	sha1sums = b6f4535e35abbb91c755c7f6627f5977cd920f94
+	sha224sums = 0937669cd5e2202dc315599f5bb212db8280555a5f2a2cd71a24a529
+	sha256sums = c1589bdd273b5dee61c2d6bd7f5d98ceba50eed523a409345c1611ec39a4903d
+	sha384sums = 5ddce4e956382601f9eb5262a2e87bc9ed1cc91eda205ab4a01aef3ddf852cf1398c278205142003a10128b8b85e6045
+	sha512sums = 7ddf2750b39fa6e6e45dc709150316f4e813f6794a1b7437fd360f0059120a07f4b9382315de1c228cb53510c80fb41d109608c1946759eaf0d758f39f05e34b
+	b2sums = 2c4bc12330e26d5711e5a2863fc3289d2efa7c6a7c7b95b90593bff27cce3f74add83db934458146fd0032774e7180351d3fdaa4e12bb33931e2a7977ae29f3f
 
 pkgname = jtdxhamlib
 
