@@ -1,5 +1,6 @@
-# Maintainer: agentcobra <agentcobra@free.fr>
-# Contributor: Nover <novares.x@gmail.com>
+# Maintainer: Noah Witt <noah@noah-witt.com>
+# Prior Work: agentcobra <agentcobra@free.fr>
+# Prior Work: Nover <novares.x@gmail.com>
 
 # Creator Blade <contact@blade-group.com>
 
@@ -89,7 +90,7 @@ package() {
 	chmod 755 -R "${pkgdir}"
 }
 
-_commit=9add3366d25530d51d168608c54b5339b64d2a4e
+_commit=3ab413613a6c3c4b78d3f3eb030068c0ea497a4e
 pkgname=shadow-alpha
 basename=testing
 pkgver="$(pkgver)"
