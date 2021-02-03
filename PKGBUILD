@@ -8,13 +8,13 @@
 
 ### MERGE REQUESTS SELECTION
 
-# Merge Requests List: ('579' '1309' '1050' '1441')
-_merge_requests_to_use=('579') # safe pick
+# Merge Requests List: ('579' '1309' '1050' '1441' '1241')
+_merge_requests_to_use=() # safe pick
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=3.38.2+4+g00e247ed7
+pkgver=3.38.3
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -31,7 +31,7 @@ conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
 install=mutter.install
-_commit=00e247ed7af9d762186779024bec4c3c5b9439c7  # gnome-3-38
+_commit=9f9c26be93ee73e7ce0434d251e4af31626342f9  # tags/3.38.3^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -136,7 +136,16 @@ prepare() {
   # Type: 1
   # Status: 3
   # Comment: Help GPU frequencies to scale up but not currently working on Wayland
-   pick_mr '1441'
+  pick_mr '1441'
+
+
+  # Title: WIP: clutter/frame-clock: Allow update dispatch while presentation is pending
+  # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1241
+  # Type: 1
+  # Status: 3
+  # Comment: Helps cursor movement under load on Wayland
+  pick_mr '1241' 1241.diff patch
+
 
 }
 
