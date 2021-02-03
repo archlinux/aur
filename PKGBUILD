@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=libosmium
 pkgver=2.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and flexible C++ library for working with OpenStreetMap data."
 url="https://osmcode.org/libosmium/"
 arch=('any')
@@ -12,6 +12,7 @@ optdepends=('sparsehash: sparse-mem-table index map'
             'gdal: convert OSM geometries into OGR geometries'
             'geos: convert OSM geometries into GEOS geometries'
             'proj: project OSM coordinates into spatial reference systems'
+            'lz4: use LZ4 compression in PBF files'
             'doxygen: build Libosmium API documentation')
 conflicts=('libosmium-git')
 provides=('libosmium')

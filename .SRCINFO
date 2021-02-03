@@ -1,7 +1,7 @@
 pkgbase = libosmium
 	pkgdesc = Fast and flexible C++ library for working with OpenStreetMap data.
 	pkgver = 2.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osmcode.org/libosmium/
 	arch = any
 	license = custom
@@ -16,6 +16,7 @@ pkgbase = libosmium
 	optdepends = gdal: convert OSM geometries into OGR geometries
 	optdepends = geos: convert OSM geometries into GEOS geometries
 	optdepends = proj: project OSM coordinates into spatial reference systems
+	optdepends = lz4: use LZ4 compression in PBF files
 	optdepends = doxygen: build Libosmium API documentation
 	provides = libosmium
 	conflicts = libosmium-git
