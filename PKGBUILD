@@ -1,7 +1,7 @@
 # Maintainer: David Harrigan <dharrigan [@] gmail [dot] com>
 
 pkgname=carve-bin
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='Carve out the essentials of your Clojure app.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-bin}")
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64.zip")
 
-sha256sums_x86_64=('a0609bc276af6a54f315a1727b16fa2171e2175ab6a18ba1b9639936f83fe4e5')
+sha256sums_x86_64=('9d63dfcb28a1678176d0d945ff6f3006edb959b5d1aa6238b22aa8f42058e5b1')
 
 package() {
   install -Dm755 "${srcdir}/carve" "${pkgdir}/usr/bin/carve"
