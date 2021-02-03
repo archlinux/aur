@@ -6,6 +6,7 @@ pkgbase = sharedaccess-git
 	arch = any
 	license = GPL3
 	makedepends = cmake
+	makedepends = git
 	optdepends = boost: provide upgradeable locks
 	provides = sharedaccess
 	conflicts = sharedaccess
