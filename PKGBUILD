@@ -3,7 +3,7 @@
 _name=gaphor
 pkgname=python-${_name}
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('any')
 url="https://github.com/gaphor/${_name}"
@@ -24,7 +24,7 @@ source=(
 	"https://raw.githubusercontent.com/gaphor/${_name}/master/logos/org.gaphor.Gaphor.svg"
 )
 sha256sums=('d56fdc6c0cba524eb35320ffd66ac8173d2205b571cf8b95ec16590e90cfb35b'
-            'ef938e113167fc25a0647c9559d5042c38d23e0667d1683c0d74a7a5d0290791')
+            'c4bbe4a67662d52c04cbd283b33f3ff3a97697e158c56c4b776c1c4ef527dd62')
 
 prepare() {
 	gendesk -f --pkgname="$_name" --pkgdesc="$pkgdesc" --categories=Development PKGBUILD
