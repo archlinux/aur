@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Library for handling the BD+ protection scheme on bluray discs"
 arch=('i686' 'x86_64')
 license=('LGPL')
-url="http://www.videolan.org/developers/libbdplus.html"
+url="https://www.videolan.org/developers/libbdplus.html"
 depends=('libaacs>=0.7.0')
 source=("ftp://ftp.videolan.org/pub/videolan/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
 
