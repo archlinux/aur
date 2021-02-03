@@ -13,4 +13,4 @@ if [ ! -d "$HOME"/.mp3tag ] ; then
    ln -s /usr/share/mp3tag/tak_deco_lib.dll "$HOME"/.mp3tag/tak_deco_lib.dll
 fi
 # WINEDEBUG=-all wine "$HOME"/.mp3tag/mp3tag "$@"
-cd "$HOME/.mp3tag" && WINEDEBUG=-all WINEPATH="$HOME/.mp3tag/mp3tag" wine "$HOME/.mp3tag/mp3tag" "$@"
+cd "$HOME/.mp3tag" && WINEDEBUG=-all WINEPATH="$HOME/.mp3tag/mp3tag" WINEDLLOVERRIDES="mscoree=d;mshtml=d" wine "$HOME/.mp3tag/mp3tag" "$@"
