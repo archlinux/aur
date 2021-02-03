@@ -9,7 +9,6 @@ license=("custom:GPL2WithOpenSSLException")
 source=(
     "barrier-headless-git::git+https://github.com/debauchee/barrier.git"
 )
-conflicts=(barrier-headless)
 provides=(barrier-headless)
 sha256sums=('SKIP')
 arch=(x86_64)
