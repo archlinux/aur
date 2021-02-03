@@ -1,7 +1,7 @@
 #! /bin/bash
 pkgname="pacman-auto-update"
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 arch=("any")
 install="${pkgname}.install"
 pkgdesc="Install a systemd service triggered by a timer to run automatic pacman package updates"
