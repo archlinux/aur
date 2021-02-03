@@ -22,6 +22,6 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python2 setup.py install --root="${pkgdir}" --optimize=1
+  python2 setup.py install --root="${pkgdir}" --skip-build --optimize=1
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
