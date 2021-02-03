@@ -1,9 +1,10 @@
 # Maintainer: Alexis Polti <alexis@free.fr>
 # Corrected by Nim65s <guilhem@saurel.me>
-!
+# Corrected with a smile by CvR_XX <info@carlosvanrooijen.nl>
+
 pkgname=nrf5x-command-line-tools
 pkgver=10.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for programming Nordic nRF51, nRF52 and nRF91 MCU using J-Link"
 arch=('x86_64')
 url="https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools"
