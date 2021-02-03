@@ -1,17 +1,17 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 pkgname=trunk
-pkgver=0.7.4
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Build, bundle & ship your Rust WASM application to the web."
 arch=(x86_64)
-url="https://github.com/rustwasm/wasm-bindgen"
+url="https://github.com/thedodd/trunk/"
 license=(APACHE MIT)
 depends=(
 rust-wasm
 wasm-bindgen-cli
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/thedodd/trunk/archive/v${pkgver}.tar.gz")
-sha256sums=('cab41516583250624e12b0e78379935d60d5fc46cfa4aead8746d119ac615406')
+sha256sums=('5c5c320a42e4446292eb5f0843da86e5fa2d798b904801ce28c8295b678a83e5')
 
 prepare() {
   cd trunk-${pkgver}
@@ -34,7 +34,7 @@ check() {
 package(){
   cd trunk-${pkgver}
   find target/release -maxdepth 1 -executable -type f -exec install -Dm 755 "{}" -t "${pkgdir}"/usr/bin \;
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE-MIT
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE-APACHE
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE-MIT
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE-APACHE
 }
 
