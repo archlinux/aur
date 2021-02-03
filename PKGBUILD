@@ -2,10 +2,10 @@
 
 pkgname=teaiso
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Alternative ISO creation tool for Arch Linux."
 arch=("any")
-url="https://gitlab.com/tearch-linux/teaiso"
+url="https://gitlab.com/tearch-linux/applications-and-tools/teaiso"
 license=("GPL3")
 depends=("arch-install-scripts" "dosfstools" "e2fsprogs" "grub" "squashfs-tools" "mtools" "libisoburn"
 "python" "python-argparse" "python-yaml")
