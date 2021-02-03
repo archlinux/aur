@@ -1,4 +1,6 @@
 # Maintainer: Joseph R. Quinn <quinn period josephr at protonmail dot com>
+# Contributor: Ewout van Mansom <ewout at vanmansom dot name>
+
 pkgname=nginx-h5bp-server-configs
 _pkgname=server-configs-nginx
 pkgver=3.3.0
