@@ -1,7 +1,7 @@
 pkgbase = glib2-selinux
 	pkgdesc = Low level core library
 	pkgver = 2.66.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.gnome.org/Projects/GLib
 	arch = x86_64
 	license = LGPL
@@ -44,10 +44,10 @@ pkgname = glib2-selinux
 	provides = libgmodule-2.0.so
 	provides = libgobject-2.0.so
 	provides = libgthread-2.0.so
-	conflicts = glib2
+	provides = glib2
 
 pkgname = glib2-selinux-docs
 	pkgdesc = Documentation for GLib
 	license = LGPL
 	license = custom
-	conflicts = glib2-docs
+	provides = glib2-docs
