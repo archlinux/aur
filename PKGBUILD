@@ -1,10 +1,10 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Matthew McGinn <mamcgi@gmail.com>
 _projectname='electron'
 _pkgname="${_projectname}5"
 pkgname="$_pkgname-bin"
 pkgver='5.0.13'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Build cross platform desktop apps with web technologies - version 5 - binary version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://${_projectname}js.org"
