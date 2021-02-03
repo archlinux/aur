@@ -13,6 +13,7 @@ clear: ## Clears files
 	rm -f ./*.zip
 	rm -f ./shadow-alpha-*.pkg.tar
 	rm -f ./shadow-alpha-*.pkg.tar.xz
+	rm -f ./shadow-alpha-*.pkg.tar.zst
 	rm -f ./*~
 	rm -f shadow-alpha.zip
 	rm -f *.AppImage
@@ -25,15 +26,15 @@ pkgsum: ## Updates pkgsum with updpkgsums
 	updpkgsums
 
 recup: ## Get git files
-	wget -O INSTALL https://raw.githubusercontent.com/NicolasGuilloux/blade-shadow-beta/master/Arch/AUR/INSTALL
-	wget -O wrapper.pl https://raw.githubusercontent.com/NicolasGuilloux/blade-shadow-beta/master/AppImage/wrapper.pl
-	wget -O report.pl https://raw.githubusercontent.com/NicolasGuilloux/blade-shadow-beta/master/AppImage/report.pl
+	wget -O INSTALLhttps://raw.githubusercontent.com/noah-witt/shadow-alpha/master/Arch/AUR/INSTALL
+	wget -O wrapper.pl https://raw.githubusercontent.com/noah-witt/shadow-alpha/master/AppImage/wrapper.pl
+	wget -O report.pl https://raw.githubusercontent.com/noah-witt/shadow-alpha/master/AppImage/report.pl
 
 release:clear pkgsum srcinfo ## Release preparation
 	git pull
 
 sanity: ## Checking package sanity
-	namcap shadow-beta-*.pkg.tar
+	namcap shadow-alpha-*.pkg.tar
 
 srcinfo: ## Generates .SRCINFO
 	makepkg --printsrcinfo > .SRCINFO

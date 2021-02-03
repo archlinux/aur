@@ -3,6 +3,7 @@ src/
 shadowbeta.deb
 *.pkg.tar
 *.pkg.tar.xz
+*.pkg.tar.zst
 .directory
 *.zip
 *.part
