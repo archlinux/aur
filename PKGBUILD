@@ -5,7 +5,7 @@
 
 pkgname=dgraph-bin
 pkgver=20.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, transactional, distributed graph database'
 arch=('x86_64')
 url='https://github.com/dgraph-io/dgraph'
@@ -21,7 +21,7 @@ source=("dgraph-$pkgver.tar.gz::$url/releases/download/v$pkgver/dgraph-linux-amd
 sha256sums=('983c85c0fff99c412f559fa18050d615350dfa233ef420d3d82eb612a0bc3faf'
             '24912012469ccea5b87391898e162415e0a5be4bf8be94835a1cb88f5ac5d928'
             'bfdc75136567068dd049c2d226049a57de5f4a1871eab7429c022e95952efb0d'
-            '94449db0bbd30aca993dbc6486fbec615e2cada7cd3d91e6b99d6a426a5d7ace'
+            '4ef9bc0e7b2b6d1e6adaef343164f974685bbf2538c9c1ed26ea82d7dddb6974'
             '402c5a022615f47d26db47f375f242638d04abbed3bfd22f86067f8f19031f83'
             '5e0cefcfa0d86ae896383bc76df46cdf28933aabf06918d89269b3b6b4b0e1db')
 
