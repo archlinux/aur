@@ -10,6 +10,7 @@ pkgbase = darkman
 	depends = python-pyxdg
 	depends = python-txdbus
 	depends = geoclue
+	depends = python-pip
 	source = https://files.pythonhosted.org/packages/source/d/darkman/darkman-0.1.4.tar.gz
 	sha512sums = 292825680cfbd6fc9efd1ee6d1114f040022748d94b598c774c0e17c2deccd607262a3933edccc3a1c9d6bcf722ecb9a87f7ca5b2bd64686653ddde25c4ab474
 
