@@ -3,11 +3,11 @@ pkgname=python-qiskit-aer-gpu
 _name=qiskit_aer_gpu
 _py=cp39
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A high performance simulator for quantum circuits that includes noise models"
 arch=(x86_64)
 license=(Apache)
-url="https://github.com/nschloe/quadpy"
+url="https://github.com/Qiskit/qiskit-aer"
 depends=(
   )
 makedepends=(
