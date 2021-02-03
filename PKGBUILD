@@ -2,7 +2,7 @@
 # Contributor: David Vilar <davvil@gmail.com>
 pkgname=vassal
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Game engine for building and playing online adaptations of board games and card games."
 arch=('i686' 'x86_64')
 url="http://www.vassalengine.org/"
@@ -29,7 +29,7 @@ package() {
   cat << EOF > $pkgdir/usr/bin/vassal
 #!/bin/bash
 shopt -s nullglob
-JAVA_PATHS=(/usr/lib/jvm/java-{11..14}-*/bin/java)
+JAVA_PATHS=(/usr/lib/jvm/java-{11..15}-*/bin/java)
 cd /usr/share/java/$pkgname && \${JAVA_PATHS[0]} -classpath lib/Vengine.jar VASSAL.launch.ModuleManager "\$@"
 EOF
   chmod a+x $pkgdir/usr/bin/vassal
