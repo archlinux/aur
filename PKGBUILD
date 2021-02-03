@@ -1,7 +1,7 @@
 # Maintainer: Morgan <morganamilo@archlinux.org>
 pkgname=paru-git
 _pkgname=paru
-pkgver=1.1.2.r0.g40a75f7
+pkgver=1.2.2.r0.g19882b7
 pkgrel=1
 pkgdesc='AUR helper based on yay'
 url='https://github.com/morganamilo/paru'
@@ -40,7 +40,7 @@ package() {
   install -Dm644 man/paru.conf.5 "$pkgdir/usr/share/man/man5/paru.conf.5"
 
   install -Dm644 completions/bash "${pkgdir}/usr/share/bash-completion/completions/paru.bash"
-  install -Dm644 completions/fish "${pkgdir}/usr/share/fish/completions/paru.fish"
+  install -Dm644 completions/fish "${pkgdir}/usr/share/fish/vendor_completions.d/paru.fish"
   install -Dm644 completions/zsh "${pkgdir}/usr/share/zsh/site-functions/_paru"
 }
 
