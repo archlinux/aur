@@ -2,18 +2,18 @@
 
 pkgname=xunlei-bin
 pkgver=1.0.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Xunlei download, 迅雷"
 arch=("x86_64" "aarch64")
 url="https://www.xunlei.com/"
 license=("custom")
-depends=('dbus-glib' 'nodejs' 'libxtst' 'gtk2' 'alsa-lib' 'nss' 'libxss')
+depends=('dbus-glib'  'libxtst' 'gtk2' 'alsa-lib' 'nss' 'libxss')
 provides=('xunlei')
-source=("license.html::https://i.xunlei.com/xluser/privacy.html")
+source=("license.html")
 source_x86_64=("http://archive.kylinos.cn/kylin/partner/pool/com.xunlei.download_${pkgver}_amd64.deb")
 source_aarch64=("http://archive.kylinos.cn/kylin/partner/pool/com.xunlei.download_${pkgver}_arm64.deb")
 
-sha512sums=('7b3868f61d225e90617096859d1ab40a86bacab9b1b1e1c0a350c4946b64a4f1af2722046857602c84ea96ec7ea5ccc2f9592798f5061c91ac10cfc1f89ddfdd')
+sha512sums=('3b0056713d046b01b01de9679a605bbf810c1f6f8c022b2200e14ef864db0583c46b3b9ccc9a0246bb3d70d3fad3415c33804cac5486d1cffb2d3081566d17bd')
 sha512sums_x86_64=(
     '8ed010593eb2d6cf94b8b5591c1bb69e259be501d3f1925874359058226c4bd3aebdbcbc3bf4b6c4c09f028db8e3d465fc939fd0bf710065a8593ffbc325f066'
 )
