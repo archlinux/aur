@@ -1,3 +1,4 @@
+# Maintainer: Stephen Molloy <sdmolloy@gmail.com>
 # Maintainer: Kirill A Pshenichnyi <pshcyrill@mail.ru>
 # Contributors: The Tango team (info@tango-controls.org)
 
