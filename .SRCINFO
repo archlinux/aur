@@ -1,11 +1,11 @@
 pkgbase = moodle
 	pkgdesc = An open-source software learning management system
 	pkgver = 3.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://moodle.org/
 	arch = any
 	license = GPLv3
-	depends = php>=7.2.0
+	depends = php7>=7.2.0
 	depends = php-intl>=7.2.0
 	depends = php-gd>=7.2.0
 	depends = mariadb>=10.2.29
