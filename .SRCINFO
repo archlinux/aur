@@ -1,5 +1,5 @@
 pkgbase = bitrock-unpacker
-	pkgdesc = this is a tcl script for unpacking bitrock packed archives
+	pkgdesc = A tcl script for unpacking bitrock packed archives
 	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/greyltc/bitrock-unpacker/
@@ -7,8 +7,8 @@ pkgbase = bitrock-unpacker
 	license = MIT
 	depends = sdx
 	depends = tclkit
-	source = https://github.com/greyltc/bitrock-unpacker/archive/v1.1.tar.gz
-	md5sums = bd515e5db5c2a8e0f2f52078246eebc2
+	source = bitrock-unpacker-1.1.tar.gz::https://github.com/greyltc/bitrock-unpacker/archive/v1.1.tar.gz
+	sha256sums = 783ce7dd330a0c1c5f1dec7ba51a5c03b17cc20f2c445a0c7dbec5c705b52b9b
 
 pkgname = bitrock-unpacker
 

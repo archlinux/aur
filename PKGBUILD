@@ -4,17 +4,18 @@
 pkgname=bitrock-unpacker
 pkgver=1.1
 pkgrel=1
-pkgdesc="this is a tcl script for unpacking bitrock packed archives"
+pkgdesc="A tcl script for unpacking bitrock packed archives"
 arch=(any)
 url="https://github.com/greyltc/bitrock-unpacker/"
 license=('MIT')
 depends=('sdx' 'tclkit')
 
-source=("https://github.com/greyltc/bitrock-unpacker/archive/v${pkgver}.tar.gz")
-md5sums=('bd515e5db5c2a8e0f2f52078246eebc2')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/greyltc/bitrock-unpacker/archive/v${pkgver}.tar.gz")
+
+sha256sums=('783ce7dd330a0c1c5f1dec7ba51a5c03b17cc20f2c445a0c7dbec5c705b52b9b')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  mkdir -p "${pkgdir}/usr/bin"
-  cp bitrock-unpacker.tcl "${pkgdir}/usr/bin/bitrock-unpacker"
+  cd bitrock-unpacker-${pkgver}
+  mv bitrock-unpacker.tcl bitrock-unpacker
+  install -m755 -Dt "${pkgdir}"/usr/bin bitrock-unpacker
 }
