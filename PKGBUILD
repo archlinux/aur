@@ -2,18 +2,18 @@
 
 pkgname='python-nudatus'
 _module='nudatus'
-pkgver=0.0.4
-pkgrel=2
+pkgver=0.0.5
+pkgrel=1
 pkgdesc="A tool to remove comments from Python scripts"
 url="https://github.com/zanderbrown/nudatus"
 depends=('python')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
-# Release is 0.0.4 is not registered on PyPI yet
-#source=("https://files.pythonhosted.org/packages/source/${_module::1}/${_module}/${_module}-${pkgver}.tar.gz")
-source=("${_module}-${pkgver}.tar.gz::https://github.com/ZanderBrown/nudatus/archive/${pkgver}.tar.gz")
-sha256sums=('00cabe658d3542c613c2b58567a952bab915762b240c8694327f45057b3cf1fc')
+source=("https://files.pythonhosted.org/packages/source/${_module::1}/${_module}/${_module}-${pkgver}.tar.gz")
+# In case the release is not on registered on PyPI (yet)
+#source=("${_module}-${pkgver}.tar.gz::https://github.com/ZanderBrown/nudatus/archive/${pkgver}.tar.gz")
+sha256sums=('ba84a8e022cb4af0f995176383f5ff9fa83d57ded3cedc6aa4db1687f88cacec')
 
 
 build() {
