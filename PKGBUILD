@@ -6,7 +6,7 @@
 # Maintainer: Peter <craven@gmx.net>
 pkgname=bones
 pkgver=20150929
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple Scheme compiler for x86_64 systems"
 arch=(x86_64)
 url="http://www.call-with-current-continuation.org/bones/"
@@ -24,7 +24,7 @@ options=()
 install=
 changelog=
 source=("http://www.call-with-current-continuation.org/${pkgname}/${pkgname}.tar.gz")
-md5sums=('82f99018a2e0c50e8a802f39ab1d3a40')
+md5sums=('3f1f9eac4c5f592d72c677c7335ba2c8')
 noextract=()
 validpgpkeys=()
 
