@@ -2,7 +2,7 @@
 pkgname=uxplay-git
 _gitname=UxPlay
 pkgver=r17.6a473d6
-pkgrel=1
+pkgrel=2
 pkgdesc="AirPlay Unix mirroring server"
 arch=('any')
 url="https://github.com/antimof/$_gitname"
@@ -11,14 +11,19 @@ depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-base-libs' 'gst-libav' 'gst
 makedepends=('cmake')
 conflicts=('uxplay')
 provides=('uxplay')
-source=("git+$url.git" "uxplay.desktop")
-sha256sums=('SKIP' '6b43385942508d8c360e8360be52719cbf3899868f3560b245731d866fb245a3')
+source=("git+$url.git" "wm-name.patch::https://github.com/antimof/UxPlay/pull/31.patch" "uxplay.desktop")
+sha256sums=('SKIP' 'SKIP' '6b43385942508d8c360e8360be52719cbf3899868f3560b245731d866fb245a3')
 
 pkgver() {
   cd "$srcdir/$_gitname"
 
   # Get the version number.
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/$_gitname"
+  patch -p1 < "$srcdir/wm-name.patch"
 }
 
 build() {
