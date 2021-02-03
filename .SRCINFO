@@ -1,16 +1,16 @@
 pkgbase = termchat-git
 	pkgdesc = Terminal chat through the LAN (git)
-	pkgver = 1.1.2.r0.g59c65b8
+	pkgver = 1.2.0.r2.g83356d4
 	pkgrel = 1
 	url = https://github.com/lemunozm/termchat
 	arch = x86_64
 	license = Apache
 	makedepends = rust
 	makedepends = git
+	depends = gcc-libs
 	provides = termchat
 	conflicts = termchat
 	source = git+https://github.com/lemunozm/termchat
 	sha512sums = SKIP
 
 pkgname = termchat-git
-
