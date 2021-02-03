@@ -2,6 +2,11 @@ post_install() {
   echo "mime.types conflicts with the base nginx package. To use the h5bp's"
   echo 'version, replace the include for `/etc/nginx/mime.types`'
   echo 'with `/etc/nginx/h5bp/mime.types`'
+  echo
+  echo 'Start using the h5bp configuration by copying the example NGINX'
+  echo 'configuration from `/etc/nginx/conf.d/templates/example.com.conf`'
+  echo 'to the `/etc/nginx/conf.d` directory with the desired domain and'
+  echo 'top level name to your liking.'
 }
 
 post_update() {
