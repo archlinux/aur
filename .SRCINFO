@@ -1,6 +1,6 @@
 pkgbase = kmozillahelper
 	pkgdesc = Mozilla KDE Integration.
-	pkgver = 5.0.5
+	pkgver = 5.0.6
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/openSUSE/kmozillahelper
@@ -13,8 +13,8 @@ pkgbase = kmozillahelper
 	depends = knotifications
 	depends = kwindowsystem
 	depends = ki18n
-	source = kmozillahelper-5.0.5.tar.gz::https://github.com/openSUSE/kmozillahelper/archive/v5.0.5.tar.gz
-	md5sums = 408b8b87633a4706163bc7f97dc60f6b
+	source = kmozillahelper-5.0.6.tar.gz::https://github.com/openSUSE/kmozillahelper/archive/v5.0.6.tar.gz
+	md5sums = 382142073322f942f4d332fffb77ef25
 
 pkgname = kmozillahelper
 
