@@ -2,7 +2,7 @@
 
 _target="sh-elf"
 pkgname=${_target}-gcc-casio
-pkgver=10.1.0
+pkgver=10.2.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection for the Casio calculators SuperH processors."
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ depends=("${_target}-binutils-casio" 'libmpc' 'elfutils' 'gmp' 'mpfr')
 optdepends=('isl: integer set library')
 options=('!buildflags' '!libtool' '!emptydirs' 'zipman' 'docs' '!strip')
 source=("https://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz")
-sha512sums=('0cb2a74c793face751f42bc580960b00e2bfea785872a0a2155f1f1dbfaa248f9591b67f4322db0f096f8844aca9243bc02732bda106c3b6e43b02bb67eb3096')
+sha512sums=('42ae38928bd2e8183af445da34220964eb690b675b1892bbeb7cd5bb62be499011ec9a93397dba5e2fb681afadfc6f2767d03b9035b44ba9be807187ae6dc65e')
 
 prepare() {
   cd "${srcdir}/gcc-${pkgver}"
@@ -44,7 +44,7 @@ build() {
 package() {
   cd "${srcdir}/gcc-${pkgver}/gcc-build"
 
-  make DESTDIR="${pkgdir}" install-gcc install-target-libgcc
+  make DESTDIR="${pkgdir}" install-strip-gcc install-strip-target-libgcc
 
   # Remove unwanted files
   rm -rf "${pkgdir}/usr/share/"
