@@ -5,7 +5,7 @@
 _pkgbase=julia
 pkgbase=${_pkgbase}-git
 pkgname=(julia-git julia-git-docs)
-pkgver=1.7.0.DEV.r48883.gd3012d7b6c2
+pkgver=1.7.0.DEV.r48887.g6b91bbba6f6
 pkgrel=1
 arch=(x86_64)
 pkgdesc='High-level, high-performance, dynamic programming language'
@@ -15,17 +15,9 @@ depends=(#compare with grep =1 Make.user|cut -c 11-|cut -d: -f1|tr _A-Z \\ta-z
 	libunwind
 	pcre2
 	openlibm
-	openblas
-	cblas
-	lapack
 	gmp
 	mpfr
-	suitesparse
 	libutf8proc
-	mbedtls
-	libssh2
-	curl
-	libgit2
 	zlib p7zip
 
 	xdg-utils desktop-file-utils
@@ -40,14 +32,10 @@ makedepends=(
 )
 source=(git+https://github.com/JuliaLang/julia.git#branch=master
         Make.user
-        julia-system-cblas.patch
-        libunwind-version.patch
-        make-install-no-build.patch)
+        libunwind-version.patch)
 sha256sums=('SKIP'
-            '1aee33d62dcd8e6b65672bd9996a61c83e44056dd31efa79761cb85effb0e6a1'
-            'd4c8fe9eec1bc416549924ae328ceb3f63cc736ecd5e67886faa924e7c14bc5d'
-            '856dab2da8124df95e4fbd17f1164bebe1b10e99852fedf38f9dfe31f8ae295c'
-            '09b6077149fa3d22b71b63e471f077d1f3dbeb39d682030c73c316e939e2cc19')
+            'SKIP'
+            '856dab2da8124df95e4fbd17f1164bebe1b10e99852fedf38f9dfe31f8ae295c')
 
 
 pkgver() {
@@ -67,15 +55,9 @@ prepare() {
   msg2 'Configuring the build...'
   cp -v $srcdir/Make.user .
 
-  # Add and use option to build with system cblas
-  patch -p1 -i ../julia-system-cblas.patch
-
   # Fixing libunwind version check
   # https://github.com/JuliaLang/julia/pull/29082
   patch -p1 -i ../libunwind-version.patch
-
-  # Don't build again in install
-  patch -p1 -i ../make-install-no-build.patch
 }
 
 build() {
@@ -93,8 +75,10 @@ check() {
   cd "$_pkgbase/test"
 
   # this is the make testall target, plus the --skip option from
-  # travis/appveyor/circleci (one test fails with DNS resolution errors)
-  ../julia --check-bounds=yes --startup-file=no ./runtests.jl all --skip Sockets --skip Distributed --skip LibGit2/libgit2
+  # travis/appveyor/circleci (one test failed with DNS resolution errors)
+  ../julia --check-bounds=yes --startup-file=no ./runtests.jl all \
+	--skip Distributed
+
   find ../stdlib \( -name \*.cov -o -name \*.mem \) -delete
   rm -r depot/compiled
 }
