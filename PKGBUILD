@@ -1,7 +1,7 @@
 # Maintainer:  Travis Collins <erbrecht at pobox dot com>
 pkgname='noisetorch'
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Real-time microphone noise suppression on Linux.'
 arch=('x86_64')
 url=https://github.com/lawl/NoiseTorch
@@ -18,6 +18,7 @@ sha256sums=('f0887a2c8c6cd4c863e4d67da2bcfb2b3900e9f5bfd5b0c1eaef576cc67948c7'
 
 prepare() {
 	cd NoiseTorch-${pkgver}
+	mkdir -p bin/
 	patch -u main.go ../main.patch
 	sed "s/VERSIONTOKEN/${pkgver}/" ../version.go > version.go
 	export GOPATH="$srcdir/go"
@@ -38,7 +39,6 @@ build() {
 	echo "go cxxflags $CGO_CXXFLAGS"
 	echo "go ldflags  $CGO_LDFLAGS"
 	echo "go flags    $GOFLAGS"
-	mkdir -p bin/
 	go generate
 	go build -o bin/noisetorch
 	go clean -modcache
