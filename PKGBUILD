@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-zen-anbox
-pkgver=5.10.8.zen1
+pkgver=5.10.12.zen1
 pkgrel=1
 pkgdesc='Linux ZEN'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -27,7 +27,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'dbcee69b4f9013eb0d140d72356ea5831fa159bd61442cb0b2b63eeba3410fae'
+            'bc3ab7f93159b27435d22cca806c21b286f70d93331cf778bc14d3fd77148599'
             'a64e5a390b458fdaa373c7125a6732acd9b24b9e6596b8fcd865bf8656a059b5'
             '6a759fdca5cd5275334b05a62d699006a05d631e67a9902d9cb78a471b5ec246')
 
