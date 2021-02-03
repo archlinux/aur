@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-kiss-headers
 _name=${pkgname#python-}
-pkgver=2.2.4
+pkgver=2.3.0
 pkgrel=1
-pkgdesc="Object oriented headers, HTTP/1.1 style. Also parse headers."
+pkgdesc="Python package for HTTP/1.1 style headers. Parse headers to objects."
 arch=('any')
 url="https://www.kiss-headers.tech"
 license=('MIT')
