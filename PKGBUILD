@@ -1,6 +1,6 @@
 # Maintainer: Noah Witt <noah@noah-witt.com>
-# Prior Work: agentcobra <agentcobra@free.fr>
-# Prior Work: Nover <novares.x@gmail.com>
+# Contributor: agentcobra <agentcobra@free.fr>
+# Contributor: Nover <novares.x@gmail.com>
 
 # Creator Blade <contact@blade-group.com>
 
