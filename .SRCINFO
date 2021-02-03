@@ -1,0 +1,14 @@
+pkgbase = kakikun
+	pkgdesc = A paint and ASCII art application for the terminal
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://fi-le.net/programming/#kakikun
+	arch = x86_64
+	license = MIT
+	depends = cargo
+	depends = git
+	source = https://github.com/file-acomplaint/kakikun/releases/download/v0.1.0/kakikun.tar.gz
+	md5sums = 26c5e57593cc1651f5e6edc402179a17
+
+pkgname = kakikun
+
