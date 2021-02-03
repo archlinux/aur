@@ -6,6 +6,7 @@ pkgbase = opentyrian
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	depends = sdl2
 	depends = sdl2_net
 	optdepends = hicolor-icon-theme: .desktop file icons

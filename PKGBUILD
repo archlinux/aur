@@ -10,6 +10,7 @@ url="https://github.com/opentyrian/opentyrian"
 arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('sdl2' 'sdl2_net')
+makedepends=('git')
 provides=('tyrian')
 optdepends=('hicolor-icon-theme: .desktop file icons')
 source=("git+https://github.com/opentyrian/opentyrian#commit=650e1f72fd18d2242d10d706afa7f77f80151aea"
