@@ -19,6 +19,11 @@ pkgver () {
   printf "%s.r%s.%s" "$(grep -oP "^  version: 'v\K[0-9.]*(?=(-git)',$)" meson.build)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd ${pkgname}
+  meson subprojects download
+}
+
 build() {
   # this is actually needed to prevent linking against old system-wide r2 libs
   # you can comment this out, if you build in a clean environment
@@ -26,7 +31,6 @@ build() {
 
   cd ${pkgname}
   arch-meson build              \
-    --wrap-mode default \
     -D use_sys_capstone=true    \
     -D use_sys_magic=true       \
     -D use_sys_zip=true         \
