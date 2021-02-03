@@ -32,7 +32,7 @@ prepare() {
 
 build() {
 	cd "$_name"
-	./configure --prefix=/usr
+	./configure --prefix=/usr --with-x
 	make
 }
 
