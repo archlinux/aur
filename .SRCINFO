@@ -1,0 +1,14 @@
+pkgbase = jupyterlab-extension-notebook-uuid
+	pkgdesc = Automatically assigns each notebook opened in Jupyter Lab a persistent UUID
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://pypi.org/project/notebook-uuid
+	arch = any
+	license = BSD
+	depends = jupyterlab
+	provides = python-notebook-uuid
+	source = https://files.pythonhosted.org/packages/py3/n/notebook-uuid/notebook_uuid-0.4.0-py3-none-any.whl
+	sha256sums = fd69fb4daa9cf339bc8e6cbc11bfcf8a071ca7db7c556c6af9fbc96997f9c138
+
+pkgname = jupyterlab-extension-notebook-uuid
+
