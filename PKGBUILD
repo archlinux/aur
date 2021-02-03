@@ -3,7 +3,7 @@
 _pkgname=shtab
 pkgname=python-${_pkgname}
 pkgver=1.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Automagic shell tab completion for Python CLI applications"
 arch=('any')
 url="https://github.com/iterative/shtab"
@@ -15,6 +15,7 @@ sha256sums=('353f2a3a5178cd2df8eb746e7ab26a5039a9989e4386de8fd239d8c1653a8887')
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	mv LICENCE LICENSE
+	rm -rf tests
 	python setup.py build
 }
 

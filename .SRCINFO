@@ -1,7 +1,7 @@
 pkgbase = python-shtab
 	pkgdesc = Automagic shell tab completion for Python CLI applications
 	pkgver = 1.3.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/iterative/shtab
 	arch = any
 	license = Apache
