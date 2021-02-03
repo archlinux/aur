@@ -1,7 +1,7 @@
 pkgbase = linuxkit
 	pkgdesc = A toolkit for building secure, portable and lean operating systems for containers
 	pkgver = 0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxkit/linuxkit
 	arch = x86_64
 	license = APACHE
