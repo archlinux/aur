@@ -6,7 +6,7 @@ pkgbase = libphutil-stable
 	arch = any
 	license = Apache
 	makedepends = git
-	depends = php
+	depends = php7
 	provides = libphutil=r1717.5e0d5022
 	conflicts = libphutil
 	source = git+https://github.com/phacility/libphutil.git#branch=stable

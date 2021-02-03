@@ -12,7 +12,7 @@ pkgdesc='A collection of PHP utility classes'
 arch=('any')
 url="https://www.phacility.com/phabricator/"
 license=('Apache')
-depends=('php')
+depends=('php7')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
