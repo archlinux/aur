@@ -1,7 +1,7 @@
 pkgbase = pms-git
 	pkgdesc = Practical Music Search is an interactive Vim-like console client for the Music Player Daemon.
 	pkgver = 0.42.r835.gcae1f02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ambientsound/pms
 	arch = x86_64
 	license = MIT
