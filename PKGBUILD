@@ -48,13 +48,13 @@ _use_current=
 pkgbase=linux-rt-bfq-dev
 # pkgname=('linux-rt-bfq-dev' 'linux-rt-bfq-dev-headers' 'linux-rt-bfq-dev-docs')
 _major=5.10
-_minor=8
-_rtver=24
+_minor=12
+_rtver=26
 _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=5
+pkgrel=1
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -71,7 +71,7 @@ _bfq_rev_path="bfq-reverts-all"
 _bfq_rev_patch="0001-bfq-reverts.patch"
 _bfq_path="bfq-dev-lucjan"
 _bfq_ver="v14"
-_bfq_rel="r2K210114"
+_bfq_rel="r2K210203"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _gcc_path="cpu-patches-sep"
 _gcc_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
@@ -83,10 +83,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-rt-patches-v3-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-rt-patches-v3-sep/0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
-        "${_lucjanpath}/arch-rt-patches-v3-sep/0003-iwlwifi-provide-gso_type-to-GSO-packets.patch"
-        "${_lucjanpath}/arch-rt-patches-v3-sep/0004-HID-wacom-Correct-NULL-dereference-on-AES-pen-proxim.patch"
+        "${_lucjanpath}/arch-patches-v13-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v13-sep/0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
+        "${_lucjanpath}/arch-patches-v13-sep/0003-iwlwifi-provide-gso_type-to-GSO-packets.patch"
          # the main kernel config files
         'config')
 
@@ -333,17 +332,16 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('13ea7cf81db43059466c1558bd80175a6c2090496786fe9220c165958d19781d5501104f41f8207e0239a101611a1faa38b203dd1e8890964494ef8518f5f21e'
+sha512sums=('01062437c9af1654346b5baf550dbefe3cedab18b3d793ee528d1fc27556d5ecc438b6a39a4163acb65434f50516f8c98a3b1be723afbb620680695b909a376e'
             'SKIP'
-            '163e7984c2ae8f32825fb0eb52b19af410ccfac3fe72bb5cc400e797112326dc2f11e808ea7b168baa2a412888cbc80b3f2050040ec04043b606a31bbb8a46b2'
+            'ad63c7c3082b66f848f0d9ee0067deff5377ec04917945f267b27137eb8c34e7918161a18698cf6799b456384d2c55154c70ade4878a11732d8159418f1d3a60'
             'SKIP'
             '45fa721352143304eceff87649986fd42fcf4ae369f15ba704a435ab2f107dfe41c050eac25cd9167d2cc73d569aad8501cbd13477b62bad9724e4240f36ab15'
-            'c074a23494d46b8c29e404c73823d86addd19ab12337f7c62607befdff58f10b5059ec97c3c52ab27b210cf64a21019c38547fdd4c004823f772bf7b8ea4b0c5'
+            '989d4013d5cb68aa9561afbe08b92ba29c3bdd456eaccdfad74d4f1e7059b3fca0914220cc4e4a700041675b7ae6b0c0342132b359a441f95fd5803b720c8dea'
             '34e21ecc4ef0d07707283427fa82d561a9573d670e80ccd41f7d9cb595473b3844b8df7aeffcb4fe82d9deeef0a4d4e6aef663eb1a7a397fa181f06f418a0d6d'
-            '1b0c96a100973cb397b8780e20e8d97f2de3b9fc168cd12fbd3375322852d1baadfded12c733ea228466a2f87bb3c65f7e01fd7cd0b884306cf47aa20a606ebf'
-            '856625d688b6e39bd61addb6c476541b9313a2fba81c4a6b0eaa8fa1c7797a8a567cb528fe9eddbb0507f2e9f8430e1e3bff29e380063381c057b81fdc8023e5'
-            '01b11d4947f3f2a5fdf208e326cc21b89e7d98c97cb1811ba47a6ed6dfd60518aad6094c207738d69fb5b737edb9cd0557f1cfc3e7bb25b9ca51da1f83359ad5'
-            '2f662bcad4cf7cc3739696e21d5b68e7c59ba4e96525759abc21c1ca74dbf8a2dbf120442861440b80cdc21098ebfa0f7d58ae2a88ffd7f3c1bb375f2adf6bbd'
+            'fe301a3a61e66017c197e923b7cc7b6cf127c524bdc830c6d8b173f1121a1aff929ca34d6410e7edd0c0a16f6f2784c9c32d27ddbf550040c728347fe8ae5874'
+            '690ef06ac939c0e3077405f9ffe276985075c582a69b8264dc65c065118dd85571feb21b6fe775d60d54be9177ed8df123ed9a2de2f10b61d7b0e7b39190557c'
+            '2b5139637624f0b051dd0a19845fca3ffc9bc87ea0f6113459ab3f39a5970d1fc6ee58d2632696013bef9e802df131b2ccc4107c9b4cc7afda3acd02b8576b22'
             '8283ee83731c7495985680685ee92a9e867e7ffc9262c59fcd706a919c6e6f3185b6979056212554e0248f8de223def4dcec8cfe7bd5aafab31fb73096017cb9')
 
 validpgpkeys=(
