@@ -7,13 +7,13 @@
 
 pkgname=lxc-git
 _pkgname=lxc
-pkgver=4.0.0.r682.gbfcd663fc
+pkgver=4.0.0.r873.g07f89a4fa
 pkgrel=1
 pkgdesc="Linux Containers git version"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://linuxcontainers.org"
 depends=('bash' 'perl' 'libseccomp' 'libcap' 'python' 'rsync' 'wget')
-makedepends=('docbook2x' 'lua' 'python-setuptools' 'git')
+makedepends=('docbook2x' 'lua' 'python-setuptools' 'apparmor' 'git')
 optdepends=('dnsmasq: lxc-net.service'
   'lua'
   'lua-filesystem: lxc-top'
@@ -60,7 +60,6 @@ build() {
     --enable-apparmor \
     --enable-seccomp \
     --enable-capabilities \
-    --disable-werror \
     --with-init-script=systemd \
     --with-systemdsystemunitdir=/usr/lib/systemd/system \
     --enable-pam \
