@@ -1,6 +1,6 @@
 # Maintainer: ccat3z <c0ldcat3z@gmail.com>
 
-pkgver=1.20.3
+pkgver=1.20.4
 pkgname=(hledger-bin hledger-ui-bin hledger-web-bin)
 pkgrel=1
 pkgdesc="Easy-to-use command-line/curses/web plaintext accounting tool"
@@ -9,7 +9,7 @@ url="http://hledger.org"
 license=('GPL')
 depends=('gmp' 'ncurses5-compat-libs')
 source=(hledger-${pkgver}.zip::https://github.com/simonmichael/hledger/releases/download/${pkgver}/hledger-ubuntu.zip)
-sha256sums=(6f29f268b597f6e8efd16ef7f4a81e11876b27afe15d6314695869be66e521c5)
+sha256sums=(49b860e51d0998b98ce800f0a521e9ea9e57453c16df37426b40e8363b9d26d9)
 
 package_hledger-bin() {
     pkgdesc="Command-line interface for the hledger accounting system"
