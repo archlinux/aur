@@ -6,7 +6,7 @@ pkgdesc="A small script that helps you generate a password and check for the pas
 arch=('any')
 url="https://github.com/Mahmoud-Hashad/passtools"
 license=('GPL')
-depends=('python' 'pyperclip' 'requests')
+depends=('python')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Mahmoud-Hashad/passtools/archive/v$pkgver.tar.gz")
 sha256sums=('2245f8efa37963558cb925c6515a790033f87bc694a7baee5c32af1c29291e10')
 

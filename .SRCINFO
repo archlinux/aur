@@ -6,8 +6,6 @@ pkgbase = passtools
 	arch = any
 	license = GPL
 	depends = python
-	depends = pyperclip
-	depends = requests
 	source = passtools-0.1.tar.gz::https://github.com/Mahmoud-Hashad/passtools/archive/v0.1.tar.gz
 	sha256sums = 2245f8efa37963558cb925c6515a790033f87bc694a7baee5c32af1c29291e10
 
