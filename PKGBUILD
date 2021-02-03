@@ -1,7 +1,7 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
 
 pkgname=zulu-embedded-jdk8
-pkgver=8.0.272
+pkgver=8.0.282
 pkgrel=1
 pkgdesc='Zulu Embedded is a certified build of OpenJDK for Armv8/v7/v6 devices.'
 arch=('armv6h' 'armv7h' 'armv8h' 'aarch64' 'i686' 'x86_64')
@@ -16,22 +16,22 @@ depends=('java-runtime-common>=3' 'java-environment-common=3'
 
 case "$CARCH" in
     armv?h) _arch='aarch32hf'
-        _build=8.50.0.259
-        sha256sums=('7972f0d96c0287639ffd9528abd48296487937f752a5602da7029e501a3a9c7e')
+        _build=8.52.0.23
+        sha256sums=('33c0250cc4e6ee7cdd882cba7ef51f16bcf151e966285721822210ca40780457')
         ;;
     aarch64) _arch='aarch64'
-        _build=8.50.0.259
-        sha256sums=('df0350667c641fb459138cb0de1fabdd7d290449df1cbd76939761bc1b74afab')
+        _build=8.52.0.23
+        sha256sums=('ae0ad6046f6e7e751b43c615e3d37afc8b6b1c19b88dffd5f22c225aae9d26a7')
         ;;
     i686) _arch='i686'
-        _build=8.50.0.21
-        sha256sums=('103756af3b8531497a63d481932c6b609bb93b1a6bf2c09c7a17f8381666dc81')
+        _build=8.52.0.23
+        sha256sums=('d68bd05d36a4da4774a5211eaca2870eda632410df19fe1dabb5adf9906c54c3')
         source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_i686.tar.gz")
         provides=("java-environment=8" "java-runtime=8")
         ;;
     x86_64) _arch='x64'
-        _build=8.50.0.21
-        sha256sums=('6033f82b582ebbfa2cb1b17d05fc723fa4683d74b8b23c218415f7b92a9acf04')
+        _build=8.52.0.23
+        sha256sums=('36c39878724f509d765a8f3804f6cef87c2eff39ac85447a0dc870231c1d3bca')
         source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_x64.tar.gz")
         provides=("java-environment=8" "java-runtime=8")
 esac
