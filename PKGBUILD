@@ -90,18 +90,18 @@ package() {
 }
 
 _commit=9add3366d25530d51d168608c54b5339b64d2a4e
-pkgname=shadow-beta
-basename=preprod
+pkgname=shadow-alpha
+basename=testing
 pkgver="$(pkgver)"
 pkgrel=1
-pkgdesc="Shadow Bêta application"
+pkgdesc="Shadow Alpha application"
 arch=('x86_64')
 url="http://shadow.tech"
 license=('unknown')
 depends=('desktop-file-utils' 'freetype2' 'libuv' 'gconf' 'hicolor-icon-theme' 'json-c' 'libappindicator-gtk2' 'libbsd' 'libcurl-gnutls' 'libdrm' 'libnotify' 'libva' 'libxtst' 'nss' 'opus' 'qt5-base' 'qt5-svg' 'sdl2' 'libcurl-compat' 'sdl' 'gcc7-libs' 'ttf-dejavu' 'libxss' 'libsndio-61-compat' 'gnome-keyring')
 optdepends=('libva-vdpau-driver-shadow-nvidia: Patch for recent Nvidia GPU' 'nouveau-fw: Driver for old Nvidia GPU' 'libva-intel-driver: Driver for Intel GPU')
-provides=(shadow-beta)
-source=("$(file)::https://update.shadow.tech/launcher/${basename}/linux/ubuntu_18.04/ShadowBeta.AppImage")
+provides=(shadow-alpha)
+source=("$(file)::https://update.shadow.tech/launcher/${basename}/linux/ubuntu_18.04/ShadowAlpha.AppImage")
 # sha512sums=("$(sha512sum))
 sha512sums=('SKIP')
 install=$pkgname.install

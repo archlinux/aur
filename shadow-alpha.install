@@ -1,0 +1,16 @@
+post_remove() {
+	# Remove configuration
+	for user in `ls /home`
+	do
+		if [ -d /home/$user/.config/Shadow\ Alpha ]; then
+			rm -R /home/$user/.config/Shadow\ Alpha
+		fi
+	done
+}
+
+pre_upgrade(){
+	# Delete the old version of Shadow
+	if [ -d "/opt/Shadow Alpha" ]; then
+	    rm -r "/opt/Shadow Alpha"
+	fi
+}

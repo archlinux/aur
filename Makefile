@@ -11,15 +11,15 @@ clear: ## Clears files
 	rm -rf ./src
 	rm -f ./*.deb
 	rm -f ./*.zip
-	rm -f ./shadow-beta-*.pkg.tar
-	rm -f ./shadow-beta-*.pkg.tar.xz
+	rm -f ./shadow-alpha-*.pkg.tar
+	rm -f ./shadow-alpha-*.pkg.tar.xz
 	rm -f ./*~
-	rm -f shadow-beta.zip
+	rm -f shadow-alpha.zip
 	rm -f *.AppImage
 	rm -f *.yml
 
 install:build ## Installs package with pacman
-	sudo pacman -U shadow-beta-*.pkg.tar
+	sudo pacman -U shadow-alpha-*.pkg.tar
 
 pkgsum: ## Updates pkgsum with updpkgsums
 	updpkgsums
