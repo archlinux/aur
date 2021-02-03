@@ -11,7 +11,7 @@ makedepends=('git' 'meson' 'ninja')
 depends=('capstone' 'lz4' 'file' 'libzip' 'xxhash' 'libuv')
 provides=('rizin')
 conflicts=('rizin')
-source=("$pkgname"::"git+https://github.com/rizinorg/rizin.git")
+source=("$pkgname::git+https://github.com/rizinorg/rizin.git")
 md5sums=('SKIP')
 
 pkgver () {
@@ -24,7 +24,7 @@ build() {
   # you can comment this out, if you build in a clean environment
   export PKG_CONFIG_PATH="${srcdir}/${pkgname}/pkgcfg:${PKG_CONFIG_PATH}"
 
-  cd ${srcdir}/${pkgname}
+  cd ${pkgname}
   arch-meson build              \
     --wrap-mode default \
     -D use_sys_capstone=true    \
@@ -40,7 +40,7 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${pkgname}
+  cd ${pkgname}
   DESTDIR="${pkgdir}" ninja -C build install
   install -dm644 "${pkgdir}/usr/share/doc/rizin"
   cp -r doc/* "${pkgdir}/usr/share/doc/rizin"
