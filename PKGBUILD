@@ -4,8 +4,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=88.0.4324.96
-pkgrel=2
+pkgver=88.0.4324.146
+pkgrel=1
 _launcher_ver=7
 _gcc_patchset=3
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -27,7 +27,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
         subpixel-anti-aliasing-in-FreeType-2.8.1.patch)
-sha256sums=('8995c5bb28559579f3bed51841420253637f912c425908fe5aa389ce40e9c79f'
+sha256sums=('38b118fbe8bbdf89e4f170ced090088f5eb2bb68f2295abbb0006cc94b7f827d'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
             'e5a60a4c9d0544d3321cc241b4c7bd4adb0a885f090c6c6c21581eac8e3b4ba9'
             '1e2913e21c491d546e05f9b4edf5a6c7a22d89ed0b36ef692ca6272bcd5faec6')
