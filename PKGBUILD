@@ -1,17 +1,18 @@
-# Maintainer: Darks <l.gatin@protonmail.com>
+# Maintainer: Darks <darks@middleearth.com>
 # Contributor: CoiledSpring
 
 _basename=fxsdk
 pkgname=${_basename}-git
-pkgver=r35.c9dd9fa
-pkgrel=5
+pkgver=r83.0db7ae9
+pkgrel=1
 pkgdesc='Tools to program for the Casio fx9860 calculators'
 arch=('i686' 'x86_64')
 provides=('fxsdk' 'fxconv' 'fxg1a')
-depends=()
-optdepends=('gint-git: alternative library and kernel for add-in development on fx-9860G and fx-CG50'
+depends=('cmake')
+optdepends=(
+  'gint-git: alternative library and kernel for add-in development on fx-9860G and fx-CG50'
   'mkg3a: a tool to create Casio FX-CG addon files.')
-makedepends=('git')
+makedepends=('git' 'gcc')
 source=("${pkgname}::git+https://gitea.planet-casio.com/Lephenixnoir/${_basename}.git")
 sha256sums=('SKIP')
 
