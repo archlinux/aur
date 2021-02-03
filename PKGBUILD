@@ -1,7 +1,8 @@
-# Maintainer: Qingxu 
+# Maintainer: Qingxu <qingxu@qingxu.live>
+
 pkgname=yesplaymusic
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A third party music application for Netease Music"
 arch=("x86_64")
 url="https://github.com/qier222/YesPlayMusic"
@@ -10,20 +11,53 @@ depends=(
     "gtk3"
     "nss"
 )
+optdepends=(
+    'c-ares'
+    'ffmpeg'
+    'http-parser'
+    'libevent'
+    'libvpx'
+    'libxslt'
+    'minizip'
+    're2'
+    'snappy'
+    'libnotify'
+    'libappindicator-gtk3'
+)
 source=(
-    "YesPlayMusic-${pkgver}.pkg.tar.zst::https://github.com/qier222/YesPlayMusic/releases/download/v${pkgver}/YesPlayMusic-${pkgver}.pacman"
+    "YesPlayMusic-${pkgver}.pacman::https://github.com/qier222/YesPlayMusic/releases/download/v${pkgver}/YesPlayMusic-${pkgver}.pacman"
 )
 md5sums=('86515dd0022d5e84112cbdb9dd9842d1')
 
 package() {
     cd ${srcdir}
+    mv YesPlayMusic-${pkgver}.pacman YesPlayMusic-${pkgver}.pkg.tar.zst
     tar -I zstd -xvf YesPlayMusic-${pkgver}.pkg.tar.zst -C ${pkgdir}
 
-    # SUID chrome-sandbox for Electron 5+
-    chmod 4755 "${pkgdir}/opt/YesPlayMusic/chrome-sandbox"
-
+    # remove exsiting files
     rm -f ${pkgdir}/.PKGINFO ${pkgdir}/.MTREE ${pkgdir}/.INSTALL
-    
-    mkdir ${pkgdir}/usr/bin
-    ln -sf '/opt/YesPlayMusic/yesplaymusic' "${pkgdir}/usr/bin/yesplaymusic"
+}
+
+post_install() {
+        :
+    #!/bin/bash
+
+    # Link to the binary
+    ln -sf '/opt/YesPlayMusic/yesplaymusic' '/usr/bin/yesplaymusic'
+
+    # SUID chrome-sandbox for Electron 5+
+    chmod 4755 '/opt/YesPlayMusic/chrome-sandbox' || true
+
+    update-mime-database /usr/share/mime || true
+    update-desktop-database /usr/share/applications || true
+
+}
+
+post_remove() {
+        :
+    #!/bin/bash
+
+    # Delete the link to the binary
+    rm -f '/usr/bin/yesplaymusic'
+
 }
