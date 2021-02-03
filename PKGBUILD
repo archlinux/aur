@@ -3,7 +3,7 @@
 # Contributor: Tarn Burton <twburton at gmail dot com>
 
 pkgname=pioneer
-pkgver=20200203
+pkgver=20210203
 pkgrel=1
 pkgdesc="A game of lonely space adventure"
 arch=('x86_64') # 'i686' untested
@@ -32,13 +32,10 @@ makedepends=(
   'cmake'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pioneerspacesim/pioneer/archive/$pkgver.tar.gz")
-sha256sums=('3055d63c1bd3377c3794eee830a8adbd650b178bad9e927531e38cb5d5838694')
+sha256sums=('fcbc57374123b44161e9d15d97bd950255f654a222840894f50bfc2be716ea68')
 
 build()
 {
-  # Autotools support is dropped
-  # https://github.com/pioneerspacesim/pioneer/issues/4525#issuecomment-460067597
-
   # Build codedoc
   # cd "$srcdir/$pkgname-$pkgver"
   # autoreconf -fvi
@@ -48,13 +45,12 @@ build()
   # Build
   mkdir "$srcdir/$pkgname-$pkgver/build"
   cd "$srcdir/$pkgname-$pkgver/build"
-  # cmake . -LH
-  # cmake . -LAH
   cmake \
     -D CMAKE_INSTALL_PREFIX:PATH=/usr \
     -D PIONEER_DATA_DIR:PATH=/usr/share/pioneer/ \
     -D USE_SYSTEM_LIBGLEW:BOOL=ON \
     -D USE_SYSTEM_LIBLUA:BOOL=ON \
+    -D CMAKE_EXPORT_COMPILE_COMMANDS=1 \
     -G 'Unix Makefiles' \
     -Wno-dev \
     -Wdeprecated \
@@ -64,10 +60,6 @@ build()
   time make
   # Precompile all models into *.sgm files to alleviate long startup times
   ./modelcompiler -batch inplace
-
-  # Run
-  # cd "$srcdir/$pkgname-$pkgver/build"; ./pioneer # Could not load shaders/opengl/vtxColor.vert
-  # cd "$srcdir/$pkgname-$pkgver"; ./build/pioneer
 }
 
 package()
