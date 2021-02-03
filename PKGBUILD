@@ -4,7 +4,7 @@
 
 pkgname=openttd-jgrpp
 pkgver=0.40.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenTTD with JGR's patch pack."
 arch=('i686' 'x86_64')
 url='http://www.tt-forums.net/viewtopic.php?f=33&t=73469'
@@ -12,7 +12,7 @@ license=('GPL')
 makedepends=('tar' 'cmake')
 depends=('libpng' 'sdl2' 'icu' 'fontconfig' 'lzo' 'hicolor-icon-theme' 'desktop-file-utils' 'xz' 'fluidsynth')
 source=("https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-${pkgver}.tar.gz")
-sha256sums=('f0ace09930bd2077778021a066316e72160c9ea5f863c8abcab202294f76033b')
+sha256sums=('88ddb648b09478487802fcef1e18157f24c09a788742d70c5f6c93b201d3db66')
 
 _dirname=OpenTTD-patches-jgrpp
 
