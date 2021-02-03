@@ -8,19 +8,21 @@ url="https://www.proxmox.com"
 license=('AGPL3')
 depends=('gcc-libs'
 	'fuse3'
-	'pam'
-	'systemd-libs'
 	'acl'
 )
-makedepends=('cargo' 'clang' 'git' 'llvm' 'python-docutils')
+makedepends=('cargo' 'clang' 'git' 'llvm' 'patchelf' 'python-docutils' 'sg3_utils')
 source=(
     "$pkgname-$pkgver::git://git.proxmox.com/git/proxmox-backup.git#tag=v$pkgver"
     "0001-adapt-cargo-toml-and-remove-systemd-linking.patch"
     "0002-remove-apt-dependency.patch"
+    "elf-strip-unused-dependencies.sh"
 )
-sha512sums=('SKIP'
-            '0806e8e5078d5b25b19b7414d2b96bba886ed146cc0080fc505eb835698d4e689dad954db128c01da1b02df9c32be54512fe9fd7fded89c74c2dcbf05b2f9dc5'
-            '35e3aa7369c481dde640ba8a97f0d4e95a73907f2a985382a5ed230d762e5b645a81a72c9fdd19e2dead7de51c5f7d051379ad6340cbbc245890e71398e45381')
+sha512sums=(
+    'SKIP'
+    '0806e8e5078d5b25b19b7414d2b96bba886ed146cc0080fc505eb835698d4e689dad954db128c01da1b02df9c32be54512fe9fd7fded89c74c2dcbf05b2f9dc5'
+    '35e3aa7369c481dde640ba8a97f0d4e95a73907f2a985382a5ed230d762e5b645a81a72c9fdd19e2dead7de51c5f7d051379ad6340cbbc245890e71398e45381'
+    '8ebadc9854ff8bcd4e1e2e849728ef5724164b834793d0dda989e72ff0180d44b1318fdd6a4c1bf29b6d93bb8241c8dc47839d7d6a4b9f59a8a03f7e208e9991'
+)
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -33,6 +35,11 @@ build() {
   cd "$pkgname-$pkgver"
 
   cargo build --release --bin proxmox-backup-client --bin pxar --bin dump-catalog-shell-cli
+
+  # fixup rust linking "feature" which links in all dependencies somewhere used
+  # in the crate, even if not referenced at all in this binary...
+  "${srcdir}/elf-strip-unused-dependencies.sh" "target/release/proxmox-backup-client"
+  "${srcdir}/elf-strip-unused-dependencies.sh" "target/release/pxar"
 
   cd docs
 
