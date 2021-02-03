@@ -1,0 +1,22 @@
+pkgbase = teaiso
+	pkgdesc = Alternative ISO creation tool for Arch Linux.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://gitlab.com/tearch-linux/teaiso
+	arch = any
+	license = GPL3
+	depends = arch-install-scripts
+	depends = dosfstools
+	depends = e2fsprogs
+	depends = grub
+	depends = squashfs-tools
+	depends = mtools
+	depends = libisoburn
+	depends = python
+	depends = python-argparse
+	depends = python-yaml
+	source = git+https://gitlab.com/tearch-linux/teaiso.git
+	md5sums = SKIP
+
+pkgname = teaiso
+
