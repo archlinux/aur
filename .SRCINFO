@@ -1,0 +1,23 @@
+pkgbase = psp-oslib-git
+	pkgdesc = OldSchool Library (psp)
+	pkgver = r144.d8ad579
+	pkgrel = 1
+	url = https://github.com/dogo/oslibmodv2
+	arch = any
+	groups = psp
+	license = GPL3
+	makedepends = psp-gcc
+	makedepends = git
+	depends = psp-sdk
+	depends = psp-libjpeg
+	depends = psp-libpng
+	provides = psp-oslib
+	conflicts = psp-oslib
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = git+https://github.com/dogo/oslibmodv2.git
+	md5sums = SKIP
+
+pkgname = psp-oslib-git
+
