@@ -7,7 +7,7 @@ _npmname=cli
 _npmid="@$_npmscope/$_npmname"
 
 pkgname="$_npmscope-$_npmname"
-pkgver=11.0.4
+pkgver=11.0.5
 pkgrel=1
 pkgdesc="CLI tool for Angular"
 arch=('any')
@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::https://registry.npmjs.org/$_npmid/-/$_npmname
 noextract=("${source[@]%%::*}")
 # we can easly find the sha1sum (instead of md5sum) as "shasum"
 # curl -s "https://registry.npmjs.org/@angular/cli" | jq '.versions."9.0.3".dist.shasum'
-sha1sums=('a04724f7ffb27417df59c2359e47ec54e1f61fab')
+sha1sums=('1066d290fc91460f98cedcfbc9a5736340661467')
 
 package() {
     # Setting temporary cache
