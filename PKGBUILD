@@ -4,7 +4,6 @@
 # Contributor: linuxer <linuxer@artixlinux.org>
 
 pkgname=ananicy-runit
-_alias=ananicy
 pkgver=1
 pkgrel=1
 pkgdesc="Ananicy - is Another auto nice daemon, with community rules support"
@@ -22,9 +21,9 @@ b2sums=('SKIP'
 install=$pkgname.install
 
 package() {
-  mkdir -p "$pkgdir/etc/runit/sv/$_alias"
-  cp "ananicy.finish" $pkgdir/etc/runit/sv/$_alias/finish
-  cp "ananicy.run" $pkgdir/etc/runit/sv/$_alias/run
-  cp "ananicy.start" $pkgdir/etc/runit/sv/$_alias/start
+  mkdir -p "$pkgdir/etc/runit/sv/ananicy"
+  cp "ananicy.finish" $pkgdir/etc/runit/sv/ananicy/finish
+  cp "ananicy.run" $pkgdir/etc/runit/sv/ananicy/run
+  cp "ananicy.start" $pkgdir/etc/runit/sv/ananicy/start
   install=ananicy-runit.install
 }
