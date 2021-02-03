@@ -1,6 +1,6 @@
 pkgbase = pulseeffects-legacy-git
 	pkgdesc = Audio Effects for Pulseaudio applications
-	pkgver = 4.8.4.r0.g4e7532f7
+	pkgver = 4.8.4.r10.gc63827fc
 	pkgrel = 1
 	url = https://github.com/wwmm/pulseeffects
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = pulseeffects-legacy-git
 	makedepends = appstream-glib
 	makedepends = zam-plugins
 	makedepends = rubberband
-	makedepends = librnnoise
+	makedepends = rnnoise
 	depends = gtk3
 	depends = gtkmm3
 	depends = glibmm
