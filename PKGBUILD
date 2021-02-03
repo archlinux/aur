@@ -1,6 +1,6 @@
 pkgname=bibfilex-gtk
 name=bibfilex-gtk
-pkgver=1.2.6.0
+pkgver=1.2.8.0
 pkgrel=1
 pkgdesc="A free bibliographic manager for GNU/Linux"
 arch=('i686' 'x86_64')
@@ -14,10 +14,9 @@ fi
 
 if [ "${CARCH}" = 'x86_64' ]; then
     ARCH='amd64'
-    md5sums=('2638eecb29b70f150aac44069df7a492')
+md5sums=('b91685d13f4a0a445199af6aed119dc3')
 elif [ "${CARCH}" = 'i686' ]; then
     ARCH='i386'
-    md5sums=('553a9e65c2aafbd95a4448358111f667')
 fi
 
 source=("https://sites.google.com/site/bibfilex/download/${pkgname}_${pkgver}_${ARCH}.deb?attredirects=0&d=1")
