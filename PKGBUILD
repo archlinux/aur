@@ -1,43 +1,42 @@
-# Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 
 pkgname=libubox
-pkgver=20170617
+pkgver=r486.g5bc0146
 pkgrel=1
 pkgdesc="C utility functions for OpenWrt"
-arch=('x86_64' 'i686')
-url="https://wiki.openwrt.org/doc/techref/libubox"
-license=('BSD')
-depends=('json-c')
-makedepends=('git' 'cmake' 'lua51')
-optdepends=('lua51')
-source=("git+https://git.lede-project.org/project/libubox.git#commit=fd57eea9f37e447814afbf934db626288aac23c4"
-        "lua.patch")
-sha256sums=('SKIP'
-            'b0b945fc453a7ec936245088659827feb8950d1823fcf99404b5ac15d9e8f351')
+arch=('i686' 'x86_64')
+url="https://openwrt.org/docs/techref/libubox"
+license=('ISC')
+depends=('glibc' 'json-c')
+makedepends=('git' 'cmake' 'lua')
+options=('staticlibs')
+source=("git+https://git.openwrt.org/project/libubox.git")
+sha256sums=('SKIP')
+
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  git log -1 --format="%cd" --date=short | sed "s|-||g"
-}
+  cd "libubox"
 
-prepare() {
-  cd "$srcdir/$pkgname"
-  patch -p1 -i "$srcdir/lua.patch"
+  _rev=$(git rev-list --count --all)
+  _hash=$(git rev-parse --short HEAD)
+  printf "r%s.g%s" "$_rev" "$_hash"
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  mkdir -p build && cd build
-  cmake .. \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DLUAPATH=/usr/lib/lua/5.1
-  make
+  cd "libubox"
+
+  cmake \
+    -B "_build" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_INSTALL_LIBDIR="lib" \
+    ./
+  make -C "_build"
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  cd build
-  make DESTDIR="$pkgdir/" install
-}
+  cd "libubox"
 
-# vim:set ts=2 sw=2 et:
+  make -C "_build" DESTDIR="$pkgdir" install
+}
