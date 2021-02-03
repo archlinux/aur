@@ -1,25 +1,23 @@
 pkgbase = libpurple-minimal
-	pkgdesc = minimal build of the pidgin IM library (no gstreamer, perl and X11 dependencies)
-	pkgver = 2.13.0
+	pkgdesc = Minimal build of the Pidgin IM library without gstreamer/perl/X11/etc for bitlbee and such.
+	pkgver = 2.14.1
 	pkgrel = 1
 	url = http://developer.pidgin.im/wiki/WhatIsLibpurple
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = ca-certificates
-	makedepends = intltool
 	depends = glib2
 	depends = libsasl
 	depends = libxml2
 	depends = libidn
 	depends = nss
-	optdepends = ca-certificates: SSL CA certificates
-	provides = libpurple=2.13.0
+	depends = ca-certificates
+	provides = libpurple=2.14.1
 	conflicts = pidgin
 	conflicts = libpurple
 	options = !libtool
-	source = http://downloads.sourceforge.net/pidgin/pidgin-2.13.0.tar.gz
-	sha256sums = 83f3e206cdd373c0ac1878a1f04b5a5c877e2260b102d1c6d013e464d91903a3
+	source = http://downloads.sourceforge.net/pidgin/pidgin-2.14.1.tar.gz
+	sha256sums = 21f0b20fee1421cf25bdf5c592b8a92eed9ca48c5c1e85b1fba90d965eff8db0
 
 pkgname = libpurple-minimal
 
