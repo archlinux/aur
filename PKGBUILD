@@ -3,12 +3,12 @@
 pkgname=hlint-bin
 _githubname=hlint
 pkgver=3.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Haskell source code suggestions. Packaged from upstream binary release.'
 arch=('x86_64')
 url="https://github.com/ndmitchell/hlint"
 license=('BSD')
-depends=('gmp')
+depends=('gmp' 'ncurses5-compat-libs')
 conflicts=('hlint')
 source=("${url}/releases/download/v${pkgver}/${_githubname}-${pkgver}-${arch}-linux.tar.gz")
 
