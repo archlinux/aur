@@ -6,7 +6,6 @@
 # Contributor: linuxer <linuxer@artixlinux.org>
 
 pkgname=ananicy-s6
-_alias=ananicy
 pkgver=1
 pkgrel=1
 pkgdesc="Ananicy - is Another auto nice daemon, with community rules support"
@@ -24,9 +23,9 @@ b2sums=('SKIP'
 install=$pkgname.install
 
 package() {
-  mkdir -p "$pkgdir/etc/s6/sv/$_alias"
-  cp ananicy.run $pkgdir/etc/s6/sv/$_alias/run
-  cp ananicy.type $pkgdir/etc/s6/sv/$_alias/type
-  cp ananicy.finish $pkgdir/etc/s6/sv/$_alias/finish
+  mkdir -p "$pkgdir/etc/s6/sv/ananicy"
+  cp ananicy.run $pkgdir/etc/s6/sv/ananicy/run
+  cp ananicy.type $pkgdir/etc/s6/sv/ananicy/type
+  cp ananicy.finish $pkgdir/etc/s6/sv/ananicy/finish
   install=ananicy-s6.install
 }
