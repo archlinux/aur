@@ -50,8 +50,7 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
-  make menuconfig
-#  make olddefconfig
+  make olddefconfig
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
