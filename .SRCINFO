@@ -6,6 +6,7 @@ pkgbase = mingw-w64-opencolorio-git
 	arch = any
 	license = BSD-3-Clause
 	makedepends = mingw-w64-cmake
+	makedepends = git
 	depends = mingw-w64-crt
 	depends = mingw-w64-yaml-cpp
 	depends = mingw-w64-lcms2

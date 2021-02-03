@@ -9,7 +9,7 @@ pkgdesc="OpenColorIO (OCIO) is a complete color management solution geared towar
 arch=(any)
 url="https://opencolorio.org/"
 license=("BSD-3-Clause")
-makedepends=('mingw-w64-cmake')
+makedepends=('mingw-w64-cmake' 'git')
 depends=(
 	'mingw-w64-crt'
 	'mingw-w64-yaml-cpp'
