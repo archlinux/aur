@@ -1,7 +1,7 @@
 # Maintainer: Sergey Slipchenko <faergeek@gmail.com>
 
 pkgname=retroarch-rbp
-pkgver=1.8.5
+pkgver=1.8.9
 pkgrel=1
 pkgdesc='Reference frontend for the libretro API (Raspberry Pi)'
 arch=(armv7h)
@@ -37,6 +37,7 @@ optdepends=(
   'libretro-overlays: Collection of overlays'
   'libretro-shaders: Collection of shaders'
   'python: retroarch-cg2glsl'
+  'retroarch-assets-ozone: Ozone menu assets'
   'retroarch-assets-xmb: XMB menu assets'
 )
 backup=(etc/retroarch.cfg)
@@ -47,7 +48,7 @@ source=(
   sysusers.conf
   tmpfiles.conf
 )
-sha256sums=('f29b6dd9b18f874571803afac760b7fc99dc177dd079b38216b7576bd7d86dd4'
+sha256sums=('87afcf89327cc7ddafec74df98e0172bc7419e37c9c7a033514b32befc809529'
             '7857cff30c45721b66666828ca9edbb2923817c6c64591be3f58fe019277103e'
             '2e0fd9b160f66ed69630d562ecc0c7db06802d6373305e951f5ffecbdfc93cfb'
             'd4e4a5ac6c961eafb3edfc28186f75e471dc81e308791d57cfccae4f43de4dae'
@@ -86,6 +87,7 @@ build() {
     --enable-floathard \
     --enable-opengl_core \
     --enable-videocore \
+    --enable-dbus \
     --enable-opengles
   make
 }
