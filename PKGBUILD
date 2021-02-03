@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="shlink"
-pkgver=2.4.2
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="The definitive self-hosted URL shortener"
 url="https://shlink.io"
@@ -16,7 +16,7 @@ optdepends=("mariadb: database"
             "apache: web server"
             "nginx: web server")
 source=("https://github.com/shlinkio/shlink/releases/download/v$pkgver/${pkgname}_${pkgver}_dist.zip")
-sha256sums=("8679a991d1b803e28da0c7c3e9c0d7413ac3d09f46c9d1944fb49304f00c536d")
+sha256sums=("c3d1ec27e9ca795a1ee894c0a95993d069cd4199b9bc773c63de6cb3745084ac")
 install="$pkgname.install"
 
 package(){
@@ -26,7 +26,6 @@ package(){
  install -d "data" "$pkgdir/usr/share/webapps/$pkgname/data"
  chown -R http: "$pkgdir/usr/share/webapps/$pkgname/data"
  install -d -o http -g http -m 750 "config/params" "$pkgdir/usr/share/webapps/$pkgname/config/params"
- install -D -m 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
  install -D -d -o http -g http -m 750 "$pkgdir/var/log/$pkgname"
  rm -r "$pkgdir/usr/share/webapps/$pkgname/data/log"
  ln -s "/var/log/$pkgname" "$pkgdir/usr/share/webapps/$pkgname/data/log"
