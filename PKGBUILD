@@ -1,13 +1,13 @@
 # Maintainer: Mike Kazantsev <mk.fraggod@gmail.com>
 
 pkgname=telegram-tdlib-purple-minimal-git
-pkgver=r275.66f9c98
-pkgrel=6
+pkgver=r481.4a19cc1
+pkgrel=7
 pkgdesc='libpurple Telegram plugin implemented using official tdlib client library, packaged for bitlbee, without voip and image-processing dependencies.'
 arch=(any)
 url='https://github.com/ars3niy/tdlib-purple'
 license=(GPL2)
-depends=(libpurple-minimal telegram-tdlib)
+depends=(libpurple telegram-tdlib)
 makedepends=(cmake git)
 conflicts=(telegram-tdlib-purple-git)
 source=($pkgname::git+"$url")
@@ -22,7 +22,7 @@ build() {
 	cd $pkgname
 	mkdir -p build
 	cd build
-	cmake -DNoWebp=TRUE -DNoLottie=TRUE -DNoVoip=TRUE ..
+	cmake -DNoWebp=True -DNoLottie=True -DNoVoip=True ..
 	make
 }
 
