@@ -4,7 +4,7 @@
 
 pkgname=terminfo-italics
 pkgver=6.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Common terminfo formats patched to support italics'
 arch=('any')
 url='http://www.gnu.org/software/ncurses/'
@@ -29,7 +29,7 @@ build() {
   [[ -d terminfo ]] && rm -rf terminfo
 
   while read -r; do
-    if [[ "$REPLY" =~ ^(rxvt-unicode|screen|st-|xterm).*color ]]; then
+    if [[ "$REPLY" =~ ^(screen|xterm).*color ]]; then
       printf '%s\n' "Patching: $REPLY"
       _patch_terminfo "$REPLY"
     fi

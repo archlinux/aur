@@ -1,7 +1,7 @@
 pkgbase = terminfo-italics
 	pkgdesc = Common terminfo formats patched to support italics
 	pkgver = 6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gnu.org/software/ncurses/
 	arch = any
 	license = MIT
