@@ -11,12 +11,30 @@ arch=(x86_64)
 pkgdesc='High-level, high-performance, dynamic programming language'
 url='https://julialang.org/'
 license=(MIT)
-depends=(cblas hicolor-icon-theme libgit2 libunwind libutf8proc openblas
-         libssh2 lapack curl gmp 
-         suitesparse mbedtls mpfr openlibm pcre2
-         xdg-utils desktop-file-utils 
-         gtk-update-icon-cache)
-makedepends=(cmake gcc-fortran python git)
+depends=(
+	cblas
+	hicolor-icon-theme
+	libgit2
+	libunwind
+	libutf8proc
+	openblas
+	libssh2
+	lapack
+	curl
+	gmp
+	suitesparse
+	mbedtls
+	mpfr
+	openlibm
+	pcre2
+	xdg-utils desktop-file-utils
+	gtk-update-icon-cache
+)
+makedepends=(
+	cmake gcc-fortran
+	python
+	git
+)
 source=(git+https://github.com/JuliaLang/julia.git#branch=master
         Make.user
         julia-system-cblas.patch
