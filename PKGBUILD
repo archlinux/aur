@@ -8,7 +8,7 @@ url='https://github.com/khanhas/spicetify-cli'
 license=('GPL')
 makedepends=('git' 'go')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('8244109f0604d6be5224fafd22c0f63e84d87430df8b902c20ede0fb19af7377')
+sha256sums=('ff3f114782714139d7bdf1461aafec903b96cb98c7828eb6a97a2f7419771986')
 
 build() {
   cd "$pkgname-$pkgver"
