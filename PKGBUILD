@@ -1,7 +1,7 @@
-# Maintainer:  Francesco Masala <mail@francescomasala.me>
+# Contributor:  Francesco Masala <mail@francescomasala.me>
 
 pkgname=bottles
-pkgver=2.1.0.5
+pkgver=2.1.0.6
 pkgrel=1
 pkgdesc='Easily manage wineprefix'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/bottlesdevs/Bottles"
 license=('GPL3')
 depends=('hicolor-icon-theme' 'dconf' 'python')
 makedepends=('meson' 'ninja')
-source=("${pkgver}.tar.gz::https://github.com/bottlesdevs/Bottles/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bottlesdevs/Bottles/archive/${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
