@@ -1,8 +1,10 @@
 # Maintainer: Kevin MacMartin <prurigro at gmail dot com>
 
+# NOTE: This should be rebuilt when your terminfo files change
+
 pkgname=terminfo-italics
 pkgver=6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Common terminfo formats patched to support italics'
 arch=('any')
 url='http://www.gnu.org/software/ncurses/'
@@ -10,26 +12,6 @@ license=('MIT')
 makedepends=("ncurses>=$pkgver")
 source=('LICENSE')
 sha512sums=('710b8e810862868eb3fbb2e5a63098f4303f0080b4b760931ee6ae406866aba5fe9df2387c5d0506e2d3a74864e7ccc7a81ddd7e0f671d7de8bc1ceecaa04b35')
-
-_terms=(
-  'xterm'
-  'xterm-16color'
-  'xterm-256color'
-  'xterm+256color'
-  'xterm-88color'
-  'xterm+88color'
-  'xterm-color'
-  'xterm-pcolor'
-  'screen'
-  'screen-16color'
-  'screen-16color-bce'
-  'screen-16color-bce-s'
-  'screen-16color-s'
-  'screen-256color'
-  'screen-256color-bce'
-  'screen-256color-bce-s'
-  'screen-256color-s'
-)
 
 _patch_terminfo() {
   infocmp "$1" | sed \
@@ -46,9 +28,12 @@ _patch_terminfo() {
 build() {
   [[ -d terminfo ]] && rm -rf terminfo
 
-  for term in "${_terms[@]}"; do
-    _patch_terminfo "$term"
-  done
+  while read -r; do
+    if [[ "$REPLY" =~ ^(rxvt-unicode|screen|st-|xterm).*color ]]; then
+      printf '%s\n' "Patching: $REPLY"
+      _patch_terminfo "$REPLY"
+    fi
+  done < <(find /usr/share/terminfo -type f ! -iname '*-it' | sed 's|.*/||')
 }
 
 package() {
