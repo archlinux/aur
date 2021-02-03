@@ -4,7 +4,7 @@ You need to add following section to /etc/odbcinst.ini for the first time of ins
 
 [PostgreSQL Unicode]
 Description=PostgreSQL Unicode
-Driver=/usr/lib/psqlodbca.so
+Driver=/usr/lib/psqlodbcw.so
 UsageCount=1
 EOF
 }
