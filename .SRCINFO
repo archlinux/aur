@@ -1,0 +1,21 @@
+pkgbase = ros-noetic-cartographer-ros-msgs
+	pkgdesc = ROS - ROS messages for the cartographer_ros package.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/googlecartographer/cartographer_ros
+	arch = any
+	license = Apache 2.0
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-std-msgs
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-geometry-msgs
+	makedepends = ros-noetic-message-generation
+	depends = ros-noetic-message-runtime
+	depends = ros-noetic-geometry-msgs
+	depends = ros-noetic-std-msgs
+	source = ros-noetic-cartographer-ros-msgs-1.0.0.tar.gz::https://github.com/ros-gbp/cartographer_ros-release/archive/release/melodic/cartographer_ros_msgs/1.0.0.tar.gz
+	sha256sums = f4c49c3912743815c94cae90288e044b2af9fade2b210418e7659a8ba70175d4
+
+pkgname = ros-noetic-cartographer-ros-msgs
+
