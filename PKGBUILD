@@ -5,31 +5,32 @@
 _pkgbase=julia
 pkgbase=${_pkgbase}-git
 pkgname=(julia-git julia-git-docs)
-pkgver=1.7.0.DEV.r48868.g7ecdcc53400
+pkgver=1.7.0.DEV.r48883.gd3012d7b6c2
 pkgrel=1
 arch=(x86_64)
 pkgdesc='High-level, high-performance, dynamic programming language'
 url='https://julialang.org/'
 license=(MIT)
-depends=(
-	cblas
-	hicolor-icon-theme
-	libgit2
+depends=(#compare with grep =1 Make.user|cut -c 11-|cut -d: -f1|tr _A-Z \\ta-z
 	libunwind
-	libutf8proc
-	openblas
-	libssh2
-	lapack
-	curl
-	gmp
-	suitesparse
-	mbedtls
-	mpfr
-	openlibm
 	pcre2
+	openlibm
+	openblas
+	cblas
+	lapack
+	gmp
+	mpfr
+	suitesparse
+	libutf8proc
+	mbedtls
+	libssh2
+	curl
+	libgit2
 	zlib p7zip
+
 	xdg-utils desktop-file-utils
 	gtk-update-icon-cache
+	hicolor-icon-theme
 )
 makedepends=(
 	patchelf
