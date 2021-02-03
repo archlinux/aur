@@ -4,26 +4,48 @@ _pkgname=fluffychat
 pkgname=fluffychat-web
 _gitname=${_pkgname}
 pkgver=0.26.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Chat with your friends"
 arch=('any')
 url="https://fluffychat.im/"
 license=('AGPL3')
-makedepends=()
-optdepends=()
+makedepends=('clang'
+             'ninja'
+             'cmake')
+optdepends=('pantalaimon: used for E2E encryption')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=(
-  "artifact.zip::https://gitlab.com/famedly/fluffychat/-/jobs/artifacts/v${pkgver}/download?job=build_web"
-  "config.sample.json::https://gitlab.com/famedly/fluffychat/-/raw/v${pkgver}/config.sample.json"
+    "flutter.tar.xz::https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_1.22.6-stable.tar.xz"
+    "fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz"
 )
-sha256sums=('0b2accd20c4b6c52a48f9782c3ec6044d5a17f0f0d14afb152d77e1b26740397'
-            '8540064556b3a952c898023e48afb29e3c560964d66e51bbc422a0061318bd5e')
+sha256sums=('282fc4b9c59a4e98c5e76a934ca804ea868f45b05c6255c85ee1065955dd7fa5'
+            'fa4fd382351e4912ba1afb801f1bef4be76c5b59c5bd264776911d173d186403')
 backup=(
     "etc/webapps/${_pkgname}/config.json"
 )
 
+prepare() {
+  export PATH="${srcdir}/flutter/bin:$PATH"
+  flutter channel beta
+  flutter upgrade
+  flutter config --enable-web
+}
+
+build() {
+  export PATH="${srcdir}/flutter/bin:$PATH"
+
+  cd ${_gitname}-v$pkgver
+  
+  ./scripts/prepare-web.sh
+  flutter clean
+  flutter pub get
+  flutter build web --release --verbose
+}
+
 package() {  
+  cd ${_gitname}-v$pkgver
+
   install -dm755 ${pkgdir}/usr/share/webapps
   mv build/web ${pkgdir}/usr/share/webapps/${_pkgname}
   install -Dm644 config.sample.json ${pkgdir}/etc/webapps/${_pkgname}/config.json
