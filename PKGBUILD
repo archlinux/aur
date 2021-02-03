@@ -3,7 +3,7 @@
 # Contributor: Jaime Gil de Sagredo <jaimegildesagredo@gmail.com>
 
 pkgname=checkstyle
-pkgver=8.37
+pkgver=8.40
 pkgrel=1
 pkgdesc='A tool to help programmers write Java code that adheres to a coding standard'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('maven' 'java-environment>=8')
 url='http://checkstyle.sourceforge.net'
 source=("https://github.com/checkstyle/checkstyle/archive/checkstyle-${pkgver}.tar.gz"
        'checkstyle')
-sha256sums=('29479f20afa8ae3fa56da28afa3b89f7a69b4dfd629d61d017708dc7a2923af7'
+sha256sums=('44a15654e7a723d24353688e2e9e6db2a8e65d5199f315d1cc389b346681eaef'
             '5bf5f7e688aec23fce2a507384c595ac44339ace5bb9624fc8be61e036688234')
 
 build() {
