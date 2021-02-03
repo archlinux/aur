@@ -2,7 +2,7 @@
 
 _gitname=spicetify-cli
 pkgname="${_gitname}-git"
-pkgver=v1.1.0.r20.g3848e0f
+pkgver=v1.2.0
 pkgrel=1
 pkgdesc='Command-line tool to customize Spotify client - Git master branch'
 arch=('x86_64' 'i686')
@@ -47,5 +47,4 @@ package() {
   # Clean up deps
   go clean -modcache
 }
-
 # vim:set ts=2 sw=2 et:
