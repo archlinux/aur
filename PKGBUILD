@@ -1,6 +1,6 @@
 # Maintainer: Marc Rechté <mrechte@gmail.com>
 pkgname=pgagroal
-pkgver=0.8.2
+pkgver=1.1.0
 pkgrel=1
 arch=('x86_64')
 pkgdesc="pgagroal is a high-performance protocol-native connection pool for PostgreSQL"
@@ -11,7 +11,7 @@ makedepends=('gcc' 'cmake' 'make' 'python-docutils')
 backup=("etc/pgagroal/pgagroal.conf" "etc/pgagroal/pgagroal_hba.conf")
 source=("https://github.com/agroal/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz" )
 #       "$pkgname-$pkgver.patch")
-md5sums=('d79e400ad83cc47e846cc7f1181551e8')
+md5sums=('e9afe6ed398a109c15c7e5bbcf84af79')
 install="$pkgname.install"
 
 prepare() {
