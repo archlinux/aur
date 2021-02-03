@@ -2,7 +2,7 @@
 
 pkgname=arduino-samd-core
 pkgver=1.8.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Arduino support for SAMD21 series ARM 32 bit microcontrollers (used on Arduino M0 Pro, MKR1000, Arduino Zero etc.)"
 arch=('any')
 url="https://github.com/arduino/ArduinoCore-samd"
@@ -31,13 +31,14 @@ prepare()
 
 package() {
     # Copy to archlinux arduino folder, within the packages sub directory structured as Arduino IDE
+    install -dm755 "${pkgdir}/usr/share/arduino/packages/arduino/hardware"
     install -dm755 "${pkgdir}/usr/share/arduino/hardware/archlinux-arduino"
     install -dm755 "${pkgdir}/usr/share/arduino/packages/arduino/tools/CMSIS/4.5.0"
     install -dm755 "${pkgdir}/usr/share/arduino/packages/arduino/tools/CMSIS-Atmel/1.2.0"
     # install to standard package directory for Arduino-mk to find
     cp -a "${srcdir}/samd" "${pkgdir}/usr/share/arduino/packages/arduino/hardware"
     # symbolic link maintain compatability with Arch Arduino install
-    ln -sf "${pkgdir}/usr/share/arduino/packages/arduino/hardware/samd" "${pkgdir}/usr/share/arduino/hardware/archlinux-arduino"
+    ln -s "${pkgdir}/usr/share/arduino/packages/arduino/hardware/samd" "${pkgdir}/usr/share/arduino/hardware/archlinux-arduino"
     cp -a "${srcdir}/CMSIS/"* "${pkgdir}/usr/share/arduino/packages/arduino/tools/CMSIS/4.5.0/"
     cp -a "${srcdir}/CMSIS-Atmel/"* "${pkgdir}/usr/share/arduino/packages/arduino/tools/CMSIS-Atmel/1.2.0/"
 }
