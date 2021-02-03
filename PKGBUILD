@@ -3,8 +3,8 @@
 _pkgname=sile
 pkgname=$_pkgname-luajit
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.10.13
-pkgrel=2
+pkgver=0.10.14
+pkgrel=1
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
 license=('MIT')
@@ -21,6 +21,7 @@ _lua_deps=('cassowary'
            'sec'
            'socket'
            'stdlib'
+           'utf8'
            'vstruct'
            'zlib')
 depends=('fontconfig'
@@ -45,7 +46,7 @@ provides=('libtexpdf.so'
           "$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("https://github.com/sile-typesetter/sile/releases/download/v$pkgver/$_pkgname-$pkgver.tar.xz")
-sha256sums=('d207d0ee9749a6da16fa2db217f51d3586955387a132c45423b47eedf8c964a6')
+sha256sums=('255a1ebfd745e13a670e1a24fe34ef209b823819a19532d1a63cde6755340e80')
 
 build () {
     cd "$_pkgname-$pkgver"
