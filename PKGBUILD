@@ -1,14 +1,14 @@
 # Maintainer: Luke Arms <luke@arms.to>
 
 pkgname=emote
-pkgver=1.3.0
-_pkgref=e2290ebfd56fd44b976358aaeea33b6a260f1dc1
+pkgver=1.4.0
+_pkgref=be2939f3bf2944b4e2f96a719c302ebbfb5632d6
 pkgrel=1
 url="https://github.com/tom-james-watson/Emote"
 pkgdesc="Emoji Picker for Linux written in GTK3"
 arch=('any')
 license=('GPL3')
-depends=('python' 'gtk3' 'python-gobject' 'python-xlib' 'libkeybinder3' 'noto-fonts-emoji')
+depends=('python' 'gtk3' 'python-gobject' 'python-xlib' 'libkeybinder3' 'noto-fonts-emoji' 'xdotool')
 makedepends=('python-setuptools' 'python-pipenv')
 source=(
   "setup.py"
@@ -16,7 +16,7 @@ source=(
 )
 sha512sums=(
   '83b6697b96882d3854c0f64a208571bfeec3e6324790e5508a6bd32092c5d462e86fa676c561111d98cce8058f1730303658612427b66daac086236e3e365316'
-  'fc319778ba7dadaa0c58e59726e981ce0c53917dba693390a6aa8dac5a8e1d34e4536e098bc3f5e4855fe3c2abaa069eec362769c6563ddb3f2330f70cd6ef58'
+  'SKIP'
 )
 
 build() {
