@@ -1,6 +1,6 @@
 pkgbase = arrow
 	pkgdesc = A columnar in-memory analytics layer for big data.
-	pkgver = 2.0.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://arrow.apache.org
 	arch = x86_64
@@ -29,10 +29,8 @@ pkgbase = arrow
 	depends = zstd
 	provides = parquet-cpp
 	conflicts = parquet-cpp
-	source = https://github.com/apache/arrow/archive/apache-arrow-2.0.0.tar.gz
-	source = cmake.patch
-	sha256sums = ea299df9cf440cfc43393ce12ee6d9a4c9d0dfa9fde33c3bc9b70ec25520a844
-	sha256sums = d29fec6754e4eb29d2409e1a3fcddc64c674a108d43efd048286399f1035106e
+	source = https://github.com/apache/arrow/archive/apache-arrow-3.0.0.tar.gz
+	sha256sums = fc461c4f0a60e7470a7c58b28e9344aa8fb0be5cc982e9658970217e084c3a82
 
 pkgname = arrow
 

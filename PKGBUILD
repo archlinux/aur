@@ -2,7 +2,7 @@
 
 pkgname='arrow'
 _pkgname='arrow-apache-arrow'
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A columnar in-memory analytics layer for big data."
 arch=('x86_64')
@@ -14,15 +14,8 @@ optdepends=()
 provides=('parquet-cpp')
 conflicts=('parquet-cpp')
 makedepends=('apache-orc' 'boost' 'cmake' 'flatbuffers' 'gmock' 'python-numpy')
-source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz"
-  "cmake.patch")
-sha256sums=('ea299df9cf440cfc43393ce12ee6d9a4c9d0dfa9fde33c3bc9b70ec25520a844'
-            'd29fec6754e4eb29d2409e1a3fcddc64c674a108d43efd048286399f1035106e')
-
-prepare(){
-  cd "$_pkgname-$pkgver"
-  patch -p1 -i ../cmake.patch
-}
+source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz")
+sha256sums=('fc461c4f0a60e7470a7c58b28e9344aa8fb0be5cc982e9658970217e084c3a82')
 
 build(){
   mkdir -p build
@@ -49,7 +42,8 @@ build(){
                                       -DARROW_GFLAGS_USE_SHARED=ON \
                                       -DARROW_USE_GLOG=ON \
                                       -DARROW_WITH_ZSTD=ON \
-                                      -DARROW_WITH_BROTLI=ON
+                                      -DARROW_WITH_BROTLI=ON \
+                                      -DARROW_WITH_RE2=OFF
   make
 }
 
