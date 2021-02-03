@@ -1,7 +1,7 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
 pkgname=barrier-headless-git
-pkgver=v2.3.3+69+ge032d14a
+pkgver=v2.3.3+153+g12024b9a
 pkgrel=1
 pkgdesc="Open-source KVM software based on Synergy"
 url="https://github.com/debauchee/barrier"
@@ -10,6 +10,7 @@ source=(
     "barrier-headless-git::git+https://github.com/debauchee/barrier.git"
 )
 conflicts=(barrier-headless)
+provides=(barrier-headless)
 sha256sums=('SKIP')
 arch=(x86_64)
 depends=(
