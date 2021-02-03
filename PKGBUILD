@@ -3,17 +3,18 @@
 # Contributor: mickael9 <mickael9 at gmail dot com>
 
 pkgname=bitlbee-facebook-git
-pkgver=r160.553593d
+pkgver=v1.2.1.r7.49ea312
 pkgrel=1
 pkgdesc='Facebook protocol plugin for BitlBee'
-arch=('i686' 'x86_64' 'armv7h' 'arm6h' 'aarch64')
+arch=('any')
 url='https://github.com/bitlbee/bitlbee-facebook'
 license=('GPL')
 depends=('bitlbee' 'json-glib')
 makedepends=('git')
+provides=('bitlbee-facebook')
 conflicts=('bitlbee-facebook')
 
-source=("git+https://github.com/bitlbee/${pkgname%-git}.git#branch=master")
+source=("git+https://github.com/bitlbee/${pkgname%-git}.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -26,10 +27,10 @@ pkgver() {
 # are not available, is recommended.
 
 # Git, tags available
-#	printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 
 # Git, no tags available
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+# printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 }
 

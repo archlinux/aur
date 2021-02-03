@@ -1,19 +1,16 @@
 pkgbase = bitlbee-facebook-git
 	pkgdesc = Facebook protocol plugin for BitlBee
-	pkgver = r160.553593d
+	pkgver = v1.2.1.r7.49ea312
 	pkgrel = 1
 	url = https://github.com/bitlbee/bitlbee-facebook
-	arch = i686
-	arch = x86_64
-	arch = armv7h
-	arch = arm6h
-	arch = aarch64
+	arch = any
 	license = GPL
 	makedepends = git
 	depends = bitlbee
 	depends = json-glib
+	provides = bitlbee-facebook
 	conflicts = bitlbee-facebook
-	source = git+https://github.com/bitlbee/bitlbee-facebook.git#branch=master
+	source = git+https://github.com/bitlbee/bitlbee-facebook.git
 	md5sums = SKIP
 
 pkgname = bitlbee-facebook-git
