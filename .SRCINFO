@@ -1,6 +1,6 @@
 pkgbase = flipclock
 	pkgdesc = A flip clock screensaver supported by SDL2.
-	pkgver = 2.8.0
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://github.com/AlynxZhou/flipclock
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = flipclock
 	makedepends = meson
 	depends = sdl2
 	depends = sdl2_ttf
-	source = https://github.com/AlynxZhou/flipclock/archive/v2.8.0.tar.gz
-	sha512sums = 9acdc9a99fbc70841c02faa6f9af6e9314415e09ffb43746fba7da1c3963794b39c3e329b2175d838a421c72074a390a751358840c4e27d3bc7bb4c7ec347907
+	source = https://github.com/AlynxZhou/flipclock/archive/v2.8.1.tar.gz
+	sha512sums = b0d005cdfd9296d9bc81cd3c9b045b2bf059f31380e807742007b3b521293d9f844a9a3636b9247cf4edafb8e74e3b422442293ad5211861e8264f5a21ff7ccb
 
 pkgname = flipclock
 
