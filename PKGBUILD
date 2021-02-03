@@ -3,12 +3,12 @@
 
 pkgname=openrefine
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, open source power tool for working with messy data and improving it"
 arch=('any')
 url=https://openrefine.org/
 license=('BSD')
-depends=('java-environment>=8' 'bash')
+depends=('java-runtime>=8' 'bash')
 options=('!strip')
 source=("https://github.com/OpenRefine/OpenRefine/releases/download/${pkgver}/${pkgname}-linux-${pkgver}.tar.gz" 'openrefine.sh')
 sha512sums=('839382c6b2aace8816b8c6e135c16df98e301933f11a340001915d267ec2a2f7844eca2ef16cc9dee5dc8554509882cbdd380f77d778bb28bc90586c3d7945fe'

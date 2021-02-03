@@ -1,11 +1,11 @@
 pkgbase = openrefine
 	pkgdesc = A free, open source power tool for working with messy data and improving it
 	pkgver = 3.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openrefine.org/
 	arch = any
 	license = BSD
-	depends = java-environment>=8
+	depends = java-runtime>=8
 	depends = bash
 	options = !strip
 	source = https://github.com/OpenRefine/OpenRefine/releases/download/3.4.1/openrefine-linux-3.4.1.tar.gz
