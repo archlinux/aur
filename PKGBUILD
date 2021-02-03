@@ -4,7 +4,7 @@
 # Contributor: Rick Rein <jeebusroxors@gmail.com>
 
 pkgname=psqlodbc
-pkgver=12.01.0000
+pkgver=13.00.0000
 pkgrel=1
 pkgdesc="PostgreSQL ODBC driver"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('unixodbc' 'postgresql-libs')
 makedepends=('postgresql')
 install=psqlodbc.install
 source=(https://ftp.postgresql.org/pub/odbc/versions/src/psqlodbc-$pkgver.tar.gz)
-sha256sums=('fdbb3edfcc9730787bb84d76e61fcf7584ced1913d7bfccea0bcbf5a150a5f74')
+sha256sums=('4f156931b44d78401abfc2b72e512147a02b836677f8aac610b812f12e08910d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
