@@ -1,6 +1,6 @@
 # Maintainer: Dominik Csapak <dominik.csapak@gmail.com>
 pkgname=proxmox-backup-client
-pkgver=1.0.5
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Client for Proxmox Backup Server"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source=(
     "0002-remove-apt-dependency.patch"
 )
 sha512sums=('SKIP'
-            '2179974a5cbfa2828c8eb4695fd5dded0f84d225beda8f14caa6ca7a876ea4205aeeddddb6ce5b75879087123aa8058b7535c2fbc4898d4f6462972f6f79fb61'
-            '354599bf8315ed93129d1c53064d0bf0b01a056f4a4523dfed242b269165d5e9fa57579f4151b196a7527cd04616d0ef644e79f74c5416269e2c02b2a1f2b817')
+            '0806e8e5078d5b25b19b7414d2b96bba886ed146cc0080fc505eb835698d4e689dad954db128c01da1b02df9c32be54512fe9fd7fded89c74c2dcbf05b2f9dc5'
+            '35e3aa7369c481dde640ba8a97f0d4e95a73907f2a985382a5ed230d762e5b645a81a72c9fdd19e2dead7de51c5f7d051379ad6340cbbc245890e71398e45381')
 
 prepare() {
   cd "$pkgname-$pkgver"

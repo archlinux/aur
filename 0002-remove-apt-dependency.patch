@@ -21,10 +21,10 @@ index 29db166d..5c2ea539 100644
  path = "src/lib.rs"
  
  [dependencies]
--apt-pkg-native = "0.3.1" # custom patched version
+-apt-pkg-native = "0.3.2"
  base64 = "0.12"
  bitflags = "1.2.1"
- bytes = "0.5"
+ bytes = "1.0"
 diff --git a/src/api2/node.rs b/src/api2/node.rs
 index 6c3e7967..32760e65 100644
 --- a/src/api2/node.rs
