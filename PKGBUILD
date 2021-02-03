@@ -29,7 +29,7 @@ build() {
         -DLLVM_TARGETS_TO_BUILD='AMDGPU;X86' \
         -DOCAMLFIND=NO \
         -DCMAKE_CXX_FLAGS='-I/usr/include/tensorflow' \
-        -DTENSORFLOW_AOT_PATH='/usr/lib/python${_pythonver}/site-packages/tensorflow'
+        -DTENSORFLOW_AOT_PATH="/usr/lib/python${_pythonver}/site-packages/tensorflow"
     ninja
 }
 
