@@ -3,7 +3,7 @@
 
 _gui=true
 _gitname=simc
-pkgver=r46163.2eb9ebf759
+pkgver=r46177.a0a4ad4986
 pkgrel=1
 pkgname=simulationcraft-git
 pkgdesc="A tool to explore combat mechanics in the popular MMO RPG World of Warcraft (tm). Multi-player event-driven simulator written in C++ that models raid damage."
@@ -56,8 +56,8 @@ package() {
     install -Dm644 "qt/Welcome.html" "${pkgdir}/usr/share/${pkgname%-*}/Welcome.html"
     install -Dm644 "qt/Welcome.png" "${pkgdir}/usr/share/${pkgname%-*}/Welcome.png"
 
-    install -Dm644 qt/icon/SimulationCraft.xpm "${pkgname%-*}/usr/share/pixmaps/SimulationCraft.xpm"
-    install -Dm644 "${srcdir}/SimulationCraft.desktop" "${pkgname%-*}/usr/share/applications/SimulationCraft.desktop"
+    install -Dm644 qt/icon/SimulationCraft.xpm "${pkgdir}/usr/share/pixmaps/SimulationCraft.xpm"
+    install -Dm644 "${srcdir}/SimulationCraft.desktop" "${pkgdir}/usr/share/applications/SimulationCraft.desktop"
     for _locale in locale/* ; do
         install -Dm644 "${_locale}" "${pkgdir}/usr/share/${pkgname%-*}/${_locale}"
     done
