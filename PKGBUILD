@@ -1,6 +1,6 @@
 pkgname=smartied
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://cgit.ctu.cx/smartied/"
 license=( 'GPL-3' )
@@ -18,4 +18,5 @@ build() {
 package() {
   cd "$srcdir/${pkgname}-${_commit}"
   install -Dm755 ./smartied "$pkgdir"/usr/bin/smartied
+  install -Dm755 ./smartied.service "$pkgdir"/usr//usr/lib/systemd/system/smartied.service
 }
