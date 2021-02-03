@@ -1,6 +1,6 @@
 pkgname=bibfilex-qt
 name=bibfilex-qt
-pkgver=1.2.6.0
+pkgver=1.2.8.0
 pkgrel=1
 pkgdesc="A free bibliographic manager for GNU/Linux"
 arch=('i686' 'x86_64')
@@ -14,10 +14,9 @@ fi
 
 if [ "${CARCH}" = 'x86_64' ]; then
     ARCH='amd64'
-    md5sums=('98f1383a9ba707e0cc59da2f1873b8fb')
+md5sums=('3a6f25e400c6c9cdebad59cff8b992ba')
 elif [ "${CARCH}" = 'i686' ]; then
     ARCH='i386'
-    md5sums=('a4164181a78666fe47738ff7612293a8')
 fi
 
 source=("https://sites.google.com/site/bibfilex/download/${pkgname}_${pkgver}_${ARCH}.deb?attredirects=0&d=1")
