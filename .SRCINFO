@@ -1,0 +1,18 @@
+pkgbase = winrar
+	pkgdesc = 集文件压缩、加密、打包和数据备份为一体的实用软件
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://www.win-rar.com/
+	arch = x86_64
+	license = custom
+	provides = rar
+	provides = unrar
+	conflicts = rar-beta
+	conflicts = unrar
+	conflicts = rar
+	replaces = unrar
+	source = https://www.win-rar.com/fileadmin/winrar-versions/rarlinux-x64-6.0.0.tar.gz
+	md5sums = 72c0e02195ee3ab7bc10eb747bc559f2
+
+pkgname = winrar
+
