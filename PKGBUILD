@@ -1,3 +1,4 @@
+# Maintainer: bin <bin at datacowboy dot cf>
 pkgname=ticker
 pkgver=2.1.0
 pkgrel=0
