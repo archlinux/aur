@@ -1,8 +1,8 @@
 pkgbase = dwm-ekollof-git
 	pkgdesc = Emiel Kollof's personal patched build of dwm.
-	pkgver = 6.2.r34.1e2a268
+	pkgver = 6.2.r38.56f1542
 	pkgrel = 1
-	url = https://git.hackerheaven.org/ekollof/dwm-ekollof.git
+	url = https://git.hackerheaven.org/ekollof/dwm-ekollof-new.git
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -18,7 +18,7 @@ pkgbase = dwm-ekollof-git
 	depends = dunst
 	provides = dwm
 	conflicts = dwm
-	source = git+https://git.hackerheaven.org/ekollof/dwm-ekollof.git
+	source = git+https://git.hackerheaven.org/ekollof/dwm-ekollof-new.git
 	md5sums = SKIP
 
 pkgname = dwm-ekollof-git

@@ -10,7 +10,7 @@ pkgrel=1
 epoch=
 pkgdesc="Emiel Kollof's personal patched build of dwm."
 arch=(x86_64)
-url="https://git.hackerheaven.org/ekollof/dwm-ekollof.git"
+url="https://git.hackerheaven.org/ekollof/dwm-ekollof-new.git"
 license=('MIT')
 groups=()
 depends=(nerd-fonts-iosevka ttf-twemoji-color ttf-joypixels dbus libxft-bgra dunst)
@@ -30,7 +30,7 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-    cd "dwm-ekollof"
+    cd "dwm-ekollof-new"
     printf "6.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
