@@ -1,11 +1,11 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 _projectname='electron'
 _pkgname="${_projectname}6"
 pkgname="$_pkgname-bin"
 pkgver='6.1.12'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Build cross platform desktop apps with web technologies - version 6 - binary version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://${_projectname}js.org"
