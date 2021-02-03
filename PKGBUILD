@@ -1,7 +1,8 @@
-# Maintainer: xXR01I1Xx <xxr01i1xx@tuta.io>
+# Maintainer: Carson Rueter <roachh at proton mail dot com>
+# Contributor: xXR01I1Xx <xxr01i1xx@tuta.io>
 # Contributor: Ewhal <ewhal@pantsu.cat>
 pkgname=session-desktop-bin
-pkgver=1.0.6
+pkgver=1.4.8
 pkgrel=1
 pkgdesc="Private messaging from your desktop"
 arch=(x86_64)
@@ -13,8 +14,8 @@ provides=(session-messenger-desktop)
 conflicts=(session-desktop session-desktop-git session-desktop-appimage)
 options=(!strip)
 install=$pkgname.install
-source=(https://github.com/loki-project/session-desktop/releases/download/v$pkgver/session-messenger-desktop-linux-amd64-$pkgver.deb)
-sha256sums=('4a2f8832887cd901bf091d6122aa20d9f6317db62b922407b5e9ebbf72cb439c')
+source=(https://github.com/oxen-io/session-desktop/releases/download/v$pkgver/session-desktop-linux-amd64-$pkgver.deb)
+sha256sums=('3560b5c90ddc691914d8f86e09723968262cfe2d2b44bad1790e6f57f67b595d')
 
 package() {
     tar xf $srcdir/data.tar.xz -C $pkgdir
