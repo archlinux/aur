@@ -7,19 +7,19 @@
 pkgname=mullvad-vpn-beta
 _pkgver=2021.1
 _channel=beta
-pkgver=${_pkgver}.${_channel}1
+pkgver=${_pkgver}.${_channel}2
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
-depends=('libnotify' 'libappindicator-gtk3' 'libxss' 'nss')
+depends=('libnotify' 'libappindicator-gtk3' 'nss')
 makedepends=('git' 'go' 'rust' 'npm' 'python')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
 _commit='fa76f058d6f5fa66e62f9c4a291e6079cea22e37'
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}1?signed"
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}2?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
         "${pkgname%-beta}.sh")
 sha256sums=('SKIP'
