@@ -1,6 +1,6 @@
 pkgbase = element-desktop-git
 	pkgdesc = A glossy Matrix collaboration client for the desktop.
-	pkgver = 1.7.18.r0.g9a1b667c2
+	pkgver = 1.7.19.r0.g56caad3ef
 	pkgrel = 1
 	url = https://element.io
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = element-desktop-git
 	depends = electron
 	provides = element-desktop
 	backup = etc/element/config.json
-	source = element-web::git://github.com/vector-im/element-web#tag=v1.7.18
-	source = element-desktop::git://github.com/vector-im/element-desktop.git#tag=v1.7.18
+	source = element-web::git://github.com/vector-im/element-web#tag=v1.7.19
+	source = element-desktop::git://github.com/vector-im/element-desktop.git#tag=v1.7.19
 	source = element-desktop.desktop
 	source = element-desktop.sh
 	source = element-web-reskindex.patch
@@ -30,13 +30,15 @@ pkgbase = element-desktop-git
 
 pkgname = element-web-git
 	pkgdesc = Glossy Matrix collaboration client for the web.
-	provides = vector-web
-	replaces = vector-web
+	provides = element-web
+	conflicts = element-web
 
 pkgname = element-desktop-git
 	pkgdesc = Glossy Matrix collaboration client for the desktop.
-	depends = element-web-git=1.7.18.r0.g9a1b667c2
+	depends = element-web-git=1.7.19.r0.g56caad3ef
 	depends = electron
 	depends = sqlcipher
+	provides = element-desktop
+	conflicts = element-desktop
 	backup = etc/element/config.json
 

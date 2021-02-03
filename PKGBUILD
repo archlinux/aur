@@ -1,10 +1,10 @@
 # Maintainer: jaltek <post@ezod.de>
 # Owner: Daniel Mason (idanoo) <daniel@m2.nz>
 pkgbase=element-desktop-git
-_vers=v1.7.18
-pkgver=1.7.18.r0.g9a1b667c2
+_vers=v1.7.19
+pkgver=1.7.19.r0.g56caad3ef
 pkgrel=1
-pkgname=(element-web-git element-desktop-git)
+pkgname=('element-web-git' 'element-desktop-git')
 pkgdesc="A glossy Matrix collaboration client for the desktop."
 arch=('x86_64')
 url="https://element.io"
@@ -64,8 +64,8 @@ build() {
 
 package_element-web-git() {
   pkgdesc="Glossy Matrix collaboration client for the web."
-  provides=(vector-web)
-  replaces=(vector-web)
+  provides=(element-web)
+  conflicts=(element-web)
 
   cd element-web
 
@@ -80,6 +80,8 @@ package_element-web-git() {
 package_element-desktop-git() {
   pkgdesc="Glossy Matrix collaboration client for the desktop."
   depends=("element-web-git=${pkgver}" electron sqlcipher)
+  provides=(element-desktop)
+  conflicts=(element-desktop)
   backup=('etc/element/config.json')
 
   cd element-desktop
