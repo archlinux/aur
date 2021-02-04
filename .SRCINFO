@@ -1,0 +1,18 @@
+pkgbase = lxrad-git
+	pkgdesc = linux x11 rad tools
+	pkgver = v0.8.r93.g1d5ba7a
+	pkgrel = 1
+	url = https://github.com/lcgamboa/lxrad
+	arch = x86_64
+	license = GPL2
+	makedepends = doxygen
+	makedepends = git
+	depends = wxgtk2
+	depends = openal
+	provides = lxrad
+	conflicts = lxrad
+	source = git+https://github.com/lcgamboa/lxrad
+	sha256sums = SKIP
+
+pkgname = lxrad-git
+
