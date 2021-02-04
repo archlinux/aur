@@ -1,60 +1,81 @@
-# Maintainer: Grey Christoforo <firstname@lastname.net>
+# Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=kicad-library-git
-pkgver=r5733.be973eca
-pkgdesc="Kicad component libraries, footprint libraries, component 3d models and project templates from git"
-conflicts=('kicad-library-3d' 'kicad-library-bzr' 'kicad-library' 'kicad-footprints' 'kicad-footprints-git' 'kicad-symbols-git' 'kicad-templates-git')
-provides=('kicad-library' 'kicad-library-3d')
+pkgver=5.1.6.r202.g2ba0d5cb6
 pkgrel=1
-arch=('any')
-url="https://github.com/KiCad"
-license=('GPL')
-makedepends=('cmake' 'git')
+pkgdesc="KiCad footprint, symbol and template libraries"
+arch=(any)
+url=https://gitlab.com/kicad/libraries
+license=('CC-BY-SA 4.0')
 options=('!strip')
-
-source=("git://github.com/KiCad/kicad-symbols.git"
-	"git://github.com/KiCad/kicad-footprints.git"
-	"git://github.com/KiCad/kicad-packages3D.git"
-	"git://github.com/KiCad/kicad-templates.git")
-
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+makedepends=(
+cmake
+ninja
+git
+)
+conflicts=(kicad-library kicad-templates kicad-templates-git kicad-symbols-git kicad-symbols kicad-footprints kicad-footprints-git)
+provides=(kicad-library)
+source=(
+git+https://gitlab.com/kicad/libraries/kicad-templates.git
+git+https://gitlab.com/kicad/libraries/kicad-footprints.git
+git+https://gitlab.com/kicad/libraries/kicad-symbols.git
+)
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
-  cd "$srcdir/kicad-symbols"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd kicad-footprints
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/kicad-symbols/"
-  cmake ./ -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  pushd kicad-templates
+  cmake \
+    -W no-dev \
+    -D CMAKE_BUILD_TYPE=None \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -G Ninja \
+    -B build_dir \
+    -S .
+  cmake --build build_dir
+  popd
 
-  cd "$srcdir/kicad-footprints/"
-  cmake ./ -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  pushd kicad-footprints
+  cmake \
+    -W no-dev \
+    -D CMAKE_BUILD_TYPE=None \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -G Ninja \
+    -B build_dir \
+    -S .
+  cmake --build build_dir
+  popd
 
-  cd "$srcdir/kicad-packages3D/"
-  cmake ./ -DCMAKE_INSTALL_PREFIX=/usr
-  make
-
-  cd "$srcdir/kicad-templates/"
-  cmake ./ -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  pushd kicad-symbols
+  cmake \
+    -W no-dev \
+    -D CMAKE_BUILD_TYPE=None \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -G Ninja \
+    -B build_dir \
+    -S .
+  cmake --build build_dir
+  popd
 }
 
 package() {
-  cd "$srcdir/kicad-symbols"
-  make DESTDIR="$pkgdir" install
+  pushd kicad-templates
+  DESTDIR="${pkgdir}" cmake --build build_dir -- install
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE.md
+  popd
 
-  cd "$srcdir/kicad-footprints/"
-  make DESTDIR="$pkgdir" install
-
-  cd "$srcdir/kicad-templates/"
-  make DESTDIR="$pkgdir" install
-
-  cd "$srcdir/kicad-packages3D/"
-  make DESTDIR="$pkgdir" install
+  pushd kicad-footprints
+  DESTDIR="${pkgdir}" cmake --build build_dir -- install
+  popd  
+  
+  pushd kicad-symbols
+  DESTDIR="${pkgdir}" cmake --build build_dir -- install
+  popd
 }
+
