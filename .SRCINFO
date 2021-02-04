@@ -1,7 +1,7 @@
 pkgbase = glib2-selinux
 	pkgdesc = Low level core library
-	pkgver = 2.66.4
-	pkgrel = 7
+	pkgver = 2.66.5
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GLib
 	arch = x86_64
 	license = LGPL
@@ -20,7 +20,7 @@ pkgbase = glib2-selinux
 	depends = libffi
 	depends = util-linux-libs
 	depends = zlib
-	source = git+https://gitlab.gnome.org/GNOME/glib.git#commit=bacbec652d356895ec493f3de2f2f6f4c7dafde0
+	source = git+https://gitlab.gnome.org/GNOME/glib.git#commit=79c5866d316767d06573df01bf1598a122fbecd7
 	source = noisy-glib-compile-schemas.diff
 	source = glib-compile-schemas.hook
 	source = gio-querymodules.hook
@@ -39,13 +39,13 @@ pkgname = glib2-selinux
 	depends = libmount.so
 	optdepends = python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report
 	optdepends = libelf: gresource inspection tool
-	optdepends = selinux: selinux support
+	optdepends = libselinux: selinux support
 	provides = libgio-2.0.so
 	provides = libglib-2.0.so
 	provides = libgmodule-2.0.so
 	provides = libgobject-2.0.so
 	provides = libgthread-2.0.so
-	provides = glib2=2.66.4
+	provides = glib2=2.66.5
 	conflicts = glib2
 
 pkgname = glib2-selinux-docs

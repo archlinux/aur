@@ -4,8 +4,8 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgbase=glib2-selinux
 pkgname=(glib2-selinux glib2-selinux-docs)
-pkgver=2.66.4
-pkgrel=7
+pkgver=2.66.5
+pkgrel=1
 pkgdesc="Low level core library"
 url="https://wiki.gnome.org/Projects/GLib"
 license=(LGPL)
@@ -13,7 +13,7 @@ arch=(x86_64)
 depends=(pcre libffi util-linux-libs zlib)
 makedepends=(gettext gtk-doc shared-mime-info python libelf git util-linux
              meson dbus sysprof libselinux)
-_commit=bacbec652d356895ec493f3de2f2f6f4c7dafde0  # tags/2.66.4^0
+_commit=79c5866d316767d06573df01bf1598a122fbecd7  # tags/2.66.5^0
 source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
         noisy-glib-compile-schemas.diff
         glib-compile-schemas.hook gio-querymodules.{hook,script})
@@ -51,7 +51,7 @@ package_glib2-selinux() {
   conflicts=(glib2)
   optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report'
               'libelf: gresource inspection tool'
-              'selinux: selinux support')
+              'libselinux: selinux support')
 
   DESTDIR="$pkgdir" meson install -C build
 
