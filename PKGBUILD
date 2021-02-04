@@ -2,10 +2,10 @@
 
 pkgname=wegstr
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Controlling software Wegstr"
 arch=("any")
-url="https://wegstr.com/index.php?route=product/category&path=64"
+url="https://wegstr.com/software"
 license=("unknown")
 depends=("java-runtime")
 source=(
