@@ -1,6 +1,6 @@
 pkgbase = kde1-ktip-git
 	pkgdesc = Backport of ktip to KDE 1, with Kandalf and tips replaced by fortunes
-	pkgver = 1.1.2r3.f3f0665
+	pkgver = 1.1.2r19.a4403ee
 	pkgrel = 1
 	url = https://github.com/sandsmark/kde1-ktip
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = kde1-ktip-git
 	depends = kde1-kdelibs
 	provides = kde1-ktip
 	conflicts = kde1-ktip
-	source = git+https://github.com/sandsmark/kde1-ktip.git
+	source = git+https://invent.kde.org/sandsmark/kde1-ktip.git
 	md5sums = SKIP
 
 pkgname = kde1-ktip-git

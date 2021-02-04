@@ -1,7 +1,7 @@
 # Maintainer: Martin
 
 pkgname=kde1-ktip-git
-pkgver=1.1.2r3.f3f0665
+pkgver=1.1.2r19.a4403ee
 pkgrel=1
 pkgdesc="Backport of ktip to KDE 1, with Kandalf and tips replaced by fortunes"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ makedepends=(cmake git)
 provides=(kde1-ktip)
 conflicts=(kde1-ktip)
 
-source=("git+https://github.com/sandsmark/kde1-ktip.git")
+source=("git+https://invent.kde.org/sandsmark/kde1-ktip.git")
 
 md5sums=('SKIP')
 
