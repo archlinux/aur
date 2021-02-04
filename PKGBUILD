@@ -5,7 +5,7 @@
 # python-markdown2
 pkgname=maestral-qt
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Qt interface for the Maestral daemon'
 arch=('any')
 url="https://github.com/SamSchott/${pkgname}"
@@ -14,7 +14,7 @@ source=("${url}/archive/v${pkgver}.tar.gz")
 makedepends=('python' 'python-setuptools')
 depends=(
     'python'
-    'maestral>=1.3.0'
+    'maestral'
     'python-click>=7.1.1'
     'python-markdown2'
     'python-packaging'
