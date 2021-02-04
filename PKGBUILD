@@ -1,24 +1,35 @@
+# Maintainer: Lu Xu <oliver_lew@outlook.com>
+# Maintainer: Dct Mei <dctxmei@yandex.com>
+
 pkgname=transmission-web-control-git
-pkgver=1.6.0.beta2.r31.g50bcc1d
-pkgrel=2
-pkgdesc='A custom web UI for transmission-da'
-arch=(any)
-url='https://github.com/ronggang/transmission-web-control'
+_pkgname="${pkgname%-*}"
+pkgver=1.6.1.update1.r23.g4e0c781
+pkgrel=1
+pkgdesc="A custom web UI for Transmission"
+arch=('any')
+url="https://github.com/ronggang/transmission-web-control"
 license=('MIT')
-source=("git+${url}")
+depends=('transmission-cli')
 makedepends=('git')
-sha1sums=('SKIP')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+install='transmission-web-control-git.install'
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd ${pkgname%-git}
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}"/"${_pkgname}"/
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-	cd "$srcdir/${pkgname%-*}"
-
-	install -dm755 "$pkgdir"/usr/share/transmission/web/
-	cp -r src/{favicon.ico,index.mobile.html,tr-web-control} "$pkgdir"/usr/share/transmission/web/
-	install -m644 src/index.html "$pkgdir"/usr/share/transmission/web/index.new.html
-	install -pDm644 LICENSE "$pkgdir"/usr/share/licenses/"${pkgname%-*}"/LICENSE
+    cd "${srcdir}"/"${_pkgname}"/
+    install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    cd src/
+    find . -type d -exec install -vd "${pkgdir}"/usr/share/transmission/web-control/{} \;
+    find . -type f -exec install -vm 644 {} "${pkgdir}"/usr/share/transmission/web-control/{} \;
+    ln -s /usr/share/transmission/web/index.html "${pkgdir}"/usr/share/transmission/web-control/index.original.html
+    for web_original in 'images' 'javascript' 'style'; do
+        ln -s /usr/share/transmission/web/"${web_original}" "${pkgdir}"/usr/share/transmission/web-control/"${web_original}"
+    done
 }
