@@ -1,5 +1,5 @@
 pkgname=sublime-text-4-dev
-pkgver=4.4096
+pkgver=4.4097
 pkgrel=1
 pkgdesc="Sophisticated text editor for code, html and prose - dev build"
 arch=('x86_64' 'aarch64')
@@ -19,10 +19,10 @@ source_aarch64=(
   "https://download.sublimetext.com/sublime_text_build_${pkgver:2}_arm64.tar.xz")
 sha256sums_x86_64=('388d1fe620727bd3e6bdda7b60150734616d8ba86ef1001478d0a41d1718c018'
                    'a400ae041bd8b3ed08bf04129e1d7ddc9df9edf5610532bd7b321a43e28c7ca9'
-                   '65de04ea0b44549c0b0d22eb067b1238e270136677a644622269d8c355d38699')
+                   'a9b9b2ad27025473039edafe687cfff2054bed7d02e454e7856704b2965b46fb')
 sha256sums_aarch64=('388d1fe620727bd3e6bdda7b60150734616d8ba86ef1001478d0a41d1718c018'
                     'a400ae041bd8b3ed08bf04129e1d7ddc9df9edf5610532bd7b321a43e28c7ca9'
-                    '8c220cd5ab298f632dd56641003f7008c3944fb441ddeae4fe725df1594ff161')
+                    '31bc5dc7691e21206af9ea125648dbd61d07eab16538ec57cfc7562d6617f703')
 
 package() {
   cd "${srcdir}"
