@@ -13,7 +13,6 @@ makedepends=(cmake python ninja)
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/rocm-$pkgver.tar.gz")
 sha256sums=('8003ede5a1462f46f0bb1b8b16c14ac6e884d322561235f7111ef7c3e74c6b07')
 _dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
-_pythonver=$(python --version | grep -o "[[:digit:]].[[:digit:]]")
 
 build() {
     cmake -GNinja \
@@ -27,9 +26,7 @@ build() {
         -DLLVM_ENABLE_OCAMLDOC=OFF \
         -DLLVM_ENABLE_PROJECTS='llvm;clang;compiler-rt;lld' \
         -DLLVM_TARGETS_TO_BUILD='AMDGPU;X86' \
-        -DOCAMLFIND=NO \
-        -DCMAKE_CXX_FLAGS='-I/usr/include/tensorflow' \
-        -DTENSORFLOW_AOT_PATH="/usr/lib/python${_pythonver}/site-packages/tensorflow"
+        -DOCAMLFIND=NO
     ninja
 }
 
