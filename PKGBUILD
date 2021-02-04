@@ -1,6 +1,6 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=timg
-pkgver=0.9.8
+pkgver=0.9.9
 pkgrel=1
 pkgdesc="Terminal Image Viewer"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/hzeller/timg"
 license=('GPL2')
 depends=('libwebp' 'graphicsmagick')
 source=("timg-$pkgver.tar.gz::https://github.com/hzeller/timg/archive/v$pkgver.tar.gz")
-sha256sums=('436e2c3b5f43e906786ca150d11e521281d558329a7bc00198fe30d6907ee8c4')
+sha256sums=('f43df657e93d47a1184a81c0976e67978cbdce21a83be5ec1df83403cda24caf')
 
 build() {
   cd $pkgname-$pkgver/src
@@ -17,5 +17,6 @@ build() {
 
 package() {
   cd $pkgname-$pkgver/src
-  install -Dm755 timg "$pkgdir"/usr/bin/timg
+  install -d "${pkgdir}/usr/"{bin,share/man/man1}
+  make PREFIX="${pkgdir}/usr" install
 }
