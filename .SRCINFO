@@ -24,8 +24,6 @@ pkgbase = unreal-engine-git
 	options = staticlibs
 	source = com.unrealengine.UE4Editor.desktop
 	source = use-arch-mono.patch
-	sha256sums = f63edd4248a7a73865c9009660b80ac37312d8b9f68542790e4ac61a12fee680
-	sha256sums = e891f07bf7294cd5fde8eb6de92e6d47ed004847ea8afd7c944e9b9b2bacaff4
 
 pkgname = unreal-engine-git
 

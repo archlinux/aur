@@ -18,8 +18,8 @@ optdepends=('qt5-base: qmake build system for projects'
 license=(custom:UnrealEngine)
 source=(com.unrealengine.UE4Editor.desktop
         use-arch-mono.patch)
-sha256sums=('f63edd4248a7a73865c9009660b80ac37312d8b9f68542790e4ac61a12fee680'
-            'e891f07bf7294cd5fde8eb6de92e6d47ed004847ea8afd7c944e9b9b2bacaff4')
+md5sums=('a90623dd63eede2679f092578e3ffc5d'
+         '30fd0552bf029387df36c1bd1bc61837')
 options=(!strip staticlibs) # Package is 3 Gib smaller with "strip" but it takes a long time and generates many warnings
 
 prepare() {
