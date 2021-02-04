@@ -1,0 +1,14 @@
+pkgbase = atta-git
+	pkgdesc = Robot simulator for 2D and 3D applications made with Vulkan API (optional Ray Tracing) (early stages)
+	pkgver = 0.0.1.r13.14f4be7
+	pkgrel = 1
+	url = https://github.com/Brenocq/Atta.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/Brenocq/Atta.git
+	md5sums = SKIP
+
+pkgname = atta-git
+
