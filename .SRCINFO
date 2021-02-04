@@ -1,6 +1,6 @@
 pkgbase = emacs-application-framework-git
 	pkgdesc = EAF extends GNU Emacs to an entire universe of powerful GUI applications.
-	pkgver = r1587.9e1b531
+	pkgver = r1776.537582e
 	pkgrel = 1
 	url = https://github.com/manateelazycat/emacs-application-framework
 	arch = any

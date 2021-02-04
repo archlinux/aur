@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-application-framework-git
-pkgver=r1587.9e1b531
+pkgver=r1776.537582e
 pkgrel=1
 pkgdesc="EAF extends GNU Emacs to an entire universe of powerful GUI applications."
 arch=('any')
@@ -38,9 +38,4 @@ package() {
     cp -r ${_i} "$pkgdir"/usr/share/emacs/site-lisp/eaf/
   done
   install -Dm644 README.md "$pkgdir"/usr/share/doc/emacs-eaf/README.md
-  # no binaries under /usr/share
-  rm "$pkgdir"/usr/share/emacs/site-lisp/eaf/app/terminal/node_modules/node-pty/build/Release/pty.node
-  rmdir "$pkgdir"/usr/share/emacs/site-lisp/eaf/app/terminal/node_modules/node-pty/build/Release
-  rm "$pkgdir"/usr/share/emacs/site-lisp/eaf/app/terminal/node_modules/node-pty/node_modules/nan
-  rmdir "$pkgdir"/usr/share/emacs/site-lisp/eaf/app/terminal/node_modules/node-pty/node_modules/
 }
