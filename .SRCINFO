@@ -1,12 +1,13 @@
 pkgbase = timg
-	pkgdesc = Terminal Image Viewer
+	pkgdesc = Terminal Image and Video Viewer
 	pkgver = 0.9.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hzeller/timg
 	arch = any
 	license = GPL2
 	depends = libwebp
 	depends = graphicsmagick
+	depends = ffmpeg
 	source = timg-0.9.9.tar.gz::https://github.com/hzeller/timg/archive/v0.9.9.tar.gz
 	sha256sums = f43df657e93d47a1184a81c0976e67978cbdce21a83be5ec1df83403cda24caf
 
