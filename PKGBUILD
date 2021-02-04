@@ -4,7 +4,7 @@ pkgdesc="ROS - Interactive control for generic Twist-based robots using interact
 url='h'
 
 pkgname='ros-melodic-interactive-marker-twist-server'
-pkgver='1.2.1'
+pkgver='1.2.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -28,7 +28,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="interactive_marker_twist_server-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/interactive_marker_twist_server/archive/${pkgver}.tar.gz")
-sha256sums=('c4d7354741eb866c10b69a4512d7e71ea5ccadc7800a230ed7373059c474ecd7')
+sha256sums=('5c8a54aba2b4811a0da537e510301ac717031442147ddf2ef3d4bf92c5fed7fc')
 
 
 build() {
