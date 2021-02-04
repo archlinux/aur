@@ -1,13 +1,14 @@
 pkgbase = whalebird-desktop-git
 	pkgdesc = Electron-based Mastodon/Pleroma client (git)
-	pkgver = 2.8.2+r9+ge3b5ef3
+	pkgver = 4.3.2+r176+gfe88de8d
 	pkgrel = 1
-	url = https://whalebird.org
+	url = https://whalebird.social
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = npm
+	makedepends = yarn
 	depends = alsa-lib
 	depends = atk
 	depends = at-spi2-atk

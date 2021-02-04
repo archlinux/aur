@@ -1,16 +1,16 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=whalebird-desktop-git
-pkgver=2.8.2+r9+ge3b5ef3
+pkgver=4.3.2+r176+gfe88de8d
 pkgrel=1
 pkgdesc='Electron-based Mastodon/Pleroma client (git)'
 arch=(i686 x86_64)
-url=https://whalebird.org
+url=https://whalebird.social
 license=(MIT)
 provides=(whalebird-desktop)
 conflicts=(whalebird-desktop whalebird-bin)
 depends=(alsa-lib atk at-spi2-atk cairo dbus gdk-pixbuf2 glib2 gtk3 hicolor-icon-theme libcups libglvnd libx11 libxcb libxcomposite libxcursor libxdamage libxext libxfixes libxi libxrandr libxrender libxss libxtst nspr nss pango)
-makedepends=(git npm)
+makedepends=(git npm yarn)
 source=(git+https://github.com/h3poteto/whalebird-desktop
         whalebird.desktop)
 sha512sums=('SKIP'
