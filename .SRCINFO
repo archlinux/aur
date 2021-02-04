@@ -1,8 +1,8 @@
 pkgbase = perl-monitoring-plugin
 	pkgdesc = The Perl Monitoring::Plugin modules which is used to streamline writing Naemon, Nagios, Icinga or Shinken (and compatible) plugins.
 	pkgver = 0.40
-	pkgrel = 1
-	url = https://metacpan.org/module/Monitoring-Plugin
+	pkgrel = 2
+	url = https://metacpan.org/release/Monitoring-Plugin
 	arch = any
 	license = GPL
 	license = PerlArtistic
