@@ -1,10 +1,10 @@
 # Maintainer: Jesse Chan <jc@linux.com>
 # Contributor: Jesse Chan <jc@linux.com>
 _npmname=flood
-_npmver=4.3.1
+_npmver=4.4.0
 pkgname=nodejs-flood
 pkgver=$_npmver
-pkgrel=0
+pkgrel=1
 pkgdesc="A modern web UI for various torrent clients"
 arch=(any)
 url="https://flood.js.org"
@@ -13,7 +13,7 @@ depends=('nodejs')
 makedepends=('jq' 'npm')
 optdepends=('mediainfo')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-sha1sums=('58c656c5f4d42f94f5672af8590f632ae47579e9')
+sha1sums=('f999a095a874f2a1292351821a250b1a5703d86c')
 noextract=("$_npmname-$_npmver.tgz")
 
 package() {
