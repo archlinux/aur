@@ -4,14 +4,14 @@
 # Maintainer: Emil VATAI (vatai) <emil.vatai@gmail.com>
 
 pkgname=ttf-kanjistrokeorders
-pkgver=4.002
-pkgrel=2
+pkgver=4.004
+pkgrel=0
 pkgdesc="Kanji stroke order font"
 arch=('any')
 license=('custom')
 url="http://www.nihilist.org.uk/"
-source=("https://www.dropbox.com/s/tnq52bz46n5zyh1/KanjiStrokeOrders_v${pkgver}.zip")
-sha256sums=('66ef5987dd64474e6c638f020fdb6fbe10db4b58f1420e32b22b320d2407f5cb')
+source=("https://www.dropbox.com/s/9jv2pnw4ohxzaml/KanjiStrokeOrders_v4.004.zip")
+sha256sums=('53061d36e2c7400b2b941bd6328c40d386586d5c5a3f89c43825a2d6979d5eee')
 
 
 package() {
