@@ -1,4 +1,4 @@
-# Maintainer: fkobayashi <fkobayashi@math.ubc.ca>
+# Maintainer: fkobayashi <see name left ＠ 数学 (but in english) dot ubc.ca
 
 pkgname=plom
 pkgver=0.5.16
