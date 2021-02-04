@@ -15,7 +15,7 @@ pkgbase = arrow
 	depends = boost-libs
 	depends = brotli
 	depends = double-conversion
-	depends = c-ares-cmake
+	depends = c-ares
 	depends = gflags
 	depends = grpc>=1.27.0
 	depends = google-glog
