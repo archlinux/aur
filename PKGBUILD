@@ -1,8 +1,8 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 _pluginname=SceneSwitcher
 pkgname=obs-advanced-scene-switcher
-pkgver=1.8.3
-_obsver=26.1.0
+pkgver=1.9
+_obsver=26.1.2
 pkgrel=1
 pkgdesc="An automated scene switcher for OBS Studio"
 arch=('x86_64')
@@ -15,8 +15,8 @@ source=(
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
 )
 sha256sums=(
-  'ac0460a6c0f8699482f9a707044ef823d5cb34c064582152545eb2b255aba691'
-  'c015d9bab1075ecf9c66c066328e291a20ef36880958fb3db6486ebc5ca9c6da'
+  'SKIP'
+  'bc8b4c61ba4aae87b70c589a6a5b8538e4f03121b31e9b98a2071d9f6006b897'
 )
 
 build() {
