@@ -5,7 +5,7 @@
 pkgbase=glib2-selinux
 pkgname=(glib2-selinux glib2-selinux-docs)
 pkgver=2.66.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Low level core library"
 url="https://wiki.gnome.org/Projects/GLib"
 license=(LGPL)

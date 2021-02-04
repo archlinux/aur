@@ -1,7 +1,7 @@
 pkgbase = glib2-selinux
 	pkgdesc = Low level core library
 	pkgver = 2.66.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.gnome.org/Projects/GLib
 	arch = x86_64
 	license = LGPL
@@ -15,6 +15,7 @@ pkgbase = glib2-selinux
 	makedepends = meson
 	makedepends = dbus
 	makedepends = sysprof
+	makedepends = libselinux
 	depends = pcre
 	depends = libffi
 	depends = util-linux-libs
