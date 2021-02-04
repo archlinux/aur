@@ -1,12 +1,13 @@
 pkgbase = kawaii-player-git
 	pkgdesc = An Audio/Video Manager and Front End for mpv/mplayer along with functionalities of portable media server
-	pkgver = v4.2.0.1.r32.g68ce806
+	pkgver = v5.0.0.1.r2.g1a12d2d
 	pkgrel = 1
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = python
 	depends = qt5-webengine
+	depends = python-pympv
 	depends = python-pyqt5
 	depends = python-pycurl
 	depends = curl
@@ -24,9 +25,11 @@ pkgbase = kawaii-player-git
 	depends = sqlite3
 	depends = youtube-dl
 	depends = wget
+	depends = python-opengl
+	depends = python-pyqt5-webengine
+	optdepends = vlc
 	conflicts = kawaii-player
 	source = git+https://github.com/kanishka-linux/kawaii-player.git
 	md5sums = SKIP
 
 pkgname = kawaii-player-git
-
