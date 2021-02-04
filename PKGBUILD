@@ -22,7 +22,7 @@ source=("https://down.oray.com/${_pkgname}/linux/${pkgname}-${pkgver}-amd64.deb"
 install="${pkgname}.install"
 sha256sums=('6f7d6d91f87da0b8dd5f101df5f49e6fa2ab027e01fe34205e920fe48da9c21e'
             'e23fe5524a0574e3fec38a36b1f87582f75bce68bceaef5982dc3a459eb57e18'
-            '92e7d2f15a704ede109a930711d1a70ef8e090f281179a669d8e60c40a736d04')
+            'SKIP')
 
 build() {
   mkdir -p build
