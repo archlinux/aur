@@ -1,0 +1,10 @@
+diff --git a/data/scripts/com.github.babluboy.bookworm.search.sh b/data/scripts/com.github.babluboy.bookworm.search.sh
+index 058f561..8dbd7ff 100644
+--- a/data/scripts/com.github.babluboy.bookworm.search.sh
++++ b/data/scripts/com.github.babluboy.bookworm.search.sh
+@@ -5,4 +5,4 @@
+ 
+ HTML_CONTENT_TO_BE_SEARCHED=$1
+ USER_SEARCH_TEXT=$2
+-html2text -utf8 "$HTML_CONTENT_TO_BE_SEARCHED"  | tr '\n' ' ' | grep -E -o -i  ".{0,50}$USER_SEARCH_TEXT.{0,50}"
++html2text "$HTML_CONTENT_TO_BE_SEARCHED"  | tr '\n' ' ' | grep -E -o -i  ".{0,50}$USER_SEARCH_TEXT.{0,50}"
