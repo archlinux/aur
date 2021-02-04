@@ -3,7 +3,7 @@
 pkgname=kicad-packages3d-git
 pkgver=5.1.6.r26.gd8b7e8c5
 pkgrel=1
-pkgdesc="KiCad component 3D model libraries from the official git repo"
+pkgdesc="https://gitlab.com/kicad/libraries/kicad-packages3D"
 arch=(any)
 url=https://gitlab.com/kicad/libraries/kicad-packages3D
 license=('CC-BY-SA 4.0')
@@ -13,7 +13,7 @@ makedepends=(
   git
   ninja
 )
-conflicts=('kicad-library-bzr' 'kicad-library-git' 'kicad-library-3d' 'kicad-library' 'kicad-packages' 'kicad-packages3d')
+conflicts=('kicad-packages3d')
 provides=('kicad-packages3d')
 source=(git+https://gitlab.com/kicad/libraries/kicad-packages3D.git)
 sha256sums=('SKIP')
