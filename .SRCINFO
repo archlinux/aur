@@ -1,0 +1,14 @@
+pkgbase = python-numpy-financial-git
+	pkgdesc = Collection of elementary financial functions
+	pkgver = 1.0.0.r20.ge3c2a4e
+	pkgrel = 1
+	url = https://github.com/
+	arch = any
+	license = BSD 3-Clause
+	makedepends = git
+	depends = python-numpy>=1.15
+	source = git://github.com/numpy/numpy-financial
+	sha256sums = SKIP
+
+pkgname = python-numpy-financial-git
+
