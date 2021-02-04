@@ -4,7 +4,7 @@
 
 pkgname=python-guessit
 _name=${pkgname#python-}
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="A library for guessing information from video files."
 arch=(any)
@@ -14,7 +14,7 @@ depends=(python python-babelfish python-dateutil python-rebulk)
 makedepends=("python-setuptools")
 conflicts=(${pkgname}-git)
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('d74424e28196e20ac492c86d60b1784c32b39804d909ac6c204bfa53c2a7dfcb')
+sha256sums=('d49d281836fd410568a16acfac4a0d36bc9f59cc5cd18615b2dcbe10719f64e6')
 
 build() {
     cd "$_name-$pkgver"
