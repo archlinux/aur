@@ -3,7 +3,7 @@
 pkgname=python-slepc4py-git
 pkgdesc="Python bindings for PETSc"
 pkgver=20201014
-pkgrel=1
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://gitlab.com/slepc/slepc4py"
 provides=(slepc4py)
