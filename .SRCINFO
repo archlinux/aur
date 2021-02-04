@@ -1,0 +1,17 @@
+pkgbase = schiffbruch-git
+	pkgdesc = A game of building, strategy and adventure played with a two-dimensional view.
+	pkgver = 127.83a49b0
+	pkgrel = 1
+	url = https://github.com/sandsmark/schiffbruch
+	arch = x86_64
+	arch = i686
+	license = CCPL
+	makedepends = git
+	depends = sfml
+	provides = schiffbruch
+	conflicts = schiffbruch
+	source = git+https://github.com/sandsmark/schiffbruch.git
+	md5sums = SKIP
+
+pkgname = schiffbruch-git
+
