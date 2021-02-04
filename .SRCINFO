@@ -1,6 +1,6 @@
 pkgbase = ppp-git
 	pkgdesc = A package which implements the Point-to-Point Protocol
-	pkgver = 2.4.8.r26.gad3937a
+	pkgver = 2.4.9.r23.g5191399
 	pkgrel = 1
 	url = https://ppp.samba.org/
 	arch = i686
@@ -9,22 +9,31 @@ pkgbase = ppp-git
 	license = GPL
 	makedepends = git
 	depends = glibc
-	depends = pam
 	depends = libpcap
+	depends = libxcrypt
+	depends = openssl
+	depends = pam
 	provides = ppp
 	conflicts = ppp
+	backup = etc/ppp/chap-secrets
+	backup = etc/ppp/ip-down
+	backup = etc/ppp/ip-down.d/00-dns.sh
+	backup = etc/ppp/ip-up
+	backup = etc/ppp/ip-up.d/00-dns.sh
+	backup = etc/ppp/ipv6-up.d/00-iface-config.sh
+	backup = etc/ppp/
+	backup = etc/ppp/options
+	backup = etc/ppp/pap-secrets
 	source = git+https://github.com/paulusmack/ppp.git
-	source = CVE-2015-3310.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/CVE-2015-3310.patch?h=packages/ppp
-	source = ip-up::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ip-up?h=packages/ppp
 	source = ip-down::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ip-down?h=packages/ppp
-	source = ipv6-up::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ipv6-up?h=packages/ppp
-	source = ipv6-down::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ipv6-down?h=packages/ppp
-	source = ip-up.d.dns.sh::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ip-up.d.dns.sh?h=packages/ppp
 	source = ip-down.d.dns.sh::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ip-down.d.dns.sh?h=packages/ppp
+	source = ip-up::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ip-up?h=packages/ppp
+	source = ip-up.d.dns.sh::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ip-up.d.dns.sh?h=packages/ppp
+	source = ipv6-down::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ipv6-down?h=packages/ppp
+	source = ipv6-up::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ipv6-up?h=packages/ppp
 	source = ipv6-up.d.iface-config.sh::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ipv6-up.d.iface-config.sh?h=packages/ppp
 	source = options::https://git.archlinux.org/svntogit/packages.git/plain/trunk/options?h=packages/ppp
 	source = ppp.systemd::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ppp.systemd?h=packages/ppp
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

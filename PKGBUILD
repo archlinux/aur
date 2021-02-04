@@ -1,24 +1,24 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ppp-git
-pkgver=2.4.8.r26.gad3937a
+pkgver=2.4.9.r23.g5191399
 pkgrel=1
 pkgdesc="A package which implements the Point-to-Point Protocol"
 arch=('i686' 'x86_64')
 url="https://ppp.samba.org/"
 license=('BSD' 'GPL')
-depends=('glibc' 'pam' 'libpcap')
+depends=('glibc' 'libpcap' 'libxcrypt' 'openssl' 'pam')
 makedepends=('git')
 provides=('ppp')
 conflicts=('ppp')
+backup=(etc/ppp/{chap-secrets,ip-down,ip-down.d/00-dns.sh,ip-up,ip-up.d/00-dns.sh,ipv6-up.d/00-iface-config.sh,,options,pap-secrets})
 source=("git+https://github.com/paulusmack/ppp.git"
-        "CVE-2015-3310.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/CVE-2015-3310.patch?h=packages/ppp"
-        "ip-up::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ip-up?h=packages/ppp"
         "ip-down::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ip-down?h=packages/ppp"
-        "ipv6-up::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ipv6-up?h=packages/ppp"
-        "ipv6-down::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ipv6-down?h=packages/ppp"
-        "ip-up.d.dns.sh::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ip-up.d.dns.sh?h=packages/ppp"
         "ip-down.d.dns.sh::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ip-down.d.dns.sh?h=packages/ppp"
+        "ip-up::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ip-up?h=packages/ppp"
+        "ip-up.d.dns.sh::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ip-up.d.dns.sh?h=packages/ppp"
+        "ipv6-down::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ipv6-down?h=packages/ppp"
+        "ipv6-up::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ipv6-up?h=packages/ppp"
         "ipv6-up.d.iface-config.sh::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ipv6-up.d.iface-config.sh?h=packages/ppp"
         "options::https://git.archlinux.org/svntogit/packages.git/plain/trunk/options?h=packages/ppp"
         "ppp.systemd::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ppp.systemd?h=packages/ppp")
@@ -31,15 +31,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
             'SKIP')
 
-
-prepare() {
-  cd "ppp"
-
-  patch -p1 -i "$srcdir/CVE-2015-3310.patch"
-}
 
 pkgver() {
   cd "ppp"
