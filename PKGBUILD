@@ -1,10 +1,10 @@
 #Maintainer: Dylan Delgado <dylan1496@live.com>
 
 pkgname=mtsieve
-_pkgrev=93
+_pkgrev=109
 _srcrev=r${_pkgrev}-trunk
-pkgver=2.1.5r${_pkgrev}
-_pkgver=2.1.5
+pkgver=2.1.6r${_pkgrev}
+_pkgver=2.1.6
 pkgrel=1
 pkgdesc='Library for sieving various types of numbers'
 url='https://sourceforge.net/projects/mtsieve/'
@@ -14,7 +14,7 @@ depends=('gmp' 'ocl-icd' 'opencl-driver')
 
 # Static copy of the snapshot file since sourceforge regenerates it on demand.
 source=("https://github.com/Dylan1496/mtsieve-source/raw/main/mtsieve-${_pkgver}-${_srcrev}.zip")
-sha256sums=('25515fd8f28bddd9a35c58633179f9421652a31d87a0278487e7d8c33ebb8815')
+sha256sums=('67486255f546a5f1b33e5dadb92e7361c033ba2b507c3988f7778cfd33562c01')
 
 prepare() {  
 	cd "${srcdir}/${pkgname}-svn"
