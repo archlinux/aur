@@ -1,7 +1,7 @@
 # Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
 
 pkgname=freshrss-extensions-git
-pkgver=1.17.0
+pkgver=r136.7af45f2
 pkgrel=1
 pkgdesc='all the official FreshRSS extensions'
 arch=('any')
@@ -15,7 +15,11 @@ sha256sums=('SKIP')
 
 pkgver(){
   cd "Extensions"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+
 
 }
 
