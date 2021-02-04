@@ -24,7 +24,7 @@ conflicts=( 'agate' )
 
 package() {
   install -Dm644 "${srcdir}/agate.conf"     "${pkgdir}/etc/agate.conf"
-  install -Dm644 "${srcdir}/agate.service"  "${pkgdir}/usr/lib/systemd/system/agate.service"
+  install -Dm644 "${srcdir}/agate@.service"  "${pkgdir}/usr/lib/systemd/system/agate.service"
   install -Dm644 "${srcdir}/agate.sysusers" "${pkgdir}/usr/lib/sysusers.d/agate.conf"
 
   install -Dm755 "${srcdir}/agate.x86_64-unknown-linux-gnu" "${pkgdir}/usr/bin/agate"
