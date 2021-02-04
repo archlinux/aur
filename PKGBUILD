@@ -1,7 +1,7 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=chwall
-pkgver=0.5.4
-pkgrel=3
+pkgver=0.5.5
+pkgrel=1
 pkgdesc="A tiny wallpaper changer, written in python"
 arch=("any")
 url="https://git.umaneti.net/chwall/about/"
@@ -10,7 +10,7 @@ depends=("gtk3" "python-cssselect" "python-gobject" "python-lxml"
          "python-pillow" "python-requests" "python-xdg" "python-yaml")
 makedepends=("python-setuptools" "imagemagick")
 source=("https://git.umaneti.net/${pkgname}/snapshot/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f52da0d2468024c35555422afc16fc45d3ee11ee98e8ce40156f3d10840d664f')
+sha256sums=('66ef603a32e5ba30771084bfac15cfd998e92181643b571e1851ee708009a709')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
