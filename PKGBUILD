@@ -23,7 +23,7 @@ pkgver() {
 }
 
 build() {
-  arch-meson $_pkgname build -DENABLE_NAUTILUS=true
+  arch-meson -Denable_nautilus=true $_pkgname build
   meson compile -C build
 }
 
