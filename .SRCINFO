@@ -1,6 +1,6 @@
 pkgbase = python-basix-git
 	pkgdesc = Python interface of FEniCS for ordinary and partial differential equations.
-	pkgver = 20210201
+	pkgver = 20210202
 	pkgrel = 1
 	url = https://github.com/FEniCS/basix
 	arch = i686

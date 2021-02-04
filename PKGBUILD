@@ -2,7 +2,7 @@
 
 pkgname=python-basix-git
 pkgdesc="Python interface of FEniCS for ordinary and partial differential equations."
-pkgver=20210201
+pkgver=20210202
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/FEniCS/basix"
@@ -27,4 +27,5 @@ build() {
 package() {
     cd basix
     python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+    ln -s /usr/lib/python3.9/site-packages/basix/lib/libbasix.so "${pkgdir}/usr/lib/libbasix.so"
 }
