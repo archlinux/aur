@@ -1,5 +1,5 @@
---- linux-gpib-kernel-4.3.3.orig/Makefile	2019-08-23 11:30:28.000000000 +0300
-+++ linux-gpib-kernel-4.3.3/Makefile	2019-09-08 11:26:09.384478185 +0300
+--- linux-gpib-kernel-4.3.4.orig/Makefile	2019-08-23 11:30:28.000000000 +0300
++++ linux-gpib-kernel-4.3.4/Makefile	2019-09-08 11:26:09.384478185 +0300
 @@ -1,7 +1,7 @@
  # Makefile
  
