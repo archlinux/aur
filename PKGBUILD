@@ -2,8 +2,8 @@
 
 pkgname=schiffbruch-git
 pkgver=127.83a49b0
-pkgrel=1
-pkgdesc='A game of building, strategy and adventure played with a two-dimensional view.'
+pkgrel=2
+pkgdesc='Castaway game of building, strategy and adventure played with a two-dimensional view.'
 arch=('x86_64' 'i686')
 url='https://github.com/sandsmark/schiffbruch'
 license=('CCPL')
