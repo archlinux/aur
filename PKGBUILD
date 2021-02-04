@@ -5,7 +5,7 @@
 pkgbase=glib2-selinux
 pkgname=(glib2-selinux glib2-selinux-docs)
 pkgver=2.66.4
-pkgrel=6
+pkgrel=7
 pkgdesc="Low level core library"
 url="https://wiki.gnome.org/Projects/GLib"
 license=(LGPL)
@@ -47,8 +47,8 @@ build() {
 package_glib2-selinux() {
   depends+=(libmount.so)
   provides+=(libgio-2.0.so libglib-2.0.so libgmodule-2.0.so libgobject-2.0.so
-             libgthread-2.0.so glib2)
-  conflicts=(glib2=$pkgver)
+             libgthread-2.0.so glib2=$pkgver)
+  conflicts=(glib2)
   optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report'
               'libelf: gresource inspection tool'
               'selinux: selinux support')
