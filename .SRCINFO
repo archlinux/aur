@@ -1,14 +1,14 @@
 pkgbase = python-dictdiffer
 	pkgdesc = Dictdiffer is a library that helps you to diff and patch dictionaries
-	pkgver = 0.7.1
+	pkgver = 0.8.1
 	pkgrel = 1
-	url = https://github.com/openshift/openshift-restclient-python
+	url = https://github.com/inveniosoftware/dictdiffer
 	arch = any
-	license = APACHE
+	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/d/dictdiffer/dictdiffer-0.7.1.tar.gz
-	md5sums = e58fbec47e54ee4450bc768b08cb1ae4
+	source = https://files.pythonhosted.org/packages/source/d/dictdiffer/dictdiffer-0.8.1.tar.gz
+	md5sums = 3185fe683d976282bf6313de14b7c7e9
 
 pkgname = python-dictdiffer
 
