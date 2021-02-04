@@ -1,0 +1,13 @@
+diff --git a/build-scripts/build-linux.sh b/build-scripts/build-linux.sh
+index 587db1c6..e51fad86 100755
+--- a/build-scripts/build-linux.sh
++++ b/build-scripts/build-linux.sh
+@@ -22,7 +22,7 @@ cd ../build || fail "Could not enter ../build"
+ 
+ # Run qmake
+ echo Running qmake...
+-"$BUILD_QT_PATH/qmake" ../src/Solution.pro -r -spec linux-g++-64 "CONFIG+=release" || fail "qmake failed"
++"$BUILD_QT_PATH/qmake" ../src/Solution.pro -r -spec linux-g++-64 "CONFIG+=release" "CONFIG+=system-boost" "CONFIG+=system-libqatemcontrol" || fail "qmake failed"
+ 
+ # Run make using the number of hardware threads in BUILD_PARALLEL_THREADS
+ echo Building...

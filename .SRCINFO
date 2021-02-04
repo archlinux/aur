@@ -1,0 +1,27 @@
+pkgbase = casparcg-client-git
+	pkgdesc = A client software used to control the CasparCG Server software
+	pkgver = next_r1221.1bca33bf
+	pkgrel = 1
+	url = http://www.casparcg.com/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = boost
+	makedepends = time
+	depends = boost-libs
+	depends = qt5-base
+	depends = qt5-websockets
+	depends = libqatemcontrol-git
+	depends = vlc
+	conflicts = casparcg-client-bin
+	source = system-libs.diff
+	source = casparcg-client
+	source = git+https://github.com/CasparCG/Client.git
+	source = git+https://github.com/CasparCG/Tools.git
+	sha256sums = bd9c6f86da782c62a2f7e3f845f271d7ed7ed19eeeac8ad75fdfb9e4bdf9e5dc
+	sha256sums = 8c5b1a9104ae09895e3b71d5a250a5db0e4611181aa53103d6bbde40cd76ab5c
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = casparcg-client-git
+
