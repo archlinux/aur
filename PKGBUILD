@@ -34,6 +34,8 @@ build() {
 
 
 package() {
+    install -Dm644 "schiffbruch/README.md" "${pkgdir}/usr/share/doc/README.md"
+
     cd build
     make DESTDIR="$pkgdir" install
 }
