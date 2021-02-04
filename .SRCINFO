@@ -1,7 +1,7 @@
 pkgbase = lx-music
 	pkgdesc = 一个基于 electron 的音乐软件
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lyswhut/lx-music-desktop
 	arch = x86_64
 	license = Apache 2.0

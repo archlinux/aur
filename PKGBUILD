@@ -2,7 +2,7 @@
 # This PKGBUILD is directly modified from aur/dingtalk
 pkgname=lx-music
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='一个基于 electron 的音乐软件'
 arch=('x86_64')
 url='https://github.com/lyswhut/lx-music-desktop'
@@ -48,7 +48,7 @@ Exec=/usr/bin/lx-music
 Terminal=false
 Type=Application
 Icon=lx-music
-StartupWMClass=lx-music
+StartupWMClass=lx-music-desktop
 Categories=AudioVideo;Utility;
     " > "$srcdir/lx-music.desktop"
     install -Dm644 "$srcdir/lx-music.desktop" "$pkgdir/usr/share/applications/lx-music.desktop"
