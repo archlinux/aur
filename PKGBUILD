@@ -2,8 +2,8 @@
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=inxi-perl-git
-pkgver=r3749.05e55f8b
-pkgrel=1
+pkgver=r3858.7dff6f09
+pkgrel=2
 pkgdesc="Pinxi, development branch of inxi, a full featured CLI system information tool"
 arch=(any)
 url="https://github.com/smxi/inxi"
@@ -11,6 +11,7 @@ license=(GPL3)
 depends=(coreutils pciutils perl procps-ng)
 makedepends=(git)
 optdepends=(
+  "bluez-utils-compat: hciconfig: -E bluetooth HCI data"
   "bind-tools: -i wlan IP"
   "dmidecode: inxi -M if no sys machine data"
   "file: inxi -o unmounted file system"
