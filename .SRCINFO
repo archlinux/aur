@@ -1,6 +1,6 @@
 pkgbase = spimsuite-svn
 	pkgdesc = spim + xspim + QtSpim
-	pkgver = r730
+	pkgver = r739
 	pkgrel = 1
 	url = http://spimsimulator.sourceforge.net/
 	arch = x86_64
