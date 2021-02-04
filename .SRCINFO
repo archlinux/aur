@@ -1,7 +1,7 @@
 pkgbase = python2-pgpdump
 	pkgdesc = PGP packet parser library.
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/pgpdump
 	arch = any
 	license = MIT
