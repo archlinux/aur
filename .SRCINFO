@@ -1,0 +1,9 @@
+pkgbase = test_project
+	pkgdesc = Test
+	pkgver = 0.3.0
+	pkgrel = 1
+	arch = any
+	license = GPL3
+
+pkgname = test_project
+
