@@ -5,7 +5,7 @@
 _pkgbase=julia
 pkgbase=${_pkgbase}-git
 pkgname=(julia-git julia-git-docs)
-pkgver=1.7.0.DEV.r48887.g6b91bbba6f6
+pkgver=1.7.0.DEV.r48888.g7b19e097294
 pkgrel=1
 arch=(x86_64)
 pkgdesc='High-level, high-performance, dynamic programming language'
@@ -80,7 +80,6 @@ check() {
 	--skip Distributed
 
   find ../stdlib \( -name \*.cov -o -name \*.mem \) -delete
-  rm -r depot/compiled
 }
 
 package_julia-git() {
