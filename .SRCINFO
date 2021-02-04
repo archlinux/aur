@@ -1,6 +1,6 @@
 pkgbase = kde1-kteatime-git
 	pkgdesc = Historical copy of kteatime for KDE 1, adapted to compile on modern systems
-	pkgver = 1.r2.01826a4
+	pkgver = 1.r3.f467233
 	pkgrel = 1
 	url = https://github.com/sandsmark/kde1-kteatime
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = kde1-kteatime-git
 	depends = kde1-kdelibs
 	provides = kde1-kteatime
 	conflicts = kde1-kteatime
-	source = git+https://github.com/sandsmark/kde1-kteatime.git
+	source = git+https://invent.kde.org/sandsmark/kde1-kteatime.git
 	md5sums = SKIP
 
 pkgname = kde1-kteatime-git

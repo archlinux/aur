@@ -1,7 +1,7 @@
 # Maintainer: Martin
 
 pkgname=kde1-kteatime-git
-pkgver=1.r2.01826a4
+pkgver=1.r3.f467233
 pkgrel=1
 pkgdesc="Historical copy of kteatime for KDE 1, adapted to compile on modern systems"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ makedepends=(cmake git)
 provides=(kde1-kteatime)
 conflicts=(kde1-kteatime)
 
-source=("git+https://github.com/sandsmark/kde1-kteatime.git")
+source=("git+https://invent.kde.org/sandsmark/kde1-kteatime.git")
 
 md5sums=('SKIP')
 
