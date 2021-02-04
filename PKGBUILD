@@ -1,6 +1,6 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname=auto-cpufreq
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="Automatic CPU speed & power optimizer"
 arch=('any')
@@ -16,7 +16,7 @@ provides=("$pkgname")
 conflicts=("$pkgname")
 install="$pkgname.install"
 source=( "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0c7fa351f477a3c7c01dce487673884fc5ba10acb320f876ec51c861f612df31')
+sha256sums=('bea42d6e5104db52bfbf318451ea22d61809819ee1b774b3b789e9fb569c27db')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
