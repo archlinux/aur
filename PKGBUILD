@@ -1,8 +1,8 @@
 # Maintainer: Lucas H. Gabrielli <heitzmann@gmail.com>
 
 pkgname=petsc-git
-pkgver=20210203
-pkgrel=2
+pkgver=20210204
+pkgrel=1
 _config=linux-c-opt
 pkgdesc="Portable, extensible toolkit for scientific computation (external downloads enabled)"
 provides=(petsc)
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="https://gitlab.com/petsc/petsc"
 license=('BSD')
 depends=('openmpi' 'lapack' 'fftw' 'hdf5' 'suitesparse' 'metis' 'parmetis' 'superlu' 'eigen' 'cython' 'python-mpi4py')
-makedepends=('gcc' 'gcc-fortran' 'cmake' 'sowing' 'python' 'git' 'cython')
+makedepends=('gcc' 'gcc-fortran' 'cmake' 'sowing' 'python' 'git' 'cython' 'chrpath')
 optdepends=("opencl: GPU computing"
             "hwloc: hardware locality"
             "cgns: CFD data support"
