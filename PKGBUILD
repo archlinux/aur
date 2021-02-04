@@ -1,23 +1,19 @@
 # Maintainer: MidAutumnMoon <mid.autumn0moon@gmail.com>
 pkgname=v2ray-rules-dat-git
 pkgdesc="Enhanced edition of V2Ray rules dat files, compatible with Trojan-Go."
-pkgver=r253.0fae67f
+pkgver=r264.235e896
 pkgrel=1
-arch=('any')
+arch=( 'any' )
 url="https://github.com/Loyalsoldier/v2ray-rules-dat"
-license=('GPL3')
+license=( 'GPL3' )
 
-provides=('v2ray-domain-list-community' 'v2ray-geoip')
-conflicts=('v2ray-domain-list-community' 'v2ray-geoip')
+provides=( 'v2ray-domain-list-community' 'v2ray-geoip' )
+conflicts=( 'v2ray-domain-list-community' 'v2ray-geoip' )
 
-makedepends=('git')
+makedepends=( 'git' )
 
-source=(
-  "$pkgname::git+$url.git"
-)
-sha256sums=(
-  'SKIP'
-)
+source=( "$pkgname::git+$url.git" )
+sha256sums=( 'SKIP' )
 
 pkgver() {
   cd "$srcdir/$pkgname"
