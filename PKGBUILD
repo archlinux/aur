@@ -1,14 +1,14 @@
 # Maintainer: jkdhn <aur@jkdhn.me>
 
 pkgname=saleae-logic-alpha
-pkgver=2.3.17
+pkgver=2.3.18
 pkgrel=1
 pkgdesc="Debug hardware like a pro"
 arch=("x86_64")
 url="https://discuss.saleae.com/c/logic-2-0-alpha-software/7"
 license=("unknown")
 source=("https://downloads.saleae.com/logic2/Logic-${pkgver}-master.AppImage")
-sha512sums=("72e3b5bff1f2ac722a89768d0ac18ae741a9a5fb34860f6dbe420c1e1816cae06f2022e34daf7a7c4eb55438716fbf897948ede326f5aa4112ebcdcc2050243b")
+sha512sums=("11b8c420467d5115c6e1b3c772edb541ddf824a4d8ec3a081c170d891790c4e6a1df034ea0e33622641ff5837b1b8b839a4212a62665594c53c4dda1a6d14065")
 
 build() {
 	_file="Logic-${pkgver}-master.AppImage"
