@@ -5,7 +5,7 @@
 
 _basename=emacs-ng
 pkgname=${_basename}-git
-pkgver=28.0.5
+pkgver=28.0.50
 pkgrel=1
 pkgdesc="A new approach to Emacs - Including TypeScript, Threading, Async I/O, and WebRender"
 arch=('x86_64')
