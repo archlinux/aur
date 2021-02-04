@@ -1,16 +1,17 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
-pkgname=barrier-git
-pkgver=2.3
-pkgrel=2
+_pkgname=barrier
+pkgname=$_pkgname-git
+pkgver=v2.3.3+153+g12024b9a
+pkgrel=1
 pkgdesc="Open-source KVM software based on Synergy"
+arch=(any)
 url="https://github.com/debauchee/barrier"
 license=("custom:GPL2WithOpenSSLException")
 source=(
-    "barrier-git::git+https://github.com/debauchee/barrier.git"
+    "${pkgname}::git+${url}.git"
 )
-sha256sums=('SKIP')
-arch=(any)
+sha512sums=('SKIP')
 depends=(
     # Barrier core dependencies:
     curl
@@ -36,8 +37,13 @@ makedepends=(
     hicolor-icon-theme
 )
 
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/-/+/g'
+}
+
 prepare() {
-    cd "barrier-git"
+    cd $pkgname
 
     for patch in "${srcdir?}"/*.patch; do
         if [ -f "${patch?}" ]; then
@@ -47,7 +53,7 @@ prepare() {
 }
 
 build() {
-    cd "barrier-git"
+    cd $pkgname
 
     mkdir -p build
     cd build
@@ -64,7 +70,7 @@ build() {
 
 _package_common() {
     # Install binaries:
-    cd "barrier-git/build"
+    cd "${pkgname}/build"
     DESTDIR="${pkgdir?}" make install
 
     # Install the license:
@@ -83,7 +89,7 @@ _package_common() {
 package_barrier-git() {
     pkgdesc="Open-source KVM software based on Synergy (GUI)"
     depends=(
-        "barrier-headless-git=${pkgver?}-${pkgrel?}"
+        "barrier-headless-git"
         qt5-base
         hicolor-icon-theme
     )
