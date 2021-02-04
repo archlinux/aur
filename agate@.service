@@ -6,7 +6,7 @@ After=network-online.target
 [Service]
 Type=simple
 User=agate
-EnvironmentFile=%i
+EnvironmentFile=/etc/agate/%i
 ExecStart=/usr/bin/agate $CONTENT $CERT $ADDR $HOSTNAME $LANG $OTHERS
 Restart=always
 
