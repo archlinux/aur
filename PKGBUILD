@@ -2,7 +2,7 @@
 # Contributor: Lamelos <lamelos at gmail.com>
 
 pkgname=fcct
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Fedora CoreOS Config Transpiler"
 arch=("any")
