@@ -1,0 +1,14 @@
+pkgbase = freshrss-extensions-git
+	pkgdesc = all the official FreshRSS extensions
+	pkgver = 1.17.0
+	pkgrel = 1
+	url = https://github.com/FreshRSS/Extensions
+	arch = any
+	license = AGPL
+	makedepends = git
+	depends = freshrss
+	source = git+https://github.com/FreshRSS/Extensions.git
+	sha256sums = SKIP
+
+pkgname = freshrss-extensions-git
+
