@@ -2,12 +2,12 @@
 
 pkgname='tabs-app'
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Persistent and separate browser tabs in one window'
 arch=('x86_64')
-url='https://eternae.ink/arisu/tabs'
+url='https://eternae.ink/ashpie/tabs'
 license=('GPL3')
-source=("tabs-src::git+https://eternae.ink/arisu/tabs.git#tag=v$pkgver"
+source=("tabs-src::git+https://eternae.ink/ashpie/tabs.git#tag=v$pkgver"
   'tabs-app'
   'tabs-app.desktop')
 sha512sums=('SKIP'
