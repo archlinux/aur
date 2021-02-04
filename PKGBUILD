@@ -1,27 +1,24 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=in
-pkgver=1.2
-pkgrel=2
-pkgdesc='Run a command in a given directory'
-arch=('x86_64')
+pkgver=1.4
+pkgrel=1
+pkgdesc='Create a directory if needed, then run the given command there'
+arch=(x86_64)
 url='https://github.com/xyproto/in'
-license=('MIT')
-makedepends=('go')
-source=("https://github.com/xyproto/in/releases/download/$pkgver/in-$pkgver.tar.gz")
-sha256sums=('98f8cd8f55c492f4bc2af67cdab2aa6e1d12bb6d5c4b815ace7e7cd8e8164fd6')
+license=(MIT)
+makedepends=(git go)
+source=("git+$url#commit=c0b1c3c2c1b229f703d2d066e9bc4c0d169c3c80") # tag: 1.4
+sha256sums=('SKIP')
 
 build() {
-  cd "$pkgname-$pkgver"
-
-  go build -ldflags='-s -w'
+  cd $pkgname
+  go build -v -mod=vendor -trimpath -buildmode=pie -ldflags="-s -w -extldflags \"${LDFLAGS}\""
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-
-  install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$pkgname"
+  cd $pkgname
+  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 $pkgname.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim: ts=2 sw=2 et:
