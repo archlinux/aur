@@ -7,9 +7,9 @@
 
 pkgname=yubikey-agent
 pkgver=0.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A seamless ssh-agent for YubiKeys'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://filippo.io/yubikey-agent"
 license=('BSD')
 depends=('pcsclite' 'pinentry')
