@@ -1,6 +1,6 @@
 # Maintainer: metaanon [at] mailbox dotorg  
 pkgname=binance-electron
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="Binance Electron desktop application."
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://binance.com"
 license=('MIT')
 install=${pkgname}.install
 source=("https://ftp.binance.com/electron-desktop/linux/production/binance-amd64-linux.deb")
-sha256sums=('8165b5210af73bb3bbefcb7bba66fd85687594a7b3a32186e1926669847b5e38')
+sha256sums=('d4f0416f72631077cdc5e8f33835bf6841f48d2d668018c92b80823989c7db46')
 
 package(){
 
