@@ -1,14 +1,16 @@
 pkgbase = obs-text-pango
 	pkgdesc = This plugin provides a text source for OBS Studio which is layed out and rendered using Pango
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kkartaltepe/obs-text-pango
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
 	depends = obs-studio
 	source = obs-text-pango-1.0.tar.gz::https://github.com/kkartaltepe/obs-text-pango/archive/v1.0.tar.gz
+	source = updated_french.patch::https://patch-diff.githubusercontent.com/raw/kkartaltepe/obs-text-pango/pull/12.patch
 	sha256sums = 07bc145256393a902637ade6820d03988b655796748733ecec53790d370d2e4e
+	sha256sums = SKIP
 
 pkgname = obs-text-pango
 

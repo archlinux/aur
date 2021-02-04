@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 pkgname=obs-text-pango
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="This plugin provides a text source for OBS Studio which is layed out and rendered using Pango"
 arch=('x86_64')
 url="https://github.com/kkartaltepe/obs-text-pango"
@@ -10,8 +10,12 @@ depends=("obs-studio")
 makedepends=('cmake')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/kkartaltepe/obs-text-pango/archive/v$pkgver.tar.gz"
+  "updated_french.patch::https://patch-diff.githubusercontent.com/raw/kkartaltepe/obs-text-pango/pull/12.patch"
 )
-sha256sums=('07bc145256393a902637ade6820d03988b655796748733ecec53790d370d2e4e')
+sha256sums=(
+  '07bc145256393a902637ade6820d03988b655796748733ecec53790d370d2e4e'
+  "SKIP"
+)
 
 prepare() {
   rm -rf fakeroot
@@ -19,6 +23,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
+  patch -Np1 < "$srcdir"/updated_french.patch
   cmake -B build \
   -DOBS_INCLUDE_DIRS='/usr/include/obs' \
   -DCMAKE_INSTALL_PREFIX='/'
