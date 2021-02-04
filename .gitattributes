@@ -7,3 +7,4 @@ PKGBUILD text eol=lf
 README linguist-vendored
 PKGBUILD linguist-vendored
 .SRCINFO linguist-vendored
+*.sh linguist-vendored
