@@ -1,0 +1,16 @@
+pkgbase = libqatemcontrol-git
+	pkgdesc = Implements the protocol used to connect to BlackMagic ATEM switches
+	pkgver = v0.3.r54.g252b031
+	pkgrel = 1
+	url = https://github.com/petersimonsson/libqatemcontrol
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = qt5-base
+	provides = libqatemcontrol
+	conflicts = libqatemcontrol
+	source = git+https://github.com/petersimonsson/libqatemcontrol.git
+	md5sums = SKIP
+
+pkgname = libqatemcontrol-git
+
