@@ -1,33 +1,43 @@
-# Maintainer: Frederic Van Assche <frederic@fredericva.com>
+# Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=kicad-templates-git
-_pkgname=${pkgname%-*}
-pkgver=r34.024bbbe
+pkgver=5.1.6.r10.gf99cc6d
 pkgrel=1
-pkgdesc="Official KiCad project templates"
-arch=('any')
-url="https://github.com/KiCad/kicad-templates"
-license=('GPL')
-makedepends=('cmake' 'git')
+pkgdesc="KiCad project templates (and worksheets)"
+arch=(any)
+url=https://gitlab.com/kicad/libraries/kicad-templates
+license=('CC-BY-SA 4.0')
 options=('!strip')
-conflicts=('kicad-library-bzr' 'kicad-library-git' 'kicad-library-3d' 'kicad-library')
-source=("git://github.com/KiCad/kicad-templates.git")
-md5sums=('SKIP')
+makedepends=(
+cmake
+ninja
+git
+)
+source=(git+https://gitlab.com/kicad/libraries/kicad-templates.git)
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd kicad-templates
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir"
-  mkdir -p "$srcdir/build/"
-  cd "$srcdir/build"
-  cmake ../${_pkgname} -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  cd kicad-templates
+  cmake \
+    -W no-dev \
+    -D CMAKE_BUILD_TYPE=None \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -G Ninja \
+    -B build_dir \
+    -S .
+
+  cmake --build build_dir
 }
 
 package() {
-  cd "$srcdir/build"
+  cd kicad-templates
+  DESTDIR="${pkgdir}" cmake --build build_dir -- install
 
-  make DESTDIR="$pkgdir" install
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE.md
 }
+
