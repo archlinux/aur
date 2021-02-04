@@ -1,7 +1,7 @@
 pkgbase = chromium-no-extras
 	pkgdesc = Chromium without hangout services, widevine, pipewire, or chromedriver
 	pkgver = 88.0.4324.146
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.chromium.org/Home
 	arch = x86_64
 	license = BSD
@@ -56,10 +56,12 @@ pkgbase = chromium-no-extras
 	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-88.0.4324.146.tar.xz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v7/chromium-launcher-7.tar.gz
 	source = https://github.com/stha09/chromium-patches/releases/download/chromium-88-patchset-3/chromium-88-patchset-3.tar.xz
+	source = chromium-glibc-2.33.patch
 	source = subpixel-anti-aliasing-in-FreeType-2.8.1.patch
 	sha256sums = 38b118fbe8bbdf89e4f170ced090088f5eb2bb68f2295abbb0006cc94b7f827d
 	sha256sums = 86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f
 	sha256sums = e5a60a4c9d0544d3321cc241b4c7bd4adb0a885f090c6c6c21581eac8e3b4ba9
+	sha256sums = 2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b
 	sha256sums = 1e2913e21c491d546e05f9b4edf5a6c7a22d89ed0b36ef692ca6272bcd5faec6
 
 pkgname = chromium-no-extras
