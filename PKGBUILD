@@ -1,43 +1,35 @@
-# Maintainer: Pagnite <tymoteuszdolega at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Pagnite <tymoteuszdolega at gmail dot com>
 # Contributor: Bjorn Neergaard (neersighted) <bjorn@neersighted.com>
-
-_pkgname=ddcutil
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Deon Spengler <deon@spengler.co.za>
 pkgname=ddcutil-git
-pkgver=v0.9.9.r0.gdf01384d
+pkgver=1.0.0.r0.gb8a1e953
 pkgrel=1
-pkgdesc='Query and change Linux monitor settings using DDC/CI and USB (development version).'
-url='http://ddcutil.com/'
+pkgdesc="Query and change Linux monitor settings using DDC/CI and USB."
+url="http://ddcutil.com"
+arch=('x86_64')
 license=('GPL2')
-source=('git+https://github.com/rockowitz/ddcutil.git#branch=1.0.0-dev')
+depends=('glib2' 'libusb' 'libdrm' 'libxrandr' 'systemd-libs')
+makedepends=('git' 'systemd')
+provides=("${pkgname%-git}=${pkgver//.r*/}" 'libddcutil.so=4')
+conflicts=("${pkgname%-git}")
+source=('git+https://github.com/rockowitz/ddcutil.git')
 sha256sums=('SKIP')
-arch=('i686' 'x86_64')
-provides=('ddcutil')
-
-depends=(
-  'libdrm'
-  'libusb'
-  'glib2'
-  'libdrm'
-  'libgudev'
-  'libxrandr')
-
-makedepends=(
-  'git'
-)
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$srcdir/${pkgname%-git}"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-  ./autogen.sh
-  ./configure --prefix=/usr
-  make
+	cd "$srcdir/${pkgname%-git}"
+	NOCONFIGURE=1 ./autogen.sh
+	./configure --prefix=/usr
+	make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  make DESTDIR="${pkgdir}" install
+	cd "$srcdir/${pkgname%-git}"
+	make DESTDIR="$pkgdir" install
 }
