@@ -1,0 +1,14 @@
+pkgbase = chill
+	pkgdesc = Standalone port of ionice to Go
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/xyproto/chill
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/xyproto/chill#commit=9b89660af84fa340a49c54db0f79fae96f209874
+	sha256sums = SKIP
+
+pkgname = chill
+
