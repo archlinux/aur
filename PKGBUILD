@@ -5,12 +5,12 @@
 
 _pkgbase="visdom"
 pkgname=python-visdom-git
-pkgver=r288.bb0ab59
+pkgver=r314.bc71e86
 pkgrel=1
 arch=(any)
 url='https://github.com/facebookresearch/visdom'
 pkgdesc='Visualization tool for Pytorch by Facebook'
-license=(CCPL:by-nc)
+license=(Apache)
 depends=('python-websocket-client' 'python-numpy' 'python-scipy' 'python-requests' 'python-tornado' 'python-pyzmq' 'python-six' 'python-jsonpatch' 'python-pillow')
 makedepends=(
   'git'
@@ -18,6 +18,9 @@ makedepends=(
 )
 options=(!emptydirs)
 source=("git+https://github.com/facebookresearch/visdom.git" "visdom.conf" "visdom.group.conf")
+provides=('python-visdom')
+conflicts=('python-visdom')
+install='visdom.install'
 sha256sums=('SKIP'
             '3df45ac54962cac4425bcd6ff9f118d851e0fe2dbc9cfd54089d8ae46e9fecbf'
             'd71fbfa6bb3feecfb1997a459da196f8a2f0f50b33428043921803d97db5562c')
@@ -27,10 +30,7 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package_python-visdom-git() {
-provides=('python-visdom')
-conflicts=('python-visdom')
-install='visdom.install'
+package() {
   cd "${srcdir}/${_pkgbase}"
   python setup.py install --root="${pkgdir}/" --optimize=1
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

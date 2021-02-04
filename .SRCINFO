@@ -1,10 +1,10 @@
 pkgbase = python-visdom-git
 	pkgdesc = Visualization tool for Pytorch by Facebook
-	pkgver = r288.bb0ab59
+	pkgver = r314.bc71e86
 	pkgrel = 1
 	url = https://github.com/facebookresearch/visdom
 	arch = any
-	license = CCPL:by-nc
+	license = Apache
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-websocket-client
