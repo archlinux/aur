@@ -1,0 +1,18 @@
+pkgbase = kicad-library-sparkfun-git
+	pkgdesc = SparkFun's KiCad Libraries
+	pkgver = V_0.5.r31.ge23396a
+	pkgrel = 1
+	url = https://github.com/sparkfun/SparkFun-KiCad-Libraries
+	arch = any
+	license = CC-BY-SA 4.0
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	provides = kicad-library-sparkfun
+	conflicts = kicad-library-sparkfun
+	options = !strip
+	source = git+https://github.com/sparkfun/SparkFun-KiCad-Libraries.git
+	sha256sums = SKIP
+
+pkgname = kicad-library-sparkfun-git
+
