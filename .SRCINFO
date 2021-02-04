@@ -1,0 +1,14 @@
+pkgbase = python-fsutil
+	pkgdesc = file-system utilities for lazy devs.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/fabiocaccamo/python-fsutil
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-requests
+	source = https://github.com/fabiocaccamo/python-fsutil/archive/0.4.0.tar.gz
+	sha256sums = ee8d3e55ea0260e9def4a0263302b5c0796fd6a87828ec0775ed96b3c676f776
+
+pkgname = python-fsutil
+
