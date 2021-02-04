@@ -3,17 +3,17 @@
 pkgname=lxrad-git
 _gitname=${pkgname%-git}
 pkgver=v0.8.r93.g1d5ba7a
-pkgrel=1
+pkgrel=2
 pkgdesc="linux x11 rad tools"
 arch=('x86_64')
 url='https://github.com/lcgamboa/lxrad'
 license=('GPL2')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-depends=('wxgtk2'
-         'openal')
 makedepends=('doxygen'
-             'git')
+             'git'
+             'openal'
+             'wxgtk2')
 source=("git+https://github.com/lcgamboa/lxrad")
 sha256sums=('SKIP')
 
