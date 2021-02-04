@@ -4,4 +4,6 @@ DateTime-Format-DateManip-*.tar.gz
 DateTime-Format-DateManip-*
 perl-datetime-format-datemanip-*.pkg.tar.xz
 perl-datetime-format-datemanip-*.src.tar.gz
+perl-datetime-format-datemanip-*.pkg.tar.zst
+perl-datetime-format-datemanip-*.src.tar.zst
 *.swp

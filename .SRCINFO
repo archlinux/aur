@@ -1,8 +1,8 @@
 pkgbase = perl-datetime-format-datemanip
 	pkgdesc = Perl DateTime extension to convert Date::Manip dates and durations to DateTimes and vice versa.
 	pkgver = 0.04
-	pkgrel = 5
-	url = https://metacpan.org/module/DateTime-Format-DateManip
+	pkgrel = 6
+	url = https://metacpan.org/release/DateTime-Format-DateManip
 	arch = any
 	license = GPL
 	license = PerlArtistic
