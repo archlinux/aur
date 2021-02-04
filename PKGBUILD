@@ -1,7 +1,7 @@
 pkgname=gamerworld-git
 _pkgname=GamerWorld-git
 pkgver=1.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Play games all in one place"
 arch=('any')
 url="https://gitlab.com/gamerworld/application"
