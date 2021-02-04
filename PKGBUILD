@@ -1,6 +1,6 @@
 # Maintainer: Dominik Csapak <dominik.csapak@gmail.com>
 pkgname=proxmox-backup-client
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Client for Proxmox Backup Server"
 arch=('x86_64' 'aarch64')
