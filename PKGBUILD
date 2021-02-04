@@ -2,7 +2,7 @@
 # Contributor: LinRs <LinRs at users.noreply.github.com>
 
 pkgname=elfeed
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Emacs web feeds client"
 arch=('any')
@@ -11,7 +11,7 @@ license=('custom:unlicense')
 depends=('emacs>=24.3' 'curl')
 provides=("${pkgname}=${pkgver}")
 source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/${pkgver}.tar.gz")
-sha256sums=('3250520b72c693b4b88becda37748f76e76afbdb5b45ce077cdca35578cee9eb')
+sha256sums=('b799fbf1658fc2096dce0a86d3644ac3016d91bd33f6210e267f54229e46c1c2')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

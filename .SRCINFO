@@ -1,15 +1,15 @@
 pkgbase = elfeed
 	pkgdesc = Emacs web feeds client
-	pkgver = 3.3.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/skeeto/elfeed
 	arch = any
 	license = custom:unlicense
 	depends = emacs>=24.3
 	depends = curl
-	provides = elfeed=3.3.0
-	source = elfeed-3.3.0.tar.gz::https://github.com/skeeto/elfeed/archive/3.3.0.tar.gz
-	sha256sums = 3250520b72c693b4b88becda37748f76e76afbdb5b45ce077cdca35578cee9eb
+	provides = elfeed=3.4.0
+	source = elfeed-3.4.0.tar.gz::https://github.com/skeeto/elfeed/archive/3.4.0.tar.gz
+	sha256sums = b799fbf1658fc2096dce0a86d3644ac3016d91bd33f6210e267f54229e46c1c2
 
 pkgname = elfeed
 
