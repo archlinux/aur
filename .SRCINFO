@@ -1,0 +1,18 @@
+pkgbase = systemd-plasmoid-git
+	pkgdesc = A plasma widget to control systemd services
+	pkgver = 2.0.1_r28.g7d0c7d7
+	pkgrel = 1
+	url = https://github.com/jansenm/systemd-plasmoid
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = ki18n-git
+	makedepends = knotifications-git
+	makedepends = plasma-framework-git
+	makedepends = qt5-base
+	depends = qt5-declarative
+	source = git+https://github.com/jansenm/systemd-plasmoid.git
+	sha256sums = SKIP
+
+pkgname = systemd-plasmoid-git
+
