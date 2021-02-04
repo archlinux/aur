@@ -3,7 +3,7 @@
 # Contributor: Jonathon Fernyhough <jonathon@manjaro.org>
 
 pkgname=zef
-pkgver=0.9.1
+pkgver=0.11.4
 pkgrel=1
 pkgdesc="Rakudo (Perl6) Module Management"
 arch=('any')
@@ -15,7 +15,7 @@ url="https://github.com/ugexe/zef"
 license=('PerlArtistic')
 options=('!purge')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/ugexe/$pkgname/tar.gz/v$pkgver)
-sha256sums=('d58f23d3bd84b8b204b5a17f4bd55b1d50eb107d5a1715d2f82171119175080a')
+sha256sums=('0e64867f5b756ddf1019894637a225be47cbe56e62180983670fa60bc000356d')
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -28,7 +28,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   printf 'Installing documentation...\n'
-  install -Dm 644 README.pod -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 
   printf 'Installing...\n'
   export RAKUDO_LOG_PRECOMP=1
