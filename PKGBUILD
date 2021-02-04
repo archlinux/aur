@@ -1,5 +1,6 @@
 # Maintainer: agilob <archlinux@agilob.net>
-pkgname=nault-bin
+_pkgname=nault
+pkgname="${_pkgname}-bin"
 pkgver=1.9.2
 pkgrel=1
 pkgdesc='Official Nault AppImage client'
@@ -16,17 +17,31 @@ noextract=("${_appimage}")
 sha512sums=('2114af9a2a3cc21004d4b96f17934112888d7b23263723411f30ec2c6ac2364d91194d5bd03c12141101f15bcff8329d0b512b57da8476782afc69b3a0a5c1a7')
 install="${pkgname}.install"
 
-# extracting icons doesnt work now, this is here for future purposes
-# prepare() {
-# 	bsdcpio --extract --make-directories --insecure 'nano-vault' '.DirIcon' 'usr/share/icons' < "${_appimage}"
-# }
+prepare() {
+    chmod +x "${_appimage}"
+    ./"${_appimage}" --appimage-extract
+}
 
-# build() {
-# 	sed -i -E "s|Exec=AppRun|Exec=${_pkgname}|" nano-vault.desktop
-# 	chmod -R g-w,o-w usr/share/icons
-# }
+build() {
+    # Fix permissions; .AppImage permissions are 700 for all directories
+    chmod -R a-x+rX squashfs-root/usr
+}
 
 package() {
-    mv "Nault-${pkgver}-Linux.AppImage" 'nault.AppImage'
+    mv "Nault-${pkgver}-Linux.AppImage" "${_appimage}"
+
+    # Appimage
 	install -Dpm755 "${_appimage}" "${pkgdir}/opt/${pkgname}/${_appimage}"
+
+    # Desktop file
+    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop"\
+            "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+
+    # Icon images
+    install -dm755 "${pkgdir}/usr/share/"
+    cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
+
+    # Symlink executable
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
 }
