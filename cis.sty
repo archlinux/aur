@@ -1,0 +1,597 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cis}[2020/07/15 CiS Package]
+% create a symlink with: ln -s path-here/cis-latex $HOME/texmf/tex/latex/cis
+%   where cis-latex is the directory this .sty-file is child of
+% then use package with \usepackage{cis}
+
+%===============================================================================
+%===================================PACKAGES====================================
+%===============================================================================
+
+\RequirePackage{ngerman}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{graphicx}
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+\RequirePackage{colortbl}
+\RequirePackage{multirow}
+\RequirePackage{xcolor}
+\RequirePackage{xparse}
+\RequirePackage{float}
+\RequirePackage{scrhack}
+\RequirePackage{dsfont}
+
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{mathdots}
+\RequirePackage{wasysym}
+\RequirePackage{mathtools}
+\RequirePackage{extpfeil}
+
+\RequirePackage{booktabs}
+\RequirePackage[hidelinks]{hyperref}
+\RequirePackage[ngerman,nameinlink]{cleveref}
+\RequirePackage{epigraph}
+\setlength{\epigraphwidth}{\textwidth}
+
+\RequirePackage{environ}
+\RequirePackage{listings}
+\RequirePackage[framemethod=tikz]{mdframed}
+\RequirePackage{suffix}
+\RequirePackage{ifthen}
+
+\RequirePackage{tikz}
+\RequirePackage[RPvoltages]{circuitikz}
+\RequirePackage{forloop}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
+
+
+%===============================================================================
+%====================================CONFIG=====================================
+%===============================================================================
+
+\newcounter{def}[section]
+\newcounter{satz}[section]
+\setlength{\parindent}{0pt}
+
+\lstset{
+    frame=tb,
+    aboveskip=3mm,
+    belowskip=3mm,
+    showstringspaces=false,
+    columns=flexible,
+    basicstyle=\small\color{cisgrey5}\ttfamily,
+    numbers=left,
+    numberstyle=\tiny\color{cisgrey3},
+    numbersep=15pt,
+    keywordstyle={\color{cisviolet4}\let\textcolor\textcolordummy},
+    ndkeywordstyle={\color{ciscyan4}\let\textcolor\textcolordummy},
+    commentstyle={\color{cisgrey3}\let\textcolor\textcolordummy},
+    stringstyle={\color{cisorange5}\let\textcolor\textcolordummy},
+    identifierstyle={\color{cisblue4}\let\textcolor\textcolordummy},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=2
+}
+\lstdefinelanguage{JavaScript}{
+    keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+    ndkeywords={class, export, boolean, throw, implements, import, this},
+    sensitive=false,
+    comment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morestring=[b]',
+    morestring=[b]"
+}
+
+%===============================================================================
+%====================================COLORS=====================================
+%===============================================================================
+
+% Compatability Tones; Deprecated
+\definecolor{cis1}{RGB}{223, 143, 140}
+\definecolor{cis2}{RGB}{200, 100, 100}
+\definecolor{cis3}{RGB}{180, 60, 65}
+\definecolor{cis4}{RGB}{143, 40, 40}
+\definecolor{cis5}{RGB}{0, 0, 28}
+\definecolor{cis6}{RGB}{170, 190, 255}
+
+% Red tones
+\definecolor{cisred1}{RGB}{143, 40, 40}
+\definecolor{cisred2}{RGB}{180, 60, 65}
+\definecolor{cisred3}{RGB}{200, 100, 100}
+\definecolor{cisred4}{RGB}{223, 143, 140}
+\definecolor{cisred5}{RGB}{255, 240, 240}
+
+% Orange Tones
+\definecolor{cisorange1}{RGB}{70, 40, 0}
+\definecolor{cisorange2}{RGB}{140, 80, 0}
+\definecolor{cisorange3}{RGB}{255, 110, 0}
+\definecolor{cisorange4}{RGB}{255, 160, 0}
+\definecolor{cisorange5}{RGB}{255, 130, 50}
+
+% Yellow Tones
+\definecolor{cisyellow1}{RGB}{170, 150, 0}
+\definecolor{cisyellow2}{RGB}{212, 170, 0}
+\definecolor{cisyellow3}{RGB}{255, 200, 0}
+\definecolor{cisyellow4}{RGB}{255, 230, 0}
+\definecolor{cisyellow5}{RGB}{255, 255, 100}
+
+% Green Tones
+\definecolor{cisgreen1}{RGB}{60, 80, 0}
+\definecolor{cisgreen2}{RGB}{110, 150, 0}
+\definecolor{cisgreen3}{RGB}{187, 255, 0}
+\definecolor{cisgreen4}{RGB}{170, 255, 90}
+\definecolor{cisgreen5}{RGB}{240, 255, 240} % cisgreen1
+
+% Cyan Tones
+\definecolor{ciscyan1}{RGB}{0, 100, 70}
+\definecolor{ciscyan2}{RGB}{0, 150, 150}
+\definecolor{ciscyan3}{RGB}{0, 160, 100}
+\definecolor{ciscyan4}{RGB}{0, 255, 170}
+\definecolor{ciscyan5}{RGB}{0, 255, 255}
+
+% Blue Tones
+\definecolor{cisblue1}{RGB}{0, 0, 28} % dunkles CiS Blau
+\definecolor{cisblue2}{RGB}{90, 100, 140}
+\definecolor{cisblue3}{RGB}{100, 110, 200}
+\definecolor{cisblue4}{RGB}{170, 190, 255} % helles CiS Blau
+\definecolor{cisblue5}{RGB}{190, 190, 255}
+
+% Violet Tones
+\definecolor{cisviolet1}{RGB}{50, 20, 120}
+\definecolor{cisviolet2}{RGB}{90, 30, 190}
+\definecolor{cisviolet3}{RGB}{130, 60, 190}
+\definecolor{cisviolet4}{RGB}{170, 80, 255}
+\definecolor{cisviolet5}{RGB}{200, 150, 255}
+
+% Grey Tones
+\definecolor{cisgrey1}{RGB}{0, 0, 0}
+\definecolor{cisgrey2}{RGB}{30, 30, 30}
+\definecolor{cisgrey3}{RGB}{127, 127, 127}
+\definecolor{cisgrey4}{RGB}{191, 191, 191}
+\definecolor{cisgrey5}{RGB}{255, 255, 255}
+
+
+%===============================================================================
+%===================================COMMANDS====================================
+%===============================================================================
+
+\newcommand{\textcolordummy}[2]{#2}
+
+\newcommand{\cisimportant}[2][red1]{\textcolor{cis#1}{\textbf{#2}}}
+\newcommand{\cisbr}[1][1]{\vspace*{#1\baselineskip}\par}
+\newcommand{\cisgls}[2][blue2]{\textcolor{cis#1}{\gls{#2}}}
+
+% Math Stuff and similar
+\ifcsname N\endcsname%
+    \message{\string\N\space is defined}%
+\else%
+    \newcommand{\N}{\mathbb{N}}
+\fi%
+\ifcsname Z\endcsname%
+    \message{\string\Z\space is defined}%
+\else%
+    \newcommand{\Z}{\mathbb{Z}}
+\fi%
+\ifcsname Q\endcsname%
+    \message{\string\Q\space is defined}%
+\else%
+    \newcommand{\Q}{\mathbb{Q}}
+\fi%
+\ifcsname R\endcsname%
+    \message{\string\R\space is defined}%
+\else%
+    \newcommand{\R}{\mathbb{R}}
+\fi%
+\ifcsname C\endcsname%
+    \message{\string\C\space is defined}%
+\else%
+    \newcommand{\C}{\mathbb{C}}
+\fi%
+\ifcsname Pow\endcsname%
+    \message{\string\Pow\space is defined}%
+\else%
+    \newcommand{\Pow}{\mathcal{P}}
+\fi%
+\ifcsname BigO\endcsname%
+    \message{\string\BigO\space is defined}%
+\else%
+    \newcommand{\BigO}{\mathcal{O}}
+\fi%
+
+\newcommand{\xor}{\text{ \small xor }}
+\newcommand{\qedbr}{\par\leavevmode\normalmarginpar\marginpar{$\Box$}}
+\newcommand{\qed}{
+    \vspace*{-1.5\baselineskip}\leavevmode\normalmarginpar\marginpar{$\Box$}
+}
+\newcommand{\doubleline}[1]{\underline{\underline{#1}}}
+
+
+% Erste Seite, formellere Dokumente
+\NewDocumentCommand{\cisdoc}{O{}D(){}mm}{
+    {\pagenumbering{gobble} %deaktiviert Seitennummern
+    \begin{titlepage}
+        \centering
+        {\cistextlogo[3.8]\par} %Logo % (3.8 früher 0.15)
+        \vspace{1cm}
+        {\scshape\Large #4\par} %Haupttitel
+        {\Large\bfseries #1\par} %Untertitel (optional)
+        \vspace{0.5cm}
+        {\Large\itshape #3\par} %Namen
+        \today
+        \vfill
+        {\ifx#2\empty\else\includegraphics[width=0.8\textwidth,height=0.4\textwidth,keepaspectratio]{#2}\fi\par} %optionales, zweites Logo
+        \vspace{0.5cm}
+    \end{titlepage}
+    \begin{tableofcontents} %Inhaltsverzeichnis
+    \end{tableofcontents}
+    \clearpage %beginnt neue Seite, damit Seitennummern nicht im Inhaltsverzeichnis starten
+    \pagenumbering{arabic} %reaktiviert Seitennummern
+    \setcounter{page}{1} %setzt Seitennummer auf 1
+    }
+}
+
+% Abgaben-Layout
+\newcommand{\cispage}[3]{
+    {\pagenumbering{arabic}
+    \begin{center}
+        \begin{center}
+            {\scshape\large #1 - #2\par} % #Modulname - #Blatt
+            {#3\par} % #Namen
+        \end{center}
+        {\vspace{-3cm}\cistextlogo[0.7]\vspace{2cm}} % (0.7 früher 0.025)
+    \end{center}}
+}
+
+% Abgaben-Abschnitte
+\newcommand{\cisection}[2][]{
+    \ifthenelse{
+        \equal{\string #2}{\string H}
+    }{
+        {\large \textbf{Hausaufgaben #1}}
+        \cisbr
+    }{
+        \ifthenelse{
+            \equal{\string #2}{\string P}
+        }{
+            {\large \textbf{Präsenzaufgaben #1}}
+            \cisbr
+        }{
+            {\large \textbf{#2 #1}}
+            \cisbr
+        }
+    }
+}
+
+\newcommand{\cisoldlogo}[1][1.000000]{
+    \def \globalscale {#1} % #Scaling-Faktor
+    \begin{tikzpicture}[y=0.80pt, x=0.80pt, yscale=-\globalscale, xscale=\globalscale, inner sep=0pt, outer sep=0pt]
+        \path[draw=black,line join=miter,line cap=butt,line width=0.889pt] (934.8572,107.4684) .. controls (819.4763,115.7472) and (692.8095,160.7425) .. (629.8495,263.6538) .. controls (562.1359,402.9261) and (555.9669,568.4260) .. (593.8598,717.0560) .. controls (620.5942,825.6977) and (699.9291,925.1750) .. (811.7788,952.3210) .. controls (863.6243,961.9474) and (964.7061,1005.1361) .. (935.4595,912.3595) .. controls (935.2655,644.0587) and (935.0810,375.7579) .. (934.8650,107.4571)(934.8542,52.4008) .. controls (930.9418,-23.9436) and (870.1151,-93.1212) .. (792.0323,-98.0400) .. controls (757.8924,-87.7269) and (723.3231,-117.3070) .. (750.2875,-138.8342) .. controls (939.9683,-138.8342) and (1129.6490,-138.8342) .. (1319.3297,-138.8342) .. controls (1336.6868,-72.5433) and (1244.7753,-112.0136) .. (1209.8103,-79.5672) .. controls (1138.3592,-48.6380) and (1119.6397,37.1703) .. (1126.3571,107.5422) .. controls (1205.3238,56.1324) and (1306.7838,55.6548) .. (1398.1243,59.2783) .. controls (1484.8078,65.3136) and (1570.1337,84.6997) .. (1652.5619,111.7618) .. controls (1652.5618,179.0779) and (1652.5619,246.3940) .. (1652.5619,313.7101) .. controls (1628.6416,313.7101) and (1604.7213,313.7101) .. (1580.8010,313.7101) .. controls (1588.5410,217.4524) and (1505.3090,137.7379) .. (1413.4468,127.3479) .. controls (1321.2804,111.6522) and (1201.2216,120.0981) .. (1151.7366,212.7287) .. controls (1108.9718,292.2881) and (1150.4081,405.3891) .. (1240.7349,428.1592) .. controls (1340.3527,473.8153) and (1447.5487,498.5008) .. (1550.5148,534.3412) .. controls (1637.9309,569.1025) and (1703.8965,655.4948) .. (1700.4153,751.6605) .. controls (1708.3289,855.3651) and (1654.5817,969.5000) .. (1550.4372,1002.8526) .. controls (1415.1190,1054.1646) and (1268.8698,1036.2692) .. (1127.5098,1038.2044)(1127.3960,973.5346) .. controls (1224.1010,970.2986) and (1321.3052,974.2649) .. (1417.6048,965.0717) .. controls (1508.0199,954.3008) and (1592.9405,869.9041) .. (1572.5119,774.3246) .. controls (1562.0980,699.4228) and (1498.7371,643.6660) .. (1426.4921,628.8426) .. controls (1324.2186,601.7276) and (1221.4684,574.0338) .. (1126.2785,526.6389) .. controls (1127.2268,675.6020) and (1127.3401,824.5689) .. (1127.3960,973.5346) -- cycle(1127.5098,1038.2044) .. controls (1130.2928,1130.2296) and (1225.5875,1187.7519) .. (1310.7821,1181.8496) .. controls (1337.9518,1203.9527) and (1307.2811,1230.0633) .. (1273.3304,1218.8344) .. controls (1096.4273,1218.8344) and (919.5241,1218.8344) .. (742.6210,1218.8344) .. controls (725.5140,1160.7427) and (795.5424,1186.4066) .. (829.8920,1166.4555) .. controls (888.0262,1154.1966) and (957.4741,1071.7120) .. (923.1758,1025.9880) .. controls (783.8432,1024.0567) and (638.4880,994.1438) .. (528.7748,903.0470) .. controls (403.0091,806.7316) and (330.1206,644.1362) .. (353.8211,485.9440) .. controls (363.8038,354.8334) and (437.3171,231.2323) .. (551.5008,164.4856) .. controls (664.4883,89.4092) and (800.3550,56.0908) .. (934.8572,52.4008);
+        \begin{scope}[cm={{1.30802,0.0,0.0,1.30802,(-929.04898,-179.62032)}},fill=cisblue1]
+            \path[fill=cisblue1,line width=0.821pt] (1495.1680,550.1583) circle (22.1516cm);
+        \end{scope}
+        \path[cm={{1.02667,0.0,0.0,1.02667,(0.0,-486.66667)}},fill=black] (0.0000,0.0000) node[above right] (flowRoot80) {};
+        \begin{scope}[cm={{1.00012,0.0,0.0,1.00012,(-448.45646,276.54367)}},fill=cisblue3]
+            \path[fill=cisblue3,line join=miter,line cap=butt,line width=0.800pt] (1575.3639,750.9670) .. controls (1584.0394,853.7479) and (1648.1105,905.1383) .. (1767.5775,905.1383) -- (1767.5775,942.1794) -- (1190.9368,942.1794) -- (1190.9368,905.1383) .. controls (1310.4023,905.1383) and (1374.4735,853.7479) .. (1383.1504,750.9670) .. controls (1206.9542,750.9672) and (1065.9643,703.5812) .. (960.1804,608.8090) .. controls (854.3961,514.0375) and (801.5041,398.9097) .. (801.5041,263.4253) .. controls (801.5041,118.5985) and (855.2304,2.9701) .. (962.6832,-83.4602) .. controls (1070.1356,-169.8884) and (1210.2912,-216.7738) .. (1383.1504,-224.1165) .. controls (1375.1409,-326.8961) and (1311.0697,-378.2864) .. (1190.9368,-378.2878) -- (1190.9368,-415.3289) -- (1767.5775,-415.3289) -- (1767.5775,-378.2878) .. controls (1648.1105,-378.2868) and (1584.0394,-326.8961) .. (1575.3639,-224.1165) -- cycle(1383.1504,-169.0553) .. controls (1269.0231,-162.3801) and (1179.5904,-126.8406) .. (1114.8523,-62.4368) .. controls (1050.1134,1.9690) and (1017.7441,116.2626) .. (1017.7444,280.4442) .. controls (1017.7441,543.4034) and (1139.5460,681.8905) .. (1383.1504,695.9058) -- cycle;
+            \begin{scope}[cm={{1.02667,0.0,0.0,1.02667,(-144.98058,-715.88305)}},fill=cisblue3]
+                \path[fill=cisblue3] (1883.1228,482.3800) .. controls (1782.5151,482.3800) and (1704.3805,504.0271) .. (1648.7165,547.3214) .. controls (1593.0524,590.6157) and (1565.2204,651.4325) .. (1565.2204,729.7745) .. controls (1565.2204,799.4577) and (1583.1566,854.2984) .. (1619.0290,894.2941) .. controls (1655.3137,934.2897) and (1717.5743,967.6881) .. (1805.8122,994.4894) -- (1927.6540,1030.9796) .. controls (2002.6974,1053.6575) and (2051.7648,1076.9533) .. (2074.8552,1100.8683) .. controls (2098.3578,1124.7832) and (2110.1091,1159.0069) .. (2110.1091,1203.5382) .. controls (2110.1091,1259.2022) and (2090.7291,1301.6712) .. (2051.9704,1330.9464) .. controls (2013.6241,1359.8093) and (1957.7551,1374.2413) .. (1884.3610,1374.2413) .. controls (1794.9537,1374.2413) and (1671.7491,1376.7822) .. (1559.5757,1376.7822) .. controls (1521.2293,1342.9714) and (1537.3696,1414.4681) .. (1535.3080,1344.3727) -- (1576.3532,1167.6651) -- (1576.3532,1377.9523) .. controls (1630.7803,1398.9809) and (1472.3679,1428.4363) .. (1524.7333,1438.7444) .. controls (1591.9609,1438.7444) and (1841.0667,1440.4190) .. (1891.7829,1440.4190) .. controls (2005.1726,1440.4190) and (2090.5243,1417.7418) .. (2147.8376,1372.3858) .. controls (2205.1510,1327.0300) and (2233.8064,1259.6146) .. (2233.8064,1170.1397) .. controls (2233.8064,1104.5799) and (2215.8702,1052.4199) .. (2179.9978,1013.6612) .. controls (2144.5377,974.4902) and (2084.9578,942.3288) .. (2001.2556,917.1769) -- (1886.8337,883.1612) .. controls (1803.9561,858.4217) and (1749.7358,833.4753) .. (1724.1716,808.3234) .. controls (1698.6073,783.1714) and (1685.8259,748.5360) .. (1685.8259,704.4171) .. controls (1685.8259,653.7010) and (1702.7299,615.1478) .. (1736.5407,588.7589) .. controls (1770.7638,561.9577) and (1820.4498,548.5577) .. (1885.5974,548.5577) .. controls (1960.2284,548.5577) and (2015.6857,563.1947) .. (2051.9704,592.4698) .. controls (2088.6675,621.3327) and (2110.5214,668.3379) .. (2117.5310,733.4855) -- (2187.4196,733.4855) -- (2187.4196,536.8058) .. controls (2129.6939,519.0757) and (2075.2669,505.6758) .. (2024.1384,496.6046) .. controls (1973.0099,487.1211) and (1926.0047,482.3800) .. (1883.1228,482.3800) -- cycle;
+                \path[fill=cisblue3] (562.3231,1945.0305) node[above right] (text105) {};
+                \path[fill=cisblue3] (581.4425,1884.1744) node[above right] (text109) {};
+            \end{scope}
+        \end{scope}
+        \begin{scope}[fill=black,line join=miter,line cap=butt,line width=0.614pt]
+        \end{scope}
+    \end{tikzpicture}
+}
+\newcommand{\cisiconlogo}[1][1.000000]{
+    \def \globalscale {#1} % #Scaling-Faktor
+    \begin{tikzpicture}[y=0.80pt, x=0.80pt, yscale=-\globalscale, xscale=\globalscale, inner sep=0pt, outer sep=0pt]
+        \begin{scope}[cm={{1.30802,0.0,0.0,1.30802,(-929.04895,-181.15372)}},fill=cisblue1]
+            \path[fill=cisblue1,line width=0.821pt] (1495.1680,550.1583) circle (22.1516cm);
+        \end{scope}
+        \path[fill=cisgrey5,fill opacity=0.256,line width=9.991pt] (1540.2456,1025.3852) -- (1783.9857,539.9998) -- (1540.2456,54.6142) -- (1702.7389,84.9507) -- (1946.4792,539.9998) -- (1702.7389,995.0486) -- cycle;
+        \path[fill=cisgrey5,fill opacity=0.256,line width=9.991pt] (513.0888,54.6147) -- (269.3484,540.0002) -- (513.0888,1025.3858) -- (350.5951,995.0491) -- (106.8548,540.0002) -- (350.5951,84.9515) -- cycle;
+        \path[fill=cisgrey5,fill opacity=0.256,line width=9.991pt] (701.6803,1025.3858) -- (1189.1606,84.9509) -- (1351.6544,54.6142) -- (864.1735,995.0491) -- cycle;
+        \path[cm={{1.02667,0.0,0.0,1.02667,(0.0,-486.66665)}},fill=cisblue4,line join=miter,line cap=butt,line width=0.637pt] (773.7910,459.3887) -- (773.7910,488.8906) .. controls (869.4739,488.8917) and (920.5054,529.8241) .. (926.8848,611.6856) .. controls (789.2066,617.5338) and (677.5754,654.8768) .. (591.9922,723.7148) .. controls (506.4086,792.5545) and (463.6171,884.6490) .. (463.6172,1000.0000) .. controls (463.6171,1107.9100) and (505.7454,1199.6066) .. (590.0000,1275.0898) .. controls (674.2542,1350.5736) and (786.5488,1388.3146) .. (926.8848,1388.3145) .. controls (919.9738,1470.1769) and (868.9424,1511.1094) .. (773.7910,1511.1094) -- (773.7910,1540.6113) -- (1233.0723,1540.6113) -- (1233.0723,1511.1094) .. controls (1141.3539,1511.1094) and (1090.6365,1473.0717) .. (1080.9062,1397.0117) .. controls (1153.9198,1397.4006) and (1232.4565,1397.8574) .. (1256.7051,1397.8574) .. controls (1349.4255,1397.8574) and (1419.2180,1379.3129) .. (1466.0840,1342.2246) .. controls (1512.9500,1305.1365) and (1536.3828,1250.0107) .. (1536.3828,1176.8457) .. controls (1536.3828,1123.2365) and (1521.7162,1080.5842) .. (1492.3828,1048.8906) .. controls (1463.3866,1016.8599) and (1414.6672,990.5612) .. (1346.2227,969.9941) -- (1252.6582,942.1797) .. controls (1184.8880,921.9498) and (1140.5507,901.5495) .. (1119.6465,880.9824) .. controls (1098.7422,860.4153) and (1088.2910,832.0943) .. (1088.2910,796.0176) .. controls (1088.2910,754.5462) and (1102.1141,723.0200) .. (1129.7617,701.4414) .. controls (1157.7465,679.5257) and (1198.3743,668.5684) .. (1251.6465,668.5684) .. controls (1312.6734,668.5684) and (1358.0228,680.5378) .. (1387.6934,704.4766) .. controls (1417.7011,728.0781) and (1435.5709,766.5150) .. (1441.3027,819.7871) -- (1498.4512,819.7871) -- (1498.4512,658.9590) .. controls (1451.2480,644.4609) and (1406.7421,633.5036) .. (1364.9336,626.0859) .. controls (1323.1251,618.3311) and (1284.6882,614.4551) .. (1249.6230,614.4551) .. controls (1179.8583,614.4551) and (1123.3143,627.1896) .. (1079.9785,652.6484) -- (1079.9785,611.6856) .. controls (1086.8883,529.8241) and (1137.9197,488.8914) .. (1233.0723,488.8906) -- (1233.0723,459.3887) -- (773.7910,459.3887) -- cycle(926.8848,655.5391) -- (926.8848,1344.4609) .. controls (732.8598,1333.2981) and (635.8474,1222.9953) .. (635.8477,1013.5547) .. controls (635.8474,882.7881) and (661.6285,791.7567) .. (713.1914,740.4590) .. controls (764.7537,689.1629) and (835.9852,660.8557) .. (926.8848,655.5391) -- cycle(1079.9785,988.2441) .. controls (1107.8999,1005.1526) and (1143.3715,1020.1422) .. (1186.4043,1033.2129) -- (1286.0371,1063.0527) .. controls (1347.4012,1081.5968) and (1387.5249,1100.6455) .. (1406.4062,1120.2012) .. controls (1425.6247,1139.7567) and (1435.2324,1167.7423) .. (1435.2324,1204.1562) .. controls (1435.2324,1249.6735) and (1419.3869,1284.4011) .. (1387.6934,1308.3398) .. controls (1356.3370,1331.9415) and (1310.6522,1343.7422) .. (1250.6367,1343.7422) .. controls (1202.3072,1343.7422) and (1141.8727,1344.6423) .. (1079.9785,1345.2578) -- (1079.9785,988.2441) -- cycle;
+        \begin{scope}[cm={{0.83952,0.0,0.0,0.83952,(-297.97392,-260.79496)}},fill=cisblue4]
+            \path[fill=cisblue4] (562.3231,1945.0305) node[above right] (text105) {};
+            \path[fill=cisblue4] (581.4425,1884.1744) node[above right] (text109) {};
+        \end{scope}
+        \begin{scope}[fill=black,line join=miter,line cap=butt,line width=0.614pt]
+        \end{scope}
+    \end{tikzpicture}
+}
+\newcommand{\cistextlogo}[1][1.000000]{
+    \def \globalscale {#1} % #Scaling-Faktor
+    \begin{tikzpicture}[y=0.80pt, x=0.80pt, yscale=-\globalscale, xscale=\globalscale, inner sep=0pt, outer sep=0pt]
+        \begin{scope}[cm={{0.05056,0.0,0.0,0.05056,(-35.91392,11.86938)}},fill=cisblue1]
+            \path[fill=cisblue1,line width=0.821pt] (1495.1680,550.1583) circle (22.1516cm);
+        \end{scope}
+        \begin{scope}[xscale=1.001,yscale=0.999,fill=cisblue4,line width=0.177pt]
+            \path[fill] (23.8052,35.0087) -- (18.3190,35.0087) .. controls (17.5875,35.0087) and (17.2550,35.2747) .. (17.2550,35.8400) .. controls (17.2550,36.4052) and (17.6207,36.7045) .. (18.3190,36.7045) -- (22.0762,36.7045) -- (22.0762,47.2447) -- (16.9225,47.2447) .. controls (16.2242,47.2447) and (15.8585,47.5439) .. (15.8585,48.0759) .. controls (15.8585,48.6412) and (16.2242,48.9404) .. (16.9225,48.9404) -- (28.9590,48.9404) .. controls (29.6572,48.9404) and (30.0562,48.6412) .. (30.0562,48.0759) .. controls (30.0562,47.5439) and (29.6905,47.2447) .. (28.9590,47.2447) -- (23.8052,47.2447) -- cycle(23.7387,28.2590) -- (21.4112,28.2590) -- (21.4112,32.0162) -- (23.7387,32.0162) -- cycle;
+        \end{scope}
+        \begin{scope}[xscale=1.001,yscale=0.999,fill=cisblue4,line width=0.157pt]
+            \path[fill] (28.0827,11.6995) .. controls (26.7278,10.5508) and (25.0193,9.9322) .. (23.1342,9.9322) .. controls (21.1606,9.9322) and (19.3638,10.6980) .. (18.0088,12.1119) .. controls (16.7128,13.4669) and (15.8585,15.5288) .. (15.8585,17.3256) -- (15.8585,19.7116) .. controls (15.8585,23.7176) and (19.5700,27.3406) .. (23.6644,27.3406) .. controls (25.5790,27.3406) and (27.4053,26.6042) .. (28.8781,25.2493) .. controls (29.7028,24.4834) and (30.0563,24.0121) .. (30.0563,23.6586) .. controls (30.0563,23.2463) and (29.7617,22.9517) .. (29.3199,22.9517) .. controls (29.0548,22.9517) and (28.9075,23.0401) .. (28.6719,23.2757) .. controls (27.0812,25.1020) and (25.6674,25.8384) .. (23.6644,25.8384) .. controls (20.2769,25.8384) and (17.3903,22.9517) .. (17.3903,19.5348) -- (17.3903,17.5024) .. controls (17.3903,14.1444) and (19.9529,11.4344) .. (23.1636,11.4344) .. controls (25.6968,11.4344) and (27.9355,12.8778) .. (28.0827,14.5862) .. controls (28.1417,15.1459) and (28.3773,15.4110) .. (28.8486,15.4110) .. controls (29.3493,15.4110) and (29.6145,15.0870) .. (29.6145,14.4684) -- (29.6145,11.2283) .. controls (29.6145,10.6097) and (29.3493,10.3151) .. (28.8486,10.3151) .. controls (28.3478,10.3151) and (28.0827,10.6391) .. (28.0827,11.2283) -- cycle;
+        \end{scope}
+        \begin{scope}[xscale=1.001,yscale=0.999,fill=cisblue4,line width=0.177pt]
+            \path[fill] (27.6290,51.5704) .. controls (26.2990,50.4066) and (24.7695,49.8746) .. (22.9075,49.8746) .. controls (19.3165,49.8746) and (16.6233,52.1356) .. (16.6233,55.0949) .. controls (16.6233,56.5579) and (17.2883,57.8879) .. (18.4188,58.6526) .. controls (19.4495,59.3841) and (20.6798,59.7831) .. (23.0073,60.1821) .. controls (25.3680,60.5479) and (26.0330,60.7474) .. (26.8310,61.2461) .. controls (27.6955,61.7781) and (28.2275,62.7756) .. (28.2275,63.8396) .. controls (28.2275,66.1338) and (25.9998,67.8296) .. (22.9740,67.8296) .. controls (20.0480,67.8296) and (17.7205,66.2668) .. (17.5543,64.2054) .. controls (17.5210,63.5404) and (17.2550,63.2411) .. (16.7230,63.2411) .. controls (16.1578,63.2411) and (15.8585,63.6069) .. (15.8585,64.3051) -- (15.8585,67.9293) .. controls (15.8585,68.6276) and (16.1578,68.9933) .. (16.7230,68.9933) .. controls (17.2883,68.9933) and (17.5875,68.6276) .. (17.5875,67.9293) -- (17.5875,67.4638) .. controls (18.9508,68.7938) and (20.8460,69.5253) .. (23.0073,69.5253) .. controls (27.1303,69.5253) and (30.0562,67.1646) .. (30.0562,63.9061) .. controls (30.0562,62.1771) and (29.2583,60.7141) .. (27.9283,59.9161) .. controls (26.8975,59.2844) and (25.9665,59.0184) .. (23.3730,58.5861) .. controls (21.3448,58.2536) and (20.4803,57.9876) .. (19.6823,57.4556) .. controls (18.8843,56.9569) and (18.4520,56.1256) .. (18.4520,55.1614) .. controls (18.4520,53.0666) and (20.3805,51.5704) .. (23.0405,51.5704) .. controls (25.5343,51.5704) and (27.4628,52.9336) .. (27.6290,54.7956) .. controls (27.6623,55.4606) and (27.9615,55.7599) .. (28.4603,55.7599) .. controls (29.0255,55.7599) and (29.3248,55.3941) .. (29.3248,54.6959) -- (29.3248,51.3376) .. controls (29.3248,50.6726) and (29.0255,50.3069) .. (28.4603,50.3069) .. controls (27.8950,50.3069) and (27.6290,50.6726) .. (27.6290,51.3376) -- cycle;
+        \end{scope}
+        \begin{scope}[xscale=1.001,yscale=0.999,fill=cisgrey5,line width=0.177pt]
+            \path[fill] (35.1928,35.0087) -- (32.4995,35.0087) .. controls (31.7681,35.0087) and (31.4356,35.2747) .. (31.4356,35.8400) .. controls (31.4356,36.4052) and (31.8013,36.7045) .. (32.4995,36.7045) -- (33.4638,36.7045) -- (33.4638,47.2447) -- (32.1338,47.2447) .. controls (31.4023,47.2447) and (31.0366,47.5439) .. (31.0366,48.0759) .. controls (31.0366,48.6412) and (31.4356,48.9404) .. (32.1338,48.9404) -- (36.5228,48.9404) .. controls (37.2210,48.9404) and (37.5868,48.6412) .. (37.5868,48.0759) .. controls (37.5868,47.5439) and (37.2210,47.2447) .. (36.5228,47.2447) -- (35.1928,47.2447) -- (35.1928,39.2315) .. controls (37.2210,36.7377) and (38.0523,36.2390) .. (40.0805,36.2390) .. controls (41.2775,36.2390) and (41.9093,36.4385) .. (42.6408,37.0370) .. controls (43.4388,37.7020) and (43.8378,38.4667) .. (43.8378,39.3645) -- (43.8378,47.2447) -- (42.9068,47.2447) .. controls (42.1753,47.2447) and (41.8095,47.5439) .. (41.8095,48.0759) .. controls (41.8095,48.6412) and (42.2085,48.9404) .. (42.9068,48.9404) -- (46.5310,48.9404) .. controls (47.1960,48.9404) and (47.5950,48.6412) .. (47.5950,48.0759) .. controls (47.5950,47.5439) and (47.2293,47.2447) .. (46.5310,47.2447) -- (45.5668,47.2447) -- (45.5668,39.1317) .. controls (45.5668,36.5382) and (43.2393,34.5432) .. (40.1803,34.5432) .. controls (38.1520,34.5432) and (36.9550,35.1417) .. (35.1928,37.0037) -- cycle;
+        \end{scope}
+        \begin{scope}[xscale=1.001,yscale=0.999,fill=cisgrey5,line width=0.177pt]
+            \path[fill] (54.4565,36.7045) -- (60.5745,36.7045) .. controls (61.2727,36.7045) and (61.6385,36.4052) .. (61.6385,35.8400) .. controls (61.6385,35.2747) and (61.2727,35.0087) .. (60.5745,35.0087) -- (54.4565,35.0087) -- (54.4565,33.1800) .. controls (54.4565,31.6505) and (55.8862,30.5865) .. (57.9810,30.5865) .. controls (59.2112,30.5865) and (60.1755,30.6863) .. (62.1039,30.9522) .. controls (62.3367,30.9855) and (62.4697,30.9855) .. (62.5362,30.9855) .. controls (63.0682,30.9855) and (63.4339,30.6530) .. (63.4339,30.1543) .. controls (63.4339,29.7220) and (63.1679,29.4228) .. (62.7024,29.3230) .. controls (61.6385,29.0903) and (59.3442,28.8908) .. (58.0142,28.8908) .. controls (54.9552,28.8908) and (52.7275,30.6862) .. (52.7275,33.1800) -- (52.7275,35.0087) -- (50.0010,35.0087) .. controls (49.2695,35.0087) and (48.9037,35.3080) .. (48.9037,35.8400) .. controls (48.9037,36.4052) and (49.2695,36.7045) .. (50.0010,36.7045) -- (52.7275,36.7045) -- (52.7275,47.2447) -- (49.6685,47.2447) .. controls (48.9370,47.2447) and (48.5712,47.5439) .. (48.5712,48.0759) .. controls (48.5712,48.6412) and (48.9702,48.9404) .. (49.6685,48.9404) -- (60.1755,48.9404) .. controls (60.8737,48.9404) and (61.2727,48.6412) .. (61.2727,48.0759) .. controls (61.2727,47.5439) and (60.9070,47.2447) .. (60.1755,47.2447) -- (54.4565,47.2447) -- cycle;
+        \end{scope}
+        \path[fill=cisgrey5,opacity=0.040,line width=0.177pt] (28.3205,53.4126) .. controls (28.4550,53.6808) and (28.2580,53.1736) .. (28.3141,53.3989) -- cycle;
+    \end{tikzpicture}
+}
+
+% uwu
+\newcommand{\cisend}{
+    \clearpage
+    {\Huge
+    \begin{center}
+        $\bigcap\bigwedge\bigwedge\bigcap$ \\
+        $--------$ \\
+        $\bigcup\bigvee\bigvee\bigcup$
+    \end{center}
+    }
+}
+
+
+%===============================================================================
+%=================================ENVIRONMENTS==================================
+%===============================================================================
+
+\newcounter{aufgnr}
+\newcounter{teilaufgnr}
+\newcounter{blattnr}
+
+\newenvironment{aufgabe}[1][\arabic]{
+    \stepcounter{aufgnr}
+    \leavevmode\reversemarginpar\marginpar{\raggedleft \large \arabic{blattnr}.#1{aufgnr})}
+    \setcounter{teilaufgnr}{1}
+}
+{\vspace{1cm}\par}
+
+\newenvironment{aufgabe*}[1]{
+    \leavevmode\reversemarginpar\marginpar{\raggedleft \large #1}
+    \setcounter{teilaufgnr}{1}
+}
+{\vspace{1cm}\par}
+
+\newcommand\teilaufgabe[1][\alph]{
+    \cisbr
+    \leavevmode\reversemarginpar\marginpar{\raggedleft (#1{teilaufgnr})}
+    \stepcounter{teilaufgnr}
+}
+
+\WithSuffix\newcommand\teilaufgabe*[1]{
+    \cisbr
+    \leavevmode\reversemarginpar\marginpar{\raggedleft #1}
+}
+
+\mdtheorem[
+  linecolor=cisred3,
+  outerlinewidth=1.3,
+  frametitlefont=\sffamily\bfseries\color{white},
+  frametitlebackgroundcolor=cisred3,
+  theoremseparator=:,
+]{Def}{\stepcounter{def}Definition \thesection.\thedef}[subsection]
+
+\mdtheorem[
+  linecolor=cisblue3,
+  outerlinewidth=1.3,
+  frametitlefont=\sffamily\bfseries\color{white},
+  frametitlebackgroundcolor=cisblue3,
+  theoremseparator=:,
+]{Satz}{\stepcounter{satz}Satz \thesection.\thesatz}[subsection]
+
+
+%===============================================================================
+%=====================================TIKZ======================================
+%===============================================================================
+
+\tikzset{
+    rarr/.style={->,>=latex,semithick,black},
+    larr/.style={<-,>=latex,semithick},
+    circNode/.style={draw, circle, minimum size=0.5cm},
+    elliNode/.style={draw, ellipse, minimum height=0.5cm, minimum width=0.5cm},
+    loop style/.style={draw opacity=1,fill opacity=1,semithick,looseness=10},
+    loop above/.append style={loop style},
+    loop right/.append style={loop style},
+    loop below/.append style={loop style},
+    loop left/.append style={loop style},
+    loop above left/.style={loop style,out=150,in=120},
+    loop above right/.style={loop style,out=60,in=30},
+    loop below left/.style={loop style,out=-120,in=-150},
+    loop below right/.style={loop style,out=-30,in=-60}
+}
+
+\newcommand\tikzArrow[3]{\draw[#1] (#2) -- (#3)}
+\WithSuffix\newcommand\tikzArrow*[3]{\draw[#1] (#2) -- ++(#3)}
+
+\newcommand\schlinge[3][]{%
+    \ifthenelse{\equal{#3}{loop above left}}{\path[rarr] (#2) edge [#3] node [anchor=south east] {#1} (#2)}{
+    \ifthenelse{\equal{#3}{loop above right}}{\path[rarr] (#2) edge [#3] node [anchor=south west] {#1} (#2)}{
+    \ifthenelse{\equal{#3}{loop below left}}{\path[rarr] (#2) edge [#3] node [anchor=north east] {#1} (#2)}{
+    \ifthenelse{\equal{#3}{loop below right}}{\path[rarr] (#2) edge [#3] node [anchor=north west] {#1} (#2)}{\path[rarr] (#2) edge [#3] node {#1} (#2)}}}}
+}
+
+\pgfdeclareshape{ipin}{
+    \nodeparts{text}
+    
+    \inheritsavedanchors[from=rectangle]
+    \inheritanchorborder[from=rectangle]
+    \anchor{north}{\pgfpoint{0}{0.4cm}}
+    \anchor{east}{\pgfpoint{1cm}{0}}
+    \anchor{south}{\pgfpoint{0}{-0.4cm}}
+    \anchor{west}{\pgfpoint{-1cm}{0}}
+    \anchor{north east}{\pgfpoint{0.6cm}{0.4cm}}
+    \anchor{south east}{\pgfpoint{0.6cm}{-0.4cm}}
+    \anchor{south west}{\pgfpoint{-1cm}{-0.4cm}}
+    \anchor{north west}{\pgfpoint{-1cm}{0.4cm}}
+
+    \inheritbeforebackgroundpath[from=rectangle]
+    \inheritforegroundpath[from=rectangle]
+    \inheritbeforeforegroundpath[from=rectangle]
+
+    \inheritsavedanchors[from=rectangle]
+    \inheritanchor[from=rectangle]{mid}
+    \inheritanchor[from=rectangle]{base}
+    
+    \anchor{center}{\pgfpoint{0}{0}}
+    \anchor{text}{\pgfpoint{-0.75cm}{-0.16cm}}
+    \anchor{out}{\pgfpoint{1cm}{0}}
+    \backgroundpath{
+        \draw ++(1,0) -- ++(-0.4,-0.4) -- ++(-1.6,0) -- ++(0,0.8) -- ++(1.6,0) -- ++(0.4,-0.4) ++(-1,0);
+    }
+}
+
+\pgfdeclareshape{opin}{
+    \nodeparts{text}
+    
+    \inheritsavedanchors[from=rectangle]
+    \inheritanchorborder[from=rectangle]
+    \anchor{north}{\pgfpoint{0}{0.4cm}}
+    \anchor{east}{\pgfpoint{1cm}{0}}
+    \anchor{south}{\pgfpoint{0}{-0.4cm}}
+    \anchor{west}{\pgfpoint{-1cm}{0}}
+    \anchor{north east}{\pgfpoint{1cm}{0.4cm}}
+    \anchor{south east}{\pgfpoint{1cm}{-0.4cm}}
+    \anchor{south west}{\pgfpoint{-0.6cm}{-0.4cm}}
+    \anchor{north west}{\pgfpoint{-0.6cm}{0.4cm}}
+
+    \inheritbeforebackgroundpath[from=rectangle]
+    \inheritforegroundpath[from=rectangle]
+    \inheritbeforeforegroundpath[from=rectangle]
+
+    \inheritsavedanchors[from=rectangle]
+    \inheritanchor[from=rectangle]{mid}
+    \inheritanchor[from=rectangle]{base}
+    
+    \anchor{center}{\pgfpoint{0}{0}}
+    \anchor{text}{\pgfpoint{-0.35cm}{-0.16cm}}
+    \anchor{in}{\pgfpoint{-1cm}{0}}
+    \backgroundpath{
+        \draw ++(-1,0) -- ++(0.4,-0.4) -- ++(1.6,0) -- ++(0,0.8) -- ++(-1.6,0) -- ++(-0.4,-0.4) ++(1,0);
+    }
+}
+
+% KV-Diagramme - Counter und Styles
+\newcounter{x}
+\newcounter{y}
+\newcounter{rows}
+\newcounter{cols}
+
+\tikzset{
+    square/.style={rectangle, minimum size=1cm, draw=black},
+    open loop/.style={thick, rounded corners=3pt, #1, opacity=0.6},
+    loop/.style={thick, rounded corners=3pt, #1, opacity=0.6,scale=0.5},
+    kv diagramm/.style={
+        row sep=-0.4pt, column sep=-0.4pt, anchor=north west, inner sep=0pt,
+        execute at begin cell=\node[square]\bgroup,
+        execute at end cell=\egroup;,
+        execute at empty cell=\node[square] {$*$};,
+        execute at end matrix={\setcounter{rows}{\the\pgfmatrixcurrentrow}\stepcounter{rows}\setcounter{cols}{\the\pgf@matrix@numberofcolumns}\stepcounter{cols}}
+    }
+}
+
+\newcommand\kvvars[2]{\draw (0,0) -- ++(-0.7cm,0.7cm) (-0.25cm,0.45cm) node [rotate=-45] {\tiny #1} (-0.45cm,0.25cm) node [rotate=-45] {\tiny #2}}
+
+\NewEnviron{kvdiagramm}[5]{
+    \begin{tikzpicture}
+        \matrix [kv diagramm,ampersand replacement=\&] at (-0.01,0.01){
+            #1
+        };
+
+        \setcounter{x}{0}
+        \foreach \y in {#2}{
+            \draw (\value{x}*1cm+0.5cm,0.3cm) node {\y};
+            \stepcounter{x}
+        }
+
+        \setcounter{x}{0}
+        \foreach \y in {#3}{
+            \draw (-0.3cm,\value{x}*-1cm-0.5cm) node {\y};
+            \stepcounter{x}
+        }
+
+        % 
+        \kvvars{#4}{#5};
+
+        \forloop{x}{0}{\value{x} < \value{cols}}{
+            \forloop{y}{0}{\value{y} < \value{rows}}{
+                \draw (\value{x}+0.5,   -\value{y}-0.5) coordinate (s\thex\they);
+                \draw (\value{x}+0.075, -\value{y}+0.075) coordinate (e\thex\they-ne);
+                \draw (\value{x}+0.075, -\value{y}-0.075) coordinate (e\thex\they-se);
+                \draw (\value{x}-0.075, -\value{y}+0.075) coordinate (e\thex\they-nw);
+                \draw (\value{x}-0.075, -\value{y}-0.075) coordinate (e\thex\they-sw);
+            }
+        }
+
+        \BODY
+    \end{tikzpicture}
+}
+
+% Flussdiagramme - Counter und Styles
+\newcounter{i}
+\newcounter{j}
+\newcounter{zeitschritte}
+\newcounter{schrittgroesse}
+\newcounter{zeilen}
+
+\tikzset{
+    yname/.style={align=right, anchor=base east},
+    ubox/.style={draw=none, fill=ciscyan5}
+}
+
+\newcommand\yName[2]{\draw (-1,#1*1.5+0.3) node [yname] {#2}}
+\newcommand\uBox[1]{\draw [ubox] (#1) rectangle ++(1,1)}
+
+\NewEnviron{flussdiagramm}[4][0.7]{
+    \begin{tikzpicture}[scale=#1, every node/.style={scale=#1*2}]
+        \setcounter{zeitschritte}{#2}   % Hier die Anzahl der Tiks angeben
+        \setcounter{schrittgroesse}{#3} % Hier die Schrittweite angeben
+        \setcounter{zeilen}{#4}         % hier die zeilenanzahl angeben
+
+        %Raster
+        \forloop{y}{0}{\value{y} < \value{zeilen}}{
+            \draw (-0.5,\value{y}*1.5)   node {\tiny $0$};
+            \draw (-0.5,\value{y}*1.5+1) node {\tiny $1$};
+            
+            \forloop{x}{0}{\value{x} < \value{zeitschritte}}{
+                \draw [cisgrey4] (\value{x}, \value{y}*1.5) rectangle ++(1,1);
+                \coordinate (l\they-\thex) at (\value{x}, \value{y}*1.5+0.02);
+                \coordinate (h\they-\thex) at (\value{x}, \value{y}*1.5+1);
+            }
+            
+            \draw [cisgrey4, dotted] (\value{x}, \value{y}*1.5) -- ++(1,0);
+            \draw [cisgrey4, dotted] (\value{x}, \value{y}*1.5+1) -- ++(1,0);
+            
+            \coordinate (l\they-\thex) at (\value{x}, \value{y}*1.5+0.02);
+            \coordinate (h\they-\thex) at (\value{x}, \value{y}*1.5+1);
+        
+        }
+
+        \forloop{x}{0}{\value{x} < \value{zeitschritte}}
+        {
+            \ifnum 0=\intcalcMod{\value{x}}{\value{schrittgroesse}}
+                \draw (\value{x}, -0.5) node {\tiny $\thex$};
+            \fi
+        }
+
+        \BODY
+
+        % Koordinatensystem-Achsen
+        \stepcounter{zeitschritte}
+        \draw (0,0) -- (0,\value{zeilen}*1.5);
+        \draw [rarr] (0,0) -- (\value{zeitschritte},0);
+    \end{tikzpicture}
+}
+
+\endinput
