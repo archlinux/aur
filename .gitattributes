@@ -1,0 +1,9 @@
+# -*- coding: utf-8 -*-
+
+README text eol=lf
+PKGBUILD text eol=lf
+.SRCINFO text eol=lf
+
+README linguist-vendored
+PKGBUILD linguist-vendored
+.SRCINFO linguist-vendored
