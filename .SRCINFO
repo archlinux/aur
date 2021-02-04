@@ -1,15 +1,20 @@
 pkgbase = gravity-lang-git
 	pkgdesc = Gravity Programming Language.
-	pkgver = 0.2.5
-	pkgrel = 2
+	pkgver = 0.8.1.r11.g73d8837
+	pkgrel = 1
 	url = https://marcobambini.github.io/gravity/
-	arch = any
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = MIT
 	makedepends = git
-	provides = gravity
+	provides = gravity-lang
 	conflicts = gravity-lang
-	source = git://github.com/marcobambini/gravity.git
-	md5sums = SKIP
+	source = gravity-lang::git+https://github.com/marcobambini/gravity.git
+	sha256sums = SKIP
 
 pkgname = gravity-lang-git
 
