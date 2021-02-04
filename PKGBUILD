@@ -2,8 +2,8 @@
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=inxi-git
-pkgver=3.2.01.r0.gdf45e6d4
-pkgrel=1
+pkgver=3.3.00.r0.g6c9b2593
+pkgrel=2
 pkgdesc="Full featured CLI system information tool"
 arch=(any)
 url="https://github.com/smxi/inxi"
@@ -11,6 +11,7 @@ license=(GPL3)
 depends=(coreutils pciutils perl procps-ng)
 makedepends=(git)
 optdepends=(
+  "bluez-utils-compat: hciconfig: -E bluetooth HCI data"
   "bind-tools: -i wlan IP"
   "dmidecode: inxi -M if no sys machine data"
   "file: inxi -o unmounted file system"
