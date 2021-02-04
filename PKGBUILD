@@ -23,9 +23,9 @@ backup=( 'etc/agate.conf' )
 conflicts=( 'agate' )
 
 package() {
-  install -m644 "${srcdir}/agate.conf"     "${pkgdir}/etc/agate.conf"
-  install -m644 "${srcdir}/agate.service"  "${pkgdir}/usr/lib/systemd/system/agate.service"
-  install -m644 "${srcdir}/agate.sysusers" "${pkgdir}/usr/lib/sysusers.d/agate.conf"
+  install -Dm644 "${srcdir}/agate.conf"     "${pkgdir}/etc/agate.conf"
+  install -Dm644 "${srcdir}/agate.service"  "${pkgdir}/usr/lib/systemd/system/agate.service"
+  install -Dm644 "${srcdir}/agate.sysusers" "${pkgdir}/usr/lib/sysusers.d/agate.conf"
 
-  install -m755 "${srcdir}/agate.x86_64-unknown-linux-gnu" "${pkgdir}/usr/bin/agate"
+  install -Dm755 "${srcdir}/agate.x86_64-unknown-linux-gnu" "${pkgdir}/usr/bin/agate"
 }
