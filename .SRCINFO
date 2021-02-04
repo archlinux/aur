@@ -1,0 +1,18 @@
+pkgbase = python-archspec
+	pkgdesc = A library to query system architecture
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/archspec/archspec
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-click>=7.1.2
+	depends = python-click<8.0
+	depends = python-six>=1.13.0
+	depends = python-six<2.0.0
+	source = https://files.pythonhosted.org/packages/source/a/archspec/archspec-0.1.2.tar.gz
+	sha256sums = 8bb998370f0dc3e509d57c13724ab4109d761fd74af20da26fbe513b0fe01c46
+
+pkgname = python-archspec
+
