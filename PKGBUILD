@@ -1,7 +1,7 @@
 # Maintainer: Michael Stegeman <team@webthings.io>
 pkgname=webthings-gateway
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='WebThings Gateway'
 url='https://webthings.io/gateway/'
 arch=('x86_64')
@@ -42,7 +42,7 @@ sha256sums=(
   '6bda15a6d276d5b7f060121bc72f43edb46b40c6670419a1ce3113042fb47381'
   '1a5e41278b02a8c509edaf86d510b4739efb90bbfed4b85df9f2da9ff4eef9a7'
   'e8f4faa6fb1778157d9927d730038ef0f5520c6c3c5cc33222f155d9979238a5'
-  'e516c724bce5fa9ab9f0652f903c778609dd5b8a7682b169b881a8c0fcb41bbf'
+  '6e424b9563c759b43c21c3104acc73adb706ef1083d176c6019c01dd22a39004'
   'aa94d3c56eae58483b6c0cd860c01ecbb7810db10056d18cbdadac4e86b452ca'
 )
 install="${pkgname}.install"
