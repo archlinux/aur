@@ -1,13 +1,13 @@
 # Maintainer: crian <crian84 at gmail dot com>
 
 pkgname=auto-cpufreq-git
-pkgver=1.5.2.r193.a91d4ba
-pkgrel=2
+pkgver=1.5.5.r203.3985d3e
+pkgrel=1
 pkgdesc='Automatic CPU speed & power optimizer'
 arch=('any')
 url="https://github.com/AdnanHodzic/auto-cpufreq"
 license=('LGPL-3.0')
-depends=('python-distro' 'python-psutil' 'python-click')
+depends=('python-distro' 'python-psutil' 'python-click' 'dmidecode')
 optdepends=('cpufreqctl: CPU Power Manager'
             'gnome-shell-extension-cpufreq: CPU Power Manager for GNOME Shell')
 makedepends=('git' 'python-setuptools')
