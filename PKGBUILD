@@ -2,23 +2,24 @@
 # Contributor: Alex Forenchich <alex@alexforencich.com>
 
 pkgname=('linux-gpib')
-pkgver=4.3.3
-pkgrel=2
+pkgver=4.3.4
+pkgrel=1
 pkgdesc='A support package for GPIB (IEEE 488) hardware.'
 arch=('i686' 'x86_64')
 url='http://linux-gpib.sourceforge.net/'
 license=('GPL')
-depends=('bash' 'linux>=5.7' 'linux<5.8')
+depends=('bash' 'linux>=5.10' 'linux<5.11')
 makedepends=('perl' 'python' 'linux-headers' 'bison')
 optdepends=('fxload: firmware upload support for NI USB-B, Keithley KUSB-488 and Agilent 82357')
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}%20for%203.x.x%20and%202.6.x%20kernels/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 install='linux-gpib.install'
 backup=('etc/gpib.conf')
+options=('!emptydirs')
 
-_kernver=5.7
+_kernver=5.10
 _extramodules=/usr/lib/modules/extramodules-ARCH
 
-md5sums=('1243aa44f788cf23f9b40ded54c14685')
+md5sums=('d42b04d3b27a601c9b893915d5fded37')
 
 prepare() {
 
@@ -85,7 +86,9 @@ package() {
     for f in "modules.alias" "modules.alias.bin" "modules.builtin.bin" \
         "modules.dep" "modules.dep.bin" "modules.softdep" "modules.symbols" \
         "modules.symbols.bin" "modules.devname" "modules.builtin.alias.bin"; do
-        rm "${pkgdir}/lib/modules/$(uname -r)/${f}"
+        if [[ -f "${pkgdir}/lib/modules/$(uname -r)/${f}" ]]; then
+            rm "${pkgdir}/lib/modules/$(uname -r)/${f}"
+        fi
     done
     rmdir "${pkgdir}/lib/modules/$(uname -r)"
     rmdir "${pkgdir}/lib/modules"
