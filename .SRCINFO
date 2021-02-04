@@ -9,7 +9,7 @@ pkgbase = system76-oled
 	depends = dbus
 	depends = libx11
 	depends = libxrandr
-	source = https://github.com/pop-os/system76-oled/archive/0.1.4.tar.gz
+	source = system76-oled-0.1.4.tar.gz::https://github.com/pop-os/system76-oled/archive/0.1.4.tar.gz
 	sha256sums = 14bd774108a91780af1cb85bc15089d28d8bd8c3dbe5c6d2eba1b41791ce1f16
 
 pkgname = system76-oled
