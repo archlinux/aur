@@ -3,7 +3,7 @@
 
 _pkgname=deja-dup
 pkgname=$_pkgname-git
-pkgver=42.4+126+g271f05ec
+pkgver=42.4+132+g190890de
 pkgrel=1
 pkgdesc="Simple backup tool, that hides the complexity of backing up the Right Way and uses duplicity as the backend"
 arch=('any')
