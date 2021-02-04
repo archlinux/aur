@@ -5,7 +5,7 @@
 
 pkgname=sendanywhere
 pkgver=20.11.6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 
 pkgdesc="Send Anywhere is a multi-platform file sharing service where users can directly share digital content in real time."
@@ -46,6 +46,7 @@ package(){
     # Install .desktop and icon
     cp -r usr/share $pkgdir/usr/
     sed -i "s|Exec=.*|Exec=/usr/bin/$pkgname|" $pkgdir/usr/share/applications/SendAnywhere.desktop
+    sed -i "s|StartupWMClass=.*|StartupWMClass=Send Anywhere|" $pkgdir/usr/share/applications/SendAnywhere.desktop
 
     # Add licenses
     install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
