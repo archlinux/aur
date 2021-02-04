@@ -12,7 +12,7 @@ license=(LGPL)
 arch=(x86_64)
 depends=(pcre libffi util-linux-libs zlib)
 makedepends=(gettext gtk-doc shared-mime-info python libelf git util-linux
-             meson dbus sysprof)
+             meson dbus sysprof libselinux)
 _commit=bacbec652d356895ec493f3de2f2f6f4c7dafde0  # tags/2.66.4^0
 source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
         noisy-glib-compile-schemas.diff
