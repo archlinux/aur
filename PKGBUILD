@@ -4,48 +4,37 @@
 # then please put 'unknown'.
 
 # Maintainer: Benoit Landrieu (ben@gresille.org)
-pkgname=scribus
+# Maintainer: Benoit Landrieu (ben@gresille.org)
+
+pkgname=scribus-stable
 pkgver=1.4.8
-pkgrel=0
-epoch=
-pkgdesc="scribus-stable"
+pkgbase=scribus-stable
+pkgrel=1
+pkgdesc="Desktop publishing program - old stable version"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
 url="http://www.scribus.net"
-depends=('hunspell' 'podofo' 'libcups' 'graphicsmagick' 'poppler'
-	 'libcdr' 'libvisio' 'libpagemaker' 'harfbuzz-icu' 'python'
-	 'qt5-declarative' 'libmspub' 'openscenegraph' 'libqxp'
-	 'desktop-file-utils' 'libzmf' 'libfreehand')
-makedepends=('cmake' 'qt5-tools')
+depends=('hunspell' 'podofo' 'libcups' 'python' 'python2' 'cairo' 'desktop-file-utils'
+     'qt4' 'hyphen')
+makedepends=('cmake')
 optdepends=('lib2geom: for mesh distortion')
 conflicts=('scribus')
-provides=('scribus')
-replaces=()
-backup=()
-options=()
-install=
-changelog=
+provides=('scribus-stable')
 source=("https://netix.dl.sourceforge.net/project/scribus/scribus/1.4.8/scribus-1.4.8.tar.gz")
-noextract=()
-md5sums=('SKIP')
-validpgpkeys=()
-
-prepare() {
-	cd "$pkgname-$pkgver"
-}
+md5sums=('6246cadc3d0a6dfc0119926eb7e7dcda')
+options=('!emptydirs')
 
 build() {
-	cd "$pkgname-$pkgver"
-    cmake .
-	make
+  cd "${pkgname%-stable}-$pkgver"
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+    -DCMAKE_INSTALL_DATAROOTDIR:PATH=/usr/share \
+    -DCMAKE_LIBRARY_PATH:PATH=/usr/lib \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DCMAKE_BUILD_WITH_INSTALL_RPATH:BOOL=FALSE .
+  make
 }
 
-#check() {
-	#cd "$pkgname-$pkgver"
-	#make -k check
-#}
-
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+  cd "${pkgname%-stable}-$pkgver"
+  make DESTDIR="$pkgdir/" install
 }
