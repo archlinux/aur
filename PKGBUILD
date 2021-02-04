@@ -2,7 +2,7 @@
 # Contributor: frichtlm <frichtlm@gmail.com>
 
 _cranname=dplyr
-_cranver=1.0.3
+_cranver=1.0.4
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(MIT)
 depends=('r>=3.3.0' r-ellipsis r-generics 'r-glue>=1.3.2' 'r-lifecycle>=0.2.0' 'r-magrittr>=1.5' r-r6 'r-rlang>=0.4.9' 'r-tibble>=2.1.3' 'r-tidyselect>=1.1.0' 'r-vctrs>=0.3.5')
 optdepends=(r-bench r-broom r-callr r-covr r-dbi r-dbplyr r-knitr r-lahman r-lobstr r-microbenchmark r-nycflights13 r-purrr r-rmarkdown r-rmysql r-rpostgresql r-rsqlite r-testthat r-withr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('28a1a9d87e99154d4d1542ef9da9fd70f869a173dc9709f4583a5770bae58441')
+sha256sums=('9bf68f71d1519432bad08089fc254b872c990c5a40b32a7e63b03d49f88e093a')
 
 build() {
   cd "${srcdir}"
