@@ -1,8 +1,8 @@
 pkgbase = perl-media-datetime
 	pkgdesc = A simple module to extract the timestamp from media files in an flexible manner.
 	pkgver = 0.48
-	pkgrel = 1
-	url = https://metacpan.org/module/Media-DateTime
+	pkgrel = 2
+	url = https://metacpan.org/release/Media-DateTime
 	arch = any
 	license = PerlArtistic
 	depends = perl

@@ -3,11 +3,11 @@
 
 pkgname=perl-media-datetime
 pkgver=0.48
-pkgrel=1
+pkgrel=2
 pkgdesc=" A simple module to extract the timestamp from media files in an flexible manner."
 _dist=Media-DateTime
 arch=('any')
-url="https://metacpan.org/module/$_dist"
+url="https://metacpan.org/release/$_dist"
 license=('PerlArtistic')
 depends=(perl perl-module-build perl-datetime perl-try-tiny perl-module-pluggable perl-image-exiftool)
 # 'DateTime::TimeZone' => 0,
