@@ -1,15 +1,15 @@
 pkgbase = vazir-fonts
 	pkgdesc = A beautiful Persian font based on DejaVu font.
-	pkgver = 27.1.0
+	pkgver = 27.2.1
 	pkgrel = 1
 	url = https://github.com/rastikerdar/vazir-font
 	arch = any
 	license = OFL
 	provides = ttf-vazir
 	conflicts = ttf-vazir
-	source = vazir-fonts-27.1.0.zip::https://github.com/rastikerdar/vazir-font/releases/download/v27.1.0/vazir-font-v27.1.0.zip
+	source = vazir-fonts-27.2.1.zip::https://github.com/rastikerdar/vazir-font/releases/download/v27.2.1/vazir-font-v27.2.1.zip
 	source = LICENSE::https://raw.githubusercontent.com/rastikerdar/vazir-font/master/OFL.txt
-	sha256sums = 3a45738af972306a40a2fa8239a359c239b4efbf614bcf89a1022c533a1666c8
+	sha256sums = b73f3b9b174d7ed653be63521d66a582c6563e68ac081857bb212d39de3a10b2
 	sha256sums = 0deb92b7b0e3d3eceeb1cffed7789d64edbcff39c611aecca96a9fc3f805835a
 
 pkgname = vazir-fonts
