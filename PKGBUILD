@@ -12,7 +12,8 @@ url="https://redasm.io"
 arch=("x86_64")
 pkgdesc="The Open Source Disassembler (Official Package)"
 license=("GPL3")
-makedepends=("cmake" "git" "qt5-base")
+makedepends=("cmake" "git")
+depends("qt5-base")
 conflicts=("redasm-git" "redasm")
 source=("git+https://github.com/REDasmOrg/REDasm.git#tag=v${_pkgver}")
 md5sums=("SKIP")
