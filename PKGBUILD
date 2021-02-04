@@ -2,8 +2,8 @@
 
 # Maintainer: Alejandro Barocio A. <abarocio80@gmail.com>
 pkgname=pacslim-git
-pkgver=0.0.0
-pkgrel=2
+pkgver=0.0.2
+pkgrel=0
 epoch=
 pkgdesc="Put your system on package diet."
 arch=(any)
@@ -11,7 +11,7 @@ url="https://gitlab.com/abarocio80/pacslim"
 license=('GPL3')
 groups=()
 depends=("pacman")
-makedepends=("git" "make")
+makedepends=("make")
 checkdepends=()
 optdepends=()
 provides=()
