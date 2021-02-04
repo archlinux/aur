@@ -115,7 +115,7 @@
     "driver": "sqlite",
     "name": "/var/lib/sftpgo/sftpgo.db",
     "host": "",
-    "port": 5432,
+    "port": 0,
     "username": "",
     "password": "",
     "sslmode": 0,
@@ -160,7 +160,9 @@
     "static_files_path": "/usr/share/sftpgo/static",
     "backups_path": "/srv/sftpgo/backups",
     "certificate_file": "",
-    "certificate_key_file": ""
+    "certificate_key_file": "",
+    "ca_certificates": [],
+    "ca_revocation_lists": []
   },
   "telemetry": {
     "bind_port": 10000,
