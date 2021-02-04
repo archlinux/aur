@@ -15,7 +15,7 @@ source=(
   agate.sysusers
 )
 md5sums=( 'ffddb0ff70cef9258c12fff043e71558'
-          '839a3f9c3dcd263d0b672e7c4b7f0576'
+          'e27d6af60a904897ab80a766f5eae8dc'
           'f20ec61e69f2a2432c742275542c03a9'
           'f3aff0c50b6af48da0bbb37d2c8a1b07' )
 backup=( 'etc/agate.conf' )
