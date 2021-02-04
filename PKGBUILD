@@ -2,7 +2,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=arch-audit-git
-pkgver=0.1.15.r58.g993b5b4
+pkgver=0.1.15.r65.g68d6daa
 pkgrel=1
 pkgdesc='A utility like pkg-audit based on Arch Security Team data'
 url='https://gitlab.com/ilpianista/arch-audit'
@@ -35,8 +35,6 @@ package() {
 
   make DESTDIR="${pkgdir}" PREFIX=/usr install
 
-  install -Dm 644 contrib/systemd/arch-audit.service -t "${pkgdir}/usr/share/${pkgname}"
-  install -Dm 644 contrib/systemd/arch-audit.timer -t "${pkgdir}/usr/share/${pkgname}"
   install -Dm 644 contrib/hooks/arch-audit.hook -t "${pkgdir}/usr/share/${pkgname}"
 
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
