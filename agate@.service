@@ -1,0 +1,14 @@
+[Unit]
+Description=Very simple server for the Gemini hypertext protocol.
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=agate
+EnvironmentFile=%i
+ExecStart=/usr/bin/agate $CONTENT $CERT $ADDR $HOSTNAME $LANG $OTHERS
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
