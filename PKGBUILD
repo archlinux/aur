@@ -5,7 +5,7 @@
 
 _pkgname=fcct
 pkgname=fcct-bin
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Fedora CoreOS Config Transpiler"
 arch=('aarch64' 'x86_64')
@@ -16,9 +16,9 @@ conflicts=('fcct')
 source_aarch64=(https://github.com/coreos/fcct/releases/download/v$pkgver/fcct-aarch64-unknown-linux-gnu{,.asc})
 source_x86_64=(https://github.com/coreos/fcct/releases/download/v$pkgver/fcct-x86_64-unknown-linux-gnu{,.asc})
 
-sha256sums_aarch64=('2a19f392369a9123d4ebc4d7388da7f8db8e11c06318f7763404baa69713ddbc'
+sha256sums_aarch64=('3c328fe3b699fad889d5e6b328cf3c06ad62201f16f71e02c1941bc126e61d8e'
                     'SKIP')
-sha256sums_x86_64=('8c634cd83e5a781db169641381cc19b0574d8be60589d455458b367bf541de90'
+sha256sums_x86_64=('68197953fbcf23bd3d7118ae722e2a3442a454ff3d0f4c557a02fadd5449cdea'
                    'SKIP')
 
 validpgpkeys=('963A2BEB02009608FE67EA4249FD77499570FF31')
