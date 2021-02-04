@@ -1,13 +1,14 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
-pkgname=barrier-headless-git
+_pkgname=barrier-headless
+pkgname=$_pkgname-git
 pkgver=v2.3.3+153+g12024b9a
 pkgrel=1
 pkgdesc="Open-source KVM software based on Synergy"
 url="https://github.com/debauchee/barrier"
 license=("custom:GPL2WithOpenSSLException")
 source=(
-    "barrier-headless-git::git+https://github.com/debauchee/barrier.git"
+    "${pkgname}::git+${url}.git"
 )
 provides=(barrier-headless)
 sha256sums=('SKIP')
@@ -41,7 +42,7 @@ pkgver() {
 }
 
 prepare() {
-    cd "barrier-headless-git"
+    cd $pkgname
   
     git submodule update --init --recursive
 
@@ -53,7 +54,7 @@ prepare() {
 }
 
 build() {
-    cd "barrier-headless-git"
+    cd $pkgname
 
     mkdir -p build
     cd build
@@ -69,7 +70,7 @@ build() {
 
 _package_common() {
     # Install binaries:
-    cd "barrier-headless-git/build"
+    cd "${pkgname}/build"
     DESTDIR="${pkgdir?}" make install
 
     # Install the license:

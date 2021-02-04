@@ -1,6 +1,6 @@
 pkgbase = barrier-headless-git
 	pkgdesc = Open-source KVM software based on Synergy
-	pkgver = v2.3.3+69+ge032d14a
+	pkgver = v2.3.3+153+g12024b9a
 	pkgrel = 1
 	url = https://github.com/debauchee/barrier
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = barrier-headless-git
 	depends = libsm
 	depends = libice
 	depends = openssl
-	conflicts = barrier-headless
+	provides = barrier-headless
 	source = barrier-headless-git::git+https://github.com/debauchee/barrier.git
 	sha256sums = SKIP
 
