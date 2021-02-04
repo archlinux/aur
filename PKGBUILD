@@ -24,7 +24,7 @@ build() {
 
 check() {
     cd "$pkgname-$pkgver"
-    RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable} cargo test --locked
+    RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable} cargo test --release --locked
 }
 
 package() {
