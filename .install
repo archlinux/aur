@@ -1,0 +1,13 @@
+post_install() {
+  xdg-icon-resource install --size 128 --context mimetypes opt/freefilesync/Resources/FreeFileSync.png application-x-freefilesync-gui
+  xdg-icon-resource install --size 128 --context mimetypes opt/freefilesync/Resources/Batch.png application-x-freefilesync-batch
+  xdg-icon-resource install --size 128 --context mimetypes opt/freefilesync/Resources/Database.png application-x-freefilesync-db
+  xdg-icon-resource install --size 128 --context mimetypes opt/freefilesync/Resources/RealTimeSync.png application-x-freefilesync-real
+}
+
+post_remove() {
+  xdg-icon-resource uninstall --size 128 --context mimetypes application-x-freefilesync-gui
+  xdg-icon-resource uninstall --size 128 --context mimetypes application-x-freefilesync-batch
+  xdg-icon-resource uninstall --size 128 --context mimetypes application-x-freefilesync-db
+  xdg-icon-resource uninstall --size 128 --context mimetypes application-x-freefilesync-real
+}

@@ -6,7 +6,7 @@
 
 all: build install
 
-build: PKGBUILD .SRCINFO
+build: PKGBUILD .SRCINFO .install
 	makepkg -f
 	touch build
 

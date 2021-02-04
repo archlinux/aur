@@ -2,7 +2,7 @@
 
 pkgname=freefilesync-bin
 _pkgname=freefilesync
-pkgver=11.5
+pkgver=11.6
 pkgrel=1
 pkgdesc="Folder comparison and synchronization"
 arch=("i686" "x86_64")
@@ -22,32 +22,36 @@ depends_i686=(
     lib32-libx11
     lib32-pango
 )
+makedepends=(expect)
 source=(
     dlagent
     "${pkgname}-${pkgver}.tar.gz::${url}/download/FreeFileSync_${pkgver}_Linux.tar.gz"
     FreeFileSync.desktop
-    FreeFileSync.png
     RealTimeSync.desktop
-    RealTimeSync.png
+    freefilesync-mime.xml
+    install.exp
 )
 sha256sums=(
     "3b8121fdf7d91d19680b6ff91f6f10ba79193379e1fdad5227d805b4ea65312a"
-    "6953ea298874e413b58a048e606e2d06ef66b7094eb772a5a1ebfd067acda6b2"
-    "44f4e2750faad4ca0615a27d1e834b978ed46db2eaf49318ec3172fa6baf6468"
-    "b2fac3b8c0badfbbbcf605ecad5b184f2c9918bd0dd14596e6c43df3f2a76a30"
-    "80f81f29f4cc0521d761f1f9c678043493bccb2e9378abfebfc88ffb7eb4c424"
-    "23c68af45d34f41fdb76886067b71af4dd3fe14f2dd60f73193b2052dc333bf6"
+    "9969c17ace634609c81336ed8c568df159f6db74182f4b7d70601d980cbf39b0"
+    "cf4fc81793572cc3e757e8ac26ce20807ce9c731eef0e96c046038075e2e3ecf"
+    "810403667792b732768e7be442f43244c4297df6c4b5decb6d07e04ef13f545a"
+    "30d938d1f385ea5c660fc4080d36391267a6e9c01939bd1eb535c5857af256f8"
+    "22314c6b42a322abba9f8ebde255e011219748b3b6a2543962f07da76f778cf1"
 )
 options=(!strip)
+install=".install"
 DLAGENTS=("https::$PWD/dlagent $url %u %o")
 
 package() {
-    _pkg=FreeFileSync
-
-    cd "$srcdir"
-
     install -d "$pkgdir/opt/$_pkgname"
-    cp -r "$_pkg"/* "$pkgdir/opt/$_pkgname"
+
+    # invalidate sudo cache to prevent installer from making changes to the system
+    sudo -k 2>/dev/null
+
+    # run installer
+    ./install.exp "$srcdir/FreeFileSync_${pkgver}_Install.run" "$pkgdir/opt/$_pkgname"
+    chown -R root:root "$pkgdir/opt/$_pkgname"
 
     # documentation
     install -d "$pkgdir/usr/share/doc/$_pkgname"
@@ -57,11 +61,14 @@ package() {
     install -d "$pkgdir/usr/share/licenses/$_pkgname"
     ln -sf "/opt/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 
+    # MIME types
+    install -Dm644 freefilesync-mime.xml "$pkgdir/usr/share/mime/packages/freefilesync-mime.xml"
+
     # desktop launcher for FreeFileSync
-    install -Dm644 FreeFileSync.png "$pkgdir/usr/share/pixmaps/FreeFileSync.png"
+    install -Dm644 "$pkgdir/opt/$_pkgname/Resources/FreeFileSync.png" "$pkgdir/usr/share/pixmaps/FreeFileSync.png"
     install -Dm644 FreeFileSync.desktop "$pkgdir/usr/share/applications/FreeFileSync.desktop"
 
     # desktop launcher for RealTimeSync
-    install -Dm644 RealTimeSync.png "$pkgdir/usr/share/pixmaps/RealTimeSync.png"
+    install -Dm644 "$pkgdir/opt/$_pkgname/Resources/RealTimeSync.png" "$pkgdir/usr/share/pixmaps/RealTimeSync.png"
     install -Dm644 RealTimeSync.desktop "$pkgdir/usr/share/applications/RealTimeSync.desktop"
 }
