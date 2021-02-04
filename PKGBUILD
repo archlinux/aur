@@ -4,17 +4,17 @@
 
 pkgname=python-epc
 pkgver=0.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="EPC (RPC stack for Emacs Lisp) for Python"
 arch=('any')
 url="https://github.com/tkf/python-epc"
 license=('GPL3')
 depends=('python' 'python-sexpdata')
-source=("https://pypi.python.org/packages/source/e/epc/epc-${pkgver}.tar.gz")
-sha256sums=('a14d2ea74817955a20eb00812e3a4630a132897eb4d976420240f1152c0d7d25')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('e70e619efd25f2cbe44dfad4ac5613475eca0ad374b2a451b12969ffad705eeb')
 
 package() {
-  cd epc-$pkgver
+  cd $pkgname-$pkgver
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
