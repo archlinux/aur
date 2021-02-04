@@ -6,13 +6,13 @@ _srcname="${_name}-dropbox"
 pkgname="${_name}-git"
 provides=("${_name}")
 conflicts=("${_name}")
-pkgver=1.3.1.r0.gb4d99eb0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='A light-weight and open-source Dropbox client.'
 arch=('any')
 url="https://github.com/SamSchott/${_srcname}"
 license=('MIT')
-source=("git+${url}" "maestral@.service")
+source=("git+${url}#branch=develop" "maestral@.service")
 makedepends=('git' 'python' 'python-setuptools' 'python-wheel')
 depends=(
     'python>=3.9'
