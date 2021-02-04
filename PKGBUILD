@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=DescTools
-_cranver=0.99.39
+_cranver=0.99.40
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(GPL2 GPL3)
 depends=('r>=3.6.0' r-mvtnorm r-expm 'r-rcpp>=0.12.10' r-rstudioapi r-exact r-gld r-bh)
 optdepends=(r-vgam r-r.rsp)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('53f80e5bbeb48c213c5683173481d4ac2f0d11e1efba537e1dab9b65e520cd0f')
+sha256sums=('53954f0477eac77328efac562716c8b078e76b5ad5edf0227ba2624aa2b8c7dd')
 
 build() {
   cd "${srcdir}"
