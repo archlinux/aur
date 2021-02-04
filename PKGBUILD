@@ -1,6 +1,6 @@
 ## Maintainer: traumweh <contact@traumweh.tk>
 
-_revision=8
+_revision=9
 pkgname=cis-latex
 pkgver=1.${_revision}
 pkgrel=1
@@ -9,7 +9,7 @@ arch=("any")
 url="https://traumweh.tk/"
 license=('LPPL')
 depends=('texlive-core' 'texlive-latexextra' 'texlive-fontsextra' 'texlive-science' 'texlive-pictures')
-source=("https://gitlab.com/traumweh/cis-latex/-/raw/0073a2396851eb1ac9632b7d39f850f2efc145ff/tex/cis.sty")
+source=("https://gitlab.com/traumweh/cis-latex/-/raw/37fba30f0efdbed3cdad4ddfa683c0582692ab28/tex/cis.sty")
 install=texlive.install
 
 package() {
