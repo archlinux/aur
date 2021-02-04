@@ -5,6 +5,7 @@ pkgbase = clion
 	epoch = 1
 	url = http://www.jetbrains.com/clion
 	arch = x86_64
+	arch = aarch64
 	license = custom
 	makedepends = rsync
 	noextract = CLion-2020.3.2.tar.gz
