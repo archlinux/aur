@@ -22,6 +22,7 @@ build() {
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
   python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
 
 # vim:set ts=2 sw=2 et:
