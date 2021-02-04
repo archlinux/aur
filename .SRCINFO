@@ -1,6 +1,6 @@
 pkgbase = inxi
 	pkgdesc = Full featured CLI system information tool
-	pkgver = 3.2.02.2
+	pkgver = 3.3.00.1
 	pkgrel = 1
 	url = https://github.com/smxi/inxi
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = inxi
 	depends = pciutils
 	depends = perl
 	depends = procps-ng
+	optdepends = bluez-utils-compat: hciconfig: -E bluetooth HCI data
 	optdepends = bind-tools: -i wlan IP
 	optdepends = dmidecode: inxi -M if no sys machine data
 	optdepends = file: inxi -o unmounted file system
@@ -30,8 +31,8 @@ pkgbase = inxi
 	optdepends = xorg-xdpyinfo: inxi -G multi screen resolution
 	optdepends = xorg-xprop: inxi -S desktop data
 	optdepends = xorg-xrandr: inxi -G single screen resolution
-	source = inxi-3.2.02.2.tar.gz::https://github.com/smxi/inxi/archive/3.2.02-2.tar.gz
-	sha256sums = 9de1dc8be6579c5883d40def6f37230384525d7a8f969cf280ddde1c1dfec62e
+	source = inxi-3.3.00.1.tar.gz::https://github.com/smxi/inxi/archive/3.3.00-1.tar.gz
+	sha256sums = 1180dd8dc71690322ec28f0ee7d9e013adea67bc94298742cfc5a2b4eefff6b9
 
 pkgname = inxi
 
