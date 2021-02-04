@@ -6,14 +6,14 @@
 pkgname=supertux-git
 _pkgname=supertux
 pkgver=v0.6.2.r617.g99fa836b3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A classic 2D jump'n run sidescroller game in a style similar to the original SuperMario game"
 url='http://supertux.lethargik.org/'
 license=(GPL)
 arch=(i686 x86_64)
-depends=('sdl2_image' 'openal' 'libvorbis' 'glew' 'boost-libs' 'curl' 'freetype2')
-makedepends=('git' 'cmake' 'physfs' 'boost')
+depends=('sdl2_image' 'openal' 'libvorbis' 'glew' 'boost-libs' 'curl' 'freetype2' 'physfs')
+makedepends=('git' 'cmake' 'boost')
 conflicts=(supertux)
 provides=(supertux)
 source=('git+https://github.com/SuperTux/supertux.git')
