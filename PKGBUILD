@@ -1,19 +1,20 @@
-# Maintainer: Timo Schwichtenberg <therealbassx at yahoo dot de>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Timo Schwichtenberg <therealbassx at yahoo dot de>
 # Contributor: Link Dupont <link@fastmail.com>
-
 pkgname=system76-wallpapers
-pkgver=18.04.2~1525874807~18.04~d6171e2~dev
+pkgver=18.04.2~1611351210~20.04~52abc1e~dev
 pkgrel=1
 pkgdesc="A collection of System76 Wallpapers"
 arch=('any')
-url="https://launchpad.net/system76-wallpapers"
+url="https://github.com/pop-os/system76-wallpapers"
 license=('GPL')
-source=("https://launchpad.net/~system76-dev/+archive/stable/+files/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('dfe9b8c7092ae83d055943fcfeb8463cd14dffe8768e7af2caa663eec2675f2c')
+source=("https://launchpad.net/~system76-dev/+archive/ubuntu/stable/+sourcefiles/$pkgname/$pkgver/${pkgname}_${pkgver}.tar.xz")
+sha256sums=('7944886badd733568b2d09c925e3a9c84d45372e8209068d2fed7fbc340bc1c2')
 
 package() {
-	cd "${srcdir}"
-	install -m755 -d ${pkgdir}/usr/share/backgrounds
-	install -m644 -D d6171e2708cb91fc3f5a7e6749cbfb27a547ca9f_bionic/backgrounds/* ${pkgdir}/usr/share/backgrounds/
-	install -m644 -D d6171e2708cb91fc3f5a7e6749cbfb27a547ca9f_bionic/${pkgname}.xml ${pkgdir}/usr/share/gnome-background-properties/${pkgname}.xml
+	_commit='52abc1e8996891210beb66ae75796f5986bfea82_focal'
+
+	install -d "$pkgdir/usr/share/backgrounds"
+	install -Dm644 "$_commit/backgrounds/"* "$pkgdir/usr/share/backgrounds"
+	install -Dm644 "$_commit/$pkgname.xml" -t "$pkgdir/usr/share/gnome-background-properties"
 }

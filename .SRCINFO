@@ -1,12 +1,12 @@
 pkgbase = system76-wallpapers
 	pkgdesc = A collection of System76 Wallpapers
-	pkgver = 18.04.2~1525874807~18.04~d6171e2~dev
+	pkgver = 18.04.2~1611351210~20.04~52abc1e~dev
 	pkgrel = 1
-	url = https://launchpad.net/system76-wallpapers
+	url = https://github.com/pop-os/system76-wallpapers
 	arch = any
 	license = GPL
-	source = https://launchpad.net/~system76-dev/+archive/stable/+files/system76-wallpapers_18.04.2~1525874807~18.04~d6171e2~dev.tar.xz
-	sha256sums = dfe9b8c7092ae83d055943fcfeb8463cd14dffe8768e7af2caa663eec2675f2c
+	source = https://launchpad.net/~system76-dev/+archive/ubuntu/stable/+sourcefiles/system76-wallpapers/18.04.2~1611351210~20.04~52abc1e~dev/system76-wallpapers_18.04.2~1611351210~20.04~52abc1e~dev.tar.xz
+	sha256sums = 7944886badd733568b2d09c925e3a9c84d45372e8209068d2fed7fbc340bc1c2
 
 pkgname = system76-wallpapers
 
