@@ -1,2 +1,2 @@
 #!/bin/bash
-/usr/share/actionfps/actionfps.sh "$@"
+/usr/share/games/actionfps/assaultcube.sh "$@"
