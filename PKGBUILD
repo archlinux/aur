@@ -2,8 +2,8 @@
 
 pkgname=jitsi-videobridge
 # https://github.com/jitsi/jitsi-videobridge/releases/latest
-pkgver=2.1_376_g9f12bfe2
-_tag="jitsi-meet_5142"
+pkgver=2.1_416_g2f43d1b4
+_tag="jitsi-meet_5390"
 pkgrel=1
 epoch=
 pkgdesc="Videobridge for Jitsi Meet"
@@ -32,7 +32,7 @@ source=(${pkgname}-${pkgver}-${_tag}.tar.gz::https://github.com/jitsi/jitsi-vide
         sysusers.conf
         tmpfiles.conf)
 noextract=()
-sha256sums=('9391aeefcb7e7b704b208cf61442e171fe146d01f103dff709af88e60dca594c'
+sha256sums=('9c9a55deb8f7834a67a59803d3b8d61fed698529479a34e21bd2e530cee86a7c'
             '9fea96be644658b95e3bddcdc9415df3817567736cc69d0b2b3cb1b318864f97'
             'bb5db01df7dbfb67a400b0be114f29b2cc5cfc37cddea24b9b706c7a6c15e8af'
             '2b7679218752c0435a1496306b447d72aafaf5b671b6eef63e58c83a67638ced'
