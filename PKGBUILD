@@ -1,7 +1,7 @@
 # Maintainer: Dario Piombo <piombo.dario at gmail dot com>
 
 pkgname=rdm-bin
-pkgver=2021.0
+pkgver=2021.2
 pkgrel=1
 pkgdesc='Cross-platform open source database management tool for Redis ®'
 arch=('x86_64')
@@ -28,9 +28,9 @@ depends=(
 conflicts=('redis-desktop-manager-bin' 'redis-desktop-manager')
 source=('rdm.desktop'
         "https://github.com/pidario/rdm-build/releases/download/${pkgver}/rdm"
-        'https://raw.githubusercontent.com/uglide/RedisDesktopManager/2020/src/resources/images/rdm.png')
+        'https://raw.githubusercontent.com/uglide/RedisDesktopManager/2021/src/resources/images/rdm.png')
 sha256sums=('5e96ea919336c483fba09fd40839a77f33dc98a0aa5e9de0c7570d9fd888f62e'
-            'SKIP'
+            ''
             'SKIP')
 
 package() {
