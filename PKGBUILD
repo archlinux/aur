@@ -41,7 +41,7 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
-	patch -p1 -i ../drop-import-clean.patch
+#	patch -p1 -i ../drop-import-clean.patch
 
 	./autogen.sh
 }
