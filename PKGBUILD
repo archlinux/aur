@@ -3,8 +3,8 @@
 _name=dvc
 pkgname=$_name-bin
 pkgver=1.11.15
-pkgrel=1
-pkgdesc="Python port of the parser used internally by GNU bash"
+pkgrel=2
+pkgdesc="Open-source version control system for data science projects as a binary"
 arch=('x86_64')
 url="https://github.com/iterative/dvc"
 license=('APACHE')
