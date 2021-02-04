@@ -1,0 +1,14 @@
+[Unit]
+Description=check running sunloginclinet loop
+Requires=network-online.target
+After=network-online.target
+
+
+[Service]
+Type=simple
+ExecStart=sh -c '/opt/sunlogin/bin/oray_rundaemon -m server >/dev/null 2>&1 & /opt/sunlogin/bin/sunloginclient -m service'
+ExecStop=
+
+
+[Install]
+WantedBy=multi-user.target

@@ -1,5 +1,6 @@
 post_install() {
   if systemctl -q is-active runsunloginclient.service ;then
+    systemctl daemon-reload
     systemctl restart runsunloginclient.service
   fi
 
