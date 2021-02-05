@@ -38,6 +38,7 @@ pkgbase = obs-studio-wayland-git
 	optdepends = python: Python scripting
 	optdepends = v4l2loopback-dkms: virtual webcam
 	optdepends = wlrobs: screen capture on wlroots compositors
+	optdepends = obs-xdg-portal-git: screen capture using xdg-portal
 	provides = obs-studio=26.1.2.r149.g951acf2df
 	provides = obs-studio-git
 	provides = obs-studio-wayland=26.1.2.r149.g951acf2df

@@ -24,7 +24,8 @@ optdepends=("libfdk-aac: FDK AAC codec support"
             "luajit: Lua scripting"
             "python: Python scripting"
             "v4l2loopback-dkms: virtual webcam"
-            "wlrobs: screen capture on wlroots compositors")
+            "wlrobs: screen capture on wlroots compositors"
+            "obs-xdg-portal-git: screen capture using xdg-portal")
 provides=("obs-studio=$pkgver" "obs-studio-git" "obs-studio-wayland=$pkgver")
 conflicts=("obs-studio")
 source=("$pkgname::git+https://github.com/obsproject/obs-studio.git#branch=master"
