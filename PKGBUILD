@@ -4,7 +4,7 @@
 pkgname=agate
 pkgver=2.3.0
 pkgrel=1
-pkgdesc="Agate is a server for the Gemini network protocol, built with the Rust programming language. Agate has very few features, and can only serve static files."
+pkgdesc="Simple static file server for the Gemini network protocol, written in Rust"
 makedepends=('cargo')
 arch=('x86_64')
 url="https://github.com/mbrubeck/agate"
