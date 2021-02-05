@@ -9,7 +9,7 @@ pkgname=(yaru-sound-theme-git
          yaru-unity-theme-git
          yaru-icon-theme-git
          yaru-session-git)
-pkgver=20.10.1.r10.gd7ec6a45
+pkgver=20.10.6.1.r118.g4d8fedc83
 pkgrel=1
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
@@ -37,6 +37,7 @@ _delete_all_from_pkgdir_except() {
     fi
     if [[ "$1" != "gtk-theme" ]]; then
         rm -r "${pkgdir}"/usr/share/themes/Yaru{-light,{,-dark}/{gtk-*,index.theme}}
+        rm -r "${pkgdir}"/usr/share/gtksourceview-*
     fi
     if [[ "$1" != "gnome-shell-theme" ]]; then
         rm "${pkgdir}"/usr/share/themes/Yaru{,-dark}/gnome-shell
