@@ -8,8 +8,8 @@ pkgbase = pleaser
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
-	source = git+https://gitlab.com/edneville/please.git#tag=v0.3.21
-	sha512sums = SKIP
+	source = https://gitlab.com/edneville/please/-/archive/v0.3.21/please-v0.3.21.tar.gz
+	sha512sums = a6336e3ffcfe104dd2d18e0eb7053c0ef83f75f22db2ffcc42651de95267286ce5272ac348e7d4ee3d62e7948617d78be9e2cb863d44239ff9469f638da7846b
 
 pkgname = pleaser
 

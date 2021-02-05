@@ -9,32 +9,27 @@ arch=('any')
 license=(GPL3)
 depends=(gcc-libs)
 makedepends=(cargo git)
-source=("git+https://gitlab.com/edneville/${_binary}.git#tag=v${pkgver}")
-sha512sums=('SKIP')
-
-pkgver() {
-  cd please
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
+source=("https://gitlab.com/edneville/${_binary}/-/archive/v${pkgver}/${_binary}-v${pkgver}.tar.gz")
+sha512sums=('a6336e3ffcfe104dd2d18e0eb7053c0ef83f75f22db2ffcc42651de95267286ce5272ac348e7d4ee3d62e7948617d78be9e2cb863d44239ff9469f638da7846b')
 
 prepare() {
-  cd please
+  cd please-v${pkgver}
   cargo fetch --target x86_64-unknown-linux-gnu
 }
 
 build() {
-  cd please
+  cd please-v${pkgver}
   cargo build --release --frozen --all-targets
 }
 
 check() {
-  cd please
+  cd please-v${pkgver}
   # test_expand* fails; needs nightly rust
   cargo test --release --frozen || :
 }
 
 package() {
-  cd please
+  cd please-v${pkgver}
   install -Dt "$pkgdir/usr/bin" -m4755 target/release/please
   install -Dt "$pkgdir/usr/bin" -m4755 target/release/pleaseedit
   install -Dt "$pkgdir/usr/share/doc/pleaser" -m644 README.md
