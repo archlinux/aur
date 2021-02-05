@@ -1,7 +1,7 @@
-pkgbase = cassandra
-	pkgdesc = Apache Cassandra NoSQL database
-	pkgver = 3.11.10
-	pkgrel = 2
+pkgbase = cassandra30
+	pkgdesc = Apache Cassandra NoSQL database (3.0.x release, with RPC/Thrift enabled)
+	pkgver = 3.0.24
+	pkgrel = 1
 	url = http://cassandra.apache.org/
 	install = cassandra.install
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = cassandra
 	makedepends = gnupg
 	depends = java-runtime=8
 	optdepends = python2: to use Python CLI administration scripts
+	conflicts = cassandra
 	backup = etc/cassandra/cassandra-env.sh
 	backup = etc/cassandra/cassandra-rackdc.properties
 	backup = etc/cassandra/cassandra-topology.properties
@@ -16,19 +17,21 @@ pkgbase = cassandra
 	backup = etc/cassandra/commitlog_archiving.properties
 	backup = etc/cassandra/logback.xml
 	backup = etc/cassandra/logback-tools.xml
-	source = https://www.apache.org/dist/cassandra/3.11.10/apache-cassandra-3.11.10-bin.tar.gz
-	source = https://www.apache.org/dist/cassandra/3.11.10/apache-cassandra-3.11.10-bin.tar.gz.asc
+	source = https://www.apache.org/dist/cassandra/3.0.24/apache-cassandra-3.0.24-bin.tar.gz
+	source = https://www.apache.org/dist/cassandra/3.0.24/apache-cassandra-3.0.24-bin.tar.gz.asc
 	source = 01_fix_cassandra_home_path.patch
+	source = 02_enable_thrift_rpc_by_default.patch
 	source = cassandra.service
 	source = cassandra-tmpfile.conf
 	source = cassandra-user.conf
 	validpgpkeys = 9E66CEC6106D578D0B1EB9BFF1000962B7F6840C
-	sha256sums = bbe772956c841158e3228c3b6c8fc38cece6bceeface695473c59c0573039bf1
+	sha256sums = 7f2fa38bdc5f566695fc757edab5a989daaf3febd73559435c2d119b9e24bcfb
 	sha256sums = SKIP
 	sha256sums = bbb5dcc19cac4e19c506210da901280c3063a6a241480bf12bc874e6a5c02657
+	sha256sums = 539e2b47faf9130b51af0552b64cdad129069248011955e39ff1a469486f6985
 	sha256sums = abc9d54399c84eacf5922811b5480846ea1c88a73c5d214ea1db3d20c7c0422a
 	sha256sums = 7ea0024331734b9755b6fa2ed1881f9bc608b551990b96f14e80406cb6b05eb8
 	sha256sums = 7a87a4369ca2c13558fa8733f6abdcf548c63dda8a16790b5bcc20bae597ee91
 
-pkgname = cassandra
+pkgname = cassandra30
 
