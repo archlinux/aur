@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 # Inspiration: https://www.reddit.com/r/unixporn/comments/f1oied/awesome_global_nightday_switch_for_gtk_vim/
 
