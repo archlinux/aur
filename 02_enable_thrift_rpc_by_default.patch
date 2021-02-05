@@ -1,0 +1,11 @@
+--- conf/cassandra.yaml.old	2021-02-05 18:07:24.429204551 +0100
++++ conf/cassandra.yaml	2021-02-05 18:07:31.062673205 +0100
+@@ -543,7 +543,7 @@
+ # native_transport_max_concurrent_connections_per_ip: -1
+ 
+ # Whether to start the thrift rpc server.
+-start_rpc: false
++start_rpc: true
+ 
+ # The address or interface to bind the Thrift RPC service and native transport
+ # server to.
