@@ -1,6 +1,6 @@
 pkgbase = vpn-minute
 	pkgdesc = Create an on-demand/disposable VPN in a minute
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://gitlab.com/gui-don/vpn-minute/-/wikis/home
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = vpn-minute
 	depends = sudo
 	optdepends = openssh: to SSH to the VPN
 	provides = vpnm
-	source = https://gitlab.com/gui-don/vpn-minute/-/archive/0.2.0/vpn-minute-0.2.0.tar.gz
-	b2sums = c7601fa58a8df3c45e7fbc6ae1a0977052355a35d6c910015bb0f2bd0204b5c7dcc69c986e45cba41f000ddeb0594d0fdf69c72f9e6a92304c906f6104d7cd96
+	source = https://gitlab.com/gui-don/vpn-minute/-/archive/0.3.0/vpn-minute-0.3.0.tar.gz
+	b2sums = 57a7bb28b8c90accf88c6d3f2c88cc5d5b3f47ab85e35d94aa68597a2c0386bb7a4a17232c81cede7f4bde584b482d97b284e0a67f5e806a0e1fa6f06aa7fbf5
 
 pkgname = vpn-minute
 
