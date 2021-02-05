@@ -2,13 +2,14 @@
 
 pkgname=mininet-git
 pkgver=2.3.0b2.r4.gf0c726a
-pkgrel=1
+pkgrel=2
 pkgdesc='Emulator for rapid prototyping of Software Defined Networks'
 depends=('python' 'iproute2' 'net-tools' 'iputils' 'inetutils' 'iperf' 'ethtool'
          'libcgroup' 'openvswitch' 'psmisc')
 optdepends=('xorg-xhost: for X11 forwarding'
             'socat: for X11 forwarding'
-            'xterm: terminal emulator for X11')
+            'xterm: required for MiniEdit'
+            'tk: required for MiniEdit')
 makedepends=('git' 'gcc' 'make' 'autoconf' 'automake' 'libtool' 'help2man'
              'python-setuptools')
 arch=('x86_64')
