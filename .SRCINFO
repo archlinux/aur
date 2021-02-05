@@ -1,7 +1,7 @@
 pkgbase = python-tf2onnx
 	pkgdesc = Convert TensorFlow models to ONNX
-	pkgver = 1.8.1
-	pkgrel = 1
+	pkgver = 1.8.2
+	pkgrel = 2
 	url = https://github.com/onnx/tensorflow-onnx
 	arch = any
 	license = MIT
@@ -11,14 +11,17 @@ pkgbase = python-tf2onnx
 	checkdepends = python-yaml
 	checkdepends = python-onnxruntime
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-install
+	makedepends = python-wheel
 	depends = python
 	depends = python-tensorflow
 	depends = python-numpy
 	depends = python-onnx
 	depends = python-requests
 	depends = python-six
-	source = https://github.com/onnx/tensorflow-onnx/archive/v1.8.1/tf2onnx-v1.8.1.tar.gz
-	sha256sums = fc612a2fca6426c29aeb536e1aa514941a7a4fa8a32b49cab0601e9be0090f7c
+	source = https://github.com/onnx/tensorflow-onnx/archive/v1.8.2/tf2onnx-v1.8.2.tar.gz
+	sha256sums = cfea74d85bcf5e5e925548901c948df3abaae9484e2998a2398bdc6d4bc9ae8a
 
 pkgname = python-tf2onnx
 
