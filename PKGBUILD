@@ -5,6 +5,7 @@ pkgname=(libticonv-git libticables-git libticalcs-git libtifiles-git)
 pkgver=1.18.r41.g7be38a45
 pkgrel=1
 pkgdesc="Various TI libs required for TILP"
+groups=("knightos")
 arch=('i686' 'x86_64')
 url="http://lpg.ticalc.org/prj_tilp/"
 license=('GPL2')

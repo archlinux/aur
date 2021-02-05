@@ -5,6 +5,7 @@ pkgbase = tilibs-git
 	url = http://lpg.ticalc.org/prj_tilp/
 	arch = i686
 	arch = x86_64
+	groups = knightos
 	license = GPL2
 	depends = glib2
 	options = !libtool
