@@ -4,6 +4,7 @@ pkgbase = mktiupgrade
 	pkgrel = 1
 	url = https://github.com/KnightOS/mktiupgrade
 	arch = x86_64
+	groups = knightos
 	license = MIT
 	makedepends = cmake
 	makedepends = asciidoc

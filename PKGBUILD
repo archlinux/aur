@@ -4,6 +4,7 @@ pkgver=1.1.6
 pkgrel=1
 license=('MIT')
 pkgdesc='Builds and signs OS upgrades for Texas Instruments calculators'
+groups=("knightos")
 makedepends=("cmake" "asciidoc")
 arch=("x86_64")
 url='https://github.com/KnightOS/mktiupgrade'
