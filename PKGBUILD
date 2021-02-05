@@ -2,12 +2,13 @@
 
 pkgname=pinentry-rofi
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='rofi-based pinentry implementation'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/plattfot/pinentry-rofi'
 license=('custom:MIT')
 depends=('guile' 'rofi')
+makedepends=('autoconf-archive')
 source=("https://github.com/plattfot/pinentry-rofi/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         LICENSE)
 b2sums=('ceaa90154e1de46e24bc3b9020e12394e1014fe0844729c1f75f6285572980610c22d1b4a62f34333a670472ab1aade03b5ce48a28ae139fea8a4995e12b778a'
@@ -18,9 +19,14 @@ prepare() {
   autoreconf -vif
 }
 
-package() {
+build() {
   cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr
   make
+}
+
+package() {
+  install -Dm644 -t "${pkgdir}"/usr/share/licenses/pinentry-rofi LICENSE
+  cd ${pkgname}-${pkgver}
   DESTDIR="${pkgdir}" make install
 }
