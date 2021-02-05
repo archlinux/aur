@@ -1,7 +1,7 @@
 pkgbase = python-fgivenx
 	pkgdesc = Functional Posterior Plotter
-	pkgver = 2.2.1
-	pkgrel = 2
+	pkgver = 2.3.0
+	pkgrel = 1
 	url = https://github.com/williamjameshandley/fgivenx
 	arch = any
 	license = MIT
@@ -13,8 +13,8 @@ pkgbase = python-fgivenx
 	depends = python-mpi4py
 	depends = python-tqdm
 	options = !emptydirs
-	source = https://github.com/williamjameshandley/fgivenx/archive/v2.2.1.tar.gz
-	sha256sums = 49131d5789678d0a05d208367482a27c7a1df62760b11659665a5704556f8ed0
+	source = https://github.com/williamjameshandley/fgivenx/archive/v2.3.0.tar.gz
+	sha256sums = ac929ae2aca3f18bed0592e4d3ea50515a8d7a9d692780b11e5c0f36eb135b74
 
 pkgname = python-fgivenx
 
