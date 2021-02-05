@@ -11,7 +11,7 @@
 # All patches are managed at https://github.com/Martchus/qtbase
 
 pkgname=mingw-w64-qt6-base
-_qtver=6.0.0
+_qtver=6.0.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -36,16 +36,16 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0003-Fix-using-static-PCRE2-and-DBus-1.patch'
         '0004-Fix-transitive-dependencies-of-static-libraries.patch'
         '0005-Fix-libjpeg-workaround-for-conflict-with-rpcndr.h.patch'
-        '0006-Support-finding-MariaDB.patch'
+        '0006-Support-finding-static-MariaDB-client-library.patch'
         '0007-Allow-overriding-CMAKE_FIND_LIBRARY_SUFFIXES-to-pref.patch')
-sha256sums=('ae227180272d199cbb15318e3353716afada5c57fd5185b812ae26912c958656'
-            'ea0d7432318261cfd13dadd39ecef5bb98d6ff3017c9e170209c9227bfddaed7'
-            '42e06c8f4261adf434d3f570c22156dec8164745bcb25fd1a93c54a0a5f2277a'
-            '01e52d9a60f6b31561c95798bc1fe0f3e0b6361c9e22307a8db47af789bd8544'
-            'c7a416a2bb61f938a81c7ddc82257776e6752f5372ee57f2cc08cba8761e2211'
-            'e11565af9b05b7714248324b5afecda78caa9be03e9c4872f80ea07636bfa1a7'
-            '8fa423062a850d68341b80aade231cfec865f9a750324ff3819faecf77ff9347'
-            'c9c0289e08106dcc18973d1625526f2a90271452d375171d97a9793199549cea')
+sha256sums=('8d2bc1829c1479e539f66c2f51a7e11c38a595c9e8b8e45a3b45f3cb41c6d6aa'
+            '82bfcddb91097e761c5c3cfe66a2153e28446a11e20638c519589dab59bf891b'
+            '06a54156c5f3145783ee41d5e2dec651f23e207faeb113b9c59ed11b8201bb53'
+            'aba65a351d26cfe2536c1115cce6448e4779998f663b71e5c4dc3fa7c3137f5d'
+            '820447581d2beda6f383ce8c7a18299b38273d162e62d5820c88dc24f2568a06'
+            '37af48d96b4265b442eac016928f0be5236f82ed7c5fa8670a389993556ffdee'
+            '074341ec2aebf7c9100022b9fedb919a426ec58c0456515cffd6131b205a11cd'
+            'fa1ae6268c7b9f773dda4950dce834adf8d5a15ebc672f096e47b554192758c2')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -84,7 +84,7 @@ package() {
   for _arch in ${_architectures}; do
     DESTDIR="$pkgdir" cmake --install build-$_arch
 
-    install -Dm644 $_pkgfqn/LICENSE* -t "$pkgdir"/usr/$_arch/share/licenses/$pkgname
+    install -Dm644 $_pkgfqn/LICENSE* -t "$pkgdir"/usr/share/licenses/$pkgname
 
     # Add symlinks of DLLs in usual bin directory
     mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/$_arch/bin"
@@ -104,5 +104,6 @@ package() {
     find "$pkgdir/usr/$_arch" -iname '*.exe' -exec $_arch-strip --strip-all {} \;
     find "$pkgdir/usr/$_arch" -iname '*.dll' -exec $_arch-strip --strip-unneeded {} \;
     find "$pkgdir/usr/$_arch" -iname '*.a'   -exec $_arch-strip -g {} \;
+    [[ -d "$pkgdir/usr/$_arch/share/doc" ]] && rm -r "$pkgdir/usr/$_arch/share/doc"
   done
 }
