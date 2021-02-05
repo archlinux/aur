@@ -1,7 +1,7 @@
 pkgbase = mkrom
 	pkgdesc = Writes files into ROM images for TI calculators
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KnightOS/mkrom
 	arch = x86_64
 	groups = knightos

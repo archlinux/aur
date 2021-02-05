@@ -1,7 +1,7 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=mkrom
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc='Writes files into ROM images for TI calculators'
 groups=("knightos")
