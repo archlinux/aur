@@ -1,6 +1,6 @@
 pkgbase = madoka-magica-fonts
 	pkgdesc = Fonts for Puella Magi Madoca magica
-	pkgver = 20210124
+	pkgver = 20210205
 	pkgrel = 1
 	url = https://wiki.puella-magi.net/Deciphering_the_runes#Fonts
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = madoka-magica-fonts
 	source = http://www.jarchive.org/akami/aka063.zip
 	source = http://hwm3.gyao.ne.jp/shiroi-niwatori/nkf11_magicum_texturae.zip
 	source = MadokaLetters.ttf::https://www.mediafire.com/file/891iu9c9e2j1tig/MadokaLetters.ttf
-	md5sums = a34bd82eaf6250c042b824eb33b38e2e
-	md5sums = 743bc26c29f6d495ee534c816cade05a
-	md5sums = 22eafbf9dfc03ea9a6db0c5a86c026f5
-	md5sums = 04e2422a40158735772cc71ac258670d
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = madoka-magica-fonts
