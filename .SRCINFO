@@ -28,6 +28,7 @@ pkgbase = rstudio-server-git
 	depends = postgresql-libs
 	depends = sqlite3
 	depends = soci
+	depends = yaml-cpp
 	conflicts = rstudio-server
 	source = git+https://github.com/rstudio/rstudio.git
 	source = rstudio-server.service
