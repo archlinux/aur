@@ -4,13 +4,13 @@
 
 pkgname=kauth-git
 pkgver=5.79.0_r403.ga272608
-pkgrel=1
+pkgrel=2
 pkgdesc='Abstraction to system policy and authentication features'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(kcoreaddons-git polkit-qt5)
-makedepends=(git extra-cmake-modules-git qt5-tools qt5-doc clang python-pyqt5 doxygen sip4)
+makedepends=(git extra-cmake-modules-git qt5-tools qt5-doc clang python-pyqt5 doxygen sip)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 optdepends=('python-pyqt5: for the Python bindings')
