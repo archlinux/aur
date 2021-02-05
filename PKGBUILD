@@ -126,7 +126,7 @@ build () {
        -D lmsensors=disabled \
        -D osmesa=false \
        -D shared-glapi=enabled \
-       -D gallium-opencl=icd \
+       -D gallium-opencl=disabled \
        -D valgrind=disabled \
        -D vulkan-overlay-layer=true \
        -D vulkan-device-select-layer=true \
@@ -135,7 +135,10 @@ build () {
        -D microsoft-clc=disabled \
        -D selinux=false \
        -D sse2=true \
-       -D debug=false   
+       -D debug=false \
+       -D enable-glcpp-tests=false \
+       -D opencl-native=false
+
 
     meson configure _build
     
