@@ -8,6 +8,7 @@ pkgbase = bruh
 	makedepends = make
 	makedepends = coreutils
 	makedepends = gcc
+	optdepends = pulseaudio
 	depends = alsa-utils
 	provides = bruh
 	source = git+https://github.com/kejpies/bruh
