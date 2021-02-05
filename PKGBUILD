@@ -1,6 +1,6 @@
 ## Maintainer: traumweh <contact@traumweh.tk>
 
-_revision=13
+_revision=14
 pkgname=cis-latex
 pkgver=1.${_revision}
 pkgrel=1
