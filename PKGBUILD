@@ -1,7 +1,7 @@
 # Maintainer: Lev Levitsky <levlev@mail.ru>
 pkgbase="percolator-git"
 pkgname=('percolator-git' 'percolator-converters-git' 'elude-git')
-pkgver=3.04
+pkgver=3.05.r95.g62185c8f
 pkgrel=1
 pkgdesc="Software for postprocessing of shotgun proteomics data + format converters + Elude tool"
 url="http://percolator.ms/"
@@ -21,7 +21,8 @@ prepare() {
     cd "${srcdir}/source"
     cd "$BUILDDIR"
     for d in "${pkgname[@]}"; do
-        mkdir "${d%-git}"
+        mkdir -p "${d%-git}"
+        rm -rf "${d%-git}"/*
     done
 }
 
