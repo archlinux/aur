@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.10.12
+pkgver=5.10.13
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -33,32 +33,30 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_tag_commit=67082d879b89cab49ac98ed061a5f6f6c51609c2
+_arch_config_commit=5261974c7188f35b6126c095ed6ed8914c68cefe
 _bmqversion=5.10-r2
 _bmq_patch="prjc_v${_bmqversion}.patch"
 _gcc_more_v='20201113'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
-  "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_tag_commit}/trunk/config"
+  "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=51b77e4f052b0717eaa69cfd9b62978da58d9d02"
-  "0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch::https://git.archlinux.org/linux.git/patch/?id=af5906764eea0c609d9d0dfc2c9834c6b72c88e6"
-  "0003-iwlwifi-provide-gso_type-to-GSO-packets.patch::https://git.archlinux.org/linux.git/patch/?id=545d6504ef3c786b8294ca2129111227a7bb6515"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=bb9d80aa74a2d3093e7ee87d5eae05aff1fc01c4"
+  "0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch::https://git.archlinux.org/linux.git/patch/?id=07877bdfba2fc358b395ddf74ffb21ffc6f98169"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-b2sums=('f5e16e92c9543708997d9dfee28feb2cd6e6909a33dc7f97c40b507a8d03bd72717b1af84bed3fa25b2a167652d8cd93b66d145d484e5ad292af24b3bf64a649'
+b2sums=('f2d6f5512c10ced0990d0d0cbc1aa29e5b54b90bff01f16d16093e9c192de9eb0f31e60c9dd51c686ce88c2a1d89a49bedb503af61c91a6a186794fbe71eedde'
         'SKIP'
-        '37df0c9fc2214da9e94f0fb38ddc9c1f5bcf6279cacf918166efc3a0a8a9433ee10a95232992a108944160cf020fc3c240ef2fb8023581dc9cac11f973d7985d'
+        '74b6ea3f314aa8291c9e2c3b5763f9b0c8aabbc0e714e30529f557955a7a315b44b0cd2f2d665ffe3ba48e7df71274c5901d3891ed395191ceb6ca88f69cdb1a'
         '964457a55fe70988fcba968d2940d78d3daff5d1629863279ee15e07f8c1bb4e58e4d22b2cae9e66ab0c61c4d54de04e7a6eb2710eaaa536ec11f29efa961f1c'
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
-        'f8fac5e630543adeb2b611bd20ae84a7b1a475f9bd22ede3561388c5146c4cb47923503a81f13c3bcf66ce40ef42dbf1c0e95454cdae1e454c4f95c85952edd0'
-        '068e2d89c95914868ed882939ef52e4037002ff01b8d1cf5a5d02716744dd3323b5fcdd68389eb1130cd236d67dfacf2f0aeb6e8defb9f8b295e2016f1130012'
-        '9b973fa8d55d9d68020f8d05458edfad2eea916ad0bbefcabf3e41a750aae8d9bb1c1c3820105bb785e050dd7a4343ab55c8bd97ab657520c17d2da3c18b7a99')
+        '8903eecc92a839e0eb79b8645aed9db263f44bd92d46fb6b1a2d7e08420b2dc4b04e7b092a5ac493752bc4178aac2323e439c5b80c27fea334b9b3604acb721f'
+        'e40df5924bd4e5a0950d97aee4bfb307472a39c6cd2cf91d46b5404e063c82d24f796880f4cdf05ca30cee1d752f8c0b97d2dedd134c3825f80529056fb57982')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
