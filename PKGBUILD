@@ -9,7 +9,7 @@
 
 pkgname=pycharm-community-eap
 
-_buildver=211.4961.30
+_buildver=211.5538.22
 _pkgver=2021.1
 _eap=y
 pkgver="$_pkgver.$_buildver"
@@ -36,11 +36,26 @@ _filever="$([ $_eap = y ] && echo -n $_buildver || echo -n $_pkgver)"
 source=("https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz")
 sha256sums=($(curl -s "https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz.sha256" | cut -d' ' -f1))
 
+####
+# Workaroud for https://youtrack.jetbrains.com/issue/JBR-3066
+# Hat tip @navarroaxel for pointing me there.
+_oldbuild=211.4961.30
+source+=("https://download.jetbrains.com/python/pycharm-community-$_oldbuild.tar.gz")
+sha256sums+=($(curl -s "https://download.jetbrains.com/python/pycharm-community-$_oldbuild.tar.gz.sha256" | cut -d' ' -f1))
+####
+
 
 prepare() {
 	if [ -d "pycharm-community-$_pkgver" ]; then
 		mv pycharm-community-{"$_pkgver","$_buildver"}
 	fi
+
+	####
+	# Workaroud for https://youtrack.jetbrains.com/issue/JBR-3066
+	echo "Using the previous version of the Jetbrains Runtime ($_oldbuild) ..."
+	rm -rf "pycharm-community-$_buildver/jbr"
+	mv pycharm-community-{"$_oldbuild/jbr","$_buildver/"}
+	####
 
 	cd "pycharm-community-$_buildver/bin"
 	local _vmoptfile
