@@ -4,6 +4,7 @@ pkgbase = knightos-kcc-git
 	pkgrel = 1
 	url = https://github.com/KnightOS/kcc
 	arch = x86_64
+	groups = knightos
 	license = GPL
 	makedepends = cmake
 	makedepends = asciidoc
