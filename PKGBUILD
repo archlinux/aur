@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-svg-static
-_qtver=6.0.0
+_qtver=6.0.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -17,7 +17,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtsvg-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('9703c9a69e21ad373fb52d0107338da7ef0a46966f69107b0d879e9c366dd91b')
+sha256sums=('9a8c58fb48c1b64cf10ae22db44a638e892e0f93a28933d82e935a849e6445bb')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -26,6 +26,7 @@ build() {
     export PKG_CONFIG=/usr/bin/$_arch-pkg-config
     $_arch-cmake-static -G Ninja -B build-$_arch -S $_pkgfqn \
       -DCMAKE_INSTALL_PREFIX:PATH="/usr/$_arch/static" \
+      -DFEATURE_static_runtime=ON \
       -DFEATURE_pkg_config=ON
     cmake --build build-$_arch
   done
@@ -38,6 +39,7 @@ package() {
     find "$pkgdir/usr/$_arch" -iname '*.exe' -exec $_arch-strip --strip-all {} \;
     find "$pkgdir/usr/$_arch" -iname '*.dll' -exec $_arch-strip --strip-unneeded {} \;
     find "$pkgdir/usr/$_arch" -iname '*.a'   -exec $_arch-strip -g {} \;
+    [[ -d "$pkgdir/usr/$_arch/static/share/doc" ]] && rm -r "$pkgdir/usr/$_arch/static/share/doc"
   done
 
   install -d "$pkgdir"/usr/share/licenses
