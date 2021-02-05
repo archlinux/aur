@@ -3,7 +3,7 @@
 _pkgname=kimg
 pkgname=kimg
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Image converter for the KnightOS image format (kimg)'
 groups=("knightos")
 url='http://github.com/KnightOS/kimg'
