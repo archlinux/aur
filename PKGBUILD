@@ -5,6 +5,7 @@ pkgver=2.0.9
 pkgrel=1
 license=('MIT')
 pkgdesc='The KnightOS developer SDK'
+groups=("knightos")
 depends=(
 	"python" "python-setuptools" "python-requests" "python-docopt" "genkfs"
 	"kpack" "sass" "z80e" "python-yaml" "python-pystache" "kimg" "knightos-kcc"

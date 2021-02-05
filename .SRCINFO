@@ -4,6 +4,7 @@ pkgbase = knightos-sdk
 	pkgrel = 1
 	url = https://github.com/KnightOS/sdk
 	arch = any
+	groups = knightos
 	license = MIT
 	depends = python
 	depends = python-setuptools
