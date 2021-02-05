@@ -1,0 +1,20 @@
+pkgbase = wahay-bin
+	pkgdesc = Wahay - Host and Participate in voice conference calls (uses Tor & Mumble)
+	pkgver = 6be34ec
+	pkgrel = 1
+	url = https://wahay.org
+	arch = x86_64
+	license = GPL3
+	depends = tor
+	depends = mumble
+	depends = xclip
+	depends = gtk3
+	optdepends = torsocks-git
+	provides = wahay
+	conflicts = wahay
+	conflicts = wahay-bin
+	source_x86_64 = https://wahay.org/downloads/wahay-latest
+	sha256sums_x86_64 = 61441bb4c5d08e56302074f0e6b46d0c83e568ffc45cf46c0635cbf6b96e8ba3
+
+pkgname = wahay-bin
+
