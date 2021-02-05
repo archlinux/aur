@@ -1,7 +1,7 @@
 pkgbase = mutter-40alfa
 	pkgdesc = A window manager for GNOME.
 	pkgver = 40.alpha.1.1+204+g6a47eb8c8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
 	groups = gnome
@@ -33,6 +33,7 @@ pkgbase = mutter-40alfa
 	depends = jack2
 	depends = xorg-xwayland
 	depends = gsettings-desktop-schemas-git
+	depends = glib2-git
 	provides = mutter
 	conflicts = mutter
 	source = git+https://gitlab.gnome.org/GNOME/mutter.git
