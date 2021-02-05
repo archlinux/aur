@@ -2,7 +2,7 @@
 pkgname=knightos-sdk
 _pkgname=sdk
 pkgver=2.0.9
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc='The KnightOS developer SDK'
 groups=("knightos")
