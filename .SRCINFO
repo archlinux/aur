@@ -1,7 +1,7 @@
 pkgbase = st-tucuxi-git
 	pkgdesc = A customized ST build
 	pkgver = 0.8.2.r75.g23e49e0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/tuxaua/st
 	arch = x86_64
 	license = MIT

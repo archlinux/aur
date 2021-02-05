@@ -1,7 +1,7 @@
 # Maintainer: Klaus-Dieter Schmatz <tucuxir at sapo dot pt>
 pkgname=st-tucuxi-git
 pkgver=0.8.2.r75.g23e49e0
-pkgrel=1
+pkgrel=2
 pkgdesc="A customized ST build"
 arch=('x86_64')
 url="https://gitlab.com/tuxaua/st"
@@ -31,7 +31,6 @@ build() {
 
 package() {
   cd "${pkgname%-git}"
-  echo "pkgdir:" $pkgdir
   make PREFIX=/usr DESTDIR="$pkgdir" install
 }
 
