@@ -1,6 +1,6 @@
 pkgbase = portainer-bin
 	pkgdesc = A lightweight docker management UI
-	pkgver = 1.24.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/portainer/portainer
 	arch = x86_64
@@ -8,11 +8,15 @@ pkgbase = portainer-bin
 	provides = portainer
 	conflicts = portainer
 	source = portainer.service
-	source = portainer-1.24.1-src.tar.gz::https://github.com/portainer/portainer/archive/1.24.1.tar.gz
-	source = https://github.com/portainer/portainer/releases/download/1.24.1/portainer-1.24.1-linux-amd64.tar.gz
-	sha256sums = 38f8e91194fb3c07275b26a7b4a0215bab454baa556b0fece37cdce58317b16e
-	sha256sums = 2e95a348a6be1cf10e038193ec1d236f12ee5d6575f68e2da1de052ea26bc1bc
-	sha256sums = fadcf340a259ad112dcf10feb46dd3792e926475fafbdbe536c6525c1eba3831
+	source = portainer.png
+	source = portainer.desktop
+	source = portainer-2.1.0-src.tar.gz::https://github.com/portainer/portainer/archive/2.1.0.tar.gz
+	source = https://github.com/portainer/portainer/releases/download/2.1.0/portainer-2.1.0-linux-amd64.tar.gz
+	sha256sums = 08603677ac3c01235fcd740892bfae9277bd163b908f62b22e6e7edfdb61976c
+	sha256sums = 8cb50d80f1463cef0a907b7f26ec6387b792182959f51f8cd19dcb6f955b886e
+	sha256sums = 82f7fca2af76e52147397c3b7b07091b72c1be7c82da6bc47e53001306759635
+	sha256sums = da8fec1af1b7d2d3f2b7b0977a3a305ec40c929359cd9d2d333f58a7c52d2b35
+	sha256sums = f3a245bff7eb4a199d0af6116f01f6cb88c6c7f46ddc65c7ab067ca41a548620
 
 pkgname = portainer-bin
 

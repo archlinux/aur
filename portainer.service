@@ -6,7 +6,7 @@ Type=simple
 Restart=always
 RestartSec=3
 Environment=BIND=:9000
-ExecStart=/usr/bin/portainer --bind $BIND --data /var/lib/portainer --assets /usr/share/portainer --template-file /etc/portainer/templates.json 
+ExecStart=/usr/bin/portainer --bind $BIND --data /var/lib/portainer --assets /usr/share/portainer
 
 [Install]
 WantedBy=multi-user.target
