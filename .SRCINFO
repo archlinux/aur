@@ -4,6 +4,7 @@ pkgbase = kpack
 	pkgrel = 1
 	url = https://github.com/KnightOS/kpack
 	arch = x86_64
+	groups = knightos
 	license = MIT
 	makedepends = cmake
 	makedepends = asciidoc
