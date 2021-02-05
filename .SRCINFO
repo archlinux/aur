@@ -1,7 +1,7 @@
 pkgbase = twitch-git
 	pkgdesc = Unofficial Twitch desktop application.
 	pkgver = 1.0.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://gitlab.com/twitch-application/application
 	arch = any
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = twitch-git
 	depends = gtk3
 	depends = libxss
 	provides = twitch-git
-	conflicts = twitch-git
+	conflicts = Twitch-bin
 	source = git+https://gitlab.com/twitch-application/application.git
 	sha256sums = SKIP
 

@@ -1,7 +1,7 @@
 pkgname=twitch-git
 _pkgname=Twitch-git
 pkgver=1.0.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Unofficial Twitch desktop application."
 arch=('any')
 url="https://gitlab.com/twitch-application/application"
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('nss' 'gtk3' 'libxss')
 makedepends=('npm' 'git' 'unzip')
 provides=("${pkgname%}")
-conflicts=("${pkgname%}")
+conflicts=("Twitch-bin")
 source=('git+https://gitlab.com/twitch-application/application.git')
 sha256sums=('SKIP')
 
