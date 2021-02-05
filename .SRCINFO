@@ -4,6 +4,7 @@ pkgbase = genkfs
 	pkgrel = 1
 	url = https://github.com/KnightOS/genkfs
 	arch = x86_64
+	groups = knightos
 	license = MIT
 	makedepends = cmake
 	makedepends = asciidoc

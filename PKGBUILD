@@ -5,6 +5,7 @@ pkgver=1.3.2
 pkgrel=1
 license=('MIT')
 pkgdesc='Builds KFS filesystems for KnightOS'
+groups=("knightos")
 makedepends=("cmake" "asciidoc")
 arch=("x86_64")
 url='https://github.com/KnightOS/genkfs'
