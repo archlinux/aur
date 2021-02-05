@@ -1,6 +1,6 @@
 pkgbase = i3-gaps-desktop
 	pkgdesc = A fork of i3-gaps with desktop manager support
-	pkgver = 4.19
+	pkgver = 4.19.1
 	pkgrel = 1
 	url = https://git.tdem.in/tdemin/i3
 	arch = i686
@@ -31,8 +31,8 @@ pkgbase = i3-gaps-desktop
 	conflicts = i3-wm
 	options = docs
 	backup = etc/i3/config
-	source = i3-gaps-desktop-4.19.tar.gz::https://git.tdem.in/tdemin/i3/archive/4.19-desktop.tar.gz
-	sha256sums = 907afaf0346f321a46912e513a47cea8245e869d330f8e8c3c57a87a2ad03dce
+	source = i3-gaps-desktop-4.19.1.tar.gz::https://git.tdem.in/tdemin/i3/archive/4.19.1-desktop.tar.gz
+	sha256sums = b81bba72f98f2ecd5d6ce7c3c9b63a234292d07897a44de662d9adbb8e41019a
 
 pkgname = i3-gaps-desktop
 
