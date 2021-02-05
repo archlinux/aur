@@ -15,7 +15,10 @@ depends=('sdl' 'zlib' 'boost-libs' 'glm' 'freetype2' 'openal' 'glew')
 optdepends=('qt5-tools: enable built-in crash handler (Qt5 version; recompile needed)'
             'qt4: enable built-in crash handler (Qt4 version; recompile needed)'
             'curl: enable built-in crash handler. (recompile needed)'
-            'gdb: generate detailed crash reports')
+            'gdb: generate detailed crash reports'
+            'arx-fatalis-data-demo: game data from official freeware demo'
+            'arx-fatalis-data-gog: game data from gog.com installer'
+            'arx-fatalis-data-copy: gamedata from existing Windows installation')
 makedepends=('boost' 'cmake' 'git')
 provides=('arx')
 source=("git+https://github.com/arx/ArxLibertatis.git"
