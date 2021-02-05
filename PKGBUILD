@@ -16,8 +16,8 @@ pkgver=21.0.0_devel.133218.b634d7f3e2b
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
-              'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libxrandr'
-              'ocl-icd' 'wayland-protocols' 'meson' 'ninja' 'glslang' 'llvm')
+             'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libxrandr'
+             'ocl-icd' 'wayland-protocols' 'meson' 'ninja' 'glslang' 'llvm')
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
          'libglvnd' 'wayland' 'vulkan-icd-loader' 'zstd' 'llvm-libs')
 # In order to keep the package simple and ease troubleshooting only use one llvm implementation
@@ -30,7 +30,7 @@ conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-laye
 url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git'
-                'LICENSE')
+        'LICENSE')
 sha512sums=('SKIP'
             'SKIP')
 
