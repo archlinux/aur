@@ -2,14 +2,14 @@
 # Contributor: Optize sp. z o.o. <hello@optize.pl>
 
 pkgname=swagger-ui
-pkgver=3.41.1
+pkgver=3.42.0
 pkgrel=1
 pkgdesc='Collection of web assets that dynamically generate beautiful documentation from a Swagger-compliant API.'
 arch=('any')
 url='https://swagger.io/swagger-ui/'
 license=('Apache')
 source=("https://github.com/swagger-api/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('67cce38222a63c7ca7a4fe356b976e347b073a5c334a2f4d4e908ed9f62f91ec')
+sha256sums=('2f3da5f2f1afcb1ea2dafde64c65e688d9e7a1f02f53db73e0da1c9d0bb70739')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/dist"
