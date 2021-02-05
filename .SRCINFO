@@ -1,6 +1,6 @@
 pkgbase = sph-sc-git
 	pkgdesc = compiles scheme-like s-expressions to c
-	pkgver = 157
+	pkgver = 224
 	pkgrel = 1
 	url = http://sph.mn
 	arch = any
