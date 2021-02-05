@@ -5,7 +5,7 @@
 # Contributor: ArcticVanguard <LideEmily at gmail dot com>
 # Contributor: ledti <antergist at gmail dot com>
 pkgname=obs-studio-wayland-git
-pkgver=26.1.2.r34.gfb347c3c6
+pkgver=26.1.2.r149.g951acf2df
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording (with wayland patches)"
 arch=("i686" "x86_64")
@@ -56,9 +56,9 @@ prepare() {
   git config user.name "Placeholder"
   git fetch origin pull/3338/head
   git checkout -b wayland FETCH_HEAD
-  git merge master || true
+  git merge --no-edit master || true
   [[ -z "$(git rerere status)" ]] || exit 1
-  git commit --all --no-edit
+  git commit --all --no-edit --allow-empty --allow-empty-message
 
   # from official arch package
   patch -Np1 < "$srcdir"/fix_python_binary_loading.patch
