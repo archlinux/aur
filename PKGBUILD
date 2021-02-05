@@ -3,17 +3,17 @@
 pkgname=gnome-shell-40alfa
 _pkgname=gnome-shell
 pkgver=40.1.20210122.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Next generation desktop shell"
 url="https://gitlab.gnome.org/GNOME/gnome-shell"
 arch=(x86_64)
 license=(GPL2)
-depends=(accountsservice gcr gjs js68 gnome-bluetooth upower gnome-session
+depends=(accountsservice gcr gjs js78 gnome-bluetooth upower gnome-session
 				gnome-settings-daemon sysprof gnome-themes-extra
 				gsettings-desktop-schemas-git gtk4 libcanberra-pulse libcroco
 				libgdm libgweather-git libsecret mutter-40alfa nm-connection-editor
-				unzip gstreamer libibus gnome-desktop bash-completion gnome-autoar)
+				unzip gstreamer libibus gnome-desktop bash-completion gnome-autoar glib2-git)
 				
 makedepends=(gtk-doc gnome-control-center evolution-data-server gobject-introspection git meson
              sassc asciidoc vulkan-headers)
@@ -35,3 +35,4 @@ build() {
 package() {
   DESTDIR="$pkgdir" meson install -C build
 }
+
