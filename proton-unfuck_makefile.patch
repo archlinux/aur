@@ -1,5 +1,5 @@
 diff --git a/build/makefile_base.mak b/build/makefile_base.mak
-index 412060a..3653c95 100755
+index 92bdb23..1e4806b 100755
 --- a/build/makefile_base.mak
 +++ b/build/makefile_base.mak
 @@ -69,7 +69,7 @@ endif
@@ -151,7 +151,16 @@ index 412060a..3653c95 100755
  	-Dexamples=disabled \
  	-Dtests=disabled \
  	-Dgtk_doc=disabled \
-@@ -623,14 +621,14 @@ gst_orc64: SHELL = $(CONTAINER_SHELL64)
+@@ -572,6 +570,8 @@ GST_COMMON_MESON_ARGS := \
+ 
+ GST_ORC_MESON_ARGS := \
+ 	$(GST_COMMON_MESON_ARGS) \
++	-Dtools=disabled \
++	-Dpackage-name="GStreamer Orc (Proton)" \
+ 	-Dorc-test=disabled
+ 
+ 
+@@ -623,14 +623,14 @@ gst_orc64: SHELL = $(CONTAINER_SHELL64)
  gst_orc64: $(GST_ORC_CONFIGURE_FILES64)
  	PATH="$(abspath $(TOOLS_DIR64))/bin:$(PATH)" \
  	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR64))/lib:$(LD_LIBRARY_PATH)" \
@@ -168,7 +177,7 @@ index 412060a..3653c95 100755
  	cp -a $(TOOLS_DIR32)/lib/liborc* $(DST_DIR)/lib/
  
  ##
-@@ -642,6 +640,9 @@ GSTREAMER_MESON_ARGS := \
+@@ -642,6 +642,9 @@ GSTREAMER_MESON_ARGS := \
  	-Dbenchmarks=disabled \
  	-Dtools=disabled \
  	-Dbash-completion=disabled \
@@ -178,7 +187,7 @@ index 412060a..3653c95 100755
  	$(GST_COMMON_MESON_ARGS)
  
  GSTREAMER_CONFIGURE_FILES32 := $(GSTREAMER_OBJ32)/build.ninja
-@@ -692,7 +693,7 @@ gstreamer64: SHELL = $(CONTAINER_SHELL64)
+@@ -692,7 +695,7 @@ gstreamer64: SHELL = $(CONTAINER_SHELL64)
  gstreamer64: $(GSTREAMER_CONFIGURE_FILES64)
  	PATH="$(abspath $(TOOLS_DIR64))/bin:$(PATH)" \
  	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR64))/lib:$(LD_LIBRARY_PATH)" \
@@ -187,7 +196,7 @@ index 412060a..3653c95 100755
  	cp -a $(TOOLS_DIR64)/lib/libgst* $(DST_DIR)/lib64/ && \
  	cp -a $(TOOLS_DIR64)/lib/gstreamer-1.0 $(DST_DIR)/lib64/
  
-@@ -700,7 +701,7 @@ gstreamer32: SHELL = $(CONTAINER_SHELL32)
+@@ -700,7 +703,7 @@ gstreamer32: SHELL = $(CONTAINER_SHELL32)
  gstreamer32: $(GSTREAMER_CONFIGURE_FILES32)
  	PATH="$(abspath $(TOOLS_DIR32))/bin:$(PATH)" \
  	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR32))/lib:$(LD_LIBRARY_PATH)" \
@@ -196,7 +205,7 @@ index 412060a..3653c95 100755
  	cp -a $(TOOLS_DIR32)/lib/libgst* $(DST_DIR)/lib/ && \
  	cp -a $(TOOLS_DIR32)/lib/gstreamer-1.0 $(DST_DIR)/lib/
  
-@@ -733,6 +734,8 @@ GST_BASE_MESON_ARGS := \
+@@ -733,6 +736,8 @@ GST_BASE_MESON_ARGS := \
  	-Dx11=disabled \
  	-Dxshm=disabled \
  	-Dxvideo=disabled \
@@ -205,7 +214,7 @@ index 412060a..3653c95 100755
  	$(GST_COMMON_MESON_ARGS)
  
  GST_BASE_CONFIGURE_FILES32 := $(GST_BASE_OBJ32)/build.ninja
-@@ -783,7 +786,7 @@ gst_base64: SHELL = $(CONTAINER_SHELL64)
+@@ -783,7 +788,7 @@ gst_base64: SHELL = $(CONTAINER_SHELL64)
  gst_base64: $(GST_BASE_CONFIGURE_FILES64)
  	PATH="$(abspath $(TOOLS_DIR64))/bin:$(PATH)" \
  	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR64))/lib:$(LD_LIBRARY_PATH)" \
@@ -214,7 +223,7 @@ index 412060a..3653c95 100755
  	cp -a $(TOOLS_DIR64)/lib/libgst* $(DST_DIR)/lib64/ && \
  	cp -a $(TOOLS_DIR64)/lib/gstreamer-1.0 $(DST_DIR)/lib64/
  
-@@ -791,7 +794,7 @@ gst_base32: SHELL = $(CONTAINER_SHELL32)
+@@ -791,7 +796,7 @@ gst_base32: SHELL = $(CONTAINER_SHELL32)
  gst_base32: $(GST_BASE_CONFIGURE_FILES32)
  	PATH="$(abspath $(TOOLS_DIR32))/bin:$(PATH)" \
  	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR32))/lib:$(LD_LIBRARY_PATH)" \
@@ -223,13 +232,7 @@ index 412060a..3653c95 100755
  	cp -a $(TOOLS_DIR32)/lib/libgst* $(DST_DIR)/lib/ && \
  	cp -a $(TOOLS_DIR32)/lib/gstreamer-1.0 $(DST_DIR)/lib/
  
-@@ -842,11 +845,14 @@ GST_GOOD_MESON_ARGS := \
- 	-Dtaglib=disabled \
- 	-Dudp=disabled \
- 	-Dv4l2=disabled \
-+	-Dvideobox=disabled \
- 	-Dvideocrop=disabled \
- 	-Dvideomixer=disabled \
+@@ -850,6 +855,8 @@ GST_GOOD_MESON_ARGS := \
  	-Dwavenc=disabled \
  	-Dximagesrc=disabled \
  	-Dy4m=disabled \
@@ -238,7 +241,7 @@ index 412060a..3653c95 100755
  	$(GST_COMMON_MESON_ARGS)
  
  GST_GOOD_CONFIGURE_FILES32 := $(GST_GOOD_OBJ32)/build.ninja
-@@ -897,7 +903,7 @@ gst_good64: SHELL = $(CONTAINER_SHELL64)
+@@ -900,7 +907,7 @@ gst_good64: SHELL = $(CONTAINER_SHELL64)
  gst_good64: $(GST_GOOD_CONFIGURE_FILES64)
  	PATH="$(abspath $(TOOLS_DIR64))/bin:$(PATH)" \
  	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR64))/lib:$(LD_LIBRARY_PATH)" \
@@ -247,7 +250,7 @@ index 412060a..3653c95 100755
  	cp -a $(TOOLS_DIR64)/lib/libgst* $(DST_DIR)/lib64/ && \
  	cp -a $(TOOLS_DIR64)/lib/gstreamer-1.0 $(DST_DIR)/lib64/
  
-@@ -905,7 +911,7 @@ gst_good32: SHELL = $(CONTAINER_SHELL32)
+@@ -908,7 +915,7 @@ gst_good32: SHELL = $(CONTAINER_SHELL32)
  gst_good32: $(GST_GOOD_CONFIGURE_FILES32)
  	PATH="$(abspath $(TOOLS_DIR32))/bin:$(PATH)" \
  	LD_LIBRARY_PATH="$(abspath $(TOOLS_DIR32))/lib:$(LD_LIBRARY_PATH)" \
@@ -256,33 +259,34 @@ index 412060a..3653c95 100755
  	cp -a $(TOOLS_DIR32)/lib/libgst* $(DST_DIR)/lib/ && \
  	cp -a $(TOOLS_DIR32)/lib/gstreamer-1.0 $(DST_DIR)/lib/
  
-@@ -933,6 +939,9 @@ GST_BAD_MESON_ARGS := \
+@@ -936,6 +943,8 @@ GST_BAD_MESON_ARGS := \
  	-Dopencv=disabled \
  	-Dvoamrwbenc=disabled \
  	-Dx265=disabled \
-+	-Daom=disabled \
-+	-Dlv2=disabled \
++	-Dtools=disabled \
 +	-Dpackage-name="GStreamer Bad Plugins (Proton)" \
  	$(GST_COMMON_MESON_ARGS)
  
  GST_BAD_CONFIGURE_FILES32 := $(GST_BAD_OBJ32)/build.ninja
-@@ -1005,6 +1014,7 @@ GST_UGLY_MESON_ARGS := \
+@@ -1008,6 +1017,8 @@ GST_UGLY_MESON_ARGS := \
          -Dglib-checks='disabled' \
          -Dglib-checks='disabled' \
          -Ddoc='disabled' \
++        -Dtools='disabled' \
 +        -Dpackage-name="GStreamer Ugly Plugins (Proton)" \
  	$(GST_COMMON_MESON_ARGS)
  
  GST_UGLY_CONFIGURE_FILES32 := $(GST_UGLY_OBJ32)/build.ninja
-@@ -1073,6 +1083,7 @@ gst_ugly32: $(GST_UGLY_CONFIGURE_FILES32)
+@@ -1076,6 +1087,8 @@ gst_ugly32: $(GST_UGLY_CONFIGURE_FILES32)
  
  GST_LIBAV_MESON_ARGS := \
          -Ddoc=disabled \
++        -Dtools=disabled \
 +        -Dpackage-name="GStreamer FFmpeg Plugin (Proton)" \
  	$(GST_COMMON_MESON_ARGS)
  
  GST_LIBAV_CONFIGURE_FILES32 := $(GST_LIBAV_OBJ32)/build.ninja
-@@ -1145,7 +1156,7 @@ FFMPEG_CONFIGURE_FILES64 := $(FFMPEG_OBJ64)/Makefile
+@@ -1148,7 +1161,7 @@ FFMPEG_CONFIGURE_FILES64 := $(FFMPEG_OBJ64)/Makefile
  
  # 64bit-configure
  $(FFMPEG_CONFIGURE_FILES64): SHELL = $(CONTAINER_SHELL64)
@@ -291,7 +295,7 @@ index 412060a..3653c95 100755
  	cd $(dir $@) && \
  		PATH="$(abspath $(TOOLS_DIR64))/bin:$(PATH)" \
  		PKG_CONFIG="$(PKG_CONFIG64)" \
-@@ -1153,6 +1164,8 @@ $(FFMPEG_CONFIGURE_FILES64): $(FFMPEG)/configure $(MAKEFILE_DEP) nasm64 | $(FFMP
+@@ -1156,6 +1169,8 @@ $(FFMPEG_CONFIGURE_FILES64): $(FFMPEG)/configure $(MAKEFILE_DEP) nasm64 | $(FFMP
  		$(abspath $(FFMPEG))/configure \
  			--cc=$(CC_QUOTED) --cxx=$(CXX_QUOTED) \
  			--prefix=$(abspath $(TOOLS_DIR64)) \
@@ -300,7 +304,7 @@ index 412060a..3653c95 100755
  			--disable-static \
  			--enable-shared \
  			--disable-programs \
-@@ -1197,7 +1210,7 @@ $(FFMPEG_CONFIGURE_FILES64): $(FFMPEG)/configure $(MAKEFILE_DEP) nasm64 | $(FFMP
+@@ -1202,7 +1217,7 @@ $(FFMPEG_CONFIGURE_FILES64): $(FFMPEG)/configure $(MAKEFILE_DEP) nasm64 | $(FFMP
  
  # 32-bit configure
  $(FFMPEG_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
@@ -309,7 +313,7 @@ index 412060a..3653c95 100755
  	cd $(dir $@) && \
  		PATH="$(abspath $(TOOLS_DIR32))/bin:$(PATH)" \
  		PKG_CONFIG="$(PKG_CONFIG32)" \
-@@ -1205,7 +1218,8 @@ $(FFMPEG_CONFIGURE_FILES32): $(FFMPEG)/configure $(MAKEFILE_DEP) nasm32 | $(FFMP
+@@ -1210,7 +1225,8 @@ $(FFMPEG_CONFIGURE_FILES32): $(FFMPEG)/configure $(MAKEFILE_DEP) nasm32 | $(FFMP
  		$(abspath $(FFMPEG))/configure \
  			--cc="$(CC32)" --cxx="$(CXX32)" \
  			--prefix=$(abspath $(TOOLS_DIR32)) \
@@ -319,7 +323,7 @@ index 412060a..3653c95 100755
  			--disable-static \
  			--enable-shared \
  			--disable-programs \
-@@ -1303,6 +1317,7 @@ $(FAUDIO_CONFIGURE_FILES32): $(FAUDIO)/CMakeLists.txt $(MAKEFILE_DEP) gst_base32
+@@ -1310,6 +1326,7 @@ $(FAUDIO_CONFIGURE_FILES32): $(FAUDIO)/CMakeLists.txt $(MAKEFILE_DEP) gst_base32
  		CC="$(CC32)" \
  		CXX="$(CXX32)" \
  		PKG_CONFIG="$(PKG_CONFIG32)" \
@@ -327,7 +331,7 @@ index 412060a..3653c95 100755
  		cmake $(abspath $(FAUDIO)) \
  			-DCMAKE_INSTALL_PREFIX="$(abspath $(TOOLS_DIR32))" \
  			$(FAUDIO_CMAKE_FLAGS)
-@@ -1661,7 +1676,13 @@ $(WINE_CONFIGURE_FILES64): SHELL = $(CONTAINER_SHELL64)
+@@ -1668,7 +1685,13 @@ $(WINE_CONFIGURE_FILES64): SHELL = $(CONTAINER_SHELL64)
  $(WINE_CONFIGURE_FILES64): $(MAKEFILE_DEP) | faudio64 jxrlib64 gst_base64 $(WINE_OBJ64)
  	cd $(dir $@) && \
  		../$(WINE)/configure \
@@ -341,7 +345,7 @@ index 412060a..3653c95 100755
  			--enable-win64 \
  			--disable-tests \
  			--prefix=$(abspath $(DST_DIR)) \
-@@ -1681,7 +1702,13 @@ $(WINE_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
+@@ -1688,7 +1711,13 @@ $(WINE_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
  $(WINE_CONFIGURE_FILES32): $(MAKEFILE_DEP) | faudio32 jxrlib32 gst_base32 $(WINE_OBJ32)
  	cd $(dir $@) && \
  		../$(WINE)/configure \
@@ -355,7 +359,7 @@ index 412060a..3653c95 100755
  			--disable-tests \
  			--prefix=$(abspath $(WINE_DST32)) \
  			LD_LIBRARY_PATH=$(abspath $(TOOLS_DIR32))/lib \
-@@ -1884,7 +1911,7 @@ dxvk_configure32: $(DXVK_CONFIGURE_FILES32)
+@@ -1891,7 +1920,7 @@ dxvk_configure32: $(DXVK_CONFIGURE_FILES32)
  dxvk: dxvk32 dxvk64
  
  dxvk64: $(DXVK_CONFIGURE_FILES64)
@@ -364,7 +368,7 @@ index 412060a..3653c95 100755
  	mkdir -p "$(DST_DIR)/lib64/wine/dxvk"
  	cp -f "$(DXVK_OBJ64)"/bin/dxgi.dll "$(DST_DIR)"/lib64/wine/dxvk/
  	cp -f "$(DXVK_OBJ64)"/bin/d3d11.dll "$(DST_DIR)"/lib64/wine/dxvk/
-@@ -1897,7 +1924,7 @@ dxvk64: $(DXVK_CONFIGURE_FILES64)
+@@ -1904,7 +1933,7 @@ dxvk64: $(DXVK_CONFIGURE_FILES64)
  
  
  dxvk32: $(DXVK_CONFIGURE_FILES32)
@@ -373,7 +377,7 @@ index 412060a..3653c95 100755
  	mkdir -p "$(DST_DIR)"/lib/wine/dxvk
  	cp -f "$(DXVK_OBJ32)"/bin/dxgi.dll "$(DST_DIR)"/lib/wine/dxvk/
  	cp -f "$(DXVK_OBJ32)"/bin/d3d11.dll "$(DST_DIR)"/lib/wine/dxvk/
-@@ -1922,12 +1949,12 @@ $(VKD3D_CONFIGURE_FILES32): $(VKD3D)/meson.build $(VKD3D)/build-win32.txt | $(VK
+@@ -1929,12 +1958,12 @@ $(VKD3D_CONFIGURE_FILES32): $(VKD3D)/meson.build $(VKD3D)/build-win32.txt | $(VK
  			meson --prefix="$(abspath $(VKD3D_OBJ32))" \
  				--cross-file "$(abspath $(VKD3D))/build-win32.txt" \
  				$(MESON_STRIP_ARG) \
@@ -388,7 +392,7 @@ index 412060a..3653c95 100755
  	mkdir -p "$(DST_DIR)"/lib/wine/vkd3d-proton
  	cp -af "$(VKD3D_OBJ32)/bin/d3d12.dll" "$(DST_DIR)"/lib/wine/vkd3d-proton/
  	rm -f "$(DST_DIR)"/lib/wine/vkd3d-proton/version && if test -e $(SRCDIR)/.git; then ( cd $(SRCDIR) && git submodule status -- vkd3d-proton ) > "$(DST_DIR)"/lib/wine/vkd3d-proton/version; fi
-@@ -1939,12 +1966,12 @@ $(VKD3D_CONFIGURE_FILES64): $(VKD3D)/meson.build $(VKD3D)/build-win64.txt | $(VK
+@@ -1946,12 +1975,12 @@ $(VKD3D_CONFIGURE_FILES64): $(VKD3D)/meson.build $(VKD3D)/build-win64.txt | $(VK
  			meson --prefix="$(abspath $(VKD3D_OBJ64))" \
  				--cross-file "$(abspath $(VKD3D))/build-win64.txt" \
  				$(MESON_STRIP_ARG) \
@@ -403,7 +407,7 @@ index 412060a..3653c95 100755
  	mkdir -p "$(DST_DIR)"/lib64/wine/vkd3d-proton
  	cp -af "$(VKD3D_OBJ64)/bin/d3d12.dll" "$(DST_DIR)"/lib64/wine/vkd3d-proton/
  	rm -f "$(DST_DIR)"/lib64/wine/vkd3d-proton/version && if test -e $(SRCDIR)/.git; then ( cd $(SRCDIR) && git submodule status -- vkd3d-proton ) > "$(DST_DIR)"/lib64/wine/vkd3d-proton/version; fi
-@@ -1974,75 +2001,6 @@ mediaconv64: $(MAKEFILE_DEP) gstreamer64 | $(MEDIACONV_OBJ64)
+@@ -1981,75 +2010,6 @@ mediaconv64: $(MAKEFILE_DEP) gstreamer64 | $(MEDIACONV_OBJ64)
  
  mediaconv: mediaconv32 mediaconv64
  
