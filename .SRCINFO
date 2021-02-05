@@ -1,7 +1,7 @@
 pkgbase = nasc-git
 	pkgdesc = Do maths like a normal person.
 	pkgver = 0.7.5.r13.ga95d1f8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://parnold-x.github.io/nasc/
 	install = nasc.install
 	arch = i686
@@ -17,6 +17,7 @@ pkgbase = nasc-git
 	depends = libgee
 	depends = gtksourceview3
 	depends = libsoup
+	depends = cln
 	provides = nasc
 	conflicts = nasc
 	conflicts = nasc-bzr
