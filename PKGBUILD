@@ -1,28 +1,29 @@
+_name=guile-fuse
 arch=(any)
-conflicts=(guile-fuse)
+conflicts=($_name)
 depends=("guile>=2" fuse)
 license=(gpl3+)
-makedepends=(git gcc sph-sc)
+makedepends=(git gcc)
 md5sums=(SKIP)
 pkgdesc='guile bindings for fuse (filesystems in userspace) as a shared library'
-pkgname=guile-fuse-git
+pkgname=$_name-git
 pkgrel=1
-pkgver=16
-provides=(guile-fuse)
-source=("$pkgname::git://git.sph.mn/guile-fuse")
-url="http://sph.mn/content/467"
+pkgver=24
+provides=($_name)
+source=("$_name::git://git.sph.mn/$_name")
+url="http://sph.mn"
 
 pkgver() {
-  cd $pkgname
+  cd $_name
   git rev-list --count HEAD
 }
 
 build() {
-  cd $pkgname
-  ./exe/compile || echo either sph-sc is not installed or guile-reader had a memory error and you could retry
+  cd $_name
+  ./exe/compile-c
 }
 
 package() {
-  cd $pkgname
-  ./exe/install --prefix=${pkgdir}
+  cd $_name
+  ./exe/install "$pkgdir"
 }
