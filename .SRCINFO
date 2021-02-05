@@ -1,0 +1,19 @@
+pkgbase = mkinitcpio-ntpdsync
+	pkgdesc = Synchronize time using ntpd
+	pkgver = 1.0
+	pkgrel = 1
+	install = install
+	arch = any
+	license = GPL
+	depends = ntp
+	source = initrd-ntpdsync.service
+	source = ntpdsync.hook
+	source = ntpdsync.install
+	source = LICENSE
+	sha256sums = 64dc3e84c39a9cf597bb2c0f6520ec14c13b9b1a5d4093514dbc201572175ab9
+	sha256sums = 05f7277db44fbdcb5c11e1b8196511a6a1bdeb27a728b3a67fcdf6770e864652
+	sha256sums = e93adb7327d57f5e2b6176e79eac9907da9fa8030782b6013c8190fe4db72c6a
+	sha256sums = 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b
+
+pkgname = mkinitcpio-ntpdsync
+

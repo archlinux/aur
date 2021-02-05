@@ -1,0 +1,16 @@
+[Unit]
+Description=Synchronize time using ntpd
+ConditionPathExists=/etc/initrd-release
+DefaultDependencies=no
+After=initrd-network.service
+Requires=initrd-network.service
+
+[Service]
+ExecStart=/usr/bin/ntpd -gq
+
+[Install]
+WantedBy=sysinit.target
+
+[X-SystemdTool]
+InitrdBinary=/usr/bin/ntpd
+InitrdPath=/etc/ntp.conf

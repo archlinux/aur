@@ -1,0 +1,13 @@
+#!/bin/bash
+
+build() {
+    add_binary /usr/bin/ntpd
+    add_file /etc/ntp.conf
+    add_runscript
+}
+
+help() {
+    cat<<EOF
+Synchronize time using ntpd
+EOF
+}
