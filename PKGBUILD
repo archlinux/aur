@@ -5,6 +5,7 @@ pkgver=1.1.0.r2.gec7620f
 pkgrel=1
 license=('MIT')
 pkgdesc='Manipulates KnightOS software packages'
+groups=("knightos")
 makedepends=("cmake" "asciidoc")
 arch=("x86_64")
 url='https://github.com/KnightOS/kpack'
