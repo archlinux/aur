@@ -1,9 +1,10 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
-pkgname=sass
+pkgname=knightos-sass
 pkgver=1.3.8
 pkgrel=2
 license=("MIT")
 pkgdesc='A featureful z80 assembler'
+groups=("knightos")
 depends=("mono")
 arch=("x86_64")
 url='https://github.com/KnightOS/sass'
