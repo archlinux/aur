@@ -1,0 +1,21 @@
+pkgbase = com.youku.deepin
+	pkgdesc = YouKu (优酷) Client on Deepin Wine5
+	pkgver = 8.0.7.11061
+	pkgrel = 2
+	url = https://www.youku.com
+	install = youku.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = deepin-wine5-stable>=5.0.0.19
+	depends = deepin-wine-helper>=5.1.16
+	depends = p7zip
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	optdepends = ttf-ms-fonts: Microsoft Core fonts
+	optdepends = noto-fonts-cjk: Google Noto CJK fonts
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.youku.deepin/com.youku.deepin_8.0.7.11061deepin2_i386.deb
+	sha512sums = 00e577ab34fe3999094fb0172c17c87001d8b65b9069a28c3f891e6571c49830c29790237f0ee1692666f62ea0ca584be3f0595a4b84e2ff5be43b7d9f125b5a
+
+pkgname = com.youku.deepin
