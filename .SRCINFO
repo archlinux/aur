@@ -1,6 +1,6 @@
 pkgbase = gomu
 	pkgdesc = Terminal User Interface (TUI) Music Player
-	pkgver = 1.5.5
+	pkgver = 1.5.9
 	pkgrel = 2
 	url = https://github.com/issadarkthing/gomu
 	arch = x86_64
@@ -9,12 +9,11 @@ pkgbase = gomu
 	makedepends = git
 	depends = alsa-lib
 	depends = youtube-dl
-	depends = noto-fonts-emoji
 	optdepends = fzf
 	conflicts = gomu-git
 	conflicts = gomu-bin
-	source = gomu-1.5.5.tar.gz::https://github.com/issadarkthing/gomu/archive/v1.5.5.tar.gz
-	md5sums = 0c386dac1666fbb0d26738686f1e0198
+	source = gomu-1.5.9.tar.gz::https://github.com/issadarkthing/gomu/archive/v1.5.9.tar.gz
+	md5sums = af2301fe05ec800ab1e364073e950ded
 
 pkgname = gomu
 
