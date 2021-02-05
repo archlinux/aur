@@ -1,11 +1,12 @@
 pkgbase = python-guessit
 	pkgdesc = A library for guessing information from video files.
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pypi.python.org/pypi/guessit
 	arch = any
 	license = LGPL
 	makedepends = python-setuptools
+	makedepends = python-pip
 	depends = python
 	depends = python-babelfish
 	depends = python-dateutil
