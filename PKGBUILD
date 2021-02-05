@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-quick3d
-_qtver=6.0.0
+_qtver=6.0.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,7 +18,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtquick3d-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('0a9a3e765c343b55511900b173f9591df88b0787f67b9ecfb8f25203bfdb0aa8')
+sha256sums=('26194ff27247bed5b21f253ade062da60e2dd9395a8ad29de388d41ab8548388')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -48,6 +48,7 @@ package() {
     find "$pkgdir/usr/$_arch" -iname '*.exe' -exec $_arch-strip --strip-all {} \;
     find "$pkgdir/usr/$_arch" -iname '*.dll' -exec $_arch-strip --strip-unneeded {} \;
     find "$pkgdir/usr/$_arch" -iname '*.a'   -exec $_arch-strip -g {} \;
+    [[ -d "$pkgdir/usr/$_arch/share/doc" ]] && rm -r "$pkgdir/usr/$_arch/share/doc"
   done
 
   install -d "$pkgdir"/usr/share/licenses
