@@ -3,7 +3,7 @@
 pkgname=atool-git
 _pkgname=atool
 pkgver=r6.e8b18a2
-pkgrel=1
+pkgrel=2
 pkgdesc="A script for managing file archives of various types (with zstd support)"
 arch=('any')
 url="https://github.com/solsticedhiver/atool"
@@ -11,6 +11,7 @@ license=('GPL3')
 depends=('file' 'perl')
 makedepends=('bash')
 conflicts=('atool')
+provides=('atool')
 optdepends=('bzip2: for using atool with bzip2 compressed archives'
             'cpio: for using atool with cpio archives'
             'gzip: for using atool with gzip compressed archives'
