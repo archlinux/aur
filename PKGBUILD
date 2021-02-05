@@ -1,7 +1,7 @@
 # Maintainer: Scott Hansen (firecat53) firecat4153 at gmail
 pkgname=goobook-git
 _gitname=goobook
-pkgver=3.3.3.g79ae9a3
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Search your google contacts from the command-line or mutt."
 arch=('any')
@@ -11,7 +11,7 @@ conflicts=('goobook')
 provides=('goobook')
 depends=('python' 'python-simplejson' 'python-google-api-core'
          'python-google-api-python-client' 'python-googleapis-common-protos'
-         'python-oauth2client')
+         'python-oauth2client' 'python-xdg')
 makedepends=('git' 'python-setuptools')
 source=("git+https://gitlab.com/goobook/goobook.git")
 md5sums=('SKIP')
