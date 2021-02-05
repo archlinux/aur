@@ -4,13 +4,13 @@
 
 pkgname=ki18n-git
 pkgver=5.79.0_r436.gf88e694
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced internationalization framework'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(qt5-declarative)
-makedepends=(git extra-cmake-modules-git python-pyqt5 clang doxygen qt5-tools qt5-doc sip4)
+makedepends=(git extra-cmake-modules-git python-pyqt5 clang doxygen qt5-tools qt5-doc sip)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 optdepends=('python-pyqt5: for the Python bindings' 'python: to compile .ts files')
