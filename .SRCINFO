@@ -1,11 +1,11 @@
 pkgbase = theme-switcher-git
 	pkgdesc = Switching between light and dark themes made easy
-	pkgver = r.
+	pkgver = 0.1
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/theme-switcher-git/
 	arch = any
 	license = GPL
-	makedepends = git
+	makedepends = coreutils
 	depends = bash
 	depends = glib2
 	depends = sed
@@ -18,7 +18,7 @@ pkgbase = theme-switcher-git
 	optdepends = sway: for setting wallpaper in sway
 	provides = theme-switcher
 	conflicts = theme-switcher
-	source = theme-switcher::git+https://aur.archlinux.org/theme-switcher-git.git
+	source = dark-theme.sh
 	sha256sums = SKIP
 
 pkgname = theme-switcher-git
