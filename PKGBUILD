@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Lefranc <guillaume@signal18.io>
 pkgname=nextdns
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='NextDNS DNS-over-HTTPS client'
 arch=('x86_64')
 url='https://github.com/nextdns/nextdns'
@@ -22,4 +22,4 @@ package() {
 }
 
 sha256sums=('c2ac19510a9e58c34b3ece2a5c5ff7e991099c91c0cf4bcc4228897dd65692ba'
-            '33a71435b24f2fb0844de342f7a4680c338eb74f9e61ba74a962a5d2d5224dc2')
+            'e15d83ec460562c8a81052f37c0e78e18842e95270895524b9853f7aca285eba')
