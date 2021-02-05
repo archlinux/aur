@@ -1,7 +1,7 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=mininet-git
-pkgver=2.3.0d6.r29.gafdf9fd
+pkgver=2.3.0b2.r4.gf0c726a
 pkgrel=1
 pkgdesc='Emulator for rapid prototyping of Software Defined Networks'
 depends=('python' 'iproute2' 'net-tools' 'iputils' 'inetutils' 'iperf' 'ethtool'
@@ -19,7 +19,7 @@ conflicts=('mininet')
 replaces=('mininet')
 install=mininet.install
 source=("$pkgname"::'git+https://github.com/mininet/mininet'
-        'git+https://github.com/mininet/openflow')  # for the UserSwitch
+        'git+https://github.com/mininet/openflow')  # for UserSwitch
 sha256sums=('SKIP'
             'SKIP')
 
@@ -35,10 +35,12 @@ pkgver() {
 prepare() {
     cd "$srcdir/openflow"
     sed '/^include debian\/automake.mk/d' -i Makefile.am
+    # Patch controller to handle more than 16 switches
+    patch -Np1 -i "$srcdir/$pkgname/util/openflow-patches/controller.patch"
 
     cd "$srcdir/$pkgname"
     sed 's:PREFIX ?= /usr:PREFIX ?= "$(DESTDIR)"/usr:' -i Makefile
-    sed 's:$(PYTHON) setup.py install:$(PYTHON) setup.py install --prefix=/usr --root="$(DESTDIR)" --optimize=1:' -i Makefile
+    sed '/^[[:space:]]*$(PYTHON) /d' -i Makefile
 }
 
 build() {
@@ -57,6 +59,7 @@ package() {
 
     cd "$srcdir/$pkgname"
     make DESTDIR="${pkgdir}" install
+    python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/mininet/LICENSE"
 }
 
