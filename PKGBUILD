@@ -3,14 +3,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kconfig-git
-pkgver=5.79.0_r772.g828ba0e
+pkgver=5.79.0_r776.g5d0dac0
 pkgrel=1
 pkgdesc='Configuration system'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(qt5-base)
-makedepends=(git extra-cmake-modules-git qt5-tools qt5-doc clang python-pyqt5 doxygen sip4)
+makedepends=(git extra-cmake-modules-git qt5-tools qt5-doc clang python-pyqt5 doxygen sip)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 optdepends=('python-pyqt5: for the Python bindings')
