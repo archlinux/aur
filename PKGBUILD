@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="9.0.351.0"
+pkgver="9.0.352.0"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -20,7 +20,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-md5sums=('4656840bf56a8fa1c1637312d4fd14de')
+md5sums=('4f1f7c549ad95893b4ce01de5edfc638')
 
 prepare()
 {
@@ -118,6 +118,7 @@ package()
  install -Dm644 "$srcdir/FID_BOX_gl_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/BoxFS.gl-ES.xcl"
  install -Dm644 "$srcdir/FID_BOX_he_IL" "$pkgdir${_installdir}/$pkgname/${_languages}/BoxFS.he-IL.xcl"
  install -Dm644 "$srcdir/FID_BOX_hr_HR" "$pkgdir${_installdir}/$pkgname/${_languages}/BoxFS.hr-HR.xcl"
+ install -Dm644 "$srcdir/FID_BOX_hu_HU" "$pkgdir${_installdir}/$pkgname/${_languages}/BoxFS.hu-HU.xcl"
  install -Dm644 "$srcdir/FID_BOX_id_ID" "$pkgdir${_installdir}/$pkgname/${_languages}/BoxFS.id-ID.xcl"
  install -Dm644 "$srcdir/FID_BOX_it_IT" "$pkgdir${_installdir}/$pkgname/${_languages}/BoxFS.it-IT.xcl"
  install -Dm644 "$srcdir/FID_BOX_ja_JP" "$pkgdir${_installdir}/$pkgname/${_languages}/BoxFS.ja-JP.xcl"
@@ -140,6 +141,7 @@ package()
  install -Dm644 "$srcdir/FID_CC_fr_FR" "$pkgdir${_installdir}/$pkgname/${_languages}/ColorConvert.fr-FR.xcl"
  install -Dm644 "$srcdir/FID_CC_he_IL" "$pkgdir${_installdir}/$pkgname/${_languages}/ColorConvert.he-IL.xcl"
  install -Dm644 "$srcdir/FID_CC_hr_HR" "$pkgdir${_installdir}/$pkgname/${_languages}/ColorConvert.hr-HR.xcl"
+ install -Dm644 "$srcdir/FID_CC_hu_HU" "$pkgdir${_installdir}/$pkgname/${_languages}/ColorConvert.hu-HU.xcl"
  install -Dm644 "$srcdir/FID_CC_ja_JP" "$pkgdir${_installdir}/$pkgname/${_languages}/ColorConvert.ja-JP.xcl"
  install -Dm644 "$srcdir/FID_CC_ko_KR" "$pkgdir${_installdir}/$pkgname/${_languages}/ColorConvert.ko-KR.xcl"
  install -Dm644 "$srcdir/FID_CC_nl_NL" "$pkgdir${_installdir}/$pkgname/${_languages}/ColorConvert.nl-NL.xcl"
@@ -160,6 +162,7 @@ package()
  install -Dm644 "$srcdir/FID_CSV_fr_FR" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.fr-FR.xcl"
  install -Dm644 "$srcdir/FID_CSV_he_IL" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.he-IL.xcl"
  install -Dm644 "$srcdir/FID_CSV_hr_HR" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.hr-HR.xcl"
+ install -Dm644 "$srcdir/FID_CSV_hu_HU" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.hu-HU.xcl"
  install -Dm644 "$srcdir/FID_CSV_ja_JP" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.ja-JP.xcl"
  install -Dm644 "$srcdir/FID_CSV_ko_KR" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.ko-KR.xcl"
  install -Dm644 "$srcdir/FID_CSV_nl_NL" "$pkgdir${_installdir}/$pkgname/${_languages}/CSVtoPDF.nl-NL.xcl"
@@ -212,6 +215,7 @@ package()
  install -Dm644 "$srcdir/FID_FO_gl_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/FileOpenSH.gl-ES.xcl"
  install -Dm644 "$srcdir/FID_FO_he_IL" "$pkgdir${_installdir}/$pkgname/${_languages}/FileOpenSH.he-IL.xcl"
  install -Dm644 "$srcdir/FID_FO_hr_HR" "$pkgdir${_installdir}/$pkgname/${_languages}/FileOpenSH.hr-HR.xcl"
+ install -Dm644 "$srcdir/FID_FO_hu_HU" "$pkgdir${_installdir}/$pkgname/${_languages}/FileOpenSH.hu-HU.xcl"
  install -Dm644 "$srcdir/FID_FO_id_ID" "$pkgdir${_installdir}/$pkgname/${_languages}/FileOpenSH.id-ID.xcl"
  install -Dm644 "$srcdir/FID_FO_it_IT" "$pkgdir${_installdir}/$pkgname/${_languages}/FileOpenSH.it-IT.xcl"
  install -Dm644 "$srcdir/FID_FO_ja_JP" "$pkgdir${_installdir}/$pkgname/${_languages}/FileOpenSH.ja-JP.xcl"
@@ -240,6 +244,7 @@ package()
  install -Dm644 "$srcdir/FID_GD_gl_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.gl-ES.xcl"
  install -Dm644 "$srcdir/FID_GD_he_IL" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.he-IL.xcl"
  install -Dm644 "$srcdir/FID_GD_hr_HR" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.hr-HR.xcl"
+ install -Dm644 "$srcdir/FID_GD_hu_HU" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.hu-HU.xcl"
  install -Dm644 "$srcdir/FID_GD_id_ID" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.id-ID.xcl"
  install -Dm644 "$srcdir/FID_GD_it_IT" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.it-IT.xcl"
  install -Dm644 "$srcdir/FID_GD_ja_JP" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.ja-JP.xcl"
@@ -268,6 +273,7 @@ package()
  install -Dm644 "$srcdir/FID_MD_gl_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/Markdown.gl-ES.xcl"
  install -Dm644 "$srcdir/FID_MD_he_IL" "$pkgdir${_installdir}/$pkgname/${_languages}/Markdown.he-IL.xcl"
  install -Dm644 "$srcdir/FID_MD_hr_HR" "$pkgdir${_installdir}/$pkgname/${_languages}/Markdown.hr-HR.xcl"
+ install -Dm644 "$srcdir/FID_MD_hu_HU" "$pkgdir${_installdir}/$pkgname/${_languages}/Markdown.hu-HU.xcl"
  install -Dm644 "$srcdir/FID_MD_id_ID" "$pkgdir${_installdir}/$pkgname/${_languages}/Markdown.id-ID.xcl"
  install -Dm644 "$srcdir/FID_MD_it_IT" "$pkgdir${_installdir}/$pkgname/${_languages}/Markdown.it-IT.xcl"
  install -Dm644 "$srcdir/FID_MD_ja_JP" "$pkgdir${_installdir}/$pkgname/${_languages}/Markdown.ja-JP.xcl"
@@ -325,6 +331,7 @@ package()
  install -Dm644 "$srcdir/FID_OD_gl_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/OneDrive.gl-ES.xcl"
  install -Dm644 "$srcdir/FID_OD_he_IL" "$pkgdir${_installdir}/$pkgname/${_languages}/OneDrive.he-IL.xcl"
  install -Dm644 "$srcdir/FID_OD_hr_HR" "$pkgdir${_installdir}/$pkgname/${_languages}/OneDrive.hr-HR.xcl"
+ install -Dm644 "$srcdir/FID_OD_hu_HU" "$pkgdir${_installdir}/$pkgname/${_languages}/OneDrive.hu-HU.xcl"
  install -Dm644 "$srcdir/FID_OD_id_ID" "$pkgdir${_installdir}/$pkgname/${_languages}/OneDrive.id-ID.xcl"
  install -Dm644 "$srcdir/FID_OD_it_IT" "$pkgdir${_installdir}/$pkgname/${_languages}/OneDrive.it-IT.xcl"
  install -Dm644 "$srcdir/FID_OD_ja_JP" "$pkgdir${_installdir}/$pkgname/${_languages}/OneDrive.ja-JP.xcl"
