@@ -1,7 +1,7 @@
 pkgbase = libdispatch-git
 	pkgdesc = Comprehensive support for concurrent code execution on multicore hardware
-	pkgver = 2017.06.19.a.r0.g56f36b6
-	pkgrel = 2
+	pkgver = 2021.02.02.a.r0.g1c303fa
+	pkgrel = 1
 	url = https://apple.github.io/swift-corelibs-libdispatch/
 	arch = i686
 	arch = x86_64
@@ -12,17 +12,15 @@ pkgbase = libdispatch-git
 	license = Apache
 	makedepends = git
 	makedepends = clang
-	depends = libbsd
-	depends = libblocksruntime
+	makedepends = cmake
 	provides = libdispatch
-	provides = libdispatch-clang-git
 	conflicts = libdispatch
-	conflicts = libdispatch-clang-git
 	conflicts = swift
 	conflicts = swift-development
-	replaces = libdispatch-clang-git
-	source = libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch.git
-	md5sums = SKIP
+	source = libdispatch-git::git+https://github.com/apple/swift-corelibs-libdispatch.git
+	source = remove-werror.patch
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = libdispatch-git
 

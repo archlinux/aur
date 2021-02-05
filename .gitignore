@@ -2,4 +2,4 @@
 /pkg/
 *.pkg.tar*
 *.src.tar*
-/libdispatch/
+/libdispatch-git/
