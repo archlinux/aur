@@ -2,10 +2,10 @@
 _pkgname=backupninja
 pkgname=$_pkgname-git
 pkgver=1113.5cc8040
-pkgrel=1
+pkgrel=4
 pkgdesc="A centralized way to configure and schedule many different backup utilities"
 arch=('any')
-url="https://labs.riseup.net/code/projects/backupninja"
+url="https://0xacab.org/liberate/backupninja"
 license=('GPL')
 depends=('bash' 'dialog')
 makedepends=('git')
@@ -15,7 +15,7 @@ optdepends=('rdiff-backup: rdiff backups'
             'mariadb-clients: mysql backups'
             'rsync: secure and reliable remote syncronisation tool'
             'duplicity: duplicity backups')
-source=('backupninja::git+https://0xacab.org/riseuplabs/backupninja.git')
+source=('backupninja::git+https://0xacab.org/liberate/backupninja.git')
 md5sums=('SKIP')
 backup=('etc/backupninja.conf')
 
@@ -35,7 +35,6 @@ package() {
     cd "$srcdir/$_pkgname"
     make DESTDIR="$pkgdir" install
     chmod a-x $pkgdir/usr/lib/$_pkgname/parseini
-    chmod a-x $pkgdir/usr/lib/$_pkgname/vserver
     mkdir -p "$pkgdir/usr/share/doc/$_pkgname/examples"
     install -Dm644 $pkgdir/usr/share/$_pkgname/example.* $pkgdir/usr/share/doc/$_pkgname/examples
     rm $pkgdir/usr/share/$_pkgname/example.*

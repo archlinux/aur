@@ -1,7 +1,7 @@
 pkgbase = backupninja-git
 	pkgdesc = A centralized way to configure and schedule many different backup utilities
 	pkgver = 1113.5cc8040
-	pkgrel = 3
+	pkgrel = 4
 	url = https://0xacab.org/liberate/backupninja
 	arch = any
 	license = GPL
