@@ -1,37 +1,54 @@
-# Maintainer: Pedro Martinez-Julia <pedromj@gmail.com>
 # Contributor: Walter Dworak <preparationh67@gmail.com>
+# Contributor: Pedro Martinez-Julia <pedromj@gmail.com>
+# Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=mininet
-pkgver=2.2.2
+pkgver=2.3.0b2
 pkgrel=1
-pkgdesc="Process-based network emulator (stable branch)"
-url="https://github.com/mininet/mininet/"
+pkgdesc='Emulator for rapid prototyping of Software Defined Networks'
+depends=('python' 'iproute2' 'net-tools' 'iputils' 'inetutils' 'iperf' 'ethtool'
+         'libcgroup' 'openvswitch' 'psmisc')
+optdepends=('xorg-xhost: for X11 forwarding'
+            'socat: for X11 forwarding'
+            'xterm: required for MiniEdit'
+            'tk: required for MiniEdit')
+makedepends=('git' 'help2man' 'python-setuptools')
+arch=('x86_64')
+url='https://github.com/mininet/mininet'
 license=('custom')
-depends=('bash' 'python2' 'python2-networkx' 'net-tools' 'iputils' 'iperf' 'openvswitch')
-optdepends=('xorg-xhost')
-makedepends=('help2man' 'python2-setuptools')
-install="${pkgname}.install"
-arch=('i686' 'x86_64')
-source=("https://github.com/mininet/mininet/archive/$pkgver.tar.gz")
-sha256sums=('d0aed2ea7a9096ae975694a4b3d0995259ef79268dd8888ba8be28601c100db5')
+install=mininet.install
+source=("https://github.com/mininet/mininet/archive/$pkgver.tar.gz"
+        'git+https://github.com/mininet/openflow')  # for UserSwitch
+sha256sums=('9c879d995ba01717c739d5baedb11a35754f34b629579c640e5d3c48f835424f'
+            'SKIP')
 
 prepare () {
+    cd "$srcdir/openflow"
+    sed '/^include debian\/automake.mk/d' -i Makefile.am
+    # Patch controller to handle more than 16 switches
+    patch -Np1 -i "$srcdir/$pkgname-$pkgver/util/openflow-patches/controller.patch"
+
 	cd "$srcdir/$pkgname-$pkgver"
-	grep python2 Makefile && return
-	grep -rIil '#!.*python' . | xargs -n1 sed -i 's:#!/usr/bin/env python:#!/usr/bin/env python2:g'
-	grep -rIil '#!.*python' . | xargs -n1 sed -i 's:#!/usr/bin/python:#!/usr/bin/python2:g'
-	sed 's:BINDIR = /usr/bin:BINDIR = $(DESTDIR)/usr/bin:g' -i Makefile
-	sed 's:MANDIR = /usr/share/man/man1:MANDIR = $(DESTDIR)/usr/share/man/man1:g' -i Makefile
-	sed 's:install $(MNEXEC) $(BINDIR):mkdir -p $(BINDIR); install $(MNEXEC) $(BINDIR):g' -i Makefile
-	sed 's:install $(MANPAGES) $(MANDIR):mkdir -p $(MANDIR);install $(MANPAGES) $(MANDIR):g' -i Makefile
-	sed 's:python setup.py:python2 setup.py install --prefix=/usr --root="$(DESTDIR)" --optimize=1:g' -i Makefile
+    sed 's:PREFIX ?= /usr:PREFIX ?= "$(DESTDIR)"/usr:' -i Makefile
+    sed '/^[[:space:]]*$(PYTHON) /d' -i Makefile
 }
 
 build () {
+    cd "$srcdir/openflow"
+    autoreconf --install --force
+    ./configure --prefix=/usr --sbindir=/usr/bin
+    make
+
 	cd "$srcdir/$pkgname-$pkgver"
+    make mnexec man
 }
 
 package () {
+    cd "$srcdir/openflow"
+    make DESTDIR="${pkgdir}" install
+
 	cd "$srcdir/$pkgname-$pkgver"
-	make DESTDIR="${pkgdir}" install
+    make DESTDIR="${pkgdir}" install
+    python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/mininet/LICENSE"
 }
