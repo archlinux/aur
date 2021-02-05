@@ -1,10 +1,11 @@
 pkgbase = kime-git
 	pkgdesc = Korean IME
-	pkgver = 0.9.1.r30.aa351a2
+	pkgver = 0.9.1.r63.0cc60d3
 	pkgrel = 1
 	url = https://github.com/Riey/kime
 	arch = any
 	license = GPL3
+	makedepends = cbindgen
 	makedepends = cargo
 	makedepends = clang
 	makedepends = llvm
