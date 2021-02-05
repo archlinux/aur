@@ -1,9 +1,11 @@
 pkgbase = kongress
 	pkgdesc = Companion application for conferences
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KDE/kongress
 	arch = x86_64
+	license = BSD
+	license = GPL
 	license = LGPL
 	makedepends = extra-cmake-modules
 	makedepends = kconfig

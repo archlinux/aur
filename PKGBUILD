@@ -2,11 +2,11 @@
 
 pkgname=kongress
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Companion application for conferences"
 arch=($CARCH)
 url="https://github.com/KDE/kongress"
-license=(LGPL)
+license=(BSD GPL LGPL)
 depends=(hicolor-icon-theme kcalendarcore kdbusaddons ki18n knotifications)
 makedepends=(extra-cmake-modules kconfig kcoreaddons kirigami2 qt5-base qt5-declarative qt5-imageformats qt5-quickcontrols2 qt5-svg qt5-wayland qt5-webengine)
 source=("$url/archive/v$pkgver.tar.gz")
