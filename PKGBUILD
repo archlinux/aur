@@ -1,7 +1,7 @@
 # Maintaoner: Yamada Hayao <development@fascode.net>
 
 pkgname="madoka-magica-fonts"
-pkgver=20210124
+pkgver=20210205
 pkgrel=1
 pkgdesc="Fonts for Puella Magi Madoca magica"
 arch=('any')
@@ -27,10 +27,10 @@ source=(
 )
 
 md5sums=(
-    "a34bd82eaf6250c042b824eb33b38e2e"
-    '743bc26c29f6d495ee534c816cade05a'
-    '22eafbf9dfc03ea9a6db0c5a86c026f5'
-    '04e2422a40158735772cc71ac258670d'
+    "SKIP"
+    'SKIP'
+    'SKIP'
+    'SKIP'
     "SKIP"
 )
 
