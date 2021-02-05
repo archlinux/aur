@@ -11,7 +11,7 @@
 
 _android_arch=aarch64
 pkgname=android-aarch64-qt6-base
-_qtver=6.0.0
+_qtver=6.0.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -33,16 +33,16 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0003-Fix-using-static-PCRE2-and-DBus-1.patch'
         '0004-Fix-transitive-dependencies-of-static-libraries.patch'
         '0005-Fix-libjpeg-workaround-for-conflict-with-rpcndr.h.patch'
-        '0006-Support-finding-MariaDB.patch'
+        '0006-Support-finding-static-MariaDB-client-library.patch'
         '0007-Allow-overriding-CMAKE_FIND_LIBRARY_SUFFIXES-to-pref.patch')
-sha256sums=('ae227180272d199cbb15318e3353716afada5c57fd5185b812ae26912c958656'
-            '0907b860c3394efc457304e75ec0282799374a83f411e194250cd20f4f703051'
-            'ba9f624f9393289930b10a1b976d094f4f023009d46ceaf1a05af0ef9981a65f'
-            '7b1b9b3b995e0ade88251bd97ca9b197511ed35657d7ec5643eaee22f7f83993'
-            'aa30dd86403f39cc3de9512de05c86dbb69ca141bdb55ca4dd7578c03de174a9'
-            'dd4db93874ae433a88dde68ebe5bed864c0af4a37cb81778a4154cda8f310b3d'
-            '713d91d944688677c3d56f07f7a9e8b9858a38709daf95cea99e5a87f8e429d2'
-            '56d024b76fa9dde2bcf8720a48bf9c43dc8b48256be6590d3da55fc68c27ad25')
+sha256sums=('8d2bc1829c1479e539f66c2f51a7e11c38a595c9e8b8e45a3b45f3cb41c6d6aa'
+            '82bfcddb91097e761c5c3cfe66a2153e28446a11e20638c519589dab59bf891b'
+            '06a54156c5f3145783ee41d5e2dec651f23e207faeb113b9c59ed11b8201bb53'
+            'aba65a351d26cfe2536c1115cce6448e4779998f663b71e5c4dc3fa7c3137f5d'
+            '820447581d2beda6f383ce8c7a18299b38273d162e62d5820c88dc24f2568a06'
+            '37af48d96b4265b442eac016928f0be5236f82ed7c5fa8670a389993556ffdee'
+            '074341ec2aebf7c9100022b9fedb919a426ec58c0456515cffd6131b205a11cd'
+            'fa1ae6268c7b9f773dda4950dce834adf8d5a15ebc672f096e47b554192758c2')
 
 prepare () {
   cd $_pkgfqn

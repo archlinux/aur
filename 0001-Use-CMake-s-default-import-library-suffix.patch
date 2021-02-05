@@ -1,4 +1,4 @@
-From b3a78b8672134e97f6a6b511dd1c6822fe9811e8 Mon Sep 17 00:00:00 2001
+From 450fa18bf971462b62ddcf4d2166b4b4d8b821e3 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 22:08:10 +0100
 Subject: [PATCH 1/7] Use CMake's default import library suffix
@@ -13,10 +13,10 @@ Change-Id: Iedc6a7ee8982a62ddd56ad0bf25ba0b8752a666a
  5 files changed, 21 insertions(+), 7 deletions(-)
 
 diff --git a/cmake/QtPriHelpers.cmake b/cmake/QtPriHelpers.cmake
-index e0f10d19bb..ae2fe6e8f3 100644
+index e77e98fe76..35639684a4 100644
 --- a/cmake/QtPriHelpers.cmake
 +++ b/cmake/QtPriHelpers.cmake
-@@ -342,9 +342,13 @@ QT.${config_module_name}_private.disabled_features = ${disabled_private_features
+@@ -368,9 +368,13 @@ QT.${config_module_name}_private.disabled_features = ${disabled_private_features
          qt_path_join(private_pri_file_path "${target_path}" "${private_pri_file_name}")
          list(APPEND pri_files "${private_pri_file_path}")
  
@@ -31,7 +31,7 @@ index e0f10d19bb..ae2fe6e8f3 100644
              ${CMAKE_EXTRA_SHARED_LIBRARY_SUFFIXES}
              ${CMAKE_STATIC_LIBRARY_SUFFIX})
          add_custom_command(
-@@ -749,9 +753,13 @@ CONFIG += ${private_config_joined}
+@@ -775,9 +779,13 @@ CONFIG += ${private_config_joined}
          list(APPEND inputs "${preliminary_pri_root}/${cfg}/${pri_data_cmake_file}")
      endforeach()
  
@@ -47,7 +47,7 @@ index e0f10d19bb..ae2fe6e8f3 100644
          ${CMAKE_STATIC_LIBRARY_SUFFIX})
      add_custom_command(
 diff --git a/cmake/QtPrlHelpers.cmake b/cmake/QtPrlHelpers.cmake
-index 0ad1747961..fcb520f2ad 100644
+index 0c0b7a2aec..d408245ffc 100644
 --- a/cmake/QtPrlHelpers.cmake
 +++ b/cmake/QtPrlHelpers.cmake
 @@ -348,11 +348,17 @@ ${prl_step1_content_libs}
@@ -70,7 +70,7 @@ index 0ad1747961..fcb520f2ad 100644
      if(QT_GENERATOR_IS_MULTI_CONFIG)
          set(configs ${CMAKE_CONFIGURATION_TYPES})
 diff --git a/cmake/QtTargetHelpers.cmake b/cmake/QtTargetHelpers.cmake
-index fe8d461856..74dfefcedc 100644
+index 2a0a22f682..90d40e30c5 100644
 --- a/cmake/QtTargetHelpers.cmake
 +++ b/cmake/QtTargetHelpers.cmake
 @@ -288,8 +288,6 @@ function(qt_internal_apply_win_prefix_and_suffix target)
