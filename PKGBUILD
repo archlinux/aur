@@ -1,7 +1,7 @@
 # Maintainer: Christian Schendel (doppelhelix@gmail.com)
 
 pkgname=mediaelch-git
-pkgver=2.8.2.r16.g6a2fc87f
+pkgver=2.8.6.r27.g57cd4fdf
 pkgrel=1
 pkgdesc='MediaElch is a MediaManager for Kodi'
 url='https://www.mediaelch.de/mediaelch/'
