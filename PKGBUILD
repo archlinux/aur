@@ -1,5 +1,5 @@
 pkgname=sph-lib-git
-pkgver=714
+pkgver=725
 pkgrel=1
 pkgdesc="more than 80 gpl3+ licensed guile scheme libraries"
 arch=(any)
@@ -25,5 +25,5 @@ build() {
 
 package() {
   cd sph-lib
-  ./exe/install --prefix="${pkgdir}"
+  ./exe/install --target-prefix="${pkgdir}"
 }
