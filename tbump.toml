@@ -1,0 +1,33 @@
+[version]
+current = "2.3.0"
+regex = '''
+  (?P<major>\d+)
+  \.
+  (?P<minor>\d+)
+  \.
+  (?P<patch>\d+)
+'''
+
+[git]
+tag_template = "v{new_version}"
+message_template = "Bump to {new_version}"
+
+[[file]]
+src = "PKGBUILD"
+search = 'pkgver="{current_version}"'
+
+[[before_commit]]
+name = "Check pkgrel is 1"
+cmd = "grep pkgrel=1 PKGBUILD"
+
+[[before_commit]]
+name = "Update source md5sum"
+cmd = "updpkgsums"
+
+[[before_commit]]
+name = "Check build"
+cmd = "extra-x86_64-build"
+
+[[before_commit]]
+name = "Generate .SRCINFO"
+cmd = "makepkg --printsrcinfo > .SRCINFO"
