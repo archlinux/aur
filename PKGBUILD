@@ -2,7 +2,7 @@
 
 pkgname='python-pyarrow'
 _pkgname='arrow-apache-arrow'
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A columnar in-memory analytics layer for big data."
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('python-fsspec')
 makedepends=('cmake' 'cython' 'python-setuptools')
 source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz"
   "tensorflow-abi.patch")
-sha256sums=('ea299df9cf440cfc43393ce12ee6d9a4c9d0dfa9fde33c3bc9b70ec25520a844'
+sha256sums=('fc461c4f0a60e7470a7c58b28e9344aa8fb0be5cc982e9658970217e084c3a82'
             'b6efa43faf51ea69a5e60ccbfc390caaab5c898025f08db79eda76de4bfbd09e')
 
 prepare(){
@@ -43,6 +43,6 @@ check(){
   cd "$_pkgname-$pkgver"
   git clone https://github.com/apache/arrow-testing.git testing
   cd python
-  ARROW_TEST_DATA="$srcdir/arrow-apache-arrow-$pkgver/testing/data" PARQUET_HOME=/usr pytest pyarrow/tests
+  ARROW_TEST_DATA="$srcdir/arrow-apache-arrow-$pkgver/testing/data" PARQUET_HOME=/usr pytest pyarrow/tests --deselect=pyarrow/tests/test_memory.py::test_env_var
 }
 # vim:ts=2:sw=2:et:
