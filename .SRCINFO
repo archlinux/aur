@@ -1,7 +1,7 @@
 pkgbase = mktiupgrade
 	pkgdesc = Builds and signs OS upgrades for Texas Instruments calculators
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KnightOS/mktiupgrade
 	arch = x86_64
 	groups = knightos

@@ -1,7 +1,7 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=mktiupgrade
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc='Builds and signs OS upgrades for Texas Instruments calculators'
 groups=("knightos")
