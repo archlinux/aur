@@ -2,7 +2,7 @@
 
 _appname=polkadot
 pkgname=${_appname}-bin
-pkgver=0.8.26.1
+pkgver=0.8.28
 pkgrel=1
 pkgdesc="Binary builds of the Polkadot Node Implementation"
 arch=('x86_64')
@@ -14,13 +14,13 @@ validpgpkeys=('9D4B2B6EB8F97156D19669A9FF0812D491B96798')
 _urlbase="${url}/releases/download"
 
 source=(
-  "${_urlbase}/v0.8.26-1/polkadot"
-  "${_urlbase}/v0.8.26-1/polkadot.asc"
+  "${_urlbase}/v${pkgver}/polkadot"
+  "${_urlbase}/v${pkgver}/polkadot.asc"
 )
 
 sha256sums=(
-  "edd811ccd884e5997493b346d1e8f660414193e0fd55e8fdfc59c8f967644ce6"
-  "ed7406069bfeaf27d0232d8d9756ea2f05adb9b2e68ee99f854207493d4ced60"
+  "51d719d57243ca16bdbd84bc0cb36d4ee4527fc95e4391ae360657c17cde1c91"
+  "d0798770356e92379d388a4c347f69e19bea98ce69e3914a2cdeb0e05039dafe"
 )
 
 package(){
