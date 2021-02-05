@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-quickcontrols2
-_qtver=6.0.0
+_qtver=6.0.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -17,7 +17,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtquickcontrols2-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('03fd2dbf030bf859e8069144bb6a282517063589c9d4025293eb89bcc580253b')
+sha256sums=('420631d37356e5f5005aaffc9d4a1c0163c77742c0aa6e1a74a7251851d55e25')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -47,6 +47,7 @@ package() {
     find "$pkgdir/usr/$_arch" -iname '*.exe' -exec $_arch-strip --strip-all {} \;
     find "$pkgdir/usr/$_arch" -iname '*.dll' -exec $_arch-strip --strip-unneeded {} \;
     find "$pkgdir/usr/$_arch" -iname '*.a'   -exec $_arch-strip -g {} \;
+    [[ -d "$pkgdir/usr/$_arch/share/doc" ]] && rm -r "$pkgdir/usr/$_arch/share/doc"
   done
 
   install -d "$pkgdir"/usr/share/licenses
