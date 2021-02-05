@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-qt6-shadertools
 	pkgdesc = Experimental module providing APIs and a host tool to host tool to perform graphics and compute shader conditioning for the upcoming Qt graphics abstraction layer (android)
-	pkgver = 6.0.0
+	pkgver = 6.0.1
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = android-aarch64-qt6-shadertools
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.0/6.0.0/submodules/qtshadertools-everywhere-src-6.0.0.tar.xz
-	sha256sums = 201b1376b65ef9f7fd19789781e0378ea813385217cd392c5c896699e6108e6c
+	source = https://download.qt.io/official_releases/qt/6.0/6.0.1/submodules/qtshadertools-everywhere-src-6.0.1.tar.xz
+	sha256sums = c4a605361bdf6b534bcf4ae551f3362176a31f2dfeef95b67a22c50e5858c2a6
 
 pkgname = android-aarch64-qt6-shadertools
 
