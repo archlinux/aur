@@ -2,20 +2,17 @@
 # Contributor: david0
 
 pkgname=reaper-bin
-pkgver=6.22
+pkgver=6.23
 pkgrel=1
-conflicts=(reaper)
-
-pkgdesc="Digital Audio Workstation"
-url="http://www.reaper.fm"
+pkgdesc="A complete digital audio production application for computers, offering a full multitrack audio and MIDI recording, editing, processing, mixing and mastering toolset"
 arch=('x86_64')
+url="https://reaper.fm"
 license=('custom')
-
 depends=('gtk3' 'desktop-file-utils' 'xdg-utils')
 optdepends=('jack' 'pulseaudio')
-
-source=("http://reaper.fm/files/6.x/reaper${pkgver//.}_linux_x86_64.tar.xz")
-sha256sums=('239c0bde6fc5df28dde04ee698a2c61b0f514e907069fe0d1e44a31700e6cf86')
+provides=("reaper=${pkgver}")
+source=("https://reaper.fm/files/6.x/reaper${pkgver//.}_linux_x86_64.tar.xz")
+sha256sums=('8dc5cdccf4f21c021202260c2c0fc78ca42b29f2b14725211a078d89f3452ce9')
 
 package() {
   XDG_DATA_HOME="${srcdir}/desktop" sh "${srcdir}/reaper_linux_x86_64/install-reaper.sh" --install "${pkgdir}/opt" --integrate-user-desktop
