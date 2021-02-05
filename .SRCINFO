@@ -1,0 +1,25 @@
+pkgbase = theme-switcher-git
+	pkgdesc = Switching between light and dark themes made easy
+	pkgver = r.
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/theme-switcher-git/
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = glib2
+	depends = sed
+	depends = jq
+	depends = moreutils
+	optdepends = xfce4-settings: for GTK switching under Xorg
+	optdepends = qt5ct: for Qt5 switching. Additional setup required.
+	optdepends = adwaita-qt: Qt5 theme
+	optdepends = feh: for setting wallpaper under Xorg
+	optdepends = sway: for setting wallpaper in sway
+	provides = theme-switcher
+	conflicts = theme-switcher
+	source = theme-switcher::git+https://aur.archlinux.org/theme-switcher-git.git
+	sha256sums = SKIP
+
+pkgname = theme-switcher-git
+
