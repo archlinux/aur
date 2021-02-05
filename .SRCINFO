@@ -28,13 +28,13 @@ pkgbase = mesa-minimal+-git
 	depends = libelf
 	depends = libglvnd
 	depends = wayland
-	depends = libclc
 	depends = vulkan-icd-loader
 	depends = zstd
 	depends = llvm-libs
 	depends = lib32-llvm-libs=11.0.0
 	optdepends = opengl-man-pages: for the OpenGL API man pages
 	optdepends = llvm-minimal-git: opencl
+	optdepends = libclc: opencl
 	provides = mesa
 	provides = opencl-mesa
 	provides = vulkan-intel

@@ -19,10 +19,11 @@ makedepends=('git' 'python-mako' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libxrandr'
               'ocl-icd' 'wayland-protocols' 'meson' 'ninja' 'glslang' 'llvm')
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-         'libglvnd' 'wayland' 'libclc' 'vulkan-icd-loader' 'zstd' 'llvm-libs')
+         'libglvnd' 'wayland' 'vulkan-icd-loader' 'zstd' 'llvm-libs')
 # In order to keep the package simple and ease troubleshooting only use one llvm implementation
 optdepends=('opengl-man-pages: for the OpenGL API man pages'
-                        'llvm-minimal-git: opencl')
+            'llvm-minimal-git: opencl'
+            'libclc: opencl')
 provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'vulkan-swrast' 'vulkan-driver' 'opengl-driver' 'opencl-driver')
 conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver'  'vulkan-swrast' 'mesa-vdpau')
 # mixing components from different mesa versions is a bad idea, conflict with everything unique provided by extra/mesa
@@ -138,7 +139,6 @@ build () {
        -D debug=false \
        -D enable-glcpp-tests=false \
        -D opencl-native=false
-
 
     meson configure _build
     
