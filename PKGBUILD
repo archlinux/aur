@@ -4,6 +4,7 @@ pkgver=1.0.3
 pkgrel=1
 license=('MIT')
 pkgdesc='Writes files into ROM images for TI calculators'
+groups=("knightos")
 makedepends=("cmake" "asciidoc")
 arch=("x86_64")
 url='https://github.com/KnightOS/mkrom'
