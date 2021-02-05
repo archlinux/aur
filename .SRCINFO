@@ -4,6 +4,7 @@ pkgbase = z80e
 	pkgrel = 1
 	url = https://github.com/KnightOS/z80e
 	arch = x86_64
+	groups = knightos
 	license = MIT
 	makedepends = cmake
 	makedepends = asciidoc
