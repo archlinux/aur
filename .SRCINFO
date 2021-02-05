@@ -1,17 +1,17 @@
 pkgbase = wlr-randr
 	pkgdesc = A xrandr clone for wlroots compositors
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/emersion/wlr-randr
 	arch = x86_64
 	license = MIT
 	makedepends = meson
 	makedepends = ninja
 	depends = wayland
-	source = https://github.com/emersion/wlr-randr/releases/download/v0.1.0/wlr-randr-0.1.0.tar.gz
-	source = https://github.com/emersion/wlr-randr/releases/download/v0.1.0/wlr-randr-0.1.0.tar.gz.sig
+	source = https://github.com/emersion/wlr-randr/releases/download/v0.2.0/wlr-randr-0.2.0.tar.gz
+	source = https://github.com/emersion/wlr-randr/releases/download/v0.2.0/wlr-randr-0.2.0.tar.gz.sig
 	validpgpkeys = 34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48
-	sha256sums = dbf2f02aa4d4f48dc9cef1edd1137a8ee68daa85f3c824a28c92376fd1591844
+	sha256sums = e1b60992e41aebf733f13c2bdd2c70375fd3ddf7f0735bc4183858fda9c18e51
 	sha256sums = SKIP
 
 pkgname = wlr-randr
