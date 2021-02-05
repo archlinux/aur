@@ -19,7 +19,7 @@ source=(
   'trackarr.sysusers'
   'trackarr.service'
 )
-sha256sums=('df0b06678f3922561a86a73db8ef67914d8998781aa19bb81bbc5255dff89ac0'
+sha256sums=('d9d937130cc2ca94f086e2fc9ce1f4640d443abedabccd65feab15af22f3ab4f'
             'ce3cf95823f61845cef3c266f9fcf686cf332c859ab7afffe7e5b7f765cba3fa'
             '3512f2f072b1945cf5809bf803cfc00871281bef83536aadac847f5542604c67'
             '7348fdd9e1bd48b8d5eb76abecd00fe621d64c27f211ca97d61dbbc4c71ffdea')
