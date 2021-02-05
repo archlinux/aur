@@ -1,7 +1,7 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=z80e
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc='An emulation library and client programs for z80 calculators'
 groups=("knightos")

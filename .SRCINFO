@@ -1,7 +1,7 @@
 pkgbase = z80e
 	pkgdesc = An emulation library and client programs for z80 calculators
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KnightOS/z80e
 	arch = x86_64
 	groups = knightos
