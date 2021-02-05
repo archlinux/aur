@@ -1,6 +1,6 @@
-pkgbase = libsocket-git
+pkgbase = libsocket
 	pkgdesc = Library with a C part and a C++ part making sockets usage easy and clean
-	pkgver = 2.5.0.r25.g706649c
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = http://dermesser.github.io/libsocket/doc/
 	arch = i686
@@ -11,9 +11,10 @@ pkgbase = libsocket-git
 	provides = libsocket
 	provides = libsocket++.so=libsocket++.so-64
 	provides = libsocket.so=libsocket.so-64
-	conflicts = libsocket
-	source = git+https://github.com/dermesser/libsocket.git
-	md5sums = SKIP
+	source = https://github.com/dermesser/libsocket/archive/v2.5.0.tar.gz
+	md5sums = 43a38b76b7fa5387147d1589c5314e03
+	sha1sums = 3dc272e01830357c64af888bb084be87493ef795
+	sha256sums = 0afe2ece985caa0b44546d10426b15a506164d5b96d7242890c7d0337f479689
 
-pkgname = libsocket-git
+pkgname = libsocket
 
