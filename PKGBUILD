@@ -2,7 +2,7 @@
 
 _pkgname=arqiver
 pkgname=$_pkgname-git
-pkgver=r38.9a4702c
+pkgver=0.7.0.r0.g7beb131
 pkgrel=1
 pkgdesc="Simple Qt archive manager based on libarchive…"
 arch=("i686" "x86_64")
@@ -17,7 +17,9 @@ sha256sums=('SKIP')
 
 pkgver() {
       cd $_pkgname
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+      #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+      #git describe --long --tags | sed 's/^V-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+      git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
 }
 
 prepare() {
