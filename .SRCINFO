@@ -1,0 +1,39 @@
+pkgbase = swcdb-env
+	pkgdesc = The SWC-DB Runtime Environment
+	pkgver = 0.4.16
+	pkgrel = 1
+	url = https://www.swcdb.org
+	install = README.md
+	arch = x86_64
+	groups = swcdb
+	license = GPLv3
+	optdepends = openssl
+	optdepends = python3
+	optdepends = python3-pip
+	optdepends = python3-setuptools
+	optdepends = python3-fabric
+	provides = swcdb_cluster
+	backup = etc/swcdb/gen_crt.sh
+	backup = etc/swcdb/openssl.cnf
+	backup = etc/swcdb/swc.dyn.cfg
+	backup = etc/swcdb/swc.cfg
+	backup = etc/swcdb/swc.cluster.cfg
+	backup = etc/swcdb/swc_fs_local.cfg
+	backup = etc/swcdb/swc_fs_broker.cfg
+	backup = etc/swcdb/swc_fs_ceph.cfg
+	backup = etc/swcdb/swc_fs_hadoop.cfg
+	backup = etc/swcdb/swc_fs_hadoop_jvm.cfg
+	backup = etc/swcdb/swc_mngr.cfg
+	backup = etc/swcdb/swc_rgr.cfg
+	backup = etc/swcdb/swc_fsbroker.cfg
+	backup = etc/swcdb/swc_thriftbroker.cfg
+	backup = etc/swcdb/swc_mngr.dyn.cfg
+	backup = etc/swcdb/swc_rgr.dyn.cfg
+	backup = etc/swcdb/swc_fsbroker.dyn.cfg
+	backup = etc/swcdb/swc_fs_broker.dyn.cfg
+	backup = etc/swcdb/swc_thriftbroker.dyn.cfg
+	source = swcdb-env-0.4.16-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.4.16
+	sha256sums = SKIP
+
+pkgname = swcdb-env
+
