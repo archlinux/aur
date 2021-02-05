@@ -1,12 +1,13 @@
 # Maintainer: Konrad Sekuła <konradsekula@outlook.com>
 pkgname=bruh
-pkgver=1.0
+pkgver=1.1
 pkgrel=0
 pkgdesc="Bruh sound, but as a program. You can use it to make your software more fun."
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=("alsa-utils")
 makedepends=("make" "coreutils" "gcc")
+optdepends=("pulseaudio: for pa support if you don't like ALSA")
 source=("git+https://github.com/kejpies/bruh")
 provides=("bruh")
 pkgver(){
