@@ -2,7 +2,7 @@
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-firmware-daemon
 _pkgname=system76-firmware
-pkgver=1.0.22
+pkgver=1.0.23
 pkgrel=1
 pkgdesc="System76 CLI tool for installing firmware updates and systemd service that exposes a DBUS API for handling firmware updates"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('rust')
 conflicts=('system76-driver<=17.10.32')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('ac4d8c20f67e779d01f22326be7c0090dce95802405c4a752395f7d66115dce1')
+sha256sums=('17a79d227864249a4dd3490954fa1f545938bf18e45caeffa4e714c10563f396')
 
 build() {
 	cd "$_pkgname-$pkgver"
