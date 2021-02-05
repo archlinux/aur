@@ -65,11 +65,13 @@ f="$HOME/.config/Code - OSS/User/settings.json"
 jq ".[\"workbench.colorTheme\"]=\"${UI_VSCODE}\"" "$f" | sponge "$f"
 
 # set background
+# properly supply arguments separated by spaces
+IFS=$' \n\t'
 if [[ "$XDG_SESSION_TYPE" == "x11" ]]; then
   feh --no-fehbg --bg-center ${BG_X11}
 elif [[ -n "$SWAYSOCK" ]]; then
-  killall -q swaybg
-  swaybg --mode center "$BG_SWAY" &
+  killall -q swaybg || true
+  swaybg --mode center $BG_SWAY &
 else
   echo "No supported window manager."
   echo "Not setting background"
