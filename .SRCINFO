@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-imageformats-static
 	pkgdesc = Plugins for additional image formats: TIFF, TGA, WBMP (mingw-w64)
-	pkgver = 6.0.0
+	pkgver = 6.0.1
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -20,8 +20,8 @@ pkgbase = mingw-w64-qt6-imageformats-static
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = qtimageformats-everywhere-src-6.0.0::git://code.qt.io/qt/qtimageformats.git#tag=v6.0.0
-	sha256sums = SKIP
+	source = https://download.qt.io/official_releases/additional_libraries/qtimageformats/6.0/6.0.1/qtimageformats-everywhere-src-6.0.1.tar.xz
+	sha256sums = 27a9d6e85dcd56ad981ef2aac27844e782f8cce0598f83283e6fbbd2a3810105
 
 pkgname = mingw-w64-qt6-imageformats-static
 
