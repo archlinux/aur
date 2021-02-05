@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-tools
-_qtver=6.0.0
+_qtver=6.0.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -17,20 +17,8 @@ makedepends=('android-cmake' 'android-aarch64-qt6-declarative' 'qt6-declarative'
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qttools-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
-        '0001-Make-windeployqt-an-optional-feature.patch')
-sha256sums=('b6dc559db447bf394d09dfb238d5c09108f834139a183888179e855c6566bfae'
-            'f316cdb87dcc84d1fe9ebd262812118e35571aa0fadd3da6ac3b9f42af19b8bb')
-
-prepare () {
-  cd $_pkgfqn
-
-  # apply patches; further descriptions can be found in patch files itself
-  for patch in "$srcdir/"*.patch; do
-    msg2 "Applying patch $patch"
-    patch -p1 -i "$patch"
-  done
-}
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
+sha256sums=('dc354358f7d2ed56d17190f4ad7e3fc3ad88185be1eb74b9132b8b66185c349f')
 
 build() {
   source android-env ${_android_arch}
