@@ -8,7 +8,7 @@ pkgdesc='The KnightOS developer SDK'
 groups=("knightos")
 depends=(
 	"python" "python-setuptools" "python-requests" "python-docopt" "genkfs"
-	"kpack" "sass" "z80e" "python-yaml" "python-pystache" "kimg" "knightos-kcc"
+	"kpack" "knightos-sass" "z80e" "python-yaml" "python-pystache" "kimg" "knightos-kcc"
 	"scas"
 )
 optdepends=(
