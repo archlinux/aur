@@ -1,6 +1,6 @@
 pkgbase = sph-web-publish-git
 	pkgdesc = static site generator
-	pkgver = 30
+	pkgver = 42
 	pkgrel = 1
 	url = http://sph.mn
 	arch = any
