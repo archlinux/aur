@@ -5,6 +5,7 @@ pkgbase = kimg
 	url = http://github.com/KnightOS/kimg
 	arch = i686
 	arch = x86_64
+	groups = knightos
 	license = MIT
 	makedepends = asciidoc
 	makedepends = cmake
