@@ -1,4 +1,4 @@
-# Maintainer: Dimitri Merejkowsky <d.merej at gmail.com>
+# Maintainer: Dimitri Merejkowsky <dimitri at dmerej.info>
 # https://wiki.archlinux.org/index.php/Rust_package_guidelines
 
 pkgname=agate
