@@ -1,10 +1,11 @@
+# Maintainer: jazztickets <jazztickets at gmail dot com>
 # Contributor: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: napa3um <napa3um at gmail dot com>
 # Contributor: Filip Brcic <brcha at gna dot org>
 
 pkgname=mingw-w64-sqlite
-_amalgamationver=3340000
-pkgver=3.34.0
+_amalgamationver=3340100
+pkgver=3.34.1
 pkgrel=1
 pkgdesc="A C library that implements an SQL database engine (mingw-w64)"
 arch=('any')
@@ -14,8 +15,8 @@ makedepends=('mingw-w64-configure' 'mingw-w64-pdcurses' 'mingw-w64-readline')
 options=('!buildflags' '!strip' 'staticlibs')
 license=('custom:Public Domain')
 url="https://www.sqlite.org/"
-source=("https://www.sqlite.org/2020/sqlite-autoconf-${_amalgamationver}.tar.gz")
-sha256sums=('bf6db7fae37d51754737747aaaf413b4d6b3b5fbacd52bdb2d0d6e5b2edd9aee')
+source=("https://www.sqlite.org/2021/sqlite-autoconf-${_amalgamationver}.tar.gz")
+sha256sums=('2a3bca581117b3b88e5361d0ef3803ba6d8da604b1c1a47d902ef785c1b53e89')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
