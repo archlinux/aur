@@ -2,23 +2,23 @@
 # Maintainer (original xorg-server): AndyRTR <andyrtr@archlinux.org>
 # Maintainer (original xorg-server): Jan de Groot <jgc@archlinux.org>
 # Maintainer: Rafal Malachowicz <k5hv@linux.pl>
+# Maintainer: mirh
 
 pkgbase=xorg-server1.19-git
 _pkgbase=xorg-server
 pkgname=('xorg-server1.19-git' 'xorg-server1.19-xephyr-git' 'xorg-server1.19-xdmx-git' 'xorg-server1.19-xvfb-git' 'xorg-server1.19-xnest-git' 'xorg-server1.19-xwayland-git' 'xorg-server1.19-common-git' 'xorg-server1.19-devel-git')
-pkgver=1.19.6+24+g56547b196
+pkgver=1.19.7
 pkgrel=1
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
 url="http://xorg.freedesktop.org"
-makedepends=('pixman' 'libx11' 'mesa' 'mesa-libgl' 'xf86driproto' 'xcmiscproto' 'xtrans' 'bigreqsproto' 'randrproto' 
-             'inputproto' 'fontsproto' 'videoproto' 'presentproto' 'compositeproto' 'recordproto' 'scrnsaverproto'
-             'resourceproto' 'xineramaproto' 'libxkbfile' 'libxfont2' 'renderproto' 'libpciaccess' 'libxv'
-             'xf86dgaproto' 'libxmu' 'libxrender' 'libxi' 'dmxproto' 'libxaw' 'libdmx' 'libxtst' 'libxres'
-             'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'glproto' 'dri2proto' 'libgcrypt' 'libepoxy'
-             'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms' 'dri3proto'
-             'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols' 'git')
+makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'xtrans' 'libxkbfile' 'libxfont2'
+             'libpciaccess' 'libxv' 'libxmu' 'libxrender' 'libxi' 'libxaw' 'libdmx'
+             'libxtst' 'libxres' 'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util'
+             'libgcrypt' 'libepoxy' 'xcb-util' 'xcb-util-image' 'xcb-util-renderutil'
+             'xcb-util-wm' 'xcb-util-keysyms' 'libxshmfence' 'libunwind' 'systemd'
+             'wayland-protocols' 'git')
 # _commit=56547b196660e246e37132960723819972b99c8c # branch 1.19
 #source=(https://xorg.freedesktop.org/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
 source=("git+https://anongit.freedesktop.org/git/xorg/xserver.git#branch=server-1.19-branch"
@@ -26,7 +26,10 @@ source=("git+https://anongit.freedesktop.org/git/xorg/xserver.git#branch=server-
         xserver-autobind-hotplug.patch
         xext-shm-downgrade-from-error-to-debug.patch
         xvfb-run
-        xvfb-run.1)
+        xvfb-run.1
+        libglvnd-glx.patch
+        libglvnd-glamor.patch
+        35-gcc-10.patch)
 # validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
 #               'C383B778255613DFDB409D91DB221A6900000011'
 #               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3'
@@ -36,7 +39,10 @@ sha256sums=('SKIP'
             'fcaf536e4fc307958923b58f2baf3d3102ad694efc28506f6f95a9e64483fa57'
             'ecfd6f72bd6e9494f64d48ab4abb8c68d07ce102c90b07006b21d60f63c1cdc8'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
-            '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
+            '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
+            'c213df933a66876a1eb6ff2ae30d8db682071d4f019bf3b4419bb7ad015f02a4'
+            '56f0f7190154537424864ed7c878ef86802bd93491ff86b640208246b2c48dcf'
+            '9899190ae04aa173bad76a67ce706ad99b9f3bcef80ba7d9703548381ff5d423')
 
 pkgver() {
   cd xserver
@@ -53,6 +59,12 @@ prepare() {
   patch -Np1 -i ../xserver-autobind-hotplug.patch
   # merged upstream in trunk (FS#58187)
   patch -Np1 -i ../xext-shm-downgrade-from-error-to-debug.patch
+  # Pkg-config fix backport (X.org #893)
+  patch -Np1 -i ../libglvnd-glx.patch
+  # Glamor define fix (X.org #914)
+  patch -Np1 -i ../libglvnd-glamor.patch
+  # Gcc10 fix, courtesy of OpenIndiana Userland
+  patch -Np1 -i ../35-gcc-10.patch
 
   autoreconf -vfi
 }
@@ -167,7 +179,7 @@ package_xorg-server1.19-git() {
 
 package_xorg-server1.19-xephyr-git() {
   pkgdesc="A nested X server that runs as an X application"
-  depends=(libxfont2 libgl libepoxy libunwind libsystemd libxv pixman xorg-server-common xcb-util-image
+  depends=(libxfont2 libgl libepoxy libunwind systemd-libs libxv pixman xorg-server-common xcb-util-image
            xcb-util-renderutil xcb-util-wm xcb-util-keysyms)
   provides=("xorg-server-xephyr=$pkgver")
   conflicts=('xorg-server-xephyr')
@@ -182,7 +194,7 @@ package_xorg-server1.19-xephyr-git() {
 
 package_xorg-server1.19-xvfb-git() {
   pkgdesc="Virtual framebuffer X server"
-  depends=(libxfont2 libunwind libsystemd pixman xorg-server-common xorg-xauth libgl which)
+  depends=(libxfont2 libunwind systemd-libs pixman xorg-server-common xorg-xauth libgl which)
   provides=("xorg-server-xvfb=$pkgver")
   conflicts=('xorg-server-xvfb')
 
@@ -199,7 +211,7 @@ package_xorg-server1.19-xvfb-git() {
 
 package_xorg-server1.19-xnest-git() {
   pkgdesc="A nested X server that runs as an X application"
-  depends=(libxfont2 libxext libunwind pixman xorg-server-common libsystemd)
+  depends=(libxfont2 libxext libunwind pixman xorg-server-common systemd-libs)
   provides=("xorg-server-xnest=$pkgver")
   conflicts=('xorg-server-xnest')
 
@@ -227,7 +239,7 @@ package_xorg-server1.19-xdmx-git() {
 
 package_xorg-server1.19-xwayland-git() {
   pkgdesc="run X clients under wayland"
-  depends=(libxfont2 libepoxy libunwind libsystemd libgl pixman xorg-server-common)
+  depends=(libxfont2 libepoxy libunwind systemd-libs libgl pixman xorg-server-common)
   provides=("xorg-server-xwayland=$pkgver")
   conflicts=('xorg-server-xwayland')
 
@@ -242,10 +254,7 @@ package_xorg-server1.19-xwayland-git() {
 package_xorg-server1.19-devel-git() {
   pkgdesc="Development files for the X.Org X server"
   depends=(# see pkgdir/usr/lib/pkgconfig/xorg-server.pc
-           xproto randrproto renderproto xextproto inputproto kbproto 
-           fontsproto pixman videoproto xf86driproto glproto 
-           mesa dri2proto dri3proto xineramaproto libpciaccess
-           resourceproto scrnsaverproto presentproto
+           xorgproto pixman mesa libpciaccess
            # not technically required but almost every Xorg pkg needs it to build
            xorg-util-macros)
   provides=("xorg-server-devel=$pkgver")

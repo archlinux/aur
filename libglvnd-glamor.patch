@@ -1,0 +1,36 @@
+diff --git a/glamor/glamor_egl.h b/glamor/glamor_egl.h
+index 6bb1185bf..f8601bb73 100644
+--- a/glamor/glamor_egl.h
++++ b/glamor/glamor_egl.h
+@@ -28,6 +28,7 @@
+ #define GLAMOR_EGL_H
+ 
+ #define MESA_EGL_NO_X11_HEADERS
++#define EGL_NO_X11
+ #include <epoxy/gl.h>
+ #include <epoxy/egl.h>
+ 
+diff --git a/glamor/glamor_priv.h b/glamor/glamor_priv.h
+index 27f95521d..4c4eb43d5 100644
+--- a/glamor/glamor_priv.h
++++ b/glamor/glamor_priv.h
+@@ -40,6 +40,7 @@
+ #include <epoxy/gl.h>
+ #if GLAMOR_HAS_GBM
+ #define MESA_EGL_NO_X11_HEADERS
++#define EGL_NO_X11
+ #include <epoxy/egl.h>
+ #endif
+ 
+diff --git a/hw/xwayland/xwayland-glamor.c b/hw/xwayland/xwayland-glamor.c
+index 63f230369..571b16b47 100644
+--- a/hw/xwayland/xwayland-glamor.c
++++ b/hw/xwayland/xwayland-glamor.c
+@@ -30,6 +30,7 @@
+ #include <xf86drm.h>
+ 
+ #define MESA_EGL_NO_X11_HEADERS
++#define EGL_NO_X11
+ #include <gbm.h>
+ #include <glamor_egl.h>
+ 

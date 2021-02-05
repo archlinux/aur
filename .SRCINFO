@@ -1,38 +1,22 @@
 pkgbase = xorg-server1.19-git
-	pkgver = 1.19.6+24+g56547b196
+	pkgver = 1.19.7
 	pkgrel = 1
 	url = http://xorg.freedesktop.org
 	arch = x86_64
 	groups = xorg
 	license = custom
+	makedepends = xorgproto
 	makedepends = pixman
 	makedepends = libx11
 	makedepends = mesa
-	makedepends = mesa-libgl
-	makedepends = xf86driproto
-	makedepends = xcmiscproto
 	makedepends = xtrans
-	makedepends = bigreqsproto
-	makedepends = randrproto
-	makedepends = inputproto
-	makedepends = fontsproto
-	makedepends = videoproto
-	makedepends = presentproto
-	makedepends = compositeproto
-	makedepends = recordproto
-	makedepends = scrnsaverproto
-	makedepends = resourceproto
-	makedepends = xineramaproto
 	makedepends = libxkbfile
 	makedepends = libxfont2
-	makedepends = renderproto
 	makedepends = libpciaccess
 	makedepends = libxv
-	makedepends = xf86dgaproto
 	makedepends = libxmu
 	makedepends = libxrender
 	makedepends = libxi
-	makedepends = dmxproto
 	makedepends = libxaw
 	makedepends = libdmx
 	makedepends = libxtst
@@ -40,8 +24,6 @@ pkgbase = xorg-server1.19-git
 	makedepends = xorg-xkbcomp
 	makedepends = xorg-util-macros
 	makedepends = xorg-font-util
-	makedepends = glproto
-	makedepends = dri2proto
 	makedepends = libgcrypt
 	makedepends = libepoxy
 	makedepends = xcb-util
@@ -49,7 +31,6 @@ pkgbase = xorg-server1.19-git
 	makedepends = xcb-util-renderutil
 	makedepends = xcb-util-wm
 	makedepends = xcb-util-keysyms
-	makedepends = dri3proto
 	makedepends = libxshmfence
 	makedepends = libunwind
 	makedepends = systemd
@@ -61,12 +42,18 @@ pkgbase = xorg-server1.19-git
 	source = xext-shm-downgrade-from-error-to-debug.patch
 	source = xvfb-run
 	source = xvfb-run.1
+	source = libglvnd-glx.patch
+	source = libglvnd-glamor.patch
+	source = 35-gcc-10.patch
 	sha256sums = SKIP
 	sha256sums = 914a8d775b708f836ae3f0eeca553da3872727a2e4262190f4d5c01241cb14e8
 	sha256sums = fcaf536e4fc307958923b58f2baf3d3102ad694efc28506f6f95a9e64483fa57
 	sha256sums = ecfd6f72bd6e9494f64d48ab4abb8c68d07ce102c90b07006b21d60f63c1cdc8
 	sha256sums = ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9
 	sha256sums = 2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776
+	sha256sums = c213df933a66876a1eb6ff2ae30d8db682071d4f019bf3b4419bb7ad015f02a4
+	sha256sums = 56f0f7190154537424864ed7c878ef86802bd93491ff86b640208246b2c48dcf
+	sha256sums = 9899190ae04aa173bad76a67ce706ad99b9f3bcef80ba7d9703548381ff5d423
 
 pkgname = xorg-server1.19-git
 	pkgdesc = Xorg X server
@@ -85,7 +72,7 @@ pkgname = xorg-server1.19-git
 	provides = X-ABI-VIDEODRV_VERSION=23
 	provides = X-ABI-XINPUT_VERSION=24.1
 	provides = X-ABI-EXTENSION_VERSION=10.0
-	provides = xorg-server=1.19.6+24+g56547b196
+	provides = xorg-server=1.19.7
 	conflicts = nvidia-utils<=331.20
 	conflicts = glamor-egl
 	conflicts = xf86-video-modesetting
@@ -99,7 +86,7 @@ pkgname = xorg-server1.19-xephyr-git
 	depends = libgl
 	depends = libepoxy
 	depends = libunwind
-	depends = libsystemd
+	depends = systemd-libs
 	depends = libxv
 	depends = pixman
 	depends = xorg-server-common
@@ -107,7 +94,7 @@ pkgname = xorg-server1.19-xephyr-git
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
 	depends = xcb-util-keysyms
-	provides = xorg-server-xephyr=1.19.6+24+g56547b196
+	provides = xorg-server-xephyr=1.19.7
 	conflicts = xorg-server-xephyr
 
 pkgname = xorg-server1.19-xdmx-git
@@ -121,20 +108,20 @@ pkgname = xorg-server1.19-xdmx-git
 	depends = libunwind
 	depends = pixman
 	depends = xorg-server-common
-	provides = xorg-server-xdmx=1.19.6+24+g56547b196
+	provides = xorg-server-xdmx=1.19.7
 	conflicts = xorg-server-xdmx
 
 pkgname = xorg-server1.19-xvfb-git
 	pkgdesc = Virtual framebuffer X server
 	depends = libxfont2
 	depends = libunwind
-	depends = libsystemd
+	depends = systemd-libs
 	depends = pixman
 	depends = xorg-server-common
 	depends = xorg-xauth
 	depends = libgl
 	depends = which
-	provides = xorg-server-xvfb=1.19.6+24+g56547b196
+	provides = xorg-server-xvfb=1.19.7
 	conflicts = xorg-server-xvfb
 
 pkgname = xorg-server1.19-xnest-git
@@ -144,8 +131,8 @@ pkgname = xorg-server1.19-xnest-git
 	depends = libunwind
 	depends = pixman
 	depends = xorg-server-common
-	depends = libsystemd
-	provides = xorg-server-xnest=1.19.6+24+g56547b196
+	depends = systemd-libs
+	provides = xorg-server-xnest=1.19.7
 	conflicts = xorg-server-xnest
 
 pkgname = xorg-server1.19-xwayland-git
@@ -153,11 +140,11 @@ pkgname = xorg-server1.19-xwayland-git
 	depends = libxfont2
 	depends = libepoxy
 	depends = libunwind
-	depends = libsystemd
+	depends = systemd-libs
 	depends = libgl
 	depends = pixman
 	depends = xorg-server-common
-	provides = xorg-server-xwayland=1.19.6+24+g56547b196
+	provides = xorg-server-xwayland=1.19.7
 	conflicts = xorg-server-xwayland
 
 pkgname = xorg-server1.19-common-git
@@ -165,31 +152,16 @@ pkgname = xorg-server1.19-common-git
 	depends = xkeyboard-config
 	depends = xorg-xkbcomp
 	depends = xorg-setxkbmap
-	provides = xorg-server-common=1.19.6+24+g56547b196
+	provides = xorg-server-common=1.19.7
 	conflicts = xorg-server-common
 
 pkgname = xorg-server1.19-devel-git
 	pkgdesc = Development files for the X.Org X server
-	depends = xproto
-	depends = randrproto
-	depends = renderproto
-	depends = xextproto
-	depends = inputproto
-	depends = kbproto
-	depends = fontsproto
+	depends = xorgproto
 	depends = pixman
-	depends = videoproto
-	depends = xf86driproto
-	depends = glproto
 	depends = mesa
-	depends = dri2proto
-	depends = dri3proto
-	depends = xineramaproto
 	depends = libpciaccess
-	depends = resourceproto
-	depends = scrnsaverproto
-	depends = presentproto
 	depends = xorg-util-macros
-	provides = xorg-server-devel=1.19.6+24+g56547b196
+	provides = xorg-server-devel=1.19.7
 	conflicts = xorg-server-devel
 

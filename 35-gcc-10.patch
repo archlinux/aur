@@ -1,0 +1,100 @@
+--- xorg-server-1.19.7/randr/rrprovider.c.orig	2020-05-14 10:17:01.138670184 +0000
++++ xorg-server-1.19.7/randr/rrprovider.c	2020-05-14 10:17:12.964330073 +0000
+@@ -27,7 +27,7 @@
+ 
+ #include <X11/Xatom.h>
+ 
+-RESTYPE RRProviderType;
++RESTYPE RRProviderType = 0;
+ 
+ /*
+  * Initialize provider type error value
+--- xorg-server-1.19.7/hw/xwayland/xwayland.c.orig	2020-05-14 09:58:09.466678754 +0000
++++ xorg-server-1.19.7/hw/xwayland/xwayland.c	2020-05-14 09:58:17.105153183 +0000
+@@ -37,7 +37,7 @@
+ 
+ #ifdef XF86VIDMODE
+ #include <X11/extensions/xf86vmproto.h>
+-_X_EXPORT Bool noXFree86VidModeExtension;
++extern _X_EXPORT Bool noXFree86VidModeExtension;
+ #endif
+ 
+ void
+--- xorg-server-1.19.7/hw/dmx/dmxextension.c.orig	2020-05-14 10:13:31.561339683 +0000
++++ xorg-server-1.19.7/hw/dmx/dmxextension.c	2020-05-14 10:24:15.942597405 +0000
+@@ -68,9 +68,6 @@
+  * _any_ header files. */
+ extern FontPtr defaultFont;
+ 
+-/* Hack to get Present to build (present requires RandR) */
+-RESTYPE RRCrtcType;
+-
+ /** This routine provides information to the DMX protocol extension
+  * about a particular screen. */
+ Bool
+--- xorg-server-1.19.7/hw/dmx/dmxinit.c.orig	2020-05-14 10:14:15.502876876 +0000
++++ xorg-server-1.19.7/hw/dmx/dmxinit.c	2020-05-14 10:17:31.072863884 +0000
+@@ -109,8 +109,6 @@
+ Bool dmxGLXFinishSwap = FALSE;
+ #endif
+ 
+-RESTYPE RRProviderType = 0;
+-
+ Bool dmxIgnoreBadFontPaths = FALSE;
+ 
+ Bool dmxAddRemoveScreens = FALSE;
+--- xorg-server-1.19.7/test/xi2/protocol-common.h.orig	2020-05-14 10:01:18.017983252 +0000
++++ xorg-server-1.19.7/test/xi2/protocol-common.h	2020-05-14 10:01:31.913514784 +0000
+@@ -97,7 +97,7 @@
+  * The reply handler called from WriteToClient. Set this handler if you need
+  * to check the reply values.
+  */
+-void (*reply_handler) (ClientPtr client, int len, char *data, void *userdata);
++extern void (*reply_handler) (ClientPtr client, int len, char *data, void *userdata);
+ 
+ /**
+  * The default screen used for the windows. Initialized by init_simple().
+--- xorg-server-1.19.7/test/xi2/protocol-common.c.orig	2020-05-14 10:01:56.497798794 +0000
++++ xorg-server-1.19.7/test/xi2/protocol-common.c	2020-05-14 10:02:16.462669794 +0000
+@@ -44,6 +44,8 @@
+ 
+ void *global_userdata;
+ 
++void (*reply_handler) (ClientPtr client, int len, char *data, void *userdata);
++
+ static void
+ fake_init_sprite(DeviceIntPtr dev)
+ {
+--- xorg-server-1.19.7/test/misc.c.orig	2020-05-14 09:58:56.076213502 +0000
++++ xorg-server-1.19.7/test/misc.c	2020-05-14 09:59:03.347755949 +0000
+@@ -31,7 +31,7 @@
+ #include "dix.h"
+ #include "dixstruct.h"
+ 
+-ScreenInfo screenInfo;
++extern ScreenInfo screenInfo;
+ 
+ static void
+ dix_version_compare(void)
+--- xorg-server-1.19.7/hw/dmx/config/dmxconfig.c.orig	2020-05-17 03:21:32.467842842 +0000
++++ xorg-server-1.19.7/hw/dmx/config/dmxconfig.c	2020-05-17 03:22:23.371810328 +0000
+@@ -72,7 +72,7 @@
+     DMXConfigList *xinputs;
+ } DMXConfigCmd, *DMXConfigCmdPtr;
+ 
+-DMXConfigEntryPtr dmxConfigEntry;
++extern DMXConfigEntryPtr dmxConfigEntry;
+ static DMXConfigCmd dmxConfigCmd;
+ 
+ static int dmxDisplaysFromCommandLine;
+--- xorg-server-1.19.7/hw/dmx/config/xdmxconfig.c.orig	2020-05-17 03:21:26.309385341 +0000
++++ xorg-server-1.19.7/hw/dmx/config/xdmxconfig.c	2020-05-17 03:21:57.852228446 +0000
+@@ -82,7 +82,7 @@
+ #define DMX_CANVAS_WIDTH  400
+ #define DMX_CANVAS_HEIGHT 500
+ 
+-DMXConfigEntryPtr dmxConfigEntry;
++extern DMXConfigEntryPtr dmxConfigEntry;
+ static DMXConfigVirtualPtr dmxConfigCurrent, dmxConfigNewVirtual;
+ static DMXConfigDisplayPtr dmxConfigCurrentDisplay, dmxConfigNewDisplay;
+ static int dmxConfigGrabbed, dmxConfigGrabbedFine;
