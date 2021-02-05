@@ -1,6 +1,6 @@
 pkgname=mingw-w64-gtk2
-pkgver=2.24.32
-pkgrel=2
+pkgver=2.24.33
+pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (legacy) (mingw-w64)"
 arch=('any')
 url="http://www.gtk.org"
@@ -20,13 +20,9 @@ depends=(
   'mingw-w64-gdk-pixbuf2>=2.21.0')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(
-  "https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz"
-  'gtk2-fix-gcc-10-build.patch'
-  'gtk2-fix-out-of-source-build.patch')
+  "https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz")
 sha256sums=(
-  'b6c8a93ddda5eabe3bfee1eb39636c9a03d2a56c7b62828b359bf197943c582e'
-  'a3d347337b0aaa2b170b836c20070f758698949d0511b9a92528ab4926bdcfe6'
-  'b4b02233a57eb96fb728aac1e63b1e962cf06892c6a09e174779ec072b035c98')
+  'ac2ac757f5942d318a311a54b0c80b5ef295f299c2a73c632f6bfb1ff49cc6da')
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
@@ -40,12 +36,10 @@ prepare() {
         ;;
     esac
   done
-  rm "${srcdir}/gtk+-${pkgver}/gtk/gtk.def"
 }
 
 build() {
   cd "${srcdir}/gtk+-${pkgver}"
-  autoreconf -fi
   for _arch in "${_architectures[@]}"; do
     msg "Building for ${_arch}"
     mkdir -p "build-${_arch}"
