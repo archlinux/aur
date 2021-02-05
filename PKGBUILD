@@ -4,13 +4,13 @@
 
 pkgname=kitemviews-git
 pkgver=5.79.0_r303.g3a5d30f
-pkgrel=1
+pkgrel=2
 pkgdesc='Widget addons for Qt Model/View'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(qt5-base)
-makedepends=(git extra-cmake-modules-git qt5-tools qt5-doc clang python-pyqt5 doxygen sip4)
+makedepends=(git extra-cmake-modules-git qt5-tools qt5-doc clang python-pyqt5 doxygen sip)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 optdepends=('python-pyqt5: for the Python bindings')
