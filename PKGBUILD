@@ -4,13 +4,13 @@
 
 pkgname=kjobwidgets-git
 pkgver=5.79.0_r335.gb1e9307
-pkgrel=1
+pkgrel=2
 pkgdesc='Widgets for tracking KJob instances'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(kcoreaddons-git kwidgetsaddons-git qt5-x11extras)
-makedepends=(git extra-cmake-modules-git qt5-tools qt5-doc clang python-pyqt5 doxygen sip4)
+makedepends=(git extra-cmake-modules-git qt5-tools qt5-doc clang python-pyqt5 doxygen sip)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 optdepends=('python-pyqt5: for the Python bindings')
