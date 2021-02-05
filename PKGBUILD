@@ -1,4 +1,4 @@
-# Maintainer: L0FF <laurent dot fough at gmail.com>
+# Maintainer: Łaurent ʘ❢Ŧ Ŧough <laurent dot fough at gmail dot com>
 
 pkgname=wahay-bin
 _pkgname=wahay
