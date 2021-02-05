@@ -10,14 +10,14 @@
 _pkgbasename=nettle
 pkgname=${_pkgbasename}6
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A low-level cryptographic library (legacy version)"
 arch=('x86_64' 'i686')
 url="http://www.lysator.liu.se/~nisse/nettle/"
 license=('GPL2')
 depends=('gmp' $_pkgbasename)
 makedepends=(gcc)
-source=(ftp://ftp.gnu.org/gnu/nettle/$_pkgbasename-$pkgver.tar.gz{,.sig})
+source=(http://ftp.gnu.org/gnu/nettle/$_pkgbasename-$pkgver.tar.gz{,.sig})
 sha256sums=('f941cf1535cd5d1819be5ccae5babef01f6db611f9b5a777bae9c7604b8a92ad'
             'SKIP')
 validpgpkeys=(343C2FF0FBEE5EC2EDBEF399F3599FF828C67298)
