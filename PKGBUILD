@@ -2,8 +2,8 @@
 
 _pkgname=tsunami-security-scanner
 pkgname=google-tsunami-security-scanner
-pkgver=0.0.2
-pkgrel=3
+pkgver=0.0.3
+pkgrel=1
 pkgdesc="A general purpose network security scanner with an extensible plugin system for detecting high severity vulnerabilities with high confidence"
 arch=(any)
 conflicts=('google-tsunami-security-scanner-git')
@@ -11,11 +11,11 @@ url="https://github.com/google/tsunami-security-scanner"
 license=('Apache')
 depends=('nmap>=7.80' 'ncrack>=0.7' 'jdk11-openjdk') 
 source=(
-	"${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
+	"${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${url}/raw/master/tsunami.yaml"
 	)
 
-sha256sums=('149436f32e64945bcf4c27c1f7539a127bbdb16d1875adc7d70a7b3c520875b3'
+sha256sums=('cb8a4e25759e3e8e80ea72f1ca302ca740b271d48e3c73f5c0fee8f65456c1f1'
             '633313cb332fcafb46a7200b1b22d691160c2d5b5677123c1677bf53749d100b')
 
 build() {
