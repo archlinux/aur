@@ -1,7 +1,7 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=patchrom
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc='Patches jump tables into ROM dumps'
 groups=("knightos")
