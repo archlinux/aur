@@ -1,21 +1,21 @@
 # Maintainer: Martin Kröning <mkroening@hotmail.de>
 pkgname=moodledesktop
 _pkgname=moodleapp
-_electron=electron4
-pkgver=3.9.2
+_electron=electron8
+pkgver=3.9.4
 pkgrel=1
 pkgdesc='The official app for Moodle.'
 arch=(any)
 url=https://download.moodle.org/desktop/
 license=(Apache)
 depends=($_electron)
-makedepends=(git jq moreutils nodejs-lts-erbium npm)
+makedepends=(git jq moreutils nodejs npm python2)
 _pathstem=$_pkgname-$pkgver
 source=($_pathstem.tar.gz::https://github.com/moodlehq/$_pkgname/archive/v$pkgver.tar.gz
         $pkgname.sh
         $pkgname.desktop)
-sha256sums=('27af663a19c430ee529bb3b62cf208a9467925bcad546ca20b80b84fa82c4ef9'
-            'ae04368f6573a0aec419bf1d013a60cfaf7375ed9db2a73e04d0a65904746fdd'
+sha256sums=('cfcb9afbed083d5b78889b0648c1979b175e044570354075655deec9e38c4fbc'
+            '52624f85d65e8a3339258b343edce0b2ad7fd4071b8742b1fe1a2ea50ec8ee18'
             'ca4bcbbfb0b6f40e4fa8eaed0b02e5c1d1ba609a43f8aaed8cefd16c8af4ba86')
 
 prepare() {
@@ -23,7 +23,7 @@ prepare() {
 
   local dist=/usr/lib/$_electron
   local version="$(cat $dist/version)"
-  jq '.name = $name | .build.electronDist = $dist | .build.electronVersion = $version | .engines.node = "12.x"' \
+  jq '.name = $name | .build.electronDist = $dist | .build.electronVersion = $version' \
       --arg name $pkgname \
       --arg dist $dist \
       --arg version $version \
@@ -34,7 +34,6 @@ build() {
   cd $_pathstem
   export npm_config_cache="$srcdir"/npm-cache
 
-  npm install node-sass
   npm install
 
   npx ionic build --prod

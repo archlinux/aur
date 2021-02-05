@@ -1,3 +1,3 @@
-#!/bin/bash
+#!/bin/sh
 
-exec electron4 /usr/share/moodledesktop/app.asar "$@"
+exec electron8 /usr/share/moodledesktop/app.asar "$@"
