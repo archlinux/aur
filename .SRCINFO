@@ -1,0 +1,17 @@
+pkgbase = go-mod-outdated
+	pkgdesc = Find outdated dependencies of your Go projects
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/psampaz/go-mod-outdated
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	source = https://github.com/psampaz/go-mod-outdated/archive/v0.7.0/go-mod-outdated-0.7.0.tar.gz
+	sha256sums = aca1fd1ec0c21e9d44cf96e37fafc0fa48465ab5c996f617f336e4294da162c4
+
+pkgname = go-mod-outdated
+
