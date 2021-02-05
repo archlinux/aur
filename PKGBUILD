@@ -5,6 +5,7 @@ pkgver=4.0.2
 pkgrel=1
 license=('GPL')
 pkgdesc='A C compiler for z80 systems'
+groups=("knightos")
 depends=("scas" "boost")
 makedepends=("cmake" "asciidoc")
 arch=("x86_64")
