@@ -2,14 +2,14 @@
 
 pkgname=mutter-git
 _pkgname=mutter
-pkgver=3.35.91+97+gf27de9620
+pkgver=40.alpha.1.1+222+gee3d26f22
 pkgrel=1
 pkgdesc="A window manager for GNOME."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
 license=(GPL)
 depends=(dconf js68 gjs-git gobject-introspection-runtime gsettings-desktop-schemas-git libcanberra sysprof-git
-         startup-notification zenity libsm gnome-desktop upower libxkbcommon-x11
+         startup-notification zenity libsm gnome-desktop upower libxkbcommon-x11 glib2-git
          gnome-settings-daemon libgudev libinput pipewire-git jack2 xorg-server-xwayland-git)
 makedepends=(intltool gobject-introspection git egl-wayland xorg-server)
 provides=(mutter)
