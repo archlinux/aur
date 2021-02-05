@@ -2,7 +2,7 @@
 pkgname=kpack-git
 _pkgname=kpack
 pkgver=1.1.0.r2.gec7620f
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc='Manipulates KnightOS software packages'
 groups=("knightos")
