@@ -1,7 +1,7 @@
 # Maintainer: Lutz Freitag <aur.lutz@gottliebtfreitag.de>
 
 pkgname=cndl-git
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='A flask-like webserver for C++'
 url='https://github.com/gottliebtfreitag/cndl'
@@ -10,11 +10,11 @@ license=('MIT')
 makedepends=('git' 'cmake')
 provides=('cndl')
 depends=('simplyfile')
-source=('git+https://github.com/nerdmaennchen/cndl.git')
+source=('git+https://github.com/nerdmaennchen/cndl.git#tag=1.1')
 sha256sums=('SKIP')
 
 pkgver() {
-    git -C cndl describe --tags
+    git -C cndl describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
