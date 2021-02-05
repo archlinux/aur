@@ -3,7 +3,7 @@
 pkgname=sunloginclient
 _pkgname=sunlogin
 pkgver=11.0.0.35346
-pkgrel=3
+pkgrel=4
 pkgdesc="Proprietary software that supports remote control of mobile devices, Windows, Mac, Linux and other systems.(GUI version)"
 arch=("x86_64")
 url="https://sunlogin.oray.com"
@@ -40,8 +40,13 @@ package() {
       install -Dm644 {} -t ${pkgdir}/opt/${_pkgname}/res/font \;
 
   # icon
-  find usr/local/${_pkgname}/res/icon -type f -exec \
-      install -Dm644 {} -t ${pkgdir}/opt/${_pkgname}/res/icon \;
+  install -dm755 "$pkgdir/opt/${_pkgname}/res/icon"
+  for ico in offline_lock offline online_ctrl online_lock online 
+  do
+    icotool -x -i 3 usr/local/${_pkgname}/res/icon/$ico.ico -o .
+    icotool -c "${ico}_3_24x24x32.png" -o \
+               "$pkgdir/opt/${_pkgname}/res/icon/$ico.ico"
+  done
 
   # skin
   # needed write permission
