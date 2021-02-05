@@ -1,6 +1,6 @@
 pkgbase = gdu
 	pkgdesc = Fast disk usage analyzer
-	pkgver = 4.4.0
+	pkgver = 4.4.1
 	pkgrel = 1
 	url = https://github.com/Dundee/gdu
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = gdu
 	makedepends = go
 	conflicts = gdu
 	conflicts = gdu-bin
-	source = https://github.com/dundee/gdu/archive/v4.4.0.tar.gz
-	sha256sums = e44f678e973c2d09b47b14934854a95a0413bc8f6d1996c2e9f1b6c1f04237ef
+	source = https://github.com/dundee/gdu/archive/v4.4.1.tar.gz
+	sha256sums = 4008e2df3adfca5c77302c334f4bd7f4f3825c22d1547c7374d65c371041e94b
 
 pkgname = gdu
 
