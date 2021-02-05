@@ -1,7 +1,7 @@
 pkgname=python-django-colorfield
 _name=${pkgname#python-}
-pkgver=0.3.2
-pkgrel=3
+pkgver=0.4.1
+pkgrel=1
 pkgdesc='Simple color field for models with a nice color-picker in the admin'
 arch=('any')
 url=https://github.com/fabiocaccamo/django-colorfield
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python-django' 'python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('f5dde281f4db8871eb5845aee614b4f1a47e7fd5b20476238793f519cd7bdf41')
+sha256sums=('63a542c417b72d0dac898a0f61a2a00aed3c9aabc2f5057c926efccf421f7887')
 
 build(){
   cd "${srcdir}/${_name}-${pkgver}"
