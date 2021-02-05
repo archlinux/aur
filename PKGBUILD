@@ -4,37 +4,40 @@
 
 pkgname=btanks
 pkgver=0.9.8083
-pkgrel=7
+pkgrel=8
 pkgdesc="Fast 2d tank arcade game with multiplayer and split-screen modes."
 arch=('x86_64')
 url="http://btanks.sourceforge.net"
 license=('GPL')
-depends=('expat' 'libgl' 'libsigc++2.0' 'libvorbis' 'lua' 'openal' 'sdl' 'sdl_image'
+depends=('expat' 'libgl' 'libsigc++2.0' 'libvorbis' 'lua51' 'openal' 'sdl' 'sdl_image'
 	 'smpeg' 'glu' "btanks-data=$pkgver")
-makedepends=('scons' 'chrpath' 'mesa')
+makedepends=('python2-scons' 'chrpath' 'mesa')
 source=(http://downloads.sourceforge.net/btanks/btanks-$pkgver.tar.bz2
 	btanks_desktop
 	btanks_script
 	bted_script
-	gcc-4.6.patch
-	lua52.patch)
+	gcc-4.6.patch)
 install=btanks.install
 md5sums=('49cb95c0eec47d3436c4fdf65e7c9d12'
          'a2ddeb1e79dff8d3fd702984c8d3aab5'
          '07657cfa71b1de1d008cc5e3ade9749b'
          '91a61c0f581ea27281bdaecb7a3cd58b'
-         'b816c5f3ae2d6cd954c15569d4baf123'
-         'e7af4af59255166bee530cbabd953226')
+         'b816c5f3ae2d6cd954c15569d4baf123')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
 
   sed -i '1,1i#include <sys/types.h>' mrt/base_file.h
   patch -p1 <"$srcdir"/gcc-4.6.patch
-  patch -p1 <"$srcdir"/lua52.patch
+  
+  sed -i -r 's/Options/Variables/' 'SConstruct'
+  sed -i -r 's/BoolOption/BoolVariable/' 'SConstruct'
+  sed -i -r 's/EnumOption/EnumVariable/' 'SConstruct'
+  sed -i -r 's/BuildDir/VariantDir/' 'SConstruct'
+  sed -i -r 's/pow10f/exp10f/' 'clunk/source.cpp'
 
   python2 engine/sl08/sl08.py >engine/sl08/sl08.h
-  scons
+  scons2
 }
 
 package() {
