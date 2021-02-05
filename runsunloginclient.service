@@ -8,6 +8,8 @@ After=network-online.target
 Type=simple
 ExecStart=sh -c '/opt/sunlogin/bin/oray_rundaemon -m server >/dev/null 2>&1 & /opt/sunlogin/bin/sunloginclient -m service'
 ExecStop=
+Restart=always
+RestartSec=0
 
 
 [Install]

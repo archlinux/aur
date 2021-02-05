@@ -3,16 +3,11 @@
 pkgname=sunloginclient
 _pkgname=sunlogin
 pkgver=11.0.0.35346
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary software that supports remote control of mobile devices, Windows, Mac, Linux and other systems.(GUI version)"
 arch=("x86_64")
 url="https://sunlogin.oray.com"
 depends=("libappindicator-gtk3"
-         'aspell'
-         'hspell'
-         'nuspell' 
-         'hunspell'
-         'libvoikko'
          'xorg-xhost')
 license=('custom')
 provides=('sunlogin')
@@ -21,8 +16,8 @@ source=("https://down.oray.com/${_pkgname}/linux/${pkgname}-${pkgver}-amd64.deb"
         'LICENSE::https://service.oray.com/question/1820.html')
 install="${pkgname}.install"
 sha256sums=('6f7d6d91f87da0b8dd5f101df5f49e6fa2ab027e01fe34205e920fe48da9c21e'
-            'e23fe5524a0574e3fec38a36b1f87582f75bce68bceaef5982dc3a459eb57e18'
-            'SKIP')
+            '58942243be93d1e743fc42d9670e75a4f33f121faa3d6f2d44c95d73d1ead00c'
+            '92e7d2f15a704ede109a930711d1a70ef8e090f281179a669d8e60c40a736d04')
 
 build() {
   mkdir -p build
@@ -34,7 +29,7 @@ package() {
 
   # system service
   install -Dm644 ${srcdir}/run${pkgname}.service -t \
-      "${pkgdir}/usr/lib/systemd/system/"
+                 "${pkgdir}/usr/lib/systemd/system/"
   
   # bin
   find usr/local/${_pkgname}/bin -type f -exec \
