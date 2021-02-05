@@ -1,12 +1,12 @@
 # Maintainer: Josh Wright <wright.jjw@gmail.com>
 pkgname=tsgl-git
 pkgver=r1281.ec8a3f6
-pkgrel=1
+pkgrel=2
 pkgdesc="Thread Safe Graphics Library"
 arch=(x86_64)
 url="https://github.com/Calvin-CS/TSGL"
 license=('GPL')
-depends=(glew glfw freetype2)
+depends=(glew glfw glm freetype2 doxygen)
 makedepends=(git)       # packages in base-devel (make and gcc) are assumed to be installed
                         # (https://wiki.archlinux.org/index.php/PKGBUILD#makedepends)
 optdepends=()

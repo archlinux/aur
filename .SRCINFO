@@ -1,14 +1,16 @@
 pkgbase = tsgl-git
 	pkgdesc = Thread Safe Graphics Library
 	pkgver = r1281.ec8a3f6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Calvin-CS/TSGL
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = glew
 	depends = glfw
+	depends = glm
 	depends = freetype2
+	depends = doxygen
 	provides = tsgl
 	conflicts = tsgl
 	source = git+https://github.com/Calvin-CS/TSGL
