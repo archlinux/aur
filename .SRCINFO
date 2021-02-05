@@ -1,18 +1,15 @@
-pkgbase = python-timebudget-git
+pkgbase = python-timebudget
 	pkgdesc = A stupidly-simple tool to see where your time is going in Python programs
-	pkgver = 0.7.r2.ge58b712
-	pkgrel = 2
+	pkgver = 0.7
+	pkgrel = 1
 	url = https://github.com/leopd/timebudget
 	arch = any
 	license = Apache
-	makedepends = git
 	makedepends = python-pip
 	depends = python
 	depends = licenses
-	provides = python-timebudget
-	conflicts = python-timebudget
-	source = git+git://github.com/leopd/timebudget.git
+	source = python-timebudget.tar.gz::https://github.com/leopd/timebudget/archive/v0.7.tar.gz
 	md5sums = SKIP
 
-pkgname = python-timebudget-git
+pkgname = python-timebudget
 

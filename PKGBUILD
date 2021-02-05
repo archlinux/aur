@@ -1,8 +1,8 @@
 # Maintainer: Aleksy Grabowski <hurufu@gmail.com>
 
-pkgname=python-timebudget-git
-pkgver=0.7.r2.ge58b712
-pkgrel=2
+pkgname=python-timebudget
+pkgver=0.7
+pkgrel=1
 pkgdesc='A stupidly-simple tool to see where your time is going in Python programs'
 arch=(any)
 url='https://github.com/leopd/timebudget'
@@ -13,28 +13,17 @@ depends=(
     licenses
 )
 makedepends=(
-    git
     python-pip
 )
-provides=(
-    python-timebudget
-)
-conflicts=(
-    python-timebudget
-)
-source=('git+git://github.com/leopd/timebudget.git')
+source=("$pkgname.tar.gz::https://github.com/leopd/timebudget/archive/v$pkgver.tar.gz")
 md5sums=('SKIP')
 
-pkgver() {
-    git -C "$srcdir/timebudget" describe | awk -F - '{ print substr($1,2)".r"$2"."$3 }'
-}
-
 build() {
-    cd "${srcdir}/timebudget"
+    cd "${srcdir}/timebudget-$pkgver"
     python setup.py build
 }
 
 package() {
-    cd "${srcdir}/timebudget"
+    cd "${srcdir}/timebudget-$pkgver"
     python setup.py install -O1 --root="$pkgdir" --skip-build
 }

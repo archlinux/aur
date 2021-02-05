@@ -8,7 +8,7 @@ RUN pacman -S --noconfirm --needed base-devel
 
 # Configuration
 ARG DOCKER_USER=buildbot
-ARG DOCKER_PROJECT=python-timebudget-git
+ARG DOCKER_PROJECT=python-timebudget
 
 # Creating new user
 RUN useradd --base-dir /home -m --shell /bin/sh --gid root --comment "Build Bot,$HOSTNAME,,," "$DOCKER_USER"
