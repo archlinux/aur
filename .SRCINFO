@@ -1,7 +1,7 @@
 pkgbase = knightos-kcc
 	pkgdesc = A C compiler for z80 systems
 	pkgver = 4.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KnightOS/kcc
 	arch = x86_64
 	groups = knightos
