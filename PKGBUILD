@@ -2,7 +2,7 @@
 # Contributor: Drew DeVault <sir@cmpwn.com>
 pkgname=genkfs
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc='Builds KFS filesystems for KnightOS'
 groups=("knightos")
