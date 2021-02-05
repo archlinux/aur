@@ -1,7 +1,7 @@
 pkgbase = electron-ozone
 	pkgdesc = Electron compiled with wayland support via Ozone
-	pkgver = 11.2.1
-	pkgrel = 4
+	pkgver = 11.2.2
+	pkgrel = 1
 	url = https://electronjs.org/
 	arch = x86_64
 	license = MIT
@@ -51,7 +51,6 @@ pkgbase = electron-ozone
 	source = v8-icu68.patch
 	source = chromium-skia-harmony.patch
 	source = 0001-fix-add-Wayland-support-26022.patch
-	source = 0001-fix-don-t-throw-on-bad-icons-in-BrowserWindow-constr.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 5270db01f3f8aaa5137dec275a02caa832b7f2e37942e068cba8d28b3a29df39
@@ -61,6 +60,5 @@ pkgbase = electron-ozone
 	sha256sums = 6e919c9712d8fe6c2918778df1f8c2ee0675a87a48be5d2aaa54e320703ced4b
 	sha256sums = 771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1
 	sha256sums = f896ed4008feb76be3a9bef17d6e237b8592de19dc667b1905cacd311e97c70b
-	sha256sums = 151edbe0ef4098a4ab730652327b00215f6b67ce0df89a26a2da24888c65fcb5
 
 pkgname = electron-ozone
