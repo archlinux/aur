@@ -1,7 +1,7 @@
 # Maintainer: xpt <user.xpt@gmail.com>
 pkgname=nasc-git
 _pkgname=nasc
-pkgver=0.5.4.r23.g75c730f
+pkgver=0.7.5.r13.ga95d1f8
 pkgrel=1
 pkgdesc='Do maths like a normal person.'
 arch=('i686' 'x86_64')
@@ -32,3 +32,5 @@ package() {
   cd ${_pkgname}
   DESTDIR="$pkgdir" ninja -v -C build install
 }
+
+
