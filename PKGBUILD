@@ -5,13 +5,13 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=waterfox
-pkgver=2020.10
+pkgver=G3.1.0
 pkgrel=1
 pkgdesc="Fork of Mozilla Firefox featuring some legacy extensions, removed telemetry and no Pocket integration. This is the Current branch."
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.waterfox.net/"
-depends=(gtk3 gtk2 libxt startup-notification mime-types dbus-glib nss ttf-font)
+depends=(gtk3 gtk2 libxt mime-types dbus-glib nss ttf-font)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust clang llvm lld jack
              python nodejs python2-psutil cbindgen nasm libpulse)
@@ -22,28 +22,21 @@ optdepends=('libnotify: Notification integration'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
 options=(!emptydirs !makeflags !strip)
-_archivename=2020.10-current # patch releases don't follow the same format so we can't use $pkgver
+_archivename=G3.1.0 # patch releases don't follow the same format so we can't use $pkgver
 source=(Waterfox-$_archivename.tar.gz::https://github.com/MrAlex94/Waterfox/archive/$_archivename.tar.gz
         $pkgname.desktop
-	0002-Bug-1660901-Support-the-fstat-like-subset-of-fstatat.patch
-        0003-Bug-1660901-ignore-AT_NO_AUTOMOUNT-in-fstatat-system.patch)
-sha256sums=('5958cbe5df3de971915a457c913a0af9280eee03e4a86ee675e844d4c3254db3'
+        0001-Use-remoting-name-for-GDK-application-names.patch)
+sha256sums=('53cb509512b789e335ecbaf3475c8fc4dd18b0eb87aec9e576ac2078c749f196'
             '3c8a3e73ffcb4670ca25fc7087b9c5d93ebbef2f3be8a33cf81ae424c3f27fa3'
-            'c2489a4ad3bfb65c064e07180a1de9a2fbc3b1b72d6bc4cd3985484d1b6b7b29'
-            '52cc26cda4117f79fae1a0ad59e1404b299191a1c53d38027ceb178dab91f3dc')
+            '1dba448eb1605c9dc73c22861a5394b50055909399f056baee4887b29af1b51e')
 #_disable_pgo=y # uncomment this to disable building the profiled browser and using PGO
 
 prepare() {
   mkdir -p mozbuild
   cd Waterfox-$_archivename
 
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1654465
-  #patch -Np1 -i ../bug1654465.diff
-
-  # https://bugs.archlinux.org/task/67978
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1660901
-  patch -Np1 -i ../0002-Bug-1660901-Support-the-fstat-like-subset-of-fstatat.patch
-  patch -Np1 -i ../0003-Bug-1660901-ignore-AT_NO_AUTOMOUNT-in-fstatat-system.patch
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
+  patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
 
   cat >../mozconfig <<END
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
@@ -55,6 +48,7 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
+ac_add_options --disable-elf-hack
 ac_add_options --enable-linker=lld
 export CC='clang --target=x86_64-unknown-linux-gnu'
 export CXX='clang++ --target=x86_64-unknown-linux-gnu'
@@ -75,12 +69,9 @@ ac_add_options --with-branding=browser/branding/waterfox
 # Features
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
-ac_add_options --enable-startup-notification
 ac_add_options --enable-crashreporter
-ac_add_options --disable-gconf
 ac_add_options --disable-updater
 ac_add_options --disable-tests
-ac_add_options --disable-elf-hack
 END
 }
 
@@ -107,7 +98,7 @@ build() {
 	# Do 3-tier PGO
 	echo "Building instrumented browser..."
 	cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-profile-generate
+ac_add_options --enable-profile-generate=cross
 END
 	./mach build
 	./mach package
@@ -141,8 +132,8 @@ END
 	echo "Building optimized browser..."
 	cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-lto=cross
-ac_add_options --enable-profile-use
-ac_add_options --with-pgo-profile-path=${PWD@Q}/
+ac_add_options --enable-profile-use=cross
+ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
   else
