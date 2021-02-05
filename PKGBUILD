@@ -3,11 +3,11 @@
 # Contributor: Dan McGee <dan@archlinux.org>
 
 pkgname=chaotic-mirrorlist
-pkgver=20210107
+pkgver=20210205
 pkgrel=1
 pkgdesc="Chaotic-AUR mirror list for use by pacman"
 arch=('any')
-url="https://builds.garudalinux.org/repos/chaotic-aur"
+url="https://aur.chaotic.cx"
 license=('GPL')
 backup=(etc/pacman.d/chaotic-mirrorlist)
 source=(mirrorlist)
@@ -20,7 +20,7 @@ source=(mirrorlist)
 
 updatelist() {
   rm -f mirrorlist
-  curl -o mirrorlist "$url/mirrorlist"
+  curl -o mirrorlist "$url/mirrorlist.txt"
 }
 
 package() {
@@ -28,5 +28,4 @@ package() {
   install -m644 "$srcdir/mirrorlist" "$pkgdir/etc/pacman.d/chaotic-mirrorlist"
 }
 
-sha256sums=('64e67a8f89083d01f31f7b048e4868e67cb4281086a2d4aadd46e62ff2f2fa47')
-
+sha256sums=('d01e57bbf2ea00601f10b88514550a182f8ddb849cac5ac391a48a28cbb13ab5')

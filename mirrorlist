@@ -1,28 +1,31 @@
+# Random-pick one mirror
+## Use this with pacman 6+ parallel downloads
+# Server = http://random.mirror.chaotic.cx/$repo/$arch
+
 # Brazil
-## By: PedroHLC and UFSCar (Dead right now)
-#Server = https://lonewolf.pedrohlc.com/$repo/$arch
-#Server = http://lonewolf-builder.duckdns.org/$repo/$arch
+## By: UFSCar (dead right now) -- alias: usfcar.mirror.chaotic.cx
+#Server = https://br-sp.mirror.chaotic.cx/$repo/$arch
 
 # USA
-## By: GarudaLinux and Fosshost
-Server = https://builds.garudalinux.org/repos/$repo/$arch
-## By: LordKitsuna
-Server = https://repo.kitsuna.net/$arch
+## By: GarudaLinux and Fosshost -- alias: garuda.mirror.chaotic.cx
+Server = https://us-tx.mirror.chaotic.cx/$repo/$arch
+## By: LordKitsuna -- alias: kitsuna.mirror.chaotic.cx
+Server = https://us-wa.mirror.chaotic.cx/$repo/$arch
 
 # Netherlands
-## By: Var Bhat and LiteServer
-Server = https://chaotic.tn.dedyn.io/$arch
+## By: Var Bhat and LiteServer -- alias: varbhat.mirror.chaotic.cx 
+Server = https://us-nl.mirror.chaotic.cx/$repo/$arch
 
 # Burgos, Spain
-## By: JKANetwork
-Server = https://repo.jkanetwork.com/repo/$repo/$arch
+## By: JKANetwork -- alias: jkanetwork.mirror.chaotic.cx
+Server = https://es.mirror.chaotic.cx/$repo/$arch
 
 # Germany
-## By: Nico
-Server = https://chaotic.dr460nf1r3.me/repos/$repo/$arch
-## By: ParanoidBangL
-Server = http://chaotic.bangl.de/$repo/$arch
+## By: Nico -- alias: dr460nf1r3.mirror.chaotic.cx 
+Server = https://de-1.mirror.chaotic.cx/$repo/$arch
+## By: ParanoidBangL (not HTTPS) -- alias bangl.mirror.chaotic.cx
+Server = http://de-2.mirror.chaotic.cx/$repo/$arch
 
 # Seoul, Korea
-## By: Ryoichi <t.me/r377yx>
-Server = https://mirror.maakpain.kro.kr/garuda/$repo/$arch
+## By: Ryoichi <t.me/r377yx> -- alias: r377yx.mirror.chaotic.cx
+Server = https://kr.mirror.chaotic.cx/$repo/$arch
