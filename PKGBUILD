@@ -1,11 +1,10 @@
-# Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
-# Contributor: Joey Dumont <joey.dumont@gmail.com>
+# Stolen from mips64-elf-gcc-stage1
 
-_target=mips64-elf
+_target=mips64-unknown-linux-gnu
 pkgname=${_target}-gcc-stage1
 pkgver=10.2.0
 _islver=0.22
-pkgrel=1
+pkgrel=0
 pkgdesc="The GNU Compiler Collection. Stage 1 for toolchain building (${_target})"
 arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL')
