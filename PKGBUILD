@@ -1,6 +1,6 @@
 # Maintainer: anze <alberto.anzellotti@gmail.com>
 
-pkgname=nsfminer-cuda-opencl
+pkgname=nsfminer
 _pkgname=nsfminer
 pkgver=1.3.1
 pkgrel=1
