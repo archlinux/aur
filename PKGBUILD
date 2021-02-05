@@ -3,8 +3,8 @@
 # Based on the 'aur/openttd-git' PKGBUILD by McModder <mcmodder@mcmodder.ru>
 
 pkgname=openttd-jgrpp
-pkgver=0.40.0
-pkgrel=2
+pkgver=0.40.1
+pkgrel=1
 pkgdesc="OpenTTD with JGR's patch pack."
 arch=('i686' 'x86_64')
 url='http://www.tt-forums.net/viewtopic.php?f=33&t=73469'
@@ -12,7 +12,7 @@ license=('GPL')
 makedepends=('tar' 'cmake')
 depends=('libpng' 'sdl2' 'icu' 'fontconfig' 'lzo' 'hicolor-icon-theme' 'desktop-file-utils' 'xz' 'fluidsynth')
 source=("https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-${pkgver}.tar.gz")
-sha256sums=('88ddb648b09478487802fcef1e18157f24c09a788742d70c5f6c93b201d3db66')
+sha256sums=('45c244b5cc48f1addb2ce578100ff8274f53cf3e879620812d8b4acd1217f131')
 
 _dirname=OpenTTD-patches-jgrpp
 
