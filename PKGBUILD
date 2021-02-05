@@ -4,13 +4,13 @@
 
 pkgname=kitemmodels-git
 pkgver=5.79.0_r510.g185e43f
-pkgrel=1
+pkgrel=2
 pkgdesc='Models for Qt Model/View system'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(qt5-base)
-makedepends=(git extra-cmake-modules-git python-pyqt5 clang doxygen qt5-tools qt5-doc sip4 qt5-declarative)
+makedepends=(git extra-cmake-modules-git python-pyqt5 clang doxygen qt5-tools qt5-doc sip qt5-declarative)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 optdepends=('python-pyqt5: for the Python bindings' 'qt5-declarative: QML bindings')
