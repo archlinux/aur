@@ -1,0 +1,28 @@
+pkgbase = swcdb-lib-fs-hadoop-jvm
+	pkgdesc = The SWC-DB FileSystem Hadoop-JVM library
+	pkgver = 0.4.16
+	pkgrel = 1
+	url = https://www.swcdb.org
+	install = README.md
+	arch = x86_64
+	groups = swcdb
+	license = GPLv3
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = swcdb-lib-core
+	makedepends = swcdb-lib-fs
+	makedepends = jdk
+	makedepends = hadoop=3.3.0-1
+	depends = swcdb-env
+	depends = swcdb-lib-core
+	depends = swcdb-lib-fs
+	depends = jre
+	optdepends = hadoop=3.3.0-1
+	provides = libswcdb_fs_hadoop_jvm.so
+	source = swcdb-lib-fs-hadoop-jvm-0.4.16-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.4.16
+	sha256sums = SKIP
+
+pkgname = swcdb-lib-fs-hadoop-jvm
+
