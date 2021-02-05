@@ -1,7 +1,7 @@
 pkgbase = kirigami2-git
 	pkgdesc = A QtQuick based components set
 	pkgver = 5.79.0_r2627.gfd068aba
-	pkgrel = 1
+	pkgrel = 2
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
 	groups = kf5-git
@@ -17,8 +17,10 @@ pkgbase = kirigami2-git
 	depends = qt5-quickcontrols2
 	depends = qt5-graphicaleffects
 	provides = kirigami2
+	provides = kirigami-git
 	conflicts = kirigami2
-	source = git+https://github.com/KDE/kirigami.git
+	conflicts = kirigami-git
+	source = git+https://github.com/KDE/kirigami2.git
 	sha256sums = SKIP
 
 pkgname = kirigami2-git
