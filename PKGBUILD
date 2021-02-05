@@ -2,8 +2,8 @@
 
 pkgname=python-timebudget-git
 pkgver=0.7.r2.ge58b712
-pkgrel=1
-pkgdesc='A Python package for ASN.1 parsing, encoding and decoding'
+pkgrel=2
+pkgdesc='A stupidly-simple tool to see where your time is going in Python programs'
 arch=(any)
 url='https://github.com/leopd/timebudget'
 license=('Apache')
