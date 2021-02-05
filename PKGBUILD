@@ -2,7 +2,7 @@
 # Contributor: Drew DeVault <sir@cmpwn.com>
 pkgname=scas
 pkgver=1.0.0_rc4
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc="SirCmpwn's assembler and linker"
 groups=("knightos")

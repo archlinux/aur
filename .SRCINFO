@@ -1,7 +1,7 @@
 pkgbase = scas
 	pkgdesc = SirCmpwn's assembler and linker
 	pkgver = 1.0.0_rc4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KnightOS/scas
 	arch = x86_64
 	groups = knightos
