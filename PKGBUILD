@@ -5,6 +5,7 @@ pkgver=1.0.0_rc4
 pkgrel=1
 license=('MIT')
 pkgdesc="SirCmpwn's assembler and linker"
+groups=("knightos")
 makedepends=("cmake" "asciidoc")
 arch=("x86_64")
 url='https://github.com/KnightOS/scas'
