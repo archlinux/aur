@@ -55,14 +55,22 @@ else
 fi
 
 # set Qt theme
-sed -i -E "s@^style=.*@style=${UI_THEME_QT}@" ~/.config/qt5ct/qt5ct.conf
+f="$HOME/.config/qt5ct/qt5ct.conf"
+if [[ -w "$f" ]]; then
+  sed -i -E "s@^style=.*@style=${UI_THEME_QT}@" "$f"
+fi
 
 # set alacritty theme
-sed -i -E "s/^colors: \*.*$/colors: *$UI_ALACRITTY/" ~/.config/alacritty/alacritty.yml
+f="$HOME/.config/alacritty/alacritty.yml"
+if [[ -w "$f" ]]; then
+  sed -i -E "s/^colors: \*.*$/colors: *$UI_ALACRITTY/" "$f"
+fi
 
 # set vscode theme
 f="$HOME/.config/Code - OSS/User/settings.json"
-jq ".[\"workbench.colorTheme\"]=\"${UI_VSCODE}\"" "$f" | sponge "$f"
+if [[ -w "$f" ]]; then
+  jq ".[\"workbench.colorTheme\"]=\"${UI_VSCODE}\"" "$f" | sponge "$f"
+fi
 
 # set background
 # properly supply arguments separated by spaces
