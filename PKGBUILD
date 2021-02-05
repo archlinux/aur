@@ -1,7 +1,7 @@
 # Maintainer: Lutz Freitag <aur.lutz@gottliebtfreitag.de>
 
 pkgname=simplyfile-git
-pkgver=1.1.r0.cb18301
+pkgver=1.1
 pkgrel=1
 pkgdesc='C++ wrappers around linux file descriptors'
 url='https://github.com/gottliebtfreitag/simplyfile'
@@ -9,7 +9,7 @@ arch=('any')
 license=('MIT')
 makedepends=('git' 'cmake')
 provides=('simplyfile')
-source=("git+https://github.com/gottliebtfreitag/simplyfile.git#tag=$pkgver")
+source=("git+https://github.com/gottliebtfreitag/simplyfile.git#tag=1.1")
 sha256sums=('SKIP')
 
 pkgver() {

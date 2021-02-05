@@ -1,6 +1,6 @@
 pkgbase = simplyfile-git
 	pkgdesc = C++ wrappers around linux file descriptors
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/gottliebtfreitag/simplyfile
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = simplyfile-git
 	makedepends = git
 	makedepends = cmake
 	provides = simplyfile
-	source = git+https://github.com/gottliebtfreitag/simplyfile.git
+	source = git+https://github.com/gottliebtfreitag/simplyfile.git#tag=1.1
 	sha256sums = SKIP
 
 pkgname = simplyfile-git
