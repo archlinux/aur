@@ -8,6 +8,7 @@ pkgname=tilp-git
 pkgver=1.18.r25.g4fdd6bd0
 pkgrel=1
 pkgdesc="TI graphing calculator link/transfer program"
+groups=("knightos")
 arch=('i686' 'x86_64')
 url="https://github.com/adriweb/tilp_and_gfm/tree/gtk3"
 license=('GPL2')
