@@ -6,7 +6,7 @@
 
 pkgname=tilp-git
 pkgver=1.18.r25.g4fdd6bd0
-pkgrel=1
+pkgrel=2
 pkgdesc="TI graphing calculator link/transfer program"
 groups=("knightos")
 arch=('i686' 'x86_64')
