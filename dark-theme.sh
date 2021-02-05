@@ -49,10 +49,9 @@ if [[ "$XDG_SESSION_TYPE" == "x11" ]]; then
   # set GTK theme xia xsettings
   xfconf-query -c xsettings -p /Net/ThemeName -s "$UI_THEME_GTK"
   #xfconf-query -c xsettings -p /Net/IconThemeName -s "$UI_ICONS"
-else
-  # set GTK theme via gsettings
-  gsettings set org.gnome.desktop.interface gtk-theme "$UI_THEME_GTK"
 fi
+# set GTK theme via gsettings
+gsettings set org.gnome.desktop.interface gtk-theme "$UI_THEME_GTK"
 
 # set Qt theme
 f="$HOME/.config/qt5ct/qt5ct.conf"
