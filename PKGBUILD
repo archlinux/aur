@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: slact
 pkgname=tlpui-git
-pkgver=1.3.1.r1.gf3a9ca9
+pkgver=1.3.1.7.r0.gee1d732
 pkgrel=1
 epoch=2
 pkgdesc="A GTK user interface for TLP written in Python"
@@ -15,7 +15,7 @@ conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/d4nj1/TLPUI.git"
         "${pkgname%-git}.desktop")
 sha256sums=('SKIP'
-            'a8f7a4a3d1c66c27383f75b092fa71c3e7cd72b8240a06ed00ad56be3b5338ea')
+            '347fad2e6cf02d01d770b654f8b2da1f8aaa0ac37097f84ef6bc4053bd7fcae4')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
