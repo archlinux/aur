@@ -1,0 +1,31 @@
+pkgbase = kongress-git
+	pkgdesc = Companion application for conferences
+	pkgver = 1.0_r162.gf5eceec
+	pkgrel = 1
+	url = https://github.com/KDE/kongress
+	arch = x86_64
+	license = BSD
+	license = GPL
+	license = LGPL
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = kconfig-git
+	makedepends = kcoreaddons-git
+	makedepends = kirigami2-git
+	makedepends = qt5-base
+	makedepends = qt5-declarative
+	makedepends = qt5-imageformats
+	makedepends = qt5-quickcontrols2
+	makedepends = qt5-svg
+	makedepends = qt5-wayland
+	makedepends = qt5-webengine
+	depends = hicolor-icon-theme
+	depends = kcalendarcore-git
+	depends = kdbusaddons-git
+	depends = ki18n-git
+	depends = knotifications-git
+	source = git+https://github.com/KDE/kongress.git
+	sha256sums = SKIP
+
+pkgname = kongress-git
+
