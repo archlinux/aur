@@ -136,7 +136,9 @@ build () {
         -D microsoft-clc=disabled \
 	-D selinux=false \
 	-D sse2=true \
-        -D debug=false
+        -D debug=false \
+	-D enable-glcpp-tests=false \
+	-D opencl-native=false
 
     meson configure _build
     
