@@ -1,7 +1,7 @@
 # Maintainer: mynacol <paul àt dismail _ de>
 
 pkgname=theme-switcher-git
-pkgver=r.
+pkgver=0.1
 pkgrel=1
 pkgdesc="Switching between light and dark themes made easy"
 arch=('any')
@@ -15,18 +15,13 @@ optdepends=(
 	'feh: for setting wallpaper under Xorg'
 	'sway: for setting wallpaper in sway'
 )
-makedepends=('git')
+makedepends=('coreutils')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://aur.archlinux.org/${pkgname}.git")
+source=('dark-theme.sh')
 sha256sums=('SKIP')
 
-pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	install -Dm755 dark-mode.sh "$pkgdir/usr/bin/${pkgname%-git}"
+	cd "$srcdir"
+	install -Dm755 dark-theme.sh "$pkgdir/usr/bin/${pkgname%-git}"
 }
