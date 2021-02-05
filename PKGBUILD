@@ -3,8 +3,8 @@
 
 pkgname=git-delta
 _name="${pkgname#*-}"
-pkgver=0.5.1
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 
 pkgdesc='A syntax-highlighting pager for git and diff output'
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -14,8 +14,9 @@ license=('MIT')
 depends=('git' 'libgit2')
 makedepends=('rust' 'clang' 'llvm')
 
+backup=("etc/gitconfig.$_name")
 source=("$pkgname-$pkgver.tgz::$url/archive/$pkgver.tar.gz")
-sha256sums=('dd59b747cd178184dff31c7e1707be41f8bc6b412c0c78e62b89aeca4c0f2e15')
+sha256sums=('27259c3d305edee5f49a3a992e7d739cab400f478a675b7388fef85a2724217c')
 
 
 prepare() {
@@ -29,33 +30,29 @@ prepare() {
             be recognized and used as CARGO_HOME (except when CARGO_HOME is
             already set)."
   fi
+  sed -i "4s|\(path *= *\).*$|\1/etc/gitconfig.$_name|" "$_name-$pkgver/themes.gitconfig"
 }
 
 build() {
   cd "$_name-$pkgver"
-  cargo build --release --locked
+  cargo build --release --locked --target-dir ./target
 }
 
 check() {
   cd "$_name-$pkgver"
-  cargo test --release --locked
+  cargo test --release --locked --target-dir ./target
 }
 
 package() {
   cd "$_name-$pkgver"
-  install -Dm755 "${CARGO_TARGET_DIR:-target}/release/$_name" \
-                                             -t"$pkgdir/usr/bin/"
-  install -Dm644 {README,CONTRIBUTING}.md    -t"$pkgdir/usr/share/doc/$_name/"
-  install -Dm644 LICENSE                     -t"$pkgdir/usr/share/licenses/$_name/"
+  install -Dm755 "target/release/$_name"  -t"$pkgdir/usr/bin/"
+  install -Dm644 themes.gitconfig           "$pkgdir/etc/gitconfig.$_name"
+  install -Dm644 {README,CONTRIBUTING}.md -t"$pkgdir/usr/share/doc/$_name/"
+  install -Dm644 LICENSE                  -t"$pkgdir/usr/share/licenses/$_name/"
   cd etc
-  cp -a --no-preserve=o performance examples   "$pkgdir/usr/share/doc/$_name/"
-  install -Dm644 completion/completion.bash    "$pkgdir/usr/share/bash-completion/completions/$_name"
-  install -Dm644 completion/completion.zsh     "$pkgdir/usr/share/zsh/site-functions/_$_name"
-  cd bin
-  local _bin
-  for _bin in *; do
-    install -Dm755 "$_bin"                     "$pkgdir/usr/bin/delta-$_bin"
-  done
+  install -Dm644 completion/completion.bash "$pkgdir/usr/share/bash-completion/completions/$_name"
+  install -Dm644 completion/completion.zsh  "$pkgdir/usr/share/zsh/site-functions/_$_name"
+  install -Dm755 bin/*                    -t"$pkgdir/usr/lib/$pkgname/"
 }
 
 
