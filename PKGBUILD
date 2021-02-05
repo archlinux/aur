@@ -1,7 +1,7 @@
 pkgname=youtubemusic-git
 _pkgname=YoutubeMusicMusic-git
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="YoutubeMusic Music is a unofficial client to play your music."
 arch=('any')
 url="https://gitlab.com/youtube-music/application"
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/application"
-    npm --cache "$srcdir/npm-cache" i electron@11.0.4 electron-packager
+    npm --cache "$srcdir/npm-cache" i electron@11.2.2 electron-packager
     ./node_modules/.bin/electron-packager .
     for dir in YoutubeMusic-linux-*/ ; do mv "${dir}" "YoutubeMusic" ;done
     rm -rf "$srcdir/application/YoutubeMusic/resources/app/node_modules"
