@@ -1,7 +1,7 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail>
 pkgname=git-delta-bin
 _pkgname=git-delta
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A viewer for git and diff output'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -13,10 +13,10 @@ source_i686=("$url/releases/download/$pkgver/${_pkgname}_${pkgver}_i386.deb")
 source_x86_64=("$url/releases/download/$pkgver/${_pkgname}_${pkgver}_amd64.deb")
 source_armv7h=("$url/releases/download/$pkgver/${_pkgname}_${pkgver}_armhf.deb")
 source_aarch64=("$url/releases/download/$pkgver/${_pkgname}_${pkgver}_arm64.deb")
-sha256sums_i686=('f52608eb90aa1b27259ace7b3f7ebea536ff4183798a6c87e1d4aac29459802b')
-sha256sums_x86_64=('d796d3b75d690afd29fd426e7db3792724c0074b9c7b2d3aea59a3d78e735f42')
-sha256sums_armv7h=('3ffe9b19c5612805b04b9ce10a1aba880daf69799bd47d510ccf865608c5f0d3')
-sha256sums_aarch64=('b717de95285921324171d7a95d5ac17b648abfc0abc67d2ad70c4ef5be8a9763')
+sha256sums_i686=('e9d750ab1850d3d2f762fc700acc8d3b6b3f6ae5d5f5919c97e9188fed7d3312')
+sha256sums_x86_64=('ae95e1d095c39e5d0ee5d93dedbabf8b899a59144746ae58630f10fc5a5d71e4')
+sha256sums_armv7h=('3044dfbb3398cb219dff143d93f37d8527c6b1d27674d874fba61f3c9e3e9087')
+sha256sums_aarch64=('dcf98e5127ed13fbf004068bd8aca54936c56a112b9418d15336ba07e5ac22e2')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
