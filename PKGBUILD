@@ -1,7 +1,6 @@
-# Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
-# Contributor: Joey Dumont <joey.dumont@gmail.com>
+# Stolen from mips64-elf-binutils
 
-_target=mips64-elf
+_target=mips64-unknown-linux-gnu
 pkgname=${_target}-binutils
 pkgver=2.36
 pkgrel=1
