@@ -3,7 +3,7 @@
 pkgname=knightos-kcc-git
 _pkgname=kcc
 pkgver=4.0.0.r5.gefd439995
-pkgrel=1
+pkgrel=2
 license=('GPL')
 pkgdesc='A C compiler for z80 systems'
 groups=("knightos")
