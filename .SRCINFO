@@ -1,6 +1,6 @@
 pkgbase = sph-web-app-git
 	pkgdesc = guile scheme framework for dynamic websites
-	pkgver = 139
+	pkgver = 145
 	pkgrel = 1
 	url = http://sph.mn
 	arch = any

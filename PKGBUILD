@@ -1,23 +1,24 @@
-pkgname=sph-web-app-git
-pkgver=139
+_name=sph-web-app
+pkgname=$_name-git
+pkgver=145
 pkgrel=1
 pkgdesc="guile scheme framework for dynamic websites"
 arch=(any)
 license=(gpl3+)
 makedepends=(git)
 depends=(guile sph-lib)
-provides=(sph-web-app)
-conflicts=(sph-web-app)
-source=("git://git.sph.mn/sph-web-app")
+provides=($_name)
+conflicts=($_name)
+source=("git://git.sph.mn/$_name")
 url="http://sph.mn"
 md5sums=(SKIP)
 
 pkgver() {
-  cd sph-web-app
+  cd $_name
   git rev-list --count HEAD
 }
 
 package() {
-  cd sph-web-app
-  ./exe/install --prefix="${pkgdir}"
+  cd $_name
+  ./exe/install --target-prefix="$pkgdir"
 }
