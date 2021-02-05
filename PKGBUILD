@@ -1,13 +1,13 @@
 # Maintainer: xpt <user.xpt@gmail.com>
 pkgname=glew2.0
-pkgver=2.1.0
-pkgrel=1
+pkgver=2.0.0
+pkgrel=2
 pkgdesc="The OpenGL Extension Wrangler Library"
 arch=('i686' 'x86_64')
 url="http://glew.sourceforge.net"
 license=('BSD' 'MIT' 'GPL')
 depends=('libxmu' 'libxi' 'mesa' 'glew')
-source=(http://downloads.sourceforge.net/glew/glew-2.1.0.tgz)
+source=(http://downloads.sourceforge.net/glew/glew-2.0.0.tgz)
 md5sums=('b2ab12331033ddfaa50dc39345343980')
 
 prepare() {
