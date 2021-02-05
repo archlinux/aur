@@ -1,0 +1,16 @@
+pkgbase = rtl8761usb
+	pkgdesc = Realtek bluetooth modules for RTL8761 usb based devices
+	pkgver = 20201202
+	pkgrel = 1
+	url = https://www.xmpow.com/pages/download
+	install = depmod.install
+	arch = any
+	license = unknown
+	makedepends = linux-headers
+	depends = linux
+	conflicts = rtl8761b-fw
+	source = https://mpow.s3-us-west-1.amazonaws.com/20201202_mpow_BH456A_driver+for+Linux.7z
+	md5sums = 994ad1d6f6bd1e63190dfef7f64bbb34
+
+pkgname = rtl8761usb
+

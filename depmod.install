@@ -1,0 +1,14 @@
+post_upgrade() {
+  EXTRAMODULES="$(basename $(readlink -f /lib/modules/$(uname -r)/extramodules/))"
+  depmod "$(uname -r)"
+}
+
+post_install() {
+  post_upgrade
+}
+
+post_remove() {
+  post_upgrade
+}
+
+# vim:set ts=2 sw=2 et:
