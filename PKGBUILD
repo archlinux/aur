@@ -13,7 +13,7 @@ optdepends=(
 	'qt5ct: for Qt5 switching. Additional setup required.'
 	'adwaita-qt: Qt5 theme'
 	'feh: for setting wallpaper under Xorg'
-	'sway: for setting wallpaper in sway'
+	'swaybg: for setting wallpaper in sway'
 )
 makedepends=('coreutils')
 provides=("${pkgname%-git}")
