@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-declarative
-_qtver=6.0.0
+_qtver=6.0.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -19,7 +19,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtdeclarative-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('8535fe31fa3e876b8f2d3954efcdca47b3813adf228c1640608fb9f4c7b2c1a6')
+sha256sums=('6e234508d3d624bdeb90e67f09f95b7bb9bc712f60f82f64ddd99132eff5f610')
 
 build() {
   source android-env ${_android_arch}
