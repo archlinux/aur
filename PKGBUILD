@@ -1,19 +1,21 @@
 # Maintainer: Christoph Drexler <chrdr at gmx dot at>
 # Contributor: me at oguzkaganeren dot com dot tr
 pkgname=grisbi
-pkgver=1.2.2
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Shared files for the finance management program Grisbi."
 arch=('x86_64')
 url="http://www.grisbi.org"
 license=('GPL')
-depends=('desktop-file-utils' 'gtk3' 'libgsf')
-makedepends=('gettext' 'grep' 'imagemagick' 'intltool')
-optdepends=('goffice0.8: for drawing charts' 'libofx: support for the OFX banking standard')
+depends=('gtk3' 'libgsf')
+optdepends=('libofx: for OFX support')
+makedepends=('git' 'intltool')
+provides=('grisbi')
+conflicts=('grisbi-git')
+replaces=('grisbi')
 options=(!libtool)
-install=grisbi.install
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('7c6dcb9d123076df33f7225085db44f0b95afbb773378fd94b7c492dbbf731de')
+sha256sums=('6f723ceed9578488ccfdb16386c25334542f6712062ac21bb1fe33653e6c1d78')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
