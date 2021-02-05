@@ -1,0 +1,26 @@
+pkgbase = swcdb-lib-thrift-c
+	pkgdesc = The SWC-DB Thrift C Service Library
+	pkgver = 0.4.16
+	pkgrel = 1
+	url = https://www.swcdb.org
+	install = README.md
+	arch = x86_64
+	groups = swcdb
+	license = GPLv3
+	makedepends = git
+	makedepends = pkg-config
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = zlib
+	makedepends = openssl
+	makedepends = thrift
+	depends = zlib
+	depends = openssl
+	depends = thrift
+	provides = libswcdb_thrift_c.so
+	source = swcdb-lib-thrift-c-0.4.16-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.4.16
+	sha256sums = SKIP
+
+pkgname = swcdb-lib-thrift-c
+
