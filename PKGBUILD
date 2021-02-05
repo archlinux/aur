@@ -17,7 +17,6 @@ depends=(lensfun opencv akonadi-contacts knotifyconfig libksane kfilemetadata qt
 makedepends=(extra-cmake-modules doxygen eigen boost kdoctools)
 optdepends=('hugin: panorama tool' 'qt5-imageformats: support for additional image formats (WEBP, TIFF)'
             'rawtherapee: RAW import' 'darktable: RAW import'
-            "digikam-plugin-gmic: G'MIC plugin"
             'perl: for digitaglinktree')
 source=("https://download.kde.org/stable/$pkgname/$pkgver/$pkgname-$_pkgver.tar.xz"{,.sig}
          showfoto-configure-crash.patch::"https://invent.kde.org/graphics/digikam/-/commit/c79a1c6b.patch")
