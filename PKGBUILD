@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=copperspice
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='Libraries for developing cross platform software applications in C++'
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=('cmake' 'alsa-lib' 'mariadb-libs' 'postgresql' 'postgresql-libs'
              'libxrender' 'libxml2')
 conflicts=('qt5-tools')
 source=("https://github.com/copperspice/copperspice/archive/cs-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('5450da1968172df91a7b54101ddbcc385d9cc4ea6a007bcb500e92f34849fb9f')
+sha256sums=('2e74c809f6e9bffbe53f2f758b280781f6905631d9647717b47bc9202dba0d41')
 
 build() {
     cmake -B build -S "copperspice-cs-${pkgver}" \
