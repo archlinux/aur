@@ -4,14 +4,14 @@
 
 pkgname=pulseeffects-legacy
 pkgver=4.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio Effects for Pulseaudio Applications, without pipewire"
 arch=($CARCH)
 url='https://github.com/wwmm/pulseeffects'
 license=(GPL3)
 depends=(gtk3 gtkmm3 glibmm libpulse gstreamer gst-plugin-gtk gst-plugins-bad
          lilv boost-libs libsigc++ libsndfile libsamplerate zita-convolver libebur128
-         calf lsp-plugins rubberband librnnoise)
+         calf lsp-plugins rubberband rnnoise)
 makedepends=(meson boost itstool appstream-glib zam-plugins)
 optdepends=('zam-plugins: maximizer'
             'yelp: help documentation')
@@ -25,7 +25,7 @@ sha256sums=('12ba3205025d815a747b58636861594f7d1e43a578a5b0411f7794f4c12e5d86'
 prepare() {
   ## Fix SVG rendering issue in Qt environments (https://github.com/wwmm/pulseeffects/issues/867)
   if [[ -e /usr/bin/qmake ]]; then
-    cp ../pulseeffects.svg ${pkgname%-*}-$pkgver/data/
+    cp -L pulseeffects.svg ${pkgname%-*}-$pkgver/data/
   fi
 }
 

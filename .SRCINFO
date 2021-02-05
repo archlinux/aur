@@ -1,7 +1,7 @@
 pkgbase = pulseeffects-legacy
 	pkgdesc = Audio Effects for Pulseaudio Applications, without pipewire
 	pkgver = 4.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wwmm/pulseeffects
 	arch = x86_64
 	license = GPL3
@@ -27,7 +27,7 @@ pkgbase = pulseeffects-legacy
 	depends = calf
 	depends = lsp-plugins
 	depends = rubberband
-	depends = librnnoise
+	depends = rnnoise
 	optdepends = zam-plugins: maximizer
 	optdepends = yelp: help documentation
 	provides = pulseeffects
