@@ -1,5 +1,5 @@
 pkgname=sescript-git
-pkgver=45
+pkgver=93
 pkgrel=1
 pkgdesc="compiles scheme-like s-expressions to ecmascript/javascript"
 arch=(any)
@@ -13,11 +13,11 @@ url="http://sph.mn"
 md5sums=(SKIP)
 
 pkgver() {
-  cd $pkgname
+  cd sescript
   git rev-list --count HEAD
 }
 
 package() {
-  cd $pkgname
-  ./exe/install --prefix="${pkgdir}"
+  cd sescript
+  ./exe/install "$pkgdir"
 }
