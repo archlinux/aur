@@ -2,7 +2,7 @@
 # https://wiki.archlinux.org/index.php/Rust_package_guidelines
 
 pkgname=agate
-pkgver=1.2.2
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Agate is a server for the Gemini network protocol, built with the Rust programming language. Agate has very few features, and can only serve static files."
 makedepends=('cargo')
