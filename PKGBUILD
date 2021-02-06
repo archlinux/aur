@@ -12,7 +12,8 @@ url='https://www.kde.org'
 license=(LGPL)
 depends=(qt5-base)
 makedepends=('cmake' 'git')
-conflicts=(libkdeaccessibilityclient)
+conflicts=(libkdeaccessibilityclient libqaccessibilityclient)
+provides=(libkdeaccessibilityclient libqaccessibilityclient)
 source=("git+https://github.com/KDE/libqaccessibilityclient.git")
 sha256sums=('SKIP')
 
