@@ -1,0 +1,18 @@
+pkgbase = rottexpr-git
+	pkgdesc = Source port for the original Rise of the Triad
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/LTCHIPS/rottexpr
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = sdl2
+	depends = sdl2_mixer
+	provides = rottexpr
+	conflicts = rottexpr
+	source = git+https://github.com/LTCHIPS/rottexpr
+	md5sums = SKIP
+
+pkgname = rottexpr-git
+
