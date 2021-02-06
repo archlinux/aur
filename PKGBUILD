@@ -2,7 +2,7 @@
 
 pkgname=waybar-livestatus
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Tiny waybar module to fetch new alerts from livestatus.'
 arch=('x86_64')
 url="https://github.com/cyrinux/${pkgname}"
@@ -16,11 +16,11 @@ source=("${pkgname}-${pkgver}-src.tar.gz::${url}/releases/download/${pkgver}/${p
     "${pkgname}-${pkgver}-src.tar.gz.asc::${url}/releases/download/${pkgver}/${pkgname}-${pkgver}-src.tar.gz.asc")
 validpgpkeys=('4F7BC1FD97170A79267686A6FC9B1319726657D3')
 sha256sums=('a4bca063de87c292793ebf36f6430fa92b459e96fb58bda6b84efe4f8a3a39ca'
-            'SKIP')
+    'SKIP')
 
 build() {
     cd "${pkgname}-${pkgver}"
-    make VERSION=${pkgver}
+    make release VERSION=${pkgver}
 }
 
 package() {
