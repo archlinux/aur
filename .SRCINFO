@@ -1,0 +1,15 @@
+pkgbase = feather-fonts
+	pkgdesc = A font design made for various vector designs
+	pkgver = 20200330
+	pkgrel = 1
+	url = https://www.dafont.com/feather.font
+	arch = any
+	groups = feather-fonts
+	license = custom
+	source = feather-fonts-20200330.zip::https://dl.dafont.com/dl/?f=feather
+	sha256sums = f58a337874e379e5e9bfcf1f9a30ce48b756bec432a3818a9c49ddfeaacc47a7
+
+pkgname = otf-feather
+
+pkgname = ttf-feather
+
