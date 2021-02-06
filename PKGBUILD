@@ -2,34 +2,30 @@
 # Contributor: Slithery <aur [at] slithery [dot] uk>
 
 pkgname=linode-cli
-pkgver=3.2.1
-pkgrel=3
+pkgver=3.2.1.20201118
+_commit=3351756acd36fa873d8f42db2966cfb7c38bb533
+pkgrel=4
 pkgdesc="Linode API wrapper"
 arch=('any')
 url="https://github.com/linode/linode-cli"
 license=('BSD')
 depends=('python-colorclass' 
-	 'python2-colorclass' 
 	 'python-terminaltables' 
-	 'python2-terminaltables' 
 	 'python-requests' 
-	 'python2-requests' 
-	 'python-yaml' 
-	 'python2-yaml' 
-	 'python2-enum34')
+	 'python-yaml')
 optdepends=('python-boto: Object Storage plugin')
-makedepends=('python-wheel' 
-	     'python2-wheel')
+makedepends=('python-wheel')
 replaces=('linode-cli-dev')
 install="${pkgname}".install
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linode/linode-cli/archive/${pkgver}.tar.gz"
-	'enum34-extra-requires.patch')
-sha256sums=('cf4f86af83d2b25ad0d4261a95e91e4128733734ce84eb2b3b4cdf8b03c8c3b6'
-            '3c05e163748ec607c3f6d62587e04911af2e593e25635c7acef39cd2d03f9f2e')
+source=("${pkgname}-${_commit}.tar.gz::https://github.com/linode/linode-cli/archive/${_commit}.tar.gz"
+	'no-python2.patch')
+sha256sums=('024feb6d45aebb62e375eaef171ea11de5e202f887be86cefbde37b96aa104d5'
+            '7a3f1e454ffac21db74ad1e1b8575f4246566fb25966b89a2e30fa8215dd8c13')
 
 prepare() {
-  cd "${pkgname}-${pkgver}" 
-  patch --strip=2 --input="${srcdir}/enum34-extra-requires.patch"
+  mv ${pkgname}-{$_commit,$pkgver}
+  cd "${pkgname}-${pkgver}"
+  patch --strip=1 --input="${srcdir}/no-python2.patch"
 }
 
 build() {

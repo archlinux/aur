@@ -1,28 +1,22 @@
 pkgbase = linode-cli
 	pkgdesc = Linode API wrapper
-	pkgver = 3.2.1
-	pkgrel = 3
+	pkgver = 3.2.1.20201118
+	pkgrel = 4
 	url = https://github.com/linode/linode-cli
 	install = linode-cli.install
 	arch = any
 	license = BSD
 	makedepends = python-wheel
-	makedepends = python2-wheel
 	depends = python-colorclass
-	depends = python2-colorclass
 	depends = python-terminaltables
-	depends = python2-terminaltables
 	depends = python-requests
-	depends = python2-requests
 	depends = python-yaml
-	depends = python2-yaml
-	depends = python2-enum34
 	optdepends = python-boto: Object Storage plugin
 	replaces = linode-cli-dev
-	source = linode-cli-3.2.1.tar.gz::https://github.com/linode/linode-cli/archive/3.2.1.tar.gz
-	source = enum34-extra-requires.patch
-	sha256sums = cf4f86af83d2b25ad0d4261a95e91e4128733734ce84eb2b3b4cdf8b03c8c3b6
-	sha256sums = 3c05e163748ec607c3f6d62587e04911af2e593e25635c7acef39cd2d03f9f2e
+	source = linode-cli-3351756acd36fa873d8f42db2966cfb7c38bb533.tar.gz::https://github.com/linode/linode-cli/archive/3351756acd36fa873d8f42db2966cfb7c38bb533.tar.gz
+	source = no-python2.patch
+	sha256sums = 024feb6d45aebb62e375eaef171ea11de5e202f887be86cefbde37b96aa104d5
+	sha256sums = 7a3f1e454ffac21db74ad1e1b8575f4246566fb25966b89a2e30fa8215dd8c13
 
 pkgname = linode-cli
 
