@@ -1,5 +1,5 @@
 # Maintainer: Florian Pritz <flo@xinu.at>
-# Grabbed from Parabola by figue <https://aur.archlinux.org/account/figue>
+# Grabbed from Parabola by figue <https://aur.archlinux.org/account/figue> :: https://www.parabola.nu/packages/pcr/x86_64/perl-file-rename/
 
 pkgname=perl-file-rename
 pkgver=1.13
