@@ -13,8 +13,10 @@ pkgbase = seq66-devel-git
 	makedepends = liblo
 	depends = qt5-base
 	provides = seq66
+	provides = seq66-git
 	provides = seq66=0.92.0
 	conflicts = seq66
+	conflicts = seq66-git
 	source = seq66::git+https://github.com/ahlstromcj/seq66.git#branch=optimizing
 	md5sums = SKIP
 
