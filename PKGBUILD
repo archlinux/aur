@@ -6,20 +6,20 @@ pkgdesc="An offline build planner for Path of Exile using PoBFrontent, LocalIden
 arch=('x86_64')
 url='https://github.com/PathOfBuildingCommunity/PathOfBuilding'
 license=('MIT')
-pkgver=1.4.170.18.r3094.38.481
+pkgver=1.4.170.25.r3406.43.513
 
-depends=('zlib' 'qt5-base' 'luajit' 'libgl' 'curl' 'ttf-liberation' 'ttf-bitstream-vera')
-makedepends=('meson' 'ninja' 'unzip' 'rsync')
+depends=('zlib' 'qt5-base' 'lua51' 'lua51-bitop' 'lua51-zlib' 'libgl' 'curl' 'ttf-liberation' 'ttf-bitstream-vera')
+makedepends=('meson' 'ninja' 'unzip' 'rsync' 'git')
 
 source=(
 	'git+https://github.com/PathOfBuildingCommunity/PathOfBuilding'
-	'git+https://github.com/philroberts/pobfrontend'
+	'git+https://gitlab.com/bcareil/pobfrontend.git'
 	'git+https://github.com/Lua-cURL/Lua-cURLv3'
 	'https://github.com/Openarl/PathOfBuilding/files/1167199/PathOfBuilding-runtime-src.zip'
 	'PathOfBuilding.sh'
 	'lzip-linux.patch'
 	'PathOfBuilding-force-disable-devmode.patch'
-	'pobfrontend.patch'
+	'PathOfBuilding-lua51.patch'
 	'PathOfBuilding-logo.svg'
 	'PathOfBuilding-logo.png'
 	'PathOfBuildingCommunity.desktop'
@@ -32,7 +32,7 @@ sha256sums=(
 	'f0489b7dd1dcb3f3c22c41e646a5a85d1c7d63d014df6bf1df14fde4361d692d'
 	'9dbc8802b74ceed78f1a6ba1d5b90251f5ae7f9a8cf5497426e4a35001112fcd'
 	'1cca891d3fcb74df7cdf7585c1d96f68b7c3a1cca913589730fcb7e7184888d7'
-	'a46732538c61af4dd47ae65eb7db56d46d9d33d53e9b04451543c027387937cf'
+	'de8c586f5e69efefe7734f31de17137fc34a06da7428f8f57f640d490b94ea61'
 	'2467d10c7b5e201e337ba334a829e293a07027251bcda2b1f39774a62e8ff194'
 	'a64198061f60168ec07df33c37948e343eced7eeafe574cc20bdcf3a1d480cbc'
 	'7e3f2870457dc40b44f6be43791901447c5a5754a77551b5ec92ac3a66fc7ee1'
@@ -50,9 +50,10 @@ prepare() {
 	# patch lzip
 	(cd "${srcdir}/PathOfBuilding-runtime-src/LZip" && patch -p1 <"${srcdir}/lzip-linux.patch")
 	# disable devmode
-	(cd "${srcdir}/PathOfBuilding" && patch -p1 <"${srcdir}/PathOfBuilding-force-disable-devmode.patch")
-	# fix pobfrontend to have a writable user dir
-	(cd "${srcdir}/pobfrontend" && patch -p1 <"${srcdir}/pobfrontend.patch")
+	(cd "${srcdir}/PathOfBuilding" \
+		&& patch -p1 <"${srcdir}/PathOfBuilding-force-disable-devmode.patch" \
+		&& patch -p1 <"${srcdir}/PathOfBuilding-lua51.patch" \
+	)
 }
 
 pkgver() {

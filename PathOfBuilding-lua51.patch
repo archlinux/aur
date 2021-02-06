@@ -1,0 +1,174 @@
+diff -ru a/Modules/Common.lua b/Modules/Common.lua
+--- a/Modules/Common.lua	2021-02-06 15:09:21.799784281 +0100
++++ b/Modules/Common.lua	2021-02-06 11:37:28.998539560 +0100
+@@ -3,6 +3,9 @@
+ -- Module: Common
+ -- Libraries, functions and classes used by various modules.
+ --
++
++bit = require("bit")
++
+ local pairs = pairs
+ local ipairs = ipairs
+ local type = type
+diff -ru a/Data/New.lua b/Data/New.lua
+--- a/Data/New.lua	2021-02-06 15:09:21.709829157 +0100
++++ b/Data/New.lua	2021-02-06 11:37:28.858609368 +0100
+@@ -1,3 +1,3 @@
+-﻿--
++--
+ -- Upcoming uniques will live here until their mods/rolls are finalised
+ --
+diff -ru a/Data/Uniques/amulet.lua b/Data/Uniques/amulet.lua
+--- a/Data/Uniques/amulet.lua	2021-02-06 15:09:21.776462582 +0100
++++ b/Data/Uniques/amulet.lua	2021-02-06 11:37:28.858609368 +0100
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Amulet
+diff -ru a/Data/Uniques/axe.lua b/Data/Uniques/axe.lua
+--- a/Data/Uniques/axe.lua	2021-02-06 15:09:21.776462582 +0100
++++ b/Data/Uniques/axe.lua	2021-02-06 11:37:28.851946025 +0100
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Weapon: One Handed Axe
+diff -ru a/Data/Uniques/belt.lua b/Data/Uniques/belt.lua
+--- a/Data/Uniques/belt.lua	2021-02-06 15:09:21.776462582 +0100
++++ b/Data/Uniques/belt.lua	2021-02-06 11:37:28.855277696 +0100
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Belt
+diff -ru a/Data/Uniques/body.lua b/Data/Uniques/body.lua
+--- a/Data/Uniques/body.lua	2021-02-06 15:09:21.776462582 +0100
++++ b/Data/Uniques/body.lua	2021-02-06 11:37:28.851946025 +0100
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Body: Armour
+diff -ru a/Data/Uniques/boots.lua b/Data/Uniques/boots.lua
+--- a/Data/Uniques/boots.lua	2021-02-06 15:09:21.776462582 +0100
++++ b/Data/Uniques/boots.lua	2021-02-06 11:37:28.851946025 +0100
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Boots: Armour
+diff -ru a/Data/Uniques/bow.lua b/Data/Uniques/bow.lua
+--- a/Data/Uniques/bow.lua	2021-02-06 15:09:21.776462582 +0100
++++ b/Data/Uniques/bow.lua	2021-02-06 11:37:28.848614354 +0100
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Weapon: Bow
+diff -ru a/Data/Uniques/claw.lua b/Data/Uniques/claw.lua
+--- a/Data/Uniques/claw.lua	2021-02-06 15:09:21.779794253 +0100
++++ b/Data/Uniques/claw.lua	2021-02-06 11:37:28.848614354 +0100
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Weapon: Claw
+diff -ru a/Data/Uniques/dagger.lua b/Data/Uniques/dagger.lua
+--- a/Data/Uniques/dagger.lua	2021-02-06 15:09:21.779794253 +0100
++++ b/Data/Uniques/dagger.lua	2021-02-06 11:37:28.848614354 +0100
+@@ -1,4 +1,4 @@
+-﻿	-- Item data (c) Grinding Gear Games
++	-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Weapon: Dagger
+diff -ru a/Data/Uniques/flask.lua b/Data/Uniques/flask.lua
+--- a/Data/Uniques/flask.lua	2021-02-06 15:09:21.779794253 +0100
++++ b/Data/Uniques/flask.lua	2021-02-06 11:37:28.855277696 +0100
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Flask: Life
+diff -ru a/Data/Uniques/gloves.lua b/Data/Uniques/gloves.lua
+--- a/Data/Uniques/gloves.lua	2021-02-06 15:09:21.779794253 +0100
++++ b/Data/Uniques/gloves.lua	2021-02-06 11:37:28.855277696 +0100
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Gloves: Armour
+diff -ru a/Data/Uniques/helmet.lua b/Data/Uniques/helmet.lua
+--- a/Data/Uniques/helmet.lua	2021-02-06 15:09:21.779794253 +0100
++++ b/Data/Uniques/helmet.lua	2021-02-06 11:37:28.855277696 +0100
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Helmet: Armour
+diff -ru a/Data/Uniques/mace.lua b/Data/Uniques/mace.lua
+--- a/Data/Uniques/mace.lua	2021-02-06 15:09:21.779794253 +0100
++++ b/Data/Uniques/mace.lua	2021-02-06 11:37:28.848614354 +0100
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Weapon: One Handed Mace
+diff -ru a/Data/Uniques/quiver.lua b/Data/Uniques/quiver.lua
+--- a/Data/Uniques/quiver.lua	2021-02-06 15:09:21.779794253 +0100
++++ b/Data/Uniques/quiver.lua	2021-02-06 11:37:28.848614354 +0100
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Quiver
+diff -ru a/Data/Uniques/ring.lua b/Data/Uniques/ring.lua
+--- a/Data/Uniques/ring.lua	2021-02-06 15:09:21.779794253 +0100
++++ b/Data/Uniques/ring.lua	2021-02-06 11:37:28.845282683 +0100
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Ring
+diff -ru a/Data/Uniques/shield.lua b/Data/Uniques/shield.lua
+--- a/Data/Uniques/shield.lua	2021-02-06 15:09:21.779794253 +0100
++++ b/Data/Uniques/shield.lua	2021-02-06 11:37:28.845282683 +0100
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Shield: Armour
+diff -ru a/Data/Uniques/staff.lua b/Data/Uniques/staff.lua
+--- a/Data/Uniques/staff.lua	2021-02-06 15:09:21.779794253 +0100
++++ b/Data/Uniques/staff.lua	2021-02-06 11:37:28.851946025 +0100
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Weapon: Staff
+diff -ru a/Data/Uniques/wand.lua b/Data/Uniques/wand.lua
+--- a/Data/Uniques/wand.lua	2021-02-06 15:09:21.779794253 +0100
++++ b/Data/Uniques/wand.lua	2021-02-06 11:37:28.858609368 +0100
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Weapon: Wand
