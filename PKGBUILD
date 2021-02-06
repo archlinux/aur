@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo-git
 _pkgname=sftpgo
-pkgver=r687.363977b
+pkgver=r692.cd4a68c
 pkgrel=1
 pkgdesc='Fully featured and highly configurable SFTP server with optional FTP/S and WebDAV support. It can serve local filesystem, S3, GCS, Azure Blob, SFTP'
 arch=('i686' 'x86_64')
