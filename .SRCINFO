@@ -1,0 +1,18 @@
+pkgbase = armcl-opencl-mali
+	pkgdesc = ARM Computer Vision and Machine Learning Library (x86_64 OpenCL Backend)
+	pkgver = 20.02.1
+	pkgrel = 1
+	url = https://github.com/ARM-software/ComputeLibrary
+	arch = aarch64
+	license = MIT
+	makedepends = scons>=2.3
+	makedepends = git
+	makedepends = doxygen>=1.8.5
+	options = !strip
+	options = !emptydirs
+	options = staticlibs
+	source = git+https://github.com/ARM-software/ComputeLibrary.git
+	sha1sums = SKIP
+
+pkgname = armcl-opencl-mali
+
