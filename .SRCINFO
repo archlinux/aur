@@ -1,0 +1,13 @@
+pkgbase = ht-bin
+	pkgdesc = Yet another HTTPie clone
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/ducaale/ht
+	arch = x86_64
+	license = MIT
+	provides = ht
+	source_x86_64 = ht-bin-0.4.0.zip::https://github.com/ducaale/ht/releases/download/v0.4.0/ht-x86_64-unknown-linux-musl.zip
+	sha256sums_x86_64 = d7d338708a097f5657a4fe971bf05d0ce4d90b5650bc189646a9c8f953df1db6
+
+pkgname = ht-bin
+
