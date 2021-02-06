@@ -2,4 +2,5 @@ pkg/
 src/
 *.patch
 !Makefile.patch
+!v20_fix.patch
 *.pkg.tar.*
