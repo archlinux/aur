@@ -1,7 +1,7 @@
 pkgbase = greenflare
 	pkgdesc = A light weight SEO web crawler and analysis tool
-	pkgver = 0.97
-	pkgrel = 3
+	pkgver = 0.98
+	pkgrel = 1
 	url = https://greenflare.io
 	arch = any
 	license = GPLv3
@@ -17,8 +17,8 @@ pkgbase = greenflare
 	depends = python-ua-parser
 	optdepends = python-ttkthemes: modern gui theme support
 	conflicts = greenflare-git
-	source = greenflare-0.97.tar.gz::https://github.com/beb7/gflare-tk/archive/0.97.tar.gz
-	sha256sums = 0cb82de99d6bdde8a12d692f7cddde5379680629840286a77528777c59985f62
+	source = greenflare-0.98.tar.gz::https://github.com/beb7/gflare-tk/archive/0.98.tar.gz
+	sha256sums = 630812251581db133ae7dafb92f57bb8dcc0c8f9c88c1e38d01c4120491ecfed
 
 pkgname = greenflare
 

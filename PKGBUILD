@@ -3,8 +3,8 @@
 
 _pkgname=greenflare
 pkgname=greenflare
-pkgver=0.97
-pkgrel=3
+pkgver=0.98
+pkgrel=1
 pkgdesc='A light weight SEO web crawler and analysis tool'
 arch=('any')
 url='https://greenflare.io'
@@ -13,7 +13,7 @@ depends=('python' 'tcl' 'tk' 'python-lxml' 'python-requests' 'python-cssselect' 
 optdepends=('python-ttkthemes: modern gui theme support')
 makedepends=('python-setuptools')
 conflicts=("$pkgname-git")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/beb7/gflare-tk/archive/0.97.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/beb7/gflare-tk/archive/$pkgver.tar.gz")
 
 build() {
   cd gflare-tk-$pkgver
@@ -26,4 +26,4 @@ package() {
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
-sha256sums=('0cb82de99d6bdde8a12d692f7cddde5379680629840286a77528777c59985f62')
+sha256sums=('630812251581db133ae7dafb92f57bb8dcc0c8f9c88c1e38d01c4120491ecfed')
