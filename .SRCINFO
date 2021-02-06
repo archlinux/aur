@@ -1,0 +1,13 @@
+pkgbase = nordic-standard-buttons-theme
+	pkgdesc = Nordic is a Gtk3.20+ theme created using the awesome Nord color pallete.
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/EliverLara/Nordic
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = https://github.com/EliverLara/Nordic/releases/download/v1.9.0/Nordic-standard-buttons-theme.tar.xz
+	sha256sums = 18b84c0bbdd83dc4a61425f7570469a846b2d462a67b617e3734dd9d43b76838
+
+pkgname = nordic-standard-buttons-theme
+
