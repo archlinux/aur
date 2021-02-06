@@ -1,32 +1,40 @@
-# Maintainer: Kris McCleary <kris27mc@gmail.com>
+# Maintainer: Franck STAUFFER <franck.stauffer@monaco.mc>
+# Contributor: Kris McCleary <kris27mc@gmail.com>
 
-_pkgname=libzip
-pkgname=lib32-${_pkgname}
-pkgver=1.3.0
+pkgname=lib32-libzip
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="A C library for reading, creating, and modifying zip archives"
-url="http://www.nih.at/libzip/index.html"
+url="https://libzip.org/"
 license=('BSD')
 arch=('x86_64')
-depends=('lib32-zlib' 'lib32-glibc')
-makedepends=('gcc-multilib')
+depends=('lib32-zlib' 'lib32-glibc' 'lib32-openssl' 'lib32-gnutls')
+makedepends=('cmake')
+checkdepends=('perl')
 options=('!libtool')
-source=("http://www.nih.at/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('a919350f683ca6194df0a856698b477da9e06416665b883fe4fc23c0e46e6398')
+source=("https://libzip.org/download/libzip-$pkgver.tar.gz")
+sha512sums=('3f550c41ea72b97155bb17a1936cefc5aad3d15a813a77bf4e004d6ee9e2aca4e2646f2f41429ade84e78f37f5b70b7ec0c89ce628d657e02fa8c24b85908efb')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "libzip-$pkgver"
+  mkdir build
+  cd build
 
-  #autoreconf -i
-  export CC="gcc -m32"
-  export CXX="g++ -m32"
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-  ./configure --build=i386-pc-linux-gnu CFLAGS="-m32 -DNDEBUG" CXXFLAGS="-m32 -DNDEBUG" LDFLAGS=-m32 --prefix=/usr --libdir=/usr/lib32
+  export CCFLAGS="$CFLAGS -m32"
+  export CXXFLAGS="$CXXFLAGS -m32"
+  
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_INSTALL_LIBDIR=lib32 \
+      -D_FILE_OFFSET_BITS=64 \
+      ..
   make
 }
 
+check() {
+  make -C "libzip-$pkgver/build" test
+}
+
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  make DESTDIR="$pkgdir" install
-  rm -r "${pkgdir}"/usr/{bin,include,share}
+  make -C "libzip-$pkgver/build" DESTDIR="$pkgdir" install
+  rm -r "$pkgdir"/usr/{bin,include,share}
 }
