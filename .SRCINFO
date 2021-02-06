@@ -1,0 +1,18 @@
+pkgbase = dmsdos-git
+	pkgdesc = Linux utilities to handle dos/win95 doublespace/drivespace/stacker
+	pkgver = 56.1476832
+	pkgrel = 1
+	url = https://github.com/sandsmark/dmsdos
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	provides = dmsdos
+	conflicts = dmsdos
+	source = git+https://github.com/sandsmark/dmsdos.git
+	md5sums = SKIP
+
+pkgname = dmsdos-git
+
