@@ -1,7 +1,7 @@
 pkgbase = ocaml-visitors
 	pkgdesc = An OCaml syntax extension for generating visitor classes
-	pkgver = 20200210
-	pkgrel = 5
+	pkgver = 20210127
+	pkgrel = 1
 	url = https://gitlab.inria.fr/fpottier/visitors
 	arch = x86_64
 	arch = i686
@@ -10,14 +10,13 @@ pkgbase = ocaml-visitors
 	arch = armv7h
 	arch = aarch64
 	license = LGPL2.1
-	makedepends = cppo
 	makedepends = dune>=2.0.0
-	depends = ocaml>=4.02.3
-	depends = ocaml-ppx_deriving>=4.4
-	depends = ocaml-ppx_tools
+	depends = ocaml>=4.07.0
+	depends = ocaml-ppx_deriving>=5.0
+	depends = ocaml-ppxlib>=0.9.0
 	depends = ocaml-result
 	options = !strip
-	source = ocaml-visitors-20200210-5.tar.gz::https://gitlab.inria.fr/fpottier/visitors/-/archive/20200210/visitors-20200210.tar.gz
-	sha256sums = b26ef1da80399af92f9da2f818c078317961daa4a68645e31160c1b0f4b8843e
+	source = ocaml-visitors-20210127-1.tar.gz::https://gitlab.inria.fr/fpottier/visitors/-/archive/20210127/visitors-20210127.tar.gz
+	sha256sums = b3057bf30fe4c7767643a8511a4e15f956114bde4001e58a720540ebc467f39f
 
 pkgname = ocaml-visitors

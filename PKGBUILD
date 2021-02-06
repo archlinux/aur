@@ -1,18 +1,18 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: malet <malet@invalid>
 _projectname='visitors'
 pkgname="ocaml-$_projectname"
-pkgver='20200210'
-pkgrel='5'
+pkgver='20210127'
+pkgrel='1'
 pkgdesc='An OCaml syntax extension for generating visitor classes'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.inria.fr/fpottier/$_projectname"
 license=('LGPL2.1')
-depends=('ocaml>=4.02.3' 'ocaml-ppx_deriving>=4.4' 'ocaml-ppx_tools' 'ocaml-result')
-makedepends=('cppo' 'dune>=2.0.0')
+depends=('ocaml>=4.07.0' 'ocaml-ppx_deriving>=5.0' 'ocaml-ppxlib>=0.9.0' 'ocaml-result')
+makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/-/archive/$pkgver/$_projectname-$pkgver.tar.gz")
-sha256sums=('b26ef1da80399af92f9da2f818c078317961daa4a68645e31160c1b0f4b8843e')
+sha256sums=('b3057bf30fe4c7767643a8511a4e15f956114bde4001e58a720540ebc467f39f')
 
 _sourcedirectory="$_projectname-$pkgver"
 
