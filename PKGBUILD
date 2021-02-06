@@ -15,18 +15,16 @@ source=("git+https://github.com/LTCHIPS/rottexpr")
 md5sums=('SKIP')
 
 pkgver() {
-  cd rottexpr
+  cd rottexpr/src
   git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-  cd rottexpr
-  
-  autoreconf -fi
+  cd rottexpr/src
   make
 }
 
 package() {
-  cd rottexpr
-  make DESTDIR="$pkgdir/" install
+  cd rottexpr/src
+  install -Dm755 $srcdir/rottexpr/src/rott "$pkgdir"/usr/bin/rottexpr
 }
