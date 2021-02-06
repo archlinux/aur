@@ -2,7 +2,7 @@
 
 pkgname=python-picos-git
 pkgver=2.1.r2.gf31ae78
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python interface to conic optimization solvers. Git version.'
 arch=('any')
 url='https://gitlab.com/picos-api/picos'
@@ -34,7 +34,7 @@ build() {
 
 check() {
 	cd "${srcdir}/picos/build/lib"
-	python -BIc "import picos"
+	python -Bc "import picos"
 }
 
 package() {
