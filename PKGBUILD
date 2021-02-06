@@ -10,7 +10,7 @@ makedepends=('python' )
 license=('BSD')
 arch=('i686' 'x86_64')
 source=("https://pypi.python.org/packages/source/b/bsdiff4/bsdiff4-${pkgver}.tar.gz")
-md5sums=('SKIP')
+md5sums=('a0d047e91429ce67a3b0231facf41169')
 
 build() {
     cd $srcdir/bsdiff4-${pkgver}
