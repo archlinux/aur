@@ -24,8 +24,6 @@ pkgver() {
 }
 
 build() {
-  CFLAGS="${CFLAGS//-march=native}"
-  CXXFLAGS="${CXXFLAGS//-march=native}"
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_VERSION_DIST_CONTACT="https://aur.archlinux.org/packages/renderdoc-git" \
