@@ -1,8 +1,8 @@
 # Maintainer: gkmcd <g@dramati.cc>
 
 pkgname=('python-pyscaffold')
-pkgver=3.2.3
-pkgrel=2
+pkgver=3.3.1
+pkgrel=1
 pkgdesc="Python project template generator with batteries included"
 url="https://pyscaffold.org/"
 arch=('any')
