@@ -4,14 +4,7 @@ post_install()
         pycompile -p ayatana-webmail
     fi
 
-    cp -n usr/share/ayatanawebmail/indicator-messages-new.svg /usr/share/icons/hicolor/scalable/status/indicator-messages-new.svg
-    cp -n usr/share/ayatanawebmail/indicator-messages.svg /usr/share/icons/hicolor/scalable/status/indicator-messages.svg
-    mkdir -p usr/share/icons/matefaenza/apps/scalable
-    ln -s usr/share/icons/Faenza/apps/scalable/ayatanawebmail.svg /usr/share/icons/matefaenza/apps/scalable/ayatanawebmail.svg
-
     gtk-update-icon-cache -q -f usr/share/icons/hicolor
-    gtk-update-icon-cache -q -f usr/share/icons/Faenza
-    gtk-update-icon-cache -q -f usr/share/icons/matefaenza
     update-desktop-database -q
     glib-compile-schemas usr/share/glib-2.0/schemas
 }
@@ -36,8 +29,6 @@ pre_remove()
 post_remove()
 {
     gtk-update-icon-cache -q -f usr/share/icons/hicolor
-    gtk-update-icon-cache -q -f usr/share/icons/Faenza
-    gtk-update-icon-cache -q -f usr/share/icons/matefaenza
     update-desktop-database -q
     glib-compile-schemas usr/share/glib-2.0/schemas
 }
