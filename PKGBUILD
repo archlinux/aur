@@ -4,7 +4,7 @@
 pkgname=twilio-quest-bin
 pkgver=2019.09.27
 pkgrel=1
-pkgdesc="TwilioQuest: Discover your power to change the world with code."
+pkgdesc="Discover your power to change the world with code."
 arch=('x86_64')
 url="https://www.twilio.com/quest"
 license=('MIT')
