@@ -1,6 +1,6 @@
 # Maintainer: Tobias Heider <me@tobhe.de>
 pkgname=openiked-git
-pkgver=0.r15.g447ff84
+pkgver=0.r15.ged8c9ed
 pkgrel=1
 pkgdesc="Free implementation of the IKEv2 protocol"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('glibc' 'libevent' 'openssl')
 makedepends=('linux-headers' 'bison' 'cmake' 'git')
 provides=('iked' 'ikectl')
 source=('openiked::git://github.com/openiked/openiked-portable.git'
-        'iked.service'
+        'openiked.service'
         'sysusers.conf')
 sha256sums=('SKIP'
             'c15f9ec3fc58333d90779b4ff69d5815809f3cf423dda31f42126e76e1bc1874'
@@ -45,7 +45,7 @@ check() {
 package() {
 	cd openiked
 	mkdir -p /var/empty
-	install -Dm644 ../iked.service -t "${pkgdir}"/usr/lib/systemd/system/
+	install -Dm644 ../openiked.service -t "${pkgdir}"/usr/lib/systemd/system/
 	install -Dm644 ../sysusers.conf "${pkgdir}"/usr/lib/sysusers.d/openiked.conf
 
 	./setup_config.sh "${pkgdir}/etc/iked"
