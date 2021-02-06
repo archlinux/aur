@@ -1,6 +1,6 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
-	pkgver = 1.19.90
+	pkgver = 1.19.92
 	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
@@ -28,14 +28,14 @@ pkgbase = brave
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: for storing passwords in KWallet on KDE desktops
 	optdepends = sccache: For faster builds
-	source = https://github.com/brave/brave-browser/archive/v1.19.90.tar.gz
+	source = https://github.com/brave/brave-browser/archive/v1.19.92.tar.gz
 	source = brave-launcher
 	source = brave-browser.desktop
 	source = chromium-launcher-6.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v6.tar.gz
 	source = https://github.com/stha09/chromium-patches/releases/download/chromium-88-patchset-3/chromium-88-patchset-3.tar.xz
 	source = brave-custom-build.patch
 	source = subpixel-anti-aliasing-in-FreeType-2.8.1.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/subpixel-anti-aliasing-in-FreeType-2.8.1.patch?h=packages/chromium&id=4332a9b5a5f7e1d5ec8e95ee51581c3e55450f41
-	sha256sums = 6e0cbe0fa5d63a8620696a7c01367534e98213659a36971eb2ed2614d032b870
+	sha256sums = be3296c066e03a78ab9361a4e161e975e292bdd783264dcb6b00f9a3cfa36472
 	sha256sums = 725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5
 	sha256sums = fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d
 	sha256sums = 04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1
