@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-amd-full-git
 	pkgdesc = Complete solution to record, convert and stream audio and video (all possible features for AMD; git version)
-	pkgver = 4.4.r99528.g0c73c2909e
+	pkgver = 4.4.r100986.ge28b6e0448
 	pkgrel = 1
 	url = https://www.ffmpeg.org/
 	arch = i686
@@ -49,7 +49,7 @@ pkgbase = ffmpeg-amd-full-git
 	depends = opencore-amr
 	depends = openjpeg2
 	depends = opus
-	depends = pulseaudio
+	depends = libpulse
 	depends = librabbitmq-c
 	depends = rav1e
 	depends = librsvg
