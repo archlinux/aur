@@ -1,13 +1,12 @@
 pkgbase = veloren-git
 	pkgdesc = An open-world, open-source multiplayer voxel RPG
-	pkgver = 0.8.0.r0.bce6e1c6e
+	pkgver = 0.8.0.r476.a5c76a6d3
 	pkgrel = 1
 	url = https://veloren.net/
 	arch = x86_64
 	arch = i686
 	license = GPL3
-	makedepends = systemd-libs
-	makedepends = alsa-lib
+	makedepends = systemd
 	makedepends = git
 	makedepends = git-lfs
 	makedepends = rustup
@@ -24,15 +23,9 @@ pkgbase = veloren-git
 	provides = veloren
 	conflicts = veloren-git
 	conflicts = veloren
-	noextract = veloren-voxygen.desktop
-	noextract = voxygen.png
 	options = !strip
 	source = veloren-git::git+https://gitlab.com/veloren/veloren.git
-	source = veloren-voxygen.desktop
-	source = voxygen.png
 	sha512sums = SKIP
-	sha512sums = 27488b6d59c1f7cd397b9457ad32e7aedd5245559d6cdd02bb102747eb8bf24305b6671a994b8853be0ac49099982aa7e3ff43be527ffc1083bb02a94980b489
-	sha512sums = b5e5cbf28ab0e335f5a0fc93511fc9936360432a36e35cc876761601abacf257299deb0af6b3d9081143b700f6663c4f603970155dd4dacedb7a9672cde1dc94
 
 pkgname = veloren-git
 
