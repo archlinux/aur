@@ -21,7 +21,7 @@ pkgname=(
   "$pkgbase" "$pkgbase-x11" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=r56939.6995aad7c37
+pkgver=r57033.af9b6445fda
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -77,9 +77,6 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/spdlog-$_spdlog_version.tar.gz"
   cheat-sse-build.patch
-  # this causes issues for the official iOS app
-  # see: https://github.com/xbmc/Official-Kodi-Remote-iOS/issues/95
-  0001-Revert-jsonrpc-remove-ambiguous-and-duplicate-Player.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -102,8 +99,7 @@ b2sums=('SKIP'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
         '69024d77e6e7a5036e24729e337b17680dc3735cb1d209058a88b980989826fe56ff113c1177410106e0f70d827fa82603372277e3bc1aa4d12ffe5bb979af96'
         'bac6c6650f8347458dd2dd66f318b43a769b0896d68f6a6f1310754527a69feaa52b2f6f48d67c7e811c2dafa5d3863a9a07c738df8c12abed2718fb06254b28'
-        '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0'
-        '05f4158b4006822bc93d77aa13fc77ff1f266b840594d18882bab751d81a772ef99676c5ffc55fa7e977bb1efb66035cdf2bbdfa4a98ff50b9c3770e1c8b8cdc')
+        '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0')
 
 pkgver() {
   cd "$_gitname"
@@ -120,10 +116,6 @@ prepare() {
 
   cd "$_gitname"
   [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i "$srcdir/cheat-sse-build.patch"
-
-  # this causes issues for the official iOS app
-  # see: https://github.com/xbmc/Official-Kodi-Remote-iOS/issues/95
-  patch -Np1 -i ../0001-Revert-jsonrpc-remove-ambiguous-and-duplicate-Player.patch
 }
 
 build() {
