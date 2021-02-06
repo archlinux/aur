@@ -14,7 +14,7 @@ pkgbase = goobook-git
 	depends = python-google-api-python-client
 	depends = python-googleapis-common-protos
 	depends = python-oauth2client
-	depends = python-xdg
+	depends = python-xdg>=4.0.1
 	provides = goobook
 	conflicts = goobook
 	source = git+https://gitlab.com/goobook/goobook.git

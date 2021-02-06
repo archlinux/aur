@@ -11,7 +11,7 @@ conflicts=('goobook')
 provides=('goobook')
 depends=('python' 'python-simplejson' 'python-google-api-core'
          'python-google-api-python-client' 'python-googleapis-common-protos'
-         'python-oauth2client' 'python-xdg')
+         'python-oauth2client' 'python-xdg>=4.0.1')
 makedepends=('git' 'python-setuptools')
 source=("git+https://gitlab.com/goobook/goobook.git")
 md5sums=('SKIP')
@@ -25,6 +25,9 @@ pkgver() {
 package() {
   cd "$_gitname"
   python setup.py install --root="${pkgdir}" --optimize=1 || return 1
+  install -Dm644 -t "$pkgdir/usr/share/man/man1" "$pkgname.1"
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" "README.rst" "CHANGES.rst"
+
 }
 
 # vim:set ts=2 sw=2 et:
