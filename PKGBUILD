@@ -1,6 +1,6 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 pkgname=obs-rtspserver
-pkgver=1.2.2
+pkgver=1.3.0
 _obsver=26.1.2
 pkgrel=1
 pkgdesc="This is a plugin for obs-studio, encoding the output and publish rtsp stream"
@@ -20,7 +20,7 @@ source=(
   "fix_python_binary_loading.patch"
 )
 sha256sums=(
-  '04bf5df6218b64158108f1b9cc5150dfc4e56a5d9799c822576b65484a14c1d3'
+  'a0318ee63f4aa5cd09489f8e118af4568f137c435725e87fd3fcb556c1544b80'
   'bc8b4c61ba4aae87b70c589a6a5b8538e4f03121b31e9b98a2071d9f6006b897'
   'bdfbd062f080bc925588aec1989bb1df34bf779cc2fc08ac27236679cf612abd'
 )
