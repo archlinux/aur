@@ -1,8 +1,8 @@
 pkgbase = python-smcp
 	pkgdesc = A Python solver for sparse matrix cone programs.
 	pkgver = 0.4.6
-	pkgrel = 4
-	url = http://smcp.readthedocs.io
+	pkgrel = 5
+	url = https://smcp.readthedocs.io
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
