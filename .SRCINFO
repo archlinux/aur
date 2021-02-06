@@ -1,15 +1,15 @@
 pkgbase = python-pylint-django
 	pkgdesc = A Pylint plugin to help Pylint understand the Django web framework
-	pkgver = 2.3.0
-	pkgrel = 1
+	pkgver = 2.4.2
+	pkgrel = 0
 	url = https://github.com/landscapeio/pylint-django
 	arch = any
 	license = GPL2
 	makedepends = python-setuptools
 	makedepends = python-pylint-plugin-utils
 	depends = python
-	source = https://pypi.io/packages/source/p/pylint-django/pylint-django-2.3.0.tar.gz
-	sha256sums = b8dcb6006ae9fa911810aba3bec047b9410b7d528f89d5aca2506b03c9235a49
+	source = https://pypi.io/packages/source/p/pylint-django/pylint-django-2.4.2.tar.gz
+	sha256sums = f8d77f7da47a7019cda5cb669c214f03033208f9e945094661299d2637c0da06
 
 pkgname = python-pylint-django
 
