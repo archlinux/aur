@@ -1,7 +1,7 @@
 # Maintainer: Ashar Khan <ashar786khan at gmail.com>
 
 pkgname=cpeditor
-pkgver=6.6.5
+pkgver=6.7.2
 _pkgdir=cpeditor-$pkgver-full-source
 pkgrel=1
 pkgdesc='The editor for competitive programming'
@@ -22,11 +22,10 @@ optdepends=(
 	'jdk-openjdk: compile Java support'
 	'jre-openjdk: execute Java support'
 	'python: execute Python support'
-	'xterm: detached run support'
 )
 conflicts=("cpeditor-git")
 source=("https://github.com/cpeditor/$pkgname/releases/download/$pkgver/cpeditor-$pkgver-full-source.tar.gz")
-sha256sums=('889c1f655813996f772dc66315be92131c1667be952ebecf3020445f5796ead9')
+sha256sums=('ed81514a25d53fde1e8b0ea03f727b7da5e8a6c30e72cb98d772346925d9dc86')
 
 build() {
 	cd "$_pkgdir"
