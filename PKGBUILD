@@ -1,4 +1,4 @@
-# Maintainer: Carlos Galindo <carlos.s.galindo (at) gmail.com>
+# Maintainer: Carlos Galindo <arch -at- cgj.es>
 
 pkgname=bitwarden-dmenu
 pkgver=1.5.9
