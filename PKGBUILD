@@ -1,4 +1,4 @@
-# Maintainer: Carlos Galindo <carlos.s.galindo (at) gmail.com>
+# Maintainer: Carlos Galindo <arch -at- cgj.es>
 # Previous Maintainer: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
