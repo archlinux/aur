@@ -2,9 +2,9 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo-git
 _pkgname=sftpgo
-pkgver=r683.267d9f1
+pkgver=r687.363977b
 pkgrel=1
-pkgdesc='Fully featured and highly configurable SFTP server with optional FTP/S and WebDAV support. It can serve local filesystem, S3, GCS, Azure Blob'
+pkgdesc='Fully featured and highly configurable SFTP server with optional FTP/S and WebDAV support. It can serve local filesystem, S3, GCS, Azure Blob, SFTP'
 arch=('i686' 'x86_64')
 url="https://github.com/drakkan/${_pkgname}"
 license=('GPL3')
@@ -14,8 +14,6 @@ optdepends=(
   "sqlite: to use SQLite provider"
   "postgresql: to use PostgreSQL provider"
   "mariadb: to use MySQL provider"
-  "python-requests: REST API CLI"
-  "python-pygments: REST API CLI colors highlight"
 )
 conflicts=('sftpgo')
 provides=('sftpgo')
@@ -48,7 +46,6 @@ build() {
 package() {
   cd "${_pkgname}"
   install -Dm 755 sftpgo "$pkgdir/usr/bin/${_pkgname}"
-  install -Dm 755 examples/rest-api-cli/sftpgo_api_cli "${pkgdir}"/usr/bin/sftpgo_api_cli
   install -Dm 644 init/${_pkgname}.service -t "${pkgdir}/usr/lib/systemd/system"
   install -dm750 -o ${_uid_sftpgo} -g ${_gid_sftpgo} "${pkgdir}/etc/${_pkgname}"
   install -Dm 640 -o ${_uid_sftpgo} -g ${_gid_sftpgo} "$srcdir/sftpgo.json" -t "${pkgdir}/etc/${_pkgname}"
