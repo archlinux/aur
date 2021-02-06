@@ -12,7 +12,7 @@ makedepends=('go' 'git')
 optdepends=('fzf')
 conflicts=('gomu-git' 'gomu-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/issadarkthing/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('12845fc55f01ea9cac1353bb6e1900b5')
+md5sums=('e4f55fa62cdfe07262a3f4f8b9680270')
 
 
 build() {
