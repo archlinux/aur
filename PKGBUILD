@@ -2,8 +2,8 @@
 # Contributor: Hubert Jarosz <marqin.pl+aur at gmail dot com> PGP: 0xFFECF63C1AAB83FF
 
 pkgname=renderdoc-git
-pkgver=1.11
-pkgrel=2
+pkgver=1.12
+pkgrel=1
 pkgdesc="OpenGL and Vulkan debugging tool"
 arch=(i686 x86_64)
 url="https://github.com/baldurk/renderdoc"
