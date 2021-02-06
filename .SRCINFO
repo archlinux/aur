@@ -1,6 +1,6 @@
 pkgbase = ansifilter
 	pkgdesc = remove or convert ANSI codes to another format
-	pkgver = 2.17
+	pkgver = 2.18
 	pkgrel = 1
 	url = http://www.andre-simon.de/doku/ansifilter/en/ansifilter.php
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = ansifilter
 	arch = i486
 	license = GPL3
 	depends = gcc-libs
-	source = http://www.andre-simon.de/zip/ansifilter-2.17.tar.bz2
-	sha256sums = 5985beb39c960a3cb5b0e70d6a121687043dc8458e5783777ff250303cccc42f
+	source = http://www.andre-simon.de/zip/ansifilter-2.18.tar.bz2
+	sha256sums = 66cf017d36a43d5f6ae20609ce3b58647494ee6c0e41fc682c598bffce7d7d39
 
 pkgname = ansifilter
 
