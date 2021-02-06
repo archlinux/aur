@@ -2,13 +2,13 @@
 
 pkgname=python-swiglpk-git
 pkgver=4.65.1.r1.gec985c1
-pkgrel=2
+pkgrel=3
 pkgdesc='A Python interface to the GLPK optimization solver. Git version.'
 arch=('any')
 url='https://github.com/biosustain/swiglpk'
 license=('GPL3')
 depends=('python' 'glpk')
-makedepends=('swig' 'python-setuptools')
+makedepends=('git' 'swig' 'python-setuptools')
 provides=('python-swiglpk')
 conflicts=('python-swiglpk')
 source=("swiglpk::git+https://github.com/biosustain/swiglpk.git")
