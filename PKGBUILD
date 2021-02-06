@@ -9,13 +9,14 @@
 # Note - available options:
 # 1. <empty> JBR 11 (default)
 # 3. no-jbr No bundled JBR included (make sure you provide a Java runtime)
-_JBR=
+# The JBR of this version is broken, see https://youtrack.jetbrains.com/issue/JBR-3066
+_JBR=no-jbr
 
 ### Do no edit below this line unless you know what you're doing
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=211.4961.33
+_buildver=211.5538.20
 _veryear=2021
 _verrelease=1
 _verextra=
@@ -24,25 +25,36 @@ pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (ultimate version)"
 arch=('any')
 options=(!strip)
-url="http://www.jetbrains.com/idea/"
+url="http://www.jetbrains.com/idea/nextversion"
 license=('custom')
 depends=('java-environment' 'giflib' 'libxtst' 'libdbusmenu-glib')
-if [ -n "${_JBR}" ]; then
-  source=("https://download.jetbrains.com/idea/ideaIU-${_buildver}.tar.gz")
-  sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIU-${_buildver}.tar.gz.sha256" | cut -f1 -d" "))
-else
-  source=("https://download.jetbrains.com/idea/ideaIU-${_buildver}.tar.gz")
-  sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIU-${_buildver}.tar.gz.sha256" | cut -f1 -d" "))
-fi
+source=("https://download.jetbrains.com/idea/ideaIU-${_buildver}-${_JBR}.tar.gz"
+        "jbr_dcevm-11_0_9_1-linux-x64-b1145.77.tar.gz::https://bintray.com/jetbrains/intellij-jbr/download_file?file_path=jbr_dcevm-11_0_9_1-linux-x64-b1145.77.tar.gz"
+)
+sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIU-${_buildver}-${_JBR}.tar.gz.sha256" | cut -f1 -d" ")
+            '864234a43b8649ca295f963777eb4c7ba8c437df8e9bc2249d3270bfe6ed4ac5')
+
+prepare() {
+    cd "${srcdir}/${_pkgname}-${_buildver}"
+    # Remove bin/libs of non-matching architectures
+    if [[ $CARCH = 'i686' ]]; then
+        rm bin/libyjpagent-linux64.so
+        rm bin/fsnotifier64
+        rm bin/idea64.vmoptions
+        rm -rf lib/pty4j-native/linux/x86_64
+    fi
+    if [[ $CARCH = 'x86_64' ]]; then
+        rm bin/fsnotifier
+        rm bin/idea.vmoptions
+        rm -rf lib/pty4j-native/linux/x86
+   fi
+}
 
 package() {
     cd "$srcdir"
     mkdir -p "${pkgdir}/opt/${pkgname}"
-    cp -R "${srcdir}/idea-IU-${_buildver}/"* "${pkgdir}/opt/${pkgname}"
-    if [[ $CARCH = 'i686' ]]; then
-        rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so"
-        rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier64"
-    fi
+    cp -R "${srcdir}/${_pkgname}-${_buildver}/"* "${pkgdir}/opt/${pkgname}"
+    cp -R "${srcdir}/jbr" "${pkgdir}/opt/${pkgname}"
 (
 cat <<EOF
 [Desktop Entry]
@@ -64,10 +76,10 @@ EOF
     mkdir -p "${pkgdir}/usr/share/applications/"
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
-    for i in $(ls $srcdir/idea-IU-$_buildver/license/ ); do
-      ln -sf "${srcdir}/idea-IU-${_buildver}/license/$i" "${pkgdir}/usr/share/licenses/${pkgname}/$i"
+    for i in $(ls $srcdir/${_pkgname}-$_buildver/license/ ); do
+      ln -sf "${srcdir}/${_pkgname}-${_buildver}/license/$i" "${pkgdir}/usr/share/licenses/${pkgname}/$i"
     done 
     ln -s "/opt/${pkgname}/bin/idea.sh" "${pkgdir}/usr/bin/idea-ue-eap"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim:set ts=4 sw=4 et:
