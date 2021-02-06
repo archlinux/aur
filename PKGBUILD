@@ -1,7 +1,7 @@
 # Maintainer: Aleksy Grabowski <hurufu+arch@gmail.com>
 
 pkgname=python-pynng-git
-pkgver=0.6.2.r17
+pkgver=0.6.2.r17.g1a7ad77
 pkgrel=1
 pkgdesc='Ergonomic bindings for nanomsg next generation (nng), in Python'
 arch=(any)
@@ -26,7 +26,7 @@ source=('git+git://github.com/codypiersall/pynng.git')
 md5sums=('SKIP')
 
 pkgver() {
-    git -C "$srcdir/pynng" describe | cut -c2- | awk -F '-' '{print $1".r"$2}'
+    git -C "$srcdir/pynng" describe | awk -F - '{ print substr($1,2)".r"$2"."$3 }'
 }
 
 build() {

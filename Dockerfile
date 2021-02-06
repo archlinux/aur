@@ -4,7 +4,7 @@ FROM archlinux
 
 # Preparation
 RUN pacman -Syu --noconfirm
-RUN pacman -S --noconfirm --needed base-devel git python-pip
+RUN pacman -S --noconfirm --needed base-devel git
 
 # Configuration
 ARG PROJECT=python-pynng-git
@@ -24,15 +24,7 @@ WORKDIR $PREFIX/$BOT
 # Compiling required AUR packages
 RUN git clone https://aur.archlinux.org/aura-bin.git
 RUN cd aura-bin && makepkg -sric --noconfirm --needed --asdeps
-#RUN sudo aura -Aax --noconfirm python-prettytable
-RUN sudo aura -Aax --noconfirm pyocd
-RUN sudo aura -Aax --noconfirm python-cmsis-pack-manager
-RUN sudo aura -Aax --noconfirm python-mbed-ls
-RUN sudo aura -Aax --noconfirm python-mbed-host-tests
+RUN sudo aura -Aax --noconfirm "$PROJECT"
 
-# Actual build
-COPY --chown="$BOT:$GROUP" PKGBUILD "$PROJECT/"
-WORKDIR $PROJECT
-RUN makepkg -sric --noconfirm --needed
 RUN pacman -Ql "$PROJECT"
 RUN pacman -Qi "$PROJECT"
