@@ -1,0 +1,22 @@
+pkgbase = kime-bin
+	pkgdesc = Korean IME
+	pkgver = 1.0.0.pre3
+	pkgrel = 1
+	url = https://github.com/Riey/kime
+	arch = any
+	license = GPL3
+	optdepends = libappindicator-gtk3: indicator support
+	optdepends = gtk2: gtk2 support
+	optdepends = gtk3: gtk3 support
+	optdepends = gtk4: gtk4 support
+	optdepends = qt5-base: qt5 support
+	optdepends = qt6-base: qt6 support
+	optdepends = libxcb: xim support
+	optdepends = cairo: xim support
+	provides = kime
+	conflicts = kime
+	source = https://github.com/Riey/kime/releases/download/v1.0.0-pre3/kime-1.0.0.tar.xz
+	md5sums = c7c5c0a6e274f0eb569537c44ccb2127
+
+pkgname = kime-bin
+
