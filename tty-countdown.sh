@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-python /usr/share/tty-countdown/tty-countdown.py "$@"
+/usr/bin/env python3 /usr/share/tty-countdown/tty-countdown.py "$@"
