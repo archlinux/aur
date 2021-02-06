@@ -1,6 +1,6 @@
 pkgbase = perl-mojo-pg
 	pkgdesc = Mojolicious ♥ PostgreSQL
-	pkgver = 4.23
+	pkgver = 4.24
 	pkgrel = 1
 	url = https://metacpan.org/release/Mojo-Pg
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = perl-mojo-pg
 	depends = perl-sql-abstract>=1.85
 	depends = perl>=5.10.1
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojo-Pg-4.23.tar.gz
-	md5sums = 7665a15b0aa3fcf585e36a662ecdffde
-	sha512sums = 3f2ae8e5d6f3a8b23bc8bbaa9868e0de213dc0ca83cca8708cde1be19e3951421cc0cf68ad0988f49a84674b16c44329d86d4deae1519653ab85df1c4c8ee525
+	source = https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojo-Pg-4.24.tar.gz
+	md5sums = bbf31be876ef0228bb8cf81370af439f
+	sha512sums = 492279e7e207068938f8fe03245aa05a794e3854104c8170d9d35fe3f8d9355810f94b3b0bbf705e94f9a73d7c2b6698e897e9008347683a12dff6bbe5106cc1
 
 pkgname = perl-mojo-pg
 
