@@ -1,7 +1,7 @@
 pkgbase = python-picos
 	pkgdesc = A Python interface to conic optimization solvers.
 	pkgver = 2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/picos-api/picos
 	arch = any
 	license = GPL3
