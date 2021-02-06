@@ -1,13 +1,14 @@
 # Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
+# Co-maintainer: Carlos Galindo <arch -at- cgj.es>
 
 pkgname=yourls
 pkgver=1.7.9
-pkgrel=1
+pkgrel=2
 pkgdesc="your own URL shortener"
 arch=('any')
 url="https://github.com/YOURLS/YOURLS"
 license=('GPL3')
-depends=('php>=4.3' 'mysql>=4.1')
+depends=('php>=4.3' 'php<8' 'mysql>=4.1')
 conflicts=('yourls-svn')
 backup=('etc/webapps/yourls/config.php')
 install=$pkgname.install
