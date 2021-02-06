@@ -1,6 +1,6 @@
 pkgbase = unvanquished-git
 	pkgdesc = A team-based, fast-paced, fps/rts hybrid game which pits aliens against humans. Git version.
-	pkgver = v0.51.1.108.g33ba53888
+	pkgver = 0.51.1.r108.g33ba53888
 	pkgrel = 1
 	url = https://www.unvanquished.net
 	install = unvanquished.install
@@ -41,12 +41,12 @@ pkgbase = unvanquished-git
 	backup = etc/conf.d/unvanquished.conf
 	backup = etc/unvanquished/server.cfg
 	backup = etc/unvanquished/maprotation.cfg
-	source = unvanquished.install
-	source = unvanquished-git::git+https://github.com/Unvanquished/Unvanquished.git#branch=master
+	source = git+https://github.com/Unvanquished/Unvanquished.git#branch=master
 	source = naclsdk_linux64-4.tar.bz2::https://dl.unvanquished.net/deps/linux64-4.tar.bz2
-	md5sums = 6d9430b5b06b93a43a1cb79e14637f0b
+	source = unvanquished.install
 	md5sums = SKIP
 	md5sums = 2ba12c71625919ddc282172b74fa4887
+	md5sums = 6d9430b5b06b93a43a1cb79e14637f0b
 
 pkgname = unvanquished-git
 

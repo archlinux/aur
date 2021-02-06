@@ -4,7 +4,7 @@
 # Contributor: Martin F. Schumann
 
 pkgname=unvanquished-git
-pkgver=v0.51.1.108.g33ba53888
+pkgver=0.51.1.r108.g33ba53888
 pkgrel=1
 pkgdesc='A team-based, fast-paced, fps/rts hybrid game which pits aliens against humans. Git version.'
 arch=('x86_64')
@@ -31,25 +31,23 @@ _type='branch'
 _checkout='master'
 
 # set this to share more text with the non-git version
-_unvdir="${pkgname}"
+_unvdir="Unvanquished"
 
 # NaCL SDK is a buildtime dependency of Dæmon.
 # Note that due to enormous compile times, we use a binary distribution.
 _naclsdkbasever="4"
 _naclsdkver="linux64-${_naclsdkbasever}"
 
-source=('unvanquished.install'
-        "${_unvdir}::git+https://github.com/Unvanquished/Unvanquished.git#${_type}=${_checkout}"
-        "naclsdk_${_naclsdkver}.tar.bz2::https://dl.unvanquished.net/deps/${_naclsdkver}.tar.bz2")
-
-md5sums=('6d9430b5b06b93a43a1cb79e14637f0b'
-         'SKIP'
-         '2ba12c71625919ddc282172b74fa4887')
+source=("git+https://github.com/Unvanquished/Unvanquished.git#${_type}=${_checkout}"
+        "naclsdk_${_naclsdkver}.tar.bz2::https://dl.unvanquished.net/deps/${_naclsdkver}.tar.bz2"
+        'unvanquished.install')
+md5sums=('SKIP'
+         '2ba12c71625919ddc282172b74fa4887'
+         '6d9430b5b06b93a43a1cb79e14637f0b')
 
 pkgver() {
 	cd "${srcdir}/${_unvdir}"
-	local ver="$(git describe --long --match "v*")"
-	printf "%s" "${ver//-/.}"
+	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
