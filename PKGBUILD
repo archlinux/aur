@@ -1,6 +1,6 @@
 # Maintainer: hamki <hamki.do2000@gmail.com>
 pkgname=nordic-standard-buttons-theme
-_pkgname=Nordic-standard-buttons-theme
+_pkgname=Nordic-standard-buttons
 pkgver=1.9.0
 pkgrel=1
 epoch=
