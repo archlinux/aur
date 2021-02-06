@@ -2,7 +2,7 @@
 
 pkgname=python-pyscipopt
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A Python interface to the SCIP Optimization Suite.'
 arch=('any')
 url='https://www.scipopt.org/'
@@ -20,7 +20,7 @@ build() {
 
 check() {
 	_arch="linux-$(uname -m)"
-	_pymajver="$(python -V | sed 's/Python \([0-9]\+\.[0-9]\+\)\.[0-9]\+/\1/')"
+	_pymajver="$(python -V | awk '{print $2}' | awk -F. '{print $1"."$2}')"
 
 	cd "${srcdir}/PySCIPOpt-${pkgver}/build/lib.${_arch}-${_pymajver}"
 	python -Bc "import pyscipopt"

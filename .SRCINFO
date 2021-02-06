@@ -1,7 +1,7 @@
 pkgbase = python-pyscipopt
 	pkgdesc = A Python interface to the SCIP Optimization Suite.
 	pkgver = 3.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.scipopt.org/
 	arch = any
 	license = MIT
