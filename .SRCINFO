@@ -1,6 +1,6 @@
 pkgbase = tardis
 	pkgdesc = A simple backup application for elementary OS
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/chasinglogic/tardis
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = tardis
 	depends = gtk3
 	depends = granite
 	depends = rsync
-	source = tardis-1.2.1.tar.gz::https://github.com/chasinglogic/tardis/archive/v1.2.1.tar.gz
-	sha256sums = 951d94742b374c733b10ea83ea6a4b2ca5eb4bb6f810d42fa55015c100ee7023
+	source = tardis-1.2.2.tar.gz::https://github.com/chasinglogic/tardis/archive/v1.2.2.tar.gz
+	sha256sums = e15ff03e4092be5454e2899ea7138b83ed5993bcbdd0bd605916978f612e6509
 
 pkgname = tardis
 

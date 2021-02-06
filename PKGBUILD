@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=tardis
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A simple backup application for elementary OS"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('gtk3' 'granite' 'rsync')
 makedepends=('meson' 'vala')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('951d94742b374c733b10ea83ea6a4b2ca5eb4bb6f810d42fa55015c100ee7023')
+sha256sums=('e15ff03e4092be5454e2899ea7138b83ed5993bcbdd0bd605916978f612e6509')
 
 build() {
 	arch-meson "$pkgname-$pkgver" build
