@@ -1,7 +1,7 @@
 # Maintainer: Saurabh Kumar Sharma <saurabh000345 at gmail dot com>
 pkgname=lolminer
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Unofficial installer for lolMiner: https://github.com/Lolliedieb/lolMiner-releases"
 arch=("x86_64")
 url="https://github.com/Lolliedieb/lolMiner-releases"
@@ -20,5 +20,5 @@ prepare(){
 package(){
     install -dm755 "${pkgdir}/"{opt,usr/bin/}
     cp -rL "${srcdir}/${pkgname}" "${pkgdir}/opt/${pkgname}"
-    ln -s "${pkgdir}/opt/${pkgname}/lolMiner" "${pkgdir}/usr/bin/lolminer"
+    ln -s "/opt/${pkgname}/lolMiner" "${pkgdir}/usr/bin/lolminer"
 }
