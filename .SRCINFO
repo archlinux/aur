@@ -1,0 +1,16 @@
+pkgbase = nym-git
+	pkgdesc = Append, copy, link, and move files using patterns.
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/olson-sean-k/nym
+	arch = x86_64
+	license = MIT
+	checkdepends = rust
+	makedepends = rust
+	provides = nym
+	conflicts = nym
+	source = nym::git+https://github.com/olson-sean-k/nym.git
+	sha256sums = SKIP
+
+pkgname = nym-git
+
