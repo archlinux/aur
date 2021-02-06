@@ -2,8 +2,8 @@
 
 pkgname=python-networkmanager
 _pypi_pkgname=python-networkmanager
-pkgver=2.1
-pkgrel=2
+pkgver=2.2
+pkgrel=0
 pkgdesc="Easy communication with NetworkManager"
 arch=(any)
 url="https://github.com/seveas/python-networkmanager"
@@ -11,7 +11,7 @@ license=('zlib')
 makedepends=('python-setuptools')
 depends=('python' 'networkmanager')
 source=("https://pypi.io/packages/source/p/python-networkmanager/python-networkmanager-${pkgver}.tar.gz")
-sha256sums=('aef1e34d98d7bec7cc368e0ca0f2e97493f9b5ebe6d7103f8f6460cfca3dc6fc')
+sha256sums=('de6eb921d94aba7549f428ed2b3aa482a5d543ecb6965cbaa0fbb555ab31b9d5')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
