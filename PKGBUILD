@@ -8,7 +8,7 @@
 
 pkgname=hfsprogs
 pkgver=540.1.linux3
-pkgrel=3
+pkgrel=4
 pkgdesc="User space utils for create and check Apple HFS/HFS+ filesystem"
 arch=('x86_64')
 depends=('openssl')
@@ -17,10 +17,10 @@ license=('custom:APSL')
 url="http://www.opensource.apple.com/"
 _checksum='0435afc389b919027b69616ad1b05709'
 source=("https://src.fedoraproject.org/repo/pkgs/hfsplus-tools/diskdev_cmds-${pkgver}.tar.gz/${_checksum}/diskdev_cmds-${pkgver}.tar.gz"
-        "https://src.fedoraproject.org/rpms/hfsplus-tools/raw/master/f/hfsplus-tools-no-blocks.patch"
-        "https://src.fedoraproject.org/rpms/hfsplus-tools/raw/master/f/hfsplus-tools-learn-to-stdarg.patch"
-        "https://src.fedoraproject.org/rpms/hfsplus-tools/raw/master/f/apsl-2.0.txt"
-        "https://src.fedoraproject.org/rpms/hfsplus-tools/raw/master/f/hfsplus-tools-sysctl.patch"
+        "https://src.fedoraproject.org/rpms/hfsplus-tools/raw/rawhide/f/hfsplus-tools-no-blocks.patch"
+        "https://src.fedoraproject.org/rpms/hfsplus-tools/raw/rawhide/f/hfsplus-tools-learn-to-stdarg.patch"
+        "https://src.fedoraproject.org/rpms/hfsplus-tools/raw/rawhide/f/apsl-2.0.txt"
+        "https://src.fedoraproject.org/rpms/hfsplus-tools/raw/rawhide/f/hfsplus-tools-sysctl.patch"
         "ldflags_relro.patch")
 sha256sums=('b01b203a97f9a3bf36a027c13ddfc59292730552e62722d690d33bd5c24f5497'
             'd78d883f9b485e58d40820595000a8c20ec12f4aff6ca424368b5d1c04b2fe5e'
