@@ -3,7 +3,7 @@
 
 pkgbase=linux-rt-lts
 pkgver=5.4.93.51.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux RT LTS'
 arch=('x86_64')
 url="https://wiki.linuxfoundation.org/realtime/start"
