@@ -23,7 +23,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-sqlite"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
-pkgver=7.4.14
+pkgver=7.4.15
 pkgrel=1
 arch=('x86_64')
 license=('PHP')
@@ -35,7 +35,7 @@ checkdepends=('procps-ng')
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
         'phpize.m4.patch' 'enchant-2.patch')
-sha256sums=('f9f3c37969fcd9006c1dbb1dd76ab53f28c698a1646fa2dde8547c3f45e02886'
+sha256sums=('9b859c65f0cf7b3eff9d4a28cfab719fb3d36a1db3c20d874a79b5ec44d43cb8'
         'SKIP'
         'b4ea038f2863801175d6c4e74c685913feecdd5be3d49aff7d9b3fa92d8c4159'
         'ebc0af1ef3a6baccb013d0ccb29923895a7b22ff2d032e3bba802dc6328301ce'
@@ -54,7 +54,7 @@ prepare() {
 	patch -p0 -i ${srcdir}/apache.patch
 	patch -p0 -i ${srcdir}/php-fpm.patch
 	patch -p0 -i ${srcdir}/php.ini.patch
-  patch -p0 -i ${srcdir}/phpize.m4.patch
+	patch -p0 -i ${srcdir}/phpize.m4.patch
 	patch -p0 -i ${srcdir}/enchant-2.patch
 	autoconf
 
@@ -193,7 +193,7 @@ check() {
 package_php74() {
 	pkgdesc='A general-purpose scripting language that is especially suited to web development'
 	depends=('libxml2' 'curl' 'libzip' 'pcre2' 'argon2' 'oniguruma')
-	backup=('etc/${pkgbase}/php.ini')
+	backup=("etc/${pkgbase}/php.ini")
 
 	cd ${srcdir}/build
 	make -j1 INSTALL_ROOT=${pkgdir} install-{modules,cli,build,headers,programs,pharcmd}
@@ -210,7 +210,7 @@ package_php74() {
 	# move include directory
 	mv ${pkgdir}/usr/include/php ${pkgdir}/usr/include/${pkgbase}
 
-  # create phar74 symlink
+	# create phar74 symlink
 	ln -sf phar74.phar ${pkgdir}/usr/bin/phar74
 
 	# fix paths in executables
