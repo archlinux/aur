@@ -1,14 +1,14 @@
 pkgbase = bas21-bin
 	pkgdesc = A norwegian accounting and invoice system
-	pkgver = 1.5.6
+	pkgver = 1.5.7
 	pkgrel = 1
 	url = https://bas21.no
 	arch = x86_64
 	license = custom
 	options = !strip
 	depends = openssl
-	source = https://download.bas21.no/bas21/bas21-1.5.6.tar.xz
-	sha256sums = ba68d1a3544e022397273e9011ab7637602bb3c06d5740a685bf2914b5209c34
+	source = https://download.bas21.no/bas21/bas21-1.5.7.tar.xz
+	sha256sums = 5ed72cb9f454a4dc3987d12cdd18877784f01b737da3518275652f4ee1cf8da0
 
 pkgname = bas21-bin
 
