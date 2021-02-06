@@ -1,0 +1,24 @@
+pkgbase = twilio-quest-bin
+	pkgdesc = TwilioQuest: Discover your power to change the world with code.
+	pkgver = 2019.09.27
+	pkgrel = 1
+	url = https://www.twilio.com/quest
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = util-linux-libs
+	depends = trash-cli
+	depends = glibc
+	depends = gvfs
+	depends = alsa-lib
+	options = !strip
+	source = twilio-quest-bin-2019.09.27.x86_64.zip::https://firebasestorage.googleapis.com/v0/b/twilioquest-prod.appspot.com/o/launchers%2F8%2Ftwilioquest-linux-amd64.zip?alt=media&token=1ad06f1a-c7c8-438d-aa7b-4faf570c8515
+	md5sums = c3c93d6194fad34a16aa5e8878c9b9da
+
+pkgname = twilio-quest-bin
+
