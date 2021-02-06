@@ -1,0 +1,22 @@
+pkgbase = micro-cap
+	pkgdesc = an integrated schematic editor and mixed analog/digital circuit simulator
+	pkgver = 12
+	pkgrel = 1
+	epoch = 0
+	url = http://www.spectrum-soft.com/index.shtm
+	arch = x86_64
+	license = custom
+	depends = wine
+	depends = wine-gecko
+	depends = wine-mono
+	source = micro-cap-12.zip::http://www.spectrum-soft.com/download/mc12cd.zip
+	source = launcher
+	source = setup.iss.tar
+	source = LICENSE
+	sha256sums = f4fda36ae96ab618c0487b2ff199b37bb8b12a26ecabc2ef11c6d36a5bac02a7
+	sha256sums = d4d5d2ce22691a8668ad5071c57f860e686b061142f8c9bd4cefe01df5f3c87f
+	sha256sums = d51262c700c2e860bbb8d6d9c0cacc424ba4a60edd299ce20b46367cc078fbbf
+	sha256sums = 350a5c1fe63617959e971db8f3f97a694b251fefee296c88fcbd939d3ec90f63
+
+pkgname = micro-cap
+

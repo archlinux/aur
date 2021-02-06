@@ -1,0 +1,12 @@
+#!/bin/bash
+export XDG_DATA_HOME="$HOME"/.micro-cap/wine/local
+if [ ! -d "$HOME"/.micro-cap/wine/local ] ; then
+   mkdir -p "$HOME"/.micro-cap/wine
+   cp -a /usr/share/micro-cap/local "$HOME"/.micro-cap/wine
+fi
+export WINEPREFIX="$HOME"/.micro-cap/wine/env
+if [ ! -d "$HOME"/.micro-cap/wine/env ] ; then
+   mkdir -p "$HOME"/.micro-cap/wine
+   cp -a /usr/share/micro-cap/env "$HOME"/.micro-cap/wine
+fi
+WINEDEBUG=-all wine64 "C:\\MC12\\mc12_64.exe" "$@"
