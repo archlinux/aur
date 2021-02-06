@@ -1,0 +1,14 @@
+pkgbase = lightdm-config-git
+	pkgdesc = A simple tool for editing LightDM
+	pkgver = r15.cb28c6d
+	pkgrel = 1
+	url = https://github.com/FascodeNet/lightdm-config
+	arch = any
+	license = SUSHI-WARE
+	makedepends = git
+	depends = lightdm
+	source = git+https://github.com/FascodeNet/lightdm-config.git
+	md5sums = SKIP
+
+pkgname = lightdm-config-git
+
