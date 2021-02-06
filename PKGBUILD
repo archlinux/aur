@@ -8,7 +8,7 @@ arch=('aarch64')
 url="https://github.com/nicehash/sgminer-gm"
 license=('GPL3')
 depends=('curl' 'ocl-icd' 'libtool' 'pkg-config' 'automake' 'autoconf' 'ncurses')
-makedepends=('opencl-headers' 'gmp' 'jansson' 'aarch64-linux-gnu-armcl-opencl+neon')
+makedepends=('opencl-headers' 'gmp' 'jansson' 'armcl-opencl-mali')
 optdepends=('dkms-mali: OpenCL implementation for Mali'
 	    'opencl-mesa: OpenCL implementation for AMD/NVIDIA/MALI[incomplete]')
 provides=('sgminer' 'sgminer-gm')
