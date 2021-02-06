@@ -3,7 +3,7 @@
 
 pkgbase=linux-rt
 pkgver=5.10.12.26.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux RT'
 arch=('x86_64')
 url="https://wiki.linuxfoundation.org/realtime/start"
@@ -16,9 +16,9 @@ source=(
   config
 )
 sha512sums=('SKIP'
-            'ca5d9254a8c1fc591bdda962c24fa383a155c869cf0276bae639178e3ec3857c2636ad5c8e9bf1c78d96671f2647c644abe365585663bc86c52eb6b346822c13')
+            'e6486c148de1bcb684465fc9d67a92d66c39d6110ddcb706e6cee0e1f5cd3ab4930222453f0fc6f6aa04c039e344722b24ff8d3a385ea6c21583e91022d3b61c')
 b2sums=('SKIP'
-        'b328fe053cb7c2a1001f8a4ce34fd09233227c9cb50db1ec72c1bfb440f9a5a8392b5f360fed111a88013717cf1c5ed77539941ad655de9fc0892f0a056d570f')
+        '9367ea00b0daba0549190b2dc902fff143865daa94a9793b4df043c23409e5cd7984fea1564d5ad91eae2946e17bd4b0b587712964d79d6a7122bca4bb98665f')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@kernel.org>
   '64254695FFF0AA4466CC19E67B96E8162A8CF5D1'  # Sebastian Andrzej Siewior
