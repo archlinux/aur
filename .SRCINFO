@@ -1,0 +1,22 @@
+pkgbase = asfa-git
+	pkgdesc = share files by upload via ssh and generation of a non-guessable link
+	pkgver = 0.7.2.r10.gcb5cfed
+	pkgrel = 1
+	url = https://github.com/obreitwi/asfa
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = help2man
+	makedepends = findutils
+	makedepends = gzip
+	makedepends = git
+	depends = gcc-libs
+	depends = openssl
+	depends = zlib
+	provides = asfa
+	conflicts = asfa
+	source = git+https://github.com/obreitwi/asfa.git
+	md5sums = SKIP
+
+pkgname = asfa-git
+
