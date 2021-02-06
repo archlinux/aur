@@ -2,13 +2,13 @@
 # Maintainer: Campbell Jones <dev at serebit dot com> 
 
 pkgname=wraith-master-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Wraith Master"
 arch=('x86_64')
 license=("Apache-2.0")
 depends=('gtk3')
-source=("wraith-master.tar.xz::https://gitlab.com/serebit/wraith-master/uploads/3339f08d2772ec4087f16d0d1bb740ae/wraith-master-1.1.0.tar.xz")
+source=("wraith-master.tar.xz::https://gitlab.com/serebit/wraith-master/uploads/0fcdf56b36b28c7005b74e90dacd53d0/wraith-master-v1.1.1.tar.xz")
 sha256sums=('SKIP')
 url="https://gitlab.com/serebit/wraith-master"
 
