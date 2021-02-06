@@ -1,6 +1,6 @@
 pkgbase = kodi-devel
 	pkgver = 19.0rc1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -75,7 +75,6 @@ pkgbase = kodi-devel
 	source = http://mirrors.kodi.tv/build-deps/sources/flatbuffers-1.11.0.tar.gz
 	source = http://mirrors.kodi.tv/build-deps/sources/spdlog-1.5.0.tar.gz
 	source = cheat-sse-build.patch
-	source = 0001-Revert-jsonrpc-remove-ambiguous-and-duplicate-Player.patch
 	b2sums = 305793e2a5f16f07853a82e8f1953a56baa4159c9eee762aee40e8b6692c317cb83e7713d99cbb767cff0c1ac2a2d8bfc3837525d8ad4c854f114f900ebdb294
 	b2sums = 283aa2cec0a2200d3569bc280cb9659e9224a6b3a77db8a35b269cd8caf1337ac9d8b92b806df66f63ef7458a46bd6261f0b8b14678b10e26644a79dcbeea5da
 	b2sums = 7573434a0ae8e8ccabf48173f81fcde29074eb138e119a2ae9156cde3c3d8bfd716f5d0e605b97f2dcac21f570781137c8533c5ae306b51e3905822fda318355

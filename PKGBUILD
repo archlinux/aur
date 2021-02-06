@@ -24,7 +24,7 @@ pkgname=(
 )
 pkgver=19.0rc1
 #_major=18.7.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -81,9 +81,6 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/spdlog-$_spdlog_version.tar.gz"
   cheat-sse-build.patch
-  # this causes issues for the official iOS app
-  # see: https://github.com/xbmc/Official-Kodi-Remote-iOS/issues/95
-  0001-Revert-jsonrpc-remove-ambiguous-and-duplicate-Player.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
