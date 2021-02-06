@@ -1,7 +1,7 @@
 # Maintainer: Jakub Szymański <jakubmateusz@poczta.onet.pl>
 pkgname=woeusb-ng
-pkgver=0.2.5
-pkgrel=3
+pkgver=0.2.7
+pkgrel=1
 pkgdesc="Simple tool that enable you to create your own usb stick with Windows installer."
 arch=('any')
 url="https://github.com/WoeUSB/WoeUSB-ng"
@@ -16,36 +16,32 @@ depends=(
     'python-pip'
     'python-wxpython'
     'xdg-utils'
+    'python-termcolor'
     )
 makedepends=(
-    'git'
     'python-setuptools'
 )
-optdepends=('python-termcolor: Colored text')
 provides=('woeusb')
 conflicts=(
     'woeusb'
     'woeusb-git'
 )
 source=(
-    "git+https://github.com/WoeUSB/WoeUSB-ng.git"
+    "https://github.com/WoeUSB/WoeUSB-ng/archive/v0.2.7.tar.gz"
 )
 sha256sums=(
-    'SKIP'
+    "4546ca5cf703434602b9dac2724cbfe791bbbc21c9b72d01c655ff7b89d69672"
 )
 
 
 build() {
-    cd WoeUSB-ng
-
-    git checkout v$pkgver
-    git apply ../../AUR.patch || echo "Failed to apply patch"
+    cd WoeUSB-ng-$pkgver
 
     python setup.py build
 }
 
 package() {
-    cd WoeUSB-ng
+    cd WoeUSB-ng-$pkgver
 
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
@@ -65,5 +61,5 @@ package() {
     chmod 755 $pkgdir/usr/share/applications/WoeUSB-ng.desktop
 
     # policy
-    cp miscellaneous/com.github.woeusb.woeusb-ng.policy $pkgdir/usr/share/polkit-1/actions/com.github.woeusb.woeusb-ng.policy
+    cp ../../com.github.woeusb.woeusb-ng.policy $pkgdir/usr/share/polkit-1/actions/com.github.woeusb.woeusb-ng.policy
 }
