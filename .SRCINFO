@@ -1,24 +1,26 @@
-pkgbase = airsonic
-	pkgdesc = A free, web-based media streamer and jukebox.
-	pkgver = 10.6.2
+pkgbase = airsonic-advanced-bin
+	pkgdesc = Free, web-based media streamer and jukebox fork
+	pkgver = 10.6.0
 	pkgrel = 1
-	url = https://github.com/Airsonic/airsonic/
+	url = https://github.com/airsonic-advanced/airsonic-advanced
 	arch = any
 	license = GPL3
 	depends = java-runtime-headless
 	depends = ttf-dejavu
+	provides = airsonic
+	conflicts = airsonic
 	noextract = airsonic.war
+	noextract = airsonic.sysusers
+	noextract = airsonic.tmpfiles
 	backup = etc/airsonic/airsonic.conf
-	source = airsonic-10.6.2.war::https://github.com/airsonic/airsonic/releases/download/v10.6.2/airsonic.war
-	source = airsonic-systemd-env-10.6::https://raw.githubusercontent.com/airsonic/airsonic/release-10.6/contrib/airsonic-systemd-env
-	source = airsonic-10.6.service::https://raw.githubusercontent.com/airsonic/airsonic/release-10.6/contrib/airsonic.service
+	source = airsonic.war::https://github.com/airsonic-advanced/airsonic-advanced/releases/download/v10.6.0/airsonic.war
+	source = src.tar.gz::https://github.com/airsonic-advanced/airsonic-advanced/archive/v10.6.0.tar.gz
 	source = airsonic.sysusers
 	source = airsonic.tmpfiles
-	sha256sums = 94b17d6a7859a9c029dcbcdc672f4d49bd605bf46bdf74ac51ea0d593db67860
-	sha256sums = 059a43fe100d95aaaae8091d1c312f4d3a2a2b4edc1969358dd7be35f6525930
-	sha256sums = 6f2e626e393d1e706e3edb45d5dfabf026d9360016d0c2643430c4503dc3e9e2
+	sha256sums = 528f417e59499161ad7fd8b86d391e3c7eff70e0825465e315f86d3417664c69
+	sha256sums = 00697cbb42ce4742098bfad27795fbf91093698dcff00070724e39c3c36ddee2
 	sha256sums = 25af0b92b247df928db5ac8fec3fb4fa2cdc717e649729d5e0c059a5b81e058e
 	sha256sums = 952c15c8c6b53b9c63a96eb6b2402eae42bde56dc9c6c60484cf039a03a82963
 
-pkgname = airsonic
+pkgname = airsonic-advanced-bin
 
