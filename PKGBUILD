@@ -3,12 +3,12 @@
 
 pkgname=perl-crypt-ssleay
 pkgver=0.73_04
-pkgrel=13
+pkgrel=14
 pkgdesc="OpenSSL glue that provides LWP https support"
 arch=('x86_64')
 url="https://search.cpan.org/dist/Crypt-SSLeay"
 license=('GPL' 'PerlArtistic')
-depends=('perl-lwp-protocol-https' 'perl-try-tiny' 'perl-path-class')
+depends=('perl-lwp-protocol-https' 'perl-try-tiny' 'perl-path-class' 'perl-bytes-random-secure')
 options=('!emptydirs')
 source=("https://www.cpan.org/CPAN/authors/id/N/NA/NANIS/Crypt-SSLeay-$pkgver.tar.gz")
 md5sums=('7508b2a34da2202cc0c78deb59e36526')
