@@ -1,14 +1,15 @@
 pkgbase = ht-rs
 	pkgdesc = HTTPie clone implemented in Rust
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/ducaale/ht
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = 0.3.2.tar.gz::https://github.com/ducaale/ht/archive/v0.3.2.tar.gz
-	sha256sums = 0d905d7030b4f134eee24f1661ad36c1878cdd256fac9c5065704ea0d3314770
+	conflicts = ht-bin
+	source = 0.4.0.tar.gz::https://github.com/ducaale/ht/archive/v0.4.0.tar.gz
+	sha256sums = 5c7e6ff620b3206b395b9b839950dd5ccd62820855eb6b1e4d401ac32b42aa4e
 
 pkgname = ht-rs
 
