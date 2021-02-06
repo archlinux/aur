@@ -4,10 +4,10 @@ pkgdesc="ROS - This package contains a class for converting from a 2D laser scan
 url='https://wiki.ros.org/laser_geometry'
 
 pkgname='ros-melodic-laser-geometry'
-pkgver='1.6.5'
+pkgver='1.6.7'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=6
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -41,9 +41,9 @@ depends=(
 	python-numpy
 )
 
-_dir="laser_geometry-${pkgver}"
+_dir="laser_geometry-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/laser_geometry/archive/${pkgver}.tar.gz")
-sha256sums=('14bc988c97a88c5e743394639a41cec01e999aeda601c4da2fc141e7dd391c86')
+sha256sums=('334a1cb1e8846a80a9980f06e4ab01dedd15f85016ea9d7c6fa4f2a29b075760')
 
 build() {
 	# Use ROS environment variables.

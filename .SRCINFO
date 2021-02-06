@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-laser-geometry
 	pkgdesc = ROS - This package contains a class for converting from a 2D laser scan as defined by sensor_msgs/LaserScan into a point cloud as defined by sensor_msgs/PointCloud or sensor_msgs/PointCloud2.
-	pkgver = 1.6.5
-	pkgrel = 6
+	pkgver = 1.6.7
+	pkgrel = 1
 	url = https://wiki.ros.org/laser_geometry
 	arch = i686
 	arch = x86_64
@@ -26,8 +26,8 @@ pkgbase = ros-melodic-laser-geometry
 	depends = boost1.69
 	depends = eigen
 	depends = python-numpy
-	source = ros-melodic-laser-geometry-1.6.5.tar.gz::https://github.com/ros-perception/laser_geometry/archive/1.6.5.tar.gz
-	sha256sums = 14bc988c97a88c5e743394639a41cec01e999aeda601c4da2fc141e7dd391c86
+	source = ros-melodic-laser-geometry-1.6.7.tar.gz::https://github.com/ros-perception/laser_geometry/archive/1.6.7.tar.gz
+	sha256sums = 334a1cb1e8846a80a9980f06e4ab01dedd15f85016ea9d7c6fa4f2a29b075760
 
 pkgname = ros-melodic-laser-geometry
 
