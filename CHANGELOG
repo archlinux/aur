@@ -1,18 +1,6 @@
 See the full changelog at
 https://git.sr.ht/~krathalan/wtwitch/tree/master/FULLCHANGELOG
 
-2.0.0 (August 24, 2020)
-    New command style: no more flags! ("wtwitch c" instead of "wtwitch -c")
-      Instead of "wtwitch [streamer]" to watch a streamer, use
-      "wtwitch w [streamer]"
-    Added commands to search games and channels
-      wtwitch e [category/game]
-      wtwitch n [channel]
-    Added blocking/subscribing/unsubscribing to more than 1 channel at a time
-    Keep track of last time offline subscriptions were seen online
-    Improved compatibility with macOS with patches from René de Hesselle
-    Added German localization improvement patch from René de Hesselle
-
 2.1.0 (September 7, 2020)
     Added bash completion file (built in to AUR package)
       https://todo.sr.ht/~krathalan/wtwitch/7
@@ -23,3 +11,6 @@ https://git.sr.ht/~krathalan/wtwitch/tree/master/FULLCHANGELOG
 2.2.0 (December 30, 2020)
     Added ability to hide offline streamers from "wtwitch c" with new "wtwitch f" command
       https://todo.sr.ht/~krathalan/wtwitch/8
+
+2.2.1 (February 6, 2021)
+    Fixed a bug with [w] tab completion where offline streamers were being recommended
