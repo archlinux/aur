@@ -1,10 +1,10 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 pkgname='spambayes'
-pkgver='1.1b3.20180713'
-_commit='1335ca87c5e62b11b9d1678eb7c58000d3cf5d31'
-pkgrel='2'
+pkgver='1.1b3.20210130'
+_commit='987bb198bc3382da4e5fe0b4118fbba4558aea1d'
+pkgrel='1'
 pkgdesc='Bayesian anti-spam classifier written in Python'
 arch=('any')
 url="https://github.com/smontanaro/$pkgname"
@@ -19,7 +19,7 @@ source=(
 	"$pkgname-$pkgver-$pkgrel-paths_fix.patch::$_debianpatchprefix/f68f1f6df897af5d2f0ea36db34a0ff59f152f4f/debian/patches/paths_fix.patch"
 	"$pkgname-$pkgver-$pkgrel-fix-imports-from-sb_server.patch::$_debianpatchprefix/da6655f931a97ae7da0be27a2754501b18a18d54/debian/patches/fix-imports-from-sb_server.patch"
 )
-sha256sums=('68d4e6b36d67dcfdc8a6dc8a9aae2c56ef8fb96efa6b0a128c4c79191bd45dba'
+sha256sums=('1e943325ff501eb3ce69584378586b6f640e54e7377f2befcaa4239838450c3b'
             '3c1d336c3ae4392efa5cfdf24a336e8f3d10d98b8aa543007cb71412fae8ae1a'
             '153f92409bc880fc6e7def4cf7ace494b871c06c08b6130f17de66d500736619'
             'f6754159cfd0c2e2807f8075334ee94069d937375a32ab1711de16efa0e8a37b'
