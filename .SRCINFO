@@ -1,0 +1,15 @@
+pkgbase = python-bsdiff4
+	pkgdesc = binary diff and patch using the BSDIFF4-format
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/ilanschnell/bsdiff4
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python
+	depends = python
+	source = https://pypi.python.org/packages/source/b/bsdiff4/bsdiff4-1.2.0.tar.gz
+	md5sums = SKIP
+
+pkgname = python-bsdiff4
+
