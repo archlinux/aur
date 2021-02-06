@@ -1,6 +1,6 @@
 # Maintainer: Nagy Roland <roliboy@protonmail.com>
 
-pkgname=chromium-plasma-integration
+pkgname=chromium-extension-plasma-integration
 pkgver=1.8
 pkgrel=1
 pkgdesc='KDE plasma browser integration extension for chromium'

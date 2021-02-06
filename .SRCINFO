@@ -1,4 +1,4 @@
-pkgbase = chromium-plasma-integration
+pkgbase = chromium-extension-plasma-integration
 	pkgdesc = KDE plasma browser integration extension for chromium
 	pkgver = 1.8
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = chromium-plasma-integration
 	source = https://github.com/KDE/plasma-browser-integration/archive/browser/1.8.tar.gz
 	sha256sums = 855db8dbc33be7e2ec36aa1c7a8b0b832ab6678c6b02739d3f66d4532495a3b8
 
-pkgname = chromium-plasma-integration
+pkgname = chromium-extension-plasma-integration
 
