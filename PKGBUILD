@@ -1,8 +1,8 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 # Contributor: Kevin Schmidt <kevin.patrick.schmidt@googlemail.com>
 pkgname=openwrt-devel
-pkgver=0.1
-pkgrel=2
+pkgver=0.2
+pkgrel=1
 pkgdesc='Metapackage to pull all dependencies required to build OpenWrt'
 arch=('x86_64')
 url='https://openwrt.org/docs/guide-developer/build-system/install-buildsystem'
