@@ -2,13 +2,13 @@ pkgname=scangearmp-mx520series-x86_64
 pkgver=2.10
 pkgrel=1
 pkgdesc="Canon Scanner Driver (MX520 Series) x86_64"
-url="http://www.canon.at/support/consumer_products/products/fax__multifunctionals/inkjet/pixma_mx_series/mx525.aspx"
+url="https://www.canon.co.uk/support/consumer_products/products/fax__multifunctionals/inkjet/pixma_mx_series/mx525.html"
 arch=('x86_64')
 license=('custom')
 depends=('sane' 'pangox-compat')
 conflicts=('scangearmp')
 makedepends=('rpmextract')
-source=(http://gdlp01.c-wss.com/gds/8/0100005178/01/scangearmp-mx520series-2.10-1-rpm.tar.gz)
+source=(https://gdlp01.c-wss.com/gds/8/0100005178/01/scangearmp-mx520series-2.10-1-rpm.tar.gz)
 md5sums=('fed4acaf4d8c5b6827e2f0087ab62b20')
 
 build() {
