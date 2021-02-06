@@ -1,7 +1,7 @@
 pkgbase = linux-manjaro-xanmod-uksm
 	pkgdesc = Linux Xanmod
 	pkgver = 5.10.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.xanmod.org/
 	arch = x86_64
 	license = GPL2
@@ -21,7 +21,7 @@ pkgbase = linux-manjaro-xanmod-uksm
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.sign
 	source = https://github.com/xanmod/linux/releases/download/5.10.13-xanmod1/patch-5.10.13-xanmod1.xz
 	source = choose-gcc-optimization.sh
-	source = https://gitlab.manjaro.org/packages/core/linux510/-/archive/17ceda5d0b4c804dbe064ad43f1cdf1ee8249c91/linux510-17ceda5d0b4c804dbe064ad43f1cdf1ee8249c91.tar.gz
+	source = https://gitlab.manjaro.org/packages/core/linux510/-/archive/9050ee61fbb1183e6fc2f854197233e43db0517a/linux510-9050ee61fbb1183e6fc2f854197233e43db0517a.tar.gz
 	source = 0002-UKSM.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
@@ -29,7 +29,7 @@ pkgbase = linux-manjaro-xanmod-uksm
 	sha256sums = cb36d0d05523e1154f84c060081481f799253da06edb127a2630e539c6974f12
 	sha256sums = f661f50377b0432c2ad7d78d2a6266b3cabdeb98f171a0057835e5a74e853074
 	sha256sums = 2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511
-	sha256sums = bed735558b16abc1b84859ebc4bfc5dc87cc1b5b0a942ae1c2380392c74a4781
+	sha256sums = 344e28ba6a11d5a3f368edea6b2d5159b7016a0ed4b484c52cdce270614f291f
 	sha256sums = 9f7931fe587cfbc918aabbf3a1211a7179c8b2b300a1fc38c22920df4ed7dc2a
 
 pkgname = linux-manjaro-xanmod-uksm
