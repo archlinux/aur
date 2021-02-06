@@ -1,0 +1,14 @@
+pkgbase = python-py_find_1st
+	pkgdesc = Python wrapper for TA-Lib
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/roebel/py_find_1st
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python-numpy
+	source = https://pypi.python.org/packages/source/p/py_find_1st/py_find_1st-1.1.5.tar.gz
+	sha256sums = f99207bc83df361c4cd9c6c2aaf504907ffce7fdd33ae3d3cbf39c68a4f1c1a9
+
+pkgname = python-py_find_1st
+
