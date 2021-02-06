@@ -10,9 +10,9 @@ pkgname=('geph4-binder-git'
          'geph4-client-git'
          'geph4-exit-git'
          'geph4-vpn-helper-git')
-pkgver=r248.2c37ffc
+pkgver=r250.d8acaaa
 pkgrel=1
-pkgdesc='A command-line Geph4 toolset'
+pkgdesc="A command-line Geph4 toolset"
 arch=('x86_64')
 url="https://github.com/geph-official/geph4"
 license=('GPL3')
@@ -99,7 +99,7 @@ package_geph4-exit-git() {
 }
 
 package_geph4-vpn-helper-git() {
-    depends+=('geph4-client')
+    depends+=('geph4-client-git')
     provides=('geph4-vpn-helper')
     conflicts=('geph4-vpn-helper')
     cd "${srcdir}"/"${_pkgbase}"/
