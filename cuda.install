@@ -1,0 +1,11 @@
+post_install() {
+    printf '%s\n' 'The cuda binaries are in /opt/cuda/bin'
+    printf '%s\n' 'The cuda samples are in /opt/cuda/samples'
+    printf '%s\n' 'The cuda docs are in /opt/cuda/doc'
+    printf '%s\n' 'You need to relogin in order for the cuda binaries to appear in your PATH'
+    post_upgrade
+}
+
+post_upgrade() {
+    ldconfig -r .
+}
