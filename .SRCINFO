@@ -1,6 +1,6 @@
 pkgbase = jack-audio-tools
 	pkgdesc = A collection of utilities and tools for the JACK audio ecosystem.
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/SpotlightKid/jack-audio-tools
 	arch = any
@@ -8,17 +8,18 @@ pkgbase = jack-audio-tools
 	makedepends = python-setuptools
 	makedepends = lv2
 	makedepends = python-rtmidi
+	makedepends = python-dbus
+	makedepends = python-gobject
 	depends = jack
 	depends = lilv
 	depends = python-rdflib
-	source = https://files.pythonhosted.org/packages/source/j/jack-audio-tools/jack-audio-tools-0.3.2.tar.gz
-	sha256sums = 288de54dd783d4f37ebe754910166318f7efe9ac90ce2e41564ff366236526ec
+	source = https://files.pythonhosted.org/packages/source/j/jack-audio-tools/jack-audio-tools-0.4.0.tar.gz
+	sha256sums = 95d6c255c797dd256bccde99b25f5fbb5075627059198188d0b4ef78871ed932
 
 pkgname = jack-audio-tools-common
 
 pkgname = jack-audio-tools-transport
 	depends = jack-audio-tools-common
-	depends = jack
 	depends = python-rtmidi
 	depends = python-jack-client
 
@@ -31,4 +32,9 @@ pkgname = jack-audio-tools-carla
 	depends = jack-audio-tools-common
 	depends = carla
 	depends = python-rdflib
+
+pkgname = jack-audio-tools-dbus
+	depends = jack-audio-tools-common
+	depends = python-dbus
+	depends = python-gobject
 
