@@ -1,5 +1,4 @@
-pkg
-src
-*.tar.gz
-*.pkg.tar.xz
-python-pyscipopt-git
+/pkg
+/src
+/*.pkg.tar.xz
+/PySCIPOpt
