@@ -8,7 +8,7 @@ pkgdesc="Translate synthesizable VHDL into Verilog 2001"
 arch=('i686' 'x86_64')
 url="http://doolittle.icarus.com/~larry/vhd2vl/"
 license=('GPLv2')
-depends=('git')
+makedepends=('git')
 
 source=("git://github.com/ldoolitt/vhd2vl.git")
 md5sums=('SKIP')
