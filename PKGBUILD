@@ -1,29 +1,34 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime
-pkgver=1.0.0.pre2
+pkgver=1.0.0.pre3
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
 conflicts=('kime')
 provides=('kime')
+depends=('gtk3' 'libappindicator-gtk3')
+optdepends=('libappindicator-gtk3: indicator support'
+            'gtk2: gtk2 support'
+            'gtk3: gtk3 support'
+            'gtk4: gtk4 support'
+            'qt5-base: qt5 support'
+            'qt6-base: qt6 support'
+            'xcb: xim support'
+            'cairo: xim support')
+makedepends=('cargo' 'clang' 'llvm' 'cmake' 'ninja' 'cairo' 'libxcb' 'pango' 'gtk2' 'gtk3' 'gtk4' 'qt5-base' 'qt6-base')
 arch=('any')
-license=('GPL3')
-source=("${url}/releases/download/v1.0.0-pre2/kime-v1.0.0-pre2.7z")
-md5sums=('fefbb6124b4d01a964d57db238e2ddf9')
+source=("${url}/archive/v1.0.0-pre3.tar.gz")
+md5sums=('a88ca8e59e388eb1aa0492e1845f2c21')
+
+build() {
+    cd "${pkgname}-1.0.0-pre3"
+    cargo xtask build --mode Release XIM WAYLAND GTK2 GTK3 GTK4 QT5 QT6
+}
 
 package() {
-    install -Dm755 kimed -t "${pkgdir}/usr/bin"
-    install -Dm755 kime-xim -t "${pkgdir}/usr/bin"
-    install -Dm755 kime-wayland -t "${pkgdir}/usr/bin"
-    install -Dm755 libkime-gtk2.so -T "${pkgdir}/usr/lib/gtk-2.0/2.10.0/immodules/im-kime.so"
-    install -Dm755 libkime-gtk3.so -T "${pkgdir}/usr/lib/gtk-3.0/3.0.0/immodules/im-kime.so"
-    install -Dm755 libkime-gtk4.so -t "${pkgdir}/usr/lib/gtk-3.0/4.0.0/immodules"
-    install -Dm755 libkime-qt5.so -T "${pkgdir}/usr/lib/qt/plugins/platforminputcontexts/libkimeplatforminputcontextplugin.so"
-    install -Dm755 libkime-qt6.so -T "${pkgdir}/usr/lib/qt6/plugins/platforminputcontexts/libkimeplatforminputcontextplugin.so"
-    install -Dm755 libkime_engine.so -t "${pkgdir}/usr/lib"
-    install -Dm644 kime_engine.h -t "${pkgdir}/usr/include"
-    install -Dm644 default_config.yaml -T "${pkgdir}/etc/kime/config.yaml"
-    install -Dm644 kime-eng-64x64.png -t "${pkgdir}/usr/share/kime"
-    install -Dm644 kime-han-64x64.png -t "${pkgdir}/usr/share/kime"
+    cd "${pkgname}-1.0.0-pre3"
+    cargo xtask install "${pkgdir}"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
+
 
