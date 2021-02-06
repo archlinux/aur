@@ -1,6 +1,6 @@
-# Maintainer: ml <ml@visu.li
+# Maintainer: ml <ml AT visu.li>
 pkgname=vt-cli
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='VirusTotal Command Line Interface'
 arch=('i686' 'x86_64')
@@ -9,12 +9,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('48de52aaafa5790e36d6522086c49c73bac3aff9a814164aa1b0c5f6487f1669')
-
-prepare() {
-  cd "${pkgname}-${pkgver}"
-  go mod download
-}
+sha256sums=('ec418c60697d03fd859bbf3a36abe4f30d59111651e3065de6cd581040a19027')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -24,7 +19,8 @@ build() {
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export GOFLAGS='-buildmode=pie -trimpath -modcacherw -mod=readonly'
-  go build -o build/vt -ldflags "-X github.com/VirusTotal/vt-cli/cmd.Version=${pkgver}" ./vt
+  go build -o build/vt -ldflags "-linkmode=external -X github.com/VirusTotal/vt-cli/cmd.Version=${pkgver}" ./vt
+  #grep -Fqwm1 "$pkgver" build/vt
 }
 
 check() {
