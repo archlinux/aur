@@ -42,8 +42,8 @@
 
 pkgbase=ttf-ms-win10
 pkgname=($pkgbase{,-japanese,-korean,-sea,-thai,-zh_cn,-zh_tw,-other})
-pkgver=10.0.18362.116
-pkgrel=2
+pkgver=10.0.19042.789
+pkgrel=1
 arch=(any)
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
 license=(custom)
@@ -71,7 +71,7 @@ corbell.ttf                   corbelli.ttf                  # Corbel Light
 framd.ttf                     framdit.ttf                   # Franklin Gothic Medium
 Gabriola.ttf                                                # Gabriola
 georgia.ttf    georgiab.ttf   georgiai.ttf   georgiaz.ttf   # Georgia
-holomdl2.ttf                                                # HoloLens MDL2 Assets
+#holomdl2.ttf                                                # HoloLens MDL2 Assets
 impact.ttf                                                  # Impact
 Inkfree.ttf                                                 # Ink Free
 lucon.ttf                                                   # Lucida Console
@@ -188,7 +188,7 @@ sha256sums=('c9b76220a5be42ead4733611e417cd65c5fd8aeaa33eb56576ac378a37d130a1'
             '79a5742b865cf06891d4ae43e42cac0e5169c7b7b06b5b3c24ef8e0966d27b62'
             'e432c1b3568bd207e30e3d52d41e6431ea53a679eb52dd79b1a36aa6a4f3b994'
             '10df702864b1f89cb29ba0d6b97c04228338d16807e13e8d8c74b91aba5e5f23'
-            '007e103c550bc9e94df894909c2383c2bbd49904b82d031ddaa1b7206d998d13'
+            'bff1ca87ea35e376691498c618556411f0ee71784b32aa351e6e8f9e8bd609dd'
             '198e8dac512206f27c9bdbfeb3d5b3e55a33de9dcf58d801823ef8c5ef5a76dc'
             '4d5c56c07c41315022cd5a24966ade3983ceebce8bc81524e56e4632dd3f242f'
             '5c85b9adedde710e754b3163005291eca16cd0ccccc7c8d7ff526070e8980202'
@@ -234,7 +234,6 @@ sha256sums=('c9b76220a5be42ead4733611e417cd65c5fd8aeaa33eb56576ac378a37d130a1'
             '72a6cd94fab6c179392075d3fb361e269cdddfad41bb7ab385fa22a37e49a900'
             'd3e4bad27651d120ac8f2cea42cf4b4f077264fb243f66b3caffcfd35465f49b'
             '3f9e512f82eaf6f1b7869b82013fb79f6eaf1a41e75a0e7b96f31f35b1022ae4'
-            'c2c3a4146ac080945670eb6b0c4961b26467c797e8497367ac8611cbc3955559'
             'd8bbdb72e3f930157824b2e59677d3a912d4512c14a948e6656a2e3fb0c935ad'
             'f23225869ceb58b78a836b84207d1726cc5d9c3f5fe2ae8a295ff62a98df09a0'
             '2ca2cfde263fa420e8d39420f075ee9ac80bc0794272c53ac4571a88f8a075a6'
@@ -249,7 +248,7 @@ sha256sums=('c9b76220a5be42ead4733611e417cd65c5fd8aeaa33eb56576ac378a37d130a1'
             '3cced0162ddb9e5f1e63ee1b36fd6e581c090318dce1a0af01b77f5ea9952c80'
             'd0dfad2f6bbe7ff7c0f96a0c80a28bd4f4624f900573a61abd9d29406d3775d7'
             '91283e8af7f9eca8b14b498b484b35d49c3bd3144ab7e25aa4934297138ea28b'
-            '46f001e97ac6bd7b7cfbd04d28227c751e95d9ca5730c8d3f05bc4941a1d155d'
+            '1fabce5448df08c9e000bf9749c07c365c5ffba31bfc73121c61b5b96ea498c0'
             'ba32a222b23d727267cf1aba4e5296fe84ce99b9d910915103fc085d7931bc88'
             '1b242874a2f57529060e770ba313e027a99d40b3c36e1c7e8b2dece16ad6ed88'
             '9adf7d619c593ee38c96af06bb15b4bd893e4087bcc1a0b7becee8f4ae15bb1c'
@@ -287,15 +286,15 @@ sha256sums=('c9b76220a5be42ead4733611e417cd65c5fd8aeaa33eb56576ac378a37d130a1'
             'd71f81c83ec63eaa32d36d5df7be1d9e71d3ea9150f47cebda2924923cbbf18a'
             '67461fabd8329d0d8ad62689cac642b34fac81c754ff9077ad211160ec62282d'
             '9bcd6064e3b52fa30a347edd6e82506e2ec8b1602930b423c629a82c10468a5b'
-            'd0064711ced6c07827f3e9cea9757b8c9c9ddc59218d766b1207c0c1b6b64003'
-            '29592f4a85625354c6dce94e019638a4e78ebba56736dfcf3d01f8be6a7a1914'
-            '36cbf63069f593929f8d3b04af0c7c008f3742a4cc906ba21697f9a87ea7ec22'
-            '544c118d9771f35618638e401956a180ebbede6202840f2e1e773a6cf55a77ef'
-            '536a19fa3e895ec798da3adbbeb6ea5a061230ac6a3b1b89bf4424f71d844303'
+            '4bde3e6392b96910fb59094c6c1a4dbfae18fee78d0bf13dc30616837c4f95db'
+            '1e5a4b342c6417bb9352e8c29cb839413987a06438e7b48fd0320925827f289c'
+            '15157483588f2778a180f2b401256df12b582513fa0655f8172937c85521b80b'
+            '3e7d80ef5a1615134800c1b1b3b9d9ee870085e8486b884258de2519dd62b1cb'
+            '7a06352c79894d1a5d0f3199061fe43a327ded93c0ff316541ce31cf314968cc'
             '0086c19e81d293a542e7d75564c645fb58070cc850aefebf8fa1c397858e510c'
             'a541834fb9cdde9bd6d2c3ff1565cb0bb5ccf7a15e4e9daf2cb58d9b1cf282aa'
             'a7217a2e590c86141bddadc74a2bcdff2efe210db48469a77a749e0446d91ea9'
-            'a030874507b9249f5b889318d07639707fa9ef9d354ba2e564162f01b81825eb'
+            'df8d94382f73e6d2197b60653c3d55c28ab5cf127a82e65b8af4ed1b52fdc412'
             'fdec3a7efacd57913d3c14111837908ccbabea5b0b44ec62527eb73acf743afb'
             'de0b632015447f28c2db41c8e07c745cedb05ead5dbc2e73f19da14d2e5f2151'
             'cfc2acbf9ae0205a0a258e564bdbf5466a4e49a95281a1d2e72690f149ec837b'
@@ -307,9 +306,9 @@ sha256sums=('c9b76220a5be42ead4733611e417cd65c5fd8aeaa33eb56576ac378a37d130a1'
             '707585b9acfc1507d9bd943bb5435f75768274b1a12b1f71de76ad78be4d7e7b'
             '3ed4612d44f71851d33a126bb483b08a623feb0b2731025a73a41898dec7cee7'
             'f56f3c5a1c1896f83c977f90bf7ab39729f7ea2c39f4d7484b06635c7c6fc0bd'
-            '69994ce1c7cce85fb3efd22940fd1cf207d05976db19725f14871a565a2c27e4'
-            '7c18828f1a952a4fbc9670e17e5d90fc33eebbff51effa59319aa881a914c081'
-            '9ea5464747a4931b27c88833a9107ec0f5786a5f2c924005bcbf3541ba61e1cb'
+            '290ab4239acf6145d080713cb79cf13be95f320d1ae47afea1f5dee4ad20ecc5'
+            '07e0e53736a610b4c688fbac85159462d264b81359c76095639c6bce7e20d1e9'
+            'c4b4a8d284a24a754fd745fcbbfe300df81b2be04c82278ee5d857b29cd64e64'
             '796dc7e97b357f9c2ad10044d01a86d3fb49cf80e3693011eb055c466c995de0'
             '16d0c83e99ca3cd56a85966c4ff2c5f0c0f8a5a7140a7594b2ec3e404c8e96a0'
             '2e2fabd71aa30f0d7039b879ee58441a791e095a6656064eb9d4a84a071e5e8f'
