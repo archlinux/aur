@@ -9,7 +9,7 @@ pkgdesc="Minimal plaintext password store"
 pkgname=sicuit
 pkgrel=1
 pkgver=9.1
-url="https://fdpl.io/sicuit/"
+url="https://simonrepp.com/sicuit/"
 
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/simonrepp/sicuit/archive/${pkgver}.tar.gz")
 
