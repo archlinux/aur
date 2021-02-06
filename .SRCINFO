@@ -1,0 +1,20 @@
+pkgbase = fcitx-sogouime
+	pkgdesc = SogouIME for Linux
+	pkgver = 2.4.0.3469
+	pkgrel = 1
+	url = https://pinyin.sogou.com/linux/
+	arch = x86_64
+	license = custom
+	depends = fcitx
+	depends = opencc
+	depends = libidn11
+	depends = lsb-release
+	depends = xorg-xprop
+	depends = qt5-declarative
+	depends = qt5-svg
+	depends = fcitx-qt5
+	source = https://ime.sogoucdn.com/dl/index/1612260778/sogoupinyin_2.4.0.3469_amd64.deb
+	sha256sums = 792c1f6b8945db15c085db47d3d36a2a926f1c1f2ce0620ec3b0c9aa656f7700
+
+pkgname = fcitx-sogouime
+
