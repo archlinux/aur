@@ -2,7 +2,7 @@
 
 pkgname=python-swiglpk-git
 pkgver=4.65.1.r1.gec985c1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python interface to the GLPK optimization solver. Git version.'
 arch=('any')
 url='https://github.com/biosustain/swiglpk'
@@ -33,7 +33,7 @@ build() {
 
 check() {
 	cd "${srcdir}/swiglpk/build/lib."*
-	python -BIc "import swiglpk"
+	python -Bc "import swiglpk"
 }
 
 package() {
