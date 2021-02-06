@@ -8,6 +8,7 @@ pkgbase = cycles-standalone
 	makedepends = cmake
 	makedepends = git
 	makedepends = boost
+	makedepends = llvm
 	depends = libglvnd
 	depends = openexr
 	depends = glew
