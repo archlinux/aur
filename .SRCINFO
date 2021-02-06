@@ -1,23 +1,22 @@
 pkgbase = pulse-secure
 	pkgdesc = Pulse Connect Secure (PCS) Client
-	pkgver = 9.1r9.0_b255
+	pkgver = 9.1r10.0_b5655
 	pkgrel = 1
 	url = https://www.pulsesecure.net/
+	install = pulse-secure.install
 	arch = x86_64
 	license = custom
 	depends = gcc-libs
 	depends = libgnome-keyring
-	optdepends = webkitgtk: for pulseUi frontend
+	depends = openssl
+	depends = curl
+	depends = dbus
 	optdepends = psmisc: for pulsesvc -K
 	conflicts = pulse-connect-secure
-	source = pulseUi.sh
 	source = EULA.txt
-	source = PulseClient-Arch.patch
-	md5sums = d81155461e2666c2b9d669c1b76f85fe
 	md5sums = 261848a28201e5386ec4bf587473a48b
-	md5sums = 2748e1b68097d297e3ac58ca893d0b61
-	source_x86_64 = http://webdev.web3.technion.ac.il/docs/cis/public/ssl-vpn/v.9.1R9.0/ps-pulse-linux-9.1r9.0-b255-centos-rhel-64-bit-installer.rpm
-	md5sums_x86_64 = f727a1d286baba9311be2bc6a7e77293
+	source_x86_64 = https://vubnet.vub.ac.be/downloads/pulsesecure-9.1-R10.x86_64.rpm
+	md5sums_x86_64 = 7b20971904493da9da3de130df00ecc3
 
 pkgname = pulse-secure
 
