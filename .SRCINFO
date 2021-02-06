@@ -6,7 +6,7 @@ pkgbase = carbonapi
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = go>=1.8
+	makedepends = go>=1.14
 	depends = glibc
 	depends = cairo
 	backup = etc/carbonapi.yaml
