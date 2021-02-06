@@ -5,7 +5,7 @@
 pkgname=osh
 pkgver=0.8.7
 pkgrel=1
-pkgdesc="A bash-compatible UNIX shell written in Python."
+pkgdesc="Oil Shell - A bash-compatible UNIX shell written in Python."
 arch=('any')
 url="https://www.oilshell.org/"
 license=("Apache")
