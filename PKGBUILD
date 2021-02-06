@@ -5,7 +5,7 @@
 _pkgname='ferdi'
 pkgname="$_pkgname-bin"
 pkgver='5.5.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - binary version'
 arch=('x86_64')
 url="https://get$_pkgname.com"
