@@ -6,8 +6,8 @@
 
 pkgname=icecat
 pkgver=78.7.0
-pkgrel=1
-_commit=abfe5eebaca3c2787f1a9505669393674493c177
+pkgrel=2
+_commit=01b67d368563ac3d74d1a61692d15fc3d49e77cf
 pkgdesc="GNU version of the Firefox browser."
 arch=(x86_64)
 url="http://www.gnu.org/software/gnuzilla/"
@@ -16,7 +16,7 @@ depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
          ffmpeg nss ttf-font libpulse)
 makedepends=(m4 unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust clang llvm jack gtk2
-             python nodejs python2-psutil cbindgen nasm wget mercurial git lld)
+             python nodejs python2-psutil cbindgen nasm wget mercurial git lld perl-file-rename)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -29,7 +29,7 @@ source=(https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-${_comm
         "0001-Use-remoting-name-for-GDK-application-names.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/0adcedc05ce67d53268575f8801c8de872206901/firefox/trunk/0001-Use-remoting-name-for-GDK-application-names.patch"
         rust_1.48.patch.gz)
 
-sha256sums=('3f6d8b51f469aeedbdbe1748d0a77ecf3c20badcc5db81a0cd7a9bc1398c794d'
+sha256sums=('6527f34da5f5e4fda93383baf5f40dd72055710769994c510a47faf0f367eabb'
             'e00dbf01803cdd36fd9e1c0c018c19bb6f97e43016ea87062e6134bdc172bc7d'
             '33dd309eeb99ec730c97ba844bf6ce6c7840f7d27da19c82389cdefee8c20208'
             'e0eaec8ddd24bbebf4956563ebc6d7a56f8dada5835975ee4d320dd3d0c9c442'
@@ -42,54 +42,21 @@ prepare() {
   #sed -e 's/^gpg2 --keyserver.*//g' -i makeicecat
 
   mkdir output || rm -rf output/*  # Clean output just in case is already an old build there
-  if [ -f "${startdir}/firefox-${pkgver}esr.source.tar.xz" ]; then cp -f "${startdir}/firefox-${pkgver}esr.source.tar.xz" output/ ; fi
+  if [ -f "${startdir}/firefox-${pkgver}esr.source.tar.xz" ] && [ -f "${startdir}/firefox-${pkgver}esr.source.tar.xz.asc" ]; then cp -f "${startdir}"/firefox-${pkgver}esr.source.tar.xz{,.asc} output/ ; fi
 
   # Patches to avoid download sources if you have in your $startdir
   sed -e '/rm -rf output/d' -i makeicecat
   sed -e 's/wget -N/wget -nv -Nc/g' -i makeicecat
 
   # Other patches
-  sed -e 's/^gpg2 /gpg /g' -i makeicecat
-  sed -e 's/^gpg.*list-keys.*//g' -i makeicecat
   sed -e 's/^tar cfj icecat-/#tar cfj icecat-/g' -i makeicecat
 
-  # rename patches
-  patch --ignore-whitespace << 'EOF'
---- makeicecat	2020-09-21 23:59:38.942240104 +0200
-+++ makeicecat.new	2020-09-22 00:06:29.240253121 +0200
-@@ -270,9 +270,12 @@
- ###############################################################################
- 
- # Replace Firefox branding
--find . | tac | grep -i fennec  | prename --nofullpath -E 's/fennec/icecatmobile/;' -E 's/Fennec/IceCatMobile/;'
--find . | tac | grep -i firefox | prename --nofullpath -E 's/firefox/icecat/;' -E 's/Firefox/IceCat/;'
--find services/fxaccounts/rust-bridge | tac | prename --nofullpath -E 's/icecat-accounts/firefox-accounts/;' -E 's/IceCatAccounts/FirefoxAccounts/;'
-+find . -iname "*fennec*" | tac | xargs -i rename -v 'fennec' 'icecatmobile' "{}" || true
-+find . -iname "*fennec*" | tac | xargs -i rename -v 'Fennec' 'IceCatMobile' "{}" || true
-+find . -iname "*firefox*" | tac | xargs -i rename -v 'firefox' 'icecat' "{}" || true
-+find . -iname "*firefox*" | tac | xargs -i rename -v 'Firefox' 'IceCat' "{}" || true
-+find services/fxaccounts/rust-bridge -iname "*icecat-accounts*" | tac | xargs -i rename -v 'icecat-accounts' 'firefox-accounts' "{}" || true
-+find services/fxaccounts/rust-bridge -iname "*icecat-accounts*" | tac | xargs -i rename -v 'IceCatAccounts' 'FirefoxAccounts' "{}" || true
- 
- echo "Running batch rebranding"
- SEDSCRIPT="
-@@ -337,7 +337,7 @@
- 
- sed 's/mozilla-bin/icecat-bin/' -i build/unix/run-mozilla.sh
- 
--find . | tac | grep run-mozilla | prename --nofullpath -E 's/mozilla/icecat/;'
-+find . -iname "*run-mozilla*" | tac | xargs -i rename -v 'mozilla' 'icecat' "{}" || true
- 
- # do not alter useragent/platform/oscpu/etc with fingerprinting countermeasure, it makes things worse
- sed '/ShouldResistFingerprinting/,/}/s/^/\/\//' -i ./netwerk/protocol/http/nsHttpHandler.cpp
-EOF
-
-  # If we want to avoid all locales, we can use variable _SPEED=y to avoid them
+  # If we want to avoid all locales, we can use variable _SPEED=y to build it with only 1 locale. Use variable _LOCALE to define it
   if [[ $_SPEED =~ [y|Y] ]]; then
     msg2 "Building without all locales..."
-    #sed -e '/#\[ \$line = \"es-ES\" \]/,${s//\[ \$line = \"es-ES\" \]/;b};$q1' -e '/\[ \$line = \"en-US\" \]/d' -i makeicecat
-    sed -e 's;\$SOURCEDIR/browser/locales/shipped-locales;\.\./custom-shipped-locales;g' -i makeicecat
-    echo es-ES > custom-shipped-locales
+    sed -e 's/DEVEL=0/DEVEL=1/g' -i makeicecat
+    # Also you can choose your locale using external variable _LOCALE. By default in upstream script this locale is es-ES
+    [ -z "$_LOCALE" ] || sed -e "s/es-ES/$_LOCALE/g" -i makeicecat && echo "$_LOCALE" > custom-shipped-locales
     rm -rf data/files-to-append/l10n/*
   fi
 
