@@ -1,7 +1,7 @@
 # Maintainer: Jesse Chan <jc@linux.com>
 # Contributor: Jesse Chan <jc@linux.com>
 _npmname=flood
-_npmver=4.4.0
+_npmver=4.4.1
 pkgname=nodejs-flood
 pkgver=$_npmver
 pkgrel=1
@@ -13,7 +13,7 @@ depends=('nodejs')
 makedepends=('jq' 'npm')
 optdepends=('mediainfo')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-sha1sums=('f999a095a874f2a1292351821a250b1a5703d86c')
+sha1sums=('ca7309b9a0a9ab0ecc0cb2b5562864af431135c9')
 noextract=("$_npmname-$_npmver.tgz")
 
 package() {
