@@ -2,7 +2,7 @@
 
 pkgname=python-pynng-git
 pkgver=0.6.2.r17.g1a7ad77
-pkgrel=2
+pkgrel=1
 pkgdesc='Ergonomic bindings for nanomsg next generation (nng), in Python'
 arch=(any)
 url='https://github.com/codypiersall/pynng'
@@ -20,6 +20,7 @@ checkdepends=(
     python-pytest-asyncio
     python-pytest-trio
     python-curio
+    python-mbed-host-tests
 )
 source=('git+git://github.com/codypiersall/pynng.git')
 md5sums=('SKIP')
