@@ -1,5 +1,5 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
-# Contributor: zhullyb <zhullyb at outlook dot com>
+# Maintainer: zhullyb <zhullyb at outlook dot com>
 
 pkgname=sunloginclient
 _pkgname=sunlogin
