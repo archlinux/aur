@@ -8,7 +8,7 @@ arch=(i686 x86_64)
 url='https://github.com/go-graphite/carbonapi'
 license=('BSD')
 depends=(glibc cairo)
-makedepends=('go>=1.8')
+makedepends=('go>=1.14')
 backup=('etc/carbonapi.yaml')
 _gopkg=github.com/go-graphite/$pkgname
 source=($pkgname-$pkgver.tar.gz::https://$_gopkg/archive/$pkgver.tar.gz
