@@ -1,0 +1,13 @@
+pkgbase = nordic-darker-theme
+	pkgdesc = Nordic is a Gtk3.20+ theme created using the awesome Nord color pallete.
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/EliverLara/Nordic
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = https://github.com/EliverLara/Nordic/releases/download/v1.9.0/Nordic-darker.tar.xz
+	sha256sums = 63f4a3d634507b28660072c42fca6aa8eb51573e5b1d5307bd2a2e789c04373b
+
+pkgname = nordic-darker-theme
+
