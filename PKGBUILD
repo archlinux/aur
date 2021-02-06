@@ -7,7 +7,7 @@
 #   - It *might* be useful to first install package lbry-app-bin to have LBRY the headers
 
 pkgname=lbry-desktop-git
-pkgver=0.47.0.r7992.ge7e7d6dba
+pkgver=0.49.4.r9002.gd03cfa0b2
 pkgrel=1
 arch=('x86_64')
 pkgdesc='A browser and wallet for LBRY, the decentralized, user-controlled content marketplace'
@@ -16,8 +16,8 @@ license=('MIT')
 
 makedepends=('git' 'yarn')
 depends=('nodejs' 'npm' 'gnome-keyring' 'gconf' 'libnotify' 'libappindicator-gtk2' 'libxtst' 'nss' 'libsecret')
-provides=("lbry=$pkgver" "lbry-desktop=$pkgver" "lbry-app=$pkgver")
-conflicts=('lbry' 'lbry-desktop-bin' 'lbry-app-bin')
+provides=("lbry=$pkgver" "lbry-desktop=$pkgver" "lbry-app=$pkgver" "lbrynet=$pkgver")
+conflicts=('lbry' 'lbry-desktop-bin' 'lbry-app-bin' 'lbrynet' 'lbrynet-bin')
 
 source=(
 	'git+https://github.com/lbryio/lbry-desktop.git'
@@ -84,6 +84,7 @@ package() {
 	mkdir -p "$pkgdir/usr/bin"
 	install -dm755 "$pkgdir"/{opt,usr/bin,usr/share}
 	ln -s "/opt/LBRY/lbry" "$pkgdir/usr/bin/lbry"
+	ln -s "/opt/LBRY/resources/static/daemon/lbrynet" "$pkgdir/usr/bin/lbrynet"
 
 }
 
