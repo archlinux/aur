@@ -1,0 +1,29 @@
+pkgbase = sgminer-arm
+	pkgdesc = A multi-algo OpenCL miner based on sgminer-gm from genesismining.(Mali Optimised)
+	pkgver = 5.5.6
+	pkgrel = 2
+	url = https://github.com/nicehash/sgminer-gm
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = opencl-headers
+	makedepends = mali-fbdev
+	makedepends = gmp
+	makedepends = jansson
+	depends = curl
+	depends = ocl-icd
+	depends = libtool
+	depends = pkg-config
+	depends = automake
+	depends = autoconf
+	depends = ncurses
+	optdepends = dkms-mali: OpenCL implementation for Mali
+	optdepends = opencl-mesa: OpenCL implementation for AMD/NVIDIA/MALI[incomplete]
+	provides = sgminer
+	provides = sgminer-gm
+	conflicts = sgminer
+	source = sgminer-arm::git+https://github.com/wll1rah/sgminer-arm.git
+	sha512sums = SKIP
+
+pkgname = sgminer-arm
+
