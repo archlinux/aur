@@ -34,7 +34,6 @@ pkgbase = ros-noetic-cartographer-git
 	depends = ceres-solver-legacy
 	depends = abseil-cpp-git
 	provides = ros-noetic-cartographer
-	conflicts = ros-noetic-cartographer
 	source = ros-noetic-cartographer-git::git://github.com/cartographer-project/cartographer.git
 	source = FindGMock.patch
 	sha256sums = SKIP

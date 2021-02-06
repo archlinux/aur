@@ -1,5 +1,3 @@
-# Script generated with create_pkgbuild.py
-# For more information: https://github.com/ros-melodic-arch/ros-build-tools-py3
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 
 pkgdesc="ROS - Cartographer is a system that provides real-time simultaneous localization and mapping (SLAM) in 2D and 3D across multiple platforms and sensor configurations."
@@ -10,8 +8,7 @@ pkgver=r1163.fbcfa652
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('Apache 2.0')
-provides=(ros-noetic-cartographer)
-conflicts=(ros-noetic-cartographer)
+provides=(${pkgname::-4})
 
 ros_makedepends=(ros-noetic-catkin)
 makedepends=(
