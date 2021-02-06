@@ -2,15 +2,16 @@
 
 pkgname=python-swiglpk
 pkgver=4.65.1
-pkgrel=3
-pkgdesc='A low-level Python interface to the GLPK optimization solver.'
+pkgrel=4
+pkgdesc='A Python interface to the GLPK optimization solver.'
 arch=('any')
 url='https://github.com/biosustain/swiglpk'
 license=('GPL3')
 depends=('python' 'glpk')
 makedepends=('swig' 'python-setuptools')
-
+conflicts=('python-swiglpk-git')
 source=("https://github.com/biosustain/swiglpk/archive/${pkgver}.tar.gz")
+md5sums=('1870f23fb67b60263ef1f7b343ab657b')
 
 prepare() {
 	cd "${srcdir}/swiglpk-${pkgver}"
@@ -19,9 +20,18 @@ prepare() {
 	cp /usr/include/glpk.h .
 }
 
-package() {
+build() {
 	cd "${srcdir}/swiglpk-${pkgver}"
-	python setup.py install --root="${pkgdir}" --optimize=1
+	python setup.py build
 }
 
-md5sums=('8d364cad69416cebd6e405b22f71c14d')
+check() {
+	cd "${srcdir}/swiglpk-${pkgver}/build/lib."*
+	python -Bc "import swiglpk"
+}
+
+package() {
+	cd "${srcdir}/swiglpk-${pkgver}"
+	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+}
+
