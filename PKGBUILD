@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/nicehash/sgminer-gm"
 license=('GPL3')
 depends=('curl' 'ocl-icd' 'libtool' 'pkg-config' 'automake' 'autoconf' 'ncurses')
-makedepends=('opencl-headers' 'mali-fbdev' 'gmp' 'jansson')
+makedepends=('opencl-headers' 'gmp' 'jansson')
 optdepends=('dkms-mali: OpenCL implementation for Mali'
 	    'opencl-mesa: OpenCL implementation for AMD/NVIDIA/MALI[incomplete]')
 provides=('sgminer' 'sgminer-gm')
