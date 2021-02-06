@@ -13,7 +13,7 @@ pkgbase = gomu
 	conflicts = gomu-git
 	conflicts = gomu-bin
 	source = gomu-1.6.0.tar.gz::https://github.com/issadarkthing/gomu/archive/v1.6.0.tar.gz
-	md5sums = 12845fc55f01ea9cac1353bb6e1900b5
+	md5sums = 46a18b6308b5048967bccc46e5f8c9d3
 
 pkgname = gomu
 
