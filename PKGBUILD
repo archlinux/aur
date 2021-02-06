@@ -26,6 +26,7 @@ prepare() {
 
 build() {
     cd "$pkgname"
+    export RB_THEME_PATH="/usr/share/$pkgname/default.theme"
     cargo build --release --locked --all-features
 }
 
@@ -37,4 +38,6 @@ check() {
 package() {
     cd "$pkgname"
     install -Dm755 -t "$pkgdir/usr/bin" "target/release/${pkgname%-git}"
+    install -Dm644 -t "$pkgdir/usr/share/$pkgname/" resources/*.theme
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE resources/aglfn.txt
 }
