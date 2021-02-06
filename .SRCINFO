@@ -1,6 +1,6 @@
 pkgbase = wine-lol-glibc
 	pkgdesc = GNU C Library patched for wine-lol
-	pkgver = 2.32
+	pkgver = 2.33
 	pkgrel = 2
 	url = https://www.gnu.org/software/libc
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = wine-lol-glibc
 	optdepends = gd: for memusagestat
 	options = !strip
 	options = staticlibs
-	source = https://ftp.gnu.org/gnu/glibc/glibc-2.32.tar.xz
+	source = https://ftp.gnu.org/gnu/glibc/glibc-2.33.tar.xz
 	source = wine-lol-poc1-glibc.diff::https://bugs.winehq.org/attachment.cgi?id=64482
-	md5sums = 720c7992861c57cf97d66a2f36d8d1fa
+	md5sums = 390bbd889c7e8e8a7041564cb6b27cca
 	md5sums = 65e6d204ab9ad787c8dce999c4ba5c17
 
 pkgname = wine-lol-glibc
