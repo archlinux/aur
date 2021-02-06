@@ -2,8 +2,8 @@
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 
 pkgname=photoqt
-pkgver=2.1
-pkgrel=2
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="Fast and highly configurable image viewer with a simple and nice interface."
 arch=('x86_64')
 url="http://photoqt.org/"
@@ -14,18 +14,11 @@ depends=('exiv2' 'graphicsmagick' 'qt5-imageformats' 'qt5-multimedia' 'qt5-svg' 
 optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support')
 makedepends=('cmake' 'qt5-tools' 'extra-cmake-modules')
-source=(https://photoqt.org/downloads/source/$pkgname-$pkgver.tar.gz
-        https://photoqt.org/downloads/patches/sorting-2.1.patch
-        https://photoqt.org/downloads/patches/dontadddir-2.1.patch)
-sha256sums=('a334c73efb9a6be272b8e837a009e819d5672581273d56bb585a93595794d43a'
-            '8c05d137674fead5b9026e9e2f25a8198c019313d54e84f813718e683edd1448'
-            'd0676748a3db1398708947c3e638316c8862d958d1d6b54ae85cf8684b249878')
+source=(https://photoqt.org/downloads/source/$pkgname-$pkgver.tar.gz)
+sha256sums=('7d54891d55690b6eaee3c8f8a0a920a589504cdeee5c17d210994fee626879ab')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
-
-  patch -p1 < ../sorting-2.1.patch
-  patch -p1 < ../dontadddir-2.1.patch
 
   # To build PhotoQt with less features, add -Dxxxx=OFF to
   # the next line (where xxxx is the respective CMake option).
