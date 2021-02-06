@@ -1,20 +1,19 @@
 pkgbase = mn32-rs-git
 	pkgdesc = Configuration tool for Mionix Naos 3200 (rust port)
-	pkgver = r14.37981c5
+	pkgver = r2.4f98675
 	pkgrel = 1
-	url = https://gitlab.com/ant-sa/mn32-rs
+	url = https://codeberg.org/antsa/mn32-rs
 	arch = x86_64
 	license = Unlicense
 	makedepends = cargo
 	makedepends = git
 	depends = libusb
 	depends = gtk3
-	source = com.gitlab.ant-sa.mn32-rs.desktop
+	source = org.codeberg.antsa.mn32-rs.desktop
 	source = 99-mn32-rs.rules
-	source = mn32-rs-git::git+https://gitlab.com/ant-sa/mn32-rs.git
+	source = mn32-rs-git::git+https://codeberg.org/antsa/mn32-rs.git
 	sha512sums = d58600ba6082f7fd4ab279222cb75a25dd8517b2d7afa882cc653fe226e06e7bf15eb90b821d014de07bf59dbddcc6f6bb364199eaf14c56a11bec5af75ed60b
 	sha512sums = 551d9735496abd273f29eb562f8c526e96d72b8cd863fac63918aa929435d0e615085ddf164f381ea3ca458865fd291e0c42cdc822ab578c36aeec75f424090d
 	sha512sums = SKIP
 
 pkgname = mn32-rs-git
-
