@@ -1,13 +1,13 @@
 # Maintainer: Waffle Lapkin <waffle.lapkin@gmail.com>
 pkgname='anilibria-winmaclinux-git'
-pkgver=r243.965f42f
+pkgver=r244.6165cc8
 pkgrel=1
 pkgdesc='AniLibria client for major desktop platforms'
 arch=('x86_64')
 url='https://github.com/anilibria/anilibria-winmaclinux'
 license=('GPL3')
 groups=()
-depends=('qt5-webview' 'gst-libav' 'qt5-quickcontrols2' 'qt5-graphicaleffects')
+depends=('qt5-webview' 'gst-libav' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-websockets')
 makedepends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
