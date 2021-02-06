@@ -1,7 +1,7 @@
 # Maintainer: Alexander Epaneshnikov <aarnaarn2@gmail.com>
 
 pkgname=brltty-git
-pkgver=6.2.r49.g6092ac0ae
+pkgver=6.3.r14.gd20a94680
 pkgrel=1
 pkgdesc="Braille display driver for Linux/Unix (development version)"
 arch=('x86_64')
@@ -70,6 +70,8 @@ package() {
 	make INSTALL_ROOT="${pkgdir}" install-udev
 	make INSTALL_ROOT="${pkgdir}" install-dracut
 	make INSTALL_ROOT="${pkgdir}" install-polkit
-	chmod -c 750 "${pkgdir}/usr/share/polkit-1/rules.d"
 	install -vDm 644 "Documents/${pkgname%-git}.conf" -t "${pkgdir}/etc/"
+
+	# fix directory permission and ownership
+	install -vdm 750 -o root -g 102 "$pkgdir/usr/share/polkit-1/rules.d"
 }
