@@ -23,6 +23,7 @@ depends=(
     'xcb-util-errors'
     'xcb-util-image'
     'xcb-util-wm'
+    'xcb-util-renderutil'
 )
 makedepends=(
     'meson'

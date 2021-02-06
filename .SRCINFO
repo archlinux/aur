@@ -15,6 +15,7 @@ pkgbase = wlroots-strace-git
 	depends = xcb-util-errors
 	depends = xcb-util-image
 	depends = xcb-util-wm
+	depends = xcb-util-renderutil
 	provides = libwlroots.so
 	provides = wlroots
 	provides = wlroots-git
