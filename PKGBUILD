@@ -3,7 +3,7 @@
 pkgname=funemustation-git
 _name=funemustation
 _export=FunEmuStation_Launcher
-pkgver=r14.765d4e4
+pkgver=r15.c8111e8
 pkgrel=1
 pkgdesc="A simple but elegant launcher of emulators and pc games"
 url="https://dannygaray60.itch.io/funemustation-launcher"
