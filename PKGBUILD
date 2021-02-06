@@ -1,8 +1,8 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 pkgname=bsp-tinkerboard
-pkgver=20.11.6
-_pkgver=20.11.3
+pkgver=21.02.1
+_pkgver=21.02.1
 _ubuntu=focal
 pkgrel=1
 pkgdesc="Board support package for Tinker Board / S (Bluetooth, HDMI, Audio...)"
