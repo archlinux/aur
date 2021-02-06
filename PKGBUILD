@@ -1,6 +1,6 @@
 # Maintainer: Łukasz Pożarlik <lpozarlik@gmail.com>
 
-pkgname=python-django-bootstrap
+pkgname=python-django-bootstrap4
 _name='django-bootstrap4'
 pkgdesc="Bootstrap 4 integration with Django"
 pkgver=2.3.1

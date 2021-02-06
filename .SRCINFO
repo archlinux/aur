@@ -1,4 +1,4 @@
-pkgbase = python-django-bootstrap
+pkgbase = python-django-bootstrap4
 	pkgdesc = Bootstrap 4 integration with Django
 	pkgver = 2.3.1
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = python-django-bootstrap
 	source = https://files.pythonhosted.org/packages/f9/aa/b1a7a77b080aeea0c06edd6117609f1525dbf05f31a772b52b374acf27c9/django-bootstrap4-2.3.1.tar.gz
 	sha256sums = 2c199020ac38866cdf8d1c5561ce7468116b9685b455a29843c0225ef8568879
 
-pkgname = python-django-bootstrap
+pkgname = python-django-bootstrap4
 
