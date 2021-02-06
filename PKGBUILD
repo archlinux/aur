@@ -1,14 +1,14 @@
 # Maintainer: Caleb Maclennan <caleb@aleque.com>
 
 pkgname=runebender-git
-pkgver=0.0.0.r197.g348c3bc
+pkgver=0.0.0.r284.geb86482
 pkgrel=1
 pkgdesc='A font editor written in Rust'
 arch=('x86_64')
 url="https://github.com/linebender/${pkgname%-git}"
 license=('Apache')
 depends=('cairo')
-makedepends=('cargo-nightly' 'git' 'rust-nightly')
+makedepends=('cargo' 'git' 'rust')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
@@ -21,17 +21,17 @@ pkgver() {
 
 prepare() {
     cd "$pkgname"
-    cargo +nightly fetch --locked
+    cargo fetch --locked
 }
 
 build() {
     cd "$pkgname"
-    cargo +nightly build --release --locked --all-features
+    cargo build --release --locked --all-features
 }
 
 check() {
     cd "$pkgname"
-    cargo +nightly test --release --locked
+    cargo test --release --locked
 }
 
 package() {
