@@ -6,14 +6,13 @@ pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
 conflicts=('kime')
 provides=('kime')
-depends=('gtk3' 'libappindicator-gtk3')
 optdepends=('libappindicator-gtk3: indicator support'
             'gtk2: gtk2 support'
             'gtk3: gtk3 support'
             'gtk4: gtk4 support'
             'qt5-base: qt5 support'
             'qt6-base: qt6 support'
-            'xcb: xim support'
+            'libxcb: xim support'
             'cairo: xim support')
 makedepends=('cargo' 'clang' 'llvm' 'cmake' 'ninja' 'cairo' 'libxcb' 'pango' 'gtk2' 'gtk3' 'gtk4' 'qt5-base' 'qt6-base')
 arch=('any')
