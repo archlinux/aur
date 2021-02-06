@@ -8,7 +8,7 @@ url='https://github.com/PathOfBuildingCommunity/PathOfBuilding'
 license=('MIT')
 pkgver=1.4.170.25.r3406.43.513
 
-depends=('zlib' 'qt5-base' 'lua51' 'lua51-bitop' 'lua51-zlib' 'libgl' 'curl' 'ttf-liberation' 'ttf-bitstream-vera')
+depends=('zlib' 'qt5-base' 'lua51' 'lua51-bitop' 'libgl' 'curl' 'ttf-liberation' 'ttf-bitstream-vera')
 makedepends=('meson' 'ninja' 'unzip' 'rsync' 'git')
 
 source=(
