@@ -1,7 +1,7 @@
 pkgbase = jetbrains-toolbox-fix
 	pkgdesc = Manage your tools the easy way
 	pkgver = 1.20.7940
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.jetbrains.com/toolbox/
 	install = jetbrains-toolbox.install
 	arch = x86_64
@@ -19,9 +19,11 @@ pkgbase = jetbrains-toolbox-fix
 	provides = jetbrains-toolbox
 	options = !strip
 	source = https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.20.7940.tar.gz
+	source = https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.20.7940.tar.gz.sha256
 	source = jetbrains-toolbox.desktop
 	source = jetbrains-toolbox.svg
-	sha256sums = c156beff24fb6cb1cd5880c5faa9fb65d70dcb93ac7601217574d4e5c9aaad35
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = ade259058b244c8ce6573bc86327ab14b4eddd0095f8d2a8638473334b268200
 	sha256sums = 4a6b4b801954017402e47b40b7246a71b1c128ca352efe459322b3f3699a5813
 
