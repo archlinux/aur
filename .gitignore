@@ -4,7 +4,7 @@ pkg/
 
 # source and package archives
 dist-chrome-*.zip
-bitwarden-chromium-*-any.pkg.tar.xz
+bitwarden-chromium-*-any.pkg.tar.zst
 
 # lazy script to update package sums and .SRCINFO
 update.sh
