@@ -1,31 +1,5 @@
 pkgbase = chaotic-mirrorlist
 	pkgdesc = Chaotic-AUR mirror list for use by pacman
-	pkgver = 20210107
-	pkgrel = 1
-	url = https://builds.garudalinux.org/repos/chaotic-aur
-	arch = any
-	license = GPL
-	backup = etc/pacman.d/chaotic-mirrorlist
-	source = mirrorlist
-	sha256sums = 64e67a8f89083d01f31f7b048e4868e67cb4281086a2d4aadd46e62ff2f2fa47
-
-pkgname = chaotic-mirrorlist
-
-pkgbase = chaotic-mirrorlist
-	pkgdesc = Chaotic-AUR mirror list for use by pacman
-	pkgver = 20210205
-	pkgrel = 1
-	url = https://aur.chaotic.cx
-	arch = any
-	license = GPL
-	backup = etc/pacman.d/chaotic-mirrorlist
-	source = mirrorlist
-	sha256sums = d01e57bbf2ea00601f10b88514550a182f8ddb849cac5ac391a48a28cbb13ab5
-
-pkgname = chaotic-mirrorlist
-
-pkgbase = chaotic-mirrorlist
-	pkgdesc = Chaotic-AUR mirror list for use by pacman
 	pkgver = 20210205
 	pkgrel = 2
 	url = https://aur.chaotic.cx
