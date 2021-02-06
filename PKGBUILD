@@ -11,7 +11,7 @@
 pkgbase=oss-git
 pkgname=oss-git
 true && pkgname=(oss-git libflashsupport-oss-git)
-pkgver=7cf6b07
+pkgver=3e7a6c4
 pkgrel=1
 arch=(i686 x86_64 pentium4)
 url="http://developer.opensound.com/"
@@ -112,6 +112,8 @@ package_oss-git() {
   pkgdesc="Open Sound System UNIX audio architecture"
   depends=(linux-headers)
   optdepends=('gtk2: for graphical mixer (ossxmix)'
+              'libogg: for Ogg Vorbis support in ossplay'
+              'libvorbis: for Ogg Vorbis support in ossplay'
               'libflashsupport-oss: Adobe flash plugin support')
   provides=(oss)
   conflicts=(oss oss-nonfree libflashsupport-oss libflashsupport-oss-nonfree)
