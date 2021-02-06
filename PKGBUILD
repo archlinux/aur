@@ -5,7 +5,7 @@
 
 pkgname=xfce4-panel-compiz
 _realname=xfce4-panel
-pkgver=4.16.0
+pkgver=4.16.1
 pkgrel=1
 pkgdesc="Panel for the Xfce desktop environment with fixes for Compiz"
 arch=('i686' 'x86_64')
@@ -18,21 +18,21 @@ makedepends=('intltool' 'gtk-doc' 'xfce4-dev-tools')
 provides=("$_realname=$pkgver")
 conflicts=("$_realname")
 source=("https://archive.xfce.org/src/xfce/$_realname/${pkgver%.*}/$_realname-$pkgver.tar.bz2"
-	  fix-scrolling.patch
-	  wrap-workspaces.patch)
-sha256sums=('5e979aeeb37d306d72858b1bc67448222ea7a68de01409055b846cd31f3cc53d'
-            'bff4205da99f706bf931b5624cfeb5586145203048bd4b27609e46e907051136'
-            '3c4720674d4cc3d987a254b2f108892a542d97e351fcbacf6dc4c4af395e0c13')
+	  "xfce4-panel-$pkgver-invert_scroll_workspaces-1.patch"
+	  "xfce4-panel-$pkgver-wrap_workspaces_ui-1.patch")
+sha256sums=('fa099bc6be6592dbb828747a473c2e1b0e7f85afd945a98002b475bb6f975991'
+            '1bf92366667f38197ae882c011f2b0380c4548278b419fd004f9c21aab1a587e'
+            'c01adcba7bfe94e84253c5748dcab6c9e2b0d5da7d6c7aab64114a70513eafbf')
 
 prepare() {
   cd "$srcdir/$_realname-$pkgver"
 
   # See https://gitlab.xfce.org/xfce/xfwm4/-/issues/6#note_23168
-  echo "Applying fix-scrolling.patch:"
-  patch -p1 -i "$srcdir/fix-scrolling.patch"
+  echo "Applying xfce4-panel-$pkgver-invert_scroll_workspaces-1.patch:"
+  patch -p1 -i "$srcdir/xfce4-panel-$pkgver-invert_scroll_workspaces-1.patch"
   
-  echo "Applying wrap-workspaces.patch:"
-  patch -p1 -i "$srcdir/wrap-workspaces.patch"
+  echo "Applying xfce4-panel-$pkgver-wrap_workspaces_ui-1.patch:"
+  patch -p1 -i "$srcdir/xfce4-panel-$pkgver-wrap_workspaces_ui-1.patch"
 }
 
 build() {

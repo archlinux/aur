@@ -1,6 +1,6 @@
-diff '--color=auto' -Naur xfce4-panel-4.16.0-orig/plugins/pager/Makefile.in xfce4-panel-4.16.0/plugins/pager/Makefile.in
---- xfce4-panel-4.16.0-orig/plugins/pager/Makefile.in	2020-12-23 00:01:41.000000000 +0100
-+++ xfce4-panel-4.16.0/plugins/pager/Makefile.in	2021-01-19 23:23:26.875526146 +0100
+diff -Naur xfce4-panel-4.16.1-orig/plugins/pager/Makefile.in xfce4-panel-4.16.1/plugins/pager/Makefile.in
+--- xfce4-panel-4.16.1-orig/plugins/pager/Makefile.in	2021-01-27 08:30:01.000000000 +0100
++++ xfce4-panel-4.16.1/plugins/pager/Makefile.in	2021-01-31 22:53:25.997466370 +0100
 @@ -894,8 +894,8 @@
  
  @INTLTOOL_DESKTOP_RULE@
@@ -12,9 +12,9 @@ diff '--color=auto' -Naur xfce4-panel-4.16.0-orig/plugins/pager/Makefile.in xfce
  
  # vi:set ts=8 sw=8 noet ai nocindent syntax=automake:
  
-diff '--color=auto' -Naur xfce4-panel-4.16.0-orig/plugins/pager/pager.c xfce4-panel-4.16.0/plugins/pager/pager.c
---- xfce4-panel-4.16.0-orig/plugins/pager/pager.c	2020-12-11 00:14:07.000000000 +0100
-+++ xfce4-panel-4.16.0/plugins/pager/pager.c	2021-01-19 23:23:34.819563569 +0100
+diff -Naur xfce4-panel-4.16.1-orig/plugins/pager/pager.c xfce4-panel-4.16.1/plugins/pager/pager.c
+--- xfce4-panel-4.16.1-orig/plugins/pager/pager.c	2021-01-27 08:21:23.000000000 +0100
++++ xfce4-panel-4.16.1/plugins/pager/pager.c	2021-01-31 22:53:26.001466391 +0100
 @@ -53,8 +53,11 @@
                                                             guint              prop_id,
                                                             const GValue      *value,
@@ -95,13 +95,10 @@ diff '--color=auto' -Naur xfce4-panel-4.16.0-orig/plugins/pager/pager.c xfce4-pa
    plugin->wrap_workspaces = FALSE;
    plugin->miniature_view = TRUE;
    plugin->rows = 1;
-@@ -225,6 +238,15 @@
+@@ -225,6 +238,12 @@
      {
      case PROP_WORKSPACE_SCROLLING:
        g_value_set_boolean (value, plugin->scrolling);
-+
-+      if (G_IS_OBJECT (plugin->invert_scrolling_toggle))
-+        gtk_widget_set_sensitive (GTK_WIDGET (plugin->invert_scrolling_toggle), plugin->scrolling);
 +
 +      pager_plugin_screen_layout_changed (plugin);
 +      break;
@@ -111,24 +108,7 @@ diff '--color=auto' -Naur xfce4-panel-4.16.0-orig/plugins/pager/pager.c xfce4-pa
        break;
  
      case PROP_WRAP_WORKSPACES:
-@@ -234,14 +256,8 @@
-     case PROP_MINIATURE_VIEW:
-       g_value_set_boolean (value, plugin->miniature_view);
- 
--      if (G_IS_OBJECT (plugin->numbering_label))
--        gtk_widget_set_visible (GTK_WIDGET (plugin->numbering_label), !plugin->miniature_view);
--      if (G_IS_OBJECT (plugin->numbering_switch))
--        gtk_widget_set_visible (GTK_WIDGET (plugin->numbering_switch), !plugin->miniature_view);
--      if (G_IS_OBJECT (plugin->scrolling_label))
--        gtk_widget_set_visible (GTK_WIDGET (plugin->scrolling_label), !plugin->miniature_view);
--      if (G_IS_OBJECT (plugin->scrolling_switch))
--        gtk_widget_set_visible (GTK_WIDGET (plugin->scrolling_switch), !plugin->miniature_view);
-+      if (G_IS_OBJECT (plugin->numbering_toggle))
-+        gtk_widget_set_sensitive (GTK_WIDGET (plugin->numbering_toggle), !plugin->miniature_view);
- 
-       pager_plugin_screen_layout_changed (plugin);
-       break;
-@@ -276,6 +292,10 @@
+@@ -267,6 +286,10 @@
        plugin->scrolling = g_value_get_boolean (value);
        break;
  
@@ -139,7 +119,7 @@ diff '--color=auto' -Naur xfce4-panel-4.16.0-orig/plugins/pager/pager.c xfce4-pa
      case PROP_WRAP_WORKSPACES:
        plugin->wrap_workspaces = g_value_get_boolean (value);
        break;
-@@ -355,10 +375,20 @@
+@@ -346,10 +369,20 @@
  
  
  static gboolean
@@ -162,7 +142,7 @@ diff '--color=auto' -Naur xfce4-panel-4.16.0-orig/plugins/pager/pager.c xfce4-pa
    WnckWorkspace      *active_ws;
    WnckWorkspace      *new_ws;
    gint                active_n;
-@@ -390,31 +420,91 @@
+@@ -381,31 +414,91 @@
    active_ws = wnck_screen_get_active_workspace (plugin->wnck_screen);
    active_n = wnck_workspace_get_number (active_ws);
  
@@ -273,7 +253,7 @@ diff '--color=auto' -Naur xfce4-panel-4.16.0-orig/plugins/pager/pager.c xfce4-pa
  
    return TRUE;
  }
-@@ -475,13 +565,13 @@
+@@ -466,13 +559,13 @@
          g_message ("Setting the pager rows returned false. Maybe the setting is not applied.");
  
        wnck_pager_set_orientation (WNCK_PAGER (plugin->pager), orientation);
@@ -290,7 +270,7 @@ diff '--color=auto' -Naur xfce4-panel-4.16.0-orig/plugins/pager/pager.c xfce4-pa
      }
    else
      {
-@@ -537,6 +627,7 @@
+@@ -528,6 +621,7 @@
    const PanelProperty  properties[] =
    {
      { "workspace-scrolling", G_TYPE_BOOLEAN },
@@ -298,7 +278,7 @@ diff '--color=auto' -Naur xfce4-panel-4.16.0-orig/plugins/pager/pager.c xfce4-pa
      { "wrap-workspaces", G_TYPE_BOOLEAN },
      { "miniature-view", G_TYPE_BOOLEAN },
      { "rows", G_TYPE_UINT },
-@@ -690,6 +781,14 @@
+@@ -681,6 +775,14 @@
  
  
  static void
@@ -313,13 +293,26 @@ diff '--color=auto' -Naur xfce4-panel-4.16.0-orig/plugins/pager/pager.c xfce4-pa
  pager_plugin_configure_plugin (XfcePanelPlugin *panel_plugin)
  {
    PagerPlugin *plugin = XFCE_PAGER_PLUGIN (panel_plugin);
-@@ -717,13 +816,24 @@
-   g_signal_connect (G_OBJECT (object), "clicked",
-       G_CALLBACK (pager_plugin_configure_workspace_settings), dialog);
+@@ -720,30 +822,28 @@
+                           G_OBJECT (object), "value",
+                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
  
 -  plugin->scrolling_label = gtk_builder_get_object (builder, "workspace-scrolling-label");
+-  g_object_bind_property (G_OBJECT (plugin), "miniature-view",
+-                          G_OBJECT (plugin->scrolling_label), "visible",
+-                          G_BINDING_SYNC_CREATE | G_BINDING_DEFAULT | G_BINDING_INVERT_BOOLEAN);
 -  plugin->scrolling_switch = gtk_builder_get_object (builder, "workspace-scrolling");
 -  panel_return_if_fail (GTK_IS_SWITCH (plugin->scrolling_switch));
++  plugin->numbering_toggle = gtk_builder_get_object (builder, "numbering");
++  panel_return_if_fail (GTK_IS_TOGGLE_BUTTON (plugin->numbering_toggle));
+   g_object_bind_property (G_OBJECT (plugin), "miniature-view",
+-                          G_OBJECT (plugin->scrolling_switch), "visible",
++                          G_OBJECT (plugin->numbering_toggle), "sensitive",
+                           G_BINDING_SYNC_CREATE | G_BINDING_DEFAULT | G_BINDING_INVERT_BOOLEAN);
++  g_object_bind_property (G_OBJECT (plugin), "numbering",
++                          G_OBJECT (plugin->numbering_toggle), "active",
++                          G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
++
 +  plugin->scrolling_toggle = gtk_builder_get_object (builder, "workspace-scrolling");
 +  panel_return_if_fail (GTK_IS_TOGGLE_BUTTON (plugin->scrolling_toggle));
    g_object_bind_property (G_OBJECT (plugin), "workspace-scrolling",
@@ -327,60 +320,49 @@ diff '--color=auto' -Naur xfce4-panel-4.16.0-orig/plugins/pager/pager.c xfce4-pa
 +                          G_OBJECT (plugin->scrolling_toggle), "active",
                            G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
  
-+  plugin->invert_scrolling_toggle = gtk_builder_get_object (builder, "workspace-invert-scrolling");
-+  panel_return_if_fail (GTK_IS_TOGGLE_BUTTON (plugin->invert_scrolling_toggle));
-+  g_object_bind_property (G_OBJECT (plugin), "workspace-invert-scrolling",
-+                          G_OBJECT (plugin->invert_scrolling_toggle), "active",
-+                          G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
-+
-+  gtk_widget_set_sensitive (GTK_WIDGET (plugin->invert_scrolling_toggle),
-+      gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (plugin->scrolling_toggle)));
-+
-+  g_signal_connect (G_OBJECT (plugin->scrolling_toggle), "toggled",
-+      G_CALLBACK (workspace_scrolling_toggled), plugin->invert_scrolling_toggle);
-+
-   object = gtk_builder_get_object (builder, "appearance");
-   panel_return_if_fail (GTK_IS_COMBO_BOX (object));
-   g_object_bind_property (G_OBJECT (plugin), "miniature-view",
-@@ -736,17 +846,13 @@
-                           G_OBJECT (object), "value",
-                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
- 
 -  plugin->numbering_label = gtk_builder_get_object (builder, "numbering-label");
+-  g_object_bind_property (G_OBJECT (plugin), "miniature-view",
+-                          G_OBJECT (plugin->numbering_label), "visible",
+-                          G_BINDING_SYNC_CREATE | G_BINDING_DEFAULT | G_BINDING_INVERT_BOOLEAN);
 -  plugin->numbering_switch = gtk_builder_get_object (builder, "numbering");
 -  panel_return_if_fail (GTK_IS_SWITCH (plugin->numbering_switch));
-+  plugin->numbering_toggle = gtk_builder_get_object (builder, "numbering");
-+  panel_return_if_fail (GTK_IS_TOGGLE_BUTTON (plugin->numbering_toggle));
-   g_object_bind_property (G_OBJECT (plugin), "numbering",
+-  g_object_bind_property (G_OBJECT (plugin), "miniature-view",
+-                          G_OBJECT (plugin->numbering_switch), "visible",
+-                          G_BINDING_SYNC_CREATE | G_BINDING_DEFAULT | G_BINDING_INVERT_BOOLEAN);
+-  g_object_bind_property (G_OBJECT (plugin), "numbering",
 -                          G_OBJECT (plugin->numbering_switch), "active",
-+                          G_OBJECT (plugin->numbering_toggle), "active",
++  plugin->invert_scrolling_toggle = gtk_builder_get_object (builder, "workspace-invert-scrolling");
++  panel_return_if_fail (GTK_IS_TOGGLE_BUTTON (plugin->invert_scrolling_toggle));
++  g_object_bind_property (G_OBJECT (plugin), "workspace-scrolling",
++                          G_OBJECT (plugin->invert_scrolling_toggle), "sensitive",
++                          G_BINDING_SYNC_CREATE | G_BINDING_DEFAULT);
++  g_object_bind_property (G_OBJECT (plugin), "workspace-invert-scrolling",
++                          G_OBJECT (plugin->invert_scrolling_toggle), "active",
                            G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
  
--  gtk_widget_set_visible (GTK_WIDGET (plugin->numbering_label), !plugin->miniature_view);
--  gtk_widget_set_visible (GTK_WIDGET (plugin->numbering_switch), !plugin->miniature_view);
--  gtk_widget_set_visible (GTK_WIDGET (plugin->scrolling_label), !plugin->miniature_view);
--  gtk_widget_set_visible (GTK_WIDGET (plugin->scrolling_switch), !plugin->miniature_view);
-+  gtk_widget_set_sensitive (GTK_WIDGET (plugin->numbering_toggle), !plugin->miniature_view);
- 
    /* update the rows limit */
-   pager_plugin_configure_n_workspaces_changed (plugin->wnck_screen, NULL, builder);
-@@ -756,6 +862,30 @@
+@@ -753,6 +853,35 @@
+ }
  
  
- static void
++
++static void
 +pager_plugin_get_ratio (PagerPlugin *plugin)
 +{
 +  WnckWorkspace *active_ws;
-+  GdkRectangle geometry = {0};
++  GdkRectangle   geometry = {0};
 +
 +  panel_return_if_fail (XFCE_IS_PAGER_PLUGIN (plugin));
 +  panel_return_if_fail (WNCK_IS_SCREEN (plugin->wnck_screen));
 +
++  /* Check if we ware in viewport mode */
 +  active_ws = wnck_screen_get_active_workspace (plugin->wnck_screen);
-+  if (wnck_workspace_is_virtual (active_ws))
++  if (wnck_screen_get_workspace_count (plugin->wnck_screen) == 1 &&
++      wnck_workspace_is_virtual (active_ws))
 +    {
 +      /* Calculate the ratio for a virtual workspace as used by Compiz */
-+      plugin->ratio = (gfloat) wnck_workspace_get_width (active_ws) / (gfloat) wnck_workspace_get_height (active_ws);
++      plugin->ratio = (gfloat) wnck_workspace_get_width  (active_ws) /
++                      (gfloat) wnck_workspace_get_height (active_ws);
 +    }
 +  else
 +    {
@@ -391,11 +373,11 @@ diff '--color=auto' -Naur xfce4-panel-4.16.0-orig/plugins/pager/pager.c xfce4-pa
 +}
 +
 +
-+static void
++
+ static void
  pager_plugin_get_preferred_width (GtkWidget *widget,
                                    gint      *minimum_width,
-                                   gint      *natural_width)
-@@ -777,6 +907,9 @@
+@@ -775,6 +904,9 @@
      {
        n_workspaces = wnck_screen_get_workspace_count (plugin->wnck_screen);
        n_cols = MAX (1, (n_workspaces + plugin->rows - 1) / plugin->rows);
@@ -405,7 +387,7 @@ diff '--color=auto' -Naur xfce4-panel-4.16.0-orig/plugins/pager/pager.c xfce4-pa
        min_width = nat_width = (gint) (xfce_panel_plugin_get_size (XFCE_PANEL_PLUGIN (plugin)) / plugin->rows * plugin->ratio * n_cols);
      }
  
-@@ -808,6 +941,9 @@
+@@ -806,6 +938,9 @@
      {
        n_workspaces = wnck_screen_get_workspace_count (plugin->wnck_screen);
        n_cols = MAX (1, (n_workspaces + plugin->rows - 1) / plugin->rows);
@@ -415,9 +397,9 @@ diff '--color=auto' -Naur xfce4-panel-4.16.0-orig/plugins/pager/pager.c xfce4-pa
        if (mode == XFCE_PANEL_PLUGIN_MODE_VERTICAL)
          min_height = nat_height = (gint) (xfce_panel_plugin_get_size (XFCE_PANEL_PLUGIN (plugin)) / plugin->rows / plugin->ratio * n_cols);
        else /* (mode == XFCE_PANEL_PLUGIN_MODE_DESKBAR) */
-diff '--color=auto' -Naur xfce4-panel-4.16.0-orig/plugins/pager/pager-dialog.glade xfce4-panel-4.16.0/plugins/pager/pager-dialog.glade
---- xfce4-panel-4.16.0-orig/plugins/pager/pager-dialog.glade	2020-08-22 00:05:41.000000000 +0200
-+++ xfce4-panel-4.16.0/plugins/pager/pager-dialog.glade	2021-01-19 23:23:26.879526164 +0100
+diff -Naur xfce4-panel-4.16.1-orig/plugins/pager/pager-dialog.glade xfce4-panel-4.16.1/plugins/pager/pager-dialog.glade
+--- xfce4-panel-4.16.1-orig/plugins/pager/pager-dialog.glade	2021-01-27 08:20:48.000000000 +0100
++++ xfce4-panel-4.16.1/plugins/pager/pager-dialog.glade	2021-01-31 22:53:26.001466391 +0100
 @@ -115,111 +115,64 @@
              <property name="position">0</property>
            </packing>

@@ -1,7 +1,7 @@
-diff -Naur xfce4-panel-4.16.0-orig/plugins/pager/pager.c xfce4-panel-4.16.0/plugins/pager/pager.c
---- xfce4-panel-4.16.0-orig/plugins/pager/pager.c	2021-01-19 22:31:30.317186954 +0100
-+++ xfce4-panel-4.16.0/plugins/pager/pager.c	2021-01-19 22:32:02.773341344 +0100
-@@ -106,7 +106,7 @@
+diff -Naur xfce4-panel-4.16.1-orig/plugins/pager/pager.c xfce4-panel-4.16.1/plugins/pager/pager.c
+--- xfce4-panel-4.16.1-orig/plugins/pager/pager.c	2021-01-31 22:04:20.023870874 +0100
++++ xfce4-panel-4.16.1/plugins/pager/pager.c	2021-01-31 22:18:17.964139544 +0100
+@@ -107,7 +107,7 @@
    GtkWidget     *pager;
    GObject       *numbering_toggle;
    GObject       *scrolling_toggle;
@@ -10,42 +10,24 @@ diff -Naur xfce4-panel-4.16.0-orig/plugins/pager/pager.c xfce4-panel-4.16.0/plug
  
    WnckScreen    *wnck_screen;
  
-@@ -238,8 +238,8 @@
-     case PROP_WORKSPACE_SCROLLING:
-       g_value_set_boolean (value, plugin->scrolling);
- 
--      if (G_IS_OBJECT (plugin->invert_scrolling_toggle))
--        gtk_widget_set_sensitive (GTK_WIDGET (plugin->invert_scrolling_toggle), plugin->scrolling);
-+      if (G_IS_OBJECT (plugin->scroll_options_box))
-+        gtk_widget_set_sensitive (GTK_WIDGET (plugin->scroll_options_box), plugin->scrolling);
- 
-       pager_plugin_screen_layout_changed (plugin);
-       break;
-@@ -824,17 +824,29 @@
+@@ -837,13 +837,23 @@
                            G_OBJECT (plugin->scrolling_toggle), "active",
                            G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
  
 -  plugin->invert_scrolling_toggle = gtk_builder_get_object (builder, "workspace-invert-scrolling");
 -  panel_return_if_fail (GTK_IS_TOGGLE_BUTTON (plugin->invert_scrolling_toggle));
--  g_object_bind_property (G_OBJECT (plugin), "workspace-invert-scrolling",
--                          G_OBJECT (plugin->invert_scrolling_toggle), "active",
 +  plugin->scroll_options_box = gtk_builder_get_object (builder, "scroll-options");
 +  panel_return_if_fail (GTK_IS_BOX (plugin->scroll_options_box));
-+  g_object_bind_property (G_OBJECT (plugin), "scroll_options",
-+                          G_OBJECT (plugin->scroll_options_box), "active",
-                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
- 
--  gtk_widget_set_sensitive (GTK_WIDGET (plugin->invert_scrolling_toggle),
-+  gtk_widget_set_sensitive (GTK_WIDGET (plugin->scroll_options_box),
-       gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (plugin->scrolling_toggle)));
- 
-   g_signal_connect (G_OBJECT (plugin->scrolling_toggle), "toggled",
--      G_CALLBACK (workspace_scrolling_toggled), plugin->invert_scrolling_toggle);
-+      G_CALLBACK (workspace_scrolling_toggled), plugin->scroll_options_box);
+   g_object_bind_property (G_OBJECT (plugin), "workspace-scrolling",
+-                          G_OBJECT (plugin->invert_scrolling_toggle), "sensitive",
++                          G_OBJECT (plugin->scroll_options_box), "sensitive",
+                           G_BINDING_SYNC_CREATE | G_BINDING_DEFAULT);
++
 +
 +  object = gtk_builder_get_object (builder, "workspace-invert-scrolling");
 +  panel_return_if_fail (GTK_IS_TOGGLE_BUTTON (object));
-+  g_object_bind_property (G_OBJECT (plugin), "workspace-invert-scrolling",
+   g_object_bind_property (G_OBJECT (plugin), "workspace-invert-scrolling",
+-                          G_OBJECT (plugin->invert_scrolling_toggle), "active",
 +                          G_OBJECT (object), "active",
 +                          G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
 +
@@ -53,13 +35,21 @@ diff -Naur xfce4-panel-4.16.0-orig/plugins/pager/pager.c xfce4-panel-4.16.0/plug
 +  panel_return_if_fail (GTK_IS_TOGGLE_BUTTON (object));
 +  g_object_bind_property (G_OBJECT (plugin), "wrap-workspaces",
 +                          G_OBJECT (object), "active",
-+                          G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
+                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
  
-   object = gtk_builder_get_object (builder, "appearance");
-   panel_return_if_fail (GTK_IS_COMBO_BOX (object));
-diff -Naur xfce4-panel-4.16.0-orig/plugins/pager/pager-dialog.glade xfce4-panel-4.16.0/plugins/pager/pager-dialog.glade
---- xfce4-panel-4.16.0-orig/plugins/pager/pager-dialog.glade	2021-01-19 22:31:30.317186954 +0100
-+++ xfce4-panel-4.16.0/plugins/pager/pager-dialog.glade	2021-01-19 22:32:08.933370647 +0100
+   /* update the rows limit */
+diff -Naur xfce4-panel-4.16.1-orig/plugins/pager/pager-dialog.glade xfce4-panel-4.16.1/plugins/pager/pager-dialog.glade
+--- xfce4-panel-4.16.1-orig/plugins/pager/pager-dialog.glade	2021-01-31 22:04:20.023870874 +0100
++++ xfce4-panel-4.16.1/plugins/pager/pager-dialog.glade	2021-01-31 22:18:31.664209323 +0100
+@@ -24,7 +24,7 @@
+   <object class="GtkImage" id="image1">
+     <property name="visible">True</property>
+     <property name="can_focus">False</property>
+-    <property name="icon_name">org.xfce.workspaces</property>
++    <property name="icon_name">xfce4-workspaces</property>
+   </object>
+   <object class="GtkImage" id="image2">
+     <property name="visible">True</property>
 @@ -298,17 +298,54 @@
                </packing>
              </child>
