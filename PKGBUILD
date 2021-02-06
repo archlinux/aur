@@ -2,7 +2,7 @@
 
 pkgname=picom-ibhagwan-git
 _gitname=picom
-pkgver=1383_Next.102.g44b4970_2020.08.03
+pkgver=1577_Next.296.g6d87428_2021.02.05
 pkgrel=1
 pkgdesc="iBhagwan's compton|picom fork (X compositor) with dual_kawase blur and rounded corners"
 arch=(i686 x86_64)
@@ -19,7 +19,7 @@ provides=('compton' 'compton-git' 'picom' 'picom-git')
 conflicts=('compton' 'compton-git' 'picom' 'picom-git')
 #replaces=('compton-git' 'picom-git')
 options=('!strip')
-source=(git+"https://github.com/ibhagwan/${_gitname}.git")
+source=(git+"https://github.com/ibhagwan/${_gitname}.git#branch=next-rebase")
 md5sums=("SKIP")
 
 pkgver() {
