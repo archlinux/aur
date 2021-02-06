@@ -1,6 +1,6 @@
 pkgbase = sftpgo
 	pkgdesc = Fully featured and highly configurable SFTP server with optional FTP/S and WebDAV support. It can serve local filesystem, S3, GCS, Azure Blob, SFTP
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/drakkan/sftpgo
 	install = sftpgo.install
@@ -16,7 +16,7 @@ pkgbase = sftpgo
 	optdepends = postgresql: to use PostgreSQL provider
 	optdepends = mariadb: to use MySQL provider
 	backup = etc/sftpgo/sftpgo.json
-	source = git+https://github.com/drakkan/sftpgo#tag=v2.0.0
+	source = git+https://github.com/drakkan/sftpgo#tag=v2.0.1
 	source = sftpgo.json
 	source = sftpgo.sysusers
 	sha256sums = SKIP
