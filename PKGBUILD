@@ -2,10 +2,10 @@
 
 pkgname=python-pyscipopt
 pkgver=3.1.0
-pkgrel=1
-pkgdesc='A Python Interface to the SCIP Optimization Suite.'
+pkgrel=2
+pkgdesc='A Python interface to the SCIP Optimization Suite.'
 arch=('any')
-url='http://scip.zib.de'
+url='https://www.scipopt.org/'
 license=('MIT')
 depends=('python' 'scipoptsuite')
 makedepends=('cython' 'python-setuptools')
@@ -19,7 +19,10 @@ build() {
 }
 
 check() {
-	cd "${srcdir}/PySCIPOpt-${pkgver}/build/lib."*
+	_arch="linux-$(uname -m)"
+	_pymajver="$(python -V | sed 's/Python \([0-9]\+\.[0-9]\+\)\.[0-9]\+/\1/')"
+
+	cd "${srcdir}/PySCIPOpt-${pkgver}/build/lib.${_arch}-${_pymajver}"
 	python -Bc "import pyscipopt"
 }
 
