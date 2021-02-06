@@ -3,8 +3,8 @@
 pkgbase=python-pythumbnailer
 pkgname=python-pythumbnailer
 _module='pythumbnailer'
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.5
+pkgrel=1
 pkgdesc="Create static HTML galleries with thumbnails"
 url="https://gitlab.com/somini/pythumbnailer/"
 depends=('python' 'python-argparse-utils' 'ffmpeg')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 license=('GPL')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('32be5940486f799e610d3410c2b0ae1c1e3ff92bb2ffc2708bacc98c415ac68e')
+sha256sums=('5b551cc378d903515e621f1ed5adf0fc2f773b398b5dc06c9ef54d752bbcd522')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
