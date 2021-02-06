@@ -1,4 +1,4 @@
-# Maintainer: Carlos Galindo <carlos.s.galindo@gmail.com>
+# Maintainer: Carlos Galindo <arch -at- cgj.es>
 
 pkgname=nextcloud-app-phonetrack
 _releasename=phonetrack-oc
