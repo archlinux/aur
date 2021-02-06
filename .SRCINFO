@@ -1,33 +1,42 @@
 pkgbase = tensorrt
-	pkgdesc = A platform for high-performance deep learning inference using NVIDIA hardware
-	pkgver = 7.2.1.6
+	pkgdesc = A platform for high-performance deep learning inference on NVIDIA hardware
+	pkgver = 7.2.2.3
 	pkgrel = 1
 	url = https://github.com/NVIDIA/TensorRT/
 	arch = x86_64
-	license = custom
+	license = custom:NVIDIA-SLA
 	license = Apache
 	makedepends = git
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = poppler
+	makedepends = cuda=11.1
+	makedepends = cudnn
 	makedepends = pybind11
 	makedepends = python
+	makedepends = python-onnx
+	makedepends = python-wheel
+	makedepends = absl-py
+	makedepends = python-scipy
+	makedepends = python-prettytable
+	makedepends = python-pyaml
+	makedepends = python-pytorch-cuda
 	makedepends = python-pip
 	makedepends = zlib
-	makedepends = cuda
-	makedepends = cudnn
 	noextract = protobuf-cpp-3.12.4.tar.gz
-	source = local://TensorRT-7.2.1.6.Ubuntu-18.04.x86_64-gnu.cuda-11.1.cudnn8.0.tar.gz
-	source = git+https://github.com/NVIDIA/TensorRT.git#tag=7.2.1
-	source = protobuf-protocolbuffers::git+https://github.com/protocolbuffers/protobuf.git#branch=3.8.x
-	source = git+https://github.com/NVIDIA/cub.git#tag=1.8.0
-	source = git+https://github.com/onnx/onnx-tensorrt.git#branch=7.2.1
-	source = git+https://github.com/onnx/onnx.git#branch=rel-1.6.0
+	source = local://TensorRT-7.2.2.3.Ubuntu-18.04.x86_64-gnu.cuda-11.1.cudnn8.0.tar.gz
+	source = git+https://github.com/NVIDIA/TensorRT.git#tag=21.02
+	source = protobuf-protocolbuffers::git+https://github.com/protocolbuffers/protobuf.git
+	source = cub-nvlabs::git+https://github.com/NVlabs/cub.git
+	source = git+https://github.com/onnx/onnx-tensorrt.git
+	source = git+https://github.com/onnx/onnx.git
 	source = git+https://github.com/pybind/pybind11.git
 	source = git+https://github.com/google/benchmark.git
 	source = https://github.com/google/protobuf/releases/download/v3.12.4/protobuf-cpp-3.12.4.tar.gz
 	source = 010-tensorrt-use-local-protobuf-sources.patch
 	source = 020-tensorrt-fix-cub-deprecation-huge-warnings.patch
-	sha256sums = eef37d387b74f452c86d1ffe58bc57d0514409591e1ac2ae9d11b3167d8d5e6b
+	source = 030-tensorrt-fix-python.patch
+	sha256sums = 6b5457d4234fec305cc7b241af0c1da0def69a4d182d09b4396948c6eaeae8db
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -38,17 +47,28 @@ pkgbase = tensorrt
 	sha256sums = ccfbaaba52f67e0e6536a05f3df3f6618620d255513cfca3a07f5935b624e26b
 	sha256sums = ea25bb1b188d53cbfbec35d242ab2a2fa8d6009c547c9f5f67bc2f1ad127ceac
 	sha256sums = e6153bf43c248fb3ed843e41f6b722ff8c3507ad48fe105bfa129b8641741ecf
+	sha256sums = 69b2b70ae4774385fc589f917b6f1df23415ed43a7a2cd9328504631c8461e95
 
 pkgname = tensorrt
-	depends = cuda
+	depends = cuda=11.1
 	depends = cudnn
-	optdepends = python-numpy: for graphsurgeon, onnx_graphsurgeon and uff python modules
+
+pkgname = python-tensorrt
+	pkgdesc = A platform for high-performance deep learning inference on NVIDIA hardware (python bindings and tools)
+	depends = python
+	depends = tensorrt
+	optdepends = absl-py: for pytorch_quantization python module
+	optdepends = python-numpy: for graphsurgeon, onnx_graphsurgeon, polygraphy, pytorch_quantization and uff python modules
 	optdepends = python-onnx: for onnx_graphsurgeon python module
-	optdepends = python-protobuf: for uff python module and convert-to-uff tool
+	optdepends = python-prettytable: for uff python module and convert-to-uff tool
+	optdepends = python-pyaml: for pytorch_quantization python module
+	optdepends = python-pytorch-cuda: for pytorch_quantization python module
+	optdepends = python-scipy: for pytorch_quantization python module
+	optdepends = python-sphinx-glpi-theme: for pytorch_quantization python module
 	optdepends = python-tensorflow-cuda: for graphsurgeon and uff python modules and convert-to-uff tool
 
 pkgname = tensorrt-doc
-	pkgdesc = A platform for high-performance deep learning inference using NVIDIA hardware (documentation)
+	pkgdesc = A platform for high-performance deep learning inference on NVIDIA hardware (documentation)
 	arch = any
-	license = custom
+	license = custom:NVIDIA-SLA
 
