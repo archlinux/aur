@@ -2,7 +2,7 @@
 
 pkgname='chromium-extension-privacybadger'
 pkgver=2021.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Block third party tracking in your browser"
 license=('GPL3')
 arch=('any')

@@ -1,7 +1,7 @@
 pkgbase = chromium-extension-privacybadger
 	pkgdesc = Block third party tracking in your browser
 	pkgver = 2021.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://privacybadger.org/
 	changelog = chromium-extension-privacybadger.changelog
 	arch = any
