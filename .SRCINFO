@@ -1,0 +1,14 @@
+pkgbase = python-sphinx-glpi-theme
+	pkgdesc = A Sphinx theme based on readthedocs.org one
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/glpi-project/sphinx_glpi_theme/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/glpi-project/sphinx_glpi_theme/archive/0.3/python-sphinx-glpi-theme-0.3.tar.gz
+	sha256sums = c753534f6a0f9c0a6ac622e60f38f08ff7e234be1d27c97e0604ad19192b0af5
+
+pkgname = python-sphinx-glpi-theme
+
