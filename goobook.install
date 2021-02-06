@@ -6,8 +6,11 @@ cat <<End-of-message
 
       https://wiki.archlinux.org/index.php/Mutt#Goobook
 
-
       See https://gitlab.com/goobook/goobook#tab-readme for more information and configuration
+
+      *CONFLICT* The Archlinux packages python-xdg and python-pyxdg conflict. If
+      you need python-pyxdg, remove python-xdg from the PKGBUILD and 
+      `pip install --user xdg` or install goobook into a virtualenv.
 
 End-of-message
 }
