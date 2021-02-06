@@ -7,7 +7,7 @@ pkgname='ros-melodic-laser-geometry'
 pkgver='1.6.7'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -15,6 +15,8 @@ ros_makedepends=(
 	ros-melodic-cmake-modules
 	ros-melodic-catkin
 	ros-melodic-tf
+	ros-melodic-tf2
+	ros-melodic-tf2-geometry-msgs
 	ros-melodic-roscpp
 	ros-melodic-sensor-msgs
 )
@@ -29,6 +31,7 @@ makedepends=(
 
 ros_depends=(
 	ros-melodic-tf
+	ros-melodic-tf2
 	ros-melodic-angles
 	ros-melodic-sensor-msgs
 	ros-melodic-roscpp
