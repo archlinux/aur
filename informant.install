@@ -1,11 +1,20 @@
 CLEAR="$(tput sgr0)"
-YELLOW="${bold}$(tput setaf 3)"
+YELLOW="$(tput bold)$(tput setaf 3)"
 
 post_install() {
     groupadd informant 2>/dev/null
-    touch /var/cache/informant.dat
-    chgrp informant /var/cache/informant.dat
-    chmod 664 /var/cache/informant.dat
+
+    # save file
+    touch /var/lib/informant.dat
+    chgrp informant /var/lib/informant.dat
+    chmod 664 /var/lib/informant.dat
+
+    # cache dir
+    mkdir -p /var/cache/informant 2>/dev/null
+    chgrp informant /var/cache/informant
+    chmod 775 /var/cache/informant
+    chmod g+s /var/cache/informant
+
     printf "%sNOTE%s: Add yourself to group \"informant\" to avoid the need for sudo\n" "$YELLOW" "$CLEAR"
 }
 
@@ -13,7 +22,11 @@ post_upgrade() {
     post_install
     #new_ver=$1
     old_ver=$2
+    if [[ $old_ver =~ ^0\.[0123]\.* ]]; then
+        mv /var/cache/informant.dat /var/lib/informant.dat
+        printf "%sNOTE%s: This update moves the location of the save file.\n/var/cache/informant.dat is now /var/lib/informant.dat, and cache data is saved in /var/cache/informant/.\nYou should not need to re-read old items.\n" "$YELLOW" "$CLEAR"
+    fi
     if [[ $old_ver =~ ^0\.[01]\.* ]]; then
-        printf "%sWARNING%s: This update changes the format of the /var/cache/informant.dat file, you will need to re-read all news items.\n" "$YELLOW" "$CLEAR"
+        printf "%sWARNING%s: This update changes the format of the save file, you will need to re-read all news items.\n" "$YELLOW" "$CLEAR"
     fi
 }
