@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='xtables-addons'
-pkgver='3.13'
+pkgver='3.15'
 pkgrel='1'
 pkgdesc='Xtables-addons is a set of additional extensions for the Xtables packet filter that is present in the Linux kernel'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('linux-api-headers' 'linux-headers' 'libtool' 'gcc' 'pkg-config')
 conflicts=('xtables-addons-dkms')
 replaces=('xtables-addons-dkms')
 source=("https://inai.de/files/${pkgname}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('893c0c4ea09759cda1ab7e68f1281d125e59270f7b59e446204ce686c6a76d65')
+sha256sums=('a97d9b4a2ee017d6387605aa5f1a05183aa4ad5b0996233196497a50efa9449b')
 # define '-lts' for linux-lts package
 _linux_custom=""
 _kernver="`pacman -Ql linux${_linux_custom} | awk '/(\/modules\/)([0-9.-])+-(.*)'${_linux_custom}'\/$/ {print $2}' | head -n1`"
