@@ -1,6 +1,6 @@
 pkgbase = sftpgo
-	pkgdesc = Fully featured and highly configurable SFTP server with optional FTP/S and WebDAV support. It can serve local filesystem, S3, GCS, Azure Blob
-	pkgver = 1.2.2
+	pkgdesc = Fully featured and highly configurable SFTP server with optional FTP/S and WebDAV support. It can serve local filesystem, S3, GCS, Azure Blob, SFTP
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/drakkan/sftpgo
 	install = sftpgo.install
@@ -15,14 +15,12 @@ pkgbase = sftpgo
 	optdepends = sqlite: to use SQLite provider
 	optdepends = postgresql: to use PostgreSQL provider
 	optdepends = mariadb: to use MySQL provider
-	optdepends = python-requests: REST API CLI
-	optdepends = python-pygments: REST API CLI colors highlight
 	backup = etc/sftpgo/sftpgo.json
-	source = git+https://github.com/drakkan/sftpgo#tag=v1.2.2
+	source = git+https://github.com/drakkan/sftpgo#tag=v2.0.0
 	source = sftpgo.json
 	source = sftpgo.sysusers
 	sha256sums = SKIP
-	sha256sums = ec2768a7578c3409fe57fb20420474582d09b0726205ddf53d811a5feed4f90a
+	sha256sums = c78069828a88b18f4ba7454a3e91bdf63829ed17b532528805edb8d08ce8e292
 	sha256sums = 44658210043f805057c2e4b473653637a91204e4da17954b08081292c72edcb8
 
 pkgname = sftpgo
