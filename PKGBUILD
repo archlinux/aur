@@ -3,8 +3,8 @@
 
 
 pkgname=mutt-wizard
-pkgver=3.1.1
-pkgrel=2
+pkgver=3.2.1
+pkgrel=1
 
 pkgdesc='Simple interface to auto-configure neomutt and isync with safe passwords'
 arch=('any')
@@ -27,7 +27,7 @@ options=('zipman')
 
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tgz::$url/archive/v$pkgver.tar.gz")
-b2sums=('0f4d8e973fedc0d102242a06922627039f4244ad9fc901d6e3d7235089164c3a7f255587978c95762242146441d8a48f57401e9ec86754194b531d38f0074652')
+b2sums=('60087ca8b6cfe2f69e1f078942ef24be8d387fbadcacfdf0105e6ee6df315a57fb21320635b685dad5e5e15860adb9cef147dc9b029d77bfdfd196f219faca91')
 
 
 package() {
