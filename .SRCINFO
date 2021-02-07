@@ -1,24 +1,24 @@
 pkgbase = nemo-compare
 	pkgdesc = Context menu comparison extension for Nemo file manager
-	pkgver = 4.0.0
-	pkgrel = 3
+	pkgver = 4.8.0
+	pkgrel = 1
 	url = https://github.com/linuxmint/nemo-extensions
-	install = nemo-compare.install
 	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
 	groups = nemo-extensions
 	license = GPL3
-	depends = nemo>=4.0
-	depends = nemo-python>=4.0
-	depends = python2-xdg
-	depends = pygtk
-	optdepends = kompare: Comparison options (preferred diff, three-way, multi-compare)
-	optdepends = fldiff: Comparison options (preferred diff, three-way, multi-compare)
-	optdepends = diffuse: Comparison options (preferred diff, three-way, multi-compare)
-	optdepends = meld: Comparison options (preferred diff, three-way, multi-compare)
-	optdepends = kdiff3: Comparison options (preferred diff, three-way, multi-compare)
-	optdepends = tkdiff: Comparison options (preferred diff, three-way, multi-compare)
-	source = nemo-extensions-4.0.0.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/4.0.0.tar.gz
-	sha256sums = 4bee7336554fd3c6e87371bc4683e5bee989a67030582b89a050aad5874a04de
+	depends = nemo-python>=3.9.0
+	depends = python-xdg
+	depends = python-gobject
+	optdepends = meld: Install at least one file comparison program
+	optdepends = kompare: Additional comparison options (preferred diff, three-way, multi-compare)
+	optdepends = fldiff: Additional comparison options (preferred diff, three-way, multi-compare)
+	optdepends = diffuse: Alternate comparison backend
+	optdepends = kdiff3: Alternate comparison backend
+	source = nemo-extensions-4.8.0.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/4.8.0.tar.gz
+	sha256sums = 1b7b85b41c659fe0f93a9b83fadb81a7934c7e7cb2df9eda4a03413b7f5d05c4
 
 pkgname = nemo-compare
 

@@ -1,38 +1,30 @@
-# Maintainer: Sebastian Lau <lauseb644 _at_ gmail _dot_ com>
+# Maintainer:  twa022 <twa022 at gmail dot com>
+# Contributor: Sebastian Lau <lauseb644 _at_ gmail _dot_ com>
 
 pkgname=nemo-compare
-pkgver=4.0.0
-pkgrel=3
+pkgver=4.8.0
+pkgrel=1
 pkgdesc="Context menu comparison extension for Nemo file manager"
-arch=("x86_64")
+arch=("x86_64" 'i686' 'armv7h' 'aarch64')
 url="https://github.com/linuxmint/nemo-extensions"
 license=('GPL3')
-depends=('nemo>=4.0' 'nemo-python>=4.0' 'python2-xdg' 'pygtk')
 groups=('nemo-extensions')
-optdepends=('kompare: Comparison options (preferred diff, three-way, multi-compare)'
-	    'fldiff: Comparison options (preferred diff, three-way, multi-compare)'
-	    'diffuse: Comparison options (preferred diff, three-way, multi-compare)'
-	    'meld: Comparison options (preferred diff, three-way, multi-compare)'
-	    'kdiff3: Comparison options (preferred diff, three-way, multi-compare)'
-	    'tkdiff: Comparison options (preferred diff, three-way, multi-compare)')
-install=${pkgname}.install
+depends=('nemo-python>=3.9.0' 'python-xdg' 'python-gobject')
+optdepends=('meld: Install at least one file comparison program'
+            'kompare: Additional comparison options (preferred diff, three-way, multi-compare)'
+	        'fldiff: Additional comparison options (preferred diff, three-way, multi-compare)'
+	        'diffuse: Alternate comparison backend'
+	        'kdiff3: Alternate comparison backend')
 source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz")
-sha256sums=('4bee7336554fd3c6e87371bc4683e5bee989a67030582b89a050aad5874a04de')
-
+sha256sums=('1b7b85b41c659fe0f93a9b83fadb81a7934c7e7cb2df9eda4a03413b7f5d05c4')
 
 build() {
   cd "${srcdir}/nemo-extensions-${pkgver}/${pkgname}"
-
-  python setup.py build
+  python ./setup.py build
 }
 
 package() {
   cd "${srcdir}/nemo-extensions-${pkgver}/${pkgname}"
-
-  install -D src/* -t "${pkgdir}/usr/share/${pkgname}/"
-
-  install -d "${pkgdir}/usr/share/nemo-python/extensions"
-
-  install -d "${pkgdir}/usr/bin"
-  ln -s /usr/share/nemo-compare/nemo-compare-preferences "${pkgdir}/usr/bin/nemo-compare-preferences"
+  python ./setup.py install --prefix=/usr --root="${pkgdir}" \
+                            --no-compile -O0
 }
