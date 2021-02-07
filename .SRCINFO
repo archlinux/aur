@@ -1,0 +1,13 @@
+pkgbase = tarry-git
+	pkgdesc = CLI tool for waiting until a specific time
+	pkgver = e8ec286
+	pkgrel = 1
+	url = https://github.com/metaphyze/tarry
+	arch = any
+	license = Apache
+	depends = go
+	source = git+https://github.com/metaphyze/tarry.git
+	sha512sums = SKIP
+
+pkgname = tarry-git
+
