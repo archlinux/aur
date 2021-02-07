@@ -7,41 +7,34 @@ pkgdesc='Official Nault AppImage client'
 arch=('x86_64')
 url='https://github.com/Nault/Nault'
 license=('MIT')
-provides=("${pkgname}")
+provides=("$pkgname")
 depends=('fuse2')
-conflicts=("${pkgname}")
+conflicts=("$pkgname")
 options=(!strip)
 _appimage="nault.AppImage"
-source=("https://github.com/Nault/Nault/releases/download/v${pkgver}/Nault-${pkgver}-Linux.AppImage")
-noextract=("${_appimage}")
+source=("${url}/releases/download/v${pkgver}/Nault-${pkgver}-Linux.AppImage")
+noextract=("$_appimage")
 sha512sums=('2114af9a2a3cc21004d4b96f17934112888d7b23263723411f30ec2c6ac2364d91194d5bd03c12141101f15bcff8329d0b512b57da8476782afc69b3a0a5c1a7')
-install="${pkgname}.install"
 
 prepare() {
-    chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract
-}
+    mv "Nault-${pkgver}-Linux.AppImage" "$_appimage"
+    chmod +x "$_appimage"
+    "./$_appimage" --appimage-extract
 
-build() {
-    # Fix permissions; .AppImage permissions are 700 for all directories
-    chmod -R a-x+rX squashfs-root/usr
+    # Fixing the desktop file
+    sed -i -E "s:Exec=AppRun:Exec=/opt/${_pkgname}/${_appimage}:" "squashfs-root/${_pkgname}.desktop"
 }
 
 package() {
-    mv "Nault-${pkgver}-Linux.AppImage" "${_appimage}"
-
-    # Appimage
-	install -Dpm755 "${_appimage}" "${pkgdir}/opt/${pkgname}/${_appimage}"
+    # Appimage and symlink
+	install -Dpm755 "${_appimage}" "${pkgdir}/opt/${_pkgname}/${_appimage}"
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s "/opt/${_pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}"
 
     # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop"\
-            "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
-    # Icon images
+    # Icons
     install -dm755 "${pkgdir}/usr/share/"
-    cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
-
-    # Symlink executable
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+    cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
 }
