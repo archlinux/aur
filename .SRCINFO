@@ -1,0 +1,26 @@
+pkgbase = hdfs-lib-cpp
+	pkgdesc = Libhdfs++ for Hadoop’s Distributed File System (HDFS)
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://github.com/apache/hadoop/tree/rel/release-3.3.0/hadoop-hdfs-project/hadoop-hdfs-native-client/src/main/native/libhdfspp
+	install = README.md
+	arch = x86_64
+	groups = hdfs
+	license = APACHE
+	makedepends = pkg-config
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = gsasl
+	makedepends = openssl
+	makedepends = protobuf
+	makedepends = jdk-openjdk
+	depends = gsasl
+	depends = openssl
+	depends = protobuf
+	provides = libhdfspp.so
+	source = hdfs-lib-cpp-3.3.0-source::git+https://github.com/apache/hadoop.git#tag=rel/release-3.3.0
+	sha256sums = SKIP
+
+pkgname = hdfs-lib-cpp
+
