@@ -1,0 +1,12 @@
+pkgbase = amplex
+	pkgdesc = A Multiamp Amplifier Plugin.
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = http://nalexsoft.blogspot.com/2020/07/amplex-multiamp_6.html
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = EULA
+
+pkgname = amplex
+
