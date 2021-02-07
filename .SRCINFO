@@ -1,14 +1,18 @@
 pkgbase = peakperf-git
-	pkgdesc = Benchmark to achieve peak performance on x86_64 CPUs
-	pkgver = v1.0.r0.g3a5207a
+	pkgdesc = Benchmark to achieve peak performance on x86_64 CPUs and NVIDIA GPUs
+	pkgver = v1.1.r3.g634b98e
 	pkgrel = 1
 	url = https://github.com/Dr-Noob/peakperf
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = cmake
 	makedepends = make
 	depends = glibc
 	depends = gcc-libs
+	optdepends = cuda: GPU mode support
+	provides = peakperf=v1.1.r3.g634b98e
+	conflicts = peakperf
 	source = git+https://github.com/Dr-Noob/peakperf
 	md5sums = SKIP
 
