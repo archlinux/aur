@@ -2,14 +2,14 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=termchat-git
-pkgver=1.2.0.r2.g83356d4
+pkgver=1.2.0.r3.g2398e84
 pkgrel=1
 pkgdesc="Terminal chat through the LAN (git)"
 arch=('x86_64')
 url="https://github.com/lemunozm/termchat"
 license=('Apache')
 depends=('gcc-libs')
-makedepends=('rust' 'git')
+makedepends=('rust' 'clang' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}")
@@ -22,12 +22,12 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  cargo build --release --locked
+  cargo build --release --locked --all-features
 }
 
 check() {
   cd "${pkgname%-git}"
-  cargo test --release --locked
+  cargo test --release --locked --all-features
 }
 
 package() {
