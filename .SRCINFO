@@ -1,9 +1,10 @@
 pkgbase = rpi-imager
 	pkgdesc = Raspberry Pi Imaging Utility
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raspberrypi/rpi-imager
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = Apache
 	makedepends = gcc
 	makedepends = make
