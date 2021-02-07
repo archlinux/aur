@@ -10,7 +10,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-vaapi
-pkgver=88.0.4324.96
+pkgver=88.0.4324.150
 pkgrel=1
 _launcher_ver=7
 _gcc_patchset=3
@@ -35,11 +35,13 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
         wayland-egl.patch
+        chromium-glibc-2.33.patch
         subpixel-anti-aliasing-in-FreeType-2.8.1.patch)
-sha256sums=('8995c5bb28559579f3bed51841420253637f912c425908fe5aa389ce40e9c79f'
+sha256sums=('ae12e94392986c6b8ea4413356a49bae0a19356ffe2ea95495303cf2decb38c3'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
             'e5a60a4c9d0544d3321cc241b4c7bd4adb0a885f090c6c6c21581eac8e3b4ba9'
             '34d08ea93cb4762cb33c7cffe931358008af32265fc720f2762f0179c3973574'
+            '2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b'
             '1e2913e21c491d546e05f9b4edf5a6c7a22d89ed0b36ef692ca6272bcd5faec6')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -87,6 +89,9 @@ prepare() {
     third_party/blink/renderer/core/xml/*.cc \
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/*.cc
+
+  # https://crbug.com/1164975
+  patch -Np1 -i ../chromium-glibc-2.33.patch
 
   # Upstream fixes
   patch -Np1 -d third_party/skia <../subpixel-anti-aliasing-in-FreeType-2.8.1.patch
