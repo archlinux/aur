@@ -1,0 +1,19 @@
+pkgbase = libptmalloc3
+	pkgdesc = A multi-thread malloc and memory pool implementation
+	pkgver = 3
+	pkgrel = 1
+	url = http://www.malloc.de/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = make
+	makedepends = gcc
+	source = http://www.malloc.de//malloc/ptmalloc3-current.tar.gz
+	source = Makefile.patch
+	md5sums = c0b9dd5f16f8eae979166dc74b60015c
+	md5sums = 1c223c6d09c407d6a971ffb98330f632
+	sha1sums = 50b9cd2e0cc0c9bc1856eab19d4051a62195560f
+	sha1sums = 32c08c9daa7697f0011a99151b376a8035145600
+
+pkgname = libptmalloc3
+

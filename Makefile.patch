@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index e46b3ff..9b1b802 100644
+--- a/Makefile
++++ b/Makefile
+@@ -114,7 +114,7 @@ tst-independent-alloc$(T_SUF): tst-independent-alloc.c $(LIB_MALLOC)
+ posix:
+ 	$(MAKE) THR_FLAGS='-DUSE_TSD_DATA_HACK -D_REENTRANT' \
+  OPT_FLAGS='$(OPT_FLAGS)' SYS_FLAGS='$(SYS_FLAGS)' CC='$(CC)' \
+- INC_FLAGS='-Isysdeps/pthread -Isysdeps/generic -I.'
++ INC_FLAGS='-Isysdeps/pthread -Isysdeps/generic -I.'\
+  THR_LIBS=-lpthread
+ 
+ # posix threads with explicit initialization.  Known to be needed on HPUX.
