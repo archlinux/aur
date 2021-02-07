@@ -1,7 +1,7 @@
 # Maintainer: Tom <reztho@archlinux.org>
 # Based on a contribution of: bitwave
 pkgname=textadept
-pkgver=11.0
+pkgver=11.1
 pkgrel=1
 pkgdesc="A fast, minimalist, and remarkably extensible cross-platform text editor"
 arch=('i686' 'x86_64')
@@ -44,5 +44,5 @@ package() {
   ln -s /usr/share/textadept/doc "$pkgdir/usr/share/doc/$pkgname"
 }
 
-md5sums=('a57c070a8bb19687e819098ae190e836'
-         'cacf22d1edf8a161578ca93b805a2035')
+md5sums=('ddf9350e5d29665dc18c115b536f4e51'
+         'd064d0758bb8a57f0afb8f7bd99e1bbc')
