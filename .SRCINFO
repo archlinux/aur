@@ -1,18 +1,18 @@
 pkgbase = jrnl-git
-	pkgdesc = A simple command line journal application that stores your journal in a plain text file
-	pkgver = 0.r775.350f0a1
-	pkgrel = 1
+	pkgdesc = Collect your thoughts and notes without leaving the command line
+	pkgver = 2.7.r11.gdc776b1
+	pkgrel = 4
 	url = https://jrnl.sh/
 	arch = any
-	license = MIT
+	license = GPL3
+	checkdepends = python-behave
 	makedepends = git
-	makedepends = poetry
+	makedepends = python-dephell
+	makedepends = python-setuptools
 	depends = python
 	conflicts = jrnl
-	source = git+https://github.com/maebert/jrnl.git
+	source = git+https://github.com/jrnl-org/jrnl.git
 	md5sums = SKIP
-	sha1sums = SKIP
-	sha256sums = SKIP
 
 pkgname = jrnl-git
 
