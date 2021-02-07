@@ -6,7 +6,7 @@ url='https://wiki.ros.org/openni2_camera'
 pkgname='ros-melodic-openni2-camera'
 pkgver='1.5.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-nodelet
@@ -60,7 +60,9 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+		 -DBOOST_ROOT=/opt/boost1.69 \
+		 -DBoost_NO_SYSTEM_PATHS=TRUE
   make
 }
 
