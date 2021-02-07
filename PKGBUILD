@@ -2,7 +2,7 @@
 
 _pkgname=fabric
 pkgname="hyperledger-${_pkgname}"
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="A platform for distributed ledger solutions, underpinned by a modular architecture delivering high degrees of confidentiality, resiliency, flexibility and scalability"
 arch=(armv6h armv7h arm aarch64 i686 x86_64)
@@ -59,8 +59,8 @@ package() {
     "${pkgdir}/usr/lib/environment.d/${_pkgname}-peer.conf"
 }
 
-md5sums=('98709c49df1c4d2d2aef033b98892333'
-  '6d766c337ac87760a14198c54c052826'
-  'f073e38d65495162dbb53fd5a8430ab3'
-  'e6d2e667cbf6fae5f236dade2ce42193'
-  '2fe223bd9e94c0d968766612d6406d63')
+md5sums=('fdfd422b3264dd11ca6614abae04edfd'
+         '6d766c337ac87760a14198c54c052826'
+         'f073e38d65495162dbb53fd5a8430ab3'
+         'e6d2e667cbf6fae5f236dade2ce42193'
+         '2fe223bd9e94c0d968766612d6406d63')
