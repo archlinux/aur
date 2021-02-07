@@ -4,9 +4,9 @@
 pkgname=reddio-git
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
-pkgver=0.3.r26.682e7cb
+pkgver=0.44.r0.bdc1e1b
 pkgrel=1
 
 pkgdesc='A command-line interface for Reddit written in POSIX sh'
