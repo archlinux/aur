@@ -1,6 +1,6 @@
 pkgbase = pop-gtk-theme-git
 	pkgdesc = A GTK+ theme for Pop!_OS
-	pkgver = 4.0.0.b2.r219.gd7e5e73b
+	pkgver = 5.3.1.r3.g5ab6f1e4
 	pkgrel = 1
 	url = https://github.com/pop-os/gtk-theme
 	arch = any

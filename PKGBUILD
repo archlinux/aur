@@ -1,7 +1,7 @@
 # Maintainer: Erik Wallström <erik.wallstrom@live.com>
 pkgname=pop-gtk-theme-git
 _pkgname=pop-gtk-theme
-pkgver=4.0.0.b2.r219.gd7e5e73b
+pkgver=5.3.1.r3.g5ab6f1e4
 pkgrel=1
 pkgdesc="A GTK+ theme for Pop!_OS"
 arch=("any")
@@ -40,20 +40,18 @@ conflicts=("${_pkgname}")
 source=("git+https://github.com/pop-os/gtk-theme.git")
 sha256sums=("SKIP")
 
+pkgver() {
+	cd "${srcdir}/gtk-theme"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
-  	cd "gtk-theme"
-	meson build && cd build
-	ninja
+	cd "${srcdir}/gtk-theme"
+	arch-meson build
+	meson compile -C build
 }
 
 package() {
-  	cd "gtk-theme"
-	cd build
-	DESTDIR="${pkgdir}" ninja install
+	cd "${srcdir}/gtk-theme"
+	DESTDIR="${pkgdir}" meson install -C build
 }
-
-pkgver() {
-  	cd "gtk-theme"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
