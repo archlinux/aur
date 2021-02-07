@@ -1,0 +1,16 @@
+pkgbase = lightdm-qtquick-greeter-git
+	pkgdesc = New Greeter for LightDM written in Qt
+	pkgver = r18.d1c29b1
+	pkgrel = 1
+	url = https://github.com/FascodeNet/lightdm-qtquick-greeter
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = git
+	depends = liblightdm-qt5
+	backup = etc/lightdm/lightdm-qtquick-greeter.json
+	source = git+https://github.com/FascodeNet/lightdm-qtquick-greeter.git
+	sha256sums = SKIP
+
+pkgname = lightdm-qtquick-greeter-git
+
