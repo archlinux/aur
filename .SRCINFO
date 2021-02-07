@@ -1,7 +1,7 @@
 pkgbase = sheepit-client-git
 	pkgdesc = Client for the free and distributed render farm
-	pkgver = 6.2020.0
-	pkgrel = 3
+	pkgver = v6.20364.0r474.c0155f1
+	pkgrel = 4
 	url = https://www.sheepit-renderfarm.com/
 	arch = i686
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = sheepit-client-git
 	provides = sheepit-client
 	conflicts = sheepit-client
 	backup = etc/conf.d/sheepit-client
-	source = git://github.com/laurent-clouet/sheepit-client.git#branch=master
+	source = sheepit-client::git+https://gitlab.com/sheepitrenderfarm/client.git
 	source = sheepit-client.conf
 	source = sheepit-client.service
 	source = sheepit-client.sh

@@ -2,8 +2,8 @@
 # Maintainer: John Turner <jturner.usa+aur@gmail.com>
 
 pkgname=sheepit-client-git
-pkgver=6.2020.0
-pkgrel=3
+pkgver=v6.20364.0r474.c0155f1
+pkgrel=4
 pkgdesc="Client for the free and distributed render farm"
 arch=('i686' 'x86_64')
 url="https://www.sheepit-renderfarm.com/"
@@ -14,7 +14,7 @@ optdepends=('cuda: CUDA GPU rendering (not in service mode)' 'blender: Create 3D
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=('etc/conf.d/sheepit-client')
-source=('git://github.com/laurent-clouet/sheepit-client.git#branch=master'
+source=('sheepit-client::git+https://gitlab.com/sheepitrenderfarm/client.git'
         "${pkgname%-git}.conf"
         "${pkgname%-git}.service"
         "${pkgname%-git}.sh"
@@ -39,7 +39,7 @@ build() {
 }
 
 package() {
-		cd "$srcdir"
+	cd "$srcdir"
         install -Dm644 "${pkgname%-git}/build/libs/${pkgname%-git}.jar" "${pkgdir}/usr/share/java/${pkgname%-git}/${pkgname%-git}.jar"
         install -Dm755 "${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
         install -Dm644 "${pkgname%-git}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname%-git}.conf"
