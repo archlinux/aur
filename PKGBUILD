@@ -1,6 +1,6 @@
 # Maintainer: Genstar <genstar@disroot.org>
 pkgname=xipmsg
-pkgver=8.8088
+pkgver=0.8088
 pkgrel=1
 epoch=
 pkgdesc="IP Messenger client for X11"
