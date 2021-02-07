@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=ReAmp Studio
+Exec="ReAmp Studio Standalone"
+Terminal=false
+StartupNotify=true
+GenericName=ReAmp Studio Guitar Amplifier
+Categories=AudioVideo;Audio;
