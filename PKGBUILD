@@ -3,9 +3,9 @@
 # Contributor: Splex
 
 pkgname=kokua-secondlife
-pkgver=6.4.11.49726
-_pkgver=6_4_11_49726
-_pkgprever=6.4.11
+pkgver=6.4.12.49938
+_pkgver=6_4_12_49938
+_pkgprever=6.4.12
 pkgrel=1
 pkgdesc="An Open Source third party viewer for Second Life® (secondlife), only."
 #url="http://www.kokuaviewer.org"
@@ -23,14 +23,14 @@ optdepends=('libpulse: for PulseAudio support'
 	'pangox-compat: for media_plugin_webkit to work')
 conflicts=('kokua-opensim')
 
-source=("https://svwh.dl.sourceforge.net/project/kokua.team-purple.p/Kokua-SL/Linux64Bit/Kokua_RLV_${_pkgver}_x86_64.tar.bz2"
-	'kokua-secondlife.desktop'
-	'kokua-secondlife.launcher')
-md5sums=('6c434058bc36222ea85b08c5d226e283'
+source=("https://pilotfiber.dl.sourceforge.net/project/kokua.team-purple.p/Kokua-SL/Linux64Bit/Kokua_RLV_${_pkgver}_x86_64.tar.bz2"
+	"file://kokua-secondlife.desktop"
+	"file://kokua-secondlife.launcher")
+md5sums=('560525cf8852e60d982ebd5ad95ebed0'
          '3893a2c8ae9cb8e2adb4d7c47750029b'
          'e12fd7bd333f4f810dec66f1be17c71c')
-
-package() {
+         
+package(){
 cd $srcdir
   
 # Rename Data Directory
@@ -61,5 +61,4 @@ chmod g+x $pkgdir/opt/kokua-secondlife/kokua
 
 # Do not re-register the application with the desktop system at every launch, saves from locally installed desktop files.
 sed -i 's|./etc/refresh_desktop_app_entry.sh|#./etc/refresh_desktop_app_entry.sh|' $pkgdir/opt/kokua-secondlife/kokua
-   
 }
