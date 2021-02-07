@@ -1,6 +1,6 @@
 pkgbase = cjson-git
 	pkgdesc = Dave Gamble's cJSON library. Easily handle JSON data in C (git version).
-	pkgver = v1.7.12.r0.g3c89356
+	pkgver = v1.7.14.r10.g324a6ac
 	pkgrel = 1
 	url = https://github.com/DaveGamble/cJSON
 	arch = i686
