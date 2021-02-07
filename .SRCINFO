@@ -1,6 +1,6 @@
 pkgbase = lightly-qt
 	pkgdesc = A modern style for qt applications
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/Luwx/Lightly
 	arch = any
@@ -16,8 +16,7 @@ pkgbase = lightly-qt
 	makedepends = kwindowsystem
 	makedepends = kiconthemes
 	conflicts = lightly-git
-	source = lightly-qt-0.3::https://github.com/Luwx/Lightly/archive/v0.3-alpha.tar.gz
-	sha256sums = 9568a15f1983d82afa9480cdc8f1a64374348f2e154b48ee312a63249d5fb966
+	source = lightly-qt-0.4::https://github.com/Luwx/Lightly/archive/v0.4.tar.gz
+	sha256sums = c2ba37366953de0e333cf14ee4c0827112cd7dd2d268a6356212f8d85310749a
 
 pkgname = lightly-qt
-
