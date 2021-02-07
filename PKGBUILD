@@ -21,4 +21,4 @@ package() {
 	ln -s "/opt/${pkgname}/CoronaPoker.run" "$pkgdir/usr/local/bin/coronapoker"
 }
 
-md5sums=('d96978769711671b6d4ea1b3d4bf72c2')
+md5sums=('8869aaefa13ade0bfb4dbdce6c0659ec')
