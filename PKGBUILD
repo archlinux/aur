@@ -19,7 +19,6 @@ license=(GPL2)
 makedepends=(git)
 source=(oss::git://git.code.sourceforge.net/p/opensound/git
         oss4_sys-libs_glibc-2.23_ossdetect_fix_git.patch
-        seawright.patch
         galaxy.patch
         oss.service
         remove-hal.patch
@@ -27,10 +26,10 @@ source=(oss::git://git.code.sourceforge.net/p/opensound/git
         soundon.patch
         kmod-link.patch
         kmod-link2.patch
-        ossvermagic.patch)
+        ossvermagic.patch
+        extramodules.patch)
 sha512sums=('SKIP'
             '5599f75ac2784aca7d0367e88705938d2680e7a0eb7ae7300080e3fc0ea0c9d3b183554a9e208ed8359f675028024e8de62baa5f8dbc79e9f3bd942db6aa6157'
-            'a1696a8775613d77d2602b9b0288b112401162b3ee8d5b487a9662521e91f5bf2daab7d1dc2e7aed5edc4d01cfd354abc3c5aaad0ceab73d8eaad7fc8f66dc3c'
             'SKIP'
             '355e1380432947c0e9caa21114b2c3debeb162fb5abcf845125ec281ce52b437ad1ee1db04d37e9b7a5ac79816c4dcbc21b4ed4cf8191f71218d99acd7bab70e'
             '6956e5e2e9323b568bb18e80bbee591b0e5ffd3d4612a50df09879941b2733c31d6b3178dc9a46c283bd1629f76b7ff5e2b54893a42a47f6379eaee4731fd9be'
@@ -38,7 +37,8 @@ sha512sums=('SKIP'
             'a8196aeea43499f4822bad6adc8c7f8721eb122045732ab34bb675182a1c4403c3f4a30ead85188fdaec77ee79a5097dd8de84782f8915db4061157474b5c7c6'
             'f73b837643c7b86c5ce3a2ff18a66b99166d16ac7d1ac3d419b203efd8d398d8c4b21c304d6fa1c038ebf180ca0620d6517be384b307bb66e84a15b0339800df'
             '6cefeca6921916d2fbf7c4efd354d3c0b7f7285c6d049912bd318f0b520698a2de2a974604a56a7b288636939773ef49f022962bb88f9e3b5ea442462a50de1b'
-            '5db4bb6d636983485bc56aa7dd83347de848624d4ff160c1ec77d7d21d22154be61cad393af2d772f58bca47494d853dd5b286e4820440bd339cbb6edd50d1db')
+            '5db4bb6d636983485bc56aa7dd83347de848624d4ff160c1ec77d7d21d22154be61cad393af2d772f58bca47494d853dd5b286e4820440bd339cbb6edd50d1db'
+            '1537b87e8d0c3b222f980da9d69190dd67d09ba906c810e59c01b486ae83bd378ad9c542908b08540b13bf5a151ed2632e8c590d867e7fef8d1c0c30057e3a9b')
 
 
 pkgver() {
@@ -62,10 +62,10 @@ prepare() {
   # patch -p0 < "$srcdir/linux-4.6.patch"
   # - no longer required (from commit 891ddd)
   # patch -p0 < "$srcdir/linux-4.8-usercopy.patch"
+  # - no longer required (from commit 218878) 
+  # patch -p1 < "$srcdir/galaxy.patch"
   patch -p1 < "$srcdir/ossvermagic.patch"
-  # - no longer required (from commit 3e7a6c)
-  # patch -p1 < "$srcdir/seawright.patch"
-  patch -p1 < "$srcdir/galaxy.patch"
+  patch -p1 < "$srcdir/extramodules.patch"
 
   # make OSS compile with glibc >= 2.23
   # - no longer required (from commit 3e7a6c)

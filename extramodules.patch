@@ -1,0 +1,14 @@
+diff --git a/setup/Linux/oss/build/install.sh b/setup/Linux/oss/build/install.sh
+index d47637c..7304451 100644
+--- a/setup/Linux/oss/build/install.sh
++++ b/setup/Linux/oss/build/install.sh
+@@ -198,7 +198,8 @@ fi
+ 
+ if ! test -d /lib/modules/$UNAME/kernel/oss
+ then
+-  mkdir /lib/modules/$UNAME/kernel/oss
++  # --parents option required if extramodules does not exist.
++  mkdir --parents /lib/modules/$UNAME/kernel/oss
+ fi
+ 
+ if ! test -d /lib/modules/$UNAME/kernel/oss
