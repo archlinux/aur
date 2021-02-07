@@ -14,8 +14,8 @@ source=("https://github.com/Rubberduckycooly/Sonic-1-2-2013-Decompilation/archiv
 	"sonic1.sh"
 	"sonic2.sh")
 md5sums=('8bc0ba206c83818b1faf409079fa6f32'
-         '8e849e1d04276043806304acfa5f5f64'
-         'a2e2d9083a60f8d62480dfd85cbd800c'
+         '604d9d9d8356e484afbe1171e342bbe1'
+         '9ec41b899affd1aed9eda74ab1e7d308'
          'ceac785ff2832d5d2c4ee83c145cd4dd'
          'aac2f37fd3822f680d9695e4ca415d3f')
 validpgpkeys=()
