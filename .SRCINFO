@@ -1,0 +1,14 @@
+pkgbase = pastry
+	pkgdesc = command line tool to paste files to https://paste.myst.rs/
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/CodeMyst/pastry
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = openssl
+	source = https://github.com/CodeMyst/pastry/releases/download/v1.0.0/pastry-linux-64.tar.gz
+	sha256sums = 29d21b01d1b94dca25836953af8beb4c015d6203bb1d14c40f6712fe0797e8db
+
+pkgname = pastry
+
