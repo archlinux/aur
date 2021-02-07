@@ -1,7 +1,5 @@
 post_upgrade() {
-	if (( $(vercmp "$2" "0.1.0") == -1 )); then
-		echo "WARNING: Options and syntax in configuration files have changed in version 0.1.0."
-    elif (( $(vercmp "$2" "0.1.2-278") == -1 )); then
-        echo "INFO: Default configuration changed. Opening external links must be enabled explicitly."
+	if (( $(vercmp "$2" "0.2.0alpha0") == -1 )); then
+		echo "WARNING: Everything, including configuration file syntax, has changed in version 0.2.0."
 	fi
 }
