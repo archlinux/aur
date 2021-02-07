@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Sofia Woodwinds
+Exec="Sofia Woodwinds"
+Terminal=false
+StartupNotify=false
+GenericName=Librewave Sofia Woodwinds Plugin Standalone
+Categories=AudioVideo;Audio;
