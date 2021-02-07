@@ -1,6 +1,6 @@
 pkgbase = linux-zen-git
 	pkgdesc = Featureful kernel including various new features, code and optimizations to better suit desktops
-	pkgver = 5.10.3+968885+g28eb2bf66569
+	pkgver = 5.10.13+970601+gfd4d4ab12786
 	pkgrel = 1
 	url = https://github.com/damentz/zen-kernel
 	arch = x86_64
