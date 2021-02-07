@@ -22,6 +22,8 @@ build() {
 package() {
   cd "${srcdir}/nDPI-${pkgver}"
   make DESTDIR="${pkgdir}" install
+  ln -sf /usr/include/ndpi \
+    "${pkgdir}/usr/include/libndpi"
 }
 
 md5sums=('4a2978b0d527a220ab46344444a1934c')
