@@ -78,7 +78,7 @@ _makenconfig=
 
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.10.12
+pkgver=5.10.13
 _major=5.10
 _branch=5.x
 xanmod=1
@@ -87,7 +87,7 @@ pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="0cc855fe3129d8af4b75a233271d38b34ac9c869" # 5.10.12-3
+__commit="9050ee61fbb1183e6fc2f854197233e43db0517a" # 5.10.13-2
 
 license=(GPL2)
 makedepends=(
@@ -103,9 +103,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
 
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'  # kernel tar.xz
             'SKIP'                                                              #        tar.sign
-            '0adfa0d4ffd57a8c1da67a42f8b0d1bdb7f7454419fbfe5e5387a07209d3e0be'  # xanmod
+            'f661f50377b0432c2ad7d78d2a6266b3cabdeb98f171a0057835e5a74e853074'  # xanmod
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'  # choose-gcc-optimization.sh
-            '63d99f0a708a7c905e27dea16677d0f1e696477c8262f6c17a8747581056b9e6') # manjaro
+            '344e28ba6a11d5a3f368edea6b2d5159b7016a0ed4b484c52cdce270614f291f') # manjaro
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
