@@ -1,4 +1,4 @@
-pkgbase = code-transparent-git
+pkgbase = vscode-transparent-git
 	pkgdesc = The Open Source build of Visual Studio Code (vscode) editor - with transparency enabled - latest git
 	pkgver = r76484.afd102cbd2e
 	pkgrel = 1
@@ -35,5 +35,5 @@ pkgbase = code-transparent-git
 	sha512sums = ae7fc5d2d1851bf9353c3f531a4de05cc5b41496468e908776b7a17cf85e889c601b94499bd6165efb902578af1ebf37443a03881f98d8c6120cb4f8667d8fe7
 	sha512sums = e662f0bf3f55a82ce9bce98f22c6be80ee83c1e2241d2eca596326478887ec6b73c7d0041903e17f35a424578ccc22674354931166dc7c7d7e76bb97135e009e
 
-pkgname = code-transparent-git
+pkgname = vscode-transparent-git
 
