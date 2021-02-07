@@ -5,6 +5,7 @@ pkgbase = npth-git
 	url = https://git.gnupg.org/cgi-bin/gitweb.cgi?p=npth.git
 	arch = x86_64
 	license = LGPL
+	makedepends = git
 	provides = npth
 	conflicts = npth
 	source = git://git.gnupg.org/npth.git
