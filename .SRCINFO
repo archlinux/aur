@@ -8,7 +8,6 @@ pkgbase = smplxmpp
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
-	depends = ncurses
 	depends = spdlog
 	depends = gloox
 	depends = gnutls
