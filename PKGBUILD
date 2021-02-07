@@ -1,0 +1,54 @@
+# Maintainer: Robert Falkenberg <robert.falkenberg@tu-dortmund.de>
+# Contributor: Kyle Keen <keenerd@gmail.com>
+# Contributor: Dominik Heidler <dheidler@gmail.com>
+
+pkgname=libuhd3
+pkgver=3.15.0.0
+pkgrel=1
+pkgdesc="Universal Software Radio Peripheral (USRP) userspace driver"
+arch=('x86_64')
+url="https://files.ettus.com/manual/"
+license=('GPL')
+depends=('boost-libs' 'orc' 'libusb')
+optdepends=('python: usrp utils')
+makedepends=('cmake' 'boost' 'python-mako')
+# gpsd?  dpdk?
+provides=('libuhd=3.15.0.0')
+conflicts=('libuhd')
+
+source=("libuhd-$pkgver.tar.gz::https://github.com/EttusResearch/uhd/archive/v$pkgver.tar.gz"
+        boost-1.73.patch)
+sha256sums=('eed4a77d75faafff56be78985950039f8d9d1eb9fcbd58b8862e481dd49825cd'
+            '10c2f221dee97418f92d10606f9b9fea1436e3bd0d7120e7b24fc90a95a07fc1')
+
+prepare() {
+  cd "$srcdir/uhd-$pkgver/host"
+  mkdir build
+
+  # https://github.com/EttusResearch/uhd/issues/347
+  patch -Np2 -i ../../boost-1.73.patch
+}
+
+build() {
+  cd "$srcdir/uhd-$pkgver/host/build"
+
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr/ \
+           -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+           -DENABLE_EXAMPLES=OFF \
+           -DENABLE_UTILS=ON \
+           -DENABLE_TESTS=OFF \
+           -DENABLE_E100=ON \
+           -DENABLE_E300=ON
+  make
+}
+
+check() {
+  cd "$srcdir/uhd-$pkgver/host/build"
+  make test
+}
+
+package() {
+  cd "$srcdir/uhd-$pkgver/host/build"
+  make DESTDIR="$pkgdir" install
+  install -Dm644 "../utils/uhd-usrp.rules" "$pkgdir/usr/lib/udev/rules.d/10-uhd-usrp.rules"
+} 

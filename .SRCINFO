@@ -1,0 +1,23 @@
+pkgbase = libuhd3
+	pkgdesc = Universal Software Radio Peripheral (USRP) userspace driver
+	pkgver = 3.15.0.0
+	pkgrel = 5
+	url = https://files.ettus.com/manual/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = boost
+	makedepends = python-mako
+	depends = boost-libs
+	depends = orc
+	depends = libusb
+	optdepends = python: usrp utils
+	provides = libuhd=3.15.0.0
+	conflicts = libuhd
+	source = libuhd-3.15.0.0.tar.gz::https://github.com/EttusResearch/uhd/archive/v3.15.0.0.tar.gz
+	source = boost-1.73.patch
+	sha256sums = eed4a77d75faafff56be78985950039f8d9d1eb9fcbd58b8862e481dd49825cd
+	sha256sums = 10c2f221dee97418f92d10606f9b9fea1436e3bd0d7120e7b24fc90a95a07fc1
+
+pkgname = libuhd3
+
