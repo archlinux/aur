@@ -1,26 +1,39 @@
-# Maintainer : Colin Berry <colinb969 at gmail dot com>
+# Maintainer : HeartsDo <heartsdo[at]vivaldi[dot]net>
+# Contributor : Colin Berry <colinb969 at gmail dot com>
 pkgname=flashpoint-bin
-pkgver=6.3
-pkgrel=2.2
+pkgver=8.2.2
+pkgrel=1
 pkgdesc="Launcher for BlueMaxima's Flashpoint - Infinity Edition."
 arch=('x86_64')
 url="http://bluemaxima.org/flashpoint/"
 license=('MIT')
 depends=('nss>=3.0'
          'php'
-         'gtk3')
-optdepends=('wine: non-native game support')
-source=('https://download.unstable.life/flashpoint-launcher/linux/x64/flashpoint-linux-x64-20191112.tar.gz')
-md5sums=('313d585f60cb4d7a0c834e0ff693729c')
+         'gtk3'
+	     'libxss'
+         'wine')
+optdepends=('flashplayer-stadalone: native Flash support')
+source=('https://bluepload.unstable.life/flashpoint-infinity-8-2-2-amd64-deb.7z')
+md5sums=('8561bb13ec24ed8af02e07bad5563a42')
+backup=('usr/lib/flashpoint-infinity/config.json'
+	'usr/lib/flashpoint-infinity/preferences.json')
+
+prepare(){
+    # Extract .deb and data
+    cd ${srcdir}
+    bsdtar xf flashpoint-infinity_8.2-2_amd64.deb
+}
 
 package(){
     # Extract package data
-    tar xf flashpoint-linux-x64-20191112.tar.gz -C "${pkgdir}"
+    tar xf data.tar.xz -C ${pkgdir}
+    
+    # Make config and preferences writable by all
+    chmod 666 "${pkgdir}/usr/lib/flashpoint-infinity/config.json"
+    touch "${pkgdir}/usr/lib/flashpoint-infinity/preferences.json"
+    chmod 666 "${pkgdir}/usr/lib/flashpoint-infinity/preferences.json"
 
     # Symlink exec
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/flashpoint/FlashpointLauncher" "${pkgdir}/usr/bin/flashpoint"
-
-    # Install License
-    install -Dm644 "${pkgdir}/opt/flashpoint/licenses/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    ln -s "/usr/lib/flashpoint-infinity/flashpoint-launcher" "${pkgdir}/usr/bin/flashpoint-infinity"
 }
