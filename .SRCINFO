@@ -1,6 +1,6 @@
 pkgbase = bgfx-cmake-git
 	pkgdesc = Cross-platform, graphics API agnostic, "Bring Your Own Engine/Framework" style rendering library. (With CMake build scripts)
-	pkgver = r7631.741028840
+	pkgver = r7652.7daf5e0ba
 	pkgrel = 1
 	url = https://bkaradzic.github.io/bgfx
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = bgfx-cmake-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 164c5d569d605f3e02552ad57383fbb2448e48270cdb95009672ade6e1be8050
+	sha256sums = eaf8ef931488b41614125459bee028659d082637922c0475400cb68438b78eed
 	sha256sums = 20d6949f9a5d95bd0f21c51a99baca8b84163462b42a5472c2b237ee915993cc
 	sha256sums = 471c2f61b071246bd653623e5939aa2874aac7b006af6907459b1a3c23dc1952
 	sha256sums = 294df452d039824ac8280af6089918ac09a5feafd3bc1821e125e602cca073fa
