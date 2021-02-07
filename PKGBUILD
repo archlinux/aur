@@ -2,9 +2,10 @@
 
 pkgname=kosmorro
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A program that computes the ephemerides'
 depends=('python>=3.5.0' 'python<4.0.0'
+	 'python-termcolor'
          'python-skyfield>=1.21' 'python-skyfield<2.0'
          'python-numpy>=1.17.0' 'python-numpy<2.0.0'
          'python-tabulate' 'python-dateutil')
