@@ -1,5 +1,5 @@
 pkgbase = linux-odroid
-	pkgver = 5.10.12
+	pkgver = 5.10.14
 	pkgrel = 1
 	url = https://github.com/m2x-dev/linux/
 	arch = aarch64
@@ -14,13 +14,13 @@ pkgbase = linux-odroid
 	makedepends = vboot-utils
 	makedepends = xmlto
 	options = !strip
-	source = https://github.com/m2x-dev/linux/archive/bd65b2c5e0ef65dcb2d48fe977260e4b4eac0206.tar.gz
+	source = https://github.com/m2x-dev/linux/archive/3161bb6ec7e832adf7ecbb0560dd7175abd334c0.tar.gz
 	source = config
 	source = linux.preset
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = 01-aegis-crypto.patch
-	b2sums = d8551532a87d238d4e161df9bd5c7940d6f5888baedfc2b4e36317add0426e5e4874e3a0ec10903401510e703c63745195db7dccf58a5bf6005dc7eb13b9a89f
+	b2sums = 905167dc4e1d19ac57a11eb5dc8537983db39bd881480aaa82496e15d12c9fbdc6ff9aed5a86646e28c1712a9685c704209929358aaa413319d020dcf411e81d
 	b2sums = 4f11a4cfcdcd9206f3f95475119019e5fdde8d949aadf5c4eac5c57d5ef5dff0403a75887e3f45ea40dba821a8501467820cc8536eff6009ac605b59f4f9866a
 	b2sums = 146bfc704a3ce69176055d6612d5c55b0048ccae83c13c27aa3c273424f5a81a3168fbfbcce6c78f6c69cbfd15d1161a46b08489d324495070731dbb43ac5b9f
 	b2sums = 40e2e0ac9eec9f9c08593875ca5bb8a26f835e33ae42e3718b98e83d76bbbc51a68395215c707fe58269954127261f7f8d12ec47341d28c672de973f3c4e71e8
@@ -36,13 +36,13 @@ pkgname = linux-odroid
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	provides = kernel26
-	provides = linux=5.10.12
+	provides = linux=5.10.14
 	conflicts = linux
 	replaces = linux-armv8
 	backup = etc/mkinitcpio.d/linux-odroid.preset
 
 pkgname = linux-odroid-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel with patches for ODroid SBCs
-	provides = linux-headers=5.10.12
+	provides = linux-headers=5.10.14
 	conflicts = linux-headers
 

@@ -7,7 +7,7 @@ pkgbase=linux-odroid
 pkgname=($pkgbase
          $pkgbase-headers)
 _kernelname=${pkgbase#linux}
-pkgver=5.10.12
+pkgver=5.10.14
 pkgrel=1
 arch=('aarch64')
 url="https://github.com/m2x-dev/linux/"
@@ -15,7 +15,7 @@ license=('GPL2')
 makedepends=(bc docbook-xsl dtc git inetutils kmod uboot-tools vboot-utils xmlto)
 options=('!strip')
 
-_commit=bd65b2c5e0ef65dcb2d48fe977260e4b4eac0206
+_commit=3161bb6ec7e832adf7ecbb0560dd7175abd334c0
 source=(
   "https://github.com/m2x-dev/linux/archive/${_commit}.tar.gz"
   'config'
@@ -24,7 +24,7 @@ source=(
   '90-linux.hook'
   '01-aegis-crypto.patch'
 )
-b2sums=('d8551532a87d238d4e161df9bd5c7940d6f5888baedfc2b4e36317add0426e5e4874e3a0ec10903401510e703c63745195db7dccf58a5bf6005dc7eb13b9a89f'
+b2sums=('905167dc4e1d19ac57a11eb5dc8537983db39bd881480aaa82496e15d12c9fbdc6ff9aed5a86646e28c1712a9685c704209929358aaa413319d020dcf411e81d'
         '4f11a4cfcdcd9206f3f95475119019e5fdde8d949aadf5c4eac5c57d5ef5dff0403a75887e3f45ea40dba821a8501467820cc8536eff6009ac605b59f4f9866a'
         '146bfc704a3ce69176055d6612d5c55b0048ccae83c13c27aa3c273424f5a81a3168fbfbcce6c78f6c69cbfd15d1161a46b08489d324495070731dbb43ac5b9f'
         '40e2e0ac9eec9f9c08593875ca5bb8a26f835e33ae42e3718b98e83d76bbbc51a68395215c707fe58269954127261f7f8d12ec47341d28c672de973f3c4e71e8'
