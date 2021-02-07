@@ -2,7 +2,7 @@
 
 pkgname=latex-tuda-ci
 _pkgname=tuda_latex_templates
-pkgver=3.09
+pkgver=3.10
 pkgrel=1
 pkgdesc='TUDa-CI for LaTeX from Technische Universität Darmstadt'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('texlive-core' 'texlive-bin' 'texlive-publishers' 'texlive-latexext
               'texlive-bibtexextra' 'texlive-pictures' 'texlive-langcyrillic' 'biber' 'zip')
 replaces=('latex-tuddesign' 'latex-tuddesign-thesis' 'latex-tuddesign-fonts')
 source=("https://github.com/tudace/${_pkgname}/archive/v${pkgver}/${pkgver}-${_pkgname}.tar.gz")
-b2sums=('c2006c24553aee43b995d4f7a5129c0f44011415f1237754124e3c7fc0176e868769f440fe82f86eabb317b19a924fe893af460c790c795287deb18210f3d79f')
+b2sums=('13b182b0ef646d4c27a91f32d2248d1e0d5c364e0fac20ccd2bdd72e33196e6903473ab73b8eb413c11ee83f1eca4f51a30022efb4179858ae5025e67f34ece9')
 
 prepare() {
   chmod +x ${_pkgname}-${pkgver}/{addlicense,prepare_tuda}.sh
