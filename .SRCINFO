@@ -1,0 +1,17 @@
+pkgbase = socalabs-bin
+	pkgdesc = Socalabs VST Plugins (Stable Branch)
+	pkgver = 20210205
+	pkgrel = 1
+	url = http://www.semanticaudio.co.uk
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = BSD
+	depends = libglvnd
+	depends = curl
+	depends = freetype2
+	source = socalabs-bin_linux.zip::https://socalabs.com/files/get.php?id=All_Linux.zip
+	md5sums = SKIP
+
+pkgname = socalabs-bin
+
