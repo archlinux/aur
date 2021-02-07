@@ -14,6 +14,7 @@ depends=(
  'gtk3'
  'hicolor-icon-theme'
  'json-glib'
+ 'libhandy'
  'libsoup'
 )
 optdepends=(
@@ -27,7 +28,6 @@ makedepends=(
  'gobject-introspection'
  'hicolor-icon-theme'
  'intltool'
- 'libhandy'
  'meson'
  'ninja'
  'vala'
