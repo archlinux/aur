@@ -1,6 +1,6 @@
 pkgbase = dwm-tucuxi-git
 	pkgdesc = A customized DWM build
-	pkgver = 6.2.r32.gfabd03a
+	pkgver = 6.2.r34.g9a93efb
 	pkgrel = 2
 	url = https://gitlab.com/tuxaua/dwm
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = dwm-tucuxi-git
 	depends = libxinerama
 	depends = libxft
 	optdepends = alacritty: terminal support
-	optdepends = dmenu: program launcher support
 	optdepends = rofi: application launcher support
 	provides = dwm
 	conflicts = dwm

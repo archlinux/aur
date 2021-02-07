@@ -1,6 +1,6 @@
 # Maintainer: Klaus-Dieter Schmatz <tucuxir at sapo dot pt>
 pkgname=dwm-tucuxi-git
-pkgver=6.2.r32.gfabd03a
+pkgver=6.2.r34.g9a93efb
 pkgrel=2
 pkgdesc="A customized DWM build"
 arch=('x86_64')
@@ -10,7 +10,6 @@ groups=()
 depends=('libx11' 'libxinerama' 'libxft')
 makedepends=('git')
 optdepends=('alacritty: terminal support'
-            'dmenu: program launcher support'
             'rofi: application launcher support')
 provides=('dwm')
 conflicts=('dwm')
