@@ -8,8 +8,8 @@ pkgname=(
 #	'xorg-server-xvfb-rootless-nosystemd-minimal-git'
 #	'xorg-server-xnest-rootless-nosystemd-minimal-git'
 	'xorg-xwayland-rootless-nosystemd-minimal-git'
-	'xorg-server-common-rootless-nosystemd-minimal-git'
-	'xorg-server-devel-rootless-nosystemd-minimal-git')
+	'xorg-xwayland-common-rootless-nosystemd-minimal-git'
+	'xorg-xwayland-devel-rootless-nosystemd-minimal-git')
 
 pkgver=1.20.999
 pkgrel=1
@@ -150,7 +150,7 @@ _install() {
   done
 }
 
-package_xorg-server-common-rootless-nosystemd-minimal-git() {
+package_xorg-xwayland-common-rootless-nosystemd-minimal-git() {
   pkgdesc="Xorg server common files"
   depends=(xkeyboard-config xorg-xkbcomp xorg-setxkbmap)
   conflicts=('xorg-server-common')
@@ -256,7 +256,7 @@ package_xorg-xwayland-rootless-nosystemd-minimal-git() {
 #  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
 }
 
-package_xorg-server-devel-rootless-nosystemd-minimal-git() {
+package_xorg-xwayland-devel-rootless-nosystemd-minimal-git() {
   pkgdesc="Development files for the X.Org X server"
   depends=('xorgproto' 'mesa' 'libpciaccess'
            # not technically required but almost every Xorg pkg needs it to build

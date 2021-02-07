@@ -48,7 +48,7 @@ pkgname = xorg-xwayland-rootless-nosystemd-minimal-git
 	conflicts = xorg-server-xwayland
 	conflicts = xorg-xwayland
 
-pkgname = xorg-server-common-rootless-nosystemd-minimal-git
+pkgname = xorg-xwayland-common-rootless-nosystemd-minimal-git
 	pkgdesc = Xorg server common files
 	depends = xkeyboard-config
 	depends = xorg-xkbcomp
@@ -56,7 +56,7 @@ pkgname = xorg-server-common-rootless-nosystemd-minimal-git
 	provides = xorg-server-common
 	conflicts = xorg-server-common
 
-pkgname = xorg-server-devel-rootless-nosystemd-minimal-git
+pkgname = xorg-xwayland-devel-rootless-nosystemd-minimal-git
 	pkgdesc = Development files for the X.Org X server
 	depends = xorgproto
 	depends = mesa
