@@ -24,7 +24,7 @@ pkgname=(
 )
 pkgver=19.0rc1
 #_major=18.7.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -190,7 +190,7 @@ build() {
   cd "$srcdir/kodi-build-gbm"
   _args+=(
     -DCORE_PLATFORM_NAME=gbm
-    -DAPP_RENDER_SYSTEM=gles
+    -DAPP_RENDER_SYSTEM=gl
   )
 
   cmake "${_args[@]}" ../"xbmc-$_tag"
