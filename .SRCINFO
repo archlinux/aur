@@ -1,6 +1,6 @@
 pkgbase = python-unbound
 	pkgdesc = Validating, recursive, and caching DNS resolver: python binding
-	pkgver = 1.10.1
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://unbound.net/
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = python-unbound
 	depends = openssl
 	optdepends = expat: unbound-anchor
 	options = !libtool
-	source = https://unbound.net/downloads/unbound-1.10.1.tar.gz
-	source = https://unbound.net/downloads/unbound-1.10.1.tar.gz.asc
+	source = https://unbound.net/downloads/unbound-1.13.0.tar.gz
+	source = https://unbound.net/downloads/unbound-1.13.0.tar.gz.asc
 	validpgpkeys = EDFAA3F2CA4E6EB05681AF8E9F6F1C2D7E045F8D
-	sha1sums = 9932931d495248b4e45d278b4679efae29238772
+	sha1sums = f38a10b1f302cb41787c68d98e9b89f0e7dce613
 	sha1sums = SKIP
 
 pkgname = python-unbound
