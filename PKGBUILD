@@ -2,7 +2,7 @@
 
 pkgname=perl-string-compare
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="String::Compare - Compare two strings and return how much they are alike"
 arch=('any')
 url="http://search.cpan.org/dist/String-Compare"
@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=('!emptydirs')
 install=
-source=("http://search.cpan.org/CPAN/authors/id/D/DR/DRUOSO/String-Compare-${pkgver}.tar.gz")
+source=("https://search.cpan.org/CPAN/authors/id/D/DR/DRUOSO/String-Compare-${pkgver}.tar.gz")
 md5sums=('0a5ba97f0a071dd23c0ebe1b8ef4c2c3')
 
 build() {
@@ -29,7 +29,11 @@ build() {
 
   { /usr/bin/perl Makefile.PL &&
     make &&
-    make test &&
-    make install; } || return 1
+    make test; } || return 1
 }
 
+package() {
+  cd  $srcdir/String-Compare-$pkgver
+
+  make install
+}
