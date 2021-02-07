@@ -4,53 +4,53 @@
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=idjc
-pkgver=0.8.17
-pkgrel=4
+pkgver=0.9.0
+pkgrel=1
 pkgdesc='Powerful client for individuals interested in streaming live radio shows'
 url='http://idjc.sourceforge.net/'
 license=('GPL2')
 arch=('i686' 'x86_64')
 depends=(
-    'desktop-file-utils'
-    'ffmpeg'
-    'flac'
-    'glib2'
-    'jack'
-    'lame'
-    'libmad'
-    'libsamplerate'
-    'libshout-idjc'
-    'libsndfile'
-    'pygtk'
-    'python2'
-    'python2-dbus'
-    'python2-mutagen'
-    'speex'
-    'twolame'
-    'vorbis-tools'
+  'desktop-file-utils'
+  'ffmpeg'
+  'flac'
+  'glib2'
+  'jack'
+  'lame'
+  'libmad'
+  'libsamplerate'
+  'libshout-idjc'
+  'libsndfile'
+  'python'
+  'python-dbus'
+  'python-gobject'
+  'python-mutagen'
+  'speex'
+  'twolame'
+  'vorbis-tools'
 )
-
 optdepends=('mysql-python: Ampache and Prokyon 3 support'
-'python2-irc3: IRC notification support')
+  'python-irc: IRC notification support')
 conflicts=('idjc-git')
-install=${pkgname}.install
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    
-    export PYTHON=/usr/bin/python2
-    ./configure \
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  ./configure \
     --prefix=/usr \
     --libexecdir=/usr/lib \
     --disable-static
-    make
+  make
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    make DESTDIR="${pkgdir}" install
-    sed -i "s/Icon=\/usr\/share\/pixmaps\/$pkgname.png/Icon=$pkgname/g" $pkgdir/usr/share/applications/$pkgname.desktop
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  make DESTDIR="${pkgdir}" install
+
+  sed -i "s/Icon=\/usr\/share\/pixmaps\/${pkgname}.png/Icon=${pkgname}/g" \
+    ${pkgdir}/usr/share/applications/${pkgname}.desktop
 }
 
-md5sums=('47f13035d94f5c378bf237c335194a4d')
+md5sums=('dda1dad6a2b39b6b7366249300ecb3b2')
