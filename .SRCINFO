@@ -1,0 +1,17 @@
+pkgbase = dolphin-megasync-bin
+	pkgdesc = Extension for KDE based file managers to interact with Megasync
+	pkgver = 3.6.6
+	pkgrel = 2
+	url = http://mega.nz
+	arch = x86_64
+	license = custom
+	depends = megasync>=3.5
+	depends = dolphin
+	provides = dolphin-megasync=3.6.6
+	conflicts = dolphin-megasync
+	conflicts = dolphin-megasync-git
+	source = http://mega.nz/linux/MEGAsync/Arch_Extra/x86_64/dolphin-megasync-3.6.6-2-x86_64.pkg.tar.xz
+	md5sums = 882a2bb9f4bec41ae285ae2b353d730b
+
+pkgname = dolphin-megasync-bin
+
