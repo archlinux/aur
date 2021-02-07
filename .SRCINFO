@@ -1,7 +1,7 @@
 pkgbase = flashpoint-bin
 	pkgdesc = Launcher for BlueMaxima's Flashpoint - Infinity Edition.
 	pkgver = 8.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://bluemaxima.org/flashpoint/
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = flashpoint-bin
 	depends = gtk3
 	depends = libxss
 	depends = wine
-	optdepends = flashplayer-stadalone: native Flash support
+	optdepends = flashplayer-standalone: native Flash support
 	backup = usr/lib/flashpoint-infinity/config.json
 	backup = usr/lib/flashpoint-infinity/preferences.json
 	source = https://bluepload.unstable.life/flashpoint-infinity-8-2-2-amd64-deb.7z
