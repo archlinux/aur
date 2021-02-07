@@ -8,7 +8,7 @@ _svt_vp9_ver='7951c3cf6773c5e0ede00e4ce3e3ad2f7e090cfb'
 
 pkgname=ffmpeg-amd-full-git
 _srcname=ffmpeg
-pkgver=4.4.r100986.ge28b6e0448
+pkgver=4.4.r100994.ga52b9464e4
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD; git version)'
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ depends=(
         'ladspa' 'libass' 'aom' 'aribb24' 'libbluray' 'libbs2b' 'libcaca' 'celt'
         'libcdio-paranoia' 'codec2' 'dav1d' 'libdc1394' 'libavc1394' 'libfdk-aac'
         'fontconfig' 'freetype2' 'fribidi' 'libgme' 'gsm' 'libiec61883'
-        'libilbc' 'jack' 'kvazaar' 'lensfun' 'libmodplug' 'lame' 'opencore-amr'
+        'libilbc' 'jack' 'kvazaar' 'libmodplug' 'lame' 'opencore-amr'
         'openjpeg2' 'opus' 'libpulse' 'librabbitmq-c' 'rav1e' 'librsvg' 'rubberband'
         'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh' 'svt-hevc'
         'svt-av1' 'svt-vp9' 'tensorflow' 'tesseract' 'libtheora' 'twolame' 'v4l-utils'
@@ -32,7 +32,7 @@ depends=(
     # AUR:
         'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
         'libopenmpt-svn' 'shine' 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2'
-        'pocketsphinx'
+        'pocketsphinx' 'lensfun-git'
 )
 makedepends=(
     # official repositories:
