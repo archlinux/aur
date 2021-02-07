@@ -2,7 +2,7 @@
 
 pkgname=wezterm-nightly-bin
 pkgver=20200517.122836.92c201c6.105.g5d508350
-pkgrel=5
+pkgrel=6
 pkgdesc='Bleeding edge builds of a GPU-accelerated cross-platform terminal emulator and multiplexer implemented in Rust'
 arch=('i686' 'x86_64')
 url='https://wezfurlong.org/wezterm'
@@ -25,11 +25,9 @@ depends=(
 )
 source=(
   "wezterm::https://github.com/wez/wezterm/releases/download/nightly/WezTerm-nightly-Ubuntu16.04.AppImage"
-  'LICENSE::https://github.com/wez/wezterm/raw/master/LICENSE.md'
 )
 sha256sums=(
   'SKIP'
-  'ad915d9508677a4e94e4b3c0a045fedd20e953d95d7cd3ec97e6d16840fa0ed5'
 )
 
 prepare() {
