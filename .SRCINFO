@@ -1,0 +1,14 @@
+pkgbase = gr-adsb-git
+	pkgdesc = GNURadio blocks for receiving ADS-B modulated radio messages using SDR
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/mhostetter/gr-adsb
+	arch = any
+	license = unknown
+	makedepends = cmake
+	depends = gnuradio
+	provides = gr-adsb
+	source = git+https://github.com/mhostetter/gr-adsb
+	sha1sums = SKIP
+
+pkgname = gr-adsb-git

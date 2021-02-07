@@ -1,0 +1,6 @@
+/*.tar.gz
+/*.tar.xz
+/*.tar.zst
+/gr-adsb
+/pkg
+/src
