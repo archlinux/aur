@@ -8,7 +8,7 @@
 pkgname=wine-lol-glibc
 pkgdesc='GNU C Library patched for wine-lol'
 pkgver=2.33
-pkgrel=2
+pkgrel=1
 arch=(x86_64)
 url='https://www.gnu.org/software/libc'
 license=(GPL LGPL)
