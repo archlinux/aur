@@ -1,51 +1,38 @@
-# $Id:
-# Maintainer: Ivailo Monev <xakepa10@gmail.com>
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=copperspice-git
-pkgver=1.3.0.c815432
+pkgver=1.7.1.r0.ge3d2b7b5f
 pkgrel=1
-pkgdesc='C++ library derived from the existing Qt 4.8 framework'
-arch=('i686' 'x86_64')
-url='http://www.copperspice.com/'
-license=('LGPL' 'FDL' 'custom')
-depends=('openssl' 'zlib' 'cups' 'alsa-lib' 'gtk2' 'nas' 'libgl' 'libice'
-        'libsm' 'libxcursor' 'libxext' 'libxfixes' 'libxi' 'libxinerama'
-        'libxrandr' 'libxrender' 'libx11' 'fontconfig' 'freetype2' 'glib2'
-        'gstreamer0.10-base-plugins' 'libxml2')
-makedepends=('cmake' 'git' 'postgresql' 'mariadb' 'mesa')
-optdepends=('postgresql-libs: PostgreSQL driver'
-        'libmariadbclient: MariaDB driver')
-source=("git+https://github.com/copperspice/copperspice.git")
-sha1sums=('SKIP')
-conflicts=('copperspice')
-options=('debug')
+pkgdesc='Libraries for developing cross platform software applications in C++ (git version)'
+arch=('x86_64')
+url='https://www.copperspice.com/'
+license=('LGPL2.1')
+depends=('cups' 'fontconfig' 'glib2' 'gstreamer' 'gst-plugins-base-libs' 'libgl'
+         'libice' 'libpulse' 'libsm' 'libx11' 'libxcb' 'libxi' 'libxkbcommon'
+         'libxkbcommon-x11' 'openssl' 'xcb-util-keysyms' 'xcb-util-image'
+         'xcb-util-renderutil' 'xcb-util-wm' 'zlib')
+optdepends=('mariadb-libs: for MySQL database support'
+            'postgresql-libs: for PostgreSQL database support')
+makedepends=('git' 'cmake' 'alsa-lib' 'mariadb-libs' 'postgresql' 'postgresql-libs'
+             'libxcursor' 'libxext'  'libxfixes' 'libxinerama' 'libxrandr'
+             'libxrender' 'libxml2')
+provides=('copperspice')
+conflicts=('copperspice' 'qt5-tools')
+source=('git+https://github.com/copperspice/copperspice.git')
+sha256sums=('SKIP')
 
 pkgver() {
-    cd copperspice
-    printf "1.3.0.%s" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    mkdir -p build
+    git -C copperspice describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^cs\.//'
 }
 
 build() {
-    cd build
-    cmake ../copperspice \
-        -DCMAKE_BUILD_TYPE=RelWithDbgInfo \
-        -DCMAKE_SKIP_RPATH=OFF \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_SYSCONFDIR=/etc \
-        -DCMAKE_INSTALL_INCLUDEDIR=include/copperspice \
-        -DTOOLS_SUFFIX=-cs \
-        -DWITH_WEBKIT=ON
-    make
+    cmake -B build -S copperspice \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -Wno-dev
+    make -C build
 }
 
 package() {
-    cd build
-    make DESTDIR="${pkgdir}" install
-
-    install -vDm644 ../copperspice/license/LGPL_EXCEPTION.txt \
-        "${pkgdir}/usr/share/licenses/copperspice-git/LGPL_EXCEPTION.txt"
+    make -C build DESTDIR="$pkgdir" install
 }
