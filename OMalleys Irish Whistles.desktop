@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=OMalleys Irish Whistles
+Exec="OMalleys Irish Whistles"
+Terminal=false
+StartupNotify=false
+GenericName=Librewave Irish Whistles Plugin Standalone
+Categories=AudioVideo;Audio;
