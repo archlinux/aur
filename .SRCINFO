@@ -1,0 +1,30 @@
+pkgbase = alacritty-glclearfix-git
+	pkgdesc = A cross-platform, GPU-accelerated terminal emulator (fixes #3061)
+	pkgver = 0.8.0.1776.ge6ba068
+	pkgrel = 1
+	url = https://github.com/arvl130/alacritty
+	arch = x86_64
+	arch = i686
+	license = Apache
+	checkdepends = ttf-dejavu
+	makedepends = rust
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = fontconfig
+	makedepends = ncurses
+	makedepends = desktop-file-utils
+	makedepends = gdb
+	makedepends = libxcb
+	makedepends = git
+	depends = freetype2
+	depends = fontconfig
+	depends = libxi
+	depends = libxcursor
+	depends = libxrandr
+	provides = alacritty
+	conflicts = alacritty
+	source = alacritty::git+https://github.com/arvl130/alacritty.git
+	sha256sums = SKIP
+
+pkgname = alacritty-glclearfix-git
+
