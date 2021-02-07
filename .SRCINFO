@@ -1,17 +1,16 @@
 pkgbase = vice-gnome
 	pkgdesc = Versatile Commodore Emulator (Provides desktop files for easy use in Gnome)
-	pkgver = 3.3
+	pkgver = 3.5
 	pkgrel = 1
 	url = http://vice-emu.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = vice
-	provides = vice
 	source = vice.png
 	source = vice.desktop
 	md5sums = cb764e40ad039399aac16efc647725ed
-	md5sums = 94d0be3ab03d1d05bc4cbd59f8d92cf4
+	md5sums = 3c59a6ed9662dfc52e179309d8446665
 
 pkgname = vice-gnome
 

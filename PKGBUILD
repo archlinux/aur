@@ -2,14 +2,13 @@
 
 _pkgname=vice
 pkgname=$_pkgname-gnome
-pkgver=3.3
+pkgver=3.5
 pkgrel=1
 pkgdesc="Versatile Commodore Emulator (Provides desktop files for easy use in Gnome)"
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://vice-emu.sourceforge.net'
 depends=("$_pkgname")
-provides=("$_pkgname")
 
 source=(
   "$_pkgname.png"
@@ -17,7 +16,7 @@ source=(
 )
 
 md5sums=('cb764e40ad039399aac16efc647725ed'
-         '94d0be3ab03d1d05bc4cbd59f8d92cf4')
+         '3c59a6ed9662dfc52e179309d8446665')
 
 package() {
   # Install the XDG desktop file and icon
