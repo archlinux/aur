@@ -1,35 +1,43 @@
-# Maintainer: Manuel Palenzuela <sadshinobi@protonmail.com>
+# Maintainer: Eshan Ramesh find me at esrh.sdf.org
 
 pkgname=jrnl-git
 _gitname=jrnl
-pkgver=0.r775.350f0a1
+pkgver=v2.7.r11.gdc776b1
 pkgrel=1
-pkgdesc="A simple command line journal application that stores your journal in a plain text file"
+pkgdesc="Collect your thoughts and notes without leaving the command line"
 arch=('any')
 url="https://jrnl.sh/"
-license=('MIT')
+license=('GPL3')
 depends=('python')
-makedepends=('git' 'poetry')
+checkdepends=('python-behave' 'python-pytest')
+makedepends=('git' 'python-dephell' 'python-setuptools')
 conflicts=("jrnl")
-source=("git+https://github.com/maebert/jrnl.git")
-
+source=("git+https://github.com/jrnl-org/jrnl.git")
 md5sums=('SKIP')
-sha1sums=('SKIP')
-sha256sums=('SKIP')
 
 pkgver() {
   cd "$_gitname"
-  printf '0.r%s.%s' \
-      "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+check() {
+  cd "$_gitname"
+  behave
+  pytest
+}
+
+prepare() {
+  cd "$_gitname"
+  dephell deps convert --from pyproject.toml --to setup.py --envs main
+}
+
+build() {
+  cd "$_gitname"
+  python setup.py build
 }
 
 package() {
   cd "$_gitname"
-  make install
-  install -D LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-	
-  mkdir -p $pkgdir/usr/bin/
-  touch $pkgdir/usr/bin/jrnl
-  echo "$HOME/.cache/pypoetry/virtualenvs/jrnl*/bin/jrnl" > $pkgdir/usr/bin/jrnl
-  chmod +x $pkgdir/usr/bin/jrnl
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
+
