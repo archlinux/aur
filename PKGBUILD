@@ -1,7 +1,7 @@
-# Maintainer: Ido Kanner <idokan@gmail.com>
+# Maintainer: Atakku <atakkudev@gmail.com>
 _npmname=tailwindcss
 pkgname=tailwind-css
-pkgver=1.1.4
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="A utility-first CSS framework for rapid UI development"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('36f0c12855ae8378eaa1d610b91e25ecfc798209ecb4d74245dac038ba48b9ba')
+sha256sums=('f1815cf39258793c0694bb34d62c9e9f33fd4c77865de737946e3b348f27f4e9')
 optdepends=()
 options=(!strip)
 
