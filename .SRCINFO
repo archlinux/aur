@@ -1,7 +1,7 @@
 pkgbase = toontown-rewritten
 	pkgdesc = An MMO originally by Disney, rewritten. An account is needed to play.
-	pkgver = 1.2.3
-	pkgrel = 3
+	pkgver = 1.2.6
+	pkgrel = 1
 	arch = x86_64
 	license = custom
 	makedepends = ostree
@@ -12,9 +12,8 @@ pkgbase = toontown-rewritten
 	depends = gendesk
 	depends = python
 	depends = python-pyqtwebengine
-	source = toontown-rewritten::git+https://github.com/Xytime/Xytime.github.io.git
-	source = toontown.py
-	md5sums = SKIP
+	depends = python-bsdiff4
+	source = toontown-rewritten::git+https://github.com/0xAURORA/0xAURORA.github.io.git
 	md5sums = SKIP
 
 pkgname = toontown-rewritten

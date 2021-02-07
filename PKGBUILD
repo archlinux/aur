@@ -1,21 +1,21 @@
-#Maintainer: CrankySupertoon <crankysupertoon@gmail.com>
-#For any Readers out here. Yes im extracting the flatpak. Dont ask
+# Maintainer: Nora Hanegan <norahanegan@gmail.com>
+# For any readers out here. Yes I am extracting the flatpak. Do not ask
 
 pkgname=toontown-rewritten
-pkgver=1.2.3
-pkgrel=3
-gitcommit="54fa8cb3feca7d1a00ac88a12afaa6524ce8c904"
-ostreecommit="9119a18c449ddeb2304bac358157aa6cdbce0d1f706992b6b87396c51a5ff50b"
+pkgver=1.2.6
+pkgrel=1
+gitcommit="1e00a84b5b99a4cc908e148a842764b7d7f2147f"
+ostreecommit="fae3ef042879e237000e98aea20c1b1cb72c074f24c9c87813677a781f5d353e"
 pkgdesc="An MMO originally by Disney, rewritten. An account is needed to play."
 arch=("x86_64")
 license=("custom")
-depends=("qt5-base" "openal" "gendesk" "python" "python-pyqtwebengine")
+depends=("qt5-base" "openal" "gendesk" "python" "python-pyqtwebengine" "python-bsdiff4")
 makedepends=("ostree" "git" "sed")
-source=("toontown-rewritten::git+https://github.com/Xytime/Xytime.github.io.git" "toontown.py")
-md5sums=('SKIP' 'SKIP')
+source=("toontown-rewritten::git+https://github.com/0xAURORA/0xAURORA.github.io.git")
+md5sums=('SKIP')
 
 prepare() {
-    # Checkout Git Project to right version
+    # Checkout git project to right version
     cd "${srcdir}/${pkgname}"
     git reset --hard ${gitcommit}
 
@@ -24,18 +24,18 @@ prepare() {
     rm -rfd ${ostreecommit}
     ostree checkout --repo=repo -U ${ostreecommit}
 
-    # Put Fixed Executable in right directory
-    cd "${srcdir}"
-    cp "toontown.py" "${srcdir}/${pkgname}/flatpaks/${ostreecommit}/files/lib/python3.7/site-packages/"
+    # Put executable in right directory
+    cd "${srcdir}/${pkgname}/flatpaks/${ostreecommit}/files/bin/"
+    cp "./toontown" "${srcdir}/${pkgname}/flatpaks/${ostreecommit}/files/lib/python3.7/site-packages/toontown.py"
 
-    # Fix Assets Directory
+    # Fix assets directory
     cd "${srcdir}/${pkgname}/flatpaks/${ostreecommit}/files/lib/python3.7/site-packages"
     mkdir -p assets
     mv "../../../share/ttassets/resources/"*  "assets"
 
-    # Cleanup Unwanted Data
+    # Cleanup unwanted data
     cd "${srcdir}/${pkgname}/flatpaks/${ostreecommit}/files/lib/python3.7/site-packages"
-    rm -rf bsdiff4*  certifi* chardet* idna-2* PyQt5* requests* sip* Toontown_Rewritten-123-py3.7.egg-info urllib*
+    rm -rf bsdiff4* certifi* chardet* idna-2* PyQt5* requests* sip* Toontown_Rewritten-123-py3.7.egg-info urllib*
 
     # Touch for init files
     cd "${srcdir}/${pkgname}/flatpaks/${ostreecommit}/files/lib/python3.7/site-packages"
@@ -46,13 +46,26 @@ prepare() {
     touch "launcher/__init__.py"
     touch "patcher/__init__.py"
 
+    # Fix directory hardcoded into the launcher from the flatpak
+    cd "${srcdir}/${pkgname}/flatpaks/${ostreecommit}/files/lib/python3.7/site-packages/"
+    sed -i 's/copyfile("\/app\/share\/ttassets\/resources\/settings.json", "settings.json")//g' toontown.py
+
     # Fix Resources Path in Source
     cd "${srcdir}/${pkgname}/flatpaks/${ostreecommit}/files/lib/python3.7/site-packages/gui"
     sed -i 's/"\/", "app", "share", "ttassets"/"\/opt\/toontown-rewritten\"/g' frame.py
     sed -i 's/resources/assets/g' frame.py
     sed -i 's/resources/assets/g' buttons.py
 
-    # Invoke using mono in a wrapper, since wine (if installed) would open it otherwise
+    # Update the launcher version inside the flatpak
+    cd "${srcdir}/${pkgname}/flatpaks/${ostreecommit}/files/lib/python3.7/site-packages/launcher/"
+    sed -i 's/1.2.3-py3/1.2.6/g' settings.py
+
+    # Remove the patching from the launcher since it is broken on linux
+    cd "${srcdir}/${pkgname}/flatpaks/${ostreecommit}/files/lib/python3.7/site-packages/launcher/"
+    sed -i 's/while self.patcher.isAlive()://' launcher.py
+    sed -i 's/time.sleep(0.2)//' launcher.py
+
+    # Generate startup executable
     cd "${srcdir}/${pkgname}"
 	cat > "${pkgname}" <<-EOT
 	#!/bin/sh
@@ -64,9 +77,6 @@ prepare() {
     cd "${srcdir}/${pkgname}"
     gendesk --pkgname "Toontown Rewritten" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n -f
     mv "Toontown Rewritten.desktop" "${pkgname}.desktop"
-
-    # Install Required PIP Modules
-    python3 -m pip install bsdiff4
 }
 
 package() {
