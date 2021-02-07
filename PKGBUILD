@@ -2,7 +2,7 @@
 
 pkgname=bb-rs
 _pkgname=${pkgname/-rs}
-pkgver=0.4.1
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='Simple process viewer in Rust'
 arch=(x86_64 aarch64)
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(gcc-libs)
 makedepends=(rust)
 source=($pkgname-$pkgver.tar.gz::https://github.com/epilys/$_pkgname/archive/$pkgver.tar.gz)
-sha512sums=('89c036a195801a3795768203c6af0e68d537002c57571720dd59f4afdc5a0b52faad734bc86674cb8c88e31c3a1e943c4d36321344ac8a78c6542020039e30a5')
+sha512sums=('62567c74b54a197ae7a65ec7313a539b03f723364a931207a6cd86f172075a2e6f7655fdae21f9997f96fa08d2f4150830ac82f6a0ad08c41fd86a4cf9c4fbd7')
 
 prepare() {
 	if [[ $CARCH = aarch64 ]]; then
