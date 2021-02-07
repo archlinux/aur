@@ -1,8 +1,8 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=coolvlviewer
-pkgver=1.28.2.6
-_pkgver=12826
+pkgver=1.28.2.7
+_pkgver=12827
 pkgrel=1
 pkgdesc="A third-party viewer for Second Life (C) (secondlife) and OpenSim (opensimulator) grids. ('VL' stands for virtual life, formerly known as 'Cool SL Viewer'; built from source)"
 url="http://sldev.free.fr"
@@ -27,10 +27,10 @@ install=coolvlviewer.install
 source=("http://sldev.free.fr/sources/CoolVLViewer-src-${_pkgver}.tar.bz2"
         "coolvlviewer.desktop"
         "coolvlviewer.launcher")
-md5sums=('912b83559020c3609b451afaa5eaf30a'
+md5sums=('8f4d173d556eab5c5c37a0ad334bf685'
          '7a70defd1c6381bab1af7456b14daca4'
          'fd78de1f6c1333a5120ece89873515e0')
-         
+
 build() {
 
 cd $srcdir/linden/indra
