@@ -1,6 +1,6 @@
 pkgbase = nototools-git
 	pkgdesc = Noto fonts support tools and scripts plus web site generation
-	pkgver = 20190319.9c4375f
+	pkgver = 20210125.76b29f8
 	pkgrel = 1
 	url = https://github.com/googlei18n/nototools
 	arch = any
@@ -9,7 +9,6 @@ pkgbase = nototools-git
 	depends = python-pillow
 	depends = cairo
 	depends = pango
-	depends = pygtk
 	depends = imagemagick
 	depends = harfbuzz
 	depends = python-booleanoperations

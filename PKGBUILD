@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=nototools-git
-pkgver=20190319.9c4375f
+pkgver=20210125.76b29f8
 pkgrel=1
 pkgdesc="Noto fonts support tools and scripts plus web site generation"
 url=https://github.com/googlei18n/nototools
@@ -10,7 +10,7 @@ arch=('any')
 license=('Apache')
 depends=(
     # official repositories:
-         'python-fonttools' 'python-pillow' 'cairo' 'pango' 'pygtk' 'imagemagick' 'harfbuzz'
+         'python-fonttools' 'python-pillow' 'cairo' 'pango' 'imagemagick' 'harfbuzz'
     # AUR:
         'python-booleanoperations' 'python-defcon' 'python-pyclipper' 'python-ufolib'
 )
