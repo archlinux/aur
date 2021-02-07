@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 # Maintainer: Ishaq Shaik  <sonuishaq67@gmail.com>
 pkgname=flutter-dev
-pkgver=1.26.0_12.0.pre
+pkgver=1.26.0_17.2.pre
 pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
@@ -21,7 +21,7 @@ source=(
   "${pkgname%-dev}.csh"
 )
 sha256sums=(
-  "fa2ba98775f65c9bd151881696b9d2d5672bb260ed24d83184010a0d436e140a"
+  "32ab218a701f809af722ba1e30f9196832515da9284f4703e227b0b0ce6e3df0"
   "1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a"
   "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f"
 )
