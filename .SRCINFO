@@ -1,0 +1,17 @@
+pkgbase = surface-performance-indicator-git
+	pkgdesc = Switching Surface performance modes
+	pkgver = r5.23bc85d
+	pkgrel = 1
+	url = https://github.com/SamLukeYes/surface-performance-indicator
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-pystray
+	depends = surface-control
+	provides = surface-performance-indicator
+	provides = spi
+	source = git+https://github.com/SamLukeYes/surface-performance-indicator.git
+	md5sums = SKIP
+
+pkgname = surface-performance-indicator-git
+
