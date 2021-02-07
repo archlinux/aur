@@ -1,0 +1,17 @@
+pkgbase = yagl
+	pkgdesc = Tool for working with NewGRF mod files for OpenTTD
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/UnicycleBloke/yagl
+	arch = x86_64
+	license = GPL3
+	makedepends = python
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	depends = libpng
+	source = yagl-0.4.tar.gz::https://github.com/UnicycleBloke/yagl/archive/v0.4.tar.gz
+	sha512sums = 4371f08fe35556f79a600e4063e5733d648493e17db555cd34585a4000e04d68ba2ee78c981f2d5a10b325fbed52efe526bb6540cdc501d767f112d659d59697
+
+pkgname = yagl
+
