@@ -2,9 +2,9 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-gmpq'
-pkgver='0.45'
+pkgver='0.46'
 pkgrel='1'
-pkgdesc="perl interface to the GMP library's rational (mpq) functions."
+pkgdesc="Math::GMPq - perl interface to the GMP library's rational (mpq) functions."
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
@@ -12,8 +12,8 @@ depends=('perl>=5.10.1' 'gmp>=6.1.0')
 makedepends=()
 url='https://metacpan.org/release/Math-GMPq'
 source=("https://cpan.metacpan.org/authors/id/S/SI/SISYPHUS/Math-GMPq-$pkgver.tar.gz")
-md5sums=('6088853d8eb6b25d7a47c14dfb41b029')
-sha512sums=('fb6c354d935c1fcc150e4dbcd1fa3f24944885cff9dad85e6eeb07ea0f3f24dbae680eee71eb05af9b4b05f52f6125e876db3edaf5762327476eb97e9967b54a')
+md5sums=('6f53ce25f379bb355fda19b10543cd9a')
+sha512sums=('1cdfd1389ef94a39e55cb271de897e2c93c75b40a9793b24698a11d7aa051a1ca983c921f996e72a468025ceb8476e4659145ba43a29adf180d1d2a4a95b0a90')
 _distdir="Math-GMPq-$pkgver"
 
 build() {
@@ -39,12 +39,5 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
