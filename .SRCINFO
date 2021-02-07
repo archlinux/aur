@@ -7,6 +7,7 @@ pkgbase = kmod-minimal-git
 	license = GPL2
 	checkdepends = linux-headers
 	checkdepends = libelf
+	makedepends = gtk-doc
 	depends = glibc
 	depends = zlib
 	depends = openssl

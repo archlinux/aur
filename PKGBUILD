@@ -8,6 +8,7 @@ pkgdesc="Linux kernel module management tools and library"
 arch=('x86_64')
 url='https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git'
 license=('GPL2')
+makedepends=(gtk-doc)
 depends=('glibc' 'zlib' 'openssl' 'xz' 'zstd')
 checkdepends=('linux-headers' 'libelf')
 #options=('strip' 'debug')
