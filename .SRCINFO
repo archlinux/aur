@@ -1,0 +1,13 @@
+pkgbase = upterm
+	pkgdesc = Secure Terminal Sharing, an alternative to tmate
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/owenthereal/upterm
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	depends = glibc
+	source = upterm-0.5.2.tar.gz::https://github.com/owenthereal/upterm/archive/0.5.2.tar.gz
+	sha256sums = 4da96e79816cc18c4417edbb99f6216fe9f21219b78b42f19ae4795c0716829e
+
+pkgname = upterm
