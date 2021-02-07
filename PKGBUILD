@@ -2,10 +2,10 @@
 # Author: Benjamin Tissoires <benjamin.tissoi...@gmail.com> 
 pkgname=pairing_tool
 pkgver=20110922
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to pair Logitech devices to unifying receiver"
 arch=('i686' 'x86_64')
-url="http://goo.gl/eG4q9"
+url="https://goo.gl/eG4q9"
 license=('GPL')
 source=(pairing_tool.c README)
 depends=(glibc)
