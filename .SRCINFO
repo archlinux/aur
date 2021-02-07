@@ -1,0 +1,208 @@
+pkgbase = rofi-themes
+	pkgdesc = A large collection of Rofi based custom Menu, Applets, Launchers & Powermenus
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://github.com/dctxmei/rofi-themes
+	arch = any
+	groups = rofi-themes
+	license = GPL3
+	makedepends = git
+	depends = rofi>=1.6.1
+	optdepends = papirus-icon-theme: for default icon
+	optdepends = xorg-xbacklight: for Backlight
+	optdepends = acpi: for Battery
+	optdepends = mpc: for MPD
+	optdepends = mpd: for MPD
+	optdepends = networkmanager: for Network
+	optdepends = termite: for Network
+	optdepends = systemd: for Powermenu
+	optdepends = i3lock: for Powermenu
+	optdepends = betterlockscreen: for Powermenu
+	optdepends = firefox: for Quicklinks
+	optdepends = chromium: for Quicklinks
+	optdepends = midori: for Quicklinks
+	optdepends = scrot: for Screenshot
+	optdepends = viewnior: for Screenshot
+	optdepends = coreutils: for Time
+	optdepends = alsa-utils: for Volume
+	source = rofi-themes-1.6.1.tar.gz::https://github.com/dctxmei/rofi-themes/archive/v1.6.1.tar.gz
+	sha256sums = d6eb21bdceaf2016a7310ebfd78b3f73ebd6c4f9d78b007a678de155de50d0e9
+
+pkgname = rofi-theme-android-1080p
+	groups = rofi-themes
+	groups = rofi-themes-1080p
+	depends = rofi>=1.6.1
+	depends = rofi-theme-applet-1080p
+	depends = rofi-theme-used
+	depends = rofi-theme-fonts
+	conflicts = rofi-theme-android-1080p-git
+	backup = etc/rofi/1080p/applets/android/colors.rasi
+	backup = etc/rofi/1080p/applets/android/apps.sh
+	backup = etc/rofi/1080p/applets/android/backlight.sh
+	backup = etc/rofi/1080p/applets/android/mpd.sh
+	backup = etc/rofi/1080p/applets/android/powermenu.sh
+	backup = etc/rofi/1080p/applets/android/quicklinks.sh
+	backup = etc/rofi/1080p/applets/android/screenshot.sh
+	backup = etc/rofi/1080p/applets/android/volume.sh
+
+pkgname = rofi-theme-android-720p
+	groups = rofi-themes
+	groups = rofi-themes-720p
+	depends = rofi>=1.6.1
+	depends = rofi-theme-applet-720p
+	depends = rofi-theme-used
+	depends = rofi-theme-fonts
+	conflicts = rofi-theme-android-720p-git
+	backup = etc/rofi/720p/applets/android/colors.rasi
+	backup = etc/rofi/720p/applets/android/apps.sh
+	backup = etc/rofi/720p/applets/android/backlight.sh
+	backup = etc/rofi/720p/applets/android/mpd.sh
+	backup = etc/rofi/720p/applets/android/powermenu.sh
+	backup = etc/rofi/720p/applets/android/quicklinks.sh
+	backup = etc/rofi/720p/applets/android/screenshot.sh
+	backup = etc/rofi/720p/applets/android/volume.sh
+
+pkgname = rofi-theme-applet-1080p
+	groups = rofi-themes
+	groups = rofi-themes-1080p
+	depends = rofi>=1.6.1
+	depends = rofi-theme-used
+	depends = rofi-theme-fonts
+	conflicts = rofi-theme-applet-1080p-git
+	backup = etc/rofi/1080p/applets/styles/colors.rasi
+	backup = etc/rofi/1080p/applets/applets/apps.sh
+	backup = etc/rofi/1080p/applets/applets/backlight.sh
+	backup = etc/rofi/1080p/applets/applets/battery.sh
+	backup = etc/rofi/1080p/applets/applets/mpd.sh
+	backup = etc/rofi/1080p/applets/applets/network.sh
+	backup = etc/rofi/1080p/applets/applets/powermenu.sh
+	backup = etc/rofi/1080p/applets/applets/quicklinks.sh
+	backup = etc/rofi/1080p/applets/applets/screenshot.sh
+	backup = etc/rofi/1080p/applets/applets/style.sh
+	backup = etc/rofi/1080p/applets/applets/time.sh
+	backup = etc/rofi/1080p/applets/applets/volume.sh
+
+pkgname = rofi-theme-applet-720p
+	groups = rofi-themes
+	groups = rofi-themes-720p
+	depends = rofi>=1.6.1
+	depends = rofi-theme-used
+	depends = rofi-theme-fonts
+	conflicts = rofi-theme-applet-720p-git
+	backup = etc/rofi/720p/applets/styles/colors.rasi
+	backup = etc/rofi/720p/applets/applets/apps.sh
+	backup = etc/rofi/720p/applets/applets/backlight.sh
+	backup = etc/rofi/720p/applets/applets/battery.sh
+	backup = etc/rofi/720p/applets/applets/mpd.sh
+	backup = etc/rofi/720p/applets/applets/network.sh
+	backup = etc/rofi/720p/applets/applets/powermenu.sh
+	backup = etc/rofi/720p/applets/applets/quicklinks.sh
+	backup = etc/rofi/720p/applets/applets/screenshot.sh
+	backup = etc/rofi/720p/applets/applets/style.sh
+	backup = etc/rofi/720p/applets/applets/time.sh
+	backup = etc/rofi/720p/applets/applets/volume.sh
+
+pkgname = rofi-theme-launcher-1080p
+	groups = rofi-themes
+	groups = rofi-themes-1080p
+	depends = rofi>=1.6.1
+	depends = rofi-theme-used
+	depends = rofi-theme-fonts
+	conflicts = rofi-theme-launcher-1080p-git
+	backup = etc/rofi/1080p/launchers/ribbon/styles/colors.rasi
+	backup = etc/rofi/1080p/launchers/slate/styles/colors.rasi
+	backup = etc/rofi/1080p/launchers/text/styles/colors.rasi
+	backup = etc/rofi/1080p/launchers/colorful/launcher.sh
+	backup = etc/rofi/1080p/launchers/misc/launcher.sh
+	backup = etc/rofi/1080p/launchers/ribbon/launcher.sh
+	backup = etc/rofi/1080p/launchers/slate/launcher.sh
+	backup = etc/rofi/1080p/launchers/text/launcher.sh
+
+pkgname = rofi-theme-launcher-720p
+	groups = rofi-themes
+	groups = rofi-themes-720p
+	depends = rofi>=1.6.1
+	depends = rofi-theme-used
+	depends = rofi-theme-fonts
+	conflicts = rofi-theme-launcher-720p-git
+	backup = etc/rofi/720p/launchers/ribbon/styles/colors.rasi
+	backup = etc/rofi/720p/launchers/slate/styles/colors.rasi
+	backup = etc/rofi/720p/launchers/text/styles/colors.rasi
+	backup = etc/rofi/720p/launchers/colorful/launcher.sh
+	backup = etc/rofi/720p/launchers/misc/launcher.sh
+	backup = etc/rofi/720p/launchers/ribbon/launcher.sh
+	backup = etc/rofi/720p/launchers/slate/launcher.sh
+	backup = etc/rofi/720p/launchers/text/launcher.sh
+
+pkgname = rofi-theme-menu-1080p
+	groups = rofi-themes
+	groups = rofi-themes-1080p
+	depends = rofi>=1.6.1
+	depends = rofi-theme-applet-1080p
+	depends = rofi-theme-used
+	depends = rofi-theme-fonts
+	conflicts = rofi-theme-menu-1080p-git
+	backup = etc/rofi/1080p/applets/menu/apps.sh
+	backup = etc/rofi/1080p/applets/menu/backlight.sh
+	backup = etc/rofi/1080p/applets/menu/battery.sh
+	backup = etc/rofi/1080p/applets/menu/mpd.sh
+	backup = etc/rofi/1080p/applets/menu/network.sh
+	backup = etc/rofi/1080p/applets/menu/powermenu.sh
+	backup = etc/rofi/1080p/applets/menu/quicklinks.sh
+	backup = etc/rofi/1080p/applets/menu/screenshot.sh
+	backup = etc/rofi/1080p/applets/menu/style.sh
+	backup = etc/rofi/1080p/applets/menu/time.sh
+	backup = etc/rofi/1080p/applets/menu/volume.sh
+
+pkgname = rofi-theme-menu-720p
+	groups = rofi-themes
+	groups = rofi-themes-720p
+	depends = rofi>=1.6.1
+	depends = rofi-theme-applet-720p
+	depends = rofi-theme-used
+	depends = rofi-theme-fonts
+	conflicts = rofi-theme-menu-720p-git
+	backup = etc/rofi/720p/applets/menu/apps.sh
+	backup = etc/rofi/720p/applets/menu/backlight.sh
+	backup = etc/rofi/720p/applets/menu/battery.sh
+	backup = etc/rofi/720p/applets/menu/mpd.sh
+	backup = etc/rofi/720p/applets/menu/network.sh
+	backup = etc/rofi/720p/applets/menu/powermenu.sh
+	backup = etc/rofi/720p/applets/menu/quicklinks.sh
+	backup = etc/rofi/720p/applets/menu/screenshot.sh
+	backup = etc/rofi/720p/applets/menu/style.sh
+	backup = etc/rofi/720p/applets/menu/time.sh
+	backup = etc/rofi/720p/applets/menu/volume.sh
+
+pkgname = rofi-theme-powermenu-1080p
+	groups = rofi-themes
+	groups = rofi-themes-1080p
+	depends = rofi>=1.6.1
+	depends = rofi-theme-used
+	depends = rofi-theme-fonts
+	conflicts = rofi-theme-powermenu-1080p-git
+	backup = etc/rofi/1080p/powermenu/styles/colors.rasi
+	backup = etc/rofi/1080p/powermenu/powermenu.sh
+
+pkgname = rofi-theme-powermenu-720p
+	groups = rofi-themes
+	groups = rofi-themes-720p
+	depends = rofi>=1.6.1
+	depends = rofi-theme-used
+	depends = rofi-theme-fonts
+	conflicts = rofi-theme-powermenu-720p-git
+	backup = etc/rofi/720p/powermenu/styles/colors.rasi
+	backup = etc/rofi/720p/powermenu/powermenu.sh
+
+pkgname = rofi-theme-used
+	groups = rofi-themes
+	groups = rofi-themes-1080p
+	groups = rofi-themes-720p
+	conflicts = rofi-theme-used-git
+
+pkgname = rofi-theme-fonts
+	groups = rofi-themes
+	groups = rofi-themes-1080p
+	groups = rofi-themes-720p
+	conflicts = rofi-theme-fonts-git
+
