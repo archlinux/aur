@@ -1,12 +1,11 @@
 pkgbase = rofi-themes
 	pkgdesc = A large collection of Rofi based custom Menu, Applets, Launchers & Powermenus
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dctxmei/rofi-themes
 	arch = any
 	groups = rofi-themes
 	license = GPL3
-	makedepends = git
 	depends = rofi>=1.6.1
 	optdepends = papirus-icon-theme: for default icon
 	optdepends = xorg-xbacklight: for Backlight

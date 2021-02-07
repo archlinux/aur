@@ -14,7 +14,7 @@ pkgname=('rofi-theme-android-1080p'
          'rofi-theme-used'
          'rofi-theme-fonts')
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A large collection of Rofi based custom Menu, Applets, Launchers & Powermenus"
 arch=('any')
 url="https://github.com/dctxmei/rofi-themes"
@@ -38,7 +38,6 @@ optdepends=('papirus-icon-theme: for default icon'
             'viewnior: for Screenshot'
             'coreutils: for Time'
             'alsa-utils: for Volume')
-makedepends=('git')
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('d6eb21bdceaf2016a7310ebfd78b3f73ebd6c4f9d78b007a678de155de50d0e9')
 
