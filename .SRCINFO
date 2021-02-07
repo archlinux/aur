@@ -1,0 +1,17 @@
+pkgbase = cs-libguarded-git
+	pkgdesc = Header only library for multithreaded programming (git version)
+	pkgver = 1.1.0.r60.gfcc67e3
+	pkgrel = 1
+	url = https://www.copperspice.com/
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = catch2
+	provides = cs-libguarded
+	conflicts = cs-libguarded
+	source = git+https://github.com/copperspice/cs_libguarded.git
+	sha256sums = SKIP
+
+pkgname = cs-libguarded-git
+
