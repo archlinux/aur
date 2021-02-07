@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-openni2-camera
 	pkgdesc = ROS - Drivers for the Asus Xtion and Primesense Devices.
-	pkgver = 0.4.2
-	pkgrel = 2
+	pkgver = 1.5.1
+	pkgrel = 1
 	url = https://wiki.ros.org/openni2_camera
 	arch = i686
 	arch = x86_64
@@ -28,8 +28,8 @@ pkgbase = ros-melodic-openni2-camera
 	depends = ros-melodic-sensor-msgs
 	depends = ros-melodic-image-transport
 	depends = openni2
-	source = ros-melodic-openni2-camera-0.4.2.tar.gz::https://github.com/ros-drivers/openni2_camera/archive/0.4.2.tar.gz
-	sha256sums = 98df75bef6d8865eab33ebeaec6b3bd098ca249b18c0e0459221483d51b0d2ca
+	source = ros-melodic-openni2-camera-1.5.1.tar.gz::https://github.com/ros-drivers/openni2_camera/archive/1.5.1.tar.gz
+	sha256sums = d70c3808743b541c933e9ef46730a6bd481b64e8c8e410b8be6b03390093a36b
 
 pkgname = ros-melodic-openni2-camera
 

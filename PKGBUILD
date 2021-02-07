@@ -4,9 +4,9 @@ pkgdesc="ROS - Drivers for the Asus Xtion and Primesense Devices."
 url='https://wiki.ros.org/openni2_camera'
 
 pkgname='ros-melodic-openni2-camera'
-pkgver='0.4.2'
+pkgver='1.5.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-nodelet
@@ -40,7 +40,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="openni2_camera-${pkgver}/openni2_camera"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/openni2_camera/archive/${pkgver}.tar.gz")
-sha256sums=('98df75bef6d8865eab33ebeaec6b3bd098ca249b18c0e0459221483d51b0d2ca')
+sha256sums=('d70c3808743b541c933e9ef46730a6bd481b64e8c8e410b8be6b03390093a36b')
 
 build() {
   # Use ROS environment variables
