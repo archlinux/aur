@@ -3,8 +3,8 @@
 
 pkgname=vscodium-git
 # Make sure the pkgver matches the git tags in vscodium and vscode git repo's!
-pkgver=1.52.1
-pkgrel=2
+pkgver=1.53.0
+pkgrel=1
 pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing (git build)."
 arch=('x86_64' 'aarch64' 'armv7h')
 # The vscodium repo that will be checked out.
