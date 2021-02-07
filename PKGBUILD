@@ -7,7 +7,7 @@ pkgname=(
 #	'xorg-server-xephyr-rootless-nosystemd-minimal-git'
 #	'xorg-server-xvfb-rootless-nosystemd-minimal-git'
 #	'xorg-server-xnest-rootless-nosystemd-minimal-git'
-	'xorg-server-xwayland-rootless-nosystemd-minimal-git'
+#	'xorg-server-xwayland-rootless-nosystemd-minimal-git'
 	'xorg-server-common-rootless-nosystemd-minimal-git'
 	'xorg-server-devel-rootless-nosystemd-minimal-git')
 
@@ -71,7 +71,7 @@ build() {
     -D ipv6=false \
     -D xcsecurity=true \
     -D xorg=true \
-    -D xwayland=true \
+    -D xwayland=false \
     -D xwayland_eglstream=false \
     -D udev=true \
     -D suid_wrapper=false \
@@ -83,7 +83,7 @@ build() {
     -D xinerama=true \
     -D screensaver=false \
     -D dmx=false \
-    -D glamor=true \
+    -D glamor=false \
     -D linux_apm=false \
     -D mitshm=true \
     -D vgahw=false \
@@ -127,9 +127,10 @@ build() {
 # mitshm required for nvidia blob/amdgpu/mesa
 # xv required for nvidia blob/amdgpu/mesa
 # glamor required for xwayland support
-# b_lto set to false or build fails
 # b_pgo set to off or build fails
 # dpms and dri1 set to true or xf86-video-amdgpu build fails
+
+### xorg flag needs to be set to false for a successful build with -flto / b_lto enabled
 
   # Print config
   meson configure build
@@ -241,19 +242,19 @@ package_xorg-server-rootless-nosystemd-minimal-git() {
 #  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
 #}
 
-package_xorg-server-xwayland-rootless-nosystemd-minimal-git() {
-  pkgdesc="run X clients under wayland"
-  depends=(libxfont2 libepoxy pixman xorg-server-common
-           nettle)
-  optdepends=('libunwind: unwind backtrace support')
-  conflicts=('xorg-server-xwayland' 'xorg-xwayland')
-  provides=('xorg-server-xwayland' 'xorg-xwayland')
+#package_xorg-server-xwayland-rootless-nosystemd-minimal-git() {
+#  pkgdesc="run X clients under wayland"
+#  depends=(libxfont2 libepoxy pixman xorg-server-common
+#           nettle)
+#  optdepends=('libunwind: unwind backtrace support')
+#  conflicts=('xorg-server-xwayland' 'xorg-xwayland')
+#  provides=('xorg-server-xwayland' 'xorg-xwayland')
   
-  _install fakeinstall/usr/bin/Xwayland
+#  _install fakeinstall/usr/bin/Xwayland
 
   # license
 #  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
-}
+#}
 
 package_xorg-server-devel-rootless-nosystemd-minimal-git() {
   pkgdesc="Development files for the X.Org X server"
