@@ -1,6 +1,6 @@
 pkgbase = zoom
 	pkgdesc = Video Conferencing and Web Conferencing Service
-	pkgver = 5.5.1
+	pkgver = 5.5.2
 	pkgrel = 1
 	url = https://zoom.us/
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = zoom
 	optdepends = picom: extra compositor needed by some window managers for screen sharing
 	optdepends = xcompmgr: extra compositor needed by some window managers for screen sharing
 	options = !strip
-	source = zoom-5.5.1_orig_x86_64.pkg.tar.xz::https://zoom.us/client/5.5.6981.0202/zoom_x86_64.pkg.tar.xz
-	sha512sums = e75d4d8834213036ae3eeecfb4b361d310687e44edf2faa06598b851fbe8dfc11606238c6acbc092c41598172931bdfedf8c00446a44f96e99dbd8c496672a27
+	source = zoom-5.5.2_orig_x86_64.pkg.tar.xz::https://zoom.us/client/5.5.7011.0206/zoom_x86_64.pkg.tar.xz
+	sha512sums = 4e97501c008960d514a9d9f3d68f0c99a69b607408b49042b2a3e16789e3aed06d15b1f30e08bbe7a7b59e55144600e6a6c008292cc93add413cc364c93372ec
 
 pkgname = zoom
