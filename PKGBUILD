@@ -1,6 +1,6 @@
 # Maintainer: Matt/ilikenwf <parwok@gmail.com>
 pkgname=waterfox-current-git
-pkgver=68.0+f7d3e35c3d34
+pkgver=78.7.0+49be63fc71dd
 pkgrel=1
 pkgdesc="Private and optimized Firefox fork based on the LTS Release of Firefox."
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ source=(git://github.com/MrAlex94/Waterfox#branch=current
         ignore_bad_validator.patch
         vendor.js)
 sha512sums=('SKIP'
-	    'SKIP'
+            'f3d5c7898757189fbc2b905349d918622a0e71425c13c8a1e1f470b3be30b0275167cd20d50b863e270cfd7961e84393c9aa98fd4a3dec885a5473d6086070c2'
             'acd1a8ea32747dcd3df976c64408bb01d06f30af399f8625f43930d6a8b64a76a00af08aca9cd525c74ee3f2e58f6a49b57bab9a8b6ec0e1497f27122a41b82a'
             'ab2aced2e371afad317ab3ffb3e8161c457f022327e182d426aa2ba4142112060225ced4610eb2525e1c739a4e56ad4e7cf78cc102232cf01cf06d0224a9c09d'
             'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7')
