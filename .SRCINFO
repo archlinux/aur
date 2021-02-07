@@ -7,6 +7,7 @@ pkgbase = zoxide-bin
 	arch = armv7h
 	arch = aarch64
 	license = MIT
+	depends = gcc-libs
 	provides = zoxide
 	conflicts = zoxide
 	conflicts = zoxide-git
