@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=AIR Impulse Loader
+Exec="aIR Impulse Loader Standalone"
+Terminal=false
+StartupNotify=true
+GenericName=AIR Impulse Response Loader
+Categories=AudioVideo;Audio;
