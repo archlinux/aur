@@ -17,7 +17,7 @@ checkdepends=(desktop-file-utils)
 optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report'
             'libelf: gresource inspection tool')
 conflicts=($_pkgname)
-provides=($_pkgname $_pkgname=$pkgver)
+provides=($_pkgname $_pkgname=$pkgver libgio-2.0.so libglib-2.0.so libgmodule-2.0.so libgobject-2.0.so libgthread-2.0.so)
 options=(!emptydirs)
 source=("git+https://gitlab.gnome.org/GNOME/glib.git"
         0001-noisy-glib-compile-schemas.patch

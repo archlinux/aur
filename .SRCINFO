@@ -22,6 +22,11 @@ pkgbase = glib2-nodocs-git
 	optdepends = libelf: gresource inspection tool
 	provides = glib2
 	provides = glib2=2.66.0.89.g7bfd6278b
+	provides = libgio-2.0.so
+	provides = libglib-2.0.so
+	provides = libgmodule-2.0.so
+	provides = libgobject-2.0.so
+	provides = libgthread-2.0.so
 	conflicts = glib2
 	options = !emptydirs
 	source = git+https://gitlab.gnome.org/GNOME/glib.git
