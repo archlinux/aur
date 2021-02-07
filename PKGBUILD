@@ -1,10 +1,10 @@
-# Contributor: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
+# Contributor: Trizen <echo dHJpemVuQHByb3Rvbm1haWwuY29tCg== | base64 -d>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-gmpf'
-pkgver='0.43'
+pkgver='0.44'
 pkgrel='1'
-pkgdesc="perl interface to the GMP library's floating point (mpf) functions."
+pkgdesc="Math::GMPf - perl interface to the GMP library's floating point (mpf) functions."
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
@@ -12,8 +12,8 @@ depends=('perl>=5.10.1' 'gmp>=6.1.0')
 makedepends=()
 url='https://metacpan.org/release/Math-GMPf'
 source=("https://cpan.metacpan.org/authors/id/S/SI/SISYPHUS/Math-GMPf-$pkgver.tar.gz")
-md5sums=('a375592e67bcdbe259aa10085371be26')
-sha512sums=('f21b9c957d8a435567390bc700e9aa48270837647653dcc205b35ebc97fa721b3c708752377746c25a6d64537202ca5cc1452cce0c5139f70a08fec085a78feb')
+md5sums=('16ce6ea86bd0ee54e18ea3084d60523f')
+sha512sums=('e7c5e1e18c422884c89366a74a3edfeea82125467f0bb44936b949fce6363e64424789658a8bcecda049c7b4a02b12df43a0d1a04d1d6e7fb46e4cf27de6cc33')
 _distdir="Math-GMPf-$pkgver"
 
 build() {
@@ -39,12 +39,5 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
