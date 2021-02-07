@@ -6,7 +6,7 @@ pkgbase=cuda11.1
 pkgname=('cuda11.1' 'cuda11.1-tools')
 pkgver=11.1.1
 _driverver=455.32.00
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA's GPU programming toolkit (version 11.1)"
 arch=('x86_64')
 url='https://developer.nvidia.com/cuda-zone'
@@ -60,18 +60,18 @@ sha256sums=('3eae6727086024925ebbcef3e9a45ad379d8490768fd00f9c2d8b6fd9cd8dd8f'
 prepare() {
   sh "cuda_${pkgver}_${_driverver}_linux.run" --target "$srcdir" --noexec
 
-  # Fix up samples tht use findgllib.mk
+  # Fix up samples that use findgllib.mk
   local _file
-  for _file in builds/cuda_samples/*/*/findgllib.mk
+  while read -r -d '' _file
   do
     patch -Np1 -i cuda-findgllib_mk.patch "$_file"
-  done
+  done < <(find builds/cuda_samples -type f -name 'findgllib.mk' -print0)
 }
 
 build() {
   local _prepdir="${srcdir}/prep"
 
-  cd "${srcdir}/builds"
+  cd builds
 
   rm -r NVIDIA*.run bin
   mkdir -p "${_prepdir}/opt/cuda/extras"
@@ -80,10 +80,10 @@ build() {
   mv cuda_sanitizer_api/compute-sanitizer "${_prepdir}/opt/cuda/extras/compute-sanitizer"
   rmdir cuda_sanitizer_api
   local _lib
-  for _lib in *
+  while read -r -d '' _lib
   do
     cp -r "$_lib"/* "${_prepdir}/opt/cuda/"
-  done
+  done < <(find . -mindepth 1 -maxdepth 1 -type d -print0)
 
   # Delete some unnecessary files
   rm -r "$_prepdir"/opt/cuda/{bin/cuda-uninstaller,samples/bin/cuda-uninstaller}
@@ -113,10 +113,10 @@ build() {
 
   # Fix Makefile paths to CUDA
   local _file
-  for _file in $(find "$_prepdir"/opt/cuda -name Makefile)
+  while read -r -d '' _file
   do
     sed -i 's|/usr/local/cuda|/opt/cuda|g' "$_file"
-  done
+  done < <(find "${_prepdir}/opt/cuda" -type f -name 'Makefile' -print0)
 }
 
 package_cuda11.1() {
@@ -134,7 +134,7 @@ package_cuda11.1() {
 
 package_cuda11.1-tools() {
   pkgdesc="NVIDIA's GPU programming toolkit (extra tools: nvvp, nsight) (version 11.1)"
-  depends=('cuda' 'java-runtime=8' 'nss')
+  depends=('cuda=11.1' 'java-runtime=8' 'nss')
   provides+=('cuda-tools=11.1')
   conflicts+=('cuda-tools')
 
