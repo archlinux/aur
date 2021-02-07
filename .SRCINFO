@@ -1,6 +1,6 @@
 pkgbase = basilisk
 	pkgdesc = Standalone web browser forked from mozilla.org
-	pkgver = 2021.01.05
+	pkgver = 2021.02.06
 	pkgrel = 1
 	url = https://www.basilisk-browser.org/
 	arch = x86_64
@@ -21,11 +21,11 @@ pkgbase = basilisk
 	depends = ffmpeg
 	depends = ttf-font
 	options = !emptydirs
-	source = https://repo.palemoon.org/MoonchildProductions/Basilisk/archive/v2021.01.05.tar.gz
-	source = https://repo.palemoon.org/MoonchildProductions/UXP/archive/RELBASE_20201218.tar.gz
+	source = https://repo.palemoon.org/MoonchildProductions/Basilisk/archive/v2021.02.06.tar.gz
+	source = https://repo.palemoon.org/MoonchildProductions/UXP/archive/RELBASE_20210205.tar.gz
 	source = https://repo.palemoon.org/MoonchildProductions/Pale-Moon/raw/commit/7046794388319744751208a8d0e98e27861f67ce/palemoon/branding/unofficial/browser.desktop
-	sha256sums = dd3eae813cf603807cfdfcc31d295a2a638948dc96e26f951c98f78ef2c5d49a
-	sha256sums = b981cd33767e9238b2c1fdb5c58ffd76f30712bffa9792bc1d057ca5ed2b36db
+	sha256sums = 67c2505f96fe8b354538712337555a578ac9908f41975743f799a6d5ea3d6ca7
+	sha256sums = 79103c7e01db3290317fa4712700e6f233c9b21f9244414b95811d7008b08c09
 	sha256sums = 9ffbaa46c277e3c9addc2ce61b17e8eccffd3860706ca75d4fd70eeaa6f5e380
 
 pkgname = basilisk
