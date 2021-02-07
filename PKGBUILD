@@ -1,9 +1,8 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 # Maintainer: Edgar Luque <git@edgarluque.com>
 
-_name=ddnet-maps
-pkgname=$_name-git
-pkgver=r1319.g9a8bd3bf
+pkgname=ddnet-maps-git
+pkgver=r1383.g0dc84418
 pkgrel=1
 pkgdesc="All released maps with configs for DDraceNetwork server"
 arch=(any)
@@ -13,25 +12,26 @@ makedepends=('git')
 backup=('usr/share/ddnet/data/autoexec_server.cfg'
         'usr/share/ddnet/data/reset.cfg'
         'usr/share/ddnet/data/storage.cfg')
-source=("git+https://github.com/ddnet/$_name.git")
+source=("git+https://github.com/ddnet/${pkgname%%-git}.git")
 md5sums=('SKIP')
 
 # Override compression, because default xz takes too much time to compress
 PKGEXT='.pkg.tar'
 
 pkgver() {
-  cd $_name
+  cd ${pkgname%%-git}
   printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd $_name
-  msg2 "Removing exec permission from files"
+  cd ${pkgname%%-git}
+
+    # Remove exec permission from files
   find types/ -type f -exec chmod 644 {} \;
 }
 
 package() {
-  cd $_name
+  cd ${pkgname%%-git}
 
   _datadir="$pkgdir/usr/share/ddnet/data"
   install -d -m755 $_datadir/{maps,types}
@@ -43,10 +43,13 @@ package() {
     # Disable test flag
   sed '/sv_test_cmds/s/1/0/' -i $_datadir/autoexec_server.cfg
 
-  _types="brutal ddmax dummy insane moderate novice oldschool race solo"
-  for type in $_types; do
-    cp -a types/$type   $_datadir/types/
-    ln -rs $_datadir/types/$type/maps/* $_datadir/maps/
+    # Set map type list, and fail if no map type is found
+  _typelist=$(ls -d types/* | sed 's|.*/||')
+  [ -n "$_typelist" ]
+
+  for _type in $_typelist; do
+    cp -a types/$_type $_datadir/types/
+    ln -rs $_datadir/types/$_type/maps/* $_datadir/maps/
   done
 
     # Avoid file conflicts of maps already provided in the DDNet package
