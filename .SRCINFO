@@ -1,0 +1,29 @@
+pkgbase = sonic-2013
+	pkgdesc = Decompilation of the mobile ports by Taxman
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/Rubberduckycooly/Sonic-1-2-2013-Decompilation
+	arch = x86_64
+	license = unknown
+	depends = sdl2
+	depends = libvorbis
+	depends = libogg
+	source = https://github.com/Rubberduckycooly/Sonic-1-2-2013-Decompilation/archive/1.1.1.tar.gz
+	source = sonic1.install
+	source = sonic2.install
+	source = sonic1.sh
+	source = sonic2.sh
+	md5sums = 8bc0ba206c83818b1faf409079fa6f32
+	md5sums = 8e849e1d04276043806304acfa5f5f64
+	md5sums = a2e2d9083a60f8d62480dfd85cbd800c
+	md5sums = ceac785ff2832d5d2c4ee83c145cd4dd
+	md5sums = aac2f37fd3822f680d9695e4ca415d3f
+
+pkgname = sonic-1
+	pkgdesc = Sonic 1 mobile port decompilation
+	install = sonic1.install
+
+pkgname = sonic-2
+	pkgdesc = Sonic 2 mobile port decompilation
+	install = sonic2.install
+
