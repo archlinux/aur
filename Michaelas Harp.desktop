@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Michaelas Harp
+Exec="Michaelas Harp"
+Terminal=false
+StartupNotify=false
+GenericName=Librewave Harp Plugin Standalone
+Categories=AudioVideo;Audio;
