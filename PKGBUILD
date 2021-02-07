@@ -1,97 +1,49 @@
-# Maintainer: Nicola Squartini <tensor5@gmail.com>
+# Maintainer: Sýlvan Heuser <sylvan.heuser@gmx.net>
 
 pkgname=upterm
-pkgver=0.4.4
+pkgver=0.5.2
 pkgrel=1
-pkgdesc='A terminal emulator for the 21st century'
-arch=('i686' 'x86_64')
-url='https://github.com/railsware/upterm'
-license=('MIT')
-depends=('electron')
-makedepends=('apm' 'git' 'npm')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-        'upterm.desktop'
-        'upterm.js')
-sha256sums=('4df53fbeffa01881cee9a4ec5379d02469fa9a01f93e1880927bb86724293aed'
-            '2d55728dcd4f0b25195474d8676f8994c266f24e8e928ddbb9ff86959c3ac96f'
-            '5522f5f78c0686d5e419661f4264e2d2f5f0856582f1494010e457c150f67910')
+pkgdesc='Secure Terminal Sharing, an alternative to tmate'
+arch=('x86_64')
+url="https://github.com/owenthereal/upterm"
+license=('Apache')
+depends=('glibc')
+makedepends=('go')
+optdepends=()
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/owenthereal/upterm/archive/${pkgver}.tar.gz")
+sha256sums=('4da96e79816cc18c4417edbb99f6216fe9f21219b78b42f19ae4795c0716829e')
 
 prepare() {
-    cd ${pkgname}-${pkgver}
-
-    sed -e '/postinstall/d' -i package.json
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  mkdir -p build/
 }
 
 build() {
-    cd ${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o build ./cmd/...
+  build/gendoc
+}
 
-    npm install immutable monaco-editor node-pty rxjs 
-    types=('@types/chokidar' '@types/csv-parse' '@types/csv-stringify' '@types/enzyme' '@types/fs-extra' '@types/klaw' '@types/lodash' '@types/node' '@types/react')
-    npm install "${types[@]}"
-    npm install --ignore-scripts electron
-    npm install typescript
-    npm run tsc
-    rm -r node_modules
-
-    ATOM_HOME="${PWD}" apm install --production
-    rmdir packages
-
-    install -Dm644 -t compiled/src/views src/views/index.html
+check() {
+  cd "$srcdir/${pkgname}-${pkgver}"
+  go test ./...
 }
 
 package() {
-    cd ${pkgname}-${pkgver}
-
-    appdir=/usr/lib/${pkgname}
-
-    install -d "${pkgdir}"${appdir}
-    cp -r * "${pkgdir}"${appdir}
-
-    for size in 16 32 48 64 256; do
-        install -Dm644 \
-            build/icons/${size}x${size}.png \
-            "${pkgdir}"/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png
-        rm  "${pkgdir}"${appdir}/build/icons/${size}x${size}.png
-    done
-    rm "${pkgdir}"${appdir}/build/icon.{icns,ico,png}
-    rmdir "${pkgdir}"${appdir}/build/icons
-    rmdir "${pkgdir}"${appdir}/build
-
-    install -Dm755 "${srcdir}"/${pkgname}.js "${pkgdir}"/usr/bin/${pkgname}
-    install -Dm644 "${srcdir}"/${pkgname}.desktop \
-            "${pkgdir}"/usr/share/applications/${pkgname}.desktop
-
-    install -dm755 "${pkgdir}"/usr/share/licenses/${pkgname}
-    ln -s $(realpath -m --relative-to=/usr/share/licenses/${pkgname} ${appdir}/LICENSE) \
-        "${pkgdir}"/usr/share/licenses/${pkgname}
-
-    # Clean up
-    rm -r "${pkgdir}"${appdir}/src
-    find "${pkgdir}"${appdir} \
-        -name "package.json" \
-            -exec sed -e "s|${srcdir}/${pkgname}-${pkgver}|${appdir}|" \
-                -i {} \; \
-        -or -name ".*" -prune -exec rm -r '{}' \; \
-        -or -name "*.mk" -exec rm '{}' \; \
-        -or -path "*/promise/src" -prune -exec rm -r '{}' \; \
-        -or -path "*/pty.js/src" -prune -exec rm -r '{}' \; \
-        -or -name "*.yml" -exec rm '{}' \; \
-        -or -name "benchmark" -prune -exec rm -r '{}' \; \
-        -or -name "bin" -prune -exec rm -r '{}' \; \
-        -or -name "bin.js" -exec rm '{}' \; \
-        -or -name "binding.gyp" -exec rm '{}' \; \
-        -or -name "binding.Makefile" -exec rm '{}' \; \
-        -or -name "bower.json" -exec rm '{}' \; \
-        -or -name "cli.js" -exec rm '{}' \; \
-        -or -name "config.gypi" -exec rm '{}' \; \
-        -or -name "deps" -prune -exec rm -r '{}' \; \
-        -or -name "doc" -prune -exec rm -r '{}' \; \
-        -or -name "docs" -prune -exec rm -r '{}' \; \
-        -or -name "example" -prune -exec rm -r '{}' \; \
-        -or -name "Makefile" -exec rm '{}' \; \
-        -or -name "obj.target" -prune -exec rm -r '{}' \; \
-        -or -name "test" -prune -exec rm -r '{}' \; \
-        -or -name "tests" -prune -exec rm -r '{}' \; \
-        -or -name "tools" -prune -exec rm -r '{}' \; \
-        -or -name "wscript" -prune -exec rm -r '{}' \;
+  cd "$srcdir/${pkgname}-${pkgver}"
+  install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 "build/${pkgname}d" "${pkgdir}/usr/bin/${pkgname}d"
+  install -dm755 "${pkgdir}/usr/share/man"
+  cp -av etc/man/* "${pkgdir}/usr/share/man/"
+  install -dm755 "${pkgdir}/usr/share/bash-completion/completions"
+  install -Dm644 "etc/completion/upterm.bash_completion.sh" "${pkgdir}/usr/share/bash-completion/completions/upterm"
+  install -dm755 "$pkgdir/usr/share/zsh/site-functions"
+  install -Dm644 "etc/completion/upterm.zsh_completion" "${pkgdir}/usr/share/zsh/site-functions/_upterm"
 }
+
+# vim:set ts=2 sw=2 et:
