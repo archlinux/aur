@@ -1,10 +1,11 @@
-# Maintainer: mickael9 <mickael9@gmail.com>
+# Maintainer: Benjamin Schneider <bschnei@gmail.com>
+# Contributor: mickael9 <mickael9@gmail.com>
 # Contributor: Sebastien Duthil <duthils@free.fr>
 
 pkgname=factorio-demo
-pkgver=1.0.0
+pkgver=1.1.19
 pkgrel=1
-pkgdesc="A 2D game about building and maintaining factories."
+pkgdesc="A game in which you build and maintain factories"
 arch=('x86_64')
 url="http://www.factorio.com/"
 license=('custom: commercial')
@@ -15,9 +16,9 @@ source=(factorio.desktop
         LICENSE
         factorio_demo_x64_${pkgver}.tar.xz::http://www.factorio.com/get-download/${pkgver}/demo/linux64
 )
-sha256sums=('c3bbe51c3c35641d6064ff0f8470294f8a317f0413bb149f6bd47461b03804bf'
+sha256sums=('61f62d75491147fbc6853cd7fa3a6f287227c3f5fc70dd9f4ec4083ebc31b743'
             '5f218befa5763542eeb3c6d68e0cb2540642d08f5e52f5376ef1d652362b2486'
-            '16438ebed4aa440ee6e2b2684026c0cf32a2edd4e46142d93f840f12eec22c41')
+            'd94500d588ace6068f46ed3ff0fa4c16539f43383b45a96d4c5c5ddc26df2add')
 
 # no modifications needed, the executable looks for:
 # - data in /usr/share/factorio

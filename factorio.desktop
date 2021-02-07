@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Factorio (demo)
 GenericName=Factorio
-Comment=A 2D game about building and maintaining factories.
+Comment=A game in which you build and maintain factories
 Exec=factorio
 Icon=/usr/share/factorio/core/graphics/factorio.png
 Terminal=false
