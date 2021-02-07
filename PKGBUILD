@@ -46,7 +46,6 @@ package() {
   install -Dm755 squashfs-root/usr/bin/wezterm -t "${pkgdir}/usr/bin/"
   install -Dm755 squashfs-root/usr/bin/wezterm-gui -t "${pkgdir}/usr/bin/"
   install -Dm755 squashfs-root/usr/bin/wezterm-mux-server -t "${pkgdir}/usr/bin/"
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 squashfs-root/usr/share/icons/hicolor/128x128/apps/org.wezfurlong.wezterm.png \
                  "${pkgdir}/usr/share/icons/hicolor/128x128/apps/org.wezfurlong.wezterm.png"
   install -Dm644 squashfs-root/usr/share/applications/org.wezfurlong.wezterm.desktop \
