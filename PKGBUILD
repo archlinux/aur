@@ -4,7 +4,7 @@ _pkgname=basilisk
 pkgname=${_pkgname}-bin
 epoch=1
 #_buildid=20200508000234
-pkgver=52.9.2021.01.05
+pkgver=52.9.2021.02.06
 pkgrel=1
 pkgdesc="Basilisk Browser from the makers of Pale Moon"
 url="http://www.basilisk-browser.org"
@@ -17,7 +17,7 @@ optdepends=('hunspell: spell checker and morphological analyzer'
 #source=(http://archive.palemoon.org/basilisk/basilisk-${_buildid}.linux-x86_64.{tar.xz,json}
 source=("${_pkgname}-${pkgver}.tar.xz::http://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.xz"
         'basilisk.desktop')
-sha256sums=('c4cb4274b9aff4fae6bf52026dc31a6fa63130c339e8a5469a114cdef7cc1996'
+sha256sums=('78b997b2d37c7f6126f07153adabbd1fe0a683df2c83cb8cf80e31cd56252ea4'
             'c4223e966bc404467fece4a524cc2db3e99c12455087da2ade9a47b8d99d3a45')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
