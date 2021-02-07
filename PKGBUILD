@@ -10,11 +10,11 @@ arch=('x86_64')
 url="https://files.ettus.com/manual/"
 license=('GPL')
 depends=('boost-libs' 'orc' 'libusb')
-optdepends=('python: usrp utils')
+optdepends=('python: usrp utils' 'libuhd-firmware3')
 makedepends=('cmake' 'boost' 'python-mako')
 # gpsd?  dpdk?
 provides=('libuhd=3.15.0.0')
-conflicts=('libuhd')
+conflicts=('libuhd' 'libuhd-firmware')
 
 source=("libuhd-$pkgver.tar.gz::https://github.com/EttusResearch/uhd/archive/v$pkgver.tar.gz"
         boost-1.73.patch)
