@@ -1,7 +1,7 @@
 pkgbase = pecl-mcrypt
 	pkgdesc = Bindings for the libmcrypt library
-	pkgver = 1.0.2
-	pkgrel = 2
+	pkgver = 1.0.4
+	pkgrel = 1
 	url = https://pecl.php.net/package/mcrypt
 	install = mcrypt.install
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = pecl-mcrypt
 	makedepends = re2c
 	depends = php
 	depends = libmcrypt
-	source = http://pecl.php.net/get/mcrypt-1.0.2.tgz
-	md5sums = 72ff2090a523dc6c388e5ee75d23b035
+	source = http://pecl.php.net/get/mcrypt-1.0.4.tgz
+	md5sums = 7097fac371820ff130c90330b556f1bf
 
 pkgname = pecl-mcrypt
 
