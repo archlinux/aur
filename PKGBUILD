@@ -16,7 +16,7 @@
 pkgname=uuid
 _pkgname=ossp-uuid
 pkgver=1.6.2
-pkgrel=19
+pkgrel=20
 pkgdesc="OSSP Universally Unique Identifier"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.ossp.org/pkg/lib/uuid"
@@ -25,7 +25,7 @@ depends=('sh')
 makedepends=('git')
 options=('!libtool')
 source=("git+https://github.com/sean-/ossp-uuid.git"
-	"https://src.fedoraproject.org/rpms/uuid/raw/master/f/uuid-aarch64.patch"
+        "https://src.fedoraproject.org/rpms/uuid/raw/rawhide/f/uuid-aarch64.patch"
         ossp.patch)
 sha512sums=('SKIP'
     '534ade47bf17531108d96c46bfc489b9fd4b1e7a66fcd903c8036210bdc6e631d591d04184e37b56c64ee74c05af799971d47d4cf30b25b45e05413319ae2f34'
