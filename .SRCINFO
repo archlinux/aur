@@ -1,10 +1,11 @@
 pkgbase = oggextract
 	pkgdesc = Extracts OGG Vorbis from binary files.
 	pkgver = 2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FSMaxB/oggextract/
 	arch = x86_64
 	arch = i686
+	makedepends = git
 	source = git+https://github.com/FSMaxB/oggextract.git#commit=3726a80cd7206fd256a0d977dfdbd1df29c410ed
 	md5sums = SKIP
 
