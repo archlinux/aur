@@ -1,0 +1,17 @@
+pkgbase = collab3
+	pkgdesc = CollaB3 Tonewheel Organ (VST Plugin).
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://librewave.com/product/collab3/
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = GPL3
+	depends = libcurl-gnutls
+	source = https://github.com/augustofilocamo/superOrgan/releases/download/v1.0.0/CollaB3-Installer-1.0.0.sh
+	source = CollaB3.desktop
+	md5sums = 6f8e3d250f3287c81b30c11031b08c32
+	md5sums = ef4fc82af3606b71d7a27a53289647b0
+
+pkgname = collab3
+

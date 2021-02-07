@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=CollaB3
+Exec=CollaB3
+Terminal=false
+StartupNotify=true
+GenericName=Librewave CollaB3 Tonewheel Organ Plugin Standalone
+Categories=AudioVideo;Audio;
