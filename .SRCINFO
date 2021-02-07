@@ -1,7 +1,7 @@
 pkgbase = opensurge
 	pkgdesc = Open Surge is a fun 2D retro platformer inspired by Sonic games, and a game creation system.
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alemart/opensurge
 	arch = i686
 	arch = x86_64
