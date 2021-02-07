@@ -1,7 +1,7 @@
 pkgbase = uxplay-git
 	pkgdesc = AirPlay Unix mirroring server
 	pkgver = r17.6a473d6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/antimof/UxPlay
 	arch = any
 	license = GPL3
@@ -12,6 +12,7 @@ pkgbase = uxplay-git
 	depends = gst-plugins-base-libs
 	depends = gst-libav
 	depends = gstreamer-vaapi
+	depends = avahi
 	provides = uxplay
 	conflicts = uxplay
 	source = git+https://github.com/antimof/UxPlay.git

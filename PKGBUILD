@@ -2,12 +2,12 @@
 pkgname=uxplay-git
 _gitname=UxPlay
 pkgver=r17.6a473d6
-pkgrel=2
+pkgrel=3
 pkgdesc="AirPlay Unix mirroring server"
 arch=('any')
 url="https://github.com/antimof/$_gitname"
 license=('GPL3')
-depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-base-libs' 'gst-libav' 'gstreamer-vaapi')
+depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-base-libs' 'gst-libav' 'gstreamer-vaapi' 'avahi')
 makedepends=('cmake' 'git')
 conflicts=('uxplay')
 provides=('uxplay')
@@ -39,4 +39,6 @@ package() {
   install -Dm 755 "$srcdir/$_gitname/build/uxplay" "$pkgdir/usr/bin/uxplay"
   # install desktop file
   install -Dm 644 "$srcdir/uxplay.desktop" "$pkgdir/usr/share/applications/uxplay.desktop"
+
+  printf "%b" "\e[1;33m==> WARNING: \e[0mIn order for UxPlay to work, the avahi systemd service has to be running. Enable it with: systemctl enable --now avahi-daemon\n"
 }
