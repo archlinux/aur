@@ -1,11 +1,12 @@
 # Maintainer: Pablo Gómez Poch <pablogomez [at] pablogomez [dot] com>
+# Contributor: Stephen Argent <steve [at] tuxcon [dot] com>
 
 pkgname=neon-wallet-bin
 pkgdesc='Lightweight Wallet for the NEO CryptoCurrency'
 license=('MIT')
 url='https://github.com/CityOfZion/neon-wallet'
 pkgver=2.6.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 deb_package="Neon.${pkgver}.deb"
 source_x86_64=(
