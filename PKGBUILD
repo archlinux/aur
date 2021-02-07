@@ -1,25 +1,26 @@
-# Maintainer: Sam Burgos < sam dot burgos1089 at gmail dot com >
+# Maintainer:  Christopher Reimer <mail at c-reimer dot de>
 
-pkgname='pop-icon-theme'
-_pkgname='system76-pop-icon-theme'
-pkgver=1.1.4
+pkgname=pop-icon-theme
+pkgver=2.1.0
+_commit=ef2be602646e8e5dff1a97478a690c568e51d6aa
 pkgrel=1
 pkgdesc="System76 Pop Icon Theme"
-arch=("any")
-url="https://github.com/system76/pop-icon-theme"
-license=('GPL2' 'CCPL')
-depends=('gtk-update-icon-cache')
-provides=('${pkgname}')
-conflicts=("pop-icon-theme-git")
-source=("https://launchpad.net/~system76-dev/+archive/ubuntu/stable/+files/${_pkgname}_${pkgver}.tar.xz")
-sha256sums=("c0302f867a3da6a48778a4f1c9df84bf7ec9c92e12d6e58abbeb96939b9e0889")
-optdepends=("pop-gtk-theme: System 76 GTK Theme that completes the set"
-            "mint-x-icons: Complementary Icon theme (Inheritance)"
-            "breeze-icons: Complementary Icon theme (Inheritance)"
-            "adwaita-icon-theme: Complementary Icon theme (Inheritance)")
+arch=('any')
+url='https://github.com/pop-os/icon-theme'
+license=('CCPL')
+depends=('gnome-icon-theme')
+makedepends=('meson')
+source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-icon-theme/${pkgname}_${pkgver}~1610392112~20.10~ef2be60.tar.xz")
+sha512sums=('8b907b3db69e1b719d5944deb0fa92629a137f99f06e9c7041645660802a060af6e8084b1dc4b99e67a0f0d92de5d9e096daa6bca56af05584e088064d419cb3')
+
+build() {
+  cd "${_commit}_groovy"
+  meson --prefix='/usr' build
+  ninja -C build
+}
 
 package() {
-  	cd icon-theme
-	make DESTDIR="${pkgdir}" install
-	make DESTDIR="${pkgdir}" post-install
+  cd "${_commit}_groovy"
+  DESTDIR="${pkgdir}" ninja -C build install
 }
+

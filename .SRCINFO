@@ -1,20 +1,13 @@
 pkgbase = pop-icon-theme
 	pkgdesc = System76 Pop Icon Theme
-	pkgver = 1.1.4
+	pkgver = 2.1.0
 	pkgrel = 1
-	url = https://github.com/system76/pop-icon-theme
+	url = https://github.com/pop-os/icon-theme
 	arch = any
-	license = GPL2
 	license = CCPL
-	depends = gtk-update-icon-cache
-	optdepends = pop-gtk-theme: System 76 GTK Theme that completes the set
-	optdepends = mint-x-icons: Complementary Icon theme (Inheritance)
-	optdepends = breeze-icons: Complementary Icon theme (Inheritance)
-	optdepends = adwaita-icon-theme: Complementary Icon theme (Inheritance)
-	provides = ${pkgname}
-	conflicts = pop-icon-theme-git
-	source = https://launchpad.net/~system76-dev/+archive/ubuntu/stable/+files/system76-pop-icon-theme_1.1.4.tar.xz
-	sha256sums = c0302f867a3da6a48778a4f1c9df84bf7ec9c92e12d6e58abbeb96939b9e0889
+	makedepends = meson
+	depends = gnome-icon-theme
+	source = http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-icon-theme/pop-icon-theme_2.1.0~1610392112~20.10~ef2be60.tar.xz
+	sha512sums = 8b907b3db69e1b719d5944deb0fa92629a137f99f06e9c7041645660802a060af6e8084b1dc4b99e67a0f0d92de5d9e096daa6bca56af05584e088064d419cb3
 
 pkgname = pop-icon-theme
-
