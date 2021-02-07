@@ -1,0 +1,20 @@
+pkgbase = smplxmpp
+	pkgdesc = simple XMPP client for the commandline
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://smplxmpp.com/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = ncurses
+	depends = spdlog
+	depends = gloox
+	depends = gnutls
+	conflicts = smplxmpp
+	source = smplxmpp-0.9.3.tar.gz::https://codeberg.org/tropf/smplxmpp/archive/v0.9.3.tar.gz
+	sha256sums = 2544a09fa5a71efe97d6eb79c99d012767964ae835989df0975d80f95c4e87bf
+
+pkgname = smplxmpp
+
