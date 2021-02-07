@@ -1,0 +1,15 @@
+pkgbase = rvxx-amp
+	pkgdesc = RVXX Aggressive Guitar Amplifier (VST Plugin).
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://audio-assault.com/rvxx.php
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = EULA
+	depends = libcurl-gnutls
+	source = RVXX.desktop
+	md5sums = f75327e2917268d49b3d9be2414c7f96
+
+pkgname = rvxx-amp
+

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=RVXX Guitar Amplifier
+Exec="RVXX v2 Standalone"
+Terminal=false
+StartupNotify=true
+GenericName=RVXX Aggressive Guitar Amplifier
+Categories=AudioVideo;Audio;
