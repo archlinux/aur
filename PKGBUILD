@@ -1,7 +1,7 @@
 # Maintainer: José Rebelo <joserebelo at outlook dot com>
 
 pkgname=surgescript
-pkgver=0.5.4.3
+pkgver=0.5.5
 pkgrel=1
 pkgdesc='SurgeScript is a scripting language for games.'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/alemart/surgescript'
 license=('Apache-2.0')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alemart/surgescript/archive/v$pkgver.tar.gz")
-sha256sums=('52bb460b3a882788cc1001610d35f56a9c206b4f565db593a507f69862d6270c')
+sha256sums=('c9f59131d5cd921a11fb1335fe93bd754f4b1eefa1ed95aaa0343a28437f3f78')
 
 build() {
   cd $pkgname-$pkgver
