@@ -9,3 +9,4 @@ post_upgrade() {
 pre_remove() {
     /opt/wingide/resources/linux/desktop/install-linux-desktop.sh --uninstall
 }
+
