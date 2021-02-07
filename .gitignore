@@ -1,4 +1,4 @@
-/lightdm-config/
+lightdm-config/
 pkg/
 src/
 *.pkg.tar.*
