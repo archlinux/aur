@@ -2,9 +2,10 @@
 
 pkgname=novelwriter-git
 _pkgname=novelWriter
-pkgver=0.4.6.850.2fcbcae
+pkgver=v1.1rc1.r48.g66090e39
 _pkgver=0.4.6
 pkgrel=1
+epoch=1
 pkgdesc="Markdown-like text editor designed for writing novels and larger projects of many smaller plain text documents"
 arch=(any)
 url="https://github.com/vkbo/novelWriter"
@@ -17,9 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd ${_pkgname}
-	hash=$(git log --pretty=format:'%h' -n 1)
-	revision=$(git rev-list --count HEAD)
-	echo ${_pkgver}.${revision}.${hash}
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -32,7 +31,7 @@ package() {
 	python setup.py install --root=${pkgdir}/ --optimize=1
 
 	mkdir -p ${pkgdir}/usr/share/pixmaps
-	/bin/install -m0644 nw/assets/icons/novelWriter.svg ${pkgdir}/usr/share/pixmaps/novelwriter.svg
+	/bin/install -m0644 nw/assets/icons/novelwriter.svg ${pkgdir}/usr/share/pixmaps/novelwriter.svg
 
 	mkdir -p ${pkgdir}/usr/share/applications
 	/bin/install -m0644 ${startdir}/novelwriter.desktop ${pkgdir}/usr/share/applications/novelwriter.desktop
