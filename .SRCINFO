@@ -14,8 +14,7 @@ pkgbase = libuhd3
 	optdepends = python: usrp utils
 	optdepends = libuhd-firmware3
 	provides = libuhd=3.15.0.0
-	conflicts = libuhd
-	conflicts = libuhd-firmware
+	conflicts = libuhd-firmware>3.15.0.0
 	source = libuhd-3.15.0.0.tar.gz::https://github.com/EttusResearch/uhd/archive/v3.15.0.0.tar.gz
 	source = boost-1.73.patch
 	sha256sums = eed4a77d75faafff56be78985950039f8d9d1eb9fcbd58b8862e481dd49825cd

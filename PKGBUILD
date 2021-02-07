@@ -14,7 +14,7 @@ optdepends=('python: usrp utils' 'libuhd-firmware3')
 makedepends=('cmake' 'boost' 'python-mako')
 # gpsd?  dpdk?
 provides=('libuhd=3.15.0.0')
-conflicts=('libuhd' 'libuhd-firmware')
+conflicts=('libuhd-firmware>3.15.0.0')
 
 source=("libuhd-$pkgver.tar.gz::https://github.com/EttusResearch/uhd/archive/v$pkgver.tar.gz"
         boost-1.73.patch)
