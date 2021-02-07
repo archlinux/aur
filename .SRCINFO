@@ -1,14 +1,14 @@
 pkgbase = tal-reverb4
 	pkgdesc = A Simple Algorithmic Reverb By TAL Software.
-	pkgver = 2.2.6
-	pkgrel = 2
+	pkgver = 2.3.0
+	pkgrel = 1
 	url = https://tal-software.com
 	arch = x86_64
 	groups = pro-audio
 	groups = vst-plugins
 	license = EULA
 	source = https://tal-software.com/downloads/plugins/TAL-Reverb-4_64_linux.zip
-	md5sums = f7c07bf461491ac95b4fc8655ae49d45
+	md5sums = aaac8dfd891774a80ab1334f928a2753
 
 pkgname = tal-reverb4
 
