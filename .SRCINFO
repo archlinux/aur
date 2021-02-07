@@ -1,0 +1,12 @@
+pkgbase = pop-theme
+	pkgdesc = System76 Pop Theme metapackage
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/pop-os/theme
+	arch = any
+	license = GPL3
+	depends = pop-fonts
+	depends = pop-icon-theme
+	depends = pop-gtk-theme
+
+pkgname = pop-theme
