@@ -3,14 +3,15 @@
 pkgbase=srslte-falcon-patch-git
 pkgname=$pkgbase
 _pkgname=srsLTE
-pkgver=0.1.r3.g1bea0987
+pkgver=0.1.r4.g05747bc40
 pkgrel=1
 pkgdesc='Open source SDR LTE software suite from Software Radio Systems (SRS) - patched for FALCON'
 arch=('x86_64')
 url='https://github.com/falkenber9/srsLTE'
 license=('AGPL3')
 depends=('fftw' 'mbedtls' 'boost-libs' 'lksctp-tools' 'libconfig'
-         'libuhd' 'soapysdr' 'bladerf' 'zeromq' 'pcsclite' 'srsgui')
+         'libuhd3' 'soapysdr' 'bladerf' 'zeromq' 'pcsclite' 'srsgui')
+optdepends=('libuhd-firmware3')
 makedepends=('git' 'cmake' 'boost')
 provides=('srslte-falcon-patch' 'srslte=18.09.0' 'srsue' 'srsenb' 'srsenb')
 conflicts=('srslte-falcon-patch' 'srslte' 'srsue' 'srsenb' 'srsenb')

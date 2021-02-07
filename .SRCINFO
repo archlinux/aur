@@ -1,6 +1,6 @@
 pkgbase = srslte-falcon-patch-git
 	pkgdesc = Open source SDR LTE software suite from Software Radio Systems (SRS) - patched for FALCON
-	pkgver = 0.1.r3.g1bea0987
+	pkgver = 0.1.r4.g05747bc40
 	pkgrel = 1
 	url = https://github.com/falkenber9/srsLTE
 	arch = x86_64
@@ -13,12 +13,13 @@ pkgbase = srslte-falcon-patch-git
 	depends = boost-libs
 	depends = lksctp-tools
 	depends = libconfig
-	depends = libuhd
+	depends = libuhd3
 	depends = soapysdr
 	depends = bladerf
 	depends = zeromq
 	depends = pcsclite
 	depends = srsgui
+	optdepends = libuhd-firmware3
 	provides = srslte-falcon-patch
 	provides = srslte=18.09.0
 	provides = srsue
