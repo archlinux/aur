@@ -1,2 +1,6 @@
-/*.pkg.tar.*
-/zoxide*.tar.gz
+# Whitelist
+!PKGBUILD
+!.SRCINFO
+
+# Blacklist
+*
