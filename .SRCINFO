@@ -1,7 +1,7 @@
 pkgbase = xplico
 	pkgdesc = Internet Traffic Decoder. Network Forensic Analysis Tool (NFAT)
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.xplico.org/
 	install = xplico.install
 	arch = i686
@@ -31,9 +31,11 @@ pkgbase = xplico
 	optdepends = ghostpdl: reconstruct document printed with network printer
 	optdepends = videosnarf: decode VoIP based on RTP
 	source = https://github.com/xplico/xplico/archive/v.1.2.2.tar.gz
+	source = init-detection.patch
 	source = json-c.patch
-	md5sums = 62013c924ecfd139b55e984fb95959ea
-	md5sums = 6184aa02ac099750cdc35b86dfd865e9
+	sha256sums = 9f9ba1ac038eedcb91c13a1879393f511e90a4f749de83ad40c57413369f9056
+	sha256sums = a365905058d0dd29169011be41bf7fd1eb7f9c775e01788fd3637c803a314088
+	sha256sums = 17e363bfe2d9bf1faec5ccbe6d3c7480e8510c9cb14fd056a117329dff4fa94a
 
 pkgname = xplico
 
