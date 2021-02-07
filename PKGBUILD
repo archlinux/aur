@@ -2,14 +2,14 @@
 
 pkgname=kradio
 pkgver=5.0.0_beta1
-pkgrel=2
+pkgrel=3
 pkgdesc='Comfortable KDE Frameworks 5 internet and AM/FM radio application'
 arch=('i686' 'x86_64')
 url='http://kradio.sourceforge.net/'
 license=('GPL2')
 depends=('alsa-lib' 'ffmpeg' 'kdesignerplugin' 'libmms' 'libsndfile' 'plasma-framework' 'qt5-base')
 optdepends=('lirc' 'lame' 'libvorbis')
-makedepends=('cmake' 'boost')
+makedepends=('cmake' 'boost' 'extra-cmake-modules')
 replaces=('kradio' 'kradio-git')
 conflicts=('kradio' 'kradio-git')
 install="${pkgname}.install"

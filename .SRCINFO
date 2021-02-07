@@ -1,7 +1,7 @@
 pkgbase = kradio
 	pkgdesc = Comfortable KDE Frameworks 5 internet and AM/FM radio application
 	pkgver = 5.0.0_beta1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://kradio.sourceforge.net/
 	install = kradio.install
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = kradio
 	license = GPL2
 	makedepends = cmake
 	makedepends = boost
+	makedepends = extra-cmake-modules
 	depends = alsa-lib
 	depends = ffmpeg
 	depends = kdesignerplugin
