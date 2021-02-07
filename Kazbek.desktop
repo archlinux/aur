@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Kazbek
+Exec=Kazbek
+Terminal=false
+StartupNotify=false
+GenericName=Librewave Irish Woodwinds Plugin Standalone
+Categories=AudioVideo;Audio;
