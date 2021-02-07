@@ -1,0 +1,15 @@
+pkgbase = minetest-mineclone2-git
+	pkgdesc = Voxel-based sandbox game for Minetest (git)
+	pkgver = 0.70.0.r167.g26037157
+	pkgrel = 1
+	url = https://git.minetest.land/MineClone2/MineClone2
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = minetest-common
+	provides = minetest-mineclone2
+	conflicts = minetest-mineclone2
+	source = git+https://git.minetest.land/MineClone2/MineClone2.git
+	md5sums = SKIP
+
+pkgname = minetest-mineclone2-git
