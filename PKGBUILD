@@ -36,7 +36,18 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   install -dm755 "${pkgdir}/opt" "${pkgdir}/usr/bin"
-  cp -r --preserve=mode "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked" "${pkgdir}/opt/${pkgname}"
+
+  if [[ ${CARCH} == "aarch64" ]]; then
+    _unpacked_dirname="linux-arm64-unpacked"
+  elif [[ ${CARCH} == "armv7h" ]]; then
+    _unpacked_dirname="linux-armv7l-unpacked"
+  elif [[ ${CARCH} == "i686" ]]; then
+    _unpacked_dirname="linux-ia32-unpacked"
+  elif [[ ${CARCH} == "x86_64" ]]; then
+    _unpacked_dirname="linux-unpacked"
+  fi
+
+  cp -r --preserve=mode "${srcdir}/${pkgname}-${pkgver}/dist/${_unpacked_dirname}" "${pkgdir}/opt/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   for _file in "${srcdir}/${pkgname}-${pkgver}/build/icons/"*.png
   do
