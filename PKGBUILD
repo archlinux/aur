@@ -19,8 +19,10 @@ options=(!strip staticlibs)
 #_commit=067fc32968b601493f4b247a3ac00caeea3f3d61
 #source=(git+https://sourceware.org/git/glibc.git#commit=$_commit
 source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz
+        bz27343.patch
         wine-lol-poc1-glibc.diff::https://bugs.winehq.org/attachment.cgi?id=64482)
 md5sums=('390bbd889c7e8e8a7041564cb6b27cca'
+         'cfe57018d06bf748b8ca1779980fef33'
          '65e6d204ab9ad787c8dce999c4ba5c17')
 
 prepare() {
@@ -29,14 +31,8 @@ prepare() {
   [[ -d glibc-$pkgver ]] && ln -s glibc-$pkgver glibc
   cd glibc
 
-  local i; for i in ${source[@]}; do
-    case ${i%::*} in
-      *.patch)
-        echo "  -> Applying ${i}"
-        patch -p1 -i "$srcdir/${i}"
-        ;;
-    esac
-  done
+  # commit c3479fb7939898ec22c655c383454d6e8b982a67
+  patch -p1 -i "$srcdir"/bz27343.patch
 
   # Add wine-lol glibc hack
   patch -p1 -i "$srcdir/wine-lol-poc1-glibc.diff"

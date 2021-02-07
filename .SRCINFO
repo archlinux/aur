@@ -17,8 +17,10 @@ pkgbase = wine-lol-glibc
 	options = !strip
 	options = staticlibs
 	source = https://ftp.gnu.org/gnu/glibc/glibc-2.33.tar.xz
+	source = bz27343.patch
 	source = wine-lol-poc1-glibc.diff::https://bugs.winehq.org/attachment.cgi?id=64482
 	md5sums = 390bbd889c7e8e8a7041564cb6b27cca
+	md5sums = cfe57018d06bf748b8ca1779980fef33
 	md5sums = 65e6d204ab9ad787c8dce999c4ba5c17
 
 pkgname = wine-lol-glibc
