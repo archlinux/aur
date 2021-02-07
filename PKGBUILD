@@ -2,7 +2,7 @@
 
 pkgname=netsoc
 pkgdesc="Netsoc CLI"
-pkgver=0.3.7
+pkgver=0.4.0
 pkgrel=1
 arch=('x86_64')
 url="https://netsoc.ie"
@@ -10,7 +10,7 @@ license=('GPL-3')
 depends=('glibc')
 makedepends=('go' 'rsync' 'git')
 source=(https://github.com/netsoc/cli/archive/v${pkgver}/v${pkgver}.tar.gz)
-sha512sums=('a61b325d91a891d1d7619f127768816f9f1c1d783d3d6f8ba5e38c4f0b2703b103fd817ab9d745762e742afd7a07b7598fd1464a308099f1978ae151e83af3db')
+sha512sums=('07a6c676e0088e26dcbf63dfd70ee74365d48709edff5a74a349ee7156cbda88ac2c927ef0417b531b26b0b64e3e169d381022e37ebbe33dca11649cd8cf4f0c')
 
 build() {
   cd cli-${pkgver}
