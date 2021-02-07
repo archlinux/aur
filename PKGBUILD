@@ -11,7 +11,7 @@ url="https://www.ettus.com/kb/category/software-documentation/uhd-manual"
 license=('GPL')
 depends=('libuhd3')
 provides=('libuhd-firmware=3.15.0.0')
-conflicts=('libuhd-firmware')
+conflicts=('libuhd-firmware' 'libuhd')
 source=("https://github.com/EttusResearch/uhd/releases/download/v$pkgver/uhd-images_$pkgver.tar.xz")
 md5sums=('438c3ae14ef05d472bab6f00b5de422a')
 
