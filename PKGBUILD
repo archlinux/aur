@@ -2,7 +2,7 @@
 # Maintainer: Leon De Andrade <leondeandrade@hotmail.com>
 
 pkgname=theia-electron
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 arch=('any')
 url='https://www.theia-ide.org/'
@@ -22,7 +22,7 @@ source=(
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/LICENSE"
 )
 md5sums=('5a26cc7b1b461bec8533266dbe64c87e'
-         'c308320e66044089fc2ce2301f817b4e'
+         '9b7fba5b86132481366ccc002d27c6ba'
          '8a3461a9d1c50f6bfe60902d020bb797'
          'd387a0df41b11ba3d33360812bfbbe2c'
          '1dde0e422484895d3509f4ee9bb8d980'
