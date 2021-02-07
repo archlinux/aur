@@ -1,15 +1,10 @@
-diff -rupN Pike-v8.0.702/src/configure Pike-v8.0.702b/src/configure
---- Pike-v8.0.702/src/configure	2018-10-06 18:14:05.000000000 -0400
-+++ Pike-v8.0.702b/src/configure	2018-11-01 15:06:27.484431088 -0400
-@@ -63888,39 +63888,6 @@ fi
- CONF_CPPFLAGS_EXTRA="-I$srcdir -I`pwd`"
- CPPFLAGS="${CPPFLAGS} ${CONF_CPPFLAGS_EXTRA}"
- 
--# We want to know if we ought to append any abi indicator to the libdir.
--{ $as_echo "$as_me:${as_lineno-$LINENO}: checking if an abi indicator would be appropriate for libdir" >&5
--$as_echo_n "checking if an abi indicator would be appropriate for libdir... " >&6; }
--if ${pike_cv_lib_abi+:} false; then :
--  $as_echo_n "(cached) " >&6
+diff -rupN Pike-v8.0.1116/src/configure Pike-v8.0.1116b/src/configure
+--- Pike-v8.0.1116/src/configure	2020-12-15 13:51:14.000000000 -0500
++++ Pike-v8.0.1116b/src/configure	2021-02-06 23:16:10.401228493 -0500
+@@ -63941,19 +63941,6 @@ CPPFLAGS="${CPPFLAGS} ${CONF_CPPFLAGS_EX
+ $as_echo_n "checking if an abi indicator would be appropriate for libdir... " >&6; }
+ if ${pike_cv_lib_abi+:} false; then :
+   $as_echo_n "(cached) " >&6
 -else
 -
 -  pike_cv_lib_abi=""
@@ -23,55 +18,6 @@ diff -rupN Pike-v8.0.702/src/configure Pike-v8.0.702b/src/configure
 -    done
 -  done
 -
--fi
--
--{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $pike_cv_lib_abi" >&5
--$as_echo "$pike_cv_lib_abi" >&6; }
--
--{ $as_echo "$as_me:${as_lineno-$LINENO}: checking what libdir should be set to" >&5
--$as_echo_n "checking what libdir should be set to... " >&6; }
--if test "x$pike_cv_lib_abi" = "x"; then :;
--elif test -d `eval echo "$libdir$pike_cv_lib_abi/."` -o \
--        "x$libdir" = 'x${exec_prefix}/lib'; then
--  libdir="$libdir$pike_cv_lib_abi"
--fi
--{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $libdir" >&5
--$as_echo "$libdir" >&6; }
--
- #############################################################################
+ fi
  
- ## At this point we have at last initialized the compiler!
-diff -rupN Pike-v8.0.702/src/configure.in Pike-v8.0.702b/src/configure.in
---- Pike-v8.0.702/src/configure.in	2018-05-19 07:14:33.000000000 -0400
-+++ Pike-v8.0.702b/src/configure.in	2018-11-01 15:07:04.299758352 -0400
-@@ -2745,30 +2745,6 @@ fi
- CONF_CPPFLAGS_EXTRA="-I$srcdir -I`pwd`"
- CPPFLAGS="${CPPFLAGS} ${CONF_CPPFLAGS_EXTRA}"  
- 
--# We want to know if we ought to append any abi indicator to the libdir.
--AC_MSG_CHECKING(if an abi indicator would be appropriate for libdir)
--AC_CACHE_VAL(pike_cv_lib_abi, [
--  pike_cv_lib_abi=""
--  for dd in "$with_root/lib" "$with_root/usr/lib" "$prefix/lib"; do
--    for d in $pike_cv_abi_suffixes; do
--      if test "x$d" = "x/."; then :;
--      elif test -d "$dd$d/."; then
--        pike_cv_lib_abi="$d"
--	break
--      fi
--    done
--  done
--])
--AC_MSG_RESULT($pike_cv_lib_abi)
--
--AC_MSG_CHECKING(what libdir should be set to)
--if test "x$pike_cv_lib_abi" = "x"; then :;
--elif test -d `eval echo "$libdir$pike_cv_lib_abi/."` -o \
--        "x$libdir" = 'x${exec_prefix}/lib'; then
--  libdir="$libdir$pike_cv_lib_abi"
--fi
--AC_MSG_RESULT($libdir)
--
- #############################################################################
- 
- ## At this point we have at last initialized the compiler!
+ { $as_echo "$as_me:${as_lineno-$LINENO}: result: $pike_cv_lib_abi" >&5
