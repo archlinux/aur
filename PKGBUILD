@@ -1,17 +1,17 @@
-# Maintainer: Stephen Argent <steve [at] tuxcon [dot] com>
+# Maintainer: Pablo Gómez Poch <pablogomez [at] pablogomez [dot] com>
 
 pkgname=neon-wallet-bin
 pkgdesc='Lightweight Wallet for the NEO CryptoCurrency'
 license=('MIT')
 url='https://github.com/CityOfZion/neon-wallet'
-pkgver=2.5.0
+pkgver=2.6.2
 pkgrel=1
 arch=('x86_64')
-deb_package="Neon-${pkgver}_amd64.Linux.deb"
+deb_package="Neon.${pkgver}.deb"
 source_x86_64=(
-  "${url}/releases/download/${pkgver}/${deb_package}"
+  "${url}/releases/download/v${pkgver}/${deb_package}"
 )
-sha256sums_x86_64=(e7e90dd686a9028b56d9c5326b79099d6ac6831412b482d0bcdfbbb888e11102)
+sha256sums_x86_64=(c55183ce8925ea545fe7678edf2c1cd96484c5d1bfbad4002e9b36543467ae19)
 
 install=neon-wallet-bin.install
 
@@ -27,4 +27,3 @@ package() {
   ar xf "$deb_package"
   tar xf data.tar.xz -C "$pkgdir"
 }
-
