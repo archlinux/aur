@@ -1,4 +1,5 @@
 # Maintainer: agilob <archlinux@agilob.net>
+# Maintainer: Mario Ortiz Manero <marioortizmanero@gmail.com>
 _pkgname=nault
 pkgname="${_pkgname}-bin"
 pkgver=1.9.6
