@@ -1,7 +1,7 @@
 pkgbase = libjpeg-xl
 	pkgdesc = JPEG XL image format reference implementation
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jpeg.org/jpegxl/
 	arch = x86_64
 	license = Apache
