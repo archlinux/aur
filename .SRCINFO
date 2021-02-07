@@ -8,7 +8,6 @@ pkgbase = libuhd-firmware3
 	depends = libuhd3
 	provides = libuhd-firmware=3.15.0.0
 	conflicts = libuhd-firmware
-	conflicts = libuhd
 	source = https://github.com/EttusResearch/uhd/releases/download/v3.15.0.0/uhd-images_3.15.0.0.tar.xz
 	md5sums = 438c3ae14ef05d472bab6f00b5de422a
 
