@@ -62,18 +62,6 @@ pkgname = xorg-server-rootless-nosystemd-minimal
 	replaces = glamor-egl
 	replaces = xf86-video-modesetting
 
-pkgname = xorg-server-xwayland-rootless-nosystemd-minimal
-	pkgdesc = run X clients under wayland
-	depends = libxfont2
-	depends = libepoxy
-	depends = libgl
-	depends = pixman
-	depends = xorg-server-common
-	depends = nettle
-	optdepends = libunwind: unwind backtrace support
-	provides = xorg-server-xwayland
-	conflicts = xorg-server-xwayland
-
 pkgname = xorg-server-common-rootless-nosystemd-minimal
 	pkgdesc = Xorg server common files
 	depends = xkeyboard-config
