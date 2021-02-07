@@ -2,12 +2,12 @@
 _npmname=tailwindcss
 pkgname=tailwind-css
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility-first CSS framework for rapid UI development"
 arch=(any)
 url="https://tailwindcss.com/"
 license=(MIT)
-depends=('nodejs')
+depends=('nodejs' 'nodejs-autoprefixer' 'nodejs-postcss')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
