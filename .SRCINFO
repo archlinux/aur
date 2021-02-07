@@ -1,6 +1,6 @@
 pkgbase = guile-json
 	pkgdesc = JSON module for Guile
-	pkgver = 4.3.2
+	pkgver = 4.5.2
 	pkgrel = 1
 	url = https://savannah.nongnu.org/projects/guile-json
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = guile-json
 	arch = armv7h
 	license = GPL3
 	depends = guile
-	source = https://download.savannah.gnu.org/releases/guile-json/guile-json-4.3.2.tar.gz
-	sha256sums = c2272aebf79435ad3aaaf6d1ed6c9287f8d1dde2fdc28f6bbae48f02dc61a508
+	source = https://download.savannah.gnu.org/releases/guile-json/guile-json-4.5.2.tar.gz
+	sha256sums = 1ab046ec36b1c44c041ac275568d818784d71fab9a5d95f9128cfe8a25051933
 
 pkgname = guile-json
 
