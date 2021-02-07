@@ -21,7 +21,7 @@ pkgname=(
   "$pkgbase" "$pkgbase-x11" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=r57033.af9b6445fda
+pkgver=r57035.fe9b5698096
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -173,7 +173,7 @@ build() {
   cd "$srcdir/kodi-build-gbm"
   _args+=(
     -DCORE_PLATFORM_NAME=gbm
-    -DAPP_RENDER_SYSTEM=gles
+    -DAPP_RENDER_SYSTEM=gl
   )
 
   cmake "${_args[@]}" ../xbmc
