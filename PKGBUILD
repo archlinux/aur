@@ -92,6 +92,7 @@ prepare() {
 }
 
 build() {
+  export CFLAGS=""
   cd "$srcdir/oss/build"
   ../configure --config-midi=YES
   make build
