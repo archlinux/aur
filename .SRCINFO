@@ -1,6 +1,6 @@
 pkgbase = freecad-linkstage3-git
 	pkgdesc = A general purpose 3D CAD modeler - LinkStage3 dev branch, git checkout
-	pkgver = asm3.0.11.r3435.gb7d3346e00
+	pkgver = asm3.0.11.r4461.ge6c5ae83e2
 	pkgrel = 1
 	url = http://www.freecadweb.org/
 	arch = x86_64
@@ -36,16 +36,15 @@ pkgbase = freecad-linkstage3-git
 	depends = python-pyside2
 	depends = python-matplotlib
 	depends = pyside2-tools
+	depends = shiboken2
 	optdepends = python-matplotlib
 	optdepends = graphviz
 	optdepends = openscad
 	conflicts = freecad
 	source = git+https://github.com/realthunder/FreeCAD.git#branch=LinkStage3
 	source = patch_std_gnupp14.patch
-	source = patch_boost_placeholders.patch
 	sha256sums = SKIP
 	sha256sums = d2a3a4c157741089c5ffbdd7c502be04414b8256081cd01208c94f2b0ed06ce3
-	sha256sums = 84b9f47fd643a5b01a9b5af8bd1e75c94842d8b564613286e2f145a85793a91e
 
 pkgname = freecad-linkstage3-git
 

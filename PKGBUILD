@@ -1,7 +1,7 @@
 # Maintainer: Salamandar <felix@piedallu.me>
 
 pkgname=freecad-linkstage3-git
-pkgver=asm3.0.11.r3435.gb7d3346e00
+pkgver=asm3.0.11.r4461.ge6c5ae83e2
 pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler - LinkStage3 dev branch, git checkout'
 arch=('x86_64')
@@ -13,22 +13,13 @@ depends=(
     'boost-libs' 'curl' 'opencascade>=7.2' 'xerces-c' 'libspnav' 'glew' 'netcdf'
     'shared-mime-info' 'hicolor-icon-theme' 'jsoncpp' 'qt5-base' 'qt5-declarative'
     'qt5-svg' 'qt5-tools' 'qt5-x11extras' 'qt5-xmlpatterns' 'qt5-webkit' 'med' 'python-pivy'
-    'python-pyside2' 'python-matplotlib' 'pyside2-tools'
-
-
+    'python-pyside2' 'python-matplotlib' 'pyside2-tools' 'shiboken2'     
+    # 'netgen-git'
+    # 'pybind11'
     # 'calculix'
     # 'coin'
     # 'gmsh'
-    # 'netgen-git'
     # 'vtk'
-    # 'shiboken2'
-    #
-    # # libxmu-dev
-    # # libxmu-headers
-    # # libxmu6
-    # # libxmuu-dev
-    # # libxmuu1
-    #
     # 'python-shiboken2'
 
 )
@@ -49,12 +40,10 @@ _gitname='FreeCAD'
 source=(
     "git+https://github.com/realthunder/FreeCAD.git#branch=LinkStage3"
     'patch_std_gnupp14.patch'
-    'patch_boost_placeholders.patch'
 )
 sha256sums=(
     'SKIP'
     'd2a3a4c157741089c5ffbdd7c502be04414b8256081cd01208c94f2b0ed06ce3'
-    '84b9f47fd643a5b01a9b5af8bd1e75c94842d8b564613286e2f145a85793a91e'
 )
 
 
@@ -66,7 +55,6 @@ pkgver() {
 prepare() {
     cd "${srcdir}/${_gitname}"
     git apply < "$srcdir/patch_std_gnupp14.patch"
-    git apply < "$srcdir/patch_boost_placeholders.patch"
 }
 
 build() {
@@ -108,7 +96,7 @@ package() {
         ln -sf "/usr/lib/freecad/bin/FreeCADCmd"    "usr/bin/FreeCADCmd"
 
         # Move data from /usr/lib/freecad/share to /usr/share
-        mv "usr/lib/freecad/share/"{icons,pixmaps,mime,metainfo,applications} \
+        mv "usr/lib/freecad/share/"{icons,pixmaps,mime,metainfo,applications,thumbnailers} \
             "usr/share"
 
         rmdir "usr/lib/freecad/share"
