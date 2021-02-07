@@ -1,0 +1,22 @@
+pkgbase = parallel-launcher
+	pkgdesc = A simple easy-to-use launcher for the ParallelN64 and Mupen64Plus-Next emulators
+	pkgver = 2.0.2
+	pkgrel = 0
+	url = https://blueprint64.ca/parallel-launcher
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc
+	makedepends = qt5-declarative
+	makedepends = make
+	depends = glibc
+	depends = libstdc++5
+	depends = gcc-libs
+	depends = qt5-base
+	depends = qt5-svg
+	depends = sdl2
+	depends = findutils
+	source = parallel-launcher-2.0.2.tar.gz
+	md5sums = 57d25f68a1518ccb9ed37bb68a0ee908
+
+pkgname = parallel-launcher
+
