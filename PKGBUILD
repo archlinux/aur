@@ -1,6 +1,6 @@
 pkgname=video-downloader-git
 _pkgname=video-downloader
-pkgver=0.6.1+14+gc50fb79
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="GTK application to download videos from websites like YouTube and many others (based on youtube-dl)"
 arch=(any)
@@ -10,7 +10,7 @@ depends=('gtk3' 'python-gobject' 'youtube-dl')
 makedepends=('git' 'meson')
 provides=('video-downloader')
 conflicts=('video-downloader')
-source=("git+https://github.com/GustavoPeredo/video-downloader")
+source=("git+https://github.com/Unrud/video-downloader.git/")
 b2sums=('SKIP')
 
 pkgver() {
