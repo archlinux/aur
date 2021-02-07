@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/PapyElGringo/material-shell"
 license=('GPL')
 depends=('gnome-shell')
-makedepends=('git')
+makedepends=('git' 'npm')
 optdepends=('plata-theme: gtk and shell theme'
             'tela-icon-theme-git: icon theme'
             'ttf-roboto: font')
@@ -20,7 +20,14 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+    cd material-shell
+    npm install --cache "${srcdir}/npm-cache"
+    make compile
+}
+
 package() {
-  mkdir -p "$pkgdir/usr/share/gnome-shell/extensions/material-shell@papyelgringo/"
-  cp -r material-shell/. "$pkgdir/usr/share/gnome-shell/extensions/material-shell@papyelgringo/"
+    cd material-shell
+    install -d $pkgdir/usr/share/gnome-shell/extensions/material-shell@papyelgringo/
+    cp -r dist/* $pkgdir/usr/share/gnome-shell/extensions/material-shell@papyelgringo/
 }
