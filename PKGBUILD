@@ -64,8 +64,8 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.10.13
-pkgrel=3
+pkgver=5.10.14
+pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -83,20 +83,20 @@ source=(
   "http://ck.kolivas.org/patches/5.0/5.10/5.10-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch
-  0003-Revert-SUNRPC-Handle-TCP-socket-sends-with-kernel_se.patch
+  0003-SUNRPC-Fix-NFS-READs-the-start-at-non-page-aligned-o.patch::https://github.com/torvalds/linux/commit/bad4c6eb5eaa8300e065bd4426727db5141d687d.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('f2d6f5512c10ced0990d0d0cbc1aa29e5b54b90bff01f16d16093e9c192de9eb0f31e60c9dd51c686ce88c2a1d89a49bedb503af61c91a6a186794fbe71eedde'
+b2sums=('34ba86c15532eff73ed3cd5d34bb125a534776425a98c43ceff187a9f950c4a12afbe35c5e63306150cdeff5d4e43c5094182d6533381661fe6e5ce82aeaed16'
         'SKIP'
         '23b4034c8a462fe10ae3d6d9cd57a16b743576e831379e075625262c26e597f6b289aff6962509d73774b3cc03b78884651ff09d63507c099c0f9f0d6d9b4572'
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
         '067f3389124fdd937ca69e9e9568b1b3194791960a093e81037051eb6d25e80b40bf7f60c61373ac9e92bff9db760766009b1e6f9ee8429a883bb7fce2d60f8a'
         'de81e92b92ba697e472d6397faa425ebcc09bede6c97008dcae47efd341d2eaa12ec72209c4cc97155df01358e1fce3a86d3f0b5441ac91615037de72105defc'
         '9450bd3d4acfa94723eaf22f2c0a13ae3bdb1ceb15ad19d1a1de2fc8d9a7b9b8f759006fd5b4286da135c68bac75791b4bf767ece8b6c40aff95799296ee0327'
-        '4a40db184421fdda2b01efe22adee7a4e1ce82cbc877bfaea5aaaae7215d1fe9aeb307a5241af6b7b9e539ae3d1a26f35adaedce82c61d3edb60f6e0d1673743')
+        'd6bb0e91f5a5d263648b73aacf4e8aa4a7148daee887017a3a8b67ecfda1c3b592a14eeb2ee405535c9bd509c1318a99ab69651a00e62d55a7c8da6fa2b28fa5')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
