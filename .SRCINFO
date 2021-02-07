@@ -1,0 +1,17 @@
+pkgbase = macchina
+	pkgdesc = Basic system information fetcher
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/grtcdr/macchina
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	source = macchina::git+https://github.com/grtcdr/macchina.git
+	md5sums = SKIP
+
+pkgname = macchina
+
