@@ -1,12 +1,14 @@
 pkgbase = tailwind-css
 	pkgdesc = A utility-first CSS framework for rapid UI development
 	pkgver = 2.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tailwindcss.com/
 	arch = any
 	license = MIT
 	makedepends = npm
-	depends = (nodejs nodejs-autoprefixer nodejs-postcss)
+	depends = nodejs 
+	depends = nodejs-autoprefixer 
+	depends = nodejs-postcss
 	noextract = tailwindcss-2.0.2.tgz
 	options = !strip
 	source = https://registry.npmjs.org/tailwindcss/-/tailwindcss-2.0.2.tgz

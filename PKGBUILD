@@ -2,7 +2,7 @@
 _npmname=tailwindcss
 pkgname=tailwind-css
 pkgver=2.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A utility-first CSS framework for rapid UI development"
 arch=(any)
 url="https://tailwindcss.com/"
