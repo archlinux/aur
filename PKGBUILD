@@ -1,4 +1,4 @@
-# Maintainer: Henry Jenkins <henry@henryjenkins.name>
+# Maintainer: Henry Jenkins <archlinux.org@henryjenkins.com>
 # Upstream URL: https://github.com/mhostetter/gr-adsb
 # Modified from gr-osmosdr-git PKGBUILD
 
