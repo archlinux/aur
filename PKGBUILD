@@ -29,7 +29,7 @@ makedepends=('git' 'gulp' 'npm' 'python2' 'yarn' 'nodejs-lts-erbium')
 conflicts=('code')
 provides=('code')
 install='code-transparent.install'
-source=("$_pkgname::git+$url.git#commit=$_commit"
+source=("$_pkgname::git+$url.git"
         'code.js'
         'code.sh'
         'product_json.diff'
@@ -61,14 +61,10 @@ case "$CARCH" in
     ;;
 esac
 
-pkgver() {
-  cd "${srcdir}/code"
-  # Get the version number.
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 prepare() {
   cd $_pkgname
+  
+  git checkout $_commit
 
   # Change electron binary name to the target electron
   sed -i "s|exec electron |exec $_electron |" ../code.sh
