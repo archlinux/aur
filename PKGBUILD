@@ -2,8 +2,8 @@
 
 _name=libpysal
 pkgname=python-libpysal
-pkgver=4.3.0
-pkgrel=3
+pkgver=4.4.0
+pkgrel=1
 pkgdesc="Core components of Python Spatial Analysis Library."
 arch=('any')
 url="https://pysal.org/libpysal/"
@@ -41,7 +41,7 @@ optdepends=(
 )
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('d7cb34aa20f07c93d8f1f12431aa7c6aa9a08b92cc4396022a04fc2086e5d2d7')
+sha256sums=('216eb73a276d9975e604217bd931dc3b7770a6efa95999952d027827fad51e0c')
 
 build() {
   cd "$_name-$pkgver"
