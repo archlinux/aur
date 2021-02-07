@@ -1,6 +1,6 @@
 pkgbase = rudo
 	pkgdesc = A minimal todo manager written in Rust.
-	pkgver = r5.5fa3e03
+	pkgver = r8.f9c5fad
 	pkgrel = 1
 	url = https://github.com/hood/rudo
 	arch = any
