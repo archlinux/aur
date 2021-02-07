@@ -1,0 +1,10 @@
+[Unit]
+Description=Minetest multiplayer server w/ %i.conf server config
+After=syslog.target network.target
+
+[Service]
+User=minetest
+ExecStart=/usr/bin/minetestserver --config /etc/minetest/%i.conf --map-dir /var/lib/minetest/%i/
+
+[Install]
+WantedBy=multi-user.target
