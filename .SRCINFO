@@ -1,16 +1,16 @@
 pkgbase = libbigwig
 	pkgdesc = library for handling bigWig files
-	pkgver = 0.4.4
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://github.com/dpryan79/libBigWig
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = curl
-	source = libbigwig-0.4.4.tar.gz::https://github.com/dpryan79/libBigWig/archive/0.4.4.tar.gz
+	source = libbigwig-0.4.6.tar.gz::https://github.com/dpryan79/libBigWig/archive/0.4.6.tar.gz
 	source = libbigwig-flags.patch
-	sha256sums = 43a2298b2ebadc48103447a3bb4426df1b38d1bec5fa564e50ed2f00cc060478
-	sha256sums = 33be8bbc296c3ff022063d9907ad8975033cd47a5d91b052290507d531abd530
+	sha256sums = eb4ecbd3ae428474a57dab969fa7564ae755310da65be68efa18969e0d132a9e
+	sha256sums = f27db1d7169e8f28130791c6fa8fd33accb9696be5d541880f53b92719f32fb1
 
 pkgname = libbigwig
 

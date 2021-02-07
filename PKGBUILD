@@ -1,8 +1,8 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
-# Contributor: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Christian Krause ("wookietreiber") <kizkizzbangbang at googlemail dot com>
 
 pkgname=libbigwig
-pkgver=0.4.4
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="library for handling bigWig files"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ depends=('curl')
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dpryan79/libBigWig/archive/${pkgver}.tar.gz"
         "libbigwig-flags.patch")
-sha256sums=('43a2298b2ebadc48103447a3bb4426df1b38d1bec5fa564e50ed2f00cc060478'
-            '33be8bbc296c3ff022063d9907ad8975033cd47a5d91b052290507d531abd530')
+sha256sums=('eb4ecbd3ae428474a57dab969fa7564ae755310da65be68efa18969e0d132a9e'
+            'f27db1d7169e8f28130791c6fa8fd33accb9696be5d541880f53b92719f32fb1')
 
 prepare() {
   cd "${srcdir}/libBigWig-${pkgver}"
