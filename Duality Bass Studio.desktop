@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Duality Bass Studio
+Exec="Duality Bass Studio"
+Terminal=false
+StartupNotify=true
+GenericName=Duality Bass Studio Amplifier
+Categories=AudioVideo;Audio;
