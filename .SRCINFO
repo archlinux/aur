@@ -1,0 +1,15 @@
+pkgbase = jupyterlab-extension-ipycytoscape
+	pkgdesc = Python implementation of the graph visualization tool Cytoscape.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://pypi.org/project/ipycytoscape
+	arch = any
+	license = BSD
+	depends = jupyterlab
+	provides = python-ipycytoscape
+	provides = jupyterlab-extension-cytoscape
+	source = https://files.pythonhosted.org/packages/py3/i/ipycytoscape/ipycytoscape-1.2.0-py3-none-any.whl
+	sha256sums = fd69fb4daa9cf339bc8e6cbc11bfcf8a071ca7db7c556c6af9fbc96997f9c138
+
+pkgname = jupyterlab-extension-ipycytoscape
+
