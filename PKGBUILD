@@ -34,4 +34,5 @@ build() {
 package() {
 	cd "$pkgname"
 	install -Dm755 $_pkgname $pkgdir/usr/bin/$_pkgname
+	install -Dm644 README.md $pkgdir/usr/share/doc/$_pkgname/README.md
 }
