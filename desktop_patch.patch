@@ -1,11 +1,11 @@
 *** src/denise/data/denise.desktop	2020-09-29 17:13:07.158276496 -0400
---- /home/tmoment/aur-shit/denise-git/src/denise/data/denise.desktop	2020-09-29 17:13:34.385486671 -0400
+--- /home/swirl/random/denise-git/src/denise/data/denise.desktop	2020-09-29 17:13:34.385486671 -0400
 ***************
 *** 1,7 ****
   [Desktop Entry]
   Name=Denise
   Comment=c64, amiga500 emulator
-! Exec=./.local/bin/Denise
+! Exec=Denise %F
   Icon=denise.png
   Terminal=false
   Type=Application
@@ -13,7 +13,7 @@
   [Desktop Entry]
   Name=Denise
   Comment=c64, amiga500 emulator
-! Exec=/usr/bin/denise
+! Exec=denise %F
   Icon=denise.png
   Terminal=false
   Type=Application

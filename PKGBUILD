@@ -5,12 +5,12 @@ _pkgname='denise'
 pkgdesc='Highly accurate C64/Amiga emulator - Git version'
 url='https://sourceforge.net/projects/deniseemu/'
 license=('GPL')
-pkgver=v1.0.8.r87.ge762b97
+pkgver=v1.0.9.1.r80.gf6e8564
 pkgrel=1
 source=('git+https://bitbucket.org/piciji/denise.git'
 	'desktop_patch.patch')
 md5sums=('SKIP'
-         '57968555fbd04753fc56d27977f28c18')
+         '06a239a04fa746ba7465cfe516a00a61')
 provides=('denise')
 conflicts=('denise-bin')
 depends=('sdl2' 'gtk3')
