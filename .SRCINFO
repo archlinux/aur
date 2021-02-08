@@ -1,6 +1,6 @@
 pkgbase = python-babelfont
 	pkgdesc = Interrogate and manipulate UFO, TTF and OTF fonts with a common interface
-	pkgver = 0.0.2
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/simoncozens/babelfont
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-babelfont
 	depends = python-defcon
 	depends = python-fontparts
 	depends = python-fonttools
-	source = python-babelfont-0.0.2.tar.gz::https://github.com/simoncozens/babelfont/archive/v0.0.2.tar.gz
-	sha256sums = eff455d733eab1f1ad9cf45f28301a98fa19878b40254f0d497d8cca9c243a59
+	source = https://files.pythonhosted.org/packages/source/b/babelfont/babelfont-2.0.1.tar.gz
+	sha256sums = 5678699d6f405dd0809dea66c0ac5ee90643fc894b64970fa1762e446b0219a8
 
 pkgname = python-babelfont
 
