@@ -1,0 +1,9 @@
+#!/bin/sh
+if [ -z "$XDG_CONFIG_HOME" ]; then
+	export XDG_CONFIG_HOME="$HOME/.config"
+fi
+if [ -z "$ENSENSO_INSTALL" ]; then
+	export ENSENSO_INSTALL="$XDG_CONFIG_HOME/ensenso"
+fi
+
+exec /opt/ensenso/bin/NxTreeEdit "$@"
