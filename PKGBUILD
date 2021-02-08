@@ -4,7 +4,7 @@
 # This package is built according to the AUR Go packaging guidelines:
 # https://wiki.archlinux.org/index.php/Go_package_guidelines
 pkgname=mage
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="A Make/rake-like build tool using Go"
 arch=("x86_64")
@@ -25,10 +25,12 @@ build() {
   # file that is recommended by the author.
   # The file builds mage when mage itself is not installed on the target system yet and included metadata information
   # for the binary.
-  # See:
-  #   - https://github.com/magefile/mage/blob/5bc3a8ab/magefile.go#L55
-  #   - https://github.com/magefile/mage/blob/5bc3a8ab/magefile.go#L95
-  #   - https://github.com/magefile/mage/blob/5bc3a8ab/.goreleaser.yml#L29
+  #
+  # References:
+  #   1. https://github.com/magefile/mage/blob/bf7f17a5/bootstrap.go
+  #   1. https://github.com/magefile/mage/blob/07afc7d2/magefile.go#L65
+  #   2. https://github.com/magefile/mage/blob/07afc7d2/magefile.go#L103
+  #   3. https://github.com/magefile/mage/blob/5bc3a8ab/.goreleaser.yml#L28
   local build_date git_commit_hash git_tag
   build_date=$(command date --rfc-3339=seconds)
   git_commit_hash=$(git rev-parse --short HEAD)
