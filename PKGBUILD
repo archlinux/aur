@@ -8,10 +8,10 @@ url='https://github.com/AlexAplin/nndownload'
 license=('MIT')
 depends=('python'
          'python-aiohttp'
-		 'python-aiohttp-socks'
-		 'python-beautifulsoup4'
-		 'python-requests'
-		 'python-mutagen')
+         'python-aiohttp-socks'
+         'python-beautifulsoup4'
+         'python-requests'
+         'python-mutagen')
 makedepends=('python-setuptools'
              'dos2unix')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
