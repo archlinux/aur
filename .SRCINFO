@@ -11,6 +11,7 @@ pkgbase = denise-git
 	depends = gtk3
 	provides = denise
 	conflicts = denise-bin
+	conflicts = denise
 	source = git+https://bitbucket.org/piciji/denise.git
 	source = desktop_patch.patch
 	md5sums = SKIP

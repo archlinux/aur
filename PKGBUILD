@@ -12,7 +12,7 @@ source=('git+https://bitbucket.org/piciji/denise.git'
 md5sums=('SKIP'
          '06a239a04fa746ba7465cfe516a00a61')
 provides=('denise')
-conflicts=('denise-bin')
+conflicts=('denise-bin' 'denise')
 depends=('sdl2' 'gtk3')
 makedepends=('git')
 arch=('i686' 'x86_64')
