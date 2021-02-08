@@ -1,8 +1,8 @@
 pkgbase = tkpacman
 	pkgdesc = A lightweight GUI for pacman built with Tcl/Tk
 	pkgver = 1.9.1
-	pkgrel = 1
-	url = http://sourceforge.net/projects/tkpacman
+	pkgrel = 2
+	url = https://sourceforge.net/projects/tkpacman
 	arch = any
 	license = GPL
 	depends = tcl>=8.6.0
@@ -15,7 +15,7 @@ pkgbase = tkpacman
 	optdepends = mate-terminal: alternative terminal emulator
 	optdepends = konsole: alternative terminal emulator
 	optdepends = qterminal: alternative terminal emulator
-	source = http://downloads.sourceforge.net/tkpacman/tkpacman-1.9.1/tkpacman-1.9.1.tar.gz
+	source = https://downloads.sourceforge.net/tkpacman/tkpacman-1.9.1/tkpacman-1.9.1.tar.gz
 	md5sums = 1f54ca16727a87aebc2e55edd205529e
 
 pkgname = tkpacman
