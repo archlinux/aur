@@ -1,0 +1,14 @@
+post_install() {
+	xdg-icon-resource forceupdate
+	xdg-mime install /usr/share/blueprint64/bbp-mime.xml
+	update-desktop-database /usr/share/applications
+}
+
+pre_remove() {
+	xdg-mime uninstall /usr/share/blueprint64/bbp-mime.xml
+}
+
+post_remove() {
+	xdg-icon-resource forceupdate
+	update-desktop-database /usr/share/applications
+}
