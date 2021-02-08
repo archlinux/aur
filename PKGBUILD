@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=cachem
-_cranver=1.0.2
+_cranver=1.0.3
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(MIT)
 depends=(r r-rlang r-fastmap)
 optdepends=(r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('8474eec3f4f68ff20da2ef4556d0e986ae6fe468b31b74398890aa3b0fb15641')
+sha256sums=('79dc9746366550e07132ac97d77632b70f9e8ce9493f84ed607b584f4d5a7278')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
