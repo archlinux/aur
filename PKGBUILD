@@ -49,7 +49,8 @@ makedepends=(
 	'meson')
 
 optdepends=('wayland-protocols: xwayland support'
-	    'egl-wayland: xwayland support')
+	    'egl-wayland: xwayland support'
+            'xorg-xinit: startx support')
 
 build() {
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
