@@ -1,31 +1,42 @@
 # Random-pick one mirror
 ## Use this with pacman 6+ parallel downloads
 #Server = http://random.mirror.chaotic.cx/$repo/$arch
+#Server = https://random-mirror.chaotic.cx/$repo/$arch
 
 # Brazil
-## By: UFSCar (dead right now) -- alias: usfcar.mirror.chaotic.cx
+## By: UFSCar (dead right now) -- alias: ufscar-mirror.chaotic.cx
 #Server = http://br-sp.mirror.chaotic.cx/$repo/$arch
+#Server = https://br-sp-mirror.chaotic.cx/$repo/$arch
 
 # USA
-## By: GarudaLinux and Fosshost -- alias: garuda.mirror.chaotic.cx
+## By: GarudaLinux and Fosshost -- alias: garuda-mirror.chaotic.cx
 Server = http://us-tx.mirror.chaotic.cx/$repo/$arch
-## By: LordKitsuna -- alias: kitsuna.mirror.chaotic.cx
+#Server = http://us-tx.mirror.chaotic.cx/$repo/$arch
+
+## By: LordKitsuna -- alias: kitsuna-mirror.chaotic.cx
 Server = http://us-wa.mirror.chaotic.cx/$repo/$arch
+#Server = https://us-wa-mirror.chaotic.cx/$repo/$arch
 
 # Netherlands
-## By: Var Bhat and LiteServer -- alias: varbhat.mirror.chaotic.cx 
+## By: Var Bhat and LiteServer -- alias: varbhat-mirror.chaotic.cx 
 Server = http://nl.mirror.chaotic.cx/$repo/$arch
+#Server = https://nl-mirror.chaotic.cx/$repo/$arch
 
 # Burgos, Spain
-## By: JKANetwork -- alias: jkanetwork.mirror.chaotic.cx
+## By: JKANetwork -- alias: jkanetwork-mirror.chaotic.cx
 Server = http://es.mirror.chaotic.cx/$repo/$arch
+#Server = https://es-mirror.chaotic.cx/$repo/$arch
 
 # Germany
 ## By: Nico -- alias: dr460nf1r3.mirror.chaotic.cx 
 Server = http://de-1.mirror.chaotic.cx/$repo/$arch
-## By: ParanoidBangL (not HTTPS) -- alias bangl.mirror.chaotic.cx
+#Server = https://de-1-mirror.chaotic.cx/$repo/$arch
+
+## By: ParanoidBangL (without HTTPS) -- alias bangl-mirror.chaotic.cx
 Server = http://de-2.mirror.chaotic.cx/$repo/$arch
 
 # Seoul, Korea
-## By: Ryoichi <t.me/r377yx> -- alias: r377yx.mirror.chaotic.cx
+## By: Ryoichi <t.me/maakpain> -- alias: maakpain-mirror.chaotic.cx
 Server = http://kr.mirror.chaotic.cx/$repo/$arch
+#Server = https://kr-mirror.chaotic.cx/$repo/$arch
+
