@@ -1,0 +1,27 @@
+pkgbase = paru6alfa-git
+	pkgdesc = AUR helper based on yay, compiled against pacman-git
+	pkgver = 1.2.2.r12.gbaeefab
+	pkgrel = 1
+	url = https://github.com/morganamilo/paru
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	makedepends = cargo
+	depends = git
+	depends = pacman-git
+	optdepends = asp: Downloading repo PKGBUILDs
+	optdepends = bat: colored PKGBUILD printing
+	provides = paru
+	provides = paru-git
+	conflicts = paru
+	conflicts = paru-git
+	backup = etc/paru.conf
+	source = git+https://github.com/morganamilo/paru
+	sha256sums = SKIP
+
+pkgname = paru6alfa-git
