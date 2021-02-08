@@ -1,6 +1,6 @@
 pkgbase = r-libcoin
 	pkgdesc = Linear Test Statistics for Permutation Inference
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=libcoin
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = r-libcoin
 	depends = r>=3.4.0
 	depends = r-mvtnorm
 	optdepends = r-coin
-	source = https://cran.r-project.org/src/contrib/libcoin_1.0-7.tar.gz
-	sha256sums = 96f68426879e498b2e90486453cc6b608fd0d512bc35e66cbb62df3df80d62ed
+	source = https://cran.r-project.org/src/contrib/libcoin_1.0-8.tar.gz
+	sha256sums = 140e59f3d4443795a840023eaabfb83f124f5d47428355801a7fe5f649b6ef47
 
 pkgname = r-libcoin
 
