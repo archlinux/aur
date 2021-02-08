@@ -33,12 +33,12 @@ md5sums=("SKIP")
 
 build() 
 {
-    cd "$_pkgname"
+    cd "$pkgname"
     make all
 }
 
 package() 
 {
-    cd "$_pkgname"
+    cd "$pkgname"
     make install
 }
