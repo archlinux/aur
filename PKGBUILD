@@ -2,7 +2,7 @@
 
 _plug=fillborders
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v1.0.1.g48707e1
+pkgver=v2.1.g0dcd56d
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -11,6 +11,7 @@ license=('GPL')
 depends=('vapoursynth')
 makedepends=('git'
              'yasm'
+             'meson'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -24,22 +25,17 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  cd "${_plug}"
-  ./autogen.sh
 }
 
 build() {
   cd build
+    CXXFLAGS+=' -fpeel-loops' arch-meson "../${_plug}" \
+    --libdir /usr/lib/vapoursynth
 
-  ../"${_plug}"/configure \
-    --prefix=/usr \
-    --libdir=/usr/lib/vapoursynth
-
-  make
+  ninja
 }
 
 package(){
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -C build install
   install -Dm644 "${_plug}/readme.rst" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
 }
