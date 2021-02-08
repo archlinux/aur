@@ -3,10 +3,10 @@
 
 pkgname=lunar-date
 pkgver=2.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Chinese lunar date library."
 arch=("i686" "x86_64")
-url="http://code.google.com/p/liblunar/"
+url="https://github.com/yetist/lunar-date"
 license=('GPL2')
 depends=('glib2>=2.12')
 makedepends=('gtk-doc' 'ninja' 'meson' 'gobject-introspection')
