@@ -1,14 +1,14 @@
 # Maintainer: stardust95
 # Contributor: Namarrgon
 pkgname=lebiniou-data
-pkgver=3.54.0
+pkgver=3.54.1
 pkgrel=1
 pkgdesc="Data files for lebiniou"
 arch=('any')
 url="https://biniou.net/"
 license=('GPL')
 source=("https://gitlab.com/lebiniou/lebiniou-data/-/archive/version-$pkgver/lebiniou-data-version-$pkgver.tar.gz")
-sha256sums=('b6e4f4fe5e399735a994ffa40acbdc29e4ec7d2d6432fb3c84106b470bcb0e2b')
+sha256sums=('bd84b77c7d67a72e57f0a6137ed87790625fdb987b619aa3ff3fd21318e17855')
 
 build() {
 	cd "$pkgname-version-$pkgver"
