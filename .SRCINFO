@@ -1,6 +1,6 @@
 pkgbase = btusb-qca-0x3004
 	pkgdesc = patch btusb so it works on QCA devices with id 0x3004
-	pkgver = 0.9.5.10.6
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://github.com/kmoe/btusb-qca-0x3004
 	install = btusb-qca-0x3004.install
