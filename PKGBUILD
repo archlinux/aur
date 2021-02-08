@@ -2,7 +2,7 @@
 # Contributor: yetist <yetist@gmail.com>
 
 pkgname=lunar-date
-pkgver=2.4.2
+pkgver=2.9.3
 pkgrel=1
 pkgdesc="Chinese lunar date library."
 arch=("i686" "x86_64")
@@ -11,17 +11,15 @@ license=('GPL2')
 depends=('glib2>=2.12')
 makedepends=('intltool' 'gobject-introspection' 'gtk-doc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yetist/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('94622dfaddbf68722d772a85902e2518')
+md5sums=('d3da98793d04debde54c50e62e8a6b44')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    ./autogen.sh
-    ./configure --prefix=/usr
-    make || return 1
+    meson build --prefix /usr -Denable_gtk_doc=true -Dwith_introspection=true -Dwith_vala=true -Denable_tests=true
+    ninja -C build/
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    make DESTDIR="$pkgdir/" install || return 1
+    cd "$srcdir/$pkgname-$pkgver/build"
+    DESTDIR="${pkgdir}" ninja install
 }
-
