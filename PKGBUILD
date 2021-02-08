@@ -6,7 +6,7 @@ _gitname=performance-tweaks
 pkgname=(
     'performance-tweaks'
     )
-pkgver=0.0.1.r3.ga631469
+pkgver=0.0.1.r5.ge17ef26
 pkgrel=1
 arch=('any')
 _branch='master'
@@ -46,12 +46,10 @@ package_performance-tweaks() {
     'irqbalance'
     'systemd-swap'   
 	'hdparm'
-    'thermald'
     'nohang-git'
     'prelockd-git'
     'memavaild-git'
 	'ananicy-git'
-    'auto-cpufreq-git'
     'profile-sync-daemon'
     'preload'
         )    

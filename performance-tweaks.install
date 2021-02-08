@@ -14,8 +14,6 @@ post_install() {
   systemctl enable memavaild
   systemctl enable prelockd
   systemctl enable ananicy
-  systemctl enable auto-cpufreq
-  systemctl enable thermald
   systemctl enable grub-btrfs.path
   systemctl enable fstrim.timer
   systemctl enable btrfs-scrub@-.timer
@@ -31,8 +29,6 @@ post_upgrade() {
   systemctl is-active memavaild >/dev/null || systemctl enable memavaild
   systemctl is-active prelockd >/dev/null || systemctl enable prelockd
   systemctl is-active ananicy >/dev/null || systemctl enable ananicy
-  systemctl is-active auto-cpufreq >/dev/null || systemctl enable auto-cpufreq
-  systemctl is-active thermald >/dev/null || systemctl enable thermald
   systemctl is-active grub-btrfs.path >/dev/null || systemctl enable grub-btrfs.path
   systemctl is-active fstrim.timer >/dev/null || systemctl enable fstrim.timer
   systemctl is-active btrfs-scrub@-.timer >/dev/null || systemctl enable btrfs-scrub@-.timer
