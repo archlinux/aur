@@ -1,6 +1,6 @@
 # Maintainer: Salvaje <keystroke33@gmail.com>
 pkgname=redpaper-git
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Wallpaper downloader and setter that fetches from Reddit"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python>=3.7'
 		'python-praw'
 		'python-gobject'
 		'python-requests'
-		'feh'
+		'xwallpaper'
 		)
 makedepends=('git')
 provides=('redpaper')
