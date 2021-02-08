@@ -1,13 +1,13 @@
 pkgbase = limine
 	pkgdesc = An advanced x86/x86_64 BIOS bootloader
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/limine-bootloader/limine
 	arch = i686
 	arch = x86_64
 	license = BSD
-	source = https://github.com/limine-bootloader/limine/archive/v1.0.4.tar.gz
-	sha256sums = f5b9e1f9569c30ed8f87e4a2dfdafc0b4550775564d66b5055db7008758f54a3
+	source = https://github.com/limine-bootloader/limine/archive/v1.0.5.tar.gz
+	sha256sums = 715f5cea19da95bd3517293627cca756301b71acbd4e28454cffe92182088b29
 
 pkgname = limine
 
