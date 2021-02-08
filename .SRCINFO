@@ -1,0 +1,19 @@
+pkgbase = afetch-asm-git
+	pkgdesc = A command-line system information tool written in x86 assembly language
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/sticky-tea/afetch
+	arch = x86
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = fasm
+	makedepends = make
+	optdepends = lsb-release: OS information
+	provides = afetch
+	conflicts = afetch
+	source = afetch-asm-git::git+https://github.com/sticky-tea/afetch
+	md5sums = SKIP
+
+pkgname = afetch-asm-git
+
