@@ -1,5 +1,5 @@
 pkgname=em-marine
-pkgver=0.0.2.1
+pkgver=0.0.3.0
 pkgrel=1
 pkgdesc="EM-marine reader software with Ethernet interface (TCP / IP)"
 arch=('x86_64')
@@ -7,7 +7,7 @@ url="https://github.com/khvalera/${pkgname}"
 license=('GPL2')
 makedepends=("lazarus" "git" "which")
 source=("https://github.com/khvalera/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('9bfd0e5258ae1a372e327db955248479')
+md5sums=('803d301b3c1889e13cc0da2367360bb5')
 backup=( "etc/${pkgname}/options.ini" )
 
 package(){
