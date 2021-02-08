@@ -1,0 +1,18 @@
+pkgbase = enumlib-git
+	pkgdesc = A code generates the derivative superstructures of a parent lattice
+	pkgver = r461.e780a44
+	pkgrel = 1
+	url = https://github.com/msg-byu/enumlib
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = gcc-fortran
+	provides = enumlib
+	source = enumlib::git+https://github.com/msg-byu/enumlib.git
+	source = symlib::git+https://github.com/msg-byu/symlib.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = enumlib-git
+
