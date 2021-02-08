@@ -1,7 +1,7 @@
 # Maintainer: EatMyVenom <eat.my.venomm@gmail.com>
 
 _modname=minihud
-_mcver="1.17-snapshot-20w51a"
+_mcver="1.17-snapshot-21w05a"
 _modloader="fabric"
 pkgname=mc-minihud-117-fabric
 pkgver="0.19.0.dev.20201218.025957"
@@ -12,7 +12,7 @@ url="https://masa.dy.fi/mcmods/client_mods/"
 license=('LGPL')
 makedepends=('wget' 'jq')
 source=("manifest.json::https://masa.dy.fi/api/games/mods/minecraft/latest/client/")
-sha1sums=('SKIP')
+sha1sums=('3b3c19c94ad38288f78222b4c72847f44df81b34')
 
 pkgver() {
   cd $srcdir
