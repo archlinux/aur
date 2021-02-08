@@ -7,8 +7,13 @@ pkgdesc='Converts swf files to pdf '
 arch=('any')
 url='https://github.com/faubi/swf2pdf'
 license=('unknown')
-depends=('swfdec-devel' 'cairo' 'glib2')
-makedepends=('swfdec-devel' 'cairo' 'glib2')
+depends=('swfdec-devel'
+         'cairo'
+         'glib2')
+makedepends=('git'
+             'swfdec-devel'
+             'cairo'
+             'glib2')
 provides=('swf2pdf')
 conflicts=('swf2pdf')
 source=(
