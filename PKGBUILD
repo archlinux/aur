@@ -2,7 +2,7 @@
 
 _pkgname=mergedeep
 pkgname="python-${_pkgname}"
-pkgver=1.3.2
+pkgver=1.3.4
 pkgrel=1
 pkgdesc='A deep merge function for Python'
 arch=('any')
@@ -11,8 +11,8 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("${_pkgname}-${pkgver}.tar.gz::https://pypi.python.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('9d09192e2fe4f582e14c746e0359157b07f42e702ddc0fdbbbf351f6db6ff266')
-b2sums=('494a2acc535f5952e01ecf66415918dedfcb865cd6bbfcd9c94cfc7351b85d045bcc64b7b1e3ddc3fb978ba6a4a648759bf427360a6394a75cb02614f8abed8d')
+sha256sums=('0096d52e9dad9939c3d975a774666af186eda617e6ca84df4c94dec30004f2a8')
+b2sums=('0bccb80c59c482647cad18be5eb5d9bb25433e999f3d693d0adcad6ffe661a0abf8ea65ef46a84b5d56a7e04033e69dd304e408c163b2e61a2daca46a480903c')
 
 build() {
   cd "${_pkgname}-${pkgver}"
