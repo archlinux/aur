@@ -1,6 +1,6 @@
 pkgbase = redpaper-git
 	pkgdesc = Wallpaper downloader and setter that fetches from Reddit
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/keystroke3/redpaper
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = redpaper-git
 	depends = python-praw
 	depends = python-gobject
 	depends = python-requests
-	depends = feh
+	depends = xwallpaper
 	provides = redpaper
 	source = redpaper-git::git+https://github.com/keystroke3/redpaper
 	md5sums = SKIP
