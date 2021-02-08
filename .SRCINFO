@@ -1,0 +1,52 @@
+pkgbase = ibus-git
+	pkgdesc = Next Generation Input Bus for Linux
+	pkgver = 1.5.23+12+gef4c5c7e
+	pkgrel = 1
+	url = https://github.com/ibus/ibus/wiki
+	arch = x86_64
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = intltool
+	makedepends = gnome-common
+	makedepends = gtk-doc
+	makedepends = gtk2
+	makedepends = qt5-base
+	makedepends = unicode-cldr
+	makedepends = unicode-character-database
+	makedepends = unicode-emoji
+	makedepends = git
+	depends = dconf
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libnotify
+	depends = python-dbus
+	depends = python-gobject
+	depends = iso-codes
+	depends = librsvg
+	options = !emptydirs
+	source = ibus::git+https://github.com/ibus/ibus
+	sha512sums = SKIP
+
+pkgname = ibus-git
+	depends = dconf
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libnotify
+	depends = python-dbus
+	depends = python-gobject
+	depends = iso-codes
+	depends = librsvg
+	depends = libibus-git=1.5.23+12+gef4c5c7e
+	provides = ibus
+	conflicts = ibus
+
+pkgname = libibus-git
+	pkgdesc = IBus support library
+	depends = libglib-2.0.so
+	depends = libgobject-2.0.so
+	depends = libgio-2.0.so
+	provides = libibus
+	provides = libibus-1.0.so
+	conflicts = libibus
+
