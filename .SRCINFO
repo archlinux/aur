@@ -1,7 +1,7 @@
 pkgbase = ensenso-sdk
 	pkgdesc = Ensenso SDK and tools
 	pkgver = 3.0.311
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ensenso.com
 	arch = x86_64
 	license = custom
@@ -15,4 +15,6 @@ pkgbase = ensenso-sdk
 	sha512sums = 0a7f5cdf12d4b48e86caef2bd66ec7cbe3c018af57783ed45e25aee6c315763a765abba9e8c48dd8c54a8646ea4c2175c57dbdb6b9d00b435963350b3112439d
 
 pkgname = ensenso-sdk
+
+pkgname = ensenso-sdk-doc
 
