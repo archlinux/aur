@@ -1,7 +1,7 @@
 pkgbase = nas
 	pkgdesc = Network Audio System is a network transparent, client/server audio transport system. Provides libaudio2.so.
 	pkgver = 1.9.4
-	pkgrel = 4
+	pkgrel = 5
 	url = http://radscan.com/nas.html
 	arch = i686
 	arch = x86_64
@@ -11,15 +11,16 @@ pkgbase = nas
 	makedepends = flex
 	depends = libxaw
 	provides = libaudio2
-	conflicts = libaudio2
 	source = http://downloads.sourceforge.net/sourceforge/nas/nas-1.9.4.src.tar.gz
 	source = license
 	source = nasd.service
 	source = nasd
-	md5sums = dac0e6cd3e5d6a37ae1dff364236a752
-	md5sums = f11eb8c3fb83946e66e60f7532e8d5da
-	md5sums = 3bd8268d3655509b6e10475060dfbf10
-	md5sums = fb0acd5e3fae362a55d2fbeeb9be0dbb
+	source = patch-llvm11.patch
+	sha256sums = cf36ea63751ce86cfd3b76c1659ce0d6a361a2e7cb34069854e156532703b39d
+	sha256sums = 2f143b0fca5008b88798c8447d169731d93a7c1c2012a33a6ab6cb75c73b8a92
+	sha256sums = c8c62a2a4d54fa2efbcf722cc277afd0fec75bee204e2f51b2706a4e6a75713e
+	sha256sums = 7c2b7c37d9b9054b6e0f60928bb9c276896f8684ed13ae2477d3ffd31855ed19
+	sha256sums = c345d1dfd30289847b4f4591f18867fe6e7988217711f1c113f56b6a849fae23
 
 pkgname = nas
 
