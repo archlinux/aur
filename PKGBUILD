@@ -4,7 +4,7 @@
 # Contributor: David Rubio <david.alejandro.rubio at gmail.com>
 
 pkgname=electron-ozone
-pkgver=11.2.2
+pkgver=11.2.3
 provides=('electron')
 conflicts=('electron')
 _commit=805e442ff873e10735a1ea18021f491597afa885
@@ -99,7 +99,7 @@ prepare() {
 
   cd src/electron
   echo "Applying local electron patches"
-  # Discord crash fix. Remove on 11.2.2 (!)
+  # Wayland support -- Backported from 12.x.y
   patch -Np1 -i ../../0001-fix-add-Wayland-support-26022.patch
   cd ../../
 
