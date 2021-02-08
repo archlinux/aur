@@ -4,7 +4,7 @@
 
 pkgbase=elogind
 pkgname=('elogind' 'libelogind')
-pkgver=246.9.1
+pkgver=246.9.2
 pkgrel=1
 pkgdesc="The systemd project's logind, extracted to a standalone package"
 arch=('i686' 'x86_64')
