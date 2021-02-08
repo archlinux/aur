@@ -6,7 +6,7 @@ arch=(any)
 url="http://enginehub.org/worldguard"
 license=("GPLv3")
 makedepends=(dos2unix)
-depends=("craftbukkit>=1.8.1" "spigot" "papermc")
+depends=("craftbukkit>=1.8.1")
 optdepends=(mariadb)
 source=("https://dev.bukkit.org/projects/worldguard/files/3066271/download")
 noextract=("worldguard-bukkit-$pkgver.jar")
