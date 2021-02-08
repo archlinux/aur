@@ -40,5 +40,5 @@ build()
 package() 
 {
     cd "$pkgname"
-    make install
+    install -D -m755 "${srcdir}/${pkgname}/afetch" "${pkgdir}/usr/bin/afetch"
 }
