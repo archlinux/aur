@@ -4,7 +4,7 @@ pkgname=1password-bin
 _pkgname=1Password
 _binname=1password
 pkgver=0.9.12
-_pkgver=0.9.12-2
+_pkgver=0.9.12-3
 pkgrel=1
 pkgdesc="Password manager and secure wallet (development preview)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('libxss' 'gtk3' 'nss')
 license=('custom:LicenseRef-1Password-Proprietary')
 url='https://1password.com/'
 source=("https://downloads.1password.com/linux/debian/pool/main/1/1password/1password-$_pkgver.deb")
-sha256sums=('90849e12e51116448d4231147097b34e862e0b52b35104d4549d5a0b12eade8b')
+sha256sums=('cef7ec5df862b2f28d03c67d1660224ad97f3ccb95f247958938bcd772f62e46')
 validpgpkeys=('3FEF9748469ADBE15DA7CA80AC2D62742012EA22')
 
 package() {
