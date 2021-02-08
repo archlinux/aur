@@ -1,6 +1,6 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=tang-git
-pkgver=7.r3.590de27
+pkgver=8.r0.95d4822
 pkgrel=1
 pkgdesc='Server for binding data to network presence'
 arch=('x86_64')
@@ -8,6 +8,7 @@ url='https://github.com/latchset/tang'
 license=('GPL3')
 depends=('http-parser' 'jose')
 makedepends=('git' 'asciidoc' 'meson')
+checkdepends=('systemd')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url.git")
@@ -21,15 +22,15 @@ pkgver() {
 build() {
 	cd "${pkgname%-git}"
 	meson --libexecdir=/usr/lib --buildtype=plain build
-	ninja -C build
+	meson compile -C build
 }
 
 check() {
 	cd "${pkgname%-git}"
-	ninja -C build test
+	meson test -C build
 }
 
 package() {
 	cd "${pkgname%-git}"
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" meson install -C build
 }
