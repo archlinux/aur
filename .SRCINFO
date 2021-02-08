@@ -15,7 +15,9 @@ pkgbase = jami-client-qt-git
 	conflicts = jami-gnome-git
 	conflicts = jami-gnome
 	source = git+https://git.jami.net/savoirfairelinux/jami-client-qt.git
+	source = 0002.patch
 	sha512sums = SKIP
+	sha512sums = 1b10011ac78f71457b1a391c8a192d9a024e202f20b34e13d0d9d3c0092c1ef4fb9826c2ac092d2e60d72e8f4f68cb87275dd4a7397e72d1ac1157caacf9e33d
 
 pkgname = jami-client-qt-git
 
