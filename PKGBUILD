@@ -4,7 +4,7 @@
 
 pkgname=plecs-standalone
 _pkgname="plecs"
-pkgver=v4.4.4
+pkgver=v4.5.3
 pkgrel=1
 pkgdesc="A circuit simulation tool written by Plexim (license needed / 30-days free trial)"
 url='http://www.plexim.com/de/products/plecs_standalone'
@@ -15,16 +15,16 @@ provides=('plecs-standalone')
 depends=('qt4' 'ncurses5-compat-libs' 'zlib')
 makedepends=('coreutils')
 
-source=("plecs.desktop" "plecs.png" "plecs.sh" "$pkgname-$pkgver-x86_64.tar.gz::https://www.plexim.com/sites/default/files/packages/plecs-standalone-4-4-4_linux64.tar.gz")
+source=("plecs.desktop" "plecs.png" "plecs.sh" "$pkgname-$pkgver-x86_64.tar.gz::https://www.plexim.com/sites/default/files/packages/plecs-standalone-4-5-3_linux64.tar.gz")
 
 md5sums=('7e0990a952785f929402da88efbd6cde'
          '8ed62f1ce2de47c761c9244531dc154e'
          '675ece23be004504ae71890909f8819c'
-         '88ab7e4114fcfb0e816ce5aa379f700f')
+         'c5b200961fcda67b2e57c5724847c8d7')
 sha1sums=('6dbc37f69996baf211e0c387cc5ee6bb4c456619'
           'e1d9007695acbf40ce55b47f3724c4de8b5ac270'
           '4150e3dcc41210b7a28b7042972f76e7f6f3ac71'
-          '3ea0f099e5659d0234a9780e81d8caac5b74a4ad')
+          '72a3252c0d2440bc2fb5d5fcb7d080c8738026cf')
 package() {
     # install icon
     mkdir -p "$pkgdir/usr/share/pixmaps/"
