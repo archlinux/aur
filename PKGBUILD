@@ -1,8 +1,8 @@
 # Maintainer: Maarten de Vries <maarten@de-vri.es>
 pkgname=ensenso-sdk
 pkgdesc="Ensenso SDK and tools"
-pkgver=2.3.1536
-pkgrel=2
+pkgver=3.0.311
+pkgrel=1
 arch=(x86_64)
 license=(custom)
 url='http://ensenso.com'
@@ -16,13 +16,13 @@ source=(
 	"$pkgname-$pkgver.tar.bz2::https://download.ensenso.com/s/ensensosdk/download?files=ensenso-sdk-$pkgver-x64.tar.bz2"
 )
 
-sha512sums=('dcce023ec35dc1502a6557a1d8c08b7d40d7a7ddf3b9b48e48e2582a4e5a79da057addfc195e743a341955b63d0626e3108101e9e2e75d1ea941b8581b8f4fb1')
+sha512sums=('0a7f5cdf12d4b48e86caef2bd66ec7cbe3c018af57783ed45e25aee6c315763a765abba9e8c48dd8c54a8646ea4c2175c57dbdb6b9d00b435963350b3112439d')
 
 # Stripping results in a segfaulting NxView somehow.
 options=(!strip)
 
 package() {
-	local dir="$srcdir/ensenso-sdk-$pkgver-x64-c01d55d"
+	local dir="$srcdir/ensenso-sdk-$pkgver-x64-262641c"
 
 	mkdir -p "$pkgdir/usr"
 	mkdir -p "$pkgdir/usr/bin"
