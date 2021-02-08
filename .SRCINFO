@@ -1,0 +1,17 @@
+pkgbase = wlrctl-git
+	pkgdesc = Utility for miscellaneous wlroots extensions
+	pkgver = r24.1bce5aa
+	pkgrel = 1
+	url = https://git.sr.ht/~brocellous/wlrctl
+	arch = x86_64
+	license = MIT
+	makedepends = scdoc
+	makedepends = meson
+	makedepends = ninja
+	depends = wayland
+	depends = libxkbcommon
+	source = wlrctl-git::git+https://git.sr.ht/~brocellous/wlrctl
+	sha1sums = SKIP
+
+pkgname = wlrctl-git
+
