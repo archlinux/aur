@@ -5,7 +5,7 @@
 pkgbase=glib2-git
 _pkgname=glib2
 pkgname=(glib2-git glib2-docs-git)
-pkgver=2.66.0.89.g7bfd6278b
+pkgver=2.67.3.9.g203e078fd
 pkgrel=1
 pkgdesc="Low Level Core Library"
 arch=('x86_64')
@@ -42,7 +42,7 @@ pkgver() {
 }
 
 prepare() {
-    cd $srcdir/glib
+    cd "$srcdir/glib"
     # Suppress noise from glib-compile-schemas.hook
     patch -Np1 -i ../0001-noisy-glib-compile-schemas.patch
 
@@ -63,10 +63,14 @@ build () {
 #}
 
 package_glib2-git() {
+     provides+=(libgio-2.0.so libglib-2.0.so libgmodule-2.0.so libgobject-2.0.so
+                libgthread-2.0.so)
+
+
      DESTDIR="$pkgdir" meson install -C build
 
     mv "$pkgdir/usr/share/gtk-doc" "$srcdir"
-    install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 $srcdir/*.hook
+    install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 "$srcdir"/*.hook
 
     python -m compileall -d /usr/share/glib-2.0/codegen "$pkgdir/usr/share/glib-2.0/codegen"
   python -O -m compileall -d /usr/share/glib-2.0/codegen "$pkgdir/usr/share/glib-2.0/codegen"
