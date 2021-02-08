@@ -14,7 +14,7 @@ message_template = "Bump to {new_version}"
 
 [[file]]
 src = "PKGBUILD"
-search = 'pkgver="{current_version}"'
+search = 'pkgver={current_version}'
 
 [[before_commit]]
 name = "Check pkgrel is 1"
