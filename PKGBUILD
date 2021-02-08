@@ -3,7 +3,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=('nvidia-settings-gtk2' 'libxnvctrl-gtk2')
-pkgver=455.28
+pkgver=460.39
 pkgrel=1
 pkgdesc='Tool for configuring the NVIDIA graphics driver'
 url='https://github.com/NVIDIA/nvidia-settings'
