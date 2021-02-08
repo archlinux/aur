@@ -1,35 +1,36 @@
-# Maintainer: Benjamin Denhartog <ben@sudoforge.com>
+# Maintainer: Nikoloz Shvelidze <captain@pirrate.me>
+# Contributor: Benjamin Denhartog <ben@sudoforge.com>
 # Contributor: Tim Brown <stimut@gmail.com>
 
-pkgname=google-cloud-sdk-app-engine-python
+pkgname=google-cloud-sdk-app-engine-java
 pkgver=326.0.0
 pkgrel=1
-pkgdesc="A google-cloud-sdk component that provides the Python runtime for AppEngine."
+pkgdesc="A google-cloud-sdk component that provides the Java runtime for AppEngine."
 url="https://cloud.google.com/sdk/"
 license=("Apache")
 arch=('x86_64')
 options=('!strip')
 depends=(
   "google-cloud-sdk"
-  "python2"
+  "java-environment"
 )
 source=(
   "https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/${pkgname}_${pkgver}.orig.tar.gz"
 )
-sha256sums=('092673e0f3312c2c4863f94c3caed6b796e12debb26c6bc2b7009eef9c18a1bf')
+sha256sums=('b6db3956d07d27ddc18530d462ef122d73e8993c9001c53dc4d556343c93d616')
 
 package() {
   mkdir -p "${pkgdir}/opt/google-cloud-sdk/platform/google_appengine"
 
   # Install the component manifest file
   install -D -m 0644 \
-    "${srcdir}/google-cloud-sdk/.install/app-engine-python.manifest" \
-    "${pkgdir}/opt/google-cloud-sdk/.install/app-engine-python.manifest"
+    "${srcdir}/google-cloud-sdk/.install/app-engine-java.manifest" \
+    "${pkgdir}/opt/google-cloud-sdk/.install/app-engine-java.manifest"
 
   # Install the component metadata snapshot file
   install -D -m 0644 \
-    "${srcdir}/google-cloud-sdk/.install/app-engine-python.snapshot.json" \
-    "${pkgdir}/opt/google-cloud-sdk/.install/app-engine-python.snapshot.json"
+    "${srcdir}/google-cloud-sdk/.install/app-engine-java.snapshot.json" \
+    "${pkgdir}/opt/google-cloud-sdk/.install/app-engine-java.snapshot.json"
 
   # Install the component files
   cp -R \
