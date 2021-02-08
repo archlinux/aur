@@ -1,7 +1,7 @@
 pkgbase = openblack-git
 	pkgdesc = Open source reimplementation of the game Black & White (2001).
 	pkgver = r1039.51cb468
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openblack/openblack
 	arch = x86_64
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = openblack-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = bgfx-cmake-git
+	makedepends = cxxopts
 	depends = fmt
 	depends = spdlog
 	depends = entt
