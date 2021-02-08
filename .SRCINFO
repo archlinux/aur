@@ -1,13 +1,13 @@
 pkgbase = ory-hydra-bin
 	pkgdesc = OAuth 2.0 and OpenID Connect Provider
-	pkgver = 1.8.5
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = https://ory.sh
 	arch = x86_64
 	license = Apache
 	provides = ory-hydra
-	source = https://github.com/ory/hydra/releases/download/v1.8.5/hydra_1.8.5_linux_64-bit.tar.gz
-	sha256sums = 4787711c2f758e53219d62da433c7a80f08cfa9127dd82cf4284dd43f2b5f959
+	source = https://github.com/ory/hydra/releases/download/v1.9.2/hydra_1.9.2_linux_64bit.tar.gz
+	sha256sums = bd919a7dadd87ebabbf11c457f0b4d172e8ea4281b0932f8cc477560890d327c
 
 pkgname = ory-hydra-bin
 
