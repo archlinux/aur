@@ -92,7 +92,7 @@ pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="0cc855fe3129d8af4b75a233271d38b34ac9c869" # 5.10.12-2
+__commit="7aba77c63c1a04b2f49cb631baa130795823274d" # 5.10.14-1
 
 license=(GPL2)
 makedepends=(
