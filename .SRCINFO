@@ -1,6 +1,6 @@
 pkgbase = lexspec-git
     pkgdesc = Get system information in linux
-    pkgver = r10.5ac67ac
+    pkgver = r37.d8f1e5a
     pkgrel = 1
     url = https://github.com/lexofficial29/lexspec
     arch = any
