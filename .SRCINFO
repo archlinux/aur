@@ -1,6 +1,6 @@
 pkgbase = fractalman-git
 	pkgdesc = Python tool to generate fractals
-	pkgver = r12.d933046
+	pkgver = r18.1f7f874
 	pkgrel = 1
 	url = https://github.com/Vitmalok/FractalMan
 	arch = any

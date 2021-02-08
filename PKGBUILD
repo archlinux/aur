@@ -1,6 +1,6 @@
 # Maintainer: Alex Averyanov <averyanalex@gmail.com>
 pkgname=fractalman-git
-pkgver=r12.d933046
+pkgver=r18.1f7f874
 pkgrel=1
 pkgdesc="Python tool to generate fractals"
 arch=('any')
