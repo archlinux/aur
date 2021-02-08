@@ -2,7 +2,7 @@
 
 _pipname=pancritic
 pkgname=python-$_pipname
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='CriticMarkdup parser with optional pandoc backend'
 arch=(any)
@@ -16,7 +16,7 @@ optdepends=('python-markdown: Markdown backend for Markdown output'
             'python-pypandoc: Pandoc backend for Markdown output')
 checkdepends=('python-coverage' 'python-markdown' 'python-markdown2' 'python-panflute' 'python-pypandoc')
 source=("$pkname-$pkgver.tar.gz::https://github.com/ickc/$_pipname/archive/v$pkgver.tar.gz")
-sha256sums=('73b02e3839df65c56fc8c12f443a78549f4e303add38718457b1aa581294dfa0')
+sha256sums=('670c0093924c11bb05a42ace4250166e076ad00f41e4208972613c07e3573515')
 
 build() {
 	cd "$_pipname-$pkgver"
