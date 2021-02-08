@@ -1,0 +1,14 @@
+pkgbase = google-cloud-sdk-bigtable-emulator
+	pkgdesc = A google-cloud-sdk component that provides local emulation of a Bigtable environment.
+	pkgver = 326.0.0
+	pkgrel = 1
+	url = https://cloud.google.com/sdk/
+	arch = x86_64
+	license = Apache
+	depends = google-cloud-sdk
+	options = !strip
+	source = https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/google-cloud-sdk-bigtable-emulator_326.0.0.orig_amd64.tar.gz
+	sha256sums = 39276f75bcd50eae41d01883f0ddff38352f31b6ebe4e7323d85231812381504
+
+pkgname = google-cloud-sdk-bigtable-emulator
+
