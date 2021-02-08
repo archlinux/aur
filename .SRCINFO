@@ -1,0 +1,17 @@
+pkgbase = gimmeasearx-git
+	pkgdesc = Find a random searx instance
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/demostanis/gimmeasearx
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	optdepends = tor: required to show .onion instances
+	provides = gimmeasearx
+	conflicts = gimmeasearx
+	source = git+https://github.com/demostanis/gimmeasearx.git
+	sha512sums = SKIP
+
+pkgname = gimmeasearx-git
+
