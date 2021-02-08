@@ -1,0 +1,13 @@
+pkgbase = python-debian-parser
+	pkgdesc = A simple pure-python module to parse RFC822-like Debain data formats. Including Pacakges, Control, Release files.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://pypi.org/project/debian-parser
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/d/debian_parser/debian_parser-0.1.2.tar.gz
+	sha256sums = 618252f70eac9c3911567d87c740916f9e04156fe4cbd0bf8838178b63d68cfb
+
+pkgname = python-debian-parser
+
