@@ -1,0 +1,21 @@
+pkgbase = vkresample-git
+	pkgdesc = Vulkan real-time FFT upscaling
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/DTolm/VkResample
+	arch = any
+	license = MPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = vulkan-headers
+	depends = vulkan-driver
+	depends = vulkan-icd-loader
+	depends = glslang
+	provides = vkresample
+	conflicts = vkresample
+	source = git+https://github.com/DTolm/VkResample.git
+	md5sums = SKIP
+
+pkgname = vkresample-git
+
