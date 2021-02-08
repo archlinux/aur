@@ -3,7 +3,7 @@
 # Contributor: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname='visidata'
-pkgver=2.2
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='Terminal spreadsheet multitool for discovering and arranging data'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=('python-dnslib: pcap support'
             'python-xlrd: xls support'
             'python-pyaml: yaml/yml support')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('667db2f91f3b375fb8ccff114c65ea913b01d67be608cd973539921fbbf7a3e0')
+sha256sums=('2eeda44d3c9b56ab1d0b7a8a17e038bce0db5dee38a6098051060f214ea733a0')
 
 prepare() {
   # Set correct permissions
