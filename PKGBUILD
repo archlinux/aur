@@ -2,10 +2,10 @@
 
 pkgname=patroneo
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy to use pattern based midi sequencer"
 arch=('x86_64')
-url="https://www.laborejo.org/patroneo.git/"
+url="https://www.laborejo.org/patroneo/"
 license=('GPL3')
 groups=('pro-audio')
 depends=('glibc' 'hicolor-icon-theme' 'python' 'python-pyqt5' 'ttf-dejavu')
