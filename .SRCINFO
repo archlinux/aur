@@ -1,0 +1,19 @@
+pkgbase = amtk-git
+	pkgdesc = Actions, Menus and Toolbars Kit for GTK+ applications
+	pkgver = 5.3.1
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/Amtk
+	arch = any
+	license = GPL
+	makedepends = autoconf-archive
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	depends = gtk3
+	provides = amtk
+	conflicts = amtk
+	source = git+https://gitlab.gnome.org/GNOME/amtk
+	sha512sums = SKIP
+
+pkgname = amtk-git
+
