@@ -4,7 +4,7 @@ pkgdesc="ROS - tf2 is the second generation of the transform library, which lets
 url='https://wiki.ros.org/tf2'
 
 pkgname='ros-noetic-tf2'
-pkgver='0.7.1'
+pkgver='0.7.5'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -36,7 +36,7 @@ depends=(
 
 _dir="geometry2-${pkgver}/tf2"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry2/archive/${pkgver}.tar.gz")
-sha256sums=('552aaa6b11cb1ea0bff3f6b3b354a3439b4a27a4289c26957e13b034027bbb0e')
+sha256sums=('0b5d461c71d6dc1dbdb99a2ba39e1515194cd451c2e53d53caadb3ecea13367a')
 
 build() {
 	# Use ROS environment variables.

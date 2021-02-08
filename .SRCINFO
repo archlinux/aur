@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-tf2
 	pkgdesc = ROS - tf2 is the second generation of the transform library, which lets the user keep track of multiple coordinate frames over time.
-	pkgver = 0.7.1
+	pkgver = 0.7.5
 	pkgrel = 1
 	url = https://wiki.ros.org/tf2
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = ros-noetic-tf2
 	depends = ros-noetic-tf2-msgs
 	depends = ros-noetic-geometry-msgs
 	depends = console-bridge
-	source = ros-noetic-tf2-0.7.1.tar.gz::https://github.com/ros/geometry2/archive/0.7.1.tar.gz
-	sha256sums = 552aaa6b11cb1ea0bff3f6b3b354a3439b4a27a4289c26957e13b034027bbb0e
+	source = ros-noetic-tf2-0.7.5.tar.gz::https://github.com/ros/geometry2/archive/0.7.5.tar.gz
+	sha256sums = 0b5d461c71d6dc1dbdb99a2ba39e1515194cd451c2e53d53caadb3ecea13367a
 
 pkgname = ros-noetic-tf2
 
