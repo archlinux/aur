@@ -1,0 +1,30 @@
+### Vars ###
+_pkgname=vivaldi
+
+### Post Install ###
+post_install() {
+    ## Install ffmpeg ##
+    echo 'Installing proprietary media codecs ...'
+    cd /opt/$_pkgname
+    chmod 0755 update-ffmpeg
+    ./update-ffmpeg
+}
+
+
+### Post Upgrade ###
+post_upgrade() {
+    ## Update ffmpeg ##
+    echo 'Updating proprietary media codecs ...'
+    cd /opt/$_pkgname
+    chmod 0755 update-ffmpeg
+    ./update-ffmpeg
+}
+
+### Post Remove ###
+post_remove() {
+    ## Remove ffmpeg ##
+    echo 'Removing proprietary media codecs ...'
+    if [ -d /var/opt/$_pkgname ]; then
+        rm -rf /var/opt/$_pkgname
+    fi
+}
