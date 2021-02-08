@@ -53,7 +53,7 @@ package() {
     # Link binaries, license and documentation
     ln -s /opt/textadept/textadept{,jit}{,-curses} $pkgdir/usr/bin/
     ln -s /opt/textadept/LICENSE $pkgdir/usr/share/licenses/$_pkgname/
-    ln -s /opt/textadept/doc $pkgdir/usr/share/doc/textadept
+    ln -s /opt/textadept/docs $pkgdir/usr/share/doc/textadept
 
     # Copy modules
     cp -r $srcdir/textadept-modules $pkgdir/opt/textadept
