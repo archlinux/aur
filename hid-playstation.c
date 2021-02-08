@@ -423,6 +423,7 @@ static int ps_device_register_battery(struct ps_device *dev)
 {
 	struct power_supply *battery;
 	struct power_supply_config battery_cfg = { .drv_data = dev };
+	int ret;
 
 	dev->battery_desc.type = POWER_SUPPLY_TYPE_BATTERY;
 	dev->battery_desc.properties = ps_power_supply_props;
@@ -430,16 +431,23 @@ static int ps_device_register_battery(struct ps_device *dev)
 	dev->battery_desc.get_property = ps_battery_get_property;
 	dev->battery_desc.name = devm_kasprintf(&dev->hdev->dev, GFP_KERNEL,
 			"ps-controller-battery-%pMR", dev->mac_address);
+	if (!dev->battery_desc.name)
+		return -ENOMEM;
 
 	battery = devm_power_supply_register(&dev->hdev->dev, &dev->battery_desc, &battery_cfg);
 	if (IS_ERR(battery)) {
-		int ret = PTR_ERR(battery);
+		ret = PTR_ERR(battery);
 		hid_err(dev->hdev, "Unable to register battery device: %d\n", ret);
 		return ret;
 	}
 	dev->battery = battery;
 
-	power_supply_powers(dev->battery, &dev->hdev->dev);
+	ret = power_supply_powers(dev->battery, &dev->hdev->dev);
+	if (ret) {
+		hid_err(dev->hdev, "Unable to activate battery device: %d\n", ret);
+		return ret;
+	}
+
 	return 0;
 }
 
@@ -496,7 +504,8 @@ static int ps_get_report(struct hid_device *hdev, uint8_t report_id, uint8_t *bu
 {
 	int ret;
 
-	ret = hid_hw_raw_request(hdev, report_id, buf, size, HID_FEATURE_REPORT, HID_REQ_GET_REPORT);
+	ret = hid_hw_raw_request(hdev, report_id, buf, size, HID_FEATURE_REPORT,
+				 HID_REQ_GET_REPORT);
 	if (ret < 0) {
 		hid_err(hdev, "Failed to retrieve feature with reportID %d: %d\n", report_id, ret);
 		return ret;
@@ -508,7 +517,7 @@ static int ps_get_report(struct hid_device *hdev, uint8_t report_id, uint8_t *bu
 	}
 
 	if (buf[0] != report_id) {
-		hid_err(hdev, "Incorrect reportID received, expected %d got %d\n", report_id, buf[0]);
+		hid_err(hdev, "Invalid reportID received, expected %d got %d\n", report_id, buf[0]);
 		return -EINVAL;
 	}
 
@@ -561,7 +570,8 @@ static int ps_lightbar_register(struct ps_device *ps_dev, struct led_classdev_mc
 	struct led_classdev *led_cdev;
 	int ret;
 
-	mc_led_info = devm_kmalloc_array(&hdev->dev, 3, sizeof(*mc_led_info), GFP_KERNEL | __GFP_ZERO);
+	mc_led_info = devm_kmalloc_array(&hdev->dev, 3, sizeof(*mc_led_info),
+					 GFP_KERNEL | __GFP_ZERO);
 	if (!mc_led_info)
 		return -ENOMEM;
 
@@ -575,6 +585,8 @@ static int ps_lightbar_register(struct ps_device *ps_dev, struct led_classdev_mc
 	led_cdev = &lightbar_mc_dev->led_cdev;
 	led_cdev->name = devm_kasprintf(&hdev->dev, GFP_KERNEL, "playstation::%pMR::rgb",
 			ps_dev->mac_address);
+	if (!led_cdev->name)
+		return -ENOMEM;
 	led_cdev->brightness = 255;
 	led_cdev->max_brightness = 255;
 	led_cdev->brightness_set_blocking = brightness_set;
@@ -653,7 +665,7 @@ static struct input_dev *ps_touchpad_create(struct hid_device *hdev, int width, 
 	return touchpad;
 }
 
-static ssize_t ps_show_firmware_version(struct device *dev,
+static ssize_t firmware_version_show(struct device *dev,
 				struct device_attribute
 				*attr, char *buf)
 {
@@ -663,9 +675,9 @@ static ssize_t ps_show_firmware_version(struct device *dev,
 	return sysfs_emit(buf, "0x%08x\n", ps_dev->fw_version);
 }
 
-static DEVICE_ATTR(firmware_version, 0444, ps_show_firmware_version, NULL);
+static DEVICE_ATTR_RO(firmware_version);
 
-static ssize_t ps_show_hardware_version(struct device *dev,
+static ssize_t hardware_version_show(struct device *dev,
 				struct device_attribute
 				*attr, char *buf)
 {
@@ -675,7 +687,7 @@ static ssize_t ps_show_hardware_version(struct device *dev,
 	return sysfs_emit(buf, "0x%08x\n", ps_dev->hw_version);
 }
 
-static DEVICE_ATTR(hardware_version, 0444, ps_show_hardware_version, NULL);
+static DEVICE_ATTR_RO(hardware_version);
 
 static struct attribute *ps_device_attributes[] = {
 	&dev_attr_firmware_version.attr,
@@ -1237,7 +1249,7 @@ static void dualsense_set_player_leds(struct dualsense *ds)
 	 * across the LEDs, so e.g. player 1 would be "--x--" with x being 'on'.
 	 * Follow a similar mapping here.
 	 */
-	int player_ids[5] = {
+	static const int player_ids[5] = {
 		BIT(2),
 		BIT(3) | BIT(1),
 		BIT(4) | BIT(2) | BIT(0),
@@ -1466,11 +1478,11 @@ static const struct hid_device_id ps_devices[] = {
 MODULE_DEVICE_TABLE(hid, ps_devices);
 
 static struct hid_driver ps_driver = {
-	.name             = "playstation",
-	.id_table         = ps_devices,
-	.probe            = ps_probe,
-	.remove           = ps_remove,
-	.raw_event        = ps_raw_event,
+	.name		= "playstation",
+	.id_table	= ps_devices,
+	.probe		= ps_probe,
+	.remove		= ps_remove,
+	.raw_event	= ps_raw_event,
 };
 
 static int __init ps_init(void)
