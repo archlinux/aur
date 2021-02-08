@@ -1,14 +1,14 @@
 pkgbase = python-spacy-en_core_web_sm
-	pkgdesc = English multi-task CNN trained on OntoNotes, with GloVe vectors trained on Common Crawl for spaCy
-	pkgver = 2.3.1
+	pkgdesc = English pretrained model for spaCy (small)
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://spacy.io/models/en#section-en_core_web_sm
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-spacy
-	source = https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.1/en_core_web_sm-2.3.1.tar.gz
-	sha256sums = 06c80936324012d1223291d2af41a5229e746dc2dee8fe31a532666ee3d18aaa
+	source = https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.0.0/en_core_web_sm-3.0.0.tar.gz
+	sha256sums = 0673b3ce4a28a19e99dc0fc3f8f7fe67b936c41749e6b70f778ec5f9f78f3a66
 
 pkgname = python-spacy-en_core_web_sm
 
