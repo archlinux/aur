@@ -1,14 +1,14 @@
 # Maintainer: Diego Souza <diegosouza.br@gmail.com>
 pkgname=hurl-bin
 _pkgname=hurl
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Hurl, run and test HTTP requests"
 arch=('x86_64')
 url="https://github.com/Orange-OpenSource/hurl"
 license=('Apache')
 source_x86_64=("https://github.com/Orange-OpenSource/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-x86_64-linux.tar.gz")
-sha256sums_x86_64=('b6def799163fe4a6beaf7b2c49f64f6befe0009df2823006b8b01616bd1d7ae4')
+sha256sums_x86_64=('3a5b331a3882a6f3ee97b18a1199cb223239b63cc792364d49519ff2ed1df8f2')
 
 package() {
     mkdir -p $pkgdir/usr/bin
