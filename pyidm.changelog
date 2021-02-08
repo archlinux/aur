@@ -1,3 +1,21 @@
+2021.2.7:
+- [youtube-dl] Fixed some settings options doesn't get effective until PyIDM restart.
+- [ssl] fixed ssl certificate error in AppImage release, issue #213 .
+- [gui] adjust combobox dropdown menu colors.
+- [gui] add dropdown menu for frequently used download folders, issue #214 .
+
+2021.1.7:
+- Show Total download speed.
+- [auto refresh url] fix refreshed object gets different uid
+
+2021.1.5:
+- Auto refresh expired url, issue #187.
+- prevent using ffmpeg.exe under linux if it exists in pyidm folder.
+- write 'last modified' timestamp to downloaded file, issue #204.
+- Fix multiple D.Items reference to same object.
+- Fix encoding error when writing metadata on windows
+- some bug fixes.
+
 2020.12.25:
 - [CHECKSUM] fix out of memory when calculating checksum for big files.
 - Add option to set a custom "http user agent" issue #199
