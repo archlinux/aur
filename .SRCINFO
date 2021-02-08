@@ -1,0 +1,22 @@
+pkgbase = souk-git
+	pkgdesc = Independent Flatpak App Store
+	pkgver = r262.9381b9f
+	pkgrel = 1
+	url = https://gitlab.gnome.org/haecker-felix/souk
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = flatpak
+	depends = gtk4
+	depends = libadwaita
+	provides = souk
+	conflicts = souk
+	source = git+https://gitlab.gnome.org/haecker-felix/souk.git
+	md5sums = SKIP
+
+pkgname = souk-git
+
