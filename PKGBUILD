@@ -2,7 +2,7 @@ pkgdesc="ROS - tf2_eigen."
 url='https://wiki.ros.org/tf2_eigen'
 
 pkgname='ros-noetic-tf2-eigen'
-pkgver='0.7.2'
+pkgver='0.7.5'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -33,7 +33,7 @@ depends=(
 
 _dir="geometry2-${pkgver}/tf2_eigen"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry2/archive/${pkgver}.tar.gz")
-sha256sums=('66760dc51815155bf5654c9d9345fa3c6411616d53585ea3c1f6f9e43a556fc3')
+sha256sums=('0b5d461c71d6dc1dbdb99a2ba39e1515194cd451c2e53d53caadb3ecea13367a')
 
 build() {
     # Use ROS environment variables.
