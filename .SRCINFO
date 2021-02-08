@@ -7,8 +7,6 @@ pkgbase = craftbukkit-plugin-worldguard
 	license = GPLv3
 	makedepends = dos2unix
 	depends = craftbukkit>=1.8.1
-	depends = spigot
-	depends = papermc
 	optdepends = mariadb
 	noextract = worldguard-bukkit-7.0.4.jar
 	source = https://dev.bukkit.org/projects/worldguard/files/3066271/download
