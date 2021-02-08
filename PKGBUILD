@@ -3,7 +3,7 @@
 
 _gemname=pry
 pkgname=ruby-$_gemname
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="An IRB alternative and runtime developer console"
 arch=(any)
