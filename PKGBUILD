@@ -38,9 +38,6 @@ check () {
 package () {
   cd "${srcdir}/MPSolve"
   make DESTDIR="${pkgdir}" install
-  if [ -f ${pkgdir}/usr/share/octave/octave_packages ]; then
-    sed -e "s/$(echo "${pkgdir}" | sed -e 's/[\/&]/\\&/g')//g" -i ${pkgdir}/usr/share/octave/octave_packages
-  fi
 
   if [ -e doc/html ]; then
     cd doc/html
