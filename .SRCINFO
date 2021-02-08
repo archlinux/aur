@@ -1,13 +1,13 @@
 pkgbase = ory-kratos-bin
 	pkgdesc = A cloud native user management system.
-	pkgver = 0.4.6_alpha.1
+	pkgver = 0.5.5_alpha.1
 	pkgrel = 1
 	url = https://ory.sh/kratos
 	arch = x86_64
 	license = Apache
 	provides = ory-kratos
-	source = https://github.com/ory/kratos/releases/download/v0.4.6-alpha.1/kratos_0.4.6-alpha.1_linux_64-bit.tar.gz
-	sha256sums = 0c1f01df6bb49513af424b822744333b9f138fec7c96c1425d3a6685b2258444
+	source = https://github.com/ory/kratos/releases/download/v0.5.5-alpha.1/kratos_0.5.5-alpha.1_linux_64bit.tar.gz
+	sha256sums = 63b91380f460d74d291a34de319ce37b6f2ae1c495da2d51e160eb4c203f8147
 
 pkgname = ory-kratos-bin
 
