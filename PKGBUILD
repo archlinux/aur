@@ -5,7 +5,7 @@
 # Contributor: Rein Fernhout <public@reinfernhout.xyz>
 
 pkgname=micro-nightly-bin
-pkgver=2.0.0.28
+pkgver=2.0.9.39
 pkgrel=1
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')
@@ -31,5 +31,6 @@ pkgver() {
 
 package() {
 	install -Dm755 "$srcdir/micro-$_realver/micro" "$pkgdir/usr/bin/micro"
+ 	install -Dm644 "$srcdir/micro-$_realver/micro.1" "$pkgdir/usr/share/man/man1/micro.1"
 	install -Dm644 "$srcdir/micro-$_realver/LICENSE" "$pkgdir/usr/share/licenses/micro/LICENSE"
 }
