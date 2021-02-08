@@ -17,8 +17,8 @@ sha256sums=("SKIP")
 build() {
   cd "$pkgname"
 
-  # We're using the Git repository as source to get metadata information for the binary, but using a stable version tag
-  # instead of the latest commit since this is not a `-git` package.
+  # We're building from source to get metadata information for the binary, but using a stable version tag instead of
+  # the latest commit since this is not a `-git` package.
   git checkout "v$pkgver"
 
   # mage is build with mage itself, therefore we simluate the execution of the provided `bootstrap.go` installation
