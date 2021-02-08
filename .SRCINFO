@@ -1,0 +1,20 @@
+pkgbase = swf2pdf-git
+	pkgdesc = Converts swf files to pdf
+	pkgver = r6.cac7b45
+	pkgrel = 1
+	url = https://github.com/faubi/swf2pdf
+	arch = any
+	license = unknown
+	makedepends = swfdec-devel
+	makedepends = cairo
+	makedepends = glib2
+	depends = swfdec-devel
+	depends = cairo
+	depends = glib2
+	provides = swf2pdf
+	conflicts = swf2pdf
+	source = swf2pdf-git::git+https://github.com/faubi/swf2pdf.git
+	sha256sums = SKIP
+
+pkgname = swf2pdf-git
+
