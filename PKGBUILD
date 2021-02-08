@@ -12,6 +12,7 @@ depends=('awesome')
 makedepends=('git')
 source=("git+https://github.com/serialoverflow/${_gitname}.git")
 sha256sums=('SKIP')
+options=('!strip')
 
 pkgver() {
 	cd "${_gitname}"
