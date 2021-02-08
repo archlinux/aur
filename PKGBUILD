@@ -1,42 +1,50 @@
-# Mantainer: MCMic <come@chilliet.eu>
+# Maintainer: Anton Karmanov <a.karmanov@inventati.org>
+# Contributor: MCMic <come@chilliet.eu>
 
 pkgname=wyrmsun
-pkgver=3.5.4
-pkgrel=2
+pkgver=4.1.3
+pkgrel=1
 pkgdesc="Real-time strategy game based on history, mythology and fiction"
 arch=('i686' 'x86_64')
 url="http://andrettin.github.io/"
-license=('GPL' 'CC-BY-SA')
-depends=('sdl' 'tolua++' 'libvorbis')
-makedepends=('cmake' 'boost')
+license=('GPL2')
+depends=(
+    'hicolor-icon-theme'
+    'qt5-location'
+    'qt5-multimedia'
+    'sdl_mixer'
+    'tolua++'
+)
+makedepends=('boost' 'cmake' 'glu')
 source=("wyrmsun-${pkgver}.tar.gz::https://github.com/Andrettin/Wyrmsun/archive/v${pkgver}.tar.gz" 
-        "wyrmgus-${pkgver}.tar.gz::https://github.com/Andrettin/Wyrmgus/archive/v${pkgver}.tar.gz"
-        "oaml-1.0.tar.gz::https://github.com/marcelofg55/oaml/archive/v1.0.tar.gz")
-md5sums=('c8b2b164b32ed4d9d43e86f57e20fb0a'
-         '00d18754666b67aef97c11a01300584d'
-	 '97019b32af9a809d812a457a97ed1344')
-_name='Wyrmsun'
-_categories='Game;StrategyGame'
-
-prepare() {
-  cp -a ${srcdir}/oaml-1.0/* ${srcdir}/Wyrmgus-${pkgver}/src/oaml/
-}
+        "wyrmgus-${pkgver}.tar.gz::https://github.com/Andrettin/Wyrmgus/archive/v${pkgver}.tar.gz")
+md5sums=('b8406d4999418c858b67733a05d02393'
+         '3d10c81aaf4ba3313e4881c460229768')
 
 build() {
   cd ${srcdir}/Wyrmgus-${pkgver}
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_USEGAMEDIR=OFF .
-  make
-  cd ${srcdir}/Wyrmsun-${pkgver}
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .
-  make
+  cmake . \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DOpenGL_GL_PREFERENCE=GLVND \
+  ;
+  cmake --build . --target stratagus_main
+
+  cd "${srcdir}/Wyrmsun-${pkgver}"
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX='/usr/' .
+  cmake --build .
+}
+
+check() {
+  cd ${srcdir}/Wyrmgus-${pkgver}
+  cmake --build . --target stratagus_test
+  ./stratagus_test
 }
 
 package() {
-  cd ${srcdir}/
-  mkdir -p ${pkgdir}/usr/bin/
   cd ${srcdir}/Wyrmgus-${pkgver}
-  make DESTDIR="$pkgdir" install
-  mv ${pkgdir}/usr/games/stratagus ${pkgdir}/usr/bin/wyrmgus
+  mkdir -p "${pkgdir}/usr/bin/"
+  cp wyrmgus "${pkgdir}/usr/bin/"
+
   cd ${srcdir}/Wyrmsun-${pkgver}
-  make DESTDIR="$pkgdir" install
+  cmake --install . --prefix "${pkgdir}/usr/"
 }
