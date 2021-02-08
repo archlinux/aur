@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=bibtex2html-git
-pkgver=1.99.16.gf1b6b57
+pkgver=1.99.r16.gf1b6b57
 pkgrel=1
 pkgdesc="Collection of tools for producing HTML documents from bibtex-bibliographies"
 url="https://github.com/backtracking/bibtex2html"
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags | sed 's+-+.+g' | cut -c3-
+  git describe --tags | cut -c3- | sed 's+-+.+' | sed 's+-+.r+'|tr - .
 }
 
 build() {
