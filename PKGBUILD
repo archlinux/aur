@@ -1,7 +1,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=stag-git
 _gitname=stag
-pkgver=62.b64612a
+pkgver=93.0a158e7
 pkgrel=1
 pkgdesc="A C curses based mp3/ogg/flac tagging application (git version)"
 arch=('i686' 'x86_64')

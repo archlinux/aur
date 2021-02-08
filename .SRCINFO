@@ -1,6 +1,6 @@
 pkgbase = stag-git
 	pkgdesc = A C curses based mp3/ogg/flac tagging application (git version)
-	pkgver = 62.b64612a
+	pkgver = 93.0a158e7
 	pkgrel = 1
 	url = http://cryptm.org/~sturm/stag.html
 	arch = i686
