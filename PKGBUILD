@@ -2,7 +2,7 @@
 # Maintainer: Nick Cao <nickcao@nichi.co>
 
 pkgname=index-generator
-pkgver=0.2.9
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Yet another python index generator'
 arch=('any')
@@ -11,9 +11,8 @@ license=('MIT')
 depends=('python' 'python-jinja')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
-_name=${pkgname#python-}
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('e2a0a27ee5c10e59d8bd1cb606e99afb365c99dc51e659e39d591f036564b58018857699a7b65c53d066bcf48ce717cfab00b542222b9232aed18fd869a3fb7c')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/index-generator-project/${pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('0bbe3be9527f226da958326002dc83485ce6823c2d87d996aba13a8f9282a7b341090616a9e008eabe2c8c2a11bb81e00771fa9f400358ec983831b3cda9117b')
 
 build() {
   cd "${pkgname}-${pkgver}"
