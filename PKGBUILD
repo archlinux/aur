@@ -5,7 +5,7 @@
 pkgname=tango
 pkgver=9.3.4
 pkgrel=1
-pkgdesc="Tango Controls a toolkit for controlling any kind of hardware or software and building SCADA systems"
+pkgdesc="Tango Controls is a free open source device-oriented controls toolkit for controlling any kind of hardware or software and building SCADA (supervisory control and data acquisition) systems. Tango Controls is operating system independent and supports C++, Java and Python for all the components."
 arch=('i686' 'x86_64')
 url="http://www.tango-controls.org/"
 license=('GPL3')
