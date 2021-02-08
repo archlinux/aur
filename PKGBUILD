@@ -1,6 +1,6 @@
 # Maintainer: Daniel Schopf <schopf.dan at gmail dot com>
 pkgname=openkim-models
-pkgver=2019.07.25
+pkgver=2021.01.28
 pkgrel=1
 pkgdesc="This package contains the models from OpenKIM.org"
 arch=("i686" "x86_64")
@@ -10,7 +10,7 @@ depends=(kim-api)
 makedepends=(cmake gcc-fortran)
 replaces=(kim-api-models)
 source=(https://s3.openkim.org/archives/collection/${pkgname}-${pkgver//./-}.txz)
-sha512sums=('2117ead850a6de009f23e50d46254d529d645786447a5262b9743b89996071388c0021f1e8e72982122552b0becb1369034613f2500dbece41e212088ad4c55d')
+sha512sums=('524f10fa53a88db289f48bb59c84a545d0f6d14940b8a254d2531d499a33b6a5efa86ce565d9979af9fbae2387ac75b106a931427cb786f3631df7c39f3d0fdd')
 
 prepare() {
   mkdir -p build
