@@ -66,7 +66,7 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-lts
-pkgver=5.4.95
+pkgver=5.4.96
 _major=5.4
 _branch=5.x
 xanmod=1
@@ -100,7 +100,7 @@ done
 
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            '89f874d1521c85ca2df718f9c2493cc345f5a7e1b042e2e93c861d8fffee63e5'
+            '4debf2a4c5f70b4fc2879a10a25a65aa18f522f781253a599d2ade22c9d5088e'
             '03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134'
             '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee')
 
