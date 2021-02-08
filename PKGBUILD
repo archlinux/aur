@@ -2,7 +2,7 @@
 pkgname=knightos-sdk
 _pkgname=sdk
 pkgver=2.0.10
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc='The KnightOS developer SDK'
 groups=("knightos")
@@ -18,7 +18,7 @@ optdepends=(
 arch=("any")
 url='https://github.com/KnightOS/sdk'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/KnightOS/$_pkgname/archive/$pkgver.tar.gz")
-sha256sums=('0fd7d1322aa925e06fa595bf52e4a1d04f7661b975d37bb9b78ff481d8ad63bc')
+sha256sums=('c24e1bc3eb8931918fc79a523d4a5e3476fcf5f05731dd04ed42d766e82f5fd9')
 
 build() {
 	cd "$_pkgname-$pkgver"
