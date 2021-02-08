@@ -1,6 +1,6 @@
 pkgbase = teamviewer-beta
 	pkgdesc = All-In-One Software for Remote Support and Online Meetings
-	pkgver = 15.13.6
+	pkgver = 15.14.5
 	pkgrel = 1
 	url = https://www.teamviewer.com/en-us/download/linux/
 	install = teamviewer.install
@@ -18,15 +18,15 @@ pkgbase = teamviewer-beta
 	provides = teamviewer=15
 	conflicts = teamviewer
 	options = !strip
-	source_i686 = https://dl.tvcdn.de/download/linux/version_15x/teamviewer_15.13.6_i386.deb
-	md5sums_i686 = 19bc780b22044510bb51d11c05a1611a
-	sha256sums_i686 = 691a4e70ece45b814cdcaf3c4245cea25de220d79ef6b43d312e359bf9465917
-	source_x86_64 = https://dl.tvcdn.de/download/linux/version_15x/teamviewer_15.13.6_amd64.deb
-	md5sums_x86_64 = b940874ff5bb866c6a9fc6802215e82a
-	sha256sums_x86_64 = 8dbecb5b810881b756256fb97b4e7122845d4a43ab6a4a3534f67a864bcde77d
-	source_armv7h = https://dl.tvcdn.de/download/linux/version_15x/teamviewer-host_15.13.6_armhf.deb
-	md5sums_armv7h = cbc9f2e239caf4c2dc957598fa32f538
-	sha256sums_armv7h = 04568b038468f0cfccefb65353d55e4ff3209961f035c8c1428779c30f96e0a9
+	source_i686 = https://dl.tvcdn.de/download/linux/version_15x/teamviewer_15.14.5_i386.deb
+	md5sums_i686 = 49295c6c7cab605e8ac6c2f3d4ab1118
+	sha256sums_i686 = a8be05043062d6b12f2095b53ef3c0f3e9b3f9eb47b3facb280ee4abe63369ec
+	source_x86_64 = https://dl.tvcdn.de/download/linux/version_15x/teamviewer_15.14.5_amd64.deb
+	md5sums_x86_64 = e364da3834a4e4413cae17e16e9dfa1c
+	sha256sums_x86_64 = 833c73dab4430f43cf5b22a0a3820fbbc3184cce26843afb990693128fb5b64a
+	source_armv7h = https://dl.tvcdn.de/download/linux/version_15x/teamviewer-host_15.14.5_armhf.deb
+	md5sums_armv7h = 13a77a1aa8cb04f38630942599937ce0
+	sha256sums_armv7h = 7102cd134fd374c3699d796fa6578b55747ae6f2f3a6fd2176f6404d8295e825
 
 pkgname = teamviewer-beta
 
