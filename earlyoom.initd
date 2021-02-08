@@ -1,0 +1,8 @@
+#!/usr/bin/openrc-run
+
+name=earlyoom
+command=/usr/bin/earlyoom
+source /etc/default/earlyoom
+command_args=$EARLYOOM_ARGS
+command_background=1
+pidfile=/run/earlyoom.pid

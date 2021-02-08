@@ -1,0 +1,16 @@
+pkgbase = earlyoom-openrc
+	pkgdesc = OpenRC earlyoom init script
+	pkgver = 20210208
+	pkgrel = 1
+	arch = any
+	groups = openrc-galaxy
+	license = MIT
+	depends = openrc
+	depends = earlyoom
+	provides = openrc-earlyoom
+	conflicts = systemd-sysvcompat
+	source = earlyoom.initd
+	sha256sums = 934c94e3fcfaaa492a1697607a5e1bcfc71e17c93a9cbc4e2e080a1551e30876
+
+pkgname = earlyoom-openrc
+
