@@ -1,7 +1,7 @@
 pkgbase = mpsolve
 	pkgdesc = Multiprecision rootfinder for complex roots of univariate polynomials
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://numpi.dm.unipi.it/software/mpsolve
 	arch = x86_64
 	license = GPL
@@ -11,13 +11,10 @@ pkgbase = mpsolve
 	optdepends = cython: Python bindings
 	optdepends = doxygen: documentation (optional build-time dependency)
 	optdepends = gtk3: Graphical debugger
-	optdepends = octave: Octave bindings
 	optdepends = qt5-base: Graphical interface xmpsolve
 	options = !libtool
 	source = http://numpi.dm.unipi.it/_media/software/mpsolve/mpsolve-3.2.1.tar.bz2
-	source = https://raw.githubusercontent.com/robol/MPSolve/master/examples/octave/octave_support.h
 	sha256sums = 45b22f6b04544b9eda2457eec58580d892c7e00824ebd2d6e31fe24cdd763804
-	sha256sums = d88d5e982b11512e7e2af82db89f0481759d9c50c27d9c8261220bd1b508f136
 
 pkgname = mpsolve
 
