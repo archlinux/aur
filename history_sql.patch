@@ -1,0 +1,66 @@
+diff -ruN kadu/plugins/sql_history/storage/history-sql-storage.cpp kadu.new/plugins/sql_history/storage/history-sql-storage.cpp
+--- kadu/plugins/sql_history/storage/history-sql-storage.cpp	2021-02-08 19:40:22.852005200 +0100
++++ kadu.new/plugins/sql_history/storage/history-sql-storage.cpp	2021-02-08 19:55:38.533602420 +0100
+@@ -192,7 +192,7 @@
+     connect(
+         initializer, SIGNAL(progressFinished(bool, QString, QString)), this,
+         SLOT(initializerProgressFinished(bool, QString, QString)));
+-    connect(initializer, SIGNAL(databaseReady(bool)), this, SLOT(databaseReady(bool)));
++    connect(initializer, SIGNAL(databaseReady(bool,QString)), this, SLOT(databaseReady(bool,QString)));
+ 
+     InitializerThread->start();
+ 
+@@ -234,10 +234,14 @@
+         ImportProgressWindow->progressFinished(ok, iconName, message);
+ }
+ 
+-void HistorySqlStorage::databaseReady(bool ok)
++void HistorySqlStorage::databaseReady(bool ok, const QString &historyFilePath)
+ {
+     if (ok)
+-        Database = QSqlDatabase::database("kadu-history", true);
++        {
++        	Database = QSqlDatabase::addDatabase("QSQLITE", "kadu-history");
++        	Database.setDatabaseName(historyFilePath);
++        	Database.open();
++        }
+ 
+     if (!Database.isOpen() || Database.isOpenError())
+     {
+diff -ruN kadu/plugins/sql_history/storage/history-sql-storage.h kadu.new/plugins/sql_history/storage/history-sql-storage.h
+--- kadu/plugins/sql_history/storage/history-sql-storage.h	2021-02-08 19:40:22.852005200 +0100
++++ kadu.new/plugins/sql_history/storage/history-sql-storage.h	2021-02-08 19:56:45.640717700 +0100
+@@ -141,7 +141,7 @@
+     void initializerProgressMessage(const QString &iconName, const QString &message);
+     void initializerProgressFinished(bool ok, const QString &iconName, const QString &message);
+ 
+-    void databaseReady(bool ok);
++    void databaseReady(bool ok, const QString &historyFilePath);
+ 
+ public:
+     Q_INVOKABLE explicit HistorySqlStorage(QObject *parent = nullptr);
+diff -ruN kadu/plugins/sql_history/storage/sql-initializer.cpp kadu.new/plugins/sql_history/storage/sql-initializer.cpp
+--- kadu/plugins/sql_history/storage/sql-initializer.cpp	2021-02-08 19:40:22.852005200 +0100
++++ kadu.new/plugins/sql_history/storage/sql-initializer.cpp	2021-02-08 19:59:19.405002233 +0100
+@@ -71,7 +71,8 @@
+     bool ok = Database.isOpen() && !Database.isOpenError();
+     Database.close();
+ 
+-    emit databaseReady(ok);
++    QString historyFilePath = m_pathsProvider->profilePath() + QStringLiteral(HISTORY_FILE_CURRENT);
++    emit databaseReady(ok,historyFilePath);
+ 
+     deleteLater();
+ }
+diff -ruN kadu/plugins/sql_history/storage/sql-initializer.h kadu.new/plugins/sql_history/storage/sql-initializer.h
+--- kadu/plugins/sql_history/storage/sql-initializer.h	2021-02-08 19:40:22.852005200 +0100
++++ kadu.new/plugins/sql_history/storage/sql-initializer.h	2021-02-08 20:00:18.115345858 +0100
+@@ -62,7 +62,7 @@
+     void initialize();
+ 
+ signals:
+-    void databaseReady(bool ok);
++    void databaseReady(bool ok, const QString &historyFilePath);
+ 
+     void progressMessage(const QString &iconName, const QString &message);
+     void progressFinished(bool ok, const QString &iconName, const QString &message);
