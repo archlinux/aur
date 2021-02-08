@@ -1,45 +1,42 @@
-# Maintainer: demian <mikar ατ gmx δοτ de>
-pkgname=awesome-themes-git
-pkgver=20131121
-pkgrel=2
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor demian <mikar ατ gmx δοτ de>
+_gitname="awesome-themes"
+pkgname="${_gitname}-git"
+pkgver=r18.4d7c8f8
+pkgrel=1
 pkgdesc="Theme Collection for AwesomeWM, updated for 3.5.2. This is the successor of awesome34-themes-git"
 arch=('any')
-url="https://github.com/mikar/awesome-themes"
+url="https://github.com/serialoverflow/${_gitname}"
 license=('GPL')
 depends=('awesome')
 makedepends=('git')
+source=("git+https://github.com/serialoverflow/${_gitname}.git")
+sha256sums=('SKIP')
 
-_gitroot="git://github.com/mikar/awesome-themes.git"
-_gitname="awesome-themes"
+pkgver() {
+	cd "${_gitname}"
+	( set -o pipefail
+	  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
+}
 
-build() {
-  cd ${srcdir}
-
-  msg "Connecting to GIT server..."
-  if [[ -d ${_gitname} ]]; then
-    (cd ${_gitname} && git pull origin)
-  else
-    git clone ${_gitroot} ${_gitname}
-  fi
-  msg "GIT checkout done or server timeout"
-  msg "Starting make..."
-
-  rm -rf ${_gitname}-build
-  git clone ${_gitname} ${_gitname}-build
+prepare() {
+	cd "${_gitname}"
+	
+	rm README
+	rm -rf "0-screenshots"
 }
 
 package() {
-  cd ${srcdir}/${_gitname}-build
-  
-  # Create installation directories
-  install -d -m755 "${pkgdir}/usr/share/awesome/themes/"
+	cd "${_gitname}"
 
-  # Install the themes
-  cp -rf * "${pkgdir}/usr/share/awesome/themes/"
-  
-  # Fix permissions. Stupid ntfs.
-  find "$pkgdir" -type d -print0 | xargs -0 chmod -R 755
-  find "$pkgdir" -type f -print0 | xargs -0 chmod -R 644
-  # But keep some scripts functional (currently only used with niceandclean theme)
-  find "$pkgdir" -type f -regex ".*\.sh$" -print0 | xargs -0 chmod 755
+	# Create installation directories
+	install -d -m755 "${pkgdir}/usr/share/awesome/themes/"
+
+	# Install the themes
+	cp -rf * "${pkgdir}/usr/share/awesome/themes/"
+
+	# Keep some scripts functional
+	find "$pkgdir" -type f -regex ".*\.sh$" -print0 | xargs -0 chmod 755
 }
