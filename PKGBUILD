@@ -2,7 +2,7 @@
 
 pkgname=google-cloud-sdk-cbt
 pkgver=326.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A google-cloud-sdk component that provides the cli for Cloud Bigtable."
 url="https://cloud.google.com/sdk/"
 license=("Apache")
@@ -17,7 +17,7 @@ source=(
 sha256sums=('150000b02628ee7f6442e1f24f90e7187393e1e3cbb1c0eeafaa01547455149e')
 
 package() {
-  rm -rf "${srcdir}/.install"
   mkdir -p "${pkgdir}/opt"
   cp -r "${srcdir}/google-cloud-sdk" "${pkgdir}/opt/google-cloud-sdk"
+  rmdir  "${pkgdir}/opt/google-cloud-sdk/.install/.download"
 }
