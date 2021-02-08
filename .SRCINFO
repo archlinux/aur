@@ -1,12 +1,11 @@
 pkgbase = r-coin
 	pkgdesc = Conditional Inference Procedures in a Permutation Test Framework
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=coin
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = gcc
 	depends = r>=3.6.0
 	depends = r-libcoin>=1.0.5
 	depends = r-matrixstats>=0.54.0
@@ -17,8 +16,8 @@ pkgbase = r-coin
 	optdepends = r-e1071
 	optdepends = r-vcd
 	optdepends = r-th.data
-	source = https://cran.r-project.org/src/contrib/coin_1.4-0.tar.gz
-	sha256sums = fb9bfb1be33947ac3784829c6c2f7623b29bca04e540c0bce917f13f2a694ad8
+	source = https://cran.r-project.org/src/contrib/coin_1.4-1.tar.gz
+	sha256sums = 11870eca0489e2ea5f45926a082213981f17945ee43b692c538a8ce79785bb97
 
 pkgname = r-coin
 
