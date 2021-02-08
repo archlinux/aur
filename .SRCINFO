@@ -32,6 +32,7 @@ pkgbase = xorg-server-rootless-nosystemd-minimal-git
 	makedepends = meson
 	optdepends = wayland-protocols: xwayland support
 	optdepends = egl-wayland: xwayland support
+	optdepends = xorg-xinit: startx support
 	source = git+https://gitlab.freedesktop.org/xorg/xserver.git
 	sha512sums = SKIP
 

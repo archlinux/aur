@@ -49,7 +49,8 @@ makedepends=(
 	'meson')
 
 optdepends=('wayland-protocols: xwayland support'
-	    'egl-wayland: xwayland support')
+	    'egl-wayland: xwayland support'
+            'xorg-xinit: startx support')
 
 pkgver() {
   cd xserver
