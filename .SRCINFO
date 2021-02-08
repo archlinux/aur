@@ -1,0 +1,14 @@
+pkgbase = google-cloud-sdk-cbt
+	pkgdesc = A google-cloud-sdk component that provides the cli for Cloud Bigtable.
+	pkgver = 326.0.0
+	pkgrel = 1
+	url = https://cloud.google.com/sdk/
+	arch = x86_64
+	license = Apache
+	depends = google-cloud-sdk
+	options = !strip
+	source = https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/google-cloud-sdk-cbt_326.0.0.orig_amd64.tar.gz
+	sha256sums = 150000b02628ee7f6442e1f24f90e7187393e1e3cbb1c0eeafaa01547455149e
+
+pkgname = google-cloud-sdk-cbt
+
