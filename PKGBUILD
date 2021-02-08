@@ -2,7 +2,7 @@
 
 pkgname=netron-bin
 pkgver=4.7.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Visualizer for neural network, deep learning and machine learning models"
 arch=('x86_64')
 url='https://www.lutzroeder.com/ai'
