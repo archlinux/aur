@@ -1,11 +1,10 @@
 pkgbase = libgit2-glib-git
-	pkgdesc = GLib wrapper for libgit2 - git checkout
-	pkgver = 0.0.6.r17.gcc9d2e9
+	pkgdesc = GLib wrapper for libgit2
+	pkgver = v.0.99.0+17+gcaa0b64
 	pkgrel = 1
-	url = http://live.gnome.org/Libgit2-glib
-	arch = i686
-	arch = x86_64
-	license = LGPL2.1
+	url = https://gitlab.gnome.org/GNOME/libgit2-glib
+	arch = any
+	license = GPL
 	makedepends = git
 	makedepends = gnome-common
 	makedepends = gtk-doc
@@ -14,8 +13,8 @@ pkgbase = libgit2-glib-git
 	depends = gobject-introspection
 	provides = libgit2-glib
 	conflicts = libgit2-glib
-	source = git://git.gnome.org/libgit2-glib
-	sha256sums = SKIP
+	source = git+https://gitlab.gnome.org/GNOME/libgit2-glib
+	sha512sums = SKIP
 
 pkgname = libgit2-glib-git
 
