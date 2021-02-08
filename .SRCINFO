@@ -1,8 +1,8 @@
 pkgbase = lunar-date
 	pkgdesc = Chinese lunar date library.
 	pkgver = 2.9.3
-	pkgrel = 2
-	url = http://code.google.com/p/liblunar/
+	pkgrel = 3
+	url = https://github.com/yetist/lunar-date
 	arch = i686
 	arch = x86_64
 	license = GPL2
