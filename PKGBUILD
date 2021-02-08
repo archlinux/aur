@@ -2,7 +2,7 @@
 # Contributor: Benjamin Hodgetts <ben@xnode.org>
 
 pkgname=vice-svn
-pkgver=r39638
+pkgver=r39690
 pkgrel=1
 pkgdesc="The Versatile Commodore Emulator (Commodore 64/C64). - Development version"
 arch=('i686' 'x86_64')
@@ -16,7 +16,6 @@ replaces=('vice')
 conflicts=('vice' 'vice-sdl2' 'vice-svn-gtk3' 'vice-svn-sdl2')
 source=("${pkgname}::svn://svn.code.sf.net/p/vice-emu/code/trunk"
 vice-org-vsid.desktop
-vice-org-x64.desktop
 vice-org-x64dtv.desktop
 vice-org-x64sc.desktop
 vice-org-x128.desktop
@@ -39,7 +38,6 @@ VIC20_1024.svg
 )
 sha256sums=('SKIP'
             'c07cfcc5f710b96258ce194dfeef60ca15b8cdde84c7bbc529b1417f50c82fd1'
-            '7a99085ffa73926cc0165d633775422085d198b7afe265b85c96116877577cc3'
             'c6362e948eb29aa392a0b0e43657e2d1a7440209919f4d724e60578b2e50195b'
             'dd58d7ab618a7d70ac336b8c44f38438305ba9b94a54635b393c7c281e91824d'
             '2bee5fd315e9d95ff19a5c84df544e4e200f1f41e526b67bb19079a456cacde2'
@@ -67,7 +65,7 @@ pkgver() {
 build() {
     cd "${pkgname}/vice"
     ./autogen.sh 
-    ./configure --prefix=/usr --libdir=/usr/lib --enable-external-ffmpeg --enable-x64
+    ./configure --prefix=/usr --libdir=/usr/lib --enable-external-ffmpeg
     make V=0
 }
 
