@@ -3,7 +3,7 @@
 
 pkgname=lazygit
 pkgver=0.24.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple terminal UI for git commands"
 arch=("x86_64")
 url="https://github.com/jesseduffield/${pkgname}"
@@ -28,9 +28,10 @@ build () {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -x -v"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw -x -v"
   go build \
     -ldflags "\
+      -linkmode external \
       -extldflags ${LDFLAGS} \
       -X main.commit=${_commit} \
       -X main.date=$(date -u +%Y-%m-%dT%H:%M:%SZ) \
