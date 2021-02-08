@@ -2,7 +2,7 @@
 _pkgname=swf2pdf
 pkgname=swf2pdf-git
 pkgver=r6.cac7b45
-pkgrel=1
+pkgrel=2
 pkgdesc='Converts swf files to pdf '
 arch=('any')
 url='https://github.com/faubi/swf2pdf'

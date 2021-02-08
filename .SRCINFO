@@ -5,6 +5,7 @@ pkgbase = swf2pdf-git
 	url = https://github.com/faubi/swf2pdf
 	arch = any
 	license = unknown
+	makedepends = git
 	makedepends = swfdec-devel
 	makedepends = cairo
 	makedepends = glib2
