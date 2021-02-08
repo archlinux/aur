@@ -1,6 +1,6 @@
 # Maintainer: andre.menrath@posteo.de
 pkgname=sws
-pkgver=2.12.1.2
+pkgver=2.12.1.3
 pkgrel=1
 pkgdesc="A collection of features that seamlessly integrate into REAPER"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('reaper-bin>=6.19' 'taglib')
 makedepends=('git' 'gcc' 'make' 'cmake' 'php' 'perl')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-_commit=145a0070185b7a3d19ea455eb64f1f71026d5cde  # version 2.12.1.2
+_commit=3b209e75a69476b218fa09983c2a04d6d5e5a452  # version 2.12.1.3
 source=("git://github.com/reaper-oss/sws.git#commit=$_commit"
 		"reaper_plugin_functions.h")
 sha256sums=('SKIP'
