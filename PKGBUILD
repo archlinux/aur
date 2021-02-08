@@ -21,23 +21,34 @@
 
 _pkgname=codelite
 _pkgver=15.0
+#_commit=d19d21e702fa0de1c6649c8a63096f30ee90cf9d
+
+pkg_ident="${pkgver//_/-}"
+pkg_name_ver="${_pkgname}-${_pkgver//_/-}"
+
+#pkg_ident="${_commit}"
+#pkg_name_ver="${_pkgname}-${_commit}"
 
 pkgname=${_pkgname}
 pkgver=${_pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
 license=('GPL')
 makedepends=('pkgconfig' 'cmake' 'clang')
-depends=('wxgtk2'
+depends=(
+          'wxgtk3'
+          #'wxgtk2' 'webkit2gtk'
           'clang' 'lldb'
           'libedit'
           'libssh'
           'mariadb-libs'
           'ncurses'
-          'xterm' 'wget' 'curl'
+          'wget' 'curl'
+          'xterm'
           'python2'
+          'python'
         )
 optdepends=('graphviz: callgraph visualization'
              'clang: compiler'
@@ -59,6 +70,7 @@ source=(
 md5sums=('1c54744ab0c9b5732087687ab17ab49d'
          '20f3428eb831c3ff2539a7228afaa3b4'
          )
+noextract=('wxgui.zip')
 
 #
 #
@@ -74,8 +86,6 @@ md5sums=('1c54744ab0c9b5732087687ab17ab49d'
 
 
 BUILD_DIR="_build"
-pkg_name_ver="${_pkgname}-${pkgver//_/-}"
-
 
 #
 #
@@ -98,8 +108,9 @@ CXXFLAGS="${CXXFLAGS} -fno-devirtualize"
 export CXXFLAGS
 
 # cmake find_package() will try env var WX_CONFIG as wx-config tool path before checking its builtin hardcoded naming conbinations for wx-config tool
+#WX_CONFIG="wx-config"
 #WX_CONFIG="wx-config-gtk2"
-WX_CONFIG="wx-config"
+WX_CONFIG="wx-config-gtk3"
 export WX_CONFIG
 
 mkdir -p "${BUILD_DIR}"
