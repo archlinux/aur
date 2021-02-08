@@ -1,8 +1,8 @@
 # Maintainer: Arafat Zahan <kuasha420@gmail.com>
 pkgname=pyxtrlock-git
 _pkgname=pyxtrlock
-pkgver=r145.c8f55b9 
-pkgrel=2
+pkgver=r5.08d1b21% 
+pkgrel=1
 pkgdesc="The X transparent screen lock rewritten in Python. Git version"
 arch=('any')
 url="https://github.com/leonnnn/pyxtrlock/"
