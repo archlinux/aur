@@ -12,7 +12,7 @@ provides=('atom')
 conflicts=('atom')
 source=("https://github.com/atom/atom/releases/download/v${_pkgver}/atom-amd64.tar.gz"
         "https://raw.githubusercontent.com/atom/atom/master/resources/linux/atom.desktop.in")
-md5sums=('545601dbe5d715b7b66145b67a072dcc'
+md5sums=('84de52cf56493fc8698e6000944853ce'
          'edd7c80254eae752065ec9fd17915752')
 
 package() {
