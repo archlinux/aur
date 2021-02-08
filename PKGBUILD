@@ -1,7 +1,7 @@
 # Maintainer: Nick Black <dankamongmen@gmail.com>
 
 pkgname=notcurses
-pkgver=2.1.8
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Blingful TUI/character graphics library"
 url="https://nick-black.com/dankwiki/index.php/Notcurses"
@@ -37,4 +37,4 @@ package() {
   env CFLAGS="-I$pkgdir/usr/include -L../build" python setup.py install --root="$pkgdir" --optimize=1
 }
 
-sha256sums=('35a8da40e4eaabbe9aba9ca8d29c30126e47c0d8dbc477532018f72aced07380')
+sha256sums=('5002106938ce9f371790162f2d8acc7d43d76b3a565eb1c3e7f1c205c3d1b664')
