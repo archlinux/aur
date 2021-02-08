@@ -1,42 +1,34 @@
-# Random-pick one mirror
-## Use this with pacman 6+ parallel downloads
-#Server = http://random.mirror.chaotic.cx/$repo/$arch
-#Server = https://random-mirror.chaotic.cx/$repo/$arch
+# Randomly pick one mirrors below
+# - This is GOOD with with Pacman 6+ parallel downloads;
+# - This is BAD with powerpill;
+# - This helps us not overusing one specific mirror;
+# - But feel free to comment it and use the list below instead.
+Server = https://random-mirror.chaotic.cx/$repo/$arch
 
 # Brazil
-## By: UFSCar (dead right now) -- alias: ufscar-mirror.chaotic.cx
-#Server = http://br-sp.mirror.chaotic.cx/$repo/$arch
+# * By: UFSCar (dead right now)
 #Server = https://br-sp-mirror.chaotic.cx/$repo/$arch
 
 # USA
-## By: GarudaLinux and Fosshost -- alias: garuda-mirror.chaotic.cx
-Server = http://us-tx.mirror.chaotic.cx/$repo/$arch
-#Server = http://us-tx.mirror.chaotic.cx/$repo/$arch
-
-## By: LordKitsuna -- alias: kitsuna-mirror.chaotic.cx
-Server = http://us-wa.mirror.chaotic.cx/$repo/$arch
-#Server = https://us-wa-mirror.chaotic.cx/$repo/$arch
+# * By: GarudaLinux and Fosshost
+Server = https://us-tx-mirror.chaotic.cx/$repo/$arch
+# * By: LordKitsuna
+Server = https://us-wa-mirror.chaotic.cx/$repo/$arch
 
 # Netherlands
-## By: Var Bhat and LiteServer -- alias: varbhat-mirror.chaotic.cx 
-Server = http://nl.mirror.chaotic.cx/$repo/$arch
-#Server = https://nl-mirror.chaotic.cx/$repo/$arch
+# * By: Var Bhat and LiteServer
+Server = https://nl-mirror.chaotic.cx/$repo/$arch
 
 # Burgos, Spain
-## By: JKANetwork -- alias: jkanetwork-mirror.chaotic.cx
-Server = http://es.mirror.chaotic.cx/$repo/$arch
-#Server = https://es-mirror.chaotic.cx/$repo/$arch
+# * By: JKANetwork
+Server = https://es-mirror.chaotic.cx/$repo/$arch
 
 # Germany
-## By: Nico -- alias: dr460nf1r3.mirror.chaotic.cx 
-Server = http://de-1.mirror.chaotic.cx/$repo/$arch
-#Server = https://de-1-mirror.chaotic.cx/$repo/$arch
-
-## By: ParanoidBangL (without HTTPS) -- alias bangl-mirror.chaotic.cx
-Server = http://de-2.mirror.chaotic.cx/$repo/$arch
+# * By: Nico
+Server = https://de-1-mirror.chaotic.cx/$repo/$arch
+# * By: ParanoidBangL (without HTTPS)
+Server = http://de-2-mirror.chaotic.cx/$repo/$arch
 
 # Seoul, Korea
-## By: Ryoichi <t.me/maakpain> -- alias: maakpain-mirror.chaotic.cx
-Server = http://kr.mirror.chaotic.cx/$repo/$arch
-#Server = https://kr-mirror.chaotic.cx/$repo/$arch
-
+# * By: Ryoichi <t.me/maakpain>
+Server = https://kr-mirror.chaotic.cx/$repo/$arch
