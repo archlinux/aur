@@ -21,7 +21,7 @@ optdepends=(
 #  'linux-hardened-headers: build modules against the HARDENED kernel [requires at least one set of kernel headers]'
 #  'linux-zen-headers: build modules against the ZEN kernel [requires at least one set of kernel headers]'
 )
-conflicts=('esets')
+conflicts=('esets' 'eea-dkms')
 install=${pkgname}.install
 
 # https://www.eset.com/int/business/endpoint-antivirus-linux/download/
