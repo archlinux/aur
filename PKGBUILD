@@ -1,57 +1,48 @@
 # Maintainer: Carson Rueter <roachh@protonmail.com>
 
-pkgname='denise-git'
-_pkgname='denise'
-pkgdesc='Highly accurate C64/Amiga emulator - Git version'
+pkgname='denise'
+pkgdesc='Highly accurate C64/Amiga emulator'
 url='https://sourceforge.net/projects/deniseemu/'
 license=('GPL')
-pkgver=v1.0.9.1.r80.gf6e8564
+pkgver=1.0.9.1
 pkgrel=1
-source=('git+https://bitbucket.org/piciji/denise.git'
+_commit=b0719d48bd98
+source=("https://bitbucket.org/piciji/denise/get/v$pkgver.tar.gz"
 	'desktop_patch.patch')
-md5sums=('SKIP'
-         '06a239a04fa746ba7465cfe516a00a61')
+md5sums=('cf054ced246fb269f743418b0c16a04c'
+         'a2560751aa87c17c05c53fff051fcaf6')
 provides=('denise')
-conflicts=('denise-bin')
+conflicts=('denise-bin' 'denise-git')
 depends=('sdl2' 'gtk3')
-makedepends=('git')
 arch=('i686' 'x86_64')
-
-pkgver() {
-  cd "$srcdir/$_pkgname"
-  ( set -o pipefail
-  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
 
 prepare() {
   patch --binary -Np1 -i desktop_patch.patch
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/piciji-denise-$_commit"
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/piciji-denise-$_commit"
   mkdir -p $pkgdir/usr/bin/
   mkdir -p $pkgdir/usr/share/icons/
   mkdir -p $pkgdir/usr/share/applications/
-  mkdir -p $pkgdir/usr/lib/$_pkgname/translation/
-  mkdir -p $pkgdir/usr/lib/$_pkgname/data/
-  mkdir -p $pkgdir/usr/lib/$_pkgname/fonts/
-  mkdir -p $pkgdir/usr/lib/$_pkgname/img/
-  mkdir -p $pkgdir/usr/lib/$_pkgname/shader/
+  mkdir -p $pkgdir/usr/lib/$pkgname/translation/
+  mkdir -p $pkgdir/usr/lib/$pkgname/data/
+  mkdir -p $pkgdir/usr/lib/$pkgname/fonts/
+  mkdir -p $pkgdir/usr/lib/$pkgname/img/
+  mkdir -p $pkgdir/usr/lib/$pkgname/shader/
 
-  install -Dm755 out/Denise $pkgdir/usr/bin/$_pkgname
-  install -Dm644 data/img/$_pkgname.png $pkgdir/usr/share/icons/$_pkgname.png
-  install -Dm644 data/$_pkgname.desktop $pkgdir/usr/share/applications/$_pkgname.desktop
-  install -Dm644 data/translation/* $pkgdir/usr/lib/$_pkgname/translation
-  install -Dm644 data/data/* $pkgdir/usr/lib/$_pkgname/data
-  install -Dm644 data/fonts/*.ttf $pkgdir/usr/lib/$_pkgname/fonts
-  install -Dm644 data/img/bundle/* $pkgdir/usr/lib/$_pkgname/img
-  cp -r data/shader $pkgdir/usr/lib/$_pkgname/
+  install -Dm755 out/Denise $pkgdir/usr/bin/$pkgname
+  install -Dm644 data/img/$pkgname.png $pkgdir/usr/share/icons/$pkgname.png
+  install -Dm644 data/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+  install -Dm644 data/translation/* $pkgdir/usr/lib/$pkgname/translation
+  install -Dm644 data/data/* $pkgdir/usr/lib/$pkgname/data
+  install -Dm644 data/fonts/*.ttf $pkgdir/usr/lib/$pkgname/fonts
+  install -Dm644 data/img/bundle/* $pkgdir/usr/lib/$pkgname/img
+  cp -r data/shader $pkgdir/usr/lib/$pkgname/
 }
 
