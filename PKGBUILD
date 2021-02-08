@@ -12,7 +12,7 @@ pkgdesc="Linux Infrared Remote Control utilities with devinput enabled"
 arch=('x86_64')
 url="https://www.lirc.org/"
 license=('GPL')
-depends=('alsa-lib' 'libx11' 'libftdi' 'libusb-compat')
+depends=('alsa-lib' 'libx11' 'libftdi-compat' 'libusb-compat')
 makedepends=('help2man' 'alsa-lib' 'libx11' 'libxslt' 'python' 'python-setuptools'
              'systemd')
 optdepends=('python: for lirc-setup, irdb-get and pronto2lirc')
