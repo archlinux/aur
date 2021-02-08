@@ -1,13 +1,13 @@
 pkgbase = pgintcl
 	pkgdesc = A Tcl interface to PostgreSQL
 	pkgver = 3.5.1
-	pkgrel = 1
-	url = http://sourceforge.net/projects/pgintcl
+	pkgrel = 2
+	url = https://sourceforge.net/projects/pgintcl
 	arch = any
 	license = custom: essentially a BSD license
 	depends = tcl>=8.4.4
 	optdepends = postgresql>=8.3.0: for running a postgresql database server
-	source = http://downloads.sourceforge.net/pgintcl/3.5.1/pgintcl-3.5.1.tgz
+	source = https://downloads.sourceforge.net/pgintcl/3.5.1/pgintcl-3.5.1.tgz
 	source = README.arch
 	md5sums = 6272a61cdff5a39846d42af0f91afe6f
 	md5sums = d1a7075738c3dcb9993c2dacf3fa6695
