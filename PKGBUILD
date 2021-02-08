@@ -14,17 +14,17 @@ source=("git+$url.git")
 sha512sums=(SKIP)
 
 pkgver() {
-  cd $srcdir/jami-client-qt
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd $srcdir/jami-client-qt
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd jami-client-qt
+    cd jami-client-qt
     mkdir -p build
-	cd build
-	# /usr is necessary for Arch; see https://archlinux.org/news/binaries-move-to-usrbin-requiring-update-intervention/
-	cmake .. -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr"
-	make -j`nproc` # -j`nproc` uses as many cores as possible to speed up the build
+    cd build
+    # /usr is necessary for Arch; see https://archlinux.org/news/binaries-move-to-usrbin-requiring-update-intervention/
+    cmake .. -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr"
+    make -j`nproc` # -j`nproc` uses as many cores as possible to speed up the build
 }
 
 package() {
