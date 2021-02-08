@@ -1,10 +1,10 @@
-# Maintainer: Henry-Joseph Audéoud <h.audeoud@gmail.com>
+# Maintainer: Henry-Joseph Audéoud <h.audeoud+aur@gmail.com>
 # Contributor: Toke Høiland-Jørgensen <toke@toke.dk>
 # Based on the ruby-kramdown PKGBUILD
 
 pkgname=ruby-kramdown-rfc2629
 _name="${pkgname#ruby-}"
-pkgver=1.3.25
+pkgver=1.3.28
 pkgrel=1
 pkgdesc="An RFC2629 (XML2RFC) generating backend for Thomas Leitner's kramdown markdown parser"
 arch=(any)
@@ -14,10 +14,11 @@ depends=('ruby-kramdown<2.0.0' 'ruby-certified')
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${_name}-${pkgver}.gem")
 noextract=("${_name}-${pkgver}.gem")
-sha256sums=('0875d50346f073ade41f4993cd53f3d88d7cabbd4c405ca600d0fda725ce07dc')
+sha256sums=('8886844f494441f189cff97da89e1ea17ea4bf27624d5954d6583f1911c873f4')
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  local _gemdir
+  _gemdir="$(ruby -e'puts Gem.default_dir')"
 
   gem install --ignore-dependencies --no-user-install \
     -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" "${_name}-${pkgver}.gem"
