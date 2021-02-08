@@ -1,7 +1,7 @@
 pkgbase = rethinkdb
 	pkgdesc = Distributed NoSQL database for realtime applications
 	pkgver = 2.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.rethinkdb.com
 	install = rethinkdb.install
 	arch = x86_64
@@ -23,7 +23,6 @@ pkgbase = rethinkdb
 	source = rethinkdb.tmpfiles.d
 	source = mksnapshot_crash_fix.patch
 	source = v8_g++7_build_fix.patch::https://github.com/nodejs/node/commit/66c1197f3aefd5b9f36533e6b617f2046acc2c0f.patch
-	source = fix_assets.patch
 	sha512sums = SKIP
 	sha512sums = a298232f6393735f2d459eb23f78089dd7eb1bae4907dfe61b286ceb8f93d3131c2dd45f09643089d00e2a4bef0f35739c9c8984f88b34c0ab515793f38eda46
 	sha512sums = d0e86e86010fafcfdad7a58fe9ed9e93deefb1ab803aa283f60cccaf7a0ee11990c59b9ab01872b1c97b08418d7b53064e938b428e50a310442b32aa385277d9
@@ -31,7 +30,6 @@ pkgbase = rethinkdb
 	sha512sums = 112bc0f9ecfdfae6efba5d8cc3f773085b3f345d33d350188dc70609c425e6c656a0a3069ae5c66cdc684a94fd442e990a88c0ca8d1875f085f660c76c3d7250
 	sha512sums = 8deea735b2c7b6fc0221a49e818d4347869330fa9e35a94c15d54f7bc64ac0b8a573906fea6cc64c05a177f3065c96d8b4d0e2a3724b6137d7f12ba7a7b419f7
 	sha512sums = 15f1f9508adef9cd14320b6649f3b766a0dd8dd478290424e9af6343a7fd64e246aafbbf2f19109e5812decb2f15dcb283fec57875bc50a540737441a0fd248d
-	sha512sums = b71d9a4ee892fadcc9471bd2bed31515b1cec796a19fa1fa616045088d21c0be6feba287e80b5c086a9e8a88dce5a9bcb7dbb367b92c4ff171aa8fa5de192cf7
 
 pkgname = rethinkdb
 

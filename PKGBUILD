@@ -7,7 +7,7 @@
 pkgname=rethinkdb
 pkgver=2.4.1
 _node=6.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Distributed NoSQL database for realtime applications'
 arch=(x86_64)
 url=https://www.rethinkdb.com
@@ -25,7 +25,6 @@ source=(
   rethinkdb.tmpfiles.d
   mksnapshot_crash_fix.patch
   v8_g++7_build_fix.patch::https://github.com/nodejs/node/commit/66c1197f3aefd5b9f36533e6b617f2046acc2c0f.patch
-  fix_assets.patch
 )
 noextract=(node-v$_node.tar.gz)
 sha512sums=('SKIP'
@@ -34,8 +33,7 @@ sha512sums=('SKIP'
             'cab680a7e765e0a844b72ab3a57f19f3268d9a717bbe19230bd79537f0424179a56037c368326d2173a4a9cde075a67c85ce9b5a32733afb7d44806df1eac0ac'
             '112bc0f9ecfdfae6efba5d8cc3f773085b3f345d33d350188dc70609c425e6c656a0a3069ae5c66cdc684a94fd442e990a88c0ca8d1875f085f660c76c3d7250'
             '8deea735b2c7b6fc0221a49e818d4347869330fa9e35a94c15d54f7bc64ac0b8a573906fea6cc64c05a177f3065c96d8b4d0e2a3724b6137d7f12ba7a7b419f7'
-            '15f1f9508adef9cd14320b6649f3b766a0dd8dd478290424e9af6343a7fd64e246aafbbf2f19109e5812decb2f15dcb283fec57875bc50a540737441a0fd248d'
-            'b71d9a4ee892fadcc9471bd2bed31515b1cec796a19fa1fa616045088d21c0be6feba287e80b5c086a9e8a88dce5a9bcb7dbb367b92c4ff171aa8fa5de192cf7')
+            '15f1f9508adef9cd14320b6649f3b766a0dd8dd478290424e9af6343a7fd64e246aafbbf2f19109e5812decb2f15dcb283fec57875bc50a540737441a0fd248d')
 
 prepare() {
   # There are a ton of hard dependencies on Python 2
@@ -50,7 +48,6 @@ prepare() {
   cd $pkgname
 
   patch -p0 < ../mksnapshot_crash_fix.patch
-  patch -p1 < ../fix_assets.patch
 
   PATH="$srcdir"/bin:$PATH ./configure \
     --prefix=/usr \
