@@ -3,7 +3,7 @@
 
 pkgname=lunar-date
 pkgver=2.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Chinese lunar date library."
 arch=("i686" "x86_64")
 url="http://code.google.com/p/liblunar/"
