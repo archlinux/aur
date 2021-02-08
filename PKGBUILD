@@ -3,7 +3,7 @@
 pkgname=quagga-git
 _pkgname=quagga
 pkgver=1.2.4.r0.gddece197
-pkgrel=1
+pkgrel=2
 pkgdesc='BGP/OSPF/ISIS/RIP/RIPNG routing daemon suite (FPM enabled) git version'
 arch=('x86_64' 'i686')
 url='http://www.quagga.net'
@@ -12,7 +12,7 @@ provides=($_pkgname=${epoch:+$epoch:}${pkgver%%.r*}-${pkgrel})
 conflicts=($_pkgname)
 depends=('libcap' 'libnl' 'net-snmp' 'readline' 'ncurses' 'perl' 'c-ares')
 makedepends=('git')
-options=('!buildflags')
+#options=('!buildflags')
 validpgpkeys=('C1B5C3ED3000F2BFCD66F3B76FE57CA8C1A4AEA6') # Quagga Release Signing Key
 source=("$pkgname::git+https://github.com/Quagga/$_pkgname.git#tag=quagga-1.2.4"
         'quagga.sysusers'
@@ -54,6 +54,7 @@ prepare() {
       patch -p1 -N -i "$srcdir/${filename##*/}"
     fi
   done
+  sed -i -e 's, __packed;, __attribute__((__packed__));,' lib/prefix.h
   :
   autoreconf -fiv
 }
@@ -79,7 +80,9 @@ build() {
     --enable-configfile-mask=0640 \
     --enable-fpm \
     --enable-logfile-mask=0640
-  make V=0
+  # Fight unused direct deps
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
+  make CFLAGS="$CFLAGS -fcommon" V=0
 }
 
 package() {
