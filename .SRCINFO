@@ -1,6 +1,6 @@
 pkgbase = python-simplepam-git
 	pkgdesc = Pure Python interface to the Pluggable Authentication Modules system on Linux. Git version
-	pkgver = r31.b81a806
+	pkgver = r3.2e9399d%
 	pkgrel = 1
 	url = https://github.com/leonnnn/python3-simplepam/
 	arch = any
