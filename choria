@@ -1,0 +1,9 @@
+/var/log/choria-*.log
+/var/log/choria.log
+{
+  daily
+  copytruncate
+  notifempty
+  missingok
+  rotate 10
+}
