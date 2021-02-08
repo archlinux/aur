@@ -1,0 +1,18 @@
+pkgbase = asfa
+	pkgdesc = share files by upload via ssh and generation of a non-guessable link
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/obreitwi/asfa
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = help2man
+	makedepends = findutils
+	makedepends = gzip
+	makedepends = git
+	depends = gcc-libs
+	depends = openssl
+	depends = zlib
+
+pkgname = asfa
+
