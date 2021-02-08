@@ -1,0 +1,21 @@
+pkgbase = romog-git
+	pkgdesc = A command-line ROM manager written in C++, specifically for Linux.
+	pkgver = r13.e5cb0d4
+	pkgrel = 1
+	url = https://github.com/xprism1/romog
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = pugixml
+	depends = xalan-c
+	depends = libarchive
+	depends = yaml-cpp
+	provides = romog
+	options = !strip
+	source = git+http://github.com/xprism1/romog
+	md5sums = SKIP
+
+pkgname = romog-git
+
