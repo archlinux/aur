@@ -1,0 +1,22 @@
+pkgbase = python-matrx-git
+	pkgdesc = A Python package for the rapid development and evaluation of human-agent teaming concepts.
+	pkgver = v2.0.5.r0.g957ca9e
+	pkgrel = 1
+	url = https://www.matrx-software.com/
+	arch = x86_64
+	license = MIT
+	depends = python-flask
+	depends = python-jsonpickle
+	depends = python-flask-socketio
+	depends = python-numpy
+	depends = python-requests
+	depends = python-colour
+	depends = python-gevent
+	depends = python-flask-cors
+	depends = python-docutils
+	depends = python-pygments
+	source = git+https://github.com/matrx-software/matrx.git
+	sha512sums = SKIP
+
+pkgname = python-matrx-git
+
