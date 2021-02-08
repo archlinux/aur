@@ -2,7 +2,7 @@
 
 pkgname=mpsolve-git
 pkgver=3.2.1.r9.g5013698
-pkgrel=1
+pkgrel=2
 pkgdesc="Multiprecision rootfinder for complex roots of univariate polynomials"
 url="http://numpi.dm.unipi.it/software/mpsolve"
 arch=('i686' 'x86_64')
