@@ -1,0 +1,16 @@
+pkgbase = unluac-unstable
+	pkgdesc = (unstable) a decompiler for Lua 5.1
+	pkgver = 2021_02_01b
+	pkgrel = 1
+	url = http://sourceforge.net/projects/unluac/
+	arch = any
+	license = MIT
+	depends = java-runtime
+	conflicts = unluac
+	source = unluac-unstable-2021_02_01b.jar::https://downloads.sourceforge.net/project/unluac/Unstable/unluac_2021_02_01b.jar
+	source = unluac.sh
+	md5sums = 0855d20d9ddf9da55146a051b287081f
+	md5sums = 50706e65c528abf7ce3e272296c92ee1
+
+pkgname = unluac-unstable
+
