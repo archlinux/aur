@@ -24,6 +24,9 @@ post_upgrade() {
   # update owner of existing dir and file
   chown pihole:pihole /etc/pihole
 
+  # query logging disabling needs this
+  grep -qxF 'QUERY_LOGGING=' /etc/pihole/setupVars.conf || echo 'QUERY_LOGGING=true' >> /etc/pihole/setupVars.conf
+
   # warning
 
   # keep pacman from throwing errors should none them be on the filesystem

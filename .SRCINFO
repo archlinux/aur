@@ -1,7 +1,7 @@
 pkgbase = pi-hole-standalone
 	pkgdesc = The Pi-hole is an advertising-aware DNS/Web server. Arch alteration for standalone PC.
 	pkgver = 5.2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pi-hole/pi-hole
 	install = pi-hole-standalone.install
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = pi-hole-standalone
 	conflicts = pi-hole-server
 	backup = etc/dnsmasq.d/01-pihole.conf
 	source = pi-hole-standalone-core-5.2.4.tar.gz::https://github.com/pi-hole/pi-hole/archive/v5.2.4.tar.gz
-	source = arch-server-core-5.2.4-007072726.patch::https://raw.githubusercontent.com/max72bra/pi-hole-standalone-archlinux-customization/master/arch-server-core-5.2.4.patch
+	source = arch-server-core-5.2.4-566364222.patch::https://raw.githubusercontent.com/max72bra/pi-hole-standalone-archlinux-customization/master/arch-server-core-5.2.4.patch
 	source = dnsmasq.include
 	source = pi-hole.tmpfile
 	source = pi-hole-gravity.service
@@ -33,7 +33,7 @@ pkgbase = pi-hole-standalone
 	sha256sums = 5228b4f923eab7784952a0fd6da895e7bff2f80a7f91c4a7c6350491dfdbb2e8
 	sha256sums = 88e3c78bbeaf5dc1100df65202ded8207877954a96bdf1b0ab3d9990d9fa759f
 	sha256sums = ff507ce58c9492cce57e947696e1b814469fc2d856a1e303c6e68f98c62ebf46
-	sha256sums = 8119a46428bdbe00a312b14f3f0c364248b120f2569c9f2b6af2ef1a64fdfe94
+	sha256sums = 2039755530379ed25a2c0f0ebac32d52f2743004c733ee1cddb2aec1e7e60d14
 	sha256sums = fa8d91d07b75f21076e5334c46d323cbc3dcf9a33fe9b8b4e032dbc5c979a6d2
 	sha256sums = 73a8362f7a3eac91c77efbbcb4910ff079203bb5f829e32ecf3391d017117bb8
 
