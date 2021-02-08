@@ -1,7 +1,7 @@
 # Maintainer: <max at swk-web.com>
 
 pkgname=php-stan
-pkgver=0.12.72
+pkgver=0.12.74
 pkgrel=1
 pkgdesc="PHP Static Analysis Tool - finding errors in your code without actually running it"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('php')
 source=("phpstan-${pkgver}.phar::https://github.com/phpstan/phpstan/releases/download/${pkgver}/phpstan.phar"
         "phpstan-${pkgver}.phar.asc::https://github.com/phpstan/phpstan/releases/download/${pkgver}/phpstan.phar.asc")
 validpgpkeys=('D32680D5957DC7116BE29C14CF1A108D0E7AE720')
-sha256sums=('f78a4415db5280f5c84221e6aa6a76ad342f44b28fe1b4388e54b21900c20bd8'
+sha256sums=('cc40eab30ca57725e16bcdfac9ef85984e326311feec0cc4be528960e8ded314'
             'SKIP')
 
 package() {
