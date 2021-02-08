@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=bibata-extra-cursor-theme
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Material Based Cursor Theme: More Bibata!"
 arch=('any')
 url="https://github.com/ful1e5/Bibata_Extra_Cursor"
@@ -24,8 +24,7 @@ build() {
 
 	_variants=(Bibata_Dark_Red Bibata_Dodger_Blue Bibata_Pink Bibata_Turquoise)
 
-	for variant in ${_variants[*]}
-	do
+	for variant in ${_variants[*]}; do
 		echo "Building $variant..."
 		python render-cursors.py ./src/$variant/source-cursors.svg -o -a --name $variant
 		./tweak.sh $variant
@@ -38,8 +37,9 @@ package() {
 	cd Bibata_Extra_Cursor-$pkgver
 	install -d "$pkgdir/usr/share/icons"
 
-	for variant in ${_variants[*]}
-	do
+	_variants=(Bibata_Dark_Red Bibata_Dodger_Blue Bibata_Pink Bibata_Turquoise)
+
+	for variant in ${_variants[*]}; do
 		cp -a $variant/out/X11/$variant "$pkgdir/usr/share/icons"
 	done
 }
