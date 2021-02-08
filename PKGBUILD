@@ -1,12 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=6.1-GE-1
-_commit=2e7fdaabbab7e0214ed39c4db285914eaa4dce23
+_srctag=6.1-GE-2
+_commit=b17c4335591bf3c1177945b1f1f1fd78a03c714b
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
 _monover=5.1.1
-pkgrel=4
+pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 arch=(x86_64)
@@ -354,7 +354,7 @@ sha256sums=('SKIP'
             '06a00cedf391ee07bbca0b3282e5c8ad9d950446d50648d2ff417716816fd1ab'
             'ea5246e4c91d1aa1226658e1749b6e5d0e9353b52b14df79c4b93b6e61a3c59e'
             'b17ac815afbf5eef768c4e8d50800be02af75c8b230d668e239bad99616caa82'
-            '46573f39b6559942077b2b5fcebc72a0e1313594fa95612413080d5597c3f70e'
+            '31961970ea451f54440d3a2b6de7ecbd754c091b9ad027e137d63a3e995db41b'
             '8263a3ffb7f8e7a5d81bfbffe1843d6f84502d3443fe40f065bcae02b36ba954'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
             '23cba1756adc4a76de963414994ffc964047ab1d6f1949fe8133135a91ac0473'

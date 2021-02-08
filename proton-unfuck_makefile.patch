@@ -1,5 +1,5 @@
 diff --git a/build/makefile_base.mak b/build/makefile_base.mak
-index 92bdb23..1e4806b 100755
+index 4e89f5b..3fbbd92 100755
 --- a/build/makefile_base.mak
 +++ b/build/makefile_base.mak
 @@ -69,7 +69,7 @@ endif
@@ -124,7 +124,7 @@ index 92bdb23..1e4806b 100755
  DEPLOY_COPY_TARGETS := $(DIST_COPY_TARGETS) $(DIST_VERSION) $(DIST_LICENSE) $(DIST_TOOLMANIFEST) $(DIST_OFL_LICENSE)
  REDIST_COPY_TARGETS := $(DEPLOY_COPY_TARGETS) $(DIST_COMPAT_MANIFEST)
  
-@@ -513,14 +509,14 @@ ALL_TARGETS += dist
+@@ -513,8 +509,8 @@ ALL_TARGETS += dist
  GOAL_TARGETS += dist
  
  dist_prefix: wine gst_good
@@ -134,13 +134,6 @@ index 92bdb23..1e4806b 100755
 +	find $(DST_DIR)/lib64/wine -type f -execdir chmod go-w '{}' '+'
  	rm -rf $(abspath $(DIST_PREFIX))
  	python3 $(SRCDIR)/default_pfx.py $(abspath $(DIST_PREFIX)) $(abspath $(DST_DIR)) $(STEAM_RUNTIME_RUNSH)
- 
- dist_wineopenxr: dist_prefix $(DIST_WINEOPENXR_JSON64) $(DIST_WINEOPENXR64)
- 
--dist: $(DIST_TARGETS) wine gst_good gst_bad gst_ugly ffmpeg gst_libav lsteamclient steam dxvk vkd3d-proton vrclient dist_wineopenxr | $(DST_DIR)
-+dist: $(DIST_TARGETS) gst_bad gst_ugly ffmpeg gst_libav lsteamclient steam dxvk vkd3d-proton vrclient dist_wineopenxr | $(DST_DIR)
- 	echo `date '+%s'` `GIT_DIR=$(abspath $(SRCDIR)/.git) git describe --tags` > $(DIST_VERSION)
- 	cp $(DIST_VERSION) $(DST_BASE)/
  
 @@ -556,6 +552,8 @@ module64:
  module: module32 module64
