@@ -5,14 +5,17 @@
 
 pkgname=micro
 pkgver=2.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=("aarch64" "armv6h" "armv7h" "i686" "x86_64")
-url="https://github.com/zyedidia/${pkgname}"
+url="https://${pkgname}-editor.github.io/"
 license=("MIT")
 depends=("glibc")
 makedepends=("git" "go")
-optdepends=("xclip: Required for copying/pasting text")
+optdepends=(
+  "xclip: Required for copying/pasting text"
+  "wl-clipboard"
+)
 source=(
   "${pkgname}-${pkgver}::git+https://github.com/zyedidia/${pkgname}.git#tag=v${pkgver}"
   "semver::git+https://github.com/blang/semver"
@@ -92,8 +95,8 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -x -v"
-  make build-quick
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw -x -v"
+  make build
 
   # To avoid issues deleting directories next time
   go clean --modcache
