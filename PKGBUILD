@@ -20,9 +20,11 @@
 #
 
 _pkgname=codelite
+_pkgver=15.0
+
 pkgname=${_pkgname}
-pkgver=14.0
-pkgrel=2
+pkgver=${_pkgver}
+pkgrel=1
 pkgdesc="Cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
@@ -54,9 +56,13 @@ source=(
     http://repos.codelite.org/wxCrafterLibs/wxgui.zip
   )
 
-md5sums=('e9d2519fa8077ca9f86b6b8fa9adf332'
-         '20f3428eb831c3ff2539a7228afaa3b4')
+md5sums=('1c54744ab0c9b5732087687ab17ab49d'
+         '20f3428eb831c3ff2539a7228afaa3b4'
+         )
 
+#
+#
+#
 
 #if [[ "$CARCH" == 'i686' ]]; then
 #  source+=(http://repos.codelite.org/wxCrafterLibs/ArchLinux/32/wxCrafter.so)
@@ -71,6 +77,9 @@ BUILD_DIR="_build"
 pkg_name_ver="${_pkgname}-${pkgver//_/-}"
 
 
+#
+#
+#
 prepare()
 {
   cd "${srcdir}/${pkg_name_ver}"
@@ -78,6 +87,9 @@ prepare()
 }
 
 
+#
+#
+#
 build()
 {
 cd "${srcdir}/${pkg_name_ver}"
@@ -98,6 +110,9 @@ make -C "${BUILD_DIR}"
 
 }
 
+#
+#
+#
 package()
 {
 cd "${srcdir}/${pkg_name_ver}"
