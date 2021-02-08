@@ -1,6 +1,6 @@
 # Maintainer: Raziman Mahathir <raziman.mahathir@gmail.com>
 pkgname=gomu
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=2
 pkgdesc="Terminal User Interface (TUI) Music Player"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('go' 'git')
 optdepends=('fzf')
 conflicts=('gomu-git' 'gomu-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/issadarkthing/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('e4f55fa62cdfe07262a3f4f8b9680270')
+md5sums=('7813c586bf974d93c5b395da2ecc3321')
 
 
 build() {
