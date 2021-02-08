@@ -1,6 +1,6 @@
 pkgbase = refind-git
 	pkgdesc = rEFInd Boot Manager - git version
-	pkgver = 0.12.0.r693.g5b1a975
+	pkgver = 0.12.0.3.r710.gcdce85e
 	pkgrel = 1
 	url = https://www.rodsbooks.com/refind/
 	arch = any
@@ -15,7 +15,6 @@ pkgbase = refind-git
 	depends = bash
 	depends = dosfstools
 	depends = efibootmgr
-	depends = which
 	optdepends = gptfdisk: for finding non-vfat ESP with refind-install
 	optdepends = imagemagick: for refind-mkfont
 	optdepends = openssl: for generating local certificates with refind-install
@@ -24,8 +23,8 @@ pkgbase = refind-git
 	optdepends = sudo: for privilege elevation in refind-install and refind-mkdefault
 	optdepends = shim-signed: pre-signed Secure Boot shim loader
 	optdepends = sbsigntools: for EFI binary signing with refind-install
-	provides = refind=0.12.0.r693.g5b1a975
-	provides = refind-efi=0.12.0.r693.g5b1a975
+	provides = refind=0.12.0.3.r710.gcdce85e
+	provides = refind-efi=0.12.0.3.r710.gcdce85e
 	conflicts = refind
 	conflicts = refind-efi
 	replaces = refind-efi-git

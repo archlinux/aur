@@ -4,13 +4,13 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgname='refind-git'
-pkgver=0.12.0.r693.g5b1a975
+pkgver=0.12.0.3.r710.gcdce85e
 pkgrel=1
 pkgdesc='rEFInd Boot Manager - git version'
 url='https://www.rodsbooks.com/refind/'
 arch=('any')
 license=('BSD' 'CCPL' 'FDL1.3' 'GPL2' 'GPL3' 'LGPL3')
-depends=('bash' 'dosfstools' 'efibootmgr' 'which')
+depends=('bash' 'dosfstools' 'efibootmgr')
 makedepends=('git' 'gnu-efi-libs')
 optdepends=('gptfdisk: for finding non-vfat ESP with refind-install'
             'imagemagick: for refind-mkfont'
