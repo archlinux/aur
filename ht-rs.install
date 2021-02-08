@@ -1,0 +1,12 @@
+_binary_info() {
+  echo "Binary installed as ht-rs to avoid conflicts with texlive-core"
+  echo "alias ht=hr-rs to use original binary name"
+}
+
+post_install() {
+  _binary_info
+}
+
+post_upgrade() {
+  _binary_info
+}
