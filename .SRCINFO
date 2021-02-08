@@ -1,6 +1,6 @@
 pkgbase = yuzu-early-access
 	pkgdesc = An experimental open-source Nintendo Switch emulator/debugger (mainline GIT version)
-	pkgver = 1423
+	pkgver = 1427
 	pkgrel = 1
 	url = https://yuzu-emu.org/
 	arch = i686
@@ -46,8 +46,8 @@ pkgbase = yuzu-early-access
 	conflicts = yuzu-canary-git
 	conflicts = yuzu-master-git
 	replaces = yuzu-canary-git
-	source = https://github.com/pineappleEA/pineapple-src/archive/EA-1423.tar.gz
-	md5sums = c18743af74a49ba429ad8589eb901ea4
+	source = https://github.com/pineappleEA/pineapple-src/archive/EA-1427.tar.gz
+	md5sums = affc03dbf0086e18f85067495fe83160
 
 pkgname = yuzu-early-access
 
