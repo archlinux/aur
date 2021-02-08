@@ -1,0 +1,13 @@
+pkgbase = lexspec-git
+    pkgdesc = Get system information in linux
+    pkgver = r10.5ac67ac
+    pkgrel = 1
+    url = https://github.com/lexofficial29/lexspec
+    arch = any
+    license = GPLv2
+    provides = lexspec
+    conflicts = lexspec
+    source = git+https://github.com/lexofficial29/lexspec
+    md5sums = SKIP
+
+pkgname = lexspec-git
