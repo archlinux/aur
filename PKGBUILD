@@ -4,8 +4,13 @@
 # Contributor: Carl George < carl at george dot computer >
 
 pkgname=pop-gtk-theme
-pkgver=5.3.3
-_commit=5ab6f1e40aa7067795655cb4d1a1703dc7ce93ca
+_basever=5.3.3
+_timestamp=1611615513
+_commit=5ab6f1e
+# There are no recent releases on Github. So this package follows the official PPA's releases
+# http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme
+#pkgver="${_basever}~${_timestamp}~${_commit}" # Not needed until _basever keeps the same between new releases
+pkgver="${_basever}"
 pkgrel=1
 pkgdesc="System76 Pop GTK+ Theme"
 arch=('any')
@@ -16,13 +21,13 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pop-os/gtk-theme/archiv
 sha512sums=('2433fc9d1e354c3cf36a5dfe311819ab6cb9e801a420709b048e51dea1d8e1d95decb5fa5760d51e82a4de2f06b8674e0cb1ab0c5b906b4ef525e03ea40e4b54')
 
 build() {
-  cd "gtk-theme-${_commit}"
+  cd "gtk-theme-${_commit}"*
   meson --prefix='/usr' build
   ninja -C build
 }
 
 package() {
-  cd "gtk-theme-${_commit}"
+  cd "gtk-theme-${_commit}"*
   DESTDIR="${pkgdir}" ninja -C build install
 
   # https://github.com/pop-os/gtk-theme/issues/436
