@@ -14,6 +14,7 @@ pkgbase = eea
 	depends = openssl-1.0
 	optdepends = linux-lts-headers: build the module against LTS Arch kernel [requires at least one set of kernel headers]
 	conflicts = esets
+	conflicts = eea-dkms
 	source = https://download.eset.com/com/eset/apps/business/eea/linux/g2/latest/eeau.x86_64.bin
 	source = eea.install
 	sha256sums = 59e6ad38eb3809997e2d5eb91a0195a3c321656f5e8e8c64e61a02a9ac8c922e
