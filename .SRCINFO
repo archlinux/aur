@@ -1,6 +1,6 @@
 pkgbase = libcimply
 	pkgdesc = A simple program to fetch system information written in C
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/caverym/cimplefetch
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = libcimply
 	arch = armv6h
 	arch = aarch64
 	license = GPL3
-	source = https://github.com/caverym/libcimply/archive/0.4.tar.gz
-	sha256sums = 51f0e2020bbfc88b3273fe102c91071611dbd356174b406180ae9d23192c0017
+	source = https://github.com/caverym/libcimply/archive/0.5.tar.gz
+	sha256sums = 55fad5a4914d2e9e5f98dd7ea2ac16ee4cb6bc3ee2e6afc06cf3e28ef9b1ffee
 
 pkgname = libcimply
 
