@@ -32,8 +32,11 @@ post_upgrade() {
   # update owner of existing dir and file
   chown pihole:pihole /etc/pihole
   
-  # pihoel version output improvement
+  # pihole version output improvement
   grep -qxF 'INSTALL_WEB_INTERFACE=true' /etc/pihole/setupVars.conf || echo 'INSTALL_WEB_INTERFACE=true' >> /etc/pihole/setupVars.conf
+
+  # query logging disabling needs this
+  grep -qxF 'QUERY_LOGGING=' /etc/pihole/setupVars.conf || echo 'QUERY_LOGGING=true' >> /etc/pihole/setupVars.conf
 
   # warning
   cache_problem
