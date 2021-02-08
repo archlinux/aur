@@ -2,7 +2,7 @@ pkgbase = minecrafter-ttf
 	pkgdesc = Minecrafter fonts from http://www.dafont.com
 	pkgver = 1.0
 	pkgrel = 1
-	url = http://www.dafont.com/es/minecrafter.font
+	url = https://www.dafont.com/es/minecrafter.font
 	install = minecrafter-ttf.install
 	arch = any
 	license = CCPL
@@ -10,7 +10,7 @@ pkgbase = minecrafter-ttf
 	depends = xorg-font-utils
 	depends = unzip
 	noextract = minecrafter-ttf.zip
-	source = minecrafter-ttf.zip::http://dl.dafont.com/dl/?f=minecrafter
+	source = minecrafter-ttf.zip::https://dl.dafont.com/dl/?f=minecrafter
 	md5sums = 7b2874b4e67f6a018bba648031cfa6bc
 
 pkgname = minecrafter-ttf

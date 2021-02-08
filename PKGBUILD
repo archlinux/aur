@@ -5,10 +5,10 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="Minecrafter fonts from http://www.dafont.com"
 arch=(any)
-url="http://www.dafont.com/es/minecrafter.font"
+url="https://www.dafont.com/es/minecrafter.font"
 license=('CCPL')
 depends=('fontconfig' 'xorg-font-utils' 'unzip')
-source=("$pkgname.zip::http://dl.dafont.com/dl/?f=minecrafter")
+source=("$pkgname.zip::https://dl.dafont.com/dl/?f=minecrafter")
 noextract=("$pkgname.zip")
 install=$pkgname.install
 md5sums=('7b2874b4e67f6a018bba648031cfa6bc')
