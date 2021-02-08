@@ -9,7 +9,7 @@ url="https://github.com/caverym/cimplefetch"
 license=('GPL3')
 deppends=('libcimply')
 source=("https://github.com/caverym/cimplefetch/archive/${pkgver}.tar.gz")
-sha256sums=('abc8132ac0f82608c24656bde2d5e16a43d58844ec168036e27816bb6606435a')
+sha256sums=('a7042aa84f7577afe2df7d7406a621ee072fd6bba873d5d48ef35174610c83f2')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -17,6 +17,7 @@ build() {
 }
 
 package() {
+    strip "${srcdir}/${pkgname}-${pkgver}/${pkgname}"
     install -Dm 755 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm 755 "${srcdir}/${pkgname}-${pkgver}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
