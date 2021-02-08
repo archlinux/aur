@@ -1,0 +1,23 @@
+pkgbase = python-cpprb
+	pkgdesc = ReplayBuffer for Reinforcement Learning written by C++ and Cython
+	pkgver = v9.4.5
+	pkgrel = 1
+	url = https://ymd_h.gitlab.io/cpprb/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = cython>=0.29
+	depends = python>=3.5
+	depends = python-numpy
+	optdepends = python-matplotlib: needed for gym
+	optdepends = python-pyvirtualdisplay: needed for gym
+	optdepends = python-sphinx: needed for api
+	optdepends = python-sphinx-rtd-theme: needed for api
+	optdepends = python-sphinx-automodapi: needed for api
+	provides = python-cpprb
+	conflicts = python-cpprb
+	source = https://gitlab.com/ymd_h/cpprb/-/archive/v9.4.5/cpprb-v9.4.5.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-cpprb
+
