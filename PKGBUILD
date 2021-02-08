@@ -1,8 +1,10 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+
+# maintainer: Amr Okasha <amradel55 at gmail dot com>
+# contributer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=netron-bin
 pkgver=4.7.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Visualizer for neural network, deep learning and machine learning models"
 arch=('x86_64')
 url='https://www.lutzroeder.com/ai'
