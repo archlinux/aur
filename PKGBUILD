@@ -40,10 +40,10 @@ package() {
   ln -s "/usr/lib/$pkgname/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
   mkdir -p "$pkgdir/usr/lib/systemd/system"
-  cp -a "$pkgname-$pkgver@.service" "$pkgdir/usr/lib/systemd/system/$pkgname@.service"
+  cp -aL "$pkgname-$pkgver@.service" "$pkgdir/usr/lib/systemd/system/$pkgname@.service"
 
   mkdir -p "$pkgdir/usr/lib/systemd/user"
-  cp -a "$pkgname-$pkgver-user.service" "$pkgdir/usr/lib/systemd/user/$pkgname.service"
+  cp -aL "$pkgname-$pkgver-user.service" "$pkgdir/usr/lib/systemd/user/$pkgname.service"
 
   mkdir -p "$pkgdir/usr/share/licenses"
   cp -a "$release_name/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname"
