@@ -54,6 +54,7 @@ finalExports() {
     echo "IPV4_ADDRESS=${IPV4_ADDRESS}"
     echo "IPV6_ADDRESS=${IPV6_ADDRESS}"
     echo "INSTALL_WEB_INTERFACE=true"
+    echo "QUERY_LOGGING=true"
     }>> "${setupVars}"
 }
 
