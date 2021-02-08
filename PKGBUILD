@@ -1,7 +1,7 @@
 # Maintainer: Avery Murray <averylapine@gmail.com>
 
 pkgname=cimplefetch
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="A simple program to fetch system information written in C"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
