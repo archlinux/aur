@@ -2,19 +2,21 @@
 
 pkgname=spigot-plugin-essentials
 epoch=1
-pkgver=2.17.1.19
+pkgver=2.19.0
+_build=69
+_commit=adef08a
 pkgrel=1
 pkgdesc="Essentials offers about 100 commands useful on just about every server, initial kits, mob spawning, economy, warps along the map, houses, etc."
 arch=(any)
 url="https://www.spigotmc.org/resources/essentialsx.9089/"
 license=("GPLv3")
 depends=("craftbukkit>=1.9")
-source=("https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/Essentials/target/EssentialsX-$pkgver.jar"
-"https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsAntiBuild/target/EssentialsXAntiBuild-$pkgver.jar"
-"https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsChat/target/EssentialsXChat-$pkgver.jar"
-"https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsGeoIP/target/EssentialsXGeoIP-$pkgver.jar"
-"https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsProtect/target/EssentialsXProtect-$pkgver.jar"
-"https://ci.ender.zone/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsSpawn/target/EssentialsXSpawn-$pkgver.jar")
+source=("https://ci.ender.zone/job/EssentialsX/lastStableBuild/artifact/jars/EssentialsX-$pkgver-dev+$_build-$_commit.jar"
+"https://ci.ender.zone/job/EssentialsX/lastStableBuild/artifact/jars/EssentialsXAntiBuild-$pkgver-dev+$_build-$_commit.jar"
+"https://ci.ender.zone/job/EssentialsX/lastStableBuild/artifact/jars/EssentialsXChat-$pkgver-dev+$_build-$_commit.jar"
+"https://ci.ender.zone/job/EssentialsX/lastStableBuild/artifact/jars/EssentialsXGeoIP-$pkgver-dev+$_build-$_commit.jar"
+"https://ci.ender.zone/job/EssentialsX/lastStableBuild/artifact/jars/EssentialsXProtect-$pkgver-dev+$_build-$_commit.jar"
+"https://ci.ender.zone/job/EssentialsX/lastStableBuild/artifact/jars/EssentialsXSpawn-$pkgver-dev+$_build-$_commit.jar")
 noextract=("EssentialsX-$pkgver.jar"
 "EssentialsXAntiBuild-$pkgver.jar"
 "EssentialsXChat-$pkgver.jar"
