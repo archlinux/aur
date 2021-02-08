@@ -2,7 +2,7 @@
 
 pkgname=imgproxy
 pkgdesc="Fast and secure standalone server for resizing and converting remote images"
-pkgver=2.15.0
+pkgver=2.16.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/imgproxy/imgproxy"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('libvips')
 makedepends=('go' 'rsync')
 source=("https://github.com/imgproxy/imgproxy/archive/v${pkgver}.tar.gz")
-sha256sums=('3bee2aecbb66c98c9e1254a163fb53e32e8af5bf8e3a92f119427113bee01c91')
+sha256sums=('d52d705f159595c12341c54c34a18f8bb55bd55c3f4cc2493c0f9cf37405b109')
 
 build() {
   cd "$pkgname-$pkgver"
