@@ -1,6 +1,6 @@
 pkgbase = sane-git
 	pkgdesc = Scanner Access Now Easy
-	pkgver = 20190714.c52eef6e
+	pkgver = 20210131.678495f59
 	pkgrel = 1
 	url = http://www.sane-project.org/
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = sane-git
 	makedepends = autoconf-archive
 	depends = libtiff>=4.0.0
 	depends = libgphoto2
-	depends = libjpeg>=8
-	depends = libusbx
+	depends = libjpeg
+	depends = libusb
 	depends = libcups
 	depends = libieee1284
 	depends = v4l-utils
@@ -107,12 +107,10 @@ pkgbase = sane-git
 	source = sane.xinetd
 	source = saned.socket
 	source = saned.service
-	source = network.patch
 	sha256sums = SKIP
 	sha256sums = 9d288d4fef0833da31ca1f1e9b4e567f81a4c03219af3b496d3fc3b6aac394eb
 	sha256sums = c06fdd54128b06efbf8fbcb40b145512fa8e8a1c470c5cb60abc839a6002fdf1
 	sha256sums = 9e5274b0184249aaf1066e64c08fed2d65445e4ca95717497b30fc9d30a55ae3
-	sha256sums = 23785948c7d9dc071fcc066754001dc2c1bd17a904051ed3ae6ec7f4e3b8e66b
 
 pkgname = sane-git
 
