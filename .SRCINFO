@@ -1,6 +1,6 @@
 pkgbase = enpass-bin
 	pkgdesc = A multiplatform password manager
-	pkgver = 6.5.1.723
+	pkgver = 6.6.0.775
 	pkgrel = 1
 	url = http://enpass.io/
 	install = enpass-bin.install
@@ -14,8 +14,8 @@ pkgbase = enpass-bin
 	optdepends = libqtxdg: Open links in the default browser (Qt implementation)
 	provides = enpass
 	options = !strip
-	source = https://apt.enpass.io/pool/main/e/enpass/enpass_6.5.1.723_amd64.deb
-	sha256sums = d9bb408fa2253ce44ab5396898f7db13291ce23ae58964f4a27ade38bd5067bf
+	source = https://apt.enpass.io/pool/main/e/enpass/enpass_6.6.0.775_amd64.deb
+	sha256sums = aa488615c4d4ce8257afcf264506305daae7635f0ee3f2cd147e147250b208d0
 
 pkgname = enpass-bin
 
