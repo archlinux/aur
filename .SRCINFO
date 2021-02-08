@@ -1,6 +1,6 @@
 pkgbase = scribl
 	pkgdesc = make simple instructional videos
-	pkgver = 0.2.5
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/jneem/scribl
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = scribl
 	makedepends = rust
 	depends = gst-plugins-base-libs
 	depends = gtk3
-	source = https://github.com/jneem/scribl/archive/flatpak-v0.2.5.tar.gz
-	sha256sums = 245eb6892517f088577c2f60a8d6de753ddf45f76e60e3a02c9ba62e3087451c
+	source = scribl-0.3.1.tar.gz::https://github.com/jneem/scribl/archive/v0.3.1.tar.gz
+	sha256sums = e3fdd0dcc3f358528a7343babb23169718121e357a08ce16e079de08fea774e1
 
 pkgname = scribl
 
