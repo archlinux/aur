@@ -1,7 +1,7 @@
 # Maintainer: Peter Jirasek <aur@dbs.sk>
 pkgname=eea
 pkgver=7.1.9.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='ESET Endpoint Antivirus Business for Linux'
 url='https://www.eset.com/int/business/endpoint-antivirus-linux/'
@@ -28,7 +28,7 @@ install=${pkgname}.install
 source=("https://download.eset.com/com/eset/apps/business/eea/linux/g2/latest/${pkgname}u.${arch}.bin" "${pkgname}.install")
 sha256sums=(
   '59e6ad38eb3809997e2d5eb91a0195a3c321656f5e8e8c64e61a02a9ac8c922e'
-  '3a55e117086362e142d200265df5d74383af0166dd40bb9e29aa857668325023'
+  '3cf92dcc8dff5025fa43ea47aa1b325cae1907fa5ee0e304597e92993c9caf69'
 )
 
 prepare() {

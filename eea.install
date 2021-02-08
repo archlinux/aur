@@ -125,14 +125,6 @@ post_upgrade() {
   updated_ug='eset-eea-updated:eset-eea-daemons'
   chown -R ${updated_ug} /var/opt/eset/eea/lib
 
-  # extract modules from tar
-  tar -xf /var/opt/eset/eea/lib/modules.tar -C /var/opt/eset/eea/lib
-  # compile modules
-  /opt/eset/eea/bin/upd --compile-nups
-  # set correct user to compiled modules
-  updated_ug='eset-eea-updated:eset-eea-daemons'
-  chown -R ${updated_ug} /var/opt/eset/eea/lib
-
   import_configuration
 
   # register and start service
