@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('git')
 provides=("rivertiler-git")
 conflicts=("rivertiler-git")
-source=("$pkgname::git+https://gitlab.com/snakedye/river-layouts.git")
+source=("$pkgname::git+https://gitlab.com/snakedye/rivertiler.git")
 md5sums=('SKIP')
 
 pkgver() {
