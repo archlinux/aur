@@ -1,3 +1,18 @@
+Proton-6.1-GE-2
+
+HOTFIX: 2/7/2021
+-removed futex2 patches, they cause warframe's launcher to freeze.
+Download link updated
+Release notes:
+
+-removed previous steam common redistributables fix for winetricks -- it was causing crashes on arch systems, and winetricks fixed the download urls upstream anyway. This should also fix some issues with games launching once then not launching again.
+-updated winetricks in protonfixes
+-added tree of savior d3dcompiler_47 override
+-fixed crash issue in RE2 and Visage on vega APUs due to dxvk being compiled with gcc9 (resolved with gcc10)
+-cyberpunk heap allocation/shared memory patches added, should improve performance
+-additional spatial audio patches added from experimental
+-futex2 patches added from experimental
+
 Proton-6.1-GE-1
 
 Hotfix #3: 2/1/2021
