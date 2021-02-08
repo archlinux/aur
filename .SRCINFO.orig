@@ -1,0 +1,24 @@
+pkgbase = pyxtrlock-git
+	pkgdesc = The X transparent screen lock rewritten in Python. Git version
+<<<<<<< HEAD
+	pkgver = r145.c8f55b9
+	pkgrel = 3
+=======
+	pkgver = r5.08d1b21%
+	pkgrel = 1
+>>>>>>> 2ac26d59b0c9350065c1796acecbb6bef7d5f2ad
+	url = https://github.com/leonnnn/pyxtrlock/
+	arch = any
+	license = GPLv3+
+	makedepends = git
+	makedepends = python
+	depends = python
+	depends = python-xdg
+	depends = python-simplepam-git
+	provides = pyxtrlock
+	conflicts = pyxtrlock
+	source = pyxtrlock::git+https://github.com/leonnnn/pyxtrlock.git
+	sha1sums = SKIP
+
+pkgname = pyxtrlock-git
+
