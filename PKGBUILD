@@ -2,7 +2,7 @@
 
 _pkgbase=libfm
 pkgname=$_pkgbase-git
-pkgver=1.2.2.1.35.gf238b1b
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A glib/gio-based library to develop file managers. Does not include the GTK components."
 arch=("i686" "x86_64")
