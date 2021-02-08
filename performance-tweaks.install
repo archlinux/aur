@@ -7,35 +7,11 @@ msg() {
 }
 
 post_install() {
-  systemctl enable haveged
-  systemctl enable systemd-swap
-  systemctl enable irqbalance
-  systemctl enable nohang-desktop
-  systemctl enable memavaild
-  systemctl enable prelockd
-  systemctl enable ananicy
-  systemctl enable grub-btrfs.path
-  systemctl enable fstrim.timer
-  systemctl enable btrfs-scrub@-.timer
-  systemctl enable preload
+
 }
 
 post_upgrade() {
-  msg "Attempting to enable services..."
-  systemctl is-active haveged >/dev/null || systemctl enable haveged
-  systemctl is-active systemd-swap >/dev/null || systemctl enable systemd-swap
-  systemctl is-active irqbalance >/dev/null || systemctl enable irqbalance
-  systemctl is-active nohang-desktop >/dev/null || systemctl enable nohang-desktop
-  systemctl is-active memavaild >/dev/null || systemctl enable memavaild
-  systemctl is-active prelockd >/dev/null || systemctl enable prelockd
-  systemctl is-active ananicy >/dev/null || systemctl enable ananicy
-  systemctl is-active grub-btrfs.path >/dev/null || systemctl enable grub-btrfs.path
-  systemctl is-active fstrim.timer >/dev/null || systemctl enable fstrim.timer
-  systemctl is-active btrfs-scrub@-.timer >/dev/null || systemctl enable btrfs-scrub@-.timer
-  systemctl is-active preload >/dev/null || systemctl enable preload
-  echo ""
-  msg "services should now be enabled."
-  echo ""
+
 }
 
 # vim: ts=2 sw=2 et:

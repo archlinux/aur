@@ -9,19 +9,10 @@ pkgbase = performance-tweaks
 	sha256sums = SKIP
 
 pkgname = performance-tweaks
-	pkgdesc = automatic tweaks for Improving performance while gaming and other tasks
+	pkgdesc = tweaks for Improving performance
 	install = performance-tweaks.install
-	depends = haveged
-	depends = irqbalance
-	depends = systemd-swap
 	depends = hdparm
-	depends = nohang-git
-	depends = prelockd-git
-	depends = memavaild-git
-	depends = ananicy-git
-	depends = profile-sync-daemon
-	depends = preload
 	provides = performance-tweaks
 	conflicts = performance-tweaks
-	conflicts = tlp
+	conflicts = powersave-tweaks
 

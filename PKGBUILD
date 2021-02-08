@@ -40,22 +40,14 @@ pkgver() {
 }
 
 package_performance-tweaks() {
-    pkgdesc='automatic tweaks for Improving performance while gaming and other tasks'
-    depends=(
-    'haveged'
-    'irqbalance'
-    'systemd-swap'   
+    pkgdesc='tweaks for Improving performance'
+    depends=(  
 	'hdparm'
-    'nohang-git'
-    'prelockd-git'
-    'memavaild-git'
-	'ananicy-git'
-    'profile-sync-daemon'
-    'preload'
+
         )    
     install=performance-tweaks.install
     provides=('performance-tweaks')
-    conflicts=('performance-tweaks' 'tlp')
+    conflicts=('performance-tweaks' 'powersave-tweaks')
 
     _install ''
 }
