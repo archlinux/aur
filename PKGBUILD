@@ -2,13 +2,14 @@
 # Contributor: Dino Morelli <dino@ui3.info>
 
 pkgname=hlint-static-git
-pkgver=3.2.7.r19.g3d3c82c6
+pkgver=3.2.7.r23.g9c8b9030
 pkgrel=1
 pkgdesc='Haskell source code suggestions'
 arch=('x86_64')
 url="https://github.com/ndmitchell/hlint"
 license=('BSD')
-depends=('git' 'stack' 'gmp')
+makedepends=('git' 'stack')
+depends=('gmp')
 provides=('hlint')
 conflicts=('hlint' 'hlint-bin')
 source=("${pkgname}::git+${url}")
