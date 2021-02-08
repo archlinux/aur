@@ -1,0 +1,13 @@
+pkgbase = bash2048
+	pkgdesc = Bash implementation of 2048 game
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/mydzor/bash2048
+	arch = any
+	license = Unlicense
+	provides = bash2048
+	source = https://github.com/mydzor/bash2048/archive/1.0.tar.gz
+	md5sums = 7a8e083ef89d6fbc51a60ce6b6c41f89
+
+pkgname = bash2048
+
