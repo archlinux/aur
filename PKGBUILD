@@ -12,7 +12,7 @@ depends=('libxss' 'gtk3' 'nss')
 license=('custom:LicenseRef-1Password-Proprietary')
 url='https://1password.com/'
 source=("https://downloads.1password.com/linux/debian/pool/main/1/1password/1password-$_pkgver.deb")
-sha256sums=('90849e12e51116448d4231147097b34e862e0b52b35104d4549d5a0b12eade8b')
+sha256sums=('e27b0055eb9a55af081160fb7a270db1ba806483328a8161d68a0dc2d913ff84')
 validpgpkeys=('3FEF9748469ADBE15DA7CA80AC2D62742012EA22')
 
 package() {
