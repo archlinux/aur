@@ -6,7 +6,7 @@ pkgver=1.0.2
 pkgrel=5
 pkgdesc='由北航 GAIT 研究组开发的、专门为 NOI 选手设计的轻型集成开发环境'
 arch=('i686' 'x86_64')
-url='http://www.noi.cn/newsview.html?id=27&hash=B7759F&type=1'
+url='http://www.noi.cn/xw/2009-03-23/714714.shtml'
 license=('custom')
 depends=(
   'lib32-libpng12'
@@ -29,7 +29,7 @@ optdepends=(
   'fpc: Pascal'
 )
 source=(
-  'http://download.noi.cn/T/noi/GUIDE-1.0.2-ubuntu.tar'
+  "http://download.noi.cn/T/noi/GUIDE-${pkgver}-ubuntu.tar"
   'GUIDE.desktop'
 )
 sha256sums=(
@@ -38,7 +38,7 @@ sha256sums=(
 )
 
 package() {
-  cd "$srcdir/GUIDE-1.0.2-ubuntu"
+  cd "$srcdir/GUIDE-${pkgver}-ubuntu"
   install -Dm644 doc/*.* -t "$pkgdir"/usr/share/doc/GUIDE/html/
   install -Dm644 doc/images/*.* -t "$pkgdir"/usr/share/doc/GUIDE/html/images/
   install -Dm644 lang_en.qm -t "$pkgdir"/usr/share/
