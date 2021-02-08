@@ -3,13 +3,13 @@
 
 pkgname=envypn-font
 pkgver=1.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Readable bitmap font inspired by Envy Code R"
-url="http://ywstd.fr/p/pj/#envypn"
+url="https://ywstd.fr/p/pj/#envypn"
 arch=('any')
 license=('custom:MirOS License')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-source=("http://ywstd.fr/files/p/envypn-font/${pkgname}-${pkgver}.tar.gz")
+depends=('fontconfig' 'xorg-fonts-encodings')
+source=("https://ywstd.fr/files/p/envypn-font/${pkgname}-${pkgver}.tar.gz")
 md5sums=('976ceda01018d3b109a735daf4e8af95')
 sha256sums=('bda67b6bc6d5d871a4d46565d4126729dfb8a0de9611dae6c68132a7b7db1270')
 
