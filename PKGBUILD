@@ -8,7 +8,7 @@ pkgdesc="Fast linear assignment problem solvers"
 arch=('any')
 license=('MIT')
 url="https://github.com/cheind/py-lapsolver"
-depends=(python)
+depends=(python python-setuptools cmake)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('e438689e528f18b801d996f10d158554050618a89ffff6b562a97ba41cfd37ed')
 
