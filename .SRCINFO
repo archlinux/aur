@@ -1,6 +1,6 @@
 pkgbase = leiningen-with-completion
 	pkgdesc = For automating Clojure projects without setting your hair on fire.
-	pkgver = 2.9.4
+	pkgver = 2.9.5
 	pkgrel = 1
 	url = https://github.com/technomancy/leiningen
 	arch = any
@@ -8,11 +8,11 @@ pkgbase = leiningen-with-completion
 	depends = java-environment
 	optdepends = rlwrap: for readline support
 	conflicts = leiningen
-	noextract = leiningen-2.9.4-standalone.zip
-	source = https://github.com/technomancy/leiningen/archive/2.9.4.tar.gz
-	source = https://github.com/technomancy/leiningen/releases/download/2.9.4/leiningen-2.9.4-standalone.zip
-	sha256sums = be1b1e43c5376f2fdc8666aeb671df16c19776d5cfe64339292a3d35ce3a7faa
-	sha256sums = 0e3c339480347df0445317d329accbd4a578ebbd8d91e568e661feb1b388706c
+	noextract = leiningen-2.9.5-standalone.zip
+	source = https://github.com/technomancy/leiningen/archive/2.9.5.tar.gz
+	source = https://github.com/technomancy/leiningen/releases/download/2.9.5/leiningen-2.9.5-standalone.zip
+	sha256sums = a29b45966e5cc1a37d5dc07fe436ed7cb172c88c53d44a049956ff53a096d43e
+	sha256sums = df490c98bfe8d667bc5d83b80238528877234c285d0d48f61a4c8743c2db1eea
 
 pkgname = leiningen-with-completion
 
