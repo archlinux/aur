@@ -1,4 +1,4 @@
-pkgbase = gnome-shell-extension-lunar-calendar-git
+pkgbase = gnome-shell-extension-lunar-calendar
 	pkgdesc = Display Chinese Lunar Calendar in panel
 	pkgver = v25
 	pkgrel = 3
@@ -11,5 +11,5 @@ pkgbase = gnome-shell-extension-lunar-calendar-git
 	source = https://extensions.gnome.org/extension-data/lunarcalailin.nemui.v25.shell-extension.zip
 	md5sums = ecf6244c174c8a795babd4de423462e4
 
-pkgname = gnome-shell-extension-lunar-calendar-git
+pkgname = gnome-shell-extension-lunar-calendar
 

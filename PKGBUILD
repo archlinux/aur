@@ -1,7 +1,6 @@
 # Maintainer: Saren <saren@wtako.net>
 
-pkgname=gnome-shell-extension-lunar-calendar-git
-_pkgname="backslide"
+pkgname=gnome-shell-extension-lunar-calendar
 pkgver=v25
 pkgrel=3
 pkgdesc="Display Chinese Lunar Calendar in panel"
