@@ -1,7 +1,7 @@
 # Maintainer: Dwayne Bent <dbb@dbb.io>
 pkgname=systemd-cron
 pkgver=1.5.17
-pkgrel=1
+pkgrel=2
 pkgdesc='systemd units to run cron scripts'
 arch=(any)
 url='https://github.com/systemd-cron/systemd-cron'
@@ -10,7 +10,7 @@ depends=('systemd>=229' 'run-parts' 'python')
 optdepends=('smtp-forwarder: sending emails')
 provides=('cron')
 conflicts=('cron')
-source=("https://github.com/systemd-cron/${pkgname}/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/systemd-cron/${pkgname}/archive/v${pkgver}.tar.gz"
         'sysusers.conf')
 install=${pkgname}.install
 sha256sums=('847132a4517f03cf94253f275f006956d8c97a3506db450d33cbd36a25e3bf73'
