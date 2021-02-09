@@ -1,7 +1,7 @@
 pkgbase = gnudatalanguage-gdlkernel
 	pkgdesc = An IDL (Interactive Data Language) compatible compiler (prepared for gdl_kernel)
 	pkgver = 1.0.0_rc.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gnudatalanguage/gdl
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = gnudatalanguage-gdlkernel
 	depends = hdf5
 	depends = netcdf
 	depends = netcdf-cxx
-	depends = wxgtk
+	depends = wxgtk2
 	depends = fftw
 	depends = pslib
 	depends = eccodes-git

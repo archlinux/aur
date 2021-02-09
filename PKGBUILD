@@ -6,7 +6,7 @@
 
 pkgname=gnudatalanguage-gdlkernel
 pkgver=1.0.0_rc.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An IDL (Interactive Data Language) compatible compiler (prepared for gdl_kernel)"
 arch=('i686' 'x86_64')
 url="https://github.com/gnudatalanguage/gdl"
@@ -24,7 +24,7 @@ depends=('python'
          'hdf5'
          'netcdf'
          'netcdf-cxx'
-         'wxgtk'
+         'wxgtk2'
          'fftw'
          'pslib'
          'eccodes-git'
