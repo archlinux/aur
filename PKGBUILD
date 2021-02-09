@@ -115,7 +115,6 @@ build() {
     -D libunwind=false \
     -D hal=false \
     -D xf86-input-inputtest=false \
-    -D dga=false \
     -D xace=false \
     -D debug=false \
     -D input_thread=true \
