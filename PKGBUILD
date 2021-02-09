@@ -1,21 +1,19 @@
-# Maintainer: Milo Mirate <mmirate at gmx dot com>
+# Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Contributor: Milo Mirate <mmirate at gmx dot com>
 _pkgname=pyassuan
 pkgname=python-pyassuan-git
-pkgver=40.1a08bce
-pkgrel=2
+pkgver=48.b18cb7f
+pkgrel=1
 pkgdesc="Tools for communicating in the Assuan protocol."
 arch=('any')
-url="http://blog.tremily.us/posts/pyassuan/"
+url="https://blog.tremily.us/posts/pyassuan/"
 license=('GPL3')
-groups=()
 depends=('python')
 makedepends=('git')
 provides=('python-pyassuan')
 conflicts=('python-pyassuan')
-replaces=()
-backup=()
 options=(!emptydirs)
-source=('git://tremily.us/pyassuan.git')
+source=('git+http://http-git.tremily.us/pyassuan.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -23,9 +21,13 @@ pkgver() {
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-package() {
+build() {
+  echo 'Building python...'
   cd $_pkgname
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python setup.py build
 }
 
-# vim:set ts=2 sw=2 et:
+package() {
+  cd $_pkgname
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+}

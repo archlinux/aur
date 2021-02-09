@@ -1,8 +1,8 @@
 pkgbase = python-pyassuan-git
 	pkgdesc = Tools for communicating in the Assuan protocol.
-	pkgver = 40.1a08bce
-	pkgrel = 2
-	url = http://blog.tremily.us/posts/pyassuan/
+	pkgver = 48.b18cb7f
+	pkgrel = 1
+	url = https://blog.tremily.us/posts/pyassuan/
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = python-pyassuan-git
 	provides = python-pyassuan
 	conflicts = python-pyassuan
 	options = !emptydirs
-	source = git://tremily.us/pyassuan.git
+	source = git+http://http-git.tremily.us/pyassuan.git
 	md5sums = SKIP
 
 pkgname = python-pyassuan-git
