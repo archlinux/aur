@@ -4,7 +4,7 @@ pkgver=1.5.1
 pkgrel=1
 pkgdesc="A free cryptographic library for Python that uses mbed TLS for back end."
 arch=(any)
-url="https://github.com/Synss/python-mbedtls/releases"
+url="https://pypi.org/project/python-mbedtls/"
 license=('Apache')
 makedepends=('python-setuptools'
              'mbedtls')
