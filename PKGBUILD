@@ -1,12 +1,12 @@
-# Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
-# Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
+# Maintainer: The-Repo-Club <The-Repo-Club@github.com>
+# Contributor: The-Repo-Club <The-Repo-Club@github.com>
 pkgname=pyfetch
 pkgver=2021.01.18
 pkgrel=1
 pkgdesc='neofetch rewritten in python'
 arch=('any')
 groups=('therepoclub')
-url="https://github.com/TheCynicalTeam/$pkgname"
+url="https://github.com/The-Repo-Club/$pkgname"
 license=('CC BY-NC-SA 4.0')
 depends=('gtk3' 'python-gputil' 'python-xlib')
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")

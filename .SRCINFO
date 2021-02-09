@@ -2,14 +2,14 @@ pkgbase = pyfetch
 	pkgdesc = neofetch rewritten in python
 	pkgver = 2021.01.18
 	pkgrel = 1
-	url = https://github.com/TheCynicalTeam/pyfetch
+	url = https://github.com/The-Repo-Club/pyfetch
 	arch = any
 	groups = therepoclub
 	license = CC BY-NC-SA 4.0
 	depends = gtk3
 	depends = python-gputil
 	depends = python-xlib
-	source = pyfetch-2021.01.18.tar.gz::https://github.com/TheCynicalTeam/pyfetch/archive/2021.01.18.tar.gz
+	source = pyfetch-2021.01.18.tar.gz::https://github.com/The-Repo-Club/pyfetch/archive/2021.01.18.tar.gz
 	sha256sums = 34450741166cb4d011a4bccf3d7350315d3d54b0dde8660987c9b57f24b00f24
 
 pkgname = pyfetch
