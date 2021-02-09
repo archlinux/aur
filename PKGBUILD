@@ -15,8 +15,10 @@ url='https://github.com/'
 license=('MIT')
 depends=()
 makedepends=('git' 'cmake')
-source=("git://github.com/$_author/$_pkgname")
-sha256sums=('SKIP')
+source=("git://github.com/$_author/$_pkgname"
+        "https://aur.archlinux.org/cgit/aur.git/plain/CMake.patch?h=$_pkgname"
+       )
+sha256sums=('SKIP' 'SKIP')
 
 prepare() {
   cd "$srcdir/$_pkgname"
