@@ -1,0 +1,14 @@
+pkgbase = input-device-indicator
+	pkgdesc = Creates an indicator to allow us to disable some input devices
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/brandizzi/input-device-indicator
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	source = input-device-indicator-0.1.0.tar.gz::https://github.com/brandizzi/input-device-indicator/archive/v0.1.0.tar.gz
+	sha512sums = 7b23f098e3a074e763addc04c62a3ff760e371e06ca5f1da73607cacd5780c2301ecc6786705e426ce6268124b4d3eb230516cd66fff8bf14d522b7cc6f5fc00
+
+pkgname = input-device-indicator
+
