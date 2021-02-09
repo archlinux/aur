@@ -1,7 +1,7 @@
 # Maintainer: metaanon [at] mailbox dotorg  
 pkgname=binance-electron
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Binance Electron desktop application."
 arch=('x86_64')
 url="https://binance.com"
