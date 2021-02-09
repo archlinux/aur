@@ -1,11 +1,11 @@
-# Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
-# Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
+# Maintainer: The-Repo-Club <The-Repo-Club@github.com>
+# Contributor: The-Repo-Club <The-Repo-Club@github.com>
 pkgname=siji
 pkgver=2021.01.01
 pkgrel=1
 pkgdesc='Iconic bitmap font based on stlarch with additional glyphs'
 arch=('any')
-url="https://github.com/TheCynicalTeam/siji"
+url="https://github.com/The-Repo-Club/siji"
 license=('CC BY-NC-SA 4.0')
 depends=('fontconfig' 'xorg-mkfontscale' 'xorg-xset')
 optdepends=('xorg-xfd: use view.sh script to view glyphs')
