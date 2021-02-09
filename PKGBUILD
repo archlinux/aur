@@ -1,4 +1,5 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Bruno Pagani <archange@archlinux.org>
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
@@ -15,7 +16,8 @@ url="https://matplotlib.org"
 license=(custom)
 depends=(freetype2 libpng python2-numpy python2-cycler python2-dateutil python2-kiwisolver python2-pyparsing python2-backports.functools_lru_cache)
 optdepends=('tk: Tk{Agg,Cairo} backends'
-            'python2-pyqt5: Qt5{Agg,Cairo} backends'
+            'python2-pyqt4: Qt4{Agg,Cairo} backends'
+#            'python2-pyqt5: Qt5{Agg,Cairo} backends'
             'python2-gobject: for GTK3{Agg,Cairo} backend'
             'python2-wxpython: WX{,Agg,Cairo} backend'
             'python2-cairo: {GTK3,Qt5,Tk,WX}Cairo backends'
@@ -27,7 +29,7 @@ optdepends=('tk: Tk{Agg,Cairo} backends'
             'ghostscript: usetex dependencies'
             'texlive-bin: usetex dependencies')
 makedepends=(git rsync python2-setuptools
-             tk python2-pyqt5 python2-gobject
+             tk python2-gobject
              python2-wxpython python2-cairocffi python2-tornado
              python2-pillow ghostscript texlive-bin)
              # qhull missing pkg-config file
