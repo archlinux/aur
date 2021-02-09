@@ -11,7 +11,7 @@ optdepends=('libnotify: desktop notifications'
             'libappindicator-gtk3: tray icon')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-source=("AndroidMessages-v$pkgver-linux-x64.pacman::$url/releases/download/v$pkgver/AndroidMessages-v$pkgver-linux-x64.pacman"
+source=("$url/releases/download/v$pkgver/AndroidMessages-v$pkgver-linux-x64.pacman"
         "$url/raw/v$pkgver/LICENSE"
         "${pkgname%-bin}"
         "${pkgname%-bin}.desktop")
