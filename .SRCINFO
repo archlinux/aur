@@ -7,12 +7,13 @@ pkgbase = python-numba
 	arch = x86_64
 	license = BSD
 	makedepends = cython
+	makedepends = python-setuptools
 	depends = python-llvmlite>=0.36.0rc1
 	depends = python-llvmlite<0.37
 	depends = python-numpy>=1.15
 	optdepends = python-scipy>=1.0.0
 	source = numba-0.53.0rc1.tar.gz::https://github.com/numba/numba/archive/0.53.0rc1.tar.gz
-	sha256sums = 19a5e224e5dc6be0368cbc1571b00efa04ed16a2683a79095e731ace3dafbdc2
+	sha256sums = cae46b72327d7c01a142f62107fef830c3d033b05b95f9d1ebdb3462e9845fe4
 
 pkgname = python-numba
 

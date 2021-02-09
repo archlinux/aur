@@ -7,10 +7,10 @@ url="http://numba.pydata.org/"
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('python-llvmlite>=0.36.0rc1' 'python-llvmlite<0.37' 'python-numpy>=1.15')
-makedepends=('cython')
+makedepends=('cython' 'python-setuptools')
 optdepends=('python-scipy>=1.0.0')
 source=(numba-$pkgver.tar.gz::"https://github.com/numba/numba/archive/$pkgver.tar.gz")
-sha256sums=('19a5e224e5dc6be0368cbc1571b00efa04ed16a2683a79095e731ace3dafbdc2')
+sha256sums=('cae46b72327d7c01a142f62107fef830c3d033b05b95f9d1ebdb3462e9845fe4')
 
 build() {
   cd "$srcdir/numba-$pkgver"
