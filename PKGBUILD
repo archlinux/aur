@@ -7,9 +7,10 @@ pkgdesc="This is a tool to run jobs at scheduled times. It is a complete replace
 url="https://www.gnu.org/software/mcron/"
 arch=('x86_64')
 license=("GPL3")
-depends=('guile')
+depends=("guile")
 makedepends=()
-conflicts=('cron') 
+provides=("cron")
+conflicts=("cron") 
 source=("$pkgname-$pkgver.tar.gz::https://ftp.gnu.org/gnu/mcron/${pkgname}-${pkgver}.tar.gz")
 md5sums=('3617a5bf67e30dc009c62f6e831e7764')
 
