@@ -43,7 +43,7 @@ package_neovim-leaderf-git() {
     depends=('neovim' 'python-pynvim')
     provides=('neovim-leaderf')
     conflicts=('neovim-leaderf')
-    _packdir="usr/local/share/nvim/site/pack/${_pkgname}/start/${_pkgname}"
+    _packdir="usr/share/nvim/runtime/pack/${_pkgname}/start/${_pkgname}"
     _variant='neovim'
 
     cd "${srcdir}/${_pkgname}"
