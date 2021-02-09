@@ -1,0 +1,6 @@
+astiga-nativefier-*.pkg.tar.zst
+astiga-nativefier-*.pkg.tar.xz
+astiga-nativefier-*.log
+PKGBUILD-namcap.log
+pkg/
+src/

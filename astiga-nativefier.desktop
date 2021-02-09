@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Astiga
+Comment=Astiga desktop built with nativefier (electron)
+Exec=astiga-nativefier
+Icon=astiga-nativefier
+GenericName=Music Streaming Service
+NoDisplay=false
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;Multimedia;

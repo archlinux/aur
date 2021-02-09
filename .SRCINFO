@@ -1,0 +1,25 @@
+pkgbase = astiga-nativefier
+	pkgdesc = Astiga desktop built with nativefier (electron)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://play.asti.ga/overview
+	arch = armv7l
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = astiga-nativefier.png
+	source = astiga-nativefier.desktop
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = astiga-nativefier
+
