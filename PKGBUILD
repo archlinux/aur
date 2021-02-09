@@ -3,7 +3,7 @@
 
 pkgname=youtube-music-bin
 _pkgname=YouTube-Music
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 epoch=
 pkgdesc="YouTube Music Desktop App bundled with custom plugins like built-in ad blocker & downloader"
@@ -17,7 +17,7 @@ source=("https://github.com/th-ch/youtube-music/releases/download/v${pkgver}/${_
 noextract=('${_pkgname}-${pkgver}.AppImage')
 options=(!strip)
 sha512sums=(
-            "cb9087a56f8118c5f27e625e373553c0414c95bc6e03f920894a7acafa46739146d6e3631d4806941d121870e04a6f2dccdd5f8adfe74e69300e1a566abc36f8"
+            "32194176883836bac7ee739ee62714172a1f7eef7d592c5e4b024f40c976840227eebca2801ebfef9b90b71e157e222bec1ad9de2940d219a191cd2b50b8c221"
             "SKIP"
             "5cde2a00f56761b510a550cbf685206646519068f5b1b14d0a0e6c954e38f677aef8ec83c53ff2c85b67ae539a4a419368f2593207548a868466502e675ae38c"
 )
