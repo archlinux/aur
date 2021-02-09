@@ -1,31 +1,29 @@
-# Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
+# Contributor: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=ocropy
-pkgver=1.0
-pkgrel=2
+pkgver=1.3.3
+pkgrel=1
 pkgdesc="Python-based OCR package using recurrent neural networks (formerly ocropus)"
 arch=('any')
-url="https://github.com/tmbdev/ocropy"
+url="https://github.com/ocropus/ocropy"
 license=('APACHE')
-depends=('python-imaging' 'python2-scipy' 'python2-matplotlib' 'python2-pytables'
+depends=('python2-imaging' 'python2-scipy' 'python2-matplotlib' 'python2-pytables'
          'imagemagick' 'opencv' 'python2-beautifulsoup4')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/tmbdev/ocropy/archive/v${pkgver}.tar.gz"
-        'fixcast.patch::https://github.com/tmbdev/ocropy/commit/0e54bae2ef640a163c107a16b425dfd5ac698622.patch'
-        'http://www.tmbdev.net/en-default.pyrnn.gz')
-md5sums=('622636a7dde7c304ec719b65cf885a86'
-         'bec6823d44722a839513d6527bdcfb7e'
-         'cedd140c7d7650e910f0550ad0f04727')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ocropus/ocropy/archive/v${pkgver}.tar.gz"
+        "https://github.com/zuphilip/ocropy-models/raw/master/en-default.pyrnn.gz")
+sha256sums=('8582589e87dd453c736478713c2d740c8e3e4479e519d8f8e8f25288081eff5c'
+            'b749ec701a53915183963c3814a288de7da5a38261bd9008e0ae0674c71cd1f7')
 
 prepare() {
-  cd "$srcdir/ocropy-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   cp "$srcdir/en-default.pyrnn.gz" models
 
   sed -i 's|tostring|tobytes|' ocrolib/common.py
   sed -i 's|PIL\.Image\.fromstring|PIL\.Image\.frombytes|' ocrolib/common.py
-  patch -Np1 < "$srcdir/fixcast.patch"
 }
 
 build() {
-  cd "$srcdir/ocropy-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   # make sure python2 is always used
   find . -type f -name "*.py" -exec sed -i 's|^#!.*python$|&2|' '{}' ';'
@@ -38,7 +36,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/ocropy-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
