@@ -1,12 +1,12 @@
-# Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
-# Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
+# Maintainer: The-Repo-Club <The-Repo-Club@github.com>
+# Contributor: The-Repo-Club <The-Repo-Club@github.com>
 pkgname=i3-session
 pkgver=2021.01.01
 pkgrel=1
 pkgdesc="Remembers what's running in your i3 workspaces by saving a session file"
 arch=('any')
 groups=('therepoclub')
-url="https://github.com/TheCynicalTeam/$pkgname"
+url="https://github.com/The-Repo-Club/$pkgname"
 license=('CC BY-NC-SA 4.0')
 depends=(python2-xdg perl-anyevent-i3 python-i3-py i3-wm xorg-xprop)
 makedepends=('git')

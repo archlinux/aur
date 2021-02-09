@@ -2,7 +2,7 @@ pkgbase = i3-session
 	pkgdesc = Remembers what's running in your i3 workspaces by saving a session file
 	pkgver = 2021.01.01
 	pkgrel = 1
-	url = https://github.com/TheCynicalTeam/i3-session
+	url = https://github.com/The-Repo-Club/i3-session
 	arch = any
 	groups = therepoclub
 	license = CC BY-NC-SA 4.0
@@ -12,7 +12,7 @@ pkgbase = i3-session
 	depends = python-i3-py
 	depends = i3-wm
 	depends = xorg-xprop
-	source = i3-session-2021.01.01.tar.gz::https://github.com/TheCynicalTeam/i3-session/archive/2021.01.01.tar.gz
+	source = i3-session-2021.01.01.tar.gz::https://github.com/The-Repo-Club/i3-session/archive/2021.01.01.tar.gz
 	sha256sums = 0b097e5010ef03e2e8e9ab119b01755f0dbb0406ae0ec0ff1c3136c71d7e497c
 
 pkgname = i3-session
