@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=tickrs
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Realtime ticker data in your terminal"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs' 'zlib')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('f56340b356bf42ba3c5f4e28387e28483bc5e237aa9cc0c930c89370a079bf72871414db7cfd20cd3d9cded168ea276a1948bba539d844f69f95c3521e05aa03')
+sha512sums=('4cc26ff841d547efb151b6ca6e5208f7ef654cb64a1b79683c4537835396a274f1bd31e4d328cdb5c7820aecaa3b3b7c4daa42307e8a3c1b22d6c55940cc7727')
 
 build() {
   cd "$pkgname-$pkgver"
