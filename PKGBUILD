@@ -1,6 +1,6 @@
-# Maintainer: Facundo Tuesca <facutuesca AT gmail DOT com>
+# Maintainer: RP <reyadmin AT gmail DOT com>
 pkgname=hxtools
-pkgver=20150304
+pkgver=20201116
 pkgrel=1
 pkgdesc="A collection of tools and scripts that have accumulated over the years, and each of which seems to be too small to warrants its own project."
 arch=('i686' 'x86_64')
@@ -8,9 +8,9 @@ url=http://inai.de/projects/hxtools/
 license=('GPL3')
 depends=('libhx>=3.19' perl util-linux pciutils libxcb)
 makedepends=()
-source=(http://jftp.inai.de/hxtools/hxtools-$pkgver.tar.xz
+source=(http://inai.de/files/hxtools/hxtools-$pkgver.tar.xz
         Rename_rot13_to_trrot13.patch)
-sha256sums=('55265b16191831c4e332b0235b057e3f1e952298abf34734a8fa2ee9bb7be382'
+sha256sums=('c4bf0de4b39892eacb74a148d2587f0611f0abd2a2c4919a0e8e6639a74b7c69'
             '89f65c581179582f178c1d60dbe9a702d7efb5b07f35442f03c9463af0c5b04d')
 
 prepare() {
