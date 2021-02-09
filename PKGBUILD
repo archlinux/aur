@@ -1,5 +1,5 @@
-# Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
-# Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
+# Maintainer: The-Repo-Club <The-Repo-Club@github.com>
+# Contributor: The-Repo-Club <The-Repo-Club@github.com>
 # Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
 # Contributor: Mattia Basaglia <mattia.basaglia@gmail.com>
 
@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc='A user-friendly color dialog and several color-related widgets for Qt'
 arch=('any')
 groups=('therepoclub')
-url="https://github.com/TheCynicalTeam/$pkgname"
+url="https://github.com/The-Repo-Club/$pkgname"
 license=('LGPL3')
 depends=('qt5-base')
 optdepends=('qt5-tools: for QtDesigner integration'

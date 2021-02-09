@@ -2,7 +2,7 @@ pkgbase = qt5-color-widgets
 	pkgdesc = A user-friendly color dialog and several color-related widgets for Qt
 	pkgver = 2021.01.01
 	pkgrel = 1
-	url = https://github.com/TheCynicalTeam/qt5-color-widgets
+	url = https://github.com/The-Repo-Club/qt5-color-widgets
 	arch = any
 	groups = therepoclub
 	license = LGPL3
@@ -14,7 +14,7 @@ pkgbase = qt5-color-widgets
 	provides = qt-color-widgets-common
 	conflicts = qt-color-widgets-common
 	replaces = qt5-color-picker
-	source = qt5-color-widgets-2021.01.01.tar.gz::https://github.com/TheCynicalTeam/qt5-color-widgets/archive/2021.01.01.tar.gz
+	source = qt5-color-widgets-2021.01.01.tar.gz::https://github.com/The-Repo-Club/qt5-color-widgets/archive/2021.01.01.tar.gz
 	sha256sums = 1b6d34bede07885ea068ef9041d2158930b64c15f6d52af42aa0165182fe509c
 
 pkgname = qt5-color-widgets
