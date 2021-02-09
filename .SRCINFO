@@ -7,6 +7,7 @@ pkgbase = libqalculate-git
 	license = GPL
 	makedepends = intltool
 	makedepends = doxygen
+	makedepends = git
 	depends = libxml2
 	depends = curl
 	depends = mpfr
