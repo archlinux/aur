@@ -1,0 +1,18 @@
+pkgbase = python-html2md
+	pkgdesc = HTML to Markdown converter
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/davidcavazos/html2md
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = python
+	makedepends = python-pyquery
+	depends = python
+	source = https://pypi.python.org/packages/source/h/html2md/html2md-0.1.7.tar.gz
+	source = requirements.txt
+	md5sums = 9faf9fb6b103fa6e6ed727ed0b4c6270
+	md5sums = 5319822149eda4c961bfb3d43eeeb2a6
+
+pkgname = python-html2md
+
