@@ -1,13 +1,16 @@
 pkgbase = soil-git
 	pkgdesc = SOIL is a tiny C library used primarily for uploading textures into OpenGL. It is based on stb_image version 1.16
-	pkgver = 1
+	pkgver = 1.16
 	pkgrel = 1
 	url = https://github.com/
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cmake
+	conflicts = soil
 	source = git://github.com/paralin/soil
+	source = CMake.patch::https://aur.archlinux.org/cgit/aur.git/plain/CMake.patch?h=soil-git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = soil-git

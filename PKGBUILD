@@ -19,6 +19,8 @@ source=("git://github.com/$_author/$_pkgname"
         "CMake.patch::https://aur.archlinux.org/cgit/aur.git/plain/CMake.patch?h=$pkgname"
        )
 sha256sums=('SKIP' 'SKIP')
+provide=('soil')
+conflicts=('soil')
 
 prepare() {
   cd "$srcdir/$_pkgname"
