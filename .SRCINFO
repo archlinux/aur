@@ -4,6 +4,7 @@ pkgbase = lightspark
 	pkgrel = 1
 	url = https://github.com/lightspark/lightspark
 	arch = x86_64
+	arch = aarch64
 	license = LGPL3
 	makedepends = cmake
 	makedepends = nasm
