@@ -1,14 +1,17 @@
 pkgbase = python-tflite
 	pkgdesc = Parse TFLite models (*.tflite) EASILY with Python
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/jackwish/tflite
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-install
 	depends = python-flatbuffers
-	source = python-tflite-2.3.0.tar.gz::https://github.com/jackwish/tflite/archive/v2.3.0.tar.gz
-	sha256sums = e0a39b9a2f4fef3e584ccc2785f5364ef21c6a01fa672ab0587dc2d296204837
+	source = python-tflite-2.4.0.tar.gz::https://github.com/jackwish/tflite/archive/v2.4.0.tar.gz
+	sha256sums = 0b911b8e3fd7eef0052ad91f0221cef3d20a25f8bdd5c629c5c1d426c0426e3d
 
 pkgname = python-tflite
 
