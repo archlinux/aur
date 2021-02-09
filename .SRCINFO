@@ -6,6 +6,7 @@ pkgbase = mpy-repl-tool-git
 	arch = any
 	license = custom
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python-pyserial
 	depends = python-colorama
 	optdepends = python-fusepy: for mounting the micropython filesystem
