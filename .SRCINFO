@@ -1,0 +1,19 @@
+pkgbase = vim-m3u
+	pkgdesc = Syntax description file for m3u file format in vim/neovim
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/FauveNoir/vim-m3u-syntax
+	arch = any
+	groups = vim-plugins
+	groups = neovim-plugins
+	license = MIT
+	makedepends = git
+	optdepends = vim: vim support
+	optdepends = neovim: neovim support
+	source = git+https://github.com/FauveNoir/vim-m3u-syntax.git
+	source = m3u.vim
+	sha256sums = SKIP
+	sha256sums = 89090647ed4df4b72d3c74dc21c1242e820d79df6636260f6998b0437d576fc5
+
+pkgname = vim-m3u
+
