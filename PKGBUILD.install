@@ -1,0 +1,16 @@
+
+## arg 1:  the new package version
+post_install() {
+  ldconfig
+  systemctl enable qubes-db.service > /dev/null
+}
+
+post_upgrade() {
+  ldconfig
+}
+
+post_remove() {
+  ldconfig
+  systemctl disable qubes-db.service > /dev/null
+}
+
