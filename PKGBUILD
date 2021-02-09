@@ -1,5 +1,5 @@
-# Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
-# Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
+# Maintainer: The-Repo-Club <The-Repo-Club@github.com>
+# Contributor: The-Repo-Club <The-Repo-Club@github.com>
 
 pkgname=bfetch
 pkgver=2021.01.24
@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A CLI system information tool written in BASH that supports displaying images."
 arch=('any')
 groups=('therepoclub')
-url="https://github.com/TheCynicalTeam/$pkgname"
+url="https://github.com/The-Repo-Club/$pkgname"
 license=('CC BY-NC-SA 4.0')
 depends=('bash')
 makedepends=('git')
