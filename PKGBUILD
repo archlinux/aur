@@ -1,7 +1,7 @@
 # Maintainer: Michał Lisowski <lisu@riseup.net>
 
 pkgname=thunderbird-conversations
-pkgver=3.2.6
+pkgver=3.2.11
 pkgrel=1
 pkgdesc="GMail-like conversation view for Thunderbird"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MPL' 'GPL2' 'LGPL2.1')
 depends=('thunderbird')
 makedepends=('git' 'npm' 'zip')
 source=("https://github.com/protz/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('718574d9673deef3695e59ef309019a9')
+md5sums=('8695d1acfdeb00af1aa4dec2a1cbf104')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
