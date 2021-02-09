@@ -1,6 +1,6 @@
 # Maintainer: John Downey <jdowney@gmail.com>
 pkgname=nsscache
-pkgver=0.39
+pkgver=0.41
 pkgrel=1
 epoch=
 pkgdesc="Asynchronously synchronise local NSS databases with remote directory services"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/google/nsscache/archive/version/${pkgver}.tar.gz")
 noextract=()
-sha256sums=("3eb0b2a4c163d2c2fd3748e23fc6296f253d9be0a74a1fe9c0fe3191f4c2638d")
+sha256sums=('bb022e0a8e9c5c29368dc24a6af40c2b4b2da1fd87618976700e0e6f124c295a')
 validpgpkeys=()
 
 build() {
