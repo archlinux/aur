@@ -2,7 +2,7 @@
 
 pkgname=hypershare-git
 _pkgname=hypershare
-pkgver=b4dc27d
+pkgver=0.2.0
 pkgdesc="Small, interactive HTTP server with a TUI."
 pkgrel=1
 arch=('i686' 'x86_64')
