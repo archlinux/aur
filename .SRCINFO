@@ -1,7 +1,7 @@
 pkgbase = digikam-git
 	pkgdesc = An advanced digital photo management application
 	pkgver = v7.2.0.beta1.r500.g9541292038
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.digikam.org/
 	arch = i686
 	arch = x86_64
@@ -30,7 +30,6 @@ pkgbase = digikam-git
 	optdepends = qt5-imageformats: support for additional image formats (WEBP, TIFF)
 	optdepends = rawtherapee: RAW import
 	optdepends = darktable: RAW import
-	optdepends = digikam-plugin-gmic: G'MIC plugin
 	optdepends = perl: for digitaglinktree
 	provides = digikam
 	conflicts = digikam

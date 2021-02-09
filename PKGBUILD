@@ -1,7 +1,7 @@
 # Maintainer: Chris Lane <aur at chrislane dot com>
 pkgname=digikam-git
 pkgver=v7.2.0.beta1.r500.g9541292038
-pkgrel=2
+pkgrel=3
 pkgdesc='An advanced digital photo management application'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -13,7 +13,6 @@ optdepends=('hugin: panorama tool'
             'qt5-imageformats: support for additional image formats (WEBP, TIFF)'
             'rawtherapee: RAW import'
             'darktable: RAW import'
-            "digikam-plugin-gmic: G'MIC plugin"
             'perl: for digitaglinktree')
 conflicts=('digikam')
 provides=('digikam')
