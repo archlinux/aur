@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=pyosmium
 _module='osmium'
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="Python bindings for libosmium, the data processing library for OSM data"
 url="https://osmcode.org/pyosmium"
@@ -10,7 +10,7 @@ makedepends=('python-setuptools' 'cmake')
 license=('BSD')
 arch=('x86_64')
 source=("https://files.pythonhosted.org/packages/source/o/osmium/osmium-${pkgver}.tar.gz")
-sha256sums=('2add625aa9db1910cce9d0670cbe89192278682cc9a9ccd3a88ceca9005398cd')
+sha256sums=('bdcbbb5e4f12de10aab9c209b4d436eafaf75bd30a91b81039b5dc3d22771465')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
