@@ -28,7 +28,7 @@ package_neovim-forest-night-git() {
     cd "${srcdir}/${_colorscheme}"
     nvim -es --cmd ":helptags doc" --cmd ":q"
     find doc colors -type f -exec \
-        install -Dm 644 '{}' "${pkgdir}/usr/local/share/nvim/site/pack/${_colorscheme}/start/${_colorscheme}/{}" \;
+        install -Dm 644 '{}' "${pkgdir}/usr/share/nvim/runtime/pack/${_colorscheme}/start/${_colorscheme}/{}" \;
     find autoload/*.vim -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/usr/share/nvim/runtime/{}" \;
     install -Dm 644 "${srcdir}/${_colorscheme}/LICENSE" \
