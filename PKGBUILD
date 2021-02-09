@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=android-messages-desktop-bin
 pkgver=4.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Android Messages as a cross-platform desktop app"
 arch=('x86_64')
 url="https://github.com/OrangeDrangon/android-messages-desktop"
@@ -31,6 +31,7 @@ package() {
 	for icon_size in 16 24 32 48 64 128 256 512 1024; do
 		icons_dir=/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
 		install -d $pkgdir$icons_dir
-		install -m644 $srcdir$icons_dir/AndroidMessages.png $pkgdir$icons_dir/${pkgname%-bin}.png
+		install -m644 $srcdir$icons_dir/AndroidMessages.png \
+			$pkgdir$icons_dir/${pkgname%-bin}.png
 	done
 }
