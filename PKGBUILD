@@ -2,9 +2,9 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 _npmname=ungit
-_npmver=1.5.14
+_npmver=1.5.15
 pkgname=nodejs-ungit
-pkgver=1.5.14
+pkgver=1.5.15
 pkgrel=1
 pkgdesc="Git made easy"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ provides=('nodejs-ungit' 'ungit')
 conflicts=('ungit')
 options=('!emptydirs' '!strip')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/ungit/-/ungit-${pkgver}.tgz")
-sha512sums=('17c76dc03da55777b2d332197d95ea70168ec1e67f884571d114318c3806584b0a0679db5cbc4d95336aceb854b85bac909355bfa49ed90cf205654c9f699bb8')
+sha512sums=('8e2b22b918c477c1df04b4310131f3c969ef4a58ec2b006cf9810f979d3283dd5942289eeed416065c3fc0ac5f15f573379d87608a8abce11662a258260a4ff0')
 
 package() {
   cd ${srcdir}
