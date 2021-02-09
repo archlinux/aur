@@ -1,12 +1,12 @@
-# Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
-# Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
+# Maintainer: The-Repo-Club <The-Repo-Club@github.com>
+# Contributor: The-Repo-Club <The-Repo-Club@github.com>
 pkgname=qt-logout
 pkgver=2021.01.02
 pkgrel=1
 pkgdesc='Logout screen for QT using QT6 and pyside6'
 arch=('any')
 groups=('therepoclub')
-url="https://github.com/TheCynicalTeam/$pkgname"
+url="https://github.com/The-Repo-Club/$pkgname"
 license=('CC BY-NC-SA 4.0')
 depends=('pyside6' 'gtk-engine-murrine')
 optdepends=('multimonitorlock: default lock screen for qt-logout')
