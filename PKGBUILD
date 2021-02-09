@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov
 
 pkgname=booster-git
-pkgver=0.1.r34.g720f513
+pkgver=0.1.r42.g4eced3a
 pkgrel=1
 pkgdesc='Fast and secure initramfs generator'
 arch=(x86_64)
