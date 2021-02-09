@@ -2,13 +2,13 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=appgate-sdp
-pkgver=5.3.2
+pkgver=5.3.3
 pkgrel=1
 pkgdesc="Appgate SDP (Software Defined Perimeter) desktop client"
 arch=("x86_64")
 url="https://www.${pkgname%%-*}.com/support/software-defined-perimeter-support"
 license=("custom" "custom:commercial")
-depends=("dnsmasq" "gtk3" "libsecret" "libxss" "nodejs" "nss" "python-dbus")
+depends=("dnsmasq" "gtk3" "libsecret" "libxss" "nodejs" "nss" "python-dbus" "python-distro")
 optdepends=("gnome-keyring: saves the endpoint certificate between sessions")
 provides=("${pkgname}")
 conflicts=()
@@ -19,7 +19,7 @@ source=(
   "${pkgname}-${pkgname%%-*}driver.service.patch"
 )
 sha256sums=(
-  "c43fbc8c3c7efffe9ee4116e963e03eff1c61a64e2913ad9c0086a2b7a256d88"
+  "48fd0c48fa4da7dfd0ca98a373c06eb8011d397f3740f8917999895c47aaa4a0"
   "0789aa07d6a7af44187e407696d930e78c50370c19b8399722ebecb0655ffcdb"
 )
 

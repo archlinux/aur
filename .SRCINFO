@@ -1,6 +1,6 @@
 pkgbase = appgate-sdp
 	pkgdesc = Appgate SDP (Software Defined Perimeter) desktop client
-	pkgver = 5.3.2
+	pkgver = 5.3.3
 	pkgrel = 1
 	url = https://www.appgate.com/support/software-defined-perimeter-support
 	arch = x86_64
@@ -13,13 +13,14 @@ pkgbase = appgate-sdp
 	depends = nodejs
 	depends = nss
 	depends = python-dbus
+	depends = python-distro
 	optdepends = gnome-keyring: saves the endpoint certificate between sessions
 	provides = appgate-sdp
 	replaces = appgate-sdp-5
 	options = staticlibs
-	source = https://bin.appgate-sdp.com/5.3/client/appgate-sdp_5.3.2_amd64.deb
+	source = https://bin.appgate-sdp.com/5.3/client/appgate-sdp_5.3.3_amd64.deb
 	source = appgate-sdp-appgatedriver.service.patch
-	sha256sums = c43fbc8c3c7efffe9ee4116e963e03eff1c61a64e2913ad9c0086a2b7a256d88
+	sha256sums = 48fd0c48fa4da7dfd0ca98a373c06eb8011d397f3740f8917999895c47aaa4a0
 	sha256sums = 0789aa07d6a7af44187e407696d930e78c50370c19b8399722ebecb0655ffcdb
 
 pkgname = appgate-sdp
