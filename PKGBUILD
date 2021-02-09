@@ -1,6 +1,6 @@
 # Maintainer: Saren <saren@wtako.net>
 
-pkgname=gnome-shell-extension-backslide-git
+pkgname=gnome-shell-extension-lunar-calendar-git
 _pkgname="backslide"
 pkgver=v25
 pkgrel=3
