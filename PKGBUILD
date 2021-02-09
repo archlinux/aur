@@ -30,7 +30,7 @@ build() {
 
 check() {
     cd build/testing
-#    make check
+    make check
 }
 
 package() {
