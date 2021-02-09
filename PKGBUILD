@@ -9,8 +9,8 @@ arch=('i686' 'pentium4' 'x86_64')
 url="https://orama-interactive.itch.io/pixelorama"
 _url="https://github.com/Orama-Interactive/Pixelorama"
 license=('MIT')
-depends=('alsa-lib' 'hicolor-icon-theme' 'libglvnd' 'libpulse' 'libxcursor' 'libxinerama' 'libxrandr')
-makedepends=('curl' 'godot' 'unzip')
+depends=('alsa-lib' 'hicolor-icon-theme' 'libglvnd' 'libpulse' 'libxcursor' 'libxi' 'libxinerama' 'libxrandr')
+makedepends=('curl' 'godot' 'unzip' 'xorg-server-xvfb')
 provides=('pixelorama')
 conflicts=('pixelorama-bin' 'pixelorama-git')
 source=("${pkgname^}-${pkgver}.tar.gz::${_url}/archive/v${pkgver}.tar.gz")
@@ -61,7 +61,7 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname^}-${pkgver}"
   mkdir -p build
-  godot --export "Linux/X11 $(getconf LONG_BIT)-bit" --path . project.godot build/${pkgname}
+  xvfb-run godot --export "Linux/X11 $(getconf LONG_BIT)-bit" --path . project.godot build/${pkgname}
 }
     
 package() {
