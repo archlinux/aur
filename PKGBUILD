@@ -3,7 +3,7 @@
 _pkgname=8188eu
 _pkgver=5.3.9
 pkgname=8188eu-aircrack-dkms-git
-pkgver=5.3.9.r127.d3de55d
+pkgver=5.3.9.r133.1e7145f
 pkgrel=1
 pkgdesc="Realtek RTL8188EUS and RTL8188ETV Wi-Fi driver with monitor mode & frame injection support"
 arch=('x86_64' 'i686' 'pentium4')
