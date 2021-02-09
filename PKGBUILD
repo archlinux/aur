@@ -5,7 +5,7 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=audacious-plugins-libopenmpt
-pkgver=4.0.5
+pkgver=4.1
 pkgrel=1
 pkgdesc='Plugins for Audacious (including libopenmpt)'
 arch=(x86_64 i686)
@@ -16,13 +16,14 @@ conflicts=("${pkgname%-libopenmpt}")
 depends=(alsa-lib curl dbus-glib faad2 ffmpeg flac fluidsynth jack lame libbs2b libcdio-paranoia libcue libmms libmodplug libmtp libnotify libopenmpt libpulse libsamplerate libsidplayfp libvorbis lirc mpg123 neon wavpack)
 makedepends=("audacious>=$pkgver" glib2 python)
 source=(https://distfiles.audacious-media-player.org/${pkgname%-libopenmpt}-$pkgver.tar.bz2)
-sha256sums=('9f0251922886934f2aa32739b5a30eadfefa7c70dd7b3e78f94aa6fc54e0c55b')
+sha256sums=('dad6fc625055349d589e36e8e5c8ae7dfafcddfe96894806509696d82bb61d4c')
 
 build() {
   cd "${pkgname%-libopenmpt}-$pkgver"
 
   ./configure \
     --prefix=/usr \
+    --disable-gtk \
     --enable-amidiplug
   make
 }
