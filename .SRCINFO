@@ -2,14 +2,14 @@ pkgbase = cynicalteam-wallpapers
 	pkgdesc = A collection of cool wall papers!
 	pkgver = 2021.01.01
 	pkgrel = 1
-	url = https://github.com/TheCynicalTeam/wallpapers
+	url = https://github.com/The-Repo-Club/wallpapers
 	arch = any
 	groups = therepoclub
 	license = CC BY-NC-SA 4.0
 	makedepends = git
 	optdepends = feh: Allows setting wallpaper
 	optdepends = multimonitorlock-gui: Allows the background to be changed
-	source = cynicalteam-wallpapers-2021.01.01.tar.gz::https://github.com/TheCynicalTeam/wallpapers/archive/2021.01.01.tar.gz
+	source = cynicalteam-wallpapers-2021.01.01.tar.gz::https://github.com/The-Repo-Club/wallpapers/archive/2021.01.01.tar.gz
 	sha256sums = b12f39428af283dadbd2edaa3996e0085e7d7ae76ccefcdcbcc22533ce09eb6b
 
 pkgname = cynicalteam-wallpapers

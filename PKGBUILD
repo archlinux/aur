@@ -1,12 +1,12 @@
-# Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
-# Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
+# Maintainer: The-Repo-Club <The-Repo-Club@github.com>
+# Contributor: The-Repo-Club <The-Repo-Club@github.com>
 pkgname=cynicalteam-wallpapers
 pkgver=2021.01.01
 pkgrel=1
 pkgdesc="A collection of cool wall papers!"
 arch=('any')
 groups=('therepoclub')
-url="https://github.com/TheCynicalTeam/wallpapers"
+url="https://github.com/The-Repo-Club/wallpapers"
 license=('CC BY-NC-SA 4.0')
 optdepends=('feh: Allows setting wallpaper' 'multimonitorlock-gui: Allows the background to be changed')
 makedepends=('git')
