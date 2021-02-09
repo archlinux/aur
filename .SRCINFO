@@ -1,0 +1,15 @@
+pkgbase = sd-boot-helper-git
+	pkgdesc = Add/Update/Remove sd-boot entries automatically
+	pkgver = r4.aad417a
+	pkgrel = 1
+	url = https://github.com/ahmubashshir/sd-boot-helper
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = base
+	backup = etc/default/sd-boot
+	source = sd-boot-helper::git+https://github.com/ahmubashshir/sd-boot-helper.git
+	sha256sums = SKIP
+
+pkgname = sd-boot-helper-git
+
