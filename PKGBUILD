@@ -1,7 +1,7 @@
 # Maintainer: Can Celasun <can[at]dcc[dot]im>
 pkgname=here-and-there-along-the-echo
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Here And There Along The Echo - Kentucky Route Zero"
 arch=(i686 x86_64)
 url="http://kentuckyroutezero.com/here-and-there-along-the-echo/"
@@ -10,9 +10,9 @@ depends=(libgl)
 source=(http://kentuckyroutezero.com/here-and-there-along-the-echo/HereAndThereAlongTheEcho_Linux.zip
         here-and-there-along-the-echo.desktop
         here-and-there-along-the-echo.png)
-md5sums=('cb6086bc77c98ae6759b0113a220a4f2'
+md5sums=('5b9f637e8fd8a9b5645a56112153f85d'
          'b44bea8432b5e799a7aea0edb0dcc77e'
-         '68f76a7f1278904cfd7002217dce674d')
+         'ece748a2b124069db050b4651cd61c17')
 PKGEXT=.pkg.tar
 package() {
   cd "${srcdir}"

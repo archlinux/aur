@@ -1,7 +1,7 @@
 pkgbase = here-and-there-along-the-echo
 	pkgdesc = Here And There Along The Echo - Kentucky Route Zero
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://kentuckyroutezero.com/here-and-there-along-the-echo/
 	arch = i686
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = here-and-there-along-the-echo
 	source = http://kentuckyroutezero.com/here-and-there-along-the-echo/HereAndThereAlongTheEcho_Linux.zip
 	source = here-and-there-along-the-echo.desktop
 	source = here-and-there-along-the-echo.png
-	md5sums = cb6086bc77c98ae6759b0113a220a4f2
+	md5sums = 5b9f637e8fd8a9b5645a56112153f85d
 	md5sums = b44bea8432b5e799a7aea0edb0dcc77e
-	md5sums = 68f76a7f1278904cfd7002217dce674d
+	md5sums = ece748a2b124069db050b4651cd61c17
 
 pkgname = here-and-there-along-the-echo
 
