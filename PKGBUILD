@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-lunar-calendar
 pkgver=v25
-pkgrel=3
+pkgrel=4
 pkgdesc="Display Chinese Lunar Calendar in panel"
 arch=('any')
 url="https://extensions.gnome.org/extension/675/lunar-calendar/"
@@ -18,4 +18,6 @@ package() {
   rm lunarcalailin.nemui.v25.shell-extension.zip
   install -dm655 $_install_dir
   cp -r * $_install_dir
+  install -Dm644 "schemas/org.gnome.shell.extensions.lunar-calendar.gschema.xml" \
+    -t "${pkgdir}/usr/share/glib-2.0/schemas/"
 }
