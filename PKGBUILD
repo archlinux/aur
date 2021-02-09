@@ -4,12 +4,13 @@
 
 pkgname=youtube-dl
 pkgver=2021.02.04.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line program to download videos from YouTube.com and a few more sites"
 arch=('any')
 url="https://ytdl-org.github.io/youtube-dl/"
 license=('custom')
-depends=('python' 'python-setuptools')
+depends=('python')
+makedepends=('python-setuptools')
 optdepends=('ffmpeg: for video post-processing'
             'rtmpdump: for rtmp streams support'
             'atomicparsley: for embedding thumbnails into m4a files'
