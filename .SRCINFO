@@ -1,22 +1,24 @@
 pkgbase = todesk-bin
 	pkgdesc = Remote control and team work
-	pkgver = 1.2.3
-	pkgrel = 2
+	pkgver = 1.2.4d
+	pkgrel = 1
 	url = https://www.todesk.cn/
 	install = todesk.install
 	arch = x86_64
 	arch = aarch64
+	arch = armv7h
 	license = unknown
 	makedepends = tar
-	depends = libxtst
-	depends = freetype2
 	provides = todesk
 	conflicts = todesk
 	options = !strip
-	source_x86_64 = https://update.todesk.com/todesk_1.2.3_amd64.deb
-	sha256sums_x86_64 = d7b7cc986e28160f700bab8e821c8fe31b3e3d46ed75def4c9158b64ed398a3b
-	source_aarch64 = https://update.todesk.com/todesk_1.2.3_aarch64.deb
-	sha256sums_aarch64 = bf40ada6f54b7683433951356447f21b58026b9e471a447b8ba909afba766a84
+	options = emptydirs
+	source_x86_64 = https://update.todesk.com/linux/todesk_1.2.4d_amd64.deb
+	sha256sums_x86_64 = ea82cdf8dd0439a7282a3f50b4fab8b95fbd873e68be5e9ef1bfd68c93a1e691
+	source_aarch64 = https://update.todesk.com/linux/todesk_1.2.4d_aarch64.deb
+	sha256sums_aarch64 = 1131532d3e6b8d0ebc2d9ea792d9eee37925f2b1f74259ceeb362a9e66e77498
+	source_armv7h = https://update.todesk.com/linux/todesk_1.2.4d_armv7.deb
+	sha256sums_armv7h = e79cd6063baedce0326f90376114b7453964c7b22886e8467d5b846df238d26a
 
 pkgname = todesk-bin
 
