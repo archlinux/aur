@@ -8,11 +8,11 @@ pkgdesc="Communicate and transfer files from and to MicroyPython boards via REPL
 arch=('any')
 url="https://github.com/zsquareplusc/mpy-repl-tool"
 license=('custom')
-depends=(python-pyserial python-colorama)
-makedepends=(python-setuptools git)
+depends=('python-pyserial' 'python-colorama')
+makedepends=('python-setuptools' 'git')
 optdepends=('python-fusepy: for mounting the micropython filesystem')
-conflicts=(mpy-repl-tool)
-provides=(mpy-repl-tool)
+conflicts=('mpy-repl-tool')
+provides=('mpy-repl-tool')
 source=('git+https://github.com/zsquareplusc/mpy-repl-tool.git')
 md5sums=('SKIP')
 
