@@ -2,7 +2,7 @@
 
 pkgname=cherrytree-git
 _pkgname="${pkgname%%-git}"
-pkgver=0.99.29.r13.gcf073985
+pkgver=0.99.30.r15.g2a56d216
 pkgrel=1
 pkgdesc="Hierarchical note-taking application, git version"
 arch=('x86_64')
@@ -47,12 +47,14 @@ build() {
   make -C "${_pkgname}/build"
 }
 
-# NOTE: In order to run tests in a clean chroot, you must allow it access your X server:
+# NOTE: In order to run tests that depend on the X server in a clean chroot, 
+# you must allow the chroot access your X server:
 # xhost +local:
 # https://wiki.archlinux.org/index.php/chroot#Run_graphical_applications_from_chroot
 #export DISPLAY=:0
 check() {
-  ./"${_pkgname}/build/run_tests"
+  ./"${_pkgname}/build/run_tests_with_x_1"
+  ./"${_pkgname}/build/run_tests_with_x_2"
 }
 
 package() {
