@@ -9,6 +9,8 @@ pkgbase = gnome-shell-extension-pixel-saver-git
 	makedepends = git
 	depends = gnome-shell
 	depends = xorg-xprop
+	provides = gnome-shell-extension-pixel-saver
+	conflicts = gnome-shell-extension-pixel-saver
 	source = git+https://github.com/deadalnix/pixel-saver
 	sha256sums = SKIP
 
