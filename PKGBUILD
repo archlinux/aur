@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libbacktrace-git
-pkgver=r53.1da441c
+pkgver=r56.dedbe13
 pkgrel=1
 pkgdesc="Library to produce symbolic backtraces (mingw-w64)"
 arch=('any')
@@ -25,7 +25,7 @@ prepare () {
   # dont allow undefined symbols to build the dll
   sed -i "87ilibbacktrace_la_LDFLAGS = -no-undefined" Makefile.am
   # autoconf version
-  sed -i "s|m4_define(\[_GCC_AUTOCONF_VERSION\], \[2.69\])|m4_define(\[_GCC_AUTOCONF_VERSION\], \[2.70\])|g" config/override.m4
+  sed -i "s|m4_define(\[_GCC_AUTOCONF_VERSION\], \[2.69\])|m4_define(\[_GCC_AUTOCONF_VERSION\], \[2.71\])|g" config/override.m4
   autoreconf -vfi
 }
 
