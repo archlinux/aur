@@ -6,7 +6,7 @@ url='http://www.ros.org/'
 pkgname='ros-melodic-novatel-gps-driver'
 pkgver='3.9.0'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-roscpp
@@ -48,10 +48,11 @@ ros_depends=(ros-melodic-roscpp
 depends=(${ros_depends[@]}
     boost
     libpcap)
-   
- _dir=novatel_gps_driver-release-release-melodic-novatel_gps_driver
-source=(""${pkgname}-${pkgver}.tar.gz""::""https://github.com/swri-robotics-gbp/novatel_gps_driver-release/archive/release/melodic/novatel_gps_driver/${pkgver}.tar.gz"")
-sha256sums=('2812566bfc3ea44b10f7abe8fd1e94f5228eec7f497d832ea87330c68c2f9e68')
+
+_dir="novatel_gps_driver/novatel_gps_driver" 
+_commit='1a4626fda13b89dfca504e717b8cf7cb25314499'
+source=("git://github.com/swri-robotics/novatel_gps_driver.git#commit=${_commit}")
+sha256sums=('SKIP')
 
 build() {
     # Use ROS environment variables

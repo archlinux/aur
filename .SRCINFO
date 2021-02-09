@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-novatel-gps-driver
 	pkgdesc = ROS - Driver for NovAtel receivers.
 	pkgver = 3.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/
 	arch = any
 	license = BSD
@@ -42,8 +42,8 @@ pkgbase = ros-melodic-novatel-gps-driver
 	depends = ros-melodic-nav-msgs
 	depends = boost
 	depends = libpcap
-	source = ros-melodic-novatel-gps-driver-3.9.0.tar.gz::https://github.com/swri-robotics-gbp/novatel_gps_driver-release/archive/release/melodic/novatel_gps_driver/3.9.0.tar.gz
-	sha256sums = 2812566bfc3ea44b10f7abe8fd1e94f5228eec7f497d832ea87330c68c2f9e68
+	source = git://github.com/swri-robotics/novatel_gps_driver.git#commit=1a4626fda13b89dfca504e717b8cf7cb25314499
+	sha256sums = SKIP
 
 pkgname = ros-melodic-novatel-gps-driver
 
