@@ -6,7 +6,7 @@ url='h'
 pkgname='ros-melodic-novatel-gps-msgs'
 pkgver='3.9.0'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('Southwest Research Institute Proprietary')
 
 ros_makedepends=(ros-melodic-message-generation
@@ -21,9 +21,10 @@ ros_depends=(ros-melodic-message-runtime
 depends=(${ros_depends[@]}
     )
 
-_dir=novatel_gps_driver-release-release-melodic-novatel_gps_msgs
-source=(""${pkgname}-${pkgver}.tar.gz""::""https://github.com/swri-robotics-gbp/novatel_gps_driver-release/archive/release/melodic/novatel_gps_msgs/${pkgver}.tar.gz"")
-sha256sums=('ae0335029b5903f38a2cd7fc9897e7cbb7de520e500c57d99fc013fc480e8991')
+_dir="novatel_gps_driver/novatel_gps_msgs" 
+_commit='1a4626fda13b89dfca504e717b8cf7cb25314499'
+source=("git://github.com/swri-robotics/novatel_gps_driver.git#commit=${_commit}")
+sha256sums=('SKIP')
 
 build() {
     # Use ROS environment variables
