@@ -13,14 +13,15 @@ sha256sums=('1517be8bde1c06bd8bc42d95926c72d787af95fc3d37439c911a7cea3243d2ca' S
 prepare() {
   cd $pkgname-$pkgver
   patch -p1 -i "$srcdir"/set_num_threads.patch
+  sed -i "s|-Werror ||g" CMakeLists.txt
 }
 
 
 build() {
   cd $pkgname-$pkgver
-  cmake -DHMAT_GIT_VERSION=OFF -DCMAKE_INSTALL_PREFIX=/usr \
-    -DINSTALL_INCLUDE_DIR=/usr/include/hmat -DCMAKE_CXX_FLAGS="-Wno-deprecated-declarations" .
-  make
+  cmake -DHMAT_GIT_VERSION=OFF -DCMAKE_INSTALL_PREFIX=/usr -DINSTALL_INCLUDE_DIR=/usr/include/hmat \
+    -DDISABLE_CLANG_FALSE_POSITIVES=0 -DCMAKE_CXX_FLAGS="-Wno-deprecated-declarations" .
+  make VERBOSE=1
 }
 
 package() {
