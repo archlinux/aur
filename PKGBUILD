@@ -1,12 +1,12 @@
-# Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
-# Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
+# Maintainer: The-Repo-Club <The-Repo-Club@github.com>
+# Contributor: The-Repo-Club <The-Repo-Club@github.com>
 pkgname=recycle-cli
 pkgver=2021.01.01
 pkgrel=1
 pkgdesc='A recycle bin cli in python 3'
 arch=('any')
 groups=('therepoclub')
-url="https://github.com/TheCynicalTeam/recycle-cli/"
+url="https://github.com/The-Repo-Club/recycle-cli/"
 license=('CC BY-NC-SA 4.0')
 depends=('coreutils' 'gettext' 'python>=3.4')
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")

@@ -2,14 +2,14 @@ pkgbase = recycle-cli
 	pkgdesc = A recycle bin cli in python 3
 	pkgver = 2021.01.01
 	pkgrel = 1
-	url = https://github.com/TheCynicalTeam/recycle-cli/
+	url = https://github.com/The-Repo-Club/recycle-cli/
 	arch = any
 	groups = therepoclub
 	license = CC BY-NC-SA 4.0
 	depends = coreutils
 	depends = gettext
 	depends = python>=3.4
-	source = recycle-cli-2021.01.01.tar.gz::https://github.com/TheCynicalTeam/recycle-cli//archive/2021.01.01.tar.gz
+	source = recycle-cli-2021.01.01.tar.gz::https://github.com/The-Repo-Club/recycle-cli//archive/2021.01.01.tar.gz
 	sha256sums = adf5c2659cec7ea4f1090c069dfdc64e9a9e988c0cafcd5e0271aac2e02321a0
 
 pkgname = recycle-cli
