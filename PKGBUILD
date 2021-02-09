@@ -5,10 +5,10 @@
 
 pkgname='astah-professional'
 _pkgname=${pkgname//-/_}
-pkgver='8.0.0'
+pkgver='8.3.0'
 _pkgver=${pkgver//./_}
 pkgrel=1
-_pkgrel=d641d4
+_pkgrel=b9757d
 pkgdesc='Lightweight software design tool for creating UML, ERD, DFD, Flowchart...etc. and easy-to-use UML2.x modeler'
 arch=('any')
 url="http://astah.net/editions/professional"
@@ -16,9 +16,11 @@ conflicts=('astah_community' 'astah-uml')
 license=('custom:none')
 depends=('java-runtime=8')
 source=("http://cdn.change-vision.com/files/astah-professional_${pkgver}.${_pkgrel}-0_all.deb"
-	"LICENSE")
-md5sums=('c1e65102592ad5f000b76c418f328853'
-         '2814d9b8bac8bd6e929292d39b429a69')
+	"LICENSE"
+	"PRIVACY")
+md5sums=('099ed4d9149ab796f0b3eff8bd2b2f01'
+         '561f5c40b2575ae0f8a497e261e862ff'
+         'fc2db9678cbfbec17049f050743e7960')
 install="astah-professional.install"
 
 
@@ -28,6 +30,7 @@ package() {
 
   rm -r ${pkgdir}/usr/share/doc
   install -Dm644 $srcdir/LICENSE ${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE || return 1
+  install -Dm644 $srcdir/PRIVACY ${pkgdir}/usr/share/licenses/${_pkgname}/PRIVACY || return 1
 
 #  mv ${pkgdir}/usr/lib/astah_professional ${pkgdir}/usr/lib/astah-professional
 #  sed -i -r "s|^(ASTAH_HOME=).*|\1/usr/lib/$pkgname|" ${pkgdir}/usr/lib/astah-professional/astah-pro
