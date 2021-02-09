@@ -1,15 +1,13 @@
---- product.json	2019-04-06 13:26:49.879655883 +0100
-+++ product.json	2019-04-06 13:26:37.399656243 +0100
-@@ -1,4 +1,19 @@
+--- product.json	2021-02-09 20:25:02.764523236 +0100
++++ product.json	2021-02-09 20:26:06.796124723 +0100
+@@ -1,4 +1,17 @@
  {
 +	"quality": "stable",
 +	"extensionsGallery": {
-+		"serviceUrl": "https://open-vsx.org/vscode/gallery",
-+		"itemUrl": "https://open-vsx.org/vscode/item"
++		"serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",
++		"cacheUrl": "https://vscode.blob.core.windows.net/gallery/index",
++		"itemUrl": "https://marketplace.visualstudio.com/items"
 +	},
-+	"linkProtectionTrustedDomains": [
-+		"https://open-vsx.org"
-+	],
 +	"documentationUrl": "https://code.visualstudio.com/docs",
 +	"requestFeatureUrl": "https://github.com/Microsoft/vscode/issues",
 +	"introductoryVideosUrl": "https://go.microsoft.com/fwlink/?linkid=832146",
@@ -20,3 +18,8 @@
  	"nameShort": "Code - OSS",
  	"nameLong": "Code - OSS",
  	"applicationName": "code-oss",
+@@ -138,3 +151,4 @@
+ 		}
+ 	]
+ }
++
