@@ -297,7 +297,7 @@ index e9c3910e..302991ee 100755
 +python3 "${SPLIT_INOUTS}" -i "${OUT_JSON}" -o "${SYNTH_JSON}"
 +yosys -p "read_json ${SYNTH_JSON}; tcl ${CONV_TCL_PATH}"
 diff --git a/symbiflow_write_bitstream b/symbiflow_write_bitstream
-index ea220e13..f97278ac 100755
+index f3ee2e1b..ca970eaf 100755
 --- a/symbiflow_write_bitstream
 +++ b/symbiflow_write_bitstream
 @@ -1,22 +1,23 @@
@@ -333,7 +333,7 @@ index ea220e13..f97278ac 100755
  
  DEVICE=""
  FASM=""
-@@ -44,32 +45,37 @@ while true; do
+@@ -44,33 +45,37 @@ while true; do
  		--)
  			break
  			;;
@@ -346,7 +346,6 @@ index ea220e13..f97278ac 100755
  done
  
 -DATABASE_DIR=${DATABASE_DIR:=$(prjxray-config)}
--DBROOT=`realpath ${DATABASE_DIR}/${DEVICE}`
 -
 -if [ -z $DEVICE ]; then
 -	# Try to find device name. Accept only when exactly one is found
@@ -361,6 +360,9 @@ index ea220e13..f97278ac 100755
 +	DEVICE=$(find_device_from_part "${PART}")
  fi
  
+-DBROOT=`realpath ${DATABASE_DIR}/${DEVICE}`
++DBROOT=$(realpath "${DATABASE_DIR}/${DEVICE}")
+ 
 -if [ -z $FASM ]; then
 +if [[ -z ${FASM} ]]; then
  	echo "Please provide fasm file name"
@@ -374,8 +376,6 @@ index ea220e13..f97278ac 100755
  fi
  
 -xcfasm --db-root ${DBROOT} --part ${PART} --part_file ${DBROOT}/${PART}/part.yaml --sparse --emit_pudc_b_pullup --fn_in ${FASM} --bit_out ${BIT} ${FRM2BIT}
-+DBROOT=$(realpath "${DATABASE_DIR}/${DEVICE}")
-+
 +xcfasm \
 +	--db-root "${DBROOT}" \
 +	--part "${PART}" \
