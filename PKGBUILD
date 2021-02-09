@@ -1,5 +1,6 @@
-# Maintainer: Dennis Fink <metalgamer@c3l.lu>
-# Maintainer: Oleg Rakhmanov <orakhmanov [at] gmail [dot] com>
+# Contributor: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Dennis Fink <metalgamer@c3l.lu>
+# Contributor: Oleg Rakhmanov <orakhmanov [at] gmail [dot] com>
 # Contributor: Anntoin Wilkinson <anntoin gmail com>
 # Contributor: Vladimir Ermakov <vooon341@gmail.com>
 # Contributor: Peter A. Shevtsov <pshevtsov at severusweb dot ru>
@@ -9,7 +10,7 @@ pkgver=2.4.8
 pkgrel=3
 pkgdesc="CSS and Javascript compressor"
 arch=("any")
-url="http://developer.yahoo.com/yui/compressor/"
+url="http://yui.github.io/yuicompressor/"
 license=("BSD")
 depends=("java-runtime-headless")
 source=("https://github.com/yui/yuicompressor/releases/download/v${pkgver}/yuicompressor-${pkgver}.zip"
