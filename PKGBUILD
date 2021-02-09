@@ -1,12 +1,12 @@
 # Maintainer:  Wez Furlong <wez at wezfurlong dot org>
 # NOTE: if you're looking at this on AUR, this file is generated from
-# https://github.com/wez/wezterm/blob/master/ci/PKGBUILD.template
+# https://github.com/wez/wezterm/blob/main/ci/PKGBUILD.template
 # by automation in the wezterm repo.
 
 pkgname=wezterm-bin
 _tag=20210203-095643-70a364eb
 pkgver=$(echo $_tag | tr - .)
-pkgrel=2
+pkgrel=3
 pkgdesc='A GPU-accelerated cross-platform terminal emulator and multiplexer implemented in Rust'
 arch=('i686' 'x86_64')
 url='https://wezfurlong.org/wezterm'
@@ -27,7 +27,7 @@ depends=(
 )
 source=(
   "wezterm::https://github.com/wez/wezterm/releases/download/${_tag}/WezTerm-${_tag}-Ubuntu16.04.AppImage"
-  'LICENSE::https://github.com/wez/wezterm/raw/master/LICENSE.md'
+  'LICENSE::https://github.com/wez/wezterm/raw/main/LICENSE.md'
 )
 sha256sums=(
   'fbe935a505c2f0f6e4077fc30730f365dd19cc4b1b178f2a4075244b96f5fc77'
