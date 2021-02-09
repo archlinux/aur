@@ -1,6 +1,6 @@
 pkgbase = confluent-platform
 	pkgdesc = Confluent, founded by the creators of Apache Kafka, delivers a complete execution of Kafka for the Enterprise, to help you run your business in real time.
-	pkgver = 6.0.1
+	pkgver = 6.1.0
 	pkgrel = 0
 	url = https://www.confluent.io/
 	install = install_confluent.sh
@@ -38,10 +38,10 @@ pkgbase = confluent-platform
 	backup = etc/ksql/ksql-server.properties
 	backup = etc/ksql/log4j-silent.properties
 	backup = etc/confluent-rebalancer/log4j.properties
-	source = https://packages.confluent.io/archive/6.0/confluent-6.0.1.tar.gz
+	source = https://packages.confluent.io/archive/6.1/confluent-6.1.0.tar.gz
 	source = systemd_sysusers.d_confluent.conf
 	source = https://s3-us-west-2.amazonaws.com/confluent.cloud/confluent-cli/archives/latest/confluent_latest_linux_amd64.tar.gz
-	sha256sums = 6c656dad98ce0906a4d2ae7ce27039083a0447b28b9aa59b58751fa801d71a2d
+	sha256sums = d803f454719b9ffad4e007becee64efda9c9134f7370efe6377b2f774cb32617
 	sha256sums = 6f5dfdbaf6ef405117482413b376e55148f75423bc6b8681cd8f91cdb7d96a99
 	sha256sums = SKIP
 
