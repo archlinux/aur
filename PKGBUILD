@@ -1,9 +1,9 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer : Arnaud Dovi <mr.dovi@gmail.com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: Robosky <fangyuhao0612@gmail.com>
 
 pkgname=mcmojave-circle-icon-theme-git
-_gitname=mcmojave-circle-icon-theme
-pkgver=88.1580968
+pkgver=2020.10.11.r13.722bb49a
 pkgrel=1
 pkgdesc="MacOSX Mojave like circle icon theme for linux desktops"
 arch=('any')
@@ -16,12 +16,12 @@ sha256sums=('SKIP')
 options=('!strip')
 
 pkgver() {
-  cd "${srcdir}/${_gitname}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd "${pkgname/-git/}" || exit
+  printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 package() {
-  cd "${srcdir}/${_gitname}"
+  cd "${pkgname/-git/}" || exit
   install -dm755 "${pkgdir}/usr/share/icons"
   ./install.sh  \
     --all \
