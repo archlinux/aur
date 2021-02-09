@@ -11,8 +11,8 @@ WITH_KNOTIFICATION=0
 WITH_DARK_ICON=1
 
 pkgname=octopi-git
-pkgver=0.9.0.r336.a05add1
-pkgrel=4
+pkgver=0.11.0.r24.c900d85
+pkgrel=1
 pkgdesc="This is Octopi, a powerful Pacman frontend using Qt libs"
 arch=('x86_64')
 url="https://github.com/aarnt/octopi"
@@ -51,7 +51,7 @@ conflicts=(
 )
 install=octopi.install
 source=(
-  'git+https://github.com/aarnt/octopi.git' 
+  'git+https://github.com/aarnt/octopi.git'
   'octopi_dark.png'
 )
 sha256sums=('SKIP'
@@ -125,5 +125,5 @@ package() {
   cd ..
 
   cd sudo || exit
-  make INSTALL_ROOT="$pkgdir" install   
+  make INSTALL_ROOT="$pkgdir" install
 }
