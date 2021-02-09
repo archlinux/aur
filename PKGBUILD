@@ -9,11 +9,12 @@
 
 pkgname=python2-matplotlib
 pkgver=2.2.5
-pkgrel=3
+pkgrel=4
 pkgdesc="A python plotting library, making publication quality plots"
 arch=(x86_64)
 url="https://matplotlib.org"
 license=(custom)
+conflicts=(python2-matplotlib-noqt)
 depends=(freetype2 libpng python2-numpy python2-cycler python2-dateutil python2-kiwisolver python2-pyparsing python2-backports.functools_lru_cache)
 optdepends=('tk: Tk{Agg,Cairo} backends'
             'python2-pyqt4: Qt4{Agg,Cairo} backends'
