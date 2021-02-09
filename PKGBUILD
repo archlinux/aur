@@ -1,5 +1,5 @@
-# Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
-# Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
+# Maintainer: The-Repo-Club <The-Repo-Club@github.com>
+# Contributor: The-Repo-Club <The-Repo-Club@github.com>
 
 pkgbase=wmappearance
 pkgname=(wmappearance wmappearance-gtk3)
@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='Feature-rich GTK+ theme switcher for window managers'
 arch=('any')
 license=('CC BY-NC-SA 4.0')
-url="https://github.com/TheCynicalTeam/$pkgname"
+url="https://github.com/The-Repo-Club/$pkgname"
 depends=('gtk2' 'gtk3')
 makedepends=('intltool' 'dbus-glib')
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
