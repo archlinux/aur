@@ -1,5 +1,5 @@
-# Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
-# Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
+# Maintainer: The-Repo-Club <The-Repo-Club@github.com>
+# Contributor: The-Repo-Club <The-Repo-Club@github.com>
 _pkgname=wm-cheat
 pkgname=i3-cheat
 pkgver=2021.01.17
@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="cheat sheet for i3wm"
 arch=('any')
 groups=('therepoclub')
-url="https://github.com/TheCynicalTeam/$_pkgname"
+url="https://github.com/The-Repo-Club/$_pkgname"
 license=('CC BY-NC-SA 4.0')
 depends=('gtk3' 'i3-wm')
 source=("${_pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
