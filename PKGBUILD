@@ -5,7 +5,7 @@
 # Contributor: Alexander 'bas' Brovikov (bas <at> it-core <dot> org)
 
 pkgname=wine-gecko-bin
-pkgver=2.47.1
+pkgver=2.47.2
 pkgrel=1
 pkgdesc="Wine's built-in replacement for Microsoft's Internet Explorer"
 arch=('x86_64')
@@ -14,12 +14,18 @@ license=('MPL')
 depends=('wine')
 provides=("${pkgname/-bin/}=$pkgver")
 options=('!strip')
-source=(https://dl.winehq.org/wine/wine-gecko/$pkgver/wine-gecko-$pkgver-x86.tar.bz2)
-source_x86_64=(https://dl.winehq.org/wine/wine-gecko/$pkgver/wine-gecko-$pkgver-x86_64.tar.bz2)
-md5sums=('660741a74b9f4e5e861d362345cf027c')
-md5sums_x86_64=('e23569fd04c86054022941ca876bb1d7')
+source=(https://dl.winehq.org/wine/wine-gecko/$pkgver/wine-gecko-$pkgver-x86.tar.xz)
+source_x86_64=(https://dl.winehq.org/wine/wine-gecko/$pkgver/wine-gecko-$pkgver-x86_64.tar.xz)
+md5sums=('e03bda74aa387f5f6f439c0dadfda9e9')
+md5sums_x86_64=('2fc64999050579629bcbcd344e397bfa')
 
 package() {
   install -Dm 755 -d "$pkgdir"/usr/share/wine/gecko/
   cp -dr --no-preserve='ownership' ${pkgname/-bin/}-$pkgver-x86{,_64} "$pkgdir"/usr/share/wine/gecko/
+
+  local _geckodir="$pkgdir"/usr/share/wine/gecko/${pkgname/-bin/}-$pkgver
+  i686-w64-mingw32-strip --strip-unneeded \
+    $(find "$_geckodir"-x86/ -iname "*.dll" -or -iname "*.exe")
+  x86_64-w64-mingw32-strip --strip-unneeded \
+    $(find "$_geckodir"-x86_64/ -iname "*.dll" -or -iname "*.exe")
 }
