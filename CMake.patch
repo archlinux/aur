@@ -21,35 +21,8 @@ index c29d9bf..d7d3d60 100644
 +FILE(GLOB SOIL_c src/*.c)
 +FILE(GLOB SOIL_h inc/SOIL/*.h)
 +
-+ADD_LIBRARY( soil SHARED ${SOIL_c} )
++ADD_LIBRARY( SOIL SHARED ${SOIL_c} )
 +SET(CMAKE_INSTALL_PREFIX "/usr" CACHE PATH "Installation root directory" FORCE)
 +install( TARGETS soil ARCHIVE DESTINATION "lib" )
 +install( FILES ${SOIL_h} DESTINATION "include/SOIL" )
-diff --git a/src/original/stb_image-1.16.c b/src/original/stb_image-1.16.c
-index 029b58e..c4c6fef 100644
---- a/src/original/stb_image-1.16.c
-+++ b/src/original/stb_image-1.16.c
-@@ -716,7 +716,8 @@ static void getn(stbi *s, stbi_uc *buffer, int n)
- {
- #ifndef STBI_NO_STDIO
-    if (s->img_file) {
--      fread(buffer, 1, n, s->img_file);
-+      size_t r = fread(buffer, 1, n, s->img_file);
-+      //assert(r==n);
-       return;
-    }
- #endif
-diff --git a/src/stb_image_aug.c b/src/stb_image_aug.c
-index a167005..b88c81f 100644
---- a/src/stb_image_aug.c
-+++ b/src/stb_image_aug.c
-@@ -392,7 +392,8 @@ static void getn(stbi *s, stbi_uc *buffer, int n)
- {
- #ifndef STBI_NO_STDIO
-    if (s->img_file) {
--      fread(buffer, 1, n, s->img_file);
-+      size_t r = fread(buffer, 1, n, s->img_file);
-+      //assert(r==n);
-       return;
-    }
- #endif
+

@@ -4,7 +4,7 @@
 _author=paralin
 _pkgname=soil
 pkgname=${_pkgname}-git
-pkgver=1
+pkgver=1.16
 pkgrel=1
 pkgdesc='SOIL is a tiny C library used primarily for uploading textures into OpenGL. It is based on stb_image version 1.16'
 arch=(
@@ -16,7 +16,7 @@ license=('MIT')
 depends=()
 makedepends=('git' 'cmake')
 source=("git://github.com/$_author/$_pkgname"
-        "https://aur.archlinux.org/cgit/aur.git/plain/CMake.patch?h=$_pkgname"
+        "CMake.patch::https://aur.archlinux.org/cgit/aur.git/plain/CMake.patch?h=$pkgname"
        )
 sha256sums=('SKIP' 'SKIP')
 
