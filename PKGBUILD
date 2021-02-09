@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=jaeles
-pkgver=0.15
+pkgver=0.16
 pkgrel=1
 pkgdesc='The Swiss Army knife for automated Web Application Testing'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ conflicts=('jaeles')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/beta-v${pkgver}.tar.gz")
-sha256sums=('7deb682012ad1af8634e2040452c084a18fb0711b8ffa661d42bada9393ad99a')
+sha256sums=('e64a63e357c237a521e78cf83390dba63a048cf96798495e491301b9af286743')
 
 build() {
   cd ${pkgname}-beta-v${pkgver}

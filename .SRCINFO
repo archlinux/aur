@@ -1,6 +1,6 @@
 pkgbase = jaeles
 	pkgdesc = The Swiss Army knife for automated Web Application Testing
-	pkgver = 0.15
+	pkgver = 0.16
 	pkgrel = 1
 	url = https://github.com/jaeles-project/jaeles
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = jaeles
 	depends = glibc
 	provides = jaeles
 	conflicts = jaeles
-	source = jaeles-0.15.tar.gz::https://github.com/jaeles-project/jaeles/archive/beta-v0.15.tar.gz
-	sha256sums = 7deb682012ad1af8634e2040452c084a18fb0711b8ffa661d42bada9393ad99a
+	source = jaeles-0.16.tar.gz::https://github.com/jaeles-project/jaeles/archive/beta-v0.16.tar.gz
+	sha256sums = e64a63e357c237a521e78cf83390dba63a048cf96798495e491301b9af286743
 
 pkgname = jaeles
 
