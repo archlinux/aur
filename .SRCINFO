@@ -1,14 +1,18 @@
 pkgbase = dd4hep
 	pkgdesc = Detector Description Toolkit for High Energy Physics
 	pkgver = 01.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dd4hep.web.cern.ch/dd4hep/
 	arch = x86_64
 	license = LGPL3
-	makedepends = boost
-	makedepends = cmake
-	depends = boost-libs
-	depends = root
+	makedepends = boost>=1.49
+	makedepends = cmake>=3.12
+	depends = xerces-c
+	depends = geant4>=10.2.2
+	depends = root>=6.08
+	depends = boost-libs>=1.49
+	depends = intel-tbb
+	depends = cern-vdt
 	source = https://github.com/AIDASoft/dd4hep/archive/v01-15.tar.gz
 	md5sums = 6e28f8ddc798522ede04644fc45209bb
 
