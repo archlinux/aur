@@ -1,0 +1,25 @@
+pkgbase = discord-qt-appimage
+	pkgdesc = Discord client powered by Node.JS and Qt Widgets.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/ruslang02/discord-qt
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	depends = qt5-svg
+	depends = libbsd
+	depends = libgcrypt
+	depends = lzo
+	provides = discord-qt
+	conflicts = discord-qt
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/ruslang02/discord-qt/releases/download/v0.5.1/DiscordQt-v0.5.1-linux-x64.AppImage
+	source = discord-qt.desktop
+	source = discord-qt.png
+	md5sums = 97e5e456818d8eccfb4a8ffd03c5a532
+	md5sums = c1afce90bb8f9bd26f13315fefb2463e
+	md5sums = c2bde1f15baed51a37001fc8ee08316f
+
+pkgname = discord-qt-appimage
+
