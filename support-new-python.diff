@@ -9,3 +9,15 @@
    IF(_CURRENT_VERSION GREATER 3.1)
        SET(_32FLAGS "m" "u" "mu" "dm" "du" "dmu" "")
    ELSE()
+--- a/libshiboken/sbkenum.cpp 2021-02-09 14:52:17.062065563 ->
++++ b/libshiboken/sbkenum.cpp      2021-02-09 14:52:59.965800766 ->
+@@ -529,7 +529,9 @@
+     ::memset(type, 0, sizeof(SbkEnumType));
+     Py_TYPE(type) = &SbkEnumType_Type;
+     type->tp_basicsize = sizeof(SbkEnumObject);
++#ifndef IS_PY3K
+     type->tp_print = &SbkEnumObject_print;
++#endif
+     type->tp_repr = &SbkEnumObject_repr;
+     type->tp_str = &SbkEnumObject_repr;
+     type->tp_flags = Py_TPFLAGS_DEFAULT|Py_TPFLAGS_CHECKTYPES;

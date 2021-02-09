@@ -7,7 +7,7 @@
 pkgbase=shiboken
 pkgname=(python{2,}-shiboken shiboken)
 pkgver=1.2.4
-pkgrel=7
+pkgrel=8
 arch=('x86_64')
 license=('LGPL')
 url="http://www.pyside.org"
@@ -15,7 +15,7 @@ makedepends=('cmake' 'python2' 'python' 'qt4' 'libxslt')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/PySide/Shiboken/archive/$pkgver.tar.gz"
         support-new-python.diff)
 md5sums=('c284197d06ad25d78009ff55f18dd512'
-         '19d5032866f4e232f442fe19f12b94de')
+         '84844a6459a5fccb3ec2d6418a1af3fd')
 
 prepare(){
     cd "$srcdir/Shiboken-$pkgver"

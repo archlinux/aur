@@ -1,6 +1,6 @@
 pkgbase = shiboken
 	pkgver = 1.2.4
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.pyside.org
 	arch = x86_64
 	license = LGPL
@@ -12,7 +12,7 @@ pkgbase = shiboken
 	source = shiboken-1.2.4.tar.gz::https://github.com/PySide/Shiboken/archive/1.2.4.tar.gz
 	source = support-new-python.diff
 	md5sums = c284197d06ad25d78009ff55f18dd512
-	md5sums = 19d5032866f4e232f442fe19f12b94de
+	md5sums = 84844a6459a5fccb3ec2d6418a1af3fd
 
 pkgname = python2-shiboken
 	pkgdesc = Support library for Python2 bindings
