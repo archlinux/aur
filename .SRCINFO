@@ -1,0 +1,16 @@
+pkgbase = python-rmcl
+	pkgdesc = FUSE access to the reMarkable Cloud
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/rschroll/rmfuse/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-trio
+	depends = python-asks
+	depends = python-pyxdg
+	source = https://files.pythonhosted.org/packages/source/r/rmcl/rmcl-0.3.0.tar.gz
+	sha256sums = df5c38176309cb119c29bf9bca9d8f2f6427280241a882106b939db17ef48f3d
+
+pkgname = python-rmcl
+
