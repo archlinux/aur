@@ -12,7 +12,7 @@ arch=(
 )
 
 url='https://github.com/'
-license=('GPL3')
+license=('MIT')
 depends=()
 makedepends=('git' 'cmake')
 source=("git://github.com/$_author/$_pkgname")
