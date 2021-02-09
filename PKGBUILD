@@ -3,20 +3,20 @@
 
 pkgname=python-pg8000
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Pure-Python PostgreSQL database driver, DB-API compatible"
 arch=(any)
 url='https://github.com/tlocke/pg8000'
 license=(BSD)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest python-pytest-mock python-pytest-benchmark
-              python-pytz pifpaf postgresql)
+              python-pytz postgresql)
 depends=(python python-scramp)
 source=("https://files.pythonhosted.org/packages/source/p/pg8000/pg8000-$pkgver.tar.gz"{,.asc}
-        pghost-unix-sock.patch::https://github.com/tlocke/pg8000/pull/64.patch)
+        scram.diff)
 sha256sums=('14198c5afeb289106e40ee6e5e4c0529c5369939f6ca588a028b371a75fe20dd'
             'SKIP'
-            '0a851dbbc0f8d0116795eb0d875e9178659bdf7c6964bff8b26c6b014c37e9c9')
+            '71cccb7b33863dc94f93251b8f7cbff93e9505e120e7b9213c4ede2feb4a8e1c')
 validpgpkeys=(
   'D5681B7EC7292511C4CC1450892B00AB699851E8'  # Tony Locke <tlocke@tlocke.org.uk>, proven by https://keybase.io/tlocke
 )
@@ -28,7 +28,8 @@ prepare() {
   sed --in-place=.orig -r 's#,?<[0-9.]+,?##;s#==([0-9.]+)#>=\1#' setup.py
   diff -u setup.py{.orig,} || true
 
-  patch -Np1 -i ../pghost-unix-sock.patch
+  # Partial backport of https://github.com/tlocke/pg8000/commit/18eee18f7525bf3026339d206790d4d5843cf055
+  patch -Np1 -i ../scram.diff
 }
 
 build() {
@@ -38,15 +39,39 @@ build() {
 
 check() {
   cd pg8000-$pkgver
-  # GSS tests: need custom pg_hba.conf, while pifpaf does not support it yet
-  # SSL tests: need TCP connections [1][2], while pifpaf uses unix domain sockets
-  # [1] https://github.com/postgres/postgres/blob/REL_13_1/src/backend/postmaster/postmaster.c#L2027
-  # [2] https://www.postgresql.org/message-id/flat/200801041713.22341.peter_e%40gmx.net
-  PYTHONPATH="$PWD" pifpaf run postgresql -- bash -c "
-    psql -c \"CREATE ROLE postgres WITH LOGIN SUPERUSER PASSWORD 'pw';\"
-    psql -c \"create extension hstore;\"
-    pytest test -k 'not testGss and not test_gss and not testSsl and not test_ssl'
+
+  export PGDATA="$srcdir/postgres-testdata"
+  export PGHOST=127.0.0.1
+  export PGPORT=$((49152+$RANDOM%10000))
+
+  # See https://github.com/tlocke/pg8000#tests about database initialization steps for testing
+  initdb --username=postgres --auth=trust
+  openssl req -subj "/CN=self-signed" -nodes -x509 -newkey rsa:4096 -days 1 -keyout "$PGDATA/self-signed.key" -out "$PGDATA/self-signed.crt"
+  cat <<EOF >> "$PGDATA/postgresql.conf"
+ssl = on
+ssl_cert_file = 'self-signed.crt'
+ssl_key_file = 'self-signed.key'
+password_encryption = 'scram-sha-256'
+EOF
+
+  pg_ctl start -o "-k '' -h $PGHOST -p $PGPORT" -l "$srcdir/postgresql.log"
+  # Change the password for postgres after password_encryption is specified, so that the role has a valid SCRAM secret
+  psql -U postgres -c "
+    CREATE EXTENSION hstore;
+    ALTER ROLE postgres PASSWORD 'pw';
   "
+
+  # should overwrite pg_hba.conf, or unexpected matches may happen against existing entries
+  cat <<EOF > "$PGDATA/pg_hba.conf"
+host    pg8000_md5      all             127.0.0.1/32            md5
+host    pg8000_gss      all             127.0.0.1/32            gss
+host    pg8000_password all             127.0.0.1/32            password
+host    pg8000_scram_sha_256 all        127.0.0.1/32            scram-sha-256
+host    all             all             127.0.0.1/32            trust
+EOF
+  pg_ctl reload
+  PYTHONPATH="$PWD" pytest test
+  pg_ctl stop
 }
 
 package() {
