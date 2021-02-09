@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-backslide-git
+	pkgdesc = Display Chinese Lunar Calendar in panel
+	pkgver = v25
+	pkgrel = 3
+	url = https://extensions.gnome.org/extension/675/lunar-calendar/
+	arch = any
+	license = GPL3
+	depends = gnome-shell>3.36
+	depends = unzip
+	depends = lunar-date
+	source = https://extensions.gnome.org/extension-data/lunarcalailin.nemui.v25.shell-extension.zip
+	md5sums = ecf6244c174c8a795babd4de423462e4
+
+pkgname = gnome-shell-extension-backslide-git
+
