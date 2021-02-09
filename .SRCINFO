@@ -2,7 +2,7 @@ pkgbase = i3-maim
 	pkgdesc = simple screenshot script using maim
 	pkgver = 2021.01.01
 	pkgrel = 1
-	url = https://github.com/TheCynicalTeam/i3-maim
+	url = https://github.com/The-Repo-Club/i3-maim
 	arch = any
 	groups = therepoclub
 	license = CC BY-NC-SA 4.0
@@ -10,7 +10,7 @@ pkgbase = i3-maim
 	depends = maim
 	depends = xdg-user-dirs
 	depends = xdotool
-	source = i3-maim-2021.01.01.tar.gz::https://github.com/TheCynicalTeam/i3-maim/archive/2021.01.01.tar.gz
+	source = i3-maim-2021.01.01.tar.gz::https://github.com/The-Repo-Club/i3-maim/archive/2021.01.01.tar.gz
 	sha256sums = 39d360b31f4228c6f07aa4c5212bf32a37df27f2b118f5e71311d589efa9833e
 
 pkgname = i3-maim
