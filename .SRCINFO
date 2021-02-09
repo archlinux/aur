@@ -1,20 +1,22 @@
 pkgbase = noisetorch
 	pkgdesc = Real-time microphone noise suppression on Linux.
 	pkgver = 0.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lawl/NoiseTorch
+	install = noisetorch.install
 	arch = x86_64
 	license = GPL3
-	makedepends = git
 	makedepends = go
 	makedepends = cmake
 	depends = pulseaudio
 	depends = polkit
 	provides = noisetorch
-	source = 0.10.0-2.tar.gz::https://github.com/lawl/NoiseTorch/archive/0.10.0.tar.gz
+	source = 0.10.0-3.tar.gz::https://github.com/lawl/NoiseTorch/archive/0.10.0.tar.gz
+	source = noisetorch.install
 	source = main.patch
 	source = version.go
 	sha256sums = f0887a2c8c6cd4c863e4d67da2bcfb2b3900e9f5bfd5b0c1eaef576cc67948c7
+	sha256sums = 171a4179c7e0f3a018a314893e81e598c02cfee274c90d715a302660af920eba
 	sha256sums = dd930c1e39e9c4c6595f604178223b606a6fdce39bcc5ef7e36e2d58cbf5aa0c
 	sha256sums = 1f2f114638a818fe87ad10b9c7eab91f75f75f1d4e49c0a69f989f76a0d9d0a2
 

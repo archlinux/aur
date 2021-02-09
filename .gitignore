@@ -1,5 +1,6 @@
 *
 !.gitignore
+!noisetorch.install
 !main.patch
 !version.go
 !.SRCINFO
