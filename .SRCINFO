@@ -1,6 +1,6 @@
 pkgbase = astah-professional
 	pkgdesc = Lightweight software design tool for creating UML, ERD, DFD, Flowchart...etc. and easy-to-use UML2.x modeler
-	pkgver = 8.0.0
+	pkgver = 8.3.0
 	pkgrel = 1
 	url = http://astah.net/editions/professional
 	install = astah-professional.install
@@ -9,10 +9,12 @@ pkgbase = astah-professional
 	depends = java-runtime=8
 	conflicts = astah_community
 	conflicts = astah-uml
-	source = http://cdn.change-vision.com/files/astah-professional_8.0.0.d641d4-0_all.deb
+	source = http://cdn.change-vision.com/files/astah-professional_8.3.0.b9757d-0_all.deb
 	source = LICENSE
-	md5sums = c1e65102592ad5f000b76c418f328853
-	md5sums = 2814d9b8bac8bd6e929292d39b429a69
+	source = PRIVACY
+	md5sums = 099ed4d9149ab796f0b3eff8bd2b2f01
+	md5sums = 561f5c40b2575ae0f8a497e261e862ff
+	md5sums = fc2db9678cbfbec17049f050743e7960
 
 pkgname = astah-professional
 
