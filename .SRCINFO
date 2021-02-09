@@ -1,0 +1,14 @@
+pkgbase = hdl-make
+	pkgdesc = Hdlmake is a tool for generating multi-purpose makefiles for FPGA projects.
+	pkgver = 3.0.r334.g44a5ece
+	pkgrel = 1
+	url = https://www.ohwr.org/project/hdl-make/wiki
+	arch = x86_64
+	license = GPLv3
+	depends = python-setuptools
+	provides = hdlmake
+	source = git+https://ohwr.org/project/hdl-make.git
+	md5sums = SKIP
+
+pkgname = hdl-make
+
