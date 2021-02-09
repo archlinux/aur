@@ -1,6 +1,6 @@
 pkgbase = sleep-inhibitor
 	pkgdesc = Program to run plugins to inhibit system sleep/suspend
-	pkgver = 1.8.1
+	pkgver = 1.9
 	pkgrel = 1
 	url = https://github.com/bulletmark/sleep-inhibitor
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = sleep-inhibitor
 	depends = python>=3.6
 	depends = python-ruamel-yaml
 	backup = etc/sleep-inhibitor.conf
-	source = sleep-inhibitor-1.8.1.tar.gz::https://github.com/bulletmark/sleep-inhibitor/archive/1.8.1.tar.gz
-	sha1sums = f45a462cb14d703e335321ff44a5b2da608bbc77
+	source = sleep-inhibitor-1.9.tar.gz::https://github.com/bulletmark/sleep-inhibitor/archive/1.9.tar.gz
+	sha1sums = 688192f18a3e8bc3f4677b6b4ccfad5e435d41cd
 
 pkgname = sleep-inhibitor
 
