@@ -1,0 +1,18 @@
+pkgbase = discord-qt
+	pkgdesc = Discord client powered by Node.JS and Qt Widgets.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/ruslang02/discord-qt
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	depends = qt5-svg
+	depends = libbsd
+	depends = libgcrypt
+	depends = lzo
+	provides = discord-qt
+	source = https://github.com/ruslang02/discord-qt/releases/download/v0.5.1/DiscordQt-v0.5.1-linux-x64.deb
+	md5sums = 8b669be40a1998a58cdb3a184bd31ea4
+
+pkgname = discord-qt
+
