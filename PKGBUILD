@@ -2,7 +2,7 @@
 pkgname="parsec-sdk-bin"
 pkgdesc="Parsec SDK to build interactive and low-latency peer-to-peer connections for game streaming"
 pkgver="5.0"
-pkgrel="2"
+pkgrel="4"
 arch=("x86_64")
 url="https://parsec.app/"
 license=("custom")
@@ -19,6 +19,8 @@ sha256sums=(
 
 package() {
   cd "${srcdir}/parsec-sdk-${pkgver}"
+
+  # install sdk.
   install -D -m 0755 "sdk/linux/libparsec.so" "${pkgdir}/usr/lib/parsec/sdk/linux/libparsec.so"
   install -D -m 0755 "sdk/macos/libparsec.dylib" "${pkgdir}/usr/lib/parsec/sdk/macos/libparsec.dylib"
   install -D -m 0755 "sdk/windows/parsec.dll" "${pkgdir}/usr/lib/parsec/sdk/windows/parsec.dll"
@@ -42,4 +44,12 @@ package() {
   install -D -m 0644 "api/third-party/auth-codes.py" "${pkgdir}/usr/share/doc/parsec/api/third-party/auth-codes.py"
   install -D -m 0644 "api/third-party/auth-sessions.py" "${pkgdir}/usr/share/doc/parsec/api/third-party/auth-sessions.py"
   install -D -m 0644 "LICENSE.md" "${pkgdir}/usr/share/doc/parsec/LICENSE.md"
+
+  # link shared libraries.
+  ln -s "parsec/sdk/linux/libparsec.so" "${pkgdir}/usr/lib/libparsec.so"
+  ln -s "parsec/sdk/linux/libparsec.so" "${pkgdir}/usr/lib/libparsec.so.${pkgver}"
+
+  # link include files.
+  ln -s "sdk/parsec-dso.h" "${pkgdir}/usr/include/parsec/parsec-dso.h"
+  ln -s "sdk/parsec.h" "${pkgdir}/usr/include/parsec/parsec.h"
 }
