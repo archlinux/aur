@@ -45,7 +45,7 @@ _hpn_ver=hpn15v1
 #_pkgver="`sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver}`_new"
 _pkgver="`sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver}`"
 pkgver="${_openssh_ver}.${_hpn_ver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='A Secure SHell server/client fork with High Performance patches included'
 url='https://www.psc.edu/index.php/hpn-ssh/'
 license=('custom:BSD')
@@ -55,11 +55,8 @@ makedepends=('git' 'libfido2')
 optdepends=('xorg-xauth: X11 forwarding'
             'x11-ssh-askpass: input passphrase in X'
             'libfido2: FIDO/U2F support')
-provides=('openssh'
-          'openssh-hpn')
-conflicts=('openssh'
-           'openssh-hpn'
-           'openssh-hpn-git')
+provides=('openssh')
+conflicts=('openssh' 'openssh-hpn-git')
 source=(
   "https://github.com/rapier1/openssh-portable/archive/hpn-${_pkgver}.tar.gz"
   'http://www.eworm.de/download/linux/openssh-tests-scp.patch'
