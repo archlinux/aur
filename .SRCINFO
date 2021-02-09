@@ -1,0 +1,15 @@
+pkgbase = hypershare-git
+	pkgdesc = Small, interactive HTTP server with a TUI.
+	pkgver = b4dc27d
+	pkgrel = 1
+	url = https://github.com/48ca/hypershare
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/48ca/hypershare
+	sha256sums = SKIP
+
+pkgname = hypershare-git
+
