@@ -64,7 +64,7 @@ build() {
   arch-meson xorg-server-$pkgver build \
     -D os_vendor="Arch Linux" \
     -D ipv6=false \
-    -D xcsecurity=true \
+    -D xcsecurity=false \
     -D xorg=true \
     -D xwayland=false \
     -D xwayland_eglstream=false \
@@ -74,7 +74,6 @@ build() {
     -D xkb_output_dir=/var/lib/xkb \
     -D systemd_logind=false \
     -D b_lto=false \
-    -D b_lundef=false \
     -D xinerama=true \
     -D screensaver=false \
     -D dmx=false \
@@ -112,7 +111,6 @@ build() {
     -D xf86-input-inputtest=false \
     -D dga=false \
     -D xace=false \
-    -D xcsecurity=false \
     -D debug=false
     -D input_thread=true \
     -D int10=false \
