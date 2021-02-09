@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-bond-core
 	pkgdesc = ROS - A bond allows two processes, A and B, to know when the other has terminated, either cleanly or by crashing.
-	pkgver = 1.8.5
-	pkgrel = 3
+	pkgver = 1.8.6
+	pkgrel = 1
 	url = https://wiki.ros.org/bond_core
 	arch = i686
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = ros-noetic-bond-core
 	depends = ros-noetic-bondpy
 	depends = ros-noetic-bondcpp
 	depends = ros-noetic-bond
-	source = ros-noetic-bond-core-1.8.5.tar.gz::https://github.com/ros/bond_core/archive/1.8.5.tar.gz
-	sha256sums = b70f0fe5b4979fe2e7390bff9671b2581eefa91f4ac41f4af01eb1f2bef0e1f4
+	source = ros-noetic-bond-core-1.8.6.tar.gz::https://github.com/ros/bond_core/archive/1.8.6.tar.gz
+	sha256sums = 33ec23816b57630c449b4a629504bd0112eeef5cee15652b3759ab11088a1e81
 
 pkgname = ros-noetic-bond-core
 

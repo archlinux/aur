@@ -4,9 +4,9 @@ pkgdesc="ROS - A bond allows two processes, A and B, to know when the other has 
 url='https://wiki.ros.org/bond_core'
 
 pkgname='ros-noetic-bond-core'
-pkgver='1.8.5'
+pkgver='1.8.6'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -32,7 +32,7 @@ depends=(
 
 _dir="bond_core-${pkgver}/bond_core"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/bond_core/archive/${pkgver}.tar.gz")
-sha256sums=('b70f0fe5b4979fe2e7390bff9671b2581eefa91f4ac41f4af01eb1f2bef0e1f4')
+sha256sums=('33ec23816b57630c449b4a629504bd0112eeef5cee15652b3759ab11088a1e81')
 
 build() {
 	# Use ROS environment variables.
