@@ -1,6 +1,6 @@
 pkgbase = sprog-fortune-bin
 	pkgdesc = A fortune database made of /u/poem_for_your_sprog's comments in Reddit
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/qdii/sprog-fortune
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = sprog-fortune-bin
 	license = GPL
 	provides = sprog-fortune-bin
 	conflicts = sprog-fortune-bin
-	source = https://github.com/qdii/sprog-fortune/archive/1.0.1.tar.gz
+	source = https://github.com/qdii/sprog-fortune/archive/1.0.2.tar.gz
 	md5sums = SKIP
 
 pkgname = sprog-fortune-bin
