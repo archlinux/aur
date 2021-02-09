@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=wine-staging-git
-pkgver=5.19.r1.gb49e8743
+pkgver=6.1.r8.g6347bdd1
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
 arch=('x86_64')
@@ -92,10 +92,10 @@ optdepends=(
 )
 options=('staticlibs')
 install="${pkgname}.install"
-provides=('wine' 'wine-wow64' 'wine-git' "wine-staging=${pkgver}")
+provides=("wine-staging=${pkgver}" "wine=${pkgver%%.r*}" 'wine-wow64')
 conflicts=('wine' 'wine-wow64')
-source=('git://source.winehq.org/git/wine.git'
-        'git+https://github.com/wine-staging/wine-staging.git'
+source=('git+https://github.com/wine-staging/wine-staging.git'
+        'git://source.winehq.org/git/wine.git'
         '30-win32-aliases.conf'
         'wine-binfmt.conf')
 sha256sums=('SKIP'
