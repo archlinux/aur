@@ -11,8 +11,8 @@ source=("https://ohwr.org/project/hdl-make.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}/${pkgname}"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
