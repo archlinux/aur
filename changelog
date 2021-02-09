@@ -1,3 +1,10 @@
+2021-02-09 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.0.3.1-1:
+    We've renamed our master branch to main, following the same decision made by Dotnet, Git and GitHub. While this change is mostly transparent for everybody, our master Docker build is now also available under main tag (which considers only people using our master builds, those that are already well aware of breaking changes).
+    Improved CompleteTypesToSend functionality by avoiding a possibility of splitting the same set across multiple trade offers (#2133).
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
 2021-01-07 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.0.2.4-1:
     [!] Docker builds are now built by GitHub (previously Docker Hub), available also on ghcr.io (in addition to Docker Hub) and supporting multi-platform manifests. Because of unified manifest, -arm and -arm64 docker tags are no longer being deployed, as they're now included in the main tag. Fixed A.B.C.D-{arch} tags that were released in the past remain available for download. Check out our wiki for more info (#2096).
