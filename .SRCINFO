@@ -2,12 +2,12 @@ pkgbase = charmap
 	pkgdesc = Electron app for char maps
 	pkgver = 2021.02.08
 	pkgrel = 1
-	url = https://github.com/TheCynicalTeam/charmap
+	url = https://github.com/The-Repo-Club/charmap
 	arch = any
 	groups = therepoclub
 	license = CC BY-NC-SA 4.0
 	depends = electron
-	source = charmap-2021.02.08.tar.gz::https://github.com/TheCynicalTeam/charmap/releases/download/2021.02.08/charmap.tar.gz
+	source = charmap-2021.02.08.tar.gz::https://github.com/The-Repo-Club/charmap/releases/download/2021.02.08/charmap.tar.gz
 	sha256sums = c03741e98bb1aafd39581446e6a9794c922803d8d1372f43f5e7a7b5e72434aa
 
 pkgname = charmap

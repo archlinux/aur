@@ -1,12 +1,12 @@
-# Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
-# Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
+# Maintainer: The-Repo-Club <The-Repo-Club@github.com>
+# Contributor: The-Repo-Club <The-Repo-Club@github.com>
 pkgname=charmap
 pkgver=2021.02.08
 pkgrel=1
 pkgdesc="Electron app for char maps"
 arch=('any')
 groups=('therepoclub')
-url="https://github.com/TheCynicalTeam/$pkgname"
+url="https://github.com/The-Repo-Club/$pkgname"
 license=('CC BY-NC-SA 4.0')
 depends=('electron')
 source=("${pkgname}-$pkgver.tar.gz::${url}/releases/download/$pkgver/$pkgname.tar.gz")
