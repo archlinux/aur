@@ -1,6 +1,6 @@
 pkgbase = python-requests-gssapi
 	pkgdesc = GSSAPI (HTTP Negotiate) authentication for Python-Requests
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/pythongssapi/requests-gssapi
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = python-requests-gssapi
 	makedepends = python-setuptools
 	depends = python-gssapi
 	depends = python-requests
-	source = git+https://github.com/pythongssapi/requests-gssapi#commit=8718174cac25e3ccc960e53021ff39b0fa44d143
+	source = git+https://github.com/pythongssapi/requests-gssapi#commit=492a4abbbaf8185dad4be09aae9476083ad1ef34
 	sha256sums = SKIP
 
 pkgname = python-requests-gssapi
-

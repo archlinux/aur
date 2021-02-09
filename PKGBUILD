@@ -1,7 +1,7 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 _pkgname=requests-gssapi
 pkgname=python-requests-gssapi
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="GSSAPI (HTTP Negotiate) authentication for Python-Requests"
 url="https://github.com/pythongssapi/requests-gssapi"
@@ -9,7 +9,7 @@ arch=(any)
 license=(custom:ISC)
 depends=(python-gssapi python-requests)
 makedepends=(git python-setuptools)
-_commit=8718174cac25e3ccc960e53021ff39b0fa44d143
+_commit=492a4abbbaf8185dad4be09aae9476083ad1ef34
 source=("git+https://github.com/pythongssapi/requests-gssapi#commit=$_commit")
 sha256sums=('SKIP')
 
