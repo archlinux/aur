@@ -3,7 +3,7 @@
 
 pkgname=google-cloud-sdk-app-engine-python
 pkgver=327.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A google-cloud-sdk component that provides the Python runtime for AppEngine."
 url="https://cloud.google.com/sdk/"
 license=("Apache")
@@ -19,8 +19,6 @@ source=(
 sha256sums=('d05f6edb1ca8b2d91686f4ad787d056f6c07426e83b7c3df8a917d968cdd6476')
 
 package() {
-  mkdir -p "${pkgdir}/opt/google-cloud-sdk/platform/google_appengine"
-
   # Install the component manifest file
   install -D -m 0644 \
     "${srcdir}/google-cloud-sdk/.install/app-engine-python.manifest" \
@@ -32,6 +30,7 @@ package() {
     "${pkgdir}/opt/google-cloud-sdk/.install/app-engine-python.snapshot.json"
 
   # Install the component files
+  mkdir -p "${pkgdir}/opt/google-cloud-sdk/platform"
   cp -R \
     "${srcdir}/google-cloud-sdk/platform/google_appengine" \
     "${pkgdir}/opt/google-cloud-sdk/platform/google_appengine"
