@@ -1,0 +1,6 @@
+post_install() {
+	cat << EOF
+  Warning: php7 installs its files with the 7 suffix, such as
+  /usr/bin/php7 and /etc/php7.
+EOF
+}

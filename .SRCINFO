@@ -1,0 +1,12 @@
+pkgbase = php7-meta
+	pkgdesc = Meta package to satisfy requirements of php<8 with the php7 package.
+	pkgver = 7.4.15
+	pkgrel = 1
+	install = php7-meta.install
+	arch = any
+	license = none
+	depends = php7
+	provides = php=7.4.15
+
+pkgname = php7-meta
+
