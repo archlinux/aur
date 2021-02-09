@@ -10,8 +10,8 @@ pkgbase = qalculate-gtk-git
 	depends = libqalculate
 	depends = gtk3
 	optdepends = yelp: for displaying the help
-	provides = qalculate-gtk-git
-	conflicts = qalculate-gtk-git
+	provides = qalculate-gtk
+	conflicts = qalculate-gtk
 	source = git+https://github.com/Qalculate/qalculate-gtk.git
 	md5sums = SKIP
 
