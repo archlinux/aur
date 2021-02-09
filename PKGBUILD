@@ -1,7 +1,7 @@
 # Maintainer: nbebaw
 pkgname=boostchanger-py
-pkgver=0.0
-pkgrel=4
+pkgver=0.1
+pkgrel=0
 pkgdesc="Tray application to controlling CPU Turbo boost"
 arch=('any')
 url="https://github.com/nbebaw/boostchanger-py"
@@ -11,7 +11,7 @@ source=("https://github.com/nbebaw/boostchanger-py/releases/download/v$pkgver.$p
 md5sums=('SKIP')
 
 prepare() {
-	pkgverOLD=0.0.3
+	pkgverOLD=0.0.4
 	if [ -d ${pkgdir}/opt/boostchanger-v$pkgver.$pkgrel ]; then
 		rm -r ${pkgdir}/opt/boostchanger-v$pkgverOLD
 		rm ${pkgdir}/usr/bin/boostchanger-py
@@ -19,6 +19,7 @@ prepare() {
 		rm ${pkgdir}/usr/share/pixmaps/boostchanger-py.png
 	fi
 	tar -xvf boost_changer-$pkgver.$pkgrel.tar.gz
+	pip install plyer
 }
 
 package() {
