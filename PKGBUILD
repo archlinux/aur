@@ -17,7 +17,7 @@ conflicts=('neovim-vista')
 source=("${_pkgname}::git+https://github.com/liuchengxu/vista.vim.git")
 sha256sums=('SKIP')
 makedepends=('git')
-_packdir="usr/local/share/nvim/site/pack/${_pkgname}/start/${_pkgname}"
+_packdir="usr/share/nvim/runtime/pack/${_pkgname}/start/${_pkgname}"
 _variant='neovim'
 
 pkgver() {
