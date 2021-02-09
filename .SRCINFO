@@ -8,6 +8,7 @@ pkgbase = souk-git
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
+	makedepends = cargo
 	makedepends = git
 	makedepends = meson
 	depends = flatpak

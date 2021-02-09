@@ -13,6 +13,7 @@ depends=(
 	libadwaita
 )
 makedepends=(
+	cargo
 	git
 	meson
 )
