@@ -1,5 +1,5 @@
 pkgbase = python-aiogram3
-	pkgdesc = A pretty simple and fully asynchronous library for Telegram Bot API written in Python 3.7 with asyncio and aiohttp
+	pkgdesc = A pretty simple and fully asynchronous library for Telegram Bot API written with asyncio and aiohttp (experimental version)
 	pkgver = 3.0.0a6
 	pkgrel = 1
 	url = https://github.com/aiogram/aiogram
