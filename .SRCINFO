@@ -1,0 +1,17 @@
+pkgbase = ts-analyzer-git
+	pkgdesc = MPEG TS Stream analyzer, based on Qt5 and FFmpeg
+	pkgver = 0.1.r12.g5d7f034
+	pkgrel = 1
+	url = https://github.com/xuguangxiao/ts_analyzer
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	depends = qtav
+	depends = ffmpeg
+	source = git+https://github.com/aswild/ts_analyzer
+	sha256sums = SKIP
+
+pkgname = ts-analyzer-git
+

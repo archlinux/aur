@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/ts_analyzer/
+*.pkg.tar*
