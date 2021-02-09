@@ -23,6 +23,6 @@ index c29d9bf..d7d3d60 100644
 +
 +ADD_LIBRARY( SOIL SHARED ${SOIL_c} )
 +SET(CMAKE_INSTALL_PREFIX "/usr" CACHE PATH "Installation root directory" FORCE)
-+install( TARGETS soil ARCHIVE DESTINATION "lib" )
++install( TARGETS SOIL ARCHIVE DESTINATION "lib" )
 +install( FILES ${SOIL_h} DESTINATION "include/SOIL" )
 
