@@ -1,8 +1,8 @@
 # Maintainer: Andrei Marinescu <iandrei.marinescu@gmail.com>
 
 pkgname=wavebox
-_pkgver=10.0.412_2
-pkgver=10.0.412_2
+_pkgver=10.0.422_2
+pkgver=10.0.422_2
 pkgrel=1
 pkgdesc="The next generation of web-desktop communication."
 arch=(x86_64)
@@ -11,12 +11,12 @@ license=('custom:Wavebox-EULA')
 depends=('ttf-liberation' 'libappindicator-gtk3' 'at-spi2-atk' 'cairo' 'libcups' 'gdk-pixbuf2' 'glib2' 'gtk3' 'nspr' 'nss' 'libxss' 'wget' 'xdg-utils')
 optdepends=('pam-u2f: Two-Factor Auth')
 conflicts=('wavebox-bin' 'wavebox-bin-beta')
-source=("$pkgname-$pkgver.tar.gz::https://download.wavebox.app/stable/linux/tar/Wavebox_10.0.412-2.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://download.wavebox.app/stable/linux/tar/Wavebox_10.0.422-2.tar.gz"
 #source=("$pkgname-$pkgver.tar.gz::http://download.wavebox.app/latest/beta/linux/tar"
         'wavebox.appdata.xml'
         'wavebox.menu'
         'LICENSE')
-md5sums=('a4a52509002256b22258a1031721dfc5'
+md5sums=('3b5541dc7e02bd0ea03c4ecac4db8005'
          '170a7d4e04402fa5c759e8f5e87e9d9c'
          '4f08794ea93eafd0e77b522ac7738638'
          'b92c8854e4553540df6bc998afe68cc4')
