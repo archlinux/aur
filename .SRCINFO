@@ -6,7 +6,7 @@ pkgbase = metalctl-bin
 	arch = x86_64
 	license = MIT
 	provides = metalctl
-	source = metalctl-0.9.3::https://github.com/metal-stack/metalctl/releases/download/v0.9.3/metalctl-linux-amd64
+	source = metalctl-0.9.3-1::https://github.com/metal-stack/metalctl/releases/download/v0.9.3/metalctl-linux-amd64
 	md5sums = c64ac9a468c76fb1119c22f4c60df9dd
 
 pkgname = metalctl-bin

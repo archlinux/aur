@@ -8,11 +8,11 @@ url='https://github.com/metal-stack/metalctl'
 license=('MIT')
 arch=('x86_64')
 provides=('metalctl')
-source=("metalctl-$pkgver::https://github.com/metal-stack/metalctl/releases/download/v$pkgver/metalctl-linux-amd64")
+source=("metalctl-$pkgver-$pkgrel::https://github.com/metal-stack/metalctl/releases/download/v$pkgver/metalctl-linux-amd64")
 md5sums=('c64ac9a468c76fb1119c22f4c60df9dd')
 
 package() {
-    install -Dm 755 "$srcdir/metalctl-$pkgver" "$pkgdir/usr/bin/metalctl"
+    install -Dm 755 "$srcdir/metalctl-$pkgver-$pkgrel" "$pkgdir/usr/bin/metalctl"
 
     # Populate bash, zsh completions
     install -dm 755 "$pkgdir/usr/share/bash-completion/completions"
