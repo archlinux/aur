@@ -1,6 +1,6 @@
 # Maintainer: Joseph R. Quinn <quinn period josephr at protonmail dot com>
 pkgname="trunk-bin"
-pkgver="0.8.0"
+pkgver="0.8.1"
 pkgrel=1
 pkgdesc="A WASM web application bundler for Rust."
 arch=('x86_64')
@@ -12,9 +12,9 @@ source=(
     "https://raw.githubusercontent.com/thedodd/${pkgname%-bin}/v$pkgver/LICENSE-APACHE"
     "https://raw.githubusercontent.com/thedodd/${pkgname%-bin}/v$pkgver/LICENSE-MIT"
 )
-sha256sums=('6a6669fd0b12371fbc6513c72289c73e3818166539ef71630513630a3482997b'
-            'a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2'
-            '23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3')
+b2sums=('f2cd8310ee92564f399754d8c350d9738f36b0ba268b40cee3261953fd318a4450e60203f1fec7531f48501dfd33431842324c9c2a5bffd9b92f58b3aa103e4f'
+        '21fadd835dd2d39db33e007a95f4ce46277c5c87902a6e8a530673ceab9b4d13246fb80f93906e9cc684db6e35f6ead13cf71c553468f3a07df6e1c7d9b85b4b'
+        'fb26aba82fe953b9895595c5b7c11b5363b83bd60cf1cb6aab572df6dadb940711eda080f8ad77fb519e79309211318b6200081bb05be7b71117a07082c3815d')
 
 prepare() {
     bsdtar -xf "${pkgname%-bin}-$pkgver.tar.gz"
