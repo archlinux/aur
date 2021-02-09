@@ -1,15 +1,15 @@
 # Maintainer: Saren <saren@wtako.net>
 
-pkgname=gnome-shell-extension-backslide-3.18-git
+pkgname=gnome-shell-extension-backslide-git
 _pkgname="backslide"
-pkgver=r104.c68742e
+pkgver=r130.954274f
 pkgrel=1
-pkgdesc="A GNOME Shell extension to cycle between wallpapers over time. Supports gnome shell up to 3.22."
+pkgdesc="A simple Gnome-Shell Extension for an automatic background-image (wallpaper) slideshow."
 arch=('any')
 url="https://bitbucket.org/LukasKnuth/backslide"
 license=('GPL3')
 depends=('dconf')
-makedepends=('git' 'gnome-common')
+# makedepends=('git' 'gnome-common')
 source=("git+https://bitbucket.org/LukasKnuth/backslide.git")
 md5sums=('SKIP')
 conflicts=('gnome-shell-extension-backslide-git')
