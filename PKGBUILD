@@ -10,8 +10,8 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-xml-parser>=2.23')
 makedepends=()
-url='http://search.cpan.org/dist/XML-PYX'
-source=('http://search.cpan.org/CPAN/authors/id/M/MS/MSERGEANT/XML-PYX-0.07.tar.gz')
+url='https://metacpan.org/release/XML-PYX'
+source=('https://search.cpan.org/CPAN/authors/id/M/MS/MSERGEANT/XML-PYX-0.07.tar.gz')
 md5sums=('74729f5ff3e455daa161fc3dfc5396b5')
 sha512sums=('b35b160cb007812d506ab6db703b9d91dfdde56206a313c1459df5a7034eb19fc2bc0ac16f82f9631e051eccb2251ead7dbab1cd7cff8dbc88099bb9bdf66531')
 _distdir="XML-PYX-0.07"
