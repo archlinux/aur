@@ -54,7 +54,7 @@ package_neovim-clap-git() {
                 'skim: skim external filter')
     provides=('neovim-clap')
     conflicts=('neovim-clap')
-    _packdir="usr/local/share/nvim/site/pack/${_pkgname}/start/${_pkgname}"
+    _packdir="usr/share/nvim/runtime/pack/${_pkgname}/start/${_pkgname}"
     _variant='neovim'
 
     cd "${srcdir}/${_pkgname}"
