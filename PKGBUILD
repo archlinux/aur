@@ -1,5 +1,5 @@
-# Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
-# Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
+# Maintainer: The-Repo-Club <The-Repo-Club@github.com>
+# Contributor: The-Repo-Club <The-Repo-Club@github.com>
 _pkgname=qt6gtk2
 pkgname=$_pkgname-git
 pkgver=0.1+2+g9a5610f
