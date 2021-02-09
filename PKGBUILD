@@ -7,7 +7,7 @@ url="https://www.ohwr.org/project/hdl-make/wiki"
 license=('GPL3')
 depends=('python-setuptools')
 provides=(hdlmake)
-source=("https://ohwr.org/project/hdl-make.git")
+source=("git+https://ohwr.org/project/hdl-make.git")
 md5sums=('SKIP')
 
 pkgver() {
