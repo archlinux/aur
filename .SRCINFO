@@ -6,6 +6,7 @@ pkgbase = mcron
 	arch = x86_64
 	license = GPL3
 	depends = guile
+	provides = cron
 	conflicts = cron
 	source = mcron-1.2.0.tar.gz::https://ftp.gnu.org/gnu/mcron/mcron-1.2.0.tar.gz
 	md5sums = 3617a5bf67e30dc009c62f6e831e7764
