@@ -9,7 +9,7 @@
 
 pkgname=python2-matplotlib
 pkgver=2.2.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A python plotting library, making publication quality plots"
 arch=(x86_64)
 url="https://matplotlib.org"
