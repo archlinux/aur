@@ -5,7 +5,7 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="Astiga desktop built with nativefier (electron)"
 arch=("armv7l" "i686" "x86_64")
-url="https://play.${pkgname%ga-nativefier}.ga/overview"
+url="https://asti.ga"
 license=('MIT')
 depends=("gtk3" "libxss" "nss")
 optdepends=("libindicator-gtk3")
@@ -31,7 +31,7 @@ build() {
     --tray \
     --maximize \
     --disable-dev-tools \
-    "${url}"
+    "https://play.asti.ga/overview"
 }
 
 package() {
