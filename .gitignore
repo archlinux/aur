@@ -2,3 +2,4 @@ src/
 pkg/
 *.tgz
 *.pkg.tar.xz
+*.pkg.tar.zst
