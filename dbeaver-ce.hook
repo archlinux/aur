@@ -1,0 +1,12 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = etc/dbeaver-ce/bundles.d/*.info
+
+[Action]
+Description = Updating the DBeaver bundles.info database...
+When = PostTransaction
+Exec = /bin/sh -c '> /etc/dbeaver-ce/bundles.info; cat /etc/dbeaver-ce/bundles.d/*.info > /etc/dbeaver-ce/bundles.info'
+

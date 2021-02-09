@@ -1,13 +1,15 @@
 [Desktop Entry]
 Version=1.0
-Exec=GTK_OVERLAY_SCROLLING=0 /usr/share/dbeaver-ce/dbeaver
 Type=Application
+Categories=IDE;Development;Java;Database;
 Terminal=false
+Exec=dbeaver-ce
 Icon=dbeaver-ce
-Categories=IDE;Development
-Name=DBeaver Community
-GenericName=UniversaL Database Manager
+
+Name=DBeaver Community Edition
+GenericName=Universal Database Manager
 Comment=Universal Database Manager and SQL Client.
+
 WM_CLASS=DBeaver
 StartupWMClass=DBeaver
 StartupNotify=true

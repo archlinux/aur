@@ -1,24 +1,34 @@
 pkgbase = dbeaver-ce
-	pkgdesc = DBeaver Community Edition
-	pkgver = 6.3.0
-	pkgrel = 6
-	url = https://github.com/dbeaver/dbeaver
+	pkgdesc = Free Universal SQL Client for Developers and Database Administrators (Community Edition)
+	pkgver = 7.3.4
+	pkgrel = 1
+	url = https://dbeaver.io/
+	install = dbeaver-ce.install
 	arch = x86_64
-	license = GPL
-	depends = java-runtime>=1.8
-	depends = gtk2
+	license = Apache
+	makedepends = maven
+	makedepends = java-runtime<15
+	depends = java-runtime>=11
+	depends = gtk3
 	depends = gtk-update-icon-cache
 	depends = libsecret
 	optdepends = dbeaver-plugin-office: export data in Microsoft Office Excel format
 	optdepends = dbeaver-plugin-svg-format: save diagrams in SVG format
-	conflicts = dbeaver
-	conflicts = dbeaver-ee
-	source = dbeaver-ce-6.3.0-linux.gtk.x86_64.tar.gz::https://github.com/dbeaver/dbeaver/releases/download/6.3.0/dbeaver-ce-6.3.0-linux.gtk.x86_64.tar.gz
-	source = dbeaver-ce-6.3.0-git::git+https://github.com/dbeaver/dbeaver.git#tag=6.3.0
+	noextract = dbeaver-ce-7.3.4.tar.gz
+	noextract = dbeaver-ce.desktop
+	noextract = dbeaver-ce.sh
+	noextract = dbeaver-ce.profile.gz
+	noextract = dbeaver-ce.hook
+	source = dbeaver-ce-7.3.4.tar.gz::https://github.com/serge-rider/dbeaver/archive/7.3.4.tar.gz
 	source = dbeaver-ce.desktop
-	sha256sums = 4a086f0182d349bbcc8d9c927e293d7b937eef90b8dcffff47db41e9a6c8421e
-	sha256sums = SKIP
-	sha256sums = e73e524d2ce9ff9750d805ed2ef9f9bd4058910db05d5095aef275b71e4001e8
+	source = dbeaver-ce.sh
+	source = dbeaver-ce.profile.gz
+	source = dbeaver-ce.hook
+	sha256sums = 1adc7989776955d52afb5f6ff7cf4d027f2a8d7b0522ebacdaf8ece1f51db228
+	sha256sums = a53bcfa37f71e96fdc0ba3df6748d147f29fcb3bc7f35ffad9d876f3e2b072aa
+	sha256sums = ba3c2248960b2b5c6eafa227ec9bd1223e21287a991cd3b912f0b0a984666c80
+	sha256sums = 1863e74bdcf22b7328e6e8487cbebff7d5360e34bde85c1dd226b168b4737034
+	sha256sums = 131e3eb7b97723aa17c08db23a8b588fedef3d99941de1177b90ba3917459bf0
 
 pkgname = dbeaver-ce
 
