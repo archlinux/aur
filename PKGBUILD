@@ -6,8 +6,8 @@
 
 pkgname=ntfs-3g-ar
 _pkgname=ntfs-3g_ntfsprogs
-pkgver=2017.3.23AR.5
-pkgrel=4
+pkgver=2017.3.23AR.6
+pkgrel=5
 pkgdesc='NTFS filesystem driver and utilities with experimental features'
 url='https://jp-andre.pagesperso-orange.fr/advanced-ntfs-3g.html'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("https://tuxera.com/opensource/${_pkgname}-${pkgver%AR*}.tgz"
         "https://jp-andre.pagesperso-orange.fr/${_pkgname}-${pkgver}.tgz"
         'mftmirr.patch')
 sha256sums=('3e5a021d7b761261836dcb305370af299793eedbded731df3d6943802e1262d5'
-            '04ccf583b495806cefb71850e5899e50aed5e7bf23365259f2badaa9af21e5ed'
+            'e60556afbe7bc2f5ad710baf0ee954682324d411c324d328c652e731c6b7abd3'
             '4166ff3021921d7a7ffac8f5de64b5735b1d5e365a024744bebc7260cf1ce726')
 
 conflicts=('ntfsprogs' 'ntfs-3g')

@@ -1,21 +1,21 @@
 pkgbase = ntfs-3g-ar
 	pkgdesc = NTFS filesystem driver and utilities with experimental features
-	pkgver = 2017.3.23AR.5
-	pkgrel = 4
+	pkgver = 2017.3.23AR.6
+	pkgrel = 5
 	url = https://jp-andre.pagesperso-orange.fr/advanced-ntfs-3g.html
 	arch = x86_64
 	license = GPL2
 	depends = util-linux
 	depends = fuse2
 	provides = ntfsprogs
-	provides = ntfs-3g=2017.3.23-4
+	provides = ntfs-3g=2017.3.23-5
 	conflicts = ntfsprogs
 	conflicts = ntfs-3g
 	source = https://tuxera.com/opensource/ntfs-3g_ntfsprogs-2017.3.23.tgz
-	source = https://jp-andre.pagesperso-orange.fr/ntfs-3g_ntfsprogs-2017.3.23AR.5.tgz
+	source = https://jp-andre.pagesperso-orange.fr/ntfs-3g_ntfsprogs-2017.3.23AR.6.tgz
 	source = mftmirr.patch
 	sha256sums = 3e5a021d7b761261836dcb305370af299793eedbded731df3d6943802e1262d5
-	sha256sums = 04ccf583b495806cefb71850e5899e50aed5e7bf23365259f2badaa9af21e5ed
+	sha256sums = e60556afbe7bc2f5ad710baf0ee954682324d411c324d328c652e731c6b7abd3
 	sha256sums = 4166ff3021921d7a7ffac8f5de64b5735b1d5e365a024744bebc7260cf1ce726
 
 pkgname = ntfs-3g-ar
