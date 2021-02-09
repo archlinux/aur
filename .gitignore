@@ -1,0 +1,4 @@
+hdl-make/
+pkg/
+src/
+*.pkg.tar.zst
