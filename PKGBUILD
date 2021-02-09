@@ -3,7 +3,7 @@
 # Contributor: Daniel Egeberg <daniel.egeberg@gmail.com>
 
 pkgname="sonarr-phantom"
-pkgver=3.0.4.1119
+pkgver=3.0.4.1120
 pkgrel=1
 pkgdesc="TV download automation for usenet and torrents."
 arch=(any)
@@ -41,7 +41,7 @@ source=(
 )
 
 noextract=()
-sha256sums=('427b01c0101a2ba59e4f66acce0673c5477017d56a2ae39977a18cd6327d8571'
+sha256sums=('2bc7f15dfbbde5adeed9296c46df983251d588cf7915f275d58711bc07f3db51'
             'b95d8e15c59e24e355a5098e322f3200f81dbcc8bb183c1767e1eeb42fa0cada'
             'cc3c69f719fa64335f4c5b41b2588f1ec56865fb2202f5919d3668b50b8f398e'
             '7bf87304383b7d58ecab59b3686d00a8f1b6fbe4af3a86da35a887e4cebee411'
