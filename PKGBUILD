@@ -32,8 +32,7 @@ build() {
         -DGLOBAL_DIR="/usr/share/${pkgname}" \
         -DCMAKE_INSTALL_DATADIR="share" \
         -DCMAKE_INSTALL_DOCDIR="share/doc/${pkgname}" \
-        -DBINARY_NAME="${pkgname}" \
-        ..
+        -DBINARY_NAME="${pkgname}"
   make -C build
 }
 
