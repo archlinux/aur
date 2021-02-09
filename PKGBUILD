@@ -1,11 +1,11 @@
 # Based  on the template from https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
-# Maintainer: Will Price <will.price94+aur@gmail.com>
+# Maintainer: Marcio Silva <marcionps at gmail dot com>
 
 
 _pkgname=obsidian
 
 pkgname="${_pkgname}"-appimage
-pkgver=0.10.11
+pkgver=0.10.13
 pkgrel=1
 pkgdesc="Obsidian is a powerful knowledge base that works on top of a local folder of plain text Markdown files"
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/Obsidian-${pkgver}.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('9f26bd1dc1e2c3a7214de634d8fcd8fc37ea7cf85d999f9570f51d570531bf6c')
+sha256sums_x86_64=('d337a8bbdd1ea47b823570dfb20085d8b73d5391343e59aba6146bdc4ae3b22b')
 
 prepare() {
     chmod +x "${_appimage}"
