@@ -1,10 +1,10 @@
-# Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
-# Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
+# Maintainer: The-Repo-Club <The-Repo-Club@github.com>
+# Contributor: The-Repo-Club <The-Repo-Club@github.com>
 pkgname=instamenu-extra
 pkgver=2021.01.15
 pkgrel=1
 pkgdesc="addons for instamenu"
-url="https://github.com/TheCynicalTeam/$pkgname"
+url="https://github.com/The-Repo-Club/$pkgname"
 arch=('any')
 groups=('therepoclub')
 license=('CC BY-NC-SA 4.0')
