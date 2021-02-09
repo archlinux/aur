@@ -2,5 +2,5 @@ srcinfo:
 	makepkg --printsrcinfo > .SRCINFO
 
 integrity:
-	rm -rf cloudctl-linux-amd64
+	rm -rf cloudctl-linux-*
 	makepkg -g

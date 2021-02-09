@@ -8,11 +8,11 @@ url='https://github.com/fi-ts/cloudctl'
 license=('MIT')
 arch=('x86_64')
 provides=('cloudctl')
-source=("https://github.com/fi-ts/cloudctl/releases/download/v$pkgver/cloudctl-linux-amd64")
+source=("cloudctl-linux-$pkgver::https://github.com/fi-ts/cloudctl/releases/download/v$pkgver/cloudctl-linux-amd64")
 md5sums=('d381b71c5321a7cd02a9693821ffe496')
 
 package() {
-    install -Dm 755 "$srcdir/cloudctl-linux-amd64" "$pkgdir/usr/bin/cloudctl"
+    install -Dm 755 "$srcdir/cloudctl-linux-$pkgver" "$pkgdir/usr/bin/cloudctl"
 
     # Populate bash, zsh completions
     install -dm 755 "$pkgdir/usr/share/bash-completion/completions"
