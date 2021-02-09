@@ -5,7 +5,7 @@
 _pkgname=musl
 _target=arm-linux-gnueabihf
 pkgname="$_target-$_pkgname"
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='Lightweight implementation of C standard library'
 arch=('i686' 'x86_64')
