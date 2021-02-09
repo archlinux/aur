@@ -5,7 +5,7 @@ pkgname=authy-export-git
 _bin=authy-export
 _gitname=authy
 pkgver=64ee05f
-pkgrel=1
+pkgrel=2
 pkgdesc='Export your TOTP secret tokens from Authy.'
 arch=('x86_64')
 url="https://github.com/alexzorin/authy"
@@ -23,7 +23,12 @@ prepare(){
 
 build() {
     cd ${srcdir}/${_gitname}
-    go build -v -o $_bin cmd/authy-export/authy-export.go
+    go build \
+        -buildmode=pie \
+        -trimpath \
+        -mod=readonly \
+        -modcacherw \
+        -v -o $_bin cmd/authy-export/authy-export.go
 }
 
 package() {
