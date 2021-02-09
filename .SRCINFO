@@ -2,7 +2,7 @@ pkgbase = picker
 	pkgdesc = Bash wrapper for pacman and aur
 	pkgver = 2021.02.05
 	pkgrel = 1
-	url = https://github.com/TheCynicalTeam/picker
+	url = https://github.com/The-Repo-Club/picker
 	arch = any
 	groups = therepoclub
 	license = CC BY-NC-SA 4.0
@@ -14,7 +14,7 @@ pkgbase = picker
 	depends = jshon
 	depends = expac
 	provides = picker
-	source = picker-2021.02.05.tar.gz::https://github.com/TheCynicalTeam/picker/archive/2021.02.05.tar.gz
+	source = picker-2021.02.05.tar.gz::https://github.com/The-Repo-Club/picker/archive/2021.02.05.tar.gz
 	sha256sums = 0ee6d3054a8f39f14cefd73f3143b0bd3fd4019414b571a671882c450404ab2e
 
 pkgname = picker
