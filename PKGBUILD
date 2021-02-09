@@ -1,7 +1,7 @@
 # Maintainer: McModder <mcmodder@mcmodder.ru>
 
 pkgname=openttd-git
-pkgver=24469.0c3ddc543
+pkgver=24739.395e01528
 pkgrel=1
 pkgdesc='An engine for running Transport Tycoon Deluxe (latest GIT build)'
 arch=('i686' 'x86_64')
@@ -26,6 +26,7 @@ build() {
 
   cmake -B build \
         -S "$pkgname" \
+        -DCMAKE_INSTALL_BINDIR="bin" \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DPERSONAL_DIR=".${pkgname}" \
         -DGLOBAL_DIR="/usr/share/${pkgname}" \
