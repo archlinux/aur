@@ -1,8 +1,8 @@
 # Maintainer: Maximilian Stahlberg <maximilian.stahlberg tu-berlin de>
 
 pkgname=python-picos-git
-pkgver=2.1.r2.gf31ae78
-pkgrel=2
+pkgver=2.2.r0.g8015e45
+pkgrel=1
 pkgdesc='A Python interface to conic optimization solvers. Git version.'
 arch=('any')
 url='https://gitlab.com/picos-api/picos'
@@ -18,8 +18,9 @@ optdepends=(
 	'python-swiglpk: solve using GLPK'
 )
 makedepends=('git' 'python-setuptools')
+provides=('python-picos')
 conflicts=('python-picos')
-source=("picos::git+https://gitlab.com/picos-api/picos.git")
+source=("git+https://gitlab.com/picos-api/picos.git")
 md5sums=('SKIP')
 
 pkgver() {
