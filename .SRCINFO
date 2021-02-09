@@ -1,7 +1,7 @@
 pkgbase = lunar-date
 	pkgdesc = Chinese lunar date library.
 	pkgver = 2.9.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/yetist/lunar-date
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = lunar-date
 	makedepends = ninja
 	makedepends = meson
 	makedepends = gobject-introspection
+	makedepends = vala
 	depends = glib2>=2.12
 	source = lunar-date-2.9.3.tar.gz::https://github.com/yetist/lunar-date/archive/v2.9.3.tar.gz
 	md5sums = d3da98793d04debde54c50e62e8a6b44
