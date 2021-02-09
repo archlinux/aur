@@ -1,7 +1,7 @@
 # Maintainer: VanLaser <gabi_laser at yahoo dot com>
 
 pkgname='eql5-git'
-pkgver='r261.464efd3'
+pkgver=r301.69a094b
 pkgrel=1
 pkgdesc='Embedded Qt Lisp (Qt5 binding embedded in ECL, embeddable in Qt)'
 arch=('x86_64')
