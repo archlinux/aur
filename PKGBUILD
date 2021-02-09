@@ -18,7 +18,8 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  cmake -DHMAT_GIT_VERSION=OFF -DCMAKE_INSTALL_PREFIX=/usr -DINSTALL_INCLUDE_DIR=/usr/include/hmat .
+  cmake -DHMAT_GIT_VERSION=OFF -DCMAKE_INSTALL_PREFIX=/usr \
+    -DINSTALL_INCLUDE_DIR=/usr/include/hmat -DCMAKE_CXX_FLAGS="-Wno-deprecated-declarations" .
   make
 }
 
