@@ -1,6 +1,6 @@
 pkgbase = terminate
 	pkgdesc = Minimal terminal emulator based on VTE
-	pkgver = 0.4.0
+	pkgver = 0.5
 	pkgrel = 0
 	url = https://git.sr.ht/~craftyguy/terminate
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = terminate
 	depends = vte-common
 	provides = terminate
 	backup = etc/terminate/config
-	source = https://git.sr.ht/~craftyguy/terminate/archive/0.4.0.tar.gz
-	sha512sums = 9e21e57e5a89aaaa5a70ad345497261bb004f3937e4ef16a5560314e5f1bdb5530df16d0eabe9e796ff674462ec5895c7b4a7e88e739dc3facd3a48c38f48057
+	source = https://git.sr.ht/~craftyguy/terminate/archive/0.5.tar.gz
+	sha512sums = 8d5a320d4ab1d897d3534d7f629e6f36d9fd756fcf23893e6728988f8a09b6b85b3885f1cb495d981542aa64916d33a46d4280e76f1ce6975e86aa88696ddb3d
 
 pkgname = terminate
 

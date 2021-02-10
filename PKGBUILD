@@ -1,6 +1,6 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=terminate
-pkgver=0.4.0
+pkgver=0.5
 pkgrel=0
 pkgdesc="Minimal terminal emulator based on VTE"
 arch=("x86_64")
@@ -11,17 +11,18 @@ makedepends=("gcc" "meson" "ninja" "scdoc")
 provides=("${pkgname}")
 backup=("etc/terminate/config")
 source=("https://git.sr.ht/~craftyguy/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('9e21e57e5a89aaaa5a70ad345497261bb004f3937e4ef16a5560314e5f1bdb5530df16d0eabe9e796ff674462ec5895c7b4a7e88e739dc3facd3a48c38f48057')
+sha512sums=('8d5a320d4ab1d897d3534d7f629e6f36d9fd756fcf23893e6728988f8a09b6b85b3885f1cb495d981542aa64916d33a46d4280e76f1ce6975e86aa88696ddb3d')
 
 build() {
         cd "${srcdir}/${pkgname}-${pkgver}"
-        meson --prefix="${pkgdir}/usr" builddir
-        ninja -C builddir
+        meson --prefix=/usr builddir
+        meson compile -C builddir
 }
 
 package() {
         cd "${srcdir}/${pkgname}-${pkgver}"
-        ninja -C builddir install
+        DESTDIR="$pkgdir" meson install -C builddir
+
         install -Dm644 config "${pkgdir}/etc/${pkgname}/config"
         install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
         install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
