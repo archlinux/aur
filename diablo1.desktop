@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Diablo
+Comment=Action RPG from 1996
+Exec=devilutionx --diablo
+Icon=diablo-devilutionX.png
+Terminal=false
+Type=Application
+X-DCOP-ServiceType=Multi
+X-KDE-StartupNotify=true
+Categories=Game;RolePlaying;
