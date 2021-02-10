@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_shell is a Python GUI plugin providing an interactive shell."
 url='https://wiki.ros.org/rqt_shell'
 
 pkgname='ros-noetic-rqt-shell'
-pkgver='0.4.9'
+pkgver='0.4.10'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -33,9 +33,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="rqt_shell-${pkgver}"
+_dir="rqt_shell-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_shell/archive/${pkgver}.tar.gz")
-sha256sums=('4655145edc9d0645894a122e1347cf6611a3102d6b1a24c4429df0812e51eac1')
+sha256sums=('3810cd16027bfb9c1d2ffe439ee4a0ee37b2ac0526c4bf8eaef47314f8bf4af2')
 
 build() {
 	# Use ROS environment variables.
