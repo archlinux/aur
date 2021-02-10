@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_logger_level provides a GUI plugin for configuring the logger
 url='https://wiki.ros.org/rqt_logger_level'
 
 pkgname='ros-noetic-rqt-logger-level'
-pkgver='0.4.8'
+pkgver='0.4.11'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -34,9 +34,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="rqt_logger_level-${pkgver}"
+_dir="rqt_logger_level-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_logger_level/archive/${pkgver}.tar.gz")
-sha256sums=('e645a8311a8a461b946a512f7700793c54e2b4d82adddd9328c66f5a86b2fcff')
+sha256sums=('4b768cb8048bcdd86b4fe93d8249652d3275dd62e45f32155ef5c136336f55a4')
 
 build() {
 	# Use ROS environment variables.
