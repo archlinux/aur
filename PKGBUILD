@@ -1,16 +1,16 @@
 # Maintaoner: Yamada Hayao <development@fascode.net>
 
-reponame="lightdm-config"
+reponame="dmc"
 pkgname="${reponame}-git"
-pkgver=r15.cb28c6d
+pkgver=r45.2fc4960
 pkgrel=1
-pkgdesc="A simple tool for editing LightDM"
+pkgdesc="An all-in-one tool for configuring major display managers"
 arch=('any')
-url="https://github.com/FascodeNet/lightdm-config"
+url="https://github.com/FascodeNet/dmc"
 license=('SUSHI-WARE')
-depends=('lightdm' )
+depends=('bash' "vi" "util-linux" "crudini")
 makedepends=('git')
-source=("git+https://github.com/FascodeNet/lightdm-config.git")
+source=("git+https://github.com/FascodeNet/dmc.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -19,6 +19,6 @@ pkgver() {
 }
 
 package() {
-    install -m 755 -D "${srcdir}/lightdm-config/lightdm-config" "${pkgdir}/usr/bin/lightdm-config"
-    install -m 755 -D "${srcdir}/lightdm-config/LICENSE.md" "${pkgdir}/usr/share/licenses/lightdm-config/LICENSE.md"
+    install -m 755 -D "${srcdir}/dmc/dmc" "${pkgdir}/usr/bin/dmc"
+    install -m 755 -D "${srcdir}/dmc/LICENSE.md" "${pkgdir}/usr/share/licenses/dmc/LICENSE.md"
 }
