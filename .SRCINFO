@@ -1,12 +1,12 @@
 pkgbase = python-purple-git
 	pkgdesc = Python bind for libpurple using the Cython extension
-	pkgver = 2011.02.23
-	pkgrel = 4
-	url = https://github.com/fahhem/python-purple
+	pkgver = 2020.02.12
+	pkgrel = 0
+	url = https://github.com/monofox/python-purple
 	changelog = CHANGELOG
 	arch = any
 	license = GPL3
-	source = git+https://github.com/fahhem/python-purple.git
+	source = git+https://github.com/monofox/python-purple.git
 	md5sums = SKIP
 
 pkgname = python-purple-git
