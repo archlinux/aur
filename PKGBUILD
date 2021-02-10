@@ -1,6 +1,6 @@
 # Maintainer sgerwk <sgerwk at aol dot com>
 pkgname=felinks
-pkgver=0.13.5
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="actively maintained version of the elinks text browser"
 license=(GPL2)

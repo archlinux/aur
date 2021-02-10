@@ -1,6 +1,6 @@
 pkgbase = felinks
 	pkgdesc = actively maintained version of the elinks text browser
-	pkgver = 0.13.5
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = http://github.com/rkd77/felinks
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = felinks
 	depends = lua51
 	conflicts = elinks
 	conflicts = elinks-git
-	source = git+https://github.com/rkd77/felinks#tag=v0.13.3
+	source = git+https://github.com/rkd77/felinks#tag=v0.14.0
 	sha256sums = SKIP
 
 pkgname = felinks
