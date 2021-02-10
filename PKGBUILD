@@ -4,10 +4,10 @@ pkgdesc="ROS - This rqt plugin ROS package provides easy view of .launch files."
 url='https://wiki.ros.org/rqt_launch'
 
 pkgname='ros-noetic-rqt-launch'
-pkgver='0.4.8'
+pkgver='0.4.9'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -35,9 +35,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="rqt_launch-${pkgver}"
+_dir="rqt_launch-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_launch/archive/${pkgver}.tar.gz")
-sha256sums=('6c3fcde64a2a4458a010ec5dbd7217cf61170ff3a90529ba0d000f43437c2c54')
+sha256sums=('13287eb9eeb85f98c45b41d99b70314f85a2765adba4281808d15e3098811571')
 
 build() {
 	# Use ROS environment variables.

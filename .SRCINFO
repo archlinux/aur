@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-rqt-launch
 	pkgdesc = ROS - This rqt plugin ROS package provides easy view of .launch files.
-	pkgver = 0.4.8
-	pkgrel = 2
+	pkgver = 0.4.9
+	pkgrel = 1
 	url = https://wiki.ros.org/rqt_launch
 	arch = any
 	license = BSD
@@ -16,8 +16,8 @@ pkgbase = ros-noetic-rqt-launch
 	depends = ros-noetic-python-qt-binding
 	depends = ros-noetic-rqt-gui
 	depends = ros-noetic-rospy
-	source = ros-noetic-rqt-launch-0.4.8.tar.gz::https://github.com/ros-visualization/rqt_launch/archive/0.4.8.tar.gz
-	sha256sums = 6c3fcde64a2a4458a010ec5dbd7217cf61170ff3a90529ba0d000f43437c2c54
+	source = ros-noetic-rqt-launch-0.4.9.tar.gz::https://github.com/ros-visualization/rqt_launch/archive/0.4.9.tar.gz
+	sha256sums = 13287eb9eeb85f98c45b41d99b70314f85a2765adba4281808d15e3098811571
 
 pkgname = ros-noetic-rqt-launch
 
