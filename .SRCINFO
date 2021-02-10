@@ -1,15 +1,15 @@
 pkgbase = ros-noetic-qwt-dependency
 	pkgdesc = ROS - This encapsulates the Qwt dependency for a specific ROS distribution and its Qt version.
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://wiki.ros.org/qwt_dependency
 	arch = any
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-noetic-catkin
-	source = ros-noetic-qwt-dependency-1.1.0.tar.gz::https://github.com/ros-visualization/qwt_dependency/archive/1.1.0.tar.gz
-	sha256sums = bb4f0491701c53dd89fc12703fd43715fd1b23f6c66d313f154a26e85e3d2594
+	source = ros-noetic-qwt-dependency-1.1.1.tar.gz::https://github.com/ros-visualization/qwt_dependency/archive/1.1.1.tar.gz
+	sha256sums = f82d080be48ab4c84b6dddc02ce28194eaa6ff229ad74b895d4711a9c6586b0a
 
 pkgname = ros-noetic-qwt-dependency
 

@@ -4,10 +4,10 @@ pkgdesc="ROS - This encapsulates the Qwt dependency for a specific ROS distribut
 url='https://wiki.ros.org/qwt_dependency'
 
 pkgname='ros-noetic-qwt-dependency'
-pkgver='1.1.0'
+pkgver='1.1.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -27,9 +27,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="qwt_dependency-${pkgver}"
+_dir="qwt_dependency-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/qwt_dependency/archive/${pkgver}.tar.gz")
-sha256sums=('bb4f0491701c53dd89fc12703fd43715fd1b23f6c66d313f154a26e85e3d2594')
+sha256sums=('f82d080be48ab4c84b6dddc02ce28194eaa6ff229ad74b895d4711a9c6586b0a')
 
 build() {
 	# Use ROS environment variables.
