@@ -6,7 +6,7 @@
 gitname=pdf.js
 pkgname=chromium-pdfjs-git
 pkgver=2.7.570
-pkgrel=1
+pkgrel=2
 pkgdesc="PDF viewer in Javascript, packaged as a Chromium extension"
 arch=('any')
 url="https://github.com/mozilla/${gitname}"
@@ -28,5 +28,5 @@ build() {
 }
 package() {
    mkdir -p "${pkgdir}/usr/share/chromium/${gitname}"
-   cp -dr --no-preserve=ownership "${srcdir}/${gitname}/build/chromium" "${pkgdir}/usr/share/chromium/${gitname}"
+   cp -dr --no-preserve=ownership "${srcdir}/${gitname}/build/chromium"/* "${pkgdir}/usr/share/chromium/${gitname}/"
 }
