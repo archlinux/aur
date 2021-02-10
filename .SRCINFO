@@ -8,6 +8,9 @@ pkgbase = btusb-qca-0x3004-dkms
 	license = GPL
 	makedepends = linux-headers
 	depends = dkms
+	provides = btusb-qca-0x3004
+	conflicts = btusb-qca-0x3004
+	replaces = btusb-qca-0x3004
 	source = Makefile
 	source = dkms.conf
 	source = btusb.patch
@@ -24,3 +27,4 @@ pkgbase = btusb-qca-0x3004-dkms
 	md5sums = ed7b0912a2e3507068c0d173ed9338fa
 
 pkgname = btusb-qca-0x3004-dkms
+
