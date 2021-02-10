@@ -4,7 +4,7 @@ pkgdesc="ROS - roscreate contains a tool that assists in the creation of ROS fil
 url='https://wiki.ros.org/roscreate'
 
 pkgname='ros-noetic-roscreate'
-pkgver='1.15.6'
+pkgver='1.15.7'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -30,7 +30,7 @@ depends=(
 
 _dir="ros-${pkgver}/tools/roscreate"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros/archive/${pkgver}.tar.gz")
-sha256sums=('1e669196abd03e2ee4562e13f471c5534d70a1b0a9114a3c076af62cf9c0c0b8')
+sha256sums=('7a1e729de9be807862b6ed721475fec74583f6dc0c06b233b06b1b9fda31291e')
 
 build() {
     # Use ROS environment variables.
