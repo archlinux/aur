@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-robot-state-publisher
 	pkgdesc = ROS - This package allows you to publish the state of a robot to tf.
-	pkgver = 1.14.0
-	pkgrel = 4
+	pkgver = 1.15.0
+	pkgrel = 1
 	url = https://wiki.ros.org/robot_state_publisher
 	arch = i686
 	arch = x86_64
@@ -34,8 +34,8 @@ pkgbase = ros-noetic-robot-state-publisher
 	depends = ros-noetic-sensor-msgs
 	depends = eigen
 	depends = orocos-kdl
-	source = ros-noetic-robot-state-publisher-1.14.0.tar.gz::https://github.com/ros/robot_state_publisher/archive/1.14.0.tar.gz
-	sha256sums = 9e328e96a6f798215472fa3c462b8fe77e6dad768a3eda4afedaf3caddb296c1
+	source = ros-noetic-robot-state-publisher-1.15.0.tar.gz::https://github.com/ros/robot_state_publisher/archive/1.15.0.tar.gz
+	sha256sums = 6446223fb1a0c742193a8bce2a2d37fa5ecdd8462322a6643db6181510090903
 
 pkgname = ros-noetic-robot-state-publisher
 
