@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-rostest
 	pkgdesc = ROS - Integration test suite based on roslaunch that is compatible with xUnit frameworks.
-	pkgver = 1.15.7
+	pkgver = 1.15.9
 	pkgrel = 1
 	url = https://github.com/ros/ros_comm
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = ros-noetic-rostest
 	depends = ros-noetic-rospy
 	depends = ros-noetic-rosunit
 	depends = boost
-	source = ros-noetic-rostest-1.15.7.tar.gz::https://github.com/ros/ros_comm/archive/1.15.7.tar.gz
-	sha256sums = 80fdbdd1703c4557444099f0a95d3345e4d9b0552192aaad958bef1ddc842da4
+	source = ros-noetic-rostest-1.15.9.tar.gz::https://github.com/ros/ros_comm/archive/1.15.9.tar.gz
+	sha256sums = ee68c16fe6e2f3bf8fef4cf35552a30160cb3b579dfe18d667c0ba05e69ef90d
 
 pkgname = ros-noetic-rostest
 
