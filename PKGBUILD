@@ -1,9 +1,9 @@
 # Author: Roman Gilg <subdiff@gmail.com>
 
 pkgname=disman-kwinft
-pkgver=5.21.0
+pkgver=5.21.0.beta
 _pkgver=0.521.0-beta.0
-pkgrel=1
+pkgrel=0
 pkgdesc='Qt/C++ display management library'
 arch=(x86_64)
 url="https://gitlab.com/kwinft/disman"
