@@ -1,13 +1,13 @@
 pkgbase = ledger-live
 	pkgdesc = Ledger Live - Desktop
 	pkgver = 2.20.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/LedgerHQ/ledger-live-desktop
 	arch = x86_64
 	license = MIT
 	makedepends = yarn
 	makedepends = python
-	makedepends = nodejs
+	makedepends = nodejs>=12
 	depends = ledger-udev
 	provides = ledger-live
 	conflicts = ledger-live-bin

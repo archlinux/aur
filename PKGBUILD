@@ -5,13 +5,13 @@
 
 pkgname=ledger-live
 pkgver=2.20.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Ledger Live - Desktop"
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live-desktop'
 license=('MIT')
 depends=('ledger-udev')
-makedepends=('yarn' 'python' 'nodejs')
+makedepends=('yarn' 'python' 'nodejs>=12')
 provides=('ledger-live')
 conflicts=('ledger-live-bin')
 source=("https://github.com/LedgerHQ/ledger-live-desktop/archive/v${pkgver}.tar.gz"
