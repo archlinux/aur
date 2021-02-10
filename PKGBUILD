@@ -4,10 +4,10 @@ pkgdesc="ROS - This encapsulates the GL dependency for a specific ROS distributi
 url='https://wiki.ros.org/gl_dependency'
 
 pkgname='ros-noetic-gl-dependency'
-pkgver='1.1.0'
+pkgver='1.1.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -28,9 +28,9 @@ depends=(
 	python-pyqt5
 )
 
-_dir="gl_dependency-${pkgver}"
+_dir="gl_dependency-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/gl_dependency/archive/${pkgver}.tar.gz")
-sha256sums=('415d2cddfd1b06ce2937eac2c6ea1b33d3d2606250baf771a0e65d251fc0d336')
+sha256sums=('c0502c7cc5841e03bdc59f57c0461665a45ec03d7bd9cdda3cd147f87ca67b8c')
 
 build() {
 	# Use ROS environment variables.
