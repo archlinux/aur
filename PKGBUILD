@@ -1,18 +1,19 @@
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com
 
-
-_target=powerpc-none-eabi
+_arch=powerpc
+_target=$_arch-none-eabi
 pkgname=$_target-toolchain
 pkgver=20171221
 pkgrel=2
 pkgdesc="A complete gcc/binutils/newlib toolchain for $_target"
 depends=('zlib' 'bash' 'libmpc')
 url="http://www.gnu.org"
-conflicts=('m68k-elf-gcc' 'm68k-elf-binutils' 'm68k-elf-newlib')
+conflicts=($_target-elf-gcc $_arch-elf-binutils $_arch-elf-newlib)
 arch=('x86_64')
-_gcc=gcc-7.2.0
-_binutils=binutils-2.29.1
-_newlib=newlib-2.5.0.20170922
+depends=(libelf)
+_gcc=gcc-10.2.0
+_binutils=binutils-2.36.1
+_newlib=newlib-4.1.0
 license=('GPL' 'BSD')
 options=('!strip')
 
@@ -20,9 +21,10 @@ source=("http://gnuftp.uib.no/gcc/${_gcc}/${_gcc}.tar.xz"
 	"http://gnuftp.uib.no/binutils/${_binutils}.tar.xz"
 	"ftp://sourceware.org/pub/newlib/${_newlib}.tar.gz")
 
-sha512sums=('f853cd6530b4055d8d8289da74687cb4c6d5f363598d386332d31852b581bac76c3adb7d61889edec3b779f63d8646f0122840f12965ce4a4389ba535dbbb6e1'
-            'd748d22306477d60d921078804d21943248c23fca0707aac9b016a352c01c75ca69e82624ae37fb0bbd03af3b17088a94f60dfe1a86a7ff82e18ece3c24f0fd0'
-            '5f29509c53d2858c0067e2fe33565a8b8e9decfc2761b3616729a274e7747c120a0b82b2c50aae291b182178da274a1540e218d23b86debd56256e17f3651d4b')
+sha512sums=('42ae38928bd2e8183af445da34220964eb690b675b1892bbeb7cd5bb62be499011ec9a93397dba5e2fb681afadfc6f2767d03b9035b44ba9be807187ae6dc65e'
+            'cc24590bcead10b90763386b6f96bb027d7594c659c2d95174a6352e8b98465a50ec3e4088d0da038428abe059bbc4ae5f37b269f31a40fc048072c8a234f4e9'
+            '6a24b64bb8136e4cd9d21b8720a36f87a34397fd952520af66903e183455c5cf19bb0ee4607c12a05d139c6c59382263383cb62c461a839f969d23d3bc4b1d34')
+
 
 
 prepare() {
@@ -31,12 +33,14 @@ prepare() {
 	#we use libiberty from binutils. Otherwise the compilation will fail.
 	rm -rf libiberty
 
-	for i in bfd binutils gas ld libiberty opcodes; do ln -sv ../${_binutils}/$i; done
+	for i in bfd binutils gas ld libiberty libctf opcodes; do ln -sv ../${_binutils}/$i; done
 	for i in newlib libgloss; do ln -sf ../${_newlib}/$i; done
 
 	# hack! - some configure tests for header files using "$CPP $CPPFLAGS"
-        sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
+	_cppflags=$CPPFLAGS
+	unset CPPFLAGS
 
+	CFLAGS="$_cppflags $CFLAGS"
 	mkdir -p "${srcdir}/obj"
 }
 
@@ -44,7 +48,8 @@ build()
 {
 	cd "${srcdir}/obj"
 	"${srcdir}/${_gcc}/configure" --prefix=/usr --libexecdir=/usr/lib --target=${_target} --enable-languages=c,c++ --disable-libstdcxx-pch \
-	--with-newlib --with-libgloss --with-system-zlib --disable-nls
+	--with-newlib --with-libgloss --with-system-zlib --disable-nls --enable-plugins --enable-deterministic-archives --enable-relro --enable-__cxa_atexit \
+   --enable-linker-build-id --enable-plugin --enable-checking=release --enable-host-shared --disable-libssp --disable-libunwind-exceptions
 
 	make
 }
@@ -52,7 +57,7 @@ build()
 package()
 {
 	cd "${srcdir}/obj"
-	make DESTDIR="${pkgdir}" install -j2
+	make install DESTDIR="${pkgdir}" -j1
 	rm -rf "${pkgdir}"/usr/share
 	rm -rf "${pkgdir}"/usr/include
 	rm -rf "${pkgdir}"/usr/lib/libcc1.*
@@ -76,6 +81,7 @@ package()
 
 	#fix permissions to please namcap
 	find "${pkgdir}/usr/${_target}/lib" -name '*.a' -exec chmod 644 {} +
+	chown -R root:root "$pkgdir"
 
 }
 
