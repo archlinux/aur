@@ -4,10 +4,10 @@ pkgdesc="ROS - Tutorial showing how to compile your own C++ program with RViz di
 url='https://wiki.ros.org/librviz_tutorial'
 
 pkgname='ros-noetic-librviz-tutorial'
-pkgver='0.10.3'
+pkgver='0.11.0'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -35,7 +35,7 @@ depends=(
 
 _dir="visualization_tutorials-${pkgver}/librviz_tutorial"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/visualization_tutorials/archive/${pkgver}.tar.gz")
-sha256sums=('a3162d933fea0dd58b99e46fb71ea5d8596ef6e46eaf3a906e4bf20e9ca1bb1c')
+sha256sums=('e592005f3af058ed3fe6f2aeec2d64a6b861dc387b2f7c4d7e3cf1e165373de0')
 
 build() {
 	# Use ROS environment variables.
