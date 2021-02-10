@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-rqt-tf-tree
 	pkgdesc = ROS - rqt_tf_tree provides a GUI plugin for visualizing the ROS TF frame tree.
-	pkgver = 0.6.0
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://wiki.ros.org/rqt_tf_tree
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = ros-noetic-rqt-tf-tree
 	depends = ros-noetic-rospy
 	depends = ros-noetic-geometry-msgs
 	depends = python-rospkg
-	source = ros-noetic-rqt-tf-tree-0.6.0.tar.gz::https://github.com/ros-visualization/rqt_tf_tree/archive/0.6.0.tar.gz
-	sha256sums = 0d5996679310b747ac49d52c39e7869870458065b8ba118ed48b105d9f252604
+	source = ros-noetic-rqt-tf-tree-0.6.2.tar.gz::https://github.com/ros-visualization/rqt_tf_tree/archive/0.6.2.tar.gz
+	sha256sums = 2167fefc172a02d9ae829e96a8dd3280a41c125d3f8840134247f60dd9f6d505
 
 pkgname = ros-noetic-rqt-tf-tree
 

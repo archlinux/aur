@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_tf_tree provides a GUI plugin for visualizing the ROS TF fram
 url='https://wiki.ros.org/rqt_tf_tree'
 
 pkgname='ros-noetic-rqt-tf-tree'
-pkgver='0.6.0'
+pkgver='0.6.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -38,9 +38,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="rqt_tf_tree-${pkgver}"
+_dir="rqt_tf_tree-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_tf_tree/archive/${pkgver}.tar.gz")
-sha256sums=('0d5996679310b747ac49d52c39e7869870458065b8ba118ed48b105d9f252604')
+sha256sums=('2167fefc172a02d9ae829e96a8dd3280a41c125d3f8840134247f60dd9f6d505')
 
 build() {
 	# Use ROS environment variables.
