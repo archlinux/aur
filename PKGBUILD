@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/paullouisageneau/$pkgname"
 license=('LGPL')
 makedepends=('git' 'cmake')
-depends=('openssl' 'libsrtp2')
+depends=('openssl' 'libsrtp')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("git+https://github.com/paullouisageneau/$pkgname.git#tag=$pkgver")

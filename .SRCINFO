@@ -8,7 +8,7 @@ pkgbase = libdatachannel
 	makedepends = git
 	makedepends = cmake
 	depends = openssl
-	depends = libsrtp2
+	depends = libsrtp
 	provides = libdatachannel
 	conflicts = libdatachannel
 	source = git+https://github.com/paullouisageneau/libdatachannel.git#tag=v0.11.1
