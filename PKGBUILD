@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_publisher provides a GUI plugin for publishing arbitrary mess
 url='https://wiki.ros.org/rqt_publisher'
 
 pkgname='ros-noetic-rqt-publisher'
-pkgver='0.4.8'
+pkgver='0.4.9'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -35,9 +35,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="rqt_publisher-${pkgver}"
+_dir="rqt_publisher-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_publisher/archive/${pkgver}.tar.gz")
-sha256sums=('ee0844e85b264187fac4f6442ff6d443e32d475ddea022a74a08b489d7613a05')
+sha256sums=('c572c50f94c47f52f277575577c6dca789c6e2149176995ebd5de896a4459de7')
 
 build() {
 	# Use ROS environment variables.
