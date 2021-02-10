@@ -4,10 +4,10 @@ pkgdesc="ROS - This package contains a C++ base class for URDF parsers."
 url='https://wiki.ros.org/urdf'
 
 pkgname='ros-noetic-urdf-parser-plugin'
-pkgver='1.13.1'
+pkgver='1.13.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -31,7 +31,7 @@ depends=(
 
 _dir="urdf-${pkgver}/urdf_parser_plugin"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/urdf/archive/${pkgver}.tar.gz")
-sha256sums=('9959b9963a5c112f71995405e8aa6d4dcf634e9f38f061ed7577d3db449179d6')
+sha256sums=('6643846ea63504463ec0f2c5ba4c73d965455b5ecc7aed81b860b8b4c8fa7133')
 
 build() {
 	# Use ROS environment variables.
