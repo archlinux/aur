@@ -14,7 +14,7 @@ pkgbase = passman++-lts
 	conflicts = passman++-devel
 	conflicts = passman++
 	source = https://github.com/binex-dsk/passmanpp/archive/1.4.0p.tar.gz
-	md5sums = 520d88de27f0c8d8ac46d1038b8375ce
+	md5sums = 4597ed3a0029c907e171f4cb6c52b7e2
 
 pkgname = passman++-lts
 
