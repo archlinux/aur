@@ -3,17 +3,17 @@ pkgver=v4.71
 pkgrel=1
 pkgdesc="AMD vBIOS flash utility."
 arch=('x86_64')
-url="https://github.com/patrickschur/amdvbflash"
+url="https://github.com/stylesuxx/amdvbflash"
 license=('custom')
 depends=()
 
-source=("git+https://github.com/patrickschur/amdvbflash.git")
+source=("git+https://github.com/stylesuxx/amdvbflash.git")
 md5sums=('SKIP')
 
-pkgver() {
-  cd amdvbflash
-  git describe --tags
-}
+#pkgver() {
+#  cd amdvbflash
+#  git describe --tags
+#}
 
 package() {
   cd amdvbflash
