@@ -3,8 +3,8 @@
 
 pkgname=kcm-grub2-git
 _product="${pkgname%-git}"
-pkgver=0.6.4.r86.g1912ede
-pkgrel=2
+pkgver=0.6.4.r87.g024abc7
+pkgrel=1
 pkgdesc="A KDE Control Module for configuring the GRUB2 bootloader"
 arch=('x86_64')
 url='https://invent.kde.org/system/kcm-grub2'
@@ -37,14 +37,17 @@ pkgver() {
 }
 
 prepare() {
-   export PKG_CONFIG_PATH='/usr/lib/imagemagick6/pkgconfig'
-   cmake -B build -S "${_product}" \
-    -G Ninja \
-    -D BUILD_TESTING=OFF \
-    -Wno-dev
+   cd ${_product}
+   sed -i 's/startup-and-shutdown/session/g' other/kcm_grub2.desktop
 }
 
 build() {
+    export PKG_CONFIG_PATH='/usr/lib/imagemagick6/pkgconfig'
+    cmake -B build -S "${_product}" \
+       -G Ninja \
+       -D BUILD_TESTING=OFF \
+       -Wno-dev
+
    cmake --build build
 }
 
