@@ -6,7 +6,7 @@
 gitname=newsblurbackgroundtab
 pkgname=${gitname}-git
 pkgver=32.bf8d36e
-pkgrel=1
+pkgrel=2
 pkgdesc="Chrome/Chromium extension to open background tabs from newsblur"
 arch=('any')
 url="https://github.com/Lyrrad/${gitname}"
@@ -21,7 +21,7 @@ pkgver() {
 	printf "%s" "${ver//-/.}"
 }
 package() {
-	 mkdir -p "${pkgdir}/usr/share/${pkgname}"
+	 mkdir -p "${pkgdir}/usr/share/chromium/${gitname}"
 	 shopt -u dotglob
-	 cp -dr --no-preserve=ownership "${srcdir}/${gitname}"/* "${pkgdir}/usr/share/${pkgname}/"
+	 cp -dr --no-preserve=ownership "${srcdir}/${gitname}"/* "${pkgdir}/usr/share/chromium/${gitname}/"
 }
