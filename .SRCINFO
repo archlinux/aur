@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-std-srvs
 	pkgdesc = ROS - Common service definitions.
-	pkgver = 1.11.2
-	pkgrel = 2
+	pkgver = 1.11.3
+	pkgrel = 1
 	url = https://wiki.ros.org/std_srvs
 	arch = any
 	license = BSD
@@ -10,8 +10,8 @@ pkgbase = ros-noetic-std-srvs
 	makedepends = ros-noetic-message-generation
 	makedepends = ros-noetic-catkin
 	depends = ros-noetic-message-runtime
-	source = ros-noetic-std-srvs-1.11.2.tar.gz::https://github.com/ros/ros_comm_msgs/archive/1.11.2.tar.gz
-	sha256sums = 7bb9f57ea9e6c5fb0599b247736f4f3b7868d722344fb42bc3055b31626ea250
+	source = ros-noetic-std-srvs-1.11.3.tar.gz::https://github.com/ros/ros_comm_msgs/archive/1.11.3.tar.gz
+	sha256sums = 5b8b91e8671d03ea84ba32a3ea7360bc4594655e7ba3ec6677a984f393aaafbd
 
 pkgname = ros-noetic-std-srvs
 

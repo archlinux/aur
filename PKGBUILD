@@ -4,9 +4,9 @@ pkgdesc="ROS - Common service definitions."
 url='https://wiki.ros.org/std_srvs'
 
 pkgname='ros-noetic-std-srvs'
-pkgver='1.11.2'
+pkgver='1.11.3'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -30,7 +30,7 @@ depends=(
 
 _dir="ros_comm_msgs-${pkgver}/std_srvs"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm_msgs/archive/${pkgver}.tar.gz")
-sha256sums=('7bb9f57ea9e6c5fb0599b247736f4f3b7868d722344fb42bc3055b31626ea250')
+sha256sums=('5b8b91e8671d03ea84ba32a3ea7360bc4594655e7ba3ec6677a984f393aaafbd')
 
 build() {
 	# Use ROS environment variables.
