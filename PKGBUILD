@@ -1,7 +1,7 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=piknik-git
 pkgver=r228.00ee34c
-pkgrel=2
+pkgrel=3
 pkgdesc="Copy/paste anything over the network."
 arch=('any')
 url="https://github.com/jedisct1/${pkgname%-git}"
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
