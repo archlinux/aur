@@ -4,10 +4,10 @@ pkgdesc="ROS - The smach_ros package contains extensions for the SMACH library t
 url='https://wiki.ros.org/smach_ros'
 
 pkgname='ros-noetic-smach-ros'
-pkgver='2.0.1'
+pkgver='2.5.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -38,7 +38,7 @@ depends=(
 
 _dir="executive_smach-${pkgver}/smach_ros"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/executive_smach/archive/${pkgver}.tar.gz")
-sha256sums=('2f7f58064c960fc56de15fdedfd883f62122bd44874787f13c8b4d8a77c45380')
+sha256sums=('f46d9618f7a218501469320f1bab272b6b6675513bc5c4be674ac154d0429ecb')
 
 build() {
 	# Use ROS environment variables.
