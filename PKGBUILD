@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_runtime_monitor provides a GUI plugin viewing DiagnosticsArra
 url='https://wiki.ros.org/rqt_runtime_monitor'
 
 pkgname='ros-noetic-rqt-runtime-monitor'
-pkgver='0.5.7'
+pkgver='0.5.8'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -34,9 +34,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="rqt_runtime_monitor-${pkgver}"
+_dir="rqt_runtime_monitor-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_runtime_monitor/archive/${pkgver}.tar.gz")
-sha256sums=('48f32cfce4c395f15d7de22d842f93f97fceee72dffe0576b9b8f0ae67b131a0')
+sha256sums=('6e320881f2efa4929afd36640154ced9927468a10212f139dca2372365bde35b')
 
 build() {
 	# Use ROS environment variables.

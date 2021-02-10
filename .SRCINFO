@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-rqt-runtime-monitor
 	pkgdesc = ROS - rqt_runtime_monitor provides a GUI plugin viewing DiagnosticsArray messages.
-	pkgver = 0.5.7
-	pkgrel = 2
+	pkgver = 0.5.8
+	pkgrel = 1
 	url = https://wiki.ros.org/rqt_runtime_monitor
 	arch = any
 	license = BSD
@@ -15,8 +15,8 @@ pkgbase = ros-noetic-rqt-runtime-monitor
 	depends = ros-noetic-rqt-gui
 	depends = ros-noetic-rospy
 	depends = python-rospkg
-	source = ros-noetic-rqt-runtime-monitor-0.5.7.tar.gz::https://github.com/ros-visualization/rqt_runtime_monitor/archive/0.5.7.tar.gz
-	sha256sums = 48f32cfce4c395f15d7de22d842f93f97fceee72dffe0576b9b8f0ae67b131a0
+	source = ros-noetic-rqt-runtime-monitor-0.5.8.tar.gz::https://github.com/ros-visualization/rqt_runtime_monitor/archive/0.5.8.tar.gz
+	sha256sums = 6e320881f2efa4929afd36640154ced9927468a10212f139dca2372365bde35b
 
 pkgname = ros-noetic-rqt-runtime-monitor
 
