@@ -2,7 +2,7 @@
 
 pkgname="python-pyod-git"
 pkgver=0.8.6.r0.g885f73c
-pkgrel=1
+pkgrel=2
 pkgdesc="Python toolkit for detecting outlying objects in multivariate data."
 url="https://github.com/yzhao062/pyod"
 depends=('python' 'python-combo-git' 'python-joblib' 'python-matplotlib'
