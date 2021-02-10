@@ -2,8 +2,8 @@
 
 pkgname=sdl2trs
 _pkgname=sdltrs
-pkgver=1.2.14
-_commit=8cd76625
+pkgver=1.2.15
+_commit=9d00df05
 pkgrel=1
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="TRS-80 Model I/III/4/4P emulator (with hardware rendering)"
@@ -15,11 +15,12 @@ source=("$url/-/archive/$_commit/$_pkgname-$_commit.tar.gz")
 sha512sums=('SKIP')
 
 build() {
-  mkdir -p build && cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+  [[ -d build ]] && rm -r build
+  cmake $_pkgname-$_commit \
+        -Bbuild \
         -DCMAKE_BUILD_TYPE=Release \
-        ../$_pkgname-$_commit
-  cmake --build .
+        -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
 }
 
 package() {
