@@ -1,6 +1,6 @@
 pkgbase = dnsviz
 	pkgdesc = Tool suite for analysis and visualization of DNS and DNSSEC
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/dnsviz/dnsviz
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = dnsviz
 	depends = python-libnacl
 	optdepends = bind: needed for some options involving zone files
 	options = !emptydirs
-	source = https://github.com/dnsviz/dnsviz/releases/download/v0.9.1/dnsviz-0.9.1.tar.gz
-	source = https://github.com/dnsviz/dnsviz/releases/download/v0.9.1/dnsviz-0.9.1.tar.gz.asc
+	source = https://github.com/dnsviz/dnsviz/releases/download/v0.9.2/dnsviz-0.9.2.tar.gz
+	source = https://github.com/dnsviz/dnsviz/releases/download/v0.9.2/dnsviz-0.9.2.tar.gz.asc
 	validpgpkeys = 048D0B43891D7E7BCCAAEF011ED2ED92118571E6
-	sha256sums = 368b25ce506c8f5ce0ce9e5a4b1817ace3459bd65883eb3edf6011e2a3a4b330
+	sha256sums = e2d2751f2e2facc2a49ff30f75a0771f4156dee0bda9e888bd8f09fca7212795
 	sha256sums = SKIP
 
 pkgname = dnsviz
