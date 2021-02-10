@@ -1,0 +1,18 @@
+pkgbase = lyr-git
+	pkgdesc = A web scraper for genius.com to find lyrics for a given song.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Satoqz/lyr.git
+	arch = x86_64
+	arch = i686
+	arch = arm
+	license = MIT
+	makedepends = go
+	makedepends = git
+	conflicts = lyr
+	conflicts = lyr-git
+	source = git+https://github.com/Satoqz/lyr.git
+	md5sums = SKIP
+
+pkgname = lyr-git
+
