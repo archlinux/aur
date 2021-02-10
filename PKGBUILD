@@ -4,7 +4,7 @@ pkgdesc="ROS - This is a set of tools for recording from and playing back ROS me
 url='https://wiki.ros.org/rosbag_storage'
 
 pkgname='ros-noetic-rosbag-storage'
-pkgver='1.15.7'
+pkgver='1.15.9'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -51,7 +51,7 @@ depends=(
 
 _dir="ros_comm-${pkgver}/tools/rosbag_storage"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
-sha256sums=('80fdbdd1703c4557444099f0a95d3345e4d9b0552192aaad958bef1ddc842da4')
+sha256sums=('ee68c16fe6e2f3bf8fef4cf35552a30160cb3b579dfe18d667c0ba05e69ef90d')
 
 build() {
 	# Use ROS environment variables.
