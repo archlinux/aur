@@ -2,7 +2,7 @@
 
 _pkgname=namd-multicore-cuda
 pkgname=$_pkgname-bin
-pkgver=2.13
+pkgver=2.14
 pkgrel=1
 pkgdesc="Parallel molecular dynamics code designed for high-performance simulation of large biomolecular systems."
 arch=("x86_64")
@@ -16,7 +16,7 @@ conflicts=("$_pkgname" "$_pkgname-bin" "namd")
 # Current download should be:
 # Linux-x86_64-multicore-CUDA (NVIDIA CUDA acceleration)
 source=("local://NAMD_${pkgver}_Linux-$arch-multicore-CUDA.tar.gz")
-md5sums=('80f7b3a661f5fd80ccac78b7bc32035c')
+md5sums=('d267b77d4c1d40ba43862a4673675c31')
 
 package() {
   cd $srcdir/NAMD_${pkgver}_Linux-$arch-multicore-CUDA
@@ -31,12 +31,6 @@ package() {
   install -Dm 755 $srcdir/NAMD_${pkgver}_Linux-$arch-multicore-CUDA/namd2 "${pkgdir}"/usr/bin/namd2
   install -Dm 755 $srcdir/NAMD_${pkgver}_Linux-$arch-multicore-CUDA/psfgen "${pkgdir}"/usr/bin/psfgen
   install -Dm 755 $srcdir/NAMD_${pkgver}_Linux-$arch-multicore-CUDA/sortreplicas "${pkgdir}"/usr/bin/sortreplicas
-
-  # CUDA and CUFFT libraries
-  install -Dm 644 $srcdir/NAMD_${pkgver}_Linux-$arch-multicore-CUDA/libcudart.so.9.1 \
-                  "${pkgdir}"/usr/lib/libcudart.so.9.1
-  install -Dm 644 $srcdir/NAMD_${pkgver}_Linux-$arch-multicore-CUDA/libcufft.so.9.1 \
-                  "${pkgdir}"/usr/lib/libcufft.so.9.1
 
   # Other modules and scripts
   cp -Rf --preserve=mode $srcdir/NAMD_${pkgver}_Linux-$arch-multicore-CUDA/lib "${pkgdir}"/usr/share/${_pkgname}
