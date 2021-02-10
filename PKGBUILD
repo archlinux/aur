@@ -1,9 +1,9 @@
 # Maintainer: Abdó Roig-Maranges <abdo.roig@gmail.com>
 
-_commit="5d991eb808571ab463694ee1ec31b22c8b753c34" # v0.6.0
+_commit="4e08b6610fed7f97f8004f16aaa939b4d6662384" # v0.8.0
 pkgbase="python-jwcrypto"
 pkgname=("python-jwcrypto" "python2-jwcrypto")
-pkgver=v0.6.0.r0.g5d991eb
+pkgver=v0.8.0.r0.g4e08b66
 pkgrel=1
 pkgdesc="Python implementation of JWK, JWS, JWE specifications"
 arch=("any")
@@ -25,7 +25,7 @@ build() {
 }
 
 package_python-jwcrypto() {
-    depends=("python-cryptography")
+    depends=("python-cryptography" "python-six" "python-deprecated")
     cd "${srcdir}/jwcrypto"
     python setup.py install --skip-build --root="${pkgdir}" --optimize=1
 
@@ -34,7 +34,7 @@ package_python-jwcrypto() {
 }
 
 package_python2-jwcrypto() {
-    depends=("python2-cryptography")
+    depends=("python2-cryptography" "python2-six" "python2-deprecated")
     cd "${srcdir}/jwcrypto"
     python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
 
