@@ -6,7 +6,6 @@ pkgbase = python-purple-git
 	changelog = CHANGELOG
 	arch = any
 	license = GPL3
-	depends = libpurple python2 cython2 git
 	source = git+https://github.com/fahhem/python-purple.git
 	md5sums = SKIP
 
