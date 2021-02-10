@@ -4,10 +4,10 @@ pkgdesc="ROS - CMake lint commands for ROS packages."
 url='https://wiki.ros.org/roslint'
 
 pkgname='ros-noetic-roslint'
-pkgver='0.11.2'
+pkgver='0.12.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -27,9 +27,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="roslint-${pkgver}"
+_dir="roslint-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/roslint/archive/${pkgver}.tar.gz")
-sha256sums=('e86b12ddf03cf1530b3343df797e381bcb8214004c992b7ac280918fd70672f0')
+sha256sums=('3cd2d250944a6dbee6b8326f07be083e85cbd32ca882cbf0e9360ec0cfdd1883')
 
 build() {
 	# Use ROS environment variables.

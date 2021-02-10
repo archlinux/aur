@@ -1,15 +1,15 @@
 pkgbase = ros-noetic-roslint
 	pkgdesc = ROS - CMake lint commands for ROS packages.
-	pkgver = 0.11.2
-	pkgrel = 2
+	pkgver = 0.12.0
+	pkgrel = 1
 	url = https://wiki.ros.org/roslint
 	arch = any
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-noetic-catkin
-	source = ros-noetic-roslint-0.11.2.tar.gz::https://github.com/ros/roslint/archive/0.11.2.tar.gz
-	sha256sums = e86b12ddf03cf1530b3343df797e381bcb8214004c992b7ac280918fd70672f0
+	source = ros-noetic-roslint-0.12.0.tar.gz::https://github.com/ros/roslint/archive/0.12.0.tar.gz
+	sha256sums = 3cd2d250944a6dbee6b8326f07be083e85cbd32ca882cbf0e9360ec0cfdd1883
 
 pkgname = ros-noetic-roslint
 
