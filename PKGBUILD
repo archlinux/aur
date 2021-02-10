@@ -1,6 +1,6 @@
 # Maintainer: Björn "zemrod" Bravin <sinon dot adastrum at gmail dot com>
 pkgname=rawk
-pkgver=0.6.7
+pkgver=0.6.8
 pkgrel=1
 pkgdesc="a minimal tool inspired by gawks string seperation ability"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('rust')
 provides=('rawk')
 conflicts=('rawk')
 source=("$pkgname-v$pkgver.tar.gz::https://gitlab.com/Zemrod/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('c9d2ced1d179b4638b714f07067ed65f')
+md5sums=('68a1cbeb9c1fe18fd8af90c4b561aafc')
 
 build() {
 	cd "$srcdir/$pkgname-v$pkgver"
