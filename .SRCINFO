@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-common-tutorials
 	pkgdesc = ROS - Metapackage that contains common tutorials.
-	pkgver = 0.1.11
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://wiki.ros.org/common_tutorials
 	arch = any
 	license = BSD
@@ -12,8 +12,8 @@ pkgbase = ros-noetic-common-tutorials
 	depends = ros-noetic-turtle-actionlib
 	depends = ros-noetic-nodelet-tutorial-math
 	depends = ros-noetic-actionlib-tutorials
-	source = ros-noetic-common-tutorials-0.1.11.tar.gz::https://github.com/ros/common_tutorials/archive/0.1.11.tar.gz
-	sha256sums = e6015c289219df58253809254baa53dbf2f3190b61d77fac2b2fb8b8c12f3ec1
+	source = ros-noetic-common-tutorials-0.2.0.tar.gz::https://github.com/ros/common_tutorials/archive/0.2.0.tar.gz
+	sha256sums = 61b4f75a846264debe4f8eb4c7090f21079c5cd368f85124cf13eca6340570f3
 
 pkgname = ros-noetic-common-tutorials
 
