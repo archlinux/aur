@@ -2,7 +2,7 @@
 # Contributor: Michael Yang <ohmyarchlinux@pm.me>
 
 pkgname=fmt-git
-pkgver=7.1.3.a750bf3
+pkgver=7.1.3.e6ef927
 pkgrel=1
 pkgdesc='An open-source C++ formatting library providing a fast and safe alternative to C stdio and C++ iostreams'
 url='https://fmt.dev/'
