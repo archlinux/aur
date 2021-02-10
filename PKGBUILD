@@ -1,7 +1,7 @@
 pkgname=kwinft
-pkgver=5.21.0
+pkgver=5.21.0.beta
 _pkgver=5.21.0-beta.0
-pkgrel=1
+pkgrel=0
 pkgdesc='Wayland compositor and X11 window manager'
 arch=(x86_64)
 url="https://gitlab.com/kwinft/kwinft"
