@@ -1,7 +1,7 @@
 # Maintainer: Matthew "Madness" Evan <mattmadness@420blaze.it>
 pkgname=python-purple-git
 pkgver=2011.02.23
-pkgrel=0
+pkgrel=4
 pkgdesc="Python bind for libpurple using the Cython extension"
 arch=(any)
 license=('GPL3')

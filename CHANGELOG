@@ -4,4 +4,7 @@
 	Wrote and added PKGBUILD
 	Wrote and added CHANGELOG
 	Wrote and added .SRCINFO 
-	Added COPYING	
+	Added COPYING
+
+	* 2011.02.23-4 :
+	Fixed install errors	
