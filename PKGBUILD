@@ -4,10 +4,10 @@ pkgdesc="ROS - Package containing PCL (Point Cloud Library)-related ROS messages
 url='https://wiki.ros.org/pcl_msgs'
 
 pkgname='ros-noetic-pcl-msgs'
-pkgver='0.2.0'
+pkgver='0.3.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-noetic-catkin
@@ -29,9 +29,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="pcl_msgs-${pkgver}"
+_dir="pcl_msgs-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/pcl_msgs/archive/${pkgver}.tar.gz")
-sha256sums=('d02be421db01d22f8555f616b3658682ee60a885cc3dc37668fbc28454f562f8')
+sha256sums=('da607cfbdccf2a3a8a8e68be1fe6aee997e8bd52eddfac0644fd720c5ef76314')
 
 build() {
   # Use ROS environment variables

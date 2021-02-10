@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-pcl-msgs
 	pkgdesc = ROS - Package containing PCL (Point Cloud Library)-related ROS messages.
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://wiki.ros.org/pcl_msgs
 	arch = any
 	license = BSD
@@ -14,8 +14,8 @@ pkgbase = ros-noetic-pcl-msgs
 	depends = ros-noetic-message-runtime
 	depends = ros-noetic-sensor-msgs
 	depends = ros-noetic-std-msgs
-	source = ros-noetic-pcl-msgs-0.2.0.tar.gz::https://github.com/ros-perception/pcl_msgs/archive/0.2.0.tar.gz
-	sha256sums = d02be421db01d22f8555f616b3658682ee60a885cc3dc37668fbc28454f562f8
+	source = ros-noetic-pcl-msgs-0.3.0.tar.gz::https://github.com/ros-perception/pcl_msgs/archive/0.3.0.tar.gz
+	sha256sums = da607cfbdccf2a3a8a8e68be1fe6aee997e8bd52eddfac0644fd720c5ef76314
 
 pkgname = ros-noetic-pcl-msgs
 
