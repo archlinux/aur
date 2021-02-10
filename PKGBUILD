@@ -1,6 +1,6 @@
 # Maintainer: esrh : email at esrh at netc dot eu
 pkgname=ames
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Update anki cards with desktop audio and images"
 arch=('any')
