@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-rospack
 	pkgdesc = ROS - ROS Package Tool.
-	pkgver = 2.6.1
+	pkgver = 2.6.2
 	pkgrel = 1
 	url = https://wiki.ros.org/rospack
 	arch = i686
@@ -25,8 +25,8 @@ pkgbase = ros-noetic-rospack
 	depends = pkg-config
 	depends = boost
 	depends = python
-	source = ros-noetic-rospack-2.6.1.tar.gz::https://github.com/ros/rospack/archive/2.6.1.tar.gz
-	sha256sums = 3f963ae217b44eb1bbf128bfcbedfed474c880c6d1cc4379e64dbdd7c8a0d1b9
+	source = ros-noetic-rospack-2.6.2.tar.gz::https://github.com/ros/rospack/archive/2.6.2.tar.gz
+	sha256sums = 85e2cb33ada71eb67d26e84c149f8a5812f9a6e6a1329e4923b95ae74921613a
 
 pkgname = ros-noetic-rospack
 

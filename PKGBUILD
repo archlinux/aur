@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS Package Tool."
 url='https://wiki.ros.org/rospack'
 
 pkgname='ros-noetic-rospack'
-pkgver='2.6.1'
+pkgver='2.6.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -39,9 +39,9 @@ depends=(
 	python
 )
 
-_dir="rospack-${pkgver}"
+_dir="rospack-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/rospack/archive/${pkgver}.tar.gz")
-sha256sums=('3f963ae217b44eb1bbf128bfcbedfed474c880c6d1cc4379e64dbdd7c8a0d1b9')
+sha256sums=('85e2cb33ada71eb67d26e84c149f8a5812f9a6e6a1329e4923b95ae74921613a')
 
 build() {
 	# Use ROS environment variables.
