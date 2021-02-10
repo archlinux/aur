@@ -1,0 +1,30 @@
+pkgbase = alacritty-externalpipe-git
+	pkgdesc = A cross-platform, GPU-accelerated terminal emulator
+	pkgver = 0.8.0.1777.gc453092
+	pkgrel = 1
+	url = https://github.com/alacritty/alacritty
+	arch = x86_64
+	arch = i686
+	license = Apache
+	checkdepends = ttf-dejavu
+	makedepends = rust
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = fontconfig
+	makedepends = ncurses
+	makedepends = desktop-file-utils
+	makedepends = gdb
+	makedepends = libxcb
+	makedepends = git
+	depends = freetype2
+	depends = fontconfig
+	depends = libxi
+	depends = libxcursor
+	depends = libxrandr
+	provides = alacritty
+	conflicts = alacritty
+	source = alacritty::git+https://github.com/Axelen123/alacritty.git#branch=externalpipe
+	sha256sums = SKIP
+
+pkgname = alacritty-externalpipe-git
+
