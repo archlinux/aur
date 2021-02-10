@@ -15,11 +15,7 @@ pkgver() {
    date +%Y%m%d
 }
 
-_inst_initd(){
-   install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
-}
-
 package() {
-   mv "$_filename" -v g15daemon.initd
-   _inst_initd 'g15daemon'
+    install -dm755 "$pkgdir/etc/init.d"
+    install -Dm755 "$srcdir/$_service.initd" "$pkgdir/etc/init.d/$_service"
 }
