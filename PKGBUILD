@@ -4,9 +4,9 @@ pkgdesc="ROS - The actionlib_tutorials package."
 url='https://wiki.ros.org/actionlib/Tutorials'
 
 pkgname='ros-noetic-actionlib-tutorials'
-pkgver='0.1.12'
+pkgver='0.2.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -36,7 +36,7 @@ depends=(
 
 _dir="common_tutorials-${pkgver}/actionlib_tutorials"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/common_tutorials/archive/${pkgver}.tar.gz")
-sha256sums=('ad9c9cc53fd43e74a9004837a809fc548844df177a66bf53740800c9ded7de9b')
+sha256sums=('61b4f75a846264debe4f8eb4c7090f21079c5cd368f85124cf13eca6340570f3')
 
 build() {
 	# Use ROS environment variables.
