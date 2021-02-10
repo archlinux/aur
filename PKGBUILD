@@ -1,11 +1,11 @@
 # Maintainer: Anatol Pomozov
 
 pkgname=booster-git
-pkgver=0.2.r0.g47e4e6b
+pkgver=0.2.r3.ge79aa50
 pkgrel=1
 pkgdesc='Fast and secure initramfs generator'
 arch=(x86_64)
-url='http://github.com/anatol/booster'
+url='https://github.com/anatol/booster'
 license=(MIT)
 depends=(bash)
 makedepends=(git go)
