@@ -1,0 +1,4 @@
+libcamera/
+src/
+pkg/
+*.tar*
