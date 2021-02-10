@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_bag provides a GUI plugin for displaying and replaying ROS ba
 url='https://wiki.ros.org/rqt_bag'
 
 pkgname='ros-noetic-rqt-bag-plugins'
-pkgver='0.4.12'
+pkgver='0.5.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -41,7 +41,7 @@ depends=(
 
 _dir="rqt_bag-${pkgver}/rqt_bag_plugins"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_bag/archive/${pkgver}.tar.gz")
-sha256sums=('99038e0053546f7a4eaff1ff0df3f206494eca254324325cfc315aad5507443a')
+sha256sums=('0a9ad580c34ba7f729821c96a7034fe5819a2c3470dc95d4afbaae068ee9d332')
 
 build() {
 	# Use ROS environment variables.
