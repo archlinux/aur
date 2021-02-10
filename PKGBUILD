@@ -1,7 +1,7 @@
 # Maintainer sgerwk <sgerwk at aol dot com>
 _pkgname=felinks
 pkgname=${_pkgname}-python
-pkgver=0.13.5
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="the elinks text browser, with Python support"
 license=(GPL2)
