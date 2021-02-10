@@ -11,13 +11,11 @@ pkgdesc="Interactive Fiction multi-interpreter that supports all major IF format
 arch=('i686' 'x86_64' 'armv6h')
 url="https://github.com/garglk/garglk"
 license=('GPL')
-depends=('gtk2' 'sdl_mixer' 'sdl_sound' 'libvorbis' 'freetype2')
-#sdl_image ?
+depends=('gtk3' 'sdl2_mixer' 'sdl2' 'libvorbis' 'freetype2')
 makedepends=('ftjam' 'pkgconfig' 'desktop-file-utils' 'git')
 provides=('gargoyle-git')
 conflicts=('gargoyle-mod' 'gargoyle')
 replaces=('gargoyle-mod' 'gargoyle')
-#backup=()
 groups=(inform)
 source=("$pkgname::git+https://github.com/garglk/garglk.git" \
 	"gargoyle.sh" \
@@ -43,7 +41,7 @@ package() {
 	# Install proper IF-reading binaries
 	install -dm755 "$pkgdir/usr/bin/gargoyle-bins"
 	install -m755 "$gsrcdir"/build/dist/* "$pkgdir/usr/bin/gargoyle-bins/"
-	## hurr, durr, I'm dumb and dirty, gotta clean myself
+	## Have to clean ourselves first.
 	rm "$pkgdir/usr/bin/gargoyle-bins/libgarglk.so"
 
 	# Install libgarglk library
@@ -66,7 +64,7 @@ package() {
 	sed -i 's|Icon=gargoyle-house.png|Icon=gargoyle.png|' "$gsrcdir/garglk/gargoyle.desktop"
 	## link it with x-interactive-fiction mimetype
 	echo "MimeType=application/x-interactive-fiction" >> "$gsrcdir/garglk/gargoyle.desktop"
-	## and then install it. Yay~ :3
+	## and then install it.
 	install -dm755 "$pkgdir/usr/share/applications"
 	install -m644 "$gsrcdir/garglk/gargoyle.desktop" "$pkgdir/usr/share/applications/gargoyle.desktop"
 
