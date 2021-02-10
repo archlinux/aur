@@ -1,7 +1,7 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=dav1d-git
-pkgver=r1335.eaedb95
+pkgver=0.8.1.r62.g9732c70
 pkgrel=1
 license=('BSD')
 pkgdesc='AV1 cross-platform Decoder, focused on speed and correctness'
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver () {
     cd dav1d
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build () {
