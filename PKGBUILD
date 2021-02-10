@@ -103,7 +103,7 @@ build() {
     -D dpms=false \
     -D xf86bigfont=false \
     -D xselinux=false \
-    -D dga=false \
+    -D dga=true \
     -D linux_acpi=false \
     -D agp=false \
     -D dri1=false \
