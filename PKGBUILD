@@ -3,7 +3,7 @@
 
 pkgname=muffet-bin
 pkgdesc="Fast website link checker"
-pkgver=2.3.2
+pkgver=2.4.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/raviqqe/muffet"
@@ -11,7 +11,7 @@ license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('9816a3f13bdf81ecaf5443691f7f88b960be8b5ab6e8e941469553e03b86af95')
+sha256sums_x86_64=('f60dc3cbed1314bd1ec2a9240fd2333794b0273fcd1fa57d0d116fdea075e1e9')
 
 package() {
   install -Dm 755 "${pkgname%-bin}" -t "$pkgdir/usr/bin"
