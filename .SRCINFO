@@ -1,4 +1,4 @@
-pkgbase = python-purple-git
+pkgbase = python-purple
 	pkgdesc = Python bind for libpurple using the Cython extension
 	pkgver = 2011.02.23
 	pkgrel = 3
