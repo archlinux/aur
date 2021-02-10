@@ -4,10 +4,10 @@ pkgdesc="ROS - This package contains a number of URDF tutorials."
 url='https://wiki.ros.org/urdf_tutorial'
 
 pkgname='ros-noetic-urdf-tutorial'
-pkgver='0.4.0'
+pkgver='0.5.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -32,9 +32,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="urdf_tutorial-${pkgver}"
+_dir="urdf_tutorial-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/urdf_tutorial/archive/${pkgver}.tar.gz")
-sha256sums=('d918909e6ec039423b434efe44b7a9fa08ea21b43f64c314b985b9c134d9921d')
+sha256sums=('a1670250e4cd22b09e6b33dfaa3ec43c51b4650d1914a28a3325e5a563fc6d5f')
 
 build() {
 	# Use ROS environment variables.
