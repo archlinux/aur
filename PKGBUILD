@@ -1,4 +1,4 @@
-# Maintainer: Daniel Menelkir
+# Maintainer: Daniel Menelkir <menelkir at itroll dot org>
 pkgname=g15daemon-openrc
 pkgver=20210210
 pkgrel=1
