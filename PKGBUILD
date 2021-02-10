@@ -1,17 +1,17 @@
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com
-# Warning: This takes up 4.8G of disk space!
 
 _target=m68k-elf
 pkgname=$_target-toolchain
-pkgver=20210114
+pkgver=20210210
 pkgrel=1
 pkgdesc="A complete gcc/binutils/newlib toolchain for $_target"
-depends=('libelf' 'zlib' 'libmpc')
+depends=('zlib' 'bash' 'libmpc')
 url="http://www.gnu.org"
-conflicts=('m68k-elf-gcc' 'm68k-elf-binutils' 'm68k-elf-newlib')
+conflicts=($_target-gcc $_target-binutils $_target-newlib)
 arch=('x86_64')
+depends=('libelf' 'libmpc')
 _gcc=gcc-10.2.0
-_binutils=binutils-2.35.1
+_binutils=binutils-2.36.1
 _newlib=newlib-4.1.0
 license=('GPL' 'BSD')
 options=('!strip')
@@ -21,22 +21,25 @@ source=("http://gnuftp.uib.no/gcc/${_gcc}/${_gcc}.tar.xz"
 	"ftp://sourceware.org/pub/newlib/${_newlib}.tar.gz")
 
 sha512sums=('42ae38928bd2e8183af445da34220964eb690b675b1892bbeb7cd5bb62be499011ec9a93397dba5e2fb681afadfc6f2767d03b9035b44ba9be807187ae6dc65e'
-            '94ff72708403413b70b247f3af4099ebaa882b6659249869f1ed9941a0f1912e313f08357d470f9fd2359e7f5e5b0eb86285e5eaf883fa8187789d6b1bd304eb'
+            'cc24590bcead10b90763386b6f96bb027d7594c659c2d95174a6352e8b98465a50ec3e4088d0da038428abe059bbc4ae5f37b269f31a40fc048072c8a234f4e9'
             '6a24b64bb8136e4cd9d21b8720a36f87a34397fd952520af66903e183455c5cf19bb0ee4607c12a05d139c6c59382263383cb62c461a839f969d23d3bc4b1d34')
+
+
 
 prepare() {
 	cd "${srcdir}/${_gcc}"
 	
-	for i in bfd binutils gas ld libctf opcodes; do ln -sv ../${_binutils}/$i; done
+	#we use libiberty from binutils. Otherwise the compilation will fail.
+	rm -rf libiberty
+
+	for i in bfd binutils gas ld libiberty libctf opcodes; do ln -sv ../${_binutils}/$i; done
 	for i in newlib libgloss; do ln -sf ../${_newlib}/$i; done
 
-	#hack - use libiberty from binutils, not from gcc.
-	rm -rf libiberty
-	ln -sv ../${_binutils}/libiberty
-
 	# hack! - some configure tests for header files using "$CPP $CPPFLAGS"
-	sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
+	_cppflags=$CPPFLAGS
+	unset CPPFLAGS
 
+	CFLAGS="$_cppflags $CFLAGS"
 	mkdir -p "${srcdir}/obj"
 }
 
@@ -44,7 +47,8 @@ build()
 {
 	cd "${srcdir}/obj"
 	"${srcdir}/${_gcc}/configure" --prefix=/usr --libexecdir=/usr/lib --target=${_target} --enable-languages=c,c++ --disable-libstdcxx-pch \
-	--with-newlib --with-libgloss --with-system-zlib --disable-nls --enable-checking=release
+	--with-newlib --with-libgloss --with-system-zlib --disable-nls --enable-plugins --enable-deterministic-archives --enable-relro --enable-__cxa_atexit \
+   --enable-linker-build-id --enable-plugin --enable-checking=release --enable-host-shared --disable-libssp --disable-libunwind-exceptions
 
 	make
 }
@@ -52,10 +56,11 @@ build()
 package()
 {
 	cd "${srcdir}/obj"
-	make DESTDIR="${pkgdir}" install -j2
+	make install DESTDIR="${pkgdir}" -j1
 	rm -rf "${pkgdir}"/usr/share
 	rm -rf "${pkgdir}"/usr/include
 	rm -rf "${pkgdir}"/usr/lib/libcc1.*
+	rm -rf "${pkgdir}"/usr/lib/bfd-plugins
 	find "${pkgdir}" -name '*.py' -delete 
 
 
@@ -76,6 +81,7 @@ package()
 
 	#fix permissions to please namcap
 	find "${pkgdir}/usr/${_target}/lib" -name '*.a' -exec chmod 644 {} +
+	chown -R root:root "$pkgdir"
 
 }
 
