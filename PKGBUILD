@@ -4,7 +4,7 @@ pkgdesc="ROS - A metapackage to aggregate the packages required to use publish /
 url='https://wiki.ros.org/ros_core'
 
 pkgname='ros-noetic-ros-core'
-pkgver='1.4.1'
+pkgver='1.5.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -51,15 +51,8 @@ depends=(
 )
 
 _dir="metapackages-${pkgver}/ros_core"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/metapackages/archive/${pkgver}.tar.gz"
-        "https://patch-diff.githubusercontent.com/raw/ros/metapackages/pull/31.patch")
-sha256sums=('ef1df96c61c9762555174cc1a0e21e05149f74909d27044be0cd10aa065747a1'
-            'a8648852cff7b2740c5fe523b78309557b7f58e5c010e71a94c341b8cbfd5ba2')
-
-prepare() {
-    cd ${srcdir}/${_dir}/..
-    patch -p1 < ${srcdir}/31.patch
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/metapackages/archive/${pkgver}.tar.gz")
+sha256sums=('5e055b7528d088cf62035d88c78cfd5aefcac2a96d0ce2ac62242f6d6f76d3b0')
 
 build() {
 	# Use ROS environment variables.
