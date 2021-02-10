@@ -7,15 +7,15 @@ pkgbase=linux-odroid
 pkgname=($pkgbase
          $pkgbase-headers)
 _kernelname=${pkgbase#linux}
-pkgver=5.10.14
+pkgver=5.10.15
 pkgrel=1
 arch=('aarch64')
 url="https://github.com/m2x-dev/linux/"
 license=('GPL2')
-makedepends=(bc docbook-xsl dtc git inetutils kmod uboot-tools vboot-utils xmlto)
+makedepends=(bc docbook-xsl dtc git inetutils kmod python uboot-tools vboot-utils xmlto)
 options=('!strip')
 
-_commit=3161bb6ec7e832adf7ecbb0560dd7175abd334c0
+_commit=05743d6dd43671718971846353bc85dd743c83d2
 source=(
   "https://github.com/m2x-dev/linux/archive/${_commit}.tar.gz"
   'config'
@@ -24,9 +24,9 @@ source=(
   '90-linux.hook'
   '01-aegis-crypto.patch'
 )
-b2sums=('905167dc4e1d19ac57a11eb5dc8537983db39bd881480aaa82496e15d12c9fbdc6ff9aed5a86646e28c1712a9685c704209929358aaa413319d020dcf411e81d'
-        '4f11a4cfcdcd9206f3f95475119019e5fdde8d949aadf5c4eac5c57d5ef5dff0403a75887e3f45ea40dba821a8501467820cc8536eff6009ac605b59f4f9866a'
-        '146bfc704a3ce69176055d6612d5c55b0048ccae83c13c27aa3c273424f5a81a3168fbfbcce6c78f6c69cbfd15d1161a46b08489d324495070731dbb43ac5b9f'
+b2sums=('5238acb7f712f7451aadcbce291b39a80aef70bf7b0e874aad7c69c9c244e4275e99724c0c72920708ab987fdd7fed86488af5f6bc23f4d54fc96dd57235fdfd'
+        'c01d95892e2b49ce3e776a65d36ffb0b6ba6bb789488e3e547966da432da7413520455631d982eaa9639802dc8c17b89c9f67eb5869f93d1068d4c508b870ce0'
+        'f0cb39a8e448dc93cd830f1680303ecfcda6c729030ecf0bbf6dd8c57777a12ab33bbd991da4f735ba5869afb59d39f5cf5c7c725cc9ba6a78c235c2fd00251a'
         '40e2e0ac9eec9f9c08593875ca5bb8a26f835e33ae42e3718b98e83d76bbbc51a68395215c707fe58269954127261f7f8d12ec47341d28c672de973f3c4e71e8'
         'f39994fda3d76407b0af192534ca9931782b3e9de4e438a3adbc7640fc794c261102e5c7bfa1523c291ef8c7256c1106e6dbd40814006329c48d90f51c569e82'
         '35f53af7b446f55b426b9b73b7f65dc99c4bacd444364e78666b868b5200dd04cf022dfd2784701684d2ec033076c0856d125df89d9e3b339ef32f749549eaf3')
@@ -75,7 +75,7 @@ build() {
 }
 
 package_linux-odroid() {
-  pkgdesc="The Linux Kernel and modules with patches for ODroid SBCs"
+  pkgdesc="The Linux Kernel and modules with patches for ODROID SBCs"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=('kernel26' "linux=${pkgver}")
@@ -136,7 +136,7 @@ package_linux-odroid() {
 }
 
 package_linux-odroid-headers() {
-  pkgdesc="Header files and scripts for building modules for linux kernel with patches for ODroid SBCs"
+  pkgdesc="Header files and scripts for building modules for linux kernel with patches for ODROID SBCs"
   provides=("linux-headers=${pkgver}")
   conflicts=('linux-headers')
 
