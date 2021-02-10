@@ -1,0 +1,20 @@
+pkgbase = python-pydecor-git
+	pkgdesc = Easy-peasy Python decorators
+	pkgver = 2.0.0.r11.gd506ca8
+	pkgrel = 1
+	url = https://github.com/mplanchard/pydecor
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-dill
+	depends = python-six
+	provides = python-pydecor=2.0.0.r11.gd506ca8
+	conflicts = python-pydecor
+	source = git+https://github.com/mplanchard/pydecor.git
+	sha256sums = SKIP
+
+pkgname = python-pydecor-git
+
