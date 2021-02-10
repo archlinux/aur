@@ -4,9 +4,9 @@ pkgdesc="ROS - Package for Nodelet tutorial."
 url='https://wiki.ros.org/nodelet_tutorial_math'
 
 pkgname='ros-noetic-nodelet-tutorial-math'
-pkgver='0.1.11'
+pkgver='0.2.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -34,7 +34,7 @@ depends=(
 
 _dir="common_tutorials-${pkgver}/nodelet_tutorial_math"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/common_tutorials/archive/${pkgver}.tar.gz")
-sha256sums=('e6015c289219df58253809254baa53dbf2f3190b61d77fac2b2fb8b8c12f3ec1')
+sha256sums=('61b4f75a846264debe4f8eb4c7090f21079c5cd368f85124cf13eca6340570f3')
 
 build() {
 	# Use ROS environment variables.

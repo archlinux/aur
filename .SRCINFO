@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-nodelet-tutorial-math
 	pkgdesc = ROS - Package for Nodelet tutorial.
-	pkgver = 0.1.11
-	pkgrel = 4
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://wiki.ros.org/nodelet_tutorial_math
 	arch = i686
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = ros-noetic-nodelet-tutorial-math
 	depends = ros-noetic-nodelet
 	depends = ros-noetic-std-msgs
 	depends = ros-noetic-roscpp
-	source = ros-noetic-nodelet-tutorial-math-0.1.11.tar.gz::https://github.com/ros/common_tutorials/archive/0.1.11.tar.gz
-	sha256sums = e6015c289219df58253809254baa53dbf2f3190b61d77fac2b2fb8b8c12f3ec1
+	source = ros-noetic-nodelet-tutorial-math-0.2.0.tar.gz::https://github.com/ros/common_tutorials/archive/0.2.0.tar.gz
+	sha256sums = 61b4f75a846264debe4f8eb4c7090f21079c5cd368f85124cf13eca6340570f3
 
 pkgname = ros-noetic-nodelet-tutorial-math
 
