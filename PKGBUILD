@@ -1,12 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-native
-_srctag=5.13-5
+_srctag=5.13-6
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.1
 _monover=5.1.1
-pkgrel=4
+pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
 arch=(x86_64)
@@ -88,6 +88,8 @@ optdepends=(
   libxslt               lib32-libxslt
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   sdl2                  lib32-sdl2
+  speex                 lib32-speex
+  opus                  lib32-opus
   libgphoto2
   sane
   gsm
@@ -173,20 +175,21 @@ prepare() {
     popd
     popd
 
+
     patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
     patch -p1 -i "$srcdir"/proton-user_compat_data.patch
 
     # Export CFLAGS used by upstream if building for redistribution
     # -O2 is adjusted to -O3 since AVX is disabled
-    #export CFLAGS="-O3 -march=nocona -mtune=core-avx2"
-    #export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2"
+#    export CFLAGS="-O3 -march=nocona -mtune=core-avx2"
+#    export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2"
 
     # Uncomment to enable dxvk async patch.
     # Enable at your own risk. If you don't know what it is,
     # and its implications, leave it as is. You have been warned.
     # I am not liable if anything happens to you by using it.
-    #patch -p1 -i "$srcdir"/dxvk-async.patch
+#    patch -p1 -i "$srcdir"/dxvk-async.patch
     # Uncomment to enable extra optimizations
     # Patch crossfiles with extra optimizations from makepkg.conf
     patch -p1 -i "$srcdir"/dxvk-extraopts.patch
@@ -235,8 +238,8 @@ prepare() {
 build() {
     cd build
     ../proton/configure.sh \
+        --steam-runtime=native \
         --no-steam-runtime \
-        --with-ffmpeg \
         --build-name="${pkgname}"
 
     # Use -mno-avx for wine too
@@ -256,7 +259,6 @@ build() {
     export WINEFSYNC=0
     export CARGO_HOME="$srcdir/build/cargo"
     SUBMAKE_JOBS="${MAKEFLAGS/-j/}" \
-        NO_DXVK=0 \
         SYSTEM_GECKO=0 \
         SYSTEM_MONO=0 \
         make -j1 dist
@@ -266,53 +268,34 @@ package() {
     cd build
 
     local _compatdir="$pkgdir/usr/share/steam/compatibilitytools.d"
-
     mkdir -p "$_compatdir"
-    mv dist "$_compatdir/${pkgname}"
-
-    i686-w64-mingw32-strip --strip-unneeded \
-        "$_compatdir/${pkgname}"/dist/lib/wine/{,fakedlls/,dxvk/,vkd3d-proton/}*.dll
-    i686-w64-mingw32-strip --strip-unneeded \
-        "$_compatdir/${pkgname}"/dist/lib/wine/{,fakedlls/}*.exe
-    x86_64-w64-mingw32-strip --strip-unneeded \
-        "$_compatdir/${pkgname}"/dist/lib64/wine/{,fakedlls/,dxvk/,vkd3d-proton/}*.dll
-    x86_64-w64-mingw32-strip --strip-unneeded \
-        "$_compatdir/${pkgname}"/dist/lib64/wine/{,fakedlls/}*.exe
-
-    local _geckodir="$_compatdir/${pkgname}/dist/share/wine/gecko/wine-gecko-${_geckover}"
-    for ext in "dll" "exe"; do
-      find "$_geckodir"-x86/ \
-        -iname "*.$ext" \
-        -execdir i686-w64-mingw32-strip --strip-unneeded {} \;
-    done
-    for ext in "dll" "exe"; do
-      find "$_geckodir"-x86_64/ \
-        -iname "*.$ext" \
-        -execdir x86_64-w64-mingw32-strip --strip-unneeded {} \;
-    done
-
-    local _monodir="$_compatdir/${pkgname}/dist/share/wine/mono/wine-mono-${_monover}"
-    for ext in "dll" "exe"; do
-      find "$_monodir"/lib/mono/ \
-        -iname "*.$ext" \
-        -execdir i686-w64-mingw32-strip --strip-unneeded {} \;
-    done
-    for ext in "x86.dll" "x86.exe"; do
-      find "$_monodir"/ \
-        -iname "*$ext" \
-        -execdir i686-w64-mingw32-strip --strip-unneeded {} \;
-    done
-    i686-w64-mingw32-strip --strip-unneeded "$_monodir"/lib/x86/*.dll
-    for ext in "x86_64.dll" "x86_64.exe"; do
-      find "$_monodir"/ \
-        -iname "*$ext" \
-        -execdir x86_64-w64-mingw32-strip --strip-unneeded {} \;
-    done
-    x86_64-w64-mingw32-strip --strip-unneeded "$_monodir"/lib/x86_64/*.dll
+    cp -rf --no-dereference --preserve=mode,links dist "$_compatdir/${pkgname}"
 
     mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
     mv "$_compatdir/${pkgname}"/LICENSE{,.OFL} \
         "$pkgdir/usr/share/licenses/${pkgname}"
+
+    cd "$_compatdir/${pkgname}/dist"
+    i686-w64-mingw32-strip --strip-unneeded \
+        $(find lib/wine -iname "*.dll" -or -iname "*.exe")
+    x86_64-w64-mingw32-strip --strip-unneeded \
+        $(find lib64/wine -iname "*.dll" -or -iname "*.exe")
+
+    local _geckodir="share/wine/gecko/wine-gecko-${_geckover}"
+    i686-w64-mingw32-strip --strip-unneeded \
+        $(find "$_geckodir"-x86 -iname "*.dll" -or -iname "*.exe")
+    x86_64-w64-mingw32-strip --strip-unneeded \
+        $(find "$_geckodir"-x86_64 -iname "*.dll" -or -iname "*.exe")
+
+    local _monodir="share/wine/mono/wine-mono-${_monover}"
+    i686-w64-mingw32-strip --strip-unneeded \
+        $(find "$_monodir"/lib/mono -iname "*.dll" -or -iname "*.exe")
+    i686-w64-mingw32-strip --strip-unneeded \
+        "$_monodir"/lib/x86/*.dll \
+        $(find "$_monodir" -iname "*x86.dll" -or -iname "*x86.exe")
+    x86_64-w64-mingw32-strip --strip-unneeded \
+        "$_monodir"/lib/x86_64/*.dll \
+        $(find "$_monodir" -iname "*x86_64.dll" -or -iname "*x86_64.exe")
 }
 
 sha256sums=('SKIP'
@@ -333,7 +316,7 @@ sha256sums=('SKIP'
             '06a00cedf391ee07bbca0b3282e5c8ad9d950446d50648d2ff417716816fd1ab'
             'ea5246e4c91d1aa1226658e1749b6e5d0e9353b52b14df79c4b93b6e61a3c59e'
             'b17ac815afbf5eef768c4e8d50800be02af75c8b230d668e239bad99616caa82'
-            '7688cbba34c7e47252f6ab6341b6b5ec25ffcea9f68af65fcceaa9a8073e32ef'
+            '1e6dc8c12191ff7866b156d270918e79826583c21ef216ce63a0f8de4076604a'
             '8263a3ffb7f8e7a5d81bfbffe1843d6f84502d3443fe40f065bcae02b36ba954'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
             '36aaba6847e4577df4a496d88c11b4b7049773f1f2b90aa4545093e16d5c6066'
