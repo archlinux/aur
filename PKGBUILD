@@ -12,7 +12,7 @@ groups=()
 depends=()
 makedepends=()
 checkdepends=()
-optdepends=()
+optdepends=("yoctolib-cmdlines: cli binaries")
 provides=()
 conflicts=()
 replaces=()
@@ -32,5 +32,4 @@ package() {
 	install -Dm755 "64bits/VirtualHub" "${pkgdir}/usr/bin"
 	install -Dm644 "startup_script/y${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/"
 	install -Dm644 udev_conf/* "${pkgdir}/etc/udev/rules.d/"
-
 }
