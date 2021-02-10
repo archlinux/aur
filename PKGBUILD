@@ -1,10 +1,9 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Det
 
 pkgname=eglexternalplatform-git
-_srcname=eglexternalplatform
-pkgver=r4.7c8f8e2
-pkgrel=2
+pkgver=1.1.r0.g7c8f8e2
+pkgrel=1
 pkgdesc='EGL External Platform interface (git version)'
 arch=('any')
 url='https://github.com/NVIDIA/eglexternalplatform/'
@@ -16,16 +15,11 @@ source=('git+https://github.com/NVIDIA/eglexternalplatform.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_srcname"
-    
-    # git, no tags available
-    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git -C eglexternalplatform describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 package() {
-    cd "$_srcname"
-    
-    install -D -m644 interface/* -t "${pkgdir}/usr/include/EGL"
-    install -D -m644 *.pc -t "${pkgdir}/usr/share/pkgconfig"
-    install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 eglexternalplatform/interface/* -t "${pkgdir}/usr/include/EGL"
+    install -D -m644 eglexternalplatform/*.pc -t "${pkgdir}/usr/share/pkgconfig"
+    install -D -m644 eglexternalplatform/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 } 
