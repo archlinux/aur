@@ -4,10 +4,10 @@ pkgdesc="ROS - diagnostic_common_diagnostics."
 url='https://wiki.ros.org/diagnostic_common_diagnostics'
 
 pkgname='ros-noetic-diagnostic-common-diagnostics'
-pkgver='1.9.3'
+pkgver='1.10.3'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -37,7 +37,7 @@ depends=(
 
 _dir="diagnostics-${pkgver}/diagnostic_common_diagnostics"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/diagnostics/archive/${pkgver}.tar.gz")
-sha256sums=('3b2d3bb7bb333b8685fa084e086c00a044803dac41ff58351161440931d23550')
+sha256sums=('ab9637e43fe742e89e08a1d9389321c89fe1d3dbaa206df9a2e8f96456518068')
 
 build() {
 	# Use ROS environment variables.

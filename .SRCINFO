@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-diagnostic-common-diagnostics
 	pkgdesc = ROS - diagnostic_common_diagnostics.
-	pkgver = 1.9.3
-	pkgrel = 2
+	pkgver = 1.10.3
+	pkgrel = 1
 	url = https://wiki.ros.org/diagnostic_common_diagnostics
 	arch = any
 	license = BSD
@@ -16,8 +16,8 @@ pkgbase = ros-noetic-diagnostic-common-diagnostics
 	depends = ros-noetic-diagnostic-updater
 	depends = python-psutil
 	depends = hddtemp
-	source = ros-noetic-diagnostic-common-diagnostics-1.9.3.tar.gz::https://github.com/ros/diagnostics/archive/1.9.3.tar.gz
-	sha256sums = 3b2d3bb7bb333b8685fa084e086c00a044803dac41ff58351161440931d23550
+	source = ros-noetic-diagnostic-common-diagnostics-1.10.3.tar.gz::https://github.com/ros/diagnostics/archive/1.10.3.tar.gz
+	sha256sums = ab9637e43fe742e89e08a1d9389321c89fe1d3dbaa206df9a2e8f96456518068
 
 pkgname = ros-noetic-diagnostic-common-diagnostics
 
