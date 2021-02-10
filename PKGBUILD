@@ -6,7 +6,7 @@
 
 pkgsubn=https-everywhere
 pkgname=${pkgsubn}-chrome-git
-pkgver=66838.5bc8cdf05e
+pkgver=67593.545740dfed
 pkgrel=1
 pkgdesc="Chrome/Chromium extension to use HTTPS whenever possible - git/dev"
 arch=('any')
@@ -22,9 +22,9 @@ source=(
 sha512sums=(SKIP SKIP SKIP)
 
 pkgver() {
-	cd "${srcdir}/${pkgsubn}"
-	local ver="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-	printf "%s" "${ver//-/.}"
+    cd "${srcdir}/${pkgsubn}"
+    local ver="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    printf "%s" "${ver//-/.}"
 }
 prepare() {
     cd "${srcdir}/${pkgsubn}"
@@ -34,11 +34,11 @@ prepare() {
     git submodule update
 }
 build() {
-	cd "${srcdir}/${pkgsubn}"
-	./make.sh
+    cd "${srcdir}/${pkgsubn}"
+    ./make.sh
 }
 package() {
-	 mkdir -p "${pkgdir}/usr/share/${pkgname}"
-	 shopt -s dotglob
-	 cp -dr --no-preserve=ownership "${srcdir}/${pkgsubn}/pkg/crx-cws"/* "${pkgdir}/usr/share/${pkgname}"
+    mkdir -p "${pkgdir}/usr/share/chromium/${gitname}"
+    shopt -s dotglob
+    cp -dr --no-preserve=ownership "${srcdir}/${pkgsubn}/pkg/crx-cws"/* "${pkgdir}/usr/share/chromium/${gitname}"
 }
