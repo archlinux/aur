@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_common_plugins metapackage provides ROS backend graphical too
 url='https://wiki.ros.org/rqt_common_plugins'
 
 pkgname='ros-noetic-rqt-common-plugins'
-pkgver='0.4.8'
+pkgver='0.4.9'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -48,9 +48,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="rqt_common_plugins-${pkgver}"
+_dir="rqt_common_plugins-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_common_plugins/archive/${pkgver}.tar.gz")
-sha256sums=('73cba40630e4bb41f1fa2960d5b03925e878ee90ea59bd5117961c231bea9819')
+sha256sums=('8e60424081e7e278b7f9bba214bc4cda0d86bee1a142556153946acf9437b391')
 
 build() {
 	# Use ROS environment variables.

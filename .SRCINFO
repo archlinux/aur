@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-rqt-common-plugins
 	pkgdesc = ROS - rqt_common_plugins metapackage provides ROS backend graphical tools suite that can be used on/off of robot runtime.
-	pkgver = 0.4.8
-	pkgrel = 2
+	pkgver = 0.4.9
+	pkgrel = 1
 	url = https://wiki.ros.org/rqt_common_plugins
 	arch = any
 	license = BSD
@@ -29,8 +29,8 @@ pkgbase = ros-noetic-rqt-common-plugins
 	depends = ros-noetic-rqt-image-view
 	depends = ros-noetic-rqt-py-console
 	depends = ros-noetic-rqt-reconfigure
-	source = ros-noetic-rqt-common-plugins-0.4.8.tar.gz::https://github.com/ros-visualization/rqt_common_plugins/archive/0.4.8.tar.gz
-	sha256sums = 73cba40630e4bb41f1fa2960d5b03925e878ee90ea59bd5117961c231bea9819
+	source = ros-noetic-rqt-common-plugins-0.4.9.tar.gz::https://github.com/ros-visualization/rqt_common_plugins/archive/0.4.9.tar.gz
+	sha256sums = 8e60424081e7e278b7f9bba214bc4cda0d86bee1a142556153946acf9437b391
 
 pkgname = ros-noetic-rqt-common-plugins
 
