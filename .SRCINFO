@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-rosgraph
 	pkgdesc = ROS - rosgraph contains the rosgraph command-line tool, which prints information about the ROS Computation Graph.
-	pkgver = 1.15.4
+	pkgver = 1.15.9
 	pkgrel = 1
 	url = https://wiki.ros.org/rosgraph
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = ros-noetic-rosgraph
 	depends = python-yaml
 	depends = python-netifaces
 	depends = python-rospkg
-	source = ros-noetic-rosgraph-1.15.4.tar.gz::https://github.com/ros/ros_comm/archive/1.15.4.tar.gz
-	sha256sums = d5c96a81e0c8554b77666bca5dcc68e03083a761a117038ff9b65f9643751c9e
+	source = ros-noetic-rosgraph-1.15.9.tar.gz::https://github.com/ros/ros_comm/archive/1.15.9.tar.gz
+	sha256sums = ee68c16fe6e2f3bf8fef4cf35552a30160cb3b579dfe18d667c0ba05e69ef90d
 
 pkgname = ros-noetic-rosgraph
 
