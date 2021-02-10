@@ -5,6 +5,7 @@ pkgbase = yoctolib-cmdlines
 	url = https://www.yoctopuce.com
 	arch = x86_64
 	license = GPL
+	optdepends = virtualhub: web server daemon
 	source = https://www.yoctopuce.com/FR/downloads/Cmdlines.linux_intel.43781.zip
 	sha256sums = SKIP
 
