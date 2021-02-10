@@ -7,11 +7,11 @@ msg() {
 }
 
 post_install() {
-
+post_upgrade
 }
 
 post_upgrade() {
-
+    echo " "
 }
 
 # vim: ts=2 sw=2 et:
