@@ -10,6 +10,7 @@ pkgbase = wlrctl-git
 	makedepends = ninja
 	depends = wayland
 	depends = libxkbcommon
+	provides = wlrctl
 	source = wlrctl-git::git+https://git.sr.ht/~brocellous/wlrctl
 	sha1sums = SKIP
 
