@@ -1,26 +1,20 @@
 # Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
 
 pkgname=groff-git
-pkgver=1.23.0.rc1.23.g11f79d67
+pkgver=1.23.0.rc1.199.g79a168ad
 pkgrel=1
 pkgdesc="GNU Troff. Official git trunk."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/groff/"
 license=('GPL')
-depends=('perl' 'uchardet')
-makedepends=('git' 'netpbm' 'psutils' 'ghostscript' 'libxaw')
+depends=('netpbm' 'psutils' 'ghostscript' 'perl' 'libxaw')
+makedepends=('git')
 conflicts=('groff')
 provides=('groff')
 source=(
 	"$pkgname::git://git.savannah.gnu.org/groff.git" 
         "gnulib-git::git://git.sv.gnu.org/gnulib.git"
 	'site.tmac'
-)
-optdepends=(
-	'ghostscript:  PDF, HTML generation and other tasks.'
-	'netpbm:       HTML generation and other tasks.'
-	'psutils:      HTML generation and other tasks.'
-	'libxaw:       Enable gxditvew.'
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -31,10 +25,9 @@ pkgver() {
   printf "%s" "$(git describe | sed 's/\-/\./g')"
 }
 
-
 prepare() {
   cd "$srcdir/$pkgname"
-  sed -i.bak -e "s/\[2\.62\]/\[2\.63\]/" configure.ac
+  sed -i.bak -e "s/\[2\.62\]/\[2\.69\]/" configure.ac
   ./bootstrap --gnulib-srcdir="$srcdir"/gnulib-git --bootstrap-sync --no-git
 }
 
@@ -42,13 +35,15 @@ build() {
   mkdir -p "$srcdir/$pkgname"/build
   cd "$srcdir/$pkgname"/build
 
+  export CC="clang"
+  export CXX="clang++"
   local _configopts=(
     --prefix=/usr
     --disable-rpath
-    --with-uchardet
     --with-x
     --with-appresdir=/usr/share/X11/app-defaults
     --with-doc=yes
+    --with-uchardet=no
   )
 
   ../configure "${_configopts[@]}"
