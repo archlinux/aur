@@ -2,7 +2,7 @@
 
 pkgname=vscode-html-languageserver
 _parent=vscode
-pkgver=1.52.1
+pkgver=1.53.1
 pkgrel=1
 pkgdesc="HTML Language server from vscode"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(nodejs)
 makedepends=(typescript npm)
 source=("$_parent-$pkgver.tar.gz::https://github.com/microsoft/vscode/archive/$pkgver.tar.gz"
 	"vscode-html-languageserver")
-sha256sums=('4a2b4e3500bff73503322fc3a68099ec4151d3e800cf2bb6e9478f2e94637b6a'
+sha256sums=('e64d6962389cb1e1f09558fa231f1e0eece87a059b09d6ba55a894e994997a39'
             'SKIP')
 
 prepare() {
