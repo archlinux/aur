@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_dep provides a GUI plugin for visualizing the ROS dependency 
 url='https://wiki.ros.org/rqt_dep'
 
 pkgname='ros-noetic-rqt-dep'
-pkgver='0.4.9'
+pkgver='0.4.10'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -34,9 +34,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="rqt_dep-${pkgver}"
+_dir="rqt_dep-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_dep/archive/${pkgver}.tar.gz")
-sha256sums=('cc303287625570a5f615576c539fd0e7b13ab3b4d8b8759ad32f1f9e5e3c2b21')
+sha256sums=('08668f6577435c29787e0454ab6880afef58fe49187dca402738b87398d11602')
 
 build() {
 	# Use ROS environment variables.

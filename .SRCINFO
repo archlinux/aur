@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-rqt-dep
 	pkgdesc = ROS - rqt_dep provides a GUI plugin for visualizing the ROS dependency graph.
-	pkgver = 0.4.9
-	pkgrel = 2
+	pkgver = 0.4.10
+	pkgrel = 1
 	url = https://wiki.ros.org/rqt_dep
 	arch = any
 	license = BSD
@@ -15,8 +15,8 @@ pkgbase = ros-noetic-rqt-dep
 	depends = ros-noetic-python-qt-binding
 	depends = ros-noetic-qt-dotgraph
 	depends = python-rospkg
-	source = ros-noetic-rqt-dep-0.4.9.tar.gz::https://github.com/ros-visualization/rqt_dep/archive/0.4.9.tar.gz
-	sha256sums = cc303287625570a5f615576c539fd0e7b13ab3b4d8b8759ad32f1f9e5e3c2b21
+	source = ros-noetic-rqt-dep-0.4.10.tar.gz::https://github.com/ros-visualization/rqt_dep/archive/0.4.10.tar.gz
+	sha256sums = 08668f6577435c29787e0454ab6880afef58fe49187dca402738b87398d11602
 
 pkgname = ros-noetic-rqt-dep
 
