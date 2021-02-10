@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-rosmsg
 	pkgdesc = ROS - rosmsg contains two command-line tools: rosmsg and rossrv.
-	pkgver = 1.15.7
+	pkgver = 1.15.9
 	pkgrel = 1
 	url = https://wiki.ros.org/rosmsg
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = ros-noetic-rosmsg
 	depends = ros-noetic-genmsg
 	depends = ros-noetic-roslib
 	depends = python-rospkg
-	source = ros-noetic-rosmsg-1.15.7.tar.gz::https://github.com/ros/ros_comm/archive/1.15.7.tar.gz
-	sha256sums = 80fdbdd1703c4557444099f0a95d3345e4d9b0552192aaad958bef1ddc842da4
+	source = ros-noetic-rosmsg-1.15.9.tar.gz::https://github.com/ros/ros_comm/archive/1.15.9.tar.gz
+	sha256sums = ee68c16fe6e2f3bf8fef4cf35552a30160cb3b579dfe18d667c0ba05e69ef90d
 
 pkgname = ros-noetic-rosmsg
 
