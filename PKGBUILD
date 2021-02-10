@@ -3,8 +3,8 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=youtube-dl
-pkgver=2021.02.04.1
-pkgrel=2
+pkgver=2021.02.10
+pkgrel=1
 pkgdesc="A command-line program to download videos from YouTube.com and a few more sites"
 arch=('any')
 url="https://ytdl-org.github.io/youtube-dl/"
@@ -16,7 +16,7 @@ optdepends=('ffmpeg: for video post-processing'
             'atomicparsley: for embedding thumbnails into m4a files'
             'python-pycryptodome: for hlsnative downloader')
 source=("https://github.com/ytdl-org/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.sig})
-sha256sums=('0a4b3865ab0471d26c5977f1390b555e4e222c1cfff5bed9e2f52fd128bdc866'
+sha256sums=('d607adf66b7047865733f7d05af9478118ee4dd974ef9f971563e11de7f29122'
             'SKIP')
 validpgpkeys=('ED7F5BF46B3BBED81C87368E2C393E0F18A9236D') # Sergey M. <dstftw@gmail.com>
 
@@ -28,12 +28,12 @@ prepare() {
 
 build() {
   cd ${pkgname}
-  export PYTHONHASHSEED=0
   python setup.py build
 }
 
 package() {
   cd ${pkgname}
+  export PYTHONHASHSEED=0
   python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
   mv "${pkgdir}/usr/share/bash-completion/completions/${pkgname}.bash-completion" \
      "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
