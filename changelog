@@ -1,3 +1,9 @@
+2021-02-10 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.0.3.2-1:
+    Fixed IPC not starting in latest docker release of 5.0.3.1.
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
 2021-02-09 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.0.3.1-1:
     We've renamed our master branch to main, following the same decision made by Dotnet, Git and GitHub. While this change is mostly transparent for everybody, our master Docker build is now also available under main tag (which considers only people using our master builds, those that are already well aware of breaking changes).
