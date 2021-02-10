@@ -2,7 +2,7 @@
 
 pkgname=v2raya-bin
 _pkgname=v2raya
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 install=.INSTALL
 pkgdesc="A web GUI client of Project V which supports VMess, VLESS, SS, SSR, Trojan and Pingtunnel protocols"
@@ -13,32 +13,32 @@ depends=('glibc' 'v2ray')
 provides=('v2raya')
 conflicts=('v2raya')
 
-sha_service=0249389e1b8e5a2b05f16dcde7fb57f7de37ca92
+sha_service=70df38300c124c40cc831fcf15f2ef1ba3f1120c
 sha_png=5c51b3e670733d6d1cf22e1cb5fe45305f4b8014
 sha_desktop=f4abf270b2ce588a4e8ab4b5ccdc9168b96791fe
-sha_web=5ee015358ff69112cf7ce18120cce7ce122b4f87
+sha_web=03dc549fb6dc0450455a5220850362a779b72c21
 
 source=(
     "v2raya.service"
     "v2raya.png"
     "v2raya.desktop"
-    "web_v${pkgver}.tar.gz::https://raw.fastgit.org/v2rayA/v2raya-apt/master/pool/main/v/v2raya/web_v${pkgver}.tar.gz"
+    "web_v${pkgver}.tar.gz::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/web_v${pkgver}.tar.gz"
 )
 
 source_i686=(
-    "v2raya_v${pkgver}::https://raw.fastgit.org/v2rayA/v2raya-apt/master/pool/main/v/v2raya/v2raya_linux_386_v${pkgver}"
+    "v2raya_v${pkgver}::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_386_v${pkgver}"
 )
 source_x86_64=(
-    "v2raya_v${pkgver}::https://raw.fastgit.org/v2rayA/v2raya-apt/master/pool/main/v/v2raya/v2raya_linux_amd64_v${pkgver}"
+    "v2raya_v${pkgver}::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_amd64_v${pkgver}"
 )
 source_aarch64=(
-    "v2raya_v${pkgver}::https://raw.fastgit.org/v2rayA/v2raya-apt/master/pool/main/v/v2raya/v2raya_linux_arm64_v${pkgver}"
+    "v2raya_v${pkgver}::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_arm64_v${pkgver}"
 )
 source_armv6h=(
-    "v2raya_v${pkgver}::https://raw.fastgit.org/v2rayA/v2raya-apt/master/pool/main/v/v2raya/v2raya_linux_arm_v${pkgver}"
+    "v2raya_v${pkgver}::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_arm_v${pkgver}"
 )
 source_armv7h=(
-    "v2raya_v${pkgver}::https://raw.fastgit.org/v2rayA/v2raya-apt/master/pool/main/v/v2raya/v2raya_linux_arm_v${pkgver}"
+    "v2raya_v${pkgver}::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_arm_v${pkgver}"
 )
 
 sha1sums=(
@@ -49,19 +49,19 @@ sha1sums=(
 )
 
 sha1sums_i686=(
-    '13b6a81d9ef86357c0337f62b7905c309a777b41'
+    '74e86fd4aa15b56e9e0a994bb52e925e65c5bb56'
 )
 sha1sums_x86_64=(
-    '75ed6289f4f7d74152d7714080116d5a52905436'
+    'b0a59c835a214492870d19892fefacbb5ff86b57'
 )
 sha1sums_aarch64=(
-    '094728321b0ec442d7a407bf52cea7bdaefc63ad'
+    'cccdce5aa7713c020c86b1b14faef4b797229f34'
 )
 sha1sums_armv6h=(
-    '51934925de7134fd844c55985266902d608cbe84'
+    '4ced77706002d2a11fd0a842b5b813b9eefbe8ac'
 )
 sha1sums_armv7h=(
-    '51934925de7134fd844c55985266902d608cbe84'
+    '4ced77706002d2a11fd0a842b5b813b9eefbe8ac'
 )
 
 package() {
