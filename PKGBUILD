@@ -39,7 +39,7 @@ depends=(
 	python-numpy
 )
 
-_dir="rqt_plot-${pkgver}"
+_dir="rqt_plot-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_plot/archive/${pkgver}.tar.gz")
 sha256sums=('68d88f0bba8c44acd406638dc1f09542f7e01b681d955d033dcf22caf24ff7e0')
 
