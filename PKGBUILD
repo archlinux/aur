@@ -10,8 +10,7 @@ pkgdesc='GObject bindings for libudev'
 arch=(x86_64)
 url=https://wiki.gnome.org/Projects/libgudev
 license=(LGPL2.1)
-depends=(lib32-glib2)
-optdepends=('libgudev: 64bit support')
+depends=(lib32-glib2 libgudev)
 makedepends=(
   git
 #  gtk-doc
