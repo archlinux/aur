@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-filters
 	pkgdesc = ROS - This library provides a standardized interface for processing data as a sequence of filters.
-	pkgver = 1.8.1
-	pkgrel = 3
+	pkgver = 1.9.1
+	pkgrel = 1
 	url = https://wiki.ros.org/filters
 	arch = i686
 	arch = x86_64
@@ -21,8 +21,8 @@ pkgbase = ros-noetic-filters
 	depends = ros-noetic-rosconsole
 	depends = ros-noetic-roscpp
 	depends = ros-noetic-roslib
-	source = ros-noetic-filters-1.8.1.tar.gz::https://github.com/ros/filters/archive/1.8.1.tar.gz
-	sha256sums = 647958f9eba1cb304fe0e7899c3ee884b3b748720a41afb1c509ac8badf610c2
+	source = ros-noetic-filters-1.9.1.tar.gz::https://github.com/ros/filters/archive/1.9.1.tar.gz
+	sha256sums = 3152b8caa4728804ac8ba6eaa815810961c88485d3c9500bc00d8e94ae905ba6
 
 pkgname = ros-noetic-filters
 

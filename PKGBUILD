@@ -4,10 +4,10 @@ pkgdesc="ROS - This library provides a standardized interface for processing dat
 url='https://wiki.ros.org/filters'
 
 pkgname='ros-noetic-filters'
-pkgver='1.8.1'
+pkgver='1.9.1'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -36,9 +36,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="filters-${pkgver}"
+_dir="filters-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/filters/archive/${pkgver}.tar.gz")
-sha256sums=('647958f9eba1cb304fe0e7899c3ee884b3b748720a41afb1c509ac8badf610c2')
+sha256sums=('3152b8caa4728804ac8ba6eaa815810961c88485d3c9500bc00d8e94ae905ba6')
 
 build() {
 	# Use ROS environment variables.
