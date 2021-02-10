@@ -4,9 +4,9 @@ pkgdesc="ROS - Meta-package of libraries for processing laser data, including co
 url='https://wiki.ros.org/laser_pipeline'
 
 pkgname='ros-noetic-laser-pipeline'
-pkgver='1.6.3'
+pkgver='1.6.4'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -29,9 +29,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="laser_pipeline-${pkgver}"
+_dir="laser_pipeline-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/laser_pipeline/archive/${pkgver}.tar.gz")
-sha256sums=('6af841344ecd0c42808772bf0d8022e4dc6281cb225d37c67999f503111bbfb8')
+sha256sums=('4016fac551a4e60166aa152412212e0091937cd8b34f39e1696c405a8a2c11bd')
 
 build() {
 	# Use ROS environment variables.

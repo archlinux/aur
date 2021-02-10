@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-laser-pipeline
 	pkgdesc = ROS - Meta-package of libraries for processing laser data, including converting laser data into 3D representations.
-	pkgver = 1.6.3
-	pkgrel = 2
+	pkgver = 1.6.4
+	pkgrel = 1
 	url = https://wiki.ros.org/laser_pipeline
 	arch = any
 	license = BSD
@@ -11,8 +11,8 @@ pkgbase = ros-noetic-laser-pipeline
 	depends = ros-noetic-laser-geometry
 	depends = ros-noetic-laser-assembler
 	depends = ros-noetic-laser-filters
-	source = ros-noetic-laser-pipeline-1.6.3.tar.gz::https://github.com/ros-perception/laser_pipeline/archive/1.6.3.tar.gz
-	sha256sums = 6af841344ecd0c42808772bf0d8022e4dc6281cb225d37c67999f503111bbfb8
+	source = ros-noetic-laser-pipeline-1.6.4.tar.gz::https://github.com/ros-perception/laser_pipeline/archive/1.6.4.tar.gz
+	sha256sums = 4016fac551a4e60166aa152412212e0091937cd8b34f39e1696c405a8a2c11bd
 
 pkgname = ros-noetic-laser-pipeline
 
