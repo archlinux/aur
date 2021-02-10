@@ -1,14 +1,21 @@
 pkgbase = dav1d-git
 	pkgdesc = AV1 cross-platform Decoder, focused on speed and correctness
-	pkgver = r1335.eaedb95
+	pkgver = 0.8.1.r62.g9732c70
 	pkgrel = 1
 	url = https://code.videolan.org/videolan/dav1d
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = BSD
 	makedepends = meson
 	makedepends = ninja
 	makedepends = git
 	makedepends = nasm
+	makedepends = xxhash
+	makedepends = sdl2
+	makedepends = libplacebo-git
+	optdepends = sdl2: for the dav1dplay example
+	optdepends = libplacebo-git: for the dav1dplay example
 	provides = dav1d
 	provides = libdav1d.so
 	conflicts = dav1d
@@ -16,4 +23,3 @@ pkgbase = dav1d-git
 	sha256sums = SKIP
 
 pkgname = dav1d-git
-
