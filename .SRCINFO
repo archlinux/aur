@@ -1,6 +1,6 @@
 pkgbase = python-pyod-git
 	pkgdesc = Python toolkit for detecting outlying objects in multivariate data.
-	pkgver = V0.8.6.r0.g885f73c
+	pkgver = 0.8.6.r0.g885f73c
 	pkgrel = 1
 	url = https://github.com/yzhao062/pyod
 	arch = any
@@ -21,8 +21,9 @@ pkgbase = python-pyod-git
 	depends = python-suod-git
 	optdepends = python-keras-applications: required for AutoEncoder
 	optdepends = python-tensorflow: required for AutoEncoder, other backend works
-	provides = python-pyod-git
-	source = git://github.com/yzhao062/pyod.git
+	provides = python-pyod
+	conflicts = python-pyod
+	source = git+https://github.com/yzhao062/pyod.git
 	md5sums = SKIP
 
 pkgname = python-pyod-git
