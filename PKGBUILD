@@ -2,9 +2,9 @@ pkgdesc="ROS - qt_dotgraph provides helpers to work with dot graphs."
 url='https://wiki.ros.org/qt_dotgraph'
 
 pkgname='ros-noetic-qt-dotgraph'
-pkgver='0.3.16'
+pkgver='0.4.2'
 arch=('any')
-pkgrel=0
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -28,7 +28,7 @@ depends=(
 
 _dir="qt_gui_core-${pkgver}/qt_dotgraph"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/qt_gui_core/archive/${pkgver}.tar.gz")
-sha256sums=('efa5ecf7ec22de606b3c0e039f43aacc2f2d79d74d7e17ecceecf2cafd22d128')
+sha256sums=('fbc5a7b0a4da43f80e9216845aec2e247fac0a63512053c03a9f89024d026aad')
 
 build() {
 	# Use ROS environment variables.
