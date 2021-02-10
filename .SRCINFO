@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-turtle-actionlib
 	pkgdesc = ROS - turtle_actionlib demonstrates how to write an action server and client with the turtlesim.
-	pkgver = 0.1.11
-	pkgrel = 3
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://wiki.ros.org/turtle_actionlib
 	arch = i686
 	arch = x86_64
@@ -30,8 +30,8 @@ pkgbase = ros-noetic-turtle-actionlib
 	depends = ros-noetic-std-msgs
 	depends = ros-noetic-message-runtime
 	depends = ros-noetic-geometry-msgs
-	source = ros-noetic-turtle-actionlib-0.1.11.tar.gz::https://github.com/ros/common_tutorials/archive/0.1.11.tar.gz
-	sha256sums = e6015c289219df58253809254baa53dbf2f3190b61d77fac2b2fb8b8c12f3ec1
+	source = ros-noetic-turtle-actionlib-0.2.0.tar.gz::https://github.com/ros/common_tutorials/archive/0.2.0.tar.gz
+	sha256sums = 61b4f75a846264debe4f8eb4c7090f21079c5cd368f85124cf13eca6340570f3
 
 pkgname = ros-noetic-turtle-actionlib
 
