@@ -1,0 +1,22 @@
+pkgbase = networkmanager-dmenu-bluetoothfix-git
+	pkgdesc = Control NetworkManager via emenu (+fix to toggle bluetooth)
+	pkgver = r58.2770261
+	pkgrel = 1
+	url = https://github.com/Quoteme/networkmanager-dmenu-bluetoothfix
+	install = networkmanager-dmenu-bluetoothfix.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = networkmanager
+	depends = python-gobject
+	optdepends = dmenu: either dmenu or rofi is required
+	optdepends = rofi: either dmenu or rofi is required
+	optdepends = network-manager-applet: for the nm-connection-editor GUI
+	provides = networkmanager-dmenu-bluetoothfix
+	conflicts = networkmanager-dmenu-bluetoothfix
+	source = networkmanager-dmenu-bluetoothfix::git+https://github.com/firecat53/networkmanager-dmenu-bluetoothfix.git
+	md5sums = SKIP
+
+pkgname = networkmanager-dmenu-bluetoothfix-git
+
