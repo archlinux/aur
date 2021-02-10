@@ -4,7 +4,7 @@ pkgdesc="ROS - This package holds the diagnostic messages which provide the stan
 url='https://wiki.ros.org/diagnostic_msgs'
 
 pkgname='ros-noetic-diagnostic-msgs'
-pkgver='1.13.0'
+pkgver='1.13.1'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -32,7 +32,7 @@ depends=(
 
 _dir="common_msgs-${pkgver}/diagnostic_msgs"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/common_msgs/archive/${pkgver}.tar.gz")
-sha256sums=('8f3acd0094612172fd922a63788e8ef88e08cc1d50fcbcf2c466dfa8bb9db7e4')
+sha256sums=('74af8cc88bdc9c23cbc270d322e50562857e2c877359423f389d51c0735ee230')
 
 build() {
 	# Use ROS environment variables.
