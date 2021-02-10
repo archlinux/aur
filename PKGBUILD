@@ -4,10 +4,10 @@ pkgdesc="ROS - Metapackage of rqt plugins that are particularly used with robots
 url='https://wiki.ros.org/rqt_robot_plugins'
 
 pkgname='ros-noetic-rqt-robot-plugins'
-pkgver='0.5.7'
+pkgver='0.5.8'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -36,9 +36,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="rqt_robot_plugins-${pkgver}"
+_dir="rqt_robot_plugins-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_robot_plugins/archive/${pkgver}.tar.gz")
-sha256sums=('10cc908fdfc5d22aa4924d65ab0e8215805d5e4e45dcf889272dde0b3849cd4c')
+sha256sums=('ed5e2d9fd1a54736ffd311b7e82699abeb9058a4e205b5e0f2c7671e69c41d7a')
 
 build() {
 	# Use ROS environment variables.

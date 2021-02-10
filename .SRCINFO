@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-rqt-robot-plugins
 	pkgdesc = ROS - Metapackage of rqt plugins that are particularly used with robots during its operation.
-	pkgver = 0.5.7
-	pkgrel = 2
+	pkgver = 0.5.8
+	pkgrel = 1
 	url = https://wiki.ros.org/rqt_robot_plugins
 	arch = any
 	license = BSD
@@ -17,8 +17,8 @@ pkgbase = ros-noetic-rqt-robot-plugins
 	depends = ros-noetic-rqt-robot-dashboard
 	depends = ros-noetic-rqt-rviz
 	depends = ros-noetic-rqt-robot-monitor
-	source = ros-noetic-rqt-robot-plugins-0.5.7.tar.gz::https://github.com/ros-visualization/rqt_robot_plugins/archive/0.5.7.tar.gz
-	sha256sums = 10cc908fdfc5d22aa4924d65ab0e8215805d5e4e45dcf889272dde0b3849cd4c
+	source = ros-noetic-rqt-robot-plugins-0.5.8.tar.gz::https://github.com/ros-visualization/rqt_robot_plugins/archive/0.5.8.tar.gz
+	sha256sums = ed5e2d9fd1a54736ffd311b7e82699abeb9058a4e205b5e0f2c7671e69c41d7a
 
 pkgname = ros-noetic-rqt-robot-plugins
 
