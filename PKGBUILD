@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_robot_monitor displays diagnostics_agg topics messages that a
 url='https://wiki.ros.org/rqt_robot_monitor'
 
 pkgname='ros-noetic-rqt-robot-monitor'
-pkgver='0.5.9'
+pkgver='0.5.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -37,9 +37,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="rqt_robot_monitor-${pkgver}"
+_dir="rqt_robot_monitor-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_robot_monitor/archive/${pkgver}.tar.gz")
-sha256sums=('11718ae155fb6c60f964b3d9e9616a3b4d1d6fdf9c9732e736ff864ed44c0961')
+sha256sums=('06a944c074968fe646bcd353f0d429de10ebbff32b11ffedc8b1686fb9e4e8af')
 
 build() {
 	# Use ROS environment variables.
