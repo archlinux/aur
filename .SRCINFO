@@ -1,0 +1,23 @@
+pkgbase = supercell-git
+	pkgver = r207.10b30cd
+	pkgrel = 1
+	url = https://github.com/orex/supercell
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = boost
+	depends = openbabel
+	depends = eigen
+	optdepends = libarchive
+	optdepends = texlive-bin
+	optdepends = python-pygments
+	optdepends = perl
+	provides = supercell
+	source = supercell::git+https://github.com/orex/supercell.git#branch=ob3_support
+	source = common_utils::git+https://github.com/orex/common_utils.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = supercell-git
+

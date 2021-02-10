@@ -1,0 +1,5 @@
+/src/
+/pkg/
+/supercell/
+/common_utils/
+*.pkg.tar.*
