@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/opt/sparrow-wifi/sparrow-wifi.py
+pkexec /opt/sparrow-wifi/sparrow-wifi.py
