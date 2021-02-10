@@ -1,7 +1,7 @@
 pkgbase = piknik-git
 	pkgdesc = Copy/paste anything over the network.
-	pkgver = r228.00ee34c
-	pkgrel = 3
+	pkgver = 0.9.1.r61.g00ee34c
+	pkgrel = 4
 	url = https://github.com/jedisct1/piknik
 	arch = any
 	license = ISC
