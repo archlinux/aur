@@ -1,0 +1,19 @@
+pkgbase = thepage
+	pkgdesc = Document Viewer using poppler
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/vicr123/thepage
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = qt5-tools
+	depends = xdg-utils
+	depends = qt5-base
+	depends = the-libs
+	depends = qt5-svg
+	depends = poppler-qt5
+	source = thepage-1.0::https://github.com/vicr123/thepage/archive/v1.0.tar.gz
+	sha256sums = 6ec74fe265cbb864d51dada54056053235646a7a69437ddbb037bdc624abfef5
+
+pkgname = thepage
+
