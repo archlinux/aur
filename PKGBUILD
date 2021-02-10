@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_service_caller provides a GUI plugin for calling arbitrary se
 url='https://wiki.ros.org/rqt_service_caller'
 
 pkgname='ros-noetic-rqt-service-caller'
-pkgver='0.4.8'
+pkgver='0.4.9'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -32,9 +32,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="rqt_service_caller-${pkgver}"
+_dir="rqt_service_caller-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_service_caller/archive/${pkgver}.tar.gz")
-sha256sums=('a8732063265ffd3ebb1f5bc95b8f4908f6972e6470a9debbacdcbc6292613e22')
+sha256sums=('fc1a396511585de705f12b86ab358ee865d824b054851434b2cac5932bb0999d')
 
 build() {
 	# Use ROS environment variables.
