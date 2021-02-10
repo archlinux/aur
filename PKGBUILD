@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_robot_steering provides a GUI plugin for steering a robot usi
 url='https://wiki.ros.org/rqt_robot_steering'
 
 pkgname='ros-noetic-rqt-robot-steering'
-pkgver='0.5.9'
+pkgver='0.5.12'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -33,9 +33,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="rqt_robot_steering-${pkgver}"
+_dir="rqt_robot_steering-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_robot_steering/archive/${pkgver}.tar.gz")
-sha256sums=('46586ae0c43b40ac3a72eaf90a61ea7cd8192da6d83898234b49abf8b7df3048')
+sha256sums=('ffcf6ffe64c898cbcf9245caf3f1312700194109a0142c57c00972370d18129d')
 
 build() {
 	# Use ROS environment variables.

@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-rqt-robot-steering
 	pkgdesc = ROS - rqt_robot_steering provides a GUI plugin for steering a robot using Twist messages.
-	pkgver = 0.5.9
-	pkgrel = 2
+	pkgver = 0.5.12
+	pkgrel = 1
 	url = https://wiki.ros.org/rqt_robot_steering
 	arch = any
 	license = BSD
@@ -14,8 +14,8 @@ pkgbase = ros-noetic-rqt-robot-steering
 	depends = ros-noetic-rqt-gui
 	depends = ros-noetic-geometry-msgs
 	depends = python-rospkg
-	source = ros-noetic-rqt-robot-steering-0.5.9.tar.gz::https://github.com/ros-visualization/rqt_robot_steering/archive/0.5.9.tar.gz
-	sha256sums = 46586ae0c43b40ac3a72eaf90a61ea7cd8192da6d83898234b49abf8b7df3048
+	source = ros-noetic-rqt-robot-steering-0.5.12.tar.gz::https://github.com/ros-visualization/rqt_robot_steering/archive/0.5.12.tar.gz
+	sha256sums = ffcf6ffe64c898cbcf9245caf3f1312700194109a0142c57c00972370d18129d
 
 pkgname = ros-noetic-rqt-robot-steering
 
