@@ -8,7 +8,7 @@ pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-jack-git
          pipewire-common-pulse-git pipewire-common-alsa-git
          gst-plugin-pipewire-common-git pipewire-common-ffmpeg-git
          pipewire-common-bluez5-git pipewire-common-bluez5-hsphfpd-git)
-pkgver=0.3.20.r36.g98a35276
+pkgver=0.3.21.r75.g21040043
 pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines"
 url="https://pipewire.org"
@@ -34,6 +34,7 @@ build() {
   arch-meson $_pkgbase build
   meson configure build \
     -D docs=true \
+    -D vulkan=true \
     -D ffmpeg=true \
     -D bluez5-backend-hsp-native=true \
     -D bluez5-backend-hfp-native=true \
