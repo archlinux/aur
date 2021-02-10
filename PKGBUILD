@@ -3,11 +3,12 @@
 
 pkgname=muffet-git
 pkgdesc="Fast website link checker (git)"
-pkgver=2.3.2.r1.ged40e3a
+pkgver=2.4.0.r0.g3c53aeb
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/raviqqe/muffet"
 license=('MIT')
+depends=('glibc')
 makedepends=('git' 'go')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
