@@ -7,16 +7,16 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn
-pkgver=2020.7
+pkgver=2021.1
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
-depends=('libnotify' 'libappindicator-gtk3' 'libxss' 'nss')
+depends=('libnotify' 'libappindicator-gtk3' 'nss')
 makedepends=('git' 'go' 'rust' 'npm' 'python')
 install="$pkgname.install"
-_commit='b82a3e9a7717b8b15c339bc78d4a2f3c6d90ea50'
+_commit='fa76f058d6f5fa66e62f9c4a291e6079cea22e37'
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
         "$pkgname.sh")
@@ -71,18 +71,18 @@ build() {
 	# Clean mod cache for makepkg -C
 	go clean -modcache
 
+	export MULLVAD_ADD_MANIFEST="1"
+
 	echo "Building Rust code in release mode using $RUSTC_VERSION..."
 
-	pushd mullvad-cli
-	mkdir -p ../dist-assets/shell-completions
+	cargo build --release --locked
+
+	mkdir -p dist-assets/shell-completions
 	for sh in bash zsh fish; do
 		echo "Generating shell completion script for $sh..."
-		cargo run --release --locked --features shell-completions -- \
-			shell-completions "$sh" ../dist-assets/shell-completions/
+		cargo run --bin mullvad --release --locked -- shell-completions "$sh" \
+			dist-assets/shell-completions/
 	done
-	popd
-
-	MULLVAD_ADD_MANIFEST="1" cargo build --release --locked
 
 	echo "Copying binaries"
 	binaries=(
@@ -97,8 +97,11 @@ build() {
 		cp "target/release/$binary" "dist-assets/$binary"
 	done
 
-	# Update relay list & generate relays.json
-	./update-relays.sh
+	echo "Updating relay list..."
+	cargo run --bin relay_list --release > dist-assets/relays.json
+
+	echo "Updating API address cache..."
+	cargo run --bin address_cache --release > dist-assets/api-ip-address.txt
 
 	# Build Electron GUI app
 	pushd gui
@@ -148,8 +151,8 @@ package() {
 
 	# Install desktop file & icons from deb
 	cd dist
-	ar x "MullvadVPN-$pkgver.0_amd64.deb"
-	tar -xf data.tar.xz
+	ar x *.deb
+	bsdtar -xf data.tar.xz
 	install -Dm644 "usr/share/applications/$pkgname.desktop" -t \
 		"$pkgdir/usr/share/applications"
 
