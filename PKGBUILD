@@ -4,7 +4,7 @@ pkgdesc="ROS - Contains scripts used by the rosboost-cfg tool for determining cf
 url='https://wiki.ros.org/rosboost_cfg'
 
 pkgname='ros-noetic-rosboost-cfg'
-pkgver='1.15.2'
+pkgver='1.15.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -28,7 +28,7 @@ depends=(
 
 _dir="ros-${pkgver}/tools/rosboost_cfg"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros/archive/${pkgver}.tar.gz")
-sha256sums=('596bb5e04ece0ad0662d6d2ee9b4223aaa890770e83c7310ec71bf9c0c3c7b5e')
+sha256sums=('7a1e729de9be807862b6ed721475fec74583f6dc0c06b233b06b1b9fda31291e')
 
 build() {
 	# Use ROS environment variables.
