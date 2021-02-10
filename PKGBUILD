@@ -15,14 +15,13 @@ sha256sums=('993777c02fbab136c12f9de2bc27178edfd10c070d57cf1dd7151b676c6b8a90'
             '11c3490e0dd8613465672f4b74b19ee2329944618f566e908d0b0936064f8a69')
 
 build() {
-    mkdir "q5Go-$pkgname-$pkgver/build"
-    cd "q5Go-$pkgname-$pkgver/build"
-    qmake-qt5 ../src/q5go.pro PREFIX=/usr
+    mkdir build && cd build
+    qmake-qt5 "../q5Go-$pkgname-$pkgver/src/q5go.pro" PREFIX=/usr
     make
 }
 
 package() {
-    cd "q5Go-$pkgname-$pkgver/build"
+    cd build
     make INSTALL_ROOT="${pkgdir}" install
     install -Dm644 "${srcdir}/$pkgname.desktop" "${pkgdir}/usr/share/applications/$pkgname.desktop"
 }
