@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-rqt-py-common
 	pkgdesc = ROS - rqt_py_common provides common functionality for rqt plugins written in Python.
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 0.5.2
+	pkgrel = 1
 	url = https://wiki.ros.org/rqt_py_common
 	arch = any
 	license = BSD
@@ -18,8 +18,8 @@ pkgbase = ros-noetic-rqt-py-common
 	depends = ros-noetic-python-qt-binding
 	depends = ros-noetic-rospy
 	depends = ros-noetic-roslib
-	source = ros-noetic-rqt-py-common-0.5.0.tar.gz::https://github.com/ros-visualization/rqt/archive/0.5.0.tar.gz
-	sha256sums = 3f62f90db254e111483b9a7cb9d486d0bf07c863b2a987808dc3636ee7004c22
+	source = ros-noetic-rqt-py-common-0.5.2.tar.gz::https://github.com/ros-visualization/rqt/archive/0.5.2.tar.gz
+	sha256sums = 9913fb6da15f0ccb9d995f8ea3be935d36bd255379c8ae19c0005207883299eb
 
 pkgname = ros-noetic-rqt-py-common
 

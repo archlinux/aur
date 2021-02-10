@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_py_common provides common functionality for rqt plugins writt
 url='https://wiki.ros.org/rqt_py_common'
 
 pkgname='ros-noetic-rqt-py-common'
-pkgver='0.5.0'
+pkgver='0.5.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -39,7 +39,7 @@ depends=(
 
 _dir="rqt-${pkgver}/rqt_py_common"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt/archive/${pkgver}.tar.gz")
-sha256sums=('3f62f90db254e111483b9a7cb9d486d0bf07c863b2a987808dc3636ee7004c22')
+sha256sums=('9913fb6da15f0ccb9d995f8ea3be935d36bd255379c8ae19c0005207883299eb')
 
 build() {
 	# Use ROS environment variables.
