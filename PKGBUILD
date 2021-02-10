@@ -1,5 +1,5 @@
 pkgname=mingw-w64-waffle
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='a library for choosing window system and OpenGL API at runtime (mingw-w64)'
 arch=('any')
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://gitlab.freedesktop.org/mesa/waffle/-/archive/v$pkgver/waffle-v$pkgver.tar.gz")
-sha256sums=('4eb4dfe18b5a88e6ea2b6b0a0c415caeaa453ea8eb37a757c100e24e18c317dd')
+sha256sums=('1a120d258390fb776a1c47cc9617f057dc72baf07bad610772e5da2fea82437c')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
