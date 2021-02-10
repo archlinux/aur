@@ -3,10 +3,11 @@
 
 # Repository for PR: https://gitlab.com/phnx47-aur/ledger-live
 
+_pkgbin=ledger-live-desktop
 pkgname=ledger-live
-pkgver=2.20.0
-pkgrel=3
 pkgdesc="Ledger Live - Desktop"
+pkgver=2.21.3
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live-desktop'
 license=('MIT')
@@ -15,9 +16,9 @@ makedepends=('yarn' 'python' 'nodejs>=12')
 provides=('ledger-live')
 conflicts=('ledger-live-bin')
 source=("https://github.com/LedgerHQ/ledger-live-desktop/archive/v${pkgver}.tar.gz"
-        "ledger-live.desktop")
-sha512sums=('f1632fa8c6eebb1bc9e01de8b6abb6a7d87a9cfc9b56a03a74dcd0caf51d1fa92ae6c27c4a852b625f159c79c9c633211c284fc5218d3d69b448a8a52e8611c9'
-            'bfdf0295b7225380c78ef1a3e1351529bd5ee0cecc17b1591ef20bd144d38e3c4aba0a4115c97131517c109698cf8d6db55c0744c7c6f194e8c61a0576c64fab')
+        "ledger-live-desktop.desktop")
+sha512sums=('0e837767571e6f0fc932b5ffcfd2bdc40210058a910bd78cfb32e246deeca89a0076125506442c7da31edb4d3aced00e1bbf10e6a1c4d74a196eac333f4a8555'
+            '01bee3b5a90d9a87bb8b1f8edd8fa5851b39db7f9374d0e31114301876fafbc9226b120f114b66a3158a4e98eb514569f34cd0d4f1212062a55d0c8d0e698dda')
 
 extractedFolder=ledger-live-desktop-$pkgver
 
@@ -35,20 +36,20 @@ build() {
 }
 
 package() {
-  install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "${_pkgbin}.desktop" "${pkgdir}/usr/share/applications/${_pkgbin}.desktop"
 
   cd $extractedFolder
 
   install -dm755 "${pkgdir}/opt"
-  cp -r "dist/linux-unpacked" "${pkgdir}/opt/${pkgname}"
+  cp -r "dist/linux-unpacked" "${pkgdir}/opt/${_pkgbin}"
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s "/opt/${pkgname}/ledger-live-desktop" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/opt/${_pkgbin}/${_pkgbin}" "${pkgdir}/usr/bin/${_pkgbin}"
 
-  install -Dm644 "build/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${pkgname}.png"
-  install -Dm644 "build/icons/icon@128x128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
-  install -Dm644 "build/icons/icon@256x256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"  
-  install -Dm644 "build/icons/icon@512x512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
-  install -Dm644 "build/icons/icon@1024x1024.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${pkgname}.png"
+  install -Dm644 "build/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${_pkgbin}.png"
+  install -Dm644 "build/icons/icon@128x128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgbin}.png"
+  install -Dm644 "build/icons/icon@256x256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgbin}.png"  
+  install -Dm644 "build/icons/icon@512x512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgbin}.png"
+  install -Dm644 "build/icons/icon@1024x1024.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${_pkgbin}.png"
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgbin/LICENSE"
 }
