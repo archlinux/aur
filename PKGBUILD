@@ -2,7 +2,7 @@
 pkgname=gnome-control-center-system76
 _pkgname=${pkgname%-system76}
 pkgver=3.38.3
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc="GNOME's main interface to configure various aspects of the desktop (with System76 patches)"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 license=(GPL2)
@@ -12,7 +12,7 @@ depends=(accountsservice cups-pk-helper gnome-bluetooth gnome-desktop
          libgtop nm-connection-editor sound-theme-freedesktop upower libpwquality
          gnome-color-manager smbclient libmm-glib libgnomekbd grilo libibus
          cheese libgudev bolt udisks2 libhandy gsound colord-gtk
-         system76-firmware-daemon libs76-hidpi-widget)
+         firmware-manager libs76-hidpi-widget)
 makedepends=(docbook-xsl modemmanager git python meson)
 checkdepends=(python-dbusmock python-gobject xorg-server-xvfb)
 optdepends=('system-config-printer: Printer settings'
