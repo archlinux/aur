@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Upgrade
+Target = znc
+
+[Action]
+Description = znc has been updated...
+When = PostTransaction
+Exec = /usr/bin/echo " -> You probably have to rebuild znc-q-git!"

@@ -1,0 +1,16 @@
+pkgbase = znc-q-git
+	pkgdesc = ZNC module for authenticating with QuakeNets Q bot
+	pkgver = r2.320779f
+	pkgrel = 1
+	url = https://github.com/jkhsjdhjs/znc-q
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = znc
+	source = znc-q::git+https://github.com/jkhsjdhjs/znc-q
+	source = znc-q.hook
+	sha512sums = SKIP
+	sha512sums = 7e04b60b096867b80979b2b82949d0f2df3e4c4af3ecb56667b89fee17640a7baabb7e505a7451344f55af13df962a7f7b612b5406a02a3d346357ae0e09cda4
+
+pkgname = znc-q-git
+
