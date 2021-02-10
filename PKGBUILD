@@ -1,11 +1,11 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=roonbridge
-pkgver=1.0
-pkgrel=4
-_pkgrel_x86_64=4
-_pkgrel_armv7h=4
-_pkgrel_aarch64=4
+pkgver=1.7
+pkgrel=1
+_pkgrel_x86_64=1
+_pkgrel_armv7h=1
+_pkgrel_aarch64=1
 pkgdesc="The music player for music lovers"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://roonlabs.com/"
