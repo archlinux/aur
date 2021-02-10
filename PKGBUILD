@@ -11,7 +11,7 @@ WITH_KNOTIFICATION=0
 WITH_DARK_ICON=1
 
 pkgname=octopi-git
-pkgver=0.11.0.r24.c900d85
+pkgver=0.11.0.r25.d6a6ecc
 pkgrel=1
 pkgdesc="This is Octopi, a powerful Pacman frontend using Qt libs"
 arch=('x86_64')
@@ -49,7 +49,7 @@ conflicts=(
   'octopi-notifier-qt5'
   'octopi-notifier-noknotify'
 )
-install=octopi.install
+#install=octopi.install
 source=(
   'git+https://github.com/aarnt/octopi.git'
   'octopi_dark.png'
@@ -76,54 +76,30 @@ prepare() {
 
 build() {
   cd "${pkgname/-git/}" || exit
-  qmake-qt5 PREFIX=/usr QMAKE_CFLAGS="$CFLAGS" QMAKE_CXXFLAGS="$CXXFLAGS" QMAKE_LFLAGS="$LDFLAGS" octopi.pro
+  echo "Starting build..."
+  qmake-qt5 PREFIX=/usr QMAKE_CFLAGS="${CFLAGS}" QMAKE_CXXFLAGS="${CXXFLAGS}" QMAKE_LFLAGS="${LDFLAGS}" octopi.pro
   make
 
-  cd helper || exit
-  qmake-qt5 PREFIX=/usr QMAKE_CFLAGS="$CFLAGS" QMAKE_CXXFLAGS="$CXXFLAGS" QMAKE_LFLAGS="$LDFLAGS" octopi-helper.pro
-  make
-  cd ..
+  _subdirs="cachecleaner helper notifier repoeditor sudo"
 
-  cd notifier || exit
-  qmake-qt5 PREFIX=/usr QMAKE_CFLAGS="$CFLAGS" QMAKE_CXXFLAGS="$CXXFLAGS" QMAKE_LFLAGS="$LDFLAGS" octopi-notifier.pro
-  make
-  cd ..
-
-  cd repoeditor || exit
-  qmake-qt5 PREFIX=/usr QMAKE_CFLAGS="$CFLAGS" QMAKE_CXXFLAGS="$CXXFLAGS" QMAKE_LFLAGS="$LDFLAGS" octopi-repoeditor.pro
-  make
-  cd ..
-
-  cd cachecleaner || exit
-  qmake-qt5 PREFIX=/usr QMAKE_CFLAGS="$CFLAGS" QMAKE_CXXFLAGS="$CXXFLAGS" QMAKE_LFLAGS="$LDFLAGS" octopi-cachecleaner.pro
-  make
-  cd ..
-
-  cd sudo || exit
-  qmake-qt5 PREFIX=/usr QMAKE_CFLAGS="$CFLAGS" QMAKE_CXXFLAGS="$CXXFLAGS" QMAKE_LFLAGS="$LDFLAGS" octopi-sudo.pro
-  make
+  for _subdir in $_subdirs; do
+    pushd $_subdir
+    echo "Building octopi-$_subdir..."
+    qmake-qt5 PREFIX=/usr QMAKE_CFLAGS="${CFLAGS}" QMAKE_CXXFLAGS="${CXXFLAGS}" QMAKE_LFLAGS="${LDFLAGS}" "octopi-$_subdir.pro"
+    make
+    popd
+  done
 }
 
 package() {
   cd "${pkgname/-git/}" || exit
-  make INSTALL_ROOT="$pkgdir" install
+  make INSTALL_ROOT="${pkgdir}" install
 
-  cd helper || exit
-  make INSTALL_ROOT="$pkgdir" install
-  cd ..
+  _subdirs="cachecleaner helper notifier repoeditor sudo"
 
-  cd notifier || exit
-  make INSTALL_ROOT="$pkgdir" install
-  cd ..
-
-  cd repoeditor || exit
-  make INSTALL_ROOT="$pkgdir" install
-  cd ..
-
-  cd cachecleaner || exit
-  make INSTALL_ROOT="$pkgdir" install
-  cd ..
-
-  cd sudo || exit
-  make INSTALL_ROOT="$pkgdir" install
+  for _subdir in $_subdirs; do
+    pushd $_subdir
+    make INSTALL_ROOT="${pkgdir}" install
+    popd
+  done
 }
