@@ -22,7 +22,6 @@ pkgbase = libcamera-clang-git
 	depends = gst-plugins-base-libs
 	depends = libevent
 	depends = qt5-base
-	optdepends = lttng-ust: For tracking
 	provides = libcamera
 	conflicts = libcamera
 	conflicts = libcamera-git

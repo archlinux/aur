@@ -20,7 +20,6 @@ depends=(
         'qt5-base'                # for 'qcam' tool
         #'lttng-ust'              # for tracing with LTTng
         )
-optdepends=('lttng-ust: For tracking')
 license=('LGPL' 'GPL')
 #options=('!buildflags')
 source=('git://linuxtv.org/libcamera.git/')
