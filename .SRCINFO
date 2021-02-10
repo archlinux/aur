@@ -10,10 +10,9 @@ pkgbase = dokobit-plugin
 	provides = isign-chrome-signing=1.3.14.0
 	conflicts = isign-chrome-signing
 	replaces = isign-chrome-signing
-	source_i686 = https://www.dokobit.com/repo/1.3.14/dokobit-plugin-en-32_1.3.14.0.deb
+	source_i686 = https://github.com/dokobit/browser-plugin/raw/master/Linux/32Bit/dokobit-plugin-en_1.3.14.0.deb
 	sha256sums_i686 = f38b9b4105ee48ab593c7f59079f6ebe3be7764db3864782ba62a47352c04cbe
-	source_x86_64 = https://www.dokobit.com/repo/1.3.14/dokobit-plugin-en_1.3.14.0.deb
+	source_x86_64 = https://github.com/dokobit/browser-plugin/raw/master/Linux/64Bit/dokobit-plugin-en_1.3.14.0.deb
 	sha256sums_x86_64 = 4bf3a22d83bea107b3c7672d7095e1fe0b8ffb87c52d3859504e44974300f020
 
 pkgname = dokobit-plugin
-
