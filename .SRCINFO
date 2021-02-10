@@ -1,0 +1,14 @@
+pkgbase = g15stats-openrc
+	pkgdesc = g15stats init script for OpenRC
+	pkgver = 20210210
+	pkgrel = 1
+	url = https://gitlab.com/menelkir/g15stats
+	arch = any
+	license = GPL2
+	depends = g15stats
+	depends = openrc
+	source = https://gitlab.com/menelkir/g15stats/-/raw/master/contrib/init/g15stats.initd https://gitlab.com/menelkir/g15stats/-/raw/master/contrib/init/g15stats.confd
+	sha256sums = e155c92fc3639a2785df1020053cf2881eb53490402dbe8053761302641c7ed2 57d18f10ededd1003c59e86c2a1721165a0aa6c731bc8880710bb2e8e182bd52
+
+pkgname = g15stats-openrc
+
