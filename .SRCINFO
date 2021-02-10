@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-rviz-plugin-tutorials
 	pkgdesc = ROS - Tutorials showing how to write plugins for RViz.
-	pkgver = 0.10.3
-	pkgrel = 2
+	pkgver = 0.11.0
+	pkgrel = 1
 	url = https://wiki.ros.org/rviz_plugin_tutorials
 	arch = any
 	license = BSD
@@ -12,8 +12,8 @@ pkgbase = ros-noetic-rviz-plugin-tutorials
 	makedepends = qt5-base
 	depends = ros-noetic-rviz
 	depends = qt5-base
-	source = ros-noetic-rviz-plugin-tutorials-0.10.3.tar.gz::https://github.com/ros-visualization/visualization_tutorials/archive/0.10.3.tar.gz
-	sha256sums = a3162d933fea0dd58b99e46fb71ea5d8596ef6e46eaf3a906e4bf20e9ca1bb1c
+	source = ros-noetic-rviz-plugin-tutorials-0.11.0.tar.gz::https://github.com/ros-visualization/visualization_tutorials/archive/0.11.0.tar.gz
+	sha256sums = e592005f3af058ed3fe6f2aeec2d64a6b861dc387b2f7c4d7e3cf1e165373de0
 
 pkgname = ros-noetic-rviz-plugin-tutorials
 
