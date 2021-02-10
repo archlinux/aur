@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-diagnostic-updater
 	pkgdesc = ROS - diagnostic_updater contains tools for easily updating diagnostics.
-	pkgver = 1.10.2
+	pkgver = 1.10.3
 	pkgrel = 1
 	url = https://wiki.ros.org/diagnostic_updater
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = ros-noetic-diagnostic-updater
 	depends = ros-noetic-std-msgs
 	depends = ros-noetic-roscpp
 	depends = ros-noetic-diagnostic-msgs
-	source = ros-noetic-diagnostic-updater-1.10.2.tar.gz::https://github.com/ros/diagnostics/archive/1.10.2.tar.gz
-	sha256sums = b0f966c978642938dea3db726752c5339c2819a5b22cc76b3851257d30eaca8d
+	source = ros-noetic-diagnostic-updater-1.10.3.tar.gz::https://github.com/ros/diagnostics/archive/1.10.3.tar.gz
+	sha256sums = ab9637e43fe742e89e08a1d9389321c89fe1d3dbaa206df9a2e8f96456518068
 
 pkgname = ros-noetic-diagnostic-updater
 
