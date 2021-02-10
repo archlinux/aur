@@ -1,0 +1,20 @@
+pkgbase = passman++-lts
+	pkgdesc = Incredibly simple and secure command-line password manager. - LTS releases
+	pkgver = 1.4.0p
+	pkgrel = 1
+	url = https://github.com/binex-dsk/passmanpp/
+	arch = x86_64
+	license = BSD
+	depends = botan
+	depends = libsodium
+	depends = qt5-base
+	depends = ttf-hack
+	provides = passman
+	conflicts = passman-git
+	conflicts = passman++-devel
+	conflicts = passman++
+	source = https://github.com/binex-dsk/passmanpp/archive/1.4.0p.tar.gz
+	md5sums = 520d88de27f0c8d8ac46d1038b8375ce
+
+pkgname = passman++-lts
+
