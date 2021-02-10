@@ -1,6 +1,6 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime-git
-pkgver=0.9.1.r82.d4570b2
+pkgver=0.9.1.r90.46cce01
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
@@ -29,12 +29,12 @@ pkgver() {
 
 build() {
     cd "${pkgname}"
-    cargo xtask build --mode Release XIM WAYLAND GTK2 GTK3 GTK4 QT5 QT6
+    scripts/build.sh -ar
 }
 
 package() {
     cd "${pkgname}"
-    cargo xtask install "${pkgdir}"
+    scripts/install.sh "${pkgdir}"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
 
