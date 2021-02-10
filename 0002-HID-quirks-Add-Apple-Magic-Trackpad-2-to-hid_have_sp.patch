@@ -1,7 +1,7 @@
-From 91331053326444b5c3efb7cf80a0421f27a2dfc4 Mon Sep 17 00:00:00 2001
+From 53b53f6df0d94a034c14eb65d9b925832c22159d Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Felix=20H=C3=A4dicke?= <felixhaedicke@web.de>
 Date: Thu, 19 Nov 2020 09:22:32 +0100
-Subject: [PATCH 2/5] HID: quirks: Add Apple Magic Trackpad 2 to
+Subject: [PATCH 2/3] HID: quirks: Add Apple Magic Trackpad 2 to
  hid_have_special_driver list
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -32,5 +32,5 @@ index bf7ecab5d9e5..142e9dae2837 100644
  #if IS_ENABLED(CONFIG_HID_MAYFLASH)
  	{ HID_USB_DEVICE(USB_VENDOR_ID_DRAGONRISE, USB_DEVICE_ID_DRAGONRISE_PS3) },
 -- 
-2.30.0
+2.30.1
 
