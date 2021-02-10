@@ -61,9 +61,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.4
-_minor=96
+_minor=97
 _srcname=linux-${_major}
-_clr=${_major}.92-93
+_clr=${_major}.96-98
 pkgbase=linux-clear-lts2019
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -73,7 +73,6 @@ url="https://github.com/clearlinux-pkgs/linux-lts2019"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_wrg_snap='1.0.20210124'
 _gcc_more_v='20200615'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
@@ -81,7 +80,6 @@ source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
   "clearlinux-lts2019::git+https://github.com/clearlinux-pkgs/linux-lts2019.git#tag=${_clr}"
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
-  "https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-${_wrg_snap}.tar.xz"
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -103,14 +101,10 @@ prepare() {
 
     ### Add Clearlinux patches
         for i in $(grep '^Patch' ${srcdir}/clearlinux-lts2019/linux-lts2019.spec |\
-          grep -Ev '^Patch0123|^Patch1001' | sed -n 's/.*: //p'); do
+          grep -Ev '^Patch0123' | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux-lts2019/${i}"
         done
-
-    ### Link the WireGuard source directory into the kernel tree
-        echo "Adding the WireGuard source directory..."
-        "${srcdir}/wireguard-linux-compat-${_wrg_snap}/kernel-tree-scripts/jury-rig.sh" ./
 
     ### Setting config
         echo "Setting config..."
@@ -327,10 +321,9 @@ done
 
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            '0e5520ed5da1f6b261c8aec46009a75d81e2cf7c4a58f9982bab0f9b6fbe5f55'
+            '1cf123980fafede3734c022d504ce4564ed65b0615ed37da487159de981f0302'
             'SKIP'
-            '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
-            'dac6e68cd4c3db441499850dfa8a70706384a3295f37fda1b839a50b79faef54')
+            '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds

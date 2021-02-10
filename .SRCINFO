@@ -1,6 +1,6 @@
 pkgbase = linux-clear-lts2019
 	pkgdesc = Clear Linux lts2019
-	pkgver = 5.4.96
+	pkgver = 5.4.97
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux-lts2019
 	arch = x86_64
@@ -14,18 +14,16 @@ pkgbase = linux-clear-lts2019
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.4.96.xz
-	source = clearlinux-lts2019::git+https://github.com/clearlinux-pkgs/linux-lts2019.git#tag=5.4.92-93
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.4.97.xz
+	source = clearlinux-lts2019::git+https://github.com/clearlinux-pkgs/linux-lts2019.git#tag=5.4.96-98
 	source = enable_additional_cpu_optimizations-20200615.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20200615.tar.gz
-	source = https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-1.0.20210124.tar.xz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491
 	sha256sums = SKIP
-	sha256sums = 0e5520ed5da1f6b261c8aec46009a75d81e2cf7c4a58f9982bab0f9b6fbe5f55
+	sha256sums = 1cf123980fafede3734c022d504ce4564ed65b0615ed37da487159de981f0302
 	sha256sums = SKIP
 	sha256sums = 278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90
-	sha256sums = dac6e68cd4c3db441499850dfa8a70706384a3295f37fda1b839a50b79faef54
 
 pkgname = linux-clear-lts2019
 	pkgdesc = The Clear Linux lts2019 kernel and modules
