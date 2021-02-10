@@ -1,9 +1,9 @@
 # Author: Roman Gilg <subdiff@gmail.com>
 
 pkgname=kdisplay-kwinft
-pkgver=5.21.0
+pkgver=5.21.0.beta
 _pkgver=5.21.0-beta.0
-pkgrel=1
+pkgrel=0
 pkgdesc='App and daemon for display managing'
 arch=(x86_64)
 url="https://gitlab.com/kwinft/kdisplay"
