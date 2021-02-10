@@ -4,10 +4,10 @@ pkgdesc="ROS - A metapackage to aggregate several packages."
 url='https://github.com/ros/metapackages'
 
 pkgname='ros-noetic-simulators'
-pkgver='1.4.1'
+pkgver='1.5.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-noetic-catkin)
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="metapackages-${pkgver}/simulators"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/metapackages/archive/${pkgver}.tar.gz")
-sha256sums=('ef1df96c61c9762555174cc1a0e21e05149f74909d27044be0cd10aa065747a1')
+sha256sums=('5e055b7528d088cf62035d88c78cfd5aefcac2a96d0ce2ac62242f6d6f76d3b0')
 
 build() {
   # Use ROS environment variables
