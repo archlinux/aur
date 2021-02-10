@@ -6,7 +6,7 @@ pkgdesc='Wayland compositor and X11 window manager'
 arch=(x86_64)
 url="https://gitlab.com/kwinft/kwinft"
 license=(LGPL)
-depends=(xcb-util-cursor plasma-framework kcmutils breeze kinit qt5-sensors qt5-script wrapland disman kdisplay kidletime kscreenlocker)
+depends=(xcb-util-cursor plasma-framework kcmutils breeze kinit qt5-sensors qt5-script wrapland disman kdisplay kidletime kscreenlocker kdecoration-git)
 makedepends=(extra-cmake-modules qt5-tools kdoctools)
 optdepends=('qt5-virtualkeyboard: virtual keyboard support for kwin-wayland')
 provides=("kwin")
@@ -22,7 +22,7 @@ prepare() {
 
 build() {
   cd "$srcdir"/build
-  cmake "$srcdir/kwinft-kwinft@$_pkgver" \
+  cmake "$srcdir/kwinft-kwinft@$_pkgver" -Wno-dev \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
