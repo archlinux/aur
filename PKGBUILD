@@ -4,9 +4,9 @@ pkgdesc="ROS - Metapackage of geometry tutorials ROS."
 url='https://wiki.ros.org/geometry_tutorials'
 
 pkgname='ros-noetic-geometry-tutorials'
-pkgver='0.2.2'
+pkgver='0.2.3'
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -30,7 +30,7 @@ depends=(
 
 _dir="geometry_tutorials-${pkgver}/geometry_tutorials"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry_tutorials/archive/${pkgver}.tar.gz")
-sha256sums=('4b3fdc98bf4cb97ba2f1c40666901fa7d08eb3dfed0d3323de4841de2e3a22cc')
+sha256sums=('7346c3a2d595cbac3d4d2f2e5aa01ff2c7fbafe1c21374efb09244629303ea2f')
 
 build() {
 	# Use ROS environment variables.
