@@ -12,7 +12,7 @@ pkgbase = uacme
 	depends = curl
 	depends = gnutls
 	optdepends = libev: for ualpn
-	source = uacme-1.7::git+https://github.com/ndilieto/uacme.git#tag=upstream/1.7?signed
+	source = uacme-1.7::git+https://github.com/ndilieto/uacme.git#tag=2b84bc5c8fbcd3ade4acffa0c28062782d8e29a4?signed
 	validpgpkeys = 243828049BB5F549446516E24142E3D6318A7874
 	sha256sums = SKIP
 

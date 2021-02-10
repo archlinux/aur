@@ -3,6 +3,7 @@
 
 pkgname=uacme
 pkgver=1.7
+_pkgsha=2b84bc5c8fbcd3ade4acffa0c28062782d8e29a4 # git show-ref upstream/$pkgver
 pkgrel=1
 pkgdesc='An ACMEv2 client written in plain C with minimal dependencies'
 arch=('i686' 'x86_64')
@@ -11,9 +12,9 @@ makedepends=('asciidoc' 'git' 'libev')
 depends=('curl' 'gnutls')
 optdepends=('libev: for ualpn')
 license=('GPL3')
-source=("$pkgname-$pkgver::git+https://github.com/ndilieto/$pkgname.git#tag=upstream/$pkgver?signed")
+source=("$pkgname-$pkgver::git+https://github.com/ndilieto/$pkgname.git#tag=$_pkgsha?signed")
 sha256sums=('SKIP')
-validpgpkeys=('243828049BB5F549446516E24142E3D6318A7874') # Nicola Di Lieto
+validpgpkeys=('243828049BB5F549446516E24142E3D6318A7874') # gpg --fetch-keys https://github.com/ndilieto.gpg
 
 build() {
   cd "$pkgname-$pkgver"
