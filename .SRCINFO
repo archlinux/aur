@@ -1,7 +1,7 @@
 pkgbase = python-combo-git
 	pkgdesc = Python toolbox for combining machine learning (ML) models and scores.
-	pkgver = V0.1.0.r9.g6b569d7
-	pkgrel = 1
+	pkgver = 0.1.0.r9.g6b569d7
+	pkgrel = 2
 	url = https://github.com/yzhao062/combo
 	arch = any
 	license = BSD
@@ -14,8 +14,9 @@ pkgbase = python-combo-git
 	depends = python-numba
 	depends = python-scipy
 	depends = python-scikit-learn
-	provides = python-combo-git
-	source = git://github.com/yzhao062/combo.git
+	provides = python-combo
+	conflicts = python-combo
+	source = git+https://github.com/yzhao062/combo.git
 	md5sums = SKIP
 
 pkgname = python-combo-git
