@@ -7,7 +7,7 @@
 pkgsubn=https-everywhere
 pkgname=${pkgsubn}-chrome-git
 pkgver=67593.545740dfed
-pkgrel=1
+pkgrel=2
 pkgdesc="Chrome/Chromium extension to use HTTPS whenever possible - git/dev"
 arch=('any')
 url='https://www.eff.org/https-everywhere'
@@ -38,7 +38,7 @@ build() {
     ./make.sh
 }
 package() {
-    mkdir -p "${pkgdir}/usr/share/chromium/${gitname}"
+    mkdir -p "${pkgdir}/usr/share/chromium/${pkgsubn}"
     shopt -s dotglob
-    cp -dr --no-preserve=ownership "${srcdir}/${pkgsubn}/pkg/crx-cws"/* "${pkgdir}/usr/share/chromium/${gitname}"
+    cp -dr --no-preserve=ownership "${srcdir}/${pkgsubn}/pkg/crx-cws"/* "${pkgdir}/usr/share/chromium/${pkgsubn}"
 }
