@@ -4,7 +4,7 @@ pkgdesc="ROS - The package provides the environment variables ROS_VERSION, ROS_D
 url='https://wiki.ros.org/ros_environment'
 
 pkgname='ros-noetic-ros-environment'
-pkgver='1.3.1'
+pkgver='1.3.2'
 arch=('any')
 pkgrel=1
 license=('Apache License 2.0')
@@ -26,9 +26,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="ros_environment-${pkgver}"
+_dir="ros_environment-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_environment/archive/${pkgver}.tar.gz")
-sha256sums=('f1e8fcf53819738d2104c1315563bb2c57be549054b46f6543ca531199ae9d60')
+sha256sums=('c0bc78d606e85a5456ce669f33638d8e8872deadb08a745a8ae79874f61f58e3')
 
 build() {
 	# Use ROS environment variables.
