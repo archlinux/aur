@@ -97,7 +97,7 @@ build() {
     -D dpms=false \
     -D xf86bigfont=false \
     -D xselinux=false \
-    -D dga=false \
+    -D dga=true \
     -D linux_acpi=false \
     -D agp=false \
     -D dri1=false \
@@ -118,6 +118,7 @@ build() {
 # xinerama required for nvidia blob/amdgpu/mesa
 # mitshm required for nvidia blob/amdgpu/mesa
 # xv required for nvidia blob/amdgpu/mesa
+# dga required for nvidia blob/amdgpu/mesa
 # glamor required for xwayland support
 # b_pgo set to off or build fails
 # dpms and dri1 set to true or xf86-video-amdgpu build fails
