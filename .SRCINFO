@@ -1,7 +1,7 @@
 pkgbase = aarch64-linux-musl
 	pkgdesc = Lightweight implementation of C standard library
-	pkgver = 1.2.1
-	pkgrel = 2
+	pkgver = 1.2.2
+	pkgrel = 1
 	url = https://musl.libc.org
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = aarch64-linux-musl
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = https://musl.libc.org/releases/musl-1.2.1.tar.gz
-	source = https://musl.libc.org/releases/musl-1.2.1.tar.gz.asc
+	source = https://musl.libc.org/releases/musl-1.2.2.tar.gz
+	source = https://musl.libc.org/releases/musl-1.2.2.tar.gz.asc
 	validpgpkeys = 836489290BB6B70F99FFDA0556BCDB593020450F
-	sha256sums = 68af6e18539f646f9c41a3a2bb25be4a5cfa5a8f65f0bb647fd2bbfdf877e84b
+	sha256sums = 9b969322012d796dc23dda27a35866034fa67d8fb67e0e2c45c913c3d43219dd
 	sha256sums = SKIP
 
 pkgname = aarch64-linux-musl

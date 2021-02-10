@@ -2,8 +2,8 @@
 # Contributor: Riley Trautman <asonix.dev@gmail.com>
 
 pkgname=aarch64-linux-musl
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.2.2
+pkgrel=1
 pkgdesc='Lightweight implementation of C standard library'
 arch=('i686' 'x86_64')
 url='https://musl.libc.org'
@@ -12,7 +12,7 @@ options=('staticlibs' '!buildflags' '!strip')
 depends=('aarch64-linux-gnu-gcc')
 validpgpkeys=('836489290BB6B70F99FFDA0556BCDB593020450F')
 source=(https://musl.libc.org/releases/musl-${pkgver}.tar.gz{,.asc})
-sha256sums=('68af6e18539f646f9c41a3a2bb25be4a5cfa5a8f65f0bb647fd2bbfdf877e84b'
+sha256sums=('9b969322012d796dc23dda27a35866034fa67d8fb67e0e2c45c913c3d43219dd'
             'SKIP')
 
 _target=aarch64-linux-gnu
