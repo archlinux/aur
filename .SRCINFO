@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-qt-gui
 	pkgdesc = ROS - qt_gui provides the infrastructure for an integrated graphical user interface based on Qt.
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://wiki.ros.org/qt_gui
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = ros-noetic-qt-gui
 	depends = ros-noetic-python-qt-binding
 	depends = python-rospkg
 	depends = tango-icon-theme
-	source = ros-noetic-qt-gui-0.4.1.tar.gz::https://github.com/ros-visualization/qt_gui_core/archive/0.4.1.tar.gz
-	sha256sums = 6baab3b36409f385aa543d33c6595bfbfc89c24ce52233b6aa33ec2088d23132
+	source = ros-noetic-qt-gui-0.4.2.tar.gz::https://github.com/ros-visualization/qt_gui_core/archive/0.4.2.tar.gz
+	sha256sums = fbc5a7b0a4da43f80e9216845aec2e247fac0a63512053c03a9f89024d026aad
 
 pkgname = ros-noetic-qt-gui
 

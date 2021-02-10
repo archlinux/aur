@@ -2,7 +2,7 @@ pkgdesc="ROS - qt_gui provides the infrastructure for an integrated graphical us
 url='https://wiki.ros.org/qt_gui'
 
 pkgname='ros-noetic-qt-gui'
-pkgver='0.4.1'
+pkgver='0.4.2'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -31,7 +31,7 @@ depends=(
 
 _dir="qt_gui_core-${pkgver}/qt_gui"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/qt_gui_core/archive/${pkgver}.tar.gz")
-sha256sums=('6baab3b36409f385aa543d33c6595bfbfc89c24ce52233b6aa33ec2088d23132')
+sha256sums=('fbc5a7b0a4da43f80e9216845aec2e247fac0a63512053c03a9f89024d026aad')
 
 build() {
 	# Use ROS environment variables.
