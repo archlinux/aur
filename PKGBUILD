@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov
 
 pkgname=booster-git
-pkgver=0.1.r42.g4eced3a
+pkgver=0.2.r0.g47e4e6b
 pkgrel=1
 pkgdesc='Fast and secure initramfs generator'
 arch=(x86_64)
@@ -9,9 +9,12 @@ url='http://github.com/anatol/booster'
 license=(MIT)
 depends=(bash)
 makedepends=(git go)
-#checkdepends=(qemu-headless linux)
+#checkdepends=(qemu-headless linux tang)
 optdepends=('busybox: to enable emergency shell at the boot time')
-provides=(initramfs)
+backup=(etc/booster.yaml)
+provides=(booster initramfs)
+conflicts=(booster)
+replaces=(booster)
 source=(git+https://github.com/anatol/booster)
 sha512sums=('SKIP')
 
@@ -21,7 +24,9 @@ pkgver() {
 }
 
 build() {
-  cd $srcdir/booster/generator
+  cd booster
+
+  cd generator
   CGO_CPPFLAGS="${CPPFLAGS}" CGO_CFLAGS="${CFLAGS}" CGO_CXXFLAGS="${CXXFLAGS}" CGO_LDFLAGS="${LDFLAGS}" \
     go build -trimpath \
       -buildmode=pie \
@@ -29,13 +34,14 @@ build() {
       -modcacherw \
       -ldflags "-linkmode external -extldflags \"${LDFLAGS}\""
 
-  cd $srcdir/booster/init
+  cd ../init
   CGO_ENABLED=0 go build -trimpath -mod=readonly -modcacherw
 }
 
 check() {
-  cd $srcdir/booster/tests
-  # go test -v this requires access to KVM that is not available in Arch chroot env
+  cd booster/tests
+  # arch chroot does not allow access to KVM
+  # TEST_DISABLE_KVM=1 go test -v # integration tests require a lot of time and space to build 10G images
 }
 
 package() {

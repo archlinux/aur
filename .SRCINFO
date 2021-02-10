@@ -1,6 +1,6 @@
 pkgbase = booster-git
 	pkgdesc = Fast and secure initramfs generator
-	pkgver = 0.1.r42.g4eced3a
+	pkgver = 0.2.r0.g47e4e6b
 	pkgrel = 1
 	url = http://github.com/anatol/booster
 	arch = x86_64
@@ -9,7 +9,11 @@ pkgbase = booster-git
 	makedepends = go
 	depends = bash
 	optdepends = busybox: to enable emergency shell at the boot time
+	provides = booster
 	provides = initramfs
+	conflicts = booster
+	replaces = booster
+	backup = etc/booster.yaml
 	source = git+https://github.com/anatol/booster
 	sha512sums = SKIP
 
