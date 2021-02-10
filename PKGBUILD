@@ -1,7 +1,7 @@
-# Maintainer: Watanabe Fumihiko <random at chars dot jp>
+# Maintainer: Watanabe Fumihiko <random@chars.jp>
 
 pkgname=freenitori
-pkgver=0.0.1
+pkgver=1.9.9
 pkgrel=1
 pkgdesc="Open source, general purpose Discord utility."
 arch=("x86_64")
@@ -17,26 +17,23 @@ source=(
   "${pkgname}.tmpfiles"
 )
 sha256sums=('SKIP'
-            'acbf6fa0c8c035bb9a59cd18986eaef7cdfa751fa04385d8e842e9f8d5c5318c'
-            'bb280c416e90f01fb1cc717b524f707e8a9da4ba4f6d728b899024aa277d3f84'
+            '7b50e0e628828635d639238b003da5749a38b5942d765418cdeb466bcce95782'
+            '89719b5009884f17fed228d2cb0562c4e71f3a6dc61618d8989d632a2fa5a953'
             'cb8d60723616d8153505850a6ec8cb5458c34a833e5d5bc87b3efcce1486202b')
 
 build() {
   cd "FreeNitori"
+  git checkout v${pkgver}
+  git config advice.detachedHead false
   export GOPATH="${PWD}/../go"
-  make deps
-  make build
+  make
 }
 
 package() {
   cd "FreeNitori"
   install -Dm755 "build/freenitori" "${pkgdir}/usr/bin/freenitori"
-  install -Dm755 "build/freenitori" "${pkgdir}/usr/bin/freenitori-chatbackend"
-  install -Dm755 "build/freenitori" "${pkgdir}/usr/bin/freenitori-shell"
-  install -Dm755 "build/freenitori" "${pkgdir}/usr/bin/freenitori-supervisor"
-  install -Dm755 "build/freenitori" "${pkgdir}/usr/bin/freenitori-webserver"
+  install -Dm755 "build/nitorictl" "${pkgdir}/usr/bin/nitorictl"
   install -Dm644 "assets/nitori.conf" "${pkgdir}/etc/${pkgname}/nitori.conf"
-  install -Dm644 "plugins/badger.so" "${pkgdir}/etc/${pkgname}/plugins/badger.so"
   cd ..
   install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
