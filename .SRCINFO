@@ -1,6 +1,6 @@
 pkgbase = rawk-git
 	pkgdesc = a minimal tool inspired by gawks string seperation ability
-	pkgver = 0.6.7.70.g8f283c2
+	pkgver = 0.6.8.72.gbfff9d6
 	pkgrel = 1
 	url = https://gitlab.com/Zemrod/rawk
 	arch = x86_64
