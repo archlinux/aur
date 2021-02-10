@@ -11,7 +11,7 @@ pkgdesc='Audio Effects for Pipewire applications'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url='https://github.com/wwmm/pulseeffects'
 license=('GPL3')
-makedepends=('appstream-glib' 'boost' 'itstool' 'meson'
+makedepends=('appstream-glib' 'boost' 'git' 'itstool' 'meson'
   'pipewire' 'rnnoise' 'rubberband' 'zam-plugins')
 source=("${pkgbase%%-git}::git+https://github.com/wwmm/pulseeffects.git")
 sha512sums=('SKIP')

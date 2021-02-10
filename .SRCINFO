@@ -12,6 +12,7 @@ pkgbase = pulseeffects-git
 	license = GPL3
 	makedepends = appstream-glib
 	makedepends = boost
+	makedepends = git
 	makedepends = itstool
 	makedepends = meson
 	makedepends = pipewire
