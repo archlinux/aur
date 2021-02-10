@@ -2,7 +2,7 @@
 
 gitname=unpaywall
 pkgname=chromium-${gitname}-git
-pkgver=264.ea5587a
+pkgver=279.c683b42
 pkgrel=1
 pkgdesc="Chromium extension to find free journal articles"
 arch=('any')
@@ -18,7 +18,7 @@ pkgver() {
     printf "%s" "${ver//-/.}"
 }
 package() {
-    mkdir -p "${pkgdir}/usr/share/${pkgname}"
+    mkdir -p "${pkgdir}/usr/share/chromium/${gitname}"
     shopt -u dotglob
-    cp -dr --no-preserve=ownership "${srcdir}/${gitname}"/extension/* "${pkgdir}/usr/share/${pkgname}/"
+    cp -dr --no-preserve=ownership "${srcdir}/${gitname}"/extension/* "${pkgdir}/usr/share/chromium/${gitname}/"
 }
