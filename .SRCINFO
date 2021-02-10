@@ -15,7 +15,7 @@ pkgbase = networkmanager-dmenu-bluetoothfix-git
 	optdepends = network-manager-applet: for the nm-connection-editor GUI
 	provides = networkmanager-dmenu-bluetoothfix
 	conflicts = networkmanager-dmenu-bluetoothfix
-	source = networkmanager-dmenu-bluetoothfix::git+https://github.com/firecat53/networkmanager-dmenu-bluetoothfix.git
+	source = git+https://github.com/Quoteme/networkmanager-dmenu-bluetoothfix.git
 	md5sums = SKIP
 
 pkgname = networkmanager-dmenu-bluetoothfix-git

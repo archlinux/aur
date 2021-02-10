@@ -17,7 +17,7 @@ optdepends=('dmenu: either dmenu or rofi is required'
             'network-manager-applet: for the nm-connection-editor GUI')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/firecat53/$_gitname.git")
+source=(git+"https://github.com/Quoteme/${_gitname}.git")
 md5sums=('SKIP')
 install="$_pkgname.install"
 
