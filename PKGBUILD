@@ -4,9 +4,9 @@ pkgdesc="ROS - Provides conversions from PCL data types and ROS message types."
 url='https://wiki.ros.org/pcl_conversions'
 
 pkgname='ros-noetic-pcl-conversions'
-pkgver='1.7.0'
+pkgver='1.7.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-noetic-catkin)
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="perception_pcl-${pkgver}/pcl_conversions"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/perception_pcl/archive/${pkgver}.tar.gz")
-sha256sums=('ac821a662e507df7e48cebc0ba02aaa360b8edbd43873fc6f63bc65ec3d12628')
+sha256sums=('1d131d1897f5380617842805f1aff193071a8104c8994737d32bab8b3caa08a4')
 
 build() {
   # Use ROS environment variables
