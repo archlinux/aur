@@ -2,7 +2,7 @@
 
 _pkgname=horovod
 pkgname=python-horovod
-pkgver=0.21.1
+pkgver=0.21.2
 pkgrel=1
 pkgdesc='Distributed training framework for TensorFlow, Keras, PyTorch, and Apache MXNet'
 arch=('x86_64')
@@ -28,6 +28,7 @@ makedepends=(
   cmake
   git
   mxnet-cuda
+  python-pip
   python-pytorch-cuda
   python-setuptools
   python-tensorflow-cuda
