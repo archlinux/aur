@@ -4,7 +4,7 @@ pkgdesc="ROS - tf is a package that lets the user keep track of multiple coordin
 url='https://wiki.ros.org/tf'
 
 pkgname='ros-noetic-tf'
-pkgver='1.13.1'
+pkgver='1.13.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -48,7 +48,7 @@ depends=(
 
 _dir="geometry-${pkgver}/tf"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry/archive/${pkgver}.tar.gz")
-sha256sums=('c9845547238c7f305bd47af10f072184fea76050cbca021e77d43890fe996e4c')
+sha256sums=('6b653d4e10503d3da56bc4000e39ce58d6a85547a37837da576edccecc0c6ae2')
 
 build() {
 	# Use ROS environment variables.
