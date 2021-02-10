@@ -4,9 +4,9 @@ pkgdesc="ROS - Nodelet Core Metapackage."
 url='https://wiki.ros.org/nodelet_core'
 
 pkgname='ros-noetic-nodelet-core'
-pkgver='1.10.0'
+pkgver='1.10.1'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -30,7 +30,7 @@ depends=(
 
 _dir="nodelet_core-${pkgver}/nodelet_core"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/nodelet_core/archive/${pkgver}.tar.gz")
-sha256sums=('2a20f3c1c6e270e3625bc27099c07d236ca0f3aa97fff2b5f15075a0233acfe9')
+sha256sums=('0130cb6d52985927442fa5d80d109c57defaf4b4983abc951a0ef59e7f98c654')
 
 build() {
 	# Use ROS environment variables.
