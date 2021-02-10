@@ -2,7 +2,7 @@ pkgdesc="ROS - ROS console output library."
 url='https://wiki.ros.org/rosconsole'
 
 pkgname='ros-noetic-rosconsole'
-pkgver='1.14.1'
+pkgver='1.14.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -37,9 +37,9 @@ depends=(
     apr-util
 )
 
-_dir="rosconsole-${pkgver}"
+_dir="rosconsole-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/rosconsole/archive/${pkgver}.tar.gz")
-sha256sums=('bce437e73de95eebf00d2f5a3abaf39743fa6982207424abbdc45c4851fa88be')
+sha256sums=('0b2cbc4f9a92466c0fbae7863482b286ef87692de4941527cb429e6c74639246')
 
 build() {
     # Use ROS environment variables.
