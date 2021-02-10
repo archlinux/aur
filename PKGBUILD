@@ -4,10 +4,10 @@ pkgdesc="ROS - The urdf_sim_tutorial package."
 url='https://wiki.ros.org/urdf_sim_tutorial'
 
 pkgname='ros-noetic-urdf-sim-tutorial'
-pkgver='0.4.0'
+pkgver='0.5.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-noetic-catkin)
@@ -34,9 +34,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="urdf_sim_tutorial-${pkgver}"
+_dir="urdf_sim_tutorial-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/urdf_sim_tutorial/archive/${pkgver}.tar.gz")
-sha256sums=('b5b3e36da5e437f2c610c6b33d53b959ed38b6dfbd973cf0c4fe3697228e5560')
+sha256sums=('6f350a379fdfc2e30a11cabfa4cdf809afdd05e792e657546940e04122c42797')
 
 build() {
   # Use ROS environment variables

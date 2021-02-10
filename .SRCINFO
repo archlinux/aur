@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-urdf-sim-tutorial
 	pkgdesc = ROS - The urdf_sim_tutorial package.
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = https://wiki.ros.org/urdf_sim_tutorial
 	arch = any
 	license = BSD
@@ -19,8 +19,8 @@ pkgbase = ros-noetic-urdf-sim-tutorial
 	depends = ros-noetic-xacro
 	depends = ros-noetic-rviz
 	depends = ros-noetic-robot-state-publisher
-	source = ros-noetic-urdf-sim-tutorial-0.4.0.tar.gz::https://github.com/ros/urdf_sim_tutorial/archive/0.4.0.tar.gz
-	sha256sums = b5b3e36da5e437f2c610c6b33d53b959ed38b6dfbd973cf0c4fe3697228e5560
+	source = ros-noetic-urdf-sim-tutorial-0.5.1.tar.gz::https://github.com/ros/urdf_sim_tutorial/archive/0.5.1.tar.gz
+	sha256sums = 6f350a379fdfc2e30a11cabfa4cdf809afdd05e792e657546940e04122c42797
 
 pkgname = ros-noetic-urdf-sim-tutorial
 
