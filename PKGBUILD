@@ -1,7 +1,7 @@
 # Maintainer: Arne Beer <privat@arne.beer>
 
 pkgname=pueue
-pkgver='0.11.1'
+pkgver='0.12.0'
 pkgrel=1
 arch=('any')
 pkgdesc='A command scheduler for shells'
@@ -9,20 +9,20 @@ license=('MIT')
 makedepends=('cargo')
 url='https://github.com/nukesor/pueue'
 source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/Nukesor/pueue/archive/pueue-v${pkgver}.tar.gz"
+    "$pkgname-$pkgver.tar.gz::https://github.com/Nukesor/pueue/archive/v${pkgver}.tar.gz"
 )
-md5sums=('31e395b42db9d0eeff1d2e750d528c58')
+md5sums=('ba97a617e3300e27da9f9237a5b200c5')
 
 build() {
     ls -ahl
-    cd "$srcdir/$pkgname-$pkgname-v$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
     cargo build --release --locked
 
     ./build_completions.sh
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgname-v$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
 
     # Install binaries
     install -Dm755 "target/release/pueue" "$pkgdir/usr/bin/pueue"
