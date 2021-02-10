@@ -1,7 +1,7 @@
 pkgbase = deconz
 	pkgdesc = A generic ZigBee monitoring and control tool
-	pkgver = 2.07.01
-	pkgrel = 2
+	pkgver = 2.09.03
+	pkgrel = 3
 	url = https://www.dresden-elektronik.de
 	arch = x86_64
 	arch = armv6h
@@ -16,14 +16,14 @@ pkgbase = deconz
 	depends = qt5-serialport
 	depends = qt5-websockets
 	depends = sqlite
-	source_x86_64 = deconz-2.07.01-x86_64.deb::https://deconz.dresden-elektronik.de/ubuntu/stable/deconz-2.07.01-qt5.deb
-	sha256sums_x86_64 = 2b3d11ffaf4de9276a116619168d0fd01a8b5c0e965e4edb2449e35a0d4d87a0
-	source_armv6h = deconz-2.07.01-armv6h.deb::https://deconz.dresden-elektronik.de/raspbian/stable/deconz-2.07.01-qt5.deb
-	sha256sums_armv6h = 399cddcac239504901013ed0e9ec5fa84f409a2d2b0857b560afaba2bfbe6534
-	source_armv7h = deconz-2.07.01-armv7h.deb::https://deconz.dresden-elektronik.de/raspbian/stable/deconz-2.07.01-qt5.deb
-	sha256sums_armv7h = 399cddcac239504901013ed0e9ec5fa84f409a2d2b0857b560afaba2bfbe6534
-	source_aarch64 = deconz_2.07.01-debian-stretch-stable_arm64.deb::https://deconz.dresden-elektronik.de/debian/stable/deconz_2.07.01-debian-stretch-stable_arm64.deb
-	sha256sums_aarch64 = 845ba82376177a8d24fdad8d2dc8a50dab9835bc6f6ef12f3802e0f67873e8be
+	source_x86_64 = deconz-2.09.03-x86_64.deb::https://deconz.dresden-elektronik.de/ubuntu/stable/deconz-2.09.03-qt5.deb
+	sha256sums_x86_64 = 23932a2863eedcf4e0d84ba177cc43b361c92d6b2a16e6481db4a9b7864ac761
+	source_armv6h = deconz-2.09.03-armv6h.deb::https://deconz.dresden-elektronik.de/raspbian/stable/deconz-2.09.03-qt5.deb
+	sha256sums_armv6h = 86a012ab674f282fa3567bcdd0bcb9195ef8f7ebb484236e1b7296e39ba6915b
+	source_armv7h = deconz-2.09.03-armv7h.deb::https://deconz.dresden-elektronik.de/raspbian/stable/deconz-2.09.03-qt5.deb
+	sha256sums_armv7h = 86a012ab674f282fa3567bcdd0bcb9195ef8f7ebb484236e1b7296e39ba6915b
+	source_aarch64 = deconz_2.09.03-debian-stretch-stable_arm64.deb::https://deconz.dresden-elektronik.de/debian/stable/deconz_2.09.03-debian-stretch-stable_arm64.deb
+	sha256sums_aarch64 = e845d8a173a0fba75347dfe144798d69f66e05e3670004b8cfc89ad79b35fbd5
 
 pkgname = deconz
 
