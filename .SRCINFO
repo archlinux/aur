@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-controller-interface
 	pkgdesc = ROS - Interface base class for controllers.
-	pkgver = 0.19.1
+	pkgver = 0.19.4
 	pkgrel = 1
 	url = https://github.com/ros-controls/ros_control/wiki
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = ros-noetic-controller-interface
 	depends = ros-noetic-pluginlib
 	depends = ros-noetic-roscpp
 	depends = ros-noetic-hardware-interface
-	source = ros-noetic-controller-interface-0.19.1.tar.gz::https://github.com/ros-controls/ros_control/archive/0.19.1.tar.gz
-	sha256sums = 9b39e47e78c43f36c378c0557a68b4ba35f1f723314cbd541a460e6a340bc4ae
+	source = ros-noetic-controller-interface-0.19.4.tar.gz::https://github.com/ros-controls/ros_control/archive/0.19.4.tar.gz
+	sha256sums = e8f12423adf7caefa9f46bf2c1bb4322052f43db8c9a70322228da9bae9d595b
 
 pkgname = ros-noetic-controller-interface
 
