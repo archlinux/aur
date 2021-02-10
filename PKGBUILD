@@ -4,10 +4,10 @@ pkgdesc="ROS - Transmission Interface."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-noetic-transmission-interface'
-pkgver='0.15.1'
+pkgver='0.19.4'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-noetic-pluginlib
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_control-${pkgver}/transmission_interface"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_control/archive/${pkgver}.tar.gz")
-sha256sums=('adf1a9d1fd10f4d89e91c8279d1278d9cd301767b658c143810479b2d10eedca')
+sha256sums=('e8f12423adf7caefa9f46bf2c1bb4322052f43db8c9a70322228da9bae9d595b')
 
 build() {
   # Use ROS environment variables
