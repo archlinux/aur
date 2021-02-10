@@ -6,15 +6,15 @@
 pkgbase=pulseeffects-git
 pkgname=("${pkgbase}" "gst-plugins-${pkgbase}")
 pkgver=5.0.0.r12.gd18451b3
-pkgrel=1
+pkgrel=2
 pkgdesc='Audio Effects for Pipewire applications'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url='https://github.com/wwmm/pulseeffects'
 license=('GPL3')
-depends=('boost-libs' 'calf' 'glibmm' 'gst-plugin-gtk' 'gst-plugins-bad'
-  'gst-plugins-base' 'gstreamer' 'gstreamer' 'gtk3' 'gtkmm3' 'libebur128'
-  'libsamplerate' 'libsigc++' 'libsndfile' 'lilv' 'lsp-plugins' 'pipewire'
-  'pipewire-pulse' 'rnnoise' 'yelp' 'zita-convolver')
+depends=('boost-libs' 'calf' 'glibmm' 'gst-plugin-gtk' 'gst-plugin-pipewire'
+  'gst-plugins-bad' 'gst-plugins-base' 'gstreamer' 'gstreamer' 'gtk3'
+  'gtkmm3' 'libebur128' 'libsamplerate' 'libsigc++' 'libsndfile' 'lilv'
+  'lsp-plugins' 'pipewire' 'pipewire-pulse' 'rnnoise' 'yelp' 'zita-convolver')
 makedepends=('appstream-glib' 'boost' 'git' 'itstool' 'meson'
   'pipewire' 'rnnoise' 'rubberband' 'zam-plugins')
 source=("${pkgbase%%-git}::git+https://github.com/wwmm/pulseeffects.git")
@@ -32,9 +32,9 @@ build() {
 
 package_pulseeffects-git() {
   pkgdesc="Audio Effects for Pipewire Applications"
-  depends=('boost-libs' 'calf' 'glibmm' 'gst-plugin-gtk' 'gst-plugins-bad'
-    'gst-plugins-pulseeffects' 'gstreamer' 'gtk3' 'gtkmm3' 'libsigc++'
-    'lilv' 'lsp-plugins' 'pipewire' 'pipewire-pulse' 'yelp')
+  depends=('boost-libs' 'calf' 'glibmm' 'gst-plugin-gtk' 'gst-plugin-pipewire'
+    'gst-plugins-bad' 'gst-plugins-pulseeffects' 'gstreamer' 'gtk3' 'gtkmm3'
+    'libsigc++' 'lilv' 'lsp-plugins' 'pipewire' 'pipewire-pulse' 'yelp')
   optdepends=('rubberband: pitch shifting'
     'zam-plugins: maximizer')
   conflicts=('pulseeffects')
