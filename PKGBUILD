@@ -5,8 +5,7 @@
 
 # Maintainer: Buck Yeh <buck.yeh at gmail dot com>
 pkgname=parsergen
-pkgver=1.6.1
-#pkgver=VERSION
+pkgver=1.6.2
 pkgrel=1
 epoch=
 pkgdesc='Self-hosted LR parser generator in C++20'
@@ -17,7 +16,7 @@ groups=()
 depends=('fmt')
 makedepends=('cmake' 'make' 'gcc' 'git' 'binutils' 'fakeroot' 'gawk')
 checkdepends=()
-optdepends=('bux>=1.2.0: To build the generated code with')
+optdepends=('bux>=1.2.1: To build the generated code with')
 provides=()
 conflicts=()
 replaces=()
