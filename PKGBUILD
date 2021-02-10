@@ -5,8 +5,8 @@
 #     Marcin Skory <armitage at q84fh dot net>
 #     with Contribution of Eric Forgeot < http://ifiction.free.fr >
 pkgname=gargoyle-git
-pkgver=20160918.67251c3
-pkgrel=3
+pkgver=2019.1.r71.g9b4be5c
+pkgrel=1
 pkgdesc="Interactive Fiction multi-interpreter that supports all major IF formats (development version)"
 arch=('i686' 'x86_64' 'armv6h')
 url="https://github.com/garglk/garglk"
@@ -26,6 +26,11 @@ sha512sums=('SKIP'
 	'fbfd04e6d62e469b62263f1fb92b314e825784982be3be9f0e506fe6ff7d367704db907c88ec60fc492f35eaa3548fc3a65fd67d8c4c2be7e35ed87a6c9c3489'
             '1fa602865745c1c9801178ee9b24be86215f2af4f9ee3f4f3b3c0606a87aba32a67c9c5343b481332c8fc97ff6c1a5e447f074d116c0cc5b255af35098096e6e'
             'c9924abc48b6dc5025fb83c040a3bdd2a324302d67683645a4fd1d1f3bcfe92c58a9db71c1e41a26afe8a3144e1cdafbc060df2261d93ddac29a9144ae22db71')
+
+pkgver() {
+  cd "$pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
 	cd "$pkgname"
