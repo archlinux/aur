@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=downzemall
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="A mass download manager based on the Qt5 framework and written in C/C++"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('libnotify: desktop notifications'
             'libappindicator-gtk3: tray icon')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/setvisible/DownZemAll/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('4089b9a1b928b3389718ace85c566de606df4cd7445b9f5082993f48190c2f47'
+sha256sums=('5266f069a8ce2f58b42fa5ac43665abeae8f0f71d5db85ffb4cb1dda3baba03d'
             '3cb8f2eefbd9f04dd4b3a706058d8ab82c42514db81fbfbdf213fc833ca01eff')
 
 prepare() {
