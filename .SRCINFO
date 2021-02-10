@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-rqt-top
 	pkgdesc = ROS - RQT plugin for monitoring ROS processes.
-	pkgver = 0.4.8
-	pkgrel = 2
+	pkgver = 0.4.9
+	pkgrel = 1
 	url = https://wiki.ros.org/rqt_top
 	arch = any
 	license = BSD
@@ -13,8 +13,8 @@ pkgbase = ros-noetic-rqt-top
 	depends = ros-noetic-rospy
 	depends = ros-noetic-rqt-gui-py
 	depends = python-psutil
-	source = ros-noetic-rqt-top-0.4.8.tar.gz::https://github.com/ros-visualization/rqt_top/archive/0.4.8.tar.gz
-	sha256sums = 6fa62b8fcb9ebc6d45173aa8a03189625856a26b8672f29518209f1d01b770ab
+	source = ros-noetic-rqt-top-0.4.9.tar.gz::https://github.com/ros-visualization/rqt_top/archive/0.4.9.tar.gz
+	sha256sums = 18a11c1fb970ff5b20528f46590e618330a093393c86a9295404f2afde10df11
 
 pkgname = ros-noetic-rqt-top
 
