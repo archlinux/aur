@@ -8,13 +8,16 @@ url='https://git.sr.ht/~brocellous/wlrctl'
 arch=('x86_64')
 license=('MIT')
 depends=('wayland' 'libxkbcommon')
+provides=('wlrctl')
 makedepends=('scdoc' 'meson' 'ninja')
 source=("${pkgname}::git+https://git.sr.ht/~brocellous/wlrctl")
 sha1sums=('SKIP')
+
 pkgver() {
     cd "${srcdir}/${pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
 prepare() {
     cd "${srcdir}/${pkgname}"
 }
