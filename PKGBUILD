@@ -1,14 +1,15 @@
 # Maintainer: Jay Schmidek <jschmidek at gmail dot com>
+# Maintainer: Paul-Louis Ageneau <paul-louis at ageneau dot org>
 
-pkgname="libdatachannel"
+pkgname=libdatachannel
 pkgver=v0.10.4
 pkgrel=1
-pkgdesc="C/C++ WebRTC Data Channels"
+pkgdesc="C/C++ WebRTC Data Channels and Media Transport standalone library"
 arch=('x86_64')
 url="https://github.com/paullouisageneau/$pkgname"
 license=('LGPL')
 makedepends=('git' 'cmake')
-depends=('libnice' 'openssl')
+depends=('openssl', 'libsrtp2')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("git+https://github.com/paullouisageneau/$pkgname.git#tag=$pkgver")
@@ -23,7 +24,7 @@ prepare() {
 build() {
 	cd "$pkgname"
 	rm -rf build
-	cmake -B build -DUSE_NICE=1 -DUSE_GNUTLS=0 -DUSE_SYSTEM_SRTP=0 -DNO_TESTS=1 -DNO_EXAMPLES=1 -DDISABLE_SPDLOG=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+	cmake -B build -DUSE_NICE=0 -DUSE_GNUTLS=0 -DUSE_SYSTEM_SRTP=1 -DNO_TESTS=1 -DNO_EXAMPLES=1 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
     cd build
     make
 }
