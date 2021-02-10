@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-webkit-dependency
 	pkgdesc = ROS - This encapsulates the WebKit dependency for a specific ROS distribution and its Qt version.
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.1.2
+	pkgrel = 1
 	url = https://wiki.ros.org/webkit_dependency
 	arch = any
 	license = BSD
@@ -9,8 +9,8 @@ pkgbase = ros-noetic-webkit-dependency
 	makedepends = ros-build-tools
 	makedepends = ros-noetic-catkin
 	depends = python-pyqt5
-	source = ros-noetic-webkit-dependency-1.1.0.tar.gz::https://github.com/ros-visualization/webkit_dependency/archive/1.1.0.tar.gz
-	sha256sums = 44cafb6c6ddeafdb82d40103d35ffe4b724ef21eca9a77a3ca3ab739f7aa23c6
+	source = ros-noetic-webkit-dependency-1.1.2.tar.gz::https://github.com/ros-visualization/webkit_dependency/archive/1.1.2.tar.gz
+	sha256sums = 0ac7e895d1c1ae4342c6a140af4c0201355c2af6bfb09d1fc8ade146d617def4
 
 pkgname = ros-noetic-webkit-dependency
 

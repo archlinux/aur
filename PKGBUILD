@@ -4,10 +4,10 @@ pkgdesc="ROS - This encapsulates the WebKit dependency for a specific ROS distri
 url='https://wiki.ros.org/webkit_dependency'
 
 pkgname='ros-noetic-webkit-dependency'
-pkgver='1.1.0'
+pkgver='1.1.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -28,9 +28,9 @@ depends=(
 	python-pyqt5
 )
 
-_dir="webkit_dependency-${pkgver}"
+_dir="webkit_dependency-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/webkit_dependency/archive/${pkgver}.tar.gz")
-sha256sums=('44cafb6c6ddeafdb82d40103d35ffe4b724ef21eca9a77a3ca3ab739f7aa23c6')
+sha256sums=('0ac7e895d1c1ae4342c6a140af4c0201355c2af6bfb09d1fc8ade146d617def4')
 
 build() {
 	# Use ROS environment variables.
