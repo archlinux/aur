@@ -1,0 +1,17 @@
+pkgbase = rmfuse
+	pkgdesc = FUSE access to the reMarkable Cloud
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/rschroll/rmfuse/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-pyfuse3
+	depends = python-bidict
+	depends = python-rmcl
+	depends = python-rmrl
+	source = https://files.pythonhosted.org/packages/source/r/rmfuse/rmfuse-0.1.1.tar.gz
+	sha256sums = 358454373e505a56b8645b7f15d42f0ec118ccf28d3e3e8f4530210ddb67cf22
+
+pkgname = rmfuse
+
