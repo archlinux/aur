@@ -1,6 +1,6 @@
 pkgbase = waffle
 	pkgdesc = a library for choosing window system and OpenGL API at runtime
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = http://www.waffle-gl.org
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = waffle
 	depends = libx11
 	depends = libxcb
 	depends = wayland
-	source = https://gitlab.freedesktop.org/mesa/waffle/-/archive/v1.6.1/waffle-v1.6.1.tar.gz
-	sha256sums = 4eb4dfe18b5a88e6ea2b6b0a0c415caeaa453ea8eb37a757c100e24e18c317dd
+	source = https://gitlab.freedesktop.org/mesa/waffle/-/archive/v1.6.2/waffle-v1.6.2.tar.gz
+	sha256sums = 1a120d258390fb776a1c47cc9617f057dc72baf07bad610772e5da2fea82437c
 
 pkgname = waffle
 
