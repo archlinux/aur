@@ -4,10 +4,10 @@ pkgdesc="ROS - turtle_tf demonstrates how to write a tf broadcaster and listener
 url='https://wiki.ros.org/turtle_tf'
 
 pkgname='ros-noetic-turtle-tf'
-pkgver='0.2.2'
+pkgver='0.2.3'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -41,7 +41,7 @@ depends=(
 
 _dir="geometry_tutorials-${pkgver}/turtle_tf"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry_tutorials/archive/${pkgver}.tar.gz")
-sha256sums=('4b3fdc98bf4cb97ba2f1c40666901fa7d08eb3dfed0d3323de4841de2e3a22cc')
+sha256sums=('7346c3a2d595cbac3d4d2f2e5aa01ff2c7fbafe1c21374efb09244629303ea2f')
 
 build() {
 	# Use ROS environment variables.
