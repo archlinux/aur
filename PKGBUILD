@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="openshift client binary releases"
 arch=("x86_64")
 provides=("oc4")
-url="https://mirror.openshift.com/pub/openshift-v4"
+url="https://github.com/openshift/oc"
 license=("Apache")
 depends=()
 
