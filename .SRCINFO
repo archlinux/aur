@@ -1,5 +1,5 @@
 pkgbase = networkmanager-dmenu-bluetoothfix-git
-	pkgdesc = Control NetworkManager via emenu (+fix to toggle bluetooth)
+	pkgdesc = Control NetworkManager via dmenu (+fix to toggle bluetooth)
 	pkgver = r58.2770261
 	pkgrel = 1
 	url = https://github.com/Quoteme/networkmanager-dmenu-bluetoothfix
