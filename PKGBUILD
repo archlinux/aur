@@ -5,7 +5,7 @@
 
 gitname=bypass-paywalls-chrome
 pkgname=chromium-bypass-paywalls-git
-pkgver=450.8301a3b
+pkgver=547.9165b3e
 pkgrel=1
 pkgdesc="Chromium extension to bypass paywalls"
 arch=('any')
@@ -21,7 +21,7 @@ pkgver() {
     printf "%s" "${ver//-/.}"
 }
 package() {
-    mkdir -p "${pkgdir}/usr/share/${pkgname}"
+    mkdir -p "${pkgdir}/usr/share/chromium/${gitname}"
     shopt -u dotglob
-    cp -dr --no-preserve=ownership "${srcdir}/${gitname}"/* "${pkgdir}/usr/share/${pkgname}/"
+    cp -dr --no-preserve=ownership "${srcdir}/${gitname}"/* "${pkgdir}/usr/share/chromium/${gitname}/"
 }
