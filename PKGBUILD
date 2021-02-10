@@ -10,8 +10,6 @@ _ispkgbuild="true"
 
 source "$_where"/customization.cfg # load default configuration from file
 source "$_where"/prepare
-source "$_where"/ryzen-desktop-profile.cfg
-source "$_where"/generic-desktop-profile.cfg
 
 _tkg_initscript
 
@@ -35,7 +33,7 @@ else
 fi
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver="${_basekernel}"."${_sub}"
-pkgrel=118
+pkgrel=119
 pkgdesc='Linux-tkg with bcachefs'
 arch=('x86_64') # no i686 in here
 url="http://www.kernel.org/"
@@ -77,9 +75,11 @@ options=('!strip' 'docs')
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0011-ZFS-fix.patch"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0012-linux-hardened.patch"
         "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/5.10/0012-misc-additions.patch"
+	"https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-config/ryzen-desktop-profile.cfg"
+	"https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-config/generic-desktop-profile.cfg"
     )
     sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
-            'daeb7733a16d2e6198f9201655bf7eb6a2cb0e1babc38c50ab1a3fbf789187a7'
+            '9541437bd4a68d10d1f40f91080683fb6b8d99def258681b2fa74540d4f74082'
             'SKIP'
             '458d1ca195f3fee5501683a4b61ef0ed0cfa7e5219eccab3390fb40c0289898a'
             'eb1da1a028a1c967222b5bdac1db2b2c4d8285bafd714892f6fc821c10416341'
@@ -104,7 +104,9 @@ options=('!strip' 'docs')
             'e308292fc42840a2366280ea7cf26314e92b931bb11f04ad4830276fc0326ee1'
             '49262ce4a8089fa70275aad742fc914baa28d9c384f710c9a62f64796d13e104'
             '105f51e904d80f63c1421203e093b612fc724edefd3e388b64f8d371c0b3a842'
-            '7fb1104c167edb79ec8fbdcde97940ed0f806aa978bdd14d0c665a1d76d25c24')
+            '7fb1104c167edb79ec8fbdcde97940ed0f806aa978bdd14d0c665a1d76d25c24'
+	    'SKIP'
+	    'SKIP')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
