@@ -1,7 +1,7 @@
 pkgbase = python-suod-git
 	pkgdesc = Scalable Unsupervised Outlier Detection
 	pkgver = r134.560b49a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yzhao062/suod
 	arch = any
 	license = BSD
@@ -14,8 +14,9 @@ pkgbase = python-suod-git
 	depends = python-scipy
 	depends = python-scikit-learn
 	depends = python-psutil
-	provides = python-suod-git
-	source = git://github.com/yzhao062/suod.git
+	provides = python-suod
+	conflicts = python-suod
+	source = git+https://github.com/yzhao062/suod.git
 	md5sums = SKIP
 
 pkgname = python-suod-git
