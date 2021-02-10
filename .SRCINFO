@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-roscpp-core
 	pkgdesc = ROS - Underlying data libraries for roscpp messages.
-	pkgver = 0.7.1
-	pkgrel = 3
+	pkgver = 0.7.2
+	pkgrel = 1
 	url = https://wiki.ros.org/roscpp_core
 	arch = i686
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = ros-noetic-roscpp-core
 	depends = ros-noetic-cpp-common
 	depends = ros-noetic-rostime
 	depends = ros-noetic-roscpp-serialization
-	source = ros-noetic-roscpp-core-0.7.1.tar.gz::https://github.com/ros/roscpp_core/archive/0.7.1.tar.gz
-	sha256sums = 8fddbafd3fc76470e4a706f7923b7a03f914943d7edb0b70273d8b98e003b108
+	source = ros-noetic-roscpp-core-0.7.2.tar.gz::https://github.com/ros/roscpp_core/archive/0.7.2.tar.gz
+	sha256sums = a2aa77814ed97b48995c872a405c51f6b0f1ab9d40e38ece483852bbd273ad7b
 
 pkgname = ros-noetic-roscpp-core
 
