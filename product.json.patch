@@ -1,35 +1,37 @@
-*** /usr/share/vscodium-bin/resources/app/product.json  2020-12-03 19:59:40.000000000 -0500
---- product_new.json    2020-12-04 08:39:09.547338599 -0500
+*** product.json	2021-02-10 16:11:56.465383389 -0500
+--- product.json.new	2021-02-10 16:13:28.739024129 -0500
 ***************
-*** 1,9 ****
-  {
-    "serverDataFolderName": ".vscode-server-oss",
--   "linkProtectionTrustedDomains": ["https://open-vsx.org"],
-    "extensionsGallery": {
-!     "itemUrl": "https://open-vsx.org/vscode/item",
-!     "serviceUrl": "https://open-vsx.org/vscode/gallery"
-    },
-    "quality": "stable",
+*** 137,146 ****
     "keyboardShortcutsUrlWin": "https://go.microsoft.com/fwlink/?linkid=832145",
---- 1,9 ----
-  {
+    "quality": "stable",
+    "extensionsGallery": {
+!     "serviceUrl": "https://open-vsx.org/vscode/gallery",
+!     "itemUrl": "https://open-vsx.org/vscode/item"
+    },
+-   "linkProtectionTrustedDomains": ["https://open-vsx.org"],
     "serverDataFolderName": ".vscode-server-oss",
+    "commit": "5d424b828ada08e1eb9f95d6cb41120234ef57c7",
+    "date": "2021-02-10T00:29:49.529Z",
+--- 137,146 ----
+    "keyboardShortcutsUrlWin": "https://go.microsoft.com/fwlink/?linkid=832145",
+    "quality": "stable",
     "extensionsGallery": {
 !     "serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",
 !     "cacheUrl": "https://vscode.blob.core.windows.net/gallery/index",
 !     "itemUrl": "https://marketplace.visualstudio.com/items"
     },
-    "quality": "stable",
-    "keyboardShortcutsUrlWin": "https://go.microsoft.com/fwlink/?linkid=832145",
+    "serverDataFolderName": ".vscode-server-oss",
+    "commit": "5d424b828ada08e1eb9f95d6cb41120234ef57c7",
+    "date": "2021-02-10T00:29:49.529Z",
 ***************
 *** 152,155 ****
-      "vs/code/electron-browser/workbench/workbench.html": "DCAx76TE79oJvbVEouBCXQ",
-      "vs/code/electron-browser/workbench/workbench.js": "QmbzxZoyrJnqFRW9jKugHQ"
+      "vs/code/electron-browser/workbench/workbench.html": "FA7IN1fg7dReTGbMS997BQ",
+      "vs/code/electron-browser/workbench/workbench.js": "qUuJALAxPZquY/13/5wmYg"
     }
 ! }
 \ No newline at end of file
 --- 152,155 ----
-      "vs/code/electron-browser/workbench/workbench.html": "DCAx76TE79oJvbVEouBCXQ",
-      "vs/code/electron-browser/workbench/workbench.js": "QmbzxZoyrJnqFRW9jKugHQ"
+      "vs/code/electron-browser/workbench/workbench.html": "FA7IN1fg7dReTGbMS997BQ",
+      "vs/code/electron-browser/workbench/workbench.js": "qUuJALAxPZquY/13/5wmYg"
     }
 ! }
