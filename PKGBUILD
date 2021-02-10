@@ -3,9 +3,9 @@
 # Contributor: Holger Rauch <holger dot rauch at posteo dot de>
 
 pkgname=payara
-pkgver=5.2020.7
+pkgver=5.2021.1
 pkgrel=1
-pkgdesc="A Java EE application server, drived from GlassFish Open Source Edition."
+pkgdesc="Jakarta EE (Java EE) & MicroProfile compatible application server for production and containerized deployments."
 url="http://www.payara.fish/"
 license=("CDDL" "GPL2")
 depends=("java-environment>=8")
@@ -14,9 +14,9 @@ options=(!strip)
 source=("$pkgname-$pkgver.zip::https://search.maven.org/remotecontent?filepath=fish/$pkgname/distributions/$pkgname/$pkgver/$pkgname-$pkgver.zip"
         "payara.service")
 
-sha256sums=('518ee2a18477528b9fc9a28cfae0e988f5a8331aa0be092f2ce46476355c7bd1'
+sha256sums=('2b90d704581975d0d0eff1da7383e636504e65f80cd18b667a28d353efac7982'
             '20be1d3d7c83fe75580e72154728929e560333a4027f5be39799babbe5da860d')
-sha512sums=('bd6e93d4c451e045ea2e38c01821720c1c53ddc1329a85de1ac551c77e7be1bc9b568efebc44c58cdb4ac5f073699822b2a4ed631805fd73ea1b7e08c9dd0357'
+sha512sums=('74d990937be206a0dd90cd6c021e9569a9e712f6d954e6e5b364afb500fcaf535e270f7d3505c892dd19ce7969aae0c511b00b585e7c2c05f9d94dcb2d2237e1'
             '5c176c6a547f86ee4ed633e36e131d34e0f6f633f5ca74f42b96f27f4b9f4c218c50ed06cbc9b8a92b4f10c7f19cd48823bcac4af8d46cf9ac3ce3da71873070')
 
 package() {
