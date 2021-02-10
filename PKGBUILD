@@ -4,10 +4,10 @@ pkgdesc="ROS - This package defines messages commonly used in mapping packages."
 url='https://wiki.ros.org/map_msgs'
 
 pkgname='ros-noetic-map-msgs'
-pkgver='1.13.0'
+pkgver='1.14.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -37,7 +37,7 @@ depends=(
 
 _dir="navigation_msgs-${pkgver}/map_msgs"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/navigation_msgs/archive/${pkgver}.tar.gz")
-sha256sums=('09bba8fb7a60135183830dec4381cd3187244794aab9759ac50bbc6007e04a61')
+sha256sums=('897e2809fa07330f3b01fbd99163dbed5669eec89d4b7fd742d62cf57b690149')
 
 build() {
 	# Use ROS environment variables.
