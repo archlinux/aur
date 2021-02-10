@@ -2,7 +2,7 @@
 _srcname=pacroller
 pkgname=pacroller-git
 pkgver=0.1.0.8.g5090fdb
-pkgrel=1
+pkgrel=2
 pkgdesc="Unattended upgrade for archlinux"
 arch=('any')
 url="https://github.com/isjerryxiao/pacroller"
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_srcname"
-    git describe --tags | sed 's/^v//;s/-/./g'
+    git describe --tags --long | sed 's/^v//;s/-/./g'
 }
 
 package() {
