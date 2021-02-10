@@ -2,7 +2,7 @@ pkgdesc="ROS - rqt_image_view provides a GUI plugin for displaying images using 
 url='https://wiki.ros.org/rqt_image_view'
 
 pkgname='ros-noetic-rqt-image-view'
-pkgver='0.4.15'
+pkgver='0.4.16'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -37,9 +37,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="rqt_image_view-${pkgver}"
+_dir="rqt_image_view-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_image_view/archive/${pkgver}.tar.gz")
-sha256sums=('2e74e544e5ec12d846b2a692c02e306b240ac2814a9b2974121f2061a519fd9d')
+sha256sums=('8fc609aefd0faf9d2b7df62add6e11310f43e5f5499ba203e2e81899ac2b8d30')
 
 build() {
 	# Use ROS environment variables.
