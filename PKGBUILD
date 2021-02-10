@@ -5,7 +5,7 @@
 
 gitname=stylus
 pkgname=${gitname}-git
-pkgver=2600.bc56a7ab
+pkgver=2898.75db3601d
 pkgrel=1
 pkgdesc="User styles manager extension for Chrome and Chrome-like things"
 arch=('any')
@@ -21,7 +21,7 @@ pkgver() {
 	printf "%s" "${ver//-/.}"
 }
 package() {
-	 mkdir -p "${pkgdir}/usr/share/${pkgname}"
+	 mkdir -p "${pkgdir}/usr/share/chromium/${gitname}"
 	 shopt -u dotglob
-	 cp -dr --no-preserve=ownership "${srcdir}/${gitname}"/* "${pkgdir}/usr/share/${pkgname}/"
+	 cp -dr --no-preserve=ownership "${srcdir}/${gitname}"/* "${pkgdir}/usr/share/chromium/${gitname}/"
 }
