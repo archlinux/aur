@@ -1,0 +1,15 @@
+pkgbase = nextcloud-app-facerecognition
+	pkgdesc = Nextcloud app that implement a basic facial recognition system
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/matiasdelellis/facerecognition
+	arch = any
+	license = AGPL3
+	depends = nextcloud
+	depends = php-pdlib
+	options = !strip
+	source = facerecognition-v0.7.2.tar.gz::https://github.com/matiasdelellis/facerecognition/releases/download/v0.7.2/facerecognition.tar.gz
+	sha512sums = dba2369f165d04487d17cd2242963cf6f028c452b60d94e15552bceabcb03c19bc9c6b8bc13250951301db77a8aed29dd194c4ec8443bd6668a731fc23c6e0bd
+
+pkgname = nextcloud-app-facerecognition
+
