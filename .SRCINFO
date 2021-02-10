@@ -40,7 +40,7 @@ pkgname = glibc-linux4
 	depends = tzdata
 	depends = filesystem
 	optdepends = gd: for memusagestat
-	provides = glibc
+	provides = glibc=2.33
 	conflicts = glibc
 	backup = etc/gai.conf
 	backup = etc/locale.gen
@@ -49,7 +49,7 @@ pkgname = glibc-linux4
 pkgname = lib32-glibc-linux4
 	pkgdesc = GNU C Library (32-bit, linux 4.x compat)
 	depends = glibc=2.33
-	provides = lib32-glibc
+	provides = lib32-glibc=2.33
 	conflicts = lib32-glibc
 	options = !strip
 	options = staticlibs

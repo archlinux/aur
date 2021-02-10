@@ -146,7 +146,7 @@ check() {
 package_glibc-linux4() {
   pkgdesc='GNU C Library (linux 4.x compat)'
   depends=('linux-api-headers>=4.10' tzdata filesystem)
-  provides=('glibc')
+  provides=("glibc=${pkgver}")
   conflicts=('glibc')
   optdepends=('gd: for memusagestat')
   install=glibc.install
@@ -205,7 +205,7 @@ package_glibc-linux4() {
 package_lib32-glibc-linux4() {
   pkgdesc='GNU C Library (32-bit, linux 4.x compat)'
   depends=("glibc=$pkgver")
-  provides=('lib32-glibc')
+  provides=("lib32-glibc=${pkgver}")
   conflicts=('lib32-glibc')
   options+=('!emptydirs')
 
