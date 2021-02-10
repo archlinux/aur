@@ -2,7 +2,7 @@
 
 pkgname='python-zulip-term-git'
 _pkgname='zulip-terminal'
-pkgver=0.5.2.r50.da539ce497
+pkgver=0.6.0.r23.501fac4bbe
 pkgrel=1
 pkgdesc="An interactive terminal interface for Zulip"
 url="https://github.com/zulip/zulip-terminal"
@@ -20,7 +20,7 @@ depends=('python'
 makedepends=('python-setuptools')
 provides=('python-zulip-term')
 conflicts=('python-zulip-term')
-source=('git://github.com/zulip/zulip-terminal')
+source=('git://github.com/zulip/zulip-terminal#branch=main')
 sha512sums=('SKIP')
 
 pkgver() {
@@ -33,7 +33,8 @@ prepare() {
   # Remove version checks for dependant python packages
   #   (little hacky, but allows us to use
   #   zulip-term without downgrading packages)
-  sed -ri "s/'(.+)[=><]=.+'/'\1'/" setup.py
+  # This is no longer required
+  #sed -ri "s/'(.+)[=><]=.+'/'\1'/" setup.py
 }
 
 build() {
@@ -46,4 +47,3 @@ package() {
   python setup.py install --root="${pkgdir}"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
