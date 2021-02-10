@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-diagnostics
 	pkgdesc = ROS - diagnostics.
-	pkgver = 1.10.2
+	pkgver = 1.10.3
 	pkgrel = 1
 	url = https://wiki.ros.org/diagnostics
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = ros-noetic-diagnostics
 	depends = ros-noetic-diagnostic-common-diagnostics
 	depends = ros-noetic-diagnostic-aggregator
 	depends = ros-noetic-self-test
-	source = ros-noetic-diagnostics-1.10.2.tar.gz::https://github.com/ros/diagnostics/archive/1.10.2.tar.gz
-	sha256sums = b0f966c978642938dea3db726752c5339c2819a5b22cc76b3851257d30eaca8d
+	source = ros-noetic-diagnostics-1.10.3.tar.gz::https://github.com/ros/diagnostics/archive/1.10.3.tar.gz
+	sha256sums = ab9637e43fe742e89e08a1d9389321c89fe1d3dbaa206df9a2e8f96456518068
 
 pkgname = ros-noetic-diagnostics
 
