@@ -4,9 +4,9 @@ pkgdesc="ROS - This package attempts to show the features of ROS python API step
 url='https://wiki.ros.org/rospy_tutorials'
 
 pkgname='ros-noetic-rospy-tutorials'
-pkgver='0.9.1'
+pkgver='0.10.2'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -34,7 +34,7 @@ depends=(
 
 _dir="ros_tutorials-${pkgver}/rospy_tutorials"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_tutorials/archive/${pkgver}.tar.gz")
-sha256sums=('b39929a2ac912326fc114256e755fff5d0f0e5e5e7c99640d013eb7f916b85f4')
+sha256sums=('c191f004ffaae3d8723798ed808767190576ef49308140dcfc7ab1adb3b4dcd0')
 
 build() {
 	# Use ROS environment variables.

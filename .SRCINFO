@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-rospy-tutorials
 	pkgdesc = ROS - This package attempts to show the features of ROS python API step-by-step, including using messages, servers, parameters, etc.
-	pkgver = 0.9.1
-	pkgrel = 2
+	pkgver = 0.10.2
+	pkgrel = 1
 	url = https://wiki.ros.org/rospy_tutorials
 	arch = any
 	license = BSD
@@ -14,8 +14,8 @@ pkgbase = ros-noetic-rospy-tutorials
 	depends = ros-noetic-message-runtime
 	depends = ros-noetic-rospy
 	depends = ros-noetic-std-msgs
-	source = ros-noetic-rospy-tutorials-0.9.1.tar.gz::https://github.com/ros/ros_tutorials/archive/0.9.1.tar.gz
-	sha256sums = b39929a2ac912326fc114256e755fff5d0f0e5e5e7c99640d013eb7f916b85f4
+	source = ros-noetic-rospy-tutorials-0.10.2.tar.gz::https://github.com/ros/ros_tutorials/archive/0.10.2.tar.gz
+	sha256sums = c191f004ffaae3d8723798ed808767190576ef49308140dcfc7ab1adb3b4dcd0
 
 pkgname = ros-noetic-rospy-tutorials
 
