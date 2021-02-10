@@ -2,11 +2,11 @@
 
 pkgname=('wifi-password')
 _module='wifi-password'
-pkgver='1.0.7'
+pkgver='1.0.9'
 pkgrel=1
 pkgdesc="Quickly fetch your WiFi password and if needed, generate a QR code of your WiFi to allow phones to easily connect"
 url="https://github.com/sdushantha/wifi-password"
-depends=('python' 'python-qrcode')
+depends=('python' 'python-qrcode' 'python-pillow' 'python-colorama' 'python-image')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
