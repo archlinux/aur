@@ -1,0 +1,13 @@
+pkgbase = oc4-bin
+	pkgdesc = openshift client binary releases
+	pkgver = 4.6.16
+	pkgrel = 1
+	url = https://mirror.openshift.com/pub/openshift-v4
+	arch = x86_64
+	license = Apache
+	provides = oc4
+	source = https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.6.16/openshift-client-linux.tar.gz
+	sha256sums = af367edf30b61876b2c763958796bde30fbc99e14f83ef2e3c4e72b53eb0efcc
+
+pkgname = oc4-bin
+
