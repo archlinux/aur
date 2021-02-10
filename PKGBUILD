@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_pose_view provides a GUI plugin for visualizing 3D poses."
 url='https://wiki.ros.org/rqt_pose_view'
 
 pkgname='ros-noetic-rqt-pose-view'
-pkgver='0.5.8'
+pkgver='0.5.10'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -38,9 +38,9 @@ depends=(
 	python-rospkg
 )
 
-_dir="rqt_pose_view-${pkgver}"
+_dir="rqt_pose_view-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_pose_view/archive/${pkgver}.tar.gz")
-sha256sums=('72e82d3faf086ab5409a051be7e0d56cd9aac2446f56e0eb2c4895d965e06793')
+sha256sums=('6c0e650237fea7bd5d0d4f827e261f9e7a227c7dc6669dc9e6a3f9ea6cd034d8')
 
 build() {
 	# Use ROS environment variables.
