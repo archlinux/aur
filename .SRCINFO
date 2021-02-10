@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-diff-drive-controller
 	pkgdesc = ROS - Controller for a differential drive mobile base.
-	pkgver = 0.15.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/ros-controls/ros_controllers/wiki
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = ros-noetic-diff-drive-controller
 	depends = ros-noetic-controller-interface
 	depends = ros-noetic-tf
 	depends = ros-noetic-controller-manager
-	source = ros-noetic-diff-drive-controller-0.15.0.tar.gz::https://github.com/ros-controls/ros_controllers/archive/0.15.0.tar.gz
-	sha256sums = 8c19481a28f394d5bf4372fb05a6c638fa2995614f9b0f82b8213ca32d15a4cf
+	source = ros-noetic-diff-drive-controller-0.18.1.tar.gz::https://github.com/ros-controls/ros_controllers/archive/0.18.1.tar.gz
+	sha256sums = 0c9938678c20d00192645df16f8106c6f5a5c0cff7453bb3daa5ee4c5d8ba459
 
 pkgname = ros-noetic-diff-drive-controller
 
