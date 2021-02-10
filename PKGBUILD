@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_robot_dashboard provides an infrastructure for building robot
 url='https://wiki.ros.org/rqt_robot_dashboard'
 
 pkgname='ros-noetic-rqt-robot-dashboard'
-pkgver='0.5.7'
+pkgver='0.5.8'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -36,9 +36,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="rqt_robot_dashboard-${pkgver}"
+_dir="rqt_robot_dashboard-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_robot_dashboard/archive/${pkgver}.tar.gz")
-sha256sums=('13b0b3e0ce6a86d06168f79f91a497c207d495361a3c6680255a5d0ab8c6bd8f')
+sha256sums=('44a4390ad334c895f92aee54fa11e130a27c24e292bd0fb2c530f4a7f6cb2edc')
 
 build() {
 	# Use ROS environment variables.

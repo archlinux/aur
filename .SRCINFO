@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-rqt-robot-dashboard
 	pkgdesc = ROS - rqt_robot_dashboard provides an infrastructure for building robot dashboard plugins in rqt.
-	pkgver = 0.5.7
-	pkgrel = 2
+	pkgver = 0.5.8
+	pkgrel = 1
 	url = https://wiki.ros.org/rqt_robot_dashboard
 	arch = any
 	license = BSD
@@ -17,8 +17,8 @@ pkgbase = ros-noetic-rqt-robot-dashboard
 	depends = ros-noetic-rqt-gui
 	depends = ros-noetic-rospy
 	depends = ros-noetic-rqt-robot-monitor
-	source = ros-noetic-rqt-robot-dashboard-0.5.7.tar.gz::https://github.com/ros-visualization/rqt_robot_dashboard/archive/0.5.7.tar.gz
-	sha256sums = 13b0b3e0ce6a86d06168f79f91a497c207d495361a3c6680255a5d0ab8c6bd8f
+	source = ros-noetic-rqt-robot-dashboard-0.5.8.tar.gz::https://github.com/ros-visualization/rqt_robot_dashboard/archive/0.5.8.tar.gz
+	sha256sums = 44a4390ad334c895f92aee54fa11e130a27c24e292bd0fb2c530f4a7f6cb2edc
 
 pkgname = ros-noetic-rqt-robot-dashboard
 
