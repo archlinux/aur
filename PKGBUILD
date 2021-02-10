@@ -1,60 +1,53 @@
-# Maintainer: Matt Parnell/ilikenwf <parwok@gmail.com>
+# Maintainer: Justin Wong <jusw85 at hotmail dot com>
+# Contributor: Matt Parnell/ilikenwf <parwok@gmail.com>
 # Special thanks to fettouhi for finding the better fork
 # my old fork is at https://sourceforge.net/u/ilikenwf/mcomix/ci/gtk3/tree/
 
 pkgname=mcomix-gtk3-git
-pkgver=r1949.c5afd37
+pkgver=r1961.9ba2f5b
 pkgrel=1
 pkgdesc="A comic book reader. Forked from MComix and ported to GTK3."
 arch=('any')
 url="https://github.com/multiSnow/mcomix3"
 license=('GPL')
-depends=('python-pillow' 'python-gobject')
-makedepends=('gettext' 'intltool' 'git')
+depends=('gtk3' 'python-cairo' 'python-gobject' 'python-pillow')
+makedepends=('git')
 optdepends=('libunrar: for rar compressed comics' \
             'p7zip: for 7z compressed comics' \
             'unrar: for rar compressed comics' \
             'unzip: for zip compressed comics' \
-            'mupdf: for PDF comics')
+            'mupdf-tools: for PDF comics')
 provides=("mcomix")
 conflicts=("mcomix" "mcomix-git")
 source=("git+https://github.com/multiSnow/mcomix3")
 sha256sums=('SKIP')
 
-install=${pkgname}.install
-
 pkgver() {
-	cd "mcomix3"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/mcomix3"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
   cd "${srcdir}/mcomix3"
  
-  # setup.py doesn't work – setting up manually
+  python installer.py --srcdir=mcomix --target="${pkgdir}"/usr/share
  
-  # their installer
-  python installer.py --srcdir=mcomix --target="${pkgdir}"/usr/lib/python3.8
- 
-  # but leave out the additional directory, so the module is in the correct directory
-  mv "${pkgdir}"/usr/lib/python3.8/mcomix "${pkgdir}"/usr/lib/python3.8/site-packages
-  mkdir "${pkgdir}"/usr/bin
-  mv "${pkgdir}"/usr/lib/python3.8/site-packages/mcomixstarter.py "${pkgdir}"/usr/bin/mcomix
-  mv "${pkgdir}"/usr/lib/python3.8/site-packages/comicthumb.py "${pkgdir}"/usr/bin/comicthumb
- 
-  # other files
-  install -Dm644 "${srcdir}/mcomix3"/man/* -t "${pkgdir}"/usr/share/man/man1/
-  install -Dm644 "${srcdir}/mcomix3"/mime/mcomix.appdata.xml -t "${pkgdir}"/usr/share/metainfo/
-  install -Dm644 "${srcdir}/mcomix3"/mime/mcomix.desktop -t "${pkgdir}"/usr/share/applications/
-  #install -Dm644 "${srcdir}/mcomix3"/mime/mcomix.xml -t "${pkgdir}"/usr/share/mime/
-  install -Dm644 "${srcdir}/mcomix3"/mime/comicthumb.thumbnailer -t "${pkgdir}"/usr/share/thumbnailers/
- 
-  for size in 16 22 24 32 48
+  install -dm755 "${pkgdir}"/usr/bin
+  ln -s /usr/share/mcomix/mcomixstarter.py "${pkgdir}"/usr/bin/mcomix
+  ln -s /usr/share/mcomix/comicthumb.py "${pkgdir}"/usr/bin/comicthumb
+
+  install -Dm644 mime/mcomix.desktop "${pkgdir}"/usr/share/applications/mcomix.desktop
+  install -Dm644 mime/mcomix.appdata.xml "${pkgdir}"/usr/share/metainfo/mcomix.appdata.xml
+  install -Dm644 mime/comicthumb.thumbnailer "${pkgdir}"/usr/share/thumbnailers/comicthumb.thumbnailer
+
+  for size in 16x16 22x22 24x24 32x32 48x48
   do
-    install -Dm644 "${srcdir}/mcomix3"/mime/icons/${size}x${size}/* -t "${pkgdir}"/usr/share/icons/hicolor/${size}x${size}/mimetypes/
-    mkdir "${pkgdir}"/usr/share/icons/hicolor/${size}x${size}/apps/
-    ln -s /usr/lib/python3.8/site-packages/mcomix/images/${size}x${size}/mcomix.png \
-      "${pkgdir}"/usr/share/icons/hicolor/${size}x${size}/apps/
+    install -dm755 "${pkgdir}"/usr/share/icons/hicolor/"${size}"/apps/
+    install -Dm644 mcomix/mcomix/images/"${size}"/mcomix.png "${pkgdir}"/usr/share/icons/hicolor/"${size}"/apps/mcomix.png
+    install -Dm644 mime/icons/"${size}"/application-x-cb7.png "${pkgdir}"/usr/share/icons/hicolor/"${size}"/mimetypes/application-x-cb7.png
+    install -Dm644 mime/icons/"${size}"/application-x-cbt.png "${pkgdir}"/usr/share/icons/hicolor/"${size}"/mimetypes/application-x-cbt.png
   done
-  rm "${pkgdir}"/usr/lib/python3.8/site-packages/mcomix/images/mcomix-large.png
+
+  install -Dm644 man/mcomix.1 "${pkgdir}"/usr/share/man/man1/mcomix.1
+  install -Dm644 man/comicthumb.1 "${pkgdir}"/usr/share/man/man1/comicthumb.1
 }
