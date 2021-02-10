@@ -17,7 +17,7 @@ license=('MIT')
 provides=(lib32-curl)
 conflicts=(lib32-curl)
 depends=('lib32-libidn2' 'lib32-libssh2' 'lib32-krb5' 'lib32-openssl'
-         'lib32-libpsl' 'lib32-zlib' 'lib32-zstd' "${_pkgname}")
+         'lib32-libpsl' 'lib32-zlib' 'lib32-zstd' "${_pkgname}" "lib32-brotli")
 source=("git+https://github.com/curl/curl")
 sha512sums=('SKIP')
 

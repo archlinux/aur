@@ -13,6 +13,7 @@ pkgbase = lib32-curl-git
 	depends = lib32-zlib
 	depends = lib32-zstd
 	depends = curl
+	depends = lib32-brotli
 	provides = lib32-curl
 	conflicts = lib32-curl
 	source = git+https://github.com/curl/curl
