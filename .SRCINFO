@@ -7,6 +7,7 @@ pkgbase = lib32-libudev0-shim-nosystemd
 	license = GPL
 	depends = libeudev
 	depends = lib32-eudev
+	depends = libudev0-shim
 	optdepends = lib32-systemd: systemd support
 	provides = lib32-libudev0
 	provides = lib32-libudev0-shim
