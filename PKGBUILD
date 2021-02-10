@@ -3,8 +3,8 @@
 _arch=powerpc
 _target=$_arch-none-eabi
 pkgname=$_target-toolchain
-pkgver=20171221
-pkgrel=2
+pkgver=20210210
+pkgrel=1
 pkgdesc="A complete gcc/binutils/newlib toolchain for $_target"
 depends=('zlib' 'bash' 'libmpc')
 url="http://www.gnu.org"
@@ -61,6 +61,7 @@ package()
 	rm -rf "${pkgdir}"/usr/share
 	rm -rf "${pkgdir}"/usr/include
 	rm -rf "${pkgdir}"/usr/lib/libcc1.*
+	rm -rf "${pkgdir}"/usr/lib/bfd-plugins
 	find "${pkgdir}" -name '*.py' -delete 
 
 

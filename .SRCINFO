@@ -1,7 +1,7 @@
 pkgbase = powerpc-none-eabi-toolchain
 	pkgdesc = A complete gcc/binutils/newlib toolchain for powerpc-none-eabi
-	pkgver = 20171221
-	pkgrel = 2
+	pkgver = 20210210
+	pkgrel = 1
 	url = http://www.gnu.org
 	arch = x86_64
 	license = GPL
