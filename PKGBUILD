@@ -5,7 +5,7 @@
 
 # Maintainer: Ederson Ferreira <edersondeveloper@gmail.com>
 pkgname=dmenu-edersonferreira-git
-pkgver=1.0.r.
+pkgver=1.1
 pkgrel=1
 epoch=
 pkgdesc="My personal Dmenu build with my configs."
@@ -31,7 +31,7 @@ validpgpkeys=()
 
 pkgver() {
 	cd "${_pkgname}"
-	printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "1.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
