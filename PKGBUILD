@@ -1,7 +1,7 @@
+# Maintainer: Emil Velikov <emil.l.velikov@gmail.com>
 # Maintainer: Yevhenii Kolesnikov <sigexp.acc@gmail.com>
 # Contributor: Ben Widawsky <ben@bwidawsk.net>
 # Contributor: Chad Versace <chad.versace@linux.intel.com>
-# Contributor: Emil Velikov <emil.l.velikov@gmail.com
 
 _pkgbasename='waffle'
 pkgname="lib32-${_pkgbasename}"
