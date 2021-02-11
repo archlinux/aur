@@ -1,4 +1,5 @@
 suitesparse-*.tar.gz
 lib32-suitesparse-*.pkg.tar.xz
+lib32-suitesparse-*.pkg.tar.zst
 src/
 pkg/
