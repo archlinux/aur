@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Hayot <ghayot@postblue.info>
 pkgname=parlatype
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME audio player for transcription"
 arch=('any')
 url="https://github.com/gkarsay/parlatype"
@@ -17,7 +17,7 @@ sha256sums=('13f1f2895a3ae5bb8809bfd0608baa84138e81388d5648577aface7c808aebf6')
 
 build() {
 	cd "$pkgname-$pkgver"
-	meson build --prefix=/usr -Dasr=false -Dgir=true
+	arch-meson build -Dasr=false -Dgir=true
 	cd build
 	ninja
 }
