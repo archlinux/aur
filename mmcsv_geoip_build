@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-#	Source: https://sourceforge.net/p/xtables-addons/xtables-addons/ci/v3.7/tree/geoip/xt_geoip_build?format=raw
+#	Source: https://inai.de/files/xtables-addons/xtables-addons-3.15.tar.xz
 #
 #	Converter for MaxMind (GeoLite2) CSV database to binary, for xt_geoip
 #	Copyright Jan Engelhardt, 2008-2011
@@ -18,12 +18,15 @@ my $csv = Text::CSV_XS->new({
 	eol => $/,
 }); # or Text::CSV
 my $source_dir = ".";
+my $quiet = 0;
 my $target_dir = ".";
 
 &Getopt::Long::Configure(qw(bundling));
 &GetOptions(
 	"D=s" => \$target_dir,
 	"S=s" => \$source_dir,
+	"q" => \$quiet,
+	"s" => sub { $target_dir = "/usr/share/xt_geoip"; },
 );
 
 if (!-d $source_dir) {
@@ -200,12 +203,12 @@ sub collect
 		$cidr = $row->[net];
 		$country{$cc}->{pool_v6}->add($cidr);
 
-		if ($. % 4096 == 0) {
+		if (!$quiet && $. % 4096 == 0) {
 			print STDERR "\r\e[2K$. entries";
 		}
 	}
 
-	print STDERR "\r\e[2K$. entries total\n";
+	print STDERR "\r\e[2K$. entries total\n" unless ($quiet);
 
 	close($fh);
 
@@ -246,7 +249,7 @@ sub writeCountry
 	printf "%5u IPv%s ranges for %s %s\n",
 		scalar(@ranges),
 		($family == AF_INET ? '4' : '6'),
-		$iso_code, $name;
+		$iso_code, $name unless ($quiet);
 
 	my $file = "$target_dir/".uc($iso_code).".iv".($family == AF_INET ? '4' : '6');
 	if (!open($fh, '>', $file)) {

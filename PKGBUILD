@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=xtables-geoip-db
 pkgver=2.1
-pkgrel=6
+pkgrel=7
 pkgdesc="GeoIP Database for xtables"
 arch=('any')
 license=('BSD' 'GPL')
@@ -30,8 +30,8 @@ source+=('README'
          'mmcsv_geoip_build')
 sha256sums=('SKIP'
             'bd1dbbacdde0c6b63b15c00a9b3cecada7c95bbd72cd2f7a336106fce53cddbd'
-            'd47c67f8126915ef4f326befa3b3b50903e335efdc52967a401e17749b7b92bd'
-            'beebf34ac2138e8916eb31450b50d693b174fe2f54626d8a858521b7391cbefc')
+            'ff867e1e2769b61ba9dcc825b73de37a46fe446bb4e3eb528dd7f15e960ce76b'
+            '2ff950f3ed0e93722bf0477a4b0bd3fdd79d94b5631f073e80bc76f10d596cc3')
 
 package() {
     echo Using ${_dbsource} GeoIP database
