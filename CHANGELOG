@@ -11,3 +11,7 @@
 	
 	* 2020.02.12-0 :
 	Changed to a more up-to-date github repository (from fahhem to monofox)
+
+	* 2021.02.10
+	Changed github repository back to fahhem
+	Fixed various build methods
