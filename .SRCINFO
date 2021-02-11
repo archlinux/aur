@@ -1,7 +1,7 @@
 pkgbase = rawr
 	pkgdesc = An instant file sharing tool that respects your privacy by not caching any files
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.hasi.it/danb/rawr
 	arch = x86_64
 	license = GPL3
