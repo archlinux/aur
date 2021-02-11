@@ -1,14 +1,14 @@
 # Maintainer: Sebastian Werner
 pkgname=wskdeploy-git
 pkgrel=1
-pkgver=1.0.0
+pkgver=1.1.0
 pkgdesc="Apache OpenWhisk utility for deploying and managing OpenWhisk projects and packages."
 arch=('i686' 'x86_64')
 url="https://github.com/apache/incubator-openwhisk-wskdeploy"
 license=('Apache')
 replaces=('wskdeploy-git')
 conflicts=('wskdeploy-git')
-source=($pkgname-src.tar.gz::https://github.com/apache/openwhisk-wskdeploy/releases/download/latest/openwhisk_wskdeploy-latest-linux-amd64.tgz)
+source=($pkgname-src.tar.gz::https://github.com/apache/openwhisk-wskdeploy/archive/1.1.0.tar.gz)
 noextract=($pkgname-src.tar.gz)
 makedepends=("go" "git")
 md5sums=('SKIP')
@@ -19,18 +19,13 @@ prepare(){
   # the dependencies can be fetched here if needed
   cd gopath/src/github.com/apache/openwhisk-wskdeploy 
 
-  go get github.com/tools/godep
-
 }
 
 build() {
-  export GOPATH="$srcdir"/gopath
-	cd "${srcdir}"
   
   tar xvfz $pkgname-src.tar.gz -C gopath/src/github.com/apache/openwhisk-wskdeploy --strip-components=1
   cd "$srcdir/gopath/src/github.com/apache/openwhisk-wskdeploy"
   
-  godep restore
 	go build \
 		-gcflags "all=-trimpath=${PWD}" \
 		-asmflags "all=-trimpath=${PWD}" \
