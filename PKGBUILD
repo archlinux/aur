@@ -10,7 +10,7 @@ pkgver() {
     "$(git tag -l | grep -P '.+\..+\.\d+' | sed -r 's/([0-9\.]+)(-.+)?/\1/g' | sort -Vr | sed 1q)" \
     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=1.2.1.r510.a0c81f4
+pkgver=2.0.0.r540.70a14d6
 pkgrel=1
 
 pkgdesc='An improved sequence editor for interactive git-rebase'

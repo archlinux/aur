@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) 
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased] - 2020-03-14
+## [2.0.0] - 2021-01-28
 
 ### Added
 - A diff view to show commit
@@ -17,8 +17,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - The Git "diff.renames" and "diff.rename_limit" options are now respected during show commit
 - End and Home support during edit
 - Optional rollback on error or invalid file during external edit
+- True color support on macOS
 
 ### Changed
+- Replace Curses with Crossterm for input and output
 - Change page up and page down to scroll half the height of the view area
 - Improved error handling for executing external editor
 
@@ -135,7 +137,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Initial project release
 
-[Unreleased]: https://github.com/MitMaro/git-interactive-rebase-tool/compare/1.2.1...HEAD
+[Unreleased]: https://github.com/MitMaro/git-interactive-rebase-tool/compare/2.0.0...HEAD
+[Unreleased]: https://github.com/MitMaro/git-interactive-rebase-tool/compare/1.2.1...2.0.0
 [1.2.1]: https://github.com/MitMaro/git-interactive-rebase-tool/compare/1.2.0...1.2.1
 [1.2.0]: https://github.com/MitMaro/git-interactive-rebase-tool/compare/1.1.0...1.2.0
 [1.1.0]: https://github.com/MitMaro/git-interactive-rebase-tool/compare/1.0.0...1.1.0
