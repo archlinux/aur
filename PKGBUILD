@@ -4,7 +4,7 @@
 pkgname=vim-smoothie-git
 
 pkgver() { git -C "${pkgname%-git}" log -n1 --format=%cs.g%h | tr - .; }
-pkgver=2019.12.02.gd3de4fb
+pkgver=2021.02.07.g10fd0aa
 pkgrel=1
 
 pkgdesc='Smoth scrolling for Vim done right'

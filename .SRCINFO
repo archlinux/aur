@@ -1,6 +1,6 @@
 pkgbase = vim-smoothie-git
 	pkgdesc = Smoth scrolling for Vim done right
-	pkgver = 2019.12.02.gd3de4fb
+	pkgver = 2021.02.07.g10fd0aa
 	pkgrel = 1
 	url = https://github.com/psliwka/vim-smoothie
 	arch = any
@@ -14,4 +14,3 @@ pkgbase = vim-smoothie-git
 	sha256sums = SKIP
 
 pkgname = vim-smoothie-git
-
