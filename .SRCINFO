@@ -1,0 +1,15 @@
+pkgbase = ting-en
+	pkgdesc = Daily English Listening software from eusoft
+	pkgver = 9.3.1
+	pkgrel = 1
+	url = https://www.eudic.net/v4/en/app/ting
+	arch = x86_64
+	license = unknown
+	makedepends = asar
+	depends = electron7
+	options = !strip
+	source = ting-en-9.3.1.deb::https://static.frdic.com/pkg/ting_en/ting_en.deb
+	sha512sums = 324aef42a1f5600919c0c8cc92dd3f437445b4da78c6a2fac28d731a7ddaff648b4874c0cf20223b8c6008bbf159a6ec9c278a8bb442d8faadb6a0a6f3ac68b8
+
+pkgname = ting-en
+
