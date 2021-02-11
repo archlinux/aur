@@ -10,7 +10,7 @@ url="https://git.sr.ht/~kennylevinsen/greetd"
 license=(GPL3)
 source=("https://git.sr.ht/~kennylevinsen/greetd/archive/$pkgver.tar.gz"
         'greetd.pam')
-sha256sums=('c84214490479f291ed3f27424e6c020a9f3115f5745c90a05f7508999b1b69a3'
+sha256sums=('5229b7f00be40187de9df6240fc3b1f4012dd5e4777bb8661016cc7c2c105df7'
             '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92')
 depends=(systemd pam)
 makedepends=(git rust scdoc)
