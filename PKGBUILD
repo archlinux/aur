@@ -8,7 +8,7 @@ _target=$_arch-unknown-linux-gnu
 pkgname=$_arch-gcc
 pkgver=10.2.0
 _islver=0.23
-pkgrel=1
+pkgrel=2
 #_snapshot=8-20190111
 pkgdesc='The GNU Compiler Collection - cross compiler for ARM64 target'
 arch=(x86_64)
@@ -64,9 +64,9 @@ build() {
       --with-linker-hash-style=gnu --enable-gnu-indirect-function \
       --disable-multilib --disable-werror \
       --enable-checking=release --disable-static \
+		--with-arch=armv8-a \
       --enable-fix-cortex-a53-835769 --enable-fix-cortex-a53-843419 \
 		--enable-host-shared --disable-libssp --disable-libstdcxx-pch \
-		--disable-libunwind-exceptions
 
   make
 }
