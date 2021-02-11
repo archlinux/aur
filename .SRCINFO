@@ -1,0 +1,21 @@
+pkgbase = armv7l-glibc
+	pkgdesc = GNU C Library ARM64 target
+	pkgver = 2.33
+	pkgrel = 1
+	url = https://www.gnu.org/software/libc/
+	arch = any
+	license = GPL
+	license = LGPL
+	makedepends = armv7l-gcc
+	makedepends = armv7l-linux-api-headers
+	options = !strip
+	options = staticlibs
+	source = https://ftp.gnu.org/gnu/libc/glibc-2.33.tar.xz
+	source = https://ftp.gnu.org/gnu/libc/glibc-2.33.tar.xz.sig
+	validpgpkeys = 7273542B39962DF7B299931416792B4EA25340F8
+	validpgpkeys = BC7C7372637EC10C57D7AA6579C43DFBF1CF2187
+	sha256sums = 2e2556000e105dbd57f0b6b2a32ff2cf173bde4f0d85dffccfd8b7e51a0677ff
+	sha256sums = SKIP
+
+pkgname = armv7l-glibc
+
