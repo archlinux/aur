@@ -6,6 +6,7 @@ pkgbase = quicktile-git
 	url = https://github.com/ssokolow/quicktile
 	arch = any
 	license = GPL2
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	depends = gtk3
