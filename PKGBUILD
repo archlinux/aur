@@ -2,29 +2,31 @@
 # Contributor: maz-1 <ohmygod19993 at gmail dot com>
 
 pkgname=onscripter-gbk
-pkgver=10.b5b47dd
-pkgrel=2
+_pkgname=${pkgname%-gbk}
+pkgver=8.951935b
+pkgrel=1
+epoch=1
 pkgdesc="A game engine compatible to NScripter with GBK patch, which is used to create and perform visual novel games"
 arch=('i686' 'x86_64')
 url="https://github.com/natdon/ONScripter-CN"
-license=('GPL')
-depends=('bzip2' 'sdl_image' 'sdl_mixer' 'sdl_ttf' 'lua51')
-source=("git://github.com/natdon/ONScripter-CN.git")
+license=('GPL2')
+depends=('bzip2'
+	 'sdl_image'
+	 'sdl_mixer'
+	 'sdl_ttf'
+	 'lua51'
+	 'fontconfig')
+source=("${pkgname}::git://github.com/natdon/ONScripter-CN.git#commit=951935b05a")
 md5sums=('SKIP')
-_gitname="ONScripter-CN"
-_gitbranch="951935b05a"
 
 pkgver() {
-  cd "$_gitname"
+  cd "$pkgname"
+
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-  cd "$_gitname"
-  git checkout "$_gitbranch" .
-  cd jni
-  # cd onscripter*
-  cd app_onscripter-32bpp
+  cd "$pkgname"/jni/app_onscripter-32bpp
   target=$(ls | grep '^onscripter-' | grep -v 'tar.gz' | sort | tail -n1)
   cd "$target"
 
@@ -40,10 +42,14 @@ TARGET = onscripter
 include Makefile.onscripter" > Makefile
 
   make
-  mv onscripter "$srcdir/$_gitname/"
+  mv ${_pkgname} "$srcdir/$pkgname/"
 }
 
 package() {
-  cd "$_gitname"
-  install -Dm755 onscripter $pkgdir/usr/bin/onscripter-gbk
+  cd "$pkgname"
+
+  install -Dm755 ${_pkgname} $pkgdir/usr/bin/${pkgname}
 }
+
+# vim: set sw=2 ts=2 et:
+
