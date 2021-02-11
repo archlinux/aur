@@ -2,7 +2,7 @@
 
 pkgname=achannarasappa-ticker
 pkgver=3.0.7
-pkgrel=2
+pkgrel=3
 pkgdesc='terminal stock watcher and stock position tracker'
 arch=('x86_64')
 url='https://github.com/achannarasappa/ticker'
@@ -16,12 +16,15 @@ sha512sums=('e8031944f5d581d27c548e7e646d38fe76ac7051a1f7ec4daeaa334d8eb62d8ee73
 
 build() {
     cd "ticker-${pkgver}"
-
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
     go build -o ./ticker .
 }
 
 package() {
     cd "ticker-${pkgver}"
-
     install -Dm755 ticker "${pkgdir}"/usr/bin/ticker
 }

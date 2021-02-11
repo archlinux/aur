@@ -1,7 +1,7 @@
 pkgbase = achannarasappa-ticker
 	pkgdesc = terminal stock watcher and stock position tracker
 	pkgver = 3.0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/achannarasappa/ticker
 	arch = x86_64
 	license = GPL3
