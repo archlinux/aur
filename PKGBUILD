@@ -1,5 +1,5 @@
 # Maintainer: Yardena Cohen <yardenack at gmail dot com>
-# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=torbrowser-launcher-git
 pkgver=0.3.2.r49.g0e020dc
 pkgrel=1
