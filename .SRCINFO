@@ -1,7 +1,7 @@
 pkgbase = onscripter-gbk
 	pkgdesc = A game engine compatible to NScripter with GBK patch, which is used to create and perform visual novel games
 	pkgver = 10.b5b47dd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/natdon/ONScripter-CN
 	arch = i686
 	arch = x86_64

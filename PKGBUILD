@@ -1,12 +1,15 @@
+# Maintainer: yjun <jerrysteve1101 at gmail dot com>
+# Contributor: maz-1 <ohmygod19993 at gmail dot com>
+
 pkgname=onscripter-gbk
 pkgver=10.b5b47dd
-pkgrel=1
+pkgrel=2
 pkgdesc="A game engine compatible to NScripter with GBK patch, which is used to create and perform visual novel games"
 arch=('i686' 'x86_64')
 url="https://github.com/natdon/ONScripter-CN"
 license=('GPL')
 depends=('bzip2' 'sdl_image' 'sdl_mixer' 'sdl_ttf' 'lua51')
-source="git://github.com/natdon/ONScripter-CN.git"
+source=("git://github.com/natdon/ONScripter-CN.git")
 md5sums=('SKIP')
 _gitname="ONScripter-CN"
 _gitbranch="951935b05a"
