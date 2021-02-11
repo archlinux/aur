@@ -1,8 +1,8 @@
-# Maintainer: Cedric Girard <girard.cedric@gmail.com>
+# Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
 _author=SREZIC
 _perlmod=Kwalify
 pkgname=perl-kwalify
-pkgver=1.22
+pkgver=1.23
 pkgrel=1
 pkgdesc="Kwalify schema for data structures"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0')
 options=(!emptydirs)
 source=(http://cpan.perl.org/modules/by-authors/id/${_author:0:1}/${_author:0:2}/$_author/$_perlmod-$pkgver.tar.gz)
-md5sums=('7a2e7ae407493e597108aa1dbfe0226b')
+md5sums=('32a9791b25295e2590c316c64fd9d891')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
