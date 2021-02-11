@@ -1,5 +1,5 @@
 pkgbase = faiss-cuda-git
-	pkgver = 1.6.1.r142.gfa85ddf
+	pkgver = v1.7.0.r13.g43ce2c93
 	pkgrel = 1
 	url = https://github.com/facebookresearch/faiss
 	arch = i686
@@ -14,11 +14,10 @@ pkgbase = faiss-cuda-git
 	depends = lapack
 	depends = cuda
 	depends = openmp
-	optdepends = intel-mkl
+	optdepends = intel-mkl: To use MKL blas implemenetation
+	optdepends = python-numpy-mkl: To use MKL blas implementation.
 	source = faiss::git+https://github.com/facebookresearch/faiss.git
-	source = compiler.patch
 	sha256sums = SKIP
-	sha256sums = 3739947d39ebffb2775607f135743cd30489aa12f41c14e3aec42fbe79822fd3
 
 pkgname = faiss-cuda-git
 	pkgdesc = A library for efficient similarity search and clustering of dense vectors, CUDA version.

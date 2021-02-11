@@ -5,33 +5,30 @@
 # If you want the python package to work with MKL, you need to have python-numpy-mkl installed!
 # See https://github.com/facebookresearch/faiss/issues/1393
 
-#_GPU_TARGET="75"
+_GPU_TARGET="75"
 _pkgname=faiss
 pkgbase=faiss-cuda-git
 pkgname=('faiss-cuda-git' 'python-faiss-cuda-git')
 arch=('i686' 'x86_64')
 url="https://github.com/facebookresearch/faiss"
 license=('MIT')
-pkgver=1.6.1.r142.gfa85ddf
+pkgver=v1.7.0.r13.g43ce2c93
 pkgrel=1
-source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git
-        'compiler.patch')
-sha256sums=('SKIP'
-            '3739947d39ebffb2775607f135743cd30489aa12f41c14e3aec42fbe79822fd3')
+source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git)
+sha256sums=('SKIP')
 depends=('blas' 'lapack' 'cuda' 'openmp')
 makedepends=('git' 'python' 'python-numpy' 'swig' 'python-setuptools')
-optdepends=('intel-mkl')
+optdepends=('intel-mkl: To use MKL blas implemenetation' 'python-numpy-mkl: To use MKL blas implementation.')
 
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-  patch -p1 < ../compiler.patch # see https://github.com/facebookresearch/faiss/issues/1392
   mkdir -p build
   cd build
   _CMAKE_FLAGS="\
@@ -47,15 +44,16 @@ prepare() {
   else
     _CMAKE_FLAGS=$_CMAKE_FLAGS"-DCMAKE_CUDA_ARCHITECTURES=\"\"52 60 61 70 75\"\""
   fi
-  echo $_CMAKE_FLAGS
+#  echo $_CMAKE_FLAGS
   cmake $_CMAKE_FLAGS ..
 }
 
 check() {
   cd "${srcdir}/${_pkgname}/build"
   make test
-  cd "${srcdir}/${_pkgname}"
-  PYTHONPATH=build/faiss/python:$PYTHONPATH pytest
+  PYTHONPATH="${srcdir}/${_pkgname}/build/${_pkgname}/python" python -c "import faiss; import faiss.contrib"
+  cd "${srcdir}/${_pkgname}/tests"
+  PYTHONPATH="${srcdir}/${_pkgname}/build/${_pkgname}/python" pytest  
 }
 
 
