@@ -4,6 +4,7 @@ pkgbase = checkupdates+aur
 	pkgrel = 3
 	arch = any
 	license = LGPL3
+	depends = pacman-contrib
 	depends = checkupdates-aur
 	source = checkupdates+aur.bash
 	sha512sums = 5bc4733b1d49b4a6a3e439bd2176eab139f26540057e4bda82a7176713b728eeaa67bfe8dffcfc26ed73cf72b0eb6e52f38f44b3890df5bf9e0628a63bf1cac8
