@@ -1,0 +1,30 @@
+pkgbase = python-findpeaks
+	pkgdesc = Detection of peaks and valleys in vectors and images
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://erdogant.github.io/findpeaks/
+	arch = any
+	license = MIT
+	license = LGPL
+	checkdepends = hdf5
+	checkdepends = opencv
+	checkdepends = qt5-base
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-peakdetect
+	depends = python-scipy
+	depends = python-tqdm
+	depends = python-requests
+	optdepends = opencv: for loading example images
+	source = git+https://github.com/erdogant/findpeaks#tag=2.1.1
+	source = replace-wget.patch::https://patch-diff.githubusercontent.com/raw/erdogant/findpeaks/pull/1.patch
+	source = change-opencv-message.patch
+	sha256sums = SKIP
+	sha256sums = 4a852ea713017a5292db8963a5a56c373351776e2e9584d2cd5bb1b0b6613f50
+	sha256sums = e5285b156bcbe898453fe64f5cb525e59b15c2e2508f363dec091e429a0d6d24
+
+pkgname = python-findpeaks
+
