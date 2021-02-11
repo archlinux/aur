@@ -1,15 +1,16 @@
 # Maintainer: Kevin MacMartin <prurigro@gmail.com>
-# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Jelle van der Waa <jelle vdwaa nl>
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 # Contributor: Dale Blount <dale@archlinux.org>
 # Contributor: Michael Düll <mail@akurei.me>
+# Contributor: Luca Corbatto <lucaatcorbatto.de>
 # Ported from the upstream synergy package
 
 _pkgname=synergy
 pkgname=$_pkgname-git
-pkgver=20201231.r3789.ede272185
+pkgver=20210210.r3836.d072b5064
 pkgrel=1
 pkgdesc='Share a single mouse and keyboard between multiple computers'
 url='http://synergy-foss.org'
@@ -17,9 +18,9 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-depends=('avahi' 'curl' 'libxinerama' 'libxrandr' 'libxtst' 'qt5-base')
-makedepends=('cmake' 'git' 'libxt' 'qt5-tools')
-optdepends=('openssl: encryption support')
+depends=('gcc-libs' 'libxtst' 'libxinerama' 'libxkbcommon-x11' 'avahi' 'curl' 'openssl')
+makedepends=('libxt' 'cmake' 'qt5-base' 'gmock' 'gtest')
+optdepends=('qt5-base: gui support')
 
 source=(
   "$_pkgname::git+https://github.com/symless/$_pkgname-core.git"
@@ -45,10 +46,17 @@ pkgver() {
 }
 
 build() {
-  # Build Synergy
+  # Build synergy
   cd $_pkgname
   cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make
+}
+
+check() {
+  # Run tests
+  cd $_pkgname
+  ./bin/unittests
+  ./bin/integtests
 }
 
 package() {
