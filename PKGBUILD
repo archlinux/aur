@@ -2,15 +2,10 @@
 # Feedback is appreciated
 
 pkgname=xmage
-pkgver=1.4.47V1
-pkgrel=2
+pkgver=1.4.48V0
+pkgrel=0
 
 pkgdesc="Java-based program for playing Magic:The Gathering, including client and server"
-
-depends=(
-	'jre8-openjdk'
-	'java8-openjfx'
-)
 
 arch=('any')
 url="http://xmage.de"
@@ -21,10 +16,11 @@ source=("http://xmage.de/files/xmage_${pkgver}.zip"
 	'https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt'
 	'https://raw.githubusercontent.com/magefree/Launcher/master/src/main/resources/icon-mage.png')
 
-sha256sums=("eb87a9e8a632d3691f6c7401d99bffd44f52d572b1434e07546ddbb35991c7bb" 
+sha256sums=("6984d4ebc29a51bf004ed765a05d340e4f533500de67b08d9b87114f0c44683e" 
 	"SKIP"
 	"SKIP")
 
+depends=('jre8-openjdk')
 makedepends=('detox')
 optdepends=('wmname: change window manager name for compatibility with certain WMs')
 install="${pkgname}.install"
@@ -47,10 +43,6 @@ package() {
 	msg2 "adding cd to relevant /usr/share/xmage/ directory..."
 	sed -i '2i cd /usr/share/xmage/mage-client' mage-client/startClient-unix.sh
 	sed -i '2i cd /usr/share/xmage/mage-server' mage-server/startServer-unix.sh
-
-	msg2 "specifying location of OpenJDK 8"
-	sed -i "s|java|/usr/lib/jvm/java-8-openjdk/bin/java|g" mage-client/startClient-unix.sh
-	sed -i "s|java|/usr/lib/jvm/java-8-openjdk/bin/java|g" mage-server/startServer-unix.sh
 
 	msg2 "increasing default memory limit of client and server"
 	sed -i 's|-Xmx512m|-Xmx2048m|g' mage-client/startClient-unix.sh
@@ -82,4 +74,3 @@ package() {
 	mkdir -p "${pkgdir}"/usr/share/applications
 	install -m755 ../xmage.desktop "${pkgdir}"/usr/share/applications/xmage.desktop
 }
-
