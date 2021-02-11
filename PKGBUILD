@@ -27,7 +27,7 @@ fi
 ##
 
 pkgname=brave
-pkgver=1.19.92
+pkgver=1.20.103
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -60,7 +60,7 @@ done
 # VAAPI patches from chromium-vaapi in AUR
 #source+=("vdpau-support.patch::https://aur.archlinux.org/cgit/aur.git/plain/vdpau-support.patch?h=chromium-vaapi&id=7c05464a8700b1a6144258320b2b33b352385f77")
 
-sha256sums=('be3296c066e03a78ab9361a4e161e975e292bdd783264dcb6b00f9a3cfa36472'
+sha256sums=('e7623d84f0bf1f4a17bd54d2cba609b64e7fb40915b6fd5abf6483cc7ecedab2'
             '725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
@@ -268,7 +268,6 @@ package() {
   # Copy necessary release files
   cd "brave-browser-${pkgver}/src/out/Release"
   cp -a --reflink=auto \
-    WidevineCdm \
     MEIPreload \
     brave \
     brave_*.pak \
