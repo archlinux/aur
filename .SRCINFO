@@ -1,7 +1,7 @@
 pkgbase = mklittlefs-git
 	pkgdesc = Utility for creating littlefs for upload on the ESP8266.
-	pkgver = r101.6b5c62d
-	pkgrel = 1
+	pkgver = 3.0.0.r4.g943d2f7
+	pkgrel = 2
 	url = https://github.com/earlephilhower/mklittlefs
 	arch = any
 	license = MIT

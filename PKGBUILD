@@ -1,7 +1,7 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=mklittlefs-git
-pkgver=r101.6b5c62d
-pkgrel=1
+pkgver=3.0.0.r4.g943d2f7
+pkgrel=2
 
 pkgdesc="Utility for creating littlefs for upload on the ESP8266."
 arch=('any')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
