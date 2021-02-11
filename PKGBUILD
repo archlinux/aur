@@ -2,7 +2,7 @@
 # Contributor: Guillaume Hayot <ghayot@postblue.info>
 pkgname=parlatype-libreoffice-extension
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Parlatype LibreOffice Extension"
 arch=('any')
 url="https://github.com/gkarsay/parlatype-libreoffice-extension/"
@@ -14,7 +14,7 @@ sha256sums=('e514016faa0a6871fe9a7d561d206e2cbe4bf514da180a6c5a112621716662f0')
 
 build() {
 	cd "$pkgname-$pkgver"
-	meson build --prefix=/usr -Dbundled=true
+	arch-meson build -Dbundled=true
 	cd build
 	ninja
 }

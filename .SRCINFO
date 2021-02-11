@@ -1,7 +1,7 @@
 pkgbase = parlatype-libreoffice-extension
 	pkgdesc = Parlatype LibreOffice Extension
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gkarsay/parlatype-libreoffice-extension/
 	arch = any
 	license = GPL3
