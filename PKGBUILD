@@ -2,8 +2,8 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgbase=linux-rt
-pkgver=5.10.12.26.arch1
-pkgrel=2
+pkgver=5.10.14.28.arch1
+pkgrel=1
 pkgdesc='Linux RT'
 arch=('x86_64')
 url="https://wiki.linuxfoundation.org/realtime/start"
@@ -16,9 +16,9 @@ source=(
   config
 )
 sha512sums=('SKIP'
-            'e6486c148de1bcb684465fc9d67a92d66c39d6110ddcb706e6cee0e1f5cd3ab4930222453f0fc6f6aa04c039e344722b24ff8d3a385ea6c21583e91022d3b61c')
+            'f7b2d990b381138b6d5e239cb8c7d192b42e8477ab4e3367f23e24b16f6c008d23292607589735e753ca33a4a0b7fe22462bef446fcfa368cfcdf92f0bef9fcb')
 b2sums=('SKIP'
-        '9367ea00b0daba0549190b2dc902fff143865daa94a9793b4df043c23409e5cd7984fea1564d5ad91eae2946e17bd4b0b587712964d79d6a7122bca4bb98665f')
+        'b7ab03eb6994f12b83983c47d572ae267dfe6366c1094d3182e2e281b90d7ab0d474aad62331d31202c740ded2206fca64fb31792e65f7743e71e5a939f61afe')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@kernel.org>
   '64254695FFF0AA4466CC19E67B96E8162A8CF5D1'  # Sebastian Andrzej Siewior
