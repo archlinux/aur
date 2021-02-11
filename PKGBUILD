@@ -6,7 +6,7 @@
 # work using the CC0 <https://creativecommons.org/publicdomain/zero/1.0/>.
 
 pkgname='alacritty-colorscheme'
-pkgver=0.2.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Change colorscheme of alacritty with ease"
 arch=('any')
@@ -16,7 +16,7 @@ depends=('python-ruamel-yaml')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=('9d21531c19ad2c04decb70383b89048123ca578db2ce6048bad5d1e03109c8b3')
+sha256sums=('9b4f9c95fb58edbef97452ba5a3fb9bfe989da4601beb0b025350cfc1acab22d')
 
 build() {
 	cd "$pkgname-$pkgver"
