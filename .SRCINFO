@@ -1,6 +1,6 @@
 pkgbase = tlpui
 	pkgdesc = A GTK user interface for TLP written in Python
-	pkgver = 1.3.1.6
+	pkgver = 1.3.1.8
 	pkgrel = 1
 	url = https://github.com/d4nj1/TLPUI
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = tlpui
 	depends = python-gobject
 	provides = tlpui-git
 	conflicts = tlpui-git
-	source = tlpui-1.3.1-6.zip::https://github.com/d4nj1/TLPUI/archive/tlpui-1.3.1-6.zip
+	source = tlpui-1.3.1-8.zip::https://github.com/d4nj1/TLPUI/archive/tlpui-1.3.1-8.zip
 	source = tlpui.desktop
-	sha256sums = 828fae520a130b4ade7fb71bd6eb6893172ddbf490ab09d59fcead5bcdaab3ab
+	sha256sums = 17b4cb3fcadcd6b8bb5e4588b60ecd8b48d079e17ad748c459f98fa63e62e20d
 	sha256sums = a8f7a4a3d1c66c27383f75b092fa71c3e7cd72b8240a06ed00ad56be3b5338ea
 
 pkgname = tlpui
