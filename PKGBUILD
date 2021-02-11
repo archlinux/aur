@@ -4,7 +4,7 @@
 
 pkgname=lib32-gimp
 _pkgbase=gimp
-pkgver=2.10.20
+pkgver=2.10.22
 pkgrel=1
 pkgdesc='GNU Image Manipulation Program (32-bit)'
 url="https://www.gimp.org/"
@@ -18,7 +18,7 @@ depends=('lib32-dbus-glib' 'lib32-gegl' 'lib32-glib-networking'
 makedepends=('alsa-lib' 'curl' 'ghostscript' 'intltool' 'iso-codes')
 license=('GPL' 'LGPL')
 source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgbase}-${pkgver}.tar.bz2")
-sha256sums=('e12f9f874b1a007c4277b60aa81e0b67330be7e6153e5749ead839b902fc7b3c')
+sha256sums=('2db84b57f3778d80b3466d7c21a21d22e315c7b062de2883cbaaeda9a0f618bb')
 
 prepare() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
@@ -27,7 +27,7 @@ prepare() {
   export CXXFLAGS="-m32 ${CXXFLAGS}"
 
   cd "${_pkgbase}-${pkgver}"
-  autoreconf -vi
+  #autoreconf -vi
 }
 
 build() {
@@ -45,6 +45,7 @@ build() {
     --libexecdir=/usr/bin \
     --enable-mp \
     --enable-gimp-console \
+    --disable-check-update \
     --disable-python \
     --with-bug-report-url='https://bugs.archlinux.org/?string=gimp' \
     --with-openexr \
