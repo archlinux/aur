@@ -1,4 +1,5 @@
 libmypaint-*.tar.gz
 lib32-libmypaint-*.pkg.tar.xz
+lib32-libmypaint-*.pkg.tar.zst
 src/
 pkg/

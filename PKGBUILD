@@ -4,7 +4,7 @@
 
 pkgname=lib32-libmypaint
 _pkgbase=libmypaint
-pkgver=1.5.1
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='Library for making brushstrokes which is used by MyPaint and other projects (32-bit)'
 url='http://mypaint.org/'
@@ -14,7 +14,7 @@ depends=('libmypaint' 'lib32-glibc' 'lib32-json-c' 'lib32-gegl'
          'lib32-glib2' 'lib32-json-glib' 'lib32-babl')
 makedepends=('intltool' 'python' 'gobject-introspection' 'python')
 source=("https://github.com/mypaint/$_pkgbase/archive/v${pkgver}/${_pkgbase}-${pkgver}.tar.gz")
-sha512sums=('3cebce0adb1f029f19dfcc19b4d8c5c1102c0cd966930fe76eda60ff4e18ced9a4c8ecae8f31f12d931172c82bd5dabd7ca7a47b9c06305472192af242b3e1b6')
+sha512sums=('f759223e2e2da9fcc675bc2fa6324e2688ab36bdd979c0b3fad6737a6884e6095b6599c37960fd4897b9fd9063d5643fc2ab7e559438095c1872e019cd46d38b')
 
 prepare() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
