@@ -6,12 +6,12 @@ pkgrel=1
 
 pkgdesc="gdigi provides Digitech X-Edit functionality to Linux users"
 arch=('i686' 'x86_64')
-url="http://desowin.org/gdigi/"
+url="https://desowin.org/gdigi/"
 license=('GPL')
 depends=('alsa-lib' 'gtk3' 'glib2' 'expat')
 makedepends=('make')
 
-source=("http://sourceforge.net/projects/gdigi/files/gdigi/$pkgver/$pkgname-$pkgver.tar.bz2")
+source=("https://sourceforge.net/projects/gdigi/files/gdigi/$pkgver/$pkgname-$pkgver.tar.bz2")
 md5sums=('62084296b81d3f888a7aee26a5f44842')
 
 build()

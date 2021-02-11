@@ -2,7 +2,7 @@ pkgbase = gdigi
 	pkgdesc = gdigi provides Digitech X-Edit functionality to Linux users
 	pkgver = 0.4.0
 	pkgrel = 1
-	url = http://desowin.org/gdigi/
+	url = https://desowin.org/gdigi/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = gdigi
 	depends = gtk3
 	depends = glib2
 	depends = expat
-	source = http://sourceforge.net/projects/gdigi/files/gdigi/0.4.0/gdigi-0.4.0.tar.bz2
+	source = https://sourceforge.net/projects/gdigi/files/gdigi/0.4.0/gdigi-0.4.0.tar.bz2
 	md5sums = 62084296b81d3f888a7aee26a5f44842
 
 pkgname = gdigi
