@@ -1,14 +1,14 @@
 pkgbase = synodl
 	pkgdesc = Command-line client for Synology's DownloadStation
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://code.ott.net/synodl/
 	arch = x86_64
 	license = GPL3
 	depends = json-c
 	depends = curl
-	source = synodl-0.3.0.tar.gz::https://code.ott.net/synodl/downloads/synodl-0.3.0.tar.gz
-	sha256sums = 5296f45a1a66a1c922d336c4b32ec8686cd264e5460976aafab69c278f678a9f
+	source = synodl-0.3.1.tar.gz::https://code.ott.net/synodl/downloads/synodl-0.3.1.tar.gz
+	sha256sums = 4967b702b476ed22de385592875e8c06d19a8e4f5ada62e5f8d2717d63fd42c9
 
 pkgname = synodl
 
