@@ -14,8 +14,9 @@ license=('BSD')
 depends=('libx11' 'libxcb' 'wayland')
 makedepends=('cmake' 'xcb-proto' 'mesa-libgl' 'mesa' 'libxslt' 'docbook-xsl')
 
-source=("https://gitlab.freedesktop.org/mesa/waffle/-/archive/v$pkgver/waffle-v$pkgver.tar.gz")
-sha256sums=('1a120d258390fb776a1c47cc9617f057dc72baf07bad610772e5da2fea82437c')
+source=(https://mesa.pages.freedesktop.org/waffle/files/release/waffle-${pkgver}/waffle-${pkgver}.tar.xz{,.asc})
+sha256sums=('41ff9e042497e482c7294e210ebd9962e937631829a548e5811c637337cec5a5'
+            'SKIP')
 
 prepare() {
   if [ -d build ]
@@ -27,7 +28,7 @@ prepare() {
 
   cmake \
     -G Ninja \
-    -S "$pkgname-v$pkgver" -B build \
+    -S "$pkgname-$pkgver" -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DCMAKE_BUILD_TYPE=Release \
