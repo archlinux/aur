@@ -1,7 +1,7 @@
 # Maintainer: Fronkles McFranko <mrelfranko@disroot.org>
 pkgname=eww-git
 _pkgname=eww
-pkgver=145__2021.01.03
+pkgver=cddcea7_2021.02.10_
 pkgrel=1
 epoch=
 pkgdesc="ElKowar's wacky widgets"
@@ -27,10 +27,9 @@ validpgpkeys=()
 
 pkgver() {
     cd ${_pkgname}
-    _tag=$(git describe --tags | sed 's:^v::')
-    _commits=$(git rev-list --count HEAD)
+    _commit=$(git rev-parse HEAD | cut -c1-7)
     _date=$(git log -1 --date=short --pretty=format:%cd)
-    printf "%s_%s_%s\n" "${_commits}" "${_tag}" "${_date}" | sed 's/-/./g'
+    printf "%s_%s_%s\n" "${_commit}" "${_date}" | sed 's/-/./g'
 }
 
 build() {
@@ -41,6 +40,5 @@ build() {
 package() {
     cd "$_pkgname"
 
-    mkdir -p "${pkgdir}/usr/bin"
-    mv target/release/eww "${pkgdir}/usr/bin"
+    install -D target/release/eww --target-directory "${pkgdir}/usr/bin" --mode 755
 }
