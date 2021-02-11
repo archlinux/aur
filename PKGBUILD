@@ -5,7 +5,7 @@
 pkgname=tlpui
 tlpui_ver="1.3.1-8"
 pkgver="$(echo "${tlpui_ver}" | tr "-" ".")"
-pkgrel=1
+pkgrel="2"
 pkgdesc="A GTK user interface for TLP written in Python"
 arch=('any')
 url="https://github.com/d4nj1/TLPUI"
