@@ -1,6 +1,6 @@
 pkgbase = pipewire-git
 	pkgdesc = Server and user space API to deal with multimedia pipelines. (GIT version)
-	pkgver = 0.3.20.9.g73896bfa
+	pkgver = 0.3.21.78.g6b11bf71
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -17,13 +17,11 @@ pkgbase = pipewire-git
 	makedepends = jack2
 	makedepends = sbc
 	makedepends = rtkit
-	makedepends = vulkan-icd-loader
 	makedepends = dbus
 	makedepends = sdl2
 	makedepends = ncurses
 	makedepends = libsndfile
 	makedepends = bluez-libs
-	makedepends = vulkan-headers
 	makedepends = ffmpeg
 	makedepends = libldac
 	makedepends = libopenaptx
@@ -37,7 +35,6 @@ pkgname = pipewire-git
 	depends = bluez-libs
 	depends = rtkit
 	depends = sbc
-	depends = vulkan-icd-loader
 	depends = libasound.so
 	depends = libdbus-1.so
 	depends = libfdk-aac.so
@@ -63,13 +60,13 @@ pkgname = pipewire-git
 	backup = etc/pipewire/media-session.d/v4l2-monitor.conf
 
 pkgname = pipewire-docs-git
-	pkgdesc = Server and user space API to deal with multimedia pipelines. (documentation)(GIT Version)
+	pkgdesc = Server and user space API to deal with multimedia pipelines. (documentation) (GIT Version)
 	arch = any
 	provides = pipewire-docs
 	conflicts = pipewire-docs
 
 pkgname = pipewire-jack-git
-	pkgdesc = Server and user space API to deal with multimedia pipelines. (JACK support)(GIT Version)
+	pkgdesc = Server and user space API to deal with multimedia pipelines. (JACK support) (GIT Version)
 	depends = pipewire
 	depends = libpipewire-0.3.so
 	depends = libjack.so
@@ -77,7 +74,7 @@ pkgname = pipewire-jack-git
 	conflicts = pipewire-jack
 
 pkgname = pipewire-alsa-git
-	pkgdesc = ALSA Configuration for PipeWire (ALSA support)(GIT version)
+	pkgdesc = ALSA Configuration for PipeWire (ALSA support) (GIT version)
 	arch = any
 	depends = pipewire
 	depends = libpipewire-0.3.so
@@ -85,7 +82,7 @@ pkgname = pipewire-alsa-git
 	conflicts = pipewire-alsa
 
 pkgname = pipewire-pulse-git
-	pkgdesc = Server and user space API to deal with multimedia pipelines. (Pulse support)(GIT version)
+	pkgdesc = Server and user space API to deal with multimedia pipelines. (Pulse support) (GIT version)
 	install = pipewire-pulse.install
 	arch = any
 	depends = pipewire
@@ -98,7 +95,7 @@ pkgname = pipewire-pulse-git
 	conflicts = pulseaudio-bluetooth
 
 pkgname = pipewire-ffmpeg-git
-	pkgdesc = Server and user space API to deal with multimedia pipelines. (FFmpeg SPA plugin)(GIT version)
+	pkgdesc = Server and user space API to deal with multimedia pipelines. (FFmpeg SPA plugin) (GIT version)
 	depends = pipewire
 	depends = libpipewire-0.3.so
 	depends = ffmpeg
@@ -107,6 +104,7 @@ pkgname = pipewire-ffmpeg-git
 
 pkgname = alsa-card-profiles-git
 	pkgdesc = ALSA card profiles shared by PipeWire (GIT version)
+	arch = any
 	provides = alsa-card-profiles
 	conflicts = alsa-card-profiles
 
