@@ -1,0 +1,20 @@
+pkgbase = dnscap-git
+	pkgdesc = Network capture utility designed specifically for DNS traffic
+	pkgver = v1.12.0.r19.46b5870
+	pkgrel = 1
+	url = https://www.dns-oarc.net/tools/dnscap
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	depends = ldns
+	depends = libpcap
+	depends = libyaml
+	depends = openssl
+	depends = zlib
+	provides = dnscap
+	conflicts = dnscap
+	source = git+https://github.com/DNS-OARC/dnscap.git
+	md5sums = SKIP
+
+pkgname = dnscap-git
+
