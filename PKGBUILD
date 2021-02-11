@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: Laszlo Papp <lpapp@kde.org>
 
-pkgname=('python-pyang' 'python2-pyang')
+pkgname=('python2-pyang' 'python-pyang')
 pkgver=2.4.0
 pkgrel=1
 pkgdesc='A YANG (RFC 6020) validator and converter'

@@ -1,4 +1,4 @@
-pkgbase = python-pyang
+pkgbase = python2-pyang
 	pkgdesc = A YANG (RFC 6020) validator and converter
 	pkgver = 2.4.0
 	pkgrel = 1
@@ -10,7 +10,7 @@ pkgbase = python-pyang
 	source = https://github.com/mbj4668/pyang/archive/pyang-2.4.0.tar.gz
 	sha256sums = 5a34c55a6617e35d01747c66a58e8c716adf6c4ade8a45a245432f65e04e8a98
 
-pkgname = python-pyang
-
 pkgname = python2-pyang
+
+pkgname = python-pyang
 
