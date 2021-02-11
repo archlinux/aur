@@ -66,8 +66,8 @@ build() {
       --with-linker-hash-style=gnu --enable-gnu-indirect-function \
       --disable-multilib --disable-werror \
       --enable-checking=release --enable-host-shared \
+		--with-arch=armv8-a \
       --enable-fix-cortex-a53-835769 --enable-fix-cortex-a53-843419 \
-		--disable-libunwind-exceptions \
       --disable-threads --without-headers --with-glibc-version=2.33 \
       --disable-shared --with-newlib
 
