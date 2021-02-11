@@ -14,11 +14,12 @@ license=('BSD')
 depends=('lib32-libx11' 'lib32-libxcb' 'lib32-wayland' "${_pkgbasename}=${pkgver}")
 makedepends=('cmake' 'xcb-proto' 'lib32-mesa-libgl' 'lib32-mesa' 'gcc-multilib')
 
-source=("https://gitlab.freedesktop.org/mesa/waffle/-/archive/v$pkgver/waffle-v$pkgver.tar.gz")
-sha256sums=('4eb4dfe18b5a88e6ea2b6b0a0c415caeaa453ea8eb37a757c100e24e18c317dd')
+source=(https://mesa.pages.freedesktop.org/waffle/files/release/waffle-${pkgver}/waffle-${pkgver}.tar.xz{,.asc})
+sha256sums=('31565649ff0e2d8dff1b8f7f2264ab7a78452063c7e04adfc4ce03e64b655080'
+            'SKIP')
 
 build() {
-	cd "$srcdir/${_pkgbasename}-v$pkgver"
+	cd "$srcdir/${_pkgbasename}-$pkgver"
 
 	export CC='gcc -m32'
 	export CXX='g++ -m32'
@@ -39,7 +40,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/${_pkgbasename}-v$pkgver"
+	cd "$srcdir/${_pkgbasename}-$pkgver"
 	make DESTDIR="$pkgdir/" install
 
 	mv "$pkgdir/usr/bin/wflinfo" "$pkgdir/usr/bin/wflinfo32"

@@ -14,8 +14,10 @@ pkgbase = lib32-waffle
 	depends = lib32-libxcb
 	depends = lib32-wayland
 	depends = waffle=1.6.1
-	source = https://gitlab.freedesktop.org/mesa/waffle/-/archive/v1.6.1/waffle-v1.6.1.tar.gz
-	sha256sums = 4eb4dfe18b5a88e6ea2b6b0a0c415caeaa453ea8eb37a757c100e24e18c317dd
+	source = https://mesa.pages.freedesktop.org/waffle/files/release/waffle-1.6.1/waffle-1.6.1.tar.xz
+	source = https://mesa.pages.freedesktop.org/waffle/files/release/waffle-1.6.1/waffle-1.6.1.tar.xz.asc
+	sha256sums = 31565649ff0e2d8dff1b8f7f2264ab7a78452063c7e04adfc4ce03e64b655080
+	sha256sums = SKIP
 
 pkgname = lib32-waffle
 
