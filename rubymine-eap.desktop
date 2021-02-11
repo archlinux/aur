@@ -2,7 +2,7 @@
 Name=RubyMine EAP
 Comment=Ruby and Rails IDE with the full stack of essential developer tools (EAP).
 GenericName=Ruby and Rails IDE with the full stack of essential developer tools (EAP).
-Exec="/usr/bin/rubymine-eap" %f
+Exec="/opt/rubymine-eap/bin/rubymine.sh" %f
 Icon=rubymine-eap
 Terminal=false
 Type=Application
