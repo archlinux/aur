@@ -2,14 +2,14 @@
 # Contributor: zhuqin <zhuqin83@gmail.com>
 pkgname=lensfun-git
 _gitname=lensfun
-pkgver=0.3.2.r1676.gd3edca47
+pkgver=0.3.2.r2032.gad957f64
 pkgrel=1
 pkgdesc="Database of photographic lenses and a library that allows advanced access to the database"
 arch=(i686 x86_64)
 url="https://lensfun.github.io/"
 license=('LGPL3')
 depends=('glibc' 'glib2')
-makedepends=('python' 'libpng' 'cmake')
+makedepends=('git' 'python' 'libpng' 'cmake')
 optdepends=('python: for lensfun-update-data and lensfun-add-adapter')
 provides=('lensfun=0.3.0')
 conflicts=('lensfun')
