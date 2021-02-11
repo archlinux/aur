@@ -5,23 +5,21 @@ _name=maestral-qt
 pkgname="${_name}-git"
 provides=("${_name}")
 conflicts=("${_name}")
-pkgver=1.1.0.r0.gbc6f037
+pkgver=1.3.2.dev0.r0.gddb1dd5
 pkgrel=1
 pkgdesc='A Qt interface for the Maestral daemon'
 arch=('any')
 url="https://github.com/SamSchott/${_name}"
 license=('MIT')
-source=("git+${url}")
-makedepends=('git' 'python' 'python-setuptools')
+source=("git+${url}#branch=develop")
+makedepends=('git' 'python' 'python-setuptools' 'python-wheel')
 depends=(
-  'maestral>=1.1.0'
-  'python>=3.8'
-  'python-bugsnag>=3.4.0'
-  'python-click>=7.1.1'
-  'python-markdown2'
-  'python-packaging'
-  'python-pyqt5>=5.9'
-  )
+    'python'
+    'maestral'
+    'python-click>=7.1.1'
+    'python-markdown2'
+    'python-packaging'
+    'python-pyqt5>=5.9')
 optdepends=('gnome-shell-extension-appindicator: Gnome integration')
 md5sums=('SKIP')
 
