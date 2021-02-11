@@ -1,0 +1,9 @@
+pkgbase = hello_archlinux
+pkgdesc = My first package.
+pkgver = 20200620
+pkgrel = 1
+arch = any
+license = custom
+
+pkgname = hello_archlinux
+
