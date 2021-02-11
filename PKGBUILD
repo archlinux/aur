@@ -1,14 +1,15 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Rojikku <RojikkuNoKami at gmail dot com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=ssh-vault
 pkgver=0.12.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Encrypt/Decrypt using SSH keys"
 arch=('x86_64')
 url='https://ssh-vault.com'
 license=('BSD')
 depends=('glibc')
-makedepends=('go')
+makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ssh-vault/ssh-vault/archive/${pkgver}.tar.gz")
 sha256sums=('f8823fd1c859e48d8b46b0425e6be8160b14350cdb877e00a3ed7cd753ed669d')
 
