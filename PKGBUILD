@@ -2,8 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=vim-auto-pairs
-pkgver=1.3.2
-_srcid=20536
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Autoclose, insert or delete brackets, parens, quotes in pair"
 arch=('any')
@@ -11,12 +10,12 @@ depends=('vim')
 groups=('vim-plugins')
 url="http://www.vim.org/scripts/script.php?script_id=3599"
 license=('MIT')
-source=(${pkgname}.tar.gz::http://www.vim.org/scripts/download_script.php?src_id=${_srcid})
-sha256sums=('a3fa1b60b2eb54e617b3d4279c0ee78b1bf9ee4f38ea398e341d6c8ac9297652')
+source=(${pkgname}.tar.gz::https://github.com/jiangmiao/auto-pairs/archive/v${pkgver}.tar.gz)
+sha256sums=('f20e109a61b4640eb424ada90200ff578027e5307c1202b103c265a9cfa193c4')
 install=vimdoc.install
 
 package() {
-  cd "$srcdir/${pkgname##vim-}"
+  cd "$srcdir/${pkgname##vim-}-${pkgver}"
 
   msg 'Installing documentation...'
   install -Dm 644 README.md $pkgdir/usr/share/doc/vim-auto-pairs/README.md

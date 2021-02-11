@@ -1,6 +1,6 @@
 pkgbase = vim-auto-pairs
 	pkgdesc = Autoclose, insert or delete brackets, parens, quotes in pair
-	pkgver = 1.3.2
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = http://www.vim.org/scripts/script.php?script_id=3599
 	install = vimdoc.install
@@ -8,8 +8,8 @@ pkgbase = vim-auto-pairs
 	groups = vim-plugins
 	license = MIT
 	depends = vim
-	source = vim-auto-pairs.tar.gz::http://www.vim.org/scripts/download_script.php?src_id=20536
-	sha256sums = a3fa1b60b2eb54e617b3d4279c0ee78b1bf9ee4f38ea398e341d6c8ac9297652
+	source = vim-auto-pairs.tar.gz::https://github.com/jiangmiao/auto-pairs/archive/v2.0.0.tar.gz
+	sha256sums = f20e109a61b4640eb424ada90200ff578027e5307c1202b103c265a9cfa193c4
 
 pkgname = vim-auto-pairs
 
