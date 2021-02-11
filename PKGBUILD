@@ -4,7 +4,7 @@ name=meshroom
 #fragment="#commit=9bd70ed8ace83c6dde174178e17c5147bb50248f"
 fragment="#branch=develop"
 pkgname=${name}-git
-pkgver=2019.2.0.r199.g2e6990d
+pkgver=2020.1.1.r176.g8d0cd745
 pkgrel=1
 pkgdesc="Meshroom is a free, open-source 3D Reconstruction Software based on the AliceVision framework."
 arch=('i686' 'x86_64')
@@ -50,7 +50,7 @@ build() {
   make
   
   cd ${srcdir}/${name}
-  sed -i '/^PySide2/s/5.13.0/5.14.1/' requirements.txt
+  sed -i '/^PySide2/s/5.14.1/5.15.2/' requirements.txt
   pip install --user -r requirements.txt
   python setup.py build
 }
