@@ -3,7 +3,7 @@
 pkgname=python-pynput
 _name=${pkgname#python-}
 pkgver=1.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library to monitor and control user input devices"
 arch=('any')
 url="https://github.com/moses-palmer/pynput"
@@ -30,4 +30,8 @@ package() {
 	cd "$_name-$pkgver"
 	export PYTHONHASHSEED=0
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+
+	# Fix permissions
+	find "$pkgdir" -type d -exec chmod -v 0755 {} \;
+	find "$pkgdir" -type f -exec chmod -v 0644 {} \;
 }
