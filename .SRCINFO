@@ -1,7 +1,7 @@
 pkgbase = songrec
 	pkgdesc = An open-source, unofficial Shazam client for Linux, written in Rust.
-	pkgver = 0.1.2
-	pkgrel = 2
+	pkgver = 0.1.3
+	pkgrel = 1
 	url = https://github.com/marin-m/SongRec
 	arch = x86_64
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = songrec
 	depends = openssl
 	provides = songrec
 	conflicts = songrec-git
-	source = songrec-0.1.2.tar.gz::https://github.com/marin-m/songrec/archive/0.1.2.tar.gz
-	sha256sums = 76147922fbafad2093dbc21f03f111002691489c4fcfecf0c5dd4c978b858811
+	source = songrec-0.1.3.tar.gz::https://github.com/marin-m/songrec/archive/0.1.3.tar.gz
+	sha256sums = 35aa56406e6ed0da3002396b4c9880094d59bca1cec7bc51a6f91353a60fc0d4
 
 pkgname = songrec
