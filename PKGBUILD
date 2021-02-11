@@ -9,7 +9,7 @@ url="http://www.fabforce.net/dbdesigner4/index.php"
 license=('GPL')
 depends=('lib32-kylixlibs' 'lib32-libmng' 'lib32-gcc-libs')
 _libdir=usr/lib32/DBDesigner4
-source=(http://downloads.mysql.com/DBDesigner4/DBDesigner$pkgver.tar.gz
+source=(https://web.archive.org/web/20150803015037/http://downloads.mysql.com/DBDesigner4/DBDesigner$pkgver.tar.gz
         dbdesigner.desktop
         dbdesigner)
 md5sums=('3a9bfd9b40fb8b70e24fd2195424cb51'
