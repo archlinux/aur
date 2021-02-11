@@ -1,7 +1,7 @@
 pkgbase = mir
 	pkgdesc = Canonical's display server
-	pkgver = 2.2.0
-	pkgrel = 2
+	pkgver = 2.3.2
+	pkgrel = 1
 	url = https://mir-server.io
 	arch = x86_64
 	arch = i686
@@ -48,8 +48,8 @@ pkgbase = mir
 	optdepends = qtubuntu: opt requirement for miral demos
 	provides = mir
 	conflicts = mir
-	source = https://github.com/MirServer/mir/archive/v2.2.0.tar.gz
-	sha256sums = db07da960ae5391e75907c40183aa7585f344f00ed5d9ad00c82d27f5bd5b102
+	source = https://github.com/MirServer/mir/archive/v2.3.2.tar.gz
+	sha256sums = fd42c1e2de110dc83826555c3f35f7f1e0b8cd1c1b4b59afc5d9ae8ae406aeaf
 
 pkgname = mir
 
