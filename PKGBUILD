@@ -2,7 +2,7 @@
 
 _pkgname=pyVHDLModel
 pkgname=python-pyvhdlmodel-git
-pkgver=0.8.0.r2.g2301a2f
+pkgver=0.8.0.r4.g353b307
 pkgrel=1
 pkgdesc="An abstract VHDL language model written in Python"
 arch=(any)
@@ -32,8 +32,6 @@ build() {
 check() {
 	cd "$_pkgname"
 
-	touch tests/__init__.py
-	touch tests/unit/__init__.py
 	pytest tests/
 }
 
