@@ -1,0 +1,25 @@
+pkgbase = maui-clip-git
+	pkgdesc = Video player and video collection manager
+	pkgver = r70.e140751
+	pkgrel = 1
+	url = https://invent.kde.org/maui/clip
+	arch = x86_64
+	groups = maui-apps
+	license = GPL3
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	depends = kio
+	depends = mauikit-git
+	depends = attica
+	depends = ki18n
+	provides = cinema
+	provides = maui-clip
+	conflicts = cinema
+	conflicts = cinema-git
+	conflicts = maui-clip
+	source = git+https://invent.kde.org/maui/clip.git
+	sha256sums = SKIP
+
+pkgname = maui-clip-git
+
