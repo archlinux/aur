@@ -22,5 +22,6 @@ check() {
 }
 
 package() {
+  cd ${pkgname}
   install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
 }
