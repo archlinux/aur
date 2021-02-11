@@ -5,36 +5,29 @@
 
 pkgname=waffle
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='a library for choosing window system and OpenGL API at runtime'
 arch=('x86_64')
 url='http://www.waffle-gl.org'
 license=('BSD')
 
 depends=('libx11' 'libxcb' 'wayland')
-makedepends=('cmake' 'xcb-proto' 'mesa-libgl' 'mesa' 'libxslt' 'docbook-xsl')
+makedepends=('meson' 'xcb-proto' 'mesa-libgl' 'mesa' 'libxslt' 'docbook-xsl')
 
 source=(https://mesa.pages.freedesktop.org/waffle/files/release/waffle-${pkgver}/waffle-${pkgver}.tar.xz{,.asc})
 sha256sums=('41ff9e042497e482c7294e210ebd9962e937631829a548e5811c637337cec5a5'
             'SKIP')
 
-prepare() {
-  cmake \
-    -G Ninja \
-    -S "$pkgname-$pkgver" -B build \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-    -DCMAKE_BUILD_TYPE=Release \
-    -Dwaffle_has_gbm=1 \
-    -Dwaffle_has_glx=1 \
-    -Dwaffle_has_x11_egl=1 \
-    -Dwaffle_has_wayland=1 \
-    -Dwaffle_build_manpages=1 \
-    -Dwaffle_build_htmldocs=1 \
-    -Dwaffle_build_examples=0
-}
-
 build() {
+  arch-meson "$pkgname-$pkgver" build \
+    -D gbm=enabled \
+    -D glx=enabled \
+    -D x11_egl=enabled \
+    -D wayland=enabled \
+    -D build-manpages=true \
+    -D build-htmldocs=true \
+    -D build-examples=false
+
   ninja -C build
 }
 

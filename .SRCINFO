@@ -1,11 +1,11 @@
 pkgbase = waffle
 	pkgdesc = a library for choosing window system and OpenGL API at runtime
 	pkgver = 1.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.waffle-gl.org
 	arch = x86_64
 	license = BSD
-	makedepends = cmake
+	makedepends = meson
 	makedepends = xcb-proto
 	makedepends = mesa-libgl
 	makedepends = mesa
