@@ -1,0 +1,18 @@
+pkgbase = python-peakdetect
+	pkgdesc = Simple peak detection
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/anaxilaus/peakdetect
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-scipy
+	source = git+https://github.com/anaxilaus/peakdetect#tag=v1.1
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = 4961c1398d7e4f836b97c9db17e2f0c0bfe51a0fe5784e14c63713eb2c536a6b
+
+pkgname = python-peakdetect
+

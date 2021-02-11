@@ -1,0 +1,21 @@
+The initial commit to the Git repository was a copy of files from the Gist at
+
+  https://gist.github.com/sixtenbe/1178136
+
+which is licensed under the WTFPL (which is public domain equivalent). That
+code in turn was based off a MATLAB function from
+
+  http://billauer.co.il/peakdet.html
+
+which was released to the public domain.
+
+In the following refactoring commits the WTFPL license was removed from the
+source files and not replaced with any other license:
+
+* 6b6577e9c48a7bbdd7a5e225daad79f77527270f
+* a91ecc31e46e9b2f82912e41f563c6064c5d0082
+* f7a7d3d8d89795666d9c0ebbb969805789a799f5
+
+The project listing on PyPI does not mention a license and neither does the
+GitHub repository or the readme. The repository is archived so an issue
+requesting clarification cannot be opened.
