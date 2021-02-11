@@ -9,6 +9,7 @@ pkgbase = underworld2-git
 	makedepends = gcc-fortran
 	makedepends = swig
 	makedepends = scons
+	makedepends = python-setuptools
 	depends = openmpi
 	depends = hdf5-openmpi
 	depends = petsc
