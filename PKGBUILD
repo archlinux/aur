@@ -1,14 +1,16 @@
 # Maintainer: Jonas Malaco <jonas@protocubo.io>
 # Contributor: Alex Forencich <alex@alexforencich.com>
-pkgname=(python-pyusb-git python2-pyusb-git)
-pkgver=1.1.0.r1.g14b25b930e75
+pkgname=python-pyusb-git
+pkgver=1.1.1.r6.g6bd82d9
 pkgrel=1
 pkgdesc="USB access for Python"
 arch=('any')
 url="https://github.com/pyusb/pyusb"
 license=('BSD')
-makedepends=('git' 'python-setuptools' 'python2-setuptools'
-             'python-setuptools-scm' 'python2-setuptools-scm')
+depends=('python' 'libusb')
+makedepends=('git' 'python-setuptools' 'python-setuptools-scm')
+provides=('python-pyusb')
+conflicts=('python-pyusb')
 
 _gitroot='https://github.com/pyusb/pyusb'
 _gitname='pyusb'
@@ -18,29 +20,15 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  git describe --tags --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  git describe --tags --long --abbrev=7 | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
   cd "$srcdir/$_gitname"
   python setup.py build
-  python2 setup.py build
 }
 
-package_python-pyusb-git() {
-  depends=('python' 'libusb')
-  provides=('python-pyusb')
-  conflicts=('python-pyusb')
-
+package() {
   cd "$srcdir/$_gitname"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-}
-
-package_python2-pyusb-git() {
-  depends=('python2' 'libusb')
-  provides=('python2-pyusb')
-  conflicts=('python2-pyusb')
-
-  cd "$srcdir/$_gitname"
-  python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
