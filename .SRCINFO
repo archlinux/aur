@@ -1,0 +1,52 @@
+pkgbase = geph4
+	pkgdesc = A command-line Geph4 toolset
+	pkgver = 4.1.2
+	pkgrel = 1
+	url = https://github.com/geph-official/geph4
+	arch = x86_64
+	groups = geph4
+	license = GPL3
+	makedepends = rust
+	depends = gcc-libs
+	source = geph4-4.1.2.tar.gz::https://github.com/geph-official/geph4/archive/v4.1.2.tar.gz
+	source = geph4-binder.default
+	source = geph4-bridge.default
+	source = geph4-client.default
+	source = geph4-exit.default
+	source = geph4-binder.service
+	source = geph4-bridge.service
+	source = geph4-client.service
+	source = geph4-exit.service
+	source = geph4-vpn-helper.service
+	sha256sums = 7b2a9a7532cf1780b8b3c7a421ae6def63ad0948570813bd251dd50befb3ff77
+	sha256sums = 96e495d1f5d6cb61c7953c70035125febf0063fa0e8d0bb47bc314d326c93b55
+	sha256sums = 3def2cd4cce25ad38cadc3b20913d3c45df16b89d0903b7cd88da77d57f86938
+	sha256sums = 01b1ec9c4a5fe499d015cc5da62b46245f6bb9acc30afa5ec1f982650e331223
+	sha256sums = 2daf5117a98d4529225712cb9f4828f4f5269a591565745497df0eb10068ba2a
+	sha256sums = 7c8c2b2e2f24a45a2d216af90d1b370a25d1f4fe3501f341bf18b7b68a7fa93a
+	sha256sums = 08bcd5c7d8a44f7ee05315ce745658a59bf48f0c5475b231c75120858ddf39ef
+	sha256sums = 3599ecabf51e9405eb3afdc0c653060e8da9d6cbe83a4f4ce14c46017f520022
+	sha256sums = 04b096c9e99f655c7f7e9e13082be2a487e255c2366471ad9c9e3216be389774
+	sha256sums = 806ed9538c92e659e2c0f70f8f5620f37e2f7df15b39a9bdea301b65c5cbcf5f
+
+pkgname = geph4-binder
+	conflicts = geph4-binder-git
+	backup = etc/default/geph4-binder
+
+pkgname = geph4-bridge
+	conflicts = geph4-bridge-git
+	backup = etc/default/geph4-bridge
+
+pkgname = geph4-client
+	conflicts = geph4-client-git
+	backup = etc/default/geph4-client
+
+pkgname = geph4-exit
+	conflicts = geph4-exit-git
+	backup = etc/default/geph4-exit
+
+pkgname = geph4-vpn-helper
+	depends = gcc-libs
+	depends = geph4-client
+	conflicts = geph4-vpn-helper-git
+
