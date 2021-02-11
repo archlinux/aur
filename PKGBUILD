@@ -1,7 +1,7 @@
 # Maintainer: Petr Spacek <pspacek at isc dot org>
 
 pkgname=dnsperf-git
-pkgver=2.4.0.r8.43e212a
+pkgver=2.4.1.r1.903088a
 _pkgsubver=1
 pkgrel=1
 pkgdesc="Tools that measure performance of authoritative Domain Name services"
@@ -12,23 +12,23 @@ source=("git+https://github.com/DNS-OARC/dnsperf.git")
 sha512sums=('SKIP')
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/dnsperf"
 }
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/dnsperf"
   printf "%s" "$(git describe --match 'v*' --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/dnsperf"
   ./autogen.sh
   ./configure --prefix=/usr --mandir=/usr/share/man
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/dnsperf"
   make DESTDIR="${pkgdir}" install
 }
 
