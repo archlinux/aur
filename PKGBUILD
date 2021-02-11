@@ -3,7 +3,7 @@
 # Based on Pieter Robyns <pieter dot robyn at uhasselt dot be>'s gr-lora-git PKGBUILD
 
 pkgname=gr-lora_sdr-git
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="GNURadio blocks for fully-functional LoRa transceiver"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('cmake')
 provides=('gr-lora_sdr')
 source=('git+https://github.com/martynvdijke/gr-lora_sdr')
 sha1sums=('SKIP')
-_gitname=gr-lora
+_gitname=gr-lora_sdr
 
 pkgver() {
   cd $_gitname
