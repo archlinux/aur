@@ -1,6 +1,6 @@
 pkgbase = crux-toolkit-git
 	pkgdesc = The Crux mass spectrometry analysis toolkit
-	pkgver = r3149.4438655b
+	pkgver = r3353.414acd52
 	pkgrel = 1
 	url = http://crux.ms/
 	arch = x86_64

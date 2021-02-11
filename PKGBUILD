@@ -1,6 +1,6 @@
 # Maintainer: Lev Levitsky <levlev at mail.ru>
 pkgname=crux-toolkit-git
-pkgver=r3149.4438655b
+pkgver=r3353.414acd52
 pkgrel=1
 pkgdesc="The Crux mass spectrometry analysis toolkit"
 arch=('x86_64')
@@ -21,8 +21,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgname%-git}"
-    cmake -DCMAKE_INSTALL_PREFIX:PATH="${pkgdir}/usr" -DCMAKE_VERBOSE_MAKEFILE=OFF .
-    sed -i 's|^[[:space:]]*include(.*doc/user|#&|' cmake_install.cmake
+    cmake -DCMAKE_INSTALL_PREFIX:PATH="${pkgdir}/usr" .
     make
 }
 
