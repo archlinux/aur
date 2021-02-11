@@ -1,0 +1,33 @@
+pkgbase = multimc-lhaus-git
+	pkgdesc = Free, open source launcher and instance manager for Minecraft.
+	pkgver = 0.6.11.r123.g1642383d
+	pkgrel = 1
+	url = http://multimc.org/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	makedepends = qt5-x11extras
+	makedepends = jdk8-openjdk
+	depends = zlib
+	depends = libgl
+	depends = qt5-base
+	depends = qt5-x11extras
+	depends = java-runtime
+	depends = qt5-svg
+	depends = xorg-xrandr
+	provides = multimc
+	provides = multimc5
+	provides = multimc5-git
+	provides = multimc-git
+	conflicts = multimc
+	conflicts = multimc5
+	conflicts = multimc5-git
+	conflicts = multimc-git
+	source = multimc-lhaus-git::git://github.com/lhaus/MultiMC.git
+	sha512sums = SKIP
+
+pkgname = multimc-lhaus-git
+
