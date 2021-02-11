@@ -1,18 +1,19 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: eggbertx <joshuamerrell at gmail dot com>
+# Previous maintainer: Felix Golatofski <contact at xdfr dot de>
 # Contributor: michaelchou <michaeljchou at the hotmail domain which is .com>
 
 _pkgname=chakracore
 pkgname=chakracore-bin
-pkgver=1.11.20
+pkgver=1.11.24
 pkgrel=1
-pkgdesc='ChakraCore is the core part of the Chakra Javascript engine that powers Microsoft Edge. This is the pre-built binaries from Microsoft.'
+pkgdesc='ChakraCore is an open source Javascript engine with a C API. This is the pre-built binaries from Microsoft.'
 arch=('x86_64')
 url='https://github.com/Microsoft/ChakraCore'
 license=('MIT')
 provides=('libChakraCore.so' 'ch')
 conflicts=('chakracore-git' 'chakracore')
-source=("$pkgname-$pkgver-linux-$arch.tar.gz::https://aka.ms/chakracore/cc_linux_x64_1_11_15")
-sha256sums=('1b6ee856a9f07071bb8d11ed9068cf262df8285fc9e762e9f77fbb6a3957e365')
+source=("$pkgname-$pkgver-linux-$arch.tar.gz::https://aka.ms/chakracore/cc_linux_x64_1_11_24")
+sha256sums=('939283618139D6C4223842D79C176C3691296BCE5368D54CB9805616A94EB605')
 
 _dir="ChakraCoreFiles"
 
