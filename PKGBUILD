@@ -1,7 +1,7 @@
+# Maintainer: Emil Velikov <emil.l.velikov@gmail.com>
 # Maintainer: Eric Engestrom <aur@engestrom.ch>
 # Contributor: Ben Widawsky <ben@bwidawsk.net>
 # Contributor: Chad Versace <chad.versace@linux.intel.com>
-# Contributor: Emil Velikov <emil.l.velikov@gmail.com>
 
 pkgname=waffle
 pkgver=1.6.2
