@@ -1,0 +1,14 @@
+pkgbase = ttf-plainblack
+	pkgdesc = A blackletter font designed by Paul Lloyd.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.ffonts.net/PlainBlack-Normal.font
+	arch = any
+	license = custom
+	source = PlainBlack-Normal.font.zip::https://www.ffonts.net/PlainBlack-Normal.font.zip
+	source = LICENSE
+	sha256sums = 976998ffcf228e268f219723f8bcce38a1958829dfe88221397dc7735f694126
+	sha256sums = 8598807eeae737b1aa99c5c727b8a960827c424993ea14f0958033e458001c9b
+
+pkgname = ttf-plainblack
+
