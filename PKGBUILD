@@ -7,7 +7,7 @@ pkgdesc="A version control system which prioritizes ease of use and simplicity o
 arch=('x86_64')
 url="http://gameoftrees.org/"
 license=('ISC')
-depends=('ncurses' 'libmd' 'openssl' 'util-linux-libs')
+depends=('ncurses' 'libmd' 'util-linux-libs' 'zlib' 'libbsd')
 makedepends=('pkgconf' 'git')
 conflicts=('got' 'got-bin' 'got-git')
 source=('gameoftrees::git+https://git.gameoftrees.org/got-portable.git#branch=linux')
@@ -31,6 +31,7 @@ package() {
   cd "$srcdir/${pkgname%-git}"
 
   make DESTDIR="$pkgdir/" install
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "$srcdir/${pkgname%-git}/LICENCE"
 }
 
 # vim:set ts=2 sw=2 et:
