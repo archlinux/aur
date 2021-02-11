@@ -6,7 +6,7 @@ _arch=aarch64
 _target=$_arch-unknown-linux-gnu
 pkgname=$_arch-binutils
 pkgver=2.36.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the ARM64 target'
 arch=(x86_64)
 url='https://www.gnu.org/software/binutils/'
@@ -20,7 +20,12 @@ validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93'  # Tristan Gingold <gin
 
 prepare() {
   cd binutils-$pkgver
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
+
+  #hack - Having CPPFLAGS defined makes the build barf. Workaround it like this:
+  _cppflags=$CPPFLAGS
+  CFLAGS="$_cppflags $CFLAGS"
+  CXXFLAGS="$CFLAGS"
+  unset CPPFLAGS
 }
 
 build() {
@@ -31,7 +36,6 @@ build() {
               --prefix=/usr \
               --disable-multilib \
               --disable-nls \
-              --enable-ld=default \
               --enable-gold \
               --enable-plugins \
               --enable-deterministic-archives \
