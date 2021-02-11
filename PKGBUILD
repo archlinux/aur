@@ -11,6 +11,7 @@ pkgdesc='General purpose cryptographic library based on the code from GnuPG'
 arch=('x86_64')
 url='http://www.gnupg.org'
 license=('LGPL')
+makedepends=(fig2dev libjpeg)
 depends=('lib32-glibc' 'lib32-libgpg-error')
 replaces=('lib32-libgcrypt11')
 provides=(lib32-libgcrypt15)
