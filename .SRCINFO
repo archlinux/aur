@@ -1,0 +1,15 @@
+pkgbase = ting-fr
+	pkgdesc = Daily French Listening software from eusoft
+	pkgver = 9.2.1
+	pkgrel = 1
+	url = https://www.eudic.net/v4/fr/app/ting
+	arch = x86_64
+	license = unknown
+	makedepends = asar
+	depends = electron7
+	options = !strip
+	source = ting-fr-9.2.1.deb::https://static.frdic.com/pkg/ting_fr/ting_fr.deb
+	sha512sums = 3e0ea70c774d780f07e058dc17c84e26cae28f989a1856605c7aa7cc721c9ef8e7d5b9f2205680148bfc4e2f1ede2fa0cf7314d840630c89b343a9741fee92df
+
+pkgname = ting-fr
+
