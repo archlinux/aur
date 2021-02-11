@@ -1,0 +1,15 @@
+pkgbase = firefox-extension-sponsorblock
+	pkgdesc = SponsorBlock extension for Firefox
+	pkgver = 2.0.12.3
+	pkgrel = 1
+	url = https://github.com/ajayyy/SponsorBlock/
+	arch = any
+	groups = firefox-addons
+	license = GPL3
+	depends = firefox
+	noextract = extension.xpi
+	source = extension.xpi::https://addons.mozilla.org/firefox/downloads/file/3720594/sponsorblock_skip_sponsorships_on_youtube-2.0.12.3-an+fx.xpi
+	sha256sums = 1d1b679995b25cddcc2a8e00bd26203491a4044b1ad9168c6a615b933f98cd08
+
+pkgname = firefox-extension-sponsorblock
+
