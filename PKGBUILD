@@ -1,7 +1,7 @@
 # Maintainer: archcrack <johndoe.arch@outlook.com>
 
 pkgname=clifm
-pkgver=0.28.0
+pkgver=0.29.0
 pkgrel=1
 pkgdesc="The KISS file manager: cli-based, ultra-lightweight, and lightning fast"
 arch=(any)
@@ -18,7 +18,7 @@ optdepends=(
 	'cdrtools: ISO 9660 support'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/leo-arch/$pkgname/archive/v${pkgver}.tar.gz")
-sha256sums=('ba909df8d40af8f39a38ad987558e1b9fea936c3f00421010dfc51f0d24ea3c7')
+sha256sums=('3b37f7ee134eff6c081c233eb9d7eb9b121c6317bcc51cbcc7128e2288fa42ee')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
@@ -30,5 +30,6 @@ package() {
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -g 0 -o 0 -Dm644 manpage "$pkgdir/usr/share/man/man1/${pkgname}.1"
   gzip "${pkgdir}/usr/share/man/man1/${pkgname}.1"
+  install -g 0 -o 0 -Dm644 "${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
   install -g 0 -o 0 -Dm644 "translations/spanish/${pkgname}.mo" "$pkgdir/usr/share/locale/es/LC_MESSAGES/${pkgname}.mo"
 }
