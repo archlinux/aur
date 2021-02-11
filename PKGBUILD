@@ -1,7 +1,7 @@
 # Maintainer: Moses Miller <Majora320@gmail.com>
 
 pkgname=olympus-bin
-pkgver=1868
+pkgver=1875
 pkgrel=1
 pkgdesc='A mod manager for Celeste'
 arch=('x86_64')
