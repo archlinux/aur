@@ -1,0 +1,25 @@
+pkgbase = lagrange-git
+	pkgdesc = A Beautiful Gemini Client
+	pkgver = 1.1.2.r60.g66babe2
+	pkgrel = 1
+	url = https://gmi.skyjake.fi/lagrange/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libunistring
+	depends = openssl
+	depends = pcre
+	depends = sdl2
+	depends = zlib
+	optdepends = mpg123
+	provides = lagrange
+	conflicts = lagrange
+	source = git+https://git.skyjake.fi/skyjake/lagrange.git
+	sha256sums = SKIP
+
+pkgname = lagrange-git
+
