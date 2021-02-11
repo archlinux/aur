@@ -1,0 +1,18 @@
+pkgbase = python-hidapi-git
+	pkgdesc = A Cython interface to the hidapi from signal11/hidapi
+	pkgver = 0.10.1.r10.g2353c96
+	pkgrel = 1
+	url = https://github.com/trezor/cython-hidapi
+	arch = any
+	license = custom
+	makedepends = cython
+	makedepends = python-setuptools
+	makedepends = udev
+	depends = python
+	depends = hidapi
+	provides = python-hidapi
+	conflicts = python-hidapi
+	source = python-hidapi-git::git+https://github.com/trezor/cython-hidapi#branch=master
+	sha512sums = SKIP
+
+pkgname = python-hidapi-git
