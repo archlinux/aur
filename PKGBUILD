@@ -1,8 +1,9 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: LinArcx <linarcx at gmail.com>
 pkgname=kindd
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Kindful dd GUI written in Qt Quick"
 arch=('any')
 url="https://github.com/LinArcX/Kindd"
@@ -14,15 +15,16 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('e596f1b1577ff3e83a779e6181252ae2f09731f513d17dd6b95cbc2cf204654f')
 
 build() {
-	cd "$pkgname-$pkgver"
-	cmake -B build -S . \
+	cmake -B build -S "$pkgname-$pkgver" \
+		-DCMAKE_BUILD_TYPE='None' \
+		-DCMAKE_INSTALL_PREFIX='/usr' \
 		-Wno-dev
 	make -C build
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -Dm755 "build/core/$pkgname" -t "$pkgdir/usr/bin"
+	install -Dm755 "$srcdir/build/core/$pkgname" -t "$pkgdir/usr/bin"
 	install -Dm644 "assets/appconf/$pkgname.desktop" -t \
 		"$pkgdir/usr/share/applications"
 	install -Dm644 "assets/appconf/$pkgname.svg" -t \
