@@ -1,6 +1,6 @@
 # Maintainer: tsp <patrictroy at gmail dot com>
 pkgname=rizin-git
-pkgver=0.2.0.r25612.ed6d93d4d
+pkgver=0.2.0.r25699.9a8b2bdb9
 pkgrel=1
 epoch=1
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
@@ -30,16 +30,19 @@ build() {
   export PKG_CONFIG_PATH="${srcdir}/${pkgname}/pkgcfg:${PKG_CONFIG_PATH}"
 
   cd ${pkgname}
-  arch-meson build              \
-    -D use_sys_capstone=true    \
-    -D use_sys_magic=true       \
-    -D use_sys_zip=true         \
-    -D use_sys_zlib=true        \
-    -D use_sys_lz4=true         \
-    -D use_sys_xxhash=true      \
-    -D use_sys_openssl=true     \
-    -D use_sys_tree_sitter=true \
-    -D use_libuv=true
+  arch-meson build                      \
+    -D use_sys_capstone=true            \
+    -D use_sys_magic=true               \
+    -D use_sys_zip=true                 \
+    -D use_sys_zlib=true                \
+    -D use_sys_lz4=true                 \
+    -D use_sys_xxhash=true              \
+    -D use_sys_openssl=true             \
+    -D use_sys_tree_sitter=true         \
+    -D use_libuv=true                   \
+    -D packager="AUR"                   \
+    -D packager_version="${pkgver}-git"
+
   ninja -C build
 }
 
