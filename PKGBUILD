@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=stylelint
-pkgver=13.9.0
+pkgver=13.10.0
 pkgrel=1
 pkgdesc='Mighty, modern CSS linter'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('npm')
 optdepends=('stylelint-config-standard: for the standard shareable config')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-b2sums=('6ba746f54fc42950c7916635b717f3ef8851c0aee2f999b56ce52248d35225f9ba65306638c92c45b1e26f10aa09a2c532d55ba89334e44f53402f769303cc76')
+b2sums=('6cc6fb1619b3c591bdcc95240959bbe536bc5f050cac5301cf08a2a1cc831c92a6c55c5e053a034ae603a3a43b593b01d0d37a93ada0cb7c13a86b58395c1166')
 
 package() {
   npm install --global \
@@ -20,9 +20,9 @@ package() {
               --prefix "$pkgdir"/usr \
               --production \
               $pkgname-$pkgver.tgz
-  chown -R root:root "$pkgdir" # Workaround until npm >=7.4.0 hits repos
+  chown -R root:root "$pkgdir"
   install -d "$pkgdir"/usr/share/licenses/$pkgname
-  ln -rs ../lib/node_modules/$pkgname/LICENSE \
+  ln -s /usr/lib/node_modules/$pkgname/LICENSE \
     "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
