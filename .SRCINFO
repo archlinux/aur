@@ -1,22 +1,14 @@
 pkgbase = eudic
 	pkgdesc = Eudic, a proprietary dictionary software for linux
 	pkgver = 12.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.eudic.net/v4/en/app/eudic
 	arch = x86_64
 	license = unknown
-	depends = gtk3
-	depends = libnotify
-	depends = nss
-	depends = libxss
-	depends = libxtst
-	depends = xdg-utils
-	depends = at-spi2-core
-	depends = util-linux-libs
-	depends = libappindicator-gtk3
-	depends = libsecret
-	options = !strip
-	source = eudic-12.5.0.deb::https://www.eudic.net/download/eudic.deb?v=2021-02-06
+	depends = hicolor-icon-theme
+	depends = qt5-speech
+	depends = qt5-webkit
+	source = eudic-12.5.0.deb::https://static.frdic.com/pkg/eudic.deb?v=2021-02-06
 	sha256sums = 20a2780110aa4024c3dd002415c6cc45b9ba61b209c8745baf2f2f861772b111
 
 pkgname = eudic
