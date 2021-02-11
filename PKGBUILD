@@ -8,45 +8,23 @@ license=('custom')
 groups=('modified')
 provides=('libxft')
 conflicts=('libxft')
-url="https://xorg.freedesktop.org/"
-depends=('fontconfig' 'libxrender')
-makedepends=('git' 'pkgconfig')
+url="https://gitlab.freedesktop.org/xorg/lib/libxft.git"
+depends=('fontconfig' 'libxrender' 'curl' 'xorg-util-macros')
+makedepends=('git' 'pkgconf')
+source=("git+$url" "https://gitlab.freedesktop.org/xorg/lib/libxft/merge_requests/1.patch")
+md5sums=('SKIP' 'SKIP')
 
-COMMIT_ID=7808631e7a9a605d5fe7a1077129c658d9ec47fc
-
-source=(${url}/releases/individual/lib/libXft-${_pkgbasever}.tar.bz2{,.sig}
-        "https://gitlab.freedesktop.org/xorg/lib/libxft/-/commit/${COMMIT_ID}.patch")
-sha512sums=('28fdaf3baa3b156a4a7fdd6e39c4d8026d7d21eaa9be27c9797c8d329dab691a1bc82ea6042f9d4729a9343d93787536fb7e4b606f722f33cbe608b2e79910e8'
-            'SKIP'
-            '109dd3e071c78391d78f1e627b523562e70789e1bd72bacac03ee437b0f170e1dd030bcc177b72da6ed98e91fddd2379f5225842d87247d584841fe37c641ae2')
-validpgpkeys=('4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E') # "Alan Coopersmith <alan.coopersmith@oracle.com>"
-
-GITLAB_REVISION=7
-
-pkgver() {
-  echo "${_pkgbasever}.r${GITLAB_REVISION}.`echo $COMMIT_ID | cut -c1-8`"
-}
-
-prepare() {
-  set -eo pipefail
-
-  pushd libXft-${_pkgbasever}
-  patch -p1 < ../${COMMIT_ID}.patch
-  popd
-
-  set +eo pipefail
-}
 
 build() {
-  cd libXft-${_pkgbasever}
-  ./configure --prefix=/usr --sysconfdir=/etc --disable-static
-  make
+    cd libxft
+    patch -p1 < ../1.patch
+    sh autogen.sh --sysconfdir=/etc --prefix=/usr --mandir=/usr/share/man
+    make
 }
 
 package() {
-  cd libXft-${_pkgbasever}
-  make DESTDIR="${pkgdir}" install
-  install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
-
+    cd libxft
+    make DESTDIR="${pkgdir}" install
+    install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
