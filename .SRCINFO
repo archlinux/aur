@@ -1,6 +1,6 @@
 pkgbase = last-resort
 	pkgdesc = Tool for convincing Gearbox tags to work with the Xbox version of Halo.
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/SnowyMouse/last-resort
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = last-resort
 	makedepends = cmake
 	makedepends = ninja
 	depends = invader
-	source = last-resort-0.3.0.tar.gz::https://github.com/SnowyMouse/last-resort/archive/0.3.0.tar.gz
-	sha256sums = d50918b59cb47c42d6b0e68efac49623ebcf8cbfe8909dca693e25c3505e9f3b
+	source = last-resort-0.3.1.tar.gz::https://github.com/SnowyMouse/last-resort/archive/0.3.1.tar.gz
+	sha256sums = b29a985ae7daef4f85fed99ed0aa04c53f4cca4036e5f2fc7cdfb722fd5e0621
 
 pkgname = last-resort
 

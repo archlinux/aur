@@ -1,7 +1,7 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=last-resort
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Tool for convincing Gearbox tags to work with the Xbox version of Halo."
 depends=('invader')
@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/SnowyMouse/last-resort"
 license=('GPL3')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/SnowyMouse/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('d50918b59cb47c42d6b0e68efac49623ebcf8cbfe8909dca693e25c3505e9f3b')
+sha256sums=('b29a985ae7daef4f85fed99ed0aa04c53f4cca4036e5f2fc7cdfb722fd5e0621')
 
 prepare() {
 	mkdir -p build
