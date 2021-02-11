@@ -3,8 +3,8 @@
 # Contributor: Clayton Craft <clayton@craftyguy.net>
 
 pkgname=waffle-git
-pkgver=1.5.2.3.r275.g2485a41
-pkgrel=2
+pkgver=1.5.2.3.r286.gb6d9448
+pkgrel=1
 pkgdesc='Library for choosing window system and OpenGL API at runtime (git version)'
 arch=('x86_64' 'aarch64')
 url='http://www.waffle-gl.org'
@@ -30,13 +30,16 @@ build() {
 
   arch-meson build \
     --buildtype release \
-    -Dwaffle_has_gbm=1 \
-    -Dwaffle_has_glx=1 \
-    -Dwaffle_has_x11_egl=1 \
-    -Dwaffle_has_wayland=1 \
-    -Dwaffle_build_manpages=1 \
-    -Dwaffle_build_htmldocs=1 \
-    -Dwaffle_build_examples=0
+    -D gbm=enabled \
+    -D glx=enabled \
+    -D surfaceless_egl=enabled \
+    -D x11_egl=enabled \
+    -D wayland=enabled \
+    -D build-manpages=true \
+    -D build-htmldocs=true \
+    -D build-examples=false
+
+  meson configure build
   ninja -C build
 }
 
