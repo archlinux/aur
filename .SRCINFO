@@ -1,19 +1,19 @@
 pkgbase = python2-pyusb
-	pkgdesc = A native Python module written in C which provides USB access.
-	pkgver = 1.0.0
-	pkgrel = 2
-	url = https://github.com/walac/pyusb
-	arch = i686
-	arch = x86_64
+	pkgdesc = USB access on Python
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/pyusb/pyusb
+	arch = any
 	license = custom
-	makedepends = python2-distribute
+	makedepends = python2-setuptools
+	makedepends = python2-setuptools-scm
 	depends = python2
 	depends = libusb
-	provides = pyusb
-	conflicts = pyusb=1.0.0
-	replaces = python2-pyusb-beta
-	source = https://github.com/walac/pyusb/archive/1.0.0.tar.gz
-	sha512sums = af5549750140d12229202e8c32f48d6f2bbcda632b43763f7cefc51f63c61d5d9c4bf816842019729c911aedca792269a2cacad08d668d7ec569038b9979e3de
+	source = pyusb-1.1.0.tar.gz::https://pypi.org/packages/source/p/pyusb/pyusb-1.1.0.tar.gz
+	source = pyusb-1.1.0.tar.gz.asc::https://pypi.org/packages/source/p/pyusb/pyusb-1.1.0.tar.gz.asc
+	validpgpkeys = B04841AE800C1BF01FE1BC3D084C5584542E1574
+	validpgpkeys = 23F335ED4E829797734B22F65841AF7406AF7AD0
+	sha512sums = 0769670e6ebd8b31f2494258eca5d6e470ad3cb17663cc14b8b3a8136ea24caa23f86d81c60c501b88a9bc94b0de6a45aac43c6c5f140e65fd03a589b4d18179
+	sha512sums = SKIP
 
 pkgname = python2-pyusb
-
