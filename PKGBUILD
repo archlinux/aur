@@ -17,7 +17,7 @@ DLAGENTS+=("gog::/usr/bin/perl -E print\(\"${RED}\"\ .\ substr\(\"%u\",\ 6\)\ .\
 sha256sums=('5b9657ab2cbb0dc75de7b4087e63221aa35e4dabb8ce46c265d78a1c23d5d9f9')
 
 build() {
-    innoextract -s -L "$source"
+    innoextract -s -L "setup_diablo_1.09_hellfire_v2_(30038).exe"
     unzip -qqjuo app/webcache.zip
     wrestool -x -t -14 -o . diablo.exe
     wrestool -x -t -14 -o . hellfire/hellfire.exe
