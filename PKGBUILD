@@ -35,7 +35,8 @@ build() {
   export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
 
   arch-meson libvdpau build \
-    --libdir=/usr/lib32
+    --libdir=/usr/lib32 \
+    -D documentation=false
   ninja $NINJAFLAGS -C build
 }
 
