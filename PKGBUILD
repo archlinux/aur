@@ -1,5 +1,5 @@
 # Maintainer: theguy147 <yakamoz147 (at) protonmail (dot) com>
-# Maintainer: Marco A Rojas <marco.rojas@zentek.com.mx>
+# Contributor: Marco A Rojas <marco.rojas@zentek.com.mx>
 
 pkgname=twint-git
 pkgver=20200426.d9d0d68
