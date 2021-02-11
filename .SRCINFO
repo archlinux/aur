@@ -1,7 +1,7 @@
 pkgbase = nftables-geoip-db
 	pkgdesc = GeoIP Database for nftables
 	pkgver = 2.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://db-ip.com/db/download/ip-to-country-lite
 	install = nft_geoip.install
 	arch = any
@@ -9,14 +9,14 @@ pkgbase = nftables-geoip-db
 	license = GPL
 	makedepends = perl-text-csv-xs
 	makedepends = perl-net-cidr-lite
-	source = dbip-country-lite-2021-01.csv.gz::https://download.db-ip.com/free/dbip-country-lite-2021-01.csv.gz
+	source = dbip-country-lite-2021-02.csv.gz::https://download.db-ip.com/free/dbip-country-lite-2021-02.csv.gz
 	source = README
 	source = nft_geoip_build
 	source = mmcsv_geoip_build
 	sha256sums = SKIP
 	sha256sums = a1b0557804eec614e6783103754c718b471a8efc116cb9ad67cd23d2dac99f41
-	sha256sums = 68c5f6918d3e6aa34dbb5ce1284807e178701bcdb7163fccabbaa9329be3be9b
-	sha256sums = 24cecca52e152aab387bcdd0a14a27d1f8f18e19dfc9092f4856043b3347d990
+	sha256sums = a97daddb428df9d0f4951d335cd36482bfd2f4710338aff87edc4c70cfcfc807
+	sha256sums = e913017f573b39f14d78b3f0bb5c4913731b0d65ed6b2c3672d96dcf86c04209
 
 pkgname = nftables-geoip-db
 
