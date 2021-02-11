@@ -9,7 +9,7 @@ arch=(x86_64)
 url="https://git.sr.ht/~kennylevinsen/gtkgreet"
 license=(GPL3)
 source=("https://git.sr.ht/~kennylevinsen/gtkgreet/archive/$pkgver.tar.gz")
-sha256sums=('85b76deb53899ae322f729aaae2065c788a7acd03fef4f7bd4b5d75b6158b921')
+sha256sums=('eb4ba0e1e4f9cf888ce7b932b923f97521c2277032628cfc06bb86fecbad9373')
 makedepends=(meson ninja scdoc)
 depends=(gtk3 gtk-layer-shell json-c)
 
