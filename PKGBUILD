@@ -6,7 +6,7 @@ _target=$_arch-unknown-linux-gnueabihf
 pkgname=$_arch-gcc-bootstrap
 pkgver=10.2.0
 _islver=0.23
-pkgrel=1
+pkgrel=2
 #_snapshot=8-20190111
 pkgdesc='The GNU Compiler Collection - cross compiler for ARM64 target'
 arch=(x86_64)
@@ -64,7 +64,6 @@ build() {
       --with-linker-hash-style=gnu --enable-gnu-indirect-function \
       --disable-multilib --disable-werror \
       --enable-checking=release --enable-host-shared \
-      --disable-libunwind-exceptions \
       --with-arch=armv7-a --with-float=hard --with-fpu=vfpv3-d16 \
       --disable-threads --without-headers --with-glibc-version=2.33 \
       --disable-shared --with-newlib
