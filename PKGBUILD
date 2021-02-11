@@ -35,12 +35,12 @@ pkgver() {
 }
 
 build() {
-	cd dmenu-edersonferreira
+	cd dmenu
 	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
-    cd dmenu-edersonferreira
+    cd dmenu
     mkdir -p ${pkgdir}/opt/${pkgname}
     cp -rf * ${pkgdir}/opt/${pkgname}
     make PREFIX=/usr DESTDIR="${pkgdir}" install
