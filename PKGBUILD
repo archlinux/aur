@@ -11,7 +11,7 @@ depends=('love' 'lua51-lsqlite3')
 makedepends=('unzip')
 source=("$pkgname-$pkgver.zip::https://dev.azure.com/EverestAPI/Olympus/_apis/build/builds/$pkgver/artifacts?artifactName=linux.main&\$format=zip" 'olympus')
 noextract=("$pkgname-$pkgver.zip")
-sha256sums=('b44480bb2aea768d701d6f8313de5c078a5f27eccdb1684516fa9b3d01f00e7c'
+sha256sums=('1c1fe77fc31fe207b1e6a8a7fdc4230661922ecf0aef0f9f41528b64264ecec4'
             '6122a5b4426700bd9eaf7649ebb213b25ec312727cdb17b4fe87d99e8b380005')
 
 prepare() {
