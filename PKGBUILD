@@ -19,13 +19,6 @@ sha256sums=('41ff9e042497e482c7294e210ebd9962e937631829a548e5811c637337cec5a5'
             'SKIP')
 
 prepare() {
-  if [ -d build ]
-  then
-    msg2 "Build dir already exist; performing an incremental build"
-    msg2 "If you want to perform a clean build, please delete $(realpath build)"
-    return
-  fi
-
   cmake \
     -G Ninja \
     -S "$pkgname-$pkgver" -B build \
