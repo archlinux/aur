@@ -1,7 +1,7 @@
 # Maintainer: Avery Murray <averylapine@gmail.com>
 
 pkgname=proton-caller-git
-pkgver=1.3.2.r10.g3b2fc50
+pkgver=2.0
 pkgrel=1
 pkgdesc="Run any Windows program through Proton"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=(
   'steam'
 )
-makedepends=('git')
+makedepends=('git' 'rust' 'gcc')
 provides=(proton-caller)
 conflicts=(proton-caller)
 
@@ -24,12 +24,17 @@ pkgver() {
 
 build() {
   cd Proton-Caller
-  make
+  RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable} cargo build --release --locked
+}
+
+check() {
+  cd Proton-Caller
+  RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable} cargo test --release --locked
 }
 
 package() {
   cd Proton-Caller
-  install -Dm755 proton-call "$pkgdir"/usr/bin/proton-call
+  install -Dm755 target/release/proton-call "$pkgdir"/usr/bin/proton-call
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   install -Dm644 manual/proton-call.6 "$pkgdir"/usr/share/man/man6/proton-call.6
 }
