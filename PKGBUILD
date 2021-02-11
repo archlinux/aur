@@ -17,8 +17,6 @@ sha512sums=('e8031944f5d581d27c548e7e646d38fe76ac7051a1f7ec4daeaa334d8eb62d8ee73
 build() {
     cd "ticker-${pkgver}"
 
-    ls
-
     go build -o ./ticker .
 }
 
