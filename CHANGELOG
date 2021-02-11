@@ -1,5 +1,23 @@
+Version 6.14
+14 December 2021
+    - #64 getmail6: sometimes dies on running external filter program in version 6.13
+    - #65 Wait much longer, and raise an exception when timeout (pull from ykasap/fix-timeout to solve #64)
+    - #63 Trap exceptions caused by xoauth2 token expiration
+    - #61 Refresh the OAuth access token when reconnecting (IMAP IDLE)
+
+Version 6.13
+07 December 2021
+    - fix #59: Traceback while trying to reap child process
+    - fix #60: Need to refresh the OAuth access token when reconnecting (IMAP IDLE)
+
+Version 6.12
+31 December 2020
+    - fix #53: unclosed file warnings
+    - fix #52: getmail seems to lose its child process and hangs forever (pull #54)
+    - documentation improvements (#55, #56)
+
 Version 6.11
-TODO
+09 December 2020
     - comply more closely with the XDG basedir specification: allow an
       unset XDG_CONFIG_HOME environment variable.
     - Simplify the documentation around the location of the configuration directory.
