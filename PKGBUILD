@@ -1,3 +1,4 @@
+# Maintainer: Emil Velikov <emil.l.velikov@gmail.com>
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 # Contributor: Clayton Craft <clayton@craftyguy.net>
 
