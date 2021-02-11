@@ -11,17 +11,17 @@ source=("git+https://gitlab.hasi.it/danb/rawr")
 sha256sums=('SKIP')
 
 build() {
-  cd ${pkgname}
+  cd ${pkgname}-${pkgver}
   rustup default nightly
   cargo build --release --all-features --target-dir=target
 }
 
 check() {
-  cd ${pkgname}
+  cd ${pkgname}-${pkgver}
   cargo test --release --target-dir=target
 }
 
 package() {
-  cd ${pkgname}
+  cd ${pkgname}-${pkgver}
   install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
 }
