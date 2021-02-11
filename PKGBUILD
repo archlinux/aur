@@ -1,7 +1,7 @@
 # Maintainer: yhtez <yhtez@protonmail.com>
 pkgname=obs-websocket
-pkgver=4.8.0
-_obsver=25.0.8
+pkgver=4.9.0
+_obsver=26.1.0
 pkgrel=1
 pkgdesc="WebSockets API for obs-studio"
 arch=('x86_64')
@@ -13,8 +13,8 @@ source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
     "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
 )
-sha256sums=('a0b99f8039225305af36ef84d353155173d5878f56187a8988a827b487f15781'
-            'ef1179c23256c312212e3dce9083d4fa67751db05c3001ad824e2b6995943941')
+sha256sums=('b28d0153c1c67cbb3683dae2369de7daee4ce3c3666daec79327770e2153d573'
+            'c015d9bab1075ecf9c66c066328e291a20ef36880958fb3db6486ebc5ca9c6da')
 
 prepare() {
     rm -rf build
