@@ -2,7 +2,7 @@
 
 _gemname=native-package-installer
 pkgname=ruby-$_gemname
-pkgver=1.0.9
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='A helper to install native packages on "gem install"'
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('b33dffe29b7aebab3bce3877931be7dc4b766a92')
+sha1sums=('9b98ee996f4b7879c950586139c4bedcdb81bd3f')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
