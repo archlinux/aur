@@ -5,7 +5,7 @@
 
 pkgname=waffle
 pkgver=1.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc='a library for choosing window system and OpenGL API at runtime'
 arch=('x86_64')
 url='http://www.waffle-gl.org'
@@ -22,6 +22,7 @@ build() {
   arch-meson "$pkgname-$pkgver" build \
     -D gbm=enabled \
     -D glx=enabled \
+    -D surfaceless_egl=enabled \
     -D x11_egl=enabled \
     -D wayland=enabled \
     -D build-manpages=true \
