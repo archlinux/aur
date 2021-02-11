@@ -1,4 +1,5 @@
-# Maintainer: Mark wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=pennywise-bin
 pkgver=0.8.0
 pkgrel=2
