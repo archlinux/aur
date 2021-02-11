@@ -8,25 +8,22 @@ pkgname=('faiss-git' 'python-faiss-git')
 arch=('i686' 'x86_64')
 url="https://github.com/facebookresearch/faiss"
 license=('MIT')
-pkgver=1.6.1.r90.g9873376
+pkgver=v1.7.0.r13.g43ce2c93
 pkgrel=1
-source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git
-	'tests.patch')
-sha256sums=('SKIP'
-            '0e90164da283d87b2ad176449b1ba441b7ce0c6343aa4dbb8d268483bf805ccd')
+source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git)
+sha256sums=('SKIP')
 depends=('blas' 'lapack' 'openmp')
 makedepends=('git' 'python' 'python-numpy' 'swig' 'python-setuptools' 'cmake')
-optdepends=('intel-mkl')
+optdepends=('intel-mkl: To use MKL blas implemenetation' 'python-numpy-mkl: To use MKL blas implementation.')
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-  patch -p1 < ../tests.patch # see https://github.com/facebookresearch/faiss/issues/1394
   mkdir -p build
   cd build
   cmake .. \
@@ -40,8 +37,9 @@ prepare() {
 check() {
   cd "${srcdir}/${_pkgname}/build"
   make test
+  PYTHONPATH="${srcdir}/${_pkgname}/build/${_pkgname}/python" python -c "import faiss; import faiss.contrib"
   cd "${srcdir}/${_pkgname}/tests"
-  PYTHONPATH=../build/faiss/python:$PYTHONPATH pytest
+  PYTHONPATH="${srcdir}/${_pkgname}/build/${_pkgname}/python" pytest
 }
 
 build() {

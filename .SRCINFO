@@ -1,5 +1,5 @@
 pkgbase = faiss-git
-	pkgver = 1.6.1.r90.g9873376
+	pkgver = v1.7.0.r13.g43ce2c93
 	pkgrel = 1
 	url = https://github.com/facebookresearch/faiss
 	arch = i686
@@ -14,11 +14,10 @@ pkgbase = faiss-git
 	depends = blas
 	depends = lapack
 	depends = openmp
-	optdepends = intel-mkl
+	optdepends = intel-mkl: To use MKL blas implemenetation
+	optdepends = python-numpy-mkl: To use MKL blas implementation.
 	source = faiss::git+https://github.com/facebookresearch/faiss.git
-	source = tests.patch
 	sha256sums = SKIP
-	sha256sums = 0e90164da283d87b2ad176449b1ba441b7ce0c6343aa4dbb8d268483bf805ccd
 
 pkgname = faiss-git
 	pkgdesc = A library for efficient similarity search and clustering of dense vectors.
