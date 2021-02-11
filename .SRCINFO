@@ -6,6 +6,8 @@ pkgbase = rawr
 	arch = x86_64
 	license = GPL3
 	makedepends = rustup
+	source = git+https://gitlab.hasi.it/danb/rawr
+	sha256sums = SKIP
 
 pkgname = rawr
 

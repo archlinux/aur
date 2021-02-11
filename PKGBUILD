@@ -7,16 +7,20 @@ arch=('x86_64')
 url="https://gitlab.hasi.it/danb/rawr"
 license=('GPL3')
 makedepends=('rustup')
+source=("git+https://gitlab.hasi.it/danb/rawr")
+sha256sums=('SKIP')
 
 build() {
-  cd "$pkgname-$pkgver"
-
+  cd ${pkgname}
   rustup default nightly
-  cargo build --release --locked --features 'tls'
+  cargo build --release --all-features --target-dir=target
+}
+
+check() {
+  cd ${pkgname}
+  cargo test --release --target-dir=target
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-
-  install -Dm755 "target/release/rawr" "$pkgdir/usr/bin/rawr"
+  install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
 }
