@@ -12,8 +12,6 @@ url="https://github.com/d4nj1/TLPUI"
 license=('GPL2')
 depends=('tlp' 'python-gobject')
 makedepends=('git' 'python-setuptools')
-provides=("${pkgname}-git")
-conflicts=("${pkgname}-git")
 source=("tlpui-${tlpui_ver}.zip::https://github.com/d4nj1/TLPUI/archive/tlpui-${tlpui_ver}.zip"
         "${pkgname}.desktop")
 sha256sums=('17b4cb3fcadcd6b8bb5e4588b60ecd8b48d079e17ad748c459f98fa63e62e20d'
