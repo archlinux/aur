@@ -3,7 +3,6 @@ post_install() {
 }
 
 post_upgrade() {
-	echo '>>> NOTE: the default save file name has changed from "moria.save"'
-	echo '>>> to "moria-save". Rename the file in your home directory if'
-	echo '>>> necessary.'
+	echo '>>> NOTE: You can change settings with ='
+	echo '>>> Save is still in $PWD/moria-save'
 }
