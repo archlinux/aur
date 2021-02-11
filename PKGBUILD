@@ -2,8 +2,8 @@
 
 _pkgname=treesheets
 pkgname=$_pkgname-git
-pkgver=r293.524ec28
-pkgrel=2
+pkgver=r297.7c4ad33
+pkgrel=1
 pkgdesc='The ultimate replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases'
 url='http://treesheets.com'
 license=('zlib')
