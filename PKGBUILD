@@ -20,18 +20,18 @@ pkgver() {
 }
 
 build() {
-    cmake -B build -S "${pkgname%-git}" \
-        -DCMAKE_BUILD_TYPE='Debug' \
+	cmake -B build -S "${pkgname%-git}" \
+		-DCMAKE_BUILD_TYPE='Debug' \
 		-DCMAKE_C_FLAGS_DEBUG="-g $CFLAGS" \
 		-DCMAKE_CXX_FLAGS_DEBUG="-g $CXXFLAGS" \
-        -DCMAKE_INSTALL_PREFIX='/usr' \
-        -Wno-dev
-    make -C build
+		-DCMAKE_INSTALL_PREFIX='/usr' \
+		-Wno-dev
+	make -C build
 }
 
 package() {
 	make -C build DESTDIR="$pkgdir/" install
-	
+
 	cd "$srcdir/${pkgname%-git}"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
