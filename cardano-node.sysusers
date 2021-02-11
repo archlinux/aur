@@ -1,1 +1,1 @@
-u cardano - - /var/lib/cardano-node
+u cardano - - /var/lib/cardano-node /bin/bash

@@ -7,6 +7,7 @@ Type=simple
 ExecStart=cardano-node run \
     --database-path /var/lib/cardano-node/db \
     --socket-path /run/cardano-node/socket \
+    --host-addr 0.0.0.0 \
     --port 3000 \
     --config /var/lib/cardano-node/config/mainnet-config.json  \
     --topology /var/lib/cardano-node/config/mainnet-topology.json
