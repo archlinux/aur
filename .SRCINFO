@@ -1,0 +1,37 @@
+pkgbase = aircrack-ng-clang-git
+	pkgdesc = Wi-Fi security auditing tools suite (built with Clang for brute force speedup)
+	pkgver = 20210204.17f971ce
+	pkgrel = 1
+	url = https://aircrack-ng.org
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = pentium4
+	license = GPL2
+	makedepends = git
+	makedepends = python
+	makedepends = clang
+	depends = gcc-libs
+	depends = libnl
+	depends = openssl
+	depends = sqlite
+	depends = hwloc
+	depends = pcre
+	depends = libpcap
+	depends = iw
+	depends = net-tools
+	depends = ethtool
+	optdepends = python: dump-join, airgraph-ng, versuck-ng, airdrop-ng
+	provides = aircrack-ng
+	provides = aircrack-ng-scripts
+	conflicts = aircrack-ng-git
+	conflicts = aircrack-ng
+	conflicts = aircrack-ng-scripts
+	replaces = aircrack-ng-svn
+	replaces = aircrack-ng-scripts
+	source = git+https://github.com/aircrack-ng/aircrack-ng.git
+	sha256sums = SKIP
+
+pkgname = aircrack-ng-clang-git
+
