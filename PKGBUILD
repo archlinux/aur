@@ -1,34 +1,42 @@
 # Maintainer: Evgeniy Filimonov <evgfilim1@gmail.com>
 pkgname=('python-telegram-bot-git')
 epoch=1
-pkgver=13.1.r1.e0dbb99b
-pkgrel=1
+pkgver=13.2.r1.eee89215
+pkgrel=2
 pkgdesc="A Python wrapper around the Telegram Bot API"
 arch=('any')
 url="https://github.com/${pkgname%-git}/${pkgname%-git}"
 license=('LGPL3')
 depends=(
-    'python-future>=0.16.0'
     'python-certifi'
     'python-tornado>=5.1'
-    'python-cryptography'
-    'python-decorator>=4.4.0'
-    'python-apscheduler=3.6.3'
+    'python-cryptography' # only outdated 3.3.1 in official repos, latest is 3.4.2
+    'python-apscheduler'
     'python-pytz>=2018.6'
 )
-makedepends=('git' 'python-setuptools')
-optdepends=('python-pysocks: SOCKS or HTTP proxy'
-            'python-ujson: Ultra fast JSON parsing')
+makedepends=(
+    'git'
+    'python-setuptools'
+)
+optdepends=(
+    'python-pysocks: SOCKS or HTTP proxy'
+    'python-ujson: Ultra fast JSON parsing'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 changelog='CHANGES.rst'
-source=("${pkgname}::git+${url}.git")
-sha256sums=('SKIP')
+source=(
+    "${pkgname}::git+${url}.git"
+    "urllib3::git+https://github.com/python-telegram-bot/urllib3.git#branch=ptb"
+)
+sha256sums=('SKIP' 'SKIP')
 
 prepare() {
     msg2 "Updating dependencies..."
     cd "$srcdir/$pkgname"
-    git submodule update --init --recursive
+    git submodule init
+    git config submodule.telegram/vendor/urllib3.url "$srcdir/urllib3"
+    git submodule update
     msg2 "Updating changelog..."
     cp ./CHANGES.rst ../../
 }
