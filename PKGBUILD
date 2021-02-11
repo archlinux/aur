@@ -12,6 +12,8 @@ _BUILD_DOC=0
 _INSTALL_EXAMPLES=0
 # Use Intel compilers
 _ENABLE_INTEL_COMPILER=0
+# Use AMD compilers
+_ENABLE_AMD_COMPILER=0
 # USER-INTEL package
 _ENABLE_INTEL=0
 # USER-OMP package
@@ -21,8 +23,8 @@ _ENABLE_KIM=0
 
 _pkgname=lammps
 pkgname=${_pkgname}-beta
-pkgver=20201224
-_pkgver="24Dec2020"
+pkgver=20210210
+_pkgver="10Feb2021"
 #_pkgver=$(date -d ${pkgver} +%-d%b%Y)
 pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
@@ -67,6 +69,15 @@ if (( $_ENABLE_OMP )); then
     _feature_args+=('-DBUILD_OMP=yes')
     _feature_args+=('-DPKG_USER-OMP=yes')
 fi
+#_feature_args+=('-DCMAKE_EXE_LINKER_FLAGS=-lamdlibm -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now')
+#depends+=('aocl-aocc')
+if (( $_ENABLE_AMD_COMPILER )); then
+    depends+=('aocc')
+    _feature_args+=('-DCMAKE_CXX_COMPILER=clang++')
+    _feature_args+=('-DCMAKE_CXX_FLAGS=-march=native -O3 -std=c++11')
+    _feature_args+=('-DMPI_C_COMPILER=mpicc')
+    _feature_args+=('-DMPI_CXX_COMPILER=mpicxx')
+fi
 
 prepare(){
   cd "${_pkgname}"
@@ -74,6 +85,11 @@ prepare(){
 }
 
 build() {
+  if (( $_ENABLE_AMD_COMPILER )) ; then
+    module load aocc
+    #module load aocl-aocc
+  fi
+
   cd "${_pkgname}/build"
   cmake ../cmake \
         -DCMAKE_INSTALL_PREFIX="/usr" \
