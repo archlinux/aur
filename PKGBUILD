@@ -2,7 +2,7 @@
 # Contributor: Tarn Burton <twburton at gmail dot com>
 
 pkgname=cadabra2
-pkgver=2.3.6.2
+pkgver=2.3.6.8
 pkgrel=1
 pkgdesc="A field-theory motivated approach to computer algebra"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('cadabra2-git')
 depends=('python-sympy' 'sqlite' 'boost' 'gtkmm3' 'jsoncpp' 'xeus')
 makedepends=('cmake')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/kpeeters/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('8727500ca814be68c9b583f9686d7807eb9f33e530e31d7480f6f72f36a2263b')
+sha256sums=('6c23ff53b8d882c9bfd3df6480525d6b8ab54c9ba0bf876aacb8b842d09ec11b')
 
 prepare() {
   mkdir -p "$srcdir/build"
