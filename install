@@ -1,0 +1,35 @@
+cleanup() {
+    if [ -f "$1" ]; then
+        rm "$1"
+    fi
+}
+
+pre_install() {
+    cleanup "/etc/systemd/system/multi-user.target.wants/org.cups.cupsd.path"
+    cleanup "/etc/systemd/system/sockets.target.wants/org.cups.cupsd.socket"
+    cleanup "/etc/systemd/system/printer.target.wants/org.cups.cupsd.service"
+}
+    
+post_install() {
+    printf "\n==>  Enable systemd socket\n";
+    systemctl enable --now cups.socket    
+}
+
+pre_upgrade() {
+    cleanup "/etc/systemd/system/multi-user.target.wants/org.cups.cupsd.path"
+    cleanup "/etc/systemd/system/sockets.target.wants/org.cups.cupsd.socket"
+    cleanup "/etc/systemd/system/printer.target.wants/org.cups.cupsd.service"
+}
+
+post_upgrade() {
+    printf  "\nThanks for still using my pkg :)\n\n"
+}
+
+pre_remove() {
+    cleanup "/etc/systemd/system/multi-user.target.wants/org.cups.cupsd.path"
+    cleanup "/etc/systemd/system/sockets.target.wants/org.cups.cupsd.socket"
+    cleanup "/etc/systemd/system/printer.target.wants/org.cups.cupsd.service"
+    cleanup "/etc/systemd/system/multi-user.target.wants/cups.path"
+    cleanup "/etc/systemd/system/sockets.target.wants/cups.socket"
+    cleanup "/etc/systemd/system/printer.target.wants/cups.service"
+}

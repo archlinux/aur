@@ -1,0 +1,18 @@
+pkgbase = preconf-cups-desktop
+	pkgdesc = configures cups for general desktop usage
+	pkgver = 1
+	pkgrel = 0
+	url = https://aur.archlinux.org/packages/preconf-cups-desktop
+	install = install
+	arch = any
+	license = GPL3
+	depends = system-config-printer
+	depends = foomatic-db-gutenprint-ppds
+	depends = foomatic-db-nonfree-ppds
+	depends = foomatic-db-ppds
+	depends = gutenprint
+	depends = hplip
+	provides = printer-support
+
+pkgname = preconf-cups-desktop
+
