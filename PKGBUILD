@@ -6,7 +6,7 @@
 _pkgbasename=waffle
 pkgname=lib32-${_pkgbasename}
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc='a library for choosing window system and OpenGL API at runtime (32 bits)'
 arch=('x86_64')
 url='http://www.waffle-gl.org'
@@ -27,6 +27,7 @@ build() {
 		--libdir=/usr/lib32 \
 		-D gbm=enabled \
 		-D glx=enabled \
+		-D surfaceless_egl=enabled \
 		-D x11_egl=enabled \
 		-D wayland=enabled \
 		-D build-manpages=false \
