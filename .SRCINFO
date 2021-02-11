@@ -1,0 +1,13 @@
+pkgbase = what-anime-cli-git
+	pkgdesc = Find the anime scene by image using your terminal
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/irevenko/what-anime-cli
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = git+https://github.com/irevenko/what-anime-cli.git
+	sha512sums = SKIP
+
+pkgname = what-anime-cli-git
+
