@@ -26,7 +26,7 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
 sha256sums=('13e6d2f80662fe463bc7718cdf0de6a9ec67fc78afcc7a3ae66b9ea19bb97899'
             '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
             'fa7cc63936bce336fedf8ce8d11c8a0e051d6424a10570b991164386e96058cb'
-            'e9819f51f25ed652faed349f6c99e335ee440a443c09b126617ffa9e41ea3bbd'
+            '523efab479f77a3d20d4fe3b2957044dc00d83946f8607ea1f6588fcefa7ff71'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'
             '25fb140b90345828dc01a4f286345757e700a47178bab03d217a7a5a79105b57'
