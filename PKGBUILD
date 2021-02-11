@@ -5,7 +5,7 @@ _arch=aarch64
 _kernel_arch=arm64
 _target=$_arch-unknown-linux-gnu
 pkgname=$_arch-linux-api-headers
-pkgver=5.10.4
+pkgver=5.10.15
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace ($_target)"
 arch=(any)
@@ -13,7 +13,7 @@ url='https://www.kernel.org'
 license=(GPL2)
 makedepends=(rsync)
 source=(https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.{xz,sign})
-sha256sums=('904e396c26e9992a16cd1cc989460171536bed7739bf36049f6eb020ee5d56ec'
+sha256sums=('d85287bcf1d51c4d0a32380ac0a5b2b487b321058a6923617f1613fbd10e6e01'
             'SKIP')
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
