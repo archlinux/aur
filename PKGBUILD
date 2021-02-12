@@ -1,9 +1,10 @@
 # Contributor: twa022 <twa022 at gmail dot com>
 
 pkgname=dockbarx
+epoch=1
 _pkgver=1.0beta
-pkgver=1.0beta+r820+4a5b382
-pkgrel=4
+pkgver=1.0beta+r850+a3e2186
+pkgrel=1
 pkgdesc="TaskBar with groupping and group manipulation"
 arch=('i688' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/M7S/dockbarx"
@@ -17,21 +18,14 @@ optdepends=('mate-panel: mate applet'
             'python-pyudev: dockx battery applet'
             'gconf: export settings from older versions of dockbarx'
             'python-lxml: import settings script')
-_commit='4a5b382f03402e58cbbaaeb2ee3be4fbbb795aba'
-source=("${pkgname}::git+https://github.com/M7S/dockbarx.git#commit=${_commit}"
-        'xuzhen_fixes_pr142_thru_f772075.patch')
-sha256sums=('SKIP'
-            'c95ceebf2391d8bedb4fe0014474d7e91ad894b0d7eba1c1e76046c74e8a5457')
+_commit='a3e21862962c23ba1f8bb2cede11cc728f7f4071'
+source=("${pkgname}::git+https://github.com/xuzhen/dockbarx.git#commit=${_commit}")
+sha256sums=('SKIP')
 install="${pkgname}.install"
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
   printf "%s+r%s+%s" "${_pkgver}" "$( git rev-list --count HEAD )" "$( git rev-parse --short HEAD )"
-}
-
-prepare() {
-  cd "${srcdir}/${pkgname}"
-  patch -Np1 -i ../xuzhen_fixes_pr142_thru_f772075.patch
 }
 
 package() {
