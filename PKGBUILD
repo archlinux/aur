@@ -35,6 +35,7 @@ build() {
   cmake "${CMAKE_FLAGS[@]}" \
         -DBUILD_SHARED_LIBS=OFF \
         -DCUDA_USE_STATIC_CUDA_RUNTIME=ON \
+        -DPopSift_USE_POSITION_INDEPENDENT_CODE=ON \
         -S "${srcdir}/${_name}" \
         -B build_static
   make -C build_static
