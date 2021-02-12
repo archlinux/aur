@@ -1,7 +1,7 @@
 # Maintainer: Michael J. Pento <mjpento@verizon.net>
 
 pkgname=ruby-plist
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc='A library to manipulate Property List files'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://rubygems.org/gems/plist'
 license=('MIT')
 depends=('ruby' 'ruby-rdoc')
 source=("https://rubygems.org/downloads/plist-${pkgver}.gem")
-sha256sums=('d7b9047568c80e7f1e1faa95c53f6e70023cf235e345105bd50eaede41484065')
+sha256sums=('f468bcf6b72ec6d1585ed6744eb4817c1932a5bf91895ed056e69b7f12ca10f2')
 
 package() {
 	cd "$srcdir"
