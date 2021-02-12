@@ -1,6 +1,6 @@
 pkgbase = pipewire-common-git
 	pkgdesc = Server and user space API to deal with multimedia pipelines
-	pkgver = 0.3.21.r85.g58d2fe44
+	pkgver = 0.3.21.r87.g0ad8f0a6
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -47,6 +47,7 @@ pkgname = pipewire-common-git
 	provides = libpipewire-0.3.so
 	conflicts = pipewire
 	conflicts = alsa-card-profiles
+	conflicts = pipewire-bluez5
 	backup = etc/pipewire/client-rt.conf
 	backup = etc/pipewire/client.conf
 	backup = etc/pipewire/jack.conf
