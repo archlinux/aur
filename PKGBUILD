@@ -1,7 +1,7 @@
 # Maintainer: Daniel Menelkir <menelkir at itroll dot org>
 pkgname=g15stats-runit
 pkgver=20210212
-pkgrel=2
+pkgrel=3
 pkgdesc="g15stats init script for runit"
 arch=('any')
 url="https://gitlab.com/menelkir/g15stats"
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('g15daemon' 'runit')
 _filename='g15stats.run'
 source=("https://gitlab.com/menelkir/g15stats/-/raw/master/contrib/init/g15stats.run")
-sha256sums=('3d98e7e80f86a5fc7dd4ad4488086ec20826b66c5f9ef9d57526039d2ba02d42')
+sha256sums=('4860d43f7104eddf3b9440295171a2c9b4d31b3398789a5adfb684d38c8e6351')
 
 pkgver() {
    date +%Y%m%d
