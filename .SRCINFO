@@ -7,6 +7,8 @@ pkgbase = arch-test-bin
 	license = MIT
 	depends = bash
 	depends = perl
+	conflicts = arch-test
+	replaces = arch-test
 	source = http://ftp.debian.org/debian/pool/main/a/arch-test/arch-test_0.17-1_all.deb
 	md5sums = 8c5265e8eb8b4debaa0d4178d495c9a0
 
