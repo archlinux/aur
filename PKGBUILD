@@ -1,6 +1,6 @@
 # Maintainer: Alex Agura <agura@tfwno.gf>
 pkgname=asus-fan-control
-pkgver=3.9.0
+pkgver=3.10.0
 pkgrel=1
 pkgdesc="Fan control for ASUS devices running Linux."
 arch=('any')
@@ -14,7 +14,7 @@ install=$pkgname.install
 source=("https://github.com/dominiksalvet/$pkgname/archive/$pkgver.tar.gz")
 #_commit=5f8413164a65c590dad8bac31399d0908275de0a
 #source=("$pkgname::git+https://github.com/dominiksalvet/asus-fan-control.git#commit=$_commit")
-md5sums=('c0569c56e972889b9e97c3c29582a41d')
+md5sums=('84742cb0f50106fed3829db148fcc11b')
 
 #pkgver() {
 #    cd $pkgname
@@ -25,7 +25,7 @@ prepare(){
     cd "$pkgname-$pkgver"
 
     # Our asus-fan-control executable is installed to /usr/bin
-    sed -ie '/^ExecStart/s:/local::' .gitpack/data/asus-fan-control.service
+    sed -ie '/^ExecStart/s:/local::' .install/data/afc.service
 }
 
 package() {
@@ -35,9 +35,9 @@ package() {
         mkdir -p $pkgdir/$dir
     done
 
-    install -m644 data/models $pkgdir/usr/share/asus-fan-control
     install -m755 src/asus-fan-control $pkgdir/usr/bin
-    install -m644 src/asus-fan-control-completion.bash $pkgdir/usr/share/bash-completion/completions/asus-fan-control
-    install -m644 .gitpack/data/asus-fan-control.service $pkgdir/usr/lib/systemd/system
+    install -m644 src/bash/afc-completion $pkgdir/usr/share/bash-completion/completions/asus-fan-control
+    install -m644 src/data/models $pkgdir/usr/share/asus-fan-control
+    install -m644 .install/data/afc.service $pkgdir/usr/lib/systemd/system
 
 }

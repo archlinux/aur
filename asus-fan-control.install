@@ -5,28 +5,12 @@ use 'asus-fan-control set-temps' to adjust fan speeds prior to enabling a system
 Run 'asus-fan-control get-temps' to get your current fan speed policy.
 
 To start asus-fan-control on boot:
-systemctl enable asus-fan-control
+systemctl enable afc.service
 EOF
 }
 
-## arg 1:  the new package version
-## arg 2:  the old package version
-post_upgrade() {
-    # if older version is <= 2.12.0-1 and asus-fan-control is enabled, re-enable it to update its dependencies
-    if [ "$(vercmp '2.12.0-1' "$2" )" != '-1' ] && systemctl -q is-enabled asus-fan-control.service; then
-        systemctl enable asus-fan-control.service
-    fi
-
-    # there are some changes in 3.0.0, so print the post_install message again and move old config
-    if [ "$(vercmp '3.0.0-1' "$2" )" = '1' ]; then
-        post_install
-        test -f /etc/asus-fan-control/custom-temps && mv /etc/asus-fan-control/{custom-,}temps || true
-    fi
-}
-
-
 pre_remove(){
-    systemctl disable asus-fan-control
+    systemctl disable afc.service
     echo 'You mihgt want to reboot your system to restore the default fan speed'
     if [ -f /etc/asus-fan-control/temps ]; then
         echo "You might also want to remove '/etc/asus-fan-control/temps'"
