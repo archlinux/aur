@@ -1,20 +1,21 @@
 pkgbase = agate-bin
 	pkgdesc = Very simple server for the Gemini hypertext protocol.
-	pkgver = 2.3.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/mbrubeck/agate
 	arch = x86_64
 	license = APACHE
 	license = MIT
+	provides = agate
 	conflicts = agate
 	backup = etc/agate.conf
-	source = https://github.com/mbrubeck/agate/releases/download/v2.3.0/agate.x86_64-unknown-linux-gnu.gz
+	source = https://github.com/mbrubeck/agate/releases/download/v2.4.1/agate.x86_64-unknown-linux-gnu.gz
 	source = agate@.service
 	source = agate.conf
 	source = agate.sysusers
-	md5sums = ffddb0ff70cef9258c12fff043e71558
-	md5sums = 839a3f9c3dcd263d0b672e7c4b7f0576
-	md5sums = f20ec61e69f2a2432c742275542c03a9
+	md5sums = e9934f6bed2b21c3f760fa1563dea7f1
+	md5sums = e27d6af60a904897ab80a766f5eae8dc
+	md5sums = 4a00996b03caf45dc30b969b10854c3a
 	md5sums = f3aff0c50b6af48da0bbb37d2c8a1b07
 
 pkgname = agate-bin
