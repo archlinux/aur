@@ -1,0 +1,21 @@
+pkgbase = cryptowatch-desktop-bin
+	pkgdesc = Charting & trading terminal for cryptocurrency markets
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://cryptowat.ch/apps/desktop
+	arch = x86_64
+	license = GPL3
+	depends = gtk2
+	depends = libnotify
+	depends = libxtst
+	depends = nss
+	depends = xdg-utils
+	depends = libxss
+	provides = cryptowatch-desktop-bin
+	options = !strip
+	options = !emptydirs
+	source = https://cryptowat.ch/desktop/download/linux/0.2.2
+	sha256sums = 09bc832e19278882b18be57b559bf50c613b6879d8f412355357129bf8f4b633
+
+pkgname = cryptowatch-desktop-bin
+
