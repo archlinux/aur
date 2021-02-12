@@ -59,6 +59,7 @@ pkgver() {
 build() {
   
 cd xserver
+  ./autogen.sh
   ./configure --prefix=/usr \
       --disable-ipv6 \
       --disable-dri \
@@ -152,7 +153,7 @@ cd xserver
 # b_pgo set to off or build fails
 # dpms and dri1 set to true or xf86-video-amdgpu build fails
 
-### xorg flag needs to be set to false for a successful build with -flto / b_lto enabled
+### xorg flag breaks compile if -flto / b_lto is enabled
 
 make
 
