@@ -1,6 +1,6 @@
 pkgbase = vowpal_wabbit
 	pkgdesc = Vowpal Wabbit is a machine learning system which pushes the frontier of ML with techniques such as online, hashing, allreduce, reductions, learning2search, active, and interactive learning. Includes extra utilities.
-	pkgver = 8.9.0
+	pkgver = 8.9.1
 	pkgrel = 1
 	url = https://github.com/JohnLangford/vowpal_wabbit
 	arch = i686
@@ -15,9 +15,9 @@ pkgbase = vowpal_wabbit
 	provides = vowpal-wabbit-git
 	conflicts = vowpal-wabbit
 	conflicts = vowpal-wabbit-git
-	source = https://github.com/JohnLangford/vowpal_wabbit/archive/8.9.0.tar.gz
+	source = https://github.com/JohnLangford/vowpal_wabbit/archive/8.9.1.tar.gz
 	source = rapidjson-1.1.0.tar.gz::https://github.com/Tencent/rapidjson/archive/v1.1.0.tar.gz
-	sha256sums = d3ba0d47eeca68b382b202ffc44dd4e9b4934eaafdbfd25e1f19364fff14829f
+	sha256sums = d005fd90b84dfea3787b05721333abb7a798d6cd1bf999b4467554b68dbe071f
 	sha256sums = bf7ced29704a1e696fbccf2a2b4ea068e7774fa37f6d7dd4039d0787f8bed98e
 
 pkgname = vowpal_wabbit
