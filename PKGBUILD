@@ -12,7 +12,7 @@ url="https://github.com/dgarage/${_pkgname}"
 license=("MIT")
 groups=()
 depends=("aspnet-runtime" "bitcoin-daemon" "dotnet-host" "dotnet-runtime" "dotnet-sdk")
-makedepends=()
+makedepends=("git")
 checkdepends=()
 optdepends=()
 provides=()
@@ -62,14 +62,13 @@ package()
     Restart=on-failure
 
     [Install]
-    WantedBy=multi-user.target
-    " > ${srcdir}/${_pkgname}/nbxplorer.service
+    WantedBy=multi-user.target" > ${srcdir}/${_pkgname}/nbxplorer.service
     
     # Put the installation at the right place.
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/lib/
     
     # Symlinking run.sh to /usr/bin/nbxplorer.
-    ln -rTs ${pkgdir}/usr/lib/${_pkgname}/run.sh ${pkgdir}/usr/bin/$(echo ${_pkgname} | tr "[A-Z]" "[a-z]")
+    ln -rTsf ${pkgdir}/usr/lib/${_pkgname}/run.sh ${pkgdir}/usr/bin/$(echo ${_pkgname} | tr "[A-Z]" "[a-z]")
     chmod 755 ${pkgdir}/usr/bin/$(echo ${_pkgname} | tr "[A-Z]" "[a-z]")
     
     # Install the systemd service.
