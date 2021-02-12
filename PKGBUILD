@@ -4,11 +4,11 @@
 # Contributor: Andrew Kluger <evilgnome@gmail.com>
 
 pkgname=micro-git
-pkgver=nightly.r91.g00205aa6
+pkgver=v2.0.8.r39.gba98b558
 pkgrel=1
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
-url="https://github.com/zyedidia/micro"
+url="https://micro-editor.github.io/"
 license=('MIT')
 makedepends=('go' 'git')
 optdepends=('xclip: Required for copying/pasting text')

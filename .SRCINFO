@@ -1,8 +1,8 @@
 pkgbase = micro-git
 	pkgdesc = A modern and intuitive terminal-based text editor
-	pkgver = nightly.r91.g00205aa6
+	pkgver = v2.0.8.r39.gba98b558
 	pkgrel = 1
-	url = https://github.com/zyedidia/micro
+	url = https://micro-editor.github.io/
 	arch = x86_64
 	arch = i686
 	arch = armv6h
