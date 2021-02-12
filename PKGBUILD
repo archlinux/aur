@@ -3,7 +3,7 @@
 _modname=itemscroller
 _mcver="1.12.2"
 _modloader="liteloader"
-pkgname=mc-itemscroller-112-liteloader
+pkgname=mc-itemscroller-112-liteloader-git
 pkgver="0.15.0.dev.20200427.013720"
 pkgrel=1
 pkgdesc="Library mod containing shared code for masas client-side mods."
