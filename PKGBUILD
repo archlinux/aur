@@ -30,6 +30,6 @@ package() {
 	sed "s/#MODULE_VERSION#/$pkgver/" "debian/system76-dkms.dkms" > "$install_dir/dkms.conf"
 
 	# Load the module at boot
-	install -Dm644 "usr/share/initramfs-tools/modules.d/$pkgname-dkms.conf" \
-		"$pkgdir/etc/modules-load.d/$pkgname.conf"
+	install -Dm644 "usr/share/initramfs-tools/modules.d/$pkgname.conf" \
+		"$pkgdir/etc/modules-load.d/system76.conf"
 }
