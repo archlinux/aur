@@ -1,0 +1,11 @@
+pkgbase = searchpoc
+	pkgdesc = Search a PoC for a (or some) given CVE id
+	pkgver = v0.0.1
+	pkgrel = 0
+	url = https://github.com/5amu/searchpoc/
+	arch = any
+	license = MIT
+	depends = python3
+
+pkgname = searchpoc
+
