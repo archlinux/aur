@@ -1,7 +1,7 @@
 # Maintainer: MidAutumnMoon <mid.autumn0moon@gmail.com>
 
 pkgname=agate-bin
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Very simple server for the Gemini hypertext protocol."
 arch=( 'x86_64' )
@@ -14,11 +14,11 @@ source=(
   agate.conf
   agate.sysusers
 )
-md5sums=( 'e9934f6bed2b21c3f760fa1563dea7f1'
+md5sums=( '6463c5ab8df86989fb23adb19f1175f5'
           'e27d6af60a904897ab80a766f5eae8dc'
-          '4a00996b03caf45dc30b969b10854c3a'
+          '81833baba7c9f6e90eeddbe8846667c2'
           'f3aff0c50b6af48da0bbb37d2c8a1b07' )
-backup=( 'etc/agate.conf' )
+backup=( 'etc/agate/agate.conf' )
 
 conflicts=( 'agate' )
 provides=( 'agate' )
