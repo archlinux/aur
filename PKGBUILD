@@ -1,7 +1,7 @@
-# Maintainer: Michael J. Pento <mjpento@verizon.net>
+# Maintainer: Michael J. Pento <mjpento@darkforge.net>
 
 pkgname=apache-cxf
-pkgver=3.3.8
+pkgver=3.3.9
 pkgrel=1
 pkgdesc='open source services framework'
 arch=('any')
@@ -37,5 +37,5 @@ package() {
   install -m 644  "${srcdir}/apache-cxf.sh" "${pkgdir}/etc/profile.d"
 }
 
-sha256sums=('2a392a82b5d3634c9f1f68b6e6f5c8296a70785d2898ce7fda32a8f1179263b7'
+sha256sums=('60fde836d55d7faf026b88a5208d389e51d69460863cf7329c295f54cdb1365c'
             'c52ba86604138776e50f6fc9506e21ad6f30064a54a0aaef3d5316245b14e668')
