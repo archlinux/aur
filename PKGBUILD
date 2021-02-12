@@ -4,7 +4,7 @@
 pkgname=java-openjdk-ea-bin
 
 _majorver=16
-_buildver=35
+_buildver=36
 pkgver=${_majorver}b${_buildver}
 pkgrel=1
 
@@ -36,11 +36,11 @@ provides=(
 #source=("https://download.java.net/java/early_access/jdk${_majorver}/${_buildver}/GPL/openjdk-${_majorver}-ea+${_buildver}_linux-${_JARCH}_bin.tar.gz")
 
 if [[ $_JARCH == "x64" ]]; then
-sha256sums=('25f51624a17545a769e97ded5d51075ab31f9a52de925f7292cff951becf8fd2')
-source=("https://download.java.net/java/GA/jdk16/7863447f0ab643c585b9bdebf67c69db/35/GPL/openjdk-16_linux-x64_bin.tar.gz")
+sha256sums=('e952958f16797ad7dc7cd8b724edd69ec7e0e0434537d80d6b5165193e33b931')
+source=("https://download.java.net/java/GA/jdk16/7863447f0ab643c585b9bdebf67c69db/36/GPL/openjdk-16_linux-x64_bin.tar.gz")
 else
-sha256sums=('5afe8561d1c6f777bf0f70bf5d994187ff607b8c4c6ff1194f849a0bb933d805')
-source=("https://download.java.net/java/GA/jdk16/7863447f0ab643c585b9bdebf67c69db/35/GPL/openjdk-16_linux-aarch64_bin.tar.gz")
+sha256sums=('273d3ae0ff14af801c5ffa71fd081f1cc505354f308ce11c77af55302c83d2bf')
+source=("https://download.java.net/java/GA/jdk16/7863447f0ab643c585b9bdebf67c69db/36/GPL/openjdk-16_linux-aarch64_bin.tar.gz")
 fi
 
 
