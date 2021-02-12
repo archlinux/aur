@@ -7,7 +7,7 @@
 
 _urlname=python-json-patch
 pkgname=python2-jsonpatch
-pkgver=1.27
+pkgver=1.28
 pkgrel=1
 pkgdesc='An implementation of the JSON Patch format'
 arch=('any')
@@ -17,7 +17,7 @@ depends=('python2-jsonpointer')
 makedepends=('python2-setuptools' 'python2-pypandoc')
 checkdepends=('python2-coverage')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('297ca02d114e6b199bd516f69dca147fbe309f0a1b031046859271720645322607236f97b489c242575f7e1ad3cab0c68b1b7f11894c5af82be24013e376c0a4')
+sha512sums=('2884cb95307cb607c8cd80e688491b4449f953e43e5b232d4d57d7249c590652ecae0856806ade6bf2807a04180e992fd2cdf61590ac058d573d653382bf7a28')
 
 prepare(){
   find $_urlname-$pkgver -name \*.py -exec sed -i '1s/python$/&2/' {} +

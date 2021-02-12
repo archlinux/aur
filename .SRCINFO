@@ -1,6 +1,6 @@
 pkgbase = python2-jsonpatch
 	pkgdesc = An implementation of the JSON Patch format
-	pkgver = 1.27
+	pkgver = 1.28
 	pkgrel = 1
 	url = https://github.com/stefankoegl/python-json-patch
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python2-jsonpatch
 	makedepends = python2-setuptools
 	makedepends = python2-pypandoc
 	depends = python2-jsonpointer
-	source = python2-jsonpatch-1.27.tar.gz::https://github.com/stefankoegl/python-json-patch/archive/v1.27.tar.gz
-	sha512sums = 297ca02d114e6b199bd516f69dca147fbe309f0a1b031046859271720645322607236f97b489c242575f7e1ad3cab0c68b1b7f11894c5af82be24013e376c0a4
+	source = python2-jsonpatch-1.28.tar.gz::https://github.com/stefankoegl/python-json-patch/archive/v1.28.tar.gz
+	sha512sums = 2884cb95307cb607c8cd80e688491b4449f953e43e5b232d4d57d7249c590652ecae0856806ade6bf2807a04180e992fd2cdf61590ac058d573d653382bf7a28
 
 pkgname = python2-jsonpatch
 
