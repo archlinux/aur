@@ -153,7 +153,7 @@ cd xserver
 # b_pgo set to off or build fails
 # dpms and dri1 set to true or xf86-video-amdgpu build fails
 
-### xorg flag breaks compile if -flto / b_lto is enabled
+### enable-unit-tests=yes flag breaks compile if -flto / b_lto is enabled
 
 make
 
