@@ -1,19 +1,20 @@
 pkgbase = ting_en
-	pkgdesc = A proprietary listening english software for archlinux
+	pkgdesc = A proprietary software to practice listening english for archlinux
 	pkgver = 9.4.6
 	pkgrel = 1
 	url = https://www.eudic.net/v4/en/app/ting
 	arch = x86_64
 	license = unknown
-	depends = libxtst
+	depends = gtk3
+	depends = libnotify
+	depends = nss
 	depends = libxss
+	depends = libxtst
 	depends = xdg-utils
 	depends = libappindicator-gtk3
 	depends = libsecret
-	depends = gtk3
-	depends = libnotify
 	depends = at-spi2-core
-	depends = libxtst
+	depends = util-linux-libs
 	source = ting_en-9.4.6.deb::https://static.frdic.com/pkg/ting_en/ting_en.deb
 	md5sums = ea895699b4b286efdb55707b826ab624
 

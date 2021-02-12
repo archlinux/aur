@@ -6,7 +6,7 @@ pkgdesc="A proprietary software to practice listening english for archlinux"
 arch=('x86_64')
 url="https://www.eudic.net/v4/en/app/ting"
 license=('unknown')
-depends=('libxtst' 'libxss' 'xdg-utils' 'libappindicator-gtk3' 'libsecret' 'gtk3' 'libnotify' 'at-spi2-core' 'libxtst')
+depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'libappindicator-gtk3' 'libsecret' 'at-spi2-core' 'util-linux-libs')
 source=("${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/ting_en/${pkgname}.deb")
 
 
