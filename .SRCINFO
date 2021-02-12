@@ -1,0 +1,17 @@
+pkgbase = imx-code-signing-tool
+	pkgdesc = code signing tool for i.MX platforms
+	pkgver = 3.3.1
+	pkgrel = 1
+	url = https://www.nxp.com/
+	arch = x86_64
+	license = BSD
+	makedepends = byacc
+	depends = python
+	depends = python-cryptography
+	source = local://cst-3.3.1.tgz
+	source = position_independent.patch
+	sha256sums = 8b7e44e3e126f814f5caf8a634646fe64021405302ca59ff02f5c8f3b9a5abb9
+	sha256sums = 1e86d87a0960269b58e5bd8b6d9b4e1249ecb95152fe36eda43f298f42822e84
+
+pkgname = imx-code-signing-tool
+
