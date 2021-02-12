@@ -1,5 +1,6 @@
 # Changelog
 
+* [1.6.4](#1-6-4)
 * [1.6.3](#1-6-3)
 * [1.6.2](#1-6-2)
 * [1.6.1](#1-6-1)
@@ -19,6 +20,38 @@
 * [1.2.2](#1-2-2)
 * [1.2.1](#1-2-1)
 * [1.2.0](#1-2-0)
+
+
+## 1.6.4
+
+### Added
+
+* `selection-target=none|primary|clipboard|both` to `foot.ini`. It can
+  be used to configure which clipboard(s) selected text should be
+  copied to. The default is `primary`, which corresponds to the
+  behavior in older foot releases
+  (https://codeberg.org/dnkl/foot/issues/288).
+
+
+### Changed
+
+* The IME state no longer stays stuck in the terminal if the IME goes
+  away during preedit.
+* `-Dterminfo` changed from a `boolean` to a `feature` option.
+* Use standard signals instead of a signalfd to handle
+  `SIGCHLD`. Fixes an issue on FreeBSD where foot did not detect when
+  the client application had terminated.
+
+
+### Fixed
+
+* `BS`, `HT` and `DEL` from being stripped in bracketed paste mode.
+
+
+### Contributors
+
+* [tdeo](https://codeberg.org/tdeo)
+* jbeich
 
 
 ## 1.6.3
