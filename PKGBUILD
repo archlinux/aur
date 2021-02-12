@@ -2,7 +2,7 @@
 # Maintainer: Edgar Luque <git@edgarluque.com>
 
 pkgname=ddnet-maps-git
-pkgver=r1383.g0dc84418
+pkgver=r1387.gb0700637
 pkgrel=1
 pkgdesc="All released maps with configs for DDraceNetwork server"
 arch=(any)
