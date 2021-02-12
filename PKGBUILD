@@ -5,12 +5,12 @@
 # Contributor: userwithuid < userwithuid at gmail dot com >
 
 _pkgname=rust
-_date=2020-11-19
-_rustc=1.48.0
+_date=2020-12-31
+_rustc=1.49.0
 
 pkgname=mingw-w64-rust
 _prefix=opt/rust
-pkgver=1.49.0
+pkgver=1.50.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
@@ -38,15 +38,15 @@ source=("https://static.rust-lang.org/dist/rustc-${pkgver}-src.tar.xz"{,.asc}
 noextract=("rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "cargo-${_rustc}-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums=('ebe910edc824a0a037a10be443446a0511923ba8342fa3c331ec8a22481d5d15'
+sha256sums=('f54adf9204ed3cb3998cdc1baa5645b346d8cf8f18205e3b15fcae194ba5457c'
             'SKIP'
-            '1c00a6a0dabbf6290728b09f9307d9fa6cc985487f727075c68acd4a600ef3f8'
+            '638c3983ad20f9b9e1f49da1c64ac681eec5cf705fee1089f052de4c09b05c2b'
             'SKIP'
-            'fc4d292a52cbb6b84fb9f065d0d7596064a9b957381d639d5a750d6e2bf02483'
+            'faa6c7c477284f4e0ef87e19cd5696844b1b079fbf14cefe369eaba8470dd861'
             'SKIP'
-            'b11d595581e2580c069b5039214e1031a0e4f87ff6490ac39f92f77857e37055'
+            '031eb3e4d88c6c53dd6f19de524b15377e7fcbd2744302658cf7d2afbba6b781'
             'SKIP'
-            'a8556558f38164c54cc8b8dc1e38d6ea8e6e0e2db1b1796fc585fcb14255d0f8')
+            'f0d961a34d593091de1c92f156e317a19e29348b32aab3d3fde2660cd66dafdb')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
 backup=("opt/rust/cargo/config")
@@ -107,7 +107,7 @@ package() {
 
   # strip
   strip --strip-all "${pkgdir}/${_prefix}/bin/"{cargo,rustc,rustdoc}
-  strip --strip-all "${pkgdir}/${_prefix}/lib/rustlib/x86_64-unknown-linux-gnu/bin/"rust-lld
+  strip --strip-all "${pkgdir}/${_prefix}/lib/rustlib/x86_64-unknown-linux-gnu/bin/"*
   strip --strip-unneeded "${pkgdir}/${_prefix}/lib/librustc"*.so
   strip --strip-unneeded "${pkgdir}/${_prefix}/lib/rustlib/x86_64-unknown-linux-gnu/lib/"*.so
   i686-w64-mingw32-strip --strip-unneeded "${pkgdir}/${_prefix}/lib/rustlib/i686-pc-windows-gnu/lib/"*.dll
