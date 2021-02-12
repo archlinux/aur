@@ -1,7 +1,7 @@
 # Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
 # Maintainer: Miguel Mota <hello@miguelmota.com>
 pkgname=cointop
-pkgver=1.5.5
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="An interactive terminal based UI application for tracking cryptocurrencies"
 url="https://github.com/miguelmota/cointop"
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ec0a0765d768d5f019cf47b1173db84881b5540088cc0e5570fb8140355d3199')
+sha256sums=('42f007173b2d0fc61d6364da6bfc53da5cb3a4f8288cc8bfffd53964a96fd8c2')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -22,24 +22,24 @@ diff -ura cointop-1.5.5old/cointop/version.go cointop-1.5.5new/cointop/version.g
 +++ cointop-1.5.5new/cointop/version.go	2021-01-03 20:49:08.289517518 +1100
 @@ -1,36 +1,21 @@
  package cointop
- 
+
 -import (
 -	"fmt"
 -	"runtime/debug"
 -	"strings"
 -)
 +import "fmt"
- 
+
  // version is the cointop version which will be populated by ldflags
 -var version string
 +var version string = "v$pkgver"
- 
+
  // Version returns the cointop version
  func (ct *Cointop) Version() string {
 -	return Version()
 +	return version
  }
- 
+
  // Version returns cointop version
  func Version() string {
 -	ver := "(devel)"
@@ -56,7 +56,7 @@ diff -ura cointop-1.5.5old/cointop/version.go cointop-1.5.5new/cointop/version.g
 -	return ver
 +	return version
  }
- 
+
  // PrintVersion prints the version
  func PrintVersion() {
 -	fmt.Println(Version())
