@@ -8,7 +8,6 @@ pkgbase = onscripter-gbk
 	arch = x86_64
 	license = GPL2
 	depends = bzip2
-	depends = sdl2
 	depends = sdl_image
 	depends = sdl_mixer
 	depends = sdl_ttf

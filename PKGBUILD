@@ -11,7 +11,6 @@ arch=('i686' 'x86_64')
 url="https://github.com/natdon/ONScripter-CN"
 license=('GPL2')
 depends=('bzip2'
-         'sdl2'
          'sdl_image'
          'sdl_mixer'
          'sdl_ttf'
