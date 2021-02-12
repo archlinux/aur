@@ -3,7 +3,7 @@
 
 pkgname=wallabag
 pkgver=2.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Self hostable application for saving web pages'
 arch=('any')
 url='http://www.wallabag.org/'
@@ -50,5 +50,5 @@ package() {
 
     sed -i "${_VAR_DIR}/var/bootstrap.php.cache" -e "s@__DIR__.'/../@'/usr/share/webapps/${pkgname}/@"
 
-    chown -R http:http "${pkgdir}/usr/share/webapps/${pkgname}"
+    chown -R http:http "${pkgdir}/usr/share/webapps/${pkgname}/"{bin/,app/config/,vendor/,web/}
 }
