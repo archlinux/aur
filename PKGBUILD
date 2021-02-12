@@ -3,16 +3,16 @@
 _modname=chattweaks
 _mcver="1.12.2"
 _modloader="liteloader"
-pkgname=mc-chattweaks-112-liteloader
+pkgname=mc-chattweaks-112-liteloader-git
 pkgver="5.3.3"
-pkgrel=1
+pkgrel=2
 pkgdesc="This mod provides various tweaks and features to the Minecraft chat"
 arch=('any')
 url="https://masa.dy.fi/mcmods/client_mods/"
 license=('LGPL')
 makedepends=('wget' 'jq')
 source=("manifest.json::https://masa.dy.fi/api/games/mods/minecraft/latest/client/")
-sha1sums=('SKIP')
+md5sums=('SKIP')
 
 pkgver() {
   cd $srcdir
