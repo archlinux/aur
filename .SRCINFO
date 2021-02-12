@@ -1,6 +1,6 @@
 pkgbase = snmp_exporter
 	pkgdesc = This is an exporter that exposes information gathered from SNMP for use by the Prometheus monitoring system
-	pkgver = 0.19.0
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/prometheus/snmp_exporter
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = snmp_exporter
 	license = Apache
 	makedepends = go
 	backup = etc/prometheus/snmp.yml
-	source = https://github.com/prometheus/snmp_exporter/archive/v0.19.0.tar.gz
+	source = https://github.com/prometheus/snmp_exporter/archive/v0.20.0.tar.gz
 	source = snmp_exporter.service
 	source = snmp_exporter.sysusers
-	sha256sums = 07384297259af68b72e666d920fd82349cdb7f47712a66e3dbcfaee086265dfc
+	sha256sums = 4326749fb36b829ca43e9d60fc09f43b62788f353c491aa3367705d52b96fae9
 	sha256sums = 0f1b59f5b416b37665ddb5ab3cf40a4fc4bf0c4622f68da018793194dc2f1206
 	sha256sums = 2747fabb4e56b808361eb7dd7acf9729ab8973d1ebe2f857dd56f6c71f71e45f
 
