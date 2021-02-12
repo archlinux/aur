@@ -3,7 +3,7 @@
 _pkgname=NBXplorer
 
 pkgname=nbxplorer-latest
-pkgver=v2.1.49
+pkgver=latest
 pkgrel=1
 epoch=
 pkgdesc="A minimalist UTXO tracker for HD wallets."
@@ -69,7 +69,7 @@ package()
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/lib/
     
     # Symlinking run.sh to /usr/bin/nbxplorer.
-    ln ${pkgdir}/usr/lib/${_pkgname}/run.sh ${pkgdir}/usr/bin/$(echo ${_pkgname} | tr "[A-Z]" "[a-z]")
+    ln -rT ${pkgdir}/usr/lib/${_pkgname}/run.sh ${pkgdir}/usr/bin/$(echo ${_pkgname} | tr "[A-Z]" "[a-z]")
     chmod 755 ${pkgdir}/usr/bin/$(echo ${_pkgname} | tr "[A-Z]" "[a-z]")
     
     # Install the systemd service.
