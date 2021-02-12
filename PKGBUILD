@@ -19,7 +19,7 @@ if ((DISABLE_CUDA)); then
   _CMAKE_FLAGS+=('-DALICEVISION_USE_CUDA=OFF')
   # Disable component that could yield cuda.
 else
-  makedepends+=('cuda')
+  ((DISABLE_POPSIFT)) && makedepends+=('cuda')
   _CMAKE_FLAGS+=( -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc )
   if [[ -v _cc_list ]]; then
     _CMAKE_FLAGS+=( -DALICEVISION_CUDA_CC_LIST="$(IFS=';'; echo "${_cc_list[*]}";)" )
