@@ -63,7 +63,7 @@ package_pipewire-common-git() {
               'gst-plugin-pipewire-common-git: GStreamer support')
   provides=(pipewire alsa-card-profiles libpipewire-$_ver.so)
   conflicts=(pipewire alsa-card-profiles)
-  backup=(etc/pipewire/pipewire.conf
+  backup=(etc/pipewire/{client-rt,client,jack,pipewire-pulse,pipewire}.conf
           etc/pipewire/media-session.d/media-session.conf
           etc/pipewire/media-session.d/{alsa,bluez,v4l2}-monitor.conf)
   install=pipewire.install
