@@ -7,7 +7,7 @@ sed -i "s/pkgver=.*$/pkgver=$ver/" PKGBUILD
 sed -i "/sha256sums.*$/d" PKGBUILD
 makepkg -g >> PKGBUILD
 makepkg --printsrcinfo > .SRCINFO
-makepkg
+makepkg -i
 git add .SRCINFO PKGBUILD
 git commit -m "bump to $ver"
 git push
