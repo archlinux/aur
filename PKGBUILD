@@ -2,10 +2,10 @@
 # Current Maintaner: Bu Domino <bu.domino@gmail.com>
 
 _prefix=/opt/UnityLts
-_hash=518737b1de84
+_hash=6dd1c08eedfa
 
 pkgname=unity-editor-lts-windows
-pkgver=2019.4.13f1
+pkgver=2019.4.20f1
 pkgrel=1
 pkgdesc="Allows building your Unity projects for the Windows platform"
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('custom')
 depends=('unity-editor-lts')
 makedepends=('cpio')
 source=("$pkgver.pkg::https://download.unity3d.com/download_unity/${_hash}/MacEditorTargetInstaller/UnitySetup-Windows-Mono-Support-for-Editor-$pkgver.pkg")
-md5sums=('9a171923e818b89eb9f6d36daa5680ad')
+md5sums=('ac48a0e7a47d6505c2cf3df64634361d')
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
