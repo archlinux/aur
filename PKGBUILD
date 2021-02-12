@@ -66,7 +66,7 @@ cd xserver
       --disable-dmx \
       --disable-xvfb \
       --disable-xnest \
-      --disable-composite \
+      --enable-composite \
       --disable-xcsecurity \
       --disable-libunwind \
       --enable-xorg \
@@ -145,6 +145,7 @@ cd xserver
 # xinerama required for nvidia blob/amdgpu/mesa
 # mitshm required for nvidia blob/amdgpu/mesa
 # xv required for nvidia blob/amdgpu/mesa
+# composite required for nvidia blob/amdgpu/mesa
 # dga required for xorg nvidia blob/amdgpu/mesa ### NOT REQUIRED FOR XWAYLAND
 # glamor required for xwayland support
 # pciaccess required or build fails
