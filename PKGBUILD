@@ -1,7 +1,7 @@
 # Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 
 ((DISABLE_BUNDLED_RADARE)) && {
-	depends+=('radare2=5.1.0')
+	depends+=('radare2>=5.1.0')
 	_CMAKE_FLAGS+=(-DCUTTER_USE_BUNDLED_RADARE2=OFF)
 } || {
 	source+=("radare2::git+https://github.com/radareorg/radare2")
