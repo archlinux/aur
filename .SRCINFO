@@ -1,0 +1,18 @@
+pkgbase = php7-mcrypt
+	pkgdesc = mcrypt module for extra/php7 package (>=7.2.0, <8.0.0)
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://pecl.php.net/package/mcrypt
+	install = mcrypt.install
+	arch = i686
+	arch = x86_64
+	license = PHP
+	makedepends = autoconf
+	makedepends = re2c
+	depends = php7
+	depends = libmcrypt
+	source = http://pecl.php.net/get/mcrypt-1.0.4.tgz
+	md5sums = 7097fac371820ff130c90330b556f1bf
+
+pkgname = php7-mcrypt
+
