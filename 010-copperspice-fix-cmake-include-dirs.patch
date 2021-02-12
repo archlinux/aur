@@ -1,0 +1,123 @@
+--- a/src/core/CMakeLists.txt
++++ b/src/core/CMakeLists.txt
+@@ -154,8 +154,8 @@ endif()
+ 
+ target_include_directories(CsCore
+    PUBLIC
+-   $<INSTALL_INTERFACE:include>
+-   $<INSTALL_INTERFACE:include/QtCore>
++   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
++   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/QtCore>
+ )
+ 
+ set_target_properties(CsCore
+--- a/src/gui/CMakeLists.txt
++++ b/src/gui/CMakeLists.txt
+@@ -175,7 +175,7 @@ target_sources(CsGui
+ 
+ target_include_directories(CsGui
+    PUBLIC
+-   $<INSTALL_INTERFACE:include/QtGui>
++   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/QtGui>
+    ${OPENGL_INCLUDE_DIR}
+ )
+ 
+--- a/src/multimedia/CMakeLists.txt
++++ b/src/multimedia/CMakeLists.txt
+@@ -81,7 +81,7 @@ target_link_libraries(CsMultimedia
+ target_include_directories(CsMultimedia
+    PUBLIC
+    ${GSTREAMER_INCLUDE_DIRS}
+-   $<INSTALL_INTERFACE:include/QtMultimedia>
++   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/QtMultimedia>
+ )
+ 
+ set_target_properties(CsMultimedia
+--- a/src/network/CMakeLists.txt
++++ b/src/network/CMakeLists.txt
+@@ -92,7 +92,7 @@ target_link_libraries(CsNetwork
+ 
+ target_include_directories(CsNetwork
+    PUBLIC
+-   $<INSTALL_INTERFACE:include/QtNetwork>
++   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/QtNetwork>
+ )
+ 
+ set_target_properties(CsNetwork
+--- a/src/opengl/CMakeLists.txt
++++ b/src/opengl/CMakeLists.txt
+@@ -130,7 +130,7 @@ function_variable_fixup("${EXTRA_OPENGL_LDFLAGS}"  EXTRA_OPENGL_LDFLAGS)
+ 
+ target_include_directories(CsOpenGL
+    PUBLIC
+-   $<INSTALL_INTERFACE:include/QtOpenGL>
++   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/QtOpenGL>
+ )
+ 
+ target_link_libraries(CsOpenGL
+--- a/src/script/CMakeLists.txt
++++ b/src/script/CMakeLists.txt
+@@ -569,7 +569,7 @@ target_sources(CsScript
+ 
+ target_include_directories(CsScript
+    PUBLIC
+-   $<INSTALL_INTERFACE:include/QtScript>
++   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/QtScript>
+ )
+ 
+ target_link_libraries(CsScript
+--- a/src/sql/CMakeLists.txt
++++ b/src/sql/CMakeLists.txt
+@@ -76,7 +76,7 @@ target_link_libraries(CsSql
+ 
+ target_include_directories(CsSql
+    PUBLIC
+-   $<INSTALL_INTERFACE:include/QtSql>
++   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/QtSql>
+ )
+ 
+ set_target_properties(CsSql
+--- a/src/svg/CMakeLists.txt
++++ b/src/svg/CMakeLists.txt
+@@ -89,7 +89,7 @@ target_sources(CsSvg
+ 
+ target_include_directories(CsSvg
+    PUBLIC
+-   $<INSTALL_INTERFACE:include/QtSvg>
++   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/QtSvg>
+ )
+ 
+ target_link_libraries(CsSvg
+--- a/src/webkit/CMakeLists.txt
++++ b/src/webkit/CMakeLists.txt
+@@ -2432,7 +2432,7 @@ function_variable_fixup("${EXTRA_WEBKIT_LDFLAGS}"  EXTRA_WEBKIT_LDFLAGS)
+ 
+ target_include_directories(CsWebKit
+    PUBLIC
+-   $<INSTALL_INTERFACE:include/QtWebKit>
++   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/QtWebKit>
+ )
+ 
+ target_link_libraries(CsWebKit
+--- a/src/xml/CMakeLists.txt
++++ b/src/xml/CMakeLists.txt
+@@ -44,7 +44,7 @@ target_sources(CsXml
+ 
+ target_include_directories(CsXml
+    PUBLIC
+-   $<INSTALL_INTERFACE:include/QtXml>
++   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/QtXml>
+ )
+ 
+ target_link_libraries(CsXml
+--- a/src/xmlpatterns/CMakeLists.txt
++++ b/src/xmlpatterns/CMakeLists.txt
+@@ -67,7 +67,7 @@ target_sources(CsXmlPatterns
+ 
+ target_include_directories(CsXmlPatterns
+    PUBLIC
+-   $<INSTALL_INTERFACE:include/QtXmlPatterns>
++   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/QtXmlPatterns>
+ )
+ 
+ target_link_libraries(CsXmlPatterns
