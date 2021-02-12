@@ -44,3 +44,22 @@ pkgbase = fomu-verilog-blink
 
 pkgname = fomu-verilog-blink
 
+pkgbase = fomu-verilog-blink
+	pkgdesc = Blink test firmwares for the FOMU FPGA boards
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/im-tomu/fomu-workshop.git
+	arch = any
+	license = Apache
+	makedepends = dfu-util
+	makedepends = icestorm-git
+	makedepends = nextpnr-git
+	makedepends = yosys
+	optdepends = dfu-util: for loading the fimrwares
+	source = https://github.com/im-tomu/fomu-workshop/archive/v0.1.tar.gz
+	source = LICENSE
+	sha512sums = f5a68839a91178e9a3238ba097eec4f6768da691cc0c934619d23ea6d3b964a305f3c831fabecdfa5d12977d9c243a8005e5fa38ddcfd3a5e391d5581e6ab709
+	sha512sums = SKIP
+
+pkgname = fomu-verilog-blink
+

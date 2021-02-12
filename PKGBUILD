@@ -11,7 +11,8 @@ pkgdesc="Blink test firmwares for the FOMU FPGA boards"
 arch=('any')
 url='https://github.com/im-tomu/fomu-workshop.git'
 license=('Apache')
-makedepends=('icestorm-git'
+makedepends=('dfu-util'
+             'icestorm-git'
              'nextpnr-git'
              'yosys')
 optdepends=('dfu-util: for loading the fimrwares')
