@@ -1,36 +1,36 @@
 # Maintainer: Nemo <archlinux [at] captnemo.in>
 
 pkgname=karn
-pkgver=0.0.4
-pkgrel=2
+pkgver=0.0.5
+pkgrel=1
 pkgdesc="Manage multiple Git identities with ease"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/prydonius/karn"
 license=('MIT')
 makedepends=('go')
 options=('!strip' '!emptydirs')
 
-source=("https://github.com/prydonius/karn/archive/v$pkgver.tar.gz")
-sha256sums=('68d244558ef62cf1da2b87927a0a2fbf907247cdd770fc8c84bf72057195a6cb')
+source=("$url/archive/v$pkgver.tar.gz")
+sha512sums=('23a33355ceefe4d1a76a31e551713b21f9054ea462a2a64c349b9bfb84f8698173df80c8b0d1a8a3c491d86df3d0130b8b91ce3aa74e491f9c5fa7b7d20e9e01')
+
+
+prepare(){
+  cd "$pkgname-$pkgver"
+  mkdir -p build/
+}
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
-
-	rm -rf "$srcdir/go/src"
-
-	mkdir -p "$srcdir/go/src"
-
-	export GOPATH="$srcdir/go"
-
-	mv "$srcdir/$pkgname-$pkgver" "$srcdir/go/src/$pkgname"
-
-	cd "$srcdir/go/src/$pkgname/"
-
+  cd "$pkgname-$pkgver"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 	go get
-
-	go build cmd/karn/karn.go
+	go build -o build ./cmd/karn
 }
 
 package() {
-	install -DT "$srcdir/go/src/$pkgname/$pkgname" "$pkgdir/usr/bin/karn"
+  cd "$pkgname-$pkgver"
+	install -DT build/$pkgname "$pkgdir/usr/bin/karn"
 }
