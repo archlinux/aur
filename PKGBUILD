@@ -1,6 +1,6 @@
 pkgname=auracle-git
 _pkgname=auracle
-pkgver=r316.dfbd170
+pkgver=r366.8739929
 pkgrel=1
 pkgdesc='A flexible client for the AUR'
 arch=('x86_64' 'i686')
