@@ -4,7 +4,7 @@
 pkgname=condution-bin
 pkgver=1.0.1
 _pkgver=1.0.1
-pkgrel=0
+pkgrel=1
 pkgdesc="A personal project management system that makes sense and will not burn your pockets out"
 arch=('x86_64')
 url='https://www.condution.com'
