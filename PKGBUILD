@@ -3,20 +3,18 @@
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
 
-# Optionally select if you would like to use NO-JBR. The default is JBR11 and JBR8 is no longer supported.
-# See more https://blog.jetbrains.com/idea/2019/02/whats-new-in-intellij-idea-2019-1-eap-3/
-#
+# Optional select if you would like to use NO-JBR. You can override the JJDK used from Idea with
+# a file `idea.sh` at `~/.config/JetBrains/IntelliJIdea${_veryear}.${_verrelease}/
 # Note - available options:
 # 1. <empty> JBR 11 (default)
-# 3. no-jbr No bundled JBR included (make sure you provide a Java runtime)
-# The JBR of this version is broken, see https://youtrack.jetbrains.com/issue/JBR-3066
-_JBR=no-jbr
+# 2. no-jbr No bundled JBR included (make sure you provide a Java runtime)
+_JBR=
 
 ### Do no edit below this line unless you know what you're doing
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=211.5538.20
+_buildver=211.5787.15
 _veryear=2021
 _verrelease=1
 _verextra=
@@ -28,11 +26,13 @@ options=(!strip)
 url="http://www.jetbrains.com/idea/nextversion"
 license=('custom')
 depends=('java-environment' 'giflib' 'libxtst' 'libdbusmenu-glib')
-source=("https://download.jetbrains.com/idea/ideaIU-${_buildver}-${_JBR}.tar.gz"
-        "jbr_dcevm-11_0_9_1-linux-x64-b1145.77.tar.gz::https://bintray.com/jetbrains/intellij-jbr/download_file?file_path=jbr_dcevm-11_0_9_1-linux-x64-b1145.77.tar.gz"
-)
-sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIU-${_buildver}-${_JBR}.tar.gz.sha256" | cut -f1 -d" ")
-            '864234a43b8649ca295f963777eb4c7ba8c437df8e9bc2249d3270bfe6ed4ac5')
+if [ -n "${_JBR}" ]; then
+    source=("https://download.jetbrains.com/idea/ideaIU-${_buildver}-${_JBR}.tar.gz")
+    sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIU-${_buildver}-${_JBR}.tar.gz.sha256" | cut -f1 -d" "))
+else
+    source=("https://download.jetbrains.com/idea/ideaIU-${_buildver}.tar.gz")
+    sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIU-${_buildver}.tar.gz.sha256" | cut -f1 -d" "))
+fi
 
 prepare() {
     cd "${srcdir}/${_pkgname}-${_buildver}"
@@ -54,7 +54,6 @@ package() {
     cd "$srcdir"
     mkdir -p "${pkgdir}/opt/${pkgname}"
     cp -R "${srcdir}/${_pkgname}-${_buildver}/"* "${pkgdir}/opt/${pkgname}"
-    cp -R "${srcdir}/jbr" "${pkgdir}/opt/${pkgname}"
 (
 cat <<EOF
 [Desktop Entry]
@@ -78,7 +77,7 @@ EOF
     install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
     for i in $(ls $srcdir/${_pkgname}-$_buildver/license/ ); do
       ln -sf "${srcdir}/${_pkgname}-${_buildver}/license/$i" "${pkgdir}/usr/share/licenses/${pkgname}/$i"
-    done 
+    done
     ln -s "/opt/${pkgname}/bin/idea.sh" "${pkgdir}/usr/bin/idea-ue-eap"
 }
 
