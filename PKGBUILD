@@ -3,16 +3,16 @@
 
 _pkgname=ingen
 pkgname="${_pkgname}-git"
-pkgver=0.5.1.r2797.6c5e9239
-pkgrel=2
+pkgver=0.5.1.r2947.473409cf
+pkgrel=1
 pkgdesc="A modular plugin host for JACK and LV2 (git version)"
 arch=('i686' 'x86_64')
 url="http://drobilla.net/software/${_pkgname}/"
 license=('GPL')
-depends=('alsa-lib' 'ganv>=1.5.4' 'jack' 'lilv>=0.21.5' 'lv2>=1.16.0'
-         'portaudio' 'python-rdflib' 'raul>=1.0.0' 'suil>=0.8.7' 'serd>=0.30'
-         'sord>=0.12.0')
-makedepends=('git')
+depends=('alsa-lib' 'ganv>=1.5.4' 'jack' 'libsigc++' 'lilv>=0.21.5' 'lv2>=1.16.0'
+         'portaudio' 'python-rdflib' 'raul>=1.1.0' 'suil>=0.8.7' 'serd>=0.30.3'
+         'sord>=0.12.0' 'sratom>=0.4.6')
+makedepends=('boost' 'git')
 optdepends=(
     'lv2-plugins: various useful LV2 plug-in packages'
 )
@@ -20,7 +20,8 @@ provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://gitlab.com/drobilla/ingen.git"
         'autowaf::git+https://gitlab.com/drobilla/autowaf.git')
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP'
+         'SKIP')
 
 
 prepare() {

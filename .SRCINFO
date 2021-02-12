@@ -1,23 +1,26 @@
 pkgbase = ingen-git
 	pkgdesc = A modular plugin host for JACK and LV2 (git version)
-	pkgver = 0.5.1.r2797.6c5e9239
-	pkgrel = 2
+	pkgver = 0.5.1.r2947.473409cf
+	pkgrel = 1
 	url = http://drobilla.net/software/ingen/
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = boost
 	makedepends = git
 	depends = alsa-lib
 	depends = ganv>=1.5.4
 	depends = jack
+	depends = libsigc++
 	depends = lilv>=0.21.5
 	depends = lv2>=1.16.0
 	depends = portaudio
 	depends = python-rdflib
-	depends = raul>=1.0.0
+	depends = raul>=1.1.0
 	depends = suil>=0.8.7
-	depends = serd>=0.30
+	depends = serd>=0.30.3
 	depends = sord>=0.12.0
+	depends = sratom>=0.4.6
 	optdepends = lv2-plugins: various useful LV2 plug-in packages
 	provides = ingen
 	provides = ingen=0.5.1

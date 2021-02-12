@@ -1,6 +1,7 @@
 autowaf/
 ingen/
 ingen-git-*.tar.xz
+ingen-git-*.tar.zst
 ingen-git-*.src.tar.gz
 pkg/
 src/
