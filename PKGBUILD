@@ -119,7 +119,20 @@ build() {
     -D debug=false \
     -D input_thread=true \
     -D int10=false \
-    -D xf86-input-inputtest=false
+    -D xf86-input-inputtest=false \
+    -D sparkle=false \
+    -D composite=false \
+    -D record=false \
+    -D dri=false \
+    -D dri3=true \
+    -D present=false \
+    -D xf86vidmode=false \
+    -D dbe=false \
+    -D xfree86-utils=false \
+    -D windowsdri=false \
+    -D kdrive=false \
+    -D systemd-daemon=false \
+    -D unit-tests=false
      
 # xinerama required for nvidia blob/amdgpu/mesa
 # mitshm required for nvidia blob/amdgpu/mesa
