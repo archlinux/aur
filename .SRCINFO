@@ -1,15 +1,17 @@
 pkgbase = wyslij-po
 	pkgdesc = Submit PO files to the Translation Project
-	pkgver = 3.2
+	pkgver = 3.3
 	pkgrel = 1
 	url = https://puszcza.gnu.org.ua/software/wyslij-po/
 	arch = x86_64
 	license = GPL
 	depends = mailutils
-	source = ftp://download.gnu.org.ua/pub/release/wyslij-po/wyslij-po-3.2.tar.gz
-	source = ftp://download.gnu.org.ua/pub/release/wyslij-po/wyslij-po-3.2.tar.gz.sig
+	source = ftp://download.gnu.org.ua/pub/release/wyslij-po/wyslij-po-3.3.tar.gz
+	source = ftp://download.gnu.org.ua/pub/release/wyslij-po/wyslij-po-3.3.tar.gz.sig
 	validpgpkeys = 325F650C4C2B6AD58807327A3602B07F55D0C732
-	sha1sums = 26cc5ace2839b653c3da4e71931909cf31ada420
+	md5sums = 7ef48edc639f9cbbe9f762be2096ff92
+	md5sums = SKIP
+	sha1sums = b3f0e0a6c9024825865edf291ce8bb02175c1b5c
 	sha1sums = SKIP
 
 pkgname = wyslij-po
