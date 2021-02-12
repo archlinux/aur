@@ -1,5 +1,17 @@
 # Maintainer: Leonidas Spyropoulos <artafinde at gmail dot com>
 
+### BUILD OPTIONS
+# Set these variables to ANYTHING that is not null to enable them
+
+# Optional select if you would like to use NO-JBR. You can override the JJDK used from Idea with
+# a file `idea.sh` at `~/.config/JetBrains/IntelliJIdea${_veryear}.${_verrelease}/
+# Note - available options:
+# 1. <empty> JBR 11 (default)
+# 2. no-jbr No bundled JBR included (make sure you provide a Java runtime)
+_JBR=
+
+### Do no edit below this line unless you know what you're doing
+
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
 _buildver=211.5787.15
@@ -7,17 +19,24 @@ _veryear=2021
 _verrelease=1
 _verextra=
 pkgver=${_veryear}.${_verrelease}.${_buildver}
-pkgrel=2
+pkgrel=3
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (ultimate version)"
 arch=('any')
 options=(!strip)
 url="http://www.jetbrains.com/idea/nextversion"
 license=('custom')
 depends=('java-environment' 'giflib' 'libxtst' 'libdbusmenu-glib')
-source=("https://download.jetbrains.com/idea/ideaIU-${_buildver}.tar.gz"
-        'idea-ue-eap.sh')
-sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIU-${_buildver}.tar.gz.sha256" | cut -f1 -d" ")
-            '2094f03ada492990dcfe0ac08f6001d55a11b441bcb9dfca92124ff68e129dcd')
+if [ -n "${_JBR}" ]; then
+    source=("https://download.jetbrains.com/idea/ideaIU-${_buildver}-${_JBR}.tar.gz"
+            'idea-ue-eap.sh')
+    sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIU-${_buildver}-${_JBR}.tar.gz.sha256" | cut -f1 -d" ")
+                '2094f03ada492990dcfe0ac08f6001d55a11b441bcb9dfca92124ff68e129dcd')
+else
+    source=("https://download.jetbrains.com/idea/ideaIU-${_buildver}.tar.gz"
+            'idea-ue-eap.sh')
+    sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIU-${_buildver}.tar.gz.sha256" | cut -f1 -d" ")
+                '2094f03ada492990dcfe0ac08f6001d55a11b441bcb9dfca92124ff68e129dcd')
+fi
 
 prepare() {
     cd "${srcdir}/${_pkgname}-${_buildver}"
