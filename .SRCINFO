@@ -1,0 +1,16 @@
+pkgbase = dehelper
+	pkgdesc = Proprietary German dictionary software for linux
+	pkgver = 12.5.0
+	pkgrel = 1
+	url = https://www.eudic.net/v4/de/app/dehelper
+	arch = x86_64
+	license = unknown
+	depends = hicolor-icon-theme
+	depends = qt5-speech
+	depends = qt5-webkit
+	provides = eudic-de
+	source = dehelper-12.5.0.deb::https://static.frdic.com/pkg/dehelper.deb?v=2021-02-06
+	sha256sums = 668d61ac54e7abfee6d7a054cca5bc5695e736c8f7bf981f70e8bddee5bda291
+
+pkgname = dehelper
+
