@@ -9,7 +9,7 @@ license=('AGPL3')
 depends=('pugixml' 'xalan-c' 'libarchive' 'yaml-cpp')
 makedepends=('git' 'make' 'gcc')
 provides=('romog')
-source=("git+http://github.com/xprism1/romog")
+source=("git+https://github.com/xprism1/romog")
 md5sums=('SKIP')
 options=(!strip)
 

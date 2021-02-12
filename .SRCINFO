@@ -14,7 +14,7 @@ pkgbase = romog-git
 	depends = yaml-cpp
 	provides = romog
 	options = !strip
-	source = git+http://github.com/xprism1/romog
+	source = git+https://github.com/xprism1/romog
 	md5sums = SKIP
 
 pkgname = romog-git
