@@ -6,9 +6,7 @@ _pkgbase=pipewire
 pkgbase=pipewire-common-git
 pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-jack-git
          pipewire-common-pulse-git pipewire-common-alsa-git
-         gst-plugin-pipewire-common-git
-         pipewire-common-vulkan-git pipewire-common-ffmpeg-git
-         pipewire-common-bluez5-git pipewire-common-bluez5-hsphfpd-git)
+         gst-plugin-pipewire-common-git)
 pkgver=0.3.21.r85.g58d2fe44
 pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines"
@@ -16,9 +14,9 @@ url="https://pipewire.org"
 license=(MIT)
 arch=(x86_64)
 makedepends=(git meson doxygen graphviz xmltoman valgrind jack2
-             alsa-lib gst-plugins-base sbc rtkit vulkan-icd-loader dbus sdl2
-             ncurses libsndfile bluez-libs vulkan-headers libldac libopenaptx
-             libfdk-aac ffmpeg)
+             alsa-lib gst-plugins-base sbc rtkit dbus sdl2
+             ncurses libsndfile bluez-libs libldac libopenaptx
+             libfdk-aac)
 source=("git+https://gitlab.freedesktop.org/pipewire/pipewire.git")
 sha256sums=('SKIP')
 
@@ -32,15 +30,8 @@ prepare() {
 }
 
 build() {
-  arch-meson $_pkgbase build
-  meson configure build \
+  arch-meson $_pkgbase build \
     -D docs=true \
-    -D vulkan=true \
-    -D ffmpeg=true \
-    -D bluez5-backend-hsp-native=true \
-    -D bluez5-backend-hfp-native=true \
-    -D bluez5-backend-ofono=true \
-    -D bluez5-backend-hsphfpd=false \
     -D udevrulesdir=/usr/lib/udev/rules.d
   meson compile -C build
 }
@@ -69,10 +60,7 @@ package_pipewire-common-git() {
               'pipewire-common-alsa-git: ALSA support'
               'pipewire-common-jack-git: JACK support'
               'pipewire-common-pulse-git: PulseAudio support'
-              'gst-plugin-pipewire-common-git: GStreamer support'
-              'pipewire-common-ffmpeg-git: FFmpeg support'
-              'pipewire-common-bluez5-git: Bluetooth audio support'
-              'pipewire-common-bluez5-hsphfpd-git: Bluetooth audio support (using hsphfpd for HSP/HFP support)')
+              'gst-plugin-pipewire-common-git: GStreamer support')
   provides=(pipewire alsa-card-profiles libpipewire-$_ver.so)
   conflicts=(pipewire alsa-card-profiles)
   backup=(etc/pipewire/pipewire.conf
@@ -87,24 +75,6 @@ package_pipewire-common-git() {
 
   cd "$pkgdir"
 
-  _pick bluez5 usr/lib/spa-0.2/bluez5
-
-
-  # Rebuild with different options
-  cd "$srcdir"
-
-  meson configure build \
-    -D bluez5-backend-hsp-native=false \
-    -D bluez5-backend-hfp-native=false \
-    -D bluez5-backend-ofono=false \
-    -D bluez5-backend-hsphfpd=true
-  meson compile -C build
-  DESTDIR="$pkgdir" meson install -C build --only-changed
-
-  cd "$pkgdir"
-
-  _pick bluez5-hsphfpd usr/lib/spa-0.2/bluez5
-
   _pick docs usr/share/doc
 
   _pick jack etc/pipewire/media-session.d/with-jack
@@ -115,10 +85,6 @@ package_pipewire-common-git() {
   _pick pulse etc/pipewire/media-session.d/with-pulseaudio
 
   _pick gst usr/lib/gstreamer-1.0
-
-  _pick vulkan usr/lib/spa-0.2/vulkan
-
-  _pick ffmpeg usr/lib/spa-0.2/ffmpeg
 }
 
 package_pipewire-common-docs-git() {
@@ -138,7 +104,7 @@ package_pipewire-common-jack-git() {
 
 package_pipewire-common-pulse-git() {
   pkgdesc+=" (PulseAudio replacement)"
-  depends=(pipewire-common-git pipewire-bluez5 libpulse)
+  depends=(pipewire-common-git libpulse)
   provides=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
   conflicts=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
   install=pipewire-pulse.install
@@ -163,39 +129,4 @@ package_gst-plugin-pipewire-common-git() {
   provides=(gst-plugin-pipewire)
   conflicts=(gst-plugin-pipewire)
   mv gst/* "$pkgdir"
-}
-
-package_pipewire-common-vulkan-git() {
-  pkgdesc+=" (Vulkan SPA plugin)"
-  depends=(pipewire-common-git libpipewire-$_ver.so vulkan-icd-loader)
-  provides=(pipewire-vulkan)
-  conflicts=(pipewire-vulkan)
-  mv vulkan/* "${pkgdir}"
-}
-
-package_pipewire-common-ffmpeg-git() {
-  pkgdesc+=" (FFmpeg SPA plugin)"
-  depends=(pipewire-common-git libpipewire-$_ver.so libavcodec.so libavformat.so)
-  provides=(pipewire-ffmpeg)
-  conflicts=(pipewire-ffmpeg)
-  mv ffmpeg/* "${pkgdir}"
-}
-
-package_pipewire-common-bluez5-git() {
-  pkgdesc+=" (BlueZ 5 SPA plugin)"
-  depends=(pipewire-common-git libpipewire-$_ver.so bluez-libs
-           libldacBT_enc.so libopenaptx.so libfdk-aac.so)
-  optdepends=('ofono: HFP support')
-  provides=(pipewire-bluez5)
-  conflicts=(pipewire-bluez5)
-  mv bluez5/* "${pkgdir}"
-}
-
-package_pipewire-common-bluez5-hsphfpd-git() {
-  pkgdesc+=" (BlueZ 5 SPA plugin, using hsphfpd for HSP/HFP support)"
-  depends=(pipewire-common-git libpipewire-$_ver.so bluez-libs hsphfpd
-           libldacBT_enc.so libopenaptx.so libfdk-aac.so)
-  provides=(pipewire-bluez5)
-  conflicts=(pipewire-bluez5)
-  mv bluez5-hsphfpd/* "${pkgdir}"
 }
