@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo-git
 _pkgname=sftpgo
-pkgver=r699.6a6e8ff
+pkgver=r700.1ac66d2
 pkgrel=1
 pkgdesc='Fully featured and highly configurable SFTP server with optional FTP/S and WebDAV support. It can serve local filesystem, S3, GCS, Azure Blob, SFTP'
 arch=('i686' 'x86_64')
@@ -56,7 +56,7 @@ package() {
   cp -r static "${pkgdir}/usr/share/${_pkgname}/"
   install -Dm 644 "$srcdir/sftpgo.json" "${pkgdir}/usr/share/doc/${_pkgname}/sftpgo.json.default"
   echo "" >> "${pkgdir}"/usr/share/doc/${_pkgname}/README
-  echo "https://github.com/drakkan/sftpgo/blob/master/README.md" >> "${pkgdir}"/usr/share/doc/${_pkgname}/README
+  echo "https://github.com/drakkan/sftpgo/blob/main/README.md" >> "${pkgdir}"/usr/share/doc/${_pkgname}/README
   install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/${_pkgname}/LICENSE
   install -Dm 644 sftpgo-completion.bash "${pkgdir}/usr/share/bash-completion/completions/sftpgo"
   install -d "${pkgdir}/usr/share/man"
