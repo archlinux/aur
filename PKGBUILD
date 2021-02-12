@@ -9,7 +9,7 @@ provides=('electron')
 conflicts=('electron')
 _commit=805e442ff873e10735a1ea18021f491597afa885
 _chromiumver=87.0.4280.141
-pkgrel=1
+pkgrel=2
 pkgdesc='Electron compiled with wayland support via Ozone'
 arch=('x86_64')
 url='https://electronjs.org/'
@@ -185,6 +185,7 @@ build() {
     'ozone_platform_x11 = true'
     'use_system_libwayland = true'
     'use_glib = true'
+    'use_vaapi = true'
     'rtc_use_pipewire=true'
   )
 
