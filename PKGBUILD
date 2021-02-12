@@ -2,7 +2,7 @@
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=sparrow-wifi-git
 pkgver=r170.ad95f2e
-pkgrel=3
+pkgrel=4
 pkgdesc="Next-Gen GUI-based WiFi and Bluetooth Analyzer for Linux"
 arch=('any')
 url="https://github.com/ghostop14/sparrow-wifi"
@@ -24,7 +24,7 @@ depends=('aircrack-ng'
 makedepends=('git')
 optdepends=('gpsd: GPS support'
             'bluez-utils-compat: Blueooth-support'
-            'ubertooth-git: Ubertooth support'
+            'ubertooth: Ubertooth support'
             'python-dronekit: Drone communication support'
             'net-tools: for rpi.monitor_3dr script'
             'python-elasticsearch'

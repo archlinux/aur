@@ -1,7 +1,7 @@
 pkgbase = sparrow-wifi-git
 	pkgdesc = Next-Gen GUI-based WiFi and Bluetooth Analyzer for Linux
 	pkgver = r170.ad95f2e
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ghostop14/sparrow-wifi
 	install = sparrow-wifi.install
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = sparrow-wifi-git
 	depends = wireless_tools
 	optdepends = gpsd: GPS support
 	optdepends = bluez-utils-compat: Blueooth-support
-	optdepends = ubertooth-git: Ubertooth support
+	optdepends = ubertooth: Ubertooth support
 	optdepends = python-dronekit: Drone communication support
 	optdepends = net-tools: for rpi.monitor_3dr script
 	optdepends = python-elasticsearch
