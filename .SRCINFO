@@ -1,12 +1,15 @@
 pkgbase = sydf
-	pkgdesc = Symlink Your Damn Files
+	pkgdesc = Symlink dotfiles
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/filiparag/sydf
 	arch = any
-	license = GPL
-	source = https://github.com/filiparag/sydf
-	md5sums = SKIP
+	license = GPL3
+	depends = bash
+	depends = coreutils
+	depends = findutils
+	source = sydf-0.3.tar.gz::https://github.com/filiparag/sydf/archive/0.3.tar.gz
+	sha256sums = d22297a611e19ba754a26f7f347316b904ba0a93c8957ad2adb916d12b90df55
 
 pkgname = sydf
 

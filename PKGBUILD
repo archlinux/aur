@@ -1,46 +1,19 @@
-# Maintainer: Filip Parag <aur@filiparag.com>
+# Maintainer Filip Parag <aur@filiparag.com>
+
 pkgname=sydf
 pkgver=0.3
-pkgrel=1
-epoch=
-pkgdesc="Symlink Your Damn Files"
-arch=(any)
+pkgrel=2
+pkgdesc="Symlink dotfiles"
+arch=('any')
 url="https://github.com/filiparag/sydf"
-license=('GPL')
-groups=()
-depends=()
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/filiparag/sydf")
-noextract=()
-md5sums=('SKIP')
-validpgpkeys=()
-
-prepare() {
-    git clone -b "$pkgver" --depth 1 "$source" "$pkgname-git"
-}
-
-pkgver() {
-    echo "$pkgver"
-}
-
-build() {
-	chmod +x "$pkgname-git/sydf"
-}
-
-check() {
-	test -f "$pkgname-git/sydf"
-}
+license=('GPL3')
+depends=('bash' 'coreutils' 'findutils')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('d22297a611e19ba754a26f7f347316b904ba0a93c8957ad2adb916d12b90df55')
 
 package() {
-	mkdir -p ${pkgdir}/usr/bin
-	cp "$pkgname-git/sydf"	${pkgdir}/usr/bin
+  cd "${pkgname}-${pkgver}"
+  install -Dm 755 -t "${pkgdir}/usr/bin/" "${pkgname}"
+  install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" 'LICENSE'
+  install -Dm 644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.md'
 }
