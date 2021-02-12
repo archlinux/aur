@@ -8,7 +8,7 @@ pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-jack-git
          pipewire-common-pulse-git pipewire-common-alsa-git
          gst-plugin-pipewire-common-git)
 pkgver=0.3.21.r89.g0855b1bb
-pkgrel=1
+pkgrel=2
 pkgdesc="Server and user space API to deal with multimedia pipelines"
 url="https://pipewire.org"
 license=(MIT)
@@ -55,9 +55,9 @@ _pick() {
 _ver=${pkgver:0:3}
 
 package_pipewire-common-git() {
-  depends=(sbc rtkit
+  depends=(sbc rtkit bluez-libs
            libdbus-1.so libncursesw.so libsndfile.so libudev.so libasound.so
-           libsystemd.so)
+           libsystemd.so libldacBT_enc.so libopenaptx.so libfdk-aac.so)
   optdepends=('pipewire-common-docs-git: Documentation'
               'pipewire-common-alsa-git: ALSA support'
               'pipewire-common-jack-git: JACK support'
