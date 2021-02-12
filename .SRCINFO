@@ -1,4 +1,4 @@
-pkgbase = ocaml-zip
+pkgbase = ocaml-camlzip
 	pkgdesc = ZIP and gzip library for OCaml
 	pkgver = 1.10
 	pkgrel = 1
@@ -9,10 +9,13 @@ pkgbase = ocaml-zip
 	makedepends = ocaml-findlib
 	depends = ocaml
 	depends = zlib
+	provides = ocaml-zip
+	conflicts = ocaml-zip
+	replaces = ocaml-zip
 	options = !strip
 	options = staticlibs
 	source = https://github.com/xavierleroy/camlzip/archive/rel110.tar.gz
 	md5sums = 97efd563735b4b6e7ae463b91aa72405
 
-pkgname = ocaml-zip
+pkgname = ocaml-camlzip
 
