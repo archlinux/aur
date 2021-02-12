@@ -1,7 +1,7 @@
 pkgbase = giada-git
 	pkgdesc = A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians
-	pkgver = v0.17.0.r15.g34b107f1
-	pkgrel = 2
+	pkgver = v0.17.1.r2.g2b95a81b
+	pkgrel = 1
 	url = https://www.giadamusic.com/
 	arch = x86_64
 	groups = pro-audio
@@ -34,11 +34,13 @@ pkgbase = giada-git
 	source = giada-git-devendor_nlohmann_json.patch
 	source = JUCE-6.0.4.tar.gz::https://github.com/WeAreROLI/JUCE/archive/6.0.4.tar.gz
 	source = https://raw.githubusercontent.com/nlohmann/json/db78ac1d7716f56fc9f1b030b715f872f93964e4/single_include/nlohmann/json.hpp
+	source = git+https://github.com/monocasual/rtaudio.git
 	sha512sums = SKIP
 	sha512sums = ae222bb63b0388ef1b02ff2cda0e589545c80fae26cbf06c04e0963a661e32b4d6746eea424359a44bb20e7568dbb5335359c5226c36d9c8b86d10130e83fedc
 	sha512sums = 5b4b6c6c421851f4da72b6fb4ff457156d3332c5c7a795edffe05386d48864830e7b3afb4011996a8cd5284d2fdbc2e0da3d590108e04d00227d25bc3127f506
 	sha512sums = 94bfb122bad5f47be018f66b118a024eb56d537aecaedc440fd1648cbecb08375a2c375e6b1e12b39621bf8c272356fab98872b6a8cab506706cdc18f215096c
 	sha512sums = a3bdd5dc53097584bf2bbe19f296b1726b9fa751905bae22990dc9eb17015e49e1911956b1e29dbaacbe6c285100a653179c191f223b6e612be633505347c34c
+	sha512sums = SKIP
 
 pkgname = giada-git
 	depends = gcc-libs
