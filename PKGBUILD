@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=ospray-git
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="A Ray Tracing Based Rendering Engine for High-Fidelity Visualization"
 arch=(x86_64)
