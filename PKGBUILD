@@ -8,7 +8,7 @@ pkgdesc="A visualization application that leverages Intel OSPRay as its core ren
 arch=(x86_64)
 url="https://www.ospray.org/"
 license=(Apache)
-depends=('glfw' 'ospray>=2.4.0' 'openimagedenoise' 'openimageio')
+depends=('glfw' 'ospray-git>=2.4.0' 'openimagedenoise' 'openimageio')
 makedepends=(cmake)
 source=("https://github.com/ospray/ospray_studio/archive/v${pkgver}.tar.gz")
 sha256sums=('ffdc42ff0ad5b0416527bbc3e1e46562d8336a895c60d8397746eacffbf45c0d')
