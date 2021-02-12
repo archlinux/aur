@@ -13,6 +13,10 @@ ARG PROJECT=libptmalloc3
 RUN useradd --base-dir=/ -m --comment="Build Bot,$HOSTNAME,,," "$BOT"
 RUN echo "$BOT ALL=(ALL) NOPASSWD: ALL" > "/etc/sudoers.d/$BOT"
 
+# Configure makepkg
+COPY makepkg.patch ./
+RUN patch /etc/makepkg.conf makepkg.patch
+
 # Actual build
 WORKDIR /$BOT
 USER $BOT
