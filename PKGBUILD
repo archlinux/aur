@@ -10,10 +10,8 @@ license=('GPL')
 depends=('dkms')
 makedepends=('git')
 _commit=0bc966cf8ec11a173e0bdffb9d5df8d99bea2617
-source=("git+https://github.com/pop-os/system76-acpi-dkms.git#commit=$_commit"
-        'system76-acpi.conf')
-sha256sums=('SKIP'
-            '7b7e6bac10669d47576c8bd0bedad8217b32c1e25cab9cbb2ff64aa6be11fd39')
+source=("git+https://github.com/pop-os/system76-acpi-dkms.git#commit=$_commit")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
@@ -39,5 +37,6 @@ package() {
 	sed "s/#MODULE_VERSION#/$pkgver/" "debian/system76-acpi-dkms.dkms" > "$install_dir/dkms.conf"
 
 	# Load the module at boot
-	install -Dm644 $srcdir/system76-acpi.conf -t "$pkgdir/etc/modules-load.d"
+	install -Dm644 "usr/share/initramfs-tools/modules.d/$pkgname.conf" \
+		"$pkgdir/etc/modules-load.d/system76-acpi.conf"
 }

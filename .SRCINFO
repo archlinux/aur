@@ -8,9 +8,7 @@ pkgbase = system76-acpi-dkms
 	makedepends = git
 	depends = dkms
 	source = git+https://github.com/pop-os/system76-acpi-dkms.git#commit=0bc966cf8ec11a173e0bdffb9d5df8d99bea2617
-	source = system76-acpi.conf
 	sha256sums = SKIP
-	sha256sums = 7b7e6bac10669d47576c8bd0bedad8217b32c1e25cab9cbb2ff64aa6be11fd39
 
 pkgname = system76-acpi-dkms
 
