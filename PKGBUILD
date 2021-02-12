@@ -1,7 +1,7 @@
 # Maintainer: Jay Tauron <jytrn@protonmail.com>
 # Thanks to https://github.com/yochananmarqos for the PKGBUILD
 pkgname=oreo-nord-cursors-git
-pkgver=20200517.r45.314d4eb
+pkgver=20210212.r45.314d4eb
 pkgrel=1
 epoch=
 pkgdesc="Fork of oreo-cursors with Nord colors"
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "20200517.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "20210212.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
