@@ -1,7 +1,7 @@
 # Maintainer: Daniel Menelkir <menelkir at itroll dot org>
 pkgname=g15daemon-runit
 pkgver=20210211
-pkgrel=1
+pkgrel=2
 pkgdesc="g15daemon init script for runit"
 arch=('any')
 url="https://gitlab.com/menelkir/g15daemon"
@@ -16,6 +16,6 @@ pkgver() {
 }
 
 package() {
-   install -Dm755 "$srcdir/${_basename}.run" "$pkgdir/etc/runit/sv/${_basename}/run"
+   install -Dm755 "$srcdir/g15daemon.run" "$pkgdir/etc/runit/sv/g15daemon/run"
 }
 
