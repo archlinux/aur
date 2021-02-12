@@ -61,7 +61,7 @@ package_popsift-libs() {
   depends=('boost-libs>=1.55' 'libcudart.so')
   cd 
   make -C "${srcdir}/build_shared" DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}"/usr/{include,shared}
+  rm -rf "${pkgdir}"/usr/{include,shared,lib/cmake}
 }
 
 check() {
