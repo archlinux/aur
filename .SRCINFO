@@ -10,7 +10,7 @@ pkgbase = ospray-git
 	depends = glfw
 	depends = intel-tbb
 	depends = embree
-	depends = rkcommon
+	depends = rkcommon-git
 	depends = openvkl
 	depends = openimagedenoise
 	provides = ospray=2.4.0
