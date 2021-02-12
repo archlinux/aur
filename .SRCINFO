@@ -1,6 +1,6 @@
 pkgbase = ospray-git
 	pkgdesc = A Ray Tracing Based Rendering Engine for High-Fidelity Visualization
-	pkgver = 2.4.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://www.ospray.org/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ospray-git
 	depends = openvkl
 	depends = openimagedenoise
 	provides = ospray=2.4.0
-	source = https://github.com/ospray/OSPRay/archive/v2.4.0/ospray-git-2.4.0.tar.gz
+	source = https://github.com/ospray/OSPRay/archive/v2.5.0/ospray-git-2.5.0.tar.gz
 	sha256sums = 5eaf7409b08147cbeaf087dbf4b3887c15ffeeaa9cfd16dae3ee85504d9014c2
 
 pkgname = ospray-git
