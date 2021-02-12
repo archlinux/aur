@@ -1,8 +1,9 @@
-# Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
+# Maintainer: Denis Kasak <dkasak AT termina.org.uk>
+# Contributor: Sebastian Wiesner <sebastian@swsnr.de>
 # Contributor: Genki Sky <alt+archlinux.org@genki.is>
 
 pkgname=tla-toolbox
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='IDE for the TLA+ tools'
 arch=('x86_64')
@@ -12,7 +13,7 @@ depends=('java-runtime')
 source=("https://github.com/tlaplus/tlaplus/releases/download/v$pkgver/TLAToolbox-$pkgver-linux.gtk.x86_64.zip"
         tla-toolbox.desktop
         icon.png)
-sha256sums=('a91c7d93ba7ecd490aed05da5988c7b6299ae279e0fbdbc97e34cdc642483f67'
+sha256sums=('108af33356211ec276864877aed83be953099f08bb09c6aea27778113f80fefa'
             '900b0d2e03a7254faa108653aee50f1107b249c41e40d66655f7fdb12d4a5c82'
             '51dbb6724fa7ff5167067dce68dd6b577a2401a47a37120a9879f0afd85ff7c9')
 
