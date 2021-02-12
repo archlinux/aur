@@ -1,14 +1,14 @@
+# Maintainer: Houjun Liu <hliu at shabang dot cf>
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=condution-bin
-pkgver=0.3.2.beta.0
-_pkgver=0.3.2-beta.0
-pkgrel=1
+pkgver=1.0.1
+_pkgver=1.0.1
+pkgrel=0
 pkgdesc="A personal project management system that makes sense and will not burn your pockets out"
 arch=('x86_64')
-url='https://condution.shabang.cf'
+url='https://www.condution.com'
 license=('GPL3')
-provides=("${pkgname%-bin}")
 depends=('nss'
          'dbus-glib'
          'gtk2'
@@ -17,7 +17,7 @@ depends=('nss'
          'libdbusmenu-glib')
 makedepends=('gendesk')
 source=("${pkgname%-bin}-${_pkgver}.AppImage::https://github.com/Shabang-Systems/Condution/releases/download/v${_pkgver}/Condution-${_pkgver}.AppImage")
-sha256sums=('653bc3fc73dfdded4d0a57abb32244842f96b4a98e6423b3e5435ee7ebc27ab9')
+sha256sums=('5f5bbad45fd5c25232f58351152f96b19d0e7300672197c529c849875d762658')
 
 package() {
   chmod 755 ./${pkgname%-bin}-${_pkgver}.AppImage
