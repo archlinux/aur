@@ -1,8 +1,8 @@
 # Maintainer: Berto Gomez <csberto at gmail dot com>
 # Contributor: Jan Tojnar <jtojnar@gmail.com>
 pkgname=perl-config-gitlike
-pkgver=1.16
-pkgrel=2
+pkgver=1.17
+pkgrel=1
 pkgdesc='git-compatible config file parsing'
 _dist=Config-GitLike
 arch=('any')
@@ -13,7 +13,7 @@ checkdepends=('perl-test-exception')
 
 options=('!emptydirs' purge)
 source=("http://search.cpan.org/CPAN/authors/id/A/AL/ALEXMV/$_dist-$pkgver.tar.gz")
-sha512sums=('ec8d9302f10c2eaab900e4a44b588644e52c28a120d7dac443e7362b6338cd7ced86998ccbf74a33060f84e419609dd2d25f32acbee0866193c73d62166ab154')
+sha512sums=('22f63681753b38e881170a605697cbf62b46d074dfeacc00549d25a043254f15ba18e8c73f57dc6d0255702ae3b1078af969b51c9663636375990a86664f18b8')
 
 build() {
 	cd "$srcdir/$_dist-$pkgver"

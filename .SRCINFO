@@ -1,7 +1,7 @@
 pkgbase = perl-config-gitlike
 	pkgdesc = git-compatible config file parsing
-	pkgver = 1.16
-	pkgrel = 2
+	pkgver = 1.17
+	pkgrel = 1
 	url = https://metacpan.org/release/Config-GitLike
 	arch = any
 	license = perl_5
@@ -12,8 +12,8 @@ pkgbase = perl-config-gitlike
 	depends = perl-module-install
 	options = !emptydirs
 	options = purge
-	source = http://search.cpan.org/CPAN/authors/id/A/AL/ALEXMV/Config-GitLike-1.16.tar.gz
-	sha512sums = ec8d9302f10c2eaab900e4a44b588644e52c28a120d7dac443e7362b6338cd7ced86998ccbf74a33060f84e419609dd2d25f32acbee0866193c73d62166ab154
+	source = http://search.cpan.org/CPAN/authors/id/A/AL/ALEXMV/Config-GitLike-1.17.tar.gz
+	sha512sums = 22f63681753b38e881170a605697cbf62b46d074dfeacc00549d25a043254f15ba18e8c73f57dc6d0255702ae3b1078af969b51c9663636375990a86664f18b8
 
 pkgname = perl-config-gitlike
 
