@@ -1,10 +1,11 @@
 pkgbase = python-kflash
 	pkgdesc = A Python-based cross-platform Kendryte K210 UART ISP Utility
 	pkgver = 0.9.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kendryte/kflash.py
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python
 	depends = python-pyserial
 	depends = python-pyelftools

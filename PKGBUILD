@@ -9,14 +9,14 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 pkgname=python-kflash
 pkgver=0.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python-based cross-platform Kendryte K210 UART ISP Utility"
 arch=(any)
 url="https://github.com/kendryte/kflash.py"
 license=('MIT')
 groups=()
 depends=('python' 'python-pyserial' 'python-pyelftools')
-makedepends=()
+makedepends=('python-setuptools')
 provides=()
 conflicts=()
 replaces=()
