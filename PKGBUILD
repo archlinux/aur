@@ -3,7 +3,7 @@
 _modname=chattweaks
 _mcver="1.12.2"
 _modloader="liteloader"
-pkgname=mc-chattweaks-112-liteloader-git
+pkgname=mc-chattweaks-112-liteloader
 pkgver="5.3.3"
 pkgrel=2
 pkgdesc="This mod provides various tweaks and features to the Minecraft chat"
