@@ -59,85 +59,89 @@ pkgver() {
 }
 
 build() {
-  # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
-  # With them, module fail to load with undefined symbol.
-  # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
-#  export CFLAGS=${CFLAGS/-fno-plt}
-#  export CXXFLAGS=${CXXFLAGS/-fno-plt}
-#  export LDFLAGS=${LDFLAGS/,-z,now}
+  
+cd xserver
+  ./configure --prefix=/usr \
+      --disable-ipv6 \
+      --disable-dri \
+      --disable-dmx \
+      --disable-xvfb \
+      --disable-xnest \
+      --disable-composite \
+      --disable-xcsecurity \
+      --disable-libunwind \
+      --enable-xorg \
+      --disable-xephyr \
+      --disable-glamor \
+      --disable-xwayland \
+      --disable-kdrive \
+      --disable-kdrive-kbd \
+      --disable-kdrive-mouse \
+      --enable-config-udev \
+      --disable-systemd-logind \
+      --disable-suid-wrapper \
+      --disable-install-setuid \
+      --disable-record \
+      --disable-xfbdev \
+      --disable-xfake \
+      --disable-static \
+      --libexecdir=/usr/lib/xorg-server \
+      --sysconfdir=/etc \
+      --localstatedir=/var \
+      --with-xkb-path=/usr/share/X11/xkb \
+      --with-xkb-output=/var/lib/xkb \
+      --with-fontrootdir=/usr/share/fonts \
+      --without-sha1 \
+      --without-dtrace \
+      --disable-linux-acpi \
+      --disable-linux-apm \
+      --disable-agp \
+      --disable-strict-compilation \
+      --disable-debug \
+      --without-int10 \
+      --disable-listen-tcp \
+      --without-fallback-input-driver \
+      --disable-sparkle \
+      --disable-xres \
+      --disable-xvmc \
+      --disable-screensaver \
+      --disable-xdmcp \
+      --disable-xdm-auth-1 \
+      --disable-dri2 \
+      --disable-dri3 \
+      --disable-present \
+      --disable-xf86vidmode \
+      --disable-xace \
+      --disable-xselinux \
+      --disable-dbe \
+      --disable-xf86bigfont \
+      --disable-dpms \
+      --disable-config-hal \
+      --disable-config-wscons \
+      --disable-xfree86-utils \
+      --disable-vgahw \
+      --disable-int10-module \
+      --disable-windowsdri \
+      --disable-libdrm \
+      --disable-clientids \
+      --disable-xquartz \
+      --disable-xwayland-eglstream \
+      --disable-standalone-xpbproxy \
+      --disable-xwin \
+      --disable-xf86-input-inputtest
+      --disable-xshmfence \
+      --without-systemd-daemon \
+      --disable-xtrans-send-fds \
+      --enable-unit-tests=no \
+      --enable-integration-tests=no \
+      --enable-mitshm \
+      --enable-xv \
+      --enable-dga \
+      --enable-glx \
+      --enable-xinerama \
+      --enable-pciaccess \
+      --enable-input-thread
 
-
-  arch-meson xserver build \
-    -D os_vendor="Arch Linux" \
-    -D ipv6=false \
-    -D xcsecurity=false \
-    -D xorg=true \
-    -D xwayland=false \
-    -D xwayland_eglstream=false \
-    -D udev=true \
-    -D suid_wrapper=false \
-    -D xkb_dir=/usr/share/X11/xkb \
-    -D xkb_output_dir=/var/lib/xkb \
-    -D systemd_logind=false \
-    -D b_lto=false \
-    -D xinerama=true \
-    -D screensaver=false \
-    -D dmx=false \
-    -D glamor=false \
-    -D linux_apm=false \
-    -D mitshm=true \
-    -D vgahw=false \
-    -D xdmcp=false \
-    -D xephyr=false \
-    -D xnest=false \
-    -D xquartz=false \
-    -D xv=true \
-    -D xvmc=false \
-    -D xvfb=false \
-    -D xwin=false \
-    -D xres=false \
-    -D xdm-auth-1=false \
-    -D secure-rpc=false \
-    -D dtrace=false \
-    -D listen_tcp=false \
-    -D dpms=false \
-    -D xf86bigfont=false \
-    -D xselinux=false \
-    -D dga=true \
-    -D linux_acpi=false \
-    -D agp=false \
-    -D dri1=false \
-    -D dri2=false \
-    -D xpbproxy=false \
-    -D errorlogs=false \
-    -D stdsplit=false \
-    -D b_pgo=off \
-    -D libunwind=false \
-    -D hal=false \
-    -D xf86-input-inputtest=false \
-    -D xace=false \
-    -D debug=false \
-    -D input_thread=true \
-    -D int10=false \
-    -D sparkle=false \
-    -D composite=false \
-    -D record=false \
-    -D dri=false \
-    -D dri3=false \
-    -D present=false \
-    -D xf86vidmode=false \
-    -D dbe=false \
-    -D xfree86-utils=false \
-    -D windowsdri=false \
-    -D kdrive=false \
-    -D systemd-daemon=false \
-    -D unit-tests=false \
-    -D integration-tests=false \
-    -D libdrm=false \
-    -D clientids=false \
-    -D pciaccess=true \
-    -D xshmfence=false
-     
 # xinerama required for nvidia blob/amdgpu/mesa
 # mitshm required for nvidia blob/amdgpu/mesa
 # xv required for nvidia blob/amdgpu/mesa
@@ -149,14 +153,17 @@ build() {
 
 ### xorg flag needs to be set to false for a successful build with -flto / b_lto enabled
 
-  # Print config
-  meson configure build
-  ninja $NINJAFLAGS -C build
- 
-  # fake installation to be seperated into packages
-  DESTDIR="${srcdir}/fakeinstall" ninja $NINJAFLAGS -C build install
-}
+make
 
+  # Disable subdirs for make install rule to make splitting easier
+  sed -e 's/^DMX_SUBDIRS =.*/DMX_SUBDIRS =/' \
+      -e 's/^XVFB_SUBDIRS =.*/XVFB_SUBDIRS =/' \
+      -e 's/^XNEST_SUBDIRS =.*/XNEST_SUBDIRS = /' \
+      -e 's/^KDRIVE_SUBDIRS =.*/KDRIVE_SUBDIRS =/' \
+      -e 's/^XWAYLAND_SUBDIRS =.*/XWAYLAND_SUBDIRS =/' \
+      -i hw/Makefile
+}
+  
 _install() {
   local src f dir
   for src; do
