@@ -70,7 +70,7 @@ package()
     
     # Symlinking run.sh to /usr/bin/nbxplorer.
     ln ${pkgdir}/usr/lib/${_pkgname}/run.sh ${pkgdir}/usr/bin/$(echo ${_pkgname} | tr "[A-Z]" "[a-z]")
-    chmod 755 ${pkgdir}/usr/bin/${_pkgname}
+    chmod 755 /usr/bin/${_pkgname}
     
     # Install the systemd service.
     install -Dm644 ${pkgdir}/usr/lib/${_pkgname}/nbxplorer.service ${pkgdir}/usr/lib/systemd/system/
