@@ -1,0 +1,16 @@
+pkgbase = python-hitutil
+	pkgdesc = hit.edu.cn utils
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/billchenchina/hitutil
+	arch = any
+	license = AGPL3
+	makedepends = python-setuptools
+	depends = python-beautifulsoup4
+	depends = python-pycryptodome
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/h/hitutil/hitutil-0.1.1.tar.gz
+	sha256sums = e595b99740903097e3f73dddf0167dc09eda38c524a02e04235ce81898950dab
+
+pkgname = python-hitutil
+
