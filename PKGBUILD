@@ -7,7 +7,7 @@ pkgbase=pipewire-common-git
 pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-jack-git
          pipewire-common-pulse-git pipewire-common-alsa-git
          gst-plugin-pipewire-common-git)
-pkgver=0.3.21.r87.g0ad8f0a6
+pkgver=0.3.21.r88.g13d655ce
 pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines"
 url="https://pipewire.org"
@@ -62,7 +62,11 @@ package_pipewire-common-git() {
               'pipewire-common-pulse-git: PulseAudio support'
               'gst-plugin-pipewire-common-git: GStreamer support')
   provides=(pipewire alsa-card-profiles libpipewire-$_ver.so)
-  conflicts=(pipewire alsa-card-profiles pipewire-bluez5)
+  conflicts=(pipewire alsa-card-profiles
+             pipewire-common-bluez5-git pipewire-common-bluez5-hsphfpd-git
+             pipewire-common-ffmpeg-git)
+  replaces=(pipewire-common-bluez5-git pipewire-common-bluez5-hsphfpd-git
+            pipewire-common-ffmpeg-git)
   backup=(etc/pipewire/{client-rt,client,jack,pipewire-pulse,pipewire}.conf
           etc/pipewire/media-session.d/media-session.conf
           etc/pipewire/media-session.d/{alsa,bluez,v4l2}-monitor.conf)
