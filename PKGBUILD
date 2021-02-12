@@ -2,8 +2,8 @@
 
 pkgname=diamond-editor
 pkgver=1.3.6
-pkgrel=1
-pkgdesc='Compact text editor designed for programmers (git version)'
+pkgrel=2
+pkgdesc='Compact text editor designed for programmers'
 arch=('x86_64')
 url='https://www.copperspice.com/'
 license=('GPL2')
