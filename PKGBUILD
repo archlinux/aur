@@ -11,7 +11,7 @@ pkgrel=1
 epoch=
 pkgdesc="code signing tool for i.MX platforms"
 arch=('x86_64')
-url="https://www.nxp.com/"
+url="https://www.nxp.com/webapp/Download?colCode=IMX_CST_TOOL_NEW"
 license=('BSD')
 groups=()
 depends=('python' 'python-cryptography')
