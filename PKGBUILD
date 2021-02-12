@@ -128,7 +128,7 @@ cd xserver
       --disable-xwayland-eglstream \
       --disable-standalone-xpbproxy \
       --disable-xwin \
-      --disable-xf86-input-inputtest
+      --disable-xf86-input-inputtest \
       --disable-xshmfence \
       --without-systemd-daemon \
       --disable-xtrans-send-fds \
