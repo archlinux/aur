@@ -11,6 +11,7 @@ pkgbase = thonny
 	depends = python-asttokens
 	depends = python-docutils
 	depends = python-jedi
+	depends = python-pip
 	depends = python-pylint
 	depends = python-pyserial
 	depends = python-send2trash

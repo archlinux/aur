@@ -9,7 +9,7 @@ arch=('any')
 url="https://thonny.org"
 license=('MIT')
 depends=('hicolor-icon-theme' 'mypy' 'python-astroid' 'python-asttokens' 'python-docutils' 'python-jedi' \
-         'python-pylint' 'python-pyserial' 'python-send2trash' 'python-setuptools' 'tk')
+         'python-pip' 'python-pylint' 'python-pyserial' 'python-send2trash' 'python-setuptools' 'tk')
 optdepends=('python-birdseye: Debug support with Birdseye')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
 sha512sums=('46abda75ad351601ac4d7abf148d5281f47406c5991c8b9b0a48aab5574c46fd09654e639bb806d13c32793d7b7371a145468bdd24f2bacc535feac321ed297d')
