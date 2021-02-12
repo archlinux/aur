@@ -1,6 +1,6 @@
 pkgbase = clifm
 	pkgdesc = The KISS file manager: cli-based, ultra-lightweight, and lightning fast
-	pkgver = 0.29.1
+	pkgver = 0.29.2
 	pkgrel = 1
 	url = https://github.com/leo-arch/clifm
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = clifm
 	optdepends = atool: Archives/compression support
 	optdepends = p7zip: ISO 9660 support
 	optdepends = cdrtools: ISO 9660 support
-	source = clifm-0.29.1.tar.gz::https://github.com/leo-arch/clifm/archive/v0.29.1.tar.gz
-	sha256sums = 3f3ca397e691302d0e95c2336aff5ce4fd9d10d78506febaea1f5d4a5513570e
+	source = clifm-0.29.2.tar.gz::https://github.com/leo-arch/clifm/archive/v0.29.2.tar.gz
+	sha256sums = 49e84f88e2de435a7cef25daea684718a6ece1ed5c67fc10879212fc53270da8
 
 pkgname = clifm
 
