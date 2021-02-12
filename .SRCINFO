@@ -1,5 +1,5 @@
 pkgbase = armv7l-binutils
-	pkgdesc = A set of programs to assemble and manipulate binary and object files for the ARM64 target
+	pkgdesc = Cross binutils for armv7l
 	pkgver = 2.36.1
 	pkgrel = 2
 	url = https://www.gnu.org/software/binutils/
