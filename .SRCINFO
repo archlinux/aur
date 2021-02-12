@@ -7,9 +7,7 @@ pkgbase = system76-dkms
 	license = GPL3
 	depends = dkms
 	source = system76-dkms-1.0.12.tar.gz::https://github.com/pop-os/system76-dkms/archive/1.0.12.tar.gz
-	source = system76.conf
 	sha256sums = 0e5e6c4d9d61502eb3af05c8751ed4d9301d883949eb7f244225ed222d4617d9
-	sha256sums = e3677960a2f4fa8130133e275031edde59c6e65c08fd9a3d830b637c46ddfeaf
 
 pkgname = system76-dkms
 
