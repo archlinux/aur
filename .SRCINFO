@@ -1,13 +1,10 @@
 pkgbase = webull-desktop
-	pkgdesc = Webull Desktop
 	pkgver = 4.2.9
 	pkgrel = 1
 	url = https://webull.com
 	arch = x86_64
-	groups = 
-	license = MIT
-	options = !strip
-	options = !emptydirs
+	license = custom
+	depends = hicolor-icon-theme
 	source_x86_64 = https://pub.webull.com/global/desktop/Webull%20Desktop%204.2.9.deb
 	sha512sums_x86_64 = c3e80bff61561fff576b2cbeb66a8678089283eb712e94b76880de8ecb6005a66a1b7121d6e08b53ef021cb1cb8f92fd058fff794d2f1adf128b40e882d410d1
 
