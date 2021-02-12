@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=openvkl
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A collection of high-performance volume computation kernels, developed at Intel"
 arch=(x86_64)
