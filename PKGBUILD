@@ -7,8 +7,8 @@ pkgbase=pipewire-common-git
 pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-jack-git
          pipewire-common-pulse-git pipewire-common-alsa-git
          gst-plugin-pipewire-common-git)
-pkgver=0.3.21.r89.g0855b1bb
-pkgrel=2
+pkgver=0.3.21.r91.g3cc577dd
+pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines"
 url="https://pipewire.org"
 license=(MIT)
