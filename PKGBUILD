@@ -2,9 +2,9 @@
 # Contributor: Radoslaw Mejer <radmen @ radmen.info>
 
 pkgname=stoplight-studio-appimage
-pkgver=2.2.0
-_realver=2.2.0-stable.5379.git-75c5189
-pkgrel=3
+pkgver=2.3.0
+_realver=2.3.0-stable.5448.git-f63f57f
+pkgrel=1
 pkgdesc="The modern editor for API Architects and Technical Writers."
 arch=('x86_64')
 url='https://stoplight.io/studio/'
@@ -15,7 +15,7 @@ source=(
   "stoplight-studio.desktop"
 )
 sha256sums=(
-  "8296590a93150dae66dd6408d044eb9bc9b9ff37c9a2badbd24e0147c5f57a27"
+  "a6bbf6310f40cb4c9dbe628fa0696f7fff08018a17d6d32eabf7da6f7d951cdd"
   "72bf480d367051fca62f02cca5c421fd0b9f0245494b6d41a897db5c7a3f9fd7"
 )
 options=(!strip)
