@@ -1,0 +1,23 @@
+--- a/kernel/hb_rf_eth.c	2021-02-12 12:23:18.513015122 +0100
++++ b/kernel/hb_rf_eth.c	2021-02-12 12:37:43.583180475 +0100
+@@ -183,8 +183,10 @@
+   struct timeval tv = { .tv_sec = 0, .tv_usec = 100000 };
+ #endif
+ 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 10, 0))
+   mm_segment_t fs = get_fs();
+   set_fs(KERNEL_DS);
++#endif
+ 
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 9, 0)
+   sock_setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO_NEW, KERNEL_SOCKPTR((char *)&tv), sizeof(tv));
+@@ -194,7 +196,9 @@
+   sock_setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, (char *)&tv, sizeof(tv));
+ #endif
+ 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 10, 0))
+   set_fs(fs);
++#endif
+ }
+ 
+ static void hb_rf_eth_send_msg(struct socket *sock, char *buffer, size_t len)
