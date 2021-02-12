@@ -2,12 +2,13 @@
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=sparrow-wifi-git
 pkgver=r170.ad95f2e
-pkgrel=2
+pkgrel=3
 pkgdesc="Next-Gen GUI-based WiFi and Bluetooth Analyzer for Linux"
 arch=('any')
 url="https://github.com/ghostop14/sparrow-wifi"
 license=('GPL3')
-depends=('iw'
+depends=('aircrack-ng'
+         'iw'
          'tk'
          'python-matplotlib'
          'python-qscintilla-qt5'
@@ -18,7 +19,8 @@ depends=('iw'
          'python-dateutil'
          'python-numpy'
          'python-pyqt5-chart'
-         'polkit')
+         'polkit'
+         'wireless_tools')
 makedepends=('git')
 optdepends=('gpsd: GPS support'
             'bluez-utils-compat: Blueooth-support'
@@ -57,6 +59,8 @@ package() {
 		"$pkgdir/opt/${pkgname%-git}/sparrowwifiagent.cfg"
 	cp -r *.py scripts "$pkgdir/opt/${pkgname%-git}"
 
+	python -O -m compileall "$pkgdir/opt/${pkgname%-git}"
+
 	install -Dm644 docs/* README.md -t "${pkgdir}/usr/share/doc/${pkgname%-git}"
 	install -Dm644 wifi_icon.png "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
 
@@ -65,4 +69,11 @@ package() {
 	install -Dm755 "$srcdir/${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
 	install -Dm644 "$srcdir/org.freedesktop.${pkgname%-git}.policy" -t \
 		"$pkgdir/usr/share/polkit-1/actions"
+
+	ln -s /opt/sparrow-wifi/scripts/rpi.sparrowagentstart.sh \
+		"$pkgdir/usr/bin/rpi.sparrowagentstart"
+	ln -s /opt/sparrow-wifi/scripts/rpi.sparrowagentstop.sh \
+		"$pkgdir/usr/bin/rpi.sparrowagentstop"
+	ln -s /opt/sparrow-wifi/scripts/rpi.monitor_3dr.sh \
+		"$pkgdir/usr/bin/rpi.monitor_3dr"
 }

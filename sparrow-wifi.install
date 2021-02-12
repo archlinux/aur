@@ -1,19 +1,13 @@
 post_install() {
-	python -O -m compileall /opt/sparrow-wifi
-
 	echo ""
 	echo "To use GPS capabilities, start the GPSD service & Sparrow agent:"
 	echo ""
 	echo "systemctl start gpsd.service"
-	echo "sudo /opt/sparrow-wifi/scripts/rpi.sparrowagentstart.sh"
+	echo "sudo rpi.sparrowagentstart"
 	echo ""
 	echo "To stop GPSD service & Sparrow agent:"
 	echo ""
-	echo "sudo /opt/sparrow-wifi/scripts/rpi.sparrowagentstop.sh"
+	echo "sudo rpi.sparrowagentstop"
 	echo "systemctl stop gpsd.service"
 	echo ""
-}
-
-post_upgrade() {
-	python -O -m compileall /opt/sparrow-wifi
 }
