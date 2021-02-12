@@ -7,8 +7,11 @@ pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files
 arch=('i686' 'x86_64')
 url="https://rizin.re/"
 license=('GPL3' 'LGPL3')
-makedepends=('git' 'meson' 'ninja')
-depends=('capstone' 'lz4' 'file' 'libzip' 'xxhash' 'libuv')
+makedepends=('git' 'meson' 'ninja' 'python-pyaml')
+depends=('capstone' 'lz4' 'file' 'libzip' 'xxhash' 'libuv' 'tree-sitter')
+depends=('sh' 'capstone' 'libcapstone.so' 'openssl' 'libzip' 'zlib'
+         'lz4' 'xxhash' 'libxxhash.so' 'file' 'libuv' 'tree-sitter'
+         'libtree-sitter.so')
 provides=('rizin')
 conflicts=('rizin')
 source=("$pkgname::git+https://github.com/rizinorg/rizin.git")
