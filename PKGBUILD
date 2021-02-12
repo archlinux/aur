@@ -124,7 +124,7 @@ build() {
     -D composite=false \
     -D record=false \
     -D dri=false \
-    -D dri3=true \
+    -D dri3=false \
     -D present=false \
     -D xf86vidmode=false \
     -D dbe=false \
@@ -132,13 +132,19 @@ build() {
     -D windowsdri=false \
     -D kdrive=false \
     -D systemd-daemon=false \
-    -D unit-tests=false
+    -D unit-tests=false \
+    -D integration-tests=false \
+    -D libdrm=false \
+    -D clientids=false \
+    -D pciaccess=true \
+    -D xshmfence=false
      
 # xinerama required for nvidia blob/amdgpu/mesa
 # mitshm required for nvidia blob/amdgpu/mesa
 # xv required for nvidia blob/amdgpu/mesa
 # dga required for xorg nvidia blob/amdgpu/mesa ### NOT REQUIRED FOR XWAYLAND
 # glamor required for xwayland support
+# pciaccess set to true or build fails
 # b_pgo set to off or build fails
 # dpms and dri1 set to true or xf86-video-amdgpu build fails
 
