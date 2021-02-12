@@ -10,7 +10,7 @@ pkgdesc="building, finding and using wxWidgets binaries"
 arch=('any')
 url="https://metacpan.org/release/${_cpan_name}"
 license=('GPL' 'PerlArtistic')
-depends=('perl>=5.10.0' 'wxgtk' 'perl-module-pluggable') # Install perl-module-pluggable from AUR
+depends=('perl>=5.10.0' 'wxgtk3' 'perl-module-pluggable')
 makedepends=('perl-module-build')
 options=(!emptydirs)
 source=("http://www.cpan.org/modules/by-module/${_cpan_name%%-*}/${_cpan_name}-${pkgver}.tar.gz"
