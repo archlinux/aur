@@ -1,5 +1,5 @@
 pkgbase = armv7l-gcc
-	pkgdesc = The GNU Compiler Collection - cross compiler for ARM64 target
+	pkgdesc = The GNU Compiler Collection - cross compiler for armv7l
 	pkgver = 10.2.0
 	pkgrel = 2
 	url = https://gcc.gnu.org/
