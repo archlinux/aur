@@ -1,7 +1,7 @@
 pkgbase = kconfig-frontends
 	pkgdesc = Out of the Linux source tree, packaging of the kconfig infrastructure, ready for use by third party projects
 	pkgver = 4.11.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/nuttx/tools/
 	arch = x86_64
 	arch = i686
@@ -10,10 +10,10 @@ pkgbase = kconfig-frontends
 	depends = python
 	depends = perl
 	source = https://bitbucket.org/nuttx/tools/downloads/kconfig-frontends-4.11.0.1.tar.bz2
-	source = size_t.patch::https://bitbucket.org/nuttx/tools/downloads/kconfig-frontends-3.12.0-sizet.patch
+	source = gperf_3.1.patch::https://bitbucket.org/nuttx/tools/downloads/gperf3.1_kconfig_id_lookup.patch
 	source = kconfig-config2h
 	md5sums = 635538534a016d66ca1223512f5fc424
-	md5sums = 3a9507925fd25bd58cef05baae5a0712
+	md5sums = ff705ec02d96e7d82b4c5a80e891c36e
 	md5sums = 6596064684b8d2bca25e8fec3e265adf
 
 pkgname = kconfig-frontends
