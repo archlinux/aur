@@ -1,7 +1,7 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=('foot-git' 'foot-terminfo-git')
-pkgver=1.6.3
-pkgrel=2
+pkgver=1.6.4
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
