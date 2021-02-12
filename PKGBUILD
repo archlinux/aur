@@ -1,4 +1,4 @@
-# Contributor: Aashik S  aashiks at gmail dot com
+# Contributor: Aashik S  aashiks at gmail dot com, ashik at inflo dot ws
 # Maintainer: http://smc.org.in
 # Contributor: Akshay S Dinesh asdofindia at gmail dot com
 # Contributor: Jishnu Mohan jishnu7 at gmail dot com
@@ -13,7 +13,7 @@ license=("OFL")
 source=("http://smc.org.in/downloads/fonts/chilanka/Chilanka-Regular.ttf"
         "https://gitlab.com/smc/fonts/chilanka/raw/master/LICENSE.txt"
         "https://gitlab.com/smc/fonts/chilanka/raw/master/67-smc-chilanka.conf")
-sha256sums=('9000b62d9b5375a8104bed2e82462620ef0c83f442fa2578fb7bd852d385c2cb'
+sha256sums=('704ff138c32da0ed2d74a7cab614c7e33e2658b6c1a017781cacf30ff02cf71d'
             '09c51553395ca2401d43c98a034dad1dad96b24706c2ea07972d698f90a0338f'
             'cf9d4c9e6efbd8bf676d9f1cabe86407ee570caa5f299bcbb8e4b5f46b59162a')
 
