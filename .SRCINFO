@@ -1,0 +1,13 @@
+pkgbase = redress
+	pkgdesc = A tool for analyzing stripped Go binaries
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = https://github.com/goretk/redress
+	arch = any
+	license = AGPL
+	makedepends = go
+	source = redress-0.7.4.tar.gz::https://github.com/goretk/redress/archive/v0.7.4.tar.gz
+	sha256sums = 85c13a677165f76e5414637bdbac04d1700e60cc15faed0046aabb2ac33b5512
+
+pkgname = redress
+
