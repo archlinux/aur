@@ -8,6 +8,7 @@ pkgbase = sydf
 	depends = bash
 	depends = coreutils
 	depends = findutils
+	depends = sudo
 	source = sydf-0.3.tar.gz::https://github.com/filiparag/sydf/archive/0.3.tar.gz
 	sha256sums = d22297a611e19ba754a26f7f347316b904ba0a93c8957ad2adb916d12b90df55
 

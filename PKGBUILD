@@ -7,7 +7,7 @@ pkgdesc="Symlink dotfiles"
 arch=('any')
 url="https://github.com/filiparag/sydf"
 license=('GPL3')
-depends=('bash' 'coreutils' 'findutils')
+depends=('bash' 'coreutils' 'findutils' 'sudo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('d22297a611e19ba754a26f7f347316b904ba0a93c8957ad2adb916d12b90df55')
 
