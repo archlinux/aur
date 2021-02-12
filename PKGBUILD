@@ -17,7 +17,7 @@
 #
 pkgbase="zfs-linux-lts"
 pkgname=("zfs-linux-lts" "zfs-linux-lts-headers")
-_zfsver="2.0.2"
+_zfsver="2.0.3"
 _kernelver="5.4.97-1"
 _extramodules="5.4.97-1-lts"
 
@@ -27,13 +27,13 @@ makedepends=("linux-lts-headers=${_kernelver}")
 arch=("x86_64")
 url="https://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz")
-sha256sums=("bde5067ce4577d26cc0f0313a09173ad40d590d01539b92c93f33f06ee150b24")
+sha256sums=("0694f64aa76a3a0a506e20e99b49102c3cb68bef63cb0f0154e50befc387e539")
 license=("CDDL")
 depends=("kmod" "zfs-utils=${_zfsver}" "linux-lts=${_kernelver}")
 
 build() {
     cd "${srcdir}/zfs-${_zfsver}"
-    ./autogen.sh || true
+    ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/usr/lib/udev \
                 --libexecdir=/usr/lib --with-config=kernel \
