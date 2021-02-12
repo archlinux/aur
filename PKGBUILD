@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=sys76-kb
 pkgver=0.3.1
-pkgrel=2
-pkgdesc="RGB keyboard controller for System76 laptops"
+pkgrel=3
+pkgdesc="RGB keyboardcontroller for System76 laptops"
 arch=('x86_64')
 url="https://github.com/bambash/sys76-kb"
 license=('unknown')
-depends=('glibc' 'system76-oled')
+depends=('glibc' 'system76-dkms')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('95d18be01c83bc529ad4311a5c59507d0e1568160638d9823b6c02aa6261c7e8')
