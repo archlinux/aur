@@ -1,0 +1,21 @@
+pkgbase = python-ktool-git
+	pkgdesc = A Python-based Kendryte K210 UART ISP Utility
+	pkgver = r9.0345aa9
+	pkgrel = 1
+	url = https://github.com/loboris/ktool
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = riscv64-elf-gcc
+	makedepends = riscv64-elf-newlib
+	makedepends = perl
+	depends = python
+	provides = python-ktool
+	conflicts = python-ktool
+	source = git+https://github.com/loboris/ktool.git
+	source = toolchain-riscv64-elf.cmake
+	md5sums = SKIP
+	md5sums = 63dcbebb0a1e540387ca930d5264ff95
+
+pkgname = python-ktool-git
+
