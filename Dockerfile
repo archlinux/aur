@@ -3,8 +3,7 @@
 FROM archlinux
 
 # Preparation
-RUN pacman -Syu --noconfirm
-RUN pacman -S --noconfirm --needed base-devel namcap
+RUN pacman -Syu --noconfirm --needed base-devel
 
 # Configuration
 ARG DOCKER_USER=buildbot
@@ -20,7 +19,6 @@ USER $DOCKER_USER
 ARG DOCKER_WORKDIR=/home/$DOCKER_USER/$DOCKER_PROJECT
 COPY --chown="$DOCKER_USER:root" PKGBUILD "$DOCKER_WORKDIR/"
 WORKDIR $DOCKER_WORKDIR
-RUN namcap PKGBUILD
 RUN makepkg --syncdeps --rmdeps --install --noconfirm --needed --clean
 RUN pacman -Ql "$DOCKER_PROJECT"
 RUN pacman -Qi "$DOCKER_PROJECT"
