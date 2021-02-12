@@ -1,7 +1,7 @@
 # Maintainer: Denys Zariaiev <denys.zariaiev@gmail.com>
 
 pkgname=chitubox-free-bin
-pkgver=1.7.0
+pkgver=1.8.1
 
 pkgrel=1
 pkgdesc="All-in-one SLA/DLP/LCD Slicer"
@@ -32,10 +32,12 @@ options=(!strip)
 source=(
     "local://$ARCHIVE_NAME"
     "local://chitubox-free.desktop"
+    "local://launcher"
 )
 sha256sums=(
-    "ed6c4dbce4ea3e56ab90997f7522264e2666e42158fe8a18fd94ed71b8130445"
+    "ec80101a1a95656e59b373ae9f90fcadd37e636027590432b3895289b9939c97"
     "fdd0c1595cfa7ef97ae850b83de328db55150d76f42e6c472167bcc80f87ea47"
+    "02fb0cfac1a04d8cc71345a6cf4921c92abcbfdd09e010604a1bc891657a2894"
 )
 
 package()
@@ -46,7 +48,7 @@ package()
 
     # launcher
     install -d "$pkgdir"/usr/bin
-    ln -s "/opt/chitubox-free/CHITUBOX" "$pkgdir"/usr/bin/chitubox-free
+    install -Dm755 launcher "$pkgdir"/usr/bin/chitubox-free
 
     # desktop file
     install -Dm644 chitubox-free.desktop "$pkgdir"/usr/share/applications/chitubox-free.desktop
