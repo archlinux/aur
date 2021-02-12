@@ -1,13 +1,11 @@
 # Maintainer    : Vincent Grande
 # Contributor   : Eric Vidal <eric@obarun.org>
 # Contributor   : Jean-Michel T.Dydak <jean-michel@obarun.org>
+# Contributor   : AndyRTR <andyrtr@archlinux.org>
+# Contributor   : Jan de Groot <jgc@archlinux.org>
 
 pkgname=(
 	'xorg-server-rootless-nosystemd-minimal-git'
-#	'xorg-server-xephyr-rootless-nosystemd-minimal-git'
-#	'xorg-server-xvfb-rootless-nosystemd-minimal-git'
-#	'xorg-server-xnest-rootless-nosystemd-minimal-git'
-#	'xorg-server-xwayland-rootless-nosystemd-minimal-git'
 	'xorg-server-common-rootless-nosystemd-minimal-git'
 	'xorg-server-devel-rootless-nosystemd-minimal-git')
 
@@ -164,29 +162,23 @@ make
       -i hw/Makefile
 }
   
-_install() {
-  local src f dir
-  for src; do
-    f="${src#fakeinstall/}"
-    dir="${pkgdir}/${f%/*}"
-    install -m755 -d "${dir}"
-    mv -v "${src}" "${dir}/"
-  done
-}
-
 package_xorg-server-common-rootless-nosystemd-minimal-git() {
   pkgdesc="Xorg server common files"
   depends=(xkeyboard-config xorg-xkbcomp xorg-setxkbmap)
   conflicts=('xorg-server-common')
   provides=('xorg-server-common')
  
+  cd xserver
+  install -m755 -d "${pkgdir}/usr/share/licenses/xorg-server-common"
+  install -m644 COPYING "${pkgdir}/usr/share/licenses/xorg-server-common"
   
-  _install fakeinstall/usr/lib/xorg/protocol.txt
-  _install fakeinstall/usr/share/man/man1/Xserver.1
+  make -C xkb DESTDIR="${pkgdir}" install-data
 
-#  install -m644 -Dt "${pkgdir}/var/lib/xkb/" xserver/xkb/README.compiled
-  # license
-#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
+  install -m755 -d "${pkgdir}/usr/share/man/man1"
+  install -m644 man/Xserver.1 "${pkgdir}/usr/share/man/man1/"
+
+  install -m755 -d "${pkgdir}/usr/lib/xorg"
+  install -m644 dix/protocol.txt "${pkgdir}/usr/lib/xorg/"
 }
 
 package_xorg-server-rootless-nosystemd-minimal-git() {
@@ -203,82 +195,24 @@ package_xorg-server-rootless-nosystemd-minimal-git() {
   replaces=('glamor-egl' 'xf86-video-modesetting')
   install=xorg-server-rootless-nosystemd-minimal-git.install
 
+  cd xserver
+  make DESTDIR="${pkgdir}" install
   
-  _install fakeinstall/usr/bin/{Xorg,cvt,gtf}
-  ln -s /usr/bin/Xorg "${pkgdir}/usr/bin/X"
-  #_install fakeinstall/usr/lib/Xorg{,.wrap}
-  _install fakeinstall/usr/lib/xorg/modules/*
-  _install fakeinstall/usr/share/X11/xorg.conf.d/10-quirks.conf
-  _install fakeinstall/usr/share/man/man1/{Xorg,cvt,gtf}.1
-  _install fakeinstall/usr/share/man/man4/{exa,fbdevhw,modesetting}.4
-  _install fakeinstall/usr/share/man/man5/{xorg.conf,xorg.conf.d}.5
-
   # distro specific files must be installed in /usr/share/X11/xorg.conf.d
   install -m755 -d "${pkgdir}/etc/X11/xorg.conf.d"
+  
+  rm -rf "${pkgdir}/var"
 
-  # license
-#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
+  rm -f "${pkgdir}/usr/share/man/man1/Xserver.1"
+  rm -f "${pkgdir}/usr/lib/xorg/protocol.txt"
+
+  install -m755 -d "${pkgdir}/usr/share/licenses/xorg-server"
+  ln -sf ../xorg-server-common/COPYING "${pkgdir}/usr/share/licenses/xorg-server/COPYING"
+
+  rm -rf "${pkgdir}/usr/lib/pkgconfig"
+  rm -rf "${pkgdir}/usr/include"
+  rm -rf "${pkgdir}/usr/share/aclocal"
 }
-
-#package_xorg-server-xephyr-rootless-nosystemd-minimal-git() {
-#  pkgdesc="A nested X server that runs as an X application"
-#  depends=(libxfont2 libgl libepoxy libxv pixman xorg-server-common-rootless-nosystemd-minimal-git
-#           xcb-util-image xcb-util-renderutil xcb-util-wm xcb-util-keysyms
-#           nettle libtirpc)
-#  optdepends=('libunwind: unwind backtrace support')
-#  conflicts=('xorg-server-xephyr')
-#  provides=('xorg-server-xephyr')
-  
-#  _install fakeinstall/usr/bin/Xephyr
-#  _install fakeinstall/usr/share/man/man1/Xephyr.1
-
-  # license
-#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
-#}
-
-#package_xorg-server-xvfb-rootless-nosystemd-minimal-git() {
-#  pkgdesc="Virtual framebuffer X server"
-#  depends=(libxfont2 pixman xorg-server-common-rootless-nosystemd-minimal-git xorg-xauth libgl nettle libtirpc)
-#  optdepends=('libunwind: unwind backtrace support')
-#  conflicts=('xorg-server-xvfb')
-#  provides=('xorg-server-xvfb')
-  
-#  _install fakeinstall/usr/bin/Xvfb
-#  _install fakeinstall/usr/share/man/man1/Xvfb.1
-
-#  install -m755 "${srcdir}/xvfb-run" "${pkgdir}/usr/bin/"
-#  install -m644 "${srcdir}/xvfb-run.1" "${pkgdir}/usr/share/man/man1/" # outda
-
-  # license
-#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
-#}
-
-#package_xorg-server-xnest-rootless-nosystemd-minimal-git() {
-#  pkgdesc="A nested X server that runs as an X application"
-#  depends=(libxfont2 libxext pixman xorg-server-common-rootless-nosystemd-minimal-git nettle libtirpc)
-#  conflicts=('xorg-server-xnest')
-#  provides=('xorg-server-xnest')
-  
-#  _install fakeinstall/usr/bin/Xnest
-#  _install fakeinstall/usr/share/man/man1/Xnest.1
-
-  # license
-#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
-#}
-
-#package_xorg-server-xwayland-rootless-nosystemd-minimal-git() {
-#  pkgdesc="run X clients under wayland"
-#  depends=(libxfont2 libepoxy pixman xorg-server-common
-#           nettle)
-#  optdepends=('libunwind: unwind backtrace support')
-#  conflicts=('xorg-server-xwayland' 'xorg-xwayland')
-#  provides=('xorg-server-xwayland' 'xorg-xwayland')
-  
-#  _install fakeinstall/usr/bin/Xwayland
-
-  # license
-#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
-#}
 
 package_xorg-server-devel-rootless-nosystemd-minimal-git() {
   pkgdesc="Development files for the X.Org X server"
@@ -288,15 +222,19 @@ package_xorg-server-devel-rootless-nosystemd-minimal-git() {
   conflicts=('xorg-server-devel')
   provides=('xorg-server-devel')
   
-  _install fakeinstall/usr/include/xorg/*
-  _install fakeinstall/usr/lib/pkgconfig/xorg-server.pc
-  _install fakeinstall/usr/share/aclocal/xorg-server.m4
+  cd xserver
+  make DESTDIR="${pkgdir}" install
 
-  # license
-#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
+  rm -rf "${pkgdir}/usr/bin"
+  rm -rf "${pkgdir}/usr/share/man"
+  rm -rf "${pkgdir}/usr/share/doc"
+  rm -rf "${pkgdir}/usr/share/X11"
+  rm -rf "${pkgdir}/usr/lib/xorg"
+  rm -rf "${pkgdir}/usr/lib/xorg-server"
+  rm -rf "${pkgdir}/var"
 
-  # make sure there are no files left to install
-#  find fakeinstall -depth -print0 | xargs -0 rmdir
+  install -m755 -d "${pkgdir}/usr/share/licenses/xorg-server-devel"
+  ln -sf ../xorg-server-common/COPYING "${pkgdir}/usr/share/licenses/xorg-server-devel/COPYING"
 }
 
 arch=('x86_64')
