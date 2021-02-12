@@ -1,0 +1,21 @@
+pkgbase = gopass-jsonapi-git
+	pkgdesc = The jsonapi for gopass used for bridging to browsers
+	pkgver = r3.dc7295f
+	pkgrel = 1
+	url = https://github.com/gopasspw/gopass-jsonapi
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = go
+	makedepends = git
+	optdepends = xdotool: for typing passwords selected by dmenu
+	optdepends = xsel: clipboard support
+	optdepends = xclip: clipboard support
+	provides = gopass-jsonapi
+	conflicts = gopass-jsonapi
+	source = git+https://github.com/gopasspw/gopass-jsonapi
+	sha256sums = SKIP
+
+pkgname = gopass-jsonapi-git
