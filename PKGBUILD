@@ -6,7 +6,7 @@ _pkgname="${_name,,}"
 _plugin_uri="https://www.jahnichen.de/plugins/lv2/${_name}"
 pkgname="${_pkgname}-git"
 pkgdesc="A beat / envelope shaper LV2 plugin (git version)"
-pkgver=0.9.r5.gd19b0d6
+pkgver=0.10.r3.gb4674dd
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/sjaehn/${_name}"
@@ -34,16 +34,19 @@ build() {
   make
 }
 
-check() {
-  cd "${srcdir}/${_pkgname}"
-  # TTL has no minor/microVersion yet, so skip tests for these until first release
-  lv2lint -t "Plugin Version *" -Mpack -I "${_name}.lv2/" "${_plugin_uri}"
-}
+# Unfortunately, lv2lint is not able to test an uninstalled plugin when a
+# conflicting version of the plugin (or one without a proper version at all)
+# is installed, so we dsiable the check function for now.
+#check() {
+#  cd "${srcdir}/${_pkgname}"
+#  # TTL has no minor/microVersion yet, so skip tests for these until first release
+#  lv2lint -t "Plugin Version *" -Mpack -I "${_name}.lv2/" "${_plugin_uri}"
+#}
 
 package() {
   cd "${srcdir}/${_pkgname}"
   make PREFIX="/usr" DESTDIR="$pkgdir/" install
   install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-  # remove useless license file
+  # remove license file in wrong location
   find "${pkgdir}/usr/lib/" -type f -iname "*LICENSE*" -delete
 }

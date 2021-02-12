@@ -1,6 +1,6 @@
 pkgbase = bshapr-git
 	pkgdesc = A beat / envelope shaper LV2 plugin (git version)
-	pkgver = 0.9.r5.gd19b0d6
+	pkgver = 0.10.r3.gb4674dd
 	pkgrel = 1
 	url = https://github.com/sjaehn/BShapr
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = bshapr-git
 	depends = glibc
 	depends = libx11
 	provides = bshapr
-	provides = bshapr=0.9
+	provides = bshapr=0.10
 	conflicts = bshapr
 	source = bshapr::git+https://github.com/sjaehn/BShapr
 	md5sums = SKIP
