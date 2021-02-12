@@ -39,7 +39,7 @@ build() {
         -B build_static
   make -C build_static
 
-  msg2 "Build static ${_name} library"
+  msg2 "Build shared ${_name} library"
   cmake "${CMAKE_FLAGS[@]}" \
         -DBUILD_SHARED_LIBS=ON \
         -S "${srcdir}/${_name}" \
