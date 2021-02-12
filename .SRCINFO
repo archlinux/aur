@@ -1,6 +1,6 @@
 pkgbase = lua-format
 	pkgdesc = LuaFormatter - Code formatter for Lua
-	pkgver = 1.3.4
+	pkgver = 1.3.5
 	pkgrel = 1
 	url = https://github.com/Koihik/LuaFormatter
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = lua-format
 	provides = LuaFormatter
 	conflicts = lua-format
 	conflicts = LuaFormatter
-	source = lua-format-1.3.4::https://github.com/Koihik/LuaFormatter/archive/1.3.4.tar.gz
+	source = lua-format-1.3.5::https://github.com/Koihik/LuaFormatter/archive/1.3.5.tar.gz
 	source = args-6.2.2::https://github.com/Taywee/args/archive/6.2.2.tar.gz
 	source = lib.patch
-	sha512sums = 520c787b0b44abd3ff31ef6e745d3ef59d2b3d62e53d8221b3c00d687c1f5c5bf5299012487c542dfe3063f9121e2a11eeb63072f698f0e0176af8b791024ae3
+	sha512sums = 927bd53f453c028d276b94d96bc28953b4a81a8be9ac026781b38f17f4c8c28171f4073b8fe7b70482997ae994b4e6605ddf0ec6cce8961d59c7422729115e66
 	sha512sums = 29b0f53316fe35f65ab92c807180c1e6cc6084dfed9f635aa2e3e848137ee8e5d24ec6831cf19189c6432335f73d1466564e0bc9bc259c98f3f0de264637f971
 	sha512sums = 0c75d3df60ecb77c08eb86cf6a16e69d12286652ec454e237ad8ac76afce110302bd023bde76d2a53a71d681081023fb3cf3e1bd5c72d23a74a3c5a135f869d3
 
