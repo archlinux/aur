@@ -69,7 +69,7 @@ package()
     cp -r ${srcdir}/${_pkgname}/ ${pkgdir}/usr/lib/
     
     # Symlinking run.sh to /usr/bin/nbxplorer.
-    ln -rT ${pkgdir}/usr/lib/${_pkgname}/run.sh ${pkgdir}/usr/bin/$(echo ${_pkgname} | tr "[A-Z]" "[a-z]")
+    ln -rTs ${pkgdir}/usr/lib/${_pkgname}/run.sh ${pkgdir}/usr/bin/$(echo ${_pkgname} | tr "[A-Z]" "[a-z]")
     chmod 755 ${pkgdir}/usr/bin/$(echo ${_pkgname} | tr "[A-Z]" "[a-z]")
     
     # Install the systemd service.
