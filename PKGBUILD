@@ -2,7 +2,7 @@
 
 pkgname=esearch
 _pkgdirname="pacman-$pkgname"
-pkgver=4.3.9
+pkgver=4.4.1
 _gittag="v$pkgver"
 pkgrel=1
 pkgdesc="Replacement for pacman -Ss and pacman -Si"
@@ -17,7 +17,7 @@ md5sums=("SKIP")
 
 pkgver() {
     cd "$srcdir/$_pkgdirname"
-    echo $(grep "define VERSION" include/def.h | grep -E -o "[0-9\\.]+")
+    echo $(grep "define VERSION" src/def.h | grep -E -o "[0-9\\.]+")
 }
 
 build() {
