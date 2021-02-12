@@ -1,7 +1,7 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=comrak
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='CommonMark + GFM compatible Markdown parser and renderer'
 arch=('x86_64' 'i686')
@@ -9,7 +9,7 @@ url="https://github.com/kivikakk/$pkgname"
 license=('MIT' 'custom')
 makedepends=('cargo' 'rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('0a7c134dfe937abb40e0c681ebcb3a5a30299b93bc9b15058d24dd77a3bb61c2')
+sha256sums=('c5415987223ebcc64357eab720219d3d8393b61cedb58dc35396cc0249726986')
 
 prepare() {
     cd "$pkgname-$pkgver"
