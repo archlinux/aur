@@ -1,0 +1,20 @@
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -216,17 +216,3 @@ if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
+ else()
+    install(TARGETS Diamond DESTINATION .)
+ endif()
+-
+-cs_copy_library(CsCore)
+-cs_copy_library(CsGui)
+-cs_copy_library(CsNetwork)
+-
+-if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
+-   # copy required plugins to the bundle
+-   cs_copy_plugins(CsGui ../plugins)
+-   cs_copy_plugins(CsPrinterDriver ../plugins)
+-else()
+-   # installs required plugins
+-   cs_copy_plugins(CsGui)
+-   cs_copy_plugins(CsPrinterDriver)
+-endif()

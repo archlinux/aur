@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Diamond
+Comment=Compact editor designed for programmers
+Path=/usr/bin
+Exec=diamond-editor
+Icon=diamond-editor
+Terminal=false
+StartupNotify=false
+Type=Application
+Categories=Application;Utility;TextEditor;WordProcessor;

@@ -1,0 +1,25 @@
+pkgbase = diamond-editor-git
+	pkgdesc = Compact text editor designed for programmers (git version)
+	pkgver = 1.3.6.r0.g1de106c
+	pkgrel = 1
+	url = https://www.copperspice.com/
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = sh
+	depends = copperspice
+	depends = hunspell
+	provides = diamond-editor
+	conflicts = diamond-editor
+	source = git+https://github.com/copperspice/diamond.git
+	source = 010-diamond-editor-do-not-copy-cs-libs.patch
+	source = diamond-editor.desktop
+	source = diamond-editor.sh
+	sha256sums = SKIP
+	sha256sums = 5b569f2bba090f5a32e93da38ee4ab225882a5567f7d1f60ffdeb2aae5469e6d
+	sha256sums = e114cad024aa5d6768bd50fabe51c311e37a4a7969382ace8c16878a06b824e4
+	sha256sums = 16f8c39d44c7dfcf9784a6b0414af4aa266a67de10e17bffb6fd5ea43a95e48a
+
+pkgname = diamond-editor-git
+
