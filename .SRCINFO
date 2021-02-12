@@ -1,6 +1,6 @@
 pkgbase = seclists
 	pkgdesc = A collection of multiple types of lists used during security assessments, collected in one place.
-	pkgver = 2020.4
+	pkgver = 2021.1
 	pkgrel = 1
 	url = https://github.com/danielmiessler/SecLists
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = seclists
 	makedepends = findutils
 	makedepends = coreutils
 	makedepends = tar
-	source = seclists-2020.4.tar.gz::https://github.com/danielmiessler/SecLists/archive/2020.4.tar.gz
-	sha256sums = eeec19a2596e0d0ed6f8d81e2feec828641ba6e66fc614e3e60bb5b30219fd86
+	source = seclists-2021.1.tar.gz::https://github.com/danielmiessler/SecLists/archive/2021.1.tar.gz
+	sha256sums = ac44e33bc388f954e077db90714a2eab5d2c65e67400dda8b998ca555f9eb74f
 
 pkgname = seclists
 
