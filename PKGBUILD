@@ -4,7 +4,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=glib2-patched-thumbnailer
-pkgver=2.66.6
+pkgver=2.66.7
 pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
@@ -20,7 +20,7 @@ optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-repor
             'libelf: gresource inspection tool')
 options=('!docs')
 license=(LGPL)
-_commit=d5ec4f360fb5a2ef0df1862999f970dc67fa352c  # tags/2.66.6^0
+_commit=95115f029d9c170c2e966cd7d3547b6394c92a4a  # tags/2.66.7^0
 source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
         noisy-glib-compile-schemas.diff
         glib-thumbnailer.patch
@@ -60,7 +60,7 @@ build() {
 
 #skip this; test fails
 #check() {
-#  meson test -C build --no-suite flaky --print-errorlogs
+#   meson test -C build --no-suite flaky --no-suite slow --print-errorlogs
 #}
 
 package() {
