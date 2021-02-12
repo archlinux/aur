@@ -89,11 +89,10 @@ cd xserver
       --with-xkb-path=/usr/share/X11/xkb \
       --with-xkb-output=/var/lib/xkb \
       --with-fontrootdir=/usr/share/fonts \
-      --without-sha1 \
+      --with-sha1=libgcrypt \
       --without-dtrace \
       --disable-linux-acpi \
       --disable-linux-apm \
-      --disable-agp \
       --disable-strict-compilation \
       --disable-debug \
       --without-int10 \
@@ -120,7 +119,6 @@ cd xserver
       --disable-vgahw \
       --disable-int10-module \
       --disable-windowsdri \
-      --disable-libdrm \
       --disable-clientids \
       --disable-xquartz \
       --disable-xwayland-eglstream \
@@ -129,9 +127,12 @@ cd xserver
       --disable-xf86-input-inputtest \
       --disable-xshmfence \
       --without-systemd-daemon \
-      --disable-xtrans-send-fds \
+      --disable-secure-rpc \
+      --disable-tcp-transport \
       --enable-unit-tests=no \
       --enable-integration-tests=no \
+      --enable-agp \
+      --enable-libdrm \
       --enable-mitshm \
       --enable-xv \
       --enable-dga \
@@ -145,7 +146,9 @@ cd xserver
 # xv required for nvidia blob/amdgpu/mesa
 # dga required for xorg nvidia blob/amdgpu/mesa ### NOT REQUIRED FOR XWAYLAND
 # glamor required for xwayland support
-# pciaccess set to true or build fails
+# pciaccess required or build fails
+# agp required or build fails
+# libdrm required or build fails
 # b_pgo set to off or build fails
 # dpms and dri1 set to true or xf86-video-amdgpu build fails
 
