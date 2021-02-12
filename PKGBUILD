@@ -4,9 +4,9 @@ _pkgname=scipy
 _pkgver=1.6.0
 _build=py39h91f5cce_0
 _build_number=0
-_libgfortran=libgfortran-ng-7.3.0-hdf63c60_0
+_libgfortran=libgfortran-ng-7.5.0-hae1eefd_17
 pkgver="${_pkgver}.${_build_number}.${_build//_/.}"
-pkgrel=2
+pkgrel=3
 pkgdesc="SciPy is open-source software for mathematics, science, and engineering - with Intel MKL - prebuilt binaries from Anaconda"
 arch=('x86_64')
 url="http://www.scipy.org/"
@@ -29,7 +29,7 @@ source=("https://repo.anaconda.com/pkgs/main/linux-64/${_pkgname}-${_pkgver}-${_
         "https://repo.anaconda.com/pkgs/main/linux-64/${_libgfortran}.tar.bz2"
         )
 sha256sums=('9dafd36188e52a1e5c93aa03fe18713f5c79220d42f394090ee7d5e2b29ad61a'
-            '83c6fdb30a240fbaa09f5d2e2ae8f092759cb710bc3fa628ccb18934fc237b7f')
+            '70fba6ad6d8b5ca9923244bc03f44ffbaccf9f2547fa75b0b702507bea4ceac4')
 
 package() {
     mkdir -p "${pkgdir}/usr/"
