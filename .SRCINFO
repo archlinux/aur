@@ -1,0 +1,18 @@
+pkgbase = python-yqxx
+	pkgdesc = Auto submitter for xg.hit.edu.cn yqxx
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/billchenchina/yqxx
+	arch = any
+	license = AGPL3
+	makedepends = python-setuptools
+	depends = python-beautifulsoup4
+	depends = python-pycryptodome
+	depends = python-requests
+	depends = python-yaml
+	depends = python-hitutil
+	source = https://files.pythonhosted.org/packages/source/y/yqxx/yqxx-0.4.0.tar.gz
+	sha256sums = fe19e7a0f2dd92923460c6bb7abe8c1304a158bc8bb3a2f0373801b4da2dc209
+
+pkgname = python-yqxx
+
