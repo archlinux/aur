@@ -9,7 +9,7 @@ pkgname=(pipewire-full-git pipewire-full-docs-git pipewire-full-jack-git
          gst-plugin-pipewire-full-git
          pipewire-full-vulkan-git pipewire-full-ffmpeg-git
          pipewire-full-bluez5-git pipewire-full-bluez5-hsphfpd-git)
-pkgver=0.3.21.r85.g58d2fe44
+pkgver=0.3.21.r89.g0855b1bb
 pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines"
 url="https://pipewire.org"
@@ -32,8 +32,9 @@ prepare() {
 }
 
 build() {
-  arch-meson $_pkgbase build
-  meson configure build \
+  # make AUR helper happy
+  rm -rf build
+  arch-meson $_pkgbase build \
     -D docs=true \
     -D vulkan=true \
     -D ffmpeg=true \
