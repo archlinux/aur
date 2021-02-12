@@ -1,7 +1,7 @@
 pkgbase = intellij-idea-ue-eap
 	pkgdesc = Early access version of the upcoming version of Intellij Idea IDE (ultimate version)
 	pkgver = 2021.1.211.5787.15
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.jetbrains.com/idea/nextversion
 	arch = any
 	license = custom
@@ -11,7 +11,9 @@ pkgbase = intellij-idea-ue-eap
 	depends = libdbusmenu-glib
 	options = !strip
 	source = https://download.jetbrains.com/idea/ideaIU-211.5787.15.tar.gz
+	source = idea-ue-eap.sh
 	sha256sums = 319cba534242e6073bf7252130f4fa2d730e8f36d9f4561868a99bc91f307af7
+	sha256sums = 2094f03ada492990dcfe0ac08f6001d55a11b441bcb9dfca92124ff68e129dcd
 
 pkgname = intellij-idea-ue-eap
 
