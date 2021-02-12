@@ -1,7 +1,8 @@
 pkgbase = dockbarx-git
 	pkgdesc = TaskBar with groupping and group manipulation
-	pkgver = 1.0beta+r820+4a5b382
-	pkgrel = 2
+	pkgver = 1.0beta+r850+a3e2186
+	pkgrel = 1
+	epoch = 1
 	url = https://github.com/M7S/dockbarx
 	install = dockbarx.install
 	arch = i688
@@ -25,11 +26,9 @@ pkgbase = dockbarx-git
 	optdepends = python-pyudev: dockx battery applet
 	optdepends = gconf: export settings from older versions of dockbarx
 	optdepends = python-lxml: import settings script
-	provides = dockbarx=1.0beta+r820+4a5b382
-	source = dockbarx::git+https://github.com/M7S/dockbarx.git#branch=pygi-python3
-	source = xuzhen_fixes_pr142_thru_f772075.patch
+	provides = dockbarx=1.0beta+r850+a3e2186
+	source = dockbarx::git+https://github.com/xuzhen/dockbarx.git#branch=pygi-python3
 	sha256sums = SKIP
-	sha256sums = c95ceebf2391d8bedb4fe0014474d7e91ad894b0d7eba1c1e76046c74e8a5457
 
 pkgname = dockbarx-git
 
