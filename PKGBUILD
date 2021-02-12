@@ -4,17 +4,19 @@
 pkgname=eudic
 pkgver=12.5.0
 _date=2021-02-06
-pkgrel=2
-pkgdesc="Eudic, a proprietary dictionary software for linux"
+_lang=en
+_flang=English
+pkgrel=3
+pkgdesc="Proprietary  ${_flang} dictionary software for linux"
 arch=('x86_64')
-url="https://www.eudic.net/v4/en/app/eudic"
+url="https://www.eudic.net/v4/${_lang}/app/${pkgname}"
 license=('unknown')
 depends=(
          'hicolor-icon-theme'
          'qt5-speech'
          'qt5-webkit'
          )
-source=("${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/eudic.deb?v=2021-02-06")
+source=("${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/${pkgname}.deb?v=${_date}")
 sha256sums=('20a2780110aa4024c3dd002415c6cc45b9ba61b209c8745baf2f2f861772b111')
 
 prepare() {
@@ -24,25 +26,29 @@ prepare() {
 }
 
 package() {
-  install -dm755 ${pkgdir}/usr/share
-
-  cp -pvr build/usr/share/* ${pkgdir}/usr/share/ 
+  mkdir -p ${pkgdir}/usr/share/eusoft/${pkgname}
+  mv build/usr/share/eusoft/* ${pkgdir}/usr/share/eusoft/${pkgname}
+  
+  
+  cp -pr build/usr/share/* ${pkgdir}/usr/share/ 
+  
 
   # link executable
   mkdir ${pkgdir}/usr/bin/
-  ln -s /usr/share/eusoft/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+  ln -s /usr/share/eusoft/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 
   # desktop enrty
   sed -i "s|/usr/share/eusoft/AppRun|${pkgname}|g" ${pkgdir}/usr/share/applications/${pkgname}.desktop
   
   # qt plugin path
-  sed -i '4c Prefix = /usr/lib/qt/' ${pkgdir}/usr/share/eusoft/qt.conf
+  sed -i '4c Prefix = /usr/lib/qt/' ${pkgdir}/usr/share/eusoft/${pkgname}/qt.conf
   
   # remove unused files.
-  rm -rf ${pkgdir}/usr/share/eusoft/gstreamer-1.0/
-  rm -rf ${pkgdir}/usr/share/eusoft/lib/
-  rm -rf ${pkgdir}/usr/share/eusoft/plugins/
-  rm -rf ${pkgdir}/usr/share/eusoft/*.so.*
-  rm -rf ${pkgdir}/usr/share/eusoft/appRun
+  rm -rf ${pkgdir}/usr/share/eusoft/${pkgname}/gstreamer-1.0/
+  rm -rf ${pkgdir}/usr/share/eusoft/${pkgname}/lib/
+  rm -rf ${pkgdir}/usr/share/eusoft/${pkgname}/plugins/
+  rm -rf ${pkgdir}/usr/share/eusoft/${pkgname}/*.so.*
+  rm -rf ${pkgdir}/usr/share/eusoft/${pkgname}/AppRun
+  
 }
 # vim: ts=2 sw=2 et:
