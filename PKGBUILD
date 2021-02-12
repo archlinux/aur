@@ -51,7 +51,7 @@ build() {
 
 package_popsift() {
   pkgdesc+=" [development headers and static libs]"
-  depends=('boost')
+  depends=('boost' "popsift-libs=${pkgver}")
   optdepend=('cuda: for static cudart library')
   options=('staticlibs')
   make -C "$srcdir/build_static" DESTDIR="${pkgdir}" install
@@ -59,6 +59,7 @@ package_popsift() {
 
 package_popsift-libs() {
   depends=('boost-libs>=1.55' 'libcudart.so')
+  provides=("popsift-libs=${pkgver}")
   cd 
   make -C "${srcdir}/build_shared" DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/usr/{include,shared,lib/cmake}
