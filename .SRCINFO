@@ -1,0 +1,15 @@
+pkgbase = ye-git
+	pkgdesc = yes, but without a newline
+	pkgver = r4.f112cb4
+	pkgrel = 1
+	url = https://github.com/BBaoVanC/ye
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	provides = ye
+	conflicts = ye
+	source = git+https://github.com/BBaoVanC/ye.git#branch=master
+	sha256sums = SKIP
+
+pkgname = ye-git
