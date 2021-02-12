@@ -1,6 +1,6 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=repo-add_and_sign
-pkgver=2021.1
+pkgver=2021.2
 pkgrel=1
 pkgdesc='Easily create signed Pacman package repositories.'
 arch=(any)
@@ -8,16 +8,16 @@ license=(GPL)
 url="https://xyne.archlinux.ca/projects/repo-add_and_sign"
 depends=(pyalpm python3 python3-gpg_batch_sign)
 source=(
-  https://xyne.archlinux.ca/projects/repo-add_and_sign/src/repo-add_and_sign-2021.1.tar.xz
-  https://xyne.archlinux.ca/projects/repo-add_and_sign/src/repo-add_and_sign-2021.1.tar.xz.sig
+  https://xyne.archlinux.ca/projects/repo-add_and_sign/src/repo-add_and_sign-2021.2.tar.xz
+  https://xyne.archlinux.ca/projects/repo-add_and_sign/src/repo-add_and_sign-2021.2.tar.xz.sig
 )
 sha512sums=(
-  1de80ee52968dbf428ddd833ba33834540afef821501d5f5196925e00fa46169b3892893f2abb2a807f94352c40d8372ead2cbea332e11a347d01f4de5d0a411
-  04b3e3e4c3161d2b4db99a68dbf9fe3a933fab6e19560bb9a814b663bc6b6115cee9dbab9c7344f92440178f6f14914971d1ff4f91521ec4648c5cc731d1db52
+  ef81619f3527fb362936295d2712ea3e41fc3874c76c7876ebb017f1ac53b191d678f3a51a7a04483785c3aa9a97d3e9fd42281032d5aa0e9d7ff7b8520e0bcd
+  ff6d29793567426460fcfc7815a254c0e7451a541ef2a8f4eab893cc128ba4fb5535fce57e6a84ce9e06efe8c2583b7c53c7b1b9a3f014be393ab3a94bf83651
 )
 md5sums=(
-  24069696ec84d5eb068726c3fa9a7a64
-  d7c2e44727711696d5ddedd13df1f3f4
+  59e757f62d7f903464349cc0e692c55e
+  252cd2e0478a76e540401833759449df
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
