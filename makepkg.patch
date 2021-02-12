@@ -1,0 +1,55 @@
+--- makepkg.conf	2021-02-12 12:47:50.847375538 +0100
++++ /etc/makepkg.conf	2021-02-12 12:59:27.638463099 +0100
+@@ -34,20 +34,20 @@
+ #
+ CARCH="x86_64"
+ CHOST="x86_64-pc-linux-gnu"
+ 
+ #-- Compiler and Linker Flags
+-CPPFLAGS="-D_FORTIFY_SOURCE=2"
+-CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt"
+-CXXFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt"
+-LDFLAGS="-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now"
++#CPPFLAGS="-D_FORTIFY_SOURCE=2"
++#CFLAGS="-march=x86-64 -mtune=native -O3 -pipe -fno-plt"
++#CXXFLAGS=$CFLAGS
++#LDFLAGS="-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now"
+ #RUSTFLAGS="-C opt-level=2"
+ #-- Make Flags: change this for DistCC/SMP systems
+ #MAKEFLAGS="-j2"
+ #-- Debugging flags
+-DEBUG_CFLAGS="-g -fvar-tracking-assignments"
+-DEBUG_CXXFLAGS="-g -fvar-tracking-assignments"
++DEBUG_CFLAGS="-Og -ggdb3 -fvar-tracking-assignments -fstack-protector-all"
++DEBUG_CXXFLAGS=$DEBUG_CFLAGS
+ #DEBUG_RUSTFLAGS="-C debuginfo=2"
+ 
+ #########################################################################
+ # BUILD ENVIRONMENT
+ #########################################################################
+@@ -85,11 +85,11 @@
+ #-- emptydirs:  Leave empty directories in packages
+ #-- zipman:     Compress manual (man and info) pages in MAN_DIRS with gzip
+ #-- purge:      Remove files specified by PURGE_TARGETS
+ #-- debug:      Add debugging flags as specified in DEBUG_* variables
+ #
+-OPTIONS=(strip docs !libtool !staticlibs emptydirs zipman purge !debug)
++OPTIONS=(strip docs libtool staticlibs emptydirs zipman purge debug)
+ 
+ #-- File integrity checks to use. Valid: md5, sha1, sha224, sha256, sha384, sha512, b2
+ INTEGRITY_CHECK=(md5)
+ #-- Options to be used when stripping binaries. See `man strip' for details.
+ STRIP_BINARIES="--strip-all"
+@@ -119,11 +119,11 @@
+ #-- Source packages: specify a fixed directory where all src packages will be placed
+ #SRCPKGDEST=/home/srcpackages
+ #-- Log files: specify a fixed directory where all log files will be placed
+ #LOGDEST=/home/makepkglogs
+ #-- Packager: name/email of the person or organization building packages
+-#PACKAGER="John Doe <john@doe.com>"
++PACKAGER='Aleksy Grabowski <hurufu@gmail.com>'
+ #-- Specify a key to use for package signing
+ #GPGKEY=""
+ 
+ #########################################################################
+ # COMPRESSION DEFAULTS

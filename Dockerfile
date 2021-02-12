@@ -13,6 +13,10 @@ ARG DOCKER_PROJECT=libsocket-git
 RUN useradd --base-dir /home -m --shell /bin/sh --gid root --comment "Build Bot,$HOSTNAME,,," "$DOCKER_USER"
 RUN echo '%root ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/root
 
+# Configure makepkg
+COPY makepkg.patch ./
+RUN patch /etc/makepkg.conf makepkg.patch
+
 USER $DOCKER_USER
 
 # Actual build
