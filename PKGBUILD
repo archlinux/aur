@@ -1,7 +1,7 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=mimeo
 pkgver=2021.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Open files by MIME-type or file name using regular expressions.'
 arch=(any)
 license=(GPL)
@@ -26,7 +26,6 @@ package ()
 {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
 
 
