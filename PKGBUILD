@@ -119,7 +119,6 @@ build() {
     -D debug=false \
     -D input_thread=true \
     -D int10=false \
-    -D xf86-input-inputtest=false \
     -D sparkle=false \
     -D composite=false \
     -D record=false \
