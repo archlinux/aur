@@ -1,6 +1,6 @@
 pkgbase = pipewire-common-git
 	pkgdesc = Server and user space API to deal with multimedia pipelines
-	pkgver = 0.3.21.r75.g21040043
+	pkgver = 0.3.21.r85.g58d2fe44
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -34,7 +34,6 @@ pkgname = pipewire-common-git
 	install = pipewire.install
 	depends = sbc
 	depends = rtkit
-	depends = vulkan-icd-loader
 	depends = libdbus-1.so
 	depends = libncursesw.so
 	depends = libsndfile.so
@@ -101,6 +100,14 @@ pkgname = gst-plugin-pipewire-common-git
 	depends = gst-plugins-base-libs
 	provides = gst-plugin-pipewire
 	conflicts = gst-plugin-pipewire
+
+pkgname = pipewire-common-vulkan-git
+	pkgdesc = Server and user space API to deal with multimedia pipelines (Vulkan SPA plugin)
+	depends = pipewire-common-git
+	depends = libpipewire-0.3.so
+	depends = vulkan-icd-loader
+	provides = pipewire-vulkan
+	conflicts = pipewire-vulkan
 
 pkgname = pipewire-common-ffmpeg-git
 	pkgdesc = Server and user space API to deal with multimedia pipelines (FFmpeg SPA plugin)

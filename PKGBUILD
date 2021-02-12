@@ -6,9 +6,10 @@ _pkgbase=pipewire
 pkgbase=pipewire-common-git
 pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-jack-git
          pipewire-common-pulse-git pipewire-common-alsa-git
-         gst-plugin-pipewire-common-git pipewire-common-ffmpeg-git
+         gst-plugin-pipewire-common-git
+         pipewire-common-vulkan-git pipewire-common-ffmpeg-git
          pipewire-common-bluez5-git pipewire-common-bluez5-hsphfpd-git)
-pkgver=0.3.21.r75.g21040043
+pkgver=0.3.21.r85.g58d2fe44
 pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines"
 url="https://pipewire.org"
@@ -61,7 +62,7 @@ _pick() {
 _ver=${pkgver:0:3}
 
 package_pipewire-common-git() {
-  depends=(sbc rtkit vulkan-icd-loader
+  depends=(sbc rtkit
            libdbus-1.so libncursesw.so libsndfile.so libudev.so libasound.so
            libsystemd.so)
   optdepends=('pipewire-common-docs-git: Documentation'
@@ -102,9 +103,6 @@ package_pipewire-common-git() {
 
   cd "$pkgdir"
 
-  mkdir -p etc/alsa/conf.d
-  ln -st etc/alsa/conf.d /usr/share/alsa/alsa.conf.d/50-pipewire.conf
-
   _pick bluez5-hsphfpd usr/lib/spa-0.2/bluez5
 
   _pick docs usr/share/doc
@@ -117,6 +115,8 @@ package_pipewire-common-git() {
   _pick pulse etc/pipewire/media-session.d/with-pulseaudio
 
   _pick gst usr/lib/gstreamer-1.0
+
+  _pick vulkan usr/lib/spa-0.2/vulkan
 
   _pick ffmpeg usr/lib/spa-0.2/ffmpeg
 }
@@ -152,7 +152,8 @@ package_pipewire-common-alsa-git() {
   conflicts=(pipewire-alsa)
 
   mkdir -p "$pkgdir"/etc/{alsa/conf.d,pipewire/media-session.d}
-  ln -st "$pkgdir/etc/alsa/conf.d" /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf
+  ln -st "$pkgdir/etc/alsa/conf.d" \
+    /usr/share/alsa/alsa.conf.d/{50-pipewire,99-pipewire-default}.conf
   touch "$pkgdir/etc/pipewire/media-session.d/with-alsa"
 }
 
@@ -162,6 +163,14 @@ package_gst-plugin-pipewire-common-git() {
   provides=(gst-plugin-pipewire)
   conflicts=(gst-plugin-pipewire)
   mv gst/* "$pkgdir"
+}
+
+package_pipewire-common-vulkan-git() {
+  pkgdesc+=" (Vulkan SPA plugin)"
+  depends=(pipewire-common-git libpipewire-$_ver.so vulkan-icd-loader)
+  provides=(pipewire-vulkan)
+  conflicts=(pipewire-vulkan)
+  mv vulkan/* "${pkgdir}"
 }
 
 package_pipewire-common-ffmpeg-git() {
