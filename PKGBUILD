@@ -1,16 +1,15 @@
 # Maintainer: Roboron <robertoms258 at gmail dot com>
 
 pkgname=simutrans-svn
-pkgver=r9617
+pkgver=r9625
 pkgrel=1
 pkgdesc="Transportation simulation game - Nightly build from SVN"
 arch=('any')
 url="https://www.simutrans.com/"
 license=('custom:Artistic')
-install="$pkgname.install"
-depends=('gcc-libs' 'zstd' 'zlib' 'sdl2_mixer' 'hicolor-icon-theme' 'freetype2' 'miniupnpc')
-makedepends=('subversion' 'pkgconf')
-optdepends=('fluidsynth: play MIDI music'
+depends=('gcc-libs' 'zstd' 'zlib' 'sdl2_mixer' 'hicolor-icon-theme' 'freetype2' 'miniupnpc' 'fluidsynth')
+makedepends=('subversion' 'pkgconf' 'autoconf' 'make')
+optdepends=('freepats-general-midi: recommended MIDI soundfont'
             'simutrans-pak32.comic: Lowest resolution graphics set for Simutrans'
             'simutrans-pak48.excentrique: Low resolution graphics set for Simutrans, with an eccentric theme'
             'simutrans-pak64: Low resolution graphics set for Simutrans'
@@ -34,13 +33,11 @@ conflicts=('simutrans')
 source=(svn+svn://servers.simutrans.org/simutrans/trunk
         settings-folder.patch
         path-for-game-data.patch
-        config.patch
         simutrans.desktop
         "How to add files and paksets.md")
 sha256sums=('SKIP'
             '671398550f46525ef0dae338d9e1984bfc0e1ec36153e1c4163c8c35de240c7e'
             'cb9fda1a99d0b54f316ba5ea5b90ec658641f9a9d3b77faf981525e12ff99188'
-            '0a5fef72b8d4d3fce4454e6411e2b620104b3b0e3f57732873d14b9f51001176'
             '99545152f5e739b7eb028152383fa10d3e3d303c99167e1c6e5a6bd7dcd00fa3'
             '52a00091a71e250205adcb3ef8b86b560a5c27429ec700c5e5242f58184d90ab')
             
@@ -50,20 +47,18 @@ prepare() {
   # Adjust paths
   patch -Np0 -i ../settings-folder.patch
   patch -Np0 -i ../path-for-game-data.patch
-
-  # Configure the build process
-  cp config.template config.default
-  patch -Np0 -i ../config.patch
 }
 
 build() {
   cd trunk
+  autoconf
+  ./configure
   make
 }
 
 package() {
   #binary
-  install -Dm755 trunk/build/default/sim "$pkgdir/usr/bin/simutrans"
+  install -Dm755 trunk/sim "$pkgdir/usr/bin/simutrans"
   
   #data
   mkdir -p "$pkgdir/usr/share/games/simutrans"
