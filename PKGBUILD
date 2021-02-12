@@ -9,10 +9,8 @@ arch=('x86_64')
 url="https://github.com/pop-os/system76-io-dkms"
 license=('GPL3')
 depends=('dkms')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-        "system76-io.conf")
-sha256sums=("492b334c0861af0e3627eb8f9f25690ba1dc617ba743a4f25ca02740de26db26"
-            "aac9100aba28a0a6716b6b2012858ce996a5f710e1f1e02628da1cff2ef2bdd2")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('492b334c0861af0e3627eb8f9f25690ba1dc617ba743a4f25ca02740de26db26')
 
 package() {
 	# Installation directory
@@ -30,5 +28,6 @@ package() {
 	sed "s/#MODULE_VERSION#/$pkgver/" "debian/system76-io-dkms.dkms" > "$install_dir/dkms.conf"
 
 	# Load the module at boot
-	install -Dm644 $srcdir/system76-io.conf -t "$pkgdir/etc/modules-load.d"
+	install -Dm644 "usr/share/initramfs-tools/modules.d/$pkgname.conf" \
+		"$pkgdir/etc/modules-load.d/system76-io.conf"
 }
