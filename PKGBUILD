@@ -4,18 +4,22 @@
 pkgname=onscripter-gbk
 _pkgname=${pkgname%-gbk}
 pkgver=8.951935b
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A game engine compatible to NScripter with GBK patch, which is used to create and perform visual novel games"
 arch=('i686' 'x86_64')
 url="https://github.com/natdon/ONScripter-CN"
 license=('GPL2')
 depends=('bzip2'
-	 'sdl_image'
-	 'sdl_mixer'
-	 'sdl_ttf'
-	 'lua51'
-	 'fontconfig')
+         'sdl2'
+         'sdl_image'
+         'sdl_mixer'
+         'sdl_ttf'
+         'lua51'
+         'fontconfig'
+         'libjpeg-turbo'
+         'libvorbis'
+         'smpeg')
 source=("${pkgname}::git://github.com/natdon/ONScripter-CN.git#commit=951935b05a")
 md5sums=('SKIP')
 
