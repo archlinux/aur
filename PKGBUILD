@@ -118,17 +118,36 @@ build() {
     -D debug=false \
     -D input_thread=true \
     -D int10=false \
-    -D xf86-input-inputtest=false
-     
+    -D sparkle=false \
+    -D composite=false \
+    -D record=false \
+    -D dri=false \
+    -D dri3=false \
+    -D present=false \
+    -D xf86vidmode=false \
+    -D dbe=false \
+    -D xfree86-utils=false \
+    -D windowsdri=false \
+    -D kdrive=false \
+    -D systemd-daemon=false \
+    -D libdrm=false \
+    -D clientids=false \
+    -D pciaccess=true \
+    -D xshmfence=false
+
+# glamor required for xwayland support
+# dga required for xorg nvidia blob/amdgpu/mesa ### NOT REQUIRED FOR XWAYLAND
 # xinerama required for nvidia blob/amdgpu/mesa
 # mitshm required for nvidia blob/amdgpu/mesa
 # xv required for nvidia blob/amdgpu/mesa
-# dga required for xorg nvidia blob/amdgpu/mesa ### NOT REQUIRED FOR XWAYLAND
-# glamor required for xwayland support
+# composite required for nvidia blob/amdgpu/mesa
+# pciaccess required or build fails
+# agp required or build fails
+# libdrm required or build fails
 # b_pgo set to off or build fails
 # dpms and dri1 set to true or xf86-video-amdgpu build fails
 
-### xorg flag needs to be set to false for a successful build with -flto / b_lto enabled
+### enable-unit-tests + xorg flags break compile if -flto / b_lto is enabled
 
   # Print config
   meson configure build
