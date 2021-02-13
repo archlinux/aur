@@ -2,7 +2,7 @@
 pkgname=python-privy-git
 _name=privy
 pkgver=6.0.0.r67.624bb58
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy, fast lib to correctly password-protect your data"
 arch=('any')
 url="https://github.com/ofek/privy"
@@ -32,5 +32,5 @@ package() {
 	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 	rm -rf "$pkgdir/$site_packages/tests"
 
-	install -Dm644 LICENSE-MIT LICENSE-APACHE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+	install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
