@@ -1,6 +1,6 @@
 pkgbase = errbot
 	pkgdesc = a chatbot. It allows you to start scripts interactively from your chatrooms for any reason: random humour, chatops, starting a build, monitoring commits, triggering alerts...
-	pkgver = 6.1.4
+	pkgver = 6.1.7
 	pkgrel = 1
 	url = https://github.com/errbotio/errbot
 	arch = any
