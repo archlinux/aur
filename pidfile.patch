@@ -1,0 +1,26 @@
+--- src.orig/owamp-4.3.3/conf/owampd.service	2021-02-02 17:37:00.000000000 +0100
++++ src/owamp-4.3.3/conf/owampd.service	2021-02-13 16:03:57.987260927 +0100
+@@ -4,8 +4,8 @@
+ 
+ [Service]
+ Type=forking
+-PIDFile=/var/run/owamp-server.pid
+-ExecStart=/usr/bin/owampd -c /etc/owamp-server -R /var/run
++PIDFile=/run/owamp-server.pid
++ExecStart=/usr/bin/owampd -c /etc/owamp-server -R /run
+ LimitNOFILE=4096
+ 
+ [Install]
+--- src.orig/owamp-4.3.3/conf/twampd.service	2021-02-02 17:37:00.000000000 +0100
++++ src/owamp-4.3.3/conf/twampd.service	2021-02-13 16:00:37.184389996 +0100
+@@ -4,8 +4,8 @@
+ 
+ [Service]
+ Type=forking
+-PIDFile=/var/run/twamp-server.pid
+-ExecStart=/usr/bin/twampd -c /etc/twamp-server -R /var/run
++PIDFile=/run/twamp-server.pid
++ExecStart=/usr/bin/twampd -c /etc/twamp-server -R /run
+ LimitNOFILE=4096
+ 
+ [Install]

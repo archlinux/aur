@@ -1,0 +1,11 @@
+d /etc/owamp-server 0755 owamp owamp
+x /etc/owamp-server/*
+
+d /var/lib/owamp 0755 owamp owamp
+x /var/lib/owamp/*
+
+d /etc/twamp-server 0755 twamp twamp
+x /etc/twamp-server/*
+
+d /var/lib/twamp 0755 twamp twamp
+x /var/lib/twamp/*

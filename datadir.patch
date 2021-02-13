@@ -1,0 +1,24 @@
+diff -r -u src.orig/owamp-4.3.3/conf/owampd.conf src/owamp-4.3.3/conf/owampd.conf
+--- src.orig/owamp-4.3.3/conf/owampd.conf	2021-02-02 17:37:00.000000000 +0100
++++ src/owamp-4.3.3/conf/owampd.conf	2021-02-13 15:54:06.628604068 +0100
+@@ -55,7 +55,7 @@
+ # The "catalog" subdirectory is completely cleaned and recreated each time
+ # owampd is restarted. DONT PUT ANYTHING IN THERE!
+ # (defaults to $cwd)
+-#datadir		/big/enough
++datadir		/var/lib/owamp
+ 
+ # authmode - uncomment to make only Open.
+ # (defaults to OAE)
+diff -r -u src.orig/owamp-4.3.3/conf/twampd.conf src/owamp-4.3.3/conf/twampd.conf
+--- src.orig/owamp-4.3.3/conf/twampd.conf	2021-02-02 17:37:00.000000000 +0100
++++ src/owamp-4.3.3/conf/twampd.conf	2021-02-13 15:54:23.318572974 +0100
+@@ -45,7 +45,7 @@
+ # The "catalog" subdirectory is completely cleaned and recreated each time
+ # twampd is restarted. DONT PUT ANYTHING IN THERE!
+ # (defaults to $cwd)
+-#datadir		/big/enough
++datadir		/var/lib/twamp
+ 
+ # authmode - uncomment to make only Open.
+ # (defaults to OAEM)
