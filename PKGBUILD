@@ -29,7 +29,7 @@ makedepends=('git' 'gulp' 'npm' 'python2' 'yarn' 'nodejs-lts-erbium')
 conflicts=('code')
 provides=('code')
 install='code-transparent.install'
-source=("$_pkgname::git+$url.git"
+source=("git+$url.git#commit=$_commit"
         'code.js'
         'code.sh'
         'product_json.diff'
