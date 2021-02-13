@@ -1,17 +1,18 @@
 # Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
 
 _name=futurerestore
-_forkname=$_name-marijuanarm
-pkgname=$_forkname-git
-pkgver=r190.e4a8178
+_fork=marijuanARM
+_forkpkgname=$_name-${_fork,,}
+pkgname=$_forkpkgname-git
+pkgver=r189.3786d4c
 pkgrel=2
-pkgdesc="iOS upgrade and downgrade tool utilizing SHSH blobs - marijuanARM's fork - git version"
+pkgdesc="iOS upgrade and downgrade tool utilizing SHSH blobs - marijuanARM's fork (for A12 and below only) - git version"
 arch=('x86_64')
-url="https://github.com/marijuanARM/$_name"
+url="https://github.com/$_fork/$_name"
 license=('LGPL3')
 depends=('libplist' 'libzip' 'libimobiledevice' 'libfragmentzip' 'libirecovery' 'curl' 'openssl' 'zlib' 'img4tool' 'libgeneral')
 makedepends=('git')
-provides=("$_name" "$_forkname")
+provides=("$_name" "$_forkpkgname")
 conflicts=("$_name")
 source=("git+$url.git"
         'git+https://github.com/tihmstar/tsschecker.git'
