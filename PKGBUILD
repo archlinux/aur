@@ -2,12 +2,12 @@
 
 pkgname=qmlkonsole-git
 pkgver=r77.0106a20
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal app for Plasma Mobile"
 arch=('x86_64')
 url="https://invent.kde.org/plasma-mobile/qmlkonsole"
 license=('GPL3')
-depends=('ki18n' 'kconfig' 'kirigami2' 'qmltermwidget')
+depends=('ki18n' 'kconfig' 'kirigami2' 'qmltermwidget' 'qt5-svg')
 makedepends=('git' 'qt5-tools' 'extra-cmake-modules')
 provides=('qmlkonsole')
 conflicts=('qmlkonsole')

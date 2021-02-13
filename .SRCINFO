@@ -1,7 +1,7 @@
 pkgbase = qmlkonsole-git
 	pkgdesc = Terminal app for Plasma Mobile
 	pkgver = r77.0106a20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/plasma-mobile/qmlkonsole
 	arch = x86_64
 	license = GPL3
@@ -12,6 +12,7 @@ pkgbase = qmlkonsole-git
 	depends = kconfig
 	depends = kirigami2
 	depends = qmltermwidget
+	depends = qt5-svg
 	provides = qmlkonsole
 	conflicts = qmlkonsole
 	source = git+https://invent.kde.org/plasma-mobile/qmlkonsole.git
