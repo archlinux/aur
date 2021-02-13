@@ -1,16 +1,16 @@
 pkgbase = solunar-git
 	pkgdesc = A simple command-line utility for calculating Sun and Moon rise and set, and related times.
-	pkgver = 0.1.3b.d20180509.r515db46
+	pkgver = 0.1.3d.d20200626.r3621219
 	pkgrel = 1
-	url = http://kevinboone.net/README_solunar.html
+	url = https://github.com/kevinboone/solunar_cmdline
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = glibc
 	depends = tzdata
-	provides = solunar=0.1.3b.d20180509.r515db46
+	provides = solunar=0.1.3d.d20200626.r3621219
 	conflicts = solunar
-	replaces = solunar<=0.1.3b.d20180509.r515db46
+	replaces = solunar<=0.1.3d.d20200626.r3621219
 	source = solunar::git://github.com/kevinboone/solunar_cmdline
 	sha256sums = SKIP
 

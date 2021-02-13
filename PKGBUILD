@@ -6,11 +6,11 @@
 _pkgname="solunar"
 pkgname=solunar-git
 _pkgver="latest"
-pkgver=0.1.3b.d20180509.r515db46
+pkgver=0.1.3d.d20200626.r3621219
 pkgrel=1
 pkgdesc="A simple command-line utility for calculating Sun and Moon rise and set, and related times."
 arch=('i686' 'x86_64')
-url='http://kevinboone.net/README_solunar.html'
+url='https://github.com/kevinboone/solunar_cmdline'
 depends=('glibc' 'tzdata')
 provides=("${_pkgname}=${pkgver}")
 replaces=("${_pkgname}<=${pkgver}")
