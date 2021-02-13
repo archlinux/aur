@@ -1,7 +1,7 @@
 pkgbase = obs-websocket
 	pkgdesc = WebSockets API for obs-studio
 	pkgver = 4.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Palakis/obs-websocket
 	arch = x86_64
 	license = GPL2
@@ -10,9 +10,7 @@ pkgbase = obs-websocket
 	makedepends = websocketpp
 	depends = obs-studio>=26.1.0
 	source = obs-websocket-4.9.0.tar.gz::https://github.com/Palakis/obs-websocket/archive/4.9.0.tar.gz
-	source = obs-studio-26.1.0.tar.gz::https://github.com/obsproject/obs-studio/archive/26.1.0.tar.gz
 	sha256sums = b28d0153c1c67cbb3683dae2369de7daee4ce3c3666daec79327770e2153d573
-	sha256sums = c015d9bab1075ecf9c66c066328e291a20ef36880958fb3db6486ebc5ca9c6da
 
 pkgname = obs-websocket
 
