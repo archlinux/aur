@@ -1,21 +1,22 @@
+# Maintainer: Matthew Gamble <git@matthewgamble.net>
+
 pkgname=mopidy-alarmclock
-pkgver=0.1.7
-pkgrel=2
+pkgver=0.1.9
+pkgrel=1
 pkgdesc="Mopidy extension using it as an alarm clock."
-arch=('any')
+arch=("any")
 url="https://github.com/DavisNT/mopidy-alarmclock"
-license=('APACHE')
+license=("Apache")
 depends=(
-	'python2-setuptools'
-	'mopidy>=0.19'
-	'python2-pykka>=1.1'
-	'python2-monotonic'
+    "mopidy"
+    "python"
+    "python-setuptools"
+    "python-pykka"
 )
-makedepends=('python2' 'git')
-source=("https://github.com/DavisNT/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('041a9512324caefef1cc03c5cf838fd4aa241049f45a173fcd07558f0b368e78')
+source=("https://pypi.io/packages/source/M/Mopidy-AlarmClock/Mopidy-AlarmClock-${pkgver}.tar.gz")
+sha256sums=("8897f29f8621aa8e74ab1d307338df8078a4c9590285e29a93630d958a246ce8")
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+    cd "Mopidy-AlarmClock-${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1
 }
