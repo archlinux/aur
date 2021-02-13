@@ -1,7 +1,7 @@
 # Maintainer: Sebba <sebba at cock dot li>
 pkgname=arc_unpacker-git
 _pkgname=arc_unpacker
-pkgver=r2414.89eae41c
+pkgver=r2426.b9843a13
 pkgrel=1
 pkgdesc="CLI tool for extracting images and sounds from visual novels."
 arch=(x86_64)
