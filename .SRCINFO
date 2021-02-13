@@ -1,0 +1,30 @@
+pkgbase = python-tods-git
+	pkgdesc = Automated Time-series Outlier Detection System
+	pkgver = r134.ac72b5f
+	pkgrel = 1
+	url = https://github.com/datamllab/tods
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-jinja
+	depends = python-numpy
+	depends = python-simplejson
+	depends = python-scikit-learn
+	depends = python-statsmodels
+	depends = python-pywavelets
+	depends = python-pillow
+	depends = python-tensorflow
+	depends = python-keras-applications
+	depends = python-pyod
+	depends = python-nimfa
+	depends = python-stumpy
+	depends = python-more-itertools
+	provides = python-tods
+	conflicts = python-tods
+	source = git+https://github.com/datamllab/tods
+	md5sums = SKIP
+
+pkgname = python-tods-git
+
