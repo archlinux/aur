@@ -1,3 +1,7 @@
+2021.1.7:
+- Fix button and progressbar style to support more themes.
+- bug fixes.
+
 2020.12.16:
 - Added CheckButton.
 - Added demo example.
