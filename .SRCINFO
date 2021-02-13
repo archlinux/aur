@@ -1,0 +1,17 @@
+pkgbase = mulle-platform
+	pkgdesc = Query platform specifica and search for libraries
+	pkgver = 0.4.2
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/mulle-sde/mulle-platform
+	changelog = RELEASENOTES.md
+	arch = any
+	groups = mulle-sde-all
+	license = BSD3
+	depends = bash
+	depends = mulle-bashfunctions>=3.3.0
+	source = https://github.com/mulle-sde/mulle-platform/archive/0.4.2.tar.gz
+	md5sums = 88a5fda939aa70f6dc39abc62c3ea747
+
+pkgname = mulle-platform
+
