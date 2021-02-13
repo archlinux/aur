@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-openimageio
 pkgver=2.2.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for reading and writing images. (mingw-w64)"
 url="http://www.openimageio.org/"
 license=("BSD-3-Clause")
@@ -23,7 +23,7 @@ depends=(
 	"mingw-w64-opencv"
 	"mingw-w64-ffmpeg"
 	"mingw-w64-hdf5"
-	"mingw-w64-robinmap"
+	"mingw-w64-robin-map"
 	"mingw-w64-libraw"
 	"mingw-w64-libheif"
 )
