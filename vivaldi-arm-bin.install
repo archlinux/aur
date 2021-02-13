@@ -10,7 +10,6 @@ post_install() {
     ./update-ffmpeg
 }
 
-
 ### Post Upgrade ###
 post_upgrade() {
     ## Update ffmpeg ##

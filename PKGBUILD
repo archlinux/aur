@@ -8,12 +8,12 @@
 pkgname=vivaldi-arm-bin
 _pkgname=${pkgname%-arm-bin}
 pkgver=3.6.2165.36
-pkgrel=2
+pkgrel=3
 _pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind'
 arch=('armv6h' 'armv7h' 'aarch64')
 url="https://vivaldi.com"
-license=('custom')
+license=('custom:Vivaldi EULA')
 provides=('vivaldi' 'www-browser')
 depends=('alsa-lib' 'desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libcups' 'libxss' 'mesa' 'nss' 'shared-mime-info' 'ttf-font')
 optdepends=(
@@ -39,10 +39,10 @@ prepare() {
 package() {
     ## Copy Directory Structure ##
     cp --parents -a {opt,usr/bin,usr/share} "$pkgdir"
-
+    
     ## SUID Sandbox ##
     chmod 4755 "$pkgdir"/opt/$_pkgname/${_pkgname}-sandbox
-
+    
     ## Symlink Binary ##
     ln -fs \
     /opt/vivaldi/vivaldi \
@@ -62,10 +62,13 @@ package() {
         /opt/$_pkgname/product_logo_${res}.png \
         "$pkgdir"/usr/share/icons/hicolor/${res}x${res}/apps/$_pkgname.png
     done
-
+    
     ## License ##
     install -dm0755 "$pkgdir"/usr/share/licenses/$_pkgname
     ln -fs \
     /opt/$_pkgname/LICENSE.html \
     "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE.html
+    
+    ## Remove Unnecessary Directories/Files ##
+    rm -rf "$pkgdir"/opt/vivaldi/{cron,update-widevine,WidevineCdm}
 }
