@@ -1,14 +1,15 @@
+# Maintainer: Lari Tikkanen <lartza at outlook.com>
 # Contributor: ianux <ianux@free.fr>
 # Contributor: GERGE
-# Maintainer: Lari Tikkanen <lartza@wippies.com>
+
 pkgname=lottanzb
 pkgver=0.6
-pkgrel=5
+pkgrel=6
 pkgdesc="A SABnzbd+ (Usenet binary downloader) GUI front-end written in PyGTK"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://launchpad.net/lottanzb"
 license=('GPL')
-depends=('python2-dbus' 'python2' 'python2-configobj' 'pygtk')
+depends=('python2-dbus' 'python2-configobj' 'pygtk')
 makedepends=('intltool')
 optdepends=('sabnzbd: for local downloading'
 	    'par2cmdline: for checking and repairing downloads'
@@ -20,16 +21,14 @@ optdepends=('sabnzbd: for local downloading'
             'yelp: for displaying the help content'
 	    'intltool: for translation support')
 source=(http://launchpad.net/lottanzb/0.6/0.6/+download/$pkgname-$pkgver.tar.gz)
-md5sums=('25dd324064332c68bc778dfa28b267dd')
-sha1sums=('2594a0f8fcad957b626d3dad4780dfbd3a198c47')
-install=${pkgname}.install
+sha256sums=('e3a1211fa3a3c486ed36219c8c5ac84b2deb9103533b69ba00e38361eb7603bd')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python2 setup.py build
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  python2 setup.py install --packaging-mode --root=${pkgdir} --prefix=/usr
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python2 setup.py install --packaging-mode --root="${pkgdir}" --prefix=/usr
 }  
