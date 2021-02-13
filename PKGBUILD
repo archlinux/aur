@@ -11,7 +11,7 @@ license=(Apache)
 depends=(embree rkcommon-git glfw)
 makedepends=(cmake ispc)
 source=("https://github.com/openvkl/openvkl/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('2854f270b34d310b9a9d47deb00cc6897038707fac75b427dbf81602ee1b2136')
+sha256sums=('130e7cbc20319c3af2fc11b7579ef2a756315170db43ae81de1aa9b43529a9a2')
 
 prepare() {
     mkdir -p build
