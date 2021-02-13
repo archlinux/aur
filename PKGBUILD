@@ -2,9 +2,9 @@
 
 pkgname="python-stumpy-git"
 pkgver=1.8.0.r3.gc76f668
-pkgrel=1
+pkgrel=2
 pkgdesc="powerful and scalable library that computes the matrix profile"
-url="https://github.com/datamllab/stumpy"
+url="https://github.com/TDAmeritrade/stumpy"
 depends=('python' 'python-scipy' 'python-numpy' 'python-numba')
 makedepends=('git' 'python-setuptools')
 provides=('python-stumpy')
