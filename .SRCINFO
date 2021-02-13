@@ -1,0 +1,17 @@
+pkgbase = mulle-env
+	pkgdesc = Virtual environment for Unix
+	pkgver = 3.3.2
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/mulle-sde/mulle-env
+	changelog = RELEASENOTES.md
+	arch = any
+	groups = mulle-sde-all
+	license = BSD3
+	depends = bash
+	depends = mulle-bashfunctions>=3.3.0
+	source = https://github.com/mulle-sde/mulle-env/archive/3.3.2.tar.gz
+	md5sums = 0a96c6ae72f35286ed177334001191da
+
+pkgname = mulle-env
+
