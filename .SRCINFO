@@ -1,0 +1,16 @@
+pkgbase = eggplant-git
+	pkgdesc = a self-hosted music streaming service
+	pkgver = r185.eda4590
+	pkgrel = 1
+	url = https://github.com/boreq/eggplant
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	makedepends = make
+	makedepends = go
+	depends = ffmpeg
+	source = eggplant-git::git+https://github.com/boreq/eggplant.git
+	sha512sums = SKIP
+
+pkgname = eggplant-git
+
