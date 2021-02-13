@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-40alfa
 	pkgdesc = Next generation desktop shell
-	pkgver = 40.1.20210208.2
+	pkgver = 40.alpha.1.1+228+g829a096ba
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-shell
@@ -46,8 +46,10 @@ pkgbase = gnome-shell-40alfa
 	optdepends = evolution-data-server: Evolution calendar integration
 	provides = gnome-shell
 	conflicts = gnome-shell
-	source = https://gitlab.gnome.org/haecker-felix/gnome-shell-40-copr/uploads/3551d83ba16b5048dd62448989722061/gnome-shell.tar.xz
-	sha256sums = d02f52dffd86365e1d28bf8aa2694ea818d168324512b163fe68cf0df4bc9fec
+	options = debug
+	options = !strip
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git
+	sha256sums = SKIP
 
 pkgname = gnome-shell-40alfa
 
