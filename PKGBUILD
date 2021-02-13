@@ -8,20 +8,20 @@ pkgname=(
   'dotnet-targeting-pack-3.1'
   'aspnet-targeting-pack-3.1'
  )
-pkgver=3.1.11.sdk405
-_runtimever=3.1.11
-_sdkver=3.1.405
+pkgver=3.1.12.sdk406
+_runtimever=3.1.12
+_sdkver=3.1.406
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
 options=('staticlibs')
-source_armv7h=('https://download.visualstudio.microsoft.com/download/pr/2178c8a1-ad48-4e51-9ddd-4e3ab64d1f0e/68746abefadf62be43ca525653c915a1/dotnet-sdk-3.1.405-linux-arm.tar.gz')
-source_aarch64=('https://download.visualstudio.microsoft.com/download/pr/ebb398e7-06d1-48f9-94e7-ddae049b704f/6bb78627f0337b980ece2a3181963fbd/dotnet-sdk-3.1.405-linux-arm64.tar.gz')
-source_x86_64=('https://download.visualstudio.microsoft.com/download/pr/5de23f6d-648c-455b-a7a9-d11c9a5bca40/4836262466f2d288e8ad8647944d062f/dotnet-sdk-3.1.405-linux-x64.tar.gz')
-sha512sums_armv7h=('110f595a835ebc5c974fcb24e5ed7b81461288ddcf6b3a0dcead3f22b6995698dab767304e0bd98d3c450a297db8f04b185bbaa0d310fc9f1d3f9c3157fdac06')
-sha512sums_aarch64=('e720b7c6497da52ce4a927b1a29df5c180fbf5b4f800185de61a31092c0bfa18a78bb9c2fee744fabc78214c5be6e9277f3dc14ae1426b55274f9726997fc733')
-sha512sums_x86_64=('924ec0ab3f126d340ef37fe90263a91f31218995716d1ad5a817bdc6ef71e4d8e87a91edeeb785f5dff3912cc08fe87615718986bb5540ff23e9edf2302e38dd')
+source_armv7h=('https://download.visualstudio.microsoft.com/download/pr/9863a55b-2577-49d3-9888-ab853a4201cb/3110704f3265713f8d82aab157a23ed2/dotnet-sdk-3.1.406-linux-arm.tar.gz')
+source_aarch64=('https://download.visualstudio.microsoft.com/download/pr/fc9051ee-4071-4808-9e71-82d69328ab47/32ae2b7177d082fc52d89774e4f127fa/dotnet-sdk-3.1.406-linux-arm64.tar.gz')
+source_x86_64=('https://download.visualstudio.microsoft.com/download/pr/d7b8da76-a160-44a1-8038-b4b91404b8f2/af410f6d2e213ef7ee9dfefd853e97c0/dotnet-sdk-3.1.406-linux-x64.tar.gz')
+sha512sums_armv7h=('b978d8f8dd6af16abb16f42b8c36c356d18e6e88309967ae9faa9a8009245e4a94183a4c2a6acad48ba342a7429de8055e4e32aca79f0c1d2f2c3bca1a318530')
+sha512sums_aarch64=('e460ac35329e572dbf4005254129b9799c897f19261d01ea77a0aa196b9e0fecf804996b1157cea92731e30e08b5827ccb0c2d280ea9ab2b04b46492ed5e12a3')
+sha512sums_x86_64=('df0c59e1a2ec37fbde33dae98215cf12128c37ca3e68012ac670d057df318340451300065d716c9205a4ccd247802bdb4c68a5575cd80214a9ca2fd277d1a780')
 
 package_dotnet-runtime-3.1() {
   pkgdesc='The .NET Core runtime 3.1 (binary)'
