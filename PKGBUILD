@@ -10,22 +10,20 @@ url="https://01.org/ofono"
 arch=("i686" "x86_64" "armv6h" "armv7h" "aarch64")
 license=("GPL2")
 depends=("bluez" "dbus" "glib2" "udev" "mobile-broadband-provider-info")
-replaces=("ofono")
+provides=("ofono")
+conflicts=("ofono")
 optdepends=("phonesim" "mmsd" "upower")
 source=(
 	"https://www.kernel.org/pub/scm/network/ofono/ofono.git/snapshot/$pkgname.tar.gz"
 #	"https://www.kernel.org/pub/scm/network/ofono/ofono.git/snapshot/$pkgname.tar.sign"
-)
+git://git.kernel.org/pub/scm/libs/ell/ell.git)
 sha256sums=(
-            'SKIP'
+            'SKIP' 'SKIP'
             )
 
 build() {
-	cd "$srcdir"
-	git clone https://git.kernel.org/pub/scm/libs/ell/ell.git
-	cd "$pkgname"
-	autoupdate
-	autoreconf -i
+	cd "$srcdir/$pkgname"
+	./bootstrap
 	./configure \
 		--prefix=/usr \
 		--sysconfdir=/etc \

@@ -17,8 +17,10 @@ pkgbase = ofono-master
 	optdepends = phonesim
 	optdepends = mmsd
 	optdepends = upower
-	replaces = ofono
-	source = https://www.kernel.org/pub/scm/network/ofono/ofono.git/snapshot/ofono-master.tar.gz
+	provides = ofono
+	conflicts = ofono
+	source = ofono-master::https://www.kernel.org/pub/scm/network/ofono/ofono.git/snapshot/ofono-master.tar.gz
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = ofono-master
