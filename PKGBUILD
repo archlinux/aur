@@ -1,8 +1,9 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Tauri Gregory <arch_aur --at-- tgregory dot net>
+# Contributor: Original submitter: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=constellation
-pkgver=2.1.0.rc1
-_pkgver=2.1.0-rc1
+pkgver=2.1.1
+_pkgver=2.1.1
 pkgrel=1
 pkgdesc="A graph-focused data visualisation and interactive analysis application"
 arch=('x86_64')
@@ -16,7 +17,7 @@ depends=('java-runtime'
 makedepends=('gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/constellation-app/constellation/releases/download/v${_pkgver}/constellation-linux-v${_pkgver}.tar.gz"
         'icon.png')
-sha256sums=('f43f186e74eee78da6966e02265b09f523637a0b69674880eca4171e67075fc9'
+sha256sums=('ca5aab0540549357735991841de82af863855a7430032b9a7549ce96904bab95'
             '4ddf0edb1323aa2e752a30fe17303e8ef25280e6d53dcdd147b9d7c811c05565')
 
 package() {
