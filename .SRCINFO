@@ -1,0 +1,27 @@
+pkgbase = mulle-sde
+	pkgdesc = Cross-platform IDE for the command-line
+	pkgver = 0.45.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/mulle-sde/mulle-sde
+	changelog = RELEASENOTES.md
+	arch = any
+	groups = mulle-sde-all
+	license = BSD3
+	depends = bash
+	depends = mulle-bashfunctions>=3.3.0
+	depends = mulle-craft>=0.18.3
+	depends = mulle-dispense>=2.0.1
+	depends = mulle-env>=3.3.2
+	depends = mulle-fetch>=1.8.3
+	depends = mulle-make>=0.15.0
+	depends = mulle-match>=0.7.0
+	depends = mulle-monitor>=0.9.1
+	depends = mulle-platform>=0.4.2
+	depends = mulle-sourcetree>=0.23.1
+	depends = mulle-template>=0.0.3
+	source = https://github.com/mulle-sde/mulle-sde/archive/0.45.0.tar.gz
+	md5sums = 4bfeefa6d0ec0ccc3ece96d0d79a6d07
+
+pkgname = mulle-sde
+
