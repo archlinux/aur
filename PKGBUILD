@@ -1,7 +1,6 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 _name=blenderseed
-_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 #version=1.3.0
 #fragment="#commit=7e49329 "
 _files=(__init__.py operators.py panel.py preferences.py utils.py)
@@ -24,6 +23,7 @@ pkgver() {
 }
 
 package() {
+  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
   cd ${_name}
   addons="$pkgdir/usr/share/blender/${_blender}/scripts/addons"
   install -dm755 ${addons}/${_name}
