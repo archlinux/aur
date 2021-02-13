@@ -1,4 +1,4 @@
-pkgbase = ofono
+pkgbase = ofono-master
 	pkgdesc = Infrastructure for building mobile telephony (GSM/UMTS) applications
 	pkgver = master
 	pkgrel = 1
@@ -17,8 +17,9 @@ pkgbase = ofono
 	optdepends = phonesim
 	optdepends = mmsd
 	optdepends = upower
+	conflicts = ofono
 	source = https://www.kernel.org/pub/scm/network/ofono/ofono.git/snapshot/ofono-master.tar.gz
 	sha256sums = SKIP
 
-pkgname = ofono
+pkgname = ofono-master
 
