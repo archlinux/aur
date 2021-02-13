@@ -1,0 +1,5 @@
+.idea
+src/
+pkg/
+*.deb
+*.tar

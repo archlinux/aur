@@ -1,0 +1,15 @@
+pkgbase = ultraworking-headquarters-bin
+	pkgdesc = Ultraworking Headquarters app
+	pkgver = 0.19.2
+	pkgrel = 1
+	url = https://www.ultraworking.com
+	arch = x86_64
+	license = custom
+	makedepends = curl
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/Ultraworking/headquarters/releases/download/v0.19.2/headquarters_0.19.2_amd64.deb
+	sha512sums = a0a5afa74af7b2b14fccbe7a1507af9d873970ccef2c07383b1419020d5f2bfe2d9187095c66822784b961b82c6d7dc3d4df68e9918b2cd235b99469c4a3373b
+
+pkgname = ultraworking-headquarters-bin
+
