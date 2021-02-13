@@ -2,17 +2,17 @@
 # Contributor: Ivan Naumeiko <Ivan.Naumeiko  AT gmail DOT com>
 
 pkgname=coolreader
-pkgver=3.2.51
+pkgver=3.2.53
 pkgrel=1
 pkgdesc="Fast and small XML/CSS based eBook reader"
 arch=(x86_64)
 url="https://github.com/buggins/coolreader"
 license=(GPL2)
-depends=(hicolor-icon-theme qt5-base)
+depends=(hicolor-icon-theme qt5-base fribidi libunibreak)
 makedepends=(cmake qt5-tools)
 source=(https://github.com/buggins/coolreader/archive/cr$pkgver/$pkgname-$pkgver.tar.gz
         cr3.appdata.xml)
-sha256sums=('f5aca183855bcf4dc87b1764e15af3ba9dc5fdbe2e7c8b4c0f513b12f6b2a840'
+sha256sums=('0c9fff8e892b3f4e0facd6fc68e2230825ac23ea4228a611dfb2daa82c656a14'
             '9d868cfd61b686b5a398797819367f16d7a65f1f5420441fb34c8d39236f7382')
 
 prepare() {
