@@ -20,6 +20,7 @@ sha512sums=('5040687474841d824661abe98ecf87867e4c358141259a5dbb6331dd0c87180eee8
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
+	export WX_CONFIG="wx-config-gtk3"
 
 	./configure --prefix=/usr
 	make
