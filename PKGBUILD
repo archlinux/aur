@@ -11,6 +11,5 @@ source=("https://github.com/dty1er/kubecolor/releases/download/v${pkgver}/kubeco
 md5sums=('8458d15752ecdc1611e823fbd2c4fd1d')
 
 package() {
-	cd "$srcdir/"
-	install -Dm755 ${pkgname} -t ${pkgdir}/usr/bin/
+	install -Dm755 "$srcdir/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"	
 }
