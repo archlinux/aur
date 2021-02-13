@@ -10,13 +10,12 @@ arch=("any")
 url="https://github.com/mopidy/mopidy-scrobbler"
 license=("Apache")
 depends=(
+    "mopidy"
     "python"
     "python-setuptools"
-    "mopidy"
-    "python-pylast"
     "python-pykka"
+    "python-pylast"
 )
-makedepends=("python")
 source=("https://pypi.io/packages/source/M/Mopidy-Scrobbler/Mopidy-Scrobbler-2.0.1.tar.gz")
 sha256sums=("001920edc5433678091cb74c56e39c57ffcdb280396447b07d6fbe4eba7a7d87")
 

@@ -5,12 +5,11 @@ pkgbase = mopidy-scrobbler
 	url = https://github.com/mopidy/mopidy-scrobbler
 	arch = any
 	license = Apache
-	makedepends = python
+	depends = mopidy
 	depends = python
 	depends = python-setuptools
-	depends = mopidy
-	depends = python-pylast
 	depends = python-pykka
+	depends = python-pylast
 	source = https://pypi.io/packages/source/M/Mopidy-Scrobbler/Mopidy-Scrobbler-2.0.1.tar.gz
 	sha256sums = 001920edc5433678091cb74c56e39c57ffcdb280396447b07d6fbe4eba7a7d87
 
