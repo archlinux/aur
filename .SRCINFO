@@ -1,0 +1,20 @@
+pkgbase = python-stumpy-git
+	pkgdesc = powerful and scalable library that computes the matrix profile
+	pkgver = v1.8.0.r3.gc76f668
+	pkgrel = 1
+	url = https://github.com/datamllab/stumpy
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-scipy
+	depends = python-numpy
+	depends = python-numba
+	provides = python-stumpy
+	conflicts = python-stumpy
+	source = git+https://github.com/TDAmeritrade/stumpy
+	md5sums = SKIP
+
+pkgname = python-stumpy-git
+
