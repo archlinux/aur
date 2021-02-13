@@ -13,7 +13,7 @@ pkgbase = motionbox-bin
 	source = https://s3-eu-west-1.amazonaws.com/omega.gg/get/MotionBox/MotionBox-1.6.0-12-linux64.tar.gz
 	source = https://github.com/G-P-L/AUR/raw/master/MotionBox/MotionBox.desktop
 	source = https://github.com/G-P-L/AUR/raw/master/MotionBox/MotionBox.png
-	sha256sums = d4774a0f4997c30c8eb5f03884fceabc63a17068cc27195e74ed3e5cf87492c9
+	sha256sums = 46e1ab2db85111cbc16d775cde50a567f97ab732a11585fb33e14d84f59e260a
 	sha256sums = c531f06e8777a2f6327ead793b6dc16c2b4780fdb16be354f8e68ddbe32138e7
 	sha256sums = 7b0f4fb92e7bc5d23fbef1a0bb9381a63fa979f28a36b2f0b4b4619b13039b72
 
