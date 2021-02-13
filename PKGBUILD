@@ -4,7 +4,6 @@ name=cubesurfer
 version=1.0
 #fragment="#commit=7e49329 "
 files=(__init__.py mciso*.so mciso*.html)
-_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}
 pkgver=1.0_r22.1d6d9a6
@@ -35,6 +34,7 @@ build() {
 }
 
 package() {
+  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
   cd ${name}
   addons="$pkgdir/usr/share/blender/${_blender}/scripts/addons"
   install -dm755 ${addons}/${name}
