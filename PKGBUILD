@@ -6,7 +6,6 @@ version=0.9
 #fragment="#commit=7e49329 "
 files=(__init__.py cork.py exceptions.py init.py lib.py)
 #is_flat="yes"
-_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}
 pkgver=0.9.r9.g39f7746
@@ -26,6 +25,7 @@ pkgver() {
 }
 
 package() {
+  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
   cd ${name}
   addons="$pkgdir/usr/share/blender/${_blender}/scripts/addons"
   [[ -n ${is_flat} && ${is_flat} == "yes" ]] && install_path=${addons} || install_path=${addons}/${name}
