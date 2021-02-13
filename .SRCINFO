@@ -16,7 +16,7 @@ pkgbase = crow-translate
 	depends = openssl
 	depends = tesseract
 	source = crow-translate-2.7.1.tar.gz::https://github.com/crow-translate/crow-translate/archive/2.7.1.tar.gz
-	sha256sums = 86eadfb1afbefc01a60866c0b8581e40b533872370426dacd7e8ea2e0eafb488
+	sha256sums = 7018a409ece18212c970fe2702b0033e5a1f2cc3a6b09376a6cde85141de806a
 
 pkgname = crow-translate
 

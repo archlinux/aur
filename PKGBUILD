@@ -10,7 +10,7 @@ license=(GPL3)
 depends=(qt5-base qt5-svg qt5-multimedia qt5-x11extras gst-plugins-good openssl tesseract)
 makedepends=(git qt5-tools extra-cmake-modules)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(86eadfb1afbefc01a60866c0b8581e40b533872370426dacd7e8ea2e0eafb488)
+sha256sums=(7018a409ece18212c970fe2702b0033e5a1f2cc3a6b09376a6cde85141de806a)
 
 build() {
   cd $pkgname-$pkgver
