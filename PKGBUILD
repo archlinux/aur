@@ -6,7 +6,7 @@ pkgdesc="Expose your local web server to the internet with a public URL."
 arch=('any')
 url="https://tunnelto.dev/"
 license=('MIT')
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 conflicts=('tunnelto')
 provides=('tunnelto')
 source=("git+https://github.com/agrinman/$pkgname#tag=$pkgver")
