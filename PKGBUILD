@@ -4,6 +4,7 @@
 pkgname=onscripter-gbk
 _pkgname=${pkgname%-gbk}
 pkgver=8.951935b
+_ons_version="20130317"
 pkgrel=2
 epoch=1
 pkgdesc="A game engine compatible to NScripter with GBK patch, which is used to create and perform visual novel games"
