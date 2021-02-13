@@ -2,7 +2,7 @@
 pkgname=nagelfar
 _pkgver_main=1
 _pkgver_sub=3
-_pkgver_subsub=1
+_pkgver_subsub=2
 _pkgver="${_pkgver_main}${_pkgver_sub}${_pkgver_subsub}"
 pkgver="${_pkgver_main}.${_pkgver_sub}.${_pkgver_subsub}"
 pkgrel=1
@@ -25,9 +25,9 @@ install=
 changelog=
 source=("http://downloads.sourceforge.net/nagelfar/Rel_${_pkgver}/${pkgname}${_pkgver}.tar.gz" nagelfar-paths.patch doc-syntaxdatabase.patch)
 noextract=()
-sha256sums=('13d8c6bc48d8ccf1db336680509bbf037939478a3c4538f9c9576a2d72b4c6be'
-            '204d48c2f9937d3093d4e511a9f5f8eba90606fb6d9923c877a538c7f44de727'
-            'ee5f6908a522bde6b94e6be56024857ecb71cc779f58ca067966299f4016057c')
+sha256sums=('ff704e551efa2f39ba851ce9f02cc8ab66c7fae39fb41d5aa2abd6fe05c76b72'
+            'e0465caec7c7d735a61cf925371ba56a76b6850e2098d44b1887579ea2cc8d6c'
+            '19aa5b8a3fd6d14ba7c4fe3dd9d277ba70a4e17096e29bacc716d82bb7b26e76')
 validpgpkeys=()
 
 

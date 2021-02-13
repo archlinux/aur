@@ -10,7 +10,7 @@
 -* syntaxdb*.tcl where Nagelfar is located
 +* syntaxdb*.tcl in /usr/lib/nagelfar
  
- You can select database(s) with the command line switch “-s”.
+ You can select database(s) with the command line switch "-s".
  
 @@ -37,11 +37,11 @@ script will run.
  
