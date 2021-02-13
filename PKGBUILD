@@ -1,5 +1,8 @@
+#Maintainer: oshaboy <noamgilor{at}protonmail{dot}com>
+
 pkgname=k-meleon-bin-wine
-pkgver=75.1
+pkgver=76.4
+timecode=20210213
 pkgrel=1
 pkgdesc="A Firefox Based Browser (runs through wine)"
 arch=('i686' 'x86_64')
@@ -8,10 +11,10 @@ license=('GPL')
 depends=(wine)
 optdepends=(wine-mono wine_gecko)
 makedepends=(p7zip)
-source=("https://netix.dl.sourceforge.net/project/kmeleon/k-meleon/$pkgver/K-Meleon$pkgver.7z" "https://a.fsdn.com/allura/p/kmeleon/icon?1499965860")
-sha256sums=('451af1cfcd32981668dc91d5c4daed093704af83edd82f458dfa34dcea1d1a56' '3d728db875f17ac7387b6dcdc5f39a10610170990076c67b866c7cae287fb960')
+source=("https://o.rthost.win/kmeleon/KM${pkgver}-Goanna-${timecode}.7z" "https://a.fsdn.com/allura/p/kmeleon/icon?1499965860")
+sha256sums=('4be6d342a9a132f2b141d1bb5d85696a1b0aebbc48f4bd36f47b3accb35bec4a' '3d728db875f17ac7387b6dcdc5f39a10610170990076c67b866c7cae287fb960')
 prepare() {
-	7z x -o"${srcdir}/k-meleon.d" K-Meleon$pkgver.7z
+	7z x -o"${srcdir}/k-meleon.d" KM${pkgver}-Goanna-${timecode}.7z
 	echo -e ${wine_script} >| ${srcdir}/k-meleon
 	echo -e ${desktop_script} >| ${srcdir}/k-meleon.desktop
 	chmod 755 ${srcdir}/k-meleon
