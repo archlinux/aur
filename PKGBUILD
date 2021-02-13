@@ -3,15 +3,15 @@
 pkgname='eruption-git'
 _pkgname='eruption'
 pkgdesc='Linux user-mode input and LED driver for keyboards, mice and other devices'
-pkgver='0.1.18'
-pkgrel='4'
+pkgver='0.1.19'
+pkgrel='23'
 epoch=
 arch=('i686' 'x86_64')
 url='https://github.com/X3n0m0rph59/eruption'
 license=('GPL3+')
 groups=()
 depends=('libevdev' 'hidapi' 'systemd-libs' 'dbus' 'libpulse' 'luajit' 'lua51-socket')
-makedepends=('git' 'rust' 'xorg-server-devel' 'libxrandr')
+makedepends=('git' 'rust' 'xorg-server-devel' 'libxrandr' 'gtk3')
 checkdepends=()
 optdepends=()
 provides=('eruption')
@@ -21,7 +21,7 @@ backup=(etc/eruption/eruption.conf usr/share/eruption/scripts/lib/themes/* usr/s
 options=()
 install='eruption.install'
 changelog=
-source=('git+https://github.com/X3n0m0rph59/eruption.git#commit=a8c9269bbb1c229537b2af8f987a8589a04b97d0')
+source=('git+https://github.com/X3n0m0rph59/eruption.git#commit=4ac4573d364f34311282f73634622f14b52beba0')
 noextract=()
 sha512sums=('SKIP')
 
@@ -41,7 +41,13 @@ package() {
     mkdir -p "$pkgdir/usr/share/eruption/scripts/lib"
     mkdir -p "$pkgdir/usr/share/eruption/scripts/lib/macros"
     mkdir -p "$pkgdir/usr/share/eruption/scripts/lib/themes"
+    mkdir -p "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/keyboards"
+    mkdir -p "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/mice"
     mkdir -p "$pkgdir/usr/share/eruption/scripts/examples"
+
+    mkdir -p "$pkgdir/usr/share/applications"
+    mkdir -p "$pkgdir/usr/share/icons/hicolor/64x64/apps"
+    mkdir -p "$pkgdir/usr/share/eruption-gui/schemas"
 
     mkdir -p "$pkgdir/var/lib/eruption/profiles"
 
@@ -55,13 +61,17 @@ package() {
 
     mkdir -p "$pkgdir/usr/lib/udev/rules.d/"
 
-    mkdir -p "$pkgdir/etc/dbus-1/system.d"
+    mkdir -p "$pkgdir/usr/share/dbus-1/system.d"
+    mkdir -p "$pkgdir/usr/share/dbus-1/session.d"
+
+    mkdir -p "$pkgdir/usr/share/polkit-1/actions"
 
     mkdir -p "$pkgdir/usr/share/man/man8"
     mkdir -p "$pkgdir/usr/share/man/man5"
     mkdir -p "$pkgdir/usr/share/man/man1"
 
     mkdir -p "$pkgdir/usr/share/bash-completion/completions"
+    mkdir -p "$pkgdir/usr/share/fish/completions"
     mkdir -p "$pkgdir/usr/share/zsh/site-functions"
     mkdir -p "$pkgdir/usr/share/eruption/i18n"
     mkdir -p "$pkgdir/usr/share/eruption/sfx"
@@ -69,8 +79,14 @@ package() {
     install -m 755 "target/release/eruption" "$pkgdir/usr/bin/"
     install -m 755 "target/release/eruptionctl" "$pkgdir/usr/bin/"
     install -m 755 "target/release/eruption-netfx" "$pkgdir/usr/bin/"
+    install -m 755 "target/release/eruption-util" "$pkgdir/usr/bin/"
     install -m 755 "target/release/eruption-debug-tool" "$pkgdir/usr/bin/"
     install -m 755 "target/release/eruption-process-monitor" "$pkgdir/usr/bin/"
+    install -m 755 "target/release/eruption-gui" "$pkgdir/usr/bin/"
+
+    install -m 644 "support/assets/eruption-gui/eruption-gui.desktop" "$pkgdir/usr/share/applications/"
+    install -m 644 "support/assets/eruption-gui/eruption-gui.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/"
+    install -m 644 "eruption-gui/schemas/gschemas.compiled" "$pkgdir/usr/share/eruption-gui/schemas/"
 
     install -m 755 "support/systemd/eruption-suspend.sh" "$pkgdir/usr/lib/systemd/system-sleep/eruption"
 
@@ -85,7 +101,10 @@ package() {
 
     install -m 644 "support/udev/99-eruption.rules" "$pkgdir/usr/lib/udev/rules.d/"
 
-    install -m 644 "support/dbus/org.eruption.control.conf" "$pkgdir/etc/dbus-1/system.d/"
+    install -m 644 "support/dbus/org.eruption.control.conf" "$pkgdir/usr/share/dbus-1/system.d/"
+    install -m 644 "support/dbus/org.eruption.process_monitor.conf" "$pkgdir/usr/share/dbus-1/session.d/"
+
+    install -m 644 "support/policykit/org.eruption.policy" "$pkgdir/usr/share/polkit-1/actions/"
 
     install -m 644 "support/man/eruption.8" "$pkgdir/usr/share/man/man8/"
     install -m 644 "support/man/eruption.conf.5" "$pkgdir/usr/share/man/man5/"
@@ -93,6 +112,21 @@ package() {
     install -m 644 "support/man/eruptionctl.1" "$pkgdir/usr/share/man/man1/"
     install -m 644 "support/man/eruption-netfx.1" "$pkgdir/usr/share/man/man1/"
     install -m 644 "support/man/eruption-process-monitor.1" "$pkgdir/usr/share/man/man1/"
+
+    install -m 644 -T "support/shell/completions/en_US/eruption-debug-tool.bash-completion" "$pkgdir/usr/share/bash-completion/completions/eruption-debug-tool"
+    install -m 644 -T "support/shell/completions/en_US/eruption-netfx.bash-completion" "$pkgdir/usr/share/bash-completion/completions/eruption-netfx"
+    install -m 644 -T "support/shell/completions/en_US/eruption-process-monitor.bash-completion" "$pkgdir/usr/share/bash-completion/completions/eruption-process-monitor"
+    install -m 644 -T "support/shell/completions/en_US/eruptionctl.bash-completion" "$pkgdir/usr/share/bash-completion/completions/eruptionctl"
+
+    install -m 644 -T "support/shell/completions/en_US/eruption-debug-tool.fish-completion" "$pkgdir/usr/share/fish/completions/eruption-debug-tool.fish"
+    install -m 644 -T "support/shell/completions/en_US/eruption-netfx.fish-completion" "$pkgdir/usr/share/fish/completions/eruption-netfx.fish"
+    install -m 644 -T "support/shell/completions/en_US/eruption-process-monitor.fish-completion" "$pkgdir/usr/share/fish/completions/eruption-process-monitor.fish"
+    install -m 644 -T "support/shell/completions/en_US/eruptionctl.fish-completion" "$pkgdir/usr/share/fish/completions/eruptionctl.fish"
+
+    install -m 644 -T "support/shell/completions/en_US/eruption-debug-tool.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_eruption-debug-tool"
+    install -m 644 -T "support/shell/completions/en_US/eruption-netfx.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_eruption-netfx"
+    install -m 644 -T "support/shell/completions/en_US/eruption-process-monitor.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_eruption-process-monitor"
+    install -m 644 -T "support/shell/completions/en_US/eruptionctl.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_eruptionctl"
 
     install -m 644 "eruption/src/scripts/macros.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/macros.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
@@ -122,6 +156,8 @@ package() {
     install -m 644 "eruption/src/scripts/checkerboard.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/fbm.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/fbm.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "eruption/src/scripts/flight-perlin.lua" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "eruption/src/scripts/flight-perlin.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/fire.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/fire.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/fireworks.lua" "$pkgdir/usr/share/eruption/scripts/"
@@ -136,6 +172,8 @@ package() {
     install -m 644 "eruption/src/scripts/halo.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/heatmap.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/heatmap.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "eruption/src/scripts/lava-lamp.lua" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "eruption/src/scripts/lava-lamp.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/linear-gradient.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/linear-gradient.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/heartbeat.lua" "$pkgdir/usr/share/eruption/scripts/"
@@ -198,6 +236,15 @@ package() {
     install -m 644 "eruption/src/scripts/lib/macros/modifiers.lua" "$pkgdir/usr/share/eruption/scripts/lib/macros/"
     install -m 644 "eruption/src/scripts/lib/macros/user-macros.lua" "$pkgdir/usr/share/eruption/scripts/lib/macros/"
     install -m 644 "eruption/src/scripts/lib/macros/starcraft2.lua" "$pkgdir/usr/share/eruption/scripts/lib/macros/"
+    install -m 644 "eruption/src/scripts/lib/hwdevices/keyboards/generic_keyboard.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/keyboards/"
+    install -m 644 "eruption/src/scripts/lib/hwdevices/keyboards/roccat_vulcan_1xx.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/keyboards/"
+    install -m 644 "eruption/src/scripts/lib/hwdevices/keyboards/roccat_vulcan_tkl.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/keyboards/"
+    install -m 644 "eruption/src/scripts/lib/hwdevices/keyboards/roccat_vulcan_pro_tkl.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/keyboards/"
+    install -m 644 "eruption/src/scripts/lib/hwdevices/mice/generic_mouse.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/mice/"
+    install -m 644 "eruption/src/scripts/lib/hwdevices/mice/roccat_kone_aimo.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/mice/"
+    install -m 644 "eruption/src/scripts/lib/hwdevices/mice/roccat_kone_pure_ultra.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/mice/"
+    install -m 644 "eruption/src/scripts/lib/hwdevices/mice/roccat_kova_aimo.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/mice/"
+    install -m 644 "eruption/src/scripts/lib/hwdevices/mice/roccat_nyth.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/mice/"
     install -m 644 "eruption/src/scripts/examples/simple.lua" "$pkgdir/usr/share/eruption/scripts/examples/"
 
     install -m 644 "support/sfx/typewriter1.wav" "$pkgdir/usr/share/eruption/sfx/"
@@ -209,15 +256,22 @@ package() {
     install -m 644 "support/profiles/default.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/fx1.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/fx2.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/fireplace.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/fireworks.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/flight-perlin.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/gaming.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/gradient-noise.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/heartbeat-sysmon.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/heatmap.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/heatmap-errors.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/lava-lamp.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/lava-lamp-pastel.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/matrix.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/netfx.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/batique.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/batique-mouse.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/checkerboard.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/blue-fx-swirl-perlin.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/profile1.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/profile2.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/profile3.profile" "$pkgdir/var/lib/eruption/profiles/"
@@ -225,6 +279,8 @@ package() {
     install -m 644 "support/profiles/psychedelic.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/twinkle.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/rainbow.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/red-fx.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/red-wave.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/preset-red-yellow.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/preset-blue-red.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/rainbow-wave.profile" "$pkgdir/var/lib/eruption/profiles/"

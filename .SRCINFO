@@ -1,7 +1,7 @@
 pkgbase = eruption-git
 	pkgdesc = Linux user-mode input and LED driver for keyboards, mice and other devices
-	pkgver = 0.1.18
-	pkgrel = 4
+	pkgver = 0.1.19
+	pkgrel = 23
 	url = https://github.com/X3n0m0rph59/eruption
 	install = eruption.install
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = eruption-git
 	makedepends = rust
 	makedepends = xorg-server-devel
 	makedepends = libxrandr
+	makedepends = gtk3
 	depends = libevdev
 	depends = hidapi
 	depends = systemd-libs
@@ -24,7 +25,7 @@ pkgbase = eruption-git
 	backup = etc/eruption/eruption.conf
 	backup = usr/share/eruption/scripts/lib/themes/*
 	backup = usr/share/eruption/scripts/lib/macros/*
-	source = git+https://github.com/X3n0m0rph59/eruption.git#commit=a8c9269bbb1c229537b2af8f987a8589a04b97d0
+	source = git+https://github.com/X3n0m0rph59/eruption.git#commit=4ac4573d364f34311282f73634622f14b52beba0
 	sha512sums = SKIP
 
 pkgname = eruption-git
