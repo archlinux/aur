@@ -1,7 +1,7 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgname=onscripter-gbk-git
-_gitname=${pkgname%g-git}
+_gitname=${pkgname%-git}
 pkgver=3.382ec29
 pkgrel=1
 pkgdesc="A GBK version of ONScripter, a game scripting engine"
