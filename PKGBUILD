@@ -9,7 +9,6 @@ _package_src_dir=IndigoRenderer_x64_v${pkgver}
 _pkgver_blendigo=4.3.0-d170191-master
 #_blender=$(blender -v | head -n1 | cut -f2 -d ' ')
 #_blender=$(expac -S "%v" blender|egrep -o [[:alnum:]]{1}.[[:alnum:]]{2})
-_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 pkgrel=1
 pkgdesc="Physically-based unbiased render engine"
 arch=('x86_64')
@@ -37,6 +36,7 @@ b2sums=('c2532a9a2586a6e8d353b99ddb2da8e77ef24367ff75577bf1194994b1268f1412caf8f
 
 
 package() {
+  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
   cd "${srcdir}"
   install -d -m755  "${pkgdir}/opt/${pkgname}"
 
