@@ -1,0 +1,2 @@
+#!/bin/bash
+cd /opt/eco && /opt/eco/Eco.x86_64
