@@ -1,18 +1,17 @@
 pkgbase = mopidy-tunein
 	pkgdesc = Mopidy extension for playing music from TuneIn
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
-	url = http://www.mopidy.com
+	url = https://github.com/kingosticks/mopidy-tunein
 	arch = any
-	license = APACHE
-	makedepends = python
-	makedepends = git
-	depends = mopidy>=3.0
+	license = Apache
+	depends = mopidy
+	depends = python
 	depends = python-setuptools
-	depends = python-requests
 	depends = python-pykka
-	source = https://github.com/kingosticks/mopidy-tunein/archive/v1.0.0.tar.gz
-	md5sums = e1533b57a2e7701dd05e5c595c04a26c
+	depends = python-requests
+	source = https://github.com/kingosticks/mopidy-tunein/archive/v1.1.0.tar.gz
+	sha256sums = 442aedb87b65ed61cad3eb8dd01f16ebf9f62fae4a6dd948ded73f1604ee8de2
 
 pkgname = mopidy-tunein
 
