@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Winger <bmw@disroot.org>
 
 pkgname=python-python-sat
-pkgver=0.1.6.dev9
+pkgver=0.1.6.dev12
 pkgrel=1
 pkgdesc="A Python library for prototyping with SAT oracles"
 provides=('python-python-sat')
@@ -10,8 +10,8 @@ arch=(any)
 url="https://github.com/pysathq/pysat"
 license=(GPL3)
 depends=("python" "python-six")
-source=("https://files.pythonhosted.org/packages/b1/0e/b40bc277d7c7a0567219d97b020259429eec0fa274bd580494767be07193/python-sat-0.1.6.dev9.tar.gz")
-sha512sums=('d627263a93c590a9cd2692207e5d2c264d3e555d3b5dac4055759d0c7fc88d98f03115970a4160e8079aa0ded4852fc233f56a3c8c53b8609b9e93d7f7c67066')
+source=("https://files.pythonhosted.org/packages/e6/c7/5afc9b9abc4bee884df2e9b591b52b9d21f4ed836683f1f1a256150e11ad/python-sat-0.1.6.dev12.tar.gz")
+sha512sums=('1560e7d9d1d75e32a4a717a98b37a5f35440fc7dd5c9b67bf76c647bfdc10d3186909fe38ad0f9810b265ec8790b15168708d89d5f4d1ddf5adf8487253ca90f')
 
 package() {
   cd "$srcdir/python-sat-$pkgver"
