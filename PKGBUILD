@@ -54,5 +54,5 @@ package() {
             _dir='printerdrivers'
         fi
         ln -s "../../../usr/lib/${_file##*/}" "${pkgdir}/opt/diamond-editor/${_dir}/${_file##*/}"
-    done < <(find -L /usr/lib -type f -regextype posix-extended -regex '.*/Cs(Gui|PrinterDriver).*\.so$' -print0)
+    done < <(find -L /usr/lib -maxdepth 1 -type f -regextype posix-extended -regex '.*/Cs(Gui|PrinterDriver).*\.so$' -print0)
 }
