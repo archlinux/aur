@@ -1,7 +1,7 @@
 # maintainer sa7dse (me [at] sa7d [dot] se)
 
 pkgname=gopass-jsonapi-git
-pkgver=r3.dc7295f
+pkgver=r6.374b795
 pkgrel=1
 pkgdesc="The jsonapi for gopass used for bridging to browsers"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
