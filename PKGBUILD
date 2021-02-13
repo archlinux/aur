@@ -2,7 +2,6 @@
 
 name=multiedit
 files=(MultiEdit_1_1.py)
-_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}
 pkgver=r12.a68a7ce
@@ -22,6 +21,7 @@ pkgver() {
 }
 
 package() {
+  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
   cd ${srcdir}/${name}
   addons="$pkgdir/usr/share/blender/${_blender}/scripts/addons"
   for file in ${files}
