@@ -1,0 +1,19 @@
+pkgbase = media-downloader-git
+	pkgdesc = GUI front-end for downloading media files (youtube-dl, ...)
+	pkgver = 1.0.0.r57.ge3b332a
+	pkgrel = 1
+	url = https://github.com/mhogomchungu/media-downloader
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	optdepends = youtube-dl: download files
+	optdepends = wget: download files
+	provides = media-downloader
+	conflicts = media-downloader
+	source = media-downloader-git::git+https://github.com/mhogomchungu/media-downloader.git
+	md5sums = SKIP
+
+pkgname = media-downloader-git
+
