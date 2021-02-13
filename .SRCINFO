@@ -7,7 +7,6 @@ pkgbase = waffle
 	license = BSD
 	makedepends = meson
 	makedepends = xcb-proto
-	makedepends = mesa-libgl
 	makedepends = mesa
 	makedepends = libxslt
 	makedepends = docbook-xsl
