@@ -2,7 +2,6 @@
 
 name=gaffer
 git_user_name=gregzaal
-_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}-git
 pkgver=3.1.2.r0.gf895629
@@ -31,6 +30,7 @@ pkgver() {
 }
 
 package() {
+  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
   cd ${srcdir}
   addons="$pkgdir/usr/share/blender/${_blender}/scripts/addons"
   install -dm755 ${addons}/${name}
