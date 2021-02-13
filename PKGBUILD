@@ -8,7 +8,7 @@
 pkgname=vivaldi-arm-bin
 _pkgname=${pkgname%-arm-bin}
 pkgver=3.6.2165.36
-pkgrel=3
+pkgrel=4
 _pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind'
 arch=('armv6h' 'armv7h' 'aarch64')
@@ -38,12 +38,13 @@ prepare() {
 ### Package ###
 package() {
     ## Copy Directory Structure ##
-    cp --parents -a {opt,usr/bin,usr/share} "$pkgdir"
+    cp --parents -a {opt,usr/share} "$pkgdir"
     
     ## SUID Sandbox ##
     chmod 4755 "$pkgdir"/opt/$_pkgname/${_pkgname}-sandbox
     
-    ## Symlink Binary ##
+    ## Place Binary on System PATH ##
+    install -dm0755 "$pkgdir"/usr/bin
     ln -fs \
     /opt/vivaldi/vivaldi \
     "$pkgdir"/usr/bin/${_pkgname}-stable
