@@ -18,5 +18,5 @@ build() {
 package(){
   # Moving everything to pkg/.
   mkdir "$pkgdir"/usr "$pkgdir"/usr/bin
-  mv "$srcdir"/newflasher/newflasher "$pkgdir"/usr/bin/newflasher
+  install -Dm755 "newflasher/newflasher" "${pkgdir}/usr/bin/newflasher"
 }
