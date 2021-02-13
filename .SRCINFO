@@ -1,0 +1,19 @@
+pkgbase = fcitx5-mikan-git
+	pkgdesc = mikan input method for fcitx5
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/mojyack/mikan
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	depends = mikan-dictionary
+	depends = fcitx5
+	depends = mecab
+	optdepends = mikan-additional-dictionary: increases vocabulary
+	conflicts = fcitx5-mikan
+	source = source::git+https://github.com/mojyack/mikan
+	md5sums = SKIP
+
+pkgname = fcitx5-mikan-git
+
