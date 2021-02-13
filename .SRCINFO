@@ -1,0 +1,15 @@
+pkgbase = mikan-dictionary-neologd-git
+	pkgdesc = A additional dictionary for mikan input method made from mecab-ipadic-neologd.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/mojyack/mikan-dictionary-neologd
+	arch = any
+	license = MIT
+	makedepends = python
+	provides = mikan-additional-dictionary
+	conflicts = mikan-dictionary-neologd
+	source = source::git+https://github.com/mojyack/mikan-dictionary-neologd
+	md5sums = SKIP
+
+pkgname = mikan-dictionary-neologd-git
+
