@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!gtk3.install
+!gtk-query-immodules-3.0.hook
+!typeahead.patch
