@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=iminuit
 pkgname=python-${_pyname}-doc
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Documentation for Python iminuit module"
 arch=(any)
@@ -9,7 +9,7 @@ url="http://iminuit.readthedocs.io"
 license=('GPL' 'MIT')
 makedepends=("python-${_pyname}=${pkgver}" 'python-sphinx' 'python-sphinx_rtd_theme' 'python-matplotlib' 'python-pillow')
 source=("https://github.com/iminuit/iminuit/archive/v${pkgver}.tar.gz")
-md5sums=('1fbbe44e520e48ffe7d493e541d4e830')
+md5sums=('c7860639290a2b1bfa21cbb71e093ccc')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
