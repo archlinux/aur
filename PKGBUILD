@@ -3,11 +3,11 @@
 
 pkgname=svt-av1-git
 pkgver=0.8.6.r77.gd5a40d53
-pkgrel=1
+pkgrel=2
 pkgdesc='Scalable Video Technology AV1 encoder and decoder (git version)'
 arch=('x86_64')
 url='https://gitlab.com/AOMediaCodec/SVT-AV1/'
-license=('BSD')
+license=('BSD' 'custom: Alliance for Open Media Patent License 1.0')
 depends=('glibc')
 makedepends=('git' 'cmake' 'yasm')
 provides=('svt-av1')
