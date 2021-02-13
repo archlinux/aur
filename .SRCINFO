@@ -1,0 +1,32 @@
+pkgbase = onscripter-gbk-git
+	pkgdesc = A GBK version of ONScripter, a game scripting engine
+	pkgver = 3.382ec29
+	pkgrel = 1
+	url = https://github.com/shouhuanxiaoji/ONScripter-GBK-Linux
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = GPL2
+	depends = bzip2
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_ttf
+	depends = lua51
+	depends = fontconfig
+	depends = libjpeg-turbo
+	depends = libvorbis
+	depends = smpeg
+	provides = onscripter-gbk
+	conflicts = onscripter-gbk
+	source = onscripter-gbk-git::git+https://github.com/shouhuanxiaoji/ONScripter-GBK-Linux
+	source = onscripter-gbk-gcc-6.2.patch
+	source = avifile-remove.patch
+	source = target-optimizing.patch
+	md5sums = SKIP
+	md5sums = ffb513b2784747bea73591f48ee9737f
+	md5sums = 33749eb33188e06f8731213acc7cd70e
+	md5sums = 2b7556bac039f28b6d73f01a7df74956
+
+pkgname = onscripter-gbk-git
+

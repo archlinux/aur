@@ -1,0 +1,13 @@
+diff --git a/ScriptHandler.cpp b/ScriptHandler.cpp
+index 534e256..97fae49 100644
+--- a/ScriptHandler.cpp
++++ b/ScriptHandler.cpp
+@@ -1003,7 +1003,7 @@ int ScriptHandler::readScript( char *path )
+ 
+ int ScriptHandler::readScriptSub( FILE *fp, char **buf, int encrypt_mode )
+ {
+-    char magic[5] = {0x79, 0x57, 0x0d, 0x80, 0x04 };
++    unsigned char magic[5] = {0x79, 0x57, 0x0d, 0x80, 0x04 };
+     int  magic_counter = 0;
+     bool newline_flag = true;
+     bool cr_flag = false;
