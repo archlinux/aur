@@ -8,9 +8,7 @@ arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url="https://github.com/gopasspw/gopass-jsonapi"
 license=('MIT')
 makedepends=('go' 'git')
-optdepends=('xdotool: for typing passwords selected by dmenu'
-            'xsel: clipboard support'
-            'xclip: clipboard support')
+depends=('gopass')
 provides=("gopass-jsonapi")
 conflicts=("gopass-jsonapi")
 source=("git+${url}")
