@@ -1,7 +1,7 @@
 # Maintainer: Michael Del Rosario <m@delrosariomichael.com>
 pkgname='kubecolor'
 pkgver=0.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Colorize your kubectl output'
 url='https://github.com/dty1er/kubecolor'
 arch=('x86_64')

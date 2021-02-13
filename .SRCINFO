@@ -1,7 +1,7 @@
 pkgbase = kubecolor
 	pkgdesc = Colorize your kubectl output
 	pkgver = 0.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dty1er/kubecolor
 	arch = x86_64
 	license = MIT
