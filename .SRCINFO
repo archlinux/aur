@@ -1,0 +1,36 @@
+pkgbase = futurerestore-marijuanarm-a13-a14-git
+	pkgdesc = iOS upgrade and downgrade tool utilizing SHSH blobs - marijuanARM's fork (for A13 and above only) - git version
+	pkgver = r189.c6e09fb
+	pkgrel = 1
+	url = https://github.com/marijuanARM/futurerestore
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	depends = libplist
+	depends = libzip
+	depends = libimobiledevice
+	depends = libfragmentzip
+	depends = libirecovery
+	depends = curl
+	depends = openssl
+	depends = zlib
+	depends = img4tool
+	depends = libgeneral
+	provides = futurerestore
+	provides = futurerestore-marijuanarm-a13-a14
+	conflicts = futurerestore
+	source = git+https://github.com/marijuanARM/futurerestore.git#branch=a13/a14
+	source = git+https://github.com/tihmstar/tsschecker.git
+	source = git+https://github.com/marijuanARM/idevicerestore.git
+	source = git+https://github.com/tihmstar/jssy.git
+	source = futurerestore-0001-Ensure-CUSTOM_LOGGING-refers-to-a-file.patch
+	source = idevicerestore-0001-configure.ac-check-for-pthreads.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 6b50f455cfa5a60fcb77d9db55ce48186774b5cf9c5f04ad5fc911b8df7e047e
+	sha256sums = 7a1ac46309eab59763186fdb91e456bd77f703b0fe59fec968e0001349c24d78
+
+pkgname = futurerestore-marijuanarm-a13-a14-git
+
