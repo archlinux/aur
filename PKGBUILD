@@ -4,7 +4,7 @@
 #
 pkgname="nemo-megasync"
 pkgver="4.0.2"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="MEGASync extension for the Nemo file browser"
 arch=('i686' 'x86_64')
 url="https://mega.co.nz/#sync"
@@ -32,6 +32,12 @@ package() {
 	cd "${pkgname}-${pkgver}"
 	install -m755 -d "${pkgdir}/usr/lib/nemo/extensions-3.0"
 	install -m755 libMEGAShellExtNemo.so.1.0.0 -D "${pkgdir}/usr/lib/nemo/extensions-3.0/"
+
+	install -m755 -d "${pkgdir}/usr/share/icons/hicolor/32x32/emblems"
+	install -m755 -d "${pkgdir}/usr/share/icons/hicolor/64x64/emblems"
+	install -m644 ./data/emblems/32x32/* -D "${pkgdir}/usr/share/icons/hicolor/32x32/emblems/"
+	install -m644 ./data/emblems/64x64/* -D "${pkgdir}/usr/share/icons/hicolor/64x64/emblems/"
+	
 	cd "${pkgdir}/usr/lib/nemo/extensions-3.0/"
 	ln -s "libMEGAShellExtNemo.so.1.0.0" "libMEGAShellExtNemo.so"
 	ln -s "libMEGAShellExtNemo.so.1.0.0" "libMEGAShellExtNemo.so.1"
