@@ -1,26 +1,35 @@
-# Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
-pkgname=effitask
-pkgver=1.4.0
-pkgrel=3
+# Maintainer: Hugo Hörnquist <hugo@lysator.liu.se>
+# Contributor: Sanpi <sanpi+aur@homecomputing.fr>
+_pkgname=effitask
+pkgname=effitask-git
+pkgver=r231.e243c4d
+pkgrel=1
 pkgdesc='Graphical task manager, based on the todo.txt format'
-url="https://github.com/sanpii/$pkgname"
+url="https://github.com/sanpii/$_pkgname"
 arch=('x86_64')
 license=('MIT')
 depends=('gtk3')
-makedepends=('cargo' 'rust')
-source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('1186357e0ca4ed009273de8ba585d5a535955026d5096ac8fc15640e43a61460')
+makedepends=('cargo' 'rust' 'git')
+source=("git+$url")
+conflicts=('effitask')
+provides=('effitask')
+md5sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/$_pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build()
 {
-    cd "$pkgname-$pkgver"
+    cd "$srcdir/$_pkgname"
 
     cargo build --release
 }
 
 package()
 {
-    cd "$pkgname-$pkgver"
+    cd "$srcdir/$_pkgname"
 
     make install PREFIX="$pkgdir/usr"
     install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

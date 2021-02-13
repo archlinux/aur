@@ -1,15 +1,18 @@
-pkgbase = effitask
+pkgbase = effitask-git
 	pkgdesc = Graphical task manager, based on the todo.txt format
-	pkgver = 1.4.0
-	pkgrel = 3
+	pkgver = r231.e243c4d
+	pkgrel = 1
 	url = https://github.com/sanpii/effitask
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = rust
+	makedepends = git
 	depends = gtk3
-	source = https://github.com/sanpii/effitask/archive/1.4.0.tar.gz
-	sha256sums = 1186357e0ca4ed009273de8ba585d5a535955026d5096ac8fc15640e43a61460
+	provides = effitask
+	conflicts = effitask
+	source = git+https://github.com/sanpii/effitask
+	md5sums = SKIP
 
-pkgname = effitask
+pkgname = effitask-git
 
