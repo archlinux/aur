@@ -1,25 +1,29 @@
-# Maintainer: Frederick Gnodtke <fgnodtke at cronosx dot de>
+# Maintainer: Matthew Gamble <git@matthewgamble.net>
+# Contributor: Frederick Gnodtke <fgnodtke at cronosx dot de>
 
 pkgname=mopidy-subidy
-pkgver=0.4.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Mopidy extension for playing music from Subsonic servers"
-arch=('any')
+arch=("any")
 url="https://github.com/Prior99/mopidy-subidy"
 license=('BSD')
 depends=(
-    'mopidy>=2'
-    'python2-pykka>=1.1'
-    'python2-setuptools'
-    'python2-pysonic>=0.6.1')
-makedepends=('python2')
-provides=('mopidy-subidy')
-source=("https://github.com/prior99/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('705f906ca26312e5f3111b7ff332b4d3714e0c03eb120a612ca6f40ed0b7af26')
-
+    "mopidy"
+    "python"
+    "python-setuptools"
+    "python-pykka"
+    "python-pysonic"
+)
+# There is no "official" release tarball for v1.2.0, see github issue #42
+#source=("https://github.com/prior99/${pkgname}/archive/${pkgver}.tar.gz")
+_pkgver_commit="e8493923c1c15db1424d41444aa799c81a337e57"
+source=("https://github.com/Prior99/mopidy-subidy/archive/${_pkgver_commit}.tar.gz")
+sha256sums=("5289e09be1f8dba8fbd6bd347d54e4d6bb07f6238c3a2af21a0fc4bd9c6c89cb")
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    #cd "mopidy-subidy-${pkgver}"
+    cd "mopidy-subidy-${_pkgver_commit}"
+    python setup.py install --root="${pkgdir}" --optimize=1
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/mopidy-subidy/LICENSE"
 }
