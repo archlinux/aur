@@ -1,11 +1,11 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-lite
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="A music player aimed at audio enthusiasts and music collectors, fewer fautures, Gstreamer and alsa only"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
-url="http://www.strawbs.org/"
+url="https://www.strawberrymusicplayer.org/"
 license=(GPL3)
 depends=(chromaprint protobuf gst-plugins-base gst-plugins-good qt5-base qt5-x11extras
          sqlite3 udisks2 dbus alsa-lib libcdio fftw)
@@ -16,7 +16,7 @@ optdepends=('gst-libav: additional codecs (i.e. AAC)'
 provides=(strawberry)
 conflicts=(strawberry)
 source=("strawberry-${pkgver}.tar.gz::https://github.com/jonaski/strawberry/archive/${pkgver}.tar.gz")
-sha256sums=('1f67df2c71cd967b30d9cab55c43177c47220e442b467fdcdafa857ae7f26325')
+sha256sums=('ee18eae21a756a0fb3e7c66b13fd7a7aa52530d9934829fbc5b90faf854640b2')
 
 prepare() {
   cd "${srcdir}/strawberry-${pkgver}"
@@ -35,10 +35,8 @@ build() {
     -DENABLE_LIBGPOD=OFF \
     -DENABLE_LIBMTP=OFF \
     -DENABLE_LIBPULSE=OFF \
-    -DENABLE_PHONON=OFF \
     -DENABLE_SPARKLE=OFF \
-    -DENABLE_VLC=OFF \
-    -DENABLE_XINE=OFF
+    -DENABLE_VLC=OFF
   make
 }
 
