@@ -1,4 +1,4 @@
-# Maintainer: git@matthewgamble.net
+# Maintainer: Matthew Gamble <git@matthewgamble.net>
 # Contributor: tuftedocelot@fastmail.fm
 # Contributor: flu
 
