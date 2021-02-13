@@ -1,0 +1,19 @@
+pkgbase = python-meshcat-git
+	pkgdesc = MeshCat is a remotely-controllable 3D viewer, built on top of three.js
+	pkgver = 0.0.18.r58.g69e18e2
+	pkgrel = 1
+	url = https://github.com/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-umsgpack
+	optdepends = opengrok
+	provides = python-meshcat
+	provides = meshcat-python
+	provides = meshcat
+	source = git://github.com/rdeits/meshcat-python
+	sha256sums = SKIP
+
+pkgname = python-meshcat-git
+
