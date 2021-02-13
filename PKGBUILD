@@ -13,8 +13,10 @@ makedepends=('boost')
 provides=('arc_unpacker-git' 'arc_unpacker')
 conflicts=('arc_unpacker')
 source=("$pkgname::git+https://github.com/vn-tools/arc_unpacker.git"
+        'catch.hpp::https://raw.githubusercontent.com/catchorg/Catch2/v2.13.4/single_include/catch2/catch.hpp'
         'lcg.patch')
 sha256sums=('SKIP'
+            '6e0fa3dd160891a01c1f3b34e8bcd6e0140abe08eca022e390027f27dec2050b'
             '37f3c1f1969ec9ed537a5cff79e3eb712fb2f317fcf99508eaa8bb250104a003')
 
 pkgver() {
@@ -30,6 +32,8 @@ prepare() {
 	sed -i "s|program\_path\.parent()|io\:\:path(\"/usr/share/${_pkgname}\")|g" src/io/program_path.cc
   # FIX logic_error
   git apply "$srcdir/lcg.patch"
+  # FIX tests
+  cp "$srcdir/catch.hpp" tests/test_support/catch.h
 }
 
 build() {
