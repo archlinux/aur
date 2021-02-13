@@ -6,7 +6,6 @@ version=0.1
 #fragment="#commit=7e49329 "
 files=(io_import_gcode.py)
 is_flat="yes"
-_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}
 pkgver=0.1_r29.74a9fbf
@@ -26,6 +25,7 @@ pkgver() {
 }
 
 package() {
+  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
   cd ${name}
   addons="$pkgdir/usr/share/blender/${_blender}/scripts/addons"
   [ ${is_flat} == "yes" ] && install_path=${addons}/${file} || install_path=${addons}/${name}/${file}
