@@ -128,23 +128,23 @@ build() {
     -D systemd-daemon=false \
     -D libdrm=false \
     -D clientids=false \
-    -D pciaccess=true \
+    -D pciaccess=false \
     -D xshmfence=false
 
 # dri3 required for xwayland support
 # glamor required for xwayland support
 # dga required for xorg nvidia blob/amdgpu/mesa ### NOT REQUIRED FOR XWAYLAND
+# pciaccess required or build fails with xorg enabled ### NOT REQUIRED FOR XWAYLAND
+# agp required or build fails with xorg enabled ### NOT REQUIRED FOR XWAYLAND
+# libdrm required or build fails with xorg enabled ### NOT REQUIRED FOR XWAYLAND
 # xinerama required for nvidia blob/amdgpu/mesa
 # mitshm required for nvidia blob/amdgpu/mesa
 # xv required for nvidia blob/amdgpu/mesa
 # composite required for nvidia blob/amdgpu/mesa
-# pciaccess required or build fails
-# agp required or build fails
-# libdrm required or build fails
 # b_pgo set to off or build fails
 # dpms and dri1 set to true or xf86-video-amdgpu build fails
 
-### enable-unit-tests + xorg flags break compile if -flto / b_lto is enabled
+### enable-unit-tests + xorg flags break compile if -flto / b_lto is enable
 
   # Print config
   meson configure build
