@@ -1,7 +1,7 @@
 pkgbase = zenkit
 	pkgdesc = A platform for collaboration and project management
 	pkgver = 20201217
-	pkgrel = 2
+	pkgrel = 3
 	url = https://zenkit.com
 	arch = x86_64
 	license = Commercial
