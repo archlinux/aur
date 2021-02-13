@@ -1,11 +1,12 @@
 # Maintainer: Chris Winkler <quidnovum [at] [common mail ending from search engine company]>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Lukas Becker <lukasbecker2 [at] [common mail ending from the company behind the most used search engine]>
+# Contributor: Benedikt Rips <benedikt.rips@gmail.com>
 
 pkgbase=zenkit
 pkgname=zenkit
 pkgver=20201217
-pkgrel=1
+pkgrel=2
 pkgdesc='A platform for collaboration and project management'
 arch=('x86_64')
 url='https://zenkit.com'
@@ -30,7 +31,7 @@ package() {
     mkdir "${pkgdir}/opt/${pkgbase}"
 
     tar xpf zenkit-base-linux.tar.gz -C "${pkgdir}/opt/${pkgbase}/" --strip-components=1
-    mv favicon.ico "${pkgdir}/opt/${pkgbase}/zenkit.ico"
+    install "${srcdir}/favicon.ico" "${pkgdir}/opt/${pkgbase}/zenkit.ico"
 
     ln -s "/opt/${pkgbase}/${pkgbase}" "${pkgdir}/usr/bin/${pkgbase}"
 }
