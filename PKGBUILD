@@ -15,7 +15,7 @@ md5sums=('SKIP' 'SKIP')
 build() {
    cd "$srcdir"/Flashtool
    mkdir ./bin
-   
+   export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")   
    ant -buildfile ant/deploy-release.xml
 }
 
