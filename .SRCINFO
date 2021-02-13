@@ -1,6 +1,6 @@
 pkgbase = obs-studio-git
 	pkgdesc = Free and open source software for video recording and live streaming.
-	pkgver = 26.1.2.r146.g1ea818373
+	pkgver = 26.1.2.r186.g01c00cf27
 	pkgrel = 1
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
@@ -11,35 +11,41 @@ pkgbase = obs-studio-git
 	makedepends = libfdk-aac
 	makedepends = libxcomposite
 	makedepends = x264
-	makedepends = jack
 	makedepends = vlc
 	makedepends = swig
 	makedepends = luajit
 	makedepends = python
 	makedepends = cef-minimal>=87.0.0
+	makedepends = wayland
+	makedepends = qt5-wayland
 	depends = ffmpeg
 	depends = jansson
 	depends = libxinerama
 	depends = libxkbcommon-x11
+	depends = mbedtls
+	depends = qt5-svg
 	depends = qt5-x11extras
 	depends = curl
+	depends = jack
 	depends = gtk-update-icon-cache
 	optdepends = libfdk-aac: FDK AAC codec support
 	optdepends = libxcomposite: XComposite capture support
-	optdepends = jack: JACK Support
+	optdepends = libva-intel-driver: hardware encoding
+	optdepends = libva-mesa-driver: hardware encoding
 	optdepends = vlc: VLC Media Source
-	optdepends = swig: Scripting
 	optdepends = luajit: Lua scripting
 	optdepends = python: Python scripting
 	optdepends = v4l2loopback-dkms: Virtual webcam
-	provides = obs-studio=26.1.2.r146.g1ea818373
+	provides = obs-studio=26.1.2.r186.g01c00cf27
 	conflicts = obs-studio
 	source = obs-studio-git::git+https://github.com/obsproject/obs-studio.git#branch=master
 	source = git+https://github.com/Mixer/ftl-sdk.git
 	source = git+https://github.com/obsproject/obs-browser.git
+	source = fix_python_binary_loading.patch
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = 051b90f05e26bff99236b8fb1ad377d1
 
 pkgname = obs-studio-git
 
