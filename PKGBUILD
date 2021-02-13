@@ -2,7 +2,7 @@
 # Contributor: Jerome Leclanche <jerome@leclan.ch>
 # Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 # Contributor: Librewish <librewish@gmail.com>
-pkgname=ofono
+pkgname=ofono-master
 pkgver=master
 pkgrel=1
 pkgdesc="Infrastructure for building mobile telephony (GSM/UMTS) applications"
@@ -13,8 +13,8 @@ depends=("bluez" "dbus" "glib2" "udev" "mobile-broadband-provider-info")
 conflicts=("ofono")
 optdepends=("phonesim" "mmsd" "upower")
 source=(
-	"https://www.kernel.org/pub/scm/network/ofono/ofono.git/snapshot/$pkgname-$pkgver.tar.gz"
-#	"https://www.kernel.org/pub/scm/network/ofono/ofono.git/snapshot/$pkgname-$pkgver.tar.sign"
+	"https://www.kernel.org/pub/scm/network/ofono/ofono.git/snapshot/$pkgname.tar.gz"
+#	"https://www.kernel.org/pub/scm/network/ofono/ofono.git/snapshot/$pkgname.tar.sign"
 )
 sha256sums=(
             'SKIP'
@@ -23,7 +23,7 @@ sha256sums=(
 build() {
 	cd "$srcdir"
 	git clone https://git.kernel.org/pub/scm/libs/ell/ell.git
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	autoupdate
 	autoreconf -i
 	./configure \
@@ -39,8 +39,8 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
 	make DESTDIR="$pkgdir" install
-	install -Dm644 "$srcdir/$pkgname-$pkgver/src/ofono.conf" "$pkgdir/etc/dbus-1/system.d/ofono.conf"
-	install -Dm644 "$srcdir/$pkgname-$pkgver/src/ofono.service" "$pkgdir/usr/lib/systemd/system/ofono.service"
+	install -Dm644 "$srcdir/$pkgname/src/ofono.conf" "$pkgdir/etc/dbus-1/system.d/ofono.conf"
+	install -Dm644 "$srcdir/$pkgname/src/ofono.service" "$pkgdir/usr/lib/systemd/system/ofono.service"
 }
