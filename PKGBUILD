@@ -1,5 +1,5 @@
 pkgname=mingw-w64-vulkan-tools
-pkgver=1.2.166
+pkgver=1.2.169
 pkgrel=1
 arch=(any)
 url="https://www.khronos.org/vulkan/"
@@ -9,7 +9,7 @@ depends=(mingw-w64-vulkan-icd-loader)
 makedepends=(mingw-w64-cmake python mingw-w64-vulkan-headers mingw-w64-glslang mingw-w64-spirv-tools mingw-w64-wine)
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://github.com/KhronosGroup/Vulkan-Tools/archive/v${pkgver}.tar.gz")
-sha256sums=('700058b72f9f48321bc0dc1e597bec6528af5c9c7158623459da79c96997cd7b')
+sha256sums=('ecc7d3eeb5ea92eccd2a1f209818eab7e19e78e976016e6bbafd85988921d73e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
