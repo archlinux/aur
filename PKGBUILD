@@ -3,7 +3,7 @@
 # Contributor: ValHue <vhuelamo at gmail dot com>
 #
 pkgname="multisystem"
-pkgver="1.0453"
+pkgver="1.0454"
 pkgrel="1"
 pkgdesc="A GUI tool to create a usb system that can boot multiple distro's"
 url="http://liveusb.info/dotclear/index.php"
@@ -18,8 +18,8 @@ optdepends=('fatresize: The FAT16/FAT32 non-destructive resizer.')
 source=("${pkgname}-${pkgver}.tar.bz2::http://liveusb.info/${pkgname}/${pkgname}.tar.bz2"
         "Packages::http://liveusb.info/${pkgname}/depot/dists/all/main/binary-i386/Packages"
 )
-sha256sums=('750ecfd48f9e940d9072b6803b4644f0219de7128317d024081c1605c2484e57'
-            '948f9e80a5e8de586035e8dac70ddf65588d32c05ed27c625e3b22bd27a69d05')
+sha256sums=('07986123131e312fa8174469013d22c5a771893210adadf8df1b5127d5e3c860'
+            '9682bdc26b114d224caf18ab83a160c3edd2343204df459335c433526307f3f3')
 
 _multisystem="#!/usr/bin/sh
 exec /usr/local/share/multisystem/gui_multisystem.sh
@@ -100,15 +100,15 @@ package() {
     install -d ${pkgdir}/usr/local/share/pixmaps
 
     cd "${srcdir}"
-    install -m 644 *.desktop ${pkgdir}/usr/share/applications
-    install -m 755 multisystem_bin ${pkgdir}/usr/bin/multisystem
-    install -m 755 update-grub2 ${pkgdir}/usr/bin
-    install -m 755 gvfs-mount ${pkgdir}/usr/local/bin
+    install -m 644 *.desktop "${pkgdir}/usr/share/applications/"
+    install -m 755 multisystem_bin "${pkgdir}/usr/bin/multisystem"
+    install -m 755 update-grub2 "${pkgdir}/usr/bin/"
+    install -m 755 gvfs-mount "${pkgdir}/usr/local/bin/"
 
     cd "${pkgdir}/usr/local/share/${pkgname}"
-    install -m 644 img/*.png ${pkgdir}/usr/local/share/pixmaps
-    install -m 644 pixmaps/multisystem-liveusb.png ${pkgdir}/usr/local/share/pixmaps
-    install -m 644 pixmaps/multisystem-vbox.png ${pkgdir}/usr/local/share/pixmaps
+    install -m 644 img/*.png "${pkgdir}/usr/local/share/pixmaps/"
+    install -m 644 pixmaps/multisystem-liveusb.png "${pkgdir}/usr/local/share/pixmaps/"
+    install -m 644 pixmaps/multisystem-vbox.png "${pkgdir}/usr/local/share/pixmaps/"
 }
 
 # vim: set ts=4 sw=4 et syn=sh ft=sh:
