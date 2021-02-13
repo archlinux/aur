@@ -42,6 +42,11 @@ build() {
 	make
 }
 
+check() {
+  cd "$pkgname"
+  ./run_tests
+}
+
 package() {
   cd "$srcdir/$pkgname/"
   install -D -m 755 ${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
