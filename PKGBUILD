@@ -20,6 +20,6 @@ source=("https://github.com/kingosticks/mopidy-tunein/archive/v${pkgver}.tar.gz"
 sha256sums=("442aedb87b65ed61cad3eb8dd01f16ebf9f62fae4a6dd948ded73f1604ee8de2")
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1
+    cd "mopidy-pandora-${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1
 }
