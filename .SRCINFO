@@ -1,6 +1,6 @@
 pkgbase = libretro-beetle-vb-git
 	pkgdesc = Virtual Boy emu - Standalone port of Beetle / Mednafen VB to libretro.
-	pkgver = 690.93f5b60
+	pkgver = 806.0de041a
 	pkgrel = 1
 	url = https://github.com/libretro/beetle-vb-libretro
 	arch = i686
@@ -12,12 +12,10 @@ pkgbase = libretro-beetle-vb-git
 	license = GPL2
 	makedepends = git
 	depends = gcc-libs
-	conflicts = libretro-mednafen-vb-git
+	depends = libretro-core-info
 	replaces = libretro-mednafen-vb-git
 	source = git+https://github.com/libretro/beetle-vb-libretro.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = libretro-beetle-vb-git
-	provides = libretro-beetle-vb
-	conflicts = libretro-beetle-vb
 
