@@ -3,10 +3,6 @@
 # Contributor   : Jean-Michel T.Dydak <jean-michel@obarun.org>
 
 pkgname=(
-#	'xorg-server-rootless-nosystemd-minimal-git'
-#	'xorg-server-xephyr-rootless-nosystemd-minimal-git'
-#	'xorg-server-xvfb-rootless-nosystemd-minimal-git'
-#	'xorg-server-xnest-rootless-nosystemd-minimal-git'
 	'xorg-xwayland-rootless-nosystemd-minimal-git'
 	'xorg-xwayland-common-rootless-nosystemd-minimal-git'
 	'xorg-xwayland-devel-rootless-nosystemd-minimal-git')
@@ -122,7 +118,7 @@ build() {
     -D composite=false \
     -D record=false \
     -D dri=false \
-    -D dri3=false \
+    -D dri3=true \
     -D present=false \
     -D xf86vidmode=false \
     -D dbe=false \
@@ -135,6 +131,7 @@ build() {
     -D pciaccess=true \
     -D xshmfence=false
 
+# dri3 required for xwayland support
 # glamor required for xwayland support
 # dga required for xorg nvidia blob/amdgpu/mesa ### NOT REQUIRED FOR XWAYLAND
 # xinerama required for nvidia blob/amdgpu/mesa
@@ -181,83 +178,6 @@ package_xorg-xwayland-common-rootless-nosystemd-minimal-git() {
   # license
 #  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
 }
-
-#package_xorg-server-rootless-nosystemd-minimal-git() {
-#  pkgdesc="Xorg X server"
-#  depends=(libepoxy libxfont2 pixman xorg-server-common-rootless-nosystemd-minimal-git 
-#           dbus libgl xf86-input-libinput nettle
-#           libpciaccess libdrm libxshmfence) # FS#52949
-#  optdepends=('libunwind: unwind backtrace support')
-
-  # see xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
-  # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel pkg
-#  provides=('X-ABI-VIDEODRV_VERSION=24.0' 'X-ABI-XINPUT_VERSION=24.1' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server' 'xorg-server')
-#  conflicts=('nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting' 'xorg-server')
-#  replaces=('glamor-egl' 'xf86-video-modesetting')
-#  install=xorg-server-rootless-nosystemd-minimal-git.install
-
-  
-#  _install fakeinstall/usr/bin/{Xorg,cvt,gtf}
-#  ln -s /usr/bin/Xorg "${pkgdir}/usr/bin/X"
-#  _install fakeinstall/usr/lib/Xorg{,.wrap}
-#  _install fakeinstall/usr/lib/xorg/modules/*
-#  _install fakeinstall/usr/share/X11/xorg.conf.d/10-quirks.conf
-#  _install fakeinstall/usr/share/man/man1/{Xorg,cvt,gtf}.1
-#  _install fakeinstall/usr/share/man/man4/{exa,fbdevhw,modesetting}.4
-#  _install fakeinstall/usr/share/man/man5/{xorg.conf,xorg.conf.d}.5
-
-  # distro specific files must be installed in /usr/share/X11/xorg.conf.d
-#  install -m755 -d "${pkgdir}/etc/X11/xorg.conf.d"
-
-  # license
-#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
-#}
-
-#package_xorg-server-xephyr-rootless-nosystemd-minimal-git() {
-#  pkgdesc="A nested X server that runs as an X application"
-#  depends=(libxfont2 libgl libepoxy libxv pixman xorg-server-common-rootless-nosystemd-minimal-git
-#           xcb-util-image xcb-util-renderutil xcb-util-wm xcb-util-keysyms
-#           nettle libtirpc)
-#  optdepends=('libunwind: unwind backtrace support')
-#  conflicts=('xorg-server-xephyr')
-#  provides=('xorg-server-xephyr')
-  
-#  _install fakeinstall/usr/bin/Xephyr
-#  _install fakeinstall/usr/share/man/man1/Xephyr.1
-
-  # license
-#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
-#}
-
-#package_xorg-server-xvfb-rootless-nosystemd-minimal-git() {
-#  pkgdesc="Virtual framebuffer X server"
-#  depends=(libxfont2 pixman xorg-server-common-rootless-nosystemd-minimal-git xorg-xauth libgl nettle libtirpc)
-#  optdepends=('libunwind: unwind backtrace support')
-#  conflicts=('xorg-server-xvfb')
-#  provides=('xorg-server-xvfb')
-  
-#  _install fakeinstall/usr/bin/Xvfb
-#  _install fakeinstall/usr/share/man/man1/Xvfb.1
-
-#  install -m755 "${srcdir}/xvfb-run" "${pkgdir}/usr/bin/"
-#  install -m644 "${srcdir}/xvfb-run.1" "${pkgdir}/usr/share/man/man1/" # outda
-
-  # license
-#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
-#}
-
-#package_xorg-server-xnest-rootless-nosystemd-minimal-git() {
-#  pkgdesc="A nested X server that runs as an X application"
-#  depends=(libxfont2 libxext pixman xorg-server-common-rootless-nosystemd-minimal-git nettle libtirpc)
-#  conflicts=('xorg-server-xnest')
-#  provides=('xorg-server-xnest')
-  
-#  _install fakeinstall/usr/bin/Xnest
-#  _install fakeinstall/usr/share/man/man1/Xnest.1
-
-  # license
-#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
-#}
 
 package_xorg-xwayland-rootless-nosystemd-minimal-git() {
   pkgdesc="run X clients under wayland"
