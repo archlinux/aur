@@ -1,17 +1,17 @@
 pkgbase = svt-av1-git
-	pkgdesc = Scalable Video Technology AV1 encoder (git version)
-	pkgver = 0.8.0.r23.gba3dd448
+	pkgdesc = Scalable Video Technology AV1 encoder and decoder (git version)
+	pkgver = 0.8.6.r77.gd5a40d53
 	pkgrel = 1
-	url = https://github.com/OpenVisualCloud/SVT-AV1/
+	url = https://gitlab.com/AOMediaCodec/SVT-AV1/
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = cmake
-	makedepends = nasm
+	makedepends = yasm
 	depends = glibc
 	provides = svt-av1
 	conflicts = svt-av1
-	source = git+https://github.com/OpenVisualCloud/SVT-AV1.git
+	source = git+https://gitlab.com/AOMediaCodec/SVT-AV1.git
 	sha256sums = SKIP
 
 pkgname = svt-av1-git
