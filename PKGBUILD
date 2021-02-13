@@ -60,7 +60,8 @@ build() {
     -D speex=enabled \
     -D valgrind=disabled \
     -D adrian-aec=false \
-    -D webrtc-aec=disabled 
+    -D webrtc-aec=disabled \
+    -D tcpwrap=disabled 
   meson compile -C build
 }
 
