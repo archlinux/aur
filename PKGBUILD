@@ -7,7 +7,7 @@ arch=('x86_64')
 license=('GPL3+')
 url="http://www.flashtool.net/"
 depends=('libselinux' 'libsystemd' 'glib2' 'mono' 'java-environment')
-makedepends=('p7zip' 'ant' 'gcc' 'expat' 'zlib' 'make' 'java-environment-jre')
+makedepends=('p7zip' 'ant' 'gcc' 'expat' 'zlib' 'make' 'java-environment-common')
 source=("git://github.com/Androxyde/Flashtool"
 "Flashtool.desktop")
 md5sums=('SKIP' 'SKIP')
