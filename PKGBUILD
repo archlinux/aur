@@ -134,15 +134,16 @@ build() {
       --enable-pciaccess \
       --enable-input-thread
 
+# dri3 required for xwayland support
 # glamor required for xwayland support
 # dga required for xorg nvidia blob/amdgpu/mesa ### NOT REQUIRED FOR XWAYLAND
 # xinerama required for nvidia blob/amdgpu/mesa
 # mitshm required for nvidia blob/amdgpu/mesa
 # xv required for nvidia blob/amdgpu/mesa
 # composite required for nvidia blob/amdgpu/mesa
-# pciaccess required or build fails
-# agp required or build fails
-# libdrm required or build fails
+# pciaccess required or build fails with xorg enabled
+# agp required or build fails with xorg enabled
+# libdrm required or build fails with xorg enabled
 # b_pgo set to off or build fails
 # dpms and dri1 set to true or xf86-video-amdgpu build fails
 
