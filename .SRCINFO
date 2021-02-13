@@ -1,6 +1,6 @@
 pkgbase = wtype-git
 	pkgdesc = xdotool type for wayland
-	pkgver = 0.0.1r20.ca19f1c
+	pkgver = 0.3.r2.gfb8cb52
 	pkgrel = 1
 	url = https://github.com/atx/wtype
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = wtype-git
 	makedepends = jq
 	depends = wayland
 	depends = libxkbcommon
+	provides = wtype
+	conflicts = wtype
 	source = git+https://github.com/atx/wtype
 	sha256sums = SKIP
 

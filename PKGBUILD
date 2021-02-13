@@ -1,36 +1,26 @@
 # Maintainer: Carlo Teubner <carlo@cteubner.net>
 pkgname=wtype-git
-pkgver=0.0.1r20.ca19f1c
+pkgver=0.3.r2.gfb8cb52
 pkgrel=1
 pkgdesc="xdotool type for wayland"
 arch=('x86_64')
 url="https://github.com/atx/wtype"
 license=('MIT')
 depends=('wayland' 'libxkbcommon')
+provides=('wtype')
+conflicts=('wtype')
 makedepends=('git' 'meson' 'jq')
 source=("git+https://github.com/atx/wtype")
 sha256sums=('SKIP')
 
-prepare() {
-  # This needs to happen here rather than build(), because 'meson introspect'
-  # from pkgver() needs the build/ directory to exist.
-  # But at this stage, CFLAGS/CPPFLAGS/LDFLAGS aren't exported yet (though they
-  # do exist as bash variables), so fix that too.
-  cd "$srcdir/${pkgname%-git}"
-  CFLAGS=$CFLAGS CPPFLAGS=$CPPFLAGS LDFLAGS=$LDFLAGS \
-    meson setup --prefix=/usr --buildtype=plain build/
-}
-
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf "%sr%s.%s" \
-    "$(meson introspect --projectinfo build/ | jq -r .version)" \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"
+  git describe --long --tags --match 'v*' | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
   cd "$srcdir/${pkgname%-git}"
+  meson setup --prefix=/usr --buildtype=plain build/
   meson compile -C build/
 }
 
