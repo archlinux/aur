@@ -32,6 +32,7 @@ depends=('java-environment' 'lapack' #'lpsolve' 'openscenegraph' 'python' 'ruby'
          'boost-libs' 'qt5-webkit' 'qt5-xmlpatterns' 'qt5-svg' 'qt5-tools' # 'fmilib'
          )
 makedepends=('git' 'gcc9-fortran' 'boost' 'clang' 'cmake' 'jre7-openjdk' 'antlr4-runtime' 'expat' 'ncurses' 'readline')
+optdepends=('zip: requested when exporting to FMU')
 provides=('openmodelica')
 conflicts=('openmodelica' 'openmodelica-svn' 'openmodelica-dev')
 

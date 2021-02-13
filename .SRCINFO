@@ -23,6 +23,7 @@ pkgbase = openmodelica-git
 	depends = qt5-xmlpatterns
 	depends = qt5-svg
 	depends = qt5-tools
+	optdepends = zip: requested when exporting to FMU
 	provides = openmodelica
 	conflicts = openmodelica
 	conflicts = openmodelica-svn
