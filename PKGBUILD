@@ -27,7 +27,7 @@ source=("${_gitname}::git+${url}"
 md5sums=('SKIP'
          'ffb513b2784747bea73591f48ee9737f'
          '33749eb33188e06f8731213acc7cd70e'
-         '2b7556bac039f28b6d73f01a7df74956')
+         'bd3ef482e08153f304479a75ab45bc8e')
 
 pkgver() {
   cd "$_gitname"

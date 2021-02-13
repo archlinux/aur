@@ -1,11 +1,10 @@
 --- onscripter-jh/Makefile.Linux	2021-02-12 13:19:35.333287357 +0800
 +++ onscripter-jh.new/Makefile.Linux	2021-02-12 13:18:28.066124344 +0800
-@@ -55,6 +55,19 @@
+@@ -55,6 +55,18 @@
  LIBS += -llua5.1
  EXT_OBJS += LUAHandler$(OBJSUFFIX)
  
 +# optional: SIMD optimizing
-+DEFS += -DUSE_SIMD -DUSE_SIMD_X86_SSE2
 +ARCH = $(shell uname -m)
 +DEFS += -DUSE_SIMD
 +ifneq ($(filter i686 x86_64,$(ARCH)),)
