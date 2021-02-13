@@ -1,14 +1,18 @@
 # Maintainer: EdJoPaTo <snoopy-aur@edjopato.de>
 pkgname=snoopy
 pkgver=2019.12.20
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="software tool to design and animate hierarchical graphs, among others Petri nets"
 arch=("x86_64")
 url="http://www-dssz.informatik.tu-cottbus.de/DSSZ/Software/Snoopy"
 license=('custom: non-professional use only')
 groups=()
-depends=('gtk2' 'libsm' 'libpng12')
+depends=('gtk2'
+         'libpng12'
+         'libsm'
+         'libxtst'
+         'libxxf86vm')
 makedepends=()
 checkdepends=()
 optdepends=()
