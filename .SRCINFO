@@ -1,6 +1,6 @@
 pkgbase = openra-ca-git
 	pkgdesc = A mod of OpenRA that combines units from the official Red Alert and Tiberian Dawn mods
-	pkgver = 945.git.55fe236
+	pkgver = 948.git.76b9fca
 	pkgrel = 1
 	url = https://github.com/Inq8/CAmod
 	install = openra-ca.install
