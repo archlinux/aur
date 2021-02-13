@@ -1,6 +1,6 @@
 # Author: Artemii Sudakov <finziyr@yandex.ru>
 pkgname=ualsv
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 epoch=1
 pkgdesc='Useful Arch Linux Script Vault'
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('sed')
 depends=('gawk' 'sed' 'coreutils' 'bash' 'wget' 'curl' 'git' 'grep' 'sudo' 'yay' 'patch')
 source=("${pkgname}-${pkgver}::https://github.com/BiteDasher/ualsv/archive/${pkgver}.tar.gz")
-sha512sums=('843e46d3863a228b366fa7f5addbe9a4d678b27422cfc34d92fa52469300e3540a1513c43c0c7e906ac2a725fb7854191f71ed21f0328d64a04549d37ac9764a')
+sha512sums=('a50bc50f0dc8541b85215a736be65658e8736389b3af2de51770f953bfea9b06aee1078d90541832b5a9d71bed72e6544b1c3ecfe3bdcbee87b474645733fdcc')
 install=ualsv.install
 package() {
 mkdir -p $pkgdir/usr/bin
