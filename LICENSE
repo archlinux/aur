@@ -1,6 +1,4 @@
-
-
-LA_OPT_NXP_Software_License v14 August 2020
+LA_OPT_NXP_Software_License v19 February 2021
 
 IMPORTANT.  Read the following NXP Software License Agreement ("Agreement") completely. By selecting the "I Accept" button at the end of this page, or by downloading, installing, or using the Licensed Software, you indicate that you accept the terms of the Agreement and you acknowledge that you have the authority, for yourself or on behalf of your company, to bind your company to these terms. You may then download or install the file. In the event of a conflict between the terms of this Agreement and any license terms and conditions for NXP's proprietary software embedded anywhere in the Licensed Software file, the terms of this Agreement shall control.  If a separate license agreement for the Licensed Software has been signed by you and NXP, then that agreement shall govern your use of the Licensed Software and shall supersede this Agreement.
 
@@ -20,7 +18,7 @@ This is a legal agreement between your employer, of which you are an authorized 
 
 1.4          "Intellectual Property Rights" means any and all rights under statute, common law or equity in and under copyrights, trade secrets, and patents (including utility models), and analogous rights throughout the world, including any applications for and the right to apply for, any of the foregoing.
 
-1.5          "NXP Product" means a programmable processing unit (e.g. a microprocessor, microcontroller, sensor or digital signal processor) supplied directly or indirectly from NXP or an NXP Affiliate.
+1.5          "NXP Product" means a hardware product (e.g. a microprocessor, microcontroller, sensor or digital signal processor) supplied directly or indirectly from NXP or an NXP Affiliate, unless there is a product specified in the Software Content Register, in which case this definition is limited to such product.
 
 1.6      "Software Content Register" means the documentation which may accompany the Licensed Software which identifies the contents of the Licensed Software, including but not limited to identification of any Third Party Software, if any, and may also contain other related information as whether the license in 2.3 is applicable.
 
@@ -32,17 +30,17 @@ This is a legal agreement between your employer, of which you are an authorized 
 
 2.2.         Standard License.  Subject to the terms and conditions of this Agreement, NXP grants you a worldwide, personal, non-transferable, non-exclusive, non-sublicensable license, solely for the development of an Authorized System:
 
-(a)          to use and reproduce the Licensed Software (and its Derivative Works prepared under the license in Section 2.2(b)); and
+(a)          to use and reproduce the Licensed Software (and its Derivative Works prepared under the license in Section 2.2(b))solely in combination with a NXP Product; and
 
-(b)          for Licensed Software provided to you in source code form (human readable), to prepare Derivative Works of the Licensed Software.
+(b)          for Licensed Software provided to you in source code form (human readable), to prepare Derivative Works of the Licensed Softwaresolely for use in combination with a NXP Product.
 
 You may not distribute or sublicense the Licensed Software to others under the license granted in this Section 2.2.
 
 2.3.        Additional Distribution License.  If expressly authorized in the Software Content Register, subject to the terms and conditions of this Agreement, NXP grants you a worldwide, personal, non-transferable, non-exclusive, non-sublicensable license solely in connection with your manufacturing and distribution of an Authorized System:
 
-(a)                to manufacture (or have manufactured), distribute, and market the Licensed Software (and its Derivative Works prepared under the license in 2.2(b)) in object code (machine readable format) only as part of, or embedded within, Authorized Systems and not on a standalone basis.  Notwithstanding the foregoing, those files marked as .h files ("Header files") may be distributed in source or object code form, but only as part of, or embedded within Authorized Systems; and
+(a)                to manufacture (or have manufactured), distribute, and market the Licensed Software (and its Derivative Works prepared under the license in 2.2(b)) in object code (machine readable format) only as part of, or embedded within, Authorized Systems and not on a standalone basissolely for use in combination with a NXP Product.  Notwithstanding the foregoing, those files marked as .h files ("Header files") may be distributed in source or object code form, but only as part of, or embedded within Authorized Systems; and
 
-(b)                to copy and distribute as needed, solely in connection with an Authorized System, non-confidential NXP information provided as part of the Licensed Software for the purpose of maintaining and supporting Authorized Systems with which the Licensed Software is integrated.
+(b)                to copy and distribute as needed, solely in connection with an Authorized Systemand for use in combination with a NXP Product, non-confidential NXP information provided as part of the Licensed Software for the purpose of maintaining and supporting Authorized Systems with which the Licensed Software is integrated.
 
 2.4          Separate license grants to Third Party Software, or other terms applicable to the Licensed Software if different from those granted in this Section 2, are contained in Appendix A. The Licensed Software may be accompanied by a Software Content Register which will identify that portion of the Licensed Software, if any, that is subject to the different terms in Appendix A.
 
@@ -64,11 +62,17 @@ You may not distribute or sublicense the Licensed Software to others under the l
 
 3.7.         You will not take or fail to take any action that could subject the Licensed Software to an Excluded License. An Excluded License means any license that requires, as a condition of use, modification or distribution of software subject to the Excluded License, that such software or other software combined and/or distributed with the software be (i) disclosed or distributed in source code form; (ii) licensed for the purpose of making Derivative Works; or (iii) redistributable at no charge.
 
-3.8.         You may not publish or distribute information, results or data associated with the use of the Licensed Software to anyone other than NXP; however, you must advise NXP of any results obtained including any problems or suggested improvements thereof.  NXP retains the right to use such results and related information in any manner it deems appropriate
+3.8.         You may not publish or distribute reports associated with the use of the Licensed Software to anyone other than NXP.  You may advise NXP of any results obtained from your use of the Licensed Software, including any problems or suggested improvements thereof, and NXP retains the right to use such results and related information in any manner it deems appropriate.
 
 4.       OPEN SOURCE.         Open source software included in the Licensed Software is not licensed under the terms of this Agreement but is instead licensed under the terms of the applicable open source license(s), such as the BSD License, Apache License or the GNU Lesser General Public License. Your use of the open source software is subject to the terms of each applicable license. You must agree to the terms of each applicable license, or you cannot use the open source software.
 
-5.       INTELLECTUAL PROPERTY RIGHTS.    Your modifications to the Licensed Software, and all Intellectual Property Rights associated with, and title thereto, will be the property of NXP. Upon request, you must provide NXP the source code of any derivative of the Licensed Software. You agree to assign all, and hereby do assign all rights, title, and interest to any such modifications to the Licensed Software to NXP and agree to provide all assistance reasonably requested by NXP to establish, preserve or enforce such right. Further, you agree to waive all moral rights relating to your modifications to the Licensed Software, including, without limitation, all rights of identification of authorship and all rights of approval, restriction, or limitation on use or subsequent modification. Notwithstanding the foregoing, you will have the license rights granted in Section 2 hereto to any such modifications made by you or your subcontractor.
+5.       INTELLECTUAL PROPERTY RIGHTS.
+
+Upon request, you must provide NXP the source code of any derivative of the Licensed Software.
+
+Unless prohibited by law, the following paragraph shall apply.  Your modifications to the Licensed Software, and all intellectual property rights associated with, and title thereto, will be the property of NXP.  You agree to assign all, and hereby do assign all rights, title, and interest to any such modifications to the Licensed Software to NXP and agree to provide all assistance reasonably requested by NXP to establish, preserve or enforce such right.  Further, you agree to waive all moral rights relating to your modifications to the Licensed Software, including, without limitation, all rights of identification of authorship and all rights of approval, restriction, or limitation on use or subsequent modification.  Notwithstanding the foregoing, you will have the license rights granted in Section 2 hereto to any such modifications made by you or your licensees.
+
+Otherwise, you agree to grant an irrevocable, worldwide, and perpetual license to NXP to make, have made, use, sell, offer to sell, import, commercialize, sublicense and reproduce your modifications or derivative works to the Licensed Software without any payment to Licensee. You agree to provide all assistance reasonably requested by NXP to establish, preserve or enforce such right.
 
 6.       ESSENTIAL PATENTS.    NXP has no obligation to identify or obtain any license to any Intellectual Property Right of a third-party that may be necessary for use in connection with technology that is incorporated into the Authorized System (whether or not as part of the Licensed Software).
 
@@ -132,11 +136,18 @@ You may not distribute or sublicense the Licensed Software to others under the l
 
 
 
-You:              The address provided at registration will be used.
+                         You:              The address provided at registration will be used.
+
+
 
 23.        RELATIONSHIP OF THE PARTIES.     The parties are independent contractors. Nothing in this Agreement will be construed to create any partnership, joint venture, or similar relationship. Neither party is authorized to bind the other to any obligations with third parties.
 
 24.        SUCCESSION AND ASSIGNMENT.   This Agreement will be binding upon and inure to the benefit of the parties and their permitted successors and assigns.  You may not assign this Agreement, or any part of this Agreement, without the prior written approval of NXP, which approval will not be unreasonably withheld or delayed. NXP may assign this Agreement, or any part of this Agreement, in its sole discretion.
+
+25.          PRIVACY. By agreeing to this Agreement and/or utilizing the Licensed Software, Licensee consents to use of certain personal information, including but not limited to name, email address, and location, for the purpose of NXP’s internal analysis regarding future software offerings.  NXP’s complete Privacy Statement can be found at: https://www.nxp.com/company/our-company/about-nxp/privacy-statement:PRIVACYPRACTICES.
+
+
+
 
 
 
@@ -158,6 +169,10 @@ The Licensed Software may include some or all of the following software, which i
 
 
 Amazon: Use of the Amazon software constitutes your acceptance of the terms of the Amazon Program Materials License Agreement (including the AVS Component Schedule, if applicable), located at https://developer.amazon.com/support/legal/pml.  All Amazon software is hereby designated "Amazon confidential".  Amazon is a third-party beneficiary to this Agreement with respect to the Amazon software.
+
+
+
+Amazon Web Services, Inc.: AWS is an intended third-party beneficiary to this Agreement with respect to the Greengrass software. If you have an account with AWS that is not in good standing, you may not download, install, use or distribute the Greengrass software. You will comply with all instructions and requirements in any integration documents, guidelines, or other documentation AWS provides. The license to the Greengrass software will immediately terminate without notice if you (a) fail to comply with this Agreement or any other agreement with AWS, (b) fail to make timely payment for any AWS service, (c) fail to implement AWS updates, or (d) bring any action for intellectual property infringement against AWS or any AWS customer utilizing AWS services.  Any dispute or claim relating to your use of the Greengrass software will be resolved by binding arbitration, rather than in court, except that you may assert claims in small claims court if your claims qualify.
 
 
 
@@ -201,7 +216,7 @@ Crank: Use of Crank Software Inc. software is limited to evaluation and demonstr
 
 
 
-Cypress Semiconductor Corporation: WWD RTOS source code may only be used in accordance with the Cypress IOT Community License Agreement located at https://community.cypress.com/terms-and-conditions!input.jspa?displayOnly=true.
+Cypress Semiconductor Corporation: WWD RTOS source code may only be used in accordance with the Cypress IOT Community License Agreement obtained directly from Cypress Semiconductor Corporation.
 
 
 
