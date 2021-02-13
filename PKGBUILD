@@ -2,7 +2,7 @@
 
 pkgname=fsverity-utils
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Userspace utilities for fs-verity'
 url='https://git.kernel.org/pub/scm/linux/kernel/git/ebiggers/fsverity-utils.git'
 license=('custom:MIT')
@@ -12,11 +12,11 @@ arch=('x86_64')
 
 build() {
   cd ${pkgname}-${pkgver}
-  make
+  make USE_SHARED_LIB=1 PREFIX=/usr DESTDIR=${pkgdir}
 }
 
 package() {
   cd ${pkgname}-${pkgver}
-  make PREFIX=/usr DESTDIR=${pkgdir} install
+  make USE_SHARED_LIB=1 PREFIX=/usr DESTDIR=${pkgdir} install
   install -Dm644 LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}/
 }
