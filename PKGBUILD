@@ -9,7 +9,6 @@ license=('MIT')
 depends=('kubectl')
 source=("https://github.com/dty1er/kubecolor/releases/download/v${pkgver}/kubecolor_${pkgver}_Linux_${arch}.tar.gz")
 md5sums=('8458d15752ecdc1611e823fbd2c4fd1d')
-
 package() {
 	install -Dm755 "$srcdir/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"	
 }
