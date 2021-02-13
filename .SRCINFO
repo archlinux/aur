@@ -1,11 +1,11 @@
 pkgbase = efont-unicode-bdf
-	pkgdesc = The /efont/ Unicode Bitmap Fonts
+	pkgdesc = The /efont/ Unicode bitmap font
 	pkgver = 0.4.2
 	pkgrel = 1
-	url = http://openlab.jp/efont/unicode/
+	url = http://openlab.ring.gr.jp/efont/unicode/
 	arch = any
 	license = BSD
-	source = http://openlab.jp/efont/dist/unicode-bdf/efont-unicode-bdf-0.4.2.tar.bz2
+	source = https://web.archive.org/web/20150911101713/http://openlab.ring.gr.jp/efont/dist/unicode-bdf/efont-unicode-bdf-0.4.2.tar.bz2
 	md5sums = 0c0acbb40e44d899472001302b1c9e48
 
 pkgname = efont-unicode-bdf

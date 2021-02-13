@@ -1,13 +1,13 @@
-# Maintainer: Naïm Favier <fnaim42@gmail.com>
+# Maintainer: Naïm Favier <n+aur@monade.li>
 pkgname=efont-unicode-bdf
 pkgver=0.4.2
 pkgrel=1
-pkgdesc="The /efont/ Unicode Bitmap Fonts"
+pkgdesc="The /efont/ Unicode bitmap font"
 arch=(any)
-url="http://openlab.jp/efont/unicode/"
-license=('BSD')
-source=("http://openlab.jp/efont/dist/unicode-bdf/$pkgname-$pkgver.tar.bz2")
-md5sums=('0c0acbb40e44d899472001302b1c9e48')
+url="http://openlab.ring.gr.jp/efont/unicode/"
+license=(BSD)
+source=("https://web.archive.org/web/20150911101713/http://openlab.ring.gr.jp/efont/dist/unicode-bdf/$pkgname-$pkgver.tar.bz2")
+md5sums=(0c0acbb40e44d899472001302b1c9e48)
 
 package() {
     cd "$pkgname-$pkgver"
