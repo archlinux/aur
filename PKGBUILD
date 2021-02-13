@@ -1,6 +1,6 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
-pkgname=mingw-w64-robinmap
+pkgname=mingw-w64-robin-map
 pkgver=0.6.3
 pkgrel=2
 pkgdesc="A C++ implementation of a fast hash map and hash set using robin hood hashing (mingw-w64)"
@@ -13,6 +13,8 @@ makedepends=("mingw-w64-cmake")
 arch=("any")
 options=(!strip !buildflags staticlibs)
 optdepends=()
+conflicts=('mingw-w64-robinmap')
+replaces=('mingw-w64-robinmap')
 sha256sums=(
 	"e6654c8c2598f63eb0b1d52ff8bdf39cfcc91d81dd5d05274a6dca91241cd72f"
 )
