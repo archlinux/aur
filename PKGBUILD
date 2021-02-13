@@ -3,28 +3,32 @@
 _pkgname=proton-call
 pkgname=proton-caller
 __pkgname=Proton-Caller
-pkgver=1.3.2
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 pkgdesc="Run any Windows program through Proton"
 arch=('x86_64')
 url="https://github.com/caverym/Proton-Caller/"
 license=('GPL3')
 depends=('steam')
+makedepends=('rust' 'gcc')
+conflicts=(proton-caller-git)
+
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/caverym/"$__pkgname"/archive/${pkgver}.tar.gz")
-sha256sums=('59284eafb1760fe2279c44a10e8e8144dfc562821e49e58e7fd0a4636f0d1924')
+sha256sums=('745ceaf5ffbab5cf3b7675b6381cbcf54f08e2184ddf7a128e5aa31c05729beb')
 
 build() {
   cd "$srcdir/$__pkgname-$pkgver"
-  make
+  RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable} cargo build --release --locked
+}
+
+check() {
+  cd "$srcdir/$__pkgname-$pkgver"
+  RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable} cargo test --release --locked
 }
 
 package() {
-  mkdir -p "$pkgdir"/usr/bin/
-  mkdir -p "$pkgdir"/usr/share/licenses/"$_pkgname"/
-  mkdir -p "$pkgdir"/usr/share/man/man6/
-  mkdir -p "$pkgdir"/usr/share/proton-caller/
-  cp -f "$srcdir/$__pkgname-$pkgver"/LICENSE "$pkgdir"/usr/share/licenses/"$_pkgname"/
-  install -g 0 -o 0 -m 0644 "$srcdir/$__pkgname-$pkgver"/manual/"$_pkgname".6 "$pkgdir"/usr/share/man/man6/
-  cp "$srcdir/$__pkgname-$pkgver"/"$_pkgname" "$pkgdir"/usr/bin/
-  cp "$srcdir/$__pkgname-$pkgver"/HELP "$pkgdir"/usr/share/proton-caller/
+  cd "$srcdir/$__pkgname-$pkgver"
+  install -Dm755 target/release/proton-call "$pkgdir"/usr/bin/proton-call
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 manual/proton-call.6 "$pkgdir"/usr/share/man/man6/proton-call.6
 }
