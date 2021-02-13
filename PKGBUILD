@@ -1,16 +1,17 @@
-# Maintainer: Lari Tikkanen <lartza at wippies.com>
+# Maintainer: Lari Tikkanen <lartza at outlook.com>
 # Contributor: Samed Beyribey <ras0ir AT eventualis DOT org>
 # Contributor: Nelson VuDu <vudu DOT curse AT gmail DOT com>
 
 pkgname=lottanzb-bzr
-pkgver=1732
+_pkgname=lottanzb
+pkgver=r1740
 pkgrel=1
 pkgdesc="A SABnzbd+ (Usenet binary downloader) GUI front-end written in PyGTK (bzr version)"
 arch=('any')
 url="http://www.lottanzb.org/"
 license=('GPL')
-depends=('python2-dbus' 'python2-configobj' 'pygtk' 'hicolor-icon-theme' 'desktop-file-utils')
-makedepends=('intltool' 'bzr')
+depends=('python2-dbus' 'python2-configobj' 'pygtk' 'hicolor-icon-theme')
+makedepends=('intltool' 'bzr' 'python-dulwich' 'python2-setuptools')
 optdepends=('sabnzbd: for local downloading'
 	    'par2cmdline: for checking and repairing downloads'
             'pyopenssl: for SSL encryption and HTTPS remote access'
@@ -22,31 +23,20 @@ optdepends=('sabnzbd: for local downloading'
 	    'intltool: for translation support')
 provides=('lottanzb')
 conflicts=('lottanzb')
-install=${pkgname}.install
+source=(bzr+lp:lottanzb)
+sha256sums=('SKIP')
 
-_bzrmod=trunk
-_bzrbranch=lp:lottanzb/${_bzrmod} 
+pkgver() {
+  cd "${_pkgname}"
+  printf "r%s" "$(bzr revno)"
+}
 
 build() {
-  cd ${srcdir}
-
-  if [ -d ${_bzrmod}/.bzr ]; then
-    (cd ${_bzrmod} && bzr pull -r ${pkgver})
-  else
-    bzr branch ${_bzrbranch} ${_bzrmod}
-  fi
-
-  msg "BZR checkout done or server timeout"
-  msg "Starting make..."
-
-  rm -rf "${srcdir}/${_bzrmod}-build"
-  cp -r "${srcdir}/${_bzrmod}" "${srcdir}/${_bzrmod}-build"
-  cd "${srcdir}/${_bzrmod}-build"
-
+  cd "${_pkgname}"
   python2 setup.py build
 }
 
 package() {
-  cd ${srcdir}/${_bzrmod}-build
+  cd "${_pkgname}"
   python2 setup.py install --packaging-mode --root=${pkgdir} --prefix=/usr 
 }

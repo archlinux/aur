@@ -1,18 +1,18 @@
 pkgbase = lottanzb-bzr
 	pkgdesc = A SABnzbd+ (Usenet binary downloader) GUI front-end written in PyGTK (bzr version)
-	pkgver = 1732
+	pkgver = r1740
 	pkgrel = 1
 	url = http://www.lottanzb.org/
-	install = lottanzb-bzr.install
 	arch = any
 	license = GPL
 	makedepends = intltool
 	makedepends = bzr
+	makedepends = python-dulwich
+	makedepends = python2-setuptools
 	depends = python2-dbus
 	depends = python2-configobj
 	depends = pygtk
 	depends = hicolor-icon-theme
-	depends = desktop-file-utils
 	optdepends = sabnzbd: for local downloading
 	optdepends = par2cmdline: for checking and repairing downloads
 	optdepends = pyopenssl: for SSL encryption and HTTPS remote access
@@ -24,6 +24,8 @@ pkgbase = lottanzb-bzr
 	optdepends = intltool: for translation support
 	provides = lottanzb
 	conflicts = lottanzb
+	source = bzr+lp:lottanzb
+	sha256sums = SKIP
 
 pkgname = lottanzb-bzr
 
