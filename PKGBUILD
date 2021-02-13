@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://git.sr.ht/~kennylevinsen/wlgreet"
 license=(MIT)
 source=("https://git.sr.ht/~kennylevinsen/wlgreet/archive/$pkgver.tar.gz")
-sha256sums=('d484411c8f61648901a4e8f8de6f0424a6bf2c9a951b4ff97e234318febaecac')
+sha256sums=('f66d5942c285ffe51b879883a714a88719197687de242090f47535e495c0c6da')
 makedepends=(rust)
 
 build() {
