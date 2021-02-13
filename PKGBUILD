@@ -1,5 +1,4 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
-# Co-Maintainer: Jeffrey Bouter <aur at kn0x dot org>
 pkgname=touche
 pkgver=1.0.2
 pkgrel=1
