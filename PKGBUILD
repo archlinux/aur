@@ -1,20 +1,24 @@
-# Maintainer: Emanuel Evans <mail@emanuel.industries>
+# Maintainer: Matthew Gamble <git@matthewgamble.net>
+# Contributor: Emanuel Evans <mail@emanuel.industries>
 
 pkgname=mopidy-pandora
-pkgver=0.1.8
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Mopidy extension for playing music from Pandora"
-
-arch=('any')
-url="https://github.com/rectalogic/mopidy-pandora"
-license=('APACHE')
-depends=('mopidy>=1.0.7' 'python2-pykka>=1.1' 'python2-pydora>=1.5.1' 'python2-requests>=2.5.0')
-makedepends=('python2' 'python2-setuptools')
-
-source=("$pkgname-$pkgver.tar.gz::https://github.com/rectalogic/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('21c87a65fdf2fa22a9b0e68f7fe2486d')
+arch=("any")
+url="https://github.com/mopidy/mopidy-pandora"
+license=("Apache")
+depends=(
+    "mopidy"
+    "python"
+    "python-setuptools"
+    "python-pykka"
+    "python-requests"
+)
+source=("https://github.com/mopidy/mopidy-pandora/archive/v${pkgver}.tar.gz")
+sha256sums=("da1901fa0ee72181fb4607cb872cc7042beaf0a091ab2e5a44607bd733291dcc")
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+    cd "mopidy-pandora-${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1
 }
