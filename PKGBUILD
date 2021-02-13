@@ -9,8 +9,8 @@
 
 pkgbase=phpstorm-eap
 pkgname=(phpstorm-eap phpstorm-eap-jre)
-pkgver=211.5538.21
-dl_pkgver=211.5538.21
+pkgver=211.5787.18
+dl_pkgver=211.5787.18
 pkgrel=1
 pkgdesc="Lightning-smart PHP IDE. Early Access Program."
 arch=('x86_64' 'i686')
@@ -20,10 +20,8 @@ depends=('libdbusmenu-glib')
 makedepends=('rsync')
 options=('!strip')
 source=(https://download.jetbrains.com/webide/PhpStorm-${dl_pkgver}.tar.gz
-        https://download.jetbrains.com/webide/PhpStorm-211.4961.37.tar.gz
         jetbrains-phpstorm-eap.desktop)
-sha256sums=('a18b4eba4b1238831a1a43639e0bc492ff7d0c9ac3c42952abca4d53853a9315'
-            'b45284c1b9fcdd4a55f1b34b9e55c22dbf827ea2cc44bc3bc07325960c670a5e'
+sha256sums=('93de691716b72a793b339b67b022ad1fd23adfae2541f5ff1e86aaa69a0e5057'
             'b08cebee65c3d8949f91a18ceff45e6713fa59af8434fa56fdac067f2f6a00f7')
 
 package_phpstorm-eap() {
@@ -46,6 +44,5 @@ package_phpstorm-eap() {
 package_phpstorm-eap-jre() {
   install -d -m 755 "${pkgdir}/opt/${pkgbase}"
   # Using JBR from previous EAP, https://youtrack.jetbrains.com/issue/JBR-3066
-  echo "Using JBR from 211.4961.37 ..."
-  rsync -rtl "${srcdir}/PhpStorm-211.4961.37/jbr" "${pkgdir}/opt/${pkgbase}"
+  rsync -rtl "${srcdir}/PhpStorm-${pkgver}/jbr" "${pkgdir}/opt/${pkgbase}"
 }
