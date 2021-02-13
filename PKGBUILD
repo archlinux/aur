@@ -2,6 +2,7 @@
 
 pkgname=onscripter-gbk-git
 _gitname=${pkgname%-git}
+_ons_version="20130411"
 pkgver=3.382ec29
 pkgrel=1
 pkgdesc="A GBK version of ONScripter, a game scripting engine"
