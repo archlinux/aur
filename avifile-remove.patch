@@ -1,0 +1,36 @@
+--- onscripter-jh/Makefile.Linux	2021-02-12 13:14:09.938453749 +0800
++++ onscripter-jh.new/Makefile.Linux	2021-02-12 13:16:52.760381455 +0800
+@@ -9,11 +9,12 @@
+ .SUFFIXES:
+ .SUFFIXES: $(OBJSUFFIX) .cpp .h
+ 
++TARGET = onscripter$(EXESUFFIX)
+ TARGET = onscripter$(EXESUFFIX) \
+-	sardec$(EXESUFFIX) \
+-	nsadec$(EXESUFFIX) \
+-	sarconv$(EXESUFFIX) \
+-	nsaconv$(EXESUFFIX) 
++#	sardec$(EXESUFFIX) \
++#	nsadec$(EXESUFFIX) \
++#	sarconv$(EXESUFFIX) \
++#	nsaconv$(EXESUFFIX) 
+ EXT_OBJS = 
+ 
+ # mandatory: SDL, SDL_ttf, SDL_image, SDL_mixer, bzip2, libjpeg
+@@ -42,11 +43,11 @@
+ DEFS += -DUSE_CDROM
+ 
+ # optional: avifile
+-DEFS += -DUSE_AVIFILE
+-INCS += `avifile-config --cflags`
+-LIBS += `avifile-config --libs`
+-TARGET += simple_aviplay$(EXESUFFIX)
+-EXT_OBJS += AVIWrapper$(OBJSUFFIX)
++#DEFS += -DUSE_AVIFILE
++#INCS += `avifile-config --cflags`
++#LIBS += `avifile-config --libs`
++#TARGET += simple_aviplay$(EXESUFFIX)
++#EXT_OBJS += AVIWrapper$(OBJSUFFIX)
+ 
+ # optional: lua
+ DEFS += -DUSE_LUA

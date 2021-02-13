@@ -1,0 +1,31 @@
+pkgbase = onscripter-jh-git
+	pkgdesc = onscripter fork with custom improvements.
+	pkgver = 2.fa80e64
+	pkgrel = 1
+	url = https://github.com/luhux/onscripter-jh
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+	depends = sdl_mixer
+	depends = sdl_ttf
+	depends = sdl_image
+	depends = libjpeg-turbo
+	depends = bzip2
+	depends = libvorbis
+	depends = lua51
+	depends = fontconfig
+	depends = smpeg
+	provides = onscripter-jh
+	conflicts = onscripter-jh
+	source = git+https://github.com/luhux/onscripter-jh
+	source = avifile-remove.patch
+	source = target-optimizing.patch
+	sha256sums = SKIP
+	sha256sums = 11dab90831eaea86867675abef844f0bdd207545d157b49818b0557a441b8351
+	sha256sums = 8e5289ed20a96ed6119231b6b27fe9014dde6a57de47f455bdc942000d4ec80d
+
+pkgname = onscripter-jh-git
+
