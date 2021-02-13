@@ -1,7 +1,7 @@
 # Maintainer: Paul Irofti <paul@irofti.net>
 
 pkgname="python-stumpy-git"
-pkgver=v1.8.0.r3.gc76f668
+pkgver=1.8.0.r3.gc76f668
 pkgrel=1
 pkgdesc="powerful and scalable library that computes the matrix profile"
 url="https://github.com/datamllab/stumpy"
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "stumpy"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^V//'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
