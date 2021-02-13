@@ -1,0 +1,12 @@
+diff --git a/src/algo/crypt/lcg.cc b/src/algo/crypt/lcg.cc
+index 6c2a7945..66630a08 100644
+--- a/src/algo/crypt/lcg.cc
++++ b/src/algo/crypt/lcg.cc
+@@ -17,6 +17,7 @@
+ 
+ #include "algo/crypt/lcg.h"
+ #include <functional>
++#include <stdexcept>
+ 
+ using namespace au;
+ using namespace au::algo::crypt;

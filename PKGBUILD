@@ -12,8 +12,10 @@ optdepends=('libwebp')
 makedepends=('boost')
 provides=('arc_unpacker-git' 'arc_unpacker')
 conflicts=('arc_unpacker')
-source=("$pkgname::git+https://github.com/vn-tools/arc_unpacker.git")
-md5sums=('SKIP')
+source=("$pkgname::git+https://github.com/vn-tools/arc_unpacker.git"
+        'lcg.patch')
+sha256sums=('SKIP'
+            '37f3c1f1969ec9ed537a5cff79e3eb712fb2f317fcf99508eaa8bb250104a003')
 
 pkgver() {
   cd "$pkgname"
@@ -26,6 +28,8 @@ prepare() {
 	sed -i "s|\/\.\.\/|\/|g" CMakeLists.txt
 	# FIX etc/ path
 	sed -i "s|program\_path\.parent()|io\:\:path(\"/usr/share/${_pkgname}\")|g" src/io/program_path.cc
+  # FIX logic_error
+  git apply "$srcdir/lcg.patch"
 }
 
 build() {
