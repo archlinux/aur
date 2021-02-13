@@ -2,8 +2,8 @@
 
 pkgname=gnome-shell-40alfa
 _pkgname=gnome-shell
-pkgver=40.1.20210122.0
-pkgrel=2
+pkgver=40.1.20210208.2
+pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
 url="https://gitlab.gnome.org/GNOME/gnome-shell"
@@ -23,8 +23,9 @@ groups=(gnome)
 provides=(gnome-shell)
 conflicts=(gnome-shell)
 
-source=("https://gitlab.gnome.org/haecker-felix/gnome-shell-40-copr/uploads/63f5142f45fc8982ef6d6074bf705f44/gnome-shell.tar.xz")
-sha256sums=('91d41fc19a5b0ae6aa9bdef1c2ec138cf4871087704797542e5d745e913c7382')
+source=("https://gitlab.gnome.org/haecker-felix/gnome-shell-40-copr/uploads/3551d83ba16b5048dd62448989722061/gnome-shell.tar.xz")
+
+sha256sums=('d02f52dffd86365e1d28bf8aa2694ea818d168324512b163fe68cf0df4bc9fec')
 
 
 build() {
