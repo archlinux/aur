@@ -1,0 +1,26 @@
+pkgbase = onscripter-jh-bin
+	pkgdesc = An optimized SDL port of ONScripter, a game scripting engine
+	pkgver = 20181231
+	pkgrel = 1
+	url = https://bitbucket.org/jh10001/onscripter-jh
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	depends = sdl_mixer
+	depends = sdl_ttf
+	depends = sdl_image
+	depends = libjpeg-turbo
+	depends = bzip2
+	depends = libvorbis
+	depends = lua51
+	depends = fontconfig
+	depends = smpeg
+	provides = onscripter-jh
+	conflicts = onscripter-jh
+	source_x86_64 = https://repo.aosc.io/debs/pool/stable/main/o/onscripter-jh_20181231-1_amd64.deb
+	sha256sums_x86_64 = 186501991246abfc4d0c12bdc3fcbd74fb7ce8122607c1ee893ab77802de5392
+	source_aarch64 = https://repo.aosc.io/debs/pool/stable/main/o/onscripter-jh_20181231-1_arm64.deb
+	sha256sums_aarch64 = ef5dc744cdc964d59b8e318eab174605434b80b2715fe57d4c81419cf32f555e
+
+pkgname = onscripter-jh-bin
+
