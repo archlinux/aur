@@ -83,7 +83,7 @@ _makenconfig=y
 
 pkgbase=linux-manjaro-xanmod-uksm
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.10.15
+pkgver=5.10.16
 _major=5.10
 _branch=5.x
 xanmod=1
@@ -92,7 +92,7 @@ pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="b01580af8625cbb92000a03bb6e8f37ec83759d8" # 5.10.15-1
+__commit="e4a38645e668890a6b8e0df893a27a36e6c711d4" # 5.10.16-1
 
 license=(GPL2)
 makedepends=(
@@ -109,9 +109,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
 
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'cb36d0d05523e1154f84c060081481f799253da06edb127a2630e539c6974f12'
-            '229a8138d0cf5c11903bece82751b0bf8b14d21ba8bbfd848b64f98d83021f31'
+            '8b978c2bd1a597ea837ec050d8037fa4cb521d1b89cb05f89605bb8069239000'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
-            '29288a4c3d8db81da75860857fdfa7ca6650f7b660b49dbf55a0c2404ccc0f7c'
+            '27e38a35e3ac088ce368027f612a18ae88abd320f1f5d1f32425869e6bcfa2a0'
             '9f7931fe587cfbc918aabbf3a1211a7179c8b2b300a1fc38c22920df4ed7dc2a') 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
