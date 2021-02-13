@@ -4,10 +4,6 @@
 
 pkgname=(
 	'xorg-server-rootless-nosystemd-minimal'
-#	'xorg-server-xephyr-rootless-nosystemd-minimal'
-#	'xorg-server-xvfb-rootless-nosystemd-minimal'
-#	'xorg-server-xnest-rootless-nosystemd-minimal'
-#	'xorg-server-xwayland-rootless-nosystemd-minimal'
 	'xorg-server-common-rootless-nosystemd-minimal'
 	'xorg-server-devel-rootless-nosystemd-minimal')
 
@@ -53,112 +49,114 @@ optdepends=('wayland-protocols: xwayland support'
             'xorg-xinit: startx support')
 
 build() {
-  # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
-  # With them, module fail to load with undefined symbol.
-  # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
-#  export CFLAGS=${CFLAGS/-fno-plt}
-#  export CXXFLAGS=${CXXFLAGS/-fno-plt}
-#  export LDFLAGS=${LDFLAGS/,-z,now}
 
+  cd "xorg-server-$pkgver"
 
-  arch-meson xorg-server-$pkgver build \
-    -D os_vendor="Arch Linux" \
-    -D ipv6=false \
-    -D xcsecurity=false \
-    -D xorg=true \
-    -D xwayland=false \
-    -D xwayland_eglstream=false \
-    -D udev=true \
-    -D suid_wrapper=false \
-    -D xkb_dir=/usr/share/X11/xkb \
-    -D xkb_output_dir=/var/lib/xkb \
-    -D systemd_logind=false \
-    -D b_lto=false \
-    -D xinerama=true \
-    -D screensaver=false \
-    -D dmx=false \
-    -D glamor=false \
-    -D linux_apm=false \
-    -D mitshm=true \
-    -D vgahw=false \
-    -D xdmcp=false \
-    -D xephyr=false \
-    -D xnest=false \
-    -D xquartz=false \
-    -D xv=true \
-    -D xvmc=false \
-    -D xvfb=false \
-    -D xwin=false \
-    -D xres=false \
-    -D xdm-auth-1=false \
-    -D secure-rpc=false \
-    -D dtrace=false \
-    -D listen_tcp=false \
-    -D dpms=false \
-    -D xf86bigfont=false \
-    -D xselinux=false \
-    -D dga=true \
-    -D linux_acpi=false \
-    -D agp=false \
-    -D dri1=false \
-    -D dri2=false \
-    -D xpbproxy=false \
-    -D errorlogs=false \
-    -D stdsplit=false \
-    -D b_pgo=off \
-    -D libunwind=false \
-    -D hal=false \
-    -D xf86-input-inputtest=false \
-    -D xace=false \
-    -D debug=false
-    -D input_thread=true \
-    -D int10=false \
-    -D sparkle=false \
-    -D composite=false \
-    -D record=false \
-    -D dri=false \
-    -D dri3=false \
-    -D present=false \
-    -D xf86vidmode=false \
-    -D dbe=false \
-    -D xfree86-utils=false \
-    -D windowsdri=false \
-    -D kdrive=false \
-    -D systemd-daemon=false \
-    -D unit-tests=false \
-    -D integration-tests=false \
-    -D libdrm=false \
-    -D clientids=false \
-    -D pciaccess=true \
-    -D xshmfence=false
+  ./configure --prefix=/usr \
+      --disable-ipv6 \
+      --disable-dri \
+      --disable-dmx \
+      --disable-xvfb \
+      --disable-xnest \
+      --enable-composite \
+      --disable-xcsecurity \
+      --disable-libunwind \
+      --enable-xorg \
+      --disable-xephyr \
+      --disable-glamor \
+      --disable-xwayland \
+      --disable-kdrive \
+      --disable-kdrive-kbd \
+      --disable-kdrive-mouse \
+      --enable-config-udev \
+      --disable-systemd-logind \
+      --disable-suid-wrapper \
+      --disable-install-setuid \
+      --disable-record \
+      --disable-xfbdev \
+      --disable-xfake \
+      --disable-static \
+      --libexecdir=/usr/lib/xorg-server \
+      --sysconfdir=/etc \
+      --localstatedir=/var \
+      --with-xkb-path=/usr/share/X11/xkb \
+      --with-xkb-output=/var/lib/xkb \
+      --with-fontrootdir=/usr/share/fonts \
+      --with-sha1=libgcrypt \
+      --without-dtrace \
+      --disable-linux-acpi \
+      --disable-linux-apm \
+      --disable-strict-compilation \
+      --disable-debug \
+      --without-int10 \
+      --disable-listen-tcp \
+      --without-fallback-input-driver \
+      --disable-sparkle \
+      --disable-xres \
+      --disable-xvmc \
+      --disable-screensaver \
+      --disable-xdmcp \
+      --disable-xdm-auth-1 \
+      --disable-dri2 \
+      --disable-dri3 \
+      --disable-present \
+      --disable-xf86vidmode \
+      --disable-xace \
+      --disable-xselinux \
+      --disable-dbe \
+      --disable-xf86bigfont \
+      --disable-dpms \
+      --disable-config-hal \
+      --disable-config-wscons \
+      --disable-xfree86-utils \
+      --disable-vgahw \
+      --disable-int10-module \
+      --disable-windowsdri \
+      --disable-clientids \
+      --disable-xquartz \
+      --disable-xwayland-eglstream \
+      --disable-standalone-xpbproxy \
+      --disable-xwin \
+      --disable-xf86-input-inputtest \
+      --disable-xshmfence \
+      --without-systemd-daemon \
+      --disable-secure-rpc \
+      --disable-tcp-transport \ 
+      --enable-unit-tests=no \
+      --enable-integration-tests=no \
+      --enable-agp \
+      --enable-libdrm \
+      --enable-mitshm \
+      --enable-xv \
+      --enable-dga \
+      --enable-glx \
+      --enable-xinerama \
+      --enable-pciaccess \
+      --enable-input-thread
 
+# glamor required for xwayland support
+# dga required for xorg nvidia blob/amdgpu/mesa ### NOT REQUIRED FOR XWAYLAND
 # xinerama required for nvidia blob/amdgpu/mesa
 # mitshm required for nvidia blob/amdgpu/mesa
 # xv required for nvidia blob/amdgpu/mesa
-# dga required for xorg nvidia blob/amdgpu/mesa ### NOT REQUIRED FOR XWAYLAND
-# glamor required for xwayland support
-# pciaccess set to true or build fails
+# composite required for nvidia blob/amdgpu/mesa
+# pciaccess required or build fails
+# agp required or build fails
+# libdrm required or build fails
 # b_pgo set to off or build fails
 # dpms and dri1 set to true or xf86-video-amdgpu build fails
 
-### xorg flag needs to be set to false for a successful build with -flto / b_lto enabled
+### enable-unit-tests breaks compile if -flto / b_lto is enabled
 
-  # Print config
-  meson configure build
-  ninja $NINJAFLAGS -C build
+make
 
-  # fake installation to be seperated into packages
-  DESTDIR="${srcdir}/fakeinstall" ninja $NINJAFLAGS -C build install
-}
-
-_install() {
-  local src f dir
-  for src; do
-    f="${src#fakeinstall/}"
-    dir="${pkgdir}/${f%/*}"
-    install -m755 -d "${dir}"
-    mv -v "${src}" "${dir}/"
-  done
+  # Disable subdirs for make install rule to make splitting easier
+  sed -e 's/^DMX_SUBDIRS =.*/DMX_SUBDIRS =/' \
+      -e 's/^XVFB_SUBDIRS =.*/XVFB_SUBDIRS =/' \
+      -e 's/^XNEST_SUBDIRS =.*/XNEST_SUBDIRS = /' \
+      -e 's/^KDRIVE_SUBDIRS =.*/KDRIVE_SUBDIRS =/' \
+      -e 's/^XWAYLAND_SUBDIRS =.*/XWAYLAND_SUBDIRS =/' \
+      -i hw/Makefile
 }
 
 package_xorg-server-common-rootless-nosystemd-minimal() {
@@ -166,14 +164,19 @@ package_xorg-server-common-rootless-nosystemd-minimal() {
   depends=(xkeyboard-config xorg-xkbcomp xorg-setxkbmap)
   conflicts=('xorg-server-common')
   provides=('xorg-server-common')
- 
-  
-  _install fakeinstall/usr/lib/xorg/protocol.txt
-  _install fakeinstall/usr/share/man/man1/Xserver.1
 
-#  install -m644 -Dt "${pkgdir}/var/lib/xkb/" xserver/xkb/README.compiled
-  # license
-#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
+  cd "xorg-server-$pkgver"
+
+  install -m755 -d "${pkgdir}/usr/share/licenses/xorg-server-common"
+  install -m644 COPYING "${pkgdir}/usr/share/licenses/xorg-server-common"
+
+  make -C xkb DESTDIR="${pkgdir}" install-data
+
+  install -m755 -d "${pkgdir}/usr/share/man/man1"
+  install -m644 man/Xserver.1 "${pkgdir}/usr/share/man/man1/"
+
+  install -m755 -d "${pkgdir}/usr/lib/xorg"
+  install -m644 dix/protocol.txt "${pkgdir}/usr/lib/xorg/"
 }
 
 package_xorg-server-rootless-nosystemd-minimal() {
@@ -190,82 +193,25 @@ package_xorg-server-rootless-nosystemd-minimal() {
   replaces=('glamor-egl' 'xf86-video-modesetting')
   install=xorg-server-rootless-nosystemd-minimal.install
 
-  
-  _install fakeinstall/usr/bin/{Xorg,cvt,gtf}
-  ln -s /usr/bin/Xorg "${pkgdir}/usr/bin/X"
-  #_install fakeinstall/usr/lib/Xorg{,.wrap}
-  _install fakeinstall/usr/lib/xorg/modules/*
-  _install fakeinstall/usr/share/X11/xorg.conf.d/10-quirks.conf
-  _install fakeinstall/usr/share/man/man1/{Xorg,cvt,gtf}.1
-  _install fakeinstall/usr/share/man/man4/{exa,fbdevhw,modesetting}.4
-  _install fakeinstall/usr/share/man/man5/{xorg.conf,xorg.conf.d}.5
+  cd "xorg-server-$pkgver"
+
+  make DESTDIR="${pkgdir}" install
 
   # distro specific files must be installed in /usr/share/X11/xorg.conf.d
   install -m755 -d "${pkgdir}/etc/X11/xorg.conf.d"
 
-  # license
-#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
+  rm -rf "${pkgdir}/var"
+
+  rm -f "${pkgdir}/usr/share/man/man1/Xserver.1"
+  rm -f "${pkgdir}/usr/lib/xorg/protocol.txt"
+
+  install -m755 -d "${pkgdir}/usr/share/licenses/xorg-server"
+  ln -sf ../xorg-server-common/COPYING "${pkgdir}/usr/share/licenses/xorg-server/COPYING"
+
+  rm -rf "${pkgdir}/usr/lib/pkgconfig"
+  rm -rf "${pkgdir}/usr/include"
+  rm -rf "${pkgdir}/usr/share/aclocal"
 }
-
-#package_xorg-server-xephyr-rootless-nosystemd-minimal() {
-#  pkgdesc="A nested X server that runs as an X application"
-#  depends=(libxfont2 libgl libepoxy libxv pixman xorg-server-common-rootless-nosystemd-minimal
-#           xcb-util-image xcb-util-renderutil xcb-util-wm xcb-util-keysyms
-#           nettle libtirpc)
-#  optdepends=('libunwind: unwind backtrace support')
-#  conflicts=('xorg-server-xephyr')
-#  provides=('xorg-server-xephyr')
-  
-#  _install fakeinstall/usr/bin/Xephyr
-#  _install fakeinstall/usr/share/man/man1/Xephyr.1
-
-  # license
-#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
-#}
-
-#package_xorg-server-xvfb-rootless-nosystemd-minimal() {
-#  pkgdesc="Virtual framebuffer X server"
-#  depends=(libxfont2 pixman xorg-server-common-rootless-nosystemd-minimal xorg-xauth libgl nettle libtirpc)
-#  optdepends=('libunwind: unwind backtrace support')
-#  conflicts=('xorg-server-xvfb')
-#  provides=('xorg-server-xvfb')
-  
-#  _install fakeinstall/usr/bin/Xvfb
-#  _install fakeinstall/usr/share/man/man1/Xvfb.1
-
-#  install -m755 "${srcdir}/xvfb-run" "${pkgdir}/usr/bin/"
-#  install -m644 "${srcdir}/xvfb-run.1" "${pkgdir}/usr/share/man/man1/" # outda
-
-  # license
-#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
-#}
-
-#package_xorg-server-xnest-rootless-nosystemd-minimal() {
-#  pkgdesc="A nested X server that runs as an X application"
-#  depends=(libxfont2 libxext pixman xorg-server-common-rootless-nosystemd-minimal nettle libtirpc)
-#  conflicts=('xorg-server-xnest')
-#  provides=('xorg-server-xnest')
-  
-#  _install fakeinstall/usr/bin/Xnest
-#  _install fakeinstall/usr/share/man/man1/Xnest.1
-
-  # license
-#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
-#}
-
-#package_xorg-server-xwayland-rootless-nosystemd-minimal() {
-#  pkgdesc="run X clients under wayland"
-#  depends=(libxfont2 libepoxy libgl pixman xorg-server-common
-#           nettle)
-#  optdepends=('libunwind: unwind backtrace support')
-#  conflicts=('xorg-server-xwayland')
-#  provides=('xorg-server-xwayland')
-  
-#  _install fakeinstall/usr/bin/Xwayland
-
-  # license
-#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
-#}
 
 package_xorg-server-devel-rootless-nosystemd-minimal() {
   pkgdesc="Development files for the X.Org X server"
@@ -275,15 +221,19 @@ package_xorg-server-devel-rootless-nosystemd-minimal() {
   conflicts=('xorg-server-devel')
   provides=('xorg-server-devel')
   
-  _install fakeinstall/usr/include/xorg/*
-  _install fakeinstall/usr/lib/pkgconfig/xorg-server.pc
-  _install fakeinstall/usr/share/aclocal/xorg-server.m4
+  cd xserver
+  make DESTDIR="${pkgdir}" install
 
-  # license
-#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
+  rm -rf "${pkgdir}/usr/bin"
+  rm -rf "${pkgdir}/usr/share/man"
+  rm -rf "${pkgdir}/usr/share/doc"
+  rm -rf "${pkgdir}/usr/share/X11"
+  rm -rf "${pkgdir}/usr/lib/xorg"
+  rm -rf "${pkgdir}/usr/lib/xorg-server"
+  rm -rf "${pkgdir}/var"
 
-  # make sure there are no files left to install
-#  find fakeinstall -depth -print0 | xargs -0 rmdir
+  install -m755 -d "${pkgdir}/usr/share/licenses/xorg-server-devel"
+  ln -sf ../xorg-server-common/COPYING "${pkgdir}/usr/share/licenses/xorg-server-devel/COPYING"
 }
 
 arch=('x86_64')
