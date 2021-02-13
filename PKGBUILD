@@ -63,9 +63,8 @@ package_libopenmpt-doc-svn() {
     provides=('libopenmpt-doc')
     conflicts=('libopenmpt-doc')
     
-    make -C OpenMPT "${_options[@]}" DESTDIR="$pkgdir" install-doc
-    mv doc/libopenmpt/* "${pkgdir}/usr/share/doc/libopenmpt"
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+    mv doc "${pkgdir}/usr/share"
+    make -C OpenMPT "${_options[@]}" DESTDIR="$pkgdir" install-doc
     ln -s ../../doc/libopenmpt/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    rm -d doc/{libopenmpt,}
 }
