@@ -2,7 +2,7 @@
 
 _realname=CPU-X
 pkgname=cpu-x-git
-pkgver=4.0.0.r2.gbfb09b7
+pkgver=4.1.0.r56.g4c03be0
 pkgrel=1
 pkgdesc="A Free software that gathers information on CPU, motherboard and more"
 arch=('i686' 'x86_64')
