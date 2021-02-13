@@ -1,7 +1,7 @@
 # Maintainer: ml <>
 _pkgname=probe-cli
 pkgname=ooniprobe-cli
-pkgver=3.3.0
+pkgver=3.5.2
 pkgrel=1
 pkgdesc='Next generation OONI Probe CLI'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('glibc')
 makedepends=('go')
 source=("https://github.com/ooni/probe-cli/archive/v$pkgver/$_pkgname-$pkgver.tar.gz")
-sha256sums=('f5b7473a9a67ee3c4c417651359939b3933256af10bb2019b12176fb7c249c11')
+sha256sums=('56e419033715e1b2b61a82661f724148bab8fec4a28b2566a10e0a3051b3bade')
 
 build() {
   cd "$_pkgname-$pkgver"
@@ -19,13 +19,8 @@ build() {
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
-  export GOFLAGS='-buildmode=pie -trimpath -modcacherw -mod=readonly'
-  go build -ldflags '-linkmode=external' ./cmd/ooniprobe
-}
-
-check() {
-  cd "$_pkgname-$pkgver"
-  go test -short ./...
+  export GOFLAGS='-ldflags=-linkmode=external -buildmode=pie -trimpath -modcacherw -mod=readonly'
+  go build ./cmd/ooniprobe
 }
 
 package() {
