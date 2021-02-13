@@ -11,6 +11,7 @@ arch=("i686" "x86_64" "armv6h" "armv7h" "aarch64")
 license=("GPL2")
 depends=("bluez" "dbus" "glib2" "udev" "mobile-broadband-provider-info")
 conflicts=("ofono")
+replaces=("ofono")
 optdepends=("phonesim" "mmsd" "upower")
 source=(
 	"https://www.kernel.org/pub/scm/network/ofono/ofono.git/snapshot/$pkgname.tar.gz"
