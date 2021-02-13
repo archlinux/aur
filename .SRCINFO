@@ -1,0 +1,20 @@
+pkgbase = opengothic
+	pkgdesc = Open source remake of Gothic 2: Night of the raven
+	pkgver = 0.35
+	pkgrel = 1
+	url = https://github.com/Try/OpenGothic
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = vulkan-headers
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = libx11
+	depends = vulkan-icd-loader
+	conflicts = bullet
+	options = !emptydirs
+	source = git+https://github.com/Try/OpenGothic#tag=v0.35
+	sha512sums = SKIP
+
+pkgname = opengothic
