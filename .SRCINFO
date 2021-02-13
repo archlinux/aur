@@ -1,14 +1,26 @@
 pkgbase = owamp
-	pkgdesc = A tool for performing one-way or two-way active network measurements.
+	pkgdesc = A tool for performing one-way or two-way active network measurements
 	pkgver = 4.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://software.internet2.edu/owamp/
+	install = owamp.install
 	arch = x86_64
 	license = Apache
+	makedepends = i2util
 	depends = glibc
 	depends = libcap
 	source = https://github.com/perfsonar/owamp/archive/v4.3.3/owamp-4.3.3.tar.gz
+	source = owamp.install
+	source = owamp.sysusers
+	source = owamp.tmpfiles
+	source = datadir.patch
+	source = pidfile.patch
 	sha256sums = 18b396749647c849b99013b15b27c0cb0e57ce369556cbb19987dfae4090be6f
+	sha256sums = 708169332bd057747b566f77acf6c3cff7beac59ea0e0aa98901a8060d48f216
+	sha256sums = 47ee8cf49956726db26c2386a6c81adc8d2f00ae68abfb2c7d36522a829bbffa
+	sha256sums = 0df00db45d06f01e2f2938f36b54ee2f2a9c70e4b94ac819695c0bb9922810cb
+	sha256sums = 9ea0c30873a0b631477f82619d4a31e609a40531cfb3894418682a1592d50817
+	sha256sums = 07ba6e00bc7a727a12d2853c0bc43bde152c5b4048cc3d7b6770096067cdcf61
 
 pkgname = owamp
 
