@@ -11,8 +11,8 @@ license=(Apache)
 depends=(glfw intel-tbb embree rkcommon-git openvkl openimagedenoise)
 makedepends=(cmake ispc)
 source=("https://github.com/ospray/OSPRay/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('5eaf7409b08147cbeaf087dbf4b3887c15ffeeaa9cfd16dae3ee85504d9014c2')
-provides=('ospray=2.4.0')
+sha256sums=('074bfd83b5a554daf8da8d9b778b6ef1061e54a1688eac13e0bdccf95593883d')
+provides=('ospray=2.5.0')
 
 prepare() {
     mkdir -p build
