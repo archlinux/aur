@@ -1,5 +1,10 @@
-/*.tar.xz
-/*.tar.gz
-/*.tar.zst
-/pkg
-/src
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!com.system76.FirmwareManager.policy
+!firmware-manager.install
+!firmware-manager.sh
