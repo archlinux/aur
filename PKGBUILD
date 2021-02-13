@@ -1,6 +1,7 @@
+# Maintainer: Lars Christensen <larsch@belunktum.dk>
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=owamp
-pkgver=4.2.1
+pkgver=4.3.3
 pkgrel=1
 pkgdesc="A tool for performing one-way or two-way active network measurements."
 arch=("x86_64")
@@ -9,7 +10,7 @@ license=('Apache')
 depends=("glibc" "libcap")
 makedepends=("i2util")
 source=("https://github.com/perfsonar/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('5b660509cc3c1bcbaa8b241d1047b544973fe1257437c28b154018fe60877d4d')
+sha256sums=('18b396749647c849b99013b15b27c0cb0e57ce369556cbb19987dfae4090be6f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
