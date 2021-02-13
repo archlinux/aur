@@ -1,0 +1,13 @@
+pkgbase = kubecolor
+	pkgdesc = Colorize your kubectl output
+	pkgver = 0.0.11
+	pkgrel = 1
+	url = https://github.com/dty1er/kubecolor
+	arch = x86_64
+	license = MIT
+	depends = kubectl
+	source = https://github.com/dty1er/kubecolor/releases/download/v0.0.11/kubecolor_0.0.11_Linux_x86_64.tar.gz
+	md5sums = 8458d15752ecdc1611e823fbd2c4fd1d
+
+pkgname = kubecolor
+
