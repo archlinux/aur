@@ -142,19 +142,19 @@ cd xserver
       --enable-pciaccess \
       --enable-input-thread
 
+# glamor required for xwayland support
+# dga required for xorg nvidia blob/amdgpu/mesa ### NOT REQUIRED FOR XWAYLAND
 # xinerama required for nvidia blob/amdgpu/mesa
 # mitshm required for nvidia blob/amdgpu/mesa
 # xv required for nvidia blob/amdgpu/mesa
 # composite required for nvidia blob/amdgpu/mesa
-# dga required for xorg nvidia blob/amdgpu/mesa ### NOT REQUIRED FOR XWAYLAND
-# glamor required for xwayland support
 # pciaccess required or build fails
 # agp required or build fails
 # libdrm required or build fails
 # b_pgo set to off or build fails
 # dpms and dri1 set to true or xf86-video-amdgpu build fails
 
-### enable-unit-tests=yes flag breaks compile if -flto / b_lto is enabled
+### enable-unit-tests breaks compile if -flto / b_lto is enabled
 
 make
 
