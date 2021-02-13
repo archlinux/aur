@@ -1,5 +1,6 @@
 # Contributor: Muflone http://www.muflone.com/contacts/english/
-# Maintainer: Matthew Sexton <wsdmatty@gmail.com>
+# Last Maintainer: Matthew Sexton <wsdmatty@gmail.com>
+# Maintainer: sgtxd <mark@sgtxd.de>
 pkgname=ffmpeg-compat-57
 pkgver=3.4.2
 pkgrel=3
@@ -10,7 +11,7 @@ license=('GPL')
 depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'jack' 'lame' 'libavc1394' 'libiec61883' 'libmodplug' 'libpulse'
          'libraw1394' 'libsoxr' 'libssh' 'libtheora' 'libvdpau' 'libwebp'
-         'libx11' 'libxcb' 'libxml2' 'opencore-amr' 'openjpeg2' 'opus' 'sdl2'
+         'libx11' 'libxcb' 'libxml2' 'opencore-amr' 'openjpeg' 'opus' 'sdl2'
          'speex' 'v4l-utils' 'xz' 'zlib' 'libxv'
          'libomxil-bellagio'
          'libass.so' 'libbluray.so' 'libfreetype.so' 'libva-drm.so' 'libva.so'
