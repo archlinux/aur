@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.5.0.r2.g270310e603
+pkgver=0.5.0.r42.g8326870f77
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
@@ -12,12 +12,19 @@ depends=('glu' 'gtk3' 'libsamplerate' 'sdl2')
 makedepends=('git' 'python')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/mborgerson/xemu.git")
-md5sums=('SKIP')
+source=("$_pkgname::git+https://github.com/mborgerson/xemu.git"
+        'fix-no-pie.diff')
+md5sums=('SKIP'
+         '25fa6282b6c1a11eed44c9f1ab2c5ab7')
 
 pkgver() {
 	cd $_pkgname
 	git describe --long | sed 's/^xemu-v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd $_pkgname
+	patch -p1 < ../fix-no-pie.diff
 }
 
 build() {
