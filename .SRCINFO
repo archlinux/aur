@@ -1,17 +1,18 @@
 pkgbase = gbdk-2020
 	pkgdesc = An updated version of Game Boy Development Kit
-	pkgver = 3.2
-	pkgrel = 4
+	pkgver = 4.0.2
+	pkgrel = 1
 	url = https://github.com/Zal0/gbdk-2020
 	arch = x86_64
 	arch = i686
 	license = MIT
-	makedepends = sdcc
-	makedepends = svn
-	depends = sdcc
+	makedepends = sdcc>=4.0.7.svn12016M
+	makedepends = git
+	depends = sdcc>=4.0.7.svn12016M
 	conflicts = gbdk
 	conflicts = lcc
-	source = git+https://github.com/basxto/gbdk-2020#commit=87969af9aae690f85439460e73131273af3c8f4a
+	options = !strip
+	source = git+https://github.com/basxto/gbdk-2020#commit=c2edd502370ea39893f02e9fa58a772f0488071f
 	sha256sums = SKIP
 
 pkgname = gbdk-2020
