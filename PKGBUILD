@@ -9,7 +9,7 @@
 
 pkgname=gnome-terminal-transparency
 _pkgname=gnome-terminal
-pkgver=3.38.2
+pkgver=3.38.3
 pkgrel=1
 pkgdesc="The GNOME Terminal Emulator with background transparency"
 url="https://wiki.gnome.org/Apps/Terminal"
@@ -27,7 +27,7 @@ source=(https://download.gnome.org/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pk
         0001-screen-Manually-handle-env-inheritance.patch
         0002-screen-Move-env-sanitization-from-client.patch
         0003-screen-Ignore-some-more-environment-variables.patch)
-sha256sums=('27bddc9d0ba614c86e5ecb4f54c75ebc3415e2887acd91442057548fd3206618'
+sha256sums=('11a5b0d635f15fdce7508351a510fbf4e92aa533152a50ff0c7845e3102e4764'
             '106d36537c621d1b0d4a9a541ee307ace593e005c322fd3622fc64c2f54f70ba'
             'c350db9831c3bbe5c28ab5f959076cbeacc1b2bac12ca37623db2bf7d9461ecf'
             '4dc0260da875d22830440c3295aef2c73a1625eeeadf94747ac22920d0ddcdca'
