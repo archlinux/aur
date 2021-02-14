@@ -12,7 +12,7 @@ url='http://www.waffle-gl.org'
 license=('BSD')
 
 depends=('libx11' 'libxcb' 'wayland' 'systemd' 'bash-completion')
-makedepends=('meson' 'xcb-proto' 'mesa' 'libxslt' 'docbook-xsl')
+makedepends=('meson' 'xcb-proto' 'mesa' 'libxslt' 'docbook-xsl' 'cmake')
 
 source=(https://mesa.pages.freedesktop.org/waffle/files/release/waffle-${pkgver}/waffle-${pkgver}.tar.xz{,.asc})
 sha256sums=('41ff9e042497e482c7294e210ebd9962e937631829a548e5811c637337cec5a5'

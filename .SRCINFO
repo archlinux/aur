@@ -10,6 +10,7 @@ pkgbase = waffle
 	makedepends = mesa
 	makedepends = libxslt
 	makedepends = docbook-xsl
+	makedepends = cmake
 	depends = libx11
 	depends = libxcb
 	depends = wayland
