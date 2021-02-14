@@ -7,8 +7,8 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=findutils-selinux
-pkgver=4.7.0
-pkgrel=2
+pkgver=4.8.0
+pkgrel=1
 pkgdesc="GNU utilities to locate files with SELinux support"
 arch=('x86_64')
 license=('GPL3')
@@ -19,7 +19,7 @@ provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 url='https://www.gnu.org/software/findutils/'
 source=("https://ftp.gnu.org/pub/gnu/findutils/${pkgname/-selinux}-${pkgver}.tar.xz"{,.sig})
-sha1sums=('bd2fae4add80334173e03272aeed5635d4a0fa03'
+sha1sums=('b702a37d3a33038102659777ba1fe99835bb19fe'
           'SKIP')
 validpgpkeys=('A5189DB69C1164D33002936646502EF796917195') # Bernhard Voelker <mail@bernhard-voelker.de>
 
@@ -30,7 +30,6 @@ build() {
   # which is a secure version of locate.
   sed -e '/^SUBDIRS/s/locate//' -e 's/frcode locate updatedb//' -i Makefile.in
 
-  autoreconf
   ./configure --prefix=/usr
   # don't build locate, but the docs want a file in there.
   make -C locate dblocation.texi
