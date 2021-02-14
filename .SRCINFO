@@ -1,6 +1,6 @@
 pkgbase = safeeyes
 	pkgdesc = A Free and Open Source tool for Linux users to reduce and prevent repetitive strain injury (RSI).
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/slgobinath/SafeEyes
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = safeeyes
 	depends = xorg-xprop
 	optdepends = xprintidle: for Smart Pause plugin
 	optdepends = python-croniter: for Health Stats plugin
-	source = safeeyes-2.1.1.tar.gz::https://github.com/slgobinath/SafeEyes/archive/v2.1.1.tar.gz
-	sha1sums = d4113deaad60849edecd988da72a5109fc00bc06
+	source = safeeyes-2.1.2.tar.gz::https://github.com/slgobinath/SafeEyes/archive/v2.1.2.tar.gz
+	sha1sums = 36be12401305ed29943a92dd546895cf29a4231b
 
 pkgname = safeeyes
 
