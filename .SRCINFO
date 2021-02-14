@@ -1,0 +1,22 @@
+pkgbase = sdl2_mixer-minimal-git
+	pkgdesc = A simple multi-channel audio mixer (Version 2)
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = http://www.libsdl.org/projects/SDL_mixer
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = sdl2
+	optdepends = fluidsynth: MIDI software synth, replaces built-in timidity
+	optdepends = libvorbis: vorbis support
+	optdepends = libmodplug: tracker support
+	optdepends = mpg123: mpeg codec support
+	optdepends = flac: flac support
+	optdepends = opusfile: opus support
+	provides = sdl2_mixer
+	conflicts = sdl2_mixer
+	source = git+https://github.com/libsdl-org/SDL_mixer
+	sha512sums = SKIP
+
+pkgname = sdl2_mixer-minimal-git
+
