@@ -4,7 +4,7 @@ _group_name="swcdb"
 _sub_name="lib-thrift"
 
 pkgname=${_group_name}-${_sub_name}
-pkgver=0.4.16
+pkgver=0.4.17
 pkgrel=1
 pkgdesc="The SWC-DB Thrift C++ Service Library"
 arch=("x86_64")
@@ -19,9 +19,6 @@ license=('GPLv3')
 
 
 depends=(
-  'libevent'
-  'zlib'
-  'openssl'
   'thrift'
 )
 makedepends=(
@@ -29,9 +26,6 @@ makedepends=(
   'cmake'
   'make'
   'gcc'
-  'libevent'
-  'zlib'
-  'openssl'
   'boost'
   'thrift'
 )

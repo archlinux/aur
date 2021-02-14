@@ -1,6 +1,6 @@
 pkgbase = swcdb-lib-thrift
 	pkgdesc = The SWC-DB Thrift C++ Service Library
-	pkgver = 0.4.16
+	pkgver = 0.4.17
 	pkgrel = 1
 	url = https://www.swcdb.org
 	install = README.md
@@ -11,17 +11,11 @@ pkgbase = swcdb-lib-thrift
 	makedepends = cmake
 	makedepends = make
 	makedepends = gcc
-	makedepends = libevent
-	makedepends = zlib
-	makedepends = openssl
 	makedepends = boost
 	makedepends = thrift
-	depends = libevent
-	depends = zlib
-	depends = openssl
 	depends = thrift
 	provides = libswcdb_thrift.so
-	source = swcdb-lib-thrift-0.4.16-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.4.16
+	source = swcdb-lib-thrift-0.4.17-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.4.17
 	sha256sums = SKIP
 
 pkgname = swcdb-lib-thrift
