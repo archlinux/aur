@@ -4,7 +4,7 @@ pkgname=funemustation-git
 _name=funemustation
 _export=FunEmuStation_Launcher
 pkgver=r15.c8111e8
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple but elegant launcher of emulators and pc games"
 url="https://dannygaray60.itch.io/funemustation-launcher"
 depends=('libxcursor' 'libxinerama' 'freetype2' 'alsa-lib' 'libxrandr' 'libxi' 'libglvnd')
@@ -26,7 +26,10 @@ build() {
 	
 	mkdir -p "bin"
 	echo "#!/bin/sh" > "bin/${_name}"
-	echo "cd /usr/share/$_name" >> "bin/${_name}"
+	echo "mkdir -p ~/.local/share/${_name}/fes_data" >> "bin/${_name}"
+	echo "cp /usr/share/${_name}/${_export}.x86_64 ~/.local/share/${_name}/${_export}.x86_64" >> "bin/${_name}"
+	echo "if [ ! -h test ]; then ln -s /usr/share/${_name}/${_export}.pck ~/.local/share/${_name}/${_export}.pck; fi" >> "bin/${_name}"
+	echo "cd ~/.local/share/${_name}" >> "bin/${_name}"
 	echo "./${_export}.x86_64" >> "bin/${_name}"
 
 	godot --no-window --path "." --export "Linux/X11" "bin/${_export}.x86_64"
