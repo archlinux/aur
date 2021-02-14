@@ -1,6 +1,6 @@
 pkgbase = lynis3
 	pkgdesc = Security and system auditing tool to harden Unix/Linux systems
-	pkgver = 3.0.2
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = https://cisofy.com/lynis
 	changelog = CHANGELOG.md
@@ -12,13 +12,13 @@ pkgbase = lynis3
 	optdepends = bind-tools: nameserver tests
 	optdepends = iptables: firewall tests
 	optdepends = bash-completion: completion for bash
-	provides = lynis=3.0.2
+	provides = lynis=3.0.3
 	conflicts = lynis
 	backup = etc/lynis/default.prf
-	source = https://downloads.cisofy.com/lynis/lynis-3.0.2.tar.gz
-	source = https://downloads.cisofy.com/lynis/lynis-3.0.2.tar.gz.asc
+	source = https://downloads.cisofy.com/lynis/lynis-3.0.3.tar.gz
+	source = https://downloads.cisofy.com/lynis/lynis-3.0.3.tar.gz.asc
 	validpgpkeys = 73AC9FC55848E977024D1A61429A566FD5B79251
-	sha512sums = a23207a1f227f723b3f7a1d46ac84b3cc14b0ac1a9727f57ca3f6f112d1b62ade6e6f21983fb74570aa1209bce8c7b8395f91245309d616c22cd245103028031
+	sha512sums = 850f832fd45a2e440973c414f2c98caf3add1666573f60ea70bf36f57dbf3ac1b354632f09271b34f85eba25079e564d758e237dcded743a132da771c5bce151
 	sha512sums = SKIP
 
 pkgname = lynis3

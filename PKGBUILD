@@ -6,7 +6,7 @@
 pkgname=lynis3
 _pkgname="${pkgname%[0-9]*}"
 
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 
 pkgdesc='Security and system auditing tool to harden Unix/Linux systems'
@@ -26,7 +26,7 @@ optdepends=('net-tools: networking tests'
 changelog=CHANGELOG.md
 backup=("etc/$_pkgname/default.prf")
 source=("https://downloads.cisofy.com/$_pkgname/$_pkgname-$pkgver.tar.gz"{,.asc})
-sha512sums=('a23207a1f227f723b3f7a1d46ac84b3cc14b0ac1a9727f57ca3f6f112d1b62ade6e6f21983fb74570aa1209bce8c7b8395f91245309d616c22cd245103028031'
+sha512sums=('850f832fd45a2e440973c414f2c98caf3add1666573f60ea70bf36f57dbf3ac1b354632f09271b34f85eba25079e564d758e237dcded743a132da771c5bce151'
             'SKIP')
 validpgpkeys=('73AC9FC55848E977024D1A61429A566FD5B79251')  # CISOfy (Software Signing Key) <security@cisofy.com>
 
@@ -52,10 +52,11 @@ package() {
   install -Dm644 "$_pkgname.8" -t"$pkgdir/usr/share/man/man8/"
 
   # bash completion
-  install -Dm644 "extras/bash_completion.d/$_pkgname" -t"$pkgdir/usr/share/bash-completion/completions/"
+  cd extras
+  install -Dm644 "bash_completion.d/$_pkgname" -t"$pkgdir/usr/share/bash-completion/completions/"
 
   # systemd units
-  install -Dm644 "extras/systemd/$_pkgname".{service,timer} -t"$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 "systemd/$_pkgname".{service,timer} -t"$pkgdir/usr/lib/systemd/system/"
 }
 
 
