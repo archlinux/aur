@@ -1,5 +1,5 @@
 pkgbase = g810-led-lib
-	pkgdesc = Linux led controller for Logitech G213, G410, G413. G512, G513, G610, G810, G815, G910 and GPRO Keyboards
+	pkgdesc = Linux led controller for Logitech G213, G410, G413. G512, G513, G610, G810, G815, G910 and GPRO Keyboards. Version with dynamic library
 	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/MatMoul/g810-led
