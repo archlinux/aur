@@ -3,7 +3,7 @@
 pkgname=yabridge-git
 _pkgname=yabridge
 pkgver=3.0.0.r0.g8c2594f
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern and transparent way to use Windows VST2 and VST3 plugins on Linux"
 arch=('x86_64')
 url="https://github.com/robbert-vdh/yabridge"
@@ -25,6 +25,23 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
+
+  # TODO: Once this has been fixed upstream, we can remove the warning again
+  wine_version=$(wine --version | grep --only-matching -E '[0-9]+\.[0-9.]+' | head -n1)
+  if [[ $wine_version == 6.2* ]]; then
+    echo "#"
+    echo "# WARNING: Wine 6.2 has a regression that will cause build errors when"
+    echo "#          compiling yabridge because the headers are no longer valid in"
+    echo "#          C++. The build will likely fail. Either temporarily downgrade"
+    echo "#          to a Wine 6.1 version or use the 'yabridge-bin' AUR package"
+    echo "#          instead until this is fixed."
+    echo "#"
+    echo "#          Continuing in five seconds..."
+    echo "#"
+
+    # Or else the message will be very easy to miss
+    sleep 5
+  fi
 
   # Meson won't apply any new options or update wraps if they already exist, so
   # if we're building from a dirty src/ directory we'll just nuke any cached
