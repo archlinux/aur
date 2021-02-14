@@ -1,6 +1,6 @@
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
 
-pkgname=sdl2-git
+pkgname=sdl2-nox-git
 pkgver=release.2.0.14.r369.ga6388cf2c
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2)"
