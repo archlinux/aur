@@ -13,7 +13,6 @@ depends=('gcc-libs' 'fswatch')
 makedepends=('git')
 
 provides=('ada-libfswatch')
-options=(strip)
 
 source=('git+https://github.com/AdaCore/ada_libfswatch.git' 'ada-libfswatch-git.patch')
 sha1sums=('SKIP'
