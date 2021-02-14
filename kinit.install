@@ -1,0 +1,9 @@
+post_install() {
+# this is executed by make install, but doesn't work since setcap can only be run as root
+  setcap CAP_SYS_RESOURCE=+ep /usr/lib/kf5/start_kdeinit
+}
+
+post_upgrade() {
+  post_install
+}
+
