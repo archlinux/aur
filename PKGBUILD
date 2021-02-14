@@ -1,8 +1,8 @@
-# Maintainer: Hans-Nikolai Viessmann <hv15 AT hw.ac.uk>
+# Maintainer: Hans-Nikolai Viessmann <hans AT viess DOT mn>
 _pkgname=saxpsa
 pkgname=latex-${_pkgname}-ok
 pkgver=13.03.2007
-pkgrel=5
+pkgrel=6
 pkgdesc="Provides Type 1 font compatible with displaying APL."
 arch=('any')
 url="http://olegykj.sourceforge.net/"
@@ -19,15 +19,20 @@ package() {
     # create dir for STY and OT1 font files
     install -d ${pkgdir}/usr/share/texmf/tex/latex/${_pkgname}/
 
-    # copy over OT1 font files
+    # copy over font files
     cp -r --no-preserve=mode ${_pkgname}/texmf ${pkgdir}/usr/share/
 
-    # copy over STY
+    # copy over STY & OT1 definition
     cp --no-preserve=mode ${_pkgname}/${_pkgname}.sty ${pkgdir}/usr/share/texmf/tex/latex/${_pkgname}/
+    cp --no-preserve=mode ${_pkgname}/OT1saxpsa.fd ${pkgdir}/usr/share/texmf/tex/latex/${_pkgname}/
 
     # create dir for global MAPS file
     install -d ${pkgdir}/var/lib/texmf/arch/installedpkgs/
 
     # copy MAPS file
     cp --no-preserve=mode "${_pkgname}.maps" ${pkgdir}/var/lib/texmf/arch/installedpkgs/
+
+    # set license
+    install -d ${pkgdir}/usr/share/licenses/${pkgname}
+    cp --no-preserve=mode ${_pkgname}/readme.txt ${pkgdir}/usr/share/licenses/${pkgname}/license.txt
 }

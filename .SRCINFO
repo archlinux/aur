@@ -1,7 +1,7 @@
 pkgbase = latex-saxpsa-ok
 	pkgdesc = Provides Type 1 font compatible with displaying APL.
 	pkgver = 13.03.2007
-	pkgrel = 5
+	pkgrel = 6
 	url = http://olegykj.sourceforge.net/
 	arch = any
 	license = custom
