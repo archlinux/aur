@@ -1,16 +1,16 @@
 pkgbase = cndrvcups-lt
-pkgdesc = Canon UFR II /LIPSLX Printer Driver for some LBP drivers
-pkgver = 1.50
-pkgrel = 1
-url = https://www.canon-europe.com/support/consumer_products/products/printers/laser/i-sensys_lbp6030.aspx?type=drivers&language=EN&os=Linux%20(64-bit)
-arch = x86_64
-depends = libglade
-depends = gcc-libs
-depends = libxml2
-depends = libjpeg-turbo
-depends = libgcrypt
-depends = cndrvcups-common-lb
-source = http://gdlp01.c-wss.com/gds/0/0100005950/09/linux-UFRIILT-drv-v150-uken.tar.gz
-sha256sums = 002c076389a000d9b47fb3771532bf88
+	pkgdesc = Canon UFR II /LIPSLX Printer Driver. It provides ppd files for LBP112, LBP113, LBP151, LBP6030, LBP6230, LBP7110C, and LBP8100 printers.
+	pkgver = 5.00.18
+	pkgrel = 0
+	url = https://www.canon-europe.com/support/consumer_products/products/printers/laser/i-sensys_lbp6030.aspx?type=drivers&language=EN&os=Linux%20(64-bit)
+	arch = x86_64
+	depends = libglade
+	depends = gcc-libs
+	depends = libxml2
+	depends = libjpeg-turbo
+	depends = libgcrypt
+	source = http://gdlp01.c-wss.com/gds/0/0100005950/10/linux-UFRIILT-drv-v500-uken-18.tar.gz
+	md5sums = 8bc3a4e3c372bb4d1b9af2cc012c720b
 
 pkgname = cndrvcups-lt
+
