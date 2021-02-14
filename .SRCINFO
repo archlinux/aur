@@ -1,0 +1,14 @@
+pkgbase = usvg
+	pkgdesc = usvg (micro SVG) is an SVG simplification tool
+	pkgver = 0.13.1
+	pkgrel = 1
+	url = https://github.com/RazrFalcon/resvg
+	arch = x86_64
+	license = MPL2
+	makedepends = cargo
+	depends = gcc-libs
+	source = usvg-0.13.1.tar.gz::https://github.com/RazrFalcon/resvg/archive/v0.13.1.tar.gz
+	sha512sums = SKIP
+
+pkgname = usvg
+
