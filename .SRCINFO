@@ -1,6 +1,6 @@
 pkgbase = swcdb-thriftbroker
 	pkgdesc = The SWC-DB ThriftBroker Application
-	pkgver = 0.4.16
+	pkgver = 0.4.17
 	pkgrel = 1
 	url = https://www.swcdb.org
 	install = README.md
@@ -11,13 +11,12 @@ pkgbase = swcdb-thriftbroker
 	makedepends = cmake
 	makedepends = make
 	makedepends = gcc
-	makedepends = gperftools
-	makedepends = swcdb-lib-core
+	makedepends = boost
+	makedepends = asio
 	makedepends = swcdb-lib-fs
 	makedepends = swcdb-lib
 	makedepends = swcdb-lib-thrift
 	depends = swcdb-env
-	depends = swcdb-lib-core
 	depends = swcdb-lib-fs
 	depends = swcdb-lib
 	depends = swcdb-lib-thrift
@@ -27,7 +26,7 @@ pkgbase = swcdb-thriftbroker
 	optdepends = swcdb-lib-fs-hadoop
 	optdepends = swcdb-lib-fs-hadoop-jvm
 	provides = swcdbThriftBroker
-	source = swcdb-thriftbroker-0.4.16-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.4.16
+	source = swcdb-thriftbroker-0.4.17-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.4.17
 	sha256sums = SKIP
 
 pkgname = swcdb-thriftbroker
