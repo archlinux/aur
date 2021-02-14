@@ -2,10 +2,11 @@
 
 pkgname=gdu-git
 _gitname=gdu
-pkgver=v4.5.0
+pkgver=v4.6.0
 pkgrel=1
 license=('MIT')
 pkgdesc="Fast disk usage analyzer"
+conflicts=(gdu gdu-bin)
 makedepends=('go')
 arch=('x86_64')
 url="https://github.com/Dundee/gdu"
@@ -35,7 +36,7 @@ build() {
 
 package() {
   cd "$_gitname"
-  install -Dm755 "dist/$_gitname" "${pkgdir}"/usr/bin/$pkgname
-  install -Dm644 gdu.1  "${pkgdir}"/usr/share/man/man1/$pkgname.1
+  install -Dm755 "dist/$_gitname" "${pkgdir}"/usr/bin/gdu
+  install -Dm644 gdu.1  "${pkgdir}"/usr/share/man/man1/gdu.1
 }
 
