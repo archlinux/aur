@@ -1,6 +1,6 @@
 pkgbase = swcdb-fsbroker
 	pkgdesc = The SWC-DB FsBroker Application
-	pkgver = 0.4.16
+	pkgver = 0.4.17
 	pkgrel = 1
 	url = https://www.swcdb.org
 	install = README.md
@@ -11,17 +11,15 @@ pkgbase = swcdb-fsbroker
 	makedepends = cmake
 	makedepends = make
 	makedepends = gcc
-	makedepends = swcdb-lib-core
+	makedepends = asio
 	makedepends = swcdb-lib-fs
-	depends = swcdb-env
-	depends = swcdb-lib-core
 	depends = swcdb-lib-fs
 	optdepends = swcdb-lib-fs-local
 	optdepends = swcdb-lib-fs-ceph
 	optdepends = swcdb-lib-fs-hadoop
 	optdepends = swcdb-lib-fs-hadoop-jvm
 	provides = swcdbFsBroker
-	source = swcdb-fsbroker-0.4.16-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.4.16
+	source = swcdb-fsbroker-0.4.17-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.4.17
 	sha256sums = SKIP
 
 pkgname = swcdb-fsbroker
