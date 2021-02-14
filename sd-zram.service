@@ -1,5 +1,5 @@
 [Unit]
-Description=Enable ZRAM
+Description=Enable zram
 
 [Service]
 Type=oneshot

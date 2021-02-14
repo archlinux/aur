@@ -1,6 +1,6 @@
-#!/usr/bin/sh
+#!/bin/bash
 
-[ -f /etc/sd-zram.conf ] && . /etc/sd-zram.conf
+[ -f /etc/sd-zram.conf ] && source /etc/sd-zram.conf
 
 start() {
 	modprobe zram
