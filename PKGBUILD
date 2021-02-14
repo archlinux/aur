@@ -13,5 +13,5 @@ build() {
 
 package() {
 	rustup default nightly
-	cargo install --no-track --locked --all-features --root "$pkgdir/usr/" --version $pkgver --path . atuin
+	cargo install --no-track --locked --all-features --root "$pkgdir/usr/" --version $pkgver atuin
 }
