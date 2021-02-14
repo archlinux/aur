@@ -2,7 +2,7 @@
 
 pkgname=sd-zram
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Enable zram on boot"
 arch=('any')
 depends=('bash')
@@ -12,12 +12,13 @@ license=('GPL')
 source=("sd-zram.conf"
 	"sd-zram"
 	"sd-zram.service")
-md5sums=('SKIP')
+md5sums=('SKIP'
+	 'SKIP'
+	 'SKIP')
 
 package() {
 	install -Dm644 sd-zram.conf "$pkgdir/etc/sd-zram.conf"
 	install -Dm755 sd-zram "$pkgdir/usr/lib/systemd/scripts/sd-zram"
 	install -Dm644 sd-zram.service "$pkgdir/usr/lib/systemd/system/sd-zram.service"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
