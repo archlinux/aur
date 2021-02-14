@@ -1,0 +1,36 @@
+#!/bin/sh
+
+##
+#       NOTES by kaaposc@gmail.com
+#
+# Plain dumb Debian's dpkg replacement just for eparakstitajs3 package
+#   version checking. Uses pacman to get info on the package and prints
+#   out stripped down package info.
+#
+# Judging by verbose eparakstitajs3 output it tries to call
+#   `dpkg -s package-name`
+#   to see if needed packages are installed and up to date. It seems to look
+#   for Version: and Status: lines, so we print them out.
+#
+##
+
+usage() {
+    echo 'dpkg -s <pkg-name>'
+    exit 1
+}
+
+if [ -z "$1" ] || [ "$1" != "-s" ] || [ -z "$2" ]; then usage; fi
+
+out=$(pacman -Qi $2 2>&1)
+
+if [ $? -ne 0 ]; then
+    echo "Package $2 not found."
+    exit 1
+fi
+
+name=$(echo "$out" | grep -e '^Name' | awk '{print $3}')
+version=$(echo "$out" | grep -e '^Version' | awk '{print $3}')
+
+echo "Package: $name"
+echo "Version: $version"
+echo "Status: install ok installed"
