@@ -2,7 +2,7 @@
 
 _pkgname=sdl2_compat12
 pkgname=sdl2_compat12-git
-provides=('sdl')
+provides=('sdl=1.12.15')
 conflicts=('sdl')
 pkgver=r120+.dc55edfe5d2f+
 pkgrel=1
