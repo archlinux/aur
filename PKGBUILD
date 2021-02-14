@@ -2,7 +2,7 @@
 
 _pkgname="piglit"
 pkgname="${_pkgname}-git"
-pkgver=r11112.b7836091a
+pkgver=r11303.d4d9353b7
 pkgrel=1
 pkgdesc="OpenGL implementation testing suite. Provides a simple means to perform regression tests."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ optdepends=('python-lxml: Accelerated python XML library using libxml2'
             'python-simplejson: Fast implementation of the python JSON library'
             'python-jsonstreams: A JSON stream writer for python'
             'vkrunner: Vulkan shader script testing')
-makedepends=('git' 'cmake' 'xorgproto' 'vulkan-headers')
+makedepends=('git' 'cmake' 'xorgproto' 'vulkan-headers' 'opencl-headers' 'ocl-icd')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!emptydirs')
@@ -31,6 +31,7 @@ build() {
 	cmake \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DPIGLIT_BUILD_CL_TESTS=1 \
 		.
 	make
 }
