@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Boyle <programmerfalcon@gmail.com>
 pkgname=mulle-bashfunctions
 pkgver=3.3.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="A versioned collection of bash functions"
 arch=('any')
@@ -30,4 +30,8 @@ package() {
     mkdir -p "lib/"
     mv libexec/* "lib/"
     rm -r libexec
+}
+
+prepare() {
+    patch --forward --strip=1 --input=package.patch
 }
