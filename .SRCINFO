@@ -18,4 +18,3 @@ pkgbase = intel-cpu-runtime
 	sha256sums = SKIP
 
 pkgname = intel-cpu-runtime
-
