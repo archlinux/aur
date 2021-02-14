@@ -1,4 +1,4 @@
-pkgname=lang815-git
+pkgname=lang815
 _gitname=lang815
 pkgver=0.1
 pkgrel=1

@@ -1,0 +1,34 @@
+## arg 1:  the new package version
+pre_install() {
+	echo ""
+}
+
+## arg 1:  the new package version
+post_install() {
+	systemctl --user daemon-reload
+	echo "You must enable systemd unit org.lang815.switch with the next command :"
+	echo "systemctl --user enable --now org.lang815.switch"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+	echo ""
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	systemctl --user daemon-reload
+}
+
+## arg 1:  the old package version
+pre_remove() {
+	systemctl --user disable --now org.lang815.switch
+}
+
+## arg 1:  the old package version
+post_remove() {
+	systemctl --user daemon-reload
+}
+ 
