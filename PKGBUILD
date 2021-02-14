@@ -1,23 +1,30 @@
-# Maintainer: danieltetraquark
+# Maintainer: Lauri Niskanen <ape@ape3000.com>
+# Contributor: danieltetraquark
 
-pkgname=grocy
-pkgver=3.0.1
-pkgrel=4
-pkgdesc="web-based self-hosted groceries & household management solution for your home"
+pkgname=grocy-git
+_pkgname=grocy
+pkgver=v3.0.1.r12.ga455a012
+pkgrel=1
+pkgdesc="Web-based self-hosted groceries & household management solution for your home"
 depends=('php7' 'php7-sqlite' 'php7-gd')
-makedepends=('composer' 'yarn')
+makedepends=('composer' 'yarn' 'git')
 license=('MIT')
 arch=('any')
+options=(!strip)
 url="https://grocy.info/"
-source=(
-https://github.com/grocy/grocy/archive/v${pkgver}.zip
-)
-sha512sums=('6585fa973b1539822df57c390c17c7f400e8bd2dbc0629b0a29ecbaf21bf0cf37759b460c1700a349fce4a948403d6b995287acb33b15419016100c7797affa6')
+provides=('grocy')
+conflicts=('grocy')
+source=("${_pkgname}::git+https://github.com/${_pkgname}/${_pkgname}.git")
+sha256sums=('SKIP')
+backup=("etc/webapps/${_pkgname}/config.php")
 
-backup=('etc/webapps/grocy/config.php')
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-    cd grocy-${pkgver}
+    cd "$srcdir/$_pkgname"
 
     # composer need to have php-gd extension enabled, otherwise it will fail for a dependency of grocy.
     # note: you may need to adjust your php open_basedir setting, so that php can run!
@@ -29,27 +36,21 @@ build() {
 }
 
 package() {
-    cd grocy-${pkgver}
+    cd "$srcdir/$_pkgname"
 
-    _instdir="$pkgdir"/usr/share/webapps/grocy
-    mkdir -p "$_instdir" "$pkgdir"/etc/webapps/grocy "$pkgdir"/var/lib/webapps
+    _instdir="$pkgdir/usr/share/webapps/${_pkgname}"
+    install -d "$_instdir"
 
-
-    # install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cp -ra . "$_instdir"
 
-    # copy files to install directory
-    cp -ra . "$_instdir"/
+    install -d "$pkgdir/var/lib/webapps"
+    mv "$pkgdir/usr/share/webapps/${_pkgname}/data" "$pkgdir/var/lib/webapps/${_pkgname}"
+    ln -s "/var/lib/webapps/${_pkgname}" "$pkgdir/usr/share/webapps/${_pkgname}/data"
+    chown -R http:http "$pkgdir/usr/share/webapps/${_pkgname}/data"
 
-    mv "$pkgdir"/usr/share/webapps/grocy/data "$pkgdir"/var/lib/webapps/grocy
+    install -d "$pkgdir/etc/webapps/${_pkgname}"
+    ln -s "/etc/webapps/${_pkgname}/config.php" "$pkgdir/var/lib/webapps/${_pkgname}/config.php"
 
-#    mkdir "$pkgdir"/usr/share/webapps/grocy/data/
-    ln -s /var/lib/webapps/grocy "$pkgdir"/usr/share/webapps/grocy/data
-
-    ln -s /etc/webapps/grocy/config.php "$pkgdir"/var/lib/webapps/grocy/config.php
-
-    mv config-dist.php "$pkgdir"/etc/webapps/grocy/config.php
-
-    chown 33 "$pkgdir"/usr/share/webapps/grocy/data -R
+    install -Dm644 config-dist.php "$pkgdir/etc/webapps/${_pkgname}/config.php"
 }
-
