@@ -1,0 +1,22 @@
+pkgbase = python-dirty_cat-git
+	pkgdesc = machine-learning on dirty categorical variables
+	pkgver = 0.0.5.r203.g3c55029
+	pkgrel = 1
+	url = https://github.com/dirty-cat/dirty_cat
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-joblib
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-scikit-learn
+	depends = python-requests
+	provides = python-dirty_cat
+	conflicts = python-dirty_cat
+	source = git+https://github.com/dirty-cat/dirty_cat.git
+	md5sums = SKIP
+
+pkgname = python-dirty_cat-git
+
