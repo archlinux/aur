@@ -1,5 +1,5 @@
 pkgbase = trojan-go-git
-	pkgver = 0.6.0.r4.g0b85bb2
+	pkgver = 0.8.2.r0.gd051cf4
 	pkgrel = 1
 	url = https://github.com/p4gefau1t/trojan-go
 	arch = x86_64
@@ -17,10 +17,4 @@ pkgname = trojan-go-git
 	depends = v2ray-domain-list-community
 	provides = trojan-go
 	conflicts = trojan-go
-
-pkgname = trojan-go-docs-git
-	pkgdesc = Offline Documentation for Trojan-Go.
-	depends = 
-	provides = trojan-go-docs
-	conflicts = trojan-go-docs
 

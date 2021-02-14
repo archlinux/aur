@@ -1,7 +1,8 @@
 pkgbase=trojan-go-git
-pkgname=(trojan-go-git trojan-go-docs-git)
+#pkgname=(trojan-go-git trojan-go-docs-git)
+pkgname=(trojan-go-git)
 _pkgname=trojan-go
-pkgver=0.6.0.r4.g0b85bb2
+pkgver=0.8.2.r0.gd051cf4
 pkgrel=1
 makedepends=(go git hugo)
 arch=(x86_64)
@@ -29,9 +30,9 @@ build() {
         -ldflags="-s -w -extldflags=-Wl,-z,now,-z,relro" \
         -o trojan-go .
     
-    # Build Trojan-Go Documentation
-    cd "$srcdir"/$_pkgname/docs/
-    make hugo-build
+#    # Build Trojan-Go Documentation
+#    cd "$srcdir"/$_pkgname/docs/
+#    make hugo-build
 }
 
 package_trojan-go-git() {
@@ -47,16 +48,16 @@ package_trojan-go-git() {
     
     mkdir -p "$pkgdir"/usr/bin
     ln -sf /usr/lib/trojan-go/trojan-go "$pkgdir"/usr/bin/trojan-go
-    ln -sf /usr/lib/v2ray/geosite.dat "$pkgdir"/usr/lib/trojan-go/geosite.dat
-    ln -sf /usr/lib/v2ray/geoip.dat "$pkgdir"/usr/lib/trojan-go/geoip.dat
+    ln -sf /usr/sharev2ray/geosite.dat "$pkgdir"/usr/lib/trojan-go/geosite.dat
+    ln -sf /usr/share/v2ray/geoip.dat "$pkgdir"/usr/lib/trojan-go/geoip.dat
 }
 
-package_trojan-go-docs-git() {
-    pkgdesc="Offline Documentation for Trojan-Go."
-    depends=()
-    provides=(trojan-go-docs)
-    conflicts=(trojan-go-docs)
-
-    mkdir -p "$pkgdir"/usr/share/doc/trojan-go
-    cp -rv "$srcdir"/$_pkgname/docs/public/* "$pkgdir"/usr/share/doc/trojan-go/
-}
+#package_trojan-go-docs-git() {
+#    pkgdesc="Offline Documentation for Trojan-Go."
+#    depends=()
+#    provides=(trojan-go-docs)
+#    conflicts=(trojan-go-docs)
+#
+#    mkdir -p "$pkgdir"/usr/share/doc/trojan-go
+#    cp -rv "$srcdir"/$_pkgname/docs/public/* "$pkgdir"/usr/share/doc/trojan-go/
+#}
