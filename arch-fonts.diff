@@ -1,6 +1,5 @@
-diff -u -r ImageMagick-6.9.9-25/config/type-dejavu.xml.in ImageMagick-6.9.9-25-archfonts/config/type-dejavu.xml.in
---- ImageMagick-6.9.9-25/config/type-dejavu.xml.in	2017-11-30 19:24:05.000000000 +0100
-+++ ImageMagick-6.9.9-25-archfonts/config/type-dejavu.xml.in	2017-12-02 18:44:53.410304554 +0100
+--- a/config/type-dejavu.xml.in
++++ b/config/type-dejavu.xml.in
 @@ -13,27 +13,6 @@
    ImageMagick DejaVU font configuration.
  -->
@@ -29,9 +28,8 @@ diff -u -r ImageMagick-6.9.9-25/config/type-dejavu.xml.in ImageMagick-6.9.9-25-a
    <type name="DejaVu-Sans-Bold" fullname="DejaVu Sans Bold" family="DejaVu Sans" style="Normal" stretch="Normal" weight="700" glyphs="@dejavu_font_dir@DejaVuSans-Bold.ttf"/>
    <type name="DejaVu-Sans-Bold-Oblique" fullname="DejaVu Sans Bold Oblique" family="DejaVu Sans" style="Oblique" stretch="Normal" weight="700" glyphs="@dejavu_font_dir@DejaVuSans-BoldOblique.ttf"/>
    <type name="DejaVu-Sans-Book" fullname="DejaVu Sans Book" family="DejaVu Sans" style="Normal" stretch="Normal" weight="400" glyphs="@dejavu_font_dir@DejaVuSans.ttf"/>
-diff -u -r ImageMagick-6.9.9-25/config/type-ghostscript.xml.in ImageMagick-6.9.9-25-archfonts/config/type-ghostscript.xml.in
---- ImageMagick-6.9.9-25/config/type-ghostscript.xml.in	2017-11-30 19:24:05.000000000 +0100
-+++ ImageMagick-6.9.9-25-archfonts/config/type-ghostscript.xml.in	2017-12-02 19:08:05.669243822 +0100
+--- a/config/type-ghostscript.xml.in
++++ b/config/type-ghostscript.xml.in
 @@ -13,38 +13,38 @@
    ImageMagick Ghostscript font configuration.
  -->

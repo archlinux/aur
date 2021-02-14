@@ -1,83 +1,60 @@
-# Maintainer: Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
-# NOTE (1):
-# DPS (Display PostScript) feature is obsolete and thus not enabled.
-# For more information about DPS being obsolete please visit:
-# http://www.x.org/releases/X11R7.7/doc/xorg-docs/graphics/dps.html
+# DPS (Display PostScript) is obsolete and thus not enabled. See:
+# https://www.x.org/releases/X11R7.7/doc/xorg-docs/graphics/dps.html
 
-# NOTE (2): linking to ghostscript libs (gslib) is disabled due to
-# security issues. ImageMagick will call 'gs' executable directly
-# instead. See: https://bugs.archlinux.org/task/62171
+# Linking to ghostscript libs (gslib) is disabled due to security
+# issues. ImageMagick will call 'gs' executable directly instead.
+# See: https://bugs.archlinux.org/task/62171
 
-# NOTE (3):
 # change font directories in build() to match yours:
 #   - deJaVu and GhostScript font directories are the default ones
 #   - Windows font directory is set according to a Wiki example
 
-_qdepth='32'
-
 pkgbase=imagemagick-full-git
 pkgname=('imagemagick-full-git' 'imagemagick-full-doc-git')
-_srcname=ImageMagick
-pkgver=7.0.8.68.r16153.g07fb0fdd5
+pkgver=7.0.10.62.r23.g923b9c180
 pkgrel=1
 arch=('x86_64')
+_qdepth='32'
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all features, git version)"
 url='https://www.imagemagick.org/'
 license=('custom')
 makedepends=(
     # official repositories:
         'git' 'perl' 'jbigkit' 'opencl-headers' 'glu' 'ghostpcl' 'ghostxps'
-        'zstd' 'chrpath'
+        'zstd' 'chrpath' 'xorgproto'
         'lcms2' 'libraqm' 'liblqr' 'fftw' 'libxml2' 'fontconfig' 'freetype2' 'libxext'
-        'libx11' 'bzip2' 'zlib' 'libltdl' 'jemalloc' 'gperftools' 'djvulibre' 'libraw'
+        'libx11' 'bzip2' 'zlib' 'libltdl' 'djvulibre' 'gperftools' 'libraw'
         'graphviz' 'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango'
         'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
-        'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'gperftools'
+        'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip'
     # AUR:
-        'pstoedit-nomagick' 'autotrace-nomagick' 'flif' 'libfpx' 'libumem-git'
+        'autotrace-nomagick' 'flif' 'libfpx' 'libumem-git'
 )
-source=('git+https://github.com/ImageMagick/ImageMagick.git'
+source=('git+https://github.com/ImageMagick/ImageMagick.git#branch=main'
         'arch-fonts.diff')
 sha256sums=('SKIP'
-            'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
+            '290c6a87845b419459fb552c0e7dcd81fbeafcecc370818d442fedf4d315b7fb')
 
 prepare() {
-    cd "$_srcname"
-    
-    mkdir -p docpkg/usr/share
-    
     # fix up typemaps to match Arch Linux packages, where possible
-    patch -Np1 -i "${srcdir}/arch-fonts.diff"
-    
-    # fix for 'sh: gitversion.sh: command not found' during autoreconf
-    sed -i 's|(gitversion|(./gitversion|' configure.ac
-    
-    autoreconf -fis
+    patch -d ImageMagick -Np1 -i "${srcdir}/arch-fonts.diff"
 }
 
 pkgver() {
-    cd "$_srcname"
-    
-    local _version
-    local _release
-    local _revision
-    
-    _version="$(grep 'PACKAGE_VERSION=' version.sh | sed 's/[^0-9\.]*//g')"
-    _release="$(grep 'PACKAGE_RELEASE=' version.sh | sed 's/[^0-9]*//g')"
-    _revision="$(printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")"
-    
-    printf '%s.%s.%s' "$_version" "$_release" "$_revision"
+    git -C ImageMagick describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd "$_srcname"
-    
-    export CFLAGS="${CFLAGS} -I/usr/include/FLIF"
+    cd ImageMagick
+    export CFLAGS+=' -I/usr/include/FLIF'
     
     ./configure \
         --prefix='/usr' \
         --sysconfdir='/etc' \
+        --enable-shared \
+        --disable-static \
         --enable-openmp \
         --enable-opencl \
         --disable-delegate-build \
@@ -90,7 +67,7 @@ build() {
         --with-magick-plus-plus \
         --with-perl \
         --with-perl-options='INSTALLDIRS=vendor' \
-        --with-jemalloc \
+        --without-jemalloc \
         --with-tcmalloc \
         --with-umem \
         --with-bzlib \
@@ -111,6 +88,7 @@ build() {
         --with-heic \
         --with-jbig \
         --with-jpeg \
+        --without-jxl \
         --with-lcms \
         --with-openjp2 \
         --with-lqr \
@@ -135,66 +113,47 @@ build() {
         PCLDelegate='/usr/bin/gpcl6'
         
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-            
     make
 }
 
-check() (
-   cd "$_srcname"
-   ulimit -n 4096
-   sed -e '/validate-formats/d' -i Makefile
-   make check
-)
+check() {
+    make -C ImageMagick check
+}
 
 package_imagemagick-full-git() {
-    local _majorver="${pkgver%%.*}"
-    local _etcdir="ImageMagick-${_majorver}"
     depends=(
         # official repositories:
             'lcms2' 'libraqm' 'liblqr' 'fftw' 'libxml2' 'fontconfig' 'freetype2' 'libxext'
-            'libx11' 'bzip2' 'zlib' 'libltdl' 'jemalloc' 'gperftools' 'djvulibre' 'libraw'
+            'libx11' 'bzip2' 'zlib' 'libltdl' 'gperftools' 'djvulibre' 'libraw'
             'graphviz' 'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango'
             'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
             'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl'
         # AUR:
-            'pstoedit-nomagick' 'autotrace-nomagick' 'flif' 'libfpx' 'libumem-git'
+            'autotrace-nomagick' 'flif' 'libfpx' 'libumem-git'
     )
-    optdepends=(
-        # AUR:
-            'imagemagick-full-doc-git: manual and API docs'
-    )
-    backup=(etc/"$_etcdir"/{colors,delegates,log,mime,policy,quantization-table,thresholds,type,type-{dejavu,ghostscript}}.xml)
+    optdepends=('imagemagick-full-doc-git: manual and API docs')
+    backup=("etc/ImageMagick-${pkgver%%.*}"/{colors,delegates,log,mime,policy,quantization-table,thresholds,type{,-dejavu,-ghostscript}}.xml)
     options=('!emptydirs' 'libtool')
-    provides=('imagemagick' 'imagemagick-git' 'libmagick' 'libmagick-git' 'libmagick-full' 'libmagick-full-git')
+    provides=("imagemagick=${pkgver}" 'imagemagick-git' 'libmagick' 'libmagick-git' 'libmagick-full' 'libmagick-full-git')
     conflicts=('imagemagick' 'libmagick')
     replaces=('libmagick-full-git')
     
-    cd "$_srcname"
-    make DESTDIR="$pkgdir" install
-    
+    make -C ImageMagick DESTDIR="$pkgdir" install
     find "${pkgdir}/usr/lib/perl5" -name '*.so' -exec chrpath -d {} +
     rm "$pkgdir"/usr/lib/*.la
-    
-    # split docs
-    mv "${pkgdir}/usr/share/doc" docpkg/usr/share/
+    mv "${pkgdir}/usr/share/doc" .
+    install -D -m644 ImageMagick/{LICENSE,NOTICE} -t "${pkgdir}/usr/share/licenses/${pkgname}"
     
     # harden security policy: https://bugs.archlinux.org/task/62785
-    sed -e '/<\/policymap>/i \ \ <policy domain="delegate" rights="none" pattern="gs" \/>' -i "${pkgdir}/etc/ImageMagick-7/policy.xml"
-    
-    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -D -m644 NOTICE  -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    sed -e '/<\/policymap>/i \ \ <policy domain="delegate" rights="none" pattern="gs" \/>' -i "${pkgdir}/etc/ImageMagick-${pkgver%%.*}/policy.xml"
 }
 
 package_imagemagick-full-doc-git() {
     pkgdesc+=' (manual and API docs)'
     arch=('any')
-    provides=('imagemagick-doc')
+    provides=("imagemagick-doc=${pkgver}")
     conflicts=('imagemagick-doc')
     
-    cd "$_srcname"
-    
-    cp -a docpkg/* "$pkgdir"
-    
-    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -D -m644 NOTICE  -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 ImageMagick/{LICENSE,NOTICE} -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    mv doc "${pkgdir}/usr/share"
 }
