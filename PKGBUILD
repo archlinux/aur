@@ -2,14 +2,14 @@
 # Contributor: greyltc
 
 pkgname=cbang-git
-pkgver=1.3.3.r4.g32940672
+pkgver=1.6.0.r133.g501acc86
 pkgrel=1
 pkgdesc="A library of cross-platform C++ utilities"
 arch=('x86_64')
 url="https://github.com/CauldronDevelopmentLLC/cbang"
 license=('LGPL2.1')
 depends=(
-  'v8-6.8'
+  'v8-r'
   'libevent'
   'sqlite'
   're2'
@@ -40,13 +40,13 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  sed -i "/files = Glob('src\/cbang\/%s\/\*.h'/a\    files += Glob('include/cbang/%s/*.h' % dir)" SConstruct
   sed -i "20i\    conf.CBRequireLib('v8_libplatform')" config/v8/__init__.py
+  sed -i "37i\    env.CBDefine('V8_COMPRESS_POINTERS')" SConstruct
 }
 
 build() {
   cd "${pkgname%-git}"
-  scons disable_local="libevent sqlite3 re2 libyaml zlib bzip2 expat"
+  scons cxxstd="c++14" disable_local="libevent sqlite3 re2 libyaml zlib bzip2 expat"
 }
 
 check() {
@@ -57,8 +57,10 @@ check() {
 
 package() {
   cd "${pkgname%-git}"
-  scons install prefix="$pkgdir/opt/${pkgname%-git}"
+  scons install cxxstd="c++14" prefix="$pkgdir/opt/${pkgname%-git}"
+  install -m644 lib/libcbang.a -t "$pkgdir/opt/${pkgname%-git}/lib" 
   install -m644 lib/libcbang-boost.a -t "$pkgdir/opt/${pkgname%-git}/lib" 
   cp -a config/ "$pkgdir/opt/${pkgname%-git}/config/"
   cp -a src/boost/boost/ "$pkgdir/opt/${pkgname%-git}/include/"
+  cp -a include/cbang/ "$pkgdir/opt/${pkgname%-git}/include/"
 }
