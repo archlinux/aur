@@ -1,117 +1,123 @@
 # Maintainer: Jeremy Attali <contact@jtheoof.me>
-# Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
-# Contributor: John Sowiak <john@archlinux.org>
-# Contributor: tobias <tobias@archlinux.org>
+# Contributor: Fredrick Brennan <copypaste@kittens.ph>
+# Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
+# Based on blender-git with wayland build flags
 
-## This is a blander build based on wayland branch by Christian Rauch
-## See Blender thread https://devtalk.blender.org/t/wayland-and-egl-support/11171
-## This PKGBUILD was mainly taken from blender-develop-git AUR package.
+# Configuration.
+_fragment=${FRAGMENT:-#branch=master}
+[[ -v CUDA_ARCH ]] && _CUDA_ARCH=(${CUDA_ARCH})
+((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75)
 
-# Sometimes blender.org takes some time to release patch releases and because Arch users
-# are impatient, we sometimes need to build from git directly.
-# Update because I get so many queries on this:
-# Due to our other rolling deps, it's sometimes not possible to build Blender stable releases.
-# More often than not, a new openshadinglanguage breaks it and I could either backport fixes
-# or simply roll with a new version. I usually choose the latter when the former seems
-# unreasonable.
-
-# For legal reasons, we can't separately package the Optix headers so we'll
-# just build the package against them. I checked with NVIDIA and this way is
-# fine with them.
-
-#_gittag=v2.82a
-# _gitcommit=054dbb833e15275e0e991e2c15e754a3e7583716
-_gitbranch=master
+#some extra, unofficially supported stuff goes here:
+_CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
+_CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
 
 pkgname=blender-wayland-git
-pkgver=2.90.r96894.g04390941050
-[[ -n $_gitcommit ]] && pkgver=${pkgver}.git1.${_gitcommit:0:8}
-pkgrel=2
-epoch=17
-pkgdesc="A fully integrated 3D graphics creation suite"
-arch=('x86_64')
-license=('GPL')
-url="http://www.blender.org"
+pkgver=2.93.r103725.g80a8df72be9
+pkgrel=1
+pkgdesc="A fully integrated 3D graphics creation suite (development)"
+arch=('i686' 'x86_64')
+url="https://blender.org/"
+depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2'
+         'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
+         'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
+optdepends=('cuda: CUDA support in Cycles'
+            'optix=7.1.0: OptiX support in Cycles'
+            'usd=20.05: USD export Scene'
+            'openimagedenoise: Intel Open Image Denoise support in compositing')
+makedepends=('git' 'cmake' 'boost' 'mesa' 'ninja' 'llvm')
 provides=('blender')
 conflicts=('blender')
-depends=('libpng' 'libtiff' 'openexr' 'python' 'desktop-file-utils' 'python-requests'
-         'shared-mime-info' 'hicolor-icon-theme' 'xdg-utils' 'glew' 'openjpeg2' 'python-numpy'
-         'freetype2' 'openal' 'ffmpeg' 'fftw' 'boost-libs' 'opencollada' 'alembic'
-         'openimageio' 'libsndfile' 'jack' 'opencolorio' 'openshadinglanguage' 'openimagedenoise'
-         'jemalloc' 'libspnav' 'ptex' 'opensubdiv' 'openvdb' 'log4cplus' 'sdl2' 'embree')
-makedepends=('cmake' 'boost' 'mesa' 'git' 'llvm' 'cuda' 'ninja')
-optdepends=('cuda: cycles renderer cuda support')
-options=(!strip)
-source=("git://git.blender.org/blender-addons.git"
-        "git://git.blender.org/blender-addons-contrib.git"
-        "git://git.blender.org/blender-translations.git"
-        "git://git.blender.org/blender-dev-tools.git"
-        embree.patch
-        https://developer.download.nvidia.com/redist/optix/v7.0/OptiX-7.0.0-include.zip)
-
-if [[ -n $_gitbranch ]]; then
-    source+=("${pkgname}::git+https://github.com/christianrauch/blender.git#branch=${_gitbranch}")
-fi
-
-sha512sums=('SKIP'
+license=('GPL')
+# NOTE: the source array has to be kept in sync with .gitmodules
+# the submodules has to be stored in path ending with git to match
+# the path in .gitmodules.
+# More info:
+#   http://wiki.blender.org/index.php/Dev:Doc/Tools/Git
+source=("git://git.blender.org/blender.git${_fragment}"
+        'blender-addons.git::git://git.blender.org/blender-addons.git'
+        'blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git'
+        'blender-translations.git::git://git.blender.org/blender-translations.git'
+        'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git'
+        usd_python.patch #add missing python headers when building against python enabled usd.
+        embree.patch #add missing embree link.
+        )
+sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '6de779ad8649a034ee65c45a36d7838ac0b8b32c3336b4d476186265c060f56276e3e0a2860ec4bff42bef7d5582ee82238013845f6a697672767a05a455aaca'
-            'b2cff73def3757d4259f4b4d318a8ccfe166bf7c215cbb2124f1c81bd6e742f96207285b24eb4d99b527b7b97dc6d5e8fdf2f16d78d5d1e2684c26d681328491'
-            'SKIP')
-
+            'SKIP'
+            '12bd6db5c1fe14244fd7321e3d740941a36aa545ec21b02325e7553c9214778a'
+            '6249892f99ffd960e36f43fb893c14e2f8e4dd1d901b9581d25882e865f2603f')
 
 pkgver() {
-  blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/${pkgname}/source/blender/blenkernel/BKE_blender_version.h)
+  blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
   printf "%d.%d.r%s.g%s" \
     $((blender_version/100)) \
     $((blender_version%100)) \
-    "$(git -C "$srcdir/${pkgname}" rev-list --count HEAD)" \
-    "$(git -C "$srcdir/${pkgname}" rev-parse --short HEAD)"
+    "$(git -C "$srcdir/blender" rev-list --count HEAD)" \
+    "$(git -C "$srcdir/blender" rev-parse --short HEAD)"
 }
 
-
 prepare() {
-  cd "$srcdir/$pkgname"
-
-  git submodule init
-  git config submodule."release/scripts/addons".url "${srcdir}/blender-addons"
-  git config submodule."release/scripts/addons_contrib".url "${srcdir}/blender-addons-contrib"
-  git config submodule."release/datafiles/locale".url "${srcdir}/blender-translations"
-  git config submodule."source/tools".url "${srcdir}/blender-dev-tools"
-  git submodule update
-
-  patch -Np1 -i "$srcdir"/embree.patch
-
-  mkdir build
+  cd "$srcdir/blender"
+  # update the submodules
+  git submodule update --init --recursive --remote
+  git apply -v "${srcdir}"/{embree,usd_python}.patch
 }
 
 build() {
-  cd "$srcdir/$pkgname"/build
+  _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
 
-  cmake \
-    -GNinja \
-    -C../build_files/cmake/config/blender_release.cmake .. \
-    -DOPTIX_ROOT_DIR="$srcdir"/include \
-    -DWITH_CYCLES_EMBREE=ON \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DWITH_INSTALL_PORTABLE=OFF \
-    -DWITH_PYTHON_INSTALL=OFF \
-    -DWITH_GHOST_WAYLAND=ON \
-    -DPYTHON_VERSION=3.8 \
-    -DPYTHON_LIBPATH=/usr/lib \
-    -DPYTHON_LIBRARY=python3.8 \
-    -DPYTHON_INCLUDE_DIRS=/usr/include/python3.8
-  ninja
+  # determine whether we can precompile CUDA kernels
+  _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
+  if [ "$_CUDA_PKG" != "" ]; then
+    _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON
+                  -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
+    if [[ -v _CUDA_ARCH ]]; then
+      _CMAKE_FLAGS+=( -DCYCLES_CUDA_BINARIES_ARCH="$(IFS=';'; echo "${_CUDA_ARCH[*]}";)" )
+    fi
+  fi
+
+  # check for optix
+  _OPTIX_PKG=`pacman -Qq optix 2>/dev/null` || true
+  if [ "$_OPTIX_PKG" != "" ]; then
+      _CMAKE_FLAGS+=( -DWITH_CYCLES_DEVICE_OPTIX=ON
+                      -DOPTIX_ROOT_DIR=/opt/optix )
+  fi
+
+  # check for open image denoise
+  _OIDN_PKG=`pacman -Qq openimagedenoise 2>/dev/null` || true
+  if [ "$_OIDN_PKG" != "" ]; then
+      _CMAKE_FLAGS+=( -DWITH_OPENIMAGEDENOISE=ON )
+  fi
+
+  # check for universal scene descriptor
+  _USD_PKG=`pacman -Qq usd=20.05 2>/dev/null` || true
+  if [ "$_USD_PKG" != "" ]; then
+    _CMAKE_FLAGS+=( -DWITH_USD=ON
+                    -DUSD_ROOT=/usr )
+  fi
+
+  cmake -G Ninja -S "$srcdir/blender" -B build \
+        -C "${srcdir}/blender/build_files/cmake/config/blender_release.cmake" \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DWITH_INSTALL_PORTABLE=OFF \
+        -DWITH_SYSTEM_GLEW=OFF \
+        -DWITH_PYTHON_INSTALL=OFF \
+        -DWITH_GHOST_WAYLAND=ON \
+        -DPYTHON_VERSION="${_pyver}" \
+        "${_CMAKE_FLAGS[@]}"
+  ninja -C "$srcdir/build" ${MAKEFLAGS:--j1}
 }
 
 package() {
-  cd "$srcdir/$pkgname/build"
+  _suffix=${pkgver%%.r*}
+  DESTDIR="$pkgdir" ninja -C "$srcdir/build" install
 
-  DESTDIR="${pkgdir}" ninja install
-  install -Dm755 ../release/bin/blender-softwaregl "${pkgdir}/usr/bin/blender-softwaregl"
-  python -m compileall "${pkgdir}/usr/share/blender"
-  python -O -m compileall "${pkgdir}/usr/share/blender"
+  if [[ -e "$pkgdir/usr/share/blender/${_suffix}/scripts/addons/cycles/lib/" ]] ; then
+    # make sure the cuda kernels are not stripped
+    chmod 444 "$pkgdir"/usr/share/blender/${_suffix}/scripts/addons/cycles/lib/*
+  fi
 }

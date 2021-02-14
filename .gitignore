@@ -1,12 +1,11 @@
-/blender-addons/
-/blender-addons-contrib/
-/blender-dev-tools/
-/blender-translations/
-/blender-wayland-git/
+/blender-addons-contrib.git/
+/blender-addons.git/
+/blender-dev-tools.git/
+/blender-translations.git/
+/blender/
 
 /pkg/
 /src/
 
-OptiX-7.0.0-include.zip
-
+*.tar.zst
 *.xz
