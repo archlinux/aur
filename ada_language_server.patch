@@ -1,0 +1,34 @@
+Index: ada_language_server-22.0.3/Makefile
+===================================================================
+--- ada_language_server-22.0.3.orig/Makefile
++++ ada_language_server-22.0.3/Makefile
+@@ -72,11 +72,11 @@ endif
+ all: coverage-instrument
+ 	$(GPRBUILD) -P gnat/spawn_tests.gpr -p $(BUILD_FLAGS)
+ 	$(GPRBUILD) -P gnat/tester.gpr -p $(BUILD_FLAGS)
+-	$(GPRBUILD) -d -ws -c -u -P gnat/lsp_server.gpr -p $(BUILD_FLAGS) s-memory.adb
+-	$(GPRBUILD) -P gnat/lsp_server.gpr -p $(COVERAGE_BUILD_FLAGS) \
++	$(GPRBUILD) -d -ws -c -u -P gnat/lsp_server.gpr  -aP ../libadalang-tools/src -aP ../VSS/gnat -aP ../libadalang/build -aP ../langkit/support -p $(BUILD_FLAGS) s-memory.adb
++	$(GPRBUILD) -P gnat/lsp_server.gpr -aP ../libadalang-tools/src -aP ../VSS/gnat -aP ../libadalang/build -aP ../langkit/support -p $(COVERAGE_BUILD_FLAGS) \
+ 		-XVERSION=$(TRAVIS_TAG)
+-	$(GPRBUILD) -P gnat/codec_test.gpr -p $(COVERAGE_BUILD_FLAGS)
+-	$(GPRBUILD) -P gnat/lsp_client.gpr -p $(COVERAGE_BUILD_FLAGS) \
++	$(GPRBUILD) -P gnat/codec_test.gpr -aP ../VSS/gnat -p $(COVERAGE_BUILD_FLAGS)
++	$(GPRBUILD) -P gnat/lsp_client.gpr -aP ../VSS/gnat -p $(COVERAGE_BUILD_FLAGS) \
+ 		-XVERSION=$(TRAVIS_TAG)
+ 	mkdir -p integration/vscode/ada/$(PLATFORM)
+ 	cp -f .obj/server/ada_language_server integration/vscode/ada/$(PLATFORM) ||\
+@@ -97,11 +97,11 @@ ifneq ($(COVERAGE),)
+ endif
+ 
+ install:
+-	gprinstall -f -P gnat/lsp_server.gpr -p -r --mode=usage \
++	gprinstall -f -P gnat/lsp_server.gpr -aP ../libadalang-tools/src -aP ../VSS/gnat -aP ../libadalang/build -aP ../langkit/support -p -r --mode=usage \
+ 		--prefix=$(DESTDIR) $(LIBRARY_FLAGS)
+ 	gprinstall -f -P gnat/tester.gpr -p --prefix=$(DESTDIR) $(LIBRARY_FLAGS)
+ 	gprinstall -f -P gnat/codec_test.gpr -p --prefix=$(DESTDIR) $(LIBRARY_FLAGS)
+-	gprinstall -f -P gnat/lsp_client.gpr -p -r	\
++	gprinstall -f -P gnat/lsp_client.gpr -aP ../VSS/gnat -p -r	\
+ 		--mode=dev				\
+ 		--prefix=$(DESTDIR)			\
+ 		$(LIBRARY_FLAGS)
