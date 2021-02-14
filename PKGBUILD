@@ -2,7 +2,7 @@
 
 pkgbase=linux-zen-g14
 _pkgbase=linux-zen
-pkgver=5.10.15.zen1
+pkgver=5.10.16.zen1
 pkgrel=1
 pkgdesc='Linux ZEN with patch for Zephyrus G14 (GA401I)'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -18,7 +18,7 @@ options=('!strip')
 _srcname=zen-kernel
 source=(
   "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
-  "config-$pkgver::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen&id=dbfb39af827b9331d5861e68b35c7d7d27a503a5"
+  "config-$pkgver::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen&id=9c5eff00c5d7dc47376791147a053ea8b79c48fd"
   i8042.patch
   "https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/-/raw/master/kernel_patches/5.9/5.9.8%20-%205.9.12/0001-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard.patch"
   "https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.10.patch"
