@@ -1,4 +1,5 @@
 # Maintainer: Neil Ball <neil2ball@gmail.com>
+# Contributor: Davide Depau <davide@depau.eu>
 # Contributor: Jerome Leclanche <jerome@leclan.ch>
 # Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 # Contributor: Librewish <librewish@gmail.com>
@@ -14,8 +15,7 @@ provides=("ofono")
 conflicts=("ofono")
 optdepends=("phonesim" "mmsd" "upower")
 source=(
-	"https://www.kernel.org/pub/scm/network/ofono/ofono.git/snapshot/$pkgname.tar.gz"
-#	"https://www.kernel.org/pub/scm/network/ofono/ofono.git/snapshot/$pkgname.tar.sign"
+	"$pkgname::git+https://www.kernel.org/pub/scm/network/ofono/ofono.git"
 git://git.kernel.org/pub/scm/libs/ell/ell.git)
 sha256sums=(
             'SKIP' 'SKIP'
@@ -24,6 +24,7 @@ sha256sums=(
 build() {
 	cd "$srcdir/$pkgname"
 	./bootstrap
+	autoupdate
 	./configure \
 		--prefix=/usr \
 		--sysconfdir=/etc \

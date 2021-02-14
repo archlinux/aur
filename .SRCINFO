@@ -19,7 +19,8 @@ pkgbase = ofono-master
 	optdepends = upower
 	provides = ofono
 	conflicts = ofono
-	source = ofono-master::https://www.kernel.org/pub/scm/network/ofono/ofono.git/snapshot/ofono-master.tar.gz
+	source = ofono-master::git+https://www.kernel.org/pub/scm/network/ofono/ofono.git
+	source = git://git.kernel.org/pub/scm/libs/ell/ell.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
