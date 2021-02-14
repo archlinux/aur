@@ -24,7 +24,7 @@ source=("git+https://github.com/libsdl-org/SDL_mixer")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd SDL
+  cd SDL_mixer
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
