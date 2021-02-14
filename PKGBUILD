@@ -1,6 +1,6 @@
 # Maintainer: Christoph Ruegge <mail@cxcs.de>
 pkgname=pam-gnupg
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="Unlock GnuPG keys on login"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/cruegge/pam-gnupg"
 license=('GPL3')
 depends=('pam' 'gnupg')
 source=("https://github.com/cruegge/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('397334c45ed48499a466c0cb2acb21a7405edc4c0ab9c63cc6b2f3d159d60e5f')
+sha256sums=('d179c355ffc7bc79c3503c2422f181626229ca9491cfbb44668146e6fd55a303')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
