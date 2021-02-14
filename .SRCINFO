@@ -1,0 +1,22 @@
+pkgbase = sdrpp-git
+	pkgdesc = The Bloat-free SDR Receiver
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/AlexandreRouma/SDRPlusPlus
+	arch = any
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	makedepends = cmake
+	depends = fftw
+	depends = glfw
+	depends = glew
+	depends = libvolk
+	depends = soapysdr
+	depends = libiio
+	depends = libad9361
+	depends = portaudio
+	depends = rtl-sdr
+
+pkgname = sdrpp-git
+
