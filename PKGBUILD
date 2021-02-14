@@ -6,8 +6,7 @@ pkgdesc="Change keys led color, when language layout is changed for Logitech G21
 arch=('any')
 url="https://gitlab.com/SR_team/lang815"
 license=('GPL3')
-# TODO: fork package g810-led-git and build with library (make bin-linked)
-depends=('hidapi' 'g810-led-git' 'libx11')
+depends=('hidapi' 'g810-led-lib' 'libx11')
 makedepends=('git' 'gcc' 'make' 'cmake' 'nlohmann-json' 'sdbus-cpp' 'xdg-utils-cxx')
 install=${pkgname}.install
 provides=("Lang815srv=${pkgver}")
