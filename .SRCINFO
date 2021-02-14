@@ -1,6 +1,6 @@
 pkgbase = camotics-git
 	pkgdesc = 3-axis NC machining simulation software
-	pkgver = r832.7bbfce8
+	pkgver = r924.8f4a5a1
 	pkgrel = 1
 	url = http://camotics.org/
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = camotics-git
 	makedepends = python-six
 	makedepends = qt5-tools
 	makedepends = cbang-git
-	depends = v8-6.8
+	depends = v8-r
 	depends = qt5-websockets
 	depends = cairo
 	depends = desktop-file-utils
 	provides = camotics
 	conflicts = camotics
-	source = camotics::git+https://github.com/CauldronDevelopmentLLC/CAMotics.git
+	source = camotics::git+https://github.com/CauldronDevelopmentLLC/CAMotics.git#commit=master
 	sha256sums = SKIP
 
 pkgname = camotics-git
