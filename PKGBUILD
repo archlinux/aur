@@ -2,7 +2,7 @@
 
 pkgname=gerbolyze
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-resolution image-to-PCB converter"
 arch=('any')
 url="https://gerbolyze.jaseg.net/"
