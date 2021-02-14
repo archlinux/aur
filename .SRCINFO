@@ -1,0 +1,18 @@
+pkgbase = sdl2_ttf-git
+	pkgdesc = A library that allows you to use TrueType fonts in your SDL applications (Version 2)
+	pkgver = 2.0.15
+	pkgrel = 1
+	url = http://www.libsdl.org/projects/SDL_ttf
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = sdl2
+	depends = freetype2
+	provides = sdl2_ttf
+	conflicts = sdl2_ttf
+	source = git+https://github.com/libsdl-org/SDL_ttf
+	sha512sums = SKIP
+
+pkgname = sdl2_ttf-git
+
