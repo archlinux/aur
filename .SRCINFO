@@ -1,6 +1,6 @@
 pkgbase = foot-git
 	pkgver = 1.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/dnkl/foot
 	arch = x86_64
 	arch = aarch64
@@ -33,6 +33,8 @@ pkgname = foot-git
 	depends = fontconfig
 	depends = freetype2
 	depends = foot-terminfo
+	optdepends = libnotify: desktop notifications
+	optdepends = xdg-utils: URI launching
 	provides = foot
 	conflicts = foot
 
