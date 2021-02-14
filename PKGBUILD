@@ -1,7 +1,7 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime-bin
-pkgver=1.0.0.pre3
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
 conflicts=('kime')
@@ -16,8 +16,8 @@ optdepends=('libappindicator-gtk3: indicator support'
             'cairo: xim support')
 arch=('any')
 license=('GPL3')
-source=("${url}/releases/download/v1.0.0-pre3/kime-1.0.0.tar.xz")
-md5sums=('c7c5c0a6e274f0eb569537c44ccb2127')
+source=("${url}/releases/download/v${pkgver}/kime-v${pkgver}.tar.xz")
+md5sums=('9f356503b15072623e44d5faedc2d189')
 
 package() {
     install -Dm755 kime-indicator -t "${pkgdir}/usr/bin"
@@ -29,6 +29,7 @@ package() {
     install -Dm755 libkime-qt5.so -T "${pkgdir}/usr/lib/qt/plugins/platforminputcontexts/libkimeplatforminputcontextplugin.so"
     install -Dm755 libkime-qt6.so -T "${pkgdir}/usr/lib/qt6/plugins/platforminputcontexts/libkimeplatforminputcontextplugin.so"
     install -Dm755 libkime_engine.so -t "${pkgdir}/usr/lib"
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 kime_engine.h -t "${pkgdir}/usr/include"
     install -Dm644 default_config.yaml -T "${pkgdir}/etc/kime/config.yaml"
     install -Dm644 kime-eng-64x64.png -t "${pkgdir}/usr/share/kime"
