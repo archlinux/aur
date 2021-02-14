@@ -7,7 +7,7 @@ _pkgname=REDasm
 
 pkgname=redasm-disassembler
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=1
 url="https://redasm.io"
 arch=("x86_64")
 pkgdesc="The Open Source Disassembler (Official Package)"
