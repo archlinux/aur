@@ -3,24 +3,22 @@
 # Source: https://github.com/zancarius/archlinux-pkgbuilds
 
 pkgname=bsdmainutils
-pkgver=11.1.2
-pkgrel=2
+pkgver=12.1.7
+pkgrel=1
 pkgdesc="Some BSD-style programs including ncal and lorder."
 arch=('any')
 url="https://launchpad.net/ubuntu/+source/bsdmainutils"
 license=(GPL)
 source=(
-    "https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/${pkgname}/${pkgver}ubuntu2/${pkgname}_${pkgver}ubuntu2.tar.gz"
+    "https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/${pkgname}/${pkgver}/bsdmainutils_${pkgver}.tar.xz"
     'archlinux-ncal.patch'
 )
 depends=(bash libbsd)
 makedepends=(gcc make ncurses patch quilt)
 sha256sums=(
-    '217ad03eadb1151bfbc994655e4d629a3535f92c5fc99b0868b0bc58c95fedeb'
+    '4d3d01e1793a35b1122d0dd00933002c383532d5708916d55594a3a1e9ea0723'
     '42cb05d09b0cde67d3e1cfc9bd77885107d517b55969fc252671994ebaca1d8b'
 )
-
-_pkgname="${pkgname}-${pkgver}ubuntu1"
 
 build() {
 
@@ -32,7 +30,7 @@ build() {
         rm -r "${srcdir}/${pkgname}-work"
     fi
 
-    cp -a "${srcdir}/${_pkgname}" "${srcdir}/${pkgname}-work"
+    cp -a "${srcdir}/${pkgname}" "${srcdir}/${pkgname}-work"
 
     cd "${srcdir}/${pkgname}-work"
 
