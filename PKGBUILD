@@ -2,7 +2,7 @@
 
 pkgname=abseil-cpp
 pkgver=20200923.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Abseil Common Libraries (C++)"
 # check occasionally arch support status
 # https://github.com/abseil/abseil-cpp/blob/master/absl/random/internal/platform.h#L54
@@ -25,7 +25,8 @@ prepare() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_CXX_STANDARD=17 \
         -DABSL_USE_GOOGLETEST_HEAD=OFF \
-        -DABSL_RUN_TESTS=OFF
+        -DABSL_RUN_TESTS=OFF \
+        -DCMAKE_POSITION_INDEPENDENT_CODE=ON
 }
 
 build() {
