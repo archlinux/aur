@@ -1,6 +1,6 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=5.10.15
+_kernver=5.10.16
 _archver=arch1
 _pkgrel=1
 _pkgver="${_kernver}.${_archver}"
@@ -42,9 +42,9 @@ source=("${_kernsrc}"
         "${_headerssrc}"
         "${_docssrc}")
 
-sha256sums=('9ec8b39b8d4d4ddff0b2893bff026ee5b13acbc4f5bfa89a8c58fa9898fba1c1'
-            '9e4eaf9605cebc969a46969fa99930c8382a8fceb6a64bb196c8f98aab5bdf8b'
-            'a7e25deb28249b06f549b6422085c2e0d0da22eb5e97874eba710931c2a12f1d')
+sha256sums=('406e7f8aa88f2b81edbf8611475d8ce630e631a0e92ef66ffaa9612d30293578'
+            'b565fceaf12cb99b9af5d71464cdcbe931bde80ad394953b513703f8b4a8e20d'
+            'd0f42089c355d690b1b7eb6ee5e26611ed68a4eeb721ac0ad34f071c058efc96')
 
 package_linux-versioned-bin() {
     pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
@@ -62,7 +62,7 @@ package_linux-versioned-docs-bin() {
     depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.10.15.arch1-1-bin() {
+package_linux5.10.16.arch1-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${KERNNAME}"
   depends=(coreutils kmod initramfs)
   conflicts=("${_pkgname}")
@@ -75,7 +75,7 @@ package_linux5.10.15.arch1-1-bin() {
   sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
 }
 
-package_linux5.10.15.arch1-1-headers-bin() {
+package_linux5.10.16.arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-headers")
   tar -xf "${_headerspkg}" -C "${pkgdir}"
@@ -83,7 +83,7 @@ package_linux5.10.15.arch1-1-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.10.15.arch1-1-docs-bin() {
+package_linux5.10.16.arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
