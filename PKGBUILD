@@ -2,7 +2,7 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=owamp
 pkgver=4.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for performing one-way or two-way active network measurements"
 arch=("x86_64")
 url="http://software.internet2.edu/owamp/"
@@ -16,6 +16,10 @@ source=("https://github.com/perfsonar/${pkgname}/archive/v${pkgver}/${pkgname}-$
   "owamp.tmpfiles"
   "datadir.patch"
   "pidfile.patch")
+backup=("etc/owamp-server/owamp-server.conf"
+        "etc/owamp-server/owamp-server.limits"
+        "etc/twamp-server/twamp-server.conf"
+        "etc/twamp-server/twamp-server.limits")
 sha256sums=('18b396749647c849b99013b15b27c0cb0e57ce369556cbb19987dfae4090be6f'
             '708169332bd057747b566f77acf6c3cff7beac59ea0e0aa98901a8060d48f216'
             '47ee8cf49956726db26c2386a6c81adc8d2f00ae68abfb2c7d36522a829bbffa'
@@ -54,6 +58,8 @@ package() {
   install -o root -g root -d "$pkgdir/etc/twamp-server"
   install -o root -g root -m 0644 conf/twampd.conf "$pkgdir/etc/twamp-server/twamp-server.conf"
   install -o root -g root -m 0644 conf/twampd.limits "$pkgdir/etc/twamp-server/twamp-server.limits"
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/owamp/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
