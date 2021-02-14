@@ -1,6 +1,6 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
@@ -18,15 +18,8 @@ makedepends=('cargo' 'clang' 'llvm' 'cmake' 'ninja' 'cairo' 'libxcb')
 arch=('any')
 source=(
     ${pkgname}-${pkgver}.tar.gz::"${url}/archive/v${pkgver}.tar.gz"
-    install-patch.diff
 )
-md5sums=('6ccfdb576547886736c5e0e93d9a6f09'
-         'fff00ce5661096c7fe0b2a97ef91e89c')
-
-prepare() {
-    cd "${pkgname}-${pkgver}"
-    patch --forward --strip=1 --input="${srcdir}/install-patch.diff"
-}
+md5sums=('bfeb40efeea9d16c132a6ffb5bad75f7')
 
 build() {
     cd "${pkgname}-${pkgver}"
