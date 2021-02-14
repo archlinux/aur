@@ -1,0 +1,18 @@
+pkgbase = revc-git
+	pkgdesc = Grand Theft Auto Vice City reverse engineered
+	pkgver = 1
+	pkgrel = 1
+	install = revc-git.install
+	arch = x86_64
+	license = none
+	makedepends = git
+	provides = revc
+	source = git://github.com/GTAmodding/re3.git
+	source = launch.sh
+	source = GTAVC.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = revc-git
+
