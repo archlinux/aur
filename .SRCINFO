@@ -1,6 +1,6 @@
 pkgbase = truffleruby-jdk11-bin
 	pkgdesc = GraalVM-based, high-performance implementation of the Ruby language (Java 11 version)
-	pkgver = 21.0.0
+	pkgver = 21.0.0.2
 	pkgrel = 1
 	url = https://github.com/oracle/truffleruby
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = truffleruby-jdk11-bin
 	license = GPL2
 	license = LGPL2.1
 	depends = jdk11-graalvm-bin
-	source = https://github.com/oracle/truffleruby/releases/download/vm-21.0.0/ruby-installable-svm-java11-linux-amd64-21.0.0.jar
-	sha256sums = ff7d0852879ea51dc17eb445c073ec8bd2ee3759161559e16223006d2a48aced
+	source = https://github.com/oracle/truffleruby/releases/download/vm-21.0.0.2/ruby-installable-svm-java11-linux-amd64-21.0.0.2.jar
+	sha256sums = 2d611a6db10cf1db1479c838ce1c512635667ce9cc519854395c13f72af713e7
 
 pkgname = truffleruby-jdk11-bin
 
