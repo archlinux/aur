@@ -5,25 +5,32 @@ pkgname=amule-emc
 pkgver=0.5.2
 pkgrel=1
 pkgdesc="Multi-platform emulecollection parser written in C++"
-arch=('i686' 'x86_64')
-url="http://code.google.com/p/amule-emc/"
+arch=('x86_64')
+url='http://code.google.com/p/amule-emc'
 depends=('gcc-libs')
 license=('GPL')
-source=("http://amule-emc.googlecode.com/files/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('b50d125b0b24c9932e621c23c51c3da615051ef1')
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/amule-emc/amule-emc-${pkgver}.tar.gz"
+        'amule-emc_0.5.2-2.diff'
+        )
+sha256sums=('7f287674b669cffeb41ae5f9dae9cedf827de199e40cf92a76cd9b60313b8927'
+            '974753d17ea9e0799be4f5138df66be064acaef25295e798264854f28151666e'
+            )
 
 prepare() {
-  rm -fr build
-  cp -R "${pkgname}-${pkgver}" build
+  mkdir -p build
+
+  patch -d "amule-emc-${pkgver}" -p0 -i "${srcdir}/amule-emc_0.5.2-2.diff"
 }
 
 build() {
+
   cd build
-  ./configure --prefix=/usr
+  ../"amule-emc-${pkgver}"/configure \
+    --prefix=/usr
+
   make
 }
 package() {
-  cd build
-  make DESTDIR="${pkgdir}" install
+  make -C build DESTDIR="${pkgdir}" install
 }
 

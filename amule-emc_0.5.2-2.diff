@@ -1,0 +1,213 @@
+--- amule-emc-0.5.2.orig/debian/amule-emc.docs
++++ amule-emc-0.5.2/debian/amule-emc.docs
+@@ -0,0 +1 @@
++debian/Emulecollection_File_Structure.txt
+--- amule-emc-0.5.2.orig/debian/rules
++++ amule-emc-0.5.2/debian/rules
+@@ -0,0 +1,4 @@
++#!/usr/bin/make -f
++
++%:
++	dh $@
+--- amule-emc-0.5.2.orig/debian/compat
++++ amule-emc-0.5.2/debian/compat
+@@ -0,0 +1 @@
++7
+--- amule-emc-0.5.2.orig/debian/changelog
++++ amule-emc-0.5.2/debian/changelog
+@@ -0,0 +1,17 @@
++amule-emc (0.5.2-2) unstable; urgency=low
++
++  * debian/control
++    - updated my email address
++    - remove DM-Upload-Allowed flag
++    - verb fix in short description
++  * debian/copyright
++    - updated my email address
++    - fixed copyright notice and updated copyright year for packaging
++
++ -- Sandro Tosi <morph@debian.org>  Fri, 30 Jan 2009 00:50:54 +0100
++
++amule-emc (0.5.2-1) unstable; urgency=low
++
++  * Initial release (Closes: #493043)
++
++ -- Sandro Tosi <matrixhasu@gmail.com>  Wed, 06 Aug 2008 08:42:30 +0200
+--- amule-emc-0.5.2.orig/debian/watch
++++ amule-emc-0.5.2/debian/watch
+@@ -0,0 +1,2 @@
++version=3
++http://code.google.com/p/amule-emc/downloads/list http://amule-emc.googlecode.com/files/amule-emc-(.*)\.tar\.gz
+--- amule-emc-0.5.2.orig/debian/copyright
++++ amule-emc-0.5.2/debian/copyright
+@@ -0,0 +1,59 @@
++This package was debianized by Sandro Tosi <morph@debian.org> on
++Thu, 31 Jul 2008 00:57:38 +0200.
++
++It was downloaded from http://code.google.com/p/amule-emc/downloads/list
++
++Upstream Author:
++
++    Johannes Krampf <wuischke@amule.org>
++
++Copyright:
++
++    Copyright (c) 2007-2008 Johannes Krampf
++
++License:
++
++    This program is free software; you can redistribute it and/or
++    modify it under the terms of the GNU General Public License as
++    published by the Free Software Foundation; either version 2 of the
++    License, or (at your option) any later version.
++
++    This program is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    General Public License for more details.
++
++    You should have received a copy of the GNU General Public License
++    along with this program; if not, write to the Free Software
++    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
++    02110-1301, USA
++
++On a Debian system the complete text of the GNU General Public License
++v2 can be found in the file `/usr/share/common-licenses/GPL-2'
++
++The Debian packaging is Copyright (C) 2008-2009, Sandro Tosi <morph@debian.org>
++and is licensed under the GPLv2, see `/usr/share/common-licenses/GPL-2'.
++
++The files below have different copyright notices:
++
++src/MuleCollection.cpp:
++    Angel Vidal Veiga aka Kry <kry@amule.org>
++    * changed class names
++
++    Marcelo Malheiros <mgmalheiros@gmail.com>
++    * fixed error with FT_FILEHASH
++    * added inital 5 tag/file support
++
++    Any parts of this program derived from the xMule, lMule or eMule project,
++    or contributed by third-party developers are copyrighted by their
++    respective authors.
++
++src/Types.h:
++    This file is part of the aMule Project.
++
++    Copyright (c) 2003-2008 aMule Team ( admin@amule.org / http://www.amule.org )
++    Copyright (c) 2002 Merkur ( devs@emule-project.net / http://www.emule-project.net )
++
++    Any parts of this program derived from the xMule, lMule or eMule
++    project, or contributed by third-party developers are copyrighted
++    by their respective authors.
+--- amule-emc-0.5.2.orig/debian/control
++++ amule-emc-0.5.2/debian/control
+@@ -0,0 +1,17 @@
++Source: amule-emc
++Section: utils
++Priority: optional
++Maintainer: Sandro Tosi <morph@debian.org>
++Build-Depends: debhelper (>= 7), autotools-dev, automake1.10
++Standards-Version: 3.8.0
++Homepage: http://code.google.com/p/amule-emc/
++
++Package: amule-emc
++Architecture: any
++Depends: ${shlibs:Depends}, ${misc:Depends}
++Description: lists ed2k links inside emulecollection files
++ amule-emc is a tool to parse emulecollection files and print out the
++ ed2k links contained in them.
++ .
++ It differs from 'ed2k' program (from amule-utils) since amule-emc just
++ displays the links, while ed2k actually imports the collection into aMule.
+--- amule-emc-0.5.2.orig/debian/Emulecollection_File_Structure.txt
++++ amule-emc-0.5.2/debian/Emulecollection_File_Structure.txt
+@@ -0,0 +1,88 @@
++Emulecollection File Structure
++==============================
++
++Here below you can find some technical information about emulecollection
++file structure.
++
++From: http://code.google.com/p/amule-emc/wiki/emulecollection
++
++Text Files
++----------
++
++Lines contain either an ed2k link or a comment starting with #.
++
++Binary Files
++------------
++
++uint32_t emulecollection version
++values:	COLLECTION_FILE_VERSION1_INITIAL		0x01
++	COLLECTION_FILE_VERSION2_LARGEFILES		0x02
++	
++	version 2 files support files bigger than 4GB (uint64_t file sizes)
++
++uint32_t header tag count
++ 
++header tags:
++	
++	TAGTYPE_STRING					0x02
++		uint16_t					0x0001	
++		FT_FILENAME					0x01
++		uint16_t					string length
++		std::string					string value
++	TAGTYPE_STRING					0x02
++		uint16_t					0x0001
++		FT_COLLECTIONAUTHOR	 			0x31
++		uint16_t					string length
++		std::string					string value
++	TAGTYPE_BLOB					0x07
++		uint16_t					0x0001
++		FT_COLLECTIONAUTHORKEY				0x32
++		uint32_t					blob size
++		(notype)					blob data
++
++uint32_t collection file count
++
++uint32_t file tag count
++
++	at this point the TAGTYPE 0x01 will appear as 0x81 (uType | 0x80)
++	-> see eMule packets.cpp
++	FT_FILERATING and FT_FILECOMMENT are optional tags
++ 	
++ 	TAGTYPE_HASH					0x01
++		FT_FILEHASH					0x28
++		(notype)[16]					hash data
++
++	TAGTYPE_UINT32					0x03
++		FT_FILESIZE					0x02
++		uint32_t					file size
++	TAGTYPE_UINT16					0x08
++		FT_FILESIZE					0x02
++		uint16_t					file size
++	TAGTYPE_UINT8					0x09
++		FT_FILESIZE					0x02
++		uint8_t						file size
++	TAGTYPE_UINT64					0x0B
++		FT_FILESIZE					0x02
++		uint64_t					file size
++
++	TAGTYPE_STR1 to 16					0x11 to 0x20
++		FT_FILENAME					0x01
++		std::string					file name
++	
++	string length is TAGTYPE_STRx - 0x11 + 0x01 [1 to 16]
++
++	TAGTYPE_STRING					0x02
++		FT_FILENAME					0x01
++		uint16_t					string length
++		std::string					string value  	  	
++
++	TAGTYPE_STRING					0x02
++		FT_FILECOMMENT					0xF6
++		uint16_t					string length
++		std::string					string value  	  	
++
++	TAGTYPE_UINT8					0x09
++		FT_FILERATING					0xF7
++		uint8_t						file rating 	
++
++(notype) signature (only for signed files)
