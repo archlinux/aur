@@ -1,0 +1,20 @@
+pkgbase = python-nimfa-git
+	pkgdesc = Nonnegative matrix factorization in Python
+	pkgver = 1.3.5.r10.g3564bf6
+	pkgrel = 1
+	url = https://github.com/mims-harvard/nimfa
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	provides = python-nimfa
+	conflicts = python-nimfa
+	source = git+https://github.com/mims-harvard/nimfa
+	md5sums = SKIP
+
+pkgname = python-nimfa-git
+
