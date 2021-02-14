@@ -1,7 +1,7 @@
 pkgbase = sugar-artwork-git
 	pkgdesc = Sugar icons and themes
 	pkgver = v0.118
-	pkgrel = 3
+	pkgrel = 1
 	url = https://sugarlabs.org/
 	arch = x86_64
 	license = LGPL
