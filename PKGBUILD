@@ -2,7 +2,7 @@
 # Contributor: Tomasz Hamerla <tomasz.hamerla@outlook.com>
 
 pkgname=powershell-bin
-_pkgver=7.1.1
+_pkgver=7.1.2
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (binary package)'
@@ -13,7 +13,7 @@ provides=('powershell')
 conflicts=('powershell')
 options=(staticlibs !strip)
 install=powershell.install
-sha256sums=('0e10d4ef02a5bc2d6a15e6f58745cadaf5ecf94aad6d1c0bcb5bd6443bc8f3b7')
+sha256sums=('a2bf05909d4879f5ca8924b0c25af965aa597cfc49651deb1ee9b9463b515d72')
 source=("https://github.com/PowerShell/PowerShell/releases/download/v${_pkgver}/powershell_${_pkgver}-1.ubuntu.18.04_amd64.deb")
 
 package() {
