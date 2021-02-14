@@ -2,8 +2,8 @@
 # Contributor: Marcs <aur (at) mg.odd.red>
 
 pkgname=lerna
-pkgver=3.22.1
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="Tool for managing JavaScript projects with multiple packages"
 arch=(any)
 url="https://github.com/sebmck/lerna#readme"
@@ -26,4 +26,4 @@ package() {
   chown -R root:root "${pkgdir}"
 }
 
-sha256sums=('77a036b03fafd7a6915ef32ad9e0f5cb1950ae8c86ee27fa886e2e1bad4004ac')
+sha256sums=('64330ffdb7b7d879e40ca2520028958b9d6daff34a32547ced138b5896633bd4')
