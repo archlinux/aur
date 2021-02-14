@@ -4,8 +4,8 @@
 
 start() {
 	modprobe zram
-	[ -n $ZRAM_COMPRESSION ] && echo $ZRAM_COMPRESSION /sys/block/zram0/comp_algorithm
-	[ ! $ZRAM_SIZE ] && ZRAM_SIZE=40
+	[ -n "$ZRAM_COMPRESSION" ] && echo "$ZRAM_COMPRESSION" > /sys/block/zram0/comp_algorithm
+	[ ! "$ZRAM_SIZE" ] && ZRAM_SIZE=40
 	MEM=$((`awk '{print $2; exit}' /proc/meminfo` * 1024 * $ZRAM_SIZE/100 ))
 	echo $MEM > /sys/block/zram0/disksize
 	mkswap -L zram0 /dev/zram0
