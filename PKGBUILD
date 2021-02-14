@@ -23,8 +23,8 @@ sha256sums=(
 
 build() {
 	cd "$srcdir/$pkgname"
-	./bootstrap
 	autoupdate
+	./bootstrap
 	./configure \
 		--prefix=/usr \
 		--sysconfdir=/etc \
