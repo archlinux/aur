@@ -15,7 +15,7 @@ depends=('lib32-glibc' 'lib32-libxext' 'lib32-libxrender' 'lib32-libx11' 'lib32-
          'lib32-libxcursor' 'sdl2' 'lib32-libxxf86vm')
 makedepends=('lib32-alsa-lib' 'lib32-libxrandr'
              'lib32-libxinerama' 'lib32-libxkbcommon' 'lib32-libxxf86vm'
-             'cmake' 'mercurial')
+             'cmake' 'git')
 optdepends=('lib32-alsa-lib: ALSA audio driver'
             'lib32-libpulse: PulseAudio audio driver'
             'lib32-jack: JACK audio driver'
