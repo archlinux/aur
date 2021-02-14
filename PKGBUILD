@@ -2,7 +2,7 @@
 
 pkgname="roundcubemail-plugin-carddav"
 pkgver=4.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="CardDAV plugin for RoundCube Webmailer"
 url="https://github.com/blind-coder/rcmcarddav"
 license=("GPL2")
