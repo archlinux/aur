@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Grand Theft Auto Vice City 
 Exec=/opt/reVC/launch.sh
-Icon=/usr/share/games/gtavc/Icons/app.ico
+Icon=~/.local/share/gtavc/Icons/app.ico
 Type=Application
 Categories=Games;

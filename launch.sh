@@ -1,2 +1,2 @@
-cd /usr/share/games/gtavc
+cd ~/.local/share/gtavc
 /opt/reVC/reVC

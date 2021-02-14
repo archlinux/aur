@@ -1,6 +1,10 @@
 post_install() {
   cat <<EOF
 In order to play this game you need the data files from steam or retail version of GTA VC
-Copy the game directory to /usr/share/games/gtavc
+Copy the game directory to ~/.local/share/gtavc
 EOF
 }
+
+post_upgrade() {
+}
+
