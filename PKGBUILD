@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://www.libsdl.org"
 license=('MIT')
 depends=('glibc' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor' 'libxxf86vm')
-makedepends=('alsa-lib' 'libxrandr' 'libxinerama' 'libxkbcommon' 'cmake' 'libxxf86vm' 'mercurial' 'ninja')
+makedepends=('alsa-lib' 'libxrandr' 'libxinerama' 'libxkbcommon' 'cmake' 'libxxf86vm' 'git' 'ninja')
 optdepends=('alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver'
             'jack: JACK audio driver'
