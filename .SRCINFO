@@ -1,19 +1,21 @@
 pkgbase = xephem
 	pkgdesc = The Serious Interactive Astronomical Software Ephemeris
-	pkgver = 3.7.7
-	pkgrel = 7
+	pkgver = 4.0.0
+	pkgrel = 1
 	url = http://www.clearskyinstitute.com/xephem/xephem.html
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = libxmu
 	depends = openmotif
-	optdepends = perl
-	optdepends = openssl
-	source = http://www.clearskyinstitute.com/xephem/xephem-3.7.7.tgz
+	depends = perl
+	depends = openssl
+	source = http://www.clearskyinstitute.com/xephem/xephem-4.0.0.tgz
 	source = http://www.clearskyinstitute.com/xephem/contrib/xephem-3.7.7_openssl.patch
-	md5sums = 27c67061a89085bf2b0d4e9deb758a79
-	md5sums = 27b747ea7f31270547047117fceaa283
+	source = licenseinfo.patch
+	sha256sums = abc90e795b7076be3b5c2247162e1c853265b2d81c3399767ab569a5653f6301
+	sha256sums = 64365b25ac142ebcc9dc286a14f7b3c37aeb44ffcdc629d776b183099259b3f4
+	sha256sums = bb7bd33bbe3b1c87dfcebb752c85daef2821340952f1bfab16d49f2e9f107730
 
 pkgname = xephem
 
