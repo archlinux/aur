@@ -2,7 +2,7 @@
 _pkgname=google-re2
 pkgname=python-re2
 pkgver=0.0.7
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="RE2 Python bindings"
 arch=('any')
@@ -38,4 +38,6 @@ check() {
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	find $pkgdir -type f -exec chmod 644 {} \;
+	find $pkgdir -type d -exec chmod 755 {} \;
 }
