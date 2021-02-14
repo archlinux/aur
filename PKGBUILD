@@ -1,14 +1,15 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=calindori-git
-pkgver=v1.2.r22.gc4ee655
-pkgrel=2
+pkgver=r512.0efd700
+pkgrel=1
 pkgdesc="Calendar for Plasma Mobile"
 arch=(x86_64)
 url="https://invent.kde.org/plasma-mobile/calindori"
 license=(GPL3)
-depends=(ki18n kcoreaddons kconfig kcalendarcore kirigami2 qt5-svg kdbusaddons knotifications kservice)
-makedepends=(git cmake extra-cmake-modules qt5-tools)
+depends=(ki18n kcoreaddons kconfig kcalendarcore kirigami2
+         kdbusaddons knotifications kservice kpeople qt5-svg)
+makedepends=(git extra-cmake-modules qt5-tools)
 provides=(calindori)
 conflicts=(calindori)
 source=("git+https://invent.kde.org/plasma-mobile/calindori.git")
@@ -16,27 +17,14 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
-
-prepare() {
-  cd "${pkgname%-git}"
-  install -d build
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${pkgname%-git}/build"
-  cmake .. \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S "${pkgname%-git}"
+  make -C build
 }
 
 package() {
-  cd "${pkgname%-git}/build"
-  make DESTDIR="$pkgdir" install
+  make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
 }
