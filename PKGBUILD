@@ -1,6 +1,6 @@
 # Maintainer: Wolfgang Popp <mail@wolfgang-popp.de>
 pkgname=ytcc-git
-pkgver=r347.59574f5
+pkgver=r366.4ff3e47
 pkgrel=1
 pkgdesc="Command line tool to keep track of playlists"
 arch=('any')
