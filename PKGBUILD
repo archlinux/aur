@@ -9,16 +9,16 @@ pkgname=(pipewire-full-git pipewire-full-docs-git pipewire-full-jack-git
          gst-plugin-pipewire-full-git
          pipewire-full-vulkan-git pipewire-full-ffmpeg-git
          pipewire-full-bluez5-git pipewire-full-bluez5-hsphfpd-git)
-pkgver=0.3.21.r89.g0855b1bb
+pkgver=0.3.21.r110.g373fd53d
 pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines"
 url="https://pipewire.org"
 license=(MIT)
 arch=(x86_64)
-makedepends=(git meson doxygen graphviz xmltoman valgrind jack2
-             alsa-lib gst-plugins-base sbc rtkit vulkan-icd-loader dbus sdl2
-             ncurses libsndfile bluez-libs vulkan-headers libldac libopenaptx
-             libfdk-aac ffmpeg)
+makedepends=(git meson doxygen graphviz xmltoman jack2
+             alsa-lib gst-plugins-base-libs sbc rtkit vulkan-icd-loader dbus
+             sdl2 ncurses libsndfile bluez-libs vulkan-headers libldac 
+             libopenaptx libfdk-aac ffmpeg)
 source=("git+https://gitlab.freedesktop.org/pipewire/pipewire.git")
 sha256sums=('SKIP')
 
@@ -63,7 +63,7 @@ _pick() {
 _ver=${pkgver:0:3}
 
 package_pipewire-full-git() {
-  depends=(sbc rtkit
+  depends=(rtkit
            libdbus-1.so libncursesw.so libsndfile.so libudev.so libasound.so
            libsystemd.so)
   optdepends=('pipewire-full-docs-git: Documentation'
@@ -130,7 +130,7 @@ package_pipewire-full-docs-git() {
 
 package_pipewire-full-jack-git() {
   pkgdesc+=" (JACK support)"
-  depends=(pipewire-full-git libpipewire-$_ver.so libjack.so)
+  depends=(pipewire-full-git libpipewire-$_ver.so bash libjack.so)
   provides=(pipewire-jack)
   conflicts=(pipewire-jack)
   mv jack/* "$pkgdir"
@@ -183,8 +183,8 @@ package_pipewire-full-ffmpeg-git() {
 
 package_pipewire-full-bluez5-git() {
   pkgdesc+=" (BlueZ 5 SPA plugin)"
-  depends=(pipewire-full-git libpipewire-$_ver.so bluez-libs
-           libldacBT_enc.so libopenaptx.so libfdk-aac.so)
+  depends=(pipewire-full-git libpipewire-$_ver.so bluez-libs sbc
+           libdbus-1.so libldacBT_enc.so libopenaptx.so libfdk-aac.so)
   optdepends=('ofono: HFP support')
   provides=(pipewire-bluez5)
   conflicts=(pipewire-bluez5)
@@ -193,8 +193,8 @@ package_pipewire-full-bluez5-git() {
 
 package_pipewire-full-bluez5-hsphfpd-git() {
   pkgdesc+=" (BlueZ 5 SPA plugin, using hsphfpd for HSP/HFP support)"
-  depends=(pipewire-full-git libpipewire-$_ver.so bluez-libs hsphfpd
-           libldacBT_enc.so libopenaptx.so libfdk-aac.so)
+  depends=(pipewire-full-git libpipewire-$_ver.so bluez-libs sbc hsphfpd
+           libdbus-1.so libldacBT_enc.so libopenaptx.so libfdk-aac.so)
   provides=(pipewire-bluez5)
   conflicts=(pipewire-bluez5)
   mv bluez5-hsphfpd/* "${pkgdir}"
