@@ -1,0 +1,34 @@
+## arg 1:  the new package version
+pre_install() {
+	echo ""
+}
+
+## arg 1:  the new package version
+post_install() {
+	echo "1. You must change backend in ~/.config/Lang815.json to 'libLang815bkg-faustus.so'"
+	echo "2. You must enable systemd unit org.lang815.switch with the next command :"
+	echo "systemctl --user restart org.lang815.switch"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+	echo ""
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	systemctl --user restart org.lang815.switch
+}
+
+## arg 1:  the old package version
+pre_remove() {
+	echo ""
+}
+
+## arg 1:  the old package version
+post_remove() {
+	echo ""
+}
+ 
