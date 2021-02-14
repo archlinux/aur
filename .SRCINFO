@@ -1,0 +1,36 @@
+pkgbase = lua-luaflac
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jprjr/luaflac
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cmake
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
+	depends = flac
+	source = https://github.com/jprjr/luaflac/releases/download/v1.0.0/luaflac-1.0.0.tar.gz
+	md5sums = c2a1b7aff17fa396d725daeafec9d141
+
+pkgname = lua-luaflac
+	pkgdesc = Lua bindings for libFLAC
+	depends = flac
+	depends = lua
+
+pkgname = lua51-luaflac
+	pkgdesc = Lua bindings for libFLAC for Lua 5.1
+	depends = flac
+	depends = lua51
+
+pkgname = lua52-luaflac
+	pkgdesc = Lua bindings for libFLAC for Lua 5.2
+	depends = flac
+	depends = lua52
+
+pkgname = lua53-luaflac
+	pkgdesc = Lua bindings for libFLAC for Lua 5.3
+	depends = flac
+	depends = lua53
+
