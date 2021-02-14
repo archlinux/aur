@@ -1,7 +1,7 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime-git
 pkgver=1.0.0.r0.ba05f3b
-pkgrel=1
+pkgrel=2
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
 conflicts=('kime')
@@ -29,6 +29,8 @@ pkgver() {
 
 build() {
     cd "${pkgname}"
+    # Clean build cache
+    rm -rf build || true
     scripts/build.sh -ar
 }
 
