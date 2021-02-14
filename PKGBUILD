@@ -38,8 +38,8 @@ makedepends=('curl'
              'paho-mqtt-c-git'
              'sofia-sip'
              'git')
-provides=(janus-gateway)
-conflicts=(janus-gateway)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=('git+https://github.com/meetecho/janus-gateway.git'
         'local://systemd.service'
         'local://sysusers.conf')
@@ -48,12 +48,12 @@ sha256sums=('SKIP'
             'bd6d7615e722adb64816fae3c5323f6aeb1b9561c39f1652568ed494ffdaa191')
 
 pkgver() {
-    cd "janus-gateway"
+    cd "$srcdir/${pkgname%-git}"
     git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd "janus-gateway"
+    cd "$srcdir/${pkgname%-git}"
     ./autogen.sh
     ./configure \
         --prefix /usr \
@@ -69,7 +69,7 @@ build() {
 }
 
 package() {
-    cd "janus-gateway"
+    cd "$srcdir/${pkgname%-git}"
     make DESTDIR="$pkgdir" install configs
     backup+=($(cd "$pkgdir" && echo "etc/janus/"*.jcfg))
     install -Dm644 "$srcdir/systemd.service" "$pkgdir/usr/lib/systemd/system/janus-gateway.service"
