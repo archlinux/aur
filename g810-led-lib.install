@@ -1,0 +1,44 @@
+## arg 1:  the new package version
+pre_install() {
+	echo ""
+}
+
+## arg 1:  the new package version
+post_install() {
+	udevadm control --reload-rules
+	systemctl daemon-reload
+	/usr/bin/g810-led -p /etc/g810-led/profile
+	# Don't enable service by default in ArchLinux
+	#systemctl enable g810-led-reboot
+	echo "You can enable systemd unit g810-led-reboot with the next command :"
+	echo "systemctl enable g810-led-reboot"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+	echo ""
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	udevadm control --reload-rules
+	systemctl daemon-reload
+}
+
+## arg 1:  the old package version
+pre_remove() {
+	systemctl stop g810-led-reboot
+	systemctl disable g810-led-reboot
+	
+	# For old release, need to be removed
+	systemctl stop g810-led
+	systemctl disable g810-led
+}
+
+## arg 1:  the old package version
+post_remove() {
+	systemctl daemon-reload
+	udevadm control --reload-rules
+}
