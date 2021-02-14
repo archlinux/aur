@@ -1,6 +1,6 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime-bin
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
@@ -17,7 +17,7 @@ optdepends=('libappindicator-gtk3: indicator support'
 arch=('any')
 license=('GPL3')
 source=("${url}/releases/download/v${pkgver}/kime-${pkgver}.tar.xz")
-md5sums=('8770e392ada1ee29222c25a182f237f6')
+md5sums=('eaaccbc3e60e7f726f7c7042f0ac4ea6')
 
 package() {
     install -Dm755 kime-indicator -t "${pkgdir}/usr/bin"
