@@ -1,4 +1,4 @@
-# Maintainer: Sebba <sebba at cock dot li>
+# Maintainer: absrdspc <repom2@riseup.net>
 pkgname=arc_unpacker-git
 _pkgname=arc_unpacker
 pkgver=r2426.b9843a13
