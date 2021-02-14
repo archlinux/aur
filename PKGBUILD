@@ -3,8 +3,8 @@
 pkgname=yabridge-bin
 _pkgname=yabridge
 pkgver=3.0.0
-pkgrel=1
-pkgdesc="Yet Another VST bridge, run Windows VST2 plugins under Linux"
+pkgrel=2
+pkgdesc="A modern and transparent way to use Windows VST2 and VST3 plugins on Linux"
 epoch=
 arch=('x86_64')
 url="https://github.com/robbert-vdh/yabridge"
