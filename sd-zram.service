@@ -1,0 +1,11 @@
+[Unit]
+Description=Enable ZRAM
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/systemd/scripts/sd-zram start
+ExecStop=/usr/lib/systemd/scripts/sd-zram stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

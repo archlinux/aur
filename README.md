@@ -1,0 +1,2 @@
+# sd-zram
+Enable ZRAM

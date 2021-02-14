@@ -1,0 +1,15 @@
+pkgbase = sd-zram
+	pkgdesc = Enable zram on boot
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/AtifChy/sd-zram
+	arch = any
+	license = GPL
+	depends = bash
+	backup = etc/sd-zram.conf
+	source = sd-zram.conf
+	source = sd-zram
+	source = sd-zram.service
+	md5sums = SKIP
+
+pkgname = sd-zram
