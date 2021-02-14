@@ -2,7 +2,7 @@
 # Contributor: Maurizio Porrato <maurizio.porrato@gmail.com>
 
 pkgname=janus-gateway-git
-pkgver=0.10.5.r8.ge94612e6
+pkgver=0.10.10.r13.gad54495d
 pkgrel=1
 pkgdesc="An open source, general purpose, WebRTC server"
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ depends=('glib2'
          'libmicrohttpd'
          'libnice'
          'libsrtp'
-         'libusrsctp-git'
+         'libusrsctp'
          'openssl')
 optdepends=('libwebsockets: WebSockets support for Janus API'
             'librabbitmq-c: RabbitMQ support for the Janus API or events'

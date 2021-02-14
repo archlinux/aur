@@ -1,6 +1,6 @@
 pkgbase = janus-gateway-git
 	pkgdesc = An open source, general purpose, WebRTC server
-	pkgver = 0.10.5.r8.ge94612e6
+	pkgver = 0.10.10.r13.gad54495d
 	pkgrel = 1
 	url = https://janus.conf.meetecho.com
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = janus-gateway-git
 	depends = libmicrohttpd
 	depends = libnice
 	depends = libsrtp
-	depends = libusrsctp-git
+	depends = libusrsctp
 	depends = openssl
 	optdepends = libwebsockets: WebSockets support for Janus API
 	optdepends = librabbitmq-c: RabbitMQ support for the Janus API or events
