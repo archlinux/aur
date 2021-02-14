@@ -1,14 +1,14 @@
 pkgbase = can-utils
 	pkgdesc = Linux-CAN / SocketCAN user space applications
-	pkgver = 2020.02.04
+	pkgver = 2020.12.0
 	pkgrel = 1
 	url = https://github.com/linux-can/can-utils
 	arch = x86_64
 	arch = armv6h
 	license = GPLv2
 	conflicts = can-utils-git
-	source = can-utils-2020.02.04.tar.gz::https://github.com/linux-can/can-utils/archive/v2020.02.04.tar.gz
-	sha256sums = a766aad89955b9cfcca27f61ef988fa169565c3657d2789808c0f33a7afa23c8
+	source = can-utils-2020.12.0.tar.gz::https://github.com/linux-can/can-utils/archive/v2020.12.0.tar.gz
+	sha256sums = c5c22a00ce2ea7578d7617ac0affef8f47a349be58e708780d703b979f324a2b
 
 pkgname = can-utils
 
