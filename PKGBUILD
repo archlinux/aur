@@ -1,8 +1,8 @@
 # Maintainer: Srevin Saju <srevinsaju@sugarlabs.org>
 
 pkgname=sugar-git
-pkgver=v0.118
-pkgrel=3
+pkgver=v0.118.1.g63885ed7
+pkgrel=1
 pkgdesc="Sugar GTK shell"
 arch=('any')
 url="https://sugarlabs.org/"

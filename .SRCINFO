@@ -1,7 +1,7 @@
 pkgbase = sugar-git
 	pkgdesc = Sugar GTK shell
-	pkgver = v0.118
-	pkgrel = 3
+	pkgver = v0.118.1.g63885ed7
+	pkgrel = 1
 	url = https://sugarlabs.org/
 	arch = any
 	license = GPL
