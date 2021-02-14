@@ -1,7 +1,7 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=dokku
-pkgver=0.23.2
+pkgver=0.23.4
 pkgrel=1
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('any')
@@ -27,8 +27,8 @@ depends=(
 source=("https://github.com/dokku/dokku/archive/v$pkgver.zip"
         "$pkgname.install"
         "LICENSE")
-sha256sums=('e1db9db187bca7032c4c62a30083377a014d64e8e34c3f9a4c49b5d6e90d382a'
-            'd6887859d5c43febf6591c32d8b4706797a28ce308050b62871bc3f7f9df418e'
+sha256sums=('ad385e60b60904bcc3aadf481b3930e201109c008af892a6f7cdee75c2786a58'
+            'dd7ca19339e18f8434ca74faeb994ae8446cb3ccf020e558eaa340ad1f72effe'
             'b1ac2fed5ac269fb7bbf651a3d37ef5fd56d2c33320e17cb6e23a22a93f5c046')
 install="$pkgname.install"
 

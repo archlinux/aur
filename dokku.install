@@ -14,6 +14,12 @@ setup-user() {
   chown -R dokku:dokku "${DOKKU_ROOT}/.ssh" "${DOKKU_ROOT}/.dokkurc"
 }
 
+setup-storage() {
+  echo "Setting up storage directories"
+  mkdir -p "${DOKKU_LIB_ROOT}/data" "${DOKKU_LIB_ROOT}/data/storage"
+  chown dokku:dokku "${DOKKU_LIB_ROOT}/data"
+}
+
 setup-plugins() {
   echo "Setting up plugin directories"
   mkdir -p "${DOKKU_LIB_ROOT}/core-plugins/available" "${DOKKU_LIB_ROOT}/plugins/available"
@@ -43,6 +49,7 @@ setup-plugins() {
   chown dokku:dokku -R "${DOKKU_LIB_ROOT}/plugins" "${DOKKU_LIB_ROOT}/core-plugins"
 
   echo "Install all core plugins"
+  dokku plugin:install-dependencies --core
   dokku plugin:install --core
   rm -f /etc/update-motd.d/99-dokku
 
@@ -60,6 +67,7 @@ setup-sshcommand() {
 
 post_install() {
   setup-user
+  setup-storage
   setup-plugins
   setup-sshcommand
 
