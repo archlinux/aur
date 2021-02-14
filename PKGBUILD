@@ -4,7 +4,7 @@ _group_name="swcdb"
 _sub_name="lib-core"
 
 pkgname=${_group_name}-${_sub_name}
-pkgver=0.4.16
+pkgver=0.4.17
 pkgrel=1
 pkgdesc="The SWC-DB core libraries"
 arch=("x86_64")
@@ -21,8 +21,8 @@ license=('GPLv3')
 
 
 depends=(
-  'openssl'
   'gperftools'
+  'openssl'
   'zlib'
   'snappy'
   'zstd'
@@ -34,9 +34,9 @@ makedepends=(
   'cmake'
   'make'
   'gcc'
+  'gperftools'
   'asio'
   'openssl'
-  'gperftools'
   'zlib'
   'snappy'
   'zstd'

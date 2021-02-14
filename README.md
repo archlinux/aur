@@ -4,7 +4,7 @@
 
 * Clone the package from AUR:
 ```
-git clone ssh://aur@aur.archlinux.org/swcdb-lib-core.git;
+git clone https://aur.archlinux.org/swcdb-lib-core.git;
 ```
 
 

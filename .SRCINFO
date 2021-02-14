@@ -1,6 +1,6 @@
 pkgbase = swcdb-lib-core
 	pkgdesc = The SWC-DB core libraries
-	pkgver = 0.4.16
+	pkgver = 0.4.17
 	pkgrel = 1
 	url = https://www.swcdb.org
 	install = README.md
@@ -11,15 +11,15 @@ pkgbase = swcdb-lib-core
 	makedepends = cmake
 	makedepends = make
 	makedepends = gcc
+	makedepends = gperftools
 	makedepends = asio
 	makedepends = openssl
-	makedepends = gperftools
 	makedepends = zlib
 	makedepends = snappy
 	makedepends = zstd
 	makedepends = re2
-	depends = openssl
 	depends = gperftools
+	depends = openssl
 	depends = zlib
 	depends = snappy
 	depends = zstd
@@ -28,7 +28,7 @@ pkgbase = swcdb-lib-core
 	provides = libswcdb_core.so
 	provides = libswcdb_core_config.so
 	provides = libswcdb_core_comm.so
-	source = swcdb-lib-core-0.4.16-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.4.16
+	source = swcdb-lib-core-0.4.17-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.4.17
 	sha256sums = SKIP
 
 pkgname = swcdb-lib-core
