@@ -1,6 +1,6 @@
 pkgbase = foot
 	pkgver = 1.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/dnkl/foot
 	arch = x86_64
 	arch = aarch64
@@ -31,6 +31,7 @@ pkgname = foot
 	depends = fontconfig
 	depends = fcft
 	depends = foot-terminfo
+	optdepends = libnotify: desktop notifications
 
 pkgname = foot-terminfo
 	pkgdesc = Terminfo files for the foot terminal emulator

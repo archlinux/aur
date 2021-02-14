@@ -1,7 +1,7 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=('foot' 'foot-terminfo')
 pkgver=1.6.4  # Don’t forget to update CHANGELOG.md
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
@@ -64,6 +64,7 @@ package_foot() {
   pkgdesc="Wayland terminal emulator - fast, lightweight and minimalistic"
   changelog=CHANGELOG.md
   depends+=('foot-terminfo')
+  optdepends=('libnotify: desktop notifications')
 
   cd foot
   DESTDIR="${pkgdir}/" ninja -C build install
