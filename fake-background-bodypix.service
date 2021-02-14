@@ -1,0 +1,14 @@
+[Unit]
+Description =Fake Background Webcam - bodypix mask detector
+Requires=dbus.socket
+#After=dbus.socket
+
+[Service]
+Type = simple
+WorkingDirectory=/usr/lib/node_modules/bodypix
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/node app.js $FAKE_BACKGROUND_BODYPIX_ARGS
+
+[Install]
+#WantedBy=sockets.target
+WantedBy=default.target

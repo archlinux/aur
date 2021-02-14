@@ -1,0 +1,26 @@
+[Unit]
+Description =Fake Background Webcam - frame-source /dev/video%i -> /dev/video2%i
+BindsTo=fake-background-bodypix.service
+After=fake-background-bodypix.service
+
+
+[Service]
+Type = simple
+WorkingDirectory=/usr/lib/fake-background-webcam
+Environment="IMAGE_FOLDER=/var/lib/fake-background-webcam/default"
+ExecStartPre=modprobe v4l2loopback video_nr=2%i card_label="Fake background %i" exclusive_caps=1
+
+
+ExecStart=/usr/bin/python fake.py \
+    --webcam-path /dev/video%i  \
+    --v4l2loopback-path /dev/video2%i  \
+    --image-folder $IMAGE_FOLDER  \
+    $FAKE_BACKGROUND_WEBCAM_ARGS
+
+ExecReload=/bin/kill -s INT $MAINPID
+ExecStopPost=-modprobe -r v4l2loopback
+
+
+[Install]
+#WantedBy=sockets.target
+WantedBy=default.target

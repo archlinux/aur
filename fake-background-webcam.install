@@ -1,0 +1,13 @@
+post_install() {
+ systemctl daemon-reload
+ cat<<'EOL'
+run: 
+   systemctl start fake-background-webcam@0.service
+
+see: "/usr/share/doc/fake-background-webcam/readme.md" for more details
+EOL
+    
+}
+post_upgrade() {
+    post_install
+}
