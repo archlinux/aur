@@ -2,10 +2,15 @@
 pkgname=python-pywikibot
 _module='pywikibot'
 pkgver=5.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python MediaWiki Bot Framework"
 url="https://www.mediawiki.org/wiki/Pywikibot"
 depends=('python' 'python-requests')
+optdepends=(
+  'python-mwoauth: authentication'
+  'python-mwparserfromhell: parsing MediaWiki wikicode'
+  'python-stdnum: cosmetic changes for numbers'
+)
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
