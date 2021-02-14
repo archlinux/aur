@@ -4,7 +4,6 @@ pkgbase = sd-zram
 	pkgrel = 2
 	url = https://github.com/AtifChy/sd-zram
 	arch = any
-	license = GPL
 	depends = bash
 	backup = etc/sd-zram.conf
 	source = sd-zram.conf

@@ -2,13 +2,12 @@
 
 pkgname=sd-zram
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Enable zram on boot"
 arch=('any')
 depends=('bash')
 backup=("etc/sd-zram.conf")
 url="https://github.com/AtifChy/sd-zram"
-license=('GPL')
 source=("sd-zram.conf"
 	"sd-zram"
 	"sd-zram.service")
