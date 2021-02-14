@@ -4,7 +4,7 @@ _group_name="swcdb"
 _sub_name="lib"
 
 pkgname=${_group_name}-${_sub_name}
-pkgver=0.4.16
+pkgver=0.4.17
 pkgrel=1
 pkgdesc="The SWC-DB library"
 arch=("x86_64")
@@ -19,7 +19,6 @@ license=('GPLv3')
 
 
 depends=(
-  'swcdb-env'
   'swcdb-lib-core'
 )
 makedepends=(
@@ -27,6 +26,7 @@ makedepends=(
   'cmake'
   'make'
   'gcc'
+  'asio'
   'swcdb-lib-core'
 )
 
