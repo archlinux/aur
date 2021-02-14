@@ -14,6 +14,7 @@ pkgbase = waffle
 	depends = libxcb
 	depends = wayland
 	depends = systemd
+	depends = bash-completion
 	source = https://mesa.pages.freedesktop.org/waffle/files/release/waffle-1.6.2/waffle-1.6.2.tar.xz
 	source = https://mesa.pages.freedesktop.org/waffle/files/release/waffle-1.6.2/waffle-1.6.2.tar.xz.asc
 	validpgpkeys = 8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D

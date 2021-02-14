@@ -11,7 +11,7 @@ arch=('x86_64')
 url='http://www.waffle-gl.org'
 license=('BSD')
 
-depends=('libx11' 'libxcb' 'wayland' 'systemd')
+depends=('libx11' 'libxcb' 'wayland' 'systemd' 'bash-completion')
 makedepends=('meson' 'xcb-proto' 'mesa' 'libxslt' 'docbook-xsl')
 
 source=(https://mesa.pages.freedesktop.org/waffle/files/release/waffle-${pkgver}/waffle-${pkgver}.tar.xz{,.asc})
