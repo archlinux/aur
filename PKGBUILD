@@ -4,8 +4,8 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=glibc-git
-pkgver=2.32.r537.g2d651eb926
-pkgrel=1
+pkgver=2.33.r62.gebcf45a16c
+pkgrel=2
 pkgdesc='GNU C Library'
 arch=('i686' 'x86_64')
 url='https://www.gnu.org/software/libc/'
@@ -59,6 +59,7 @@ build() {
         --enable-add-ons \
         --enable-bind-now \
         --enable-cet \
+        --enable-kernel=4.4 \
         --enable-lock-elision \
         --enable-multi-arch \
         --enable-stack-protector=strong \

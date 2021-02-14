@@ -1,7 +1,7 @@
 pkgbase = glibc-git
 	pkgdesc = GNU C Library
-	pkgver = 2.32.r537.g2d651eb926
-	pkgrel = 1
+	pkgver = 2.33.r62.gebcf45a16c
+	pkgrel = 2
 	url = https://www.gnu.org/software/libc/
 	install = glibc-git.install
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = glibc-git
 	depends = filesystem
 	optdepends = gd: graph image generation with memusage
 	optdepends = perl: for mtrace
-	provides = glibc=2.32
+	provides = glibc=2.33
 	conflicts = glibc
 	options = staticlibs
 	backup = etc/gai.conf
