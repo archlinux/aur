@@ -1,7 +1,7 @@
 pkgbase = ada-libfswatch-git
 	pkgdesc = High level string and text processing library
 	pkgver = r16.94c0a5f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdaCore/ada_libfswatch
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,6 @@ pkgbase = ada-libfswatch-git
 	depends = gcc-libs
 	depends = fswatch
 	provides = ada-libfswatch
-	options = strip
 	source = git+https://github.com/AdaCore/ada_libfswatch.git
 	source = ada-libfswatch-git.patch
 	sha1sums = SKIP

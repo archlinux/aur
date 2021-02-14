@@ -2,7 +2,7 @@
 
 pkgname=ada-libfswatch-git
 pkgver=r16.94c0a5f
-pkgrel=1
+pkgrel=2
 
 pkgdesc='High level string and text processing library'
 url='https://github.com/AdaCore/ada_libfswatch'
