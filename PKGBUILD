@@ -1,4 +1,5 @@
-# Maintainer:anon at sansorgan.es 
+# Maintainer: Amin Vakil <info AT aminvakil DOT com>
+# Contributor:anon at sansorgan.es
 pkgname=awx
 pkgver=10.0.0
 pkgrel=1
