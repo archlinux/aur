@@ -3,10 +3,10 @@ pkgver=20090812
 pkgrel=1
 pkgdesc="ImageJ plugin for data extraction from plots only available as images"
 arch=(any)
-url=http://www.astro.physik.uni-goettingen.de/~hessman/ImageJ/Figure_Calibration/
+url=https://www.astro.physik.uni-goettingen.de/~hessman/ImageJ/Figure_Calibration/
 license=(unknown)
 depends=(imagej)
-source=("http://www.astro.physik.uni-goettingen.de/~hessman/ImageJ/Figure_Calibration/Figure_Calibration.class")
+source=("https://www.astro.physik.uni-goettingen.de/~hessman/ImageJ/Figure_Calibration/Figure_Calibration.class")
 md5sums=('99b63cb9b6a8a0507d565680fc911bc8')
 
 package() {
