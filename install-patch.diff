@@ -1,0 +1,15 @@
+diff --git a/scripts/install.sh b/scripts/install.sh
+index a90edfe..7900912 100755
+--- a/scripts/install.sh
++++ b/scripts/install.sh
+@@ -46,8 +46,9 @@ if [ -z "$KIME_QT6_DIR" ]; then
+ fi
+ 
+ install_if () {
+-    test -f $KIME_OUT/$1 &&
++    if [ -f $KIME_OUT/$1 ]; then
+         install -Dm$2 $KIME_OUT/$1 $3 "$PREFIX/$4"
++    fi
+ }
+ 
+ install_bin () {

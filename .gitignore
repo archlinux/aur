@@ -1,4 +1,4 @@
-*.tar.gz
+kime*
 pkg/
 src/
 
