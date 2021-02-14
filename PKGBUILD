@@ -4,7 +4,7 @@ _group_name="swcdb"
 _sub_name="env"
 
 pkgname=${_group_name}-${_sub_name}
-pkgver=0.4.16
+pkgver=0.4.17
 pkgrel=1
 pkgdesc="The SWC-DB Runtime Environment"
 arch=("x86_64")
@@ -20,7 +20,7 @@ license=('GPLv3')
 
 depends=()
 makedepends=()
-optdepends=('openssl' 'python3' 'python3-pip' 'python3-setuptools' 'python3-fabric')
+optdepends=('openssl' 'fabric')
 
 backup=(
   etc/${_group_name}/{gen_crt.sh,openssl.cnf}

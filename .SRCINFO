@@ -1,6 +1,6 @@
 pkgbase = swcdb-env
 	pkgdesc = The SWC-DB Runtime Environment
-	pkgver = 0.4.16
+	pkgver = 0.4.17
 	pkgrel = 1
 	url = https://www.swcdb.org
 	install = README.md
@@ -8,10 +8,7 @@ pkgbase = swcdb-env
 	groups = swcdb
 	license = GPLv3
 	optdepends = openssl
-	optdepends = python3
-	optdepends = python3-pip
-	optdepends = python3-setuptools
-	optdepends = python3-fabric
+	optdepends = fabric
 	provides = swcdb_cluster
 	backup = etc/swcdb/gen_crt.sh
 	backup = etc/swcdb/openssl.cnf
@@ -32,7 +29,7 @@ pkgbase = swcdb-env
 	backup = etc/swcdb/swc_fsbroker.dyn.cfg
 	backup = etc/swcdb/swc_fs_broker.dyn.cfg
 	backup = etc/swcdb/swc_thriftbroker.dyn.cfg
-	source = swcdb-env-0.4.16-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.4.16
+	source = swcdb-env-0.4.17-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.4.17
 	sha256sums = SKIP
 
 pkgname = swcdb-env
