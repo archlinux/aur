@@ -1,6 +1,6 @@
 pkgbase = media-downloader-git
 	pkgdesc = GUI front-end for downloading media files (youtube-dl, ...)
-	pkgver = 1.0.0.r57.ge3b332a
+	pkgver = 1.0.0.r61.gdbc8459
 	pkgrel = 1
 	url = https://github.com/mhogomchungu/media-downloader
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=media-downloader-git
-pkgver=1.0.0.r57.ge3b332a
+pkgver=1.0.0.r61.gdbc8459
 pkgrel=1
 pkgdesc="GUI front-end for downloading media files (youtube-dl, ...)"
 arch=('x86_64')
@@ -20,10 +20,14 @@ pkgver() {
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
+prepare() {
   cd $pkgname
+  rm -rf build
   mkdir build
-  cd build 
+}
+
+build() {
+  cd $pkgname/build
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=release ..
   make
 }
