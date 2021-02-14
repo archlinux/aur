@@ -1,6 +1,6 @@
 pkgname=lang815bkg-faustus
 _gitname=lang815bkg-faustus
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Backend for lang815 to change keys led color, when language layout is changed for ASUS TUF Gaming series laptops"
 arch=('any')
