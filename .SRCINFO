@@ -1,6 +1,6 @@
 pkgbase = redasm-disassembler
 	pkgdesc = The Open Source Disassembler (Official Package)
-	pkgver = 3.0.0_beta3
+	pkgver = 3.0.0_beta4
 	pkgrel = 2
 	url = https://redasm.io
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = redasm-disassembler
 	depends = qt5-base
 	conflicts = redasm-git
 	conflicts = redasm
-	source = git+https://github.com/REDasmOrg/REDasm.git#tag=v3.0.0-beta3
+	source = git+https://github.com/REDasmOrg/REDasm.git#tag=v3.0.0-beta4
 	md5sums = SKIP
 
 pkgname = redasm-disassembler
