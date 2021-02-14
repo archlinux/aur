@@ -1,16 +1,16 @@
 # Maintainer: Kyle Manna <kyle(at)kylemanna(dot)com>
 pkgname=storj-uplink
 _basename=storj
-pkgver=1.18.1
+pkgver=1.22.2
 pkgrel=1
 pkgdesc="Storj Tardigrade Uplink"
 arch=('x86_64')
 url="https://github.com/storj/storj"
 license=(' AGPL-3.0')
-source=("https://github.com/${_basename}/${_basename}/archive/v1.18.1.tar.gz")
+source=("https://github.com/${_basename}/${_basename}/archive/v${pkgver}.tar.gz")
 makedepends=('go')
 
-sha512sums=('789653290a5caaf9f07ed6e9c082d1829793553f98499534b6e83dc41bad4e08c44c50c2ec3c4151b34421b72fee5e9f808af3bd6903e542074342805e2289b8')
+sha512sums=('0103d0abddc21717ff8e642789938f9177e992af31def04dd3525ce21c8ba78232c39fb60ee2d380b4dec72497d83d1dea1020c256f271cfe2f579a3a1b588bd')
 
 prepare(){
     cd "$_basename-$pkgver"
