@@ -1,7 +1,7 @@
 pkgbase = mulle-platform
 	pkgdesc = Query platform specifica and search for libraries
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/mulle-sde/mulle-platform
 	changelog = RELEASENOTES.md
