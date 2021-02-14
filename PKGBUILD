@@ -3,7 +3,7 @@
 # Contributor: pandada8 <pandada8@gmail.com>
 
 pkgname=xray
-pkgver=1.2.4
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="The best v2ray-core, with XTLS support."
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
     "location_asset.patch"
 )
 sha512sums=(
-    '4b772f98015335db1c7a14f3ee1fc6763cce3be794fbdf004287d0a6b14229e708a43e47a1d04fa8dd6cc4a9fd3e3c9eb63e55c01395f17298dc37148de43952'
+    '87635b769dbbada039f64265afacad184990839eb260b44177ab198047272b4daa32da6a898da70a8a8c7de4f1469ebcda816d0c1c7fb3e59702700fd5616bb7'
     '2000211cbf987adaee7f278cc8cb23268965caab3bc46401f9324f2beaad95bec11012f5f4500f1016f4b75f097f3ac96cc5be2da7a6df0261582b3f23b3d78d'
     '9914fd3da02511b716951e521ca22006a6e8ad66e64d32cc7dd7dc3544a754174b37e35df6108ca217130f02763265d74f8bc56c4e52b262bdd48dcdb5310eb5'
     '532f66fe19196de0cc43df1812d6f32cbca7bbcacaa0cd4141bd80b3121b17eb8b23e0464765cf05a97b11e0213fb688eade83e393e36b3e7ebded6f0925de97'
