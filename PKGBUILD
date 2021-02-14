@@ -5,7 +5,7 @@
 # Contributor: Alexander Hunziker <alex.hunziker@gmail.com>
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 
-echo "DISABLE_MESON=${DISABLE_MESON:=0} switch to autotools \`makepkg DISABLE_MESON=1\`" >&2
+: DISABLE_MESON=${DISABLE_MESON:=0} # switch to autotools `makepkg DISABLE_MESON=1`
 ((DISABLE_MESON)) && makedepends+=('vala') || makedepends+=('meson')
 
 pkgname=gimp-git
@@ -80,7 +80,7 @@ build() {
   if ((DISABLE_MESON)); then
     cd $_pkgname
     ./autogen.sh \
-          --prefix=/usr
+          --prefix=/usr \
           --sysconfdir=/etc \
           --libexecdir=/usr/bin \
           --enable-mp \
