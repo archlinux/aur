@@ -1,7 +1,7 @@
 # Maintainer: Oleg 'x0r3d' Sazonov <whitylmn@gmail.com> 
 
 pkgname=goaur
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Very-very simple AUR helper"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
