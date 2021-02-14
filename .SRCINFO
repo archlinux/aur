@@ -1,19 +1,50 @@
 pkgbase = ada_language_server
 	pkgdesc = High performance syntactic and semantic engine for the Ada programming language
-	pkgver = 21.0.11
+	pkgver = 22.0.3
 	pkgrel = 1
 	url = https://github.com/AdaCore/ada_language_server/
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = gcc-ada
-	makedepends = gprbuild
-	depends = libadalang
+	makedepends = gprbuild-git
+	makedepends = autopep8
+	makedepends = python-coverage
+	makedepends = python-docutils
+	makedepends = python-funcy
+	makedepends = python-mako
+	makedepends = python-psutil
+	makedepends = python-sphinx_rtd_theme
+	makedepends = yapf
+	makedepends = python-pycodestyle
+	makedepends = mypy
+	makedepends = flake8
+	makedepends = python-jsonschema
+	makedepends = python-e3-core
+	makedepends = python-e3-testsuite
+	makedepends = git
+	depends = gnatcoll-iconv
+	depends = gnatcoll-gmp
+	depends = ada-libfswatch-git
 	provides = ada_language_server
 	conflicts = ada_language_server-git
-	source = ada_language_server-21.0.11.tar.gz::https://github.com/AdaCore/ada_language_server/archive/21.0.11.tar.gz
-	source = Makefile.patch
-	sha1sums = d1e29d21162d465b92c4dce33c3a8a0b787baeee
-	sha1sums = f8afe12dedcef533b6888aa227da2a5dbe199376
+	conflicts = libvss
+	conflicts = libadalang
+	source = ada_language_server-22.0.3.tar.gz::https://github.com/AdaCore/ada_language_server/archive/22.0.3.tar.gz
+	source = git+https://github.com/AdaCore/VSS.git#commit=b9c65707a43d747116dad7711d1d026c9b767d41
+	source = git+https://github.com/AdaCore/langkit.git#commit=3e376436d169a91bda26ba48ed151acf22bada9a
+	source = git+https://github.com/AdaCore/libadalang.git#commit=f95e0161cf0bca8e21c8bc7a8795eb332b153733
+	source = git+https://github.com/AdaCore/libadalang-tools.git#commit=9bfbf407d9f376684aafe25797b04cb3fe10ca02
+	source = libadalang-tools.patch
+	source = VSS.patch
+	source = ada_language_server.patch
+	sha1sums = fec24df3cda0ed7a0022a5f09a2ca4194aecb778
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = b1d6d2578ef21d3dd71dee10ed4857a5a4e5f8d5
+	sha1sums = dcc8be463ad852ea595748b5c3c092fc88f79ae5
+	sha1sums = 23f4f0502d322bda621ad013aab5f45ab20555aa
 
 pkgname = ada_language_server
 
