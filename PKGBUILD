@@ -1,6 +1,6 @@
 # Maintainer: Advaith Madhukar <advaith.madhukar at gmail dot com>
 pkgname=nuclear-player-bin
-pkgver=0.6.8
+pkgver=0.6.9
 repurl=https://github.com/nukeop/nuclear
 commidfull=$(git ls-remote $repurl.git -tags v$pkgver)
 commid=${commidfull:0:6}
@@ -16,7 +16,7 @@ source=(
     nuclear.desktop
 )
 md5sums=(
-    'cc7eec9f564530db5dbcbb192c7592ad'
+    'ee29307ec7f3133758f1716449f56793'
     'SKIP'    
 )
 
