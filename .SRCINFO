@@ -1,6 +1,6 @@
 pkgbase = newsflash
 	pkgdesc = The spiritual successor to FeedReader
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://gitlab.com/news-flash/news_flash_gtk
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = newsflash
 	depends = webkit2gtk
 	depends = libhandy
 	conflicts = newsflash-git
-	source = git+https://gitlab.com/news-flash/news_flash_gtk.git#commit=527dcfd4aebe3a9f6ae6c590294374505e8b5ebd
+	source = git+https://gitlab.com/news-flash/news_flash_gtk.git#commit=143e21178a9124cf14627ab2d6bc814b1532395b
 	sha512sums = SKIP
 
 pkgname = newsflash
