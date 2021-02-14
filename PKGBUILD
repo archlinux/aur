@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Boyle <programmerfalcon@gmail.com>
 pkgname=mulle-make
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Build projects with tools like cmake, meson, autoconf"
 arch=('any')
@@ -27,7 +27,7 @@ package() {
 
     # Move libexec to lib/$pkgname
     cd "${pkgdir}/usr"
-    mkdir -p "lib/${pkgname}"
-    mv libexec/* "lib/${pkgname}"
+    mkdir -p "lib/"
+    mv libexec/* "lib/"
     rm -r libexec
 }
