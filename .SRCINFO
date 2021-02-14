@@ -1,0 +1,21 @@
+pkgbase = webmenu-git
+	pkgdesc = A simple webview renderer for html list items
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://github.com/wbunting/webmenu
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = webkit2gtk
+	makedepends = appmenu-gtk-module
+	makedepends = gtk3
+	makedepends = squashfs-tools
+	makedepends = npm
+	makedepends = cargo
+	provides = webmenu
+	options = strip
+	source = git+https://github.com/wbunting/webmenu
+	sha256sums = SKIP
+
+pkgname = webmenu-git
+
