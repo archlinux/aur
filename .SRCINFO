@@ -1,0 +1,14 @@
+pkgbase = taoup-git
+	pkgdesc = TAO (The Art) of Unix Programming (and related systemic epiphanies)
+	pkgver = 1.1.11.r0.gdb220bc
+	pkgrel = 1
+	url = https://github.com/globalcitizen/taoup
+	arch = any
+	license = GPL3
+	depends = ruby-ansi
+	optdepends = cowsay: fortune compatability mode
+	provides = taoup
+	source = git+https://github.com/globalcitizen/taoup
+	sha256sums = SKIP
+
+pkgname = taoup-git
