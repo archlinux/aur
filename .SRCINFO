@@ -1,0 +1,20 @@
+pkgbase = sdl2_image-minimal-git
+	pkgdesc = A simple library to load images of various formats as SDL surfaces (Version 2)
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = http://www.libsdl.org/projects/SDL_image
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = mercurial
+	depends = sdl2
+	depends = libpng
+	depends = libtiff
+	depends = libjpeg
+	provides = sdl2_image
+	conflicts = sdl2_image
+	source = git+https://github.com/libsdl-org/SDL_image
+	sha512sums = SKIP
+
+pkgname = sdl2_image-minimal-git
+
