@@ -1,6 +1,6 @@
 pkgbase = lang815
 	pkgdesc = Change keys led color, when language layout is changed for Logitech G213, G410, G413. G512, G513, G610, G810, G815, G910 and GPRO Keyboards. Only X11
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://gitlab.com/SR_team/lang815
 	install = lang815.install
@@ -14,9 +14,9 @@ pkgbase = lang815
 	makedepends = sdbus-cpp
 	makedepends = xdg-utils-cxx
 	depends = hidapi
-	depends = g810-led-git
+	depends = g810-led-lib
 	depends = libx11
-	provides = Lang815srv=0.1
+	provides = Lang815srv=0.2
 	options = !emptydirs
 	source = git+https://gitlab.com/SR_team/lang815.git
 	md5sums = SKIP

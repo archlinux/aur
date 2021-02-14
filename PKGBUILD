@@ -1,6 +1,6 @@
 pkgname=lang815
 _gitname=lang815
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Change keys led color, when language layout is changed for Logitech G213, G410, G413. G512, G513, G610, G810, G815, G910 and GPRO Keyboards. Only X11"
 arch=('any')
@@ -32,6 +32,7 @@ package() {
 	cp Lang815srv ${pkgdir}/usr/bin/
 	cp libLang815.so ${pkgdir}/usr/lib/
 	cp libLang815_x86.so ${pkgdir}/usr/lib32/libLang815.so
+	cp libLang815bkg-g810-led.so ${pkgdir}/usr/lib/
 	chmod -R 755 ${pkgdir}/etc
 	chmod -R 755 ${pkgdir}/usr
 	chmod 644 ${pkgdir}/etc/systemd/user/org.lang815.switch.service
