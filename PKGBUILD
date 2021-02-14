@@ -3,7 +3,7 @@
 
 pkgname=grocy-git
 _pkgname=grocy
-pkgver=v3.0.1.r12.ga455a012
+pkgver=3.0.1.r12.ga455a012
 pkgrel=1
 pkgdesc="Web-based self-hosted groceries & household management solution for your home"
 depends=('php7' 'php7-sqlite' 'php7-gd')
@@ -20,7 +20,7 @@ backup=("etc/webapps/${_pkgname}/config.php")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
