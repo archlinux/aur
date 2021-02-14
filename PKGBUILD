@@ -6,7 +6,7 @@
 pkgname=java-mango
 _pkgname=${pkgname/java-/}
 pkgver=4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A viewer for medical research images'
 arch=('any') # x86_64
 url='http://ric.uthscsa.edu/mango/index.html'
@@ -25,7 +25,7 @@ b2sums=(
     'fefa71e6cbf9bce2f09293d9eb1d7018d041dca7e3feec7eb4d2e077b142f459800749925f68b8a259326d7b41226e688efa6df1957a170fd1c16165d44b9bca'
     '72399e3a7fb5499bc8448fd61109d039faf7efe1364882579916e5839e677705c592b0f394a463aa2b900ef7cd58a154fe12136e52156eeb458dc7e10c0d2be0'
     '19c51a8fff8cda94117fd64db54d23105a9e1850db1016f391230118edc0c6430bbbc0b0e5a74a60b7c572ab4f7b59b21de8d6a77391267e63a42e17aab7e59a'
-    'af61dc3de6566045e33f895c81a4f40bce34a77bf55cf5253b42caf6d1fabdd736f78fa48774e2fc769a6b7ec54e1f019fc32dc2f2ef48100dde486c79210551'
+    'afef46bb3cefe57f95f6fa321d3686e15a95848298a1839f4932910f93ad4eb6542da118d9cb115df20b59e2c02b9ec80d3ddbba01c839c2ce68e4ee66d8eedb'
 )
 
 ### Prepare() ###
