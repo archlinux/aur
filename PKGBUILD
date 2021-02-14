@@ -10,7 +10,7 @@ license=('Apache')
 depends=('python2' 'gettext')
 makedepends=('python2-setuptools')
 options=(!emptydirs)
-source=("https://github.com/ansible/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/ansible/${pkgname}/archive/${pkgver}.tar.gz")
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"

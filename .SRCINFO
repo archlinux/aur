@@ -9,7 +9,7 @@ pkgbase = awx
 	depends = python2
 	depends = gettext
 	options = !emptydirs
-	source = https://github.com/ansible/awx/archive/10.0.0.tar.gz
+	source = awx-10.0.0-1.tar.gz::https://github.com/ansible/awx/archive/10.0.0.tar.gz
 	md5sums = 9a34b44d78f239524dd521f8f8e4197b
 
 pkgname = awx
