@@ -1,6 +1,6 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime-git
-pkgver=0.9.1.r90.46cce01
+pkgver=1.0.0.r0.ba05f3b
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
@@ -14,7 +14,7 @@ optdepends=('libappindicator-gtk3: indicator support'
             'qt6-base: qt6 support'
             'libxcb: xim support'
             'cairo: xim support')
-makedepends=('cargo' 'clang' 'llvm' 'cmake' 'ninja' 'cairo' 'libxcb' 'pango' 'gtk2' 'gtk3' 'gtk4' 'qt5-base' 'qt6-base')
+makedepends=('cargo' 'clang' 'llvm' 'cmake' 'cairo' 'libxcb')
 arch=('any')
 license=('GPL3')
 source=("${pkgname}::git+${url}")
