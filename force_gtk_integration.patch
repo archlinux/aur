@@ -1,15 +1,14 @@
 Description: Forces GTK integration so the GTK file picker is always used.
 
 diff --git a/Telegram/SourceFiles/platform/linux/specific_linux.cpp b/Telegram/SourceFiles/platform/linux/specific_linux.cpp
-index 340afda80..d94f5cb03 100644
+index 6f2acd9..e5764b4 100644
 --- a/Telegram/SourceFiles/platform/linux/specific_linux.cpp
 +++ b/Telegram/SourceFiles/platform/linux/specific_linux.cpp
-@@ -310,6 +310,8 @@ bool UseGtkIntegration() {
+@@ -573,6 +573,7 @@ bool IsStaticBinary() {
  }
  
  bool IsGtkIntegrationForced() {
 +	return true;
-+
- #ifndef TDESKTOP_DISABLE_GTK_INTEGRATION
  	static const auto Result = [&] {
- 		return PlatformThemes.contains(qstr("gtk3"), Qt::CaseInsensitive)
+ 		if (!GtkIntegration::Instance()) {
+ 			return false;

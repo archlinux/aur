@@ -10,7 +10,7 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-udf-patched
-pkgver=2.5.1
+pkgver=2.5.8
 pkgrel=1
 pkgdesc='Telegram Desktop client with several personal patches'
 arch=('x86_64')
@@ -18,10 +18,9 @@ url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=(
     'hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
-    'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'qt5-wayland' 'gtk3'
+    'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3'
 )
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'libtg_owt')
-optdepends=('ttf-opensans: default Open Sans font family')
 provides=('telegram-desktop')
 conflicts=('telegram-desktop')
 
@@ -35,13 +34,13 @@ source=(
     "force_gtk_integration.patch"
 )
 sha512sums=(
-    'c906c76e44f5c6926bdc00143cbb1ac718633395a390c8a3e40fde9c4bfa42ba2e92cf0ac4c20434168d0548981f2fddefd019b942411ff4552a0f441336c0e1'
+    '12258eb5119fcd9db6d1be38224678ed67c76a24de59909d2ef0268587df2432f6f076273581f016f8ba593b95bb7c0e02062b77bad194ff5a211b35fa743d7b'
     # Custom patches
     'e88fa96024efc6176c818d0a46684e0ee1fb3a7bdadb323ad3b29f736209c80b6c31b135cf84389e7e2bbd614e57b241e4437c94b6fd114e73cfc418bf130015'
     '4a7e9de924bbf32fb4cd24ffa2764bcf49e0540bba649829b180da20a62810d4a21ebf11529d4eca22c9ceaa93b434ca3fbfd0b636795f8109ea4e1eddbff8f3'
     'fb69ecf4de4c57f4f226be6e704ceb811916715c23a5908d8c2d21970676df64c86b58123429b55c43dafea89f92da33119fa71988df6912f8fcd07ba2c8579c'
     'fbf1c8311ead2a63471fcf5a17156ca4b5d1b582c7cd838fd97fafeca79146670d0a73805a144a9a0ab12a33ec5a0ec4c5cbeb07c6a9e3878fe293edd428b91c'
-    '17faeff3ee56edd63be658c3730dbbed26437cb9bf0a9890d16cae26fd500aaab738b66de57b573903a5bd727dafe65105e151b08d7a6d8c426c148e754a7114'
+    'a1063cad603d367bd0fed5edc452e100a45ed779ba8c706450e5e5662ff52fc17b3c4fc72a5814642f77a5508a187f4a864b7f374dc5ccbbe52b483a4d45a3c5'
 )
 
 prepare() {
