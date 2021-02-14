@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Boyle <programmerfalcon@gmail.com>
 pkgname=mulle-dispense
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Copy build products and reorganize them"
 arch=('any')
@@ -27,7 +27,7 @@ package() {
 
     # Move libexec to lib/$pkgname
     cd "${pkgdir}/usr"
-    mkdir -p "lib/${pkgname}"
-    mv libexec/* "lib/${pkgname}"
+    mkdir -p "lib/"
+    mv libexec/* "lib/"
     rm -r libexec
 }
