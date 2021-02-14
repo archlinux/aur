@@ -9,6 +9,7 @@ pkgbase = gimp-git
 	license = GPL
 	license = LGPL
 	checkdepends = xorg-server-xvfb
+	makedepends = meson
 	makedepends = git
 	makedepends = intltool>=0.40.1
 	makedepends = alsa-lib>=1.0.0
@@ -28,8 +29,6 @@ pkgbase = gimp-git
 	makedepends = gjs
 	makedepends = python-gobject
 	makedepends = luajit
-	makedepends = meson
-	makedepends = xorg-server-xvfb
 	depends = lcms2>=2.8
 	depends = libwmf>=0.2.8
 	depends = icu
