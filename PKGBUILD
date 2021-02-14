@@ -4,15 +4,17 @@
 pkgname=aften-git
 pkgver=0.0.8.r886.89aee3d
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 pkgdesc='Audio encoder which generates compressed audio streams based on ATSC A/52 specification. (GIT Version)'
-url='http://aften.sourceforge.net/'
+url='http://aften.sourceforge.net'
 license=('GPL')
 depends=('glibc')
-makedepends=('cmake' 'git')
+makedepends=('cmake'
+             'git'
+             )
 provides=('aften')
 conflicts=('aften')
-source=('aften::git://git.code.sf.net/p/aften/code')
+source=('aften::git+https://git.code.sf.net/p/aften/code')
 sha1sums=('SKIP')
 
 pkgver() {
@@ -28,9 +30,10 @@ prepare() {
 build() {
   cd build
   cmake ../aften \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DSHARED=ON
+
   make
 }
 
