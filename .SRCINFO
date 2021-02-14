@@ -1,6 +1,6 @@
 pkgbase = swcdb-lib-fs-hadoop
 	pkgdesc = The SWC-DB FileSystem Hadoop library (dev-stage)
-	pkgver = 0.4.16
+	pkgver = 0.4.17
 	pkgrel = 1
 	url = https://www.swcdb.org
 	install = README.md
@@ -11,15 +11,12 @@ pkgbase = swcdb-lib-fs-hadoop
 	makedepends = cmake
 	makedepends = make
 	makedepends = gcc
-	makedepends = swcdb-lib-core
 	makedepends = swcdb-lib-fs
 	makedepends = hdfs-lib-cpp
-	depends = swcdb-env
-	depends = swcdb-lib-core
 	depends = swcdb-lib-fs
 	depends = hdfs-lib-cpp
 	provides = libswcdb_fs_hadoop.so
-	source = swcdb-lib-fs-hadoop-0.4.16-source::git+https://github.com/kashirin-alex/swc-db.git#commit=1b0c7935eeeef62522a95c399edf6787e7952bd5
+	source = swcdb-lib-fs-hadoop-0.4.17-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.4.17
 	sha256sums = SKIP
 
 pkgname = swcdb-lib-fs-hadoop
