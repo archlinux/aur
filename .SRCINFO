@@ -1,7 +1,7 @@
 pkgbase = mulle-fetch
 	pkgdesc = Download and unpack repositories or archives
 	pkgver = 1.8.3
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/mulle-sde/mulle-fetch
 	changelog = RELEASENOTES.md
