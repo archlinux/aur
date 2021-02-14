@@ -1,6 +1,6 @@
 pkgbase = r-rstatix
 	pkgdesc = Pipe-Friendly Framework for Basic Statistical Tests
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rstatix
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-rstatix
 	depends = r>=3.3.0
 	depends = r-tidyr>=1.0.0
 	depends = r-purrr
-	depends = r-broom>=0.5.6
+	depends = r-broom>=0.7.4
 	depends = r-rlang>=0.3.1
 	depends = r-tibble>=2.1.3
 	depends = r-dplyr>=0.7.1
@@ -24,8 +24,8 @@ pkgbase = r-rstatix
 	optdepends = r-coin
 	optdepends = r-testthat
 	optdepends = r-spelling
-	source = https://cran.r-project.org/src/contrib/rstatix_0.6.0.tar.gz
-	md5sums = 5383e1cc4d70898ce83c16c56393ee5f
+	source = https://cran.r-project.org/src/contrib/rstatix_0.7.0.tar.gz
+	sha256sums = a5ae17dc32cc26fc5dcab9ff0a9747ce3786c9fe091699247ad8b9f823f2600c
 
 pkgname = r-rstatix
 
