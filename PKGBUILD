@@ -1,6 +1,6 @@
 # Maintainer: dr460nf1r3 dr460nf1r3@garudalinux.org
 pkgname=librewolf-extension-localcdn
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc='LocalCDN addon for Librewolf'
 arch=('any')
