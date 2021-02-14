@@ -1,6 +1,6 @@
 pkgbase = swcdb-lib-fs-ceph
 	pkgdesc = The SWC-DB FileSystem Ceph library
-	pkgver = 0.4.16
+	pkgver = 0.4.17
 	pkgrel = 1
 	url = https://www.swcdb.org
 	install = README.md
@@ -11,15 +11,12 @@ pkgbase = swcdb-lib-fs-ceph
 	makedepends = cmake
 	makedepends = make
 	makedepends = gcc
-	makedepends = swcdb-lib-core
 	makedepends = swcdb-lib-fs
 	makedepends = ceph-libs
-	depends = swcdb-env
-	depends = swcdb-lib-core
 	depends = swcdb-lib-fs
 	depends = ceph-libs
 	provides = libswcdb_fs_ceph.so
-	source = swcdb-lib-fs-ceph-0.4.16-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.4.16
+	source = swcdb-lib-fs-ceph-0.4.17-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.4.17
 	sha256sums = SKIP
 
 pkgname = swcdb-lib-fs-ceph
