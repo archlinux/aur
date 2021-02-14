@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=promises
-_cranver=1.1.1
+_cranver=1.2.0.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,10 +10,9 @@ arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
 depends=(r r-r6 r-rcpp r-later r-rlang r-magrittr)
-makedepends=(gcc)
-optdepends=(r-testthat r-future r-knitr r-rmarkdown)
+optdepends=(r-testthat r-future r-fastmap r-purrr r-knitr r-rmarkdown r-vembedr r-spelling)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('0c7e8eaf0e0700151808f1161b11b229')
+sha256sums=('8d3a8217909e91f4c2a2eebba5ac8fc902a9ac1a9e9d8a30815c9dc0f162c4b7')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
