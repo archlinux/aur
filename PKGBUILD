@@ -1,7 +1,7 @@
 # Maintainer: Atif <iftakhar.awal@gmail.com>
 
 pkgname=sd-zram
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="Enable zram on boot"
 arch=('any')
