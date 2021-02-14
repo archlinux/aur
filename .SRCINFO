@@ -1,6 +1,6 @@
 pkgbase = r-cachem
 	pkgdesc = Cache R Objects with Automatic Pruning
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=cachem
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = r-cachem
 	depends = r-rlang
 	depends = r-fastmap
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/cachem_1.0.3.tar.gz
-	sha256sums = 79dc9746366550e07132ac97d77632b70f9e8ce9493f84ed607b584f4d5a7278
+	source = https://cran.r-project.org/src/contrib/cachem_1.0.4.tar.gz
+	sha256sums = b012aa78227c0f5a86491fb82de1e67d321166cecb1734b05b33cd7c069a2fac
 
 pkgname = r-cachem
 
