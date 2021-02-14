@@ -1,8 +1,8 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 
 pkgname=python-b2sdk
-_pkgname=b2-sdk-python
-pkgver=1.2.0
+_pkgname=b2sdk
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Python library to access B2 cloud storage.'
 arch=(any)
@@ -16,8 +16,8 @@ depends=('python'
          'python-tqdm>=4.5.0'
         )
 
-source=(https://github.com/Backblaze/${_pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('80d2daeaee38178a4d76922da2e69d7ad1f0d90fccea90d724a38909abb69b27')
+source=("https://files.pythonhosted.org/packages/source/b/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('af53e2449414b772a0bd6fad311d98a171c3693f77ebca933499946e786715ae')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
