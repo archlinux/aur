@@ -7,7 +7,7 @@ pkgname=('pipewire-git'
          'pipewire-ffmpeg-git'
          'alsa-card-profiles-git'
          )
-pkgver=0.3.21.78.g6b11bf71
+pkgver=0.3.21.110.g373fd53d
 pkgrel=1
 pkgdesc='Server and user space API to deal with multimedia pipelines. (GIT version)'
 arch=('x86_64')
@@ -108,6 +108,8 @@ package_pipewire-git() {
             )
   conflicts=('pipewire')
   backup=('etc/pipewire/pipewire.conf'
+          'etc/pipewire/client.conf'
+          'etc/pipewire/pipewire.conf'
           'etc/pipewire/media-session.d/alsa-monitor.conf'
           'etc/pipewire/media-session.d/bluez-monitor.conf'
           'etc/pipewire/media-session.d/media-session.conf'
@@ -121,11 +123,13 @@ package_pipewire-git() {
 
   _pick docs usr/share/doc
 
+  _pick jack etc/pipewire/jack.conf
   _pick jack etc/pipewire/media-session.d/with-jack
   _pick jack usr/bin/pw-jack usr/lib/pipewire-${pkgver:0:3}/jack
   _pick jack usr/lib/spa-0.2/jack
   _pick jack usr/share/man/man1/pw-jack.1
 
+  _pick pulse etc/pipewire/pipewire-pulse.conf
   _pick pulse etc/pipewire/media-session.d/with-pulseaudio
 
   _pick ffmpeg usr/lib/spa-0.2/ffmpeg/libspa-ffmpeg.so
@@ -152,6 +156,7 @@ package_pipewire-jack-git() {
            )
   provides=('pipewire-jack')
   conflicts=('pipewire-jack')
+  backup=('etc/pipewire/jack.conf')
 
   mv jack/* "${pkgdir}"
 }
@@ -169,6 +174,7 @@ package_pipewire-pulse-git() {
              'pulseaudio'
              'pulseaudio-bluetooth'
              )
+  backup=('etc/pipewire/pipewire-pulse.conf')
   arch=('any')
   install=pipewire-pulse.install
 
