@@ -1,6 +1,6 @@
 pkgbase = swcdb-utils
 	pkgdesc = The SWC-DB Utilities Applications
-	pkgver = 0.4.16
+	pkgver = 0.4.17
 	pkgrel = 1
 	url = https://www.swcdb.org
 	install = README.md
@@ -11,11 +11,9 @@ pkgbase = swcdb-utils
 	makedepends = cmake
 	makedepends = make
 	makedepends = gcc
-	makedepends = swcdb-lib-core
+	makedepends = asio
 	makedepends = swcdb-lib
 	makedepends = swcdb-lib-fs
-	depends = swcdb-env
-	depends = swcdb-lib-core
 	depends = swcdb-lib
 	depends = swcdb-lib-fs
 	optdepends = swcdb-lib-fs-broker
@@ -26,7 +24,7 @@ pkgbase = swcdb-utils
 	provides = libswcdb_utils_shell.so
 	provides = swcdb
 	provides = swcdb_load_generator
-	source = swcdb-utils-0.4.16-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.4.16
+	source = swcdb-utils-0.4.17-source::git+https://github.com/kashirin-alex/swc-db.git#tag=v0.4.17
 	sha256sums = SKIP
 
 pkgname = swcdb-utils
