@@ -3,7 +3,7 @@
 java_=11
 pkgname_=fastr
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=21.0.0
+pkgver=21.0.0.2
 pkgrel=1
 pkgdesc="GraalVM-based, high-performance implementation of the R language (Java ${java_} version)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url='https://github.com/oracle/fastr'
 license=('GPL3')
 depends=("jdk${java_}-graalvm-bin")
 source=("https://github.com/oracle/$pkgname_/releases/download/vm-${pkgver}/r-installable-java${java_}-linux-amd64-${pkgver}.jar")
-sha256sums=('bd96cbdd9ea901b47e6d0a6e49f074eae821ae3f16e90caf6b660e5d38db7dba')
+sha256sums=('5290beecf3ceaebf357125a7d48919270937e59c4f4f20b05a789f3f0f66c903')
 
 package() {
     local file eq permissions mode name target
