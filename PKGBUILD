@@ -1,6 +1,6 @@
 _pkgname=asgi-csrf
 pkgname=python-${_pkgname}
-pkgver=0.7.1
+pkgver=0.8
 pkgrel=1
 pkgdesc="ASGI middleware for protecting against CSRF attacks"
 arch=("any")
@@ -9,7 +9,7 @@ license=("Apache")
 depends=("python-itsdangerous" "python-python-multipart")
 makedepends=("python-setuptools")
 source=("https://pypi.io/packages/source/a/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=("77bfb2a3311643fd2304d0f11f72160559acbbd1a35730a54208135ded3f21a3")
+sha256sums=("312a35c73092db96fe2da325458d482954e1e3bceeac398455f0b0f3958d9620")
 
 build() {
     cd "${_pkgname}-${pkgver}"
