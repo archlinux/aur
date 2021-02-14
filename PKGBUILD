@@ -12,9 +12,15 @@ arch=("any")
 url="http://www.komascript.de/"
 license=('LPPL')
 depends=('texlive-core' 'texlive-latexextra')
+makedepends=('unzip')
 source=("http://sourceforge.net/projects/koma-script/files/KOMA-Script/koma-script-${_revision}.zip")
 sha512sums=('3bc34e00bd66f0d379e2457772888fc07fe936db27db56d2cbe144c4359be88573791a6e1364c287dfb0f7d48460b6d741938dc3d454bed2e1f7e24b2f5aadf7')
+noextract=("koma-script-${_revision}.zip")
 install=texlive.install
+
+prepare() {
+  unzip koma-script-${_revision}.zip
+}
 
 package() {
   cd "$srcdir/"
