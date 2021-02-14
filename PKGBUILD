@@ -1,22 +1,22 @@
 # Maintainer: asamk <asamk@gmx.de>
 
 pkgname=signal-cli
-pkgver=0.7.4
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Provides a commandline and dbus interface for secure Signal messaging."
 arch=('any')
 url="https://github.com/AsamK/signal-cli"
 license=('GPL3')
-depends=('java-runtime>=11' 'java-commons-logging' 'sh' 'libzkgroup')
+depends=('java-runtime>=11' 'java-commons-logging' 'sh' 'libzkgroup' 'libsignal-client')
 makedepends=('java-environment>=11' 'gradle' 'asciidoc')
 source=("https://github.com/AsamK/${pkgname}/archive/v${pkgver}.tar.gz"
         "https://github.com/AsamK/${pkgname}/releases/download/v${pkgver}/v${pkgver}.tar.gz.asc"
         "${pkgname}.sh"
         "${pkgname}.sysusers.conf"
         "${pkgname}.tmpfiles.conf")
-sha512sums=('cc55f4d99a4304ecad82f4c6d7d247eeb23867034ca501089b825a1d285463a110f83cb217faa192ed0959d2ce9e58020ba0216d492d4fad571133469f188c45'
+sha512sums=('30fe9d04feeb96a668f40fca21e150e7d68665182bd11180a19e02195ade4df94b8b14271cecfe9c216ab21de315d3ad6aac82115ad6745e270ffe5a8c60d438'
             'SKIP'
-            '5f890752b999de525312d9c04ea076fd65036a65df33be172c2a382b3f8037232f4065746de4a5847b719527141885d9871f8c667a218fc14969e46615c4de84'
+            'e572c857864f30a85671738d5568c78b79831290dd066a43a62461ae760dd0fcb47c1b7d3577194e6441b890ab1b1cabdcc8db2ce549d7fd72527a6ced9d3156'
             'b4db42e18c957edb274637eee1ea5feb5d5f94e16ff0ced63788c8285e0c31c17e5414c6b93b1c2a6ffacca4888b177d33d1878727780e9a0e937b323e332021'
             '8db6fdee294a899596487ebaf154df413631f6935127be430eb47985f3d2a75849daaf1cbe6ae99590d9ae64025bd94c6b212ee9f72e80a3eb49784fad25b914')
 validpgpkeys=('FA10826A74907F9EC6BBB7FC2BA2CD21B5B09570')
@@ -59,5 +59,6 @@ package() {
 
 	rm -f lib/commons-logging-*.jar
 	rm -f lib/zkgroup-java-*.jar
+	rm -f lib/signal-client-java-*.jar
 	install -m644 lib/*.jar "${pkgdir}/usr/share/java/${pkgname}/"
 }
