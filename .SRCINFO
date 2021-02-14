@@ -1,11 +1,11 @@
 pkgbase = capa-bin
 	pkgdesc = The FLARE team's open-source tool to identify capabilities in executable files
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fireeye/capa
 	arch = x86_64
 	license = apache
-	depends = python2
+	optdepends = python2
 	conflicts = capa
 	source = https://github.com/fireeye/capa/releases/download/v1.5.1/capa-v1.5.1-linux.zip
 	sha256sums = 2bb26d702b47c06c75c8a4de4a94575730453c29e421ff2018cc26b7b9f8d869
