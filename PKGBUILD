@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Boyle <programmerfalcon@gmail.com>
 pkgname=mulle-bashfunctions
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A versioned collection of bash functions"
 arch=('any')
@@ -10,9 +10,9 @@ license=('BSD3')
 groups=('mulle-sde-all')
 depends=('bash')
 changelog="RELEASENOTES.md"
-source=("https://github.com/mulle-nat/mulle-bashfunctions/archive/3.3.0.tar.gz")
+source=("https://github.com/mulle-nat/mulle-bashfunctions/archive/3.3.0.tar.gz" "package.patch")
 noextract=()
-md5sums=('0f508da1eccc4c70ca550940df00b678')
+md5sums=('0f508da1eccc4c70ca550940df00b678' '3222c21df709caffed8a43307a6b0c31')
 validpgpkeys=()
 
 package() {
@@ -27,7 +27,7 @@ package() {
 
     # Move libexec to lib/$pkgname
     cd "${pkgdir}/usr"
-    mkdir -p "lib/${pkgname}"
-    mv libexec/* "lib/${pkgname}"
+    mkdir -p "lib/"
+    mv libexec/* "lib/"
     rm -r libexec
 }
