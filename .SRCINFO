@@ -1,6 +1,6 @@
 pkgbase = jdk8-graalvm-bin
 	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 8 version
-	pkgver = 21.0.0
+	pkgver = 21.0.0.2
 	pkgrel = 1
 	url = https://www.graalvm.org/
 	install = jdk8-graalvm-bin.install
@@ -10,8 +10,8 @@ pkgbase = jdk8-graalvm-bin
 	depends = java-environment-common
 	provides = java-runtime=8
 	provides = java-environment=8
-	source = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.0.0/graalvm-ce-java8-linux-amd64-21.0.0.tar.gz
-	sha256sums = 326c5a9ba2f6a6b28023c1fef9c4c6fb6acf9cd87b0fcb6916e0527633bd01a3
+	source = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.0.0.2/graalvm-ce-java8-linux-amd64-21.0.0.2.tar.gz
+	sha256sums = a10a7632bf0afdb162ed1419311540af93c95ad659eb391a709743bb6e457d5c
 
 pkgname = jdk8-graalvm-bin
 
