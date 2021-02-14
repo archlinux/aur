@@ -1,28 +1,28 @@
-diff --color --unified --recursive --text --color eparakstitajs3.orig/usr/share/applications/eparakstitajs3.desktop eparakstitajs3.new/usr/share/applications/eparakstitajs3.desktop
---- eparakstitajs3.orig/usr/share/applications/eparakstitajs3.desktop	2021-02-13 12:00:00.000000000 +0200
-+++ eparakstitajs3.new/usr/share/applications/eparakstitajs3.desktop	2021-02-14 16:03:48.412307112 +0200
+diff --color --unified --recursive --text --color src/eparakstitajs3.orig/usr/share/applications/eparakstitajs3.desktop src/eparakstitajs3.new/usr/share/applications/eparakstitajs3.desktop
+--- src/eparakstitajs3.orig/usr/share/applications/eparakstitajs3.desktop	2021-02-13 12:00:00.000000000 +0200
++++ src/eparakstitajs3.new/usr/share/applications/eparakstitajs3.desktop	2021-02-14 17:48:58.580140002 +0200
 @@ -4,7 +4,7 @@
  Icon=eparakstitajs3
  Type=Application
  Categories=Application;Office;Viewer;
 -Exec=/opt/eparakstitajs3/eparakstitajs3 %F
-+Exec=env PATH=/opt/eparakstitajs3:$PATH /opt/eparakstitajs3/eparakstitajs3 %F
++Exec=/bin/sh -c "export PATH=/opt/eparakstitajs3:$PATH; /opt/eparakstitajs3/eparakstitajs3 %F"
  MimeType=application/pdf;application/lv.eme.edoc;application/vnd.etsi.asic-e+zip;
  StartupWMClass=lv.euso.signanywhere.SignAnywhere
  
-diff --color --unified --recursive --text --color eparakstitajs3.orig/usr/share/menu/eparakstitajs3 eparakstitajs3.new/usr/share/menu/eparakstitajs3
---- eparakstitajs3.orig/usr/share/menu/eparakstitajs3	2021-02-13 12:00:00.000000000 +0200
-+++ eparakstitajs3.new/usr/share/menu/eparakstitajs3	2021-02-14 16:04:21.924916639 +0200
+diff --color --unified --recursive --text --color src/eparakstitajs3.orig/usr/share/menu/eparakstitajs3 src/eparakstitajs3.new/usr/share/menu/eparakstitajs3
+--- src/eparakstitajs3.orig/usr/share/menu/eparakstitajs3	2021-02-13 12:00:00.000000000 +0200
++++ src/eparakstitajs3.new/usr/share/menu/eparakstitajs3	2021-02-14 17:49:28.566161954 +0200
 @@ -1,5 +1,5 @@
  ?package(eparakstitajs3):needs="X11" section="Applications/Viewers"\
 -  title="eParakstītājs 3.0" command="/opt/eparakstitajs3/eparakstitajs3"\
-+  title="eParakstītājs 3.0" command="env PATH=/opt/eparakstitajs3:$PATH /opt/eparakstitajs3/eparakstitajs3"\
++  title="eParakstītājs 3.0" command="/bin/sh -c \"export PATH=/opt/eparakstitajs3:$PATH; /opt/eparakstitajs3/eparakstitajs3\""\
    hints="eParakstītājs 3.0"\
    kderemove="y"\
    icon="/usr/share/icons/hicolor/32x32/apps/eparakstitajs3.png"
-diff --color --unified --recursive --text --color eparakstitajs3.orig/usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu.py eparakstitajs3.new/usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu.py
---- eparakstitajs3.orig/usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu.py	2021-02-13 12:00:00.000000000 +0200
-+++ eparakstitajs3.new/usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu.py	2021-02-14 16:13:33.916358188 +0200
+diff --color --unified --recursive --text --color src/eparakstitajs3.orig/usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu.py src/eparakstitajs3.new/usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu.py
+--- src/eparakstitajs3.orig/usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu.py	2021-02-13 12:00:00.000000000 +0200
++++ src/eparakstitajs3.new/usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu.py	2021-02-14 16:13:33.916358188 +0200
 @@ -1,7 +1,10 @@
  from gi.repository import Nautilus, GObject
  import subprocess
