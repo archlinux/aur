@@ -1,7 +1,7 @@
 pkgbase = wine-mono-bin
 	pkgdesc = Wine's built-in replacement for Microsoft's .NET Framework
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.winehq.org/Mono
 	arch = any
 	license = GPL
