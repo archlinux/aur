@@ -1,0 +1,17 @@
+pkgbase = python-pcb-tools-git
+	pkgdesc = Tools to handle Gerber and Excellon files in Python
+	pkgver = r483.7225725
+	pkgrel = 1
+	url = https://github.com/curtacircuitos/pcb-tools
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-cairocffi>=0.6
+	provides = python-pcb-tools
+	conflicts = python-pcb-tools
+	source = pcb-tools::git+https://github.com/curtacircuitos/pcb-tools.git
+	md5sums = SKIP
+
+pkgname = python-pcb-tools-git
+
