@@ -12,6 +12,7 @@ license=('GPL3')
 depends=('hidapi')
 makedepends=('git' 'gcc' 'make')
 optdepends=('libusb: old implementation, for developpers')
+conflicts=('g810-led-git')
 install=${pkgname}.install
 provides=("g213-led=${pkgver}" "g410-led=${pkgver}" "g413-led=${pkgver}" "g512-led=${pkgver}" "g513-led=${pkgver}" "g610-led=${pkgver}" 
 "g810-led=${pkgver}" "g815-led=${pkgver}" "g910-led=${pkgver}" "gpro-led=${pkgver}")
