@@ -5,9 +5,8 @@ post_install() {
 # Link to the binary
 ln -sf '/opt/ElectronMail/electron-mail' '/usr/local/bin/electron-mail'
 
-# Fix chrome-sandbox permissions
-chown root:root /opt/ElectronMail/chrome-sandbox
-chmod 4755 /opt/ElectronMail/chrome-sandbox
+# SUID chrome-sandbox for Electron 5+
+chmod 4755 '/opt/ElectronMail/chrome-sandbox' || true
 
 update-mime-database /usr/share/mime || true
 update-desktop-database /usr/share/applications || true
@@ -17,9 +16,8 @@ post_upgrade() {
     :
 #!/bin/bash
 
-# Fix chrome-sandbox permissions
-chown root:root /opt/ElectronMail/chrome-sandbox
-chmod 4755 /opt/ElectronMail/chrome-sandbox
+# SUID chrome-sandbox for Electron 5+
+chmod 4755 '/opt/ElectronMail/chrome-sandbox' || true
 
 }
 post_remove() {
