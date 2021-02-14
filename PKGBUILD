@@ -7,14 +7,14 @@ pkgbase=pipewire-common-git
 pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-jack-git
          pipewire-common-pulse-git pipewire-common-alsa-git
          gst-plugin-pipewire-common-git)
-pkgver=0.3.21.r91.g3cc577dd
+pkgver=0.3.21.r110.g373fd53d
 pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines"
 url="https://pipewire.org"
 license=(MIT)
 arch=(x86_64)
-makedepends=(git meson doxygen graphviz xmltoman valgrind jack2
-             alsa-lib gst-plugins-base sbc rtkit dbus sdl2
+makedepends=(git meson doxygen graphviz xmltoman jack2
+             alsa-lib gst-plugins-base-libs sbc rtkit dbus sdl2
              ncurses libsndfile bluez-libs libldac libopenaptx
              libfdk-aac)
 source=("git+https://gitlab.freedesktop.org/pipewire/pipewire.git")
@@ -102,7 +102,7 @@ package_pipewire-common-docs-git() {
 
 package_pipewire-common-jack-git() {
   pkgdesc+=" (JACK support)"
-  depends=(pipewire-common-git libpipewire-$_ver.so libjack.so)
+  depends=(pipewire-common-git libpipewire-$_ver.so bash libjack.so)
   provides=(pipewire-jack)
   conflicts=(pipewire-jack)
   mv jack/* "$pkgdir"
