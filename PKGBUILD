@@ -16,7 +16,7 @@ depends=('glib2'
          'libmicrohttpd'
          'libnice'
          'libsrtp'
-         'libusrsctp-git'
+         'libusrsctp'
          'openssl')
 optdepends=('libwebsockets: WebSockets support for Janus API'
             'librabbitmq-c: RabbitMQ support for the Janus API or events'
