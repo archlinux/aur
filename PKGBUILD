@@ -4,7 +4,7 @@ _group_name="swcdb"
 _sub_name="pam-max-retries"
 
 pkgname=${_group_name}-${_sub_name}
-pkgver=0.4.16
+pkgver=0.4.17
 pkgrel=1
 pkgdesc="The SWC-DB PAM Max Retries auth Library"
 arch=("x86_64")
@@ -19,7 +19,6 @@ license=('GPLv3')
 
 
 depends=(
-  'thrift'
   'swcdb-lib-thrift-c'
 )
 makedepends=(
@@ -28,7 +27,6 @@ makedepends=(
   'cmake'
   'make'
   'gcc'
-  'thrift'
   'swcdb-lib-thrift-c'
 )
 
@@ -52,7 +50,7 @@ build() {
   mkdir -p $pkgname-$pkgver-build;
   cd $pkgname-$pkgver-build;
 
-  cmake ../$pkgname-$pkgver-source
+  cmake ../$pkgname-$pkgver-source \
     -DO_LEVEL=3 -DSWC_BUILD_PKG=${_sub_name} \
     -DGLIB_INCLUDE_PATH="$(pkg-config --cflags glib-2.0 | tr ' ' ';' | sed 's/-I//g' )" \
     -DCMAKE_SKIP_RPATH=ON -DCMAKE_INSTALL_PREFIX=$pkgdir/usr \
