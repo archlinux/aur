@@ -2,7 +2,7 @@
 # Maintainer: Antonio Davide Trogu <contact at redasm dot io> 
 #
 
-_pkgver=3.0.0-beta3
+_pkgver=3.0.0-beta4
 _pkgname=REDasm
 
 pkgname=redasm-disassembler
