@@ -25,11 +25,11 @@ pkgver() {
 }
 
 prepare() {
-	cd "$pkgname"
-	# FIX sources path
-	sed -i "s|\/\.\.\/|\/|g" CMakeLists.txt
-	# FIX etc/ path
-	sed -i "s|program\_path\.parent()|io\:\:path(\"/usr/share/${_pkgname}\")|g" src/io/program_path.cc
+  cd "$pkgname"
+  # FIX sources path
+  sed -i "s|\/\.\.\/|\/|g" CMakeLists.txt
+  # FIX etc/ path
+  sed -i "s|program\_path\.parent()|io\:\:path(\"/usr/share/${_pkgname}\")|g" src/io/program_path.cc
   # FIX logic_error
   git apply "$srcdir/lcg.patch"
   # FIX tests
@@ -37,9 +37,9 @@ prepare() {
 }
 
 build() {
-	cd "$pkgname"
-	cmake -DCMAKE_INSTALL_PREFIX=/usr/bin/ -DCMAKE_BUILD_TYPE=Release .
-	make
+  cd "$pkgname"
+  cmake -DCMAKE_INSTALL_PREFIX=/usr/bin/ -DCMAKE_BUILD_TYPE=Release .
+  make
 }
 
 check() {
