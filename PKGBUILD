@@ -33,7 +33,7 @@ else
 fi
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver="${_basekernel}"."${_sub}"
-pkgrel=119
+pkgrel=120
 pkgdesc='Linux-tkg with bcachefs'
 arch=('x86_64') # no i686 in here
 url="http://www.kernel.org/"
@@ -79,7 +79,7 @@ options=('!strip' 'docs')
 	"https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-config/generic-desktop-profile.cfg"
     )
     sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
-            '9541437bd4a68d10d1f40f91080683fb6b8d99def258681b2fa74540d4f74082'
+            'fc126c14140668cc4bdbc8886fb8bc05ae734c5cf1e20b719b40b36d1dae255a'
             'SKIP'
             '458d1ca195f3fee5501683a4b61ef0ed0cfa7e5219eccab3390fb40c0289898a'
             'eb1da1a028a1c967222b5bdac1db2b2c4d8285bafd714892f6fc821c10416341'

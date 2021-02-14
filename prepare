@@ -1,10 +1,10 @@
 #!/bin/bash
 
-ver54=96
+ver54=97
 ver57=19
 ver58=18
 ver59=16
-ver510=14
+ver510=15
 ver511=rc7
 
 _tkg_initscript() {
@@ -408,7 +408,11 @@ _tkg_srcprep() {
 
   if [ "$_compiler_name" = "-llvm" ]; then
     echo 'CONFIG_KCSAN=n' >> ./.config
-    echo 'CONFIG_INIT_STACK_ALL=n' >> ./.config
+    if [ "$_basever" != "54" ] && [ "$_basever" != "57" ] && [ "$_basever" != "58" ]; then
+      echo 'CONFIG_INIT_STACK_ALL_PATTERN=n' >> ./.config
+    else
+      echo 'CONFIG_INIT_STACK_ALL=n' >> ./.config
+    fi
     sed -i -e 's/# CONFIG_INIT_ON_FREE_DEFAULT_ON is not set/CONFIG_INIT_ON_FREE_DEFAULT_ON=y/' ./.config
     sed -i -e 's/CONFIG_INIT_STACK_NONE=y/CONFIG_INIT_STACK_NONE=n/' ./.config
     echo "CONFIG_INIT_STACK_ALL_ZERO=y" >> ./.config
