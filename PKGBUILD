@@ -2,9 +2,9 @@
 
 pkgname=yabridge-git
 _pkgname=yabridge
-pkgver=2.2.1.r508.g71eadff
-pkgrel=2
-pkgdesc="Yet Another VST bridge, run Windows VST2 plugins under Linux"
+pkgver=3.0.0.r0.g8c2594f
+pkgrel=1
+pkgdesc="A modern and transparent way to use Windows VST2 and VST3 plugins on Linux"
 arch=('x86_64')
 url="https://github.com/robbert-vdh/yabridge"
 license=('GPL3')
