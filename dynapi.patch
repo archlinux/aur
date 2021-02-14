@@ -1,0 +1,84 @@
+
+# HG changeset patch
+# User Ryan C. Gordon <icculus@icculus.org>
+# Date 1526575846 14400
+# Node ID 7babfecee045fac18d95e5936fede534ca54ed24
+# Parent  9e46f3dd75fd2e85e0e3ebb8a77329bc74a16e70
+dynapi: don't let system loader resolve the initializer to the wrong version.
+
+Fixes problems launching Firewatch on Linux (which statically links SDL but
+also dynamically loads a system-wide copy from a plugin shared library) with
+a newer SDL build.
+
+diff -r 9e46f3dd75fd -r 7babfecee045 src/dynapi/SDL_dynapi.c
+--- a/src/dynapi/SDL_dynapi.c	Fri May 11 09:37:00 2018 +0300
++++ b/src/dynapi/SDL_dynapi.c	Thu May 17 12:50:46 2018 -0400
+@@ -167,15 +167,10 @@
+ #error Write me.
+ #endif
+ 
+-
+-
+-/* Here's the exported entry point that fills in the jump table. */
+-/*  Use specific types when an "int" might suffice to keep this sane. */
+-typedef Sint32 (SDLCALL *SDL_DYNAPI_ENTRYFN)(Uint32 apiver, void *table, Uint32 tablesize);
+-extern DECLSPEC Sint32 SDLCALL SDL_DYNAPI_entry(Uint32, void *, Uint32);
+-
+-Sint32
+-SDL_DYNAPI_entry(Uint32 apiver, void *table, Uint32 tablesize)
++/* we make this a static function so we can call the correct one without the
++   system's dynamic linker resolving to the wrong version of this. */
++static Sint32
++initialize_jumptable(Uint32 apiver, void *table, Uint32 tablesize)
+ {
+     SDL_DYNAPI_jump_table *output_jump_table = (SDL_DYNAPI_jump_table *) table;
+ 
+@@ -202,6 +197,18 @@
+ }
+ 
+ 
++/* Here's the exported entry point that fills in the jump table. */
++/*  Use specific types when an "int" might suffice to keep this sane. */
++typedef Sint32 (SDLCALL *SDL_DYNAPI_ENTRYFN)(Uint32 apiver, void *table, Uint32 tablesize);
++extern DECLSPEC Sint32 SDLCALL SDL_DYNAPI_entry(Uint32, void *, Uint32);
++
++Sint32
++SDL_DYNAPI_entry(Uint32 apiver, void *table, Uint32 tablesize)
++{
++    return initialize_jumptable(apiver, table, tablesize);
++}
++
++
+ /* Obviously we can't use SDL_LoadObject() to load SDL.  :)  */
+ /* Also obviously, we never close the loaded library. */
+ #if defined(WIN32) || defined(_WIN32) || defined(__CYGWIN__)
+@@ -260,7 +267,7 @@
+ SDL_InitDynamicAPILocked(void)
+ {
+     const char *libname = SDL_getenv_REAL("SDL_DYNAMIC_API");
+-    SDL_DYNAPI_ENTRYFN entry = SDL_DYNAPI_entry;  /* funcs from here by default. */
++    SDL_DYNAPI_ENTRYFN entry = NULL;  /* funcs from here by default. */
+ 
+     if (libname) {
+         entry = (SDL_DYNAPI_ENTRYFN) get_sdlapi_entry(libname, "SDL_DYNAPI_entry");
+@@ -268,16 +275,15 @@
+             /* !!! FIXME: fail to startup here instead? */
+             /* !!! FIXME: definitely warn user. */
+             /* Just fill in the function pointers from this library. */
+-            entry = SDL_DYNAPI_entry;
+         }
+     }
+ 
+-    if (entry(SDL_DYNAPI_VERSION, &jump_table, sizeof (jump_table)) < 0) {
++    if (!entry || (entry(SDL_DYNAPI_VERSION, &jump_table, sizeof (jump_table)) < 0)) {
+         /* !!! FIXME: fail to startup here instead? */
+         /* !!! FIXME: definitely warn user. */
+         /* Just fill in the function pointers from this library. */
+-        if (entry != SDL_DYNAPI_entry) {
+-            if (!SDL_DYNAPI_entry(SDL_DYNAPI_VERSION, &jump_table, sizeof (jump_table))) {
++        if (!entry) {
++            if (!initialize_jumptable(SDL_DYNAPI_VERSION, &jump_table, sizeof (jump_table))) {
+                 /* !!! FIXME: now we're screwed. Should definitely abort now. */
+             }
+         }
+
