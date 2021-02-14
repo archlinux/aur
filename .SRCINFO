@@ -1,6 +1,6 @@
 pkgbase = obs-dynamic-delay
 	pkgdesc = Filter for dynamic delaying a video source
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/exeldro/obs-dynamic-delay
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = obs-dynamic-delay
 	makedepends = jack
 	makedepends = gtk-update-icon-cache
 	depends = obs-studio
-	source = obs-dynamic-delay-0.1.1::git+https://github.com/exeldro/obs-dynamic-delay#commit=f9e6495828dc16d51ca18d0afa051d5df77bf10f
+	source = obs-dynamic-delay-0.1.2::git+https://github.com/exeldro/obs-dynamic-delay#commit=891d415726aa3c332a69b310bc7f1abc626f651f
 	source = obs-studio-26.1.2.tar.gz::https://github.com/obsproject/obs-studio/archive/26.1.2.tar.gz
 	source = fix_python_binary_loading.patch
 	sha256sums = SKIP

@@ -1,6 +1,6 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 pkgname=obs-dynamic-delay
-pkgver=0.1.1
+pkgver=0.1.2
 _obsver=26.1.2
 pkgrel=1
 pkgdesc="Filter for dynamic delaying a video source"
@@ -15,7 +15,7 @@ makedepends=(
   'qt5-svg' 'qt5-x11extras' 'curl' 'jack' 'gtk-update-icon-cache'
 )
 source=(
-  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-dynamic-delay#commit=f9e6495828dc16d51ca18d0afa051d5df77bf10f"
+  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-dynamic-delay#commit=891d415726aa3c332a69b310bc7f1abc626f651f"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
   "fix_python_binary_loading.patch"
 )
