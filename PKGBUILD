@@ -1,7 +1,7 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-libdatrie
-pkgver=0.2.12
+pkgver=0.2.13
 pkgrel=1
 pkgdesc="Implementation of double-array structure for representing trie, as proposed by Junichi Aoe. (mingw-w64)"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt' 'mingw-w64-libiconv')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://linux.thai.net/pub/thailinux/software/libthai/libdatrie-${pkgver}.tar.xz")
-sha256sums=('452dcc4d3a96c01f80f7c291b42be11863cd1554ff78b93e110becce6e00b149')
+sha256sums=('12231bb2be2581a7f0fb9904092d24b0ed2a271a16835071ed97bed65267f4be')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
