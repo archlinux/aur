@@ -1,25 +1,47 @@
-# Maintainer: Guillaume Lefranc <guillaume@signal18.io>
-pkgname=nextdns
+# Maintainer: Radu Potop <radu at wooptoo dot com>
+# Contributor: Guillaume Lefranc <guillaume@signal18.io>
+#
+# Forked from aur/nextdns.
+#
+# Instead of running the NextDNS Client as root this package configures
+# it to run as a regular user under Systemd.
+#
+# It is not recommended to run the upstream "nextdns install" script,
+# instead enable the service with "systemctl enable --now nextdns".
+#
+
+pkgname=nextdns-unprivileged
+origname=nextdns
 pkgver=1.10.1
-pkgrel=2
-pkgdesc='NextDNS DNS-over-HTTPS client'
+pkgrel=1
+pkgdesc='The NextDNS DoH client running as unprivileged user.'
 arch=('x86_64')
 url='https://github.com/nextdns/nextdns'
 license=('MIT')
+conflicts=('nextdns')
+provides=('nextdns')
+install="$origname.install"
 makedepends=('go')
-source=("$url/archive/v$pkgver.tar.gz" "nextdns.service")
-sha256sums=('@checksum@')
+source=(
+    "$url/archive/v$pkgver.tar.gz"
+    "nextdns.service"
+    "nextdns.sysusers"
+    "nextdns.tmpfiles"
+)
+sha256sums=('c2ac19510a9e58c34b3ece2a5c5ff7e991099c91c0cf4bcc4228897dd65692ba'
+            'd5715e3be5aa970b8e3e9552e786965d4c33bdc2ae372e708f9a8f3e9c0d45e9'
+            '96dcfb0ccbbf30a140ff44101b90160faadca97f9aed4b1d73e2e2db52655fec'
+            'fc6f48d9bdb3ad953e37aef163ec3fa3da8d3ca5fab4b78186481fb2988385a2')
 
 build() {
-  cd $pkgname-$pkgver
-  go build --buildmode=pie     -trimpath     -ldflags "-X main.version=$pkgver -extldflags $LDFLAGS"     -o $pkgname .
+    cd "${origname}-$pkgver"
+    go build --buildmode=pie -trimpath -ldflags "-X main.version=$pkgver -extldflags $LDFLAGS" -o ${origname} .
 }
 
 package() {
-  cd $pkgname-$pkgver
-  install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
-  install -Dm644 "$srcdir/nextdns.service" "$pkgdir/usr/lib/systemd/system/nextdns.service"
+    cd "${origname}-$pkgver"
+    install -vDm 755 ${origname} "${pkgdir}/usr/bin/${origname}"
+    install -vDm 644 "$srcdir/${origname}.service"  "${pkgdir}/usr/lib/systemd/system/${origname}.service"
+    install -vDm 644 "$srcdir/${origname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${origname}.conf"
+    install -vDm 644 "$srcdir/${origname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${origname}.conf"
 }
-
-sha256sums=('c2ac19510a9e58c34b3ece2a5c5ff7e991099c91c0cf4bcc4228897dd65692ba'
-            'e15d83ec460562c8a81052f37c0e78e18842e95270895524b9853f7aca285eba')

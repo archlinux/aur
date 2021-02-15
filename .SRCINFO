@@ -1,15 +1,22 @@
-pkgbase = nextdns
-	pkgdesc = NextDNS DNS-over-HTTPS client
+pkgbase = nextdns-unprivileged
+	pkgdesc = The NextDNS DoH client running as unprivileged user.
 	pkgver = 1.10.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/nextdns/nextdns
+	install = nextdns.install
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	provides = nextdns
+	conflicts = nextdns
 	source = https://github.com/nextdns/nextdns/archive/v1.10.1.tar.gz
 	source = nextdns.service
+	source = nextdns.sysusers
+	source = nextdns.tmpfiles
 	sha256sums = c2ac19510a9e58c34b3ece2a5c5ff7e991099c91c0cf4bcc4228897dd65692ba
-	sha256sums = e15d83ec460562c8a81052f37c0e78e18842e95270895524b9853f7aca285eba
+	sha256sums = d5715e3be5aa970b8e3e9552e786965d4c33bdc2ae372e708f9a8f3e9c0d45e9
+	sha256sums = 96dcfb0ccbbf30a140ff44101b90160faadca97f9aed4b1d73e2e2db52655fec
+	sha256sums = fc6f48d9bdb3ad953e37aef163ec3fa3da8d3ca5fab4b78186481fb2988385a2
 
-pkgname = nextdns
+pkgname = nextdns-unprivileged
 

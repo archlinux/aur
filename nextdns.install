@@ -1,0 +1,10 @@
+post_install() {
+    cat << EOF
+==>
+==> Instead of running the NextDNS Client as root this package configures
+==> it to run as a regular user under Systemd.
+==> It is not recommended to run the upstream "nextdns install" script,
+==> instead enable the service with "systemctl enable --now nextdns".
+==>
+EOF
+}
