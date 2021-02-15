@@ -1,13 +1,13 @@
 # Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=perl-archive-any
-pkgver=0.0945
+pkgver=0.0946
 pkgrel=1
 _author="O/OA/OALDERS"
 _perlmod="Archive-Any"
 pkgdesc="Archive::Any - Single interface to deal with file archives"
 arch=('any')
-url="http://search.cpan.org/dist/Perl-Archive-Any/"
+url="https://metacpan.org/release/Archive-Any/"
 license=('GPL' 'PerlArtistic')
 depends=(
 perl-archive-tar
@@ -28,7 +28,7 @@ checkdepends=(perl-test-warn)
 makedepends=()
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('8c176cf649a7c3ef2cc2cc2d87eae79cfc0c13316cd4581404a99bc1a41a568f')
+sha256sums=('0d57bcdace20eb907ff6f00fefa120a0f6fd05aa638c5d33ef0a8bea15739d84')
 unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
 export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
 
