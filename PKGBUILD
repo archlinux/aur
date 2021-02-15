@@ -70,7 +70,7 @@ _makenconfig=y
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-cacule-uksm
-pkgver=5.10.14
+pkgver=5.10.16
 _major=5.10
 _branch=5.x
 xanmod=1
@@ -104,7 +104,7 @@ done
 
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'cb36d0d05523e1154f84c060081481f799253da06edb127a2630e539c6974f12'
-            '999bf7ea0a1bbe9bca903c9abf7bb635ea045308676fe3adaa9dea9f6eb93735'
+            'e1c108a65a34c1ed2474a8296a517025fcb26c018bf1b4c02bc12b42487de000'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
             '6c66dba73251440352f93ff32b72f5dd49536d0f17ef9347867660fd3a626991'
             '9f7931fe587cfbc918aabbf3a1211a7179c8b2b300a1fc38c22920df4ed7dc2a')
