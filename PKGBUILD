@@ -4,7 +4,7 @@
 
 pkgname=sic-image-cli-git
 _pkgname=sic
-pkgver=0.15.0.r0.g56cbde0
+pkgver=0.16.1.r0.g8ed1610
 pkgrel=1
 pkgdesc="Accessible image processing and conversion from the terminal (git)"
 arch=('x86_64')
@@ -12,11 +12,9 @@ url="https://github.com/foresterre/sic"
 license=('MIT')
 conflicts=("$_pkgname" "${pkgname%-git}")
 provides=("${pkgname%-git}")
-makedepends=('rust' 'git')
-source=("git+${url}"
-        "$url/releases/download/v$pkgver/shell_completions.zip")
-sha512sums=('SKIP'
-            'c3ce7c681c50a4bba8f29cca4f3269b857bd7f5f64b7b84c411fb41d4ff0ace6c06aae760bdcc81be0a750f271bac2cf80f6fc8376d5f3e293d915e2b37d3ecc')
+makedepends=('rust' 'git' 'nasm')
+source=("git+${url}")
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
@@ -26,6 +24,7 @@ pkgver() {
 build() {
   cd "$_pkgname"
   cargo build --release --locked --all-features
+  cargo run --example gen_completions
 }
 
 check() {
@@ -39,7 +38,7 @@ package() {
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm 644 LICENSE-APACHE -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm 644 "../$_pkgname.bash" "${pkgdir}/usr/share/bash-completion/completions/$_pkgname"
-  install -Dm 644 "../$_pkgname.fish" -t "${pkgdir}/usr/share/fish/completions"
-  install -Dm 644 "../_$_pkgname" -t "${pkgdir}/usr/share/zsh/site-functions"
+  install -Dm 644 "$_pkgname.bash" "${pkgdir}/usr/share/bash-completion/completions/$_pkgname"
+  install -Dm 644 "$_pkgname.fish" -t "${pkgdir}/usr/share/fish/completions"
+  install -Dm 644 "_$_pkgname" -t "${pkgdir}/usr/share/zsh/site-functions"
 }
