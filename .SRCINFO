@@ -1,0 +1,13 @@
+pkgbase = mcole-themes
+	pkgdesc = mCOLe themes
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.cupoflinux.com/SBB/index.php?topic=4541.0
+	arch = any
+	provides = mcole-themes
+	conflicts = mcole-themes
+	source = https://sourceforge.net/projects/archbangretro/files/mCOLe-themes.tar.xz
+	md5sums = 14845b7544355a8d054284aef70e1e9c
+
+pkgname = mcole-themes
+
