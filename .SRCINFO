@@ -1,0 +1,18 @@
+pkgbase = zentile
+	pkgdesc = On-demand tiling for Openbox, Xfce and other EWMH Complaint Window Managers.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/blrsn/zentile
+	arch = x86_64
+	license = MIT
+	depends = go
+	optdepends = xorg-server: with EWMH Complaint Window Managers
+	provides = zentile
+	conflicts = bin32-zentile
+	conflicts = zentile-bin
+	conflicts = zentile-git
+	source = zentile-0.1.1.tar.gz::https://github.com/blrsn/zentile/archive/v0.1.1.tar.gz
+	sha256sums = d6963f61884cac7233d4fdb2ec53e8d3ff146bd274829220b3d1d2bd449c7732
+
+pkgname = zentile
+
