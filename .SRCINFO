@@ -1,7 +1,7 @@
 pkgbase = kwinft
 	pkgdesc = Wayland compositor and X11 window manager
 	pkgver = 5.20.0
-	pkgrel = 0
+	pkgrel = 2
 	url = https://gitlab.com/kwinft/kwinft
 	install = kwinft.install
 	arch = x86_64
