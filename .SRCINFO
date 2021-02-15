@@ -10,7 +10,9 @@ pkgbase = libindi-gpsd
 	depends = libindi=1.8.8
 	depends = gpsd
 	source = https://github.com/indilib/indi-3rdparty/archive/v1.8.8.tar.gz
+	source = upstream-pr-325.patch
 	sha256sums = 0a50aff683e4e76d12b7558076734ace3c4340d93fcab2c25c8a7c0bc3d53816
+	sha256sums = 38a4f00ba07cefb42093df38075d76bbdf2b6139f0e5618bd786788b6eb21894
 
 pkgname = libindi-gpsd
 
