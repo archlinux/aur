@@ -1,19 +1,21 @@
-# Maintainer: Håvard Pettersson <mail@haavard.me>
+# Maintainer: Vitaliy Berdinskikh radio_rogal[at]keemail.me
+# Contributor: Håvard Pettersson <mail@haavard.me>
 # Contributor: John Trengrove <john@retrofilter.com>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: Andrejs Mivreņiks <gim at fastmail dot fm>
 # Contributor: Vitaliy Berdinskikh ur6lad[at]i.ua
 
 pkgname=sqlite-jdbc
-pkgver=3.27.2.1
+pkgver=3.34.0
 pkgrel=1
 pkgdesc='JDBC driver for SQLite'
-arch=(x86_64)
-url=https://github.com/xerial/sqlite-jdbc
-license=(Apache)
-makedepends=(maven)
+arch=('x86_64')
+url='https://github.com/xerial/sqlite-jdbc'
+license=('Apache')
+depends=('java-runtime>=8')
+makedepends=('maven')
 source=("https://github.com/xerial/sqlite-jdbc/archive/${pkgver}.tar.gz")
-sha256sums=('37f09ac4a4e1b7debbfa95391b6c2405e5830bab9aa952bb7378302f29673666')
+sha256sums=('7458741320744f69c87ee2c6355952a4ab2696fd0f27c0e3ad85a9a981e67eff')
 
 prepare() {
   # remove unused sqlite binaries
