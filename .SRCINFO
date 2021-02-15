@@ -1,0 +1,16 @@
+pkgbase = python-blackdoc
+	pkgdesc = Run Black on documentation code snippets
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/keewis/blackdoc
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-black
+	depends = python-more-itertools
+	source = https://files.pythonhosted.org/packages/source/b/blackdoc/blackdoc-0.3.3.tar.gz
+	sha256sums = b4956bdd3ad21c501cf33129dfe8a63f202e03630b2951ac23b38bbdc435165a
+
+pkgname = python-blackdoc
+
