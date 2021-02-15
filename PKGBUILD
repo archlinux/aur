@@ -2,7 +2,7 @@
 # Contributor: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=nccl
-pkgver=2.8.3
+pkgver=2.8.4
 _upstr_pkgrel=1
 pkgrel=1
 pkgdesc='Library for NVIDIA multi-GPU and multi-node collective communication primitives'
@@ -58,6 +58,7 @@ package() {
   cd "${pkgname}"
 
   make PREFIX="${pkgdir}"/usr install
-
+  # fix permission on static lib
+  chmod 644 "${pkgdir}"/usr/lib/libnccl_static.a
   install -Dm644  "${srcdir}/${pkgname}"/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
