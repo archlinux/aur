@@ -1,0 +1,19 @@
+pkgbase = fddf
+	pkgdesc = Fast data dupe finder
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/birkenfeld/fddf
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	license = APACHE
+	makedepends = rust
+	makedepends = cargo
+	source = https://github.com/birkenfeld/fddf/archive/v1.7.0.tar.gz
+	sha256sums = 44ef9630376dcaa3b1c13efff445eb838ee2f909011224dcfd40beda6413c4eb
+
+pkgname = fddf
+
