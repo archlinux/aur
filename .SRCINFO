@@ -1,7 +1,7 @@
 pkgbase = util-linux-selinux
 	pkgdesc = SELinux aware miscellaneous system utilities for Linux
-	pkgver = 2.36.1
-	pkgrel = 4
+	pkgver = 2.36.2
+	pkgrel = 1
 	url = https://github.com/karelzak/util-linux
 	arch = x86_64
 	groups = selinux
@@ -12,9 +12,8 @@ pkgbase = util-linux-selinux
 	makedepends = libselinux
 	makedepends = libxcrypt
 	options = strip
-	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.36/util-linux-2.36.1.tar.xz
-	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.36/util-linux-2.36.1.tar.sign
-	source = 0001-mount-Add-support-for-nosymfollow-mount-option.patch
+	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.36/util-linux-2.36.2.tar.xz
+	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.36/util-linux-2.36.2.tar.sign
 	source = pam-login
 	source = pam-common
 	source = pam-runuser
@@ -24,9 +23,8 @@ pkgbase = util-linux-selinux
 	source = rfkill-unblock_.service
 	source = rfkill-block_.service
 	validpgpkeys = B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284
-	sha256sums = 09fac242172cd8ec27f0739d8d192402c69417617091d8c6e974841568f37eed
+	sha256sums = f7516ba9d8689343594356f0e5e1a5f0da34adfbc89023437735872bb5024c5f
 	sha256sums = SKIP
-	sha256sums = cafa7fa04c97e88929644ecacf30b29b54bb7a647fee8f909c4f98f3e692afb0
 	sha256sums = 993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92
 	sha256sums = fc6807842f92e9d3f792d6b64a0d5aad87995a279153ab228b1b2a64d9f32f20
 	sha256sums = 95b7cdc4cba17494d7b87f37f8d0937ec54c55de0e3ce9d9ab05ad5cc76bf935
@@ -53,8 +51,8 @@ pkgname = util-linux-selinux
 	optdepends = python: python bindings to libmount
 	optdepends = words: default dictionary for look
 	provides = rfkill
-	provides = util-linux=2.36.1-4
-	provides = selinux-util-linux=2.36.1-4
+	provides = util-linux=2.36.2-1
+	provides = selinux-util-linux=2.36.2-1
 	conflicts = rfkill
 	conflicts = util-linux
 	conflicts = selinux-util-linux
@@ -75,7 +73,7 @@ pkgname = util-linux-libs-selinux
 	provides = libmount.so
 	provides = libsmartcols.so
 	provides = libuuid.so
-	provides = util-linux-libs=2.36.1-4
+	provides = util-linux-libs=2.36.2-1
 	provides = libutil-linux-selinux
 	conflicts = util-linux-libs
 	conflicts = libutil-linux-selinux
