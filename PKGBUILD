@@ -19,15 +19,13 @@ pkgver() {
 }
 
 build() {
-	export GTA_III_RE_DIR="~/.re3"
-	mkdir "$HOME/.re3"
 	cd "$srcdir/${pkgname%-git}"
 	git submodule update --init --recursive
 	./premake5Linux --with-librw gmake2
+	cd "$srcdir/${pkgname%-git}/build"
+	make config=release_linux-amd64-librw_gl3_glfw-oal -j1
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}/build"
-	make config=release_linux-amd64-librw_gl3_glfw-oal
-	cp  "$srcdir/${pkgname%-git}/bin/linux-amd64-librw_gl3_glfw-oal/Release/re3" "$HOME/.re3"
+	install -D -m755 "$srcdir/${pkgname%-git}/bin/linux-amd64-librw_gl3_glfw-oal/Release/re3" "$pkgdir/usr/bin/re3"
 }
