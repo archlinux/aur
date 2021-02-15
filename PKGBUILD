@@ -1,6 +1,6 @@
 # Maintainer: Graham R King <grking dot email at gmail dot com>
 pkgname=xxcmd
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A helper for remembering useful shell commands."
 arch=('any')
@@ -12,8 +12,8 @@ provides=("$pkgname")
 replaces=("$pkgname")
 changelog=''
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('d4e9d92b297e66bdfd55351a7ed8026dd9ec44d3eaed86a4c845fbccdc8c2f16')
-b2sums=('7190cf3f9d3a3a0d663c470d1f088f663f7b6521af330934189153c933d47ab5ec6af06e2c96d3a5f2094f22f0fe1d137327138b7b6671f3caee9abb1a7d50bf')
+sha256sums=('766e0b2deb80603059593259b23ece7f987b8c519dbf1f3b37a143c2568fda78')
+b2sums=('ac3c04175cb96ce39dad37ab38c067d08ed989e7acb5e2f920a8d50a0746c259a8663d34b5dd9c7a5dd8ea7b9ccc051fa11e308f788a5ff49ed17346eadc50db')
 
 check() {
     cd "$srcdir/$pkgname-$pkgver"
