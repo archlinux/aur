@@ -18,8 +18,8 @@ pkgbase = athens-git
 	source = athens.sh
 	source = athens.desktop
 	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = a11ab00f8e3f2be1320a5e67dcded1d1
+	md5sums = dc18f4e2bdea985fff72911e868dfce9
 
 pkgname = athens-git
 

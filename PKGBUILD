@@ -21,7 +21,9 @@ conflicts=("${pkgname%-git}")
 install=
 source=('athens::git+https://github.com/athensresearch/athens' 'athens.sh' 'athens.desktop')
 noextract=()
-md5sums=('SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP'
+         'a11ab00f8e3f2be1320a5e67dcded1d1'
+         'dc18f4e2bdea985fff72911e868dfce9')
 
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
 # a description of each element in the source array.
