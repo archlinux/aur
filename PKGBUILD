@@ -3,7 +3,7 @@
 pkgname=clash-user
 _pkgname=clash
 pkgver=1.3.5
-pkgrel=1
+pkgrel=3
 pkgdesc="A rule-based tunnel in Go"
 arch=('x86_64')
 url="https://github.com/Dreamacro/clash"
@@ -25,8 +25,8 @@ sha256sums=('89f39540a698fab82728c80e903d7750894789621595ca11a4777afdfc3e265d'
             '62ed4460cd2ed4b400193ad04b0cccb76d7558f87c377a0033041841a73f7945'
             '149c6448a5630af1065ea230707331ac12663128568d6cf0e9d5480e94d1d104'
             '006bea79c75de78dcd4f3991bb9c4e6f706443131aeeccf8db076f8738f24ccd'
-            '090e1598e9e9736c951b1e2488df7e573c4d29d2fd0e0da8cfc0edd998f8c8fb'
-            'd22cc741edf783c6fc83bb62f67b5381a0421d2ea49959469c1b8da48488a827')
+            '9f4ceba47cd9575d6ddd5b015f2220f5e460c761f1f73f77c3d3e9b46cc8bb06'
+            'fecf24242175c509db90d7ea130a3619aa2cc8fa79e0df0a09e01b03267ecee7')
 
 prepare() {
     cd "${srcdir}"/"${_pkgname}-${pkgver}"/
@@ -41,17 +41,17 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    cd "${_pkgname}-${pkgver}/"
+    cd "${srcdir}"/"${_pkgname}-${pkgver}"/
     go build -ldflags="-linkmode=external"
 }
 
 check() {
-    cd "${_pkgname}-${pkgver}/"
+    cd "${srcdir}"/"${_pkgname}-${pkgver}"/
     go test github.com/Dreamacro/clash/...
 }
 
 package() {
-    cd "${_pkgname}-${pkgver}/"
+    cd "${srcdir}"/"${_pkgname}-${pkgver}"/
     install -Dm 755 clash -t "${pkgdir}"/usr/bin/
     install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/clash/
     install -Dm 644 "${srcdir}"/config.yaml -t "${pkgdir}"/etc/clash/
