@@ -1,0 +1,11 @@
+--- Makefile	2021-02-05 09:50:44.000000000 +0100
++++ Makefile	2021-02-15 17:15:55.964174173 +0100
+@@ -158,7 +158,7 @@
+ # Build all components of PAKCS
+ #
+ .PHONY: build
+-build: checkinstalldir
++build:
+ 	$(MAKE) kernel
+ 	$(MAKE) tools
+ ifneq ($(CI_BUILD),yes)
