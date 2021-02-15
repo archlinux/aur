@@ -1,6 +1,6 @@
 pkgbase = vim-selenized-git
 	pkgdesc = Solarized redesigned: fine-tuned color palette for programmers with focus on readability.
-	pkgver = v1.0.r13.ge93e0d9
+	pkgver = 1.0.r13.ge93e0d9
 	pkgrel = 1
 	url = https://github.com/jan-warchol/selenized
 	arch = any

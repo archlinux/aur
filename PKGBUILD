@@ -1,7 +1,7 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=vim-selenized-git
 _pkgname=vim-selenized
-pkgver=v1.0.r13.ge93e0d9
+pkgver=1.0.r13.ge93e0d9
 pkgrel=1
 arch=('any')
 url='https://github.com/jan-warchol/selenized'
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
