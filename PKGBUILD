@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='cinaps'
 pkgname="ocaml-$_projectname"
-pkgver='0.15.0'
+pkgver='0.15.1'
 pkgrel='1'
 pkgdesc='Trivial Metaprogramming tool using the OCaml toplevel'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('dune>=2.0.0')
 checkdepends=('ocaml-ppx_jane')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e82fb350cc78c7fc98f125c625bba2e5845356c40105432f9469834af4b82f4c')
+sha256sums=('1be18e70f5d8a6b03566c3619b62836a26094fc7208fde46ab7b32ee64116170')
 
 _sourcedirectory="$_projectname-$pkgver"
 
