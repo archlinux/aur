@@ -1,6 +1,6 @@
 # Maintainer: zuyoutoki <zuyoutoki+aur at oki dot moe>
 pkgname=romog-git
-pkgver=r14.eca8fe1
+pkgver=r16.4fe788a
 pkgrel=1
 pkgdesc="A command-line ROM manager written in C++, specifically for Linux. "
 arch=('x86_64')

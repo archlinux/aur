@@ -1,6 +1,6 @@
 pkgbase = romog-git
 	pkgdesc = A command-line ROM manager written in C++, specifically for Linux.
-	pkgver = r14.eca8fe1
+	pkgver = r16.4fe788a
 	pkgrel = 1
 	url = https://github.com/xprism1/romog
 	arch = x86_64
