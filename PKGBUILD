@@ -1,13 +1,17 @@
 # Maintainer: Michał Sałaban <michal@salaban.info>
 pkgname=cardano-node
-pkgver=1.24.2
+pkgver=1.25.1
 pkgrel=1
 pkgdesc='The core component that is used to participate in a Cardano decentralised blockchain.'
 license=('Apache')
 arch=('any')
 url='https://github.com/input-output-hk/cardano-node'
-_ghc_version='8.10.2'   # NOTE: ghc-libs=8.10.3 contain bugs and fail to build with 
-makedepends=('cabal-install-bin' 'ghc=8.10.2' 'ghc-static=8.10.2')
+_ghc_version="8.10.4"       # 8.10.3 fails to compile
+# NOTE: The build process includes resolution, download and compilation of required libraries.
+# However, if you have corresponding haskell-* packages present in the system, the build
+# will most likely fail trying to use the installed lib.
+# This is probably configurable but I'm not experienced in Haskell. Suggestions are welcome.
+makedepends=('cabal-install-bin' 'ghc>=8.10.4')
 depends=('libsodium')
 _config_build="5367762"
 source=("https://github.com/input-output-hk/${pkgname}/archive/${pkgver}.zip"
@@ -18,7 +22,7 @@ source=("https://github.com/input-output-hk/${pkgname}/archive/${pkgver}.zip"
         "cardano-node.sysusers"
         "cardano-node.tmpfiles"
         "cardano-node.service")
-sha256sums=("c3ebea2f25630583bebd659dccad01c24897663206248fa0deacefc6d34c4b7d"
+sha256sums=("946da22e8fbbc587713c6006b70c2e02b3a26c8c173545afe6c15b8b78b25e08"
         "9999052dc926506d350cfca2bcfd291e50b48cc7f5215a154c344ad7ad7d70eb"
         "4f28b3b437b2c4f6ee26cc70964b3a5f1a274b0b3909c31535091c00316c13aa"
         "59cd3932c6dd792bc5020ca3336064a8faabde4e4a8dc7d143ff4df6eec36961"
