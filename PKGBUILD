@@ -2,7 +2,7 @@
 # Contributor: lsf
 # Contributor: Adam Hose <adis@blad.is>
 pkgname=opensnitch-git
-pkgver=1.3.0.r20.75a0824
+pkgver=1.3.6.r0.510a351
 pkgrel=1
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -36,6 +36,7 @@ build() {
 	cd "$srcdir/${pkgname%-git}"
 
 	pushd daemon
+	export GOPATH="$srcdir/gopath"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
