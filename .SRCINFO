@@ -1,6 +1,6 @@
 pkgbase = tribler
 	pkgdesc = P2P/Bittorrent/YouTube client
-	pkgver = 7.7.1
+	pkgver = 7.8.0
 	pkgrel = 1
 	url = http://tribler.org
 	arch = x86_64
@@ -31,12 +31,13 @@ pkgbase = tribler
 	depends = python-twisted
 	depends = python-yaml
 	depends = python-sentry_sdk
+	depends = python-yappi
 	provides = tribler
 	conflicts = tribler
-	source = https://github.com/Tribler/tribler/releases/download/v7.7.1/Tribler-v7.7.1.tar.xz
+	source = https://github.com/Tribler/tribler/releases/download/v7.8.0/Tribler-v7.8.0.tar.xz
 	source = https://github.com/G-P-L/AUR/raw/master/Tribler/Tribler.desktop
 	source = https://github.com/G-P-L/AUR/raw/master/Tribler/tribler.sh
-	sha256sums = 45bb4202a10c2240692f461f274065b7ba7add9f62a3f0f8c131c02c733f9737
+	sha256sums = 0779d9f6f728757e4bf5524c789a7c1477b494fe83a594d7d963e02636d96424
 	sha256sums = 6b7ae61a0679a468860e5cc735f30185883088b1668c4193fcc05382cdd5173f
 	sha256sums = b357229d5decc3ff3d0e5ec25907258b2372a5ee93462950e4283c664cdcc776
 
