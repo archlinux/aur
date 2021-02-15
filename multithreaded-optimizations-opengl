@@ -1,6 +1,0 @@
-{
-    "rules" : [
-        { "pattern" : [],
-          "profile" : [ "GLThreadedOptimizations", true ] }
-    ]
-}
