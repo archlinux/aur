@@ -9,7 +9,7 @@ url="https://github.com/pobrn/ite8291r3-ctl"
 license=(GPL2)
 depends=(python  python-pyusb)
 makedepends=(python-setuptools)
-conflicts=(undervolt)
+conflicts=()
 source=("https://files.pythonhosted.org/packages/source/${pyname:0:1}/${pyname}/${pyname}-${pkgver}.tar.gz")
 sha256sums=('d8645a478c552fde378f5a81fee32e1be6e8987698a8c40e6947234bd5be9532')
 
