@@ -6,7 +6,7 @@
 pkgname='papyrus'
 pkgver='5.0.0'
 _eclipsever='2020-12'
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical editing tool for UML based on eclipse.'
 arch=('x86_64')
 url='http://www.eclipse.org/papyrus/'
@@ -16,11 +16,9 @@ depends=(java-runtime python libsecret)
 makedepends=(tar)
 provides=('papyrus')
 conflicts=('papyrus')
-sha256sums=(
-  'c10ce9ab85889f1d03beaea5e03d34d2ebc11b3637e54ca5f9d6b4e714b2d917'
-  '0bf0ff5eacc3e955a01c171cc21d8c989707ed9eee668ce176d67cfae06c8608'
-  '255f1d8b0277bb9e4a3f84d09294fe34a54485b29f67220733343f37db052b94'
-)
+sha256sums=('7a69c82a8d53b91036f80ab81c7a26a375fbfd3ac488c91c203cdc55f9a67d8d'
+            '0bf0ff5eacc3e955a01c171cc21d8c989707ed9eee668ce176d67cfae06c8608'
+            '255f1d8b0277bb9e4a3f84d09294fe34a54485b29f67220733343f37db052b94')
 source=(
   "http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/modeling/mdt/papyrus/rcp/${_eclipsever}/${pkgver}/papyrus-${_eclipsever}-${pkgver}-linux64.tar.gz"
   "papyrus.png"
