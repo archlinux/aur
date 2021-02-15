@@ -5,3 +5,4 @@ pkg/
 powershell/
 powershell-native/
 src/
+*.pkg.tar.zst

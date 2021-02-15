@@ -1,10 +1,10 @@
-# Maintainer: Kyle Sferrazza <kyle.sferrazza@gmail.com>
 # Maintainer: Rikarnto Bariampa <richard1996ba@gmail.com>
+# Maintainer: Kyle Sferrazza <kyle.sferrazza@gmail.com>
 # Contributor: Max Liebkies <mail@maxliebkies.de>
 
 pkgname=powershell
 _binaryname=pwsh
-_pkgver=7.1.1
+_pkgver=7.1.2
 _pkgnum=${_pkgver:0:1}
 pkgver=${_pkgver/-/.}
 pkgrel=1
@@ -12,7 +12,7 @@ pkgdesc='A cross-platform automation and configuration tool/framework (latest re
 arch=('x86_64')
 url='https://github.com/PowerShell/PowerShell'
 license=('MIT')
-makedepends=('git' 'cmake' 'dotnet-sdk>=5.0.1')
+makedepends=('git' 'cmake' 'dotnet-sdk>=5.0.3')
 depends=('krb5' 'gcc-libs' 'glibc' 'lttng-ust' 'zlib' 'openssl-1.0' 'icu')
 source=($pkgname::"git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgver"
         'powershell-native::git+https://github.com/PowerShell/PowerShell-Native.git'
