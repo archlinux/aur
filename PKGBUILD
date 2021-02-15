@@ -6,7 +6,7 @@ pkgbase="${_variant}-${_colorscheme}-git"
 pkgname=("${_variant}-${_colorscheme}-git"
          "${_variant}-airline-${_colorscheme}-git"
          "${_variant}-lightline-${_colorscheme}-git")
-pkgver=v1.2.0.r12.g8c5607c
+pkgver=1.2.0.r12.g8c5607c
 pkgrel=1
 arch=('any')
 url="https://github.com/sainnhe/${_colorscheme}"
@@ -17,7 +17,7 @@ makedepends=('git')
 
 pkgver() {
     cd "${srcdir}/${_colorscheme}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package_neovim-gruvbox-material-git() {

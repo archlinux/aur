@@ -1,5 +1,5 @@
 pkgbase = neovim-gruvbox-material-git
-	pkgver = v1.2.0.r12.g8c5607c
+	pkgver = 1.2.0.r12.g8c5607c
 	pkgrel = 1
 	url = https://github.com/sainnhe/gruvbox-material
 	arch = any
