@@ -13,14 +13,14 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 _CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
 
 pkgname=blender-git
-pkgver=2.93.r103455.g9734a78bc81
+pkgver=2.93.r103756.gc53022768b1
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
 depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2'
-         'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
-         'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
+         'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio-qfix' 'opencolorio'
+         'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage-qfix' 'libtiff' 'libpng')
 optdepends=('cuda: CUDA support in Cycles'
             'optix=7.1.0: OptiX support in Cycles'
             'usd=20.05: USD export Scene'
