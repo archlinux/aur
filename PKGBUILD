@@ -2,7 +2,7 @@
 
 pkgname=bootsplash-manager-bin
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple bootsplash manager"
 url="https://github.com/ANDRoid7890/bootsplash-manager"
 arch=(x86_64)
@@ -13,11 +13,12 @@ conflicts=('bootsplash-manager')
 
 source=("https://github.com/ANDRoid7890/bootsplash-manager/releases/download/$pkgver/bootsplash-manager.tar.gz")
 
-md5sums=('a1447e3f3a147e4ca3fe128d98c6f35f')
+md5sums=('d7eddd4dfdab09e6c0e095c32155f97f')
 
 package() {
     install -Dm755 bootsplash-manager "$pkgdir/usr/bin/bootsplash-manager"
     install -Dm755 bootsplash-manager-gui "$pkgdir/usr/bin/bootsplash-manager-gui"
     install -Dm644 org.manjaro.bootsplash-manager.policy "$pkgdir/usr/share/polkit-1/actions/org.manjaro.bootsplash-manager.policy"
     install -Dm644 bootsplash-manager-gui.svg "$pkgdir/usr/share/pixmaps/bootsplash-manager-gui.svg"
+    install -Dm644 bootsplash-manager.desktop "$pkgdir/usr/share/applications/bootsplash-manager.desktop"
 }
