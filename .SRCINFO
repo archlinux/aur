@@ -1,5 +1,5 @@
 pkgbase = neovim-sonokai-git
-	pkgver = v0.2.0.r4.g2236d0c
+	pkgver = 0.2.0.r4.g2236d0c
 	pkgrel = 1
 	url = https://github.com/sainnhe/sonokai
 	arch = any
