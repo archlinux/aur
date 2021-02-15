@@ -1,0 +1,13 @@
+pkgbase = rmesg-git
+	pkgdesc = A dmesg implementation in Rust. (git version)
+	pkgver = 1.0.13.r10.gcc04d37
+	pkgrel = 1
+	url = https://github.com/polyverse/rmesg
+	arch = x86_64
+	license = Apache
+	makedepends = rust
+	source = rmesg-git::git+https://github.com/polyverse/rmesg.git
+	sha512sums = SKIP
+
+pkgname = rmesg-git
+
