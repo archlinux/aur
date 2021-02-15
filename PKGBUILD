@@ -8,7 +8,8 @@ url="https://github.com/ANDRoid7890/bootsplash-manager"
 arch=(x86_64)
 license=(GPL2)
 depends=('qt5-base'
-         'bootsplash-systemd')
+         'bootsplash-systemd'
+         'polkit')
 conflicts=('bootsplash-manager')
 
 source=("https://github.com/ANDRoid7890/bootsplash-manager/releases/download/$pkgver/bootsplash-manager.tar.gz")
