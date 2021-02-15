@@ -31,10 +31,13 @@ package() {
 
         # Installing ButterManager using python-setuptools
         echo -e "\n Installing ButterManager. Please wait..."
-        python setup.py install
+        sudo python setup.py install
 
         # Copying .desktop file and icon
         echo -e \n "Creating desktop icon. Finishing the installation"
         install -Dm644 "$srcdir/$pkgname/packaging/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
         install -Dm644 "$srcdir/$pkgname/packaging/$pkgname.svg" "$pkgdir/opt/$pkgname/gui/$pkgname.svg"
+
+	# Removing compiled files with root privileges
+        sudo rm -rf "$srcdir/$pkgname/"
 }
