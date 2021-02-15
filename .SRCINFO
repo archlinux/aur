@@ -1,0 +1,18 @@
+pkgbase = tuxi-git
+	pkgdesc = A CLI assistant which scrapes Google search to get instant answers to your questions on your terminal
+	pkgver = r18.16d668e
+	pkgrel = 1
+	url = https://github.com/Bugswriter/tuxi
+	arch = any
+	license = custom
+	makedepends = git
+	depends = jq
+	depends = pup
+	depends = recode
+	provides = tuxi
+	conflicts = tuxi
+	source = tuxi-git::git+https://github.com/Bugswriter/tuxi
+	md5sums = SKIP
+
+pkgname = tuxi-git
+
