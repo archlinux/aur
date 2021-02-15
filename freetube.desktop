@@ -6,4 +6,5 @@ Exec=freetube
 Terminal=false
 Type=Application
 Icon=freetube-git
+MimeType=x-scheme-handler/freetube;
 Categories=Network;
