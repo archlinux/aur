@@ -31,7 +31,7 @@ package() {
 
         # Installing ButterManager using python-setuptools
         echo -e "\n Installing ButterManager. Please wait..."
-        sudo python setup.py install
+        python setup.py install
 
         # Copying .desktop file and icon
         echo -e \n "Creating desktop icon. Finishing the installation"
