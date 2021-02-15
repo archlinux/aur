@@ -1,0 +1,28 @@
+pkgbase = openshadinglanguage-qfix
+	pkgdesc = Advanced shading language for production GI renderers (build against opencolorio=2
+	pkgver = 1.11.11.0
+	pkgrel = 1
+	url = https://github.com/imageworks/OpenShadingLanguage
+	arch = x86_64
+	license = custom
+	makedepends = boost
+	makedepends = cmake
+	makedepends = python
+	makedepends = llvm
+	makedepends = ninja
+	depends = boost-libs
+	depends = openimageio-qfix
+	depends = openexr
+	depends = intel-tbb
+	depends = freetype2
+	depends = libpng
+	depends = libtiff
+	depends = zlib
+	depends = ncurses
+	depends = clang
+	optdepends = python: the Python module
+	source = openshadinglanguage-qfix-1.11.11.0.tar.gz::https://github.com/imageworks/OpenShadingLanguage/archive/Release-1.11.11.0.tar.gz
+	sha512sums = 2a5e45255d21edea631cf6fd957eb8516fc87760e16ae4f32c7f732cfb3500f92477ad9b9fbda50bc34e2fc89867d3c7ff0e31ecb815c053dcf77dc226a2681c
+
+pkgname = openshadinglanguage-qfix
+
