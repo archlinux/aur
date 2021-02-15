@@ -1,7 +1,7 @@
 # Maintainer: Naoki Kanazawa <nk dot naoki912 at gmail dot com>
 # Co-Maintainer: therojam <archlinux at therojam dot xyz>
 pkgname=atomic-tweetdeck
-pkgver=0.16.1
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Just a small Electron TweetDeck app."
 arch=('any')
@@ -9,10 +9,10 @@ url="https://github.com/dogancelik/atomic-tweetdeck"
 license=('MIT')
 depends=('gtk2' 'gconf' 'xdg-utils' 'libxtst' 'libxss' 'nss' 'alsa-lib')
 source=(
-    	"${url}/releases/download/v${pkgver}/atomic-tweetdeck-linux-x64.tgz"
-	"atomic-tweetdeck.desktop"
+    "atomic-tweetdeck-linux-x64_${pkgver}.tgz::${url}/releases/download/v${pkgver}/atomic-tweetdeck-linux-x64.tgz"
+    "atomic-tweetdeck.desktop"
 )
-md5sums=('e226ecb507f605a661ff2986c3298a51'
+md5sums=('5bc82b36c347b328a41db9fec5036b48'
          '6d0350843795b0e996d159e5dd6607bf')
 
 package() {
@@ -26,6 +26,6 @@ package() {
     install -Dm644 atomic-tweetdeck.desktop ${pkgdir}/usr/share/applications/atomic-tweetdeck.desktop
     install -Dm644 "${srcdir}/resources/app/favicon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
-    unlink ${pkgdir}/usr/lib/${pkgname}/atomic-tweetdeck-linux-x64.tgz
+    unlink ${pkgdir}/usr/lib/${pkgname}/atomic-tweetdeck-linux-x64_${pkgver}.tgz
     unlink ${pkgdir}/usr/lib/${pkgname}/atomic-tweetdeck.desktop
 }
