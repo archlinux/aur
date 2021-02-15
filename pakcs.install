@@ -1,0 +1,4 @@
+post_install() {
+	echo "cypm places packages under \$HOME/.cpm/ by default."
+   	echo "Consider adding \$HOME/.cpm/bin to your \$PATH to have installed modules accessible."
+}

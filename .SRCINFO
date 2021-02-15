@@ -1,0 +1,17 @@
+pkgbase = pakcs
+	pkgdesc = The Portland Aachen Kiel Curry System
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://www.informatik.uni-kiel.de/~pakcs/index.html
+	install = pakcs.install
+	arch = x86_64
+	license = custom:PAKCS License
+	makedepends = stack
+	makedepends = texlive-core
+	depends = swi-prolog
+	optdepends = rlwrap: for command line editing and history functionality
+	source = https://www.informatik.uni-kiel.de/~pakcs/download/pakcs-3.3.0-src.tar.gz
+	md5sums = faadc0fa280966c4f184d96dcaebc1e1
+
+pkgname = pakcs
+
