@@ -13,6 +13,7 @@ pkgbase = libinput-git
 	optdepends = gtk3: libinput debug-gui
 	optdepends = python-pyudev: libinput measure
 	optdepends = python-evdev: libinput measure
+	optdepends = xorg-xinput: input configuration for X
 	provides = libinput
 	conflicts = libinput
 	source = git+https://gitlab.freedesktop.org/libinput/libinput

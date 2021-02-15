@@ -16,7 +16,8 @@ conflicts=('libinput')
 makedepends=('gtk3' 'meson') # 'doxygen' 'python-sphinx' 'python-recommonmark'
 optdepends=('gtk3: libinput debug-gui'
             'python-pyudev: libinput measure'
-            'python-evdev: libinput measure')
+            'python-evdev: libinput measure'
+            'xorg-xinput: input configuration for X')
 source=(git+https://gitlab.freedesktop.org/libinput/libinput)
 sha512sums=('SKIP')
 validpgpkeys=('SKIP') # Peter Hutterer (Who-T) <office@who-t.net>
