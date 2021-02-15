@@ -46,7 +46,8 @@ build() {
     -D systemd=disabled \
     -D pulsedsp-location='/usr/\$LIB/pulseaudio' \
     -D stream-restore-clear-old-devices=true \
-    -D udevrulesdir=/usr/lib/udev/rules.d
+    -D udevrulesdir=/usr/lib/udev/rules.d \
+    -D elogind=disabled
   meson compile -C build
 }
 
