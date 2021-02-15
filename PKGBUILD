@@ -2,7 +2,7 @@
 _pkgname='pynetbox'
 pkgname=python-$_pkgname
 pkgbase=$pkgname
-pkgver=5.1.0
+pkgver=5.3.1
 pkgrel=1
 pkgdesc="NetBox API client library"
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=('python-setuptools-scm')
 source+=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('6a00d05958c8619c3db6902ee19aa4a3285cd735ddeae7cfd61b977d995568ed')
+sha256sums=('80743328f51f28827825fb2c9cb1993175da37c88988f02075f6f50e16333e0c')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
