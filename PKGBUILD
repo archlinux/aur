@@ -3,7 +3,7 @@
 pkgname=openvpn-password-save
 _pkgname=openvpn
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network)'
 arch=('x86_64')
 url='https://openvpn.net/index.php/open-source.html'
@@ -45,7 +45,6 @@ build() {
   "${srcdir}"/openvpn/configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
-    --enable-iproute2 \
     --enable-pkcs11 \
     --enable-plugins \
     --enable-systemd \
