@@ -9,8 +9,8 @@ pkgbase = chef-workstation
 	conflicts = chef
 	conflicts = chef-solo
 	conflicts = chef-client
+	conflicts = cinc
 	source = https://packages.chef.io/files/stable/chef-workstation/21.1.247/ubuntu/18.04/chef-workstation_21.1.247-1_amd64.deb
 	sha256sums = f30de903161d3c06978a22d346358bf46093997cfcfca6cfde36885aa9f2ea23
 
 pkgname = chef-workstation
-
