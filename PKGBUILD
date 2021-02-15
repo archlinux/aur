@@ -2,25 +2,44 @@
 
 pkgname=stylelint-config-standard
 pkgver=20.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Standard shareable config for stylelint'
 arch=('any')
 url=https://github.com/stylelint/stylelint-config-standard
 license=('MIT')
-depends=('nodejs' 'stylelint')
-makedepends=('npm')
-source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-noextract=("$pkgname-$pkgver.tgz")
-sha512sums=('201da215dcce4c0ff34b88d255abfacfec06b629f4f2a7e3f98c84c470772c5f659e8b9086dfff632074299abd806cf91cd3e475d1cecdc63c1ec51ecba65494')
+depends=('stylelint')
+makedepends=('git' 'jq' 'npm')
+source=("git+$url.git")
+b2sums=('SKIP')
+
+build() {
+  cd $pkgname
+  npm ci
+  npm pack
+}
+
+check() {
+  cd $pkgname
+  npm test
+}
 
 package() {
-  npm install -g --user root --prefix "$pkgdir"/usr --ignore-scripts --production $pkgname-$pkgver.tgz
+  cd $pkgname
+  npm install --global \
+              --user root \
+              --prefix "$pkgdir"/usr \
+              --production \
+              $pkgname-$pkgver.tgz
+  chown -R root:root "$pkgdir"
 
-  cd "$pkgdir"
-  # License not yet added to repo
-  #mkdir -p usr/share/licenses/$pkgname
-  #mv usr/lib/node_modules/$pkgname/LICENSE usr/share/licenses/$pkgname
-  chown -R root:root .
+  # Remove references to $srcdir and $pkgdir
+  find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+
+  local tmppackage="$(mktemp)"
+  local pkgjson="$pkgdir/usr/lib/node_modules/$pkgname/package.json"
+  jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
+  mv "$tmppackage" "$pkgjson"
+  chmod 644 "$pkgjson"
 }
 
 # vim:set ts=2 sw=2 et:
