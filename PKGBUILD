@@ -1,7 +1,7 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=vim-visual-multi-git
 _pkgname=vim-visual-multi
-pkgver=v0.5.4.r11.gf317dca
+pkgver=0.5.4.r11.gf317dca
 pkgrel=1
 pkgdesc='Multiple cursors plugin for vim/neovim'
 arch=('any')
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {

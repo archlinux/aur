@@ -1,6 +1,6 @@
 pkgbase = vim-visual-multi-git
 	pkgdesc = Multiple cursors plugin for vim/neovim
-	pkgver = v0.5.4.r11.gf317dca
+	pkgver = 0.5.4.r11.gf317dca
 	pkgrel = 1
 	url = https://github.com/mg979/vim-visual-multi
 	install = vim-visual-multi-git.install
