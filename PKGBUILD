@@ -2,20 +2,20 @@
 # Contributor: Piotr Rogoza <piotr dot r dot public at gmail dot com>
 
 pkgname=perl-cacertorg-ca
-pkgver=20110724.004
+pkgver=20210114.001
 _author=B/BD/BDFOY
 _perlmod=CACertOrg-CA
 pkgrel=1
 pkgdesc="CACertOrg::CA - CACert.org's CA root certificate in PEM format"
 arch=('any')
-url="http://search.cpan.org/dist/CACertOrg-CA/"
+url="https://metacpan.org/release/CACertOrg-CA/"
 license=('GPL' 'PerlArtistic')
 depends=(perl)
 makedepends=()
 provides=()
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('17eede0e3f5449ac1879c3d5e8edb8ddd37caca33e302567ff4a03131ba78fbb')
+sha256sums=('7a9e03e4c8ca6e94311b2405a9f3b1738a7fed8e77fc87c07acdcbaba8455286')
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
 
