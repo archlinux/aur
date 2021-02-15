@@ -3,7 +3,7 @@ pkgbase=leaderf-git
 pkgname=('vim-leaderf-git'
          'neovim-leaderf-git')
 _pkgname=leaderf
-pkgver=v1.22.r48.g312a13b
+pkgver=1.22.r48.g312a13b
 pkgrel=1
 pkgdesc='An efficient fuzzy finder that helps to locate files, buffers, mrus, gtags, etc. on the fly for both vim and neovim.'
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('git'
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
