@@ -1,6 +1,6 @@
 pkgbase = clap-git
 	pkgdesc = Modern performant generic finder and dispatcher for Vim and NeoVim
-	pkgver = v0.19.r14.g91331ea
+	pkgver = 0.19.r14.g91331ea
 	pkgrel = 1
 	url = https://github.com/liuchengxu/vim-clap
 	arch = any

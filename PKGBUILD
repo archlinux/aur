@@ -3,7 +3,7 @@ pkgbase=clap-git
 pkgname=('vim-clap-git'
          'neovim-clap-git')
 _pkgname=clap
-pkgver=v0.19.r14.g91331ea
+pkgver=0.19.r14.g91331ea
 pkgrel=1
 pkgdesc='Modern performant generic finder and dispatcher for Vim and NeoVim'
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('git'
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
