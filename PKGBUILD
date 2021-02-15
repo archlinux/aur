@@ -3,9 +3,9 @@ thread, without breaking the realtime behavior."
 url='https://wiki.ros.org/realtime_tools'
 
 pkgname='ros-noetic-realtime-tools'
-pkgver='1.16.0'
+pkgver='1.16.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=6
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -28,16 +28,9 @@ depends=(
     ${ros_depends[@]}
 )
 
-_dir="${srcdir}/realtime_tools-${pkgver}"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/realtime_tools/archive/${pkgver}.tar.gz"
-        "atomic.patch"::"https://github.com/ros-controls/realtime_tools/commit/f3d6ff3c30285d5d78953b5d9bf1f93f756beedc.patch")
-sha256sums=('690222fd2908cec0412d20f6e8b5d8a17132d959edb719e01695e89f7c4d8111'
-            'c2c2fc92f87f734bd0a5f70758f96f724036870c98bd8fd936729a9daaee66f4')
-
-prepare() {
-    cd "${srcdir}/${_dir}"
-    patch -Np1 -i "${srcdir}"/atomic.patch
-}
+_dir="realtime_tools-${pkgver}/"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/realtime_tools/archive/${pkgver}.tar.gz")
+sha256sums=('4f526e24ecb0f5e434bef443289da86f487ebacdd1076577f56cfde37a6900e7')
 
 build() {
     # Use ROS environment variables
