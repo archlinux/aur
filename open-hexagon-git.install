@@ -1,14 +1,30 @@
 _create_files() {
-	# Ensure that these files exist and are owned by root, but the package should not own them.
+	# Ensure that these files exist and are writeable for 'games' group, but the package should not own them.
 	cd /var/lib/open-hexagon/
+
 	touch log.txt
-	chmod a+w log.txt
+	chmod 664 log.txt
+	chown root:games log.txt
+
 	touch config.json
-	chmod a+w config.json
+	chmod 664 config.json
+	chown root:games config.json
+
 	touch scores.json
-	chmod a+w scores.json
+	chmod 664 scores.json
+	chown root:games scores.json
+
 	touch users.json
-	chmod a+w users.json
+	chmod 664 users.json
+	chown root:games users.json
+
+	mkdir -p Replays
+	chmod 1775 Replays
+	chown root:games Replays
+
+	mkdir -p Profiles
+	chmod 1775 Profiles
+	chown root:games Profiles
 }
 post_upgrade() {
 	_create_files

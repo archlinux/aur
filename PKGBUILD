@@ -1,14 +1,14 @@
 # Maintainer: Yurii <yu.hrysh@posteo.net>
 
 pkgname=open-hexagon-git
-pkgver=2.0.preview.r1772.g380f7a3d
-pkgrel=6
+pkgver=2.0.preview.r1871.g648e6ad5
+pkgrel=7
 epoch=1
 pkgdesc='Free software clone of Super Hexagon - a music-based arcade game'
 url='https://openhexagon.org/'
 arch=('any')
 license=('custom:AFL-3.0' 'custom')
-depends=('sfml')
+depends=('sfml' 'zenity')
 makedepends=('git' 'cmake' 'rsync')
 optdepends=('steam: integration for those who own the game on Steam'
 'discord: Discord Rich Presence support')
@@ -22,8 +22,8 @@ source=('git+https://github.com/SuperV1234/SSVOpenHexagon.git'
 install="$pkgname.install"
 sha256sums=('SKIP'
             'c58bf04778d29ade2b76ea5402671f95ede634fb67f44d707b2f9580054caaa7'
-            '34b305981bf95f9d8c7de14ad5fb916d94c9e60a63d4e69d7c21f08e0874fa64'
-            'a3558245d72250aadaaef32b087474a671a54fcca8267b5746d5bce56ce71397'
+            '57e64cbde625b2f3b1c3e0b48bb1357c96602d7c9e9c6c81647aa9288d7da7ca'
+            'f5a94b884e58b8e5d9c79340adbcfd23420beccb76cde53691f8ec191cd1d2e3'
             'a3f4ef5296619903b487ccd8d894e28b2d9fad3a9152683f642b43aeb88b7928')
 
 _reponame="SSVOpenHexagon"
@@ -62,7 +62,6 @@ package() {
 	# Dirty hack to allow writing data to current directory
 	# (also see .install file)
 	cd "$pkgdir/usr/lib/open-hexagon"
-	ln -s "/var/lib/open-hexagon/log.txt"
 	rm config.json
 	ln -s "/var/lib/open-hexagon/config.json"
 	mv "$srcdir/$_reponame/misc/default_config.json" "$pkgdir/var/lib/open-hexagon"
@@ -71,9 +70,11 @@ package() {
 	ln -s "/var/lib/open-hexagon/scores.json"
 	rm users.json
 	ln -s "/var/lib/open-hexagon/users.json"
-	mkdir -m=777 "$pkgdir/var/lib/open-hexagon/Profiles"
+
+	ln -s "/var/lib/open-hexagon/log.txt"
+
 	ln -s "/var/lib/open-hexagon/Profiles"
-	mkdir -m=777 "$pkgdir/var/lib/open-hexagon/Replays"
+
 	ln -s "/var/lib/open-hexagon/Replays"
 	
 
