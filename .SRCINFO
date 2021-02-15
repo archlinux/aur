@@ -1,0 +1,35 @@
+pkgbase = python-orange-canvas-core-git
+	pkgdesc = Orange Canvas core workflow editor.
+	pkgver = 0.1.19
+	pkgrel = 1
+	url = http://orange.biolab.si/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-chardet
+	depends = python-docutils
+	depends = python-pyqtgraph
+	depends = python-xlrd
+	depends = python-matplotlib
+	depends = python-scikit-learn
+	depends = python-psycopg2
+	depends = python-joblib
+	depends = python-keyrings-alt
+	depends = python-bottleneck
+	depends = python-anyqt
+	depends = qt5-svg
+	depends = python-pip
+	depends = python-serverfiles
+	depends = python-louvain
+	depends = python-xlsxwriter
+	depends = python-opentsne
+	depends = python-networkx
+	depends = python-requests
+	depends = python-pandas
+	depends = python-opentsne
+	source = git://github.com/biolab/orange-canvas-core
+	sha256sums = SKIP
+
+pkgname = python-orange-canvas-core-git
+
