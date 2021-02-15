@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-rqt-plot
 	pkgdesc = ROS - rqt_plot provides a GUI plugin visualizing numeric values in a 2D plot using different plotting backends.
-	pkgver = 0.4.9
+	pkgver = 0.4.12
 	pkgrel = 1
 	url = https://wiki.ros.org/rqt_plot
 	arch = any
@@ -20,8 +20,8 @@ pkgbase = ros-noetic-rqt-plot
 	depends = python-rospkg
 	depends = python-matplotlib
 	depends = python-numpy
-	source = ros-noetic-rqt-plot-0.4.9.tar.gz::https://github.com/ros-visualization/rqt_plot/archive/0.4.9.tar.gz
-	sha256sums = f133af1febcb43d82214508a3a6eb51fdf848fe5353f3c6c7f5825cea3f84ead
+	source = ros-noetic-rqt-plot-0.4.12.tar.gz::https://github.com/ros-visualization/rqt_plot/archive/0.4.12.tar.gz
+	sha256sums = 68d88f0bba8c44acd406638dc1f09542f7e01b681d955d033dcf22caf24ff7e0
 
 pkgname = ros-noetic-rqt-plot
 
