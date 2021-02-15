@@ -1,6 +1,6 @@
 pkgbase = python-orange-widget-base-git
 	pkgdesc = Base widget and workflow definitions for Orange.
-	pkgver = 1
+	pkgver = 4.11.0.r1.g29af7638
 	pkgrel = 1
 	url = http://orange.biolab.si/
 	arch = i686

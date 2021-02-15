@@ -3,7 +3,7 @@
 _author=biolab
 _pkgname=orange-widget-base
 pkgname=python-$_pkgname-git
-pkgver=1
+pkgver=4.11.0.r1.g29af7638
 pkgrel=1
 pkgdesc="Base widget and workflow definitions for Orange."
 arch=('i686' 'x86_64')
@@ -21,12 +21,12 @@ pkgver () {
 }
 
 build() {
-  cd "${srcdir}/orange-widget-base-$pkgver"
+  cd "${srcdir}/$_pkgname"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/orange-widget-base-$pkgver"
+  cd "${srcdir}/$_pkgname"
   python setup.py install --root="${pkgdir}" --optimize=1
 }
 
