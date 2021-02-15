@@ -1,6 +1,6 @@
 pkgbase = playlist-sync
 	pkgdesc = Tool to sync playlists between music folders.
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = http://gitlab.com/999eagle/playlist-sync
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = playlist-sync
 	makedepends = cargo
 	depends = gcc-libs
 	depends = xz
-	source = https://gitlab.com/999eagle/playlist-sync/-/archive/v0.2.3/playlist-sync-v0.2.3.tar.gz
-	sha256sums = 72eb29e8f2ee12a9c4e4948ea05516b5619d94d0186cee5664534662e0a51dcf
+	source = https://gitlab.com/999eagle/playlist-sync/-/archive/v0.2.4/playlist-sync-v0.2.4.tar.gz
+	sha256sums = 6d0378e543510bb913aafae00138f98ee0aeed03bac5bdd674c03c51829495c7
 
 pkgname = playlist-sync
 
