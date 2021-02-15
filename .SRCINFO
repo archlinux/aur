@@ -11,10 +11,10 @@ pkgbase = guile-git-lib
 	depends = guile
 	depends = guile-bytestructures
 	depends = libgit2>=0.28.0
-	source = https://gitlab.com/guile-git/guile-git/uploads/2600bb0dfdfb00bfbe46811dccad51d8/guile-git-0.4.0.tar.gz
-	source = https://gitlab.com/guile-git/guile-git/-/raw/v0.4.0/tests/.ssh/id_rsa_client
-	source = https://gitlab.com/guile-git/guile-git/-/raw/v0.4.0/tests/.ssh/id_rsa_client.pub
-	source = https://gitlab.com/guile-git/guile-git/-/raw/v0.4.0/tests/.ssh/id_rsa_server
+	source = guile-git-lib-0.4.0.tar.gz::https://gitlab.com/guile-git/guile-git/uploads/2600bb0dfdfb00bfbe46811dccad51d8/guile-git-0.4.0.tar.gz
+	source = guile-git-lib-0.4.0-id_rsa_client::https://gitlab.com/guile-git/guile-git/-/raw/v0.4.0/tests/.ssh/id_rsa_client
+	source = guile-git-lib-0.4.0-id_rsa_client.pub::https://gitlab.com/guile-git/guile-git/-/raw/v0.4.0/tests/.ssh/id_rsa_client.pub
+	source = guile-git-lib-0.4.0-id_rsa_server::https://gitlab.com/guile-git/guile-git/-/raw/v0.4.0/tests/.ssh/id_rsa_server
 	sha256sums = 2ccee3e0520b5db354a1b7070f95e3bbaf0bb0f61c11ca92793728257a7abecf
 	sha256sums = e58e37ec6d5916b46b785b9db5ae05498e5dc25b1beaa46eee227bf415fee952
 	sha256sums = 8a3b18d1d725f69ab778e0badbc43746766b591a54f965ee2e57d82822775d43
