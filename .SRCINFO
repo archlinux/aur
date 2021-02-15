@@ -9,7 +9,7 @@ pkgbase = guile-ssh
 	license = GPL3
 	depends = guile>=2.0.9
 	depends = libssh>=0.7.3
-	source = https://github.com/artyom-poptsov/guile-ssh/archive/v0.13.1.tar.gz
+	source = guile-ssh-0.13.1.tar.gz::https://github.com/artyom-poptsov/guile-ssh/archive/v0.13.1.tar.gz
 	sha256sums = 38bc5721b770aba0928f97c97346b03d108dcd82a17d5f56ab4e3e94d70a2c2f
 
 pkgname = guile-ssh

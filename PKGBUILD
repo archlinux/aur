@@ -11,7 +11,7 @@ depends=(
   'guile>=2.0.9'
   'libssh>=0.7.3')
 source=(
-  "https://github.com/artyom-poptsov/guile-ssh/archive/v${pkgver}.tar.gz")
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/artyom-poptsov/guile-ssh/archive/v${pkgver}.tar.gz")
 sha256sums=(
   '38bc5721b770aba0928f97c97346b03d108dcd82a17d5f56ab4e3e94d70a2c2f')
 
