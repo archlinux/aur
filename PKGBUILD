@@ -1,6 +1,6 @@
 # Maintainer: Dan Maftei <dan.maftei@gmail.com>
 pkgname="molden"
-pkgver=6.5
+pkgver=6.7
 pkgrel=1
 pkgdesc="A program for molecular and electronic structure visualization"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ source=(
     "ftp://ftp.cmbi.umcn.nl/pub/molgraph/molden/$pkgname$pkgver.tar.gz"
 )
 noextract=()
-md5sums=('97bfffd55e166ca3a9fbddee111993ff')
+md5sums=('65d2f8fbdb2800e48bb0e12c814dfcd5')
 
 build() {
   cd "molden$pkgver"
@@ -48,10 +48,8 @@ build() {
 
 package() {
   cd "molden$pkgver"
-  install -t "$pkgdir/usr/bin/"  -Dm755 bin/{molden,gmolden}
-  install -t "$pkgdir/usr/lib/$pkgname/" -Dm755 src/ambfor/ambfor src/ambfor/ambmd src/surf/surf  
+  install -t "$pkgdir/usr/bin/"  -Dm755 bin/{molden,gmolden,ambfor,ambmd,surf}
   install -t "$pkgdir/usr/share/doc/$pkgname" -Dm755 doc/figures.ps.Z  doc/manual.ps.Z doc/manual.txt.Z  
   install -t "$pkgdir/usr/share/licenses/$pkgname/" -Dm755 CopyRight COMMERCIAL_LICENSE REGISTER     
 }
-
 
