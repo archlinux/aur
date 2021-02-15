@@ -6,7 +6,7 @@
 pkgname=java-mango
 _pkgname=${pkgname/java-/}
 pkgver=4.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A viewer for medical research images'
 arch=('any') # x86_64
 url='http://ric.uthscsa.edu/mango/index.html'
@@ -34,7 +34,7 @@ prepare() {
     mv "$srcdir"/Mango "$srcdir"/$_pkgname
 
     ## Remove Unnecessary Directories/Files ##
-    rm -rf $_pkgname/{jre7,$_pkgname}
+    rm -rf $_pkgname/{.DS_Store,jre7,$_pkgname,README}
 }
 
 ### Package() ###

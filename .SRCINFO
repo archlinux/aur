@@ -1,7 +1,7 @@
 pkgbase = java-mango
 	pkgdesc = A viewer for medical research images
 	pkgver = 4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ric.uthscsa.edu/mango/index.html
 	arch = any
 	license = custom:RII-UTHSCSA
