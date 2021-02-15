@@ -1,0 +1,28 @@
+diff --git a/distro/systemd/openvpn-client@.service.in b/distro/systemd/openvpn-client@.service.in
+index cbcef653..71aa1335 100644
+--- a/distro/systemd/openvpn-client@.service.in
++++ b/distro/systemd/openvpn-client@.service.in
+@@ -11,6 +11,9 @@ Type=notify
+ PrivateTmp=true
+ WorkingDirectory=/etc/openvpn/client
+ ExecStart=@sbindir@/openvpn --suppress-timestamps --nobind --config %i.conf
++User=openvpn
++Group=network
++AmbientCapabilities=CAP_IPC_LOCK CAP_NET_ADMIN CAP_NET_RAW CAP_SETGID CAP_SETUID CAP_SYS_CHROOT CAP_DAC_OVERRIDE
+ CapabilityBoundingSet=CAP_IPC_LOCK CAP_NET_ADMIN CAP_NET_RAW CAP_SETGID CAP_SETUID CAP_SYS_CHROOT CAP_DAC_OVERRIDE
+ LimitNPROC=10
+ DeviceAllow=/dev/null rw
+diff --git a/distro/systemd/openvpn-server@.service.in b/distro/systemd/openvpn-server@.service.in
+index d1cc72cb..691f369e 100644
+--- a/distro/systemd/openvpn-server@.service.in
++++ b/distro/systemd/openvpn-server@.service.in
+@@ -11,6 +11,9 @@ Type=notify
+ PrivateTmp=true
+ WorkingDirectory=/etc/openvpn/server
+ ExecStart=@sbindir@/openvpn --status %t/openvpn-server/status-%i.log --status-version 2 --suppress-timestamps --config %i.conf
++User=openvpn
++Group=network
++AmbientCapabilities=CAP_IPC_LOCK CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW CAP_SETGID CAP_SETUID CAP_SYS_CHROOT CAP_DAC_OVERRIDE CAP_AUDIT_WRITE
+ CapabilityBoundingSet=CAP_IPC_LOCK CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW CAP_SETGID CAP_SETUID CAP_SYS_CHROOT CAP_DAC_OVERRIDE CAP_AUDIT_WRITE
+ LimitNPROC=10
+ DeviceAllow=/dev/null rw
