@@ -1,0 +1,22 @@
+pkgbase = rkvm-git
+	pkgdesc = Virtual KVM switch for Linux machines
+	pkgver = 0.2.0.r9.gbf13366
+	pkgrel = 1
+	url = https://github.com/htrefil/rkvm
+	arch = x86_64
+	license = MIT
+	makedepends = clang
+	makedepends = libevdev
+	makedepends = rust
+	depends = openssl
+	backup = etc/rkvm/client.toml
+	backup = etc/rkvm/server.toml
+	source = git+https://github.com/htrefil/rkvm.git
+	source = rkvm-client.service
+	source = rkvm-server.service
+	sha256sums = SKIP
+	sha256sums = b3c39452aefb93f9a620a907d6947db66b0c907cfc351f72e2cc4953a081a038
+	sha256sums = 031de233ee12593a3d3344d6dbacdcdff4cf68ad8067b80955bdb1bab964daef
+
+pkgname = rkvm-git
+
