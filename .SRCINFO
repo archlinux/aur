@@ -1,0 +1,17 @@
+pkgbase = unxwb
+	pkgdesc = Utility to unpack xwb audio archives containing either wav or xwma sound files
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://aluigi.altervista.org/
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	source = https://web.archive.org/web/20160309150618/http://helicoid.de/scumm/unxwb-mi.zip
+	sha256sums = f4f5d9e19f850faf62f9267a535611304c73f78ef2c23f57e9391fcbcfa5c010
+
+pkgname = unxwb
+
