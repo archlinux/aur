@@ -1,6 +1,6 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=vim-polyglot-git
-pkgver=v4.4.3.r9.g56121b4
+pkgver=4.17.0.r12.g4c10562d
 pkgrel=1
 pkgdesc='A solid language pack for Vim.'
 arch=('any')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/vim-polyglot"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
