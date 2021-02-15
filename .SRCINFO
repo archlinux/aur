@@ -1,7 +1,7 @@
 pkgbase = python-ite8291r3-ctl
 	pkgdesc = ite8291r3-ctl is a userspace driver for the ITE 8291 (rev 0.03) RGB keyboard backlight controller.
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pobrn/ite8291r3-ctl
 	arch = any
 	license = GPL2
