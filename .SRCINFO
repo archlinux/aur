@@ -1,14 +1,14 @@
 pkgbase = gitlab-glab
 	pkgdesc = Gitlab Cli tool written in Go to help work seamlessly with Gitlab from the command line.
-	pkgver = 1.14.0
-	pkgrel = 2
+	pkgver = 1.15.0
+	pkgrel = 1
 	url = https://github.com/profclems/glab
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = gitlab-glab-1.14.0.tar.gz::https://github.com/profclems/glab/archive/v1.14.0.tar.gz
-	sha256sums = 927206802cda67f0b725d0ed2b355a67ab9eb560a9e8b8c6e4ca994d9aba3daa
+	source = gitlab-glab-1.15.0.tar.gz::https://github.com/profclems/glab/archive/v1.15.0.tar.gz
+	sha256sums = d2551b1ae3c8ec61e0d161e8a75efb16fea1e0716eed0095f23bcf5bfbc8d758
 
 pkgname = gitlab-glab
 
