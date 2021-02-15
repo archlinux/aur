@@ -1,15 +1,15 @@
 pkgbase = perl-array-diff
 	pkgdesc = Array::Diff - Find the differences between two arrays
-	pkgver = 0.07
+	pkgver = 0.09
 	pkgrel = 1
-	url = http://search.cpan.org/dist/array-diff/
+	url = https://metacpan.org/release/array-diff/
 	arch = any
 	license = GPL
 	license = PerlArtistic
 	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/T/TY/TYPESTER/Array-Diff-0.07.tar.gz
-	sha256sums = 78e7d3a3374c74e117b7198f8e6649367a2906561b8a485d3870f242fa8f8346
+	source = http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/Array-Diff-0.09.tar.gz
+	sha256sums = 8006392e9861e741537c2bbc9116c8e42b962f2e07e8d641a2ff6a11c6445077
 
 pkgname = perl-array-diff
 

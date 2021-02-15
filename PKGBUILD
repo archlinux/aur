@@ -2,13 +2,13 @@
 # Contributor: Piotr Rogoza <piotr dot r dot public at gmail dot com>
 
 pkgname=perl-array-diff
-pkgver=0.07
+pkgver=0.09
 pkgrel=1
-_author="T/TY/TYPESTER"
+_author="N/NE/NEILB"
 _perlmod="Array-Diff"
 pkgdesc="Array::Diff - Find the differences between two arrays"
 arch=('any')
-url="http://search.cpan.org/dist/array-diff/"
+url="https://metacpan.org/release/array-diff/"
 license=('GPL' 'PerlArtistic')
 depends=(perl)
 checkdepends=()
@@ -21,7 +21,7 @@ install=
 noextract=()
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('78e7d3a3374c74e117b7198f8e6649367a2906561b8a485d3870f242fa8f8346')
+sha256sums=('8006392e9861e741537c2bbc9116c8e42b962f2e07e8d641a2ff6a11c6445077')
 
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
