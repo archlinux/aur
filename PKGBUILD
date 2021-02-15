@@ -1,7 +1,7 @@
 # Maintainer: gardar <aur@gardar.net>
 
 pkgname=arduino-pro-ide
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="The Arduino Pro IDE bring features that address the needs of advanced users whilst retaining continuity with the simple "classic" Arduino IDE."
 arch=('x86_64')
@@ -12,7 +12,7 @@ url="https://github.com/arduino/$pkgname"
 license=('EPLv2')
 install="$pkgname.install"
 source=("https://downloads.arduino.cc/$pkgname/${pkgname}_${pkgver}_Linux_64bit.zip" "git+git://github.com/arduino/$pkgname.git")
-sha256sums=('d1e887cac7c83ccc6760de137b2d614b0dfdf4117dd6ca4950510a20c8161f52' 'SKIP')
+sha256sums=('0984d2ef2575cbb77d03445fb719c14bae4cc6bce06272b07105b7b9dcfe16f6' 'SKIP')
 
 prepare() {
 	gendesk -f --pkgname "$pkgname" --name "Arduino Pro IDE" --pkgdesc "$pkgdesc"
