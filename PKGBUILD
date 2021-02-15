@@ -8,12 +8,14 @@ pkgdesc="A library for reading and writing images, including classes, utilities,
 arch=(x86_64)
 url="http://www.openimageio.org/"
 license=('custom')
-depends=('openexr' 'boost-libs' 'openjpeg2' 'glew' 'libtiff' 'opencolorio' 'intel-tbb' 'libpng' 'libraw' 'libwebp'
+depends=('openexr' 'boost-libs' 'openjpeg2' 'glew' 'libtiff' 'opencolorio=2.0.0' 'intel-tbb' 'libpng' 'libraw' 'libwebp'
          'fmt' 'pugixml' 'pybind11')
 # TODO: Consider adding these deps: 'openvdb' 'ffmpeg' 'ptex' 'libheif' 'hdf5' 'opencv'
 makedepends=('cmake' 'qt5-base' 'python' 'boost' 'mesa' 'freetype2' 'fontconfig' 'libxrender' 'ninja' 'robin-map')
 optdepends=('qt5-base: iv image viewer'
             'python: bindings support')
+provides=(openimageio)
+conflicts=(openimageio)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenImageIO/oiio/archive/Release-$pkgver.tar.gz")
 sha512sums=('73809587dd405e64e593d6223ef37d4b94c4f1e1d9682fd1bf09e8e4ee8bc9928ed500b7dcc03036e138e45e65ea1f43c11c53d1cb6436a34eb8d15b2415ada5')
 
