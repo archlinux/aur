@@ -52,7 +52,8 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   scons install prefix="$pkgdir/opt/$pkgname"
-  install -m644 lib/libcbang-boost.a -t "$pkgdir/opt/$pkgname/lib" 
+  install -m644 lib/libcbang.a -t "$pkgdir/opt/$pkgname/lib"
+  install -m644 lib/libcbang-boost.a -t "$pkgdir/opt/$pkgname/lib"
   cp -a config/ "$pkgdir/opt/$pkgname/config/"
   cp -a src/boost/boost/ "$pkgdir/opt/$pkgname/include/"
 }
