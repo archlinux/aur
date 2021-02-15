@@ -5,13 +5,13 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 _pkgname='ferdi'
 pkgname="$_pkgname-git"
-pkgver='5.5.0.gm.2.r99.gbe3953b9'
-pkgrel='2'
+pkgver='5.6.0.beta.5.r13.g17d14c88'
+pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$_pkgname.com"
 license=('Apache')
-depends=('electron9' 'libxkbfile')
+depends=('electron10' 'libxkbfile')
 makedepends=('git' 'npm' 'python' 'python2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -24,7 +24,7 @@ source=(
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            '9782d1bfbf0379ef1e7afb9f43b6c35ee2331b142c7705c336cab269e18648cb')
+            '7eb846fe8242c78afcdef9c8e1fbce6fdcf100f59da85fee83a99690a57f60ea')
 
 _sourcedirectory="$pkgname"
 _homedirectory="$pkgname-home"
@@ -54,7 +54,7 @@ prepare() {
 	git submodule update --init --recursive
 
 	# Set system Electron version for ABI compatibility
-	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron9/version')"'"|' 'package.json'
+	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron10/version')"'"|' 'package.json'
 
 	# Prevent Ferdi from being launched in dev mode
 	sed -i "s|import isDevMode from 'electron-is-dev'|const isDevMode = false|g" 'src/index.js' 'src/config.js'
@@ -87,7 +87,7 @@ build() {
 	cd "$srcdir/$_sourcedirectory/"
 
 	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx gulp build
-	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron9' -c.electronVersion="$(cat '/usr/lib/electron9/version')"
+	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron10' -c.electronVersion="$(cat '/usr/lib/electron10/version')"
 }
 
 package() {
@@ -106,7 +106,7 @@ package() {
 	install -dm755 "$pkgdir/usr/bin/"
 	cat << EOF > "$pkgdir/usr/bin/$_pkgname"
 #!/bin/sh
-NODE_ENV=production exec electron9 '/usr/lib/$_pkgname/app.asar' "\$@"
+NODE_ENV=production exec electron10 '/usr/lib/$_pkgname/app.asar' "\$@"
 EOF
 	chmod +x "$pkgdir/usr/bin/$_pkgname"
 

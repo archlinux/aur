@@ -1,11 +1,11 @@
 diff --git a/src/stores/AppStore.js b/src/stores/AppStore.js
-index 153fdb2c..96a18f37 100644
+index 869cfa9d..afdf47a3 100644
 --- a/src/stores/AppStore.js
 +++ b/src/stores/AppStore.js
-@@ -34,7 +34,7 @@ const mainWindow = remote.getCurrentWindow();
-
+@@ -36,7 +36,7 @@ const mainWindow = remote.getCurrentWindow();
+ 
  const defaultLocale = DEFAULT_APP_SETTINGS.locale;
-
+ 
 -const executablePath = isMac ? remote.process.execPath : process.execPath;
 +const executablePath = '/usr/bin/ferdi';
  const autoLauncher = new AutoLaunch({
