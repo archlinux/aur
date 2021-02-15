@@ -1,20 +1,20 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
-# Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: Philip Goto <philip.goto@gmail.com>
 
 _pkgname=libadwaita
-pkgname=libadwaita-git
-pkgver=1.1.0.r.g9d8f4ab
+pkgname=$_pkgname-git
+pkgver=1.1.0.r.g0a3ec43
 pkgrel=1
 pkgdesc="Library full of GTK+ widgets for mobile phones"
-url="https://gitlab.gnome.org/exalm/libadwaita"
+url="https://gitlab.gnome.org/exalm/$_pkgname"
 license=(LGPL)
 arch=(i686 x86_64 armv7h aarch64)
-depends=(gtk3)
+depends=(gtk4)
 makedepends=(git glade gobject-introspection meson vala)
 checkdepends=(xorg-server-xvfb)
 source=("git+$url")
-provides=(libadwaita)
-conflicts=(libadwaita)
+provides=($_pkgname)
+conflicts=($_pkgname)
 md5sums=(SKIP)
 
   pkgver() {
@@ -32,5 +32,4 @@ build() {
 
 package() {
     DESTDIR="$pkgdir" ninja -C build install
-    rm -rf $pkgdir/usr/share/locale/*/LC_MESSAGES/libhandy.mo
 }
