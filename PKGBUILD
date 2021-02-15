@@ -1,6 +1,6 @@
 # Maintainer: Matthew "Madness" Evan <mattmadness@420blaze.it>
 pkgname=python-purple-git
-pkgver=2021.02.10
+pkgver=2021.02.14
 pkgrel=0
 pkgdesc="Python bind for libpurple using the Cython extension"
 arch=(any)
@@ -20,5 +20,5 @@ build() {
 
 package() {
 	cd python-purple	
-	python2 setup.py install --root="$pkgdir/python-purple-git"
+	python2 setup.py install --root="$pkgdir/"
 }	

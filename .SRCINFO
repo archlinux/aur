@@ -1,6 +1,6 @@
 pkgbase = python-purple-git
 	pkgdesc = Python bind for libpurple using the Cython extension
-	pkgver = 2021.02.10
+	pkgver = 2021.02.14
 	pkgrel = 0
 	url = https://github.com/fahhem/python-purple
 	changelog = CHANGELOG
