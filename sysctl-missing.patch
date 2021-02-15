@@ -1,13 +1,13 @@
-diff --unified --recursive --text mlucas_v19/src/platform.h mlucas_v19-1/src/platform.h
---- mlucas_v19/src/platform.h	2020-11-28 13:04:32.101749770 -0500
-+++ mlucas_v19-1/src/platform.h	2020-11-28 12:59:37.412141662 -0500
+diff --unified --recursive --text mlucas_v19.1/src/platform.h mlucas/src/platform.h
+--- mlucas_v19.1/src/platform.h	2021-01-26 20:15:59.000000000 -0500
++++ mlucas/src/platform.h	2021-02-15 14:58:45.798283597 -0500
 @@ -1304,7 +1304,7 @@
  		#include <sched.h>
  
  	  #ifndef OS_TYPE_GNU_HURD
--               //#include <sys/sysctl.h>
-+		#include <sys/sysctl.h>
+-		#include <sys/sysctl.h>
++//#include <sys/sysctl.h>
  	  #endif
  		#include <unistd.h>	// Needed for Posix sleep() command, among other things
  		#ifdef OS_TYPE_LINUX
-Only in mlucas_v19/src: platform.h~
+Only in mlucas/src: platform.h~

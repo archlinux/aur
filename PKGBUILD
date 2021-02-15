@@ -1,23 +1,20 @@
 #Maintainer: Dylan Delgado
 
 pkgname=mlucas
-pkgver=19
+pkgver=19.1
 pkgrel=1
 pkgdesc="Program used to perform Lucas-Lehmer tests of Mersenne numbers. Can be built on the ARM architecture."
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://www.mersenneforum.org/mayer/README.html"
 license=('FDL1.3')
-source=("https://www.mersenneforum.org/mayer/src/C/mlucas_v19.txz"
-'fp-link.patch'
+source=("https://www.mersenneforum.org/mayer/src/C/mlucas_v19.1.txz"
 'sysctl-missing.patch')
-md5sums=('10906d3f1f4206ae93ebdb045f36535c'
-'04b7e30ea09677f239195f46c9f14966'
-'6959099d2b465f156c7d375b644d9dec')
+md5sums=('2b9af033d4bbb6d439d70bb9bc0c2617'
+'a5f745d70a87481235dc350b8cdb77ee')
 
 prepare() {
 cd "${srcdir}"/"${pkgname}"_v"${pkgver}"
-patch -R -p1 < "../../sysctl-missing.patch"
-patch -R -p1 < "../../fp-link.patch"
+patch -p1 < "../../sysctl-missing.patch"
 }
 
 build() {
