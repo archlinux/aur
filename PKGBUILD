@@ -1,12 +1,12 @@
 # Maintainer: Bruce Zhang <zttt183525594 [at] gmail [dot] com>
 pkgname=fastocr-git
 pkgver=0.1.1.r0.2e32336
-pkgrel=2
+pkgrel=3
 pkgdesc='FastOCR is a desktop application for OCR API.'
 arch=('any')
 url='https://github.com/BruceZhang1993/FastOCR'
 license=('LGPL3')
-depends=('python-pyside2' 'python-qasync' 'python-baidu-aip' 'dbus-python')
+depends=('pyside2' 'python-qasync' 'python-baidu-aip' 'python-dbus')
 makedepends=('git' 'python-setuptools') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=('fastocr')
 source=('fastocr::git+https://github.com/BruceZhang1993/FastOCR')
