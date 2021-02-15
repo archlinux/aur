@@ -1,7 +1,7 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime-bin
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
 conflicts=('kime')
@@ -16,10 +16,8 @@ optdepends=('libappindicator-gtk3: indicator support'
             'cairo: xim support')
 arch=('any')
 license=('GPL3')
-# Arch doesn't run on GHA temporary disable
-# source=("${url}/releases/download/v${pkgver}/kime-arch-${pkgver}.tar.xz")
-source=("${url}/releases/download/v${pkgver}/kime-ubuntu-${pkgver}.tar.xz")
-md5sums=('f8f17fe63c1cf7642d213e0ae172a6e0')
+source=("${url}/releases/download/v${pkgver}/kime-arch-${pkgver}.tar.xz")
+md5sums=('6a1b5b4b44067c1f9426750f02240d82')
 
 package() {
     install -Dm755 kime-indicator -t "${pkgdir}/usr/bin"
