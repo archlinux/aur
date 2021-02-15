@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/GTAmodding/re3"
 license=('unknown')
 depends=('openal' 'glew' 'glfw' 'libsndfile' 'mpg123')
-makedepends=('git' 'cmake')
+makedepends=('git' 'premake')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("re3::git+https://github.com/GTAmodding/re3")
@@ -21,7 +21,7 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	git submodule update --init --recursive
-	./premake5Linux --with-librw gmake2
+	premake5 --with-librw gmake2
 	cd "$srcdir/${pkgname%-git}/build"
 	make config=release_linux-amd64-librw_gl3_glfw-oal -j1
 }
