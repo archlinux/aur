@@ -2,7 +2,7 @@
 
 pkgname=titlegetter
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A little tool to get the title of the websites and format the title and the links to markdown or html.'
 url='https://github.com/WeepingDogel/TitleGetter'
 arch=('any')
@@ -13,8 +13,9 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 package(){
     cd TitleGetter-$pkgver
     install -Dm755 "titlegetter.py" -t "$pkgdir/usr/bin"
-    chmod a+x "$pkgdir/usr/bin/titlegetter.py"
-    ln -s "$pkgdir/usr/bin/titlegetter.py" "$pkgdir/usr/bin/titlegetter"
+    cd "$pkgdir/usr/bin"
+    ln -s "titlegetter.py" "titlegetter"
+    cd "../../../../src/TitleGetter-$pkgver"
     install -Dm755 "config/config.toml" -t "$pkgdir/etc/titlegetter"
     install -Dm755 "config/lang.toml" -t "$pkgdir/usr/share/titlegetter"
     install -Dm755 "Pics/2020-09-13_00-17.png" -t "$pkgdir/usr/share/titlegetter/example"
