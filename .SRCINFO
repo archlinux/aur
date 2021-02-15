@@ -9,7 +9,7 @@ pkgbase = guile-gcrypt
 	license = GPL3
 	depends = guile
 	depends = libgcrypt
-	source = https://notabug.org/cwebber/guile-gcrypt/archive/v0.3.0.tar.gz
+	source = guile-gcrypt-0.3.0.tar.gz::https://notabug.org/cwebber/guile-gcrypt/archive/v0.3.0.tar.gz
 	sha256sums = 07394c3de4f31a36ca2b670e1998c526de891d9436f12e94d8862ab081274d6a
 
 pkgname = guile-gcrypt

@@ -9,7 +9,7 @@ arch=('x86_64' 'i686' 'armv7h')
 url="https://notabug.org/cwebber/guile-gcrypt"
 license=('GPL3')
 depends=('guile' 'libgcrypt')
-source=("https://notabug.org/cwebber/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://notabug.org/cwebber/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('07394c3de4f31a36ca2b670e1998c526de891d9436f12e94d8862ab081274d6a')
 
 build() {
