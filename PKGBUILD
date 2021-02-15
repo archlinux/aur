@@ -1,7 +1,7 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime-bin
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
 conflicts=('kime')
@@ -33,7 +33,7 @@ package() {
     install -Dm644 kime_engine.h -t "${pkgdir}/usr/include"
     install -Dm644 kime_engine.hpp -t "${pkgdir}/usr/include"
     install -Dm644 default_config.yaml -T "${pkgdir}/etc/kime/config.yaml"
-    install -Dm644 kime-eng-64x64.png -t "${pkgdir}/usr/share/kime"
-    install -Dm644 kime-han-64x64.png -t "${pkgdir}/usr/share/kime"
+    install -Dm644 kime-eng-64x64.png -t "${pkgdir}/usr/share/kime/icons"
+    install -Dm644 kime-han-64x64.png -t "${pkgdir}/usr/share/kime/icons"
 }
 
