@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="http://orange.biolab.si/"
 license=('GPL3')
 makedepends=('python-setuptools')
-depends=('python-chardet' 'python-docutils' 'python-pyqtgraph' 'python-xlrd' 'python-matplotlib' 'python-scikit-learn' 'python-psycopg2' 'python-joblib' 'python-keyrings-alt' 'python-bottleneck' 'python-anyqt' 'qt5-svg' 'python-pip' 'python-serverfiles' 'python-louvain' 'python-xlsxwriter' 'python-opentsne' 'python-networkx' 'python-requests' 'python-pandas' 'python-opentsne')
+depends=('python-chardet' 'python-docutils' 'python-pyqtgraph' 'python-xlrd' 'python-matplotlib' 'python-scikit-learn' 'python-psycopg2' 'python-joblib' 'python-keyrings-alt' 'python-bottleneck' 'python-anyqt' 'qt5-svg' 'python-pip' 'python-serverfiles' 'python-louvain' 'python-xlsxwriter' 'python-networkx' 'python-requests' 'python-pandas' 'python-opentsne-git')
 source=("git://github.com/$_author/$_pkgname")
 sha256sums=('SKIP')
 
