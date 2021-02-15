@@ -20,7 +20,7 @@ depends=(
     'libxkbcommon'
     'opengl-driver'
     'pixman'
-#    'xcb-util-errors'
+    'xcb-util-errors'
     'xcb-util-image'
     'xcb-util-wm'
     'xcb-util-renderutil'
@@ -51,13 +51,15 @@ _flags=(
     -Dlogind=disabled
     -Dlogind-provider=elogind
     -Dlibseat=disabled
-    -Dxcb-errors=disabled
+    -Dxcb-errors=enabled
     -Dxcb-icccm=enabled
     -Dxcb-xkb=enabled
     -Dxwayland=enabled
     -Dx11-backend=enabled
     -Dexamples=false
     -Dxdg-foreign=disabled
+    -Db_ndebug=false
+    -Dw_error=false
 )
 
 build() {

@@ -12,6 +12,7 @@ pkgbase = wlroots-nosystemd-git
 	depends = libxkbcommon
 	depends = opengl-driver
 	depends = pixman
+	depends = xcb-util-errors
 	depends = xcb-util-image
 	depends = xcb-util-wm
 	depends = xcb-util-renderutil
