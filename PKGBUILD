@@ -1,24 +1,25 @@
-# Maintainer: Terin Stock <terinjokes@gmail.com>
+# Maintainer: Karol "Kenji Takahashi" Woźniak <kenji.sx>
+# Contributor: Terin Stock <terinjokes@gmail.com>
 
 pkgname=archiver
-pkgver=3.3.2
-_tagcommit="c7eae9dcbcb1f0a0ce965184868097babf73d415"
-_tagdate="29 Sept 2020"
+pkgver=3.5.0
 pkgrel=1
-pkgdesc="A multi-format archive utility written in Go"
+pkgdesc="Easily create & extract archives, and compress & decompress files of various formats"
 arch=("x86_64")
 url="https://github.com/mholt/archiver"
 license=("MIT")
-makedepends=("go-pie")
+makedepends=("go")
 depends=("glibc")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mholt/archiver/archive/v${pkgver}.tar.gz")
-sha256sums=('1d1db34177fa0d85aea6860b33e94700b1acaa2f3ea626e1f457fede6991041b')
+sha256sums=('8f2e3ad68553f6b58bf99e8635ff0953f62ff0a7804da7658954ffaa7d0aaa0a')
 
 build() {
   cd "${pkgname}-${pkgver}"
   go build \
     -trimpath \
-    -ldflags "-X 'main.version=${pkgver}' -X 'main.commit=${_tagcommit}' -X 'main.date=${_tagdate}' -extldflags ${LDFLAGS}" \
+	-buildmode=pie \
+	-mod=readonly \
+    -ldflags "-linkmode external -extldflags ${LDFLAGS}" \
     -o . ./cmd/arc/...
 }
 
