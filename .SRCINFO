@@ -1,7 +1,7 @@
 pkgbase = gnome-control-center-system76
 	pkgdesc = GNOME's main interface to configure various aspects of the desktop (with System76 patches)
-	pkgver = 3.38.3
-	pkgrel = 1.2
+	pkgver = 3.38.4
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-control-center
 	arch = x86_64
 	license = GPL2
@@ -48,7 +48,7 @@ pkgbase = gnome-control-center-system76
 	optdepends = openssh: remote login
 	provides = gnome-control-center
 	conflicts = gnome-control-center
-	source = git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=681ce6c7f6b2a84a3615fcd9e1c0c74673714fb4
+	source = git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=796549a7ed697da368efe8386f530ee482a2de06
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	source = git+https://gitlab.gnome.org/GNOME/libhandy.git
 	source = 0001-mouse-Add-Disable-While-Typing-toggle-for-touchpad.patch

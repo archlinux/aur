@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-control-center-system76
 _pkgname=${pkgname%-system76}
-pkgver=3.38.3
-pkgrel=1.2
+pkgver=3.38.4
+pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop (with System76 patches)"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 license=(GPL2)
@@ -22,7 +22,7 @@ optdepends=('system-config-printer: Printer settings'
             'openssh: remote login')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-_commit=681ce6c7f6b2a84a3615fcd9e1c0c74673714fb4  # tags/3.38.3^0
+_commit=796549a7ed697da368efe8386f530ee482a2de06  # tags/3.38.4^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
         'git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git'
         'git+https://gitlab.gnome.org/GNOME/libhandy.git'
