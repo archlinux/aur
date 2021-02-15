@@ -1,7 +1,7 @@
 pkgbase = librewolf-wayland-hg
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
 	pkgver = r591370+.fdd919d10609+
-	pkgrel = 1
+	pkgrel = 2
 	url = https://librewolf-community.gitlab.io/
 	arch = x86_64
 	license = MPL
@@ -52,16 +52,20 @@ pkgbase = librewolf-wayland-hg
 	source = hg+https://hg.mozilla.org/mozilla-unified#revision=release
 	source = librewolf.desktop
 	source = git+https://gitlab.com/librewolf-community/browser/common.git
-	source = git+https://gitlab.com/librewolf-community/settings.git
-	source = megabar.patch
-	source = remove_addons.patch
-	source = unity-menubar.patch
-	sha256sums = e98f586aa4d58e7418da41a2d19cd30030d072f86edd24a3fd6f769284287cee
+	source = git+https://gitlab.com/librewolf-community/settings.git#commit=3feb12464aa81df2f4ff162fce69890614c0ac8f
+	source = rust_build_fix.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/f43e70c98c07d8cf5a3325733ff5084b6f672564/rust_build_fix.patch
+	source = megabar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/f43e70c98c07d8cf5a3325733ff5084b6f672564/megabar.patch
+	source = remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/f43e70c98c07d8cf5a3325733ff5084b6f672564/remove_addons.patch
+	source = context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/f43e70c98c07d8cf5a3325733ff5084b6f672564/context-menu.patch
+	source = unity-menubar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/f43e70c98c07d8cf5a3325733ff5084b6f672564/unity-menubar.patch
+	sha256sums = b157cdc265daa6140ec8daef2bc98d335f871e7e9ac235287fb199e11c164287
 	sha256sums = 0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 9a546803491818cfc016e4be908710e230b2b2b6640ec1a7df61c98053444471
 	sha256sums = 682bf4bf5d79db0080aa132235a95b25745c8ef944d2a2e1fed985489d894df5
 	sha256sums = f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6
+	sha256sums = 3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd
 	sha256sums = ee302586f5291f809759f5eae3e5bad60b13007d9a9d37ac7f397597eb1d8665
 	sha256sums = SKIP
 	sha256sums = a9e5264257041c0b968425b5c97436ba48e8d294e1a0f02c59c35461ea245c33

@@ -9,7 +9,7 @@
 pkgname=librewolf-wayland-hg
 _pkgname=Librewolf
 pkgver=r591370+.fdd919d10609+
-pkgrel=1
+pkgrel=2
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -25,28 +25,32 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
 options=(!emptydirs !makeflags !strip)
-_settings_commit=25115b211d60876c43f5098ce3e88bcee2a7e521
+_linux_commit=f43e70c98c07d8cf5a3325733ff5084b6f672564
+_settings_commit=3feb12464aa81df2f4ff162fce69890614c0ac8f
 _repo=https://hg.mozilla.org/mozilla-unified
 conflicts=('librewolf')
 provides=('librewolf')
 source=("hg+$_repo#revision=release"
         librewolf.desktop
         "git+https://gitlab.com/librewolf-community/browser/common.git"
-        "git+https://gitlab.com/librewolf-community/settings.git"
-        "megabar.patch"
-        "remove_addons.patch"
-        "unity-menubar.patch")
-sha256sums=('e98f586aa4d58e7418da41a2d19cd30030d072f86edd24a3fd6f769284287cee'
+        "git+https://gitlab.com/librewolf-community/settings.git#commit=${_settings_commit}"
+        "rust_build_fix.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/rust_build_fix.patch"
+        "megabar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/megabar.patch"
+        "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
+        "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
+        "unity-menubar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/unity-menubar.patch")
+sha256sums=('b157cdc265daa6140ec8daef2bc98d335f871e7e9ac235287fb199e11c164287'
             '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
             'SKIP'
             'SKIP'
+            '9a546803491818cfc016e4be908710e230b2b2b6640ec1a7df61c98053444471'
             '682bf4bf5d79db0080aa132235a95b25745c8ef944d2a2e1fed985489d894df5'
             'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
+            '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
             'ee302586f5291f809759f5eae3e5bad60b13007d9a9d37ac7f397597eb1d8665'
             'SKIP'
             'a9e5264257041c0b968425b5c97436ba48e8d294e1a0f02c59c35461ea245c33'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797')
-
 pkgver() {
   cd mozilla-unified
   printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
@@ -71,6 +75,7 @@ ac_add_options --disable-debug
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-hardening
+# probably not needed, enabled by default?
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 ac_add_options --disable-elf-hack
@@ -87,9 +92,9 @@ export RANLIB=llvm-ranlib
 # Branding
 ac_add_options --enable-update-channel=release
 ac_add_options --with-app-name=librewolf
-ac_add_options --with-app-basename=${_pkgname}
+ac_add_options --with-app-basename=Librewolf
 ac_add_options --with-branding=browser/branding/librewolf
-ac_add_options --with-distribution-id=io.gitlab.librewolf
+ac_add_options --with-distribution-id=io.gitlab.librewolf-community
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZ_REQUIRE_SIGNING=0
@@ -121,10 +126,17 @@ END
   patch -p1 -i ../megabar.patch
 
   # Debian patch to enable global menubar
-  patch -p1 -i ../unity-menubar.patch
+  # disabled for the default build, as it seems to cause issues in some configurations
+  # patch -p1 -i ../unity-menubar.patch
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1684261
+  patch -Np1 -i ../rust_build_fix.patch
 
   # Disabling Pocket
   sed -i "s/'pocket'/#'pocket'/g" browser/components/moz.build
+
+  patch -p1 -i ../context-menu.patch
+
   # this one only to remove an annoying error message:
   sed -i 's#SaveToPocket.init();#// SaveToPocket.init();#g' browser/components/BrowserGlue.jsm
 
@@ -161,6 +173,11 @@ build() {
   # LTO/PGO needs more open files
   ulimit -n 4096
 
+  # -fno-plt with cross-LTO causes obscure LLVM errors
+  # LLVM ERROR: Function Import: link error
+  # CFLAGS="${CFLAGS/-fno-plt/}"
+  # CXXFLAGS="${CXXFLAGS/-fno-plt/}"
+
   ./mach build
 }
 
@@ -169,6 +186,7 @@ package() {
   DESTDIR="$pkgdir" ./mach install
 
   _vendorjs="$pkgdir/usr/lib/librewolf/browser/defaults/preferences/vendor.js"
+
   install -Dm644 /dev/stdin "$_vendorjs" <<END
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
@@ -181,22 +199,22 @@ pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 // pref("extensions.autoDisableScopes", 11);
 END
 
-  cd ${srcdir}/settings
-  git checkout ${_settings_commit}
+  # cd ${srcdir}/settings
+  # git checkout ${_settings_commit}
   cd ${srcdir}/mozilla-unified
-  cp -r ${srcdir}/settings/* ${pkgdir}/usr/lib/${pkgname}/
+  cp -r ${srcdir}/settings/* ${pkgdir}/usr/lib/librewolf/
 
-  _distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
+  _distini="$pkgdir/usr/lib/librewolf/distribution/distribution.ini"
   install -Dm644 /dev/stdin "$_distini" <<END
 [Global]
-id=io.gitlab.${_pkgname}
+id=io.gitlab.librewolf-community
 version=1.0
 about=LibreWolf
 
 [Preferences]
 app.distributor="LibreWolf Community"
-app.distributor.channel=$pkgname
-app.partner.librewolf=$pkgname
+app.distributor.channel=librewolf
+app.partner.librewolf=librewolf
 END
 
   for i in 16 32 48 64 128; do
@@ -207,7 +225,7 @@ END
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/librewolf.png"
 
   # arch upstream provides a separate svg for this. we don't have that, so let's re-use 16.png
-  install -Dm644 browser/branding/${pkgname}/default16.png \
+  install -Dm644 browser/branding/librewolf/default16.png \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/librewolf-symbolic.png"
 
   install -Dm644 ../librewolf.desktop \
