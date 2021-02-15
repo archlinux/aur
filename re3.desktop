@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Game;ActionGame;
+Exec=re3-launcher
+Icon=/usr/share/pixmaps/gta3.png
+Name=Grand Theft Auto III (re3)
+Terminal=false
+Type=Application
+Version=1.0
