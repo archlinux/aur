@@ -1,0 +1,15 @@
+pkgbase = mod-step-sequencer.lv2-git
+	pkgdesc = A step sequencer that works with live MIDI input
+	pkgver = r35.602c71e
+	pkgrel = 1
+	url = https://github.com/moddevices/mod-step-sequencer-lv2
+	arch = i686
+	arch = x86_64
+	groups = lv2-plugins
+	makedepends = git
+	depends = lv2
+	source = git+https://github.com/moddevices/mod-step-sequencer-lv2
+	md5sums = SKIP
+
+pkgname = mod-step-sequencer.lv2-git
+
