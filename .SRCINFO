@@ -1,5 +1,5 @@
 pkgbase = neovim-forest-night-git
-	pkgver = v0.1.2.r0.g02b6cc5
+	pkgver = 0.1.2.r0.g02b6cc5
 	pkgrel = 1
 	url = https://github.com/sainnhe/forest-night
 	arch = any
