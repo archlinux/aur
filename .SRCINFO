@@ -15,7 +15,7 @@ pkgbase = tonelib-gfx-bin
 	depends = freetype2
 	optdepends = jack: JACK output
 	source = https://www.tonelib.net/download/ToneLib-GFX-amd64.deb
-	sha256sums = a9301f688d93721042b85c5d012d86faec2cb7372f9a6b5bd3e0476ef177a51e
+	sha256sums = 7aaddfde1a76cb738a6515792774ef549dcef710464fea083947b8b7d6cd94a6
 
 pkgname = tonelib-gfx-bin
 
