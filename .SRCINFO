@@ -1,28 +1,32 @@
 pkgbase = python-gdbgui
 	pkgdesc = Browser-based frontend to gdb (gnu debugger). Add breakpoints, view the stack, visualize data structures, and more in C, C++, Go, Rust, and Fortran. Run gdbgui from the terminal and a new tab will open in your browser. https://gdbgui.com
-	pkgver = 0.13.2.0
-	pkgrel = 3
+	pkgver = 0.14.0.2
+	pkgrel = 1
 	url = https://github.com/cs01/gdbgui
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
 	makedepends = yarn
 	depends = python
-	depends = python-flask12
+	depends = python-flask
 	depends = python-flask-compress
-	depends = python-flask-socketio2
-	depends = python-gevent
-	depends = python-pygdbmi
+	depends = python-flask-socketio
 	depends = python-pygments
-	source = python-gdbgui-0.13.2.0.tar.gz::https://github.com/cs01/gdbgui/archive/0.13.2.0.tar.gz
-	md5sums = 0e769e57691900f42ffaaaf8d91e285f
+	depends = python-brotli
+	depends = python-pygdbmi>=0.10.0.0
+	depends = python-gevent
+	depends = python-gevent-websocket
+	source = python-gdbgui-0.14.0.2.tar.gz::https://github.com/cs01/gdbgui/archive/v0.14.0.2.tar.gz
+	md5sums = 848c288a3141b04f58931076069ae5e1
 
 pkgname = python-gdbgui
 	depends = python
-	depends = python-flask12
+	depends = python-flask
 	depends = python-flask-compress
-	depends = python-flask-socketio2
-	depends = python-gevent
-	depends = python-pygdbmi
+	depends = python-flask-socketio
 	depends = python-pygments
+	depends = python-brotli
+	depends = python-pygdbmi>=0.10.0.0
+	depends = python-gevent
+	depends = python-gevent-websocket
 
