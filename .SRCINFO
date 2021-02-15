@@ -1,6 +1,6 @@
 pkgbase = budgie-pixel-saver-applet-ubuntubudgie-git
 	pkgdesc = Pixel Saver applet for Budgie Desktop - UbuntuBudgie's fork
-	pkgver = v3.0.1.r24.g8bfe6d1
+	pkgver = 3.0.1.r24.g8bfe6d1
 	pkgrel = 1
 	url = https://github.com/UbuntuBudgie/budgie-pixel-saver-applet
 	install = budgie-pixel-saver-applet.install
