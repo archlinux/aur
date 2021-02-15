@@ -1,0 +1,9 @@
+[Desktop Entry]
+ Name=athens
+ Exec=/opt/athens/athens %U
+ Terminal=false
+ Type=Application
+ Icon=athens
+ StartupWMClass=athens
+ Comment=Open-Source Networked Thought
+ Categories=Office
