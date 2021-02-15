@@ -1,3 +1,4 @@
+#!/usr/bin/env xdg-open
 [Desktop Entry]
 Name=FreeTube
 GenericName=YouTube Player
@@ -6,4 +7,5 @@ Exec=freetube
 Terminal=false
 Type=Application
 Icon=freetube
+MimeType=x-scheme-handler/freetube;
 Categories=Network;

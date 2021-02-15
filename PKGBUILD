@@ -4,7 +4,7 @@
 pkgname=freetube
 _pkgname=FreeTube
 pkgver=0.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source desktop YouTube player built with privacy in mind.'
 arch=('x86_64' 'arm')
 license=('AGPL3')
