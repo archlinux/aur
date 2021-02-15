@@ -1,6 +1,6 @@
 pkgbase = neovim-coc-marketplace-git
 	pkgdesc = coc.nvim extensions marketplace
-	pkgver = v1.4.0.r109.ga1ec912
+	pkgver = 1.4.0.r109.ga1ec912
 	pkgrel = 1
 	url = https://github.com/fannheyward/coc-marketplace
 	install = neovim-coc-marketplace-git.install
