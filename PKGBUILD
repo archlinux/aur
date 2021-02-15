@@ -48,7 +48,7 @@ package_trojan-go-git() {
     
     mkdir -p "$pkgdir"/usr/bin
     ln -sf /usr/lib/trojan-go/trojan-go "$pkgdir"/usr/bin/trojan-go
-    ln -sf /usr/sharev2ray/geosite.dat "$pkgdir"/usr/lib/trojan-go/geosite.dat
+    ln -sf /usr/share/v2ray/geosite.dat "$pkgdir"/usr/lib/trojan-go/geosite.dat
     ln -sf /usr/share/v2ray/geoip.dat "$pkgdir"/usr/lib/trojan-go/geoip.dat
 }
 
