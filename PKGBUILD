@@ -48,8 +48,8 @@ _use_current=
 pkgbase=linux-rt-bfq-dev
 # pkgname=('linux-rt-bfq-dev' 'linux-rt-bfq-dev-headers' 'linux-rt-bfq-dev-docs')
 _major=5.10
-_minor=14
-_rtver=28
+_minor=16
+_rtver=29
 _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
@@ -331,9 +331,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('8e5016bfc7f5c090af6247ddac41cb3f811576bd078b2e145d798be6f214f72ee77bbff09d48d54a0154a9b137166650c88a1d178d50d5901dcaa03bb2c5e6f1'
+sha512sums=('98182625d55a7d8e1ab59e935491826d0cf956613a9cd4db33b249652585acf26263fa5ce46da524adbcb83baa1ba3d6370f4562f415578c7db1b3437ba7e7a2'
             'SKIP'
-            '4420741563dc89de9ef0b57f56abac5b055d5b1c5efb70507e5129d8be1a2028aad7df94ec0d9ec0ed36b4e17f45e99dc48c37fd9c0608872587150cd12e8e74'
+            'abb4232e1897ed0ebb0f525263c9c335ea0a2339cbf8530bcf63528fc0477ed6c0789cbef2535074d4a137cdf5022e9a441152d4fe823c33725db4c19660fbbd'
             'SKIP'
             '45fa721352143304eceff87649986fd42fcf4ae369f15ba704a435ab2f107dfe41c050eac25cd9167d2cc73d569aad8501cbd13477b62bad9724e4240f36ab15'
             '989d4013d5cb68aa9561afbe08b92ba29c3bdd456eaccdfad74d4f1e7059b3fca0914220cc4e4a700041675b7ae6b0c0342132b359a441f95fd5803b720c8dea'
