@@ -13,13 +13,13 @@ depends=("${_variant}-coc")
 makedepends=('yarn' 'npm' 'git')
 license=('unknown')
 source=("${_extname}::git+${url}.git")
-pkgver=v0.8.0.r6.g0b7001d
+pkgver=0.8.0.r6.g0b7001d
 pkgrel=1
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_extname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
