@@ -7,7 +7,7 @@ pkgdesc="PHP Static Analysis Tool - finding errors in your code without actually
 arch=('any')
 url="https://github.com/phpstan/phpstan"
 license=('MIT')
-depends=('php')
+depends=('php>=7.1.0')
 source=("phpstan-${pkgver}.phar::https://github.com/phpstan/phpstan/releases/download/${pkgver}/phpstan.phar"
         "phpstan-${pkgver}.phar.asc::https://github.com/phpstan/phpstan/releases/download/${pkgver}/phpstan.phar.asc"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/phpstan/phpstan/${pkgver}/LICENSE")
