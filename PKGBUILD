@@ -8,7 +8,7 @@
 pkgname=vivaldi-arm-bin
 _pkgname=${pkgname%-arm-bin}
 pkgver=3.6.2165.36
-pkgrel=5
+pkgrel=6
 _pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind'
 arch=('armv6h' 'armv7h' 'aarch64')
@@ -48,13 +48,6 @@ package() {
     ln -fs \
     /opt/vivaldi/vivaldi \
     "$pkgdir"/usr/bin/${_pkgname}-stable
-    
-    ## Replace Shared Objects with Symlinks ##
-    for SO in EGL GLESv2; do
-        ln -fs \
-        /usr/lib/lib${SO}.so \
-        "$pkgdir"/opt/$_pkgname/lib${SO}.so
-    done
     
     ## Install Icons ##
     for res in 16 22 24 32 48 64 128 256; do
