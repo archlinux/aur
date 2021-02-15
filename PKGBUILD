@@ -11,6 +11,7 @@ license=('custom')
 url="http://xorg.freedesktop.org/"
 depends=('libinput')
 makedepends=('xorg-server-devel' 'libxi' 'libx11' 'xorgproto')
+optdepends=('xorg-xinput: input configuration for X')
 conflicts=('xorg-server<1.19.0' 'X-ABI-XINPUT_VERSION<24' 'X-ABI-XINPUT_VERSION>=25')
 provides=('xf86-input-libinput')
 conflicts=('xf86-input-libinput')
