@@ -1,7 +1,7 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wlroots-hidpi-git
-pkgver=0.12.0.r324.gb9e9e0e1
+pkgver=0.12.0.r342.g38ec1c0e
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library, with XWayland HiDPI (git version)'
@@ -14,7 +14,7 @@ conflicts=(wlroots wlroots-git)
 options=(debug)
 depends=(systemd wayland opengl-driver libxcb xcb-util-errors
          xcb-util-renderutil xcb-util-wm pixman libinput libxkbcommon)
-makedepends=(meson ninja git wayland-protocols xorgproto)
+makedepends=(meson git wayland-protocols xorgproto)
 source=("${pkgname}::git+${url}"
         # "xwayland_hidpi.diff::https://github.com/swaywm/wlroots/pull/2064.diff"
         "xwayland_hidpi.diff::https://github.com/swaywm/wlroots/compare/master...MisterDA:xwayland_hidpi.diff"
@@ -37,24 +37,15 @@ prepare () {
 }
 
 build () {
-	cd "${pkgname}"
-
-	rm -rf build
-	meson build \
-		--prefix /usr \
-		--buildtype debug \
-		-Dlogind=enabled \
+	arch-meson \
 		-Dlogind-provider=systemd \
-		-Dxcb-errors=enabled \
-		-Dxcb-icccm=enabled \
-		-Dxwayland=enabled \
-		-Dx11-backend=enabled \
-		-Dexamples=false
-	ninja -C build
+		-Dlibseat=disabled \
+		-Dwerror=false \
+		"${pkgname}" build
+	meson compile -C build
 }
 
 package () {
-	cd "${pkgname}"
-	DESTDIR="${pkgdir}" ninja -C build install
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	DESTDIR="${pkgdir}" meson install -C build
+	install -Dm644 "${pkgname}/"LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
