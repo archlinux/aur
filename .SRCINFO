@@ -1,15 +1,15 @@
 pkgbase = gsts
 	pkgdesc = Obtain and store AWS STS credentials to interact with Amazon services by authenticating via G Suite SAML.
-	pkgver = 2.4.3
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = https://github.com/ruimarinho/gsts
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = gsts-2.4.3.tar.gz
-	source = gsts-2.4.3.tar.gz::https://github.com/ruimarinho/gsts/archive/v2.4.3.tar.gz
-	sha256sums = 5df2f15aadb246c99ddc28186e5c33dbb0c15d138eeed5e93fd5dc1d1166c38b
+	noextract = gsts-3.0.3.tar.gz
+	source = gsts-3.0.3.tar.gz::https://github.com/ruimarinho/gsts/archive/v3.0.3.tar.gz
+	sha256sums = 52d130b8d1b65c714b339a7b448f472165a66fd2d2bf275f3a90f569c9dcccbe
 
 pkgname = gsts
 
