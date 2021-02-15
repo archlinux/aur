@@ -1,7 +1,7 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=vim-signify-git
 _pkgname=vim-signify
-pkgver=legacy.r60.gc3d450e
+pkgver=r752.b2a0450
 pkgrel=1
 pkgdesc='Show a diff using Vim its sign column'
 arch=('any')
@@ -27,7 +27,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {

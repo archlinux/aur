@@ -1,6 +1,6 @@
 pkgbase = vim-signify-git
 	pkgdesc = Show a diff using Vim its sign column
-	pkgver = legacy.r60.gc3d450e
+	pkgver = r752.b2a0450
 	pkgrel = 1
 	url = https://github.com/mhinz/vim-signify
 	arch = any
