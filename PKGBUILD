@@ -13,7 +13,7 @@
 pkgname=nextdns-unprivileged
 origname=nextdns
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The NextDNS DoH client running as unprivileged user.'
 arch=('x86_64')
 url='https://github.com/nextdns/nextdns'
@@ -27,11 +27,18 @@ source=(
     "nextdns.service"
     "nextdns.sysusers"
     "nextdns.tmpfiles"
+    "01-socket.patch"
 )
 sha256sums=('c2ac19510a9e58c34b3ece2a5c5ff7e991099c91c0cf4bcc4228897dd65692ba'
             'd5715e3be5aa970b8e3e9552e786965d4c33bdc2ae372e708f9a8f3e9c0d45e9'
             '96dcfb0ccbbf30a140ff44101b90160faadca97f9aed4b1d73e2e2db52655fec'
-            'fc6f48d9bdb3ad953e37aef163ec3fa3da8d3ca5fab4b78186481fb2988385a2')
+            'fc6f48d9bdb3ad953e37aef163ec3fa3da8d3ca5fab4b78186481fb2988385a2'
+            'df831b86096e2f06fd4b9f603a4141daef986d709fcdebb97f39493535aab7f6')
+
+prepare() {
+    cd "${origname}-$pkgver"
+    patch -Np1 < ../01-socket.patch
+}
 
 build() {
     cd "${origname}-$pkgver"

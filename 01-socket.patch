@@ -1,0 +1,10 @@
+diff --git a/config/ctl_unix.go b/config/ctl_unix.go
+index 5eca998..7d3b4a7 100644
+--- a/config/ctl_unix.go
++++ b/config/ctl_unix.go
+@@ -2,4 +2,4 @@
+
+ package config
+
+-const DefaultControl = "/var/run/nextdns.sock"
++const DefaultControl = "/run/nextdns/nextdns.sock"
