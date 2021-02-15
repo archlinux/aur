@@ -1,7 +1,7 @@
 pkgbase = sdrpp-git
 	pkgdesc = The Bloat-free SDR Receiver
 	pkgver = 0.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AlexandreRouma/SDRPlusPlus
 	arch = any
 	license = GPL

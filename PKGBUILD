@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Rouma <whatsthetgeek@gmail.com>
 pkgname=sdrpp-git
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="The Bloat-free SDR Receiver"
 arch=('any')
