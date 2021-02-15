@@ -5,7 +5,7 @@
 # Contributor: Alexander Hunziker <alex.hunziker@gmail.com>
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 
-: DISABLE_MESON="${DISABLE_MESON:=0}" # switch to autotools `makepkg DISABLE_MESON=1`
+: DISABLE_MESON="${DISABLE_MESON:=1}" # switch to autotools `makepkg DISABLE_MESON=1`
 ((DISABLE_MESON)) && makedepends+=('vala') || makedepends+=('meson')
 
 pkgname=gimp-git

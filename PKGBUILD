@@ -5,7 +5,7 @@
 # Contributor: Alexander Hunziker <alex.hunziker@gmail.com>
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 
-: DISABLE_MESON="${DISABLE_MESON:=0}" # switch to autotools `makepkg DISABLE_MESON=1`
+: DISABLE_MESON="${DISABLE_MESON:=1}" # switch to autotools `makepkg DISABLE_MESON=1`
 ((DISABLE_MESON)) && makedepends+=('vala') || makedepends+=('meson')
 
 pkgname=gimp-git
@@ -13,7 +13,7 @@ _pkgname=${pkgname%-git}
 provides=(gimp)
 conflicts=(gimp)
 epoch=2
-pkgver=2.99.5.r167.a4a9e17bf1
+pkgver=2.99.5.r171.09bce474b1
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program"
 arch=('i686' 'x86_64')
