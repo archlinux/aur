@@ -1,6 +1,6 @@
 pkgname=lang815
 _gitname=lang815
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="Change keys led color, when language layout is changed for Logitech G213, G410, G413. G512, G513, G610, G810, G815, G910 and GPRO Keyboards. Only X11"
 arch=('any')
