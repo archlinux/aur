@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="Simple bootsplash manager"
 url="https://github.com/ANDRoid7890/bootsplash-manager"
 arch=(x86_64)
-license=(GPL2)
+license=(GPL3)
 depends=('qt5-base'
          'bootsplash-systemd'
          'polkit')
