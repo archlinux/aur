@@ -1,0 +1,17 @@
+pkgbase = rgb_keyboard-git
+	pkgdesc = Controls the RGB lighting on some keyboards (GMMK and others).
+	pkgver = 0.2.r1.g28611e0
+	pkgrel = 1
+	url = https://github.com/dokutan/rgb_keyboard
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = libusb
+	depends = gcc-libs
+	provides = rgb_keyboard
+	conflicts = rgb_keyboard
+	source = git+https://github.com/dokutan/rgb_keyboard.git
+	sha256sums = SKIP
+
+pkgname = rgb_keyboard-git
+
