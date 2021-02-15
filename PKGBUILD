@@ -4,9 +4,9 @@
 
 _pkgname=android-studio
 pkgname="${_pkgname}-beta"
-pkgver=4.2.0.18
+pkgver=4.2.0.20
 pkgrel=1
-_build=202.7008469
+_build=202.7094744
 pkgdesc='The Official Android IDE (Beta branch)'
 arch=('i686' 'x86_64')
 url='https://developer.android.com/studio/preview'
@@ -16,9 +16,9 @@ depends=('alsa-lib' 'freetype2' 'libxrender' 'libxtst' 'which')
 optdepends=('gtk2: GTK+ look and feel'
             'libgl: emulator support')
 options=('!strip')
-source=("https://dl.google.com/dl/android/studio/ide-zips/${pkgver}/${_pkgname}-ide-${_build}-linux.tar.gz"
+source=("https://redirector.gvt1.com/edgedl/android/studio/ide-zips/${pkgver}/${_pkgname}-ide-${_build}-linux.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('b0d269547d299a75db9229efa32f9aa235f500310120afd7f904adc82a89430c'
+sha256sums=('3f322d40ad5c0cb8644627320c4c3d817f4ba1cf7740a411d2efa566b0c38481'
             '368b5287efcfd2b421bdd10e1bdd39a8bffeb84500745c4a88729609c841bcf7')
 
 if [ "${CARCH}" = "i686" ]; then
