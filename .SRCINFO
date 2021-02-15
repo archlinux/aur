@@ -1,6 +1,6 @@
 pkgbase = supertux-git
 	pkgdesc = A classic 2D jump'n run sidescroller game in a style similar to the original SuperMario game
-	pkgver = v0.6.2.r649.g236c071b4
+	pkgver = 0.6.2.r669.g9dbdb4055
 	pkgrel = 1
 	epoch = 1
 	url = http://supertux.lethargik.org/
