@@ -1,6 +1,6 @@
 pkgbase = kime-bin
 	pkgdesc = Korean IME
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/Riey/kime
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = kime-bin
 	optdepends = cairo: xim support
 	provides = kime
 	conflicts = kime
-	source = https://github.com/Riey/kime/releases/download/v1.0.2/kime-1.0.2.tar.xz
-	md5sums = eaaccbc3e60e7f726f7c7042f0ac4ea6
+	source = https://github.com/Riey/kime/releases/download/v1.0.3/kime-ubuntu-1.0.3.tar.xz
+	md5sums = f8f17fe63c1cf7642d213e0ae172a6e0
 
 pkgname = kime-bin
 

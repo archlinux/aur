@@ -1,6 +1,6 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime-bin
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
@@ -16,8 +16,10 @@ optdepends=('libappindicator-gtk3: indicator support'
             'cairo: xim support')
 arch=('any')
 license=('GPL3')
-source=("${url}/releases/download/v${pkgver}/kime-${pkgver}.tar.xz")
-md5sums=('eaaccbc3e60e7f726f7c7042f0ac4ea6')
+# Arch doesn't run on GHA temporary disable
+# source=("${url}/releases/download/v${pkgver}/kime-arch-${pkgver}.tar.xz")
+source=("${url}/releases/download/v${pkgver}/kime-ubuntu-${pkgver}.tar.xz")
+md5sums=('f8f17fe63c1cf7642d213e0ae172a6e0')
 
 package() {
     install -Dm755 kime-indicator -t "${pkgdir}/usr/bin"
@@ -31,6 +33,7 @@ package() {
     install -Dm755 libkime_engine.so -t "${pkgdir}/usr/lib"
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 kime_engine.h -t "${pkgdir}/usr/include"
+    install -Dm644 kime_engine.hpp -t "${pkgdir}/usr/include"
     install -Dm644 default_config.yaml -T "${pkgdir}/etc/kime/config.yaml"
     install -Dm644 kime-eng-64x64.png -t "${pkgdir}/usr/share/kime"
     install -Dm644 kime-han-64x64.png -t "${pkgdir}/usr/share/kime"
