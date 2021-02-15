@@ -1,7 +1,7 @@
 # Maintainer: Vyacheslav Konovalov <f4f7l1hvr@relay.firefox.com>
 
 pkgname=opensnitch
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc='GNU/Linux port of the Little Snitch application firewall'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -19,7 +19,7 @@ backup=(
 )
 source=("$url/archive/v$pkgver.tar.gz")
 sha512sums=(
-    'dda1f717c98248db236b2b68698aac04f5d3a51d65ce28b42a8f66a839e33b99e679296eb5afac42d983ca64000835be11a53d859464a1695c5b5b8019705693'
+    '2a6b634fdd820d5b9083058d05f7895112e7d56b5c494be0f96d45a05da89d8ff784a978e61d4d48fbd72ba28ac866a56741dae8011694d5ecaf4deb6238fbad'
 )
 
 prepare() {
