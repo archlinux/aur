@@ -23,11 +23,10 @@ pkgbase = python-orange-canvas-core-git
 	depends = python-serverfiles
 	depends = python-louvain
 	depends = python-xlsxwriter
-	depends = python-opentsne
 	depends = python-networkx
 	depends = python-requests
 	depends = python-pandas
-	depends = python-opentsne
+	depends = python-opentsne-git
 	source = git://github.com/biolab/orange-canvas-core
 	sha256sums = SKIP
 
