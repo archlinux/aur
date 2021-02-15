@@ -1,7 +1,7 @@
 pkgbase = vivaldi-arm-bin
 	pkgdesc = An advanced browser made with the power user in mind
 	pkgver = 3.6.2165.36
-	pkgrel = 4
+	pkgrel = 5
 	url = https://vivaldi.com
 	install = vivaldi-arm-bin.install
 	arch = armv6h
