@@ -2,7 +2,7 @@
 
 pkgname=cbang
 pkgver=1.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="a library of cross-platform C++ utilities"
 arch=('x86_64')
 url="https://github.com/CauldronDevelopmentLLC/cbang"
