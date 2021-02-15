@@ -1,0 +1,23 @@
+pkgbase = xorg-xinput-git
+	pkgdesc = Small commandline tool to configure devices
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = x86_64
+	groups = xorg-apps
+	groups = xorg
+	license = custom
+	makedepends = xorg-util-macros
+	makedepends = xorgproto
+	makedepends = libxfixes
+	depends = libx11
+	depends = libxi>=1.5.99.2
+	depends = xorg-xrandr
+	depends = libxinerama
+	provides = xorg-xinput
+	conflicts = xorg-xinput
+	source = git+https://gitlab.freedesktop.org/xorg/app/xinput
+	sha512sums = SKIP
+
+pkgname = xorg-xinput-git
+
