@@ -2,7 +2,7 @@
 
 pkgname=php-stan
 pkgver=0.12.76
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP Static Analysis Tool - finding errors in your code without actually running it"
 arch=('any')
 url="https://github.com/phpstan/phpstan"
