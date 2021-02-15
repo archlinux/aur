@@ -58,6 +58,8 @@ _flags=(
     -Dx11-backend=enabled
     -Dexamples=false
     -Dxdg-foreign=disabled
+    -Db_ndebug=false
+    -Dwerror=false
     -Db_sanitize=address,undefined
 )
 
