@@ -1,13 +1,13 @@
 #Maintainer: Nudelsalat <nudelsalat@clouz.de>
 pkgname=unihedron-device-manager
-pkgver=1.0.0.253
+pkgver=1.0.0.266
 pkgrel=1
 pkgdesc='Unihedron Device Manager'
 url=http://unihedron.com/projects/darksky/cd/
 arch=('x86_64')
 license=('GPL3')
 source=(http://unihedron.com/projects/darksky/cd/Linux/udm_amd64_${pkgver}.deb)
-sha256sums=('9c05b7daefd8682eee0d56aa44f04ecbaf515a236c3fbce341f28d6d80453af9')
+sha256sums=('6344ab38f2117755cb7c86c56d4ed38365ca0d735946354df7ab779a25f6063a')
 depends=('gtk2' 'libglvnd')
 
 
