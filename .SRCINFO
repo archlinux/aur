@@ -1,14 +1,14 @@
 pkgbase = python-baidu-aip
 	pkgver = 2.2.18.0
-	pkgrel = 1
-	url = https://baidu.com
+	pkgrel = 2
+	url = https://github.com/Baidu-AIP
 	arch = any
 	license = Apache
 	checkdepends = python-pytest-runner
 	checkdepends = python2-pytest-runner
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = python-baidu-aip-2.2.18.0.tar.gz::https://pypi.io/packages/source/b/baidu-aip/baidu-aip-2.2.18.0.tar.gz
+	source = python-baidu-aip-2.2.18.0.src.tar.gz::https://pypi.io/packages/source/b/baidu-aip/baidu-aip-2.2.18.0.tar.gz
 	sha512sums = 4f582ed5c4d615cdd99fc5d890eba2e8ccb78d336afe3d306ecaf45e1f9bd71b9f6fdf8d7e5c7b05d1656dc2613e852baa162b6245a2e8fe09750d5ee9b66ca0
 
 pkgname = python-baidu-aip
