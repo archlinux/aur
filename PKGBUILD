@@ -1,22 +1,27 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=timg
-pkgver=0.9.9
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Terminal Image and Video Viewer"
 arch=('any')
 url="https://github.com/hzeller/timg"
 license=('GPL2')
-depends=('libwebp' 'graphicsmagick' 'ffmpeg')
+depends=('libwebp' 'libjpeg-turbo' 'libexif' 'graphicsmagick' 'ffmpeg')
+makedepends=('cmake' 'pkgconf' 'git' 'gcc')
 source=("timg-$pkgver.tar.gz::https://github.com/hzeller/timg/archive/v$pkgver.tar.gz")
-sha256sums=('f43df657e93d47a1184a81c0976e67978cbdce21a83be5ec1df83403cda24caf')
+sha256sums=('b84387c82cf1c69b8dbf6d9fa8a87329982e4fdbe370fa0a150e2dccb8e2c7d9')
 
 build() {
-  cd $pkgname-$pkgver/src
-  make WITH_VIDEO_DECODING=1
+  cd $pkgname-$pkgver
+  rm -rf build
+  mkdir build
+  cd build
+  cmake ../ -DWITH_VIDEO_DECODING=On -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr"
+  make
 }
 
 package() {
-  cd $pkgname-$pkgver/src
+  cd $pkgname-$pkgver/build
   install -d "${pkgdir}/usr/"{bin,share/man/man1}
-  make PREFIX="${pkgdir}/usr" install
+  make install
 }
