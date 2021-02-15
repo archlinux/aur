@@ -1,7 +1,7 @@
 # Maintainer: Sergey A. <murlakatamenka@disroot.org>
 
 pkgname=intermodal
-pkgver=0.1.10
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="User-friendly and featureful CLI BitTorrent metainfo utility, written in Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom:CC0')
 makedepends=(cargo help2man)
 conflicts=(intermodal-bin)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8bb3e4f549e5c4446543babd741fec0cd7c42da4d49eca3e98c5f7611ad59618')
+sha256sums=('cd62894e519dc5aa0284a5f48aab86e1a45c3bc96b8a5481741adb6960d4751a')
 
 build() {
     cd "$pkgname-$pkgver"
