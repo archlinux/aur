@@ -1,6 +1,6 @@
 pkgbase = neovim-coc-flutter-git
 	pkgdesc = flutter support for (Neo)vim
-	pkgver = v1.0.8.r44.g1e5d473
+	pkgver = 1.0.8.r44.g1e5d473
 	pkgrel = 1
 	url = https://github.com/iamcco/coc-flutter
 	arch = any
