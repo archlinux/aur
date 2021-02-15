@@ -1,0 +1,20 @@
+pkgbase = lepton-eda-gtk3-git
+	pkgdesc = a suite of free software tools for designing electronics (gtk3) (devel)
+	pkgver = 1.9.13.20201211.r150.b71d05c36
+	pkgrel = 1
+	url = https://github.com/lepton-eda/lepton-eda
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = gtk3
+	depends = guile
+	depends = libstroke
+	provides = lepton-eda
+	conflicts = lepton-eda
+	conflicts = geda
+	conflicts = geda-gaf
+	source = lepton-eda::git+https://github.com/lepton-eda/lepton-eda.git
+	sha1sums = SKIP
+
+pkgname = lepton-eda-gtk3-git
+
