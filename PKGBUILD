@@ -19,9 +19,9 @@ conflicts=("${pkgname%-git}")
 #backup=()
 #options=()
 install=
-source=('athens::git+https://github.com/athensresearch/athens')
+source=('athens::git+https://github.com/athensresearch/athens' 'athens.sh' 'athens.desktop')
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP')
 
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
 # a description of each element in the source array.
@@ -60,13 +60,16 @@ build() {
 
 package() {
     #desktop file
-    cd "$startdir"
-    install -Dm644 -t "${pkgdir}/usr/share/applications" "${pkgname}.desktop"
-    install -Dm755 -t "${pkgdir}/usr/bin" "$pkgname"
+    cd "$srcdir"
+    install -Dm644 -t "${pkgdir}/usr/share/applications" "${_pkgname}.desktop"
+    install -Dm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+
 
     cd "$srcdir/${_pkgname}"
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-    install -Dm644 "build/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" LICENSE
+    install -Dm644 "build/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
+    install -Dm644 "dist/linux-unpacked/resources/app.asar" "${pkgdir}/usr/lib/${_pkgname}.asar"
+
 
 }
 

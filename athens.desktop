@@ -1,6 +1,6 @@
 [Desktop Entry]
  Name=athens
- Exec=/opt/athens/athens %U
+ Exec=/usr/bin/athens
  Terminal=false
  Type=Application
  Icon=athens

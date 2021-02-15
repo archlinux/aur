@@ -15,6 +15,10 @@ pkgbase = athens-git
 	provides = athens
 	conflicts = athens
 	source = athens::git+https://github.com/athensresearch/athens
+	source = athens.sh
+	source = athens.desktop
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = athens-git
