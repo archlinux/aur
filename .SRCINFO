@@ -1,6 +1,6 @@
 pkgbase = vim-coc-explorer-git
 	pkgdesc = Explorer for coc.nvim
-	pkgver = v0.7.23.r0.gbb631b5
+	pkgver = 0.7.23.r0.gbb631b5
 	pkgrel = 1
 	url = https://github.com/weirongxu/coc-explorer
 	arch = any

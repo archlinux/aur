@@ -13,13 +13,13 @@ groups=('vim-coc-extras-git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_extname}::git+${url}.git")
-pkgver=v0.7.23.r0.gbb631b5
+pkgver=0.7.23.r0.gbb631b5
 pkgrel=1
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_extname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
