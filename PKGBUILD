@@ -4,7 +4,7 @@
 
 pkgname=bluecurve-icon-theme
 pkgver=8.0.2
-pkgrel=26
+pkgrel=27
 _md5=3a3ecac0922f964bb1c4be617e8dec37
 
 pkgdesc="Red Hat Icons from Fedora 10"
@@ -75,6 +75,7 @@ build() {
     # echo "$size/apps/cliqz.png galeon.png" >> symlink.manifest
     # echo "$size/apps/chromium.png galeon.png" >> symlink.manifest
     echo "$size/filesystems/user-desktop.png ../apps/desktop.png" >> symlink.manifest
+    echo "$size/filesystems/folder-download.png ../actions/fileimport.png" >> symlink.manifest
     echo "$size/filesystems/network-server.png ../apps/icon-network-systems.png" >> symlink.manifest
     echo "$size/filesystems/network-workgroup.png ../apps/icon-network-systems.png" >> symlink.manifest
     echo "$size/filesystems/network-wired.png ../apps/applications-internet.png" >> symlink.manifest
@@ -174,9 +175,61 @@ build() {
       echo "$size/apps/mate-panel-fish.png ../stock/panel-amusements.png" >> symlink.manifest
       echo "$size/apps/mate-panel-notification-area.png ../stock/dialog-information.png" >> symlink.manifest
       echo "$size/apps/mate-panel-force-quit.png ../stock/dialog-cancel.png" >> symlink.manifest
-      echo "$size/status/battery-caution-charging.png ../stock/printer-broken.png" >> symlink.manifest
-      echo "$size/status/battery-caution.png ../stock/printer-broken.png" >> symlink.manifest
+      echo "$size/status/battery-caution-charging.png ../stock/dialog-warning.png" >> symlink.manifest
+      echo "$size/status/battery-caution.png ../stock/dialog-warning.png" >> symlink.manifest
     fi
+    # XFCE
+    echo "$size/apps/org.xfce.appfinder.png gnome-run.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.volman.png ../devices/gnome-dev-harddisk-usb.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.webbrowser.png galeon.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.taskmanager.png utilities-system-monitor.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.workspaces.png display-capplet.png" >> symlink.manifest
+    echo "$size/apps/xfce4-fsguard-plugin-urgent.png ../stock/dialog-error.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.settings.keyboard.png preferences-desktop-keyboard.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.ScreenSaver.png icon-xscreensaver.png" >> symlink.manifest
+    echo "$size/apps/xfce4-netload-plugin.png icon-traceroute.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.settings.editor.png gconf-editor.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.settings.manager.png preferences-system.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.settings.accessibility.png preferences-desktop-accessibility.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.mailreader.png email.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.terminalemulator.png gnome-color-xterm.png" >> symlink.manifest
+    echo "$size/apps/xfce4-weather.png ../status/weather-few-clouds.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.thunar.png file-manager.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.settings.display.png display-capplet.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.xfwm4-tweaks.png gnome-ccwindowmanager.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.settings.color.png applications-graphics.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.filemanager.png file-manager.png" >> symlink.manifest
+    echo "$size/apps/xfce4-fsguard-plugin.png ../mimetypes/drive-harddisk.png" >> symlink.manifest
+    echo "$size/apps/xfce4-cpufreq-plugin.png icon-memory-profile.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.panel.applicationsmenu.png ../stock/panel-drawer.png" >> symlink.manifest
+    echo "$size/apps/xfce4-cpugraph-plugin.png utilities-system-monitor.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.settings.default-applications.png 500_setup.png" >> symlink.manifest
+    echo "$size/apps/xfce4-pulseaudio-plugin.png preferences-desktop-multimedia.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.notification.png gaim.png" >> symlink.manifest
+    echo "$size/apps/xfce4-clipman-plugin.png icon-clipboard.png" >> symlink.manifest
+    echo "$size/apps/xfce-sensors.png icon-memory-profile.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.about.png ../stock/help-about.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.genmon.png utilities-system-monitor.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.xfwm4.png gnome-ccwindowmanager.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.powermanager.png ../status/gpm-primary-100-charging.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.panel.png gnome-panel.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.xfdesktop.png desktop.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.settings.appearance.png preferences-desktop-theme.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.settings.mouse.png input-mouse.png" >> symlink.manifest
+    echo "$size/apps/xfce4-fsguard-plugin-warning.png ../stock/dialog-warning.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.session.png icon-launcher.png" >> symlink.manifest
+    echo "$size/apps/xfce-schedule.png clock.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.panel.clock gnome-clock.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.panel.tasklist gnome-ccwindowmanager.png" >> symlink.manifest
+    echo "$size/apps/xfce4-battery-plugin ../status/gpm-primary-100-charging.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.panel.launcher icon-launcher.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.panel.actions ../stock/application-exit.png" >> symlink.manifest
+    #echo "$size/apps/org.xfce.panel.separator" >> symlink.manifest
+    echo "$size/apps/org.xfce.panel.windowmenu gnome-ccwindowmanager.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.panel.directorymenu ../mimetypes/folder.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.panel.showdesktop desktop.png" >> symlink.manifest
+    echo "$size/apps/xfce4-notes-plugin ../actions/attach.png" >> symlink.manifest
+    echo "$size/apps/org.xfce.panel.pager display-capplet.png" >> symlink.manifest
   done
 
   msg2 "Apply symlink.manifest"
