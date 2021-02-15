@@ -1,0 +1,14 @@
+pkgbase = spritecraft
+	pkgdesc = Create your own Pixel Art by converting the pixels of any image or picture to Minecraft blocks!
+	pkgver = 1.1.7
+	pkgrel = 1
+	url = https://www.autosaved.org/Spritecraft
+	arch = any
+	license = custom
+	depends = java-runtime
+	depends = bash
+	source = spritecraft.zip::https://www.autosaved.org/files/spritecraft/Spritecraft%201.1.7.zip
+	sha512sums = 8d2da40fb033fce6b07e62983a9503743ca6ba6a093800634c12e1ea866a10b8ed7b3b2d93874fdaee0c06485c178be2f4cdc70ee4ae98a712157927c61daa09
+
+pkgname = spritecraft
+
