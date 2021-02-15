@@ -1,9 +1,9 @@
 # Maintainer: grtcdr <ba.tahaaziz@gmail.com>
 
 pkgname=macchina
-pkgver=0.2.4
+pkgver=0.2.6
 pkgrel=1
-pkgdesc="Basic system information fetcher, written in Rust."
+pkgdesc="Basic system information fetcher"
 
 arch=('x86_64')
 url="https://github.com/grtcdr/macchina"
