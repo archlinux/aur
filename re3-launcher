@@ -1,0 +1,15 @@
+#!/bin/sh
+
+for game_dir in \
+  "$HOME/.re3" \
+  "$HOME/.local/share/Steam/steamapps/common" \
+  '/usr/share/games' \
+; do
+  game_dir="$game_dir/Grand Theft Auto 3"
+  if [ -d "$game_dir" ]
+  then
+    cd "$game_dir" && break
+  fi
+done
+echo "running re3 from '$PWD'"
+exec re3 "$@"
