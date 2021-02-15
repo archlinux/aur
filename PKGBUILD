@@ -2,7 +2,7 @@
 
 pkgname=gdu
 pkgver=4.6.1
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc="Fast disk usage analyzer"
 conflicts=(gdu-git gdu-bin)
@@ -38,5 +38,6 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 dist/$pkgname "${pkgdir}"/usr/bin/$pkgname
   install -Dm644 gdu.1  "${pkgdir}"/usr/share/man/man1/$pkgname.1
+  install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
