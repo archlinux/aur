@@ -1,6 +1,6 @@
 pkgbase = terminus-terminal-git
 	pkgdesc = A terminal for a more modern age
-	pkgver = v1.0.65.r0.17bac5a
+	pkgver = 1.0.134.r1.92d34343
 	pkgrel = 1
 	url = https://github.com/Eugeny/terminus
 	arch = x86_64
@@ -16,4 +16,3 @@ pkgbase = terminus-terminal-git
 	sha256sums = SKIP
 
 pkgname = terminus-terminal-git
-
