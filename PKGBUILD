@@ -2,19 +2,30 @@
 
 pkgname=stylelint
 pkgver=13.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Mighty, modern CSS linter'
 arch=('any')
 url=https://stylelint.io
 license=('MIT')
 depends=('nodejs')
-makedepends=('npm')
+makedepends=('git' 'jq' 'npm')
 optdepends=('stylelint-config-standard: for the standard shareable config')
-source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-noextract=("$pkgname-$pkgver.tgz")
-b2sums=('6cc6fb1619b3c591bdcc95240959bbe536bc5f050cac5301cf08a2a1cc831c92a6c55c5e053a034ae603a3a43b593b01d0d37a93ada0cb7c13a86b58395c1166')
+source=("git+https://github.com/stylelint/stylelint.git#tag=$pkgver")
+b2sums=('SKIP')
+
+build() {
+  cd $pkgname
+  npm ci
+  npm pack
+}
+
+check() {
+  cd $pkgname
+  npm test
+}
 
 package() {
+  cd $pkgname
   npm install --global \
               --user root \
               --prefix "$pkgdir"/usr \
@@ -24,6 +35,15 @@ package() {
   install -d "$pkgdir"/usr/share/licenses/$pkgname
   ln -s /usr/lib/node_modules/$pkgname/LICENSE \
     "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+  # Remove references to $srcdir and $pkgdir
+  find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+
+  local tmppackage="$(mktemp)"
+  local pkgjson="$pkgdir/usr/lib/node_modules/$pkgname/package.json"
+  jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
+  mv "$tmppackage" "$pkgjson"
+  chmod 644 "$pkgjson"
 }
 
 # vim:set ts=2 sw=2 et:
