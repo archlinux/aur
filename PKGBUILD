@@ -3,7 +3,7 @@
 
 pkgname=stklos
 pkgver=1.60
-pkgrel=1
+pkgrel=2
 pkgdesc="Free R5RS/R7RS Scheme system."
 arch=('i686' 'x86_64')
 url="http://www.stklos.net"
