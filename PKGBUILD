@@ -2,7 +2,7 @@
 # Maintainer: Mario Ortiz Manero <marioortizmanero@gmail.com>
 _pkgname=nault
 pkgname="${_pkgname}-bin"
-pkgver=1.9.7
+pkgver=1.9.8
 pkgrel=1
 pkgdesc='Official Nault AppImage client'
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=(!strip)
 _appimage="nault.AppImage"
 source=("${url}/releases/download/v${pkgver}/Nault-${pkgver}-Linux.AppImage")
 noextract=("$_appimage")
-sha512sums=('2f8167206697a33539131eb500045607ebbb3755b13e977e50066dc5a967a5b882ca81da4eeb3015b01b666290ec2b37eb1e881afbd4c7570e2a890d9a476bc4')
+sha512sums=('1754779bd309bfb3e1e02efa1a393f1fe4d9c624c65367bfe97729c425eb291f7bf98693f731e9cda4023188969061a86101ee5fd2ff88f5ddbba3d34e5cb644')
 
 prepare() {
     mv "Nault-${pkgver}-Linux.AppImage" "$_appimage"
