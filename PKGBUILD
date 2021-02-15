@@ -61,7 +61,9 @@ build() {
     -D valgrind=disabled \
     -D adrian-aec=false \
     -D webrtc-aec=disabled \
-    -D tcpwrap=disabled 
+    -D tcpwrap=disabled \
+    -D elogind=disabled \
+    -D database=simple
   meson compile -C build
 }
 
