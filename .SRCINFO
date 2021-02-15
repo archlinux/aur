@@ -1,6 +1,6 @@
 pkgbase = novelwriter-git
 	pkgdesc = Markdown-like text editor designed for writing novels and larger projects of many smaller plain text documents
-	pkgver = v1.1rc1.r48.g66090e39
+	pkgver = v1.1.r20.gfe828a1c
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/vkbo/novelWriter
