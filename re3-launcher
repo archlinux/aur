@@ -1,15 +1,50 @@
 #!/bin/sh
 
-for game_dir in \
-  "$HOME/.re3" \
-  "$HOME/.local/share/Steam/steamapps/common" \
-  '/usr/share/games' \
-; do
-  game_dir="$game_dir/Grand Theft Auto 3"
-  if [ -d "$game_dir" ]
+set -e
+
+zenity() {
+  command zenity --width=700 --title="re3-launcher" "$@"
+}
+
+patch() {
+  output="$(cp -av "/usr/share/games/re3/gamefiles"/* . 2>&1)" && error=$? || error=$?
+  if [ $error -ne 0 ]
   then
-    cd "$game_dir" && break
+    zenity --text="Updating the games files failed:$output" --error
+    exit $error
+  fi
+  zenity --text="Successfully updated the games files:$output" --info
+}
+
+run() {
+  if [ "x--patch" == "x$1" ]
+  then
+    echo "force patching"
+    shift
+    patch
+  else if [ ! -r "gamecontrollerdb.txt" ]
+  then
+    echo "missing 'gamecontrollerdb.txt', patching needed"
+    if zenity --text="The game in '$PWD' is missing re3 specific resources, do you want to patch it?" --question
+    then
+      patch
+    fi
+  fi fi
+  echo "running re3 from '$PWD'"
+  exec re3 "$@"
+}
+
+for game_dir in \
+  "$HOME/.re3/Grand Theft Auto 3" \
+  "$HOME/.local/share/Steam/steamapps/common/Grand Theft Auto 3" \
+  "$PWD" \
+; do
+  if [ -r "$game_dir/gta3.ini" ]
+  then
+    cd "$game_dir"
+    run "$@"
+    exit
   fi
 done
-echo "running re3 from '$PWD'"
-exec re3 "$@"
+zenity --text="Games files not found." --error
+exit 1

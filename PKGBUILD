@@ -2,12 +2,12 @@
 _pkgbase=re3
 pkgname=re3-git
 pkgver=1.0.4.gedc77d7f
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source project reverse-engineering Grand Theft Auto III"
 arch=('x86_64')
 url="https://github.com/GTAmodding/re3"
 license=('unknown')
-depends=('openal' 'glew' 'glfw' 'mpg123')
+depends=('openal' 'glew' 'glfw' 'mpg123' 'zenity')
 makedepends=('git' 'premake')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
@@ -19,7 +19,7 @@ source=(
 sha256sums=(
     'SKIP'
     e3251821f46a567ca4561834345b752db6f2700c58f113335d68b314c05b2b26
-    c61be9f1d53b046f753cf0724b365ef352de5ce70f809b1d1b5637d46044c213
+    ec4b4442c45ce6e6552527c9397c22e4bf718cd466919a016923de4e42481957
 )
 
 pkgver() {
@@ -41,7 +41,11 @@ build() {
 }
 
 package() {
+  cd "$srcdir/$_pkgbase"
   install -D -m755 -t "$pkgdir/usr/bin" \
-    "$srcdir/${pkgname%-git}/bin/linux-amd64-librw_gl3_glfw-oal/Release/re3" \
-    "$srcdir/re3-launcher"
+    "bin/linux-amd64-librw_gl3_glfw-oal/Release/re3" \
+    ../re3-launcher
+  mkdir -p "$pkgdir/usr/share/games/re3"
+  cp -a gamefiles "$pkgdir/usr/share/games/re3/"
+  chmod og=rX -R "$pkgdir/usr/share/games/re3"
 }
