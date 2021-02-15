@@ -4,7 +4,7 @@
 
 _gitname=tinyMediaManager
 pkgname=tiny-media-manager-3
-pkgver=3.1.12
+pkgver=3.1.12.1
 pkgrel=1
 pkgdesc="A multi-OS media managment tool (v3)"
 arch=('any')
@@ -14,7 +14,8 @@ depends=('libmediainfo' 'java-runtime')
 install=tinyMediaManager.install
 noextract=("tmm_${pkgver}_linux.tar.gz")
 conflicts=('tiny-media-manager')
-source=("tmm_${pkgver}_linux.tar.gz::https://gitlab.com/tinyMediaManager/tinyMediaManager/-/package_files/5576598/download"
+# https://gitlab.com/tinyMediaManager/tinyMediaManager/-/packages
+source=("tmm_${pkgver}_linux.tar.gz::https://gitlab.com/tinyMediaManager/tinyMediaManager/-/package_files/5592183/download"
         "tinyMediaManager.desktop"
         "tinymediamanager"
         "tinymediamanager-cli"
@@ -35,7 +36,7 @@ package() {
   install -D "$srcdir/tinymediamanager" "$pkgdir/usr/bin/tinymediamanager"
 }
 
-sha256sums=('5959941f2b2920de7a029914a21edd40ab5cbb4953bfd614f6d129a08c3792d0'
+sha256sums=('e05b304b9db5e9fe4380a5d377d7a4249a4958549c312ca3638418c886732ac7'
             '02bbfd492d10114cd314fc24fd7016532b0b992077d722d8bfccc4f99a79b7a3'
             '4bf36dd16bfc02a39ddde88cfcf30b4f4a5f0b08d2b34ffbab03f6553f57d596'
             '2d3df36c67a710b03b8fea3ac58c49307da8db22b7c6f8fd0011552fe94dde26'
