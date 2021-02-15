@@ -1,11 +1,13 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='Shader script tester for Vulkan'
 pkgname=vkrunner-git
-pkgver=r360.10060f4
+pkgver=r372.1b4cc6b
 pkgrel=1
 url=https://github.com/Igalia/vkrunner
 arch=(x86_64)
 license=(custom)
+conflicts=(vkrunner)
+provides=(vkrunner)
 depends=(glslang)
 makedepends=(cmake git vulkan-headers)
 source=("${pkgname}::git+${url}")
