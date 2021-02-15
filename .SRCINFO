@@ -1,7 +1,7 @@
 pkgbase = libindi-gpsd
 	pkgdesc = 3rd party drivers for INDI: GPSD
 	pkgver = 1.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.indilib.org/index.php?title=Main_Page
 	arch = i686
 	arch = x86_64

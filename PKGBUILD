@@ -2,7 +2,7 @@
 
 pkgname=libindi-gpsd
 pkgver=1.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc="3rd party drivers for INDI: GPSD"
 url="http://www.indilib.org/index.php?title=Main_Page"
 license=(GPL2)
