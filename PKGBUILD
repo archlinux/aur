@@ -1,7 +1,7 @@
 # Maintainer: Manuel Lladosa <$(base64 --decode <<<'bWFub2xvbGxyQHJpc2V1cC5uZXQK')>
 # Contributor: Tarn Burton <twburton at gmail dot com>
 pkgname='pioneer-git'
-pkgver=20200203.r227.g1efa5cf
+pkgver=20210203.r6.g2914251
 pkgrel=1
 pkgdesc="A game of lonely space adventure"
 arch=('x86_64')
@@ -36,6 +36,7 @@ build() {
       -D PIONEER_DATA_DIR:PATH="data"
     make -C build modelcompiler
     build/modelcompiler -b inplace
+
     ./bootstrap cmake -D CMAKE_INSTALL_PREFIX:PATH=/usr \
      -D PIONEER_DATA_DIR:PATH=/usr/share/pioneer/
   else
