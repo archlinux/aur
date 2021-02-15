@@ -2,7 +2,7 @@
 pkgname=vim-coc-marketplace-git
 _pkgname=vim-coc-marketplace
 _extname=coc-marketplace
-pkgver=v1.4.0.r109.ga1ec912
+pkgver=1.4.0.r109.ga1ec912
 pkgrel=1
 pkgdesc='coc.nvim extensions marketplace'
 arch=('any')
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/${_extname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
