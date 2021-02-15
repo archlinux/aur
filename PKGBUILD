@@ -5,7 +5,7 @@
 # Contributor: DDoSolitary <DDoSolitary@gmail.com>
 
 pkgname=i2pd-git
-pkgver=2.35.0.r7.g36473e38
+pkgver=2.36.0.r0.g74aa07eb
 pkgrel=1
 pkgdesc='A full-featured C++ implementation of the I2P router (git version)'
 arch=('x86_64')
@@ -64,20 +64,15 @@ check() {
 
 package() {
     cd i2pd
-    
     make -C build DESTDIR="$pkgdir" install
     
     # config
-    install -D -m644 contrib/i2pd.conf    -t "${pkgdir}/etc/i2pd"
-    install -D -m644 contrib/tunnels.conf -t "${pkgdir}/etc/i2pd"
+    install -D -m644 contrib/{i2pd,tunnels}.conf -t "${pkgdir}/etc/i2pd"
     install -d -m755 "${pkgdir}/etc/i2pd/tunnels.d"
     
     # certificates
-    local _file
-    while read -r -d '' _file
-    do
-        install -D -m644 "$_file" "${pkgdir}/usr/share/i2pd/certificates/${_file#contrib/certificates/}"
-    done < <(find contrib/certificates -type f -print0)
+    install -d -m755 "${pkgdir}/usr/share/i2pd"
+    cp -dr --no-preserve='ownership' contrib/certificates "${pkgdir}/usr/share/i2pd"
     
     # systemd
     install -D -m644 contrib/i2pd.service   -t "${pkgdir}/usr/lib/systemd/system"
@@ -85,9 +80,7 @@ package() {
     install -D -m644 "${srcdir}/i2pd.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/i2pd.conf"
     
     # tunnels.d examples
-    install -D -m644 contrib/tunnels.d/README         -t "${pkgdir}/usr/share/doc/i2pd/tunnels.d"
-    install -D -m644 contrib/tunnels.d/IRC-Ilita.conf -t "${pkgdir}/usr/share/doc/i2pd/tunnels.d"
-    install -D -m644 contrib/tunnels.d/IRC-Irc2P.conf -t "${pkgdir}/usr/share/doc/i2pd/tunnels.d"
+    install -D -m644 contrib/tunnels.d/{IRC-{Ilita,Irc2P}.conf,README} -t "${pkgdir}/usr/share/doc/i2pd/tunnels.d"
     
     # headers
     install -D -m644 libi2pd{,_client}/*.h -t "${pkgdir}/usr/include/i2pd"
