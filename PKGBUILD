@@ -1,4 +1,5 @@
 # Maintainer: Tobias M. Baust <tobias.baust at tutanota dot com>
+# Maintainer: Ruben Di Battista  <rubendibattista at gmail dot com>
 _pkgname=cantera
 pkgname="${_pkgname}-git"
 pkgver='2.5.1.r0.gb0bace782'
@@ -16,6 +17,7 @@ provides=('libcantera_shared.so=2-64')
 install="$pkgname.install"
 source=(git+https://github.com/Cantera/cantera.git)
 md5sums=('SKIP')
+_python_v=$(python -V |  awk '{print $2}')
 
 pkgver() {
     cd "$_pkgname"
@@ -25,7 +27,7 @@ pkgver() {
 build() {
     cd "$_pkgname"
     # build cantera
-    scons build \
+    scons -j $(nproc) build \
         prefix="$pkgdir/usr" \
         system_eigen='y' \
         system_sundials='y' \
@@ -40,7 +42,8 @@ build() {
 
 check() {
     cd "$_pkgname"
-    scons test
+    scons -j $(nproc) test
+    scons test-clean
 }
 
 package() {
@@ -49,6 +52,5 @@ package() {
     # install cantera
     scons install
     # correct namcap warning directory-not-world-executable
-    _python_v=$(python -V |  awk '{print $2}')
     chmod 755 "$pkgdir/usr/lib/python${_python_v:0:3}/site-packages"
 }
