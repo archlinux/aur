@@ -67,6 +67,8 @@ build() {
     -D adrian-aec=false \
     -D webrtc-aec=disabled \
     -D tcpwrap=disabled \
+    -D database=simple \
+    -D elogind=disabled \
     -D pulsedsp-location='/usr/\$LIB/pulseaudio' \
     -D stream-restore-clear-old-devices=true \
     -D udevrulesdir=/usr/lib/udev/rules.d
