@@ -1,6 +1,6 @@
 # Maintainer: inhzus <inhzus@gmail.com>
 pkgname=cppinsights-git
-pkgver=r675.a4b25db
+pkgver=r679.040545e
 pkgrel=1
 pkgdesc="C++ Insights - See your source code with the eyes of a compiler"
 arch=('x86_64')
@@ -29,9 +29,6 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname}"
-    git remote add arch git@github.com:jpollack/cppinsights.git
-    git fetch arch
-    git merge arch/master --no-edit
     test -d build || mkdir build
     cd build
     cmake -G"Ninja" ..
