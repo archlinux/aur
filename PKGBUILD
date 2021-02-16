@@ -34,21 +34,7 @@ if [ -z ${use_tracers+x} ]; then
   use_tracers=y
 fi
 
-## Enable Cachy CPU scheduler by default https://github.com/xanmod/linux/blob/5.8/Documentation/scheduler/sched-Cachy.rst
-## Set variable "use_cachy" to: n to disable (stock Xanmod)
-##                              y to enable
-if [ -z ${use_cachy+x} ]; then
-  use_cachy=n
-fi
-
-## Enable CONFIG_USER_NS_UNPRIVILEGED flag https://aur.archlinux.org/cgit/aur.git/tree/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck
-## Set variable "use_ns" to: n to disable (stock Xanmod)
-##                           y to enable (stock Archlinux)
-if [ -z ${use_ns+x} ]; then
-  use_ns=n
-fi
-
-# Compile ONLY used modules to VASTLYreduce the number of modules built
+# Compile ONLY used modules to VASTLY reduce the number of modules built
 # and the build time.
 #
 # To keep track of which modules are needed for your specific system/hardware,
@@ -66,8 +52,8 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-anbox
-pkgver=5.10.16
-_major=5.10
+pkgver=5.11.0
+_major=5.11
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
@@ -84,31 +70,24 @@ _srcname="linux-${pkgver}-xanmod${xanmod}"
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
         "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz"
-        choose-gcc-optimization.sh
-        '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch')
+        choose-gcc-optimization.sh)
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
 
 # Archlinux patches
-_commits=""
-for _patch in $_commits; do
-    source+=("${_patch}.patch::https://git.archlinux.org/linux.git/patch/?id=${_patch}")
+_commit="be7d4710850020de55bce930c83fa80347c02fc3"
+_patches=("sphinx-workaround.patch")
+for _patch in ${_patches[@]}; do
+    source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${_commit}")
 done
 
-sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
+sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
             'SKIP'
-            '8b978c2bd1a597ea837ec050d8037fa4cb521d1b89cb05f89605bb8069239000'
+            '9d49118bb60c0277ebac5aadd4938eb41561dd3d97c9422832e62d0ffc5c59df'
             '03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134'
-            '6c66dba73251440352f93ff32b72f5dd49536d0f17ef9347867660fd3a626991')
-
-# If use_cachy=y then download cachy patch
-if [ "$use_cachy" = "y" ]; then
-   echo "Cachy branch is not ready yet..." && exit 1
-   source+=("https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}-cachy/patch-${pkgver}-xanmod${xanmod}-cachy.xz")
-   sha256sums+=('c35685c5d706a683fc0b02cf11fd40db52becae9205bf0d71f6a4a901d836d69')
-fi
+            '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
@@ -118,11 +97,7 @@ prepare() {
   cd linux-${_major}
 
   # Apply Xanmod patch
-  if [ "$use_cachy" = "y" ]; then
-    patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}-cachy
-  else
-    patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}
-  fi
+  patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -164,16 +139,6 @@ prepare() {
   if [ "$use_numa" = "n" ]; then
     msg2 "Disabling NUMA..."
     scripts/config --disable CONFIG_NUMA
-  fi
-
-  if [ "$use_cachy" = "y" ]; then
-    msg2 "Enabling Cachy CPU scheduler by default..."
-    scripts/config --enable CONFIG_CACHY_SCHED
-  fi
-
-  if [ "$use_ns" = "n" ]; then
-    msg2 "Disabling CONFIG_USER_NS_UNPRIVILEGED"
-    scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
   fi
 
   # Let's user choose microarchitecture optimization in GCC
