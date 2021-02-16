@@ -1,0 +1,14 @@
+pkgbase = kubectl-neat-diff
+	pkgdesc = De-clutter your kubectl diff output using kubectl-neat
+	pkgver = 0.1.0
+	pkgrel = 0
+	url = https://tanka.dev
+	arch = x86_64
+	license = Apache
+	depends = kubectl
+	provides = kubectl-neat-diff
+	source = kubectl-neat-diff-0.1.0::https://github.com/sh0rez/kubectl-neat-diff/releases/download/v0.1.0/kubectl-neat-diff-linux-amd64
+	sha256sums = 36205e3c8eb1554df67a447e554859d9bdb6e459d0aa5e7c7242671270bcd6c4
+
+pkgname = kubectl-neat-diff
+
