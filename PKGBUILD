@@ -1,6 +1,6 @@
 # Maintainer: William Brown <glowinthedarkcia@horsefucker.org>
 pkgname="okit-git"
-pkgver=r179.884f16c
+pkgver=r203.303b2d6
 pkgrel=1
 arch=("x86_64")
 pkgdesc="The Application toolkit for the Orion Operating System"
@@ -20,11 +20,11 @@ build() {
 }
 package() {
 	mkdir -p "$pkgdir/usr/share/licenses/okit-git" \
-		"$pkgdir/usr/include/Orion" \
+		"$pkgdir/usr/include" \
 		"$pkgdir/usr/lib"
 	cd "$srcdir/OKit"
 	cp LICENSE "$pkgdir/usr/share/licenses/okit-git"
-	cp libOKit.so "$pkgdir/usr/lib"
-	cp -R src/include "$pkgdir/usr/include/Orion/_OKit"
-	cp src/SYSHEADER "$pkgdir/usr/include/Orion/OKit"
+	cp libO.so "$pkgdir/usr/lib"
+	cp -R src/include "$pkgdir/usr/include/.OrionAPI"
+	cp src/SYSHEADER "$pkgdir/usr/include/OrionAPI"
 }
