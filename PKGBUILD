@@ -3,7 +3,7 @@
 _pkgbase=tbsecp3-driver-git
 pkgname=${_pkgbase}-dkms
 pkgver=r20210216.175654.f1dc35f
-pkgrel=1
+pkgrel=2
 pkgdesc="TBSECP3 driver - standalone version (DKMS)"
 arch=('i686' 'x86_64')
 url="https://github.com/AlexanderS/tbsecp3-driver"
@@ -34,4 +34,8 @@ package() {
     # Copy sources
     mkdir -p "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/"
     cp -r "${srcdir}/tbsecp3-driver"/* "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/"
+
+    # Skip version check for modules
+    mkdir -p "${pkgdir}/usr/share/dkms/modules_to_force_install/"
+    echo "${_pkgbase}_version-override" > "${pkgdir}/usr/share/dkms/modules_to_force_install/${_pkgbase}"
 }

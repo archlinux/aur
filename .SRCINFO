@@ -1,7 +1,7 @@
 pkgbase = tbsecp3-driver-git-dkms
 	pkgdesc = TBSECP3 driver - standalone version (DKMS)
 	pkgver = r20210216.175654.f1dc35f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AlexanderS/tbsecp3-driver
 	arch = i686
 	arch = x86_64
