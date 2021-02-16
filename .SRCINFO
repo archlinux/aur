@@ -1,0 +1,16 @@
+pkgbase = openhmd
+	pkgdesc = API and drivers for immersive technology devices
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/OpenHMD/OpenHMD/
+	arch = x86_64
+	license = Boost
+	makedepends = meson
+	depends = glibc
+	depends = hidapi
+	depends = xr-hardware
+	source = https://github.com/OpenHMD/OpenHMD/archive/0.3.0/openhmd-0.3.0.tar.gz
+	sha256sums = ec5c97ab456046a8aef3cde6d59e474603af398f1d064a66e364fe3c0b26a0fa
+
+pkgname = openhmd
+
