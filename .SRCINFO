@@ -1,4 +1,5 @@
 pkgbase = python-trytond_carrier_percentage
+	pkgdesc = Tryton module to add cost method on percentage on carrier
 	pkgver = 5.8.1
 	pkgrel = 1
 	url = http://www.tryton.org/
