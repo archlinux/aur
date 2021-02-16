@@ -1,6 +1,6 @@
 # Maintainer: Kian Kasad <kian at kasad.com>
 pkgname=s6-man-pages-git
-pkgver=r232.f049bcc
+pkgver=v2.10.0.2.1.r0.93b0e5c
 pkgrel=1
 pkgdesc='Manual pages for the s6 suite of software'
 arch=('any')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
