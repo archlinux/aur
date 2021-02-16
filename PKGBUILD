@@ -1,7 +1,7 @@
   # Maintainer:  solaraquarion <shlomochoina@gmial.com>
 pkgname=extraterm-bin
 _pkgname=extraterm
-pkgver=0.55.0
+pkgver=0.57.1
 pkgrel=1
 conflicts=("extraterm")
 pkgdesc="The swiss army chainsaw of terminal emulators."
@@ -10,7 +10,7 @@ url="https://github.com/sedwards2009/extraterm"
 license=("MIT")
 depends=("nodejs")
 source=("$url/releases/download/v$pkgver/"$_pkgname"_"$pkgver"_amd64.deb")
-sha256sums=('5ee0c1a9b9b03e4789997fd7a8945af65098d7a54070198ec572bf24945b8d42')
+sha256sums=('c604b18ccf5f40b5021b1dac953af82e8a88d26ed7f95ad59b85bd4c7396f52c')
 
 package() {
   cd $srcdir
