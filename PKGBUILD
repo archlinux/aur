@@ -5,7 +5,7 @@
 # Contributor: Mikhail Burakov <mikhail.burakov@gmail.com>
 
 pkgname=cockatrice-client-git
-pkgver=2.8.0
+pkgver=2.8.1.beta.r3.gdb5f6e01
 pkgrel=1
 pkgdesc='Open-source multiplatform supported program for playing tabletop card games over a network.'
 arch=('i686' 'x86_64')
@@ -17,11 +17,16 @@ checkdepends=('gtest' 'valgrind')
 optdepends=('zlib: Support compressed MTGJSON' 'xz: Support compressed MTGJSON')
 provides=('cockatrice-client')
 conflicts=('cockatrice-client')
-source=("git+https://github.com/Cockatrice/Cockatrice")
+source=("$pkgname"::"git+https://github.com/Cockatrice/Cockatrice")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "$srcdir/$pkgname"
+  git describe --long --tags | cut -d- -f5- | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+}
+
 build() {
-  cd "$srcdir/Cockatrice"
+  cd "$srcdir/$pkgname"
   test -d build && rm -rf build
   mkdir build
   cd build
@@ -30,11 +35,11 @@ build() {
 }
 
 check() {
-  cd "$srcdir/Cockatrice/build"
+  cd "$srcdir/$pkgname/build"
   make test
 }
 
 package() {
-  cd "$srcdir/Cockatrice/build"
+  cd "$srcdir/$pkgname/build"
   make DESTDIR="$pkgdir/" install
 }

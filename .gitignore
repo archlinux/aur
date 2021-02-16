@@ -1,4 +1,5 @@
 Cockatrice/
+cockatrice-client-git/
 *.tar.xz
 *.swp
 pkg/
