@@ -1,8 +1,8 @@
 Index: gnome-control-center/panels/display/cc-display-panel.c
 ===================================================================
---- gnome-control-center.orig/panels/display/cc-display-panel.c
-+++ gnome-control-center/panels/display/cc-display-panel.c
-@@ -33,6 +33,8 @@
+--- a/panels/display/cc-display-panel.c
++++ b/panels/display/cc-display-panel.c
+@@ -31,6 +31,8 @@
  #include "list-box-helper.h"
  #include <libupower-glib/upower.h>
  
@@ -11,15 +11,15 @@ Index: gnome-control-center/panels/display/cc-display-panel.c
  #include "cc-display-config-manager-dbus.h"
  #include "cc-display-config.h"
  #include "cc-display-arrangement.h"
-@@ -113,6 +115,7 @@ struct _CcDisplayPanel
-   GtkButtonBox   *output_selection_two_second;
+@@ -108,6 +110,7 @@ struct _CcDisplayPanel
+   GtkRadioButton *output_selection_two_second;
    HdyComboRow    *primary_display_row;
    GtkWidget      *stack_switcher;
 +  GtkWidget      *display_container;
  };
  
  CC_PANEL_REGISTER (CcDisplayPanel, cc_display_panel)
-@@ -611,6 +614,27 @@ on_primary_display_selected_index_change
+@@ -589,6 +592,30 @@ on_primary_display_selected_index_changed_cb (CcDisplayPanel *panel)
  static void
  cc_display_panel_constructed (GObject *object)
  {
@@ -27,27 +27,30 @@ Index: gnome-control-center/panels/display/cc-display-panel.c
 +
 +  HiDpiToggle *toggle = hidpi_toggle_new ();
 +
-+  GtkWidget *toggle_frame = gtk_frame_new (NULL);
-+  gtk_container_add (GTK_CONTAINER (toggle_frame), hidpi_toggle_widget (toggle));
++  if (toggle != NULL)
++    {
++      GtkWidget *toggle_frame = gtk_frame_new (NULL);
++      gtk_container_add (GTK_CONTAINER (toggle_frame), hidpi_toggle_widget (toggle));
 +
-+  GtkWidget *hidpi_label = gtk_label_new ("<b>HiDPI Daemon</b>");
-+  gtk_label_set_use_markup (GTK_LABEL (hidpi_label), TRUE);
-+  gtk_label_set_xalign (GTK_LABEL (hidpi_label), 0);
++      GtkWidget *hidpi_label = gtk_label_new ("<b>HiDPI Daemon</b>");
++      gtk_label_set_use_markup (GTK_LABEL (hidpi_label), TRUE);
++      gtk_label_set_xalign (GTK_LABEL (hidpi_label), 0);
 +
-+  GtkWidget *hidpi_container = gtk_box_new (GTK_ORIENTATION_VERTICAL, 12);
++      GtkWidget *hidpi_container = gtk_box_new (GTK_ORIENTATION_VERTICAL, 12);
 +
-+  gtk_container_add (GTK_CONTAINER (hidpi_container), hidpi_label);
-+  gtk_container_add (GTK_CONTAINER (hidpi_container), toggle_frame);
-+  gtk_container_add (GTK_CONTAINER (self->display_container), hidpi_container);
++      gtk_container_add (GTK_CONTAINER (hidpi_container), hidpi_label);
++      gtk_container_add (GTK_CONTAINER (hidpi_container), toggle_frame);
++      gtk_container_add (GTK_CONTAINER (self->display_container), hidpi_container);
 +
-+  gtk_widget_show_all (hidpi_container);
++      gtk_widget_show_all (hidpi_container);
 +
-+  hidpi_toggle_free (toggle);
++      hidpi_toggle_free (toggle);
++    }
 +
    g_signal_connect_object (cc_panel_get_shell (CC_PANEL (object)), "notify::active-panel",
-                            G_CALLBACK (active_panel_changed), object, 0);
+                            G_CALLBACK (active_panel_changed), object, G_CONNECT_SWAPPED);
  
-@@ -664,6 +688,7 @@ cc_display_panel_class_init (CcDisplayPa
+@@ -644,6 +669,7 @@ cc_display_panel_class_init (CcDisplayPanelClass *klass)
    gtk_widget_class_bind_template_child (widget_class, CcDisplayPanel, output_selection_two_second);
    gtk_widget_class_bind_template_child (widget_class, CcDisplayPanel, primary_display_row);
    gtk_widget_class_bind_template_child (widget_class, CcDisplayPanel, stack_switcher);

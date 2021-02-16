@@ -2,7 +2,7 @@
 pkgname=gnome-control-center-system76
 _pkgname=${pkgname%-system76}
 pkgver=3.38.4
-pkgrel=1
+pkgrel=1.1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop (with System76 patches)"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 license=(GPL2)
@@ -33,7 +33,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'a038b6d1c5c8dd5e80c1b6e24d650d616d1434486c5e86b270694b540449e3f3'
-            '62869e1d309e6e488bc8c94b5df1053712c4fc108736e455a926bfa090f919d7'
+            'f5e165d638d795c21249fe3c169b75b197d32135eb16f108a3f35e3884c8c2bf'
             '33fc2be90935fa9b913cccde12677d7234763821d47d71edf3586034d7eece2d')
 
 pkgver() {
