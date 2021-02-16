@@ -1,18 +1,15 @@
 pkgbase = performance-tweaks
+	pkgdesc = Tweaks for improving performance based on the Arch wiki
 	pkgver = 0.0.1.r5.ge17ef26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/garuda-linux/themes-and-settings/settings/performance-tweaks
 	arch = any
 	license = GPL
 	makedepends = git
-	source = git+https://gitlab.com/garuda-linux/themes-and-settings/settings/performance-tweaks.git#branch=master
+	depends = hdparm
+	conflicts = powersave-tweaks
+	source = git+https://gitlab.com/garuda-linux/themes-and-settings/settings/performance-tweaks.git#commit=22119756fb6dc4815256e8503f6e98ff3f7bb80d
 	sha256sums = SKIP
 
 pkgname = performance-tweaks
-	pkgdesc = tweaks for Improving performance
-	install = performance-tweaks.install
-	depends = hdparm
-	provides = performance-tweaks
-	conflicts = performance-tweaks
-	conflicts = powersave-tweaks
 
