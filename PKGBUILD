@@ -2,13 +2,13 @@
 pkgname=xcfun-git
 _pkgname=xcfun
 pkgver=2.1.1.r1.gf87ca0e
-pkgrel=1
+pkgrel=2
 pkgdesc="Exchange-Correlation functionals with arbitrary order derivatives"
 arch=(i686 x86_64)
 url="http://dftlibs.org/xcfun/"
 license=('GPL3')
 makedepends=(git cmake)
-provides=(xcfun)
+provides=(xcfun xcfun-pyscf)
 conflicts=(xcfun-pyscf)
 conflicts=(xcfun)
 source=($pkgname::git+https://github.com/dftlibs/xcfun.git)
