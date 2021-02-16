@@ -1,0 +1,34 @@
+pkgbase = tomcat10
+	pkgdesc = Open source implementation of the Java Servlet 5.0 and JavaServer Pages 3.0 technologies
+	pkgver = 10.0.2
+	pkgrel = 1
+	url = https://tomcat.apache.org/
+	install = tomcat10.install
+	arch = any
+	license = APACHE
+	makedepends = ant
+	makedepends = git
+	makedepends = java-environment=8
+	depends = java-runtime>=8
+	depends = java-jsvc
+	depends = java-commons-daemon
+	depends = eclipse-ecj
+	optdepends = tomcat-native: to allow optimal performance in production environments
+	backup = etc/tomcat10/catalina.policy
+	backup = etc/tomcat10/catalina.properties
+	backup = etc/tomcat10/context.xml
+	backup = etc/tomcat10/logging.properties
+	backup = etc/tomcat10/server.xml
+	backup = etc/tomcat10/tomcat-users.xml
+	backup = etc/tomcat10/web.xml
+	source = git+https://github.com/apache/tomcat.git#tag=10.0.2
+	source = tomcat10.service
+	source = tomcat10.sysusers
+	source = tomcat10.tmpfiles
+	b2sums = SKIP
+	b2sums = 2bdf5f9e0ff8766363b2f0ac636415ee416bcfc3f4cc2859e1917d5352da827d0d25dc1c81260c38c1cf3e149d3701931b5a6bd0f32daeed9af4612dbc0b1f72
+	b2sums = ab6584d66e0e2e4d094a54d658af6e6397cbfee56ed211a6add84763d3b89c9e260127387a318c531f23182abde59c2289986773658f45e1c877687e1233b477
+	b2sums = 79ef7469fd113253479e212ed5faf9ec7e0e55b4eba25a120d1e3814b35241b6f8f2e78b1b36554088c8944b2652b8e304fd16615132db057e76a32a7778a39d
+
+pkgname = tomcat10
+

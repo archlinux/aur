@@ -1,0 +1,35 @@
+[Unit]
+Description=Tomcat 10 servlet container
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/tomcat10.pid
+Environment=CATALINA_PID=/var/run/tomcat10.pid
+Environment=TOMCAT_JAVA_HOME=/usr/lib/jvm/default-runtime
+Environment=CATALINA_HOME=/usr/share/tomcat10
+Environment=CATALINA_BASE=/usr/share/tomcat10
+Environment=CATALINA_OPTS=
+Environment=ERRFILE=SYSLOG
+Environment=OUTFILE=SYSLOG
+
+ExecStart=/usr/bin/jsvc \
+            -Dcatalina.home=${CATALINA_HOME} \
+            -Dcatalina.base=${CATALINA_BASE} \
+            -Djava.io.tmpdir=/var/tmp/tomcat10/temp \
+            -cp /usr/share/java/commons-daemon.jar:/usr/share/java/eclipse-ecj.jar:${CATALINA_HOME}/bin/bootstrap.jar:${CATALINA_HOME}/bin/tomcat-juli.jar \
+            -user tomcat10 \
+            -java-home ${TOMCAT_JAVA_HOME} \
+            -pidfile /var/run/tomcat10.pid \
+            -errfile ${ERRFILE} \
+            -outfile ${OUTFILE} \
+            $CATALINA_OPTS \
+            org.apache.catalina.startup.Bootstrap
+
+ExecStop=/usr/bin/jsvc \
+            -pidfile /var/run/tomcat10.pid \
+            -stop \
+            org.apache.catalina.startup.Bootstrap
+
+[Install]
+WantedBy=multi-user.target

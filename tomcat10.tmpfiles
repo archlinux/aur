@@ -1,0 +1,5 @@
+d  /var/tmp/tomcat10/temp     0775  tomcat10  tomcat10
+d  /var/tmp/tomcat10/work     0775  tomcat10  tomcat10
+d  /var/lib/tomcat10          0775  tomcat10  tomcat10
+d  /var/lib/tomcat10/webapps  0775  tomcat10  tomcat10
+d  /var/log/tomcat10          0775  tomcat10  log

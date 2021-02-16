@@ -1,0 +1,16 @@
+post_install() {
+  if [ -f lib/modules/$(uname -r)/kernel/security/capability.ko ]; then
+    echo 'It appears that your current kernel has linux security'
+    echo 'capabilities built as a module. Tomcat requires this'
+    echo ' functionality to operate.'
+  fi
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  echo "Leftover files may reside in /var/{lib,tmp,log}/tomcat10"
+  echo "If you remove them, you may also want to remove user and group 'tomcat10'"
+}
