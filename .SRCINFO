@@ -1,6 +1,6 @@
 pkgbase = execline-man-pages-git
 	pkgdesc = Manual pages for the execline suite of software
-	pkgver = v2.7.0.1.2.r0.970eab3
+	pkgver = v2.8.0.0.1.r0.7fce6a4
 	pkgrel = 1
 	url = https://github.com/flexibeast/execline-man-pages
 	arch = any
