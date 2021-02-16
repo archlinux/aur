@@ -1,6 +1,7 @@
 *
 !.gitignore
 !gdl.profile
-!gdl-python3.patch 
+!gdl-python3.patch
+!gdl-graphicsmagick.patch
 !PKGBUILD
 !.SRCINFO

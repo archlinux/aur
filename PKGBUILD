@@ -6,24 +6,25 @@
 
 pkgname=python-gdl
 pkgver=0.9.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface for the GNU Data Language(GDL)"
 arch=('i686' 'x86_64')
 url="http://gnudatalanguage.sourceforge.net/"
 license=('GPL')
 depends=("gnudatalanguage=${pkgver}")
-makedepends=('cmake')
+makedepends=('cmake' 'python')
 #options=('!makeflags')
 conflicts=('python2-gdl')
 source=("https://github.com/gnudatalanguage/gdl/archive/v${pkgver}.tar.gz"
 #       'gdl-tirpc.patch'
 #       'gdl-updates.patch'
         'gdl-python3.patch'
+        'gdl-graphicsmagick.patch'
         'gdl.profile')
 md5sums=('749dc9b6dd0b9a5385ffe83e7b1a6f46'
          'f757aec04c3149e5cd003990d50c8fa4'
+         '366bb65898facb4112dd213fe20c69e3'
          '40aa5fd8278cd8e80425c62a577563cc')
-_pyver=$(python -V | cut -c 8-10)
 
 prepare() {
     cd ${srcdir}/gdl-${pkgver}
@@ -31,6 +32,8 @@ prepare() {
 #   patch -p1 < ../gdl-tirpc.patch
 #   patch -p1 < ../gdl-updates.patch
     patch -Np1 -l -i "${srcdir}/gdl-python3.patch"
+    patch -Np1 -i "${srcdir}/gdl-graphicsmagick.patch"
+    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
 }
 
 build() {
@@ -40,10 +43,11 @@ build() {
     fi
     mkdir build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON=YES -DPYTHONVERSION=3 \
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON=ON -DPYTHONVERSION=3 \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 -DPYTHON_MODULE=ON \
-        -DGRAPHICSMAGICK=OFF -DMAGICK=ON -DFFTW=ON -DHDF=ON -DHDFDIR=/opt/hdf4 \
-        -DHDF5=ON -DGRIB=ON -DUDUNITS=ON ..
+        -DGRAPHICSMAGICK=ON -DMAGICK=OFF -DFFTW=ON -DHDF=ON -DHDFDIR=/opt/hdf4 \
+        -DHDF5=ON -DGRIB=ON -DUDUNITS=ON -DEIGEN3=ON \
+        -DNETCDF=ON -DREADLINE=ON -DEDITLINE=OFF ..
 
     make
 }
