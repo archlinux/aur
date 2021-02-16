@@ -7,11 +7,11 @@ pkgver=r110.2b20b01
 pkgrel=1
 pkgdesc="A tarpit to lock up SSH clients. Krathalan's fork"
 arch=('x86_64' 'i686' 'aarch64')
-url="https://github.com/skeeto/endlessh"
+url="https://github.com/krathalan/endlessh"
 license=('Unlicense')
 
 # Sources
-source=("git+https://github.com/krathalan/${_pkgname}" 'endlessh.conf' '99-endlessh.hook')
+source=("git+${url}" 'endlessh.conf' '99-endlessh.hook')
 sha256sums=('SKIP' '800eb22c581d706fe26821e41102ce1b23836fa7b36beb89ba12bb38577a5ea8' '210b60c91bdabe89cb0111e8597eb61fe28542aa2abedb95ff3b175050adb20d')
 
 # Package relations

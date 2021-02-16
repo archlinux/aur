@@ -1,8 +1,8 @@
 pkgbase = krathalans-endlessh-git
 	pkgdesc = A tarpit to lock up SSH clients. Krathalan's fork
-	pkgver = r103.6a75976
-	pkgrel = 3
-	url = https://github.com/skeeto/endlessh
+	pkgver = r110.2b20b01
+	pkgrel = 1
+	url = https://github.com/krathalan/endlessh
 	arch = x86_64
 	arch = i686
 	arch = aarch64
@@ -13,8 +13,10 @@ pkgbase = krathalans-endlessh-git
 	backup = etc/endlessh.conf
 	source = git+https://github.com/krathalan/endlessh
 	source = endlessh.conf
+	source = 99-endlessh.hook
 	sha256sums = SKIP
 	sha256sums = 800eb22c581d706fe26821e41102ce1b23836fa7b36beb89ba12bb38577a5ea8
+	sha256sums = 210b60c91bdabe89cb0111e8597eb61fe28542aa2abedb95ff3b175050adb20d
 
 pkgname = krathalans-endlessh-git
 
