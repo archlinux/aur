@@ -1,0 +1,12 @@
+pkgbase = python-ssh-mitm
+	pkgdesc = ssh mitm server for security audits supporting public key authentication, session hijacking and file manipulation
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://ssh-mitm.at
+	arch = any
+	license = LGPL3
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-ssh-mitm
+
