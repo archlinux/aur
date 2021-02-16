@@ -5,7 +5,6 @@
 
 pkgname=spotify-snap
 pkgver=1.1.46.916.g416cacf1
-epoch=1
 _snapid=pOBIoZ2LrCB3rDohMxoYGnbN14EHOgD7
 _revision=43
 pkgrel=4

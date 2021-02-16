@@ -2,7 +2,6 @@ pkgbase = spotify-snap
 	pkgdesc = A proprietary music streaming service
 	pkgver = 1.1.46.916.g416cacf1
 	pkgrel = 4
-	epoch = 1
 	url = https://www.spotify.com
 	arch = x86_64
 	license = custom
