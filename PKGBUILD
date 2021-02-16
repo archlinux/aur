@@ -2,7 +2,7 @@
 
 pkgname=mlucas
 pkgver=19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Program used to perform Lucas-Lehmer tests of Mersenne numbers. Can be built on the ARM architecture."
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://www.mersenneforum.org/mayer/README.html"
@@ -14,7 +14,14 @@ md5sums=('2b9af033d4bbb6d439d70bb9bc0c2617'
 
 prepare() {
 cd "${srcdir}"/"${pkgname}"_v"${pkgver}"
-patch -p1 < "../../sysctl-missing.patch"
+#Only patch if the kernel version is at least 5.5.0
+kermajver=`uname -r | cut -d. -f1`
+kerminver=`uname -r | cut -d. -f2`
+if [ $kermajver -gt 5 ]; then
+   patch -p1 < "../../sysctl-missing.patch"
+elif [ $kermajver -eq 5 ] && [ $kerminver -ge 5 ]; then
+   patch -p1 < "../../sysctl-missing.patch"
+fi
 }
 
 build() {
