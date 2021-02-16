@@ -2,9 +2,9 @@
 
 pkgname=geil-git
 pkgver=v0.0.1.alpha.0.r0.g2773cf2
-pkgrel=1
+pkgrel=2
 arch=('any')
-pkgdesc='A task manager and scheduler for shell commands'
+pkgdesc='Update your git repos and see which need cleanup.'
 license=('MIT')
 makedepends=('git' 'cargo')
 conflicts=()
