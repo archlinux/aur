@@ -1,0 +1,27 @@
+pkgbase = gsa
+	pkgdesc = Greenbone Security Assistant
+	pkgver = 20.8.1
+	pkgrel = 1
+	url = https://github.com/greenbone/gsa
+	arch = x86_64
+	groups = greenbone-vulnerability-manager
+	license = GPL
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = xmltoman
+	depends = gvm-libs
+	depends = libgcrypt
+	depends = gnutls
+	depends = postgresql
+	depends = libxml2
+	depends = libmicrohttpd
+	depends = openvas-scanner
+	source = gsa-20.8.1.tar.gz::https://github.com/greenbone/gsa/archive/v20.8.1.tar.gz
+	source = gsad
+	source = gsad.service
+	sha512sums = 85a96d59317bedfbe748b02b71fcf5f931f049d1ca688e3d4e87e701f14cd39ec4320621689f3a9f6b91fc1cf4e25c422df4d9b4675a7bcfed330b431b64d3ef
+	sha512sums = 73817d4a57e591b0102e9c0822a18a1b2ee76bf13df54f7928a0e8b343ca6c253e8e4bc4535b2dabd36094aade4c2bb5f4a96cf7edac04cbf4edcf2ba4c0c0f7
+	sha512sums = 6c65e3ea08b427cd1773c346b054b7b1a3e95d06d6d4070603e97f92b59f9dd465e94992cd6b5927192bc9b859c1268d1cda8d92d4067264389a7a0a578b9d30
+
+pkgname = gsa
+
