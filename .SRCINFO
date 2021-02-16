@@ -7,13 +7,16 @@ pkgbase = concourse
 	makedepends = go-pie
 	makedepends = yarn
 	source = concourse-6.7.4.tar.gz::https://github.com/concourse/concourse/archive/v6.7.4.tar.gz
+	source = https://github.com/concourse/concourse/releases/download/v6.7.4/concourse-6.7.4-linux-amd64.tgz
 	sha256sums = d8e95f7a38c7efab9450315b64250bb5c26baec9f49ae204a6dbce31c9a62244
+	sha256sums = a2f9953c1fc7673d9d3cdf36a35a5181b3869ab668c9bda7f7c1d2dfcd6168c5
 
 pkgname = concourse
 	pkgdesc = Concourse is a container-based continuous thing-doer written in Go and Elm
 	optdepends = cni-plugins
 	optdepends = containerd
 	optdepends = postgresql
+	optdepends = concourse-resource-types
 	conflicts = concourse-bin
 
 pkgname = concourse-fly-cli
@@ -22,4 +25,7 @@ pkgname = concourse-fly-cli
 	conflicts = concourse-fly-bin
 	conflicts = concourse-fly-git
 	conflicts = fly-cli
+
+pkgname = concourse-resource-types
+	pkgdesc = Concourse basic resource types
 

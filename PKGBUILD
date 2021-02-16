@@ -3,15 +3,17 @@
 # Contributor: Bram Swenson <bram@amplified.work>
 
 pkgbase='concourse'
-pkgname=('concourse' 'concourse-fly-cli')
+pkgname=('concourse' 'concourse-fly-cli' 'concourse-resource-types')
 pkgver=6.7.4
 pkgrel=1
 arch=('x86_64')
 url='https://concourse-ci.org'
 license=('Apache-2.0')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/concourse/concourse/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/concourse/concourse/archive/v${pkgver}.tar.gz"
+        "https://github.com/concourse/concourse/releases/download/v${pkgver}/concourse-${pkgver}-linux-amd64.tgz")
 makedepends=('go-pie' 'yarn')
-sha256sums=('d8e95f7a38c7efab9450315b64250bb5c26baec9f49ae204a6dbce31c9a62244')
+sha256sums=('d8e95f7a38c7efab9450315b64250bb5c26baec9f49ae204a6dbce31c9a62244'
+            'a2f9953c1fc7673d9d3cdf36a35a5181b3869ab668c9bda7f7c1d2dfcd6168c5')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -43,7 +45,7 @@ build() {
 package_concourse() {
   pkgname=concourse
   pkgdesc="Concourse is a container-based continuous thing-doer written in Go and Elm"
-  optdepends=('cni-plugins' 'containerd' 'postgresql')
+  optdepends=('cni-plugins' 'containerd' 'postgresql' 'concourse-resource-types')
   conflicts=('concourse-bin')
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
@@ -65,4 +67,14 @@ package_concourse-fly-cli() {
 
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   ln -s /usr/share/licenses/common/Apache/license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_concourse-resource-types() {
+  pkgname=concourse-resource-types
+  pkgdesc="Concourse basic resource types"
+
+  cd "${srcdir}/${pkgbase}/resource-types"
+
+  install -dm755 "${pkgdir}/usr/lib/${pkgbase}/resource-types"
+  cp -r * "${pkgdir}/usr/lib/${pkgbase}/resource-types/"
 }
