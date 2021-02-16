@@ -1,7 +1,7 @@
 # Maintainer: Juri Grabowski <gratuxri@gmail.com>
 
 pkgname=kartina-tv-bin
-pkgver=2.74
+pkgver=2.11.5
 pkgrel=0
 pkgdesc="iptv player for kartina.tv"
 url=http://jo2003.github.io/vlc_record/
