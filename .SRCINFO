@@ -1,6 +1,6 @@
 pkgbase = 1password
 	pkgdesc = Password manager and secure wallet
-	pkgver = 0.9.12_3
+	pkgver = 0.9.13
 	pkgrel = 1
 	url = https://1password.com
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = 1password
 	depends = fuse2
 	depends = zlib
 	depends = hicolor-icon-theme
-	noextract = 1password-0.9.12-3.AppImage
+	noextract = 1password-0.9.13.AppImage
 	options = !strip
-	source = https://downloads.1password.com/linux/appimage/1password-0.9.12-3.AppImage
-	source = https://downloads.1password.com/linux/appimage/1password-0.9.12-3.AppImage.sig
+	source = https://downloads.1password.com/linux/appimage/1password-0.9.13.AppImage
+	source = https://downloads.1password.com/linux/appimage/1password-0.9.13.AppImage.sig
 	validpgpkeys = 3FEF9748469ADBE15DA7CA80AC2D62742012EA22
-	sha256sums = 20ae01b9928cd94f2fcfb9bcc1a261a21ded439dfdc062dc203362606528bb6e
-	sha256sums = 10e12e78a963186dc27cf44a6527b9973b61fc31da0818b900f479cd25feb024
+	sha256sums = 55d6dd9a92e24065451f7aba6da136caeb8acf5d539f480ca6418323d288dc74
+	sha256sums = 44b03fd5a55c7b8721c45f09b32f16011e23791ada669ce1e49ea518aa1d2f52
 
 pkgname = 1password
 
