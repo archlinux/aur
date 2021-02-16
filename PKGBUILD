@@ -40,5 +40,5 @@ package() {
       cp -r $srcdir/Logseq-linux-x64/* ${pkgdir}/opt/${_pkgname}/
 
       install -d     ${pkgdir}/usr/bin
-      ln -s $srcdir/Logseq-linux-x64/Logseq ${pkgdir}/usr/bin/logseq
+      ln -s /opt/${_pkgname}/Logseq ${pkgdir}/usr/bin/logseq
 }
