@@ -3,6 +3,6 @@ Version=1.0
 Encoding=UTF-8
 Type=X-Thumbnailer
 Name=DjVu Thumbnailer
-MimeType=image/vnd.djvu;
+MimeType=image/vnd.djvu+multipage;application/x-ext-djv;application/x-ext-djvu;image/vnd.djvu;
 TryExec=/usr/bin/ddjvu
-Exec=/usr/bin/ddjvu -page=1 -format=tiff -size=%s %i %o
+Exec=/usr/bin/ddjvu -page=1 -format=tiff -size=%sx%s %i %o

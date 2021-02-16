@@ -2,7 +2,7 @@
 
 pkgname=tumbler-extra-thumbnailers
 pkgver=4
-pkgrel=1
+pkgrel=2
 pkgdesc="Customized thumbnailers for Tumbler"
 arch=('any')
 url="https://docs.xfce.org/xfce/thunar/tumbler"
@@ -19,7 +19,7 @@ source=('dds.thumbnailer'
 	'comicthumb.thumbnailer'
 	'webp.thumbnailer')
 sha512sums=('c4f484f78b28d51e167d1e861c63c81aea623539fcaae7433d13b3fc8c0ccf5f9dbe5a760fcf3310490f1df3c31c1c1368e63d35604658dabe403216f9bf3e13'
-            '0a9143b7d40e310c78ae8a2b651e0548d7ae32dbf8326e336be337851b0fdec40c5ac2509b3fce2e02d806cfb790bb0796edcb624aa0d6934d6e2d799c7b5d09'
+            'd6b94fbee77935294a0fa8fd460bceb51db11bbf584c771d1f2055f0d87c900bdc494dba0519960bfad10058074623893609f40e2e2d60bc00bba6b5750f161d'
             '3f3ebb4675f41fec82239b5c782d86162a99f92b37c6274ece459b4d2e53f0133606ebfbbac7dbed8e12d9c91590eb667116f6d71449f12e231517d75fe41141'
             'e62c5407390861affdcaf5029f2d7c28d1e623d6361d37a28af0e36cd2dec5c3226d747c608b8b88c5e4deb00197d0d35656963ade5e3a160b0cc29bfcf31bac'
             '07e7abf95879bbb8d15644ad4db07f1b1818e0b01d358b1fb4657991e4873bfe64a3613934a6135af618d793f13178b659297fa182cc3d3aa0ff99ebca90fd99'
