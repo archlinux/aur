@@ -1,0 +1,12 @@
+pkgbase = ttf-yozai-font
+	pkgdesc = Handwritten-style Chinese font derived from Y.OzFont.
+	pkgver = 0.850
+	pkgrel = 1
+	url = https://github.com/lxgw/yozai-font
+	arch = any
+	license = custom:OFL
+	source = ttf-yozai-font::git+https://github.com/lxgw/yozai-font.git#commit=dff6560b55203cde1c21babcd05997c28a69172d
+	sha256sums = SKIP
+
+pkgname = ttf-yozai-font
+
