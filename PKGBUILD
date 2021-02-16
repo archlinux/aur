@@ -1,7 +1,7 @@
 # Maintainer: Erkin Batu Altunbaş <erkin@sdf.org>
 pkgname=loko
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An optimizing R6RS Scheme compiler"
 arch=('x86_64')
 url="https://scheme.fail"
