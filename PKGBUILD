@@ -24,7 +24,7 @@ pkgver() {
 }
 
 md5sums=('SKIP'
-	 'd60e05000301e23b5819bdfbe8d9f52b'
+	 'SKIP'
 	 'SKIP'
 	 'SKIP')
 
