@@ -3,6 +3,7 @@
 pkgname=kartina-tv-bin
 pkgver=2.11.5
 pkgrel=0
+epoch=1
 pkgdesc="iptv player for kartina.tv"
 url=http://jo2003.github.io/vlc_record/
 arch=(x86_64)
