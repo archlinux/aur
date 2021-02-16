@@ -8,9 +8,8 @@ url="https://github.com/openmc-dev/openmc"
 license=('MIT')
 makedepends=('cmake' 'git' 'python-setuptools')
 depends=('hdf5-cpp-fortran' 'python-numpy' 'python-matplotlib' 'python-scipy'
-    'python-pandas' 'python-h5py' 'python-uncertainties' 'python-lxml')
+    'python-pandas' 'python-h5py' 'python-uncertainties' 'python-lxml' 'pugixml' 'fmt')
 provides=("${pkgname%-git}" "libopenmc.so")
-conflicts=("${pkgname%-git}" 'pugixml' 'fmt')
 source=("${pkgname}::git+${url}.git")
 noextract=()
 sha1sums=('SKIP')
@@ -23,7 +22,6 @@ build() {
     printf "%s" "${pkgname}"
     printf "%s" "${pkgname%-git}"
 	cd "${srcdir}/${pkgname}"
-    git submodule update --init --recursive
     python setup.py build
     mkdir -p build
     cd build
