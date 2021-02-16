@@ -2,7 +2,7 @@
 # Contributor: Luca Lemmo <luca at linux dot com>
 
 pkgname=flent-git
-pkgver=1.3.0.r16.4ae001d
+pkgver=2.0.0.r7.11522824e766
 pkgrel=1
 pkgdesc='The FLExible Network Tester.'
 arch=('any')
@@ -15,7 +15,7 @@ conflicts=('netperf-wrapper' 'flent')
 replaces=('netperf-wrapper')
 optdepends=(
 	'python-matplotlib: for outputting graphs'
-	'python-pyqt4: for the GUI'
+	'python-qtpy: for the GUI'
 )
 source=(git+https://github.com/tohojo/flent.git)
 md5sums=('SKIP')
