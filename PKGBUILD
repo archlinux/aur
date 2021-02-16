@@ -6,7 +6,7 @@
 pkgbase=lib32-pipewire-git
 _pkgbase=pipewire
 pkgname=(lib32-pipewire-git lib32-pipewire-jack-git lib32-gst-plugin-pipewire-git)
-pkgver=0.3.20.r27.gb44cb0a8
+pkgver=0.3.21.r117.gb17fe4ab
 pkgrel=1
 pkgdesc='Server and user space API to deal with multimedia pipelines (git) (32 bit client libraries)'
 url=https://pipewire.org
@@ -33,6 +33,7 @@ build() {
         -D docs=false \
         -D tests=false \
         -D bluez5=false \
+        -D sdl2=disabled \
         -D udevrulesdir=/usr/lib/udev/rules.d
     meson compile -C build
 }
