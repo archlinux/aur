@@ -2,14 +2,13 @@
 # Contributor: Drew DeVault <sir@cmpwn.com>
 pkgname=sway-hidpi-git
 _pkgname=sway-hidpi
-pkgver=r6575.97adba05
+pkgver=r6605.42cbaf27
 pkgrel=1
 license=("MIT")
 pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager, with XWayland HiDPI (git version)"
 makedepends=(
 	"git"
 	"meson"
-	"ninja"
 	"scdoc"
 	"wayland-protocols"
 )
@@ -62,22 +61,21 @@ pkgver() {
 }
 
 build() {
-	cd "$_pkgname"
-	meson \
+	arch-meson \
+		--buildtype debugoptimized \
+		-Dsd-bus-provider=libsystemd \
 		-Dwerror=false \
-		--prefix /usr \
-		"$srcdir/build"
-	ninja -C "$srcdir/build"
+		"$_pkgname" build
+	meson compile -C build
 }
 
 package() {
 	install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/sway/config.d/"
 
+	DESTDIR="$pkgdir" meson install -C build
+
 	cd "$_pkgname"
-	DESTDIR="$pkgdir" ninja -C "$srcdir/build" install
-
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
 	for util in autoname-workspaces.py inactive-windows-transparency.py grimshot; do
 		install -Dm755 "contrib/$util" -t "$pkgdir/usr/share/$pkgname/scripts"
 	done
