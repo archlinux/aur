@@ -4,17 +4,18 @@
 pkgname=emptty
 pkgdesc="Dead simple CLI Display Manager on TTY"
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/tvrzna/emptty"
 license=('MIT')
 depends=('pam' 'libx11')
-makedepends=('go' 'libx11' 'git')
+makedepends=('go' 'git')
 optdepends=('xorg-server: default display server'
             'xorg-xauth: required if using xorg-server'
             'util-linux: mcookie required if using xorg-server'
             'wayland: alternative to xorg-server')
 backup=('etc/emptty/conf')
+install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('4bc9d03fcc4a9a30a2f93f046f6fba422d0950508d87cf21e6cf565c02718bcb2c05e3c947a0cda648129d4cd3b8ef7d3f0d4a81388c7f3d15e437b270841d82')
 
@@ -35,5 +36,4 @@ package() {
   make DESTDIR="$pkgdir/" install-systemd
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  echo "Disable your DM and run 'systemctl enable emptty' to enable emptty at the next boot"
 }

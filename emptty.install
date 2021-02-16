@@ -1,0 +1,3 @@
+post_install() {
+    echo "Disable your DM and run 'systemctl enable emptty' to enable emptty at the next boot"
+}
