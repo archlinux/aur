@@ -33,7 +33,7 @@ package() {
     install -m644 "$srcdir/Makefile" "$pkgdir/usr/src/$_pkgname-$pkgver"
 }
 
-md5sums=('4b862b8723ff9cedcab3a7c4feeaee42'
+md5sums=('a4b60abb11799dda965694331e5b0785'
          'a41a534a4b732a6e2a0b41214fa27a1d'
          'b8943c145912d5da71dd84e54465bb85'
          '1e94254311f05274035b5e41ff5a7a33')
