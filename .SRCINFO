@@ -1,6 +1,6 @@
 pkgbase = tbsecp3-driver-git-dkms
 	pkgdesc = TBSECP3 driver - standalone version (DKMS)
-	pkgver = r20210208.153522.4dcc20f
+	pkgver = r20210216.175654.f1dc35f
 	pkgrel = 1
 	url = https://github.com/AlexanderS/tbsecp3-driver
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = tbsecp3-driver-git-dkms
 	source = git+https://github.com/AlexanderS/tbsecp3-driver.git
 	source = dkms.conf
 	sha256sums = SKIP
-	sha256sums = e412b417d60d035f467b93751611142c426f68e49542598e7434422e524fd639
+	sha256sums = f70f714c2202b8b371da5fce689c1003a7024efde724d04ed506036f5378dff8
 
 pkgname = tbsecp3-driver-git-dkms
 
