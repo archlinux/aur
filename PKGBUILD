@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 pkgname=wasmer
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Universal Binaries Powered by WebAssembly"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('rust' 'cmake' 'python' 'libxkbcommon')
 checkdepends=('llvm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wasmerio/wasmer/archive/${pkgver}.tar.gz")
-sha512sums=('5b96f84d6f1a00ef02bb1e2398706d1095276682d15d2c87a9a72571363c9ec3a1728beeb4d533adaa0ac9023cb54efc0fdd819982a4624c63b0e52010b8619e')
+sha512sums=('f8058cbd5a8a807cd84b4a839c87ff76dae5475c655e804b27262cd5cb22ddb6c43da3a01b6cdbed29502afc38aa9ee589022f67fab27b189453f2500478c4a9')
 
 build() {
   cd "$pkgname-$pkgver"
