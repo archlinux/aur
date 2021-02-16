@@ -2,7 +2,7 @@
 
 pkgname=aws-sam-cli-bin
 pkgver=1.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool to build, test, debug, and deploy Serverless applications using AWS SAM'
 arch=('any')
 url='https://github.com/awslabs/aws-sam-cli'
