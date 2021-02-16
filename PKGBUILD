@@ -2,13 +2,13 @@
 # Contributor: Piotr Rogoża <rogoza dot piotr at gmail dot com>
 
 pkgname=perl-devel-platform-info
-pkgver=0.15
+pkgver=1.00
 pkgrel=1
 _author="B/BA/BARBIE"
 _perlmod="Devel-Platform-Info"
 pkgdesc="Devel::Platform::Info - Unified framework for obtaining common platform metadata"
 arch=('any')
-url="http://search.cpan.org/dist/Devel-Platform-Info/"
+url="https://metacpan.org/release/Devel-Platform-Info/"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0')
 provides=(
@@ -22,7 +22,7 @@ perl-devel-platform-info-win32
 )
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('d2dbba1fbb2458c7c8c1b3b5d079dd4dca0adce7b7536c3ccddb3135d744338b')
+sha256sums=('8242ee2adde580e7cd6159c4248a274a5db1256d44a25dd15332c8e11ca4be67')
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
 
