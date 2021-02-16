@@ -1,0 +1,46 @@
+_services="system76-firmware-daemon.service"
+
+_stop_services() {
+  /usr/bin/systemctl stop $_services >/dev/null 2>&1
+}
+
+_disable_services() {
+  /usr/bin/systemctl disable $_services >/dev/null 2>&1
+  /usr/bin/systemctl reset-failed $_services >/dev/null 2>&1
+}
+
+_restore_services() {
+  for service in $_services; do
+    if /usr/bin/systemctl -q is-enabled $service >/dev/null 2>&1; then
+      /usr/bin/systemctl start $service > /dev/null 2>&1
+    fi
+  done
+}
+
+post_install() {
+cat << EOF
+
+    The System76 Firmware package provides the following system services:
+
+        system76-firmware-daemon.service          System76 service that exposes a DBUS API for handling firmware updates.
+
+EOF
+}
+
+pre_upgrade() {
+  _stop_services
+}
+
+post_upgrade() {
+  /usr/bin/systemctl daemon-reload >/dev/null 2>&1
+  _restore_services
+}
+
+pre_remove() {
+  _stop_services
+  _disable_services
+}
+
+post_remove() {
+  /usr/bin/systemctl daemon-reload >/dev/null 2>&1
+}
