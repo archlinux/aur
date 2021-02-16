@@ -1,0 +1,16 @@
+pkgbase = libcint-git
+	pkgdesc = General GTO integrals for quantum chemistry
+	pkgver = 4.0.7.r2.ge0cc399
+	pkgrel = 1
+	url = http://wiki.sunqm.net/libcint
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = blas
+	provides = libcint-git=4.0.7.r2.ge0cc399
+	conflicts = libcint-cint3
+	conflicts = libcint
+
+pkgname = libcint-git
+
