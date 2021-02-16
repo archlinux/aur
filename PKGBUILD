@@ -45,6 +45,8 @@ package() {
   ln -s "libwasmer.so.$pkgver" "$pkgdir/usr/lib/libwasmer.so"
 
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+  WASMER_DIR="$pkgdir"/usr/bin/wasmer config --pkg-config >"$pkgdir"/usr/lib/pkgconfig/wasmer.pc
 }
 
 # vim:set ts=2 sw=2 et:
