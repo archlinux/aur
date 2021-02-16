@@ -1,4 +1,4 @@
-pkgbase = linux-xanmod-cacule-uksm
+pkgbase = linux-xanmod-cacule-uksm-cjktty
 	pkgdesc = Linux Xanmod. Branch with Cacule scheduler by Hamad Marri
 	pkgver = 5.10.16
 	pkgrel = 1
@@ -18,6 +18,7 @@ pkgbase = linux-xanmod-cacule-uksm
 	source = choose-gcc-optimization.sh
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
 	source = 0002-UKSM.patch
+	source = 0003-CJKTTY.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v5.x/cjktty-5.10.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43
@@ -26,8 +27,9 @@ pkgbase = linux-xanmod-cacule-uksm
 	sha256sums = 2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511
 	sha256sums = 6c66dba73251440352f93ff32b72f5dd49536d0f17ef9347867660fd3a626991
 	sha256sums = 9f7931fe587cfbc918aabbf3a1211a7179c8b2b300a1fc38c22920df4ed7dc2a
+	sha256sums = 078837287607800f948e0e26e6a8ba874d856fd37e0063e8975bb562268546c4
 
-pkgname = linux-xanmod-cacule-uksm
+pkgname = linux-xanmod-cacule-uksm-cjktty
 	pkgdesc = The Linux kernel and modules with Xanmod patches
 	depends = coreutils
 	depends = kmod
@@ -35,6 +37,6 @@ pkgname = linux-xanmod-cacule-uksm
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 
-pkgname = linux-xanmod-cacule-uksm-headers
+pkgname = linux-xanmod-cacule-uksm-cjktty-headers
 	pkgdesc = Header files and scripts for building modules for Xanmod Linux kernel
 
