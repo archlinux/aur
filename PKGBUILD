@@ -14,11 +14,11 @@ makedepends=('git' 'meson' 'doxygen' 'eigen' 'glslang' 'qt5-base' 'v4l-utils'
              'libjpeg-turbo' 'librealsense' 'libsurvive' 'libusb' 'libuvc' 'libx11'
              'libxcb' 'opencv' 'openhmd' 'sdl2' 'systemd-libs' 'vulkan-icd-loader'
              'wayland' 'zlib')
-source=("git+https://gitlab.freedesktop.org/monado/monado.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+source=("https://gitlab.freedesktop.org/monado/monado/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
+sha256sums=('7849ef4123afef14ca401aa5f9b8923144bb6bc707fe35817a288285d4990458')
 
 build() {
-    arch-meson -Dinstall-active-runtime='false' build monado
+    arch-meson -Dinstall-active-runtime='false' build "${pkgname}-v${pkgver}"
     ninja -C build
 }
 

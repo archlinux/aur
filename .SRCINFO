@@ -33,8 +33,8 @@ pkgbase = monado
 	makedepends = vulkan-icd-loader
 	makedepends = wayland
 	makedepends = zlib
-	source = git+https://gitlab.freedesktop.org/monado/monado.git#tag=v21.0.0
-	sha256sums = SKIP
+	source = https://gitlab.freedesktop.org/monado/monado/-/archive/v21.0.0/monado-v21.0.0.tar.bz2
+	sha256sums = 7849ef4123afef14ca401aa5f9b8923144bb6bc707fe35817a288285d4990458
 
 pkgname = monado
 	install = monado.install
