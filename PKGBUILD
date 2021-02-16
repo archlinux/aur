@@ -2,14 +2,13 @@
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=sway-git
 _pkgname=sway
-pkgver=r6506.1be66c98
-pkgrel=2
+pkgver=r6607.28cadf55
+pkgrel=1
 license=("MIT")
 pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager"
 makedepends=(
 	"git"
 	"meson"
-	"ninja"
 	"scdoc"
 	"wayland-protocols"
 )
@@ -42,8 +41,8 @@ arch=("i686" "x86_64")
 url="https://swaywm.org"
 source=("${pkgname%-*}::git+https://github.com/swaywm/sway.git"
 	50-systemd-user.conf)
-sha512sums=("SKIP"
-            "57590bc0d14c87289a4a9cd67991c6a841e54244d2a6186b5da5a08e633de2e8631959fa8c77ede211b0a5f315d920f2c1350951a53d6f2e9e81859056cb3c9e")
+sha512sums=('SKIP'
+            '57590bc0d14c87289a4a9cd67991c6a841e54244d2a6186b5da5a08e633de2e8631959fa8c77ede211b0a5f315d920f2c1350951a53d6f2e9e81859056cb3c9e')
 provides=("sway")
 conflicts=("sway")
 options=(debug)
@@ -54,22 +53,20 @@ pkgver() {
 }
 
 build() {
-	cd "$_pkgname"
-	meson \
+	arch-meson \
+		-Dsd-bus-provider=libsystemd \
 		-Dwerror=false \
-		--prefix /usr \
-		"$srcdir/build"
-	ninja -C "$srcdir/build"
+		"$_pkgname" build
+	meson compile -C build
 }
 
 package() {
 	install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/sway/config.d/"
 
-	cd "$_pkgname"
-	DESTDIR="$pkgdir" ninja -C "$srcdir/build" install
+	DESTDIR="$pkgdir" meson install -C build
 
+        cd "$_pkgname"
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
 	for util in autoname-workspaces.py inactive-windows-transparency.py grimshot; do
 		install -Dm755 "contrib/$util" -t "$pkgdir/usr/share/$pkgname/scripts"
 	done
