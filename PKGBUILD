@@ -6,7 +6,7 @@
 pkgname=arachnophilia
 _pkgname=Arachnophilia
 pkgver=5.5.2947
-pkgrel=2
+pkgrel=3
 pkgdesc="A web page development workshop and general programming tool"
 arch=('any')
 url="http://www.arachnoid.com/arachnophilia/index.php"
@@ -20,7 +20,7 @@ source=("$_pkgname-$pkgver.jar::http://www.arachnoid.com/$pkgname/$_pkgname.jar"
         "${pkgname}.sh")
 sha256sums=('e4fccb6fed127a87fce6bd9073e670ef0270684c8a054a8396f27d8f2aa29a39'
             'b170b0beb4fee26fb9f60529cf87d418396571459b95210b19437596407d3426'
-            '179fe52b3daecf5edba1af8104a9f0bcec52c7f07a7eb4fe232453bcbadc1a7d'
+            'f8c92cd6537cd76cc075b699549fe58cb29de6046c3909fab32287bd317e610e'
             'e1ae7e1cdfcf66011fae5f4e2e1c46b4f00fb2ea58edf74ba146896f04d70c98'
             '6b772081e74eb9551102f6331bc3f4114d1dcfdea7798b9cc1a5ff8c2d73a422')
 DLAGENTS=('http::/usr/bin/curl -A "Mozilla/4.0" -kfLC - --retry 3 --retry-delay 3 -o %o %u')
