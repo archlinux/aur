@@ -4,8 +4,8 @@
 
 pkgname=bup-git
 epoch=1
-pkgver=0.32.r0.g3b052c63
-pkgrel=1
+pkgver=0.32.r0.g3b052c6
+pkgrel=2
 pkgdesc='Efficient file backup system based on the git packfile format'
 arch=('i686' 'x86_64')
 url='https://bup.github.io/'
@@ -25,7 +25,7 @@ sha512sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 	( set -o pipefail
-	git describe --long 2>/dev/null | sed 's/^slurm-//;s/\([^-]*-g\)/r\1/;s/-/./g' \
+	git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
 	|| printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
