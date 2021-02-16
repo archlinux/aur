@@ -1,12 +1,13 @@
 pkgbase = coinmon
 	pkgdesc = Cryptocurrency price monitoring tool
 	pkgver = 0.0.27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bichenkk/coinmon
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
+	depends = jq
 	noextract = coinmon-0.0.27.tgz
 	source = https://registry.npmjs.org/coinmon/-/coinmon-0.0.27.tgz
 	sha512sums = 68ec43cb7a0052ee682a98dbf99ad080eb93fb204fc5b68e73808c2c3f9cf2e2b20db02875fff45de7b9df156286a790b63bdd097b33a009cc36d2a277efccac

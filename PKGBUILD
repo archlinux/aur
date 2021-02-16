@@ -3,12 +3,12 @@
 
 pkgname=coinmon
 pkgver=0.0.27
-pkgrel=1
+pkgrel=2
 pkgdesc='Cryptocurrency price monitoring tool'
 arch=('any')
 url=https://github.com/bichenkk/coinmon
 license=('MIT')
-depends=('nodejs')
+depends=('nodejs' 'jq')
 makedepends=('npm')
 source=("https://registry.npmjs.org/coinmon/-/coinmon-$pkgver.tgz")
 noextract=("${source[@]##*/}")
