@@ -6,4 +6,4 @@ Target = krathalans-endlessh-git
 [Action]
 Description = Restarting endlessh.service
 When = PostTransaction
-Exec = if systemctl is-active -q endlessh.service; then systemctl restart endlessh.service; fi
+Exec = /bin/sh -c 'if systemctl is-active -q endlessh.service; then systemctl restart endlessh.service; fi'
