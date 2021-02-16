@@ -16,5 +16,5 @@ conflicts=("aws-sam-cli")
 package() {
   cd "$srcdir"
 
-  ./install --install-dir "$pkgdir/usr/local/aws-sam-cli" --bin-dir "$pkgdir/usr/local/bin"
+  ./install --install-dir "$pkgdir/usr/local/share/aws-sam-cli" --bin-dir "$pkgdir/usr/local/bin"
 }
