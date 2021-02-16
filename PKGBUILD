@@ -1,46 +1,46 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 # Contributor: Drew DeVault <sir@cmpwn.com>
 pkgname=sway-hidpi-git
-_pkgname=sway-hidpi
-pkgver=r6605.42cbaf27
+_pkgname=sway
+pkgver=r6607.28cadf55
 pkgrel=1
 license=("MIT")
 pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager, with XWayland HiDPI (git version)"
 makedepends=(
-	"git"
-	"meson"
-	"scdoc"
-	"wayland-protocols"
+  "git"
+  "meson"
+  "scdoc"
+  "wayland-protocols"
 )
 depends=(
-	"cairo"
-	"gdk-pixbuf2"
-	"json-c"
-	"pango"
-	"polkit"
-	"pcre"
-	"swaybg-git"
-	"ttf-font"
-	"wlroots-hidpi-git"
-	"xorg-xwayland-hidpi-git"
-        "xsettingsd"
+  "cairo"
+  "gdk-pixbuf2"
+  "json-c"
+  "pango"
+  "polkit"
+  "pcre"
+  "swaybg-git"
+  "ttf-font"
+  "wlroots-hidpi-git"
+  "xorg-xwayland-hidpi-git"
+  "xsettingsd"
 )
 optdepends=(
-	"alacritty: Terminal emulator used by the default config"
-	"dmenu: Application launcher"
-	"grim: Screenshot utility"
-	"i3status: Status line"
-	"mako: Lightweight notification daemon"
-	"slurp: Select a region"
-	"swayidle: Idle management daemon"
-	"swaylock: Screen locker"
-	"wallutils: Timed wallpapers"
-	"waybar: Highly customizable bar"
+  "alacritty: Terminal emulator used by the default config"
+  "dmenu: Application launcher"
+  "grim: Screenshot utility"
+  "i3status: Status line"
+  "mako: Lightweight notification daemon"
+  "slurp: Select a region"
+  "swayidle: Idle management daemon"
+  "swaylock: Screen locker"
+  "wallutils: Timed wallpapers"
+  "waybar: Highly customizable bar"
 )
 backup=(etc/sway/config)
 arch=("i686" "x86_64")
 url="https://swaywm.org"
-source=("${pkgname%-*}::git+https://github.com/swaywm/sway.git"
+source=("git+https://github.com/swaywm/sway"
         "50-systemd-user.conf"
         "xwayland_hidpi.diff::https://github.com/swaywm/sway/pull/5090.diff")
 sha512sums=('SKIP'
@@ -51,32 +51,31 @@ conflicts=("sway" "sway-git")
 options=(debug)
 
 prepare() {
-	cd "$_pkgname"
-	patch --forward --strip=1 --input="${srcdir}/xwayland_hidpi.diff"
+  cd "$_pkgname"
+  patch --forward --strip=1 --input="${srcdir}/xwayland_hidpi.diff"
 }
 
 pkgver() {
-	cd "$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	arch-meson \
-		--buildtype debugoptimized \
-		-Dsd-bus-provider=libsystemd \
-		-Dwerror=false \
-		"$_pkgname" build
-	meson compile -C build
+  arch-meson \
+    -Dsd-bus-provider=libsystemd \
+    -Dwerror=false \
+    "$_pkgname" build
+  meson compile -C build
 }
 
 package() {
-	install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/sway/config.d/"
+  install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/sway/config.d/"
 
-	DESTDIR="$pkgdir" meson install -C build
+  DESTDIR="$pkgdir" meson install -C build
 
-	cd "$_pkgname"
-	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	for util in autoname-workspaces.py inactive-windows-transparency.py grimshot; do
-		install -Dm755 "contrib/$util" -t "$pkgdir/usr/share/$pkgname/scripts"
-	done
+  cd "$_pkgname"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  for util in autoname-workspaces.py inactive-windows-transparency.py grimshot; do
+    install -Dm755 "contrib/$util" -t "$pkgdir/usr/share/$pkgname/scripts"
+  done
 }
