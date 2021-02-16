@@ -16,7 +16,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=12.0.0_r377736.98a8344895a8
+pkgver=13.0.0_r380093.f350fe8c55a6
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -106,7 +106,6 @@ package_llvm-git() {
     optdepends=('python: for scripts'
                            'python-setuptools: for using lit = LLVM Integrated Tester'
     )
-    # yes, I know polly is not in official repos. It just feels cleaner to list it
     provides=(aur-llvm-git compiler-rt-git clang-git lldb-git lld-git polly-git
                         compiler-rt clang lldb polly lld )
     # A package always provides itself, so there's no need to provide llvm-git
@@ -165,14 +164,19 @@ package_llvm-libs-git() {
     pkgdesc="runtime libraries for llvm-git"
     depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2' 'z3' 'lua')
     provides=(aur-llvm-libs-git llvm-libs)
-    optdepends=('llvm-libs: for LLVMgold linker')
-
+    conflicts=('llvm-libs')
 
     install -d "$pkgdir"/usr/lib
     cp -P \
         "$srcdir"/lib{LLVM,LTO,Remarks}*.so* \
+        "$srcdir"/LLVMgold.so \
         "$pkgdir"/usr/lib/
 
+    # Symlink LLVMgold.so from /usr/lib/bfd-plugins
+    # https://bugs.archlinux.org/task/28479
+    install -d "$pkgdir"/usr/lib/bfd-plugins
+    ln -s ../LLVMgold.so "$pkgdir"/usr/lib/bfd-plugins/LLVMgold.so
+    
     cd llvm-project/
     install -Dm644 llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/llvm-LICENSE
     install -Dm644 clang/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-LICENSE
