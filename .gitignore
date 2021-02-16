@@ -1,6 +1,6 @@
 pkg/
 src/
-*.pkg.tar.xz
+*.pkg.tar.*
 *.exe
 *.udd
 *.bin

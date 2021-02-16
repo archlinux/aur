@@ -1,6 +1,6 @@
 pkgname=gog-heroes-of-might-and-magic-3-complete-edition
 pkgver=4.0.28740
-pkgrel=3
+pkgrel=4
 _gamename=${pkgname#gog-}
 _gamename=${_gamename//-/_}
 #INCLUDE_HD_MOD=true
@@ -63,15 +63,11 @@ build() {
   install -m755 -d "$srcdir"/tmp "$srcdir"/tmp/env "$srcdir"/tmp/local
 
   msg "Running GOG installer"
-  wine "${srcdir}/setup_homm3_complete_${pkgver}.exe" /LOG=$(tty) /Dir="${srcdir}/${pkgname#gog-}" /NoIcons=0 /verysilent # /LANG=english /?
+  wine "${srcdir}/setup_homm3_complete_${pkgver}.exe" /Log=$(tty) /Dir="${srcdir}/${pkgname#gog-}" /NoIcons=0 /verysilent # /LANG=english /?
 
   if [[ ${INCLUDE_HD_MOD} = true ]]; then
     msg "Installing HD Mod"
-    if $(WINEDEBUG="" wine "${srcdir}/HoMM3_HD_Latest_setup.exe" log=${srcdir}/tmp/hd_mod_install.log /verysilent /suppressmsgboxes); then
-      echo failed to install
-      cat ${srcdir}/tmp/hd_mod_install.log
-      false
-    fi
+    WINEDEBUG="" wine "${srcdir}/HoMM3_HD_Latest_setup.exe" /Log=${srcdir}/tmp/hd_mod_install.log /Dir="${srcdir}/${pkgname#gog-}" /verysilent /suppressmsgboxes
     cat ${srcdir}/tmp/hd_mod_install.log
   fi
 
