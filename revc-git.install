@@ -5,6 +5,3 @@ Copy the game directory to ~/.local/share/gtavc
 EOF
 }
 
-post_upgrade() {
-}
-
