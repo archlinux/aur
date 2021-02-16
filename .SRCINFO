@@ -1,0 +1,31 @@
+pkgbase = stavox-content-downloader
+
+	pkgdesc = Application for downloading the necessary content to play on Stavox
+
+	pkgver = 4.1.13
+
+	pkgrel = 1
+
+	epoch = 1
+
+	url = https://stavox.com/
+
+	arch = x86_64
+
+	license = Commercial
+
+	depends = p7zip
+	depends = electron>=11
+	depends = electron<12
+
+	source = stavox-content-downloader-4.1.13.tar.gz::https://stavox.com/downloader/linux-x64/stavox-content-downloader-4.1.13.tar.gz
+	source = stavox-content-downloader
+	source = stavox-content-downloader.desktop
+
+	sha256sums = 57b20d17176e72f77f4658746b83e04b655ec77fc214faa742e123f409e591b3
+	sha256sums = 196481d9e76c15ce844defb5a025499d1bbd61900ffcd8a746f6f50d1872e688
+	sha256sums = 7e3d46ce1f716206b631d8ec4287f77f375569e2e5e41a4060c50ee2b12bdcef
+
+
+
+pkgname = stavox-content-downloader

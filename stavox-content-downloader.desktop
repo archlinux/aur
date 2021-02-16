@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Stavox Content Downloader
+Comment=Application for downloading the necessary content to play on Stavox
+Exec=stavox-content-downloader
+Terminal=false
+Type=Application
+Icon=stavox-content-downloader-desktop
+Categories=Game;Utility;Network
