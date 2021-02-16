@@ -1,15 +1,18 @@
 # Maintainer : Matthias Fulz <mfulz [at] olznet [dot] de>
-pkgname=gvm-libs
+shortname=gvm-libs
+pkgname=gvm-libs-20
 pkgver=20.8.1
 pkgrel=1
 pkgdesc='greenbone-vulnerability-manager libraries'
 arch=('x86_64')
 url="https://github.com/greenbone/gvm-libs"
 license=('GPL')
+provides=('gvm-libs')
+conflicts=('gvm-libs')
 depends=('gnutls' 'libpcap' 'gpgme' 'libssh' 'glib2' 'libldap' 'hiredis')
 makedepends=('cmake' 'doxygen')
 groups=('greenbone-vulnerability-manager')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/greenbone/gvm-libs/archive/v${pkgver}.tar.gz"
+source=("${shortname}-${pkgver}.tar.gz::https://github.com/greenbone/gvm-libs/archive/v${pkgver}.tar.gz"
         "gvm.sudoers"
         "gvm-libs.install")
 sha512sums=('846b062b849688019715cbff1d6c4f6a1b4dd8c58cfdef78ea08df3cd104810e9091385cca3c49618538a28c42c0fe78a38fb934fbde604aef86e84c4f2dda94'
@@ -18,7 +21,7 @@ sha512sums=('846b062b849688019715cbff1d6c4f6a1b4dd8c58cfdef78ea08df3cd104810e909
 replaces=('openvas-libraries')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${shortname}-${pkgver}"
   LDFLAGS+=" -Wl,--no-as-needed"
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIBDIR=/usr/lib -DSYSCONFDIR=/etc -DLOCALSTATEDIR=/var \
@@ -28,7 +31,7 @@ build() {
 
 package() {
   install=gvm-libs.install
-  cd "${pkgname}-${pkgver}"
+  cd "${shortname}-${pkgver}"
   make DESTDIR="${pkgdir}/" install
 
   install -d $pkgdir/run/gvm
