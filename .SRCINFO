@@ -1,0 +1,28 @@
+pkgbase = gvm-libs
+	pkgdesc = greenbone-vulnerability-manager libraries
+	pkgver = 20.8.1
+	pkgrel = 1
+	url = https://github.com/greenbone/gvm-libs
+	arch = x86_64
+	groups = greenbone-vulnerability-manager
+	license = GPL
+	makedepends = cmake
+	makedepends = doxygen
+	depends = gnutls
+	depends = libpcap
+	depends = gpgme
+	depends = libssh
+	depends = glib2
+	depends = libldap
+	depends = hiredis
+	replaces = openvas-libraries
+	source = gvm-libs-20.8.1.tar.gz::https://github.com/greenbone/gvm-libs/archive/v20.8.1.tar.gz
+	source = gvm.sudoers
+	source = gvm-libs.install
+	sha512sums = 846b062b849688019715cbff1d6c4f6a1b4dd8c58cfdef78ea08df3cd104810e9091385cca3c49618538a28c42c0fe78a38fb934fbde604aef86e84c4f2dda94
+	sha512sums = ff3f4122f5fc08c1edc2813aebd55b26e11c220852d011a84e62a27ac44a64ca4770a68488f408e62d82aa194b6d4706738745ea15bfbb2e61f3f264436d92a7
+	sha512sums = 09fea7030d23686cea88e1ae6b1f88e94050b293371c06708a34f9c92e96e1f522f5350c8bbc5e5ddf675bd8fb58205b3b86b88d46a0ab84f5a664e374a68155
+
+pkgname = gvm-libs
+	install = gvm-libs.install
+
