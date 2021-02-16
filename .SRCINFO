@@ -1,0 +1,13 @@
+pkgbase = dnslookup-bin
+	pkgdesc = Simple command line utility to make DNS lookups to the specified server
+	pkgver = 1.4.6
+	pkgrel = 1
+	url = https://github.com/ameshkov/dnslookup
+	arch = x86_64
+	license = MIT
+	conflicts = dnslookup-git
+	source = https://github.com/ameshkov/dnslookup/releases/download/v1.4.6/dnslookup-linux-amd64-v1.4.6.tar.gz
+	md5sums = b45d1dd6c4193adcbedfabf4faa69c01
+
+pkgname = dnslookup-bin
+
