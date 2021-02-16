@@ -3,16 +3,16 @@
 
 pkgname=krathalans-endlessh-git
 _pkgname=endlessh
-pkgver=r103.6a75976
-pkgrel=3
+pkgver=r110.2b20b01
+pkgrel=1
 pkgdesc="A tarpit to lock up SSH clients. Krathalan's fork"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/skeeto/endlessh"
 license=('Unlicense')
 
 # Sources
-source=("git+https://github.com/krathalan/${_pkgname}" 'endlessh.conf')
-sha256sums=('SKIP' '800eb22c581d706fe26821e41102ce1b23836fa7b36beb89ba12bb38577a5ea8')
+source=("git+https://github.com/krathalan/${_pkgname}" 'endlessh.conf' '99-endlessh.hook')
+sha256sums=('SKIP' '800eb22c581d706fe26821e41102ce1b23836fa7b36beb89ba12bb38577a5ea8' '210b60c91bdabe89cb0111e8597eb61fe28542aa2abedb95ff3b175050adb20d')
 
 # Package relations
 depends=()
@@ -34,13 +34,12 @@ build() {
 
 package() {
   install -Dm644 endlessh.conf "${pkgdir}/etc/endlessh.conf"
-
-  install -d "${pkgdir}"/etc
-  install -d "${pkgdir}"/usr/bin
-  install -d "${pkgdir}"/usr/lib/systemd/system
+  install -Dm644 99-endlessh.hook "${pkgdir}/usr/share/libalpm/hooks/99-endlessh.hook"
 
   cd "${srcdir}/${_pkgname}"
-  DESTDIR="${pkgdir}" make install
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/man/man1"
+  DESTDIR="${pkgdir}/usr" make install
 
   install -Dm644 util/endlessh.service "${pkgdir}/usr/lib/systemd/system/endlessh.service"
   install -Dm644 "UNLICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
