@@ -1,16 +1,17 @@
-# Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
+# Maintainer: gilcu3 <gilcu3 at gmail dot com>
+# Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=('python-gtkspellcheck' 'python2-gtkspellcheck')
-pkgver=4.0.5
-pkgrel=7
+pkgver=4.0.6
+pkgrel=1
 pkgdesc="Spell-checking library written in Python for Gtk based on Enchant"
 arch=('any')
 url="https://github.com/koehlma/pygtkspellcheck"
 license=('GPL')
-makedepends=('gtk3' 'python-pyenchant' 'python2-pyenchant' 'python-sphinx'
-             'python2-sphinx' 'python-gobject' 'python2-gobject' 'git')
-source=("pygtkspellcheck-${pkgver}.tar.gz::https://github.com/koehlma/pygtkspellcheck/archive/${pkgver}.tar.gz")
-sha512sums=('f2ea035093a4d8bd9ca3b04f7433808b1ea8c3723b3ea12b95f470d8eb003c9cf58114cb4f342f36732ae46e6156223db5185f16a8c4b27551a6b99bc28a45b9')
+makedepends=('gtk3' 'python-pyenchant' 'python2-pyenchant' 'python-gobject' 'python2-gobject' 'git')
+optdepends=('python-sphinx' 'python2-sphinx')
+source=("pygtkspellcheck-${pkgver}.tar.gz::https://github.com/koehlma/pygtkspellcheck/archive/v${pkgver}.tar.gz")
+sha512sums=('682b618e8f22aa69d971d332329cbde96cec94320b0a7c35cf04aa72c07f3ab6b39ac9a41afdf8d1b9f06fc74abeff0e7685bd3ecf6020c6f36fd4775e58f093')
 
 package_python-gtkspellcheck() {
   depends=('python-pyenchant' 'python-gobject')
