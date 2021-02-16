@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang <zttt183525594 [at] gmail [dot] com>
 pkgname=fastocr-git
 pkgver=0.1.1.r5.431590b
-pkgrel=1
+pkgrel=2
 pkgdesc='FastOCR is a desktop application for OCR API.'
 arch=('any')
 url='https://github.com/BruceZhang1993/FastOCR'
@@ -25,5 +25,5 @@ build() {
 package() {
 	cd "$srcdir/fastocr"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm644 data/FastOCR.desktop "$pkgdir/usr/share/applications/FastOCR.desktop"
+	install -Dm644 fastocr/data/FastOCR.desktop "$pkgdir/usr/share/applications/FastOCR.desktop"
 }
