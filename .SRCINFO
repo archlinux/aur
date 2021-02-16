@@ -1,7 +1,7 @@
 pkgbase = re3-git
 	pkgdesc = An open-source project reverse-engineering Grand Theft Auto III
-	pkgver = 1.0.4.gedc77d7f
-	pkgrel = 5
+	pkgver = 1.0.17.g4d8f3408
+	pkgrel = 1
 	url = https://github.com/GTAmodding/re3
 	arch = x86_64
 	license = unknown

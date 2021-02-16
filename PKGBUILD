@@ -1,8 +1,8 @@
 # Maintainer: hazelnot <scrabcrab@gmail.com>
 _pkgbase=re3
 pkgname=re3-git
-pkgver=1.0.4.gedc77d7f
-pkgrel=5
+pkgver=1.0.17.g4d8f3408
+pkgrel=1
 pkgdesc="An open-source project reverse-engineering Grand Theft Auto III"
 arch=('x86_64')
 url="https://github.com/GTAmodding/re3"
