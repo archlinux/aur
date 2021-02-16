@@ -1,7 +1,7 @@
 pkgbase = spotify-snap
 	pkgdesc = A proprietary music streaming service
 	pkgver = 1.1.46.916.g416cacf1
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://www.spotify.com
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = spotify-snap
 	optdepends = ffmpeg-compat-57: Adds support for playback of local files
 	optdepends = zenity: Adds support for importing local files
 	optdepends = libnotify: Desktop notifications
+	provides = spotify
 	conflicts = spotify
 	options = !strip
 	source = spotify.protocol

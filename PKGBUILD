@@ -8,10 +8,11 @@ pkgver=1.1.46.916.g416cacf1
 epoch=1
 _snapid=pOBIoZ2LrCB3rDohMxoYGnbN14EHOgD7
 _revision=43
-pkgrel=3
+pkgrel=4
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64')
 conflicts=('spotify')
+provides=('spotify')
 license=('custom')
 url='https://www.spotify.com'
 depends=('alsa-lib>=1.0.14' 'gtk2' 'libsystemd' 'desktop-file-utils' 'openssl' 'nss' 'at-spi2-atk')
