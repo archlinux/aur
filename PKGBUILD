@@ -12,7 +12,7 @@ license=('Unlicense')
 
 # Sources
 source=("git+${url}" 'endlessh.conf' '99-endlessh.hook')
-sha256sums=('SKIP' '800eb22c581d706fe26821e41102ce1b23836fa7b36beb89ba12bb38577a5ea8' '210b60c91bdabe89cb0111e8597eb61fe28542aa2abedb95ff3b175050adb20d')
+sha256sums=('SKIP' '800eb22c581d706fe26821e41102ce1b23836fa7b36beb89ba12bb38577a5ea8' 'b4519b5ba8d91b8ba670a31f0c6d9a423078b38fb5f4596c39a308e28924e712')
 
 # Package relations
 depends=()
