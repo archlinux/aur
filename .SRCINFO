@@ -1,15 +1,15 @@
 pkgbase = gdu
 	pkgdesc = Fast disk usage analyzer
-	pkgver = 4.6.1
-	pkgrel = 3
+	pkgver = 4.6.2
+	pkgrel = 1
 	url = https://github.com/Dundee/gdu
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	conflicts = gdu-git
 	conflicts = gdu-bin
-	source = gdu-4.6.1.tar.gz::https://github.com/dundee/gdu/archive/v4.6.1.tar.gz
-	sha256sums = e34d1311be160127e3ac13fbceb1ab554546ea26cbfb8270254323b98be2b08c
+	source = gdu-4.6.2.tar.gz::https://github.com/dundee/gdu/archive/v4.6.2.tar.gz
+	sha256sums = fa53f872af61ecb2b5183c972f8aeae2fcdb01e888d9f46fcae07f78d8991d41
 
 pkgname = gdu
 
