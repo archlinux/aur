@@ -2,24 +2,24 @@
 
 pkgname=chromaprint-fftw
 pkgver=1.5.0
-pkgrel=2
-pkgdesc='Extracts fingerprints from any audio source (uses fftw for FFT calculations instead of ffmpeg)'
+pkgrel=3
+pkgdesc='Library for extracting fingerprints from any audio source (uses fftw for FFT calculations instead of ffmpeg)'
 arch=('x86_64')
 url='https://acoustid.org/chromaprint'
 license=('GPL')
-makedepends=('cmake' 'gtest')
 depends=('fftw')
-provides=('chromaprint')
+makedepends=('cmake' 'gtest')
+provides=('chromaprint' 'libchromaprint.so')
 conflicts=('chromaprint')
-source=("chromaprint-${pkgver}.tar.gz"::"https://github.com/acoustid/chromaprint/archive/v${pkgver}.tar.gz")
+source=("https://github.com/acoustid/chromaprint/archive/v${pkgver}/chromaprint-${pkgver}.tar.gz")
 sha256sums=('5c8e0d579cb3478900699110aa961c1552a422a18741cf67dd62136b1b877c7b')
 
 build() {
     cmake -B build -S "chromaprint-${pkgver}" \
-        -DBUILD_TESTS:BOOL='ON' \
-        -DBUILD_TOOLS:BOOL='OFF' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DBUILD_TESTS:BOOL='ON' \
+        -DBUILD_TOOLS:BOOL='OFF' \
         -DFFT_LIB:STRING='fftw3' \
         -DGTEST_SOURCE_DIR:PATH='/usr/src/googletest' \
         -Wno-dev
