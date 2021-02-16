@@ -1,6 +1,6 @@
 pkgbase = libgit2-git
 	pkgdesc = A linkable library for Git
-	pkgver = 0.27.0.rc1.r0.g809b0ca6b
+	pkgver = 1.1.0.r279.g935f85131
 	pkgrel = 1
 	epoch = 2
 	url = https://libgit2.github.com/
