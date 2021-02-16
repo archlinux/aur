@@ -4,7 +4,7 @@
 pkgname=krathalans-endlessh-git
 _pkgname=endlessh
 pkgver=r103.6a75976
-pkgrel=2
+pkgrel=3
 pkgdesc="A tarpit to lock up SSH clients. Krathalan's fork"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/skeeto/endlessh"
@@ -18,6 +18,9 @@ sha256sums=('SKIP' 'a76cbe4b356994243632e487bd5241ecf96e0e0aa3ba1fc6968dae1958f3
 depends=()
 makedepends=('git')
 conflicts=('endlessh' 'endlessh-git')
+
+# Do not overwrite this! Users can change it
+backup=('etc/endlessh.conf')
 
 pkgver() {
   cd "${_pkgname}"
