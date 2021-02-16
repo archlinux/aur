@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-mavros-msgs
 	pkgdesc = ROS - mavros_msgs defines messages for MAVROS.
-	pkgver = 1.5.2
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://wiki.ros.org/mavros_msgs
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = ros-melodic-mavros-msgs
 	depends = ros-melodic-geometry-msgs
 	depends = ros-melodic-sensor-msgs
 	depends = ros-melodic-geographic-msgs
-	source = ros-melodic-mavros-msgs-1.5.2.tar.gz::https://github.com/mavlink/mavros/archive/1.5.2.tar.gz
-	sha256sums = b04df3129e42ae2371c53ecac391760ad8c6457f6ce811c6934c9ffb9e4bfdb2
+	source = ros-melodic-mavros-msgs-1.6.0.tar.gz::https://github.com/mavlink/mavros/archive/1.6.0.tar.gz
+	sha256sums = 8ab5b1cc851b27dbea9abbe67a7da9262afddf057d6316938745772666fa4d3d
 
 pkgname = ros-melodic-mavros-msgs
 
