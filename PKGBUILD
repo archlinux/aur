@@ -2,7 +2,7 @@
 
 pkgname=aws-sam-cli-bin
 pkgver=1.18.1
-pkgrel=2
+pkgrel=3
 pkgdesc='CLI tool to build, test, debug, and deploy Serverless applications using AWS SAM'
 arch=('any')
 url='https://github.com/awslabs/aws-sam-cli'
@@ -14,7 +14,11 @@ provides=("aws-sam-cli")
 conflicts=("aws-sam-cli")
 
 package() {
-  cd "$srcdir"
-
-  ./install --install-dir "$pkgdir/usr/local/share/aws-sam-cli" --bin-dir "$pkgdir/usr/local/bin"
+  # install dist
+  mkdir -p "$pkgdir/usr/local/share/aws-sam-cli/$pkgver"
+  cp -r "$srcdir/dist" "$pkgdir/usr/local/share/aws-sam-cli/$pkgver"
+  
+  # symlink the binary
+  mkdir -p "$pkgdir/usr/local/bin"
+  ln -s "../share/aws-sam-cli/$pkgver/dist/sam" "$pkgdir/usr/local/bin/sam"
 }
