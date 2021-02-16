@@ -2,7 +2,7 @@
 _pkgbase=re3
 pkgname=re3-git
 pkgver=1.0.4.gedc77d7f
-pkgrel=4
+pkgrel=5
 pkgdesc="An open-source project reverse-engineering Grand Theft Auto III"
 arch=('x86_64')
 url="https://github.com/GTAmodding/re3"
@@ -18,12 +18,14 @@ source=(
     "git+https://github.com/xiph/opus.git"
     "git+https://github.com/xiph/opusfile.git"
     'crossplatform_fix.patch'
+    'no_link_with_unnecessary_sndfile.patch'
     're3-launcher'
     're3.desktop'
 )
 sha256sums=(
     'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
     e3251821f46a567ca4561834345b752db6f2700c58f113335d68b314c05b2b26
+    41f2ed01ae5996ce972976e842a0262f1c17f927eb7b12abd80d2c8311cf6836
     819c7cafc8ebadfa30ecd6de9b109d172ebdea668defea0f0ce1c596560e69d3
     335e3d6cebe69876ae2e30c4f9145cd2a78e839e841c166f7caa02a1e2a69378
 )
@@ -42,6 +44,7 @@ prepare() {
   done
   git submodule update
   patch -uNp1 -i ../crossplatform_fix.patch
+  patch -uNp1 -i ../no_link_with_unnecessary_sndfile.patch
 }
 
 build() {
