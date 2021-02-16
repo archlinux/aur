@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.10.15
+pkgver=5.11
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -33,30 +33,30 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=40d94bbb1396c27d8d545ad5278f4a4476ba77ec
-_bmqversion=5.10-r2
+_arch_config_commit=b6d85b585855b431882f9021d220763851bd61a8
+_bmqversion=5.11-r0
 _bmq_patch="prjc_v${_bmqversion}.patch"
 _gcc_more_v='20201113'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
-  "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
+  "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/linux/trunk/config"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=024a28765039cafbd4b4056d3f213be989e39dc2"
-  "0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch::https://git.archlinux.org/linux.git/patch/?id=53b53f6df0d94a034c14eb65d9b925832c22159d"
+  "0000-sphinx-workaround.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/linux/trunk/sphinx-workaround.patch"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=f404f506d02dc8570c1e185882708f7f19549daf"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-b2sums=('7cf58513bf2266697843f6d91fbb214268ad511e110a4e2b66bc0db84ecb4df724a7d65f641eee5837f4d88c1371ec8b313ee8aaa1d1f0260709eae2e3af32b3'
+b2sums=('81300c27bd5476387a83123aaeb4163c73eb61e9245806c23660cb5e6a4fa88ffc9def027031335fa0270fc4080506cd415990014364e3a98b9d2e8c58a29524'
         'SKIP'
-        '74b6ea3f314aa8291c9e2c3b5763f9b0c8aabbc0e714e30529f557955a7a315b44b0cd2f2d665ffe3ba48e7df71274c5901d3891ed395191ceb6ca88f69cdb1a'
-        '964457a55fe70988fcba968d2940d78d3daff5d1629863279ee15e07f8c1bb4e58e4d22b2cae9e66ab0c61c4d54de04e7a6eb2710eaaa536ec11f29efa961f1c'
+        'e5702f27217c2d23d007fe8c32ec8df39e738acf39c60b2b3d597e2e9d98ca287896646043d4fa35d95c6b8fa115c03a1413ff7c1d76458f99b21b262d7b6f2e'
+        '0658ad7ebad50244742a928b0c2e8ce090a55c5ba342b5c5ebd7ea079efdaf7e280effbb609856d975a067f84d9b6be95f6ccce3e647e96de9cd9ba6f29113e0'
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
-        '1a50d0c7d17131e5fd019a82ee6c02212bb3e0e9520fa93099a0101621b5071b9b7daf6ef3d0c2007492f4914a9381c429bd27d8332e61cf173cd32bc3f5eab0'
-        '3ab28f05b78743369f44381317d1882cdb3c92d134dfe795505f80ab0aa027c3b8c02c4f85ba502b1dd606b6a694498e9de775fcda781b45d6ab3a3ab40e58c4')
+        'db64b425139c107c69f44624901ae50b5e604d4c9fdfe84f78c298f8ed7a7739033a72ec678c5c3c0e82e59809d97799d0c25f96c64ef5ae79910cb890fc7bfb'
+        '5e18ecc2748a6967457edc793b6247feae3d05f9c934f583b3f6d3b85c432f2d216e4f7207b7d2cc851e8401c96ac3a92bc1bb23e2c15e1fb384b4f3f995b5ee')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
