@@ -18,7 +18,7 @@
 ## 从我个人的使用情况上来看，选择 native 其实比针对性的选择处理器代号带来的性能提升更加明显，在这里而我推荐大家选择42
 ## 默认我给大家已经选择好了
 if [ -z ${_microarchitecture+x} ]; then
-  _microarchitecture=42
+  _microarchitecture=99
 fi
 
 ## Disable NUMA since most users do not have multiple processors. Breaks CUDA/NvEnc.
@@ -71,8 +71,8 @@ _makenconfig=y
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-uksm
-pkgver=5.10.16
-_major=5.10
+pkgver=5.11.0
+_major=5.11
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
@@ -103,12 +103,12 @@ for _patch in $_commits; do
     source+=("${_patch}.patch::https://git.archlinux.org/linux.git/patch/?id=${_patch}")
 done
 
-sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
-            'cb36d0d05523e1154f84c060081481f799253da06edb127a2630e539c6974f12'
-            '8b978c2bd1a597ea837ec050d8037fa4cb521d1b89cb05f89605bb8069239000'
-            '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
-            '6c66dba73251440352f93ff32b72f5dd49536d0f17ef9347867660fd3a626991'
-            '9f7931fe587cfbc918aabbf3a1211a7179c8b2b300a1fc38c22920df4ed7dc2a')
+sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
+            'b8bc4f6312bdc086c0fecd1cce1ab1ee12b7b4eff63f88239a65461d9ec5e91b'
+            '9d49118bb60c0277ebac5aadd4938eb41561dd3d97c9422832e62d0ffc5c59df'
+            'e840e41f0f91108f63fd6e085c93b02daa78729268bc31be7be7fb355203e38a'
+            'ffd5b4bbb0e9e8306d1ae6faf62f1ef878bfa50ddba4ab959351f3fedc85654a'
+            '6ae9b0f994c8cea6ddbaaa570a2570d8489643b33b61c68090670c241a0cd3cc')
 
 # If use_cachy=y then download cachy patch
 if [ "$use_cachy" = "y" ]; then
