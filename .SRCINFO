@@ -13,6 +13,7 @@ pkgname = concourse
 	pkgdesc = Concourse is a container-based continuous thing-doer written in Go and Elm
 	optdepends = cni-plugins
 	optdepends = containerd
+	optdepends = postgresql
 	conflicts = concourse-bin
 
 pkgname = concourse-fly-cli

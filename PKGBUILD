@@ -43,7 +43,7 @@ build() {
 package_concourse() {
   pkgname=concourse
   pkgdesc="Concourse is a container-based continuous thing-doer written in Go and Elm"
-  optdepends=('cni-plugins' 'containerd')
+  optdepends=('cni-plugins' 'containerd' 'postgresql')
   conflicts=('concourse-bin')
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
