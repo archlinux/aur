@@ -9,7 +9,7 @@ pkgname=('virtualbox-bin' 'virtualbox-bin-guest-iso' 'virtualbox-bin-sdk')
 pkgver=6.1.18
 _build=142142
 _rev=83509
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use (Oracle branded non-OSE)'
 arch=('x86_64')
 url='https://www.virtualbox.org/'
@@ -27,7 +27,8 @@ source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver
         'vboxweb.service'
         'virtualbox.sysusers'
         'LICENSE.sdk'
-        '013-Makefile.patch')
+        '013-Makefile.patch'
+        '020-linux-5.11.patch')
 noextract=("VirtualBoxSDK-${pkgver}-${_build}.zip")
 sha256sums=('30bdda32fcf3a05168f6f427e5b08e2850d97782201c31191080b8702021bee1'
             '49f8396e2a3295682f36250df91f4ffd64696cbc661ad03e8e3726459ac49b7f'
@@ -40,7 +41,8 @@ sha256sums=('30bdda32fcf3a05168f6f427e5b08e2850d97782201c31191080b8702021bee1'
             'e6e875ef186578b53106d7f6af48e426cdaf1b4e86834f01696b8ef1c685787f'
             '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
             '09335d7d1075df02d29cec13119538134efdf43ea73a93b0f89d0d7d4b6625a1'
-            '3c2089575e8c03b7517fe176e65168e15fb7aefe7e71224bf264d21812dbc635')
+            '3c2089575e8c03b7517fe176e65168e15fb7aefe7e71224bf264d21812dbc635'
+            '34c683ba538bbefb1eb201d16e5624c1899b8e2ad69db3613aa7f5790f17fe49')
 
 prepare() {
     local _extractdir="${pkgname}-${pkgver}/VirtualBox-extracted"
@@ -58,6 +60,7 @@ prepare() {
     
     # fix dkms build
     patch -d "$_extractdir" -Np1 -i "${srcdir}/013-Makefile.patch"
+    patch -d "$_extractdir" -Np1 -i "${srcdir}/020-linux-5.11.patch"
 }
 
 build() {
@@ -81,7 +84,7 @@ package_virtualbox-bin() {
     
     # install bundled files
     mkdir -p "${pkgdir}/opt"
-    cp -pr "${pkgname}-${pkgver}/VirtualBox-extracted" "${pkgdir}/${_installdir}"
+    cp -Pr --no-preserve='ownership' "${pkgname}-${pkgver}/VirtualBox-extracted" "${pkgdir}/${_installdir}"
     
     # mark binaries suid root, and make sure the directory is only writable by the user
     chmod 4755 "${pkgdir}/${_installdir}"/{VirtualBoxVM,VBox{Headless,Net{AdpCtl,DHCP,NAT},SDL,VolInfo}}
@@ -179,11 +182,12 @@ package_virtualbox-bin-sdk() {
     
     local _dir
     local _installdir='opt/VirtualBox'
+    export PYTHONHASHSEED='0'
     
     mkdir -p "${pkgdir}/${_installdir}/sdk"
     while read -r -d '' _dir
     do
-        cp -pr "$_dir" "${pkgdir}/${_installdir}/sdk"
+        cp -Pr --no-preserve='ownership' "$_dir" "${pkgdir}/${_installdir}/sdk"
     done < <(find "${pkgbase}-${pkgver}/sdk" -mindepth 1 -maxdepth 1 -type d ! -name 'installer' -print0)
     
     install -D -m644 "VBoxAuth-r${_rev}.h"    "${pkgdir}/${_installdir}/sdk/bindings/auth/include/VBoxAuth.h"
