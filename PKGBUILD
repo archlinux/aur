@@ -4,7 +4,7 @@ _pkgname=dockbarx
 pkgname=${_pkgname}-git
 epoch=1
 _pkgver=1.0beta
-pkgver=1.0beta+r850+a3e2186
+pkgver=1.0beta+r854+698cf25
 pkgrel=1
 pkgdesc="TaskBar with groupping and group manipulation"
 arch=('i688' 'x86_64' 'armv7h' 'aarch64')
@@ -20,6 +20,7 @@ optdepends=('mate-panel: mate applet'
             'gconf: export settings from older versions of dockbarx'
             'python-lxml: import settings script')
 provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
 _branch='pygi-python3'
 source=("${_pkgname}::git+https://github.com/xuzhen/dockbarx.git#branch=${_branch}")
 sha256sums=('SKIP')
