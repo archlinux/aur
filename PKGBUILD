@@ -1,6 +1,6 @@
 pkgname=gog-heroes-of-might-and-magic-3-complete-edition
 pkgver=4.0.28740
-pkgrel=4
+pkgrel=5
 _gamename=${pkgname#gog-}
 _gamename=${_gamename//-/_}
 #INCLUDE_HD_MOD=true
@@ -26,9 +26,9 @@ sha256sums=('eaf75707911b16850ec770a551c59e594abba60c7a879fb0c171fc442b1299b3'
             'ab14524f06cb213ee0b1e5bcd5d9089da9e66057794430347d32a60a86a945fd'
             'de064d9bc819403dc5990fd70d81c88d63d708ba5b4e02015cc616e77338c478'
             '4dc5f7d1bd44405dae2969ec093ef6ce680aec889024b68350023feb4a12ee1b'
-            '4cbc70b50d94497294f6208dc91e0c3a8da2d494b0d1e02d0929ffc3924e4569'
-            '1c780da9550edf46168b44dca34b68a8159e3083f8960b5443721bfad3d87a06'
-            '14927c0c59520861fd8a00d05f4b9fbcc70a71ff669add852ba0f5c670f8556a'
+            '85bb2a63d98dc810bf91fb7aef3dd1c9285046a6c05fc9134e652992eb60bce6'
+            'c1341f33462ae698b4e88416cfa11b091e40f9699aef3c3f66857bf50a39fb29'
+            '5203dcba05b2b8f07fddc3d1a55013c1a4b48caaaf77162242aca211850ef909'
             '493ef7009c2f4d103ed5b283fcc5dd900ff13cfb1d494052227bf7760fe0f7c7')
 depends=(wine unionfs-fuse util-linux)
 makedepends=(icoutils "lgogdownloader>=2.25")
@@ -42,7 +42,7 @@ if [[ ${INCLUDE_HD_MOD} = true ]]; then
            gog-heroes-of-might-and-magic-3-complete-edition-hd-mod
            gog-heroes-of-might-and-magic-3-complete-edition-hd-mod.desktop)
   sha256sums+=('SKIP'
-               '2d13b3e53fb1022101e12df1300a70ac8f7e0e08b381fa85a8827634d35ca3eb'
+               '2d5753c33460549a0dea63bd4ecb981a3f8bd4ea22e214e5bba1ba2bf5f73054'
                '4178301b73d3854211a43fc1d2ca94b484314f4b05c6d7d2f88bbaf0911ab6fc')
 fi
 
@@ -51,7 +51,7 @@ if [[ ${INCLUDE_HOTA} = true ]]; then
            gog-heroes-of-might-and-magic-3-complete-edition-hota
            gog-heroes-of-might-and-magic-3-complete-edition-hota.desktop)
   sha256sums+=('SKIP'
-               'e30d83ac656684eb96ba0f133f9288c445b35e9aec3b785b1b06c84e0ff6234d'
+               '942b889408b6d93f4a046ec6c5d8c7ca18a4a1b230578bb904e954c08ce2d450'
                '412efeda87b6d74895572014c1942341afd021a9e678ad4e197bdea5bfaacf9d')
 fi
 
