@@ -2,7 +2,7 @@
 # Contributor: Junker
 
 pkgname=gvolwheel
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="a lightweight audio mixer which lets you control the audio volume through a tray icon"
 url="https://github.com/Junker/gvolwheel"
@@ -11,7 +11,7 @@ license=('GPL-2')
 makedepends=('intltool')
 depends=('gtk3' 'libgee')
 source=("https://github.com/Junker/${pkgname}/archive/${pkgver}.zip")
-md5sums=('2bfde9ec2d9f288531626c1688c6b025')
+md5sums=('a38dbc459ae3ea659a49ab8aebc20535')
 
 build() {
     cd $srcdir/${pkgname}-$pkgver

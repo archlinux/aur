@@ -1,6 +1,6 @@
 pkgbase = gvolwheel
 	pkgdesc = a lightweight audio mixer which lets you control the audio volume through a tray icon
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/Junker/gvolwheel
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = gvolwheel
 	makedepends = intltool
 	depends = gtk3
 	depends = libgee
-	source = https://github.com/Junker/gvolwheel/archive/1.0.2.zip
-	md5sums = 2bfde9ec2d9f288531626c1688c6b025
+	source = https://github.com/Junker/gvolwheel/archive/1.0.3.zip
+	md5sums = a38dbc459ae3ea659a49ab8aebc20535
 
 pkgname = gvolwheel
 
