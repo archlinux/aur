@@ -1,10 +1,11 @@
 pkgbase = wine-gecko-bin
 	pkgdesc = Wine's built-in replacement for Microsoft's Internet Explorer
 	pkgver = 2.47.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.winehq.org/Gecko
 	arch = x86_64
 	license = MPL
+	makedepends = mingw-w64-binutils
 	depends = wine
 	provides = wine-gecko=2.47.2
 	options = !strip
