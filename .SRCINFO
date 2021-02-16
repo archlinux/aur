@@ -1,7 +1,7 @@
 pkgbase = gtg-git
 	pkgdesc = Getting Things GNOME! is a personal tasks and TODO-list items organizer for GNOME
-	pkgver = 0.4.r254.ge7130c6b
-	pkgrel = 3
+	pkgver = 0.4.r303.g18f70079
+	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/GTG
 	arch = x86_64
 	license = GPL
@@ -11,6 +11,7 @@ pkgbase = gtg-git
 	makedepends = meson
 	depends = python-liblarch
 	depends = python-lxml
+	depends = libgnome-keyring
 	optdepends = python-cheetah3: for the Export and print plugin
 	optdepends = texlive-bin: pdflatex, for the Export and print plugin
 	optdepends = texlive-core: pdfjam, for the Export and print plugin
