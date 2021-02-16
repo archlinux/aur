@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 pkgname=arrayfire
 pkgver=3.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="High performance software library for parallel computing with an easy-to-use API"
 arch=('x86_64')
 url='https://arrayfire.com'
@@ -11,7 +11,8 @@ makedepends=('cmake' 'graphviz' 'doxygen' 'opencl-headers' 'python' 'ocl-icd' 'c
 optdepends=('cuda: Required for using CUDA backend'
             'nvidia-utils: Required for using CUDA backend'
             'cudnn: Required for using CUDA backend'
-            'opencl-driver: Required for using OpenCL backend')
+            'opencl-driver: Required for using OpenCL backend'
+            'ocl-icd: Required for OpenCL ICD Bindings')
 options=('!buildflags')
 source=("http://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}-full-${pkgver}.tar.bz2")
 sha512sums=('f36bee89a0f1a0a48ca2cae3a7b2527d63830e3070cb31174ff7f5c42f065aad6981d5142a8b7af7215a3c7dbf67ae13d1ea3543cd94eb70cff509c8cb95c739')
