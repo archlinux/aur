@@ -1,7 +1,7 @@
 # Maintainer: Christoph Haag <haagch+aur@frickel.club>
 
 pkgname=xr-hardware-git
-pkgver=0.2.1.r0.g3b7d526
+pkgver=0.4.0.r0.g0af333d
 pkgrel=1
 pkgdesc="Udev rules for allowing USB access to popular XR/VR/AR headsets"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://gitlab.freedesktop.org/monado/utilities/xr-hardware"
 license=('Boost')
 conflicts=("xr-hardware" "oculus-udev" "osvr-udev" "vive-udev" "psvr-udev")
 provides=("xr-hardware" "oculus-udev" "osvr-udev" "vive-udev" "psvr-udev")
-makedepends=('python-attrs')
+makedepends=('python-attrs' 'git')
 source=('git+https://gitlab.freedesktop.org/monado/utilities/xr-hardware.git')
 sha256sums=('SKIP')
 install='xr-hardware.install'
