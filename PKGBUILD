@@ -1,7 +1,7 @@
 # Contributor: Sergio Tridente <tioduke AT gmail DOT com>
 
 pkgname=gate
-pkgver=8.6
+pkgver=9.0
 pkgrel=1
 pkgdesc="GATE Developer is a development environment that provides a rich set of graphical interactive tools for the creation, measurement and maintenance of software components for processing human language."
 arch=('any')
@@ -10,7 +10,7 @@ license=('LGPL')
 depends=('java-runtime')
 options=(!strip)
 source=(https://github.com/GateNLP/gate-core/releases/download/v${pkgver}/gate-developer-${pkgver}-distro.zip gate.desktop gate.png)
-md5sums=('162d7a174098748d21ff0cee155e5de7'
+md5sums=('8cc449357b3238269fce147113c40910'
          'a7a2cb37bf093d4b4164c7d381661f33'
          'acf3e7a9fcbdedd24589394260d56d12')
 
