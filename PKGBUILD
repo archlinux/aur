@@ -37,20 +37,15 @@ source=("hg+$_repo#revision=release"
         "rust_build_fix.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/rust_build_fix.patch"
         "megabar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/megabar.patch"
         "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
-        "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
-        "unity-menubar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/unity-menubar.patch")
-sha256sums=('b157cdc265daa6140ec8daef2bc98d335f871e7e9ac235287fb199e11c164287'
+        "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch")
+sha256sums=('SKIP'
             '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
             'SKIP'
             'SKIP'
             '9a546803491818cfc016e4be908710e230b2b2b6640ec1a7df61c98053444471'
             '682bf4bf5d79db0080aa132235a95b25745c8ef944d2a2e1fed985489d894df5'
             'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
-            '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
-            'ee302586f5291f809759f5eae3e5bad60b13007d9a9d37ac7f397597eb1d8665'
-            'SKIP'
-            'a9e5264257041c0b968425b5c97436ba48e8d294e1a0f02c59c35461ea245c33'
-            '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797')
+            '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd')
 pkgver() {
   cd mozilla-unified
   printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
