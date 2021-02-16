@@ -3,7 +3,7 @@
 pkgname=privacy-redirect-git
 pkgver=v1.1.43.r4.3d45eb3
 pkgrel=1
-pkgdesc="Privacy Redirect browser extension (for chromium and Firefox)"
+pkgdesc="Privacy Redirect browser extension (for chromium-based browsers)"
 arch=(any)
 url="https://github.com/SimonBrazell/privacy-redirect"
 license=('MIT')
