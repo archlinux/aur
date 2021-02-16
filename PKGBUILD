@@ -11,9 +11,9 @@ depends=()
 provides=(kartina-tv)
 conflicts=(kartina-tv-git)
 
-source_x86_64=(http://firmware.kartina.tv/pc/linux/kartina_tv_2.74.1_20171117_amd64.deb)
+source_x86_64=(https://www.kartina.tv/media/ktv_player/kartina.tv_2.11.5_amd64.deb)
 
-sha512sums_x86_64=('098f54f579ee3571dc31753c408663e337a210f263fa1ee2db3903139b0a4ab6d694ddbd7de2a4d37f9bbcefd6eba5770bc39143e8578b12e7120ce6e6e93a78')
+sha512sums_x86_64=('f387682e9d33d41aa6fed2e48bb3f2d1205a2e9e8b1098a7f923ce94ad964eafb98e30a576eb0015908a11c6cd15b3507452f185237d899fc71e84d82788093c')
 
 
 package() {
