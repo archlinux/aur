@@ -4,7 +4,7 @@
 # Contributor: Marcel Huber <marcelhuberfoo at gmail dot com>
 
 pkgname=gerrit
-pkgver=3.2.3
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="A web-based code review tool built on top of the Git version control system"
 arch=(any)
