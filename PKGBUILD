@@ -3,8 +3,8 @@ pkgver=1
 pkgrel=1
 pkgdesc="Grand Theft Auto Vice City reverse engineered"
 arch=('x86_64')
-depends=()
-makedepends=('git')
+depends=('openal' 'glew' 'glfw' 'libsndfile' 'mpg123')
+makedepends=('git' 'cmake')
 provides=('revc')
 license=('none')
 
