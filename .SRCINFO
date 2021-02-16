@@ -6,6 +6,7 @@ pkgbase = python-london-unified-prayer-times
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
+	makedepends = python-pip
 	depends = python
 	depends = python-click
 	depends = python-click-default-group
