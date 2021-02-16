@@ -1,13 +1,12 @@
 pkgbase = finetune
 	pkgdesc = Automatic music tagger
 	pkgver = 2.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://flavio.tordini.org/finetune
 	arch = x86_64
 	license = custom
 	depends = taglib
 	depends = qt5-declarative
-	depends = appmenu-gtk-module
 	depends = chromaprint
 	depends = hicolor-icon-theme
 	source = finetune-2.2.1.deb::https://flavio.tordini.org/files/finetune/finetune.deb
