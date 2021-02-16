@@ -1,32 +1,34 @@
-# Maintainer: ml <>
+# Maintainer: Mario Finelli <mario at finel dot li>
+# Contributor: ml <>
+
 pkgname=helm-secrets
-pkgver=3.3.5
-pkgrel=3
-pkgdesc='Helm plugin to manage secrets with Git workflow and store them anywhere'
-arch=('any')
-url='https://github.com/jkroepke/helm-secrets'
-license=('Apache')
+pkgver=3.4.1
+pkgrel=1
+pkgdesc="Helm plugin to manage secrets with Git workflow and store them anywhere"
+arch=(any)
+url=https://github.com/jkroepke/helm-secrets
+license=(Apache)
 install=helm-secrets.install
-depends=('bash' 'helm')
+depends=(bash helm)
 optdepends=(
   'sops: secret driver'
   'vault: secret driver'
 )
-source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('a08b5554af5c199b9db4c42454a488e1b99bc30402cd06ecbb6fc66be2a3661a')
+source=(https://github.com/jkroepke/helm-secrets/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
+sha256sums=('42606e0af22af378d1cf991498057c53f2033e1a1cb9535e7c8ccf1d644a4204')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
   sed -i '/platformCommand:/,+2 d' plugin.yaml
 }
 
-# check(): Go tests require special test environment
-
 package() {
   cd "${pkgname}-${pkgver}"
   local _dest="${pkgdir}/usr/lib/helm/plugins/${pkgname##helm-}"
-  install -Dm644 plugin.yaml -t "$_dest"
+  install -Dm0644 plugin.yaml -t "$_dest"
   # copy whole scripts directory but remove the install script
   cp -ar scripts/ -t "$_dest"
   rm -f "$_dest/install.sh"
 }
+
+# vim: set ts=2 sw=2 et:
