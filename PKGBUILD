@@ -2,13 +2,13 @@
 
 pkgname=stylelint
 pkgver=13.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Mighty, modern CSS linter'
 arch=('any')
 url=https://stylelint.io
 license=('MIT')
 depends=('nodejs')
-makedepends=('git' 'jq' 'npm')
+makedepends=('git' 'npm' 'rsync')
 optdepends=('stylelint-config-standard: for the standard shareable config')
 source=("git+https://github.com/stylelint/stylelint.git#tag=$pkgver")
 b2sums=('SKIP')
@@ -16,7 +16,6 @@ b2sums=('SKIP')
 build() {
   cd $pkgname
   npm ci
-  npm pack
 }
 
 check() {
@@ -26,24 +25,17 @@ check() {
 
 package() {
   cd $pkgname
-  npm install --global \
-              --user root \
-              --prefix "$pkgdir"/usr \
-              --production \
-              $pkgname-$pkgver.tgz
-  chown -R root:root "$pkgdir"
-  install -d "$pkgdir"/usr/share/licenses/$pkgname
-  ln -s /usr/lib/node_modules/$pkgname/LICENSE \
-    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
-  # Remove references to $srcdir and $pkgdir
-  find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+  npm prune --production
 
-  local tmppackage="$(mktemp)"
-  local pkgjson="$pkgdir/usr/lib/node_modules/$pkgname/package.json"
-  jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
-  mv "$tmppackage" "$pkgjson"
-  chmod 644 "$pkgjson"
+  install -d "$pkgdir"/usr/{bin,share/doc/$pkgname}
+  ln -s ../lib/node_modules/$pkgname/bin/$pkgname.js "$pkgdir"/usr/bin/$pkgname
+  install -Dt "$pkgdir"/usr/lib/node_modules/$pkgname/bin bin/$pkgname.js
+  rsync -r --exclude __tests__ --exclude lib/testUtils lib \
+    "$pkgdir"/usr/lib/node_modules/$pkgname
+  cp -r node_modules package.json "$pkgdir"/usr/lib/node_modules/$pkgname
+  cp -r {CHANGELOG,CONTRIBUTING,README}.md docs "$pkgdir"/usr/share/doc/$pkgname
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
