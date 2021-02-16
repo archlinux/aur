@@ -107,7 +107,7 @@ sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
             'b8bc4f6312bdc086c0fecd1cce1ab1ee12b7b4eff63f88239a65461d9ec5e91b'
             '9d49118bb60c0277ebac5aadd4938eb41561dd3d97c9422832e62d0ffc5c59df'
             'e840e41f0f91108f63fd6e085c93b02daa78729268bc31be7be7fb355203e38a'
-            'ffd5b4bbb0e9e8306d1ae6faf62f1ef878bfa50ddba4ab959351f3fedc85654a'
+            '01a9b6c45e250e77396d1259c092313bb37b646c112a6cc4e092b6b736918308'
             '6ae9b0f994c8cea6ddbaaa570a2570d8489643b33b61c68090670c241a0cd3cc')
 
 # If use_cachy=y then download cachy patch
