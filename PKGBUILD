@@ -3,7 +3,7 @@
 
 pkgbase=linux-x32
 pkgver=5.10.16.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux with x32 ABI'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
@@ -19,6 +19,7 @@ _srcname=archlinux-linux
 source=(
   "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
   config         # the main kernel config file
+  sphinx-workaround.patch  # Sphinx 3.5 broke the build again
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -26,7 +27,8 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '8b7afebec505de0226d268730c1b65a4cf524bad1e870b2c9f880aaa6ed72c36')
+            '8b7afebec505de0226d268730c1b65a4cf524bad1e870b2c9f880aaa6ed72c36'
+            '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

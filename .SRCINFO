@@ -1,7 +1,7 @@
 pkgbase = linux-x32
 	pkgdesc = Linux with x32 ABI
 	pkgver = 5.10.16.arch1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.archlinux.org/linux.git/log/?h=v5.10.16-arch1
 	arch = x86_64
 	license = GPL2
@@ -22,11 +22,13 @@ pkgbase = linux-x32
 	options = !strip
 	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.10.16-arch1
 	source = config
+	source = sphinx-workaround.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
 	sha256sums = 8b7afebec505de0226d268730c1b65a4cf524bad1e870b2c9f880aaa6ed72c36
+	sha256sums = 52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb
 
 pkgname = linux-x32
 	pkgdesc = The Linux with x32 ABI kernel and modules
