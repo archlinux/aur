@@ -5,13 +5,12 @@ pkgver=2.23a
 
 _svnrev=8357
 
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of command line tools to manipulate SZS, U8, BRRES, BREFF, BREFT, BMG, KMP, TEX, TPL, and StaticR.rel files of Mario Kart Wii"
 arch=(i686 x86_64)
 url="http://szs.wiimm.de/"
 license=(GPL)
 depends=(libpng)
-makedepends=(subversion)
 provides=(szstools)
 conflicts=(szstools)
 source_i686=("http://szs.wiimm.de/download/${pkgname}-v${pkgver}-r${_svnrev}-i386.tar.gz")

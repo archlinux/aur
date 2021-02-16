@@ -1,12 +1,11 @@
 pkgbase = szs
 	pkgdesc = A set of command line tools to manipulate SZS, U8, BRRES, BREFF, BREFT, BMG, KMP, TEX, TPL, and StaticR.rel files of Mario Kart Wii
 	pkgver = 2.23a
-	pkgrel = 1
+	pkgrel = 2
 	url = http://szs.wiimm.de/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = subversion
 	depends = libpng
 	provides = szstools
 	conflicts = szstools
