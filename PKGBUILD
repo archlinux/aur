@@ -7,7 +7,7 @@
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-pkgver=1.3.0.rc2.r1128.g1d5c69be0
+pkgver=1.3.0.rc2.r1232.g1808273e1
 pkgrel=1
 epoch=1
 pkgdesc='An Open Source, low-latency, high quality voice chat software (git version)'
@@ -47,7 +47,7 @@ prepare() {
 
 build() {
   cd "$_pkgname"
-  _release_id=$(scripts/mumble-version.py -p)
+  _release_id=$(scripts/mumble-version.py -f version)
 
   cmake \
     -B build \
