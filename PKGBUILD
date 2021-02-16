@@ -6,14 +6,14 @@
 
 pkgname=rapidsvn
 pkgver=0.12.1
-pkgrel=13
+pkgrel=14
 pkgdesc="A cross-platform GUI front-end for the Subversion revision system written in C++ using the wxWidgets framework."
-url='http://rapidsvn.tigris.org/'
+url='https://rapidsvn.org/'
 arch=('x86_64')
 license=('GPL')
 depends=('subversion' 'wxgtk3')
 makedepends=('python2' 'doxygen')
-source=(http://www.rapidsvn.org/download/release/$pkgver/rapidsvn-$pkgver.tar.gz
+source=(https://www.rapidsvn.org/download/release/$pkgver/rapidsvn-$pkgver.tar.gz
 	$pkgname.desktop
 	rapidsvn-wx3.0.patch
 	rapidsvn-subversion1.9.patch
