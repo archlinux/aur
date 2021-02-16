@@ -1,19 +1,22 @@
 # Maintainer: David Florness <david at florness dot com>
 pkgname=tallyard-git
 _pkgname=tallyard
-pkgver=r161.f2606ba
+pkgver=0.3.0.r0.g12de6e8
 pkgrel=1
 arch=('x86_64')
 pkgdesc="A peer-to-peer voting system that ensures voter privacy while preventing double-voting"
 url="https://tallyard.xyz"
 license=('AGPL3')
 makedepends=('go>=1.11')
-source=("git+https://gitlab.com/edwargix/$_pkgname.git")
+source=("git+https://git.hnitbjorg.xyz/~edwargix/tallyard")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/^v//' | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
