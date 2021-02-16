@@ -2,7 +2,7 @@
 
 _pkgname=data-science-types
 pkgname=python-${_pkgname}
-pkgver=0.2.22
+pkgver=0.2.23
 pkgrel=2
 pkgdesc="Mypy type stubs for numpy, pandas and matplotlib"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=(
 	'python-matplotlib: for matplotlib support'
 )
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('89b3c3f742303e1922488ebc02b9660d1db55d8f80f5c49f87977f1c1a4572c2')
+sha256sums=('3778ba8243d546a7b41eecedf69d37f2a4ddd344a3a69198a704ae384dec8cef')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
