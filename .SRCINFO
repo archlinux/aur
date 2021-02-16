@@ -1,0 +1,15 @@
+pkgbase = pacman-mirrorlist-cn-git
+	pkgdesc = Arch Linux China Mainland mirror list for use by pacman
+	pkgver = 20210216
+	pkgrel = 1
+	url = https://github.com/zhullyb/pacman-mirrorlist-cn
+	arch = x86_64
+	license = custom
+	provides = pacman-mirrorlist
+	conflicts = pacman-mirrorlist
+	backup = etc/pacman.d/mirrorlist
+	source = git+https://github.com/zhullyb/pacman-mirrorlist-cn.git
+	md5sums = SKIP
+
+pkgname = pacman-mirrorlist-cn-git
+
