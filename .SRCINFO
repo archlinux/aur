@@ -16,11 +16,10 @@ pkgbase = openmc-git
 	depends = python-h5py
 	depends = python-uncertainties
 	depends = python-lxml
+	depends = pugixml
+	depends = fmt
 	provides = openmc
 	provides = libopenmc.so
-	conflicts = openmc
-	conflicts = pugixml
-	conflicts = fmt
 	source = openmc-git::git+https://github.com/openmc-dev/openmc.git
 	sha1sums = SKIP
 
