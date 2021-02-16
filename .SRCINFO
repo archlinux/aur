@@ -1,6 +1,6 @@
 pkgbase = szs
 	pkgdesc = A set of command line tools to manipulate SZS, U8, BRRES, BREFF, BREFT, BMG, KMP, TEX, TPL, and StaticR.rel files of Mario Kart Wii
-	pkgver = 1.40a
+	pkgver = 2.23a
 	pkgrel = 1
 	url = http://szs.wiimm.de/
 	arch = i686
@@ -10,10 +10,10 @@ pkgbase = szs
 	depends = libpng
 	provides = szstools
 	conflicts = szstools
-	source_i686 = http://szs.wiimm.de/download/szs-v1.40a-r6162-i386.tar.gz
-	sha512sums_i686 = 4a237ee2539915c4abb075d0725368dbda35ab0e5fd7017b14d7046f50ea8d74e89a8f4a6ed52e49221df2f3a3b653965139b0e485daab3be89ac64e6c61f7fe
-	source_x86_64 = http://szs.wiimm.de/download/szs-v1.40a-r6162-x86_64.tar.gz
-	sha512sums_x86_64 = a9df6e188358ba0c186b41aa58edaa6e7489a5412681cc1a6bab4f66f2038efa7a93f354da73a55995ff9c617034fe7dc7511cb13ca17c4e572a9ba7e5565104
+	source_i686 = http://szs.wiimm.de/download/szs-v2.23a-r8357-i386.tar.gz
+	sha512sums_i686 = 4538a390cbcbb3061f93471161a765751e4eab8cb63b447b710fa54e02dbdf60c760764159de49355c3d6cd2c0dd004be708a816b10131ced1b9913e0394277f
+	source_x86_64 = http://szs.wiimm.de/download/szs-v2.23a-r8357-x86_64.tar.gz
+	sha512sums_x86_64 = 314c490f9f7889d37229cdd98b8cd12ae9ee691c99e0c4fb81de098e6c2a0a24bc0ad8b6573c94be5a296a45a691254d0950199b6e5f487aed50e12b1b8c8686
 
 pkgname = szs
 
