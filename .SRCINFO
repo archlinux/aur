@@ -16,7 +16,7 @@ pkgbase = python-orange3-git
 	depends = python-joblib
 	depends = python-keyrings-alt
 	depends = python-bottleneck
-	depends = python-anyqt
+	depends = python-anyqt-git
 	depends = qt5-svg
 	depends = python-pip
 	depends = python-serverfiles
@@ -34,6 +34,8 @@ pkgbase = python-orange3-git
 	depends = python-serverfiles
 	depends = python-louvain
 	depends = python-orange-widget-base-git
+	depends = python-qasync-git
+	depends = python-dictdiffer
 	source = git://github.com/biolab/orange3
 	sha256sums = SKIP
 

@@ -10,9 +10,9 @@ arch=('x86_64')
 url="http://orange.biolab.si/"
 license=('GPL3')
 makedepends=('python-setuptools')
-depends=('python-chardet' 'python-docutils' 'python-pyqtgraph' 'python-xlrd' 'python-matplotlib' 'python-scikit-learn' 'python-psycopg2' 'python-joblib' 'python-keyrings-alt' 'python-bottleneck' 'python-anyqt' 'qt5-svg' 'python-pip' 'python-serverfiles' 'python-louvain' 'python-xlsxwriter' 'python-opentsne-git' 'python-networkx' 'python-requests' 'python-pandas' 'python-openpyxl' 'python-orange-widget-base-git' 'python-orange-canvas-core-git' 'python-baycomp' 'python-httpx' 'python-serverfiles' 'python-louvain' 'python-orange-widget-base-git')
-source=("https://github.com/biolab/orange3/archive/master.zip")
-sha256sums=('SKIP')
+depends=('python-chardet' 'python-docutils' 'python-pyqtgraph' 'python-xlrd' 'python-matplotlib' 'python-scikit-learn' 'python-psycopg2' 'python-joblib' 'python-keyrings-alt' 'python-bottleneck' 'python-anyqt-git' 'qt5-svg' 'python-pip' 'python-serverfiles' 'python-louvain' 'python-xlsxwriter' 'python-opentsne-git' 'python-networkx' 'python-requests' 'python-pandas' 'python-openpyxl' 'python-orange-widget-base-git' 'python-orange-canvas-core-git' 'python-baycomp' 'python-httpx' 'python-serverfiles' 'python-louvain' 'python-orange-widget-base-git' 'python-qasync-git' 'python-dictdiffer')
+# source=("https://github.com/biolab/orange3/archive/master.zip")
+# sha256sums=('SKIP')
 source=("git://github.com/$_author/$_pkgname")
 sha256sums=('SKIP')
 
