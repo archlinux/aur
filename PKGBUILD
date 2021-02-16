@@ -9,8 +9,22 @@ provides=('revc')
 license=('none')
 
 install=$pkgname.install
-source=('git://github.com/GTAmodding/re3.git' 'launch.sh' 'GTAVC.desktop')
-md5sums=('SKIP' 'SKIP' 'SKIP')
+source=(
+    'git://github.com/GTAmodding/re3.git#branch=miami'
+    'git+https://github.com/aap/librw.git'
+    'git+https://github.com/xiph/ogg.git'
+    'git+https://github.com/xiph/opus.git'
+    'git+https://github.com/xiph/opusfile.git'
+    'launch.sh'
+    'GTAVC.desktop')
+md5sums=(
+    'SKIP'
+    'SKIP' 
+    'SKIP' 
+    'SKIP' 
+    'SKIP' 
+    '9eb2aff2687f8cc735ea93e0460f07e0' 
+    '2991b7cf6751274bfdccc7b6f0272129')
 
 pkgver() {
   cd "$srcdir/re3"
@@ -20,8 +34,12 @@ pkgver() {
 prepare() {
     cd "$srcdir/re3"
 
-    git submodule update --init --recursive
-    git checkout miami
+    git submodule init
+    for submod in librw ogg opus opusfile
+    do
+      git config "submodule.vendor/$submod.url" "../$submod"
+    done
+    git submodule update
 }
 
 build() {
