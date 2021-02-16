@@ -12,7 +12,7 @@ license=('Unlicense')
 
 # Sources
 source=("git+https://github.com/krathalan/${_pkgname}" 'endlessh.conf')
-sha256sums=('SKIP' 'a76cbe4b356994243632e487bd5241ecf96e0e0aa3ba1fc6968dae1958f3308b')
+sha256sums=('SKIP' '800eb22c581d706fe26821e41102ce1b23836fa7b36beb89ba12bb38577a5ea8')
 
 # Package relations
 depends=()
