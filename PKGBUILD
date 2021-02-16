@@ -1,7 +1,7 @@
 # Maintainer: Sam L. Yes <samlukeyes123@gmail.com>
 
 pkgname=libcamera-clang-git
-pkgver=r2261.8a05d35b
+pkgver=r2286.e201cb4f
 pkgrel=1
 pkgdesc='A complex camera support library for Linux, Android, and ChromeOS (built with clang)'
 arch=('x86_64' 'i686')
@@ -21,7 +21,7 @@ depends=(
         #'lttng-ust'              # for tracing with LTTng
         )
 license=('LGPL' 'GPL')
-#options=('!buildflags')
+options=('!buildflags')
 source=('git://linuxtv.org/libcamera.git/')
 md5sums=('SKIP')
 
