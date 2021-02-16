@@ -15,14 +15,16 @@ sha512sums=('f8058cbd5a8a807cd84b4a839c87ff76dae5475c655e804b27262cd5cb22ddb6c43
 
 build() {
   cd "$pkgname-$pkgver"
-
-  cargo build --all --release --locked --features "cranelift llvm singlepass"
+  cargo build --release --locked --manifest-path lib/c-api/Cargo.toml --no-default-features --features deprecated,wat,jit,native,object-file,cranelift,wasi
+  cargo build --release --locked --manifest-path lib/cli/Cargo.toml --features "cranelift llvm singlepass" --bin wasmer
 }
 
 check() {
   cd "$pkgname-$pkgver"
 
   cargo test --release --locked --manifest-path lib/cli/Cargo.toml --features "cranelift llvm singlepass" --bin wasmer
+  # Check if we can run a basic binary
+  target/release/wasmer run tests/wasi-wast/wasi/snapshot1/hello.wasm &>/dev/null
 }
 
 package() {
