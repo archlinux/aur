@@ -25,11 +25,6 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	for manual in *.1.in ; do
-		install -Dm0644 "$manual" "$pkgdir/usr/share/man/man1/${manual%.in}"
-	done
-	for manual in *.7.in ; do
-		install -Dm0644 "$manual" "$pkgdir/usr/share/man/man7/${manual%.in}"
-	done
+	make MANPATH="$pkgdir/usr/share/man" install
 	install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
