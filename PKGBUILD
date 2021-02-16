@@ -1,16 +1,14 @@
-# Maintainer: Olivier Mehani <shtrom-aur@ssji.net>
-# vim:set ts=2 sw=2 et:
+# Contributor: Olivier Mehani <shtrom-aur@ssji.net>
+# Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
 pkgname=gkrellm-snmp
 pkgver=1.1
 pkgrel=1
 pkgdesc="A GKrellM plugin to read SNMP agents"
 arch=("x86" "x86_64")
-url="http://triq.net/plugin/gkrellm-snmp"
+url="https://triq.net/plugin/gkrellm-snmp"
 license=('GPL')
 depends=(gtk openssl gkrellm net-snmp)
-builddepends=(pkg-config)
-source=(http://triq.net/files/${pkgname/-/_}-$pkgver.tar.gz)
-noextract=()
+source=(https://triq.net/files/${pkgname/-/_}-$pkgver.tar.gz)
 
 build() {
   cd "$srcdir/${pkgname/-/_}-$pkgver"
