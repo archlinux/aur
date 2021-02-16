@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.10.14.arch1
+pkgver=5.11.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -97,8 +97,9 @@ source=(
     "git+$_repo_url?signed#tag=$_srcver_tag"
     "git+$_repo_url_gcc_patch"
     config # kernel config file
-    0005-v5.10_undead-pds099o.patch
-    0005-undead-glitched-pds.patch
+    sphinx-workaround.patch # # Sphinx 3.5 broke the build again
+    0009-prjc_v5.11-r0.patch
+    0005-glitched-pds.patch
 )
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
@@ -107,9 +108,10 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '758371368d6af0401d0f1a4a06eef5bf5c77b2732148ee5917c3c23fbbaafa7f7f8fea57bc50ee685b12105d2bae2a1a8124421d29e0b80b83639b337e283614'
-            'e27976837d14c6480514da37c76f8d015a26eefe8da612e31a819a3ef897864a30fac588ca11108ea5fe6fab653fb083c09e3cbc923ddfa3758ea20f567d6dee'
-            '2cf83af1322f0fe5b9751e2b77fa1c890c7c22d9213b1cdfb57ca7f7a89a2cb263c213e178417ae1b7e947b386796b4b71507b127ec698cba661799346b33bbd')
+            'c35a3e8cac8edaa8cb2d6867652e5b4a3390698e53039582858ce00f846c35b108e7d1f7498a3bb383294ddc3d07a8e93d883dd6d5a4283afd1c1ffe23d62ed4'
+            '93c03382b6678ce5e94a5d06e6737965629d7dc49d16e968d225e664d88f07a12abe0e04908f1cdaa75ff1cde88783cae9f0794d1075bc65bc7baeff392e0ae2'
+            '34f0adf9ed1ec09df8e19f6fa64c5d93fc8896afeb9825771f01caaad663f8505b089571321b2cc76a7b95e755bd09df695682b587ee0dc89ab4f3463e0982aa'
+            '889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -125,8 +127,9 @@ prepare() {
     
     PatchesArray=(
         $_reponame_gcc_patch/$_gcc_patch_name
-        0005-v5.10_undead-pds099o.patch
-        0005-undead-glitched-pds.patch
+        sphinx-workaround.patch
+        0009-prjc_v5.11-r0.patch
+        0005-glitched-pds.patch
     )
     for MyPatch in "${PatchesArray[@]}"
     do
@@ -156,7 +159,7 @@ prepare() {
     fi
     
     # Set yield_type to 0
-    sed -i -e 's/int sched_yield_type __read_mostly = 1;/int sched_yield_type __read_mostly = 0;/' ./kernel/sched/pds.c
+    sed -i -e 's/int sched_yield_type __read_mostly = 1;/int sched_yield_type __read_mostly = 0;/' ./kernel/sched/alt_core.c
 
     # do not run 'make olddefconfig' as it sets default options
     yes "" | make config >/dev/null
