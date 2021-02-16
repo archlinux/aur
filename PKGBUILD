@@ -1,8 +1,8 @@
 #Maintainer: Dylan Delgado <dylan1496@live.com>
 
 pkgname=browservice
-pkgver=0.9.1.2
-pkgrel=2
+pkgver=0.9.2.0
+pkgrel=1
 pkgdesc='Browse the modern web on historical browsers'
 url='https://github.com/ttalvitie/browservice'
 license=('MIT')
@@ -10,7 +10,7 @@ arch=('x86_64' 'armv7l' 'aarch64')
 depends=('wget' 'cmake' 'poco' 'pango' 'libjpeg-turbo' 'libxcb' 'libx11' 'python' 'xorg-server-xvfb' 'xorg-xauth' 'at-spi2-atk' 'alsa-lib' 'nss' 'libcups' 'libxcursor' 'libxss' 'libxcomposite' 'libxkbcommon' 'ttf-ms-fonts')
 source=("https://github.com/ttalvitie/browservice/archive/v${pkgver}.tar.gz"
 'cmake.patch')
-sha256sums=('4936efb4389605d96e358cd61a6a689b13c3b3b137ce7e79f3c96cfc290d3d92'
+sha256sums=('cd253de3f8254f05d83b2ea0e65ec047a3b05ab5c0903644501a383756ed2047'
 '9a89293e55961adadca26829e2a97f06286b19b554032917cccbf1bd0bd53700')
 
 prepare() {
