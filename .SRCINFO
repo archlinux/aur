@@ -1,0 +1,15 @@
+pkgbase = qtmips
+	pkgdesc = MIPS CPU emulator
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = https://github.com/cvut/QtMips
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-tools
+	makedepends = elfutils
+	depends = qt5-base
+	source = qtmips-0.7.5.tar.gz::https://github.com/cvut/QtMips/archive/v0.7.5.tar.gz
+	md5sums = 4b9ae801fbccbd66e8cf32a226d898f4
+
+pkgname = qtmips
+
