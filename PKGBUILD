@@ -4,7 +4,7 @@
 
 _gitname=libgit2
 pkgname=libgit2-git
-pkgver=0.27.0.rc1.r0.g809b0ca6b
+pkgver=1.1.0.r279.g935f85131
 epoch=2
 pkgrel=1
 pkgdesc='A linkable library for Git'
@@ -16,7 +16,7 @@ makedepends=(cmake python git)
 provides=('libgit2')
 conflicts=('libgit2')
 source=(git+https://github.com/libgit2/libgit2.git)
-md5sums=(SKIP)
+md5sums=('SKIP')
 
 pkgver() {
   cd $_gitname
