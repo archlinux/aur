@@ -1,0 +1,25 @@
+pkgbase = ospd-openvas
+	pkgdesc = OSP Server for openvas
+	pkgver = 20.8.1
+	pkgrel = 1
+	url = https://github.com/greenbone/ospd-openvas
+	arch = x86_64
+	groups = greenbone-vulnerability-manager
+	license = GPL
+	makedepends = python-setuptools
+	depends = python-ospd
+	depends = python-redis
+	depends = python-psutil
+	depends = python-packaging
+	depends = openvas-scanner
+	provides = python-ospd-openvas
+	conflicts = python-ospd-openvas
+	source = ospd-openvas-20.8.1.tar.gz::https://github.com/greenbone/ospd-openvas/archive/v20.8.1.tar.gz
+	source = ospd-openvas
+	source = ospd-openvas.service
+	sha512sums = fb4ceb0a2306255e59948fe2246f9c66adefb4e68e26d3a8f95366a9ef1cb5581a3b036f6982cdd4c8499a9fb1e6acbe72041144e9ff3a057fc253e0684c0c0f
+	sha512sums = 3461820543ac6bc0cd50026023a6271e015123366fc44ce66ead1221d52c9e534063881f3b46a50a6e43ec9caff697376c35f1ce2cd22944e7b58f02070a78a8
+	sha512sums = ddaa5ad183265df4a89661acde7f0c8a5d1fd4c0748e3ca2dd267d3e7e05e6975a62023833bdd048ab97076c9ec839e7ad2fd463ef16b246e5813e328956b50e
+
+pkgname = ospd-openvas
+
