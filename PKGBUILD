@@ -1,12 +1,12 @@
 basename=libsurvive
 pkgname=$basename-git
-pkgver=1400.e2a2e50
+pkgver=1695.921f772
 pkgrel=1
 pkgdesc="Open-Source tool for working with lighthouse-based tracking data, including support for the HTC Vive, Vive Pro and Valve Index."
 arch=(x86_64 i686)
 url="https://github.com/cntools/libsurvive"
 license=(MIT)
-depends=("hidapi" "xr-hardware" "libpcap" "lapacke" "cblas" "zlib")
+depends=("hidapi" "xr-hardware" "libpcap" "lapacke" "cblas" "zlib" "libusb")
 conflicts=($basename)
 provides=($basename)
 makedepends=("git" "cmake" "ninja")
