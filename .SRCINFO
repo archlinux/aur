@@ -1,6 +1,6 @@
 pkgbase = extraterm-git
 	pkgdesc = The swiss army chainsaw of terminal emulators.
-	pkgver = 0.38.0.r41.ge69cf935
+	pkgver = 0.57.1.r38.g4b18018e
 	pkgrel = 1
 	url = https://github.com/sedwards2009/extraterm
 	arch = i686
@@ -11,11 +11,12 @@ pkgbase = extraterm-git
 	makedepends = git
 	makedepends = npm
 	makedepends = yarn
-	makedepends = nodejs-lts-carbon
+	makedepends = nodejs
 	makedepends = typescript
 	conflicts = extraterm-bin
 	source = git+https://github.com/sedwards2009/extraterm
+	source = extraterm.desktop
 	sha512sums = SKIP
+	sha512sums = 070211fce7eb59eeac0bd3a130062934b83119c6704b433ab75abbd2d6f9306e870c02db8079e738952a421e1728b8b313dce96feca43cd497d92df277349644
 
 pkgname = extraterm-git
-
