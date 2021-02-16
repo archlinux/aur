@@ -6,7 +6,7 @@ pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pyt
 _pkgname="pytorch"
 pkgver=1.7.1
 _pkgver=1.7.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -16,12 +16,79 @@ depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'py
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda'
              'cudnn' 'git' 'magma' 'ninja' 'pkgconfig' 'doxygen')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
+        # generated using parse-submodules
+        "${pkgname}-psimd::git+https://github.com/Maratyszcza/psimd.git"
+        "${pkgname}-pthreadpool::git+https://github.com/Maratyszcza/pthreadpool.git"
+        "${pkgname}-enum34::git+https://github.com/PeachPy/enum34.git"
+        "${pkgname}-cub::git+https://github.com/NVlabs/cub.git"
+        "${pkgname}-pybind11::git+https://github.com/seemethere/pybind11.git"
+        "${pkgname}-NNPACK::git+https://github.com/Maratyszcza/NNPACK.git"
+        "${pkgname}-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git"
+        "${pkgname}-FP16::git+https://github.com/Maratyszcza/FP16.git"
+        "${pkgname}-cpuinfo::git+https://github.com/pytorch/cpuinfo.git"
+        "${pkgname}-PeachPy::git+https://github.com/Maratyszcza/PeachPy.git"
+        "${pkgname}-ios-cmake::git+https://github.com/Yangqing/ios-cmake.git"
+        "${pkgname}-eigen-git-mirror::git+https://github.com/eigenteam/eigen-git-mirror.git"
+        "${pkgname}-QNNPACK::git+https://github.com/pytorch/QNNPACK"
+        "${pkgname}-six::git+https://github.com/benjaminp/six.git"
+        "${pkgname}-ideep::git+https://github.com/intel/ideep"
+        "${pkgname}-ARM_NEON_2_x86_SSE::git+https://github.com/intel/ARM_NEON_2_x86_SSE.git"
+        "${pkgname}-foxi::git+https://github.com/houseroad/foxi.git"
+        "${pkgname}-gloo::git+https://github.com/facebookincubator/gloo"
+        "${pkgname}-fbjni::git+https://github.com/facebookincubator/fbjni.git"
+        "${pkgname}-sleef::git+https://github.com/shibatch/sleef"
+        "${pkgname}-benchmark::git+https://github.com/google/benchmark.git"
+        "${pkgname}-nccl::git+https://github.com/NVIDIA/nccl"
+        "${pkgname}-onnx-tensorrt::git+https://github.com/onnx/onnx-tensorrt"
+        "${pkgname}-tbb::git+https://github.com/01org/tbb"
+        "${pkgname}-gemmlowp::git+https://github.com/google/gemmlowp.git"
+        "${pkgname}-tensorpipe::git+https://github.com/pytorch/tensorpipe.git"
+        "${pkgname}-fbgemm::git+https://github.com/pytorch/fbgemm"
+        "${pkgname}-googletest::git+https://github.com/google/googletest.git"
+        "${pkgname}-zstd::git+https://github.com/facebook/zstd.git"
+        "${pkgname}-XNNPACK::git+https://github.com/google/XNNPACK.git"
+        "${pkgname}-onnx::git+https://github.com/onnx/onnx.git"
+        "${pkgname}-protobuf::git+https://github.com/protocolbuffers/protobuf.git"
+        "${pkgname}-fmt::git+https://github.com/fmtlib/fmt.git"
         fix_include_system.patch
         use-system-libuv.patch
         use-system-libuv2.patch
         nccl_version.patch
         disable_non_x86_64.patch)
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             '83c81ec6a461110da6ae6182529f58100986b068c5182ca62cd53c648b4e4fb0'
             '26b1dd596f1e21a011ee18cab939924483d6c6d4d98e543bf76f5a9312d54d67'
             '7b65c3b209fc39f92ba58a58be6d3da40799f1922910b1171ccd9209eda1f9eb'
@@ -31,11 +98,41 @@ sha256sums=('SKIP'
 prepare() {
   cd "${_pkgname}-${pkgver}"
 
-  # This is the lazy way since pytorch has sooo many submodules and they keep
-  # changing them around but we've run into more problems so far doing it the
-  # manual than the lazy way. This lazy way (not explicitly specifying all
-  # submodules) will make building inefficient but for now I'll take it.
-  # It will result in the same package, don't worry.
+  # generated using parse-submodules
+  git submodule init
+  git config submodule."third_party/pybind11".url "${srcdir}/${pkgname}"-pybind11
+  git config submodule."third_party/cub".url "${srcdir}/${pkgname}"-cub
+  git config submodule."third_party/eigen".url "${srcdir}/${pkgname}"-eigen-git-mirror
+  git config submodule."third_party/googletest".url "${srcdir}/${pkgname}"-googletest
+  git config submodule."third_party/benchmark".url "${srcdir}/${pkgname}"-benchmark
+  git config submodule."third_party/protobuf".url "${srcdir}/${pkgname}"-protobuf
+  git config submodule."third_party/ios-cmake".url "${srcdir}/${pkgname}"-ios-cmake
+  git config submodule."third_party/NNPACK".url "${srcdir}/${pkgname}"-NNPACK
+  git config submodule."third_party/gloo".url "${srcdir}/${pkgname}"-gloo
+  git config submodule."third_party/NNPACK_deps/pthreadpool".url "${srcdir}/${pkgname}"-pthreadpool
+  git config submodule."third_party/NNPACK_deps/FXdiv".url "${srcdir}/${pkgname}"-FXdiv
+  git config submodule."third_party/NNPACK_deps/FP16".url "${srcdir}/${pkgname}"-FP16
+  git config submodule."third_party/NNPACK_deps/psimd".url "${srcdir}/${pkgname}"-psimd
+  git config submodule."third_party/zstd".url "${srcdir}/${pkgname}"-zstd
+  git config submodule."third-party/cpuinfo".url "${srcdir}/${pkgname}"-cpuinfo
+  git config submodule."third_party/python-enum".url "${srcdir}/${pkgname}"-enum34
+  git config submodule."third_party/python-peachpy".url "${srcdir}/${pkgname}"-PeachPy
+  git config submodule."third_party/python-six".url "${srcdir}/${pkgname}"-six
+  git config submodule."third_party/onnx".url "${srcdir}/${pkgname}"-onnx
+  git config submodule."third_party/onnx-tensorrt".url "${srcdir}/${pkgname}"-onnx-tensorrt
+  git config submodule."third_party/sleef".url "${srcdir}/${pkgname}"-sleef
+  git config submodule."third_party/ideep".url "${srcdir}/${pkgname}"-ideep
+  git config submodule."third_party/nccl/nccl".url "${srcdir}/${pkgname}"-nccl
+  git config submodule."third_party/gemmlowp/gemmlowp".url "${srcdir}/${pkgname}"-gemmlowp
+  git config submodule."third_party/QNNPACK".url "${srcdir}/${pkgname}"-QNNPACK
+  git config submodule."third_party/neon2sse".url "${srcdir}/${pkgname}"-ARM_NEON_2_x86_SSE
+  git config submodule."third_party/fbgemm".url "${srcdir}/${pkgname}"-fbgemm
+  git config submodule."third_party/foxi".url "${srcdir}/${pkgname}"-foxi
+  git config submodule."third_party/tbb".url "${srcdir}/${pkgname}"-tbb
+  git config submodule."android/libs/fbjni".url "${srcdir}/${pkgname}"-fbjni
+  git config submodule."third_party/XNNPACK".url "${srcdir}/${pkgname}"-XNNPACK
+  git config submodule."third_party/fmt".url "${srcdir}/${pkgname}"-fmt
+  git config submodule."third_party/tensorpipe".url "${srcdir}/${pkgname}"-tensorpipe
   git submodule update --init --recursive
 
   # https://bugs.archlinux.org/task/64981
