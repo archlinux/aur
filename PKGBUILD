@@ -51,8 +51,8 @@ build() {
 # you must allow the chroot access your X server:
 # xhost +local:
 # https://wiki.archlinux.org/index.php/chroot#Run_graphical_applications_from_chroot
-#export DISPLAY=:0
 check() {
+  export DISPLAY=:0
   ./"${_pkgname}/build/run_tests_with_x_1"
   ./"${_pkgname}/build/run_tests_with_x_2"
 }
