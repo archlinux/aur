@@ -3,8 +3,8 @@
 # Contributor: Piotr Kujawski <piotr@lao.pl>
 
 pkgname=ydpdict
-pkgver=1.0.2
-pkgrel=3
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Interface for Polish-English Collins Dictionary"
 url="https://github.com/wojtekka/ydpdict"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=(libydpdict libao ncurses)
 optdepends=(sox)
 backup=(etc/ydpdict.conf)
 source=("https://github.com/wojtekka/ydpdict/releases/download/$pkgver/ydpdict-$pkgver.tar.gz")
-sha256sums=('cbdcf1bba29a1eaf8c9fc782a1c15b80596e9debe7a56f169e1724960a415822')
+sha256sums=('8025211c8f527cb3bb9b94ada8a7bb6d1b98f7b035c73ee2fcc9cd0db4a46299')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
