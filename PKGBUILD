@@ -9,7 +9,7 @@ pkgdesc="A library for retrieving data from The London Unified Prayer Timetable.
 url="https://github.com/sshaikh/london_unified_prayer_times"
 depends=('python' 'python-click' 'python-click-default-group' 'python-jsonschema'
 'python-dateutil' 'python-appdirs' 'python-tzlocal' 'python-humanize')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-pip')
 license=('GPL')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
