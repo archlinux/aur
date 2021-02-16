@@ -1,6 +1,6 @@
 pkgbase = openra-rv-git
 	pkgdesc = A Command & Conquer: Red Alert 2-inspired mod of OpenRA
-	pkgver = 3028.git.5c00bb1
+	pkgver = 3031.git.ae0c9bc
 	pkgrel = 1
 	url = https://github.com/MustaphaTR/Romanovs-Vengeance
 	install = openra-rv.install
