@@ -3,7 +3,7 @@
 
 pkgname=asbru-cm
 _pkgname=${pkgname}
-pkgver=6.2.2
+pkgver=6.3.0
 pkgrel=1
 arch=('any')
 license=('GPL3')
