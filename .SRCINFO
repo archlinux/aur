@@ -1,11 +1,12 @@
 pkgbase = r8101-dkms
 	pkgdesc = RTL810xE Fast Ethernet Driver (DKMS)
 	pkgver = 1.035.03
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fichiers.touslesdrivers.com/64992/
 	arch = x86_64
 	license = GPL2
 	depends = dkms
+	depends = pahole
 	optdepends = ethtool: device configuration
 	provides = r8101
 	conflicts = r8101

@@ -6,12 +6,12 @@
 _pkgbase=r8101
 pkgname=r8101-dkms
 pkgver=1.035.03
-pkgrel=1
+pkgrel=2
 pkgdesc="RTL810xE Fast Ethernet Driver (DKMS)"
 arch=('x86_64')
 url="https://fichiers.touslesdrivers.com/64992/"
 license=('GPL2')
-depends=('dkms')
+depends=('dkms' 'pahole')
 optdepends=('ethtool: device configuration')
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
