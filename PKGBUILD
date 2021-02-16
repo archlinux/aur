@@ -2,7 +2,7 @@
 # Contributor: greyltc
 
 pkgname=cbang-git
-pkgver=1.6.0.r133.g501acc86
+pkgver=1.6.0.r134.g18f1e963
 pkgrel=1
 pkgdesc="A library of cross-platform C++ utilities"
 arch=('x86_64')
@@ -36,12 +36,6 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
-}
-
-prepare() {
-  cd "${pkgname%-git}"
-  sed -i "20i\    conf.CBRequireLib('v8_libplatform')" config/v8/__init__.py
-  sed -i "37i\    env.CBDefine('V8_COMPRESS_POINTERS')" SConstruct
 }
 
 build() {
