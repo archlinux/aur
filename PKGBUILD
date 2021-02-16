@@ -2,7 +2,7 @@
 # Contributor: Alexandros Theodotou <alex@zrythm.org>
 _pkgname=zrythm
 pkgname=$_pkgname-git
-pkgver=1.0.0.alpha.10.0.1.r.g3c6c68ad6
+pkgver=1.0.0.alpha.11.1.1.r.g3a545d217
 pkgrel=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
