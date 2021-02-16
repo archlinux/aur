@@ -3,17 +3,17 @@
 
 pkgname=python-typedload
 _name=typedload
-pkgver=2.4
+pkgver=2.6
 pkgrel=1
 pkgdesc='Load and dump data from json-like format into typed data structures'
 arch=('any')
-url='https://github.com/ltworf/typedload'
+url='https://ltworf.github.io/typedload/'
 license=('GPL3')
 depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('mypy')
-source=("${_name}-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('a24131bf859b94cd637be4b9da809fee7b85329e32b9b71f0d204616976b295a')
+source=("${_name}-$pkgver.tar.gz::https://github.com/ltworf/$_name/archive/$pkgver.tar.gz")
+sha256sums=('e3825eba3b4a8c67f31c712b5aa7b2bde69d386941e54efbb091abd2a2e70237')
 
 build() {
   cd "${_name}-${pkgver}"
@@ -28,4 +28,6 @@ check() {
 package() {
   cd "${_name}-${pkgver}"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm644 example.py "$pkgdir/usr/share/doc/$pkgname/example.py"
+  cp -r docs "$pkgdir/usr/share/doc/$pkgname/"
 }
