@@ -2,7 +2,7 @@
 # Co-maintainer: Wilsson Martee <wilssonm@gmail.com>
 
 pkgname=i3lock-color
-pkgver=2.13.c.1
+pkgver=2.13.c.2
 pkgrel=1
 pkgdesc="An improved screenlocker based upon XCB and PAM with color configuration support"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('xcb-util-image' 'pam' 'libev' 'cairo' 'libxkbcommon-x11'
 provides=('i3lock' 'i3lock-color')
 conflicts=('i3lock' 'i3lock-color-git')
 source=("${url}/archive/$pkgver.tar.gz")
-sha256sums=('691de5b10cb30bc3858390f5c8d22e5a0d1037b5d4b73948c8cf1955a71e5381')
+sha256sums=('e6d362bfe04ba6ae2d7640c3c480862fa1183629fcb400088fb510aa6e94c400')
 
 build() {
 	cd "$pkgname-$pkgver"
