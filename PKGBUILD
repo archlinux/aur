@@ -3,7 +3,7 @@
 
 pkgname=gurobi
 pkgver=9.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="State-of-the-art solver for mathematical programming"
 arch=('x86_64')
 url="https://www.gurobi.com/products/gurobi-optimizer"
@@ -14,7 +14,6 @@ optdepends=(
   'java-environment: Java programming interface support'
   'mono: .NET programming interface support'
   'matlab: MATLAB programming interface support, versions 2008b onwards'
-  'python2>=2.7: Legacy python support'
 )
 source=(
     "https://packages.gurobi.com/${pkgver:0:3}/gurobi${pkgver}_linux64.tar.gz"
