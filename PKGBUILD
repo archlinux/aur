@@ -1,4 +1,5 @@
 # Maintainer: Maarten de Boer <maarten@cloudstek.nl>
+# Contributor: Shining Xu <skyfiretime@gmail.com>
 
 pkgname=timecamp-bin
 pkgver=1.7.1.6
