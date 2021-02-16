@@ -4,13 +4,15 @@
 
 pkgname=libydpdict
 pkgver=1.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Interface for Polish-English Collins Dictionary (library)"
-url="http://toxygen.net/ydpdict"
+url='https://github.com/wojtekka/libydpdict'
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
 groups=(office)
-source=(http://toxygen.net/ydpdict/$pkgname-$pkgver.tar.gz)
+depends=(glibc)
+# source=(http://toxygen.net/ydpdict/$pkgname-$pkgver.tar.gz)
+source=($url/releases/download/$pkgver/libydpdict-$pkgver.tar.gz)
 sha256sums=('37dcbc12def981a20728bdcb6a5ff1eef8931f29a0f16852f0b2201ff8563528')
 
 build() {
