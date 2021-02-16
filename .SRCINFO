@@ -1,13 +1,13 @@
 pkgbase = icingaweb2-module-reactbundle
 	pkgdesc = ReactPHP-based 3rd party libraries for Icinga Web 2
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = http://www.icinga.org
 	arch = any
 	license = GPL
 	depends = icingaweb2
-	source = https://github.com/Icinga/icingaweb2-module-reactbundle/archive/v0.8.0.tar.gz
-	sha256sums = d9519638e99c64ddc7d832846698b78db78fabbf31681e670a9dabb9c983d14f
+	source = https://github.com/Icinga/icingaweb2-module-reactbundle/archive/v0.9.0.tar.gz
+	sha256sums = e0581948a3786d36890188b01df1c891201f51c068140668761af247a1ba71f2
 
 pkgname = icingaweb2-module-reactbundle
 
