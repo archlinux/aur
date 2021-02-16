@@ -5,9 +5,8 @@ pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/stenzek/duckstation"
 license=('GPL3')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'extra-cmake-modules' 'qt5-tools')
 depends=('sdl2' 'qt5-base')
-makedepends=('extra-cmake-modules' 'qt5-tools')
 optdepends=(
 )
 provides=('duckstation')
