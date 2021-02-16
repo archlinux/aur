@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-zen-anbox
-pkgver=5.10.12.zen1
+pkgver=5.11.zen1
 pkgrel=1
 pkgdesc='Linux ZEN'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -16,20 +16,22 @@ makedepends=(
 options=('!strip')
 _srcname=zen-kernel
 source=(
-  "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
-  config         # the main kernel config file
   dev-binderfs.mount
   linux-zen-anbox.install
+  "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
+  config         # the main kernel config file
+  sphinx-workaround.patch  # Sphinx 3.5 broke the build again
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('SKIP'
-            'bc3ab7f93159b27435d22cca806c21b286f70d93331cf778bc14d3fd77148599'
-            'a64e5a390b458fdaa373c7125a6732acd9b24b9e6596b8fcd865bf8656a059b5'
-            '6a759fdca5cd5275334b05a62d699006a05d631e67a9902d9cb78a471b5ec246')
+sha256sums=('a64e5a390b458fdaa373c7125a6732acd9b24b9e6596b8fcd865bf8656a059b5'
+            '6a759fdca5cd5275334b05a62d699006a05d631e67a9902d9cb78a471b5ec246'
+            'SKIP'
+            'd9516f354201afdfd821bb0cfbe1136fadb47d92fd822d67ec0a971e87cada14'
+            '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
 
 install=$pkgbase.install
 export KBUILD_BUILD_HOST=archlinux
