@@ -9,8 +9,8 @@
 # Contributor: Jason Chu <jason@archlinux.org>
 
 pkgname=python37
-pkgver=3.7.9
-pkgrel=5
+pkgver=3.7.10
+pkgrel=1
 _pybasever=${pkgver%.*}
 _pymajver=3
 pkgdesc="Major release 3.7 of the Python high-level programming language"
@@ -18,7 +18,7 @@ arch=('x86_64')
 license=('custom')
 url="https://www.python.org/"
 depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib' 'libnsl' 'libxcrypt')
-makedepends=('tk' 'sqlite' 'valgrind' 'bluez-libs' 'mpdecimal' 'gdb')
+makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal')
 optdepends=('sqlite'
             'mpdecimal: for decimal'
             'xz: for lzma'
@@ -28,7 +28,7 @@ source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz
         0002-smaller-pgo-test-suite.patch
         0003-enable-building-with-libmpdec.patch
         )
-sha512sums=('e4217b25529b5336e43b63d17f3758a8177a58184564cf02bd92a312f58dba9e096485c9e3cb3544f966e847ea15b3ab30ed065d28a6ca52a6d7e0faddf7d9f9'
+sha512sums=('5cb61739acbd29f526d25073443398b2ca0eef30d01d134e8236c8bbc7ab0586c44ec00689f5a75e6aedc0170acf4551721ada5e967e4b99a146cfcaad949128'
             'SKIP'
             '2ef96708d5b13ae2a3d2cc62c87b4780e60ecfce914e190564492def3a11d5e56977659f41c7f9d12266e58050c766bce4e2b5d50b708eb792794fa8357920c4'
             '10db463924402b6f1d9631424397495e8be0419bc7f9ca6cd7325216433b2dfe512b6f6669626ff05a8e05a6013613660abee59fcb86e5483558b014687bfaa1'
