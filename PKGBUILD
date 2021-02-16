@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libwebp2-git
-pkgver=r6.g470e0b6
+pkgver=r41.gdf83b2b
 pkgrel=1
 pkgdesc="Successor of the WebP image format"
 arch=('i686' 'x86_64')
@@ -46,4 +46,5 @@ package() {
   cd "libwebp2"
 
   make -C "_build" DESTDIR="$pkgdir" install
+  install -Dm644 "_build/libimageio.so" -t "$pkgdir/usr/lib"
 }

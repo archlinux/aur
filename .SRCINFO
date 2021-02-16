@@ -1,6 +1,6 @@
 pkgbase = libwebp2-git
 	pkgdesc = Successor of the WebP image format
-	pkgver = r6.g470e0b6
+	pkgver = r41.gdf83b2b
 	pkgrel = 1
 	url = https://chromium.googlesource.com/codecs/libwebp2/
 	arch = i686
