@@ -1,4 +1,5 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
+# Maintainer: Julius Michaelis <gitter@liftm.de.de>
 
 pkgname=wasmer
 pkgver=1.0.2
