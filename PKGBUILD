@@ -50,7 +50,7 @@ fi
 ##                           y to enable (stock Archlinux)
 ## 这里我不知道为什么作者默认选择 disable，因为这个功能不选择不少私有软件的无法启动的，比方说 Skype 和统信的微信，推荐大家默认启用
 if [ -z ${use_ns+x} ]; then
-  use_ns=y
+  use_ns=n
 fi
 
 # Compile ONLY used modules to VASTLYreduce the number of modules built
@@ -90,7 +90,6 @@ _srcname="linux-${pkgver}-xanmod${xanmod}"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
         "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz"
         choose-gcc-optimization.sh
-        '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch'
         '0002-UKSM.patch')
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -107,7 +106,6 @@ sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
             'b8bc4f6312bdc086c0fecd1cce1ab1ee12b7b4eff63f88239a65461d9ec5e91b'
             '9d49118bb60c0277ebac5aadd4938eb41561dd3d97c9422832e62d0ffc5c59df'
             'e840e41f0f91108f63fd6e085c93b02daa78729268bc31be7be7fb355203e38a'
-            '01a9b6c45e250e77396d1259c092313bb37b646c112a6cc4e092b6b736918308'
             '6ae9b0f994c8cea6ddbaaa570a2570d8489643b33b61c68090670c241a0cd3cc')
 
 # If use_cachy=y then download cachy patch
