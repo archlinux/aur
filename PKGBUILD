@@ -2,9 +2,9 @@
 # Contributor: Edison Ibañez <edison@opmbx.org>
 
 pkgname=sqlectron-gui
-_electron=electron6
-pkgver=1.33.0
-pkgrel=2
+_electron=electron9
+pkgver=1.34.0
+pkgrel=1
 pkgdesc="A simple and lightweight SQL client with cross database and platform support"
 arch=('x86_64')
 url="https://sqlectron.github.io/"
