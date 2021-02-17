@@ -9,7 +9,7 @@ pkgdesc="Tryton module to link stock and invoice"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('bb7c62fd4860933885515dbc208f34137c9968b9bdbcdf5a204ca1c1d88ca60a')
