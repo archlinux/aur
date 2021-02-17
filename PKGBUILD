@@ -9,7 +9,7 @@ pkgdesc="Tryton module to link addresses to Google Maps"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('9cfd3f6997b4cd427fa31caf2ec5c15f4aacbf1a6dc839ffbd857597ec547105')
