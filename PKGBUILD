@@ -35,13 +35,8 @@ sha256sums=(
 validpgpkeys=('B4B1F62DBAC084E333F3A04A8962AB9DE6666BBD')
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}/${pkgname}"
-	tar czf ../package.tar.gz .
-	npm install --offline -g --user root --prefix "${pkgdir}"/usr --production ../package.tar.gz
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	# Non-deterministic race in npm gives 777 permissions to random directories.
-	# See https://github.com/npm/cli/issues/1103 for details.
-	find "${pkgdir}/usr" -type d -exec chmod 755 {} +
-
-	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	node build
+	node install --user root --group root --license
 }
