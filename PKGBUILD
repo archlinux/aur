@@ -9,7 +9,7 @@ pkgdesc="Tryton module for SEPA payment"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('25d7147bb329d0d1dd4ed46a260801fcaa9292fce4033b5c4bda664609332493')
