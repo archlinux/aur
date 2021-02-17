@@ -9,7 +9,7 @@ pkgdesc="Tryton module for stock supply of production"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('3438f918bb27a0c7e7f2c7995d3d49a71625bd33fd555291238c6fe7bb22251c')
