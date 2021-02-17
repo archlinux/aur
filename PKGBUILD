@@ -3,16 +3,16 @@
 
 pkgname=gbdk-2020
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An updated version of Game Boy Development Kit"
 url="https://github.com/Zal0/gbdk-2020"
 license=('MIT')
 arch=('x86_64' 'i686')
-makedepends=('sdcc>=4.0.7.svn12016M' 'git')
+makedepends=('git' 'sdcc>=4.0.7.svn12016M')
 depends=('sdcc>=4.0.7.svn12016M')
 conflicts=('gbdk' 'lcc')
-# this is branch 4.0.2-patched
-source=("git+https://github.com/basxto/gbdk-2020#commit=c2edd502370ea39893f02e9fa58a772f0488071f")
+# those are merged patches for 4.0.2 (not exactly release 4.0.2)
+source=("git+https://github.com/Zal0/gbdk-2020#commit=c2edd502370ea39893f02e9fa58a772f0488071f")
 # should be merged in the next version
 #source=("https://github.com/Zal0/gbdk-2020/archive/${pkgver}.tar.gz")
 sha256sums=('SKIP')
