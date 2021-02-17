@@ -9,7 +9,7 @@ pkgdesc="Tryton module with timesheets"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('71b6a56aefb8a4578a470d6cd9a6b2ff9561af5eceffc688abea5114adafd3a9')
