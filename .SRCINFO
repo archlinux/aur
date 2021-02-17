@@ -1,0 +1,11 @@
+pkgbase = dotnet-cli-telemetry-optout-git
+	pkgdesc = systemd drop-in configuration to opt out .NET CLI telemetry
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	source = 60-dotnet-cli-telemetry-optout.conf
+	b2sums = SKIP
+
+pkgname = dotnet-cli-telemetry-optout-git
+
