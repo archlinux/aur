@@ -3,5 +3,5 @@
 *.xz
 pkg/
 src/
-artifact.zip
+artifact*.zip
 config.sample.json

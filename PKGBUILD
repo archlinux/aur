@@ -3,7 +3,7 @@
 _pkgname=fluffychat
 pkgname=fluffychat-web-bin
 _gitname=${_pkgname}
-pkgver=0.26.1
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('any')
@@ -14,10 +14,10 @@ optdepends=()
 provides=("fluffychat-web")
 conflicts=("fluffychat-web")
 source=(
-  "artifact.zip::https://gitlab.com/famedly/fluffychat/-/jobs/artifacts/v${pkgver}/download?job=build_web"
+  "artifact-${pkgver}.zip::https://gitlab.com/famedly/fluffychat/-/jobs/artifacts/v${pkgver}/download?job=build_web"
   "config.sample.json::https://gitlab.com/famedly/fluffychat/-/raw/v${pkgver}/config.sample.json"
 )
-sha256sums=('0b2accd20c4b6c52a48f9782c3ec6044d5a17f0f0d14afb152d77e1b26740397'
+sha256sums=('a63c84f526daeefbdce8b24be4b7fcb4cdeba377f6e1e2e388b91ee4c64ce9d9'
             '8540064556b3a952c898023e48afb29e3c560964d66e51bbc422a0061318bd5e')
 backup=(
     "etc/webapps/${_pkgname}/config.json"
