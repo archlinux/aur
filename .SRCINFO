@@ -1,0 +1,16 @@
+pkgbase = aurora-git
+	pkgdesc = Yet another wrapper for pacman to access the AUR written in Rust.
+	pkgver = r2.1711939
+	pkgrel = 1
+	url = https://gitlab.com/hunterbrodie/aurora
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cargo
+	depends = opendoas
+	depends = git
+	source = aurora-git::git+https://gitlab.com/hunterbrodie/aurora.git
+	md5sums = SKIP
+
+pkgname = aurora-git
+
