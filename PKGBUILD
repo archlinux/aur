@@ -1,6 +1,6 @@
 # Maintainer: tooraj taraz <tooraj.info@gmail.com>
 pkgname=skywalker
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 depends=(libpcap)
 makedepends=(rust cargo)
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/toorajtaraz/skywalker"
 license=('GPL-3.0')
 source=($pkgname-$pkgver.tar.gz::https://github.com/toorajtaraz/$pkgname/archive/v$pkgver.tar.gz)
-md5sums=('358918905fae26a6c4fc7c22f4138dd1')
+md5sums=('SKIP')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
