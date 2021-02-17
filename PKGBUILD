@@ -9,7 +9,7 @@ pkgdesc="Tryton module for electronic document UNECE codes"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('84170cdad3f52ee2b8d67146777cd697c0e66be15b06232830310d6f5c026644')
