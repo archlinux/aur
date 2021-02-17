@@ -9,7 +9,7 @@ pkgdesc="Tryton module for assets management"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('7ce7450555cdbdcd5e4b75469c304f5d635a8f0879ad93a86f61ea2c32e52571')
