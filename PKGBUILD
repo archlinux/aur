@@ -9,7 +9,7 @@ pkgdesc="Tryton module to define tolerance for sale shipment"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('8d8cb752d1b5b89cd8d71ff362aa83287c5f09b49843b49618e91a3d4cf025bf')
