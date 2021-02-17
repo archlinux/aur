@@ -9,7 +9,7 @@ pkgdesc="Tryton module to split stock move"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('02ed02c14ab1e7673d3cef6d3a9d09c826b71b330aa7f44897f69ff283f40b04')
