@@ -9,7 +9,7 @@ pkgdesc="Tryton module to manage Web users"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('9ea6e1a7c7c592632895c00bd8c38b62bd9fb876faef6bf604eef631da5bc0da')
