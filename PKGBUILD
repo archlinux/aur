@@ -36,8 +36,8 @@ validpgpkeys=('B4B1F62DBAC084E333F3A04A8962AB9DE6666BBD')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}/${pkgname}"
-
-	npm install --offline -g --user root --prefix "${pkgdir}"/usr --production
+	tar czf ../package.gz .
+	npm install --offline -g --user root --prefix "${pkgdir}"/usr --production ../package.gz
 
 	# Non-deterministic race in npm gives 777 permissions to random directories.
 	# See https://github.com/npm/cli/issues/1103 for details.
