@@ -9,7 +9,7 @@ pkgdesc="The package shipping module of the Tryton application platform."
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('fa47e79e5a690cdba0aee863d3cf79754e5d70f9d6209e20d27f0bb262251788')
