@@ -1,7 +1,7 @@
 # Maintainer: Christian Schendel (doppelhelix@gmail.com)
 
 pkgname=gnome-shell-extension-nightthemeswitcher-git
-pkgver=37.r35.gac37bf2
+pkgver=37.r37.g34af6fe
 pkgrel=1
 pkgdesc="Automatically toggle your light and dark themes variants"
 arch=('any')
@@ -27,13 +27,17 @@ build() {
 }
 
 package() {
-  _uuid="nightthemeswitcher@romainvigier.fr"
+  cd "${srcdir}/${pkgname%-git}/src"
+  local uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
+  local schema=$(grep -Po '(?<="settings-schema": ")[^"]*' metadata.json).gschema.xml
+  local destdir="${pkgdir}/usr/share/gnome-shell/extensions/${uuid}"
   cd "${srcdir}/${pkgname%-git}/build"
-  install -d "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
-  bsdtar -xf "${srcdir}/${pkgname%-git}/build/${_uuid}.shell-extension.zip" -C "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
-  #rebuild compiled schemas if missing
-  if [[ ! -f "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/schemas/gschemas.compiled" ]]; then
-    glib-compile-schemas ${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/schemas
-  fi
+  bsdtar -xf "${srcdir}/${pkgname%-git}/build/${uuid}.shell-extension.zip" \
+    -C "${srcdir}/${pkgname%-git}/build"
+  rm "${srcdir}/${pkgname%-git}/build/${uuid}.shell-extension.zip"
+  install -dm755 "${destdir}"
+  cp -r * "${destdir}"
+  install -Dm644 "schemas/${schema}" \
+    "${pkgdir}/usr/share/glib-2.0/schemas/${schema}"
 }
 
