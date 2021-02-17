@@ -52,8 +52,10 @@ cat << EOF
    39) Intel 8th Gen Core i3/i5/i7-family (Cannon Lake)
    40) Intel 8th Gen Core i7/i9-family (Ice Lake)
    41) Xeon processors in the Cascade Lake family
+   42) Intel Xeon (Cooper Lake)
+   43) Intel 3rd Gen 10nm++ i3/i5/i7/i9-family (Tiger Lake)
 
-   42) Native optimizations autodetected by GCC
+   99) Native optimizations autodetected by GCC
 
     0) Generic (default)
     
@@ -104,7 +106,9 @@ case $answer in
    39) Microarchitecture=CONFIG_MCANNONLAKE ;;
    40) Microarchitecture=CONFIG_MICELAKE ;;
    41) Microarchitecture=CONFIG_MCASCADELAKE ;;
-   42) Microarchitecture=CONFIG_MNATIVE ;;
+   42) Microarchitecture=CONFIG_MCOOPERLAKE ;;
+   43) Microarchitecture=CONFIG_MTIGERLAKE ;;
+   99) Microarchitecture=CONFIG_MNATIVE ;;
     *) default=CONFIG_GENERIC_CPU ;;
 esac
 
@@ -116,3 +120,4 @@ sed -e 's|^CONFIG_GENERIC_CPU=y|# CONFIG_GENERIC_CPU is not set|g' -i .config
 sed -e "s|^# $Microarchitecture is not set|$Microarchitecture=y|g" -i .config
 
 echo
+
