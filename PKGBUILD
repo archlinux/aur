@@ -1,7 +1,7 @@
 # Maintainer: cookie-monstar <rnr1410@gmail.com>
 
 pkgname=blockbench-git
-pkgver=3.7.2
+pkgver=3.7.5
 pkgrel=1
 pkgdesc="A boxy 3D model editor, uses system electron and is built from git"
 arch=('any')
@@ -11,7 +11,7 @@ provides=(blockbench)
 conflicts=(blockbench)
 
 _pkgname=blockbench
-_electron=electron9
+_electron=electron
 _electronDist=/usr/lib/$_electron
 _electronVersion=$(cat $_electronDist/version)
 
@@ -42,7 +42,7 @@ build() {
 package() {
   install -d "$pkgdir"/usr/{bin,share/{pixmaps,applications}}
   install -d "$pkgdir"/$_electronDist/resources
-  echo -e "#!/bin/bash\nexec electron9 $_electronDist/resources/$_pkgname.asar \"\$@\"" > "$pkgdir"/usr/bin/$_pkgname
+  echo -e "#!/bin/bash\nexec $_electron $_electronDist/resources/$_pkgname.asar \"\$@\"" > "$pkgdir"/usr/bin/$_pkgname
   chmod 755 "$pkgdir"/usr/bin/$_pkgname
   install "$srcdir"/$_pkgname/icon.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
   install "$srcdir"/$_pkgname.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
