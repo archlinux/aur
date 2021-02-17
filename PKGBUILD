@@ -9,7 +9,7 @@ pkgdesc="UPS connector for the Tryton application plateform"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('c7c0006bcae97cac1b6d014b1e2047799b44103bea28a9586536a84044439c53')
