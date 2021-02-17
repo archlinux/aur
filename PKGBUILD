@@ -2,7 +2,7 @@
 # Maintainer: Winston Astrachan <winston dot astrachan at gmail dot com>
 
 pkgname=pcloud-drive
-pkgver=1.8.9
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='pCloud drive. Electron edition.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!strip)
 replaces=('pcloud-git' 'pcloud')
 _shortname='pcloud'
 _appimage="${pkgname}-${pkgver}-${pkgrel}.AppImage"
-_api_code='XZjfKzXZ6h3uGRFId48VRNHHkuqajhRvMlPV'
+_api_code='XZ03fSXZJg0xkS3ECFJwYFYsj0ihwpKeF9k7'
 _api_response="$(curl -s "https://api.pcloud.com/getpublinkdownload?code=${_api_code}")"
 _dlhost="$(echo ${_api_response} | grep -E -o '[a-zA-Z0-9\-]+\.pcloud\.com' | head -n 2 | sort -R | head -n 1)"
 _dlpath="$(echo ${_api_response} | grep -E -o "\"path\":\s{0,1}\".+\"" | cut -d '"' -f 4 | tr -d '\\')"
@@ -21,7 +21,7 @@ source=('LICENSE'
         "${_appimage}::https://${_dlhost}${_dlpath}"
 )
 sha256sums=('d512ec90082d82ef0e1fe5d7b14d63ae835f955d3119436d5c08761ff4e3366a'
-            '614e50a07f0fc421f36f9556110026d0f317f512c2a4b7a9492e9fc74f9fd8f6'
+            'aac5e91a69f38aee32eacf48d03a74364f672f8d50718b092474950caea67c59'
 )
 
 prepare() {
