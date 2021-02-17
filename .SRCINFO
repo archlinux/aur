@@ -1,0 +1,30 @@
+pkgbase = sxemacs
+	pkgdesc = A derivation of xemacs - stable version
+	pkgver = 22.1.17
+	pkgrel = 2
+	url = http://www.sxemacs.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = texinfo
+	makedepends = xbitmaps
+	depends = libao
+	depends = gpm
+	depends = libtiff
+	depends = jack
+	depends = libmad
+	depends = desktop-file-utils
+	depends = compface
+	depends = libpulse
+	depends = libxaw
+	depends = sox
+	depends = openssl
+	depends = ffmpeg
+	depends = xaw3d
+	depends = postgresql-libs
+	conflicts = xemacs
+	source = https://downloads.sxemacs.org/releases/sxemacs-22.1.17.tar.lzma
+	md5sums = b948990a661915c9b49195a32c18e7b6
+
+pkgname = sxemacs
+
