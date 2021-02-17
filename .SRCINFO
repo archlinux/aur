@@ -1,6 +1,6 @@
 pkgbase = mn32-rs-git
 	pkgdesc = Configuration tool for Mionix Naos 3200 (rust port)
-	pkgver = r2.4f98675
+	pkgver = r4.7b01251
 	pkgrel = 1
 	url = https://codeberg.org/antsa/mn32-rs
 	arch = x86_64
