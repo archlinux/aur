@@ -1,0 +1,16 @@
+pkgbase = dirtree
+	pkgdesc = display list of file paths as an interactive tree
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/emad-elsaid/dirtree
+	arch = any
+	license = RUBY
+	depends = ruby
+	provides = ruby-dirtree
+	noextract = dirtree-1.0.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/dirtree-1.0.0.gem
+	sha256sums = 3104451df43dbabe969c7de86abfdc333001b79186ec72a4678fdde5b732d875
+
+pkgname = dirtree
+
