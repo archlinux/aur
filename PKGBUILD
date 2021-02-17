@@ -11,14 +11,14 @@ source=('https://github.com/Genues/opensmtpd-filter-replace-from_reply/archive/m
 sha512sums=('SKIP')
 
 build() {
-cd "$_pkgname-$pkgver"
-go build -buildmode pie -ldflags "-extldflags $LDFLAGS" -trimpath "$_pkgname.go"
+cd "$pkgname"-main
+go build -buildmode pie -ldflags "-extldflags $LDFLAGS" -trimpath "$pkgname.go"
 }
 
 package() {
-cd "$_pkgname-$pkgver"
+cd "$pkgname"-main
 
-install -D filter-senderscore -t "$pkgdir"/usr/lib/smtpd/opensmtpd
+install -D "$pkgname" -t "$pkgdir"/usr/lib/smtpd/opensmtpd
 install -Dm644 README.md -t "$pkgdir"/usr/share/doc/$pkgname
 install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
