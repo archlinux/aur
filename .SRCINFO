@@ -1,6 +1,6 @@
 pkgbase = waterfox-classic-bin
 	pkgdesc = Customizable privacy-conscious web browser with primary support for legacy extensions
-	pkgver = 2021.01.1
+	pkgver = 2021.02
 	pkgrel = 1
 	url = https://www.waterfox.net
 	arch = x86_64
@@ -20,14 +20,14 @@ pkgbase = waterfox-classic-bin
 	optdepends = alsa-lib: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = waterfox-classic=2021.01.1
+	provides = waterfox-classic=2021.02
 	conflicts = waterfox-classic
 	conflicts = waterfox-classic-git
 	replaces = waterfox-bin
 	source = waterfox-classic.desktop
-	source = https://cdn.waterfox.net/releases/linux64/installer/waterfox-classic-2021.01.1.en-US.linux-x86_64.tar.bz2
+	source = https://cdn.waterfox.net/releases/linux64/installer/waterfox-classic-2021.02.en-US.linux-x86_64.tar.bz2
 	sha256sums = a8f45e828644088ef2e4369aea2d840afc48e6c363524b3fba83a9ae76298510
-	sha256sums = d0dfd51372bdbeecb7d0021f94e32b4eb6521bbb73b52ad2980630563bfe14dc
+	sha256sums = 762a18ae76150aa41b9f5fdf091428950d18281f04d5a13d977faa19e69ef91e
 
 pkgname = waterfox-classic-bin
 
