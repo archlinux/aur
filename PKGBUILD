@@ -1,6 +1,6 @@
 # Maintainer: 苏业钦 <hougelangley1987@gmail.com>
 
-# https://gitlab.manjaro.org/packages/core/linux510
+# https://gitlab.manjaro.org/packages/core/linux511
 #
 # Maintainer: Philip Müller
 # Maintainer: Bernhard Landauer
@@ -161,14 +161,14 @@ prepare() {
   done
   
   # Manjaro patches
-  rm ../linux510-$__commit/0103-futex.patch  # remove conflicting one
+  rm ../linux511-$__commit/0103-futex.patch  # remove conflicting one
   local _patch
-  for _patch in ../linux510-$__commit/*; do
+  for _patch in ../linux511-$__commit/*; do
       [[ $_patch = *.patch ]] || continue
       msg2 "Applying patch: $_patch..."
-      patch -Np1 < "../linux510-$__commit/$_patch"
+      patch -Np1 < "../linux511-$__commit/$_patch"
   done 
-  git apply -p1 < "../linux510-$__commit/0513-bootsplash.gitpatch"
+  git apply -p1 < "../linux511-$__commit/0513-bootsplash.gitpatch"
   scripts/config --enable CONFIG_BOOTSPLASH
   
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
