@@ -1,7 +1,7 @@
 # Maintainer: Hiroshi Hatake <cosmo0920.wp[at]gmail.com>
 
 pkgname=('groonga' 'groonga-doc')
-pkgver=10.1.0
+pkgver=10.1.1
 pkgbase=groonga
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -58,7 +58,7 @@ package_groonga() {
 
     install -Dm644 ../groonga-httpd.service "$pkgdir"/usr/lib/systemd/system/groonga-httpd.service
 }
-sha1sums=('2731b60b3cb5d625a6bd0c3bdef00ae3bf3d7c38'
+sha1sums=('dbe514f83b38c18d6d2635d1d38f1c513b81d19c'
           '56b68b5ebfc6785f08ce101b263d6f56acd74d8a')
-sha256sums=('fbf29a8de1cb0f463030118ca146846b8f5fbaa5a090cc2b45eef372d4e4aabf'
+sha256sums=('f4d2b263ea2588620941a3477473acfb51807dd674b32fa66d016b44d5e98cb3'
             '4d3f91b40b37ab473b716c6c303c1e58ca7b3f777439fc4c055be80d04ffa65b')
