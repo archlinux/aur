@@ -40,7 +40,7 @@ prepare() {
   cd gnuzilla-${_commit}
 
   # Uncomment if you have issues with gpg download... WITH PROXY gpg doesn't work!!!!!!
-  #sed -e 's/^gpg2 --keyserver.*//g' -i makeicecat
+  #sed -e 's/^verify_sources$//g' -i makeicecat
 
   mkdir output || rm -rf output/*  # Clean output just in case is already an old build there
   if [ -f "${startdir}/firefox-${pkgver}esr.source.tar.xz" ] && [ -f "${startdir}/firefox-${pkgver}esr.source.tar.xz.asc" ]; then cp -f "${startdir}"/firefox-${pkgver}esr.source.tar.xz{,.asc} output/ ; fi
