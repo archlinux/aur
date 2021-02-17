@@ -1,17 +1,17 @@
-# Maintainer: disarmer <disarmer.mk@gmail.com>
+# Maintainer: Slenderchat <slenderchat@sl-chat.ru>
 pkgname='https-dns-proxy-git'
-pkgver=1
-pkgrel=1
+pkgver=r192.3402e45
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/aarond10/https_dns_proxy'
 license=('MIT')
 makedepends=('cmake' 'c-ares' 'libev')
+depends=('keyutils' 'krb5' 'libunistring' 'zlib' 'zstd' 'e2fsprogs' 'openssl' 'libpsl' 'libssh2' 'libidn2' 'libnghttp2' 'curl' 'c-ares' 'libev')
 source=('git://github.com/aarond10/https_dns_proxy.git' https_dns_proxy.service)
-md5sums=('SKIP' 'SKIP')
-
+sha512sums=('SKIP' '45f3806bd2c80d4c3f0200d63d1f748ea175a58450da1c04ded66b5d6ed723ea53bd661a083890700242163a46d20bf6f9ddb35081d5b45297a710659521a1e3')
 pkgver() {
 	cd "${srcdir}/https_dns_proxy"
-	printf '0.r%s.g%s' "$(git rev-list --count master)" "$(git log -1 --format='%h')"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
