@@ -9,7 +9,7 @@ pkgdesc="Tryton module with Belgian chart of accounts"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('6104ad93edd337168961df294ccf79ea14ba7e6bb3fd11ebc1d9bb32276c7520')
