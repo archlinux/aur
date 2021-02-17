@@ -9,7 +9,7 @@ pkgdesc="Tryton module to historize purchases"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('a9f9d48bba75ea0f755549802201dab4610a39f8159d76db145bc709fd46161f')
