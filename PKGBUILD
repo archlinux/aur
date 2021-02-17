@@ -9,7 +9,7 @@ pkgdesc="Tryton module with French chart of accounts"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('e8e2d550c2ccccc8d0c8e67039b3be60ef2156e63ad2038bcdbadf74ab947d7d')
