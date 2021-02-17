@@ -9,7 +9,7 @@ pkgdesc="Tryton module to historize invoices"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('94907f8ba0f3a422b0c4ae1153452059a6798581eae92a6c6a46959b97091da6')
