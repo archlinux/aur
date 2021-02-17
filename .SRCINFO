@@ -1,0 +1,25 @@
+pkgbase = hsd
+	pkgdesc = Handshake Daemon & Full Node
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://handshake.org
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = node-gyp
+	depends = nodejs
+	provides = hsd
+	provides = hsd-node
+	provides = hsd-spvnode
+	provides = hs-seeder
+	provides = hs-wallet
+	provides = hsd-cli
+	provides = hsw-cli
+	source = https://handshake.org/files/hsd-2.3.0.tar.gz
+	source = https://handshake.org/files/hsd-2.3.0.tar.gz.asc
+	validpgpkeys = B4B1F62DBAC084E333F3A04A8962AB9DE6666BBD
+	sha256sums = 7b1115251aaec64edc49d0d7a0a50640b4ffb664027f3ec148be62c0eeaf7fc6
+	sha256sums = SKIP
+
+pkgname = hsd
+
