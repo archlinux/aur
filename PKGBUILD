@@ -5,7 +5,7 @@
 _pkgbase='engauge-digitizer'
 pkgname=('engauge-git' 'engauge-samples-git')
 pkgbase=engauge-git
-pkgver=12.2.1.r69.g53b8077b
+pkgver=12.2.1.r116.ga7cb90f4
 pkgrel=1
 url="http://markummitchell.github.io/engauge-digitizer/"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
   cd $_pkgbase
-  export OPENJPEG_INCLUDE=/usr/include/openjpeg-2.3 OPENJPEG_LIB=/usr/lib 
+  export OPENJPEG_INCLUDE=/usr/include/openjpeg-2.4 OPENJPEG_LIB=/usr/lib 
   export POPPLER_INCLUDE=/usr/include/poppler/qt5 POPPLER_LIB=/usr/lib
   qmake-qt5 engauge.pro "CONFIG+=pdf"
   make -j2
