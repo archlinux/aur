@@ -1,7 +1,7 @@
 pkgbase = heroic-games-launcher-bin
 	pkgdesc = HGL, a Native alternative Linux Launcher for Epic Games
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flavioislima/HeroicGamesLauncher
 	arch = x86_64
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = heroic-games-launcher-bin
 	noextract = heroic-1.5.0.pacman
 	options = !strip
 	source = https://github.com/flavioislima/HeroicGamesLauncher/releases/download/v1.5.0/heroic-1.5.0.pacman
-	md5sums = 5a3d490b4444f883837c816aea2b0009
+	md5sums = 70921ac14301372ad18b11b3b0fb4ece
 
 pkgname = heroic-games-launcher-bin
 
