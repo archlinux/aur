@@ -9,7 +9,7 @@ pkgdesc="Tryton module to manage role on user"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('c23cf2c691a6b4015d52050b688af7bb4da5ad42699d4d3dd6485fda8209a32b')
