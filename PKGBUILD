@@ -9,7 +9,7 @@ pkgdesc="Tryton module for dashboard"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('12a8d17b6a4f8505485f8e8d525a36c95ac10aa54c3e86fdf2c66f8c59258b29')
