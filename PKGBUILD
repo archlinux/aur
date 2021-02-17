@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/Qv2ray/mmp-go"
 license=('AGPL3')
 depends=('git' 'glibc')
-makedepends=('go')
+makedepends=('go>=2:1.16-1')
 provides=('mmp-go')
 conflicts=('mmp-go')
 source=("$pkgname::git+$url")
