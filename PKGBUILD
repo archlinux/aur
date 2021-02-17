@@ -9,7 +9,7 @@ pkgdesc="Adds Geographic Information System support to trytond"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('fbbd17ddf0c17c0231007fda007f73677f0db21b17dd77930ae0ddfd6250b499')
