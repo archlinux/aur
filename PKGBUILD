@@ -9,7 +9,7 @@ pkgdesc="Tryton module for account dunning"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('29b92eb3cf77ad96f4a91166807d3e5d47a6a6549a1a11ad9549599c159b54aa')
