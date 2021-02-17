@@ -1,7 +1,7 @@
 # Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=polly
-pkgver=11.0.0
+pkgver=11.1.0
 pkgrel=1
 pkgdesc="High-level loop and data-locality optimizer and optimization infrastructure for LLVM"
 arch=('x86_64')
@@ -13,9 +13,9 @@ _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkg
 source=($_source_base/$pkgname-$pkgver.src.tar.xz{,.sig}
         $_source_base/llvm-$pkgver.src.tar.xz{,.sig}
         support-linking-ScopPassManager-against-LLVM-dylib.patch)
-sha256sums=('dcfadb8d11f2ea0743a3f19bab3b43ee1cb855e136bc81c76e2353cd76148440'
+sha256sums=('580fd3b0b9e1247c3e40afa3067ac5bea70e9815750c5bd448fb7428e310390c'
             'SKIP'
-            '913f68c898dfb4a03b397c5e11c6a2f39d0f22ed7665c9cefa87a34423a72469'
+            'ce8508e318a01a63d4e8b3090ab2ded3c598a50258cc49e2625b9120d4c03ea5'
             'SKIP'
             'ce3c528eabef1ef3a4c3ca69a527b98b4f2e924069f24e68ced5462c95263ba6')
 validpgpkeys+=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D') # Hans Wennborg <hans@chromium.org>
