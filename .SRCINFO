@@ -1,6 +1,6 @@
 pkgbase = vim3d-git
 	pkgdesc = vi-style interface to 3D modeling and simulation built in C++ and OpenGL
-	pkgver = 0.0
+	pkgver = r31.08774f3
 	pkgrel = 1
 	url = http://www.vim3d.com/
 	arch = x86_64

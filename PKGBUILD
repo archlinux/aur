@@ -1,6 +1,6 @@
 # Maintainer: fordprefect <fordprefect@dukun.de>
 pkgname=vim3d-git
-pkgver=0.0
+pkgver=r31.08774f3
 pkgrel=1
 pkgdesc="vi-style interface to 3D modeling and simulation built in C++ and OpenGL"
 url="http://www.vim3d.com/"
@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 pkgver() {
       cd "$srcdir/vim3d"
-        git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
  
 build() {
