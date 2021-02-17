@@ -13,6 +13,7 @@ depends=(
 )
 makedepends=(
 	'npm'
+	'node-gyp'
 )
 provides=(
 	'hs-miner'

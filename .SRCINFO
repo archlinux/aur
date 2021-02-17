@@ -6,6 +6,7 @@ pkgbase = hs-miner
 	arch = any
 	license = MIT
 	makedepends = npm
+	makedepends = node-gyp
 	depends = nodejs
 	provides = hs-miner
 	provides = hs-mine
