@@ -9,7 +9,7 @@ pkgdesc="Tryton module for account dunning letter"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('76019f2f1773ecdadc18859676df01ca7fcbbdd734a358ee20936adba1ad0ab0')
