@@ -9,7 +9,7 @@ pkgdesc="Tryton module to add sequence on location"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('95cc7a33f12e4bbd6c58ad529818b6a67a6280fd5e7711db685c7d4cf675b224')
