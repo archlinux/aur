@@ -9,7 +9,7 @@ pkgdesc="Tryton module to create inventories by locations"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('2db7604ffd21ed8b8a206245f7553abfa1730707e80ebf966a33188e49155e5d')
