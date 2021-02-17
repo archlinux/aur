@@ -51,7 +51,7 @@ _major=5.10
 _minor=17
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
@@ -73,6 +73,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/arch-patches-v14-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_lucjanpath}/arch-patches-v14-sep/0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch"
+        "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.5-causes-compilation-erro.patch"
          # the main kernel config files
         'config')
 
@@ -314,6 +315,7 @@ sha512sums=('2d8700ceee0c027597415de2b9fa478a651c6f5074b68d60609a4c46398ac5a854f
             '34e21ecc4ef0d07707283427fa82d561a9573d670e80ccd41f7d9cb595473b3844b8df7aeffcb4fe82d9deeef0a4d4e6aef663eb1a7a397fa181f06f418a0d6d'
             'eb12bca374c8709d7e98730a01b406c18c0438983ac0f65c788fa58de6bb3d1558a673f5bb75a594967b71079fb15a29176ef9db2971f42b40c2696c4870e4a7'
             '6a222febcc5a3249fb961320ea6aceccacb94dc0727741c9363054f95b89f5c5cbdf6d25ca8ef3e5eba014e7e1ec403cfe7ba1a380952c362a72f31341e71ff1'
+            'd498ccd5790d6ccc2b6679e21d77359b3c90858bef063539c68f2f90808c70f6478565cba81f1e4e32c363ea4cfb07ffc5d3be3c69eca983c426f506b5c0fbf9'
             '7dcafae06141c7896923f871c6094370b778c8769a1c0f6e637b7d3108f00c492be0fad55e4932f3769e0b7fa69fc076c0ad67cae4d5fc6a4c56b0ec36208fbb')
 
 validpgpkeys=(
