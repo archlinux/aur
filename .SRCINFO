@@ -1,6 +1,6 @@
 pkgbase = asbru-cm-loki-git
 	pkgdesc = A free and open-source connection manager. loki branch
-	pkgver = 6.2.2.r109.g1f25e64
+	pkgver = 6.2.2.r125.gfebf8c9
 	pkgrel = 1
 	url = https://github.com/asbru-cm/asbru-cm
 	arch = any
@@ -28,6 +28,7 @@ pkgbase = asbru-cm-loki-git
 	depends = libwnck3
 	depends = perl-io-stty
 	depends = perl-io-tty
+	depends = nmap
 	optdepends = uucp: Unix-to-Unix Copy
 	optdepends = rdesktop: RDP connections
 	optdepends = freerdp: RDP connections
@@ -35,6 +36,7 @@ pkgbase = asbru-cm-loki-git
 	optdepends = mosh: Mobile shell
 	optdepends = tigervnc: for VNC connections
 	optdepends = perl-x11-guitest: To fit perfectly RDP tabs
+	optdepends = keepassxc: Better support to automatically fill users and passwords
 	source = git+https://github.com/asbru-cm/asbru-cm.git#branch=loki
 	sha256sums = SKIP
 
