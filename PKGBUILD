@@ -9,7 +9,7 @@ pkgdesc="Party Relationship module for Tryton"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('f202e696553b2f0918ca07ffb599179d1aa5a74981c38ad87c54e3194a483a87')
