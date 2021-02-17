@@ -9,7 +9,7 @@ pkgdesc="Tryton module for commission"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('adef4b413ba08d536f4d1e6ca5a84ca1cf69b6bbd7d5f42f59eb9c6f419b3e91')
