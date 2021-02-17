@@ -1,16 +1,16 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=darkman
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Framework for dark-mode and light-mode transitions on Linux desktop."
 arch=('any')
 url="https://gitlab.com/whynothugo/darkman"
 license=('ISC')
-depends=('python-astral' 'python-dateutil' 'python-pyxdg' 'python-txdbus'
+depends=('python-astral' 'python-dateutil' 'python-pyxdg' 'python-jeepney'
          'geoclue' 'python-pip')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('292825680cfbd6fc9efd1ee6d1114f040022748d94b598c774c0e17c2deccd607262a3933edccc3a1c9d6bcf722ecb9a87f7ca5b2bd64686653ddde25c4ab474')
+sha512sums=('a6e0515b0f919900201961b9062590703d7c5be3defc3b74c9022ee1707cbcb65c9e1009d5d7c429b808ed84ddbf99e9658107ed251973ea8d911f223e891dc9')
 
 build() {
   cd "$pkgname-$pkgver"
