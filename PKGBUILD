@@ -1,7 +1,7 @@
 # Maintainer: ugla <ugla at u8 dot is>
 pkgname=passphrase
 pkgrel=1
-pkgver=1.0.9
+pkgver=1.0.10
 pkgdesc="Small, simple passphrase generator, written in Zig"
 arch=('any')
 url="https://git.sr.ht/~alva/${pkgname}"
