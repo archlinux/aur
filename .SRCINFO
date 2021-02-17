@@ -1,7 +1,7 @@
 pkgbase = avxsynth-plugin-decomb
 	pkgdesc = Plugin for Avxsynth: decomb
 	pkgver = 5.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://mujintou.org.uk/avxsynth
 	arch = i686
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = avxsynth-plugin-decomb
 	makedepends = git
 	makedepends = yasm
 	makedepends = cmake
-	depends = avxsynth
+	depends = avxsynth-git
 	provides = avxsynth-plugin-decomb
 	conflicts = avxsynth-plugin-decomb
-	source = http://mujintou.org.uk/projects/decomb.zip
-	md5sums = 27ce7941dd118d31d483f3a9503872c0
+	source = decomb.zip::https://www.dropbox.com/s/orv7x3qmfa8qwuv/decomb.zip?dl=0
+	sha256sums = 3c8efb8ea8c831c67c9af8ce9ccc7a0c18416ac75b1374181ced0708a68c36ba
 
 pkgname = avxsynth-plugin-decomb
 
