@@ -2,7 +2,7 @@
 
 pkgname=lemon-lime-git
 _pkgname=lemon-lime
-pkgver=0.3.0.118.r389.557ff10
+pkgver=0.3.0.dev118.r391.0023c4e
 pkgrel=1
 epoch=1
 pkgdesc="为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus"
@@ -27,10 +27,12 @@ install=
 changelog=
 source=('Project_LemonLime::git+https://github.com/Project-LemonLime/Project_LemonLime.git'
 		'SingleApplication::git+https://github.com/itay-grudev/SingleApplication.git'
+		'Testlib-for-Lemons::git+https://github.com/GitPinkRabbit/Testlib-for-Lemons.git'
 		)
 noextract=()
-sha512sums=('SKIP'
-            'SKIP'
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
             )
 validpgpkeys=()
 
@@ -38,7 +40,8 @@ pkgver() {
 	cd "$srcdir/Project_LemonLime"
 # Git, tags available
 	#printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//g')"
-    printf "%s.%s.r%s.%s" $(cat ./makespec/VERSION) $(cat ./makespec/BUILDVERSION) $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+	__versuffix=$(cat ./makespec/VERSIONSUFFIX)
+    printf "%s.%s%s.r%s.%s" $(cat ./makespec/VERSION) ${__versuffix##-} $(cat ./makespec/BUILDVERSION) $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 
 }
 
@@ -49,6 +52,8 @@ prepare() {
     for module in ${submodules[@]}; do
         git config submodule."3rdparty/$module".url "${srcdir}/$module"
     done
+
+	git config submodule."assets/Testlib-for-Lemons".url "${srcdir}/Testlib-for-Lemons"
 
     git submodule update
 }
