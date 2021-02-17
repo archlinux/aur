@@ -2,13 +2,14 @@
 
 pkgname=typescript-language-server-git
 pkgver=0.5.1.r0.g3a8ea0f
-pkgrel=2
+pkgrel=3
 pkgdesc='Language Server Protocol (LSP) implementation for TypeScript using tsserver'
 url=https://github.com/theia-ide/typescript-language-server
 arch=('any')
 license=('Apache')
 depends=('typescript')
-makedepends=('git' 'yarn')
+makedepends=('git' 'jq' 'yarn')
+checkdepends=('npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url.git")
@@ -21,14 +22,8 @@ pkgver() {
 
 build() {
   cd ${pkgname%-git}
-  yarn --ignore-scripts --non-interactive
+  yarn --ignore-scripts --frozen-lockfile
   yarn compile # Needs bin links
-
-  # Shallowly install server workspace dependencies
-  mv package.json{,.bak}
-  cd server
-  yarn --ignore-scripts --production --non-interactive --no-bin-links
-  mv ../package.json{.bak,}
 }
 
 check() {
@@ -37,12 +32,21 @@ check() {
 }
 
 package() {
-  cd ${pkgname%-git}$/server
+  cd ${pkgname%-git}
+
+  # Emulate `npm prune --production` for server workspace deps
+  mv package.json{,.bak}
+  cp server/package.json .
+  yarn remove --frozen-lockfile $(jq -r '.devDependencies | keys | join(" ")' \
+    package.json)
+  mv package.json{.bak,}
+
   install -d "$pkgdir"/usr/{bin,lib/node_modules/$pkgname}
-  cp -r lib node_modules package.json "$pkgdir"/usr/lib/node_modules/$pkgname
-  chmod 755 "$pkgdir"/usr/lib/node_modules/$pkgname/lib/cli.js
-  ln -s /usr/lib/node_modules/$pkgname/lib/cli.js \
-    "$pkgdir"/usr/bin/$pkgname
+  ln -s ../lib/node_modules/$pkgname/lib/cli.js "$pkgdir"/usr/bin/$pkgname
+  chmod +x server/lib/cli.js
+  cp -r server/lib node_modules package.json \
+    "$pkgdir"/usr/lib/node_modules/$pkgname
+  install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname {CHANGELOG,README}.md
 }
 
 # vim:set ts=2 sw=2 et:
