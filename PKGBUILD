@@ -2,7 +2,7 @@
 _pkgname=blazert
 pkgname=blazert-git
 provides=('blazert')
-pkgver=20.2.1
+pkgver=20.2.1.r8.1ace3c1
 pkgrel=1
 pkgdesc='An open-source, high-performance C++ ray tracing kernel library (develop).'
 url='https://github.com/cstatz/blazert'
@@ -12,6 +12,11 @@ makedepends=('cmake' 'git' 'make' 'gcc' 'blas' 'lapack' 'blaze' 'tar')
 sha256sums=('SKIP')
 source=("git+${url}#branch=develop")
 conflicts=('blazert')
+
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+}
 
 pkver() {
     cd "$_pkgname"

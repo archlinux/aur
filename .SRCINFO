@@ -1,6 +1,6 @@
 pkgbase = blazert-git
 	pkgdesc = An open-source, high-performance C++ ray tracing kernel library (develop).
-	pkgver = 20.2.1
+	pkgver = 20.2.1.r8.1ace3c1
 	pkgrel = 1
 	url = https://github.com/cstatz/blazert
 	arch = any
