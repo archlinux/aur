@@ -9,7 +9,7 @@ pkgdesc="Tryton module for electronic document UN/CEFACT"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('5a5d5fe99379024a87fd127d213dbfb6fb0ea648bb47843b60e0b1c83f983537')
