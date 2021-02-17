@@ -9,7 +9,7 @@ pkgdesc="Tryton module to authenticate users through LDAP"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('096beb96103f2ff6a2e0f8b6e93a480fb689f274a5ad9c9d2a190283b07d3330')
