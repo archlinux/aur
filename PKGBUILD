@@ -9,7 +9,7 @@ pkgdesc="Tryton module with German chart of accounts SKR03"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('63c4de6bbe258093dda1edf2aa9b4cf15a8b898e9de638a082f78d2d8610fd25')
