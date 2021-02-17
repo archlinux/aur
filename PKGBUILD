@@ -11,7 +11,7 @@ license=('GPL3')
 provides=('gdb-frontend' 'gdbfrontend')
 depends=('gdb' 'python' 'tmux')
 source=("${pkgname}-${_pkgver}.tar.gz::https://github.com/rohanrhu/gdb-frontend/archive/v${_pkgver}.tar.gz")
-sha256sums=('08066c4bcd7032ea155ff03e0e0614d63ac6a9eaf3ab4d68341967205ffd93b9')
+sha256sums=('4832569F741DBCBAD76ACBF84BB270BA329378CE9C3BD495C055BF2B89DCA813')
 
 package() {
   install -d "${pkgdir}/opt/" "${pkgdir}/usr/bin/"
