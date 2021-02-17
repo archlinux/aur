@@ -2,18 +2,18 @@
 
 pkgname=otf-sweden-sans
 pkgver=1
-pkgrel=3
-pkgdesc="Sweden Sans is a sans serif typeface that can be used in both analogue and digital formats"
+pkgrel=4
+pkgdesc="Sweden Sans typeface is the key element in the Sweden Brand Identity. It works to maintain consistency, create clarity, and handle the Sweden brand legacy."
 arch=('any')
-url="https://identity.sweden.se/buildingblocks/secondary-building-blocks-always-use#our-main-typeface"
+url="https://identity.sweden.se/en/design-elements/typography"
 license=('custom')
 depends=(fontconfig xorg-mkfontscale)
 install=otf-sweden-sans.install
-source=(https://identity.sweden.se/wp-content/uploads/sweden_sans_desktop_and_web.zip)
-sha256sums=('0a81641bb2de57f332663faf70ed533206948e60ebdb3f636722ff013385198f')
+source=(https://identity.sweden.se/userfiles/19863.zip)
+sha256sums=('216ebf9f71e13917896432c237d4eedb856c0dfd390dfe614c542819f6f1fc81')
 
 package() {
-  cd "${srcdir}/sweden_sans_desktop_and_web"
+  cd "${srcdir}/Sweden-Sans/Desktop"
 
   install -d "${pkgdir}/usr/share/fonts/OTF"
   install -m644 *.otf "${pkgdir}/usr/share/fonts/OTF/"
