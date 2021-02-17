@@ -5,11 +5,11 @@ pkgver=5.8.1
 _pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
-pkgdesc="Tryton module to add cost method on weight on carrier"
+pkgdesc="Tryton module to add cost method "on weight" on carrier"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('72876d278c80e64034fa5a4f6b68afba06b4335b8689a6d715747f2394a89d2d')
