@@ -9,7 +9,7 @@ pkgdesc="Tryton module to add planning capabilities on projects"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('7f5144ea46872f83db68a1fbd368ef5fa58b463c6c591be7db83bcc1f5268231')
