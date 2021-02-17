@@ -9,7 +9,7 @@ pkgdesc="Tryton module with parties and addresses"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('0cbe658ed6e9b4f74817dfba7ad34d67588201a941e59e2e263aa51b0f7657c1')
