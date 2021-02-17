@@ -9,7 +9,7 @@ pkgdesc="Tryton module to use price from another price list"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('ef6598ac165bc5096bb1515e9a1aeea2c9fdb71d311348f4242b0309abc8b6e0')
