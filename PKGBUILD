@@ -9,7 +9,7 @@ pkgdesc="Tryton module to assign manually stock move"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('f15233ef7e421e6bd9981128d07b20b8ffa698130bc3d5f2faa0d68a4327d4d4')
