@@ -1,14 +1,13 @@
 pkgbase = qrfcview
 	pkgdesc = A simple Qt4 RFC viewer
 	pkgver = 0.62
-	pkgrel = 5
-	url = http://sourceforge.net/projects/qrfcview.berlios/
+	pkgrel = 6
+	url = https://sourceforge.net/projects/qrfcview.berlios/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = pkgconfig
 	depends = qt4
-	source = http://sourceforge.net/projects/qrfcview.berlios/files/qrfcview-0.62.tgz
+	source = https://sourceforge.net/projects/qrfcview.berlios/files/qrfcview-0.62.tgz
 	source = compile.patch
 	md5sums = 836783d9c327237f4b1aa40de6b4376a
 	md5sums = d35b267500ccbd173fd64b847413c4f8

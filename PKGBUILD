@@ -1,15 +1,15 @@
 # Contributor: slubman <packages@slubman.info>
+# Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
 
 pkgname=qrfcview
 pkgver=0.62
-pkgrel=5
+pkgrel=6
 pkgdesc="A simple Qt4 RFC viewer"
 license=('GPL')
 arch=(i686 x86_64)
-url="http://sourceforge.net/projects/qrfcview.berlios/"
+url="https://sourceforge.net/projects/qrfcview.berlios/"
 depends=('qt4')
-makedepends=('pkgconfig')
-source=(http://sourceforge.net/projects/qrfcview.berlios/files/$pkgname-$pkgver.tgz compile.patch)
+source=(https://sourceforge.net/projects/qrfcview.berlios/files/$pkgname-$pkgver.tgz compile.patch)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
