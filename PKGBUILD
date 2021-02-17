@@ -9,7 +9,7 @@ pkgdesc="Tryton module for customs"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('bbcbd365c16bc6c4cc48f0795ddbab426623b4754cdf4462f538addc01d9e464')
