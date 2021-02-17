@@ -9,7 +9,7 @@ pkgdesc="Tryton module to outsource production"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('b150cb343aadd8019d43fbd44408716c4b5a668dc7e98c091280fc98d47106d1')
