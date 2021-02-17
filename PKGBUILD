@@ -9,7 +9,7 @@ pkgdesc="Tryton module with account statements"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('87d5d8ed2f1a1e6c4fe2556b0df5993800d43fafecaa12e2dd602744b4038099')
