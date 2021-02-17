@@ -9,7 +9,7 @@ pkgdesc="Tryton module to add forecast to supply computation"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('9a05eec7731b503065a38db0ebfe61842504de54b156a1b0643d4db411e0b031')
