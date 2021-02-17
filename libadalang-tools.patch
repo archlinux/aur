@@ -2,12 +2,12 @@ Index: libadalang-tools/Makefile
 ===================================================================
 --- libadalang-tools.orig/Makefile
 +++ libadalang-tools/Makefile
-@@ -22,7 +22,7 @@ lib:
- 	which gprbuild
- 	which gcc
+@@ -29,7 +29,7 @@ lib:
  	for proj in $(LIB_PROJECTS) ; do \
--          gprbuild -v -k \
-+          gprbuild -v -aP ../libadalang/build -aP ../langkit/support -k \
- 	   -XLIBRARY_TYPE=$(LIBRARY_TYPE) \
- 	   -XXMLADA_BUILD=$(LIBRARY_TYPE) \
- 	   -XBUILD_MODE=$(BUILD_MODE) \
+ 	  for kind in $(ALL_LIBRARY_TYPES) ; do \
+ 	    rm -f obj/lib/*.lexch; \
+-	    gprbuild -v -k \
++	    gprbuild -v -aP ../libadalang/build -aP ../langkit/support -k \
+ 	      -XLIBRARY_TYPE=$$kind \
+ 	      -XBUILD_MODE=$(BUILD_MODE) \
+ 	      -P $$proj -p -j$(PROCESSORS) ; \

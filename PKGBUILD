@@ -1,7 +1,7 @@
 # Maintainer: Tim Lagnese <tim at inept tech>
 
 pkgname=ada_language_server
-pkgver=22.0.3
+pkgver=22.0.4
 pkgrel=1
 
 pkgdesc='High performance syntactic and semantic engine for the Ada programming language'
@@ -22,21 +22,23 @@ _pkgname=libadalang-tools
 _pkgver=2020
 _checksum=740372d8ffb1e4755a99bead2d78dace904235c0
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AdaCore/ada_language_server/archive/$pkgver.tar.gz"
-        "git+https://github.com/AdaCore/VSS.git#commit=b9c65707a43d747116dad7711d1d026c9b767d41"
-        "git+https://github.com/AdaCore/langkit.git#commit=3e376436d169a91bda26ba48ed151acf22bada9a"
-        "git+https://github.com/AdaCore/libadalang.git#commit=f95e0161cf0bca8e21c8bc7a8795eb332b153733"
-        "git+https://github.com/AdaCore/libadalang-tools.git#commit=9bfbf407d9f376684aafe25797b04cb3fe10ca02"
+        "git+https://github.com/AdaCore/VSS.git#commit=f255a08"
+        "git+https://github.com/AdaCore/langkit.git#commit=fc0a2be"
+        "git+https://github.com/AdaCore/libadalang.git#commit=6fd2550"
+        "git+https://github.com/AdaCore/libadalang-tools.git#commit=ca084eb"
+        "git+https://github.com/AdaCore/spawn.git#commit=2505624"
         "libadalang-tools.patch"
         "VSS.patch"
         "ada_language_server.patch")
-sha1sums=('fec24df3cda0ed7a0022a5f09a2ca4194aecb778'
+sha1sums=('848d8611aa2f896a443c8889b7305c14e4401883'
           'SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
-          'b1d6d2578ef21d3dd71dee10ed4857a5a4e5f8d5'
+          'SKIP'
+          '1eb931d9aea713d3d553d9f6ebc44e5bce58f551'
           'dcc8be463ad852ea595748b5c3c092fc88f79ae5'
-          '23f4f0502d322bda621ad013aab5f45ab20555aa')
+          '11c16a7360b47876b5a672222b29008a189b3d71')
 
 prepare() {
     cd "$srcdir/libadalang-tools"
@@ -63,7 +65,10 @@ build() {
     # 4. Build libadalang-tools
     cd ../libadalang-tools
     make BUILD_MODE=prod LIBRARY_TYPE=static-pic
-    # 5. Finally, build ada_language_server
+    # 5. Build spawn
+    cd ../spawn
+    make all
+    # 6. Finally, build ada_language_server
     cd "../$pkgname-$pkgver"
     make BUILD_MODE=prod LIBRARY_TYPE=static-pic
 }
