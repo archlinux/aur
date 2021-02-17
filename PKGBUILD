@@ -9,7 +9,7 @@ pkgdesc="Tryton module to add countries on tax rules"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('6ac466a7ac1db4f55fb3d6b0a0df4ceb652240ec08b9d96011d60eacb7ad35b1')
