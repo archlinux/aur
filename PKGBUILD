@@ -9,7 +9,7 @@ pkgdesc="Tryton module for subscription"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('7eb9220f8c3f13c995516b31aa368cb3be0eef66219f0e2517017beac5737e5b')
