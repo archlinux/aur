@@ -4,16 +4,15 @@
 # Contributor: Shinlun Hsieh <yngwiexx at yahoo dot com dot tw>
 
 pkgname=gxemul
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='Instruction-level machine emulator'
 arch=('i686' 'x86_64')
 url='http://gavare.se/gxemul/'
 license=('GPL')
-makedepends=('doxygen')
 depends=('libx11' 'sh')
 source=("http://gavare.se/gxemul/src/gxemul-${pkgver}.tar.gz")
-sha256sums=('a703ac7965feb3c701c7677d78c353f0efa1af4d36a9508fb045eb63dd571547')
+sha256sums=('163604d4888218e5fdbc6858b9fc1ec1607d005eadbec424f3a9663e1f2986ed')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
