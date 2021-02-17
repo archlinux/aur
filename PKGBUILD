@@ -9,7 +9,7 @@ pkgdesc="Tryton module for Braintree payment"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('e1b87304a7e1ddbac5b8f8fb624060a4578f5a0e57f8380851c55607f7469ac5')
