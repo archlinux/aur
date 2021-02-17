@@ -1,6 +1,6 @@
 pkgbase = python-johnnycanencrypt-git
 	pkgdesc = Python module for OpenPGP written in Rust
-	pkgver = r241.1e6f386
+	pkgver = r246.84408e9
 	pkgrel = 2
 	url = https://github.com/kushaldas/johnnycanencrypt
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = python-johnnycanencrypt-git
 	makedepends = git
 	makedepends = maturin
 	makedepends = python-pip
+	makedepends = clang
 	depends = gmp
 	depends = mypy
 	depends = nettle

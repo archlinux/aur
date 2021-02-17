@@ -1,7 +1,7 @@
 # Maintainer: C. Dominik Bódi <dominik dot bodi at gmx dot de>
 pkgname=python-johnnycanencrypt-git
 _pkgbase=johnnycanencrypt
-pkgver=r241.1e6f386
+pkgver=r246.84408e9
 pkgrel=2
 epoch=
 pkgdesc="Python module for OpenPGP written in Rust"
@@ -15,7 +15,8 @@ depends=(gmp
          python-httpx)
 makedepends=(git
              maturin
-             python-pip)
+             python-pip
+	     clang)
 provides=(python-johnnycanencrypt)
 source=("git+https://github.com/kushaldas/$_pkgbase")
 sha256sums=('SKIP')
