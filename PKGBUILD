@@ -2,7 +2,7 @@
 
 pkgname=awsume
 pkgver=4.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A convenient way to manage AWS session tokens and assume role credentials"
 arch=('any')
 url="https://awsu.me/"
@@ -45,6 +45,6 @@ package() {
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
     install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 
-    rm -f "$pkgdir/usr/bin/awsome.bat"
-    rm -f "$pkgdir/usr/bin/awsome.ps1"
+    rm -f "$pkgdir/usr/bin/awsume.bat"
+    rm -f "$pkgdir/usr/bin/awsume.ps1"
 }

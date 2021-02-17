@@ -1,7 +1,7 @@
 pkgbase = awsume
 	pkgdesc = A convenient way to manage AWS session tokens and assume role credentials
 	pkgver = 4.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://awsu.me/
 	arch = any
 	license = MIT
