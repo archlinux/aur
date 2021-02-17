@@ -8,29 +8,33 @@
 pkgname=autotrace
 _date=20200219
 _revision=65
-pkgver=0.40.0.${_date}.${_revision}
+pkgver=20200219.65.2.g16136eb
 pkgrel=1
-pkgdesc='An utility to trace bitmaps: convert bitmaps to vector graphics'
+pkgdesc='An utility to trace bitmaps: convert bitmaps to vector graphics, with patches from Sacha Chua'
 arch=('i686' 'x86_64')
 url='https://github.com/autotrace/autotrace.git'
 license=('GPL' 'LGPL')
-depends=('libpng' 'pstoedit' 'libmagick6')
-makedepends=('intltool')
+depends=('libpng' 'pstoedit' 'graphicsmagick')
+makedepends=('intltool' 'git')
 options=('!libtool')
-source=("https://github.com/autotrace/autotrace/archive/travis-${_date}.${_revision}.tar.gz")
-sha512sums=('a431168a2da231436f9cf301c6d286a9104f5ad0e8053047539b4784522d2982100afe823d6c3e6492adc84d83fcd3196cee91dec6728c99647800d9dc383a4d')
+source=("git+https://github.com/sachac/autotrace.git#commit=16136eb504794f9af389a5f4ac7339d3bf4b9a66")
+sha512sums=('SKIP')
 
+pkgver() {
+  cd "$pkgname"
+  git describe --tags | sed 's+travis.++' | tr - .
+}
 
 build() {
-  cd "$pkgname-travis-${_date}.${_revision}"
+  cd "$pkgname"
   autoreconf -ivf
   intltoolize --force
   aclocal
-  PKG_CONFIG_PATH=/usr/lib/imagemagick6/pkgconfig ./configure --prefix=/usr --with-pstoedit 
+  ./configure --prefix=/usr --with-pstoedit --with-graphicsmagick
   make
 }
 
 package() {
-  cd "$pkgname-travis-${_date}.${_revision}"
+  cd "$pkgname"
   make install DESTDIR="${pkgdir}"
 }
