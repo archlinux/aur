@@ -9,7 +9,7 @@ pkgdesc="Tryton with Spanish chart of accounts"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('efd3019f4eb3525fd5d30b5025ee74691d358d7fbd26c7fcb13b4292f91d1fb2')
