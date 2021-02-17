@@ -1,6 +1,6 @@
 pkgbase = skywalker
 	pkgdesc = simple port and packer sniffer written in rust.
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/toorajtaraz/skywalker
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = skywalker
 	makedepends = rust
 	makedepends = cargo
 	depends = libpcap
-	source = skywalker-0.1.2.tar.gz::https://github.com/toorajtaraz/skywalker/archive/v0.1.2.tar.gz
-	md5sums = 358918905fae26a6c4fc7c22f4138dd1
+	source = skywalker-0.2.0.tar.gz::https://github.com/toorajtaraz/skywalker/archive/v0.2.0.tar.gz
+	md5sums = SKIP
 
 pkgname = skywalker
 
