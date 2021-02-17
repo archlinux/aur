@@ -9,7 +9,7 @@ pkgdesc="Tryton module to add stock warning on sale"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('45bfa3103f9de9ab14e800a8bee135dbaede86c60a738c19fc27f962c071a6e0')
