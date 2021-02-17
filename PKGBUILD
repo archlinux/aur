@@ -9,7 +9,7 @@ pkgdesc="Tryton module to add dates on price list"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('d48626cb0aef0345ca910a90ed7af26208f1fa196f099e2f9f2ab1c7c694c418')
