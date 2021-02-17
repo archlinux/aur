@@ -59,9 +59,10 @@ fi
 ## Set variable "use_ns" to: n to disable (stock Xanmod)
 ##                           y to enable (stock Archlinux)
 ## 这里我不知道为什么作者默认选择 disable，因为这个功能不选择不少私有软件的无法启动的，比方说 Skype 和统信的微信，推荐大家默认启用
-if [ -z ${use_ns+x} ]; then
-  use_ns=y
-fi
+#if [ -z ${use_ns+x} ]; then
+#  use_ns=y
+#fi
+## 这个补丁已经没有用了
 
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
@@ -161,7 +162,8 @@ prepare() {
   done
   
   # Manjaro patches
-  rm ../linux511-$__commit/0103-futex.patch  # remove conflicting one
+  rm ../linux511-$__commit/0103-futex.patch  # remove conflicting one 这个补丁已经有了
+  rm ../linux511-$__commit/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch  # remove Reversed (or previously applied) patch detected!  Skipping patch. 这个补丁已经没有用了。
   local _patch
   for _patch in ../linux511-$__commit/*; do
       [[ $_patch = *.patch ]] || continue
@@ -195,10 +197,10 @@ prepare() {
     scripts/config --enable CONFIG_CACHY_SCHED
   fi
 
-  if [ "$use_ns" = "n" ]; then
-    msg2 "Disabling CONFIG_USER_NS_UNPRIVILEGED"
-    scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
-  fi
+  #if [ "$use_ns" = "n" ]; then
+  #  msg2 "Disabling CONFIG_USER_NS_UNPRIVILEGED"
+  #  scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
+  #fi
     
   msg2 "add anbox support"
   scripts/config --enable CONFIG_ASHMEM
