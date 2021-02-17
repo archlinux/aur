@@ -4,7 +4,7 @@ pkgname='eruption-git'
 _pkgname='eruption'
 pkgdesc='Linux user-mode input and LED driver for keyboards, mice and other devices'
 pkgver='0.1.19'
-pkgrel='24'
+pkgrel='25'
 epoch=
 arch=('i686' 'x86_64')
 url='https://github.com/X3n0m0rph59/eruption'
@@ -136,8 +136,6 @@ package() {
     install -m 644 "eruption/src/scripts/afterglow.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/afterhue.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/afterhue.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
-    install -m 644 "eruption/src/scripts/animal.lua" "$pkgdir/usr/share/eruption/scripts/"
-    install -m 644 "eruption/src/scripts/animal.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/audioviz1.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/audioviz1.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/audioviz2.lua" "$pkgdir/usr/share/eruption/scripts/"
@@ -255,11 +253,6 @@ package() {
     ln -s "phaser1.wav" "$pkgdir/usr/share/eruption/sfx/key-down.wav"
     ln -s "phaser2.wav" "$pkgdir/usr/share/eruption/sfx/key-up.wav"
 
-    install -m 644 "support/profiles/animal-blobby.profile" "$pkgdir/var/lib/eruption/profiles/"
-    install -m 644 "support/profiles/animal-blobby-swirl.profile" "$pkgdir/var/lib/eruption/profiles/"
-    install -m 644 "support/profiles/animal-breathing-1.profile" "$pkgdir/var/lib/eruption/profiles/"
-    install -m 644 "support/profiles/animal-breathing-2.profile" "$pkgdir/var/lib/eruption/profiles/"
-    install -m 644 "support/profiles/animal-breathing-3.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/default.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/fx1.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/fx2.profile" "$pkgdir/var/lib/eruption/profiles/"
