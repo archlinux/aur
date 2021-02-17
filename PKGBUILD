@@ -9,7 +9,7 @@ pkgdesc="Tryton module to import AEB43 statements"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('f7146dd9147f1862561c1a71fe282ed774bde79d6174d7884c07cd522abe3329')
