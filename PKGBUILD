@@ -9,7 +9,7 @@ pkgdesc="Tryton module to split production"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('c4c095ec1615c111b3e6bf9ab389998484d22f0a7c9b798a18bcd15bf6a38c66')
