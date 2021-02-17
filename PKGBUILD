@@ -21,8 +21,7 @@ source=('LICENSE'
         "${_appimage}::https://${_dlhost}${_dlpath}"
 )
 sha256sums=('d512ec90082d82ef0e1fe5d7b14d63ae835f955d3119436d5c08761ff4e3366a'
-            'aac5e91a69f38aee32eacf48d03a74364f672f8d50718b092474950caea67c59'
-)
+            'aac5e91a69f38aee32eacf48d03a74364f672f8d50718b092474950caea67c59')
 
 prepare() {
     chmod +x ${_appimage}

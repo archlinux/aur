@@ -12,7 +12,7 @@ pkgbase = pcloud-drive
 	replaces = pcloud
 	options = !strip
 	source = LICENSE
-	source = pcloud-drive-1.9.0-1.AppImage::https://c67.pcloud.com/cBZTGLtbsZa1tRB9ZZZ12inG7Z2ZZwjpZkZqdlJVZjpZF7ZXzZxHZ57ZMHZmZE0Ze7ZGFZlFZIJZAHZ3HZ03fSXZVgKglgb5b28VuNWOljmnS8X80K7V/pcloud
+	source = pcloud-drive-1.9.0-1.AppImage::https://p-lux4.pcloud.com/cBZTGLtbsZa1tRB9ZZZHWk9G7Z2ZZ4F5ZkZqdlJVZjpZF7ZXzZxHZ57ZMHZmZE0Ze7ZGFZlFZIJZAHZ3HZ03fSXZgwcsh4TY7WbiFklqrcbuIhGMcwky/pcloud
 	sha256sums = d512ec90082d82ef0e1fe5d7b14d63ae835f955d3119436d5c08761ff4e3366a
 	sha256sums = aac5e91a69f38aee32eacf48d03a74364f672f8d50718b092474950caea67c59
 
