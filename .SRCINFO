@@ -1,5 +1,5 @@
 pkgbase = qtmips
-	pkgdesc = MIPS CPU emulator
+	pkgdesc = MIPS CPU simulator for education purposes with pipeline and cache visualization
 	pkgver = 0.7.5
 	pkgrel = 1
 	url = https://github.com/cvut/QtMips

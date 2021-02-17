@@ -2,7 +2,7 @@
 pkgname=qtmips
 pkgver=0.7.5
 pkgrel=1
-pkgdesc="MIPS CPU emulator"
+pkgdesc="MIPS CPU simulator for education purposes with pipeline and cache visualization"
 arch=("x86_64")
 url="https://github.com/cvut/QtMips"
 license=('GPL')
