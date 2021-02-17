@@ -2,7 +2,7 @@
 # Contributor: Oliver Mangold <o.mangold@gmail.com>
 # Contributor: Adam Brunnmeier <adam.brunnmeier@gmail.com>
 pkgname=blender-2.92-bin
-pkgver=2.92.210114.5804bf25bdfe
+pkgver=2.92.210217.c13754e6475e
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite"
 arch=('x86_64')
