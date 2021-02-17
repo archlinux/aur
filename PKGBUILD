@@ -2,18 +2,18 @@
 
 pkgname=liblomse
 _vcsname=lomse
-pkgver=0.27.0
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="A music score renderization/edition library"
 arch=('i686' 'x86_64')
 url="http://www.lenmus.org/en/lomse/intro"
 license=('custom:BSD 2-clause')
 groups=('devel')
-depends=('freetype2' 'fontconfig')
+depends=('freetype2' 'fontconfig' 'zlib' 'libpng')
 makedepends=('cmake' 'unittestpp' 'ttf-liberation')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/lenmus/lomse/tar.gz/${pkgver}")
-sha256sums=('6ed9e3672a55bde7be3469231043394354ad048ca3d9fd812246496d8aa4ec4d')
+sha256sums=('01d27e2fe4634a05c0981224e00b1355477151fd35eabfd2f5ff4a7525726114')
 
 build() {
   rm -rf build
@@ -28,7 +28,7 @@ build() {
 
 check() {
   cd "${srcdir}/build"
-  ./bin/testlib
+  ./testlib
 }
 
 package() {
