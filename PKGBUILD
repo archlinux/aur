@@ -2,7 +2,7 @@
 
 pkgname=firejail-handler-http
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="HTTP(S) URL handler for Firejail"
 arch=(x86_64)
 license=(GPL2)
