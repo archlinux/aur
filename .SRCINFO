@@ -1,6 +1,6 @@
 pkgbase = lib32-openssl-hardened
 	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (32-bit)
-	pkgver = 1.1.1.i
+	pkgver = 1.1.1.j
 	pkgrel = 1
 	epoch = 1
 	url = https://www.openssl.org
@@ -11,7 +11,7 @@ pkgbase = lib32-openssl-hardened
 	optdepends = ca-certificates
 	provides = lib32-openssl
 	conflicts = lib32-openssl
-	source = https://artfiles.org/openssl.org/source/openssl-1.1.1i.tar.gz
+	source = https://artfiles.org/openssl.org/source/openssl-1.1.1j.tar.gz
 	source = ca-dir.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
