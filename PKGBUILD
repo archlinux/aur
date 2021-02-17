@@ -9,7 +9,7 @@ pkgdesc="Tryton module to add supply weekdays"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('8536cff7e3c1989512bb7984f4baec8f52582f8eb520b9d928eab1bff258ce68')
