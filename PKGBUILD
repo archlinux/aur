@@ -2,7 +2,7 @@
 
 pkgname=intermodal
 pkgver=0.1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="User-friendly and featureful CLI BitTorrent metainfo utility, written in Rust"
 arch=('x86_64')
 url="https://github.com/casey/intermodal"
@@ -15,10 +15,12 @@ sha256sums=('cd62894e519dc5aa0284a5f48aab86e1a45c3bc96b8a5481741adb6960d4751a')
 build() {
     cd "$pkgname-$pkgver"
     cargo build --release --locked
+
     # completions and man pages
-    # cargo run --package gen -- --bin target/release/imdl completion-scripts
-    # cargo run --package gen -- --bin target/release/imdl man
-    cargo run --package gen -- --bin target/release/imdl all --no-git
+    # cargo run --package gen -- --bin target/release/imdl all --no-git
+    cargo run --package gen -- --bin target/release/imdl completion-scripts
+    cargo run --package gen -- --bin target/release/imdl man
+    cargo run --package gen -- --bin target/release/imdl book --no-git
 }
 
 package() {
@@ -34,6 +36,12 @@ package() {
 
     # man pages
     install -Dm644 target/gen/man/*.1 -t "$pkgdir/usr/share/man/man1/"
+
+    # book
+    pushd book/src
+    find . -name '*.md' -exec \
+        install -Dm 644 {} $pkgdir/usr/share/doc/$pkgname/book/{} \;
+    popd
 
     # license
     install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
