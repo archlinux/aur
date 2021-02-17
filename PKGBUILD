@@ -9,7 +9,7 @@ pkgdesc="Tryton module to authenticate users via SMS"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('0415c438e54e5bd20e6caaa60dd8b157a8b3837ccba61934d12a86e28ca85762')
