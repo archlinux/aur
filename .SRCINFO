@@ -1,6 +1,6 @@
 pkgbase = superproductivity-git
 	pkgdesc = To Do List / Time Tracker with Jira Integration.
-	pkgver = 6.0.1.r2.g15c734304
+	pkgver = 6.4.0.r10.g0cfb7af2e
 	pkgrel = 1
 	url = http://super-productivity.com/
 	arch = x86_64
