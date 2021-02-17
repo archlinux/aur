@@ -6,6 +6,7 @@ pkgbase = hs-airdrop
 	arch = any
 	license = MIT
 	makedepends = npm
+	makedepends = node-gyp
 	depends = nodejs
 	provides = hs-airdrop
 	source = https://handshake.org/files/hs-airdrop-0.10.0.tar.gz
