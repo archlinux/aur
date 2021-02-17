@@ -9,7 +9,7 @@ pkgdesc="A module to handle asset in the sale subscriptions"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('622ca7b117dff30eec0e8b326788eab004577c2e4903efad4e3246ad726109e6')
