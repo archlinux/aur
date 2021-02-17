@@ -2,8 +2,8 @@
 
 _npmname=yaml-language-server
 pkgname=yaml-language-server-bin
-pkgver=0.14.0
-pkgrel=2
+pkgver=0.15.0
+pkgrel=1
 pkgdesc="Language server implementation for YAML files and optional schema support"
 arch=('any')
 url="https://www.npmjs.com/package/vscode-html-languageserver-bin"
@@ -12,7 +12,7 @@ depends=('nodejs' 'npm')
 replaces=('yaml-language-server')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
 noextract=("${_npmname}-${pkgver}.tgz")
-sha1sums=('406af0518c8c92a7d4da61d0dc9963b432481eda')
+sha1sums=('6b9488c961571a703f852453e0b6dc02871b9cf3')
 
 package() {
     cd "${srcdir}"
