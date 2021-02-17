@@ -1,6 +1,6 @@
 pkgbase = upwork
 	pkgdesc = Desktop Application
-	pkgver = 5.5.0.0
+	pkgver = 5.5.0.1
 	pkgrel = 1
 	url = https://www.upwork.com/downloads/
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = upwork
 	depends = libxss
 	depends = nss
 	conflicts = upwork-alpha
-	source = https://updates-desktopapp.upwork.com/binaries/v5_5_0_0_c501864210a74fd4/upwork_5.5.0.0_amd64.deb
+	source = https://updates-desktopapp.upwork.com/binaries/v5_5_0_1_291c031686ed44ff/upwork_5.5.0.1_amd64.deb
 	source = LICENSE
 	source = upwork
-	sha256sums = d2bd425b8828d382e1b7fe2afee7812473ec73e81bbf83ddb4a8d2a495632189
+	sha256sums = 49192ecfb10929b5b51cf8899186059649c894109ec172695cd7cfaa50923f6a
 	sha256sums = 793d8d7bc0f088c48798bda3d5483972636c6b8c5dcd9aeaf85411f7d4547b38
 	sha256sums = 53bbbd18d7dbbcc27a1405ce9745d95f08be64a234b8fb3312cc2e6ef70e3e9b
 
