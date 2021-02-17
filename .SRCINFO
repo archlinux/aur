@@ -1,0 +1,22 @@
+pkgbase = hs-client
+	pkgdesc = HSD node and wallet client
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://handshake.org
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = node-gyp
+	depends = nodejs
+	provides = hsd-cli
+	provides = hsd-rpc
+	provides = hsw-cli
+	provides = hsw-rpc
+	source = https://handshake.org/files/hs-client-0.0.9.tar.gz
+	source = https://handshake.org/files/hs-client-0.0.9.tar.gz.asc
+	validpgpkeys = B4B1F62DBAC084E333F3A04A8962AB9DE6666BBD
+	sha256sums = b76d9132366eea28777d008e60f1a51e12ccc7a52b2e48df978806de1b368929
+	sha256sums = SKIP
+
+pkgname = hs-client
+
