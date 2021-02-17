@@ -1,8 +1,8 @@
 # Maintainer 5amu <v.casalino@protonmail.com>
 
 pkgname=searchpoc
-pkgver=1.0.4
-pkgrel=4
+pkgver=1.0.5
+pkgrel=5
 pkgdesc="Search a PoC for a (or some) given CVE id"
 url="https://github.com/5amu/searchpoc/"
 license=('MIT')
