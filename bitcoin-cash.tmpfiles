@@ -1,0 +1,2 @@
+d /etc/bitcoin 0750 bitcoin bitcoin
+d /srv/bitcoin 0750 bitcoin bitcoin
