@@ -9,7 +9,7 @@ pkgdesc="Tryton module for purchase request quotation"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('a60aa8462383b5947c68d7d547bd8ee2d4a4b246c534787030acfaabb83dba3e')
