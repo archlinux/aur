@@ -1,7 +1,7 @@
 pkgbase = kdisplay-kwinft
 	pkgdesc = App and daemon for display managing
-	pkgver = 5.20.0
-	pkgrel = 0
+	pkgver = 5.21.0
+	pkgrel = 1
 	url = https://gitlab.com/kwinft/kdisplay
 	arch = x86_64
 	license = LGPL
@@ -16,8 +16,8 @@ pkgbase = kdisplay-kwinft
 	depends = plasma-framework
 	provides = kdisplay
 	conflicts = kdisplay
-	source = https://gitlab.com/kwinft/kdisplay/-/archive/kdisplay@5.20.0/kdisplay-kdisplay@5.20.0.tar.gz
-	md5sums = 2fe7504c206c9f37ceb44fbd4092568e
+	source = https://gitlab.com/kwinft/kdisplay/-/archive/kdisplay@5.21.0/kdisplay-kdisplay@5.21.0.tar.gz
+	md5sums = 201bef153df3fa8c464a121f547f7bdb
 
 pkgname = kdisplay-kwinft
 
