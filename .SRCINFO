@@ -1,0 +1,19 @@
+pkgbase = hs-miner
+	pkgdesc = Handshake CUDA miner
+	pkgver = 0.0.10
+	pkgrel = 1
+	url = https://handshake.org
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	provides = hs-miner
+	provides = hs-mine
+	source = https://handshake.org/files/hs-miner-0.0.10.tar.gz
+	source = https://handshake.org/files/hs-miner-0.0.10.tar.gz.asc
+	validpgpkeys = B4B1F62DBAC084E333F3A04A8962AB9DE6666BBD
+	sha256sums = 67ff3517f24194b4e1375c565634d07e263ddcbee1c744e82592b6cb8e31f780
+	sha256sums = SKIP
+
+pkgname = hs-miner
+
