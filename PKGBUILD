@@ -9,7 +9,7 @@ pkgdesc="Tryton module to plug a URL to an action"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('c848bb3fd0847b46a1b9612bb916b31962c981360acd2967e6e8dab3f63716ba')
