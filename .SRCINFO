@@ -13,8 +13,6 @@ pkgbase = qqc2-breeze-style
 	depends = qt5-declarative
 	depends = qt5-quickcontrols2
 	depends = kirigami2
-	provides = qqc2-breeze-style
-	conflicts = qqc2-breeze-style
 	source = git+https://invent.kde.org/plasma/qqc2-breeze-style.git#commit=ce8022d7a71096e9a2953d8af492b46a0b2e1133
 	md5sums = SKIP
 

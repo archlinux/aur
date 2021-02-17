@@ -9,8 +9,6 @@ url="https://invent.kde.org/plasma/qqc2-breeze-style"
 license=('GPL3')
 depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols2' 'kirigami2')
 makedepends=('git' 'extra-cmake-modules')
-provides=('qqc2-breeze-style')
-conflicts=('qqc2-breeze-style')
 source=("git+${url}.git#commit=ce8022d7a71096e9a2953d8af492b46a0b2e1133")
 md5sums=('SKIP')
 
