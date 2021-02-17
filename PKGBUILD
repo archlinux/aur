@@ -9,7 +9,7 @@ pkgdesc="Tryton module for account credit limit"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('039485499ae59f6a9e4f23fccfdea173a9d4265c9b52b4dc07f46ffd47fb6b6c')
