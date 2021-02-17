@@ -9,7 +9,7 @@ pkgdesc="Tryton module for shelf life expiration date of product lots"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('ca3420ab4f7e041f294b2ec4de941a05b4e9292ea4ff422c3a0ea69c3e7b3ef3')
