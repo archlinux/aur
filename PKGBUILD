@@ -9,7 +9,7 @@ pkgdesc="Tryton module to define unit on stock lot"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('57bfad08ca62eaf0fcbd5f8021e30edb0376da0814ffa5566e649e2738d0328a')
