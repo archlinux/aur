@@ -1,28 +1,30 @@
 ### Vars ###
 _pkgname=vivaldi
 
+## Colours ##
+_yellow='\033[1;33m' # Yellow
+_nc='\033[0m' # No colour.
+
 ### Post Install ###
 post_install() {
     ## Install ffmpeg ##
-    echo 'Installing proprietary media codecs ...'
+    echo -e "${_yellow}Installing proprietary media codecs ...${_nc}"
     cd /opt/$_pkgname
-    chmod 0755 update-ffmpeg
     ./update-ffmpeg
 }
 
 ### Post Upgrade ###
 post_upgrade() {
     ## Update ffmpeg ##
-    echo 'Updating proprietary media codecs ...'
+    echo -e "${_yellow}Updating proprietary media codecs ...${_nc}"
     cd /opt/$_pkgname
-    chmod 0755 update-ffmpeg
     ./update-ffmpeg
 }
 
 ### Post Remove ###
 post_remove() {
     ## Remove ffmpeg ##
-    echo 'Removing proprietary media codecs ...'
+    echo -e "${_yellow}Removing proprietary media codecs ...${_nc}"
     if [ -d /var/opt/$_pkgname ]; then
         rm -rf /var/opt/$_pkgname
     fi
