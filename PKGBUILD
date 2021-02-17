@@ -22,7 +22,7 @@ depends=(
 )
 makedepends=('python-setuptools')
 optdepends=('lean-community')
-source=("https://pypi.io/packages/source/m/$_pkgname/$_pkgname-$pkgver.tar.gz")
+source=("https://pypi.io/packages/source/${_pkgname:0:1}/${_pkgname}/$_pkgname-$pkgver.tar.gz")
 sha256sums=(da41c65e206f55b1faea303581fc11215e52d6e6990b827336b2e1eb82aad96c)
 
 build() {
