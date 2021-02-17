@@ -1,6 +1,6 @@
 pkgbase = opennebula-tools
 	pkgdesc = Command-line tools for OpenNebula Cloud
-	pkgver = 5.10.5
+	pkgver = 5.12.0.3
 	pkgrel = 1
 	url = https://opennebula.org/
 	arch = i686
@@ -32,10 +32,10 @@ pkgbase = opennebula-tools
 	backup = etc/one/cli/onevntemplate.yaml
 	backup = etc/one/cli/onevrouter.yaml
 	backup = etc/one/cli/onezone.yaml
-	source = https://github.com/OpenNebula/one/archive/release-5.10.5.tar.gz
+	source = https://github.com/OpenNebula/one/archive/release-5.12.0.3.tar.gz
 	source = Gemfile
 	source = Gemfile.lock
-	md5sums = d2ade6b4decfd977a4c51f888dcf3d92
+	md5sums = ede5f9b31f7148b453b968f46353076b
 	md5sums = cabab3dc76285c5f302c982deff89d11
 	md5sums = ab3c3bd10dd2c07f9d06a9e755fcf171
 

@@ -1,7 +1,7 @@
 # Maintainer: kvaps <kvapss@gmail.com>
 
 pkgname=opennebula-tools
-pkgver=5.10.5
+pkgver=5.12.0.3
 pkgrel=1
 pkgdesc="Command-line tools for OpenNebula Cloud"
 arch=('i686' 'x86_64')
@@ -45,7 +45,7 @@ source=(
   'Gemfile.lock'
 )
 md5sums=(
-  'd2ade6b4decfd977a4c51f888dcf3d92' # package
+  'ede5f9b31f7148b453b968f46353076b' # package
   'cabab3dc76285c5f302c982deff89d11' # Gemfile
   'ab3c3bd10dd2c07f9d06a9e755fcf171' # Gemfile.lock
 )
