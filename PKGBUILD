@@ -12,9 +12,9 @@ license=('GPL3')
 pkgdesc="A free and open-source connection manager. ${branch:-master} branch"
 url="https://github.com/asbru-cm/asbru-cm"
 depends=('perl' 'vte3' 'cairo-perl' 'glib-perl' 'pango-perl' 'perl-socket6' 'perl-expect' 'perl-yaml' 'perl-crypt-cbc' 'perl-crypt-blowfish' 'perl-gtk3' 'perl-net-arp'
-         'uuid' 'openssh' 'inetutils' 'perl-crypt-rijndael' 'perl-xml-parser' 'libcanberra' 'perl-gtk3-simplelist' 'libwnck3' 'perl-io-stty' 'perl-io-tty')
+         'uuid' 'openssh' 'inetutils' 'perl-crypt-rijndael' 'perl-xml-parser' 'libcanberra' 'perl-gtk3-simplelist' 'libwnck3' 'perl-io-stty' 'perl-io-tty' 'nmap')
 optdepends=('uucp: Unix-to-Unix Copy' 'rdesktop: RDP connections' 'freerdp: RDP connections' 'openssh: SSH connections' 'mosh: Mobile shell' 'tigervnc: for VNC connections'
-            'perl-x11-guitest: To fit perfectly RDP tabs')
+            'perl-x11-guitest: To fit perfectly RDP tabs' 'keepassxc: Better support to automatically fill users and passwords')
 makedepends=('git')
 #conflicts=()
 [ -z ${branch} ] && source=("git+https://github.com/asbru-cm/asbru-cm.git") || source=("git+https://github.com/asbru-cm/asbru-cm.git#branch=${branch}")
