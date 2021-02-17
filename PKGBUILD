@@ -9,7 +9,7 @@ pkgdesc="Tryton module for landed cost"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('c89927bc24c0a534e7e4e2874a182f8b6930b82dc22ba68b0517104259204fd4')
