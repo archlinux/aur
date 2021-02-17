@@ -9,7 +9,7 @@ pkgdesc="Tryton module for landed cost per weight"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('b11a246fd2fedb578c0267fd71bfc0f58e641c4c9ab6225b82bbf764c404a927')
