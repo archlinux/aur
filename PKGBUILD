@@ -1,5 +1,5 @@
 pkgname=('mingw-w64-llvm')
-pkgver=11.0.1
+pkgver=11.1.0
 pkgrel=1
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (mingw-w64)"
 arch=('any')
@@ -12,7 +12,7 @@ validpgpkeys+=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D') # Hans Wennborg <hans
 validpgpkeys+=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
 source=($_source_base/llvm-$pkgver.src.tar.xz{,.sig})
-sha256sums=('ccd87c254b6aebc5077e4e6977d08d4be888e7eb672c6630a26a15d58b59b528'
+sha256sums=('ce8508e318a01a63d4e8b3090ab2ded3c598a50258cc49e2625b9120d4c03ea5'
             'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
