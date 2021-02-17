@@ -5,13 +5,13 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-mopidy-tidal-git
 epoch=
-pkgver=r42.df29b2b
+pkgver=r48.5984ee1
 pkgrel=1
 pkgdesc='Tidal music service integration'
 arch=(any)
-url=https://github.com/mones88/mopidy-tidal
+url=https://github.com/tehkillerbee/mopidy-tidal
 license=(Apache)
-depends=(python python-setuptools python-requests python-pykka mopidy python-tidalapi)
+depends=(python python-tidalapi python-pykka python-requests python-setuptools mopidy)
 ## EXTRA_DEPENDS ##
 makedepends=(python-pip python-wheel)
 checkdepends=()
