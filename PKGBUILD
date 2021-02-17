@@ -9,7 +9,7 @@ pkgdesc="Tryton module to add analytic accounting on purchase"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('fa0a1bc3a860f021cfa101e2a39ff2543c15eebb52b76173b8f910213eb7b365')
