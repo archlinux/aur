@@ -1,8 +1,8 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=spotrec
-pkgver=0.13.0
-pkgrel=2
+pkgver=0.14.0
+pkgrel=1
 pkgdesc="Spotify desktop client recorder for PulseAudio"
 arch=('any')
 url="https://github.com/Bleuzen/SpotRec"
@@ -11,7 +11,7 @@ depends=('python' 'python-dbus' 'ffmpeg' 'gawk' 'bash')
 optdepends=('spotify')
 source=("spotrec::${url}/releases/download/v${pkgver}/${pkgname}.py"
         "https://raw.githubusercontent.com/Bleuzen/SpotRec/master/LICENSE")
-md5sums=('ef9f6f30245bdcd9f2f499643aeb9554'
+md5sums=('738a651657ab9400029da50eb37d88ca'
          'SKIP')
 
 package() {
