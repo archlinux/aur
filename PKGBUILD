@@ -9,7 +9,7 @@ pkgdesc="Tryton module for sale promotion"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('a7c034d0092450071aa2c9cb00008be58e5fdb5f1831543b1b83c161eb122050')
