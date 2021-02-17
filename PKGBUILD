@@ -5,7 +5,7 @@
 # Contributor: Drew DeVault
 
 pkgname=nginx-quic
-pkgver=1.19.6
+pkgver=1.19.7
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch'
 arch=('i686' 'x86_64')
@@ -25,8 +25,8 @@ backup=('etc/nginx/fastcgi.conf'
 install=nginx.install
 provides=('nginx')
 conflicts=('nginx')
-source=("hg+https://hg.nginx.org/nginx-quic#revision=f61d347158d0"
-        "git+https://boringssl.googlesource.com/boringssl#commit=3743aafdacff2f7b083615a043a37101f740fa53"
+source=("hg+https://hg.nginx.org/nginx-quic#revision=13f7085b90d2"
+        "git+https://boringssl.googlesource.com/boringssl#commit=f6bd54efbcafcf4625ce99b5f702dc4850b0ca50"
         "service"
         "logrotate")
 sha256sums=('SKIP'

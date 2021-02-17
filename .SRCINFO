@@ -1,6 +1,6 @@
 pkgbase = nginx-quic
 	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch
-	pkgver = 1.19.6
+	pkgver = 1.19.7
 	pkgrel = 1
 	url = https://nginx.org
 	install = nginx.install
@@ -27,8 +27,8 @@ pkgbase = nginx-quic
 	backup = etc/nginx/uwsgi_params
 	backup = etc/nginx/win-utf
 	backup = etc/logrotate.d/nginx
-	source = hg+https://hg.nginx.org/nginx-quic#revision=f61d347158d0
-	source = git+https://boringssl.googlesource.com/boringssl#commit=3743aafdacff2f7b083615a043a37101f740fa53
+	source = hg+https://hg.nginx.org/nginx-quic#revision=13f7085b90d2
+	source = git+https://boringssl.googlesource.com/boringssl#commit=f6bd54efbcafcf4625ce99b5f702dc4850b0ca50
 	source = service
 	source = logrotate
 	sha256sums = SKIP
