@@ -1,0 +1,15 @@
+pkgbase = cns
+	pkgdesc = Search through rust crates without leaving the terminal
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/adamsky/cns
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = python
+	depends = gcc-libs
+	depends = libx11
+	source = cns-0.1.1.tar.gz::https://github.com/adamsky/cns/archive/v0.1.1.tar.gz
+	sha512sums = d34f890067d592a86d41f50d5ecae2e20afa7a36e5d55be9cc5f4dfcda364f04372e62fcff5fab8306180d65345811070dfb8498b6470c192a5479afdea04151
+
+pkgname = cns
