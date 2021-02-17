@@ -1,0 +1,13 @@
+post_install() {
+  echo 'To Enable "php-version" source the shell script:'
+  echo 'source /usr/lib/php-version/php-version.sh'
+  echo ""
+
+  echo 'To Select a specific PHP version with "php-version" call the "php-version" function:'
+  echo 'php-version 7.2.0'
+  echo ""
+
+  echo "For detailed instructions on building PHP Versions visit:"
+  echo "https://github.com/wilmoore/php-version/wiki/Building-PHP-Versions"
+  echo ""
+}
