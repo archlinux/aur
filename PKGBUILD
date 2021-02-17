@@ -3,7 +3,7 @@
 pkgbase=berry
 _pkgname=berry
 pkgname=berry-git
-_pkgver=3f50319
+_pkgver=3dc0a02
 pkgver=git+$_pkgver
 pkgrel=1
 pkgdesc="A healthy, bite-sized window manager written over the XLib Library"
