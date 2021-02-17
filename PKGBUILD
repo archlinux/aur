@@ -5,11 +5,11 @@ pkgver=5.8.1
 _pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
-pkgdesc="Tryton module to add cost method on percentage on carrier"
+pkgdesc="Tryton module to add cost method "on percentage" on carrier"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('772dca42ad87ab7bf397c148b48848003d5fc3d4279197cc8f565e5414295d28')
