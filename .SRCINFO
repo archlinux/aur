@@ -1,0 +1,13 @@
+pkgbase = crash-git
+	pkgdesc = Linux kernel crashdump analysis tool. (git version)
+	pkgver = 7.2.9.r16.gfdb41f0
+	pkgrel = 1
+	url = https://github.com/crash-utility/crash
+	arch = x86_64
+	license = GPL3
+	conflicts = crash
+	source = crash-git::git+https://github.com/crash-utility/crash.git
+	sha512sums = SKIP
+
+pkgname = crash-git
+
