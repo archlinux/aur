@@ -9,7 +9,7 @@ pkgdesc="Tryton module to manage marketing mailing lists"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('07ebd05eae3aba8d279e2cf9121f4fcd23eab2a6ebd918f044a93992aac76e31')
