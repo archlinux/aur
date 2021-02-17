@@ -9,7 +9,7 @@ pkgdesc="Tryton module to amend sales"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('c156a5d934c4bb345482696f631c9d8e2a217786d1c5de2cd1770d901a92cdcd')
