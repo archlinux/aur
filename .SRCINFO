@@ -13,7 +13,6 @@ pkgbase = swappy-git
 	depends = gtk3
 	depends = pango
 	depends = wayland
-	optdepends = libnotify
 	optdepends = otf-font-awesome
 	optdepends = wayland-protocols
 	provides = swappy

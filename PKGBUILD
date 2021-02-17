@@ -13,7 +13,6 @@ depends=(
   "wayland"
 )
 optdepends=(
-  "libnotify"
   "otf-font-awesome"
   "wayland-protocols"
 )
