@@ -9,7 +9,7 @@ pkgdesc="Tryton module to add cost on timesheet"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('9f61cb718e849c89f10fa1cdc301f7969160ae6b505c1bee561e6185ae44006d')
