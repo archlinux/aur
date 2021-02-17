@@ -6,7 +6,7 @@
 
 pkgname=icecat
 pkgver=78.7.0
-pkgrel=2
+pkgrel=3
 _commit=01b67d368563ac3d74d1a61692d15fc3d49e77cf
 pkgdesc="GNU version of the Firefox browser."
 arch=(x86_64)
@@ -27,13 +27,14 @@ options=(!emptydirs !makeflags !strip)
 source=(https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-${_commit}.tar.gz
         icecat.desktop icecat-safe.desktop
         "0001-Use-remoting-name-for-GDK-application-names.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/0adcedc05ce67d53268575f8801c8de872206901/firefox/trunk/0001-Use-remoting-name-for-GDK-application-names.patch"
-        rust_1.48.patch.gz)
+        rust_1.48.patch.gz rust_1.50.patch)
 
 sha256sums=('6527f34da5f5e4fda93383baf5f40dd72055710769994c510a47faf0f367eabb'
             'e00dbf01803cdd36fd9e1c0c018c19bb6f97e43016ea87062e6134bdc172bc7d'
             '33dd309eeb99ec730c97ba844bf6ce6c7840f7d27da19c82389cdefee8c20208'
             'e0eaec8ddd24bbebf4956563ebc6d7a56f8dada5835975ee4d320dd3d0c9c442'
-            'd32c87c4526e897d64453914da43f99366d1d0b7d71e43b4027a6cb5aa274040')
+            'd32c87c4526e897d64453914da43f99366d1d0b7d71e43b4027a6cb5aa274040'
+            'ed71ddae4ae4115e5d78ef2d6291bfe20f02198273746081d8c89f24919a1ba7')
 
 prepare() {
   cd gnuzilla-${_commit}
@@ -49,7 +50,7 @@ prepare() {
   sed -e 's/wget -N/wget -nv -Nc/g' -i makeicecat
 
   # Other patches
-  sed -e 's/^tar cfj icecat-/#tar cfj icecat-/g' -i makeicecat
+  sed '/^finalize_sourceball$/d' -i makeicecat
 
   # If we want to avoid all locales, we can use variable _SPEED=y to build it with only 1 locale. Use variable _LOCALE to define it
   if [[ $_SPEED =~ [y|Y] ]]; then
@@ -69,6 +70,9 @@ prepare() {
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1667736
   patch -Np1 -i ../../../rust_1.48.patch
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1684261
+  patch -Np1 -i ../../../rust_1.50.patch
 
   # Patch to move files directly to /usr/lib/icecat. No more symlinks.
   sed -e 's;$(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME);g' -i config/baseconfig.mk
