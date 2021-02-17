@@ -1,8 +1,8 @@
 pkgbase = python-lineedit
 	pkgdesc = a readline library based on prompt_toolkit which supports multiple modes
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
-	url = https://github.com/randy3k/lineedit/archive/v0.1.5.tar.gz
+	url = https://github.com/randy3k/lineedit/archive/v0.1.6.tar.gz
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -11,8 +11,8 @@ pkgbase = python-lineedit
 	depends = python-pygments
 	depends = python-wcwidth
 	depends = python-six
-	source = python-lineedit-0.1.5.tar.gz::https://github.com/randy3k/lineedit/archive/v0.1.5.tar.gz
-	sha256sums = f5a8cc9a389b0827b0a31641be2d328092c844b9115ac9ee0d7898c4a763c4db
+	source = python-lineedit-0.1.6.tar.gz::https://github.com/randy3k/lineedit/archive/v0.1.6.tar.gz
+	sha256sums = ba213cc21822f24c3da4df11833ec93750fe35ad63479e7e5a01d1632c20e18f
 
 pkgname = python-lineedit
 
