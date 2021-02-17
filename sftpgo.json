@@ -174,7 +174,11 @@
   },
   "http": {
     "timeout": 20,
+    "retry_wait_min": 2,
+    "retry_wait_max": 30,
+    "retry_max": 3,
     "ca_certificates": [],
+    "certificates": [],
     "skip_tls_verify": false
   },
   "kms": {

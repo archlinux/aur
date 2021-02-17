@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Fully featured and highly configurable SFTP server with optional FTP/S and WebDAV support. It can serve local filesystem, S3, GCS, Azure Blob, SFTP'
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ source=("git+https://github.com/drakkan/${pkgname}#tag=v${pkgver}"
   "sftpgo.json"
   "sftpgo.sysusers")
 sha256sums=('SKIP'
-  'c78069828a88b18f4ba7454a3e91bdf63829ed17b532528805edb8d08ce8e292'
+  '8725da4ee99b1d8a86b7bfc2d03fd9483da2c18f18196c339ff197355e7601d9'
   '44658210043f805057c2e4b473653637a91204e4da17954b08081292c72edcb8')
 
 _uid_sftpgo=315
