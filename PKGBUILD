@@ -9,7 +9,7 @@ pkgdesc="Tryton module to implement product classification"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('dd74a411fb52bf199020dfda11d600670715c33b95f5863950f28d0aa324c732')
