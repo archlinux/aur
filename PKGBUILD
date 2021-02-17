@@ -1,9 +1,9 @@
 # Maintainer: Christoph Hartmann <mail_to_chriss@gmx.net>
 pkgname=hdx-realtime-media-engine
-pkgver=2.9.200
-_short_pkgver=29200
-_long_pkgver=2.9.200
-_deb_rebuild=2506
+pkgver=2.9.300
+_short_pkgver=29300
+_long_pkgver=2.9.300
+_deb_rebuild=2604
 pkgrel=0
 pkgdesc='Plug-In for Citrix Receiver to support clear, crisp high-definition audio-video calls, particularly with Microsoft Skype® for Business.'
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ makedepends=('binutils' 'tar' 'xz' 'awk')
 install="${pkgname}.install"
 source_i686=("HDX_RealTime_Media_Engine_${pkgver}_for_Linux.zip::https:$(curl -L -silent "${_url}/${pkgname}-${_short_pkgver}.html#ctx-dl-eula" | awk -F'"' '/href=.*rel=.*Linux.zip/ { print $10 }')")
 source_x86_64=("HDX_RealTime_Media_Engine_${pkgver}_for_Linux_x64.zip::https:$(curl -L -silent "${_url}/${pkgname}-${_short_pkgver}.html#ctx-dl-eula" | awk -F'"' '/href=.*rel=.*Linux_x64.zip/ { print $10 }')")
-sha256sums_i686=('23729a3d79b6d3e078921ef489da125a8488cc0d689c4415ed0aa6782203f32d')
-sha256sums_x86_64=('b9e02b15ba646828c83592535b5dc39208a123c04b5ead674999d30c15a7766e')
+sha256sums_i686=('1b8fe20f0231f0ab47697be3cd60d34747e92ceee8baec4ca7ca97b0f7d8ffb6')
+sha256sums_x86_64=('001f6f48ed1340bab03b65692184d310d148f71a842042fe1c56a2b29b908f34')
 
 package() {
     ICAROOT='/opt/Citrix/ICAClient'
