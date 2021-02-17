@@ -2,4 +2,5 @@
 /pkg/
 /*.log
 /*.tar.xz
+/*.tar.zst
 /liblomse*.tar.gz
