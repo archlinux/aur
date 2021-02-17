@@ -1,7 +1,7 @@
 # Maintainer: Pieter Joost <pj@born2code.net>
 pkgname=imgdiff
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 url="https://github.com/n7olkachev/${pkgname}"
 pkgdesc="Faster than the fastest in the world pixel-by-pixel image difference tool."
 arch=('i686' 'x86_64')
@@ -11,9 +11,7 @@ makedepends=(
 	'git'
 )
 source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=(
-	'a8f7958f42ed207811a65d31b2177c92'
-)
+md5sums=('a8f7958f42ed207811a65d31b2177c92')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
