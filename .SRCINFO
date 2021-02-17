@@ -1,8 +1,8 @@
 pkgbase = mpd-rich-presence-discord-git
 	pkgdesc = Broadcast your MPD state using discord rich presence!
-	pkgver = r29
-	pkgrel = 7
-	url = https://github.com/SSStormy
+	pkgver = r50.ced628d
+	pkgrel = 1
+	url = https://github.com/justas-d
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -11,7 +11,7 @@ pkgbase = mpd-rich-presence-discord-git
 	depends = libmpdclient
 	depends = gcc-libs
 	depends = discord-rpc-api-git
-	source = git+https://github.com/SSStormy/mpd-rich-presence-discord.git
+	source = git+https://github.com/justas-d/mpd-rich-presence-discord.git
 	md5sums = SKIP
 
 pkgname = mpd-rich-presence-discord-git
