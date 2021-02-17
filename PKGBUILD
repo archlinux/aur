@@ -9,7 +9,7 @@ pkgdesc="Tryton module for timesheet on production work"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('cf641f2d4cc4d3e6438f21c8f72fbbfcad1f72d44d7251820daf1e7b5b5b2b76')
