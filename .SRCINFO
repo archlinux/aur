@@ -15,7 +15,7 @@ pkgbase = wrapland-kwinft
 	provides = wrapland
 	conflicts = wrapland
 	source = https://gitlab.com/kwinft/wrapland/-/archive/wrapland@0.521.0/wrapland-wrapland@0.521.0.tar.gz
-	md5sums = c10df1b6f04dfe41f8b576bed00c4596
+	md5sums = 0397426fb1412b81e45cb5e9f04d5519
 
 pkgname = wrapland-kwinft
 

@@ -13,7 +13,7 @@ provides=("wrapland")
 conflicts=("wrapland")
 makedepends=(extra-cmake-modules doxygen qt5-tools wayland-protocols pkgconf)
 source=("https://gitlab.com/kwinft/wrapland/-/archive/wrapland@$_pkgver/wrapland-wrapland@$_pkgver.tar.gz")
-md5sums=('c10df1b6f04dfe41f8b576bed00c4596')
+md5sums=('0397426fb1412b81e45cb5e9f04d5519')
 
 prepare() {
   tar -xvf wrapland-wrapland@$_pkgver.tar.gz
