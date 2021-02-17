@@ -1,10 +1,9 @@
 # Maintainer: Sampson Crowley <sampsonsprojects@gmail.com>
-# Contributor: Rhys Kenwell <redrield+aur@gmail.com>
-# Github Contributor: Michael Herold <https://github.com/michaelherold>
+# Upstream Creator: Wil Moore III (https://github.com/wilmoore)
 
 pkgname=php-version
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 _builddir="php-version-$pkgver-$pkgrel"
 pkgdesc="Chruby-like (a.k.a. simple) script for switching between PHP versions"
 arch=('any')

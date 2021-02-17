@@ -1,7 +1,7 @@
 pkgbase = php-version
 	pkgdesc = Chruby-like (a.k.a. simple) script for switching between PHP versions
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wilmoore/php-version/wiki/Installing
 	install = php-version.install
 	arch = any
