@@ -13,7 +13,7 @@ makedepends=('git'
              'yasm'
              'cmake'
              )
-source=("https://web.archive.org/web/20150801145006/http://mujintou.org.uk/projects/decomb.zip")
+source=("https://web.archive.org/web/20150801145006if_/http://mujintou.org.uk/projects/decomb.zip")
 sha256sums=('3c8efb8ea8c831c67c9af8ce9ccc7a0c18416ac75b1374181ced0708a68c36ba')
 provides=("avxsynth-plugin-${_plug}")
 conflicts=("avxsynth-plugin-${_plug}")
