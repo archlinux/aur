@@ -9,7 +9,7 @@ pkgdesc="Tryton module for CFONB SEPA payment"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('79cb0ee0ed673eb91cd8bd9d71bab52919bdb3837a8932766adc539fa5a9d055')
