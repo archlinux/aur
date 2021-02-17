@@ -9,7 +9,7 @@ pkgdesc="Tryton module to add a secondary unit on purchase line"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('bcf7b0775ad5a82c34ad539b94a49f6f0e6e68731b9e4253b2c44f81bc4753d0')
