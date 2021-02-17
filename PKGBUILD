@@ -9,7 +9,7 @@ pkgdesc="Tryton module to support tax report on cash basis"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('3217a3218176c9f7c65522f79988d9d12b2a6cafa6ce89d8ac59560a668e4d78')
