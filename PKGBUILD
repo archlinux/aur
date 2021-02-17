@@ -9,7 +9,7 @@ pkgdesc="Tryton module to group sale invoices"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('5bd7dd3b05debca24860364881d0a5845468dab11460cb8e8fbef582dac24cc5')
