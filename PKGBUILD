@@ -38,5 +38,5 @@ package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	node build
-	node install --user root --group root --license
+	node install --user root --group root --license "${pkgdir}/usr"
 }
