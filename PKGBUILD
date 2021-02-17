@@ -9,7 +9,7 @@ pkgdesc="Tryton module to add measurements to product"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('3e237fd7c5e5e2e5849dc2df909837c5afc3f64c8e4fb957c7bc217a2b85a0ed')
