@@ -3,7 +3,7 @@
 _pkgname='jetbrains-toolbox'
 pkgname="${_pkgname}-fix"
 pkgver=1.20.7940
-pkgrel=3
+pkgrel=4
 pkgdesc='Manage your tools the easy way'
 arch=('x86_64')
 url='https://www.jetbrains.com/toolbox/'
@@ -28,6 +28,9 @@ makedepends=(
 )
 provides=(
     "${_pkgname}"
+)
+conflicts=(
+	"${_pkgname}"
 )
 options=(
     !strip
