@@ -5,7 +5,7 @@
 _name=Rack
 pkgname=vcvrack
 pkgver=1.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Open-source virtual modular synthesizer'
 url="https://vcvrack.com/"
 license=('custom' 'CCPL' 'GPL3')
@@ -27,7 +27,7 @@ source=(
 )
 sha512sums=(
 	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-	'f44f4f2850ec481b648a06256eeb6632b4a98cd59822d1d8d8da38f8368ee065c6c2251a5a401bc7beef719a66ac43ca6bf063f1c10c267ec892024aa86f4fa2'
+	'b31b3a3fa2b568dc875312144191dae07ef5df99e4e2a3e1faea9e2ad2f3c898c11e25c922cb99a80971cec4f8129a69928148e4fdf09351bdf0411e20e9e1a1'
 	'8ca3fbc790fa5d311ce41b5b9e84a79fe51db73cbf0f56f04d0429b28f0c4c0646e2d0c081b584161356ec24b06cc0181b115b865d564ff1452c64a57135acf6'
 )
 
