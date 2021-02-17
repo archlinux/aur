@@ -1,3 +1,9 @@
+#####################
+# These configuration options are taken from https://docs.drone.io/runner/exec/configuration/ .
+# Be aware that the list below can get out of date!
+#####################
+
+
 # Optional string value configures the http listener port. The default value is
 # :3000. Overriding this value is not recommended.
 # DRONE_HTTP_BIND=:3000

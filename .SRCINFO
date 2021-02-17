@@ -1,7 +1,7 @@
 pkgbase = drone-runner-exec-git
 	pkgdesc = A CI/CD runner for drone, which runs its tasks locally on the machine without any virtualization.
 	pkgver = v1.0.0.beta.9.r2.gc0a612e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/drone-runners/drone-runner-exec
 	install = drone-runner-exec.install
 	arch = i686
@@ -25,11 +25,11 @@ pkgbase = drone-runner-exec-git
 	sha512sums = SKIP
 	sha512sums = 34514288fd78afcc21b86ff5d23dc0e4ccc8dc67d2db032480a3cfb89de5ad9bb19370cad8049a104fa3d44b5e03c208dc8425aa24bcd7e763c3673c7514beb6
 	sha512sums = 66e97a91ce27f2711a102f47660fc407b0fdde35564c64ab3c2fae55cbdb3fadf957cafcb0b19c6be94d6a2336cbfb92ee2d8ecf58c8ef627ba601e7bfadcee0
-	sha512sums = eb074efe356c22849b457c8e53c8ffb2eed968660cad0acc28836abda9c16259442a1df7c0660356e42ff53bfe59542028319fe1e55f0eea994b97a316f982e1
+	sha512sums = bcd8e0fcef52473e4c02e711a30d58e87329c30036ae7761f4130863fa8b8b9a50e3469624b5d155c1d4b7390616eacf2303f3f71bbfbad0223048c71918affa
 	sha512sums = 02f872df18308e5dd13003adac9f17aabe70506870603672031838a1e0263e6b118fce9a91e10300a864a16697301144f498123d277a022db41aea1c00c80072
 	sha512sums = ce53a620c6277e531734ff0807e66ac918495b337c7763d51a94587bacaea247d1d4c61e506ecb6816aa8e5676312698ed2f2116ee38e031135003ebf6cfcb4e
 	sha512sums = 34e3ee581f4415aec7e98c11f4bfb9f225aec05de068da1c858806a3148ec72102a156c934499091f31e42b4e50fa9fab9f2e8ce62707463b727e3735fd4719d
-	sha512sums = b093531f17ae9f92c55ab55a613923b8276873abf6b608bf95cec8fa1f174d30756ab81ac80294d97fd3aac536bb7144423fae8862ccbfd65c77b6dbe785e4f1
+	sha512sums = af5491fdf599b96446d326d276547108dba838134ae5d5fcc14213ee8f658e485444022dc7f8f558eca1ae5b9a7cebe40eb81f50deafb17a6122d761cc520aca
 
 pkgname = drone-runner-exec-git
 
