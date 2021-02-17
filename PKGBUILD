@@ -4,7 +4,7 @@ pkgname=tauon-music-box
 _pkgname=tauonmb
 _gitname=TauonMusicBox
 pkgver=6.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern streamlined music player"
 arch=('any')
 url="https://tauonmusicbox.rocks"
@@ -31,7 +31,7 @@ depends=('python-pillow'
          'gst-plugins-good'
          'gst-plugins-bad'
          'noto-fonts-extra'
-         'noto-fonts-cjk'
+         'noto-fonts'
          'sdl2_image'
          'xdg-utils'
          'mpg123'
@@ -42,7 +42,8 @@ depends=('python-pillow'
          'libopenmpt' # AUR
          )
          
-optdepends=('p7zip: 7z archive extraction support'
+optdepends=('noto-fonts-cjk: Matching font for CJK characters'
+            'p7zip: 7z archive extraction support'
             'unrar: RAR archive extraction support'
             'python-plexapi: Plex streaming'
             'python-pypresence: Discord status support'
