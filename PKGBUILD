@@ -11,7 +11,7 @@ arch=('any')
 url="https://github.com/pukkandan/yt-dlp"
 license=('Unlicense')
 depends=('python')
-makedepends=('git' 'pandoc' 'python-setuptools')
+makedepends=('git' 'pandoc' 'python-setuptools' 'glibc')
 optdepends=('ffmpeg: for video post-processing'
             'rtmpdump: for rtmp streams support'
             'atomicparsley: for embedding thumbnails into m4a files'

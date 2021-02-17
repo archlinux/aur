@@ -8,6 +8,7 @@ pkgbase = youtube-dlp
 	makedepends = git
 	makedepends = pandoc
 	makedepends = python-setuptools
+	makedepends = glibc
 	depends = python
 	optdepends = ffmpeg: for video post-processing
 	optdepends = rtmpdump: for rtmp streams support
