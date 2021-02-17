@@ -1,0 +1,40 @@
+pkgbase = alire
+	pkgdesc = A catalog of ready-to-use Ada libraries plus a command-line tool (alr) to obtain, build, and incorporate them into your own projects. It aims to fulfill a similar role to Rust's cargo or OCaml's opam.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://alire.ada.dev/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gprbuild
+	depends = glibc
+	source = git+https://github.com/alire-project/alire.git#tag=v0.7.1
+	source = git+https://github.com/alire-project/xmlezout.git
+	source = git+https://github.com/mosteo/ajunitgen.git
+	source = git+https://github.com/mosteo/aaa.git
+	source = git+https://github.com/alire-project/semantic_versioning.git
+	source = git+https://github.com/alire-project/simple_logging.git
+	source = git+https://github.com/pmderodat/ada-toml.git
+	source = git+https://github.com/alire-project/gnatcoll-core.git
+	source = git+https://github.com/alire-project/libhello.git
+	source = git+https://github.com/mosteo/ansi-ada
+	source = git+https://github.com/mosteo/uri-ada.git
+	source = git+https://github.com/mosteo/minirest
+	source = git+https://github.com/Fabien-Chouteau/spdx_ada#commit=319ca7bcc1e2eb1843aad1f64aca3ecba91a2bcc
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = alire
+
