@@ -6,12 +6,17 @@ pkgdesc="Atomic Wallet is a decentralized Cryptocurrency wallet that supports mo
 arch=('x86_64')
 url="https://atomicwallet.io"
 license=('unknown')
-source=("https://get.atomicwallet.io/download/atomicwallet-$pkgver-116.AppImage")
-sha256sums=('ff649f16dcf9fffd5da8832b564bdc219f7959277f3673c443e6d5c3331b643f')
-options=('!strip')
+source=("https://get.atomicwallet.io/download/atomicwallet-$pkgver-116.rpm")
+sha256sums=('4e6e3aabe764b28cdc2edc08ef83e3c60c5fe13054699eed8cc0bea8fb58c13c')
+makedepends=('rpmextract')
 
 package() {
-	set -eu
+  set -e
 
-	install -Dm755 atomicwallet-$pkgver-*.AppImage "$pkgdir/usr/bin/atomicwallet"
+  mv opt usr "$pkgdir"
+
+  cd "$pkgdir/usr"
+  mkdir bin
+  cd bin
+  ln -s "../../opt/Atomic Wallet/atomic" atomicwallet
 }
