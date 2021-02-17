@@ -3,7 +3,7 @@ _name=mn32-rs
 pkgname=${_name}-git
 pkgdesc="Configuration tool for Mionix Naos 3200 (rust port)"
 url="https://codeberg.org/antsa/mn32-rs"
-pkgver=r2.4f98675
+pkgver=r4.7b01251
 pkgrel=1
 arch=('x86_64')
 license=('Unlicense')
@@ -22,13 +22,14 @@ pkgver() {
 build() {
     cd "$pkgname"
     cargo build --release --all-features --target-dir=target
-    strip ${srcdir}/mn32-rs-git/target/release/${_name}
+    strip ${srcdir}/mn32-rs-git/target/release/${_name}-gui
 }
 
 package() {   
     install -d "${pkgdir}"/usr/share/applications
     install -d "${pkgdir}"/usr/lib/udev/rules.d
+    install -d "${pkgdir}"/usr/bin
     install -m644 "${srcdir}/org.codeberg.antsa.mn32-rs.desktop" "${pkgdir}/usr/share/applications"
     install -m644 "${srcdir}/99-mn32-rs.rules" "${pkgdir}/usr/lib/udev/rules.d"
-    install -Dm 755 ${srcdir}/mn32-rs-git/target/release/${_name} -t "${pkgdir}/usr/bin"
+    install -m755 ${srcdir}/mn32-rs-git/target/release/${_name}-gui "${pkgdir}/usr/bin/mn32-rs"
 }
