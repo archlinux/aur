@@ -9,7 +9,7 @@ pkgdesc="Tryton module to communicate with Chorus"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('9b07a72a602c718c761bd345f642a2427fd74bb2480513a3507d55ef5a67f99c')
