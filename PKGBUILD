@@ -9,7 +9,7 @@ pkgdesc="Tryton module to plan, coordinate and manage marketing campaigns"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('8d346e2ad614abf0965d437c7c79d8e9d01fa49dc0a289c1794158f3bfe826a8')
