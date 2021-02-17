@@ -1,9 +1,9 @@
 # Author: Roman Gilg <subdiff@gmail.com>
 
 pkgname=wrapland-kwinft
-pkgver=5.20.0
-_pkgver=0.520.0
-pkgrel=0
+pkgver=5.21.0
+_pkgver=0.521.0
+pkgrel=1
 pkgdesc='Qt/C++ library wrapping libwayland'
 arch=(x86_64)
 url="https://gitlab.com/kwinft/wrapland"

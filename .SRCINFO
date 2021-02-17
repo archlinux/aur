@@ -1,7 +1,7 @@
 pkgbase = wrapland-kwinft
 	pkgdesc = Qt/C++ library wrapping libwayland
-	pkgver = 5.20.0
-	pkgrel = 0
+	pkgver = 5.21.0
+	pkgrel = 1
 	url = https://gitlab.com/kwinft/wrapland
 	arch = x86_64
 	license = LGPL
@@ -14,7 +14,7 @@ pkgbase = wrapland-kwinft
 	depends = wayland
 	provides = wrapland
 	conflicts = wrapland
-	source = https://gitlab.com/kwinft/wrapland/-/archive/wrapland@0.520.0/wrapland-wrapland@0.520.0.tar.gz
+	source = https://gitlab.com/kwinft/wrapland/-/archive/wrapland@0.521.0/wrapland-wrapland@0.521.0.tar.gz
 	md5sums = c10df1b6f04dfe41f8b576bed00c4596
 
 pkgname = wrapland-kwinft
