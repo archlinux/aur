@@ -62,7 +62,7 @@ case "$CARCH" in
 esac
 
 prepare() {
-  cd $_pkgname
+  cd vscode
   
   git checkout $_commit
 
@@ -123,7 +123,7 @@ build() {
   ln -sf /usr/bin/python2 path/python
   export PATH="$PWD/path:$PATH"
 
-  cd $_pkgname
+  cd vscode
 
   yarn install --arch=$_vscode_arch
 
