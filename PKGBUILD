@@ -3,14 +3,14 @@
 
 _pkgname="sat-yt"
 pkgname="$_pkgname"-git
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Youtube plugin for saturnon"
 arch=('any')
 url="https://gitlab.com/TheDalaiAlpaca/sat-yt"
 license=('GPL3')
 makedepends=()
-depends=('bash' 'coreutils' 'ncurses' 'youtube-dl' 'mpv' 'jq' 'less') 
+depends=('bash' 'coreutils' 'ncurses' 'youtube-dl' 'mpv' 'jq' 'less' 'grep') 
 optdepends=()
 md5sums=(SKIP)
 source=("https://gitlab.com/TheDalaiAlpaca/$_pkgname/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz")
