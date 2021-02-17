@@ -9,7 +9,7 @@ pkgdesc="Tryton module for continental real-time stock valuation"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('1651bd965970ba378c038fc80787e98d1a2ab1d3a2091fecd1a68c9994330b99')
