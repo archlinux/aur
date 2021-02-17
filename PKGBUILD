@@ -9,7 +9,7 @@ pkgdesc="Tryton module to add a secondary unit on stock move"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('d439ac53d7b72fde31bffe5e60dd9e8c3bd64fd9baa32c383b069dc018ce0d3e')
