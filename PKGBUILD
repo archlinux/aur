@@ -9,7 +9,7 @@ pkgdesc="Tryton module to add FIFO cost method"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('e4ab2b6d24ba7f11f7fb86a4a4041def4f5df0589bf7349952d662564c88a683')
