@@ -9,7 +9,7 @@ pkgdesc="Tryton module for payment clearing"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('2157037061a69de2c134aa986ce58256b574f20e554c80f4f5139d2eb8a343fc')
