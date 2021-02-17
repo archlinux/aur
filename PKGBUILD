@@ -5,11 +5,11 @@ pkgver=5.8.1
 _pkgdir=5.8
 pkgrel=1
 pkgbase=python-$_name
-pkgdesc="Allows users to enter requests for product supply (requisition). This will create a Purchase request by line which will be treated by the purchasing department."
+pkgdesc="Allows users to enter requests for product supply (requisition). This will create a "Purchase request" by line which will be treated by the purchasing department."
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('afd2e54bfe04b6184fb1ae94cdc729dd12a4d8cd03e96a5e67d5568c143677ed')
