@@ -1,6 +1,6 @@
 pkgbase = engauge
 	pkgver = 12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://markummitchell.github.io/engauge-digitizer/
 	install = engauge.install
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = engauge
 	makedepends = libpng
 	makedepends = openjpeg2
 	makedepends = poppler-qt5
+	options = !makeflags
 	source = engauge-12.1.tar.gz::https://github.com/markummitchell/engauge-digitizer/archive/v12.1.tar.gz
 	source = engauge.sh
 	source = engauge.desktop
