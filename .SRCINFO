@@ -1,0 +1,19 @@
+pkgbase = python-libreasr
+	pkgdesc = LibreASR: An On-Premises, Streaming Speech Recognition System
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/iceychris/LibreASR
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	source = https://github.com/iceychris/LibreASR/archive/dev.zip
+	md5sums = SKIP
+
+pkgname = python-libreasr
+	depends = python>=3.7
+	optdepends = python-matplotlib
+	optdepends = python-scipy
+	optdepends = python-scikit-image
+	optdepends = python-stsci.imagestats
+	optdepends = python-acstools-doc: Documentation for Python ACS Tools
