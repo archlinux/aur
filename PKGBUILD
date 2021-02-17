@@ -2,7 +2,7 @@
 pkgname=qed-git
 pkgver=r155.0697882
 pkgrel=1
-pkgdesc="A port of Rob Pike's version of the QED editor for Unix, supporting UTF8-encoded Unicode."
+pkgdesc="UTF8/Unicode-aware port of Rob Pike's QED editor for Unix"
 arch=('i686' 'x86_64')
 url="https://github.com/phonologus/QED"
 license=('unknown')
