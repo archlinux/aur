@@ -2,13 +2,13 @@
 
 pkgname=qqc2-breeze-style-git
 pkgver=r105.96d00f7
-pkgrel=3
+pkgrel=1
 pkgdesc="Breeze inspired QQC2 Style"
 arch=('x86_64' 'armv7' 'aarch64')
 url="https://invent.kde.org/plasma/qqc2-breeze-style"
 license=('GPL3')
-depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols2' 'kirigami2')
-makedepends=('git')
+depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols2' 'kirigami2-git')
+makedepends=('git' 'extra-cmake-modules')
 provides=('qqc2-breeze-style')
 conflicts=('qqc2-breeze-style')
 source=("git+${url}.git")
