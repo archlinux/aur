@@ -1,0 +1,18 @@
+pkgbase = hs-airdrop
+	pkgdesc = Handshake airdrop redemption
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://handshake.org
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	provides = hs-airdrop
+	source = https://handshake.org/files/hs-airdrop-0.10.0.tar.gz
+	source = https://handshake.org/files/hs-airdrop-0.10.0.tar.gz.asc
+	validpgpkeys = B4B1F62DBAC084E333F3A04A8962AB9DE6666BBD
+	sha256sums = b2dd2438f8552c880a4659cacb41ce59108d07bce08c291c6a690abe4f7bdfdc
+	sha256sums = SKIP
+
+pkgname = hs-airdrop
+
