@@ -9,7 +9,7 @@ pkgdesc="Tryton module to support Stripe payment with Vue Storefront"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('3f3ef2f4a8ec80bff7b4d794938ccd37d4e3f66b5778385a771feaba9733d238')
