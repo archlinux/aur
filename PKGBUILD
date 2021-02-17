@@ -9,7 +9,7 @@ pkgdesc="Tryton module to add default location on product"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('194f05637dd5d0886b05f8849411bf0aad13cd7b04497545b3c564694a78d388')
