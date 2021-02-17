@@ -9,7 +9,7 @@ pkgdesc="Tryton module for production routing"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('22d4079fe556ea4c2ff6860614a6989bdd6f19ae33940d639d1740a77b98a7aa')
