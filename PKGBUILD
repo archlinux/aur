@@ -17,7 +17,7 @@ pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - with tran
 _electron=electron9
 _commit=52838cf6799cc448e738677ec37e86cf62a5bd89
 pkgver=1.54.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://github.com/microsoft/vscode'
 license=('MIT')
@@ -29,7 +29,7 @@ makedepends=('git' 'gulp' 'npm' 'python2' 'yarn' 'nodejs-lts-erbium')
 conflicts=('code')
 provides=('code')
 install='code-transparent.install'
-source=("git+$url.git#commit=$_commit"
+source=("$_pkgname::git+$url.git#commit=$_commit"
         'code.js'
         'code.sh'
         'product_json.diff'
@@ -62,7 +62,7 @@ case "$CARCH" in
 esac
 
 prepare() {
-  cd vscode
+  cd $_pkgname
   
   git checkout $_commit
 
@@ -123,7 +123,7 @@ build() {
   ln -sf /usr/bin/python2 path/python
   export PATH="$PWD/path:$PATH"
 
-  cd vscode
+  cd $_pkgname
 
   yarn install --arch=$_vscode_arch
 
