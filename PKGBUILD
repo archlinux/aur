@@ -2,7 +2,7 @@
 # Contributor: pappy@a_s_c_e_l_i_o_n.c_o_m
 
 pkgname=dbeaver-ce
-pkgver=7.3.4
+pkgver=7.3.5
 pkgrel=1
 pkgdesc="Free Universal SQL Client for Developers and Database Administrators (Community Edition)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/serge-rider/dbeaver/a
         "${pkgname}.sh"
         "${pkgname}.profile.gz"
         "${pkgname}.hook")
-sha256sums=('1adc7989776955d52afb5f6ff7cf4d027f2a8d7b0522ebacdaf8ece1f51db228'
+sha256sums=('64ea39b57f106d0d37b1df8fce63d4c8f73cfe588eb6ffe9d2a215fb77e82d44'
             'a53bcfa37f71e96fdc0ba3df6748d147f29fcb3bc7f35ffad9d876f3e2b072aa'
             'ba3c2248960b2b5c6eafa227ec9bd1223e21287a991cd3b912f0b0a984666c80'
             '1863e74bdcf22b7328e6e8487cbebff7d5360e34bde85c1dd226b168b4737034'
