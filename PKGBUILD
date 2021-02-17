@@ -9,7 +9,7 @@ pkgdesc="Tryton module to integrate with Vue Storefront"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('c718c90b542600bf3368ce74b61596fd849642b7919b551bd518e3bb05548659')
