@@ -1,20 +1,21 @@
 pkgbase = r-lifecycle
 	pkgdesc = Manage the Life Cycle of your Package Functions
-	pkgver = 0.2.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=lifecycle
 	arch = any
 	license = GPL3
-	depends = r>=3.2
+	depends = r>=3.3
 	depends = r-glue
-	depends = r-rlang>=0.4.0
+	depends = r-rlang>=0.4.10
 	optdepends = r-covr
 	optdepends = r-crayon
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/lifecycle_0.2.0.tar.gz
-	md5sums = 42f1d553553ad8f092a20817a3077a6f
+	optdepends = r-tibble
+	source = https://cran.r-project.org/src/contrib/lifecycle_1.0.0.tar.gz
+	sha256sums = 03334ab213f2ad49a49e184e73f2051e04d35d43f562db903e68243cd2ec0f8e
 
 pkgname = r-lifecycle
 
