@@ -9,7 +9,7 @@ pkgdesc="Tryton module for stock packaging"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('e47b539891fc42f0e1e4cc9f9d15aa54b34a92410259c7d225eaeb390fd3b1c8')
