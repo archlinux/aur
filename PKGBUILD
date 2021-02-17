@@ -8,19 +8,19 @@
 pkgname=vivaldi-arm-bin
 _pkgname=${pkgname%-arm-bin}
 pkgver=3.6.2165.36
-pkgrel=6
+pkgrel=7
 _pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind'
 arch=('armv6h' 'armv7h' 'aarch64')
 url="https://vivaldi.com"
 license=('custom:Vivaldi EULA')
 provides=('vivaldi' 'www-browser')
-depends=('alsa-lib' 'desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libcups' 'libxss' 'mesa' 'nss' 'shared-mime-info' 'ttf-font')
+depends=('alsa-lib' 'desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libcups' 'libxss' 'nss' 'shared-mime-info' 'ttf-font')
 optdepends=(
     'libnotify: native notifications'
 )
 options=('!emptydirs' '!strip')
-install="$pkgname.install"
+install='update-ffmpeg.install'
 _source_armhf=("https://downloads.vivaldi.com/stable/vivaldi-stable_${pkgver}-${_pkgrel}_armhf.deb")
 source_armv6h=("$_source_armhf")
 source_armv7h=("$_source_armhf")
@@ -38,17 +38,11 @@ prepare() {
 ### Package ###
 package() {
     ## Copy Directory Structure ##
-    cp --parents -a {opt,usr/share} "$pkgdir"
-    
+    cp --parents -a {opt,usr} "$pkgdir"
+
     ## SUID Sandbox ##
     chmod 4755 "$pkgdir"/opt/$_pkgname/${_pkgname}-sandbox
-    
-    ## Place Binary on System PATH ##
-    install -dm0755 "$pkgdir"/usr/bin
-    ln -fs \
-    /opt/vivaldi/vivaldi \
-    "$pkgdir"/usr/bin/${_pkgname}-stable
-    
+
     ## Install Icons ##
     for res in 16 22 24 32 48 64 128 256; do
         install -dm0755 "$pkgdir"/usr/share/icons/hicolor/${res}x${res}/apps
@@ -56,13 +50,13 @@ package() {
         /opt/$_pkgname/product_logo_${res}.png \
         "$pkgdir"/usr/share/icons/hicolor/${res}x${res}/apps/$_pkgname.png
     done
-    
+
     ## License ##
     install -dm0755 "$pkgdir"/usr/share/licenses/$_pkgname
     ln -fs \
     /opt/$_pkgname/LICENSE.html \
     "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE.html
-    
-    ## Remove Unnecessary Directories/Files ##
-    rm -rf "$pkgdir"/opt/vivaldi/{cron,update-widevine,WidevineCdm}
+
+    ## Remove Debian/Widevine Directories/Files ##
+    rm -rf "$pkgdir"/opt/$_pkgname/{cron,update-widevine,WidevineCdm}
 }
