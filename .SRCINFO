@@ -1,0 +1,17 @@
+pkgbase = lyr-no-prompt-git
+	pkgdesc = A web scraper for genius.com to find lyrics for a given song without a prompt
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/TecTrixer/lyr-no-prompt.git
+	arch = x86_64
+	arch = i686
+	arch = arm
+	license = MIT
+	makedepends = go
+	makedepends = git
+	conflicts = lyr-no-prompt-git
+	source = git+https://github.com/TecTrixer/lyr-no-prompt.git
+	md5sums = SKIP
+
+pkgname = lyr-no-prompt-git
+
