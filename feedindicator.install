@@ -1,25 +1,13 @@
 post_install() {
-  xdg-icon-resource install --theme ubuntu-mono-dark --novendor --size 22 /usr/share/feedindicator/dark/indicator-feedindicator.png indicator-feedindicator
-  xdg-icon-resource install --theme ubuntu-mono-dark --novendor --size 22 /usr/share/feedindicator/dark/indicator-feedindicator-attention.png indicator-feedindicator-attention
-  xdg-icon-resource install --theme ubuntu-mono-light --novendor --size 22 /usr/share/feedindicator/light/indicator-feedindicator.png indicator-feedindicator
-  xdg-icon-resource install --theme ubuntu-mono-light --novendor --size 22 /usr/share/feedindicator/light/indicator-feedindicator-attention.png indicator-feedindicator-attention
-  xdg-icon-resource install --theme hicolor --novendor --size 22 /usr/share/feedindicator/hicolor/indicator-feedindicator.png indicator-feedindicator
-  xdg-icon-resource install --theme hicolor --novendor --size 22 /usr/share/feedindicator/hicolor/indicator-feedindicator-attention.png indicator-feedindicator-attention
-  xdg-icon-resource install --theme hicolor --novendor --size 128 --context apps /usr/share/feedindicator/feedindicator-logo.png feedindicator
-  xdg-icon-resource install --theme hicolor --novendor --size 48 --context apps /usr/share/feedindicator/feedindicator-48x48.png feedindicator
-
-  xdg-desktop-menu install --novendor /usr/share/feedindicator/feedindicator.desktop
+	xdg-icon-resource install --theme hicolor --novendor --size 48 --context apps /usr/share/feedindicator/icons/logo-48x48.png feedindicator
+	xdg-icon-resource install --theme hicolor --novendor --size 128 --context apps /usr/share/feedindicator/icons/logo-128x128.png feedindicator
+	xdg-icon-resource install --theme hicolor --novendor --size 512 /usr/share/feedindicator/icons/active.png feedindicator-active
+	xdg-icon-resource install --theme hicolor --novendor --size 512 /usr/share/feedindicator/icons/attention.png feedindicator-attention
 }
 
 post_remove() {
-  xdg-icon-resource uninstall --theme ubuntu-mono-dark --size 22 indicator-feedindicator
-  xdg-icon-resource uninstall --theme ubuntu-mono-dark --size 22 indicator-feedindicator-attention
-  xdg-icon-resource uninstall --theme ubuntu-mono-light --size 22 indicator-feedindicator
-  xdg-icon-resource uninstall --theme ubuntu-mono-light --size 22 indicator-feedindicator-attention
-  xdg-icon-resource uninstall --theme hicolor --size 22 indicator-feedindicator
-  xdg-icon-resource uninstall --theme hicolor --size 22 indicator-feedindicator-attention
-  xdg-icon-resource uninstall --theme hicolor --size 128 --context apps feedindicator
-  xdg-icon-resource uninstall --theme hicolor --size 48 --context apps feedindicator
-
-  xdg-desktop-menu uninstall feedindicator.desktop
+	xdg-icon-resource uninstall --theme hicolor --size 48 --context apps feedindicator
+	xdg-icon-resource uninstall --theme hicolor --size 128 --context apps feedindicator
+	xdg-icon-resource uninstall --theme hicolor --size 512 feedindicator-active
+	xdg-icon-resource uninstall --theme hicolor --size 512 feedindicator-attention
 }

@@ -1,41 +1,42 @@
-# Maintainer: Dafta <dafta007@gmail.com>
+# Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
+# Contributor: Dafta <dafta007@gmail.com>
+
 pkgname=feedindicator
-pkgver=1.03
+pkgver=2.0.0.20171011
+_commit=990d56a417be822b7d59da23deada927ab8d2ba6
 pkgrel=1
 pkgdesc="RSS feed updates in the indicator/notification area"
 arch=('any')
-url="https://github.com/nicolas-raoul/Feedindicator"
+url="https://github.com/feedindicator/${pkgname^}"
 license=('GPL3')
-depends=('python2-feedparser' 'python2-configobj' 'python2-libappindicator' 'python2-notify' 'python2-gconf')
-makedepends=('git' 'xdg-utils')
-install=feedindicator.install
-
-source=('git+https://github.com/nicolas-raoul/feedindicator.git')
-md5sums=('SKIP')
-_gitname=feedindicator
+depends=('libnotify'
+	 'python-configobj'
+	 'python-gobject'
+	 'python-feedparser')
+makedepends=('xdg-utils')
+install=${pkgname}.install
+source=("${pkgname}-${_commit}.tar.gz::https://github.com/${pkgname}/${pkgname^}/archive/${_commit}.tar.gz"
+	"fix-feed-notifications.patch::https://github.com/jnphilipp/${pkgname^}/commit/9565b461e849bbf5985a8c081124d97e3f6216f5.diff"
+	fix-makefile.patch)
+sha256sums=('ca6b457186fbf9253625cb40d141f637060465566e5c4f296e2a99ae4d09c8ac'
+            '94ab00bc7e61aa56ed9288e3e0c563eba5388485631ce3cdbf313d9c968f4836'
+            '3f5e4be3e76d61923dab4bd62d9e61c2db8a60ad074b4347961aff0f74b1a6f5')
 
 prepare() {
-  # adjust shebang
-  cd "$srcdir/$_gitname"
-  sed -i -e '1 s%^.*$%#!/usr/bin/python2.7%' feedindicator
+  mv "${pkgname^}-${_commit}" "${pkgname}-${pkgver}"
+  
+  # Apply feed notifications and makefile fix patches
+  cd "${pkgname}-${pkgver}"
+  patch --strip=1 --input="${srcdir}/fix-feed-notifications.patch"
+  patch --strip=1 --input="${srcdir}/fix-makefile.patch"
+}
+
+build() {
+  cd "${pkgname}-${pkgver}"
+  make
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-
-  mkdir -p $pkgdir/usr/share/feedindicator
-
-  cp feedindicator-icon.png $pkgdir/usr/share/feedindicator/feedindicator-icon.png
-  cp feedindicator-logo.png $pkgdir/usr/share/feedindicator/feedindicator-logo.png
-  cp feedindicator-48x48.png $pkgdir/usr/share/feedindicator/feedindicator-48x48.png
-  cp feedindicator.desktop $pkgdir/usr/share/feedindicator/feedindicator.desktop
-  cp -r languages/ $pkgdir/usr/share/feedindicator/
-  cp -r dark/ $pkgdir/usr/share/feedindicator/
-  cp -r light $pkgdir/usr/share/feedindicator/
-  cp -r hicolor $pkgdir/usr/share/feedindicator/
-
-  mkdir -p $pkgdir/usr/bin
-
-  cp feedindicator $pkgdir/usr/bin/feedindicator
-  chmod +x $pkgdir/usr/bin/feedindicator
+  cd "${pkgname}-${pkgver}"
+  make DESTDIR="$pkgdir" install 
 }
