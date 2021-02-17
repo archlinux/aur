@@ -1,15 +1,15 @@
 # Maintainer 5amu <v.casalino@protonmail.com>
 
 pkgname=searchpoc
-pkgver=v1.0.1
-pkgrel=1
+pkgver=1.0.3
+pkgrel=3
 pkgdesc="Search a PoC for a (or some) given CVE id"
 url="https://github.com/5amu/searchpoc/"
 license=('MIT')
 arch=('x86_64')
 depends=()
 makedepends=('python3' 'nuitka' 'chrpath')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/5amu/searchpoc/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/5amu/searchpoc/archive/v${pkgver}.tar.gz")
 sha256sums=("SKIP")
 
 build() {

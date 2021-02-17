@@ -1,14 +1,14 @@
 pkgbase = searchpoc
 	pkgdesc = Search a PoC for a (or some) given CVE id
-	pkgver = v1.0.1
-	pkgrel = 1
+	pkgver = 1.0.3
+	pkgrel = 3
 	url = https://github.com/5amu/searchpoc/
 	arch = x86_64
 	license = MIT
 	makedepends = python3
 	makedepends = nuitka
 	makedepends = chrpath
-	source = searchpoc-v1.0.1.tar.gz::https://github.com/5amu/searchpoc/archive/v1.0.1.tar.gz
+	source = searchpoc-1.0.3.tar.gz::https://github.com/5amu/searchpoc/archive/v1.0.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = searchpoc
