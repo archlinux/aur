@@ -5,23 +5,24 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-mopidy-tidal
 epoch=
-pkgver=0.2.2
+pkgver=0.2.4
 pkgrel=00
 pkgdesc='Tidal music service integration'
 arch=(any)
-url=https://github.com/mones88/mopidy-tidal
+url=https://github.com/tehkillerbee/mopidy-tidal
 license=(Apache)
-depends=(python mopidy python-pykka python-tidalapi4mopidy python-setuptools python-requests)
+depends=(python mopidy python-setuptools python-tidalapi python-requests python-pykka)
 ## EXTRA_DEPENDS ##
-makedepends=(python-pip python-wheel)
+makedepends=(python-pip)
 checkdepends=()
 provides=()
 conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/8c/99/aa810c8f1f2483e4ad7a77f18fce472386273cec5fd92641ec9471f36f92/Mopidy-Tidal-0.2.2.tar.gz)
-md5sums+=(ebc71dbe991ea53486d063ed046956f9)
+source+=(https://files.pythonhosted.org/packages/6f/9d/c3397726cc33b713f38710d5aa3400f0a38fc990c0d6ab8c0dfe3d54733e/Mopidy_Tidal-0.2.4-py2.py3-none-any.whl)
+md5sums+=(a0f1ca21cbf3e5d4d4c18476f5ba3791)
+noextract+=(Mopidy_Tidal-0.2.4-py2.py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(3b83ef96387f14655fc854ddc3c6bd57)
 
