@@ -53,7 +53,6 @@ pkgbase = librewolf-wayland-hg
 	source = librewolf.desktop
 	source = git+https://gitlab.com/librewolf-community/browser/common.git
 	source = git+https://gitlab.com/librewolf-community/settings.git#commit=3feb12464aa81df2f4ff162fce69890614c0ac8f
-	source = rust_build_fix.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/f43e70c98c07d8cf5a3325733ff5084b6f672564/rust_build_fix.patch
 	source = megabar.patch
 	source = remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/f43e70c98c07d8cf5a3325733ff5084b6f672564/remove_addons.patch
 	source = context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/f43e70c98c07d8cf5a3325733ff5084b6f672564/context-menu.patch
@@ -61,7 +60,6 @@ pkgbase = librewolf-wayland-hg
 	sha256sums = 0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 9a546803491818cfc016e4be908710e230b2b2b6640ec1a7df61c98053444471
 	sha256sums = 41a3fe162f6002688c84267deb965496b2751e592cbd4b69636dac940d5456bf
 	sha256sums = f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6
 	sha256sums = 3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd

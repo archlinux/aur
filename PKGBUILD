@@ -34,7 +34,6 @@ source=("hg+$_repo#revision=release"
         librewolf.desktop
         "git+https://gitlab.com/librewolf-community/browser/common.git"
         "git+https://gitlab.com/librewolf-community/settings.git#commit=${_settings_commit}"
-        "rust_build_fix.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/rust_build_fix.patch"
         megabar.patch
         "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
         "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch")
@@ -42,7 +41,6 @@ sha256sums=('SKIP'
             '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
             'SKIP'
             'SKIP'
-            '9a546803491818cfc016e4be908710e230b2b2b6640ec1a7df61c98053444471'
             '41a3fe162f6002688c84267deb965496b2751e592cbd4b69636dac940d5456bf'
             'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
             '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd')
@@ -123,9 +121,6 @@ END
   # Debian patch to enable global menubar
   # disabled for the default build, as it seems to cause issues in some configurations
   # patch -p1 -i ../unity-menubar.patch
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1684261
-  patch -Np1 -i ../rust_build_fix.patch
 
   # Disabling Pocket
   sed -i "s/'pocket'/#'pocket'/g" browser/components/moz.build
