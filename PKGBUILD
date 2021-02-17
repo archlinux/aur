@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname=puppet-editor-services
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Language server implementation for puppet"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('ruby' 'puppet')
 source=(https://github.com/lingua-pupuli/puppet-editor-services/archive/${pkgver}.tar.gz
         puppet-languageserver
         puppet-debugserver)
-sha256sums=('f02928583857b0eb0d834a0aeec0d9f6cfe7fbbe53de4659ee5afb6f8d35eac0'
+sha256sums=('2a2553e33de95e3be2f6373e0ba0e07b79cbfa727f446ab424fa21603f83f1c4'
             '09b7fab427b8d8001eae55f111030085e87b0324402964a1f6a4bb228e6566e5'
             '4f5b74a35cb288d86fda10ac88f3e3f76ae1a8b04ee559c574f4d4b2ab94326b')
 
