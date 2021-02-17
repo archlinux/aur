@@ -59,7 +59,7 @@ _lqxpatchrel=25
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
 pkgver=5.10.17.lqx1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Liquorix'
 url='https://liquorix.net/'
 arch=(x86_64)
@@ -74,14 +74,16 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
-        "https://github.com/damentz/${_lqxpatchname}/archive/${_major}-${_lqxpatchrel}.tar.gz")
+        "https://github.com/damentz/${_lqxpatchname}/archive/${_major}-${_lqxpatchrel}.tar.gz"
+        "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.5-causes-compilation-erro.patch")
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
 sha512sums=('95bc137d0cf9148da6a9d1f1a878698dc27b40f68e22c597544010a6c591ce1b256f083489d3ff45ff77753289b535135590194d88ef9f007d0ddab3d74de70e'
             'SKIP'
-            '93de2a0bc01537f9d9e5f117257c5d6c7ec8c16e5ad7ae8c350dd776c774190fc90add3361a15889b95bd24b3ca9d2a192bd4c3fb9a7431de61ea06bc3801792')
+            '93de2a0bc01537f9d9e5f117257c5d6c7ec8c16e5ad7ae8c350dd776c774190fc90add3361a15889b95bd24b3ca9d2a192bd4c3fb9a7431de61ea06bc3801792'
+            'd498ccd5790d6ccc2b6679e21d77359b3c90858bef063539c68f2f90808c70f6478565cba81f1e4e32c363ea4cfb07ffc5d3be3c69eca983c426f506b5c0fbf9')
 
 
 
