@@ -1,6 +1,6 @@
 pkgbase = mu-git
 	pkgdesc = mu and mu4e from git
-	pkgver = 1.4.7.r248.g4dbc6ac3
+	pkgver = 1.5.8.r5303
 	pkgrel = 1
 	epoch = 1
 	url = http://www.djcbsoftware.nl/code/mu

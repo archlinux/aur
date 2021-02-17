@@ -4,7 +4,7 @@
 # Thanks to the maintainers and contributors of the mu binary package
 
 pkgname=mu-git
-pkgver=1.4.7.r248.g4dbc6ac3
+pkgver=1.5.8.r5303
 pkgrel=1
 epoch=1
 pkgdesc="mu and mu4e from git"
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd mu
-  git describe --tags | sed 's+-+.r+' | tr - .
+  printf %s.r%s $(awk -F, '/AC_INIT/ {print $2}' configure.ac|tr -d \[ | tr -d \]) $(git rev-list --count HEAD)
 }
 
 build() {
