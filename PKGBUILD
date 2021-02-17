@@ -9,7 +9,7 @@ pkgdesc="Tryton module with stock forecasts"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
-depends=('python>=3.5')
+depends=('python>=3.6')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('1cd8302a7801a0f7a208b0e9ed4f629990f8bf9a2bf09f6a328342fb91c00093')
