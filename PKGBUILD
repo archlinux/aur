@@ -1,6 +1,6 @@
 # Maintainer: Jia Li <lijia1608@gmail.com>
 pkgname=libcint
-pkgver=3.0.20
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="General GTO integrals for quantum chemistry"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ makedepends=('cmake')
 provides=($pkgname=$pkgver)
 conflicts=(libcint-cint3)
 source=("https://github.com/sunqm/libcint/archive/v$pkgver.tar.gz")
-sha256sums=('91fa8e5015c0c191c922ebadbba96472d0613b407aae50e8b8e9c394dd8c6567')
+sha256sums=('37305481d95cfd35ad00bf85442d9494a636f3ede910889cb7a921970afd1690')
 
 build() {
     cd "$pkgname-$pkgver"
