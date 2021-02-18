@@ -1,0 +1,21 @@
+pkgbase = kdsoap-ws-discovery-client-git
+	pkgdesc = WS-Discovery client library based on KDSoap
+	pkgver = 0_r62.gdcefb65
+	pkgrel = 1
+	url = https://caspermeijn.gitlab.io/kdsoap-ws-discovery-client/
+	arch = x86_64
+	license = GPL3
+	license = custom
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = doxygen
+	makedepends = qt5-tools
+	makedepends = qt5-doc
+	depends = kdsoap-git
+	provides = kdsoap-ws-discovery-client
+	conflicts = kdsoap-ws-discovery-client
+	source = git+https://github.com/caspermeijn/kdsoap-ws-discovery-client.git
+	sha256sums = SKIP
+
+pkgname = kdsoap-ws-discovery-client-git
+
