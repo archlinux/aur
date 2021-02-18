@@ -1,16 +1,20 @@
 diff --git a/ppx_quickcheck/expander/environment.ml b/ppx_quickcheck/expander/environment.ml
-index 336b96e..d35a8b3 100644
+index 336b96e..14f29af 100644
 --- a/ppx_quickcheck/expander/environment.ml
 +++ b/ppx_quickcheck/expander/environment.ml
-@@ -50,7 +50,7 @@ let create_with_variance ~loc ~covariant ~contravariant param_list =
+@@ -50,10 +50,10 @@ let create_with_variance ~loc ~covariant ~contravariant param_list =
        let loc = core_type.ptyp_loc in
        let name = get_type_param_name param in
        match variance with
 -      | Invariant | Covariant ->
-+      | (NoVariance, NoInjectivity) | Covariant ->
++      | (NoVariance, NoInjectivity) | (Covariant, NoInjectivity) ->
          let pat, expr = gensym covariant loc in
          pat, `Covariant (name.txt, expr)
-       | Contravariant ->
+-      | Contravariant ->
++      | (Contravariant, NoInjectivity) ->
+         let pat, expr = gensym contravariant loc in
+         pat, `Contravariant (name.txt, expr))
+     |> List.unzip
 diff --git a/ppx_quickcheck/expander/environment.mli b/ppx_quickcheck/expander/environment.mli
 index 83df9bc..1940919 100644
 --- a/ppx_quickcheck/expander/environment.mli
@@ -32,15 +36,17 @@ index 83df9bc..1940919 100644
 +  -> (core_type * (variance * injectivity)) list
    -> pattern list * [ `Covariant of t ] * [ `Contravariant of t ]
 diff --git a/ppx_quickcheck/expander/ppx_quickcheck_expander.ml b/ppx_quickcheck/expander/ppx_quickcheck_expander.ml
-index 57480e4..ab36f99 100644
+index 57480e4..b9d203b 100644
 --- a/ppx_quickcheck/expander/ppx_quickcheck_expander.ml
 +++ b/ppx_quickcheck/expander/ppx_quickcheck_expander.ml
-@@ -350,7 +350,7 @@ let intf type_decl ~f ~covar ~contravar =
+@@ -350,8 +350,8 @@ let intf type_decl ~f ~covar ~contravar =
        ~f:(fun (core_type, variance) result ->
          let id =
            match variance with
 -          | Invariant | Covariant -> covar
-+          | (NoVariance, NoInjectivity) | Covariant -> covar
-           | Contravariant -> contravar
+-          | Contravariant -> contravar
++          | (NoVariance, NoInjectivity) | (Covariant, NoInjectivity) -> covar
++          | (Contravariant, NoInjectivity) -> contravar
          in
          let arg = ptyp_constr ~loc { loc; txt = id } [ core_type ] in
+         [%type: [%t arg] -> [%t result]])

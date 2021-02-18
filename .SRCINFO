@@ -1,7 +1,7 @@
 pkgbase = ocaml-base_quickcheck
 	pkgdesc = Randomized testing framework, designed for compatibility with Base
 	pkgver = 0.14.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/janestreet/base_quickcheck
 	arch = x86_64
 	arch = i686
@@ -21,9 +21,9 @@ pkgbase = ocaml-base_quickcheck
 	depends = ocaml-splittable_random>=0.14.0
 	depends = ocaml-ppxlib>=0.11.0
 	options = !strip
-	source = ocaml-base_quickcheck-0.14.0-3.tar.gz::https://github.com/janestreet/base_quickcheck/archive/v0.14.0.tar.gz
+	source = ocaml-base_quickcheck-0.14.0-4.tar.gz::https://github.com/janestreet/base_quickcheck/archive/v0.14.0.tar.gz
 	source = ppxlib.diff
 	sha256sums = eb18152bb29b6484cdb4ae18357b4dfb18b5e6f0d79cb18bd9ed7d8d906ca38b
-	sha256sums = 0723f15c4777de9e94bd56a07616f749cb067089797e2edd7909f19fbdacea7a
+	sha256sums = 588b1dc8d5f42b32ec4463bf510359393e38fc581b85e34d4e26b5ac74a76c9c
 
 pkgname = ocaml-base_quickcheck

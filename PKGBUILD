@@ -2,7 +2,7 @@
 _projectname='base_quickcheck'
 pkgname="ocaml-$_projectname"
 pkgver='0.14.0'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Randomized testing framework, designed for compatibility with Base'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
@@ -15,7 +15,7 @@ source=(
 	"ppxlib.diff"
 )
 sha256sums=('eb18152bb29b6484cdb4ae18357b4dfb18b5e6f0d79cb18bd9ed7d8d906ca38b'
-            '0723f15c4777de9e94bd56a07616f749cb067089797e2edd7909f19fbdacea7a')
+            '588b1dc8d5f42b32ec4463bf510359393e38fc581b85e34d4e26b5ac74a76c9c')
 
 _sourcedirectory="$_projectname-$pkgver"
 
