@@ -1,0 +1,20 @@
+pkgbase = vim-pkgbuild-git
+	pkgdesc = Vim plugin to edit PKGBUILD files
+	pkgver = r13.5fc4106
+	pkgrel = 1
+	url = https://github.com/m-pilia/vim-pkgbuild
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	optdepends = vim-ale
+	optdepends = pacman-contrib
+	optdepends = shellcheck
+	provides = vim-pkgbuild
+	conflicts = vim-pkgbuild
+	source = git+https://github.com/m-pilia/vim-pkgbuild
+	md5sums = SKIP
+
+pkgname = vim-pkgbuild-git
+
