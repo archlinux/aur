@@ -1,7 +1,7 @@
 pkgbase = typeracer-git
 	pkgdesc = Terminal typing speed tester (git)
-	pkgver = 2.0.4.r0.gdbc14fc
-	pkgrel = 2
+	pkgver = 2.0.6.r0.gc10708b
+	pkgrel = 1
 	url = https://gitlab.com/ttyperacer/terminal-typeracer
 	arch = x86_64
 	license = GPL3
@@ -15,4 +15,3 @@ pkgbase = typeracer-git
 	sha512sums = SKIP
 
 pkgname = typeracer-git
-

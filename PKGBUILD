@@ -3,8 +3,8 @@
 
 pkgname=typeracer-git
 _pkgname=terminal-typeracer
-pkgver=2.0.4.r0.gdbc14fc
-pkgrel=2
+pkgver=2.0.6.r0.gc10708b
+pkgrel=1
 pkgdesc="Terminal typing speed tester (git)"
 arch=('x86_64')
 url="https://gitlab.com/ttyperacer/terminal-typeracer"
