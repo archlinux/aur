@@ -3,4 +3,5 @@ swappy/
 src/
 
 *.tar.xz
+*.tar.zst
 *.tar.gz
