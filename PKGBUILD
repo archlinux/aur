@@ -2,7 +2,7 @@
 
 pkgname=pakcs
 pkgver=3.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The Portland Aachen Kiel Curry System"
 arch=('x86_64')
 url="https://www.informatik.uni-kiel.de/~pakcs/index.html"
@@ -85,7 +85,7 @@ package() {
 	install -Dm644 pakcsrc.default "${pkgdir}/usr/lib/${pkgname}/"
 
 	# Install documentation and examples
-	install -Dm644 man/*.1 -t "${pkgdir}/usr/share/man1/"
+	install -Dm644 man/*.1 -t "${pkgdir}/usr/share/man/man1/"
 	install -Dm644 docs/* -t "${pkgdir}/usr/share/doc/${pkgname}/"
 	install -Dm644 currytools/cpm/docs/manual.pdf "${pkgdir}/usr/share/doc/${pkgname}/cpm/Manual.pdf"
 
