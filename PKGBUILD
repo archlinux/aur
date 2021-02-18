@@ -1,19 +1,19 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-panel')
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="GTK3-based panel for sway window manager"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/nwg-panel"
 license=('MIT')
-depends=('python' 'python-gobject' 'python-i3ipc' 'python-netifaces' 'python-pyalsa' 'gtk3' 'gtk-layer-shell' 'wlr-randr' 'light' 'alsa-utils' 'upower' 'playerctl')
+depends=('python' 'python-gobject' 'python-i3ipc' 'python-netifaces' 'python-pyalsa' 'gtk3' 'gtk-layer-shell' 'light' 'alsa-utils' 'upower' 'playerctl')
 makedepends=('python-setuptools' 'python-wheel')
 optdepends=('bluez: for Bluetooth status'
             'bluez-utils: for Bluetooth status'
             'wlr-randr: for non-sway window managers support')
 source=("https://github.com/nwg-piotr/nwg-panel/archive/v"$pkgver".tar.gz")
 
-md5sums=('60ece58e9be52bb8f98af131b5aac08b')
+md5sums=('926334838604c97e712ee731160f42ba')
 
 package() {
   cd "${pkgname}-${pkgver}"
