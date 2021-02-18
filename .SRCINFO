@@ -1,7 +1,7 @@
 pkgbase = rofi-bluetooth-git
 	pkgdesc = A script that generates a rofi menu that uses bluetoothctl to connect to bluetooth devices and display status info
-	pkgver = r11.f928f85
-	pkgrel = 2
+	pkgver = r18.3b85658
+	pkgrel = 3
 	url = https://github.com/ClydeDroid/rofi-bluetooth
 	arch = any
 	license = GPL-3.0
