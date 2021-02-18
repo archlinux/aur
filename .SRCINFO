@@ -1,7 +1,7 @@
 pkgbase = clickup
 	pkgdesc = Desktop app for clickup.com
 	pkgver = 2.0.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://clickup.com
 	arch = x86_64
 	license = custom

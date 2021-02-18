@@ -1,7 +1,7 @@
 # Maintainer Xuanwo <xuanwo@archlinucn.org>
 pkgname=clickup
 pkgver=2.0.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop app for clickup.com"
 arch=('x86_64')
 url="https://clickup.com"
@@ -20,6 +20,7 @@ prepare() {
 
 package() {
   install -Dm755 $_filename "$pkgdir/opt/$_filename"
+  ln -s "$pkgdir/opt/${pkgname}/$_filename" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 squashfs-root/clickup-desktop.desktop "$pkgdir/usr/share/applications/clickup.desktop"
   install -Dm644 squashfs-root/clickup-desktop.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/clickup-desktop.png"
   chmod -R a+rX "$pkgdir/usr/share/icons/hicolor"
