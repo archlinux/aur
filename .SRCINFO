@@ -1,14 +1,14 @@
 pkgbase = smartie-pwa
 	pkgver = 0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cgit.ctu.cx/smartie-pwa/
 	arch = x86_64
 	license = GPL-3
 	makedepends = yarn
 	makedepends = git
 	depends = glibc
-	source = smartie-pwa-cbd311c96b80fbb8a464a5aa6b651649d65a5857.tar.gz::https://cgit.ctu.cx/smartie-pwa/snapshot/smartie-pwa-cbd311c96b80fbb8a464a5aa6b651649d65a5857.tar.gz
-	sha256sums = 8223e9ba82b549729946c3fe5e3dc6804ae40344d717a3735c6855a1512ee509
+	source = smartie-pwa-a5e5a70c09f75cd8e0842ef969b6c31b40450576.tar.gz::https://cgit.ctu.cx/smartie-pwa/snapshot/smartie-pwa-a5e5a70c09f75cd8e0842ef969b6c31b40450576.tar.gz
+	sha256sums = 61aebf90f5b766cdbc712df22d5b44717af5a3a5a2d3417c3dcbf98f38d75c38
 
 pkgname = smartie-pwa
 
