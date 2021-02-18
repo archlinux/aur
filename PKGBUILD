@@ -1,14 +1,14 @@
 # Maintainer: Hauke Rehfeld <aur@haukerehfeld.de>
 
 pkgname=trenchbroom-git
-pkgver=v2020.2.r309.gf26c4a298
+pkgver=v2021.1.r67.ga78fa3bc3
 pkgrel=1
 pkgdesc="TrenchBroom is a modern cross-platform level editor for Quake-engine based games."
 arch=("i686" "x86_64")
 url="http://kristianduske.com/trenchbroom"
 license=("GPLv3")
 
-makedepends=("git" "pandoc" "qt5-base" "cmake" "ninja" "qt5-svg" "libxcb")
+makedepends=("git" "pandoc" "qt5-base" "cmake" "ninja" "qt5-svg" "libxcb" "xorg-server-xvfb")
 depends=("freeimage" "freetype2" "mesa" "libgl" "freeglut" "libxxf86vm" "glew" "glm")
 conflicts=("trenchbroom")
 provides=("trenchbroom")
