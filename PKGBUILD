@@ -2,8 +2,8 @@
 # Contributor: Thorben Guenther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
 
 pkgname=mycroft-core
-pkgver=20.8.0
-pkgrel=2
+pkgver=20.8.1
+pkgrel=1
 pkgdesc="The Mycroft Artificial Intelligence platform."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/MycroftAI/mycroft-core'
@@ -26,7 +26,7 @@ depends=('python'
   'fann')
 makedepends=('git' 'sudo' 'python-pip' 'python-setuptools' 'python-virtualenv' 'sudo')
 install=mycroft-core.install
-source=("https://github.com/MycroftAI/mycroft-core/archive/release/v${pkgver}.tar.gz"
+source=("${url}/archive/release/v${pkgver}.tar.gz"
   "mycroft.tmpfiles"
   "mycroft.sysusers"
   "mycroft.service"
@@ -88,7 +88,7 @@ package() {
     "${pkgdir}/etc/profile.d/mycroft.csh"
 }
 
-md5sums=('f6e35eedde6e1d92783f63ffcc7df7bf'
+md5sums=('3786e787098d6523e91410cb48c02ad2'
          '39bcf2f0f30854b7b6e516d49946566a'
          'bfe08c1d8cba053ef83cfac5a36c7910'
          '7cbcc7b8b71d00c19a11166fbbd5ed4f'
