@@ -1,9 +1,9 @@
-# Maintainer: Alwyn Kik <alwyn@proteon.com>
+# Maintainer: Alwyn Kik <alwyn@kik.pw>
 # Contributor: Andreas Wagner <AndreasBWagner@pointfree.net>
 # Contributor: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
 
 pkgname=unbuffered-git
-pkgver=r1.f73865a
+pkgver=r1.a8f4f91
 pkgrel=1
 pkgdesc="Copy stdin to stdout and stderr, unbuffered, development version"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('glibc')
 makedepends=('git')
 changelog=ChangeLog
-source=(${pkgname}-${pkgver}::'git+https://github.com/hilbix/unbuffered.git#commit=f73865a6cd253052312b154ca4c2e9e1e2f5ce47')
+source=(${pkgname}-${pkgver}::'git+https://github.com/hilbix/unbuffered.git#commit=a8f4f91e0c6eed03487fb8b6998e0814b3066a96')
 sha512sums=('SKIP')
 
 build() {
