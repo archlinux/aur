@@ -1,3 +1,5 @@
+diff --git a/main.go b/main.go
+index 8ba2ea8..1239bf5 100644
 --- a/main.go
 +++ b/main.go
 @@ -3,9 +3,6 @@ package main
@@ -24,7 +26,7 @@
 -	var printVersion bool
  	var help = `
 -CloudflareSpeedTest ` + version + `
-+CloudflareSpeedTest 
++CloudflareSpeedTest
  测试 Cloudflare CDN 所有 IP 的延迟和速度，获取最快 IP (IPv4+IPv6)！
  https://github.com/XIU2/CloudflareSpeedTest
  
@@ -94,27 +96,26 @@
  	initRandSeed()                            // 置随机数种子
  	failTime = pingTime                       // 设置接收次数
  	ips := loadFirstIPOfRangeFromFile(ipFile) // 读入IP
-@@ -139,7 +123,7 @@ func main() {
- 	var data_2 = make([]CloudflareIPData, 0)
+@@ -140,7 +124,7 @@ func main() {
  	downloadTestTime = time.Duration(downloadSecond) * time.Second
  
+ 	// 开始延迟测速
 -	fmt.Println("# XIU2/CloudflareSpeedTest " + version + "\n")
 +	fmt.Println("# XIU2/CloudflareSpeedTest \n")
- 	if ipv6Mode {
- 		fmt.Println("开始延迟测速（模式：TCP IPv6，端口：" + strconv.Itoa(tcpPort) + "）：")
+ 	if ipv6Mode { // IPv6 模式判断
+ 		fmt.Println("开始延迟测速（模式：TCP IPv6，端口：" + strconv.Itoa(tcpPort) + "，平均延迟上限：" + fmt.Sprintf("%.2f", timeLimit) + " ms）：")
  	} else {
-@@ -227,10 +211,6 @@ func printResult(data []CloudflareIPData) {
+@@ -234,9 +218,6 @@ func printResult(data []CloudflareIPData) {
  				}
  			}
  
 -			if versionNew != "" {
 -				fmt.Println("\n发现新版本 [" + versionNew + "]！请前往 [https://github.com/XIU2/CloudflareSpeedTest] 更新！")
 -			}
--
- 			if sysType == "windows" { // 如果是 Windows 系统，则需要按下 回车键 或 Ctrl+C 退出
+ 
+ 			if sysType == "windows" { // 如果是 Windows 系统，则需要按下 回车键 或 Ctrl+C 退出（避免通过双击运行时，测速完毕后直接关闭）
  				if outputFile != "" {
- 					fmt.Printf("\n完整测速结果已写入 %v 文件，请使用记事本/表格软件查看。\n按下 回车键 或 Ctrl+C 退出。", outputFile)
-@@ -252,20 +232,4 @@ func printResult(data []CloudflareIPData) {
+@@ -259,20 +240,4 @@ func printResult(data []CloudflareIPData) {
  	}
  }
  
