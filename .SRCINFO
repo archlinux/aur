@@ -1,0 +1,12 @@
+pkgbase = nat
+	pkgdesc = The Better ls
+	pkgver = 2.1.11
+	pkgrel = 1
+	url = https://github.com/willdoescode/nat
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = https://github.com/willdoescode/nat/archive/v2.1.11.tar.gz
+	sha256sums = 23cf03b63c2815eca433df8b79cf758b19804ab1d69e46c8a4a877f71590ded6
+
+pkgname = nat
