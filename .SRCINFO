@@ -1,6 +1,6 @@
 pkgbase = smartied
 	pkgver = 0.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://cgit.ctu.cx/smartied/
 	arch = x86_64
 	license = GPL-3
@@ -9,8 +9,8 @@ pkgbase = smartied
 	makedepends = git
 	depends = glibc
 	depends = libmodbus
-	source = smartied-e06836e456ffd78621d9eed466348aa765a2f53f.tar.gz::https://cgit.ctu.cx/smartied/snapshot/smartied-e06836e456ffd78621d9eed466348aa765a2f53f.tar.gz
-	sha256sums = 10407efb9f1c6b80a4d1706fb25528992d69f85753f0cc2b3b2e0ec4cd059461
+	source = smartied-62ff18726a229422f99e4a19d3a054e4ab7da15d.tar.gz::https://cgit.ctu.cx/smartied/snapshot/smartied-62ff18726a229422f99e4a19d3a054e4ab7da15d.tar.gz
+	sha256sums = 57a5071f552f9ee47f72d582af987bd7fa8d7a06ab26533bf9fba9cc95e2d2df
 
 pkgname = smartied
 
