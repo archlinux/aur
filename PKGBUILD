@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=touche
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The desktop application to configure Touchégg "
 arch=('x86_64')
 url="https://github.com/JoseExposito/touche"
@@ -12,7 +12,7 @@ checkdepends=('appstream' 'desktop-file-utils')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "https://github.com/JoseExposito/touche/pull/9.patch")
 sha256sums=('b1e82204bfb5e2181c8213e4fc2cd16ebd3e2da5a3fc3eaf647808ca515183ae'
-            '9ef28e0efddc7d7c50d197b7c9e8f4579cbcf177331afbaffc7e95381774c1cc')
+            '89e947e59fff192b2de09ca41c2a72ecd01085cfab7495b98d7c3dca25be7f25')
 
 prepare() {
 	cd "$pkgname-$pkgver"
