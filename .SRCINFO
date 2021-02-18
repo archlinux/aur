@@ -1,6 +1,6 @@
 pkgbase = redsocks2-git
-	pkgdesc = redsocks2 adapted to compile with openssl 1.0
-	pkgver = 0.67.r10.gbf24acf
+	pkgdesc = redsocks2
+	pkgver = 0.67.r36.g1951b49
 	pkgrel = 1
 	url = https://github.com/semigodking/redsocks
 	install = redsocks2.install
@@ -14,7 +14,7 @@ pkgbase = redsocks2-git
 	backup = etc/conf.d/redsocks2
 	backup = etc/iptables/redsocks2.rules
 	backup = etc/redsocks2.conf
-	source = redsocks2-git::git+https://github.com/gilcu3/redsocks.git
+	source = git+https://github.com/semigodking/redsocks.git
 	source = redsocks2.tmpfiles
 	source = redsocks2.rules
 	md5sums = SKIP
