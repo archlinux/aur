@@ -20,7 +20,7 @@ pkgbase = openimageio-qfix
 	depends = openjpeg2
 	depends = glew
 	depends = libtiff
-	depends = opencolorio=2.0.0
+	depends = opencolorio-qfix
 	depends = intel-tbb
 	depends = libpng
 	depends = libraw

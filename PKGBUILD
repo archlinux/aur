@@ -8,7 +8,7 @@ pkgdesc="A library for reading and writing images, including classes, utilities,
 arch=(x86_64)
 url="http://www.openimageio.org/"
 license=('custom')
-depends=('openexr' 'boost-libs' 'openjpeg2' 'glew' 'libtiff' 'opencolorio=2.0.0' 'intel-tbb' 'libpng' 'libraw' 'libwebp'
+depends=('openexr' 'boost-libs' 'openjpeg2' 'glew' 'libtiff' 'opencolorio-qfix' 'intel-tbb' 'libpng' 'libraw' 'libwebp'
          'fmt' 'pugixml' 'pybind11')
 # TODO: Consider adding these deps: 'openvdb' 'ffmpeg' 'ptex' 'libheif' 'hdf5' 'opencv'
 makedepends=('cmake' 'qt5-base' 'python' 'boost' 'mesa' 'freetype2' 'fontconfig' 'libxrender' 'ninja' 'robin-map')
@@ -33,7 +33,8 @@ build() {
       -DOIIO_BUILD_TOOLS=ON \
       -DBUILD_MISSING_FMT=OFF \
       -DUSE_EXTERNAL_PUGIXML=ON \
-      -DSTOP_ON_WARNING=OFF
+      -DSTOP_ON_WARNING=OFF \
+      -DOpenColorIO_ROOT=/opt/ocio
   ninja -C build
 }
 
