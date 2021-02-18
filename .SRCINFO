@@ -1,0 +1,17 @@
+pkgbase = runice-git
+	pkgdesc = A daemon to manage process niceness, written in Rust
+	pkgver = r20.b3127a3
+	pkgrel = 1
+	url = https://github.com/droserasprout/runice
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = schedtool
+	depends = util-linux
+	provides = runice
+	source = git+https://github.com/droserasprout/runice#branch=master
+	sha512sums = SKIP
+
+pkgname = runice-git
+
