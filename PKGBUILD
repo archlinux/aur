@@ -1,6 +1,6 @@
 # Maintainer: Yamada Hayao <development@fascode.net>
 
-pkgname=lightdm-webkit2-theme-alter-splash
+pkgname=lightdm-webkit2-theme-alter-nosplash
 _pkgname=lightdm-webkit2-theme-alter
 pkgver=3.0
 pkgrel=1

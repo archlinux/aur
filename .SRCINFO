@@ -1,4 +1,4 @@
-pkgbase = lightdm-webkit2-theme-alter-splash
+pkgbase = lightdm-webkit2-theme-alter-nosplash
 	pkgdesc = AlterLinux webkit2 greeter theme
 	pkgver = 3.0
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = lightdm-webkit2-theme-alter-splash
 	source = https://github.com/SereneTeam/lightdm-webkit2-theme-alter/archive/v3.0.zip
 	md5sums = 3bed423ff4eb7d88e4ab47b546e51f59
 
-pkgname = lightdm-webkit2-theme-alter-splash
+pkgname = lightdm-webkit2-theme-alter-nosplash
 
