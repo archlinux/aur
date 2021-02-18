@@ -1,6 +1,6 @@
 # Maintainer: ANDRoid7890 <andrey.android7890@gmail.com>
 
-# https://gitlab.manjaro.org/packages/core/linux510
+# https://gitlab.manjaro.org/packages/core/linux511
 #
 # Maintainer: Philip Müller
 # Maintainer: Bernhard Landauer
@@ -44,21 +44,7 @@ if [ -z ${use_tracers+x} ]; then
   use_tracers=y
 fi
 
-## Enable Cachy CPU scheduler by default https://github.com/xanmod/linux/blob/5.8/Documentation/scheduler/sched-Cachy.rst
-## Set variable "use_cachy" to: n to disable (stock Xanmod)
-##                              y to enable
-if [ -z ${use_cachy+x} ]; then
-  use_cachy=n
-fi
-
-## Enable CONFIG_USER_NS_UNPRIVILEGED flag https://aur.archlinux.org/cgit/aur.git/tree/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck
-## Set variable "use_ns" to: n to disable (stock Xanmod)
-##                           y to enable (stock Archlinux)
-if [ -z ${use_ns+x} ]; then
-  use_ns=y
-fi
-
-# Compile ONLY used modules to VASTLYreduce the number of modules built
+# Compile ONLY used modules to VASTLY reduce the number of modules built
 # and the build time.
 #
 # To keep track of which modules are needed for your specific system/hardware,
@@ -78,8 +64,8 @@ _makenconfig=
 
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.10.14
-_major=5.10
+pkgver=5.11.0
+_major=5.11
 _branch=5.x
 xanmod=1
 pkgrel=1
@@ -87,7 +73,7 @@ pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="7aba77c63c1a04b2f49cb631baa130795823274d" # 5.10.14-1
+__commit="73245f163c55e0ea2ae246cb13f77ef86a5a61b7" # 5.11-1
 
 license=(GPL2)
 makedepends=(
@@ -99,30 +85,25 @@ _srcname="linux-${pkgver}-xanmod${xanmod}"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
         "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz"
         choose-gcc-optimization.sh
-        "https://gitlab.manjaro.org/packages/core/linux510/-/archive/${__commit}/linux59-${__commit}.tar.gz")
+        "https://gitlab.manjaro.org/packages/core/linux511/-/archive/${__commit}/linux59-${__commit}.tar.gz")
 
-sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'  # kernel tar.xz
+# Archlinux patches
+_commit="be7d4710850020de55bce930c83fa80347c02fc3"
+_patches=("sphinx-workaround.patch")
+for _patch in ${_patches[@]}; do
+    source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${_commit}")
+done
+        
+sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'  # kernel tar.xz
             'SKIP'                                                              #        tar.sign
-            '15d9efbd96af494a31b9420a17331cf1da243141e4c7b002696588285787ee62'  # xanmod
+            '9d49118bb60c0277ebac5aadd4938eb41561dd3d97c9422832e62d0ffc5c59df'  # xanmod
             '03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134'  # choose-gcc-optimization.sh
-            'c3a95b72f1cbb82b4b8e9becab06d998a96520bfc519a339b28cba78964c357b') # manjaro
+            '0fca3878a6bf64ed83e18937a1b7b7068ac92999991b3e035da1f2a230069d75' # manjaro
+            '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-
-# Archlinux patches
-_commits=""
-for _patch in $_commits; do
-    source+=("${_patch}.patch::https://git.archlinux.org/linux.git/patch/?id=${_patch}")
-done
-
-# If use_cachy=y then download cachy patch
-if [ "$use_cachy" = "y" ]; then
-   echo "Cachy branch is not ready yet..." && exit 1
-   source+=("https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}-cachy/patch-${pkgver}-xanmod${xanmod}-cachy.xz")
-   sha256sums+=('c35685c5d706a683fc0b02cf11fd40db52becae9205bf0d71f6a4a901d836d69')
-fi
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
@@ -132,12 +113,8 @@ prepare() {
   cd linux-${_major}  
   
   # Apply Xanmod patch
-  if [ "$use_cachy" = "y" ]; then
-    patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}-cachy
-  else
-    patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}
-  fi
-
+  patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}
+  
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
   #echo "-$pkgrel" > localversion.10-pkgrel
@@ -154,15 +131,18 @@ prepare() {
   done
   
   # Manjaro patches
-  rm ../linux510-$__commit/0103-futex.patch  # remove conflicting one
+  rm ../linux511-$__commit/0103-futex.patch  # remove conflicting ones
+  rm ../linux511-$__commit/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
   local _patch
-  for _patch in ../linux510-$__commit/*; do
+  for _patch in ../linux511-$__commit/*; do
       [[ $_patch = *.patch ]] || continue
       msg2 "Applying patch: $_patch..."
-      patch -Np1 < "../linux510-$__commit/$_patch"
+      patch -Np1 < "../linux511-$__commit/$_patch"
   done 
-  git apply -p1 < "../linux510-$__commit/0513-bootsplash.gitpatch"
+  git apply -p1 < "../linux511-$__commit/0513-bootsplash.gitpatch"
   scripts/config --enable CONFIG_BOOTSPLASH
+  
+  
   
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
   scripts/config --enable CONFIG_STACK_VALIDATION
@@ -182,16 +162,6 @@ prepare() {
     msg2 "Disabling NUMA..."
     scripts/config --disable CONFIG_NUMA
   fi
-
-  if [ "$use_cachy" = "y" ]; then
-    msg2 "Enabling Cachy CPU scheduler by default..."
-    scripts/config --enable CONFIG_CACHY_SCHED
-  fi
-
-  if [ "$use_ns" = "n" ]; then
-    msg2 "Disabling CONFIG_USER_NS_UNPRIVILEGED"
-    scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
-  fi
     
   msg2 "add anbox support"
   scripts/config --enable CONFIG_ASHMEM
@@ -208,28 +178,23 @@ prepare() {
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
   # This is intended for the people that want to build this package with their own config
-  # Put the file "myconfig" at the package folder to use this feature
-  # If it's a full config, will be replaced
-  # If not, you should use scripts/config commands, one by line
-  if [ -f "${startdir}/myconfig" ]; then
-    if ! grep -q 'scripts/config' "${startdir}/myconfig"; then
-      # myconfig is a full config file. Replacing default .config
-      msg2 "Using user CUSTOM config..."
-      cp -f "${startdir}"/myconfig .config
-    else
-      # myconfig is a partial file. Applying every line
-      msg2 "Applying configs..."
-      cat "${startdir}"/myconfig | while read -r _linec ; do
-        if echo "$_linec" | grep "scripts/config" ; then
-          set -- $_linec
-          "$@"
-        else
-          warning "Line format incorrect, ignoring..."
-        fi
-      done
+  # Put the file "myconfig" at the package folder (this will take preference) or "${XDG_CONFIG_HOME}/linux-xanmod/myconfig"
+  # If we detect partial file with scripts/config commands, we execute as a script
+  # If not, it's a full config, will be replaced
+  for _myconfig in "${startdir}/myconfig" "${XDG_CONFIG_HOME}/linux-xanmod/myconfig" ; do
+    if [ -f "${_myconfig}" ]; then
+      if grep -q 'scripts/config' "${_myconfig}"; then
+        # myconfig is a partial file. Executing as a script
+        msg2 "Applying myconfig..."
+        bash -x "${_myconfig}"
+      else
+        # myconfig is a full config file. Replacing default .config
+        msg2 "Using user CUSTOM config..."
+        cp -f "${_myconfig}" .config
+      fi
+      echo
     fi
-    echo
-  fi
+  done
 
   make olddefconfig
 
