@@ -1,5 +1,5 @@
 pkgbase = hs-client
-	pkgdesc = HSD node and wallet client
+	pkgdesc = Handshake daemon node and wallet client
 	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://handshake.org

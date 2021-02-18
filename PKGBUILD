@@ -6,7 +6,7 @@ pkgver=0.0.9
 pkgrel=1
 arch=(any)
 license=('MIT')
-pkgdesc="HSD node and wallet client"
+pkgdesc="Handshake daemon node and wallet client"
 url="https://handshake.org"
 depends=(
 	'nodejs'
