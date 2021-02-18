@@ -1,7 +1,7 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
 # pkg: git
 pkgname=plots-git
-pkgver=0.5.1.r3.g082f71c
+pkgver=0.5.1.r6.gbf221a9
 pkgrel=1
 pkgdesc="A graph plotting app for GNOME"
 arch=('any')
