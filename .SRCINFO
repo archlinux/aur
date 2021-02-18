@@ -1,5 +1,4 @@
 pkgbase = shadowsocks-uri-generator-git
-	pkgdesc = Command line tool for multi-user ss:// URL generation, SIP008 online configuration delivery, and Outline server deployment and management
 	pkgver = 20210218.r83.b0d6a43
 	pkgrel = 1
 	url = https://github.com/database64128/shadowsocks-uri-generator
@@ -7,11 +6,17 @@ pkgbase = shadowsocks-uri-generator-git
 	license = GPL3
 	makedepends = git
 	makedepends = dotnet-sdk>=5.0
-	provides = shadowsocks-uri-generator
-	conflicts = shadowsocks-uri-generator
 	options = !strip
 	source = shadowsocks-uri-generator-git::git+https://github.com/database64128/shadowsocks-uri-generator
 	b2sums = SKIP
 
-pkgname = shadowsocks-uri-generator-git
+pkgname = ss-uri-gen-git
+	pkgdesc = CLI for multi-user Shadowsocks SIP003, SIP008 and Outline server deployment and management
+	provides = ss-uri-gen
+	conflicts = ss-uri-gen
+
+pkgname = ss-uri-gen-chatbot-telegram-git
+	pkgdesc = Telegram bot allowing easy user interactions with Shadowsocks URI Generator
+	provides = ss-uri-gen-chatbot-telegram
+	conflicts = ss-uri-gen-chatbot-telegram
 
