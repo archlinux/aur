@@ -1,6 +1,6 @@
 # Maintainer: Yamada Hayao <development@fascode.net>
 
-pkgname=lightdm-webkit2-theme-alter
+pkgname=lightdm-webkit2-theme-alter-splash
 _pkgname=lightdm-webkit2-theme-alter
 pkgver=3.0
 pkgrel=1
@@ -30,4 +30,5 @@ remove () {
 package () {
     mkdir -p "${pkgdir}/usr/share/lightdm-webkit/themes/alter"
     mv "${srcdir}/${pkgname}-${pkgver}/"* "${pkgdir}/usr/share/lightdm-webkit/themes/alter"
+    sudo sed "s/#splash-screen {/#splash-screen {\n  display: none;/" "${pkgdir}/usr/share/lightdm-webkit/themes/alter/css/splashscreen.css"
 }
