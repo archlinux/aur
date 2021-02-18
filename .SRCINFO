@@ -1,7 +1,7 @@
 pkgbase = cb2bib
 	pkgdesc = A tool for parsing clipboard data into BibTeX bibliographic database files
-	pkgver = 2.0.0
-	pkgrel = 3
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = http://www.molspaces.com/cb2bib/
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = cb2bib
 	optdepends = perl-image-exiftool: meta data support
 	optdepends = texlive-core: file correctness checking; bib2pdf printing
 	optdepends = xpdf: pdftotext support
-	source = http://www.molspaces.com/dl/progs/cb2bib-2.0.0.tar.gz
-	sha256sums = 30a59dab4e41ee96ac7f5d0689102baed208e031ed86e34b33991214bb65673f
+	source = http://www.molspaces.com/dl/progs/cb2bib-2.0.1.tar.gz
+	sha256sums = 73f5c3224577dca1d6ffcde23afce7076ce4c3ff5dcab7d5d25cf7615562f027
 
 pkgname = cb2bib
 
