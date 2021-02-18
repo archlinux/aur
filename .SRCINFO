@@ -1,9 +1,9 @@
 pkgbase = ycmd-git
 	pkgdesc = A code-completion & code-comprehension server.
 	pkgver = r2844.06228007
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ycm-core/ycmd
-	arch = any
+	arch = x86_64
 	license = GPLv3
 	makedepends = python
 	makedepends = cmake
