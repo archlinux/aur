@@ -1,7 +1,7 @@
 # Maintainer: Ivan Tham <pickfire@riseup.net>
 
 pkgname=babelfish
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=0
 pkgdesc='Universal translater for encodings'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache' 'MIT')
 depends=()
 makedepends=('rust')
 source=("$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('db8e13e6603908f3d573676ec78a4d17814b897f1567654a315f9ad2568a8259')
+sha256sums=('520ba73aa1e108aa4cf68403ad186ad310365df57a8f24c45c9cca26b0cf4b09')
 
 build() {
   cd "$pkgname-$pkgver"
