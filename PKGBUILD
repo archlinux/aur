@@ -2,18 +2,17 @@
 
 pkgname=git-subrepo-git
 _pkgname=${pkgname%-git}
-pkgver=0.3.0.r72.g1e79595
+pkgver=0.4.3.r1.g2f68596
 pkgrel=1
-pkgdesc="Git command is an improvement from git-submodule and git-subtree."
+pkgdesc='Git Submodule Alternative'
 arch=('any')
 url="https://github.com/ingydotnet/$_pkgname"
 license=('GPL')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("$_pkgname"::"git+$url.git"
-        make-destdir.patch)
-md5sums=('SKIP'
-         'ee9d7137bb4fe4b0cc7da8f669e26ddf')
+source=("$_pkgname"::"git+$url.git")
+md5sums=('SKIP')
+depends=(git)
 
 pkgver() {
   cd "$_pkgname"
@@ -24,10 +23,10 @@ pkgver() {
   )
 }
 
-prepare() {
+build() {
   cd "$_pkgname"
 
-  patch -p1 < ../make-destdir.patch
+  make compgen
 }
 
 check() {
@@ -40,4 +39,10 @@ package() {
   cd "$_pkgname"
 
   make DESTDIR="$pkgdir" PREFIX=/usr install
+
+  install -d -m 0755 "$pkgdir"/usr/share/bash-completion/completions
+  install -C -m 0644 share/completion.bash "$pkgdir"/usr/share/bash-completion/completions/git-subrepo
+
+  install -d -m 0755 "$pkgdir"/usr/share/zsh/site-functions
+  install -C -m 0644 share/zsh-completion/_git-subrepo "$pkgdir"/usr/share/zsh/site-functions/_git-subrepo
 }
