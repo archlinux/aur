@@ -33,7 +33,6 @@ pkgver() {
         echo "${cur_ver}_${_pkgver}"
 }
 
-
 package() {
   mkdir -p "${pkgdir}/usr/bin/"
   install -D -m 755 "${srcdir}/${_pkgname}_linux64/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
