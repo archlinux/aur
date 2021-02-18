@@ -25,7 +25,16 @@ pkgver() {
 
 build() {
 	cd $pkgname
-	dotnet publish ShadowsocksUriGenerator -c Release -p:DefineConstants=PACKAGED -p:PublishSingleFile=true -p:PublishTrimmed=true -p:TrimMode=link -p:DebuggerSupport=false -p:EnableUnsafeBinaryFormatterSerialization=false -p:EnableUnsafeUTF7Encoding=false -p:InvariantGlobalization=true -r linux-x64 --self-contained
+	dotnet publish ShadowsocksUriGenerator -c Release \
+		-p:DefineConstants=PACKAGED \
+		-p:PublishSingleFile=true \
+		-p:PublishTrimmed=true \
+		-p:TrimMode=link \
+		-p:DebuggerSupport=false \
+		-p:EnableUnsafeBinaryFormatterSerialization=false \
+		-p:EnableUnsafeUTF7Encoding=false \
+		-p:InvariantGlobalization=true \
+                -r linux-x64 --self-contained
 }
 
 package() {
