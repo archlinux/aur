@@ -3,7 +3,7 @@
 _projectname='visitors'
 pkgname="ocaml-$_projectname"
 pkgver='20210127'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='An OCaml syntax extension for generating visitor classes'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.inria.fr/fpottier/$_projectname"
@@ -11,10 +11,19 @@ license=('LGPL2.1')
 depends=('ocaml>=4.07.0' 'ocaml-ppx_deriving>=5.0' 'ocaml-ppxlib>=0.9.0' 'ocaml-result')
 makedepends=('dune>=2.0.0')
 options=('!strip')
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/-/archive/$pkgver/$_projectname-$pkgver.tar.gz")
-sha256sums=('b3057bf30fe4c7767643a8511a4e15f956114bde4001e58a720540ebc467f39f')
+source=(
+	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/-/archive/$pkgver/$_projectname-$pkgver.tar.gz"
+	"ppxlib.diff"
+)
+sha256sums=('b3057bf30fe4c7767643a8511a4e15f956114bde4001e58a720540ebc467f39f'
+            'b3b55482a1840a37367fb201469992eba226984c02a1b2df7da99b1d969e25ef')
 
 _sourcedirectory="$_projectname-$pkgver"
+
+prepare() {
+	cd "$srcdir/$_sourcedirectory/"
+	patch --forward -p1 < '../ppxlib.diff'
+}
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"

@@ -1,7 +1,7 @@
 pkgbase = ocaml-visitors
 	pkgdesc = An OCaml syntax extension for generating visitor classes
 	pkgver = 20210127
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.inria.fr/fpottier/visitors
 	arch = x86_64
 	arch = i686
@@ -16,7 +16,9 @@ pkgbase = ocaml-visitors
 	depends = ocaml-ppxlib>=0.9.0
 	depends = ocaml-result
 	options = !strip
-	source = ocaml-visitors-20210127-1.tar.gz::https://gitlab.inria.fr/fpottier/visitors/-/archive/20210127/visitors-20210127.tar.gz
+	source = ocaml-visitors-20210127-2.tar.gz::https://gitlab.inria.fr/fpottier/visitors/-/archive/20210127/visitors-20210127.tar.gz
+	source = ppxlib.diff
 	sha256sums = b3057bf30fe4c7767643a8511a4e15f956114bde4001e58a720540ebc467f39f
+	sha256sums = b3b55482a1840a37367fb201469992eba226984c02a1b2df7da99b1d969e25ef
 
 pkgname = ocaml-visitors
