@@ -1,9 +1,9 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
-_binver=1.4.21
+_binver=1.4.30
 
 pkgname=kotlin-native-bin
-pkgver=1.4.21
+pkgver=1.4.30
 pkgrel=1
 pkgdesc="Kotlin/Native infrastructure"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
   "https://github.com/JetBrains/kotlin/releases/download/v${pkgver}/kotlin-native-linux-${_binver}.tar.gz"
 )
 sha256sums=(
-  '140c06ede7d4c23ff65fb8de507aff117e96d8330dbb9b910a730bfb70bca59c'
+  '51c12099acf2e2131f063659c59d5f78daaba5c9bc39cc92289d962359e8ccce'
 )
 
 package() {
