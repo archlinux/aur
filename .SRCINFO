@@ -1,0 +1,13 @@
+pkgbase = snappy-cli
+	pkgdesc = A cli utility for compressing files via snappy
+	pkgver = 27319b2
+	pkgrel = 1
+	url = https://github.com/LevitatingBusinessMan/snappy-cli
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/LevitatingBusinessMan/snappy-cli.git
+	sha256sums = SKIP
+
+pkgname = snappy-cli
+
