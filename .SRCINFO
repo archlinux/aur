@@ -1,6 +1,6 @@
 pkgbase = maxscale
 	pkgdesc = An intelligent database proxy
-	pkgver = 2.5.7
+	pkgver = 2.5.8
 	pkgrel = 1
 	url = https://mariadb.com/
 	arch = x86_64
@@ -24,10 +24,10 @@ pkgbase = maxscale
 	depends = systemd-libs
 	depends = libsystemd.so
 	backup = etc/maxscale.cnf
-	source = maxscale-2.5.7.tar.gz::https://github.com/mariadb-corporation/MaxScale/archive/maxscale-2.5.7.tar.gz
+	source = maxscale-2.5.8.tar.gz::https://github.com/mariadb-corporation/MaxScale/archive/maxscale-2.5.8.tar.gz
 	source = sysusers.conf
 	source = tmpfiles.conf
-	sha512sums = 11bd69b7e76541ac4dc17efff5045a7f938ca1b2ac1d7b3f3f7d380573a4bfb0f99fc29153740b84ef226d64c8b9266cdc534d9614e281da358f5445f32eb55d
+	sha512sums = 96cdda6577e93a188556f07c5c3d82e4174bde845d3b0ae0b24c20d44e558784318f41f407a8ce74febacc88f6c213c9a32379ee89b5bea6d012151e4c02d331
 	sha512sums = b72f1792be6b5ef6c691fa4681c5f5809f081cdf88f5a9fa8406c3d486bc28d1de65064b71926bd83b4021822b398b943b5437ce564d62b1e9e77169299238d7
 	sha512sums = 3fac452cfefe3ea906805862d4bb780d178e4f3f8eef8b761f7fb998b82431a52155456870ce093205fabc34dd8cef1f05a4ffbb2f4d008117b422b0f120bb3c
 
