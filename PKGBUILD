@@ -7,7 +7,7 @@ pkgrel=0
 arch=('i686' 'x86_64')
 url="https://bitcoincashnode.org"
 license=('MIT')
-source=(https://github.com/bitcoin-cash/bitcoin-cash/archive/v$pkgver.tar.gz
+source=(https://github.com/bitcoin-cash-node/bitcoin-cash-node/archive/v$pkgver.tar.gz
         ${pkgbase}.sysusers
         ${pkgbase}.tmpfiles
         ${_bitcoin}.conf
