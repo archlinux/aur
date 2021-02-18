@@ -64,7 +64,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.10.17
+pkgver=5.11
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -74,27 +74,25 @@ makedepends=(
   bc kmod libelf        cpio perl tar xz
 )
 options=('!strip')
-_ckpatch="patch-5.10-ck${_ckpatchversion}"
+_ckpatch="patch-5.11-ck${_ckpatchversion}"
 _gcc_more_v='20201113'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
-  "http://ck.kolivas.org/patches/5.0/5.10/5.10-ck${_ckpatchversion}/$_ckpatch.xz"
+  "http://ck.kolivas.org/patches/5.0/5.11/5.11-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('7317e13e6262adf6d69f1192370be8eb2a31054a3626cf20e3e42d4f794f1f1767495c85cc891853a647c246828de31915090706fcdc514c7c563dbd5bbae4bf'
+b2sums=('81300c27bd5476387a83123aaeb4163c73eb61e9245806c23660cb5e6a4fa88ffc9def027031335fa0270fc4080506cd415990014364e3a98b9d2e8c58a29524'
         'SKIP'
-        '74b6ea3f314aa8291c9e2c3b5763f9b0c8aabbc0e714e30529f557955a7a315b44b0cd2f2d665ffe3ba48e7df71274c5901d3891ed395191ceb6ca88f69cdb1a'
+        'e5702f27217c2d23d007fe8c32ec8df39e738acf39c60b2b3d597e2e9d98ca287896646043d4fa35d95c6b8fa115c03a1413ff7c1d76458f99b21b262d7b6f2e'
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
-        '067f3389124fdd937ca69e9e9568b1b3194791960a093e81037051eb6d25e80b40bf7f60c61373ac9e92bff9db760766009b1e6f9ee8429a883bb7fce2d60f8a'
-        '99474f274431a7491ffc1a2b7fd20aad76699c0a9b442b8ce3459bade402ec002e4b67a40e1cc8b802752add70ee6ce77cc8055b8f4c2d81adfcd001d8a2eb13'
-        '3264190050a0cac1b63057c08dbcf07d351a370b08eccc70122e44a935e7e41f64fbb7444e986773266d69c3f6354d3c2e49282d6308dca4ec24a92dc93ff917')
+        '81d948aef4423255ebb4fa9b12c96207af8d14e225cf95d631dfbb1c0e88d31f60f81c2aff63046a78d8daf2601270ebb1d9cfaeccc3e3fdb08dbc430b53aff5'
+        '4585c266e884936fc0d0de74d1a67f071fe00dc85214157e99a0629afaa9db51f50640daa4503cfecb05d4ebc14db5366cea73fb8a8cc5efeaa729e7cebdfc12')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
