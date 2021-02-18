@@ -5,13 +5,13 @@
 
 pkgname=nwn-gog
 pkgver=2.1.0.21
-pkgrel=5
+pkgrel=6
 pkgdesc="Neverwinter Nights is an RPG from Bioware. This requires the GOG version."
-url="https://www.gog.com/game/neverwinter_nights_diamond_edition"
+url="https://www.gog.com/game/neverwinter_nights_enhanced_edition_pack"
 license=('custom')
 arch=('i686' 'x86_64')
 depends=('binkplayer-bin' 'perl' 'elfutils' 'icoutils')
-depends_x86_64=('lib32-elfutils' 'lib32-libgl' 'lib32-glu' 'lib32-libstdc++5' 'lib32-libxcursor' 'lib32-libxdamage' 'lib32-sdl_mixer' 'gcc-multilib')
+depends_x86_64=('lib32-libelf' 'lib32-libstdc++5' 'lib32-libgl' 'lib32-glu' 'lib32-libxcursor' 'lib32-libxdamage' 'lib32-sdl_mixer' 'gcc-multilib')
 depends_i686=('libgl' 'glu' 'libstdc++5' 'libxcursor' 'sdl_mixer')
 makedepends=('git' 'innoextract' 'p7zip' 'perl' 'unzip' 'unrar')
 optdepends=('xdg-utils: xdg .desktop file support')
