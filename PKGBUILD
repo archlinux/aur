@@ -3,7 +3,7 @@ _basename="SceneBuilder-8"
 pkgname="javafx8-scenebuilder"
 _debpkg=scenebuilder
 pkgver="8.5.0"
-pkgrel=1
+pkgrel=0
 pkgdesc="Scene Builder is an open source tool that allows for drag and drop design of JavaFX user interfaces, for java 8."
 arch=('x86_64' 'i686')
 url="http://gluonhq.com/labs/scene-builder/"
@@ -27,7 +27,7 @@ build() {
 echo "[Desktop Entry]
 Name=Scene Builder 8.5.0
 Comment=Gluon Scene Builder for Java 8.
-Exec=/opt/${_basename}/${_basename}
+Exec=/opt/${_basename}/SceneBuilder
 Icon=/opt/${_basename}/${_basename}.png
 Terminal=false
 Type=Application
@@ -39,7 +39,7 @@ package() {
   install -d "${pkgdir}/usr/share/applications/"
   install -d "${pkgdir}/usr/share/pixmaps/"
   install -d "${pkgdir}/usr/bin/"
-  ln -s "/opt/${_basename}/${_basename}" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/opt/${_basename}/SceneBuilder" "${pkgdir}/usr/bin/${pkgname}"
   install -m644 "${srcdir}/opt/${_basename}/${_basename}.desktop" "${pkgdir}/usr/share/applications/"
   install -m644 "${srcdir}/opt/${_basename}/${_basename}.png" "${pkgdir}/usr/share/pixmaps/"
 }
