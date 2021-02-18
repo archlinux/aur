@@ -10,7 +10,8 @@ url="https://thonny.org"
 license=('MIT')
 depends=('hicolor-icon-theme' 'mypy' 'python-astroid' 'python-asttokens' 'python-docutils' 'python-jedi' \
          'python-pip' 'python-pylint' 'python-pyserial' 'python-send2trash' 'python-setuptools' 'tk')
-optdepends=('python-birdseye: Debug support with Birdseye')
+optdepends=('python-birdseye: Debug support with Birdseye'
+            'python-pgzero: Run programs made with Pygame Zero')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
 sha512sums=('6aa09fa242945c6fef7e8ec004bcda49ac1be2790abc1da6de2ee6c14946a79b22f13b9519e1163f320b59b46f58bb345164b31f371b9ff8be921d7eca742153')
 
