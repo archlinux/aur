@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-vulkan-caps-viewer
 	pkgdesc = Vulkan Hardware Capability Viewer (mingw-w64)
-	pkgver = 2.21
+	pkgver = 3.0
 	pkgrel = 1
 	url = http://vulkan.gpuinfo.org/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = mingw-w64-vulkan-caps-viewer
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = git+https://github.com/SaschaWillems/VulkanCapsViewer#tag=2.21
+	source = git+https://github.com/SaschaWillems/VulkanCapsViewer#tag=3.0
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers
 	sha1sums = SKIP
 	sha1sums = SKIP
