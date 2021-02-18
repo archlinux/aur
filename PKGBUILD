@@ -1,14 +1,14 @@
 # Maintainer: Xavier Cho <mysticfallband@gmail.com>
 
 pkgname=upbge-git
-pkgver=107443.e838549bcc0
+pkgver=107970.5bf93114692
 pkgrel=1
 pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=('i686' 'x86_64')
 url="https://upbge.org/"
 depends=('alembic' 'libgl' 'python' 'desktop-file-utils' 'hicolor-icon-theme' 'openjpeg'
-		 'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio1'
-		 'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng' 'python-numpy')
+		 'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio-qfix' 'opencolorio'
+		 'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage-qfix' 'libtiff' 'libpng' 'python-numpy')
 optdepends=('cuda: CUDA support in Cycles'
 			'optix: OptiX support in Cycles'
 			'openimagedenoise: Intel Open Image Denoise support in compositing')
