@@ -1,0 +1,5 @@
+/pkg/
+/src/
+/python-telegram-bot/
+/urllib3/
+/*.pkg.tar.*
