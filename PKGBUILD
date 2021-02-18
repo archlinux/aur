@@ -3,27 +3,28 @@
 _name=google-resumable-media
 
 pkgname=python-google-resumable-media
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Utilities for Google Media Downloads and Resumable Uploads"
 arch=('any')
 url="https://pypi.org/project/google-resumable-media/"
 license=('APACHE')
 depends=(
-  'python>=3.5'
+  'python>=3.6'
   'python-google-crc32c>=1.0'
   'python-six'
 )
 makedepends=('python-setuptools')
 optdepends=(
   'python-requests>=2.18.0: for requests support'
+  'python-aiohttp>=3.6.2: for aiohttp support'
 )
 options=(!emptydirs)
 source=(
   "https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz"
 )
 sha256sums=(
-  '173acc6bade1480a529fa29c6c2717543ae2dc09d42e9461fdb86f39502efcf2'
+  'ee98b1921e5bda94867a08c864e55b4763d63887664f49ee1c231988f56b9d43'
 )
 
 build() {
