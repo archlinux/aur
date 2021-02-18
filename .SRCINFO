@@ -1,27 +1,27 @@
 pkgbase = mongodb-bin-4.0
 	pkgdesc = A high-performance, open source, schema-free document-oriented database
-	pkgver = 4.0.22
+	pkgver = 4.0.23
 	pkgrel = 1
 	url = https://www.mongodb.com/
 	arch = x86_64
 	license = custom
 	depends = curl
 	optdepends = mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities.
-	provides = mongodb=4.0.22
+	provides = mongodb=4.0.23
 	conflicts = mongodb
 	conflicts = mongodb-bin
 	backup = etc/mongodb.conf
-	source = https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.0/multiverse/binary-amd64/mongodb-org-shell_4.0.22_amd64.deb
-	source = https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.0/multiverse/binary-amd64/mongodb-org-server_4.0.22_amd64.deb
-	source = https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.0/multiverse/binary-amd64/mongodb-org-mongos_4.0.22_amd64.deb
+	source = https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.0/multiverse/binary-amd64/mongodb-org-shell_4.0.23_amd64.deb
+	source = https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.0/multiverse/binary-amd64/mongodb-org-server_4.0.23_amd64.deb
+	source = https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.0/multiverse/binary-amd64/mongodb-org-mongos_4.0.23_amd64.deb
 	source = mongodb.service
 	source = mongodb.conf
 	source = mongodb.sysusers
 	source = mongodb.tmpfiles
 	source = LICENSE
-	b2sums = 1bdfe444ee8953c4101059e983be645758eaa72ce288b5a75044b919194c47f26809cd581b022b29345641642967a50e0f57e6fe24aeb6092768b3f5cff2bcf9
-	b2sums = 669b51c1e20f9fe9b3cc1070328293c4793548ede8b1efac792ec077b10fe10037c39620f81681b4bbfaee4aa0623effa976326e721da5458c323b987ba9b700
-	b2sums = 3e3ead36b7257a520125ab51074d8318c40f20c395aaa21aaf46d021d646c714588cabf47ec263f06082fc12221c5d0f30e27a8d6b30cfaa17bf304eb2b29f6e
+	b2sums = 40e0608f50c2cee6e5f4ddae9ef0a95cd4ef4ced91edc1a3ce39530e38d08ed68841cbd75aed184203ced9860260169bdacf940d2f4a65f9c3b79f12e8d8d12e
+	b2sums = d9a649a8c3013fee55aa872b01551ecb16430b444dc3c5aee8721cb07836379720e4ec9e95a10dc1499f44379d337e299fa9bbb47144940ac2b4c01a33851317
+	b2sums = b22282ff31f08b2c737138370628e686e66f88964feacac40263b582c6f02cc7cb47357367e24013cf2e8b49242a140b77bb796ee72ecc5897760c52e1669ec7
 	b2sums = ea55bb2f08066d7399e9e66f981f86395f6a177faa198c66f93ea2965ea80d61c170336a4f49fc7f1f855d3abd5e7cf3862d58a2be4a7708c0582fb4ff80b255
 	b2sums = 6187573d7ac6da911030b215ef98173f4317d3f056ae9a2dfe7ce22d4d329355f49d373c253949048ad7a20d54750f0df95ade83c50bba0af5242b41cb8d40a9
 	b2sums = c7f301e1ac6856ec54bdbc73c6d4b212816c3b058297f30dce1619889aee7a5d99f7c46868bb47dacb70a024be948d7350bb7d2be0e7be4257957b2ad75a93ab
