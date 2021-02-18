@@ -1,0 +1,18 @@
+pkgbase = android-aarch64-strace
+	pkgdesc = A diagnostic, debugging and instructional userspace tracer (Android, aarch64)
+	pkgver = 5.11
+	pkgrel = 1
+	url = https://strace.io/
+	arch = any
+	license = BSD
+	makedepends = android-ndk
+	options = !buildflags
+	options = !strip
+	source = https://github.com/strace/strace/releases/download/v5.11/strace-5.11.tar.xz
+	source = https://github.com/strace/strace/releases/download/v5.11/strace-5.11.tar.xz.asc
+	validpgpkeys = 296D6F29A020808E8717A8842DB5BD89A340AEB7
+	sha1sums = 1b7a533a45b9ca351d7a14702c044b917d11e979
+	sha1sums = SKIP
+
+pkgname = android-aarch64-strace
+
