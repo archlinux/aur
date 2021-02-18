@@ -2,7 +2,7 @@
 # Contributor: Sebastian Krebs <sebastian[at]krebs[dot]one>
 
 pkgname=telegraf-bin
-pkgver=1.17.2
+pkgver=1.17.3
 pkgrel=1
 pkgdesc="An open source agent for collecting metrics and data on the system; Binary release"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -22,11 +22,11 @@ source=('telegraf.sysusers' 'telegraf.tmpfiles' 'LICENSE')
 md5sums=('58cc9edf8fbf07e7d3a0357db78121b1'
          '9c7a4df3556cab94837c432f5e46cf04'
          '10a23e7a514f23f0930e1a4254936534')
-md5sums_i686=('d50f02f553951e5aab940e437d89f7d3')
-md5sums_x86_64=('061e57ea4ed999334eb9ef031338d8b8')
-md5sums_armv6h=('a720a75bde91b15218b780af9802b501')
-md5sums_armv7h=('a720a75bde91b15218b780af9802b501')
-md5sums_aarch64=('de2736549ee67fbdef0b36894fef17fe')
+md5sums_i686=('f56999d43b96b054650eb380193f1d93')
+md5sums_x86_64=('bdba432789fd789a9e02634452bb5876')
+md5sums_armv6h=('5081f1393c3a4e4b133adc778eb8d9cb')
+md5sums_armv7h=('5081f1393c3a4e4b133adc778eb8d9cb')
+md5sums_aarch64=('5bc632bc2dc0ed1af4d4c41d59506604')
 
 package() {
   cd "$srcdir"
