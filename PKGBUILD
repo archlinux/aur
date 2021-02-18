@@ -1,8 +1,8 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=mininet-git
-pkgver=2.3.0b2.r4.gf0c726a
-pkgrel=3
+pkgver=2.3.0.r0.gd7f399d
+pkgrel=1
 pkgdesc='Emulator for rapid prototyping of Software Defined Networks'
 depends=('python' 'iproute2' 'net-tools' 'iputils' 'inetutils' 'iperf' 'ethtool'
          'libcgroup' 'openvswitch' 'psmisc')
