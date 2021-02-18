@@ -3,7 +3,7 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=mininet
-pkgver=2.3.0b2
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Emulator for rapid prototyping of Software Defined Networks'
 depends=('python' 'iproute2' 'net-tools' 'iputils' 'inetutils' 'iperf' 'ethtool'
@@ -19,7 +19,7 @@ license=('custom')
 install=mininet.install
 source=("https://github.com/mininet/mininet/archive/$pkgver.tar.gz"
         'git+https://github.com/mininet/openflow')  # for UserSwitch
-sha256sums=('9c879d995ba01717c739d5baedb11a35754f34b629579c640e5d3c48f835424f'
+sha256sums=('1b16ee53ddb9a34a3751a77517643bda2286fc31be123209e84884d0697107b0'
             'SKIP')
 
 prepare () {
