@@ -1,11 +1,13 @@
-# Maintainer: DuckSoft <realducksoft at gmail dot com> 
+# Maintainer: DuckSoft <realducksoft@gmail.com>
+# Maintainer: database64128 <free122448@hotmail.com>
+
 pkgname=shadowsocks-uri-generator-git
-pkgver=20210110.r54.ca29e5e
-pkgrel=2
+pkgver=20210218.r83.b0d6a43
+pkgrel=1
 pkgdesc="Command line tool for multi-user ss:// URL generation, SIP008 online configuration delivery, and Outline server deployment and management"
 arch=(x86_64)
 url="https://github.com/database64128/shadowsocks-uri-generator"
-license=('GPL')
+license=('GPL3')
 makedepends=('git' 'dotnet-sdk>=5.0')
 provides=('shadowsocks-uri-generator')
 conflicts=('shadowsocks-uri-generator')
@@ -23,7 +25,7 @@ pkgver() {
 
 build() {
 	cd $pkgname
-	dotnet publish ShadowsocksUriGenerator -c Release -p:PublishTrimmed=true -p:PublishSingleFile=true -r linux-x64 --self-contained
+	dotnet publish ShadowsocksUriGenerator -c Release -p:DefineConstants=PACKAGED -p:PublishSingleFile=true -p:PublishTrimmed=true -p:TrimMode=link -p:DebuggerSupport=false -p:EnableUnsafeBinaryFormatterSerialization=false -p:EnableUnsafeUTF7Encoding=false -p:InvariantGlobalization=true -r linux-x64 --self-contained
 }
 
 package() {
