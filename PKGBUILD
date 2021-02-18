@@ -1,6 +1,4 @@
-# Current Maintainer: necklace <ns@nsz.no>
-# Original Packager: necklace <ns@nsz.no>
-# Contributors: 
+# Maintainer: necklace <ns@nsz.no>
 
 pkgname=avaloniailspy
 _gitname="AvaloniaILSpy"
