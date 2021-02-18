@@ -1,0 +1,13 @@
+pkgbase = fastfetch-git
+	pkgdesc = Like neofetch, but much faster because written in c. Downside: only Linux
+	pkgver = r4.41120ef
+	pkgrel = 1
+	url = https://github.com/LinusDierheimer/fastfetch#README
+	arch = any
+	license = MIT
+	depends = pciutils
+	depends = libx11
+	source = git+https://github.com/LinusDierheimer/fastfetch.git
+	sha256sums = SKIP
+
+pkgname = fastfetch-git

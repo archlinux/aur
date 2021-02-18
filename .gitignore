@@ -1,0 +1,4 @@
+fastfetch/
+src/
+pkg/
+*.pkg.tar.zst
