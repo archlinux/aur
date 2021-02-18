@@ -22,8 +22,7 @@ backup=('etc/rdma/'{'rdma.conf','mlx4.conf','sriov-vfs'})
 
 source=("${_srcname}::git+${url}.git#tag=${_tag}?signed")
 sha512sums=('SKIP')
-validpgpkeys=('921AFFAF83A9D7FD38CAA681E4637B88367258A7'  # leon@leon.nu
-              '42D25385C1A1C02B8B1B1C6F801BDDB825988F64') # nicolas@morey-chaisemartin.com
+validpgpkeys=('42D25385C1A1C02B8B1B1C6F801BDDB825988F64') # nicolas@morey-chaisemartin.com
 
 prepare() {
     cd "${srcdir}/${_srcname}"
