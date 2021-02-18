@@ -6,7 +6,7 @@ pkgver=0.10.0
 pkgrel=1
 arch=(any)
 license=('MIT')
-pkgdesc="Handshake airdrop redemption"
+pkgdesc="Handshake airdrop client"
 url="https://handshake.org"
 depends=(
 	'nodejs'
