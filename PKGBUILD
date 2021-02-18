@@ -3,15 +3,15 @@
 
 pkgname=imagewriter
 pkgver=1.10.1432200249.1d253d9
-_release=2.1
-pkgrel=15
+_release=2.3
+pkgrel=16
 pkgdesc="A graphical utility for writing raw disk images & hybrid isos to USB keys"
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/openSUSE/imagewriter'
 license=('GPL2')
 depends=('qt5-base' 'udisks2')
 source=("http://download.opensuse.org/tumbleweed/repo/src-oss/src/$pkgname-$pkgver-${_release}.src.rpm")
-sha512sums=('8f08fe4e8d3c3de9b8b28fdb2fb498867429c5a522950a8e6b5ac484b11b422376c5cf0304198966178f77d0c16854f56ac1dbe37057fef804e908b7043cb1aa')
+sha512sums=('b731866fba26c0f5fe95c0005b4f4b3125a26d4baf85bf6c8e127e23b3a2046c17bed5a74b524d21d3e12e46f88bd7ca03efb4dd6585bf24a49a486ec5694a3b')
 
 prepare() {
 	cd $srcdir
