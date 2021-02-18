@@ -2,7 +2,7 @@
 
 pkgname=wand
 _name=wand-cli
-pkgver=2.4.8
+pkgver=2.4.9
 pkgrel=1
 pkgdesc="Command line tool for compiling over 27 languages instantly using the wandbox api"
 arch=('any')
@@ -14,11 +14,11 @@ depends=('python-pygments'
 makedepends=('python-setuptools')
 license=('MIT')
 source=("https://files.pythonhosted.org/packages/source/w/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('9161d3503ff6015c7ad49fcde14b42163d35f7766462b519e7f0de3981b4db0b')
+sha256sums=('04a4e6b47c1d627aefef8019812640cb23039021b29db4e26aa8e6013739a562')
 
 build() {
   cd "$_name-$pkgver"
-  python -m setuptools.launch setup.py build
+  python setup.py build
 }
 
 package() {
