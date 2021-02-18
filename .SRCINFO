@@ -1,6 +1,6 @@
 pkgbase = skr
 	pkgdesc = Low level key remapping
-	pkgver = r115.70fad82
+	pkgver = r129.6116d5b
 	pkgrel = 1
 	url = https://github.com/DavRack/skr
 	arch = x86_64
@@ -14,7 +14,9 @@ pkgbase = skr
 	depends = python
 	provides = skr
 	source = skr::git://github.com/DavRack/skr
-	md5sums = SKIP
+	source = skr@.service
+	sha256sums = SKIP
+	sha256sums = 9faffc3a0806ebb69ec7d894bc5f8bc772da7a3d6da019e72f4fba46c439a957
 
 pkgname = skr-git
 
