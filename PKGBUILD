@@ -7,7 +7,7 @@ pkgbase=pipewire-common-git
 pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-jack-git
          pipewire-common-pulse-git pipewire-common-alsa-git
          gst-plugin-pipewire-common-git)
-pkgver=0.3.21.r110.g373fd53d
+pkgver=0.3.22.r7.ga22602f4
 pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines"
 url="https://pipewire.org"
@@ -69,7 +69,7 @@ package_pipewire-common-git() {
              pipewire-common-ffmpeg-git)
   replaces=(pipewire-common-bluez5-git pipewire-common-bluez5-hsphfpd-git
             pipewire-common-ffmpeg-git)
-  backup=(etc/pipewire/{client-rt,client,jack,pipewire-pulse,pipewire}.conf
+  backup=(etc/pipewire/{client-rt,client,pipewire}.conf
           etc/pipewire/media-session.d/media-session.conf
           etc/pipewire/media-session.d/{alsa,bluez,v4l2}-monitor.conf)
   install=pipewire.install
@@ -83,11 +83,13 @@ package_pipewire-common-git() {
 
   _pick docs usr/share/doc
 
+  _pick jack etc/pipewire/jack.conf
   _pick jack etc/pipewire/media-session.d/with-jack
   _pick jack usr/bin/pw-jack usr/lib/pipewire-$_ver/jack
   _pick jack usr/lib/spa-0.2/jack
   _pick jack usr/share/man/man1/pw-jack.1
 
+  _pick pulse etc/pipewire/pipewire-pulse.conf
   _pick pulse etc/pipewire/media-session.d/with-pulseaudio
 
   _pick gst usr/lib/gstreamer-1.0
@@ -105,6 +107,7 @@ package_pipewire-common-jack-git() {
   depends=(pipewire-common-git libpipewire-$_ver.so bash libjack.so)
   provides=(pipewire-jack)
   conflicts=(pipewire-jack)
+  backup=(etc/pipewire/jack.conf)
   mv jack/* "$pkgdir"
 }
 
@@ -114,6 +117,7 @@ package_pipewire-common-pulse-git() {
   provides=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
   conflicts=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
   install=pipewire-pulse.install
+  backup=(pipewire-pulse)
   mv pulse/* "$pkgdir"
 }
 
