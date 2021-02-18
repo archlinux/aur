@@ -3,7 +3,7 @@
 # Current Maintainer <erik.dubois@gmail.com>
 
 pkgname=numix-icon-theme-git
-pkgver=0.r1994.ea068b43a
+pkgver=20.06.07.r8.g91e4a9747
 pkgrel=1
 pkgdesc='Base icon theme from the Numix project'
 arch=('any')
@@ -18,9 +18,7 @@ source=('git+https://github.com/numixproject/numix-icon-theme.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd numix-icon-theme
-
-  echo "0.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git -C numix-icon-theme describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
