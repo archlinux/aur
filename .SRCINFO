@@ -1,6 +1,6 @@
 pkgbase = i2p-dev
 	pkgdesc = A distributed anonymous network (daily mtn->git sync)
-	pkgver = 0.9.47.0
+	pkgver = 0.9.49.0
 	pkgrel = 1
 	url = https://geti2p.net
 	install = i2p.install
