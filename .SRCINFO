@@ -21,8 +21,6 @@ pkgbase = openshadinglanguage-qfix
 	depends = ncurses
 	depends = clang
 	optdepends = python: the Python module
-	provides = openshadinglanguage
-	conflicts = openshadinglanguage
 	source = openshadinglanguage-qfix-1.11.11.0.tar.gz::https://github.com/imageworks/OpenShadingLanguage/archive/Release-1.11.11.0.tar.gz
 	sha512sums = 2a5e45255d21edea631cf6fd957eb8516fc87760e16ae4f32c7f732cfb3500f92477ad9b9fbda50bc34e2fc89867d3c7ff0e31ecb815c053dcf77dc226a2681c
 
