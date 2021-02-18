@@ -1,6 +1,6 @@
 pkgbase = blender-develop-git
 	pkgdesc = Development version of Blender (non-conflicting version)
-	pkgver = 2.93.r103756.gc53022768b1
+	pkgver = 2.93.r103843.g450ea1b755c
 	pkgrel = 1
 	url = https://blender.org/
 	changelog = blender.changelog
@@ -25,7 +25,7 @@ pkgbase = blender-develop-git
 	depends = freetype2
 	depends = libxi
 	depends = openimageio-qfix
-	depends = opencolorio
+	depends = opencolorio-qfix
 	depends = openvdb
 	depends = opencollada
 	depends = opensubdiv

@@ -6,10 +6,18 @@ _fragment=${FRAGMENT:-#branch=master}
 # shellcheck disable=SC2206
 [[ -v CUDA_ARCH ]] && _cuda_capability=(${CUDA_ARCH})
 
+# opencolorio=2 fix (add LD_LIBRRY_PATH or rpath to blender-2.93)
+_CMAKE_FLAGS+=( -DOSL_ROOT_DIR=/opt/osl
+                -DOPENIMAGEIO_ROOT_DIR=/opt/oiio
+                -DOPENCOLORIO_ROOT_DIR=/opt/ocio
+)
+
 #some extra, unofficially supported stuff goes here:
 ((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75) # Travis memory limit is not enough to build for arch 3.x.
 _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
-((DISABLE_USD)) || {
+((DISABLE_USD)) && {
+  _CMAKE_FLAGS+=( -DWITH_USD=OFF )
+} || {
   _CMAKE_FLAGS+=( -DWITH_USD=ON
                 -DUSD_ROOT=/usr )
   depends+=( "usd=20.05" )
@@ -19,14 +27,14 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
 
 pkgname=blender-develop-git
-pkgver=2.93.r103756.gc53022768b1
+pkgver=2.93.r103843.g450ea1b755c
 pkgrel=1
 pkgdesc="Development version of Blender (non-conflicting version)"
 changelog=blender.changelog
 arch=('i686' 'x86_64')
 url="https://blender.org/"
 depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2'
-         'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio-qfix' 'opencolorio'
+         'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio-qfix' 'opencolorio-qfix'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage-qfix' 'libtiff' 'libpng')
 depends+=('openimagedenoise')
 makedepends+=('git' 'cmake' 'boost' 'mesa' 'llvm')
@@ -113,6 +121,9 @@ package() {
   _suffix=${pkgver%%.r*}
   export DESTDIR="$pkgdir"
   if ((DISABLE_NINJA)); then make -C "$srcdir/build" install; else ninja -C "$srcdir/build" install; fi
+
+    #undo rpath clean in cmake_install ( faster than patching CMakeLists.txt)
+    cp "$srcdir/build/bin/blender" "$pkgdir/usr/bin/blender"
 
     msg "add -${_suffix} suffix to desktop shortcut"
     sed -i "s/=blender/=blender-${_suffix}/g" "${pkgdir}/usr/share/applications/blender.desktop"
