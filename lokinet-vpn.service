@@ -1,11 +1,12 @@
 [Unit]
 Description=LokiNET VPN tunnel: shove all traffic over lokinet
-Wants=lokinet.service
+Requires=lokinet.service
 After=lokinet.service
 
 [Service]
+EnvironmentFile=/etc/conf.d/lokinet
 Type=oneshot
-ExecStart=/usr/bin/lokinet-vpn --up
+ExecStart=/usr/bin/lokinet-vpn --up --exit $LOKINET_VPN_EXIT
 ExecStop=/usr/bin/lokinet-vpn --down
 RemainAfterExit=true
 

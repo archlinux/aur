@@ -1,0 +1,13 @@
+
+post_install() {
+	cat <<-EOF
+		  To generate default config (optional, will be invoked by lokinet service if needed):
+		    systemctl start lokinet-default-config
+		  To adjust upstream DNS servers and other options, edit /var/lib/lokinet/lokinet.ini
+		  To start lokinet:
+		    systemctl start lokinet
+		  To get .loki domains resolve, enable systemd-resolved: https://wiki.archlinux.org/index.php/Systemd-resolved
+		  Alternatively, replace /etc/resolv.conf contents with:
+		    nameserver 127.3.2.1
+		EOF
+}
