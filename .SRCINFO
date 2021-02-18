@@ -1,0 +1,13 @@
+pkgbase = aws-auth-git
+	pkgdesc = Manage AWS credential for a range of workflows
+	pkgver = v0.0.0.r16.g93e4593
+	pkgrel = 1
+	url = https://github.com/joshdk/aws-auth
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = git+https://github.com/joshdk/aws-auth
+	sha256sums = SKIP
+
+pkgname = aws-auth-git
+
