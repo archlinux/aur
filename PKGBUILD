@@ -2,7 +2,7 @@
 
 pkgname=sd-zram
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Enable zram on boot"
 arch=('any')
 depends=('bash')

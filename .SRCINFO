@@ -1,7 +1,7 @@
 pkgbase = sd-zram
 	pkgdesc = Enable zram on boot
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AtifChy/sd-zram
 	arch = any
 	depends = bash
