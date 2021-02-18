@@ -10,7 +10,7 @@ pkgdesc="Kernel module allowing to switch dedicated graphics card on Optimus lap
 arch=('x86_64')
 url="http://github.com/Bumblebee-Project/bbswitch"
 license=('GPL')
-makedepends=('linux-headers' 'pahole')
+makedepends=('linux-headers')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/Bumblebee-Project/bbswitch/archive/v${pkgver}.tar.gz"
         0001-proc_ops-struct.patch 0002-kernel-5.7.patch)
 sha512sums=('11ab163931feb6c0e202d04c4552b848e999fedea9990390c26b28abdb4a69081ccfb5a22d1e390cc274f1c0cfc9adedc719c5fece14738b17aaa93e28865b7c'
