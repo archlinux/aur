@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://omnidb.org/"
 license=('MIT')
 depends=('python')
-source_x86_64=("https://omnidb.org/dist/${pkgver}/omnidb-server_${pkgver}-debian-amd64.deb")
+source_x86_64=("https://github.com/OmniDB/OmniDB/releases/download/${pkgver}/omnidb-server_${pkgver}-debian-amd64.deb")
 options=("!strip")
 sha256sums_x86_64=('dc92fbf34e52aa730fad239542310680d55a523cda9c770b0edc28e782839942')
 
