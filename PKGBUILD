@@ -6,7 +6,7 @@ pkgver=2.3.0
 pkgrel=1
 arch=(any)
 license=('MIT')
-pkgdesc="Handshake Daemon & Full Node"
+pkgdesc="Handshake daemon node"
 url="https://handshake.org"
 depends=(
 	'nodejs'

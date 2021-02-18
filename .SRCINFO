@@ -1,5 +1,5 @@
 pkgbase = hsd
-	pkgdesc = Handshake Daemon & Full Node
+	pkgdesc = Handshake daemon node
 	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://handshake.org
