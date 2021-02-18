@@ -4,8 +4,8 @@
 
 pkgname=lib32-fakechroot
 _pkgname=fakechroot
-pkgver=2.19
-pkgrel=3
+pkgver=2.20.1
+pkgrel=1
 pkgdesc="Gives a fake chroot environment (32-bit)"
 depends=(fakechroot lib32-glibc)
 makedepends=(lib32-gcc-libs)
@@ -13,8 +13,12 @@ arch=('x86_64')
 url="https://github.com/dex4er/fakechroot/wiki"
 license=('LGPL')
 install=fakechroot.install
-source=(${_pkgname}-$pkgver.tar.gz::https://github.com/dex4er/fakechroot/archive/${pkgver}.tar.gz)
-md5sums=('db6378420c769232e69508bb78612c34')
+source=(
+  ${_pkgname}-$pkgver.tar.gz::https://github.com/dex4er/fakechroot/archive/${pkgver}.tar.gz
+  stat.patch
+)
+md5sums=('69612efa06636e79a56898512222b0fc'
+         '474a72c077719676a42d7fbea8ea53f8')
 
 
 build() {
@@ -25,6 +29,11 @@ build() {
 
   ./configure --prefix=/usr --libdir=/usr/lib32/libfakeroot
   make
+}
+
+prepare() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  patch -Np1 < "${srcdir}/stat.patch"
 }
 
 package() {
