@@ -30,8 +30,6 @@ pkgbase = openimageio-qfix
 	depends = pybind11
 	optdepends = qt5-base: iv image viewer
 	optdepends = python: bindings support
-	provides = openimageio
-	conflicts = openimageio
 	source = openimageio-qfix-2.2.11.1.tar.gz::https://github.com/OpenImageIO/oiio/archive/Release-2.2.11.1.tar.gz
 	sha512sums = 73809587dd405e64e593d6223ef37d4b94c4f1e1d9682fd1bf09e8e4ee8bc9928ed500b7dcc03036e138e45e65ea1f43c11c53d1cb6436a34eb8d15b2415ada5
 
