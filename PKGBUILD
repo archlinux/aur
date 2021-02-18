@@ -2,13 +2,13 @@
 pkgname=vim-hexokinase-git
 _pkgname=${pkgname%-git}
 pkgver=r112.9f7f4ba
-pkgrel=1
+pkgrel=2
 pkgdesc="(Neo)Vim plugin for asynchronously displaying hex colors"
 arch=('any')
 url="https://github.com/rrethy/vim-hexokinase"
-license=('GPL')
+license=('unknown')
 groups=('vim-plugins')
-depends=('hexokinase')
+depends=('hexokinase' 'vim-plugin-runtime')
 optdepends=('neovim>=0.3.2: virtual text and sign_column support'
             'vim: sign_column support (compiled with +signs)')
 makedepends=('git')
