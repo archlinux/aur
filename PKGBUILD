@@ -5,7 +5,7 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
-_pkgver=2021.1
+_pkgver=2021.2
 _channel=stable
 pkgver=${_pkgver}.${_channel}
 pkgrel=1
@@ -13,7 +13,7 @@ pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
-depends=('libnotify' 'libappindicator-gtk3' 'nss')
+depends=('iputils' 'libnotify' 'libappindicator-gtk3' 'nss')
 makedepends=('git' 'go' 'rust' 'npm' 'python')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
@@ -62,6 +62,7 @@ build() {
 	echo "Building wireguard-go..."
 	pushd wireguard/libwg
 	mkdir -p "../../build/lib/$arch-unknown-linux-gnu"
+	export GOPATH="$srcdir/gopath"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
