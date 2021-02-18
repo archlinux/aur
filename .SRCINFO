@@ -1,0 +1,24 @@
+pkgbase = ocaml-luv
+	pkgdesc = Cross-platform asynchronous I/O and system calls
+	pkgver = 0.5.7
+	pkgrel = 1
+	url = https://github.com/aantron/luv
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = dune>=2.0.0
+	depends = libuv
+	depends = ocaml>=4.02.0
+	depends = ocaml-ctypes>=0.13.0
+	depends = ocaml-result
+	options = !strip
+	source = ocaml-luv-0.5.7-1.tar.gz::https://github.com/aantron/luv/archive/0.5.7.tar.gz
+	source = ocaml-luv-0.5.7-1-no-vendored-libuv-headers.diff::https://github.com/aantron/luv/commit/2b009466670799b79c47f61f8d2f5e6c04448572.diff
+	sha256sums = 09b7785cc64f6de465a50d8af54e4ace4c52b23d929a45f5044e7c9942a2558a
+	sha256sums = 86f2fbad97e40dec16de0ff15d159bbce38a6cecf6eab1533da1b7c4c3aa481d
+
+pkgname = ocaml-luv
