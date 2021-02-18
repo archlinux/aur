@@ -5,7 +5,6 @@ pkgbase = hsd
 	url = https://handshake.org
 	arch = any
 	license = MIT
-	makedepends = npm
 	makedepends = node-gyp
 	depends = nodejs
 	provides = hsd
