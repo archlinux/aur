@@ -1,7 +1,7 @@
 pkgbase = albert-minimal
 	pkgdesc = A sophisticated standalone keyboard launcher - minimal plugins included
 	pkgver = 0.17.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/albertlauncher
 	arch = x86_64
 	license = custom
@@ -11,8 +11,6 @@ pkgbase = albert-minimal
 	makedepends = python
 	makedepends = qt5-declarative
 	makedepends = qt5-svg
-	makedepends = virtualbox
-	makedepends = virtualbox-sdk
 	depends = qt5-charts
 	depends = qt5-graphicaleffects
 	depends = qt5-quickcontrols

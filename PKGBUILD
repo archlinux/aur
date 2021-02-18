@@ -4,13 +4,14 @@
 
 pkgname=albert-minimal
 pkgver=0.17.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A sophisticated standalone keyboard launcher - minimal plugins included"
 arch=('x86_64')
 url="https://github.com/albertlauncher"
 license=('custom')
 depends=('qt5-charts' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-svg' 'qt5-x11extras' 'libx11')
-makedepends=( 'cmake' 'git' 'muparser' 'python' 'qt5-declarative' 'qt5-svg' 'virtualbox' 'virtualbox-sdk')
+#makedepends=( 'cmake' 'git' 'muparser' 'python' 'qt5-declarative' 'qt5-svg' 'virtualbox' 'virtualbox-sdk')
+makedepends=( 'cmake' 'git' 'muparser' 'python' 'qt5-declarative' 'qt5-svg')
 optdepends=('muparser: Calculator plugin'
             'python: Python extension'
             #'virtualbox: VirtualBox plugin'
