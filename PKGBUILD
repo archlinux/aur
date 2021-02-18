@@ -24,8 +24,8 @@ prepare() {
 	# https://github.com/aantron/luv/commit/2b009466670799b79c47f61f8d2f5e6c04448572
 	patch --forward -p1 < "$srcdir/$pkgname-$pkgver-$pkgrel-no-vendored-libuv-headers.diff"
 
-	# Remove folder with tests, as we don't run them anyway and they contain additional opam files,
-	# which would otherwise get built
+	# Remove folder with tests, as we don't run them anyway and they contain additional
+	# opam files, which would otherwise get built
 	rm -rf 'test/'
 }
 
