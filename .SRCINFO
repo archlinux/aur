@@ -1,6 +1,6 @@
 pkgbase = smartied
 	pkgver = 0.2
-	pkgrel = 8
+	pkgrel = 9
 	url = https://cgit.ctu.cx/smartied/
 	arch = x86_64
 	license = GPL-3
