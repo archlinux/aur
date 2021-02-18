@@ -6,7 +6,7 @@ pkgname=avaloniailspy
 _gitname="AvaloniaILSpy"
 pkgver=v5.0
 _gittag=v5.0-rc2
-pkgrel=6
+pkgrel=7
 url="https://github.com/icsharpcode/AvaloniaILSpy"
 pkgdesc="Avalonia-based .NET Decompiler (port of ILSpy)"
 arch=("any")
@@ -15,14 +15,17 @@ license=("MIT" "LGPLv2.1" "Ms-PL")
 depends=("dotnet-runtime")
 makedepends=("dotnet-sdk" "libicns" "git")
 
-source=("git+https://github.com/icsharpcode/${_gitname}.git#tag=${_gittag}"
-        "${pkgname}.desktop")
+source=("git+https://github.com/icsharpcode/${_gitname}.git#tag=${_gittag}" 
+        "${pkgname}.desktop"
+        "0001-Fix-49.patch")
 sha256sums=("SKIP"
-            "607c64adb67e7d6d54e2d6ca57e5f3b2e68aa4ba80cb745dd9e93b8e86677d26")
+            "607c64adb67e7d6d54e2d6ca57e5f3b2e68aa4ba80cb745dd9e93b8e86677d26"
+            "SKIP")
 
 prepare() {
   cd ${_gitname}
   git submodule update --force --recursive --init
+  git am < "${srcdir}/0001-Fix-49.patch"
   icns2png -x ILSpy/ILSpy.icns
 }
 
