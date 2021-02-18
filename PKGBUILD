@@ -1,7 +1,7 @@
 # Maintainer : Erik Dubois <erik.dubois@gmail.com>
 # Previous Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=numix-circle-icon-theme-git
-pkgver=0.r54.cc59306
+pkgver=20.09.19.r0.g8b749c0
 pkgrel=1
 pkgdesc='Circle icon theme from the Numix project'
 arch=('any')
@@ -16,8 +16,7 @@ source=('numix-circle-icon-theme::git+https://github.com/numixproject/numix-icon
 sha256sums=('SKIP')
 
 pkgver() {
-  cd numix-circle-icon-theme
-  echo "0.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git -C numix-circle-icon-theme describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
