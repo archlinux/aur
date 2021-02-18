@@ -2,7 +2,7 @@
 
 _module=studio
 pkgname=kde2-kde${_module}-git
-pkgver=2.2.2.r8.0fcdbd7
+pkgver=2.0.0.r8.0fcdbd7
 pkgrel=1
 pkgdesc="Fully-fledged IDE for KDE 2"
 arch=(i686 x86_64)
@@ -22,7 +22,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd kde2-kde${_module}
-  printf "2.2.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "2.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {

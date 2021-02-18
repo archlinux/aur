@@ -1,6 +1,6 @@
 pkgbase = kde2-kdestudio-git
 	pkgdesc = Fully-fledged IDE for KDE 2
-	pkgver = 2.2.2.r8.0fcdbd7
+	pkgver = 2.0.0.r8.0fcdbd7
 	pkgrel = 1
 	url = https://github.com/sandsmark/kdestudio
 	arch = i686
