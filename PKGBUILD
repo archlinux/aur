@@ -1,7 +1,7 @@
 #! /bin/bash
 pkgname="pacman-auto-update"
-pkgver=1.1.4
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 arch=("any")
 install="${pkgname}.install"
 pkgdesc="Install a systemd service triggered by a timer to run automatic pacman package updates"
@@ -12,7 +12,7 @@ optdepends=(
 	"networkmanager: for auto-updating only on non metered network"
 )
 source=("git+${url}")
-md5sums=("SKIP")
+md5sums=('SKIP')
 
 package() {
 	cp --recursive "${srcdir}/${pkgname}/root"/* "${pkgdir}"
