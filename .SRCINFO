@@ -1,0 +1,17 @@
+pkgbase = vim-delimitmate-git
+	pkgdesc = A vim plugin providing insert mode autocompletion for quotes, brackets, etc.
+	pkgver = 2.7.r34.g537a1da
+	pkgrel = 1
+	url = https://github.com/raimondi/delimitmate
+	arch = any
+	groups = vim-plugins
+	license = vim-license
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-delimitmate
+	conflicts = neovim-delimitmate
+	source = vim-delimitmate-git::git+https://github.com/raimondi/delimitmate
+	sha256sums = SKIP
+
+pkgname = vim-delimitmate-git
+
