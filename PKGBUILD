@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=orchis-theme-git
-pkgver=2021.01.22.r2.gf9ba358
-pkgrel=2
+pkgver=2021.01.22.r4.gb515a13
+pkgrel=1
 pkgdesc="A Material Design theme for GNOME/GTK based desktop environments."
 arch=('any')
 url="https://www.pling.com/p/1357889"
@@ -32,7 +32,7 @@ package() {
 	rm -rf "$pkgdir"/usr/share/themes/{Orchis,Orchis-*}/gnome-shell/extensions
 
 	# Plank theme
-	install -Dm755 src/plank/dock.theme -t "$pkgdir/usr/share/plank/themes/Orchis"
+	install -Dm644 src/plank/dock.theme -t "$pkgdir/usr/share/plank/themes/Orchis"
 
 	# Wallpapers
 	install -Dm644 src/wallpaper/*.jpg -t \
