@@ -4,7 +4,7 @@
 _srcname=ts
 pkgname=task-spooler
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 #pkgdesc="Personal job scheduler"
 pkgdesc="Queue up tasks from the shell for batch execution"
 arch=('x86_64')
@@ -29,7 +29,7 @@ package() {
   make PREFIX="$pkgdir/usr" install
 
   # Rename ts to tsp (as in Debian). File /usr/bin/ts is owned by package community/moreutils.
-  #mv "$pkgdir"/usr/bin/{ts,tsp}
-  #mv "$pkgdir"/usr/share/man/man1/{ts,tsp}.1
+  mv "$pkgdir"/usr/bin/{ts,tsp}
+  mv "$pkgdir"/usr/share/man/man1/{ts,tsp}.1
 }
 
