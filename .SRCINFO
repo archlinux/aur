@@ -1,18 +1,17 @@
 pkgbase = typeracer-bin
 	pkgdesc = Terminal typing speed tester
-	pkgver = 2.0.4
-	pkgrel = 2
+	pkgver = 2.0.6
+	pkgrel = 1
 	url = https://gitlab.com/ttyperacer/terminal-typeracer
 	arch = x86_64
 	license = GPL3
 	depends = openssl
-	depends = zlib
+	depends = sqlite
 	provides = typeracer
 	conflicts = typeracer
-	source_x86_64 = typeracer-bin-2.0.4::https://gitlab.com/ttyperacer/terminal-typeracer/uploads/f8b8d4b1c7fca37aca68c36452df1e3a/typeracer
-	source_x86_64 = typeracer-bin-2.0.4-README.md::https://gitlab.com/ttyperacer/terminal-typeracer/-/raw/v2.0.4/README.md
+	source_x86_64 = typeracer-bin-2.0.6::https://gitlab.com/ttyperacer/terminal-typeracer/uploads/f8b8d4b1c7fca37aca68c36452df1e3a/typeracer
+	source_x86_64 = typeracer-bin-2.0.6-README.md::https://gitlab.com/ttyperacer/terminal-typeracer/-/raw/2.0.6/README.md
 	sha512sums_x86_64 = 623cdcf28d1218ac74fe968ecc349fdc612b5934f3646e96a76857cafd637755dbfd573d50107ac24ac15ba3437e8699b0e06d823347045274a75c99167ec3e1
-	sha512sums_x86_64 = ceb9c22dfba27efc85d47451ab06a66fc8bf650f7bb579c86164e7fc2059d69e0274992fcd405689cca5d58a2c424f897ef583b557e9cfa5e55c8857d8889cb7
+	sha512sums_x86_64 = e129352068b9fb6738eec4b255314fba2a953917d2519db071ae74968689b9a5cc2d115f22bd9a3470bf1cae43857c9d405cafe808d84c0f533a2b4201a368c4
 
 pkgname = typeracer-bin
-
