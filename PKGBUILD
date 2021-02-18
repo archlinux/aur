@@ -9,6 +9,7 @@ license=('GPL3')
 makedepends=('python-pillow' 'inkscape' 'xorg-xcursorgen')
 provides=('bibata-extra-cursor')
 conflicts=('bibata-extra-cursor')
+options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('cb43593b189b4dbfaa6e2a83c5c401fac8fc02b268f36a3873fa107b90087f93')
 

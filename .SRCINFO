@@ -10,6 +10,7 @@ pkgbase = bibata-extra-cursor-theme
 	makedepends = xorg-xcursorgen
 	provides = bibata-extra-cursor
 	conflicts = bibata-extra-cursor
+	options = !strip
 	source = bibata-extra-cursor-theme-0.3.tar.gz::https://github.com/ful1e5/Bibata_Extra_Cursor/archive/v0.3.tar.gz
 	sha256sums = cb43593b189b4dbfaa6e2a83c5c401fac8fc02b268f36a3873fa107b90087f93
 
