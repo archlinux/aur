@@ -1,3 +1,5 @@
+# Maintainer: Markus Kitsinger (SwooshyCueb) <root@swooshalicio.us>
+
 pkgname=ovpn-dco-dkms-git
 pkgver=0.20201204.r258.git8f04ed8
 pkgrel=1
