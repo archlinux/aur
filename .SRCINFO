@@ -5,7 +5,7 @@ pkgbase = bibata-cursor-theme
 	url = https://github.com/ful1e5/Bibata_Cursor
 	arch = any
 	license = GPL3
-	makedepends = python-clickgen
+	makedepends = python-clickgen=1.1.7
 	depends = libxcursor
 	depends = libpng
 	noextract = bibata-cursor-theme-bitmaps-1.0.3.zip

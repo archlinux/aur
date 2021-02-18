@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/ful1e5/Bibata_Cursor"
 license=('GPL3')
 depends=('libxcursor' 'libpng')
-makedepends=('python-clickgen')
+makedepends=('python-clickgen=1.1.7')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname-bitmaps-$pkgver.zip::$url/releases/download/v$pkgver/bitmaps.zip")
