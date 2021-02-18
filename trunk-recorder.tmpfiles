@@ -1,0 +1,2 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/trunk-recorder 0755 trunk-recorder trunk-recorder

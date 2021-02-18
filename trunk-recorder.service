@@ -1,0 +1,14 @@
+[Unit]
+Description=Trunk-Recorder
+
+[Service]
+User=trunk-recorder
+Group=trunk-recorder
+Environment=LC_ALL=en_US.utf8
+WorkingDirectory=/var/lib/trunk-recorder
+ExecStart=/usr/bin/recorder --config /etc/trunk-recorder.json
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

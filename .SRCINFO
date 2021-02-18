@@ -1,0 +1,29 @@
+pkgbase = trunk-recorder
+	pkgdesc = Records calls from a Trunked Radio System (P25 & SmartNet)
+	pkgver = 3.1.4
+	pkgrel = 1
+	url = https://github.com/robotastic/trunk-recorder
+	arch = x86_64
+	arch = i686
+	arch = armv5
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	makedepends = boost
+	makedepends = cppunit
+	depends = gnuradio
+	depends = gnuradio-osmosdr
+	depends = libuhd
+	source = https://github.com/robotastic/trunk-recorder/archive/v3.1.4.tar.gz
+	source = trunk-recorder.service
+	source = trunk-recorder.sysusers
+	source = trunk-recorder.tmpfiles
+	sha256sums = 49023ee69301b3344993eb92b910cd253442d0ef41d5c70a84dfa5d7551df605
+	sha256sums = 413f2090a853422b8987bdb4dfa6cbcf7d5b75dbdb1989d030e7c19d3e9dfb9b
+	sha256sums = f2e06d333ec8a64c869a9cf369015bf6e0b9819d2af259b4d1c411ed3cca78f8
+	sha256sums = c20344ba366fcab3f3552e2b5e537f394406ab634f35c2b8858423ffa63fd0e8
+
+pkgname = trunk-recorder
+
