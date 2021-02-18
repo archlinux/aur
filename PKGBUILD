@@ -9,9 +9,10 @@ url="https://github.com/rrethy/vim-hexokinase"
 license=('GPL')
 groups=('vim-plugins')
 depends=('hexokinase')
-optdepends=('neovim: virtual text and sign_column support'
+optdepends=('neovim>=0.3.2: virtual text and sign_column support'
             'vim: sign_column support (compiled with +signs)')
 makedepends=('git')
+provides=("$_pkgname")
 source=("git+$url")
 sha256sums=('SKIP')
 
