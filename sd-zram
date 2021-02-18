@@ -1,7 +1,5 @@
 #!/bin/bash
 
-[ -f /etc/sd-zram.conf ] && source /etc/sd-zram.conf
-
 start() {
 	modprobe zram
 	[ -n "$ZRAM_COMPRESSION" ] && echo "$ZRAM_COMPRESSION" > /sys/block/zram0/comp_algorithm

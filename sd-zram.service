@@ -3,6 +3,7 @@ Description=Enable zRAM
 
 [Service]
 Type=oneshot
+EnvironmentFile=/etc/sd-zram.conf
 ExecStart=/usr/lib/systemd/scripts/sd-zram start
 ExecStop=/usr/lib/systemd/scripts/sd-zram stop
 RemainAfterExit=yes
