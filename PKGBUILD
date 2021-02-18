@@ -1,7 +1,7 @@
 # Maintainer: Jat <chat@jat.email>
 
 pkgname=obs-multi-rtmp
-pkgver=0.2.5.2
+pkgver=0.2.5.3
 pkgrel=1
 pkgdesc='Multiple RTMP outputs plugin'
 arch=('x86_64')
@@ -12,8 +12,8 @@ makedepends=('cmake')
 _obsver=26.1.1
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "obs-studio-${_obsver}.tar.gz::https://github.com/obsproject/obs-studio/archive/${_obsver}.tar.gz")
-sha256sums=('AC91F6DCE19D94805E4C0D86CAF8D7EFAB38F6C31F43EE060C6C06AB011FDD8A'
-            '19F55EAC1C315A6101B024B44C858D1254E1A4A38D87D5E9C9A5274CC532A450')
+sha256sums=('a042a213dcb62faf8944b3d04d179064f5bb9f67bbeb5aa2b3991d2feffbf874'
+            '19f55eac1c315a6101b024b44c858d1254e1a4a38d87d5e9c9a5274cc532a450')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
