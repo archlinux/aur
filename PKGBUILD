@@ -2,7 +2,7 @@
 # Contributor: Drew DeVault <sir@cmpwn.com>
 pkgname=mako-git
 _pkgname=mako
-pkgver=v1.4.1.r51.g85d3d51
+pkgver=v1.4.1.r61.gdbd9c2b
 pkgrel=1
 license=('MIT')
 pkgdesc='Lightweight notification daemon for Wayland'
@@ -17,8 +17,14 @@ depends=(
 optdepends=("jq: support for 'makoctl menu'")
 arch=("x86_64")
 url='http://mako-project.org'
-source=("${pkgname%-*}::git+https://github.com/emersion/mako.git")
-sha1sums=('SKIP')
+source=(
+    "${pkgname%-*}::git+https://github.com/emersion/mako.git"
+    "mako.service"
+    "0001-Fix-DBus-service.patch"
+)
+sha1sums=('SKIP'
+          '688484d6bf677e6f6014c9311ff40fabae748bcc'
+          '64b8a3446fa1ddc3d876629a0c4a3d1d6bb0b20f')
 provides=('mako')
 conflicts=('mako')
 
@@ -31,6 +37,10 @@ pkgver() {
     )
 }
 
+prepare() {
+    patch -Np1 -i "$srcdir/0001-Fix-DBus-service.patch" -d "$_pkgname"
+}
+
 build() {
     cd "$_pkgname"
     arch-meson -Dzsh-completions=true -Dsd-bus-provider=libsystemd build
@@ -41,4 +51,5 @@ package() {
     cd "$_pkgname"
     DESTDIR="$pkgdir/" ninja -C build install
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"${pkgname%-*}"/LICENSE
+    install -Dm0644 ../mako.service -t "$pkgdir"/usr/lib/systemd/user/
 }

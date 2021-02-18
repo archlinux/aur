@@ -1,6 +1,6 @@
 pkgbase = mako-git
 	pkgdesc = Lightweight notification daemon for Wayland
-	pkgver = v1.4.1.r51.g85d3d51
+	pkgver = v1.4.1.r61.gdbd9c2b
 	pkgrel = 1
 	url = http://mako-project.org
 	arch = x86_64
@@ -19,7 +19,11 @@ pkgbase = mako-git
 	provides = mako
 	conflicts = mako
 	source = mako::git+https://github.com/emersion/mako.git
+	source = mako.service
+	source = 0001-Fix-DBus-service.patch
 	sha1sums = SKIP
+	sha1sums = 688484d6bf677e6f6014c9311ff40fabae748bcc
+	sha1sums = 64b8a3446fa1ddc3d876629a0c4a3d1d6bb0b20f
 
 pkgname = mako-git
 
