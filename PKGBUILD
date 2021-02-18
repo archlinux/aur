@@ -1,14 +1,14 @@
 pkgname=smartie-pwa
 pkgver=0.1
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="https://cgit.ctu.cx/${pkgname}/"
 license=( 'GPL-3' )
 depends=( 'glibc' )
 makedepends=( 'yarn' 'git' )
-_commit="a5e5a70c09f75cd8e0842ef969b6c31b40450576"
+_commit="b95c11fb11b57813f388a83eb1846c2aa9baf577"
 source=("${pkgname}-${_commit}.tar.gz::https://cgit.ctu.cx/${pkgname}/snapshot/${pkgname}-${_commit}.tar.gz")
-sha256sums=('61aebf90f5b766cdbc712df22d5b44717af5a3a5a2d3417c3dcbf98f38d75c38')
+sha256sums=('7772c7b170be609eca34704b0330764f8cd902b8661d57de06f7a1beb8a5fa24')
 
 build() {
   cd "$srcdir/${pkgname}-${_commit}/"
