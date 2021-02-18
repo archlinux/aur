@@ -30,7 +30,7 @@ package() {
 	rm -rf "$pkgdir"/usr/share/themes/{Fluent,Fluent-*}/gnome-shell/extensions
 
 	# Plank theme
-	install -Dm755 src/plank/dock.theme -t "$pkgdir/usr/share/plank/themes/Fluent"
+	install -Dm644 src/plank/dock.theme -t "$pkgdir/usr/share/plank/themes/Fluent"
 
 	# Wallpapers
 	install -d "$pkgdir/usr/share/backgrounds/${pkgname%-git}"
