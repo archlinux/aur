@@ -1,0 +1,18 @@
+pkgbase = bottom-cli-git
+	pkgdesc = Fantastic (maybe) CLI for translating between bottom and human-readable text
+	pkgver = 1.1.1.r18.710a610
+	pkgrel = 1
+	url = https://github.com/bottom-software-foundation/bottom-rs
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	provides = bottomify
+	source = bottom-cli-git::git+https://github.com/bottom-software-foundation/bottom-rs.git
+	sha256sums = SKIP
+	b2sums = SKIP
+
+pkgname = bottom-cli-git
+
