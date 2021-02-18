@@ -1,6 +1,6 @@
 pkgbase = codelite-bin
 	pkgdesc = A cross platform C/C++/PHP and Node.js IDE written in C++
-	pkgver = 14.0
+	pkgver = 15.0
 	pkgrel = 1
 	url = http://www.codelite.org/
 	arch = x86_64
@@ -33,9 +33,9 @@ pkgbase = codelite-bin
 	conflicts = codelite-git
 	replaces = codelite
 	replaces = codelite-svn
-	noextract = codelite-14.0-1-x86_64.pkg.tar.lz4
-	source = https://mirror.lesviallon.fr/aviallon/x86_64/codelite-14.0-1-x86_64.pkg.tar.lz4
-	sha256sums = bfc2c5472ea5a45c169c93af2e2e3f17d9cf10483e620adaf0e9c66e1b3770a5
+	noextract = codelite-15.0-2-x86_64.pkg.tar.zst
+	source = https://mirror.lesviallon.fr/aviallon/x86_64/codelite-15.0-2-x86_64.pkg.tar.zst
+	sha256sums = e6ee2ba8b3ea7f0581ca005791065db3774dfd345bbeba2614b49cd33f0b5ef1
 
 pkgname = codelite-bin
 
