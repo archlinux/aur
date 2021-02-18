@@ -8,24 +8,26 @@ _nc='\033[0m' # No colour.
 ### Post Install ###
 post_install() {
     ## Install ffmpeg ##
-    echo -e "${_yellow}Installing proprietary media codecs ...${_nc}"
-    cd /opt/$_pkgname
-    ./update-ffmpeg
+    if [ -f /opt/$_pkgname/update-ffmpeg ]; then
+        echo -e "${_yellow}Installing proprietary media codecs ...${_nc}"
+        /opt/$_pkgname/update-ffmpeg
+    fi
 }
 
 ### Post Upgrade ###
 post_upgrade() {
     ## Update ffmpeg ##
-    echo -e "${_yellow}Updating proprietary media codecs ...${_nc}"
-    cd /opt/$_pkgname
-    ./update-ffmpeg
+    if [ -f /opt/$_pkgname/update-ffmpeg ]; then
+        echo -e "${_yellow}Updating proprietary media codecs ...${_nc}"
+        /opt/$_pkgname/update-ffmpeg
+    fi
 }
 
 ### Post Remove ###
 post_remove() {
     ## Remove ffmpeg ##
-    echo -e "${_yellow}Removing proprietary media codecs ...${_nc}"
     if [ -d /var/opt/$_pkgname ]; then
+        echo -e "${_yellow}Removing proprietary media codecs ...${_nc}"
         rm -rf /var/opt/$_pkgname
     fi
 }

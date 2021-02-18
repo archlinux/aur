@@ -2,7 +2,6 @@
 # Contributor: Felix Golatofski <contact at xdfr dot de>
 # Contributor: Matthew Zilvar <mattzilvar at gmail dot com>
 # Contributor: Térence Clastres <t dot clastres at gmail dot com>
-# Modified PKGBUILD from https://aur.archlinux.org/packages/vivaldi/
 
 ### Info ###
 pkgname=vivaldi-arm-bin
@@ -43,7 +42,7 @@ package() {
     ## SUID Sandbox ##
     chmod 4755 "$pkgdir"/opt/$_pkgname/${_pkgname}-sandbox
 
-    ## Install Icons ##
+    ## Icons ##
     for res in 16 22 24 32 48 64 128 256; do
         install -dm0755 "$pkgdir"/usr/share/icons/hicolor/${res}x${res}/apps
         ln -fs \
