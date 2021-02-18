@@ -1,13 +1,18 @@
 pkgbase = polkadot
-	pkgdesc = Polkadot Node Implementation
-	pkgver = 0.8.7
-	pkgrel = 1
+	pkgdesc = Rust implementation of a polkadot node
+	pkgver = 0.8.28
+	pkgrel = 2
 	url = https://github.com/paritytech/polkadot
 	arch = x86_64
 	license = GPL3
-	makedepends = rustup
+	makedepends = cargo
 	makedepends = clang
-	source = polkadot::git+https://github.com/paritytech/polkadot.git
+	makedepends = pkgconf
+	makedepends = make
+	makedepends = cmake
+	source = polkadot-0.8.28-1.tar.gz::https://github.com/paritytech/polkadot/archive/v0.8.28-1.tar.gz,
+	source = polkadot-sysusers.conf
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = polkadot
