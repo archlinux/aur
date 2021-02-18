@@ -2,8 +2,8 @@
 # Maintainer: João Figueiredo <jf.mundox@gmail.com>
 
 pkgname=kirigami2-git
-pkgver=5.79.0_r2627.gfd068aba
-pkgrel=2
+pkgver=5.80.0_r2659.g5e079538
+pkgrel=1
 pkgdesc='A QtQuick based components set'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
@@ -13,7 +13,7 @@ depends=(qt5-quickcontrols qt5-quickcontrols2 qt5-graphicaleffects)
 makedepends=(git extra-cmake-modules-git qt5-tools qt5-doc qt5-svg kpackage-git doxygen)
 conflicts=(${pkgname%-git} kirigami-git)
 provides=(${pkgname%-git} kirigami-git)
-source=("git+https://github.com/KDE/${pkgname%-git}.git")
+source=("git+https://github.com/KDE/${pkgname%2-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
