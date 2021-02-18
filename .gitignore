@@ -1,5 +1,4 @@
-git.sh
-pkg
-src
-numix-icon-theme
-numix-icon-theme-git*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+*
