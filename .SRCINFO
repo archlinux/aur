@@ -1,6 +1,6 @@
 pkgbase = python-qtm
 	pkgdesc = Python implementation of the real-time protocol for Qualisys Track Manager
-	pkgver = 2.0.5
+	pkgver = 2.0.6
 	pkgrel = 1
 	url = https://qualisys.github.io/qualisys_python_sdk/index.html
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-qtm
 	makedepends = python
 	makedepends = python-setuptools
 	depends = python
-	source = python-qtm-2.0.5.tar.gz::https://github.com/qualisys/qualisys_python_sdk/archive/1033ff405294881f3925c86bea9151b7953a8035.tar.gz
-	sha256sums = a974149801dd2bfc751990c2abdb476c4e66c505486402075ee6ea32b2a13997
+	source = python-qtm-2.0.6.tar.gz::https://pypi.org/packages/source/q/qtm/qtm-2.0.6.tar.gz
+	sha256sums = 93cf19bc120edbdd60479c3d346a99994aa17db6f618d323239de941ab0c44c3
 
 pkgname = python-qtm
 
