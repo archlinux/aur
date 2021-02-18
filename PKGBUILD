@@ -1,7 +1,7 @@
 # Maintainer: wbunting
 
 pkgname=webmenu-git
-pkgver=1.1.6
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A simple webview renderer for html list items"
 url="https://github.com/wbunting/webmenu"
@@ -20,15 +20,14 @@ pkgver() {
 
 build() {
   cd webmenu
-  # npm install -g --user yarn
-  cargo install tauri-bundler
   yarn install
-  yarn tauri build
+  yarn build
+  cargo build --release
 }
 
 package() {
   cd webmenu
-  install -Dt "$pkgdir/usr/bin" src-tauri/target/release/webmenu
+  install -Dt "$pkgdir/usr/bin" target/release/webmenu
   install -Dm664 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm664 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
