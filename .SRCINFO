@@ -1,0 +1,25 @@
+pkgbase = opencolorio-qfix
+	pkgdesc = A color management framework for visual effects and animation
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://opencolorio.org
+	arch = x86_64
+	license = BSD
+	makedepends = boost
+	makedepends = cmake
+	makedepends = python
+	makedepends = pybind11
+	makedepends = ninja
+	depends = freeglut
+	depends = glew
+	depends = lcms2
+	depends = tinyxml
+	depends = yaml-cpp
+	depends = openexr
+	depends = pystring
+	optdepends = python: python bindings
+	source = opencolorio-qfix-2.0.0.tar.gz::https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v2.0.0.tar.gz
+	sha512sums = 7110a1a30a5fa64b81d7fc5e33234673aaddbad5e19ce7f21436c590edd7d2ce767650c9a934011a96e53132c030bd0b654fcf93ad79c1bfc8c050762c57f6d0
+
+pkgname = opencolorio-qfix
+
