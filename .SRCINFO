@@ -1,6 +1,6 @@
 pkgbase = thonny
 	pkgdesc = Python IDE for beginners
-	pkgver = 3.3.3
+	pkgver = 3.3.4
 	pkgrel = 1
 	url = https://thonny.org
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = thonny
 	depends = python-setuptools
 	depends = tk
 	optdepends = python-birdseye: Debug support with Birdseye
-	source = thonny-3.3.3.tar.gz::https://github.com/thonny/thonny/archive/v3.3.3.tar.gz
-	sha512sums = 46abda75ad351601ac4d7abf148d5281f47406c5991c8b9b0a48aab5574c46fd09654e639bb806d13c32793d7b7371a145468bdd24f2bacc535feac321ed297d
+	source = thonny-3.3.4.tar.gz::https://github.com/thonny/thonny/archive/v3.3.4.tar.gz
+	sha512sums = 6aa09fa242945c6fef7e8ec004bcda49ac1be2790abc1da6de2ee6c14946a79b22f13b9519e1163f320b59b46f58bb345164b31f371b9ff8be921d7eca742153
 
 pkgname = thonny
 
