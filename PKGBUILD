@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=cod-git
-pkgver=0.0.0.r8.gae68da0
+pkgver=0.0.0.r18.g040975b
 pkgrel=1
 pkgdesc="A completion daemon for bash/zsh"
 arch=('any')
@@ -28,6 +28,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
+	export GOPATH="$srcdir/gopath"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"

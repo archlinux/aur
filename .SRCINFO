@@ -1,6 +1,6 @@
 pkgbase = cod-git
 	pkgdesc = A completion daemon for bash/zsh
-	pkgver = 0.0.0.r8.gae68da0
+	pkgver = 0.0.0.r18.g040975b
 	pkgrel = 1
 	url = https://github.com/dim-an/cod
 	arch = any
