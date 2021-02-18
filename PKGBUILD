@@ -1,36 +1,36 @@
+# Maintainer: Em Zhan <zqianem@gmail.com>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Graziano Giuliani <giuliani@lamma.rete.toscana.it>
 
 pkgname=wgrib2
-pkgver=2.0.8
+pkgver=3.0.0
 pkgrel=1
-pkgdesc="A program to manipulate, inventory and decode GRIB-2 files"
-arch=('i686' 'x86_64')
+pkgdesc="Utility to read and write grib2 files"
+arch=('x86_64')
 url="https://www.cpc.ncep.noaa.gov/products/wesley/wgrib2/"
-license=('custom')
-depends=('netcdf' 'jasper' 'libpng' 'libmariadbclient' 'proj' 'libaec')
-makedepends=('g2clib' 'gctpc')
-source=(ftp://ftp.cpc.ncep.noaa.gov/wd51we/${pkgname}/${pkgname}_nolib.tgz.v${pkgver}
-        wgrib2.patch
-        http://www.ftp.cpc.ncep.noaa.gov/wd51we/${pkgname}/iplib_hwrf.tgz)
-md5sums=('131729175e4fffdb1a56f6fc500f1694'
-         '2e7bfddc4a4fd57b3f9a768124964cd5'
-         '6d672b9d5823a0cb3bdd12131175250a')
+license=('GPL' 'custom')
+depends=('gcc-libs')
+makedepends=('gcc-fortran')
+source=("https://www.ftp.cpc.ncep.noaa.gov/wd51we/wgrib2/$pkgname.tgz.v$pkgver"
+        "https://ftp.cpc.ncep.noaa.gov/wd51we/wgrib2/makefile_v2_for_wgrib2_v$pkgver")
+md5sums=('83f1b3f68c26a97c50af137b92804d95'
+         '11bf2c1f8669aaf8123ad5f928d14d33')
 
-build() {
-  cd ${srcdir}/iplib_hwrf
-  rm -f *.o *.a
-  FC=gfortran FFLAGS='${CFLAGS} -fPIC -DPIC' make
-  cd ${srcdir}/grib2
-  patch -p0 -i ${srcdir}/wgrib2.patch
-  sed -i 's/image.inmem_.*=.*1;//' wgrib2/enc_jpeg2000_clone.c
-  FC=gfortran F90=gfortran F77=gfortran make
+prepare() {
+  cp "makefile_v2_for_wgrib2_v$pkgver" grib2/makefile
 }
 
-package()
-{
-  cd ${srcdir}/grib2
-  install -Dm755 ${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
-  install -Dm644 ${pkgname}/LICENSE-${pkgname} \
-    ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+build() {
+  cd grib2
+  CC=gcc FC=gfortran make
+}
+
+package() {
+  cd grib2/wgrib2
+  install -Dm755 wgrib2 "${pkgdir}/usr/bin/wgrib2"
+  install -Dm644 LICENSE-jasper "$pkgdir/usr/share/licenses/$pkgname/LICENSE-jasper"
+  install -Dm644 LICENSE-libpng "$pkgdir/usr/share/licenses/$pkgname/LICENSE-libpng"
+  install -Dm644 LICENSE-netcdf "$pkgdir/usr/share/licenses/$pkgname/LICENSE-netcdf"
+  install -Dm644 LICENSE-wgrib2 "$pkgdir/usr/share/licenses/$pkgname/LICENSE-wgrib2"
+  install -Dm644 LICENSE-zlib "$pkgdir/usr/share/licenses/$pkgname/LICENSE-zlib"
 }
