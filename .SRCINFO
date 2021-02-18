@@ -1,0 +1,22 @@
+pkgbase = kde2-kdestudio-git
+	pkgdesc = Fully-fledged IDE for KDE 2
+	pkgver = 2.2.2.r8.0fcdbd7
+	pkgrel = 1
+	url = https://github.com/sandsmark/kdestudio
+	arch = i686
+	arch = x86_64
+	groups = kde2
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = kde2-kdelibs
+	depends = qt2-git
+	depends = hicolor-icon-theme
+	provides = kde2-kdestudio
+	conflicts = kde2-kdestudio
+	options = libtool
+	source = git+https://invent.kde.org/sandsmark/kde2-kdestudio.git
+	md5sums = SKIP
+
+pkgname = kde2-kdestudio-git
+
