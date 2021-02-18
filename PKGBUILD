@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Grand Theft Auto Vice City reverse engineered"
 arch=('x86_64')
 depends=('openal' 'glew' 'glfw' 'libsndfile' 'mpg123')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'premake')
 provides=('revc')
 license=('none')
 
@@ -45,7 +45,7 @@ prepare() {
 build() {
     cd "$srcdir/re3"
 
-    ./premake5Linux --with-librw gmake2
+    premake5 --with-librw gmake2
     cd "build"
     "./../printHash.sh" "./../src/extras/GitSHA1.cpp"
     make O=. config=release_linux-amd64-librw_gl3_glfw-oal
