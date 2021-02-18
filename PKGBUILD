@@ -1,7 +1,7 @@
 # Maintainer: Christian Schendel <doppelhelix at gmail dot com>
 pkgname=gnome-shell-extension-applications-overview-tooltip-git
 pkgver=10.r3.gf90ddba
-pkgrel=1
+pkgrel=2
 pkgdesc="Shows a tooltip over applications icons on applications overview"
 arch=(any)
 url="https://github.com/RaphaelRochet/applications-overview-tooltip"
@@ -11,7 +11,7 @@ depends=('gnome-shell>=3.38')
 makedepends=('git' 'glib2')
 conflicts=("${pkgname%-git}")
 provides=(${pkgname%-git})
-source=("${pkgname%-git}::git+https://github.com/RaphaelRochet/applications-overview-tooltip.git")
+source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -20,15 +20,13 @@ pkgver() {
 }
 
 package() {
-  _uuid="applications-overview-tooltip@RaphaelRochet"
-  cd "${srcdir}"
-  chmod -R 644 ./*
-  install -d "${pkgdir}/usr/share/gnome-shell/extensions/"
-  mv ${pkgname%-git} ${_uuid}
-  cp -r "${_uuid}" "${pkgdir}/usr/share/gnome-shell/extensions/"
-  #rebuild compiled schemas if missing
-  if [[ ! -f "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/schemas/gschemas.compiled" ]]; then
-    glib-compile-schemas ${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/schemas
-  fi
-  chmod -R 755 "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/"
+  cd "${srcdir}/${pkgname%-git}"
+  local uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
+  local schema=$(grep -Po '(?<="settings-schema": ")[^"]*' metadata.json).gschema.xml
+  local destdir="$pkgdir/usr/share/gnome-shell/extensions/$uuid"
+  install -dm755 "$destdir"
+  install -Dm644 "${srcdir}/${pkgname%-git}/schemas/org.gnome.shell.extensions.appoverviewtooltip.gschema.xml" \
+    "${pkgdir}/usr/share/glib-2.0/schemas/${schema}"
+  cp -r * "$destdir"
+
 }
