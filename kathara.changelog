@@ -1,0 +1,5 @@
+Thu, 18 Feb 2021 10:43:26 +0000 Mariano Scazzariello <marianoscazzariello@gmail.com>
+
+* Release v3.0.6
+    * Fix ltest exec commands
+    * Fix check command
