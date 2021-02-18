@@ -1,13 +1,13 @@
 # Maintainer: Jia Li <lijia1608@gmail.com>
 pkgname=python-pyscf-git
 _pkgname=python-pyscf
-pkgver=1.6.4.r0.gaededeed
+pkgver=1.7.6a1.r104.g09eca1f68
 pkgrel=1
 pkgdesc="Python-based Simulations of Chemistry Framework"
 arch=(i686 x86_64)
 url="http://pyscf.github.io"
 license=('BSD')
-depends=('python' 'python-numpy' 'python-scipy' 'python-h5py' 'xcfun-pyscf' 'libcint' 'libxc3')
+depends=('python' 'python-numpy' 'python-scipy' 'python-h5py' 'xcfun' 'libcint' 'libxc')
 makedepends=('cmake')
 provides=($_pkgname=$pkgver)
 conflicts=($_pkgname)
