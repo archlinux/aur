@@ -6,7 +6,7 @@ pkgname='ros-melodic-rtabmap'
 pkgver='0.20.7'
 _pkgver_patch=1
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-octomap
@@ -16,6 +16,7 @@ makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   sqlite
   vtk
+  qt5-x11extras
   zlib
   proj
   pcl
@@ -28,6 +29,7 @@ ros_depends=(ros-melodic-octomap
 depends=(${ros_depends[@]}
   sqlite
   vtk
+  qt5-x11extras
   zlib
   pcl
   gtk3
