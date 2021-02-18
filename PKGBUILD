@@ -26,7 +26,9 @@ pkgver() {
 
 prepare() {
   cd trenchbroom
-  git submodule update --init --recursive
+	# cmake requires a CmakeLists.txt from this submodule
+	# -c submodule."lib/BinaryLibs".active=0
+  git -c submodule."lib/freetype/freetype-windows-binaries".active=0 submodule update --init --recursive
 }
 
 _BUILDDIR=build
