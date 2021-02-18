@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libmicrohttpd
 	pkgdesc = GNU libmicrohttpd is a small C library that is supposed to make it easy to run an HTTP server as part of another application
-	pkgver = 0.9.59
+	pkgver = 0.9.72
 	pkgrel = 1
 	url = https://www.gnu.org/software/libmicrohttpd/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = mingw-w64-libmicrohttpd
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://ftp.gnu.org/gnu/libmicrohttpd/libmicrohttpd-0.9.59.tar.gz
+	source = https://ftp.gnu.org/gnu/libmicrohttpd/libmicrohttpd-0.9.72.tar.gz
 	md5sums = 8ab5123535549195aff19e91b4e49f48
 
 pkgname = mingw-w64-libmicrohttpd
