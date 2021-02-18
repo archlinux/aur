@@ -1,0 +1,15 @@
+pkgbase = rdfm
+	pkgdesc = The Rusty DotFiles Manager
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Wafelack/rdfm
+	arch = x86_64
+	license = AGPL3
+	makedepends = rust
+	depends = gcc-libs
+	depends = zlib
+	depends = openssl
+	source = rdfm-0.1.1.tar.gz::https://github.com/Wafelack/rdfm/archive/0.1.1.tar.gz
+	sha512sums = 22491b5d8ad6ab7020f2c1bd5dfd63e09276ff431b38bc14c5c8fdfdb76e4039b9af65659c26acdb0baf5f299830c3df0ab699cd6f94e30135ef326f577845ab
+
+pkgname = rdfm
