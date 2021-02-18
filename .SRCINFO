@@ -13,7 +13,6 @@ pkgbase = trenchbroom-git
 	makedepends = ninja
 	makedepends = qt5-svg
 	makedepends = libxcb
-	makedepends = xorg-server-xvfb
 	depends = freeimage
 	depends = freetype2
 	depends = mesa

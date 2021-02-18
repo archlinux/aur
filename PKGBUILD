@@ -8,7 +8,7 @@ arch=("i686" "x86_64")
 url="http://kristianduske.com/trenchbroom"
 license=("GPLv3")
 
-makedepends=("git" "pandoc" "qt5-base" "cmake" "ninja" "qt5-svg" "libxcb" "xorg-server-xvfb")
+makedepends=("git" "pandoc" "qt5-base" "cmake" "ninja" "qt5-svg" "libxcb")
 depends=("freeimage" "freetype2" "mesa" "libgl" "freeglut" "libxxf86vm" "glew" "glm")
 conflicts=("trenchbroom")
 provides=("trenchbroom")
@@ -35,7 +35,10 @@ build() {
 	mkdir -p "$_BUILDDIR"
 	cd "$_BUILDDIR"
 	cmake "$srcdir/trenchbroom" -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=Release
-	QT_QPA_PLATFORM=offscreen cmake --build . --target TrenchBroom
+	# we were running into weird xcb errors, which made this necessary to force headless builds
+	# might be useful incase you ARE building on a headless system
+	#QT_QPA_PLATFORM=offscreen cmake --build . --target TrenchBroom
+	cmake --build . --target TrenchBroom
 }
 
 package() {
