@@ -3,14 +3,13 @@
 
 pkgname=wasmer
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal Binaries Powered by WebAssembly"
 arch=('x86_64')
 url="https://github.com/wasmerio/wasmer"
 license=(MIT)
 depends=('gcc-libs')
-makedepends=('rust' 'cmake' 'python' 'libxkbcommon')
-checkdepends=('llvm')
+makedepends=('rust' 'cmake' 'python' 'libxkbcommon' 'llvm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wasmerio/wasmer/archive/${pkgver}.tar.gz")
 sha512sums=('f8058cbd5a8a807cd84b4a839c87ff76dae5475c655e804b27262cd5cb22ddb6c43da3a01b6cdbed29502afc38aa9ee589022f67fab27b189453f2500478c4a9')
 options=('staticlibs')

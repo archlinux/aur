@@ -1,15 +1,15 @@
 pkgbase = wasmer
 	pkgdesc = Universal Binaries Powered by WebAssembly
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wasmerio/wasmer
 	arch = x86_64
 	license = MIT
-	checkdepends = llvm
 	makedepends = rust
 	makedepends = cmake
 	makedepends = python
 	makedepends = libxkbcommon
+	makedepends = llvm
 	depends = gcc-libs
 	options = staticlibs
 	source = wasmer-1.0.2.tar.gz::https://github.com/wasmerio/wasmer/archive/1.0.2.tar.gz
