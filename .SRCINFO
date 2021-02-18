@@ -90,7 +90,7 @@ pkgname = pipewire-common-pulse-git
 	conflicts = pipewire-pulse
 	conflicts = pulseaudio
 	conflicts = pulseaudio-bluetooth
-	backup = pipewire-pulse
+	backup = etc/pipewire/pipewire-pulse.conf
 
 pkgname = pipewire-common-alsa-git
 	pkgdesc = ALSA Configuration for PipeWire

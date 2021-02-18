@@ -117,7 +117,7 @@ package_pipewire-common-pulse-git() {
   provides=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
   conflicts=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
   install=pipewire-pulse.install
-  backup=(pipewire-pulse)
+  backup=(etc/pipewire/pipewire-pulse.conf)
   mv pulse/* "$pkgdir"
 }
 
