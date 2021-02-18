@@ -6,9 +6,9 @@
 
 # last/latest "longterm maintenance" kernel releases
 # https://www.kernel.org/category/releases.html
-# 5.4 Greg Kroah-Hartman & Sasha Levin 2019-11-24 Dec, 2025
-_LLL_VER=5.4
-_LLL_SUBVER=99
+# 5.10 Greg Kroah-Hartman & Sasha Levin 2020-12-13 Dec, 2022
+_LLL_VER=5.10
+_LLL_SUBVER=16
 
 # Bisect debug, v5.4.47 -> v5.4.48
 _Bisect_debug=off # on, test, off
@@ -33,33 +33,22 @@ _NUMA_disable=y
 # https://wiki.archlinux.org/index.php/Linux-ck
 _CK_VER=1
 _CK_PATCH_SRC="http://ck.kolivas.org/patches/5.0/${_LLL_VER}/${_LLL_VER}-ck${_CK_VER}/patch-${_LLL_VER}-ck${_CK_VER}.xz"
-_CK_PATCH_PATCH=(
-    'ck-patch-for-5.4.57+.patch'
-    'ck-patch-for-5.4.62+.patch'
-)
+_CK_PATCH_PATCH=()
 
 # Ultra Kernel Samepage Merging
 _UKSM_VER=0.1.2.6
 _UKSM_COMMIT=9b68301484619b60af2515f782160cdfe6c168f3
 _UKSM_PATCH_SRC="https://github.com/dolohow/uksm/raw/${_UKSM_COMMIT}/v5.x/uksm-${_LLL_VER}.patch"
-_UKSM_PATCH_PATCH=(
-    'uksm-patch-for-5.4.33+.patch'
-    'uksm-patch-for-5.4.69+.patch'
-)
+_UKSM_PATCH_PATCH=()
 
 # CJKTTY patch 
 # https://github.com/Gentoo-zh/linux-cjktty
-_CJKTTY_PATCH_URL="https://github.com/torvalds/linux/compare/v${_LLL_VER}...Gentoo-zh:${_LLL_VER}-utf8.patch"
-_CJKTTY_PATCH_SRC="cjktty-${_LLL_VER}.patch::${_CJKTTY_PATCH_URL}"
+#_CJKTTY_PATCH_URL="https://github.com/torvalds/linux/compare/v${_LLL_VER}...Gentoo-zh:${_LLL_VER}-utf8.patch"
+#_CJKTTY_PATCH_SRC="cjktty-${_LLL_VER}.patch::${_CJKTTY_PATCH_URL}"
 # https://github.com/zhmars/cjktty-patches
-#_CJKTTY_COMMIT=0acfa3fdfe900ad15e56b513be70061f86cfe606
-#_CJKTTY_PATCH_SRC="https://github.com/zhmars/cjktty-patches/raw/${_CJKTTY_COMMIT}/v5.x/cjktty-${_LLL_VER}.patch"
-_CJKTTY_PATCH_PATCH=(
-    'cjktty-11-patch-for-5.4.36+.patch'
-    'cjktty-11-patch-for-5.4.54+.patch'
-    'cjktty-11-patch-for-5.4.62+.patch'
-    'cjktty-12-patch-for-5.4.66+.patch'
-)
+_CJKTTY_COMMIT=3fb0f901fa6a9ff4300335357001819e525fb076
+_CJKTTY_PATCH_SRC="https://github.com/zhmars/cjktty-patches/raw/${_CJKTTY_COMMIT}/v5.x/cjktty-${_LLL_VER}.patch"
+_CJKTTY_PATCH_PATCH=()
 
 _PATHSET_DESC="ck${_CK_VER} uksm-${_UKSM_VER} and cjktty"
 
@@ -85,12 +74,10 @@ source=(
         #"https://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.sign"
         ${_CK_PATCH_SRC}
         ${_CK_PATCH_PATCH[@]}
-        'ck-fix-broken-sleep2ram-5.4.48+.patch' # https://github.com/zen-kernel/zen-kernel/commit/fb7e2cfaf61cf5f9c2336331e73296f455bd2d51.patch
         ${_UKSM_PATCH_SRC}
         ${_UKSM_PATCH_PATCH[@]}
         ${_CJKTTY_PATCH_SRC}
         ${_CJKTTY_PATCH_PATCH[@]}
-        'sphinx-workaround.patch'
         'config'         # the main kernel config file
 )
 validpgpkeys=(
@@ -98,22 +85,12 @@ validpgpkeys=(
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman 
 )
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
-sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
+sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
-            '51dcac4893b617d02afb804efb5540894856c09ad1e10c376261d820c3699e61'
-            'f445eea4d0ec2015a25f1ad625c848f4f2252099795966fa4105e0aa29674c5c'
-            'a10a4848c7a9842c0c7760b087ea38a4356dc1a2c2e26334cb0106c25785554f'
-            '0334391900f31d6aaedaa68e8917f93262ba3e523f2654774b289e9b18c1a923'
-            '961ed94b8d905f1e901cacb08d253c4170af0a25828111b7558d9c874e923558'
-            '81d34bf02e771a126af5cb382d44a86dcc759c88b7c89fc7e5b7737731b9130e'
-            '6826624f65276927de012f040e77b02231fe6345b9da7c702deacd9372ea001e'
-            'cdcd0e0ebd24d9b66c216df01b02da23760a44fe2a451137190f89d18a4c7f59'
-            '50213f3270499fceb452946252d61f5471571c77baf3dd510fbb00cfa9831c9a'
-            'fa7950b5763a592ca2a04c423842451ac79633deebf77c730fc8ee35dfac2d45'
-            '81bb112fed28c8ef22d7e02eb4150a76c8d549c72775e65cd3ecf10fa5fe1b4e'
-            '7b3eea4462811a26c3c32721009a807dcaee5b8fbf1ad3e0cdad851679c9246e'
-            '0c6385f8d5a61b09d046babe5351ca638ccb5a263e0f167d2b311f57054bc8d1'
-            'b7c814c8183e4645947a6dcc3cbf80431de8a8fd4e895b780f9a5fd92f82cb8e'
+            'efef24680b4d0bb00fa63bf5cb733d9e1f00b726562732ab5395323ad35a9236'
+            '64909f07b404b138945d5d6fd19bf3c62d10adce9f592524d91a3359331a6ace'
+            '24729e63e08de13039ce7e6637146ec5a5747379ebbd92cdeef744edfad17183'
+            '078837287607800f948e0e26e6a8ba874d856fd37e0063e8975bb562268546c4'
             '7ce388e429d8df479a721285e445e116c5ee41e3126a702862e59056460b655e')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -159,9 +136,7 @@ prepare() {
 
   # Bisect debug result
   if [ "$_Bisect_debug" != "on" ]; then
-    #see https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/patch/?id=f7757368e0f0b3e108088ca7b5b8abda6faa7ebc
-    patch -p1 -i "../ck-fix-broken-sleep2ram-5.4.48+.patch"
-    #:
+    :
   fi
 
   msg2 "Patching source with uksm ${_UKSM_VER} patches"
@@ -177,9 +152,6 @@ prepare() {
     patch -Ni ../$p "../cjktty-${_LLL_VER}.${_LLL_SUBVER}.patch"
   done
   patch -Np1 -i "../cjktty-${_LLL_VER}.${_LLL_SUBVER}.patch"
-
-  msg2 "Patching sphinx extensions for htmldocs"
-  patch -Np1 -i ../sphinx-workaround.patch
 
   echo "Setting config..."
   cp -Tf ../config .config
