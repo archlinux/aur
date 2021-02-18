@@ -1,19 +1,19 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_sexp_conv'
 pkgname="ocaml-$_projectname"
-pkgver='0.14.2'
+pkgver='0.14.3'
 pkgrel='1'
 epoch='1'
 pkgdesc='Generation of S-expression conversion functions from type definitions'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.04.2' 'ocaml-base>=0.14.0' 'ocaml-ppxlib>=0.18.0' 'ocaml-sexplib0>=0.14.0')
+depends=('ocaml>=4.04.2' 'ocaml-base>=0.14.0' 'ocaml-ppxlib>=0.22.0' 'ocaml-sexplib0>=0.14.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a91322a332becd21b616db9f1493e8572a740870d5476d8920419842ec0adb94')
+sha256sums=('2fc1f46e14016c93b0ba89a2af263e36a51957a53608751361f07ad3349c7639')
 
 _sourcedirectory="$_projectname-$pkgver"
 
