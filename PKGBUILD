@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=flatery-icon-theme-git
-pkgver=r240.ff25f9b5
+pkgver=r265.2aa494bc
 pkgrel=1
 pkgdesc='Flatery is an icon theme for linux in flat style'
 arch=('any')
