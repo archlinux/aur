@@ -1,7 +1,7 @@
 pkgbase = lightdm-webkit2-theme-alter-nosplash
 	pkgdesc = AlterLinux webkit2 greeter theme
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SereneTeam/lightdm-webkit2-theme-alter
 	arch = any
 	license = MIT

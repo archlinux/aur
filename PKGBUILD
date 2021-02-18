@@ -3,7 +3,7 @@
 pkgname=lightdm-webkit2-theme-alter-nosplash
 _pkgname=lightdm-webkit2-theme-alter
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AlterLinux webkit2 greeter theme"
 arch=('any')
 url=https://github.com/SereneTeam/lightdm-webkit2-theme-alter
@@ -29,6 +29,6 @@ remove () {
 
 package () {
     mkdir -p "${pkgdir}/usr/share/lightdm-webkit/themes/alter"
-    mv "${srcdir}/${pkgname}-${pkgver}/"* "${pkgdir}/usr/share/lightdm-webkit/themes/alter"
-    sudo sed "s/#splash-screen {/#splash-screen {\n  display: none;/" "${pkgdir}/usr/share/lightdm-webkit/themes/alter/css/splashscreen.css"
+    mv "${srcdir}/${_pkgname}-${pkgver}/"* "${pkgdir}/usr/share/lightdm-webkit/themes/alter"
+    sudo sed -i "s/#splash-screen {/#splash-screen {\n  display: none;/" "${pkgdir}/usr/share/lightdm-webkit/themes/alter/css/splashscreen.css"
 }
