@@ -1,7 +1,7 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=wasmtime-bin
-pkgver=0.22.1
+pkgver=0.23.0
 pkgrel=1
 pkgdesc='Standalone JIT-style runtime for WebAssembly, using Cranelift'
 provides=('wasmtime' 'wasm2obj')
