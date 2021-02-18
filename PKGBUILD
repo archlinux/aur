@@ -4,7 +4,7 @@ pkgbase=linux-amd
 _srcname=linux
 gitver=v5.11
 pkgver=5.11.v.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -20,16 +20,20 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
         'linux.install'
 	# patch from our gentoo overlords
 	'5013_enable-cpu-optimizations-for-gcc10.patch'
+        # AMDgpu HDMI hotplug patch
+        'amdgpu_hdmihotplug.patch'
 )
 sha256sums=('SKIP'
             #config.x86_64
-            'b1c9d39bea500b8225455eb6e199ec85fb77d08ecf4e975b457dd45561fad504'
+            '57a338691913d1c5e5dc6b3983cf41f0e3aac4df87389a464447281066c42c8b'
             #.preset file
             '60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c'
             #linux install file
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             #gentoopatch
             '126cd35b1153b69dd8d713f902d09ecc64ce8af2e4fa6f021219a65e62e13875'
+            #AMDgpu patch
+            'abbb23f55cd25941d5487084c627f601bfa0ca63e329d580cc5a472b4638aeaa'
 )
 
 _kernelname=${pkgbase#linux}
