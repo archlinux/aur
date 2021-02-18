@@ -1,14 +1,14 @@
-# Maintainer: DuckSoft <realducksoft@gmail.com>, mzz2017 <mzz@tuta.io>
-
+# Maintainer: DuckSoft <realducksoft@gmail.com>
+# Maintainer: mzz2017 <mzz@tuta.io>
 pkgname=mmp-go-git
-pkgver=20210103.r96.10f2d50
+pkgver=20210218.r116.48ffcbc
 pkgrel=1
 pkgdesc="Reuse a single port for multiple Shadowsocks AEAD servers"
 arch=('x86_64')
 url="https://github.com/Qv2ray/mmp-go"
 license=('AGPL3')
 depends=('git' 'glibc')
-makedepends=('go>=2:1.16-1')
+makedepends=('go>=2:1.16')
 provides=('mmp-go')
 conflicts=('mmp-go')
 source=("$pkgname::git+$url")
@@ -34,8 +34,16 @@ build() {
 package() {
     cd "$srcdir"/$pkgname
     
-    install -Dm755 ./mmp-go                     -t "$pkgdir"/usr/bin/              
-    install -Dm644 ./README.md                  -t "$pkgdir"/usr/share/doc/mmp-go  
-    install -Dm644 ./systemd/mmp-go{,@}.service -t "$pkgdir"/usr/lib/systemd/system
-    install -Dm644 ./example.json               "$pkgdir"/etc/mmp-go/config.json
+    # Binary
+    install -Dm755 ./mmp-go                    -t "$pkgdir"/usr/bin/
+    
+    # Documentation
+    install -Dm644 ./README.md                 -t "$pkgdir"/usr/share/doc/mmp-go
+    install -Dm644 ./systemd/README.md         "$pkgdir"/usr/share/doc/mmp-go/README-systemd.md
+    
+    # Configuration
+    install -Dm644 ./example.json              "$pkgdir"/etc/mmp-go/config.example.json
+    
+    # Intergration
+    install -Dm644 ./systemd/*.{service,timer} -t "$pkgdir"/usr/lib/systemd/system
 }
