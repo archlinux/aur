@@ -47,7 +47,7 @@ package() {
 
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
-  WASMER_DIR="$pkgdir"/usr/bin/wasmer config --pkg-config >"$pkgdir"/usr/lib/pkgconfig/wasmer.pc
+  WASMER_DIR="$pkgdir"/usr/bin/wasmer config --pkg-config | install -Dm644 /dev/stdin "$pkgdir"/usr/lib/pkgconfig/wasmer.pc
 }
 
 # vim:set ts=2 sw=2 et:
