@@ -1,0 +1,23 @@
+pkgbase = colorpicker-fr
+	pkgdesc = A mininal but complete colorpicker desktop app
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://colorpicker.fr/
+	arch = x86_64
+	license = GPLv3
+	depends = gtk3
+	depends = libnotify
+	depends = libnss_nis
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = at-spi2-atk
+	depends = util-linux-libs
+	depends = libappindicator-gtk3
+	depends = libsecret
+	source = https://github.com/Toinane/colorpicker/releases/download/2.0.3/colorpicker_2.0.3_amd64.deb
+	sha256sums = dc7bc68fd2f6ea5fb12a67eab2c75d7977e8c5a48ebdd5f1ff74f8b8e6563ad4
+
+pkgname = colorpicker-fr
+
