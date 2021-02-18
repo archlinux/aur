@@ -12,7 +12,6 @@ depends=(
 	'nodejs'
 )
 makedepends=(
-	'npm'
 	'node-gyp'
 )
 provides=(
