@@ -1,7 +1,7 @@
 # Maintainer: Fabian Gundlach <archlinux at fabiangundlach dot org>
 
 pkgname=sauklaue
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Notetaking application for lecturing with an external graphics tablet'
 url="https://github.com/fagu/$pkgname"
@@ -10,7 +10,7 @@ arch=('x86_64')
 depends=('qt5-base' 'capnproto' 'cairomm' 'poppler-glib' 'hicolor-icon-theme' 'libx11' 'libxi' 'kconfig' 'kconfigwidgets' 'kguiaddons')
 makedepends=('git' 'cmake' 'extra-cmake-modules')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fagu/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('97d1ec2343507be3835134a5b12991ced76bba57b28f36bb8acbdbe75c5aeb2b')
+sha256sums=('a15b1a82938008344d9cc61280136f6d5a5093acdf86859b9f476e2f49562743')
 
 build() {
 	cd "$pkgname-$pkgver"
