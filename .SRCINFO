@@ -1,24 +1,21 @@
 pkgbase = microchip-mplabxc8-bin
 	pkgdesc = Microchip's MPLAB XC8 C compiler toolchain for their PIC10/12/16/18 microcontroller families and their PIC14000 device
-	pkgver = 2.20
+	pkgver = 2.31
 	pkgrel = 1
 	url = http://www.microchip.com/mplab/compilers
 	install = microchip-mplabxc8-bin.install
 	arch = x86_64
 	license = custom
-	makedepends = sdx
-	makedepends = lib32-tclkit
-	depends = lib32-gcc-libs
+	makedepends = bitrock-unpacker
+	depends = gcc-libs
 	options = !strip
 	options = docs
 	options = libtool
 	options = emptydirs
 	options = !zipman
 	options = staticlibs
-	source = http://ww1.microchip.com/downloads/en/DeviceDoc/xc8-v2.20-full-install-linux-installer.run
-	source = bitrock-unpacker.tcl
-	md5sums = d3b7abb755587ea4efdffb00a6a8485f
-	md5sums = 70dedba4c417f8c0bb07c32d19e9d197
+	source = http://ww1.microchip.com/downloads/en/DeviceDoc/xc8-v2.31-full-install-linux-x64-installer.run
+	md5sums = 3e628d7048dddd54a9247d16a6d05baa
 
 pkgname = microchip-mplabxc8-bin
 
