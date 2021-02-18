@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=rdfm-git
-pkgver=0.1.0.r10.gfa50f6a
+pkgver=0.1.1.r2.g0ee4334
 pkgrel=1
 pkgdesc="The Rusty DotFiles Manager (git)"
 arch=('x86_64')
