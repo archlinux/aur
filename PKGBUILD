@@ -12,7 +12,7 @@ optdepends=(
   'docker: for running network scenarios in a local environment'
   'xterm: for opening devices terminals'
 )
-source=("file://$(pwd)/kathara.tar.gz")
+source=("kathara.tar.gz")
 md5sums=('SKIP')
 
 prepare() {

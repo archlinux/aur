@@ -11,7 +11,7 @@ pkgbase = kathara
 	makedepends = python-pip
 	optdepends = docker: for running network scenarios in a local environment
 	optdepends = xterm: for opening devices terminals
-	source = file:///opt/kathara/scripts/Linux-Pkg/Output/kathara-aur/kathara.tar.gz
+	source = kathara.tar.gz
 	md5sums = SKIP
 
 pkgname = kathara
