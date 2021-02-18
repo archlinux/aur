@@ -1,6 +1,6 @@
 pkgbase = git-identity
 	pkgdesc = Manage your identity in Git
-	pkgver = v1.0.0
+	pkgver = v1.1.0
 	pkgrel = 2
 	url = https://github.com/madx/git-identity
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = git-identity
 	optdepends = zsh: for zsh completion
 	provides = git-identity
 	conflicts = git-identity
-	source = https://github.com/madx/git-identity/archive/v1.0.0.tar.gz
-	sha1sums = a75abc7f8ee4a4549b2b7467eed79ca536922efe
+	source = https://github.com/madx/git-identity/archive/v1.1.0.tar.gz
+	sha1sums = 815d6444a6edd40f7010c43fb3c3a2030676961a
 
 pkgname = git-identity
 

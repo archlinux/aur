@@ -1,7 +1,7 @@
 # Maintainer: somini <dev@somini.xyz>
 pkgname=git-identity
-_pkgver=1.0.0
-pkgver="v${_pkgver}"
+_pkgver=1.1.0
+pkgver=v${_pkgver}
 pkgrel=2
 pkgdesc="Manage your identity in Git"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('zsh: for zsh completion')
 provides=('git-identity')
 conflicts=('git-identity')
 source=("https://github.com/madx/git-identity/archive/$pkgver.tar.gz")
-sha1sums=('a75abc7f8ee4a4549b2b7467eed79ca536922efe')
+sha1sums=('815d6444a6edd40f7010c43fb3c3a2030676961a')
 
 package() {
 	cd "$srcdir/${pkgname}-${_pkgver}"
