@@ -1,6 +1,6 @@
 pkgbase = pipewire-full-git
 	pkgdesc = Server and user space API to deal with multimedia pipelines
-	pkgver = 0.3.21.r110.g373fd53d
+	pkgver = 0.3.22.r7.ga22602f4
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -52,8 +52,6 @@ pkgname = pipewire-full-git
 	conflicts = alsa-card-profiles
 	backup = etc/pipewire/client-rt.conf
 	backup = etc/pipewire/client.conf
-	backup = etc/pipewire/jack.conf
-	backup = etc/pipewire/pipewire-pulse.conf
 	backup = etc/pipewire/pipewire.conf
 	backup = etc/pipewire/media-session.d/media-session.conf
 	backup = etc/pipewire/media-session.d/alsa-monitor.conf
@@ -73,6 +71,7 @@ pkgname = pipewire-full-jack-git
 	depends = libjack.so
 	provides = pipewire-jack
 	conflicts = pipewire-jack
+	backup = etc/pipewire/jack.conf
 
 pkgname = pipewire-full-pulse-git
 	pkgdesc = Server and user space API to deal with multimedia pipelines (PulseAudio replacement)
@@ -86,6 +85,7 @@ pkgname = pipewire-full-pulse-git
 	conflicts = pipewire-pulse
 	conflicts = pulseaudio
 	conflicts = pulseaudio-bluetooth
+	backup = etc/pipewire/pipewire-pulse.conf
 
 pkgname = pipewire-full-alsa-git
 	pkgdesc = ALSA Configuration for PipeWire

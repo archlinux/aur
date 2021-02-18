@@ -9,7 +9,7 @@ pkgname=(pipewire-full-git pipewire-full-docs-git pipewire-full-jack-git
          gst-plugin-pipewire-full-git
          pipewire-full-vulkan-git pipewire-full-ffmpeg-git
          pipewire-full-bluez5-git pipewire-full-bluez5-hsphfpd-git)
-pkgver=0.3.21.r110.g373fd53d
+pkgver=0.3.22.r7.ga22602f4
 pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines"
 url="https://pipewire.org"
@@ -75,7 +75,7 @@ package_pipewire-full-git() {
               'pipewire-full-bluez5-hsphfpd-git: Bluetooth audio support (using hsphfpd for HSP/HFP support)')
   provides=(pipewire alsa-card-profiles libpipewire-$_ver.so)
   conflicts=(pipewire alsa-card-profiles)
-  backup=(etc/pipewire/{client-rt,client,jack,pipewire-pulse,pipewire}.conf
+  backup=(etc/pipewire/{client-rt,client,pipewire}.conf
           etc/pipewire/media-session.d/media-session.conf
           etc/pipewire/media-session.d/{alsa,bluez,v4l2}-monitor.conf)
   install=pipewire.install
@@ -107,11 +107,13 @@ package_pipewire-full-git() {
 
   _pick docs usr/share/doc
 
+  _pick jack etc/pipewire/jack.conf
   _pick jack etc/pipewire/media-session.d/with-jack
   _pick jack usr/bin/pw-jack usr/lib/pipewire-$_ver/jack
   _pick jack usr/lib/spa-0.2/jack
   _pick jack usr/share/man/man1/pw-jack.1
 
+  _pick pulse etc/pipewire/pipewire-pulse.conf
   _pick pulse etc/pipewire/media-session.d/with-pulseaudio
 
   _pick gst usr/lib/gstreamer-1.0
@@ -133,6 +135,7 @@ package_pipewire-full-jack-git() {
   depends=(pipewire-full-git libpipewire-$_ver.so bash libjack.so)
   provides=(pipewire-jack)
   conflicts=(pipewire-jack)
+  backup=(etc/pipewire/jack.conf)
   mv jack/* "$pkgdir"
 }
 
@@ -142,6 +145,7 @@ package_pipewire-full-pulse-git() {
   provides=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
   conflicts=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
   install=pipewire-pulse.install
+  backup=(etc/pipewire/pipewire-pulse.conf)
   mv pulse/* "$pkgdir"
 }
 
