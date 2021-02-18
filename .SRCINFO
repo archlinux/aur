@@ -1,0 +1,18 @@
+pkgbase = vim-gitignore-git
+	pkgdesc = gitignore syntax and plugin for vim
+	pkgver = r165.48416f0
+	pkgrel = 2
+	url = https://github.com/shaggyrogers/vim-gitignore
+	arch = any
+	groups = vim-plugins
+	license = Apache
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-gitignore
+	source = git+https://github.com/shaggyrogers/vim-gitignore
+	source = LICENSE
+	sha512sums = SKIP
+	sha512sums = b99e9d9d73b3dae775a25fa94625da3f60a013a29926bf3a23285642cbd49e14f06a54d683a84046031c0e7e930a269e8329741d3f4d1772f64c0de685ea4179
+
+pkgname = vim-gitignore-git
+
