@@ -1,0 +1,2 @@
+#!/bin/sh
+GEM_PATH=/opt/fastlane /opt/fastlane/bin/fastlane "$@"
