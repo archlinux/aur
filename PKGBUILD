@@ -57,9 +57,6 @@ prepare() {
   mkdir mozbuild
   cd mozilla-unified
 
-  # Bug 1693563
-  sed -E -i'' '/gyp_vars\["mozilla_central"\] = 1/d' "$srcdir/mozilla-unified/security/moz.build"
-
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
 
