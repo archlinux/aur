@@ -1,7 +1,7 @@
 pkgbase = insight-toolkit
 	pkgdesc = Cross-platform system that provides developers with an extensive suite of software tools for image analysis
-	pkgver = 5.0.1
-	pkgrel = 12
+	pkgver = 5.1.2
+	pkgrel = 13
 	url = http://www.itk.org/
 	arch = i686
 	arch = x86_64
@@ -27,8 +27,8 @@ pkgbase = insight-toolkit
 	optdepends = castxml-git: for wrapping and docs
 	optdepends = clang: for swig
 	optdepends = castxml-git: for ITK
-	source = https://github.com/InsightSoftwareConsortium/ITK/releases/download/v5.0.1/InsightToolkit-5.0.1.tar.gz
-	sha512sums = f36613ff72c513ded3d32504f71308a94fe75555cf9fd22b77485d1375601f6e1f1539cc5ac82a9e1e229bcf514a88ccb55122a7dfc74a6ae1b6604aa70bd814
+	source = https://github.com/InsightSoftwareConsortium/ITK/releases/download/v5.1.2/InsightToolkit-5.1.2.tar.gz
+	sha512sums = b7702b4933a0491110e22e98faf8534f5db49b6218830962ea067ccdb2fd5666ed41ee61a12cee66484f72b1e2225235d0762f0863eac4568d2c782761e5b03c
 
 pkgname = insight-toolkit
 
