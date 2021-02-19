@@ -3,8 +3,9 @@
 # Contributor: sekret
 
 pkgname=untrunc-git
-pkgver=r58.ec8e417
-pkgrel=3
+pkgver=r142.e02f40e
+pkgrel=1
+libav_version=12.3
 pkgdesc="restore a damaged (truncated) mp4, m4v, mov, 3gp video"
 arch=('x86_64' 'i686')
 url="https://github.com/ponchio/untrunc"
@@ -13,15 +14,15 @@ depends=('libvdpau' 'zlib' 'bzip2')
 makedepends=('yasm' 'git' 'libx11')
 source=("${pkgname}"::'git+https://github.com/ponchio/untrunc.git'
         'framealloc.patch'
-	'http://libav.org/releases/libav-12.2.tar.xz')
+	"http://libav.org/releases/libav-${libav_version}.tar.xz")
 md5sums=('SKIP'
          '7f6cf1762cd93f4ce84cb218ab856ea3'
-         '69b5d9de6e4b2fbf6956653f61c7ffe1')
-noextract=('libav-12.2.tar.xz')
+         '753ec26481b0582eb737383bd8a350a5')
+noextract=("libav-${libav_version}.tar.xz")
 
 prepare() {
   cd $srcdir/$pkgname
-  tar xvJf ../libav-12.2.tar.xz
+  tar xvJf ../libav-${libav_version}.tar.xz
 }
 
 build() {
@@ -29,12 +30,12 @@ build() {
   git submodule init
   git submodule update
   # patch -p1 -i $srcdir/framealloc.patch
-  # wget http://libav.org/releases/libav-12.2.tar.xz
-  cd libav-12.2
+  # wget http://libav.org/releases/libav-${libav_version}.tar.xz
+  cd libav-"${libav_version}"
   ./configure
   make
   cd ..
-  g++ -o untrunc file.cpp main.cpp track.cpp atom.cpp mp4.cpp -I./libav-12.2 -L./libav-12.2/libavformat -lavformat -L./libav-12.2/libavcodec -lavcodec -L./libav-12.2/libavresample -lavresample -L./libav-12.2/libavutil -lavutil -lpthread -lz -lbz2 -lX11 -lvdpau
+  g++ -o untrunc -I./libav-${libav_version} file.cpp main.cpp track.cpp atom.cpp codec_*.cpp codecstats.cpp codec.cpp mp4.cpp log.cpp -L./libav-${libav_version}/libavformat -lavformat -L./libav-${libav_version}/libavcodec -lavcodec -L./libav-${libav_version}/libavresample -lavresample -L./libav-${libav_version}/libavutil -lavutil -lpthread -lz -lbz2 -llzma -lX11 -lvdpau -ldl
 } 
 
 pkgver() {
