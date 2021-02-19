@@ -1,6 +1,6 @@
 pkgbase = linux-pf-git
 	pkgdesc = Linux pf-kernel (git version)
-	pkgver = 5.10.6.r0.g5bfd8ac02dfe
+	pkgver = 5.11.2.r33.gba90623a7248
 	pkgrel = 1
 	url = https://gitlab.com/post-factum/pf-kernel/-/wikis/README
 	arch = x86_64
@@ -18,12 +18,12 @@ pkgbase = linux-pf-git
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = linux-pf-git::git+https://gitlab.com/post-factum/pf-kernel.git#branch=pf-5.10
+	source = linux-pf-git::git+https://gitlab.com/post-factum/pf-kernel.git#branch=pf-5.11
 	source = config
-	source = pf_defconfig
+	source = sphinx-workaround.patch
 	sha256sums = SKIP
-	sha256sums = d3e7adf5fcfc632887058ca84ca7b849a824dda5a03de854c8d3480ef0124ad1
-	sha256sums = e4ffd35546de014302d2f3ce052e8665fe751804f0aacb0b640749eaa5db071a
+	sha256sums = 8b321b1bf372032092d74cddd3113b09dc0019521b8f899c05acc8a37bddeff4
+	sha256sums = 52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb
 
 pkgname = linux-pf-git
 	pkgdesc = The Linux pf-kernel (git version) kernel and modules
@@ -39,6 +39,7 @@ pkgname = linux-pf-git
 
 pkgname = linux-pf-headers-git
 	pkgdesc = Headers and scripts for building modules for the Linux pf-kernel (git version) kernel
+	depends = pahole
 
 pkgname = linux-pf-docs-git
 	pkgdesc = Documentation for the Linux pf-kernel (git version) kernel

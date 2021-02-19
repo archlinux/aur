@@ -3,13 +3,14 @@
 
 pkgbase=linux-pf-git
 pkgdesc="Linux pf-kernel (git version)"
-pkgver=5.10.6.r0.g5bfd8ac02dfe
-_kernel_rel=5.10
+pkgver=5.11.2.r33.gba90623a7248
+_kernel_rel=5.11
 _branch=pf-${_kernel_rel}
 _product="${pkgbase%-git}"
 pkgrel=1
 arch=(x86_64)
-url="https://gitlab.com/post-factum/pf-kernel/-/wikis/README"
+_base_url=https://gitlab.com/post-factum/pf-kernel
+url="${_base_url}/-/wikis/README"
 license=(GPL2)
 makedepends=(
   bc kmod libelf pahole cpio perl
@@ -19,13 +20,13 @@ makedepends=(
 options=('!strip')
 _srcname="${pkgbase}"
 source=(
-  "${_srcname}::git+https://gitlab.com/post-factum/pf-kernel.git#branch=${_branch}"
-  config
-  pf_defconfig
+  "${_srcname}::git+${_base_url}.git#branch=${_branch}"
+  config         # the main kernel config file
+  sphinx-workaround.patch  # Sphinx 3.5 broke the build again
 )
 sha256sums=('SKIP'
-            'd3e7adf5fcfc632887058ca84ca7b849a824dda5a03de854c8d3480ef0124ad1'
-            'e4ffd35546de014302d2f3ce052e8665fe751804f0aacb0b640749eaa5db071a')
+            '8b321b1bf372032092d74cddd3113b09dc0019521b8f899c05acc8a37bddeff4'
+            '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
 
 pkgver() {
   cd "${_srcname}"
@@ -57,9 +58,6 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
-
-  # merge our changes to arches kernel config
-  ./scripts/kconfig/merge_config.sh .config "$srcdir"/pf_defconfig
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
@@ -100,6 +98,7 @@ _package() {
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  depends=(pahole)
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -197,10 +196,10 @@ _package-docs() {
 
 pkgname=("${_product}-git" "${_product}-headers-git" "${_product}-docs-git")
 for _package in "${pkgname[@]}"; do
-	local _package_no_git="${_package%-git}"
-	local _package_stripped="${_package_no_git#$_product}"
-	eval "package_${_package}() {
-	$(declare -f "_package${_package_stripped}")
-	_package${_package_stripped}
+  local _package_no_git="${_package%-git}"
+  local _package_stripped="${_package_no_git#$_product}"
+  eval "package_${_package}() {
+  $(declare -f "_package${_package_stripped}")
+  _package${_package_stripped}
 }"
 done
