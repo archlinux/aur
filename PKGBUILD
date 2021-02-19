@@ -38,9 +38,6 @@ prepare() {
 	git config submodule.qucsator.url $srcdir/qucsator
 	git submodule update
 
-    # Upstream renamed qucs-core to qucsator, but forgot the bootstrap script...
-    sed -i 's/qucs-core/qucsator/g' bootstrap
-
     ./bootstrap
 }
 
