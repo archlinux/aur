@@ -3,7 +3,7 @@
 
 pkgname=curecoin-qt-git
 pkgver=v2.0.0.2.r24.g3ef6a62
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI client (wallet) for CureCoin cryptocurrency"
 arch=('x86_64' 'i686')
 url="https://curecoin.net/"
@@ -13,15 +13,22 @@ conflicts=('curecoin-qt')
 depends=('qt5-base' 'qt5-tools' 'miniupnpc' 'boost-libs' 'openssl')
 makedepends=('boost' 'db' 'git')
 source=("git+https://github.com/cygnusxi/CurecoinSource.git"
+        "62.patch"
         "curecoin.desktop")
 sha256sums=('SKIP'
+            'e4b91a65d1f1afe7c165cbc4f090bfe4dc914a36915e9ef5f5d6ba0a981db0af'
             '47e4c7305240dd16361d922bf6bc3a86ee53d7e0bc43bdf12c341ea0b7968387')
 
 pkgver() {
-  cd ${srcdir}/CurecoinSource
+  cd "${srcdir}/CurecoinSource"
   set -o pipefail
   git describe --tags --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${srcdir}/CurecoinSource"
+  patch --forward --strip=1 --input="${srcdir}/62.patch"
 }
 
 build() {

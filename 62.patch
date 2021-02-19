@@ -1,0 +1,69 @@
+From 76528b543675f817a97a64634c648ae831e94713 Mon Sep 17 00:00:00 2001
+From: Jan van der Lugt <janlugt@gmail.com>
+Date: Sun, 3 Jan 2021 22:54:42 -0800
+Subject: [PATCH] Use fully qualified boost::placeholders identifiers.
+
+---
+ src/qt/clientmodel.cpp | 12 ++++++++----
+ src/qt/walletmodel.cpp | 16 ++++++++++------
+ 2 files changed, 18 insertions(+), 10 deletions(-)
+
+diff --git a/src/qt/clientmodel.cpp b/src/qt/clientmodel.cpp
+index df18b09..b3f5a17 100644
+--- a/src/qt/clientmodel.cpp
++++ b/src/qt/clientmodel.cpp
+@@ -190,14 +190,18 @@ void ClientModel::subscribeToCoreSignals()
+ {
+     // Connect signals to client
+     uiInterface.NotifyBlocksChanged.connect(boost::bind(NotifyBlocksChanged, this));
+-    uiInterface.NotifyNumConnectionsChanged.connect(boost::bind(NotifyNumConnectionsChanged, this, _1));
+-    uiInterface.NotifyAlertChanged.connect(boost::bind(NotifyAlertChanged, this, _1, _2));
++    uiInterface.NotifyNumConnectionsChanged.connect(boost::bind(NotifyNumConnectionsChanged, this,
++                                                    boost::placeholders::_1));
++    uiInterface.NotifyAlertChanged.connect(boost::bind(NotifyAlertChanged, this, boost::placeholders::_1,
++                                                       boost::placeholders::_2));
+ }
+ 
+ void ClientModel::unsubscribeFromCoreSignals()
+ {
+     // Disconnect signals from client
+     uiInterface.NotifyBlocksChanged.disconnect(boost::bind(NotifyBlocksChanged, this));
+-    uiInterface.NotifyNumConnectionsChanged.disconnect(boost::bind(NotifyNumConnectionsChanged, this, _1));
+-    uiInterface.NotifyAlertChanged.disconnect(boost::bind(NotifyAlertChanged, this, _1, _2));
++    uiInterface.NotifyNumConnectionsChanged.disconnect(boost::bind(NotifyNumConnectionsChanged, this,
++                                                                   boost::placeholders::_1));
++    uiInterface.NotifyAlertChanged.disconnect(boost::bind(NotifyAlertChanged, this, boost::placeholders::_1,
++                                                          boost::placeholders::_2));
+ }
+diff --git a/src/qt/walletmodel.cpp b/src/qt/walletmodel.cpp
+index 75225f3..04ab2f7 100644
+--- a/src/qt/walletmodel.cpp
++++ b/src/qt/walletmodel.cpp
+@@ -335,17 +335,21 @@ static void NotifyTransactionChanged(WalletModel *walletmodel, CWallet *wallet,
+ void WalletModel::subscribeToCoreSignals()
+ {
+     // Connect signals to wallet
+-    wallet->NotifyStatusChanged.connect(boost::bind(&NotifyKeyStoreStatusChanged, this, _1));
+-    wallet->NotifyAddressBookChanged.connect(boost::bind(NotifyAddressBookChanged, this, _1, _2, _3, _4, _5));
+-    wallet->NotifyTransactionChanged.connect(boost::bind(NotifyTransactionChanged, this, _1, _2, _3));
++    wallet->NotifyStatusChanged.connect(boost::bind(&NotifyKeyStoreStatusChanged, this, boost::placeholders::_1));
++    wallet->NotifyAddressBookChanged.connect(boost::bind(NotifyAddressBookChanged, this, boost::placeholders::_1, boost::placeholders::_2,
++                                                         boost::placeholders::_3, boost::placeholders::_4, boost::placeholders::_5));
++    wallet->NotifyTransactionChanged.connect(boost::bind(NotifyTransactionChanged, this, boost::placeholders::_1, boost::placeholders::_2,
++                                                         boost::placeholders::_3));
+ }
+ 
+ void WalletModel::unsubscribeFromCoreSignals()
+ {
+     // Disconnect signals from wallet
+-    wallet->NotifyStatusChanged.disconnect(boost::bind(&NotifyKeyStoreStatusChanged, this, _1));
+-    wallet->NotifyAddressBookChanged.disconnect(boost::bind(NotifyAddressBookChanged, this, _1, _2, _3, _4, _5));
+-    wallet->NotifyTransactionChanged.disconnect(boost::bind(NotifyTransactionChanged, this, _1, _2, _3));
++    wallet->NotifyStatusChanged.disconnect(boost::bind(&NotifyKeyStoreStatusChanged, this, boost::placeholders::_1));
++    wallet->NotifyAddressBookChanged.disconnect(boost::bind(NotifyAddressBookChanged, this, boost::placeholders::_1, boost::placeholders::_2,
++                                                            boost::placeholders::_3, boost::placeholders::_4, boost::placeholders::_5));
++    wallet->NotifyTransactionChanged.disconnect(boost::bind(NotifyTransactionChanged, this, boost::placeholders::_1, boost::placeholders::_2,
++                                                            boost::placeholders::_3));
+ }
+ 
+ // WalletModel::UnlockContext implementation
