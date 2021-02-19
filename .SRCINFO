@@ -5,7 +5,6 @@ pkgbase = vim-coc-marketplace-git
 	url = https://github.com/fannheyward/coc-marketplace
 	install = vim-coc-marketplace-git.install
 	arch = any
-	groups = vim-coc-extras-git
 	license = MIT
 	makedepends = git
 	makedepends = yarn

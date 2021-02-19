@@ -11,7 +11,6 @@ depends=('vim-coc')
 makedepends=('git' 'yarn' 'npm')
 _packdir="usr/share/vim/vimfiles/pack/coc/start/${_extname}"
 license=('MIT')
-groups=('vim-coc-extras-git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 install="${pkgname}.install"
