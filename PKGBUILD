@@ -1,7 +1,7 @@
 # Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
 # Maintainer: Miguel Mota <hello@miguelmota.com>
 pkgname=cointop
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="An interactive terminal based UI application for tracking cryptocurrencies"
 url="https://github.com/miguelmota/cointop"
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('42f007173b2d0fc61d6364da6bfc53da5cb3a4f8288cc8bfffd53964a96fd8c2')
+sha256sums=('8a40e0d4467de305ecb0733879aea2c087270348709e1d645918b48a74309572')
 
 prepare() {
 	cd "$pkgname-$pkgver"
