@@ -2,16 +2,17 @@
 
 pkgname=nccm-git
 _gitname=${pkgname%-git}
-pkgver=r41.b76a5bb
-pkgrel=1
+pkgver=r99.96af400
+pkgrel=2
 pkgdesc="NCurses ssh Connection Manager"
 arch=('any')
 url="https://github.com/flyingrhinonz/nccm"
 license=('GPL3')
 depends=('python-pyaml' 'yamllint')
 makedepends=('git')
-provides=("${_gitname}")
-conflicts=("${_gitname}")
+provides=("nccm")
+conflicts=("nccm")
+backup=('etc/nccm.yml')
 source=("git+https://github.com/flyingrhinonz/nccm")
 sha256sums=('SKIP')
 
@@ -24,8 +25,8 @@ pkgver() {
 package() {
   cd ${_gitname}
 
-  install -Dm755 ${_gitname}/${_gitname} -t ${pkgdir}/usr/bin/
-  install -Dm644 ${_gitname}/${_gitname}.yml -t ${pkgdir}/etc/
+  install -Dm755 ${_gitname}/nccm -t ${pkgdir}/usr/bin/
+  install -Dm644 ${_gitname}/nccm.yml -t ${pkgdir}/etc/
 }
 
 # vim: set sw=2 ts=2 et:
