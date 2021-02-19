@@ -2,17 +2,17 @@
 
 _npmname=clean-css-cli
 pkgname=nodejs-$_npmname
-pkgver=5.1.0
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="The command line interface to clean-css CSS optimizer"
 arch=(any)
 url=https://github.com/jakubpawlowicz/clean-css-cli
 license=(MIT)
 depends=(nodejs)
-makedepends=(npm)
+makedepends=(jq npm)
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('44811c615c776a48350b29a99cbefdd41e936a4b7dec001e49e5bb1684e9ac31')
+sha256sums=('bbc39e3289c82399c12e9c06a5b07aa1be60c4484db1e82bdbc0916973a72c39')
 
 package() {
   npm install \
@@ -26,6 +26,14 @@ package() {
   # npm gives ownership of ALL FILES to build user
   # https://bugs.archlinux.org/task/63396
   chown -R root:root "${pkgdir}"
+
+  find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+
+  local tmppackage="$(mktemp)"
+  local pkgjson="$pkgdir/usr/lib/node_modules/$_npmname/package.json"
+  jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
+  mv "$tmppackage" "$pkgjson"
+  chmod 0644 "$pkgjson"
 
   install -Dm0644 "$pkgdir/usr/lib/node_modules/$_npmname/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
