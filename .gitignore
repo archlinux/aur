@@ -4,3 +4,4 @@ src/
 *.tar.xz
 *.tar
 kubespy
+*.zst
