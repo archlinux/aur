@@ -1,6 +1,6 @@
 pkgbase = kodi-devel
-	pkgver = 19.0rc1
-	pkgrel = 3
+	pkgver = 19.0
+	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -64,7 +64,7 @@ pkgbase = kodi-devel
 	noextract = fstrcmp-0.7.D001.tar.gz
 	noextract = flatbuffers-1.11.0.tar.gz
 	noextract = spdlog-1.5.0.tar.gz
-	source = kodi-19.0RC1-Matrix.tar.gz::https://github.com/xbmc/xbmc/archive/19.0RC1-Matrix.tar.gz
+	source = kodi-19.0-Matrix.tar.gz::https://github.com/xbmc/xbmc/archive/19.0-Matrix.tar.gz
 	source = libdvdcss-1.4.2-Leia-Beta-5.tar.gz::https://github.com/xbmc/libdvdcss/archive/1.4.2-Leia-Beta-5.tar.gz
 	source = libdvdnav-6.0.0-Leia-Alpha-3.tar.gz::https://github.com/xbmc/libdvdnav/archive/6.0.0-Leia-Alpha-3.tar.gz
 	source = libdvdread-6.0.0-Leia-Alpha-3.tar.gz::https://github.com/xbmc/libdvdread/archive/6.0.0-Leia-Alpha-3.tar.gz
@@ -75,7 +75,7 @@ pkgbase = kodi-devel
 	source = http://mirrors.kodi.tv/build-deps/sources/flatbuffers-1.11.0.tar.gz
 	source = http://mirrors.kodi.tv/build-deps/sources/spdlog-1.5.0.tar.gz
 	source = cheat-sse-build.patch
-	b2sums = 305793e2a5f16f07853a82e8f1953a56baa4159c9eee762aee40e8b6692c317cb83e7713d99cbb767cff0c1ac2a2d8bfc3837525d8ad4c854f114f900ebdb294
+	b2sums = 543936b8fb607d1d629a8f2abd9cd0cb3bf6114aa93647c7e8ccee2f99ff1f84a2740bb57f0cbf675b3efa5914e98c57effb28ecd8e9df83a39d67ee708280a2
 	b2sums = 283aa2cec0a2200d3569bc280cb9659e9224a6b3a77db8a35b269cd8caf1337ac9d8b92b806df66f63ef7458a46bd6261f0b8b14678b10e26644a79dcbeea5da
 	b2sums = 7573434a0ae8e8ccabf48173f81fcde29074eb138e119a2ae9156cde3c3d8bfd716f5d0e605b97f2dcac21f570781137c8533c5ae306b51e3905822fda318355
 	b2sums = 0c206acdaf0776841ab792c74e023af07d9539eb72e03ae164382a31ed950f60e5e15f1d055979d28f1398924471b294d11f064b11b8373353b3962a3777ff3c
@@ -105,7 +105,7 @@ pkgname = kodi-devel
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = upower: Display battery level
 	provides = xbmc
-	provides = kodi=19.0rc1
+	provides = kodi=19.0
 	conflicts = xbmc
 	conflicts = kodi
 	replaces = xbmc
@@ -136,7 +136,7 @@ pkgname = kodi-devel-x11
 	depends = dav1d
 	depends = kodi-devel
 	provides = KODI-DEVEL-BIN
-	provides = kodi-x11=19.0rc1
+	provides = kodi-x11=19.0
 	conflicts = kodi-x11
 	replaces = kodi-bin
 
@@ -164,7 +164,7 @@ pkgname = kodi-devel-wayland
 	depends = waylandpp
 	depends = kodi-devel
 	provides = KODI-DEVEL-BIN
-	provides = kodi-wayland=19.0rc1
+	provides = kodi-wayland=19.0
 	conflicts = kodi-wayland
 
 pkgname = kodi-devel-gbm
@@ -193,13 +193,13 @@ pkgname = kodi-devel-gbm
 	depends = dav1d
 	depends = kodi-devel
 	provides = KODI-DEVEL-BIN
-	provides = kodi-gbm=19.0rc1
+	provides = kodi-gbm=19.0
 	conflicts = kodi-gbm
 
 pkgname = kodi-devel-eventclients
 	pkgdesc = Kodi Event Clients
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=19.0rc1
+	provides = kodi-eventclients=19.0
 	conflicts = kodi-eventclients
 
 pkgname = kodi-devel-tools-texturepacker
@@ -208,12 +208,12 @@ pkgname = kodi-devel-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=19.0rc1
+	provides = kodi-tools-texturepacker=19.0
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-devel-dev
 	pkgdesc = Kodi dev files
 	depends = kodi-devel
-	provides = kodi-dev=19.0rc1
+	provides = kodi-dev=19.0
 	conflicts = kodi-dev
 

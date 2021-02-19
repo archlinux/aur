@@ -22,9 +22,9 @@ pkgname=(
   "$pkgbase" "$pkgbase-x11" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=19.0rc1
+pkgver=19.0
 #_major=18.7.1
-pkgrel=3
+pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -44,8 +44,8 @@ makedepends=(
 )
 
 #_tag="$pkgver-Matrix"
-_tag="${pkgver^^}-Matrix"
 #_tag="$_major-Matrix"
+_tag="${pkgver^^}-Matrix"
 _sse_workaround=1
 
 # Found on their respective github release pages. One can check them against
@@ -93,7 +93,7 @@ noextract=(
   "flatbuffers-$_flatbuffers_version.tar.gz"
   "spdlog-$_spdlog_version.tar.gz"
 )
-b2sums=('305793e2a5f16f07853a82e8f1953a56baa4159c9eee762aee40e8b6692c317cb83e7713d99cbb767cff0c1ac2a2d8bfc3837525d8ad4c854f114f900ebdb294'
+b2sums=('543936b8fb607d1d629a8f2abd9cd0cb3bf6114aa93647c7e8ccee2f99ff1f84a2740bb57f0cbf675b3efa5914e98c57effb28ecd8e9df83a39d67ee708280a2'
         '283aa2cec0a2200d3569bc280cb9659e9224a6b3a77db8a35b269cd8caf1337ac9d8b92b806df66f63ef7458a46bd6261f0b8b14678b10e26644a79dcbeea5da'
         '7573434a0ae8e8ccabf48173f81fcde29074eb138e119a2ae9156cde3c3d8bfd716f5d0e605b97f2dcac21f570781137c8533c5ae306b51e3905822fda318355'
         '0c206acdaf0776841ab792c74e023af07d9539eb72e03ae164382a31ed950f60e5e15f1d055979d28f1398924471b294d11f064b11b8373353b3962a3777ff3c'
@@ -116,23 +116,23 @@ prepare() {
   [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i "$srcdir/cheat-sse-build.patch"
 
   # needed for `git apply` ... if you know how to avoid this let me know
-  git init
+  #git init
 
-  local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    # only patch subset of patches that begin with 0-9
-    [[ $src == [0-9]*.patch ]] || continue
-    msg2 "Applying patch $src..."
+  #local src
+  #for src in "${source[@]}"; do
+  #  src="${src%%::*}"
+  #  src="${src##*/}"
+  #  # only patch subset of patches that begin with 0-9
+  #  [[ $src == [0-9]*.patch ]] || continue
+  #  msg2 "Applying patch $src..."
     # patch will fail if binary diffs are present so use git apply first and only
     # if it fails try patch
-    if ! git apply --verbose -p1 < "../$src"; then
-      patch -Np1 < "../$src"
-    fi
-  done
+  #  if ! git apply --verbose -p1 < "../$src"; then
+  #    patch -Np1 < "../$src"
+  #  fi
+  #done
 
-  rm -rf .git
+  #rm -rf .git
 }
 
 build() {
