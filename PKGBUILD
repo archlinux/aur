@@ -10,6 +10,7 @@ depends=('wlroots')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+# use #branch=wlroots-next to build against wlroots-git
 source=('git+https://github.com/djpohly/dwl')
 md5sums=('SKIP')
 
