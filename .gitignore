@@ -3,3 +3,4 @@
 pkg/*
 src/*
 *.swp
+*.zst

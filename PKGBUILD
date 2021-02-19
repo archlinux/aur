@@ -1,14 +1,14 @@
 # Maintainer: steadfasterX <steadfasterX [at] gmail -dot- com>
 pkgname=uau
-pkgver=1.1.0
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="unattended upgrades for Arch. Schedule automatic upgrades while respecting the recommended upgrade process (Arch wiki - System maintenance)."
 arch=('any')
 url="https://github.com/steadfasterX/arch_uau"
 license=('LGPL3')
-depends=('aur-comment-fetcher-git' 'checkupdates+aur' 'sudo' 'pacman' 'python3-memoizedb')
+depends=('aur-comment-fetcher-git' 'archnews2' 'sudo' 'pacman' 'python3-memoizedb')
 makedepends=('git')
-optdepends=('ssmtp: to provide the sendmail like mail command')
+optdepends=('ssmtp: to provide the sendmail like mail command' 'trizen')
 backup=('etc/unattended-arch-upgrade.conf' 'etc/unattended-arch-upgrade.ignore')
 source=("https://github.com/steadfasterX/arch_$pkgname/archive/v$pkgver.tar.gz")
 md5sums=('SKIP')
@@ -31,11 +31,11 @@ package() {
 
     install -d -m 0750 $pkgdir/${SUDOERS}
     install -o ${USER} -g ${GROUP} -m 0700 conf/uau_sudo $pkgdir/${SUDOERS}/uau_sudo
-    install -o ${USER} -g ${GROUP} -m 0744 conf/unattended-arch-upgrade.conf $pkgdir/etc/unattended-arch-upgrade.conf
-    install -o ${USER} -g ${GROUP} -m 0744 conf/unattended-arch-upgrade.ignore $pkgdir/etc/unattended-arch-upgrade.ignore
+    install -o ${USER} -g ${GROUP} -m 0644 conf/unattended-arch-upgrade.conf $pkgdir/etc/unattended-arch-upgrade.conf
+    install -o ${USER} -g ${GROUP} -m 0644 conf/unattended-arch-upgrade.ignore $pkgdir/etc/unattended-arch-upgrade.ignore
     install -o ${USER} -g ${GROUP} -m 0755 bin/* $pkgdir/${BINFIX}/
     ln -sfv uau $pkgdir/${BINFIX}/unattended-upgrade
-    install -o ${USER} -g ${GROUP} -m 0755 conf/archnews_cron $pkgdir/etc/cron.d/archnews
+    install -o ${USER} -g ${GROUP} -m 0644 conf/archnews_cron $pkgdir/etc/cron.d/archnews
     install -o ${USER} -g ${GROUP} -m 0755 conf/unattended-arch-upgrade.service $pkgdir/${SYSD}/unattended-arch-upgrade.service
     install -o ${USER} -g ${GROUP} -m 0755 conf/unattended-arch-upgrade.timer $pkgdir/${SYSD}/unattended-arch-upgrade.timer
 
@@ -44,6 +44,5 @@ package() {
 
     mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
     install -D -m644 ./LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
 }
 
