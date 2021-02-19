@@ -10,7 +10,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-vaapi
-pkgver=88.0.4324.150
+pkgver=88.0.4324.182
 pkgrel=1
 _launcher_ver=7
 _gcc_patchset=3
@@ -37,7 +37,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         wayland-egl.patch
         chromium-glibc-2.33.patch
         subpixel-anti-aliasing-in-FreeType-2.8.1.patch)
-sha256sums=('ae12e94392986c6b8ea4413356a49bae0a19356ffe2ea95495303cf2decb38c3'
+sha256sums=('30411fc3ec2d33df4c5cad41f21affa3823c80f7dbd394f6d68f9a1e81015b81'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
             'e5a60a4c9d0544d3321cc241b4c7bd4adb0a885f090c6c6c21581eac8e3b4ba9'
             '34d08ea93cb4762cb33c7cffe931358008af32265fc720f2762f0179c3973574'
