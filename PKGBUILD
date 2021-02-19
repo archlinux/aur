@@ -3,7 +3,7 @@
 _pkgname=docutils-stubs
 pkgname=python-$_pkgname
 pkgver=0.0.20
-pkgrel=2
+pkgrel=3
 pkgdesc='PEP 561 based Type information for docutils'
 arch=('any')
 url='https://github.com/tk0miya/docutils-stubs'
@@ -25,6 +25,9 @@ package() {
   cd $_pkgname-$pkgver
 
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  # remove docutils dependency pin
+  sed -i '/docutils/d' "$pkgdir"/usr/lib/python*/site-packages/docutils_stubs-*.egg-info/requires.txt
 
   install -Dm 644 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
