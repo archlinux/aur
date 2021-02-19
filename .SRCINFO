@@ -3,10 +3,11 @@ pkgbase = python-pyfoam
 	pkgver = 2020.5
 	pkgrel = 1
 	url = https://pypi.org/project/PyFoam
+	install = python-pyfoam.install
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
-	depends = python-numpy
+	depends = python
 	source = https://files.pythonhosted.org/packages/65/95/0d27b17db10da615c5aa1061ef3bc4b9c60c68c9c6ebed724b40e4d502a2/PyFoam-2020.5.tar.gz
 	md5sums = 2913bf472a49939910b271a1902f75a3
 
