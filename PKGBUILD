@@ -1,7 +1,7 @@
 # Maintainer: Chris Oelmueller <chris.oelmueller@gmail.com>
 _pythonname=deepdiff
 pkgname=python-${_pythonname}
-pkgver=5.2.2
+pkgver=5.2.3
 pkgrel=1
 pkgdesc="Deep Difference of dictionaries, iterables, strings and other objects. It will recursively look for all the changes."
 arch=('any')
@@ -12,9 +12,9 @@ depends=('python>=3.6' 'python-jsonpickle' 'python-ordered-set')
 makedepends=('python-setuptools')
 optdepends=('python-mmh3: murmurhash3 for faster hashing')
 source=("https://pypi.io/packages/source/d/${_pythonname}/${_pythonname}-${pkgver}.tar.gz")
-sha1sums=('1a7ec41f1efaf0fd9ed8889498aa9d4369a89e81')
-sha256sums=('752995dbd23e9971571c9f45b0bba9462cad3e968a505d644de492d6ff47d4fa')
-sha512sums=('dbe270f3feefc97bfcaa17b6a5b6a57a71d0c4cb9f1a4a4fdacbd2b9fdc6a76dc7e091ec0221ac11cbed8dfe0cf051a4b6ce05097d59b102667cccce4b65517f')
+sha1sums=('0033c4800c68b0076d20389b0ac17760a11e11e6')
+sha256sums=('ae2cb98353309f93fbfdda4d77adb08fb303314d836bb6eac3d02ed71a10b40e')
+sha512sums=('48a534fc4cdcc41ec46471d60223c7f53bcc04b01d4a5f72dad47332124cc2186f79f904148b25a325ce4936ac6fe68bc267893b0e99b32599fb0d009b71e0a5')
 
 build() {
   cd "$srcdir/${_pythonname}-${pkgver}"
