@@ -1,24 +1,18 @@
 pkgbase = python-ezpadova-git
 	pkgdesc = A python package that allows you to download PADOVA isochrones directly from their website
-	pkgver = r62.dc9de28
+	pkgver = r64.6e5c91d
 	pkgrel = 1
 	url = https://github.com/mfouesneau/ezpadova
 	arch = i686
 	arch = x86_64
 	license = MIT
 	checkdepends = python-pytest
-	checkdepends = python2-pytest
 	checkdepends = python-astropy
-	checkdepends = python2-astropy
 	makedepends = git
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	source = git+https://github.com/mfouesneau/ezpadova.git
 	md5sums = SKIP
 
 pkgname = python-ezpadova-git
 	depends = python
-
-pkgname = python2-ezpadova-git
-	depends = python2
 
