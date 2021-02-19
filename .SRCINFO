@@ -1,0 +1,15 @@
+pkgbase = gog-battletech-heavy-metal
+	pkgdesc = DLC for the Battletech game.
+	pkgver = 1.9.1.686r
+	pkgrel = 1
+	url = https://www.gog.com/game/battletech_game
+	arch = x86_64
+	license = custom
+	makedepends = p7zip
+	depends = gog-battletech
+	noextract = battletech_heavy_metal_1_9_1_686r_36568.sh
+	source = battletech_heavy_metal_1_9_1_686r_36568.sh::gog://battletech_heavy_metal_1_9_1_686r_36568.sh
+	sha256sums = 9ca700f9926b3068c6ac935315deb08d6cac209e4f9a5a0791db0f25d3818153
+
+pkgname = gog-battletech-heavy-metal
+
