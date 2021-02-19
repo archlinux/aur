@@ -11,7 +11,6 @@ depends=('neovim-coc')
 makedepends=('git' 'yarn' 'npm')
 _packdir="usr/share/nvim/runtime/pack/coc/start/${_extname}"
 license=('MIT')
-groups=('neovim-coc-extras-git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 install="${pkgname}.install"

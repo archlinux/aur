@@ -5,7 +5,6 @@ pkgbase = neovim-coc-marketplace-git
 	url = https://github.com/fannheyward/coc-marketplace
 	install = neovim-coc-marketplace-git.install
 	arch = any
-	groups = neovim-coc-extras-git
 	license = MIT
 	makedepends = git
 	makedepends = yarn
