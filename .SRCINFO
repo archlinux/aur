@@ -1,6 +1,6 @@
 pkgbase = macchina
 	pkgdesc = Basic system information fetcher
-	pkgver = 0.2.6
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/grtcdr/macchina
 	arch = x86_64
