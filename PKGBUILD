@@ -1,6 +1,6 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=lib3mf
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='Implementation of the 3D Manufacturing Format file standard'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('libzip' 'zlib')
 makedepends=('cmake')
 checkdepends=('gtest' 'openssl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/3MFConsortium/lib3mf/archive/v$pkgver.tar.gz")
-sha512sums=('05f92da9cbbac279baf33fe3a7ce43ff7faad987c4ba08120094406e1a8f9bab2330b47822fa0a84d1558be9c829f3e805782a46ed85b706e7f85cb861d0d4f5')
+sha512sums=('43b1091721e994adfa8390ed6542dc207b62dee278d8747fcca044692a72123c3445d4e7795d5476d15bb535fd1a3ce1da2c2796ab8edb28eb66528778fec846')
 
 build() {
 	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_INCLUDEDIR="include/$pkgname" \
