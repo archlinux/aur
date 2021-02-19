@@ -1,14 +1,13 @@
 pkgbase = lens
 	pkgdesc = The Kubernetes IDE
 	pkgver = 4.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://k8slens.dev
 	arch = x86_64
 	license = MIT
 	makedepends = npm
 	makedepends = nodejs-lts-erbium
 	makedepends = yarn
-	makedepends = rpm-tools
 	depends = alsa-lib
 	depends = gtk3
 	depends = libxss
