@@ -15,7 +15,7 @@ optdepends=('freehdl: to permit digital circuit simulation'
 #	    'asco: to enable circuit optimization'
 	    'perl')
 source=(
-  'git+https://github.com/Qucs/qucs.git#branch=refactor+qt5-19'
+  'git+https://github.com/Qucs/qucs.git#branch=refactor+qt5-22'
   'git+https://github.com/Qucs/qucs-test.git'
   'git+https://github.com/Qucs/qucsator.git'
 )
