@@ -48,8 +48,7 @@ source=("https://github.com/brave/brave-browser/archive/v${pkgver}.tar.gz"
         'brave-launcher'
         'brave-browser.desktop'
         "chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz"
-        "https://github.com/stha09/chromium-patches/releases/download/${patchset_name}/${patchset_name}.tar.xz"
-        'brave-custom-build.patch')
+        "https://github.com/stha09/chromium-patches/releases/download/${patchset_name}/${patchset_name}.tar.xz")
 arch_revision=4332a9b5a5f7e1d5ec8e95ee51581c3e55450f41
 for Patches in \
 	subpixel-anti-aliasing-in-FreeType-2.8.1.patch
@@ -65,7 +64,6 @@ sha256sums=('e7623d84f0bf1f4a17bd54d2cba609b64e7fb40915b6fd5abf6483cc7ecedab2'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'e5a60a4c9d0544d3321cc241b4c7bd4adb0a885f090c6c6c21581eac8e3b4ba9'
-            'f206177b78f42bd2b5e28bf13ffacf9e555914ca6f7b65f0e15781712825c0b8'
             '1e2913e21c491d546e05f9b4edf5a6c7a22d89ed0b36ef692ca6272bcd5faec6')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -96,6 +94,12 @@ _unwanted_bundled_libs=(
 # Add depends if user wants a release with custom cflags and system libs
 if [ "$COMPONENT" = "4" ]; then
   #echo "Build with system libs is disabled for now" && exit 1
+  brave_base_ver="$(echo $pkgver | cut -d . -f 1-2)"
+  brave_patchset="1"
+  brave_patchset_name="brave-${brave_base_ver}-patches-${brave_patchset}"
+  source+=("https://gitlab.com/hadogenes/brave-patches/-/archive/${brave_patchset_name}/brave-patches-${brave_patchset_name}.zip")
+  sha256sums+=("bd111797dc8a769a546612ab37c81983c4c4f8c04f83e707af7676e8fded45ff")
+
   depends+=('libpulse' 'pciutils')
   depends+=(${_system_libs[@]})
   makedepends+=('lld' 'libva' 'libpipewire02' 'python2-xcb-proto')
@@ -150,7 +154,9 @@ prepare() {
         tools/generate_shim_headers/generate_shim_headers.py
 
     msg2 "Add patches for custom build"
-    patch -Np1 -i "$srcdir/brave-custom-build.patch"
+    for _patch in "$srcdir/brave-patches-$brave_patchset_name"/*.patch; do
+        patch -Np1 -i "$_patch"
+    done
 
     # Remove bundled libraries for which we will use the system copies; this
     # *should* do what the remove_bundled_libraries.py script does, with the
