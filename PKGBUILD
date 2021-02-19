@@ -1,7 +1,7 @@
 # Maintainer: MonstrousOgre <monstrousogre0813@gmail.com>
 
 pkgname=zsh-vi-mode
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A better and friendly vi(vim) mode plugin for ZSH"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/jeffreytse/zsh-vi-mode"
 license=('MIT')
 depends=('zsh')
 source=("https://github.com/jeffreytse/zsh-vi-mode/archive/v$pkgver.tar.gz")
-sha256sums=('d899f575a97390444cda50be01091cf6645ab8e03fc0a8e22ced65d403ee0474')
+sha256sums=('cbcd36ada69d51f12618a28f41c512564aefebb8ad9857e5f3d579c60272818f')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver/"
