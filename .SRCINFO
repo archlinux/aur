@@ -1,6 +1,6 @@
 pkgbase = liquidctl-git
 	pkgdesc = Cross-platform tool and drivers for liquid coolers and other devices
-	pkgver = 1.5.0.r14.456f6d7
+	pkgver = 1.5.1.r121.486c8ca
 	pkgrel = 1
 	url = https://github.com/liquidctl/liquidctl
 	arch = any
@@ -19,4 +19,3 @@ pkgbase = liquidctl-git
 	sha256sums = SKIP
 
 pkgname = liquidctl-git
-
