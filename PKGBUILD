@@ -1,16 +1,16 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=python-bus
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="Python 3 module for bus"
 arch=(i686 x86_64)
 url="https://github.com/maandree/python-bus"
-license=('MIT')
+license=('custom:ISC')
 depends=(bus python)
 makedepends=(cython)
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=(f29d142b25b174831ba678976264c8fa3cb444e3de542491f30f56c889a1fc60)
+sha256sums=(fd4325d226b94ce08095bef56a86b5b2a0b639f8d8e4b315a717f84e1de9f7f1)
 
 
 build() {
