@@ -2,7 +2,7 @@
 # Contributor: Sébastien Luttringer
 
 pkgname=drbd-utils
-pkgver=9.11.0
+pkgver=9.16.0
 pkgrel=1
 arch=('x86_64')
 pkgdesc='Userland tools for Distributed Replicated Block Device'
@@ -14,7 +14,7 @@ conflicts=('drbd')
 replaces=('drbd')
 source=(http://www.linbit.com/downloads/drbd/utils/drbd-utils-$pkgver.tar.gz)
 backup=('etc/drbd.conf' 'etc/drbd.d/global_common.conf')
-md5sums=('b5707e9e5140bc661da38a5fac8f9817')
+md5sums=('b0b7a94b7f3e4127f1e31405ecf01932')
 
 build() {
   cd $pkgname-$pkgver
@@ -32,6 +32,7 @@ build() {
     --without-pacemaker \
     --without-heartbeat \
     --without-83support \
+    --without-manual \
     --without-xen
   make
 }
