@@ -44,7 +44,7 @@ _minimal=false
 _uber_minimal=false
 
 if [[ -z ${startdir} ]]; then
-  _building=false;
+  _building=false
 fi
 
 if [[ -f build-from-local-src-tree  ]]; then
@@ -118,10 +118,10 @@ fi
 # vars
 _local_qt5_repo="${local_qt5_repo}"
 #_pkgvermajmin="5.15"
-_pkgvermajmin="6.0"
+_pkgvermajmin="6.1"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
-_dev_suffix=""
+_dev_suffix="alpha"
 pkgrel=3
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_local_src_tree && pkgver=6.6.6
@@ -252,7 +252,7 @@ _core_configure_options=" \
                  -reduce-exports \
         "
 
-_tar_xz_sha256="d39a1a557a0dc8dc5ea2eaaee0fa015c71dcbb79c25a6aea421c594227565296"
+_tar_xz_sha256="e5d17a723bf75d8d6803047a0f42be33bc4c3f64dd5572c4deb8858928d81f1e"
 
 source=("git://github.com/sirspudd/mkspecs.git")
 sha256sums=("SKIP")
@@ -260,6 +260,7 @@ sha256sums=("SKIP")
 if ! $_build_from_local_src_tree; then
   source+=("${_provider}/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.tar.xz")
   sha256sums+=("$_tar_xz_sha256")
+  #if $_building; then echo ${source[@]}; fi
 fi
 
 options=('!strip')
