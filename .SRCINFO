@@ -1,14 +1,14 @@
 pkgbase = opensmtpd-filter-replace-from_reply
 	pkgdesc = This is a simple OpenSMTPD filter for overwriting the email address in the MAIL FROM command, in the header in all sent messages, as well as for substituting the original MAIL FROM address in the Reply-To field
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = https://github.com/Genues/opensmtpd-filter-replace-from_reply/archive/main.zip
-	sha512sums = SKIP
+	source = https://github.com/Genues/opensmtpd-filter-replace-from_reply/archive/1.0.3.zip
+	md5sums = d4ca82486a20fbbc319bd2379e25e68b
 
 pkgname = opensmtpd-filter-replace-from_reply
 
