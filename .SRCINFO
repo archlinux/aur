@@ -1,0 +1,16 @@
+pkgbase = tinance
+	pkgdesc = Track your favorite cryptocurrency from terminal!
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/panlazy/tinance
+	arch = any
+	license = GPL3
+	makedepends = npm
+	depends = nodejs
+	depends = jq
+	noextract = tinance-0.0.4.tgz
+	source = https://registry.npmjs.org/tinance/-/tinance-0.0.4.tgz
+	md5sums = a6abb5638e595f92a3083811ec101d17
+
+pkgname = tinance
+
