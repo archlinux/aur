@@ -32,7 +32,7 @@ package() {
     cp -r $srcdir/dirb-debian-2.22-0kali3/wordlists/* $pkgdir/usr/share/wordlists/dirb
     install -Dm644 $srcdir/dirb-debian-2.22-0kali3/LICENSE.txt $pkgdir/usr/share/licenses/dirb/LICENSE
     mkdir -p $pkgdir/usr/share/wordlists/wfuzz
-    cp -r $srcdir/wfuzz-3.1.0/wordlists/* $pkgdir/usr/share/wordlists/wfuzz
+    cp -r $srcdir/wfuzz-3.1.0/wordlist/* $pkgdir/usr/share/wordlists/wfuzz
     install -Dm644 $srcdir/wfuzz-3.1.0/LICENSE $pkgdir/usr/share/licenses/wfuzz/LICENSE
     mkdir -p $pkgdir/usr/share/wordlists/seclists
     cp -r $( find $srcdir/SecLists-2021.1/* -type d -maxdepth 0) $pkgdir/usr/share/wordlists/seclists
