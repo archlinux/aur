@@ -3,8 +3,8 @@
 
 pkgname=xmind-2020
 # the versin is from deb package
-pkgver=10.2.1
-pkgrel=3
+pkgver=10.3.1
+pkgrel=0
 pkgdesc="XMind - The most popular mind mapping software"
 arch=("x86_64")
 url="https://www.xmind.net/"
@@ -12,7 +12,7 @@ license=('custom')
 depends=('libxss' 'nss' 'libxtst' 'alsa-lib' 'gtk3')
 provides=('xmind' "$pkgname")
 conflicts=("$pkgname")
-source=("https://dl3.xmind.net/XMind-2020-for-Linux-amd-64bit-$pkgver-202008051959.deb"
+source=("https://dl3.xmind.net/XMind-2020-for-Linux-amd-64bit-$pkgver-202101132117.deb"
         'xmind-2020.xml')
 
 sha256sums=('SKIP'
@@ -31,6 +31,7 @@ package() {
     mkdir -p ${pkgdir}/usr/share/mime/packages
     install -Dm644 xmind-2020.xml ${pkgdir}/usr/share/mime/packages/
 
+    sed -i 's/Name=XMind/Name=XMind-2020/g' ${pkgdir}"/usr/share/applications/xmind.desktop"
     mv ${pkgdir}"/usr/share/applications/xmind.desktop" ${pkgdir}"/usr/share/applications/xmind-2020.desktop"
 
     mkdir -p ${pkgdir}/usr/share/licenses/xmind-2020
