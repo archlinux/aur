@@ -8,7 +8,7 @@ pkgdesc="Universal Binaries Powered by WebAssembly"
 arch=('x86_64')
 url="https://github.com/wasmerio/wasmer"
 license=(MIT)
-depends=('gcc-libs')
+depends=('libffi' 'zlib' 'ncurses')
 makedepends=('rust' 'cmake' 'python' 'libxkbcommon' 'llvm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wasmerio/wasmer/archive/${pkgver}.tar.gz")
 sha512sums=('f8058cbd5a8a807cd84b4a839c87ff76dae5475c655e804b27262cd5cb22ddb6c43da3a01b6cdbed29502afc38aa9ee589022f67fab27b189453f2500478c4a9')
@@ -37,7 +37,7 @@ package() {
   done
 
   install -Dm755 target/release/libwasmer_c_api.so "$pkgdir/usr/lib/libwasmer.so.$pkgver"
-  install -Dm755 target/release/libwasmer_c_api.a "$pkgdir/usr/lib/libwasmer.a"
+  install -Dm644 target/release/libwasmer_c_api.a "$pkgdir/usr/lib/libwasmer.a"
   local _shortver="${pkgver%.*}"
   local _majorver="${_shortver%.*}"
   ln -s "libwasmer.so.$pkgver" "$pkgdir/usr/lib/libwasmer.so.$_shortver"
