@@ -1,7 +1,7 @@
 # Maintainer: snafu
 pkgname=env-modules
-pkgver=4.5.3
-pkgrel=2
+pkgver=4.7.0
+pkgrel=1
 epoch=
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ changelog=
 source=("https://sourceforge.net/projects/modules/files/Modules/modules-$pkgver/modules-$pkgver.tar.gz")
 noextract=()
 validpgpkeys=()
-md5sums=('ba9c8262d0b4581dbe5a6cf90b1e3db7')
+md5sums=('24e39071a94b52cd6d09d65601519ebf')
 
 # Install locations:
 install_prefix=/usr
