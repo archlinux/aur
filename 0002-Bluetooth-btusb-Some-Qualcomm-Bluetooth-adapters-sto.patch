@@ -1,0 +1,51 @@
+From 66b6d6c8306329134abeeb26d352f2074b2f0e1e Mon Sep 17 00:00:00 2001
+From: Hui Wang <hui.wang@canonical.com>
+Date: Mon, 8 Feb 2021 13:02:37 +0800
+Subject: [PATCH 2/5] Bluetooth: btusb: Some Qualcomm Bluetooth adapters stop
+ working
+
+This issue starts from linux-5.10-rc1, I reproduced this issue on my
+Dell Inspiron 7447 with BT adapter 0cf3:e005, the kernel will print
+out: "Bluetooth: hci0: don't support firmware rome 0x31010000", and
+someone else also reported the similar issue to bugzilla #211571.
+
+I found this is a regression introduced by 'commit b40f58b97386
+("Bluetooth: btusb: Add Qualcomm Bluetooth SoC WCN6855 support"), the
+patch assumed that if high ROM version is not zero, it is an adapter
+on WCN6855, but many old adapters don't need to load rampatch or nvm,
+and they have non-zero high ROM version.
+
+To fix it, let the driver match the rom_version in the
+qca_devices_table first, if there is no entry matched, check the
+high ROM version, if it is not zero, we assume this adapter is ready
+to work and no need to load rampatch and nvm like previously.
+
+BugLink: https://bugzilla.kernel.org/show_bug.cgi?id=211571
+Fixes: b40f58b97386 ("Bluetooth: btusb: Add Qualcomm Bluetooth SoC WCN6855 support")
+Signed-off-by: Hui Wang <hui.wang@canonical.com>
+Signed-off-by: Marcel Holtmann <marcel@holtmann.org>
+---
+ drivers/bluetooth/btusb.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 03b83aa91277..32161dd40ed6 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -4069,6 +4069,13 @@ static int btusb_setup_qca(struct hci_dev *hdev)
+ 			info = &qca_devices_table[i];
+ 	}
+ 	if (!info) {
++		/* If the rom_version is not matched in the qca_devices_table
++		 * and the high ROM version is not zero, we assume this chip no
++		 * need to load the rampatch and nvm.
++		 */
++		if (ver_rom & ~0xffffU)
++			return 0;
++
+ 		bt_dev_err(hdev, "don't support firmware rome 0x%x", ver_rom);
+ 		return -ENODEV;
+ 	}
+-- 
+2.30.1
+
