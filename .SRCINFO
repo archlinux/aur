@@ -1,6 +1,6 @@
 pkgbase = lib32-pipewire-git
-	pkgdesc = Server and user space API to deal with multimedia pipelines (git) (32 bit client libraries)
-	pkgver = 0.3.21.r117.gb17fe4ab
+	pkgdesc = Low-latency audio/video router and processor (git) (32 bit client libraries)
+	pkgver = 0.3.22.r12.g84fc63e6
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -17,19 +17,15 @@ pkgbase = lib32-pipewire-git
 	makedepends = gst-plugins-base
 	makedepends = lib32-gst-plugins-base
 	makedepends = rtkit
-	makedepends = vulkan-icd-loader
-	makedepends = lib32-vulkan-icd-loader
 	makedepends = dbus
 	makedepends = lib32-dbus
 	makedepends = libsndfile
 	makedepends = lib32-libsndfile
-	makedepends = vulkan-headers
 	source = git+https://gitlab.freedesktop.org/pipewire/pipewire.git
 	md5sums = SKIP
 
 pkgname = lib32-pipewire-git
 	depends = rtkit
-	depends = lib32-vulkan-icd-loader
 	depends = lib32-dbus
 	depends = lib32-libsndfile
 	depends = lib32-libudev0-shim
@@ -40,9 +36,9 @@ pkgname = lib32-pipewire-git
 	conflicts = lib32-pipewire
 
 pkgname = lib32-pipewire-jack-git
-	pkgdesc = Server and user space API to deal with multimedia pipelines (git) (32 bit client libraries) (JACK support) (git) (32 bit)
+	pkgdesc = Low-latency audio/video router and processor (git) (32 bit client libraries) (JACK support) (git) (32 bit)
 	depends = lib32-pipewire
-	depends = lib32-pipewire-git=0.3.21.r117.gb17fe4ab
+	depends = lib32-pipewire-git=0.3.22.r12.g84fc63e6
 	depends = lib32-jack2
 	provides = lib32-pipewire-jack
 	conflicts = lib32-pipewire-jack
@@ -50,7 +46,7 @@ pkgname = lib32-pipewire-jack-git
 pkgname = lib32-gst-plugin-pipewire-git
 	pkgdesc = Multimedia graph framework - pipewire plugin (git) (32 bit)
 	depends = lib32-pipewire
-	depends = lib32-pipewire-git=0.3.21.r117.gb17fe4ab
+	depends = lib32-pipewire-git=0.3.22.r12.g84fc63e6
 	depends = lib32-gst-plugins-base-libs
 	provides = lib32-gst-plugin-pipewire
 	conflicts = lib32-gst-plugin-pipewire

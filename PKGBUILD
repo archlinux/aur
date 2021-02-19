@@ -6,16 +6,15 @@
 pkgbase=lib32-pipewire-git
 _pkgbase=pipewire
 pkgname=(lib32-pipewire-git lib32-pipewire-jack-git lib32-gst-plugin-pipewire-git)
-pkgver=0.3.21.r117.gb17fe4ab
+pkgver=0.3.22.r12.g84fc63e6
 pkgrel=1
-pkgdesc='Server and user space API to deal with multimedia pipelines (git) (32 bit client libraries)'
+pkgdesc='Low-latency audio/video router and processor (git) (32 bit client libraries)'
 url=https://pipewire.org
 license=(LGPL2.1)
 arch=(x86_64)
 makedepends=(git meson valgrind jack2 lib32-jack2 libpulse lib32-libpulse
              alsa-lib lib32-alsa-lib gst-plugins-base lib32-gst-plugins-base
-             rtkit vulkan-icd-loader lib32-vulkan-icd-loader dbus lib32-dbus
-             libsndfile lib32-libsndfile vulkan-headers)
+             rtkit dbus lib32-dbus libsndfile lib32-libsndfile)
 source=(git+https://gitlab.freedesktop.org/pipewire/pipewire.git)
 md5sums=('SKIP')
 
@@ -52,9 +51,8 @@ _ver=${pkgver:0:3}
 _spaver="0.2"
 
 package_lib32-pipewire-git() {
-    depends=(rtkit lib32-vulkan-icd-loader
-        lib32-dbus lib32-libsndfile lib32-libudev0-shim lib32-alsa-lib
-        lib32-systemd)
+    depends=(rtkit lib32-dbus lib32-libsndfile lib32-libudev0-shim
+        lib32-alsa-lib lib32-systemd)
     optdepends=('lib32-pipewire-jack: JACK support')
     provides=(lib32-pipewire)
     conflicts=(lib32-pipewire)
