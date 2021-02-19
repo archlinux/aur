@@ -2,3 +2,4 @@ src/*
 pkg/*
 auto-ytdl-git/*
 *.tar.gz*
+*.tar.zst*

@@ -2,7 +2,7 @@
 
 pkgname='auto-ytdl-git'
 pkgdesc='A youtube-dl wrapper with automatisation features. Run from terminal: aytdl'
-pkgver=1.2.5.r1.gb4b3d69
+pkgver=1.3.0.r2.g9bc4ca2
 pkgrel=1
 arch=('any')
 url='https://github.com/michaelb/auto-ytdl'
