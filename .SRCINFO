@@ -1,6 +1,6 @@
 pkgbase = python-dcm2bids
 	pkgdesc = Reorganising NIfTI files from dcm2niix into the Brain Imaging Data Structure
-	pkgver = 2.1.4
+	pkgver = 2.1.5
 	pkgrel = 1
 	url = https://github.com/cbedetti/Dcm2Bids
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-dcm2bids
 	makedepends = python-setuptools
 	depends = dcm2niix
 	options = !emptydirs
-	source = dcm2bids-2.1.4.tar.gz::https://github.com/cbedetti/Dcm2Bids/archive/2.1.4.tar.gz
-	sha256sums = b702da2988734a6506310bf1a530d631b2e528df5373368e476f780acd7bc9ab
+	source = dcm2bids-2.1.5.tar.gz::https://github.com/cbedetti/Dcm2Bids/archive/2.1.5.tar.gz
+	sha256sums = 1e7aa83c91faf0da6277938f2388a5a24795345b010e8b6e7cab24005ab51a15
 
 pkgname = python-dcm2bids
 
