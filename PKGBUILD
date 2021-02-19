@@ -2,7 +2,7 @@
 
 pkgname=wordlists
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Download a great set of wordlists. In /usr/share/wordlists"
 url="https://github.com/5amu/wordlists"
 license=('MIT' 'GPLv2')
@@ -30,7 +30,7 @@ package() {
     # No license here
     mkdir -p $pkgdir/usr/share/wordlists/dirb
     cp -r $srcdir/dirb-debian-2.22-0kali3/wordlists/* $pkgdir/usr/share/wordlists/dirb
-    install -Dm644 $srcdir/dirb-debian-2.22-0kali3/wordlists/LICENSE.txt $pkgdir/usr/share/licenses/dirb/LICENSE
+    install -Dm644 $srcdir/dirb-debian-2.22-0kali3/LICENSE.txt $pkgdir/usr/share/licenses/dirb/LICENSE
     mkdir -p $pkgdir/usr/share/wordlists/wfuzz
     cp -r $srcdir/wfuzz-3.1.0/wordlists/* $pkgdir/usr/share/wordlists/wfuzz
     install -Dm644 $srcdir/wfuzz-3.1.0/LICENSE $pkgdir/usr/share/licenses/wfuzz/LICENSE
