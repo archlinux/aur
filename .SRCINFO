@@ -1,6 +1,6 @@
 pkgbase = ualsv
 	pkgdesc = Useful Arch Linux Script Vault
-	pkgver = 1.7
+	pkgver = 1.7.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/BiteDasher/ualsv
@@ -19,8 +19,8 @@ pkgbase = ualsv
 	depends = sudo
 	depends = yay
 	depends = patch
-	source = ualsv-1.7::https://github.com/BiteDasher/ualsv/archive/1.7.tar.gz
-	sha512sums = a54e79b91d63313f94f59cff0f826882c7aea245b8dab27dd8b9565d2033943995e7fc309e33764f4029f6470ded56c531ef7a598c3adfbb5410910aa173a9a8
+	source = ualsv-1.7.1::https://github.com/BiteDasher/ualsv/archive/1.7.1.tar.gz
+	sha512sums = 123c5331ec6a2a31d3e6fe45c7dc69b8225d1c32bfe0969ae0c1d423825f99ca12795911a80076f1b8a7f422327c6968b32ca1b63fc36876bd1b7535d7efa702
 
 pkgname = ualsv
 
