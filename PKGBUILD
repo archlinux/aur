@@ -1,6 +1,6 @@
 pkgname=google-calendar-nativefier
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Electron wrapper for the Google Calendar web application"
 arch=(x86_64)
 license=(MIT)
