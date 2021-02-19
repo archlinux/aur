@@ -12,13 +12,8 @@ pkgbase = fnott
 	makedepends = wayland-protocols
 	makedepends = tllist>=1.0.1
 	depends = dbus
-	depends = fontconfig
-	depends = freetype2
-	depends = pixman
-	depends = libpng
-	depends = wayland
-	depends = wlroots
 	depends = fcft
+	depends = wlroots
 	source = fnott-1.0.1.tar.gz::https://codeberg.org/dnkl/fnott/archive/1.0.1.tar.gz
 	sha512sums = 5f8c3ba29af792875b0ac2e585cfebd453c92be064711b9d82a5cf6249fccda2cdeacc2a96b0b8b4a485590f10255d3e257339d85c99cccc3158ebc516959f22
 
