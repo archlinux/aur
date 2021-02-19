@@ -2,7 +2,7 @@
 
 pybase=(pypylon)
 pkgname=(python-pypylon)
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="The official python wrapper for the Basler pylon Camera Software Suite."
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python' 'python-setuptools' 'pylon')
 
 source=("${url}/archive/${pkgver}.tar.gz")
 
-sha256sums=('73f6bd93b386956405b23f613deda6c35d123b919cb81ca0616519ecc9159d3d')
+sha256sums=('efaec0f2ee52e01beab37d8a36cde5e9710038a503b192e309a7d8ddad6865f0')
 
 build()
 {
