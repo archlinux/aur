@@ -1,7 +1,7 @@
 # Maintainer: Kitsu mail@kitsu.me
 pkgname=yofi-git
-pkgver=0.1.0.5387c5f
-pkgrel=2
+pkgver=0.1.3.r30.g39c828d
+pkgrel=1
 pkgdesc="Minimalistic menu for Wayland-based compositors"
 arch=('i686' 'x86_64')
 url="https://github.com/l4l/yofi"
@@ -13,8 +13,8 @@ source=("$pkgname::git+https://github.com/l4l/yofi.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "0.1.0.%s" "$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
