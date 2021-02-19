@@ -4,20 +4,20 @@
 
 _pkgbase=pipewire
 pkgbase=pipewire-full-git
-pkgname=(pipewire-full-git pipewire-full-docs-git pipewire-full-jack-git
-         pipewire-full-pulse-git pipewire-full-alsa-git
+pkgname=(pipewire-full-git pipewire-full-docs-git pipewire-full-alsa-git
+         pipewire-full-jack-git pipewire-full-pulse-git
          gst-plugin-pipewire-full-git
          pipewire-full-vulkan-git pipewire-full-ffmpeg-git
          pipewire-full-bluez5-git pipewire-full-bluez5-hsphfpd-git)
-pkgver=0.3.22.r7.ga22602f4
+pkgver=0.3.22.r12.g84fc63e6
 pkgrel=1
-pkgdesc="Server and user space API to deal with multimedia pipelines"
+pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 license=(MIT)
 arch=(x86_64)
 makedepends=(git meson doxygen graphviz xmltoman jack2
              alsa-lib gst-plugins-base-libs sbc rtkit vulkan-icd-loader dbus
-             sdl2 ncurses libsndfile bluez-libs vulkan-headers libldac 
+             sdl2 ncurses libsndfile bluez-libs vulkan-headers libldac
              libopenaptx libfdk-aac ffmpeg)
 source=("git+https://gitlab.freedesktop.org/pipewire/pipewire.git")
 sha256sums=('SKIP')
@@ -33,7 +33,7 @@ prepare() {
 
 build() {
   # make AUR helper happy
-  rm -rf build
+  rm -rf build || true
   arch-meson $_pkgbase build \
     -D docs=true \
     -D vulkan=true \
@@ -75,7 +75,7 @@ package_pipewire-full-git() {
               'pipewire-full-bluez5-hsphfpd-git: Bluetooth audio support (using hsphfpd for HSP/HFP support)')
   provides=(pipewire alsa-card-profiles libpipewire-$_ver.so)
   conflicts=(pipewire alsa-card-profiles)
-  backup=(etc/pipewire/{client-rt,client,pipewire}.conf
+  backup=(etc/pipewire/{pipewire{,-pulse},client{,-rt}}.conf
           etc/pipewire/media-session.d/media-session.conf
           etc/pipewire/media-session.d/{alsa,bluez,v4l2}-monitor.conf)
   install=pipewire.install
@@ -107,13 +107,11 @@ package_pipewire-full-git() {
 
   _pick docs usr/share/doc
 
-  _pick jack etc/pipewire/jack.conf
-  _pick jack etc/pipewire/media-session.d/with-jack
+  _pick jack etc/pipewire/{jack.conf,media-session.d/with-jack}
   _pick jack usr/bin/pw-jack usr/lib/pipewire-$_ver/jack
   _pick jack usr/lib/spa-0.2/jack
   _pick jack usr/share/man/man1/pw-jack.1
 
-  _pick pulse etc/pipewire/pipewire-pulse.conf
   _pick pulse etc/pipewire/media-session.d/with-pulseaudio
 
   _pick gst usr/lib/gstreamer-1.0
@@ -126,12 +124,24 @@ package_pipewire-full-git() {
 package_pipewire-full-docs-git() {
   provides=(pipewire-docs)
   conflicts=(pipewire-docs)
-  pkgdesc+=" (documentation)"
+  pkgdesc+=" - documentation"
   mv docs/* "$pkgdir"
 }
 
+package_pipewire-full-alsa-git() {
+  pkgdesc=" - ALSA configuration"
+  depends=(pipewire-full-git)
+  provides=(pipewire-alsa pulseaudio-alsa)
+  conflicts=(pipewire-alsa)
+
+  mkdir -p "$pkgdir/etc/alsa/conf.d"
+  ln -st "$pkgdir/etc/alsa/conf.d" \
+    /usr/share/alsa/alsa.conf.d/{50-pipewire,99-pipewire-default}.conf
+  install -Dm644 /dev/null "$pkgdir/etc/pipewire/media-session.d/with-alsa"
+}
+
 package_pipewire-full-jack-git() {
-  pkgdesc+=" (JACK support)"
+  pkgdesc+=" - JACK support"
   depends=(pipewire-full-git libpipewire-$_ver.so bash libjack.so)
   provides=(pipewire-jack)
   conflicts=(pipewire-jack)
@@ -140,25 +150,12 @@ package_pipewire-full-jack-git() {
 }
 
 package_pipewire-full-pulse-git() {
-  pkgdesc+=" (PulseAudio replacement)"
+  pkgdesc+=" - PulseAudio replacement"
   depends=(pipewire-full-git pipewire-bluez5 libpulse)
   provides=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
   conflicts=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
   install=pipewire-pulse.install
-  backup=(etc/pipewire/pipewire-pulse.conf)
   mv pulse/* "$pkgdir"
-}
-
-package_pipewire-full-alsa-git() {
-  pkgdesc="ALSA Configuration for PipeWire"
-  depends=(pipewire-full-git libpipewire-$_ver.so)
-  provides=(pipewire-alsa pulseaudio-alsa)
-  conflicts=(pipewire-alsa)
-
-  mkdir -p "$pkgdir"/etc/{alsa/conf.d,pipewire/media-session.d}
-  ln -st "$pkgdir/etc/alsa/conf.d" \
-    /usr/share/alsa/alsa.conf.d/{50-pipewire,99-pipewire-default}.conf
-  touch "$pkgdir/etc/pipewire/media-session.d/with-alsa"
 }
 
 package_gst-plugin-pipewire-full-git() {
@@ -170,25 +167,26 @@ package_gst-plugin-pipewire-full-git() {
 }
 
 package_pipewire-full-vulkan-git() {
-  pkgdesc+=" (Vulkan SPA plugin)"
-  depends=(pipewire-full-git libpipewire-$_ver.so vulkan-icd-loader)
+  pkgdesc="Vulkan SPA plugin"
+  depends=(vulkan-icd-loader)
   provides=(pipewire-vulkan)
   conflicts=(pipewire-vulkan)
   mv vulkan/* "${pkgdir}"
 }
 
 package_pipewire-full-ffmpeg-git() {
-  pkgdesc+=" (FFmpeg SPA plugin)"
-  depends=(pipewire-full-git libpipewire-$_ver.so libavcodec.so libavformat.so)
+  pkgdesc="FFmpeg SPA plugin"
+  depends=(libavcodec.so libavformat.so)
   provides=(pipewire-ffmpeg)
   conflicts=(pipewire-ffmpeg)
   mv ffmpeg/* "${pkgdir}"
 }
 
 package_pipewire-full-bluez5-git() {
-  pkgdesc+=" (BlueZ 5 SPA plugin)"
-  depends=(pipewire-full-git libpipewire-$_ver.so bluez-libs sbc
-           libdbus-1.so libldacBT_enc.so libopenaptx.so libfdk-aac.so)
+  pkgdesc+=" - BlueZ 5 SPA plugin"
+  depends=(pipewire-full-git
+           libdbus-1.so libbluetooth.so libsbc.so
+           libldacBT_enc.so libopenaptx.so libfdk-aac.so)
   optdepends=('ofono: HFP support')
   provides=(pipewire-bluez5)
   conflicts=(pipewire-bluez5)
@@ -196,9 +194,10 @@ package_pipewire-full-bluez5-git() {
 }
 
 package_pipewire-full-bluez5-hsphfpd-git() {
-  pkgdesc+=" (BlueZ 5 SPA plugin, using hsphfpd for HSP/HFP support)"
-  depends=(pipewire-full-git libpipewire-$_ver.so bluez-libs sbc hsphfpd
-           libdbus-1.so libldacBT_enc.so libopenaptx.so libfdk-aac.so)
+  pkgdesc+=" - BlueZ 5 SPA plugin, using hsphfpd for HSP/HFP support"
+  depends=(pipewire-full-git hsphfpd
+           libdbus-1.so libbluetooth.so libsbc.so
+           libldacBT_enc.so libopenaptx.so libfdk-aac.so)
   provides=(pipewire-bluez5)
   conflicts=(pipewire-bluez5)
   mv bluez5-hsphfpd/* "${pkgdir}"
