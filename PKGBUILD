@@ -2,7 +2,7 @@
 
 pkgname=wordlists
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Download a great set of wordlists. In /usr/share/wordlists"
 url="https://github.com/5amu/wordlists"
 license=('MIT' 'GPLv2')
