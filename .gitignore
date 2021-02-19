@@ -1,0 +1,7 @@
+# Whitelist
+!PKGBUILD
+!.SRCINFO
+
+# Blacklist
+*
+
