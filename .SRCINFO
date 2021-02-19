@@ -1,6 +1,6 @@
 pkgbase = lib32-pipewire
-	pkgdesc = Server and user space API to deal with multimedia pipelines (32-bit client libraries)
-	pkgver = 0.3.21
+	pkgdesc = Low-latency audio/video router and processor (32-bit client libraries)
+	pkgver = 0.3.22
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -19,18 +19,14 @@ pkgbase = lib32-pipewire
 	makedepends = gst-plugins-base
 	makedepends = lib32-gst-plugins-base
 	makedepends = rtkit
-	makedepends = vulkan-icd-loader
-	makedepends = lib32-vulkan-icd-loader
 	makedepends = lib32-dbus
 	makedepends = libsndfile
 	makedepends = lib32-libsndfile
-	makedepends = vulkan-headers
-	source = git+https://github.com/PipeWire/pipewire#commit=885748dfbd82985abbe396cb3272264ea2e0d163
+	source = git+https://github.com/PipeWire/pipewire#commit=22d563720a7f6ba7bdf59950f8c14488d80dfa95
 	sha256sums = SKIP
 
 pkgname = lib32-pipewire
 	depends = rtkit
-	depends = lib32-vulkan-icd-loader
 	depends = alsa-card-profiles
 	depends = lib32-dbus
 	depends = lib32-libsndfile
@@ -41,12 +37,12 @@ pkgname = lib32-pipewire
 	optdepends = lib32-pipewire-jack: JACK support
 
 pkgname = lib32-pipewire-jack
-	pkgdesc = Server and user space API to deal with multimedia pipelines (32-bit client libraries) (JACK support)
-	depends = lib32-pipewire=0.3.21
+	pkgdesc = Low-latency audio/video router and processor (32-bit client libraries) (JACK support)
+	depends = lib32-pipewire=0.3.22
 	depends = lib32-jack2
 
 pkgname = lib32-gst-plugin-pipewire
 	pkgdesc = Multimedia graph framework - pipewire plugin (32-bit version)
-	depends = lib32-pipewire=0.3.21
+	depends = lib32-pipewire=0.3.22
 	depends = lib32-gst-plugins-base-libs
 
