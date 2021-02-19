@@ -1,10 +1,10 @@
 pkgbase = python-omr
-	pkgdesc = Bubble Vision: Optical Mark Reader
+	pkgdesc = Extract answer choices from scanned jpg
 	pkgver = 0.0.73
 	pkgrel = 1
 	url = http://github.com/GregoryCMiller/omr
 	arch = any
-	license = unknown
+	license = MIT
 	makedepends = python-setuptools
 	depends = python
 	depends = python-atomicwrites
