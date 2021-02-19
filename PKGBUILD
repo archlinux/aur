@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-good
-pkgver=1.18.2
+pkgver=1.18.3
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Good Plugins (mingw-w64)"
 arch=(any)
@@ -25,7 +25,7 @@ optdepends=(
 options=('!strip' '!buildflags' 'staticlibs')
 
 source=(${url}src/gst-plugins-good/gst-plugins-good-${pkgver}.tar.xz)
-sha256sums=('f71752dde434d9ec55fa5e8d2e2a3be3fc6eb5b34f397b065f84aead25b449a4')
+sha256sums=('9b3b8e05d4d6073bf929fb33e2d8f74dd81ff21fa5b50c3273c78dfa2ab9c5cb')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
