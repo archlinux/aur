@@ -3,7 +3,7 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl
-pkgver=20.11.3.1
+pkgver=20.11.4.1
 # Hyphens (-) are prohibited however they are used by the package author
 # therefore it is necessary to invoke ${pkgver} like ${pkgver//./-}
 # this will substitute any full stops (.) with hyphens
@@ -34,17 +34,11 @@ backup=('etc/default/slurm-llnl')
 source=("slurm-llnl.sysusers"
 	"slurm-llnl.tmpfiles"
 	"slurm-llnl-default-conf"
-	"slurmctld.service"
-	"slurmd.service"
-	"slurmdbd.service"
 	"https://github.com/SchedMD/slurm/archive/slurm-${pkgver//./-}.tar.gz")
 sha512sums=('40aa91b02d8839ee94ae106de1ea675b0a79ba533f218afc87e909b5bbd38ce1135f54716094bf9384edc51409bfaeb0b7904cb387cbcbc8ad16befdafb8a5ab'
             '0f1c477be4a06fd6050afd7e4fd7d3524ce4dc9bec4e3f9bbfb0087660a29f76442139b659bc906029757646ac107e521a6b2ba120b5b2db49bc815f501fb581'
             'f74dacaaffa35fa11a62bb9efa492bb4ef9b197748f28c15210f362382da27ec1dd88a57a48fc6807029c93c9033c82e11545ea36622c683ae7bd09970ef8710'
-            'a1c2478a049dc1c024d773a73f363da6c9106d9533137f919394e8213376cb9167c8fcca7b038d1c45c441a1adce4524ccb68b6dd269a1000aba11b84b5352d5'
-            'ae2d0275bc9e0aac15d0d1dd4913b70ed4d4032e76c9c6ffdeae345c55834219f6495429d1d1c9129779221d6d08bada1228ccdb1c671b05d4a92ed6088bf55c'
-            '56459e20d7f2624a8e8dd2982693b257e65df22c3609d991afdc1b2f79adaefc0586a76fd5fdd7dc2bdd39b3af0c91f38ddc4b1139081968903450bc28aca304'
-            '192d308bd2e12fdcc8c9182506e0ab67a2bd9a51c902b02c9bb7d9a0c21c4192f3ec55dd1ccd952e503ebbad671c5d11e00ffe349cd7494cce82b2879ce56656')
+            '8e850557d3677379c69359a93cf3bdf1a03685807c5d74f06783660e5cf61400b5cc235fcb7955e8f93ebb61afa8ebe28a29cefee97630261bf5be87184f0b81')
 
 
 build() {
@@ -95,13 +89,13 @@ package() {
 	install -D -m644 ../slurm-llnl-default-conf "${pkgdir}/etc/default/slurm-llnl"
 
 	# Install init related files
-	install -D -m755 etc/init.d.slurm    "${pkgdir}/etc/rc.d/slurm"
-	install -D -m755 etc/init.d.slurmdbd "${pkgdir}/etc/rc.d/slurmdbd"
+	install -D -m755 etc/init.d.slurm      "${pkgdir}/etc/rc.d/slurm"
+	install -D -m755 etc/init.d.slurmdbd   "${pkgdir}/etc/rc.d/slurmdbd"
+	install -D -m644 etc/slurmctld.service "${pkgdir}/usr/lib/systemd/system/slurmctld.service"
+	install -D -m644 etc/slurmd.service    "${pkgdir}/usr/lib/systemd/system/slurmd.service"
+	install -D -m644 etc/slurmdbd.service  "${pkgdir}/usr/lib/systemd/system/slurmdbd.service"
 
 	# Install SystemD related files
-	install -D -m644 ../slurmctld.service   "${pkgdir}/usr/lib/systemd/system/slurmctld.service"
-	install -D -m644 ../slurmd.service      "${pkgdir}/usr/lib/systemd/system/slurmd.service"
-	install -D -m644 ../slurmdbd.service    "${pkgdir}/usr/lib/systemd/system/slurmdbd.service"
 	install -D -m644 ../slurm-llnl.sysusers "${pkgdir}/usr/lib/sysusers.d/slurm-llnl.conf"
 	install -D -m644 ../slurm-llnl.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/slurm-llnl.conf"
 
