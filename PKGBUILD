@@ -4,7 +4,7 @@ pkgbase=linux-amd-znver2
 _srcname=linux
 gitver=v5.11
 pkgver=5.11.v.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -22,6 +22,8 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 	'5013_enable-cpu-optimizations-for-gcc10.patch'
         # AMDgpu HDMI hotplug patch
         'amdgpu_hdmihotplug.patch'
+	# AMDgpu shutdown patch for renoir
+	'amdgpu_shutdown.patch'
 )
 sha256sums=('SKIP'
             #config.x86_64
@@ -34,6 +36,8 @@ sha256sums=('SKIP'
             '126cd35b1153b69dd8d713f902d09ecc64ce8af2e4fa6f021219a65e62e13875'
             #AMDgpu patch
             'abbb23f55cd25941d5487084c627f601bfa0ca63e329d580cc5a472b4638aeaa'
+            #AMDgpu shutdown patch
+            '33ccd96aa615ad9217032535ab9ad88cb885480d33f172beb466bc81020f88fb'
 )
 
 _kernelname=${pkgbase#linux}
