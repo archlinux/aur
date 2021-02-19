@@ -1,6 +1,6 @@
 pkgbase = nault-bin
 	pkgdesc = Official Nault AppImage client
-	pkgver = 1.9.8
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/Nault/Nault
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = nault-bin
 	conflicts = nault-bin
 	noextract = nault.AppImage
 	options = !strip
-	source = https://github.com/Nault/Nault/releases/download/v1.9.8/Nault-1.9.8-Linux.AppImage
-	sha512sums = 1754779bd309bfb3e1e02efa1a393f1fe4d9c624c65367bfe97729c425eb291f7bf98693f731e9cda4023188969061a86101ee5fd2ff88f5ddbba3d34e5cb644
+	source = https://github.com/Nault/Nault/releases/download/v1.10.0/Nault-1.10.0-Linux.AppImage
+	sha512sums = 2b7dec90f17062d272d1778e2fdf43950374a9caa3342a986f4edf42c7ee92547dbbc237a3ce34f4a5fb5a2283400c2f6124af3032ea86ecdf269647168d04aa
 
 pkgname = nault-bin
 
