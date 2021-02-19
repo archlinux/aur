@@ -1,0 +1,15 @@
+pkgbase = gog-battletech-flashpoint
+	pkgdesc = DLC for the Battletech game.
+	pkgver = 1.9.1.686r
+	pkgrel = 1
+	url = https://www.gog.com/game/battletech_game
+	arch = x86_64
+	license = custom
+	makedepends = p7zip
+	depends = gog-battletech
+	noextract = battletech_flashpoint_1_9_1_686r_36568.sh
+	source = battletech_flashpoint_1_9_1_686r_36568.sh::gog://battletech_flashpoint_1_9_1_686r_36568.sh
+	sha256sums = bd7d890a3b23417c1f19ab9a255c7358efbb65761b164d01861a459a103b94ef
+
+pkgname = gog-battletech-flashpoint
+
