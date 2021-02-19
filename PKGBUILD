@@ -2,7 +2,7 @@
 
 pkgname=wordlists
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Download a great set of wordlists. In /usr/share/wordlists"
 url="https://github.com/5amu/wordlists"
 license=('MIT' 'GPLv2')
@@ -25,12 +25,16 @@ prepare() {
 }
 
 package() {
+    mkdir -p $pkgdir/usr/share/wordlists/dirbuster
     cp -r $srcdir/dirbuster-kali-1.0-1kali4/*.txt $pkgdir/usr/share/wordlists/dirbuster
     # No license here
+    mkdir -p $pkgdir/usr/share/wordlists/dirb
     cp -r $srcdir/dirb-debian-2.22-0kali3/wordlists/* $pkgdir/usr/share/wordlists/dirb
     install -Dm644 $srcdir/dirb-debian-2.22-0kali3/wordlists/LICENSE.txt $pkgdir/usr/share/licenses/dirb/LICENSE
+    mkdir -p $pkgdir/usr/share/wordlists/wfuzz
     cp -r $srcdir/wfuzz-3.1.0/wordlists/* $pkgdir/usr/share/wordlists/wfuzz
     install -Dm644 $srcdir/wfuzz-3.1.0/LICENSE $pkgdir/usr/share/licenses/wfuzz/LICENSE
+    mkdir -p $pkgdir/usr/share/wordlists/seclists
     cp -r $( find $srcdir/SecLists-2021.1/* -type d -maxdepth 0) $pkgdir/usr/share/wordlists/seclists
     install -Dm644 $srcdir/SecLists-2021.1/LICENSE $pkgdir/usr/share/licenses/seclists/LICENSE
     find /usr/share/wordlists -type f -exec chmod 644 \{\} \;
