@@ -1,7 +1,9 @@
+#Maintainer: Dylan Delgado <dylan1496 at live dot com>
+
 pkgname=python-numpy-git
 _pkgname=numpy
 pkgver=v1.21.0.dev0.r814.g740a8cf8c1
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python - git version"
 arch=('x86_64')
 license=('custom:BSD 3-clause')
