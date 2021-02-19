@@ -56,18 +56,18 @@ _BATCH_MODE=n # enable batch mode
 ##
 
 _major=5
-_minor=10
+_minor=11
 #_patchlevel=0
 #_subversion=1
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 pkgbase=linux-pf
-_unpatched_sublevel=15
-_pfrel=12
+_unpatched_sublevel=0
+_pfrel=1
 _kernelname=pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
-_projectcpatchname=prjc_v5.10-r2.patch
+_projectcpatchname=prjc_v5.11-r0.patch
 _CPUSUFFIXES_KBUILD=(
   CORE2 K7 K8 K10 BARCELONA BOBCAT BULLDOZER PILEDRIVER STEAMROLLER MEXCAVATOR ZEN ZEN2 MPSC
   ATOM PENTIUMII PENTIUMIII PENTIUMM PENTIUM4 NEHALEM SANDYBRIDGE
@@ -485,7 +485,7 @@ _package() {
 _package-headers() {
   pkgname=${pkgbase}-headers
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-
+  depends=('pahole')
 
   cd "${srcdir}/${_srcname}"
   local _builddir="${pkgdir}/usr/lib/modules/$(<version)/build"
@@ -658,13 +658,13 @@ eval "package_linux-pf${LCPU+-$LCPU}() {
      }"
 
 
-sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
-            'd3e7adf5fcfc632887058ca84ca7b849a824dda5a03de854c8d3480ef0124ad1'
-            '3f0c21982580955cf2a34d7358c120cc5c665076ace8c300ff9d820ea2b1a646'
+sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
+            'd8d5d11c80424985642b0eea6ace3256b5a1e5e69d637104523460a5ebdda202'
+            '9bcfdcf3a6bcfdf094b69a4857595a2b66f5678af40f12f34ad6fb162a7b9fa5'
             'b6aeb6c460f08443ecce4006d8da83c5f01a224ad2123998ae351b5357286bcd'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            'b00a7c1622b38c25a8d0a82957dd9b2450703628f72c3aefcf51ea2983e81a89'
-            'e308292fc42840a2366280ea7cf26314e92b931bb11f04ad4830276fc0326ee1'
+            'abf080822499c9a725f375d3527bfac508a05cd76ab9fb28705f4dd973a6b5a8'
+            'ad3ff525e9e7cd53e0f9a19350c144398dffa943573b9741f4cdb085b05efffe'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '7908288d8549489d8ac1f7e523cb986c41c8306dbe4946cca890c6fc7c2d260b')
