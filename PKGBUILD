@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=muwire-git
-pkgver=0.7.6.r1.g9acb49c2
+pkgver=0.8.6.r2.gb89bb93c
 pkgrel=1
 pkgdesc='An I2P file sharing program (git version)'
 arch=('any')
@@ -24,6 +24,10 @@ pkgver() {
 
 build() {
     gradle -p muwire clean assemble
+}
+
+check() {
+    gradle -p muwire test
 }
 
 package() {
