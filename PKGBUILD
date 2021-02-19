@@ -9,7 +9,6 @@ provides=('vim-coc-extras-meta')
 conflicts=('vim-coc-extras-meta')
 depends=(vim-coc-highlight-git
          vim-coc-lists-git
-         vim-coc-marketplace-git
          vim-coc-snippets-git
          vim-coc-syntax-git
          vim-coc-tag-git

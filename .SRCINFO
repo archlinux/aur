@@ -6,7 +6,6 @@ pkgbase = vim-coc-extras-meta-git
 	arch = any
 	depends = vim-coc-highlight-git
 	depends = vim-coc-lists-git
-	depends = vim-coc-marketplace-git
 	depends = vim-coc-snippets-git
 	depends = vim-coc-syntax-git
 	depends = vim-coc-tag-git
