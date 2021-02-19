@@ -15,11 +15,15 @@ optdepends=('libieee1284: libcd64 enhancements')
 source=(https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}-src.tar.gz)
 sha256sums=('e814f427a59866e16fe757bf4af51004ac68be29cabd78944590878f1df73f79')
 
-# Apply a minor patch affecting 64-bit systems, the bug of which was found
-# just a few days after the release of 2.2.1. It won't be needed in the next
-# release.
-source+=(https://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgname}-${pkgver}/patches/change_mem2.patch)
-sha256sums+=('65ff85255878e077c2e5fc57565cf0b93833ce8ac03bf81d46ba91ec837accf7')
+# Apply minor patches (which will be included in the next release)
+# change_mem2.patch affects 64-bit systems, the bug of which was found just a 
+# few days after the release of 2.2.1.
+# V64_send_gauge.patch fixes a minor issue with the progressbar when uploading
+# ROMs to the Doctor V64.
+source+=("https://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgname}-${pkgver}/patches/change_mem2.patch"
+         "https://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgname}-${pkgver}/patches/V64_send_gauge.patch")
+sha256sums+=('65ff85255878e077c2e5fc57565cf0b93833ce8ac03bf81d46ba91ec837accf7'
+             'b60a0eb53be238aa8d3a6b33e4708b8a2f953f11603a1a492b8b8b3cfd623d66')
 
 srcroot="${pkgname}-${pkgver}-src/src"
 
@@ -27,8 +31,9 @@ prepare()
 {
     patch -d "${srcdir}" -p2 < ../aur_discmage_path.patch
 
-    # XXX Remember to remove this patch on the next release (>2.2.1)
+    # XXX Remember to remove these patches on the next release (>2.2.1)
     patch -d "${srcdir}" -p0 < change_mem2.patch
+    patch -d "${srcdir}" -p0 < V64_send_gauge.patch
 }
 
 build() 
