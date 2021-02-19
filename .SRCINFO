@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-cartographer-ros-git
 	pkgdesc = ROS - Cartographer is a system that provides real-time simultaneous localization and mapping (SLAM) in 2D and 3D across multiple platforms and sensor configurations.
 	pkgver = r584.151c563
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googlecartographer/cartographer_ros
 	arch = i686
 	arch = x86_64
