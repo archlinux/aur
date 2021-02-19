@@ -3,7 +3,7 @@
 pkgname=whatsapp-for-linux
 pkgver=1.1.2
 pkgrel=0
-pkgdesc="An unofficial WhatsApp linux client desktop application."
+pkgdesc="An unofficial WhatsApp desktop application for linux"
 url="https://github.com/eneshecan/whatsapp-for-linux"
 arch=(x86_64 aarch64)
 license=(GPL)
