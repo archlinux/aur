@@ -1,0 +1,11 @@
+--- onscripter-jh/ONScripter.cpp	2021-02-19 15:33:18.502168570 +0800
++++ onscripter-jh.new/ONScripter.cpp	2021-02-19 15:32:41.522711809 +0800
+@@ -732,7 +732,7 @@
+     SDL_UnlockSurface(accumulation_surface);
+ 
+     screen_dirty_flag = false;
+-    #if defined(ANDROID) || defined(_MSC_VER)   
++    #if defined(ANDROID) || defined(_MSC_VER) || defined(LINUX)  
+         if (compatibilityMode) {
+             SDL_RenderClear(renderer);
+         }

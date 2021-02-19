@@ -1,0 +1,13 @@
+--- onscripter-jh/Makefile.Linux	2021-02-19 15:44:53.765200933 +0800
++++ onscripter-jh.new/Makefile.Linux	2021-02-19 15:47:18.684194416 +0800
+@@ -51,8 +51,8 @@
+ 
+ # optional: lua
+ DEFS += -DUSE_LUA
+-INCS += -I/usr/include/lua
+-LIBS += -llua
++INCS += -I/usr/include/lua5.1
++LIBS += -llua5.1
+ EXT_OBJS += LUAHandler$(OBJSUFFIX)
+ 
+ # optional: SIMD optimizing
