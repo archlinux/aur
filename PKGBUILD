@@ -3,7 +3,7 @@
 
 pkgname=onscripter-jh
 pkgdesc="An optimized SDL2 port of ONScripter, a game scripting engine"
-pkgver=0.7.6
+pkgver=0.7.6.848ebad
 pkgrel=1
 _commit=848ebadd3fd54b2c
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -23,8 +23,9 @@ depends=('sdl2'
          'libjpeg-turbo'
          'bzip2'
          'libvorbis'
-         'lua'
+         'lua51'
          'fontconfig')
+makedepends=('git')
 source=("${pkgname}::git+${url}"
         "display-flash-fix.patch"
         "simd-remove.patch"
@@ -33,6 +34,12 @@ sha256sums=('SKIP'
             'e9ecb802e327de4e8ab81dc84c294f20e629900472d3d4d703ac1e10c418cfff'
             '15f7f0d457618ab86a78ef91495acf544e34eaf6d4fce44e94ed0c7bc72c710b'
             '321776cd8f641f510849edd959ebd0383453a38f1ef8d17c8f36f035f43780cc')
+
+pkgver() {
+  cd ${srcdir}/${pkgname}
+
+  printf "%s.%s" "$(head -n1 version.h | awk '{print $3}' | sed 's|\"||g')" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
   cd ${srcdir}/${pkgname}
