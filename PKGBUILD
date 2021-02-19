@@ -5,7 +5,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=powerstat
-pkgver=0.02.24
+pkgver=0.02.25
 pkgrel=1
 pkgdesc='A tool for measuring a laptops power usage via the battery.'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="http://kernel.ubuntu.com/~cking/powerstat/"
 license=('GPL2')
 depends=('glibc')
 source=("https://kernel.ubuntu.com/~cking/tarballs/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('12781cb108be1fc3be5ec893e6d025bfb40ada060bdc5f7715b65397620f2c7b')
+sha256sums=('0ba3023979c494323af5090b29dd97d922ef79df1c44237443a06152fbeab136')
 
 build() {
   cd $pkgname-$pkgver
