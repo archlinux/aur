@@ -27,7 +27,7 @@ depends=(
 optdepends=(
   # TensorFlow.js requires CUDA 10.0 for GPU support. See:
   # https://github.com/tensorflow/tfjs/blob/master/tfjs-node/README.md#installing.
-  "cuda=10.0: Nvidia GPU support"
+  "cuda=10.0.130: Nvidia GPU support"
   # TensorFlow.js also requires cuDNN for GPU support. See above.
   "cudnn: Nvidia GPU support"
 )
