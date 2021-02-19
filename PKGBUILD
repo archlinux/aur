@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 pkgname=openshadinglanguage-qfix
 pkgver=1.11.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Advanced shading language for production GI renderers (build against opencolorio=2"
 arch=(x86_64)
 url="https://github.com/imageworks/OpenShadingLanguage"
