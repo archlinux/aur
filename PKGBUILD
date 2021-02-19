@@ -1,22 +1,16 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=qed-git
-pkgver=r155.0697882
+pkgver=r163.16a095b
 pkgrel=1
-pkgdesc="UTF8/Unicode-aware port of Rob Pike's QED editor for Unix"
+pkgdesc="UTF-8/Unicode-aware port of Rob Pike's QED editor for Unix"
 arch=('i686' 'x86_64')
 url="https://github.com/phonologus/QED"
 license=('unknown')
-makedepends=('git' 'go-md2man')
+makedepends=('git')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
-
-prepare() {
-	cd "$srcdir/$pkgname/doc"
-	go-md2man -in qed-tutorial.md -out qed-tutorial.1
-	sed -i 's!\(qed-tutorial\.\)html!\11!' ../Makefile
-}
 
 pkgver() {
 	cd "$srcdir/$pkgname"
@@ -33,4 +27,5 @@ package() {
 	make INSTALLD="$pkgdir/usr" install
 	install -D -m644 README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
 	cp --no-preserve=mode -r q doc/historical $pkgdir/usr/share/doc/${pkgname%-*}
+	install -D -m644 doc/qed-tutorial.pdf $pkgdir/usr/share/doc/${pkgname%-*}/qed-tutorial.pdf
 }
