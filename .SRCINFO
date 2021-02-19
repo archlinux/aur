@@ -1,6 +1,6 @@
 pkgbase = obsidian-insider
 	pkgdesc = Obsidian is a powerful knowledge base that works on top of a local folder of plain text Markdown files
-	pkgver = 0.11.0
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://obsidian.md/
 	arch = x86_64
@@ -11,10 +11,12 @@ pkgbase = obsidian-insider
 	depends = electron
 	provides = obsidian
 	options = !strip
+	source = obsidian-insider
 	source = obsidian-insider.desktop
-	source = https://github.com/obsidianmd/obsidian-releases/releases/download/v0.11.0/obsidian-0.11.0.asar.gz
+	source = https://github.com/obsidianmd/obsidian-releases/releases/download/v0.11.2/obsidian-0.11.2.asar.gz
+	sha256sums = 38d18cc7f3c6aacaba37aecb2c27754ad6562be121d23d6eeeeeccfb85234d04
 	sha256sums = 8cd2bac969bf0b394c5766a26985759ec5bc6d6cf5ce0316920dce095d964041
-	sha256sums = 0243f1ed7d3490476cec1d6cc9724f495d7e4c996a43b36747ac3dc121b6051c
+	sha256sums = 7d1aab68c310f2bd607f4f8d0dbdcfe3d7f35cd9852ee3b74d247d10695c5d5d
 
 pkgname = obsidian-insider
 
