@@ -2,7 +2,7 @@
 
 _pkgname=uivonim
 pkgname=${_pkgname}-git
-pkgver=v0.27.0.28.g7188dd7
+pkgver=v0.28.0.24.gd23b6ea
 pkgrel=1
 pkgdesc="A Neovim GUI designed for programming"
 arch=('x86_64')
@@ -26,6 +26,8 @@ pkgver() {
 
 build() {
     cd ${_pkgname}
+    npm ci
+    npm run build
     npm run package
 }
 
