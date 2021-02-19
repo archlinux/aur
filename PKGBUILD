@@ -1,7 +1,7 @@
 # Maintainer: François Freitag <mail at franek dot fr>
 # Contributor: Victor van den Elzen <victor.vde at gmail dot com>
 pkgname=pgbadger
-pkgver=11.4
+pkgver=11.5
 pkgrel=1
 pkgdesc="A fast PostgreSQL Log Analyzer"
 arch=("any")
@@ -15,7 +15,7 @@ optdepends=(
 )
 options=('!emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('b235b540fe4bbc7cf59274b82ad427022ea378812562bd2c350353c884ee0bfd')
+sha256sums=('49ab18810a61353ebd7fee12b899ccb9adfd064be6099084670b945db5ff1186')
 
 build() {
   # Override perl command line options we don't want. Source:
