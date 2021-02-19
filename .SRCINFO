@@ -1,11 +1,12 @@
 pkgbase = wechat-uos
 	pkgdesc = UOS专业版微信 (迫真魔改版)
 	pkgver = 2.0.0
-	pkgrel = 11451419
+	pkgrel = 1145141919
 	epoch = 2
 	url = https://www.chinauos.com/resource/download-professional
 	arch = x86_64
 	license = MIT
+	makedepends = imagemagick
 	depends = gtk2
 	depends = gtk3
 	depends = libxss
