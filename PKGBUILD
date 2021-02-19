@@ -3,7 +3,7 @@
 
 pkgname=xmage
 pkgver=1.4.48V1
-pkgrel=0
+pkgrel=1
 
 pkgdesc="Java-based program for playing Magic:The Gathering, including client and server"
 
@@ -21,7 +21,7 @@ sha256sums=("cdb2a2465283f129ff756385a13647638ef7e554d6cfa570c3149ea00a2d5278"
 	"SKIP")
 
 depends=('jre8-openjdk')
-makedepends=('detox')
+#makedepends=('detox')
 optdepends=('wmname: change window manager name for compatibility with certain WMs')
 install="${pkgname}.install"
 
@@ -30,7 +30,7 @@ package() {
 	cd "${srcdir}"
 
 	# clean up filenames
-	detox -r -v ./* &> /dev/null
+	#detox -r -v ./* &> /dev/null
 
 	msg2 "changing file format of included scripts..."
 	awk '{ sub("\r$", ""); print }' mage-client/startClient.sh > mage-client/startClient-unix.sh
