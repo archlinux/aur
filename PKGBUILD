@@ -1,14 +1,14 @@
 # Maintainer: LinusDierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=r4.41120ef
+pkgver=r5.c5a9b9d
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c. Downside: only Linux"
 arch=("any")
 url="https://github.com/LinusDierheimer/fastfetch#README"
 license=("MIT")
 depends=("pciutils" "libx11")
-makedepens=("cmake")
+makedepends=("cmake")
 source=("git+https://github.com/LinusDierheimer/fastfetch.git")
 sha256sums=("SKIP")
 
