@@ -11,4 +11,3 @@ pkgbase = librewolf-extension-bitwarden
 	sha512sums = 8759626d0b1e5647e58024d9ca74253cdcc6cb45f998a9a71406c562045c8279b1a84574042a22ec564be211b167cef66e1d78148164f897bd7aadb02b4d73be
 
 pkgname = librewolf-extension-bitwarden
-
