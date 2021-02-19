@@ -14,9 +14,9 @@ depends_x86_64=('lib32-alsa-lib' 'lib32-glu' 'lib32-libsm' 'lib32-gtk2' 'lib32-m
 optdepends_x86_64=('lib32-gtk-engines: libclearlooks.so library'
                    'lib32-alsa-plugins: for PulseAudio users')
 install="kega-fusion.install"
-source=("http://ftp.slackware.org.uk/slacky/slackware-13.0/games/kega-fusion/3.63x/src/Fusion363x.tar.gz"
-        "http://ftp.slackware.org.uk/slacky/slackware-13.0/games/kega-fusion/3.63x/src/Plugins(Linux).tar.gz"
-        "http://trya.alwaysdata.net/linux/icons/kega-fusion.png"
+source=("https://www.carpeludum.com/download/Fusion363x.tar.gz"
+        "https://www.carpeludum.com/download/PluginsLinux.tar.gz"
+        "https://trya.alwaysdata.net/linux/icons/kega-fusion.png"
         kega-fusion.sh kega-fusion.desktop Fusion.ini)
 sha256sums=('8f245ead905bfb389da286a6ed94d627ec73e669b0247cbc87b34020fc674693'
             '1283a359e1cd82b5f23a121eab218bab8bdeeb488f98c58794b15803371bc234'
