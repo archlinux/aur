@@ -1,7 +1,7 @@
 # Maintainer: grtcdr <ba.tahaaziz@gmail.com>
 
 pkgname=macchina
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Basic system information fetcher"
 
