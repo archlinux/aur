@@ -9,8 +9,8 @@
 
 pkgbase=phpstorm-eap
 pkgname=(phpstorm-eap phpstorm-eap-jre)
-pkgver=211.5787.18
-dl_pkgver=211.5787.18
+pkgver=211.6085.19
+dl_pkgver=211.6085.19
 pkgrel=1
 pkgdesc="Lightning-smart PHP IDE. Early Access Program."
 arch=('x86_64' 'i686')
@@ -20,8 +20,10 @@ depends=('libdbusmenu-glib')
 makedepends=('rsync')
 options=('!strip')
 source=(https://download.jetbrains.com/webide/PhpStorm-${dl_pkgver}.tar.gz
+		phpstorm-eap.sh
         jetbrains-phpstorm-eap.desktop)
-sha256sums=('93de691716b72a793b339b67b022ad1fd23adfae2541f5ff1e86aaa69a0e5057'
+sha256sums=('4a0db89b48053055eac8ee512e60c05b180f9848c43796406d793cfe9b75e16d'
+			'04a93d0b1b42f406ba2407e629ee55b3a2cdd4dc693b73f5346d9bdf6e0e690e'
             'b08cebee65c3d8949f91a18ceff45e6713fa59af8434fa56fdac067f2f6a00f7')
 
 package_phpstorm-eap() {
@@ -33,10 +35,10 @@ package_phpstorm-eap() {
   install -d -m 755 "${pkgdir}/usr/bin/"
   install -d -m 755 "${pkgdir}/usr/share/applications/"
   install -d -m 755 "${pkgdir}/usr/share/pixmaps/"
+  install -D -m 755 "phpstorm-eap.sh" "${pkgdir}/usr/bin/${pkgbase}"
 
   rsync -rtl "${srcdir}/PhpStorm-${pkgver}/" "${pkgdir}/opt/${pkgbase}" --exclude=/jbr
 
-  ln -s "/opt/${pkgbase}/bin/phpstorm.sh" "${pkgdir}/usr/bin/${pkgbase}"
   install -D -m 644 "${srcdir}/jetbrains-${pkgbase}.desktop" "${pkgdir}/usr/share/applications/"
   install -D -m 644 "${pkgdir}/opt/${pkgbase}/bin/phpstorm.png" "${pkgdir}/usr/share/pixmaps/${pkgbase}.png"
 }
