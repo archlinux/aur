@@ -1,5 +1,5 @@
 diff --git a/src/app/app.component.ts b/src/app/app.component.ts
-index 6807ec89..62dbe456 100644
+index 51853633..c9b3d48a 100644
 --- a/src/app/app.component.ts
 +++ b/src/app/app.component.ts
 @@ -140,6 +140,10 @@ export class AppComponent implements OnDestroy, OnInit {
@@ -14,10 +14,10 @@ index 6807ec89..62dbe456 100644
                          break;
                      case 'analyticsEventTrack':
 diff --git a/src/app/services/services.module.ts b/src/app/services/services.module.ts
-index e64240ad..025fdef1 100644
+index 3e4d8dfa..f5bf60e4 100644
 --- a/src/app/services/services.module.ts
 +++ b/src/app/services/services.module.ts
-@@ -127,24 +127,32 @@ const environmentService = new EnvironmentService(apiService, storageService, no
+@@ -135,24 +135,32 @@ const environmentService = new EnvironmentService(apiService, storageService, no
  const auditService = new AuditService(cryptoFunctionService, apiService);
  const eventLoggingService = new EventLoggingService(storageService, apiService, userService, cipherService);
  
@@ -74,10 +74,10 @@ index 5560c476..a9b954a8 100644
              this.ngZone.run(() => {
                  this.u2fListening = false;
 diff --git a/src/scss/styles.scss b/src/scss/styles.scss
-index 676e275f..ba9888fc 100644
+index 55b3c92c..c48e2baf 100644
 --- a/src/scss/styles.scss
 +++ b/src/scss/styles.scss
-@@ -1,5 +1,34 @@
+@@ -1,5 +1,56 @@
  @import "../css/webfonts.css";
  
 +/**** START Bitwarden_RS CHANGES ****/
@@ -93,6 +93,9 @@ index 676e275f..ba9888fc 100644
 +/* Hide any link pointing to subscriptions */
 +a[href$="/settings/subscription"] { @extend %bwrs-hide; }
 +
++/* Hide any link pointing to emergency access */
++a[href$="/settings/emergency-access"] { @extend %bwrs-hide; }
++
 +/* Hide the `Enterprise Single Sign-On` button on the login page */
 +a[href$="/sso"] { @extend %bwrs-hide; }
 +
@@ -102,6 +105,25 @@ index 676e275f..ba9888fc 100644
 +/* Hide organization plans */
 +app-organization-plans > form > div.form-check { @extend %bwrs-hide; }
 +app-organization-plans > form > h2.mt-5 { @extend %bwrs-hide; }
++
++/* Hide the `API Key` section under `My Account` */
++app-account > div:nth-child(9),
++app-account > p,
++app-account > button:nth-child(11),
++app-account > button:nth-child(12) {
++    @extend %bwrs-hide;
++}
++
++/* Hide the radio button and label for the `Custom` org user type */
++#userTypeCustom, label[for^=userTypeCustom] {
++    @extend %bwrs-hide;
++}
++
++/* Hide the warning that policy config is moving to Business Portal */
++app-org-policies > app-callout { @extend %bwrs-hide; }
++
++/* Hide `Single Organization` policy */
++app-org-policies > table > tbody > tr:nth-child(4) { @extend %bwrs-hide; }
 +
 +/* Hide Tax Info and Form in Organization settings */
 +app-org-account > div.secondary-header:nth-child(3) { @extend %bwrs-hide; }
@@ -113,10 +135,10 @@ index 676e275f..ba9888fc 100644
  $primary-accent: #1252A3;
  $secondary: #ced4da;
 diff --git a/webpack.config.js b/webpack.config.js
-index 3391d5ff..c4e2c0b5 100644
+index b6da3558..eef05772 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
-@@ -176,6 +176,7 @@ const config = {
+@@ -178,6 +178,7 @@ const config = {
          },
          minimizer: [
              new TerserPlugin({
