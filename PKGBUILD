@@ -11,7 +11,7 @@ depends=("nodejs")
 makedepends=("npm" "jq")
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-md5sums=('3d94583d23aaccba842956e25454fd92')
+md5sums=('7577fe140c3ea1e821f2de9b7bd34ba8')
 
 package() {
     npm install -g --cache "${srcdir}/npm-cache" --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
