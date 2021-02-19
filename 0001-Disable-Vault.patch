@@ -1,6 +1,6 @@
 --- a/.env.template
 +++ b/.env.template
-@@ -42,7 +44,7 @@
+@@ -46,7 +46,7 @@
  
  ## Web vault settings
  # WEB_VAULT_FOLDER=web-vault/
