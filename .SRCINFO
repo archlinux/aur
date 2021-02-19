@@ -1,15 +1,16 @@
 pkgbase = helm-gcs
 	pkgdesc = Helm plugin to manage chart repositories on GCS
-	pkgver = 0.3.7
-	pkgrel = 2
+	pkgver = 0.3.9
+	pkgrel = 1
 	url = https://github.com/hayorov/helm-gcs
 	install = helm-gcs.install
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	depends = bash
 	depends = helm
-	source = https://github.com/hayorov/helm-gcs/archive/0.3.7.tar.gz
-	sha256sums = 25f012b4a500ec9922c93114ca9349f00f3baecfaa1af795c850bbfa508cc2a7
+	source = https://github.com/hayorov/helm-gcs/archive/0.3.9/helm-gcs-0.3.9.tar.gz
+	sha256sums = 8251b999b7a30f6fb9b7d38ae6ac6dd89ff92b864021c3696a06d362824212b5
 
 pkgname = helm-gcs
 

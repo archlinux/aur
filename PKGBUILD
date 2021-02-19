@@ -1,17 +1,17 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=helm-gcs
-pkgver=0.3.7
-pkgrel=2
-pkgdesc='Helm plugin to manage chart repositories on GCS'
-arch=('x86_64')
-url='https://github.com/hayorov/helm-gcs'
-license=('MIT')
+pkgver=0.3.9
+pkgrel=1
+pkgdesc="Helm plugin to manage chart repositories on GCS"
+arch=(x86_64)
+url=https://github.com/hayorov/helm-gcs
+license=(MIT)
 install=helm-gcs.install
-depends=('helm')
-makedepends=('go')
-source=("https://github.com/hayorov/helm-gcs/archive/${pkgver}.tar.gz")
-sha256sums=('25f012b4a500ec9922c93114ca9349f00f3baecfaa1af795c850bbfa508cc2a7')
+depends=(bash helm)
+makedepends=(go)
+source=("https://github.com/hayorov/helm-gcs/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('8251b999b7a30f6fb9b7d38ae6ac6dd89ff92b864021c3696a06d362824212b5')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -21,7 +21,6 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
-  export CGO_ENABLED=1
   export CGO_LDFLAGS="$LDFLAGS"
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
@@ -32,6 +31,7 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}"
+
   # /usr/lib/helm/plugins follows other helm plugins on the AUR (e.g., helm-diff)
   install -Dm0755 bin/helm-gcs -t "${pkgdir}/usr/lib/helm/plugins/${pkgname##helm-}/bin"
   install -m0644 plugin.yaml -t "${pkgdir}/usr/lib/helm/plugins/${pkgname##helm-}"
@@ -39,3 +39,5 @@ package() {
 
   install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# vim: set ts=2 sw=2 et:
