@@ -13,13 +13,10 @@ pkgbase = qucs-qt5-git
 	depends = qt5-svg
 	depends = adms
 	depends = hicolor-icon-theme
+	depends = qucsator
 	optdepends = freehdl: to permit digital circuit simulation
 	optdepends = perl
-	source = git+https://github.com/Qucs/qucs.git#branch=refactor+qt5-19
-	source = git+https://github.com/Qucs/qucs-test.git
-	source = git+https://github.com/Qucs/qucsator.git
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = git+https://github.com/Qucs/qucs.git#branch=refactor+qt5-22
 	sha256sums = SKIP
 
 pkgname = qucs-qt5-git
