@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://gitlab.com/hunterbrodie/aurora"
 license=('GPL')
 depends=('opendoas' 'git')
-makedepends=('git' 'cargo')
+makedepends=('cargo')
 source=('aurora-git::git+https://gitlab.com/hunterbrodie/aurora.git')
 md5sums=('SKIP')
 
