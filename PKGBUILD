@@ -1,6 +1,6 @@
 # Maintainer: lmartinez-mirror <lmartinez-mirror at noreply dot github dot com>
 pkgname=baru
-pkgver=0.2.3
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='A system monitor written in Rust and C'
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=(
 )
 conflicts=('baru-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('4812c649e98a000e134e0b149bf394b0f198845bce2036356ffb0c66921fd7220a53f866f95101212d5862ab53e2cc5e9702738f475acaea778dfd2afc00f5f2')
+sha512sums=('fb8cabb64ecdf0d6aaa7335543f6804eb30d12f3c21409fbbf390dfc2c56eeb0c1c9da8c9cdc3d221bd406d876431243dafa8da3da17a86fb81deae3adf86308')
 
 build() {
   cd "$pkgname-$pkgver"
