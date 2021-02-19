@@ -1,7 +1,7 @@
 # Maintainer: Ben Silverman <bensilverman10 at gmail dot com>
 _npmname=alacritty-themes
 pkgname=${_npmname}
-pkgver=2.0.2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A utility for choosing and applying Alacritty terminal themes."
 arch=(any)
