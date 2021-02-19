@@ -1,6 +1,6 @@
 pkgname=kimchi-server-git
 pkgver=r27.770d55444e12
-pkgrel=1
+pkgrel=2
 pkgdesc='A bare-bones HTTP server'
 arch=('x86_64')
 url="https://sr.ht/~emersion/kimchi"
@@ -27,7 +27,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  make
+  make GOFLAGS="$GOFLAGS"
 }
 
 check() {
