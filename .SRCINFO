@@ -1,7 +1,7 @@
 pkgbase = python-mkdocs-material
 	pkgdesc = Material design theme for MkDocs
 	pkgver = 6.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://squidfunk.github.io/mkdocs-material/
 	arch = any
 	license = MIT
@@ -12,7 +12,6 @@ pkgbase = python-mkdocs-material
 	depends = python-pygments
 	depends = python-mkdocs-minify-plugin
 	depends = python-mkdocs-material-extensions
-	optdepends = python-mkdocs-material-pymdownx-extras: additional resources like the dark theme toggle
 	provides = mkdocs-material
 	source = python-mkdocs-material-6.2.8.tar.gz::https://github.com/squidfunk/mkdocs-material/archive/6.2.8.tar.gz
 	sha256sums = 09bbfbdcf6cafb8ab2f77fd3bd7766b78bdccab7cc86e2c330b088e271705b59
