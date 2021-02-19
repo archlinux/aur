@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-compiz-alike-windows-effect-git
 pkgver=r44.6c33920
-pkgrel=1
+pkgrel=2
 pkgdesc="Wobbly windows effect inspired by the Compiz ones"
 arch=('any')
 url="https://github.com/hermes83/compiz-alike-windows-effect"
@@ -35,6 +35,8 @@ package() {
   install -dm755 "${destdir}"
   find . -regextype posix-egrep -regex ".*\.(js|json)$" -exec\
      install -Dm 644 {} ${destdir}/{} \;
+  cd "${srcdir}/${pkgname%-git}/schemas"
+  sed -i "s_/extensions/ncom/github/hermes83_/extensions_g" ${schema}
   install -Dm644 "${srcdir}/${pkgname%-git}/schemas/${schema}" \
     "${pkgdir}/usr/share/glib-2.0/schemas/${schema}"
 }
