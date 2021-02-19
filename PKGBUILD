@@ -24,8 +24,10 @@ sha256sums=('SKIP' 'SKIP' 'SKIP')
 pkgver() {
     cd "$srcdir/qucs"
 
-    # Cut off qucs- prefix
-    git describe --long | sed 's/^qucs-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    ( set -o pipefail
+      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 prepare() {
