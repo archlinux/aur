@@ -2,12 +2,12 @@
 pkgname=rpcs3-bin
 pkgver=0.0.14
 _pkgbuild='11747-f43260bd'
-pkgrel=3
+pkgrel=4
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=('x86_64')
 url='https://rpcs3.net/'
 license=('GPL2')
-depends=(openal qt5-declarative glew-2.1 vulkan-icd-loader hicolor-icon-theme libpulse libcurl-gnutls ncurses5-compat-libs)
+depends=(openal qt5-declarative glew-2.1 vulkan-icd-loader hicolor-icon-theme libpulse libcurl-gnutls libcurl-compat ncurses5-compat-libs)
 makedepends=('p7zip')
 options=('!strip')
 replaces=('rpcs3')
