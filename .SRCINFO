@@ -1,0 +1,16 @@
+pkgbase = gnome-disk-utility-3.4.1
+	pkgdesc = gnome disk utility 3.4.1
+	pkgver = 3.4.1
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/gnome-disk-utility
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gtk3
+	depends = intltool
+	depends = udisks2
+	source = http://ftp.gnome.org/pub/gnome/sources/gnome-disk-utility/3.4/gnome-disk-utility-3.4.1.tar.xz
+	md5sums = c5ff303fdc99d6bf85b9fa8e886a99dd
+
+pkgname = gnome-disk-utility-3.4.1
+
