@@ -14,10 +14,12 @@ license=('custom:Commercial')
 depends=('zlib' 'hicolor-icon-theme' 'fuse' 'electron')
 options=(!strip)
 source=( 
+  "${pkgname}"
   "${pkgname}.desktop"
   "https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/obsidian-${pkgver}.asar.gz"
 )
-sha256sums=('8cd2bac969bf0b394c5766a26985759ec5bc6d6cf5ce0316920dce095d964041'
+sha256sums=('38d18cc7f3c6aacaba37aecb2c27754ad6562be121d23d6eeeeeccfb85234d04'
+            '8cd2bac969bf0b394c5766a26985759ec5bc6d6cf5ce0316920dce095d964041'
             '0243f1ed7d3490476cec1d6cc9724f495d7e4c996a43b36747ac3dc121b6051c')
 
 package() {
@@ -25,10 +27,14 @@ package() {
     cd "$srcdir"
 
     # Create directories for installation
-    install -dm0755 "${pkgdir}"/opt
+    install -dm0755 "${pkgdir}/usr/bin"
+    install -dm0755 "${pkgdir}/opt"
+
+    # Install executable file
+    install -Dm755 ${pkgname} "${pkgdir}/usr/bin/"
     # Install desktop file
-    install -Dm644 ${pkgname}.desktop -t "${pkgdir}"/usr/share/applications/
+    install -Dm644 ${pkgname}.desktop -t "${pkgdir}/usr/share/applications/"
     # Move package contents to opt
-    install -Dm644 ${_pkgname}-${pkgver}.asar  "${pkgdir}"/opt/${pkgname}/obsidian.asar
+    install -Dm644 ${_pkgname}-${pkgver}.asar  "${pkgdir}/opt/${pkgname}/obsidian.asar"
 }
 
