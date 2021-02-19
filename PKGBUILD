@@ -26,8 +26,8 @@ sha256sums=(
     'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
     e3251821f46a567ca4561834345b752db6f2700c58f113335d68b314c05b2b26
     905016dfe461fba041d30ba0d295d4ee57dc43c1c24c63a7f3683ac34af87a25
-    819c7cafc8ebadfa30ecd6de9b109d172ebdea668defea0f0ce1c596560e69d3
-    335e3d6cebe69876ae2e30c4f9145cd2a78e839e841c166f7caa02a1e2a69378
+    b2055016caaa13a15281fb662651c88a0421dda99dbf1eacc64f90cf7186be43
+    c61871a66844996f8bc03514278db277bbdcf3cbb91393fb7390d04cbffa1ff3
 )
 
 pkgver() {
@@ -60,7 +60,7 @@ package() {
     "bin/linux-amd64-librw_gl3_glfw-oal/Release/re3" \
     ../re3-launcher
   install -D -m644 -t "$pkgdir/usr/share/applications" ../re3.desktop
-  install -D -m644 logo.png "$pkgdir/usr/share/pixmaps/gta3.png"
+  install -D -m644 logo.png "$pkgdir/usr/share/pixmaps/re3.png"
   mkdir -p "$pkgdir/usr/share/games/re3"
   cp -a gamefiles "$pkgdir/usr/share/games/re3/"
   chmod og=rX -R "$pkgdir/usr/share/games/re3"

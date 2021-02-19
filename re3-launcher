@@ -3,7 +3,7 @@
 set -e
 
 zenity() {
-  command zenity --width=700 --title="re3-launcher" --window-icon="/usr/share/pixmaps/gta3.png" "$@"
+  command zenity --width=700 --title="re3-launcher" --window-icon="/usr/share/pixmaps/re3.png" "$@"
 }
 
 patch() {
