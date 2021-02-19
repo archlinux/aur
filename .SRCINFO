@@ -1,7 +1,7 @@
 pkgbase = purple-mattermost
 	pkgdesc = A libpurple/Pidgin plugin for Mattermost
-	pkgver = 1.2
-	pkgrel = 2
+	pkgver = 2.0
+	pkgrel = 1
 	url = https://github.com/EionRobb/purple-mattermost
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = purple-mattermost
 	depends = json-glib
 	depends = discount
 	conflicts = purple-mattermost-git
-	source = purple-mattermost.tar.gz::https://github.com/EionRobb/purple-mattermost/archive/v1.2.tar.gz
-	sha256sums = 2484c68fcc3c57a176991c143346dc8cc6a0aaf37d5ecd0ff2c0ec201ca094ae
+	source = purple-mattermost.tar.gz::https://github.com/EionRobb/purple-mattermost/archive/v2.0.tar.gz
+	sha256sums = 326241798102346bcaabfa9647ab0740a6fc8a061c957aa09b420e84401f99c1
 
 pkgname = purple-mattermost
 
