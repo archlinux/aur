@@ -4,7 +4,7 @@ pkgdesc="ROS - Cartographer is a system that provides real-time simultaneous loc
 url='https://github.com/googlecartographer/cartographer'
 
 pkgname='ros-noetic-cartographer-git'
-pkgver=r1163.fbcfa652
+pkgver=r1164.3abea342
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('Apache 2.0')
@@ -65,8 +65,6 @@ build() {
     # Create build directory
     [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
     cd ${srcdir}/build
-    
-     rm -f ${srcdir}/${_dir}/cartographer/mapping/3d/hybrid_grid_test.cc
 
     # Build project
     cmake ${srcdir}/${pkgname} \
@@ -78,8 +76,9 @@ build() {
             -DPYTHON_INCLUDE_DIR=/usr/include/python3.9 \
             -DPYTHON_LIBRARY=/usr/lib/libpython3.9.so \
             -DPYTHON_BASENAME=-python3.9 \
-            -DSETUPTOOLS_DEB_LAYOUT=OFF
-            make
+            -DSETUPTOOLS_DEB_LAYOUT=OFF \
+            -DCMAKE_CXX_STANDARD=17
+    make
 }
 
 package() {
