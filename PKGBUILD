@@ -3,7 +3,7 @@
 _pkgname="discordrichpresencepresets"
 pkgname="${_pkgname}-git"
 pkgver=avalonia.v0.1.beta.r17.3045abe
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI tool to set and switch between Discord Rich Presences"
 arch=('x86_64')
 url="https://github.com/cainy-a/DiscordRichPresencePresets"

@@ -1,7 +1,7 @@
 pkgbase = discordrichpresencepresets-git
 	pkgdesc = A GUI tool to set and switch between Discord Rich Presences
 	pkgver = avalonia.v0.1.beta.r17.3045abe
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cainy-a/DiscordRichPresencePresets
 	arch = x86_64
 	license = BSD
