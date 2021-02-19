@@ -1,0 +1,18 @@
+pkgbase = discordrichpresencepresets-git
+	pkgdesc = A GUI tool to set and switch between Discord Rich Presences
+	pkgver = avalonia.v0.1.beta.r17.3045abe
+	pkgrel = 1
+	url = https://github.com/cainy-a/DiscordRichPresencePresets
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = dotnet-sdk>=5.0.0
+	depends = dotnet-runtime>=5.0.0
+	provides = discordrichpresencepresets
+	conflicts = discordrichpresencepresets
+	backup = usr/share/discordrichpresencepresets/data
+	source = discordrichpresencepresets-source::git+https://github.com/cainy-a/DiscordRichPresencePresets#commit=3045abeabdc7c2875037a594766759b2896afeeb
+	md5sums = SKIP
+
+pkgname = discordrichpresencepresets-git
+
