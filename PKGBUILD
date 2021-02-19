@@ -1,12 +1,13 @@
 # Maintainer: nephitejnf <nephitejnf@gmail.com>
 pkgname=lightcord-bin
 pkgver=dev
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple - customizable - Discord Client"
 arch=("x86_64")
 url="https://github.com/Lightcord/Lightcord"
 license=('MIT')
 depends=()
+optdepends=("libappindicator-gtk3")
 provides=('lightcord')
 conflicts=('lightcord-git')
 makedepends=()
