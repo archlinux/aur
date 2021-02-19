@@ -4,9 +4,9 @@
 
 pkgname=nginx-mainline-mod-fancyindex
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.19.6
+_nginxver=1.19.7
 pkgdesc="Fancy indexes module for the nginx web server"
 arch=('x86_64')
 url="https://github.com/aperezdc/ngx-fancyindex"
@@ -15,7 +15,7 @@ depends=("nginx-mainline>=${_nginxver}")
 source=(https://nginx.org/download/nginx-$_nginxver.tar.gz{,.asc}
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/aperezdc/ngx-$_modname/archive/v$pkgver.tar.gz")
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
-sha256sums=('b11195a02b1d3285ddf2987e02c6b6d28df41bb1b1dd25f33542848ef4fc33b5'
+sha256sums=('7ae4dd020c41d3a5e1e6a8578fcc60e508e3e27e7668e845ddc87a05a775b50e'
             'SKIP'
             '238bd5521d6c9b55780e6871339a7ea79508b9a6758ad2fa4451f2dfe26d94c9')
 
@@ -33,6 +33,6 @@ package() {
   for _mod in *.so; do
 	install -D $_mod "$pkgdir/usr/lib/nginx/modules/$_mod"
   done
-  install -Dm644 "$srcdir/ngx-$_modname-$pkgver/LICENSE" \
+  install -Dm0644 "$srcdir/ngx-$_modname-$pkgver/LICENSE" \
 	"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
