@@ -6,7 +6,7 @@ _pkgname='sddm-config-editor'
 pkgdesc='SDDM Configuration Editor'
 url='https://github.com/hagabaka/sddm-config-editor'
 license=('APACHE')
-pkgver=0.1.r57.gc01cbcd
+pkgver=0.1.r71.g5c890b9
 pkgrel=1
 source=('git+https://github.com/hagabaka/sddm-config-editor.git')
 md5sums=('SKIP')
@@ -23,13 +23,14 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname/cpp"
-  qmake PREFIX="$pkgdir"
+  mkdir --parents "$srcdir/build"
+  cd "$srcdir/build"
+  cmake "$srcdir/$_pkgname"
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgname/cpp"
-  make install
+  cd "$srcdir/$_pkgname"
+  DESTDIR="$pkgdir" make -C "$srcdir/build" install
 }
 

@@ -1,6 +1,6 @@
 pkgbase = sddm-config-editor-git
 	pkgdesc = SDDM Configuration Editor
-	pkgver = 0.1.r57.gc01cbcd
+	pkgver = 0.1.r71.g5c890b9
 	pkgrel = 1
 	url = https://github.com/hagabaka/sddm-config-editor
 	arch = i686
