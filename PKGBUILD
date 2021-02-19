@@ -6,7 +6,7 @@
 
 pkgname=mtplayer
 _realname=MTPlayer
-pkgver=9
+pkgver=10
 pkgrel=1
 pkgdesc="Offers access to the Mediathek of different german tv stations (ARD, ZDF, Arte, etc.)"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=('rtmpdump: stream flash'
             'vlc: play files directly from mediathek')
 source=("https://www.p2tools.de/extra/download/${_realname}-$pkgver.zip"
         $pkgname.desktop $pkgname.sh)
-sha256sums=('f48c342e200def89beb7e032b920e7fe3999c06a21ff966ab6f207de7d29b0d6'
+sha256sums=('4f3ce84dca717790cc4f5c3d85978fd6b61852737832b87a93daa5d49702b558'
             '00ac87b32ec859299ac8ce456a3d2773f5e849779f726711561c32ed5a075dc8'
             'e41444cc5fb59938e1532eeb7d6e9163812226dc8f5790e529858bcf4b38cd30')
 
@@ -30,7 +30,6 @@ package() {
   install -Dm644 "$srcdir"/$pkgname.desktop "$pkgdir"/usr/share/aplications/$pkgname.desktop
   # remove unneeded stuff
   find "$pkgdir" -name "*.exe" -exec rm {} \;
-  rm "$pkgdir"/opt/$_realname/bin/flv.bat
   install -Dm644 "$pkgdir"/opt/$_realname/$_realname.png "$pkgdir"/usr/share/pixmaps/MTPlayer.png
   rm "$pkgdir"/opt/$_realname/$_realname.png
 }
