@@ -66,6 +66,8 @@ package() {
   find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
   # Remove TF build directories. These too contain $pkgdir, and shouldn't be necessary.
   rm -rf "$pkgdir"/opt/"$pkgname"/bodypix/node_modules/@tensorflow/**/build*
+  # Fix the ownership of Node.js files to root.
+  chown -R root:root "$pkgdir"/opt/$pkgname/bodypix
 
   mkdir -p "$pkgdir"/usr/bin
   # Create a wrapper to launch the Node application with the needed environment variable.
