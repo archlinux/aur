@@ -2,7 +2,7 @@
 
 pkgname=zapier-platform-cli
 _pkgname="${pkgname%-platform-cli}"
-pkgver=10.1.2
+pkgver=10.1.3
 pkgrel=1
 pkgdesc='Gateway to creating custom applications on the Zapier platform'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=('bash-completion: for tab completion')
 provides=("$_pkgname")
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=(6df999d17e92328fb8910fcbd6037d7399cfb50d106bb3ba1f937d99f198ca42)
+sha256sums=(e1b9fb1fb059ea7d6ef3a2485c608cb6c8953b30f8346211cecb677d0a9a0cd7)
 
 package() {
 	npm install --cache "$srcdir"/npm-cache -g --user root --prefix "$pkgdir"/usr "$srcdir"/$noextract
@@ -48,5 +48,5 @@ package() {
 	install -Dm 644 ~/.cache/"$pkgname"/autocomplete/functions/zsh/_"$_pkgname" "$pkgdir"/usr/share/zsh/site-functions/_"$_pkgname"
 
 	# Prefer not to do this, but necessary due to non-standard completion implementation
-	rm -r ~/.cache/"$pkgname"
+	rm --recursive ~/.cache/"$pkgname"
 }
