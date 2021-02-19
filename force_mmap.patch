@@ -1,0 +1,21 @@
+diff -Naur glibc-ok/malloc/malloc.c glibc-2.33/malloc/malloc.c
+--- glibc-ok/malloc/malloc.c	2021-02-01 18:15:33.000000000 +0100
++++ glibc-2.33/malloc/malloc.c	2021-02-19 20:30:18.521402639 +0100
+@@ -919,7 +919,7 @@
+ #define M_TRIM_THRESHOLD       -1
+ 
+ #ifndef DEFAULT_TRIM_THRESHOLD
+-#define DEFAULT_TRIM_THRESHOLD (128 * 1024)
++#define DEFAULT_TRIM_THRESHOLD (512 * 1024)
+ #endif
+ 
+ /*
+@@ -961,7 +961,7 @@
+ */
+ 
+ #ifndef DEFAULT_MMAP_THRESHOLD_MIN
+-#define DEFAULT_MMAP_THRESHOLD_MIN (128 * 1024)
++#define DEFAULT_MMAP_THRESHOLD_MIN 0
+ #endif
+ 
+ #ifndef DEFAULT_MMAP_THRESHOLD_MAX
