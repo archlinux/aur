@@ -1,0 +1,17 @@
+pkgbase = gog-battletech
+	pkgdesc = The year is 3025 and the galaxy is trapped in a cycle of perpetual war, fought with enormous mechanized vehicles called BattleMechs.
+	pkgver = 1.9.1.686r
+	pkgrel = 1
+	url = https://www.gog.com/game/battletech_game
+	arch = x86_64
+	license = custom
+	makedepends = p7zip
+	noextract = battletech_1_9_1_686r_36568.sh
+	noextract = battletech.desktop
+	source = battletech_1_9_1_686r_36568.sh::gog://battletech_1_9_1_686r_36568.sh
+	source = battletech.desktop
+	sha256sums = a30d90de5969c9880c352824242d9299a1eb2d7e6fb2d385a3d18aecfafd8751
+	sha256sums = 3b11f1ed7e20c62154699541dc7d4039057702d321dbeac185c80b2efce6d2c6
+
+pkgname = gog-battletech
+

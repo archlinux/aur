@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Battletech
+Comment=Run your own Merc outfit of Battlemechs.
+Exec=battletech
+Icon=battletech.png
+Terminal=false
+Type=Application
+X-DCOP-ServiceType=Multi
+X-KDE-StartupNotify=true
+Categories=Game;
