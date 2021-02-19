@@ -1,7 +1,7 @@
 pkgbase = infracost
 	pkgdesc = Infracost shows cloud cost estimates for Terraform projects. It helps developers, devops and others to quickly see the cost breakdown and compare different options upfront.
 	pkgver = 0.7.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/infracost/infracost
 	arch = x86_64
 	license = APACHE
