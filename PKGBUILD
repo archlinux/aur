@@ -10,7 +10,7 @@
 
 pkgname=osc-git
 _pkgname=osc
-pkgver=0.172.0.r3653.a6012b92
+pkgver=0.173.0.r3668.9fb287c7
 pkgrel=1
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
