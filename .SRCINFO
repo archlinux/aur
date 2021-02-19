@@ -1,6 +1,6 @@
 pkgbase = alacritty-themes
 	pkgdesc = A utility for choosing and applying Alacritty terminal themes.
-	pkgver = 2.0.2
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/rajasegar/alacritty-themes
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = alacritty-themes
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = alacritty-themes-2.0.2.tgz
-	source = https://registry.npmjs.org/alacritty-themes/-/alacritty-themes-2.0.2.tgz
+	noextract = alacritty-themes-3.0.0.tgz
+	source = https://registry.npmjs.org/alacritty-themes/-/alacritty-themes-3.0.0.tgz
 	md5sums = 3d94583d23aaccba842956e25454fd92
 
 pkgname = alacritty-themes
