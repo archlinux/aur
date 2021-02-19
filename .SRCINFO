@@ -1,6 +1,6 @@
 pkgbase = lens
 	pkgdesc = The Kubernetes IDE
-	pkgver = 4.0.8
+	pkgver = 4.1.2
 	pkgrel = 1
 	url = https://k8slens.dev
 	arch = x86_64
@@ -8,15 +8,16 @@ pkgbase = lens
 	makedepends = npm
 	makedepends = nodejs-lts-erbium
 	makedepends = yarn
+	makedepends = rpm-tools
 	depends = alsa-lib
 	depends = gtk3
 	depends = libxss
 	depends = libxtst
 	depends = nss
 	conflicts = lens-bin
-	source = lens-4.0.8.tar.gz::https://github.com/lensapp/lens/archive/v4.0.8.tar.gz
+	source = lens-4.1.2.tar.gz::https://github.com/lensapp/lens/archive/v4.1.2.tar.gz
 	source = lens.desktop
-	sha256sums = 533548c3b2796dcf853b1444e0e66bde0bb91d48d3bbfd6b03fb30145e88a94d
+	sha256sums = 19a99cba8228d86c65919ca8b44fdf5a00a546d8e70a626b2f5ac7936fcba129
 	sha256sums = 3db5b267cededcc73b3e35b89b46fca419e82832b85fa633e4326156cf648d02
 
 pkgname = lens
