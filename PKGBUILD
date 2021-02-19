@@ -4,12 +4,12 @@
 
 _pkgbase=pipewire
 pkgbase=pipewire-common-git
-pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-jack-git
-         pipewire-common-pulse-git pipewire-common-alsa-git
+pkgname=(pipewire-common-git pipewire-common-docs-git pipewire-common-alsa-git
+         pipewire-common-jack-git pipewire-common-pulse-git
          gst-plugin-pipewire-common-git)
-pkgver=0.3.22.r7.ga22602f4
+pkgver=0.3.22.r12.g84fc63e6
 pkgrel=1
-pkgdesc="Server and user space API to deal with multimedia pipelines"
+pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 license=(MIT)
 arch=(x86_64)
@@ -31,7 +31,7 @@ prepare() {
 
 build() {
   # make AUR helper happy
-  rm -rf build
+  rm -rf build || true
   arch-meson $_pkgbase build \
     -D docs=true \
     -D udevrulesdir=/usr/lib/udev/rules.d
@@ -55,9 +55,9 @@ _pick() {
 _ver=${pkgver:0:3}
 
 package_pipewire-common-git() {
-  depends=(sbc rtkit bluez-libs
-           libdbus-1.so libncursesw.so libsndfile.so libudev.so libasound.so
-           libsystemd.so libldacBT_enc.so libopenaptx.so libfdk-aac.so)
+  depends=(rtkit libdbus-1.so libncursesw.so libsndfile.so
+           libudev.so libasound.so libsystemd.so libbluetooth.so libsbc.so
+           libldacBT_enc.so libopenaptx.so libfdk-aac.so)
   optdepends=('pipewire-common-docs-git: Documentation'
               'pipewire-common-alsa-git: ALSA support'
               'pipewire-common-jack-git: JACK support'
@@ -69,7 +69,7 @@ package_pipewire-common-git() {
              pipewire-common-ffmpeg-git)
   replaces=(pipewire-common-bluez5-git pipewire-common-bluez5-hsphfpd-git
             pipewire-common-ffmpeg-git)
-  backup=(etc/pipewire/{client-rt,client,pipewire}.conf
+  backup=(etc/pipewire/{pipewire{,-pulse},client{,-rt}}.conf
           etc/pipewire/media-session.d/media-session.conf
           etc/pipewire/media-session.d/{alsa,bluez,v4l2}-monitor.conf)
   install=pipewire.install
@@ -83,13 +83,11 @@ package_pipewire-common-git() {
 
   _pick docs usr/share/doc
 
-  _pick jack etc/pipewire/jack.conf
-  _pick jack etc/pipewire/media-session.d/with-jack
+  _pick jack etc/pipewire/{jack.conf,media-session.d/with-jack}
   _pick jack usr/bin/pw-jack usr/lib/pipewire-$_ver/jack
   _pick jack usr/lib/spa-0.2/jack
   _pick jack usr/share/man/man1/pw-jack.1
 
-  _pick pulse etc/pipewire/pipewire-pulse.conf
   _pick pulse etc/pipewire/media-session.d/with-pulseaudio
 
   _pick gst usr/lib/gstreamer-1.0
@@ -98,12 +96,24 @@ package_pipewire-common-git() {
 package_pipewire-common-docs-git() {
   provides=(pipewire-docs)
   conflicts=(pipewire-docs)
-  pkgdesc+=" (documentation)"
+  pkgdesc+=" - documentation"
   mv docs/* "$pkgdir"
 }
 
+package_pipewire-common-alsa-git() {
+  pkgdesc+=" - ALSA configuration"
+  depends=(pipewire-common-git)
+  provides=(pipewire-alsa pulseaudio-alsa)
+  conflicts=(pipewire-alsa)
+
+  mkdir -p "$pkgdir/etc/alsa/conf.d"
+  ln -st "$pkgdir/etc/alsa/conf.d" \
+    /usr/share/alsa/alsa.conf.d/{50-pipewire,99-pipewire-default}.conf
+  install -Dm644 /dev/null "$pkgdir/etc/pipewire/media-session.d/with-alsa"
+}
+
 package_pipewire-common-jack-git() {
-  pkgdesc+=" (JACK support)"
+  pkgdesc+=" - JACK support"
   depends=(pipewire-common-git libpipewire-$_ver.so bash libjack.so)
   provides=(pipewire-jack)
   conflicts=(pipewire-jack)
@@ -112,25 +122,12 @@ package_pipewire-common-jack-git() {
 }
 
 package_pipewire-common-pulse-git() {
-  pkgdesc+=" (PulseAudio replacement)"
+  pkgdesc+=" - PulseAudio replacement"
   depends=(pipewire-common-git libpulse)
   provides=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
   conflicts=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
   install=pipewire-pulse.install
-  backup=(etc/pipewire/pipewire-pulse.conf)
   mv pulse/* "$pkgdir"
-}
-
-package_pipewire-common-alsa-git() {
-  pkgdesc="ALSA Configuration for PipeWire"
-  depends=(pipewire-common-git libpipewire-$_ver.so)
-  provides=(pipewire-alsa pulseaudio-alsa)
-  conflicts=(pipewire-alsa)
-
-  mkdir -p "$pkgdir"/etc/{alsa/conf.d,pipewire/media-session.d}
-  ln -st "$pkgdir/etc/alsa/conf.d" \
-    /usr/share/alsa/alsa.conf.d/{50-pipewire,99-pipewire-default}.conf
-  touch "$pkgdir/etc/pipewire/media-session.d/with-alsa"
 }
 
 package_gst-plugin-pipewire-common-git() {

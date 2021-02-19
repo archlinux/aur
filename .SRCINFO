@@ -1,6 +1,6 @@
 pkgbase = pipewire-common-git
-	pkgdesc = Server and user space API to deal with multimedia pipelines
-	pkgver = 0.3.22.r7.ga22602f4
+	pkgdesc = Low-latency audio/video router and processor
+	pkgver = 0.3.22.r12.g84fc63e6
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -28,15 +28,15 @@ pkgbase = pipewire-common-git
 
 pkgname = pipewire-common-git
 	install = pipewire.install
-	depends = sbc
 	depends = rtkit
-	depends = bluez-libs
 	depends = libdbus-1.so
 	depends = libncursesw.so
 	depends = libsndfile.so
 	depends = libudev.so
 	depends = libasound.so
 	depends = libsystemd.so
+	depends = libbluetooth.so
+	depends = libsbc.so
 	depends = libldacBT_enc.so
 	depends = libopenaptx.so
 	depends = libfdk-aac.so
@@ -56,21 +56,29 @@ pkgname = pipewire-common-git
 	replaces = pipewire-common-bluez5-git
 	replaces = pipewire-common-bluez5-hsphfpd-git
 	replaces = pipewire-common-ffmpeg-git
-	backup = etc/pipewire/client-rt.conf
-	backup = etc/pipewire/client.conf
 	backup = etc/pipewire/pipewire.conf
+	backup = etc/pipewire/pipewire-pulse.conf
+	backup = etc/pipewire/client.conf
+	backup = etc/pipewire/client-rt.conf
 	backup = etc/pipewire/media-session.d/media-session.conf
 	backup = etc/pipewire/media-session.d/alsa-monitor.conf
 	backup = etc/pipewire/media-session.d/bluez-monitor.conf
 	backup = etc/pipewire/media-session.d/v4l2-monitor.conf
 
 pkgname = pipewire-common-docs-git
-	pkgdesc = Server and user space API to deal with multimedia pipelines (documentation)
+	pkgdesc = Low-latency audio/video router and processor - documentation
 	provides = pipewire-docs
 	conflicts = pipewire-docs
 
+pkgname = pipewire-common-alsa-git
+	pkgdesc = Low-latency audio/video router and processor - ALSA configuration
+	depends = pipewire-common-git
+	provides = pipewire-alsa
+	provides = pulseaudio-alsa
+	conflicts = pipewire-alsa
+
 pkgname = pipewire-common-jack-git
-	pkgdesc = Server and user space API to deal with multimedia pipelines (JACK support)
+	pkgdesc = Low-latency audio/video router and processor - JACK support
 	depends = pipewire-common-git
 	depends = libpipewire-0.3.so
 	depends = bash
@@ -80,7 +88,7 @@ pkgname = pipewire-common-jack-git
 	backup = etc/pipewire/jack.conf
 
 pkgname = pipewire-common-pulse-git
-	pkgdesc = Server and user space API to deal with multimedia pipelines (PulseAudio replacement)
+	pkgdesc = Low-latency audio/video router and processor - PulseAudio replacement
 	install = pipewire-pulse.install
 	depends = pipewire-common-git
 	depends = libpulse
@@ -90,15 +98,6 @@ pkgname = pipewire-common-pulse-git
 	conflicts = pipewire-pulse
 	conflicts = pulseaudio
 	conflicts = pulseaudio-bluetooth
-	backup = etc/pipewire/pipewire-pulse.conf
-
-pkgname = pipewire-common-alsa-git
-	pkgdesc = ALSA Configuration for PipeWire
-	depends = pipewire-common-git
-	depends = libpipewire-0.3.so
-	provides = pipewire-alsa
-	provides = pulseaudio-alsa
-	conflicts = pipewire-alsa
 
 pkgname = gst-plugin-pipewire-common-git
 	pkgdesc = Multimedia graph framework - pipewire plugin
