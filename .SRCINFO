@@ -1,6 +1,6 @@
 pkgbase = awesome-freedesktop-git
 	pkgdesc = Freedesktop.org compliant desktop entries and menu for Awesome WM
-	pkgver = 105.6951b09
+	pkgver = 109.b77dee0
 	pkgrel = 5
 	url = https://github.com/lcpz/awesome-freedesktop
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = awesome-freedesktop-git
 	depends = awesome
 	provides = awesome-freedesktop
 	conflicts = awesome-freedesktop
-	source = awesome-freedesktop-105.6951b09.zip::https://github.com/lcpz/awesome-freedesktop/archive/6951b09.zip
+	source = awesome-freedesktop-109.b77dee0.zip::https://github.com/lcpz/awesome-freedesktop/archive/b77dee0.zip
 	sha256sums = SKIP
 
 pkgname = awesome-freedesktop-git
