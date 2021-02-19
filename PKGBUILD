@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-mingw
-pkgver=1.7.3
+pkgver=1.8
 pkgrel=1
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
@@ -15,21 +15,25 @@ source=(
     "git+https://github.com/doitsujin/dxvk.git#tag=v$pkgver"
     "setup_dxvk"
     "dxvk-async.patch"
-    "extraopts.patch"
+    "dxvk-extraopts.patch"
 )
 sha256sums=(
-    "SKIP"
-    "b2413cabd8cca56e2d308ef5513edf1c7f909036ed2ccfeae17536a0e864dc96"
-    "198ec50d709b26d492efc399257423315c1530fcdf1ee52595af6eab8e7e9f7c"
-    "0b69c4e8f369014e58577d34e077d5d8240ce3253c19117efe6d86ec7726105d"
+    'SKIP'
+    'b2413cabd8cca56e2d308ef5513edf1c7f909036ed2ccfeae17536a0e864dc96'
+    'acdb652830d642829057a035ebc69481697078a734f57ac974ee5b54454470ff'
+    '2bf3515ce9a3ee426c2632aa3355b2556ee8fe5dd8d88e088f90803e3d5f10a6'
 )
 
 prepare() {
     cd dxvk
-
+    # Uncomment to enable dxvk async patch.
+    # Enable at your own risk. If you don't know what it is,
+    # and its implications, leave it as is. You have been warned.
+    # I am not liable if anything happens to you by using it.
+    #patch -p1 -i "$srcdir"/dxvk-async.patch
     # Uncomment to enable extra optimizations
     # Patch crossfiles with extra optimizations from makepkg.conf
-    patch -p1 -i "$srcdir"/extraopts.patch
+    patch -p1 -i "$srcdir"/dxvk-extraopts.patch
     local dxvk_cflags="$CFLAGS"
     local dxvk_ldflags="$LDFLAGS"
     # Filter known bad flags before applying optimizations
@@ -50,10 +54,11 @@ prepare() {
     # Since Wine 5.16 AVX is supported. Testing showed 32bit applications
     # crashing with AVX regardless, but 64bit applications worked just fine.
     # So disable AVX only for the 32bit binaries and AVX2 for the 64bit.
+    # AVX2 seems to degrade performance. So disregard the above.
     # Relevant Wine issues
     # https://bugs.winehq.org/show_bug.cgi?id=45289
     # https://bugs.winehq.org/show_bug.cgi?id=43516
-    dxvk64_cflags="$dxvk_cflags -mno-avx2"
+    dxvk64_cflags="$dxvk_cflags -mno-avx"
     dxvk32_cflags="$dxvk_cflags -mno-avx"
 
     sed -i build-win64.txt \
@@ -62,13 +67,6 @@ prepare() {
     sed -i build-win32.txt \
         -e "s|@CARGS@|\'${dxvk32_cflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
-
-    # Uncomment to enable dxvk async patch.
-    # Enable at your own risk. If you don't know what it is,
-    # and its implications, leave it as is. You have been warned.
-    # I am not liable if anything happens to you by using it.
-    # Patch enables async by default. YOU HAVE BEEN WARNED.
-    #patch -p1 -i "$srcdir"/dxvk-async.patch
 }
 
 build() {
