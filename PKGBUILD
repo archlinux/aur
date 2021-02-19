@@ -1,7 +1,7 @@
 # Maintainer: Coelacanthus <coelacanthus@outlook.com>
 
 pkgname=gomclauncher
-pkgver=1.3.6
+pkgver=1.3.8
 pkgrel=1
 epoch=
 pkgdesc='gml: A Minecraft Launcher'
@@ -13,7 +13,7 @@ makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/xmdhs/gomclauncher/archive/v$pkgver.tar.gz"
         "https://raw.githubusercontent.com/xmdhs/gomclauncher/v$pkgver/LICENSE")
 
-b2sums=('d5b585b5d8ca7e1a82cbdb918c2fce60d6da191565a25b20e54708f0aeddf68d7b6a98249bd9683fed0ba51d5b163fbad004ad34d70132ee810e0a5b043332f1'
+b2sums=('a917014bdca25db53878a595469eb1e4adf0bd32acaece4feb857cd2ad82437992db77f31d2e1d23d9e9afa625fdc631c99274f9450abff95c6fb2f43488345d'
         'c0f4f5d14632f9204183a7096221aa794a20c34319abbbe527d1ca8bd234b3e744e23b398a73da64837396128dba466f7cfa93787f7b33dc05e1b90f70f7d579')
 
 prepare() {
