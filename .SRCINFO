@@ -1,0 +1,15 @@
+pkgbase = vim-dockerfile-git
+	pkgdesc = Vim syntax file & snippets for Docker's Dockerfile
+	pkgver = r133.2386923
+	pkgrel = 1
+	url = https://github.com/ekalinin/Dockerfile.vim
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	source = vim-dockerfile::git+https://github.com/ekalinin/Dockerfile.vim
+	sha256sums = SKIP
+
+pkgname = vim-dockerfile-git
+
