@@ -9,17 +9,15 @@ pkgdesc="An integrated circuit simulator with a graphical user interface - exper
 arch=('x86_64')
 url="http://qucs.sourceforge.net"
 license=('GPL')
-depends=('gcc-libs' 'qt5-base' 'qt5-script' 'qt5-svg' 'adms' 'hicolor-icon-theme')
+depends=('gcc-libs' 'qt5-base' 'qt5-script' 'qt5-svg' 'adms' 'hicolor-icon-theme' 'qucsator')
 makedepends=('git' 'gperf')
 optdepends=('freehdl: to permit digital circuit simulation'
 #	    'asco: to enable circuit optimization'
 	    'perl')
 source=(
   'git+https://github.com/Qucs/qucs.git#branch=refactor+qt5-22'
-  'git+https://github.com/Qucs/qucs-test.git'
-  'git+https://github.com/Qucs/qucsator.git'
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/qucs"
@@ -32,11 +30,6 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/qucs"
-
-	git submodule init
-	git config submodule.qucs-test.url $srcdir/qucs-test
-	git config submodule.qucsator.url $srcdir/qucsator
-	git submodule update
 
     ./bootstrap
 }
