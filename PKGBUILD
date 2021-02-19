@@ -47,7 +47,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20210217.r0.gcd560d8023bf
+pkgver=20210219.r0.gabaf6f60176f
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -198,7 +198,7 @@ _package() {
 
 _package-headers() {
    pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-   depends=('linux-next-git')
+   depends=('linux-next-git' 'pahole')
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -306,4 +306,4 @@ done
 sha512sums=('SKIP'
             'a37860b6b2eb0aadcd394416789d3e81da85058c1a6acaca808543fc99d132fa9c3ece1d64bb53c9c2ea0fc01ff96fdece46c6c83a71ac2c6f885e4b674bce82'
             '715e60d1bd6be9e79deb153210c35b797160df536844840335e6742989ca4d422fb2cbc4ac7544b71675413d9a532901483a26eec28f5addb461a3ae20558aa0'
-            'e14cd0cb4bcf938d084b2839c11c04ff218e5f911ac0b6cc695902fbb520387ac630cbcfd3b0156d01ee8f53ccf111fd2051c2ac827b0769aebb6c33a3950ded')
+            '6479ce77d9eaa9aceef6a9ad45f794e56baafcf56f1388283d03c6ccab771f5aaa72f0e9db8256c013ed4ef454b7ab0637b6e4105708808d2fabcacfbfe1640d')
