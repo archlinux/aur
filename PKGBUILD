@@ -3,7 +3,7 @@
 
 _name="sanic"
 pkgname="python-$_name"
-pkgver=20.9.0
+pkgver=20.12.2
 pkgrel=1
 pkgdesc='Async Python 3.6+ web server/framework | Build fast. Run fast.'
 arch=("any")
@@ -20,7 +20,7 @@ depends=(
 )
 makedepends=("python-setuptools")
 source=("https://github.com/huge-success/${_name}/archive/v${pkgver}.tar.gz")
-sha256sums=('8dadd84153f8f6901faf633ccae79574ae3a7a0c9a58d0e30358b6c91a432353')
+sha256sums=('f31db10dbad7e8232d0379a1d75277d8f435572d50cda59dfa7cab15104fa082')
 
 build() {
     cd "$_name-$pkgver"
