@@ -1,0 +1,92 @@
+diff --git a/wf/peakgen.c b/wf/peakgen.c
+index 405e0ba..6023657 100644
+--- a/wf/peakgen.c
++++ b/wf/peakgen.c
+@@ -36,6 +36,7 @@
+ #include <glib.h>
+ #include <glib/gprintf.h>
+ #include <glib/gstdio.h>
++#include <gio/gio.h>
+ #ifdef USE_SNDFILE
+ #include <sndfile.h>
+ #else
+@@ -206,7 +207,7 @@ waveform_ensure_peakfile__sync (Waveform* w)
+ 	gchar* peak_filename = waveform_get_peak_filename(filename);
+ 	if(!peak_filename) goto out;
+ 
+-	if(g_file_test(peak_filename, G_FILE_TEST_EXISTS)){ 
++	if(g_file_test(peak_filename, G_FILE_TEST_EXISTS)){
+ 		dbg (1, "peak file exists. (%s)", peak_filename);
+ 
+ 		/*
+@@ -329,7 +330,7 @@ wf_ff_peakgen (const char* infilename, const char* peak_filename)
+ 	if(!ad_open(&f, infilename)) return false;
+ 
+ 	gchar* basename = g_path_get_basename(peak_filename);
+-	gchar* tmp_path = g_build_filename("/tmp", basename, NULL);
++	gchar* tmp_path = g_build_filename(g_get_tmp_dir(), basename, NULL);
+ 	g_free(basename);
+ 
+ #ifdef USE_FFMPEG
+@@ -520,9 +521,19 @@ wf_ff_peakgen (const char* infilename, const char* peak_filename)
+ #endif
+ 
+ 	if(total_readcount){
+-		int renamed = !rename(tmp_path, peak_filename);
++		GError *err = NULL;
++		GFile *tmp_file = g_file_new_for_path(tmp_path);
++		GFile *peak_file = g_file_new_for_path(peak_filename);
++		g_file_move(tmp_file, peak_file, G_FILE_COPY_OVERWRITE, NULL, NULL, NULL, &err);
++		g_object_unref(tmp_file);
++		g_object_unref(peak_file);
+ 		g_free(tmp_path);
+-		if(!renamed) return false;
++
++		if(err!=NULL) {
++			printf("Could not move peak file to %s: %s\n", peak_filename, err->message);
++			g_error_free(err);
++			return false;
++		}
+ 	}else{
+ 		pwarn("failed to read from file %s", infilename);
+ 		g_unlink(tmp_path);
+@@ -558,7 +569,7 @@ wf_ff_peakgen_split_stereo (const char* infilename, const char* peak_filename)
+ 	if(!ad_open(&f2, infilename2)) return false;
+ 
+ 	gchar* basename = g_path_get_basename(peak_filename);
+-	gchar* tmp_path = g_build_filename("/tmp", basename, NULL);
++	gchar* tmp_path = g_build_filename(g_get_tmp_dir(), basename, NULL);
+ 	g_free(basename);
+ 
+ #ifdef USE_FFMPEG
+@@ -774,9 +785,19 @@ wf_ff_peakgen_split_stereo (const char* infilename, const char* peak_filename)
+ #endif
+ 
+ 	if(total_readcount){
+-		int renamed = !rename(tmp_path, peak_filename);
++		GError *err = NULL;
++		GFile *tmp_file = g_file_new_for_path(tmp_path);
++		GFile *peak_file = g_file_new_for_path(peak_filename);
++		g_file_move(tmp_file, peak_file, G_FILE_COPY_OVERWRITE, NULL, NULL, NULL, &err);
++		g_object_unref(tmp_file);
++		g_object_unref(peak_file);
+ 		g_free(tmp_path);
+-		if(!renamed) return false;
++
++		if(err!=NULL) {
++			printf("Could not move peak file to %s: %s\n", peak_filename, err->message);
++			g_error_free(err);
++			return false;
++		}
+ 	}else{
+ 		pwarn("failed to read from file %s", infilename);
+ 		if(!g_unlink(tmp_path)){
+@@ -939,7 +960,7 @@ static unsigned long
+ sample2time(SF_INFO sfinfo, long samplenum)
+ {
+ 	// long is good up to 4.2GB
+-	
++
+ 	return (10 * samplenum) / ((sfinfo.samplerate/100) * sfinfo.channels);
+ }
+ #endif

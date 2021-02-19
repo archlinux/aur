@@ -1,0 +1,6 @@
+pkg/
+src/
+samplecat/
+libwaveform/
+samplecat-*.pkg.tar.xz
+samplecat-*.pkg.tar.zst

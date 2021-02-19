@@ -1,46 +1,70 @@
 # Maintainer: Milk Brewster <milk on freenode>
-_pkgname=samplecat
-pkgname=${_pkgname}-git
-pkgver=r529.5fdca5a
+# Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+_pkgname="samplecat"
+pkgname="${_pkgname}-git"
+pkgver=0.3.1.r15.g5e26576
 pkgrel=1
 pkgdesc="A program for cataloguing and auditioning audio samples."
 arch=(x86_64)
 url="http://ayyi.github.io/samplecat"
 license=('GPL')
-groups=()
-depends=('dbus' 'jack' 'libsndfile' 'sqlite' 'ffmpeg' 'gtk2' 'sdl' 'libass' 'gtkglext' 'fftw' 'ladspa' 'python')
-makedepends=('git')
-provides=('samplecat' 'samplecat-git')
-conflicts=('samplecat' 'samplecat-git')
-install=
-source=('git+https://github.com/ayyi/samplecat')
-noextract=()
-md5sums=('SKIP')
+depends=(
+    'dbus-glib'
+    'ffmpeg'
+    'fftw'
+    'graphene'
+    'gtk2'
+    'jack'
+    'libsndfile'
+    'libyaml'
+    'mariadb-libs'
+    'sqlite'
+)
+makedepends=(
+    'git'
+    'ladspa'
+    'python'
+)
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=('git+https://github.com/ayyi/samplecat.git'
+        'git+https://github.com/ayyi/libwaveform.git'
+        "libwaveform-peak-tempfiles.diff")
+md5sums=('SKIP'
+         'SKIP'
+         '824d2703d40b2256253b14185171f6f6')
+
 
 pkgver() {
-  cd "$srcdir/samplecat"
+  cd "$srcdir/${_pkgname}"
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
 
 prepare() {
-  cd "$srcdir/samplecat"
-  git submodule update --init 
-  git submodule foreach git pull origin master
-  ./autogen.sh
-  ./configure
+  cd "$srcdir/${_pkgname}"
+  git submodule init
+  git config submodule.waveform.url "${srcdir}/libwaveform"
+  git submodule update
+
+  # https://github.com/ayyi/libwaveform/pull/7
+  cd lib/waveform
+  patch -p1 -N -r - -i "${srcdir}"/libwaveform-peak-tempfiles.diff || :
 }
 
 build() {
-  cd "$srcdir/samplecat"
+  cd "$srcdir/${_pkgname}"
+  ./autogen.sh
+  ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/samplecat"
-  mkdir -p $pkgdir/usr/bin
-  cp src/samplecat $pkgdir/usr/bin
-  # make PREFIX=/usr DESTDIR="$pkgdir/" install
+  cd "$srcdir/${_pkgname}"
+  make DESTDIR="$pkgdir/" install
+  # Layout files not used (yet)?
+  rm -rf "$pkgdir"/usr/etc
 }
