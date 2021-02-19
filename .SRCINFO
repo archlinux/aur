@@ -8,6 +8,7 @@ pkgbase = bubblejail-git
 	makedepends = git
 	makedepends = meson
 	makedepends = m4
+	makedepends = python-sphinx
 	depends = python
 	depends = python-xdg
 	depends = bubblewrap

@@ -13,7 +13,7 @@ optdepends=(
 	'bash-completion: completions for bash shell'
 	'fish: completions for fish shell'
 	)
-makedepends=('git' 'meson' 'm4')
+makedepends=('git' 'meson' 'm4' 'python-sphinx')
 source=("$pkgname"::"git+https://github.com/igo95862/bubblejail")
 md5sums=('SKIP')
 
