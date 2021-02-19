@@ -1,0 +1,21 @@
+pkgbase = vim-coc-master-git
+	pkgdesc = Intellisense engine for Vim8 & Neovim, full language server protocol support as VSCode (master branch)
+	pkgver = 0.0.80.r23.ga336a8bc
+	pkgrel = 1
+	url = https://github.com/neoclide/coc.nvim
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = yarn
+	depends = vim
+	depends = nodejs
+	optdepends = npm: for installing coc extensions
+	optdepends = yarn: for installing coc extensions
+	optdepends = vim-coc-extras-meta: some basic extensions
+	provides = vim-coc
+	conflicts = vim-coc
+	source = git+https://github.com/neoclide/coc.nvim.git#branch=master
+	sha256sums = SKIP
+
+pkgname = vim-coc-master-git
+
