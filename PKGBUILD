@@ -1,18 +1,18 @@
 # Maintainer: Roman Holovin <https://wiki.archlinux.org/index.php/Special:EmailUser/Dantix>
 
 pkgname=ttf-weather-icons
-pkgver=2.0.10
-pkgrel=3
+pkgver=2.0.12
+pkgrel=1
 
 pkgdesc="Icon font with 222 weather themed icons"
 url="https://erikflowers.github.io/weather-icons/"
 license=('custom:"OFL"')
 
 arch=('any')
-source=("https://github.com/erikflowers/weather-icons/archive/$pkgver.tar.gz"
+source=("ttf-weather-icons-$pkgver.tar.gz::https://github.com/erikflowers/weather-icons/archive/$pkgver.tar.gz"
         "LICENSE")
 sha256sums=(
-  '51fc93425a61754b34ce298158de28984ad5904e58d42bbfc225704edde20d02'
+  'e6a0693ec10ba423f26b7e6abcbf67ea7bec69fc0afaabb0ddd62799cdc91223'
   'ce243fd4a62b1b76c959ffba6ec16a7a3146b2362d441ae4f9f7f32fc3750d6c')
 
 package() {
