@@ -2,7 +2,7 @@
 
 _pkgname=adb_shell
 pkgname="python-${_pkgname}"
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A Python implementation of ADB with shell and FileSync functionality."
 arch=('any')
@@ -13,8 +13,8 @@ makedepends=('python-setuptools')
 optdepends=('python-aiofiles: async API'
             'python-libusb1: To connect to a device via USB')
 source=("${pkgname}-${pkgver}.tar.gz::https://pypi.python.org/packages/source/${_pkgname:0:1}/${_pkgname/-/_}/${_pkgname/-/_}-${pkgver}.tar.gz")
-sha256sums=('9df0c7dd2e2bac65f388bdcf37296b5c069ec1a4508f442030eb64a34062c95b')
-b2sums=('988ce3caa2fea1d98f9bb33d5d9251900f8e9cb32bfae3b0d84ccfc74583f7a24b6c239d74d537a111aa396308b57e7e8e483d4201a10fd72a2aff51bac94e4f')
+sha256sums=('9dd205b94ea8833f1434483a7b7a60139e3d58144e7dd89aa2439bf3658240fb')
+b2sums=('299acffdceead5dea69875a2427e3e17fe42945959cbd756c407fba0f1bcfae3bb5c96fa754e6b0d6277e30946dea12996e2b1dff2deb6cdff1eebb3c311c3c8')
 
 build() {
   cd "${_pkgname/-/_}-${pkgver}"
