@@ -1,0 +1,27 @@
+--- onscripter-jh/simd/int8x16.inl	2021-02-19 19:43:13.985431821 +0800
++++ onscripter-jh.new/simd/int8x16.inl	2021-02-19 19:44:53.623835170 +0800
+@@ -105,12 +105,12 @@
+ 
+   inline void store_u_32(void* m, uint8x16 a) {
+ #ifdef USE_SIMD_X86_SSE2
+-#if !defined(__clang_major__) || __clang_major__ >= 8
+-    _mm_storeu_si32(reinterpret_cast<__m128i*>(m), a);
+-#else
+-    // _mm_storeu_si32 is unavailable in Clang 7;
++//#if !defined(__clang_major__) || __clang_major__ >= 8
++//    _mm_storeu_si32(reinterpret_cast<__m128i*>(m), a);
++//#else
++//    // _mm_storeu_si32 is unavailable in Clang 7;
+     _mm_store_ss(reinterpret_cast<float*>(m), _mm_castsi128_ps(a));
+-#endif
++//#endif
+ #elif USE_SIMD_ARM_NEON
+     vst1q_lane_u32(reinterpret_cast<uint32_t*>(m), a, 1);
+ #endif
+@@ -139,4 +139,4 @@
+     return vmovl_u8(vget_low_u8(a));
+ #endif
+   }
+-}
+\ No newline at end of file
++}

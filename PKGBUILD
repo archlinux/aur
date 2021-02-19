@@ -4,7 +4,7 @@
 pkgname=onscripter-jh
 pkgdesc="An optimized SDL2 port of ONScripter, a game scripting engine"
 pkgver=0.7.6.848ebad
-pkgrel=1
+pkgrel=2
 _commit=848ebadd3fd54b2c
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 # origin upstream is 404 now
@@ -28,12 +28,14 @@ depends=('sdl2'
 makedepends=('git')
 source=("${pkgname}::git+${url}"
         "display-flash-fix.patch"
-        "simd-remove.patch"
-        "lua51.patch")
+        "target.patch"
+        "lua51.patch"
+        "gcc-simd.patch")
 sha256sums=('SKIP'
             'e9ecb802e327de4e8ab81dc84c294f20e629900472d3d4d703ac1e10c418cfff'
-            '15f7f0d457618ab86a78ef91495acf544e34eaf6d4fce44e94ed0c7bc72c710b'
-            '321776cd8f641f510849edd959ebd0383453a38f1ef8d17c8f36f035f43780cc')
+            'd169f6ec66c70429bce973be76f77c8ae05ecaead30e1586e5f68e284dfc4b94'
+            '321776cd8f641f510849edd959ebd0383453a38f1ef8d17c8f36f035f43780cc'
+            'c0cdfdcc8bc62d9a6e5d4cf1f12cec2fd42075a571784a469b3909cd0eb21721')
 
 pkgver() {
   cd ${srcdir}/${pkgname}
@@ -46,9 +48,10 @@ prepare() {
     
   mv onscripter.cpp ONScripter.cpp
 
-  patch -p1 < ${srcdir}/simd-remove.patch 
+  patch -p1 < ${srcdir}/target.patch 
   patch -p1 < ${srcdir}/display-flash-fix.patch
   patch -p1 < ${srcdir}/lua51.patch
+  patch -p1 < ${srcdir}/gcc-simd.patch
 }
 
 build() {
