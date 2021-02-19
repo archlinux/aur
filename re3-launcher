@@ -39,7 +39,7 @@ for game_dir in \
   "$HOME/.local/share/Steam/steamapps/common/Grand Theft Auto 3" \
   "$PWD" \
 ; do
-  if [ -r "$game_dir/gta3.ini" ]
+  if [ -r "$game_dir/data/gta3.dat" ]
   then
     cd "$game_dir"
     run "$@"
