@@ -1,6 +1,6 @@
 pkgbase = raven-reader-bin
 	pkgdesc = Simple RSS Reader app made using electron and vue.js
-	pkgver = 0.6.6
+	pkgver = 1.0.40
 	pkgrel = 1
 	url = https://github.com/hello-efficiency-inc/raven-reader/releases
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = raven-reader-bin
 	depends = libdbusmenu-glib
 	provides = raven-reader
 	conflicts = raven-reader
-	source = raven-reader-0.6.6.AppImage::https://github.com/hello-efficiency-inc/raven-reader/releases/download/v0.6.6/Raven-Reader-0.6.6.AppImage
-	md5sums = 7b9b6c1794d38414762d086ce97bba0b
+	source = raven-reader-1.0.40.AppImage::https://github.com/hello-efficiency-inc/raven-reader/releases/download/v1.0.40/Raven-Reader-1.0.40.AppImage
+	md5sums = e1c99e1c24130e806bfb86b2ea86735d
 
 pkgname = raven-reader-bin
 
