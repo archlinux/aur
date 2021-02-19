@@ -1,0 +1,83 @@
+From cc618e03d290581bc7ec935ac65f31889fc73c1b Mon Sep 17 00:00:00 2001
+From: KokaKiwi <kokakiwi+git@kokakiwi.net>
+Date: Fri, 19 Feb 2021 13:47:42 +0100
+Subject: [PATCH] Arch Linux customisations.
+
+---
+ source/views/view_pattern.cpp | 8 ++++----
+ source/window.cpp             | 9 +++------
+ 2 files changed, 7 insertions(+), 10 deletions(-)
+
+diff --git a/source/views/view_pattern.cpp b/source/views/view_pattern.cpp
+index ad0553a..41b50d5 100644
+--- a/source/views/view_pattern.cpp
++++ b/source/views/view_pattern.cpp
+@@ -104,7 +104,7 @@ namespace hex {
+             std::string magicFiles;
+ 
+             std::error_code error;
+-            for (const auto &entry : std::filesystem::directory_iterator("magic", error)) {
++            for (const auto &entry : std::filesystem::directory_iterator("/usr/share/imhex", error)) {
+                 if (entry.is_regular_file() && entry.path().extension() == ".mgc")
+                     magicFiles += entry.path().string() + MAGIC_PATH_SEPARATOR;
+             }
+@@ -140,7 +140,7 @@ namespace hex {
+ 
+ 
+             std::error_code errorCode;
+-            for (auto &entry : std::filesystem::directory_iterator("patterns", errorCode)) {
++            for (auto &entry : std::filesystem::directory_iterator("/usr/share/imhex/patterns", errorCode)) {
+                 if (!entry.is_regular_file())
+                     continue;
+ 
+@@ -277,7 +277,7 @@ namespace hex {
+             ImGui::Text("hex.view.pattern.accept_pattern.question"_lang);
+ 
+             confirmButtons("hex.common.yes"_lang, "hex.common.no"_lang, [this]{
+-                this->loadPatternFile("patterns/" + this->m_possiblePatternFiles[this->m_selectedPatternFile]);
++                this->loadPatternFile("/usr/share/patterns/patterns/" + this->m_possiblePatternFiles[this->m_selectedPatternFile]);
+                 ImGui::CloseCurrentPopup();
+             }, []{
+                 ImGui::CloseCurrentPopup();
+@@ -344,4 +344,4 @@ namespace hex {
+         }
+     }
+ 
+-}
+\ No newline at end of file
++}
+diff --git a/source/window.cpp b/source/window.cpp
+index 27c8e91..9938a8c 100644
+--- a/source/window.cpp
++++ b/source/window.cpp
+@@ -558,7 +558,7 @@ namespace hex {
+         #if defined(OS_WINDOWS)
+             std::filesystem::path resourcePath = std::filesystem::path((SharedData::mainArgv)[0]).parent_path();
+         #elif defined(OS_LINUX) || defined(OS_MACOS)
+-            std::filesystem::path resourcePath = "/usr/share/ImHex";
++            std::filesystem::path resourcePath = "/usr/share/imhex";
+         #else
+             std::filesystem::path resourcePath = "";
+             #warning "Unsupported OS for custom font support"
+@@ -594,10 +594,7 @@ namespace hex {
+     }
+ 
+     void Window::initPlugins() {
+-        try {
+-            auto pluginFolderPath = std::filesystem::path((SharedData::mainArgv)[0]).parent_path() / "plugins";
+-            PluginHandler::load(pluginFolderPath.string());
+-        } catch (std::runtime_error &e) { return; }
++        PluginHandler::load("/usr/lib/imhex/plugins");
+ 
+         for (const auto &plugin : PluginHandler::getPlugins()) {
+             plugin.initializePlugin();
+@@ -619,4 +616,4 @@ namespace hex {
+         PluginHandler::unload();
+     }
+ 
+-}
+\ No newline at end of file
++}
+-- 
+2.30.1
+
