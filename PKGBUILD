@@ -1,11 +1,11 @@
 pkgname=tlstunnel-git
-pkgver=r49.09d28676a6b0
-pkgrel=2
+pkgver=r65.c5d8549b091a
+pkgrel=1
 pkgdesc='A TLS reverse proxy'
 arch=('x86_64')
 url="https://sr.ht/~emersion/tlstunnel"
 license=('MIT')
-makedepends=('go' 'scdoc')
+makedepends=('git' 'go' 'scdoc')
 source=(
   "$pkgname::git+https://git.sr.ht/~emersion/tlstunnel"
   'tlstunnel.service'
@@ -29,7 +29,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  make
+  make GOFLAGS="$GOFLAGS"
 }
 
 check() {
