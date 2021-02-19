@@ -3,13 +3,13 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 pkgname=mingw-w64-cairo-bootstrap
 pkgver=1.17.4
-pkgrel=1
+pkgrel=2
 pkgdesc="2D graphics library with support for multiple output devices (mingw-w64 bootstrap)"
 _commit=156cd3eaaebfd8635517c2baf61fcf3627ff7ec2  # tags/1.17.4^0
 arch=(any)
 url="http://cairographics.org/"
 license=("LGPL" "MPL")
-makedepends=(mingw-w64-configure git)
+makedepends=(mingw-w64-configure git gtk-doc)
 depends=(mingw-w64-pixman mingw-w64-glib2 mingw-w64-fontconfig mingw-w64-libpng mingw-w64-lzo)
 options=(!strip !buildflags staticlibs)
 provides=(${pkgname%-bootstrap}=$pkgver)
@@ -35,9 +35,6 @@ prepare() {
   patch -p1 -i ${srcdir}/0009-standalone-headers.mingw.patch
   patch -p1 -i ${srcdir}/0026-create-argb-fonts.all.patch
   patch -p1 -i ${srcdir}/0027-win32-print-fix-unbounded-surface-assertion.patch
-
-  # Fix typo
-  sed -i 's/have_png/use_png/g' configure.ac
 
   NOCONFIGURE=1 ./autogen.sh
 }

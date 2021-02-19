@@ -1,13 +1,14 @@
 pkgbase = mingw-w64-cairo-bootstrap
 	pkgdesc = 2D graphics library with support for multiple output devices (mingw-w64 bootstrap)
 	pkgver = 1.17.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cairographics.org/
 	arch = any
 	license = LGPL
 	license = MPL
 	makedepends = mingw-w64-configure
 	makedepends = git
+	makedepends = gtk-doc
 	depends = mingw-w64-pixman
 	depends = mingw-w64-glib2
 	depends = mingw-w64-fontconfig
