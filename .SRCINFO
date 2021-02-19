@@ -1,0 +1,15 @@
+pkgbase = gog-battletech-urban-warfare
+	pkgdesc = DLC for the Battletech game.
+	pkgver = 1.9.1.686r
+	pkgrel = 1
+	url = https://www.gog.com/game/battletech_game
+	arch = x86_64
+	license = custom
+	makedepends = p7zip
+	depends = gog-battletech
+	noextract = battletech_urban_warfare_1_9_1_686r_36568.sh
+	source = battletech_urban_warfare_1_9_1_686r_36568.sh::gog://battletech_urban_warfare_1_9_1_686r_36568.sh
+	sha256sums = 50cff0c5e93e972991364d256d17635030a48fed6301ca0df8329ce456ad9f88
+
+pkgname = gog-battletech-urban-warfare
+
