@@ -6,7 +6,7 @@ url='https://github.com/cartographer-project/cartographer_ros'
 pkgname='ros-noetic-cartographer-rviz-git'
 pkgver=r584.151c563
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('Apache 2.0')
 provides=(${pkgname::-4})
 
@@ -86,7 +86,8 @@ build() {
             -DPYTHON_INCLUDE_DIR=/usr/include/python3.9 \
             -DPYTHON_LIBRARY=/usr/lib/libpython3.9.so \
             -DPYTHON_BASENAME=-python3.9 \
-            -DSETUPTOOLS_DEB_LAYOUT=OFF
+            -DSETUPTOOLS_DEB_LAYOUT=OFF \
+            -DCMAKE_CXX_STANDARD=17
     make
 }
 
