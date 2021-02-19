@@ -1,0 +1,18 @@
+pkgbase = mpv-sponsorblock-git
+	pkgdesc = A script to skip sponsored segments of YouTube videos
+	pkgver = r52.aea7a77
+	pkgrel = 2
+	url = https://github.com/po5/mpv_sponsorblock
+	install = mpv-sponsorblock.install
+	arch = any
+	groups = mpv-plugins
+	license = GPL3
+	makedepends = git
+	depends = mpv
+	depends = python3
+	provides = mpv-sponsorblock
+	source = mpv-sponsorblock::git+https://github.com/po5/mpv_sponsorblock
+	sha256sums = SKIP
+
+pkgname = mpv-sponsorblock-git
+
