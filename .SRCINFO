@@ -1,8 +1,8 @@
 pkgbase = remarkable-client
 	pkgdesc = This is a Linux version of the reMarkable Desktop Client. As far as I know, the development has been discontinued, but it still works. Adding files is as simple as dragging them onto the window.
-	pkgver = 0.0.5
-	pkgrel = 2
-	url = https://remarkable.engineering
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://remarkablewiki.com/tips/client?s[]=linux
 	arch = any
 	license = unknown
 	depends = qt5-svg
@@ -11,8 +11,8 @@ pkgbase = remarkable-client
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
 	depends = qt5-graphicaleffects
-	source = https://remarkable.engineering/remarkable-linux-client-0.0.5-16-1408-g7eca2b66.tgz
-	sha256sums = 1a1519adc6d62359f6f73bc2a4a6e76fb710fed78ca1bc09e46191e825d3058c
+	source = remarkable-linux-client.deb::https://drive.google.com/uc?id=1x_KhRp0_qufjnOO-pyDM1MAhRjeQeJTK
+	sha256sums = ecc6df114778e6d757fd5c2b9516f23ada56f6a3cd4153a8b967688dbbc8d805
 
 pkgname = remarkable-client
 
