@@ -1,7 +1,7 @@
 pkgbase = gnome-terminal-fedora
 	pkgdesc = The GNOME Terminal Emulator with Fedora patches
 	pkgver = 3.38.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.gnome.org/Apps/Terminal
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = gnome-terminal-fedora
 	makedepends = gconf
 	makedepends = vala
 	makedepends = yelp-tools
-	depends = vte3-notification>=0.62.1
+	depends = vte3-notification>=0.62.3
 	depends = gsettings-desktop-schemas
 	depends = dconf
 	optdepends = gconf: for gnome-terminal-migration
@@ -25,10 +25,10 @@ pkgbase = gnome-terminal-fedora
 	conflicts = gnome-terminal
 	options = !emptydirs
 	source = https://download.gnome.org/sources/gnome-terminal/3.38/gnome-terminal-3.38.1.tar.xz
-	source = 0001-build-Don-t-treat-warnings-as-errors.patch-347377a4ef5dee86237b52e9f70620e338c1fdc9::https://src.fedoraproject.org/rpms/gnome-terminal/raw/347377a4ef5dee86237b52e9f70620e338c1fdc9/f/0001-build-Don-t-treat-warnings-as-errors.patch
-	source = gnome-terminal-cntr-ntfy-autottl-ts.patch-347377a4ef5dee86237b52e9f70620e338c1fdc9::https://src.fedoraproject.org/rpms/gnome-terminal/raw/347377a4ef5dee86237b52e9f70620e338c1fdc9/f/gnome-terminal-cntr-ntfy-autottl-ts.patch
-	source = gnome-terminal-backports-from-upstream.patch-347377a4ef5dee86237b52e9f70620e338c1fdc9::https://src.fedoraproject.org/rpms/gnome-terminal/raw/f33/f/gnome-terminal-backports-from-upstream.patch
-	source = org.gnome.Terminal.gschema.override-347377a4ef5dee86237b52e9f70620e338c1fdc9::https://src.fedoraproject.org/rpms/gnome-terminal/raw/347377a4ef5dee86237b52e9f70620e338c1fdc9/f/org.gnome.Terminal.gschema.override
+	source = 0001-build-Don-t-treat-warnings-as-errors.patch-9bd5071a07c839d3ab0571e361be1bcadea4a70a::https://src.fedoraproject.org/rpms/gnome-terminal/raw/9bd5071a07c839d3ab0571e361be1bcadea4a70a/f/0001-build-Don-t-treat-warnings-as-errors.patch
+	source = gnome-terminal-cntr-ntfy-autottl-ts.patch-9bd5071a07c839d3ab0571e361be1bcadea4a70a::https://src.fedoraproject.org/rpms/gnome-terminal/raw/9bd5071a07c839d3ab0571e361be1bcadea4a70a/f/gnome-terminal-cntr-ntfy-autottl-ts.patch
+	source = gnome-terminal-backports-from-upstream.patch-9bd5071a07c839d3ab0571e361be1bcadea4a70a::https://src.fedoraproject.org/rpms/gnome-terminal/raw/f33/f/gnome-terminal-backports-from-upstream.patch
+	source = org.gnome.Terminal.gschema.override-9bd5071a07c839d3ab0571e361be1bcadea4a70a::https://src.fedoraproject.org/rpms/gnome-terminal/raw/9bd5071a07c839d3ab0571e361be1bcadea4a70a/f/org.gnome.Terminal.gschema.override
 	sha256sums = d998d4824f38847fdd74bad6b5f09cc8e11b9de8e2a284a439af290714ddf3d1
 	sha256sums = 672615edf1f8e5ede72bdfa2e671ad35d355a1df64f349762899ad7bc7254769
 	sha256sums = 4ef6493b604505cb2005a851b152d7bfece167bb1262e1ea2bcbddda1cec977f

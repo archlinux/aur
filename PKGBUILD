@@ -7,12 +7,12 @@
 _pkgname='gnome-terminal'
 pkgname="${_pkgname}-fedora"
 pkgver=3.38.1
-pkgrel=3
+pkgrel=4
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 arch=('i686' 'x86_64')
 url='https://wiki.gnome.org/Apps/Terminal'
 license=('GPL')
-depends=('vte3-notification>=0.62.1' 'gsettings-desktop-schemas' 'dconf')
+depends=('vte3-notification>=0.62.3' 'gsettings-desktop-schemas' 'dconf')
 makedepends=('intltool' 'itstool' 'docbook-xsl' 'libnautilus-extension' 
              'appdata-tools' 'gnome-shell' 'gconf' 'vala' 'yelp-tools')
 optdepends=('gconf: for gnome-terminal-migration'
@@ -23,17 +23,17 @@ options=('!emptydirs')
 groups=('gnome')
 # Fedora patches: https://src.fedoraproject.org/cgit/rpms/gnome-terminal.git/tree/
 _frepourl='https://src.fedoraproject.org/rpms/gnome-terminal'
-_frepobranch='f33'
-_fcommit='347377a4ef5dee86237b52e9f70620e338c1fdc9'
-_fpatchfile1='0001-build-Don-t-treat-warnings-as-errors.patch'
-_fpatchfile2='gnome-terminal-cntr-ntfy-autottl-ts.patch'
-_fpatchfile3='gnome-terminal-backports-from-upstream.patch'
+_frepobranch='f34'
+_fcommit='9bd5071a07c839d3ab0571e361be1bcadea4a70a'
+_fpatchfile100='0001-build-Don-t-treat-warnings-as-errors.patch'
+_fpatchfile101='gnome-terminal-cntr-ntfy-autottl-ts.patch'
+_fpatchfile000='gnome-terminal-backports-from-upstream.patch'
 _fgsoverridefile='org.gnome.Terminal.gschema.override'
 source=(
 	"https://download.gnome.org/sources/${_pkgname}/${pkgver::4}/${_pkgname}-${pkgver}.tar.xz"
-	"${_fpatchfile1}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile1}"
-	"${_fpatchfile2}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile2}"
-	"${_fpatchfile3}-${_fcommit}::${_frepourl}/raw/${_frepobranch}/f/${_fpatchfile3}"
+	"${_fpatchfile100}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile100}"
+	"${_fpatchfile101}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile101}"
+	"${_fpatchfile000}-${_fcommit}::${_frepourl}/raw/${_frepobranch}/f/${_fpatchfile000}"
 	"${_fgsoverridefile}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fgsoverridefile}"
 )
 sha256sums=('d998d4824f38847fdd74bad6b5f09cc8e11b9de8e2a284a439af290714ddf3d1'
@@ -45,9 +45,9 @@ sha256sums=('d998d4824f38847fdd74bad6b5f09cc8e11b9de8e2a284a439af290714ddf3d1'
 prepare () {
 	cd "${_pkgname}-${pkgver}"
 
-	patch -p1 -i "../${_fpatchfile3}-${_fcommit}"
-	patch -p1 -i "../${_fpatchfile1}-${_fcommit}"
-	patch -p1 -i "../${_fpatchfile2}-${_fcommit}"
+	patch -p1 -i "../${_fpatchfile000}-${_fcommit}"
+	patch -p1 -i "../${_fpatchfile101}-${_fcommit}"
+	patch -p1 -i "../${_fpatchfile100}-${_fcommit}"
 
 	autoreconf -fvi
 }
@@ -58,7 +58,9 @@ build() {
 	            --sysconfdir='/etc' \
 	            --localstatedir='/var' \
 	            --libexecdir="/usr/lib/${_pkgname}" \
+	            --disable-silent-rules \
 	            --disable-static \
+	            --with-gtk=3.0 \
 	            --with-nautilus-extension
 	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 	make
