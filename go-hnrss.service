@@ -6,7 +6,7 @@ After=network.target
 Type=simple
 EnvironmentFile=/etc/go-hnrss.conf
 User=hnrss
-ExecStart=/usr/bin/go-hnrss -bind ${LISTEN_ADDR} -rootRedirect ${ROOT_REDIRECT}
+ExecStart=/usr/bin/go-hnrss -bind ${LISTEN_ADDRESS} -rootRedirect ${ROOT_REDIRECT}
 Restart=always
 
 ProtectSystem=strict
