@@ -6,7 +6,6 @@ pkgbase = neovim-coc-extras-meta-git
 	arch = any
 	depends = neovim-coc-highlight-git
 	depends = neovim-coc-lists-git
-	depends = neovim-coc-marketplace-git
 	depends = neovim-coc-snippets-git
 	depends = neovim-coc-syntax-git
 	depends = neovim-coc-tag-git

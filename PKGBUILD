@@ -9,7 +9,6 @@ provides=('neovim-coc-extras-meta')
 conflicts=('neovim-coc-extras-meta')
 depends=(neovim-coc-highlight-git
          neovim-coc-lists-git
-         neovim-coc-marketplace-git
          neovim-coc-snippets-git
          neovim-coc-syntax-git
          neovim-coc-tag-git
