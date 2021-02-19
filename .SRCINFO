@@ -5,7 +5,6 @@ pkgbase = aurora-git
 	url = https://gitlab.com/hunterbrodie/aurora
 	arch = x86_64
 	license = GPL
-	makedepends = git
 	makedepends = cargo
 	depends = opendoas
 	depends = git
