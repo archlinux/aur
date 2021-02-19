@@ -10,7 +10,7 @@
 
 pkgname="linux-fake-background-webcam-opt-git"
 pkgver="r131.4fbb74b"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Utility for replacing the background of a webcam for video conferencing. Installs dependencies to /opt/."
 # TensorFlow.js currently only supports x86_64. See: https://git.io/JL5nY.
 arch=("x86_64")

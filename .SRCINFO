@@ -1,7 +1,7 @@
 pkgbase = linux-fake-background-webcam-opt-git
 	pkgdesc = Utility for replacing the background of a webcam for video conferencing. Installs dependencies to /opt/.
 	pkgver = r131.4fbb74b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fangfufu/Linux-Fake-Background-Webcam
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = linux-fake-background-webcam-opt-git
 	depends = nodejs
 	depends = python
 	depends = v4l2loopback-dkms
-	optdepends = cuda=10.0: Nvidia GPU support
+	optdepends = cuda=10.0.130: Nvidia GPU support
 	optdepends = cudnn: Nvidia GPU support
 	source = linux-fake-background-webcam-opt-git::git+https://github.com/fangfufu/Linux-Fake-Background-Webcam.git
 	md5sums = SKIP
