@@ -3,12 +3,12 @@
 _pkgname=docutils-stubs
 pkgname=python-$_pkgname
 pkgver=0.0.20
-pkgrel=1
+pkgrel=2
 pkgdesc='PEP 561 based Type information for docutils'
 arch=('any')
 url='https://github.com/tk0miya/docutils-stubs'
 license=('custom:Unlicense')
-depends=('python')
+depends=('python' 'python-docutils')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
         'https://raw.githubusercontent.com/tk0miya/docutils-stubs/1f13dcdbebb06bc742b797bc5765a70d734a7fbc/LICENSE')
