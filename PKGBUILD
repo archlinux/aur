@@ -1,5 +1,5 @@
 pkgname=google-calendar-nativefier-dark
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 # Dark theme by pyxelr (https://userstyles.org/styles/143026/dark-google-calendar-2020)
 
@@ -13,7 +13,7 @@ source=($pkgname.png
 makedepends=(nodejs nodejs-nativefier npm)
 sha256sums=('97e7237e745704869306cc96856e320d673140ff6f91f9ed61b592e7afc0f176'
             '28a8e5d48c8cb41998b47ebfde05ad8c765bd15cc5e66cf036e3419547562612'
-            '55c304592d5e31fce4476810e264c96dd914048c014417f77c7c3fb73bbec658')
+            'bd1a3d162153596ac3bda552de689d0bde95f038fcaf4f0d1143b2bdf16d03b2')
 
 _instname=google-calendar-dark
 
