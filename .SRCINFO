@@ -1,0 +1,13 @@
+pkgbase = easytax-ag-2019
+	pkgdesc = Proprietary tax software
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://www.ag.ch/de/dfr/steuern/natuerliche_personen/steuererklaerung__easytax/steuererklaerung_easytax1.jsp
+	arch = x86_64
+	license = unknown
+	depends = jre8-openjdk
+	source = easytax-ag-2019-1.3.tar.gz::https://msg-easytax.ch/ag/2019/EasyTax2019AG_unix_1_3.tar.gz
+	sha256sums = 3529ff933fed340a88436c6d2356fb495389e0606c7b6e22459c2b6e0cbd0b8d
+
+pkgname = easytax-ag-2019
+
