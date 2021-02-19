@@ -1,8 +1,9 @@
 # Maintainer: Evgeniy Filimonov <evgfilim1@gmail.com>
 # Co-Maintainer: Ke Liu <specter119@gmail.com>
+
 pkgname=('python-telegram-bot-git')
 epoch=1
-pkgver=13.2.r2.a34f0b9b
+pkgver=13.3.r0.e9c01c77
 pkgrel=1
 pkgdesc="A Python wrapper around the Telegram Bot API"
 arch=('any')
@@ -12,7 +13,6 @@ license=('LGPL3')
 depends=(
     'python-certifi'
     'python-tornado>=5.1'
-    'python-cryptography' # only outdated 3.3.1 in official repos, latest is 3.4.2
     'python-apscheduler'
     'python-pytz>=2018.6'
 )
@@ -21,15 +21,16 @@ makedepends=(
     'python-setuptools'
 )
 optdepends=(
-    'python-pysocks: SOCKS or HTTP proxy'
+    'python-pysocks: SOCKS or HTTP proxy support'
     'python-ujson: Ultra fast JSON parsing'
+    'python-cryptography: Telegram Passport support'  # [extra]: 3.3.1, [testing]: 3.4.6
 )
 provides=($_provide)
 conflicts=($_provide)
 changelog='CHANGES.rst'
 source=(
     $_provide::git+${url}.git
-    urllib3::git+https://github.com/python-telegram-bot/urllib3.git#branch=ptb
+    "urllib3::git+https://github.com/python-telegram-bot/urllib3.git#branch=ptb"
 )
 sha256sums=('SKIP' 'SKIP')
 
@@ -41,7 +42,7 @@ prepare() {
     git submodule update
     msg2 "Updating changelog..."
     cp ./CHANGES.rst ../../
-    msg2 "Unpin python-apscheduler..."
+    msg2 "Unpinning python-apscheduler..."
     sed -i 's/APScheduler==.*$/APScheduler/' requirements.txt
 }
 
