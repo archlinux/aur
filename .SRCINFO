@@ -9,6 +9,8 @@ pkgbase = gnome-disk-utility-3.4.1
 	depends = gtk3
 	depends = intltool
 	depends = udisks2
+	provides = gnome-disk-utility=3.4.1
+	conflicts = gnome-disk-utility
 	source = http://ftp.gnome.org/pub/gnome/sources/gnome-disk-utility/3.4/gnome-disk-utility-3.4.1.tar.xz
 	md5sums = c5ff303fdc99d6bf85b9fa8e886a99dd
 
