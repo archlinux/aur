@@ -17,7 +17,7 @@ ExecStart=/usr/bin/earthwalker
 LimitNOFILE=1048576
 LimitNPROC=64
 
-# Only allow writes to the following directory and set it to the working directory (user and password data are stored here)
+# Only allow writes to the following directory and set it to the working directory (application data are stored here)
 WorkingDirectory=/var/lib/earthwalker
 ReadWritePaths=/var/lib/earthwalker
 

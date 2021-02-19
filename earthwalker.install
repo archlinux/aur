@@ -2,8 +2,9 @@ post_install() {
 	echo ""
 	echo "##########"
 	echo "#"
-	#TODO echo "#   Remember to configure the server via its environment-variables under /etc/earthwalker.env"
+	echo "#   Remember to configure the server via its configuration file at /etc/earthwalker/config.toml"
 	echo "#   After installing, start/enable the server via 'systemctl enable earthwalker.service --now'"
+	echo '#   earthwalker should then be reachable under http://$yourIPAdress:$PortSetInConfig.'
 	echo "#"
 	echo "##########"
 	echo ""
