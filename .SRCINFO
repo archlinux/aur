@@ -1,10 +1,11 @@
 pkgbase = kimchi-server-git
 	pkgdesc = A bare-bones HTTP server
 	pkgver = r27.770d55444e12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sr.ht/~emersion/kimchi
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = go
 	makedepends = scdoc
 	source = kimchi-server-git::git+https://git.sr.ht/~emersion/kimchi

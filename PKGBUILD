@@ -1,11 +1,11 @@
 pkgname=kimchi-server-git
 pkgver=r27.770d55444e12
-pkgrel=2
+pkgrel=3
 pkgdesc='A bare-bones HTTP server'
 arch=('x86_64')
 url="https://sr.ht/~emersion/kimchi"
 license=('MIT')
-makedepends=('go' 'scdoc')
+makedepends=('git' 'go' 'scdoc')
 source=(
   "$pkgname::git+https://git.sr.ht/~emersion/kimchi"
   'kimchi.service'
