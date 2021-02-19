@@ -1,10 +1,12 @@
 pkgbase = spdk-git
 	pkgdesc = spdk-git: headers, libs, and scripts
 	pkgver = r0.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://spdk.io/
 	arch = x86_64
 	license = BSD
+	makedepends = cmake
+	makedepends = meson
 	depends = glibc
 	provides = spdk
 	conflicts = spdk

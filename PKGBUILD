@@ -1,12 +1,13 @@
 # Maintainer: wuxb <wuxb45 at gmail dot com>
 pkgname=spdk-git
 pkgver=r0.0   # pkgver() updates this
-pkgrel=6
+pkgrel=7
 pkgdesc='spdk-git: headers, libs, and scripts'
 arch=('x86_64')
 license=('BSD')
 url='https://spdk.io/'
 depends=('glibc')
+makedepends=('cmake' 'meson')
 provides=('spdk')
 conflicts=('spdk' 'dpdk')
 source=("$pkgname::git+https://github.com/spdk/spdk.git")
@@ -22,7 +23,6 @@ pkgver() {
 prepare () {
   cd "$srcdir/$pkgname"
   git submodule update --init
-  sed -i '/^[ 	]*printf/d' lib/env_dpdk/init.c
 }
 
 build() {
