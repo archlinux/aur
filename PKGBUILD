@@ -3,14 +3,14 @@
 _gitname=applet-window-buttons
 pkgname=plasma5-applets-window-buttons-git
 pkgver=0.8.1.r0.g1668c69
-pkgrel=3
+pkgrel=1
 pkgdesc="Plasma 5 applet in order to show window buttons in your panels"
 arch=(x86_64)
 url="https://github.com/psifidotos/${_gitname}"
 license=(GPL)
 depends=(plasma-workspace)
 makedepends=(git extra-cmake-modules)
-conflicts=(plasma5-applets-window-buttons)
+conflicts=(plasma5-applets-window-buttons libappletdecoration)
 provides=(plasma5-applets-window-buttons libappletdecoration)
 source=("git+${url}.git")
 sha256sums=('SKIP')

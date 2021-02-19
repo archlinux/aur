@@ -1,7 +1,7 @@
 pkgbase = plasma5-applets-window-buttons-git
 	pkgdesc = Plasma 5 applet in order to show window buttons in your panels
 	pkgver = 0.8.1.r0.g1668c69
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/psifidotos/applet-window-buttons
 	arch = x86_64
 	license = GPL
@@ -9,7 +9,9 @@ pkgbase = plasma5-applets-window-buttons-git
 	makedepends = extra-cmake-modules
 	depends = plasma-workspace
 	provides = plasma5-applets-window-buttons
+	provides = libappletdecoration
 	conflicts = plasma5-applets-window-buttons
+	conflicts = libappletdecoration
 	source = git+https://github.com/psifidotos/applet-window-buttons.git
 	sha256sums = SKIP
 
