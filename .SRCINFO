@@ -1,17 +1,18 @@
 pkgbase = mathics-django
 	pkgdesc = The Django front-end to Mathics.
-	pkgver = 1.1.0rc1
+	pkgver = 2.0.0
 	pkgrel = 1
-	url = https://mathics.github.io/
+	url = https://mathics.org/
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = mathics-scanner
 	depends = mathics
 	depends = python-django
+	depends = python-networkx
 	depends = python-requests
-	source = mathics-django-1.1.0rc1.tar.gz::https://github.com/Mathics3/mathics-django/releases/download/1.1.0rc1/Mathics-Django-1.1.0rc1.tar.gz
-	sha256sums = 74c9a28adf2dfbc606182366c921aa51f2d01999dc2bd8d6254a358a01b142da
+	source = mathics-django-2.0.0.tar.gz::https://github.com/Mathics3/mathics-django/releases/download/2.0.0/Mathics-Django-2.0.0.tar.gz
+	sha256sums = 9f99ddae7d0824ff056ddb9e0f7ac79fbc932aa34a5200f8d5ac8ce3cb44c4d4
 
 pkgname = mathics-django
 
