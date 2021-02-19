@@ -12,7 +12,7 @@ optdepends=(
 	'bash-completion: completions for bash shell'
 	'fish: completions for fish shell'
 	)
-makedepends=('meson' 'm4')
+makedepends=('meson' 'm4' 'python-sphinx')
 source=(
 	"$url/releases/download/$pkgver/bubblejail-$pkgver.tar.gz"
 	"$url/releases/download/$pkgver/bubblejail-$pkgver.tar.gz.sig"
