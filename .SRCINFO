@@ -1,7 +1,7 @@
 pkgbase = google-keep-nativefier
 	pkgdesc = Electron wrapper for the Google Keep web application
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://keep.google.com
 	arch = x86_64
 	license = MIT
