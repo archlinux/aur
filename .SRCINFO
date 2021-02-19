@@ -1,12 +1,12 @@
 pkgbase = yandex-cloud-bin
 	pkgdesc = Yandex.Cloud CLI
-	pkgver = 0.69.0
+	pkgver = 0.72.0
 	pkgrel = 1
 	url = https://cloud.yandex.ru/docs/cli/
 	arch = x86_64
 	provides = yandex-cloud
-	source = yc-0.69.0::https://storage.yandexcloud.net/yandexcloud-yc/release/0.69.0/linux/amd64/yc
-	md5sums = db7ac235de9bb24443309c25cf0ac547
+	source = yc-0.72.0::https://storage.yandexcloud.net/yandexcloud-yc/release/0.72.0/linux/amd64/yc
+	md5sums = 53fd76807d83108c97bb7d333a05948b
 
 pkgname = yandex-cloud-bin
 
