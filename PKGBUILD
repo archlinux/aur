@@ -3,35 +3,41 @@
 
 _pkgname=terra
 pkgname=$_pkgname-git
-pkgver=0.0.0.r1213.gf6c76fc
+pkgver=1.0.0beta2.r22.g55a73e0
 pkgrel=1
 pkgdesc="Low-level system programming language designed to interoperate seamlessly with Lua"
 url="http://terralang.org/"
 arch=('i686' 'x86_64')
 license=('MIT')
-makedepends=('git' 'wget' 'clang35' 'llvm35')
-source=("git://github.com/zdevito/terra.git")
-sha256sums=('SKIP')
+makedepends=('clang' 'git' 'llvm')
+_ljc=9143e86498436892cb4316550be4d45b68a61224
+source=("git://github.com/zdevito/terra.git"
+		"LuaJIT-$_ljc.tar.gz::https://github.com/LuaJIT/LuaJIT/archive/$_ljc.tar.gz")
+sha256sums=('SKIP'
+            'befe68612bcc9b812bafd1e596154214848941ed9193c65b5a844540a6af5a4d')
 
-# Upstream doesn't have sane release tags yet but is moving
-# towards semver. This will let us migrate to that when they
-# do release (currently there is a 1.0.0-beta tag)
 prepare() {
 	cd "$_pkgname"
-	git tag -f 0.0.0 $(git rev-list --max-parents=0 HEAD)
+	cat <<- EOF > Makefile.inc
+		LLVM_CONFIG := /opt/llvm90/bin/llvm-config
+		CLANG := /opt/llvm90/bin/clang
+	EOF
+	cp ../LuaJIT-$_ljc.tar.gz build/
+	sed -e '/curl/d;/wget/d' -i Makefile
 }
 
 pkgver() {
 	cd "$_pkgname"
-	git describe --tags --abbrev=7 --match="[0-9\.]*" HEAD | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --tags --abbrev=7 --match="release-[0-9\.]*" HEAD |
+		sed 's/release-//;s/-beta/beta/;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/$_pkgname"
+	cd "$_pkgname"
 	make
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
+	cd "$_pkgname"
 	cp -r release "$pkgdir/usr"
 }
