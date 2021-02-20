@@ -1,0 +1,14 @@
+pkgbase = ec
+	pkgdesc = A desk calculator with vectors and quotations
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.sr.ht/~subsetpark/ec
+	arch = x86_64
+	license = BSD3
+	depends = janet
+	provides = ec
+	source = https://git.sr.ht/~subsetpark/ec/archive/v0.1.0.tar.gz
+	sha256sums = d353ccd1c1d243153512084e4032cc87a89b164c67adf02b55f8b0fbabbf6882
+
+pkgname = ec
+
