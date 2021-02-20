@@ -2,7 +2,7 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=pantheon-files-git
-pkgver=r7239.813bcd1ea
+pkgver=r7398.789df8e04
 pkgrel=1
 pkgdesc='The Pantheon File Browser'
 arch=(x86_64)
@@ -19,13 +19,13 @@ depends=(
   libcanberra
   libgee
   libgit2-glib
-  granite-git
+  libgranite.so
   libnotify
   pango
   sqlite
   zeitgeist
   libcloudproviders
-  plank
+  pantheon-dock
 )
 makedepends=(
   git
@@ -51,7 +51,7 @@ pkgver() {
 }
 
 build() {
-  arch-meson pantheon-files build 
+  arch-meson pantheon-files build
   ninja -C build
 }
 
