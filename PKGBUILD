@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=calls
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Phone dialer and call handler"
 arch=(i686 x86_64 armv7h aarch64)
@@ -22,7 +22,7 @@ makedepends=(
 	vala
 )
 source=("${url}/-/archive/v${pkgver}/calls-v${pkgver}.tar.gz")
-sha256sums=('96fc7622500bd5cf5d60f045734004b5a8761609efbad86631a05b53407574a3')
+sha256sums=('6b0928e3b40819082a0b409b09f94c6698dd78af0b516cb2b5d389ed351b1c55')
 
 build() {
 	arch-meson calls-v${pkgver} build -Dtests=false
