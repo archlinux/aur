@@ -1,0 +1,6 @@
+src/
+pkg/
+timescaledb/
+*.tar.gz
+*.tar.xz
+*.tar.zst
