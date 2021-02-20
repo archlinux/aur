@@ -10,6 +10,11 @@ depends=('zlib' 'expat')
 source=(git://github.com/newflasher/newflasher)
 md5sums=('SKIP')
 
+pkgver() {
+  cd ${srcdir}/${_pkgname}
+  git rev-list --count HEAD
+}
+
 build() {
     cd "$srcdir"/newflasher
     make
