@@ -1,13 +1,13 @@
 pkgbase = pantheon-screenshot-git
 	pkgdesc = The Pantheon Screenshot Tool
-	pkgver = 1.7.1.r96.gf44ee9d
+	pkgver = 1.7.1.r132.ge33fa59
 	pkgrel = 1
 	url = https://github.com/elementary/screenshot-tool
 	arch = x86_64
 	groups = pantheon-unstable
 	license = GPL3
 	makedepends = git
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = intltool
 	makedepends = meson
 	makedepends = vala
@@ -25,4 +25,3 @@ pkgbase = pantheon-screenshot-git
 	sha256sums = SKIP
 
 pkgname = pantheon-screenshot-git
-

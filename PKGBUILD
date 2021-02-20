@@ -1,17 +1,17 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-screenshot-git
-pkgver=1.7.1.r96.gf44ee9d
+pkgver=1.7.1.r132.ge33fa59
 pkgrel=1
 pkgdesc='The Pantheon Screenshot Tool'
 arch=('x86_64')
 url='https://github.com/elementary/screenshot-tool'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 
+depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc'
          'gtk3' 'libcanberra' 'libhandy'
          'libgranite.so')
-makedepends=('git' 'granite' 'intltool' 'meson' 'vala')
+makedepends=('git' 'granite-git' 'intltool' 'meson' 'vala')
 provides=('pantheon-screenshot')
 conflicts=('pantheon-screenshot')
 source=("pantheon-screenshot::git+https://github.com/elementary/screenshot-tool.git")
