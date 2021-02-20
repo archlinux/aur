@@ -4,8 +4,8 @@ pkgname=(yaru-remix-gtk-theme-git
          yaru-remix-gnome-shell-theme-git
          yaru-remix-icon-theme-git
          yaru-remix-wallpaper-git)
-pkgver=20.10.1.r65.g23b4478a
-pkgrel=2
+pkgver=20.10.1.r67.gcc7e4163
+pkgrel=1
 pkgdesc="Yaru-remix is a fork of Yaru theme"
 arch=(any)
 url="https://github.com/Muqtxdir/${pkgbase%-git}"
