@@ -1,0 +1,40 @@
+pkgbase = ros-noetic-imu-filter-madgwick
+	pkgdesc = IMU Madgwick filter
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://wiki.ros.org/imu_filter_madgwick?distro=noetic
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = GPL
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-catkin
+	makedepends = ros-noetic-roscpp
+	makedepends = ros-noetic-sensor-msgs
+	makedepends = ros-noetic-geometry-msgs
+	makedepends = ros-noetic-tf2
+	makedepends = ros-noetic-tf2-geometry-msgs
+	makedepends = ros-noetic-tf2-ros
+	makedepends = ros-noetic-nodelet
+	makedepends = ros-noetic-pluginlib
+	makedepends = ros-noetic-message-filters
+	makedepends = ros-noetic-dynamic-reconfigure
+	depends = ros-noetic-catkin
+	depends = ros-noetic-roscpp
+	depends = ros-noetic-sensor-msgs
+	depends = ros-noetic-geometry-msgs
+	depends = ros-noetic-tf2
+	depends = ros-noetic-tf2-geometry-msgs
+	depends = ros-noetic-tf2-ros
+	depends = ros-noetic-nodelet
+	depends = ros-noetic-pluginlib
+	depends = ros-noetic-message-filters
+	depends = ros-noetic-dynamic-reconfigure
+	source = ros-noetic-imu-filter-madgwick-1.2.2.tar.gz::https://github.com/ccny-ros-pkg/imu_tools/archive/1.2.2.tar.gz
+	sha256sums = 21a0759cba983595bfe5c09e8c85c5bd597ea8cafea7bb5259638b73e3f1c101
+
+pkgname = ros-noetic-imu-filter-madgwick
+
