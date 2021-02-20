@@ -9,7 +9,7 @@ url="https://github.com/CineEncoder/cine-encoder.git"
 license=('GPL3')
 depends=('qt5-base>=5.15' 'mkvtoolnix-cli>=49.0' 'ffmpeg>=4.2' 'libmediainfo>=20.03')
 source=("https://github.com/CineEncoder/cine-encoder/archive/3.1.tar.gz")
-md5sums=('4c39859015a3941c0b071f94f1d562c4')
+md5sums=('e1787d5c3ec800bf28a6818fec6e18a9')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -20,15 +20,16 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   install -Dm755 cine_encoder "$pkgdir"/usr/bin/cine_encoder
   
-  # install documentation
-  install -Dm644 ABOUT -t "${pkgdir}/usr/share/doc/${pkgname}"
   # install license
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  # install icon
-  install -Dm644 cine-encoder.png -t "${pkgdir}/usr/share/icons/hicolor/64x64/apps/"
+  # install documentation
+  install -Dm644 share/ABOUT -t "${pkgdir}/usr/share/doc/${pkgname}"
+  
   # install .desktop
-  install -Dm644 cine-encoder.desktop -t "${pkgdir}/usr/share/applications/"
+  install -Dm644 share/cine-encoder.desktop -t "${pkgdir}/usr/share/applications/"
+  # install icon
+  install -Dm644 share/cine-encoder.png -t "${pkgdir}/usr/share/icons/hicolor/64x64/apps/"
   # install sound
-  install -Dm644 cine-encoder.wav -t "${pkgdir}/usr/share/sounds/"
+  install -Dm644 share/cine-encoder.wav -t "${pkgdir}/usr/share/sounds/"
 
 }
