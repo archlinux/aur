@@ -2,7 +2,7 @@
 
 pkgname=silentdragon
 pkgver=1.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='HUSH desktop full node GUI wallet that supports z-addresses'
 url='http://git.hush.is/hush/SilentDragon'
 arch=('x86_64')
@@ -24,18 +24,13 @@ build() {
 }
 
 package() {
-  install -d "${pkgdir}/opt/${pkgname}"
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -d "${pkgdir}/usr/bin"
-
   install="${pkgbase}.install"
+  install -Dm755 "${srcdir}/$pkgname/$pkgname" "${pkgdir}/opt/$pkgname/$pkgname"
+  install -Dm644 "${srcdir}/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "${srcdir}/$pkgname.desktop" "${pkgdir}/usr/share/applications/$pkgname.desktop"
   install -Dm644 "${srcdir}/$pkgname.png" "${pkgdir}/opt/${pkgname}/${pkgname}.png"
 
-  cd "silentdragon"
-  install -m 755 ${pkgname} "${pkgdir}/opt/${pkgname}"
-  install -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
-
+  install -d "${pkgdir}/usr/bin"
   ln -s /opt/${pkgname}/silentdragon "${pkgdir}/usr/bin"
 }
 

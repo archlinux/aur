@@ -1,7 +1,7 @@
 pkgbase = silentdragon
 	pkgdesc = HUSH desktop full node GUI wallet that supports z-addresses
 	pkgver = 1.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://git.hush.is/hush/SilentDragon
 	arch = x86_64
 	license = GPL3
