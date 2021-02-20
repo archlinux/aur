@@ -1,21 +1,25 @@
 # Maintainer: Yoan Blanc <yoan@dosimple.ch>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=headset
-pkgver=3.3.0
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="Discover and collect music on YouTube"
 arch=('x86_64')
 url="https://headsetapp.co"
 license=('MIT')
 depends=('gtk3' 'libnotify' 'nss' 'libxss')
-makedepends=('npm')
+makedepends=('npm' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/headsetapp/headset-electron/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('57904c0aeeb4b4008bafe2cf8863e2125318e56840d08e82932e4811cec56841'
+sha256sums=('cc74ee6dca1c9dc08fc7104a44f37c4f59044676cccdc5614d13064db6d6aa3e'
             '3bc18b531f1e914e317267a570241855dbf11b27347435fe4770d75b74958123')
 
 build() {
 	cd "$pkgname-electron-$pkgver"
+
+	# https://github.com/typicode/husky/issues/851
+	git init .
+
 	npm ci --cache "$srcdir/npm-cache"
 
 	node_modules/.bin/electron-packager . \

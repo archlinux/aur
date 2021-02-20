@@ -1,18 +1,19 @@
 pkgbase = headset
 	pkgdesc = Discover and collect music on YouTube
-	pkgver = 3.3.0
+	pkgver = 3.3.2
 	pkgrel = 1
 	url = https://headsetapp.co
 	arch = x86_64
 	license = MIT
 	makedepends = npm
+	makedepends = git
 	depends = gtk3
 	depends = libnotify
 	depends = nss
 	depends = libxss
-	source = headset-3.3.0.tar.gz::https://github.com/headsetapp/headset-electron/archive/v3.3.0.tar.gz
+	source = headset-3.3.2.tar.gz::https://github.com/headsetapp/headset-electron/archive/v3.3.2.tar.gz
 	source = headset.desktop
-	sha256sums = 57904c0aeeb4b4008bafe2cf8863e2125318e56840d08e82932e4811cec56841
+	sha256sums = cc74ee6dca1c9dc08fc7104a44f37c4f59044676cccdc5614d13064db6d6aa3e
 	sha256sums = 3bc18b531f1e914e317267a570241855dbf11b27347435fe4770d75b74958123
 
 pkgname = headset
