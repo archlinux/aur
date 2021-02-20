@@ -1,0 +1,3 @@
+post_install() {
+	printf "%s\n" "To initialise your dapr cluster, see 'https://docs.dapr.io/getting-started/install-dapr-selfhost/'"
+}
