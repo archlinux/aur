@@ -9,6 +9,7 @@ license=('MIT')
 depends=('neovim' 'nodejs')
 optdepends=('npm: for installing coc extensions'
             'yarn: for installing coc extensions'
+            'watchman: for workspace_didChangeWatchedFiles feature'
             'neovim-coc-extras-meta: some basic extensions')
 makedepends=('git' 'yarn')
 provides=('neovim-coc')
