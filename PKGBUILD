@@ -1,5 +1,5 @@
-# Maintainer: Justin Coffman <jcoffman@foxide.io>
-# Contributor: Justin Coffman <jcoffman@foxide.io>
+# Maintainer: Justin Coffman <jcoffman@sysguard.io>
+# Contributor: Justin Coffman <jcoffman@sysguard.io>
 
 pkgname=tinyfugue
 pkgver=5.0
@@ -13,7 +13,7 @@ depends=('openssl' 'pcre')
 
 source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
 
-b2sums=('e701989c3e1df192c44047995907d27bc6c3286a98bafbb8c803126b973fc4b8fd105c2d1efb211ca7b2f9656f460db4f67d8654e78c0e1693348803cca2e699')
+b2sums=('27680856566985581afde890cb5b157bfddc4464313e60957ad2c6f2880ba2e5788bd5044c2e893a71d32b142cbb723c1002c8ce6880660157cef6ac5484b917')
 
 build() {
     cd "$pkgname-$pkgver"
