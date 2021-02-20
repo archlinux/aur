@@ -1,6 +1,6 @@
 # Maintainer: zer0def <zer0def@github>
 pkgname=cloud-hypervisor
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="A Rust-VMM based cloud hypervisor from Intel"
 url="https://github.com/cloud-hypervisor/cloud-hypervisor"
@@ -11,12 +11,12 @@ optdepends=(
 )
 makedepends=('rust')
 source=("https://github.com/cloud-hypervisor/cloud-hypervisor/archive/v${pkgver}.tar.gz")
-sha512sums=("d672a03bf15610a89710cd8f889ab4f255e8c7611d0625c77e079b651b25965e08d0d58e98a20af92ce01a3064fd000e0de4e730345487bd84086a417e48ea16")
-b2sums=("f74353c5196038aefa578687f9a11a0f5b6e4b92946aaf6a29682c37d05165c5a9f3eff2b6ec6f04246b0a6d60fb55887527448172b46a890c867c9ca2b9af9c")
+sha512sums=("972840c1d7ddf256e0202e639421ec9f7d20cc598cadce859980ce96e30a242fee1d90fd5e8cbe7ded9b8e4ecc6034f9aa2f36b891bab5b64ad32f4516c24fe6")
+b2sums=("1d40a5d239244934e1fa622113cf187af9bcfafe35a337a8aa41c4b260e5137ab8e3bf1621789cd53e209107cebf8d4f50fd62cccec9d81cb26aad85905ef342")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  cargo build --release
+  cargo build --release --locked
 }
 
 package() {
