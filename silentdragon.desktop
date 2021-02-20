@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Silent Dragon
+Comment=Full-node wallet for HUSH cryptocurrency
+Exec=/usr/bin/silentdragon
+Icon=/opt/silentdragon/silentdragon.png
+Terminal=false
+Type=Application
+Categories=Network;
