@@ -1,0 +1,16 @@
+[Desktop Entry]
+Categories=Office;
+Comment=OneTomato
+Comment[zh_CN]=一只番茄
+Comment[zh_TW]=壹只柑仔蜜
+Exec=one-tomato
+Icon=one-tomato
+Name=OneTomato
+Name[zh_CN]=一只番茄
+Name[zh_TW]=壹只柑仔蜜
+StartupNotify=true
+StartupWMClass=OneCuteR
+Terminal=false
+Type=Application
+Version=1.0.4
+X-Deepin-Vendor=user-custom

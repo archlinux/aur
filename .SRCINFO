@@ -1,17 +1,17 @@
 pkgbase = one-tomato
 	pkgdesc = 一个使用dtk实现的番茄钟
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uiYzzi/one-tomato
 	arch = x86_64
 	license = GPL3
 	makedepends = qconf
 	depends = dtkwidget
 	source = one-tomato-1.0.4.tar.gz::https://github.com/uiYzzi/one-tomato/archive/1.0.4.tar.gz
-	source = one-tomato.desktop::https://raw.githubusercontent.com/uiYzzi/one-tomato/master/dabao/extract/opt/apps/top.yzzi.tomato/entries/applications/top.yzzi.tomato.desktop
+	source = one-tomato.desktop
 	source = one-tomato.svg::https://raw.githubusercontent.com/uiYzzi/one-tomato/master/dabao/extract/opt/apps/top.yzzi.tomato/entries/icons/top.yzzi.tomato.svg
 	sha256sums = 70a53d5e9f85a66863318f70455465b7c32c756ee76d93597fc4e49e5064dcb0
-	sha256sums = 624687f1759b5120ef6b18d56d7c05c03683d100fb36ccaa4198434d99248305
+	sha256sums = 3772f787950809b62534cbf3bdd69c36297ff15c2ffc80517e6456103bf72990
 	sha256sums = 1e8d671a4543852d2f7a7349dda1f27079a593d61a0c34598cab342bc6890ec1
 
 pkgname = one-tomato
