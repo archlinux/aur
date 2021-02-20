@@ -1,14 +1,14 @@
 # Maintainer: Eloy Garcia Almaden <eloy.garcia.pca@gmail.com>
 pkgname=buttermanager
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Graphical tool to create BTRFS snapshots, balance filesystems and upgrade the system safetly"
 arch=('x86_64')
 url="https://github.com/egara/buttermanager"
 license=('GPL')
 groups=()
-depends=('btrfs-progs' 'python>=3' 'grub-btrfs' 'python-setuptools')
+depends=('btrfs-progs' 'python>=3' 'grub-btrfs' 'python-setuptools' 'python-pyaml' 'python-pyqt5')
 makedepends=('python>=3' 'git')
 checkdepends=()
 optdepends=()
@@ -19,10 +19,18 @@ backup=()
 options=()
 install=
 changelog=
-source=('git+https://github.com/egara/buttermanager#branch=master')
+# Local source if user wants to build the package locally once the git repo has been cloned
+source=('git+file:///home/egarcia/buttermanager')
+# Remote source
+# source=('git+https://github.com/egara/buttermanager#branch=master')
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
+
+build() {
+        cd "$pkgname"
+        python setup.py build
+}
 
 package() {
         cd "$pkgname"
@@ -31,13 +39,13 @@ package() {
 
         # Installing ButterManager using python-setuptools
         echo -e "\n Installing ButterManager. Please wait..."
-        sudo python setup.py install
+        python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+        # Copying bm_main.py
+        install -Dm644 "$srcdir/$pkgname/$pkgname/bm_main.py" "${pkgdir}/$(python -c "import site; print(site.getsitepackages()[0])")/$pkgname/bm_main.py"
 
         # Copying .desktop file and icon
-        echo -e \n "Creating desktop icon. Finishing the installation"
+        echo -e "\n Creating desktop icon. Finishing the installation"
         install -Dm644 "$srcdir/$pkgname/packaging/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
         install -Dm644 "$srcdir/$pkgname/packaging/$pkgname.svg" "$pkgdir/opt/$pkgname/gui/$pkgname.svg"
-
-	# Removing compiled files with root privileges
-        sudo rm -rf "$srcdir/$pkgname/"
 }
