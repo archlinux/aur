@@ -2,7 +2,7 @@
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=lib32-libplacebo-git
-pkgver=v1.18.0.20.g22a9919
+pkgver=v3.104.0.rc1.65.ge48a162
 pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives. (GIT version)'
 url='https://github.com/haasn/libplacebo'
@@ -11,11 +11,14 @@ license=('LGPL2.1')
 depends=('lib32-vulkan-icd-loader'
          'lib32-lcms2'
          'lib32-shaderc'
+         'lib32-glslang'
+         'lib32-libepoxy'
          )
 makedepends=('git'
              'meson'
              'ninja'
              'vulkan-headers'
+             'python-mako'
              )
 provides=('lib32-libplacebo'
           'libplacebo.so'
@@ -34,8 +37,8 @@ prepare() {
 }
 
 build() {
-  export CFLAGS="-m32"
-  export CXXFLAGS="-m32"
+  CFLAGS+=" -m32"
+  CXXFLAGS+=" -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
   cd build
@@ -46,7 +49,7 @@ build() {
     -D shaderc=enabled \
     -D lcms=enabled
 
-  ninja
+  ninja -v
 }
 
 check() {
