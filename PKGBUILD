@@ -6,16 +6,15 @@
 
 pkgname=asymptote-git
 epoch=2
-pkgver=2.69.git.7.g959b76f7
+pkgver=2.70.git.4.g24b51055
 pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
 url="http://asymptote.sourceforge.net/"
 license=('LGPL3')
 depends=('gc' 'python' 'freeglut' 'gsl' 'fftw' 'libsigsegv')
-makedepends=('git' 'flex' 'ghostscript' 'imagemagick' 'glm' 'asymptote')
+makedepends=('git' 'flex' 'ghostscript' 'imagemagick' 'glm' 'asymptote' 'librsvg')
 optdepends=('python-pyqt5:      for the xasy GUI'
-            'python-imaging:    for the xasy GUI'
             'tix:               for the xasy GUI')
 conflicts=('asymptote')
 provides=('asymptote')
@@ -32,7 +31,6 @@ prepare() {
   cd ${pkgname%-git}/
   touch prc/config.h
   patch -Np1 < "$srcdir"/remove_include.patch
-  #patch -Np1 < "$srcdir"/ghostscript.patch
 }
 
 build() {
@@ -56,8 +54,9 @@ package() {
 
   # move vim files to correct place
   install -dm755 "$pkgdir"/usr/share/vim/vimfiles/{ftdetect,syntax}
-  mv "$pkgdir"/usr/share/asymptote/asy.vim \
-    "$pkgdir"/usr/share/vim/vimfiles/syntax/asy.vim
-  mv "$pkgdir"/usr/share/asymptote/asy_filetype.vim \
-    "$pkgdir"/usr/share/vim/vimfiles/ftdetect/asy.vim
+  install -Dm644 "$pkgdir"/usr/share/asymptote/asy.vim \
+	  "$pkgdir"/usr/share/vim/vimfiles/syntax/asy.vim
+  install -Dm644 "$pkgdir"/usr/share/asymptote/asy_filetype.vim \
+	  "$pkgdir"/usr/share/vim/vimfiles/ftdetect/asy.vim
+  rm "$pkgdir"/usr/share/asymptote/asy.vim "$pkgdir"/usr/share/asymptote/asy_filetype.vim
 }
