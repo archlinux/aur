@@ -1,7 +1,7 @@
 pkgbase = python-sparklines
 	pkgdesc = Bindings for sparklines library.
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/deeplook/sparklines
 	arch = any
 	license = GPL3
