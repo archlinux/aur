@@ -3,7 +3,7 @@
 pkgname="python-mkdocs-mermaid2-plugin-git"
 pkgver=v0.4.1.r16.gb3d84d1
 pkgrel=1
-pkgdesc="A Mermaid graphs plugin for mkdocs"
+pkgdesc="A Mermaid graphs plugin for MkDocs"
 url="https://github.com/fralau/mkdocs-mermaid2-plugin"
 license=("MIT")
 arch=("any")
