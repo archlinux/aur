@@ -87,24 +87,24 @@ plugin:
     type: query_matcher
     args:
       domain:
-        - /usr/share/v2ray/geosite.dat:cn
+        - ext:/usr/share/v2ray/geosite.dat:cn
 
   - tag: query_is_non_local_domain # 匹配非本地域名的插件
     type: query_matcher
     args:
       domain:
-        - /usr/share/v2ray/geosite.dat:geolocation-!cn
+        - ext:/usr/share/v2ray/geosite.dat:geolocation-!cn
 
   - tag: query_is_ad_domain # 匹配广告域名的插件
     type: query_matcher
     args:
       domain:
-        - /usr/share/v2ray/geosite.dat:category-ads-all
+        - ext:/usr/share/v2ray/geosite.dat:category-ads-all
 
   - tag: response_has_local_ip # 匹配本地 IP的插件
     type: response_matcher
     args:
       ip:
-        - /usr/share/v2ray/geoip.dat:cn
+        - ext:/usr/share/v2ray/geoip.dat:cn
 
 include: []
