@@ -1,6 +1,6 @@
 # Maintainer: Matthias Fulz <mfulz [dot] olznet [dot] de>
 
-pkgbase=linux
+pkgbase=linux-ath-dfs
 pkgver=5.10.16.arch1
 pkgrel=1
 pkgdesc='Linux'

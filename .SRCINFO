@@ -1,4 +1,4 @@
-pkgbase = linux
+pkgbase = linux-ath-dfs
 	pkgdesc = Linux
 	pkgver = 5.10.16.arch1
 	pkgrel = 1
@@ -28,7 +28,7 @@ pkgbase = linux
 	sha256sums = SKIP
 	sha256sums = 3c7dd28936a8c88ba6e007af5fd087b4dc0439b2b24a1f5cc3bf0fe154efa862
 
-pkgname = linux
+pkgname = linux-ath-dfs
 	pkgdesc = The Linux kernel and modules
 	depends = coreutils
 	depends = kmod
@@ -40,9 +40,9 @@ pkgname = linux
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
-pkgname = linux-headers
+pkgname = linux-ath-dfs-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel
 
-pkgname = linux-docs
+pkgname = linux-ath-dfs-docs
 	pkgdesc = Documentation for the Linux kernel
 
