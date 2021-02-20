@@ -1,7 +1,7 @@
 # Maintainer: zhullyb <zhullyb [at] outlook dot com>
 
 pkgname=com.antutu.benchmark
-pkgver=1.0.0.550
+pkgver=1.0.0.551
 pkgrel=1
 pkgdesc="安兔兔评测 for linux
  安兔兔评测（AnTuTu）是一款跨平台，支持手机、电脑设备的专业性能评定软件。Linux版本的安兔兔支持一键跑分，可评估CPU/GPU/MEM/UX性能。"
@@ -11,8 +11,8 @@ license=("custom")
 depends=()
 options=(!strip)
 provides=('antutu')
-source=("https://professional-store-packages.chinauos.com/appstore/pool/appstore/c/com.antutu.benchmark/com.antutu.benchmark_1.0.0.550_amd64.deb")
-md5sums=('f0575ca54d4e44a4cd8734a5ff1092f7')
+source=("https://professional-store-packages.chinauos.com/appstore/pool/appstore/c/com.antutu.benchmark/com.antutu.benchmark_${pkgver}_amd64.deb")
+md5sums=('d26d2dd26b0288b99b5d742410ae7a38')
 
 prepare(){
     cd ${srcdir}
