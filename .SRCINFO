@@ -1,6 +1,6 @@
 pkgbase = python-pslab-git
 	pkgdesc = Core library for PSlab desktop
-	pkgver = v1.0.1.r134.gc7ae417
+	pkgver = v2.0.1.r0.g78973c6
 	pkgrel = 1
 	url = https://pslab.io
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = python-pslab-git
 	depends = python-setuptools
 	depends = python-pyserial
 	depends = python-numpy
+	depends = python-scipy
 	provides = pslab-python
 	conflicts = python-pslab
 	options = !emptydirs
