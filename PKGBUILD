@@ -12,6 +12,12 @@ source=("git://github.com/Androxyde/Flashtool"
 "Flashtool.desktop")
 md5sums=('SKIP' 'SKIP')
 
+pkgver() {
+  cd ${srcdir}/${_pkgname}
+  git rev-list --count HEAD
+}
+
+
 build() {
    cd "$srcdir"/Flashtool
    mkdir ./bin
