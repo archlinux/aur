@@ -4,11 +4,11 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=pycharm-eap
-_buildver=211.5538.22
+_buildver=211.6085.15
 _pkgver=2021.1
 _eap=true
 pkgver="${_pkgver}.${_buildver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition."
 arch=("any")
 options=("!strip")
@@ -41,24 +41,13 @@ else
 	"${pkgname}.desktop")
 fi
 	
-sha256sums=("77b5864d7157e6e039399aedd266c2717a84c76e8334729344909aebf535d7ff"
+sha256sums=("9593dd730308991683bfe815b719de226e3098fb5d246550ed3dace1f89d939c"
 	    "aa9573c177f5d4d3092b9dff2aef5b4c7d25ff9c2b044be222a0512dff759731")
-
-# Workaroud for https://youtrack.jetbrains.com/issue/JBR-3066
-# Copied from pycharm-community-eap PKGBUILD
-_oldbuild=211.4961.30
-source+=("https://download.jetbrains.com/python/pycharm-professional-$_oldbuild.tar.gz")
-sha256sums+=($(curl -s "https://download.jetbrains.com/python/pycharm-professional-$_oldbuild.tar.gz.sha256" | cut -d' ' -f1))
 
 prepare() {
 	if [[ -d $srcdir/pycharm-${_pkgver} ]]; then
 		mv $srcdir/pycharm-${_pkgver} $srcdir/pycharm-${_buildver}
 	fi
-	# Workaroud for https://youtrack.jetbrains.com/issue/JBR-3066
-	# Copied from pycharm-community-eap PKGBUILD
-	echo "Using the previous version of the Jetbrains Runtime ($_oldbuild) ..."
-	rm -rf "pycharm-$_buildver/jbr"
-	mv pycharm-{"$_oldbuild/jbr","$_buildver/"}
 }
 
 build() {
