@@ -1,0 +1,15 @@
+pkgbase = python-jsonpyth
+	pkgdesc = Another JSONPath implementation for Python
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/Frimkron/JSONPyth
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyparsing
+	source = python-jsonpyth-0.1.3.zip::https://github.com/Frimkron/JSONPyth/archive/v0.1.3.zip
+	sha512sums = c852447686ad430d2dabfba60724ccda278d029d9397af7bb1b7ffee5564870fe4c02c7246bb4245bc0b6f1742cfb278040d5a81ce21ed0ca4a076373a5cc0ca
+
+pkgname = python-jsonpyth
+
