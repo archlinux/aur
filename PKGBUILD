@@ -1,4 +1,4 @@
-# Maintainer: Benoît Zugmeyer <bzugmeyer@gmail.com>
+# Maintainer: Platon Pronko <platon7pronko@gmail.com>
 pkgname=timescaledb-git
 _name="${pkgname%-git}"
 pkgver=1.1.0
