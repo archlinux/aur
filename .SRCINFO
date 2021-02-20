@@ -1,0 +1,17 @@
+pkgbase = yarr-git
+	pkgdesc = yet another rss reader.
+	pkgver = v1.3.r0.g0916f11
+	pkgrel = 1
+	url = https://github.com/nkanaev/yarr
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = make
+	source = git+git://github.com/nkanaev/yarr
+	source = git+git://github.com/nkanaev/gofeed
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = yarr-git
+
