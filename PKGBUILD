@@ -3,7 +3,7 @@
 _pkgname="discordrichpresencepresets"
 pkgname="${_pkgname}-git"
 pkgver=avalonia.v0.1.beta.r17.3045abe
-pkgrel=2
+pkgrel=3
 pkgdesc="A GUI tool to set and switch between Discord Rich Presences"
 arch=('x86_64')
 url="https://github.com/cainy-a/DiscordRichPresencePresets"
@@ -85,4 +85,11 @@ package() {
 	install -Dm 644 "launch.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 	# install launch script
 	install -Dm 755 "launch.sh" "${pkgdir}/usr/bin/${_pkgname}"
+	
+	# Only root can write to the install directory.
+	# For portable saves this is an issue. (though you shouldn't use portable with the AUR version :P)
+	# However custom save location uses portable settings save, causing settings to reset each relaunch
+	# This creates the data dir ahead of time and gives all users write access.
+	mkdir "${pkgdir}/usr/lib/${_pkgname}/data/"
+	chmod 777 "${pkgdir}/usr/lib/${_pkgname}/data/"
 }
