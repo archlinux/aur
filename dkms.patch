@@ -1,0 +1,25 @@
+diff --git a/Makefile b/Makefile
+index 25e5a49..d0a34a2 100644
+--- a/Makefile
++++ b/Makefile
+@@ -7,11 +7,14 @@ netcat-y+= tracks/trk4.o
+ netcat-y+= tracks/trk5.o
+ netcat-y+= tracks/trk6.o
+ 
+-KERNELDIR	?=  /lib/modules/$(shell uname -r)/build
+-PWD		:= $(shell pwd)
++KERNELRELEASE ?= $(shell uname -r)
++KDIR ?= /lib/modules/$(KERNELRELEASE)/build
++PWD ?= $(shell pwd)
+ 
+-all:
+-	$(MAKE) -C $(KERNELDIR) M=$(PWD)
++ccflags-y := -Werror
+ 
+-clean:
+-	$(MAKE) -C $(KERNELDIR) M=$(PWD) clean
++default: modules
++install: modules_install
++
++modules modules_install clean:
++	$(MAKE) -C $(KDIR) M=$(PWD) $@

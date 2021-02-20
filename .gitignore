@@ -1,0 +1,6 @@
+*
+!.SRCINFO
+!PKGBUILD
+!cpi.install
+!dkms.conf
+!dkms.patch
