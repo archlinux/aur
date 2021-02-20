@@ -3,13 +3,18 @@
 
 _pkgname=xorgproto
 pkgname=$_pkgname-git
-pkgver=2020.1.16.r2653.ge4d9ffd
+pkgver=2020.1.43.r2680.ge5d8af9
 pkgrel=1
 pkgdesc="Combined X.Org X11 Protocol headers (git version)"
 arch=('any')
 url="https://xorg.freedesktop.org/"
 license=('custom')
-makedepends=('xorg-util-macros' 'meson' 'git')
+makedepends=(
+	'git'
+	'meson'
+	'python-libevdev'
+	'xorg-util-macros'
+)
 provides=('xorgproto')
 conflicts=(${provides[@]})
 source=("$pkgname::git://anongit.freedesktop.org/xorg/proto/$_pkgname")

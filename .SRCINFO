@@ -1,13 +1,14 @@
 pkgbase = xorgproto-git
 	pkgdesc = Combined X.Org X11 Protocol headers (git version)
-	pkgver = 2020.1.16.r2653.ge4d9ffd
+	pkgver = 2020.1.43.r2680.ge5d8af9
 	pkgrel = 1
 	url = https://xorg.freedesktop.org/
 	arch = any
 	license = custom
-	makedepends = xorg-util-macros
-	makedepends = meson
 	makedepends = git
+	makedepends = meson
+	makedepends = python-libevdev
+	makedepends = xorg-util-macros
 	provides = xorgproto
 	conflicts = xorgproto
 	source = xorgproto-git::git://anongit.freedesktop.org/xorg/proto/xorgproto
