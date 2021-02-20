@@ -1,14 +1,20 @@
 pkgbase = python-sklearn-pandas
 	pkgdesc = Pandas integration with scikit-learn
-	pkgver = 1.8.0
+	pkgver = 2.0.4
 	pkgrel = 1
-	url = https://github.com/paulgb/sklearn-pandas
+	url = https://github.com/scikit-learn-contrib/sklearn-pandas
 	arch = any
 	license = Custom
+	checkdepends = python-pytest
+	checkdepends = python-joblib
 	makedepends = python-setuptools
 	depends = python
-	source = git+https://github.com/scikit-learn-contrib/sklearn-pandas#commit=08ed9d02b1e1cb8ac97b1f4c44aa04831675ffa8
-	sha512sums = SKIP
+	depends = python-scikit-learn>=0.23.0
+	depends = python-scipy>=1.5.1
+	depends = python-pandas>=1.1.4
+	depends = python-numpy>=1.18.1
+	source = python-sklearn-pandas-2.0.4.tar.gz::https://github.com/scikit-learn-contrib/sklearn-pandas/archive/v2.0.4.tar.gz
+	b2sums = f7bc372fa5a0c28202a11f79e5c85c681aef67dc568daf42d17c630bad70ff51bdd663bdcaab62dbd5ab2ec3e358adce282e6e0e082e709ab26e902dc1a5732e
 
 pkgname = python-sklearn-pandas
 
