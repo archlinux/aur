@@ -1,7 +1,7 @@
 pkgbase = gtk3-typeahead
 	pkgdesc = GObject-based multi-platform GUI toolkit - Typeahead feature enabled for file chooser widget
 	pkgver = 3.24.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gtk.org/
 	install = gtk3.install
 	arch = x86_64
