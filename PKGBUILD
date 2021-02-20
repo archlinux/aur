@@ -21,7 +21,7 @@ _localmodcfg=
 
 pkgbase=linux-gc
 pkgver=5.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
 arch=(x86_64)
@@ -33,17 +33,20 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=b6d85b585855b431882f9021d220763851bd61a8
+_arch_config_commit=074c67795793acbfa86e5f852fd317c9f8a1b7a8
 _bmqversion=5.11-r0
 _bmq_patch="prjc_v${_bmqversion}.patch"
 _gcc_more_v='20201113'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
-  "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/linux/trunk/config"
+  "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0000-sphinx-workaround.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/linux/trunk/sphinx-workaround.patch"
+  "0000-sphinx-workaround.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/sphinx-workaround.patch"
   "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=f404f506d02dc8570c1e185882708f7f19549daf"
+  "0002-Bluetooth-btusb-Some-Qualcomm-Bluetooth-adapters-sto.patch::https://git.archlinux.org/linux.git/patch/?id=66b6d6c8306329134abeeb26d352f2074b2f0e1e"
+  "0003-Revert-drm-amd-display-reuse-current-context-instead.patch::https://git.archlinux.org/linux.git/patch/?id=15de5c46af8af7e21c34a9a1e1027ff4d7fdd93f"
+  "0004-drm-amdgpu-fix-shutdown-with-s0ix.patch::https://git.archlinux.org/linux.git/patch/?id=7e63b4196ca6366bbc43741f340b33988c660c33"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -56,7 +59,10 @@ b2sums=('81300c27bd5476387a83123aaeb4163c73eb61e9245806c23660cb5e6a4fa88ffc9def0
         '0658ad7ebad50244742a928b0c2e8ce090a55c5ba342b5c5ebd7ea079efdaf7e280effbb609856d975a067f84d9b6be95f6ccce3e647e96de9cd9ba6f29113e0'
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
         'db64b425139c107c69f44624901ae50b5e604d4c9fdfe84f78c298f8ed7a7739033a72ec678c5c3c0e82e59809d97799d0c25f96c64ef5ae79910cb890fc7bfb'
-        '5e18ecc2748a6967457edc793b6247feae3d05f9c934f583b3f6d3b85c432f2d216e4f7207b7d2cc851e8401c96ac3a92bc1bb23e2c15e1fb384b4f3f995b5ee')
+        '5e18ecc2748a6967457edc793b6247feae3d05f9c934f583b3f6d3b85c432f2d216e4f7207b7d2cc851e8401c96ac3a92bc1bb23e2c15e1fb384b4f3f995b5ee'
+        'ee2176084665f1a5f1999157cb128c8c68c113b5d22c4d72bec689123493d7a9b246e1c7cff7d6ff4bba8d5c5624b4dc75f2274db941e9b3d352e41fbad86927'
+        '1e3a9aadc3e944afd9601457f69218fd4cf61badabed6924622bce3273c2a95602fc6aab00c1399767f5115d3fbecde391b553acc259c817f8d6b29a18b1f8ad'
+        'a5c4d1bf3b15e3ee2491f75485627ebf1a9f6759f38798c08fcd09bf90b40fed997d7f14190809f4e676907f8a1c9150e3de2da856c8b92e022d3250a86040fe')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}

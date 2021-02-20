@@ -1,7 +1,7 @@
 pkgbase = linux-gc
 	pkgdesc = Linux
 	pkgver = 5.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
 	license = GPL2
@@ -18,11 +18,14 @@ pkgbase = linux-gc
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.11.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.11.tar.sign
-	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/b6d85b585855b431882f9021d220763851bd61a8/linux/trunk/config
+	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/074c67795793acbfa86e5f852fd317c9f8a1b7a8/trunk/config
 	source = prjc_v5.11-r0.patch::https://gitlab.com/alfredchen/projectc/raw/master/5.11/prjc_v5.11-r0.patch
 	source = enable_additional_cpu_optimizations-20201113.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20201113.tar.gz
-	source = 0000-sphinx-workaround.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/b6d85b585855b431882f9021d220763851bd61a8/linux/trunk/sphinx-workaround.patch
+	source = 0000-sphinx-workaround.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/074c67795793acbfa86e5f852fd317c9f8a1b7a8/trunk/sphinx-workaround.patch
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=f404f506d02dc8570c1e185882708f7f19549daf
+	source = 0002-Bluetooth-btusb-Some-Qualcomm-Bluetooth-adapters-sto.patch::https://git.archlinux.org/linux.git/patch/?id=66b6d6c8306329134abeeb26d352f2074b2f0e1e
+	source = 0003-Revert-drm-amd-display-reuse-current-context-instead.patch::https://git.archlinux.org/linux.git/patch/?id=15de5c46af8af7e21c34a9a1e1027ff4d7fdd93f
+	source = 0004-drm-amdgpu-fix-shutdown-with-s0ix.patch::https://git.archlinux.org/linux.git/patch/?id=7e63b4196ca6366bbc43741f340b33988c660c33
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
@@ -33,6 +36,9 @@ pkgbase = linux-gc
 	b2sums = 7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127
 	b2sums = db64b425139c107c69f44624901ae50b5e604d4c9fdfe84f78c298f8ed7a7739033a72ec678c5c3c0e82e59809d97799d0c25f96c64ef5ae79910cb890fc7bfb
 	b2sums = 5e18ecc2748a6967457edc793b6247feae3d05f9c934f583b3f6d3b85c432f2d216e4f7207b7d2cc851e8401c96ac3a92bc1bb23e2c15e1fb384b4f3f995b5ee
+	b2sums = ee2176084665f1a5f1999157cb128c8c68c113b5d22c4d72bec689123493d7a9b246e1c7cff7d6ff4bba8d5c5624b4dc75f2274db941e9b3d352e41fbad86927
+	b2sums = 1e3a9aadc3e944afd9601457f69218fd4cf61badabed6924622bce3273c2a95602fc6aab00c1399767f5115d3fbecde391b553acc259c817f8d6b29a18b1f8ad
+	b2sums = a5c4d1bf3b15e3ee2491f75485627ebf1a9f6759f38798c08fcd09bf90b40fed997d7f14190809f4e676907f8a1c9150e3de2da856c8b92e022d3250a86040fe
 
 pkgname = linux-gc
 	pkgdesc = The Linux-gc kernel and modules with the Project C scheduler
