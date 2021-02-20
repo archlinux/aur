@@ -1,0 +1,20 @@
+pkgbase = gnome-shell-extension-extensions-sync-git
+	pkgdesc = Sync all extensions and their configurations across all gnome instances
+	pkgver = 10.r1.gf78a112
+	pkgrel = 1
+	url = https://github.com/oae/gnome-shell-extensions-sync
+	install = gnome-shell-extension-extensions-sync.install
+	arch = any
+	groups = gnome-shell-extensions
+	license = GPL3
+	makedepends = git
+	makedepends = glib2
+	makedepends = yarn
+	depends = gnome-shell>=3.36
+	provides = gnome-shell-extension-extensions-sync
+	conflicts = gnome-shell-extension-extensions-sync
+	source = gnome-shell-extension-extensions-sync::git+https://github.com/oae/gnome-shell-extensions-sync.git
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-extensions-sync-git
+
