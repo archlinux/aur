@@ -2,7 +2,7 @@
 # Maintainer: Jochum D, jooch (at) gmx (dot) com>
 
 pkgname=linux-ck-autobuild
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A tool to automatically build ck kernels"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('zenity' 'grep' 'sed' 'nano')
 provides=("$pkgname")
 source=("https://github.com/j00ch/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('49e0c69d57fbb54adf510c13861c234869739ca50d480cd97f33251fa689a76d')
+sha256sums=('0ab102463ec6c1cbdf9b981c7c83296a5a154395f1f185210a5d301ccfefab16')
 
 package() {
   install -dm755 "$pkgdir/usr/bin"
