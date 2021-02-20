@@ -4,7 +4,7 @@
 _pkgname=terra
 pkgname=$_pkgname-git
 pkgver=1.0.0beta2.r22.g55a73e0
-pkgrel=1
+pkgrel=2
 pkgdesc="Low-level system programming language designed to interoperate seamlessly with Lua"
 url="http://terralang.org/"
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ sha256sums=('SKIP'
 prepare() {
 	cd "$_pkgname"
 	cat <<- EOF > Makefile.inc
-		LLVM_CONFIG := /opt/llvm90/bin/llvm-config
-		CLANG := /opt/llvm90/bin/clang
+		LLVM_CONFIG := $(which llvm-config)
+		CLANG := $(which clang)
 	EOF
 	cp ../LuaJIT-$_ljc.tar.gz build/
 	sed -e '/curl/d;/wget/d' -i Makefile

@@ -1,7 +1,7 @@
 pkgbase = terra-git
 	pkgdesc = Low-level system programming language designed to interoperate seamlessly with Lua
 	pkgver = 1.0.0beta2.r22.g55a73e0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://terralang.org/
 	arch = i686
 	arch = x86_64
