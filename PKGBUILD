@@ -1,7 +1,7 @@
 # Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 
 pkgname=pulumi
-pkgver=2.21.0
+pkgver=2.21.1
 pkgrel=1
 pkgdesc='Modern Infrastructure as Code'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b138c8cb83623ddb2d68dabb2221f9a3c4348d217f7f03198f66dd6763c9042b')
+sha256sums=('0719a17a8accb68db7f6cd9ec13c212ab68f4560a126be6de94b84f9d3024c58')
 
 _plugins=(
   "nodejs/cmd/pulumi-language-nodejs"
