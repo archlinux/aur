@@ -1,6 +1,6 @@
 # Maintainer: Scott Little <swlittle7 [at] gmail.com>
-pkgname="uniclip"
-pkgver=2.1.0
+pkgname=uniclip
+pkgver=2.2.0
 pkgrel=1
 epoch=
 pkgdesc="Universal Clipboard, ala Apple"
@@ -19,14 +19,14 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/quackduck/uniclip/archive/v2.1.0.tar.gz")
+source=("https://github.com/quackduck/uniclip/archive/v2.2.0.tar.gz")
 noextract=()
-sha256sums=("bb22ebc9dd9e0ca8e8b6b8c79c5d0af05a61cf2b86fff75916b2722760b04cce")
+sha256sums=("47a767e8eff0f8681534de861c8471f33eacab5ccdc066bffb712752155a0d56")
 validpgpkeys=()
 
 build() {
 	cd "$pkgname-$pkgver"
-	go build
+	go build -trimpath
 }
 
 package() {
