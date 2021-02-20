@@ -1,0 +1,13 @@
+pkgbase = rust-cli-book-git
+	pkgdesc = Command line apps in Rust
+	pkgver = r287.a3d4bff
+	pkgrel = 1
+	url = https://rust-cli.github.io/book/index.html
+	arch = any
+	license = MIT
+	makedepends = mdbook
+	source = rust-cli-book::git+https://github.com/rust-cli/book.git
+	b2sums = SKIP
+
+pkgname = rust-cli-book-git
+
