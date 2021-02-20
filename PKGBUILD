@@ -1,5 +1,5 @@
 pkgname=pyrobbo
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Clone of an old 8-bit Atari game Robbo"
 url="http://github.com/macdems/pyrobbo"
@@ -12,7 +12,7 @@ source=(
     'pyrobbo.desktop'
     'robbo.png'
 )
-sha256sums=('652fa26ac6c641a3bc14cd73f03b773d5823d46198b27a37d8f9d4d6045d3c3a'
+sha256sums=('9c612f8fd12c1d52cd0787723b0446b45d8f22cb7d4ee7116646e7c921e31017'
             'd29ae49f54b9ba159fd39b0132dad6f0fa252902533934e7021f6cd61a04db33'
             'cc89dcb37e7f2dde624e8db706f0b26c0493fc68a1af5716b615ee992d716a84')
 
