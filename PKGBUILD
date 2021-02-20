@@ -1,4 +1,4 @@
-# Maintainer: Sandro Kalbermatter <info.kalsan [ät-symbol] valaiscom.ch>
+# Maintainer: Simone Cimarelli a.k.a. AquilaIrreale <aquilairreale@ymail.com>
 pkgname=schemaspy
 pkgver=6.1.0
 pkgrel=1
