@@ -1,0 +1,14 @@
+pkgbase = bbfpromix
+	pkgdesc = ALSA Mixer Frontend for RME Babyface Pro (FS)
+	pkgver = b371896d9a66bbb45f88b2b67bd7b46b39c9be03
+	pkgrel = 1
+	url = https://github.com/MrBollie/bbfpromix
+	arch = any
+	license = unknown
+	makedepends = pkg-config
+	options = !buildflags
+	source = https://github.com/MrBollie/bbfpromix/archive/b371896d9a66bbb45f88b2b67bd7b46b39c9be03.zip
+	sha256sums = 469e930ecba346523a0da50fabfdb54813dbe5a3090003e5002cee18c1fca521
+
+pkgname = bbfpromix
+
