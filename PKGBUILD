@@ -1,6 +1,6 @@
 # Contributor: Richard PALO <richard.palo@free.fr>
 pkgname=python-tryton
-pkgver=5.8.3
+pkgver=5.8.4
 pkgrel=1
 pkgdesc="Tryton desktop client"
 arch=('any')
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 depends=('python-cairo' 'python-dateutil' 'python-gobject')
 optdepends=('python-goocalendar>=0.7: calendar support')
 source=("https://pypi.io/packages/source/t/tryton/tryton-$pkgver.tar.gz")
-sha512sums=('95fa5888dddfe531953093cac0f4cfbcdf50a65f21cfd5aab2ee0ebe4bfb00fb992c9ead49439eccce57876dedc6b6370ab4785914f170fee749bbc8e82dca70')
+sha512sums=('a9d24cc601f0fa431406b53e0c872ea008d55f04e310028b1834aaf566818adf838ca429463a9ec9066fa713c7c59b36faed97cfb3278803d58e29371473ceac')
 
 package_python-tryton() {
   cd "$srcdir/tryton-$pkgver"
