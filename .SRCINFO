@@ -1,13 +1,13 @@
 pkgbase = beeracademy
-	pkgdesc = The official BeerAcademy package
+	pkgdesc = The official BeerAcademy package for the legacy java version of the gamem
 	pkgver = 2.0.466
-	pkgrel = 1
-	url = https://beeracademy.nu/
+	pkgrel = 2
+	url = https://academy.beer/
 	arch = any
 	license = Freeware
 	depends = java-runtime<=8
-	noextract = downloadfile?file=Academy_466.jar&type=0
-	source = https://beeracademy.nu/site/downloadfile?file=Academy_466.jar&type=0
+	noextract = academy_v2.jar
+	source = https://static.academy.beer/old/academy_v2.jar
 	source = beeracademy
 	source = beeracademy.desktop
 	source = beeracademy.png

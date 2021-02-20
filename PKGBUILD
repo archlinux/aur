@@ -6,18 +6,18 @@
 # Maintainer: Ulrik Boll Djurtoft <ullebe1 at gmail dot com>
 pkgname=beeracademy
 pkgver=2.0.466
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc="The official BeerAcademy package"
+pkgdesc="The official BeerAcademy package for the legacy java version of the gamem"
 arch=('any')
-url="https://beeracademy.nu/"
+url="https://academy.beer/"
 license=('Freeware')
 depends=('java-runtime<=8')
-source=('https://beeracademy.nu/site/downloadfile?file=Academy_466.jar&type=0'
+source=('https://static.academy.beer/old/academy_v2.jar'
         'beeracademy'
         'beeracademy.desktop'
         'beeracademy.png')
-noextract=('downloadfile?file=Academy_466.jar&type=0')
+noextract=('academy_v2.jar')
 md5sums=('3f123726c711cdb751193d1c9cf03023'
          'd3c37726f8b97f27f8b2f86b6284fb82'
          'ed5bdf5c5b7010468b1970eddb74294f'
@@ -28,5 +28,5 @@ package() {
   install -D -m755 "${srcdir}/beeracademy"         "${pkgdir}/usr/bin/beeracademy"
   install -D -m644 "${srcdir}/beeracademy.desktop" "${pkgdir}/usr/share/applications/beeracademy.desktop"
   install -D -m644 "${srcdir}/beeracademy.png"     "${pkgdir}/usr/share/pixmaps/beeracademy.png"
-  install -D -m644 "${srcdir}/downloadfile?file=Academy_466.jar&type=0"     "${pkgdir}/usr/share/java/beeracademy/beeracademy.jar"
+  install -D -m644 "${srcdir}/academy_v2.jar"     "${pkgdir}/usr/share/java/beeracademy/beeracademy.jar"
 }
