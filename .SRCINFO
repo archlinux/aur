@@ -25,7 +25,7 @@ pkgbase = wowllet-git
         depends = qt5-base
         depends = qt5-websockets
         depends = tor
-        source = monero-feather-git::git+https://git.wownero.com/wownero/wowllet
+        source = wowllet-git::git+https://git.wownero.com/wownero/wowllet
         sha256sums = SKIP
 
 pkgname = wowllet-git
