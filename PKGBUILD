@@ -4,26 +4,30 @@
 
 pkgname=wapiti
 
-pkgver=3.0.3
-pkgrel=3
+pkgver=3.0.4
+pkgrel=1
 
 pkgdesc='A comprehensive web app vulnerability scanner written in Python'
 arch=('any')
-url='http://wapiti.sourceforge.net/'
+url="http://$pkgname.sourceforge.net"
 license=('GPL')
 
+makedepends=('python-setuptools' 'python-pip')
 depends=('python-requests' 'python-beautifulsoup4' 'python-lxml' 'python-tld'
          'python-yaswfp' 'python-mako' 'python-pysocks')
 optdepends=('python-requests-kerberos: Kerberos authentication'
             'python-requests-ntlm: NTLM authentication')
-makedepends=('python-setuptools')
 
 options=('zipman')
 
 changelog=ChangeLog
 source=("http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname/$pkgname-$pkgver/$pkgname${pkgver:0:1}-$pkgver.tar.gz")
-sha256sums=('059f778453ebf05b38e9c6c837d3b3eb9b8921c8fdc6d4029df89f2b0e84f5b7')
+sha256sums=('8b696753a37506f0c3e8f542cb60e9f8198bb1bafd1a1dc97fbb9592becf31f3')
 
+
+prepare() {
+    rm -rf "$pkgname${pkgver:0:1}-$pkgver/tests"
+}
 
 build() {
     cd "$pkgname${pkgver:0:1}-$pkgver"
