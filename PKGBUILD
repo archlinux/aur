@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3'
          'libgranite.so')
-makedepends=('git' 'granite' 'intltool' 'meson' 'vala')
+makedepends=('git' 'granite-git' 'intltool' 'meson' 'vala')
 provides=('pantheon-calculator')
 conflicts=('pantheon-calculator')
 source=('pantheon-calculator::git+https://github.com/elementary/calculator.git')
@@ -22,27 +22,18 @@ pkgver() {
 }
 
 prepare() {
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build
-
   sed 's/extra/io.elementary.calculator.extra/' -i pantheon-calculator/po/extra/meson.build
 }
 
 build() {
-  cd build
 
-  meson ../pantheon-calculator \
-    --buildtype='release' \
-    --prefix='/usr'
-  ninja
+  arch-meson pantheon-calculator build
+  ninja -C build
 }
 
 package() {
-  cd build
 
-  DESTDIR="${pkgdir}" ninja install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
 
 # vim: ts=2 sw=2 et:
