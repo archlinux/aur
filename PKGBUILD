@@ -1,4 +1,5 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname='densify'
 pkgver=0.3.1
@@ -39,5 +40,3 @@ package() {
   install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-# vim: ts=2 sw=2 et:
