@@ -1,8 +1,8 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=stylelint
-pkgver=13.10.0
-pkgrel=3
+pkgver=13.11.0
+pkgrel=1
 pkgdesc='Mighty, modern CSS linter'
 arch=('any')
 url=https://stylelint.io
