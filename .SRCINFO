@@ -1,6 +1,6 @@
 pkgbase = pantheon-dock-git
 	pkgdesc = The Pantheon Dock
-	pkgver = r1970.e9fa02b
+	pkgver = r1973.013d051
 	pkgrel = 1
 	url = https://github.com/elementary/dock
 	arch = i686
@@ -16,9 +16,10 @@ pkgbase = pantheon-dock-git
 	depends = bamf
 	depends = python
 	provides = plank
+	provides = pantheon-dock
 	conflicts = plank
+	conflicts = pantheon-dock
 	source = pantheon-dock::git+https://github.com/elementary/dock
 	sha256sums = SKIP
 
 pkgname = pantheon-dock-git
-

@@ -1,7 +1,7 @@
-# Maintainer <shlomochoina@gmail.com> 
+# Maintainer <shlomochoina@gmail.com>
 
 pkgname=pantheon-dock-git
-pkgver=r1970.e9fa02b
+pkgver=r1973.013d051
 pkgrel=1
 pkgdesc='The Pantheon Dock'
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ url='https://github.com/elementary/dock'
 license=('GPL3')
 depends=('libgee' 'bamf' 'python')
 makedepends=('git' 'gnome-common' 'meson' 'vala' 'gnome-menus' 'libdbusmenu-gtk3')
-conflicts=('plank')
-provides=('plank')
+conflicts=('plank' 'pantheon-dock')
+provides=('plank' 'pantheon-dock')
 source=(pantheon-dock::git+$url)
 sha256sums=('SKIP')
 
