@@ -7,16 +7,11 @@ pkgbase = python-jwcrypto
 	license = LGPL3
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
+	depends = python-cryptography
+	depends = python-six
+	depends = python-deprecated
 	source = jwcrypto::git+https://github.com/latchset/jwcrypto.git#commit=4e08b6610fed7f97f8004f16aaa939b4d6662384
 	sha256sums = SKIP
 
 pkgname = python-jwcrypto
-	depends = python-cryptography
-	depends = python-six
-	depends = python-deprecated
-
-pkgname = python2-jwcrypto
-	depends = python2-cryptography
-	depends = python2-six
-	depends = python2-deprecated
 
