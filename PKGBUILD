@@ -1,9 +1,8 @@
 # Maintainer: KspLite <ksplite@outlook.com>
-# Contributor: Jiachen YANG <farseerfc@gmail.com>
-pkgname=tdesktop-x64-git
-pkgver=2.5.1.1.r3.gceda77176
+pkgname=tdesktop-x64
+pkgver=2.5.9.1.r0.g452dbe84b
 pkgrel=1
-pkgdesc='Third party Telegram Desktop client with various enhancements (dev branch)'
+pkgdesc='Third party Telegram Desktop client with various enhancements'
 arch=('x86_64')
 url="https://github.com/TDesktop-x64/tdesktop"
 license=('GPL3')
@@ -13,7 +12,7 @@ makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-
 optdepends=('ttf-opensans: default Open Sans font family')
 provides=("tdesktop-x64")
 conflicts=("telegram-desktop" "tdesktop-x64")
-source=("tdesktop::git+https://github.com/TDesktop-x64/tdesktop.git#tag=dev"
+source=("tdesktop::git+https://github.com/TDesktop-x64/tdesktop.git#tag=v${pkgver}"
         "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip"
         "GSL::git+https://github.com/Microsoft/GSL.git"
         "Catch::git+https://github.com/philsquared/Catch"
@@ -22,9 +21,9 @@ source=("tdesktop::git+https://github.com/TDesktop-x64/tdesktop.git#tag=dev"
         "lz4::git+https://github.com/lz4/lz4.git"
         "lib_crl::git+https://github.com/desktop-app/lib_crl.git"
         "lib_rpl::git+https://github.com/desktop-app/lib_rpl.git"
-        "lib_base::git+https://github.com/desktop-app/lib_base.git"
+        "lib_base::git+https://github.com/TDesktop-x64/lib_base.git"
         "codegen::git+https://github.com/desktop-app/codegen.git"
-        "lib_ui::git+https://github.com/desktop-app/lib_ui.git"
+        "lib_ui::git+https://github.com/TDesktop-x64/lib_ui.git"
         "lib_rlottie::git+https://github.com/desktop-app/lib_rlottie.git"
         "lib_lottie::git+https://github.com/desktop-app/lib_lottie.git"
         "lib_tl::git+https://github.com/desktop-app/lib_tl.git"
@@ -136,7 +135,8 @@ build() {
         -DTDESKTOP_API_ID=611335 \
         -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c \
         -DTDESKTOP_LAUNCHER_BASENAME="telegramdesktop" \
-        -DDESKTOP_APP_SPECIAL_TARGET=""
+        -DDESKTOP_APP_SPECIAL_TARGET="" \
+        -DDESKTOP_APP_DISABLE_AUTOUPDATE=ON
     ninja -C build
 }
 
