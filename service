@@ -1,0 +1,16 @@
+[Unit]
+Description=A self-hosted music streaming service
+After=network.target network-online.target
+
+[Service]
+Type=exec
+PrivateDevices=yes
+DynamicUser=yes
+CacheDirectory=eggplant
+StateDirectory=eggplant
+ConfigurationDirectory=eggplant
+
+ExecStart=/usr/bin/eggplant run /etc/eggplant/config.toml
+
+[Install]
+WantedBy=multi-user.target

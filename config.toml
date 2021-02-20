@@ -1,0 +1,20 @@
+
+# Path to a directory which will be used for caching converted tracks and
+# thumbnails. You should not remove files from this directory unless necessary
+# as Eggplant ensures that old data is automatically removed and removing the
+# cached files will force Eggplant to convert all tracks and thumbnails again.
+cache_directory = "/var/cache/eggplant"
+
+# Path to a directory which will be used for data storage. Eggplant will store
+# its database in this directory. This directory should never be purged.
+data_directory = "/var/lib/eggplant/data"
+
+# Path to a directory containing your music.
+music_directory = "/var/lib/eggplant/music"
+
+# Specifies under which address you will be able to access the UI. The
+# addresses are specified as "ip:port". If you want to listen only to
+# local connections use "127.0.0.1:XXXX" as the IP and replace XXXX
+# with a desired port. If you want to listen externally use
+# "0.0.0.0:XXXX" as the IP and replace XXXX with a desired port.
+serve_address = "127.0.0.1:8118"

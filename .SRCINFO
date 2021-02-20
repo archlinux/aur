@@ -1,6 +1,6 @@
 pkgbase = eggplant-git
 	pkgdesc = a self-hosted music streaming service
-	pkgver = r185.eda4590
+	pkgver = r200.39e3734
 	pkgrel = 1
 	url = https://github.com/boreq/eggplant
 	arch = x86_64
