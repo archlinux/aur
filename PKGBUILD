@@ -6,7 +6,7 @@
 #   Contributor: scj <scj archlinux us>
 
 pkgname=python2-levenshtein
-pkgver=0.12.0
+pkgver=0.12.2
 pkgrel=1
 pkgdesc="Python extension for computing string edit distances and similarities"
 url="https://pypi.python.org/pypi/python-Levenshtein/"
@@ -15,7 +15,7 @@ arch=('x86_64')
 depends=('python2')
 makedepends=('python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/p/python-Levenshtein/python-Levenshtein-$pkgver.tar.gz")
-sha512sums=('95df064490970618b003bccbef9071b1a2a3ee4645ac8e851f4205bd4e8123d21ee0ee733adfeec79085faa01ba39902e2a4a26bfb21b70678377579157df4a5')
+sha512sums=('97eac9d19121758af7620ad3963846e48434ceabb5376a83f28452015adf1a620620bfb53edb1c4f60b0fc8ec2b0faf35a105d7e2a0fc5df7a45fce81ba0dcdb')
 
 package() {
   cd python-Levenshtein-$pkgver
