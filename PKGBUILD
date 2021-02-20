@@ -1,6 +1,6 @@
 # Maintainer: Henri van de Munt <(firstname) @ gmail.com>
 pkgname=gnome-shell-extension-material-shell-git
-pkgver=12.r5.63c2655
+pkgver=12.r12.a216007
 pkgrel=1
 pkgdesc="GNOME Shell Extension Material Shell"
 arch=('any')
