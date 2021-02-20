@@ -21,5 +21,5 @@ pkgver() {
 
 package() {
     cd "$srcdir"/$pkgname
-    install -Dm755 tuxi "$pkgdir"/usr/bin/tuxi
+    make PREFIX=/usr DESTDIR="$pkgdir" install
 }
