@@ -1,5 +1,5 @@
 # Maintainer: KspLite <ksplite@outlook.com>
-pkgname=tdesktop-x64
+pkgname=tdesktop-x64-git
 pkgver=2.5.9.1.r0.g452dbe84b
 pkgrel=1
 pkgdesc='Third party Telegram Desktop client with various enhancements'
@@ -12,7 +12,7 @@ makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-
 optdepends=('ttf-opensans: default Open Sans font family')
 provides=("tdesktop-x64")
 conflicts=("telegram-desktop" "tdesktop-x64")
-source=("tdesktop::git+https://github.com/TDesktop-x64/tdesktop.git#tag=v${pkgver}"
+source=("tdesktop::git+https://github.com/TDesktop-x64/tdesktop.git#tag=dev"
         "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip"
         "GSL::git+https://github.com/Microsoft/GSL.git"
         "Catch::git+https://github.com/philsquared/Catch"
