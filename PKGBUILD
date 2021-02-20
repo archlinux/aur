@@ -3,7 +3,7 @@
 pkgname="python-mkdocs-with-pdf-git"
 pkgver=v0.8.2.r5.g75548c2
 pkgrel=1
-pkgdesc="Generate a single PDF file from MkDocs repository"
+pkgdesc="Plugin to generate a single PDF file from a MkDocs repository"
 url="https://github.com/orzih/mkdocs-with-pdf"
 license=("MIT")
 arch=("any")
