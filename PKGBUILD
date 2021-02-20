@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=thiefmd
-pkgver=0.1.3
-_codename=ohsohandy
-pkgrel=2
+pkgver=0.1.4
+_codename=welcome2021
+pkgrel=1
 pkgdesc="The markdown editor worth stealing. Inspired by Ulysses, based on code from Quilter"
 arch=('x86_64' 'aarch64')
 url="https://thiefmd.com"
@@ -11,7 +11,7 @@ depends=('gtkspell3' 'webkit2gtk' 'discount' 'gtksourceview4' 'libarchive'
          'clutter' 'libgee' 'libhandy')
 makedepends=('git' 'meson' 'vala')
 #source=("$pkgname-$pkgver.tar.gz::https://github.com/kmwallio/ThiefMD/archive/v$pkgver-$_codename.tar.gz")
-_commit=48fe3ccf7f56f72af5e2948e8c367eeae0a80c48
+_commit=8f16cdd3f8f09df4b8f06ceb9a2d32981e028d33
 source=("git+https://github.com/kmwallio/ThiefMD.git#commit=$_commit"
         'git+https://github.com/ThiefMD/ghost-vala.git'
         'git+https://github.com/TwiRp/ultheme-vala.git'
