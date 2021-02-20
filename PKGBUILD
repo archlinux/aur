@@ -3,7 +3,7 @@
 pkgname=tuxi-git
 pkgver=r238.e88264d
 pkgrel=1
-pkgdesc="A CLI assistant which scrapes Google search to get instant answers to your questions on your terminal"
+pkgdesc="A CLI tool that scrapes Google search results and SERPs to provide instant and concise answers"
 arch=(any)
 url=https://github.com/Bugswriter/tuxi
 license=(GPL3)
