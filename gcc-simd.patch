@@ -25,3 +25,14 @@
 -}
 \ No newline at end of file
 +}
+--- onscripter-jh/simd/int8x16.inl	2021-02-20 18:20:15.854029096 +0800
++++ onscripter-jh.new/simd/int8x16.inl	2021-02-20 18:21:21.350724843 +0800
+@@ -112,7 +112,7 @@
+     _mm_store_ss(reinterpret_cast<float*>(m), _mm_castsi128_ps(a));
+ //#endif
+ #elif USE_SIMD_ARM_NEON
+-    vst1q_lane_u32(reinterpret_cast<uint32_t*>(m), a, 1);
++    vst1q_lane_u32(reinterpret_cast<uint32_t*>(m), vreinterpretq_u32_u8(a), 1);
+ #endif
+   }
+ 
