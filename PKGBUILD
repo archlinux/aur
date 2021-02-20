@@ -5,8 +5,8 @@
 
 pkgname=lxpanel-gtk3
 _pkgname=lxpanel
-pkgver=0.10.0
-pkgrel=2
+pkgver=0.10.1
+pkgrel=1
 pkgdesc='Lightweight X11 desktop panel for LXDE (GTK+ 3 version)'
 arch=('x86_64')
 license=('GPL2')
@@ -17,7 +17,7 @@ makedepends=('intltool' 'docbook-xml' 'docbook-xsl' 'wireless_tools')
 optdepends=('wireless_tools: netstat plugin')
 conflicts=($_pkgname)
 source=(https://downloads.sourceforge.net/lxde/$_pkgname-$pkgver.tar.xz)
-sha256sums=('4678cc8c5f1962376005ebf71ec1ee810115ac2e0e565f8d2e67dc12d01a3a7e')
+sha256sums=('1e318f57d7e36b61c23a504d03d2430c78dad142c1804451061f1b3ea5441ee8')
 
 prepare() {
   cd $_pkgname-$pkgver
