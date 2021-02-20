@@ -1,6 +1,6 @@
 pkgbase = pantheon-photos-git
 	pkgdesc = The Pantheon Photos Manager
-	pkgver = 2.7.0.r27.gb5b892d5
+	pkgver = 2.7.0.r121.g203868a9
 	pkgrel = 1
 	url = https://github.com/elementary/photos
 	arch = x86_64
