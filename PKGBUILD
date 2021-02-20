@@ -5,7 +5,7 @@
 
 pkgname=gtk3-patched-filechooser-icon-view
 pkgver=3.24.25
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch."
 arch=(x86_64)
@@ -38,6 +38,9 @@ pkgver() {
 
 prepare() {
   cd gtk
+
+  # https://bugs.archlinux.org/task/69705
+  git cherry-pick -n 22960c5c20cf5a2d4666645f259d376784a11331
 
   # apply icon-view patch
   git apply -3 ../gtk3-filechooser-icon-view.patch
