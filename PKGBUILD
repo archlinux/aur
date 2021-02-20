@@ -1,7 +1,7 @@
 # Maintainer: Filip Borkiewicz <boreq 0x46 net>
 
 pkgname=eggplant-git
-pkgver=r202.84c4a47
+pkgver=r205.a64a900
 pkgrel=1
 pkgdesc='a self-hosted music streaming service'
 arch=('x86_64')
