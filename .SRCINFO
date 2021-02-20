@@ -1,7 +1,7 @@
 pkgbase = epics-base
 	pkgdesc = Experimental Physics and Industrial Control System -- base
 	pkgver = 7.0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://epics-controls.org
 	arch = x86_64
 	groups = epics
@@ -10,6 +10,8 @@ pkgbase = epics-base
 	depends = readline
 	depends = ncurses
 	depends = perl
+	depends = valgrind
+	depends = glibc
 	source = epics-base-7.0.4.1.tar.gz::https://epics-controls.org/download/base/base-7.0.4.1.tar.gz
 	sha256sums = 7b1aa5a0b0a381207b3aa64b4496ffbdd0882ba3d57a09d75b94a9ef1fef668d
 

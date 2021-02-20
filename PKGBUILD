@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 pkgname=epics-base
 pkgver=7.0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental Physics and Industrial Control System -- base"
 arch=(x86_64)
 url="https://epics-controls.org"
@@ -11,6 +11,8 @@ depends=(
 readline
 ncurses
 perl
+valgrind
+glibc
 )
 makedepends=(
 clang
@@ -51,6 +53,7 @@ package() {
   make modules FINAL_LOCATION=/usr
 
   rm "${pkgdir}/usr/include/link.h" # owned by glibc
+  rm -rf "${pkgdir}/usr/include/valgrind"
 
   mkdir -p "${pkgdir}/etc/ld.so.conf.d"
   echo "/usr/lib/${EPICS_HOST_ARCH}" > "${pkgdir}/etc/ld.so.conf.d/epics.conf"
