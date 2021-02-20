@@ -1,0 +1,12 @@
+diff -aur drive.orig/drive-server/main.go drive.new/drive-server/main.go
+--- drive.orig/drive-server/main.go	2021-02-20 17:10:39.616416192 +0100
++++ drive.new/drive-server/main.go	2021-02-20 17:13:34.942133037 +0100
+@@ -111,7 +111,7 @@
+ 	}
+ 
+ 	uri := pl.URI
+-	pngImage, err := qrcode.Encode(uri, 256)
++	pngImage, err := qrcode.Encode(uri, qrcode.Medium, 256)
+ 	if err != nil {
+ 		fmt.Fprintf(res, "%s %v\n", uri, err)
+ 		return

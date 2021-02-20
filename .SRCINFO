@@ -1,6 +1,6 @@
 pkgbase = drive-git
 	pkgdesc = Google Drive client for the command line (development version)
-	pkgver = 0.3.9.1.r51.gb868c96
+	pkgver = 0.4.0.r4.gbede608
 	pkgrel = 1
 	url = https://github.com/odeke-em/drive
 	arch = i686
@@ -16,7 +16,9 @@ pkgbase = drive-git
 	provides = drive
 	conflicts = drive
 	source = drive::git+https://github.com/odeke-em/drive.git#branch=master
-	md5sums = SKIP
+	source = qrcode.patch
+	sha256sums = SKIP
+	sha256sums = d984022881f618a572ea39f55d143f34c634015c5119dd2a7194353d0323734b
 
 pkgname = drive-git
 
