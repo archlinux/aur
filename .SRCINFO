@@ -10,6 +10,7 @@ pkgbase = neovim-coc-git
 	depends = nodejs
 	optdepends = npm: for installing coc extensions
 	optdepends = yarn: for installing coc extensions
+	optdepends = watchman: for workspace_didChangeWatchedFiles feature
 	optdepends = neovim-coc-extras-meta: some basic extensions
 	provides = neovim-coc
 	conflicts = neovim-coc
