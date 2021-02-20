@@ -27,6 +27,7 @@ prepare() {
     export GOPATH="$srcdir/go"
     cd "go/src/github.com/odeke-em/$_basename"
     go get -v -d ./...
+    chmod -R u+w "$srcdir/go"
     patch -p1 -N -i "$srcdir/qrcode.patch" -d "$srcdir/$_basename"
 }
 
