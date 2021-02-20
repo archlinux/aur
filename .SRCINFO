@@ -1,6 +1,6 @@
 pkgbase = pantheon-terminal-git
 	pkgdesc = The Pantheon Terminal Emulator
-	pkgver = 5.5.2.r99.gba140c36
+	pkgver = 5.5.2.r138.g038bdd26
 	pkgrel = 1
 	url = https://github.com/elementary/terminal
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = pantheon-terminal-git
 	license = GPL3
 	makedepends = appstream
 	makedepends = git
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = intltool
 	makedepends = meson
 	makedepends = vala
@@ -26,4 +26,3 @@ pkgbase = pantheon-terminal-git
 	sha256sums = SKIP
 
 pkgname = pantheon-terminal-git
-
