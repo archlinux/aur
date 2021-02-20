@@ -24,7 +24,7 @@ source=("https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.qq.i
 #source=("https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.qq.im.deepin/com.qq.im.deepin_${_pkgver}_i386.deb")
 #source=("https://master.dl.sourceforge.net/project/deepin-wine-apps/com.qq.im.deepin_${_pkgver}_i386.deb")
 noextract=("com.qq.im.deepin_${_pkgver}_i386.deb")
-md5sums=('SKIP')
+md5sums=('5fdc20e614d945bd2ba5251420872479')
 validpgpkeys=()
 
 prepare() {
