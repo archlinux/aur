@@ -1,5 +1,5 @@
 # Maintainer: Bernd Amend <bernd.amend(at)gmail(dot)com>
-# Contributor: Alex Avance
+# Contributor: Alex Avance <aravance(at)gmail(dot)com>
 # Contributor: Shen-Ta Hsieh <ibmibmibm(at)gmail(dot)com>
 
 _pkgname=r8125
