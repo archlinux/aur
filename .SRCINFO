@@ -1,0 +1,18 @@
+pkgbase = arch-audit-gtk
+	pkgdesc = Arch Linux Security Update Notifications
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kpcyrd/arch-audit-gtk
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = clang
+	makedepends = llvm
+	depends = arch-audit
+	depends = libappindicator-gtk3
+	source = https://github.com/kpcyrd/arch-audit-gtk/archive/v0.1.0/arch-audit-gtk-0.1.0.tar.gz
+	sha512sums = 775fd20de96ddd8fdd33b38e7b3625681d6af51b9f789beeb63e30d6aa65467db0898e47ce674a5ca0df2593d29aeac5cd9d24777bfbd5d940a6643d92d8431c
+	b2sums = 720728a8f9b0b966b1deaa07697eefc72e188682ef09e4caca7bd4a7baefe07400d19c842ebb28751c7eb840c52e19512443e0ade751c8528068c4cf6a47203a
+
+pkgname = arch-audit-gtk
+
