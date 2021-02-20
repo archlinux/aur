@@ -1,0 +1,20 @@
+pkgbase = python-pleroma-bot
+	pkgdesc = Bot for mirroring one or multiple Twitter accounts in Pleroma/Mastodon.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/robertoszek/pleroma-bot
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	conflicts = python-pleroma-bot
+	conflicts = python-pleroma-bot-git
+	source = https://files.pythonhosted.org/packages/source/p/pleroma-bot/pleroma-bot-0.8.0.tar.gz
+	sha256sums = 69b62427fbbca251f282bed9c9b1744c4b5872bbcc83adc05e4977f941164684
+
+pkgname = python-pleroma-bot
+	depends = python-oauthlib
+	depends = python-requests-oauthlib
+	depends = python-requests
+	depends = python-pyaml
+
