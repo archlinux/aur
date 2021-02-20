@@ -10,7 +10,7 @@ url='https://github.com/DerKoun/bsnes-hd'
 license=('GPL3')
 depends=('alsa-lib' 'cairo' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk2' 'gtksourceview2' 'libao' 'libgl' 'libpulse' 'libx11' 'libxext' 'libxv' 'openal' 'pango' 'sdl' 'libudev.so' 'sdl2')
 makedepends=('git')
-conflicts=('bsnes' 'bsnes-classic' 'higan-bsnes')
+conflicts=('bsnes' 'bsnes-classic-git' 'bsnes-plus-git' 'bsnes-qt5')
 source=(git+https://github.com/DerKoun/bsnes-hd.git)
 md5sums=('SKIP')
 

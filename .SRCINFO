@@ -26,8 +26,9 @@ pkgbase = bsnes-hd
 	depends = libudev.so
 	depends = sdl2
 	conflicts = bsnes
-	conflicts = bsnes-classic
-	conflicts = higan-bsnes
+	conflicts = bsnes-classic-git
+	conflicts = bsnes-plus-git
+	conflicts = bsnes-qt5
 	source = git+https://github.com/DerKoun/bsnes-hd.git
 	md5sums = SKIP
 
