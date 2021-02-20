@@ -37,8 +37,8 @@ prepare() {
 }
 
 build() {
-  CFLAGS+=" -m32"
-  CXXFLAGS+=" -m32"
+  export CC="gcc -m32"
+  export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
   cd build
