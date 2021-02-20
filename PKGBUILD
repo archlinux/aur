@@ -8,7 +8,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=dragonwolf
-_pkgname=Librewolf
+_pkgname=DragonWolf
 pkgver=87.0a1.r635200+.e2521231284c+
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom - nightly version with custom branding"
@@ -34,7 +34,7 @@ provides=('librewolf')
 source=("hg+$_repo#revision=autoland"
         dragonwolf.desktop
         "git+https://gitlab.com/dr460nf1r3/common.git"
-        "git+https://gitlab.com/librewolf-community/settings.git#commit=${_settings_commit}"
+        "git+https://gitlab.com/dr460nf1r3/settings.git"
         megabar.patch
         "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
         "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch")
