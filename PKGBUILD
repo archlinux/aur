@@ -1,16 +1,15 @@
 # Maintainer: Felipe Contreras <felipe.contreras@gmail.com>
 
 pkgname=vte3-nohang
-pkgver=0.62.1
-pkgrel=2
+pkgver=0.62.3
+pkgrel=1
 pkgdesc="Virtual Terminal Emulator widget (plus no-hang patch)"
 url="https://wiki.gnome.org/Apps/Terminal/VTE"
 arch=(x86_64)
 license=(LGPL)
 depends=(gtk3 pcre2 gnutls fribidi systemd-libs)
 makedepends=(gobject-introspection vala git gtk-doc gperf meson)
-_commit=62c4908953e3fea8e0771fa82212462157d46d4f # tags/0.62.1^0
-source=("git+https://gitlab.gnome.org/GNOME/vte.git#commit=$_commit"
+source=("git+https://gitlab.gnome.org/GNOME/vte.git#tag=$pkgver"
   fix-exit-regression.patch)
 sha256sums=('SKIP'
   '582edbac0c92cb023a4c0a8f70cb74c85606c139ab8c8f83f6093a21e3033a5c')
@@ -18,10 +17,6 @@ sha256sums=('SKIP'
 depends+=(vte-common)
 provides=("vte3=$pkgver" libvte-2.91.so)
 conflicts=(vte3)
-
-pkgver() {
-  git -C vte describe --tags | sed 's/-/+/g'
-}
 
 prepare() {
   cd vte
