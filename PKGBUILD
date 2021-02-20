@@ -3,12 +3,12 @@
 set -u
 pkgname='clipcat'
 pkgver=0.5.0
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Clipcat is a clipboard manager written in Rust Programming Language.'
 arch=('any')
 url='https://github.com/xrelkd/clipcat'
 license=('GPL3')
-depends=('libxcb' 'python' 'rust' 'protobuf')
+depends=('libxcb' 'python' 'rust' 'protobuf' 'llvm' 'clang')
 source=("${pkgname}.tgz::https://github.com/xrelkd/clipcat/archive/v${pkgver}.tar.gz")
 sha256sums=('6fb974784485f475082e7ba19a4ddcf25d55f4555011e11205c9862d1c5253bb')
 
