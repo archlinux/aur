@@ -1,17 +1,18 @@
 pkgbase = dfu-util-git
 	pkgdesc = Tool intended to download and upload firmware using DFU protocol to devices connected over USB
-	pkgver = 20200630
-	pkgrel = 2
+	pkgver = 20210210
+	pkgrel = 1
 	url = http://dfu-util.gnumonks.org
 	install = dfu-util.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	depends = libusb
 	provides = dfu-util
 	conflicts = dfu-util
 	source = stm32dfu.udev.rules
-	source = dfu-util::git://git.code.sf.net/p/dfu-util/dfu-util
+	source = dfu-util::git+https://gitlab.com/dfu-util/dfu-util
 	sha256sums = 64d4314f354d965e3dc0fd439dc497d5d0a41bf649da1869df40f93718e5a6fe
 	sha256sums = SKIP
 
