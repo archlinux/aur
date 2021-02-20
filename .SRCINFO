@@ -1,6 +1,6 @@
 pkgbase = fastfetch-git
 	pkgdesc = Like neofetch, but much faster because written in c. Downside: only Linux
-	pkgver = r12.e3616d8
+	pkgver = r13.11b5d6e
 	pkgrel = 1
 	url = https://github.com/LinusDierheimer/fastfetch#README
 	arch = any
