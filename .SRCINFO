@@ -13,6 +13,7 @@ pkgbase = libplacebo-git
 	depends = lcms2
 	depends = libshaderc_shared.so
 	depends = glslang
+	depends = libepoxy
 	provides = libplacebo
 	provides = libplacebo.so
 	conflicts = libplacebo

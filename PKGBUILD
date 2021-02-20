@@ -12,6 +12,7 @@ depends=('vulkan-icd-loader'
          'lcms2'
          'libshaderc_shared.so'
          'glslang'
+         'libepoxy'
          )
 makedepends=('git'
              'meson'
