@@ -1,7 +1,7 @@
 # Maintainer: Filip Borkiewicz <boreq 0x46 net>
 
 pkgname=eggplant-git
-pkgver=r200.39e3734
+pkgver=r202.84c4a47
 pkgrel=1
 pkgdesc='a self-hosted music streaming service'
 arch=('x86_64')
@@ -33,7 +33,7 @@ build() {
 
 package() {
     install -Dm755 "../config.toml" "${pkgdir}/etc/eggplant/config.toml"
-    mkdir -pm755 "${pkgdir}/var/lib/eggplant/music/"
+    install -dm755 "${pkgdir}/var/lib/eggplant/music/"
     install -Dm644 "../service" "${pkgdir}/usr/lib/systemd/system/eggplant.service"
 
     cd "${pkgname}"
