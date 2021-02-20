@@ -1,6 +1,6 @@
 pkgbase = pylibcoopgamma
 	pkgdesc = Cooperative gamma Python 3 library
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/maandree/pylibcoopgamma
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = pylibcoopgamma
 	makedepends = cython
 	depends = python>=3.4
 	depends = libcoopgamma
-	source = pylibcoopgamma-1.1.2.tar.gz::https://github.com/maandree/pylibcoopgamma/archive/1.1.2.tar.gz
-	sha256sums = 4da52548106e4a430aec6a302d33f7a4e034942c9cd507ccb8478b1cde5b29a7
+	source = pylibcoopgamma-1.1.3.tar.gz::https://github.com/maandree/pylibcoopgamma/archive/1.1.3.tar.gz
+	sha256sums = 158b2eb6e8ad1366a96da12bc5c5c9f74bd02449e6a6caa1b9d9bc28f4301741
 
 pkgname = pylibcoopgamma
 
