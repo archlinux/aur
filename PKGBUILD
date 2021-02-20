@@ -1,7 +1,7 @@
 # Maintainer: Scott Little swlittle7 [at] gmail [dot] com
 pkgname=nat
 pkgver=2.1.11
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="The Better ls"
 arch=(x86_64)
@@ -31,7 +31,5 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	cargo install --path .
-	mkdir -p "$pkgdir"/usr/local/bin
-	cp ./target/release/natls "$pkgdir"/usr/local/bin
+	install -Dm755 target/release/natls "$pkgdir"/usr/local/bin/natls
 }
