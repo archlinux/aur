@@ -2,14 +2,14 @@
 
 pkgname='beancount-ethereum-importer'
 pkgdesc='Ethereum transaction importer for Beancount'
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 arch=('any')
 url="https://github.com/xuhcc/beancount-ethereum-importer"
 license=('GPL')
 depends=('beancount')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/xuhcc/beancount-ethereum-importer/archive/v${pkgver}.tar.gz")
-sha256sums=('b7ec0afbcafd7e43c406a6f660de60dcd60ee63dd88a81122ecc380018edd3d9')
+sha256sums=('92132e02ac07c5506c1a8b158a3b64abe5d1d5c203325795485a9ed372ccd21c')
 
 package () {
     cd "${pkgname}-${pkgver}"
