@@ -4,7 +4,7 @@
 pkgname="python-mkdocs-material-pymdownx-extras-git"
 pkgver=1.1.3.r1.gbd62bce
 pkgrel=1
-pkgdesc="Plugin to extend MkDocs Material theme"
+pkgdesc="MkDocs Material additions used for pymdownx documentation"
 url="https://github.com/facelessuser/mkdocs_pymdownx_material_extras"
 license=("MIT")
 arch=("any")
