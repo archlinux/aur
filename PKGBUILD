@@ -22,7 +22,7 @@ build() {
 package(){
   # Moving everything to pkg/.
   mkdir "$pkgdir"/usr "$pkgdir"/usr/lib "$pkgdir"/usr/bin "$pkgdir"/usr/share "$pkgdir"/usr/share/applications "$pkgdir"/usr/share/icons
-  install -d "Deploy/FlashTool" "${pkgdir}/usr/lib/FlashTool"
+  install -d "${srcdir}/Deploy/FlashTool" "${pkgdir}/usr/lib/FlashTool"
   ln -s /usr/lib/jvm/default "$pkgdir"/usr/lib/FlashTool/x10flasher_native/jre
   ln -s /usr/lib/FlashTool/FlashTool "$pkgdir"/usr/bin/flashtool
   install "Flashtool.desktop" "${pkgdir}/usr/share/applications/Flashtool.desktop"
