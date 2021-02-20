@@ -8,6 +8,7 @@ pkgbase = aurora-git
 	makedepends = cargo
 	depends = opendoas
 	depends = git
+	depends = pkgfile
 	source = aurora-git::git+https://gitlab.com/hunterbrodie/aurora.git
 	md5sums = SKIP
 
