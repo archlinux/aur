@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=fprime
-pkgver=1.3.1
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="A Flight-Proven, Multi-Platform, Open-Source Flight Software Framework"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('gcc' 'python')
 optdepends=()
 makedepends=('cmake' 'python' 'python-setuptools')
 source=("$pkgname-$pkgver::https://github.com/nasa/${pkgname}/archive/NASA-v${pkgver}.tar.gz")
-sha256sums=('345eed5b124799992f425e3eb5c831c3fa8a4af1336b3ae03ea929d23eb9c690')
+sha256sums=('f1bef25d50fd5ae586708138df755e36158d6de277b7d850822550262236433d')
 
 _pkgname="fprime-NASA"
 _pkgver="v${pkgver}"
