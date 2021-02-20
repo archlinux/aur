@@ -1,0 +1,17 @@
+pkgbase = vim-vimtex-git
+	pkgdesc = A modern Vim and neovim filetype plugin for LaTeX files
+	pkgver = 2.2.r10.g40a76277
+	pkgrel = 1
+	url = https://github.com/lervag/vimtex
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = vim
+	depends = texlive-core
+	provides = vim-vimtex
+	conflicts = vim-vimtex
+	source = git+https://github.com/lervag/vimtex.git
+	sha256sums = SKIP
+
+pkgname = vim-vimtex-git
+
