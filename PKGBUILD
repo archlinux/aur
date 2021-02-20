@@ -1,0 +1,32 @@
+# Maintainer: wowario <wowario[at]protonmail[dot]com>
+# Contributor: wowario <wowario[at]protonmail[dot]com>
+
+pkgname='wowllet-git'
+pkgver=0.1.0.d248aaf8b3
+pkgrel=1
+pkgdesc='a free Wownero desktop wallet'
+license=('BSD')
+arch=('x86_64')
+url="https://wownero.org"
+depends=('boost-libs' 'libunwind' 'openssl' 'readline' 'pcsclite' 'hidapi' 'protobuf' 'miniupnpc' 'libgcrypt' 'qrencode' 'libsodium' 'libpgm' 'expat' 'qt5-base' 'qt5-websockets' 'tor')
+makedepends=('git' 'cmake' 'boost')
+
+source=("${pkgname}"::"git+https://git.wownero.com/wownero/wowllet")
+
+sha256sums=('SKIP')
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  git submodule update --init --recursive
+  mkdir -p build
+  cd build
+  cmake ..
+  make
+}
+
+package_wowllet-git() {
+  install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 "${srcdir}/${pkgname}/build/bin/wowllet" "${pkgdir}/usr/bin/wowllet"
+  install -Dm644 "${srcdir}/${pkgname}/src/assets/wowllet.desktop" "${pkgdir}/usr/share/applications/wowllet.desktop"
+  install -Dm644 "${srcdir}/${pkgname}/src/assets/images/wowllet.png" "${pkgdir}/usr/share/pixmaps/wowllet.png"
+}
