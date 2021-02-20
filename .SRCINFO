@@ -1,0 +1,20 @@
+pkgbase = synadm-git
+	pkgdesc = CLI frontend to Matrix-Synapse admin APIs
+	pkgver = r179.ea5c9ec
+	pkgrel = 1
+	url = https://github.com/JOJ0/synadm
+	arch = any
+	license = GPL3
+	makedepends = python3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-click
+	depends = python-requests
+	depends = python-yaml
+	depends = python-tabulate
+	depends = python-click-option-group
+	source = synadm::git+https://github.com/JOJ0/synadm.git
+	sha256sums = SKIP
+
+pkgname = synadm-git
+
