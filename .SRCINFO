@@ -1,7 +1,7 @@
 pkgbase = silentdragonpaper
 	pkgdesc = HUSH paper wallet generator
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.hush.is/hush/SilentDragonPaper
 	arch = x86_64
 	license = GPL3

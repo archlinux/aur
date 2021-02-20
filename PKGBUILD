@@ -2,7 +2,7 @@
 
 pkgname=silentdragonpaper
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="HUSH paper wallet generator"
 url="https://git.hush.is/hush/SilentDragonPaper"
 arch=('x86_64')
@@ -18,17 +18,10 @@ build() {
 }
 
 package() {
-  install -d "${pkgdir}/opt/${pkgname}"
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -d "${pkgdir}/usr/bin"
- 
-  cd ${pkgname}
-  install -m 644 README.md "${pkgdir}/opt/${pkgname}"
-  install -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm755 "${srcdir}/$pkgname/cli/target/release/SilentDragonPaper" "${pkgdir}/opt/$pkgname/$pkgname"
+  install -Dm644 "${srcdir}/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "${srcdir}/$pkgname/README.md" "${pkgdir}/opt/$pkgname/README.md"
 
-  cd cli/target/release
-  mv SilentDragonPaper ${pkgname}
-  install -m 755 ${pkgname} "${pkgdir}/opt/${pkgname}"
-  
+  install -d "${pkgdir}/usr/bin"
   ln -s /opt/${pkgname}/silentdragonpaper "${pkgdir}/usr/bin"
 }
