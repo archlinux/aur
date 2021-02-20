@@ -1,6 +1,6 @@
 pkgbase = favicon-to-png-upload
 	pkgdesc = Downloads the 'favicon.ico' from a given URL and uploads it's PNG-version to imgur.com. The imgut.com-URL is printed on stdout and pushed to the clipboard. Also supports markdown-output.
-	pkgver = 0.3_2021_02_20
+	pkgver = 0.3b_2021_02_20
 	pkgrel = 2
 	epoch = 0
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = favicon-to-png-upload
 	optdepends = xsel: To copy the result to the X clipboard (alternative to 'xclip').
 	options = emptydirs
 	source = favicon-to-png-upload::http://ix.io/2Q37
-	sha256sums = d1735de80b57894422bf2142cf0b4cb8213c6a6665c7549062c9125da9636c29
+	sha256sums = 90752f70f43c8b57197cad6e3f0d6361f6a7ae69d804e47bce769b258f4c1010
 
 pkgname = favicon-to-png-upload
 

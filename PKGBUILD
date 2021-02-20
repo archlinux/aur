@@ -5,7 +5,7 @@ pkgname="${_pkgname}"
 
 _pkgver="latest"
 epoch=0
-pkgver=0.3_2021_02_20
+pkgver=0.3b_2021_02_20 # NOTE!, the version get's specified via 'pkgver()'. Version changes must be made in the 'favicon-to-png-upload' bash script itself.
 pkgrel=2
 
 pkgdesc="Downloads the 'favicon.ico' from a given URL and uploads it's PNG-version to imgur.com. The imgut.com-URL is printed on stdout and pushed to the clipboard. Also supports markdown-output."
@@ -42,7 +42,7 @@ source=(
 )
 
 sha256sums=(
-  'd1735de80b57894422bf2142cf0b4cb8213c6a6665c7549062c9125da9636c29'
+  '90752f70f43c8b57197cad6e3f0d6361f6a7ae69d804e47bce769b258f4c1010'
 )
 
 prepare() {
