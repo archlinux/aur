@@ -13,7 +13,7 @@ depends=('openssl' 'pcre')
 
 source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
 
-b2sums=('27680856566985581afde890cb5b157bfddc4464313e60957ad2c6f2880ba2e5788bd5044c2e893a71d32b142cbb723c1002c8ce6880660157cef6ac5484b917')
+b2sums=('64f6c634a9acdeabb81a3218e81809813db16956c05e734dbf5688a7ce97ba02f65dd50c36b875b1f8c0fd10cccd98292ad5988c76d457d883c04bb52ff168d2')
 
 build() {
     cd "$pkgname-$pkgver"
