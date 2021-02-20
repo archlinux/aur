@@ -4,7 +4,7 @@
 pkgname=python-httpie-jwt-auth
 _pkgname=httpie-jwt-auth
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="JWTAuth (JSON Web Tokens) auth plugin for HTTPie"
 url="https://github.com/teracyhq/httpie-jwt-auth"
 license=('BSD')
