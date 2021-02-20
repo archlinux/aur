@@ -9,7 +9,7 @@
 
 pkgname=keepassxc-git
 _gitname=keepassxc
-pkgver=2.5.2.r17.g8ded3bdb
+pkgver=2.6.3.r76.gf3d88fbd
 pkgrel=1
 pkgdesc="Cross-platform community-driven port of KeePass Password Safe"
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ depends=('qt5-base' 'qt5-x11extras' 'qt5-translations' 'qt5-imageformats'
          'libxtst' 'shared-mime-info' 'hicolor-icon-theme' 'desktop-file-utils'
          'yubikey-personalization' 'qt5-svg' 'qrencode' 'quazip'
          'libsodium' 'libgcrypt' 'argon2' 'zlib')
-install=keepassxc.install
-makedepends=('git' 'intltool' 'cmake' 'qt5-tools')
+makedepends=('git' 'intltool' 'cmake' 'qt5-tools' 'asciidoctor')
+checkdepends=('xorg-server-xvfb' 'xclip')
 provides=(org.freedesktop.secrets)
 conflicts=('keepassxc')
 replaces=('keepassx-http' 'keepassx-reboot-git')
@@ -54,7 +54,7 @@ build() {
 
 #check() {
 #    cd "${_gitname}/build"
-#    make test
+#    xvfb-run --auto-display make test
 #}
 
 package() {
