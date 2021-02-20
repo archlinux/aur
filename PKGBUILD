@@ -3,7 +3,7 @@
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=folly
-pkgver=2021.02.01.00
+pkgver=2021.02.15.00
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('snappy' 'jemalloc' 'double-conversion' 'gflags' 'google-glog' 'libeven
          'boost-libs' 'fmt' 'openssl' 'zlib' 'bzip2' 'xz' 'lz4' 'zstd' 'libsodium')
 makedepends=('cmake' 'gtest' 'gmock')
 source=("https://github.com/facebook/$pkgname/archive/v${pkgver}.tar.gz")
-sha256sums=('4b05328957e8cbf6bc4b676d0e69514492d75807075162351202d577f641880f')
+sha256sums=('0e40e7fd536700ef149ddffb72fa17f92f139738d057c2a6d0a6e5736fa76de0')
 
 build() {
   cd "$pkgname-$pkgver"
