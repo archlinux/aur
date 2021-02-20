@@ -1,19 +1,19 @@
 # Maintainer: gaelic <gaelic@luchmhor.net>
 #             Fincer <fincer@example.com>
+#             qs9rx <qs9rx.aur@enjoys.it>
 
 # Previous Maintainer: scimmia, XavierCLL, SaultDon, Lantald, Thomas Dziedzic, dibblethewrecker, Gerardo Exequiel Pozzi, Eric Forgeot
 
 pkgname=qgis-git
 _pkgname=qgis
-pkgver=3.10.0_master.r58226.f69d7f8f83
-
-_pkgver=3.10.0_master
+pkgver=3.99_master.r69399.14e5c6094df
+_pkgver=3.99_master  # fake pkgver prefix for the name
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats - Development master'
 url='http://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('qt5-tools' 'qt5-script' 'qtkeychain' 'qca-qt5' 'qt5-webkit' 'qt5-3d' 'qt5-serialport' 'proj' 'geos' 'sqlite' 'python-pyqt5' 'python-gdal' 'python-owslib' 'python-future' 'python-sip' 'python-sip-pyqt5' 'python-psycopg2' 'python-yaml' 'python-numpy' 'python-jinja' 'python-pygments' 'qwtpolar' 'expat' 'python-qscintilla-qt5' 'spatialindex' 'gsl' 'libzip' 'sip' 'exiv2' 'qt5-xmlpatterns' 'ocl-icd')
+depends=('qt5-tools' 'qt5-script' 'qtkeychain' 'qca-qt5' 'qt5-webkit' 'qt5-3d' 'qt5-serialport' 'proj' 'geos' 'sqlite' 'python-pyqt5' 'python-gdal' 'python-owslib' 'python-future' 'python-sip' 'python-psycopg2' 'python-yaml' 'python-numpy' 'python-jinja' 'python-pygments' 'qwtpolar' 'expat' 'python-qscintilla-qt5' 'spatialindex' 'gsl' 'libzip' 'sip4' 'exiv2' 'qt5-xmlpatterns' 'ocl-icd' 'protobuf')
 
 makedepends=('git' 'cmake' 'txt2tags')
 optdepends=('grass: for GRASS providers and plugin (6 or 7)'
@@ -23,10 +23,9 @@ optdepends=('grass: for GRASS providers and plugin (6 or 7)'
             'fcgi: for qgis mapserver'
             'ocilib: oracle provider')
 
-#install="$_pkgname.install"
 source=("${_pkgname}::git://github.com/qgis/QGIS.git")
 md5sums=('SKIP')
-#conflicts=('qgis')
+provides=('qgis')
 
 pkgver(){
   cd "$_pkgname"
@@ -37,13 +36,11 @@ prepare() {
   cd $_pkgname
 
   # Fix desktop file for /usr/bin/qgis-github
-  
-#  sed -e 's/\/usr\/bin\/qgis/\/usr\/bin\/qgis-git/g' \
-
+#   sed -e 's/\/usr\/bin\/qgis/\/usr\/bin\/qgis-git/g' \
    sed -e 's/Exec=qgis/Exec=qgis-git/g' \
   		-e 's/Icon=qgis/Icon=qgis-git/g' \
   		-i linux/org.qgis.qgis.desktop.in
-  #cp linux/org.qgis.qgis.desktop.in linux/org.qgis.qgis-git.desktop
+#   cp linux/org.qgis.qgis.desktop.in linux/org.qgis.qgis-git.desktop
 
   # Remove mime types already defined by freedesktop.org
   sed -e '/type="image\/tiff"/,/<\/mime-type>/d' \
@@ -57,7 +54,7 @@ prepare() {
 
 build() {
   cd $_pkgname/build
-  
+
   cmake -G "Unix Makefiles" ../ \
     -DCMAKE_INSTALL_PREFIX=/opt/$pkgname \
     -DQGIS_MANUAL_SUBDIR=share/man \
@@ -89,7 +86,6 @@ package() {
   ln -s /opt/$pkgname/bin/qgis "$pkgdir/usr/bin/qgis-git"
   
   # install desktop files and icons
-#  install -Dm644 linux/org.qgis.qgis-git.desktop -t "$pkgdir/usr/share/applications/"
   install -Dm644 build/org.qgis.qgis.desktop "$pkgdir/usr/share/applications/org.qgis.qgis-git.desktop"
   for resolution in `ls /usr/share/icons/hicolor/|egrep '[0-9]'`; do
   	if [ -e debian/icons/qgis-icon{$resolution}.png ]
@@ -100,7 +96,6 @@ package() {
 	install -Dm644 images/icons/qgis_icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
 	
   # install mime information and icon
-  
   install -Dm644 debian/qgis.xml "$pkgdir/usr/share/mime/packages/qgis-git.xml"
   for resolution in `ls /usr/share/icons/hicolor/|egrep '[0-9]'`; do
   	if [ -e debian/icons/qgis-mime-icon{$resolution}.png ]
@@ -129,3 +124,4 @@ package() {
   install -d -m755 "${pkgdir}"/etc/ld.so.conf.d/
   echo '/opt/qgis-git/lib' > "${pkgdir}"/etc/ld.so.conf.d/qgis-git.conf
 }
+
