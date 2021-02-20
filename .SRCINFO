@@ -1,6 +1,6 @@
 pkgbase = craftbukkit-spigot
 	pkgdesc = CraftBukkit, Spigot, and vanilla Minecraft servers
-	pkgver = 1.16.4.2960
+	pkgver = 1.16.5.2990
 	pkgrel = 1
 	url = https://www.spigotmc.org/
 	install = craftbukkit-spigot.install
@@ -11,13 +11,13 @@ pkgbase = craftbukkit-spigot
 	depends = java-runtime-headless<=14
 	depends = fontconfig
 	optdepends = mcrcon: Notify users before shutdown and consistent backups
-	provides = craftbukkit=1.16.4
-	provides = minecraft-server=1.16.4
+	provides = craftbukkit=1.16.5
+	provides = minecraft-server=1.16.5
 	conflicts = bukkit
 	conflicts = craftbukkit
 	conflicts = craftbukkit-stable
-	noextract = BuildTools-122.jar
-	source = BuildTools-122.jar::https://hub.spigotmc.org/jenkins/job/BuildTools/122/artifact/target/BuildTools.jar
+	noextract = BuildTools-124.jar
+	source = BuildTools-124.jar::https://hub.spigotmc.org/jenkins/job/BuildTools/124/artifact/target/BuildTools.jar
 	source = craftbukkit.service
 	source = craftbukkit@.service
 	source = craftbukkit-mcrcon.sh
@@ -27,7 +27,7 @@ pkgbase = craftbukkit-spigot
 	source = notify-shutdown.sh
 	source = readme.md
 	source = sysusers.conf
-	sha256sums = 551d8fb79b2c3a25768eb02e7d2e740392c7a3f1f5863c1e13587d0b61edb32c
+	sha256sums = bc400b46339b346ba87d6f232ea2869fc4a0a2033d85de4d81f441cf5a2ff932
 	sha256sums = 4ad26fa4df8c8f83e51b74bb0db4d78641a41fbad7c5e285b41493a6fd3019ac
 	sha256sums = 75677d50e67eae3aa3dd402b672ef9db7f3e34b626231b10ac8dbf04af23d6e5
 	sha256sums = 16d2281874c953eb94141994d5a4c4c31b0b3f7d51652ebdad1f2367fdeaea8c
