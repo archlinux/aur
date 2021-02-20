@@ -2,15 +2,16 @@
 
 pkgname=neopo-git
 _gitname="neopo"
-pkgver=r303.a436377
+pkgver=r304.b9c33a5
 pkgrel=1
 pkgdesc="A lightweight solution for local Particle development."
 arch=('x86_64' 'aarch64')
 url="https://github.com/nrobinson2000/neopo"
 license=('custom')
 provides=('neopo')
-source=('git+https://github.com/nrobinson2000/neopo.git')
-md5sums=('SKIP')
+source=('git+https://github.com/nrobinson2000/neopo.git'
+        'git+https://github.com/nrobinson2000/particle-cli-completion')
+md5sums=('SKIP' 'SKIP')
 makedepends=('python-setuptools')
 depends=('python' 'vim' 'git' 'perl-archive-zip' 'libusb')
 
@@ -26,6 +27,11 @@ pkgver() {
 }
 
 package() {
-    cd $_gitname
-    python setup.py install --root="${pkgdir}/" --optimize=1
+  # Particle completion script
+  install -Dm 644 particle-cli-completion/particle \
+    "${pkgdir}/usr/share/bash-completion/completions/particle"
+
+  # Neopo pip package
+  cd $_gitname
+  python setup.py install --root="${pkgdir}/" --optimize=1
 }
