@@ -32,4 +32,6 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	cargo install --path .
+	mkdir -p "$pkgdir"/usr/local/bin
+	cp ./target/release/natls "$pkgdir"/usr/local/bin
 }
