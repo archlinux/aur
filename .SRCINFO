@@ -1,20 +1,18 @@
 pkgbase = python-mkdocs-ponylang
 	pkgdesc = Ponylang Material theme for MkDocs
-	pkgver = 0.1.0
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/ponylang/mkdocs-theme
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = mkdocs
 	depends = pymdown-extensions
 	depends = python-pygments
-	depends = python-wheel
-	depends = twine
-	source = https://files.pythonhosted.org/packages/source/m/mkdocs-ponylang/mkdocs-ponylang-0.1.0.tar.gz
-	source = LICENSE
-	sha256sums = 26943868f967c3470e08d1576597665c1a4601df1051415afbea6c47adef2e2e
-	sha256sums = 25cc1bdc2b37c209bff6ebb460a75ed30641fd771d5ae0377271fbe884dcb3b6
+	conflicts = python-mkdocs-material
+	source = https://github.com/ponylang/mkdocs-theme/archive/0.2.8.tar.gz
+	sha256sums = 3d2ff814f84b32c54975ffef12430428247ee4506105991d42e249ac8a1ac45f
 
 pkgname = python-mkdocs-ponylang
 
