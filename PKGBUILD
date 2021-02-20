@@ -5,7 +5,7 @@ _pkgname=actual
 _Pkgname=Actual
 
 pkgname="${_pkgname}"-appimage
-pkgver=0.0.127
+pkgver=0.0.128
 pkgrel=1
 pkgdesc="Actual is a super fast privacy-focused app for managing your finances."
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=(!strip)
 _appimage="${_Pkgname}-${pkgver}-x86_64.AppImage"
 source_x86_64=("${_appimage}::https://github.com/actualbudget/releases/releases/download/${pkgver}/${_Pkgname}-${pkgver}-x86_64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('e07147275646f61d0a202b53b9a3ceff7ced1fd8f7a56f07ffadfcb80e04c8b2')
+sha256sums_x86_64=('3b68f66a820da39d4793dcd3fd2e605ff7001e834940e2f7f684247a7e2504e9')
 
 prepare() {
     chmod +x "${_appimage}"
