@@ -1,8 +1,8 @@
-# Maintainer: Matthias Lisin <ml@visu.li>
+# Maintainer: ml <>
 # Contributor: Fredy García <frealgagu at gmail dot com>
 pkgname=kaniko
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Build Container Images In Kubernetes'
 arch=('x86_64')
 url="https://github.com/GoogleContainerTools/kaniko"
@@ -13,11 +13,6 @@ makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('cf2d915aeb5e82ab2f4b241d1b8b251938df57f7b89c610bf51a1a4eda40ca3c')
 
-prepare() {
-  cd "$pkgname-$pkgver"
-  go mod download
-}
-
 build() {
   cd "$pkgname-$pkgver"
   export CGO_ENABLED=1
@@ -25,8 +20,7 @@ build() {
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
-  # -mod=readonly not working currently
-  export GOFLAGS='-buildmode=pie -modcacherw'
+  export GOFLAGS='-buildmode=pie -mod=vendor -modcacherw'
   go build -trimpath -o . -ldflags="-linkmode=external -X=github.com/GoogleContainerTools/kaniko/pkg/version.version=v$pkgver" ./cmd/...
 }
 
