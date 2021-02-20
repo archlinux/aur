@@ -1,7 +1,8 @@
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: Arch Linux Pro Audio <dev@archaudio.org>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Arch Linux Pro Audio <dev@archaudio.org>
 # Contributor: Coenraad van der Westhuizen <chwesthuizen@gmail.com>
 # Contributor: hm_b <holger (at) music-nerds (dot) net>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=canorus
 pkgver=0.7.3rc3
