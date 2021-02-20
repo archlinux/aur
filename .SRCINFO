@@ -1,0 +1,17 @@
+pkgbase = php8-systemd
+	pkgdesc = PHP extension allowing native interaction with systemd and its journal
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/systemd/php-systemd
+	arch = any
+	license = MIT
+	makedepends = php
+	depends = libsystemd
+	backup = etc/php/conf.d/systemd.ini
+	source = https://github.com/systemd/php-systemd/archive/master.zip
+	source = systemd.ini
+	sha512sums = f55a893e40ff9a3fc37499783070bf80ce6ae348b848befca2bd011b54b9201d58a5ce8d0289cc3d14290fd43407a2bdd516bc8c162a17c8166d9b39feeb70bf
+	sha512sums = 86155fd1ea7eec8e6d1dfb292633c7731df1180bbb9988bb409a9bc0316fb597f5398e6956788bb3fb9bad15612fceef7742b877af0996e4c255d2952628b3e4
+
+pkgname = php8-systemd
+
