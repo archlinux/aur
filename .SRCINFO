@@ -1,0 +1,19 @@
+pkgbase = neovim-coc-vimtex-git
+	pkgdesc = vimtex integration for coc.nvim
+	pkgver = 1.0.4.r2.g993436f
+	pkgrel = 1
+	url = https://github.com/neoclide/coc-vimtex
+	arch = any
+	license = MIT
+	makedepends = yarn
+	makedepends = npm
+	makedepends = git
+	depends = neovim-coc
+	depends = neovim-vimtex-opt-git
+	provides = neovim-coc-vimtex
+	conflicts = neovim-coc-vimtex
+	source = coc-vimtex::git+https://github.com/neoclide/coc-vimtex.git
+	sha256sums = SKIP
+
+pkgname = neovim-coc-vimtex-git
+
