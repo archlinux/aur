@@ -1,7 +1,7 @@
 pkgbase = kubectl-support-bundle-bin
 	pkgdesc = Kubectl plugin for post-installation troubleshooting and diagnostics (support bundles)
 	pkgver = 0.10.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://troubleshoot.sh
 	arch = x86_64
 	license = Apache
