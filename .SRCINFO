@@ -1,7 +1,7 @@
 pkgbase = xmrig-mo
-	pkgdesc = High performance RandomX and CryptoNight CPU miner, with MoneroOcean auto alg switching
+	pkgdesc = High performance RandomX, KawPow, CryptoNight, and AstroBWT CPU/GPU miner, with MoneroOcean auto alg switching
 	pkgver = 6.8.2mo1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MoneroOcean/xmrig
 	arch = x86_64
 	license = GPL

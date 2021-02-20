@@ -2,8 +2,8 @@
 
 pkgname='xmrig-mo'
 pkgver='6.8.2mo1'
-pkgrel='1'
-pkgdesc='High performance RandomX and CryptoNight CPU miner, with MoneroOcean auto alg switching'
+pkgrel='2'
+pkgdesc='High performance RandomX, KawPow, CryptoNight, and AstroBWT CPU/GPU miner, with MoneroOcean auto alg switching'
 arch=('x86_64')
 url="https://github.com/MoneroOcean/xmrig"
 depends=('libuv' 'openssl' 'hwloc')
@@ -20,9 +20,8 @@ prepare() {
   cd "xmrig-6.8.2-mo1"
   [ -d build ] || mkdir build
 
-  msg2 "Reseting donation level to zero"
-  sed -i -e 's/constexpr const int kDefaultDonateLevel = 5;/constexpr const int kDefaultDonateLevel = 0;/g' \
-         -e 's/constexpr const int kMinimumDonateLevel = 1;/constexpr const int kMinimumDonateLevel = 0;/g' src/donate.h
+  msg2 "Resetting donation level to zero"
+  sed -i -E '/^(.*DonateLevel = )[0-9]+;$/s//\10;/' src/donate.h
 }
 
 build() {
