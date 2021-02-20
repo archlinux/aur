@@ -11,6 +11,7 @@ pkgbase = vim-coc-master-git
 	depends = nodejs
 	optdepends = npm: for installing coc extensions
 	optdepends = yarn: for installing coc extensions
+	optdepends = watchman: for workspace_didChangeWatchedFiles feature
 	optdepends = vim-coc-extras-meta: some basic extensions
 	provides = vim-coc
 	conflicts = vim-coc
