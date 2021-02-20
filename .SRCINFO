@@ -1,0 +1,20 @@
+pkgbase = dapr-cpp-sdk-git
+	pkgdesc = C++ SDK for Dapr
+	pkgver = v0.3.0.r0.gf5ec06b
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/dapr/cpp-sdk
+	arch = x86_64
+	license = MIT
+	makedepends = protobuf>=3
+	depends = grpc
+	depends = dapr-cli
+	provides = dapr-cpp-sdk
+	conflicts = dapr-cpp-sdk
+	source = dapr-cpp-sdk::git+https://github.com/dapr/cpp-sdk
+	source = dapr-cpp-sdk.pc.template
+	sha256sums = SKIP
+	sha256sums = 83b817de81c47650c340ac39066258c8d97fd29ac7619442e08e205a35b9e747
+
+pkgname = dapr-cpp-sdk-git
+

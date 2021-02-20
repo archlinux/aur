@@ -1,0 +1,12 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: Dapr C++ SDK
+Description: C++ SDK for Dapr
+Version: <tag-version>
+Libs: -L${libdir} -ldapr
+Requires: protobuf >= 3.0.0, grpc++
+
+Cflags: -I${includedir} -pthread
