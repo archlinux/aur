@@ -1,8 +1,8 @@
-pkgbase = linux-ath-dfs
+pkgbase = linux
 	pkgdesc = Linux
-	pkgver = 5.10.12.arch1
+	pkgver = 5.10.16.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.10.12-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.10.16-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,15 +20,15 @@ pkgbase = linux-ath-dfs
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.10.12-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.10.16-arch1
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
-	sha256sums = e26297ffc9af8117815085b815ddde55a716bfadbaae090ef09438c16ee9e69b
+	sha256sums = 3c7dd28936a8c88ba6e007af5fd087b4dc0439b2b24a1f5cc3bf0fe154efa862
 
-pkgname = linux-ath-dfs
+pkgname = linux
 	pkgdesc = The Linux kernel and modules
 	depends = coreutils
 	depends = kmod
@@ -40,9 +40,9 @@ pkgname = linux-ath-dfs
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
-pkgname = linux-ath-dfs-headers
+pkgname = linux-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel
 
-pkgname = linux-ath-dfs-docs
+pkgname = linux-docs
 	pkgdesc = Documentation for the Linux kernel
 
