@@ -1,0 +1,16 @@
+pkgbase = golang-golang-x-tour-git
+	pkgdesc = A tour of Go - an introduction to the Go programming language
+	pkgver = 398.0044035
+	pkgrel = 1
+	url = https://tour.golang.org/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	makedepends = golang-golang-x-tools
+	source = git+https://github.com/golang/tour.git
+	sha256sums = SKIP
+
+pkgname = golang-golang-x-tour-git
+
