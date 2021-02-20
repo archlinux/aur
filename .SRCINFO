@@ -1,6 +1,6 @@
 pkgbase = cpeditor-git
 	pkgdesc = The editor for competitive programming
-	pkgver = 6.8.1.r15.g7df7a6d2
+	pkgver = 6.8.1.r16.g838f9d7e
 	pkgrel = 1
 	url = https://github.com/cpeditor/cpeditor
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = cpeditor-git
 	makedepends = ninja
 	makedepends = python3
 	makedepends = qt5-tools
-	depends = qt5-base>=5.15.0
-	optdepends = cf-tool: submit to Codeforces support
-	optdepends = clang: C++ format and language server support
-	optdepends = jdk-openjdk: compile Java support
-	optdepends = jre-openjdk: execute Java support
-	optdepends = python: execute Python support
+	depends = qt5-base
+	optdepends = cf-tool: submit to Codeforces
+	optdepends = clang: C++ format and language server
+	optdepends = java-environment: compile Java
+	optdepends = java-runtime: execute Java
+	optdepends = python: execute Python
 	provides = cpeditor
 	conflicts = cpeditor
 	source = git://github.com/cpeditor/cpeditor.git

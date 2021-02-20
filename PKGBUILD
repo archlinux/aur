@@ -2,13 +2,13 @@
 
 pkgname=cpeditor-git
 _pkgname=cpeditor
-pkgver=6.8.1.r15.g7df7a6d2
+pkgver=6.8.1.r16.g838f9d7e
 pkgrel=1
 pkgdesc='The editor for competitive programming'
 arch=('x86_64')
 url='https://github.com/cpeditor/cpeditor'
 license=('GPL3')
-depends=('qt5-base>=5.15.0')
+depends=('qt5-base')
 makedepends=(
 	"cmake"
 	"git"
@@ -17,11 +17,11 @@ makedepends=(
 	"qt5-tools"
 )
 optdepends=(
-	'cf-tool: submit to Codeforces support'
-	'clang: C++ format and language server support'
-	'jdk-openjdk: compile Java support'
-	'jre-openjdk: execute Java support'
-	'python: execute Python support'
+	'cf-tool: submit to Codeforces'
+	'clang: C++ format and language server'
+	'java-environment: compile Java'
+	'java-runtime: execute Java'
+	'python: execute Python'
 )
 provides=('cpeditor')
 conflicts=("cpeditor")
@@ -58,7 +58,7 @@ prepare() {
 build() {
 	cd "$_pkgname"
 	cmake -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DPORTABLE_VERSION=Off -DCMAKE_BUILD_TYPE=Release -GNinja
-	cmake --build build -j$(nproc)
+	cmake --build build
 }
 
 package() {
