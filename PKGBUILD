@@ -2,7 +2,7 @@
 
 pkgname='python-cffsubr'
 _pkgname='cffsubr'
-pkgver='0.2.7'
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Standalone CFF subroutinizer based on AFDKO tx"
 url="https://github.com/adobe-type-tools/cffsubr"
@@ -13,7 +13,7 @@ optdepends=()
 license=('Apache')
 arch=('x86_64')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('c30a35d2ffcc2d23826757cba9917884cbdb999760d847c6d83b708ebb80c973')
+sha256sums=('e24bd03c94944e1536ec8437ab83fb4ac38477412426c1ffd4e056dd16cde235')
 
 package() {
     cd "${_pkgname}-${pkgver}"
