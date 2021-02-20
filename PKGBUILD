@@ -2,7 +2,7 @@
 
 _pyname=pslab-python
 pkgname=python-pslab
-pkgver=1.0.1
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Core library for PSlab desktop"
 arch=('any')
@@ -13,16 +13,15 @@ depends=(
   'python-setuptools'
   'python-pyserial'
   'python-numpy'
+  'python-scipy'
 )
 provides=("$_pyname")
 options=(!emptydirs)
 source=(https://github.com/fossasia/$_pyname/archive/v$pkgver.tar.gz)
-sha512sums=('939f3649a0060a59a39ee97b57134075f8602b966fb3d14250c8ae96c340a4ab33e9fa8d7c5d8cf09ae9297b762c203e4a256bc29b9ff6006ce6ff254c468ad2')
+sha512sums=('e2f5e8de5fb286e0be97c0de888245fe3d2fec54dd2fce14d6bc4b42bb419d086bd22135c866c7a653b44c32526a4132abd068dd6ec91977f927dad8d35ddf08')
 
 package() {
   cd "$srcdir/${_pyname}-$pkgver"
-  # strip out attempt to install udev rules
-  sed -i "/cmdclass/d" setup.py
   python setup.py install --root="$pkgdir/" --optimize=1
   install -Dm 644 99-pslab.rules "$pkgdir/usr/lib/udev/rules.d/99-pslab.rules"
 }
