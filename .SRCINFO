@@ -1,0 +1,15 @@
+pkgbase = kubectl-support-bundle-bin
+	pkgdesc = Kubectl plugin for post-installation troubleshooting and diagnostics (support bundles)
+	pkgver = 0.10.5
+	pkgrel = 1
+	url = https://troubleshoot.sh
+	arch = x86_64
+	license = Apache
+	depends = kubectl
+	provides = kubectl-support-bundle
+	conflicts = kubectl-support-bundle
+	source = support-bundle_0.10.5_linux_amd64.tar.gz::https://github.com/replicatedhq/troubleshoot/releases/download/v0.10.5/support-bundle_linux_amd64.tar.gz
+	sha256sums = 81b6768ade52a8021327781fa906e26d6279242ecd84f899f9fa7d7f132f585e
+
+pkgname = kubectl-support-bundle-bin
+
