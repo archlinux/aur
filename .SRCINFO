@@ -1,6 +1,6 @@
 pkgbase = wowllet-git
         pkgdesc = a free Wownero desktop wallet
-        pkgver = 0.1.0.d248aaf8b3
+        pkgver = 0.1.0.c1699c2c79
         pkgrel = 1
         url = https://wownero.org
         arch = x86_64
