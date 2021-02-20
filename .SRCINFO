@@ -1,7 +1,7 @@
 pkgbase = gcal
 	pkgdesc = Display hybrid and proleptic Julian and Gregorian calendar sheets
 	pkgver = 4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gnu.org/software/gcal/
 	install = gcal.install
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = gcal
 	license = GPL
 	depends = perl
 	source = ftp://ftp.gnu.org/pub/gnu/gcal/gcal-4.1.tar.xz
-	source = https://src.fedoraproject.org/rpms/gcal/raw/master/f/gcal-glibc-no-libio.patch
+	source = https://src.fedoraproject.org/rpms/gcal/raw/rawhide/f/gcal-glibc-no-libio.patch
 	md5sums = 7560189fc2393fddc920c5843b27d295
 	md5sums = a04608e34328e54e7c408a57240abfb1
 
