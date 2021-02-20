@@ -12,7 +12,6 @@ license=('GPL')
 groups=('kodi')
 makedepends=('cmake' 'git' 'autoconf' 'automake')
 provides=('kodi-addon-inputstream-ffmpegdirect-any')
-#conflicts=('kodi-addon-inputstream-adaptive' 'kodi-addon-inputstream-adaptive-18');
 depends=('kodi')
 source=("https://github.com/xbmc/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz"
         "https://github.com/xbmc/xbmc/archive/${_kodiver}-${_koditarget}.tar.gz"
