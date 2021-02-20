@@ -1,7 +1,7 @@
 # Maintainer: Scott Little swlittle7 [at] gmail [dot] com
 pkgname=nat
 pkgver=2.1.11
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="The Better ls"
 arch=(x86_64)
