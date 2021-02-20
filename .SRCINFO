@@ -1,7 +1,7 @@
 pkgbase = lcarsde-status-bar
 	pkgdesc = Menu for lcarsde to display and run installed software
-	pkgver = 21.1
-	pkgrel = 2
+	pkgver = 21.2
+	pkgrel = 1
 	url = https://lcarsde.github.io
 	arch = any
 	groups = lcarsde
@@ -17,8 +17,8 @@ pkgbase = lcarsde-status-bar
 	depends = gtk3
 	optdepends = ttf-ubuntu-font-family
 	optdepends = alsa-utils
-	source = lcarsde-status-bar-21.1.tar.gz::https://github.com/lcarsde/status-bar/archive/21.1.tar.gz
-	md5sums = 35e5d5ac4c74c16cf10910853aa4d431
+	source = lcarsde-status-bar-21.2.tar.gz::https://github.com/lcarsde/status-bar/archive/21.2.tar.gz
+	md5sums = a868158b1b2cd8b0eb10a39a93e9594f
 
 pkgname = lcarsde-status-bar
 
