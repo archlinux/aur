@@ -1,9 +1,8 @@
 [Unit]
-Description=A self-hosted music streaming service
+Description=Eggplant
 After=network.target network-online.target
 
 [Service]
-Type=exec
 PrivateDevices=yes
 DynamicUser=yes
 CacheDirectory=eggplant
