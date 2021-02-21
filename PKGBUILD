@@ -13,7 +13,7 @@
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.0.11.0
+pkgver=7.0.11.1
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
@@ -30,13 +30,13 @@ makedepends=(
         'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
         'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip'
     # AUR:
-        'autotrace-nomagick' 'flif' 'libfpx' 'libumem-git'
+        'autotrace-nomagick' 'dmalloc' 'flif' 'libjpeg-xl' 'libfpx' 'libumem-git'
 )
-_commit='dc69067b7cf84c0c8abddb07649abcc566323eda'
+_commit='45fb603e3dcb13a4d0ff74ab1859805e3e83cb81'
 source=("git+https://github.com/ImageMagick/ImageMagick.git#commit=${_commit}"
         'arch-fonts.diff')
 sha256sums=('SKIP'
-            'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
+            '290c6a87845b419459fb552c0e7dcd81fbeafcecc370818d442fedf4d315b7fb')
 
 prepare() {
     # fix up typemaps to match Arch Linux packages, where possible
@@ -58,6 +58,7 @@ build() {
         --enable-cipher \
         --enable-hdri \
         --enable-docs \
+        --with-dmalloc \
         --with-threads \
         --with-modules \
         --with-quantum-depth="${_qdepth}" \
@@ -85,7 +86,7 @@ build() {
         --with-heic \
         --with-jbig \
         --with-jpeg \
-        --without-jxl \
+        --with-jxl \
         --with-lcms \
         --with-openjp2 \
         --with-lqr \
@@ -126,7 +127,7 @@ package_imagemagick-full() {
             'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
             'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl'
         # AUR:
-            'autotrace-nomagick' 'flif' 'libfpx' 'libumem-git'
+            'autotrace-nomagick' 'dmalloc' 'flif' 'libfpx' 'libjpeg-xl' 'libumem-git'
     )
     optdepends=('imagemagick-full-doc: manual and API docs')
     backup=("etc/ImageMagick-${pkgver%%.*}"/{colors,delegates,log,mime,policy,quantization-table,thresholds,type{,-dejavu,-ghostscript}}.xml)
