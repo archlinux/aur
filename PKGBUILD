@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-notifications-git
-pkgver=2.1.7.r2.gd1f3a57
+pkgver=2.1.7.r25.g6bb9054
 pkgrel=1
 pkgdesc='Switchboard Notifications Plug'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('git' 'granite' 'meson' 'switchboard' 'vala')
+makedepends=('git' 'granite-git' 'meson' 'switchboard' 'vala')
 provides=('switchboard-plug-notifications')
 conflicts=('switchboard-plug-notifications')
 source=('git+https://github.com/elementary/switchboard-plug-notifications.git')
