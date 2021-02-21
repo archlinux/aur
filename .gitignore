@@ -1,0 +1,5 @@
+midi-trigger.lv2/
+midi-trigger.lv2-*.pkg.tar.xz
+midi-trigger.lv2-*.pkg.tar.zst
+pkg/
+src/
