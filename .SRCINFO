@@ -1,0 +1,14 @@
+pkgbase = fritzbox-exporter
+	pkgver = 0.1
+	pkgrel = 0
+	url = https://cgit.ctu.cx/fritzbox-exporter/
+	arch = x86_64
+	license = GPL-3
+	makedepends = nim
+	makedepends = nimble
+	depends = glibc
+	source = fritzbox-exporter-fac404da464bae683f68e9951061623a852af35a.tar.gz::https://cgit.ctu.cx/fritzbox-exporter/snapshot/fritzbox-exporter-fac404da464bae683f68e9951061623a852af35a.tar.gz
+	sha256sums = e54dc049a3ca7689ea28ea1bdfb5d86024e0ee2fad00109d6fdd41ea1037c3e8
+
+pkgname = fritzbox-exporter
+
