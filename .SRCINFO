@@ -1,13 +1,13 @@
 pkgbase = switchboard-git
 	pkgdesc = The Pantheon Control Center
-	pkgver = 2.4.0.r30.g79e6d44
+	pkgver = 2.4.0.r53.gad5546c
 	pkgrel = 1
 	url = https://github.com/elementary/switchboard
 	arch = x86_64
 	groups = pantheon-unstable
 	license = GPL3
 	makedepends = git
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = intltool
 	makedepends = meson
 	makedepends = vala
@@ -31,4 +31,3 @@ pkgbase = switchboard-git
 	sha256sums = SKIP
 
 pkgname = switchboard-git
-

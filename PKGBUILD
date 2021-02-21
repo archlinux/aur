@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-git
-pkgver=2.4.0.r30.g79e6d44
+pkgver=2.4.0.r53.gad5546c
 pkgrel=1
 pkgdesc='The Pantheon Control Center'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('clutter-gtk' 'glib2' 'glibc' 'gtk3' 'libgee'
          'libgranite.so' 'libhandy')
-makedepends=('git' 'granite' 'intltool' 'meson' 'vala')
+makedepends=('git' 'granite-git' 'intltool' 'meson' 'vala')
 optdepends=('switchboard-plug-about-git: About plug'
             'switchboard-plug-default-applications-git: Default applications plug'
             'switchboard-plug-elementary-tweaks-git: Elementary tweaks plug'
