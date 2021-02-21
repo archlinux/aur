@@ -1,13 +1,13 @@
 pkgbase = switchboard-plug-a11y-git
 	pkgdesc = Switchboard Universal Access Plug
-	pkgver = 2.2.0.r9.gc0ac8e6
+	pkgver = 2.2.0.r52.gbd7505e
 	pkgrel = 1
 	url = https://github.com/elementary/switchboard-plug-a11y
 	arch = x86_64
 	groups = pantheon-unstable
 	license = GPL3
 	makedepends = git
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = meson
 	makedepends = switchboard
 	makedepends = vala
@@ -23,4 +23,3 @@ pkgbase = switchboard-plug-a11y-git
 	sha256sums = SKIP
 
 pkgname = switchboard-plug-a11y-git
-

@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-a11y-git
-pkgver=2.2.0.r9.gc0ac8e6
+pkgver=2.2.0.r52.gbd7505e
 pkgrel=1
 pkgdesc='Switchboard Universal Access Plug'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('git' 'granite' 'meson' 'switchboard' 'vala')
+makedepends=('git' 'granite-git' 'meson' 'switchboard' 'vala')
 provides=('switchboard-plug-a11y')
 conflicts=('switchboard-plug-a11y')
 source=('git+https://github.com/elementary/switchboard-plug-a11y.git')
