@@ -1,17 +1,17 @@
 # Maintainer: Kibouo <csonka.mihaly@hotmail.com>
 pkgname=gnome-wallpaper-changer-git
-pkgver=r27.5ea3237
-pkgrel=5
+pkgver=r2.c8b37ef
+pkgrel=1
 pkgdesc='Set Gnome Desktop wallpaper to an image from a provided directory.'
 arch=('any')
-url='https://github.com/Kibouo/gnome-wallpaper-changer'
-license=('GPL2')
+url='https://gitlab.com/Kibouo/gnome-wallpaper-changer'
+license=('MIT')
 depends=('bash')
 makedepends=('git')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 install='gnome-wallpaper-changer.install'
-source=("${pkgname}::git+https://github.com/Kibouo/gnome-wallpaper-changer.git"
+source=("${pkgname}::git+https://gitlab.com/Kibouo/gnome-wallpaper-changer.git"
         "gnome-wallpaper-changer.install")
 md5sums=('SKIP'
         948ea0e1975c20700f7af001515b173c)
