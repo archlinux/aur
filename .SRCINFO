@@ -8,11 +8,10 @@ pkgbase = python-mkdocs-rss-plugin-git
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = mkdocs
-	depends = git
 	depends = python-jinja
 	depends = python-gitpython
 	provides = python-mkdocs-rss-plugin
-	source = git+https://github.com/Guts/mkdocs-rss-plugin/
+	source = git+https://github.com/Guts/mkdocs-rss-plugin.git
 	sha256sums = SKIP
 
 pkgname = python-mkdocs-rss-plugin-git

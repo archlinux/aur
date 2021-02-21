@@ -8,9 +8,9 @@ url="https://guts.github.io/mkdocs-rss-plugin/"
 license=("MIT")
 arch=("any")
 provides=("python-mkdocs-rss-plugin")
-depends=("mkdocs" "git" "python-jinja" "python-gitpython")
+depends=("mkdocs" "python-jinja" "python-gitpython")
 makedepends=("python-setuptools" "python-wheel")
-source=("git+https://github.com/Guts/mkdocs-rss-plugin/")
+source=("git+https://github.com/Guts/mkdocs-rss-plugin.git")
 sha256sums=("SKIP")
 
 pkgver(){
