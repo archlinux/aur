@@ -3,8 +3,8 @@
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=java-openjdk-ea-bin
 
-_majorver=16
-_buildver=36
+_majorver=17
+_buildver=10
 pkgver=${_majorver}b${_buildver}
 pkgrel=1
 
@@ -33,14 +33,12 @@ provides=(
   "java-runtime-headless=${_majorver}"
   "java-runtime-headless-openjdk=${_majorver}"
 )
-#source=("https://download.java.net/java/early_access/jdk${_majorver}/${_buildver}/GPL/openjdk-${_majorver}-ea+${_buildver}_linux-${_JARCH}_bin.tar.gz")
+source=("https://download.java.net/java/early_access/jdk${_majorver}/${_buildver}/GPL/openjdk-${_majorver}-ea+${_buildver}_linux-${_JARCH}_bin.tar.gz")
 
 if [[ $_JARCH == "x64" ]]; then
-sha256sums=('e952958f16797ad7dc7cd8b724edd69ec7e0e0434537d80d6b5165193e33b931')
-source=("https://download.java.net/java/GA/jdk16/7863447f0ab643c585b9bdebf67c69db/36/GPL/openjdk-16_linux-x64_bin.tar.gz")
+sha256sums=('89ed24a42ee151bc720dcc6fd76272404a99b080acf107b8ec42b1270d2f3953')
 else
-sha256sums=('273d3ae0ff14af801c5ffa71fd081f1cc505354f308ce11c77af55302c83d2bf')
-source=("https://download.java.net/java/GA/jdk16/7863447f0ab643c585b9bdebf67c69db/36/GPL/openjdk-16_linux-aarch64_bin.tar.gz")
+sha256sums=('f5dd69285e57325b130f80b5dc62beffa9ccdab08f881bbdb68ecbe7e3b249ab')
 fi
 
 

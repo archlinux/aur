@@ -1,8 +1,8 @@
 pkgbase = java-openjdk-ea-bin
-	pkgdesc = Java OpenJDK 16 Early-Access Build
-	pkgver = 16b36
+	pkgdesc = Java OpenJDK 17 Early-Access Build
+	pkgver = 17b10
 	pkgrel = 1
-	url = https://jdk.java.net/16
+	url = https://jdk.java.net/17
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
@@ -14,14 +14,14 @@ pkgbase = java-openjdk-ea-bin
 	depends = libxtst
 	depends = alsa-lib
 	depends = freetype2
-	provides = java-environment=16
-	provides = java-environment-openjdk=16
-	provides = java-runtime=16
-	provides = java-runtime-openjdk=16
-	provides = java-runtime-headless=16
-	provides = java-runtime-headless-openjdk=16
-	source = https://download.java.net/java/GA/jdk16/7863447f0ab643c585b9bdebf67c69db/36/GPL/openjdk-16_linux-x64_bin.tar.gz
-	sha256sums = e952958f16797ad7dc7cd8b724edd69ec7e0e0434537d80d6b5165193e33b931
+	provides = java-environment=17
+	provides = java-environment-openjdk=17
+	provides = java-runtime=17
+	provides = java-runtime-openjdk=17
+	provides = java-runtime-headless=17
+	provides = java-runtime-headless-openjdk=17
+	source = https://download.java.net/java/early_access/jdk17/10/GPL/openjdk-17-ea+10_linux-x64_bin.tar.gz
+	sha256sums = 89ed24a42ee151bc720dcc6fd76272404a99b080acf107b8ec42b1270d2f3953
 
 pkgname = java-openjdk-ea-bin
 
