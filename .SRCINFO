@@ -1,0 +1,22 @@
+pkgbase = php74-redis
+	pkgdesc = An API for communicating with the Redis key-value store
+	pkgver = 5.3.3
+	pkgrel = 1
+	url = https://pecl.php.net/package/redis
+	arch = x86_64
+	license = PHP
+	checkdepends = lsof
+	checkdepends = redis
+	makedepends = liblzf
+	depends = glibc
+	depends = php74-igbinary
+	optdepends = redis: use a local redis instance
+	backup = etc/php74/conf.d/redis.ini
+	source = https://pecl.php.net/get/redis-5.3.3.tgz
+	sha512sums = a04a7d0aa3881b861a00c3f0a889b2f3fd135009293629ac55a74890196c0686e9766438f5255561105e30293f1a6a91ca987fd68e43f3ca436f6cc884e6a5df
+
+pkgname = php74-redis
+	depends = glibc
+	depends = php74-igbinary
+	depends = liblzf.so
+
