@@ -22,7 +22,7 @@ sha256sums=('4fc0eb84fbd8a62babbd1f85a5db7d467eb1c4178218a40a98853a62f1135176'
             
 package() {
   cd "$srcdir"
-  install -D -m644 "${srcdir}"/plymouth-zfs.initcpio.hook "${pkgdir}"/usr/lib/initcpio/hooks/plymouth-zfs
-  install -D -m644 "${srcdir}"/plymouth-zfs.initcpio.install "${pkgdir}"/usr/lib/initcpio/install/plymouth-zfs
+  install -D -m644 "${srcdir}"/plymouth-zfs.initcpio.hook "${pkgdir}"/etc/initcpio/hooks/plymouth-zfs
+  install -D -m644 "${srcdir}"/plymouth-zfs.initcpio.install "${pkgdir}"/etc/initcpio/install/plymouth-zfs
 }
  

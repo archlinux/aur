@@ -12,8 +12,8 @@ build() {
         spl
 
     map add_binary \
-        arcstat.py \
-        dbufstat.py \
+        arcstat \
+        dbufstat \
         fsck.zfs \
         mount.zfs \
         seq \
