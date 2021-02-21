@@ -1,8 +1,8 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-calendar-git
-pkgver=5.1.1.r65.gdf9d6899
-pkgrel=2
+pkgver=5.1.1.r100.gda1ac55d
+pkgrel=1
 pkgdesc='The Pantheon Calendar'
 arch=(x86_64)
 url=https://github.com/elementary/calendar
@@ -25,14 +25,15 @@ depends=(
   libical
   libnotify
   libsoup
-  libhandy
+  libhandy-1.so
 )
 makedepends=(
   git
-  granite
+  granite-git
   intltool
   meson
   vala
+  libhandy
 )
 provides=(pantheon-calendar)
 conflicts=(pantheon-calendar)

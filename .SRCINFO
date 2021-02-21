@@ -1,16 +1,17 @@
 pkgbase = pantheon-calendar-git
 	pkgdesc = The Pantheon Calendar
-	pkgver = 5.1.1.r65.gdf9d6899
-	pkgrel = 2
+	pkgver = 5.1.1.r100.gda1ac55d
+	pkgrel = 1
 	url = https://github.com/elementary/calendar
 	arch = x86_64
 	groups = pantheon-unstable
 	license = GPL3
 	makedepends = git
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = intltool
 	makedepends = meson
 	makedepends = vala
+	makedepends = libhandy
 	depends = cairo
 	depends = clutter
 	depends = clutter-gtk
@@ -27,11 +28,10 @@ pkgbase = pantheon-calendar-git
 	depends = libical
 	depends = libnotify
 	depends = libsoup
-	depends = libhandy
+	depends = libhandy-1.so
 	provides = pantheon-calendar
 	conflicts = pantheon-calendar
 	source = pantheon-calendar::git+https://github.com/elementary/calendar.git
 	sha256sums = SKIP
 
 pkgname = pantheon-calendar-git
-
