@@ -1,7 +1,7 @@
 # Maintainer: buckket <felix@buckket.org>
 
 pkgname=zigbee2mqtt
-pkgver=1.17.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc='A Zigbee to MQTT bridge'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -18,7 +18,7 @@ source=("https://github.com/Koenkk/${pkgname}/archive/${pkgver}.tar.gz"
   'zigbee2mqtt.service'
   'zigbee2mqtt.sysusers'
   'zigbee2mqtt.tmpfiles')
-sha256sums=('7cc3791968425b94dd1cdfa4748faf8c360d3d5865dd527aedf7cde61a4b6676'
+sha256sums=('e11b3a3ff5023dcc583d4c51ad29eede15bc5cef361ed9d0272055014e14171b'
             '36fdca9c274fc143a85cc57d70a36e0ec9455cf86b85d0690ccf0090ee8d682d'
             '3a86716e9036e97d885e9b5f37c7f87d9c2872435e4acf9fc4c9157264cf387b'
             '8f0fbe06c8d6e8fdf37feb31f244930025d76785451f9049fd90fe6e23c259f6')
