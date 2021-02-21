@@ -1,15 +1,15 @@
 # Maintainer: Pierre Penninckx <ibizapeanut@gmail.com>
 
 pkgname='haskell-godaddy'
-pkgver=0.0.0.1
-pkgrel=2
+pkgver=0.0.0.2
+pkgrel=1
 pkgdesc='Command-line interface to configure a domain managed by Godaddy.'
 arch=('any')
 url='https://github.com/ibizaman/haskell-godaddy'
 license=('GPL3')
-source=(https://github.com/ibizaman/haskell-godaddy/releases/download/${pkgver}/haskell-godaddy-exe.zip.linux.zip)
-sha512sums=('b0c0367bf47121d3b77ea4514d6b5405c8f3e92a78747bea732022a6dd0c248cd8d3f3fcf58e525443183516bd24e7de75e18251cfe93dc39dad3e29c2f234e9')
+source=(https://github.com/ibizaman/haskell-godaddy/releases/download/${pkgver}/godaddy.zip)
+sha512sums=('84714626498fc41ebc01fcbb522149032324c93e44cc8300d1bdb2f68aef19468a8ff9c9d5554c834ea0073a430125ddd3da2ecaa240621510bc9a0395b2b3b4')
 
 package() {
-  install -Dm0755 haskell-godaddy-exe "$pkgdir"/usr/bin/godaddy
+  install -Dm0755 godaddy "$pkgdir"/usr/bin/godaddy
 }
