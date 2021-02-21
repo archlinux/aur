@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-mouse-touchpad-git
-pkgver=2.4.2.r10.gae7e397
+pkgver=2.4.2.r155.gf2d22e1
 pkgrel=1
 pkgdesc='Switchboard Mouse & Touchpad Plug'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('git' 'granite' 'meson' 'switchboard' 'vala')
+makedepends=('git' 'granite-git' 'meson' 'switchboard' 'vala')
 provides=('switchboard-plug-mouse-touchpad')
 conflicts=('switchboard-plug-mouse-touchpad')
 source=('git+https://github.com/elementary/switchboard-plug-mouse-touchpad.git')

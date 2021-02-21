@@ -1,13 +1,13 @@
 pkgbase = switchboard-plug-mouse-touchpad-git
 	pkgdesc = Switchboard Mouse & Touchpad Plug
-	pkgver = 2.4.2.r10.gae7e397
+	pkgver = 2.4.2.r155.gf2d22e1
 	pkgrel = 1
 	url = https://github.com/elementary/switchboard-plug-mouse-touchpad
 	arch = x86_64
 	groups = pantheon-unstable
 	license = GPL3
 	makedepends = git
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = meson
 	makedepends = switchboard
 	makedepends = vala
@@ -23,4 +23,3 @@ pkgbase = switchboard-plug-mouse-touchpad-git
 	sha256sums = SKIP
 
 pkgname = switchboard-plug-mouse-touchpad-git
-
