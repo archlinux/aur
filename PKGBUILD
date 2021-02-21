@@ -24,13 +24,12 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 build() {
-	cd pwg
-        make
+    cd pwg
+    make
 }
 
 package() {
     cd pwg
-    mkdir -p ${pkgdir}/opt/${pkgname}
-    cp -rf * ${pkgdir}/opt/${pkgname}
-    cp -f ${pkgname} /bin
+    make install
+    make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
