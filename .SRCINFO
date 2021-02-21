@@ -1,0 +1,16 @@
+pkgbase = winbond-kbdbl-git
+	pkgdesc = Manage color profiles and backlight of Winbond based keyboard (Tyrfing V2, ZET Blade, etc.)
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/brainrom/winbond-kbdbl
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = python-pyusb
+	depends = python-colour
+	source = git+https://github.com/brainrom/winbond-kbdbl
+	sha256sums = SKIP
+
+pkgname = winbond-kbdbl-git
+
