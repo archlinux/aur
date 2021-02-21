@@ -11,8 +11,6 @@ ExecStart=/usr/bin/java \
   -Xmx1G -Xms1G -server \
   -XX:+UseCompressedOops \
   -XX:+UseG1GC \
-  -XX:+CMSClassUnloadingEnabled \
-  -XX:+CMSScavengeBeforeRemark \
   -XX:+DisableExplicitGC \
   -Djava.awt.headless=true \
   -verbose:gc \
