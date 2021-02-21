@@ -1,3 +1,4 @@
+# Maintainer: zackartz <zackartz@lavabit.com>
 # Contributor: orhun <orhunparmaksiz@gmail.com>
 
 pkgname=silver
