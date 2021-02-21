@@ -1,13 +1,13 @@
 pkgbase = pantheon-shortcut-overlay-git
 	pkgdesc = A native, OS-wide shortcut overlay
-	pkgver = 1.1.2.r8.gb5194c7
+	pkgver = 1.1.2.r36.g8e3ba1f
 	pkgrel = 1
 	url = https://github.com/elementary/shortcut-overlay
 	arch = x86_64
 	groups = pantheon-unstable
 	license = GPL3
 	makedepends = git
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = meson
 	makedepends = vala
 	depends = glib2
@@ -21,4 +21,3 @@ pkgbase = pantheon-shortcut-overlay-git
 	sha256sums = SKIP
 
 pkgname = pantheon-shortcut-overlay-git
-
