@@ -1,0 +1,14 @@
+pkgbase = c-evo-map_gen
+	pkgdesc = External Random Map Generator for C-evo
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://www.c-evo.org/bb/viewtopic.php?f=6&t=177
+	arch = x86_64
+	license = GPL3
+	makedepends = dos2unix
+	depends = glibc
+	source = c-evo-map_gen.zip::http://www.c-evo.org/bb/download/file.php?id=162
+	sha256sums = 0824cb3a2081b11dde81f51cc7bfe892088a4967b008c7c5c7bb580f4c66d503
+
+pkgname = c-evo-map_gen
+
