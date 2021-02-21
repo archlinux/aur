@@ -1,0 +1,16 @@
+pkgbase = passmenu-rs-git
+	pkgdesc = Rofi frontend for passmenu
+	pkgver = 0.3.1.r0.g5385851
+	pkgrel = 1
+	url = https://github.com/rupansh/passmenu-rs
+	arch = any
+	license = GPL3
+	makedepends = rust
+	makedepends = git
+	depends = pass
+	optdepends = pass-otp: pass-otp support
+	source = passmenu-rs::git+https://github.com/rupansh/passmenu-rs
+	sha256sums = SKIP
+
+pkgname = passmenu-rs-git
+
