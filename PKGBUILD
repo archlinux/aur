@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-music-git
-pkgver=5.0.5.r52.g9759fd26
+pkgver=5.0.5.r94.gb09e38ef
 pkgrel=1
 pkgdesc='The Pantheon Music Player'
 arch=(x86_64)
@@ -23,6 +23,7 @@ depends=(
   libgee
   libgpod
   libgranite.so
+  libhandy-1.so
   libgsignon-glib
   libpeas
   libsignon-glib
@@ -35,10 +36,11 @@ makedepends=(
   appstream
   git
   gobject-introspection
-  granite
+  granite-git
   intltool
   meson
   vala
+  libhandy
 )
 optdepends=(
   'gst-plugins-base: "Base" plugin libraries'

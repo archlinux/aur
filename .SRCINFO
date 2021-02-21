@@ -1,6 +1,6 @@
 pkgbase = pantheon-music-git
 	pkgdesc = The Pantheon Music Player
-	pkgver = 5.0.5.r52.g9759fd26
+	pkgver = 5.0.5.r94.gb09e38ef
 	pkgrel = 1
 	url = https://github.com/elementary/music
 	arch = x86_64
@@ -9,10 +9,11 @@ pkgbase = pantheon-music-git
 	makedepends = appstream
 	makedepends = git
 	makedepends = gobject-introspection
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = intltool
 	makedepends = meson
 	makedepends = vala
+	makedepends = libhandy
 	depends = cairo
 	depends = gdk-pixbuf2
 	depends = glib2
@@ -27,6 +28,7 @@ pkgbase = pantheon-music-git
 	depends = libgee
 	depends = libgpod
 	depends = libgranite.so
+	depends = libhandy-1.so
 	depends = libgsignon-glib
 	depends = libpeas
 	depends = libsignon-glib
@@ -45,4 +47,3 @@ pkgbase = pantheon-music-git
 	sha256sums = SKIP
 
 pkgname = pantheon-music-git
-
