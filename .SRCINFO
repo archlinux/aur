@@ -1,6 +1,6 @@
 pkgbase = libcurl-openssl-1.0
 	pkgdesc = An URL retrieval library (without versioned symbols, built against openssl-1.0)
-	pkgver = 7.72.0
+	pkgver = 7.75.0
 	pkgrel = 1
 	url = https://curl.haxx.se
 	arch = aarch64
@@ -16,10 +16,10 @@ pkgbase = libcurl-openssl-1.0
 	depends = libssh2.so
 	provides = libcurl-openssl-1.0.so
 	options = strip
-	source = https://curl.haxx.se/download/curl-7.72.0.tar.gz
-	source = https://curl.haxx.se/download/curl-7.72.0.tar.gz.asc
+	source = https://curl.haxx.se/download/curl-7.75.0.tar.gz
+	source = https://curl.haxx.se/download/curl-7.75.0.tar.gz.asc
 	validpgpkeys = 27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2
-	sha512sums = f1946394595baa2b2889c4fed5e8745036cecfe9c425010c41fbc4baa71ffd7ff3e78289dd7ee14f0c74c482056838e5408d63f9ee9ee06c31ed920282f08507
+	sha512sums = ebef01be48e05f46f7d0605966d4c66391d5a51f6d102265647522f8f5df61b5440c930bd1b043d56968769869275123122826a9ec7fb3148c72a28ee32ce696
 	sha512sums = SKIP
 
 pkgname = libcurl-openssl-1.0
