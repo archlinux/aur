@@ -34,7 +34,7 @@ source=("hg+$_repo#revision=autoland"
         "dragonwolf.desktop"
         "git+https://gitlab.com/dr460nf1r3/dragonwolf-common.git"
         "git+https://gitlab.com/dr460nf1r3/dragonwolf-settings.git"
-        "megabar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/master/megabar.patch"
+        "megabar.patch"
         "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/master/context-menu.patch"
         "unity-menubar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/master/unity-menubar.patch"
         "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/master/remove_addons.patch"
@@ -44,7 +44,7 @@ sha256sums=('SKIP'
             '595b5af63f18d7cbde51ae662f0497b650ce25174a999e59d31aaf17d313895a'
             'SKIP'
             'SKIP'
-            '682bf4bf5d79db0080aa132235a95b25745c8ef944d2a2e1fed985489d894df5'
+            '41a3fe162f6002688c84267deb965496b2751e592cbd4b69636dac940d5456bf'
             '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
             'ee302586f5291f809759f5eae3e5bad60b13007d9a9d37ac7f397597eb1d8665'
             'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
@@ -135,7 +135,7 @@ END
 
   # Debian patch to enable global menubar
   # disabled for the default build, as it seems to cause issues in some configurations
-  # patch -p1 -i ../unity-menubar.patch
+  patch -p1 -i ../unity-menubar.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1684261
   patch -Np1 -i ../rust_build_fix.patch
