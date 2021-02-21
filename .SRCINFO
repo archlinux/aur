@@ -1,7 +1,7 @@
 pkgbase = flamegraph-git
 	pkgdesc = Stack trace visualizer
 	pkgver = r316.a258e78
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.brendangregg.com/FlameGraphs/cpuflamegraphs.html
 	arch = any
 	license = CDDL
@@ -10,6 +10,7 @@ pkgbase = flamegraph-git
 	depends = awk
 	provides = flamegraph
 	conflicts = flamegraph
+	conflicts = cargo-flamegraph
 	source = flamegraph-git::git+https://github.com/brendangregg/FlameGraph
 	md5sums = SKIP
 
