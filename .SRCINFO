@@ -1,0 +1,19 @@
+pkgbase = python-mkdocs-rss-plugin-git
+	pkgdesc = MkDocs plugin to generate a RSS feeds for created and updated pages, using git log
+	pkgver = 0.12.0.r5.g6dbc3ad
+	pkgrel = 1
+	url = https://guts.github.io/mkdocs-rss-plugin/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = mkdocs
+	depends = git
+	depends = python-jinja
+	depends = python-gitpython
+	provides = python-mkdocs-rss-plugin
+	source = git+https://github.com/Guts/mkdocs-rss-plugin/
+	sha256sums = SKIP
+
+pkgname = python-mkdocs-rss-plugin-git
+
