@@ -1,13 +1,13 @@
 pkgbase = switchboard-plug-sound-git
 	pkgdesc = Switchboard Sound Plug
-	pkgver = 2.2.4.r15.gd6db05a
+	pkgver = 2.2.6.r10.g22b101e
 	pkgrel = 1
 	url = https://github.com/elementary/switchboard-plug-sound
 	arch = x86_64
 	groups = pantheon-unstable
 	license = GPL3
 	makedepends = git
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = meson
 	makedepends = switchboard
 	makedepends = vala
@@ -25,4 +25,3 @@ pkgbase = switchboard-plug-sound-git
 	sha256sums = SKIP
 
 pkgname = switchboard-plug-sound-git
-
