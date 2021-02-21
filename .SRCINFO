@@ -1,5 +1,5 @@
 pkgbase = dragonwolf
-	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom - nightly version with custom branding
+	pkgdesc = Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled. Uses Librewolf config/system paths.
 	pkgver = 87.0a1.r635200+.e2521231284c+
 	pkgrel = 1
 	url = https://librewolf-community.gitlab.io/
@@ -53,7 +53,7 @@ pkgbase = dragonwolf
 	source = hg+https://hg.mozilla.org/mozilla-unified#revision=autoland
 	source = dragonwolf.desktop
 	source = git+https://gitlab.com/dr460nf1r3/common.git
-	source = git+https://gitlab.com/librewolf-community/settings.git#commit=3feb12464aa81df2f4ff162fce69890614c0ac8f
+	source = git+https://gitlab.com/dr460nf1r3/settings.git
 	source = megabar.patch
 	source = remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/f43e70c98c07d8cf5a3325733ff5084b6f672564/remove_addons.patch
 	source = context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/f43e70c98c07d8cf5a3325733ff5084b6f672564/context-menu.patch
@@ -66,3 +66,4 @@ pkgbase = dragonwolf
 	sha256sums = 3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd
 
 pkgname = dragonwolf
+
