@@ -2,7 +2,7 @@
 
 pkgname='haskell-godaddy'
 pkgver=0.0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line interface to configure a domain managed by Godaddy.'
 arch=('any')
 url='https://github.com/ibizaman/haskell-godaddy'
