@@ -4,6 +4,7 @@ pkgbase = jack-editor
 	pkgrel = 1
 	arch = x86_64
 	license = GPL
+	depends = nas
 	source = jackhammer.run ::http://jack.hlfx.ru/en/download_jackhammer_linux64.html
 	sha256sums = f2d02affd843a0d3191b45096435d7bcd7b2cf0d9d55ff3bc6094b732f41a4fa
 
