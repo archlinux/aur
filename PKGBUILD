@@ -86,7 +86,7 @@ prepare() {
   # `ac_add_options --enable-lto' and ending with 'export RANLIB=llvm-ranlib`
   #
 
-  cat >.mozconfig <<END
+  cat > .mozconfig <<END
 ac_add_options --enable-application=browser
 
 #This supposedly speeds up compilation (We test through dogfooding anyway)
@@ -146,27 +146,26 @@ mk_add_options MOZ_TELEMETRY_REPORTING=0
 # ac_add_options --enable-linker=gold
 END
 
-if [[ $CARCH == 'aarch64' ]]; then
-  cat >>../mozconfig <<END
+#if [[ $CARCH == 'aarch64' ]]; then
+#  cat >> ../mozconfig <<END
 # taken from manjaro build:
-ac_add_options --enable-optimize="-g0 -O2"
+#ac_add_options --enable-optimize="-g0 -O2"
 # from ALARM
 # ac_add_options --disable-webrtc
+#END
 
-END
-
-  export MOZ_DEBUG_FLAGS=" "
-  export CFLAGS+=" -g0"
-  export CXXFLAGS+=" -g0"
-  export RUSTFLAGS="-Cdebuginfo=0"
+#  export MOZ_DEBUG_FLAGS=" "
+#  export CFLAGS+=" -g0"
+#  export CXXFLAGS+=" -g0"
+#  export RUSTFLAGS="-Cdebuginfo=0"
 
   # we should have more than enough RAM on the CI spot instances.
   # ...or maybe not?
-  export LDFLAGS+=" -Wl,--no-keep-memory"
-  patch -p1 -i ../arm.patch
-  patch -p1 -i ../build-arm-libopus.patch
+#  export LDFLAGS+=" -Wl,--no-keep-memory"
+#  patch -p1 -i ../arm.patch
+#  patch -p1 -i ../build-arm-libopus.patch
 
-fi
+#fi
 
   # Remove some pre-installed addons that might be questionable
   patch -p1 -i ../remove_addons.patch
