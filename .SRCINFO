@@ -11,7 +11,6 @@ pkgbase = python-anesthetic-git
 	depends = python-matplotlib
 	depends = python-scipy
 	depends = python-pandas
-	depends = python-fastkde
 	provides = python-anesthetic
 	conflicts = python-anesthetic
 	options = !emptydirs
