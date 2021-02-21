@@ -1,7 +1,7 @@
 # Maintainer: Ashymad <ashymad@posteo.net>
 
 pkgname=hantek6022api-git
-pkgver=r196.0dc39ab
+pkgver=r235.dcba8fe
 pkgrel=1
 pkgdesc="Hantek 6022BE Python API"
 arch=('any')
@@ -31,6 +31,6 @@ build() {
 package () {
   cd "$srcdir/$pkgname"
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
-  install -Dm644 60-hantek-6022-usb.rules $pkgdir/etc/udev/rules.d/60-hantek-6022-usb.rules
+  install -Dm644 60-hantek6022api.rules $pkgdir/etc/udev/rules.d/60-hantek6022api.rules
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
