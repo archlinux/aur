@@ -1,0 +1,9 @@
+post_install() {
+	echo " ==> Add /usr/share/applications/cameracontrol.desktop to your ~/.config/autostart folder, so to startup after login
+	echo " ==> As from Release 2.2.0 and after, polkit's pkexec starts the application, so remove any previously secrets, from your .bashrc (if you had them before)
+    echo " ==> Further details at https://gitea.artixlinux.org/linuxer/camera-control-webcam-switch-indicator/src/branch/master/README.md
+}
+
+post_upgrade() {
+	post_install "$1"
+}
