@@ -1,14 +1,14 @@
 pkgbase = wyvern
 	pkgdesc = Command-line tool written in rust that is meant to make downloading GOG games and associated activities easier and faster on linux.
 	pkgver = 1.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.sr.ht/%7Enicohman/wyvern/
 	arch = x86_64
 	license = GPL
 	makedepends = rust
 	depends = curl
 	source = wyvern-1.4.1.tar.gz::https://git.sr.ht/%7Enicohman/wyvern/archive/1.4.1.tar.gz
-	md5sums = 2079044e8b513db7367ca44fec11c169
+	md5sums = 22a0685ca642548e7c87678e1dbe11cf
 
 pkgname = wyvern
 
