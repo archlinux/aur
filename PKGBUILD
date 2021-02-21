@@ -7,7 +7,7 @@ epoch=1
 _vdrapi=2.4.6
 pkgrel=6
 pkgdesc="shows information about the current state of VDR on iMON LCD"
-url="http://projects.vdr-developer.org/projects/show/plg-imonlcd"
+url="http://projects.vdr-developer.org/projects/plg-imonlcd"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL3')
 depends=('freetype2' 'gcc-libs' "vdr-api=$_vdrapi")
