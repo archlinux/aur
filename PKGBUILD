@@ -1,13 +1,13 @@
 # Maintainer: sardo <sardonimous@hotmail.com>
 # Parts copied from x3270 package by tuftedocelot <tuftedocelot@fastmail.fm>
 pkgname=x3270-git
-pkgver=3.7alpha1.r1844
+pkgver=4.1alpha7.r2733
 pkgrel=1
 pkgdesc="IBM 3270 terminal emulator for the X Window System"
 arch=('x86_64')
 url="http://x3270.bgp.nu/"
-license=('BSD' 'MIT')
-depends=('libxaw')
+license=('BSD')
+depends=('libxaw' 'openssl' 'bash')
 makedepends=('imake' 'openssl' 'libx11' 'libxaw' 'libxt' 'xbitmaps' 'xorg-bdftopcf')
 provides=("x3270")
 conflicts=("x3270")
@@ -28,6 +28,7 @@ pkgver() {
 build() {
    cd "${pkgname}" 
    ./configure --enable-x3270 --prefix=/usr --sysconfdir=/etc --with-fontdir=/usr/share/fonts/3270
+   sed -n -e '/ * Copyright (c)/,/^$/{s/^...\(.*\)$/\1/p}' Common/copyright.c >LICENSE
    make || return 1
  }
 package() {
@@ -42,9 +43,9 @@ package() {
    mkdir -pm755 "${pkgdir}/usr/share/pixmaps"
    mkdir -pm755 "${pkgdir}/usr/share/licenses/${pkgname}"
 
-   install -m644 "${srcdir}/x3270.fontpath" "${pkgdir}/etc/X11/xorg.conf.d/60-${pkgname}.conf"
-   install -m644 "${srcdir}/x3270.desktop" "${pkgdir}/usr/share/applications/"
+   install -m644 "${srcdir}/x3270.fontpath"                   "${pkgdir}/etc/X11/xorg.conf.d/60-${pkgname}.conf"
+   install -m644 "${srcdir}/x3270.desktop"                    "${pkgdir}/usr/share/applications/"
    install -m644 "${srcdir}/${pkgname}/x3270/x3270-icon2.xpm" "${pkgdir}/usr/share/pixmaps/"
-   install -m644 "${srcdir}/${pkgname}/x3270/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/"
+   install -m644 "${srcdir}/${pkgname}/LICENSE"               "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
