@@ -10,9 +10,9 @@ pkgbase = keeperrl-git
 	makedepends = ctags
 	makedepends = boost
 	makedepends = clang
-	makedepends = sdl2_image
 	depends = sfml
 	depends = freeglut
+	depends = sdl2_image
 	conflicts = keeperrl
 	source = keeperrl-git::git://github.com/miki151/keeperrl#branch=master
 	md5sums = SKIP
