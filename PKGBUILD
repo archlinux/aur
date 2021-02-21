@@ -13,7 +13,7 @@
 
 pkgbase=imagemagick-full-git
 pkgname=('imagemagick-full-git' 'imagemagick-full-doc-git')
-pkgver=7.0.10.62.r23.g923b9c180
+pkgver=7.0.11.1.r2.g1e7d30de2
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
@@ -30,7 +30,7 @@ makedepends=(
         'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
         'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip'
     # AUR:
-        'autotrace-nomagick' 'flif' 'libfpx' 'libumem-git'
+        'autotrace-nomagick' 'dmalloc' 'flif' 'libfpx' 'libjpeg-xl' 'libumem-git'
 )
 source=('git+https://github.com/ImageMagick/ImageMagick.git#branch=main'
         'arch-fonts.diff')
@@ -61,6 +61,7 @@ build() {
         --enable-cipher \
         --enable-hdri \
         --enable-docs \
+        --with-dmalloc \
         --with-threads \
         --with-modules \
         --with-quantum-depth="${_qdepth}" \
@@ -88,7 +89,7 @@ build() {
         --with-heic \
         --with-jbig \
         --with-jpeg \
-        --without-jxl \
+        --with-jxl \
         --with-lcms \
         --with-openjp2 \
         --with-lqr \
@@ -129,7 +130,7 @@ package_imagemagick-full-git() {
             'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
             'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl'
         # AUR:
-            'autotrace-nomagick' 'flif' 'libfpx' 'libumem-git'
+            'autotrace-nomagick' 'dmalloc' 'flif' 'libfpx' 'libjpeg-xl' 'libumem-git'
     )
     optdepends=('imagemagick-full-doc-git: manual and API docs')
     backup=("etc/ImageMagick-${pkgver%%.*}"/{colors,delegates,log,mime,policy,quantization-table,thresholds,type{,-dejavu,-ghostscript}}.xml)
