@@ -1,7 +1,7 @@
 # Maintainer: Stephan Springer <buzo+arch@Lini.de>
 # Contributor: Nathan <ndowens@artixlinux.org>
 # Contributor: Felix Golatofski <contact@xdfr.de>
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinxu.org>
 # Contributor: Wael Nasreddine <gandalf@siemens-mobiles.org>
 # Contributor: Tor Krill <tor@krill.nu>
@@ -10,7 +10,7 @@
 
 pkgbase=networkmanager-iwd
 pkgname=(networkmanager-iwd libnm-iwd nm-iwd-cloud-setup)
-pkgver=1.28.1dev+16+gdaad4e2fee
+pkgver=1.30.0
 pkgrel=1
 pkgdesc="Network connection manager and user applications; using iwd backend instead of wpa_supplicant"
 url="https://wiki.gnome.org/Projects/NetworkManager"
@@ -22,7 +22,7 @@ makedepends=(intltool dhclient iptables gobject-introspection gtk-doc "ppp=$_ppp
              libnewt libndp libteam vala perl-yaml python-gobject git vala jansson bluez-libs
              glib2-docs iwd dnsmasq openresolv libpsl audit meson)
 checkdepends=(libx11 python-dbus)
-_commit=daad4e2feeb45934eddc4f23bda30dddb30d4a98  # nm-1-28
+_commit=fc29a96097e0f11ab963c27036b6b8b3e1f3d42b  # tags/1.30.0^0
 source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=$_commit"
         "$pkgbase.install")
 sha256sums=('SKIP' '6f77a626ec3fd7583beb45ffcac236cdc1fe2b5e5b8ccc5d90983312a265e818')
@@ -149,6 +149,7 @@ END
   _pick libnm "$pkgdir"/usr/share/vala/vapi/libnm.*
 
   _pick nm-cloud-setup "$pkgdir"/usr/lib/**/*nm-cloud-setup*
+  _pick nm-cloud-setup "$pkgdir"/usr/share/man/*/nm-cloud-setup*
 
   # Restore empty dir
   mkdir "$pkgdir/usr/lib/NetworkManager/dispatcher.d/no-wait.d"

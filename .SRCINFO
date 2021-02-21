@@ -1,6 +1,6 @@
 pkgbase = networkmanager-iwd
 	pkgdesc = Network connection manager and user applications; using iwd backend instead of wpa_supplicant
-	pkgver = 1.28.1dev+16+gdaad4e2fee
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/NetworkManager
 	arch = x86_64
@@ -39,7 +39,7 @@ pkgbase = networkmanager-iwd
 	makedepends = libpsl
 	makedepends = audit
 	makedepends = meson
-	source = git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=daad4e2feeb45934eddc4f23bda30dddb30d4a98
+	source = git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=fc29a96097e0f11ab963c27036b6b8b3e1f3d42b
 	source = networkmanager-iwd.install
 	sha256sums = SKIP
 	sha256sums = 6f77a626ec3fd7583beb45ffcac236cdc1fe2b5e5b8ccc5d90983312a265e818
