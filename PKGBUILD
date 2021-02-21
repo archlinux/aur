@@ -6,21 +6,29 @@
 pkgbase=nvidia-340xx-lts
 pkgname=(nvidia-340xx-lts nvidia-340xx-lts-dkms)
 pkgver=340.108
-pkgrel=2
+pkgrel=3
 pkgdesc="NVIDIA drivers for linux-lts, 340xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
-makedepends=("nvidia-340xx-utils=${pkgver}" 'linux-lts>=4.19.79' 'linux-lts-headers>=4.19.79')
+makedepends=("nvidia-340xx-utils=${pkgver}" 'linux-lts>=5.10.16' 'linux-lts-headers>=5.10.16')
 conflicts=('nvidia-lts')
 license=('custom')
 options=(!strip)
+# seems manjaro is keeping this current
+# https://gitlab.manjaro.org/packages?utf8=%E2%9C%93&filter=nvidia-340xx
 source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
-   unfuck-340.108-build-fix.patch
-   fix_multi_core_build.patch
+  0000-fix-multi-core-build.patch
+  0001-kernel-5.7.patch
+  0002-kernel-5.8.patch
+  0003-kernel-5.9.patch
+  0004-kernel-5.10.patch
 )
 sha256sums=('995d44fef587ff5284497a47a95d71adbee0c13020d615e940ac928f180f5b77'
-            '2b7e3ef24846a40f4492e749be946e4f7f70ebed054bc2c9079f6cbdcbfabe57'
-            '82d14e9e6ec47c345d225d9f398238b7254cd5ae581c70e8521b9157ec747890')
+            '82d14e9e6ec47c345d225d9f398238b7254cd5ae581c70e8521b9157ec747890'
+            'c8bda5fb238fbebc5bf6ae4b7646e48b30a96b9060ced20d93c53c14ac3161f6'
+            '10b91c8dbc269ff1d8e3e8a1866926c309ff3912d191a05cd5724a3139776f32'
+            'e06af37ffa2203698594e0f58816b809feced9b2374927e13b85fd5c18fa3114'
+            '5e184ca5fcbf5071050f23503bfd3391c4bc1ccc31453338791a3da3885b6085')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
 # default is 'linux' substitute custom name here
@@ -30,16 +38,12 @@ _extradir="/usr/lib/modules/$_kernver/extramodules"
 
 prepare() {
   sh "${_pkg}.run" --extract-only
-  cd "${_pkg}"
 
-  # patches here
-  local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    [[ $src = *.patch ]] || continue
-    (cd kernel ; patch -p1 --no-backup-if-mismatch -i "../../$src")
-  done
+  cd "${_pkg}"
+  patch -Np1 -i ../0001-kernel-5.7.patch
+  patch -Np1 -i ../0002-kernel-5.8.patch
+  patch -Np1 -i ../0003-kernel-5.9.patch
+  patch -Np1 -i ../0004-kernel-5.10.patch
 
   cp -a kernel kernel-dkms
 }
