@@ -1,0 +1,27 @@
+pkgbase = ares-emu
+	pkgdesc = Multi-system emulator by Near with experimental Nintendo 64 and PlayStation support
+	pkgver = 118
+	pkgrel = 1
+	url = https://ares.dev/
+	arch = x86_64
+	arch = i686
+	license = CCPL:BY-NC-ND-4.0
+	makedepends = mesa
+	depends = gtk3
+	depends = gtksourceview3
+	depends = libao
+	depends = libgl
+	depends = libpulse
+	depends = libudev.so=1-64
+	depends = libxv
+	depends = openal
+	depends = sdl2
+	depends = vulkan-driver
+	depends = vulkan-icd-loader
+	provides = ares-emu
+	conflicts = ares-emu
+	source = https://ares.dev/downloads/ares_v118-source.zip
+	sha256sums = 563c7d4304570091370da3c8183dd69526da00aa917b1391667636e95da9d360
+
+pkgname = ares-emu
+

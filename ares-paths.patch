@@ -1,0 +1,10 @@
+diff --git a/ares/lucia/lucia.cpp b/ares/lucia/lucia.cpp
+@@ -10,7 +10,7 @@
+   string location = {Path::program(), name};
+   if(inode::exists(location)) return location;
+ 
+-  location = {Path::userData(), "lucia/", name};
++  location = {Path::sharedData(), "ares/", name};
+   if(inode::exists(location)) return location;
+ 
+   directory::create({Path::userSettings(), "lucia/"});
