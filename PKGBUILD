@@ -1,7 +1,7 @@
 # Maintainer: Dustin Childers <dchilders@gmail.com>
 
 pkgname=littlenavmap-bin
-pkgver=2.6.7
+pkgver=2.6.8
 pkgrel=1
 pkgdesc="A Free Open Source Flight Planner, Navigation Tool, Moving Map, Airport Search, and Airport Information System for Flight Simulator X, Prepar3D, Microsoft Flight Simulator 2020, and X-Plane"
 license=('GPL3')
@@ -17,10 +17,8 @@ source=(
   https://github.com/albar965/littlenavmap/releases/download/v${pkgver}/${_filename}
   LittleNavmap.desktop
 )
-sha512sums=(
-  144df6a3e6be28b46bd7c9ef3d3acf3cf1135e28d3bbd3424baa4b416b4673ab6dfc2af440a9889d800c0e706847733dba0ffdfd5d4a7038f7b96d569c9feb07
-  d706e0ee77c714315b3fae1da46633680bf345250fa5561f07c6b1c5445e56897dcae51e5ecf5e493f9e99ae58abe038bf89e4df249323f86e6d7b1ad78befab
-)
+sha512sums=('a5e6e9d5d33b6a02ecb4ddf80dff2023826d998cd7b25433e613436db1f925a50ecb4f0dee6f9a28de5657760035f09ff798805c3bc2940b672ef7375eb15d5c'
+            'd706e0ee77c714315b3fae1da46633680bf345250fa5561f07c6b1c5445e56897dcae51e5ecf5e493f9e99ae58abe038bf89e4df249323f86e6d7b1ad78befab')
 
 package() {
   install -d "${pkgdir}/opt/${pkgname}"
