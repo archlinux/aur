@@ -1,7 +1,7 @@
 # Maintainer: SpacingBat3 <aur@spacingbat3.anonaddy.com>
-pkgname=argonone-c-git # '-bzr', '-git', '-hg' or '-svn'
+pkgname=argonone-c-git
 pkgver=r34.6ace165
-pkgrel=1
+pkgrel=2
 pkgdesc="A replacement daemon for Argon One Raspberry Pi cases, written in C."
 
 _gitauthor=DarkElvenAngel
@@ -10,7 +10,8 @@ _gitname=argononed
 arch=('aarch64' 'armv7h' 'armv6h' 'arm')
 url="https://gitlab.com/DarkElvenAngel/argononed"
 license=('MIT')
-depends=('linux-raspberrypi-latest' 'git' 'dtc' 'bash-completion')
+depends=('linux-raspberrypi-latest' 'dtc')
+optdepends=('bash-completion: CLI command completition in the BASH shell')
 install=install
 makedepends=('git')
 provides=("${pkgname%-git}")
