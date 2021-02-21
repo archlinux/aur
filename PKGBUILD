@@ -8,7 +8,7 @@ url="https://github.com/m0hithreddy/Proxifier-For-Linux"
 license=('MIT')
 groups=()
 depends=()
-makedepends=('git' 'make' 'autoconf' 'gcc')
+makedepends=('git' 'make' 'autoconf' 'gcc' 'txt2man')
 provides=("proxifier-for-linux")
 conflicts=("proxifier-for-linux")
 replaces=()
@@ -42,5 +42,6 @@ package() {
     install -Dm755 "usr/local/bin/proxifier" "${pkgdir}/usr/local/bin/proxifier"
     install -Dm644 "usr/local/etc/proxifier.conf" "${pkgdir}/usr/local/etc/proxifier.conf"
     install -Dm644 "usr/local/lib/systemd/system/proxifier.service" "${pkgdir}/usr/lib/systemd/system/proxifier.service"
+    install -Dm644 "usr/local/share/man/man1/proxifier.1" "${pkgdir}/usr/share/man/man1/proxifier.1"
 }
 

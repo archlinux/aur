@@ -9,6 +9,7 @@ pkgbase = proxifier-for-linux-git
 	makedepends = make
 	makedepends = autoconf
 	makedepends = gcc
+	makedepends = txt2man
 	provides = proxifier-for-linux
 	conflicts = proxifier-for-linux
 	source = proxifier-for-linux-git::git+https://github.com/m0hithreddy/Proxifier-For-Linux
