@@ -1,6 +1,6 @@
 pkgbase = loki-core-git
 	pkgdesc = LOKI (OXEN) core for cryptocurrency based on Monero
-	pkgver = 8.1.5.c74fee064
+	pkgver = 8.1.5.0a60b69ef
 	pkgrel = 1
 	url = https://github.com/oxen-io/loki-core
 	arch = x86_64

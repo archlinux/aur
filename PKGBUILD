@@ -2,8 +2,8 @@
 
 pkgname=loki-core-git
 _pkgname=loki-core
-_commit=c74fee064
-pkgver=8.1.5.c74fee064
+_commit=0a60b69ef
+pkgver=8.1.5.0a60b69ef
 pkgrel=1
 pkgdesc='LOKI (OXEN) core for cryptocurrency based on Monero'
 url='https://github.com/oxen-io/loki-core'
@@ -22,16 +22,11 @@ build() {
 }
 
 package() {
-  cd ${_pkgname}
-  # copy custom LICENSE
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
-
-  # create the necessary directory structure
-  install -d "${pkgdir}/opt/${_pkgname}"
-  install -d "${pkgdir}/usr/bin"
+  install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 
   # install binaries on system
-  cd build/Linux/_HEAD_detached_at_${_commit}_/release/bin
+  install -d "${pkgdir}/opt/${_pkgname}"
+  cd ${_pkgname}/build/Linux/_HEAD_detached_at_${_commit}_/release/bin
   install -m 755 oxen-blockchain-ancestry "${pkgdir}/opt/${_pkgname}"
   install -m 755 oxen-blockchain-export "${pkgdir}/opt/${_pkgname}"
   install -m 755 oxen-blockchain-mark-spent-outputs "${pkgdir}/opt/${_pkgname}"
@@ -46,6 +41,7 @@ package() {
   install -m 755 oxen-wallet-rpc "${pkgdir}/opt/${_pkgname}"
 
   # links scripts to /usr/bin
+  install -d "${pkgdir}/usr/bin"
   ln -s /opt/${_pkgname}/oxen-blockchain-ancestry "${pkgdir}/usr/bin"
   ln -s /opt/${_pkgname}/oxen-blockchain-export "${pkgdir}/usr/bin"
   ln -s /opt/${_pkgname}/oxen-blockchain-mark-spent-outputs "${pkgdir}/usr/bin"
