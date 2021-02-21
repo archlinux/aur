@@ -1,13 +1,13 @@
 pkgbase = switchboard-plug-printers-git
 	pkgdesc = Switchboard Printers Plug
-	pkgver = 2.1.9.r6.gca3d546
+	pkgver = 2.1.9.r37.gbf89c63
 	pkgrel = 1
 	url = https://github.com/elementary/switchboard-plug-printers
 	arch = x86_64
 	groups = pantheon-unstable
 	license = GPL3
 	makedepends = git
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = meson
 	makedepends = switchboard
 	makedepends = vala
@@ -24,4 +24,3 @@ pkgbase = switchboard-plug-printers-git
 	sha256sums = SKIP
 
 pkgname = switchboard-plug-printers-git
-
