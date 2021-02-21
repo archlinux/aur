@@ -128,6 +128,9 @@ build() {
   python setup.py build
 }
 
+# package() is based on bug's git-svn package
+# https://aur.archlinux.org/packages/xpra-svn/
+# https://aur.archlinux.org/account/bug
 package() {
   cd "$srcdir/$_pkgname"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
