@@ -1,7 +1,7 @@
 # Maintainer: wuxb <wuxb45 at gmail dot com>
 pkgname=spdk-git
 pkgver=r0.0   # pkgver() updates this
-pkgrel=8
+pkgrel=9
 pkgdesc='spdk-git: headers, libs, and scripts'
 arch=('x86_64')
 license=('BSD')
