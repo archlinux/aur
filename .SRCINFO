@@ -1,6 +1,6 @@
 pkgbase = amdfan
 	pkgdesc = Python daemon for controlling the fans on amdgpu cards
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/mcgillij/amdfan
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = amdfan
 	depends = python-numpy
 	depends = python-rich
 	depends = python-click
-	source = https://github.com/mcgillij/amdfan/releases/download/0.1.6/amdfan-0.1.6.tar.gz
-	md5sums = c783ff0dbc5cd144dca48b6bf3b66fdd
+	source = https://github.com/mcgillij/amdfan/releases/download/0.1.7/amdfan-0.1.7.tar.gz
+	md5sums = c6c556f72fbe35a4bdb777754e8e41aa
 
 pkgname = amdfan
 
