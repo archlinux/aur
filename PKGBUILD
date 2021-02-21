@@ -14,12 +14,12 @@ _JBR=
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=211.5787.15
+_buildver=211.6085.26
 _veryear=2021
 _verrelease=1
 _verextra=
 pkgver=${_veryear}.${_verrelease}.${_buildver}
-pkgrel=3
+pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (ultimate version)"
 arch=('any')
 options=(!strip)
@@ -29,12 +29,12 @@ depends=('java-environment' 'giflib' 'libxtst' 'libdbusmenu-glib')
 if [ -n "${_JBR}" ]; then
     source=("https://download.jetbrains.com/idea/ideaIU-${_buildver}-${_JBR}.tar.gz"
             'idea-ue-eap.sh')
-    sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIU-${_buildver}-${_JBR}.tar.gz.sha256" | cut -f1 -d" ")
+    sha256sums=($(curl -s "${source}.sha256" | cut -f1 -d" ")
                 '2094f03ada492990dcfe0ac08f6001d55a11b441bcb9dfca92124ff68e129dcd')
 else
     source=("https://download.jetbrains.com/idea/ideaIU-${_buildver}.tar.gz"
             'idea-ue-eap.sh')
-    sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIU-${_buildver}.tar.gz.sha256" | cut -f1 -d" ")
+    sha256sums=($(curl -s "${source}.sha256" | cut -f1 -d" ")
                 '2094f03ada492990dcfe0ac08f6001d55a11b441bcb9dfca92124ff68e129dcd')
 fi
 
