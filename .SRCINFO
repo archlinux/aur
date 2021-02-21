@@ -1,0 +1,17 @@
+pkgbase = perl-sql-abstract-pg
+	pkgdesc = PostgreSQL features for SQL::Abstract
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://metacpan.org/release/SQL-Abstract-Pg
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-sql-abstract>=2.0
+	depends = perl>=5.016
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/S/SR/SRI/SQL-Abstract-Pg-1.0.tar.gz
+	md5sums = 4f425a037ab3bc5b7117002dc47cb63a
+	sha512sums = 544fcc730ffcd3c12bb6401ec566f4183677c7b97c58692129654fac1d8e0ef76603e66236a290c88ec5fb1019626c159398eeee476646f7bb582acce8bedd23
+
+pkgname = perl-sql-abstract-pg
+
