@@ -20,6 +20,7 @@ User=caddy
 Group=caddy
 Environment=XDG_DATA_HOME=/var/lib
 Environment=XDG_CONFIG_HOME=/var/lib
+EnvironmentFile=-/etc/caddy/envfile
 ExecStart=/usr/bin/caddy run --environ --resume
 
 # Do not allow the process to be restarted in a tight loop. If the

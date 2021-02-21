@@ -26,6 +26,7 @@ User=caddy
 Group=caddy
 Environment=XDG_DATA_HOME=/var/lib
 Environment=XDG_CONFIG_HOME=/var/lib/caddy/.config
+EnvironmentFile=-/etc/caddy/envfile
 ExecStart=/usr/bin/caddy run --environ --config /etc/caddy/Caddyfile
 ExecReload=/usr/bin/caddy reload --config /etc/caddy/Caddyfile
 
