@@ -1,0 +1,18 @@
+pkgbase = spdk
+	pkgdesc = spdk: headers, libs, and scripts
+	pkgver = 21.01
+	pkgrel = 1
+	url = https://spdk.io/
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = meson
+	depends = glibc
+	provides = spdk
+	conflicts = spdk
+	conflicts = dpdk
+	source = spdk::git+https://github.com/spdk/spdk.git#tag=v21.01
+	sha256sums = SKIP
+
+pkgname = spdk
+
