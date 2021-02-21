@@ -1,6 +1,6 @@
 pkgbase = goxel
 	pkgdesc = 3D program that lets you create voxel volumes
-	pkgver = 0.10.6
+	pkgver = 0.10.7
 	pkgrel = 1
 	url = https://goxel.xyz/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = goxel
 	makedepends = scons
 	depends = glfw
 	depends = gtk3
-	source = goxel-0.10.6.tar.gz::https://github.com/guillaumechereau/goxel/archive/v0.10.6.tar.gz
-	sha256sums = af57197910788131441a537cc658a3397448d90552a0fd3bfe9992635e9d64d8
+	source = goxel-0.10.7.tar.gz::https://github.com/guillaumechereau/goxel/archive/v0.10.7.tar.gz
+	sha256sums = dfb91e62bdd5332e3938923db924bae43f12eaa181040d16e4cc7082316adf1c
 
 pkgname = goxel
 

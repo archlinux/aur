@@ -1,7 +1,7 @@
 # Maintainer: Tesx <tesfabpel@gmail.com>
 
 pkgname=goxel
-pkgver=0.10.6
+pkgver=0.10.7
 pkgrel=1
 pkgdesc="3D program that lets you create voxel volumes"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(GPL3)
 depends=(glfw gtk3)
 makedepends=(scons)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/guillaumechereau/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('af57197910788131441a537cc658a3397448d90552a0fd3bfe9992635e9d64d8')
+sha256sums=('dfb91e62bdd5332e3938923db924bae43f12eaa181040d16e4cc7082316adf1c')
 
 prepare() {
   cd $pkgname-$pkgver
