@@ -20,7 +20,6 @@ source=(
   "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
   "config-$pkgver::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen&id=ec47edcc45f73b4946015e9f28a419e27db2fda3"
   i8042.patch
-  "https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/-/raw/master/kernel_patches/5.9/5.9.8%20-%205.9.12/0001-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -29,8 +28,7 @@ validpgpkeys=(
 )
 sha256sums=('SKIP'
             'ee3627d42ebdcb8208ef906319adaab8f86eb59fc16641026d9bcc8753b2ab8f'
-            '11fd9d1d365c23d941f840074691f2242096344e3a1858cc43360795ccf0bb4d'
-            '68bf0dcc390ed14d97f48ebd1095d2587ac2eb2671445125fbcaaf7a6aa01733')
+            '11fd9d1d365c23d941f840074691f2242096344e3a1858cc43360795ccf0bb4d')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
