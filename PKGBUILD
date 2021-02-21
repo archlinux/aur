@@ -27,7 +27,7 @@ fi
 ##
 
 pkgname=brave
-pkgver=1.20.103
+pkgver=1.20.108
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -44,27 +44,37 @@ chromium_base_ver="88"
 patchset="3"
 patchset_name="chromium-${chromium_base_ver}-patchset-${patchset}"
 _launcher_ver=6
-source=("https://github.com/brave/brave-browser/archive/v${pkgver}.tar.gz"
+source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
+        "chromium::git+https://github.com/chromium/chromium.git"
+        "git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
+        "git+https://github.com/brave/brave-core.git#tag=v${pkgver}"
+        "git+https://github.com/brave/adblock-rust.git"
         'brave-launcher'
         'brave-browser.desktop'
         "chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz"
-        "https://github.com/stha09/chromium-patches/releases/download/${patchset_name}/${patchset_name}.tar.xz")
-arch_revision=4332a9b5a5f7e1d5ec8e95ee51581c3e55450f41
+        "https://github.com/stha09/chromium-patches/releases/download/${patchset_name}/${patchset_name}.tar.xz"
+        "chromium-no-history.patch" "chromium-no-history2.patch")
+arch_revision=bbf06a92e65eeccade2e484562ecd81b89756df0
 for Patches in \
-	subpixel-anti-aliasing-in-FreeType-2.8.1.patch
+	subpixel-anti-aliasing-in-FreeType-2.8.1.patch \
+    chromium-glibc-2.33.patch
 do
   source+=("${Patches}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${Patches}?h=packages/chromium&id=${arch_revision}")
 done
 
-# VAAPI patches from chromium-vaapi in AUR
-#source+=("vdpau-support.patch::https://aur.archlinux.org/cgit/aur.git/plain/vdpau-support.patch?h=chromium-vaapi&id=7c05464a8700b1a6144258320b2b33b352385f77")
-
-sha256sums=('e7623d84f0bf1f4a17bd54d2cba609b64e7fb40915b6fd5abf6483cc7ecedab2'
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             '725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'e5a60a4c9d0544d3321cc241b4c7bd4adb0a885f090c6c6c21581eac8e3b4ba9'
-            '1e2913e21c491d546e05f9b4edf5a6c7a22d89ed0b36ef692ca6272bcd5faec6')
+            'ea3446500d22904493f41be69e54557e984a809213df56f3cdf63178d2afb49e'
+            'd7775ffcfc25eace81b3e8db23d62562afb3dbb5904d3cbce2081f3fe1b3067d'
+            '1e2913e21c491d546e05f9b4edf5a6c7a22d89ed0b36ef692ca6272bcd5faec6'
+            '2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -108,7 +118,8 @@ else
 fi
 
 prepare() {
-  cd "brave-browser-${pkgver}"
+  cd "brave-browser"
+
 
   # Hack to prioritize python2 in PATH
   mkdir -p "${srcdir}/bin"
@@ -118,6 +129,21 @@ prepare() {
 
   msg2 "Prepare the environment..."
   npm install
+  patch -Np1 -i ../chromium-no-history.patch
+
+  git submodule init
+  git config submodule.depot_tools.url "${srcdir}"/depot_tools
+  git config submodule.brave-core.url "${srcdir}"/brave
+  git config submodule.adblock-rust.url "${srcdir}"/adblock-rust
+  git submodule update
+  cp -rT "${srcdir}"/chromium src
+  cp -rT "${srcdir}"/brave-core src/brave
+  cp -r "${srcdir}"/depot_tools src/brave/vendor/
+  cp -rT "${srcdir}"/adblock-rust src/brave/vendor/adblock_rust_ffi
+
+  patch -Np1 -i ../chromium-no-history2.patch
+
+  msg2 "Running \"npm run\""
   if [ -d src/out/Release ]; then
     npm run sync -- --force
   else
@@ -135,6 +161,7 @@ prepare() {
 
   # Upstream fixes
   patch -Np1 -d third_party/skia <../../subpixel-anti-aliasing-in-FreeType-2.8.1.patch
+  patch -Np1 -i ../../chromium-glibc-2.33.patch
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../../patches/chromium-87-openscreen-include.patch
@@ -177,7 +204,7 @@ prepare() {
 }
 
 build() {
-  cd "brave-browser-${pkgver}"
+  cd "brave-browser"
 
   if check_buildoption ccache y; then
     # Avoid falling back to preprocessor mode when sources contain time macros
@@ -272,7 +299,7 @@ package() {
   install -d -m0755 "${pkgdir}/usr/lib/${pkgname}/"{,swiftshader,locales,resources}
 
   # Copy necessary release files
-  cd "brave-browser-${pkgver}/src/out/Release"
+  cd "brave-browser/src/out/Release"
   cp -a --reflink=auto \
     MEIPreload \
     brave \
@@ -282,30 +309,30 @@ package() {
     v8_context_snapshot.bin \
     libGLESv2.so \
     libEGL.so \
-    "${pkgdir}/usr/lib/brave/"
+    "${pkgdir}/usr/lib/${pkgname}/"
   cp -a --reflink=auto \
     swiftshader/libGLESv2.so \
     swiftshader/libEGL.so \
-    "${pkgdir}/usr/lib/brave/swiftshader/"
+    "${pkgdir}/usr/lib/${pkgname}/swiftshader/"
   cp -a --reflink=auto \
     locales/*.pak \
-    "${pkgdir}/usr/lib/brave/locales/"
+    "${pkgdir}/usr/lib/${pkgname}/locales/"
   cp -a --reflink=auto \
     resources/brave_extension \
     resources/brave_rewards \
-    "${pkgdir}/usr/lib/brave/resources/"
+    "${pkgdir}/usr/lib/${pkgname}/resources/"
 
   if [ "$COMPONENT" != "4" ] || [[ -z ${_system_libs[icu]+set} ]]; then
     cp -a --reflink=auto \
       icudtl.dat \
-      "${pkgdir}/usr/lib/brave/"
+      "${pkgdir}/usr/lib/${pkgname}/"
   fi
 
   cd "${srcdir}"
   install -Dm0755 brave-launcher "${pkgdir}/usr/bin/${pkgname}"
   install -Dm0644 -t "${pkgdir}/usr/share/applications/" brave-browser.desktop
-  install -Dm0644 "brave-browser-${pkgver}/src/brave/app/theme/brave/product_logo_128.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "brave-browser-${pkgver}/LICENSE"
+  install -Dm0644 "brave-browser/src/brave/app/theme/brave/product_logo_128.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "brave-browser/LICENSE"
 }
 
 # vim:set ts=4 sw=4 et:
