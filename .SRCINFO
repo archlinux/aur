@@ -1,0 +1,26 @@
+pkgbase = gr-satnogs-git
+	pkgdesc = gr-satnogs from librespacefoundation
+	pkgver = r584.1103a05
+	pkgrel = 1
+	url = https://gitlab.com/librespacefoundation/satnogs/gr-satnogs.git
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = swig
+	depends = gnuradio
+	depends = gr-soapy
+	depends = png++
+	depends = nlohmann-json
+	depends = libvorbis
+	depends = libogg
+	depends = libvolk
+	depends = libpng
+	provides = gr-satnogs
+	conflicts = gr-satnogs
+	source = git+https://gitlab.com/librespacefoundation/satnogs/gr-satnogs.git
+	sha256sums = SKIP
+
+pkgname = gr-satnogs-git
+
