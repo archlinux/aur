@@ -1,13 +1,13 @@
 pkgbase = switchboard-plug-applications-git
 	pkgdesc = Switchboard Applications Plug
-	pkgver = 2.1.7.r108.gcbf1998
+	pkgver = 2.1.7.r231.g4c86682
 	pkgrel = 1
 	url = https://github.com/elementary/switchboard-plug-applications
 	arch = x86_64
 	groups = pantheon-unstable
 	license = GPL3
 	makedepends = git
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = meson
 	makedepends = switchboard
 	makedepends = vala
@@ -25,4 +25,3 @@ pkgbase = switchboard-plug-applications-git
 	sha256sums = SKIP
 
 pkgname = switchboard-plug-applications-git
-
