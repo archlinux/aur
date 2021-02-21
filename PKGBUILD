@@ -32,5 +32,5 @@ package() {
     cd pwg
     mkdir -p ${pkgdir}/opt/${pkgname}
     cp -rf * ${pkgdir}/opt/${pkgname}
-    make PREFIX=/usr DESTDIR="${pkgdir}" install
+    cp -f ${pkgname} /bin
 }
