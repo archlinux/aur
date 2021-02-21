@@ -25,12 +25,13 @@ validpgpkeys=()
 
 build() {
 	cd pwg
-	sudo make
+        gcc pwg.c -o pwg
 }
 
 package() {
     cd pwg
     mkdir -p ${pkgdir}/opt/${pkgname}
     cp -rf * ${pkgdir}/opt/${pkgname}
-    sudo make PREFIX=/usr DESDIR="${pkgdir}" install
+    cp -f pwg /bin
+    cp -f pwg.1 /usr/local/man/man1
 }
