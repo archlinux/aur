@@ -1,7 +1,7 @@
 pkgbase = rate-arch-mirrors-bin
 	pkgdesc = Everyday-use client-side map-aware arch mirror ranking tool
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/westandskif/rate-arch-mirrors
 	arch = x86_64
 	license = custom

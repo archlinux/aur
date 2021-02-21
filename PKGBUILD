@@ -2,7 +2,7 @@
 
 pkgname=rate-arch-mirrors-bin
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Everyday-use client-side map-aware arch mirror ranking tool"
 url="https://github.com/westandskif/rate-arch-mirrors"
 license=('custom')
@@ -20,7 +20,7 @@ build() {
 package() {
   cd "rate-arch-mirrors-v${pkgver}-x86_64-unknown-linux-gnu"
 
-  install -Dm755 "rate_arch_mirrors" "$pkgdir/usr/bin/${pkgname}"
+  install -Dm755 "rate_arch_mirrors" "$pkgdir/usr/bin/rate-arch-mirrors"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
 
