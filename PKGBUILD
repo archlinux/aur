@@ -8,7 +8,7 @@ pkgname=lxd
 _pkgname=lxd
 _lxd=github.com/lxc/lxd
 pkgver=4.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
 url="https://linuxcontainers.org/lxd"
@@ -50,6 +50,7 @@ build() {
   export CGO_CFLAGS="$CFLAGS -I/usr/include/sqlite-replication"
   export CGO_LDFLAGS="$LDFLAGS -L/usr/lib/sqlite-replication -Wl,-R/usr/lib/sqlite-replication"
   export CGO_LDFLAGS_ALLOW='-Wl,-wrap,pthread_create'
+  export GO111MODULE=off
 
   mkdir -p bin
 	go build -v -tags "netgo" -o bin/ ./lxd-p2c/...
