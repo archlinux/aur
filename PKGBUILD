@@ -36,9 +36,7 @@ source=("hg+$_repo#revision=autoland"
         "git+https://gitlab.com/dr460nf1r3/dragonwolf-settings.git"
         "megabar.patch"
         "context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/master/context-menu.patch"
-        "unity-menubar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/master/unity-menubar.patch"
-        "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/master/remove_addons.patch"
-        "rust_build_fix.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/master/rust_build_fix.patch")
+        "remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/master/remove_addons.patch")
         
 sha256sums=('SKIP'
             '595b5af63f18d7cbde51ae662f0497b650ce25174a999e59d31aaf17d313895a'
@@ -46,9 +44,7 @@ sha256sums=('SKIP'
             'SKIP'
             '41a3fe162f6002688c84267deb965496b2751e592cbd4b69636dac940d5456bf'
             '3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
-            'ee302586f5291f809759f5eae3e5bad60b13007d9a9d37ac7f397597eb1d8665'
-            'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
-            '9a546803491818cfc016e4be908710e230b2b2b6640ec1a7df61c98053444471')
+            'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6')
 pkgver() {
   cd mozilla-unified
   printf "87.0a1.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
