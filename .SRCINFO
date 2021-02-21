@@ -1,6 +1,6 @@
 pkgbase = liquidprompt
 	pkgdesc = A useful adaptive prompt for Bash & Zsh
-	pkgver = 1.12.1
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/nojhan/liquidprompt
 	arch = any
@@ -13,9 +13,16 @@ pkgbase = liquidprompt
 	depends = coreutils
 	optdepends = acpi: Battery and temperature status
 	optdepends = lm_sensors: Temperature status
+	optdepends = screen: Show detached GNU Screen session status
+	optdepends = tmux: Show detached tmux session status
+	optdepends = git: Show Git repository status
+	optdepends = mercurial: Show Mercurial repository status
+	optdepends = subversion: Show Subversion repository status
+	optdepends = breezy: Show Bazaar repository status
+	optdepends = fossil: Show Fossil repository status
 	conflicts = liquidprompt-git
-	source = https://github.com/nojhan/liquidprompt/archive/v1.12.1.tar.gz
-	md5sums = c9c5672096791eecd4c2cc904d00bc23
+	source = https://github.com/nojhan/liquidprompt/archive/v2.0.1.tar.gz
+	md5sums = e294178e27665cd2d35000a5a7cde76f
 
 pkgname = liquidprompt
 

@@ -1,6 +1,6 @@
 # Maintainer: Tom van der Lee <t0m.vd.l33@gmail.com>
 pkgname=liquidprompt
-pkgver=1.12.1
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A useful adaptive prompt for Bash & Zsh"
 arch=("any")
@@ -8,15 +8,22 @@ url="https://github.com/nojhan/liquidprompt"
 license=("AGPLv3")
 conflicts=("liquidprompt-git")
 depends=("ncurses"
-	 "grep"
-	 "gawk"
-	 "sed"
-	 "procps-ng"
-	 "coreutils")
+	     "grep"
+	     "gawk"
+	     "sed"
+	     "procps-ng"
+	     "coreutils")
 optdepends=("acpi: Battery and temperature status"
-	    "lm_sensors: Temperature status")
+	        "lm_sensors: Temperature status"
+            "screen: Show detached GNU Screen session status"
+            "tmux: Show detached tmux session status"
+            "git: Show Git repository status"
+            "mercurial: Show Mercurial repository status"
+            "subversion: Show Subversion repository status"
+            "breezy: Show Bazaar repository status"
+            "fossil: Show Fossil repository status")
 source=(https://github.com/nojhan/liquidprompt/archive/v$pkgver.tar.gz)
-md5sums=('c9c5672096791eecd4c2cc904d00bc23')
+md5sums=('e294178e27665cd2d35000a5a7cde76f')
 
 package() {
 	cd "$pkgname-$pkgver"
