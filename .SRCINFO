@@ -1,25 +1,24 @@
 pkgbase = wingpanel-indicator-keyboard-git
 	pkgdesc = Keyboard indicator for Wingpanel
-	pkgver = 2.2.1.r33.gf688c26
+	pkgver = 2.3.0.r18.g92c69e8
 	pkgrel = 1
 	url = https://github.com/elementary/wingpanel-indicator-keyboard
 	arch = x86_64
 	groups = pantheon-unstable
 	license = GPL3
 	makedepends = git
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = meson
 	makedepends = vala
-	makedepends = wingpanel
+	makedepends = wingpanel-git
 	depends = glib2
 	depends = glibc
 	depends = gtk3
 	depends = libxml2
-	depends = libwingpanel-3.0.so
+	depends = libwingpanel.so
 	provides = wingpanel-indicator-keyboard
 	conflicts = wingpanel-indicator-keyboard
 	source = git+https://github.com/elementary/wingpanel-indicator-keyboard.git
 	sha256sums = SKIP
 
 pkgname = wingpanel-indicator-keyboard-git
-
