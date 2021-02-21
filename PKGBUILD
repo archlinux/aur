@@ -3,15 +3,15 @@
 
 
 pkgname=emonoda
-pkgver=2.1.30
+pkgver=2.1.32
 pkgrel=1
 pkgdesc="A set of tools to organize and manage your torrents"
 url="https://github.com/mdevaev/emonoda"
 license=(GPL)
 arch=(any)
 depends=(
-	"python>=3.8"
-	"python<3.9"
+	"python>=3.9"
+	"python<3.10"
 	python-chardet
 	python-yaml
 	python-colorama
