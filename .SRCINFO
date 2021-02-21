@@ -1,13 +1,13 @@
 pkgbase = switchboard-plug-datetime-git
 	pkgdesc = Switchboard Date & Time Plug
-	pkgver = 2.1.9.r15.g3467949
+	pkgver = 2.1.9.r58.g84b004c
 	pkgrel = 1
 	url = https://github.com/elementary/switchboard-plug-datetime
 	arch = x86_64
 	groups = pantheon-unstable
 	license = GPL3
 	makedepends = git
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = meson
 	makedepends = switchboard
 	makedepends = vala
@@ -25,4 +25,3 @@ pkgbase = switchboard-plug-datetime-git
 	sha256sums = SKIP
 
 pkgname = switchboard-plug-datetime-git
-
