@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-polkit-agent-git
-pkgver=1.0.3.r17.492cddb
+pkgver=1.0.3.r33.c903ea7
 pkgrel=1
 pkgdesc='Pantheon Polkit Agent'
 arch=(x86_64)
@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=(
   git
-  granite
+  granite-git
   intltool
   meson
   vala
