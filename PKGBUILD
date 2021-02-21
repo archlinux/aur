@@ -1,14 +1,17 @@
 pkgname=softu2f
-pkgver=0.4.0.r16.g90034bf
+pkgver=0.4.0.r25.g45a073f
 pkgrel=1
 pkgdesc="Software U2F HID token daemon (rust-u2f)"
 url="https://github.com/danstiner/rust-u2f"
 arch=(x86_64)
 depends=(libdbus libsystemd openssl)
 makedepends=(clang llvm rust)
-_commit=90034bf0651738426ff15f90c2229c9222af706a
-source=("git+https://github.com/danstiner/rust-u2f#commit=$_commit")
-sha256sums=(SKIP)
+_commit=45a073f9283026dcf74f99536d0f2899b6caee99
+source=("git+https://github.com/danstiner/rust-u2f#commit=$_commit"
+        softu2f_system.preset)
+sha256sums=('SKIP'
+            '194758607e4d9dccd6a22382264db643aff5c08cfa9c2fa0a69caa4a2d03432e')
+install=$pkgname.install
 
 pkgver() {
   cd rust-u2f
@@ -41,6 +44,9 @@ package() {
 
   install -Dm 644 system-daemon/softu2f-tmpfiles.conf \
                   "$pkgdir"/usr/lib/tmpfiles.d/softu2f.conf
+
+  install -Dm 644 "$srcdir"/softu2f_system.preset \
+                  "$pkgdir"/usr/lib/systemd/system-preset/90-softu2f.preset
 }
 
 # vim: ts=2:sw=2:et

@@ -1,0 +1,11 @@
+post_upgrade() {
+	post_install
+}
+
+post_install() {
+	systemctl preset softu2f.socket
+	if systemctl --quiet is-enabled softu2f.socket; then
+		systemctl start softu2f.socket
+	fi
+	echo " * You also need to start 'softu2f.service' via 'systemctl --user'."
+}
