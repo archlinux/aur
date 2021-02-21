@@ -25,13 +25,12 @@ validpgpkeys=()
 
 build() {
 	cd pwg
-        gcc pwg.c -o pwg
+        make
 }
 
 package() {
     cd pwg
     mkdir -p ${pkgdir}/opt/${pkgname}
     cp -rf * ${pkgdir}/opt/${pkgname}
-    cp -f pwg.1 /usr/local/man/man1
-    cp -f pwg /bin
+    make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
