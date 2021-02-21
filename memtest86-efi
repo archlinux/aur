@@ -4,10 +4,17 @@ export LC_ALL=C
 CE="\033[31m" # Color red
 CB="\033[1m"  # Color bold
 CR="\033[0m"  # Color reset
-PRGNAME=$(basename $0)
+CODE_OK=0
+CODE_USAGE=1  # Bad usage
+CODE_PERM=2   # Invalid rights
+CODE_VALUE=3  # Bad value
+CODE_CMD=4    # Missing command
+CODE_FATAL=5  # Fatal error
+PRGNAME=$(basename "$0")
 CONFDIR="/etc/memtest86-efi"
 CONFFILE="$CONFDIR/memtest86-efi.conf"
-source "$CONFFILE" || exit 127
+# shellcheck source=/etc/memtest86-efi/memtest86-efi.conf
+source "$CONFFILE" || exit $CODE_FATAL
 shopt -s extglob
 [[ "$(uname -m)" == "i686" ]]   && ARCH="ia32"
 [[ "$(uname -m)" == "x86_64" ]] && ARCH="x64"
@@ -19,14 +26,14 @@ warn() {
 checkuid() {
 	if [[ $EUID -ne 0 ]]; then
 		echo -e "${CE}You must be root to run $PRGNAME. Aborted.${CR}" > /dev/stderr
-		exit -1
+		exit $CODE_PERM
 	fi
 }
 
 checkcommand() {
 	if ! $1 &> /dev/null; then
 		echo -e "${CE}Command $1 not found. Aborted.${CR}" > /dev/stderr
-		exit 3
+		exit $CODE_CMD
 	fi
 }
 
@@ -34,7 +41,7 @@ promptuser() {
 	local defaultvalue="$1"
 	local newvalue=""
 	while true; do
-		read newvalue
+		read -r newvalue
 		if [[ -n "$defaultvalue" ]] || [[ -n "$newvalue" ]]; then
 			break
 		else
@@ -84,7 +91,7 @@ FOE
 install() {
 	if [[ $install == 1 ]]; then
 		echo "MemTest86 is already installed in ESP. Nothing to do." > /dev/stderr
-		exit 1
+		exit $CODE_USAGE
 	fi
 
 	# Find ESP device number
@@ -96,11 +103,19 @@ install() {
 		echo -en "Enter device path for your ESP partition (like ${CB}/dev/sdXY${CR}): "
 	fi
 	partition=$(promptuser "$partition")
-	partnumber=$(echo $partition | grep -Eo '[0-9]+$')
-	[[ $partition == "/dev/nvme"* ]] && device=$(echo $partition | cut -dp -f1) || device=${partition//$partnumber}
+	if [[ ! -b "$partition" ]]; then
+		echo -e "${CE}'$partition' is not a block device. Aborted.${CR}" > /dev/stderr
+		exit $CODE_VALUE
+	fi
+	partnumber=$(echo "$partition" | grep -Eo '[0-9]+$')
+	[[ $partition == "/dev/nvme"* ]] && device=$(echo "$partition" | cut -dp -f1) || device=${partition//$partnumber}
+	if [[ -z "$partnumber" ]] || [[ -z "$device" ]]; then
+		echo -e "${CE}Not able to find partition number for '$partition'. Aborted.${CR}" > /dev/stderr
+		exit $CODE_VALUE
+	fi
 
 	# Find ESP mount point
-	esp=$(mount | grep $partition | awk '{print $3}' | tail -n1)
+	esp=$(mount | grep "$partition" | awk '{print $3}' | tail -n1)
 	if [[ -n "$esp" ]]; then
 		echo -en "Press Enter if ${CB}$esp${CR} is your mount point for ESP partition, "
 		echo -en "else enter mount point manually (like ${CB}/boot/efi${CR}): "
@@ -110,11 +125,11 @@ install() {
 	esp=$(promptuser "$esp")
 
 	# Check if ESP is mounted
-	if ! mount | grep $partition | grep -q $esp; then
+	if ! mount | grep "$partition" | grep -q "$esp"; then
 		echo -e "ESP ${CB}$partition${CR} is not mounted, mounting..."
 		if ! mount "$partition" "$esp"; then
 			echo -e "${CE}Fail to mount $partition on $esp. Aborted.${CR}" > /dev/stderr
-			exit 2
+			exit $CODE_FATAL
 		fi
 	fi
 	echo -e "The target is: ${CB}$partition${CR} (mounted on ${CB}$esp${CR}).\n"
@@ -127,8 +142,8 @@ install() {
 	echo -e "${CB}4${CR}: Add a boot entry for systemd-boot menu"
 	echo -e "${CB}5${CR}: Cancel"
 	choice=0
-	while [[ $choice < 1 ]] || [[ $choice > 5 ]]; do
-		read choice
+	while [[ $choice -lt 1 ]] || [[ $choice -gt 5 ]]; do
+		read -r choice
 		echo
 	done
 
@@ -142,18 +157,18 @@ install() {
 			checkcommand efibootmgr
 			_common_install "$esp/EFI/memtest86" "memtest$ARCH.efi"
 			echo -e "\nAdd a new EFI boot entry..."
-			efibootmgr -c -d ${device} -p ${partnumber} -w -L "MemTest86" -l "\EFI\memtest86\memtest$ARCH.efi" # Manage efi entry
+			efibootmgr -c -d "$device" -p "$partnumber" -w -L "MemTest86" -l "\EFI\memtest86\memtest$ARCH.efi" # Manage efi entry
 		;;
 
 		3) # Install MemTest86 in $esp/EFI/memtest86/ & add a file for GRUB2
 			checkcommand grub-mkconfig
 			if [[ ! -d "/etc/grub.d/" ]]; then
 				echo -e "${CE}GRUB2 seems not installed on your system. Aborted.${CR}" > /dev/stderr
-				exit 2
+				exit $CODE_CMD
 			fi
 			_common_install "$esp/EFI/memtest86" "memtest$ARCH.efi"
 			echo -e "\nAdd a new configuration file for GRUB..."
-			uuid=$(blkid $partition -s UUID -o value)
+			uuid=$(blkid "$partition" -s UUID -o value)
 			_write_grub_cfg "$uuid"
 			grub-mkconfig -o "/boot/grub/grub.cfg"
 		;;
@@ -170,7 +185,7 @@ install() {
 
 		*) # Do nothing and quit
 			echo -e "Canceled. MemTest86 will not be installed."
-			exit 0
+			exit $CODE_OK
 		;;
 	esac
 
@@ -186,7 +201,7 @@ install() {
 update() {
 	if [[ $install == 0 ]]; then
 		echo "MemTest86 is not installed in ESP: it cannot be updated." > /dev/stderr
-		exit 1
+		exit $CODE_USAGE
 	fi
 
 	case $choice in
@@ -205,7 +220,7 @@ update() {
 remove() {
 	if [[ $install == 0 ]]; then
 		echo "MemTest86 is not installed in ESP: it cannot be removed." > /dev/stderr
-		exit 1
+		exit $CODE_USAGE
 	fi
 
 	case $choice in
@@ -223,7 +238,7 @@ remove() {
 
 			echo -e "\nRemove MemTest86 EFI boot entry..."
 			entry=$(efibootmgr | grep MemTest86 | cut -c 5-8)
-			[[ -n $entry ]] && efibootmgr -b $entry -B
+			[[ -n $entry ]] && efibootmgr -b "$entry" -B
 		;;
 
 		3) # Remove files in $esp/EFI/memtest86/ & delete file for GRUB2
@@ -262,13 +277,13 @@ status() {
 
 	if [[ $install == 0 ]]; then
 		echo -e "${CB}MemTest86 is not installed on your system.${CR}"
-		exit 1
+		exit $CODE_USAGE
 	else
 		echo -e "${CB}MemTest86 is installed on your system with following parameters:${CR}"
 		echo -e "ESP device name: $partition"
 		echo -e "ESP mount point: $esp"
 		echo -e "Type of installation: $choice"
-		exit 0
+		exit $CODE_OK
 	fi
 }
 
@@ -290,15 +305,15 @@ about() {
 
 if [[ -z $ARCH ]]; then
 	echo -e "${CE} Unsupported ARCH: $(uname -m). Aborted.${CR}" > /dev/stderr
-	exit -1
+	exit $CODE_FATAL
 fi
 
 case "$1" in
-	-i|--install) warn; checkuid; install; exit 0;;
-	-u|--update)  checkuid; update; exit 0;;
-	-r|--remove)  checkuid; remove; exit 0;;
+	-i|--install) warn; checkuid; install; exit $CODE_OK;;
+	-u|--update)  checkuid; update; exit $CODE_OK;;
+	-r|--remove)  checkuid; remove; exit $CODE_OK;;
 	-s|--status)  status;;
-	-h|--help)    help; exit 0;;
-	-a|--about)   warn; about; exit 0;;
-	*)            help; exit 1;;
+	-h|--help)    help; exit $CODE_OK;;
+	-a|--about)   warn; about; exit $CODE_OK;;
+	*)            help; exit $CODE_USAGE;;
 esac
