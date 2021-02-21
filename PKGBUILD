@@ -1,14 +1,14 @@
 pkgname=serial2tcp
 pkgver=0.1
-pkgrel=0
+pkgrel=1
 arch=('x86_64')
 url="https://cgit.ctu.cx/serial2tcp/"
 license=( 'GPL-3' )
 depends=( 'glibc' )
 makedepends=( 'nim' 'nimble' 'git' )
-_commit="ef1ea798224b912aa3cee213bdf91bb362fa05ea"
+_commit="82ba5985f8546f8cf2350918163418218eac9d0c"
 source=("${pkgname}-${_commit}.tar.gz::https://cgit.ctu.cx/${pkgname}/snapshot/${pkgname}-${_commit}.tar.gz")
-sha256sums=('2625c849b495bdb106e604143af2ed691b820885273a78ee41881fbee167ddf9')
+sha256sums=('35c80e84c1e35555c693ba0a644aaac176c0aa387d8f4c104101583aa8819eb2')
 
 build() {
   cd "$srcdir/${pkgname}-${_commit}/"

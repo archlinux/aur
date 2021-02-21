@@ -1,6 +1,6 @@
 pkgbase = serial2tcp
 	pkgver = 0.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://cgit.ctu.cx/serial2tcp/
 	arch = x86_64
 	license = GPL-3
@@ -8,8 +8,8 @@ pkgbase = serial2tcp
 	makedepends = nimble
 	makedepends = git
 	depends = glibc
-	source = serial2tcp-ef1ea798224b912aa3cee213bdf91bb362fa05ea.tar.gz::https://cgit.ctu.cx/serial2tcp/snapshot/serial2tcp-ef1ea798224b912aa3cee213bdf91bb362fa05ea.tar.gz
-	sha256sums = 2625c849b495bdb106e604143af2ed691b820885273a78ee41881fbee167ddf9
+	source = serial2tcp-82ba5985f8546f8cf2350918163418218eac9d0c.tar.gz::https://cgit.ctu.cx/serial2tcp/snapshot/serial2tcp-82ba5985f8546f8cf2350918163418218eac9d0c.tar.gz
+	sha256sums = 35c80e84c1e35555c693ba0a644aaac176c0aa387d8f4c104101583aa8819eb2
 
 pkgname = serial2tcp
 
