@@ -1,7 +1,7 @@
 # Contributor:  Francesco Masala <mail@francescomasala.me>
 
 pkgname=bottles
-pkgver=2.1.0.7
+pkgver=2.1.2
 pkgrel=1
 pkgdesc='Easily manage wineprefix'
 arch=('x86_64')
