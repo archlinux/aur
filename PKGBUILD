@@ -42,7 +42,7 @@ optdepends=(
 	'python-pycups: Printing'
 
 	# network layer
-	'python-pyyaml: alternative packet encoder'
+	'python-pyaml: alternative packet encoder'
 	'python-cryptography: encryption'
 	'python-zeroconf: Multicast DNS session publishing (server)'
 	'python-netifaces: Multicast DNS session publishing (server)'
@@ -53,7 +53,7 @@ optdepends=(
 
 	# authentication
 	'python-gssapi: GSSAPI authentication (server)'
-	'python-kerberos: Kerberos authentication (server)'
+	'python-pykerberos: Kerberos authentication (server)'
 	'python-ldap: LDAP authentication (server)'
 	'python-ldap3: LDAP v3 authentication (server)'
 	'python-pyu2f: U2F authentication (server)'
