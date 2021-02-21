@@ -7,10 +7,10 @@ pkgbase = wingpanel-indicator-network-git
 	groups = pantheon-unstable
 	license = GPL3
 	makedepends = git
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = meson
 	makedepends = vala
-	makedepends = wingpanel
+	makedepends = wingpanel-git
 	depends = glib2
 	depends = glibc
 	depends = gtk3
@@ -19,7 +19,7 @@ pkgbase = wingpanel-indicator-network-git
 	depends = networkmanager
 	depends = nm-connection-editor
 	depends = libgranite.so
-	depends = libwingpanel-2.0.so
+	depends = libwingpanel.so
 	provides = wingpanel-indicator-network
 	conflicts = wingpanel-indicator-network
 	replaces = wingpanel-indicator-nztwork-bzr
@@ -27,4 +27,3 @@ pkgbase = wingpanel-indicator-network-git
 	sha256sums = SKIP
 
 pkgname = wingpanel-indicator-network-git
-

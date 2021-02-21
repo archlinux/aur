@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-network-git
-pkgver=2.2.4.r71.ga900f1a
+pkgver=2.2.4.r104.g4cf518d
 pkgrel=1
 pkgdesc='Network indicator for Wingpanel'
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee' 'libnm-glib' 'networkmanager'
          'nm-connection-editor'
-         'libgranite.so' 'libwingpanel-2.0.so')
-makedepends=('git' 'granite' 'meson' 'vala' 'wingpanel')
+         'libgranite.so' 'libwingpanel.so')
+makedepends=('git' 'granite-git' 'meson' 'vala' 'wingpanel-git')
 provides=('wingpanel-indicator-network')
 conflicts=('wingpanel-indicator-network')
 replaces=('wingpanel-indicator-nztwork-bzr')
