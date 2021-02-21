@@ -1,0 +1,15 @@
+pkgbase = pam_radius
+	pkgdesc = This is the FreeRADIUS PAM to RADIUS authentication module.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://freeradius.org/sub_projects/
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = pam
+	backup = etc/raddb/server
+	source = git://github.com/FreeRADIUS/pam_radius#tag=release_2_0_0
+	sha256sums = SKIP
+
+pkgname = pam_radius
+
