@@ -7,16 +7,18 @@
 # installation.
 
 pkgname=jabref-git
-pkgver=5.2.r96.gae43548c16
+pkgver=5.2.r136.ga7948e8f28
 pkgrel=1
 epoch=2
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
 arch=('x86_64')
 url="https://www.jabref.org"
 license=('MIT')
-depends=('java-runtime=15' 'freetype2' 'libnet' 'libxrender' 'libxtst' 'alsa-lib')
-makedepends=('git' 'java-environment=15') # tested with zulu-15 and the repo openjdk
-					  # openjfx must not be installed
+depends=('java-runtime=15' 'freetype2' 'libnet' 'libxrender' 'libxtst' 'alsa-lib'
+	'libjpeg-turbo' 'lcms2' 'giflib')
+makedepends=('git' 'java-environment=15') # tested with zulu-15, liberica and the Arch Linux repo openjdk
+                                          # liberica does not work, openjfx must not be installed
+                                          # zulu-15 and the Arch Linux repo openjdk work
 optdepends=('gsettings-desktop-schemas: For web search support')
 provides=('jabref')
 conflicts=('jabref')
@@ -46,11 +48,13 @@ build() {
 package() {
   install -dm755 "${pkgdir}"/usr/share/java/${pkgname}
   install -Dm755 jabref.sh "${pkgdir}"/usr/bin/JabRef
-  install -Dm644 jabref.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
+  install -Dm644 jabref.desktop \
+	  "${pkgdir}"/usr/share/applications/${pkgname}.desktop
 
   cd ${pkgname%-git}
   install -Dm644 LICENSE.md "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.md
-  install -Dm644 src/main/resources/icons/jabref.svg "${pkgdir}"/usr/share/pixmaps/${pkgname}.svg
+  install -Dm644 src/main/resources/icons/jabref.svg \
+	  "${pkgdir}"/usr/share/pixmaps/${pkgname}.svg
 
   install -d "${pkgdir}/opt"
   cp -R build/image "${pkgdir}"/opt/jabref
