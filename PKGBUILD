@@ -1,5 +1,5 @@
 pkgname='gomclauncher-bin'
-pkgver='1.3.8'
+pkgver='1.3.9'
 pkgrel=1
 epoch=
 pkgdesc='gml: A Minecraft Launcher'
@@ -11,7 +11,7 @@ makedepends=()
 source=("https://github.com/xmdhs/gomclauncher/releases/download/v$pkgver/gml-linux.gz"
 	"https://raw.githubusercontent.com/xmdhs/gomclauncher/v$pkgver/LICENSE")
 
-md5sums=('c0254663859fc9c9cac477582d06d105'
+md5sums=('9744259f9be4c1f1b5f18b304afe58cb'
          'aca4188a0e8807e4aecc6b293f32ce42')
 
 prepare() {
