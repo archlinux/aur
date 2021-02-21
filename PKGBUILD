@@ -3,17 +3,17 @@
 _perlmod='Mail-DMARC'
 _modnamespace=Mail
 pkgname=perl-mail-dmarc
-pkgver=1.20200214
-pkgrel=2
+pkgver=1.20210220
+pkgrel=1
 pkgdesc="Perl implementation of DMARC"
 arch=("any")
 url="http://search.cpan.org/dist/$_perlmod"
 license=('GPL' 'PerlArtistic')
 depends=('perl' 'perl-cgi' 'perl-config-tiny' 'perl-dbd-sqlite' 'perl-dbix-simple' 'perl-email-mime' 'perl-email-simple' 'perl-file-sharedir' 'perl-file-sharedir-install' 'perl-http-message' 'perl-io-socket-ssl' 'perl-json' 'perl-libwww' 'perl-mail-dkim' 'perl-module-build' 'perl-net-dns' 'perl-net-http' 'perl-net-idn-encode' 'perl-net-ip' 'perl-net-smtps' 'perl-net-ssleay' 'perl-net-server' 'perl-regexp-common' 'perl-socket6' 'perl-uri' 'perl-xml-libxml')
-makedepends=('perl-test-file-sharedir' 'perl-test-exception' 'perl-test-output')
+makedepends=('perl-email-sender' 'perl-module-pluggable' 'perl-test-file-sharedir' 'perl-test-exception' 'perl-test-output')
 options=('!emptydirs')
 source=("http://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz")
-sha256sums=('769c57c693e9d612db9692642645f8c746cbd5f5a685a3c9ec6356402fe29c7b')
+sha256sums=('fb8841095601806bc2b42df6d8977597c879e990d6ab3b7e38e322bd5897daaf')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
