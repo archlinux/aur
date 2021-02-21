@@ -2,13 +2,13 @@
 
 pkgname=cie-middleware
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Middleware della CIE (Carta di Identità Elettronica) per Linux"
 arch=('x86_64')
 url="https://developers.italia.it/it/cie"
 license=('BSD')
 depends=('gcc-libs' 'glibc' 'openssl' 'java-runtime' 'pcsclite')
-conflicts=("${pkgname}-git")
+conflicts=("${pkgname}-bin" "${pkgname}-git")
 install="${pkgname}.install"
 
 source=("https://github.com/italia/${pkgname}-linux/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"

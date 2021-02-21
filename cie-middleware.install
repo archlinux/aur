@@ -1,4 +1,8 @@
 post_install() {
+	echo "NOTICE: The package 'cie-middleware' has been renamed and replaced by 'cie-middleware-bin'."
+	echo "        This package will be removed soon from AUR, please migrate to"
+	echo "        'cie-middleware-bin' or 'cie-middleware-git' to continue to receive updates."
+	echo
 	echo "==> To interact with the CIE smartcard the pcsclite daemon has to be started, with e.g."
 	echo "==> # systemctl start pcscd.service"
 }
