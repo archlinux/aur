@@ -1,3 +1,4 @@
+# Maintainer: zackartz <zackmyers@lavabit.com>
 # Contributor: orhun <orhunparmaksiz@gmail.com>
 # Contributor: reujab <reujab@gmail.com>
 
