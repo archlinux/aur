@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-network-git
-pkgver=2.3.1.r18.gba333ec
+pkgver=2.3.3.r48.g017b179
 pkgrel=1
 pkgdesc='Network plug for Switchboard'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee' 'libnm-glib' 'nm-connection-editor'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('git' 'granite' 'meson' 'switchboard' 'vala')
+makedepends=('git' 'granite-git' 'meson' 'switchboard' 'vala')
 provides=('switchboard-plug-network')
 conflicts=('switchboard-plug-network')
 source=('switchboard-plug-network::git+https://github.com/elementary/switchboard-plug-networking.git')

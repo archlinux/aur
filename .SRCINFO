@@ -1,13 +1,13 @@
 pkgbase = switchboard-plug-network-git
 	pkgdesc = Network plug for Switchboard
-	pkgver = 2.3.1.r18.gba333ec
+	pkgver = 2.3.3.r48.g017b179
 	pkgrel = 1
 	url = https://github.com/elementary/switchboard-plug-networking
 	arch = x86_64
 	groups = pantheon-unstable
 	license = GPL3
 	makedepends = git
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = meson
 	makedepends = switchboard
 	makedepends = vala
@@ -25,4 +25,3 @@ pkgbase = switchboard-plug-network-git
 	sha256sums = SKIP
 
 pkgname = switchboard-plug-network-git
-
