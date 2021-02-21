@@ -1,16 +1,16 @@
 pkgbase = wingpanel-indicator-datetime-git
 	pkgdesc = Date & Time indicator for Wingpanel
-	pkgver = 2.2.5.r35.g0cb673c
+	pkgver = 2.2.5.r47.g89a2496
 	pkgrel = 1
 	url = https://github.com/elementary/wingpanel-indicator-datetime
 	arch = x86_64
 	groups = pantheon-unstable
 	license = GPL3
 	makedepends = git
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = meson
 	makedepends = vala
-	makedepends = wingpanel
+	makedepends = wingpanel-git
 	depends = evolution-data-server
 	depends = glib2
 	depends = glibc
@@ -18,7 +18,7 @@ pkgbase = wingpanel-indicator-datetime-git
 	depends = libgee
 	depends = libical
 	depends = libgranite.so
-	depends = libwingpanel-2.0.so
+	depends = libwingpanel.so
 	depends = libhandy
 	provides = wingpanel-indicator-datetime
 	conflicts = wingpanel-indicator-datetime
@@ -26,4 +26,3 @@ pkgbase = wingpanel-indicator-datetime-git
 	sha256sums = SKIP
 
 pkgname = wingpanel-indicator-datetime-git
-
