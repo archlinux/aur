@@ -1,26 +1,32 @@
-# Maintainer: yjun <jerrysteve1101@gmail.com>
+# Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgname=netease-music-tui
-pkgver=0.1.2
-pkgrel=3
-pkgdesc="netease cloud music terminal client by rust"
-arch=('any')
+pkgver=0.1.3
+pkgrel=1
+pkgdesc="Netease cloud music terminal client by rust"
+arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h' 'arm')
 url="https://github.com/betta-cyber/netease-music-tui"
 license=('MIT')
-depends=('dbus' 'alsa-lib')
+# dbus is required for mpris to work
+depends=('dbus'
+         'alsa-lib'
+         'openssl')
 makedepends=('rust')
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/betta-cyber/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('5021c8c9d204b439453a1d3aaacc4802a685988c2cb376d057c48a3dbcc74514')
+sha256sums=('b8f3fb4dbe6785077beec1399cde402ee982230670d85b7d3ce174ca5e0bbcc9')
 
 build() {
   cd ${pkgname}-${pkgver}
-  cargo build --release --all-features
-  # cargo build --release --all-features --locked
+
+  # cargo build --release --locked --all-features --target-dir=target
+  cargo build --release --all-features --target-dir=target
 }
 
 package() {
-  install -Dm755 ${pkgname}-${pkgver}/target/release/ncmt ${pkgdir}/usr/bin/ncmt
-  install -Dm644 ${pkgname}-${pkgver}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  cd ${pkgname}-${pkgver}
+  
+  install -Dm755 target/release/ncmt -t ${pkgdir}/usr/bin/
+  install -Dm644 LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}/
 }
 
 # vim: set sw=2 ts=2 et:
