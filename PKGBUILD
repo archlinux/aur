@@ -1,6 +1,9 @@
 # Maintainer:  Vincent Grande <shoober420@gmail.com>
 # Contributor: Yurii Kolesykov <root@yurikoles.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Thaodan <theodorstormgrade@gmail.com>
+# Contributor: Christos Nouskas <nous at archlinux dot us>
+
 
 pkgbase=linux-pf-nodocs-git
 pkgdesc="Linux pf-kernel (git version)"
