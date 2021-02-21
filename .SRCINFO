@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-ros-type-introspection
 	pkgdesc = Deserialize ROS messages that are unknown at compilation time
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/wiki/ros_type_introspection
 	arch = i686
 	arch = x86_64

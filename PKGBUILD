@@ -2,7 +2,7 @@
 pkgname='ros-melodic-ros-type-introspection'
 pkgdesc='Deserialize ROS messages that are unknown at compilation time'
 pkgver='2.1.0'
-pkgrel=1
+pkgrel=2
 _gitorg=facontidavide
 _gitname=ros_type_introspection
 #_gitbranch=master
@@ -45,7 +45,9 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+		 -DBOOST_ROOT=/opt/boost1.69 \
+		 -DBoost_NO_SYSTEM_PATHS=TRUE
     make
 }
 
