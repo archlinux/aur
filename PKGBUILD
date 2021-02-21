@@ -2,7 +2,7 @@
 
 pkgname=ksnip
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Screenshot tool inspired by Windows Snipping Tool and made with Qt for Linux'
 arch=('i686' 'x86_64')
 url='https://github.com/DamirPorobic/ksnip'
@@ -10,13 +10,13 @@ license=('GPL')
 depends=(
   hicolor-icon-theme
   qt5-x11extras
-  'kimageannotator>=0.3.1'
+  'kimageannotator>=0.4.1'
 )
 makedepends=(
   cmake
   extra-cmake-modules
   qt5-tools
-  'kimageannotator>=0.3.1'
+  'kimageannotator>=0.4.1'
 )
 conflicts=(ksnip-git)
 source=($pkgname-$pkgver.tar.gz::https://github.com/DamirPorobic/ksnip/archive/v${pkgver}.tar.gz)
