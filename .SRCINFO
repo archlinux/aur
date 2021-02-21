@@ -1,0 +1,18 @@
+pkgbase = proxifier-for-linux-git
+	pkgdesc = Simple C code with iptables make this tool proxifier which tunnels whole system traffic through the proxy server, without configuring individual application
+	pkgver = r81.64456c5
+	pkgrel = 1
+	url = https://github.com/m0hithreddy/Proxifier-For-Linux
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = autoconf
+	makedepends = gcc
+	provides = proxifier-for-linux
+	conflicts = proxifier-for-linux
+	source = proxifier-for-linux-git::git+https://github.com/m0hithreddy/Proxifier-For-Linux
+	md5sums = SKIP
+
+pkgname = proxifier-for-linux-git
+
