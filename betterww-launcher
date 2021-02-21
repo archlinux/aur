@@ -1,0 +1,10 @@
+#!/bin/sh
+cd ~/.config
+if ls | grep betterww 1>/dev/null
+then
+	echo File Already Exists 1>/dev/null
+else
+	mkdir betterww
+fi
+cd betterww
+python /opt/betterww/wwrando.py

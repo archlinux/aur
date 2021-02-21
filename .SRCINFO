@@ -1,0 +1,19 @@
+pkgbase = betterww-git
+	pkgdesc = Modding tool for Wind Waker For Gamecube
+	pkgver = 1.4.r16.g640a2a4
+	pkgrel = 1
+	url = https://github.com/WideBoner/betterww
+	install = .INSTALL
+	arch = any
+	license = MIT
+	depends = python
+	depends = pyside2
+	depends = python-pyaml
+	depends = python-pillow
+	source = git+https://github.com/WideBoner/betterww.git
+	source = betterww-launcher
+	md5sums = SKIP
+	md5sums = da327ef65dbc01172d1c62812ce117d1
+
+pkgname = betterww-git
+

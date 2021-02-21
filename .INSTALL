@@ -1,0 +1,9 @@
+post_install() {
+	echo ------------------------------------------
+	echo Use \"betterww-launch\" to launch betterww
+	echo ------------------------------------------
+}
+
+post_remove() {
+	rm -rf /opt/betterww
+}
