@@ -62,16 +62,20 @@ pkgbase = dragonwolf
 	source = dragonwolf.desktop
 	source = git+https://gitlab.com/dr460nf1r3/dragonwolf-common.git
 	source = git+https://gitlab.com/dr460nf1r3/dragonwolf-settings.git
-	source = megabar.patch
-	source = remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw//remove_addons.patch
-	source = context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw//context-menu.patch
+	source = megabar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/master/megabar.patch
+	source = context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/master/context-menu.patch
+	source = unity-menubar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/master/unity-menubar.patch
+	source = remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/master/remove_addons.patch
+	source = rust_build_fix.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/master/rust_build_fix.patch
 	sha256sums = SKIP
 	sha256sums = 595b5af63f18d7cbde51ae662f0497b650ce25174a999e59d31aaf17d313895a
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 41a3fe162f6002688c84267deb965496b2751e592cbd4b69636dac940d5456bf
-	sha256sums = f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6
+	sha256sums = 682bf4bf5d79db0080aa132235a95b25745c8ef944d2a2e1fed985489d894df5
 	sha256sums = 3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd
+	sha256sums = ee302586f5291f809759f5eae3e5bad60b13007d9a9d37ac7f397597eb1d8665
+	sha256sums = f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6
+	sha256sums = 9a546803491818cfc016e4be908710e230b2b2b6640ec1a7df61c98053444471
 
 pkgname = dragonwolf
 
