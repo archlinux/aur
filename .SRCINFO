@@ -1,7 +1,7 @@
 pkgbase = spdk
 	pkgdesc = spdk: headers, libs, and scripts
 	pkgver = 21.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://spdk.io/
 	arch = x86_64
 	license = BSD
