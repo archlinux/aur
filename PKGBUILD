@@ -1,7 +1,7 @@
 #Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=betterww-git
 pkgver=1.4.r16.g640a2a4
-pkgrel=1
+pkgrel=2
 pkgdesc="Modding tool for Wind Waker For Gamecube"
 arch=('any')
 url="https://github.com/WideBoner/betterww"
@@ -24,5 +24,4 @@ package() {
 	cp "$srcdir/betterww-launcher" "$pkgdir/usr/bin/"
 	cp -r "$srcdir/betterww/" "$pkgdir/opt/"
 	chmod 777 -R "$pkgdir/opt/betterww/"
-	echo Launch program with \"better-launch\"
 }

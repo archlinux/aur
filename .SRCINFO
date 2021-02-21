@@ -1,7 +1,7 @@
 pkgbase = betterww-git
 	pkgdesc = Modding tool for Wind Waker For Gamecube
 	pkgver = 1.4.r16.g640a2a4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WideBoner/betterww
 	install = .INSTALL
 	arch = any
