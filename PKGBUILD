@@ -6,6 +6,7 @@ pkgdesc="Easily manage wineprefix using environments"
 arch=('x86_64')
 url="https://github.com/bottlesdevs/Bottles"
 license=('GPL3')
+conflicts=('bottles')
 depends=(
   'python'
   'hicolor-icon-theme'
