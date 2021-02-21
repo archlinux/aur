@@ -1,7 +1,7 @@
 # Maintainer: wuxb <wuxb45 at gmail dot com>
 pkgname=spdk-git
 pkgver=r0.0   # pkgver() updates this
-pkgrel=7
+pkgrel=8
 pkgdesc='spdk-git: headers, libs, and scripts'
 arch=('x86_64')
 license=('BSD')
@@ -27,7 +27,7 @@ prepare () {
 
 build() {
   cd "$srcdir/$pkgname"
-  ./configure --prefix=/usr --with-shared --disable-tests --disable-unit-tests --without-isal
+  ./configure --prefix=/usr --with-shared --disable-tests --disable-unit-tests --enable-lto
   make
 }
 
