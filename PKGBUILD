@@ -2,7 +2,7 @@
 # Helpful url: https://prowlarr.servarr.com/v1/update/develop?version=0.0.0.0&os=linux&runtime=netcore&arch=x64
 
 pkgname="prowlarr"
-pkgver=0.1.0.83
+pkgver=0.1.0.89
 pkgrel=1
 pkgdesc="Movie download automation for usenet and torrents."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -10,15 +10,6 @@ url="https://github.com/Prowlarr/Prowlarr"
 license=('GPL3')
 options=('!strip' 'staticlibs')
 depends=('sqlite')
-#optdepends=('sabnzbd: usenet downloader'
-#            'nzbget: usenet downloader'
-#            'transmission-cli: torrent downloader (CLI and daemon)'
-#            'transmission-gtk: torrent downloader (GTK+)'
-#            'transmission-qt: torrent downloader (Qt)'
-#            'deluge: torrent downloader'
-#            'rtorrent: torrent downloader'
-#            'jackett: torrent indexer proxy'
-#            'libgdiplus: provides a gdi+ compatible api')
 
 source_x86_64=("prowlarr.develop.${pkgver}.linux-core-x64.tar.gz::https://prowlarr.servarr.com/v1/update/nightly/updatefile?version=${pkgver}&os=linux&runtime=netcore&arch=x64") 
 source_aarch64=("prowlarr.develop.${pkgver}.linux-core-arm64.tar.gz::https://prowlarr.servarr.com/v1/update/nightly/updatefile?version=${pkgver}&os=linux&runtime=netcore&arch=arm64") 
@@ -35,9 +26,9 @@ sha512sums=('bc0df2df010d8e272ff7a1fabc24e2012b87bc260bac79ffd7b3716e38fa9b2fe84
             '9159ceda0955f2ebc495dd470c9d6234d8534a120ab81fa58fefae94a8ecfdc8fe883fb1287bc10429e7b4f35ac59d36232d716c161a242a4bfcdff768f1b9a2'
             '6ebd6f268e5aa7446e3c77540f5c95b3237959892e8800f5f380a0f979c71ec0d6f7664c1a58f7d10a255bc21a19bad0fef8609b02b4d5e15f340e66364017d2'
             '0e305d68b950372ed169f3b89a3b97d3423f968460a11b9620e779444d04227091daaad5a9fcad1c24aa868fc5b39129ba247f4a09d9191292bfd20230f88da2')
-sha512sums_x86_64=('c2f84b42970d1fac26eb5d08e034839fdc04236604deb9c908ebc620e97a7b42262a2235495ab2e21033f80e334f769da8e34a05853c63e67edd0fd65b29ca40')
-sha512sums_aarch64=('08be376c5ae6aaa88413874a679a6fa94fd18ea4d3de6806a19cb2da454ad5fe12c513469fb95e1959d00619d20f857b37eddcca4207c35c29a8d1a4dc748ac5')
-sha512sums_armv7h=('3306b9493d5c921820add77a99d4fa992e4fd7473277e75e4f16dbb1dab540edc1b9580f7cd482ab2e3d233df9b0c070ead9bb1f9cf714b6638773e455e5c363')
+sha512sums_x86_64=('791385eb6ef77f6bdb9ade8dfe3c2f13309b8328cf4b86d10fc7481e72830aeb9df174164f348248821e491714d99787b6220dc210b21448678f55a6dcea641f')
+sha512sums_aarch64=('0496073f00d469cd088665511dde16a365b1ac6446d509f151fc92b68e8c863f3079ad056cd7d7ab79470ba9468e9899e0a3c34f334c4043f8d8e9e973b01c86')
+sha512sums_armv7h=('141fe05c79f701e79eeca03f6a27f5ebd8795f1faf53ecf246927c2ba2b0253ea47a112a99f597fe1886183587af1ff0c5fcf8b76190b4b75da7b2415798e995')
 
 
 package() {
