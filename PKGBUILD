@@ -4,9 +4,9 @@ pkgdesc="ROS - ROS messages for Geographic Information Systems."
 url='https://wiki.ros.org/geographic_msgs'
 
 pkgname='ros-noetic-geographic-msgs'
-pkgver='0.5.3'
+pkgver='0.5.5'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-noetic-catkin
@@ -30,9 +30,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="geographic_info-geographic_info-${pkgver}/geographic_msgs"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-geographic-info/geographic_info/archive/geographic_info-${pkgver}.tar.gz")
-sha256sums=('2a2de063b17dc00c20bd49d59ded6934081fc22d8749dc8542d407d1ca0e608e')
+_dir="geographic_info-${pkgver}/geographic_msgs"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-geographic-info/geographic_info/archive/${pkgver}.tar.gz")
+sha256sums=('08ef80705a422eb9069930a2f6968523dfd8f183a0afed317615f23ab53e4c8a')
 
 build() {
   # Use ROS environment variables
