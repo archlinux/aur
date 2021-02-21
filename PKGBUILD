@@ -23,7 +23,7 @@ changelog=
 source=("https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/${pkgname}/${pkgname}_${_pkgver}_i386.deb")
 #source=("https://master.dl.sourceforge.net/project/deepin-wine-apps/${pkgname}_${_pkgver}_i386.deb")
 noextract=("${pkgname}_${_pkgver}_i386.deb")
-md5sums=('e12c4b26c791ca32cdc96e5441341148')
+md5sums=('5fdc20e614d945bd2ba5251420872479')
 validpgpkeys=()
 
 prepare() {
