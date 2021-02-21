@@ -1,17 +1,18 @@
 pkgname=mingw-w64-opencascade
-pkgver=7.4.0.1
-_pkgver=V7_4_0p1
+pkgver=7.5.1
+_pkgver=V7_5_1
 pkgrel=1
 pkgdesc="Open CASCADE Technology, 3D modeling & numerical simulation (mingw-w64)"
 arch=('any')
 url="https://www.opencascade.org"
 license=('custom')
-depends=('mingw-w64-tk' 'mingw-w64-gl2ps' 'mingw-w64-ffmpeg' 'mingw-w64-freeimage' 'mingw-w64-tbb')
+depends=('mingw-w64-tk' 'mingw-w64-gl2ps' 'mingw-w64-ffmpeg' 'mingw-w64-freeimage' 'mingw-w64-tbb' 'mingw-w64-rapidjson')
 #TODO: 'mingw-w64-vtk'
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("opencascade-${pkgver}.tgz::https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/${_pkgver};sf=tgz" 'fix-install-dir-references.patch')
-sha256sums=('e00fedc221560fda31653c23a8f3d0eda78095c87519f338d4f4088e2ee9a9c0'
+source=("opencascade-${pkgver}.tgz::https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/${_pkgver};sf=tgz"
+        'fix-install-dir-references.patch')
+sha256sums=('3a43d8b50df78ade72786fa63bc8808deac6380189333663e7b4ef8558ae7739'
             'afb584aa453993ae8d9e2b983594558531ede735a5892754b812be30650c9fb5')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -23,15 +24,18 @@ prepare() {
   # cross paths
   sed -i "s|CMAKE_FIND_ROOT_PATH_BOTH||g" adm/cmake/*.cmake
   sed -i "s|NO_DEFAULT_PATH||g" adm/cmake/*.cmake
-  
+
   # wrong lib name .
   sed -i "s|CSF_FreeImagePlus|FreeImage|g" adm/cmake/freeimage.cmake
-  
+
   # dont ignore linker flags
   sed -i 's|set (CMAKE_SHARED_LINKER_FLAGS "-Wl,--export-all-symbols")|set (CMAKE_SHARED_LINKER_FLAGS "-Wl,--export-all-symbols \${CMAKE_SHARED_LINKER_FLAGS}")|g' adm/cmake/occt_defs_flags.cmake
-  
+
   # find .dll.a extension
   sed -i 's|set (CMAKE_FIND_LIBRARY_SUFFIXES |#set (CMAKE_FIND_LIBRARY_SUFFIXES |g' adm/cmake/*.cmake
+
+  # msvc-specific inline asm syntax
+  sed -i "s|defined(_M_IX86)|defined(_MSC_VER)|g" src/Standard/Standard.cxx
 }
 
 build() {
@@ -43,6 +47,7 @@ build() {
       -DUSE_FREEIMAGE=OFF \
       -DUSE_FFMPEG=ON \
       -DUSE_VTK=OFF \
+      -DUSE_RAPIDJSON=ON \
       -DUSE_TBB=ON \
       -DBUILD_DOC_Overview=OFF \
       -DZ3RDPARTY_FREETYPE_LIBRARY=/usr/${_arch}/lib/libfreetype.dll.a \
@@ -63,13 +68,13 @@ build() {
       -D3RDPARTY_TCL_DLL_DIR=/usr/${_arch}/bin/ \
       -D3RDPARTY_FREETYPE_DLL_DIR=/usr/${_arch}/bin/ \
       -D3RDPARTY_FFMPEG_DLL_DIR_avcodec=/usr/${_arch}/bin/ \
-      -DZ3RDPARTY_FFMPEG_LIBRARY_avcodec=/usr/${_arch}/lib/libavcodec.dll.a \
+      -D3RDPARTY_FFMPEG_LIBRARY_avcodec=/usr/${_arch}/lib/libavcodec.dll.a \
       -D3RDPARTY_FFMPEG_DLL_DIR_avformat=/usr/${_arch}/bin/ \
-      -DZ3RDPARTY_FFMPEG_LIBRARY_avformat=/usr/${_arch}/lib/libavformat.dll.a \
+      -D3RDPARTY_FFMPEG_LIBRARY_avformat=/usr/${_arch}/lib/libavformat.dll.a \
       -D3RDPARTY_FFMPEG_DLL_DIR_swscale=/usr/${_arch}/bin/ \
-      -DZ3RDPARTY_FFMPEG_LIBRARY_swscale=/usr/${_arch}/lib/libswscale.dll.a \
+      -D3RDPARTY_FFMPEG_LIBRARY_swscale=/usr/${_arch}/lib/libswscale.dll.a \
       -D3RDPARTY_FFMPEG_DLL_DIR_avutil=/usr/${_arch}/bin/ \
-      -DZ3RDPARTY_FFMPEG_LIBRARY_avutil=/usr/${_arch}/lib/libavutil.dll.a \
+      -D3RDPARTY_FFMPEG_LIBRARY_avutil=/usr/${_arch}/lib/libavutil.dll.a \
       -DINSTALL_DIR_BIN=bin \
       -DINSTALL_DIR_LIB=lib \
       -DINSTALL_DIR_DATA=share/opencascade/data \
