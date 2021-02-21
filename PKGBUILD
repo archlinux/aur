@@ -10,7 +10,11 @@ arch=('any')
 url="https://github.com/adafruit/Adafruit_Python_GPIO"
 license=('MIT')
 groups=()
-depends=('python' 'python-raspberry-gpio' 'python-smbus')
+depends=('python' 'python-smbus')
+optdepends=(
+	'python-raspberry-gpio: for Raspberry Pi support'
+	'python-adafruit_bbio-git: for BeagleBone support'
+	'libftdi: for FT232H support')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
