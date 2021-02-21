@@ -8,7 +8,7 @@ pkgbase = zoomx
 	depends = glibc
 	depends = libx11
 	source = zoomx-0.0.1.tar.gz::https://github.com/boom-roasted/zoomx/archive/v0.0.1.tar.gz
-	sha256sums = 9c3e99771f264bbc6c498ef3aefff58427e5cdc43a40a840e29c8aa532ec6577
+	sha256sums = 6166582f64da65dd6f12c2b371b7566c095a1ad21470a50ffb783acf43cfbab9
 
 pkgname = zoomx
 
