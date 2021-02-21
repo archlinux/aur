@@ -2,7 +2,7 @@
 
 pkgname=python-jsonpyth
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Another JSONPath implementation for Python"
 arch=(any)
 url="https://github.com/Frimkron/JSONPyth"
@@ -21,7 +21,7 @@ build() {
 check() {
   cd "JSONPyth-${pkgver}"
 
-  python3 setup.py test
+  python3 -m unittest
 }
 
 package() {

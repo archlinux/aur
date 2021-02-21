@@ -1,7 +1,7 @@
 pkgbase = python-jsonpyth
 	pkgdesc = Another JSONPath implementation for Python
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Frimkron/JSONPyth
 	arch = any
 	license = MIT
