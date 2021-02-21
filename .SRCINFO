@@ -1,13 +1,13 @@
 pkgbase = switchboard-plug-power-git
 	pkgdesc = Switchboard Power Plug
-	pkgver = 2.4.2.r19.g061a1bd
+	pkgver = 2.4.2.r64.g7cfc557
 	pkgrel = 1
 	url = https://github.com/elementary/switchboard-plug-power
 	arch = x86_64
 	groups = pantheon-unstable
 	license = GPL3
 	makedepends = git
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = meson
 	makedepends = switchboard
 	makedepends = vala
@@ -24,4 +24,3 @@ pkgbase = switchboard-plug-power-git
 	sha256sums = SKIP
 
 pkgname = switchboard-plug-power-git
-

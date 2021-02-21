@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-power-git
-pkgver=2.4.2.r19.g061a1bd
+pkgver=2.4.2.r64.g7cfc557
 pkgrel=1
 pkgdesc='Switchboard Power Plug'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gnome-settings-daemon' 'gtk3' 'libgee' 'polkit'
          'libswitchboard-2.0.so')
-makedepends=('git' 'granite' 'meson' 'switchboard' 'vala')
+makedepends=('git' 'granite-git' 'meson' 'switchboard' 'vala')
 provides=('switchboard-plug-power')
 conflicts=('switchboard-plug-power')
 source=('git+https://github.com/elementary/switchboard-plug-power.git')
