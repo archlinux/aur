@@ -1,8 +1,8 @@
 # Maintainer: luosoy <249799588@qq.com>
 pkgname=com.qq.im.deepin
-_pkgver=9.3.2deepin14
+_pkgver=9.3.2deepin20
 pkgver=9.3.2
-pkgrel=14
+pkgrel=20
 epoch=
 pkgdesc="Deepin Wine QQ"
 arch=('i686' 'x86_64')
