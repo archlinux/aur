@@ -1,0 +1,19 @@
+pkgbase = c-evo
+	pkgdesc = Empire Building Game
+	pkgver = 285
+	pkgrel = 1
+	url = http://www.c-evo.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = fpc
+	makedepends = lazarus-gtk2
+	depends = gtk2
+	optdepends = ffmpeg: Needed for sounds
+	conflicts = c-evo-bin
+	source = c-evo-285.orig.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo_285+dfsg.6.orig.tar.xz
+	source = c-evo-285.debian.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo_285+dfsg.6-3.debian.tar.xz
+	sha256sums = a0d3594f1b1d9d5bd540a3275414811b23a42462bfb0eda8ca7ed784e2f57ac7
+	sha256sums = 493021b362efca499298c84b8d2edbfcf687ea48206a2b11c2287ec5b2b7ce1b
+
+pkgname = c-evo
+
