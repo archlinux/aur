@@ -2,7 +2,7 @@
 
 _pkgname=pipe-viewer
 pkgname=pipe-viewer-git
-pkgver=0.0.6.r0.g96df0cf
+pkgver=0.0.7.r0.gc341106
 pkgrel=1
 pkgdesc="A lightweight YouTube client for Linux (CLI/GTK) (fork of straw-viewer)"
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
     'perl-json-xs: faster JSON parsing'
     'perl-lwp-useragent-cached: local cache support'
     'perl-term-readline-gnu: better STDIN support'
-    'perl-unicode-linebreak: print results in a fixed-width format (-W)'
+    'perl-unicode-linebreak: better fixed-width formatting'
     'mpv: play videos with MPV (recommended)'
     'vlc: play videos with VLC'
     'wget: download videos with wget'

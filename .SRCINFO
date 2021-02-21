@@ -1,6 +1,6 @@
 pkgbase = pipe-viewer-git
 	pkgdesc = A lightweight YouTube client for Linux (CLI/GTK) (fork of straw-viewer)
-	pkgver = 0.0.6.r0.g96df0cf
+	pkgver = 0.0.7.r0.gc341106
 	pkgrel = 1
 	url = https://github.com/trizen/pipe-viewer
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = pipe-viewer-git
 	optdepends = perl-json-xs: faster JSON parsing
 	optdepends = perl-lwp-useragent-cached: local cache support
 	optdepends = perl-term-readline-gnu: better STDIN support
-	optdepends = perl-unicode-linebreak: print results in a fixed-width format (-W)
+	optdepends = perl-unicode-linebreak: better fixed-width formatting
 	optdepends = mpv: play videos with MPV (recommended)
 	optdepends = vlc: play videos with VLC
 	optdepends = wget: download videos with wget
