@@ -2,24 +2,25 @@
 # Contributor: Piotr Rogoza <piotr dot r dot public at gmail dot com>
 
 pkgname=tkdnd
-pkgver=2.8
+_pkgname=$pkgname-release-test
+pkgver=2.9.2
 pkgrel=1
-pkgdesc="add native drag'n'drop capabilities to tk"
+pkgdesc="add native drag'n'drop capabilities to Tk toolkit"
 arch=(i686 x86_64)
-url="http://sourceforge.net/projects/tkdnd/"
+url="https://github.com/petasis/tkdnd"
 license=("GPL")
 depends=('tk')
-conflicts=(tkdnd-cvs)
+conflicts=(tkdnd-cvs tkdnd-git)
 options=(!emptydirs)
-source=("http://sourceforge.net/projects/tkdnd/files/TkDND/TkDND%20${pkgver}/tkdnd${pkgver}-src.tar.gz")
-sha256sums=('5e76266adaf381f0c6797b2a15a77c162c2fe718f887d973d61316ded802ca78')
+source=("https://github.com/petasis/tkdnd/archive/tkdnd-release-test-v${pkgver}.tar.gz")
+sha256sums=('456d19115147190601ac22b85e6ce97f9ffc5ab4a7fa1598d5140b5b2e04f57a')
 
 build() {
-  cd "$srcdir/$pkgname$pkgver"
+  cd "$srcdir/$pkgname-$_pkgname-v$pkgver"
   ./configure --prefix=/usr
   make
 }
 package(){
-  cd "$srcdir/$pkgname$pkgver"
+  cd "$srcdir/$pkgname-$_pkgname-v$pkgver"
   make DESTDIR="$pkgdir/" install
 }
