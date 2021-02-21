@@ -1,13 +1,13 @@
 pkgbase = php7-pdlib
 	pkgdesc = PDlib - A PHP extension for Dlib
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/goodspb/pdlib
 	arch = x86_64
 	license = MIT License
 	makedepends = cmake
 	depends = dlib
-	depends = php
+	depends = php7
 	depends = libx11
 	depends = openblas
 	depends = cblas

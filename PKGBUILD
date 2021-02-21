@@ -3,13 +3,13 @@
 pkgname=("php7-pdlib")
 _pkgbase=("pdlib")
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="PDlib - A PHP extension for Dlib"
 arch=('x86_64')
 url="https://github.com/goodspb/pdlib"
 license=('MIT License')
 depends=('dlib'
-         'php'
+         'php7'
          'libx11'
          'openblas'
 	 'cblas'
