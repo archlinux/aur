@@ -81,6 +81,9 @@ prepare() {
   mkdir mozbuild
   cd mozilla-unified
 
+  mv ${srcdir}/dragonwolf-common/ ${srcdir}/common
+  mv ${srcdir}/dragonwolf-settings/ ${srcdir}/settings
+
   #
   # If you want to disable LTO/PGO (compile too long), delete the lines below beginning with
   # `ac_add_options --enable-lto' and ending with 'export RANLIB=llvm-ranlib`
@@ -205,6 +208,7 @@ fi
   sed "$_settings_services_sed" -i services/settings/Utils.jsm
   sed "$_settings_services_sed" -i toolkit/components/search/SearchUtils.jsm
 
+  # Copy branding in place  
   rm -f ${srcdir}/common/source_files/mozconfig
   cp -r ${srcdir}/common/source_files/* ./
 }
