@@ -1,13 +1,13 @@
 pkgbase = switchboard-plug-desktop-git
 	pkgdesc = Switchboard Desktop Plug
-	pkgver = 2.8.4.r102.g7b966cc
+	pkgver = 2.8.4.r288.ga8421c1
 	pkgrel = 1
 	url = https://github.com/elementary/switchboard-plug-pantheon-shell
 	arch = x86_64
 	groups = pantheon-unstable
 	license = GPL3
 	makedepends = git
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = libgexiv2
 	makedepends = meson
 	makedepends = switchboard
@@ -20,7 +20,7 @@ pkgbase = switchboard-plug-desktop-git
 	depends = libgexiv2
 	depends = libgranite.so
 	depends = libswitchboard-2.0.so
-	depends = plank
+	depends = pantheon-dock
 	depends = tumbler
 	provides = switchboard-plug-desktop
 	conflicts = switchboard-plug-desktop
@@ -28,4 +28,3 @@ pkgbase = switchboard-plug-desktop-git
 	sha256sums = SKIP
 
 pkgname = switchboard-plug-desktop-git
-

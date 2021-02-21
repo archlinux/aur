@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-desktop-git
-pkgver=2.8.4.r102.g7b966cc
+pkgver=2.8.4.r288.ga8421c1
 pkgrel=1
 pkgdesc='Switchboard Desktop Plug'
 arch=(x86_64)
@@ -17,12 +17,12 @@ depends=(
   libgexiv2
   libgranite.so
   libswitchboard-2.0.so
-  plank
+  pantheon-dock
   tumbler
 )
 makedepends=(
   git
-  granite
+  granite-git
   libgexiv2
   meson
   switchboard
