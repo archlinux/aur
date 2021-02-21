@@ -1,24 +1,30 @@
 # Maintainer: ftsell <aur@finn-thorben.me>
-pkgname=ros-melodic-ros-type-introspection
-pkgdesc="Deserialize ROS messages that are unknown at compilation time"
-pkgver=2.0.4
+pkgname='ros-melodic-ros-type-introspection'
+pkgdesc='Deserialize ROS messages that are unknown at compilation time'
+pkgver='2.1.0'
 pkgrel=1
 _gitorg=facontidavide
 _gitname=ros_type_introspection
 #_gitbranch=master
-arch=(any)
-url="http://www.ros.org/wiki/ros_type_introspection"
-license=("MIT")
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+url='http://www.ros.org/wiki/ros_type_introspection'
+license=('MIT')
 
-ros_makedepends=()
+ros_makedepends=(
+  ros-melodic-roscpp
+  ros-melodic-roscpp-serialization
+  ros-melodic-rostime)
 makedepends=('cmake' 'ros-build-tools' ${ros_makedepends[@]})
 
-ros_depends=("ros-melodic-roscpp" "ros-melodic-roscpp-serialization" "ros-melodic-rostime")
+ros_depends=(
+  ros-melodic-roscpp
+  ros-melodic-roscpp-serialization
+  ros-melodic-rostime)
 depends=(${ros_depends[@]})
 
-_dir="${_gitname}-${pkgver}"
-source=("${_gitname}.tar.gz::https://github.com/${_gitorg}/${_gitname}/archive/${pkgver}.tar.gz")
-sha256sums=("648e7debaacef15ecbb7330851a7c70e2563dace8f7fffd4f1632b7ce2b8c61c")
+_dir="ros_type_introspection-${pkgver}/"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/facontidavide/ros_type_introspection/archive/${pkgver}.tar.gz")
+sha256sums=('d46f38719012142992b7e946adcb64ea5d35a747f733fe3388e0d406e50fbdc9')
 
 
 build() {
