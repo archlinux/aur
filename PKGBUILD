@@ -2,7 +2,7 @@
 
 pkgname=hush3
 pkgver=3.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='HUSH (Privacy Cryptocurrency and Messenger) full node that supports z-addresses'
 url='http://git.hush.is/hush/hush3'
 arch=('x86_64')
@@ -20,39 +20,31 @@ build() {
 }
 
 package() {
-  # create the necessary directory structure
-  install -d "${pkgdir}/opt/${pkgname}"
-  install -d "${pkgdir}/usr/share/hush"
-  install -d "${pkgdir}/usr/share/man/man1"
-  install -d "${pkgdir}/usr/bin"
- 
-  # rename KMD binaries used to not overwrite any installed
-  cd "$pkgname/src"
-  mv komodo-cli hush-komodo-cli
-  mv komodod hush-komodod
-  mv komodo-tx hush-komodo-tx
+  install -Dm644 "${srcdir}/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  # install required scripts
-  install -m 755 hush-cli "${pkgdir}/opt/${pkgname}"
-  install -m 755 hushd "${pkgdir}/opt/${pkgname}"
-  install -m 755 hush-smart-chain "${pkgdir}/opt/${pkgname}"
-  install -m 755 hush-tx "${pkgdir}/opt/${pkgname}"
-  install -m 755 hush-komodo-cli "${pkgdir}/opt/${pkgname}"
-  install -m 755 hush-komodod "${pkgdir}/opt/${pkgname}"
-  install -m 755 hush-komodo-tx "${pkgdir}/opt/${pkgname}"
+  # install required scripts for hushd to function
+  install -Dm755 "${srcdir}/$pkgname/src/hush-cli" "${pkgdir}/opt/$pkgname/hush-cli"
+  install -Dm755 "${srcdir}/$pkgname/src/hushd" "${pkgdir}/opt/$pkgname/hushd"
+  install -Dm755 "${srcdir}/$pkgname/src/hush-smart-chain" "${pkgdir}/opt/$pkgname/hush-smart-chain"
+  install -Dm755 "${srcdir}/$pkgname/src/hush-tx" "${pkgdir}/opt/$pkgname/hush-tx"
+  install -Dm755 "${srcdir}/$pkgname/src/hushd" "${pkgdir}/opt/$pkgname/hushd"
+
+  # rename KMD binaries used as to not overwrite any installed
+  install -Dm755 "${srcdir}/$pkgname/src/komodo-cli" "${pkgdir}/opt/$pkgname/hush-komodo-cli"
+  install -Dm755 "${srcdir}/$pkgname/src/komodod" "${pkgdir}/opt/$pkgname/hush-komodod"
+  install -Dm755 "${srcdir}/$pkgname/src/komodo-tx" "${pkgdir}/opt/$pkgname/hush-komodo-tx"
 
   # install required sapling files
-  cd ..
-  install -m 644 sapling-output.params "${pkgdir}/opt/${pkgname}"
-  install -m 644 sapling-spend.params "${pkgdir}/opt/${pkgname}"
+  install -Dm644 "${srcdir}/$pkgname/sapling-output.params" "${pkgdir}/opt/$pkgname/sapling-output.params"
+  install -Dm644 "${srcdir}/$pkgname/sapling-spend.params" "${pkgdir}/opt/$pkgname/sapling-spend.params"
 
   # install man pages
-  cd "doc/man"
-  install -m 644 hush-cli.1 "${pkgdir}/usr/share/man/man1"
-  install -m 644 hushd.1 "${pkgdir}/usr/share/man/man1"
-  install -m 644 hush-tx.1 "${pkgdir}/usr/share/man/man1"
+  install -Dm644 "${srcdir}/$pkgname/doc/man/hush-cli.1" "${pkgdir}/usr/share/man/man1/hush-cli.1"
+  install -Dm644 "${srcdir}/$pkgname/doc/man/hushd.1" "${pkgdir}/usr/share/man/man1/hushd.1"
+  install -Dm644 "${srcdir}/$pkgname/doc/man/hush-tx.1" "${pkgdir}/usr/share/man/man1/hush-tx.1"
 
   # links scripts to /usr/bin
+  install -d "${pkgdir}/usr/bin"
   ln -s /opt/${pkgname}/hush-cli "${pkgdir}/usr/bin"
   ln -s /opt/${pkgname}/hushd "${pkgdir}/usr/bin"
   ln -s /opt/${pkgname}/hush-smart-chain "${pkgdir}/usr/bin"
@@ -61,6 +53,7 @@ package() {
   ln -s /opt/${pkgname}/hush-komodod "${pkgdir}/usr/bin"
   ln -s /opt/${pkgname}/hush-komodo-tx "${pkgdir}/usr/bin"
 
+  install -d "${pkgdir}/usr/share/hush"
   ln -s /opt/${pkgname}/sapling-output.params "${pkgdir}/usr/share/hush"
   ln -s /opt/${pkgname}/sapling-spend.params "${pkgdir}/usr/share/hush"
 }
