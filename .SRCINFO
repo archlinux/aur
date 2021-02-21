@@ -1,16 +1,17 @@
 pkgbase = switchboard-plug-parental-controls-git
 	pkgdesc = Switchboard Parental Controls Plug
-	pkgver = 3.0.1.r21.g5d9f013
+	pkgver = 3.0.1.r38.gff4f66e
 	pkgrel = 1
 	url = https://github.com/elementary/switchboard-plug-parental-controls
 	arch = x86_64
 	groups = pantheon-unstable
 	license = GPL3
 	makedepends = git
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = meson
 	makedepends = switchboard
 	makedepends = vala
+	makedepends = libhandy
 	depends = accountsservice
 	depends = gdk-pixbuf2
 	depends = glib2
@@ -18,7 +19,7 @@ pkgbase = switchboard-plug-parental-controls-git
 	depends = gtk3
 	depends = libgee
 	depends = polkit
-	depends = libhandy
+	depends = libhandy-1.so
 	depends = libgranite.so
 	depends = libswitchboard-2.0.so
 	provides = switchboard-plug-parental-controls
@@ -27,4 +28,3 @@ pkgbase = switchboard-plug-parental-controls-git
 	sha256sums = SKIP
 
 pkgname = switchboard-plug-parental-controls-git
-
