@@ -1,6 +1,6 @@
 pkgbase = php73-apcu
 	pkgdesc = A userland caching module for PHP
-	pkgver = 5.1.18
+	pkgver = 5.1.19
 	pkgrel = 1
 	url = https://pecl.php.net/package/APCu
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = php73-apcu
 	depends = php73
 	provides = php-apcu
 	backup = etc/php73/conf.d/apcu.ini
-	source = https://pecl.php.net/get/apcu-5.1.18.tgz
-	sha256sums = d46debe7acad6073b663ba1710c5cac671a60bf666966cf199bf6d07499bde2b
+	source = https://pecl.php.net/get/apcu-5.1.19.tgz
+	sha256sums = 837fbc99d5c79efb510fafaf585ef0c06e02baf8310a7d77f93e402c93276ce0
 
 pkgname = php73-apcu
 
