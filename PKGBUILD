@@ -1,10 +1,10 @@
 # Maintainer: Julien Savard <juju@juju2143.ca>
 pkgname=numworks-omega-git
-pkgver=1.19.0.E13.r556.gf0c46adeb
+pkgver=1.20.0.E14.r787.g41554caf2
 pkgrel=1
 pkgdesc="A simulator for the Numworks graphic calculator (Omega firmware)"
 arch=('x86_64')
-url="https://getomega.web.app"
+url="https://getomega.dev"
 license=('custom:CC-BY-NC-SA')
 groups=()
 depends=('gcc-libs' 'libxext' 'libjpeg-turbo')
@@ -39,7 +39,6 @@ prepare() {
 	git config submodule."themes".git.url $srcdir/Omega-Themes
 	git submodule update
 
-	convert -background "#C53431" "ion/src/simulator/assets/logo.svg" "${pkgname%-git}.png"
 	gendesk -f -n --pkgname "${pkgname%-git}" --pkgdesc "$pkgdesc" --name "Numworks Omega" --icon "${pkgname%-git}" --exec "${pkgname%-git}" --categories "Education;Emulator"
 }
 
@@ -53,6 +52,6 @@ package() {
 	cd "$pkgname"
 	install -Dm755 output/release/simulator/linux/epsilon.bin "$pkgdir/usr/bin/${pkgname%-git}"
 	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 "${pkgname%-git}.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
+	install -Dm644 "ion/src/simulator/assets/logoAUR.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
 	install -Dm644 "${pkgname%-git}.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
 }
