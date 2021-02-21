@@ -1,0 +1,48 @@
+pkgbase = linux-pf-nodocs-git
+	pkgdesc = Linux pf-kernel (git version)
+	pkgver = 5.10.6.r0.g5bfd8ac02dfe
+	pkgrel = 1
+	url = https://gitlab.com/post-factum/pf-kernel
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = xz
+	makedepends = bc
+	makedepends = kmod
+	makedepends = elfutils
+	makedepends = inetutils
+	makedepends = pahole
+	makedepends = cpio
+	options = !strip
+	source = linux-pf-nodocs-git::git+https://gitlab.com/post-factum/pf-kernel.git#branch=pf-5.11
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/linux/trunk/config
+	source = pf_defconfig
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = linux-pf-nodocs-git
+	pkgdesc = The Linux pf-kernel (git version) kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	provides = linux-pf
+	provides = linux-pf-git
+	conflicts = linux-pf
+	conflicts = linux-pf-git
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
+
+pkgname = linux-pf-nodocs-headers-git
+	pkgdesc = Headers and scripts for building modules for the Linux pf-kernel (git version) kernel
+	provides = linux-pf-headers
+	provides = linux-pf-headers-git
+	conflicts = linux-pf-headers
+	conflicts = linux-pf-headers-git
+
