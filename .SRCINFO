@@ -1,6 +1,6 @@
 pkgbase = r-data.table
 	pkgdesc = Extension of 'data.frame'
-	pkgver = 1.13.6
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=data.table
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = r-data.table
 	optdepends = r-yaml
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/data.table_1.13.6.tar.gz
-	sha256sums = d50cdd4c4f89cabf83baa9114e49a3b8179f403c499d6e0be7791a44ffcd3e9b
+	source = https://cran.r-project.org/src/contrib/data.table_1.14.0.tar.gz
+	sha256sums = 13f1de244e7fa90fadfb0be964db5ffb324ca024d5f136feb4578b5daedaeb4d
 
 pkgname = r-data.table
 
