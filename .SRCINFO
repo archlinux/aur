@@ -7,7 +7,7 @@ pkgbase = switchboard-plug-display-git
 	groups = pantheon-unstable
 	license = GPL3
 	makedepends = git
-	makedepends = granite
+	makedepends = granite-git
 	makedepends = switchboard
 	makedepends = meson
 	makedepends = vala
@@ -24,4 +24,3 @@ pkgbase = switchboard-plug-display-git
 	sha256sums = SKIP
 
 pkgname = switchboard-plug-display-git
-
