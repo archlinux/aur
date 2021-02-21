@@ -1,10 +1,13 @@
 pkgbase = minergate-gui
 	pkgdesc = Altcoin Cryptocurrency Mining Pools
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.minergate.com/
 	arch = x86_64
 	license = custom
+	depends = ocl-icd
+	depends = qt5-websockets
+	depends = icu
 	provides = minergate-gui
 	options = !strip
 	source = https://www.minergate.com/download/xfast-ubuntu-gui/1.7
