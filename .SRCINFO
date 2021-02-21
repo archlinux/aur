@@ -1,9 +1,10 @@
 pkgbase = librewolf-wayland-hg
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
 	pkgver = r591370+.fdd919d10609+
-	pkgrel = 2
+	pkgrel = 1
 	url = https://librewolf-community.gitlab.io/
 	arch = x86_64
+	arch = aarch64
 	license = MPL
 	license = GPL
 	license = LGPL
@@ -44,25 +45,50 @@ pkgbase = librewolf-wayland-hg
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
+	optdepends = libappindicator-gtk3: global menu support for gtk app
+	optdepends = appmenu-gtk-module-git: appmenu for gtk only
+	optdepends = plasma5-applets-window-appmenu: appmenu for plasma only
 	provides = librewolf
 	conflicts = librewolf
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = hg+https://hg.mozilla.org/mozilla-unified#revision=release
-	source = librewolf.desktop
-	source = git+https://gitlab.com/librewolf-community/browser/common.git
-	source = git+https://gitlab.com/librewolf-community/settings.git#commit=3feb12464aa81df2f4ff162fce69890614c0ac8f
-	source = megabar.patch
-	source = remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/f43e70c98c07d8cf5a3325733ff5084b6f672564/remove_addons.patch
-	source = context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/f43e70c98c07d8cf5a3325733ff5084b6f672564/context-menu.patch
-	sha256sums = SKIP
-	sha256sums = 0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = 41a3fe162f6002688c84267deb965496b2751e592cbd4b69636dac940d5456bf
-	sha256sums = f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6
-	sha256sums = 3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd
+	source_x86_64 = hg+https://hg.mozilla.org/mozilla-unified#revision=release
+	source_x86_64 = librewolf.desktop
+	source_x86_64 = git+https://gitlab.com/librewolf-community/browser/common.git
+	source_x86_64 = git+https://gitlab.com/librewolf-community/settings.git#commit=3feb12464aa81df2f4ff162fce69890614c0ac8f
+	source_x86_64 = megabar.patch
+	source_x86_64 = remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/f43e70c98c07d8cf5a3325733ff5084b6f672564/remove_addons.patch
+	source_x86_64 = context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/f43e70c98c07d8cf5a3325733ff5084b6f672564/context-menu.patch
+	source_x86_64 = unity-menubar.patch
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = 0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = 41a3fe162f6002688c84267deb965496b2751e592cbd4b69636dac940d5456bf
+	sha256sums_x86_64 = f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6
+	sha256sums_x86_64 = 3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd
+	sha256sums_x86_64 = 6e5b64cef3fba8795c4a400ee59d8deda371f2bbb55f1fc33bc99671bd1f8df8
+	source_aarch64 = hg+https://hg.mozilla.org/mozilla-unified#revision=release
+	source_aarch64 = librewolf.desktop
+	source_aarch64 = git+https://gitlab.com/librewolf-wayland-hg-community/browser/common.git
+	source_aarch64 = git+https://gitlab.com/librewolf-wayland-hg-community/settings.git#commit=3feb12464aa81df2f4ff162fce69890614c0ac8f
+	source_aarch64 = megabar.patch
+	source_aarch64 = remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/f43e70c98c07d8cf5a3325733ff5084b6f672564/remove_addons.patch
+	source_aarch64 = unity-menubar.patch
+	source_aarch64 = context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/f43e70c98c07d8cf5a3325733ff5084b6f672564/context-menu.patch
+	source_aarch64 = arm.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/f43e70c98c07d8cf5a3325733ff5084b6f672564/arm.patch
+	source_aarch64 = build-arm-libopus.patch
+	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = 0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2
+	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = 41a3fe162f6002688c84267deb965496b2751e592cbd4b69636dac940d5456bf
+	sha256sums_aarch64 = f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6
+	sha256sums_aarch64 = 6e5b64cef3fba8795c4a400ee59d8deda371f2bbb55f1fc33bc99671bd1f8df8
+	sha256sums_aarch64 = 3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd
+	sha256sums_aarch64 = 6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7
+	sha256sums_aarch64 = 0ff47d2cca2d187695027af02a12f15731003274d219668bc5090702e6c38a0a
 
 pkgname = librewolf-wayland-hg
 
