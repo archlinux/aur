@@ -177,7 +177,7 @@ fi
 
   # Debian patch to enable global menubar
   # disabled for the default build, as it seems to cause issues in some configurations
-  patch -p1 -i ../unity-menubar.patch
+  # patch -p1 -i ../unity-menubar.patch
 
   # Disabling Pocket
   sed -i "s/'pocket'/#'pocket'/g" browser/components/moz.build
@@ -267,7 +267,7 @@ version=1.0
 about=LibreWolf
 
 [Preferences]
-app.distributor="LibreWolf Community"
+app.distributor="Garuda Linux"
 app.distributor.channel=librewolf
 app.partner.librewolf=librewolf
 END
