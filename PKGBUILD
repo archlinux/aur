@@ -1,8 +1,8 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _pkgname=taskwiki
 pkgname=vim-$_pkgname-git
-pkgver=r687.0c964460e
-pkgrel=3
+pkgver=r843.a3ae9c5
+pkgrel=1
 pkgdesc="Proper project management in vim. Standing on the shoulders of vimwiki and Taskwarrior"
 arch=('any')
 url="https://github.com/tbabej/taskwiki"
@@ -29,8 +29,8 @@ package() {
   cd "$srcdir/${pkgname%-git}"
   installpath="${pkgdir}/usr/share/vim/vimfiles"
 
-  install -d $installpath/{after/syntax,doc,extra,ftplugin/vimwiki,taskwiki}
-  for x in {after/syntax,doc,extra,ftplugin/vimwiki,taskwiki}
+  install -d $installpath/{after/{syntax,ftplugin},autoload,doc,extra,ftplugin/vimwiki,taskwiki}
+  for x in {after/{syntax,ftplugin},autoload,doc,extra,ftplugin/vimwiki,taskwiki}
   do
       install -Dm644 $x/* $installpath/$x/
   done
