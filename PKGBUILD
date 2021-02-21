@@ -2,7 +2,7 @@
 
 pkgname=hush3
 pkgver=3.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc='HUSH (Privacy Cryptocurrency and Messenger) full node that supports z-addresses'
 url='http://git.hush.is/hush/hush3'
 arch=('x86_64')
@@ -27,7 +27,6 @@ package() {
   install -Dm755 "${srcdir}/$pkgname/src/hushd" "${pkgdir}/opt/$pkgname/hushd"
   install -Dm755 "${srcdir}/$pkgname/src/hush-smart-chain" "${pkgdir}/opt/$pkgname/hush-smart-chain"
   install -Dm755 "${srcdir}/$pkgname/src/hush-tx" "${pkgdir}/opt/$pkgname/hush-tx"
-  install -Dm755 "${srcdir}/$pkgname/src/hushd" "${pkgdir}/opt/$pkgname/hushd"
 
   # rename KMD binaries used as to not overwrite any installed
   install -Dm755 "${srcdir}/$pkgname/src/komodo-cli" "${pkgdir}/opt/$pkgname/hush-komodo-cli"

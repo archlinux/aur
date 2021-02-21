@@ -1,7 +1,7 @@
 pkgbase = hush3
 	pkgdesc = HUSH (Privacy Cryptocurrency and Messenger) full node that supports z-addresses
 	pkgver = 3.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://git.hush.is/hush/hush3
 	arch = x86_64
 	license = GPL3
