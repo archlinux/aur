@@ -1,6 +1,6 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname=auto-cpufreq
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="Automatic CPU speed & power optimizer"
 arch=('any')
@@ -15,8 +15,8 @@ makedepends=('python-setuptools' 'gcc')
 provides=("$pkgname")
 conflicts=("$pkgname")
 install="$pkgname.install"
-source=( "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c1d4708382e948795f2c76f6cb42546f2c3ac51262aae3cf0a0da46d42da6060')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+b2sums=('155293178e790e449e50a9b2e49cb73556664e307e5e97b40c2ab2bb4dec48e1ae1065de80c53f8e447e24de6d797b981a4097fb10e6ba7f206d780eeff8f70a')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
