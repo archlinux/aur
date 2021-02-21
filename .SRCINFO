@@ -6,7 +6,6 @@ pkgbase = numworks-omega-git
 	arch = x86_64
 	license = custom:CC-BY-NC-SA
 	makedepends = freetype2
-	makedepends = imagemagick
 	makedepends = gendesk
 	depends = gcc-libs
 	depends = libxext
