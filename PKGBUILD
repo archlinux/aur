@@ -134,7 +134,7 @@ END
   # patch -p1 -i ../unity-menubar.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1684261
-  patch -Np1 -i ../rust_build_fix.patch
+  # patch -Np1 -i ../rust_build_fix.patch
 
   # Disabling Pocket
   sed -i "s/'pocket'/#'pocket'/g" browser/components/moz.build
