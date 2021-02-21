@@ -1,6 +1,6 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-panel')
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="GTK3-based panel for sway window manager"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('bluez: for Bluetooth status'
             'wlr-randr: for non-sway window managers support')
 source=("https://github.com/nwg-piotr/nwg-panel/archive/v"$pkgver".tar.gz")
 
-md5sums=('b040092b9d301e219a7301ff5363491a')
+md5sums=('d055d0862e57b4712c0d7d806b219220')
 
 package() {
   cd "${pkgname}-${pkgver}"
