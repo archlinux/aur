@@ -5,7 +5,7 @@ index 18d73db..7911576 100644
 @@ -28,7 +28,7 @@ POSSIBILITY OF SUCH DAMAGE.
  # include "config.h"
  #endif
- 
+
 -#include "main_FIX.h"
 +#include "fixed/main_FIX.h"
  #include "NSQ.h"
