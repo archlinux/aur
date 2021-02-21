@@ -1,8 +1,8 @@
 pkgbase = linux-zen-g14
 	pkgdesc = Linux ZEN with patch for Zephyrus G14 (GA401I)
-	pkgver = 5.10.16.zen1
+	pkgver = 5.11.zen2
 	pkgrel = 1
-	url = https://github.com/zen-kernel/zen-kernel/commits/v5.10.16-zen1
+	url = https://github.com/zen-kernel/zen-kernel/commits/v5.11-zen2
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -16,19 +16,17 @@ pkgbase = linux-zen-g14
 	makedepends = xmlto
 	makedepends = git
 	options = !strip
-	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.10.16-zen1
-	source = config-5.10.16.zen1::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen&id=9c5eff00c5d7dc47376791147a053ea8b79c48fd
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.11-zen2
+	source = config-5.11.zen2::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen&id=ec47edcc45f73b4946015e9f28a419e27db2fda3
 	source = i8042.patch
 	source = https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/-/raw/master/kernel_patches/5.9/5.9.8%20-%205.9.12/0001-HID-ASUS-Add-support-for-ASUS-N-Key-keyboard.patch
-	source = https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.10.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
-	sha256sums = 7ef67a529020f4d936d2f6f141f23ac86ebfa73e69230dea883dcc310dd0514a
+	sha256sums = ee3627d42ebdcb8208ef906319adaab8f86eb59fc16641026d9bcc8753b2ab8f
 	sha256sums = 11fd9d1d365c23d941f840074691f2242096344e3a1858cc43360795ccf0bb4d
 	sha256sums = 68bf0dcc390ed14d97f48ebd1095d2587ac2eb2671445125fbcaaf7a6aa01733
-	sha256sums = 24729e63e08de13039ce7e6637146ec5a5747379ebbd92cdeef744edfad17183
 
 pkgname = linux-zen-g14
 	pkgdesc = The Linux ZEN with patch for Zephyrus G14 (GA401I) kernel and modules
@@ -43,4 +41,5 @@ pkgname = linux-zen-g14
 
 pkgname = linux-zen-g14-headers
 	pkgdesc = Headers and scripts for building modules for the Linux ZEN with patch for Zephyrus G14 (GA401I) kernel
+	depends = pahole
 
